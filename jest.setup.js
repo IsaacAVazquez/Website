@@ -103,3 +103,19 @@ beforeAll(() => {
 afterAll(() => {
   console.error = originalError
 })
+
+// Every test that renders the Catalog 97 header mounts Catalog97EasterEggs,
+// whose console note would otherwise print into the test output.
+const originalLog = console.log
+beforeAll(() => {
+  console.log = (...args) => {
+    if (typeof args[0] === 'string' && args[0].startsWith('%cHi, thanks for opening the console.\n')) {
+      return
+    }
+    originalLog.call(console, ...args)
+  }
+})
+
+afterAll(() => {
+  console.log = originalLog
+})

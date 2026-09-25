@@ -60,6 +60,7 @@ export function Catalog97About() {
         className="c97-band c97-band-tall c97-sheet"
         data-c97-surface="ink-blue"
         data-seam="torn"
+        data-c97-monet
       >
         <div
           className="c97-shell"
@@ -122,15 +123,17 @@ export function Catalog97About() {
             still decoding, or that fails outright, leaves the composition
             intact rather than punching a hole in the band.
           */}
-          <Catalog97Slot
-            surface="stone"
-            ratio="4 / 5"
-            src="/images/headshot-home.webp"
-            alt="Isaac Vazquez"
-            sizes="(max-width: 790px) 100vw, 40vw"
-            priority
-            offset
-          />
+          <div data-c97-paint="portrait">
+            <Catalog97Slot
+              surface="stone"
+              ratio="4 / 5"
+              src="/images/headshot-home.webp"
+              alt="Isaac Vazquez"
+              sizes="(max-width: 790px) 100vw, 40vw"
+              priority
+              offset
+            />
+          </div>
         </div>
       </section>
 

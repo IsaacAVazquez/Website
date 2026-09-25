@@ -208,6 +208,16 @@
 }
 
 /*
+ * Selected text takes the sheet's second ink, like a highlight laid down in
+ * another pass. The surface-less page root has no second ink, so it falls
+ * back to vermilion.
+ */
+.c97-page ::selection {
+  background-color: color-mix(in srgb, var(--c97-overprint, var(--c97-riso-vermilion)) 42%, transparent);
+  color: var(--c97-ink);
+}
+
+/*
  * Paint the overscroll gutter to match, so rubber-band scrolling on iOS and
  * macOS does not reveal the Working Instrument limestone behind the page.
  */
@@ -1424,19 +1434,41 @@ select.c97-field {
   text-wrap: pretty;
 }
 
-.c97-article p,
-.c97-article ul,
-.c97-article ol,
-.c97-article blockquote,
-.c97-article pre,
-.c97-article table,
-.c97-article figure,
-.c97-article hr {
+/*
+ * The reset is wrapped in :where() so it stays at the owl's specificity and
+ * the owl below wins on order. As `.c97-article p` it outranked the owl, and
+ * every paragraph in every article sat flush against the one above it.
+ */
+.c97-article :where(p, ul, ol, blockquote, pre, table, figure, hr) {
   margin: 0;
 }
 
 .c97-article > * + * {
   margin-top: var(--c97-sp-2);
+}
+
+/*
+ * The end of a post gets the newsroom's "-30-", the old sign that a story
+ * was finished. Where `content` takes alt text, the alt text is empty so
+ * screen readers skip it. A browser without alt text would drop a slashed
+ * `content` whole, so that version sits behind @supports.
+ */
+.c97-article-end::after {
+  content: "\2011 30\2011";
+  display: block;
+  margin-top: var(--c97-sp-5);
+  font-family: var(--c97-font-poster);
+  font-size: var(--c97-fs-h3);
+  letter-spacing: 0.08em;
+  text-align: center;
+  color: var(--c97-ink-2);
+  text-shadow: 0.05em 0.04em 0 var(--c97-overprint, var(--c97-riso-vermilion));
+}
+
+@supports (content: "a" / "") {
+  .c97-article-end::after {
+    content: "\2011 30\2011" / "";
+  }
 }
 
 /* The column, not the 65ch paragraph cap globals.css applies to every p. */
@@ -1850,11 +1882,27 @@ select.c97-field {
   padding: var(--c97-sp-5) var(--c97-gutter);
 }
 
-/* The link groups, each on its own ink sheet pasted onto the footer. */
+/*
+ * The link groups, each on its own ink sheet pasted onto the footer. Four
+ * cells only ever go four, two, or one across. An auto-fit track put three on
+ * a row at 768 and 1024 and left the Site tile alone underneath.
+ */
 .c97-footer-tiles {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr));
+  grid-template-columns: minmax(0, 1fr);
   gap: var(--c97-sp-4);
+}
+
+@media (min-width: 560px) {
+  .c97-footer-tiles {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 960px) {
+  .c97-footer-tiles {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
 }
 
 .c97-footer-tile {
@@ -1890,16 +1938,20 @@ select.c97-field {
   text-underline-offset: 5px;
 }
 
+/* The wordmark and copyright share the tile row's first cell: the mark takes
+   the top edge and the copyright the bottom edge, matching the tiles beside it. */
 .c97-footer-colophon {
-  width: 260px;
-  max-width: 100%;
-  margin-top: var(--c97-sp-5);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: var(--c97-sp-2);
+  padding-block: var(--c97-sp-2);
 }
 
-.c97-footer-colophon .c97-wordmark { width: 260px; max-width: 100%; }
+.c97-footer-colophon .c97-wordmark { width: 100%; max-width: 260px; }
 
 .c97-footer-copy {
-  margin: var(--c97-sp-3) 0 0;
+  margin: 0;
   font-size: var(--c97-fs-small);
   color: var(--c97-label);
 }
@@ -2011,6 +2063,25 @@ select.c97-field {
   mask-image: linear-gradient(to top, #000, transparent);
 }
 
+/*
+ * Hovering a halftone's field splits the screen into the press's inks, a
+ * little off register, the way a print looks under a loupe.
+ */
+@media screen and (hover: hover) {
+  .c97-halftone {
+    transition: opacity 0.3s ease;
+  }
+
+  :hover > .c97-halftone {
+    background-image:
+      radial-gradient(circle, var(--c97-riso-blue) 30%, transparent 34%),
+      radial-gradient(circle, var(--c97-riso-vermilion) 30%, transparent 34%),
+      radial-gradient(circle, var(--c97-riso-saffron) 30%, transparent 34%);
+    background-position: 0 0, 3px 1px, 1px 4px;
+    opacity: 0.45;
+  }
+}
+
 /* A printed plate or a button on its hard offset in the second ink. */
 .c97-offset {
   box-shadow: 8px 8px 0 var(--c97-overprint);
@@ -2078,6 +2149,160 @@ select.c97-field {
   text-decoration: none;
   color: var(--c97-ink);
   text-shadow: 0.05em 0.04em 0 var(--c97-overprint);
+}
+
+/*
+ * On hover the letters are cut from a Monet canvas, and the `#c97-monet-brush`
+ * SVG filter in Catalog97Monet breaks their edges into brushstrokes. The canvas
+ * drifts slowly behind the letters between `--c97-monet-from` and
+ * `--c97-monet-to`, and since the letters only show a thin band of it, each
+ * canvas sets a drift that stays in a band with colour in it. The overprint
+ * moves into the filter chain because a text-shadow would paint over the
+ * clipped fill. Reduced motion freezes the drift through the global guard
+ * below, leaving the canvas at its `from` position.
+ *
+ * The canvas follows the visitor's local time, which Catalog97Monet writes
+ * into `data-c97-daypart` on the root element when it mounts. Midday, and any
+ * visit without JavaScript, gets Water Lilies (1906, Art Institute of Chicago,
+ * public domain), drifting across the pond.
+ */
+.c97-header-brand {
+  --c97-monet-canvas: url("/images/home/monet-water-lilies.webp");
+  --c97-monet-from: 0 30%;
+  --c97-monet-to: 100% 70%;
+}
+
+/*
+ * Morning, 05:00 to 10:59, gets Impression, Sunrise (1872, Musée Marmottan
+ * Monet, public domain), from the Commons file "Monet - Impression,
+ * Sunrise.jpg". The drift stays in the top third of the canvas's right side,
+ * across the orange strokes of the sky and down to the sun.
+ */
+:root[data-c97-daypart="morning"] .c97-header-brand {
+  --c97-monet-canvas: url("/images/home/monet-impression-sunrise.webp");
+  --c97-monet-from: 100% 6%;
+  --c97-monet-to: 60% 30%;
+}
+
+/*
+ * Evening and night, 17:00 to 04:59, get The Houses of Parliament, Sunset
+ * (1903, National Gallery of Art, Washington, public domain), from the
+ * Commons file "Claude Monet, The Houses of Parliament, Sunset, 1903, NGA
+ * 46523.jpg", which the gallery released under CC0. The drift stays on the
+ * blue-violet mass of the building against the pink sky, since the paler
+ * water band washes out on the saffron header.
+ */
+:root[data-c97-daypart="evening"] .c97-header-brand {
+  --c97-monet-canvas: url("/images/home/monet-parliament-sunset.webp");
+  --c97-monet-from: 0 48%;
+  --c97-monet-to: 100% 66%;
+}
+
+.c97-header-brand:hover,
+.c97-header-brand:focus-visible {
+  color: transparent;
+  text-shadow: none;
+  filter: url(#c97-monet-brush) saturate(1.6) contrast(1.1)
+    drop-shadow(0.05em 0.04em 0 var(--c97-overprint));
+  /*
+   * A flat ink layer sits under the canvas, so the letters stay ink coloured
+   * while the canvas is still loading, and stay that way if it never loads.
+   */
+  background-image: var(--c97-monet-canvas), linear-gradient(var(--c97-ink), var(--c97-ink));
+  background-position: var(--c97-monet-from), 0 0;
+  background-size: 260px auto, auto;
+  background-repeat: repeat, no-repeat;
+  -webkit-background-clip: text;
+  background-clip: text;
+  animation: c97-monet-drift 14s ease-in-out infinite alternate;
+}
+
+@keyframes c97-monet-drift {
+  from { background-position: var(--c97-monet-from), 0 0; }
+  to { background-position: var(--c97-monet-to), 0 0; }
+}
+
+/*
+ * The paint reveal. A `[data-c97-paint]` element shows a painted version of
+ * its photo, but only in a soft 150px circle around the pointer. The painted
+ * image comes from `--c97-paint` and its crop from `--c97-paint-pos`, which
+ * has to match the photo's object-position so the two stay aligned under the
+ * same cover fit. Catalog97Monet writes the pointer position, relative to the
+ * element, into `--c97-mx`/`--c97-my`.
+ *
+ * A portrait (`data-c97-paint="portrait"`) is the headshot painted in short
+ * directional strokes with violet shadows and warm lights, and it shows while
+ * anything in its `[data-c97-monet]` section is hovered. A plate
+ * (`data-c97-paint="plate"`) is a collage photo painted by scripts/
+ * paint_plates.py, supplied inline by Catalog97Collage, and it shows while
+ * its parent panel is hovered. The layer never takes the pointer, so a
+ * plate's link still gets the click, and the element is isolated so the
+ * layer stays under anything pasted on top of it, like a panel's card. The
+ * position rule has no specificity, so a plate keeps its own absolute
+ * positioning.
+ */
+:where([data-c97-paint]) {
+  position: relative;
+  isolation: isolate;
+}
+
+[data-c97-paint="portrait"] {
+  --c97-paint: url("/images/home/headshot-monet.webp");
+}
+
+/* Clicking a portrait cycles its painter (Catalog97Monet). */
+[data-c97-paint="portrait"][data-c97-painter="van-gogh"] {
+  --c97-paint: url("/images/home/headshot-van-gogh.webp");
+}
+
+[data-c97-paint="portrait"][data-c97-painter="seurat"] {
+  --c97-paint: url("/images/home/headshot-seurat.webp");
+}
+
+[data-c97-paint="portrait"][data-c97-painter="hopper"] {
+  --c97-paint: url("/images/home/headshot-hopper.webp");
+}
+
+[data-c97-paint]::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  --c97-paint-spot: radial-gradient(
+    circle 150px at var(--c97-mx, -999px) var(--c97-my, -999px),
+    #000 60%,
+    transparent 100%
+  );
+  -webkit-mask-image: var(--c97-paint-spot);
+  mask-image: var(--c97-paint-spot);
+  background-position: var(--c97-paint-pos, center);
+  background-size: cover;
+  opacity: 0;
+  /*
+   * On the way out the image is held until the fade finishes, where
+   * `allow-discrete` is supported. Without it the image drops at once and
+   * the circle vanishes instead of fading.
+   */
+  transition: opacity 0.3s ease, background-image 0s linear 0.3s;
+  transition-behavior: normal, allow-discrete;
+}
+
+/*
+ * Only for a real hover on screen. A tap leaves `:hover` stuck on touch
+ * screens with the circle wherever the finger first moved, and a print
+ * taken with the pointer over a photo would carry the circle onto paper.
+ * The painted image is set only in the hover rule, so a layer's image
+ * downloads the first time someone hovers its area, never on page load and
+ * never on a touch screen.
+ */
+@media screen and (hover: hover) {
+  [data-c97-monet]:hover [data-c97-paint="portrait"]::before,
+  :hover > [data-c97-paint="plate"]::before {
+    background-image: var(--c97-paint);
+    opacity: 1;
+    transition-delay: 0s;
+  }
 }
 
 /*

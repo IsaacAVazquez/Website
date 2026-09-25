@@ -111,7 +111,14 @@ function Catalog97Footer({ wordmark }: { wordmark: boolean }) {
       data-seam="torn"
     >
       <div className="c97-shell">
+        {/* The colophon is the first cell of the tile row, so its edges line up with the tiles'. */}
         <div className="c97-footer-tiles">
+          <div className="c97-footer-colophon">
+            {wordmark ? <Catalog97Wordmark /> : null}
+            <p className="c97-footer-copy">
+              &copy; {new Date().getFullYear()} Isaac Vazquez
+            </p>
+          </div>
           {footerGroups.map(({ name, links, surface }) => (
             <nav
               key={name}
@@ -137,12 +144,6 @@ function Catalog97Footer({ wordmark }: { wordmark: boolean }) {
               ))}
             </nav>
           ))}
-        </div>
-        <div className="c97-footer-colophon">
-          {wordmark ? <Catalog97Wordmark /> : null}
-          <p className="c97-footer-copy">
-            &copy; {new Date().getFullYear()} Isaac Vazquez
-          </p>
         </div>
       </div>
     </footer>

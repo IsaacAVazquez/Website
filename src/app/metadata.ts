@@ -7,5 +7,5 @@ export const metadata = constructMetadata({
   description:
     "I'm a product manager and Berkeley Haas MBA candidate building AI workflow, fintech, analytics, and decision-support products.",
   canonicalUrl: "/",
-  dateModified: "2026-08-05",
+  dateModified: "2026-09-24",
 });

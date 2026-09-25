@@ -12,7 +12,7 @@ export const metadata = constructMetadata({
   description:
     "The projects I've shipped across AI workflows, fintech, analytics, civic tech, and sports data, with the product decisions behind them.",
   canonicalUrl: "/portfolio",
-  dateModified: "2026-08-09",
+  dateModified: "2026-09-14",
 });
 
 export default function PortfolioPage() {

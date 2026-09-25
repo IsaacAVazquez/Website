@@ -1,4 +1,5 @@
 import { render, screen } from "@testing-library/react";
+import { getPortfolioProjects } from "@/constants/caseStudies";
 import Home from "../page";
 import PortfolioPage from "../portfolio/page";
 
@@ -30,6 +31,7 @@ jest.mock("@/constants/caseStudies", () => {
         title: "Project A",
         description: "Project A description",
         timeline: "2026",
+        link: "/fintech-tools/interchange-iq",
         overview: { summary: "What project A does.", impact: "" },
       },
     ],
@@ -69,6 +71,28 @@ describe("Portfolio shell page semantics", () => {
         name: /i build test harnesses, and dashboards that run on public data/i,
       })
     ).toBeVisible();
+  });
+
+  // /portfolio/<slug> redirects to project.link for every case study that
+  // became a live tool, so a card pointing at the slug costs a redirect hop.
+  it("links homepage work cards straight to the live tool", async () => {
+    const { container } = render(await Home());
+    const hrefs = Array.from(container.querySelectorAll("a"), (a) => a.getAttribute("href"));
+
+    expect(hrefs).toContain("/fintech-tools/interchange-iq");
+    expect(hrefs).not.toContain("/portfolio/project-a");
+  });
+
+  it("links portfolio entries straight to the live tool", () => {
+    const { container } = render(<PortfolioPage />);
+    const hrefs = Array.from(container.querySelectorAll("a"), (a) => a.getAttribute("href"));
+    const liveProjects = getPortfolioProjects().filter((project) => project.link);
+
+    expect(liveProjects.length).toBeGreaterThan(0);
+    for (const project of liveProjects) {
+      expect(hrefs).toContain(project.link);
+      expect(hrefs).not.toContain(`/portfolio/${project.slug}`);
+    }
   });
 
   it("gives the portfolio index exactly one main landmark and one h1", () => {

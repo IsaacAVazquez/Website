@@ -270,7 +270,8 @@ export function Catalog97Portfolio({ projects }: Catalog97PortfolioProps) {
               <div>
                 <h2 className="c97-serif c97-h2">
                   <Link
-                    href={`/portfolio/${project.slug}`}
+                    // /portfolio/<slug> only redirects to the live tool now.
+                    href={project.link ?? `/portfolio/${project.slug}`}
                     style={{ textDecoration: "none" }}
                   >
                     {project.title}
@@ -413,7 +414,7 @@ export function Catalog97Portfolio({ projects }: Catalog97PortfolioProps) {
                   */}
                   <h3 className="c97-serif c97-lead">
                     <Link
-                      href={`/portfolio/${project.slug}`}
+                      href={project.link ?? `/portfolio/${project.slug}`}
                       style={{ textDecoration: "none" }}
                     >
                       {project.title}

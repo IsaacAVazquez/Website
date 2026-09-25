@@ -97,6 +97,20 @@ const nextConfig = {
         destination: '/fantasy-football?position=te&scoring=ppr',
         permanent: false,
       },
+      // Retired tier pages. These live here rather than as permanentRedirect()
+      // pages because fantasy-football/loading.tsx wraps its children in
+      // Suspense, so a page redirect lands after a 200 shell has streamed.
+      // The board normalizes the position param, so any casing works.
+      {
+        source: '/fantasy-football/rb-tiers',
+        destination: '/fantasy-football?position=rb&scoring=ppr',
+        permanent: true,
+      },
+      {
+        source: '/fantasy-football/tiers/:position',
+        destination: '/fantasy-football?position=:position&scoring=ppr',
+        permanent: true,
+      },
       
       // Common misspellings
       {

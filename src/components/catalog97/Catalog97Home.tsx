@@ -56,6 +56,7 @@ export function Catalog97Home({
   const boardPanels: CollagePanel[] = [
     {
       src: LAUNCH_PAD,
+      paint: "/images/home/launch-pad-van-gogh.webp",
       sizes: "(max-width: 880px) 100vw, 45vw",
       position: "60% 50%",
       href: "/spacex-mission-control",
@@ -77,6 +78,7 @@ export function Catalog97Home({
     },
     {
       src: TRANSIT,
+      paint: "/images/home/transit-seurat.webp",
       href: "/bay-area-transit",
       label: "Bay Area transit dashboard",
       card: transit ? (
@@ -92,6 +94,7 @@ export function Catalog97Home({
     },
     {
       src: MATCHDAY,
+      paint: "/images/home/matchday-hopper.webp",
       sizes: "(max-width: 880px) 100vw, 25vw",
       href: "/premier-league",
       label: "Premier League dashboard",
@@ -133,6 +136,7 @@ export function Catalog97Home({
       <section
         className={`c97-band c97-sheet ${styles.hero}`}
         data-c97-surface="paper"
+        data-c97-monet
       >
         <div className="c97-shell">
           <div className={styles.heroGrid}>
@@ -148,115 +152,17 @@ export function Catalog97Home({
                   Start a conversation
                 </Link>
               </div>
-              <div data-impeccable-variants="407cd31d" data-impeccable-variant-count="3" style={{ display: "contents" }}>
-                {/* impeccable-variants-start 407cd31d */}
-                {/* Original */}
-                <div data-impeccable-variant="original">
-                  <p className={`c97-lead ${styles.lead}`}>
-                    I’m a product manager and builder at Berkeley Haas, MBA ’27, and
-                    I came to product through quality engineering at Civitech. The
-                    dashboards below read snapshots that a scheduled job pulls from
-                    public sources and commits to this site’s repository, so each
-                    one shows where its numbers came from and when.
-                  </p>
-                </div>
-                {/* Variants: insert below this line */}
-                <style data-impeccable-css="407cd31d">{`
-                  /* Preview-only grid moves: the lead has to leave the text column to span the hero. */
-                  [class*="Catalog97Home_heroGrid__"]:has([data-impeccable-variant="1"]:not([style*="none"])),
-                  [class*="Catalog97Home_heroGrid__"]:has([data-impeccable-variant="3"]:not([style*="none"])) {
-                    row-gap: var(--c97-sp-4);
-                  }
-                  [class*="Catalog97Home_heroGrid__"]:has([data-impeccable-variant="1"]:not([style*="none"])) > [class*="Catalog97Home_heroCopy__"],
-                  [class*="Catalog97Home_heroGrid__"]:has([data-impeccable-variant="3"]:not([style*="none"])) > [class*="Catalog97Home_heroCopy__"] {
-                    display: contents;
-                  }
-                  [class*="Catalog97Home_heroGrid__"]:has([data-impeccable-variant="1"]:not([style*="none"])) > [class*="Catalog97Home_portrait__"],
-                  [class*="Catalog97Home_heroGrid__"]:has([data-impeccable-variant="3"]:not([style*="none"])) > [class*="Catalog97Home_portrait__"] {
-                    grid-area: photo;
-                  }
-                  [class*="Catalog97Home_heroGrid__"]:has([data-impeccable-variant="1"]:not([style*="none"])) {
-                    grid-template-areas: "h1 photo" "actions photo" "lead lead";
-                  }
-                  [class*="Catalog97Home_heroGrid__"]:has([data-impeccable-variant="1"]:not([style*="none"])) [class*="Catalog97Home_headline__"] { align-self: end; }
-                  [class*="Catalog97Home_heroGrid__"]:has([data-impeccable-variant="1"]:not([style*="none"])) [class*="Catalog97Home_actions__"] { align-self: start; }
-                  [class*="Catalog97Home_heroGrid__"]:has([data-impeccable-variant="3"]:not([style*="none"])) {
-                    grid-template-areas: "h1 h1" "lead photo" "actions photo";
-                    align-items: start;
-                  }
-                  @media (max-width: 880px) {
-                    [class*="Catalog97Home_heroGrid__"]:has([data-impeccable-variant="1"]:not([style*="none"])),
-                    [class*="Catalog97Home_heroGrid__"]:has([data-impeccable-variant="3"]:not([style*="none"])) {
-                      grid-template-areas: "h1" "actions" "lead" "photo";
-                    }
-                  }
 
-                  @scope ([data-impeccable-variant="1"]) {
-                    :scope > .lead-span {
-                      max-width: none;
-                      columns: 2;
-                      column-gap: var(--c97-sp-5);
-                      column-rule: 1px solid var(--c97-rule);
-                      padding-top: var(--c97-sp-3);
-                      border-top: 1px solid var(--c97-rule);
-                    }
-                    :scope[data-p-cols="1"] > .lead-span { columns: 1; max-width: 68ch; }
-                    @media (max-width: 880px) {
-                      :scope > .lead-span { columns: 1; padding-top: 0; border-top: 0; }
-                    }
-                  }
+              <p className={`c97-lead ${styles.lead}`}>
+                I’m a product manager and builder at Berkeley Haas, MBA ’27, and
+                I came to product through quality engineering at Civitech. The
+                dashboards below read snapshots that a scheduled job pulls from
+                public sources and commits to this site’s repository, so each
+                one shows where its numbers came from and when.
+              </p>
 
-                  @scope ([data-impeccable-variant="2"]) {
-                    :scope > .lead-tight {
-                      font-size: calc(var(--p-size, 18) * 1px);
-                      line-height: 1.55;
-                      max-width: 50ch;
-                      color: var(--c97-ink-2);
-                    }
-                  }
-
-                  @scope ([data-impeccable-variant="3"]) {
-                    :scope > .lead-beside { max-width: 44ch; }
-                  }
-                `}</style>
-                <div
-                  data-impeccable-variant="1"
-                  data-impeccable-params='[{"id":"cols","kind":"steps","default":"2","label":"Columns","options":[{"value":"2","label":"Two"},{"value":"1","label":"One"}]}]'
-                >
-                  <p className={`c97-lead ${styles.lead} lead-span`}>
-                    I’m a product manager and builder at Berkeley Haas, MBA ’27, and
-                    I came to product through quality engineering at Civitech. The
-                    dashboards below read snapshots that a scheduled job pulls from
-                    public sources and commits to this site’s repository, so each
-                    one shows where its numbers came from and when.
-                  </p>
-                </div>
-                <div
-                  data-impeccable-variant="2"
-                  data-impeccable-params='[{"id":"size","kind":"range","min":16,"max":22,"step":1,"default":18,"label":"Type size"}]'
-                  style={{ display: "none" }}
-                >
-                  <p className={`c97-lead ${styles.lead} lead-tight`}>
-                    I’m a product manager and builder at Berkeley Haas, MBA ’27, and
-                    I came to product through quality engineering at Civitech. The
-                    dashboards below read snapshots that a scheduled job pulls from
-                    public sources and commits to this site’s repository, so each
-                    one shows where its numbers came from and when.
-                  </p>
-                </div>
-                <div data-impeccable-variant="3" style={{ display: "none" }}>
-                  <p className={`c97-lead ${styles.lead} lead-beside`}>
-                    I’m a product manager and builder at Berkeley Haas, MBA ’27, and
-                    I came to product through quality engineering at Civitech. The
-                    dashboards below read snapshots that a scheduled job pulls from
-                    public sources and commits to this site’s repository, so each
-                    one shows where its numbers came from and when.
-                  </p>
-                </div>
-                {/* impeccable-variants-end 407cd31d */}
-              </div>
             </div>
-            <div className={`c97-offset ${styles.portrait}`}>
+            <div className={`c97-offset ${styles.portrait}`} data-c97-paint="portrait">
               <Image
                 src={PORTRAIT}
                 alt="Isaac Vazquez"
@@ -320,7 +226,8 @@ export function Catalog97Home({
             {featuredProjects.map((project) => (
               <Link
                 key={project.slug}
-                href={`/portfolio/${project.slug}`}
+                // /portfolio/<slug> only redirects to the live tool now.
+                href={project.link ?? `/portfolio/${project.slug}`}
                 className={styles.workCard}
               >
                 <span className={`c97-offset ${styles.workPlate}`}>

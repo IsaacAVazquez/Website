@@ -1,6 +1,6 @@
 import { Metadata } from "next";
 import Link from "next/link";
-import { notFound, redirect } from "next/navigation";
+import { notFound, permanentRedirect } from "next/navigation";
 import { AIStructuredData } from "@/components/AIStructuredData";
 import { ArrowLeft, ArrowRight, ExternalLink, BrandGithub } from "@/components/ui/ServerIcons";
 import { caseStudiesData, getPortfolioProjects } from "@/constants/caseStudies";
@@ -74,8 +74,10 @@ export default async function CaseStudyPage({
     notFound();
   }
 
+  // A case study that became a live tool moved for good, and a temporary
+  // redirect is only a weak signal to Google that the tool is the real page.
   if (caseStudy.link) {
-    redirect(caseStudy.link);
+    permanentRedirect(caseStudy.link);
   }
 
   const allSlugs = getPortfolioProjects().map((study) => study.slug);

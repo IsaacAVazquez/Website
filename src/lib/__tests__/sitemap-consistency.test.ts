@@ -1,4 +1,6 @@
 import fs from "fs";
+import matter from "gray-matter";
+import { BLOG_TOPIC_PAGES } from "@/lib/blog-config";
 import { formula1Snapshot } from "@/data/formula1Snapshot";
 import { golfSnapshot } from "@/data/golfSnapshot";
 import { laLigaSnapshot } from "@/data/laLigaSnapshot";
@@ -59,6 +61,44 @@ describe("public sitemap", () => {
   ])("tracks the current snapshot timestamp for %s", (pathname, generatedAt) => {
     const entry = getPublicSitemapEntries().find(({ loc }) => loc === pathname);
     expect(entry?.lastmod).toBe(new Date(generatedAt as string).toISOString());
+  });
+
+  // Google only trusts lastmod when it tracks real changes, and a new post
+  // changes the writing index and the topic page it is filed under.
+  describe("writing freshness", () => {
+    const entries = getPublicSitemapEntries();
+    const lastmodOf = (loc: string) => entries.find((entry) => entry.loc === loc)?.lastmod ?? "";
+    const posts = entries
+      .filter(({ loc }) => /^\/writing\/(?!topics\/)[^/]+$/.test(loc))
+      .map(({ loc, lastmod }) => {
+        const slug = loc.replace("/writing/", "");
+        const file = ["mdx", "md"]
+          .map((extension) => `content/blog/${slug}.${extension}`)
+          .find((candidate) => fs.existsSync(candidate)) as string;
+        const { data } = matter(fs.readFileSync(file, "utf8"));
+        return { lastmod, topic: data.cluster || data.archiveBucket };
+      });
+    const newest = (candidates: typeof posts) =>
+      candidates.map(({ lastmod }) => lastmod).sort().at(-1) ?? "";
+
+    it("dates the writing index no earlier than its newest post", () => {
+      expect(posts.length).toBeGreaterThan(0);
+      expect(lastmodOf("/writing") >= newest(posts)).toBe(true);
+    });
+
+    it.each(BLOG_TOPIC_PAGES.map(({ slug, label }) => [slug, label]))(
+      "dates /writing/topics/%s no earlier than the newest post filed under it",
+      (slug, label) => {
+        const filed = posts.filter(({ topic }) => topic === label);
+        expect(filed.length).toBeGreaterThan(0);
+        expect(lastmodOf(`/writing/topics/${slug}`) >= newest(filed)).toBe(true);
+      }
+    );
+  });
+
+  it("keeps the score pools settings form out of the sitemap", () => {
+    const locs = getPublicSitemapEntries().map(({ loc }) => loc);
+    expect(locs).not.toContain("/score-pools/settings");
   });
 
   it("publishes the trade calculator as a weekly fantasy leaf", () => {

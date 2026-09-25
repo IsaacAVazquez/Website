@@ -1,0 +1,88 @@
+/*
+ * The T-0 rocket. A fixed, decorative overlay that rises from the foot of the
+ * viewport and leaves through the top, trailing a halftone exhaust in the riso
+ * inks. It takes no layout and no pointer events, and under reduced motion it
+ * never renders at all.
+ */
+
+.rocket {
+  position: fixed;
+  z-index: 60;
+  right: clamp(24px, 12vw, 180px);
+  top: 100%;
+  width: 28px;
+  pointer-events: none;
+  animation: liftoff 3.2s cubic-bezier(0.55, 0, 0.85, 0.4) forwards;
+}
+
+.body {
+  display: block;
+  width: 28px;
+  height: 64px;
+}
+
+.hull {
+  fill: var(--c97-ink);
+}
+
+.trim {
+  fill: var(--c97-riso-vermilion);
+}
+
+.port {
+  fill: var(--c97-riso-blue);
+}
+
+.flame {
+  fill: var(--c97-riso-saffron);
+  transform-box: fill-box;
+  transform-origin: 50% 0;
+  animation: flicker 90ms steps(2) infinite alternate;
+}
+
+/* The exhaust, a dot screen in saffron that fades out behind the rocket. */
+.exhaust {
+  display: block;
+  width: 28px;
+  height: 45vh;
+  margin-top: -2px;
+  background-image: radial-gradient(
+    circle,
+    var(--c97-riso-saffron) 34%,
+    transparent 38%
+  );
+  background-size: 6px 6px;
+  -webkit-mask-image: linear-gradient(to bottom, #000, transparent);
+  mask-image: linear-gradient(to bottom, #000, transparent);
+}
+
+@keyframes liftoff {
+  0% {
+    transform: translate(0, -64px);
+  }
+  6% {
+    transform: translate(-1px, -70px);
+  }
+  10% {
+    transform: translate(1px, -74px);
+  }
+  14% {
+    transform: translate(0, -80px);
+  }
+  100% {
+    transform: translate(0, calc(-100vh - 100% - 64px));
+  }
+}
+
+@keyframes flicker {
+  to {
+    transform: scaleY(1.35);
+  }
+}
+
+/* Under reduced motion, and on paper, where a fixed overlay repeats on every page. */
+@media print, (prefers-reduced-motion: reduce) {
+  .rocket {
+    display: none;
+  }
+}

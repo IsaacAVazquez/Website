@@ -41,11 +41,12 @@ describe("proxy security headers", () => {
     }
   });
 
-  it("keeps security headers on legacy writing redirects", () => {
+  // On Netlify the proxy answers before next.config redirects run, so a proxy
+  // redirect here would downgrade the config's permanent /blog rules to 307s.
+  it("leaves legacy /blog URLs to the permanent next.config redirects", () => {
     const response = proxy(new NextRequest("https://example.com/blog/example-post"));
 
-    expect(response.status).toBe(307);
-    expect(response.headers.get("location")).toBe("https://example.com/writing/example-post");
+    expect(response.headers.get("location")).toBeNull();
     expect(response.headers.get("Content-Security-Policy")).toContain("default-src 'self'");
     expect(response.headers.get("X-Frame-Options")).toBe("SAMEORIGIN");
   });
