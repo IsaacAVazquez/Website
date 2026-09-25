@@ -40,6 +40,16 @@ const DESCRIPTIONS = {
     "Shared retry-with-backoff helper for snapshot fetch scripts",
   "generateAutomationInventory.mjs":
     "Regenerates the tables in docs/AUTOMATION_SCRIPTS.md from scripts/, the npm entry points in package.json, and the workflow schedules",
+  "contrastSweep.mjs":
+    "Measures text contrast on live pages in light and dark and reports anything under 4.5:1, or 3:1 for large text",
+  "migrateHomeTokens.mjs":
+    "Rewrites Working Instrument var(--home-*) references onto their Catalog 97 token names, matching the bridge in catalog97.css",
+  "paint_headshot.py":
+    "Renders the home headshot as portrait-tuned Van Gogh, Seurat, and Hopper paintings for the painter hover",
+  "paint_impressionist.py":
+    "Renders the impressionist layer the Monet hover reveals over the home portrait",
+  "paint_plates.py":
+    "Renders painted versions of the home collage plates, one painter per plate, for the paint reveal",
   "patch-nft-sharp.mjs":
     "Removes sharp/@img entries from Next.js NFT traces to keep the Netlify function bundle under 250 MB",
   "snapshotFallback.ts":
