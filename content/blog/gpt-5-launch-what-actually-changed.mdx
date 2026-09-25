@@ -2,7 +2,7 @@
 title: "GPT-5 Is Here, and the Interesting Part Isn't the Benchmark, It's the Router"
 excerpt: "The coverage is grading GPT-5 on whether it's a big leap, and I think that misses the actual product change. GPT-5 hides the model picker behind a system that decides how hard to think for you, and that shift from choosing a model to shaping how a system chooses is the release note that matters."
 publishedAt: "2025-08-10"
-updatedAt: "2026-07-20"
+updatedAt: "2026-09-24"
 category: "AI"
 tags: ["AI", "GPT-5", "OpenAI", "Model Routing", "AI Products"]
 featured: false
@@ -16,7 +16,7 @@ seo:
 
 # GPT-5 Is Here, and the Interesting Part Isn't the Benchmark, It's the Router
 
-The GPT-5 launch this week got covered the way every frontier model launch gets covered, which is a scramble to decide whether it is a big leap or a disappointment based on benchmark scores and a few viral examples, and I think that framing quietly misses the change that will actually matter to how people build. The benchmark question is the one everyone knows how to argue about, so it is the one that gets argued about, but the more consequential thing in this release is structural. GPT-5 folds the old menu of models and the separate reasoning variants into a single system with a router that decides, per query, how much to think. You are no longer supposed to pick between a fast model and a slow careful one. The system makes that call for you, and I think that quiet shift from choosing a model to having a model choose its own effort is the real headline.
+The GPT-5 launch this week got covered the way every frontier model launch gets covered, which is a scramble to decide whether it is a big leap or a disappointment based on benchmark scores and a few viral examples, and I think that framing quietly misses the change that will actually matter to how people build. The benchmark question is the one everyone knows how to argue about, so it is the one that gets argued about, but the more consequential thing in this release is structural. GPT-5 folds the old menu of models and the separate reasoning variants into [a single system with a router](https://openai.com/index/introducing-gpt-5/) that decides, per query, how much to think. You are no longer supposed to pick between a fast model and a slow careful one. The system makes that call for you, and I think that quiet shift from choosing a model to having a model choose its own effort is the real headline.
 
 What I keep coming back to is that this is less a smarter model than a different kind of product, and the difference is easy to miss if you are only looking at the score.
 
@@ -30,7 +30,7 @@ For the average person using a chatbot, hiding the model picker is straightforwa
 
 ## For builders it trades a knob for a variable you have to learn to control
 
-The picture is more complicated if you are building on top of these models through the API, because predictability is a feature you may have been relying on, and automatic routing puts a decision you used to make inside a system you do not fully see. When the model decides how hard to think, it is also deciding your latency and your cost per call, and for a product that needs a predictable budget and a predictable response time, a variable you cannot directly set is a new thing to manage rather than a simplification. The vendors know this, which is why the release comes with controls over how much effort and how much verbosity you want, and the skill for builders is shifting toward shaping those controls rather than hand-picking a model. It is not that the decision went away, it is that it moved, and part of engineering on top of GPT-5 is learning to steer a router instead of flipping a switch.
+The picture is more complicated if you are building on top of these models through the API, because predictability is a feature you may have been relying on, and automatic routing puts a decision you used to make inside a system you do not fully see. When the model decides how hard to think, it is also deciding your latency and your cost per call, and for a product that needs a predictable budget and a predictable response time, a variable you cannot directly set is a new thing to manage rather than a simplification. The vendors know this, which is why the release comes with [controls over how much effort and how much verbosity you want](https://openai.com/index/introducing-gpt-5-for-developers/), and the skill for builders is shifting toward shaping those controls rather than hand-picking a model. It is not that the decision went away, it is that it moved, and part of engineering on top of GPT-5 is learning to steer a router instead of flipping a switch.
 
 ## Models are becoming systems that manage their own compute
 

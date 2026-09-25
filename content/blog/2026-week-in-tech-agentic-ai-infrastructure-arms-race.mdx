@@ -2,6 +2,7 @@
 title: "The Week AI Stopped Being a Product and Started Being an Org Chart Problem"
 excerpt: "What caught my attention this week. Self-improving AI systems moving from research to roadmap, OpenAI's enterprise land-grab, GPU scarcity as a real constraint, and what it means when 'agentic' stops being a marketing word."
 publishedAt: "2026-03-28"
+updatedAt: "2026-09-24"
 category: "Technology"
 tags: ["Technology", "AI", "Strategy", "Product Management", "Semiconductors"]
 featured: false
@@ -33,7 +34,7 @@ Broadcom's signals about AI chip demand straining TSMC capacity are worth taking
 
 What I find interesting about this is how quickly it changes the strategic calculus for enterprise buyers. When compute is scarce, long-term contracts and vertical integration become board-level conversations. We're already seeing hyperscalers pursue custom silicon to reduce dependence on NVIDIA. We're going to see more of that, and the question of who controls the energy and networking infrastructure adjacent to AI clusters is going to become as important as the GPU count itself.
 
-On a longer time horizon, there's some interesting deep-tech R&D emerging that could eventually change this picture. A startup called Lace raised $40M to develop helium atom-beam lithography aimed at chip features roughly ten times smaller than current processes allow. A pilot fab by 2029 is an optimistic but plausible goal. If that technology works and scales, it would meaningfully alter the economics of future AI accelerators. It's too early to build a strategy around it, but it's the kind of thing worth tracking.
+On a longer time horizon, there's some interesting deep-tech R&D emerging that could eventually change this picture. A startup called [Lace raised $40M](https://www.lacelithography.com/) to develop helium atom-beam lithography aimed at chip features roughly ten times smaller than current processes allow. A pilot fab by 2029 is an optimistic but plausible goal. If that technology works and scales, it would meaningfully alter the economics of future AI accelerators. It's too early to build a strategy around it, but it's the kind of thing worth tracking.
 
 ## OpenAI is making a classic enterprise SaaS move
 
@@ -45,13 +46,13 @@ I'd argue this is smart execution but also a signal that OpenAI knows the purely
 
 ## Apple's credibility test is coming
 
-Apple scheduled WWDC for June 8 through 12 and has telegraphed a heavier AI emphasis than any prior year. Given where Apple's AI perception currently sits relative to OpenAI and Google, this event is shaping up as a real test. Not of whether Apple can ship AI features (they've been shipping them) but of whether they can integrate on-device and cloud inference in a way that feels both genuinely private and competitive with the best-in-class assistant experiences.
+[Apple scheduled WWDC for June 8 through 12](https://www.apple.com/newsroom/2026/03/apples-worldwide-developers-conference-returns-the-week-of-june-8/) and has telegraphed a heavier AI emphasis than any prior year. Given where Apple's AI perception currently sits relative to OpenAI and Google, this event is shaping up as a real test. Not of whether Apple can ship AI features (they've been shipping them) but of whether they can integrate on-device and cloud inference in a way that feels both genuinely private and competitive with the best-in-class assistant experiences.
 
 The privacy-by-design angle is the one place Apple has a structural advantage the others don't. If they can make that feel like a real differentiator rather than a limitation dressed up as a feature, there's a positioning play there. But it requires actually being better at the things users care about day to day. We'll see in June.
 
 ## The security and governance tension is getting harder to ignore
 
-A few things from the security side of this week's coverage stood out to me. Research is surfacing attacks that exfiltrate secrets by analyzing tiny power-consumption variations on chips, what's being called power siphon style exploits. Separately, malicious npm packages targeting wallet credentials and developer machines showed up in threat briefings. And several organizations are dealing with the compound risk of ransomware targeting semiconductor fab and test operations, as with the Trio-Tech disclosure in Singapore.
+A few things from the security side of this week's coverage stood out to me. Research is surfacing attacks that exfiltrate secrets by analyzing tiny power-consumption variations on chips, what's being called power siphon style exploits. Separately, malicious npm packages targeting wallet credentials and developer machines showed up in threat briefings. And several organizations are dealing with the compound risk of ransomware targeting semiconductor fab and test operations, as with [the Trio-Tech disclosure in Singapore](https://www.sec.gov/Archives/edgar/data/732026/000143774926009193/trt20260320_8k.htm).
 
 The through-line is that as AI systems get more autonomous and more embedded in software development pipelines, the attack surface expands in ways that are hard to fully anticipate. The same capabilities that make agentic AI useful for writing and reviewing code make it useful for writing and reviewing exploits. Governance and safety debates that felt abstract a year ago are now directly tied to specific operational risks that security teams have to actually defend against.
 
