@@ -1,5 +1,4 @@
-import type { HTMLAttributes } from "react";
-import { render, screen, waitFor } from "@testing-library/react";
+import { render, screen, waitFor, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { SOURCE_META } from "@/lib/news-pulse-sources";
 import type { NewsArticle } from "@/lib/news-pulse-utils";
@@ -15,15 +14,6 @@ jest.mock("next/navigation", () => ({
     replace: jest.fn(),
   }),
   useSearchParams: () => currentSearchParams,
-}));
-
-jest.mock("framer-motion", () => ({
-  motion: {
-    div: ({ children, ...props }: HTMLAttributes<HTMLDivElement>) => (
-      <div {...props}>{children}</div>
-    ),
-  },
-  useReducedMotion: () => true,
 }));
 
 const mockFetch = jest.fn();
@@ -309,12 +299,13 @@ describe("NewsPulseClient", () => {
       expect(screen.getByText("Story clusters across outlets")).toBeVisible(),
     );
 
-    expect(screen.getByRole("columnheader", { name: "Story cluster" })).toBeVisible();
+    const clusterTable = screen.getByRole("table", { name: "Story clusters by outlet" });
+    expect(within(clusterTable).getByRole("columnheader", { name: "Story cluster" })).toBeVisible();
     expect(
-      screen.getByRole("columnheader", { name: "Representative headline" }),
+      within(clusterTable).getByRole("columnheader", { name: "Representative headline" }),
     ).toBeVisible();
     expect(
-      screen.getByRole("link", { name: clusteredArticles[0].title }),
+      within(clusterTable).getByRole("link", { name: clusteredArticles[0].title }),
     ).toBeVisible();
   });
 });

@@ -8,19 +8,15 @@ import {
   useState,
   type CSSProperties,
 } from "react";
-import { motion, useReducedMotion } from "framer-motion";
 import { ChevronDown, CircleAlert, ExternalLink } from "lucide-react";
 import { useRouter, useSearchParams } from "next/navigation";
+import { Catalog97ProjectHero } from "@/components/catalog97/Catalog97ProjectHero";
+import { PROJECT_PRESS } from "@/constants/projectPress";
 import {
-  EditorialPillButton,
-  InlineSectionLead,
-  StatusPanel,
-  getPillStyle,
-  insetPanelStyle,
-} from "@/components/editorial";
-import { HomeStatsPanel, type HomeStatsCell } from "@/components/home/HomeStatsPanel";
-import { ChartBar, Article, FileText } from "@/components/ui/ServerIcons";
-import { SOURCE_META } from "@/lib/news-pulse-sources";
+  NEWS_SOURCE_IDS,
+  SOURCE_META,
+  type NewsFeedId,
+} from "@/lib/news-pulse-sources";
 import type { NewsPulseFeedResponse } from "@/lib/newsPulseServer";
 import type { NewsArticle, TopicCluster } from "@/lib/news-pulse-utils";
 import {
@@ -30,8 +26,10 @@ import {
   extractTopics,
   getOrderedSourcesForArticles,
 } from "@/lib/news-pulse-utils";
+import { NewsFrontPage } from "./NewsFrontPage";
 import {
   buildNewsPulseHref,
+  NEWS_PULSE_ROUTE,
   normalizeNewsPulseState,
   SOURCE_LABELS,
   SOURCE_OPTIONS,
@@ -40,6 +38,7 @@ import {
   type NewsPulseSearchState,
   type NewsSource,
 } from "./news-pulse-state";
+import "./news-pulse.css";
 
 interface NewsPulseClientProps {
   initialFeed?: NewsPulseFeedResponse;
@@ -47,16 +46,6 @@ interface NewsPulseClientProps {
 }
 
 type FeedResponse = NewsPulseFeedResponse;
-
-const fadeIn = {
-  hidden: { opacity: 0, y: 12 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.35 } },
-};
-
-const noMotion = {
-  hidden: { opacity: 0, y: 12 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0 } },
-};
 
 const LAST_FETCHED_FORMATTER = new Intl.DateTimeFormat("en-US", {
   month: "short",
@@ -90,16 +79,16 @@ function formatFetchedAt(value: string): string {
 
 function getSourceBadgeStyle(sourceColor: string): CSSProperties {
   return {
-    color: "var(--home-ink)",
-    borderColor: "color-mix(in srgb, var(--home-stone) 58%, var(--home-rule))",
-    background: `color-mix(in srgb, ${sourceColor} 12%, var(--home-paper))`,
+    color: "var(--c97-ink)",
+    borderColor: `color-mix(in srgb, ${sourceColor} 58%, var(--c97-rule))`,
+    background: `color-mix(in srgb, ${sourceColor} 12%, var(--c97-surface))`,
   };
 }
 
 function getReadabilityTone(score: number): CSSProperties {
-  if (score >= 70) return { color: "var(--home-positive)" };
-  if (score >= 50) return { color: "var(--home-signal)" };
-  return { color: "var(--home-ink-muted)" };
+  if (score >= 70) return { color: "var(--c97-positive)" };
+  if (score >= 50) return { color: "var(--c97-accent)" };
+  return { color: "var(--c97-ink-2)" };
 }
 
 function buildFeedErrorMessage(status: number, payload: FeedResponse | null): string {
@@ -118,7 +107,7 @@ function buildFeedErrorMessage(status: number, payload: FeedResponse | null): st
  * Native <select>: a single-choice source picker, so the platform control
  * supplies Esc-to-close, click-outside dismiss, focus return, keyboard
  * type-ahead, and the OS picker on mobile. The wrapping <label> gives it the
- * accessible name ("Source") and keeps the shared pill treatment.
+ * accessible name ("Source").
  */
 function SourceDropdown({
   value,
@@ -129,20 +118,17 @@ function SourceDropdown({
 }) {
   return (
     <label
-      className="inline-flex min-h-[44px] cursor-pointer items-center gap-2 rounded-full border px-4 py-2 text-sm font-semibold transition-[background-color,border-color,color,box-shadow] duration-200 ease focus-within:outline focus-within:outline-2 focus-within:outline-offset-2 focus-within:outline-[var(--home-signal)]"
-      style={getPillStyle(false)}
+      className="inline-flex min-h-[44px] cursor-pointer items-center gap-2 border px-4 py-2 text-sm font-semibold focus-within:outline focus-within:outline-2 focus-within:outline-offset-2"
+      style={{ borderColor: "var(--c97-rule)", background: "var(--c97-field)", color: "var(--c97-ink)" }}
     >
-      <span
-        className="text-2xs font-semibold uppercase tracking-[0.12em]"
-        style={{ fontFamily: "var(--font-home-sans)" }}
-      >
+      <span className="c97-kicker" style={{ marginBottom: 0 }}>
         Source
       </span>
       <select
         value={value}
         onChange={(event) => onValueChange(event.target.value as NewsSource)}
         className="cursor-pointer appearance-none border-none bg-transparent text-sm font-semibold text-inherit outline-none"
-        style={{ fontFamily: "var(--font-home-sans)" }}
+        style={{ fontFamily: "var(--c97-font-body)" }}
       >
         {SOURCE_OPTIONS.map((source) => (
           <option key={source} value={source}>
@@ -161,8 +147,6 @@ export function NewsPulseClient({
 }: NewsPulseClientProps) {
   const router = useRouter();
   const searchParams = useSearchParams();
-  const shouldReduceMotion = useReducedMotion();
-  const variants = shouldReduceMotion ? noMotion : fadeIn;
 
   const hasManagedParams =
     searchParams.get("view") !== null || searchParams.get("source") !== null;
@@ -269,157 +253,76 @@ export function NewsPulseClient({
       ? "Feed unavailable"
       : `Updated ${formatFetchedAt(fetchedAt)}`;
 
-  const topClusterSize = useMemo(() => {
-    if (articles.length === 0) return 0;
-    const clusters = clusterArticlesByStory(articles);
-    let largest = 0;
-    for (const cluster of clusters) {
-      if (cluster.articles.length > largest) {
-        largest = cluster.articles.length;
-      }
-    }
-    return largest;
-  }, [articles]);
-
-  const newestHeadlineAge = useMemo(() => {
-    if (articles.length === 0) return "—";
-    let newest = 0;
-    for (const article of articles) {
-      const t = new Date(article.pubDate).getTime();
-      if (Number.isFinite(t) && t > newest) newest = t;
-    }
-    if (newest === 0) return "—";
-    return timeAgo(new Date(newest).toISOString());
-  }, [articles]);
-
-  const lastFetchedRelative = fetchedAt ? timeAgo(fetchedAt) : "—";
-
+  const storyClusters = useMemo(
+    () => (articles.length === 0 ? [] : clusterArticlesByStory(articles)),
+    [articles],
+  );
+  const topClusterSize = useMemo(
+    () => storyClusters.reduce((largest, cluster) => Math.max(largest, cluster.articles.length), 0),
+    [storyClusters],
+  );
   const topicClusters = useMemo(() => extractTopics(articles), [articles]);
+  const sourceIds = useMemo(() => getOrderedSourcesForArticles(articles), [articles]);
 
-  const newsCells: HomeStatsCell[] = [
-    {
-      label: "Headlines in pull",
-      value: <span className="tabular-nums">{loading ? "—" : articles.length}</span>,
-      sub: "From the most recent fetch",
-    },
-    {
-      label: "Outlets reporting",
-      value: <span className="tabular-nums">{loading ? "—" : articleSourceCount}</span>,
-      sub: "Sources with at least one headline",
-    },
-    {
-      label: "Outlets tracked",
-      value: <span className="tabular-nums">{trackedSourceCount}</span>,
-      sub: "Configured RSS feeds",
-    },
-    {
-      label: "Top cluster size",
-      value: <span className="tabular-nums">{loading ? "—" : topClusterSize}</span>,
-      sub: "Largest shared story",
-    },
-    {
-      label: "Newest headline",
-      value: loading ? "—" : newestHeadlineAge,
-      sub: "Time since most recent",
-    },
-    {
-      label: "Feed errors",
-      value: <span className="tabular-nums">{loading ? "—" : feedErrors.length}</span>,
-      sub: feedErrors.length === 0 ? "All feeds responded" : "Some feeds skipped",
-      tone: feedErrors.length === 0 && !loading ? "good" : "default",
-    },
-    {
-      label: "Trending topics",
-      value: <span className="tabular-nums">{loading ? "—" : topicClusters.length}</span>,
-      sub: "Keywords across 2+ outlets",
-    },
-    {
-      label: "Last fetched",
-      value: loading ? "Refreshing" : lastFetchedRelative,
-      sub: error ? "Feed unavailable" : "From server fetch",
-    },
-  ];
+  const lead = PROJECT_PRESS[NEWS_PULSE_ROUTE].lead;
+  const standfirst =
+    "I built News Pulse to get a fast read on what major outlets are choosing to emphasize right now. It pulls six RSS feeds into one editorial desk, then layers on lightweight topic, tone, readability, and story-cluster signals so I can compare framing before I read deeply.";
 
   return (
-    <section
-      className="home-page min-h-screen"
-      aria-label="News Pulse Dashboard"
-      data-testid="news-pulse-shell"
-    >
-      <div className="home-shell home-section space-y-4 sm:space-y-5">
-        <motion.div
-          className="space-y-3 pt-2"
-          variants={variants}
-          initial="hidden"
-          animate="visible"
-        >
-          <div className="space-y-3">
-            <h1
-              style={{
-                fontFamily: "var(--font-home-sans)",
-                fontSize: "clamp(2.55rem, 6vw, 4.8rem)",
-                fontWeight: 600,
-                lineHeight: 0.92,
-                letterSpacing: "-0.08em",
-                color: "var(--home-ink)",
-              }}
-            >
-              News Pulse
-            </h1>
-
-            <p className="home-body max-w-[42rem]">
-              I built News Pulse to get a fast read on what major outlets are choosing to
-              emphasize right now. It pulls six RSS feeds into one editorial desk, then layers on
-              lightweight topic, tone, readability, and story-cluster signals so I can compare
-              framing before I read deeply.
-            </p>
-
-            <div className="flex flex-wrap gap-2 pt-1">
-              <span className="resume-chip">{trackedSourceCount} outlets tracked</span>
-              <span className="resume-chip">{updatedLabel}</span>
-              <span className="resume-chip">Headline-level topics, tone, readability, clusters</span>
-              {!loading && !error ? (
-                <span className="resume-chip">{articles.length} headlines in this pull</span>
-              ) : null}
-            </div>
-          </div>
-        </motion.div>
-
-        <HomeStatsPanel
-          id="news-pulse-stats"
-          title="News pulse at a glance"
-          meta={updatedLabel}
-          cells={newsCells}
-          pills={[
-            { label: "Headlines", href: "/news-pulse", icon: Article },
-            { label: "Coverage", href: "/news-pulse?view=coverage", icon: ChartBar },
-            { label: "Analysis", href: "/news-pulse?view=analysis", icon: FileText },
-          ]}
+    <div data-testid="news-pulse-shell" aria-label="News Pulse Dashboard">
+      <Catalog97ProjectHero
+        ink={lead}
+        title="News Pulse"
+        standfirst={standfirst}
+        meta={updatedLabel}
+        readouts={[
+          {
+            label: "Headlines in pull",
+            value: loading ? "—" : `${articles.length}`,
+            detail: "From the most recent fetch",
+          },
+          {
+            label: "Outlets reporting",
+            value: loading ? "—" : `${articleSourceCount}`,
+            detail: `${trackedSourceCount} outlets tracked`,
+          },
+          {
+            label: "Largest story cluster",
+            value: loading ? "—" : `${topClusterSize}`,
+            detail: "Outlets on the same story",
+          },
+        ]}
+      >
+        <NewsFrontPage
+          clusters={storyClusters}
+          topics={topicClusters}
+          outlets={sourceIds}
+          dateline={
+            loading ? "Refreshing now" : fetchedAt ? formatFetchedAt(fetchedAt) : "Waiting on a refresh"
+          }
         />
+      </Catalog97ProjectHero>
 
-        <motion.div
-          className="pt-1"
-          variants={variants}
-          initial="hidden"
-          animate="visible"
-        >
-          <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
-            <div
-              className="flex flex-wrap gap-2 rounded-[var(--radius-3xl)] p-1.5"
-              role="tablist"
-              aria-label="News Pulse tabs"
-              style={{ width: "fit-content" }}
-            >
+      <section className="c97-band c97-sheet" data-c97-surface="paper" data-seam="torn">
+        <div className="c97-shell">
+          <h2 className="c97-poster-sm">The desk</h2>
+
+          <div className="mt-5 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+            <div className="c97-segmented" role="tablist" aria-label="News Pulse tabs">
               {VIEW_OPTIONS.map((view) => (
-                <EditorialPillButton
+                <button
                   key={view}
-                  active={routeState.view === view}
-                  onClick={() => updateRouteState({ view })}
+                  type="button"
                   role="tab"
-                  ariaSelected={routeState.view === view}
+                  id={`news-pulse-tab-${view}`}
+                  aria-controls={`news-pulse-tabpanel-${view}`}
+                  aria-selected={routeState.view === view}
+                  tabIndex={routeState.view === view ? 0 : -1}
+                  onClick={() => updateRouteState({ view })}
+                  className="min-h-[44px] text-sm font-semibold"
                 >
                   {VIEW_LABELS[view]}
-                </EditorialPillButton>
+                </button>
               ))}
             </div>
 
@@ -430,113 +333,113 @@ export function NewsPulseClient({
               />
             ) : null}
           </div>
-        </motion.div>
 
-        {feedErrors.length > 0 && !loading && !error ? (
-          <div
-            role="status"
-            aria-live="polite"
-            className="home-card flex items-start gap-3 rounded-[var(--radius-3xl)] px-5 py-4"
-            style={{
-              borderColor: "color-mix(in srgb, var(--home-signal) 30%, var(--home-rule))",
-              background: "color-mix(in srgb, var(--home-signal) 10%, var(--home-paper))",
-            }}
-          >
+          {feedErrors.length > 0 && !loading && !error ? (
             <div
-              className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-full"
-              style={{ background: "color-mix(in srgb, var(--home-paper) 88%, var(--home-elev-mix))" }}
+              role="status"
+              aria-live="polite"
+              className="mt-5 flex items-start gap-3 border px-5 py-4"
+              style={{
+                borderColor: "color-mix(in srgb, var(--c97-accent) 30%, var(--c97-rule))",
+                background: "color-mix(in srgb, var(--c97-accent) 10%, var(--c97-field))",
+              }}
             >
               <CircleAlert
-                className="h-4 w-4"
-                style={{ color: "var(--home-signal)" }}
+                className="mt-0.5 h-5 w-5 shrink-0"
+                style={{ color: "var(--c97-accent)" }}
                 aria-hidden="true"
               />
+              <div>
+                <p className="mb-1 text-sm font-semibold" style={{ color: "var(--c97-ink)" }}>
+                  Some feeds did not come through on this refresh.
+                </p>
+                <p className="mb-0 text-sm leading-7" style={{ color: "var(--c97-ink-2)" }}>
+                  {feedErrors.join("; ")}
+                </p>
+              </div>
             </div>
-            <div>
-              <p
-                className="mb-1 text-sm font-semibold"
-                style={{ fontFamily: "var(--font-home-sans)", color: "var(--home-ink)" }}
-              >
-                Some feeds did not come through on this refresh.
-              </p>
-              <p
-                className="mb-0 max-w-none text-sm leading-7"
-                style={{ fontFamily: "var(--font-home-sans)", color: "var(--home-ink-muted)" }}
-              >
-                {feedErrors.join("; ")}
-              </p>
-            </div>
-          </div>
-        ) : null}
+          ) : null}
 
-        {loading ? (
-          <LoadingState />
-        ) : error ? (
-          <ErrorState message={error} onRetry={() => setReloadKey((k) => k + 1)} />
-        ) : routeState.view === "headlines" ? (
-          <HeadlinesView articles={filteredArticles} variants={variants} />
-        ) : routeState.view === "coverage" ? (
-          <CoverageView articles={articles} topics={topicClusters} variants={variants} />
-        ) : (
-          <AnalysisView articles={articles} variants={variants} />
-        )}
-
-        {fetchedAt && !loading && !error ? (
-          <p
-            className="mb-0 pt-1 text-center text-xs"
-            style={{ fontFamily: "var(--font-home-sans)", color: "var(--home-ink-muted)" }}
+          <div
+            className="mt-6"
+            role="tabpanel"
+            id={`news-pulse-tabpanel-${routeState.view}`}
+            aria-labelledby={`news-pulse-tab-${routeState.view}`}
           >
-            Last fetched {formatFetchedAt(fetchedAt)} · {articles.length} headlines across{" "}
-            {articleSourceCount || trackedSourceCount} sources
-          </p>
-        ) : null}
-      </div>
-    </section>
+            {loading ? (
+              <LoadingState />
+            ) : error ? (
+              <ErrorState message={error} onRetry={() => setReloadKey((k) => k + 1)} />
+            ) : routeState.view === "headlines" ? (
+              <HeadlinesView articles={filteredArticles} />
+            ) : routeState.view === "coverage" ? (
+              <CoverageView articles={articles} topics={topicClusters} />
+            ) : (
+              <AnalysisView articles={articles} />
+            )}
+          </div>
+
+          {fetchedAt && !loading && !error ? (
+            <p className="c97-meta" style={{ marginTop: "var(--c97-sp-6)", justifyContent: "center" }}>
+              Last fetched {formatFetchedAt(fetchedAt)} · {articles.length} headlines across{" "}
+              {articleSourceCount || trackedSourceCount} sources
+            </p>
+          ) : null}
+        </div>
+      </section>
+    </div>
   );
 }
 
 function LoadingState() {
   return (
-    <StatusPanel
-      title="Refreshing live feeds"
-      message="I am pulling the latest RSS headlines now so the dashboard can rebuild the digest and comparison views."
-      icon={
-        <div
-          className="h-5 w-5 animate-spin rounded-full border-2 border-current border-t-transparent"
-          aria-hidden="true"
-        />
-      }
-      statusRole="status"
-    />
+    <div role="status" className="c97-panel" style={{ padding: "var(--c97-sp-5)" }}>
+      <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-2)" }}>
+        Refreshing live feeds
+      </p>
+      <p className="c97-prose mb-0">
+        I am pulling the latest RSS headlines now so the dashboard can rebuild the digest and
+        comparison views.
+      </p>
+    </div>
   );
 }
 
 function ErrorState({ message, onRetry }: { message: string; onRetry: () => void }) {
   return (
-    <StatusPanel
-      title="I could not load the feeds."
-      message={message}
-      tone="error"
-      icon={<CircleAlert className="h-5 w-5" aria-hidden="true" />}
-      statusRole="alert"
-      action={
-        <button type="button" onClick={onRetry} className="home-button home-button-secondary">
-          Try again
-        </button>
-      }
-    />
+    <div role="alert" className="c97-panel" style={{ padding: "var(--c97-sp-5)" }}>
+      <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-2)" }}>
+        I could not load the feeds.
+      </p>
+      <p className="c97-prose mb-0">{message}</p>
+      <button
+        type="button"
+        onClick={onRetry}
+        className="c97-btn-outline"
+        style={{ marginTop: "var(--c97-sp-3)" }}
+      >
+        Try again
+      </button>
+    </div>
   );
 }
 
 const HEADLINES_PAGE_SIZE = 24;
 
-function HeadlinesView({
-  articles,
-  variants,
-}: {
-  articles: NewsArticle[];
-  variants: typeof fadeIn;
-}) {
+function groupByOutlet(articles: NewsArticle[]): { source: NewsFeedId; items: NewsArticle[] }[] {
+  const bySource = new Map<NewsFeedId, NewsArticle[]>();
+  for (const article of articles) {
+    const list = bySource.get(article.source) ?? [];
+    list.push(article);
+    bySource.set(article.source, list);
+  }
+  return NEWS_SOURCE_IDS.filter((source) => bySource.has(source)).map((source) => ({
+    source,
+    items: bySource.get(source)!,
+  }));
+}
+
+function HeadlinesView({ articles }: { articles: NewsArticle[] }) {
   const [visibleCount, setVisibleCount] = useState(HEADLINES_PAGE_SIZE);
   // Reset when the underlying article set changes (source filter, refresh).
   useEffect(() => {
@@ -546,127 +449,106 @@ function HeadlinesView({
 
   if (articles.length === 0) {
     return (
-      <StatusPanel
-        title="No headlines match this filter."
-        message="That source did not return any articles in the current pull, so there is nothing to compare yet."
-      />
+      <div className="c97-panel" style={{ padding: "var(--c97-sp-5)" }}>
+        <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-2)" }}>
+          No headlines match this filter.
+        </p>
+        <p className="c97-prose mb-0">
+          That source did not return any articles in the current pull, so there is nothing to
+          compare yet.
+        </p>
+      </div>
     );
   }
 
   const visibleArticles = articles.slice(0, visibleCount);
   const hasMore = visibleCount < articles.length;
+  const columns = groupByOutlet(visibleArticles);
 
   return (
     <>
-    <motion.div
-      className="grid gap-5 md:grid-cols-2 xl:grid-cols-3"
-      data-testid="news-headlines-grid"
-      variants={variants}
-      initial="hidden"
-      animate="visible"
-    >
-      {visibleArticles.map((article) => (
-        <a
-          key={`${article.source}-${article.link}`}
-          href={article.link}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="home-card group flex h-full flex-col no-underline"
-          style={{ padding: "1.5rem" }}
-        >
-          <div className="flex items-start justify-between gap-3">
-            <span
-              className="inline-flex items-center gap-2 rounded-full border px-3 py-1.5 text-2xs font-semibold uppercase tracking-[0.12em]"
-              style={getSourceBadgeStyle(article.sourceColor)}
-            >
-              <span
-                className="h-2.5 w-2.5 rounded-full"
-                style={{ background: article.sourceColor }}
-                aria-hidden="true"
-              />
-              {article.sourceName}
-            </span>
-
-            <span
-              className="shrink-0 text-2xs font-semibold uppercase tracking-[0.12em]"
-              style={{ fontFamily: "var(--font-home-sans)", color: "var(--home-ink-muted)" }}
-            >
-              {timeAgo(article.pubDate)}
-            </span>
-          </div>
-
-          <div className="mt-5 flex-1 space-y-3">
-            <h2
-              className="text-lg leading-[1.15] transition-colors duration-200 ease group-hover:text-[var(--home-signal)]"
+      <div
+        data-testid="news-headlines-grid"
+        style={{
+          display: "grid",
+          gridTemplateColumns: "repeat(auto-fit, minmax(16rem, 1fr))",
+          gap: "var(--c97-sp-6)",
+        }}
+      >
+        {columns.map(({ source, items }) => (
+          <div key={source} style={{ minWidth: 0 }}>
+            <p
+              className="c97-kicker"
               style={{
-                fontFamily: "var(--font-home-sans)",
-                fontWeight: 700,
-                letterSpacing: "-0.03em",
-                color: "var(--home-ink)",
+                marginBottom: "var(--c97-sp-3)",
+                borderBottom: "1px solid var(--c97-rule)",
+                paddingBottom: "var(--c97-sp-2)",
               }}
             >
-              {article.title}
-            </h2>
-
-            {article.description ? (
-              <p
-                className="mb-0 line-clamp-3 text-sm leading-7"
-                style={{ fontFamily: "var(--font-home-sans)", color: "var(--home-ink-muted)" }}
-              >
-                {article.description}
-              </p>
-            ) : null}
-          </div>
-
-          <div
-            className="mt-5 flex items-center justify-between gap-3 pt-4"
-            style={{ borderTop: "1px solid var(--home-rule)" }}
-          >
-            {article.category && article.category !== "General" ? (
-              <span
-                className="inline-flex items-center rounded-full px-3 py-1 text-2xs font-semibold uppercase tracking-[0.12em]"
-                style={{
-                  fontFamily: "var(--font-home-sans)",
-                  color: "var(--home-ink)",
-                  background: "color-mix(in srgb, var(--home-paper-alt) 84%, var(--home-elev-mix))",
-                }}
-              >
-                {article.category}
-              </span>
-            ) : (
-              <span
-                className="text-2xs font-semibold uppercase tracking-[0.12em]"
-                style={{ fontFamily: "var(--font-home-sans)", color: "var(--home-ink-muted)" }}
-              >
-                Open feed item
-              </span>
-            )}
-
-            <span
-              className="inline-flex items-center gap-1.5 text-2xs font-semibold uppercase tracking-[0.12em]"
-              style={{ fontFamily: "var(--font-home-sans)", color: "var(--home-signal)" }}
+              {SOURCE_META[source].name}
+            </p>
+            <ul
+              style={{
+                display: "grid",
+                gridTemplateColumns: "1fr",
+                gap: "var(--c97-sp-4)",
+                margin: 0,
+                padding: 0,
+                listStyle: "none",
+              }}
             >
-              Read headline
-              <ExternalLink className="h-3.5 w-3.5" aria-hidden="true" />
-            </span>
+              {items.map((article) => (
+                <li key={article.link} style={{ minWidth: 0 }}>
+                  <a
+                    href={article.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    style={{ display: "block", textDecoration: "none" }}
+                  >
+                    <h2
+                      className="c97-serif"
+                      style={{ fontSize: "var(--c97-fs-h3)", overflowWrap: "anywhere" }}
+                    >
+                      {article.title}
+                    </h2>
+                    <p className="c97-meta" style={{ marginTop: "var(--c97-sp-1)" }}>
+                      {timeAgo(article.pubDate)}
+                      {article.category && article.category !== "General" ? ` · ${article.category}` : ""}
+                    </p>
+                    {article.description ? (
+                      <p
+                        className="c97-prose"
+                        style={{
+                          marginTop: "var(--c97-sp-2)",
+                          fontSize: "var(--c97-fs-small)",
+                          overflowWrap: "anywhere",
+                        }}
+                      >
+                        {article.description}
+                      </p>
+                    ) : null}
+                  </a>
+                </li>
+              ))}
+            </ul>
           </div>
-        </a>
-      ))}
-    </motion.div>
-    {hasMore ? (
-      <div className="mt-8 flex flex-col items-center gap-2">
-        <p className="text-xs text-[var(--home-ink-muted)]">
-          Showing {visibleCount} of {articles.length} headlines.
-        </p>
-        <button
-          type="button"
-          onClick={() => setVisibleCount((current) => current + HEADLINES_PAGE_SIZE)}
-          className="home-button home-button-secondary"
-        >
-          Show more
-        </button>
+        ))}
       </div>
-    ) : null}
+      {hasMore ? (
+        <div style={{ marginTop: "var(--c97-sp-6)", textAlign: "center" }}>
+          <p className="c97-meta" style={{ justifyContent: "center" }}>
+            Showing {visibleCount} of {articles.length} headlines.
+          </p>
+          <button
+            type="button"
+            onClick={() => setVisibleCount((current) => current + HEADLINES_PAGE_SIZE)}
+            className="c97-btn-outline"
+            style={{ marginTop: "var(--c97-sp-2)" }}
+          >
+            Show more
+          </button>
+        </div>
+      ) : null}
     </>
   );
 }
@@ -674,11 +556,9 @@ function HeadlinesView({
 function CoverageView({
   articles,
   topics,
-  variants,
 }: {
   articles: NewsArticle[];
   topics: TopicCluster[];
-  variants: typeof fadeIn;
 }) {
   const sourceIds = useMemo(() => getOrderedSourcesForArticles(articles), [articles]);
   const storyClusters = useMemo(() => clusterArticlesByStory(articles), [articles]);
@@ -686,28 +566,30 @@ function CoverageView({
 
   if (topics.length === 0 && storyClusters.length === 0) {
     return (
-      <StatusPanel
-        title="The cross-outlet overlap is thin right now."
-        message="I need at least two outlets on the same storyline before this view becomes useful."
-      />
+      <div className="c97-panel" style={{ padding: "var(--c97-sp-5)" }}>
+        <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-2)" }}>
+          The cross-outlet overlap is thin right now.
+        </p>
+        <p className="c97-prose mb-0">
+          I need at least two outlets on the same storyline before this view becomes useful.
+        </p>
+      </div>
     );
   }
 
   return (
-    <motion.div className="space-y-6" variants={variants} initial="hidden" animate="visible">
+    <div style={{ display: "grid", gap: "var(--c97-sp-6)" }}>
       {topics.length > 0 ? (
-        <div className="home-card p-5 sm:p-6">
-          <h2
-            className="text-xl font-semibold"
-            style={{ fontFamily: "var(--font-home-sans)", color: "var(--home-ink)" }}
-          >
-            Trending topics
-          </h2>
-          <InlineSectionLead kicker="What the newsrooms keep saying">
+        <div>
+          <h2 className="c97-poster-sm">Trending topics</h2>
+          <p className="c97-kicker" style={{ marginTop: "var(--c97-sp-3)" }}>
+            What the newsrooms keep saying
+          </p>
+          <p className="c97-prose" style={{ marginTop: "var(--c97-sp-1)" }}>
             The words showing up across multiple outlets right now, ranked by how many headlines
             mention them. The dots show which outlets are on each.
-          </InlineSectionLead>
-          <ol className="mt-6 grid gap-2.5">
+          </p>
+          <ol style={{ marginTop: "var(--c97-sp-4)", display: "grid", gap: "var(--c97-sp-2)", padding: 0, listStyle: "none" }}>
             {topics.map((topic, index) => {
               const pct =
                 maxTopicCount > 0
@@ -719,35 +601,30 @@ function CoverageView({
               return (
                 <li
                   key={topic.topic}
-                  className="grid items-center gap-3 rounded-[var(--radius-xl)] border border-[var(--home-rule)] bg-[var(--home-paper)] p-3 sm:grid-cols-[1.75rem_minmax(0,1fr)_auto]"
+                  className="grid items-center gap-3 border p-3 sm:grid-cols-[1.75rem_minmax(0,1fr)_auto]"
+                  style={{ borderColor: "var(--c97-rule)", background: "var(--c97-field)" }}
                 >
-                  <span className="font-mono text-sm font-semibold text-[var(--home-ink-muted)]">
+                  <span className="c97-mono text-sm font-semibold" style={{ color: "var(--c97-ink-2)" }}>
                     {String(index + 1).padStart(2, "0")}
                   </span>
                   <div className="min-w-0">
                     <div className="flex items-baseline justify-between gap-3">
-                      <span
-                        className="truncate text-sm font-semibold capitalize text-[var(--home-ink)]"
-                        style={{ fontFamily: "var(--font-home-sans)" }}
-                      >
+                      <span className="truncate text-sm font-semibold capitalize" style={{ color: "var(--c97-ink)" }}>
                         {topic.topic}
                       </span>
-                      <span className="shrink-0 font-mono text-xs text-[var(--home-ink-muted)]">
+                      <span className="c97-mono shrink-0 text-xs" style={{ color: "var(--c97-ink-2)" }}>
                         {topic.count} headlines
                       </span>
                     </div>
-                    <span className="mt-1.5 block h-1.5 overflow-hidden rounded-full bg-[var(--home-rule)]">
-                      <span
-                        className="block h-full rounded-full"
-                        style={{ width: `${pct}%`, background: "var(--home-signal)" }}
-                      />
+                    <span className="mt-1.5 block h-1.5 overflow-hidden" style={{ background: "var(--c97-rule)" }}>
+                      <span className="block h-full" style={{ width: `${pct}%`, background: "var(--c97-accent)" }} />
                     </span>
                   </div>
                   <div className="flex flex-wrap items-center gap-1.5 sm:justify-end">
                     {coveringSources.map((source) => (
                       <span
                         key={source}
-                        className="h-2.5 w-2.5 rounded-full"
+                        className="h-2.5 w-2.5"
                         style={{ background: SOURCE_META[source].color }}
                         title={`${SOURCE_META[source].name} · ${topic.sources[source]} headlines`}
                         aria-hidden="true"
@@ -762,167 +639,104 @@ function CoverageView({
       ) : null}
 
       {storyClusters.length > 0 ? (
-      <div className="home-card p-5 sm:p-6">
-        <h2
-          className="text-xl font-semibold"
-          style={{ fontFamily: "var(--font-home-sans)", color: "var(--home-ink)" }}
-        >
-          Story clusters across outlets
-        </h2>
-        <InlineSectionLead kicker="Coverage map">
-          This view groups similar headlines into storylines so I can compare overlap, not just
-          repeated vocabulary.
-        </InlineSectionLead>
+        <div>
+          <h2 className="c97-poster-sm">Story clusters across outlets</h2>
+          <p className="c97-kicker" style={{ marginTop: "var(--c97-sp-3)" }}>
+            Coverage map
+          </p>
+          <p className="c97-prose" style={{ marginTop: "var(--c97-sp-1)" }}>
+            This view groups similar headlines into storylines so I can compare overlap, not just
+            repeated vocabulary.
+          </p>
 
-        <div
-          className="scroll-shadow-x mt-6 overflow-x-auto rounded-[var(--radius-3xl)]"
-          role="region"
-          aria-label="Story clusters by outlet (scrollable)"
-          tabIndex={0}
-        >
-          <table
-            className="min-w-[920px] w-full text-left text-sm"
-            aria-label="Story clusters by outlet"
+          <div
+            className="mt-6 overflow-x-auto"
+            role="region"
+            aria-label="Story clusters by outlet (scrollable)"
+            tabIndex={0}
           >
-            <thead>
-              <tr style={{ borderBottom: "1px solid var(--home-rule)" }}>
-                <th
-                  className="px-4 py-3 text-xs font-semibold uppercase tracking-[0.14em]"
-                  style={{ fontFamily: "var(--font-home-sans)", color: "var(--home-ink-muted)" }}
-                >
-                  Story cluster
-                </th>
-                {sourceIds.map((source) => (
-                  <th key={source} className="px-3 py-3 text-center">
-                    <span
-                      className="inline-flex items-center gap-2 rounded-full border px-3 py-1.5 text-2xs font-semibold uppercase tracking-[0.12em]"
-                      style={getSourceBadgeStyle(SOURCE_META[source].color)}
-                    >
-                      <span
-                        className="h-2.5 w-2.5 rounded-full"
-                        style={{ background: SOURCE_META[source].color }}
-                        aria-hidden="true"
-                      />
-                      {SOURCE_META[source].name}
-                    </span>
-                  </th>
-                ))}
-                <th
-                  className="px-4 py-3 text-center text-xs font-semibold uppercase tracking-[0.14em]"
-                  style={{ fontFamily: "var(--font-home-sans)", color: "var(--home-ink-muted)" }}
-                >
-                  Total
-                </th>
-                <th
-                  className="px-4 py-3 text-xs font-semibold uppercase tracking-[0.14em]"
-                  style={{ fontFamily: "var(--font-home-sans)", color: "var(--home-ink-muted)" }}
-                >
-                  Representative headline
-                </th>
-              </tr>
-            </thead>
-            <tbody>
-              {storyClusters.map((cluster) => (
-                <tr key={cluster.id} style={{ borderBottom: "1px solid var(--home-rule)" }}>
-                  <td
-                    className="px-4 py-4"
-                    style={{
-                      fontFamily: "var(--font-home-sans)",
-                      fontWeight: 600,
-                      color: "var(--home-ink)",
-                    }}
-                  >
-                    {cluster.label}
-                  </td>
-                  {sourceIds.map((source) => {
-                    const count = cluster.sources[source] ?? 0;
-                    return (
-                      <td key={source} className="px-3 py-4 text-center">
-                        {count > 0 ? (
-                          <span
-                            className="inline-flex h-8 min-w-8 items-center justify-center rounded-full px-2 text-xs font-semibold"
-                            style={{
-                              fontFamily: "var(--font-home-sans)",
-                              color: "white",
-                              background: SOURCE_META[source].color,
-                              opacity: Math.min(0.42 + count * 0.14, 1),
-                            }}
-                          >
-                            {count}
-                          </span>
-                        ) : (
-                          <span
-                            style={{
-                              fontFamily: "var(--font-home-sans)",
-                              color: "var(--home-ink-muted)",
-                            }}
-                          >
-                            —
-                          </span>
-                        )}
-                      </td>
-                    );
-                  })}
-                  <td
-                    className="px-4 py-4 text-center"
-                    style={{
-                      fontFamily: "var(--font-home-sans)",
-                      fontWeight: 700,
-                      color: "var(--home-ink)",
-                    }}
-                  >
-                    {cluster.totalCount}
-                  </td>
-                  <td className="px-4 py-4">
-                    <a
-                      href={cluster.representative.link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="group inline-flex items-start gap-2 no-underline"
-                    >
-                      <span
-                        className="text-sm font-semibold transition-colors duration-200 ease group-hover:text-[var(--home-signal)]"
-                        style={{ fontFamily: "var(--font-home-sans)", color: "var(--home-ink)" }}
-                      >
-                        {cluster.representative.title}
+            <table className="c97-table" style={{ minWidth: "920px" }} aria-label="Story clusters by outlet">
+              <thead>
+                <tr>
+                  <th scope="col">Story cluster</th>
+                  {sourceIds.map((source) => (
+                    <th key={source} scope="col" style={{ textAlign: "center" }}>
+                      <span className="c97-chip" style={getSourceBadgeStyle(SOURCE_META[source].color)}>
+                        <span
+                          className="h-2.5 w-2.5"
+                          style={{ background: SOURCE_META[source].color }}
+                          aria-hidden="true"
+                        />
+                        {SOURCE_META[source].name}
                       </span>
-                      <ExternalLink
-                        className="mt-0.5 h-3.5 w-3.5 shrink-0"
-                        style={{ color: "var(--home-signal)" }}
-                        aria-hidden="true"
-                      />
-                    </a>
-                    <p
-                      className="mb-0 mt-1 text-2xs font-semibold uppercase tracking-[0.12em]"
-                      style={{
-                        fontFamily: "var(--font-home-sans)",
-                        color: "var(--home-ink-muted)",
-                      }}
-                    >
-                      {cluster.representative.sourceName}
-                      {cluster.representative.pubDate
-                        ? ` · ${timeAgo(cluster.representative.pubDate)}`
-                        : ""}
-                    </p>
-                  </td>
+                    </th>
+                  ))}
+                  <th scope="col" style={{ textAlign: "center" }}>
+                    Total
+                  </th>
+                  <th scope="col">Representative headline</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
+              </thead>
+              <tbody>
+                {storyClusters.map((cluster) => (
+                  <tr key={cluster.id}>
+                    <td style={{ fontWeight: 600, color: "var(--c97-ink)" }}>{cluster.label}</td>
+                    {sourceIds.map((source) => {
+                      const count = cluster.sources[source] ?? 0;
+                      return (
+                        <td key={source} style={{ textAlign: "center" }}>
+                          {count > 0 ? (
+                            <span
+                              className="c97-mono"
+                              style={{ color: "var(--c97-ink)", opacity: Math.min(0.42 + count * 0.14, 1) }}
+                            >
+                              {count}
+                            </span>
+                          ) : (
+                            <span style={{ color: "var(--c97-ink-2)" }}>—</span>
+                          )}
+                        </td>
+                      );
+                    })}
+                    <td className="c97-mono" style={{ textAlign: "center", fontWeight: 700, color: "var(--c97-ink)" }}>
+                      {cluster.totalCount}
+                    </td>
+                    <td>
+                      <a
+                        href={cluster.representative.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-start gap-2"
+                        style={{ textDecoration: "none" }}
+                      >
+                        <span className="text-sm font-semibold" style={{ color: "var(--c97-ink)" }}>
+                          {cluster.representative.title}
+                        </span>
+                        <ExternalLink
+                          className="mt-0.5 h-3.5 w-3.5 shrink-0"
+                          style={{ color: "var(--c97-accent)" }}
+                          aria-hidden="true"
+                        />
+                      </a>
+                      <p className="c97-meta" style={{ marginTop: "var(--c97-sp-1)" }}>
+                        {cluster.representative.sourceName}
+                        {cluster.representative.pubDate
+                          ? ` · ${timeAgo(cluster.representative.pubDate)}`
+                          : ""}
+                      </p>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
         </div>
-      </div>
       ) : null}
-    </motion.div>
+    </div>
   );
 }
 
-function AnalysisView({
-  articles,
-  variants,
-}: {
-  articles: NewsArticle[];
-  variants: typeof fadeIn;
-}) {
+function AnalysisView({ articles }: { articles: NewsArticle[] }) {
   const sourceIds = useMemo(() => getOrderedSourcesForArticles(articles), [articles]);
 
   const sentimentBySource = useMemo(() => {
@@ -990,30 +804,28 @@ function AnalysisView({
 
   if (sourceIds.length === 0) {
     return (
-      <StatusPanel
-        title="There is no analysis to compare yet."
-        message="The dashboard needs headline data before it can calculate tone, length, and readability by outlet."
-      />
+      <div className="c97-panel" style={{ padding: "var(--c97-sp-5)" }}>
+        <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-2)" }}>
+          There is no analysis to compare yet.
+        </p>
+        <p className="c97-prose mb-0">
+          The dashboard needs headline data before it can calculate tone, length, and readability
+          by outlet.
+        </p>
+      </div>
     );
   }
 
   return (
-    <motion.div
-      className="grid gap-6 lg:grid-cols-2"
-      variants={variants}
-      initial="hidden"
-      animate="visible"
-    >
-      <div className="home-card p-5 sm:p-6">
-        <h2
-          className="text-xl font-semibold"
-          style={{ fontFamily: "var(--font-home-sans)", color: "var(--home-ink)" }}
-        >
-          Tone distribution by outlet
-        </h2>
-        <InlineSectionLead kicker="Headline sentiment">
+    <div className="grid gap-6 lg:grid-cols-2">
+      <div className="c97-panel" style={{ padding: "var(--c97-sp-5)" }}>
+        <h2 className="c97-poster-sm">Tone distribution by outlet</h2>
+        <p className="c97-kicker" style={{ marginTop: "var(--c97-sp-3)" }}>
+          Headline sentiment
+        </p>
+        <p className="c97-prose" style={{ marginTop: "var(--c97-sp-1)" }}>
           I read this as directional framing pressure, not article-level sentiment.
-        </InlineSectionLead>
+        </p>
 
         <div className="mt-6 space-y-5">
           {sourceIds.map((source) => {
@@ -1027,70 +839,34 @@ function AnalysisView({
             return (
               <div key={source}>
                 <div className="mb-2 flex items-center justify-between gap-3">
-                  <span
-                    className="text-sm font-semibold"
-                    style={{ fontFamily: "var(--font-home-sans)", color: "var(--home-ink)" }}
-                  >
+                  <span className="text-sm font-semibold" style={{ color: "var(--c97-ink)" }}>
                     {SOURCE_META[source].name}
                   </span>
-                  <span
-                    className="text-2xs font-semibold uppercase tracking-[0.12em]"
-                    style={{
-                      fontFamily: "var(--font-home-sans)",
-                      color: "var(--home-ink-muted)",
-                    }}
-                  >
+                  <span className="c97-mono text-2xs" style={{ color: "var(--c97-ink-2)" }}>
                     {sourceData.total} headlines
                   </span>
                 </div>
 
-                <div
-                  className="flex h-5 w-full overflow-hidden rounded-full"
-                  style={{ background: "color-mix(in srgb, var(--home-paper-alt) 84%, var(--home-elev-mix))" }}
-                >
-                  <div
-                    className="transition-[width] duration-500 ease"
-                    style={{ width: `${positivePercent}%`, background: "var(--home-positive)" }}
-                    title={`Positive ${positivePercent}%`}
-                  />
-                  <div
-                    className="transition-[width] duration-500 ease"
-                    style={{ width: `${neutralPercent}%`, background: "var(--home-stone)" }}
-                    title={`Neutral ${neutralPercent}%`}
-                  />
-                  <div
-                    className="transition-[width] duration-500 ease"
-                    style={{ width: `${negativePercent}%`, background: "var(--home-signal)" }}
-                    title={`Negative ${negativePercent}%`}
-                  />
+                <div className="flex h-5 w-full overflow-hidden" style={{ background: "var(--c97-field)" }}>
+                  <div style={{ width: `${positivePercent}%`, background: "var(--c97-positive)" }} title={`Positive ${positivePercent}%`} />
+                  <div style={{ width: `${neutralPercent}%`, background: "var(--c97-rule)" }} title={`Neutral ${neutralPercent}%`} />
+                  <div style={{ width: `${negativePercent}%`, background: "var(--c97-negative)" }} title={`Negative ${negativePercent}%`} />
                 </div>
 
                 <div
                   className="mt-2 flex flex-wrap gap-x-4 gap-y-1 text-2xs font-semibold uppercase tracking-[0.12em]"
-                  style={{ fontFamily: "var(--font-home-sans)", color: "var(--home-ink-muted)" }}
+                  style={{ color: "var(--c97-ink-2)" }}
                 >
                   <span className="inline-flex items-center gap-1.5">
-                    <span
-                      className="h-2.5 w-2.5 rounded-full"
-                      style={{ background: "var(--home-positive)" }}
-                      aria-hidden="true"
-                    />
+                    <span className="h-2.5 w-2.5" style={{ background: "var(--c97-positive)" }} aria-hidden="true" />
                     {positivePercent}% positive
                   </span>
                   <span className="inline-flex items-center gap-1.5">
-                    <span
-                      className="h-2.5 w-2.5 rounded-full"
-                      style={{ background: "var(--home-stone)" }}
-                      aria-hidden="true"
-                    />
+                    <span className="h-2.5 w-2.5" style={{ background: "var(--c97-rule)" }} aria-hidden="true" />
                     {neutralPercent}% neutral
                   </span>
                   <span className="inline-flex items-center gap-1.5">
-                    <span
-                      className="h-2.5 w-2.5 rounded-full"
-                      style={{ background: "var(--home-signal)" }}
-                      aria-hidden="true"
-                    />
+                    <span className="h-2.5 w-2.5" style={{ background: "var(--c97-negative)" }} aria-hidden="true" />
                     {negativePercent}% negative
                   </span>
                 </div>
@@ -1100,16 +876,14 @@ function AnalysisView({
         </div>
       </div>
 
-      <div className="home-card p-5 sm:p-6">
-        <h2
-          className="text-xl font-semibold"
-          style={{ fontFamily: "var(--font-home-sans)", color: "var(--home-ink)" }}
-        >
-          Average words per headline
-        </h2>
-        <InlineSectionLead kicker="Headline length">
+      <div className="c97-panel" style={{ padding: "var(--c97-sp-5)" }}>
+        <h2 className="c97-poster-sm">Average words per headline</h2>
+        <p className="c97-kicker" style={{ marginTop: "var(--c97-sp-3)" }}>
+          Headline length
+        </p>
+        <p className="c97-prose" style={{ marginTop: "var(--c97-sp-1)" }}>
           Longer headlines usually signal more context, but sometimes they just mean more hedging.
-        </InlineSectionLead>
+        </p>
 
         <div className="mt-6 space-y-5">
           {sourceIds.map((source) => {
@@ -1122,31 +896,16 @@ function AnalysisView({
             return (
               <div key={source}>
                 <div className="mb-2 flex items-center justify-between gap-3">
-                  <span
-                    className="text-sm font-semibold"
-                    style={{ fontFamily: "var(--font-home-sans)", color: "var(--home-ink)" }}
-                  >
+                  <span className="text-sm font-semibold" style={{ color: "var(--c97-ink)" }}>
                     {SOURCE_META[source].name}
                   </span>
-                  <span
-                    className="text-sm font-semibold"
-                    style={{ fontFamily: "var(--font-home-sans)", color: "var(--home-ink-muted)" }}
-                  >
+                  <span className="c97-mono text-sm" style={{ color: "var(--c97-ink-2)" }}>
                     {averageLength.toFixed(1)} words
                   </span>
                 </div>
 
-                <div
-                  className="h-4 w-full overflow-hidden rounded-full"
-                  style={{ background: "color-mix(in srgb, var(--home-paper-alt) 84%, var(--home-elev-mix))" }}
-                >
-                  <div
-                    className="h-full rounded-full transition-[width] duration-500 ease"
-                    style={{
-                      width: `${widthPercent}%`,
-                      background: SOURCE_META[source].color,
-                    }}
-                  />
+                <div className="h-4 w-full overflow-hidden" style={{ background: "var(--c97-field)" }}>
+                  <div className="h-full" style={{ width: `${widthPercent}%`, background: SOURCE_META[source].color }} />
                 </div>
               </div>
             );
@@ -1154,17 +913,15 @@ function AnalysisView({
         </div>
       </div>
 
-      <div className="home-card p-5 sm:p-6 lg:col-span-2">
-        <h2
-          className="text-xl font-semibold"
-          style={{ fontFamily: "var(--font-home-sans)", color: "var(--home-ink)" }}
-        >
-          How dense the headline writing feels
-        </h2>
-        <InlineSectionLead kicker="Readability">
+      <div className="c97-panel lg:col-span-2" style={{ padding: "var(--c97-sp-5)" }}>
+        <h2 className="c97-poster-sm">How dense the headline writing feels</h2>
+        <p className="c97-kicker" style={{ marginTop: "var(--c97-sp-3)" }}>
+          Readability
+        </p>
+        <p className="c97-prose" style={{ marginTop: "var(--c97-sp-1)" }}>
           Higher scores are easier to scan quickly. Lower scores usually mean denser wording or
           more clauses packed into the headline.
-        </InlineSectionLead>
+        </p>
 
         <div className="mt-6 grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
           {sourceIds.map((source) => {
@@ -1178,34 +935,24 @@ function AnalysisView({
             return (
               <div
                 key={source}
-                className="rounded-[var(--radius-3xl)] px-4 py-4"
-                style={insetPanelStyle}
+                className="border px-4 py-4"
+                style={{ borderColor: "var(--c97-rule)", background: "var(--c97-field)" }}
               >
                 <div className="flex items-center gap-4">
                   <div
-                    className="flex h-12 w-12 items-center justify-center rounded-full text-base font-semibold"
-                    style={{
-                      fontFamily: "var(--font-home-sans)",
-                      color: "white",
-                      background: SOURCE_META[source].color,
-                    }}
+                    className="c97-mono flex h-12 w-12 items-center justify-center text-base font-semibold"
+                    style={{ color: "var(--c97-surface)", background: SOURCE_META[source].color }}
                   >
                     {averageScore}
                   </div>
 
                   <div>
-                    <p
-                      className="mb-1 text-sm font-semibold"
-                      style={{ fontFamily: "var(--font-home-sans)", color: "var(--home-ink)" }}
-                    >
+                    <p className="mb-1 text-sm font-semibold" style={{ color: "var(--c97-ink)" }}>
                       {SOURCE_META[source].name}
                     </p>
                     <p
                       className="mb-0 text-2xs font-semibold uppercase tracking-[0.12em]"
-                      style={{
-                        ...getReadabilityTone(averageScore),
-                        fontFamily: "var(--font-home-sans)",
-                      }}
+                      style={getReadabilityTone(averageScore)}
                     >
                       {readabilityLabel}
                     </p>
@@ -1216,6 +963,6 @@ function AnalysisView({
           })}
         </div>
       </div>
-    </motion.div>
+    </div>
   );
 }

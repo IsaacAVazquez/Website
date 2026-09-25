@@ -1,0 +1,45 @@
+/* News Pulse: the front-page signature (lead story list and coverage matrix). */
+
+.c97-news-lead-outlets {
+  display: grid;
+  gap: var(--c97-sp-2);
+  margin: var(--c97-sp-3) 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.c97-news-lead-outlets li {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--c97-sp-2);
+}
+
+.c97-news-lead-outlets a {
+  color: var(--c97-ink);
+  text-decoration-color: var(--c97-rule);
+}
+
+.c97-news-coverage-matrix caption {
+  caption-side: top;
+}
+
+.c97-news-coverage-cell {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 28px;
+  min-height: 28px;
+}
+
+.c97-news-coverage-fill {
+  position: absolute;
+  inset: 0;
+  background: var(--c97-ink);
+}
+
+.c97-news-coverage-count {
+  position: relative;
+  font-size: var(--c97-fs-small);
+}
