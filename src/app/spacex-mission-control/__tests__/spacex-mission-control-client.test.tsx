@@ -326,7 +326,7 @@ describe("SpaceXMissionControlClient", () => {
     expect(container.textContent).toContain("USSF-44");
     expect(container.textContent).toContain("Falcon Heavy");
     expect(container.querySelector("h1")?.textContent).toContain(
-      "A launch board built like an operations room, not a brochure."
+      "SpaceX Mission Control"
     );
     expect(container.textContent).toContain("Refresh data");
     expect(container.querySelector('[data-testid="mission-hero"]')).not.toBeNull();

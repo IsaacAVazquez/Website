@@ -3,7 +3,7 @@
 import { startTransition, useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import { useRouter, useSearchParams } from "next/navigation";
-import { AlertTriangle, DatabaseZap, Link2, RefreshCcw } from "lucide-react";
+import { AlertTriangle, DatabaseZap, RefreshCcw } from "lucide-react";
 import type {
   MissionControlInitialData,
   MissionControlSearchState,
@@ -12,6 +12,8 @@ import type {
   MissionLaunchDetail,
   MissionControlStatus,
 } from "@/types/spacex";
+import { Catalog97ProjectHero } from "@/components/catalog97/Catalog97ProjectHero";
+import { PROJECT_PRESS } from "@/constants/projectPress";
 import { MissionControlHero } from "@/components/spacex/MissionControlHero";
 import { MissionLaunchBoard } from "@/components/spacex/MissionLaunchBoard";
 import { MissionLaunchTape } from "@/components/spacex/MissionLaunchTape";
@@ -23,6 +25,7 @@ import { MissionDrawer } from "@/components/spacex/MissionDrawer";
 import {
   buildMissionControlHref,
   DEFAULT_MISSION_CONTROL_STATE,
+  MISSION_CONTROL_ROUTE,
   normalizeMissionControlState,
 } from "./spacex-mission-control-state";
 
@@ -512,108 +515,88 @@ export function SpaceXMissionControlClient({
     updateRouteState({ launch: null, panel: DEFAULT_MISSION_CONTROL_STATE.panel });
   }
 
+  const lead = PROJECT_PRESS[MISSION_CONTROL_ROUTE].lead;
+  const standfirst =
+    "I built this launch board like an operations room, with the next mission, the launch queue, and a detail panel for rockets, crew, payloads, capsules, and pads. Everything stays connected so I don't lose the thread when I drill in.";
+
   return (
-    <section
-      aria-label="SpaceX Mission Control"
-      className="home-page min-h-screen"
-    >
-      <div className="home-shell home-shell-wide home-section">
-        <motion.div
-          className="mb-5 overflow-hidden rounded-[var(--radius-3xl)] border border-[color-mix(in_srgb,var(--home-signal)_14%,var(--home-rule))] bg-[color-mix(in_srgb,var(--home-signal)_6%,var(--home-paper-raised))] p-5 shadow-[var(--shadow-md)] sm:p-6"
-          {...motionProps}
-        >
-          <div className="min-w-0">
-            <div className="flex flex-wrap items-center gap-3">
-              <span className="rounded-full border border-[color-mix(in_srgb,var(--home-signal)_24%,var(--home-rule))] bg-[color-mix(in_srgb,var(--home-paper)_72%,transparent)] px-3 py-1 font-mono text-2xs font-semibold uppercase tracking-[0.22em] text-[var(--home-signal)]">
-                SpaceX Mission Control
-              </span>
-              <span className="rounded-full border border-[var(--home-rule)] bg-[var(--home-paper-raised)] px-3 py-1 text-xs font-medium text-[var(--home-ink-muted)]">
-                Local API backed
-              </span>
-            </div>
-
-            <h1 className="mt-4 text-3xl font-bold tracking-[-0.05em] text-[var(--home-ink)] sm:text-[2.9rem]">
-              A launch board built like an operations room, not a brochure.
-            </h1>
-
-            <p className="mt-3 max-w-[64ch] text-sm leading-7 text-[var(--home-ink-muted)] sm:text-sm">
-              Next mission, launch queue, and a detail panel for rockets, crew, payloads,
-              capsules, and pads. Everything stays connected so you don&apos;t lose the thread when you drill in.
-            </p>
-
-            <div className="mt-4 flex flex-wrap items-center gap-3">
-              <button
-                type="button"
-                onClick={handleRetryAll}
-                className="tap-target inline-flex items-center gap-2 rounded-[var(--radius-2xl)] border border-[var(--home-rule)] bg-[var(--home-paper-raised)] px-4 py-3 text-sm font-semibold text-[var(--home-ink)] transition hover:border-[var(--home-signal)] hover:text-[var(--home-signal)]"
-              >
-                <RefreshCcw className="h-4 w-4" />
-                Refresh data
-              </button>
-              <div className="inline-flex min-h-[44px] items-center gap-2 rounded-[var(--radius-2xl)] border border-[var(--home-rule)] bg-[var(--home-paper)] px-4 py-3 text-sm text-[var(--home-ink-muted)]">
-                <DatabaseZap className="h-4 w-4 text-[var(--home-signal)]" />
-                {liveStatusLabel}
-              </div>
-              <div className="inline-flex min-h-[44px] items-center gap-2 rounded-[var(--radius-2xl)] border border-[var(--home-rule)] bg-[var(--home-paper)] px-4 py-3 text-sm text-[var(--home-ink-muted)]">
-                <Link2 className="h-4 w-4 text-[var(--home-signal)]" />
-                Query-linked mission detail
-              </div>
-            </div>
-
-            {hasPartialDataIssue ? (
-              <div
-                role="status"
-                className="mt-4 flex items-start gap-3 rounded-[var(--radius-3xl)] border border-[color-mix(in_srgb,var(--home-signal)_28%,var(--home-rule))] bg-[color-mix(in_srgb,var(--home-signal)_10%,var(--home-paper))] px-4 py-3 text-sm leading-6 text-[var(--home-ink-muted)]"
-              >
-                <AlertTriangle
-                  aria-hidden="true"
-                  className="mt-0.5 h-5 w-5 shrink-0 text-[color-mix(in_srgb,var(--home-signal)_55%,var(--home-ink))]"
-                />
-                <p>
-                  One or more requests degraded, but the workspace is still usable.
-                  Countdown timers are intentionally suppressed when the provider&apos;s
-                  scheduled timestamp is already in the past or not precise enough to trust
-                  as an exact launch time.
-                </p>
-              </div>
-            ) : null}
-          </div>
-        </motion.div>
-
-        <motion.div className="mb-5" {...motionProps}>
-          <MissionLaunchTape
-            recentLaunches={tapeRecentLaunches}
-            upcomingLaunches={tapeUpcomingLaunches}
+    <>
+      <Catalog97ProjectHero
+        ink={lead}
+        title="SpaceX Mission Control"
+        standfirst={standfirst}
+        meta={`Launch Library 2 data from The Space Devs · ${liveStatusLabel}`}
+      >
+        {/* The card paints the field tint, which is pale on the blue sheet, so it prints on its own paper plate. */}
+        <motion.div data-c97-surface="paper" className="c97-offset" {...motionProps}>
+          <MissionControlHero
+            summary={summary}
+            isLoading={summaryLoading}
+            error={summaryError}
+            initialRenderTimestampMs={renderedAtMs}
+            onInspect={handleHeroInspect}
+            onRetry={() => {
+              setSummaryLoading(true);
+              setSummaryError(null);
+              setSummaryFetchKey((value) => value + 1);
+            }}
           />
         </motion.div>
+      </Catalog97ProjectHero>
 
-        <div className="space-y-5">
-          <motion.div {...motionProps}>
-            <MissionControlHero
-              summary={summary}
-              isLoading={summaryLoading}
-              error={summaryError}
-              initialRenderTimestampMs={renderedAtMs}
-              onInspect={handleHeroInspect}
-              onRetry={() => {
-                setSummaryLoading(true);
-                setSummaryError(null);
-                setSummaryFetchKey((value) => value + 1);
-              }}
+      <section className="c97-band c97-sheet" data-c97-surface="paper" data-seam="torn">
+        <div className="c97-shell">
+          <motion.div className="flex flex-wrap items-center gap-3" {...motionProps}>
+            <button
+              type="button"
+              onClick={handleRetryAll}
+              className="tap-target inline-flex items-center gap-2 border border-[var(--c97-rule)] bg-[var(--c97-field)] px-4 py-3 text-sm font-semibold text-[var(--c97-ink)] transition hover:border-[var(--c97-accent)] hover:text-[var(--c97-accent)]"
+            >
+              <RefreshCcw className="h-4 w-4" />
+              Refresh data
+            </button>
+            <div className="inline-flex min-h-[44px] items-center gap-2 border border-[var(--c97-rule)] bg-[var(--c97-surface)] px-4 py-3 text-sm text-[var(--c97-ink-2)]">
+              <DatabaseZap className="h-4 w-4 text-[var(--c97-accent)]" />
+              {liveStatusLabel}
+            </div>
+          </motion.div>
+
+          {hasPartialDataIssue ? (
+            <div
+              role="status"
+              className="mt-4 flex items-start gap-3 border border-[color-mix(in_srgb,var(--c97-accent)_28%,var(--c97-rule))] bg-[color-mix(in_srgb,var(--c97-accent)_10%,var(--c97-surface))] px-4 py-3 text-sm leading-6 text-[var(--c97-ink-2)]"
+            >
+              <AlertTriangle
+                aria-hidden="true"
+                className="mt-0.5 h-5 w-5 shrink-0 text-[color-mix(in_srgb,var(--c97-accent)_55%,var(--c97-ink))]"
+              />
+              <p>
+                One or more requests degraded, but the workspace is still usable.
+                Countdown timers are intentionally suppressed when the provider&apos;s
+                scheduled timestamp is already in the past or not precise enough to trust
+                as an exact launch time.
+              </p>
+            </div>
+          ) : null}
+
+          <motion.div className="mt-5" {...motionProps}>
+            <MissionLaunchTape
+              recentLaunches={tapeRecentLaunches}
+              upcomingLaunches={tapeUpcomingLaunches}
             />
           </motion.div>
 
-          <motion.div className="space-y-4" {...motionProps}>
+          <motion.div className="mt-5 space-y-4" {...motionProps}>
             <MissionStatFascia cells={statFasciaCells} />
             <MissionCadenceStrip cadence={cadence} />
           </motion.div>
+        </div>
+      </section>
 
+      <section className="c97-band c97-sheet" data-c97-surface="bone" data-seam="deckle">
+        <div className="c97-shell">
           <motion.div {...motionProps}>
-            <div
-              role="tablist"
-              aria-label="Mission control sections"
-              className="inline-flex flex-wrap gap-2 rounded-[var(--radius-3xl)] border border-[var(--home-rule)] bg-[var(--home-paper)] p-2"
-            >
+            <div role="tablist" aria-label="Mission control sections" className="c97-segmented">
               {SECTION_OPTIONS.map((option) => (
                 <button
                   key={option.key}
@@ -621,11 +604,7 @@ export function SpaceXMissionControlClient({
                   role="tab"
                   aria-selected={section === option.key}
                   onClick={() => setSection(option.key)}
-                  className={`tap-target rounded-[var(--radius-2xl)] px-4 py-3 text-sm font-semibold transition ${
-                    section === option.key
-                      ? "bg-[var(--home-signal)] text-white"
-                      : "text-[var(--home-ink-muted)] hover:bg-[var(--home-paper-alt)] hover:text-[var(--home-ink)]"
-                  }`}
+                  className="min-h-[44px] text-sm font-semibold"
                 >
                   {option.label}
                 </button>
@@ -633,7 +612,7 @@ export function SpaceXMissionControlClient({
             </div>
           </motion.div>
 
-          <motion.div {...motionProps}>
+          <motion.div className="mt-5" {...motionProps}>
             {section === "manifest" ? (
               <MissionLaunchBoard
                 launches={launches}
@@ -662,17 +641,19 @@ export function SpaceXMissionControlClient({
             )}
           </motion.div>
         </div>
+      </section>
 
-        {/* Data source */}
-        <section className="mt-5 rounded-[var(--radius-3xl)] border border-[var(--home-rule)] bg-[var(--home-paper-alt)] p-5 text-sm text-[var(--home-ink-muted)] shadow-[var(--shadow-sm)]">
-          <p className="mb-0 max-w-none leading-relaxed">
+      <section className="c97-band c97-sheet" data-c97-surface="paper">
+        <div className="c97-shell">
+          <p className="c97-kicker mb-2">Data source</p>
+          <p className="c97-prose mb-0">
             This dashboard runs on a checked-in snapshot of Launch Library 2
             data from The Space Devs, served through this site&apos;s own API
             routes rather than live upstream calls. It is an independent
             project and is not affiliated with SpaceX.
           </p>
-        </section>
-      </div>
+        </div>
+      </section>
 
       <MissionDrawer
         launchId={routeState.launch}
@@ -683,6 +664,6 @@ export function SpaceXMissionControlClient({
         onPanelChange={(panel) => updateRouteState({ panel })}
         onClose={handleCloseDrawer}
       />
-    </section>
+    </>
   );
 }

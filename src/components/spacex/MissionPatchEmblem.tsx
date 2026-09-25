@@ -4,7 +4,7 @@ import { derivePatchSpec } from "./missionEmblem";
 interface MissionPatchEmblemProps {
   /** Stable per-mission seed (launch id works well) — same seed, same emblem. */
   seed: string;
-  /** CSS color value for the outcome accent, e.g. "var(--home-signal)". */
+  /** CSS color value for the outcome accent, e.g. "var(--c97-accent)". */
   accent: string;
   className?: string;
   title?: string;
@@ -46,21 +46,21 @@ export function MissionPatchEmblem({ seed, accent, className = "", title }: Miss
   if (glyph === "tri") {
     center = (
       <g>
-        <path d="M50 33 L43 55 L57 55 Z" fill="var(--home-ink)" />
+        <path d="M50 33 L43 55 L57 55 Z" fill="var(--c97-ink)" />
         <path d="M46.5 55 L50 63 L53.5 55 Z" fill={accent} />
       </g>
     );
   } else if (glyph === "capsule") {
     center = (
       <g>
-        <path d="M43 55 L44.6 45 A6.2 6.2 0 0 1 55.4 45 L57 55 Z" fill="var(--home-ink)" />
+        <path d="M43 55 L44.6 45 A6.2 6.2 0 0 1 55.4 45 L57 55 Z" fill="var(--c97-ink)" />
         <circle cx="50" cy="47.5" r="2.1" fill={accent} />
       </g>
     );
   } else if (glyph === "ring") {
     center = (
       <g>
-        <circle cx="50" cy="50" r="8.5" fill="none" stroke="var(--home-ink)" strokeWidth="2" />
+        <circle cx="50" cy="50" r="8.5" fill="none" stroke="var(--c97-ink)" strokeWidth="2" />
         <circle cx="50" cy="50" r="2.6" fill={accent} />
       </g>
     );
@@ -76,7 +76,7 @@ export function MissionPatchEmblem({ seed, accent, className = "", title }: Miss
         <polyline
           points="39,47 47,43 55,46 51,54"
           fill="none"
-          stroke="var(--home-ink)"
+          stroke="var(--c97-ink)"
           strokeWidth="0.9"
           opacity="0.55"
         />
@@ -86,7 +86,7 @@ export function MissionPatchEmblem({ seed, accent, className = "", title }: Miss
             cx={point[0]}
             cy={point[1]}
             r="2.1"
-            fill={index % 2 ? "var(--home-ink)" : accent}
+            fill={index % 2 ? "var(--c97-ink)" : accent}
           />
         ))}
       </g>
@@ -103,8 +103,8 @@ export function MissionPatchEmblem({ seed, accent, className = "", title }: Miss
       aria-label={title}
       className={className}
     >
-      <circle cx="50" cy="50" r="46" fill="none" stroke="var(--home-ink)" strokeWidth="1.5" />
-      <circle cx="50" cy="50" r="37" fill="none" stroke="var(--home-rule)" strokeWidth="1" />
+      <circle cx="50" cy="50" r="46" fill="none" stroke="var(--c97-ink)" strokeWidth="1.5" />
+      <circle cx="50" cy="50" r="37" fill="none" stroke="var(--c97-rule)" strokeWidth="1" />
       {orbits}
       {center}
       {STAR_FIELD.map((point, index) => (
@@ -113,7 +113,7 @@ export function MissionPatchEmblem({ seed, accent, className = "", title }: Miss
           cx={point[0]}
           cy={point[1]}
           r="1.1"
-          fill="var(--home-ink-muted)"
+          fill="var(--c97-ink-2)"
           opacity="0.7"
         />
       ))}

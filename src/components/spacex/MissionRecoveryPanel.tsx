@@ -6,9 +6,9 @@ interface MissionRecoveryPanelProps {
 }
 
 const TONE_COLOR: Record<"signal" | "ink" | "stone", string> = {
-  signal: "var(--home-signal)",
-  ink: "var(--home-ink)",
-  stone: "var(--home-stone)",
+  signal: "var(--c97-accent)",
+  ink: "var(--c97-ink)",
+  stone: "var(--c97-rule)",
 };
 
 /**
@@ -26,11 +26,11 @@ export function MissionRecoveryPanel({ launchDetails }: MissionRecoveryPanelProp
 
   if (!recovery) {
     return (
-      <div className="rounded-[var(--radius-3xl)] border border-dashed border-[var(--home-rule)] bg-[var(--home-paper)] px-5 py-10 text-center">
-        <p className="text-lg font-semibold text-[var(--home-ink)]">
+      <div className="border border-dashed border-[var(--c97-rule)] bg-[var(--c97-surface)] px-5 py-10 text-center">
+        <p className="text-lg font-semibold text-[var(--c97-ink)]">
           No recovery data in the current snapshot.
         </p>
-        <p className="mx-auto mt-2 max-w-[54ch] text-sm leading-6 text-[var(--home-ink-muted)]">
+        <p className="mx-auto mt-2 max-w-[54ch] text-sm leading-6 text-[var(--c97-ink-2)]">
           Launch Library&apos;s booster/landing records aren&apos;t populated for any mission this
           snapshot currently hydrates. The normalizer already maps that data whenever upstream
           provides it, so this panel will fill in on its own the next time a refresh picks up
@@ -42,29 +42,29 @@ export function MissionRecoveryPanel({ launchDetails }: MissionRecoveryPanelProp
 
   return (
     <div className="grid gap-4 lg:grid-cols-[320px_minmax(0,1fr)] lg:items-start">
-      <div className="rounded-[var(--radius-lg)] border border-[var(--home-rule)] bg-[var(--home-paper)]">
-        <h3 className="px-4 pt-4 text-base font-bold tracking-[-0.01em] text-[var(--home-ink)] sm:px-5">
+      <div className="border border-[var(--c97-rule)] bg-[var(--c97-surface)]">
+        <h3 className="px-4 pt-4 text-base font-bold tracking-[-0.01em] text-[var(--c97-ink)] sm:px-5">
           Recovery split
         </h3>
-        <p className="px-4 pt-1 font-mono text-3xs uppercase tracking-[0.08em] text-[var(--home-ink-muted)] sm:px-5">
+        <p className="px-4 pt-1 font-mono text-3xs uppercase tracking-[0.08em] text-[var(--c97-ink-2)] sm:px-5">
           {recovery.total} recovery attempt{recovery.total === 1 ? "" : "s"} in the hydrated sample
         </p>
         <div className="space-y-2.5 px-4 py-4 sm:px-5">
           {recovery.split.map((bucket) => (
             <div key={bucket.label} className="grid grid-cols-[88px_1fr_auto] items-center gap-3">
-              <span className="font-mono text-2xs uppercase tracking-[0.04em] text-[var(--home-ink-muted)]">
+              <span className="font-mono text-2xs uppercase tracking-[0.04em] text-[var(--c97-ink-2)]">
                 {bucket.label}
               </span>
-              <span className="h-2 overflow-hidden rounded-full bg-[var(--home-paper-alt)]">
+              <span className="h-2 overflow-hidden bg-[var(--c97-field)]">
                 <span
-                  className="block h-full rounded-full"
+                  className="block h-full "
                   style={{
                     width: `${Math.round((bucket.count / recovery.total) * 100)}%`,
                     background: TONE_COLOR[bucket.tone],
                   }}
                 />
               </span>
-              <span className="font-mono text-sm tabular-nums text-[var(--home-ink)]">
+              <span className="font-mono text-sm tabular-nums text-[var(--c97-ink)]">
                 {bucket.count}
               </span>
             </div>
@@ -72,29 +72,29 @@ export function MissionRecoveryPanel({ launchDetails }: MissionRecoveryPanelProp
         </div>
       </div>
 
-      <div className="rounded-[var(--radius-lg)] border border-[var(--home-rule)] bg-[var(--home-paper)]">
-        <h3 className="px-4 pt-4 text-base font-bold tracking-[-0.01em] text-[var(--home-ink)] sm:px-5">
+      <div className="border border-[var(--c97-rule)] bg-[var(--c97-surface)]">
+        <h3 className="px-4 pt-4 text-base font-bold tracking-[-0.01em] text-[var(--c97-ink)] sm:px-5">
           Fleet leaders
         </h3>
-        <p className="px-4 pt-1 font-mono text-3xs uppercase tracking-[0.08em] text-[var(--home-ink-muted)] sm:px-5">
+        <p className="px-4 pt-1 font-mono text-3xs uppercase tracking-[0.08em] text-[var(--c97-ink-2)] sm:px-5">
           Boosters by flights flown, in the hydrated sample
         </p>
         <div className="px-4 py-2 sm:px-5">
           {recovery.fleetLeaders.map((leader, index) => (
             <div
               key={leader.serial}
-              className="grid grid-cols-[22px_minmax(0,1fr)_auto_auto] items-center gap-3 border-b border-[color-mix(in_srgb,var(--home-rule)_50%,transparent)] py-3 last:border-b-0"
+              className="grid grid-cols-[22px_minmax(0,1fr)_auto_auto] items-center gap-3 border-b border-[color-mix(in_srgb,var(--c97-rule)_50%,transparent)] py-3 last:border-b-0"
             >
-              <span className="font-mono text-sm text-[var(--home-ink-muted)]">{index + 1}</span>
-              <span className="truncate font-mono text-sm text-[var(--home-ink)]">
+              <span className="font-mono text-sm text-[var(--c97-ink-2)]">{index + 1}</span>
+              <span className="truncate font-mono text-sm text-[var(--c97-ink)]">
                 {leader.serial}
               </span>
-              <span className="truncate text-xs text-[var(--home-ink-muted)]">
+              <span className="truncate text-xs text-[var(--c97-ink-2)]">
                 last · {leader.lastMissionName}
               </span>
-              <span className="font-mono text-base tabular-nums text-[var(--home-ink)]">
+              <span className="font-mono text-base tabular-nums text-[var(--c97-ink)]">
                 {leader.flights}
-                <span className="ml-1 text-2xs text-[var(--home-ink-muted)]">flts</span>
+                <span className="ml-1 text-2xs text-[var(--c97-ink-2)]">flts</span>
               </span>
             </div>
           ))}

@@ -23,17 +23,17 @@ export function MissionStatFascia({ cells }: MissionStatFasciaProps) {
     <div
       role="group"
       aria-label="Mission control stat fascia"
-      className="grid grid-cols-2 gap-px border border-[var(--home-rule)] bg-[var(--home-rule)] sm:grid-cols-4"
+      className="grid grid-cols-2 gap-px border border-[var(--c97-rule)] bg-[var(--c97-rule)] sm:grid-cols-4"
     >
       {cells.map((cell) => (
-        <div key={cell.label} className="min-w-0 bg-[var(--home-paper)] px-4 py-3.5">
-          <p className="font-mono text-3xs font-semibold uppercase tracking-[0.14em] text-[var(--home-ink-muted)]">
+        <div key={cell.label} className="min-w-0 bg-[var(--c97-surface)] px-4 py-3.5">
+          <p className="font-mono text-3xs font-semibold uppercase tracking-[0.14em] text-[var(--c97-ink-2)]">
             {cell.label}
           </p>
-          <p className="mt-2 text-xl font-bold tracking-[-0.02em] tabular-nums text-[var(--home-ink)] sm:text-2xl">
+          <p className="mt-2 text-xl font-bold tracking-[-0.02em] tabular-nums text-[var(--c97-ink)] sm:text-2xl">
             {cell.value}
           </p>
-          <p className="mt-1 text-xs leading-5 text-[var(--home-ink-muted)]">{cell.detail}</p>
+          <p className="mt-1 text-xs leading-5 text-[var(--c97-ink-2)]">{cell.detail}</p>
         </div>
       ))}
     </div>
