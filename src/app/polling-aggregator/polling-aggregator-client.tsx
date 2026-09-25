@@ -184,8 +184,15 @@ function GenericBallotBar({ dem, rep }: { dem: number; rep: number }) {
         <div style={{ width: `${100 - demPct}%`, background: REP_COLOR }} className="motion-safe:transition-[width] motion-safe:duration-500" />
       </div>
       <div className="flex justify-between text-xs font-semibold">
-        <span style={{ color: DEM_COLOR }}>Dem. {dem.toFixed(1)}%</span>
-        <span style={{ color: REP_COLOR }}>Rep. {rep.toFixed(1)}%</span>
+        {/* Party colour as small text measured under 4.5:1, so the colour moves to a swatch and the number stays in ink. */}
+        <span className="inline-flex items-center gap-1" style={{ color: "var(--c97-ink)" }}>
+          <span aria-hidden="true" style={{ width: 10, height: 10, background: DEM_COLOR, display: "inline-block" }} />
+          Dem. {dem.toFixed(1)}%
+        </span>
+        <span className="inline-flex items-center gap-1" style={{ color: "var(--c97-ink)" }}>
+          <span aria-hidden="true" style={{ width: 10, height: 10, background: REP_COLOR, display: "inline-block" }} />
+          Rep. {rep.toFixed(1)}%
+        </span>
       </div>
     </div>
   );

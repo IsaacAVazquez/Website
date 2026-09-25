@@ -24,22 +24,24 @@
   caption-side: top;
 }
 
+/* A cell is a square whose opacity carries the count, with the number in ink
+ * beside it. Printing the number on the fill failed contrast at middle
+ * intensities, where neither ink clears 4.5:1 against the mix. */
 .c97-news-coverage-cell {
-  position: relative;
   display: inline-flex;
   align-items: center;
-  justify-content: center;
-  min-width: 28px;
+  gap: var(--c97-sp-1);
   min-height: 28px;
 }
 
 .c97-news-coverage-fill {
-  position: absolute;
-  inset: 0;
+  display: inline-block;
+  width: 14px;
+  height: 14px;
   background: var(--c97-ink);
 }
 
 .c97-news-coverage-count {
-  position: relative;
   font-size: var(--c97-fs-small);
+  color: var(--c97-ink);
 }

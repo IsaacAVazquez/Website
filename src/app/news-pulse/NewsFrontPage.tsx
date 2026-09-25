@@ -85,13 +85,10 @@ export function NewsFrontPage({ clusters, topics, outlets, dateline }: NewsFront
                           <span className="c97-news-coverage-cell">
                             <span
                               className="c97-news-coverage-fill"
-                              style={{ opacity: intensity }}
+                              style={{ opacity: Math.max(0.15, intensity) }}
                               aria-hidden="true"
                             />
-                            <span
-                              className="c97-mono c97-news-coverage-count"
-                              style={{ color: intensity > 0.5 ? "var(--c97-surface)" : "var(--c97-ink)" }}
-                            >
+                            <span className="c97-mono c97-news-coverage-count">
                               {count}
                             </span>
                           </span>

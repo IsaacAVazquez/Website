@@ -84,7 +84,7 @@ export function MissionDetailPanel({
           onClick={() => onPanelChange(option.key)}
           className={`tap-target px-4 py-3 text-sm font-semibold transition ${
             activePanel === option.key
-              ? "bg-[var(--c97-accent)] text-white"
+              ? "bg-[var(--c97-accent)] text-[var(--c97-surface)]"
               : "text-[var(--c97-ink-2)] hover:bg-[var(--c97-field)] hover:text-[var(--c97-ink)]"
           }`}
         >
