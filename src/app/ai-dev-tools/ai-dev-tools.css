@@ -1,0 +1,105 @@
+/* AI Dev Tool Ecosystem: the category-by-pricing surface map. */
+
+/* The map sits on its own paper plate inset into the hero ink, because a
+ * field tint or a plate's hover state only clears contrast against paper,
+ * not against every ink's own (sometimes inverted) ink colour. */
+.c97-surface-map-sheet {
+  padding: var(--c97-sp-3);
+}
+
+.c97-surface-map {
+  display: grid;
+  grid-template-columns: minmax(7rem, auto) repeat(var(--c97-surface-map-cols, 4), minmax(8rem, 1fr));
+  border: 1px solid var(--c97-rule);
+  background: var(--c97-rule);
+  gap: 1px;
+}
+
+/* display: contents drops the row's own box so its header/cell children lay
+ * out directly on the table's column tracks, while the row element itself
+ * still carries role="row" for assistive tech. */
+.c97-surface-map-row {
+  display: contents;
+}
+
+.c97-surface-map-col-header {
+  background: var(--c97-surface);
+  padding: var(--c97-sp-2);
+  display: flex;
+  align-items: center;
+}
+
+.c97-surface-map-row-header {
+  background: var(--c97-surface);
+  padding: var(--c97-sp-2);
+  display: flex;
+  align-items: center;
+}
+
+.c97-surface-map-cell {
+  background: var(--c97-field);
+  padding: var(--c97-sp-2);
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  gap: var(--c97-sp-1);
+  min-height: 3.25rem;
+}
+
+.c97-surface-map-plate {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--c97-sp-1);
+  min-height: 44px;
+  padding: 0 var(--c97-sp-2);
+  border: 1px solid var(--c97-rule);
+  background: var(--c97-surface);
+  color: var(--c97-ink);
+  font-family: var(--c97-font-body);
+  font-size: var(--c97-fs-small);
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.c97-surface-map-plate:hover {
+  background: var(--c97-field);
+}
+
+/* Selected state paints through the shared .c97-offset hard shadow. */
+.c97-surface-map-plate[aria-pressed="true"] {
+  border-color: var(--c97-ink);
+}
+
+.c97-surface-map-list {
+  display: none;
+  margin: 0;
+}
+
+.c97-surface-map-list-group + .c97-surface-map-list-group {
+  margin-top: var(--c97-sp-4);
+  padding-top: var(--c97-sp-4);
+  border-top: 1px solid var(--c97-rule);
+}
+
+.c97-surface-map-list-cell {
+  margin: var(--c97-sp-2) 0 0;
+}
+
+.c97-surface-map-list-plates {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--c97-sp-1);
+  margin-top: var(--c97-sp-1);
+}
+
+/* Below 640px the two-axis grid stops being legible at a touch target's
+ * width, so the same rows and cells read as a stacked list instead. */
+@media (max-width: 639px) {
+  .c97-surface-map {
+    display: none;
+  }
+
+  .c97-surface-map-list {
+    display: block;
+  }
+}
