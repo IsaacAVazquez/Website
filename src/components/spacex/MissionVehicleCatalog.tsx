@@ -43,14 +43,14 @@ function VehicleSilhouette({
       role="img"
       aria-label={`${rocket.name} height silhouette, ${rocket.heightMeters ?? "unknown"} meters`}
     >
-      <path d={`M23 0 L${x} ${nose} L${x + renderWidth} ${nose} Z`} fill="var(--home-ink)" />
+      <path d={`M23 0 L${x} ${nose} L${x + renderWidth} ${nose} Z`} fill="var(--c97-ink)" />
       <rect
         x={x}
         y={nose}
         width={renderWidth}
         height={renderHeight - nose}
-        fill="color-mix(in srgb, var(--home-ink) 16%, var(--home-paper))"
-        stroke="var(--home-ink)"
+        fill="color-mix(in srgb, var(--c97-ink) 16%, var(--c97-surface))"
+        stroke="var(--c97-ink)"
         strokeWidth="1.2"
       />
     </svg>
@@ -70,11 +70,11 @@ export function MissionVehicleCatalog({ launchDetails }: MissionVehicleCatalogPr
 
   if (rockets.length === 0) {
     return (
-      <div className="rounded-[var(--radius-3xl)] border border-dashed border-[var(--home-rule)] bg-[var(--home-paper)] px-5 py-10 text-center">
-        <p className="text-lg font-semibold text-[var(--home-ink)]">
+      <div className="border border-dashed border-[var(--c97-rule)] bg-[var(--c97-surface)] px-5 py-10 text-center">
+        <p className="text-lg font-semibold text-[var(--c97-ink)]">
           No vehicle records are hydrated yet.
         </p>
-        <p className="mx-auto mt-2 max-w-[52ch] text-sm leading-6 text-[var(--home-ink-muted)]">
+        <p className="mx-auto mt-2 max-w-[52ch] text-sm leading-6 text-[var(--c97-ink-2)]">
           The snapshot only carries full rocket specs for the handful of missions it hydrates
           detail for on each refresh. Check back after the next refresh.
         </p>
@@ -100,38 +100,38 @@ export function MissionVehicleCatalog({ launchDetails }: MissionVehicleCatalogPr
         {rockets.map((rocket) => (
           <article
             key={rocket.name}
-            className="overflow-hidden rounded-[var(--radius-lg)] border border-[var(--home-rule)] bg-[var(--home-paper)]"
+            className="overflow-hidden border border-[var(--c97-rule)] bg-[var(--c97-surface)]"
           >
-            <div className="flex items-center gap-3.5 border-b border-[var(--home-rule)] px-4 py-3.5 sm:px-5">
-              <span className="inline-flex h-10 min-w-[44px] shrink-0 items-center justify-center rounded-[var(--radius-sm)] border border-[var(--home-rule)] bg-[var(--home-paper-alt)] px-2.5 font-mono text-sm text-[var(--home-ink)]">
+            <div className="flex items-center gap-3.5 border-b border-[var(--c97-rule)] px-4 py-3.5 sm:px-5">
+              <span className="inline-flex h-10 min-w-[44px] shrink-0 items-center justify-center border border-[var(--c97-rule)] bg-[var(--c97-field)] px-2.5 font-mono text-sm text-[var(--c97-ink)]">
                 {rocket.type ?? "—"}
               </span>
               <div className="min-w-0">
-                <h3 className="truncate text-lg font-bold tracking-[-0.02em] text-[var(--home-ink)]">
+                <h3 className="truncate text-lg font-bold tracking-[-0.02em] text-[var(--c97-ink)]">
                   {rocket.name}
                 </h3>
-                <p className="mt-0.5 font-mono text-3xs uppercase tracking-[0.08em] text-[var(--home-ink-muted)]">
+                <p className="mt-0.5 font-mono text-3xs uppercase tracking-[0.08em] text-[var(--c97-ink-2)]">
                   {rocket.company ?? "Manufacturer unlisted"}
                 </p>
               </div>
               {rocket.active !== null ? (
                 <span
                   className="ml-auto inline-flex shrink-0 items-center gap-1.5 self-start font-mono text-3xs uppercase tracking-[0.08em]"
-                  style={{ color: rocket.active ? "var(--home-positive)" : "var(--home-ink-muted)" }}
+                  style={{ color: rocket.active ? "var(--c97-positive)" : "var(--c97-ink-2)" }}
                 >
-                  <span aria-hidden="true" className="h-1.5 w-1.5 rounded-full bg-current" />
+                  <span aria-hidden="true" className="h-1.5 w-1.5 bg-current" />
                   {rocket.active ? "Active" : "Retired"}
                 </span>
               ) : null}
             </div>
 
-            <div className="grid grid-cols-2 gap-px bg-[var(--home-rule)] sm:grid-cols-3">
+            <div className="grid grid-cols-2 gap-px bg-[var(--c97-rule)] sm:grid-cols-3">
               {specRows(rocket).map(([key, value]) => (
-                <div key={key} className="min-w-0 bg-[var(--home-paper)] px-3.5 py-3">
-                  <div className="font-mono text-3xs uppercase tracking-[0.1em] text-[var(--home-ink-muted)]">
+                <div key={key} className="min-w-0 bg-[var(--c97-surface)] px-3.5 py-3">
+                  <div className="font-mono text-3xs uppercase tracking-[0.1em] text-[var(--c97-ink-2)]">
                     {key}
                   </div>
-                  <div className="mt-1.5 font-mono text-base tabular-nums text-[var(--home-ink)]">
+                  <div className="mt-1.5 font-mono text-base tabular-nums text-[var(--c97-ink)]">
                     {value}
                   </div>
                 </div>
@@ -139,7 +139,7 @@ export function MissionVehicleCatalog({ launchDetails }: MissionVehicleCatalogPr
             </div>
 
             {rocket.description ? (
-              <p className="border-t border-[color-mix(in_srgb,var(--home-rule)_55%,transparent)] px-4 py-3.5 text-sm leading-6 text-[var(--home-ink-muted)] sm:px-5">
+              <p className="border-t border-[color-mix(in_srgb,var(--c97-rule)_55%,transparent)] px-4 py-3.5 text-sm leading-6 text-[var(--c97-ink-2)] sm:px-5">
                 {rocket.description}
               </p>
             ) : null}
@@ -147,21 +147,21 @@ export function MissionVehicleCatalog({ launchDetails }: MissionVehicleCatalogPr
         ))}
       </div>
 
-      <div className="rounded-[var(--radius-lg)] border border-[var(--home-rule)] bg-[var(--home-paper)] p-4 lg:sticky lg:top-28">
-        <h3 className="font-mono text-3xs font-semibold uppercase tracking-[0.12em] text-[var(--home-ink-muted)]">
+      <div className="border border-[var(--c97-rule)] bg-[var(--c97-surface)] p-4 lg:sticky lg:top-28">
+        <h3 className="font-mono text-3xs font-semibold uppercase tracking-[0.12em] text-[var(--c97-ink-2)]">
           Scale · to height
         </h3>
-        <p className="mb-4 mt-1 text-xs leading-5 text-[var(--home-ink-muted)]">
+        <p className="mb-4 mt-1 text-xs leading-5 text-[var(--c97-ink-2)]">
           Booster + upper stage, metres. Diameter scaled for silhouette width only.
         </p>
-        <div className="flex h-[220px] items-end justify-around gap-3 border-b border-[var(--home-rule)] pb-0.5">
+        <div className="flex h-[220px] items-end justify-around gap-3 border-b border-[var(--c97-rule)] pb-0.5">
           {rockets.map((rocket) => (
             <div key={rocket.name} className="flex h-full flex-col items-center justify-end gap-2">
               <VehicleSilhouette rocket={rocket} maxHeight={maxHeight} maxDiameter={maxDiameter} />
-              <span className="font-mono text-3xs text-[var(--home-ink)]">
+              <span className="font-mono text-3xs text-[var(--c97-ink)]">
                 {rocket.type ?? rocket.name}
               </span>
-              <span className="font-mono text-3xs text-[var(--home-ink-muted)]">
+              <span className="font-mono text-3xs text-[var(--c97-ink-2)]">
                 {rocket.heightMeters ? `${rocket.heightMeters} m` : "—"}
               </span>
             </div>

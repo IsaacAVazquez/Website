@@ -12,6 +12,8 @@ interface MissionImageFrameProps {
   imageFit?: "cover" | "contain";
   imagePosition?: string;
   imageInsetClassName?: string;
+  /** Catalog 97 surface for the frame, when its overlay text needs a fixed ground. */
+  surface?: "espresso" | "paper";
   children?: ReactNode;
 }
 
@@ -58,6 +60,7 @@ export function MissionImageFrame({
   imageFit = "cover",
   imagePosition = "center center",
   imageInsetClassName = "",
+  surface,
   children,
 }: MissionImageFrameProps) {
   const candidates = useMemo(
@@ -86,11 +89,12 @@ export function MissionImageFrame({
       data-image-src={activeImage ?? undefined}
       data-image-state={imageState}
       data-image-fit={imageFit}
+      data-c97-surface={surface}
       className={`relative overflow-hidden ${className}`}
       role={activeImage ? undefined : "img"}
       aria-label={activeImage ? undefined : alt}
     >
-      <div className="absolute inset-0 bg-[color-mix(in_srgb,var(--home-signal)_6%,var(--home-paper-raised))]" />
+      <div className="absolute inset-0 bg-[color-mix(in_srgb,var(--c97-accent)_6%,var(--c97-field))]" />
 
       {activeImage ? (
         <>
@@ -119,7 +123,7 @@ export function MissionImageFrame({
           {!isLoaded ? (
             <div
               aria-hidden="true"
-              className="absolute inset-0 animate-pulse bg-[color-mix(in_srgb,var(--home-paper-alt)_78%,var(--home-elev-mix))]"
+              className="absolute inset-0 animate-pulse bg-[color-mix(in_srgb,var(--c97-field)_78%,var(--c97-field))]"
             />
           ) : null}
         </>
@@ -129,8 +133,8 @@ export function MissionImageFrame({
           className="absolute inset-0 flex items-center justify-center"
         >
           <div className="flex flex-col items-center gap-3">
-            <Rocket className="h-7 w-7 text-[var(--home-signal)]" />
-            <span className="font-mono text-3xs font-semibold uppercase tracking-[0.28em] text-[var(--home-ink-soft)]">
+            <Rocket className="h-7 w-7 text-[var(--c97-accent)]" />
+            <span className="font-mono text-3xs font-semibold uppercase tracking-[0.28em] text-[var(--c97-label)]">
               {getInitials(name)}
             </span>
           </div>

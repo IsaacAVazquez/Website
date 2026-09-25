@@ -1,0 +1,47 @@
+/* News Pulse: the front-page signature (lead story list and coverage matrix). */
+
+.c97-news-lead-outlets {
+  display: grid;
+  gap: var(--c97-sp-2);
+  margin: var(--c97-sp-3) 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.c97-news-lead-outlets li {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--c97-sp-2);
+}
+
+.c97-news-lead-outlets a {
+  color: var(--c97-ink);
+  text-decoration-color: var(--c97-rule);
+}
+
+.c97-news-coverage-matrix caption {
+  caption-side: top;
+}
+
+/* A cell is a square whose opacity carries the count, with the number in ink
+ * beside it. Printing the number on the fill failed contrast at middle
+ * intensities, where neither ink clears 4.5:1 against the mix. */
+.c97-news-coverage-cell {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--c97-sp-1);
+  min-height: 28px;
+}
+
+.c97-news-coverage-fill {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  background: var(--c97-ink);
+}
+
+.c97-news-coverage-count {
+  font-size: var(--c97-fs-small);
+  color: var(--c97-ink);
+}

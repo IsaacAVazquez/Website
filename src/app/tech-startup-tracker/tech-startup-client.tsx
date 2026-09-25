@@ -5,21 +5,17 @@ import {
   Activity,
   ArrowDownUp,
   Building2,
-  CalendarClock,
   ExternalLink,
-  Info,
   Layers,
   MapPin,
-  RefreshCw,
   Tags,
   TrendingUp,
   Users,
 } from "lucide-react";
 import { useRouter, useSearchParams } from "next/navigation";
-import { MetricCard } from "@/components/football/MetricCard";
 import { EmptyPanel } from "@/components/football/EmptyPanel";
-import { HomeStatsPanel } from "@/components/home/HomeStatsPanel";
-import { ChartBar, Briefcase, FileText } from "@/components/ui/ServerIcons";
+import { Catalog97ProjectHero } from "@/components/catalog97/Catalog97ProjectHero";
+import { PROJECT_PRESS } from "@/constants/projectPress";
 import { formatUsdCompact, sortTechStartups } from "@/lib/techStartups";
 import { relativeAge } from "@/lib/utils";
 import type {
@@ -40,28 +36,18 @@ import {
   TECH_STARTUP_SORT_LABELS,
   TECH_STARTUP_SORT_OPTIONS,
 } from "./tech-startup-state";
+import { ValuationTreemap } from "./ValuationTreemap";
+import "./tech-startup-tracker.css";
 
 interface TechStartupClientProps {
   initialState: TechStartupRouteState;
   snapshot: TechStartupSnapshot;
 }
 
-const DATE_TIME_FORMATTER = new Intl.DateTimeFormat("en-US", {
-  month: "short",
-  day: "numeric",
-  year: "numeric",
-});
-
 const ROUND_FORMATTER = new Intl.DateTimeFormat("en-US", {
   month: "short",
   year: "numeric",
 });
-
-function formatDate(iso: string): string {
-  const date = new Date(iso);
-  if (Number.isNaN(date.getTime())) return "Unknown";
-  return DATE_TIME_FORMATTER.format(date);
-}
 
 function formatRoundDate(yearMonth: string): string {
   const date = new Date(`${yearMonth.slice(0, 7)}-01T00:00:00Z`);
@@ -69,19 +55,13 @@ function formatRoundDate(yearMonth: string): string {
   return ROUND_FORMATTER.format(date);
 }
 
-function getSegments(
-  snapshot: TechStartupSnapshot,
-  kind: TechStartupSegmentKind
-): TechStartupSegment[] {
+function getSegments(snapshot: TechStartupSnapshot, kind: TechStartupSegmentKind): TechStartupSegment[] {
   return kind === "sector" ? snapshot.sectors : snapshot.stages;
 }
 
 function buildSegmentLookup(snapshot: TechStartupSnapshot) {
   return new Map(
-    [...snapshot.sectors, ...snapshot.stages].map((segment) => [
-      segment.key,
-      segment,
-    ])
+    [...snapshot.sectors, ...snapshot.stages].map((segment) => [segment.key, segment])
   );
 }
 
@@ -100,10 +80,7 @@ function getStartupsForSegment(
   return snapshot.startups.filter((startup) => allowed.has(startup.id));
 }
 
-export function TechStartupClient({
-  initialState,
-  snapshot,
-}: TechStartupClientProps) {
+export function TechStartupClient({ initialState, snapshot }: TechStartupClientProps) {
   const router = useRouter();
   const searchParams = useSearchParams();
   const hasManagedParams =
@@ -128,8 +105,7 @@ export function TechStartupClient({
 
   // relativeAge() reads Date.now(), so the SSR markup and the first client
   // render can disagree by a minute. Compute it only after mount and render a
-  // stable placeholder pre-mount so both the header chip and the stats-panel
-  // meta stay hydration-safe.
+  // stable placeholder pre-mount so the hero meta stays hydration-safe.
   const [relativeUpdated, setRelativeUpdated] = useState("recently");
   const [sourceIsOverdue, setSourceIsOverdue] = useState(!snapshot.verified);
   useEffect(() => {
@@ -164,10 +140,6 @@ export function TechStartupClient({
   const selectedStartup = filteredStartups.find(
     (startup) => startup.id === resolvedState.selectedStartupId
   );
-  const visibleRaised = filteredStartups.reduce(
-    (sum, startup) => sum + startup.totalRaised,
-    0
-  );
 
   function setKind(kind: TechStartupSegmentKind) {
     navigate({ ...resolvedState, kind, segment: "all", selectedStartupId: null });
@@ -184,281 +156,166 @@ export function TechStartupClient({
   function toggleStartup(startupId: string) {
     navigate({
       ...resolvedState,
-      selectedStartupId:
-        resolvedState.selectedStartupId === startupId ? null : startupId,
+      selectedStartupId: resolvedState.selectedStartupId === startupId ? null : startupId,
     });
   }
 
+  const lead = PROJECT_PRESS[TECH_STARTUP_ROUTE].lead;
+  const standfirst =
+    "I keep a curated, unverified read on notable private tech companies, grouped by sector and funding stage, and I wanted the treemap to do what a sorted table never can, which is show how concentrated the valuations actually are. The few companies valued above $100B take up most of the space, and everything else shrinks down next to them.";
+  const meta = `${snapshot.sourceLabel} · figures as of ${formatRoundDate(snapshot.asOf)} · updated ${relativeUpdated}`;
+
   return (
-    <div className="home-shell home-section space-y-8">
-      <header className="grid gap-6 lg:grid-cols-[minmax(0,1.35fr)_minmax(280px,0.65fr)]">
-        <div className="space-y-4">
-          <p className="home-kicker mb-0">Market intelligence</p>
-          <h1 className="max-w-4xl text-3xl font-semibold tracking-[-0.04em] text-[var(--home-ink)] sm:text-5xl">
-            Tech Startup Tracker
-          </h1>
-          <p className="max-w-2xl text-base leading-7 text-[var(--home-ink-muted)]">
-            A curated read on notable private tech companies — grouped by sector
-            and funding stage, with valuations, total raised, the latest round,
-            and a momentum score from a checked-in snapshot.
-          </p>
-          <div className="flex flex-wrap gap-2 text-xs font-semibold uppercase tracking-[0.16em] text-[var(--home-ink-muted)]">
-            {/* relativeUpdated is computed after mount (see effect above), so
-                this stays hydration-safe without relying on Date.now() in SSR. */}
-            <span className="inline-flex min-h-[32px] items-center gap-2 rounded-full border border-[var(--home-rule)] bg-[var(--home-paper-alt)] px-3">
-              <RefreshCw aria-hidden="true" size={14} />
-              Updated {relativeUpdated}
-            </span>
-            <span className="inline-flex min-h-[32px] items-center gap-2 rounded-full border border-[var(--home-rule)] bg-[var(--home-paper-alt)] px-3">
-              <CalendarClock aria-hidden="true" size={14} />
-              Figures as of {formatRoundDate(snapshot.asOf)}
-            </span>
-          </div>
-        </div>
-
-        <section
-          className="home-card p-5 sm:p-6"
-          aria-labelledby="tech-startup-ledger-heading"
-        >
-          <p className="home-kicker mb-3" id="tech-startup-ledger-heading">
-            Snapshot ledger
-          </p>
-          <dl className="space-y-4 text-sm">
-            <div className="flex items-start justify-between gap-4 border-b border-[var(--home-rule)] pb-3">
-              <dt className="text-[var(--home-ink-muted)]">Generated</dt>
-              <dd className="m-0 text-right font-semibold text-[var(--home-ink)]">
-                {formatDate(snapshot.generatedAt)}
-              </dd>
-            </div>
-            <div className="flex items-start justify-between gap-4 border-b border-[var(--home-rule)] pb-3">
-              <dt className="text-[var(--home-ink-muted)]">Source</dt>
-              <dd className="m-0 text-right font-semibold text-[var(--home-ink)]">
-                {snapshot.sourceLabel}
-              </dd>
-            </div>
-            <div className="flex items-start justify-between gap-4">
-              <dt className="text-[var(--home-ink-muted)]">Combined valuation</dt>
-              <dd className="m-0 text-right font-semibold text-[var(--home-ink)]">
-                {formatUsdCompact(snapshot.totals.totalValuation)}
-              </dd>
-            </div>
-          </dl>
-        </section>
-      </header>
-
-      {sourceIsOverdue ? (
-        <div
-          role="status"
-          className="rounded-[var(--radius-2xl)] border border-[var(--home-warning)] bg-[color-mix(in_srgb,var(--home-warning)_8%,var(--home-paper))] p-4 text-sm leading-6 text-[var(--home-ink)]"
-        >
-          These private-company figures are past the review window or still
-          unverified. I keep them visible as directional research, not current
-          financial facts.
-        </div>
-      ) : null}
-
-      <HomeStatsPanel
-        id="tech-startup-stats"
-        title="Startup landscape at a glance"
-        meta={`Updated ${relativeUpdated}`}
-        cells={[
+    <>
+      <Catalog97ProjectHero
+        ink={lead}
+        title="Tech Startup Tracker"
+        standfirst={standfirst}
+        meta={meta}
+        readouts={[
           {
             label: "Startups tracked",
-            value: <span className="tabular-nums">{snapshot.totals.startups}</span>,
-            sub: "Notable private companies",
-          },
-          {
-            label: "Unicorns",
-            value: <span className="tabular-nums">{snapshot.totals.unicornCount}</span>,
-            sub: "Valued at $1B or more",
-            tone: "good",
+            value: `${snapshot.totals.startups}`,
+            detail: `${snapshot.totals.sectors} sectors, ${snapshot.totals.stages} stages`,
           },
           {
             label: "Combined valuation",
             value: formatUsdCompact(snapshot.totals.totalValuation),
-            sub: "Disclosed post-money",
+            detail: `${formatUsdCompact(snapshot.totals.totalRaised)} total raised`,
           },
           {
-            label: "Combined raised",
-            value: formatUsdCompact(snapshot.totals.totalRaised),
-            sub: "Total disclosed funding",
-          },
-          {
-            label: "Sectors",
-            value: <span className="tabular-nums">{snapshot.totals.sectors}</span>,
-            sub: "Industry segments",
-          },
-          {
-            label: "Stages",
-            value: <span className="tabular-nums">{snapshot.totals.stages}</span>,
-            sub: "Funding-stage buckets",
-          },
-          {
-            label: "Visible companies",
-            value: <span className="tabular-nums">{filteredStartups.length}</span>,
-            sub: `${TECH_STARTUP_KIND_LABELS[resolvedState.kind]} filter`,
-          },
-          {
-            label: "Visible raised",
-            value: formatUsdCompact(visibleRaised),
-            sub: "Funding in current table",
+            label: "Unicorns",
+            value: `${snapshot.totals.unicornCount}`,
+            detail: "valued at $1B or more",
           },
         ]}
-        pills={[
-          { label: "By sector", href: "/tech-startup-tracker", icon: ChartBar },
-          { label: "By stage", href: "/tech-startup-tracker?view=stage", icon: Briefcase },
-          { label: "Top valuations", href: "/tech-startup-tracker?sort=valuation", icon: FileText },
-        ]}
-      />
+      >
+        <ValuationTreemap
+          startups={filteredStartups}
+          selectedId={selectedStartup?.id ?? null}
+          onSelect={toggleStartup}
+          sectorLabels={Object.fromEntries([...segmentLookup].map(([id, segment]) => [id, segment.label]))}
+        />
+      </Catalog97ProjectHero>
 
-      <section className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
-        <MetricCard
-          label="Startups tracked"
-          value={snapshot.totals.startups.toString()}
-          detail={`${snapshot.totals.sectors} sectors across ${snapshot.totals.stages} funding stages`}
-        />
-        <MetricCard
-          label="Combined valuation"
-          value={formatUsdCompact(snapshot.totals.totalValuation)}
-          detail={`${snapshot.totals.unicornCount} companies valued at $1B+`}
-        />
-        <MetricCard
-          label="Visible set"
-          value={filteredStartups.length.toString()}
-          detail={`${TECH_STARTUP_KIND_LABELS[resolvedState.kind]} filter, ${TECH_STARTUP_SORT_LABELS[resolvedState.sort].toLowerCase()} sort`}
-        />
-        <MetricCard
-          label="Visible raised"
-          value={formatUsdCompact(visibleRaised)}
-          detail="Total disclosed funding in the current table"
-        />
-      </section>
-
-      <section className="home-card space-y-5 p-5 sm:p-6" aria-label="Startup filters">
-        <div className="flex flex-wrap items-center justify-between gap-4">
-          <div
-            role="group"
-            aria-label="Group startups by"
-            className="inline-flex rounded-full border border-[var(--home-rule)] bg-[var(--home-paper-alt)] p-1"
-          >
-            {TECH_STARTUP_KIND_OPTIONS.map((kind) => {
-              const isActive = resolvedState.kind === kind;
-              const Icon = kind === "sector" ? Layers : TrendingUp;
-              return (
-                <button
-                  key={kind}
-                  type="button"
-                  aria-pressed={isActive}
-                  title={`Group startups by ${TECH_STARTUP_KIND_LABELS[kind].toLowerCase()}`}
-                  onClick={() => setKind(kind)}
-                  className={`inline-flex min-h-[44px] items-center gap-2 rounded-full px-4 text-sm font-semibold transition-[background-color,color,box-shadow] ${
-                    isActive
-                      ? "bg-[var(--home-paper)] text-[var(--home-ink)] shadow-sm"
-                      : "text-[var(--home-ink-muted)] hover:text-[var(--home-ink)]"
-                  }`}
-                >
-                  <Icon aria-hidden="true" size={16} />
-                  {TECH_STARTUP_KIND_LABELS[kind]}
-                </button>
-              );
-            })}
-          </div>
-
-          <div className="flex flex-wrap items-center gap-2">
-            <span className="inline-flex items-center gap-1 text-2xs font-semibold uppercase tracking-[0.16em] text-[var(--home-ink-muted)]">
-              <ArrowDownUp aria-hidden="true" size={14} />
-              Sort
-            </span>
-            {TECH_STARTUP_SORT_OPTIONS.map((sort) => {
-              const isActive = resolvedState.sort === sort;
-              return (
-                <button
-                  key={sort}
-                  type="button"
-                  aria-pressed={isActive}
-                  onClick={() => setSort(sort)}
-                  className={`min-h-[44px] rounded-full border px-3 text-sm font-semibold transition-[background-color,border-color,color] ${
-                    isActive
-                      ? "border-[var(--home-ink)] bg-[var(--home-ink)] text-[var(--home-paper)]"
-                      : "border-[var(--home-rule)] bg-[var(--home-paper-alt)] text-[var(--home-ink-muted)] hover:text-[var(--home-ink)]"
-                  }`}
-                >
-                  {TECH_STARTUP_SORT_LABELS[sort]}
-                </button>
-              );
-            })}
-          </div>
+      <div className="c97-band c97-sheet" data-c97-surface="paper" data-seam="torn">
+        <div className="c97-shell" style={{ display: "grid", gap: "var(--c97-sp-2)" }}>
+          {sourceIsOverdue ? (
+            <p className="c97-prose" role="status" style={{ color: "var(--c97-warning)", fontSize: "var(--c97-fs-small)" }}>
+              These private-company figures are past the review window or still
+              unverified. I keep them visible as directional research, not current
+              financial facts.
+            </p>
+          ) : null}
+          <p className="c97-prose" style={{ fontSize: "var(--c97-fs-small)", color: "var(--c97-ink-2)" }}>
+            {snapshot.disclaimer}
+            {!snapshot.verified
+              ? " Figures have not been individually verified against a single dated source, so treat them as directional."
+              : ""}
+          </p>
         </div>
+      </div>
 
-        <div className="flex flex-wrap gap-2">
-          <button
-            type="button"
-            aria-pressed={resolvedState.segment === "all"}
-            onClick={() => setSegment("all")}
-            className={`min-h-[44px] rounded-full border px-4 text-sm font-semibold transition-[background-color,border-color,color] ${
-              resolvedState.segment === "all"
-                ? "border-[var(--home-ink)] bg-[var(--home-ink)] text-[var(--home-paper)]"
-                : "border-[var(--home-rule)] bg-[var(--home-paper-alt)] text-[var(--home-ink-muted)] hover:text-[var(--home-ink)]"
-            }`}
-          >
-            All {TECH_STARTUP_KIND_LABELS[resolvedState.kind].toLowerCase()}s
-          </button>
-          {segments.map((segment) => {
-            const isActive = resolvedState.segment === segment.key;
-            return (
+      <section
+        className="c97-band c97-sheet"
+        data-c97-surface="bone"
+        data-seam="torn"
+        aria-label="Startup filters"
+      >
+        <div className="c97-shell" style={{ display: "grid", gap: "var(--c97-sp-5)" }}>
+          <h2 className="c97-poster-sm">The list</h2>
+          <div className="flex flex-wrap items-center justify-between gap-4">
+            <div role="group" aria-label="Group startups by" className="c97-segmented">
+              {TECH_STARTUP_KIND_OPTIONS.map((kind) => {
+                const isActive = resolvedState.kind === kind;
+                const Icon = kind === "sector" ? Layers : TrendingUp;
+                return (
+                  <button
+                    key={kind}
+                    type="button"
+                    aria-pressed={isActive}
+                    title={`Group startups by ${TECH_STARTUP_KIND_LABELS[kind].toLowerCase()}`}
+                    onClick={() => setKind(kind)}
+                    className="min-h-[44px]"
+                  >
+                    <Icon aria-hidden="true" size={16} />
+                    {TECH_STARTUP_KIND_LABELS[kind]}
+                  </button>
+                );
+              })}
+            </div>
+
+            <div className="flex flex-wrap items-center gap-3">
+              <span className="c97-kicker" style={{ marginBottom: 0 }}>
+                <ArrowDownUp aria-hidden="true" size={14} style={{ display: "inline", marginRight: "4px" }} />
+                Sort
+              </span>
+              <div className="c97-segmented">
+                {TECH_STARTUP_SORT_OPTIONS.map((sort) => (
+                  <button
+                    key={sort}
+                    type="button"
+                    aria-pressed={resolvedState.sort === sort}
+                    onClick={() => setSort(sort)}
+                    className="min-h-[44px]"
+                  >
+                    {TECH_STARTUP_SORT_LABELS[sort]}
+                  </button>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          <div className="c97-segmented">
+            <button
+              type="button"
+              aria-pressed={resolvedState.segment === "all"}
+              onClick={() => setSegment("all")}
+              className="min-h-[44px]"
+            >
+              All {TECH_STARTUP_KIND_LABELS[resolvedState.kind].toLowerCase()}s
+            </button>
+            {segments.map((segment) => (
               <button
                 key={segment.key}
                 type="button"
-                aria-pressed={isActive}
+                aria-pressed={resolvedState.segment === segment.key}
                 onClick={() => setSegment(segment.key)}
-                className={`min-h-[44px] rounded-full border px-4 text-sm font-semibold transition-[background-color,border-color,color] ${
-                  isActive
-                    ? "border-[var(--home-ink)] bg-[var(--home-ink)] text-[var(--home-paper)]"
-                    : "border-[var(--home-rule)] bg-[var(--home-paper-alt)] text-[var(--home-ink-muted)] hover:text-[var(--home-ink)]"
-                }`}
+                className="min-h-[44px]"
               >
                 {segment.label}
               </button>
-            );
-          })}
+            ))}
+          </div>
         </div>
       </section>
 
-      <section className="grid gap-5 xl:grid-cols-[minmax(0,1fr)_340px]">
-        {filteredStartups.length === 0 ? (
-          <EmptyPanel
-            title="No startups match this filter"
-            description="Try switching segments or widening back to the full sector or stage view."
-          />
-        ) : (
-          <StartupTable
-            startups={filteredStartups}
-            selectedStartupId={selectedStartup?.id ?? null}
-            segmentLookup={segmentLookup}
-            onToggleStartup={toggleStartup}
-          />
-        )}
-        <SegmentSummary
-          segments={segments}
-          startups={snapshot.startups}
-          selectedSegment={resolvedState.segment}
-          onSelectSegment={setSegment}
-        />
+      <section className="c97-band c97-sheet" data-c97-surface="paper" data-seam="deckle">
+        <div className="c97-shell">
+          <div className="grid gap-6 xl:grid-cols-[minmax(0,1fr)_340px]">
+            {filteredStartups.length === 0 ? (
+              <EmptyPanel
+                title="No startups match this filter"
+                description="Try switching segments or widening back to the full sector or stage view."
+              />
+            ) : (
+              <StartupTable
+                startups={filteredStartups}
+                selectedStartupId={selectedStartup?.id ?? null}
+                segmentLookup={segmentLookup}
+                onToggleStartup={toggleStartup}
+              />
+            )}
+            <SegmentSummary
+              segments={segments}
+              startups={snapshot.startups}
+              selectedSegment={resolvedState.segment}
+              onSelectSegment={setSegment}
+            />
+          </div>
+        </div>
       </section>
-
-      <section
-        className="home-card flex items-start gap-3 p-5 text-sm leading-6 text-[var(--home-ink-muted)] sm:p-6"
-        aria-label="Data disclosure"
-      >
-        <Info aria-hidden="true" className="mt-0.5 flex-shrink-0" size={18} />
-        <p className="m-0">
-          {snapshot.disclaimer}
-          {!snapshot.verified
-            ? " Figures have not been individually verified against a single dated source — treat them as directional."
-            : ""}
-        </p>
-      </section>
-    </div>
+    </>
   );
 }
 
@@ -469,59 +326,48 @@ interface StartupTableProps {
   onToggleStartup: (startupId: string) => void;
 }
 
-function StartupTable({
-  startups,
-  selectedStartupId,
-  segmentLookup,
-  onToggleStartup,
-}: StartupTableProps) {
+function StartupTable({ startups, selectedStartupId, segmentLookup, onToggleStartup }: StartupTableProps) {
   return (
-    <div className="home-card overflow-hidden p-0">
-      <div className="scroll-shadow-x overflow-x-auto">
-        <table className="min-w-[900px] border-collapse text-sm">
-          <caption className="sr-only">
-            Notable tech startups with valuation, total raised, latest funding
-            round, and momentum score.
-          </caption>
-          <thead>
-            <tr className="border-b border-[var(--home-rule)] bg-[var(--home-paper-alt)]">
-              <th scope="col" className="px-4 py-3 text-left text-2xs font-semibold uppercase tracking-[0.16em] text-[var(--home-ink-muted)]">
-                Startup
-              </th>
-              <th scope="col" className="px-4 py-3 text-right text-2xs font-semibold uppercase tracking-[0.16em] text-[var(--home-ink-muted)]">
-                Valuation
-              </th>
-              <th scope="col" className="px-4 py-3 text-right text-2xs font-semibold uppercase tracking-[0.16em] text-[var(--home-ink-muted)]">
-                Raised
-              </th>
-              <th scope="col" className="px-4 py-3 text-left text-2xs font-semibold uppercase tracking-[0.16em] text-[var(--home-ink-muted)]">
-                Latest round
-              </th>
-              <th scope="col" className="px-4 py-3 text-right text-2xs font-semibold uppercase tracking-[0.16em] text-[var(--home-ink-muted)]">
-                Site
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            {startups.map((startup, index) => {
-              const isExpanded = startup.id === selectedStartupId;
-              const sectorLabel = segmentLookup.get(startup.sector)?.label ?? null;
-              const stageLabel = segmentLookup.get(startup.stage)?.label ?? null;
-              return (
-                <StartupRow
-                  key={startup.id}
-                  startup={startup}
-                  rank={index + 1}
-                  isExpanded={isExpanded}
-                  sectorLabel={sectorLabel}
-                  stageLabel={stageLabel}
-                  onToggle={() => onToggleStartup(startup.id)}
-                />
-              );
-            })}
-          </tbody>
-        </table>
-      </div>
+    <div className="overflow-x-auto">
+      <table className="c97-table" style={{ minWidth: "820px" }}>
+        <caption className="sr-only">
+          Notable tech startups with valuation, total raised, latest funding round, and
+          momentum score.
+        </caption>
+        <thead>
+          <tr>
+            <th scope="col">Startup</th>
+            <th scope="col" data-align="end">
+              Valuation
+            </th>
+            <th scope="col" data-align="end">
+              Raised
+            </th>
+            <th scope="col">Latest round</th>
+            <th scope="col" data-align="end">
+              Site
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          {startups.map((startup, index) => {
+            const isExpanded = startup.id === selectedStartupId;
+            const sectorLabel = segmentLookup.get(startup.sector)?.label ?? null;
+            const stageLabel = segmentLookup.get(startup.stage)?.label ?? null;
+            return (
+              <StartupRow
+                key={startup.id}
+                startup={startup}
+                rank={index + 1}
+                isExpanded={isExpanded}
+                sectorLabel={sectorLabel}
+                stageLabel={stageLabel}
+                onToggle={() => onToggleStartup(startup.id)}
+              />
+            );
+          })}
+        </tbody>
+      </table>
     </div>
   );
 }
@@ -535,14 +381,7 @@ interface StartupRowProps {
   onToggle: () => void;
 }
 
-function StartupRow({
-  startup,
-  rank,
-  isExpanded,
-  sectorLabel,
-  stageLabel,
-  onToggle,
-}: StartupRowProps) {
+function StartupRow({ startup, rank, isExpanded, sectorLabel, stageLabel, onToggle }: StartupRowProps) {
   const detailId = `tech-startup-row-${startup.id}`;
 
   return (
@@ -551,17 +390,17 @@ function StartupRow({
           expand/collapse control is a real button on the name — role="button"
           on a <tr> breaks table semantics and nests the Visit link inside an
           interactive element. */}
-      <tr
-        onClick={onToggle}
-        className="cursor-pointer border-b border-[var(--home-rule)] transition-[background-color] hover:bg-[var(--home-paper-alt)]"
-      >
-        <td className="px-4 py-4 align-top">
+      <tr onClick={onToggle} style={{ cursor: "pointer" }}>
+        <td>
           <div className="flex gap-3">
-            <span className="mt-1 inline-flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-full border border-[var(--home-rule)] bg-[var(--home-paper-alt)] text-xs font-semibold text-[var(--home-ink-muted)]">
+            <span
+              className="c97-mono"
+              style={{ color: "var(--c97-ink-2)", fontSize: "var(--c97-fs-small)" }}
+            >
               {rank}
             </span>
             <div className="min-w-0">
-              <p className="mb-1 max-w-none leading-5">
+              <p className="mb-1">
                 <button
                   type="button"
                   aria-expanded={isExpanded}
@@ -570,55 +409,48 @@ function StartupRow({
                     event.stopPropagation();
                     onToggle();
                   }}
-                  className="text-left font-semibold text-[var(--home-ink)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-signal)] focus-visible:ring-offset-2"
+                  className="c97-serif text-left"
+                  style={{ fontWeight: 600, color: "var(--c97-ink)" }}
                 >
                   {startup.name}
                 </button>
               </p>
-              <p className="mb-0 line-clamp-2 max-w-[44rem] text-sm leading-6 text-[var(--home-ink-muted)]">
+              <p className="mb-0 line-clamp-2" style={{ color: "var(--c97-ink-2)", maxWidth: "44rem" }}>
                 {startup.description}
               </p>
               <div className="mt-2 flex flex-wrap gap-1.5">
-                {sectorLabel ? (
-                  <span className="inline-flex items-center rounded-full border border-[var(--home-rule)] bg-[var(--home-paper)] px-2.5 py-0.5 text-xs font-semibold text-[var(--home-ink-muted)]">
-                    {sectorLabel}
-                  </span>
-                ) : null}
-                {stageLabel ? (
-                  <span className="inline-flex items-center rounded-full border border-[var(--home-rule)] px-2.5 py-0.5 text-xs text-[var(--home-ink-muted)]">
-                    {stageLabel}
-                  </span>
-                ) : null}
+                {sectorLabel ? <span className="c97-chip">{sectorLabel}</span> : null}
+                {stageLabel ? <span className="c97-chip">{stageLabel}</span> : null}
               </div>
             </div>
           </div>
         </td>
-        <td className="px-4 py-4 text-right align-top">
-          <span className="font-mono text-base font-semibold text-[var(--home-ink)]">
+        <td data-align="end">
+          <span className="c97-mono" style={{ fontWeight: 600 }}>
             {formatUsdCompact(startup.valuation)}
           </span>
         </td>
-        <td className="px-4 py-4 text-right align-top">
-          <span className="font-mono font-semibold text-[var(--home-ink)]">
+        <td data-align="end">
+          <span className="c97-mono" style={{ fontWeight: 600 }}>
             {formatUsdCompact(startup.totalRaised)}
           </span>
         </td>
-        <td className="px-4 py-4 align-top text-[var(--home-ink-muted)]">
-          <span className="block font-semibold text-[var(--home-ink)]">
+        <td style={{ color: "var(--c97-ink-2)" }}>
+          <span className="block" style={{ fontWeight: 600, color: "var(--c97-ink)" }}>
             {startup.lastRound.stage}
           </span>
-          <span className="block text-xs">
-            {formatUsdCompact(startup.lastRound.amount)} ·{" "}
-            {formatRoundDate(startup.lastRound.date)}
+          <span className="block" style={{ fontSize: "var(--c97-fs-small)" }}>
+            {formatUsdCompact(startup.lastRound.amount)} · {formatRoundDate(startup.lastRound.date)}
           </span>
         </td>
-        <td className="px-4 py-4 text-right align-top">
+        <td data-align="end">
           <a
             href={startup.website}
             target="_blank"
             rel="noreferrer"
             onClick={(event) => event.stopPropagation()}
-            className="inline-flex min-h-[44px] items-center gap-2 rounded-full border border-[var(--home-rule)] px-3 text-sm font-semibold text-[var(--home-ink)] transition-[background-color,border-color,color] hover:border-[var(--home-ink)] hover:bg-[var(--home-paper-alt)]"
+            className="inline-flex min-h-[44px] items-center gap-2"
+            style={{ color: "var(--c97-ink)" }}
           >
             Visit
             <ExternalLink aria-hidden="true" size={14} />
@@ -626,109 +458,94 @@ function StartupRow({
         </td>
       </tr>
       {isExpanded ? (
-        <tr id={detailId} className="border-b border-[var(--home-rule)] bg-[var(--home-paper-alt)]">
-          <td colSpan={5} className="px-4 py-5">
-            <div className="grid gap-5 lg:grid-cols-[minmax(0,1.35fr)_minmax(260px,0.65fr)]">
+        <tr id={detailId}>
+          <td colSpan={5}>
+            <div
+              className="grid gap-5 lg:grid-cols-[minmax(0,1.35fr)_minmax(260px,0.65fr)]"
+              style={{ padding: "var(--c97-sp-3) 0" }}
+            >
               <div className="space-y-4">
-                <dl className="grid grid-cols-2 gap-x-5 gap-y-3 text-sm sm:grid-cols-3">
+                <dl className="grid grid-cols-2 gap-x-5 gap-y-3 sm:grid-cols-3">
                   <div>
-                    <dt className="inline-flex items-center gap-1 text-2xs font-semibold uppercase tracking-[0.14em] text-[var(--home-ink-muted)]">
+                    <dt className="c97-stat-label inline-flex items-center gap-1">
                       <MapPin aria-hidden="true" size={12} />
                       Headquarters
                     </dt>
-                    <dd className="m-0 mt-1 text-[var(--home-ink)]">
+                    <dd className="m-0 mt-1" style={{ color: "var(--c97-ink)" }}>
                       {startup.headquarters}
                     </dd>
                   </div>
                   <div>
-                    <dt className="inline-flex items-center gap-1 text-2xs font-semibold uppercase tracking-[0.14em] text-[var(--home-ink-muted)]">
+                    <dt className="c97-stat-label inline-flex items-center gap-1">
                       <Building2 aria-hidden="true" size={12} />
                       Founded
                     </dt>
-                    <dd className="m-0 mt-1 font-mono text-[var(--home-ink)]">
+                    <dd className="c97-mono m-0 mt-1" style={{ color: "var(--c97-ink)" }}>
                       {startup.founded}
                     </dd>
                   </div>
                   <div>
-                    <dt className="inline-flex items-center gap-1 text-2xs font-semibold uppercase tracking-[0.14em] text-[var(--home-ink-muted)]">
+                    <dt className="c97-stat-label inline-flex items-center gap-1">
                       <Users aria-hidden="true" size={12} />
                       Employees
                     </dt>
-                    <dd className="m-0 mt-1 font-mono text-[var(--home-ink)]">
+                    <dd className="c97-mono m-0 mt-1" style={{ color: "var(--c97-ink)" }}>
                       {startup.employees}
                     </dd>
                   </div>
                 </dl>
                 <div>
-                  <p className="mb-2 inline-flex items-center gap-1 text-2xs font-semibold uppercase tracking-[0.14em] text-[var(--home-ink-muted)]">
+                  <p className="c97-stat-label mb-2 inline-flex items-center gap-1">
                     <Tags aria-hidden="true" size={12} />
                     Focus
                   </p>
                   <div className="flex flex-wrap gap-2">
                     {startup.tags.map((tag) => (
-                      <span
-                        key={tag}
-                        className="inline-flex items-center rounded-full border border-[var(--home-rule)] px-2.5 py-1 text-xs text-[var(--home-ink-muted)]"
-                      >
+                      <span key={tag} className="c97-chip">
                         {tag}
                       </span>
                     ))}
                   </div>
                 </div>
                 <div>
-                  <p className="mb-2 text-2xs font-semibold uppercase tracking-[0.14em] text-[var(--home-ink-muted)]">
-                    Notable investors
-                  </p>
+                  <p className="c97-stat-label mb-2">Notable investors</p>
                   <div className="flex flex-wrap gap-2">
                     {startup.notableInvestors.map((investor) => (
-                      <span
-                        key={investor}
-                        className="inline-flex items-center rounded-full border border-[var(--home-rule)] bg-[var(--home-paper)] px-2.5 py-1 text-xs font-semibold text-[var(--home-ink-muted)]"
-                      >
+                      <span key={investor} className="c97-chip">
                         {investor}
                       </span>
                     ))}
                   </div>
                 </div>
               </div>
-              <dl className="grid grid-cols-2 gap-x-5 gap-y-3 text-sm">
+              <dl className="grid grid-cols-2 gap-x-5 gap-y-3">
                 <div>
-                  <dt className="text-2xs font-semibold uppercase tracking-[0.14em] text-[var(--home-ink-muted)]">
-                    Latest round
-                  </dt>
-                  <dd className="m-0 mt-1 text-[var(--home-ink)]">
+                  <dt className="c97-stat-label">Latest round</dt>
+                  <dd className="m-0 mt-1" style={{ color: "var(--c97-ink)" }}>
                     {startup.lastRound.stage}
                   </dd>
                 </div>
                 <div>
-                  <dt className="text-2xs font-semibold uppercase tracking-[0.14em] text-[var(--home-ink-muted)]">
-                    Round size
-                  </dt>
-                  <dd className="m-0 mt-1 font-mono text-[var(--home-ink)]">
+                  <dt className="c97-stat-label">Round size</dt>
+                  <dd className="c97-mono m-0 mt-1" style={{ color: "var(--c97-ink)" }}>
                     {formatUsdCompact(startup.lastRound.amount)}
                   </dd>
                 </div>
                 <div>
-                  <dt className="text-2xs font-semibold uppercase tracking-[0.14em] text-[var(--home-ink-muted)]">
-                    Announced
-                  </dt>
-                  <dd className="m-0 mt-1 font-mono text-[var(--home-ink)]">
+                  <dt className="c97-stat-label">Announced</dt>
+                  <dd className="c97-mono m-0 mt-1" style={{ color: "var(--c97-ink)" }}>
                     {formatRoundDate(startup.lastRound.date)}
                   </dd>
                 </div>
                 <div>
-                  <dt className="text-2xs font-semibold uppercase tracking-[0.14em] text-[var(--home-ink-muted)]">
-                    Momentum
-                  </dt>
-                  <dd className="m-0 mt-1 font-mono text-[var(--home-ink)]">
+                  <dt className="c97-stat-label">Momentum</dt>
+                  <dd className="c97-mono m-0 mt-1" style={{ color: "var(--c97-ink)" }}>
                     {startup.momentumScore.toFixed(1)}
                   </dd>
                 </div>
                 <div className="col-span-2">
-                  <dt className="text-2xs font-semibold uppercase tracking-[0.14em] text-[var(--home-ink-muted)]">
-                    Round led by
-                  </dt>
-                  <dd className="m-0 mt-1 text-[var(--home-ink)]">
+                  <dt className="c97-stat-label">Round led by</dt>
+                  <dd className="m-0 mt-1" style={{ color: "var(--c97-ink)" }}>
                     {startup.lastRound.leadInvestors.join(", ")}
                   </dd>
                 </div>
@@ -748,30 +565,27 @@ interface SegmentSummaryProps {
   onSelectSegment: (segment: string) => void;
 }
 
-function SegmentSummary({
-  segments,
-  startups,
-  selectedSegment,
-  onSelectSegment,
-}: SegmentSummaryProps) {
+function SegmentSummary({ segments, startups, selectedSegment, onSelectSegment }: SegmentSummaryProps) {
   const startupById = new Map(startups.map((startup) => [startup.id, startup]));
 
   return (
-    <aside className="home-card p-5 sm:p-6" aria-labelledby="tech-startup-segment-heading">
+    <aside className="c97-panel" aria-labelledby="tech-startup-segment-heading">
       <div className="mb-4 flex items-center justify-between gap-3">
         <div>
-          <p className="home-kicker mb-1">Segments</p>
-          <h2 id="tech-startup-segment-heading" className="text-lg font-semibold text-[var(--home-ink)]">
+          <p className="c97-kicker mb-1">Segments</p>
+          <h2
+            id="tech-startup-segment-heading"
+            className="c97-serif"
+            style={{ fontSize: "var(--c97-fs-h3)" }}
+          >
             Snapshot leaders
           </h2>
         </div>
-        <Activity aria-hidden="true" className="text-[var(--home-ink-muted)]" size={20} />
+        <Activity aria-hidden="true" style={{ color: "var(--c97-ink-2)" }} size={20} />
       </div>
       <div className="space-y-2">
         {segments.map((segment) => {
-          const topStartup = segment.topStartupId
-            ? startupById.get(segment.topStartupId)
-            : null;
+          const topStartup = segment.topStartupId ? startupById.get(segment.topStartupId) : null;
           const isActive = selectedSegment === segment.key;
           return (
             <button
@@ -779,23 +593,21 @@ function SegmentSummary({
               type="button"
               aria-pressed={isActive}
               onClick={() => onSelectSegment(segment.key)}
-              className={`block min-h-[64px] w-full rounded-[var(--radius-xl)] border px-3 py-3 text-left transition-[background-color,border-color,color] ${
-                isActive
-                  ? "border-[var(--home-ink)] bg-[var(--home-paper-alt)]"
-                  : "border-[var(--home-rule)] hover:border-[var(--home-ink)] hover:bg-[var(--home-paper-alt)]"
-              }`}
+              className={`block min-h-[64px] w-full text-left ${isActive ? "c97-offset" : ""}`}
+              style={{
+                background: "var(--c97-surface)",
+                padding: "var(--c97-sp-2) var(--c97-sp-3)",
+                border: `1px solid ${isActive ? "var(--c97-ink)" : "var(--c97-rule)"}`,
+              }}
             >
               <span className="flex items-center justify-between gap-3">
-                <span className="font-semibold text-[var(--home-ink)]">
-                  {segment.label}
-                </span>
-                <span className="font-mono text-sm text-[var(--home-ink)]">
+                <span style={{ fontWeight: 600, color: "var(--c97-ink)" }}>{segment.label}</span>
+                <span className="c97-mono" style={{ color: "var(--c97-ink)" }}>
                   {formatUsdCompact(segment.totalValuation)}
                 </span>
               </span>
-              <span className="mt-1 block text-xs text-[var(--home-ink-muted)]">
-                {segment.startupCount}{" "}
-                {segment.startupCount === 1 ? "company" : "companies"}
+              <span className="mt-1 block" style={{ color: "var(--c97-ink-2)", fontSize: "var(--c97-fs-small)" }}>
+                {segment.startupCount} {segment.startupCount === 1 ? "company" : "companies"}
                 {topStartup ? ` · ${topStartup.name}` : ""}
               </span>
             </button>

@@ -25,19 +25,20 @@ export function MissionVehiclePhoto({
       dataTestId={dataTestId}
       alt={`${name} ${label.toLowerCase()}`}
       priority={dataTestId === "mission-hero-visual"}
-      className={`flex items-center justify-center rounded-[var(--radius-3xl)] border border-[color-mix(in_srgb,var(--home-signal)_18%,var(--home-rule))] bg-[color-mix(in_srgb,var(--home-signal)_6%,var(--home-paper-raised))] shadow-[var(--shadow-md)] ${className}`}
+      surface="espresso"
+      className={`flex items-center justify-center border border-[color-mix(in_srgb,var(--c97-accent)_18%,var(--c97-rule))] bg-[color-mix(in_srgb,var(--c97-accent)_6%,var(--c97-field))] ${className}`}
     >
       <div
         aria-hidden="true"
-        className="absolute inset-0 bg-[linear-gradient(180deg,color-mix(in_srgb,var(--home-paper)_10%,transparent)_0%,transparent_36%,color-mix(in_srgb,var(--home-paper)_78%,transparent)_100%)]"
+        className="absolute inset-0 bg-[linear-gradient(180deg,color-mix(in_srgb,var(--c97-surface)_10%,transparent)_0%,transparent_36%,color-mix(in_srgb,var(--c97-surface)_78%,transparent)_100%)]"
       />
       <div className="absolute inset-x-0 top-0 flex justify-between p-4">
-        <span className="rounded-full border border-[color-mix(in_srgb,var(--home-paper)_30%,var(--home-rule))] bg-[color-mix(in_srgb,var(--home-paper)_74%,transparent)] px-3 py-1 font-mono text-3xs font-semibold uppercase tracking-[0.22em] text-white">
+        <span className="border border-[color-mix(in_srgb,var(--c97-surface)_30%,var(--c97-rule))] bg-[color-mix(in_srgb,var(--c97-surface)_74%,transparent)] px-3 py-1 font-mono text-3xs font-semibold uppercase tracking-[0.22em] text-[var(--c97-ink)]">
           {label}
         </span>
       </div>
       <div className="absolute inset-x-0 bottom-0 p-4">
-        <p className="text-sm font-semibold text-white">{name}</p>
+        <p className="text-sm font-semibold text-[var(--c97-ink)]">{name}</p>
       </div>
     </MissionImageFrame>
   );

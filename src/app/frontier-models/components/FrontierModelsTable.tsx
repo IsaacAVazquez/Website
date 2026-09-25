@@ -96,66 +96,57 @@ export function FrontierModelsTable({
   }
 
   return (
-    <div className="home-card overflow-hidden p-0">
-      <div className="overflow-x-auto">
-        <table className="min-w-full border-collapse text-sm">
-          <thead>
-            <tr className="border-b border-[var(--home-rule)] bg-[var(--home-paper-alt)]">
-              {COLUMNS.map((column) => {
-                const isActive = sortKey === column.key;
-                const ariaSort: "ascending" | "descending" | "none" = isActive
-                  ? sortDirection === "asc"
-                    ? "ascending"
-                    : "descending"
-                  : "none";
-                return (
-                  <th
-                    key={column.key}
-                    scope="col"
-                    aria-sort={ariaSort}
-                    className={`px-4 py-3 text-2xs font-semibold uppercase tracking-[0.18em] text-[var(--home-ink-muted)] ${
-                      column.align === "right" ? "text-right" : "text-left"
-                    }`}
-                  >
-                    <button
-                      type="button"
-                      onClick={() => toggleSort(column)}
-                      className="inline-flex min-h-[44px] items-center gap-1.5 text-left text-[var(--home-ink-muted)] transition-colors hover:text-[var(--home-ink)]"
-                    >
-                      <span>{column.label}</span>
-                      <span aria-hidden="true" className="text-3xs">
-                        {isActive ? (sortDirection === "asc" ? "▲" : "▼") : "↕"}
-                      </span>
-                    </button>
-                  </th>
-                );
-              })}
-              <th
-                scope="col"
-                className="px-4 py-3 text-left text-2xs font-semibold uppercase tracking-[0.18em] text-[var(--home-ink-muted)]"
-              >
-                Modalities
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            {sorted.map((model) => {
-              const isExpanded = selectedModelId === model.id;
+    <div className="overflow-x-auto">
+      <table className="c97-table">
+        <thead>
+          <tr>
+            {COLUMNS.map((column) => {
+              const isActive = sortKey === column.key;
+              const ariaSort: "ascending" | "descending" | "none" = isActive
+                ? sortDirection === "asc"
+                  ? "ascending"
+                  : "descending"
+                : "none";
               return (
-                <FrontierRow
-                  key={model.id}
-                  model={model}
-                  isExpanded={isExpanded}
-                  onToggle={() =>
-                    onSelectModel(isExpanded ? null : model.id)
-                  }
-                  onKeyDown={(event) => handleRowKeyDown(event, model.id)}
-                />
+                <th
+                  key={column.key}
+                  scope="col"
+                  aria-sort={ariaSort}
+                  data-align={column.align === "right" ? "end" : undefined}
+                >
+                  <button
+                    type="button"
+                    onClick={() => toggleSort(column)}
+                    className="inline-flex min-h-[44px] items-center gap-1.5 hover:text-[var(--c97-ink)]"
+                  >
+                    <span>{column.label}</span>
+                    <span aria-hidden="true" className="text-3xs">
+                      {isActive ? (sortDirection === "asc" ? "▲" : "▼") : "↕"}
+                    </span>
+                  </button>
+                </th>
               );
             })}
-          </tbody>
-        </table>
-      </div>
+            <th scope="col">Modalities</th>
+          </tr>
+        </thead>
+        <tbody>
+          {sorted.map((model) => {
+            const isExpanded = selectedModelId === model.id;
+            return (
+              <FrontierRow
+                key={model.id}
+                model={model}
+                isExpanded={isExpanded}
+                onToggle={() =>
+                  onSelectModel(isExpanded ? null : model.id)
+                }
+                onKeyDown={(event) => handleRowKeyDown(event, model.id)}
+              />
+            );
+          })}
+        </tbody>
+      </table>
     </div>
   );
 }
@@ -177,18 +168,29 @@ function FrontierRow({ model, isExpanded, onToggle, onKeyDown }: FrontierRowProp
         aria-controls={`frontier-row-detail-${model.id}`}
         onClick={onToggle}
         onKeyDown={onKeyDown}
-        className="cursor-pointer border-b border-[var(--home-rule)] transition-colors hover:bg-[var(--home-paper-alt)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-signal)] focus-visible:ring-offset-2"
+        className="cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--c97-accent)] focus-visible:ring-offset-2"
       >
-        <td className="px-4 py-3">
+        <td>
           <div className="flex flex-col">
-            <span className="text-2xs font-semibold uppercase tracking-[0.18em] text-[var(--home-ink-muted)]">
+            <span
+              className="text-2xs font-semibold uppercase tracking-[0.18em]"
+              style={{ color: "var(--c97-ink-2)" }}
+            >
               {model.providerLabel}
             </span>
-            <span className="mt-1 flex items-center gap-2 text-base font-semibold text-[var(--home-ink)]">
+            <span
+              className="mt-1 flex items-center gap-2 text-base font-semibold"
+              style={{ color: "var(--c97-ink)" }}
+            >
               {model.name}
               {model.reasoning ? (
                 <span
-                  className="inline-flex items-center gap-1 rounded-full border border-[var(--home-rule)] bg-[var(--home-paper-alt)] px-2 py-0.5 text-3xs font-semibold uppercase tracking-[0.14em] text-[var(--home-ink-muted)]"
+                  className="inline-flex items-center gap-1 border px-2 py-0.5 text-3xs font-semibold uppercase tracking-[0.14em]"
+                  style={{
+                    borderColor: "var(--c97-rule)",
+                    background: "var(--c97-field)",
+                    color: "var(--c97-ink-2)",
+                  }}
                   title="Supports extended-thinking / reasoning mode"
                 >
                   <Sparkles aria-hidden="true" size={11} />
@@ -198,24 +200,29 @@ function FrontierRow({ model, isExpanded, onToggle, onKeyDown }: FrontierRowProp
             </span>
           </div>
         </td>
-        <td className="px-4 py-3 text-[var(--home-ink-muted)]">
+        <td style={{ color: "var(--c97-ink-2)" }}>
           {formatReleaseDate(model.releaseDate)}
         </td>
-        <td className="px-4 py-3 text-right font-mono text-[var(--home-ink)]">
+        <td data-align="end" className="c97-mono" style={{ color: "var(--c97-ink)" }}>
           {formatTokenCount(model.contextWindow)}
         </td>
-        <td className="px-4 py-3 text-right font-mono text-[var(--home-ink)]">
+        <td data-align="end" className="c97-mono" style={{ color: "var(--c97-ink)" }}>
           {formatPriceUsd(model.inputPricePerMTokens)}
         </td>
-        <td className="px-4 py-3 text-right font-mono text-[var(--home-ink)]">
+        <td data-align="end" className="c97-mono" style={{ color: "var(--c97-ink)" }}>
           {formatPriceUsd(model.outputPricePerMTokens)}
         </td>
-        <td className="px-4 py-3">
+        <td>
           <div className="flex flex-wrap gap-1.5">
             {model.modalities.map((modality) => (
               <span
                 key={modality}
-                className="inline-flex items-center rounded-full border border-[var(--home-rule)] bg-[var(--home-paper)] px-2 py-0.5 text-2xs font-medium text-[var(--home-ink-muted)]"
+                className="inline-flex items-center border px-2 py-0.5 text-2xs font-medium"
+                style={{
+                  borderColor: "var(--c97-rule)",
+                  background: "var(--c97-surface)",
+                  color: "var(--c97-ink-2)",
+                }}
               >
                 {FRONTIER_MODALITY_LABELS[modality]}
               </span>
@@ -224,18 +231,21 @@ function FrontierRow({ model, isExpanded, onToggle, onKeyDown }: FrontierRowProp
         </td>
       </tr>
       {isExpanded ? (
-        <tr id={`frontier-row-detail-${model.id}`} className="border-b border-[var(--home-rule)] bg-[var(--home-paper-alt)]">
+        <tr id={`frontier-row-detail-${model.id}`}>
           <td colSpan={6} className="px-4 py-5">
             <div className="grid gap-4 lg:grid-cols-[2fr,1fr]">
-              <p className="m-0 text-sm leading-7 text-[var(--home-ink)]">
+              <p className="m-0 text-sm leading-7" style={{ color: "var(--c97-ink)" }}>
                 {model.editorialNote}
               </p>
-              <dl className="grid grid-cols-2 gap-x-4 gap-y-2 text-sm text-[var(--home-ink-muted)]">
+              <dl
+                className="grid grid-cols-2 gap-x-4 gap-y-2 text-sm"
+                style={{ color: "var(--c97-ink-2)" }}
+              >
                 <div>
                   <dt className="text-2xs font-semibold uppercase tracking-[0.14em]">
                     Max output
                   </dt>
-                  <dd className="m-0 font-mono text-[var(--home-ink)]">
+                  <dd className="c97-mono m-0" style={{ color: "var(--c97-ink)" }}>
                     {formatTokenCount(model.maxOutputTokens)} tokens
                   </dd>
                 </div>
@@ -243,7 +253,7 @@ function FrontierRow({ model, isExpanded, onToggle, onKeyDown }: FrontierRowProp
                   <dt className="text-2xs font-semibold uppercase tracking-[0.14em]">
                     Knowledge cutoff
                   </dt>
-                  <dd className="m-0 font-mono text-[var(--home-ink)]">
+                  <dd className="c97-mono m-0" style={{ color: "var(--c97-ink)" }}>
                     {model.knowledgeCutoff ?? "—"}
                   </dd>
                 </div>
@@ -266,7 +276,8 @@ function FrontierRow({ model, isExpanded, onToggle, onKeyDown }: FrontierRowProp
                       href={model.docsUrl}
                       target="_blank"
                       rel="noreferrer"
-                      className="inline-flex min-h-[44px] items-center gap-1.5 text-sm font-semibold text-[var(--home-ink)] underline-offset-4 hover:underline"
+                      className="inline-flex min-h-[44px] items-center gap-1.5 text-sm font-semibold underline-offset-4 hover:underline"
+                      style={{ color: "var(--c97-ink)" }}
                     >
                       Provider docs
                       <ExternalLink aria-hidden="true" size={14} />

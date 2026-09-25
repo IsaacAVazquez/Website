@@ -87,7 +87,7 @@ test.describe("Product surfaces", () => {
     await expectHealthyRoute(
       page,
       "/spacex-mission-control?status=past",
-      /operations room, not a brochure/i
+      /SpaceX Mission Control/i
     );
     await expect(page.getByTestId("mission-hero")).toBeVisible();
     await expect(page.getByTestId("mission-board")).toBeVisible();

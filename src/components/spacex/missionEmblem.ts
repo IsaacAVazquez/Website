@@ -60,8 +60,8 @@ export const MISSION_STATUS_LABEL: Record<MissionCardStatus, string> = {
 };
 
 export const MISSION_STATUS_ACCENT_VAR: Record<MissionCardStatus, string> = {
-  success: "var(--home-positive)",
-  failed: "var(--home-negative)",
-  upcoming: "var(--home-signal)",
-  pending: "var(--home-warning)",
+  success: "var(--c97-positive)",
+  failed: "var(--c97-negative)",
+  upcoming: "var(--c97-accent)",
+  pending: "var(--c97-warning)",
 };

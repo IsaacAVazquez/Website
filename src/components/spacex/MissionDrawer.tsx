@@ -93,7 +93,7 @@ export function MissionDrawer({
   }, [isOpen, launchId, onClose]);
 
   const status = detail ? deriveMissionCardStatus(detail) : null;
-  const accent = status ? MISSION_STATUS_ACCENT_VAR[status] : "var(--home-signal)";
+  const accent = status ? MISSION_STATUS_ACCENT_VAR[status] : "var(--c97-accent)";
 
   return (
     <AnimatePresence>
@@ -110,7 +110,7 @@ export function MissionDrawer({
             aria-label="Close mission detail"
             onClick={onClose}
             className="absolute inset-0 h-full w-full cursor-default"
-            style={{ background: "color-mix(in srgb, var(--home-ink) 34%, transparent)" }}
+            style={{ background: "color-mix(in srgb, var(--c97-ink) 34%, transparent)" }}
             tabIndex={-1}
           />
           <motion.aside
@@ -120,13 +120,14 @@ export function MissionDrawer({
             aria-label={detail ? `${detail.name} detail` : "Mission detail"}
             tabIndex={-1}
             data-testid="mission-detail-panel"
+            data-c97-surface="paper"
             initial={reduceMotion ? { opacity: 0 } : { opacity: 0, x: 28 }}
             animate={{ opacity: 1, x: 0 }}
             exit={reduceMotion ? { opacity: 0 } : { opacity: 0, x: 28 }}
             transition={{ duration: reduceMotion ? 0 : 0.26, ease: [0.22, 1, 0.36, 1] }}
-            className="relative flex h-full w-full max-w-[30rem] flex-col overflow-y-auto border-l border-[var(--home-rule)] bg-[var(--home-paper)] shadow-[var(--shadow-xl)] outline-none"
+            className="relative flex h-full w-full max-w-[30rem] flex-col overflow-y-auto border-l border-[var(--c97-rule)] bg-[var(--c97-surface)] outline-none"
           >
-            <div className="relative border-b border-[var(--home-rule)] px-5 pb-4.5 pt-6">
+            <div className="relative border-b border-[var(--c97-rule)] px-5 pb-4.5 pt-6">
               <span
                 aria-hidden="true"
                 className="absolute inset-x-0 top-0 h-[3px]"
@@ -136,7 +137,7 @@ export function MissionDrawer({
                 type="button"
                 onClick={onClose}
                 aria-label="Close mission detail"
-                className="tap-target absolute right-3 top-3 shrink-0 rounded-full border border-[var(--home-rule)] bg-[var(--home-paper)] text-[var(--home-ink-muted)] transition hover:border-[color-mix(in_srgb,var(--home-ink)_30%,var(--home-rule))] hover:text-[var(--home-ink)]"
+                className="tap-target absolute right-3 top-3 shrink-0 border border-[var(--c97-rule)] bg-[var(--c97-surface)] text-[var(--c97-ink-2)] transition hover:border-[color-mix(in_srgb,var(--c97-ink)_30%,var(--c97-rule))] hover:text-[var(--c97-ink)]"
               >
                 <X className="h-4 w-4" aria-hidden="true" />
               </button>
@@ -144,19 +145,19 @@ export function MissionDrawer({
               {detail ? (
                 <div className="flex items-center gap-4 pr-10">
                   <div
-                    className="h-[74px] w-[74px] shrink-0 overflow-hidden rounded-full border border-[var(--home-rule)]"
+                    className="h-[74px] w-[74px] shrink-0 overflow-hidden border border-[var(--c97-rule)]"
                     style={{
                       background:
-                        "radial-gradient(circle at 50% 42%, color-mix(in srgb, var(--home-paper-alt) 70%, var(--home-elev-mix)), var(--home-paper-alt))",
+                        "radial-gradient(circle at 50% 42%, color-mix(in srgb, var(--c97-field) 70%, var(--c97-field)), var(--c97-field))",
                     }}
                   >
                     <MissionPatchEmblem seed={detail.id} accent={accent} className="h-full w-full" />
                   </div>
                   <div className="min-w-0">
-                    <p className="font-mono text-3xs uppercase tracking-[0.1em] text-[var(--home-ink-muted)]">
+                    <p className="font-mono text-3xs uppercase tracking-[0.1em] text-[var(--c97-ink-2)]">
                       Flight #{detail.flightNumber} · {detail.launchpadName ?? "Pad TBD"}
                     </p>
-                    <h2 className="mt-1 truncate text-xl font-bold tracking-[-0.02em] text-[var(--home-ink)]">
+                    <h2 className="mt-1 truncate text-xl font-bold tracking-[-0.02em] text-[var(--c97-ink)]">
                       {detail.name}
                     </h2>
                     {status ? (
@@ -164,14 +165,14 @@ export function MissionDrawer({
                         className="mt-1.5 inline-flex items-center gap-1.5 font-mono text-3xs uppercase tracking-[0.08em]"
                         style={{ color: accent }}
                       >
-                        <span aria-hidden="true" className="h-1.5 w-1.5 rounded-full bg-current" />
+                        <span aria-hidden="true" className="h-1.5 w-1.5 bg-current" />
                         {MISSION_STATUS_LABEL[status]}
                       </span>
                     ) : null}
                   </div>
                 </div>
               ) : (
-                <p className="pr-10 text-sm text-[var(--home-ink-muted)]">
+                <p className="pr-10 text-sm text-[var(--c97-ink-2)]">
                   {error ? "Mission detail unavailable." : "Loading mission detail…"}
                 </p>
               )}
@@ -187,8 +188,8 @@ export function MissionDrawer({
             />
 
             {detail ? (
-              <div className="border-t border-[color-mix(in_srgb,var(--home-rule)_55%,transparent)] px-5 py-4">
-                <h3 className="mb-3.5 font-mono text-3xs font-semibold uppercase tracking-[0.12em] text-[var(--home-ink-muted)]">
+              <div className="border-t border-[color-mix(in_srgb,var(--c97-rule)_55%,transparent)] px-5 py-4">
+                <h3 className="mb-3.5 font-mono text-3xs font-semibold uppercase tracking-[0.12em] text-[var(--c97-ink-2)]">
                   T-0 sequence
                 </h3>
                 <MissionSequenceTimeline rocketName={detail.rocketName} upcoming={detail.upcoming} />
