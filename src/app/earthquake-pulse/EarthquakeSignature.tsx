@@ -1,7 +1,7 @@
 "use client";
 
 import { useMemo } from "react";
-import type { QuakeEvent } from "@/types/earthquake";
+import { EARTHQUAKE_RECENT_LIMIT, type QuakeEvent } from "@/types/earthquake";
 import { epicentres, seismogramSpikes } from "./seismogram";
 
 interface EarthquakeSignatureProps {
@@ -9,6 +9,8 @@ interface EarthquakeSignatureProps {
   quakes: QuakeEvent[];
   /** The feed time the 24-hour window ends at. */
   windowEnd: Date;
+  /** The day's strongest quake from the hero stats, which count every quake rather than the capped log. */
+  strongest: { magnitude: number | null; place: string | null };
   selectedId: string | null;
   onSelect: (id: string) => void;
 }
@@ -38,7 +40,7 @@ const DEPTH_OPACITY = { shallow: 0.9, intermediate: 0.6, deep: 0.35 } as const;
  * boundaries on their own. Marks respond to a pointer; the log below is the
  * keyboard path to the same selection.
  */
-export function EarthquakeSignature({ quakes, windowEnd, selectedId, onSelect }: EarthquakeSignatureProps) {
+export function EarthquakeSignature({ quakes, windowEnd, strongest: dayStrongest, selectedId, onSelect }: EarthquakeSignatureProps) {
   const spikes = useMemo(() => seismogramSpikes(quakes, windowEnd), [quakes, windowEnd]);
   const points = useMemo(() => {
     const inWindow = new Set(spikes.map((spike) => spike.id));
@@ -65,10 +67,21 @@ export function EarthquakeSignature({ quakes, windowEnd, selectedId, onSelect }:
       }),
     `L${W} ${TRACE_BASE}`,
   ].join(" ");
-  const labelEnd = strongest.x > 0.6;
-  const label = strongestQuake
-    ? `M${strongestQuake.magnitude.toFixed(1)} ${strongestQuake.place}`.slice(0, 52)
-    : `M${strongest.magnitude.toFixed(1)}`;
+  // The log keeps only the newest quakes, so on a busy day the strongest may
+  // have scrolled out of it. The label always names the day's strongest from
+  // the hero stats, and it sits on its spike only when that spike is drawn.
+  const capped = quakes.length >= EARTHQUAKE_RECENT_LIMIT;
+  const oldestX = Math.min(...spikes.map((spike) => spike.x));
+  const labelInLog =
+    dayStrongest.magnitude === null || Math.abs(dayStrongest.magnitude - strongest.magnitude) < 0.05;
+  const labelSpike = labelInLog ? strongest : null;
+  const labelEnd = labelSpike ? labelSpike.x > 0.6 : false;
+  const label =
+    dayStrongest.magnitude !== null
+      ? `M${dayStrongest.magnitude.toFixed(1)} ${dayStrongest.place ?? ""}`.trim().slice(0, 52)
+      : strongestQuake
+      ? `M${strongestQuake.magnitude.toFixed(1)} ${strongestQuake.place}`.slice(0, 52)
+      : `M${strongest.magnitude.toFixed(1)}`;
 
   return (
     <svg
@@ -79,9 +92,22 @@ export function EarthquakeSignature({ quakes, windowEnd, selectedId, onSelect }:
     >
       <title id="quake-signature-title">The past 24 hours of earthquakes</title>
       <desc id="quake-signature-desc">
-        {`${spikes.length} quakes of magnitude 2.5 or more, drawn as a seismograph trace across the day and as epicentres on a latitude and longitude grid. The strongest was ${label}.`}
+        {`${capped ? `The ${spikes.length} most recent` : spikes.length} quakes of magnitude 2.5 or more in the past 24 hours, drawn as a seismograph trace across the day and as epicentres on a latitude and longitude grid. The strongest of the day was ${label}.`}
       </desc>
 
+      {capped && oldestX > 0.04 ? (
+        <g>
+          <defs>
+            <pattern id="quake-uncovered" width="8" height="8" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+              <line x1="0" y1="0" x2="0" y2="8" stroke="var(--c97-rule)" strokeWidth="2" />
+            </pattern>
+          </defs>
+          <rect x={0} y={TRACE_BASE - TRACE_AMP} width={oldestX * W - 6} height={TRACE_AMP + 12} fill="url(#quake-uncovered)" />
+          <text x={8} y={TRACE_BASE - TRACE_AMP + 16} className="c97-quake-axis">
+            Older quakes are outside the log
+          </text>
+        </g>
+      ) : null}
       <line x1={0} x2={W} y1={TRACE_BASE} y2={TRACE_BASE} stroke="var(--c97-rule)" strokeWidth={1} />
       {[0, 6, 12, 18, 24].map((hour) => (
         <text
@@ -119,12 +145,12 @@ export function EarthquakeSignature({ quakes, windowEnd, selectedId, onSelect }:
         />
       ) : null}
       <text
-        x={labelEnd ? strongest.x * W - 8 : strongest.x * W + 8}
-        y={TRACE_BASE - strongest.height * TRACE_AMP + 4}
-        textAnchor={labelEnd ? "end" : "start"}
+        x={labelSpike ? (labelEnd ? labelSpike.x * W - 8 : labelSpike.x * W + 8) : W - 4}
+        y={labelSpike ? TRACE_BASE - labelSpike.height * TRACE_AMP + 4 : TRACE_BASE - TRACE_AMP + 16}
+        textAnchor={labelSpike && !labelEnd ? "start" : "end"}
         className="c97-quake-label"
       >
-        {label}
+        {labelSpike ? label : `Strongest today ${label}`}
       </text>
 
       {[-150, -120, -90, -60, -30, 0, 30, 60, 90, 120, 150].map((lon) => (

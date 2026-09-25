@@ -1,5 +1,8 @@
 export type EarthquakeView = "recent" | "significant" | "regions";
 
+/** The snapshot keeps this many of the newest M2.5+ quakes as the Recent log. */
+export const EARTHQUAKE_RECENT_LIMIT = 48;
+
 export interface EarthquakeRouteState {
   view: EarthquakeView;
   quake: string | null;

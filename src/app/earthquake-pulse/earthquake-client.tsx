@@ -606,6 +606,10 @@ export function EarthquakeClient({
         <EarthquakeSignature
           quakes={summary.recent}
           windowEnd={new Date(feedTime)}
+          strongest={{
+            magnitude: summary.heroStats.strongest24hMag,
+            place: summary.heroStats.strongest24hPlace,
+          }}
           selectedId={selectedQuakeId}
           onSelect={handleSelectQuake}
         />

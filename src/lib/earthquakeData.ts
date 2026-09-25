@@ -1,3 +1,4 @@
+import { EARTHQUAKE_RECENT_LIMIT } from "@/types/earthquake";
 import type {
   EarthquakeSnapshot,
   EarthquakeSummary,
@@ -30,7 +31,7 @@ const WEEK_URL = `${FEED_BASE}/2.5_week.geojson`;
 const SIGNIFICANT_MONTH_URL = `${FEED_BASE}/significant_month.geojson`;
 
 const REQUEST_TIMEOUT_MS = 15_000;
-const RECENT_LIMIT = 48;
+const RECENT_LIMIT = EARTHQUAKE_RECENT_LIMIT;
 const SIGNIFICANT_LIMIT = 24;
 const REGION_LIMIT = 12;
 /** Recent feed is noisy; only surface quakes at or above this magnitude. */
