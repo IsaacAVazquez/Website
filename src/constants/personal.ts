@@ -79,4 +79,11 @@ export const careerTimeline = [
     description: "I lead a client engagement for a global mobility technology company, managing stakeholder communication, workflow execution, and alignment across a consulting team.",
     techStack: ["Consulting", "Stakeholder Management", "Program Execution"],
   },
+  {
+    year: 2026,
+    role: "MBA Growth Intern",
+    company: "Juno",
+    description: "I spent the summer on Juno's MBA growth team, where I rebuilt the team's reporting into an hourly dashboard, set up conversion measurement, audited the email program, and took over the SMS program as its product manager.",
+    techStack: ["Growth Analytics", "SQL", "Google Analytics 4", "Customer.io", "Experimentation"],
+  },
 ];

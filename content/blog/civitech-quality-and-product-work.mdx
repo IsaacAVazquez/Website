@@ -1,0 +1,49 @@
+---
+title: "What I Built at Civitech, From the QA Function to Product Work"
+excerpt: "From January 2022 to August 2025 I was the QA analyst and then QA engineer at Civitech, which builds campaign software in Austin. Here is what I built there, from the QA function itself to product work on TextOut, RunningMate, pricing, and client data."
+publishedAt: "2026-09-25"
+category: "Career"
+tags: ["Career", "Quality Engineering", "Civic Tech", "Product Strategy", "Release Management", "Campaign Technology", "Google Cloud"]
+featured: false
+cluster: "Systems & Quality"
+author: "Isaac Vazquez"
+coverImage: "/writing/civitech-quality-and-product-work/opengraph-image"
+cta:
+  eyebrow: "For recruiters"
+  title: "See the full resume"
+  description: "The resume has every role in one place, and I am happy to walk through any of this work in more detail."
+  href: "/resume"
+  actionLabel: "Open the resume"
+seo:
+  title: "What I Built at Civitech, 2022 to 2025"
+  description: "How I built Civitech's QA function, owned product vision for its texting platform, led a $4M pricing initiative, and helped launch RunningMate."
+  keywords: ["Civitech", "QA engineer to product manager", "campaign technology", "peer-to-peer texting platform", "release management", "civic tech quality engineering", "RunningMate launch"]
+---
+
+# What I Built at Civitech, From the QA Function to Product Work
+
+From January 2022 to August 2025 I worked at Civitech, a SaaS company in Austin that builds software for political candidates and campaigns to reach and engage voters. My title was Quality Assurance Analyst for the first three years and Quality Assurance Engineer for the last seven months, but the work grew well past testing. By the end I had owned the product vision for a texting platform, led a pricing initiative, helped launch a new campaign platform, and designed a real-time data system on Google Cloud. I think all of that happened because QA put me close to both the customer and the code, and I learned to use that position to decide what the product should do next.
+
+## Building the QA function from scratch
+
+I came to Civitech through Open Progress, the digital strategy consultancy where I had spent two and a half years, when Civitech acquired it. I joined Civitech's applications engineering team as its only QA analyst, which meant there was no testing process to inherit. I designed how the team planned and ran tests across several products, including a peer-to-peer texting platform, an email platform, and a data analysis and visualization tool I was the lead QA for at launch. I kept a central testing wiki organized by application and component, so anyone could look up how a feature was supposed to behave without asking me.
+
+On releases, I worked with engineering and DevOps to set new deployment rules that raised the bar for what could ship, and critical production defects dropped 90% while NPS went from 23 to 36, because customers stopped running into the problems that had been reaching them. For a seasonal application with embedded workflows and PDF reading, I built end-to-end automated tests, wired them into the pipeline so they ran on every code push, and documented the setup so the next season's run would not depend on anyone remembering how it worked. One of the last things I did before leaving was make the automated suite strong enough to run in CI as part of every release, so the team kept its test coverage after the only QA person was gone.
+
+## Owning the texting platform
+
+The product work started with TextOut, Civitech's peer-to-peer texting platform, which lets campaigns reach voters through personal, conversation-based text messages. I owned its product vision, which meant talking with customers directly about where they were struggling and prioritizing features on a measured estimate of their impact, and that work drove a 35% increase in engagement. The biggest project during that time was an eighteen-month rewrite that moved an application assembled piece by piece over the years onto a current version of ASP.NET, with one consistent design language, better performance, and a cleaner experience for users. I worked on the feature definitions, user journeys, customer interviews, UI and UX direction, and some of the front-end code.
+
+The research habit I am proudest of from TextOut is how I ran alpha demos. I had client administrators and power users work through their own real workflows in the new builds, which surfaced problems a scripted tour would have skipped. Those conversations showed that the messaging window was cutting off message content, so I wrote the user story and the business case, got it into the sprint, and the fix shipped within a week. I read Google Analytics and Hotjar data alongside the customer feedback to find where people got stuck, and I weighed each customer request against how many customers it would help, what it would cost engineering, and how important that customer was, so a single loud request did not automatically become a commitment. I wrote the longer version of this in [Owning a Peer-to-Peer Texting Platform When Campaign Calendars Don't Move](/writing/textout-platform).
+
+During the same years I led a cross-functional pricing strategy with engineering, sales, and finance, built on market analysis and financial modeling, and it generated $4M in additional revenue. How that came together is in [Treating Pricing as Product Work, Not a Finance-Only Exercise](/writing/pricing-strategy-initiative).
+
+## Launching RunningMate and moving clients to self-service data
+
+In February 2025 I moved into the Quality Assurance Engineer role, and in that role I worked on the launch of RunningMate, an all-in-one campaign platform for candidates that covers work like campaign setup and fundraising. I translated feedback from leadership and users into product requirements and quality acceptance criteria that engineering, design, and go-to-market teams could all work from. I standardized manual and automated testing across two core products, which moved releases from monthly to biweekly and cut release validation time 30%, and I built AI-powered QA and workflow automation that cut bug triage time 40%. In the same role I redesigned onboarding tutorials and first-time user flows after analyzing clickstream data, which lifted activation 25%. [Launching RunningMate by Treating Quality as Product Definition](/writing/runningmate-platform-launch) goes further into the launch.
+
+The last project I'd single out is the data system. A long-standing client was receiving its campaign data as unnormalized nightly dumps, which meant performance data arrived a day late and in a shape that took work to use. I worked between the client and our data engineers to design a real-time event system on Google Cloud that delivered individual events as they happened, and I made the business case to get it into the sprint. It moved clients from waiting on us for their data to pulling it themselves, and it cut client onboarding time 60%.
+
+## What I took with me
+
+I left in August 2025 to start my MBA at Berkeley Haas, because I wanted to use my background in data and quality engineering to move fully into product management. The pattern I'd pull out of Civitech is that the QA seat gave me what product work needs most, which is direct contact with customers at the moment they hit a problem and enough knowledge of the code to explain what went wrong and what it would take to fix. Every product call I made there, from which TextOut feature to build next, to what RunningMate's acceptance criteria should say, to whether a client's data problem deserved a sprint, came from that position. It is also the habit I took into my summer at [Juno](/writing/juno-mba-growth-internship), where most of my work started with checking whether the growth team's numbers measured what everyone assumed they measured.
