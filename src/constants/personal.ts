@@ -44,7 +44,7 @@ export const careerTimeline = [
     role: "Quality Assurance Analyst",
     company: "CIVITECH",
     logo: "/images/logos/civitech-logo.png",
-    description: "I led a cross-functional pricing strategy that brought engineering, sales, and finance together around product value, and it generated $4M in additional revenue through market analysis and financial modeling.",
+    description: "I led a cross-functional pricing strategy that brought engineering, sales, and finance together around product value, and it generated $4M in additional revenue in 2024 through market analysis and financial modeling.",
     techStack: ["Product Strategy", "Financial Modeling", "Market Analysis", "Cross-functional Leadership"],
   },
   {
@@ -60,7 +60,7 @@ export const careerTimeline = [
     role: "Quality Assurance Engineer",
     company: "CIVITECH",
     logo: "/images/logos/civitech-logo.png",
-    description: "I led the launch of the RunningMate platform, turning cross-functional feedback into user stories and quality acceptance criteria. NPS moved from 23 to 36, releases went from monthly to biweekly, and a Google Cloud event system I built cut client onboarding time 60%.",
+    description: "I led the launch of the RunningMate platform, turning cross-functional feedback into user stories and quality acceptance criteria. Releases went from monthly to biweekly, and a Google Cloud event system I built cut client onboarding time 60%.",
     techStack: ["Product Development", "DevOps Integration", "GCP", "AI/LLM Tools", "Release Management"],
   },
   {

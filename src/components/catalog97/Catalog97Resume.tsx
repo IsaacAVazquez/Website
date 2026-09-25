@@ -99,7 +99,7 @@ const experience: Entry[] = [
     when: "Jan 2022 to Jan 2025",
     kind: "Full time",
     description:
-      "Owned product vision for a peer-to-peer texting platform, prioritizing features from direct customer conversations and quantitative impact assessments that drove a 35% increase in engagement. Led a cross-functional pricing strategy across engineering, sales, and finance that generated $4M in additional revenue, and pushed release standards to 99.999% uptime, cutting critical defects 90% and improving release efficiency 50%.",
+      "Owned product vision for a peer-to-peer texting platform, prioritizing features from direct customer conversations and quantitative impact assessments that drove a 35% increase in engagement. Led a cross-functional pricing strategy across engineering, sales, and finance that generated $4M in additional revenue in 2024, and pushed release standards to 99.999% uptime, cutting critical defects 90% and improving release efficiency 50%.",
   },
   {
     role: "Client Services Manager",
