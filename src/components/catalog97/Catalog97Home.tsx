@@ -244,7 +244,8 @@ export function Catalog97Home({
                 <span className="c97-kicker c97-tabular">
                   {project.timeline}
                 </span>
-                <span className="c97-serif c97-h3">{project.title}</span>
+                {/* A heading, so screen readers can move between projects. */}
+                <h3 className="c97-serif c97-h3">{project.title}</h3>
                 <span className={styles.workSummary}>
                   {getProjectCardSummary(project)}
                 </span>

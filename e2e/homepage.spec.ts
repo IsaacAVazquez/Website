@@ -164,7 +164,10 @@ test.describe('Homepage', () => {
     await expect(selectedWork).toBeVisible()
     await expect(recentWriting).toBeVisible()
     await expect(page.getByRole('heading', { name: /^dashboards$/i })).toBeVisible()
-    expect(await selectedWork.locator('a[href^="/portfolio/"]').count()).toBeGreaterThan(0)
+    // Every current case study became a live tool, so the cards link straight
+    // to the tool instead of through the /portfolio/<slug> redirect.
+    expect(await selectedWork.locator('a[href]').count()).toBeGreaterThan(0)
+    expect(await selectedWork.locator('a[href^="/portfolio/"]').count()).toBe(0)
     expect(await recentWriting.locator('a[href^="/writing/"]').count()).toBeGreaterThan(0)
   })
 

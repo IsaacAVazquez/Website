@@ -2,6 +2,7 @@
 title: "Preventing Outages by Tying Performance Monitoring to User Workflows"
 excerpt: "I built a performance intelligence workflow that connected monitoring, load testing, and incident review into a single loop. The shift was framing performance work around user impact instead of raw infrastructure metrics."
 publishedAt: "2026-04-29"
+updatedAt: "2026-09-25"
 category: "Reliability"
 tags: ["Reliability", "Performance", "Monitoring", "SRE", "Incident Review", "Observability"]
 featured: false
@@ -10,7 +11,7 @@ author: "Isaac Vazquez"
 coverImage: "/writing/proactive-performance-intelligence/opengraph-image"
 seo:
   title: "Proactive Performance Intelligence: Monitoring Tied to User Workflows"
-  description: "How I built a performance monitoring and incident review workflow that cut load times 60%, raised uptime to 99.95%, and detected 85% of issues before user impact."
+  description: "How I built a performance monitoring and incident review workflow that kept uptime at 99.999% and caught more issues before users felt them."
   keywords: ["performance monitoring strategy", "proactive observability", "incident review", "user-impact alerting", "SRE practice", "load testing workflow"]
 ---
 
@@ -32,7 +33,7 @@ The principles ended up being clear. Set alert thresholds around user impact ins
 
 ## What Changed
 
-Page load times dropped by 60%. Uptime improved to 99.95%. Proactive issue detection reached 85%, meaning the majority of issues were caught before users felt them. Performance reporting became part of regular product review instead of an artifact of incident response.
+Uptime reached 99.999%, and more issues were caught before users felt them. Performance reporting became part of regular product review instead of an artifact of incident response.
 
 The cultural change was the harder thing to measure. Performance tradeoffs started showing up in planning conversations. Engineers could point at a workflow and say "this is going to start hurting at scale" with evidence behind the claim. Stakeholders could see which reliability investments would pay off in customer experience. The team stopped arguing about whether to do the work and started arguing about which slice of the work was worth doing first.
 
@@ -42,4 +43,4 @@ Monitoring is only useful when it changes what the team does next. A dashboard n
 
 The other thing I would change next time is pairing the dashboards with runbooks earlier. Each alert needed a clearer owner and a clearer first-response path, and that part of the system would have made the early days of the rollout less ambiguous than it ended up being.
 
-If you want the broader thesis, [Building Reliable Software Systems](/writing/building-reliable-software-systems) is the long-form companion, and [Scaling a Civic Engagement Platform from 5M to 60M+ Users](/writing/scaling-civic-engagement-platform) is the same set of instincts applied to scale instead of to monitoring directly.
+If you want the broader thesis, [Building Reliable Software Systems](/writing/building-reliable-software-systems) is the long-form companion, and [Keeping a Civic Engagement Platform Reliable While It Reached 60M+ Voters](/writing/scaling-civic-engagement-platform) is the same set of instincts applied to scale instead of to monitoring directly.
