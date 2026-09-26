@@ -13,7 +13,7 @@ export const formula1Snapshot: Formula1Snapshot = {
     "constructorStandings": "https://api.openf1.org/v1/championship_teams?session_key=11377"
   },
   "season": 2026,
-  "generatedAt": "2026-09-26T16:17:31.978Z",
+  "generatedAt": "2026-09-26T21:02:49.725Z",
   "defaultMeetingKey": "1308",
   "standingsMeetingKey": "1295",
   "meetings": [
@@ -6856,22 +6856,6 @@ export const formula1Snapshot: Formula1Snapshot = {
         },
         {
           "position": 13,
-          "driverNumber": 5,
-          "driverName": "Gabriel BORTOLETO",
-          "broadcastName": "G BORTOLETO",
-          "acronym": "BOR",
-          "teamName": "Audi",
-          "teamColor": "#F50537",
-          "headshotUrl": "https://media.formula1.com/d_driver_fallback_image.png/content/dam/fom-website/drivers/G/GABBOR01_Gabriel_Bortoleto/gabbor01.png.transform/1col/image.png",
-          "lapsCompleted": 51,
-          "points": 0,
-          "status": "classified",
-          "statusLabel": "Finished",
-          "gapToLeaderLabel": "+34.230s",
-          "durationLabel": "1:38:36.373"
-        },
-        {
-          "position": 14,
           "driverNumber": 81,
           "driverName": "Oscar PIASTRI",
           "broadcastName": "O PIASTRI",
@@ -6887,7 +6871,7 @@ export const formula1Snapshot: Formula1Snapshot = {
           "durationLabel": "1:38:38.544"
         },
         {
-          "position": 15,
+          "position": 14,
           "driverNumber": 11,
           "driverName": "Sergio PEREZ",
           "broadcastName": "S PEREZ",
@@ -6901,6 +6885,22 @@ export const formula1Snapshot: Formula1Snapshot = {
           "statusLabel": "Finished",
           "gapToLeaderLabel": "+41.400s",
           "durationLabel": "1:38:43.543"
+        },
+        {
+          "position": 15,
+          "driverNumber": 5,
+          "driverName": "Gabriel BORTOLETO",
+          "broadcastName": "G BORTOLETO",
+          "acronym": "BOR",
+          "teamName": "Audi",
+          "teamColor": "#F50537",
+          "headshotUrl": "https://media.formula1.com/d_driver_fallback_image.png/content/dam/fom-website/drivers/G/GABBOR01_Gabriel_Bortoleto/gabbor01.png.transform/1col/image.png",
+          "lapsCompleted": 51,
+          "points": 0,
+          "status": "classified",
+          "statusLabel": "Finished",
+          "gapToLeaderLabel": "+44.230s",
+          "durationLabel": "1:38:46.373"
         },
         {
           "position": 16,
@@ -8291,22 +8291,6 @@ export const formula1Snapshot: Formula1Snapshot = {
       },
       {
         "position": 13,
-        "driverNumber": 5,
-        "driverName": "Gabriel BORTOLETO",
-        "broadcastName": "G BORTOLETO",
-        "acronym": "BOR",
-        "teamName": "Audi",
-        "teamColor": "#F50537",
-        "headshotUrl": "https://media.formula1.com/d_driver_fallback_image.png/content/dam/fom-website/drivers/G/GABBOR01_Gabriel_Bortoleto/gabbor01.png.transform/1col/image.png",
-        "lapsCompleted": 51,
-        "points": 0,
-        "status": "classified",
-        "statusLabel": "Finished",
-        "gapToLeaderLabel": "+34.230s",
-        "durationLabel": "1:38:36.373"
-      },
-      {
-        "position": 14,
         "driverNumber": 81,
         "driverName": "Oscar PIASTRI",
         "broadcastName": "O PIASTRI",
@@ -8322,7 +8306,7 @@ export const formula1Snapshot: Formula1Snapshot = {
         "durationLabel": "1:38:38.544"
       },
       {
-        "position": 15,
+        "position": 14,
         "driverNumber": 11,
         "driverName": "Sergio PEREZ",
         "broadcastName": "S PEREZ",
@@ -8336,6 +8320,22 @@ export const formula1Snapshot: Formula1Snapshot = {
         "statusLabel": "Finished",
         "gapToLeaderLabel": "+41.400s",
         "durationLabel": "1:38:43.543"
+      },
+      {
+        "position": 15,
+        "driverNumber": 5,
+        "driverName": "Gabriel BORTOLETO",
+        "broadcastName": "G BORTOLETO",
+        "acronym": "BOR",
+        "teamName": "Audi",
+        "teamColor": "#F50537",
+        "headshotUrl": "https://media.formula1.com/d_driver_fallback_image.png/content/dam/fom-website/drivers/G/GABBOR01_Gabriel_Bortoleto/gabbor01.png.transform/1col/image.png",
+        "lapsCompleted": 51,
+        "points": 0,
+        "status": "classified",
+        "statusLabel": "Finished",
+        "gapToLeaderLabel": "+44.230s",
+        "durationLabel": "1:38:46.373"
       },
       {
         "position": 16,
