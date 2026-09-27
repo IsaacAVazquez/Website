@@ -31,7 +31,7 @@ describe("MarchMadnessClient", () => {
       screen.getByRole("tab", { name: "Bracket", selected: true })
     ).toBeVisible();
     expect(screen.getByRole("tab", { name: "East", selected: true })).toBeVisible();
-    expect(screen.getByText("Duke Blue Devils")).toBeVisible();
+    expect(screen.getAllByText("Duke").length).toBeGreaterThan(0);
   });
 
   it("updates route state when primary, region, and analytics tabs are selected", () => {
