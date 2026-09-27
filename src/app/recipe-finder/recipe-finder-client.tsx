@@ -237,7 +237,7 @@ export function RecipeFinderClient() {
             value: bestMatch ? bestMatch.recipe.title : "—",
             detail:
               bestMatch && bestMatchCard
-                ? `${bestMatchCard.counts.have} of ${bestMatchCard.counts.have + bestMatchCard.counts.need} ingredients ticked`
+                ? `${bestMatchCard.lines.filter((line) => line.have).length} of ${bestMatchCard.lines.length} ingredients ticked, first in the list below`
                 : undefined,
           },
         ]}
@@ -261,21 +261,6 @@ export function RecipeFinderClient() {
             </p>
           </div>
 
-          {bestMatch ? (
-            <div>
-              <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-2)" }}>
-                Closest match
-              </p>
-              <RecipeIndexCard
-                recipe={bestMatch.recipe}
-                pantry={pantry}
-                isOpen={openRecipeId === bestMatch.recipe.id}
-                onToggleSteps={() =>
-                  setOpenRecipeId((current) => (current === bestMatch.recipe.id ? null : bestMatch.recipe.id))
-                }
-              />
-            </div>
-          ) : null}
         </div>
       </Catalog97ProjectHero>
 

@@ -6,6 +6,7 @@ import {
   formatAdmission,
   getMuseumExhibitStatus,
   formatRuntime,
+  formatUpdated,
   sortMuseums,
   starFractions,
   visitStamp,
@@ -206,5 +207,11 @@ describe("museum-log-helpers", () => {
 
   it("returns null for an invalid visit date", () => {
     expect(visitStamp("not-a-date")).toBeNull();
+  });
+});
+
+describe("formatUpdated", () => {
+  it("names the year, so the as-of line still reads a year later", () => {
+    expect(formatUpdated("2026-04-27T23:00:00")).toMatch(/2026/);
   });
 });

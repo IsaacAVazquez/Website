@@ -42,7 +42,20 @@
 /* At phone width the SVG scales to roughly a third, so its type is set
  * larger in viewBox units, and the sweet-spot day labels drop since the
  * shaded band and the body copy below already carry that number. */
+/* Each fitted label prints twice, one fitted per type size, and only one shows. */
+.c97-fare-narrow {
+  display: none;
+}
+
 @media (max-width: 639px) {
+  .c97-fare-wide {
+    display: none;
+  }
+
+  .c97-fare-narrow {
+    display: inline;
+  }
+
   .c97-fare-kicker,
   .c97-fare-axis-minor,
   .c97-fare-prompt {

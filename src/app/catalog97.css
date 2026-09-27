@@ -1284,6 +1284,8 @@ body:has(.c97-page) {
 .c97-field {
   min-height: 48px;
   border: 0;
+  /* The printed edge. On paper and bone the panel shares the field's tint, so the rule is what shows where the field is. */
+  border-bottom: 1px solid var(--c97-ink-2);
   border-radius: 0;
   padding: 0 var(--c97-sp-2);
   background: var(--c97-field);
@@ -2260,6 +2262,24 @@ select.c97-field {
 .c97-btn-outline.c97-offset:active {
   box-shadow: none;
   transform: translate(4px, 4px);
+}
+
+/*
+ * A disabled control reads as unprinted, with no fill, a dashed edge, and no
+ * offset. Its text keeps ink-2, so it stays legible, and nothing is dimmed
+ * with opacity. Controls inside a disabled fieldset match :disabled too.
+ */
+.c97-btn:disabled,
+.c97-btn-invert:disabled,
+.c97-btn-outline:disabled,
+.c97-btn-ghost:disabled,
+.c97-field:disabled {
+  background: none;
+  color: var(--c97-ink-2);
+  border: 1px dashed var(--c97-ink-2);
+  box-shadow: none;
+  transform: none;
+  cursor: not-allowed;
 }
 
 

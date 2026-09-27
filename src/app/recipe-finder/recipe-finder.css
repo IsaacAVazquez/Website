@@ -1,15 +1,9 @@
 /* Recipe Finder: the pantry shelf and the ruled index card grid. */
 
+/* The hero holds the shelf only. Its closest match is the first card in the grid below. */
 .c97-recipe-hero-grid {
   display: grid;
-  gap: var(--c97-sp-5);
-  align-items: start;
-}
-
-@media (min-width: 960px) {
-  .c97-recipe-hero-grid {
-    grid-template-columns: minmax(0, 1fr) minmax(320px, 440px);
-  }
+  max-width: 48rem;
 }
 
 /* --------------------------------------------------------------------------
@@ -117,7 +111,14 @@
   font-size: var(--c97-fs-body);
 }
 
-.c97-recipe-search input:focus {
+/* The ring goes on the whole field, icon included, so the input's own outline steps aside. */
+.c97-recipe-search:focus-within {
+  outline: 2px solid var(--c97-accent);
+  outline-offset: 3px;
+}
+
+.c97-recipe-search input:focus,
+.c97-recipe-search input:focus-visible {
   outline: none;
 }
 

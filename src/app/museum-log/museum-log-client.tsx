@@ -502,9 +502,9 @@ function JournalView({
     <div className="grid gap-8 lg:grid-cols-[minmax(0,1.7fr)_minmax(280px,1fr)]">
       <section>
         <p className="c97-kicker">Reviews</p>
-        <p className="c97-serif c97-h2" style={{ marginTop: "var(--c97-sp-1)" }}>
+        <h3 className="c97-serif c97-h2" style={{ marginTop: "var(--c97-sp-1)" }}>
           {snapshot.curatorName}&rsquo;s reviews
-        </p>
+        </h3>
         <p className="c97-prose" style={{ marginTop: "var(--c97-sp-1)" }}>
           {snapshot.curatorBio}
         </p>
@@ -526,9 +526,9 @@ function JournalView({
 
       <aside>
         <p className="c97-kicker">Diary</p>
-        <p className="c97-serif c97-h2" style={{ marginTop: "var(--c97-sp-1)" }}>
+        <h3 className="c97-serif c97-h2" style={{ marginTop: "var(--c97-sp-1)" }}>
           Stamped visits
-        </p>
+        </h3>
         <p className="c97-prose" style={{ marginTop: "var(--c97-sp-1)", fontSize: "var(--c97-fs-small)" }}>
           Every visit logged to the diary, dated when it happened.
         </p>
@@ -627,11 +627,12 @@ function VisitStampCard({
       style={{ borderTop: "1px solid var(--c97-rule)", paddingBlock: "var(--c97-sp-3)" }}
     >
       {stamp ? (
-        <div className="c97-visit-stamp" aria-hidden="true">
-          <span className="c97-visit-stamp-month">{stamp.month}</span>
-          <span className="c97-visit-stamp-day">{stamp.day}</span>
-          <span className="c97-visit-stamp-year">{stamp.year}</span>
-        </div>
+        <time dateTime={entry.date} className="c97-visit-stamp">
+          <span className="sr-only">Visited {formatDate(entry.date)}</span>
+          <span className="c97-visit-stamp-month" aria-hidden="true">{stamp.month}</span>
+          <span className="c97-visit-stamp-day" aria-hidden="true">{stamp.day}</span>
+          <span className="c97-visit-stamp-year" aria-hidden="true">{stamp.year}</span>
+        </time>
       ) : (
         <div />
       )}
@@ -712,9 +713,9 @@ function ListsView({
           <p className="c97-kicker">
             Exhibition catalogue · {museums.length} {museums.length === 1 ? "museum" : "museums"}
           </p>
-          <p className="c97-serif c97-h2" style={{ marginTop: "var(--c97-sp-1)" }}>
+          <h3 className="c97-serif c97-h2" style={{ marginTop: "var(--c97-sp-1)" }}>
             {selectedList.title}
-          </p>
+          </h3>
           <p className="c97-prose" style={{ marginTop: "var(--c97-sp-2)" }}>
             {selectedList.description}
           </p>
@@ -788,7 +789,7 @@ function ListPreviewCard({
       <p className="c97-kicker">
         Exhibition catalogue · {count} {count === 1 ? "museum" : "museums"}
       </p>
-      <p className="c97-serif c97-h3">{list.title}</p>
+      <h3 className="c97-serif c97-h3">{list.title}</h3>
       <p className="c97-prose" style={{ fontSize: "var(--c97-fs-small)" }}>
         {list.description}
       </p>
@@ -957,9 +958,9 @@ function MuseumDetailView({
                 <span className="c97-stub-meta">Visited {formatDate(review.dateVisited)}</span>
                 {review.liked && <Heart size={14} fill="var(--c97-ink)" stroke="var(--c97-ink)" aria-label="Liked" />}
               </div>
-              <p className="c97-serif c97-h3" style={{ marginTop: "var(--c97-sp-2)" }}>
+              <h4 className="c97-serif c97-h3" style={{ marginTop: "var(--c97-sp-2)" }}>
                 {review.headline}
-              </p>
+              </h4>
               <p className="c97-prose" style={{ marginTop: "var(--c97-sp-3)" }}>
                 {review.body}
               </p>
@@ -980,9 +981,9 @@ function MuseumDetailView({
 
           <section className="c97-panel" style={{ padding: "var(--c97-sp-4)" }}>
             <p className="c97-kicker">Highlights</p>
-            <p className="c97-serif c97-h3" style={{ marginTop: "var(--c97-sp-1)" }}>
+            <h3 className="c97-serif c97-h3" style={{ marginTop: "var(--c97-sp-1)" }}>
               What to actually see
-            </p>
+            </h3>
             <ul className="c97-list" style={{ marginTop: "var(--c97-sp-3)" }}>
               {museum.highlights.map((h) => (
                 <li key={h}>{h}</li>
@@ -993,9 +994,9 @@ function MuseumDetailView({
           {museum.exhibits.length > 0 && (
             <section className="c97-panel" style={{ padding: "var(--c97-sp-4)" }}>
               <p className="c97-kicker">Exhibition calendar</p>
-              <p className="c97-serif c97-h3" style={{ marginTop: "var(--c97-sp-1)" }}>
+              <h3 className="c97-serif c97-h3" style={{ marginTop: "var(--c97-sp-1)" }}>
                 Current, upcoming, and past
-              </p>
+              </h3>
               <ol style={{ listStyle: "none", margin: 0, padding: 0, marginTop: "var(--c97-sp-3)" }}>
                 {museum.exhibits.map((ex) => {
                   const status = getMuseumExhibitStatus(ex, today);
@@ -1071,9 +1072,9 @@ function MuseumDetailView({
           {visitLogEntries.length > 0 && (
             <section className="c97-panel" style={{ padding: "var(--c97-sp-4)" }}>
               <p className="c97-kicker">Curator history</p>
-              <p className="c97-serif c97-h3" style={{ marginTop: "var(--c97-sp-1)" }}>
+              <h3 className="c97-serif c97-h3" style={{ marginTop: "var(--c97-sp-1)" }}>
                 Past visits
-              </p>
+              </h3>
               <ol style={{ listStyle: "none", margin: 0, padding: 0, marginTop: "var(--c97-sp-2)" }}>
                 {visitLogEntries.map((entry) => (
                   <li
@@ -1386,12 +1387,15 @@ export function MuseumLogClient({ initialState, snapshot }: Props) {
 
       <section className="c97-band c97-sheet" data-c97-surface="paper" data-seam="torn">
         <div className="c97-shell">
+          <h2 className="c97-poster-sm" style={{ marginBottom: "var(--c97-sp-4)" }}>
+            {navItems.find((item) => item.id === activeView)?.label}
+          </h2>
           <div
             className="flex flex-wrap items-center gap-3"
             style={{ justifyContent: "space-between" }}
           >
             <nav aria-label="Section navigation">
-              <div className="c97-segmented" role="tablist" aria-label="Museum Log view switcher">
+              <div className="c97-segmented">
                 {navItems.map((item) => {
                   const Icon = item.icon;
                   const isActive = item.id === activeView;
@@ -1399,10 +1403,7 @@ export function MuseumLogClient({ initialState, snapshot }: Props) {
                     <button
                       key={item.id}
                       type="button"
-                      role="tab"
-                      id={`museum-log-tab-${item.id}`}
-                      aria-controls={`museum-log-tabpanel-${item.id}`}
-                      aria-selected={isActive}
+                      aria-pressed={isActive}
                       onClick={() => handleViewChange(item.id)}
                       className="min-h-[44px] text-sm font-semibold"
                     >
@@ -1439,7 +1440,7 @@ export function MuseumLogClient({ initialState, snapshot }: Props) {
           ) : null}
 
           <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,320px)]" style={{ marginTop: "var(--c97-sp-5)" }}>
-            <div role="tabpanel" id={`museum-log-tabpanel-${activeView}`} aria-labelledby={`museum-log-tab-${activeView}`}>
+            <div>
               {activeView === "discover" && (
                 <DiscoverView
                   snapshot={snapshot}

@@ -44,16 +44,16 @@
 }
 
 .c97-wine-end {
+  box-sizing: border-box;
   width: 1.5rem;
   height: 1.5rem;
   border-radius: 50%;
   background: var(--wine-mark);
-  box-shadow: inset 0 0 0 2px var(--c97-surface);
 }
 
 .c97-wine-end[data-hollow="true"] {
   background: none;
-  box-shadow: inset 0 0 0 3px var(--wine-mark);
+  border: 4px solid var(--wine-mark);
 }
 
 .c97-wine-cubby-label {
@@ -194,6 +194,7 @@
 .c97-wine-label-notes {
   font-size: var(--c97-fs-small);
   font-style: italic;
+  white-space: pre-line;
 }
 
 .c97-wine-label-foot {
@@ -233,13 +234,33 @@
   background: var(--c97-field);
 }
 
+/* The track is a hairline box, since the panel it sits on shares the field tint. */
 .c97-wine-bar-track {
   height: 8px;
-  background: var(--c97-field);
+  border: 1px solid var(--c97-rule);
 }
 
 .c97-wine-bar-fill {
   height: 100%;
   border-width: 0;
   box-sizing: border-box;
+}
+
+/* The sort direction toggle, a square the height of the field beside it. */
+.c97-wine-icon-btn {
+  flex: 0 0 48px;
+  display: inline-grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  border: 1px solid var(--c97-ink-2);
+  background: none;
+  color: var(--c97-ink);
+  font-size: var(--c97-fs-body);
+  cursor: pointer;
+}
+
+.c97-wine-icon-btn:hover {
+  background: var(--c97-ink);
+  color: var(--c97-surface);
 }

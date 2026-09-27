@@ -67,4 +67,22 @@ describe("WINE_TYPE_MARK", () => {
     expect(new Set(pairs).size).toBe(WINE_TYPES.length);
     expect(WINE_TYPES.length).toBe(7);
   });
+
+  /*
+   * In light mode chart-4 and chart-5 sit within a few shades of chart-6 and
+   * chart-2, so the rack only prints on the four steps that read apart, and
+   * a type's lighter sibling is the hollow mark of the same step.
+   */
+  it("prints only on the four steps that read apart", () => {
+    const tokens = new Set(WINE_TYPES.map((type) => WINE_TYPE_MARK[type].token));
+    for (const token of tokens) {
+      expect(["--c97-chart-1", "--c97-chart-2", "--c97-chart-3", "--c97-chart-6"]).toContain(token);
+    }
+  });
+
+  it("prints red in the wine-coloured step and rose as its hollow sibling", () => {
+    expect(WINE_TYPE_MARK.red).toEqual({ token: "--c97-chart-3", hollow: false });
+    expect(WINE_TYPE_MARK.rose).toEqual({ token: "--c97-chart-3", hollow: true });
+  });
 });
+

@@ -4,11 +4,10 @@
    Family 8 migration: the route's old self-contained "--fm-*" palette is
    gone. Every colour now reads from the shared --c97-* tokens declared on
    whichever [data-c97-surface] a piece of markup sits inside (ink-vermilion
-   for the masthead, paper for the workbench below). Curator colours
-   (food-map-data.ts) are the one real exception: they are DATA, so they stay
-   as literal hex passed in through inline `--fm-accent`/`background` from the
-   component, exactly the way team liveries and line colours do elsewhere in
-   Catalog 97. This file only ever *reads* `var(--fm-accent)`. It never
+   for the masthead, paper for the workbench below). Curator colours come
+   from the chart ramp (food-map-data.ts) and arrive through the inline
+   `--fm-accent`/`background` the component sets per curator or place.
+   This file only ever *reads* `var(--fm-accent)`. It never
    declares it, and only ever paints that data colour onto a swatch, dot, or
    border, never onto running text (categorical colour on small text falls
    under 4.5:1).
@@ -401,10 +400,14 @@
   background: var(--c97-panel) !important;
   color: var(--c97-ink) !important;
   border: 1px solid var(--c97-rule);
+  /* Leaflet's CDN sheet rounds and blurs the popup; the print shop allows neither. */
+  border-radius: 0 !important;
+  box-shadow: none !important;
 }
 .fm-map .leaflet-popup-tip {
   background: var(--c97-panel) !important;
   border: 1px solid var(--c97-rule);
+  box-shadow: none !important;
 }
 .fm-map .leaflet-popup-content { margin: var(--c97-sp-2) var(--c97-sp-2); font-family: var(--c97-font-body); }
 .fm-map .fm-popup-title {

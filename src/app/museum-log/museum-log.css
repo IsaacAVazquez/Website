@@ -63,7 +63,7 @@
   font-variant-numeric: tabular-nums;
 }
 
-/* An unfilled stub for the empty first-visit state — no offset, since nothing has been printed on it yet. */
+/* An unfilled stub for the empty first-visit state, with no offset, since nothing has been printed on it yet. */
 .c97-stub-empty {
   border-style: dashed;
   background: transparent;
@@ -96,7 +96,7 @@
 
 /*
  * The visit stamp: a rubber date stamp, printed a couple of degrees off true
- * the way a hand stamp never lands square. Rectangular — no radius.
+ * the way a hand stamp never lands square. Rectangular, with no radius.
  */
 .c97-visit-stamp {
   border: 2px solid var(--c97-ink-2);
@@ -190,6 +190,13 @@
   color: var(--c97-ink);
 }
 
-.c97-search-field input:focus {
+/* The ring goes on the whole field, icon included, so the input's own outline steps aside. */
+.c97-search-field:focus-within {
+  outline: 2px solid var(--c97-accent);
+  outline-offset: 3px;
+}
+
+.c97-search-field input:focus,
+.c97-search-field input:focus-visible {
   outline: none;
 }

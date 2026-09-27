@@ -69,4 +69,15 @@ describe("RecipeFinderClient", () => {
     fireEvent.click(firstRecipeButton);
     expect(firstRecipeButton).toHaveAttribute("aria-expanded", "true");
   });
+
+  it("prints each recipe card once, so its steps toggle controls one unique panel", () => {
+    window.localStorage.setItem("recipe-finder:pantry:v1", JSON.stringify(["egg", "spinach", "tomato", "onion"]));
+    const { container } = render(<RecipeFinderClient />);
+
+    const ids = [...container.querySelectorAll("[id]")].map((node) => node.id);
+    expect(ids.filter((id, index) => ids.indexOf(id) !== index)).toEqual([]);
+
+    const titles = [...container.querySelectorAll("article h3")].map((node) => node.textContent);
+    expect(titles.filter((title, index) => titles.indexOf(title) !== index)).toEqual([]);
+  });
 });

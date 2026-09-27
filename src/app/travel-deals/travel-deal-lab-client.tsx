@@ -43,6 +43,9 @@ import { fareGauge } from "./fareGauge";
 import { FareGaugeSignature } from "./FareGaugeSignature";
 import "./travel-deals.css";
 
+/** The whole-party quote cap, as the fare checker had it, so a 12-seat long-haul quote still fits. */
+const MAX_PARTY_FARE = 100_000;
+
 const STORAGE_KEY = "travel-deals:v1";
 const ROUTE = "/travel-deals";
 
@@ -259,7 +262,7 @@ export function TravelDealLabClient() {
   const lead = PROJECT_PRESS[ROUTE].lead;
   const standfirst =
     "A working tool for spending less on a trip without spending days on it. Set the shape of your trip below and I will place your fare on the gauge, mark where you sit in the booking window, tell you whether an award beats paying cash, and hand you the playbook and tools I actually use to find the deals.";
-  const disclosure = `Fare bands and the points baseline are rough editorial estimates as of ${TRAVEL_DEALS_AS_OF}, and none of them is a live quote, so I'd use them to judge a price you've already found.`;
+  const disclosure = `Fare bands and the points baseline are curated, unverified estimates as of ${TRAVEL_DEALS_AS_OF}, and none of them is a live quote, so I'd use them to judge a price you've already found.`;
 
   return (
     <>
@@ -267,7 +270,6 @@ export function TravelDealLabClient() {
         ink={lead}
         title="Travel Deal Lab"
         standfirst={standfirst}
-        meta={`Curated, unverified estimates as of ${TRAVEL_DEALS_AS_OF}`}
         readouts={[
           {
             label: "Your fare per seat",
@@ -347,13 +349,13 @@ export function TravelDealLabClient() {
                   type="number"
                   inputMode="numeric"
                   min={0}
-                  max={20_000}
+                  max={MAX_PARTY_FARE}
                   step={25}
                   value={quotedFare}
                   onChange={(event) => {
                     const next = Number(event.target.value);
                     if (!Number.isFinite(next)) return;
-                    setQuotedFare(Math.min(20_000, Math.max(0, next)));
+                    setQuotedFare(Math.min(MAX_PARTY_FARE, Math.max(0, next)));
                   }}
                   className="c97-field"
                 />

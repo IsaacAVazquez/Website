@@ -80,3 +80,22 @@ it("declares a riso constant for every ink", () => {
     expect(css).toMatch(new RegExp(`--c97-riso-${name}:\\s*#[0-9a-f]{6}`, "i"));
   }
 });
+
+/*
+ * On paper and bone the panel and the field share a tint, so a field needs a
+ * printed edge of its own. It uses ink-2, which the panel test above already
+ * holds at 4.5:1 on every panel, so the edge clears the 3:1 bar for controls.
+ */
+it("gives fields a printed edge in ink-2", () => {
+  const start = css.indexOf(".c97-field {");
+  expect(css.slice(start, css.indexOf("}", start))).toMatch(/border-bottom:\s*\d+px solid var\(--c97-ink-2\)/);
+});
+
+it("marks disabled buttons and fields without dimming their text", () => {
+  const rule = css.match(/([^{}]*:disabled[^{}]*)\{([^}]*)\}/);
+  expect(rule).not.toBeNull();
+  const [, selector, body] = rule!;
+  expect(selector).toMatch(/\.c97-btn/);
+  expect(selector).toMatch(/\.c97-field/);
+  expect(body).not.toMatch(/opacity/);
+});

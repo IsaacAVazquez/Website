@@ -386,7 +386,7 @@ export function WineCellarClient() {
                 ) : null}
               </div>
 
-              <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-[1.3fr_1fr_1fr_1.3fr]">
+              <div className="grid gap-3 sm:grid-cols-2">
                 <label className="c97-wine-search" aria-label="Search wines">
                   <Search className="h-3.5 w-3.5" aria-hidden="true" style={{ color: "var(--c97-ink-2)" }} />
                   <input
@@ -471,8 +471,7 @@ export function WineCellarClient() {
                           sortDirection: current.sortDirection === "asc" ? "desc" : "asc",
                         }))
                       }
-                      className="c97-btn-outline"
-                      style={{ minHeight: 48, minWidth: 48, justifyContent: "center" }}
+                      className="c97-wine-icon-btn"
                     >
                       {filters.sortDirection === "asc" ? "↑" : "↓"}
                     </button>
@@ -484,8 +483,8 @@ export function WineCellarClient() {
                 <button
                   type="button"
                   onClick={resetFilters}
-                  className="c97-btn-outline"
-                  style={{ display: "inline-flex", alignItems: "center", gap: "var(--c97-sp-1)" }}
+                  className="c97-btn-ghost"
+                  style={{ gap: "var(--c97-sp-1)" }}
                 >
                   <Filter className="h-3 w-3" aria-hidden="true" />
                   Reset filters
@@ -754,7 +753,7 @@ export function WineCellarClient() {
                     <button
                       type="submit"
                       disabled={!formDraft.name.trim()}
-                      className="c97-btn c97-offset flex-1 disabled:cursor-not-allowed"
+                      className="c97-btn c97-offset flex-1"
                       style={{ justifyContent: "center", gap: "var(--c97-sp-1)" }}
                     >
                       <Plus className="h-4 w-4" aria-hidden="true" />
@@ -764,8 +763,8 @@ export function WineCellarClient() {
                       <button
                         type="button"
                         onClick={resetForm}
-                        className="c97-btn-outline"
-                        style={{ display: "inline-flex", alignItems: "center", gap: "var(--c97-sp-1)" }}
+                        className="c97-btn-ghost"
+                        style={{ gap: "var(--c97-sp-1)" }}
                       >
                         <X className="h-3.5 w-3.5" aria-hidden="true" />
                         Cancel

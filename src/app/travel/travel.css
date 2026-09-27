@@ -119,11 +119,13 @@
   background: var(--mark-color, var(--c97-ink-2));
 }
 
+/* The key's overlap swatch is the same hatch over an ink fill. */
 .c97-travel-timeline-swatch[data-conflict="true"] {
+  background-color: var(--c97-ink);
   background-image: repeating-linear-gradient(
     45deg,
-    var(--c97-ink) 0,
-    var(--c97-ink) 3px,
+    var(--c97-surface) 0,
+    var(--c97-surface) 3px,
     transparent 3px,
     transparent 6px
   );
@@ -173,19 +175,22 @@
   right: 2px;
   min-height: 4px;
   background: var(--mark-color, var(--c97-ink-2));
-  cursor: pointer;
 }
 
 .c97-travel-timeline-mark[data-done="true"] {
   opacity: 0.5;
 }
 
-/* A hatch, not just a hue swap, so the overlap flag reads without relying on colour. */
+/*
+ * The overlap flag is a hatch in the plate's own paper, so it reads without
+ * relying on hue. Paper stripes clear 3.6:1 on every category fill in both
+ * themes, where ink stripes matched the darkest fill in light mode.
+ */
 .c97-travel-timeline-mark[data-conflict="true"] {
   background-image: repeating-linear-gradient(
     45deg,
-    var(--c97-ink) 0,
-    var(--c97-ink) 3px,
+    var(--c97-surface) 0,
+    var(--c97-surface) 3px,
     var(--mark-color, var(--c97-ink-2)) 3px,
     var(--mark-color, var(--c97-ink-2)) 6px
   );

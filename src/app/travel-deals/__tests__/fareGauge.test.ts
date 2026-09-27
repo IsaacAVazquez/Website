@@ -1,5 +1,5 @@
 import { getRegion } from "@/lib/travelDeals";
-import { bookingStrip, fareGauge } from "../fareGauge";
+import { bookingStrip, fareGauge, fitLabel } from "../fareGauge";
 
 const region = getRegion("western-europe")!;
 
@@ -92,5 +92,20 @@ describe("bookingStrip", () => {
     expect(strip.sweetSpot.start).toBeGreaterThan(0);
     expect(strip.sweetSpot.end).toBeLessThan(1);
     expect(strip.sweetSpot.start).toBeLessThan(strip.sweetSpot.end);
+  });
+});
+
+describe("fitLabel", () => {
+  it("centres a label on its mark when there is room", () => {
+    expect(fitLabel(300, 100, 0, 640)).toBe(300);
+  });
+
+  it("pulls a label in from either edge so it stays inside the plot", () => {
+    expect(fitLabel(20, 100, 0, 640)).toBe(50);
+    expect(fitLabel(630, 100, 0, 640)).toBe(590);
+  });
+
+  it("centres a label wider than the plot on the plot", () => {
+    expect(fitLabel(100, 800, 0, 640)).toBe(320);
   });
 });

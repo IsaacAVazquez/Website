@@ -2,6 +2,7 @@ import {
   countPlacesByCity,
   filterFoodMapPlaces,
   FOOD_MAP_CITIES,
+  FOOD_MAP_CURATORS,
   FOOD_MAP_PLACES,
   getCuisinesForCity,
   isFoodMapCityId,
@@ -82,4 +83,15 @@ describe("food-map-data", () => {
       expect(place.coords[1]).toBeGreaterThan(0);
     }
   });
+});
+
+/*
+ * Curator colours are categories the data doesn't already carry, so they come
+ * from the chart ramp and follow the theme. The pins are divIcon HTML inside
+ * the page, so a CSS variable resolves there.
+ */
+it("colours each curator from its own chart ramp step", () => {
+  const accents = FOOD_MAP_CURATORS.map((curator) => curator.accent);
+  for (const accent of accents) expect(accent).toMatch(/^var\(--c97-chart-[1-6]\)$/);
+  expect(new Set(accents).size).toBe(accents.length);
 });

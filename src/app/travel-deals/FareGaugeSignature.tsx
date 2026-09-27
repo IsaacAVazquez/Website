@@ -3,7 +3,7 @@
 import { useMemo } from "react";
 import type { DestinationRegion } from "@/types/travelDeals";
 import { formatUsd, type FareRating } from "@/lib/travelDeals";
-import { bookingStrip, fareGauge } from "./fareGauge";
+import { bookingStrip, fareGauge, fitLabel } from "./fareGauge";
 
 interface FareGaugeSignatureProps {
   quoted: number;
@@ -33,7 +33,7 @@ const NEEDLE_STEM_BOTTOM = GAUGE_TRACK_Y + GAUGE_TRACK_H + 6;
 // Strip rows: kicker, departure/sweet-spot labels above the track, the track
 // itself, then today's label (or the empty prompt) below it.
 const STRIP_TOP = 150;
-const STRIP_KICKER_Y = STRIP_TOP + 10;
+const STRIP_KICKER_Y = STRIP_TOP + 2;
 const STRIP_TRACK_Y = STRIP_TOP + 40;
 const STRIP_TRACK_H = 14;
 const STRIP_ABOVE_ROW_Y = STRIP_TRACK_Y - 14;
@@ -42,6 +42,27 @@ const STRIP_MARKER_BOTTOM = STRIP_TRACK_Y + STRIP_TRACK_H + 20;
 const STRIP_BELOW_ROW_Y = STRIP_TRACK_Y + STRIP_TRACK_H + 34;
 
 const H = 260;
+
+/*
+ * Mono glyphs advance about 0.62em. The label type is 15 units wide on a wide
+ * screen and 32 at phone width (travel-deals.css), so each label is fitted
+ * for both and the stylesheet shows the one that matches.
+ */
+const CHAR_WIDE = 15 * 0.62;
+const CHAR_NARROW = 32 * 0.62;
+
+function FittedLabel({ x, y, text, className }: { x: number; y: number; text: string; className: string }) {
+  return (
+    <>
+      <text x={fitLabel(x, text.length * CHAR_WIDE, 0, W)} y={y} textAnchor="middle" className={`${className} c97-fare-wide`}>
+        {text}
+      </text>
+      <text x={fitLabel(x, text.length * CHAR_NARROW, 0, W)} y={y} textAnchor="middle" className={`${className} c97-fare-narrow`}>
+        {text}
+      </text>
+    </>
+  );
+}
 
 const RATING_LABEL: Record<FareRating, string> = {
   steal: "Steal",
@@ -64,12 +85,14 @@ export function FareGaugeSignature({ quoted, region, departureDate, today }: Far
   const typicalX = X_LEFT + gauge.band.typical * TRACK_W;
   const bandX = X_LEFT + gauge.band.low * TRACK_W;
   const bandW = (gauge.band.high - gauge.band.low) * TRACK_W;
-  const needleAnchorEnd = gauge.needle > 0.72;
 
   const sweetX = X_LEFT + strip.sweetSpot.start * TRACK_W;
   const sweetW = (strip.sweetSpot.end - strip.sweetSpot.start) * TRACK_W;
   const todayX = strip.todayFraction !== null ? X_LEFT + strip.todayFraction * TRACK_W : null;
-  const todayAnchorEnd = strip.todayFraction !== null && strip.todayFraction > 0.72;
+  const sweetMaxLabel = `${region.sweetSpotMaxDays}d out`;
+  const sweetMinLabel = `${region.sweetSpotMinDays}d out`;
+  // A far-off departure stretches the strip and narrows the window, so its two edge labels merge into one.
+  const sweetLabelsFit = sweetW >= (sweetMaxLabel.length + sweetMinLabel.length) * CHAR_WIDE + 24;
 
   const fareDesc =
     quoted > 0
@@ -95,15 +118,12 @@ export function FareGaugeSignature({ quoted, region, departureDate, today }: Far
       </text>
 
       {quoted > 0 ? (
-        <text
+        <FittedLabel
           x={needleX}
           y={GAUGE_RATING_Y}
-          textAnchor={needleAnchorEnd ? "end" : "start"}
           className="c97-fare-label"
-        >
-          {formatUsd(quoted)} a seat · {RATING_LABEL[gauge.rating]}
-          {gauge.clamped ? " ›" : ""}
-        </text>
+          text={`${gauge.clamped === "low" ? "‹ " : ""}${formatUsd(quoted)} a seat · ${RATING_LABEL[gauge.rating]}${gauge.clamped === "high" ? " ›" : ""}`}
+        />
       ) : (
         <text x={W / 2} y={GAUGE_RATING_Y} textAnchor="middle" className="c97-fare-axis c97-fare-prompt">
           Add a quoted fare below to place it on the gauge
@@ -138,13 +158,26 @@ export function FareGaugeSignature({ quoted, region, departureDate, today }: Far
       <text x={X_LEFT} y={STRIP_KICKER_Y} className="c97-fare-kicker">
         Booking window
       </text>
-      <text x={sweetX} y={STRIP_ABOVE_ROW_Y} textAnchor="start" className="c97-fare-axis c97-fare-axis-minor">
-        {region.sweetSpotMaxDays}d out
-      </text>
-      <text x={sweetX + sweetW} y={STRIP_ABOVE_ROW_Y} textAnchor="end" className="c97-fare-axis c97-fare-axis-minor">
-        {region.sweetSpotMinDays}d out
-      </text>
-      <text x={X_RIGHT - 6} y={STRIP_ABOVE_ROW_Y} textAnchor="end" className="c97-fare-axis">
+      {sweetLabelsFit ? (
+        <>
+          <text x={sweetX} y={STRIP_ABOVE_ROW_Y} textAnchor="start" className="c97-fare-axis c97-fare-axis-minor">
+            {sweetMaxLabel}
+          </text>
+          <text x={sweetX + sweetW} y={STRIP_ABOVE_ROW_Y} textAnchor="end" className="c97-fare-axis c97-fare-axis-minor">
+            {sweetMinLabel}
+          </text>
+        </>
+      ) : (
+        <text
+          x={fitLabel(sweetX + sweetW / 2, `${region.sweetSpotMaxDays} to ${sweetMinLabel}`.length * CHAR_WIDE, 0, W)}
+          y={STRIP_ABOVE_ROW_Y}
+          textAnchor="middle"
+          className="c97-fare-axis c97-fare-axis-minor"
+        >
+          {`${region.sweetSpotMaxDays} to ${sweetMinLabel}`}
+        </text>
+      )}
+      <text x={X_RIGHT} y={STRIP_KICKER_Y} textAnchor="end" className="c97-fare-axis">
         Departure
       </text>
 
@@ -163,14 +196,12 @@ export function FareGaugeSignature({ quoted, region, departureDate, today }: Far
             strokeWidth={1.5}
             strokeDasharray="3 3"
           />
-          <text
+          <FittedLabel
             x={todayX}
             y={STRIP_BELOW_ROW_Y}
-            textAnchor={todayAnchorEnd ? "end" : "start"}
             className="c97-fare-label"
-          >
-            Today, {strip.daysOut !== null && strip.daysOut < 0 ? "past" : `${strip.daysOut}d out`}
-          </text>
+            text={`Today, ${strip.daysOut !== null && strip.daysOut < 0 ? "past" : `${strip.daysOut}d out`}`}
+          />
         </>
       ) : (
         <text x={W / 2} y={STRIP_BELOW_ROW_Y} textAnchor="middle" className="c97-fare-axis c97-fare-prompt">

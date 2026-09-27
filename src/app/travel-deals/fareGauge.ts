@@ -112,3 +112,10 @@ export function bookingStrip(
 
   return { spanDays, sweetSpot, todayFraction, daysOut, position };
 }
+
+/** The centre x for a label of `width` near mark `x`, kept inside [left, right]. */
+export function fitLabel(x: number, width: number, left: number, right: number): number {
+  if (right - left <= width) return (left + right) / 2;
+  const half = width / 2;
+  return Math.min(right - half, Math.max(left + half, x));
+}

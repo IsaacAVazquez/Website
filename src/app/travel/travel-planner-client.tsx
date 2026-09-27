@@ -309,7 +309,7 @@ export function TravelPlannerClient() {
                 {!activeTrip ? (
                   <p className="c97-prose">Start a trip above to plan its first day.</p>
                 ) : summary && summary.activitiesTotal === 0 ? (
-                  <p className="c97-prose">No stops yet. Add the first one with the form on the right.</p>
+                  <p className="c97-prose">No stops yet. Add the first one with the Add stop form.</p>
                 ) : (
                   <div className="flex flex-col gap-5">
                     {summary?.dayBuckets.map((bucket) => (
@@ -467,7 +467,7 @@ export function TravelPlannerClient() {
               {!activeTrip ? (
                 <p className="c97-prose">Start a trip above to keep a journal for it.</p>
               ) : activeTrip.journal.length === 0 ? (
-                <p className="c97-prose">Journal is empty. Capture a moment with the form on the right.</p>
+                <p className="c97-prose">Journal is empty. Capture a moment with the Journal entry form.</p>
               ) : (
                 <ul className="flex flex-col gap-4" style={{ listStyle: "none", padding: 0, margin: 0 }}>
                   {[...activeTrip.journal]

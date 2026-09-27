@@ -27,7 +27,8 @@ describe("food-map.css: Catalog 97 token migration", () => {
   });
 
   it("uses only 0 or 50% for border-radius (true circles only, e.g. the stamp)", () => {
-    const radii = [...css.matchAll(/border-radius\s*:\s*([^;]+);/g)].map((m) => m[1].trim());
+    // A reset of Leaflet's own sheet needs !important, which is not part of the value.
+    const radii = [...css.matchAll(/border-radius\s*:\s*([^;]+);/g)].map((m) => m[1].replace(/!important/, "").trim());
     for (const value of radii) {
       // A shorthand like "50% 50% 50% 0" (a teardrop) is banned too. Every
       // corner must independently be 0 or 50%.
@@ -39,7 +40,7 @@ describe("food-map.css: Catalog 97 token migration", () => {
   });
 
   it("declares no blurred box-shadow (hard offsets, via .c97-offset, only)", () => {
-    const shadows = [...css.matchAll(/box-shadow\s*:\s*([^;]+);/g)].map((m) => m[1].trim());
+    const shadows = [...css.matchAll(/box-shadow\s*:\s*([^;]+);/g)].map((m) => m[1].replace(/!important/, "").trim());
     for (const value of shadows) {
       if (value === "none") continue;
       // offsetX offsetY blur[ spread] color, and the blur term must be zero.
