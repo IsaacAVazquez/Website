@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { Resend } from "resend";
 import { emailDigestRateLimiter, getClientIp, rateLimitResponse } from "@/lib/rateLimit";
 import { logger } from "@/lib/logger";
+import { DISPLAY_TIME_ZONE } from "@/lib/date-formatters";
 
 // ---------------------------------------------------------------------------
 // POST /api/mba-jobs/email — send an email digest of MBA job listings via Resend
@@ -67,10 +68,12 @@ const RESPONSE_HEADERS = {
   "Cache-Control": "no-store",
 };
 
+// Server-only (no hydration to break), but pinned anyway so the printed
+// posted date doesn't shift with whatever zone the deploy host happens to run in.
 function formatDate(iso: string): string {
   const d = new Date(iso);
   if (isNaN(d.getTime())) return "";
-  return d.toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" });
+  return d.toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric", timeZone: DISPLAY_TIME_ZONE });
 }
 
 function json(body: Record<string, unknown>, init?: ResponseInit) {

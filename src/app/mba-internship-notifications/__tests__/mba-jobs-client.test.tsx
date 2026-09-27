@@ -387,6 +387,32 @@ describe("MBAJobsClient", () => {
     });
   });
 
+  it("paginates the live grid and resets to the first page when a filter changes", () => {
+    const jobs = Array.from({ length: 75 }, (_, i) =>
+      buildJob({
+        id: `job-${i}`,
+        title: `Role ${i}`,
+        postedAt: `2026-04-${String((i % 27) + 1).padStart(2, "0")}T10:00:00.000Z`,
+      })
+    );
+    mockUseMBAJobs.mockReturnValue(buildHookValue({ jobs }));
+
+    render(<MBAJobsClient initialState={DEFAULT_MBA_JOBS_STATE} />);
+
+    const liveJobsGrid = screen.getByTestId("live-jobs-grid");
+    expect(within(liveJobsGrid).getAllByRole("heading", { level: 3 })).toHaveLength(60);
+    expect(screen.getByRole("button", { name: "Show more (60 of 75 shown)" })).toBeVisible();
+
+    fireEvent.click(screen.getByRole("button", { name: /Show more/ }));
+    expect(within(liveJobsGrid).getAllByRole("heading", { level: 3 })).toHaveLength(75);
+    expect(screen.queryByRole("button", { name: /Show more/ })).not.toBeInTheDocument();
+
+    // A filter change (not a data refresh) starts back at the first page.
+    fireEvent.change(screen.getByLabelText("Sort"), { target: { value: "oldest" } });
+    expect(within(liveJobsGrid).getAllByRole("heading", { level: 3 })).toHaveLength(60);
+    expect(screen.getByRole("button", { name: "Show more (60 of 75 shown)" })).toBeVisible();
+  });
+
   it("renders outbound search shortcuts and toggles external leads through URL state", () => {
     currentSearchParams = new URLSearchParams("q=strategy&location=remote");
 

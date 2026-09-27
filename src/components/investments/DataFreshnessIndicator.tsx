@@ -1,6 +1,8 @@
 "use client";
 
 import { RefreshCw } from "lucide-react";
+import { useClientNow } from "@/hooks/useClientNow";
+import { DATE_ONLY_TIME_ZONE, DISPLAY_TIME_ZONE } from "@/lib/date-formatters";
 
 interface DataFreshnessIndicatorProps {
   lastUpdated: Date | string | null;
@@ -11,13 +13,17 @@ interface DataFreshnessIndicatorProps {
 
 const STALE_DATASET_THRESHOLD_DAYS = 7;
 
-function getRelativeTime(date: Date): {
+// `now` is the caller's `useClientNow()` reading, not `Date.now()` taken
+// directly: several callers pass a real, live-fetched instant that's already
+// present at the first server-rendered paint, so computing "ago" from
+// `Date.now()` here would print different text on the server than it does
+// once the client hydrates a moment later and break hydration.
+function getRelativeTime(date: Date, now: number): {
   label: string;
   color: string;
   diffDays: number;
 } {
-  const now = new Date();
-  const diffMs = Math.max(0, now.getTime() - date.getTime());
+  const diffMs = Math.max(0, now - date.getTime());
   const diffMinutes = Math.floor(diffMs / (1000 * 60));
   const diffHours = Math.floor(diffMs / (1000 * 60 * 60));
   const diffDays = Math.floor(diffMs / (1000 * 60 * 60 * 24));
@@ -45,12 +51,12 @@ function getRelativeTime(date: Date): {
   return { label, color, diffDays };
 }
 
-function formatAbsoluteDate(date: Date): string {
+function formatAbsoluteDate(date: Date, timeZone: string): string {
   return date.toLocaleDateString("en-US", {
     month: "short",
     day: "numeric",
     year: "numeric",
-    timeZone: "UTC",
+    timeZone,
   });
 }
 
@@ -60,6 +66,7 @@ export function DataFreshnessIndicator({
   isRefreshing,
   mode = "default",
 }: DataFreshnessIndicatorProps) {
+  const now = useClientNow();
   const labelPrefix =
     mode === "dataset"
       ? "Dataset updated"
@@ -101,15 +108,21 @@ export function DataFreshnessIndicator({
 
   const date =
     typeof lastUpdated === "string" ? new Date(lastUpdated) : lastUpdated;
-  const { label, color, diffDays } = getRelativeTime(date);
+  // `relative` is null on the server and during the first client render
+  // (before `useClientNow()` has a reading), so every branch below has a
+  // now-free, absolute-date fallback for that window.
+  const relative = now === null ? null : getRelativeTime(date, now);
   const shouldUseAbsoluteDatasetLabel =
-    mode === "dataset" && diffDays >= STALE_DATASET_THRESHOLD_DAYS;
+    mode === "dataset" && (relative === null || relative.diffDays >= STALE_DATASET_THRESHOLD_DAYS);
   const displayedLabel =
     mode === "price"
-      ? `Price as of ${formatAbsoluteDate(date)}`
+      ? `Price as of ${formatAbsoluteDate(date, DATE_ONLY_TIME_ZONE)}`
       : shouldUseAbsoluteDatasetLabel
-        ? `Snapshot as of ${formatAbsoluteDate(date)}`
-        : `${labelPrefix} ${label}`;
+        ? `Snapshot as of ${formatAbsoluteDate(date, DISPLAY_TIME_ZONE)}`
+        : relative
+          ? `${labelPrefix} ${relative.label}`
+          : `${labelPrefix} ${formatAbsoluteDate(date, DISPLAY_TIME_ZONE)}`;
+  const color = relative?.color ?? "var(--c97-label)";
 
   return (
     <div className="inline-flex items-center gap-2">

@@ -7,6 +7,7 @@ import type {
   BudgetMonthMap,
   BudgetSummary,
 } from "@/types/budget";
+import { DISPLAY_TIME_ZONE } from "@/lib/date-formatters";
 
 export const BUDGET_PLANNER_STORAGE_KEY = "budget_planner_months_v1";
 
@@ -46,29 +47,62 @@ export function isBudgetMonthKey(value: string) {
   return /^\d{4}-\d{2}$/.test(value);
 }
 
+const TODAY_PARTS_FORMATTER = new Intl.DateTimeFormat("en-US", {
+  timeZone: DISPLAY_TIME_ZONE,
+  year: "numeric",
+  month: "2-digit",
+  day: "2-digit",
+});
+
+/**
+ * `{ year, month, day }` for an instant, read in the pinned display zone
+ * rather than the runtime's own zone. `getCurrentBudgetMonthKey` and
+ * `getDefaultExpenseDate` both default to "now" and run during the initial
+ * render (SSR included), so local getters here would size "today" from
+ * whichever system zone happened to render that pass — UTC on the server,
+ * whatever the visitor's browser reports on the client — and disagree near a
+ * month or midnight boundary. Reading a pinned zone keeps server and client
+ * agreeing on the same calendar day.
+ */
+function getZonedTodayParts(date: Date): { year: string; month: string; day: string } {
+  const parts = TODAY_PARTS_FORMATTER.formatToParts(date);
+  const lookup = (type: string) => parts.find((part) => part.type === type)?.value ?? "";
+  return { year: lookup("year"), month: lookup("month"), day: lookup("day") };
+}
+
 export function getCurrentBudgetMonthKey(date = new Date()) {
-  const year = date.getFullYear();
-  const month = String(date.getMonth() + 1).padStart(2, "0");
+  const { year, month } = getZonedTodayParts(date);
   return `${year}-${month}`;
 }
 
-function parseBudgetMonthKey(monthKey: string) {
-  if (!isBudgetMonthKey(monthKey)) return null;
-
-  const [year, month] = monthKey.split("-").map(Number);
-  return new Date(year, month - 1, 1);
-}
-
 export function getAdjacentBudgetMonthKey(monthKey: string, offset: number) {
-  const baseDate = parseBudgetMonthKey(monthKey) ?? new Date();
-  baseDate.setMonth(baseDate.getMonth() + offset);
-  return getCurrentBudgetMonthKey(baseDate);
+  // Pure integer month arithmetic, no Date object involved: a Date built from
+  // a month key and shifted with local getters/setters would size the result
+  // off the runtime's own zone, and "now" as the fallback base has the same
+  // server/client skew getCurrentBudgetMonthKey exists to avoid.
+  const parsed = isBudgetMonthKey(monthKey)
+    ? monthKey.split("-").map(Number)
+    : (() => {
+        const { year, month } = getZonedTodayParts(new Date());
+        return [Number(year), Number(month)];
+      })();
+  const [year, month] = parsed;
+  const zeroBasedTotal = year * 12 + (month - 1) + offset;
+  const nextYear = Math.floor(zeroBasedTotal / 12);
+  const nextMonth = ((zeroBasedTotal % 12) + 12) % 12;
+  return `${nextYear}-${String(nextMonth + 1).padStart(2, "0")}`;
 }
 
 export function formatBudgetMonthLabel(monthKey: string) {
-  const date = parseBudgetMonthKey(monthKey);
-  if (!date) return monthKey;
+  if (!isBudgetMonthKey(monthKey)) return monthKey;
 
+  const [year, month] = monthKey.split("-").map(Number);
+  const date = new Date(year, month - 1, 1);
+
+  // tz-local: `date` is always built from a validated `YYYY-MM` key (never
+  // "now"), constructed and formatted in the same runtime pass, so whichever
+  // zone that runtime happens to be in cancels out and the printed month
+  // never disagrees between the server and a visitor's browser for the same key.
   return new Intl.DateTimeFormat("en-US", {
     month: "long",
     year: "numeric",
@@ -76,8 +110,8 @@ export function formatBudgetMonthLabel(monthKey: string) {
 }
 
 export function getDefaultExpenseDate(monthKey: string, now = new Date()) {
+  const { day } = getZonedTodayParts(now);
   if (getCurrentBudgetMonthKey(now) === monthKey) {
-    const day = String(now.getDate()).padStart(2, "0");
     return `${monthKey}-${day}`;
   }
 

@@ -16,8 +16,10 @@ import {
 } from "d3";
 import { useReducedMotion } from "framer-motion";
 import { parseLocalDateKey, toLocalDateKey } from "@/lib/date-formatters";
+import { useClientNow } from "@/hooks/useClientNow";
 import {
   formatBalance,
+  formatMinutesAgo,
   formatPercent,
   formatSignedCurrency,
 } from "@/lib/investmentFormatting";
@@ -46,14 +48,13 @@ const RANGES = [
 
 type RangeLabel = (typeof RANGES)[number]["label"];
 
-function formatRefreshLabel(lastUpdated: Date | null | undefined): string {
-  if (!lastUpdated) return "Refresh data";
-  const minutes = Math.max(0, Math.floor((Date.now() - lastUpdated.getTime()) / 60000));
-  if (minutes < 1) return "Refresh data · just now";
-  if (minutes === 1) return "Refresh data · 1m ago";
-  if (minutes < 60) return `Refresh data · ${minutes}m ago`;
-  const hours = Math.floor(minutes / 60);
-  return `Refresh data · ${hours}h ago`;
+// `now` is the caller's `useClientNow()` reading (null on the server and
+// during hydration): `lastUpdated` is a live-fetched instant, so computing
+// "ago" straight from `Date.now()` at render time would print different text
+// on the server than the client's first render and break hydration.
+function formatRefreshLabel(lastUpdated: Date | null | undefined, now: number | null): string {
+  if (!lastUpdated || now === null) return "Refresh data";
+  return `Refresh data · ${formatMinutesAgo(lastUpdated, now)}`;
 }
 
 export function PortfolioHeroCard({
@@ -67,11 +68,17 @@ export function PortfolioHeroCard({
   hasLiveQuotes,
   allQuotesLive,
 }: Props) {
+  const now = useClientNow();
   // null = automatic: the narrowest range with at least two saved points.
   // History only records a point on days the page is visited, so a fixed 1M
   // default rendered an empty chart on arrival for sparse histories.
   const [pickedRange, setPickedRange] = useState<RangeLabel | null>(null);
   const autoRange = useMemo<RangeLabel>(() => {
+    // `snapshots` is always [] until a client-only effect loads it (never
+    // seeded during SSR), and every `s.date` in it was written with
+    // `toLocalDateKey` in the visitor's own zone, so this cutoff has to stay
+    // in that same local zone to compare correctly — it never runs against
+    // real data before hydration completes, so there's nothing to mismatch.
     for (const r of RANGES) {
       if (r.days === Infinity) break;
       const cutoff = new Date();
@@ -90,6 +97,9 @@ export function PortfolioHeroCard({
   const shouldReduceMotion = useReducedMotion();
 
   const filteredSnapshots = useMemo(() => {
+    // Same local-zone cutoff as autoRange above, and the same reasoning: it
+    // only ever filters real (client-loaded) snapshots, so it's browser-only
+    // in practice even though the memo also runs on the empty SSR pass.
     const r = RANGES.find((x) => x.label === range);
     if (!r || r.days === Infinity) return snapshots;
     const cutoff = new Date();
@@ -376,7 +386,7 @@ export function PortfolioHeroCard({
           ) : null}
           {onRefresh ? (
             <button type="button" className="invest-ghost" onClick={onRefresh} disabled={isLoading}>
-              {formatRefreshLabel(lastUpdated)}
+              {formatRefreshLabel(lastUpdated, now)}
             </button>
           ) : null}
           <a href="#research-section" className="invest-ghost">

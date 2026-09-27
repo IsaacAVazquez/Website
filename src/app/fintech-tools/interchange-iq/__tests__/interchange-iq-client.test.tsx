@@ -2,16 +2,18 @@ import { fireEvent, render, screen, within } from "@testing-library/react";
 import { InterchangeIQClient } from "../interchange-iq-client";
 
 describe("InterchangeIQClient", () => {
-  it("renders the default fee model with Stripe IC+ as the recommended processor", () => {
+  it("renders the default fee model with Stripe IC+ and Checkout.com tied cheapest", () => {
     render(<InterchangeIQClient />);
 
     expect(
       screen.getByRole("heading", { level: 1, name: "Interchange IQ" })
     ).toBeVisible();
-    expect(screen.getByText("Stripe IC+ wins")).toBeVisible();
+    // Stripe IC+ and Checkout.com share the same interchange-plus markup, so
+    // they tie for cheapest at the default inputs and both get marked.
+    expect(screen.getByText("Stripe IC+ and Checkout.com tie")).toBeVisible();
     expect(screen.getByText("Monthly fee breakdown")).toBeVisible();
     expect(screen.getByText("7 options · sorted cheapest first")).toBeVisible();
-    expect(screen.getAllByText("Cheapest")).toHaveLength(1);
+    expect(screen.getAllByText("Cheapest")).toHaveLength(2);
   });
 
   it("updates the live summary and processor ranking when inputs change", () => {
