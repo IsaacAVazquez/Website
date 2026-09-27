@@ -34,7 +34,7 @@ describe("MuseumLogClient", () => {
     expect(screen.getByRole("heading", { level: 1, name: "Museum Log" })).toBeVisible();
     expect(screen.getByRole("navigation", { name: "Section navigation" })).toBeVisible();
 
-    fireEvent.click(screen.getByRole("button", { name: /journal/i }));
+    fireEvent.click(screen.getByRole("tab", { name: /journal/i }));
     expect(mockPush).toHaveBeenLastCalledWith("/museum-log?view=journal", {
       scroll: false,
     });

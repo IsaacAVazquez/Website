@@ -1,0 +1,195 @@
+/* Museum Log: the admission stub, the visit stamp, and the catalogue rows. */
+
+/*
+ * The admission ticket stub. A rectangle, no radius, on the hard offset the
+ * print shop reserves for printed things. The dotted rule stands in for the
+ * tear perforation between the header and the ticket's numbers, which is the
+ * simpler of the two perforation techniques the convention allows (the other
+ * being a radial-gradient mask cut into the box's own edge).
+ */
+.c97-stub {
+  background: var(--c97-panel);
+  border: 1px solid var(--c97-ink-2);
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  width: 100%;
+  text-align: left;
+}
+
+/* The tear-off end of the ticket, set sideways and perforated from the body. */
+.c97-stub-admit {
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  padding: var(--c97-sp-3) var(--c97-sp-2);
+  border-left: 2px dotted var(--c97-ink-2);
+  font-family: var(--c97-font-mono);
+  font-size: var(--c97-fs-label);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  text-align: center;
+  color: var(--c97-ink-2);
+}
+
+.c97-stub-body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--c97-sp-2);
+  min-width: 0;
+  padding: var(--c97-sp-3);
+}
+
+.c97-stub-name {
+  font-size: var(--c97-fs-body);
+  overflow-wrap: break-word;
+}
+
+.c97-stub-meta {
+  font-size: var(--c97-fs-small);
+  color: var(--c97-ink-2);
+}
+
+.c97-stub-tear {
+  border-top: 1px dotted var(--c97-ink-2);
+  padding-top: var(--c97-sp-2);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--c97-sp-2);
+  flex-wrap: wrap;
+}
+
+.c97-stub-price {
+  font-family: var(--c97-font-mono);
+  font-variant-numeric: tabular-nums;
+}
+
+/* An unfilled stub for the empty first-visit state — no offset, since nothing has been printed on it yet. */
+.c97-stub-empty {
+  border-style: dashed;
+  background: transparent;
+  min-height: 8rem;
+}
+
+.c97-stub-empty .c97-stub-body {
+  justify-content: center;
+}
+
+/* Wraps a stub so the whole ticket opens the museum, matching the card's other buttons. */
+.c97-stub-trigger {
+  display: block;
+  width: 100%;
+  border: 0;
+  background: none;
+  padding: 0;
+  cursor: pointer;
+  font: inherit;
+  color: inherit;
+  text-align: left;
+}
+
+/* A run of stubs across the hero, on their own paper plate per convention 2. */
+.c97-stub-run {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr));
+  gap: var(--c97-sp-3);
+}
+
+/*
+ * The visit stamp: a rubber date stamp, printed a couple of degrees off true
+ * the way a hand stamp never lands square. Rectangular — no radius.
+ */
+.c97-visit-stamp {
+  border: 2px solid var(--c97-ink-2);
+  padding: var(--c97-sp-1) var(--c97-sp-2);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  min-width: 4.5rem;
+  transform: rotate(-2deg);
+  font-family: var(--c97-font-mono);
+  color: var(--c97-ink-2);
+  text-align: center;
+}
+
+.c97-visit-stamp-month {
+  font-size: var(--c97-fs-label);
+  letter-spacing: 0.08em;
+}
+
+.c97-visit-stamp-day {
+  font-size: var(--c97-fs-h2);
+  line-height: var(--c97-lh-tight);
+  font-weight: 600;
+  color: var(--c97-ink);
+}
+
+.c97-visit-stamp-year {
+  font-size: var(--c97-fs-label);
+}
+
+.c97-journal-stamp-row {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: var(--c97-sp-3);
+  align-items: start;
+}
+
+/* A compact toggle button for the log / watchlist / like row. */
+.c97-museum-action {
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--c97-sp-1);
+  padding: 0 var(--c97-sp-2);
+  border: 1px solid var(--c97-ink-2);
+  background: none;
+  color: var(--c97-ink);
+  font-family: inherit;
+  font-size: var(--c97-fs-small);
+  cursor: pointer;
+}
+
+.c97-museum-action[aria-pressed="true"] {
+  background: var(--c97-ink);
+  border-color: var(--c97-ink);
+  color: var(--c97-surface);
+}
+
+@media (max-width: 639px) {
+  .c97-stub-run {
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 160px), 1fr));
+  }
+}
+
+.c97-search-field {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--c97-sp-2);
+  min-height: 44px;
+  padding: 0 var(--c97-sp-2);
+  border: 1px solid var(--c97-ink-2);
+  background: var(--c97-field);
+  max-width: 22rem;
+  width: 100%;
+}
+
+.c97-search-field svg {
+  flex-shrink: 0;
+  color: var(--c97-ink-2);
+}
+
+.c97-search-field input {
+  flex: 1;
+  min-width: 0;
+  min-height: 44px;
+  border: 0;
+  background: none;
+  font: inherit;
+  color: var(--c97-ink);
+}
+
+.c97-search-field input:focus {
+  outline: none;
+}

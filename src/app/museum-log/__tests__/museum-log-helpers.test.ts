@@ -1,5 +1,6 @@
 import type { Museum } from "@/types/museum";
 import {
+  admissionStub,
   averageRating,
   filterMuseums,
   formatAdmission,
@@ -7,6 +8,7 @@ import {
   formatRuntime,
   sortMuseums,
   starFractions,
+  visitStamp,
 } from "../museum-log-helpers";
 
 function museum(overrides: Partial<Museum>): Museum {
@@ -149,5 +151,60 @@ describe("museum-log-helpers", () => {
     expect(
       getMuseumExhibitStatus({ startDate: "2026-06-01", endDate: "2026-08-01" }, null)
     ).toBeNull();
+  });
+
+  it("prints an admission stub's lines from a museum and today's date", () => {
+    const withCurrentExhibit = museum({
+      founded: 1929,
+      admissionUSD: 30,
+      curatorRating: 4,
+      city: "New York, NY",
+      exhibits: [
+        { id: "x1", title: "Now showing", startDate: "2026-06-01", endDate: "2026-08-01", blurb: "", ticketed: false },
+      ],
+    });
+    expect(admissionStub(withCurrentExhibit, "2026-07-10")).toEqual({
+      name: "Base Museum",
+      city: "New York, NY",
+      founded: "Est. 1929",
+      admission: "$30",
+      curatorRating: 4,
+      exhibitNow: true,
+    });
+  });
+
+  it("handles free admission, no exhibits, and an unknown founding year", () => {
+    const stub = admissionStub(
+      museum({ founded: 0, admissionUSD: null, curatorRating: 0, exhibits: [] }),
+      "2026-07-10"
+    );
+    expect(stub.admission).toBe("Free");
+    expect(stub.founded).toBeNull();
+    expect(stub.exhibitNow).toBe(false);
+    expect(stub.curatorRating).toBe(0);
+  });
+
+  it("reads no exhibit as current before the local date is known", () => {
+    const withExhibit = museum({
+      exhibits: [
+        { id: "x1", title: "Now showing", startDate: "2026-06-01", endDate: "2026-08-01", blurb: "", ticketed: false },
+      ],
+    });
+    expect(admissionStub(withExhibit, null).exhibitNow).toBe(false);
+  });
+
+  it("carries a very long museum name through unmodified", () => {
+    const longName =
+      "The Grand Metropolitan Museum of Natural History, Fine Art, Design, and Applied Sciences of the Western Hemisphere";
+    expect(admissionStub(museum({ name: longName }), "2026-07-10").name).toBe(longName);
+  });
+
+  it("stamps a visit date into month, day, and year parts", () => {
+    expect(visitStamp("2026-09-26")).toEqual({ month: "SEP", day: "26", year: "2026" });
+    expect(visitStamp("2026-01-05")).toEqual({ month: "JAN", day: "05", year: "2026" });
+  });
+
+  it("returns null for an invalid visit date", () => {
+    expect(visitStamp("not-a-date")).toBeNull();
   });
 });

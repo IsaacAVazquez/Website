@@ -12,7 +12,6 @@ import { useRouter, useSearchParams } from "next/navigation";
 import {
   Bookmark,
   BookmarkCheck,
-  Building2,
   Calendar,
   Check,
   Clock,
@@ -21,15 +20,12 @@ import {
   Heart,
   HelpCircle,
   Layers,
-  ListPlus,
-  MapPin,
   NotebookPen,
   Plus,
   Search,
   Star,
   Ticket,
   Trash2,
-  Wallet,
 } from "lucide-react";
 import type {
   CuratorReview,
@@ -45,21 +41,15 @@ import type {
   VisitLogEntry,
 } from "@/types/museum";
 import { useMuseumLog } from "@/hooks/useMuseumLog";
+import { buildMuseumHref, MUSEUM_LOG_ROUTE, normalizeMuseumState } from "./museum-log-state";
 import {
-  buildMuseumHref,
-  MUSEUM_VIEW_LABELS,
-  normalizeMuseumState,
-} from "./museum-log-state";
-import {
-  averageRating,
+  admissionStub,
   filterMuseums,
-  formatAdmission,
   formatDate,
   formatRuntime,
   formatShortDate,
   formatUpdated,
   getMuseumExhibitStatus,
-  ratingBadgeStyle,
   REGION_FILTER_OPTIONS,
   REGION_LABEL,
   SORT_LABEL,
@@ -68,9 +58,12 @@ import {
   starFractions,
   TYPE_FILTER_OPTIONS,
   TYPE_LABEL,
+  visitStamp,
 } from "./museum-log-helpers";
-import { HomeStatsPanel } from "@/components/home/HomeStatsPanel";
+import { Catalog97ProjectHero } from "@/components/catalog97/Catalog97ProjectHero";
+import { PROJECT_PRESS } from "@/constants/projectPress";
 import { toLocalDateKey } from "@/lib/date-formatters";
+import "./museum-log.css";
 
 interface Props {
   initialState: MuseumRouteState;
@@ -79,6 +72,7 @@ interface Props {
 
 const subscribeToLocalDate = () => () => {};
 const getServerLocalDate = () => null;
+const PRESS = PROJECT_PRESS[MUSEUM_LOG_ROUTE];
 
 // ─── Primitives ────────────────────────────────────────────────────────────────
 
@@ -97,18 +91,13 @@ function StarRow({ rating, size = 14 }: { rating: number; size?: number }) {
           style={{ width: size, height: size }}
           aria-hidden="true"
         >
-          <Star size={size} className="absolute inset-0 text-[var(--home-stone)]" strokeWidth={1.4} />
+          <Star size={size} className="absolute inset-0" style={{ color: "var(--c97-ink-2)" }} strokeWidth={1.4} />
           {fill > 0 && (
             <span
               className="absolute inset-0 overflow-hidden"
               style={{ width: fill === 0.5 ? "50%" : "100%" }}
             >
-              <Star
-                size={size}
-                className="text-[var(--home-ink)]"
-                fill="currentColor"
-                strokeWidth={1.4}
-              />
+              <Star size={size} style={{ color: "var(--c97-ink)" }} fill="currentColor" strokeWidth={1.4} />
             </span>
           )}
         </span>
@@ -119,70 +108,79 @@ function StarRow({ rating, size = 14 }: { rating: number; size?: number }) {
 
 function RatingPill({ rating, label }: { rating: number; label?: string }) {
   return (
-    <span
-      className="inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-xs font-semibold"
-      style={ratingBadgeStyle(rating)}
-    >
-      <StarRow rating={rating} size={12} />
-      <span>{rating.toFixed(1)}</span>
-      {label && <span className="opacity-70">· {label}</span>}
+    <span className="inline-flex items-center gap-1.5">
+      <StarRow rating={rating} size={14} />
+      <span className="c97-mono" style={{ fontSize: "var(--c97-fs-small)" }}>
+        {rating.toFixed(1)}
+      </span>
+      {label ? <span className="c97-stub-meta">· {label}</span> : null}
     </span>
   );
 }
 
 function TagChip({ children }: { children: ReactNode }) {
+  return <span className="c97-chip">{children}</span>;
+}
+
+/**
+ * The page's signature: a museum reads as its own admission ticket. A
+ * perforated stub in the ticket sense of the word, printed with the name,
+ * city, founding year, admission, the curator's rating, and whether an
+ * exhibit is running today. Replaces the old cover-art gradient and initials.
+ */
+function AdmissionStub({ museum, today }: { museum: Museum; today: string | null }) {
+  const stub = admissionStub(museum, today);
   return (
-    <span className="inline-flex items-center rounded-full border border-[var(--home-rule)] bg-[var(--home-paper)] px-2.5 py-0.5 text-2xs font-medium uppercase tracking-[0.12em] text-[var(--home-ink-muted)]">
-      {children}
-    </span>
+    <div className="c97-stub c97-offset">
+      <span className="c97-stub-admit" aria-hidden="true">
+        Admit one
+      </span>
+      <div className="c97-stub-body">
+      <p className="c97-serif c97-stub-name">{stub.name}</p>
+      <p className="c97-stub-meta">
+        {stub.city}
+        {stub.founded ? ` · ${stub.founded}` : ""}
+      </p>
+      <div className="c97-stub-tear">
+        <span className="c97-stub-price">{stub.admission}</span>
+        <span className="inline-flex items-center gap-1.5">
+          <StarRow rating={stub.curatorRating} size={14} />
+          <span className="c97-mono" style={{ fontSize: "var(--c97-fs-small)" }}>
+            {stub.curatorRating.toFixed(1)}
+          </span>
+        </span>
+      </div>
+      {stub.exhibitNow ? (
+        <span className="c97-chip c97-chip-positive" style={{ alignSelf: "flex-start" }}>
+          On view now
+        </span>
+      ) : null}
+      </div>
+    </div>
   );
 }
 
-function MuseumCoverArt({ museum }: { museum: Museum }) {
-  // Procedural cover — initials + a deterministic hue based on type.
-  const hueByType: Record<Museum["type"], string> = {
-    art: "var(--home-signal)",
-    history: "var(--home-signal)",
-    science: "var(--home-paper-alt)",
-    "natural-history": "var(--home-stone)",
-    design: "var(--home-signal)",
-    photography: "var(--home-signal)",
-    specialty: "var(--home-stone)",
-  };
-  const initials = museum.name
-    .replace(/^The\s+/i, "")
-    .split(/\s+/)
-    .map((w) => w[0])
-    .filter(Boolean)
-    .slice(0, 3)
-    .join("");
-
+/** The hero's small run of stubs: the most recently visited museums, or a blank stub on a first visit. */
+function HeroStubRun({ museums, today }: { museums: Museum[]; today: string | null }) {
   return (
-    <div
-      className="relative flex aspect-[3/4] w-full items-end overflow-hidden rounded-[var(--radius-2xl)] border border-[var(--home-rule)]"
-      style={{
-        background: `linear-gradient(160deg, color-mix(in srgb, ${hueByType[museum.type]} 65%, var(--home-paper)) 0%, var(--home-paper-alt) 100%)`,
-      }}
-      aria-hidden="true"
-    >
-      <span
-        className="absolute left-3 top-3 text-3xs font-semibold uppercase tracking-[0.18em] text-[var(--home-ink-muted)]"
-      >
-        {TYPE_LABEL[museum.type]}
-      </span>
-      <span
-        className="absolute right-3 top-3 inline-flex items-center gap-1 rounded-full bg-[var(--home-paper)] px-2 py-0.5 text-3xs font-semibold text-[var(--home-ink)]"
-        style={{ border: "1px solid var(--home-rule)" }}
-      >
-        <Star size={10} fill="currentColor" strokeWidth={0} />
-        {museum.curatorRating.toFixed(1)}
-      </span>
-      <span
-        className="m-3 inline-flex items-center justify-center rounded-[var(--radius-xl)] bg-[var(--home-ink)] px-3 py-2 text-2xl font-bold tracking-[-0.04em] text-[var(--home-paper)]"
-        style={{ fontFamily: "var(--font-home-serif)" }}
-      >
-        {initials}
-      </span>
+    <div data-c97-surface="paper" style={{ padding: "var(--c97-sp-3)" }}>
+      {museums.length === 0 ? (
+        <div className="c97-stub c97-stub-empty">
+          <span className="c97-stub-admit" aria-hidden="true">
+            Admit one
+          </span>
+          <div className="c97-stub-body">
+            <p className="c97-serif c97-stub-name">Log your first visit</p>
+            <p className="c97-stub-meta">Pick a museum in Discover below.</p>
+          </div>
+        </div>
+      ) : (
+        <div className="c97-stub-run">
+          {museums.map((museum) => (
+            <AdmissionStub key={museum.id} museum={museum} today={today} />
+          ))}
+        </div>
+      )}
     </div>
   );
 }
@@ -198,7 +196,6 @@ interface QuickActionsProps {
   onToggleLiked: () => void;
   onLogQuickVisit: () => void;
   onClearVisit: () => void;
-  size?: "sm" | "md";
 }
 
 function QuickActions({
@@ -210,27 +207,8 @@ function QuickActions({
   onToggleLiked,
   onLogQuickVisit,
   onClearVisit,
-  size = "md",
 }: QuickActionsProps) {
   const isVisited = Boolean(visit);
-  const dim = size === "sm" ? 16 : 18;
-  const padClass = size === "sm" ? "min-h-touch px-2.5 py-1.5 text-xs" : "min-h-touch px-3 py-2 text-sm";
-
-  function pillStyle(active: boolean, accent: string) {
-    if (active) {
-      return {
-        background: `color-mix(in srgb, ${accent} 32%, var(--home-paper))`,
-        borderColor: `color-mix(in srgb, ${accent} 50%, var(--home-rule))`,
-        color: "var(--home-ink)",
-      } as const;
-    }
-    return {
-      background: "var(--home-paper)",
-      borderColor: "var(--home-rule)",
-      color: "var(--home-ink-muted)",
-    } as const;
-  }
-
   return (
     <div className="flex flex-wrap items-center gap-2" aria-label={`Actions for ${museum.name}`}>
       <button
@@ -242,10 +220,9 @@ function QuickActions({
         }}
         aria-pressed={isVisited}
         aria-label={isVisited ? `Mark ${museum.name} as not visited` : `Log a visit to ${museum.name}`}
-        className={`inline-flex items-center gap-1.5 rounded-full border font-semibold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-signal)] focus-visible:ring-offset-2 ${padClass}`}
-        style={pillStyle(isVisited, "var(--home-signal)")}
+        className="c97-museum-action"
       >
-        {isVisited ? <Check size={dim} /> : <Plus size={dim} />}
+        {isVisited ? <Check size={16} aria-hidden="true" /> : <Plus size={16} aria-hidden="true" />}
         {isVisited ? "Visited" : "Log visit"}
       </button>
       <button
@@ -256,10 +233,9 @@ function QuickActions({
         }}
         aria-pressed={isWatchlisted}
         aria-label={isWatchlisted ? `Remove ${museum.name} from watchlist` : `Save ${museum.name} to watchlist`}
-        className={`inline-flex items-center gap-1.5 rounded-full border font-semibold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-signal)] focus-visible:ring-offset-2 ${padClass}`}
-        style={pillStyle(isWatchlisted, "var(--home-signal)")}
+        className="c97-museum-action"
       >
-        {isWatchlisted ? <BookmarkCheck size={dim} /> : <Bookmark size={dim} />}
+        {isWatchlisted ? <BookmarkCheck size={16} aria-hidden="true" /> : <Bookmark size={16} aria-hidden="true" />}
         {isWatchlisted ? "Saved" : "Watchlist"}
       </button>
       <button
@@ -269,24 +245,20 @@ function QuickActions({
           onToggleLiked();
         }}
         aria-pressed={isLiked}
-        className={`inline-flex items-center gap-1.5 rounded-full border font-semibold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-signal)] focus-visible:ring-offset-2 ${padClass}`}
-        style={pillStyle(isLiked, "var(--home-signal)")}
+        className="c97-museum-action"
       >
-        <Heart
-          size={dim}
-          fill={isLiked ? "var(--home-signal)" : "none"}
-          stroke={isLiked ? "var(--home-ink)" : "currentColor"}
-        />
+        <Heart size={16} aria-hidden="true" fill={isLiked ? "var(--c97-ink)" : "none"} />
         {isLiked ? "Liked" : "Like"}
       </button>
     </div>
   );
 }
 
-// ─── Museum card (used in catalog + lists) ───────────────────────────────────
+// ─── Museum card (Discover) ───────────────────────────────────────────────────
 
 interface MuseumCardProps {
   museum: Museum;
+  today: string | null;
   visit?: UserVisit;
   isWatchlisted: boolean;
   isLiked: boolean;
@@ -299,6 +271,7 @@ interface MuseumCardProps {
 
 function MuseumCard({
   museum,
+  today,
   visit,
   isWatchlisted,
   isLiked,
@@ -309,39 +282,25 @@ function MuseumCard({
   onClearVisit,
 }: MuseumCardProps) {
   return (
-    <article
-      className="home-card flex flex-col gap-4"
-      style={{ padding: "1rem 1rem 1.25rem" }}
-    >
+    <article className="c97-panel" style={{ padding: "var(--c97-sp-3)", display: "flex", flexDirection: "column", gap: "var(--c97-sp-3)" }}>
       <button
         type="button"
         onClick={onOpen}
-        className="text-left"
+        className="c97-stub-trigger"
         aria-label={`Open ${museum.name} detail`}
       >
-        <MuseumCoverArt museum={museum} />
+        <AdmissionStub museum={museum} today={today} />
       </button>
 
-      <div className="flex flex-col gap-1">
-        <button
-          type="button"
-          onClick={onOpen}
-          className="text-left text-base font-semibold leading-snug text-[var(--home-ink)] hover:underline"
-        >
-          {museum.name}
-        </button>
-        <p className="flex items-center gap-1.5 text-xs text-[var(--home-ink-muted)]">
-          <MapPin size={12} />
-          {museum.city}
+      {visit ? (
+        <p className="c97-stub-meta">
+          Your visit {formatShortDate(visit.date)} · {visit.rating.toFixed(1)} stars
         </p>
-      </div>
+      ) : null}
 
-      <div className="flex flex-wrap items-center gap-2">
-        <RatingPill rating={museum.curatorRating} label="curator" />
-        {visit && <RatingPill rating={visit.rating} label="you" />}
-      </div>
-
-      <p className="text-sm leading-6 text-[var(--home-ink-muted)] line-clamp-3">{museum.blurb}</p>
+      <p className="c97-prose" style={{ fontSize: "var(--c97-fs-small)" }}>
+        {museum.blurb}
+      </p>
 
       <QuickActions
         museum={museum}
@@ -352,7 +311,6 @@ function MuseumCard({
         onToggleLiked={onToggleLiked}
         onLogQuickVisit={onLogQuickVisit}
         onClearVisit={onClearVisit}
-        size="sm"
       />
     </article>
   );
@@ -363,6 +321,7 @@ function MuseumCard({
 interface DiscoverViewProps {
   snapshot: MuseumSnapshot;
   state: MuseumRouteState;
+  today: string | null;
   query: string;
   onChangeFilter: (next: Partial<MuseumRouteState>) => void;
   onOpenMuseum: (slug: string) => void;
@@ -379,6 +338,7 @@ interface DiscoverViewProps {
 function DiscoverView({
   snapshot,
   state,
+  today,
   query,
   onChangeFilter,
   onOpenMuseum,
@@ -412,11 +372,13 @@ function DiscoverView({
 
   return (
     <div className="space-y-5">
-      <div className="flex flex-wrap items-center gap-3 rounded-[var(--radius-2xl)] border border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper)_92%,var(--home-elev-mix))] px-4 py-3 shadow-[var(--shadow-sm)]">
-        <span className="inline-flex items-center gap-1.5 text-2xs font-semibold uppercase tracking-[0.16em] text-[var(--home-ink-muted)]">
-          <Filter size={12} /> Filters
+      <div
+        className="c97-panel"
+        style={{ padding: "var(--c97-sp-3)", display: "flex", flexWrap: "wrap", alignItems: "center", gap: "var(--c97-sp-3)" }}
+      >
+        <span className="c97-kicker" style={{ display: "inline-flex", alignItems: "center", gap: "var(--c97-sp-1)" }}>
+          <Filter size={12} aria-hidden="true" /> Filters
         </span>
-
         <FilterSelect
           label="Type"
           value={state.type}
@@ -430,32 +392,22 @@ function DiscoverView({
           onChange={(value) => onChangeFilter({ region: value as MuseumRegionFilter })}
         />
 
-        <span className="ml-auto inline-flex items-center gap-2 text-2xs text-[var(--home-ink-muted)]">
-          Sort
-          <div className="flex gap-1 rounded-full border border-[var(--home-rule)] bg-[var(--home-paper)] p-1">
-            {SORT_OPTIONS.map((sortKey) => {
-              const active = state.sort === sortKey;
-              return (
-                <button
-                  key={sortKey}
-                  type="button"
-                  onClick={() => onChangeFilter({ sort: sortKey as MuseumSort })}
-                  aria-pressed={active}
-                  className="rounded-full px-3 py-1 text-2xs font-semibold transition-colors"
-                  style={{
-                    background: active ? "var(--home-ink)" : "transparent",
-                    color: active ? "var(--home-paper)" : "var(--home-ink-muted)",
-                  }}
-                >
-                  {SORT_LABEL[sortKey]}
-                </button>
-              );
-            })}
-          </div>
-        </span>
+        <div className="c97-segmented" style={{ marginLeft: "auto" }}>
+          {SORT_OPTIONS.map((sortKey) => (
+            <button
+              key={sortKey}
+              type="button"
+              onClick={() => onChangeFilter({ sort: sortKey as MuseumSort })}
+              aria-pressed={state.sort === sortKey}
+              style={{ minHeight: "44px" }}
+            >
+              {SORT_LABEL[sortKey]}
+            </button>
+          ))}
+        </div>
       </div>
 
-      <p className="text-1xs text-[var(--home-ink-muted)]">
+      <p className="c97-prose" style={{ fontSize: "var(--c97-fs-small)" }}>
         {sorted.length} {sorted.length === 1 ? "museum" : "museums"} in the catalog
         {state.type !== "all" && ` · ${TYPE_LABEL[state.type]}`}
         {state.region !== "all" && ` · ${REGION_LABEL[state.region]}`}
@@ -463,18 +415,20 @@ function DiscoverView({
       </p>
 
       {sorted.length === 0 ? (
-        <div className="tool-empty">
-          <p className="text-sm font-semibold text-[var(--home-ink)]">No museums match the current filters.</p>
-          <p>Adjust type, region, or your search to see more.</p>
+        <div className="c97-panel" style={{ padding: "var(--c97-sp-4)" }}>
+          <p className="c97-prose">
+            No museums match the current filters. Adjust type, region, or your search to see more.
+          </p>
         </div>
       ) : (
-        <div className="grid gap-5 sm:grid-cols-2 xl:grid-cols-3">
+        <div className="grid gap-5 sm:grid-cols-2">
           {sorted.map((museum) => {
             const visit = visitByMuseumId[museum.id];
             return (
               <MuseumCard
                 key={museum.id}
                 museum={museum}
+                today={today}
                 visit={visit}
                 isWatchlisted={isWatchlisted(museum.id)}
                 isLiked={isLiked(museum.id)}
@@ -505,16 +459,14 @@ function FilterSelect({
 }) {
   const id = `filter-${label.toLowerCase()}`;
   return (
-    <label
-      htmlFor={id}
-      className="inline-flex items-center gap-2 rounded-full border border-[var(--home-rule)] bg-[var(--home-paper)] px-3 py-1.5 text-xs font-semibold text-[var(--home-ink-muted)]"
-    >
-      <span className="uppercase tracking-[0.14em]">{label}</span>
+    <label htmlFor={id} className="inline-flex items-center gap-2">
+      <span className="c97-kicker">{label}</span>
       <select
         id={id}
         value={value}
         onChange={(e) => onChange(e.target.value)}
-        className="bg-transparent text-sm font-semibold text-[var(--home-ink)] focus:outline-none"
+        className="c97-field"
+        style={{ minHeight: "44px", width: "auto" }}
       >
         {options.map((opt) => (
           <option key={opt.value} value={opt.value}>
@@ -526,44 +478,37 @@ function FilterSelect({
   );
 }
 
-// ─── Journal view (curator reviews + visit log timeline) ─────────────────────
+// ─── Journal view (curator reviews + stamped visit diary) ────────────────────
 
 function JournalView({
   snapshot,
-  museumBySlug,
   museumById,
   onOpenMuseum,
 }: {
   snapshot: MuseumSnapshot;
-  museumBySlug: Record<string, Museum>;
   museumById: Record<string, Museum>;
   onOpenMuseum: (slug: string) => void;
 }) {
   const sortedReviews = useMemo(
-    () =>
-      [...snapshot.reviews].sort((a, b) => b.dateVisited.localeCompare(a.dateVisited)),
+    () => [...snapshot.reviews].sort((a, b) => b.dateVisited.localeCompare(a.dateVisited)),
     [snapshot.reviews],
   );
   const sortedLog = useMemo(
     () => [...snapshot.visitLog].sort((a, b) => b.date.localeCompare(a.date)),
     [snapshot.visitLog],
   );
-  void museumBySlug; // referenced from outer scope only — kept for future links
 
   return (
-    <div className="grid gap-6 lg:grid-cols-[minmax(0,1.7fr)_minmax(280px,1fr)]">
-      <section className="home-card" style={{ padding: "1.25rem 1.5rem" }}>
-        <header className="border-b border-[var(--home-rule)] pb-4">
-          <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[var(--home-ink-muted)]">
-            Reviews
-          </p>
-          <h2 className="mt-2 text-xl font-semibold text-[var(--home-ink)]">
-            {snapshot.curatorName}'s reviews
-          </h2>
-          <p className="mt-1 text-sm text-[var(--home-ink-muted)]">{snapshot.curatorBio}</p>
-        </header>
-
-        <ol className="mt-5 space-y-5">
+    <div className="grid gap-8 lg:grid-cols-[minmax(0,1.7fr)_minmax(280px,1fr)]">
+      <section>
+        <p className="c97-kicker">Reviews</p>
+        <p className="c97-serif c97-h2" style={{ marginTop: "var(--c97-sp-1)" }}>
+          {snapshot.curatorName}&rsquo;s reviews
+        </p>
+        <p className="c97-prose" style={{ marginTop: "var(--c97-sp-1)" }}>
+          {snapshot.curatorBio}
+        </p>
+        <ol style={{ listStyle: "none", margin: 0, padding: 0, marginTop: "var(--c97-sp-4)" }}>
           {sortedReviews.map((review) => {
             const museum = museumById[review.museumId];
             if (!museum) return null;
@@ -579,24 +524,20 @@ function JournalView({
         </ol>
       </section>
 
-      <aside className="home-card" style={{ padding: "1.25rem 1.5rem" }}>
-        <header className="border-b border-[var(--home-rule)] pb-4">
-          <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[var(--home-ink-muted)]">
-            Diary
-          </p>
-          <h2 className="mt-2 text-xl font-semibold text-[var(--home-ink)]">
-            Recent visits
-          </h2>
-          <p className="mt-1 text-sm text-[var(--home-ink-muted)]">
-            Quick-hit log of every museum visit.
-          </p>
-        </header>
-        <ol className="mt-5 space-y-3">
+      <aside>
+        <p className="c97-kicker">Diary</p>
+        <p className="c97-serif c97-h2" style={{ marginTop: "var(--c97-sp-1)" }}>
+          Stamped visits
+        </p>
+        <p className="c97-prose" style={{ marginTop: "var(--c97-sp-1)", fontSize: "var(--c97-fs-small)" }}>
+          Every visit logged to the diary, dated when it happened.
+        </p>
+        <ol style={{ listStyle: "none", margin: 0, padding: 0, marginTop: "var(--c97-sp-3)" }}>
           {sortedLog.map((entry) => {
             const museum = museumById[entry.museumId];
             if (!museum) return null;
             return (
-              <DiaryEntry
+              <VisitStampCard
                 key={entry.id}
                 entry={entry}
                 museum={museum}
@@ -620,39 +561,46 @@ function ReviewCard({
   onOpenMuseum: () => void;
 }) {
   return (
-    <li className="rounded-[var(--radius-2xl)] border border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper-alt)_80%,var(--home-elev-mix))] p-5">
+    <li style={{ borderTop: "1px solid var(--c97-rule)", paddingBlock: "var(--c97-sp-4)" }}>
       <div className="flex flex-wrap items-baseline gap-2">
         <button
           type="button"
           onClick={onOpenMuseum}
-          className="text-left text-lg font-semibold text-[var(--home-ink)] hover:underline"
+          className="c97-serif c97-h3"
+          style={{ background: "none", border: 0, padding: 0, cursor: "pointer", textAlign: "left" }}
         >
           {museum.name}
         </button>
-        <span className="text-xs text-[var(--home-ink-muted)]">{museum.city}</span>
-        <span className="ml-auto text-xs text-[var(--home-ink-muted)]">
+        <span className="c97-stub-meta">{museum.city}</span>
+        <span className="c97-stub-meta" style={{ marginLeft: "auto" }}>
           {formatDate(review.dateVisited)}
         </span>
       </div>
-      <div className="mt-2 flex flex-wrap items-center gap-2">
+      <div className="flex flex-wrap items-center gap-2" style={{ marginTop: "var(--c97-sp-2)" }}>
         <StarRow rating={review.rating} size={16} />
-        <span className="text-sm font-semibold text-[var(--home-ink)]">{review.rating.toFixed(1)}</span>
-        {review.liked && <Heart size={14} fill="var(--home-signal)" stroke="var(--home-ink)" aria-label="Liked" />}
+        <span className="c97-mono" style={{ fontSize: "var(--c97-fs-small)" }}>
+          {review.rating.toFixed(1)} / 5
+        </span>
+        {review.liked && <Heart size={14} aria-label="Liked" fill="var(--c97-ink)" stroke="var(--c97-ink)" />}
         {review.exhibitTitle && (
-          <span className="inline-flex items-center gap-1 text-xs text-[var(--home-ink-muted)]">
-            <Ticket size={12} /> {review.exhibitTitle}
+          <span className="c97-stub-meta" style={{ display: "inline-flex", alignItems: "center", gap: "4px" }}>
+            <Ticket size={12} aria-hidden="true" /> {review.exhibitTitle}
           </span>
         )}
       </div>
-      <h3 className="mt-3 text-base font-semibold text-[var(--home-ink)]">{review.headline}</h3>
-      <p className="mt-2 text-sm leading-7 text-[var(--home-ink-muted)]">{review.body}</p>
+      <p className="c97-serif" style={{ fontSize: "var(--c97-fs-h3)", marginTop: "var(--c97-sp-2)" }}>
+        {review.headline}
+      </p>
+      <p className="c97-prose" style={{ marginTop: "var(--c97-sp-2)" }}>
+        {review.body}
+      </p>
       {review.recommendedFor && (
-        <p className="mt-3 text-xs italic text-[var(--home-ink-muted)]">
+        <p className="c97-prose" style={{ fontSize: "var(--c97-fs-small)", fontStyle: "italic", marginTop: "var(--c97-sp-2)" }}>
           Recommended for: {review.recommendedFor}
         </p>
       )}
       {review.tags.length > 0 && (
-        <div className="mt-3 flex flex-wrap gap-1.5">
+        <div className="flex flex-wrap gap-1.5" style={{ marginTop: "var(--c97-sp-2)" }}>
           {review.tags.map((tag) => (
             <TagChip key={tag}>{tag}</TagChip>
           ))}
@@ -662,7 +610,8 @@ function ReviewCard({
   );
 }
 
-function DiaryEntry({
+/** A stamped visit record: a rubber date stamp beside the rating and note. */
+function VisitStampCard({
   entry,
   museum,
   onOpenMuseum,
@@ -671,35 +620,53 @@ function DiaryEntry({
   museum: Museum;
   onOpenMuseum: () => void;
 }) {
+  const stamp = visitStamp(entry.date);
   return (
-    <li className="rounded-[var(--radius-xl)] border border-[var(--home-rule)] bg-[var(--home-paper)] p-3">
-      <div className="flex items-center justify-between gap-2">
+    <li
+      className="c97-journal-stamp-row"
+      style={{ borderTop: "1px solid var(--c97-rule)", paddingBlock: "var(--c97-sp-3)" }}
+    >
+      {stamp ? (
+        <div className="c97-visit-stamp" aria-hidden="true">
+          <span className="c97-visit-stamp-month">{stamp.month}</span>
+          <span className="c97-visit-stamp-day">{stamp.day}</span>
+          <span className="c97-visit-stamp-year">{stamp.year}</span>
+        </div>
+      ) : (
+        <div />
+      )}
+      <div style={{ minWidth: 0 }}>
         <button
           type="button"
           onClick={onOpenMuseum}
-          className="text-left text-sm font-semibold text-[var(--home-ink)] hover:underline"
+          className="c97-serif"
+          style={{ fontSize: "var(--c97-fs-h3)", background: "none", border: 0, padding: 0, cursor: "pointer", textAlign: "left" }}
         >
           {museum.name}
         </button>
-        <span className="text-xs text-[var(--home-ink-muted)]">{formatShortDate(entry.date)}</span>
+        <div className="flex flex-wrap items-center gap-2" style={{ marginTop: "var(--c97-sp-1)" }}>
+          <StarRow rating={entry.rating} size={12} />
+          <span className="c97-mono" style={{ fontSize: "var(--c97-fs-small)" }}>
+            {entry.rating.toFixed(1)}
+          </span>
+          {entry.exhibitTitle && <span className="c97-stub-meta">{entry.exhibitTitle}</span>}
+        </div>
+        {entry.note && (
+          <p className="c97-prose" style={{ fontSize: "var(--c97-fs-small)", fontStyle: "italic", marginTop: "var(--c97-sp-1)" }}>
+            &ldquo;{entry.note}&rdquo;
+          </p>
+        )}
       </div>
-      <div className="mt-1 flex flex-wrap items-center gap-2 text-xs text-[var(--home-ink-muted)]">
-        <StarRow rating={entry.rating} size={12} />
-        <span>{entry.rating.toFixed(1)}</span>
-        {entry.exhibitTitle && <span>· {entry.exhibitTitle}</span>}
-      </div>
-      {entry.note && (
-        <p className="mt-1.5 text-xs italic text-[var(--home-ink-muted)]">"{entry.note}"</p>
-      )}
     </li>
   );
 }
 
-// ─── Lists view ──────────────────────────────────────────────────────────────
+// ─── Lists view (exhibition catalogues) ───────────────────────────────────────
 
 interface ListsViewProps {
   snapshot: MuseumSnapshot;
   museumById: Record<string, Museum>;
+  today: string | null;
   selectedListSlug: string | null;
   onSelectList: (slug: string | null) => void;
   onOpenMuseum: (slug: string) => void;
@@ -715,6 +682,7 @@ interface ListsViewProps {
 function ListsView({
   snapshot,
   museumById,
+  today,
   selectedListSlug,
   onSelectList,
   onOpenMuseum,
@@ -737,30 +705,30 @@ function ListsView({
       .filter((m): m is Museum => Boolean(m));
     return (
       <div className="space-y-6">
-        <button
-          type="button"
-          onClick={() => onSelectList(null)}
-          className="inline-flex min-h-[44px] items-center gap-1.5 text-xs font-semibold uppercase tracking-[0.14em] text-[var(--home-ink-muted)] hover:text-[var(--home-ink)]"
-        >
-          ← All lists
+        <button type="button" onClick={() => onSelectList(null)} className="c97-btn-ghost" style={{ padding: 0 }}>
+          ← All catalogues
         </button>
-        <header className="home-card" style={{ padding: "1.5rem" }}>
-          <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[var(--home-ink-muted)]">
-            List · {museums.length} museums
+        <header>
+          <p className="c97-kicker">
+            Exhibition catalogue · {museums.length} {museums.length === 1 ? "museum" : "museums"}
           </p>
-          <h2 className="mt-2 text-2xl font-bold text-[var(--home-ink)]">{selectedList.title}</h2>
-          <p className="mt-2 text-sm leading-7 text-[var(--home-ink-muted)]">
+          <p className="c97-serif c97-h2" style={{ marginTop: "var(--c97-sp-1)" }}>
+            {selectedList.title}
+          </p>
+          <p className="c97-prose" style={{ marginTop: "var(--c97-sp-2)" }}>
             {selectedList.description}
           </p>
-          <p className="mt-3 text-xs text-[var(--home-ink-muted)]">
+          <p className="c97-stub-meta" style={{ marginTop: "var(--c97-sp-2)" }}>
             Curated by {selectedList.curator} · Updated {formatShortDate(selectedList.updatedAt)}
           </p>
         </header>
-        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-          {museums.map((museum) => (
-            <MuseumCard
+        <ol style={{ listStyle: "none", margin: 0, padding: 0 }}>
+          {museums.map((museum, index) => (
+            <CatalogueEntry
               key={museum.id}
+              index={index}
               museum={museum}
+              today={today}
               visit={visitByMuseumId[museum.id]}
               isWatchlisted={isWatchlisted(museum.id)}
               isLiked={isLiked(museum.id)}
@@ -771,7 +739,7 @@ function ListsView({
               onClearVisit={() => removeVisit(museum.id)}
             />
           ))}
-        </div>
+        </ol>
       </div>
     );
   }
@@ -799,62 +767,94 @@ function ListPreviewCard({
   museumById: Record<string, Museum>;
   onOpen: () => void;
 }) {
-  const museums = list.museumIds
-    .map((id) => museumById[id])
-    .filter((m): m is Museum => Boolean(m));
-  const previewInitials = museums.slice(0, 4).map((m) => {
-    const initials = m.name
-      .replace(/^The\s+/i, "")
-      .split(/\s+/)
-      .map((w) => w[0])
-      .filter(Boolean)
-      .slice(0, 2)
-      .join("");
-    return { id: m.id, initials, type: m.type };
-  });
-  const hueByType: Record<Museum["type"], string> = {
-    art: "var(--home-signal)",
-    history: "var(--home-signal)",
-    science: "var(--home-paper-alt)",
-    "natural-history": "var(--home-stone)",
-    design: "var(--home-signal)",
-    photography: "var(--home-signal)",
-    specialty: "var(--home-stone)",
-  };
-
+  const count = list.museumIds.filter((id) => museumById[id]).length;
   return (
     <button
       type="button"
       onClick={onOpen}
-      className="home-card flex h-full flex-col gap-4 text-left"
-      style={{ padding: "1.25rem" }}
+      className="c97-panel"
+      style={{
+        padding: "var(--c97-sp-4)",
+        display: "flex",
+        flexDirection: "column",
+        gap: "var(--c97-sp-2)",
+        textAlign: "left",
+        border: 0,
+        cursor: "pointer",
+        width: "100%",
+      }}
       aria-label={`Open list ${list.title}`}
     >
-      <div className="grid grid-cols-4 gap-1.5">
-        {previewInitials.map((p) => (
-          <div
-            key={p.id}
-            className="flex aspect-square items-center justify-center rounded-lg text-2xs font-bold tracking-tight text-[var(--home-ink)]"
-            style={{
-              background: `linear-gradient(160deg, color-mix(in srgb, ${hueByType[p.type]} 60%, var(--home-paper)), var(--home-paper-alt))`,
-              border: "1px solid var(--home-rule)",
-            }}
-          >
-            {p.initials}
-          </div>
-        ))}
-      </div>
-      <div className="flex items-start justify-between gap-2">
-        <h3 className="text-base font-semibold leading-snug text-[var(--home-ink)]">{list.title}</h3>
-        <span className="inline-flex items-center gap-1 rounded-full bg-[var(--home-paper)] px-2 py-0.5 text-3xs font-semibold uppercase tracking-[0.14em] text-[var(--home-ink-muted)]" style={{ border: "1px solid var(--home-rule)" }}>
-          <ListPlus size={10} /> {list.museumIds.length}
-        </span>
-      </div>
-      <p className="text-sm leading-6 text-[var(--home-ink-muted)] line-clamp-3">{list.description}</p>
-      <p className="mt-auto text-2xs text-[var(--home-ink-muted)]">
-        Updated {formatShortDate(list.updatedAt)}
+      <p className="c97-kicker">
+        Exhibition catalogue · {count} {count === 1 ? "museum" : "museums"}
+      </p>
+      <p className="c97-serif c97-h3">{list.title}</p>
+      <p className="c97-prose" style={{ fontSize: "var(--c97-fs-small)" }}>
+        {list.description}
+      </p>
+      <p className="c97-stub-meta" style={{ marginTop: "auto" }}>
+        Curated by {list.curator} · Updated {formatShortDate(list.updatedAt)}
       </p>
     </button>
+  );
+}
+
+/** A numbered catalogue entry, the way a list reads as a printed exhibition catalogue. */
+function CatalogueEntry({
+  index,
+  museum,
+  today,
+  visit,
+  isWatchlisted,
+  isLiked,
+  onOpen,
+  onToggleWatchlist,
+  onToggleLiked,
+  onLogQuickVisit,
+  onClearVisit,
+}: {
+  index: number;
+  museum: Museum;
+  today: string | null;
+} & Omit<QuickActionsProps, "museum" | "visit"> & { visit?: UserVisit; onOpen: () => void }) {
+  const stub = admissionStub(museum, today);
+  return (
+    <li
+      className="c97-row c97-row-numbered c97-row-stack-sm"
+      style={{ borderTop: "1px solid var(--c97-rule)", paddingBlock: "var(--c97-sp-3)", rowGap: "var(--c97-sp-2)" }}
+    >
+      <span className="c97-mono" style={{ fontSize: "var(--c97-fs-small)", color: "var(--c97-label)" }}>
+        {String(index + 1).padStart(2, "0")}
+      </span>
+      <div style={{ minWidth: 0 }}>
+        <button
+          type="button"
+          onClick={onOpen}
+          className="c97-serif"
+          style={{ fontSize: "var(--c97-fs-h3)", background: "none", border: 0, padding: 0, cursor: "pointer", textAlign: "left" }}
+        >
+          {stub.name}
+        </button>
+        <p className="c97-stub-meta">
+          {stub.city}
+          {stub.founded ? ` · ${stub.founded}` : ""} · {stub.admission}
+          {stub.exhibitNow ? " · On view now" : ""}
+        </p>
+        <div style={{ marginTop: "var(--c97-sp-2)" }}>
+          <QuickActions
+            museum={museum}
+            visit={visit}
+            isWatchlisted={isWatchlisted}
+            isLiked={isLiked}
+            onToggleWatchlist={onToggleWatchlist}
+            onToggleLiked={onToggleLiked}
+            onLogQuickVisit={onLogQuickVisit}
+            onClearVisit={onClearVisit}
+          />
+        </div>
+      </div>
+      <StarRow rating={stub.curatorRating} size={14} />
+    </li>
   );
 }
 
@@ -863,6 +863,7 @@ function ListPreviewCard({
 interface MuseumDetailViewProps {
   museum: Museum;
   snapshot: MuseumSnapshot;
+  today: string | null;
   visit?: UserVisit;
   isWatchlisted: boolean;
   isLiked: boolean;
@@ -877,6 +878,7 @@ interface MuseumDetailViewProps {
 function MuseumDetailView({
   museum,
   snapshot,
+  today,
   visit,
   isWatchlisted,
   isLiked,
@@ -892,64 +894,29 @@ function MuseumDetailView({
   const visitLogEntries = snapshot.visitLog
     .filter((v) => v.museumId === museum.id)
     .sort((a, b) => b.date.localeCompare(a.date));
-  // The server snapshot stays null because its timezone can differ from the
-  // visitor's. React reads the local date after hydration without an effect.
-  const today = useSyncExternalStore(
-    subscribeToLocalDate,
-    toLocalDateKey,
-    getServerLocalDate,
-  );
 
   return (
     <div className="space-y-6">
-      <button
-        type="button"
-        onClick={onBack}
-        className="inline-flex min-h-[44px] items-center gap-1.5 text-xs font-semibold uppercase tracking-[0.14em] text-[var(--home-ink-muted)] hover:text-[var(--home-ink)]"
-      >
+      <button type="button" onClick={onBack} className="c97-btn-ghost" style={{ padding: 0 }}>
         ← Back to catalog
       </button>
 
-      <section className="home-card" style={{ padding: "1.5rem" }}>
-        <div className="grid gap-6 lg:grid-cols-[minmax(0,200px)_minmax(0,1fr)]">
-          <div className="max-w-[200px]">
-            <MuseumCoverArt museum={museum} />
-          </div>
+      <section className="c97-panel" style={{ padding: "var(--c97-sp-4)" }}>
+        <div className="grid gap-6 lg:grid-cols-[minmax(0,220px)_minmax(0,1fr)]">
+          <AdmissionStub museum={museum} today={today} />
           <div className="space-y-3">
-            <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[var(--home-ink-muted)]">
+            <p className="c97-kicker">
               {TYPE_LABEL[museum.type]} · {REGION_LABEL[museum.region]}
             </p>
-            <h2
-              style={{
-                fontFamily: "var(--font-home-sans)",
-                fontSize: "clamp(1.9rem, 4vw, 2.8rem)",
-                fontWeight: 600,
-                lineHeight: 1.05,
-                letterSpacing: "-0.045em",
-                color: "var(--home-ink)",
-              }}
-            >
-              {museum.name}
-            </h2>
-            <p className="flex flex-wrap items-center gap-3 text-sm text-[var(--home-ink-muted)]">
-              <span className="inline-flex items-center gap-1.5">
-                <MapPin size={14} /> {museum.city}, {museum.country}
-              </span>
-              <span className="inline-flex items-center gap-1.5">
-                <Building2 size={14} /> Founded {museum.founded}
-              </span>
-              <span className="inline-flex items-center gap-1.5">
-                <Clock size={14} /> {formatRuntime(museum.visitMinutesAvg)}
-              </span>
-              <span className="inline-flex items-center gap-1.5">
-                <Wallet size={14} /> {formatAdmission(museum.admissionUSD)}
-              </span>
+            <h2 className="c97-display">{museum.name}</h2>
+            <p className="c97-stub-meta">
+              {museum.country} · {formatRuntime(museum.visitMinutesAvg)} average visit
             </p>
             <div className="flex flex-wrap items-center gap-2">
               <RatingPill rating={museum.curatorRating} label="curator" />
               {visit && <RatingPill rating={visit.rating} label="you" />}
             </div>
-            <p className="text-base leading-7 text-[var(--home-ink)]">{museum.blurb}</p>
+            <p className="c97-prose">{museum.blurb}</p>
             <QuickActions
               museum={museum}
               visit={visit}
@@ -967,14 +934,9 @@ function MuseumDetailView({
               onClearVisit={onClearVisit}
             />
             {museum.websiteUrl && (
-              <p className="text-xs text-[var(--home-ink-muted)]">
-                <a
-                  className="underline decoration-dotted"
-                  href={museum.websiteUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Visit official site →
+              <p className="c97-stub-meta">
+                <a className="c97-btn-ghost" style={{ padding: 0 }} href={museum.websiteUrl} target="_blank" rel="noopener noreferrer">
+                  Visit official site
                 </a>
               </p>
             )}
@@ -985,35 +947,29 @@ function MuseumDetailView({
       <div className="grid gap-6 lg:grid-cols-[minmax(0,1.6fr)_minmax(280px,1fr)]">
         <div className="space-y-6">
           {review && (
-            <section className="home-card" style={{ padding: "1.25rem 1.5rem" }}>
-              <header className="border-b border-[var(--home-rule)] pb-4">
-                <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[var(--home-ink-muted)]">
-                  Curator review
-                </p>
-                <div className="mt-2 flex flex-wrap items-center gap-3">
-                  <StarRow rating={review.rating} size={18} />
-                  <span className="text-sm font-semibold text-[var(--home-ink)]">
-                    {review.rating.toFixed(1)} / 5
-                  </span>
-                  <span className="text-xs text-[var(--home-ink-muted)]">
-                    Visited {formatDate(review.dateVisited)}
-                  </span>
-                  {review.liked && (
-                    <Heart size={14} fill="var(--home-signal)" stroke="var(--home-ink)" aria-label="Liked" />
-                  )}
-                </div>
-                <h3 className="mt-2 text-xl font-semibold text-[var(--home-ink)]">
-                  {review.headline}
-                </h3>
-              </header>
-              <p className="mt-4 text-base leading-7 text-[var(--home-ink-muted)]">{review.body}</p>
+            <section className="c97-panel" style={{ padding: "var(--c97-sp-4)" }}>
+              <p className="c97-kicker">Curator review</p>
+              <div className="flex flex-wrap items-center gap-3" style={{ marginTop: "var(--c97-sp-2)" }}>
+                <StarRow rating={review.rating} size={18} />
+                <span className="c97-mono" style={{ fontSize: "var(--c97-fs-small)" }}>
+                  {review.rating.toFixed(1)} / 5
+                </span>
+                <span className="c97-stub-meta">Visited {formatDate(review.dateVisited)}</span>
+                {review.liked && <Heart size={14} fill="var(--c97-ink)" stroke="var(--c97-ink)" aria-label="Liked" />}
+              </div>
+              <p className="c97-serif c97-h3" style={{ marginTop: "var(--c97-sp-2)" }}>
+                {review.headline}
+              </p>
+              <p className="c97-prose" style={{ marginTop: "var(--c97-sp-3)" }}>
+                {review.body}
+              </p>
               {review.recommendedFor && (
-                <p className="mt-3 text-sm italic text-[var(--home-ink-muted)]">
+                <p className="c97-prose" style={{ fontSize: "var(--c97-fs-small)", fontStyle: "italic", marginTop: "var(--c97-sp-2)" }}>
                   Recommended for: {review.recommendedFor}
                 </p>
               )}
               {review.tags.length > 0 && (
-                <div className="mt-4 flex flex-wrap gap-1.5">
+                <div className="flex flex-wrap gap-1.5" style={{ marginTop: "var(--c97-sp-3)" }}>
                   {review.tags.map((tag) => (
                     <TagChip key={tag}>{tag}</TagChip>
                   ))}
@@ -1022,66 +978,49 @@ function MuseumDetailView({
             </section>
           )}
 
-          <section className="home-card" style={{ padding: "1.25rem 1.5rem" }}>
-            <header className="border-b border-[var(--home-rule)] pb-4">
-              <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[var(--home-ink-muted)]">
-                Highlights
-              </p>
-              <h3 className="mt-2 text-lg font-semibold text-[var(--home-ink)]">
-                What to actually see
-              </h3>
-            </header>
-            <ul className="mt-4 grid gap-2 sm:grid-cols-2">
+          <section className="c97-panel" style={{ padding: "var(--c97-sp-4)" }}>
+            <p className="c97-kicker">Highlights</p>
+            <p className="c97-serif c97-h3" style={{ marginTop: "var(--c97-sp-1)" }}>
+              What to actually see
+            </p>
+            <ul className="c97-list" style={{ marginTop: "var(--c97-sp-3)" }}>
               {museum.highlights.map((h) => (
-                <li
-                  key={h}
-                  className="rounded-[var(--radius-xl)] border border-[var(--home-rule)] bg-[var(--home-paper)] px-3 py-2 text-sm text-[var(--home-ink)]"
-                >
-                  {h}
-                </li>
+                <li key={h}>{h}</li>
               ))}
             </ul>
           </section>
 
           {museum.exhibits.length > 0 && (
-            <section className="home-card" style={{ padding: "1.25rem 1.5rem" }}>
-              <header className="border-b border-[var(--home-rule)] pb-4">
-                <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[var(--home-ink-muted)]">
-                  Exhibition calendar
-                </p>
-                <h3 className="mt-2 text-lg font-semibold text-[var(--home-ink)]">
-                  Current, upcoming, and past exhibitions
-                </h3>
-              </header>
-              <ol className="mt-4 space-y-3">
+            <section className="c97-panel" style={{ padding: "var(--c97-sp-4)" }}>
+              <p className="c97-kicker">Exhibition calendar</p>
+              <p className="c97-serif c97-h3" style={{ marginTop: "var(--c97-sp-1)" }}>
+                Current, upcoming, and past
+              </p>
+              <ol style={{ listStyle: "none", margin: 0, padding: 0, marginTop: "var(--c97-sp-3)" }}>
                 {museum.exhibits.map((ex) => {
                   const status = getMuseumExhibitStatus(ex, today);
+                  const chipTone =
+                    status === "current" ? " c97-chip-positive" : status === "upcoming" ? " c97-chip-warning" : "";
                   return (
-                  <li
-                    key={ex.id}
-                    className="rounded-[var(--radius-xl)] border border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper-alt)_80%,var(--home-elev-mix))] p-3"
-                  >
-                    <div className="flex flex-wrap items-baseline justify-between gap-2">
-                      <div className="flex flex-wrap items-center gap-2">
-                        <p className="text-base font-semibold text-[var(--home-ink)]">{ex.title}</p>
-                        {status && (
-                          <span className="rounded-full border border-[var(--home-rule)] px-2 py-0.5 text-2xs font-semibold uppercase tracking-[0.12em] text-[var(--home-ink-muted)]">
-                            {status}
-                          </span>
-                        )}
+                    <li key={ex.id} style={{ borderTop: "1px solid var(--c97-rule)", paddingBlock: "var(--c97-sp-3)" }}>
+                      <div className="flex flex-wrap items-baseline justify-between gap-2">
+                        <div className="flex flex-wrap items-center gap-2">
+                          <p className="c97-serif" style={{ fontSize: "var(--c97-fs-h3)" }}>{ex.title}</p>
+                          {status && <span className={`c97-chip${chipTone}`}>{status}</span>}
+                        </div>
+                        <span className="c97-stub-meta">
+                          {formatShortDate(ex.startDate)} – {ex.endDate ? formatShortDate(ex.endDate) : "Permanent"}
+                        </span>
                       </div>
-                      <span className="text-xs text-[var(--home-ink-muted)]">
-                        {formatShortDate(ex.startDate)} –{" "}
-                        {ex.endDate ? formatShortDate(ex.endDate) : "Permanent"}
-                      </span>
-                    </div>
-                    <p className="mt-1 text-sm text-[var(--home-ink-muted)]">{ex.blurb}</p>
-                    {ex.ticketed && (
-                      <p className="mt-2 inline-flex items-center gap-1 text-2xs font-semibold uppercase tracking-[0.14em] text-[var(--home-ink-muted)]">
-                        <Ticket size={12} /> Timed entry / extra ticket
+                      <p className="c97-prose" style={{ fontSize: "var(--c97-fs-small)", marginTop: "var(--c97-sp-1)" }}>
+                        {ex.blurb}
                       </p>
-                    )}
-                  </li>
+                      {ex.ticketed && (
+                        <span className="c97-chip" style={{ marginTop: "var(--c97-sp-2)", display: "inline-flex" }}>
+                          <Ticket size={12} aria-hidden="true" style={{ marginRight: 4 }} /> Timed entry
+                        </span>
+                      )}
+                    </li>
                   );
                 })}
               </ol>
@@ -1090,38 +1029,27 @@ function MuseumDetailView({
         </div>
 
         <aside className="space-y-6">
-          <section className="home-card" style={{ padding: "1.25rem 1.5rem" }}>
-            <header className="border-b border-[var(--home-rule)] pb-4">
-              <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[var(--home-ink-muted)]">
-                Your activity
-              </p>
-            </header>
-            <div className="mt-4 space-y-3 text-sm">
+          <section className="c97-panel" style={{ padding: "var(--c97-sp-4)" }}>
+            <p className="c97-kicker">Your activity</p>
+            <div className="space-y-3" style={{ marginTop: "var(--c97-sp-3)" }}>
               {visit ? (
                 <>
-                  <p className="text-[var(--home-ink)]">
-                    <span className="font-semibold">Visited</span> on {formatDate(visit.date)}
+                  <p className="c97-prose">
+                    Visited on {formatDate(visit.date)}
                   </p>
-                  <div className="flex items-center gap-2">
-                    <StarRow rating={visit.rating} size={16} />
-                    <span className="text-sm font-semibold text-[var(--home-ink)]">
-                      {visit.rating.toFixed(1)}
-                    </span>
-                  </div>
+                  <RatingPill rating={visit.rating} />
                   {visit.note && (
-                    <p className="text-xs italic text-[var(--home-ink-muted)]">"{visit.note}"</p>
+                    <p className="c97-prose" style={{ fontSize: "var(--c97-fs-small)", fontStyle: "italic" }}>
+                      &ldquo;{visit.note}&rdquo;
+                    </p>
                   )}
-                  <button
-                    type="button"
-                    onClick={onClearVisit}
-                    className="inline-flex min-h-touch items-center gap-1.5 rounded-full border border-[var(--home-rule)] bg-[var(--home-paper)] px-3 py-1.5 text-xs font-semibold text-[var(--home-ink-muted)]"
-                  >
-                    <Trash2 size={12} /> Remove visit
+                  <button type="button" onClick={onClearVisit} className="c97-museum-action">
+                    <Trash2 size={12} aria-hidden="true" /> Remove visit
                   </button>
                 </>
               ) : (
                 <>
-                  <p className="text-sm text-[var(--home-ink-muted)]">
+                  <p className="c97-prose" style={{ fontSize: "var(--c97-fs-small)" }}>
                     No visit logged yet. Use the buttons above to mark this one done, save it for later, or like it.
                   </p>
                   <RateAndLogForm
@@ -1141,33 +1069,22 @@ function MuseumDetailView({
           </section>
 
           {visitLogEntries.length > 0 && (
-            <section className="home-card" style={{ padding: "1.25rem 1.5rem" }}>
-              <header className="border-b border-[var(--home-rule)] pb-4">
-                <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[var(--home-ink-muted)]">
-                  Curator history
-                </p>
-                <h3 className="mt-2 text-base font-semibold text-[var(--home-ink)]">
-                  Past visits
-                </h3>
-              </header>
-              <ol className="mt-3 space-y-2 text-sm">
+            <section className="c97-panel" style={{ padding: "var(--c97-sp-4)" }}>
+              <p className="c97-kicker">Curator history</p>
+              <p className="c97-serif c97-h3" style={{ marginTop: "var(--c97-sp-1)" }}>
+                Past visits
+              </p>
+              <ol style={{ listStyle: "none", margin: 0, padding: 0, marginTop: "var(--c97-sp-2)" }}>
                 {visitLogEntries.map((entry) => (
                   <li
                     key={entry.id}
-                    className="flex flex-wrap items-baseline justify-between gap-2 rounded-[var(--radius-xl)] border border-[var(--home-rule)] bg-[var(--home-paper)] px-3 py-2"
+                    className="flex flex-wrap items-baseline justify-between gap-2"
+                    style={{ borderTop: "1px solid var(--c97-rule)", paddingBlock: "var(--c97-sp-2)" }}
                   >
-                    <span className="inline-flex items-center gap-2">
-                      <Calendar size={12} className="text-[var(--home-ink-muted)]" />
-                      <span className="text-[var(--home-ink-muted)]">
-                        {formatShortDate(entry.date)}
-                      </span>
+                    <span className="c97-stub-meta" style={{ display: "inline-flex", alignItems: "center", gap: "4px" }}>
+                      <Calendar size={12} aria-hidden="true" /> {formatShortDate(entry.date)}
                     </span>
-                    <span className="inline-flex items-center gap-1.5">
-                      <StarRow rating={entry.rating} size={12} />
-                      <span className="text-xs font-semibold text-[var(--home-ink)]">
-                        {entry.rating.toFixed(1)}
-                      </span>
-                    </span>
+                    <RatingPill rating={entry.rating} />
                   </li>
                 ))}
               </ol>
@@ -1175,24 +1092,13 @@ function MuseumDetailView({
           )}
 
           {inLists.length > 0 && (
-            <section className="home-card" style={{ padding: "1.25rem 1.5rem" }}>
-              <header className="border-b border-[var(--home-rule)] pb-4">
-                <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[var(--home-ink-muted)]">
-                  Appears in
-                </p>
-              </header>
-              <ul className="mt-3 space-y-2">
+            <section className="c97-panel" style={{ padding: "var(--c97-sp-4)" }}>
+              <p className="c97-kicker">Appears in</p>
+              <ul style={{ listStyle: "none", margin: 0, padding: 0, marginTop: "var(--c97-sp-2)", display: "flex", flexDirection: "column", gap: "var(--c97-sp-1)" }}>
                 {inLists.map((list) => (
                   <li key={list.id}>
-                    <button
-                      type="button"
-                      onClick={() => onOpenList(list.slug)}
-                      className="w-full rounded-[var(--radius-xl)] border border-[var(--home-rule)] bg-[var(--home-paper)] px-3 py-2 text-left text-sm font-semibold text-[var(--home-ink)] hover:bg-[var(--home-paper-alt)]"
-                    >
-                      {list.title}
-                      <span className="ml-1 text-xs font-normal text-[var(--home-ink-muted)]">
-                        · {list.museumIds.length} museums
-                      </span>
+                    <button type="button" onClick={() => onOpenList(list.slug)} className="c97-btn-ghost" style={{ padding: 0 }}>
+                      {list.title} · {list.museumIds.length} museums
                     </button>
                   </li>
                 ))}
@@ -1220,8 +1126,8 @@ function RateAndLogForm({
         e.preventDefault();
         onSubmit(rating, note.trim());
       }}
-      className="space-y-3"
       aria-label="Rate and log this museum visit"
+      style={{ display: "flex", flexDirection: "column", gap: "var(--c97-sp-3)" }}
     >
       <div className="flex items-center gap-2">
         <input
@@ -1232,11 +1138,12 @@ function RateAndLogForm({
           value={rating * 2}
           onChange={(e) => setRating(Number(e.target.value) / 2)}
           aria-label="Your rating, 0 to 5 stars"
-          className="flex-1"
+          className="c97-range"
+          style={{ flex: 1 }}
         />
         <span className="inline-flex items-center gap-1.5">
           <StarRow rating={rating} size={14} />
-          <span className="text-xs font-semibold text-[var(--home-ink)]">
+          <span className="c97-mono" style={{ fontSize: "var(--c97-fs-small)" }}>
             {rating.toFixed(1)}
           </span>
         </span>
@@ -1246,13 +1153,10 @@ function RateAndLogForm({
         onChange={(e) => setNote(e.target.value)}
         placeholder="Optional note (private to your browser)"
         rows={2}
-        className="w-full rounded-[var(--radius-xl)] border border-[var(--home-rule)] bg-[var(--home-paper)] px-3 py-2 text-sm text-[var(--home-ink)] placeholder:text-[var(--home-ink-muted)] focus:outline-none focus:ring-2 focus:ring-[var(--home-signal)]"
+        className="c97-field"
       />
-      <button
-        type="submit"
-        className="inline-flex min-h-[44px] items-center gap-1.5 rounded-full bg-[var(--home-ink)] px-4 py-2 text-sm font-semibold text-[var(--home-paper)]"
-      >
-        <Check size={16} /> Log visit
+      <button type="submit" className="c97-btn" style={{ alignSelf: "flex-start" }}>
+        <Check size={16} aria-hidden="true" style={{ marginRight: 6, display: "inline" }} /> Log visit
       </button>
     </form>
   );
@@ -1330,6 +1234,10 @@ export function MuseumLogClient({ initialState, snapshot }: Props) {
     removeVisit,
   } = useMuseumLog();
 
+  // The server snapshot stays null because its timezone can differ from the
+  // visitor's. React reads the local date after hydration without an effect.
+  const today = useSyncExternalStore(subscribeToLocalDate, toLocalDateKey, getServerLocalDate);
+
   // ─── Lookups ──────────────────────────────────────────────────────────────
   const museumBySlug = useMemo(() => {
     const map: Record<string, Museum> = {};
@@ -1360,14 +1268,17 @@ export function MuseumLogClient({ initialState, snapshot }: Props) {
   }, [userState.visited]);
 
   const lastUpdated = useMemo(() => formatUpdated(snapshot.generatedAt), [snapshot.generatedAt]);
-  const averageUserRating = useMemo(() => {
-    if (userState.visited.length === 0) return null;
-    return averageRating(userState.visited.map((v) => v.rating));
-  }, [userState.visited]);
-  const lastVisitedDate = useMemo(() => {
-    if (userState.visited.length === 0) return null;
-    return [...userState.visited].sort((a, b) => b.date.localeCompare(a.date))[0]?.date ?? null;
-  }, [userState.visited]);
+
+  const citiesCount = useMemo(
+    () => new Set(snapshot.museums.map((m) => m.city)).size,
+    [snapshot.museums],
+  );
+  const exhibitsNowCount = useMemo(
+    () =>
+      snapshot.museums.filter((m) => m.exhibits.some((ex) => getMuseumExhibitStatus(ex, today) === "current"))
+        .length,
+    [snapshot.museums, today],
+  );
 
   function logQuickVisit(museum: Museum) {
     logVisit({
@@ -1377,11 +1288,21 @@ export function MuseumLogClient({ initialState, snapshot }: Props) {
     });
   }
 
-  // ─── Filter (search) state — UI-only, not deep-linked ────────────────────
+  // ─── Filter (search) state, UI-only and not deep-linked ──────────────────
   const [query, setQuery] = useState("");
 
   // ─── Resolve detail entity ────────────────────────────────────────────────
   const selectedMuseum = routeState.museum ? museumBySlug[routeState.museum] : null;
+
+  // ─── Hero: the most recently visited museums, or a blank "log your first visit" stub ──
+  const heroVisits = useMemo(() => {
+    if (!hydrated) return [];
+    return [...userState.visited]
+      .sort((a, b) => b.date.localeCompare(a.date))
+      .slice(0, 3)
+      .map((v) => museumById[v.museumId])
+      .filter((m): m is Museum => Boolean(m));
+  }, [hydrated, userState.visited, museumById]);
 
   // ─── Rail data: recently visited + top liked ─────────────────────────────
   const recentlyVisited = useMemo(() => {
@@ -1423,204 +1344,107 @@ export function MuseumLogClient({ initialState, snapshot }: Props) {
       .slice(0, 5);
   }, [selectedMuseum, snapshot.museums]);
 
-  // Active sidebar view — detail view treats Discover as active.
-  const activeView: MuseumView =
-    routeState.view === "museum" ? "discover" : routeState.view;
+  // Active tab, since the detail view treats Discover as active.
+  const activeView: MuseumView = routeState.view === "museum" ? "discover" : routeState.view;
 
-  const visitedCount = hydrated ? userState.visited.length : 0;
-
-  const navItems: Array<{
-    id: MuseumView;
-    label: string;
-    icon: React.ComponentType<{ size?: number; "aria-hidden"?: boolean }>;
-    pill?: string;
-  }> = [
+  const navItems: Array<{ id: MuseumView; label: string; icon: React.ComponentType<{ size?: number; "aria-hidden"?: boolean }> }> = [
     { id: "discover", label: "Discover", icon: Compass },
-    {
-      id: "journal",
-      label: "Journal",
-      icon: NotebookPen,
-      pill: visitedCount > 0 ? String(visitedCount) : undefined,
-    },
+    { id: "journal", label: "Journal", icon: NotebookPen },
     { id: "lists", label: "Lists", icon: Layers },
   ];
 
-  const currentViewLabel =
-    routeState.view === "museum" && selectedMuseum
-      ? selectedMuseum.name
-      : MUSEUM_VIEW_LABELS[activeView];
+  const standfirst =
+    "I wanted a Letterboxd for museums, so this is a curated catalog of the museums I'd actually recommend, with curator reviews, a few themed lists for trip planning, and a way to log my own visits with a rating and a note. Everything you log stays in this browser only.";
 
   return (
-    <section
-      className="home-page min-h-screen"
-      data-testid="museum-log-shell"
-    >
-      <div className="home-shell home-section">
-        <div className="flex flex-col gap-6">
-          {/* In-page section nav (replaces sidebar) */}
-          <nav className="flex flex-wrap gap-2" aria-label="Section navigation">
-            {navItems.map((item) => {
-              const Icon = item.icon;
-              const isActive = item.id === activeView;
-              return (
-                <button
-                  key={item.id}
-                  type="button"
-                  onClick={() => handleViewChange(item.id)}
-                  aria-current={isActive ? "true" : undefined}
-                  aria-pressed={isActive}
-                  className="inline-flex min-h-touch items-center gap-2 rounded-full border px-4 py-1.5 text-sm font-semibold transition-[border-color,background-color,color] duration-200 ease focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-signal)] focus-visible:ring-offset-2"
-                  style={{
-                    borderColor: isActive ? "var(--home-ink)" : "var(--home-rule)",
-                    background: isActive
-                      ? "var(--home-ink)"
-                      : "var(--home-paper-raised)",
-                    color: isActive ? "var(--home-paper)" : "var(--home-ink-muted)",
-                    fontFamily: "var(--font-home-sans)",
-                  }}
-                >
-                  <Icon size={16} aria-hidden />
-                  {item.label}
-                  {item.pill ? (
-                    <span
-                      className="ml-1 rounded-full px-2 py-0.5 text-2xs font-bold tracking-[0.04em]"
-                      style={{
-                        background: isActive
-                          ? "color-mix(in srgb, var(--home-paper) 22%, transparent)"
-                          : "color-mix(in srgb, var(--home-signal) 40%, transparent)",
-                        color: isActive ? "var(--home-paper)" : "var(--home-ink)",
-                      }}
+    <>
+      <Catalog97ProjectHero
+        ink={PRESS.lead}
+        title="Museum Log"
+        standfirst={standfirst}
+        meta={`Curated by ${snapshot.curatorName} · updated ${lastUpdated}`}
+        readouts={[
+          {
+            label: "Museums visited",
+            value: hydrated ? String(userState.visited.length) : "—",
+            detail: `of ${snapshot.museums.length} catalogued`,
+          },
+          {
+            label: "Cities",
+            value: String(citiesCount),
+            detail: "across the catalog",
+          },
+          {
+            label: "Exhibits on now",
+            value: String(exhibitsNowCount),
+            detail: exhibitsNowCount === 1 ? "museum has one running" : "museums have one running",
+          },
+        ]}
+      >
+        <HeroStubRun museums={heroVisits} today={today} />
+      </Catalog97ProjectHero>
+
+      <section className="c97-band c97-sheet" data-c97-surface="paper" data-seam="torn">
+        <div className="c97-shell">
+          <div
+            className="flex flex-wrap items-center gap-3"
+            style={{ justifyContent: "space-between" }}
+          >
+            <nav aria-label="Section navigation">
+              <div className="c97-segmented" role="tablist" aria-label="Museum Log view switcher">
+                {navItems.map((item) => {
+                  const Icon = item.icon;
+                  const isActive = item.id === activeView;
+                  return (
+                    <button
+                      key={item.id}
+                      type="button"
+                      role="tab"
+                      id={`museum-log-tab-${item.id}`}
+                      aria-controls={`museum-log-tabpanel-${item.id}`}
+                      aria-selected={isActive}
+                      onClick={() => handleViewChange(item.id)}
+                      className="min-h-[44px] text-sm font-semibold"
                     >
-                      {item.pill}
-                    </span>
-                  ) : null}
-                </button>
-              );
-            })}
-          </nav>
-
-          <div className="tool-topbar">
-              <div>
-                <p className="tool-crumbs">
-                  Museum Log / <strong>{currentViewLabel}</strong>
-                </p>
-                <h1>Museum Log</h1>
+                      <Icon size={16} aria-hidden />
+                      {item.label}
+                    </button>
+                  );
+                })}
               </div>
+            </nav>
 
-              <label className="tool-search" aria-label="Filter museums">
-                <Search size={14} aria-hidden="true" />
-                <input
-                  type="search"
-                  placeholder="Filter museums…"
-                  value={query}
-                  onChange={(e) => setQuery(e.target.value)}
-                />
-              </label>
-            </div>
-
-            <div className="tool-meta-chip" role="status" aria-live="polite">
-              <span className="tool-meta-chip-dot" aria-hidden="true" />
-              <span>
-                <strong>Curated catalog</strong> · {snapshot.museums.length}{" "}
-                {snapshot.museums.length === 1 ? "museum" : "museums"}
-              </span>
-              <span className="tool-meta-chip-divider" aria-hidden="true">·</span>
-              <span>
-                {snapshot.reviews.length}{" "}
-                {snapshot.reviews.length === 1 ? "review" : "reviews"}
-              </span>
-              <span className="tool-meta-chip-divider" aria-hidden="true">·</span>
-              <span>
-                {snapshot.visitLog.length} visits logged
-              </span>
-              <span className="tool-meta-chip-spacer" />
-              <span className="tool-meta-chip-meta">
-                Updated {lastUpdated} · I would verify admission and exhibitions before visiting.
-              </span>
-            </div>
-
-            {persistenceStatus === "memory-only" ? (
-              <div
-                className="rounded-[var(--radius-sm)] border px-4 py-3 text-sm leading-6"
-                style={{
-                  borderColor:
-                    "color-mix(in srgb, var(--home-warning) 35%, var(--home-rule))",
-                  background:
-                    "color-mix(in srgb, var(--home-warning) 10%, var(--home-paper-alt))",
-                  color: "var(--home-ink-muted)",
-                }}
-                role="status"
-              >
-                Museum log changes are available in this tab, but browser
-                storage is unavailable, so they may not remain after you close
-                it.
-              </div>
-            ) : null}
-
-            <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,320px)]">
-              <div className="space-y-5">
-              <HomeStatsPanel
-                id="museum-log-stats"
-                title="Your log at a glance"
-                meta={`Updated ${lastUpdated}`}
-                hideLiveDot
-                cells={[
-                  {
-                    label: "Visited",
-                    value: hydrated ? userState.visited.length.toLocaleString() : "—",
-                    sub: hydrated && userState.visited.length === 0 ? "Log your first" : undefined,
-                  },
-                  {
-                    label: "Watchlist",
-                    value: hydrated ? userState.watchlist.length.toLocaleString() : "—",
-                  },
-                  {
-                    label: "Liked",
-                    value: hydrated ? userState.liked.length.toLocaleString() : "—",
-                  },
-                  {
-                    label: "Average rating",
-                    value:
-                      hydrated && averageUserRating !== null
-                        ? `${averageUserRating.toFixed(1)} ★`
-                        : "—",
-                    sub:
-                      hydrated && averageUserRating !== null
-                        ? "Across logged visits"
-                        : "Rate visits to see",
-                  },
-                  {
-                    label: "Catalog size",
-                    value: snapshot.museums.length.toLocaleString(),
-                    sub: "Museums in dataset",
-                  },
-                  {
-                    label: "Reviews",
-                    value: snapshot.reviews.length.toLocaleString(),
-                    sub: "Curator reviews",
-                  },
-                  {
-                    label: "Visits logged",
-                    value: snapshot.visitLog.length.toLocaleString(),
-                    sub: "Includes repeats",
-                  },
-                  {
-                    label: "Last visited",
-                    value:
-                      hydrated && lastVisitedDate ? formatShortDate(lastVisitedDate) : "—",
-                  },
-                ]}
-                pills={[
-                  { label: "Discover", href: "/museum-log?view=discover" },
-                  { label: "Journal", href: "/museum-log?view=journal" },
-                  { label: "Lists", href: "/museum-log?view=lists" },
-                ]}
+            <label className="c97-search-field" aria-label="Filter museums">
+              <Search size={14} aria-hidden="true" />
+              <input
+                type="search"
+                placeholder="Filter museums…"
+                value={query}
+                onChange={(e) => setQuery(e.target.value)}
               />
+            </label>
+          </div>
 
+          <p className="c97-prose" style={{ fontSize: "var(--c97-fs-small)", marginTop: "var(--c97-sp-3)" }}>
+            {snapshot.museums.length} museums catalogued, {snapshot.reviews.length}{" "}
+            {snapshot.reviews.length === 1 ? "curator review" : "curator reviews"}, {snapshot.visitLog.length} visits
+            logged. I would verify admission and exhibitions before visiting.
+          </p>
+
+          {persistenceStatus === "memory-only" ? (
+            <p className="c97-prose" role="status" style={{ fontSize: "var(--c97-fs-small)", marginTop: "var(--c97-sp-2)" }}>
+              Museum log changes are available in this tab, but browser storage is unavailable, so they may not remain
+              after you close it.
+            </p>
+          ) : null}
+
+          <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,320px)]" style={{ marginTop: "var(--c97-sp-5)" }}>
+            <div role="tabpanel" id={`museum-log-tabpanel-${activeView}`} aria-labelledby={`museum-log-tab-${activeView}`}>
               {activeView === "discover" && (
                 <DiscoverView
                   snapshot={snapshot}
                   state={routeState}
+                  today={today}
                   query={query}
                   onChangeFilter={handleChangeFilter}
                   onOpenMuseum={handleOpenMuseum}
@@ -1638,7 +1462,6 @@ export function MuseumLogClient({ initialState, snapshot }: Props) {
               {activeView === "journal" && (
                 <JournalView
                   snapshot={snapshot}
-                  museumBySlug={museumBySlug}
                   museumById={museumById}
                   onOpenMuseum={handleOpenMuseum}
                 />
@@ -1648,6 +1471,7 @@ export function MuseumLogClient({ initialState, snapshot }: Props) {
                 <ListsView
                   snapshot={snapshot}
                   museumById={museumById}
+                  today={today}
                   selectedListSlug={routeState.list}
                   onSelectList={handleSelectList}
                   onOpenMuseum={handleOpenMuseum}
@@ -1662,110 +1486,32 @@ export function MuseumLogClient({ initialState, snapshot }: Props) {
               )}
             </div>
 
-          <aside
-            aria-label="Museum Log side panel"
-            className="flex flex-col gap-4 rounded-[var(--radius-3xl)] border border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper-alt)_74%,var(--home-elev-mix))] p-5 shadow-[var(--shadow-sm)] lg:sticky lg:top-0 lg:self-start lg:max-h-[calc(100vh-7rem)] lg:overflow-y-auto"
-          >
-            {selectedMuseum ? (
-              <section>
-                <p className="tool-rail-label">
-                  Other museums in {REGION_LABEL[selectedMuseum.region]}
-                </p>
-                {contextualMuseums.length === 0 ? (
-                  <p className="text-1xs text-[var(--home-ink-muted)]">
-                    No other museums catalogued in this region yet.
-                  </p>
-                ) : (
-                  <ul className="flex flex-col gap-2">
-                    {contextualMuseums.map((m) => (
-                      <li key={m.id}>
-                        <button
-                          type="button"
-                          onClick={() => handleOpenMuseum(m.slug)}
-                          className="grid w-full grid-cols-[1fr_auto] items-baseline gap-2 rounded-[var(--radius-xl)] border border-transparent px-2 py-2 text-left transition-colors hover:border-[var(--home-rule)] hover:bg-[var(--home-paper)]"
-                        >
-                          <span className="min-w-0">
-                            <span className="block truncate text-xs font-semibold text-[var(--home-ink)]">
-                              {m.name}
-                            </span>
-                            <span className="block truncate text-2xs text-[var(--home-ink-muted)]">
-                              {m.city} · {TYPE_LABEL[m.type]}
-                            </span>
-                          </span>
-                          <span className="inline-flex items-center gap-1 text-1xs font-semibold text-[var(--home-ink)] tabular-nums">
-                            <Star size={10} fill="currentColor" strokeWidth={0} />
-                            {m.curatorRating.toFixed(1)}
-                          </span>
-                        </button>
-                      </li>
-                    ))}
-                  </ul>
-                )}
-              </section>
-            ) : (
-              <>
+            <aside aria-label="Museum Log side panel" className="c97-panel" style={{ padding: "var(--c97-sp-4)", display: "flex", flexDirection: "column", gap: "var(--c97-sp-4)" }}>
+              {selectedMuseum ? (
                 <section>
-                  <p className="tool-rail-label">
-                    <Clock size={12} aria-hidden /> Recently visited
-                  </p>
-                  {recentlyVisited.length === 0 ? (
-                    <p className="text-1xs text-[var(--home-ink-muted)]">
-                      No visits logged yet. Log one from any museum card.
+                  <p className="c97-kicker">Other museums in {REGION_LABEL[selectedMuseum.region]}</p>
+                  {contextualMuseums.length === 0 ? (
+                    <p className="c97-prose" style={{ fontSize: "var(--c97-fs-small)", marginTop: "var(--c97-sp-2)" }}>
+                      No other museums catalogued in this region yet.
                     </p>
                   ) : (
-                    <ul className="flex flex-col gap-2">
-                      {recentlyVisited.map((row) => (
-                        <li key={`${row.museum.id}-${row.date}`}>
-                          <button
-                            type="button"
-                            onClick={() => handleOpenMuseum(row.museum.slug)}
-                            className="grid w-full grid-cols-[1fr_auto] items-baseline gap-2 rounded-[var(--radius-xl)] border border-transparent px-2 py-2 text-left transition-colors hover:border-[var(--home-rule)] hover:bg-[var(--home-paper)]"
-                          >
-                            <span className="min-w-0">
-                              <span className="block truncate text-xs font-semibold text-[var(--home-ink)]">
-                                {row.museum.name}
-                              </span>
-                              <span className="block truncate text-2xs text-[var(--home-ink-muted)]">
-                                {row.museum.city}
-                              </span>
-                            </span>
-                            <span className="text-2xs text-[var(--home-ink-muted)] tabular-nums">
-                              {formatShortDate(row.date)}
-                            </span>
-                          </button>
-                        </li>
-                      ))}
-                    </ul>
-                  )}
-                </section>
-
-                <section>
-                  <p className="tool-rail-label">
-                    <Heart size={12} aria-hidden /> Top liked
-                  </p>
-                  {topLiked.length === 0 ? (
-                    <p className="text-1xs text-[var(--home-ink-muted)]">
-                      Heart a museum to surface it here.
-                    </p>
-                  ) : (
-                    <ul className="flex flex-col gap-2">
-                      {topLiked.map((m) => (
+                    <ul style={{ listStyle: "none", margin: 0, padding: 0, marginTop: "var(--c97-sp-2)", display: "flex", flexDirection: "column", gap: "var(--c97-sp-1)" }}>
+                      {contextualMuseums.map((m) => (
                         <li key={m.id}>
                           <button
                             type="button"
                             onClick={() => handleOpenMuseum(m.slug)}
-                            className="grid w-full grid-cols-[1fr_auto] items-baseline gap-2 rounded-[var(--radius-xl)] border border-transparent px-2 py-2 text-left transition-colors hover:border-[var(--home-rule)] hover:bg-[var(--home-paper)]"
+                            className="grid w-full items-baseline gap-2"
+                            style={{ gridTemplateColumns: "1fr auto", minHeight: "44px", background: "none", border: 0, padding: 0, cursor: "pointer", textAlign: "left" }}
                           >
-                            <span className="min-w-0">
-                              <span className="block truncate text-xs font-semibold text-[var(--home-ink)]">
+                            <span style={{ minWidth: 0 }}>
+                              <span className="block truncate c97-serif" style={{ fontSize: "var(--c97-fs-small)" }}>
                                 {m.name}
                               </span>
-                              <span className="block truncate text-2xs text-[var(--home-ink-muted)]">
-                                {TYPE_LABEL[m.type]} · {m.city}
-                              </span>
+                              <span className="block truncate c97-stub-meta">{m.city} · {TYPE_LABEL[m.type]}</span>
                             </span>
-                            <span className="inline-flex items-center gap-1 text-1xs font-semibold text-[var(--home-ink)] tabular-nums">
-                              <Star size={10} fill="currentColor" strokeWidth={0} />
+                            <span className="inline-flex items-center gap-1 c97-mono" style={{ fontSize: "var(--c97-fs-small)" }}>
+                              <Star size={10} fill="currentColor" strokeWidth={0} aria-hidden="true" />
                               {m.curatorRating.toFixed(1)}
                             </span>
                           </button>
@@ -1774,24 +1520,94 @@ export function MuseumLogClient({ initialState, snapshot }: Props) {
                     </ul>
                   )}
                 </section>
-              </>
-            )}
+              ) : (
+                <>
+                  <section>
+                    <p className="c97-kicker" style={{ display: "inline-flex", alignItems: "center", gap: "4px" }}>
+                      <Clock size={12} aria-hidden="true" /> Recently visited
+                    </p>
+                    {recentlyVisited.length === 0 ? (
+                      <p className="c97-prose" style={{ fontSize: "var(--c97-fs-small)", marginTop: "var(--c97-sp-2)" }}>
+                        No visits logged yet. Log one from any museum card.
+                      </p>
+                    ) : (
+                      <ul style={{ listStyle: "none", margin: 0, padding: 0, marginTop: "var(--c97-sp-2)", display: "flex", flexDirection: "column", gap: "var(--c97-sp-1)" }}>
+                        {recentlyVisited.map((row) => (
+                          <li key={`${row.museum.id}-${row.date}`}>
+                            <button
+                              type="button"
+                              onClick={() => handleOpenMuseum(row.museum.slug)}
+                              className="grid w-full items-baseline gap-2"
+                              style={{ gridTemplateColumns: "1fr auto", minHeight: "44px", background: "none", border: 0, padding: 0, cursor: "pointer", textAlign: "left" }}
+                            >
+                              <span style={{ minWidth: 0 }}>
+                                <span className="block truncate c97-serif" style={{ fontSize: "var(--c97-fs-small)" }}>
+                                  {row.museum.name}
+                                </span>
+                                <span className="block truncate c97-stub-meta">{row.museum.city}</span>
+                              </span>
+                              <span className="c97-stub-meta">{formatShortDate(row.date)}</span>
+                            </button>
+                          </li>
+                        ))}
+                      </ul>
+                    )}
+                  </section>
 
-            <p className="tool-rail-foot">
-              <HelpCircle size={14} aria-hidden="true" />
-              Visits, watchlist, and likes live only in your browser. No logins, no cloud sync.
-            </p>
-          </aside>
+                  <section>
+                    <p className="c97-kicker" style={{ display: "inline-flex", alignItems: "center", gap: "4px" }}>
+                      <Heart size={12} aria-hidden="true" /> Top liked
+                    </p>
+                    {topLiked.length === 0 ? (
+                      <p className="c97-prose" style={{ fontSize: "var(--c97-fs-small)", marginTop: "var(--c97-sp-2)" }}>
+                        Heart a museum to surface it here.
+                      </p>
+                    ) : (
+                      <ul style={{ listStyle: "none", margin: 0, padding: 0, marginTop: "var(--c97-sp-2)", display: "flex", flexDirection: "column", gap: "var(--c97-sp-1)" }}>
+                        {topLiked.map((m) => (
+                          <li key={m.id}>
+                            <button
+                              type="button"
+                              onClick={() => handleOpenMuseum(m.slug)}
+                              className="grid w-full items-baseline gap-2"
+                              style={{ gridTemplateColumns: "1fr auto", minHeight: "44px", background: "none", border: 0, padding: 0, cursor: "pointer", textAlign: "left" }}
+                            >
+                              <span style={{ minWidth: 0 }}>
+                                <span className="block truncate c97-serif" style={{ fontSize: "var(--c97-fs-small)" }}>
+                                  {m.name}
+                                </span>
+                                <span className="block truncate c97-stub-meta">{TYPE_LABEL[m.type]} · {m.city}</span>
+                              </span>
+                              <span className="inline-flex items-center gap-1 c97-mono" style={{ fontSize: "var(--c97-fs-small)" }}>
+                                <Star size={10} fill="currentColor" strokeWidth={0} aria-hidden="true" />
+                                {m.curatorRating.toFixed(1)}
+                              </span>
+                            </button>
+                          </li>
+                        ))}
+                      </ul>
+                    )}
+                  </section>
+                </>
+              )}
+
+              <p className="c97-prose" style={{ fontSize: "var(--c97-fs-small)", display: "inline-flex", alignItems: "flex-start", gap: "var(--c97-sp-1)" }}>
+                <HelpCircle size={14} aria-hidden="true" style={{ flexShrink: 0, marginTop: "2px" }} />
+                Visits, watchlist, and likes live only in your browser, with no login or cloud sync behind them.
+              </p>
+            </aside>
+          </div>
         </div>
+      </section>
 
-        {/* Detail view sits below the shell as a full-width band so the
-            grid above stays in context. Mirrors the /investments research band. */}
-        {routeState.view === "museum" && selectedMuseum && (
-          <section className="tool-band" aria-label={`${selectedMuseum.name} detail`}>
+      {routeState.view === "museum" && selectedMuseum && (
+        <section className="c97-band c97-sheet" data-c97-surface="bone" data-seam="torn" aria-label={`${selectedMuseum.name} detail`}>
+          <div className="c97-shell">
             <MuseumDetailView
               key={selectedMuseum.id}
               museum={selectedMuseum}
               snapshot={snapshot}
+              today={today}
               visit={findVisit(selectedMuseum.id)}
               isWatchlisted={isWatchlisted(selectedMuseum.id)}
               isLiked={isLiked(selectedMuseum.id)}
@@ -1802,25 +1618,22 @@ export function MuseumLogClient({ initialState, snapshot }: Props) {
               onClearVisit={() => removeVisit(selectedMuseum.id)}
               onOpenList={handleOpenList}
             />
-          </section>
-        )}
+          </div>
+        </section>
+      )}
 
-        {routeState.view === "museum" && !selectedMuseum && (
-          <section className="tool-band" aria-label="Museum not found">
-            <p className="text-sm text-[var(--home-ink-muted)]">
+      {routeState.view === "museum" && !selectedMuseum && (
+        <section className="c97-band c97-sheet" data-c97-surface="bone" data-seam="torn" aria-label="Museum not found">
+          <div className="c97-shell">
+            <p className="c97-prose">
               Museum not found.
-              <button
-                type="button"
-                onClick={handleBackFromMuseum}
-                className="ml-2 underline decoration-dotted"
-              >
+              <button type="button" onClick={handleBackFromMuseum} className="c97-btn-ghost" style={{ marginLeft: "var(--c97-sp-2)" }}>
                 Back to catalog
               </button>
             </p>
-          </section>
-        )}
-        </div>
-      </div>
-    </section>
+          </div>
+        </section>
+      )}
+    </>
   );
 }
