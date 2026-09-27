@@ -83,10 +83,12 @@ export interface BookingStrip {
  */
 export function bookingStrip(
   departureKey: string,
-  todayKey: string,
+  todayKey: string | null,
   region: DestinationRegion,
 ): BookingStrip {
-  const daysOut = daysBetween(todayKey, departureKey);
+  // Null todayKey (the client hasn't resolved its own clock yet) reads the
+  // same as an invalid key here: no marker to place, until it resolves.
+  const daysOut = todayKey === null ? null : daysBetween(todayKey, departureKey);
   const spanDays = Math.max(
     region.sweetSpotMaxDays + STRIP_MARGIN_DAYS,
     daysOut !== null ? daysOut + STRIP_MARGIN_DAYS : 0,

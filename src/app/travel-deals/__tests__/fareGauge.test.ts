@@ -3,9 +3,12 @@ import { bookingStrip, fareGauge, fitLabel } from "../fareGauge";
 
 const region = getRegion("western-europe")!;
 
+// UTC throughout (parse, add, and read back), so this is the same date-only
+// key under any host timezone the suite runs in. Mixing a local parse with a
+// UTC read (or the reverse) drifts a day in zones ahead of UTC.
 function addDays(base: string, days: number): string {
-  const date = new Date(`${base}T00:00`);
-  date.setDate(date.getDate() + days);
+  const date = new Date(base);
+  date.setUTCDate(date.getUTCDate() + days);
   return date.toISOString().slice(0, 10);
 }
 
@@ -56,6 +59,13 @@ describe("bookingStrip", () => {
 
   it("returns a null position for an invalid departure date", () => {
     const strip = bookingStrip("not-a-date", today, region);
+    expect(strip.position).toBeNull();
+  });
+
+  it("returns a null position when today isn't known yet, even with a valid departure date", () => {
+    const strip = bookingStrip(addDays(today, 90), null, region);
+    expect(strip.daysOut).toBeNull();
+    expect(strip.todayFraction).toBeNull();
     expect(strip.position).toBeNull();
   });
 

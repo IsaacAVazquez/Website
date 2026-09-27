@@ -161,10 +161,23 @@ function AdmissionStub({ museum, today }: { museum: Museum; today: string | null
 }
 
 /** The hero's small run of stubs: the most recently visited museums, or a blank stub on a first visit. */
-function HeroStubRun({ museums, today }: { museums: Museum[]; today: string | null }) {
+function HeroStubRun({
+  museums,
+  today,
+  hydrated,
+}: {
+  museums: Museum[];
+  today: string | null;
+  hydrated: boolean;
+}) {
   return (
     <div data-c97-surface="paper" style={{ padding: "var(--c97-sp-3)" }}>
-      {museums.length === 0 ? (
+      {!hydrated ? (
+        // Neither the first-visit stub nor a returning visitor's admission
+        // stubs are known yet, so show a neutral placeholder the same size as
+        // the empty stub rather than guessing and flashing to the real state.
+        <span className="c97-skeleton" style={{ minHeight: "8rem", width: "100%" }} />
+      ) : museums.length === 0 ? (
         <div className="c97-stub c97-stub-empty">
           <span className="c97-stub-admit" aria-hidden="true">
             Admit one
@@ -1382,7 +1395,7 @@ export function MuseumLogClient({ initialState, snapshot }: Props) {
           },
         ]}
       >
-        <HeroStubRun museums={heroVisits} today={today} />
+        <HeroStubRun museums={heroVisits} today={today} hydrated={hydrated} />
       </Catalog97ProjectHero>
 
       <section className="c97-band c97-sheet" data-c97-surface="paper" data-seam="torn">

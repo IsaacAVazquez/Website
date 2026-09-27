@@ -1,6 +1,6 @@
 "use client";
 
-import { type CSSProperties, type FormEvent, useMemo, useState } from "react";
+import { type CSSProperties, type FormEvent, useEffect, useMemo, useState } from "react";
 import {
   Bookmark,
   Filter,
@@ -25,6 +25,7 @@ import {
 } from "@/lib/wineCellar";
 import { useWineCellar } from "@/hooks/useWineCellar";
 import { useLocalStoragePersistenceStatus } from "@/hooks/useLocalStorageString";
+import { DATE_ONLY_TIME_ZONE } from "@/lib/date-formatters";
 import type { WineEntry, WineType } from "@/types/wine";
 import { WINE_TYPE_MARK, wineRack, type WineRackRow } from "./wineRack";
 import "./wine-cellar.css";
@@ -44,7 +45,10 @@ interface WineFormDraft {
   tastedOn: string;
 }
 
-function createEmptyFormDraft(): WineFormDraft {
+// `tastedOn` defaults to "today," which depends on the visitor's own clock
+// and zone, so a caller rendering this during SSR or the initial hydration
+// pass must pass "" instead of the real default (see the mount effect below).
+function createEmptyFormDraft(tastedOn: string = getTodayIsoDate()): WineFormDraft {
   return {
     name: "",
     producer: "",
@@ -55,7 +59,7 @@ function createEmptyFormDraft(): WineFormDraft {
     price: "",
     rating: "4",
     notes: "",
-    tastedOn: getTodayIsoDate(),
+    tastedOn,
   };
 }
 
@@ -104,14 +108,18 @@ function formatCurrency(value: number) {
   });
 }
 
+// tastedOn is a date-only string ("2026-06-15"), which parses as UTC midnight,
+// so pinning the formatter to the same zone prints the day that was logged on
+// the server and on the client regardless of either one's own zone.
 const TASTED_DATE_FORMATTER = new Intl.DateTimeFormat("en-US", {
   month: "short",
   day: "numeric",
   year: "numeric",
+  timeZone: DATE_ONLY_TIME_ZONE,
 });
 
 function formatTastedDate(iso: string) {
-  const date = new Date(`${iso}T00:00`);
+  const date = new Date(iso);
   return Number.isNaN(date.getTime()) ? iso : TASTED_DATE_FORMATTER.format(date);
 }
 
@@ -281,7 +289,15 @@ export function WineCellarClient() {
   } = useWineCellar();
   const persistenceStatus = useLocalStoragePersistenceStatus(WINE_CELLAR_STORAGE_KEY);
   const [editingId, setEditingId] = useState<string | null>(null);
-  const [formDraft, setFormDraft] = useState<WineFormDraft>(() => createEmptyFormDraft());
+  const [formDraft, setFormDraft] = useState<WineFormDraft>(() => createEmptyFormDraft(""));
+
+  // Fill "today" in after mount: the server's UTC calendar day and the
+  // visitor's local one can disagree, so the initial render leaves the field
+  // blank and only the client sets it, once, to its own local today.
+  useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- one-time default fill after mount
+    setFormDraft((current) => (current.tastedOn ? current : { ...current, tastedOn: getTodayIsoDate() }));
+  }, []);
 
   function resetForm() {
     setEditingId(null);
@@ -345,7 +361,7 @@ export function WineCellarClient() {
         readouts={
           hasEntries
             ? [
-                { label: "Bottles logged", value: summary.totalWines.toLocaleString() },
+                { label: "Bottles logged", value: summary.totalWines.toLocaleString("en-US") },
                 { label: "Average rating", value: summary.averageRating.toFixed(1) },
                 { label: "Top region", value: summary.topRegion ?? "—" },
               ]
