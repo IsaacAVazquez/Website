@@ -113,7 +113,7 @@ export function DraftAnalyticsPanel({
     const showEmerging = emergingRun && (!activeRun || activeRun.position !== emergingRun.position);
 
     return (
-      <article className="c97-panel p-5 sm:p-6">
+      <article className="c97-panel">
         <p className="c97-kicker mb-1">Draft signals</p>
         <div className="mt-3 grid gap-3">
           {latestFlaggedPick === null && activeRun === null && !showEmerging ? (
@@ -143,14 +143,16 @@ export function DraftAnalyticsPanel({
               )}
               {showEmerging && emergingRun && (
                 <div
-                  className="border px-4 py-3"
-                  style={{
-                    borderColor: "color-mix(in srgb, var(--c97-accent) 36%, var(--c97-rule))",
-                    background: "color-mix(in srgb, var(--c97-accent) 10%, var(--c97-surface))",
-                  }}
+                  className="border border-l-[3px] px-4 py-3"
+                  style={{ ...PANEL_TILE_STYLE, borderLeftColor: "var(--c97-accent)" }}
                 >
+                  {/* The accent wash this tile used to carry measured ink-2 at
+                      4.25:1 on top of it. The stripe keeps the accent as a
+                      marker instead of a full-tile tint, and the body text
+                      prints in ink so it clears 4.5:1 without depending on the
+                      tint's strength. */}
                   <p className="text-sm font-semibold">{emergingRun.position}s starting to go</p>
-                  <p className="mt-1 text-xs" style={{ color: "var(--c97-ink-2)" }}>
+                  <p className="mt-1 text-xs" style={{ color: "var(--c97-ink)" }}>
                     {emergingRun.count} went in the last few picks. Compare the next options inside
                     their current tier before changing your plan.
                   </p>
@@ -175,9 +177,9 @@ export function DraftAnalyticsPanel({
   );
 
   return (
-    <article className="c97-panel p-5 sm:p-6">
+    <article className="c97-panel">
       <p className="c97-kicker mb-1">Draft recap</p>
-      <h2 className="text-2xl font-semibold">How the room drafted</h2>
+      <h2 className="c97-serif c97-h3">How the room drafted</h2>
       <p className="mt-2 max-w-[68ch] text-sm leading-7" style={{ color: "var(--c97-ink-2)" }}>
         {describeBaseline(adpAvailable, adpUnavailableReason)} A positive total means a team kept landing players past
         where the market expected them to go. None of it predicts the season. It only summarizes

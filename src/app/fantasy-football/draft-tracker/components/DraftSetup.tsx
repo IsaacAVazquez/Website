@@ -151,6 +151,7 @@ export function DraftSetup({
   const lineupTooLarge = startingSlots > formState.rounds;
   const rankingsReady = rankingsStatus === "ready";
   const clearsParkedPicks = parkedPickCount > 0;
+  const startDisabled = isStarting || lineupTooLarge || !rankingsReady;
 
   useEffect(() => {
     if (!startArmed) return;
@@ -248,7 +249,7 @@ export function DraftSetup({
   }
 
   function handleStartDraft() {
-    if (isStarting || lineupTooLarge || !rankingsReady) return;
+    if (startDisabled) return;
     // Starting over a parked room is the destructive step, so the first press
     // only arms it.
     if (clearsParkedPicks && !startArmed) {
@@ -287,7 +288,7 @@ export function DraftSetup({
           <p className={MONO_LABEL_CLASS} style={{ color: "var(--c97-ink-2)" }}>
             Room setup
           </p>
-          <h2 className="mt-1 text-xl font-semibold tracking-[-0.03em]">One screen, then draft.</h2>
+          <h2 className="c97-poster-sm mt-1">One screen, then draft.</h2>
         </div>
         {canResume && onResume ? (
           <button
@@ -606,7 +607,7 @@ export function DraftSetup({
         <button
           type="button"
           onClick={handleStartDraft}
-          disabled={isStarting || lineupTooLarge || !rankingsReady}
+          disabled={startDisabled}
           aria-busy={isStarting}
           aria-label={
             startArmed
@@ -615,15 +616,22 @@ export function DraftSetup({
                 ? "Start draft, which clears the parked room"
                 : undefined
           }
-          className="inline-flex min-h-touch items-center justify-center border px-5 font-mono text-2xs uppercase tracking-[0.08em] disabled:cursor-not-allowed disabled:opacity-70"
+          className={`inline-flex min-h-touch items-center justify-center border px-5 font-mono text-2xs uppercase tracking-[0.08em] disabled:cursor-not-allowed ${
+            startDisabled ? "" : "c97-offset"
+          }`}
           style={
-            startArmed
-              ? {
-                  borderColor: "var(--c97-negative)",
-                  background: "var(--c97-negative)",
-                  color: "var(--c97-surface)",
-                }
-              : { borderColor: "var(--c97-ink)", background: "var(--c97-ink)", color: "var(--c97-surface)" }
+            // A disabled control reads as unprinted rather than faded: no fill,
+            // a dashed edge, ink-2 text. Opacity would dim the whole button
+            // uniformly and can still fail contrast against the page behind it.
+            startDisabled
+              ? { borderColor: "var(--c97-ink-2)", borderStyle: "dashed", background: "none", color: "var(--c97-ink-2)" }
+              : startArmed
+                ? {
+                    borderColor: "var(--c97-negative)",
+                    background: "var(--c97-negative)",
+                    color: "var(--c97-surface)",
+                  }
+                : { borderColor: "var(--c97-ink)", background: "var(--c97-ink)", color: "var(--c97-surface)" }
           }
         >
           {isStarting

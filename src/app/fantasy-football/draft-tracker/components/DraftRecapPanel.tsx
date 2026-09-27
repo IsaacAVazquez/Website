@@ -117,12 +117,9 @@ export function DraftRecapPanel({
   ];
 
   return (
-    <article className="c97-panel p-5 sm:p-6" aria-labelledby="draft-recap-heading">
+    <article className="c97-panel" aria-labelledby="draft-recap-heading">
       <p className="c97-kicker mb-1">Model recap</p>
-      <h3
-        id="draft-recap-heading"
-        className="m-0 text-xl font-semibold tracking-[-0.03em]"
-      >
+      <h3 id="draft-recap-heading" className="c97-serif c97-h3">
         How the recommendations held up
       </h3>
       <p

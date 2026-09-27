@@ -1055,92 +1055,87 @@ export function DraftTrackerClient() {
       data-testid="fantasy-draft-tracker-shell"
       data-hydrated={isHydrated ? "true" : "false"}
     >
-      <header
-        className={`${SHELL_CLASS} flex flex-wrap items-baseline justify-between gap-x-6 gap-y-3 pb-3.5 pt-7`}
-      >
-        <div className="flex flex-wrap items-baseline gap-x-4 gap-y-1.5">
-          <span
-            className="inline-flex items-center gap-2 font-mono text-2xs uppercase tracking-[0.1em]"
-            style={{ color: "var(--c97-ink-2)" }}
-          >
+      <div className="c97-sheet" data-c97-surface="paper">
+        <header
+          className={`${SHELL_CLASS} flex flex-wrap items-baseline justify-between gap-x-6 gap-y-3 pb-3.5 pt-7`}
+        >
+          <div className="flex flex-wrap items-baseline gap-x-4 gap-y-1.5">
             <span
-              className="h-2 w-2"
-              style={{ background: "var(--c97-accent)" }}
-              aria-hidden="true"
-            />
-            {kicker}
-          </span>
-          <h1
-            className="m-0 font-semibold leading-none"
-            style={{ fontSize: "clamp(1.55rem, 1.3rem + 1.25vw, 2.1rem)", letterSpacing: "-0.05em" }}
-          >
-            Draft{" "}
-            <em style={{ fontFamily: "var(--c97-font-display)", fontStyle: "italic", fontWeight: 500 }}>
-              Tracker
-            </em>
-          </h1>
-        </div>
-        <div className="flex flex-wrap gap-1.5">
-          {headerChips.map((chip) => (
-            <span
-              key={chip.label}
-              className={HEADER_CHIP_CLASS}
-              style={
-                chip.tone ?? {
-                  borderColor: "var(--c97-rule)",
-                  background: "var(--c97-field)",
-                  color: "var(--c97-ink-2)",
-                }
-              }
+              className="inline-flex items-center gap-2 font-mono text-2xs uppercase tracking-[0.1em]"
+              style={{ color: "var(--c97-ink-2)" }}
             >
-              {chip.label}
+              <span
+                className="h-2 w-2"
+                style={{ background: "var(--c97-accent)" }}
+                aria-hidden="true"
+              />
+              {kicker}
             </span>
-          ))}
-        </div>
-      </header>
+            <h1 className={showSetup ? "c97-poster-sm" : "c97-serif c97-h3"}>Draft Tracker</h1>
+          </div>
+          <div className="flex flex-wrap gap-1.5">
+            {headerChips.map((chip) => (
+              <span
+                key={chip.label}
+                className={HEADER_CHIP_CLASS}
+                style={
+                  chip.tone ?? {
+                    borderColor: "var(--c97-rule)",
+                    background: "var(--c97-field)",
+                    color: "var(--c97-ink-2)",
+                  }
+                }
+              >
+                {chip.label}
+              </span>
+            ))}
+          </div>
+        </header>
 
-      {seasonalWeek >= 1 ? (
-        <div className={`${SHELL_CLASS} pb-4`}>
-          <SeasonalScopeNote season={draftMetadata?.season ?? 0} week={seasonalWeek}>
-            This room tracks a draft against the preseason consensus board, and that board stops refreshing once the season is under way, so it is here for next summer. This week&apos;s ranks are on the <Link href="/fantasy-football/weekly" className="underline decoration-[var(--c97-accent)] underline-offset-4">weekly board</Link>.
-          </SeasonalScopeNote>
-        </div>
-      ) : null}
+        {seasonalWeek >= 1 ? (
+          <div className={`${SHELL_CLASS} pb-4`}>
+            <SeasonalScopeNote season={draftMetadata?.season ?? 0} week={seasonalWeek}>
+              This room tracks a draft against the preseason consensus board, and that board stops refreshing once the season is under way, so it is here for next summer. This week&apos;s ranks are on the <Link href="/fantasy-football/weekly" className="underline decoration-[var(--c97-accent)] underline-offset-4">weekly board</Link>.
+            </SeasonalScopeNote>
+          </div>
+        ) : null}
 
-      {(persistenceError || rankingsStale || (!rankingsStale && adpSourceStale)) && (
-        <div className={`${SHELL_CLASS} grid gap-2.5 pb-3`}>
-          {persistenceError ? (
-            <div role="status" className="border px-3.5 py-2.5 text-sm" style={WARNING_CARD_STYLE}>
-              <p className="m-0 font-semibold">Local save is unavailable.</p>
-              <p className="m-0 mt-1" style={{ color: "var(--c97-ink-2)" }}>
-                {persistenceError}
-              </p>
-            </div>
-          ) : null}
-          {rankingsStale ? (
-            <div
-              role="alert"
-              className="border px-3.5 py-2.5 text-sm leading-6"
-              style={WARNING_CARD_STYLE}
-            >
-              The ranking source is stale, so Draft Outlook and calculated draft signals are paused.
-              You can keep logging picks against the dated board, but check current player news and
-              your room&apos;s market before using it for a live decision.
-            </div>
-          ) : null}
-          {!rankingsStale && adpSourceStale ? (
-            <div
-              role="status"
-              className="border px-3.5 py-2.5 text-sm leading-6"
-              style={WARNING_CARD_STYLE}
-            >
-              The mock-draft ADP source is stale, so market price signals are hidden. The room is
-              using the current consensus board for its remaining draft signals.
-            </div>
-          ) : null}
-        </div>
-      )}
+        {(persistenceError || rankingsStale || (!rankingsStale && adpSourceStale)) && (
+          <div className={`${SHELL_CLASS} grid gap-2.5 pb-3`}>
+            {persistenceError ? (
+              <div role="status" className="border px-3.5 py-2.5 text-sm" style={WARNING_CARD_STYLE}>
+                <p className="m-0 font-semibold">Local save is unavailable.</p>
+                <p className="m-0 mt-1" style={{ color: "var(--c97-ink-2)" }}>
+                  {persistenceError}
+                </p>
+              </div>
+            ) : null}
+            {rankingsStale ? (
+              <div
+                role="alert"
+                className="border px-3.5 py-2.5 text-sm leading-6"
+                style={WARNING_CARD_STYLE}
+              >
+                The ranking source is stale, so Draft Outlook and calculated draft signals are paused.
+                You can keep logging picks against the dated board, but check current player news and
+                your room&apos;s market before using it for a live decision.
+              </div>
+            ) : null}
+            {!rankingsStale && adpSourceStale ? (
+              <div
+                role="status"
+                className="border px-3.5 py-2.5 text-sm leading-6"
+                style={WARNING_CARD_STYLE}
+              >
+                The mock-draft ADP source is stale, so market price signals are hidden. The room is
+                using the current consensus board for its remaining draft signals.
+              </div>
+            ) : null}
+          </div>
+        )}
+      </div>
 
+      <div className="c97-sheet" data-c97-surface="paper">
       {showSetup ? (
         <div className="mx-auto w-full max-w-[820px] px-[clamp(1rem,4vw,2.5rem)] pb-12 pt-1">
           <DraftSetup
@@ -1640,7 +1635,7 @@ export function DraftTrackerClient() {
 
             {draftSnapshot && (
               <div className="mt-6 grid gap-4">
-                <article className="c97-panel p-5 sm:p-6">
+                <article className="c97-panel">
                   <DraftValuePanel
                     report={userDraftValue}
                     headingId="draft-tracker-outlook-heading"
@@ -1681,7 +1676,7 @@ export function DraftTrackerClient() {
                     </div>
                   </details>
                 )}
-                <article className="c97-panel p-5 sm:p-6">
+                <article className="c97-panel">
                   <p className="c97-kicker mb-1">Room actions</p>
                   <div className="mt-3 flex flex-wrap gap-2">
                     <button
@@ -1771,6 +1766,7 @@ export function DraftTrackerClient() {
           </div>
         </>
       )}
+      </div>
 
       <div
         aria-live="polite"
@@ -1779,7 +1775,7 @@ export function DraftTrackerClient() {
       >
         {exportToast ? (
           <div
-            className="border px-4 py-2 text-sm font-semibold shadow-[var(--shadow-md)]"
+            className="border px-4 py-2 text-sm font-semibold c97-offset"
             style={{ borderColor: "var(--c97-rule)", background: "var(--c97-ink)", color: "var(--c97-surface)" }}
           >
             {exportToast}
