@@ -1,0 +1,58 @@
+/* PGA Tour Pulse: the manual leaderboard signature and its slats. */
+
+.c97-golf-board {
+  padding: var(--c97-sp-3);
+}
+
+.c97-golf-name-btn {
+  display: flex;
+  align-items: center;
+  min-height: 44px;
+  width: 100%;
+  background: none;
+  border: 0;
+  padding: 0;
+  text-align: left;
+  font: inherit;
+  color: var(--c97-ink);
+  cursor: pointer;
+}
+
+.c97-golf-cutline td {
+  border-top: 2px solid var(--c97-ink);
+  padding-top: var(--c97-sp-2);
+  padding-bottom: var(--c97-sp-2);
+  text-align: center;
+}
+
+/* The full-field table below the hero: a selected row gets the same ink bar
+ * every other selectable row in the system uses (earthquake's log, transit's
+ * station list). */
+.c97-golf-full-table tbody tr[aria-current="true"] {
+  box-shadow: inset 4px 0 0 0 var(--c97-ink);
+}
+
+.c97-golf-card {
+  display: block;
+  width: 100%;
+  min-height: 44px;
+  text-align: left;
+  font: inherit;
+  color: var(--c97-ink);
+  background: var(--c97-field);
+  border: 1px solid var(--c97-rule);
+  padding: var(--c97-sp-3);
+  cursor: pointer;
+}
+
+.c97-golf-card[aria-current="true"] {
+  box-shadow: inset 4px 0 0 0 var(--c97-ink);
+}
+
+/* The hero board scrolls inside its own plate rather than the page; the full
+ * field below keeps every round column at every width. */
+@media (max-width: 639px) {
+  .c97-golf-table {
+    min-width: 26rem;
+  }
+}
