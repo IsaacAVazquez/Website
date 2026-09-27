@@ -1114,8 +1114,9 @@ function getOrFetchJobs(
 }
 
 // A cold instance or an expired entry refreshes by fanning out to every board,
-// and in production that fan-out has outlasted the platform's response limit,
-// which cut the Job Search page off after its loading shell. Callers wait this
+// and in production requests waiting on that fan-out were cut off 18 to 27
+// seconds in, after the Job Search page's loading shell (what ended them was
+// not confirmed). Callers wait this
 // long at most. Past it they get the last result served for the key, marked
 // stale, or an error when the key has never been served, and the refresh keeps
 // running for the next request.
