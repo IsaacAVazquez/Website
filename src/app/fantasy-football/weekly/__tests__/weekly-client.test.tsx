@@ -1,4 +1,5 @@
 import { fireEvent, render, screen, within } from "@testing-library/react";
+import { renderToString } from "react-dom/server";
 
 import { WeeklyBoardClient } from "../weekly-client";
 import { FANTASY_WEEKLY_STARTABLE_DEPTH } from "@/lib/fantasyWeeklySnapshot";
@@ -288,6 +289,45 @@ describe("WeeklyBoardClient rankings view", () => {
     expect(screen.getByRole("status")).toHaveTextContent(
       `Showing ${FANTASY_WEEKLY_STARTABLE_DEPTH.flex} of ${FLEX_COUNT} players`,
     );
+  });
+});
+
+// The page seeds one scoring format's boards so the first rows are in the
+// HTML. Until the client's own fetch fills in the rest, a switch to another
+// format has no board yet, which is loading rather than empty.
+describe("WeeklyBoardClient with a server seed", () => {
+  it("says the board is loading while a seeded snapshot lacks the chosen scoring", () => {
+    const { boards, ...rest } = buildSnapshot();
+    currentSearchParams = new URLSearchParams("scoring=standard");
+    renderClient("rankings", {
+      ...rest,
+      boards: { ppr: boards.ppr },
+    } as unknown as ReturnType<typeof buildSnapshot>);
+
+    expect(screen.getByText("Loading the weekly board.")).toBeInTheDocument();
+    expect(screen.queryByRole("table")).not.toBeInTheDocument();
+  });
+
+  it("server-renders the rows with a UTC stamp, since the visitor's timezone is unknown there", () => {
+    mockUseFantasyWeeklySnapshot.mockReturnValue({
+      snapshot: buildSnapshot(),
+      notPublished: false,
+      isLoading: false,
+      error: null,
+      retry: jest.fn(),
+    });
+
+    const html = renderToString(
+      <WeeklyBoardClient initialState={{ scoring: "ppr", board: "flex" }} view="rankings" />,
+    ).replace(/<!-- -->/g, "");
+    const utcStamp = new Intl.DateTimeFormat("en-US", {
+      dateStyle: "medium",
+      timeStyle: "short",
+      timeZone: "UTC",
+    }).format(new Date(FRESH_AS_OF));
+
+    expect(html).toContain("Flex Player 1<");
+    expect(html).toContain(`Source updated ${utcStamp} UTC`);
   });
 });
 

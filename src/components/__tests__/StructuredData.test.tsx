@@ -76,10 +76,16 @@ describe("StructuredData", () => {
         name: "Isaac Vazquez",
         givenName: "Isaac",
         familyName: "Vazquez",
-        alternateName: ["@isaacvazquez", "IsaacAVazquez"],
+        alternateName: ["IsaacAVazquez"],
         image: "https://isaacvazquez.com/images/headshot-home.webp",
       })
     );
+    // x.com/isaacvazquez returned "User Profile Not Found" on 2026-09-24, so the
+    // entity links only profiles a crawler can open.
+    expect(schema.sameAs).toEqual([
+      "https://github.com/IsaacAVazquez",
+      "https://www.linkedin.com/in/isaac-vazquez/",
+    ]);
     expect(schema.disambiguatingDescription).toContain(
       "UC Berkeley Haas MBA candidate"
     );
