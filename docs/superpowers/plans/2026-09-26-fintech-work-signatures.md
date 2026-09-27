@@ -1,6 +1,6 @@
 # Fintech and work tools signatures implementation plan
 
-This plan ships PR 4 of `docs/superpowers/specs/2026-09-25-project-specific-ui-design.md`, meaning the seven fintech and work tools rebuilt around their signatures and moved onto the Catalog 97 tokens, on branch `design/fintech-work-signatures`. The branch starts from `design/personal-tools-signatures` (PR 2) and rebases onto `design/sports-signatures` (PR 3) if that branch reaches origin before this one opens.
+This plan ships PR 4 of `docs/superpowers/specs/2026-09-25-project-specific-ui-design.md`, meaning the seven fintech and work tools rebuilt around their signatures and moved onto the Catalog 97 tokens, on branch `design/fintech-work-signatures`. The branch started from `design/personal-tools-signatures` (PR 2). PR 2 re-landed as #477 and the sports PR merged as #478 on 2026-09-27, so this branch merges `origin/main` and opens against `main`.
 
 The shape is the same as PR 1 and PR 2. Each route reads its inks from `PROJECT_PRESS`, opens on `Catalog97ProjectHero`, and passes its signature in as the child. Signature geometry and formatting live in a pure, unit-tested helper beside the route, and the component only draws what the helper returns. Each route keeps its own CSS in a route-local stylesheet, so the tasks touch no shared file except the ones named below.
 
@@ -42,4 +42,4 @@ Helper `src/app/mba-internship-notifications/pipelineStages.ts`, tested beside i
 
 ## Task 8: Verification and review
 
-Full Jest, `tsc --noEmit`, and ESLint on the touched directories. `e2e/investments.spec.ts` and `e2e/product-surfaces.spec.ts` against the dev server on port 3200. The contrast sweep over the seven routes, empty and with seeded localStorage. A probe at 390, 640, 820, and 1440 for horizontal overflow, hero icon size, rendered SVG text size, page errors, and Decision Lab's body in a headless screenshot, plus screenshots in both themes at 1440 and 390. One fresh review of the branch diff, fixes for Critical and Important findings, then the rebase or base decision above and the PR.
+Full Jest, `tsc --noEmit`, and ESLint on the touched directories. `e2e/investments.spec.ts` and `e2e/product-surfaces.spec.ts` against the dev server on port 3200. The contrast sweep over the seven routes, empty and with seeded localStorage. A probe at 390, 640, 820, and 1440 for horizontal overflow, hero icon size, rendered SVG text size, page errors, and Decision Lab's body in a headless screenshot, plus screenshots in both themes at 1440 and 390. One fresh review of the branch diff, fixes for Critical and Important findings, then a merge of `origin/main`, a sitemap regeneration, and the PR against `main`.
