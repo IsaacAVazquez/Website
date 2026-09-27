@@ -33,7 +33,7 @@ function FormField({
 }) {
   return (
     <label className="block space-y-2">
-      <span className="home-meta mb-0">{label}</span>
+      <span className="c97-kicker">{label}</span>
       {children}
     </label>
   );
@@ -95,16 +95,18 @@ export default function ApplicationEditDialog({
         role="dialog"
         aria-modal="true"
         aria-labelledby="application-dialog-title"
-        className="home-card max-h-[90vh] w-full max-w-2xl overflow-y-auto p-6 sm:p-7"
-        style={{ background: "var(--home-paper)" }}
+        className="c97-panel c97-offset max-h-[90vh] w-full max-w-2xl overflow-y-auto"
+        style={{ background: "var(--c97-surface)" }}
       >
         <div className="flex items-start justify-between gap-4">
           <div>
-            <p className="home-kicker mb-2">Application tracker</p>
+            <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-2)" }}>
+              Application tracker
+            </p>
             <h2
               id="application-dialog-title"
               className="mb-0 text-xl font-semibold"
-              style={{ fontFamily: "var(--font-home-sans)", color: "var(--home-ink)" }}
+              style={{ fontFamily: "var(--c97-font-body)", color: "var(--c97-ink)" }}
             >
               {application ? "Edit application" : "Add application"}
             </h2>
@@ -112,9 +114,9 @@ export default function ApplicationEditDialog({
           <button
             type="button"
             onClick={onClose}
-            className="inline-flex min-h-[44px] min-w-[44px] items-center justify-center rounded-full"
+            className="inline-flex min-h-[44px] min-w-[44px] items-center justify-center"
             aria-label="Close application dialog"
-            style={{ color: "var(--home-ink-muted)" }}
+            style={{ color: "var(--c97-ink-2)" }}
           >
             <X className="h-4 w-4" aria-hidden="true" />
           </button>
@@ -268,14 +270,14 @@ export default function ApplicationEditDialog({
         </div>
 
         <div className="mt-6 flex flex-wrap justify-end gap-3">
-          <button type="button" onClick={onClose} className="home-button home-button-secondary">
+          <button type="button" onClick={onClose} className="c97-btn-ghost">
             Cancel
           </button>
           <button
             type="button"
             onClick={() => onSave(form, application)}
             disabled={!canSave}
-            className="home-button home-button-primary disabled:opacity-50"
+            className="c97-btn disabled:opacity-50"
           >
             Save application
           </button>
