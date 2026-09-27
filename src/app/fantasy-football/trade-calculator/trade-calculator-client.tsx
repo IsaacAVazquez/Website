@@ -24,6 +24,7 @@ import {
   getNflRegularSeasonWeek,
   getSnapshotStaleness,
   type FantasySnapshotStaleness,
+  WIDE_SHELL_CLASS,
 } from "@/lib/fantasyUtils";
 import { getCurrentDraftSeason } from "@/app/fantasy-football/draft-tracker/hooks/useDraftState";
 import { REDRAFT_LINEUP_PRESETS } from "@/lib/redraftLineup";
@@ -371,7 +372,7 @@ export function TradeCalculatorClient() {
       data-testid="fantasy-trade-calculator-shell"
       data-hydrated={isHydrated ? "true" : "false"}
     >
-      <div className="home-shell home-shell-wide home-section space-y-5">
+      <div className={`${WIDE_SHELL_CLASS} space-y-5 py-[clamp(1.25rem,2vw,2rem)]`}>
         <Breadcrumbs customItems={BREADCRUMBS} className="!py-0" />
 
         <header className="border-b border-[var(--c97-rule)] pb-5">

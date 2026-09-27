@@ -5,7 +5,7 @@ import { ChevronDown, GitCompareArrows, X } from "lucide-react";
 import { useEffect, useMemo, useState } from "react";
 
 import { useCompareTray } from "@/hooks/useCompareTray";
-import { getPositionTone } from "@/lib/fantasyUtils";
+import { WIDE_SHELL_CLASS, getPositionTone } from "@/lib/fantasyUtils";
 import type { Player } from "@/types";
 
 import { CompareModal } from "./CompareModal";
@@ -89,11 +89,11 @@ export function CompareTray({
               over. It used to be a max-w-3xl box centred in the viewport, so at
               1440 it sat at x=336 in a page whose cards run 32 to 1408, lining
               up with nothing, and the chips wrapped to a second row with 600px
-              of the bar's own width unused. home-shell-wide is what both boards
+              of the bar's own width unused. WIDE_SHELL_CLASS is what both boards
               wrap themselves in, so the tray's edges now land on the board
               card's edges at every width.
             */}
-            <div className="home-shell home-shell-wide flex justify-center">
+            <div className={`${WIDE_SHELL_CLASS} flex justify-center`}>
             {showHiddenSelections ? (
               <div
                 className="flex w-full items-center gap-3 border px-4 py-3"

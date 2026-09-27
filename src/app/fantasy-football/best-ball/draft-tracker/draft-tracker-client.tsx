@@ -32,6 +32,7 @@ import {
   resolveDraftPicksForModel,
   withoutPlayerAdp,
   getNflRegularSeasonWeek,
+  WIDE_SHELL_CLASS,
 } from "@/lib/fantasyUtils";
 import { calculateBestBallDraftValues } from "@/lib/fantasyTeamValue";
 import { BestBallBuildPanel } from "./best-ball-build-panel";
@@ -176,7 +177,7 @@ export function BestBallDraftTrackerClient({
       data-testid="best-ball-draft-tracker-shell"
       data-hydrated={isHydrated ? "true" : "false"}
     >
-      <div className="home-shell home-shell-wide home-section space-y-5">
+      <div className={`${WIDE_SHELL_CLASS} space-y-5 py-[clamp(1.25rem,2vw,2rem)]`}>
         <Breadcrumbs customItems={BREADCRUMBS} className="pt-2" />
         {seasonalWeek >= 1 ? (
           <SeasonalScopeNote season={snapshot?.season ?? 0} week={seasonalWeek}>

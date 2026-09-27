@@ -672,6 +672,9 @@ export const FANTASY_CHIP_CLASS =
 /** The template's 1080px column; each page manages its own shell width. */
 export const SHELL_CLASS = "mx-auto w-full max-w-[1080px] px-[clamp(1rem,4vw,2.5rem)]";
 
+/** The wide column the trade desk, the best ball room, and the compare tray use, 1680px from 1440 up. */
+export const WIDE_SHELL_CLASS = "mx-auto w-full max-w-[86rem] px-4 sm:px-6 lg:px-8 min-[1440px]:max-w-[1680px]";
+
 export const MONO_LABEL_CLASS = "font-mono text-3xs uppercase tracking-[0.12em]";
 
 /** Square-cornered mono chip from the template header (distinct from the shared pill chip).
