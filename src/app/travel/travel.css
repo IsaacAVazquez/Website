@@ -1,0 +1,229 @@
+/* Travel Planner: the boarding pass and the itinerary timeline. */
+
+.c97-boarding-pass {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: var(--c97-sp-4);
+  padding: var(--c97-sp-4);
+}
+
+.c97-boarding-pass-stub {
+  display: grid;
+  align-content: start;
+  gap: var(--c97-sp-1);
+  padding-left: var(--c97-sp-4);
+  border-left: 2px dashed var(--c97-rule);
+  min-width: 9rem;
+}
+
+.c97-boarding-pass-trip-select {
+  display: block;
+  max-width: 22rem;
+  margin-top: var(--c97-sp-2);
+}
+
+.c97-boarding-pass-destination {
+  margin-top: var(--c97-sp-2);
+}
+
+/* A printed field with nothing in it yet, drawn as a blank rule instead of text. */
+.c97-boarding-pass-blank {
+  display: inline-block;
+  width: 12rem;
+  height: 1px;
+  margin-top: 0.6em;
+  background: var(--c97-rule);
+}
+
+.c97-boarding-pass-blank-sm {
+  display: inline-block;
+  width: 7rem;
+  height: 1px;
+  margin-top: 0.5em;
+  background: var(--c97-rule);
+}
+
+@media (max-width: 639px) {
+  .c97-boarding-pass {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .c97-boarding-pass-stub {
+    padding-left: 0;
+    border-left: 0;
+    padding-top: var(--c97-sp-3);
+    border-top: 2px dashed var(--c97-rule);
+  }
+}
+
+/*
+ * The itinerary timeline: one column per day, each a vertical track with
+ * stops placed by time. The row scrolls inside itself at phone width so the
+ * page never gains horizontal scroll.
+ */
+/* Hour marks down the left, the same window the stops sit on. */
+.c97-travel-timeline-frame {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: var(--c97-sp-2);
+}
+
+/* The axis is a column of its own, so its track lines up with the day tracks. */
+.c97-travel-timeline-col.c97-travel-timeline-axis {
+  width: 3.25rem;
+}
+
+.c97-travel-timeline-axis .c97-travel-timeline-track {
+  background: none;
+}
+
+.c97-travel-timeline-axis span {
+  position: absolute;
+  right: 0;
+  transform: translateY(-50%);
+  font-family: var(--c97-font-mono);
+  font-size: var(--c97-fs-label);
+  color: var(--c97-ink-2);
+  white-space: nowrap;
+}
+
+.c97-travel-timeline-rule {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: var(--c97-rule);
+}
+
+.c97-travel-timeline-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--c97-sp-2) var(--c97-sp-4);
+  margin: var(--c97-sp-3) 0 0;
+  padding: 0;
+  list-style: none;
+  font-size: var(--c97-fs-small);
+  color: var(--c97-ink);
+}
+
+.c97-travel-timeline-legend li {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--c97-sp-1);
+}
+
+.c97-travel-timeline-swatch {
+  display: inline-block;
+  width: 0.9rem;
+  height: 0.9rem;
+  background: var(--mark-color, var(--c97-ink-2));
+}
+
+.c97-travel-timeline-swatch[data-conflict="true"] {
+  background-image: repeating-linear-gradient(
+    45deg,
+    var(--c97-ink) 0,
+    var(--c97-ink) 3px,
+    transparent 3px,
+    transparent 6px
+  );
+}
+
+/* Six day columns fit a desktop plate, so the cue only shows when they can't. */
+@media (min-width: 1024px) {
+  .c97-travel-timeline-cue:not([data-many]) {
+    display: none;
+  }
+}
+
+.c97-travel-timeline {
+  display: flex;
+  gap: var(--c97-sp-3);
+  overflow-x: auto;
+  padding-bottom: var(--c97-sp-1);
+}
+
+.c97-travel-timeline-col {
+  flex: 0 0 auto;
+  width: 6.5rem;
+  display: grid;
+  align-content: start;
+  gap: var(--c97-sp-1);
+}
+
+.c97-travel-timeline-day {
+  font-size: var(--c97-fs-label);
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--c97-ink-2);
+  margin: 0;
+  white-space: nowrap;
+}
+
+.c97-travel-timeline-track {
+  position: relative;
+  height: clamp(220px, 30vw, 320px);
+  background: var(--c97-field);
+}
+
+.c97-travel-timeline-mark {
+  position: absolute;
+  left: 2px;
+  right: 2px;
+  min-height: 4px;
+  background: var(--mark-color, var(--c97-ink-2));
+  cursor: pointer;
+}
+
+.c97-travel-timeline-mark[data-done="true"] {
+  opacity: 0.5;
+}
+
+/* A hatch, not just a hue swap, so the overlap flag reads without relying on colour. */
+.c97-travel-timeline-mark[data-conflict="true"] {
+  background-image: repeating-linear-gradient(
+    45deg,
+    var(--c97-ink) 0,
+    var(--c97-ink) 3px,
+    var(--mark-color, var(--c97-ink-2)) 3px,
+    var(--mark-color, var(--c97-ink-2)) 6px
+  );
+}
+
+.c97-travel-timeline-untimed {
+  font-size: var(--c97-fs-label);
+  color: var(--c97-ink-2);
+  margin: var(--c97-sp-1) 0 0;
+}
+
+/*
+ * A postcard for a journal entry: the note on the left, a stamp corner
+ * carrying the mood and date on the right, torn free of the sheet below it.
+ */
+.c97-postcard {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: var(--c97-sp-3);
+  padding: var(--c97-sp-3);
+}
+
+.c97-postcard-stamp {
+  display: grid;
+  align-content: start;
+  gap: var(--c97-sp-1);
+  min-width: 6.5rem;
+  padding: var(--c97-sp-2);
+  border: 2px dotted var(--c97-rule);
+  text-align: center;
+}
+
+@media (max-width: 639px) {
+  .c97-postcard {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .c97-postcard-stamp {
+    justify-self: start;
+  }
+}
