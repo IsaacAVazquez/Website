@@ -22,13 +22,7 @@ related_targets:
 the fintech calculators and the browser-persisted personal tools, about a dozen routes.
 It is not its own component; it is a class contract that each client renders into.
 
-**Visual world: Catalog 97 through the bridge, as of 2026-09-16.** The `.tool-*` classes
-have no token world of their own. They are built on `--home-*` tokens and hairline rules,
-and every route that uses them now renders inside `Catalog97ToolShell`, where the bridge
-block in `src/app/catalog97.css` aliases each `--home-*` name onto a Catalog 97 value,
-sets every `--radius-*` token to 0, and sets every `--shadow-*` token to `none`. `DESIGN.md` still describes the Working
-Instrument and does not govern this surface. The radius values recorded below (8px and
-the rest) are what the `:root` tokens hold, and they paint as 0 inside the bridge.
+**Visual world: superseded.** The `.tool-*` classes this brief documents (`.tool-shell`, `.tool-band`, `.tool-card`, `.tool-nav-link`, `.tool-empty`, and the rest) no longer exist in `src/app/globals.css`; they were deleted with the Working Instrument and its bridge on 2026-09-27. `DESIGN.md` now describes Catalog 97 and governs every route. At least one related route (`/fintech-tools/rent-vs-buy`) has since moved onto its own scoped classes (`c97-rvb-*`) rather than a shared `.tool-*` contract, so this brief's scope line and everything below it describe a shell that predates that change and needs re-verifying route by route before anyone acts on it.
 
 **Visitor mode.** Operate. These are working tools, so scanability and the state of the
 data outrank expression. The shell should be quiet and let the calculator or the list be

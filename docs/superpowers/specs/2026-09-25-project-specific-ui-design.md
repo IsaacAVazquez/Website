@@ -129,4 +129,4 @@ Before a PR opens, the route's Jest suites and every e2e spec that touches its r
 
 ## Open items
 
-`/score-pools` moved onto Catalog 97 in the close-out PR (#483), and `/arcade` keeps its CRT palette as the sanctioned exception `STYLING.md` names, since it never read a `--home-*` token, so neither blocks anything now. The `/design/catalog-pages` canvas still describes the old Pine and Tobacco rules and is not changed here.
+`/score-pools` moved onto Catalog 97 in the close-out PR (#483), and Isaac confirmed on 2026-09-27 that `/arcade` keeps its CRT palette as the sanctioned exception `STYLING.md` names, since it never read a `--home-*` token, so neither blocks anything now. The `/design/catalog-pages` canvas still describes the old Pine and Tobacco rules and is not changed here.

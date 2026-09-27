@@ -68,7 +68,7 @@ Current route inventory and page ownership for the live app.
 | `/museum-log` | `src/app/museum-log/page.tsx` | Museum visit log |
 | `/travel` | `src/app/travel/page.tsx` | Browser-persisted travel planner (trips, day-by-day itineraries, journaling) via `useTravelPlanner` |
 | `/travel-deals` | `src/app/travel-deals/page.tsx` | Travel Deal Lab: browser-persisted trip cost optimizer (booking-window timing, fare deal score, cash vs points, budget split) over a curated, unverified deals dataset |
-| `/arcade` | `src/app/arcade/page.tsx` | Reactor, a neon synthwave reflex game and deliberate style experiment (one of the two sanctioned palette exceptions in `STYLING.md`) |
+| `/arcade` | `src/app/arcade/page.tsx` | Reactor, a neon synthwave reflex game and deliberate style experiment (the one sanctioned palette exception in `STYLING.md`) |
 
 ### Fantasy football
 
