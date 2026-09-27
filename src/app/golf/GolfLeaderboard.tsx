@@ -1,7 +1,7 @@
 "use client";
 
 import type { GolfCutState, GolfLeaderboardEntry } from "@/types/golf";
-import { formatScoreToPar, leaderboardSlats, type LeaderboardSlat, type ParTone } from "./leaderboard";
+import { boardRows, formatScoreToPar, leaderboardSlats, type LeaderboardSlat, type ParTone } from "./leaderboard";
 
 interface GolfLeaderboardProps {
   entries: GolfLeaderboardEntry[];
@@ -14,26 +14,6 @@ interface GolfLeaderboardProps {
 
 /** Names on slats, top of the field, so it never grows into the full table below. */
 const HERO_TOP_COUNT = 10;
-
-type BoardRow = { kind: "slat"; slat: LeaderboardSlat } | { kind: "cutline" };
-
-function buildRows(top: LeaderboardSlat[], cutIndex: number | null, allSlats: LeaderboardSlat[]): BoardRow[] {
-  const rows: BoardRow[] = top.map((slat) => ({ kind: "slat", slat }));
-
-  if (cutIndex === null) {
-    return rows;
-  }
-
-  if (cutIndex < top.length) {
-    rows.splice(cutIndex + 1, 0, { kind: "cutline" });
-    return rows;
-  }
-
-  // The cut fell below the slice we show, so print the line and the actual
-  // slat it fell on, rather than only naming a score with nobody attached.
-  rows.push({ kind: "cutline" }, { kind: "slat", slat: allSlats[cutIndex] });
-  return rows;
-}
 
 function toneColor(tone: ParTone | null): string {
   return tone === "under" ? "var(--c97-negative)" : "var(--c97-ink)";
@@ -83,8 +63,7 @@ export function GolfLeaderboard({
     return <p className="c97-meta">No leaderboard is available in the current snapshot.</p>;
   }
 
-  const top = slats.slice(0, HERO_TOP_COUNT);
-  const rows = buildRows(top, cutIndex, slats);
+  const rows = boardRows(slats, cutIndex, HERO_TOP_COUNT);
   const roundLabels = Array.from({ length: rounds }, (_, i) => `R${i + 1}`);
 
   return (
@@ -115,10 +94,16 @@ export function GolfLeaderboard({
             {rows.map((row, index) =>
               row.kind === "slat" ? (
                 <GolfSlatRow key={row.slat.playerId} slat={row.slat} />
+              ) : row.kind === "gap" ? (
+                <tr key={`gap-${index}`} aria-hidden="true">
+                  <td colSpan={roundLabels.length + 3} className="c97-mono" style={{ color: "var(--c97-ink-2)" }}>
+                    ⋮
+                  </td>
+                </tr>
               ) : (
                 <tr key={`cutline-${index}`} className="c97-golf-cutline">
                   <td colSpan={roundLabels.length + 3} className="c97-kicker c97-mono">
-                    {`Cut line ${formatScoreToPar(cutLine)}${cutCount !== null ? ` · ${cutCount} advance` : ""}`}
+                    {`Cut line ${formatScoreToPar(cutLine)}${cutCount !== null ? ` · ${cutCount} advanced` : ""}`}
                   </td>
                 </tr>
               )

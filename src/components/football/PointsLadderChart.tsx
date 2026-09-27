@@ -165,7 +165,16 @@ export function PointsLadder({ clubs, selectedId, onSelect, title }: PointsLadde
                     strokeWidth={1}
                   />
                 ) : null}
-                <circle cx={AXIS_X} cy={trueY} r={isSelected ? 6.5 : 4.5} fill={tone} pointerEvents="none">
+                {/* The edge keeps a navy or black club colour visible on the dark plate. */}
+                <circle
+                  cx={AXIS_X}
+                  cy={trueY}
+                  r={isSelected ? 6.5 : 4.5}
+                  fill={tone}
+                  stroke="var(--c97-ink-2)"
+                  strokeWidth={1}
+                  pointerEvents="none"
+                >
                   <title>{`${club.label} · ${mark.points} pts`}</title>
                 </circle>
                 {isSelected ? (

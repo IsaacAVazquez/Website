@@ -4,9 +4,9 @@ export interface SegmentedTabItem {
 }
 
 /**
- * Mono fused segmented tab control — ink-fill active state, soft-paper hover
- * on inactive tabs, joined by a 1px `--home-rule` background gap (the same
- * fused-hairline technique as `StatFascia`). Renders the `role="tablist"`
+ * Mono fused segmented tab control, with an ink-fill active state, a field
+ * hover on inactive tabs, and a 1px `--c97-rule` gap between tabs. Every tab
+ * stays in the tab order, since there is no arrow-key handler. Renders the `role="tablist"`
  * wrapper and `role="tab"` buttons; callers own the tab panel(s) and pass a
  * single `panelId` since both league pages use one panel container that
  * swaps content per active tab.
@@ -44,7 +44,6 @@ export function SegmentedTabs({
             role="tab"
             aria-selected={isActive}
             aria-controls={panelId}
-            tabIndex={isActive ? 0 : -1}
             onClick={() => onChange(tab.id)}
             className={`inline-flex min-h-[44px] items-center whitespace-nowrap px-5 font-mono text-2xs uppercase tracking-[0.08em] transition-colors ${
               isActive

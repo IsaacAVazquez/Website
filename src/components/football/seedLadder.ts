@@ -99,3 +99,10 @@ export function nflSeeds(teams: readonly NflSeedTeam[]): Map<string, number> {
   }
   return seeds;
 }
+
+/** A games gap as the ladder and the hero print it, so both read the same. */
+export function formatGamesGap(games: number): string {
+  if (games === 0) return "Tied";
+  const value = Number.isInteger(games) ? String(games) : games.toFixed(1);
+  return `${value} game${games === 1 ? "" : "s"}`;
+}

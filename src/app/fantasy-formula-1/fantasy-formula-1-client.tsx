@@ -773,7 +773,7 @@ export function FantasyFormula1Client({
           <div className="flex flex-wrap items-start justify-between gap-4">
             <p className="c97-prose mb-0 max-w-[62ch]">
               {selectedAssetNames
-                ? `I've picked ${selectedAssetNames}.`
+                ? `This lineup has ${selectedAssetNames}.`
                 : "No picks yet. Start from an optimized lineup below, or add drivers and constructors from the asset board."}
               {nextRaceLabel ? ` Next up is the ${nextRaceLabel}${nextRaceMeta ? `, ${nextRaceMeta}` : ""}.` : ""}
             </p>

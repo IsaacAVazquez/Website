@@ -118,3 +118,8 @@
   font-weight: 700;
   fill: var(--c97-ink);
 }
+
+/* The selected team's rows in the group and third-place tables. */
+.c97-wc-table tbody tr[data-selected] {
+  background: var(--c97-panel);
+}

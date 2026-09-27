@@ -859,7 +859,7 @@ export function MarchMadnessClient({
         </div>
 
         <div data-c97-surface="paper" className="c97-offset" style={{ padding: "var(--c97-sp-3)" }}>
-          <div className="mm-bracket-scroll">
+          <div className="mm-bracket-scroll" role="region" aria-label="Region bracket (scrolls sideways)" tabIndex={0}>
             <RegionBracket data={BRACKET[region]} />
           </div>
         </div>

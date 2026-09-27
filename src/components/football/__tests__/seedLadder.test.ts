@@ -1,4 +1,4 @@
-import { nflSeeds, seedLadder, type SeedBandSpec } from "../seedLadder";
+import { formatGamesGap, nflSeeds, seedLadder, type SeedBandSpec } from "../seedLadder";
 
 const NBA_BANDS: SeedBandSpec[] = [
   { label: "In", throughSeed: 6 },
@@ -112,5 +112,14 @@ describe("nflSeeds", () => {
     const seeds = nflSeeds(teams);
     expect(seeds.get("afc-leader")).toBe(1);
     expect(seeds.get("nfc-leader")).toBe(1);
+  });
+});
+
+describe("formatGamesGap", () => {
+  it("reads zero as tied and drops the trailing .0", () => {
+    expect(formatGamesGap(0)).toBe("Tied");
+    expect(formatGamesGap(1)).toBe("1 game");
+    expect(formatGamesGap(1.5)).toBe("1.5 games");
+    expect(formatGamesGap(11)).toBe("11 games");
   });
 });

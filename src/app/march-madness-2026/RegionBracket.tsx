@@ -55,7 +55,7 @@ function TeamLabel({
         {name || "TBD"}
       </text>
       {isWinner && isUpset ? (
-        <g transform={`translate(${x + COL_W - 46}, ${y - 8})`}>
+        <g transform={`translate(${x + COL_W - 70}, ${y - 8})`}>
           <path d="M0 8 L6 0 L12 8 Z" fill="var(--c97-ink)" />
           <text x={16} y={9} className="mm-bracket-upset-label">
             Upset

@@ -300,7 +300,8 @@ export function WorldCupClient({
         ? finalNode.fixture.awayTeam
         : finalNode.fixture.homeTeam
       : null;
-  const finalScoreLine = finalNode
+  const finalScoreLine =
+    finalNode && finalNode.fixture.score.home !== null && finalNode.fixture.score.away !== null
     ? `${finalNode.fixture.homeTeam.shortName} ${finalNode.fixture.score.home}-${finalNode.fixture.score.away} ${finalNode.fixture.awayTeam.shortName}`
     : null;
 
@@ -414,7 +415,7 @@ export function WorldCupClient({
         <section className="c97-band c97-sheet" data-c97-surface="bone" data-seam="deckle">
           <div className="c97-shell">
             <h2 className="c97-poster-sm mb-5">Golden boot race</h2>
-            <table className="c97-table" aria-label="Top scorers">
+            <table className="c97-table c97-wc-table" aria-label="Top scorers">
               <thead>
                 <tr>
                   <th scope="col">#</th>
@@ -565,7 +566,7 @@ function GroupTable({
         </h3>
         <span className="c97-meta">{group.standings.length} teams</span>
       </div>
-      <table className="c97-table" aria-label={`${group.name} standings`}>
+      <table className="c97-table c97-wc-table" aria-label={`${group.name} standings`}>
         <thead>
           <tr>
             <th scope="col">#</th>
@@ -674,7 +675,7 @@ function ThirdPlaceRace({
         </p>
       ) : (
         <>
-          <table className="c97-table" aria-label="Third-place wildcard race">
+          <table className="c97-table c97-wc-table" aria-label="Third-place wildcard race">
             <thead>
               <tr>
                 <th scope="col">#</th>

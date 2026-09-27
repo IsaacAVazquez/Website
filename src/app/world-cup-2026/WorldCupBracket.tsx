@@ -65,7 +65,7 @@ export function WorldCupBracket({ tree, onOpenTeam }: WorldCupBracketProps) {
 
   return (
     <div data-c97-surface="paper" className="c97-offset c97-bracket-plate">
-      <div className="c97-bracket-scroll">
+      <div className="c97-bracket-scroll" role="region" aria-label="Knockout bracket (scrolls sideways)" tabIndex={0}>
         <svg
           viewBox={`0 0 ${W} ${H}`}
           width={W}

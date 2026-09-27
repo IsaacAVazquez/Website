@@ -1,4 +1,4 @@
-import { leaderboardSlats } from "../leaderboard";
+import { boardRows, leaderboardSlats } from "../leaderboard";
 import type { GolfLeaderboardEntry } from "@/types/golf";
 
 const entry = (overrides: Partial<GolfLeaderboardEntry> = {}): GolfLeaderboardEntry => ({
@@ -116,5 +116,28 @@ describe("leaderboardSlats", () => {
     );
 
     expect(cutIndex).toBeNull();
+  });
+});
+
+describe("boardRows", () => {
+  const slat = (id: string) => leaderboardSlats([entry({ playerId: id })], OPTS).slats[0];
+  const field = Array.from({ length: 20 }, (_, i) => slat(`p${i}`));
+  const ids = (rows: ReturnType<typeof boardRows>) =>
+    rows.map((row) => (row.kind === "slat" ? row.slat.playerId : row.kind));
+
+  it("draws the cut line after the last player who made it when that player is in the top", () => {
+    expect(ids(boardRows(field, 2, 4))).toEqual(["p0", "p1", "p2", "cutline", "p3"]);
+  });
+
+  it("prints the last player who made the cut above the line when the cut falls below the top", () => {
+    expect(ids(boardRows(field, 12, 4))).toEqual(["p0", "p1", "p2", "p3", "gap", "p12", "cutline"]);
+  });
+
+  it("skips the gap row when the cut player sits right under the top", () => {
+    expect(ids(boardRows(field, 4, 4))).toEqual(["p0", "p1", "p2", "p3", "p4", "cutline"]);
+  });
+
+  it("shows only the top when no cut applies", () => {
+    expect(ids(boardRows(field, null, 3))).toEqual(["p0", "p1", "p2"]);
   });
 });

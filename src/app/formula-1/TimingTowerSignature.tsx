@@ -56,7 +56,7 @@ export function TimingTowerSignature({ standings, kind }: TimingTowerSignaturePr
       <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-2)" }}>
         {kind === "drivers" ? "Driver timing tower" : "Constructor timing tower"}
       </p>
-      <ol className={styles.towerList} role="img" aria-label={summaryLabel}>
+      <ol className={styles.towerList} aria-label={summaryLabel}>
         <li className={`${styles.towerRow} ${styles.towerHead}`} aria-hidden="true">
           <span>P</span>
           <span>{kind === "drivers" ? "Driver" : "Team"}</span>

@@ -1,5 +1,5 @@
 import "./seed-ladder.css";
-import type { SeedLadderResult } from "./seedLadder";
+import { formatGamesGap, type SeedLadderResult } from "./seedLadder";
 
 export interface LadderTeam {
   id: string;
@@ -22,7 +22,7 @@ export interface SeedLadderConference {
 function formatGamesClear(gap: number | null): string | null {
   if (gap === null) return null;
   if (gap === 0) return "Tied at the line";
-  return `${gap.toFixed(1)} games clear`;
+  return `${formatGamesGap(gap)} clear`;
 }
 
 /**

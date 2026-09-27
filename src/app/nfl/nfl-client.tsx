@@ -9,7 +9,7 @@ import {
   type Catalog97Readout,
 } from "@/components/catalog97/Catalog97ProjectHero";
 import { SeedLadder, type LadderTeam, type SeedLadderConference } from "@/components/football/SeedLadderPanel";
-import { seedLadder, nflSeeds, type SeedBandSpec, type SeedLadderResult } from "@/components/football/seedLadder";
+import { formatGamesGap, seedLadder, nflSeeds, type SeedBandSpec, type SeedLadderResult } from "@/components/football/seedLadder";
 import { PROJECT_PRESS } from "@/constants/projectPress";
 import { NflDivisionGrid, type DivisionGridGroup } from "./NflDivisionGrid";
 import "./nfl.css";
@@ -147,7 +147,7 @@ export function NflClient({ initialState, summary, initialTeamSnapshot }: NflCli
   const currentHref = `${NFL_ROUTE}${currentQuery ? `?${currentQuery}` : ""}`;
   const lead = PROJECT_PRESS[NFL_ROUTE].lead;
   const standfirst =
-    "I wanted the playoff picture as it would stand if the season ended today. The snapshot carries no seeds this early, so I derive them from the standings, the four division leaders first and then the three best of the rest, and draw the line where the field ends.";
+    "I wanted the playoff picture as it would stand if the season ended today. The snapshot carries no seeds, so I derive them from the standings, the four division leaders first and then the three best of the rest, and draw the line where the field ends.";
 
   const teams = summary.teams;
   const aliasMap = useMemo(() => buildTeamAliasMap(summary.teams), [summary.teams]);
@@ -325,7 +325,7 @@ export function NflClient({ initialState, summary, initialTeamSnapshot }: NflCli
     { label: "NFC leader", value: nfcTop ? formatRecord(nfcTop) : "—", detail: nfcTop?.shortName },
     {
       label: "Tightest line",
-      value: tightestGap !== null ? `${tightestGap.toFixed(1)} games` : "—",
+      value: tightestGap !== null ? formatGamesGap(tightestGap) : "—",
       detail: "separates the seventh seed from the closest team out",
     },
   ];

@@ -378,7 +378,7 @@ export function MlbClient({ initialState, summary, initialTeamSnapshot }: MlbCli
               {groupedStandings.map(([groupName, rows]) => (
                 <div key={groupName}>
                   <p className="c97-kicker mb-2">{groupName}</p>
-                  <table className="c97-table" aria-label={`${groupName} standings`}>
+                  <table className="c97-table c97-mlb-table" aria-label={`${groupName} standings`}>
                     <thead>
                       <tr>
                         <th scope="col">Pos</th>

@@ -88,7 +88,7 @@
   flex-shrink: 0;
 }
 
-.c97-table tbody tr[data-selected] {
+.c97-mlb-table tbody tr[data-selected] {
   background: var(--c97-panel);
 }
 

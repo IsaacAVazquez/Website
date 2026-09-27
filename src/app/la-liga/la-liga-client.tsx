@@ -374,7 +374,7 @@ export function LaLigaClient({
   }));
 
   const standfirst =
-    "This is the same points ladder I built for the Premier League page, since La Liga's title race, European scramble, and relegation fight are the same shape of problem. Every club here sits on a vertical points axis instead of just a position, so the gaps that actually decide the season read as real distance.";
+    "This is the same points ladder I built for the Premier League page, since La Liga's title race, European scramble, and relegation fight are the same shape of problem. Every club here sits on a vertical points axis, so the gaps that actually decide the season read as real distance.";
 
   return (
     <>
@@ -387,7 +387,7 @@ export function LaLigaClient({
           {
             label: "Leader",
             value: leader.shortName,
-            detail: `${leader.points} pts, ${leader.points - runnerUp.points} clear of ${runnerUp.shortName}`,
+            detail: `${leader.points} pts, ${leader.points === runnerUp.points ? "level with" : `${formatPointsGap(leader.points - runnerUp.points)} clear of`} ${runnerUp.shortName}`,
           },
           {
             label: "Champions League gap",

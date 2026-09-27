@@ -18,7 +18,7 @@ export function MetricCard({ label, value, detail, icon, className = "" }: Metri
 
   if (isExtended) {
     return (
-      <article className={`home-card-static p-5 sm:p-6 ${className}`.trim()}>
+      <article className={`c97-panel ${className}`.trim()}>
         <div className="flex items-center justify-between gap-3">
           <p className="text-2xs font-semibold uppercase tracking-[0.18em] text-[var(--c97-ink-2)]">
             {label}

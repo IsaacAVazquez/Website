@@ -365,7 +365,7 @@ export function PremierLeagueClient({
             label: "Leader",
             value: leader ? leader.team.shortName : "—",
             detail: leader && runnerUp
-              ? `${leader.points} pts, ${leader.points - runnerUp.points} clear of ${runnerUp.team.shortName}`
+              ? `${leader.points} pts, ${leader.points === runnerUp.points ? "level with" : `${formatPointsGap(leader.points - runnerUp.points)} clear of`} ${runnerUp.team.shortName}`
               : "Standings loading",
           },
           {

@@ -30,6 +30,7 @@ export function MlbScoreboard({ divisions }: MlbScoreboardProps) {
                 <span className="c97-mono c97-mlb-scoreboard-gb">{team.gamesBack}</span>
                 <span
                   className="c97-mlb-scoreboard-squares"
+                  role="img"
                   aria-label={
                     team.squares.length > 0
                       ? `${team.squares.filter((s) => s === "W").length} win${

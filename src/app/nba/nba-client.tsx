@@ -15,7 +15,7 @@ import {
   type Catalog97Readout,
 } from "@/components/catalog97/Catalog97ProjectHero";
 import { SeedLadder, type LadderTeam } from "@/components/football/SeedLadderPanel";
-import { seedLadder, type SeedBandSpec } from "@/components/football/seedLadder";
+import { formatGamesGap, seedLadder, type SeedBandSpec } from "@/components/football/seedLadder";
 import { PROJECT_PRESS } from "@/constants/projectPress";
 import type {
   NbaLeader,
@@ -268,7 +268,7 @@ export function NbaClient({ initialState, summary, initialTeamSnapshot, teamColo
     },
     {
       label: "Tightest line",
-      value: tightestGap !== null ? `${tightestGap.toFixed(1)} games` : "—",
+      value: tightestGap !== null ? formatGamesGap(tightestGap) : "—",
       detail: "separates the closest cutoff across both conferences",
     },
   ];
