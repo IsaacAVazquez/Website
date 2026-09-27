@@ -192,6 +192,7 @@ describe("DraftTrackerClient", () => {
     // header kicker reads live state and the fascia carries the pick number,
     // the team on the clock, and the advisory clock.
     expect(screen.getByRole("heading", { level: 1, name: /Draft Tracker/i })).toBeVisible();
+    expect(screen.getByRole("heading", { level: 1, name: /Draft Tracker/i })).not.toHaveClass("c97-poster");
     expect(screen.getByText(/Draft assistant · Live · Pick #2/i)).toBeVisible();
     expect(screen.getByText("#2 / 150")).toBeVisible();
     expect(screen.getByText("On the clock")).toBeVisible();
@@ -248,6 +249,8 @@ describe("DraftTrackerClient", () => {
     render(<DraftTrackerClient />);
 
     fireEvent.click(screen.getByRole("button", { name: "New room" }));
+    // Setup keeps the display headline, a full poster step above the setup panel's own heading.
+    expect(screen.getByRole("heading", { level: 1, name: /Draft Tracker/i })).toHaveClass("c97-poster");
     fireEvent.click(screen.getByRole("button", { name: "Preview Standard" }));
 
     expect(mockUseFantasySnapshot).toHaveBeenLastCalledWith({

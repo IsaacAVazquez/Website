@@ -204,11 +204,14 @@ describe("BestBallDraftTrackerClient", () => {
     render(<BestBallDraftTrackerClient initialContest="bbm-vii" />);
 
     expect(await screen.findByRole("heading", { name: "Choose your draft slot" })).toBeVisible();
+    // Setup keeps the display headline, a full poster step above the setup panel's own heading.
+    expect(screen.getByRole("heading", { level: 1 })).toHaveClass("c97-poster");
     fireEvent.click(screen.getByRole("button", { name: "Open draft room from slot 1" }));
 
     expect(
       screen.getByRole("heading", { name: "You are on the clock at pick 1" })
     ).toBeVisible();
+    expect(screen.getByRole("heading", { level: 1 })).not.toHaveClass("c97-poster");
     expect(screen.getByRole("heading", { name: "Best fits for your next pick" })).toBeVisible();
     expect(screen.getAllByRole("button", { name: "Log for my team" }).length).toBeGreaterThan(0);
     // The score explainer is protected framing and prints with the cards it

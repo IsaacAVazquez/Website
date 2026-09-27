@@ -1071,7 +1071,7 @@ export function DraftTrackerClient() {
               />
               {kicker}
             </span>
-            <h1 className={showSetup ? "c97-poster-sm" : "c97-serif c97-h3"}>Draft Tracker</h1>
+            <h1 className={showSetup ? "c97-poster" : "c97-serif c97-h3"}>Draft Tracker</h1>
           </div>
           <div className="flex flex-wrap gap-1.5">
             {headerChips.map((chip) => (

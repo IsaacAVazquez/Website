@@ -841,14 +841,7 @@ export function MockDraftClient() {
       >
         <div className={SHELL_CLASS} style={{ paddingBlock: "var(--c97-sp-5)" }}>
           <h1 className="c97-poster m-0">Mock Draft</h1>
-          <p className="c97-meta" style={{ marginTop: "var(--c97-sp-2)" }}>
-            <span
-              className="h-2 w-2"
-              style={{ background: "var(--c97-accent)" }}
-              aria-hidden="true"
-            />
-            {kicker}
-          </p>
+          <p className="c97-meta" style={{ marginTop: "var(--c97-sp-2)" }}>{kicker}</p>
           <div
             data-c97-surface="paper"
             className="c97-offset flex flex-wrap gap-1.5"

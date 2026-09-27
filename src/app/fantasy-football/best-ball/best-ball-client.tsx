@@ -759,7 +759,7 @@ export function BestBallClient({ initialState }: BestBallClientProps) {
                           ? { borderColor: "var(--c97-ink)", background: "var(--c97-ink)", color: "var(--c97-surface)" }
                           : {
                               borderColor: "var(--c97-rule)",
-                              background: "color-mix(in srgb, var(--c97-field) 52%, var(--c97-field))",
+                              background: "var(--c97-field)",
                               color: "var(--c97-ink)",
                             }
                       }
@@ -930,9 +930,7 @@ export function BestBallClient({ initialState }: BestBallClientProps) {
             marginInline: "calc(-1 * clamp(1rem, 4vw, 2.5rem))",
             paddingInline: "clamp(1rem, 4vw, 2.5rem)",
             borderColor: "var(--c97-rule)",
-            background: "color-mix(in srgb, var(--c97-surface) 90%, transparent)",
-            backdropFilter: "blur(8px)",
-            WebkitBackdropFilter: "blur(8px)",
+            background: "var(--c97-surface)",
           }}
         >
           <div className="flex flex-wrap items-center gap-x-3.5 gap-y-2.5 py-2.5">
@@ -1042,7 +1040,7 @@ export function BestBallClient({ initialState }: BestBallClientProps) {
                 className="h-11 border motion-safe:animate-pulse"
                 style={{
                   borderColor: "var(--c97-rule)",
-                  background: "color-mix(in srgb, var(--c97-field) 55%, var(--c97-field))",
+                  background: "var(--c97-field)",
                 }}
               />
             ))}

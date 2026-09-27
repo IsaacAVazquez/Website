@@ -89,7 +89,6 @@ export function TradeVerdictStrip({
       style={{
         borderColor: "var(--c97-rule)",
         background: "var(--c97-field)",
-        boxShadow: "var(--shadow-sm)",
       }}
     >
       <div className="min-w-0">

@@ -217,7 +217,7 @@ export function BestBallDraftTrackerClient({
           ) : (
             <div className="space-y-3">
               <p className="c97-kicker">Best ball draft assistant</p>
-              <h1 className="c97-poster-sm">
+              <h1 className="c97-poster">
                 Track every pick and see what your build still needs.
               </h1>
               <p className="max-w-[66ch] text-sm leading-7" style={{ color: "var(--c97-ink-2)" }}>
@@ -306,7 +306,7 @@ export function BestBallDraftTrackerClient({
         ) : null}
 
         {error ? (
-          <article className="c97-panel" style={{ borderColor: "var(--c97-negative)" }}>
+          <article className="c97-panel border" style={{ borderColor: "var(--c97-negative)" }}>
             <p className="font-semibold" style={{ color: "var(--c97-negative)" }}>
               {error}
             </p>
@@ -1004,7 +1004,7 @@ function BestBallDraftRoom({
           type="button"
           onClick={draft.undoLastPick}
           disabled={draft.state.picks.length === 0}
-          className="inline-flex min-h-[52px] shrink-0 items-center gap-2 border px-4 text-sm font-semibold shadow-[var(--shadow-xl)] disabled:cursor-not-allowed disabled:border-dashed"
+          className="inline-flex min-h-[52px] shrink-0 items-center gap-2 border px-4 text-sm font-semibold disabled:cursor-not-allowed disabled:border-dashed"
           style={{
             borderColor: "var(--c97-rule)",
             background: "var(--c97-surface)",
@@ -1020,7 +1020,7 @@ function BestBallDraftRoom({
           onClick={() => setBuildOpen(true)}
           aria-expanded={buildOpen}
           aria-controls="best-ball-build-sheet"
-          className="inline-flex min-h-[52px] min-w-0 flex-1 items-center justify-between border px-5 text-sm font-semibold shadow-[var(--shadow-xl)]"
+          className="inline-flex min-h-[52px] min-w-0 flex-1 items-center justify-between border px-5 text-sm font-semibold"
           style={{
             borderColor: "var(--c97-ink)",
             background: "var(--c97-ink)",

@@ -266,7 +266,7 @@ export function CompareModal({
           exit={reduceMotion ? { opacity: 0 } : { opacity: 0, y: 18, scale: 0.98 }}
           transition={{ duration: reduceMotion ? 0 : 0.22, ease: [0.25, 0.46, 0.45, 0.94] }}
           className="relative max-h-[88vh] w-full max-w-2xl overscroll-contain overflow-auto border p-5"
-          style={{ borderColor: "var(--c97-rule)", background: "var(--c97-surface)", boxShadow: "var(--shadow-xl)" }}
+          style={{ borderColor: "var(--c97-rule)", background: "var(--c97-surface)" }}
         >
           <div className="mb-4 flex items-center justify-between">
             <div>

@@ -1,4 +1,3 @@
-import { WIDE_SHELL_CLASS } from "@/lib/fantasyUtils";
 import type {
   FantasyTradeEvaluation,
   FantasyTradePlayerEvaluation,
@@ -130,13 +129,11 @@ export function TradeRosterImpact({
   return (
     <section
       aria-labelledby="trade-roster-impact-title"
-      className="c97-sheet"
+      className="min-w-0 border-y border-[var(--c97-rule)]"
       data-c97-surface="bone"
-      data-seam="torn"
     >
-      <div className={WIDE_SHELL_CLASS} style={{ paddingBlock: "var(--c97-sp-4)" }}>
-      <header className="border-b border-[var(--c97-rule)] pb-4">
-        <h2 id="trade-roster-impact-title" className="c97-poster-sm">
+      <header className="border-b border-[var(--c97-rule)] px-4 py-4 sm:px-5">
+        <h2 id="trade-roster-impact-title" className="c97-serif c97-h3">
           Package fit after the trade
         </h2>
       </header>
@@ -199,10 +196,9 @@ export function TradeRosterImpact({
         </div>
       </div>
 
-      <p className="border-t border-[var(--c97-rule)] pt-3 text-xs leading-5 text-[var(--c97-ink-2)]">
+      <p className="border-t border-[var(--c97-rule)] px-4 py-3 text-xs leading-5 text-[var(--c97-ink-2)] sm:px-5">
         This compares the assets in the offer against league-specific starter and roster lines. It does not project either full roster.
       </p>
-      </div>
     </section>
   );
 }

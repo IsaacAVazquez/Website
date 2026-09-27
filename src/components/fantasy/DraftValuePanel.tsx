@@ -12,7 +12,7 @@ import {
 
 const TILE_STYLE = {
   borderColor: "var(--c97-rule)",
-  background: "color-mix(in srgb, var(--c97-field) 62%, var(--c97-field))",
+  background: "var(--c97-field)",
 } as const;
 
 const INPUT_STYLE = {

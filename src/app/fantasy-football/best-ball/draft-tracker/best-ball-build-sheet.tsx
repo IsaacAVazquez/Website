@@ -77,7 +77,7 @@ export function BestBallBuildSheet({
         role="dialog"
         aria-modal="true"
         aria-labelledby="best-ball-mobile-build-heading"
-        className="absolute inset-x-0 bottom-0 max-h-[88dvh] overflow-y-auto border border-b-0 px-5 pb-[max(1.5rem,env(safe-area-inset-bottom))] pt-4 shadow-[var(--shadow-xl)]"
+        className="absolute inset-x-0 bottom-0 max-h-[88dvh] overflow-y-auto border border-b-0 px-5 pb-[max(1.5rem,env(safe-area-inset-bottom))] pt-4"
         style={{ borderColor: "var(--c97-rule)", background: "var(--c97-surface)" }}
       >
         <div className="sticky top-0 z-10 mb-3 flex justify-end" style={{ background: "var(--c97-surface)" }}>

@@ -100,7 +100,7 @@ export function PositionFilterBar<T extends string>({
         } else {
           style = {
             borderColor: "var(--c97-ink-2)",
-            background: "color-mix(in srgb, var(--c97-field) 52%, var(--c97-field))",
+            background: "var(--c97-field)",
             color: "var(--c97-ink)",
             // A faint position tint on the inactive pill ties the control to the board.
             boxShadow: option.position

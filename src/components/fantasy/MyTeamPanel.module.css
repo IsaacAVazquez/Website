@@ -30,9 +30,9 @@
 .viewButton[aria-pressed="true"] { border-color: var(--c97-accent); color: var(--team-ink); }
 .viewButton:hover { color: var(--team-ink); }
 .viewButton:focus-visible, .textButton:focus-visible, .method summary:focus-visible { outline: 2px solid var(--c97-accent); outline-offset: 3px; }
-.control { min-width: 0; min-height: 44px; border: 1px solid var(--c97-ink-2); border-radius: 3px; padding: 0.625rem 0.75rem; background: var(--team-paper); color: var(--team-ink); font-size: 0.875rem; caret-color: var(--c97-accent); }
+.control { min-width: 0; min-height: 44px; border: 1px solid var(--c97-ink-2); padding: 0.625rem 0.75rem; background: var(--team-paper); color: var(--team-ink); font-size: 0.875rem; caret-color: var(--c97-accent); }
 .control:focus-visible { outline: 2px solid var(--c97-accent); outline-offset: 2px; }
-.button, .selectedButton, .primaryButton { display: inline-flex; align-items: center; justify-content: center; gap: 0.625rem; min-height: 44px; border: 1px solid var(--c97-ink-2); border-radius: 3px; padding: 0.625rem 0.875rem; font-size: 0.875rem; line-height: 1.4; text-align: center; }
+.button, .selectedButton, .primaryButton { display: inline-flex; align-items: center; justify-content: center; gap: 0.625rem; min-height: 44px; border: 1px solid var(--c97-ink-2); padding: 0.625rem 0.875rem; font-size: 0.875rem; line-height: 1.4; text-align: center; }
 .button { color: var(--team-ink); background: var(--team-paper); }
 .selectedButton { color: var(--team-ink); background: var(--c97-accent-soft); border-color: var(--c97-accent); }
 .primaryButton { color: var(--team-paper); background: var(--team-ink); border-color: var(--team-ink); font-weight: 600; }

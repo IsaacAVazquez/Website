@@ -100,7 +100,6 @@ export function CompareTray({
                 style={{
                   borderColor: "var(--c97-rule)",
                   background: "color-mix(in srgb, var(--c97-surface) 94%, var(--c97-field))",
-                  boxShadow: "var(--shadow-lg)",
                   backdropFilter: "blur(8px)",
                 }}
               >
@@ -126,7 +125,6 @@ export function CompareTray({
                 style={{
                   borderColor: "var(--c97-rule)",
                   background: "color-mix(in srgb, var(--c97-surface) 94%, var(--c97-field))",
-                  boxShadow: "var(--shadow-lg)",
                   backdropFilter: "blur(8px)",
                 }}
               >
@@ -139,7 +137,6 @@ export function CompareTray({
               style={{
                 borderColor: "var(--c97-rule)",
                 background: "color-mix(in srgb, var(--c97-surface) 94%, var(--c97-field))",
-                boxShadow: "var(--shadow-lg)",
                 backdropFilter: "blur(8px)",
               }}
             >

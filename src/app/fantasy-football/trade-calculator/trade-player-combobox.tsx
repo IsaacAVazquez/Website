@@ -167,7 +167,7 @@ export function TradePlayerCombobox({
 
       {listOpen ? (
         <div
-          className="absolute inset-x-0 top-[calc(100%+0.35rem)] z-30 overflow-hidden border border-[var(--c97-rule)] bg-[var(--c97-surface)] shadow-[var(--shadow-lg)]"
+          className="absolute inset-x-0 top-[calc(100%+0.35rem)] z-30 overflow-hidden border border-[var(--c97-rule)] bg-[var(--c97-surface)]"
         >
           {/* The listbox stays mounted for as long as the popup is open, so
               aria-controls always resolves and aria-expanded never reports

@@ -827,7 +827,6 @@ function DraftPlayerDrawer({
         style={{
           borderColor: "var(--c97-rule)",
           background: "var(--c97-surface)",
-          boxShadow: "-18px 0 44px color-mix(in srgb, var(--c97-ink) 18%, transparent)",
         }}
       >
         <div className="flex items-start justify-between gap-3">
@@ -843,8 +842,7 @@ function DraftPlayerDrawer({
                 {consensusLine}
               </p>
             ) : null}
-            {/* text-2xl tops out at 34px, above the 33.6px page h1 at 1440. */}
-            <h2 className="mt-1.5 truncate text-xl font-semibold leading-tight tracking-tight">{player.name}</h2>
+            <h2 className="c97-serif c97-h3 truncate" style={{ marginTop: "0.375rem" }}>{player.name}</h2>
             <p className="mt-1 font-mono text-2xs uppercase tracking-[0.06em]" style={{ color: "var(--c97-ink-2)" }}>
               {player.position}
               {Number.isFinite(player.positionRank) ? player.positionRank : ""} · {player.team || "FA"}
@@ -2205,7 +2203,7 @@ export function FantasyFootballClient({ initialState, initialSnapshot = null }: 
                 className="h-11 border motion-safe:animate-pulse"
                 style={{
                   borderColor: "var(--c97-rule)",
-                  background: "color-mix(in srgb, var(--c97-field) 55%, var(--c97-field))",
+                  background: "var(--c97-field)",
                 }}
               />
             ))}
@@ -2361,7 +2359,7 @@ export function FantasyFootballClient({ initialState, initialSnapshot = null }: 
           </div>
           <div className="mt-5 grid gap-4 lg:grid-cols-3">
             {FANTASY_FOOTBALL_FAQ.map((item) => (
-              <article key={item.question} className="c97-panel p-5 sm:p-6">
+              <article key={item.question} className="c97-panel">
                 <h3 className="c97-serif c97-h3">{item.question}</h3>
                 <p className="mt-3 text-sm leading-7" style={{ color: "var(--c97-ink-2)" }}>
                   {item.answer}

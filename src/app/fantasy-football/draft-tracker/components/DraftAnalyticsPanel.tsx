@@ -35,7 +35,7 @@ const REACH_CHIP_STYLE = {
 
 const PANEL_TILE_STYLE = {
   borderColor: "var(--c97-rule)",
-  background: "color-mix(in srgb, var(--c97-field) 55%, var(--c97-field))",
+  background: "var(--c97-field)",
 } as const;
 
 function formatDelta(delta: number): string {

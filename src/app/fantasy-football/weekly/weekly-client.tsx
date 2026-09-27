@@ -377,7 +377,7 @@ export function WeeklyBoardClient({
             {view === "waivers" ? "Waivers" : "Weekly"}
           </h1>
           {view === "rankings" ? (
-            <p className="c97-lead max-w-[62ch]" style={{ marginTop: "var(--c97-sp-3)" }}>
+            <p className="c97-lead" style={{ marginTop: "var(--c97-sp-3)", maxInlineSize: "62ch" }}>
               I use this board to compare weekly rankings, opponents, and rostered
               percentages. Save your team below for lineup and add/drop comparisons,
               or browse the{" "}
@@ -389,7 +389,7 @@ export function WeeklyBoardClient({
               </Link>.
             </p>
           ) : (
-            <p className="c97-lead max-w-[62ch]" style={{ marginTop: "var(--c97-sp-3)" }}>
+            <p className="c97-lead" style={{ marginTop: "var(--c97-sp-3)", maxInlineSize: "62ch" }}>
               The players the experts rank ahead of where the rostering rate
               puts them, read off the same weekly consensus that feeds the{" "}
               <Link
@@ -556,7 +556,7 @@ export function WeeklyBoardClient({
               >
                 <h2
                   id="weekly-waivers"
-                  className="c97-serif c97-h3 scroll-mt-24"
+                  className="c97-poster-sm scroll-mt-24"
                 >
                   This week&rsquo;s list
                 </h2>
@@ -747,7 +747,7 @@ export function WeeklyBoardClient({
               <section aria-labelledby="weekly-board" className="border-t border-[var(--c97-ink)] pt-5">
                 <h2
                   id="weekly-board"
-                  className="c97-serif c97-h3 scroll-mt-24"
+                  className="c97-poster-sm scroll-mt-24"
                 >
                   {board === "flex" ? "Flex rankings" : "Quarterback rankings"}
                 </h2>

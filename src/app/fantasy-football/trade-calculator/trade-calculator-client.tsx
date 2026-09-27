@@ -224,7 +224,7 @@ function LoadingCard({ className }: { className: string }) {
       className={`border motion-safe:animate-pulse ${className}`}
       style={{
         borderColor: "var(--c97-rule)",
-        background: "color-mix(in srgb, var(--c97-field) 55%, var(--c97-field))",
+        background: "var(--c97-field)",
       }}
     />
   );
@@ -388,10 +388,18 @@ export function TradeCalculatorClient() {
           <div className="flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
             <div className="max-w-3xl">
               <h1 className="c97-poster">Build a Trade Offer</h1>
-              <p className="c97-lead max-w-[68ch]" style={{ marginTop: "1rem" }}>
+              <p className="c97-lead" style={{ marginTop: "1rem", maxInlineSize: "68ch" }}>
                 Compare both sides of a one-QB redraft trade using expert consensus, mock-draft ADP, and your league’s scoring, size, and lineup. The result shows where the estimate is strong and where the data is thin.
               </p>
-              <p className="c97-meta" style={{ marginTop: "0.75rem", display: "block", lineHeight: 1.8 }}>
+            </div>
+            {/* Every status colour is ink on the green sheet, so the source
+                line, which turns stale in the negative ink, prints on paper. */}
+            <div
+              data-c97-surface="paper"
+              className="c97-offset lg:max-w-[28rem]"
+              style={{ padding: "var(--c97-sp-3)" }}
+            >
+              <p className="c97-meta" style={{ display: "block", lineHeight: 1.8 }}>
                 <span>Expert board {formatUpdatedAt(snapshot?.upstreamUpdatedAt)}</span>
                 <span aria-hidden="true"> · </span>
                 <span>Draft market {formatUpdatedAt(snapshot?.adpSource?.asOf)}</span>
@@ -400,22 +408,18 @@ export function TradeCalculatorClient() {
                   {sourceFreshness} sources
                 </span>
               </p>
-            </div>
-            <div
-              data-c97-surface="paper"
-              className="c97-offset flex flex-wrap items-center gap-2"
-              style={{ padding: "var(--c97-sp-2) var(--c97-sp-3)" }}
-            >
-              <span className="inline-flex min-h-touch items-center gap-2 font-mono text-2xs uppercase tracking-[0.1em] text-[var(--c97-ink)]">
-                <ShieldCheck className="h-4 w-4 text-[var(--c97-accent)]" aria-hidden="true" />
-                Preseason redraft · Model v1
-              </span>
-              <Link
-                href={`/fantasy-football?position=overall&scoring=${routeState.scoring}`}
-                className="inline-flex min-h-touch items-center border border-[var(--c97-rule)] bg-[var(--c97-surface)] px-4 text-sm font-semibold text-[var(--c97-ink)] transition-[border-color,background-color] hover:border-[var(--c97-accent)] hover:bg-[var(--c97-field)]"
-              >
-                View rankings
-              </Link>
+              <div className="flex flex-wrap items-center gap-2" style={{ marginTop: "var(--c97-sp-2)" }}>
+                <span className="inline-flex min-h-touch items-center gap-2 font-mono text-2xs uppercase tracking-[0.1em] text-[var(--c97-ink)]">
+                  <ShieldCheck className="h-4 w-4 text-[var(--c97-accent)]" aria-hidden="true" />
+                  Preseason redraft · Model v1
+                </span>
+                <Link
+                  href={`/fantasy-football?position=overall&scoring=${routeState.scoring}`}
+                  className="inline-flex min-h-touch items-center border border-[var(--c97-rule)] bg-[var(--c97-surface)] px-4 text-sm font-semibold text-[var(--c97-ink)] transition-[border-color,background-color] hover:border-[var(--c97-accent)] hover:bg-[var(--c97-field)]"
+                >
+                  View rankings
+                </Link>
+              </div>
             </div>
           </div>
         </div>
@@ -603,19 +607,19 @@ export function TradeCalculatorClient() {
                 getCount={trade.getPlayerIds.length}
               />
             </div>
+
+            {/* Inside the same shell as the verdict strip, so on a phone the
+                strip stays pinned down through the package table. */}
+            <TradeRosterImpact
+              result={result}
+              valuesAvailable={valuesAvailable}
+              giveCount={trade.givePlayerIds.length}
+              getCount={trade.getPlayerIds.length}
+            />
           </>
         )}
       </div>
       </section>
-
-      {!error && !isLoading && !pendingShare ? (
-        <TradeRosterImpact
-          result={result}
-          valuesAvailable={valuesAvailable}
-          giveCount={trade.givePlayerIds.length}
-          getCount={trade.getPlayerIds.length}
-        />
-      ) : null}
     </section>
   );
 }

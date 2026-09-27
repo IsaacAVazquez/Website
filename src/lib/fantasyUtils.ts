@@ -729,7 +729,7 @@ export function getPositionTone(position: string): CSSProperties {
     case "K":
       return {
         background: "color-mix(in srgb, var(--c97-rule) 45%, var(--c97-surface))",
-        borderColor: "color-mix(in srgb, var(--c97-rule) 60%, var(--c97-rule))",
+        borderColor: "var(--c97-rule)",
       };
     case "DST":
       return {
@@ -738,7 +738,7 @@ export function getPositionTone(position: string): CSSProperties {
       };
     default:
       return {
-        background: "color-mix(in srgb, var(--c97-field) 90%, var(--c97-field))",
+        background: "var(--c97-field)",
         borderColor: "var(--c97-rule)",
       };
   }

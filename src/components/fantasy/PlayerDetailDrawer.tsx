@@ -219,7 +219,6 @@ export function PlayerDetailDrawer({ player, publishedRank, publishedRankLabel =
             style={{
               borderColor: "var(--c97-rule)",
               background: "var(--c97-surface)",
-              boxShadow: "var(--shadow-xl)",
             }}
           >
             {/* Header */}
