@@ -87,25 +87,23 @@ export function InvestmentsClient({
   }
 
   return (
-    <section
-      className={`home-page min-h-screen ${styles.terminalScope}`}
+    <div
+      className={styles.terminalScope}
       aria-label="Investments dashboard"
       data-testid="investments-shell"
     >
-      <div className="home-shell home-shell-wide home-section">
-        <InvestmentsDashboard
-          researchSymbol={routeState.symbol}
-          researchTab={routeState.section}
-          onResearchSymbolChange={handleSymbolChange}
-          onResearchTabChange={handleTabChange}
-          datasetLastUpdated={datasetLastUpdated}
-          datasetSymbolCount={datasetSymbolCount}
-          datasetFreshCount={datasetFreshCount}
-          datasetStaleCount={datasetStaleCount}
-          datasetFailedCount={datasetFailedCount}
-          datasetPriceHealth={datasetPriceHealth}
-        />
-      </div>
-    </section>
+      <InvestmentsDashboard
+        researchSymbol={routeState.symbol}
+        researchTab={routeState.section}
+        onResearchSymbolChange={handleSymbolChange}
+        onResearchTabChange={handleTabChange}
+        datasetLastUpdated={datasetLastUpdated}
+        datasetSymbolCount={datasetSymbolCount}
+        datasetFreshCount={datasetFreshCount}
+        datasetStaleCount={datasetStaleCount}
+        datasetFailedCount={datasetFailedCount}
+        datasetPriceHealth={datasetPriceHealth}
+      />
+    </div>
   );
 }

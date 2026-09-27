@@ -2,36 +2,38 @@
  * The single categorical palette for investments visuals. AllocationChart,
  * HoldingsTable, and ResearchAssetHeader all draw from here so one holding
  * keeps one color across the donut, the table sparkline, and the research
- * header (STYLING.md, "Charts and D3").
+ * header.
  *
- * These are data-series colors, not theme tokens: mid-lightness tones chosen
- * to stay legible on both limestone and dark paper. Deliberately excludes the
- * `--home-signal` hex (never bake a token's hex into a constant) and any
- * ink-equivalent tone (vanishes on dark paper).
+ * These are the Catalog 97 chart ramp tokens, as CSS colour strings, so the
+ * terminal's espresso and chocolate sheets resolve the dark ramp automatically
+ * (catalog97.css overrides --c97-chart-1..6 on those two surfaces) instead of
+ * a hex literal baked into this constant. Only chart-1, 2, 3, and 6 read apart
+ * from each other on espresso, so the curated tickers below cycle through
+ * those four first; the hash fallback for everything else cycles through all
+ * six steps.
  */
 export const HOLDING_PALETTE = [
-  "#4D8AD0", // blue
-  "#1F7A6E", // teal
-  "#5C8531", // green
-  "#B8862D", // ochre
-  "#B22B2F", // red
-  "#7C5CBF", // violet
-  "#C2653A", // terracotta
-  "#3F6B8A", // steel
-  "#6B5A3E", // bronze
-  "#697079", // slate
+  "var(--c97-chart-1)",
+  "var(--c97-chart-2)",
+  "var(--c97-chart-3)",
+  "var(--c97-chart-4)",
+  "var(--c97-chart-5)",
+  "var(--c97-chart-6)",
 ] as const;
 
-/** Curated tones for common tickers; everything else hashes stably. */
+const CURATED_STEPS = ["var(--c97-chart-1)", "var(--c97-chart-2)", "var(--c97-chart-3)", "var(--c97-chart-6)"] as const;
+
+/** Curated tones for common tickers, cycling through the four steps that read
+ * apart on espresso; everything else hashes stably across all six. */
 const CURATED_TONES: Record<string, string> = {
-  NVDA: "#5C8531",
-  AAPL: "#697079",
-  MSFT: "#4D8AD0",
-  GOOGL: "#3F6B8A",
-  AMZN: "#1F7A6E",
-  TSLA: "#B22B2F",
-  "BRK.B": "#6B5A3E",
-  SPY: "#7C5CBF",
+  NVDA: CURATED_STEPS[0],
+  AAPL: CURATED_STEPS[1],
+  MSFT: CURATED_STEPS[2],
+  GOOGL: CURATED_STEPS[3],
+  AMZN: CURATED_STEPS[0],
+  TSLA: CURATED_STEPS[1],
+  "BRK.B": CURATED_STEPS[2],
+  SPY: CURATED_STEPS[3],
 };
 
 export function holdingColor(symbol: string): string {

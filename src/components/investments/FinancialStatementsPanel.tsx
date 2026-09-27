@@ -78,7 +78,7 @@ function StatementTable({
     return (
       <div className="space-y-2 py-2">
         {Array.from({ length: 6 }).map((_, i) => (
-          <div key={i} className="h-7 rounded bg-[var(--home-stone)] animate-pulse" />
+          <div key={i} className="h-7 rounded bg-[var(--c97-rule)] animate-pulse" />
         ))}
       </div>
     );
@@ -90,7 +90,7 @@ function StatementTable({
 
   const table = normalize(data, period);
   if (!table) {
-    return <p className="text-sm text-[var(--home-ink-soft)] py-4">No data available.</p>;
+    return <p className="text-sm text-[var(--c97-label)] py-4">No data available.</p>;
   }
 
   // Identify the label column (first string column) vs numeric period columns
@@ -101,14 +101,14 @@ function StatementTable({
     <div className="overflow-x-auto -mx-1">
       <table className="w-full text-xs min-w-[480px]" aria-label={`${section.replace("_", " ")} statement`}>
         <thead>
-          <tr className="border-b border-[var(--home-rule)]">
-            <th className="text-left py-2 px-2 text-[var(--home-ink-soft)] font-medium w-40 sticky left-0 bg-[var(--home-paper-raised)]">
+          <tr className="border-b border-[var(--c97-rule)]">
+            <th className="text-left py-2 px-2 text-[var(--c97-label)] font-medium w-40 sticky left-0 bg-[var(--c97-panel)]">
               Metric
             </th>
             {periodCols.map((col) => (
               <th
                 key={col}
-                className="text-right py-2 px-2 text-[var(--home-ink-soft)] font-medium whitespace-nowrap"
+                className="text-right py-2 px-2 text-[var(--c97-label)] font-medium whitespace-nowrap"
               >
                 {String(col)}
               </th>
@@ -119,9 +119,9 @@ function StatementTable({
           {table.rows.map((row, i) => (
             <tr
               key={i}
-              className="border-b border-[var(--home-rule)] last:border-0 hover:bg-[var(--home-paper-alt)] transition-colors"
+              className="border-b border-[var(--c97-rule)] last:border-0 hover:bg-[var(--c97-panel)] transition-colors"
             >
-              <td className="py-2 px-2 text-[var(--home-ink-muted)] font-medium sticky left-0 bg-[var(--home-paper-raised)] whitespace-nowrap">
+              <td className="py-2 px-2 text-[var(--c97-ink-2)] font-medium sticky left-0 bg-[var(--c97-panel)] whitespace-nowrap">
                 {String(row[labelCol] ?? "")}
               </td>
               {periodCols.map((col) => {
@@ -131,7 +131,7 @@ function StatementTable({
                 return (
                   <td
                     key={col}
-                    className={`py-2 px-2 text-right whitespace-nowrap ${isNeg ? "text-[var(--home-negative)]" : "text-[var(--home-ink)]"}`}
+                    className={`py-2 px-2 text-right whitespace-nowrap ${isNeg ? "text-[var(--c97-negative)]" : "text-[var(--c97-ink)]"}`}
                   >
                     {val !== undefined && val !== null && val !== "*" ? formatNum(val) : "—"}
                   </td>
@@ -160,10 +160,10 @@ export function FinancialStatementsPanel({ symbol }: Props) {
               role="tab"
               aria-selected={activeTab === key}
               onClick={() => setActiveTab(key)}
-              className={`px-3 py-1.5 text-xs font-medium rounded-md transition whitespace-nowrap min-h-touch ${
+              className={`px-3 py-1.5 text-xs font-medium transition whitespace-nowrap min-h-touch ${
                 activeTab === key
-                  ? "bg-[var(--home-signal)] text-[var(--home-paper)]"
-                  : "text-[var(--home-ink-muted)] hover:bg-[var(--home-paper-alt)]"
+                  ? "bg-[var(--c97-accent)] text-[var(--c97-surface)]"
+                  : "text-[var(--c97-ink-2)] hover:bg-[var(--c97-panel)]"
               }`}
             >
               {label}
@@ -177,10 +177,10 @@ export function FinancialStatementsPanel({ symbol }: Props) {
             <button
               key={p}
               onClick={() => setPeriod(p)}
-              className={`px-3 py-1.5 text-xs font-medium rounded-md transition capitalize min-h-touch ${
+              className={`px-3 py-1.5 text-xs font-medium transition capitalize min-h-touch ${
                 period === p
-                  ? "bg-[var(--home-stone)] text-[var(--home-ink)]"
-                  : "text-[var(--home-ink-soft)] hover:bg-[var(--home-paper-alt)]"
+                  ? "bg-[var(--c97-rule)] text-[var(--c97-ink)]"
+                  : "text-[var(--c97-label)] hover:bg-[var(--c97-panel)]"
               }`}
             >
               {p.charAt(0).toUpperCase() + p.slice(1)}

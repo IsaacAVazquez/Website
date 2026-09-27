@@ -10,9 +10,9 @@ interface Props {
 }
 
 function deltaTone(delta: number): string {
-  if (delta > 0.005) return "var(--home-positive)";
-  if (delta < -0.005) return "var(--home-negative)";
-  return "var(--home-ink-muted)";
+  if (delta > 0.005) return "var(--c97-positive)";
+  if (delta < -0.005) return "var(--c97-negative)";
+  return "var(--c97-ink-2)";
 }
 
 function DeltaIcon({ delta }: { delta: number }) {

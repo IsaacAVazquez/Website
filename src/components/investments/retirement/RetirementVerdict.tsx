@@ -5,10 +5,10 @@ import type { RetirementResult, Verdict } from "@/lib/retirement";
 import { formatCompactCurrency, formatPercent, formatScenarioCount } from "@/lib/retirement";
 
 const VERDICT_COPY: Record<Verdict, { label: string; tone: string }> = {
-  "on-track": { label: "On track", tone: "var(--home-positive)" },
-  good: { label: "Looking good", tone: "var(--home-positive)" },
-  fair: { label: "Fair — worth a look", tone: "var(--home-warning)" },
-  "at-risk": { label: "Needs attention", tone: "var(--home-negative)" },
+  "on-track": { label: "On track", tone: "var(--c97-positive)" },
+  good: { label: "Looking good", tone: "var(--c97-positive)" },
+  fair: { label: "Fair — worth a look", tone: "var(--c97-warning)" },
+  "at-risk": { label: "Needs attention", tone: "var(--c97-negative)" },
 };
 
 interface Props {
@@ -94,7 +94,7 @@ export function RetirementVerdict({ result, isSampleScenario = false }: Props) {
         </div>
         <div>
           <dt>{surplus >= 0 ? "Surplus" : "Shortfall"}</dt>
-          <dd style={{ color: surplus >= 0 ? "var(--home-positive)" : "var(--home-negative)" }}>
+          <dd style={{ color: surplus >= 0 ? "var(--c97-positive)" : "var(--c97-negative)" }}>
             {surplus >= 0 ? "+" : "−"}
             {formatCompactCurrency(Math.abs(surplus))}
           </dd>

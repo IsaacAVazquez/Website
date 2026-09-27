@@ -136,10 +136,10 @@ interface KeyMetricCellProps {
 function KeyMetricCell({ metric }: KeyMetricCellProps) {
   const valueColor =
     metric.tone === "pos"
-      ? "text-[var(--home-positive)]"
+      ? "text-[var(--c97-positive)]"
       : metric.tone === "neg"
-        ? "text-[var(--home-negative)]"
-        : "text-[var(--home-ink)]";
+        ? "text-[var(--c97-negative)]"
+        : "text-[var(--c97-ink)]";
   return (
     <div className="research-key-metric">
       <span
