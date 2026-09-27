@@ -26,13 +26,13 @@ function TeamCell({
     <>
       {align === "end" ? (
         <>
-          <span className="min-w-0 truncate text-sm font-semibold text-[var(--home-ink)]">{team.shortName}</span>
+          <span className="min-w-0 truncate text-sm font-semibold text-[var(--c97-ink)]">{team.shortName}</span>
           <CrestAvatar crest={team.crest} name={team.shortName} size="sm" />
         </>
       ) : (
         <>
           <CrestAvatar crest={team.crest} name={team.shortName} size="sm" />
-          <span className="min-w-0 truncate text-sm font-semibold text-[var(--home-ink)]">{team.shortName}</span>
+          <span className="min-w-0 truncate text-sm font-semibold text-[var(--c97-ink)]">{team.shortName}</span>
         </>
       )}
     </>
@@ -45,7 +45,7 @@ function TeamCell({
       <button
         type="button"
         onClick={() => onOpenTeam(team.id)}
-        className={`flex min-h-[44px] min-w-0 flex-1 items-center gap-2.5 ${justify} rounded-[var(--radius-xl)] transition-colors hover:text-[var(--home-signal)]`}
+        className={`flex min-h-[44px] min-w-0 flex-1 items-center gap-2.5 ${justify} transition-colors hover:text-[var(--c97-accent)]`}
       >
         {content}
       </button>
@@ -65,16 +65,16 @@ function FixtureLedgerRow({
   const isFinal = fixture.status === "FINISHED";
 
   return (
-    <div className="grid grid-cols-[minmax(0,1fr)_minmax(76px,auto)_minmax(0,1fr)] items-center gap-3 border-b border-[var(--home-rule)] px-4 py-3 transition-colors last:border-b-0 hover:bg-[var(--home-paper-raised)] hover:shadow-[inset_3px_0_0_var(--home-signal)]">
+    <div className="grid grid-cols-[minmax(0,1fr)_minmax(76px,auto)_minmax(0,1fr)] items-center gap-3 border-b border-[var(--c97-rule)] px-4 py-3 transition-colors last:border-b-0 hover:bg-[var(--c97-field)] ">
       <TeamCell team={fixture.homeTeam} onOpenTeam={onOpenTeam} />
       {isFinal ? (
-        <span className="text-center font-mono text-lg tabular-nums text-[var(--home-ink)]">
+        <span className="text-center font-mono text-lg tabular-nums text-[var(--c97-ink)]">
           {fixture.score.home ?? "–"}
-          <span className="px-0.5 text-[var(--home-ink-muted)]">–</span>
+          <span className="px-0.5 text-[var(--c97-ink-2)]">–</span>
           {fixture.score.away ?? "–"}
         </span>
       ) : (
-        <span className="text-center font-mono text-2xs text-[var(--home-ink-muted)]">
+        <span className="text-center font-mono text-2xs text-[var(--c97-ink-2)]">
           {formatKickoff(fixture.utcDate)}
         </span>
       )}
@@ -102,9 +102,9 @@ export function FixtureLedgerSection({
       {groups.map((group) => (
         <div
           key={group.key}
-          className="overflow-hidden rounded-[var(--radius-sm)] border border-[var(--home-rule)] bg-[var(--home-paper)]"
+          className="overflow-hidden border border-[var(--c97-rule)] bg-[var(--c97-surface)]"
         >
-          <div className="flex items-center justify-between gap-3 border-b border-[var(--home-rule)] px-4 py-2.5 font-mono text-3xs uppercase tracking-[0.1em] text-[var(--home-ink-muted)]">
+          <div className="flex items-center justify-between gap-3 border-b border-[var(--c97-rule)] px-4 py-2.5 font-mono text-3xs uppercase tracking-[0.1em] text-[var(--c97-ink-2)]">
             <span>{group.label}</span>
             <span>{group.fixtures.length} {group.fixtures.length === 1 ? "game" : "games"}</span>
           </div>

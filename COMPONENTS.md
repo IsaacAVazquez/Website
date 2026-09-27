@@ -118,7 +118,9 @@ Shared components for the `/premier-league`, `/la-liga`, `/mlb`, `/nba`, `/nfl`,
 | `FixtureCard` | `src/components/football/FixtureCard.tsx` | Single fixture result or upcoming match card |
 | `FixtureGroupSection` | `src/components/football/FixtureGroupSection.tsx` | Grouped fixture list by matchday or date |
 | `LeaderList` | `src/components/football/LeaderList.tsx` | Scorers and assists leaderboard |
-| `StatCard` | `src/components/football/StatCard.tsx` | Single stat display with label and value |
+| `PointsLadder` | `src/components/football/PointsLadderChart.tsx` | Premier League and La Liga hero signature, clubs on a vertical points axis with the zone lines, geometry from `ladderGeometry.ts` |
+| `LeagueProgrammeTable` | `src/components/football/LeagueProgrammeTable.tsx` | Premier League and La Liga standings table with the zones printed as row bands |
+| `SeedLadder` | `src/components/football/SeedLadderPanel.tsx` | NBA and NFL hero signature, each conference as a seed ladder with the games-clear gap at each line, from `seedLadder.ts` |
 | `MetricCard` | `src/components/football/MetricCard.tsx` | Metric highlight card with optional trend |
 | `InfoChip` | `src/components/football/InfoChip.tsx` | Inline label chip for league/competition context |
 | `CrestAvatar` | `src/components/football/CrestAvatar.tsx` | Team crest image with fallback initials |

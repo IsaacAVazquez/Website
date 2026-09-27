@@ -18,29 +18,29 @@ export function MetricCard({ label, value, detail, icon, className = "" }: Metri
 
   if (isExtended) {
     return (
-      <article className={`home-card-static p-5 sm:p-6 ${className}`.trim()}>
+      <article className={`c97-panel ${className}`.trim()}>
         <div className="flex items-center justify-between gap-3">
-          <p className="text-2xs font-semibold uppercase tracking-[0.18em] text-[var(--home-ink-muted)]">
+          <p className="text-2xs font-semibold uppercase tracking-[0.18em] text-[var(--c97-ink-2)]">
             {label}
           </p>
-          {icon ? <span className="text-[var(--home-ink-muted)]">{icon}</span> : null}
+          {icon ? <span className="text-[var(--c97-ink-2)]">{icon}</span> : null}
         </div>
-        <p className="mt-3 text-2xl font-semibold tracking-[-0.05em] tabular-nums text-[var(--home-ink)]">
+        <p className="mt-3 text-2xl font-semibold tracking-[-0.05em] tabular-nums text-[var(--c97-ink)]">
           {value}
         </p>
         {detail ? (
-          <p className="mt-2 mb-0 text-sm leading-6 text-[var(--home-ink-muted)]">{detail}</p>
+          <p className="mt-2 mb-0 text-sm leading-6 text-[var(--c97-ink-2)]">{detail}</p>
         ) : null}
       </article>
     );
   }
 
   return (
-    <div className={`rounded-[var(--radius-2xl)] border border-[var(--home-rule)] bg-[var(--home-paper-alt)] p-4 shadow-[var(--shadow-sm)] ${className}`.trim()}>
-      <p className="text-xs font-semibold uppercase tracking-[0.14em] text-[var(--home-ink-soft)]">
+    <div className={`border border-[var(--c97-rule)] bg-[var(--c97-field)] p-4 ${className}`.trim()}>
+      <p className="text-xs font-semibold uppercase tracking-[0.14em] text-[var(--c97-label)]">
         {label}
       </p>
-      <p className="mt-2 text-xl font-bold tabular-nums text-[var(--home-ink)]">{value}</p>
+      <p className="mt-2 text-xl font-bold tabular-nums text-[var(--c97-ink)]">{value}</p>
     </div>
   );
 }

@@ -3,17 +3,19 @@
 import Link from "next/link";
 import { startTransition, useState, type ReactNode } from "react";
 import { useRouter } from "next/navigation";
+import { Catalog97ProjectHero } from "@/components/catalog97/Catalog97ProjectHero";
+import { PROJECT_PRESS } from "@/constants/projectPress";
+import { regionBracket } from "./bracketLayout";
+import { RegionBracket } from "./RegionBracket";
 import {
   BEST_UPSET_SHARE,
   BRACKET,
   BRACKET_THESIS_SHARE,
   FINAL_FOUR_SUMMARY,
-  HERO_TAGS,
   INJURIES,
   MARCH_MADNESS_ARTICLE_SLUG,
   MARCH_MADNESS_FAQ,
   MARCH_MADNESS_THESIS,
-  MARCH_MADNESS_UPDATED_AT,
   MARCH_MADNESS_UPDATED_LABEL,
   MODEL_PILLARS,
   PICKS,
@@ -28,6 +30,7 @@ import {
 import {
   ANALYTICS_LABELS,
   buildMarchMadnessHref,
+  MARCH_MADNESS_ROUTE,
   REGION_LABELS,
   VIEW_LABELS,
   type MarchMadnessAnalytics,
@@ -35,50 +38,41 @@ import {
   type MarchMadnessSearchState,
   type MarchMadnessView,
 } from "./march-madness-state";
+import "./march-madness.css";
 
-const SURFACE_CLASS =
-  "rounded-[var(--radius-3xl)] border border-[var(--home-rule)] bg-[var(--home-paper-raised)] shadow-[var(--shadow-sm)]";
-
-const editorialCardClasses: Record<EditorialCard["color"], string> = {
-  rose: "border-[color-mix(in_srgb,var(--home-negative)_30%,var(--home-rule))] bg-[color-mix(in_srgb,var(--home-negative)_9%,var(--home-paper-alt))] shadow-[var(--shadow-sm)]",
-  amber: "border-[color-mix(in_srgb,var(--home-signal)_30%,var(--home-rule))] bg-[color-mix(in_srgb,var(--home-signal)_10%,var(--home-paper-alt))] shadow-[var(--shadow-sm)]",
-  blue: "border-[color-mix(in_srgb,var(--home-ink)_25%,var(--home-rule))] bg-[color-mix(in_srgb,var(--home-ink)_7%,var(--home-paper-alt))] shadow-[var(--shadow-sm)]",
+const BADGE_TONE: Record<PickEntry["badge"], "red" | "green" | "amber" | "gray"> = {
+  FLIP: "red",
+  UPGRADE: "green",
+  DOWNGRADE: "red",
+  CONFIRM: "green",
+  LOCKED: "green",
+  WATCH: "amber",
 };
 
-function SurfaceCard({
-  children,
-  className = "",
-  id,
-}: {
-  children: ReactNode;
-  className?: string;
-  id?: string;
-}) {
-  return (
-    <div id={id} className={`${SURFACE_CLASS} ${className}`}>
-      {children}
-    </div>
-  );
-}
+const LEGEND_COPY: Record<PickEntry["badge"], string> = {
+  FLIP: "Time zone penalty reversal",
+  UPGRADE: "Better than their seeding",
+  DOWNGRADE: "Worse than their seeding",
+  WATCH: "Notable risk or edge",
+  LOCKED: "High-conviction chalk",
+  CONFIRM: "Analytics confirms the seed",
+};
 
-function Tag({ children, color = "gray" }: { children: ReactNode; color?: string }) {
-  const colorClasses: Record<string, string> = {
-    blue: "border-[color-mix(in_srgb,var(--home-ink)_25%,var(--home-rule))] bg-[color-mix(in_srgb,var(--home-ink)_7%,var(--home-paper-alt))] text-[color-mix(in_srgb,var(--home-ink)_75%,var(--home-stone))]",
-    green: "border-[color-mix(in_srgb,var(--home-positive)_30%,var(--home-rule))] bg-[color-mix(in_srgb,var(--home-positive)_10%,var(--home-paper-alt))] text-[color-mix(in_srgb,var(--home-positive)_70%,var(--home-ink))]",
-    red: "border-[color-mix(in_srgb,var(--home-negative)_30%,var(--home-rule))] bg-[color-mix(in_srgb,var(--home-negative)_9%,var(--home-paper-alt))] text-[color-mix(in_srgb,var(--home-negative)_70%,var(--home-ink))]",
-    amber: "border-[color-mix(in_srgb,var(--home-signal)_30%,var(--home-rule))] bg-[color-mix(in_srgb,var(--home-signal)_10%,var(--home-paper-alt))] text-[var(--home-signal)]",
-    gray: "border-[var(--home-rule)] bg-[var(--home-overlay)] text-[var(--home-ink-muted)]",
-  };
+const EDITORIAL_TONE: Record<EditorialCard["color"], "red" | "amber" | "gray"> = {
+  rose: "red",
+  amber: "amber",
+  blue: "gray",
+};
 
-  return (
-    <span
-      className={`inline-flex items-center rounded-full border px-2 py-1 text-3xs font-semibold uppercase tracking-[0.14em] ${
-        colorClasses[color] ?? colorClasses.gray
-      }`}
-    >
-      {children}
-    </span>
-  );
+const CHIP_CLASS: Record<"red" | "green" | "amber" | "gray", string> = {
+  red: "c97-chip c97-chip-negative",
+  green: "c97-chip c97-chip-positive",
+  amber: "c97-chip c97-chip-warning",
+  gray: "c97-chip",
+};
+
+function Tag({ children, color = "gray" }: { children: ReactNode; color?: "red" | "green" | "amber" | "gray" }) {
+  return <span className={CHIP_CLASS[color]}>{children}</span>;
 }
 
 function SectionIntro({
@@ -94,18 +88,13 @@ function SectionIntro({
 }) {
   return (
     <div className="space-y-3">
-      <p className="text-2xs font-semibold uppercase tracking-[0.2em] text-[var(--home-signal)]">
+      <p className="c97-kicker" style={{ margin: 0 }}>
         {eyebrow}
       </p>
-      <div className="space-y-2">
-        <h2
-          id={titleId}
-          className="text-2xl font-semibold tracking-tight text-[var(--home-ink)] sm:text-3xl"
-        >
-          {title}
-        </h2>
-        <p className="max-w-[72ch] text-sm leading-7 text-[var(--home-ink-muted)] sm:text-base">{description}</p>
-      </div>
+      <h2 id={titleId} className="c97-poster-sm">
+        {title}
+      </h2>
+      <p className="c97-prose">{description}</p>
     </div>
   );
 }
@@ -114,24 +103,25 @@ function EditorialLinkCard({ card }: { card: EditorialCard }) {
   return (
     <Link
       href={card.href}
-      className={`group rounded-[var(--radius-3xl)] border p-5 transition hover:-translate-y-0.5 hover:border-[color-mix(in_srgb,var(--home-ink)_20%,var(--home-rule))] hover:bg-[var(--home-overlay)] ${editorialCardClasses[card.color]}`}
+      className="c97-panel"
+      style={{ display: "block", padding: "var(--c97-sp-4)", textDecoration: "none" }}
     >
-      <div className="space-y-4">
-        <div className="flex flex-wrap items-center gap-2">
-          <Tag color={card.color === "blue" ? "blue" : card.color === "amber" ? "amber" : "red"}>
-            {card.eyebrow}
-          </Tag>
-        </div>
-        <div className="space-y-2">
-          <h3 className="text-lg font-semibold text-[var(--home-ink)]">{card.title}</h3>
-          <p className="text-sm leading-7 text-[var(--home-ink)]">{card.reason}</p>
-        </div>
-        <div className="flex flex-wrap items-center justify-between gap-3">
-          <p className="text-xs uppercase tracking-[0.16em] text-[var(--home-ink-muted)]">{card.note}</p>
-          <span className="text-sm font-semibold text-[var(--home-ink)] transition group-hover:text-[var(--home-signal)]">
-            {card.cta}
-          </span>
-        </div>
+      <div style={{ marginBottom: "var(--c97-sp-3)" }}>
+        <Tag color={EDITORIAL_TONE[card.color]}>{card.eyebrow}</Tag>
+      </div>
+      <h3 className="c97-serif c97-h3" style={{ marginBottom: "var(--c97-sp-2)" }}>
+        {card.title}
+      </h3>
+      <p className="c97-prose" style={{ fontSize: "var(--c97-fs-small)", marginBottom: "var(--c97-sp-3)" }}>
+        {card.reason}
+      </p>
+      <div className="flex flex-wrap items-center justify-between gap-3">
+        <p className="c97-kicker" style={{ margin: 0 }}>
+          {card.note}
+        </p>
+        <span className="c97-kicker" style={{ margin: 0, color: "var(--c97-ink)" }}>
+          {card.cta} &rarr;
+        </span>
       </div>
     </Link>
   );
@@ -149,25 +139,15 @@ function TeamRow({
   tags?: string[];
 }) {
   return (
-    <div
-      className={`flex flex-wrap items-center gap-2 px-3 py-3 sm:flex-nowrap ${
-        win
-          ? "border-l-2 border-[var(--home-positive)] bg-[color-mix(in_srgb,var(--home-positive)_10%,var(--home-paper-alt))]"
-          : "border-l-2 border-transparent bg-[var(--home-overlay)]"
-      }`}
-    >
-      <span className="w-5 shrink-0 text-right text-2xs font-medium text-[var(--home-ink-soft)]">
-        {seed ?? ""}
-      </span>
-      <span className={`min-w-0 flex-1 text-sm font-semibold ${win ? "text-[var(--home-ink)]" : "text-[var(--home-ink-muted)]"}`}>
-        {name}
-      </span>
+    <div className="mm-matchup-row" data-winner={win ? "true" : "false"}>
+      <span className="mm-matchup-seed">{seed ?? ""}</span>
+      <span className="mm-matchup-name">{name}</span>
       {tags.length > 0 ? (
-        <div className="flex flex-wrap justify-end gap-1.5">
+        <div className="mm-matchup-tags">
           {tags.map((tag, index) => (
-            <Tag key={`${tag}-${index}`} color="amber">
+            <span key={`${tag}-${index}`} className="c97-chip">
               {tag}
-            </Tag>
+            </span>
           ))}
         </div>
       ) : null}
@@ -191,9 +171,8 @@ function Matchup({
   tags?: string[];
 }) {
   return (
-    <div className="mb-3 overflow-hidden rounded-[var(--radius-3xl)] border border-[var(--home-rule)] bg-[var(--home-overlay)]">
+    <div className="mm-matchup">
       <TeamRow seed={s1} name={t1} win={w === 1} tags={w === 1 ? tags : []} />
-      <div className="h-px bg-[var(--home-overlay)]" />
       <TeamRow seed={s2} name={t2} win={w === 2} tags={w === 2 ? tags : []} />
     </div>
   );
@@ -211,9 +190,8 @@ function Matchup2({
   tags?: string[];
 }) {
   return (
-    <div className="mb-3 overflow-hidden rounded-[var(--radius-3xl)] border border-[var(--home-rule)] bg-[var(--home-overlay)]">
+    <div className="mm-matchup">
       <TeamRow name={t1} win={w === 1} tags={w === 1 ? tags : []} />
-      <div className="h-px bg-[var(--home-overlay)]" />
       <TeamRow name={t2} win={w === 2} tags={w === 2 ? tags : []} />
     </div>
   );
@@ -221,20 +199,29 @@ function Matchup2({
 
 function RoundLabel({ children }: { children: ReactNode }) {
   return (
-    <p className="mb-3 mt-5 border-b border-[color-mix(in_srgb,var(--home-signal)_30%,var(--home-rule))] pb-2 text-2xs font-semibold uppercase tracking-[0.2em] text-[var(--home-signal)]">
+    <p className="c97-kicker" style={{ marginTop: "var(--c97-sp-4)", marginBottom: "var(--c97-sp-2)" }}>
       {children}
     </p>
   );
 }
 
 function SiteLabel({ children }: { children: ReactNode }) {
-  return <p className="mb-2 mt-3 text-xs italic text-[var(--home-ink-soft)]">{children}</p>;
+  return (
+    <p
+      className="c97-prose"
+      style={{ fontSize: "var(--c97-fs-small)", fontStyle: "italic", color: "var(--c97-ink-2)", marginBottom: "var(--c97-sp-1)" }}
+    >
+      {children}
+    </p>
+  );
 }
 
 function NoteBox({ children }: { children: ReactNode }) {
   return (
-    <div className="mt-3 rounded-[var(--radius-3xl)] border border-[var(--home-rule)] bg-[var(--home-overlay)] px-4 py-4 text-sm leading-6 text-[var(--home-ink-muted)]">
-      {children}
+    <div style={{ marginTop: "var(--c97-sp-3)", paddingTop: "var(--c97-sp-3)", borderTop: "1px solid var(--c97-rule)" }}>
+      <p className="c97-prose" style={{ fontSize: "var(--c97-fs-small)" }}>
+        {children}
+      </p>
     </div>
   );
 }
@@ -250,10 +237,7 @@ function TabBar<T extends string>({
   onChange: (tab: T) => void;
   label: string;
 }) {
-  const handleKeyDown = (
-    event: React.KeyboardEvent<HTMLButtonElement>,
-    index: number,
-  ) => {
+  const handleKeyDown = (event: React.KeyboardEvent<HTMLButtonElement>, index: number) => {
     const last = items.length - 1;
     let nextIndex!: number;
 
@@ -285,7 +269,7 @@ function TabBar<T extends string>({
   };
 
   return (
-    <div className="flex flex-wrap gap-2" role="tablist" aria-label={label}>
+    <div className="c97-segmented" role="tablist" aria-label={label}>
       {items.map((item, index) => (
         <button
           key={item.value}
@@ -293,13 +277,9 @@ function TabBar<T extends string>({
           role="tab"
           aria-selected={active === item.value}
           tabIndex={active === item.value ? 0 : -1}
-          onKeyDown={(e) => handleKeyDown(e, index)}
+          onKeyDown={(event) => handleKeyDown(event, index)}
           onClick={() => onChange(item.value)}
-          className={`min-h-[44px] rounded-full border px-4 py-2.5 text-sm font-semibold transition ${
-            active === item.value
-              ? "border-[color-mix(in_srgb,var(--home-signal)_30%,var(--home-rule))] bg-[color-mix(in_srgb,var(--home-signal)_10%,var(--home-paper-alt))] text-[var(--home-signal)]"
-              : "border-[var(--home-rule)] bg-[var(--home-overlay)] text-[var(--home-ink-muted)] hover:border-[color-mix(in_srgb,var(--home-ink)_20%,var(--home-rule))] hover:bg-[var(--home-overlay)] hover:text-[var(--home-ink)]"
-          }`}
+          className="min-h-[44px]"
         >
           {item.label}
         </button>
@@ -308,32 +288,19 @@ function TabBar<T extends string>({
   );
 }
 
-function StatCell({
-  val,
-  isRank,
-  highlight,
-}: {
-  val: number;
-  isRank?: boolean;
-  highlight?: boolean;
-}) {
-  const textClass = highlight
-    ? "text-[var(--home-signal)]"
-    : isRank && val <= 5
-      ? "text-[color-mix(in_srgb,var(--home-positive)_70%,var(--home-ink))]"
-      : "text-[var(--home-ink-muted)]";
-
-  // Surface what each color encodes so colorblind users get a tooltip + the
-  // screen-reader text instead of a bare number.
+function StatCell({ val, isRank, highlight }: { val: number; isRank?: boolean; highlight?: boolean }) {
+  const isStrong = highlight || (isRank && val <= 5);
   const title = highlight
-    ? "Top-3 average: this team rates among the strongest overall"
+    ? "Top-3 average. This team rates among the strongest overall."
     : isRank && val <= 5
       ? "Top-5 by this system"
       : undefined;
 
   return (
     <td
-      className={`px-2 py-3 text-right text-xs font-medium tabular-nums ${textClass}`}
+      data-align="end"
+      className="c97-mono"
+      style={{ color: isStrong ? "var(--c97-positive)" : "var(--c97-ink-2)" }}
       title={title}
       aria-label={title ? `${val} (${title})` : undefined}
     >
@@ -342,89 +309,73 @@ function StatCell({
   );
 }
 
+const RANKINGS_COLUMNS = [
+  "Rk",
+  "Team",
+  "Conf",
+  "Record",
+  "Avg",
+  "BPI",
+  "EM",
+  "KPI",
+  "NET",
+  "POM",
+  "SOR",
+  "TR",
+  "WAB",
+  "Trapezoid",
+  "Seed",
+  "Odds",
+];
+
 function RankingsSection() {
   return (
     <div className="space-y-4">
-      <p className="max-w-[72ch] text-sm leading-6 text-[var(--home-ink-muted)]">
-        Blended average across BPI, Evan Miya, KPI, NET, KenPom, SOR, T-Rank,
-        and WAB, excluding the minimum and maximum system values.
+      <p className="c97-prose" style={{ fontSize: "var(--c97-fs-small)" }}>
+        Blended average across BPI, Evan Miya, KPI, NET, KenPom, SOR, T-Rank, and WAB, excluding the
+        minimum and maximum system values.
       </p>
-      <div
-        className="scroll-shadow-x overflow-x-auto rounded-[var(--radius-3xl)] border border-[var(--home-rule)]"
-        role="region"
-        aria-label="Team rankings table (scrollable)"
-        tabIndex={0}
-      >
-        <table className="min-w-[920px] w-full border-collapse text-sm">
+      <div className="mm-bracket-scroll" role="region" aria-label="Team rankings table (scrollable)" tabIndex={0}>
+        <table className="c97-table" style={{ minWidth: "920px" }}>
           <thead>
-            <tr className="border-b border-[var(--home-rule)]">
-              {[
-                "Rk",
-                "Team",
-                "Conf",
-                "Record",
-                "Avg",
-                "BPI",
-                "EM",
-                "KPI",
-                "NET",
-                "POM",
-                "SOR",
-                "TR",
-                "WAB",
-                "Trapezoid",
-                "Seed",
-                "Odds",
-              ].map((heading) => (
-                <th
-                  key={heading}
-                  className={`px-2 py-3 text-xs font-semibold uppercase tracking-[0.12em] text-[var(--home-ink-soft)] ${
-                    heading === "Team" || heading === "Trapezoid" ? "text-left" : "text-right"
-                  }`}
-                >
+            <tr>
+              {RANKINGS_COLUMNS.map((heading) => (
+                <th key={heading} data-align={heading === "Team" || heading === "Trapezoid" ? undefined : "end"}>
                   {heading}
                 </th>
               ))}
             </tr>
           </thead>
           <tbody>
-            {RANKINGS.map((ranking, index) => (
-              <tr
-                key={ranking.team}
-                className={`border-b border-[var(--home-rule)] ${index % 2 === 0 ? "bg-[var(--home-overlay)]" : ""}`}
-              >
-                <td className="px-2 py-3 text-xs tabular-nums text-[var(--home-ink-soft)]">{ranking.rank}</td>
-                <td className="px-2 py-3 text-sm font-semibold text-[var(--home-ink)]">{ranking.team}</td>
-                <td className="px-2 py-3 text-xs text-[var(--home-ink-muted)]">{ranking.conf}</td>
-                <td className="px-2 py-3 text-xs tabular-nums text-[var(--home-ink-muted)]">{ranking.record}</td>
+            {RANKINGS.map((ranking) => (
+              <tr key={ranking.team}>
+                <td className="c97-mono">{ranking.rank}</td>
+                <td style={{ fontWeight: 600 }}>{ranking.team}</td>
+                <td>{ranking.conf}</td>
+                <td className="c97-mono">{ranking.record}</td>
                 <StatCell val={ranking.avg} highlight={ranking.avg <= 3} />
-                {[
-                  ranking.bpi,
-                  ranking.em,
-                  ranking.kpi,
-                  ranking.net,
-                  ranking.pom,
-                  ranking.sor,
-                  ranking.tr,
-                  ranking.wab,
-                ].map((value, statIndex) => (
-                  <StatCell key={`${ranking.team}-${statIndex}`} val={value} isRank />
-                ))}
-                <td className="px-2 py-3">
+                {[ranking.bpi, ranking.em, ranking.kpi, ranking.net, ranking.pom, ranking.sor, ranking.tr, ranking.wab].map(
+                  (value, statIndex) => (
+                    <StatCell key={`${ranking.team}-${statIndex}`} val={value} isRank />
+                  )
+                )}
+                <td>
                   <span
-                    className={`inline-flex rounded-full border px-2 py-1 text-3xs font-semibold uppercase tracking-[0.14em] ${
+                    className={
                       ranking.trap === "Trapezoid"
-                        ? "border-[color-mix(in_srgb,var(--home-positive)_30%,var(--home-rule))] bg-[color-mix(in_srgb,var(--home-positive)_10%,var(--home-paper-alt))] text-[color-mix(in_srgb,var(--home-positive)_70%,var(--home-ink))]"
+                        ? "c97-chip c97-chip-positive"
                         : ranking.trap === "—"
-                          ? "border-[var(--home-rule)] bg-[var(--home-overlay)] text-[var(--home-ink-soft)]"
-                          : "border-[color-mix(in_srgb,var(--home-signal)_30%,var(--home-rule))] bg-[color-mix(in_srgb,var(--home-signal)_10%,var(--home-paper-alt))] text-[var(--home-signal)]"
-                    }`}
+                          ? "c97-chip"
+                          : "c97-chip c97-chip-warning"
+                    }
                   >
                     {ranking.trap}
                   </span>
                 </td>
-                <td className="px-2 py-3 text-right text-xs tabular-nums text-[var(--home-ink-muted)]">{ranking.seed}</td>
-                <td className="px-2 py-3 text-right text-xs font-semibold tabular-nums text-[var(--home-signal)]">
+                <td data-align="end" className="c97-mono">
+                  {ranking.seed}
+                </td>
+                <td data-align="end" className="c97-mono" style={{ fontWeight: 600 }}>
                   {ranking.odds}
                 </td>
               </tr>
@@ -440,34 +391,24 @@ function SCurveSection() {
   return (
     <div className="grid gap-5 lg:grid-cols-2">
       {[
-        { label: "Underseeded: got a raw deal", data: SCURVE.under, positive: true },
-        { label: "Overseeded: got a gift", data: SCURVE.over, positive: false },
+        { label: "Underseeded teams", data: SCURVE.under, positive: true },
+        { label: "Overseeded teams", data: SCURVE.over, positive: false },
       ].map(({ label, data, positive }) => (
-        <div key={label} className="rounded-[var(--radius-3xl)] border border-[var(--home-rule)] bg-[var(--home-overlay)] p-4">
+        <div key={label} className="c97-panel">
           <p
-            className={`mb-4 text-2xs font-semibold uppercase tracking-[0.16em] ${
-              positive ? "text-[color-mix(in_srgb,var(--home-positive)_70%,var(--home-ink))]" : "text-[color-mix(in_srgb,var(--home-negative)_70%,var(--home-ink))]"
-            }`}
+            className="c97-kicker"
+            style={{ marginBottom: "var(--c97-sp-3)", color: positive ? "var(--c97-positive)" : "var(--c97-negative)" }}
           >
             {label}
           </p>
-          <div className="space-y-3">
+          <div className="space-y-2">
             {data.map((item) => (
-              <div
-                key={item.team}
-                className="flex flex-wrap items-center gap-3 rounded-[var(--radius-3xl)] border border-[var(--home-rule)] bg-[var(--home-overlay)] px-3 py-3"
-              >
-                <span className="min-w-[110px] text-sm font-semibold text-[var(--home-ink)]">{item.team}</span>
-                <span className="flex-1 text-xs text-[var(--home-ink-muted)]">
-                  {item.seed}-seed · {item.exp}→{item.act}
+              <div key={item.team} className="flex flex-wrap items-baseline gap-3">
+                <span style={{ minWidth: "7rem", fontWeight: 600 }}>{item.team}</span>
+                <span className="c97-mono" style={{ fontSize: "var(--c97-fs-small)", color: "var(--c97-ink-2)" }}>
+                  {item.seed}-seed &middot; {item.exp}&rarr;{item.act}
                 </span>
-                <span
-                  className={`rounded-full border px-2.5 py-1 text-xs font-semibold ${
-                    positive
-                      ? "border-[color-mix(in_srgb,var(--home-positive)_30%,var(--home-rule))] bg-[color-mix(in_srgb,var(--home-positive)_10%,var(--home-paper-alt))] text-[color-mix(in_srgb,var(--home-positive)_70%,var(--home-ink))]"
-                      : "border-[color-mix(in_srgb,var(--home-negative)_30%,var(--home-rule))] bg-[color-mix(in_srgb,var(--home-negative)_9%,var(--home-paper-alt))] text-[color-mix(in_srgb,var(--home-negative)_70%,var(--home-ink))]"
-                  }`}
-                >
+                <span className={positive ? "c97-chip c97-chip-positive" : "c97-chip c97-chip-negative"}>
                   {item.diff}
                 </span>
               </div>
@@ -483,19 +424,23 @@ function InjuriesSection() {
   return (
     <div className="space-y-3">
       {INJURIES.map((injury) => (
-        <div
-          key={injury.player}
-          className="flex gap-4 rounded-[var(--radius-3xl)] border border-[var(--home-rule)] bg-[var(--home-overlay)] px-4 py-4"
-        >
-          <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-[var(--radius-2xl)] border border-[color-mix(in_srgb,var(--home-signal)_30%,var(--home-rule))] bg-[color-mix(in_srgb,var(--home-signal)_10%,var(--home-paper-alt))] text-sm font-semibold text-[var(--home-signal)]">
+        <div key={injury.player} className="c97-panel" style={{ display: "flex", gap: "var(--c97-sp-3)" }}>
+          <span className="c97-chip" style={{ minWidth: "2.5rem", justifyContent: "center" }}>
             {injury.seed}
-          </div>
-          <div className="min-w-0">
-            <p className="text-sm font-semibold text-[var(--home-ink)]">
-              {injury.team}: {injury.player}
+          </span>
+          <div style={{ minWidth: 0 }}>
+            <p style={{ fontWeight: 600, margin: 0 }}>
+              {injury.team}, {injury.player}
             </p>
-            <p className="mt-1 text-sm text-[var(--home-ink-muted)]">{injury.line}</p>
-            <p className="mt-2 text-xs leading-6 text-[var(--home-ink-muted)]">{injury.note}</p>
+            <p className="c97-prose" style={{ fontSize: "var(--c97-fs-small)", marginTop: "var(--c97-sp-1)" }}>
+              {injury.line}
+            </p>
+            <p
+              className="c97-prose"
+              style={{ fontSize: "var(--c97-fs-small)", marginTop: "var(--c97-sp-2)", color: "var(--c97-ink-2)" }}
+            >
+              {injury.note}
+            </p>
           </div>
         </div>
       ))}
@@ -509,70 +454,62 @@ function TZSection() {
 
   return (
     <div className="space-y-6">
-      <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-3">
-        {[
-          { value: "3", label: "Round 1 flips from TZ" },
-          { value: "−9%", label: "Arizona's Final Four penalty" },
-          { value: "0%", label: "Duke's total penalty" },
-        ].map((metric) => (
-          <div
-            key={metric.label}
-            className="rounded-[var(--radius-3xl)] border border-[var(--home-rule)] bg-[var(--home-overlay)] px-4 py-4"
-          >
-            <p className="text-2xl font-semibold tabular-nums text-[var(--home-signal)]">{metric.value}</p>
-            <p className="mt-2 text-xs uppercase tracking-[0.14em] text-[var(--home-ink-soft)]">{metric.label}</p>
-          </div>
-        ))}
-      </div>
-
       <div>
-        <p className="mb-3 text-2xs font-semibold uppercase tracking-[0.16em] text-[color-mix(in_srgb,var(--home-negative)_70%,var(--home-ink))]">
-          Bracket Flips
+        <p className="c97-kicker" style={{ color: "var(--c97-negative)", marginBottom: "var(--c97-sp-3)" }}>
+          Bracket flips
         </p>
         <div className="space-y-3">
           {flips.map((impact) => (
             <div
               key={`${impact.team}-${impact.site}`}
-              className="grid gap-2 rounded-[var(--radius-3xl)] border border-[color-mix(in_srgb,var(--home-negative)_30%,var(--home-rule))] bg-[color-mix(in_srgb,var(--home-negative)_9%,var(--home-paper-alt))] px-4 py-4 sm:grid-cols-[minmax(0,120px)_minmax(0,1fr)_auto]"
+              className="c97-panel"
+              style={{ display: "grid", gap: "var(--c97-sp-2)", gridTemplateColumns: "minmax(0,120px) minmax(0,1fr) auto" }}
             >
-              <span className="text-sm font-semibold text-[color-mix(in_srgb,var(--home-negative)_70%,var(--home-ink))]">{impact.team}</span>
-              <span className="text-xs leading-6 text-[var(--home-ink-muted)]">
-                {impact.home} → {impact.site} · {impact.zones} zone{impact.zones > 1 ? "s" : ""}{" "}
+              <span style={{ fontWeight: 600, color: "var(--c97-negative)" }}>{impact.team}</span>
+              <span className="c97-prose" style={{ fontSize: "var(--c97-fs-small)" }}>
+                {impact.home} to {impact.site} &middot; {impact.zones} zone{impact.zones > 1 ? "s" : ""}{" "}
                 {impact.direction}
                 {impact.final ? " · final slot" : ""}
               </span>
-              <span className="text-sm font-semibold tabular-nums text-[color-mix(in_srgb,var(--home-negative)_70%,var(--home-ink))]">{impact.pct}%</span>
+              <span className="c97-mono" style={{ fontWeight: 600, color: "var(--c97-negative)" }}>
+                {impact.pct}%
+              </span>
             </div>
           ))}
         </div>
       </div>
 
       <div>
-        <p className="mb-3 text-2xs font-semibold uppercase tracking-[0.16em] text-[var(--home-ink-muted)]">
-          Other Impacts
+        <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-3)" }}>
+          Other impacts
         </p>
         <div className="space-y-3">
           {others.map((impact) => (
-            <div
-              key={`${impact.team}-${impact.site}`}
-              className="grid gap-2 rounded-[var(--radius-3xl)] border border-[var(--home-rule)] bg-[var(--home-overlay)] px-4 py-4 lg:grid-cols-[minmax(0,120px)_minmax(0,140px)_minmax(0,1fr)_auto]"
-            >
-              <span className="text-sm font-medium text-[var(--home-ink)]">{impact.team}</span>
-              <span className="text-xs text-[var(--home-ink-muted)]">
-                {impact.home} → {impact.site.split(" ")[0]}
-              </span>
-              <span className="text-xs leading-6 text-[var(--home-ink-muted)]">{impact.note}</span>
-              <span
-                className={`text-sm font-semibold tabular-nums ${
-                  impact.pct <= -6
-                    ? "text-[color-mix(in_srgb,var(--home-negative)_70%,var(--home-ink))]"
-                    : impact.pct <= -3
-                      ? "text-[var(--home-signal)]"
-                      : "text-[var(--home-ink-muted)]"
-                }`}
-              >
-                {impact.pct}%
-              </span>
+            <div key={`${impact.team}-${impact.site}`} className="c97-panel" style={{ display: "grid", gap: "var(--c97-sp-2)" }}>
+              <div className="flex flex-wrap items-baseline gap-3">
+                <span style={{ fontWeight: 600 }}>{impact.team}</span>
+                <span className="c97-mono" style={{ fontSize: "var(--c97-fs-small)", color: "var(--c97-ink-2)" }}>
+                  {impact.home} to {impact.site.split(" ")[0]}
+                </span>
+                <span
+                  className="c97-mono"
+                  style={{
+                    marginLeft: "auto",
+                    fontWeight: 600,
+                    color:
+                      impact.pct <= -6
+                        ? "var(--c97-negative)"
+                        : impact.pct <= -3
+                          ? "var(--c97-accent)"
+                          : "var(--c97-ink-2)",
+                  }}
+                >
+                  {impact.pct}%
+                </span>
+              </div>
+              <p className="c97-prose" style={{ fontSize: "var(--c97-fs-small)" }}>
+                {impact.note}
+              </p>
             </div>
           ))}
         </div>
@@ -581,49 +518,55 @@ function TZSection() {
   );
 }
 
-function RegionBracket({ data }: { data: RegionData }) {
-  const siteMap: Record<string, { r1a: string; r1b: string; r1c: string; r1d: string }> = {
-    east: {
-      r1a: "Greenville, SC (ET)",
-      r1b: "San Diego, CA (PT)",
-      r1c: "Buffalo, NY (ET)",
-      r1d: "Philadelphia, PA (ET)",
-    },
-    west: {
-      r1a: "San Diego, CA (PT)",
-      r1b: "Portland, OR (PT)",
-      r1c: "Portland, OR (PT)",
-      r1d: "St. Louis, MO (CT)",
-    },
-    south: {
-      r1a: "Tampa, FL (ET)",
-      r1b: "Oklahoma City, OK (CT)",
-      r1c: "Oklahoma City, OK (CT)",
-      r1d: "Greenville, SC (ET)",
-    },
-    midwest: {
-      r1a: "Buffalo, NY (ET)",
-      r1b: "Tampa, FL (ET)",
-      r1c: "Philadelphia, PA (ET)",
-      r1d: "St. Louis, MO (CT)",
-    },
-  };
+const SITE_MAP: Record<string, { r1a: string; r1b: string; r1c: string; r1d: string }> = {
+  east: {
+    r1a: "Greenville, SC (ET)",
+    r1b: "San Diego, CA (PT)",
+    r1c: "Buffalo, NY (ET)",
+    r1d: "Philadelphia, PA (ET)",
+  },
+  west: {
+    r1a: "San Diego, CA (PT)",
+    r1b: "Portland, OR (PT)",
+    r1c: "Portland, OR (PT)",
+    r1d: "St. Louis, MO (CT)",
+  },
+  south: {
+    r1a: "Tampa, FL (ET)",
+    r1b: "Oklahoma City, OK (CT)",
+    r1c: "Oklahoma City, OK (CT)",
+    r1d: "Greenville, SC (ET)",
+  },
+  midwest: {
+    r1a: "Buffalo, NY (ET)",
+    r1b: "Tampa, FL (ET)",
+    r1c: "Philadelphia, PA (ET)",
+    r1d: "St. Louis, MO (CT)",
+  },
+};
 
-  const sites = siteMap[data.region.toLowerCase()] ?? { r1a: "", r1b: "", r1c: "", r1d: "" };
+/**
+ * The full matchup-by-matchup record of a region, round by round. This is the
+ * keyboard and screen-reader path to everything the hero's bracket signature
+ * draws, and the only place the region's site name and every tag renders as
+ * running text.
+ */
+function RegionBracketDetail({ data }: { data: RegionData }) {
+  const sites = SITE_MAP[data.region.toLowerCase()] ?? { r1a: "", r1b: "", r1c: "", r1d: "" };
 
   return (
     <div className="space-y-5">
-      <div className="flex flex-wrap items-center gap-2 text-sm text-[var(--home-ink-muted)]">
-        <Tag color="gray">{data.region}</Tag>
+      <div className="flex flex-wrap items-center gap-2" style={{ fontSize: "var(--c97-fs-small)", color: "var(--c97-ink-2)" }}>
+        <Tag>{data.region}</Tag>
         <span>Regional site:</span>
-        <span className="font-semibold text-[var(--home-signal)]">{data.site}</span>
-        <span className="text-[var(--home-ink-soft)]">·</span>
+        <span style={{ fontWeight: 600, color: "var(--c97-ink)" }}>{data.site}</span>
+        <span>&middot;</span>
         <span>Advancing:</span>
-        <span className="font-semibold text-[color-mix(in_srgb,var(--home-positive)_70%,var(--home-ink))]">{data.winner}</span>
+        <span style={{ fontWeight: 600, color: "var(--c97-positive)" }}>{data.winner}</span>
       </div>
 
       <div className="grid gap-5 xl:grid-cols-[1.2fr_1fr_0.84fr]">
-        <div className="rounded-[var(--radius-3xl)] border border-[var(--home-rule)] bg-[var(--home-overlay)] p-4">
+        <div className="c97-panel">
           <RoundLabel>Round 1</RoundLabel>
           <SiteLabel>{sites.r1a}</SiteLabel>
           {data.r1.slice(0, 2).map((matchup, index) => (
@@ -643,7 +586,7 @@ function RegionBracket({ data }: { data: RegionData }) {
           ))}
         </div>
 
-        <div className="rounded-[var(--radius-3xl)] border border-[var(--home-rule)] bg-[var(--home-overlay)] p-4">
+        <div className="c97-panel">
           <RoundLabel>Round 2</RoundLabel>
           {data.r2.map((matchup, index) => (
             <Matchup2 key={`r2-${index}`} {...matchup} />
@@ -654,7 +597,7 @@ function RegionBracket({ data }: { data: RegionData }) {
           ))}
         </div>
 
-        <div className="rounded-[var(--radius-3xl)] border border-[var(--home-rule)] bg-[var(--home-overlay)] p-4">
+        <div className="c97-panel">
           <RoundLabel>Elite Eight</RoundLabel>
           <Matchup2 t1={data.e8.t1} t2={data.e8.t2} w={1} tags={["Final Four"]} />
           <NoteBox>{data.e8.note}</NoteBox>
@@ -683,64 +626,26 @@ function PicksSection() {
     window.history.replaceState(null, "", url.toString());
   }
 
-  const groupMeta: Record<
-    PickEntry["group"],
-    {
-      label: string;
-      sublabel: string;
-      headingClass: string;
-      openSurface: string;
-      openBorder: string;
-    }
-  > = {
+  const groupMeta: Record<PickEntry["group"], { label: string; sublabel: string; tone: string }> = {
     tz: {
       label: "Time Zone Upsets",
       sublabel: "Bracket reversals driven by travel penalty.",
-      headingClass: "text-[color-mix(in_srgb,var(--home-negative)_70%,var(--home-ink))]",
-      openSurface: "bg-[color-mix(in_srgb,var(--home-negative)_9%,var(--home-paper-alt))]",
-      openBorder: "border-[color-mix(in_srgb,var(--home-negative)_30%,var(--home-rule))]",
+      tone: "var(--c97-negative)",
     },
     analytics: {
       label: "Analytics Upsets",
       sublabel: "KenPom, S-curve, and Trapezoid-driven calls.",
-      headingClass: "text-[color-mix(in_srgb,var(--home-ink)_75%,var(--home-stone))]",
-      openSurface: "bg-[color-mix(in_srgb,var(--home-ink)_7%,var(--home-paper-alt))]",
-      openBorder: "border-[color-mix(in_srgb,var(--home-ink)_25%,var(--home-rule))]",
+      tone: "var(--c97-ink)",
     },
     confirm: {
       label: "Final Four Picks",
       sublabel: "Chalk calls the model supports strongly.",
-      headingClass: "text-[color-mix(in_srgb,var(--home-positive)_70%,var(--home-ink))]",
-      openSurface: "bg-[color-mix(in_srgb,var(--home-positive)_10%,var(--home-paper-alt))]",
-      openBorder: "border-[color-mix(in_srgb,var(--home-positive)_30%,var(--home-rule))]",
+      tone: "var(--c97-positive)",
     },
-  };
-
-  const badgeClasses: Record<PickEntry["badge"], string> = {
-    FLIP: "border-[color-mix(in_srgb,var(--home-negative)_30%,var(--home-rule))] bg-[color-mix(in_srgb,var(--home-negative)_9%,var(--home-paper-alt))] text-[color-mix(in_srgb,var(--home-negative)_70%,var(--home-ink))]",
-    UPGRADE: "border-[color-mix(in_srgb,var(--home-positive)_30%,var(--home-rule))] bg-[color-mix(in_srgb,var(--home-positive)_10%,var(--home-paper-alt))] text-[color-mix(in_srgb,var(--home-positive)_70%,var(--home-ink))]",
-    DOWNGRADE: "border-[color-mix(in_srgb,var(--home-negative)_30%,var(--home-rule))] bg-[color-mix(in_srgb,var(--home-negative)_9%,var(--home-paper-alt))] text-[color-mix(in_srgb,var(--home-negative)_70%,var(--home-ink))]",
-    CONFIRM: "border-[color-mix(in_srgb,var(--home-positive)_30%,var(--home-rule))] bg-[color-mix(in_srgb,var(--home-positive)_10%,var(--home-paper-alt))] text-[color-mix(in_srgb,var(--home-positive)_70%,var(--home-ink))]",
-    LOCKED: "border-[color-mix(in_srgb,var(--home-positive)_30%,var(--home-rule))] bg-[color-mix(in_srgb,var(--home-positive)_10%,var(--home-paper-alt))] text-[color-mix(in_srgb,var(--home-positive)_70%,var(--home-ink))]",
-    WATCH: "border-[color-mix(in_srgb,var(--home-signal)_30%,var(--home-rule))] bg-[color-mix(in_srgb,var(--home-signal)_10%,var(--home-paper-alt))] text-[var(--home-signal)]",
   };
 
   return (
     <div className="space-y-8">
-      <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
-        {[
-          { value: "9", sub: "TZ-driven picks", tone: "text-[color-mix(in_srgb,var(--home-negative)_70%,var(--home-ink))]" },
-          { value: "7", sub: "Analytics-driven picks", tone: "text-[color-mix(in_srgb,var(--home-ink)_75%,var(--home-stone))]" },
-          { value: "4", sub: "Final Four picks", tone: "text-[color-mix(in_srgb,var(--home-positive)_70%,var(--home-ink))]" },
-          { value: "0%", sub: "Duke's total TZ penalty", tone: "text-[var(--home-signal)]" },
-        ].map((metric) => (
-          <div key={metric.sub} className="rounded-[var(--radius-3xl)] border border-[var(--home-rule)] bg-[var(--home-overlay)] px-4 py-4">
-            <p className={`text-2xl font-semibold tabular-nums ${metric.tone}`}>{metric.value}</p>
-            <p className="mt-2 text-xs uppercase tracking-[0.14em] text-[var(--home-ink-soft)]">{metric.sub}</p>
-          </div>
-        ))}
-      </div>
-
       {(["tz", "analytics", "confirm"] as const).map((group) => {
         const meta = groupMeta[group];
         const items = PICKS.filter((pick) => pick.group === group);
@@ -748,10 +653,12 @@ function PicksSection() {
         return (
           <div key={group} className="space-y-3">
             <div>
-              <p className={`text-2xs font-semibold uppercase tracking-[0.18em] ${meta.headingClass}`}>
+              <p className="c97-kicker" style={{ color: meta.tone }}>
                 {meta.label}
               </p>
-              <p className="mt-1 text-sm text-[var(--home-ink-muted)]">{meta.sublabel}</p>
+              <p className="c97-prose" style={{ fontSize: "var(--c97-fs-small)", marginTop: "var(--c97-sp-1)" }}>
+                {meta.sublabel}
+              </p>
             </div>
 
             {items.map((item, index) => {
@@ -763,31 +670,41 @@ function PicksSection() {
                   key={id}
                   type="button"
                   onClick={() => togglePick(id, isOpen)}
-                  className={`w-full rounded-[var(--radius-3xl)] border px-4 py-4 text-left transition ${
-                    isOpen
-                      ? `${meta.openSurface} ${meta.openBorder}`
-                      : "border-[var(--home-rule)] bg-[var(--home-overlay)] hover:border-[color-mix(in_srgb,var(--home-ink)_20%,var(--home-rule))] hover:bg-[var(--home-overlay)]"
-                  }`}
+                  className="c97-panel"
+                  style={{
+                    display: "block",
+                    width: "100%",
+                    textAlign: "left",
+                    border: isOpen ? "1px solid var(--c97-ink-2)" : "1px solid transparent",
+                  }}
                   aria-expanded={isOpen}
                 >
                   <div className="flex flex-wrap items-start gap-2">
-                    <span
-                      className={`inline-flex rounded-full border px-2 py-1 text-3xs font-semibold uppercase tracking-[0.14em] ${badgeClasses[item.badge]}`}
-                    >
-                      {item.badge}
+                    <Tag color={BADGE_TONE[item.badge]}>{item.badge}</Tag>
+                    <Tag>{item.round}</Tag>
+                    <Tag>{item.region}</Tag>
+                    <span style={{ minWidth: 0, flex: "1 1 0%", fontWeight: 600 }}>{item.pick}</span>
+                    <span aria-hidden="true" style={{ color: "var(--c97-ink-2)" }}>
+                      {isOpen ? "▾" : "▸"}
                     </span>
-                    <Tag color="gray">{item.round}</Tag>
-                    <Tag color="gray">{item.region}</Tag>
-                    <span className="min-w-0 flex-1 text-sm font-semibold text-[var(--home-ink)]">{item.pick}</span>
-                    <span className={`text-lg text-[var(--home-ink-soft)] transition ${isOpen ? "rotate-90" : ""}`}>›</span>
                   </div>
 
-                  <p className="mt-3 text-sm leading-6 text-[var(--home-ink-muted)]">{item.reason}</p>
+                  <p className="c97-prose" style={{ fontSize: "var(--c97-fs-small)", marginTop: "var(--c97-sp-2)" }}>
+                    {item.reason}
+                  </p>
 
                   {isOpen ? (
-                    <div className="mt-4 border-t border-[var(--home-rule)] pt-4 text-sm leading-7 text-[var(--home-ink-muted)]">
+                    <p
+                      className="c97-prose"
+                      style={{
+                        fontSize: "var(--c97-fs-small)",
+                        marginTop: "var(--c97-sp-3)",
+                        paddingTop: "var(--c97-sp-3)",
+                        borderTop: "1px solid var(--c97-rule)",
+                      }}
+                    >
                       {item.body}
-                    </div>
+                    </p>
                   ) : null}
                 </button>
               );
@@ -796,26 +713,17 @@ function PicksSection() {
         );
       })}
 
-      <div className="rounded-[var(--radius-3xl)] border border-[var(--home-rule)] bg-[var(--home-overlay)] px-4 py-4">
-        <p className="text-2xs font-semibold uppercase tracking-[0.18em] text-[var(--home-ink-soft)]">Legend</p>
-        <div className="mt-3 flex flex-wrap gap-3">
-          {[
-            { label: "FLIP", className: badgeClasses.FLIP, desc: "Time zone penalty reversal" },
-            { label: "UPGRADE", className: badgeClasses.UPGRADE, desc: "Better than their seeding" },
-            { label: "DOWNGRADE", className: badgeClasses.DOWNGRADE, desc: "Worse than their seeding" },
-            { label: "WATCH", className: badgeClasses.WATCH, desc: "Notable risk or edge" },
-            { label: "LOCKED", className: badgeClasses.LOCKED, desc: "High-conviction chalk" },
-          ].map((legendItem) => (
-            <div
-              key={legendItem.label}
-              className="flex items-center gap-2 rounded-full border border-[var(--home-rule)] bg-[var(--home-overlay)] px-3 py-2"
-            >
-              <span
-                className={`inline-flex rounded-full border px-2 py-1 text-3xs font-semibold uppercase tracking-[0.14em] ${legendItem.className}`}
-              >
-                {legendItem.label}
+      <div className="c97-panel">
+        <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-3)" }}>
+          Legend
+        </p>
+        <div className="flex flex-wrap gap-4">
+          {(["FLIP", "UPGRADE", "DOWNGRADE", "WATCH", "LOCKED"] as const).map((badge) => (
+            <div key={badge} className="flex items-center gap-2">
+              <Tag color={BADGE_TONE[badge]}>{badge}</Tag>
+              <span className="c97-prose" style={{ fontSize: "var(--c97-fs-small)" }}>
+                {LEGEND_COPY[badge]}
               </span>
-              <span className="text-xs text-[var(--home-ink-muted)]">{legendItem.desc}</span>
             </div>
           ))}
         </div>
@@ -855,7 +763,13 @@ export function MarchMadnessClient({
   const [analytics, setAnalytics] = useState(initialState.analytics);
   const [copyStatus, setCopyStatus] = useState<"idle" | "copied" | "error">("idle");
 
+  const lead = PROJECT_PRESS[MARCH_MADNESS_ROUTE].lead;
   const articleHref = `/writing/${MARCH_MADNESS_ARTICLE_SLUG}`;
+  const regionLayout = regionBracket(BRACKET[region]);
+  const upsetsInRegion = regionLayout.games.filter((game) => game.isUpset).length;
+  const championshipWinner = FINAL_FOUR_SUMMARY[FINAL_FOUR_SUMMARY.length - 1]?.winner ?? null;
+  const championRanking = RANKINGS.find((ranking) => ranking.team === championshipWinner) ?? null;
+  const flipCount = PICKS.filter((pick) => pick.badge === "FLIP").length;
 
   const updateRouteState = (
     nextState: Partial<MarchMadnessSearchState>,
@@ -902,280 +816,250 @@ export function MarchMadnessClient({
   };
 
   return (
-    <section
-      className="home-page min-h-screen text-[var(--home-ink)]"
-      aria-label="March Madness bracket analysis"
-      data-testid="march-madness-shell"
-    >
-      <div className="home-shell home-shell-wide home-section">
-        <div className="space-y-8">
-          <div className="grid gap-6 xl:grid-cols-[minmax(0,1.2fr)_minmax(340px,0.8fr)]">
-            <SurfaceCard className="relative overflow-hidden p-6 sm:p-8">
-              <div className="relative space-y-6">
-                <div className="flex flex-wrap items-center gap-3 text-2xs font-semibold uppercase tracking-[0.22em] text-[var(--home-signal)]">
-                  <span>2026 NCAA Tournament</span>
-                  <span className="h-1 w-1 rounded-full bg-[var(--home-signal)]" />
-                  <time dateTime={MARCH_MADNESS_UPDATED_AT}>{MARCH_MADNESS_UPDATED_LABEL}</time>
-                </div>
+    <>
+      <Catalog97ProjectHero
+        ink={lead}
+        title="March Madness Bracket Analysis"
+        standfirst="I built this bracket on the consensus ratings and then moved picks for the two things seed lines miss, the travel penalty a team pays when it plays across time zones and the seeds the committee got wrong."
+        meta={`2026 NCAA Tournament · ${MARCH_MADNESS_UPDATED_LABEL}`}
+        readouts={[
+          {
+            label: "Champion pick",
+            value: <span className="c97-serif">{championshipWinner ?? "TBD"}</span>,
+            detail: championRanking ? `${championRanking.odds} title odds` : undefined,
+          },
+          {
+            label: "Time-zone flips",
+            value: `${flipCount}`,
+            detail: "picks reversed by the travel-penalty model",
+          },
+          {
+            label: `Upsets, ${REGION_LABELS[region]} region`,
+            value: `${upsetsInRegion}`,
+            detail: `of ${regionLayout.games.length} matchups drawn`,
+          },
+        ]}
+      >
+        <div className="flex flex-wrap items-center gap-3" style={{ marginBottom: "var(--c97-sp-4)" }}>
+          <Link
+            href={buildMarchMadnessHref({ view: "picks", region, analytics, hash: "analysis-workspace" })}
+            className="c97-btn c97-offset"
+          >
+            See best upsets
+          </Link>
+          <Link
+            href={buildMarchMadnessHref({ view, region, analytics, hash: "why-this-model-is-different" })}
+            className="c97-btn-ghost"
+          >
+            How the model works
+          </Link>
+          <Link href={articleHref} className="c97-btn-ghost">
+            Read the companion article
+          </Link>
+        </div>
 
-                <div className="space-y-4">
-                  <h1 className="text-[clamp(2.5rem,5vw,4.75rem)] font-bold leading-[0.95] tracking-tight text-[var(--home-ink)]">
-                    March Madness
-                    <span className="block text-[var(--home-signal)]">Bracket Analysis</span>
-                  </h1>
-                  <p className="max-w-[30ch] text-xl font-semibold leading-tight text-[var(--home-ink)] sm:text-2xl">
-                    {MARCH_MADNESS_THESIS}
-                  </p>
-                  <p className="max-w-[64ch] text-sm leading-7 text-[var(--home-ink-muted)] sm:text-base">
-                    A full 2026 bracket built from KenPom consensus metrics, S-curve seed errors,
-                    injury context, and a custom time-zone travel penalty model. Best upset picks
-                    and Final Four predictions included.
-                  </p>
-                </div>
+        <div data-c97-surface="paper" className="c97-offset" style={{ padding: "var(--c97-sp-3)" }}>
+          <div className="mm-bracket-scroll" role="region" aria-label="Region bracket (scrolls sideways)" tabIndex={0}>
+            <RegionBracket data={BRACKET[region]} />
+          </div>
+        </div>
+      </Catalog97ProjectHero>
 
-                <div className="flex flex-wrap gap-2">
-                  {HERO_TAGS.map((tag) => (
-                    <Tag
-                      key={tag}
-                      color={
-                        tag === "KenPom"
-                          ? "amber"
-                          : tag === "S-Curve"
-                            ? "blue"
-                            : tag === "Time Zones"
-                              ? "green"
-                              : "gray"
-                      }
-                    >
-                      {tag}
-                    </Tag>
-                  ))}
-                </div>
+      <section className="c97-band c97-sheet" data-c97-surface="paper" data-seam="torn">
+        <div className="c97-shell space-y-4">
+          <p className="c97-kicker" style={{ margin: 0 }}>
+            National champion pick
+          </p>
+          <h2 className="c97-serif c97-h2">{championshipWinner ?? "TBD"}</h2>
+          <p className="c97-prose">
+            I think {championshipWinner} is the cleanest title pick in the field. The team ranks first
+            across the blended metric set on this page, and it carries zero total travel penalty
+            through every round, the same edge the Final Four summary below tracks.
+            {championRanking
+              ? ` Its record sits at ${championRanking.record}, with the best adjusted defensive efficiency in the bracket at 90.8, and that is a big part of why the championship odds land at ${championRanking.odds}.`
+              : null}
+          </p>
+        </div>
+      </section>
 
-                <div className="flex flex-wrap items-center gap-3">
-                  <Link
-                    href={buildMarchMadnessHref({
-                      view: "picks",
-                      region,
-                      analytics,
-                      hash: "analysis-workspace",
-                    })}
-                    className="inline-flex min-h-[44px] items-center justify-center rounded-full border border-[color-mix(in_srgb,var(--home-signal)_30%,var(--home-rule))] bg-[color-mix(in_srgb,var(--home-signal)_10%,var(--home-paper-alt))] px-5 py-2.5 text-sm font-semibold text-[var(--home-signal)] transition hover:bg-[color-mix(in_srgb,var(--home-signal)_10%,var(--home-paper-alt))]"
-                  >
-                    See Best Upsets
-                  </Link>
-                  <Link
-                    href={buildMarchMadnessHref({
-                      view,
-                      region,
-                      analytics,
-                      hash: "why-this-model-is-different",
-                    })}
-                    className="inline-flex min-h-[44px] items-center justify-center rounded-full border border-[var(--home-rule)] bg-[var(--home-overlay)] px-5 py-2.5 text-sm font-semibold text-[var(--home-ink)] transition hover:border-[color-mix(in_srgb,var(--home-ink)_20%,var(--home-rule))] hover:bg-[var(--home-overlay)]"
-                  >
-                    How The Model Works
-                  </Link>
-                  <Link
-                    href={articleHref}
-                    className="text-sm font-semibold text-[var(--home-ink-muted)] underline-offset-4 transition hover:text-[var(--home-ink)] hover:underline"
-                  >
-                    Read the companion article
-                  </Link>
-                </div>
-              </div>
-            </SurfaceCard>
+      <section className="c97-band c97-sheet" data-c97-surface="bone" data-seam="deckle">
+        <div className="c97-shell space-y-6">
+          <SectionIntro
+            eyebrow="Searchable hooks"
+            title="Top upset picks for the 2026 March Madness bracket"
+            description="These are the calls most likely to earn clicks and debate: one pure time-zone flip, one seed-line correction, and one late-bracket structural upset built on travel math."
+          />
+          <div className="c97-columns">
+            {TOP_UPSET_PICKS.map((card) => (
+              <EditorialLinkCard key={card.title} card={card} />
+            ))}
+          </div>
+        </div>
+      </section>
 
-            <SurfaceCard className="bg-[color-mix(in_srgb,var(--home-positive)_6%,var(--home-paper-raised))] p-6 sm:p-7">
-              <p className="text-2xs font-semibold uppercase tracking-[0.18em] text-[color-mix(in_srgb,var(--home-positive)_70%,var(--home-ink))]">
-                National Champion Pick
+      <section
+        id="why-this-model-is-different"
+        className="c97-band c97-sheet"
+        data-c97-surface="paper"
+        data-seam="torn"
+        style={{ scrollMarginTop: "7rem" }}
+      >
+        <div className="c97-shell space-y-6">
+          <SectionIntro
+            eyebrow="The method"
+            title="Why this model is different"
+            description="Most brackets stop at seed lines and generic power ratings. This one blends consensus analytics with committee errors, roster context, and travel penalties that change game-day output."
+          />
+          <div className="grid gap-4 md:grid-cols-2">
+            {MODEL_PILLARS.map((card) => (
+              <EditorialLinkCard key={card.title} card={card} />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="c97-band c97-sheet" data-c97-surface="bone" data-seam="deckle">
+        <div className="c97-shell space-y-5">
+          <div className="flex flex-wrap items-center justify-between gap-3">
+            <div>
+              <p className="c97-kicker" style={{ margin: 0 }}>
+                Share layer
               </p>
-              <h2 className="mt-3 text-3xl font-bold tracking-tight text-[var(--home-ink)]">Duke Blue Devils</h2>
-              <p className="mt-3 text-sm leading-7 text-[var(--home-ink-muted)]">
-                Duke is the cleanest title pick in the field: first across the blended metric set,
-                zero total travel penalty, and the strongest defensive profile in the bracket.
-              </p>
-
-              <div className="mt-6 grid gap-3 sm:grid-cols-2">
-                {[
-                  ["32-2", "Record"],
-                  ["0%", "TZ Penalty"],
-                  ["90.8", "Adj. Def. Eff. (#1)"],
-                  ["+300", "Title Odds"],
-                ].map(([value, label]) => (
-                  <div
-                    key={label}
-                    className="rounded-[var(--radius-3xl)] border border-[var(--home-rule)] bg-[var(--home-overlay)] px-4 py-3"
-                  >
-                    <p className="font-mono text-xl font-semibold tabular-nums text-[var(--home-signal)]">{value}</p>
-                    <p className="mt-1 text-2xs uppercase tracking-[0.14em] text-[var(--home-ink-soft)]">{label}</p>
-                  </div>
-                ))}
-              </div>
-            </SurfaceCard>
+              <h2 className="c97-poster-sm" style={{ marginTop: "var(--c97-sp-2)" }}>
+                Give people something quotable to pass around
+              </h2>
+            </div>
+            <Link href={articleHref} className="c97-btn-ghost">
+              Read the written breakdown
+            </Link>
           </div>
 
-          <SurfaceCard id="top-upset-picks" className="space-y-6 p-5 sm:p-6">
-            <SectionIntro
-              eyebrow="Searchable hooks"
-              title="Top upset picks for the 2026 March Madness bracket"
-              description="These are the calls most likely to earn clicks and debate: one pure time-zone flip, one seed-line correction, and one late-bracket structural upset built on travel math."
-            />
-            <div className="grid gap-4 lg:grid-cols-3">
-              {TOP_UPSET_PICKS.map((card) => (
-                <EditorialLinkCard key={card.title} card={card} />
-              ))}
+          <div className="grid gap-4 lg:grid-cols-2">
+            <div className="c97-panel">
+              <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-3)" }}>
+                Bracket thesis
+              </p>
+              <p className="c97-serif c97-h3" style={{ marginBottom: "var(--c97-sp-3)" }}>
+                &ldquo;{MARCH_MADNESS_THESIS}&rdquo;
+              </p>
+              <p className="c97-prose">{BRACKET_THESIS_SHARE}</p>
             </div>
-          </SurfaceCard>
 
-          <SurfaceCard id="why-this-model-is-different" className="space-y-6 p-5 sm:p-6 scroll-mt-28">
-            <SectionIntro
-              eyebrow="Methodology"
-              title="Why this model is different"
-              description="Most brackets stop at seed lines and generic power ratings. This one blends consensus analytics with committee errors, roster context, and travel penalties that change game-day output."
-            />
-            <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
-              {MODEL_PILLARS.map((card) => (
-                <EditorialLinkCard key={card.title} card={card} />
-              ))}
-            </div>
-          </SurfaceCard>
-
-          <SurfaceCard className="space-y-5 p-5 sm:p-6">
-            <div className="flex flex-wrap items-center justify-between gap-3">
-              <div>
-                <p className="text-2xs font-semibold uppercase tracking-[0.18em] text-[var(--home-ink-muted)]">
-                  Share Layer
-                </p>
-                <h2 className="mt-2 text-2xl font-semibold tracking-tight text-[var(--home-ink)]">
-                  Give people something quotable to pass around
-                </h2>
-              </div>
+            <div className="c97-panel">
+              <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-3)", color: "var(--c97-negative)" }}>
+                Best upset share card
+              </p>
+              <p className="c97-serif c97-h3" style={{ marginBottom: "var(--c97-sp-3)" }}>
+                UCF over UCLA
+              </p>
+              <p className="c97-prose">{BEST_UPSET_SHARE}</p>
               <Link
-                href={articleHref}
-                className="text-sm font-semibold text-[var(--home-ink-muted)] underline-offset-4 transition hover:text-[var(--home-ink)] hover:underline"
+                href={buildMarchMadnessHref({ view: "picks", region, analytics, hash: "analysis-workspace" })}
+                className="c97-btn-ghost"
+                style={{ marginTop: "var(--c97-sp-3)" }}
               >
-                Read the written breakdown
+                Open the picks board
               </Link>
             </div>
-
-            <div className="grid gap-4 lg:grid-cols-2">
-              <div className="rounded-[var(--radius-3xl)] border border-[color-mix(in_srgb,var(--home-signal)_30%,var(--home-rule))] bg-[color-mix(in_srgb,var(--home-signal)_10%,var(--home-paper-alt))] p-5">
-                <p className="text-2xs font-semibold uppercase tracking-[0.18em] text-[var(--home-signal)]">
-                  Bracket Thesis
-                </p>
-                <p className="mt-4 text-2xl font-semibold leading-tight text-[var(--home-ink)]">
-                  “{MARCH_MADNESS_THESIS}”
-                </p>
-                <p className="mt-4 text-sm leading-7 text-[var(--home-ink)]">{BRACKET_THESIS_SHARE}</p>
-              </div>
-
-              <div className="rounded-[var(--radius-3xl)] border border-[color-mix(in_srgb,var(--home-negative)_30%,var(--home-rule))] bg-[color-mix(in_srgb,var(--home-negative)_9%,var(--home-paper-alt))] p-5">
-                <p className="text-2xs font-semibold uppercase tracking-[0.18em] text-[color-mix(in_srgb,var(--home-negative)_70%,var(--home-ink))]">
-                  Best Upset Share Card
-                </p>
-                <p className="mt-4 text-2xl font-semibold leading-tight text-[var(--home-ink)]">UCF over UCLA</p>
-                <p className="mt-3 text-sm leading-7 text-[var(--home-ink)]">{BEST_UPSET_SHARE}</p>
-                <Link
-                  href={buildMarchMadnessHref({
-                    view: "picks",
-                    region,
-                    analytics,
-                    hash: "analysis-workspace",
-                  })}
-                  className="mt-4 inline-flex text-sm font-semibold text-[var(--home-ink)] underline-offset-4 transition hover:text-[var(--home-signal)] hover:underline"
-                >
-                  Open the picks board
-                </Link>
-              </div>
-            </div>
-
-            <div className="flex flex-wrap items-center gap-3 border-t border-[var(--home-rule)] pt-4">
-              <button
-                type="button"
-                onClick={handleCopyLink}
-                className="inline-flex min-h-[44px] items-center justify-center rounded-full border border-[var(--home-rule)] bg-[var(--home-overlay)] px-5 py-2.5 text-sm font-semibold text-[var(--home-ink)] transition hover:border-[color-mix(in_srgb,var(--home-ink)_20%,var(--home-rule))] hover:bg-[var(--home-overlay)]"
-              >
-                Copy current view link
-              </button>
-              <span className="break-all text-sm text-[var(--home-ink-muted)]">
-                {copyStatus === "copied"
-                  ? "Deep link copied."
-                  : copyStatus === "error"
-                    ? "Clipboard blocked. Copy the URL from the address bar."
-                    : currentHref}
-              </span>
-            </div>
-          </SurfaceCard>
-
-          <SurfaceCard className="p-5 sm:p-6">
-            <div className="mb-5 flex flex-wrap items-center gap-2">
-              <Tag color="amber">Final Four</Tag>
-              <span className="text-sm text-[var(--home-ink-muted)]">Indianapolis, IN (ET)</span>
-            </div>
-            <div className="grid gap-4 lg:grid-cols-3">
-              {FINAL_FOUR_SUMMARY.map((item) => (
-                <div
-                  key={item.label}
-                  className="rounded-[var(--radius-3xl)] border border-[var(--home-rule)] bg-[var(--home-overlay)] p-4"
-                >
-                  <p className="text-2xs font-semibold uppercase tracking-[0.14em] text-[var(--home-ink-soft)]">
-                    {item.label}
-                  </p>
-                  <p className="mt-2 text-sm text-[var(--home-ink-muted)]">{item.matchup}</p>
-                  <p className="mt-2 text-lg font-semibold text-[color-mix(in_srgb,var(--home-positive)_70%,var(--home-ink))]">{item.winner}</p>
-                  <p className="mt-2 text-xs text-[var(--home-ink-soft)]">{item.note}</p>
-                </div>
-              ))}
-            </div>
-          </SurfaceCard>
-
-          <div id="analysis-workspace" className="space-y-4 scroll-mt-28">
-            <TabBar
-              items={MAIN_TAB_ITEMS}
-              active={view}
-              onChange={(nextView) => updateRouteState({ view: nextView })}
-              label="March Madness primary sections"
-            />
-
-            {view === "bracket" ? (
-              <SurfaceCard className="space-y-5 p-5 sm:p-6">
-                <TabBar
-                  items={REGION_TAB_ITEMS}
-                  active={region}
-                  onChange={(nextRegion) => updateRouteState({ region: nextRegion })}
-                  label="March Madness regions"
-                />
-                <RegionBracket data={BRACKET[region]} />
-              </SurfaceCard>
-            ) : null}
-
-            {view === "picks" ? (
-              <SurfaceCard className="p-5 sm:p-6">
-                <PicksSection />
-              </SurfaceCard>
-            ) : null}
-
-            {view === "analytics" ? (
-              <SurfaceCard className="space-y-5 p-5 sm:p-6">
-                <TabBar
-                  items={ANALYTICS_TAB_ITEMS}
-                  active={analytics}
-                  onChange={(nextAnalytics) => updateRouteState({ analytics: nextAnalytics })}
-                  label="March Madness analytics sections"
-                />
-                {analytics === "rankings" ? <RankingsSection /> : null}
-                {analytics === "s-curve" ? <SCurveSection /> : null}
-                {analytics === "injuries" ? <InjuriesSection /> : null}
-              </SurfaceCard>
-            ) : null}
-
-            {view === "time-zones" ? (
-              <SurfaceCard className="p-5 sm:p-6">
-                <TZSection />
-              </SurfaceCard>
-            ) : null}
           </div>
 
+          <div
+            className="flex flex-wrap items-center gap-3"
+            style={{ borderTop: "1px solid var(--c97-rule)", paddingTop: "var(--c97-sp-4)" }}
+          >
+            <button type="button" onClick={handleCopyLink} className="c97-btn-ghost">
+              Copy current view link
+            </button>
+            <span className="c97-prose" style={{ fontSize: "var(--c97-fs-small)", wordBreak: "break-all" }}>
+              {copyStatus === "copied"
+                ? "Deep link copied."
+                : copyStatus === "error"
+                  ? "Clipboard blocked. Copy the URL from the address bar."
+                  : currentHref}
+            </span>
+          </div>
+        </div>
+      </section>
+
+      <section className="c97-band c97-sheet" data-c97-surface="paper" data-seam="torn">
+        <div className="c97-shell space-y-5">
+          <p className="c97-kicker" style={{ margin: 0 }}>
+            Final Four &middot; Indianapolis, IN (ET)
+          </p>
+          <div className="c97-columns">
+            {FINAL_FOUR_SUMMARY.map((item) => (
+              <div key={item.label} className="c97-panel">
+                <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-2)" }}>
+                  {item.label}
+                </p>
+                <p className="c97-prose" style={{ fontSize: "var(--c97-fs-small)" }}>
+                  {item.matchup}
+                </p>
+                <p className="c97-serif c97-h3" style={{ marginTop: "var(--c97-sp-2)", color: "var(--c97-positive)" }}>
+                  {item.winner}
+                </p>
+                <p className="c97-prose" style={{ fontSize: "var(--c97-fs-small)" }}>
+                  {item.note}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section
+        id="analysis-workspace"
+        className="c97-band c97-sheet"
+        data-c97-surface="bone"
+        data-seam="deckle"
+        style={{ scrollMarginTop: "7rem" }}
+      >
+        <div className="c97-shell space-y-5">
+          <h2 className="c97-poster-sm">The analysis workspace</h2>
+          <TabBar items={MAIN_TAB_ITEMS} active={view} onChange={(nextView) => updateRouteState({ view: nextView })} label="March Madness primary sections" />
+
+          {view === "bracket" ? (
+            <div style={{ marginTop: "var(--c97-sp-4)" }} className="space-y-5">
+              <TabBar
+                items={REGION_TAB_ITEMS}
+                active={region}
+                onChange={(nextRegion) => updateRouteState({ region: nextRegion })}
+                label="March Madness regions"
+              />
+              <RegionBracketDetail data={BRACKET[region]} />
+            </div>
+          ) : null}
+
+          {view === "picks" ? (
+            <div style={{ marginTop: "var(--c97-sp-4)" }}>
+              <PicksSection />
+            </div>
+          ) : null}
+
+          {view === "analytics" ? (
+            <div style={{ marginTop: "var(--c97-sp-4)" }} className="space-y-5">
+              <TabBar
+                items={ANALYTICS_TAB_ITEMS}
+                active={analytics}
+                onChange={(nextAnalytics) => updateRouteState({ analytics: nextAnalytics })}
+                label="March Madness analytics sections"
+              />
+              {analytics === "rankings" ? <RankingsSection /> : null}
+              {analytics === "s-curve" ? <SCurveSection /> : null}
+              {analytics === "injuries" ? <InjuriesSection /> : null}
+            </div>
+          ) : null}
+
+          {view === "time-zones" ? (
+            <div style={{ marginTop: "var(--c97-sp-4)" }}>
+              <TZSection />
+            </div>
+          ) : null}
+        </div>
+      </section>
+
+      <section className="c97-band c97-sheet" data-c97-surface="paper" data-seam="torn">
+        <div className="c97-shell space-y-6">
           <div aria-labelledby="march-madness-questions">
             <SectionIntro
               eyebrow="Method questions"
@@ -1183,26 +1067,34 @@ export function MarchMadnessClient({
               description="The short version of how the model reaches its picks and where it differs from a seed-only bracket."
               titleId="march-madness-questions"
             />
-            <div className="mt-5 grid gap-4 md:grid-cols-2">
+            <div className="grid gap-4 md:grid-cols-2" style={{ marginTop: "var(--c97-sp-5)" }}>
               {MARCH_MADNESS_FAQ.map((item) => (
-                <SurfaceCard key={item.question} className="p-5 sm:p-6">
-                  <h3 className="text-lg font-semibold text-[var(--home-ink)]">
+                <div key={item.question} className="c97-panel">
+                  <h3 className="c97-h3" style={{ fontWeight: 600, marginBottom: "var(--c97-sp-2)" }}>
                     {item.question}
                   </h3>
-                  <p className="mt-3 text-sm leading-7 text-[var(--home-ink-muted)]">
+                  <p className="c97-prose" style={{ fontSize: "var(--c97-fs-small)" }}>
                     {item.answer}
                   </p>
-                </SurfaceCard>
+                </div>
               ))}
             </div>
           </div>
 
-          <div className="flex flex-wrap items-center justify-between gap-3 border-t border-[var(--home-rule)] pt-6 text-xs text-[var(--home-ink-soft)]">
-            <span>Sources: KenPom · ESPN BPI · T-Rank · NCAA NET · Evan Miya · SOR · WAB · VSIN Lines</span>
-            <span>2026 NCAA Tournament · Isaac Vazquez</span>
+          <div
+            className="flex flex-wrap items-center justify-between gap-3"
+            style={{ borderTop: "1px solid var(--c97-rule)", paddingTop: "var(--c97-sp-4)" }}
+          >
+            <p className="c97-prose" style={{ fontSize: "var(--c97-fs-small)", margin: 0 }}>
+              Sources: KenPom &middot; ESPN BPI &middot; T-Rank &middot; NCAA NET &middot; Evan Miya &middot; SOR
+              &middot; WAB &middot; VSIN Lines
+            </p>
+            <p className="c97-prose" style={{ fontSize: "var(--c97-fs-small)", margin: 0 }}>
+              2026 NCAA Tournament &middot; Isaac Vazquez
+            </p>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </>
   );
 }

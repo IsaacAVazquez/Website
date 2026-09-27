@@ -23,10 +23,10 @@ export function GoalsPulseStrip({
   if (data.length === 0) {
     return (
       <div className={className} aria-label="Goals per matchday, season to date">
-        <p className="font-mono text-3xs uppercase tracking-[0.1em] text-[var(--home-ink-muted)]">
+        <p className="font-mono text-3xs uppercase tracking-[0.1em] text-[var(--c97-ink-2)]">
           Goals / matchday
         </p>
-        <p className="mt-2 max-w-[22ch] text-xs leading-relaxed text-[var(--home-ink-muted)]">
+        <p className="mt-2 max-w-[22ch] text-xs leading-relaxed text-[var(--c97-ink-2)]">
           Pulse arrives with the first matchday of the season.
         </p>
       </div>
@@ -46,14 +46,14 @@ export function GoalsPulseStrip({
               height: `${Math.max(Math.round((entry.totalGoals / max) * 100), 4)}%`,
               background:
                 index === data.length - 1
-                  ? "var(--home-signal)"
-                  : "color-mix(in srgb, var(--home-ink) 20%, var(--home-paper))",
+                  ? "var(--c97-accent)"
+                  : "color-mix(in srgb, var(--c97-ink) 20%, var(--c97-surface))",
             }}
             title={`Matchday ${entry.matchday} · ${entry.totalGoals} goals`}
           />
         ))}
       </div>
-      <div className="mt-2 flex items-center justify-between gap-3 font-mono text-3xs uppercase tracking-[0.1em] text-[var(--home-ink-muted)]">
+      <div className="mt-2 flex items-center justify-between gap-3 font-mono text-3xs uppercase tracking-[0.1em] text-[var(--c97-ink-2)]">
         <span>Goals / matchday</span>
         {capLabel ? <span>{capLabel}</span> : null}
       </div>

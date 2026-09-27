@@ -162,6 +162,23 @@ describe("GolfClient", () => {
     expect(screen.getByText(/This page is a checked-in tournament snapshot/i)).toBeInTheDocument();
   });
 
+  it("hides the scoring split when the feed sent no hole counts", () => {
+    const scottie = getPlayerSnapshot("scottie-scheffler");
+    render(
+      <GolfClient
+        initialState={DEFAULT_GOLF_STATE}
+        summary={testSummary}
+        initialPlayerSnapshot={{
+          ...scottie,
+          scoring: { birdies: 0, bogeys: 0, pars: 0, eagles: 0, doubleBogeys: 0 },
+        }}
+      />
+    );
+
+    expect(screen.queryByText("Birdies")).not.toBeInTheDocument();
+    expect(screen.getByText(/no birdie, par, or bogey counts for this event/i)).toBeInTheDocument();
+  });
+
   it("updates the route when the user changes views or selects another player", async () => {
     const user = userEvent.setup();
     currentSearchParams = new URLSearchParams("view=players");

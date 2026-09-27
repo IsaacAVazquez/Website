@@ -65,27 +65,27 @@ function DrawerFixtureRow({ fixture, clubId }: { fixture: GenericFixture; clubId
   const loss = isFinal && goalsFor !== null && goalsAgainst !== null && goalsAgainst > goalsFor;
 
   return (
-    <div className="grid grid-cols-[24px_1fr_auto] items-center gap-3 border-b border-[color-mix(in_srgb,var(--home-rule)_50%,transparent)] py-2.5 last:border-b-0">
+    <div className="grid grid-cols-[24px_1fr_auto] items-center gap-3 border-b border-[color-mix(in_srgb,var(--c97-rule)_50%,transparent)] py-2.5 last:border-b-0">
       <span
-        className="inline-flex h-[22px] w-[22px] items-center justify-center rounded-[var(--radius-sm)] border border-[var(--home-rule)] font-mono text-3xs text-[var(--home-ink-muted)]"
+        className="inline-flex h-[22px] w-[22px] items-center justify-center border border-[var(--c97-rule)] font-mono text-3xs text-[var(--c97-ink-2)]"
         aria-label={isHome ? "Home fixture" : "Away fixture"}
       >
         {isHome ? "H" : "A"}
       </span>
-      <span className={`truncate text-sm font-semibold ${isFinal ? "text-[var(--home-ink)]" : "text-[var(--home-ink-muted)]"}`}>
+      <span className={`truncate text-sm font-semibold ${isFinal ? "text-[var(--c97-ink)]" : "text-[var(--c97-ink-2)]"}`}>
         {opponent.shortName}
       </span>
       {isFinal ? (
         <span
           className="font-mono text-sm tabular-nums"
-          style={{ color: win ? "var(--home-positive)" : loss ? "var(--home-negative)" : "var(--home-ink)" }}
+          style={{ color: win ? "var(--c97-positive)" : loss ? "var(--c97-negative)" : "var(--c97-ink)" }}
         >
           {goalsFor ?? "–"}
-          <span className="px-px text-[var(--home-ink-muted)]">–</span>
+          <span className="px-px text-[var(--c97-ink-2)]">–</span>
           {goalsAgainst ?? "–"}
         </span>
       ) : (
-        <span className="font-mono text-2xs text-[var(--home-ink-muted)]">{formatKickoff(fixture.utcDate)}</span>
+        <span className="font-mono text-2xs text-[var(--c97-ink-2)]">{formatKickoff(fixture.utcDate)}</span>
       )}
     </div>
   );
@@ -199,7 +199,7 @@ export function ClubDrawer({
             aria-label="Close club detail"
             onClick={onClose}
             className="absolute inset-0 h-full w-full cursor-default"
-            style={{ background: "color-mix(in srgb, var(--home-ink) 34%, transparent)" }}
+            style={{ background: "color-mix(in srgb, var(--c97-ink) 34%, transparent)" }}
             tabIndex={-1}
           />
           <motion.div
@@ -213,32 +213,32 @@ export function ClubDrawer({
             animate={{ opacity: 1, x: 0 }}
             exit={reduceMotion ? { opacity: 0 } : { opacity: 0, x: 28 }}
             transition={{ duration: reduceMotion ? 0 : 0.26, ease: [0.22, 1, 0.36, 1] }}
-            className="relative flex max-h-[88vh] w-full flex-col overflow-y-auto rounded-t-[var(--radius-3xl)] border outline-none sm:max-h-none sm:h-full sm:w-[27rem] sm:rounded-l-[var(--radius-3xl)] sm:rounded-tr-none"
-            style={{ borderColor: "var(--home-rule)", background: "var(--home-paper)", boxShadow: "var(--shadow-xl)" }}
+            className="relative flex max-h-[88vh] w-full flex-col overflow-y-auto border outline-none sm:max-h-none sm:h-full sm:w-[27rem] "
+            style={{ borderColor: "var(--c97-rule)", background: "var(--c97-surface)" }}
           >
             <span
               aria-hidden="true"
               className="absolute inset-x-0 top-0 h-[3px]"
-              style={{ background: club.accentColor || "var(--home-rule)" }}
+              style={{ background: club.accentColor || "var(--c97-rule)" }}
             />
 
-            <div className="relative border-b border-[var(--home-rule)] px-5 pb-4.5 pt-6">
+            <div className="relative border-b border-[var(--c97-rule)] px-5 pb-4.5 pt-6">
               <button
                 type="button"
                 onClick={onClose}
                 aria-label="Close"
-                className="absolute right-2 top-2 inline-flex min-h-touch min-w-touch items-center justify-center rounded-full border transition-colors"
-                style={{ borderColor: "var(--home-rule)", background: "var(--home-paper)", color: "var(--home-ink-muted)" }}
+                className="absolute right-2 top-2 inline-flex min-h-touch min-w-touch items-center justify-center border transition-colors"
+                style={{ borderColor: "var(--c97-rule)", background: "var(--c97-surface)", color: "var(--c97-ink-2)" }}
               >
                 <X size={16} aria-hidden="true" />
               </button>
               <div className="flex items-center gap-3.5">
                 <CrestAvatar crest={club.crest} name={club.name} size="lg" />
                 <div className="min-w-0 flex-1">
-                  <p className="font-mono text-3xs uppercase tracking-[0.1em] text-[var(--home-ink-muted)]">
+                  <p className="font-mono text-3xs uppercase tracking-[0.1em] text-[var(--c97-ink-2)]">
                     #{String(club.position).padStart(2, "0")} · {club.points} pts
                   </p>
-                  <h2 className="mt-1 truncate text-xl font-bold tracking-tight text-[var(--home-ink)]">{club.name}</h2>
+                  <h2 className="mt-1 truncate text-xl font-bold tracking-tight text-[var(--c97-ink)]">{club.name}</h2>
                   {formSequence.length > 0 ? (
                     <div className="mt-2 flex gap-1.5">
                       {formSequence.map((result, index) => (
@@ -249,7 +249,7 @@ export function ClubDrawer({
                 </div>
               </div>
               {metaLine ? (
-                <p className="mt-3 font-mono text-3xs uppercase tracking-[0.05em] text-[var(--home-ink-muted)]">
+                <p className="mt-3 font-mono text-3xs uppercase tracking-[0.05em] text-[var(--c97-ink-2)]">
                   {metaLine}
                 </p>
               ) : null}
@@ -259,7 +259,7 @@ export function ClubDrawer({
 
             {isLoadingDetail || detailError ? (
               <p
-                className="px-5 py-3 text-sm text-[var(--home-ink-muted)]"
+                className="px-5 py-3 text-sm text-[var(--c97-ink-2)]"
                 role={detailError ? "alert" : "status"}
                 aria-live="polite"
               >
@@ -268,22 +268,22 @@ export function ClubDrawer({
             ) : null}
 
             {topScorers.length > 0 && (
-              <div className="border-b border-[color-mix(in_srgb,var(--home-rule)_55%,transparent)] px-5 py-4">
-                <h3 className="font-mono text-3xs font-normal uppercase tracking-[0.12em] text-[var(--home-ink-muted)]">
+              <div className="border-b border-[color-mix(in_srgb,var(--c97-rule)_55%,transparent)] px-5 py-4">
+                <h3 className="font-mono text-3xs font-normal uppercase tracking-[0.12em] text-[var(--c97-ink-2)]">
                   Top scorers
                 </h3>
                 <div className="mt-3">
                   {topScorers.map((player, index) => (
                     <div
                       key={`${player.name}-${index}`}
-                      className="flex items-center gap-3 border-b border-[color-mix(in_srgb,var(--home-rule)_50%,transparent)] py-2.5 last:border-b-0"
+                      className="flex items-center gap-3 border-b border-[color-mix(in_srgb,var(--c97-rule)_50%,transparent)] py-2.5 last:border-b-0"
                     >
-                      <span className="w-5 flex-shrink-0 font-mono text-sm text-[var(--home-ink-muted)]">{index + 1}</span>
-                      <span className="min-w-0 flex-1 truncate text-sm font-semibold text-[var(--home-ink)]">
+                      <span className="w-5 flex-shrink-0 font-mono text-sm text-[var(--c97-ink-2)]">{index + 1}</span>
+                      <span className="min-w-0 flex-1 truncate text-sm font-semibold text-[var(--c97-ink)]">
                         {player.name}
                       </span>
-                      <span className="flex-shrink-0 font-mono text-sm text-[var(--home-ink-muted)] tabular-nums">
-                        <span className="text-[var(--home-ink)]">{player.goals}</span> G · {player.assists} A
+                      <span className="flex-shrink-0 font-mono text-sm text-[var(--c97-ink-2)] tabular-nums">
+                        <span className="text-[var(--c97-ink)]">{player.goals}</span> G · {player.assists} A
                       </span>
                     </div>
                   ))}
@@ -293,7 +293,7 @@ export function ClubDrawer({
 
             {(recentFixtures.length > 0 || upcomingFixtures.length > 0) && (
               <div className="px-5 py-4">
-                <h3 className="font-mono text-3xs font-normal uppercase tracking-[0.12em] text-[var(--home-ink-muted)]">
+                <h3 className="font-mono text-3xs font-normal uppercase tracking-[0.12em] text-[var(--c97-ink-2)]">
                   Fixtures
                 </h3>
                 <div className="mt-3">

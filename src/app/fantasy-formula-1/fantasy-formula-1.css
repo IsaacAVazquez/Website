@@ -1,0 +1,171 @@
+/* Fantasy Formula 1: the garage signature and the builder's small controls. */
+
+.c97-ff1-garage {
+  display: grid;
+  gap: var(--c97-sp-4);
+}
+
+.c97-ff1-garage-tier {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(7.5rem, 100%), 1fr));
+  gap: var(--c97-sp-2);
+}
+
+.c97-ff1-box {
+  position: relative;
+  display: grid;
+  gap: var(--c97-sp-1);
+  min-height: 96px;
+  padding: var(--c97-sp-2) var(--c97-sp-2) var(--c97-sp-2) var(--c97-sp-3);
+  border: 1px solid var(--c97-rule);
+  background: var(--c97-panel);
+}
+
+.c97-ff1-box[data-empty="true"] {
+  border-style: dashed;
+  align-content: center;
+}
+
+.c97-ff1-box-stripe {
+  position: absolute;
+  inset-block: 0;
+  left: 0;
+  width: 5px;
+}
+
+.c97-ff1-box-name {
+  font-size: var(--c97-fs-body);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.c97-ff1-box-figures {
+  font-size: var(--c97-fs-small);
+  color: var(--c97-ink-2);
+}
+
+.c97-ff1-box-empty {
+  margin: 0;
+  font-size: var(--c97-fs-small);
+  color: var(--c97-label);
+}
+
+.c97-ff1-box-lock {
+  position: absolute;
+  top: var(--c97-sp-1);
+  right: var(--c97-sp-1);
+  display: inline-flex;
+  color: var(--c97-ink-2);
+}
+
+.c97-ff1-budget {
+  position: relative;
+  height: 14px;
+  background: var(--c97-field);
+}
+
+.c97-ff1-budget-fill {
+  position: absolute;
+  inset-block: 0;
+  left: 0;
+  background: var(--c97-ink);
+}
+
+.c97-ff1-budget-over {
+  position: absolute;
+  inset-block: 0;
+  background: var(--c97-negative);
+}
+
+.c97-ff1-budget-line {
+  position: absolute;
+  inset-block: -3px;
+  width: 2px;
+  background: var(--c97-ink-2);
+}
+
+.c97-ff1-avatar {
+  display: flex;
+  height: 40px;
+  width: 40px;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border: 1px solid var(--c97-rule);
+  border-radius: 50%;
+  background: var(--c97-field);
+  font-size: var(--c97-fs-small);
+  font-weight: 600;
+  text-transform: uppercase;
+  color: var(--c97-ink-2);
+}
+
+.c97-ff1-avatar img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  object-position: top;
+}
+
+.c97-ff1-btn {
+  display: inline-flex;
+  min-height: 44px;
+  align-items: center;
+  gap: var(--c97-sp-1);
+  border: 1px solid var(--c97-ink-2);
+  background: none;
+  padding: 0 var(--c97-sp-3);
+  color: var(--c97-ink);
+  font: inherit;
+  font-size: var(--c97-fs-small);
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.c97-ff1-btn:hover {
+  background: var(--c97-field);
+}
+
+.c97-ff1-btn:disabled {
+  border-style: dashed;
+  color: var(--c97-ink-2);
+  cursor: not-allowed;
+}
+
+.c97-ff1-icon-btn {
+  display: inline-flex;
+  min-height: 44px;
+  min-width: 44px;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--c97-ink-2);
+  background: none;
+  color: var(--c97-ink);
+  cursor: pointer;
+}
+
+.c97-ff1-icon-btn:hover {
+  background: var(--c97-field);
+}
+
+/*
+ * The asset table's horizontal scroll wrapper. `contain: layout` is load
+ * bearing: an auto-layout table's intrinsic width otherwise still inflates
+ * document.documentElement.scrollWidth even though the page never actually
+ * scrolls (window.scrollX stays 0), which reads as a false horizontal
+ * overflow to a scrollWidth-based probe.
+ */
+.c97-ff1-table-scroll {
+  overflow-x: auto;
+  contain: layout;
+}
+
+/* At phone width the driver tier's five boxes get tight; drop to two columns
+ * so the name and figures stay legible instead of shrinking to fit five. */
+@media (max-width: 479px) {
+  .c97-ff1-garage-tier {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
