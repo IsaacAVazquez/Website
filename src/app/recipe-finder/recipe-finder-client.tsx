@@ -8,18 +8,22 @@ import {
   useState,
 } from "react";
 import { ChefHat, Plus, Search, Sparkles, Trash2, X } from "lucide-react";
-import { EditorialPillButton } from "@/components/editorial";
-import { HomeStatsPanel, type HomeStatsCell } from "@/components/home/HomeStatsPanel";
+import { Catalog97ProjectHero } from "@/components/catalog97/Catalog97ProjectHero";
+import { PROJECT_PRESS } from "@/constants/projectPress";
 import { RECIPES } from "@/data/recipesSnapshot";
 import {
   formatTotalTime,
   getIngredientCatalog,
   searchRecipes,
   type DietTag,
+  type Recipe,
   type RecipeCategory,
   type RecipeMatch,
 } from "@/lib/recipes";
+import { indexCardLines } from "./indexCard";
+import "./recipe-finder.css";
 
+const RECIPE_FINDER_ROUTE = "/recipe-finder";
 const PANTRY_STORAGE_KEY = "recipe-finder:pantry:v1";
 
 type ViewId = "all" | "quick" | "vegetarian" | "pantry";
@@ -41,6 +45,16 @@ const CATEGORY_OPTIONS: { value: RecipeCategory | "all"; label: string }[] = [
   { value: "dessert", label: "Desserts" },
   { value: "drink", label: "Drinks" },
 ];
+
+const CATEGORY_LABELS: Record<RecipeCategory, string> = {
+  breakfast: "Breakfast",
+  lunch: "Lunch",
+  dinner: "Dinner",
+  dessert: "Dessert",
+  snack: "Snack",
+  side: "Side",
+  drink: "Drink",
+};
 
 const DIET_OPTIONS: { value: DietTag | "all"; label: string }[] = [
   { value: "all", label: "Any diet" },
@@ -84,21 +98,11 @@ function savePantry(items: string[]) {
   try {
     window.localStorage.setItem(PANTRY_STORAGE_KEY, JSON.stringify(items));
   } catch {
-    // Ignore quota errors — local persistence is a nice-to-have, not a requirement.
+    // Ignore quota errors. Local persistence is a nice-to-have, not a requirement.
   }
 }
 
-function formatPercent(score: number): string {
-  return `${Math.round(score * 100)}%`;
-}
-
-function getMatchTone(score: number): string {
-  if (score >= 0.99) return "var(--home-signal)";
-  if (score >= 0.6) return "var(--home-signal)";
-  return "var(--home-ink-muted)";
-}
-
-function totalMinutes(recipe: RecipeMatch["recipe"]): number {
+function totalMinutes(recipe: Recipe): number {
   return recipe.prepMinutes + recipe.cookMinutes;
 }
 
@@ -135,98 +139,39 @@ export function RecipeFinderClient() {
       .slice(0, 6);
   }, [pantryDraft, ingredientCatalog, pantry]);
 
+  // The hero's readouts describe the whole corpus, independent of whatever
+  // meal, diet, or search filter is active below, the same way Earthquake
+  // Pulse's hero stats don't move when the log's view tab changes.
+  const overallMatches = useMemo(() => searchRecipes(RECIPES, pantry, {}), [pantry]);
+  const hasPantry = pantry.some((item) => item.trim().length > 0);
+  const cookableNow = useMemo(
+    () => overallMatches.filter((match) => match.missing.length === 0).length,
+    [overallMatches],
+  );
+  const bestMatch = hasPantry ? overallMatches[0] ?? null : null;
+  const bestMatchCard = useMemo(
+    () => (bestMatch ? indexCardLines(bestMatch.recipe, pantry) : null),
+    [bestMatch, pantry],
+  );
+
   const baseMatches = useMemo<RecipeMatch[]>(() => {
-    // Sidebar "Vegetarian" view forces the diet filter to vegetarian even if
-    // the rail diet select is "all". Otherwise the rail diet wins.
-    const effectiveDiet: DietTag | "all" =
-      view === "vegetarian" ? "vegetarian" : diet;
-    return searchRecipes(RECIPES, pantry, {
-      query,
-      category,
-      diet: effectiveDiet,
-    });
+    // The "Vegetarian" view forces the diet filter to vegetarian even if the
+    // diet select is "all". Otherwise the diet select wins.
+    const effectiveDiet: DietTag | "all" = view === "vegetarian" ? "vegetarian" : diet;
+    return searchRecipes(RECIPES, pantry, { query, category, diet: effectiveDiet });
   }, [pantry, query, category, diet, view]);
 
   const visibleMatches = useMemo<RecipeMatch[]>(() => {
     if (view === "quick") {
-      return baseMatches.filter((m) => totalMinutes(m.recipe) <= 15);
+      return baseMatches.filter((match) => totalMinutes(match.recipe) <= 15);
     }
     if (view === "pantry") {
-      return baseMatches.filter((m) => m.matched.length > 0);
+      return baseMatches.filter((match) => match.matched.length > 0);
     }
     return baseMatches;
   }, [baseMatches, view]);
 
-  const cookableNow = useMemo(
-    () => baseMatches.filter((match) => match.missing.length === 0).length,
-    [baseMatches],
-  );
-  const almostCookable = useMemo(
-    () =>
-      baseMatches.filter(
-        (match) => match.matchScore >= 0.6 && match.missing.length > 0,
-      ).length,
-    [baseMatches],
-  );
-
-  const hasPantry = pantry.length > 0;
   const totalRecipes = RECIPES.length;
-
-  const quickWinsCount = useMemo(
-    () => baseMatches.filter((m) => totalMinutes(m.recipe) <= 15).length,
-    [baseMatches],
-  );
-
-  const dietLabel = useMemo(() => {
-    if (view === "vegetarian") return "Vegetarian";
-    return DIET_OPTIONS.find((option) => option.value === diet)?.label ?? "Any diet";
-  }, [diet, view]);
-
-  const mealLabel = useMemo(
-    () => CATEGORY_OPTIONS.find((option) => option.value === category)?.label ?? "Any time",
-    [category],
-  );
-
-  const recipeStatsCells: HomeStatsCell[] = [
-    {
-      label: "Recipes available",
-      value: visibleMatches.length.toLocaleString(),
-      sub: `of ${totalRecipes} in corpus`,
-    },
-    {
-      label: "Pantry items",
-      value: hasPantry ? pantry.length.toLocaleString() : "—",
-      sub: hasPantry ? "Saved locally" : "Add to start",
-    },
-    {
-      label: "Cookable now",
-      value: hasPantry ? cookableNow.toLocaleString() : "—",
-      sub: hasPantry ? "100% pantry match" : undefined,
-      tone: hasPantry && cookableNow > 0 ? "good" : "default",
-    },
-    {
-      label: "Almost cookable",
-      value: hasPantry ? almostCookable.toLocaleString() : "—",
-      sub: hasPantry ? "60% or better" : undefined,
-    },
-    {
-      label: "Total in corpus",
-      value: totalRecipes.toLocaleString(),
-    },
-    {
-      label: "Active diet",
-      value: dietLabel,
-    },
-    {
-      label: "Active meal",
-      value: mealLabel,
-    },
-    {
-      label: "Quick wins",
-      value: quickWinsCount.toLocaleString(),
-      sub: "15 minutes or less",
-    },
-  ];
 
   function addIngredient(rawValue: string) {
     const value = rawValue.trim().toLowerCase();
@@ -260,30 +205,86 @@ export function RecipeFinderClient() {
 
   function selectView(next: ViewId) {
     setView(next);
-    // Reset incompatible filters so the nav choice feels authoritative.
+    // Reset an incompatible meal filter so the nav choice feels authoritative.
     if (next === "quick" || next === "vegetarian" || next === "pantry") {
       setCategory("all");
     }
   }
 
-  return (
-    <section
-      className="home-page min-h-screen"
-      aria-label="Recipe Finder"
-      data-testid="recipe-shell"
-    >
-      <div className="home-shell home-section">
-        <div className="flex flex-col gap-6">
-          <div className="tool-topbar">
-            <div>
-              <p className="tool-crumbs">
-                Recipe Finder / <strong>{VIEW_LABELS[view]}</strong>
-              </p>
-              <h1>Recipe Finder</h1>
-            </div>
+  const lead = PROJECT_PRESS[RECIPE_FINDER_ROUTE].lead;
+  const standfirst =
+    "I built this because I could never remember what I actually had on hand when it was time to figure out dinner. Add what's in your kitchen, from a few staples I assume everyone already has, to whatever's actually in the fridge, and the recipes below reorder to show what you can cook right now.";
 
-            <label className="tool-search" aria-label="Search recipes">
-              <Search size={14} aria-hidden="true" />
+  return (
+    <>
+      <Catalog97ProjectHero
+        ink={lead}
+        title="Recipe Finder"
+        standfirst={standfirst}
+        readouts={[
+          {
+            label: "Pantry items",
+            value: pantry.length,
+            detail: hasPantry ? "saved in your browser" : "add what's in your kitchen",
+          },
+          {
+            label: "Recipes you can make now",
+            value: hasPantry ? cookableNow : "—",
+            detail: hasPantry ? `of ${totalRecipes} in the corpus` : "add pantry items to rank",
+          },
+          {
+            label: "Closest match",
+            value: bestMatch ? bestMatch.recipe.title : "—",
+            detail:
+              bestMatch && bestMatchCard
+                ? `${bestMatchCard.counts.have} of ${bestMatchCard.counts.have + bestMatchCard.counts.need} ingredients ticked`
+                : undefined,
+          },
+        ]}
+      >
+        <div className="c97-recipe-hero-grid">
+          <div data-c97-surface="paper" className="c97-offset c97-recipe-shelf-plate" style={{ padding: "var(--c97-sp-4)" }}>
+            <p className="c97-kicker">Pantry shelf</p>
+            <PantryShelf
+              pantry={pantry}
+              pantryDraft={pantryDraft}
+              suggestions={suggestions}
+              onDraftChange={setPantryDraft}
+              onAdd={addIngredient}
+              onRemove={removeIngredient}
+              onClear={clearPantry}
+              onSubmit={handlePantrySubmit}
+              onKeyDown={handlePantryKeyDown}
+            />
+            <p className="c97-prose" style={{ margin: 0, fontSize: "var(--c97-fs-small)", color: "var(--c97-ink-2)" }}>
+              I put the recipe corpus together by hand, and your pantry is saved in this browser only.
+            </p>
+          </div>
+
+          {bestMatch ? (
+            <div>
+              <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-2)" }}>
+                Closest match
+              </p>
+              <RecipeIndexCard
+                recipe={bestMatch.recipe}
+                pantry={pantry}
+                isOpen={openRecipeId === bestMatch.recipe.id}
+                onToggleSteps={() =>
+                  setOpenRecipeId((current) => (current === bestMatch.recipe.id ? null : bestMatch.recipe.id))
+                }
+              />
+            </div>
+          ) : null}
+        </div>
+      </Catalog97ProjectHero>
+
+      <section className="c97-band c97-sheet" data-c97-surface="paper" data-seam="torn">
+        <div className="c97-shell">
+          <div className="flex flex-wrap items-end justify-between gap-4">
+            <h2 className="c97-poster-sm">Find something to cook</h2>
+            <label className="c97-recipe-search" aria-label="Search recipes">
+              <Search size={16} aria-hidden="true" />
               <input
                 type="search"
                 placeholder="Search by name or ingredient…"
@@ -294,9 +295,10 @@ export function RecipeFinderClient() {
           </div>
 
           <div
-            className="flex flex-wrap gap-2"
+            className="c97-segmented"
             role="tablist"
             aria-label="Recipe views"
+            style={{ marginTop: "var(--c97-sp-4)" }}
           >
             {(Object.keys(VIEW_LABELS) as ViewId[]).map((id) => {
               const isActive = view === id;
@@ -307,182 +309,111 @@ export function RecipeFinderClient() {
                   onClick={() => selectView(id)}
                   role="tab"
                   aria-selected={isActive}
-                  aria-current={isActive ? "true" : undefined}
-                  className="inline-flex min-h-touch items-center gap-2 rounded-full border px-4 py-1.5 text-sm font-semibold transition-[transform,border-color,background-color,color,box-shadow] duration-200 ease focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-signal)] focus-visible:ring-offset-2"
-                  style={{
-                    borderColor: isActive
-                      ? "var(--home-ink)"
-                      : "var(--home-rule)",
-                    background: isActive
-                      ? "var(--home-ink)"
-                      : "var(--home-paper-raised)",
-                    color: isActive ? "var(--home-paper)" : "var(--home-ink-muted)",
-                    fontFamily: "var(--font-home-sans)",
-                  }}
+                  className="min-h-[44px] text-sm font-semibold"
                 >
                   {id === "all" && <Search size={16} aria-hidden="true" />}
                   {id === "quick" && <Sparkles size={16} aria-hidden="true" />}
                   {id === "vegetarian" && <ChefHat size={16} aria-hidden="true" />}
                   {id === "pantry" && <Plus size={16} aria-hidden="true" />}
                   <span>{VIEW_LABELS[id]}</span>
-                  {id === "pantry" && hasPantry ? (
-                    <span
-                      className="ml-1 rounded-full px-2 py-0.5 text-2xs font-bold tracking-[0.04em]"
-                      style={{
-                        background: isActive
-                          ? "color-mix(in srgb, var(--home-paper) 22%, transparent)"
-                          : "color-mix(in srgb, var(--home-signal) 40%, transparent)",
-                        color: isActive ? "var(--home-paper)" : "var(--home-ink)",
-                      }}
-                    >
-                      {cookableNow}
-                    </span>
-                  ) : null}
+                  {id === "pantry" && hasPantry ? <span>({cookableNow})</span> : null}
                 </button>
               );
             })}
           </div>
 
-          <div className="tool-meta-chip" role="status" aria-live="polite">
-            <span className="tool-meta-chip-dot" aria-hidden="true" />
-            <span>
-              <strong>{totalRecipes}</strong> recipes ·{" "}
-              <strong>{pantry.length}</strong> ingredient{pantry.length === 1 ? "" : "s"} in pantry
-            </span>
-            <span className="tool-meta-chip-divider" aria-hidden="true">
-              ·
-            </span>
-            <span>ranking by pantry match</span>
-          </div>
-
-          <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,320px)]">
-            <div className="space-y-5">
-              <HomeStatsPanel
-                id="recipe-finder-stats"
-                title="Recipes at a glance"
-                meta={hasPantry ? `${cookableNow} cookable now` : "Add pantry items to rank"}
-                hideLiveDot
-                cells={recipeStatsCells}
-                pills={[
-                  { label: "Quick wins", href: "/recipe-finder?view=quick" },
-                  { label: "Vegetarian", href: "/recipe-finder?view=vegetarian" },
-                  { label: "Pantry", href: "/recipe-finder?view=pantry" },
-                  { label: "All recipes", href: "/recipe-finder?view=all" },
-                ]}
-              />
-
-              <div
-                className="flex flex-wrap gap-2"
-                role="tablist"
-                aria-label="Meal time"
+          <div
+            className="c97-segmented"
+            role="tablist"
+            aria-label="Meal time"
+            style={{ marginTop: "var(--c97-sp-3)" }}
+          >
+            {CATEGORY_OPTIONS.map((option) => (
+              <button
+                key={option.value}
+                type="button"
+                role="tab"
+                aria-selected={category === option.value}
+                onClick={() => setCategory(option.value)}
+                className="min-h-[44px] text-sm font-semibold"
               >
-                {CATEGORY_OPTIONS.map((option) => (
-                  <EditorialPillButton
-                    key={option.value}
-                    active={category === option.value}
-                    onClick={() => setCategory(option.value)}
-                    role="tab"
-                    ariaSelected={category === option.value}
-                    size="sm"
-                  >
-                    {option.label}
-                  </EditorialPillButton>
-                ))}
-              </div>
-
-              <ResultsList
-                matches={visibleMatches}
-                hasPantry={hasPantry}
-                openRecipeId={openRecipeId}
-                onToggleRecipe={(id) =>
-                  setOpenRecipeId((current) => (current === id ? null : id))
-                }
-              />
-            </div>
-
-            <aside
-              aria-label="Pantry editor"
-              className="flex flex-col gap-4 rounded-[var(--radius-3xl)] border border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper-alt)_74%,var(--home-elev-mix))] p-5 shadow-[var(--shadow-sm)] lg:sticky lg:top-0 lg:self-start"
-            >
-              <section aria-labelledby="pantry-heading">
-                <p className="tool-rail-label" id="pantry-heading">
-                  <ChefHat size={12} aria-hidden="true" />
-                  Pantry
-                </p>
-                <PantryEditor
-                  pantry={pantry}
-                  pantryDraft={pantryDraft}
-                  suggestions={suggestions}
-                  onDraftChange={setPantryDraft}
-                  onAdd={addIngredient}
-                  onRemove={removeIngredient}
-                  onClear={clearPantry}
-                  onSubmit={handlePantrySubmit}
-                  onKeyDown={handlePantryKeyDown}
-                  cookableNow={cookableNow}
-                />
-              </section>
-
-              <section aria-labelledby="diet-heading">
-                <p className="tool-rail-label" id="diet-heading">
-                  <Sparkles size={12} aria-hidden="true" />
-                  Diet
-                </p>
-                <label className="sr-only" htmlFor="recipe-diet-select">
-                  Filter by diet
-                </label>
-                <select
-                  id="recipe-diet-select"
-                  value={diet}
-                  onChange={(event) => setDiet(event.target.value as DietTag | "all")}
-                  disabled={view === "vegetarian"}
-                  className="w-full min-h-touch rounded-[var(--radius-2xl)] border border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper)_92%,var(--home-elev-mix))] px-3 py-2 text-xs font-medium text-[var(--home-ink)] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-signal)] focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-60"
-                >
-                  {DIET_OPTIONS.map((option) => (
-                    <option key={option.value} value={option.value}>
-                      {option.label}
-                    </option>
-                  ))}
-                </select>
-                {view === "vegetarian" ? (
-                  <p className="mt-2 text-2xs text-[var(--home-ink-muted)]">
-                    Vegetarian view is active. Switch to All recipes to use other diets.
-                  </p>
-                ) : null}
-              </section>
-
-              <section aria-labelledby="quick-adds-heading">
-                <p className="tool-rail-label" id="quick-adds-heading">
-                  <Plus size={12} aria-hidden="true" />
-                  Quick adds
-                </p>
-                <div className="flex flex-wrap gap-1.5">
-                  {QUICK_PICKS.filter((pick) => !pantry.includes(pick)).map((pick) => (
-                    <button
-                      key={pick}
-                      type="button"
-                      onClick={() => addIngredient(pick)}
-                      className="inline-flex min-h-touch items-center rounded-full border border-dashed border-[var(--home-rule)] bg-transparent px-3 py-1 text-2xs font-medium text-[var(--home-ink-muted)] transition-colors hover:border-[var(--home-signal)] hover:text-[var(--home-ink)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-signal)] focus-visible:ring-offset-2"
-                    >
-                      + {pick}
-                    </button>
-                  ))}
-                </div>
-              </section>
-
-              <p className="tool-rail-foot">
-                <Sparkles size={14} aria-hidden="true" />
-                Pantry saved in your browser
-              </p>
-            </aside>
+                {option.label}
+              </button>
+            ))}
           </div>
+
+          <div
+            className="flex flex-wrap items-center gap-2"
+            style={{ marginTop: "var(--c97-sp-3)" }}
+          >
+            <label htmlFor="recipe-diet-select" className="c97-kicker" style={{ margin: 0 }}>
+              Diet
+            </label>
+            <select
+              id="recipe-diet-select"
+              aria-label="Filter by diet"
+              value={diet}
+              onChange={(event) => setDiet(event.target.value as DietTag | "all")}
+              disabled={view === "vegetarian"}
+              className="c97-recipe-field"
+              style={{ flex: "0 0 auto" }}
+            >
+              {DIET_OPTIONS.map((option) => (
+                <option key={option.value} value={option.value}>
+                  {option.label}
+                </option>
+              ))}
+            </select>
+            {view === "vegetarian" ? (
+              <p className="c97-prose" style={{ fontSize: "var(--c97-fs-small)", margin: 0 }}>
+                Vegetarian view is active. Switch to All recipes to use other diets.
+              </p>
+            ) : null}
+          </div>
+
+          <p
+            className="c97-meta"
+            role="status"
+            aria-live="polite"
+            style={{ marginTop: "var(--c97-sp-3)" }}
+          >
+            <span>{totalRecipes} recipes</span>
+            <span aria-hidden="true">·</span>
+            <span>
+              {pantry.length} ingredient{pantry.length === 1 ? "" : "s"} in pantry
+            </span>
+            <span aria-hidden="true">·</span>
+            <span>ranking by pantry match</span>
+          </p>
+
+          <ResultsGrid
+            matches={visibleMatches}
+            pantry={pantry}
+            openRecipeId={openRecipeId}
+            onToggleRecipe={(id) =>
+              setOpenRecipeId((current) => (current === id ? null : id))
+            }
+          />
         </div>
-      </div>
-    </section>
+      </section>
+
+      <section className="c97-band c97-sheet" data-c97-surface="bone" data-seam="deckle">
+        <div className="c97-shell">
+          <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-2)" }}>
+            About this corpus
+          </p>
+          <p className="c97-prose" style={{ fontSize: "var(--c97-fs-small)" }}>
+            Every recipe here is one I added by hand, which keeps the ingredient list consistent
+            enough for the matcher to work. Pantry staples like salt, pepper, oil, and water are
+            assumed and never count against a recipe&rsquo;s missing ingredients.
+          </p>
+        </div>
+      </section>
+    </>
   );
 }
 
-interface PantryEditorProps {
+interface PantryShelfProps {
   pantry: string[];
   pantryDraft: string;
   suggestions: string[];
@@ -492,10 +423,9 @@ interface PantryEditorProps {
   onClear: () => void;
   onSubmit: (event: FormEvent<HTMLFormElement>) => void;
   onKeyDown: (event: KeyboardEvent<HTMLInputElement>) => void;
-  cookableNow: number;
 }
 
-function PantryEditor({
+function PantryShelf({
   pantry,
   pantryDraft,
   suggestions,
@@ -505,124 +435,123 @@ function PantryEditor({
   onClear,
   onSubmit,
   onKeyDown,
-  cookableNow,
-}: PantryEditorProps) {
+}: PantryShelfProps) {
   return (
     <div>
-      <form onSubmit={onSubmit} className="relative">
+      <form onSubmit={onSubmit} className="c97-recipe-pantry-form">
         <label htmlFor="pantry-input" className="sr-only">
           Add an ingredient
         </label>
-        <div className="flex items-stretch gap-2">
-          <div className="relative flex-1 min-w-0">
-            <input
-              id="pantry-input"
-              type="text"
-              value={pantryDraft}
-              onChange={(event) => onDraftChange(event.target.value)}
-              onKeyDown={onKeyDown}
-              placeholder="e.g. chicken, lemon"
-              autoComplete="off"
-              className="h-10 w-full rounded-full border border-[var(--home-rule)] bg-[var(--home-paper)] px-3 text-xs text-[var(--home-ink)] placeholder:text-[var(--home-ink-muted)] focus:border-[var(--home-signal)] focus:outline-none focus:ring-2 focus:ring-[var(--home-signal)]/40"
-            />
-            {suggestions.length > 0 && (
-              <ul className="absolute left-0 right-0 top-11 z-10 max-h-56 overflow-auto rounded-[var(--radius-3xl)] border border-[var(--home-rule)] bg-[var(--home-paper)] py-1 shadow-[var(--shadow-lg)]">
-                {suggestions.map((suggestion) => (
-                  <li key={suggestion}>
-                    <button
-                      type="button"
-                      onClick={() => onAdd(suggestion)}
-                      className="flex w-full min-h-touch items-center gap-2 px-3 py-2 text-left text-xs text-[var(--home-ink)] transition-colors hover:bg-[var(--home-paper-alt)] focus-visible:outline-none focus-visible:bg-[var(--home-paper-alt)]"
-                    >
-                      <Plus className="h-3 w-3 text-[var(--home-signal)]" aria-hidden="true" />
-                      {suggestion}
-                    </button>
-                  </li>
-                ))}
-              </ul>
-            )}
-          </div>
-          <button
-            type="submit"
-            disabled={!pantryDraft.trim()}
-            aria-label="Add ingredient"
-            className="inline-flex h-10 min-w-10 items-center justify-center rounded-full bg-[var(--home-ink)] px-3 text-[var(--home-paper)] transition-opacity disabled:cursor-not-allowed disabled:opacity-40"
-          >
-            <Plus className="h-4 w-4" aria-hidden="true" />
-          </button>
+        <div className="c97-recipe-pantry-suggestions">
+          <input
+            id="pantry-input"
+            type="text"
+            value={pantryDraft}
+            onChange={(event) => onDraftChange(event.target.value)}
+            onKeyDown={onKeyDown}
+            placeholder="e.g. chicken, lemon"
+            autoComplete="off"
+            className="c97-recipe-field"
+          />
+          {suggestions.length > 0 ? (
+            <ul className="c97-recipe-suggestion-list">
+              {suggestions.map((suggestion) => (
+                <li key={suggestion}>
+                  <button type="button" onClick={() => onAdd(suggestion)}>
+                    <Plus size={14} aria-hidden="true" />
+                    {suggestion}
+                  </button>
+                </li>
+              ))}
+            </ul>
+          ) : null}
         </div>
+        <button
+          type="submit"
+          disabled={!pantryDraft.trim()}
+          aria-label="Add ingredient"
+          className="c97-recipe-quickadd"
+        >
+          <Plus size={16} aria-hidden="true" />
+        </button>
       </form>
 
       {pantry.length === 0 ? (
-        <p className="mt-3 text-1xs text-[var(--home-ink-muted)]">
-          Add a few staples and the recipe list will reorder live.
+        <p className="c97-prose" style={{ fontSize: "var(--c97-fs-small)", marginTop: "var(--c97-sp-3)" }}>
+          Add what&rsquo;s in your kitchen.
         </p>
       ) : (
         <>
-          <ul className="mt-3 flex flex-wrap gap-1.5" aria-label="Pantry ingredients">
+          <ul
+            className="c97-recipe-shelf-tags"
+            aria-label="Pantry ingredients"
+            style={{ marginTop: "var(--c97-sp-3)" }}
+          >
             {pantry.map((item) => (
               <li key={item}>
                 <button
                   type="button"
                   onClick={() => onRemove(item)}
                   aria-label={`Remove ${item}`}
-                  className="group inline-flex min-h-touch items-center gap-1 rounded-full border border-[var(--home-rule)] bg-[var(--home-paper)] px-2.5 py-1 text-2xs font-medium text-[var(--home-ink)] transition-colors hover:border-[var(--home-ink)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-signal)] focus-visible:ring-offset-2"
+                  className="c97-recipe-tag"
                 >
                   <span>{item}</span>
-                  <X
-                    className="h-3 w-3 text-[var(--home-ink-muted)] transition-colors group-hover:text-[var(--home-ink)]"
-                    aria-hidden="true"
-                  />
+                  <X size={12} aria-hidden="true" />
                 </button>
               </li>
             ))}
           </ul>
-          <div className="mt-3 flex items-center justify-between gap-2">
-            <button
-              type="button"
-              onClick={onClear}
-              className="inline-flex min-h-touch items-center gap-1 rounded-full border border-[var(--home-rule)] bg-transparent px-3 py-1 text-2xs font-semibold uppercase tracking-[0.16em] text-[var(--home-ink-muted)] transition-colors hover:text-[var(--home-ink)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-signal)] focus-visible:ring-offset-2"
-            >
-              <Trash2 className="h-3 w-3" aria-hidden="true" />
-              Clear
-            </button>
-            <span className="inline-flex items-center gap-1.5 text-2xs text-[var(--home-ink)]">
-              <Sparkles className="h-3 w-3 text-[var(--home-signal)]" aria-hidden="true" />
-              <strong>{cookableNow}</strong> can cook now
-            </span>
-          </div>
+          <button
+            type="button"
+            onClick={onClear}
+            className="c97-recipe-quickadd"
+            style={{ marginTop: "var(--c97-sp-2)" }}
+          >
+            <Trash2 size={14} aria-hidden="true" />
+            Clear
+          </button>
         </>
       )}
+
+      <div className="c97-recipe-quickadds" style={{ marginTop: "var(--c97-sp-3)" }}>
+        {QUICK_PICKS.filter((pick) => !pantry.includes(pick)).map((pick) => (
+          <button key={pick} type="button" onClick={() => onAdd(pick)} className="c97-recipe-quickadd">
+            + {pick}
+          </button>
+        ))}
+      </div>
     </div>
   );
 }
 
-interface ResultsListProps {
+interface ResultsGridProps {
   matches: RecipeMatch[];
-  hasPantry: boolean;
+  pantry: string[];
   openRecipeId: string | null;
   onToggleRecipe: (id: string) => void;
 }
 
-function ResultsList({ matches, hasPantry, openRecipeId, onToggleRecipe }: ResultsListProps) {
+function ResultsGrid({ matches, pantry, openRecipeId, onToggleRecipe }: ResultsGridProps) {
   if (matches.length === 0) {
     return (
-      <div className="tool-empty">
+      <div className="c97-prose" style={{ marginTop: "var(--c97-sp-5)" }}>
         <p>No recipes match these filters.</p>
-        <p>Try removing the meal type or adding more pantry items →</p>
+        <p style={{ fontSize: "var(--c97-fs-small)" }}>
+          Try removing the meal type or adding more pantry items.
+        </p>
       </div>
     );
   }
 
   return (
-    <ul className="grid gap-4" aria-label="Matching recipes">
+    <ul className="c97-recipe-grid" aria-label="Matching recipes" style={{ marginTop: "var(--c97-sp-5)" }}>
       {matches.map((match) => (
         <li key={match.recipe.id}>
-          <RecipeCard
-            match={match}
-            hasPantry={hasPantry}
+          <RecipeIndexCard
+            recipe={match.recipe}
+            pantry={pantry}
             isOpen={openRecipeId === match.recipe.id}
-            onToggle={() => onToggleRecipe(match.recipe.id)}
+            onToggleSteps={() => onToggleRecipe(match.recipe.id)}
           />
         </li>
       ))}
@@ -630,167 +559,90 @@ function ResultsList({ matches, hasPantry, openRecipeId, onToggleRecipe }: Resul
   );
 }
 
-interface RecipeCardProps {
-  match: RecipeMatch;
-  hasPantry: boolean;
+interface RecipeIndexCardProps {
+  recipe: Recipe;
+  pantry: string[];
   isOpen: boolean;
-  onToggle: () => void;
+  onToggleSteps: () => void;
 }
 
-function RecipeCard({ match, hasPantry, isOpen, onToggle }: RecipeCardProps) {
-  const { recipe, matched, missing, staples, matchScore } = match;
-  const total = matched.length + missing.length;
-  const tone = getMatchTone(matchScore);
+/**
+ * The signature: a ruled index card. The ingredient list ticks off what the
+ * pantry already covers instead of reporting a percentage, so the match
+ * reads directly off the card rather than off a score.
+ */
+function RecipeIndexCard({ recipe, pantry, isOpen, onToggleSteps }: RecipeIndexCardProps) {
+  const card = useMemo(() => indexCardLines(recipe, pantry), [recipe, pantry]);
+  const stepsId = `recipe-steps-${recipe.id}`;
 
   return (
-    <article className="overflow-hidden rounded-[var(--radius-3xl)] border border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper)_92%,var(--home-elev-mix))] shadow-[var(--shadow-sm)] transition-shadow hover:shadow-[var(--shadow-md)]">
+    <article data-c97-surface="paper" className="c97-offset c97-recipe-card" style={{ padding: "var(--c97-sp-4)" }}>
+      <header className="c97-recipe-card-header">
+        <div>
+          <h3 className="c97-serif c97-recipe-card-title">{recipe.title}</h3>
+          <p className="c97-kicker c97-recipe-card-meta">
+            {recipe.cuisine} · {CATEGORY_LABELS[recipe.category]}
+          </p>
+        </div>
+        <div className="c97-recipe-card-corner">
+          <span>
+            <strong>{formatTotalTime(recipe)}</strong>
+          </span>
+          <span>Serves {recipe.servings}</span>
+        </div>
+      </header>
+
+      <ul className="c97-recipe-ingredients" aria-label={`Ingredients for ${recipe.title}`}>
+        {card.lines.map((line, index) => (
+          <li key={`${recipe.id}-${index}`} className="c97-recipe-line" data-have={line.have}>
+            <span className="c97-recipe-tick" aria-hidden="true">
+              <svg viewBox="0 0 14 14">
+                <rect x="1" y="1" width="12" height="12" className="c97-recipe-tick-box" />
+                {line.have ? (
+                  <path d="M3 7.5L6 10.5L11 4" className="c97-recipe-tick-check" />
+                ) : null}
+              </svg>
+            </span>
+            <span>
+              <span className="sr-only">{line.have ? "In your pantry: " : "Still need: "}</span>
+              {line.name}
+              {line.staple ? <span className="c97-recipe-staple-mark">staple</span> : null}
+            </span>
+          </li>
+        ))}
+      </ul>
+
       <button
         type="button"
-        onClick={onToggle}
+        className="c97-recipe-card-steps-toggle"
+        onClick={onToggleSteps}
         aria-expanded={isOpen}
-        aria-controls={`recipe-detail-${recipe.id}`}
-        className="flex w-full items-start justify-between gap-4 px-5 py-5 text-left sm:px-6"
+        aria-controls={stepsId}
       >
-        <div className="min-w-0 flex-1">
-          <div className="mb-1.5 flex flex-wrap items-center gap-2 text-3xs font-mono font-semibold uppercase tracking-[0.22em] text-[var(--home-ink-muted)]">
-            <span>{recipe.cuisine}</span>
-            <span aria-hidden="true">·</span>
-            <span>{recipe.category}</span>
-            <span aria-hidden="true">·</span>
-            <span>{formatTotalTime(recipe)}</span>
-            <span aria-hidden="true">·</span>
-            <span>Serves {recipe.servings}</span>
-          </div>
-          <h3 className="text-lg font-semibold text-[var(--home-ink)] sm:text-xl">
-            {recipe.title}
-          </h3>
-          {hasPantry ? (
-            <p className="mt-2 text-sm text-[var(--home-ink-muted)]">
-              You have <strong className="text-[var(--home-ink)]">{matched.length}</strong> of{" "}
-              <strong className="text-[var(--home-ink)]">{total}</strong> ingredients
-              {missing.length > 0 && (
-                <>
-                  {" "}— missing{" "}
-                  <span className="text-[var(--home-ink)]">
-                    {missing
-                      .slice(0, 3)
-                      .map((ing) => ing.name)
-                      .join(", ")}
-                    {missing.length > 3 ? `, +${missing.length - 3} more` : ""}
-                  </span>
-                </>
-              )}
-              .
-            </p>
-          ) : (
-            <p className="mt-2 text-sm text-[var(--home-ink-muted)]">
-              {total} ingredient{total === 1 ? "" : "s"}
-              {staples.length > 0 ? `, plus ${staples.length} pantry staple${staples.length === 1 ? "" : "s"}` : ""}.
-            </p>
-          )}
-        </div>
-
-        <div
-          className="flex shrink-0 flex-col items-end gap-1"
-          aria-label={`Match score ${formatPercent(matchScore)}`}
-        >
-          <span
-            className="inline-flex h-12 w-12 items-center justify-center rounded-full text-sm font-bold"
-            style={{
-              background: `color-mix(in srgb, ${tone} 14%, var(--home-paper))`,
-              color: tone,
-              border: `1px solid color-mix(in srgb, ${tone} 30%, var(--home-rule))`,
-            }}
-          >
-            {hasPantry ? formatPercent(matchScore) : "—"}
-          </span>
-          <span className="font-mono text-3xs uppercase tracking-[0.18em] text-[var(--home-ink-muted)]">
-            {isOpen ? "Hide" : "Open"}
-          </span>
-        </div>
+        {isOpen ? "Hide steps" : "Steps"}
       </button>
 
-      {isOpen && (
-        <div
-          id={`recipe-detail-${recipe.id}`}
-          className="border-t border-[var(--home-rule)] px-5 py-5 sm:px-6"
-        >
-          <div className="grid gap-6 md:grid-cols-2">
-            <div>
-              <h4 className="mb-3 font-mono text-2xs font-semibold uppercase tracking-[0.22em] text-[var(--home-ink-muted)]">
-                Ingredients
-              </h4>
-              <ul className="space-y-1.5 text-sm">
-                {recipe.ingredients.map((ingredient) => {
-                  const isMissing = missing.some((m) => m.name === ingredient.name);
-                  const isStaple = !!ingredient.staple;
-                  return (
-                    <li
-                      key={ingredient.name}
-                      className="flex items-start gap-2"
-                      style={{
-                        color: isMissing
-                          ? "var(--home-ink-muted)"
-                          : "var(--home-ink)",
-                      }}
-                    >
-                      <span aria-hidden="true" className="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-current" />
-                      <span>
-                        {ingredient.display}
-                        {isStaple && (
-                          <span className="ml-2 rounded-full border border-[var(--home-rule)] px-1.5 py-0.5 text-3xs uppercase tracking-[0.16em] text-[var(--home-ink-muted)]">
-                            staple
-                          </span>
-                        )}
-                        {isMissing && hasPantry && (
-                          <span
-                            className="ml-2 rounded-full px-1.5 py-0.5 text-3xs uppercase tracking-[0.16em]"
-                            style={{
-                              border:
-                                "1px solid color-mix(in srgb, var(--home-signal) 40%, var(--home-rule))",
-                              color: "var(--home-signal)",
-                            }}
-                          >
-                            missing
-                          </span>
-                        )}
-                      </span>
-                    </li>
-                  );
-                })}
-              </ul>
-            </div>
-            <div>
-              <h4 className="mb-3 font-mono text-2xs font-semibold uppercase tracking-[0.22em] text-[var(--home-ink-muted)]">
-                Instructions
-              </h4>
-              <ol className="space-y-2 text-sm text-[var(--home-ink)]">
-                {recipe.instructions.map((step, index) => (
-                  <li key={index} className="flex gap-3">
-                    <span className="font-mono text-2xs font-bold text-[var(--home-signal)]">
-                      {String(index + 1).padStart(2, "0")}
-                    </span>
-                    <span>{step}</span>
-                  </li>
-                ))}
-              </ol>
-            </div>
-          </div>
-
-          {recipe.tags.length > 0 && (
-            <div className="mt-5 flex flex-wrap gap-1.5">
+      {isOpen ? (
+        <div id={stepsId} className="c97-recipe-card-steps">
+          <ol>
+            {recipe.instructions.map((step, index) => (
+              <li key={index}>
+                <span>{String(index + 1).padStart(2, "0")}</span>
+                <span>{step}</span>
+              </li>
+            ))}
+          </ol>
+          {recipe.tags.length > 0 ? (
+            <div className="c97-recipe-card-tags">
               {recipe.tags.map((tag) => (
-                <span
-                  key={tag}
-                  className="rounded-full border border-[var(--home-rule)] bg-transparent px-2.5 py-0.5 text-2xs text-[var(--home-ink-muted)]"
-                >
+                <span key={tag} className="c97-chip">
                   {tag}
                 </span>
               ))}
             </div>
-          )}
+          ) : null}
         </div>
-      )}
+      ) : null}
     </article>
   );
 }
