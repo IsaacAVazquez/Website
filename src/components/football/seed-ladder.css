@@ -1,0 +1,91 @@
+/* SeedLadder: the shared NBA/NFL playoff-picture signature. */
+
+.c97-seed-ladder {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--c97-sp-5);
+}
+
+@media (max-width: 639px) {
+  .c97-seed-ladder {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+.c97-seed-ladder-conf {
+  display: grid;
+  gap: var(--c97-sp-1);
+  align-content: start;
+}
+
+.c97-seed-ladder-band-label {
+  margin: var(--c97-sp-3) 0 var(--c97-sp-1);
+  font-size: var(--c97-fs-label);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--c97-label);
+}
+
+.c97-seed-ladder-rows {
+  display: grid;
+  border-top: 1px solid var(--c97-rule);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.c97-seed-ladder-row {
+  display: grid;
+  grid-template-columns: 14px 2ch minmax(0, 1fr) auto;
+  align-items: center;
+  gap: var(--c97-sp-2);
+  min-height: 30px;
+  padding: var(--c97-sp-1) 0;
+  border-bottom: 1px solid var(--c97-rule);
+  font-size: var(--c97-fs-small);
+}
+
+/* The ink-2 edge keeps a black or navy team colour visible on the dark plate. */
+.c97-seed-ladder-swatch {
+  width: 14px;
+  height: 14px;
+  border: 1px solid var(--c97-ink-2);
+}
+
+.c97-seed-ladder-seed {
+  color: var(--c97-ink-2);
+}
+
+.c97-seed-ladder-name {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: var(--c97-ink);
+  font-weight: 600;
+}
+
+.c97-seed-ladder-record {
+  text-align: right;
+  color: var(--c97-ink-2);
+}
+
+.c97-seed-ladder-gap {
+  margin: var(--c97-sp-1) 0 0;
+  padding-bottom: var(--c97-sp-2);
+  border-bottom: 2px dashed var(--c97-rule);
+  font-size: var(--c97-fs-small);
+  color: var(--c97-ink-2);
+}
+
+.c97-seed-ladder-note {
+  grid-column: 1 / -1;
+  margin: var(--c97-sp-3) 0 0;
+  font-size: var(--c97-fs-small);
+  color: var(--c97-ink-2);
+}
+
+@media (max-width: 639px) {
+  .c97-seed-ladder-row {
+    font-size: 15px;
+  }
+}

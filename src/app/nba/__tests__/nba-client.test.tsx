@@ -35,6 +35,7 @@ describe("NbaClient", () => {
         initialState={DEFAULT_NBA_STATE}
         summary={summary}
         initialTeamSnapshot={initialTeamSnapshot}
+        teamColors={{}}
       />
     );
 

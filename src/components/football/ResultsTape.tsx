@@ -42,15 +42,15 @@ function formatKickoff(utcDate: string): string {
 function ResultItem({ fixture }: { fixture: ResultsTapeFixture }) {
   const homeWin = fixture.score.winner === "HOME_TEAM";
   const awayWin = fixture.score.winner === "AWAY_TEAM";
-  const homeColor = homeWin ? "var(--home-positive)" : awayWin ? "var(--home-negative)" : "var(--home-ink-muted)";
-  const awayColor = awayWin ? "var(--home-positive)" : homeWin ? "var(--home-negative)" : "var(--home-ink-muted)";
+  const homeColor = homeWin ? "var(--c97-positive)" : awayWin ? "var(--c97-negative)" : "var(--c97-ink-2)";
+  const awayColor = awayWin ? "var(--c97-positive)" : homeWin ? "var(--c97-negative)" : "var(--c97-ink-2)";
 
   return (
     <>
       <span style={{ color: homeColor, letterSpacing: "0.02em" }}>{teamLabel(fixture.homeTeam)}</span>
-      <span style={{ color: "var(--home-ink)" }}>
+      <span style={{ color: "var(--c97-ink)" }}>
         {fixture.score.home ?? "–"}
-        <span style={{ color: "var(--home-ink-muted)", padding: "0 2px" }}>–</span>
+        <span style={{ color: "var(--c97-ink-2)", padding: "0 2px" }}>–</span>
         {fixture.score.away ?? "–"}
       </span>
       <span style={{ color: awayColor, letterSpacing: "0.02em" }}>{teamLabel(fixture.awayTeam)}</span>
@@ -61,17 +61,17 @@ function ResultItem({ fixture }: { fixture: ResultsTapeFixture }) {
 function UpcomingItem({ fixture }: { fixture: ResultsTapeFixture }) {
   return (
     <>
-      <span style={{ color: "var(--home-ink-muted)", letterSpacing: "0.02em" }}>{teamLabel(fixture.homeTeam)}</span>
+      <span style={{ color: "var(--c97-ink-2)", letterSpacing: "0.02em" }}>{teamLabel(fixture.homeTeam)}</span>
       <span
         style={{
-          color: "color-mix(in srgb, var(--home-ink-muted) 78%, var(--home-ink))",
+          color: "color-mix(in srgb, var(--c97-ink-2) 78%, var(--c97-ink))",
           fontSize: "0.64rem",
           letterSpacing: "0.05em",
         }}
       >
         {formatKickoff(fixture.utcDate)}
       </span>
-      <span style={{ color: "var(--home-ink-muted)", letterSpacing: "0.02em" }}>{teamLabel(fixture.awayTeam)}</span>
+      <span style={{ color: "var(--c97-ink-2)", letterSpacing: "0.02em" }}>{teamLabel(fixture.awayTeam)}</span>
     </>
   );
 }

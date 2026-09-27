@@ -1,4 +1,5 @@
 import { nflSnapshot } from "@/data/nflSnapshot";
+import { nflSeeds } from "@/components/football/seedLadder";
 import {
   buildNflHref,
   canonicalizeNflTeamId,
@@ -34,15 +35,16 @@ describe("nfl-state", () => {
   it("filters teams for conference and playoff views", () => {
     expect(filterTeamsForView("afc").every((team) => team.conference === "AFC")).toBe(true);
     expect(filterTeamsForView("nfc").every((team) => team.conference === "NFC")).toBe(true);
-    expect(
-      filterTeamsForView("playoffs").every(
-        (team) => team.seed !== null && team.seed >= 1 && team.seed <= 7
-      )
-    ).toBe(true);
-    // Before seeds are assigned (early season and offseason) the playoff view is
-    // empty and the default falls back to the site-wide default team.
+
+    // The NFLverse snapshot leaves `seed` null all season, so the playoffs
+    // view is built from the same derived seeding the seed-ladder signature
+    // uses (division leaders, then the best wildcards), not the raw field.
+    const derivedSeeds = nflSeeds(nflSnapshot.teams);
+    const playoffTeams = filterTeamsForView("playoffs");
+    expect(playoffTeams).toHaveLength(derivedSeeds.size);
+    expect(playoffTeams.every((team) => derivedSeeds.has(team.id))).toBe(true);
     expect(getDefaultTeamForView("playoffs")).toBe(
-      filterTeamsForView("playoffs")[0]?.id ?? DEFAULT_NFL_STATE.team
+      playoffTeams[0]?.id ?? DEFAULT_NFL_STATE.team
     );
   });
 

@@ -1,0 +1,51 @@
+/* Premier League Pulse / La Liga Pulse: the shared points ladder signature. */
+
+.c97-points-ladder {
+  display: block;
+  width: 100%;
+  height: auto;
+  color: var(--c97-ink);
+}
+
+.c97-ladder-line-label {
+  font-family: var(--c97-font-mono);
+  font-size: 15px;
+  fill: var(--c97-ink-2);
+}
+
+/*
+ * The measurement probe reads computed font-size off the outer `<text>`
+ * element, not its `tspan` children, so the size has to live here — the
+ * tspans below only vary weight and fill.
+ */
+.c97-ladder-mark-label {
+  font-family: var(--c97-font-mono);
+  font-size: 14px;
+}
+
+.c97-ladder-mark-name {
+  font-weight: 600;
+  fill: var(--c97-ink);
+}
+
+.c97-ladder-mark-points {
+  fill: var(--c97-ink-2);
+}
+
+/* Only one ladder shows. The narrow one keeps the plot tall enough at phone
+ * width that the club labels stay apart and the type stays above 11px. The
+ * selectors carry the plate class because the hero's signature rule sets
+ * every chart svg to display block. */
+.c97-points-ladder-plate svg.c97-points-ladder.c97-points-ladder--narrow {
+  display: none;
+}
+
+@media (max-width: 639px) {
+  .c97-points-ladder-plate svg.c97-points-ladder.c97-points-ladder--wide {
+    display: none;
+  }
+
+  .c97-points-ladder-plate svg.c97-points-ladder.c97-points-ladder--narrow {
+    display: block;
+  }
+}

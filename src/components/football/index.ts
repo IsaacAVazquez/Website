@@ -1,5 +1,4 @@
 export { SurfaceCard } from "./SurfaceCard";
-export { StatCard } from "./StatCard";
 export { MetricCard } from "./MetricCard";
 export { TeamResultPill } from "./TeamResultPill";
 export { InfoChip } from "./InfoChip";

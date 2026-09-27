@@ -27,6 +27,16 @@ export const PROJECT_PRESS: Readonly<Record<string, ProjectPress>> = {
   "/travel": { lead: "teal", second: "saffron" },
   "/travel-deals": { lead: "blue", second: "saffron" },
   "/food-map": { lead: "vermilion", second: "saffron" },
+  "/premier-league": { lead: "green", second: "blue" },
+  "/la-liga": { lead: "green", second: "vermilion" },
+  "/mlb": { lead: "green", second: "vermilion" },
+  "/nba": { lead: "saffron", second: "blue" },
+  "/nfl": { lead: "vermilion", second: "blue" },
+  "/world-cup-2026": { lead: "teal", second: "vermilion" },
+  "/golf": { lead: "green", second: "saffron" },
+  "/formula-1": { lead: "vermilion", second: "blue" },
+  "/fantasy-formula-1": { lead: "saffron", second: "vermilion" },
+  "/march-madness-2026": { lead: "blue", second: "vermilion" },
 };
 
 export function getProjectPress(route: string): ProjectPress | undefined {

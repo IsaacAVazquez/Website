@@ -1,0 +1,97 @@
+/* March Madness Bracket Analysis: the region bracket signature and the
+ * matchup list below it. The SVG is drawn at a fixed pixel size (see the
+ * inline width/minWidth on the element) rather than stretched to its
+ * container, so it scrolls sideways inside its own plate instead of
+ * shrinking its type below legibility on a phone. */
+
+.mm-bracket-scroll {
+  overflow-x: auto;
+}
+
+.mm-bracket-round-label {
+  font-family: var(--c97-font-mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  fill: var(--c97-ink-2);
+}
+
+.mm-bracket-seed {
+  font-family: var(--c97-font-mono);
+  font-size: 11px;
+  fill: var(--c97-ink-2);
+}
+
+.mm-bracket-team {
+  font-family: var(--c97-font-body);
+  font-size: 13px;
+  fill: var(--c97-ink-2);
+}
+
+.mm-bracket-team-winner {
+  font-weight: 600;
+  fill: var(--c97-ink);
+}
+
+.mm-bracket-upset-label {
+  font-family: var(--c97-font-mono);
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  fill: var(--c97-ink);
+}
+
+.mm-bracket-champion-name {
+  font-family: var(--c97-font-display);
+  font-size: 15px;
+  fill: var(--c97-ink);
+}
+
+/* The matchup list that stays the keyboard and screen-reader path to every
+ * round, site, and tag the bracket signature draws. */
+.mm-matchup {
+  display: grid;
+  border-top: 1px solid var(--c97-rule);
+}
+
+.mm-matchup-row {
+  display: grid;
+  grid-template-columns: 2rem minmax(0, 1fr);
+  column-gap: var(--c97-sp-2);
+  align-items: baseline;
+  padding: var(--c97-sp-2) var(--c97-sp-1);
+  border-bottom: 1px solid var(--c97-rule);
+}
+
+.mm-matchup-row[data-winner="true"] {
+  box-shadow: inset 3px 0 0 0 var(--c97-ink);
+}
+
+.mm-matchup-seed {
+  font-family: var(--c97-font-mono);
+  font-size: var(--c97-fs-small);
+  color: var(--c97-ink-2);
+  text-align: right;
+}
+
+.mm-matchup-name {
+  font-weight: 400;
+  color: var(--c97-ink-2);
+  min-width: 0;
+  overflow-wrap: break-word;
+}
+
+.mm-matchup-row[data-winner="true"] .mm-matchup-name {
+  font-weight: 600;
+  color: var(--c97-ink);
+}
+
+/* Tags sit on their own full-width line below the seed and name, so a long
+ * nowrap chip never has to share a track with them and force the row wide. */
+.mm-matchup-tags {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--c97-sp-1);
+  margin-top: var(--c97-sp-1);
+}

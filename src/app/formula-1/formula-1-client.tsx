@@ -1,26 +1,8 @@
 "use client";
 
-import {
-  startTransition,
-  useEffect,
-  useMemo,
-  useState,
-  type CSSProperties,
-  type ReactNode,
-} from "react";
+import { startTransition, useEffect, useMemo, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
-import {
-  ArrowDown,
-  ArrowUp,
-  CalendarDays,
-  CircleAlert,
-  Clock,
-  Flag,
-  MapPinned,
-  Medal,
-  Minus,
-  Trophy,
-} from "lucide-react";
+import { ArrowDown, ArrowUp, CircleAlert, Clock, Flag, Minus } from "lucide-react";
 import type {
   Formula1ConstructorStanding,
   Formula1DriverStanding,
@@ -33,20 +15,16 @@ import type {
 } from "@/types/formula1";
 import {
   buildFormula1Href,
+  FORMULA1_ROUTE,
   FORMULA1_VIEW_DESCRIPTIONS,
   FORMULA1_VIEW_LABELS,
   FORMULA1_VIEW_OPTIONS,
   normalizeFormula1State,
   resolveFormula1State,
 } from "./formula-1-state";
-import { HomeStatsPanel, type HomeStatsCell } from "@/components/home/HomeStatsPanel";
-import {
-  Article,
-  Briefcase,
-  Calendar,
-  ChartBar,
-  User,
-} from "@/components/ui/ServerIcons";
+import { Catalog97ProjectHero } from "@/components/catalog97/Catalog97ProjectHero";
+import { PROJECT_PRESS } from "@/constants/projectPress";
+import { TimingTowerSignature } from "./TimingTowerSignature";
 import styles from "./formula-1.module.css";
 
 interface Formula1ClientProps {
@@ -106,8 +84,6 @@ function formatPoints(value: number): string {
   return Number.isFinite(value) ? value.toFixed(0) : "0";
 }
 
-// Use Intl.NumberFormat with explicit signDisplay so the locale handles its
-// own decimal/grouping separators rather than hardcoding "+" + .toFixed(0).
 const DELTA_FORMATTER = new Intl.NumberFormat(undefined, {
   signDisplay: "exceptZero",
   maximumFractionDigits: 0,
@@ -146,49 +122,18 @@ function getMeetingStatusCopy(meeting: Formula1MeetingMeta): string {
   if (meeting.status === "upcoming") {
     return "Next weekend";
   }
-
   if (meeting.status === "live") {
     return "Live weekend";
   }
-
   return "Latest result";
-}
-
-function getMeetingToneStyle(status: Formula1MeetingMeta["status"]): CSSProperties {
-  switch (status) {
-    case "upcoming":
-      return {
-        borderColor: "color-mix(in srgb, var(--home-signal) 28%, var(--home-rule))",
-        background: "color-mix(in srgb, var(--home-signal) 8%, var(--home-paper-alt))",
-      };
-    case "live":
-      return {
-        borderColor: "color-mix(in srgb, var(--home-signal) 30%, var(--home-rule))",
-        background: "color-mix(in srgb, var(--home-signal) 12%, var(--home-paper-alt))",
-      };
-    case "completed":
-    default:
-      return {
-        borderColor: "var(--home-rule)",
-        background: "color-mix(in srgb, var(--home-paper-alt) 80%, var(--home-elev-mix))",
-      };
-  }
-}
-
-function getTeamAccentStyle(teamColor: string | null): CSSProperties {
-  return {
-    borderLeftWidth: "3px",
-    borderLeftStyle: "solid",
-    borderLeftColor: teamColor ?? "var(--home-rule)",
-  };
 }
 
 function getSessionAccent(type: string): string {
   const value = type.toLowerCase();
-  if (value.includes("race") && !value.includes("sprint")) return "var(--home-signal)";
-  if (value.includes("sprint")) return "var(--home-warning)";
-  if (value.includes("qualif")) return "var(--home-signal)";
-  return "color-mix(in srgb, var(--home-ink-muted) 70%, var(--home-rule))";
+  if (value.includes("race") && !value.includes("sprint")) return "var(--c97-accent)";
+  if (value.includes("sprint")) return "var(--c97-warning)";
+  if (value.includes("qualif")) return "var(--c97-accent)";
+  return "var(--c97-ink-2)";
 }
 
 function pad2(value: number): string {
@@ -204,7 +149,7 @@ function PositionChangeIndicator({
 }) {
   if (previousPosition === null || previousPosition === currentPosition) {
     return (
-      <span className="inline-flex items-center gap-1 text-sm text-[var(--home-ink-muted)]">
+      <span className="inline-flex items-center gap-1 text-sm" style={{ color: "var(--c97-ink-2)" }}>
         <Minus size={14} aria-hidden="true" />
         <span>Flat</span>
       </span>
@@ -214,7 +159,7 @@ function PositionChangeIndicator({
   const delta = previousPosition - currentPosition;
   const isUp = delta > 0;
   const absoluteDelta = Math.abs(delta);
-  const accent = isUp ? "var(--home-positive)" : "var(--home-negative)";
+  const accent = isUp ? "var(--c97-positive)" : "var(--c97-negative)";
   const Icon = isUp ? ArrowUp : ArrowDown;
   const label = `${isUp ? "Up" : "Down"} ${absoluteDelta}`;
 
@@ -247,7 +192,7 @@ function CountryFlag({
       alt={`${countryName} flag`}
       loading="lazy"
       decoding="async"
-      className="h-4 w-7 flex-shrink-0 rounded-[3px] border border-[var(--home-rule)] object-cover"
+      className="h-4 w-7 flex-shrink-0 object-cover"
     />
   );
 }
@@ -263,13 +208,19 @@ function DriverHeadshot({
   teamColor: string | null;
   size?: number;
 }) {
-  const dimension = { width: size, height: size };
+  const dimension = { width: size, height: size, borderRadius: "50%" };
 
   if (!url) {
     return (
       <div
-        className="flex flex-shrink-0 items-center justify-center rounded-full border bg-[var(--home-paper-alt)] text-3xs font-semibold uppercase tracking-[0.08em] text-[var(--home-ink-muted)]"
-        style={{ borderColor: teamColor ?? "var(--home-rule)", ...dimension }}
+        className="flex flex-shrink-0 items-center justify-center border text-3xs font-semibold uppercase"
+        style={{
+          borderColor: teamColor ?? "var(--c97-ink-2)",
+          background: "var(--c97-field)",
+          color: "var(--c97-ink-2)",
+          letterSpacing: "0.08em",
+          ...dimension,
+        }}
         aria-hidden="true"
       >
         {name
@@ -288,8 +239,8 @@ function DriverHeadshot({
       alt={name}
       loading="lazy"
       decoding="async"
-      className="flex-shrink-0 rounded-full border bg-[var(--home-paper-alt)] object-cover object-top"
-      style={{ borderColor: teamColor ?? "var(--home-rule)", ...dimension }}
+      className="flex-shrink-0 border object-cover object-top"
+      style={{ borderColor: teamColor ?? "var(--c97-ink-2)", background: "var(--c97-field)", ...dimension }}
     />
   );
 }
@@ -297,74 +248,23 @@ function DriverHeadshot({
 function TeamSwatch({ color }: { color: string | null }) {
   return (
     <span
-      className="flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-full border"
+      className="flex h-9 w-9 flex-shrink-0 items-center justify-center border"
       style={{
-        borderColor: color ?? "var(--home-rule)",
-        background: color
-          ? `color-mix(in srgb, ${color} 18%, var(--home-paper-alt))`
-          : "var(--home-paper-alt)",
+        borderColor: color ?? "var(--c97-ink-2)",
+        borderRadius: "50%",
+        background: color ? `color-mix(in srgb, ${color} 18%, var(--c97-field))` : "var(--c97-field)",
       }}
       aria-hidden="true"
     >
-      <span
-        className="h-3 w-3 rounded-full"
-        style={{ background: color ?? "var(--home-ink-muted)" }}
-      />
+      <span style={{ height: "12px", width: "12px", borderRadius: "50%", background: color ?? "var(--c97-ink-2)" }} />
     </span>
   );
 }
 
-function TrackOutline({
-  meeting,
-  className = "",
-}: {
-  meeting: Formula1MeetingMeta;
-  className?: string;
-}) {
-  if (meeting.circuitImage) {
-    return (
-      <img
-        src={meeting.circuitImage}
-        alt=""
-        loading="lazy"
-        decoding="async"
-        aria-hidden="true"
-        className={`object-contain opacity-80 dark:invert ${className}`.trim()}
-      />
-    );
-  }
-
-  return (
-    <MapPinned
-      size={26}
-      aria-hidden="true"
-      className={`text-[var(--home-ink-muted)] ${className}`.trim()}
-    />
-  );
-}
-
-function CircuitMarker({ meeting }: { meeting: Formula1MeetingMeta }) {
-  return (
-    <div
-      className="hidden h-20 w-24 flex-shrink-0 flex-col items-center justify-center gap-1.5 rounded-[var(--radius-2xl)] border border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper-alt)_82%,var(--home-elev-mix))] p-2.5 text-center sm:flex"
-      aria-label={`${meeting.circuitShortName} circuit marker`}
-    >
-      <TrackOutline meeting={meeting} className="h-9 w-12" />
-      <span
-        className="max-w-full text-2xs font-semibold uppercase leading-tight text-[var(--home-ink-muted)]"
-        style={{ overflowWrap: "anywhere" }}
-      >
-        {meeting.circuitShortName}
-      </span>
-    </div>
-  );
-}
-
 /**
- * Five-light F1 start gantry. Purely decorative. The lights arm left to right,
- * hold red, then go dark together — the real start procedure in miniature —
- * looping on a timer. Honors `prefers-reduced-motion` (lights hold lit) via the
- * CSS module.
+ * Five-light F1 start gantry. Purely decorative. The lights arm left to
+ * right and hold lit. Honors `prefers-reduced-motion` (lights hold lit) via
+ * the CSS module.
  */
 function StartLights() {
   return (
@@ -422,11 +322,11 @@ function useCountdown(targetIso: string | null): CountdownParts | null {
 
 function CountdownCell({ value, label }: { value: string; label: string }) {
   return (
-    <div className="rounded-[var(--radius-2xl)] border border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper)_86%,var(--home-elev-mix))] px-2 py-2.5 text-center">
-      <p className="mb-0 text-[1.6rem] font-semibold leading-none tracking-[-0.04em] tabular-nums text-[var(--home-ink)]">
+    <div className="px-2 py-2.5 text-center" style={{ border: "1px solid var(--c97-rule)", background: "var(--c97-field)" }}>
+      <p className="c97-mono mb-0 text-[1.6rem] leading-none" style={{ color: "var(--c97-ink)" }}>
         {value}
       </p>
-      <p className="mb-0 mt-1.5 text-3xs font-semibold uppercase tracking-[0.16em] text-[var(--home-ink-muted)]">
+      <p className="mb-0 mt-1.5 text-3xs font-semibold uppercase" style={{ color: "var(--c97-ink-2)", letterSpacing: "0.16em" }}>
         {label}
       </p>
     </div>
@@ -438,12 +338,13 @@ function RaceCountdown({ targetIso }: { targetIso: string | null }) {
 
   if (parts?.isPast) {
     return (
-      <div className="flex items-center gap-2 rounded-[var(--radius-2xl)] border border-[color-mix(in_srgb,var(--home-signal)_35%,var(--home-rule))] bg-[color-mix(in_srgb,var(--home-signal)_14%,var(--home-paper))] px-4 py-3">
+      <div className="flex items-center gap-2 px-4 py-3" style={{ border: "1px solid var(--c97-rule)", background: "var(--c97-field)" }}>
         <span
-          className="h-2.5 w-2.5 flex-shrink-0 rounded-full bg-[var(--home-positive)]"
+          className="h-2.5 w-2.5 flex-shrink-0"
+          style={{ borderRadius: "50%", background: "var(--c97-positive)" }}
           aria-hidden="true"
         />
-        <p className="mb-0 text-sm font-semibold text-[var(--home-ink)]">
+        <p className="mb-0 text-sm font-semibold" style={{ color: "var(--c97-ink)" }}>
           Lights out. The race weekend is underway.
         </p>
       </div>
@@ -459,7 +360,7 @@ function RaceCountdown({ targetIso }: { targetIso: string | null }) {
 
   return (
     <div>
-      <p className="mb-2 flex items-center gap-1.5 text-2xs font-semibold uppercase tracking-[0.18em] text-[var(--home-ink-muted)]">
+      <p className="mb-2 flex items-center gap-1.5 text-2xs font-semibold uppercase" style={{ color: "var(--c97-ink-2)", letterSpacing: "0.18em" }}>
         <Clock size={13} aria-hidden="true" />
         Lights out in
       </p>
@@ -472,60 +373,7 @@ function RaceCountdown({ targetIso }: { targetIso: string | null }) {
   );
 }
 
-function SeasonProgress({
-  completed,
-  total,
-}: {
-  completed: number;
-  total: number;
-}) {
-  if (total <= 0) {
-    return null;
-  }
-
-  const safeCompleted = Math.min(Math.max(completed, 0), total);
-  const pct = Math.round((safeCompleted / total) * 100);
-
-  return (
-    <div>
-      <div className="mb-2 flex items-baseline justify-between gap-3">
-        <p className="home-kicker mb-0">Season progress</p>
-        <p className="mb-0 text-xs font-semibold tabular-nums text-[var(--home-ink-muted)]">
-          Round {safeCompleted} of {total} · {pct}%
-        </p>
-      </div>
-      <div
-        className="flex items-stretch gap-[3px]"
-        role="img"
-        aria-label={`${safeCompleted} of ${total} rounds complete, ${pct} percent of the season`}
-      >
-        {Array.from({ length: total }).map((_, index) => {
-          const isDone = index < safeCompleted;
-          const isNext = index === safeCompleted;
-          return (
-            <span
-              key={index}
-              className="h-2.5 flex-1 rounded-full"
-              style={{
-                background: isDone
-                  ? "linear-gradient(180deg, color-mix(in srgb, var(--home-signal) 78%, var(--home-ink)) 0%, var(--home-signal) 100%)"
-                  : isNext
-                    ? "color-mix(in srgb, var(--home-signal) 60%, var(--home-paper))"
-                    : "color-mix(in srgb, var(--home-ink) 10%, var(--home-paper-alt))",
-                boxShadow: isNext
-                  ? "0 0 0 1px color-mix(in srgb, var(--home-signal) 45%, transparent)"
-                  : undefined,
-              }}
-            />
-          );
-        })}
-      </div>
-    </div>
-  );
-}
-
 interface LeaderboardRowData {
-  key: string;
   position: number;
   previousPosition: number | null;
   primary: string;
@@ -550,75 +398,57 @@ function LeaderboardRow({
   const pct = row.points <= 0 ? 0 : Math.max(4, Math.round(ratio * 100));
   const gap = Math.max(0, Math.round(leaderPoints - row.points));
   const isLeader = row.position === 1;
-  const accent = row.teamColor ?? "var(--home-signal)";
+  const accent = row.teamColor ?? "var(--c97-ink-2)";
 
   return (
     <li
-      className="rounded-[var(--radius-2xl)] border border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper-alt)_80%,var(--home-elev-mix))] px-3.5 py-3 transition-[border-color,box-shadow] duration-200 hover:border-[color-mix(in_srgb,var(--home-ink)_18%,var(--home-rule))]"
-      style={getTeamAccentStyle(row.teamColor)}
+      className="flex flex-col gap-2.5 px-3.5 py-3"
+      style={{ background: "var(--c97-field)", borderLeft: `3px solid ${accent}` }}
     >
       <div className="flex items-center gap-3">
-        <span className="w-6 flex-shrink-0 text-center text-sm font-semibold tabular-nums text-[var(--home-ink)]">
+        <span className="c97-mono w-6 flex-shrink-0 text-center text-sm" style={{ color: "var(--c97-ink)" }}>
           {row.position}
         </span>
         {showHeadshot ? (
-          <DriverHeadshot
-            url={row.headshotUrl}
-            name={row.primary}
-            teamColor={row.teamColor}
-          />
+          <DriverHeadshot url={row.headshotUrl} name={row.primary} teamColor={row.teamColor} />
         ) : (
           <TeamSwatch color={row.teamColor} />
         )}
         <div className="min-w-0 flex-1">
-          <p className="mb-0 truncate font-semibold text-[var(--home-ink)]">
+          <p className="mb-0 truncate font-semibold" style={{ color: "var(--c97-ink)" }}>
             {row.primary}
           </p>
           {row.secondary || row.badge ? (
-            <p className="mb-0 truncate text-xs uppercase tracking-[0.12em] text-[var(--home-ink-muted)]">
+            <p className="mb-0 truncate text-xs uppercase" style={{ color: "var(--c97-ink-2)", letterSpacing: "0.12em" }}>
               {row.secondary ?? row.badge}
             </p>
           ) : null}
         </div>
-        <PositionChangeIndicator
-          currentPosition={row.position}
-          previousPosition={row.previousPosition}
-        />
+        <PositionChangeIndicator currentPosition={row.position} previousPosition={row.previousPosition} />
         <div className="w-12 flex-shrink-0 text-right">
-          <p className="mb-0 text-base font-semibold tabular-nums text-[var(--home-ink)]">
+          <p className="c97-mono mb-0 text-base" style={{ color: "var(--c97-ink)" }}>
             {formatPoints(row.points)}
           </p>
-          <p className="mb-0 text-3xs font-semibold uppercase tracking-[0.16em] text-[var(--home-ink-muted)]">
+          <p className="mb-0 text-3xs font-semibold uppercase" style={{ color: "var(--c97-ink-2)" }}>
             pts
           </p>
         </div>
       </div>
-      <div className="mt-2.5 flex items-center gap-3">
-        <div
-          className="relative h-1.5 flex-1 overflow-hidden rounded-full"
-          style={{
-            background: "color-mix(in srgb, var(--home-ink) 8%, var(--home-paper-alt))",
-          }}
-        >
-          <span
-            className="absolute inset-y-0 left-0 rounded-full"
-            style={{
-              width: `${pct}%`,
-              background: `linear-gradient(90deg, color-mix(in srgb, ${accent} 45%, transparent), ${accent})`,
-              boxShadow: `0 0 8px color-mix(in srgb, ${accent} 30%, transparent)`,
-            }}
-          />
+      <div className="flex items-center gap-3">
+        <div className="relative h-1.5 flex-1" style={{ background: "var(--c97-rule)" }}>
+          <span className="absolute inset-y-0 left-0" style={{ width: `${pct}%`, background: accent }} />
         </div>
         {row.pointsDelta > 0 ? (
           <span
-            className="inline-flex flex-shrink-0 items-center gap-0.5 text-2xs font-semibold tabular-nums text-[var(--home-positive)]"
+            className="inline-flex flex-shrink-0 items-center gap-0.5 text-2xs font-semibold"
+            style={{ color: "var(--c97-positive)" }}
             title="Points gained at the last race"
           >
             <ArrowUp size={11} aria-hidden="true" />
             {formatDelta(row.pointsDelta)}
           </span>
         ) : null}
-        <span className="w-[6.5ch] flex-shrink-0 text-right text-2xs font-semibold uppercase tracking-[0.08em] tabular-nums text-[var(--home-ink-muted)]">
+        <span className="w-[6.5ch] flex-shrink-0 text-right text-2xs font-semibold uppercase" style={{ color: "var(--c97-ink-2)" }}>
           {isLeader ? "Leader" : `−${gap}`}
         </span>
       </div>
@@ -638,7 +468,7 @@ function DriverLeaderboard({
 
   if (rows.length === 0) {
     return (
-      <p className="mb-0 text-sm leading-6 text-[var(--home-ink-muted)]">
+      <p className="mb-0 text-sm leading-6" style={{ color: "var(--c97-ink-2)" }}>
         OpenF1 has not published a race-backed championship table yet.
       </p>
     );
@@ -652,7 +482,6 @@ function DriverLeaderboard({
           showHeadshot
           leaderPoints={leaderPoints}
           row={{
-            key: `${standing.driverNumber}`,
             position: standing.position,
             previousPosition: standing.previousPosition,
             primary: standing.driverName,
@@ -681,7 +510,7 @@ function ConstructorLeaderboard({
 
   if (rows.length === 0) {
     return (
-      <p className="mb-0 text-sm leading-6 text-[var(--home-ink-muted)]">
+      <p className="mb-0 text-sm leading-6" style={{ color: "var(--c97-ink-2)" }}>
         Constructor standings will show up after OpenF1 publishes a race-backed table.
       </p>
     );
@@ -695,7 +524,6 @@ function ConstructorLeaderboard({
           showHeadshot={false}
           leaderPoints={leaderPoints}
           row={{
-            key: standing.teamName,
             position: standing.position,
             previousPosition: standing.previousPosition,
             primary: standing.teamName,
@@ -716,30 +544,18 @@ function SectionHeader({
   kicker,
   title,
   description,
-  icon,
 }: {
   kicker: string;
   title: string;
   description: string;
-  icon?: ReactNode;
 }) {
   return (
-    <div className="mb-5 flex items-start justify-between gap-4">
-      <div className="flex items-start gap-2">
-        {icon ? (
-          <span className="mt-1 text-[var(--home-ink-muted)]">{icon}</span>
-        ) : null}
-        <div>
-          <p className="home-kicker mb-1">{kicker}</p>
-          <h2
-            className="text-[1.35rem] font-semibold tracking-[-0.04em] text-[var(--home-ink)]"
-            style={{ fontFamily: "var(--font-home-sans)" }}
-          >
-            {title}
-          </h2>
-        </div>
+    <div className="mb-4 flex flex-col gap-2 sm:flex-row sm:flex-wrap sm:items-baseline sm:justify-between sm:gap-3">
+      <div>
+        <p className="c97-kicker mb-1">{kicker}</p>
+        <h3 className="c97-serif c97-h3">{title}</h3>
       </div>
-      <p className="mb-0 max-w-[32ch] text-right text-sm leading-6 text-[var(--home-ink-muted)]">
+      <p className="mb-0 sm:max-w-[32ch] sm:text-right" style={{ fontSize: "var(--c97-fs-small)", color: "var(--c97-ink-2)" }}>
         {description}
       </p>
     </div>
@@ -747,41 +563,31 @@ function SectionHeader({
 }
 
 function ResultRow({ entry }: { entry: Formula1RaceResultEntry }) {
+  const accent = entry.teamColor ?? "var(--c97-ink-2)";
   return (
-    <li
-      className="rounded-[var(--radius-2xl)] border border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper-alt)_80%,var(--home-elev-mix))] px-4 py-3"
-      style={getTeamAccentStyle(entry.teamColor)}
-    >
+    <li className="px-4 py-3" style={{ background: "var(--c97-field)", borderLeft: `3px solid ${accent}` }}>
       <div className="flex items-start justify-between gap-4">
         <div className="min-w-0">
-          <p className="mb-0 font-semibold text-[var(--home-ink)]">
+          <p className="mb-0 font-semibold" style={{ color: "var(--c97-ink)" }}>
             {entry.position ?? "NC"} · {entry.driverName}
           </p>
-          <p className="mb-0 mt-1 text-sm leading-6 text-[var(--home-ink-muted)]">
+          <p className="mb-0 mt-1 text-sm" style={{ color: "var(--c97-ink-2)" }}>
             {entry.teamName ?? "Unknown team"} · {entry.statusLabel}
           </p>
         </div>
         <div className="text-right">
-          <p className="mb-0 font-semibold text-[var(--home-ink)]">{formatPoints(entry.points)}</p>
-          <p className="mb-0 mt-1 text-xs uppercase tracking-[0.14em] text-[var(--home-ink-muted)]">
+          <p className="c97-mono mb-0 font-semibold" style={{ color: "var(--c97-ink)" }}>
+            {formatPoints(entry.points)}
+          </p>
+          <p className="mb-0 mt-1 text-xs uppercase" style={{ color: "var(--c97-ink-2)" }}>
             points
           </p>
         </div>
       </div>
-      <div className="mt-3 flex flex-wrap gap-2 text-xs font-medium text-[var(--home-ink-muted)]">
-        <span className="rounded-full border border-[var(--home-rule)] px-2.5 py-1">
-          {entry.lapsCompleted} laps
-        </span>
-        {entry.gapToLeaderLabel ? (
-          <span className="rounded-full border border-[var(--home-rule)] px-2.5 py-1">
-            {entry.gapToLeaderLabel}
-          </span>
-        ) : null}
-        {entry.durationLabel ? (
-          <span className="rounded-full border border-[var(--home-rule)] px-2.5 py-1">
-            {entry.durationLabel}
-          </span>
-        ) : null}
+      <div className="mt-3 flex flex-wrap gap-2">
+        <span className="c97-chip">{entry.lapsCompleted} laps</span>
+        {entry.gapToLeaderLabel ? <span className="c97-chip">{entry.gapToLeaderLabel}</span> : null}
+        {entry.durationLabel ? <span className="c97-chip">{entry.durationLabel}</span> : null}
       </div>
     </li>
   );
@@ -790,7 +596,7 @@ function ResultRow({ entry }: { entry: Formula1RaceResultEntry }) {
 function MeetingSchedule({ meeting }: { meeting: Formula1MeetingSummary }) {
   if (meeting.sessions.length === 0) {
     return (
-      <p className="mb-0 text-sm leading-6 text-[var(--home-ink-muted)]">
+      <p className="mb-0 text-sm leading-6" style={{ color: "var(--c97-ink-2)" }}>
         Session times have not landed in the snapshot yet.
       </p>
     );
@@ -803,24 +609,20 @@ function MeetingSchedule({ meeting }: { meeting: Formula1MeetingSummary }) {
         return (
           <li
             key={session.key}
-            className="flex min-h-[44px] items-center justify-between gap-4 rounded-[var(--radius-2xl)] border border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper-alt)_80%,var(--home-elev-mix))] px-4 py-3"
-            style={{ borderLeftWidth: "3px", borderLeftColor: accent }}
+            className="min-h-[44px] px-4 py-3"
+            style={{ background: "var(--c97-field)", borderLeft: `3px solid ${accent}` }}
           >
-            <div className="flex min-w-0 items-center gap-2.5">
-              <span
-                className="h-2 w-2 flex-shrink-0 rounded-full"
-                style={{ background: accent }}
-                aria-hidden="true"
-              />
-              <div className="min-w-0">
-                <p className="mb-0 truncate font-semibold text-[var(--home-ink)]">{session.name}</p>
-                <p className="mb-0 mt-1 text-sm text-[var(--home-ink-muted)]">{session.type}</p>
-              </div>
-            </div>
-            <div className="flex-shrink-0 text-right text-sm text-[var(--home-ink-muted)]">
-              <p className="mb-0">{formatLongDateTimeLabel(session.startAt)}</p>
-              <p className="mb-0 mt-1">{formatLongDateTimeLabel(session.endAt)}</p>
-            </div>
+            <p className="mb-0 font-semibold" style={{ color: "var(--c97-ink)" }}>
+              {session.name}
+              {session.type !== session.name ? (
+                <span className="ml-2 font-normal" style={{ color: "var(--c97-ink-2)" }}>
+                  {session.type}
+                </span>
+              ) : null}
+            </p>
+            <p className="mb-0 mt-1 text-sm" style={{ color: "var(--c97-ink-2)" }}>
+              {formatLongDateTimeLabel(session.startAt)} to {formatLongDateTimeLabel(session.endAt)}
+            </p>
           </li>
         );
       })}
@@ -836,60 +638,38 @@ function MeetingDetailPanel({
   compact?: boolean;
 }) {
   return (
-    <section className="home-card p-5 sm:p-6">
+    <div className="c97-panel">
       <div className="flex flex-wrap items-start justify-between gap-4">
-        <div className="flex min-w-0 items-start gap-4">
-          <CircuitMarker meeting={meeting} />
-          <div className="min-w-0">
-            <div className="flex items-center gap-2">
-              <p className="home-kicker mb-0">{getMeetingStatusCopy(meeting)}</p>
-              <CountryFlag flagUrl={meeting.countryFlag} countryName={meeting.countryName} />
-            </div>
-            <h2
-              className="mt-1 text-[1.4rem] font-semibold tracking-[-0.05em] text-[var(--home-ink)]"
-              style={{ fontFamily: "var(--font-home-sans)" }}
-            >
-              {meeting.name}
-            </h2>
-            <p className="mt-2 mb-0 max-w-[48ch] text-sm leading-6 text-[var(--home-ink-muted)]">
-              {meeting.circuitShortName} in {meeting.location}. I keep the schedule and the
-              classification in one place so the weekend reads cleanly.
-            </p>
+        <div className="min-w-0">
+          <div className="flex items-center gap-2">
+            <p className="c97-kicker mb-0">{getMeetingStatusCopy(meeting)}</p>
+            <CountryFlag flagUrl={meeting.countryFlag} countryName={meeting.countryName} />
           </div>
+          <h3 className="c97-serif c97-h3 mt-1">{meeting.name}</h3>
+          <p className="mt-2 mb-0 max-w-[48ch] text-sm leading-6" style={{ color: "var(--c97-ink-2)" }}>
+            {meeting.circuitShortName} in {meeting.location}. I keep the schedule and the
+            classification in one place so the weekend reads cleanly.
+          </p>
         </div>
-        <div className="flex flex-wrap gap-2 text-xs font-semibold uppercase tracking-[0.14em] text-[var(--home-ink-muted)]">
-          <span className="rounded-full border border-[var(--home-rule)] px-3 py-1.5">
-            {formatDateLabel(meeting.startAt)}
-          </span>
-          {meeting.circuitType ? (
-            <span className="rounded-full border border-[var(--home-rule)] px-3 py-1.5">
-              {meeting.circuitType}
-            </span>
-          ) : null}
-          {meeting.hasSprint ? (
-            <span className="rounded-full border border-[color-mix(in_srgb,var(--home-warning)_45%,var(--home-rule))] bg-[color-mix(in_srgb,var(--home-warning)_12%,transparent)] px-3 py-1.5 text-[var(--home-ink)]">
-              Sprint weekend
-            </span>
-          ) : null}
-          {formatGmtOffset(meeting.gmtOffset) ? (
-            <span className="rounded-full border border-[var(--home-rule)] px-3 py-1.5">
-              {formatGmtOffset(meeting.gmtOffset)}
-            </span>
-          ) : null}
+        <div className="flex flex-wrap gap-2">
+          <span className="c97-chip">{formatDateLabel(meeting.startAt)}</span>
+          {meeting.circuitType ? <span className="c97-chip">{meeting.circuitType}</span> : null}
+          {meeting.hasSprint ? <span className="c97-chip c97-chip-warning">Sprint weekend</span> : null}
+          {formatGmtOffset(meeting.gmtOffset) ? <span className="c97-chip">{formatGmtOffset(meeting.gmtOffset)}</span> : null}
         </div>
       </div>
 
-      <div className={`mt-6 grid gap-6 ${compact ? "lg:grid-cols-[1.1fr_0.9fr]" : "xl:grid-cols-[1.05fr_0.95fr]"}`}>
+      <div className={`mt-6 grid grid-cols-1 gap-6 ${compact ? "lg:grid-cols-[1.1fr_0.9fr]" : "xl:grid-cols-[1.05fr_0.95fr]"}`}>
         <div>
-          <p className="home-kicker mb-3">Weekend schedule</p>
+          <p className="c97-kicker mb-3">Weekend schedule</p>
           <MeetingSchedule meeting={meeting} />
-          <p className="mt-4 mb-0 text-xs leading-6 text-[var(--home-ink-muted)]">
+          <p className="mt-4 mb-0 text-xs leading-6" style={{ color: "var(--c97-ink-2)" }}>
             Times render in your local timezone. The weekend offset chip shows the track timezone.
           </p>
         </div>
 
         <div>
-          <p className="home-kicker mb-3">
+          <p className="c97-kicker mb-3">
             {meeting.resultPublished ? "Race classification" : "Result status"}
           </p>
           {meeting.resultPublished ? (
@@ -899,24 +679,16 @@ function MeetingDetailPanel({
               ))}
             </ol>
           ) : (
-            <div className="rounded-[var(--radius-2xl)] border border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper-alt)_80%,var(--home-elev-mix))] p-4">
-              <p className="mb-0 text-sm leading-6 text-[var(--home-ink-muted)]">
-                OpenF1 has not published the official classification for this race yet. I still keep
-                the weekend here so the calendar stays intact.
-              </p>
-            </div>
+            <p className="mb-0 text-sm leading-6" style={{ color: "var(--c97-ink-2)" }}>
+              OpenF1 has not published the official classification for this race yet. I still keep
+              the weekend here so the calendar stays intact.
+            </p>
           )}
         </div>
       </div>
-    </section>
+    </div>
   );
 }
-
-const PODIUM_META = [
-  { label: "P1", accent: "#D6B65A", step: "sm:min-h-[8rem]", order: "sm:order-2" },
-  { label: "P2", accent: "#A4A4AC", step: "sm:min-h-[6rem]", order: "sm:order-1" },
-  { label: "P3", accent: "#B07845", step: "sm:min-h-[4.5rem]", order: "sm:order-3" },
-] as const;
 
 function PodiumDisplay({ meeting }: { meeting: Formula1MeetingSummary }) {
   if (!meeting.resultPublished || meeting.podium.length === 0) {
@@ -926,74 +698,51 @@ function PodiumDisplay({ meeting }: { meeting: Formula1MeetingSummary }) {
   const slots = meeting.podium.slice(0, 3);
 
   return (
-    <section className="home-card p-5 sm:p-6">
+    <div>
       <SectionHeader
         kicker="Podium"
         title={meeting.name}
         description="Top three from the last published classification."
-        icon={<Medal size={16} />}
       />
 
-      <ol className="grid items-end gap-3 pl-0 sm:grid-cols-3">
+      <ol className={`pl-0 ${styles.podiumRow}`}>
         {slots.map((entry, index) => {
-          const meta = PODIUM_META[index] ?? PODIUM_META[2];
-          const teamColor = entry.teamColor ?? "var(--home-rule)";
+          const accent = entry.teamColor ?? "var(--c97-ink-2)";
           return (
             <li
               key={`${meeting.key}-podium-${entry.driverNumber}`}
-              className={`flex flex-col ${meta.order}`}
+              className="c97-panel"
+              style={{ borderTop: `4px solid ${accent}` }}
             >
-              <div
-                className="rounded-t-[var(--radius-2xl)] border border-b-0 bg-[color-mix(in_srgb,var(--home-paper-alt)_82%,var(--home-elev-mix))] p-4"
-                style={{ borderColor: teamColor, borderTopWidth: "3px" }}
-              >
-                <div className="flex items-center gap-3">
-                  <DriverHeadshot
-                    url={entry.headshotUrl}
-                    name={entry.driverName}
-                    teamColor={entry.teamColor}
-                    size={44}
-                  />
-                  <div className="min-w-0">
-                    <p className="mb-0 truncate font-semibold text-[var(--home-ink)]">
-                      {entry.driverName}
-                    </p>
-                    <p className="mb-0 text-xs uppercase tracking-[0.14em] text-[var(--home-ink-muted)]">
-                      {entry.teamName ?? "Unknown team"}
-                    </p>
-                  </div>
-                </div>
-                {entry.gapToLeaderLabel ? (
-                  <p className="mt-3 mb-0 text-xs font-medium text-[var(--home-ink-muted)]">
-                    {entry.gapToLeaderLabel}
+              <div className="flex items-center justify-between">
+                <span className={`c97-mono ${styles.podiumRank}`} style={{ color: "var(--c97-ink-2)" }}>
+                  P{index + 1}
+                </span>
+                <span className="c97-mono text-sm" style={{ color: "var(--c97-ink)" }}>
+                  {formatPoints(entry.points)} pts
+                </span>
+              </div>
+              <div className="mt-3 flex items-center gap-3">
+                <DriverHeadshot url={entry.headshotUrl} name={entry.driverName} teamColor={entry.teamColor} size={44} />
+                <div className="min-w-0">
+                  <p className="mb-0 truncate font-semibold" style={{ color: "var(--c97-ink)" }}>
+                    {entry.driverName}
                   </p>
-                ) : null}
+                  <p className="mb-0 truncate text-xs uppercase" style={{ color: "var(--c97-ink-2)" }}>
+                    {entry.teamName ?? "Unknown team"}
+                  </p>
+                </div>
               </div>
-              <div
-                className={`flex items-end justify-between gap-2 rounded-b-[var(--radius-2xl)] border border-t-0 px-4 py-3 ${meta.step}`}
-                style={{
-                  borderColor: teamColor,
-                  background: `linear-gradient(180deg, color-mix(in srgb, ${meta.accent} 24%, var(--home-paper-alt)) 0%, color-mix(in srgb, var(--home-paper-alt) 92%, var(--home-elev-mix)) 100%)`,
-                }}
-              >
-                <span
-                  className="text-[2.6rem] font-semibold leading-none tracking-[-0.04em]"
-                  style={{ fontFamily: "var(--font-home-serif)", color: meta.accent }}
-                >
-                  {index + 1}
-                </span>
-                <span className="pb-1 text-right text-2xs font-semibold uppercase tracking-[0.14em] text-[var(--home-ink-muted)]">
-                  {meta.label}
-                  <span className="block text-[var(--home-ink)]">
-                    {formatPoints(entry.points)} pts
-                  </span>
-                </span>
-              </div>
+              {entry.gapToLeaderLabel ? (
+                <p className="mt-3 mb-0 text-xs" style={{ color: "var(--c97-ink-2)" }}>
+                  {entry.gapToLeaderLabel}
+                </p>
+              ) : null}
             </li>
           );
         })}
       </ol>
-    </section>
+    </div>
   );
 }
 
@@ -1007,7 +756,7 @@ function MeetingStrip({
   onSelect: (meetingKey: string) => void;
 }) {
   return (
-    <div className="flex gap-3 overflow-x-auto pb-1">
+    <div className={styles.raceStrip}>
       {meetings.map((meeting) => {
         const isSelected = meeting.key === selectedMeetingKey;
         return (
@@ -1015,25 +764,17 @@ function MeetingStrip({
             key={meeting.key}
             type="button"
             onClick={() => onSelect(meeting.key)}
-            className="min-h-[44px] min-w-[220px] flex-shrink-0 rounded-[var(--radius-3xl)] border px-4 py-3 text-left transition-[border-color,background-color,box-shadow] duration-200"
-            style={
-              isSelected
-                ? {
-                    ...getMeetingToneStyle(meeting.status),
-                    boxShadow: "var(--shadow-sm)",
-                  }
-                : getMeetingToneStyle("completed")
-            }
+            className={styles.raceStripItem}
             aria-pressed={isSelected}
           >
             <div className="flex items-center justify-between gap-2">
-              <p className="mb-0 text-xs font-semibold uppercase tracking-[0.16em] text-[var(--home-ink-muted)]">
-                {meeting.status}
-              </p>
+              <p className="c97-kicker mb-0">{meeting.status}</p>
               <CountryFlag flagUrl={meeting.countryFlag} countryName={meeting.countryName} />
             </div>
-            <p className="mt-2 mb-0 font-semibold text-[var(--home-ink)]">{meeting.name}</p>
-            <p className="mt-1 mb-0 text-sm text-[var(--home-ink-muted)]">
+            <p className="c97-serif mt-2 mb-0" style={{ fontSize: "var(--c97-fs-body)" }}>
+              {meeting.name}
+            </p>
+            <p className="mt-1 mb-0 text-sm" style={{ color: "var(--c97-ink-2)" }}>
               {formatDateLabel(meeting.startAt)} · {meeting.circuitShortName}
             </p>
           </button>
@@ -1054,7 +795,7 @@ function CalendarTimeline({
 }) {
   return (
     <ol className="space-y-3 pl-0">
-      {meetings.map((meeting) => {
+      {meetings.map((meeting, index) => {
         const isSelected = meeting.key === selectedMeetingKey;
 
         return (
@@ -1062,34 +803,30 @@ function CalendarTimeline({
             <button
               type="button"
               onClick={() => onSelect(meeting.key)}
-              className="min-h-[44px] w-full rounded-[var(--radius-3xl)] border p-4 text-left transition-[border-color,background-color,box-shadow] duration-200"
-              style={
-                isSelected
-                  ? {
-                      ...getMeetingToneStyle(meeting.status),
-                      boxShadow: "var(--shadow-sm)",
-                    }
-                  : getMeetingToneStyle("completed")
-              }
               aria-pressed={isSelected}
+              className="c97-row min-h-[44px] w-full px-4 py-3 text-left"
+              style={{
+                background: isSelected ? "var(--c97-field)" : "transparent",
+                borderBottom: "1px solid var(--c97-rule)",
+              }}
             >
-              <div className="flex items-start justify-between gap-4">
-                <div className="min-w-0">
-                  <p className="mb-0 text-xs font-semibold uppercase tracking-[0.16em] text-[var(--home-ink-muted)]">
-                    Round {meetings.findIndex((candidate) => candidate.key === meeting.key) + 1}
-                  </p>
-                  <div className="mt-2 flex items-center gap-2">
-                    <CountryFlag flagUrl={meeting.countryFlag} countryName={meeting.countryName} />
-                    <p className="mb-0 truncate font-semibold text-[var(--home-ink)]">{meeting.name}</p>
-                  </div>
-                  <p className="mt-1 mb-0 text-sm leading-6 text-[var(--home-ink-muted)]">
-                    {meeting.location}, {meeting.countryName}
+              <div className="min-w-0">
+                <p className="mb-0 text-xs font-semibold uppercase" style={{ color: "var(--c97-ink-2)" }}>
+                  Round {index + 1}
+                </p>
+                <div className="mt-2 flex items-center gap-2">
+                  <CountryFlag flagUrl={meeting.countryFlag} countryName={meeting.countryName} />
+                  <p className="c97-serif mb-0 truncate" style={{ fontSize: "var(--c97-fs-body)" }}>
+                    {meeting.name}
                   </p>
                 </div>
-                <div className="text-right text-sm text-[var(--home-ink-muted)]">
-                  <p className="mb-0">{formatDateLabel(meeting.startAt)}</p>
-                  <p className="mb-0 mt-1">{meeting.status}</p>
-                </div>
+                <p className="mt-1 mb-0 text-sm leading-6" style={{ color: "var(--c97-ink-2)" }}>
+                  {meeting.location}, {meeting.countryName}
+                </p>
+              </div>
+              <div className="text-right text-sm" style={{ color: "var(--c97-ink-2)" }}>
+                <p className="mb-0">{formatDateLabel(meeting.startAt)}</p>
+                <p className="mb-0 mt-1">{meeting.status}</p>
               </div>
             </button>
           </li>
@@ -1111,24 +848,7 @@ function ViewToggle({
   const isActive = view === activeView;
 
   return (
-    <button
-      type="button"
-      onClick={() => onSelect(view)}
-      className="min-h-[44px] rounded-full border px-4 py-2.5 text-sm font-semibold transition-[border-color,background-color,box-shadow] duration-200"
-      style={
-        isActive
-          ? {
-              borderColor: "color-mix(in srgb, var(--home-signal) 30%, var(--home-rule))",
-              background: "color-mix(in srgb, var(--home-signal) 10%, var(--home-paper-alt))",
-              boxShadow: "var(--shadow-sm)",
-            }
-          : {
-              borderColor: "var(--home-rule)",
-              background: "color-mix(in srgb, var(--home-paper-alt) 80%, var(--home-elev-mix))",
-            }
-      }
-      aria-pressed={isActive}
-    >
+    <button type="button" onClick={() => onSelect(view)} aria-pressed={isActive} className="min-h-[44px] text-sm font-semibold">
       {FORMULA1_VIEW_LABELS[view]}
     </button>
   );
@@ -1162,41 +882,31 @@ function MeetingDetailFallback({
   error: string | null;
 }) {
   return (
-    <section className="home-card p-5 sm:p-6">
+    <div className="c97-panel">
       <div className="flex items-center gap-2">
-        <p className="home-kicker mb-0">{getMeetingStatusCopy(meeting)}</p>
+        <p className="c97-kicker mb-0">{getMeetingStatusCopy(meeting)}</p>
         <CountryFlag flagUrl={meeting.countryFlag} countryName={meeting.countryName} />
       </div>
-      <h2
-        className="mt-1 text-[1.4rem] font-semibold tracking-[-0.05em] text-[var(--home-ink)]"
-        style={{ fontFamily: "var(--font-home-sans)" }}
-      >
-        {meeting.name}
-      </h2>
+      <h3 className="c97-serif c97-h3 mt-1">{meeting.name}</h3>
       {error ? (
         <div
-          className="mt-4 rounded-[var(--radius-2xl)] border px-4 py-4"
+          className="mt-4 px-4 py-4"
           role="alert"
-          style={{
-            borderColor: "color-mix(in srgb, var(--home-negative) 24%, var(--home-rule))",
-            background: "color-mix(in srgb, var(--home-negative) 8%, var(--home-paper-alt))",
-          }}
+          style={{ background: "var(--c97-field)", borderLeft: "3px solid var(--c97-negative)" }}
         >
           <div className="flex items-start gap-3">
-            <CircleAlert
-              className="mt-0.5 h-4 w-4 shrink-0"
-              style={{ color: "var(--home-negative)" }}
-              aria-hidden="true"
-            />
-            <p className="mb-0 text-sm leading-6 text-[var(--home-ink)]">{error}</p>
+            <CircleAlert className="mt-0.5 h-4 w-4 shrink-0" style={{ color: "var(--c97-negative)" }} aria-hidden="true" />
+            <p className="mb-0 text-sm leading-6" style={{ color: "var(--c97-ink)" }}>
+              {error}
+            </p>
           </div>
         </div>
       ) : (
-        <p className="mb-0 mt-4 text-sm leading-6 text-[var(--home-ink-muted)]" role="status">
+        <p className="mb-0 mt-4 text-sm leading-6" role="status" style={{ color: "var(--c97-ink-2)" }}>
           Loading race weekend detail…
         </p>
       )}
-    </section>
+    </div>
   );
 }
 
@@ -1329,384 +1039,278 @@ export function Formula1Client({ initialState, summary, initialMeeting }: Formul
   const driverRunnerUp = summary.driverStandings[1] ?? null;
   const constructorLeader = summary.constructorStandings[0] ?? null;
   const constructorRunnerUp = summary.constructorStandings[1] ?? null;
+  const driverGap = driverLeader && driverRunnerUp ? driverLeader.points - driverRunnerUp.points : null;
+  const constructorGap =
+    constructorLeader && constructorRunnerUp ? constructorLeader.points - constructorRunnerUp.points : null;
   const raceStripMeetings = useMemo(
     () => getRaceStripMeetings(summary, selectedMeetingMeta),
     [selectedMeetingMeta, summary]
   );
 
-  // Stats panel cells
-  const lastCompletedMeeting = summary.lastCompletedMeeting;
-  const lastWinner = lastCompletedMeeting?.podium?.[0] ?? null;
-  const driverGap = driverLeader && driverRunnerUp ? driverLeader.points - driverRunnerUp.points : null;
-  const constructorGap = constructorLeader && constructorRunnerUp
-    ? constructorLeader.points - constructorRunnerUp.points
-    : null;
+  const lead = PROJECT_PRESS[FORMULA1_ROUTE].lead;
+  const standfirst =
+    "I wanted the season readable at a glance, from who's leading the title race, to who gained ground at the last Grand Prix, to when lights go out next. I pull OpenF1's historical feeds into a checked-in snapshot on a schedule, so the page stays fast and never depends on a live session mid-race.";
+  const hasData = summary.meetings.length > 0;
 
-  const statsPanelCells: HomeStatsCell[] = [
-    {
-      label: "Rounds",
-      tooltip: "Completed grands prix relative to the full season schedule.",
-      value: `${summary.seasonMetrics.completedRaces} / ${summary.seasonMetrics.totalRaces}`,
-    },
-    {
-      label: "Driver leader",
-      tooltip: "Driver currently leading the championship and total points.",
-      value: driverLeader ? `${driverLeader.driverName} · ${formatPoints(driverLeader.points)}` : "Pending",
-      sub: driverLeader ? driverLeader.teamName : undefined,
-    },
-    {
-      label: "Constructor leader",
-      tooltip: "Team currently leading the constructor standings and total points.",
-      value: constructorLeader
-        ? `${constructorLeader.teamName} · ${formatPoints(constructorLeader.points)}`
-        : "Pending",
-    },
-    {
-      label: "Driver gap",
-      tooltip: "Points the championship leader holds over the second-placed driver.",
-      value: driverGap !== null ? `+${formatPoints(driverGap)} pts` : "—",
-      sub: "to next driver",
-    },
-    {
-      label: "Constructor gap",
-      tooltip: "Points the leading team holds over the second-placed team.",
-      value: constructorGap !== null ? `+${formatPoints(constructorGap)} pts` : "—",
-      sub: "to next team",
-    },
-    {
-      label: "Sprint weekends",
-      tooltip: "Number of sprint-format weekends scheduled this season.",
-      value: String(summary.seasonMetrics.sprintWeekends),
-    },
-    {
-      label: "Last GP winner",
-      tooltip: "Driver who won the most recently completed grand prix.",
-      value: lastWinner?.driverName
-        ? `${lastWinner.driverName}${lastCompletedMeeting?.name ? ` · ${lastCompletedMeeting.name}` : ""}`
-        : lastCompletedMeeting?.name ?? "Pending",
-    },
-    {
-      label: "Next race",
-      tooltip: "Scheduled start time for the next grand prix in the calendar.",
-      value: highlightMeeting?.raceStartsAt
-        ? formatDateTimeLabel(highlightMeeting.raceStartsAt)
-        : highlightMeeting?.startAt
-          ? formatDateLabel(highlightMeeting.startAt)
-          : "TBD",
-      sub: highlightMeeting?.name,
-    },
-  ];
+  if (!hasData) {
+    return (
+      <Catalog97ProjectHero
+        ink={lead}
+        title="Formula 1 Pulse"
+        standfirst={standfirst}
+        meta="The season snapshot has not generated yet. The dashboard fills in on the next scheduled refresh."
+      />
+    );
+  }
+
+  const towerKind: "drivers" | "constructors" = resolvedState.view === "constructors" ? "constructors" : "drivers";
+  const towerStandings = towerKind === "constructors" ? summary.constructorStandings : summary.driverStandings;
 
   return (
-    <div className={`home-page min-h-screen ${styles.f1}`}>
-      <div className="home-shell home-section space-y-6 sm:space-y-8">
-      <section
-        className={`relative overflow-hidden rounded-[var(--radius-3xl)] border p-6 sm:p-8 lg:p-10 ${styles.carbon}`}
-        style={{
-          borderColor: "color-mix(in srgb, var(--home-signal) 30%, var(--home-rule))",
-          background: "color-mix(in srgb, var(--home-signal) 6%, var(--home-paper-raised))",
-          boxShadow: "var(--shadow-sm)",
-        }}
+    <>
+      <Catalog97ProjectHero
+        ink={lead}
+        title="Formula 1 Pulse"
+        standfirst={standfirst}
+        meta={`${summary.sourceLabel} · updated ${formatUpdatedAt(summary.generatedAt)}`}
+        readouts={[
+          {
+            label: "Driver leader",
+            value: driverLeader ? driverLeader.driverName : "TBD",
+            detail: driverLeader
+              ? driverGap !== null && driverRunnerUp
+                ? `+${formatPoints(driverGap)} over ${driverRunnerUp.driverName}`
+                : `${formatPoints(driverLeader.points)} pts`
+              : "Not published yet",
+          },
+          {
+            label: "Constructor leader",
+            value: constructorLeader ? constructorLeader.teamName : "TBD",
+            detail: constructorLeader
+              ? constructorGap !== null && constructorRunnerUp
+                ? `+${formatPoints(constructorGap)} over ${constructorRunnerUp.teamName}`
+                : `${formatPoints(constructorLeader.points)} pts`
+              : "Not published yet",
+          },
+          {
+            label: "Season",
+            value: `${summary.seasonMetrics.completedRaces} / ${summary.seasonMetrics.totalRaces}`,
+            detail: "rounds complete",
+          },
+        ]}
       >
-        <div className="grid gap-8 lg:grid-cols-[1.15fr_0.85fr] lg:items-start">
-          <div>
-            <p className="home-kicker mb-2">Formula 1 project</p>
-            <h1
-              className="max-w-[11ch] text-[clamp(2.7rem,7vw,5.4rem)] font-semibold tracking-[-0.08em] text-[var(--home-ink)]"
-              style={{ fontFamily: "var(--font-home-sans)", lineHeight: 0.92 }}
-            >
-              Formula 1 Pulse
-            </h1>
-            <p className="mt-5 mb-0 max-w-[52ch] text-base leading-7 text-[var(--home-ink-muted)]">
-              I built this to keep the season readable at a glance. The point is simple. See the
-              next Grand Prix, who gained ground last Sunday, and where the title picture sits
-              right now.
+        <TimingTowerSignature standings={towerStandings} kind={towerKind} />
+      </Catalog97ProjectHero>
+
+      <section className="c97-band c97-sheet" data-c97-surface="paper" data-seam="torn">
+        <div className="c97-shell">
+          <h2 className="c97-poster-sm">Race weekend</h2>
+
+          {highlightMeeting ? (
+            <div className="c97-panel" style={{ marginTop: "var(--c97-sp-4)" }}>
+              <div className="flex flex-wrap items-start justify-between gap-4">
+                <div>
+                  <p className="c97-kicker mb-1">{getMeetingStatusCopy(highlightMeeting)}</p>
+                  <h3 className="c97-serif c97-h3 flex items-center gap-2">
+                    <CountryFlag flagUrl={highlightMeeting.countryFlag} countryName={highlightMeeting.countryName} />
+                    {highlightMeeting.name}
+                  </h3>
+                  <p className="mb-0 mt-1 text-sm leading-6" style={{ color: "var(--c97-ink-2)" }}>
+                    {highlightMeeting.circuitShortName} in {highlightMeeting.location}
+                  </p>
+                </div>
+                {highlightIsUpcoming ? (
+                  <StartLights />
+                ) : (
+                  <Flag aria-hidden="true" size={18} style={{ color: "var(--c97-ink-2)" }} />
+                )}
+              </div>
+
+              {highlightIsUpcoming ? (
+                <div style={{ marginTop: "var(--c97-sp-4)" }}>
+                  <RaceCountdown targetIso={highlightMeeting.raceStartsAt ?? highlightMeeting.startAt} />
+                </div>
+              ) : null}
+
+              <div className="flex flex-wrap gap-2" style={{ marginTop: "var(--c97-sp-3)" }}>
+                <span className="c97-chip">
+                  {highlightMeeting.raceStartsAt
+                    ? formatDateTimeLabel(highlightMeeting.raceStartsAt)
+                    : formatDateLabel(highlightMeeting.startAt)}
+                </span>
+                {highlightMeeting.circuitType ? <span className="c97-chip">{highlightMeeting.circuitType}</span> : null}
+                {highlightMeeting.hasSprint ? (
+                  <span className="c97-chip c97-chip-warning">Sprint weekend</span>
+                ) : null}
+                {formatGmtOffset(highlightMeeting.gmtOffset) ? (
+                  <span className="c97-chip">{formatGmtOffset(highlightMeeting.gmtOffset)}</span>
+                ) : null}
+              </div>
+            </div>
+          ) : (
+            <p className="c97-prose" style={{ marginTop: "var(--c97-sp-3)" }}>
+              The current snapshot does not include a published season schedule yet.
             </p>
+          )}
+        </div>
+      </section>
 
-            <div className="mt-6 flex flex-wrap gap-2">
-              <span className="resume-chip">{summary.season} season</span>
-              <span className="resume-chip">
-                {summary.seasonMetrics.completedRaces} of {summary.seasonMetrics.totalRaces} races complete
-              </span>
-              <span className="resume-chip">{summary.sourceLabel}</span>
-              <span className="resume-chip">Updated {formatUpdatedAt(summary.generatedAt)}</span>
-            </div>
+      <section className="c97-band c97-sheet" data-c97-surface="bone" data-seam="torn">
+        <div className="c97-shell">
+          <h2 className="c97-poster-sm">The season</h2>
 
-            <div className="mt-7 max-w-[34rem]">
-              <SeasonProgress
-                completed={summary.seasonMetrics.completedRaces}
-                total={summary.seasonMetrics.totalRaces}
+          <div className="c97-segmented" role="group" aria-label="Season view" style={{ marginTop: "var(--c97-sp-4)" }}>
+            {FORMULA1_VIEW_OPTIONS.map((view) => (
+              <ViewToggle
+                key={view}
+                view={view}
+                activeView={resolvedState.view}
+                onSelect={(nextView) =>
+                  navigate({
+                    view: nextView,
+                    meeting: selectedMeetingKey ?? summary.defaultMeetingKey,
+                  })
+                }
               />
-            </div>
+            ))}
+          </div>
+          <p className="c97-prose" style={{ marginTop: "var(--c97-sp-2)" }}>
+            {FORMULA1_VIEW_DESCRIPTIONS[resolvedState.view]}
+          </p>
 
-            <div className="mt-7 flex flex-wrap gap-3">
-              {FORMULA1_VIEW_OPTIONS.map((view) => (
-                <ViewToggle
-                  key={view}
-                  view={view}
-                  activeView={resolvedState.view}
-                  onSelect={(nextView) =>
+          {resolvedState.view === "overview" ? (
+            <div className="grid grid-cols-1 gap-6 xl:grid-cols-2" style={{ marginTop: "var(--c97-sp-5)" }}>
+              <div>
+                <SectionHeader
+                  kicker="Title race"
+                  title="Drivers"
+                  description="Bars scale to the leader so the championship spread reads in one look."
+                />
+                <DriverLeaderboard standings={summary.driverStandings} limit={8} />
+              </div>
+
+              <div>
+                <SectionHeader
+                  kicker="Title race"
+                  title="Constructors"
+                  description="Team points against the garage out front, colored by livery."
+                />
+                <ConstructorLeaderboard standings={summary.constructorStandings} limit={8} />
+              </div>
+            </div>
+          ) : null}
+
+          {resolvedState.view === "drivers" ? (
+            <div style={{ marginTop: "var(--c97-sp-5)" }}>
+              <SectionHeader
+                kicker="Standings"
+                title="Driver championship"
+                description="Point bars reflect the latest race-backed snapshot, refreshed on a schedule."
+              />
+              <DriverLeaderboard standings={summary.driverStandings} />
+            </div>
+          ) : null}
+
+          {resolvedState.view === "constructors" ? (
+            <div style={{ marginTop: "var(--c97-sp-5)" }}>
+              <SectionHeader
+                kicker="Standings"
+                title="Constructor championship"
+                description="Team-first so you can read race-to-race movement without hunting through both garage lineups."
+              />
+              <ConstructorLeaderboard standings={summary.constructorStandings} />
+            </div>
+          ) : null}
+
+          {resolvedState.view === "calendar" ? (
+            <div className="grid grid-cols-1 gap-6 xl:grid-cols-[0.88fr_1.12fr]" style={{ marginTop: "var(--c97-sp-5)" }}>
+              <div>
+                <h3 className="c97-serif c97-h3 mb-3">Full season timeline</h3>
+                <CalendarTimeline
+                  meetings={summary.meetings}
+                  selectedMeetingKey={selectedMeetingKey}
+                  onSelect={(meetingKey) =>
                     navigate({
-                      view: nextView,
-                      meeting: selectedMeetingKey ?? summary.defaultMeetingKey,
+                      view: "calendar",
+                      meeting: meetingKey,
                     })
                   }
                 />
-              ))}
-            </div>
+              </div>
 
-            <p className="mt-4 mb-0 text-sm leading-6 text-[var(--home-ink-muted)]">
-              {FORMULA1_VIEW_DESCRIPTIONS[resolvedState.view]}
+              {selectedMeeting ? (
+                <MeetingDetailPanel meeting={selectedMeeting} />
+              ) : selectedMeetingMeta ? (
+                <MeetingDetailFallback meeting={selectedMeetingMeta} error={selectedMeetingError} />
+              ) : null}
+            </div>
+          ) : null}
+
+          {resolvedState.view === "overview" && summary.lastCompletedMeeting ? (
+            <div style={{ marginTop: "var(--c97-sp-6)" }}>
+              <PodiumDisplay meeting={summary.lastCompletedMeeting} />
+            </div>
+          ) : null}
+
+          {resolvedState.view === "overview" ? (
+            <div style={{ marginTop: "var(--c97-sp-6)" }}>
+              <SectionHeader
+                kicker="Race strip"
+                title="Recent and upcoming weekends"
+                description="The latest results mixed with the next stops so the season never feels frozen in the past."
+              />
+
+              <MeetingStrip
+                meetings={raceStripMeetings}
+                selectedMeetingKey={selectedMeetingKey}
+                onSelect={(meetingKey) =>
+                  navigate({
+                    view: "overview",
+                    meeting: meetingKey,
+                  })
+                }
+              />
+
+              <div style={{ marginTop: "var(--c97-sp-4)" }}>
+                {selectedMeeting ? (
+                  <MeetingDetailPanel meeting={selectedMeeting} compact />
+                ) : selectedMeetingMeta ? (
+                  <MeetingDetailFallback meeting={selectedMeetingMeta} error={selectedMeetingError} />
+                ) : null}
+              </div>
+            </div>
+          ) : null}
+        </div>
+      </section>
+
+      <section className="c97-band c97-sheet" data-c97-surface="paper" data-seam="deckle">
+        <div className="c97-shell grid grid-cols-1 gap-6 lg:grid-cols-2">
+          <div>
+            <p className="c97-kicker mb-2">Data notes</p>
+            <p className="c97-prose mb-0">
+              I pull OpenF1&apos;s historical endpoints for this route, then freeze the result into a
+              checked-in snapshot. That keeps the page fast and predictable while still letting the
+              calendar, standings, and classifications move with the season.
             </p>
           </div>
 
-          <aside
-            className="relative overflow-hidden rounded-[var(--radius-3xl)] border p-5 sm:p-6"
-            style={getMeetingToneStyle(highlightMeeting?.status ?? "completed")}
-          >
-            {highlightMeeting?.circuitImage ? (
-              <img
-                src={highlightMeeting.circuitImage}
-                alt=""
-                aria-hidden="true"
-                loading="lazy"
-                decoding="async"
-                className="pointer-events-none absolute -right-5 -top-5 h-32 w-32 object-contain opacity-[0.08] dark:opacity-[0.16] dark:invert"
-              />
-            ) : null}
-
-            <div className="relative flex items-start justify-between gap-4">
-              <div>
-                <p className="home-kicker mb-1">
-                  {highlightMeeting ? getMeetingStatusCopy(highlightMeeting) : "Season status"}
-                </p>
-                <h2
-                  className="text-[1.55rem] font-semibold tracking-[-0.05em] text-[var(--home-ink)]"
-                  style={{ fontFamily: "var(--font-home-sans)" }}
-                >
-                  {highlightMeeting?.name ?? "Schedule coming soon"}
-                </h2>
-              </div>
-              {highlightIsUpcoming ? <StartLights /> : <Flag className="text-[var(--home-ink-muted)]" size={18} />}
-            </div>
-
-            {highlightMeeting ? (
-              <div className="relative">
-                <p className="mt-3 mb-0 flex items-center gap-2 text-sm leading-6 text-[var(--home-ink-muted)]">
-                  <CountryFlag
-                    flagUrl={highlightMeeting.countryFlag}
-                    countryName={highlightMeeting.countryName}
-                  />
-                  {highlightMeeting.circuitShortName} · {highlightMeeting.location}
-                </p>
-
-                {highlightIsUpcoming ? (
-                  <div className="mt-4">
-                    <RaceCountdown
-                      targetIso={highlightMeeting.raceStartsAt ?? highlightMeeting.startAt}
-                    />
-                  </div>
-                ) : null}
-
-                <div className="mt-4 grid gap-3 sm:grid-cols-2">
-                  <div className="rounded-[var(--radius-2xl)] border border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper)_84%,var(--home-elev-mix))] p-4">
-                    <p className="text-xs font-semibold uppercase tracking-[0.14em] text-[var(--home-ink-muted)]">
-                      Race start
-                    </p>
-                    <p className="mt-2 mb-0 font-semibold text-[var(--home-ink)]">
-                      {highlightMeeting.raceStartsAt
-                        ? formatDateTimeLabel(highlightMeeting.raceStartsAt)
-                        : formatDateLabel(highlightMeeting.startAt)}
-                    </p>
-                  </div>
-                  <div className="rounded-[var(--radius-2xl)] border border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper)_84%,var(--home-elev-mix))] p-4">
-                    <p className="text-xs font-semibold uppercase tracking-[0.14em] text-[var(--home-ink-muted)]">
-                      Weekend type
-                    </p>
-                    <p className="mt-2 mb-0 font-semibold text-[var(--home-ink)]">
-                      {highlightMeeting.hasSprint ? "Sprint weekend" : "Standard weekend"}
-                    </p>
-                  </div>
-                </div>
-              </div>
-            ) : (
-              <p className="mt-4 mb-0 text-sm leading-6 text-[var(--home-ink-muted)]">
-                The current snapshot does not include a published season schedule yet.
-              </p>
-            )}
-          </aside>
+          <div>
+            <p className="c97-kicker mb-2">Attribution</p>
+            <p className="c97-prose mb-0">
+              OpenF1 is community-run and unofficial. This dashboard is not affiliated with Formula 1,
+              the FIA, or Formula One Management. Read the{" "}
+              <a href={summary.sourceUrls.docs} style={{ color: "var(--c97-accent)" }}>
+                docs
+              </a>{" "}
+              or the{" "}
+              <a href="https://openf1.org/" style={{ color: "var(--c97-accent)" }}>
+                project FAQ
+              </a>
+              .
+            </p>
+          </div>
         </div>
-        <span className={`${styles.finishLine} ${styles.checkers}`} aria-hidden="true" />
       </section>
-
-      <HomeStatsPanel
-        id="f1-stats-panel"
-        title="Formula 1 at a glance"
-        meta={`Live · refreshed ${formatUpdatedAt(summary.generatedAt)}`}
-        cells={statsPanelCells}
-        pills={[
-          { label: "Drivers", href: "?view=drivers", icon: User },
-          { label: "Constructors", href: "?view=constructors", icon: Briefcase },
-          { label: "Schedule", href: "?view=calendar", icon: Calendar },
-          { label: "Last race", href: "?view=overview", icon: ChartBar },
-          { label: "Article", href: "/writing", icon: Article },
-        ]}
-      />
-
-      {resolvedState.view === "overview" ? (
-        <>
-          <section className="grid gap-6 xl:grid-cols-2">
-            <article className="home-card p-5 sm:p-6">
-              <SectionHeader
-                kicker="Title race"
-                title="Drivers"
-                description="Bars scale to the leader so the championship spread reads in one look."
-                icon={<Trophy size={16} />}
-              />
-              <DriverLeaderboard standings={summary.driverStandings} limit={8} />
-            </article>
-
-            <article className="home-card p-5 sm:p-6">
-              <SectionHeader
-                kicker="Title race"
-                title="Constructors"
-                description="Team points against the garage out front, colored by livery."
-                icon={<Flag size={16} />}
-              />
-              <ConstructorLeaderboard standings={summary.constructorStandings} limit={8} />
-            </article>
-          </section>
-
-          {summary.lastCompletedMeeting ? (
-            <PodiumDisplay meeting={summary.lastCompletedMeeting} />
-          ) : null}
-
-          <section className="home-card p-5 sm:p-6">
-            <SectionHeader
-              kicker="Race strip"
-              title="Recent and upcoming weekends"
-              description="The latest results mixed with the next stops so the season never feels frozen in the past."
-              icon={<CalendarDays size={16} />}
-            />
-
-            <MeetingStrip
-              meetings={raceStripMeetings}
-              selectedMeetingKey={selectedMeetingKey}
-              onSelect={(meetingKey) =>
-                navigate({
-                  view: "overview",
-                  meeting: meetingKey,
-                })
-              }
-            />
-          </section>
-
-          {selectedMeeting ? (
-            <MeetingDetailPanel meeting={selectedMeeting} compact />
-          ) : selectedMeetingMeta ? (
-            <MeetingDetailFallback meeting={selectedMeetingMeta} error={selectedMeetingError} />
-          ) : null}
-        </>
-      ) : null}
-
-      {resolvedState.view === "drivers" ? (
-        <section className="home-card p-5 sm:p-6">
-          <SectionHeader
-            kicker="Standings"
-            title="Driver championship"
-            description="Point bars are tied to the latest race-backed snapshot, not a live-session guess."
-            icon={<Trophy size={16} />}
-          />
-          <DriverLeaderboard standings={summary.driverStandings} />
-        </section>
-      ) : null}
-
-      {resolvedState.view === "constructors" ? (
-        <section className="home-card p-5 sm:p-6">
-          <SectionHeader
-            kicker="Standings"
-            title="Constructor championship"
-            description="Team-first so you can read race-to-race movement without hunting through both garage lineups."
-            icon={<Flag size={16} />}
-          />
-          <ConstructorLeaderboard standings={summary.constructorStandings} />
-        </section>
-      ) : null}
-
-      {resolvedState.view === "calendar" ? (
-        <section className="grid gap-6 xl:grid-cols-[0.88fr_1.12fr]">
-          <div className="home-card p-5 sm:p-6">
-            <div className="mb-5 flex items-start justify-between gap-4">
-              <div>
-                <p className="home-kicker mb-1">Calendar</p>
-                <h2
-                  className="text-[1.35rem] font-semibold tracking-[-0.04em] text-[var(--home-ink)]"
-                  style={{ fontFamily: "var(--font-home-sans)" }}
-                >
-                  Full season timeline
-                </h2>
-              </div>
-              <CalendarDays className="text-[var(--home-ink-muted)]" size={18} />
-            </div>
-            <CalendarTimeline
-              meetings={summary.meetings}
-              selectedMeetingKey={selectedMeetingKey}
-              onSelect={(meetingKey) =>
-                navigate({
-                  view: "calendar",
-                  meeting: meetingKey,
-                })
-              }
-            />
-          </div>
-
-          {selectedMeeting ? (
-            <MeetingDetailPanel meeting={selectedMeeting} />
-          ) : selectedMeetingMeta ? (
-            <MeetingDetailFallback meeting={selectedMeetingMeta} error={selectedMeetingError} />
-          ) : null}
-        </section>
-      ) : null}
-
-      <section className="grid gap-4 lg:grid-cols-[1.1fr_0.9fr]">
-        <article className="home-card p-5 sm:p-6">
-          <div className="mb-4 flex items-center gap-2">
-            <MapPinned size={16} className="text-[var(--home-ink-muted)]" />
-            <p className="home-kicker mb-0">Data notes</p>
-          </div>
-          <p className="mb-0 text-sm leading-7 text-[var(--home-ink-muted)]">
-            I am using OpenF1 historical endpoints for this route, then freezing the result into a
-            checked-in snapshot. That keeps the page fast and predictable while still letting the
-            calendar, standings, and classifications move with the season.
-          </p>
-        </article>
-
-        <article className="home-card p-5 sm:p-6">
-          <div className="mb-4 flex items-center gap-2">
-            <Flag size={16} className="text-[var(--home-ink-muted)]" />
-            <p className="home-kicker mb-0">Attribution</p>
-          </div>
-          <p className="mb-0 text-sm leading-7 text-[var(--home-ink-muted)]">
-            OpenF1 is community-run and unofficial. This dashboard is not affiliated with Formula 1,
-            the FIA, or Formula One Management. Read the{" "}
-            <a
-              href={summary.sourceUrls.docs}
-              className="text-[var(--home-signal)] underline decoration-transparent transition-[color,text-decoration-color] duration-200 hover:decoration-current"
-            >
-              docs
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://openf1.org/"
-              className="text-[var(--home-signal)] underline decoration-transparent transition-[color,text-decoration-color] duration-200 hover:decoration-current"
-            >
-              project FAQ
-            </a>
-            .
-          </p>
-        </article>
-      </section>
-      </div>
-    </div>
+    </>
   );
 }

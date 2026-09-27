@@ -24,10 +24,10 @@ export function LeaderLedger({
   emptyLabel?: string;
 }) {
   return (
-    <div className="rounded-[var(--radius-sm)] border border-[var(--home-rule)] bg-[var(--home-paper)]">
-      <h3 className="px-4 pt-4 text-base font-bold text-[var(--home-ink)]">{title}</h3>
+    <div className="border border-[var(--c97-rule)] bg-[var(--c97-surface)]">
+      <h3 className="px-4 pt-4 text-base font-bold text-[var(--c97-ink)]">{title}</h3>
       {entries.length === 0 ? (
-        <p className="px-4 pb-4 pt-2 text-sm leading-relaxed text-[var(--home-ink-muted)]">
+        <p className="px-4 pb-4 pt-2 text-sm leading-relaxed text-[var(--c97-ink-2)]">
           {emptyLabel ?? `No ${title.toLowerCase()} yet this season.`}
         </p>
       ) : (
@@ -35,16 +35,16 @@ export function LeaderLedger({
           {entries.map((entry) => (
             <div
               key={`${title}-${entry.rank}-${entry.name}`}
-              className="flex items-center gap-3 border-b border-[color-mix(in_srgb,var(--home-rule)_50%,transparent)] py-2.5 last:border-b-0"
+              className="flex items-center gap-3 border-b border-[color-mix(in_srgb,var(--c97-rule)_50%,transparent)] py-2.5 last:border-b-0"
             >
-              <span className="w-5 flex-shrink-0 font-mono text-sm text-[var(--home-ink-muted)]">{entry.rank}</span>
-              <span className="min-w-0 flex-1 truncate text-sm font-semibold text-[var(--home-ink)]">{entry.name}</span>
-              <span className="flex-shrink-0 font-mono text-2xs uppercase tracking-[0.06em] text-[var(--home-ink-muted)]">
+              <span className="w-5 flex-shrink-0 font-mono text-sm text-[var(--c97-ink-2)]">{entry.rank}</span>
+              <span className="min-w-0 flex-1 truncate text-sm font-semibold text-[var(--c97-ink)]">{entry.name}</span>
+              <span className="flex-shrink-0 font-mono text-2xs uppercase tracking-[0.06em] text-[var(--c97-ink-2)]">
                 {entry.clubCode}
               </span>
-              <span className="flex-shrink-0 font-mono text-base tabular-nums text-[var(--home-ink)]">
+              <span className="flex-shrink-0 font-mono text-base tabular-nums text-[var(--c97-ink)]">
                 {entry.value}
-                <span className="ml-1 text-2xs text-[var(--home-ink-muted)]">{unit}</span>
+                <span className="ml-1 text-2xs text-[var(--c97-ink-2)]">{unit}</span>
               </span>
             </div>
           ))}
