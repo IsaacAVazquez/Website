@@ -4,6 +4,7 @@ import { StructuredData } from "@/components/StructuredData";
 import { githubTrendingSnapshot } from "@/data/githubTrendingSnapshot";
 import { getAgentBuildIndex } from "@/lib/agentBuildIndex";
 import { formatGitHubCompactNumber } from "@/lib/githubTrending";
+import { DISPLAY_TIME_ZONE } from "@/lib/date-formatters";
 import {
   constructMetadata,
   generateBreadcrumbStructuredData,
@@ -22,12 +23,16 @@ export const metadata = constructMetadata({
   dateModified: index.generatedAt.slice(0, 10),
 });
 
+// This renders in a server component with no client boundary, so it never
+// hydrates, but it still had no timeZone pinned and would print whatever
+// zone the server happens to run in instead of the site's Pacific convention.
 const DATE_FORMATTER = new Intl.DateTimeFormat("en-US", {
   month: "long",
   day: "numeric",
   year: "numeric",
   hour: "numeric",
   minute: "2-digit",
+  timeZone: DISPLAY_TIME_ZONE,
   timeZoneName: "short",
 });
 

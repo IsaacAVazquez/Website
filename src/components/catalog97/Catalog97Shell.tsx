@@ -1,5 +1,15 @@
 import Link from "next/link";
+import { DISPLAY_TIME_ZONE } from "@/lib/date-formatters";
 import { Catalog97Header } from "./Catalog97Header";
+
+// getFullYear() reads the local clock, so a server rendering in UTC and a
+// visitor's browser west or east of it can disagree on the year for hours
+// around the New Year, breaking hydration on every route's footer. Pinning
+// the year to DISPLAY_TIME_ZONE keeps server and client in step.
+const FOOTER_YEAR_FORMATTER = new Intl.DateTimeFormat("en-US", {
+  year: "numeric",
+  timeZone: DISPLAY_TIME_ZONE,
+});
 
 /**
  * The script lockup. One per page, in the footer's first column.
@@ -116,7 +126,7 @@ function Catalog97Footer({ wordmark }: { wordmark: boolean }) {
           <div className="c97-footer-colophon">
             {wordmark ? <Catalog97Wordmark /> : null}
             <p className="c97-footer-copy">
-              &copy; {new Date().getFullYear()} Isaac Vazquez
+              &copy; {FOOTER_YEAR_FORMATTER.format(new Date())} Isaac Vazquez
             </p>
           </div>
           {footerGroups.map(({ name, links, surface }) => (

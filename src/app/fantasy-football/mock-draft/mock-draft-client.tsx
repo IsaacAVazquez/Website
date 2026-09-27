@@ -1152,9 +1152,9 @@ export function MockDraftClient() {
             className={`sticky ${FASCIA_TOP_CLASS} z-30 border-y`}
             style={{
               borderColor: "var(--c97-rule)",
-              background: "color-mix(in srgb, var(--c97-surface) 90%, transparent)",
-              backdropFilter: "blur(8px)",
-              WebkitBackdropFilter: "blur(8px)",
+              // Opaque on the sheet it sits on (paper), matching the boards'
+              // own sticky bars rather than a translucent blur.
+              background: "var(--c97-surface)",
             }}
           >
             <div className={SHELL_CLASS}>

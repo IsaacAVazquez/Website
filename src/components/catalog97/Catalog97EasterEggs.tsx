@@ -292,11 +292,15 @@ export function Catalog97EasterEggs() {
             </span>
             <span className={styles.slug}>
               Proof 1 · {pathname} ·{" "}
-              {new Date().toLocaleDateString("en-GB", {
-                day: "numeric",
-                month: "short",
-                year: "numeric",
-              }).replace(/\bSept\b/, "Sep")}
+              {
+                // tz-local: today's date on the visitor's device for a proof
+                // overlay that only exists post-interaction (never SSR).
+                new Date().toLocaleDateString("en-GB", {
+                  day: "numeric",
+                  month: "short",
+                  year: "numeric",
+                }).replace(/\bSept\b/, "Sep")
+              }
             </span>
           </div>,
           pageRoot,

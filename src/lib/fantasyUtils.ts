@@ -1,5 +1,6 @@
 import type { CSSProperties } from "react";
 
+import { DISPLAY_TIME_ZONE } from "@/lib/date-formatters";
 import type { FantasySnapshotSliceMetadata } from "@/lib/fantasy";
 import type { Player, RedraftLineupSettings } from "@/types";
 
@@ -16,14 +17,25 @@ export const FANTASY_AVG_RANK_TOOLTIP =
 export const FANTASY_VORP_TOOLTIP =
   "FantasyPros' projected season points above the same-position player expected to be available on waivers for the selected league size. FantasyPros supplies the roster baseline and floors players at or below replacement at zero.";
 
+// Pinned to DISPLAY_TIME_ZONE with the zone named in the output. This is an
+// instant (a fetch/build timestamp with a real clock time), and it used to
+// format with no timeZone at all (dateStyle/timeStyle can't combine with
+// timeZoneName), so it printed the server's UTC clock before hydration and
+// the visitor's local clock after, breaking hydration on every surface that
+// renders it on first paint.
 export function formatUpdatedAt(timestamp: string | null | undefined): string {
   if (!timestamp) {
     return "Unavailable";
   }
 
   return new Intl.DateTimeFormat("en-US", {
-    dateStyle: "medium",
-    timeStyle: "short",
+    year: "numeric",
+    month: "short",
+    day: "numeric",
+    hour: "numeric",
+    minute: "2-digit",
+    timeZone: DISPLAY_TIME_ZONE,
+    timeZoneName: "short",
   }).format(new Date(timestamp));
 }
 

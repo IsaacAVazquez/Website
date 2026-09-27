@@ -40,10 +40,13 @@ const fragmentMono = Fragment_Mono({
 
 /*
  * Catalog 97 type stack, used on every route (see catalog97.css). Anton
- * preloads because every h1 is poster type; the rest load on demand.
+ * preloads because every h1 is poster type, and Archivo because it is the
+ * body face; the rest load on demand.
  */
 
-// Newsreader carries every heading and serif lead in Catalog 97.
+// Newsreader sets the names of things inside a page, mostly below the hero,
+// and preloading it would add six files (three weights, two styles) to every
+// route, so it loads on demand.
 const c97Newsreader = Newsreader({
   subsets: ["latin"],
   weight: ["400", "500", "600"],
@@ -53,13 +56,14 @@ const c97Newsreader = Newsreader({
   preload: false,
 });
 
-// Cross-platform stand-in for Helvetica Neue, which is macOS-only.
+// Cross-platform stand-in for Helvetica Neue, which is macOS-only. It is the
+// body face above the fold on every route, so it preloads.
 const c97Archivo = Archivo({
   subsets: ["latin"],
   weight: ["400", "500"],
   variable: "--font-c97-archivo",
   display: "swap",
-  preload: false,
+  preload: true,
 });
 
 // The print-shop headline face: every landing h1 and section h2, plus the plate numerals.
