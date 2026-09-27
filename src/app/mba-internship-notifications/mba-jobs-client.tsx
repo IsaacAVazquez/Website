@@ -10,7 +10,6 @@ import {
   type CSSProperties,
   type ReactNode,
 } from "react";
-import { motion, useReducedMotion } from "framer-motion";
 import { useRouter, useSearchParams } from "next/navigation";
 import {
   Bell,
@@ -111,19 +110,6 @@ import {
 // user opens them — keeping them out of this large client page's initial bundle.
 const EmailDigestDialog = dynamic(() => import("./EmailDigestDialog"));
 const ApplicationEditDialog = dynamic(() => import("./ApplicationEditDialog"));
-
-// ---------------------------------------------------------------------------
-// Motion variants
-// ---------------------------------------------------------------------------
-
-const fadeIn = {
-  hidden: { opacity: 0, y: 12 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.35 } },
-};
-const noMotion = {
-  hidden: { opacity: 0, y: 12 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0 } },
-};
 
 // ---------------------------------------------------------------------------
 // Helpers
@@ -2073,8 +2059,6 @@ export function MBAJobsClient({
 }: MBAJobsClientProps) {
   const router = useRouter();
   const searchParams = useSearchParams();
-  const shouldReduceMotion = useReducedMotion();
-  const variants = shouldReduceMotion ? noMotion : fadeIn;
   const searchParamsKey = searchParams.toString();
   const routeState = useMemo(
     () => (searchParamsKey ? normalizeMBAJobsState(searchParams) : initialState),
@@ -2443,11 +2427,8 @@ export function MBAJobsClient({
             ]}
           />
 
-          <motion.div
+          <div
             className="section-panel overflow-hidden"
-            variants={variants}
-            initial="hidden"
-            animate="visible"
           >
             <div className="grid gap-8 xl:grid-cols-[minmax(0,1.15fr)_minmax(280px,0.85fr)]">
               <div className="space-y-4">
@@ -2576,7 +2557,7 @@ export function MBAJobsClient({
                 </EditorialPillButton>
               ))}
             </div>
-          </motion.div>
+          </div>
 
           <SourceHealthPanel sourceStatuses={sourceStatuses} isLoading={isLoading} />
 
@@ -2634,11 +2615,8 @@ export function MBAJobsClient({
               description="Search roles, narrow by location, sort the feed, and filter by role type, role family, and company category without leaving the page."
               id="mba-role-tracker-filters-heading"
             />
-            <motion.div
+            <div
               className="section-panel"
-              variants={variants}
-              initial="hidden"
-              animate="visible"
             >
               <div className="space-y-6">
                 <div className="grid gap-3 xl:grid-cols-[minmax(0,1.15fr)_minmax(240px,0.85fr)_auto] xl:items-center">
@@ -2950,7 +2928,7 @@ export function MBAJobsClient({
                   </div>
                 )}
               </div>
-            </motion.div>
+            </div>
           </section>
 
           <SearchElsewhereStrip currentState={uiState} />
@@ -3022,12 +3000,9 @@ export function MBAJobsClient({
                 icon={<BriefcaseBusiness className="h-5 w-5" aria-hidden="true" />}
               />
             ) : (
-              <motion.div
+              <div
                 className="grid gap-6 md:grid-cols-2 xl:grid-cols-3"
                 data-testid="live-jobs-grid"
-                variants={variants}
-                initial="hidden"
-                animate="visible"
               >
                 {displayJobs.map((job) => {
                   const application = getApplicationForJob(job);
@@ -3048,7 +3023,7 @@ export function MBAJobsClient({
                     />
                   );
                 })}
-              </motion.div>
+              </div>
             )}
           </section>
 

@@ -2,7 +2,6 @@
 
 import { ChartScatter, Link, RefreshCw, SlidersHorizontal, Target, Zap } from "lucide-react";
 import { startTransition, useEffect, useState, type CSSProperties } from "react";
-import { motion, useReducedMotion } from "framer-motion";
 import { useRouter, useSearchParams } from "next/navigation";
 import {
   DECISION_PRESETS,
@@ -29,16 +28,6 @@ interface MetricDefinition {
   helper: string;
   accent: string;
 }
-
-const fadeIn = {
-  hidden: { opacity: 0, y: 12 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.35 } },
-};
-
-const noMotion = {
-  hidden: { opacity: 0, y: 12 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0 } },
-};
 
 const metricDefinitions: readonly MetricDefinition[] = [
   {
@@ -306,11 +295,9 @@ function MetricSlider({
 
 function DecisionLabWorkbench({
   routeState,
-  variants,
   onCommit,
 }: {
   routeState: DecisionLabState;
-  variants: typeof fadeIn;
   onCommit: (nextState: DecisionLabState) => void;
 }) {
   const [draftState, setDraftState] = useState(routeState);
@@ -451,10 +438,7 @@ function DecisionLabWorkbench({
   return (
     <section className="home-page min-h-screen" aria-label="Decision Lab" data-testid="decision-lab-shell">
       <div className="home-shell home-section">
-        <motion.div
-          variants={variants}
-          initial="hidden"
-          animate="visible"
+        <div
           className="flex flex-col gap-6"
         >
           <div className="tool-topbar" id="hero">
@@ -752,7 +736,7 @@ function DecisionLabWorkbench({
               </div>
             </aside>
           </div>
-        </motion.div>
+        </div>
       </div>
     </section>
   );
@@ -761,8 +745,6 @@ function DecisionLabWorkbench({
 export function DecisionLabClient({ initialState }: DecisionLabClientProps) {
   const router = useRouter();
   const searchParams = useSearchParams();
-  const shouldReduceMotion = useReducedMotion();
-  const variants = shouldReduceMotion ? noMotion : fadeIn;
   const normalizedRouteState = normalizeDecisionLabState(searchParams);
   const currentQuery = searchParams.toString();
   const currentHref = currentQuery ? `${DECISION_LAB_ROUTE}?${currentQuery}` : DECISION_LAB_ROUTE;
@@ -787,7 +769,6 @@ export function DecisionLabClient({ initialState }: DecisionLabClientProps) {
     <DecisionLabWorkbench
       key={buildDecisionLabHref(routeState)}
       routeState={routeState}
-      variants={variants}
       onCommit={(nextState) => router.replace(buildDecisionLabHref(nextState), { scroll: false })}
     />
   );

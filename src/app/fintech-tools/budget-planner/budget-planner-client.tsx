@@ -1,7 +1,6 @@
 "use client";
 
 import { type FormEvent, useMemo, useState } from "react";
-import { motion, useReducedMotion } from "framer-motion";
 import {
   ArrowLeft,
   ArrowRight,
@@ -17,7 +16,6 @@ import {
   Sparkles,
   Trash2,
 } from "lucide-react";
-import { getReducedMotionVariants, fadeInVariants } from "@/components/investments/animations";
 import {
   buildBudgetCsv,
   formatBudgetMonthLabel,
@@ -114,10 +112,6 @@ export function BudgetPlannerClient() {
   const [expenseDraft, setExpenseDraft] = useState<ExpenseDraft>(() =>
     createEmptyExpenseDraft(activeMonthKey, activeMonth.categories[0]?.id ?? "")
   );
-  const shouldReduceMotion = useReducedMotion();
-  const motionVariants = shouldReduceMotion
-    ? getReducedMotionVariants().fadeInVariants
-    : fadeInVariants;
   const resolvedExpenseCategoryId = activeMonth.categories.some(
     (category) => category.id === expenseDraft.categoryId
   )
@@ -280,10 +274,7 @@ export function BudgetPlannerClient() {
       data-testid="budget-planner-shell"
     >
       <div className="home-shell home-section">
-        <motion.div
-          variants={motionVariants}
-          initial="hidden"
-          animate="visible"
+        <div
           className="flex flex-col gap-6"
         >
           {/* In-page section nav (replaces sidebar) */}
@@ -862,7 +853,7 @@ export function BudgetPlannerClient() {
             </p>
           </aside>
         </div>
-      </motion.div>
+      </div>
       </div>
     </section>
   );

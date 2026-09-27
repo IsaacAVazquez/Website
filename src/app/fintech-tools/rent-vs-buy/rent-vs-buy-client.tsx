@@ -1,7 +1,6 @@
 "use client";
 
 import { useId, useMemo, useState } from "react";
-import { motion, useReducedMotion } from "framer-motion";
 import {
   Home,
   Building2,
@@ -11,7 +10,6 @@ import {
   TrendingUp,
   Info,
 } from "lucide-react";
-import { getReducedMotionVariants, fadeInVariants } from "@/components/investments/animations";
 import { useRentVsBuy } from "@/hooks/useRentVsBuy";
 import type { RentVsBuyInput, RentVsBuyResult } from "@/lib/rentVsBuy/types";
 
@@ -218,10 +216,6 @@ export function RentVsBuyClient() {
   // Each NumberField keeps a local draft while typing, so Reset remounts the
   // fields to drop any draft still showing a value the store no longer holds.
   const [resetKey, setResetKey] = useState(0);
-  const shouldReduceMotion = useReducedMotion();
-  const motionVariants = shouldReduceMotion
-    ? getReducedMotionVariants().fadeInVariants
-    : fadeInVariants;
 
   const verdict = VERDICT_COPY[result.verdict];
   const num = <K extends keyof RentVsBuyInput>(key: K) =>
@@ -230,10 +224,7 @@ export function RentVsBuyClient() {
   return (
     <section className="home-page min-h-screen" aria-label="Rent vs. buy calculator">
       <div className="home-shell home-section">
-        <motion.div
-          variants={motionVariants}
-          initial="hidden"
-          animate="visible"
+        <div
           className="flex flex-col gap-6"
         >
           <div className="tool-topbar">
@@ -447,7 +438,7 @@ export function RentVsBuyClient() {
               </p>
             </aside>
           </div>
-        </motion.div>
+        </div>
       </div>
     </section>
   );
