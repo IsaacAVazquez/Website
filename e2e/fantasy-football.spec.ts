@@ -404,12 +404,12 @@ test.describe("Fantasy football rankings", () => {
     await expect(toggle).toBeVisible();
 
     const initialPaper = await page.evaluate(() =>
-      getComputedStyle(document.documentElement).getPropertyValue("--home-paper").trim()
+      getComputedStyle(document.querySelector("main [data-c97-surface]")!).getPropertyValue("--c97-surface").trim()
     );
     await toggle.click();
     await expect(page.locator("html")).toHaveClass(/dark/);
     const darkPaper = await page.evaluate(() =>
-      getComputedStyle(document.documentElement).getPropertyValue("--home-paper").trim()
+      getComputedStyle(document.querySelector("main [data-c97-surface]")!).getPropertyValue("--c97-surface").trim()
     );
 
     expect(darkPaper).not.toBe(initialPaper);

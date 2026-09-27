@@ -2,6 +2,7 @@
 
 **Date:** 2026-09-25
 **Status:** Direction, scope, ink set, and the shared rules approved in conversation on 2026-09-25. The per-project designs below await review.
+**Status, 2026-09-27.** Complete. All 33 project routes shipped and merged on 2026-09-27, PR 0 as #470, PR 1 as #471, PR 2 as #477 (a re-land of #474 after its stacked base merged), PR 3 as #478, PR 4 as #480, and PR 5 as #482. The unification close-out PR followed as #483 and deleted `HomeStatsPanel`, its `.home-stats-*` styles, and the `.tool-*` block once nothing read them.
 
 ## What this is
 
@@ -128,4 +129,4 @@ Before a PR opens, the route's Jest suites and every e2e spec that touches its r
 
 ## Open items
 
-`/score-pools` and `/arcade` still need their unification migration before the close-out can delete the bridge, `HomeStatsPanel`, and `.tool-*`. The `/design/catalog-pages` canvas still describes the old Pine and Tobacco rules and is not changed here.
+`/score-pools` moved onto Catalog 97 in the close-out PR (#483), and `/arcade` keeps its CRT palette as the sanctioned exception `STYLING.md` names, since it never read a `--home-*` token, so neither blocks anything now. The `/design/catalog-pages` canvas still describes the old Pine and Tobacco rules and is not changed here.

@@ -88,8 +88,8 @@ const SCORING_OPTIONS: { key: FantasyRouteScoring; label: string; shortLabel: st
 const RANKINGS_PAGE_SIZE = FANTASY_RANKINGS_PAGE_SIZE;
 
 /**
- * Small signal text on the plates. Bare `--home-signal` on `--home-paper-raised`
- * measures 4.61:1 in light mode at rest and 4.41:1 once the paper-alt hover
+ * Small accent text on the plates. Bare accent on the raised plate
+ * measured 4.61:1 in light mode at rest and 4.41:1 once the paper-alt hover
  * tint composites over it, so the 14px VORP value and the 16px queued rank
  * digit both fail AA exactly where a drafter is reading them. Mixing the text
  * 72% toward ink is the same repair the draft tracker, mock draft, and best
@@ -215,8 +215,8 @@ function describeVsAdp(player: Player): { text: string; color: string; judged: b
  * the comparison with an overall ADP would be meaningless.
  *
  * The chip and the "vs ADP" number read the same `signal`, so they carry the
- * same tone. Reach is --home-negative here because that is what the row number
- * and the drawer verdict already use; --home-warning is spent on snapshot
+ * same tone. Reach is the negative token here because that is what the row
+ * number and the drawer verdict already use; warning is spent on snapshot
  * staleness on this surface and must not also mean "reach".
  */
 function ValueReachChip({ player }: { player: Player }) {

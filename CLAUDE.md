@@ -2,7 +2,7 @@
 
 Deep implementation context for Claude Code and other agents working in this repo.
 
-**Last updated:** 2026-09-25
+**Last updated:** 2026-09-27
 
 ---
 
@@ -76,12 +76,11 @@ The full route map and header links live in
   exactly one page-level `h1`.
 - Header links are the seven in `catalog97NavLinks`. The Working Instrument
   header, footer, and `navlinks.tsx` were deleted on 2026-09-16.
-- `src/app/catalog97.css` holds the Catalog 97 tokens, scoped under
-  `[data-c97]`, and the bridge block that aliases every `--home-*` token onto
-  them so components written against the Working Instrument repaint without
-  edits. The `:root` `--home-*` declarations in `globals.css` stay until the
-  last family migration; see
-  `docs/superpowers/specs/2026-09-16-catalog97-unification-design.md`.
+- `src/app/catalog97.css` holds every Catalog 97 token, scoped under
+  `[data-c97]` and `[data-c97-surface]`, and every component class. The
+  Working Instrument tokens, helpers, and the bridge that aliased them were
+  deleted on 2026-09-27 when the unification closed
+  (`docs/superpowers/specs/2026-09-16-catalog97-unification-design.md`).
 
 Redirects (`next.config.mjs`): `/projects`,`/work` → `/portfolio`; `/blog` →
 `/writing`; `/blog/:slug` → `/writing/:slug`; plus fantasy-football shortcuts/typos.
@@ -238,20 +237,20 @@ localStorage via dedicated hooks. Reference: `PERSONAL_INTEREST_TOOLS.md`.
 
 ## Styling Rules
 
-Catalog 97 is the site-wide system as of 2026-09-16, and `/admin` sits inside the same
-shell as every other route. Its tokens live in `src/app/catalog97.css`, scoped under
-`[data-c97]`. The `--home-*` helpers and their `:root` values still live in
-`src/app/globals.css`. `STYLING.md`, `DESIGN_CHECKLIST.md`, and `DESIGN.md` still describe
-the Working Instrument and get rewritten in the close-out PR of the unification spec, so
-where they disagree with `catalog97.css`, the CSS wins.
+Catalog 97 is the only design language on the site. Every route, `/admin` included, renders
+inside `Catalog97Shell` or `Catalog97ToolShell`, and its tokens and classes live in
+`src/app/catalog97.css`. `STYLING.md` is the reference for it. `DESIGN.md` still describes the
+Working Instrument and waits to be regenerated from the shipped site, so where it disagrees
+with `catalog97.css`, the CSS wins.
 **Before merging any UI, run the single pre-merge `DESIGN_CHECKLIST.md`.**
 
-- On the seven designed routes, anything in `src/components/catalog97/`, and every
-  migrated route (as of 2026-09-22 that is the three detail pages, the eight utility
-  pages, and the shared `AuthorBio`, `RouteErrorBoundary`, `RouteLoadingState`,
-  `ProjectBuildNote`, `CodeSample`, `NewsletterSignup`, and search components), set
-  `data-c97-surface` on the container and read the `--c97-*` tokens (`--c97-ink`,
-  `--c97-accent`, and the rest). Never set a colour on a component directly.
+- Every section sets `data-c97-surface` and reads the `--c97-*` tokens (`--c97-ink`,
+  `--c97-accent`, and the rest). Never set a colour on a component directly. The
+  Working Instrument `--home-*` tokens, the legacy `--surface-*`, `--text-*`,
+  `--border-*`, and `--color-*` aliases, `--radius-*`, `--shadow-*`, and the `.home-*`,
+  `.section-*`, and `.tool-*` helpers no longer exist, and
+  `src/app/__tests__/catalog97-closeout.test.ts` fails if any file under `src` reads
+  one of those tokens or imports the deleted `HomeStatsPanel`.
 - The seven designed routes use the print shop layout (2026-09-23): two lead inks per page, left
   unlabelled, `c97-sheet` bands with `data-seam` wherever the surface changes,
   `.c97-poster`/`.c97-poster-sm` Anton headings with the
@@ -259,12 +258,11 @@ where they disagree with `catalog97.css`, the CSS wins.
   method and its rules are in `STYLING.md` under "Print shop layout"; Home is the reference build.
 - Project routes print the same way (2026-09-25). Each takes its ink pair from
   `src/constants/projectPress.ts` (six inks now, green, teal, and pink added), opens on
-  `Catalog97ProjectHero` with its signature visual as the child, and drops `HomeStatsPanel`.
-  Anything inside the hero that paints a field or panel needs its own `data-c97-surface`.
-  `node scripts/migrateHomeTokens.mjs <files>` moves a route off `--home-*`, and
+  `Catalog97ProjectHero` with its signature visual as the child.
+  Anything inside the hero that paints a field needs its own `data-c97-surface`.
   `node scripts/contrastSweep.mjs <baseUrl> <routes…>` measures text contrast in both themes.
   Spec: `docs/superpowers/specs/2026-09-25-project-specific-ui-design.md`.
-- A migrated route is a sequence of `c97-band` sections inside `Catalog97ToolShell`,
+- A route is a sequence of `c97-band` sections inside `Catalog97ToolShell`,
   each carrying its own `data-c97-surface`, and it uses only the `catalog97.css`
   vocabulary: `.c97-kicker`, `.c97-display`, `.c97-serif` with `.c97-h2`/`.c97-h3`,
   `.c97-lead`, `.c97-prose`, `.c97-meta`, the ledger row `.c97-row` and its
@@ -274,34 +272,27 @@ where they disagree with `catalog97.css`, the CSS wins.
   `.c97-breadcrumb`, `.c97-disclosure`, `.c97-kbd`, `.c97-skeleton`, `.c97-meter`).
   Spacing comes off `--c97-sp-1` through `--c97-sp-7` as inline `style`, never from
   Tailwind spacing, colour, radius, or shadow utilities. The running-prose column is
-  `--c97-column`.
-- On every route not yet migrated the `--home-*` names (`var(--home-paper)`, `var(--home-ink)`,
-  `var(--home-ink-muted)`, `var(--home-rule)`, `var(--home-signal)`) still work, because
-  the bridge block in `catalog97.css` aliases each one onto a `--c97-*` token. They are
-  transitional. The family migrations move each surface onto `--c97-*`, and the close-out
-  PR deletes the `--home-*` declarations and the bridge. Inside the bridge every
-  `--radius-*` is 0 and every `--shadow-*` is `none`, so a radius or shadow token paints
-  nothing. The accent stays reserved for data, state, and action, never decorative washes.
-  `--home-haze`, `--home-acid`, and `--home-moss` are deleted. Legacy aliases (`--surface-*`, `--text-*`, `--border-*`,
-  `--color-primary`, and the `--color-success/-error/-warning` names) exist for compatibility
-  but must not be introduced in new code or docs — use `--home-positive/-negative/-warning`
-  for status.
+  `--c97-column`. The type classes and `.c97-panel` are unlayered and set their own
+  margin or padding, so a Tailwind margin or padding utility on the same element silently
+  loses; put that spacing in an inline style.
+- Tailwind's radius and shadow scales compile to `0` and `none` in `tailwind.config.ts`,
+  so a leftover `rounded-lg` or `shadow-sm` paints nothing. Remove it when you touch the
+  file. The hard `.c97-offset` is the one shadow the system allows.
+- The accent stays reserved for data, state, and action, never decorative washes. Status
+  uses `--c97-positive`, `--c97-negative`, and `--c97-warning`; on ink-green those fall back
+  to ink, so status lines there sit on a paper plate.
 - Never hardcode hex colors in components — use the CSS variables.
-- For raised surfaces use `var(--home-paper-raised)` or mix toward `var(--home-elev-mix)`;
-  **never `color-mix(…, white)`** — it lightens in both themes and breaks dark mode.
+- A raised block is `.c97-panel` (or `var(--c97-panel)`) on its sheet, never a
+  `color-mix(…, white)`, which lightens in both themes and breaks dark mode. Fields paint the
+  pale `--c97-field`, so a field inside an espresso, chocolate, or lead-ink sheet sits on a
+  paper plate.
 - D3/SVG charts resolve token colors at render time via `getComputedStyle` and never bake
   a token's hex into a constant. Read from the chart's own element, since the tokens are
-  scoped to the `[data-c97]` container and `document.documentElement` still returns the
-  old `:root` values. `PortfolioPerformanceChart` and `ComparisonRadarChart` read the
-  `--c97-*` names from their own svg as of 2026-09-27.
+  scoped to the `[data-c97]` container and `document.documentElement` resolves none of
+  them. `PortfolioPerformanceChart` and `ComparisonRadarChart` are the references.
 - No arbitrary `text-[Npx]` micro-type — use `text-3xs`/`text-2xs` (see `STYLING.md`).
-- CSS-Module surfaces must alias the global tokens (`--x-paper: var(--home-paper)`), never
+- CSS-Module surfaces must alias the tokens (`--x-ink: var(--c97-ink)`), never
   re-declare the palette as fresh hex with its own `.dark` mirror.
-- The editorial shell helpers (`.home-page`, `.home-shell`, `.home-section`,
-  `.home-card`, `.home-kicker`) remain only for routes the family migrations have not
-  reached. Do not introduce them on a migrated route or in a new one; compose bands.
-  `.prose-writing`, `.changelog-prose`, and `.skeleton` were deleted on 2026-09-22 in
-  favour of `.c97-article` and `.c97-skeleton`.
 - Keep light/dark mode support, 44px minimum touch targets, and `prefers-reduced-motion`
   for animated components. Shared portfolio-shell primitives must not use
   `transition-all` — transition specific properties.

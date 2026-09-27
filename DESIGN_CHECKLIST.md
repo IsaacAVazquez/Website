@@ -4,92 +4,93 @@ The single pre-merge checklist for any new or edited page, component, or surface
 this repo, run through this before opening a PR. It distills the rules that were previously scattered
 across `STYLING.md`, `CLAUDE.md`, and `SNAPSHOT_DRIVEN_DASHBOARDS.md`.
 
-**Last updated:** 2026-09-23 · Print shop layout checks added for the seven designed routes. Derived from the 2026-06 site-wide design audit (`docs/DESIGN_AUDIT_2026-06.md`).
+**Last updated:** 2026-09-27 · Rewritten for Catalog 97 as the only design language, after the close-out deleted the Working Instrument tokens and helpers. Derived from the 2026-06 site-wide design audit (`docs/DESIGN_AUDIT_2026-06.md`).
 
-> When in doubt, copy a reference implementation instead of inventing: `PortfolioPerformanceChart`
-> (themeable D3), `github-trending-pulse` (touch targets + scoped transitions + token micro-type),
-> `tech-startup-tracker` (error/loading/verified disclosure + correct row semantics), the football
-> `SurfaceCard`/`StatCard`/`FixtureCard` set (theme-aware surfaces), `EditorialPillButton` (guaranteed 44px).
+> When in doubt, copy a reference implementation instead of inventing. Home (`Catalog97Home.tsx`) is
+> the print shop reference, `Catalog97ProjectHero` plus any project route shows the hero and signature
+> pattern, `PortfolioPerformanceChart` shows themeable D3, and `tech-startup-tracker` shows the
+> error, loading, and verified disclosure with correct row semantics.
 
 ---
 
 ## Color & tokens
 
-- [ ] **No hardcoded hex** in components when a token exists. On the seven designed Catalog 97 routes and in
-      `src/components/catalog97`, use `--c97-*` tokens (`catalog97.css`) through `data-c97-surface`. On the other
-      routes use `--home-*` (`globals.css`), which the bridge in `catalog97.css` aliases and which is slated for
-      removal in the family migrations (`docs/superpowers/specs/2026-09-16-catalog97-unification-design.md`).
-      The `--home-*` items below apply to those other routes.
-- [ ] **No literal `white`/`black` in `color-mix`.** For raised surfaces use `var(--home-paper-raised)`,
-      or mix toward `var(--home-elev-mix)` (flips white↔black per theme). `color-mix(… , white)` lightens
-      in *both* themes and breaks dark mode. Reuse `SurfaceCard` before hand-rolling an elevated panel.
-- [ ] **Gain/loss/status use semantic `--home-*` tokens**, not green/red hex: `--home-positive`,
-      `--home-negative`, `--home-warning` (each has a `.dark` variant). Do not introduce the legacy
-      `--color-success/-error/-warning` aliases in new code.
-- [ ] **One accent.** `--home-signal` is the only accent in new code, and it marks data, state, or
-      action — never a decorative wash or band. `--home-acid`/`--home-haze`/`--home-moss` are deleted
-      from `globals.css`; do not reintroduce them.
-- [ ] **CSS-Module surfaces alias the globals** (`--x-paper: var(--home-paper)`) — never re-declare the
-      palette as fresh hex with its own `.dark` mirror (that creates a parallel source of truth that drifts).
-- [ ] No raw Tailwind color literals (`text-gray-500`, `bg-slate-100`) where a token exists.
+- [ ] No hardcoded hex in components. Every section sets `data-c97-surface` and reads the `--c97-*`
+      tokens in `catalog97.css`. The Working Instrument `--home-*` tokens, the legacy `--surface-*`,
+      `--text-*`, `--border-*`, and `--color-*` aliases, and the `--radius-*` and `--shadow-*` tokens no
+      longer exist, and `src/app/__tests__/catalog97-closeout.test.ts` fails on any read of them.
+- [ ] Every section is a surface. A band that changes surface from the one above carries `c97-sheet`
+      and a `data-seam`, and a raised block is `.c97-panel` on its sheet, never a `color-mix` toward
+      white or black.
+- [ ] Gain, loss, and status use `--c97-positive`, `--c97-negative`, and `--c97-warning`, never green or
+      red hex. On ink-green those tokens fall back to ink, so status lines there sit on a paper plate.
+- [ ] One accent. `--c97-accent` marks data, state, or action and is never a decorative wash or band.
+- [ ] Fields (`.c97-field`, chips, code) paint the pale `--c97-field`, so a field inside an espresso,
+      chocolate, or lead-ink sheet sits on a paper plate.
+- [ ] CSS Modules alias the tokens (`--x-ink: var(--c97-ink)`) and never re-declare the palette as fresh
+      hex with its own `.dark` mirror.
+- [ ] No raw Tailwind colour literals (`text-gray-500`, `bg-slate-100`), no radius, and no blurred shadow.
+      The Tailwind radius and shadow scales compile to nothing, so a leftover `rounded-lg` or `shadow-sm`
+      is dead markup to remove.
 
 ## Dark mode
 
-- [ ] Every surface has a `.dark` story — verify the page in both themes, not just light.
-- [ ] **D3 / SVG charts resolve series colors at render time** via
-      `getComputedStyle(document.documentElement).getPropertyValue('--home-…')`, re-resolved on theme
-      change (`useTheme().resolvedTheme` as an effect dep). Never bake a token's hex into a constant,
+- [ ] Every surface has a `.dark` story, so verify the page in both themes, not just light.
+- [ ] D3 and SVG charts resolve series colours at render time via
+      `getComputedStyle(svgElement).getPropertyValue('--c97-…')`, read from the chart's own element
+      because the document root resolves no Catalog 97 token, and re-resolved on theme change
+      (`useTheme().resolvedTheme` as an effect dep). Never bake a token's hex into a constant,
       and never pass `var()`/`color-mix()` into SVG *presentation attributes* (they don't resolve
-      there — use resolved values or `.style()`). References: `PortfolioPerformanceChart`,
+      there, so use resolved values or `.style()`). References: `PortfolioPerformanceChart`,
       `ComparisonRadarChart`, `FrontierCostContextChart`. Investments visuals share one categorical
       palette: `src/components/investments/holdingPalette.ts`.
-- [ ] Avoid ink-equivalent tones (`#12110F`) for logo/series tiles — they vanish on dark paper.
+- [ ] Avoid ink-equivalent tones (`#12110F`) for logo/series tiles, since they vanish on dark paper.
 
 ## Typography
 
-- [ ] Type uses `Instrument Sans` (`--font-home-sans`) for display + body; `Instrument Serif`
-      (`--font-home-serif`) for at most one italic gesture per surface; `Fragment Mono`
-      (`--font-mono`, 400 only) for readouts/kickers/micro-labels. Bricolage Grotesque, Inter, and
-      JetBrains Mono are retired — their variables alias to the new stack; don't reference them in
-      new code. Inside `[data-c97]` the bridge points these three variables at the Catalog 97 font stack.
-      (See `STYLING.md` for the full table.)
-- [ ] **No arbitrary `text-[Npx]`.** 10px → `text-3xs`, 11px → `text-2xs`, fixed 12px → `text-1xs`,
+- [ ] Type uses the Catalog 97 stack through its tokens and classes, meaning Archivo (`--c97-font-body`) for
+      body and UI, Newsreader (`--c97-font-display`, `.c97-serif`) for headings and the names of things,
+      Anton (`.c97-poster`, `.c97-poster-sm`) for poster headlines only, and Fragment Mono
+      (`--c97-font-mono`, `.c97-mono`, 400 only) for readouts. See `STYLING.md`.
+- [ ] Spacing on a type class or `.c97-panel` goes in an inline style, since those classes are
+      unlayered and a Tailwind margin or padding utility on the same element silently loses.
+- [ ] No arbitrary `text-[Npx]`. 10px → `text-3xs`, 11px → `text-2xs`, fixed 12px → `text-1xs`,
       12–14px that may scale → `text-xs` (fluid). Don't reintroduce px literals.
 - [ ] Fluid `--text-*` tokens for everything else; headings keep tight tracking + balanced wrapping.
 
 ## Accessibility
 
-- [ ] Exactly **one page-level `<h1>`** that renders at runtime. (Conditional state branches — loading /
-      unavailable / loaded — that each contain an `<h1>` are fine because only one renders; don't add a
+- [ ] Exactly one page-level `<h1>` that renders at runtime. (Conditional state branches, meaning loading,
+      unavailable, and loaded, that each contain an `<h1>` are fine because only one renders; don't add a
       second `<h1>` that renders *alongside* the first.)
 - [ ] Every route relies on the single `<main>` owned by `Catalog97Shell`. Leaf sections use
-      `div`/`section` — **never** a nested `<main>`.
-- [ ] **No heading-order skips** (h1 → h3 with no h2).
-- [ ] **44px minimum touch targets** on every button, link, input, select, and icon-button
-      (`min-h-touch`/`min-w-touch` or `min-h-[44px]`). Recurring offenders: filter chips, pager buttons,
+      `div`/`section` and never a nested `<main>`.
+- [ ] No heading-order skips (h1 → h3 with no h2).
+- [ ] 44px minimum touch targets on every button, link, input, select, and icon-button
+      (`min-h-touch`/`min-w-touch` or `min-h-[44px]`). The recurring offenders are filter chips, pager buttons,
       native `<select>`, icon-only buttons (`h-7`/`h-8`), `min-h-[38px]/[40px]` pills.
 - [ ] Icon-only controls have `aria-label` or `sr-only` text.
 - [ ] Meaningful images have descriptive `alt`; decorative images use `alt=""` + `aria-hidden`.
 - [ ] Form inputs/selects have an associated `<label>` or `aria-label`.
-- [ ] **No `role="button"` on a `<tr>`/`<div>` that wraps a real `<button>`** (duplicate tab stops,
+- [ ] No `role="button"` on a `<tr>`/`<div>` that wraps a real `<button>` (duplicate tab stops,
       invalid nesting). Make the row OR the inner control interactive, not both.
 - [ ] Hover affordances also work on `:focus-visible` (don't drive hover color via JS `onMouseEnter`
-      only — keyboard users get no cue).
-- [ ] Status is never signaled by color alone — pair with text or an icon.
+      only, since keyboard users get no cue).
+- [ ] Status is never signaled by colour alone, so pair it with text or an icon.
 
 ## Motion
 
-- [ ] **Framer Motion entrances call `useReducedMotion()`** (or wrap in `<MotionConfig reducedMotion="user">`).
-      The global CSS `prefers-reduced-motion` guard does **not** stop JS/rAF-driven Framer animation.
+- [ ] Framer Motion entrances call `useReducedMotion()` (or wrap in `<MotionConfig reducedMotion="user">`).
+      The global CSS `prefers-reduced-motion` guard does not stop JS/rAF-driven Framer animation.
       Shared primitives especially, since fixing one covers many routes.
 - [ ] CSS animations/transitions have a `prefers-reduced-motion` fallback (or use `motion-safe:`).
-- [ ] **No `transition-all`** in shared primitives — transition only the properties that change
+- [ ] No `transition-all` in shared primitives. Transition only the properties that change
       (`transition-[background-color,transform]`).
 
 ## Responsive
 
 - [ ] Mobile-first; verify at ~360px. No horizontal overflow; `white-space: nowrap` display text can't clip.
-- [ ] Wide data tables use the scroll pattern: `overflow-x-auto` wrapper with `role="region"`, `tabIndex`,
+- [ ] Wide data tables use the scroll pattern, an `overflow-x-auto` wrapper with `role="region"`, `tabIndex`,
       and a label (progressive column-hiding is a plus).
 - [ ] Grids collapse to one column on mobile (responsive `grid-cols-*`).
 - [ ] In-page section nav has a mobile equivalent (don't `display:none` it away with no replacement).
@@ -97,18 +98,21 @@ across `STYLING.md`, `CLAUDE.md`, and `SNAPSHOT_DRIVEN_DASHBOARDS.md`.
 
 ## Snapshot-driven dashboards (data-fetching routes)
 
-- [ ] Ships a per-route **`error.tsx`** (`'use client'`, re-exports `RouteErrorBoundary` with a bespoke
-      `surfaceName`) **and** a `loading.tsx` (`RouteLoadingState`). See `SNAPSHOT_DRIVEN_DASHBOARDS.md`.
+- [ ] Ships a per-route `error.tsx` (`'use client'`, re-exports `RouteErrorBoundary` with a bespoke
+      `surfaceName`) and a `loading.tsx` (`RouteLoadingState`). See `SNAPSHOT_DRIVEN_DASHBOARDS.md`.
 - [ ] Curated/unverified datasets carry `verified: false` + `asOf` and disclose the unverified state
       on-page (mirror `tech-startup-tracker`).
 - [ ] Compliance disclaimers (retirement/investments) stay intact.
 
-## Print shop layout (the seven Catalog 97 routes)
+## Print shop layout
 
-See `STYLING.md` for the method. Before merging a change to one of these routes:
+See `STYLING.md` for the method. Before merging a change to one of the seven designed routes or a project
+route (the ones in `src/constants/projectPress.ts`); the utility pages, Score Pools, and `/admin` use the
+bands and vocabulary without the poster hero:
 
-- [ ] The page prints in two lead inks (blue, saffron, vermilion, with peach as a vermilion tint), and
-      nothing on the page labels or names the inks.
+- [ ] The page prints in two lead inks (blue, saffron, vermilion, green, teal, pink, with peach as a
+      vermilion tint), a project route takes its pair from `src/constants/projectPress.ts`, and nothing on
+      the page labels or names the inks.
 - [ ] Every band that changes surface from the one above carries `c97-sheet` and a `data-seam`, and no
       band that continues the same surface does.
 - [ ] The h1 uses `.c97-poster` and section h2s use `.c97-poster-sm`; project and article titles stay in
@@ -122,12 +126,11 @@ See `STYLING.md` for the method. Before merging a change to one of these routes:
 
 ## Consistency
 
-- [ ] Extends the existing visual language rather than inventing a new one. On a migrated route
-      compose `c97-band` sections from the `catalog97.css` vocabulary (`.c97-row`, `.c97-columns`,
-      `.c97-panel`, `.c97-stat`, `.c97-chip`, `.c97-table`); on a route still on the bridge reuse the
-      token helpers (`home-card`, `home-kicker`, `SurfaceCard`, etc.) before route-specific styling.
+- [ ] Extends the existing visual language. Compose `c97-band` sections from the `catalog97.css`
+      vocabulary (`.c97-row`, `.c97-columns`, `.c97-panel`, `.c97-stat`, `.c97-chip`, `.c97-table`)
+      before writing route CSS, and scope any route CSS to a route class.
 - [ ] Injected/`dangerouslySetInnerHTML` markup renders inside `.c97-article` (`catalog97.css`), which
       styles `a/ul/ol/code/pre/blockquote/table/img` in the palette. Don't leave links default-blue and
       don't hand-roll a second prose class.
-- [ ] `/admin` is editorial-exempt, and `/arcade` keeps its deliberate retro-CRT aesthetic — but
-      a11y/responsive/motion rules still apply to both.
+- [ ] `/arcade` keeps its deliberate retro CRT palette, and `/admin` is a plain Catalog 97 migration
+      with no print shop redesign, but the accessibility, responsive, and motion rules apply to both.

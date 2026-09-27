@@ -84,7 +84,7 @@ interface BubblePosition {
 /**
  * A "?" affordance that reveals a definition on hover, keyboard focus, or tap.
  *
- * The bubble renders in a portal on `document.body` so it escapes any ancestor
+ * The bubble renders in a portal on the page root so it escapes any ancestor
  * with `overflow: hidden`/`clip` (dense list rows, dashboard cards) that would
  * otherwise clip it, and it is positioned in viewport coordinates: centered on
  * the trigger, clamped to the viewport horizontally, and flipped below the
@@ -103,7 +103,10 @@ export function MetricTooltip({ term, definition, children, focusable }: Props) 
   const reactId = React.useId();
   const bubbleId = `metric-tip-${reactId}`;
   const open = hovered || focused;
-  const portalTarget = typeof document === "undefined" ? null : document.body;
+  // The page root rather than document.body, because the --c97-* tokens only
+  // resolve inside it. The bubble only opens after mount, so SSR never reads it.
+  const portalTarget =
+    typeof document === "undefined" ? null : (document.querySelector(".c97-page") ?? document.body);
 
   const reposition = React.useCallback(() => {
     const trigger = triggerRef.current;
@@ -156,6 +159,7 @@ export function MetricTooltip({ term, definition, children, focusable }: Props) 
   const bubble =
     portalTarget && open
       ? createPortal(
+          <span data-c97-surface="paper" style={{ display: "contents" }}>
           <span
             ref={bubbleRef}
             role="tooltip"
@@ -186,6 +190,7 @@ export function MetricTooltip({ term, definition, children, focusable }: Props) 
                 }
               />
             )}
+          </span>
           </span>,
           portalTarget
         )

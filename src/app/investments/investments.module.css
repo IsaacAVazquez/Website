@@ -31,7 +31,7 @@
      Colour used to live here too, as a hand-copied .dark override that forced
      every child dark regardless of the site theme. The terminal's containers
      now carry data-c97-surface="espresso"/"chocolate" instead, so the Catalog
-     97 surface tokens (and the --home-* bridge onto them) drive light/dark. */
+     97 surface tokens drive light/dark. */
   --invest-fs-micro: 10px;   /* dense cell and tick labels */
   --invest-fs-label: 11px;   /* mono kickers and micro-labels */
   --invest-fs-small: 12px;   /* dense secondary body */

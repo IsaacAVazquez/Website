@@ -13,12 +13,10 @@ import type { Scoreline } from "@/lib/scorePools";
 import type { ScorePoolsSnapshot, SnapshotFixture } from "@/types/scorePools";
 import { FixtureDetailDrawer } from "./fixture-detail-drawer";
 import {
-  CHIP_BUTTON,
   ConfidenceChip,
   EpMeter,
   LockBadge,
   PILL_BUTTON,
-  chipStyle,
   formatAge,
   formatKickoff,
   formatPoints,
@@ -186,50 +184,51 @@ export function ScorePoolsClient({ snapshot, initialFixtureId }: ScorePoolsClien
       : null;
 
   return (
-    <div className="home-page min-h-screen">
-      <div className="home-shell home-shell-wide home-section space-y-6">
+    <section className="c97-band min-h-screen" data-c97-surface="paper">
+      <div className="c97-shell space-y-6" style={{ maxWidth: "86rem" }}>
         <header>
-          <p className="home-kicker mb-1">Prediction Tools</p>
-          <h1 className="text-2xl font-bold tracking-tight text-[var(--home-ink)] sm:text-3xl">
+          <p className="c97-kicker mb-1">Prediction Tools</p>
+          <h1 className="text-2xl font-bold tracking-tight text-[var(--c97-ink)] sm:text-3xl">
             Score{" "}
-            <em style={{ fontFamily: "var(--font-home-serif)", fontStyle: "italic", fontWeight: 400 }}>
+            <em style={{ fontFamily: "var(--c97-font-display)", fontStyle: "italic", fontWeight: 400 }}>
               Pools
             </em>
           </h1>
-          <p className="mt-2 max-w-3xl text-sm leading-relaxed text-[var(--home-ink-muted)]">
+          <p className="mt-2 max-w-3xl text-sm leading-relaxed text-[var(--c97-ink-2)]">
             I run exact-score prediction pools, and this is the engine I used to work by hand: it
             de-vigs the market, fits a scoreline distribution anchored to the moneyline and the
             total, and ranks every pick by expected points under my pool&apos;s actual rules,
             adjusted for where I sit on the leaderboard. It&apos;s a decision aid built on market
             prices, so it carries the market&apos;s uncertainty rather than beating it.
           </p>
-          <p className="mt-2 text-2xs text-[var(--home-ink-muted)]">
+          <p className="mt-2 text-2xs text-[var(--c97-ink-2)]">
             Data as of {formatAge(snapshot.generatedAt, now)} · picks recompute whenever the
             snapshot, the odds, or your settings change ·{" "}
-            <Link className="underline decoration-[var(--home-rule)] underline-offset-4 hover:decoration-[var(--home-signal)]" href="/score-pools/tracker">
+            <Link className="underline decoration-[var(--c97-rule)] underline-offset-4 hover:decoration-[var(--c97-accent)]" href="/score-pools/tracker">
               tracker
             </Link>{" "}
             ·{" "}
-            <Link className="underline decoration-[var(--home-rule)] underline-offset-4 hover:decoration-[var(--home-signal)]" href="/score-pools/settings">
+            <Link className="underline decoration-[var(--c97-rule)] underline-offset-4 hover:decoration-[var(--c97-accent)]" href="/score-pools/settings">
               settings
             </Link>
           </p>
         </header>
 
         {pools.length === 0 || !activePool ? (
-          <section className="rounded-[var(--radius-2xl)] border border-[var(--home-rule)] bg-[var(--home-paper-raised)] p-5 shadow-[var(--shadow-sm)]" aria-label="Create your first pool">
-            <h2 className="text-lg font-bold text-[var(--home-ink)]">Set up your first pool</h2>
-            <p className="mt-1 max-w-2xl text-sm text-[var(--home-ink-muted)]">
+          <section className="bg-[var(--c97-panel)] p-5" aria-label="Create your first pool">
+            <h2 className="text-lg font-bold text-[var(--c97-ink)]">Set up your first pool</h2>
+            <p className="mt-1 max-w-2xl text-sm text-[var(--c97-ink-2)]">
               A pool is a league plus your scoring rules and your standing. Everything stays in
               this browser; nothing gets an account.
             </p>
             <div className="mt-3 flex flex-wrap items-end gap-3">
-              <label className="block text-1xs font-semibold text-[var(--home-ink)]">
-                League
+              <label className="block">
+                <span className="c97-kicker">League</span>
                 <select
                   value={newPoolLeague}
                   onChange={(event) => setNewPoolLeague(event.target.value)}
-                  className="mt-1 block min-h-[44px] rounded-lg border border-[var(--home-rule)] bg-[var(--home-paper)] px-3 py-2 text-sm text-[var(--home-ink)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-signal)]"
+                  className="c97-field"
+                  style={{ marginTop: "var(--c97-sp-1)" }}
                 >
                   {snapshot.leagues.map((entry) => (
                     <option key={entry.key} value={entry.key}>
@@ -239,14 +238,15 @@ export function ScorePoolsClient({ snapshot, initialFixtureId }: ScorePoolsClien
                   ))}
                 </select>
               </label>
-              <label className="block text-1xs font-semibold text-[var(--home-ink)]">
-                Pool name
+              <label className="block">
+                <span className="c97-kicker">Pool name</span>
                 <input
                   type="text"
                   value={newPoolName}
                   onChange={(event) => setNewPoolName(event.target.value)}
                   placeholder="Office pool"
-                  className="mt-1 block min-h-[44px] rounded-lg border border-[var(--home-rule)] bg-[var(--home-paper)] px-3 py-2 text-sm text-[var(--home-ink)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-signal)]"
+                  className="c97-field"
+                  style={{ marginTop: "var(--c97-sp-1)" }}
                 />
               </label>
               <button
@@ -264,14 +264,13 @@ export function ScorePoolsClient({ snapshot, initialFixtureId }: ScorePoolsClien
           </section>
         ) : (
           <>
-            <nav className="flex flex-wrap items-center gap-2" aria-label="Pools and rounds">
+            <nav className="c97-segmented items-center" aria-label="Pools and rounds">
               {pools.map((pool) => (
                 <button
                   key={pool.id}
                   type="button"
                   aria-pressed={pool.id === activePool.id}
-                  className={CHIP_BUTTON}
-                  style={chipStyle(pool.id === activePool.id)}
+                  className="min-h-[44px] text-sm font-semibold"
                   onClick={() => {
                     setActivePool(pool.id);
                     resetStatuses();
@@ -280,14 +279,13 @@ export function ScorePoolsClient({ snapshot, initialFixtureId }: ScorePoolsClien
                   {pool.name}
                 </button>
               ))}
-              <span className="mx-1 hidden h-5 w-px bg-[var(--home-rule)] sm:inline-block" aria-hidden="true" />
+              <span className="mx-1 hidden h-5 w-px bg-[var(--c97-rule)] sm:inline-block" aria-hidden="true" />
               {rounds.map((round) => (
                 <button
                   key={round.label}
                   type="button"
                   aria-pressed={round.label === activeRoundLabel}
-                  className={CHIP_BUTTON}
-                  style={chipStyle(round.label === activeRoundLabel)}
+                  className="min-h-[44px] text-sm font-semibold"
                   onClick={() => {
                     setSelectedRound(round.label);
                     resetStatuses();
@@ -299,7 +297,7 @@ export function ScorePoolsClient({ snapshot, initialFixtureId }: ScorePoolsClien
             </nav>
 
             {league?.sample ? (
-              <p className="rounded-xl border border-[var(--home-rule)] bg-[var(--home-overlay)] px-4 py-3 text-2xs text-[var(--home-ink-muted)]">
+              <p className="border border-[var(--c97-rule)] bg-[var(--c97-overlay)] px-4 py-3 text-2xs text-[var(--c97-ink-2)]">
                 This league is sample data with fictional teams and hand-set odds, so you can try
                 the whole flow before wiring up a real competition. Swap in a live league from the
                 settings page when you&apos;re ready.
@@ -308,13 +306,13 @@ export function ScorePoolsClient({ snapshot, initialFixtureId }: ScorePoolsClien
             {league && league.notes.length > 0 && !league.sample ? (
               <div className="space-y-1">
                 {league.notes.map((note) => (
-                  <p key={note} className="text-2xs text-[var(--home-ink-muted)]">{note}</p>
+                  <p key={note} className="text-2xs text-[var(--c97-ink-2)]">{note}</p>
                 ))}
               </div>
             ) : null}
 
             {!league ? (
-              <p className="text-sm text-[var(--home-ink-muted)]">
+              <p className="text-sm text-[var(--c97-ink-2)]">
                 This pool points at a league that isn&apos;t in the snapshot anymore. Pick a
                 different league in{" "}
                 <Link className="underline" href="/score-pools/settings">settings</Link>.
@@ -324,7 +322,7 @@ export function ScorePoolsClient({ snapshot, initialFixtureId }: ScorePoolsClien
             {/* The pick sheet */}
             {analysisResult.analyzed.length > 0 ? (
               <section aria-label="Pick sheet">
-                <h2 className="text-lg font-bold text-[var(--home-ink)]">Pick sheet</h2>
+                <h2 className="text-lg font-bold text-[var(--c97-ink)]">Pick sheet</h2>
                 <div
                   className="scroll-shadow-x mt-3 overflow-x-auto"
                   role="region"
@@ -333,7 +331,7 @@ export function ScorePoolsClient({ snapshot, initialFixtureId }: ScorePoolsClien
                 >
                   <table className="min-w-full border-separate border-spacing-y-2" aria-label="Recommended picks for the current round">
                     <thead>
-                      <tr className="text-left text-xs uppercase tracking-[0.14em] text-[var(--home-ink-soft)]">
+                      <tr className="text-left text-xs uppercase tracking-[0.14em] text-[var(--c97-label)]">
                         <th scope="col" className="px-3 py-2 font-semibold">Match</th>
                         <th scope="col" className="px-3 py-2 font-semibold">Pick</th>
                         <th scope="col" className="px-3 py-2 font-semibold">Exp pts</th>
@@ -351,53 +349,53 @@ export function ScorePoolsClient({ snapshot, initialFixtureId }: ScorePoolsClien
                         const locked = now >= item.analysis.locksAt;
                         const topEp = rec.candidates[0]?.expectedPoints ?? rec.recommended.expectedPoints;
                         return (
-                          <tr key={item.fixture.id} className="rounded-xl bg-[var(--home-paper-raised)] text-sm text-[var(--home-ink)] shadow-[var(--shadow-sm)]">
-                            <td className="rounded-l-xl border-y border-l border-[var(--home-rule)] px-3 py-3">
+                          <tr key={item.fixture.id} className="bg-[var(--c97-panel)] text-sm text-[var(--c97-ink)]">
+                            <td className="border-y border-l border-[var(--c97-rule)] px-3 py-3">
                               <p className="font-semibold">
                                 {item.fixture.homeTeam} vs {item.fixture.awayTeam}
                               </p>
-                              <p className="mt-0.5 text-2xs text-[var(--home-ink-muted)]">
+                              <p className="mt-0.5 text-2xs text-[var(--c97-ink-2)]">
                                 {formatKickoff(item.fixture.kickoff, activePool.timezone)} · locks{" "}
                                 {formatKickoff(item.analysis.locksAt, activePool.timezone)}{" "}
                                 <LockBadge locked={locked} />
                               </p>
                             </td>
-                            <td className="border-y border-[var(--home-rule)] px-3 py-3">
+                            <td className="border-y border-[var(--c97-rule)] px-3 py-3">
                               <span className="font-mono text-base font-bold">{formatScoreline(pick.score)}</span>
                               {pick.overridden ? (
-                                <span className="ml-1.5 align-middle text-3xs font-semibold uppercase tracking-[0.1em] text-[var(--home-ink-muted)]" title="You set this pick yourself">
+                                <span className="ml-1.5 align-middle text-3xs font-semibold uppercase tracking-[0.1em] text-[var(--c97-ink-2)]" title="You set this pick yourself">
                                   mine
                                 </span>
                               ) : null}
                             </td>
-                            <td className="border-y border-[var(--home-rule)] px-3 py-3">
+                            <td className="border-y border-[var(--c97-rule)] px-3 py-3">
                               <EpMeter value={rec.recommended.expectedPoints} max={topEp} />
                             </td>
-                            <td className="hidden border-y border-[var(--home-rule)] px-3 py-3 sm:table-cell">
+                            <td className="hidden border-y border-[var(--c97-rule)] px-3 py-3 sm:table-cell">
                               <ConfidenceChip level={rec.confidence.level} />
                             </td>
-                            <td className="hidden border-y border-[var(--home-rule)] px-3 py-3 md:table-cell">
+                            <td className="hidden border-y border-[var(--c97-rule)] px-3 py-3 md:table-cell">
                               <span className="font-mono font-semibold">{formatScoreline(rec.safest.score)}</span>{" "}
-                              <span className="text-2xs text-[var(--home-ink-muted)]">
+                              <span className="text-2xs text-[var(--c97-ink-2)]">
                                 {formatPoints(rec.safest.expectedPoints)}
                               </span>
                             </td>
-                            <td className="hidden border-y border-[var(--home-rule)] px-3 py-3 lg:table-cell">
+                            <td className="hidden border-y border-[var(--c97-rule)] px-3 py-3 lg:table-cell">
                               {rec.differentiator ? (
                                 <>
                                   <span className="font-mono font-semibold">{formatScoreline(rec.differentiator.score)}</span>{" "}
-                                  <span className="text-2xs text-[var(--home-ink-muted)]">
+                                  <span className="text-2xs text-[var(--c97-ink-2)]">
                                     {formatPoints(rec.differentiator.expectedPoints)}
                                   </span>
                                 </>
                               ) : (
-                                <span className="text-[var(--home-ink-muted)]">—</span>
+                                <span className="text-[var(--c97-ink-2)]">—</span>
                               )}
                             </td>
-                            <td className="hidden max-w-md border-y border-[var(--home-rule)] px-3 py-3 xl:table-cell">
-                              <p className="text-2xs leading-relaxed text-[var(--home-ink-muted)]">{rec.reason}</p>
+                            <td className="hidden max-w-md border-y border-[var(--c97-rule)] px-3 py-3 xl:table-cell">
+                              <p className="text-2xs leading-relaxed text-[var(--c97-ink-2)]">{rec.reason}</p>
                             </td>
-                            <td className="rounded-r-xl border-y border-r border-[var(--home-rule)] px-3 py-3">
+                            <td className="border-y border-r border-[var(--c97-rule)] px-3 py-3">
                               <button
                                 type="button"
                                 className={PILL_BUTTON}
@@ -414,7 +412,7 @@ export function ScorePoolsClient({ snapshot, initialFixtureId }: ScorePoolsClien
                 </div>
               </section>
             ) : league && upcoming.length === 0 ? (
-              <p className="text-sm text-[var(--home-ink-muted)]">
+              <p className="text-sm text-[var(--c97-ink-2)]">
                 Nothing left to pick in this round. The played games are below, and the tracker has
                 the running score.
               </p>
@@ -422,13 +420,13 @@ export function ScorePoolsClient({ snapshot, initialFixtureId }: ScorePoolsClien
 
             {analysisResult.missingOdds.length > 0 ? (
               <section aria-label="Games without odds">
-                <h2 className="text-base font-bold text-[var(--home-ink)]">Waiting on odds</h2>
+                <h2 className="text-base font-bold text-[var(--c97-ink)]">Waiting on odds</h2>
                 <ul className="mt-2 space-y-2">
                   {analysisResult.missingOdds.map((fixture) => (
-                    <li key={fixture.id} className="flex flex-wrap items-center justify-between gap-2 rounded-xl border border-[var(--home-rule)] bg-[var(--home-paper-raised)] px-4 py-3 text-sm text-[var(--home-ink)]">
+                    <li key={fixture.id} className="flex flex-wrap items-center justify-between gap-2 border border-[var(--c97-rule)] bg-[var(--c97-panel)] px-4 py-3 text-sm text-[var(--c97-ink)]">
                       <span>
                         {fixture.homeTeam} vs {fixture.awayTeam}
-                        <span className="ml-2 text-2xs text-[var(--home-ink-muted)]">
+                        <span className="ml-2 text-2xs text-[var(--c97-ink-2)]">
                           {formatKickoff(fixture.kickoff, activePool.timezone)} · no odds yet
                         </span>
                       </span>
@@ -444,29 +442,29 @@ export function ScorePoolsClient({ snapshot, initialFixtureId }: ScorePoolsClien
             {/* Copyable submission table */}
             {submissionRows.length > 0 ? (
               <section aria-label="Submission table">
-                <h2 className="text-lg font-bold text-[var(--home-ink)]">Submission</h2>
-                <p className="mt-1 text-2xs text-[var(--home-ink-muted)]">
+                <h2 className="text-lg font-bold text-[var(--c97-ink)]">Submission</h2>
+                <p className="mt-1 text-2xs text-[var(--c97-ink-2)]">
                   Just the match and the score, ready to paste into the pool. Rows marked mine are
                   picks you set yourself; the rest follow the recommendation.
                 </p>
-                <div className="mt-3 max-w-xl overflow-hidden rounded-[var(--radius-2xl)] border border-[var(--home-rule)] bg-[var(--home-paper-raised)] shadow-[var(--shadow-sm)]">
+                <div className="mt-3 max-w-xl overflow-hidden border border-[var(--c97-rule)] bg-[var(--c97-panel)]">
                   <table className="min-w-full font-mono text-sm" aria-label="Copyable submission: match and score">
                     <thead>
-                      <tr className="border-b border-[var(--home-rule)] text-left text-3xs uppercase tracking-[0.14em] text-[var(--home-ink-soft)]">
+                      <tr className="border-b border-[var(--c97-rule)] text-left text-3xs uppercase tracking-[0.14em] text-[var(--c97-label)]">
                         <th scope="col" className="px-4 py-2 font-semibold">Match</th>
                         <th scope="col" className="px-4 py-2 font-semibold">Score</th>
                       </tr>
                     </thead>
                     <tbody>
                       {submissionRows.map((row) => (
-                        <tr key={row.fixtureId} className="border-b border-[var(--home-rule)] last:border-b-0">
-                          <td className="px-4 py-2 text-[var(--home-ink)]">
+                        <tr key={row.fixtureId} className="border-b border-[var(--c97-rule)] last:border-b-0">
+                          <td className="px-4 py-2 text-[var(--c97-ink)]">
                             {row.label}
                             {row.overridden ? (
-                              <span className="ml-1.5 text-3xs uppercase text-[var(--home-ink-muted)]">mine</span>
+                              <span className="ml-1.5 text-3xs uppercase text-[var(--c97-ink-2)]">mine</span>
                             ) : null}
                           </td>
-                          <td className="px-4 py-2 font-bold tabular-nums text-[var(--home-ink)]">
+                          <td className="px-4 py-2 font-bold tabular-nums text-[var(--c97-ink)]">
                             {formatScoreline(row.score)}
                           </td>
                         </tr>
@@ -481,7 +479,7 @@ export function ScorePoolsClient({ snapshot, initialFixtureId }: ScorePoolsClien
                   <button type="button" className={PILL_BUTTON} onClick={savePicks}>
                     Save these as my picks
                   </button>
-                  <span className="text-2xs text-[var(--home-ink-muted)]" role="status">
+                  <span className="text-2xs text-[var(--c97-ink-2)]" role="status">
                     {copyStatus === "copied"
                       ? "Copied to the clipboard."
                       : copyStatus === "error"
@@ -497,12 +495,12 @@ export function ScorePoolsClient({ snapshot, initialFixtureId }: ScorePoolsClien
             {/* Played games in this round */}
             {played.length > 0 && activePool ? (
               <section aria-label="Played games">
-                <h2 className="text-base font-bold text-[var(--home-ink)]">Played</h2>
+                <h2 className="text-base font-bold text-[var(--c97-ink)]">Played</h2>
                 <ul className="mt-2 space-y-2">
                   {played.map((fixture) => {
                     const submission = activePool.submissions[fixture.id];
                     return (
-                      <li key={fixture.id} className="flex flex-wrap items-center gap-3 rounded-xl border border-[var(--home-rule)] bg-[var(--home-paper-raised)] px-4 py-3 text-sm text-[var(--home-ink)]">
+                      <li key={fixture.id} className="flex flex-wrap items-center gap-3 border border-[var(--c97-rule)] bg-[var(--c97-panel)] px-4 py-3 text-sm text-[var(--c97-ink)]">
                         <span className="font-semibold">
                           {fixture.homeTeam} vs {fixture.awayTeam}
                         </span>
@@ -517,15 +515,15 @@ export function ScorePoolsClient({ snapshot, initialFixtureId }: ScorePoolsClien
                               : ""}
                           </span>
                         ) : (
-                          <span className="text-2xs text-[var(--home-ink-muted)]">result pending</span>
+                          <span className="text-2xs text-[var(--c97-ink-2)]">result pending</span>
                         )}
                         {submission ? (
-                          <span className="text-2xs text-[var(--home-ink-muted)]">
+                          <span className="text-2xs text-[var(--c97-ink-2)]">
                             my pick {formatScoreline(submission.score)} · scored in the{" "}
                             <Link className="underline" href="/score-pools/tracker">tracker</Link>
                           </span>
                         ) : (
-                          <span className="text-2xs text-[var(--home-ink-muted)]">
+                          <span className="text-2xs text-[var(--c97-ink-2)]">
                             no pick recorded
                           </span>
                         )}
@@ -545,7 +543,7 @@ export function ScorePoolsClient({ snapshot, initialFixtureId }: ScorePoolsClien
           </>
         )}
 
-        <p className="border-t border-[var(--home-rule)] pt-4 text-3xs leading-relaxed text-[var(--home-ink-muted)]">
+        <p className="border-t border-[var(--c97-rule)] pt-4 text-3xs leading-relaxed text-[var(--c97-ink-2)]">
           This is a decision aid for prediction pools, not betting advice. The scorelines come from
           a market-calibrated model with real uncertainty; on any single game the modal pick is
           still probably wrong, and the edge only shows up across a lot of picks.
@@ -567,6 +565,6 @@ export function ScorePoolsClient({ snapshot, initialFixtureId }: ScorePoolsClien
           onSaveManualOdds={(fixtureId, odds) => setManualOdds(activePool.id, fixtureId, odds)}
         />
       ) : null}
-    </div>
+    </section>
   );
 }

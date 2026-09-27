@@ -29,7 +29,7 @@ const ICON_BUTTON_CLASS =
 // wasn't. DESIGN.md sends categorical needs to ink and stone and keeps signal,
 // positive, and warning for status, so a green RB and an amber TE no longer
 // read as "good" and "caution" to anyone who learned those colors elsewhere on
-// the site. This also retires the last --home-moss in the fantasy tree.
+// the site.
 const POSITION_CHIP_STYLE = {
   borderColor: "color-mix(in srgb, var(--c97-ink) 24%, var(--c97-rule))",
   color: "var(--c97-ink)",

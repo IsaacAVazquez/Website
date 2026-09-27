@@ -6,7 +6,7 @@ export interface GoalsPulseEntry {
 /**
  * Goals-per-matchday pulse — the dashboard's namesake device: one bar per
  * matchday, height scaled to the season's highest-scoring matchday, the most
- * recent bar picked out in --home-signal. `data` is season-to-date and can
+ * recent bar picked out in --c97-accent. `data` is season-to-date and can
  * legitimately be empty (a pre-season snapshot has no FINISHED matches yet),
  * so this renders a plain, on-brand empty state instead of an empty chart —
  * the page should ship now and light up once the first matchday completes.

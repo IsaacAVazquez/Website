@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef, useState, type ChangeEvent } from "react";
+import { ModernButton } from "@/components/ui/ModernButton";
 import {
   createLocalDataBackup,
   restoreLocalDataBackup,
@@ -46,29 +47,31 @@ export function LocalDataBackupCard() {
   }
 
   return (
-    <article className="home-card p-6 md:col-span-2">
-      <p className="home-kicker mb-2">Browser data</p>
-      <h2 className="mb-2 text-xl font-semibold">Export or restore saved tool data</h2>
-      <p className="mb-4 text-sm leading-6 text-[var(--home-ink-muted)]">
+    <article className="c97-panel md:col-span-2">
+      <p className="c97-kicker">Browser data</p>
+      <h2 className="c97-serif c97-h3" style={{ marginTop: "var(--c97-sp-1)" }}>
+        Export or restore saved tool data
+      </h2>
+      <p
+        className="c97-prose"
+        style={{ marginTop: "var(--c97-sp-1)", marginBottom: "var(--c97-sp-3)", color: "var(--c97-ink-2)" }}
+      >
         This covers fantasy queues and drafts, MBA tracking, investments,
         retirement, budgets, travel, wine, museums, recipes, and deal alerts saved
         in this browser. The file does not include sign-in or unrelated site data.
       </p>
       <div className="flex flex-wrap gap-3">
-        <button
-          type="button"
-          onClick={exportData}
-          className="inline-flex min-h-[44px] items-center rounded-full bg-[var(--home-ink)] px-5 py-2.5 text-sm font-semibold text-[var(--home-paper)]"
-        >
+        <ModernButton type="button" variant="primary" size="sm" onClick={exportData}>
           Export saved data
-        </button>
-        <button
+        </ModernButton>
+        <ModernButton
           type="button"
+          variant="secondary"
+          size="sm"
           onClick={() => fileInputRef.current?.click()}
-          className="inline-flex min-h-[44px] items-center rounded-full border border-[var(--home-rule)] bg-[var(--home-paper-alt)] px-5 py-2.5 text-sm font-semibold text-[var(--home-ink)]"
         >
           Restore from file
-        </button>
+        </ModernButton>
         <input
           ref={fileInputRef}
           type="file"
@@ -78,7 +81,7 @@ export function LocalDataBackupCard() {
         />
       </div>
       {message ? (
-        <p role="status" className="mb-0 mt-4 text-sm text-[var(--home-ink-muted)]">
+        <p role="status" className="c97-prose" style={{ marginTop: "var(--c97-sp-3)", color: "var(--c97-ink-2)" }}>
           {message}
         </p>
       ) : null}

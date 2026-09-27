@@ -2,7 +2,7 @@
 
 Current development setup and workflow notes.
 
-**Last updated:** 2026-09-21
+**Last updated:** 2026-09-27
 
 ---
 
@@ -108,8 +108,7 @@ Do not assume old doc paths are current. Check the actual route tree first.
 
 ## Frontend Conventions
 
-- never hardcode hex colors; on the seven designed Catalog 97 routes and in `src/components/catalog97`, use the `--c97-*` tokens from `src/app/catalog97.css` through `data-c97-surface`
-- on the other routes the `--home-*` tokens still work because the bridge block in `catalog97.css` aliases them, but they are slated for removal in the family migrations described in `docs/superpowers/specs/2026-09-16-catalog97-unification-design.md`
+- never hardcode hex colors; use the `--c97-*` tokens from `src/app/catalog97.css` through `data-c97-surface`, since the Working Instrument `--home-*` tokens were deleted on 2026-09-27
 - use `@/components/ui/ServerIcons` for server components
 - keep 44px touch targets
 - respect reduced motion

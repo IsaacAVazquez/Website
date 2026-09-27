@@ -40,51 +40,46 @@ export const ModernButton = React.memo(function ModernButton({
   ...props
 }: ModernButtonProps) {
   const baseStyles = cn(
-    "inline-flex items-center justify-center font-semibold rounded-full",
-    "transition-[background-color,border-color,color,box-shadow,transform] duration-200",
+    "inline-flex items-center justify-center font-semibold",
+    "transition-[background-color,border-color,color,transform] duration-200",
     "disabled:opacity-40 disabled:cursor-not-allowed",
-    "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[var(--home-signal)]",
+    "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[var(--c97-accent)]",
     !disabled && "active:scale-[0.98]",
     fullWidth && "w-full"
   );
 
   const variants = {
     primary: cn(
-      "bg-[var(--home-ink)] hover:bg-[color-mix(in_srgb,var(--home-ink)_88%,var(--home-paper))]",
-      "text-[var(--home-paper)]",
-      "shadow-[var(--shadow-sm)] hover:shadow-[var(--shadow-md)]"
+      "bg-[var(--c97-ink)] hover:bg-[color-mix(in_srgb,var(--c97-ink)_88%,var(--c97-surface))]",
+      "text-[var(--c97-surface)]"
     ),
     secondary: cn(
-      "bg-[color-mix(in_srgb,var(--home-paper-alt)_78%,var(--home-elev-mix))]",
-      "hover:bg-[color-mix(in_srgb,var(--home-paper-alt)_90%,var(--home-elev-mix))]",
-      "text-[var(--home-ink)]",
-      "border border-[var(--home-rule)]",
-      "shadow-[var(--shadow-sm)] hover:shadow-[var(--shadow-md)]"
+      "bg-[var(--c97-panel)] hover:bg-[color-mix(in_srgb,var(--c97-panel)_85%,var(--c97-ink))]",
+      "text-[var(--c97-ink)]",
+      "border border-[var(--c97-rule)]"
     ),
     outline: cn(
-      "border border-[var(--home-rule)]",
-      "text-[var(--home-ink)]",
-      "hover:bg-[color-mix(in_srgb,var(--home-paper-alt)_78%,var(--home-elev-mix))]",
-      "hover:border-[color-mix(in_srgb,var(--home-stone)_58%,var(--home-rule))]"
+      "border border-[var(--c97-rule)]",
+      "text-[var(--c97-ink)]",
+      "hover:bg-[var(--c97-panel)]",
+      "hover:border-[var(--c97-ink-2)]"
     ),
     ghost: cn(
-      "text-[var(--home-ink-muted)]",
-      "hover:text-[var(--home-ink)]",
-      "hover:bg-[color-mix(in_srgb,var(--home-paper-alt)_78%,var(--home-elev-mix))]"
+      "text-[var(--c97-ink-2)]",
+      "hover:text-[var(--c97-ink)]",
+      "hover:bg-[var(--c97-panel)]"
     ),
     accent: cn(
-      "bg-[var(--home-signal)] hover:bg-[color-mix(in_srgb,var(--home-signal)_88%,var(--home-ink))]",
-      "text-[var(--home-paper)]",
-      "shadow-[var(--shadow-sm)] hover:shadow-[var(--shadow-md)]"
+      "bg-[var(--c97-accent)] hover:bg-[color-mix(in_srgb,var(--c97-accent)_88%,var(--c97-ink))]",
+      "text-[var(--c97-surface)]"
     ),
-    // Squared instrument-plate treatment (resume, ink plates) — the one
-    // non-pill variant. Radius/typography intentionally override the pill
-    // base and size-driven font-size below (see class ordering note).
+    // Squared instrument-plate treatment (resume, ink plates). Only the font
+    // and border are variant-specific, since nothing on the site has a radius.
     mono: cn(
-      "rounded-[var(--radius-sm)] border border-[var(--home-ink)]",
+      "border border-[var(--c97-ink)]",
       "font-mono text-[0.75rem] font-normal uppercase tracking-[0.09em]",
-      "bg-transparent text-[var(--home-ink)]",
-      "hover:bg-[var(--home-signal)] hover:text-[var(--home-paper)] hover:border-[var(--home-signal)]"
+      "bg-transparent text-[var(--c97-ink)]",
+      "hover:bg-[var(--c97-accent)] hover:text-[var(--c97-surface)] hover:border-[var(--c97-accent)]"
     ),
   };
 

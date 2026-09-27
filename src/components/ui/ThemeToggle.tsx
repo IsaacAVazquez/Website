@@ -19,7 +19,7 @@ export function ThemeToggle({ className }: ThemeToggleProps) {
       type="button"
       onClick={() => setTheme(nextTheme)}
       className={cn(
-        "relative inline-flex min-h-[44px] min-w-[44px] shrink-0 items-center justify-center rounded-full text-[var(--home-ink-muted)] transition-colors hover:text-[var(--home-ink)]",
+        "relative inline-flex min-h-[44px] min-w-[44px] shrink-0 items-center justify-center text-[var(--c97-ink-2)] transition-colors hover:text-[var(--c97-ink)]",
         className
       )}
       aria-label={`Theme: ${currentTheme}. Switch to ${nextTheme}.`}

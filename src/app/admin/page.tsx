@@ -5,7 +5,6 @@ import { motion, useReducedMotion } from 'framer-motion';
 import { useSession, signOut, signIn } from 'next-auth/react';
 import { Lock, LogOut } from "lucide-react";
 import { ModernButton } from '@/components/ui/ModernButton';
-import { WarmCard } from '@/components/ui/WarmCard';
 import { LocalDataBackupCard } from '@/components/admin/LocalDataBackupCard';
 
 const FANTASY_WORKFLOW_URL =
@@ -63,89 +62,107 @@ export default function AdminPage() {
 
   if (status === 'loading') {
     return (
-      <div className="home-page min-h-screen flex items-center justify-center">
-        <p style={{ color: 'var(--home-ink-muted)' }}>Loading...</p>
-      </div>
+      <section className="c97-band" data-c97-surface="paper" aria-label="Loading">
+        <div className="min-h-screen flex items-center justify-center">
+          <p className="c97-prose" style={{ color: 'var(--c97-ink-2)' }}>Loading...</p>
+        </div>
+      </section>
     );
   }
 
   if (!session) {
     return (
-      <div className="home-page min-h-screen flex items-center justify-center p-4">
-        <div className="w-full max-w-md">
-          <WarmCard hover={false} padding="xl">
-            <div className="text-center mb-8">
-              <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-[color-mix(in_srgb,var(--home-signal)_14%,transparent)] mb-4">
-                <Lock className="w-8 h-8 text-[var(--home-signal)]" />
-              </div>
-              <h1 className="text-2xl font-bold text-[var(--home-signal)] mb-2">
-                Admin Access
-              </h1>
-              <p className="text-[var(--home-ink-muted)]">Portfolio Dashboard</p>
-            </div>
-
-            <form onSubmit={handleLogin} className="space-y-6">
-              <div>
-                <label htmlFor="username" className="block text-sm font-medium text-[var(--home-ink)] mb-2">
-                  Username
-                </label>
-                <input
-                  id="username"
-                  type="text"
-                  value={loginForm.username}
-                  onChange={e => setLoginForm(prev => ({ ...prev, username: e.target.value }))}
-                  className="w-full px-4 py-3 bg-[var(--home-paper)] border-2 border-[var(--home-rule)] rounded-lg text-[var(--home-ink)] placeholder-[var(--home-ink-muted)] focus:outline-none focus:border-[var(--home-signal)] focus:ring-2 focus:ring-[color-mix(in_srgb,var(--home-signal)_24%,transparent)] transition-colors"
-                  placeholder="Enter username"
-                  required
-                />
-              </div>
-
-              <div>
-                <label htmlFor="password" className="block text-sm font-medium text-[var(--home-ink)] mb-2">
-                  Password
-                </label>
-                <input
-                  id="password"
-                  type="password"
-                  value={loginForm.password}
-                  onChange={e => setLoginForm(prev => ({ ...prev, password: e.target.value }))}
-                  className="w-full px-4 py-3 bg-[var(--home-paper)] border-2 border-[var(--home-rule)] rounded-lg text-[var(--home-ink)] placeholder-[var(--home-ink-muted)] focus:outline-none focus:border-[var(--home-signal)] focus:ring-2 focus:ring-[color-mix(in_srgb,var(--home-signal)_24%,transparent)] transition-colors"
-                  placeholder="Enter password"
-                  required
-                />
-              </div>
-
-              {loginForm.error && (
-                <div className="p-3 bg-red-900/50 border border-red-700 rounded-lg">
-                  <p className="text-red-300 text-sm">{loginForm.error}</p>
+      <section className="c97-band" data-c97-surface="paper" aria-label="Admin sign in">
+        <div className="min-h-screen flex items-center justify-center p-4">
+          <div className="w-full" style={{ maxWidth: '28rem' }}>
+            <div className="c97-panel">
+              <div className="text-center" style={{ marginBottom: 'var(--c97-sp-4)' }}>
+                <div
+                  className="inline-flex items-center justify-center w-16 h-16 bg-[color-mix(in_srgb,var(--c97-accent)_14%,transparent)]"
+                  style={{ marginBottom: 'var(--c97-sp-2)' }}
+                >
+                  <Lock className="w-8 h-8" style={{ color: 'var(--c97-accent)' }} />
                 </div>
-              )}
+                <h1 className="c97-serif c97-h2" style={{ color: 'var(--c97-accent)' }}>
+                  Admin Access
+                </h1>
+                <p className="c97-prose" style={{ marginTop: 'var(--c97-sp-1)', color: 'var(--c97-ink-2)' }}>
+                  Portfolio Dashboard
+                </p>
+              </div>
 
-              <ModernButton type="submit" variant="primary" size="lg" fullWidth disabled={loginForm.isLoading}>
-                {loginForm.isLoading ? 'Signing in...' : 'Sign In'}
-              </ModernButton>
-            </form>
-          </WarmCard>
+              <form onSubmit={handleLogin}>
+                <div style={{ marginBottom: 'var(--c97-sp-3)' }}>
+                  <label
+                    htmlFor="username"
+                    className="c97-kicker"
+                    style={{ display: 'block', marginBottom: 'var(--c97-sp-1)' }}
+                  >
+                    Username
+                  </label>
+                  <input
+                    id="username"
+                    type="text"
+                    value={loginForm.username}
+                    onChange={e => setLoginForm(prev => ({ ...prev, username: e.target.value }))}
+                    className="c97-field"
+                    placeholder="Enter username"
+                    required
+                  />
+                </div>
+
+                <div style={{ marginBottom: 'var(--c97-sp-3)' }}>
+                  <label
+                    htmlFor="password"
+                    className="c97-kicker"
+                    style={{ display: 'block', marginBottom: 'var(--c97-sp-1)' }}
+                  >
+                    Password
+                  </label>
+                  <input
+                    id="password"
+                    type="password"
+                    value={loginForm.password}
+                    onChange={e => setLoginForm(prev => ({ ...prev, password: e.target.value }))}
+                    className="c97-field"
+                    placeholder="Enter password"
+                    required
+                  />
+                </div>
+
+                {loginForm.error && (
+                  <p role="alert" className="c97-prose" style={{ color: 'var(--c97-negative)', marginBottom: 'var(--c97-sp-3)' }}>
+                    {loginForm.error}
+                  </p>
+                )}
+
+                <ModernButton type="submit" variant="primary" size="lg" fullWidth disabled={loginForm.isLoading}>
+                  {loginForm.isLoading ? 'Signing in...' : 'Sign In'}
+                </ModernButton>
+              </form>
+            </div>
+          </div>
         </div>
-      </div>
+      </section>
     );
   }
 
   return (
-    <div className="home-page min-h-screen">
-      <div className="home-shell home-shell-tight py-16">
+    <section className="c97-band" data-c97-surface="paper" aria-label="Admin dashboard">
+      <div className="c97-shell">
         <motion.div
           initial={reduceMotion ? false : { opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
           transition={reduceMotion ? { duration: 0 } : { duration: 0.4 }}
-          className="flex items-start justify-between gap-6 mb-10"
+          className="flex items-start justify-between gap-6"
+          style={{ marginBottom: 'var(--c97-sp-5)' }}
         >
           <div>
-            <p className="home-kicker mb-2">Admin Dashboard</p>
-            <h1 className="text-3xl font-semibold" style={{ letterSpacing: '-0.02em' }}>
+            <p className="c97-kicker">Admin Dashboard</p>
+            <h1 className="c97-serif c97-h2" style={{ marginTop: 'var(--c97-sp-1)' }}>
               Signed in
             </h1>
-            <p className="mt-2 text-sm" style={{ color: 'var(--home-ink-muted)' }}>
+            <p className="c97-prose" style={{ marginTop: 'var(--c97-sp-1)', color: 'var(--c97-ink-2)' }}>
               Welcome back. Data refreshes run from GitHub Actions on a schedule. Trigger them manually below if needed.
             </p>
           </div>
@@ -156,10 +173,12 @@ export default function AdminPage() {
         </motion.div>
 
         <div className="grid gap-5 md:grid-cols-2">
-          <article className="home-card p-6">
-            <p className="home-kicker mb-2">Fantasy Football</p>
-            <h2 className="text-xl font-semibold mb-2">Published rankings snapshot</h2>
-            <p className="text-sm mb-4" style={{ color: 'var(--home-ink-muted)' }}>
+          <article className="c97-panel">
+            <p className="c97-kicker">Fantasy Football</p>
+            <h2 className="c97-serif c97-h3" style={{ marginTop: 'var(--c97-sp-1)' }}>
+              Published rankings snapshot
+            </h2>
+            <p className="c97-prose" style={{ marginTop: 'var(--c97-sp-1)', marginBottom: 'var(--c97-sp-2)', color: 'var(--c97-ink-2)' }}>
               Rankings are built from FantasyPros public cheatsheets and committed as static JSON. Refresh runs daily during draft season and weekly outside it; trigger manually via{' '}
               <code className="text-xs">workflow_dispatch</code>.
             </p>
@@ -168,16 +187,18 @@ export default function AdminPage() {
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 text-sm font-semibold"
-              style={{ color: 'var(--home-signal)' }}
+              style={{ color: 'var(--c97-accent)' }}
             >
               Open GitHub Actions workflow →
             </a>
           </article>
 
-          <article className="home-card p-6">
-            <p className="home-kicker mb-2">Football Dashboards</p>
-            <h2 className="text-xl font-semibold mb-2">Premier League & La Liga</h2>
-            <p className="text-sm mb-4" style={{ color: 'var(--home-ink-muted)' }}>
+          <article className="c97-panel">
+            <p className="c97-kicker">Football Dashboards</p>
+            <h2 className="c97-serif c97-h3" style={{ marginTop: 'var(--c97-sp-1)' }}>
+              Premier League &amp; La Liga
+            </h2>
+            <p className="c97-prose" style={{ marginTop: 'var(--c97-sp-1)', marginBottom: 'var(--c97-sp-2)', color: 'var(--c97-ink-2)' }}>
               League data refreshes every four hours during the season via the football-data.org API. Team-level snapshots (sidebar fixtures, form strip) require a manual local run.
             </p>
             <a
@@ -185,7 +206,7 @@ export default function AdminPage() {
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 text-sm font-semibold"
-              style={{ color: 'var(--home-signal)' }}
+              style={{ color: 'var(--c97-accent)' }}
             >
               Open GitHub Actions workflow →
             </a>
@@ -194,6 +215,6 @@ export default function AdminPage() {
           <LocalDataBackupCard />
         </div>
       </div>
-    </div>
+    </section>
   );
 }

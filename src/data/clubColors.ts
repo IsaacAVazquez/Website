@@ -11,7 +11,7 @@
  * Colors are representative primary brand colors sourced from general public
  * club-identity knowledge, not an official/licensed palette — treat them as
  * "sensible accent," not pixel-exact brand compliance. Unknown codes resolve to
- * `null` so callers fall back to a neutral token (e.g. `var(--home-signal)`)
+ * `null` so callers fall back to a neutral token (e.g. `var(--c97-accent)`)
  * instead of a hardcoded default hex.
  */
 

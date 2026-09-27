@@ -52,8 +52,8 @@ const FLAG_LABELS: Array<{ key: ContextFlagKey; label: string; hint: string }> =
   { key: "rotationRiskAway", label: "Rotation risk (away)", hint: "Expect a weakened away eleven." },
 ];
 
-const SECTION = "rounded-[var(--radius-2xl)] border border-[var(--home-rule)] bg-[var(--home-paper-raised)] p-4 shadow-[var(--shadow-sm)]";
-const SECTION_TITLE = "text-sm font-bold text-[var(--home-ink)]";
+const SECTION = "bg-[var(--c97-panel)] p-4";
+const SECTION_TITLE = "text-sm font-bold text-[var(--c97-ink)]";
 
 function ScorelineHeatmap({ analysis }: { analysis: FixtureAnalysis }) {
   const grid = analysis.distribution.grid;
@@ -64,11 +64,11 @@ function ScorelineHeatmap({ analysis }: { analysis: FixtureAnalysis }) {
       <table className="border-separate border-spacing-0.5" aria-label="Scoreline probabilities: home goals by away goals">
         <thead>
           <tr>
-            <th scope="col" className="p-1 text-3xs font-semibold text-[var(--home-ink-muted)]">
+            <th scope="col" className="p-1 text-3xs font-semibold text-[var(--c97-ink-2)]">
               H\A
             </th>
             {Array.from({ length: size }, (_, away) => (
-              <th key={away} scope="col" className="w-7 p-1 text-center text-3xs font-semibold text-[var(--home-ink-muted)]">
+              <th key={away} scope="col" className="w-7 p-1 text-center text-3xs font-semibold text-[var(--c97-ink-2)]">
                 {away}
               </th>
             ))}
@@ -77,20 +77,21 @@ function ScorelineHeatmap({ analysis }: { analysis: FixtureAnalysis }) {
         <tbody>
           {Array.from({ length: size }, (_, home) => (
             <tr key={home}>
-              <th scope="row" className="p-1 text-3xs font-semibold text-[var(--home-ink-muted)]">
+              <th scope="row" className="p-1 text-3xs font-semibold text-[var(--c97-ink-2)]">
                 {home}
               </th>
               {Array.from({ length: size }, (_, away) => {
                 const p = grid[home][away];
-                // Capped at 55% so the strongest cell keeps 4.5:1 label contrast in dark mode (72% gave 3.71:1).
-                const strength = max > 0 ? Math.round((p / max) * 55) : 0;
+                // Capped at 40% so the strongest cell keeps 4.5:1 label contrast on the panel in both
+                // themes: 5.11:1 light and 6.61:1 dark. 55% measured 3.85:1 in light.
+                const strength = max > 0 ? Math.round((p / max) * 40) : 0;
                 return (
                   <td
                     key={away}
                     title={`${home}-${away}: ${formatPercent(p, 1)}`}
-                    className="h-7 w-7 rounded-[4px] text-center align-middle text-3xs tabular-nums text-[var(--home-ink)]"
+                    className="h-7 w-7 text-center align-middle text-3xs tabular-nums text-[var(--c97-ink)]"
                     style={{
-                      background: `color-mix(in srgb, var(--home-signal) ${strength}%, var(--home-overlay))`,
+                      background: `color-mix(in srgb, var(--c97-accent) ${strength}%, var(--c97-overlay))`,
                     }}
                   >
                     {p >= 0.02 ? Math.round(p * 100) : ""}
@@ -101,7 +102,7 @@ function ScorelineHeatmap({ analysis }: { analysis: FixtureAnalysis }) {
           ))}
         </tbody>
       </table>
-      <p className="mt-1 text-3xs text-[var(--home-ink-muted)]">
+      <p className="mt-1 text-3xs text-[var(--c97-ink-2)]">
         Cell numbers are percentages; blanks sit under 2%.
       </p>
     </div>
@@ -256,16 +257,19 @@ export function FixtureDetailDrawer({
         aria-label="Close match detail"
         onClick={onClose}
         className="absolute inset-0 cursor-default"
-        style={{ background: "color-mix(in srgb, var(--home-ink) 32%, transparent)" }}
+        style={{ background: "color-mix(in srgb, var(--c97-ink) 32%, transparent)" }}
       />
-      <aside className="absolute inset-y-0 right-0 flex w-full max-w-2xl flex-col overflow-y-auto border-l border-[var(--home-rule)] bg-[var(--home-paper)] p-5 shadow-[var(--shadow-lg)]">
-        <header className="flex items-start justify-between gap-4 border-b border-[var(--home-rule)] pb-4">
+      <aside
+        data-c97-surface="paper"
+        className="absolute inset-y-0 right-0 flex w-full max-w-2xl flex-col overflow-y-auto border-l border-[var(--c97-rule)] p-5"
+      >
+        <header className="flex items-start justify-between gap-4 border-b border-[var(--c97-rule)] pb-4">
           <div>
-            <p className="home-kicker mb-1">{fixture.stage ?? fixture.round ?? "Fixture"}</p>
-            <h2 className="text-lg font-bold text-[var(--home-ink)]">
+            <p className="c97-kicker mb-1">{fixture.stage ?? fixture.round ?? "Fixture"}</p>
+            <h2 className="text-lg font-bold text-[var(--c97-ink)]">
               {fixture.homeTeam} vs {fixture.awayTeam}
             </h2>
-            <p className="mt-1 text-xs text-[var(--home-ink-muted)]">
+            <p className="mt-1 text-xs text-[var(--c97-ink-2)]">
               Kickoff {formatKickoff(fixture.kickoff, pool.timezone)}
               {analysis ? <> · locks {formatKickoff(analysis.locksAt, pool.timezone)}</> : null}
               {fixture.knockout ? " · knockout" : ""}
@@ -282,7 +286,7 @@ export function FixtureDetailDrawer({
           <section className={SECTION} aria-label="My pick">
             <h3 className={SECTION_TITLE}>My pick</h3>
             <div className="mt-2 flex flex-wrap items-center gap-3">
-              <span className="font-mono text-lg font-bold text-[var(--home-ink)]">
+              <span className="font-mono text-lg font-bold text-[var(--c97-ink)]">
                 {myPick ? formatScoreline(myPick) : "not set"}
               </span>
               {myPick ? (
@@ -300,9 +304,9 @@ export function FixtureDetailDrawer({
                   inputMode="numeric"
                   value={pickHome}
                   onChange={(event) => setPickHome(event.target.value)}
-                  className="min-h-[44px] w-16 rounded-lg border border-[var(--home-rule)] bg-[var(--home-paper)] px-2 py-1 text-center text-sm text-[var(--home-ink)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-signal)]"
+                  className="min-h-[44px] w-16 border border-[var(--c97-rule)] bg-[var(--c97-surface)] px-2 py-1 text-center text-sm text-[var(--c97-ink)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--c97-accent)]"
                 />
-                <span className="text-[var(--home-ink-muted)]">-</span>
+                <span className="text-[var(--c97-ink-2)]">-</span>
                 <label className="sr-only" htmlFor={`pick-away-${fixture.id}`}>Away goals</label>
                 <input
                   id={`pick-away-${fixture.id}`}
@@ -312,7 +316,7 @@ export function FixtureDetailDrawer({
                   inputMode="numeric"
                   value={pickAway}
                   onChange={(event) => setPickAway(event.target.value)}
-                  className="min-h-[44px] w-16 rounded-lg border border-[var(--home-rule)] bg-[var(--home-paper)] px-2 py-1 text-center text-sm text-[var(--home-ink)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-signal)]"
+                  className="min-h-[44px] w-16 border border-[var(--c97-rule)] bg-[var(--c97-surface)] px-2 py-1 text-center text-sm text-[var(--c97-ink)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--c97-accent)]"
                 />
                 <button type="button" className={`${PILL_BUTTON} disabled:cursor-not-allowed disabled:opacity-50`} onClick={submitPick} disabled={locked}>
                   Set
@@ -334,15 +338,22 @@ export function FixtureDetailDrawer({
                   { label: "Higher floor", pick: rec.safest },
                   ...(rec.differentiator ? [{ label: "Differentiator", pick: rec.differentiator }] : []),
                 ].map(({ label, pick }) => (
-                  <div key={label} className="rounded-xl border border-[var(--home-rule)] bg-[var(--home-paper)] p-3">
-                    <p className="text-3xs font-semibold uppercase tracking-[0.12em] text-[var(--home-ink-muted)]">{label}</p>
-                    <p className="mt-1 font-mono text-xl font-bold text-[var(--home-ink)]">{formatScoreline(pick.score)}</p>
-                    <p className="mt-1 text-2xs text-[var(--home-ink-muted)]">
+                  <div key={label} className="border border-[var(--c97-rule)] bg-[var(--c97-surface)] p-3">
+                    <p className="text-3xs font-semibold uppercase tracking-[0.12em] text-[var(--c97-ink-2)]">{label}</p>
+                    <p className="mt-1 font-mono text-xl font-bold text-[var(--c97-ink)]">{formatScoreline(pick.score)}</p>
+                    <p className="mt-1 text-2xs text-[var(--c97-ink-2)]">
                       {formatPoints(pick.expectedPoints)} exp pts · floor {formatPercent(pick.pAnyPoints)}
                     </p>
                     <button
                       type="button"
-                      className={`${PILL_BUTTON} mt-2 w-full`}
+                      className={`${PILL_BUTTON} w-full justify-center`}
+                      // .c97-btn is unlayered and sets nowrap and wide padding, so the
+                      // three-up column needs its own inline spacing to fit the label.
+                      style={{
+                        marginTop: "var(--c97-sp-1)",
+                        paddingInline: "var(--c97-sp-1)",
+                        whiteSpace: "normal",
+                      }}
                       onClick={() => onSetPick(fixture.id, pick.score)}
                     >
                       Use as my pick
@@ -350,8 +361,8 @@ export function FixtureDetailDrawer({
                   </div>
                 ))}
               </div>
-              <p className="mt-3 text-sm leading-relaxed text-[var(--home-ink)]">{rec.reason}</p>
-              <p className="mt-2 text-2xs text-[var(--home-ink-muted)]">{rec.risk.explanation}</p>
+              <p className="mt-3 text-sm leading-relaxed text-[var(--c97-ink)]">{rec.reason}</p>
+              <p className="mt-2 text-2xs text-[var(--c97-ink-2)]">{rec.risk.explanation}</p>
             </section>
           ) : null}
 
@@ -359,24 +370,24 @@ export function FixtureDetailDrawer({
           <section className={SECTION} aria-label="Market">
             <h3 className={SECTION_TITLE}>The market it used</h3>
             {analysis && shownOdds ? (
-              <div className="mt-2 space-y-2 text-sm text-[var(--home-ink)]">
+              <div className="mt-2 space-y-2 text-sm text-[var(--c97-ink)]">
                 <p className="font-mono tabular-nums">
                   {shownOdds.moneyline.home.toFixed(2)}
                   {shownOdds.moneyline.draw !== null ? ` / ${shownOdds.moneyline.draw.toFixed(2)}` : ""}
                   {" / "}
                   {shownOdds.moneyline.away.toFixed(2)}
                   {shownOdds.totals ? (
-                    <span className="text-[var(--home-ink-muted)]">
+                    <span className="text-[var(--c97-ink-2)]">
                       {" "}· O/U {shownOdds.totals.line}
                       {shownOdds.totals.over ? ` (${shownOdds.totals.over.toFixed(2)}/${shownOdds.totals.under?.toFixed(2) ?? "—"})` : ""}
                     </span>
                   ) : null}
                 </p>
-                <p className="text-2xs text-[var(--home-ink-muted)]">
+                <p className="text-2xs text-[var(--c97-ink-2)]">
                   {shownOdds.manual ? "Hand-entered" : (shownOdds.bookmaker ?? "book")} ·{" "}
                   {formatAge(shownOdds.fetchedAt, now)} · margin {formatPercent(analysis.market.overround, 1)}
                 </p>
-                <p className="text-2xs text-[var(--home-ink-muted)]">
+                <p className="text-2xs text-[var(--c97-ink-2)]">
                   Fair probabilities after the de-vig: home {formatPercent(analysis.market.probabilities.home, 1)}
                   {analysis.market.probabilities.draw !== undefined
                     ? `, draw ${formatPercent(analysis.market.probabilities.draw, 1)}`
@@ -384,7 +395,7 @@ export function FixtureDetailDrawer({
                   , away {formatPercent(analysis.market.probabilities.away, 1)}.
                 </p>
                 {movement ? (
-                  <p className="text-2xs text-[var(--home-ink-muted)]">
+                  <p className="text-2xs text-[var(--c97-ink-2)]">
                     Movement over {movement.snapshots} snapshots: home{" "}
                     {movement.outcomeDelta.home >= 0 ? "up" : "down"}{" "}
                     {formatPercent(Math.abs(movement.outcomeDelta.home), 1)}
@@ -399,13 +410,13 @@ export function FixtureDetailDrawer({
                 ) : null}
               </div>
             ) : (
-              <p className="mt-2 text-sm text-[var(--home-ink-muted)]">
+              <p className="mt-2 text-sm text-[var(--c97-ink-2)]">
                 No odds yet for this game. Enter a moneyline below and the engine can price it.
               </p>
             )}
 
             <details className="mt-3">
-              <summary className="cursor-pointer text-1xs font-semibold text-[var(--home-ink)]">
+              <summary className="cursor-pointer text-1xs font-semibold text-[var(--c97-ink)]">
                 {existingManual ? "Edit hand-entered odds" : "Enter odds by hand"}
               </summary>
               <div className="mt-2 grid grid-cols-3 gap-2">
@@ -419,8 +430,8 @@ export function FixtureDetailDrawer({
                     ["under", "Under"],
                   ] as const
                 ).map(([key, label]) => (
-                  <label key={key} className={FIELD_LABEL}>
-                    {label}
+                  <label key={key} className="block">
+                    <span className={FIELD_LABEL}>{label}</span>
                     <input
                       type="text"
                       inputMode="decimal"
@@ -429,16 +440,25 @@ export function FixtureDetailDrawer({
                         setManualDraft((draft) => ({ ...draft, [key]: event.target.value }))
                       }
                       className={FIELD_INPUT}
+                      style={{ marginTop: "var(--c97-sp-1)" }}
                     />
                   </label>
                 ))}
               </div>
-              <span className={FIELD_HINT}>
+              <span
+                className={FIELD_HINT}
+                style={{
+                  display: "block",
+                  marginTop: "var(--c97-sp-1)",
+                  fontSize: "var(--c97-fs-small)",
+                  color: "var(--c97-ink-2)",
+                }}
+              >
                 Decimal odds, like 2.45. Draw and totals are optional; leave the draw empty for a
                 two-way market.
               </span>
               {manualError ? (
-                <p className="mt-1 text-2xs font-semibold" style={{ color: "var(--home-negative)" }}>
+                <p className="mt-1 text-2xs font-semibold" style={{ color: "var(--c97-negative)" }}>
                   {manualError}
                 </p>
               ) : null}
@@ -463,7 +483,7 @@ export function FixtureDetailDrawer({
           {analysis ? (
             <section className={SECTION} aria-label="Scoreline model">
               <h3 className={SECTION_TITLE}>The scoreline distribution</h3>
-              <p className="mt-1 text-2xs text-[var(--home-ink-muted)]">
+              <p className="mt-1 text-2xs text-[var(--c97-ink-2)]">
                 Expected goals {analysis.distribution.lambdaHome.toFixed(2)} vs{" "}
                 {analysis.distribution.lambdaAway.toFixed(2)}, total{" "}
                 {analysis.distribution.expectedTotal.toFixed(2)}, low-score correction{" "}
@@ -477,13 +497,13 @@ export function FixtureDetailDrawer({
                 <ScorelineHeatmap analysis={analysis} />
               </div>
 
-              <h4 className="mt-4 text-1xs font-bold text-[var(--home-ink)]">
+              <h4 className="mt-4 text-1xs font-bold text-[var(--c97-ink)]">
                 Expected points by candidate
               </h4>
               <div className="scroll-shadow-x mt-2 overflow-x-auto" role="region" aria-label="Candidate expected points (scrollable)" tabIndex={0}>
                 <table className="min-w-full border-separate border-spacing-y-1" aria-label="Top candidate picks by expected points">
                   <thead>
-                    <tr className="text-left text-3xs uppercase tracking-[0.14em] text-[var(--home-ink-soft)]">
+                    <tr className="text-left text-3xs uppercase tracking-[0.14em] text-[var(--c97-label)]">
                       <th scope="col" className="px-2 py-1 font-semibold">Pick</th>
                       <th scope="col" className="px-2 py-1 font-semibold">Exp pts</th>
                       <th scope="col" className="px-2 py-1 font-semibold">Exact</th>
@@ -494,7 +514,7 @@ export function FixtureDetailDrawer({
                   </thead>
                   <tbody>
                     {rec?.candidates.slice(0, 10).map((candidate) => (
-                      <tr key={formatScoreline(candidate.score)} className="text-xs text-[var(--home-ink)]">
+                      <tr key={formatScoreline(candidate.score)} className="text-xs text-[var(--c97-ink)]">
                         <td className="px-2 py-1 font-mono font-bold">{formatScoreline(candidate.score)}</td>
                         <td className="px-2 py-1"><EpMeter value={candidate.expectedPoints} max={topEp} /></td>
                         <td className="px-2 py-1 tabular-nums">{formatPercent(candidate.pExact, 1)}</td>
@@ -503,7 +523,7 @@ export function FixtureDetailDrawer({
                         <td className="px-2 py-1">
                           <button
                             type="button"
-                            className="inline-flex min-h-[44px] items-center rounded-full px-3 text-2xs font-semibold text-[var(--home-ink)] underline decoration-[var(--home-rule)] underline-offset-4 hover:decoration-[var(--home-signal)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-signal)]"
+                            className="inline-flex min-h-[44px] items-center px-3 text-2xs font-semibold text-[var(--c97-ink)] underline decoration-[var(--c97-rule)] underline-offset-4 hover:decoration-[var(--c97-accent)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--c97-accent)]"
                             onClick={() => onSetPick(fixture.id, candidate.score)}
                           >
                             Use
@@ -517,7 +537,7 @@ export function FixtureDetailDrawer({
               {analysis.distribution.diagnostics.notes.length > 0 || analysis.contextAudit.length > 0 ? (
                 <div className="mt-3 space-y-1">
                   {[...analysis.distribution.diagnostics.notes, ...analysis.contextAudit].map((note) => (
-                    <p key={note} className="text-2xs text-[var(--home-ink-muted)]">{note}</p>
+                    <p key={note} className="text-2xs text-[var(--c97-ink-2)]">{note}</p>
                   ))}
                 </div>
               ) : null}
@@ -527,19 +547,19 @@ export function FixtureDetailDrawer({
           {/* Context flags */}
           <section className={SECTION} aria-label="Context flags">
             <h3 className={SECTION_TITLE}>Context flags</h3>
-            <p className="mt-1 text-2xs text-[var(--home-ink-muted)]">
+            <p className="mt-1 text-2xs text-[var(--c97-ink-2)]">
               Flags shade the calibration modestly; the market already prices most context.
             </p>
             <div className="mt-2 grid gap-2 sm:grid-cols-2">
               {FLAG_LABELS.map(({ key, label, hint }) => (
-                <label key={key} className="flex min-h-[44px] cursor-pointer items-center gap-2 rounded-lg border border-[var(--home-rule)] bg-[var(--home-paper)] px-3 py-2">
+                <label key={key} className="flex min-h-[44px] cursor-pointer items-center gap-2 border border-[var(--c97-rule)] bg-[var(--c97-surface)] px-3 py-2">
                   <input
                     type="checkbox"
                     checked={flags[key] === true}
                     onChange={() => toggleFlag(key)}
-                    className="h-4 w-4 accent-[var(--home-signal)]"
+                    className="h-4 w-4 accent-[var(--c97-accent)]"
                   />
-                  <span className="text-xs font-semibold text-[var(--home-ink)]">{label}</span>
+                  <span className="text-xs font-semibold text-[var(--c97-ink)]">{label}</span>
                   <span className="sr-only">{hint}</span>
                 </label>
               ))}
@@ -547,9 +567,9 @@ export function FixtureDetailDrawer({
             {analysis && analysis.suggestedFlags.length > 0 ? (
               <div className="mt-3 space-y-2">
                 {analysis.suggestedFlags.map((suggestion) => (
-                  <div key={suggestion.flag} className="flex flex-wrap items-center justify-between gap-2 rounded-lg border border-[var(--home-rule)] bg-[var(--home-paper)] px-3 py-2">
-                    <p className="text-2xs text-[var(--home-ink-muted)]">
-                      <span className="font-semibold text-[var(--home-ink)]">Suggested from standings:</span>{" "}
+                  <div key={suggestion.flag} className="flex flex-wrap items-center justify-between gap-2 border border-[var(--c97-rule)] bg-[var(--c97-surface)] px-3 py-2">
+                    <p className="text-2xs text-[var(--c97-ink-2)]">
+                      <span className="font-semibold text-[var(--c97-ink)]">Suggested from standings:</span>{" "}
                       {suggestion.reason}
                     </p>
                     {!flags[suggestion.flag] ? (
@@ -557,7 +577,7 @@ export function FixtureDetailDrawer({
                         Apply
                       </button>
                     ) : (
-                      <span className="text-2xs font-semibold text-[var(--home-ink-muted)]">Applied</span>
+                      <span className="text-2xs font-semibold text-[var(--c97-ink-2)]">Applied</span>
                     )}
                   </div>
                 ))}
@@ -571,8 +591,8 @@ export function FixtureDetailDrawer({
               <h3 className={SECTION_TITLE}>Recheck before it locks</h3>
               <ul className="mt-2 space-y-1.5">
                 {analysis.recheck.map((item) => (
-                  <li key={item} className="flex gap-2 text-2xs text-[var(--home-ink-muted)]">
-                    <span aria-hidden="true" style={{ color: "var(--home-warning)" }}>▲</span>
+                  <li key={item} className="flex gap-2 text-2xs text-[var(--c97-ink-2)]">
+                    <span aria-hidden="true" style={{ color: "var(--c97-warning)" }}>▲</span>
                     {item}
                   </li>
                 ))}
@@ -585,13 +605,13 @@ export function FixtureDetailDrawer({
               <h3 className={SECTION_TITLE}>Injury notes</h3>
               <ul className="mt-2 space-y-1">
                 {fixture.injuryNotes.map((note) => (
-                  <li key={note} className="text-2xs text-[var(--home-ink-muted)]">{note}</li>
+                  <li key={note} className="text-2xs text-[var(--c97-ink-2)]">{note}</li>
                 ))}
               </ul>
             </section>
           ) : null}
 
-          <p className="pb-4 text-3xs text-[var(--home-ink-muted)]">
+          <p className="pb-4 text-3xs text-[var(--c97-ink-2)]">
             Analysis as of {formatAge(analysis?.asOf ?? now, now)} from odds{" "}
             {shownOdds ? formatAge(shownOdds.fetchedAt, now) : "entered by hand"}. The model is
             anchored to the market, and it carries the market's uncertainty; treat the expected

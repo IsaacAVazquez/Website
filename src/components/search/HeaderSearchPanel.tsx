@@ -168,16 +168,18 @@ export function HeaderSearchPanel({ onClose }: HeaderSearchPanelProps) {
         aria-hidden="true"
         tabIndex={-1}
         onClick={onClose}
-        className="fixed inset-0 -z-10 cursor-default bg-[var(--home-overlay)]"
+        className="fixed inset-0 -z-10 cursor-default bg-[var(--c97-overlay)]"
       />
-      <div className="page-shell">
+      <div className="c97-shell" style={{ paddingInline: "var(--c97-gutter)" }}>
         <div
-          className="mt-2 overflow-hidden rounded-[var(--radius-2xl)] border header-home-menu"
+          data-c97-surface="paper"
+          className="c97-offset mt-2 overflow-hidden border"
           role="dialog"
           aria-label="Site search"
+          style={{ borderColor: "var(--c97-rule)" }}
         >
-          <div className="flex items-center gap-2 border-b px-3" style={{ borderColor: "var(--home-rule)" }}>
-            <Search className="h-4 w-4 shrink-0 text-[var(--home-ink-muted)]" aria-hidden="true" />
+          <div className="flex items-center gap-2 border-b px-3" style={{ borderColor: "var(--c97-rule)" }}>
+            <Search className="h-4 w-4 shrink-0 text-[var(--c97-ink-2)]" aria-hidden="true" />
             <input
               ref={inputRef}
               type="search"
@@ -193,15 +195,15 @@ export function HeaderSearchPanel({ onClose }: HeaderSearchPanelProps) {
                 activeIndex >= 0 ? `${listboxId}-option-${activeIndex}` : undefined
               }
               autoComplete="off"
-              className="min-h-[48px] w-full bg-transparent py-3 text-base outline-none placeholder:text-[var(--home-ink-muted)]"
-              style={{ color: "var(--home-ink)" }}
+              className="min-h-[48px] w-full bg-transparent py-3 text-base outline-none placeholder:text-[var(--c97-ink-2)]"
+              style={{ color: "var(--c97-ink)" }}
             />
             <button
               type="button"
               onClick={onClose}
               aria-label="Close search"
-              className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-full transition-colors hover:bg-[var(--home-paper-alt)]"
-              style={{ color: "var(--home-ink-muted)" }}
+              className="inline-flex h-11 w-11 shrink-0 items-center justify-center transition-colors hover:bg-[var(--c97-field)]"
+              style={{ color: "var(--c97-ink-2)" }}
             >
               <X className="h-4 w-4" aria-hidden="true" />
             </button>
@@ -209,19 +211,19 @@ export function HeaderSearchPanel({ onClose }: HeaderSearchPanelProps) {
 
           <div className="max-h-[60vh] overflow-y-auto">
             {hasQuery && loading && results.length === 0 && (
-              <p className="px-4 py-6 text-sm" style={{ color: "var(--home-ink-muted)" }}>
+              <p className="px-4 py-6 text-sm" style={{ color: "var(--c97-ink-2)" }}>
                 Searching…
               </p>
             )}
 
             {hasQuery && !loading && results.length === 0 && (
-              <p className="px-4 py-6 text-sm" style={{ color: "var(--home-ink-muted)" }}>
+              <p className="px-4 py-6 text-sm" style={{ color: "var(--c97-ink-2)" }}>
                 No results for “{debouncedQuery}”.
               </p>
             )}
 
             {!hasQuery && (
-              <p className="px-4 py-6 text-sm" style={{ color: "var(--home-ink-muted)" }}>
+              <p className="px-4 py-6 text-sm" style={{ color: "var(--c97-ink-2)" }}>
                 Search projects, writing, and tools. Press Esc to close.
               </p>
             )}
@@ -242,26 +244,17 @@ export function HeaderSearchPanel({ onClose }: HeaderSearchPanelProps) {
                       className="flex items-center gap-3 px-4 py-2.5 transition-colors"
                       style={
                         index === activeIndex
-                          ? { background: "color-mix(in srgb, var(--home-signal) 18%, var(--home-paper))" }
+                          ? { background: "color-mix(in srgb, var(--c97-accent) 18%, var(--c97-surface))" }
                           : undefined
                       }
                     >
-                      <span
-                        className="shrink-0 rounded-full border px-2 py-0.5 text-2xs font-semibold uppercase tracking-[0.08em]"
-                        style={{
-                          borderColor: "var(--home-rule)",
-                          color: "var(--home-ink-muted)",
-                          background: "var(--home-paper-alt)",
-                        }}
-                      >
-                        {TYPE_LABELS[result.type]}
-                      </span>
+                      <span className="c97-chip shrink-0">{TYPE_LABELS[result.type]}</span>
                       <span className="min-w-0 flex-1">
-                        <span className="block truncate text-sm font-semibold" style={{ color: "var(--home-ink)" }}>
+                        <span className="block truncate text-sm font-semibold" style={{ color: "var(--c97-ink)" }}>
                           {result.title}
                         </span>
                         {result.category && (
-                          <span className="block truncate text-2xs" style={{ color: "var(--home-ink-muted)" }}>
+                          <span className="block truncate text-2xs" style={{ color: "var(--c97-ink-2)" }}>
                             {result.category}
                           </span>
                         )}
@@ -276,8 +269,8 @@ export function HeaderSearchPanel({ onClose }: HeaderSearchPanelProps) {
               <button
                 type="button"
                 onClick={goToAllResults}
-                className="flex w-full items-center justify-between border-t px-4 py-3 text-sm font-semibold transition-colors hover:bg-[var(--home-paper-alt)]"
-                style={{ borderColor: "var(--home-rule)", color: "var(--home-ink)" }}
+                className="flex w-full items-center justify-between border-t px-4 py-3 text-sm font-semibold transition-colors hover:bg-[var(--c97-field)]"
+                style={{ borderColor: "var(--c97-rule)", color: "var(--c97-ink)" }}
               >
                 <span>View all results{total > results.length ? ` (${total})` : ""}</span>
                 <span aria-hidden="true">→</span>

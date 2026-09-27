@@ -23,76 +23,43 @@ const config: Config = {
         '5xl': 'var(--text-5xl)',
         '6xl': 'var(--text-6xl)',
       },
-      colors: {
-        primary: "var(--home-signal)",
-        accent: "var(--color-accent)",
-        warning: "var(--color-warning)",
-        error: "var(--color-error)",
-        success: "var(--color-success)",
-        neutral: {
-          50: "var(--neutral-50)",
-          100: "var(--neutral-100)",
-          200: "var(--neutral-200)",
-          300: "var(--neutral-300)",
-          400: "var(--neutral-400)",
-          500: "var(--neutral-500)",
-          600: "var(--neutral-600)",
-          700: "var(--neutral-700)",
-          800: "var(--neutral-800)",
-          900: "var(--neutral-900)",
-          950: "var(--neutral-950)",
-        },
-        surface: {
-          primary: "var(--home-paper)",
-          secondary: "var(--home-paper-alt)",
-          elevated: "color-mix(in srgb, var(--home-paper) 92%, var(--home-elev-mix))",
-          overlay: "var(--surface-overlay)",
-        },
-      },
-      textColor: {
-        "theme-primary": "var(--home-ink)",
-        "theme-secondary": "var(--home-ink-muted)",
-        "theme-tertiary": "color-mix(in srgb, var(--home-ink) 45%, var(--home-paper))",
-        "theme-inverse": "var(--text-inverse)",
-      },
-      borderColor: {
-        "theme-primary": "var(--home-rule)",
-        "theme-secondary": "var(--border-secondary)",
-        "theme-accent": "var(--border-accent)",
-      },
       /*
        * Do NOT map the --space-* tokens onto `spacing` here. Under Tailwind
        * v4's @config compat, spacing suffixes shadow the sizing scale, so
        * `spacing.md` would silently turn every `max-w-md` (28rem) into 1rem
-       * site-wide. The --space-* variables remain available in CSS directly.
+       * site-wide. Band and block spacing comes from the --c97-sp-* ladder in
+       * catalog97.css instead.
        */
-      boxShadow: {
-        'sm': 'var(--shadow-sm)',
-        'md': 'var(--shadow-md)',
-        'lg': 'var(--shadow-lg)',
-        'xl': 'var(--shadow-xl)',
-      },
       /*
-       * Map the bare Tailwind radius scale onto the Working Instrument
-       * --radius-* tokens. Without this, `rounded-md`/`rounded-lg`/etc.
-       * silently resolve to Tailwind's stock (much rounder) scale instead
-       * of the deliberately sharp, machined-plate radii the design system
-       * defines in globals.css.
+       * Catalog 97 draws no rounded corners and no blurred shadows, so the
+       * radius and shadow scales compile to nothing here rather than through a
+       * token. That holds on every route and outside the page root too, and a
+       * stray rounded-lg or shadow-sm left in markup paints square and flat.
+       * The printed offset shadow is the one exception and lives in
+       * catalog97.css as .c97-offset.
        */
       borderRadius: {
-        sm: 'var(--radius-sm)',
-        md: 'var(--radius-md)',
-        lg: 'var(--radius-lg)',
-        xl: 'var(--radius-xl)',
-        '2xl': 'var(--radius-2xl)',
-        '3xl': 'var(--radius-3xl)',
-        full: 'var(--radius-pill)',
+        DEFAULT: '0',
+        xs: '0',
+        sm: '0',
+        md: '0',
+        lg: '0',
+        xl: '0',
+        '2xl': '0',
+        '3xl': '0',
+        '4xl': '0',
+        full: '0',
       },
-      animation: {
-        'skeleton-loading': 'skeleton-loading 1.5s ease-in-out infinite',
-        'slide-in-up': 'slide-in-up 0.3s ease',
-        'shake': 'shake 0.3s cubic-bezier(.36,.07,.19,.97)',
-        'spinner-rotate': 'spinner-rotate 0.75s linear infinite',
+      boxShadow: {
+        DEFAULT: 'none',
+        '2xs': 'none',
+        xs: 'none',
+        sm: 'none',
+        md: 'none',
+        lg: 'none',
+        xl: 'none',
+        '2xl': 'none',
+        inner: 'none',
       },
       transitionTimingFunction: {
         'spring': 'cubic-bezier(0.34, 1.56, 0.64, 1)',

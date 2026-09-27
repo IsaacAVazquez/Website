@@ -2,7 +2,7 @@
 
 High-level system architecture for the current live application.
 
-**Last updated:** 2026-09-21
+**Last updated:** 2026-09-27
 
 ---
 
@@ -209,11 +209,10 @@ Core styling lives in:
 
 The system is token-driven:
 
-- the `--c97-*` Catalog 97 tokens, declared under `[data-c97]` in `src/app/catalog97.css` and read through `data-c97-surface`, for the seven designed routes and `src/components/catalog97`
-- the `--home-*` palette on every other route, which still works because a bridge block in `catalog97.css` aliases each token onto the Catalog 97 value for the enclosing surface; these tokens are slated for removal in the family migrations described in `docs/superpowers/specs/2026-09-16-catalog97-unification-design.md`
-- legacy semantic aliases for compatibility
-- Tailwind extensions mapped to those tokens
-- shared shell helpers like `.home-page`, `.home-shell`, `.home-section`, and `.home-card`
+- the `--c97-*` Catalog 97 tokens, declared under `[data-c97]` and `[data-c97-surface]` in `src/app/catalog97.css` and read on every route
+- the fluid type scale in `globals.css`, which Tailwind's `text-*` utilities read
+- a Tailwind config whose radius and shadow scales compile to nothing, since Catalog 97 has neither
+- the `catalog97.css` component classes (`c97-band`, `c97-shell`, `c97-panel`, `c97-table`, and the rest) in place of the Working Instrument helpers, which were deleted on 2026-09-27
 
 ---
 

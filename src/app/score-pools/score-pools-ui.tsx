@@ -67,15 +67,15 @@ export function ConfidenceChip({ level }: { level: ConfidenceLevel }) {
   // it readable without color.
   const color =
     level === "high"
-      ? "var(--home-positive)"
+      ? "var(--c97-positive)"
       : level === "low"
-        ? "var(--home-warning)"
-        : "var(--home-ink-muted)";
+        ? "var(--c97-warning)"
+        : "var(--c97-ink-2)";
   const glyph = level === "high" ? "●" : level === "medium" ? "◐" : "○";
   return (
     <span
       className="inline-flex items-center gap-1.5 text-1xs font-semibold"
-      style={{ color: "var(--home-ink)" }}
+      style={{ color: "var(--c97-ink)" }}
     >
       <span aria-hidden="true" style={{ color }}>
         {glyph}
@@ -87,11 +87,7 @@ export function ConfidenceChip({ level }: { level: ConfidenceLevel }) {
 
 export function LockBadge({ locked }: { locked: boolean }) {
   if (!locked) return null;
-  return (
-    <span className="inline-flex items-center rounded-full border border-[var(--home-rule)] px-2 py-0.5 text-3xs font-semibold uppercase tracking-[0.12em] text-[var(--home-ink-muted)]">
-      Locked
-    </span>
-  );
+  return <span className="c97-chip">Locked</span>;
 }
 
 /** Thin expected-points meter, baseline-anchored, value carried by text. */
@@ -99,43 +95,20 @@ export function EpMeter({ value, max }: { value: number; max: number }) {
   const width = max > 0 ? Math.max(2, Math.round((value / max) * 100)) : 0;
   return (
     <span className="flex items-center gap-2">
-      <span className="tabular-nums font-mono text-xs text-[var(--home-ink)]">
+      <span className="tabular-nums font-mono text-xs text-[var(--c97-ink)]">
         {formatPoints(value)}
       </span>
-      <span
-        aria-hidden="true"
-        className="hidden h-1 w-16 overflow-hidden rounded-full bg-[var(--home-overlay)] sm:inline-block"
-      >
-        <span
-          className="block h-full rounded-full bg-[var(--home-signal)]"
-          style={{ width: `${width}%` }}
-        />
+      <span aria-hidden="true" className="hidden w-16 sm:inline-block">
+        <span className="c97-meter">
+          <span style={{ width: `${width}%` }} />
+        </span>
       </span>
     </span>
   );
 }
 
-export const PILL_BUTTON =
-  "inline-flex min-h-[44px] items-center justify-center rounded-full border border-[var(--home-rule)] bg-[var(--home-overlay)] px-4 py-2 text-sm font-semibold text-[var(--home-ink)] transition-colors hover:border-[color-mix(in_srgb,var(--home-ink)_20%,var(--home-rule))] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-signal)]";
+export const PILL_BUTTON = "c97-btn";
 
-export const CHIP_BUTTON =
-  "inline-flex min-h-[44px] items-center rounded-full border px-4 py-2 text-sm font-semibold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-signal)]";
-
-export function chipStyle(active: boolean): React.CSSProperties {
-  return active
-    ? {
-        borderColor: "color-mix(in srgb, var(--home-signal) 45%, var(--home-rule))",
-        background: "color-mix(in srgb, var(--home-signal) 12%, var(--home-paper))",
-        color: "var(--home-ink)",
-      }
-    : {
-        borderColor: "var(--home-rule)",
-        background: "var(--home-overlay)",
-        color: "var(--home-ink-muted)",
-      };
-}
-
-export const FIELD_LABEL = "block text-1xs font-semibold text-[var(--home-ink)]";
-export const FIELD_INPUT =
-  "mt-1 w-full min-h-[44px] rounded-lg border border-[var(--home-rule)] bg-[var(--home-paper)] px-3 py-2 text-sm text-[var(--home-ink)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-signal)]";
-export const FIELD_HINT = "mt-1 block text-2xs text-[var(--home-ink-muted)]";
+export const FIELD_LABEL = "c97-kicker";
+export const FIELD_INPUT = "c97-field";
+export const FIELD_HINT = "c97-prose";

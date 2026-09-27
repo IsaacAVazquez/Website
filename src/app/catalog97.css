@@ -10,11 +10,9 @@
  *
  * Everything here is scoped to the page root, which carries both `data-c97`
  * (the token scope) and `.c97-page` (the styling hook). The Working Instrument
- * `--home-*` names still appear in most components, and the BRIDGE block near
- * the end aliases each one onto a Catalog 97 token, so a dashboard rendering
- * `var(--home-signal)` paints the surface accent. The `:root` `--home-*`
- * values in globals.css are only seen outside the page root and go away in
- * the close-out PR of the unification spec.
+ * it replaced, with its `--home-*` tokens and the bridge that aliased them onto
+ * these, was deleted on 2026-09-27; src/app/__tests__/catalog97-closeout.test.ts
+ * keeps it from coming back.
  *
  * TOKEN SCOPE
  * Every `--c97-*` value is declared under `[data-c97]` or under a
@@ -72,8 +70,8 @@
     "Petit Formal Script", cursive;
 
   /*
-   * Mono face for readouts, code, and tabular data. Fragment Mono is already
-   * loaded by layout.tsx for the Working Instrument, so this costs no download.
+   * Mono face for readouts, code, and tabular data. Fragment Mono is loaded
+   * by layout.tsx through next/font.
    */
   --c97-font-mono: var(--font-fragment-mono, "Fragment Mono"), ui-monospace, SFMono-Regular, monospace;
 
@@ -223,15 +221,28 @@
 }
 
 /*
- * Paint the overscroll gutter to match, so rubber-band scrolling on iOS and
- * macOS does not reveal the Working Instrument limestone behind the page.
+ * The document outside the page root, meaning the overscroll gutter that
+ * rubber-band scrolling on iOS and macOS reveals, and the skip link. No
+ * Catalog 97 token resolves out here, so these are the paper values as printed.
  */
-body:has(.c97-page) {
+body {
   background: #f1ebdf;
+  color: #2b211a;
 }
 
-.dark body:has(.c97-page) {
+.dark body {
   background: #14100c;
+  color: #f1ebdf;
+}
+
+.c97-skip-link {
+  background: #2b211a;
+  color: #f1ebdf;
+}
+
+.dark .c97-skip-link {
+  background: #f1ebdf;
+  color: #14100c;
 }
 
 /* --------------------------------------------------------------------------
@@ -250,6 +261,12 @@ body:has(.c97-page) {
   color: var(--c97-ink);
   --c97-chart-up: var(--c97-positive);
   --c97-chart-down: var(--c97-negative);
+  /* 16% accent on paper: accent text 6.54:1, ink 10.09:1 (light theme);
+   * accent text 4.40:1 on dark paper, 4.02:1 on dark bone. Body-size accent
+   * text must not sit directly on this tint in dark mode; a helper that
+   * mixes it further toward the surface is fine. */
+  --c97-accent-soft: color-mix(in srgb, var(--c97-accent) 16%, var(--c97-surface));
+  --c97-overlay: color-mix(in srgb, var(--c97-ink) 8%, transparent);
 }
 
 .c97-page [data-c97-surface="paper"] {
@@ -787,96 +804,6 @@ body:has(.c97-page) {
 .dark .c97-page [data-c97-press-second="blue"] [data-c97-surface="bone"] { --c97-overprint: var(--c97-riso-saffron); }
 
 /* --------------------------------------------------------------------------
- * Working Instrument bridge
- * ------------------------------------------------------------------------ */
-
-/*
- * Every route except the seven designed ones still renders components written
- * against the Working Instrument's --home-* palette, mostly through Tailwind
- * utilities of the shape text-[var(--home-ink)]. Rather than touch each of
- * those, the tokens are redeclared here as aliases of the Catalog 97 value for
- * the enclosing surface, so one rule repaints the whole site and a nested
- * surface re-resolves them on its own element. The :root declarations in
- * globals.css stay until the last family migrates and this block is deleted.
- *
- * The test in src/app/__tests__/catalog97-bridge.test.ts reads the two
- * markers below and asserts that every :root --home-*, --radius-*, and
- * --shadow-* token is redeclared between them. Keep the markers.
- */
-/* BRIDGE START */
-[data-c97] {
-  --radius-sm: 0;
-  --radius-md: 0;
-  --radius-lg: 0;
-  --radius-xl: 0;
-  --radius-2xl: 0;
-  --radius-3xl: 0;
-  --radius-pill: 0;
-
-  --shadow-sm: none;
-  --shadow-md: none;
-  --shadow-lg: none;
-  --shadow-xl: none;
-
-  --font-body: var(--c97-font-body);
-  --font-heading: var(--c97-font-body);
-  --font-display: var(--c97-font-display);
-  --font-inter: var(--c97-font-body);
-  --font-home-sans: var(--c97-font-body);
-  --font-home-serif: var(--c97-font-display);
-  --font-mono: var(--c97-font-mono);
-  --font-jetbrains-mono: var(--c97-font-mono);
-
-  /* Dark-section overrides map onto espresso. */
-  --home-dark-paper: #2b211a;
-  --home-dark-panel: #3a2b1f;
-  --home-dark-ink: #f1ebdf;
-  --home-dark-muted: #dcd2bf;
-  --home-dark-rule: rgba(241, 235, 223, 0.18);
-}
-
-.dark [data-c97] {
-  --home-dark-paper: #0c0907;
-  --home-dark-panel: #1e1811;
-  --home-dark-ink: #f1ebdf;
-  --home-dark-muted: #dcd2bf;
-  --home-dark-rule: rgba(241, 235, 223, 0.16);
-}
-
-/*
- * Surface-relative aliases. Declared on the surface element so that a nested
- * [data-c97-surface] re-resolves every one of them against its own tokens.
- * Specificity (0,2,0) ties the surface blocks above and wins on order.
- */
-.c97-page [data-c97-surface] {
-  --home-paper: var(--c97-surface);
-  --home-paper-alt: var(--c97-field);
-  --home-paper-raised: var(--c97-field);
-  --home-elev-mix: var(--c97-field);
-  --home-ink: var(--c97-ink);
-  --home-ink-muted: var(--c97-ink-2);
-  --home-ink-soft: var(--c97-label);
-  --home-signal: var(--c97-accent);
-  --home-signal-ink: var(--c97-accent);
-  /* 16% accent on paper: accent text 6.54:1, ink 10.09:1 (light theme);
-   * accent text 4.40:1 on dark paper, 4.02:1 on dark bone. Body-size accent
-   * text must not sit directly on this tint in dark mode; a helper that
-   * mixes it further toward the surface is fine. */
-  --c97-accent-soft: color-mix(in srgb, var(--c97-accent) 16%, var(--c97-surface));
-  --c97-overlay: color-mix(in srgb, var(--c97-ink) 8%, transparent);
-  --home-signal-soft: var(--c97-accent-soft);
-  --home-stone: var(--c97-rule);
-  --home-rule: var(--c97-rule);
-  /* Control boundaries want 3:1; ink-2 clears that on every surface. */
-  --home-control-rule: var(--c97-ink-2);
-  --home-overlay: var(--c97-overlay);
-  --home-positive: var(--c97-positive);
-  --home-negative: var(--c97-negative);
-  --home-warning: var(--c97-warning);
-}
-/* BRIDGE END */
-
-/* --------------------------------------------------------------------------
  * Layout primitives
  * ------------------------------------------------------------------------ */
 
@@ -1099,12 +1026,7 @@ body:has(.c97-page) {
 .c97-page summary:focus-visible {
   outline: 2px solid var(--c97-accent);
   outline-offset: 3px;
-  /*
-   * globals.css gives every focused element a 4px radius and a 3px signal-orange
-   * halo from the Working Instrument, and the outline above did not override
-   * either, so every ring on these routes was rounded and haloed in a colour
-   * this world does not use.
-   */
+  /* Rings are square and carry no halo, even on a printed plate. */
   border-radius: 0;
   box-shadow: none;
 }
@@ -2599,8 +2521,7 @@ select.c97-field {
  * A dense data surface, such as the fantasy boards and draft rooms. Its
  * paragraphs and lists are labels, values, and rows rather than prose, so the
  * base margins and the 65ch cap only add phantom space. It sits in
- * @layer components, as .home-dash did, so margin and padding utilities
- * still win.
+ * @layer components so margin and padding utilities still win.
  */
 @layer components {
   .c97-dash p {

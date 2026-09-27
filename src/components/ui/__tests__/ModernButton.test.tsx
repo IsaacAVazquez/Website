@@ -11,36 +11,52 @@ describe('ModernButton', () => {
   it('applies default variant (primary)', () => {
     render(<ModernButton>Button</ModernButton>)
     const button = screen.getByText('Button')
-    expect(button).toHaveClass('bg-[var(--home-ink)]')
-    expect(button).toHaveClass('text-[var(--home-paper)]')
+    expect(button).toHaveClass('bg-[var(--c97-ink)]')
+    expect(button).toHaveClass('text-[var(--c97-surface)]')
   })
 
   it('applies secondary variant correctly', () => {
     render(<ModernButton variant="secondary">Button</ModernButton>)
     const button = screen.getByText('Button')
-    expect(button).toHaveClass('bg-[color-mix(in_srgb,var(--home-paper-alt)_78%,var(--home-elev-mix))]')
+    expect(button).toHaveClass('bg-[var(--c97-panel)]')
   })
 
   it('applies outline variant correctly', () => {
     render(<ModernButton variant="outline">Button</ModernButton>)
     const button = screen.getByText('Button')
     expect(button).toHaveClass('border')
-    expect(button).toHaveClass('border-[var(--home-rule)]')
+    expect(button).toHaveClass('border-[var(--c97-rule)]')
   })
 
   it('applies ghost variant correctly', () => {
     render(<ModernButton variant="ghost">Button</ModernButton>)
     const button = screen.getByText('Button')
-    expect(button).toHaveClass('text-[var(--home-ink-muted)]')
+    expect(button).toHaveClass('text-[var(--c97-ink-2)]')
   })
 
   it('applies mono variant correctly', () => {
     render(<ModernButton variant="mono">Button</ModernButton>)
     const button = screen.getByText('Button')
-    expect(button).toHaveClass('rounded-[var(--radius-sm)]')
     expect(button).toHaveClass('font-mono')
     expect(button).toHaveClass('uppercase')
-    expect(button).toHaveClass('hover:bg-[var(--home-signal)]')
+    expect(button).toHaveClass('hover:bg-[var(--c97-accent)]')
+  })
+
+  it('never applies a radius or shadow utility, on any variant', () => {
+    const variants: Array<'primary' | 'secondary' | 'outline' | 'ghost' | 'accent' | 'mono'> = [
+      'primary',
+      'secondary',
+      'outline',
+      'ghost',
+      'accent',
+      'mono',
+    ]
+    variants.forEach((variant) => {
+      const { container, unmount } = render(<ModernButton variant={variant}>Button</ModernButton>)
+      const button = container.querySelector('button')
+      expect(button?.className).not.toMatch(/rounded|shadow-/)
+      unmount()
+    })
   })
 
   it('applies default size (md)', () => {
@@ -123,7 +139,7 @@ describe('ModernButton', () => {
   it('has transition styles', () => {
     render(<ModernButton>Button</ModernButton>)
     const button = screen.getByText('Button')
-    expect(button).toHaveClass('transition-[background-color,border-color,color,box-shadow,transform]')
+    expect(button).toHaveClass('transition-[background-color,border-color,color,transform]')
     expect(button).toHaveClass('duration-200')
   })
 

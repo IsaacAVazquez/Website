@@ -5,9 +5,9 @@
 import type { MBACompany } from "@/types/mba-jobs";
 
 const MBA_CATEGORY_COLORS = {
-  fintech: "color-mix(in srgb, var(--home-positive) 62%, var(--home-ink) 38%)",
-  startup: "color-mix(in srgb, var(--home-signal) 34%, var(--home-ink) 66%)",
-  "big-tech": "color-mix(in srgb, var(--home-ink) 68%, var(--home-stone) 32%)",
+  fintech: "color-mix(in srgb, var(--c97-positive) 62%, var(--c97-ink) 38%)",
+  startup: "color-mix(in srgb, var(--c97-accent) 34%, var(--c97-ink) 66%)",
+  "big-tech": "color-mix(in srgb, var(--c97-ink) 68%, var(--c97-rule) 32%)",
 } as const;
 
 export const MBA_COMPANIES: MBACompany[] = [

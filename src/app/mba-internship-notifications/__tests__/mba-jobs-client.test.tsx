@@ -232,7 +232,7 @@ describe("MBAJobsClient", () => {
     expect(atlassianButton).toHaveStyle("background: var(--c97-field)");
     expect(atlassianDot).not.toBeNull();
     expect(atlassianDot).toHaveStyle(
-      "background: color-mix(in srgb, var(--home-ink) 68%, var(--home-stone) 32%)"
+      "background: color-mix(in srgb, var(--c97-ink) 68%, var(--c97-rule) 32%)"
     );
     expect(chipRail).toHaveClass("flex-wrap");
     expect(chipRail).not.toHaveClass("shrink-0");

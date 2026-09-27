@@ -1,9 +1,9 @@
 import fs from "node:fs";
 import path from "node:path";
 
-// The fantasy suite prints in the Catalog 97 press: no Working Instrument
-// tokens, no radius, and no blurred shadow. The bridge zeroes --shadow-* and
-// --radius-* today, so a reference to either would repaint at the close-out.
+// The fantasy suite prints in the Catalog 97 press: no radius and no blurred
+// shadow. Working Instrument tokens are banned site-wide by
+// src/app/__tests__/catalog97-closeout.test.ts.
 const ROOTS = ["src/app/fantasy-football", "src/components/fantasy"];
 const EXTRA = ["src/lib/fantasyUtils.ts"];
 
@@ -17,7 +17,6 @@ function sources(): string[] {
 }
 
 it.each([
-  ["a Working Instrument token", /var\(--home-|--font-home-/],
   ["a radius utility", /(?<=[\s"'`])(?:[a-z0-9-]+:)*rounded(?:-[^\s"'`]+|(?= (?:border|px-)))(?=[\s"'`])/],
   ["a border radius", /border-radius:\s*(?!0\b)/],
   ["a shadow token", /var\(--shadow-/],

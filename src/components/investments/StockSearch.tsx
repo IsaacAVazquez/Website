@@ -276,6 +276,10 @@ export function StockSearch({ value, onChange }: Props) {
         showDropdown &&
         suggestions.length > 0 &&
         createPortal(
+          // Portalled into the page root, not document.body, because the
+          // --c97-* tokens only resolve inside it. The contents-only wrapper
+          // gives the list paper tokens without painting a box of its own.
+          <div data-c97-surface="paper" style={{ display: "contents" }}>
 <ul
   id="stock-search-listbox"
   role="listbox"
@@ -303,8 +307,9 @@ className="m-0 list-none p-0 box-border overflow-hidden border border-[var(--c97
                 </button>
               </li>
             ))}
-          </ul>,
-          document.body
+          </ul>
+          </div>,
+          document.querySelector(".c97-page") ?? document.body
         )}
 
       {shouldShowCuratedOnlyHint && (

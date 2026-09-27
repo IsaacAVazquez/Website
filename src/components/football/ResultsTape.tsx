@@ -34,8 +34,8 @@ function formatKickoff(utcDate: string): string {
 
 /**
  * Recent-result score item: winner's side takes the win/draw/loss semantic
- * color (the same --home-positive/--home-negative trio TeamResultPill uses),
- * loser dims to --home-ink-muted, the scoreline itself stays neutral ink.
+ * color (the same positive/negative trio TeamResultPill uses), loser dims to
+ * --c97-ink-2, the scoreline itself stays neutral ink.
  * This is a deliberate departure from the design mirror (which just used
  * ink-vs-muted) toward the site's already-canonical W/D/L semantics.
  */

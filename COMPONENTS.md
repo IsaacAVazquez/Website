@@ -2,7 +2,7 @@
 
 Current component map for the live application.
 
-**Last updated:** 2026-09-22
+**Last updated:** 2026-09-27
 
 > Seven routes (`/`, `/portfolio`, `/writing`, `/dashboards`, `/about`, `/resume`,
 > `/contact`) render Catalog 97 composition roots from `src/components/catalog97/`.
@@ -11,7 +11,9 @@ Current component map for the live application.
 > roots that used to own those seven were deleted when Catalog 97 replaced them, as
 > were the older single-purpose homepage components this doc once listed. The
 > Working Instrument `StaticHeader`, `Footer`, and `ContactCta` were deleted on
-> 2026-09-16. See `AGENTS.md` for the shell description.
+> 2026-09-16, and its last shared pieces (`HomeStatsPanel`, `WarmCard`, `Badge`,
+> `Chip`, `Kicker`, `SectionIntro`, `Heading`, `Paragraph`, and the editorial
+> `InlineSectionLead`) on 2026-09-27. See `AGENTS.md` for the shell description.
 
 ---
 
@@ -156,18 +158,9 @@ Most of these are snapshot-driven dashboards that share one architecture
 
 Core UI primitives live under `src/components/ui/`.
 
-Most reused primitives:
+The ones still in use are `ModernButton` (admin and the investments forms), `ThemeToggle` and `DeferredThemeToggle` (the header), `AuthorBio` (articles), and `ServerIcons` (inline SVG icons for server components). Most UI is composed from the `catalog97.css` classes, so a new block usually wants a `.c97-panel`, `.c97-chip`, or `.c97-btn` before it wants a component.
 
-- `WarmCard`
-- `ModernButton`
-- `Heading`
-- `Paragraph`
-- `Badge`
-- `ThemeToggle`
-- `SectionIntro`
-- `ServerIcons`
-
-Editorial shared components also live under `src/components/editorial/`. They are written against the `--home-*` tokens, which the bridge block in `src/app/catalog97.css` aliases onto Catalog 97 values. `AuthorBio`, `RouteErrorBoundary`, `RouteLoadingState`, `ProjectBuildNote`, `CodeSample`, `NewsletterSignup`, and the search components read `--c97-*` directly as of 2026-09-22.
+The editorial components under `src/components/editorial/` are `EditorialPillButton`, `StatusPanel`, and `UtilityStrip` (all used by Job Search) and `InstrumentTape` (Investments, the football results tape, and the SpaceX launch tape). Every component reads the `--c97-*` tokens, since the Working Instrument tokens were deleted on 2026-09-27.
 
 Styling guidance for these lives in `STYLING.md`.
 
@@ -220,9 +213,10 @@ so read them from git history if you need that context. The `*Instrument`
 composition roots replaced them on the live routes, and the Catalog 97 roots in
 turn replaced the `*Instrument` files, which are gone.
 
-Under `src/components/home/`, only `HomeStatsPanel.tsx` remains, and it is
-still wired up. `HomeLiveFeed.tsx` and `PanelClock.tsx` were deleted on
-2026-09-23 when the home page moved to the snapshot readouts.
+`src/components/home/` is gone. `HomeLiveFeed.tsx` and `PanelClock.tsx` were
+deleted on 2026-09-23 when the home page moved to the snapshot readouts, and
+`HomeStatsPanel.tsx` on 2026-09-27 after the project redesign removed it from
+its last route.
 
 ---
 
