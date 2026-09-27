@@ -1,26 +1,17 @@
-import type { HTMLAttributes } from "react";
 import { fireEvent, render, screen, within } from "@testing-library/react";
 import { WINE_CELLAR_STORAGE_KEY } from "@/lib/wineCellar";
 import { WineCellarClient } from "../wine-cellar-client";
 
-jest.mock("framer-motion", () => ({
-  motion: {
-    div: ({ children, ...props }: HTMLAttributes<HTMLDivElement>) => <div {...props}>{children}</div>,
-  },
-  useReducedMotion: () => true,
-}));
-
 describe("WineCellarClient", () => {
   beforeEach(() => {
     window.localStorage.clear();
-    window.scrollTo = jest.fn();
   });
 
   it("renders the empty cellar and logs a new bottle", () => {
     render(<WineCellarClient />);
 
     expect(screen.getByRole("heading", { level: 1, name: "Wine Cellar" })).toBeVisible();
-    expect(screen.getByText("Your cellar is empty")).toBeVisible();
+    expect(screen.getByText("Log your first bottle")).toBeVisible();
 
     fireEvent.change(screen.getByLabelText("Wine name"), {
       target: { value: "Barolo" },

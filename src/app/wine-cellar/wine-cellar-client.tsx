@@ -1,7 +1,6 @@
 "use client";
 
-import { type FormEvent, useMemo, useState } from "react";
-import { motion, useReducedMotion } from "framer-motion";
+import { type CSSProperties, type FormEvent, useMemo, useState } from "react";
 import {
   Bookmark,
   Filter,
@@ -13,10 +12,8 @@ import {
   Wine,
   X,
 } from "lucide-react";
-import {
-  fadeInVariants,
-  getReducedMotionVariants,
-} from "@/components/investments/animations";
+import { Catalog97ProjectHero } from "@/components/catalog97/Catalog97ProjectHero";
+import { PROJECT_PRESS } from "@/constants/projectPress";
 import {
   DEFAULT_WINE_FILTERS,
   WINE_CELLAR_STORAGE_KEY,
@@ -29,7 +26,10 @@ import {
 import { useWineCellar } from "@/hooks/useWineCellar";
 import { useLocalStoragePersistenceStatus } from "@/hooks/useLocalStorageString";
 import type { WineEntry, WineType } from "@/types/wine";
-import { HomeStatsPanel, type HomeStatsCell } from "@/components/home/HomeStatsPanel";
+import { WINE_TYPE_MARK, wineRack, type WineRackRow } from "./wineRack";
+import "./wine-cellar.css";
+
+const WINE_ROUTE = "/wine-cellar";
 
 interface WineFormDraft {
   name: string;
@@ -112,9 +112,7 @@ const TASTED_DATE_FORMATTER = new Intl.DateTimeFormat("en-US", {
 
 function formatTastedDate(iso: string) {
   const date = new Date(`${iso}T00:00`);
-  return Number.isNaN(date.getTime())
-    ? iso
-    : TASTED_DATE_FORMATTER.format(date);
+  return Number.isNaN(date.getTime()) ? iso : TASTED_DATE_FORMATTER.format(date);
 }
 
 function StarRating({
@@ -130,7 +128,8 @@ function StarRating({
   const sizeClass = size === "md" ? "h-5 w-5" : "h-4 w-4";
   return (
     <div
-      className="inline-flex items-center gap-0.5 text-[var(--home-signal)]"
+      className="inline-flex items-center gap-0.5"
+      style={{ color: "var(--c97-accent)" }}
       aria-label={`${value} out of ${totalStars} stars`}
       role="img"
     >
@@ -142,17 +141,42 @@ function StarRating({
             key={idx}
             aria-hidden="true"
             className={`${sizeClass} ${
-              isFull
-                ? "fill-current"
-                : isHalf
-                  ? "fill-current opacity-60"
-                  : "opacity-25"
+              isFull ? "fill-current" : isHalf ? "fill-current opacity-60" : "opacity-25"
             }`}
           />
         );
       })}
     </div>
   );
+}
+
+/** A small circle mark for a wine type, filled for most types and a hollow ring for the one that reuses a chart step. */
+function TypeSwatch({ type }: { type: WineType }) {
+  const mark = WINE_TYPE_MARK[type];
+  return (
+    <svg
+      viewBox="0 0 12 12"
+      aria-hidden="true"
+      className="c97-wine-swatch"
+      style={{ width: 12, height: 12, display: "inline-block", flexShrink: 0 }}
+    >
+      <circle
+        cx={6}
+        cy={6}
+        r={5}
+        fill={mark.hollow ? "none" : `var(${mark.token})`}
+        stroke={mark.hollow ? `var(${mark.token})` : "var(--c97-surface)"}
+        strokeWidth={mark.hollow ? 2 : 1}
+      />
+    </svg>
+  );
+}
+
+function wineTypeBarStyle(type: WineType): CSSProperties {
+  const mark = WINE_TYPE_MARK[type];
+  return mark.hollow
+    ? { background: "transparent", border: `2px solid var(${mark.token})` }
+    : { background: `var(${mark.token})` };
 }
 
 const SORT_OPTIONS: Array<{ value: WineSortKey; label: string }> = [
@@ -162,10 +186,85 @@ const SORT_OPTIONS: Array<{ value: WineSortKey; label: string }> = [
   { value: "price", label: "Price" },
 ];
 
-const FORM_INPUT_CLASS =
-  "mt-2 min-h-touch w-full rounded-[var(--radius-2xl)] border border-[var(--home-rule)] bg-[var(--home-paper)] px-3 py-2 text-sm font-medium text-[var(--home-ink)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-signal)] focus-visible:ring-offset-2";
-const FORM_LABEL_CLASS =
-  "text-2xs font-semibold uppercase tracking-[0.14em] text-[var(--home-ink-muted)]";
+/* -------------------------------------------------------------------------
+ * The rack signature. One cubby per region, a lattice of cells with one
+ * bottle end per bottle, coloured by type, and the region named beneath.
+ * A busy region grows by whole rows, so no mark shrinks.
+ * ---------------------------------------------------------------------- */
+
+/** Cubbies per rack row. A region's cubby is padded to whole rows so it reads as a rack. */
+const RACK_COLUMNS = 4;
+
+function RackCubby({ label, slots, marked }: { label: string; slots: WineRackRow["slots"]; marked?: boolean }) {
+  const cells = Math.max(RACK_COLUMNS, Math.ceil(slots.length / RACK_COLUMNS) * RACK_COLUMNS);
+  return (
+    <figure className="c97-wine-cubby">
+      <div className="c97-wine-cubby-grid" aria-hidden="true">
+        {Array.from({ length: cells }, (_, i) => {
+          const slot = slots[i];
+          if (!slot) {
+            return <span key={i} className="c97-wine-cell" data-first={marked && i === 0 ? "true" : undefined} />;
+          }
+          const mark = WINE_TYPE_MARK[slot.type];
+          return (
+            <span key={slot.id} className="c97-wine-cell" title={`${slot.producer ? `${slot.producer}, ` : ""}${slot.name}`}>
+              <span
+                className="c97-wine-end"
+                data-hollow={mark.hollow ? "true" : undefined}
+                style={{ ["--wine-mark" as string]: `var(${mark.token})` }}
+              />
+            </span>
+          );
+        })}
+      </div>
+      <figcaption className="c97-wine-cubby-label">
+        {label}
+        {slots.length > 0 ? <span className="c97-mono"> · {slots.length}</span> : null}
+      </figcaption>
+    </figure>
+  );
+}
+
+function WineRackMarks({ rows }: { rows: WineRackRow[] }) {
+  const totalBottles = rows.reduce((sum, row) => sum + row.slots.length, 0);
+  return (
+    <div
+      className="c97-wine-rack"
+      role="img"
+      aria-label={`The cellar rack. ${totalBottles} bottle${totalBottles === 1 ? "" : "s"} across ${rows.length} region${
+        rows.length === 1 ? "" : "s"
+      }, one bottle end per bottle, grouped by region and coloured by type.`}
+    >
+      {rows.map((row) => (
+        <RackCubby key={row.region} label={row.region} slots={row.slots} />
+      ))}
+    </div>
+  );
+}
+
+function EmptyWineRack() {
+  return (
+    <div className="c97-wine-rack-empty">
+      <RackCubby label="Your rack is empty" slots={[]} marked />
+      <a href="#add-tasting" className="c97-wine-rack-empty-link c97-microlink">
+        Log your first bottle
+      </a>
+    </div>
+  );
+}
+
+function WineTypeLegend() {
+  return (
+    <ul className="c97-wine-rack-legend" aria-label="Wine type legend">
+      {WINE_TYPES.map((type) => (
+        <li key={type} className="c97-wine-rack-legend-item">
+          <TypeSwatch type={type} />
+          <span>{WINE_TYPE_LABELS[type]}</span>
+        </li>
+      ))}
+    </ul>
+  );
+}
 
 export function WineCellarClient() {
   const {
@@ -182,13 +281,7 @@ export function WineCellarClient() {
   } = useWineCellar();
   const persistenceStatus = useLocalStoragePersistenceStatus(WINE_CELLAR_STORAGE_KEY);
   const [editingId, setEditingId] = useState<string | null>(null);
-  const [formDraft, setFormDraft] = useState<WineFormDraft>(() =>
-    createEmptyFormDraft()
-  );
-  const shouldReduceMotion = useReducedMotion();
-  const motionVariants = shouldReduceMotion
-    ? getReducedMotionVariants().fadeInVariants
-    : fadeInVariants;
+  const [formDraft, setFormDraft] = useState<WineFormDraft>(() => createEmptyFormDraft());
 
   function resetForm() {
     setEditingId(null);
@@ -212,9 +305,7 @@ export function WineCellarClient() {
     if (!entry) return;
     setEditingId(id);
     setFormDraft(entryToFormDraft(entry));
-    if (typeof window !== "undefined") {
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    }
+    document.getElementById("add-tasting")?.scrollIntoView?.({ behavior: "smooth", block: "start" });
   }
 
   function handleDelete(id: string) {
@@ -231,11 +322,6 @@ export function WineCellarClient() {
     filters.sort !== DEFAULT_WINE_FILTERS.sort ||
     filters.sortDirection !== DEFAULT_WINE_FILTERS.sortDirection;
 
-  const lastLoggedDate = useMemo(() => {
-    if (!hasEntries) return null;
-    return summary.recent[0]?.tastedOn ?? null;
-  }, [hasEntries, summary.recent]);
-
   const recentFiveStars = useMemo(
     () =>
       [...entries]
@@ -245,422 +331,280 @@ export function WineCellarClient() {
     [entries]
   );
 
-  const favoriteType = summary.typeBreakdown[0]?.type ?? null;
-
-  const wineStatsCells: HomeStatsCell[] = [
-    {
-      label: "Bottles logged",
-      value: hasEntries ? summary.totalWines.toLocaleString() : "—",
-    },
-    {
-      label: "Average rating",
-      value: hasEntries ? summary.averageRating.toFixed(1) : "—",
-      sub: hasEntries ? "Across the cellar" : "Add a bottle to start",
-    },
-    {
-      label: "Cellar spend",
-      value: summary.totalSpend > 0 ? formatCurrency(summary.totalSpend) : "—",
-    },
-    {
-      label: "Top region",
-      value: summary.topRegion ?? "—",
-    },
-    {
-      label: "Top varietal",
-      value: summary.topVarietal ?? "—",
-    },
-    {
-      label: "Recent five-stars",
-      value: recentFiveStars.length.toLocaleString(),
-      tone: recentFiveStars.length > 0 ? "good" : "default",
-    },
-    {
-      label: "Favorite type",
-      value: favoriteType ? WINE_TYPE_LABELS[favoriteType] : "—",
-    },
-    {
-      label: "Last logged",
-      value: lastLoggedDate ? formatTastedDate(lastLoggedDate) : "—",
-    },
-  ];
+  const rack = useMemo(() => wineRack(entries), [entries]);
+  const lead = PROJECT_PRESS[WINE_ROUTE].lead;
+  const standfirst =
+    "I wanted somewhere to log each bottle, from the producer and vintage to what I actually thought of it, and each one you log becomes a slot in the rack below, grouped by region and colored by type.";
 
   return (
-    <section
-      className="home-page min-h-screen"
-      aria-label="Wine cellar workspace"
-      data-testid="wine-cellar-shell"
-    >
-      <div className="home-shell home-section">
-        <motion.div
-          variants={motionVariants}
-          initial="hidden"
-          animate="visible"
-          className="flex flex-col gap-6"
+    <>
+      <Catalog97ProjectHero
+        ink={lead}
+        title="Wine Cellar"
+        standfirst={standfirst}
+        readouts={
+          hasEntries
+            ? [
+                { label: "Bottles logged", value: summary.totalWines.toLocaleString() },
+                { label: "Average rating", value: summary.averageRating.toFixed(1) },
+                { label: "Top region", value: summary.topRegion ?? "—" },
+              ]
+            : []
+        }
+      >
+        <div
+          data-c97-surface="paper"
+          className="c97-offset c97-wine-rack-plate"
+          style={{ padding: "var(--c97-sp-3)" }}
         >
+          {hasEntries ? <WineRackMarks rows={rack} /> : <EmptyWineRack />}
+          <WineTypeLegend />
+        </div>
+      </Catalog97ProjectHero>
+
+      <section className="c97-band c97-sheet" data-c97-surface="paper" data-seam="torn">
+        <div className="c97-shell">
           {persistenceStatus === "memory-only" ? (
-            <div
-              className="rounded-[var(--radius-sm)] border px-4 py-3 text-sm leading-6"
-              style={{
-                borderColor:
-                  "color-mix(in srgb, var(--home-warning) 35%, var(--home-rule))",
-                background:
-                  "color-mix(in srgb, var(--home-warning) 10%, var(--home-paper-alt))",
-                color: "var(--home-ink-muted)",
-              }}
+            <p
+              className="c97-prose"
+              style={{ fontSize: "var(--c97-fs-small)", marginBottom: "var(--c97-sp-3)" }}
               role="status"
             >
-              Your cellar is available in this tab, but browser storage is
-              unavailable, so entries may not remain after you close it.
-            </div>
+              Your cellar is available in this tab, but browser storage is unavailable, so
+              entries may not remain after you close it.
+            </p>
           ) : null}
-          <div className="tool-topbar" id="cellar">
-            <div>
-              <p className="tool-crumbs">
-                Wine Cellar / <strong>Cellar</strong>
-              </p>
-              <h1>Wine Cellar</h1>
-            </div>
 
-            <label className="tool-search" aria-label="Search wines">
-              <Search size={14} aria-hidden="true" />
-              <input
-                type="search"
-                placeholder="Search by name, region, or notes…"
-                value={filters.search}
-                onChange={(event) =>
-                  updateFilters((current) => ({
-                    ...current,
-                    search: event.target.value,
-                  }))
-                }
-              />
-            </label>
-          </div>
+          <div className="grid gap-8 xl:grid-cols-[minmax(0,1.7fr)_minmax(320px,0.92fr)]">
+            <div className="space-y-6">
+              <div className="flex flex-wrap items-end justify-between gap-3">
+                <h2 className="c97-poster-sm">Tasting log</h2>
+                {hasEntries ? (
+                  <p className="c97-meta" style={{ margin: 0 }}>
+                    {visibleEntries.length} of {entries.length}
+                  </p>
+                ) : null}
+              </div>
 
-          <div className="tool-meta-chip" role="status" aria-live="polite">
-            <span className="tool-meta-chip-dot" aria-hidden="true" />
-            <span>
-              <strong>
-                {hasEntries ? entries.length : "—"}
-              </strong>{" "}
-              {hasEntries && entries.length === 1 ? "bottle" : "bottles"}
-            </span>
-            <span className="tool-meta-chip-divider" aria-hidden="true">
-              ·
-            </span>
-            <span>
-              avg rating{" "}
-              <strong>
-                {hasEntries ? summary.averageRating.toFixed(1) : "—"}
-              </strong>
-            </span>
-            <span className="tool-meta-chip-divider" aria-hidden="true">
-              ·
-            </span>
-            <span>
-              last logged{" "}
-              <strong>
-                {lastLoggedDate ? formatTastedDate(lastLoggedDate) : "—"}
-              </strong>
-            </span>
-            <span className="tool-meta-chip-spacer" />
-            <span className="tool-meta-chip-meta">Local browser only</span>
-          </div>
-
-          <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,360px)]">
-            <div className="flex flex-col gap-5">
-                <div id="stats" className="scroll-mt-28">
-                  <HomeStatsPanel
-                    id="wine-cellar-stats"
-                    title="Cellar at a glance"
-                    meta={lastLoggedDate ? `Last logged ${formatTastedDate(lastLoggedDate)}` : "No bottles yet"}
-                    hideLiveDot
-                    cells={wineStatsCells}
-                    pills={[
-                      { label: "All bottles", href: "#cellar" },
-                      { label: "By region", href: "#filters" },
-                      { label: "By varietal", href: "#filters" },
-                      { label: "Reset filters", href: "#filters" },
-                    ]}
+              <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-[1.3fr_1fr_1fr_1.3fr]">
+                <label className="c97-wine-search" aria-label="Search wines">
+                  <Search className="h-3.5 w-3.5" aria-hidden="true" style={{ color: "var(--c97-ink-2)" }} />
+                  <input
+                    type="search"
+                    placeholder="Search by name, region, or notes…"
+                    value={filters.search}
+                    onChange={(event) =>
+                      updateFilters((current) => ({ ...current, search: event.target.value }))
+                    }
                   />
-                </div>
-
-                {/* Filter / sort strip */}
-                <section
-                  id="filters"
-                  className="tool-card scroll-mt-28"
-                  aria-label="Filter tasting log"
-                >
-                  <div className="grid gap-3 sm:grid-cols-[1fr_1fr_1.4fr]">
-                    <label className="block">
-                      <span className={FORM_LABEL_CLASS}>Type</span>
-                      <select
-                        aria-label="Filter by wine type"
-                        value={filters.type}
-                        onChange={(event) =>
-                          updateFilters((current) => ({
-                            ...current,
-                            type: event.target.value as typeof current.type,
-                          }))
-                        }
-                        className={FORM_INPUT_CLASS}
-                      >
-                        <option value="all">All types</option>
-                        {WINE_TYPES.map((type) => (
-                          <option key={type} value={type}>
-                            {WINE_TYPE_LABELS[type]}
-                          </option>
-                        ))}
-                      </select>
-                    </label>
-                    <label className="block">
-                      <span className={FORM_LABEL_CLASS}>Min rating</span>
-                      <select
-                        aria-label="Minimum rating"
-                        value={String(filters.minRating)}
-                        onChange={(event) =>
-                          updateFilters((current) => ({
-                            ...current,
-                            minRating: Number(event.target.value),
-                          }))
-                        }
-                        className={FORM_INPUT_CLASS}
-                      >
-                        <option value="0">Any</option>
-                        <option value="3">3+ stars</option>
-                        <option value="3.5">3.5+ stars</option>
-                        <option value="4">4+ stars</option>
-                        <option value="4.5">4.5+ stars</option>
-                        <option value="5">5 stars only</option>
-                      </select>
-                    </label>
-                    <label className="block">
-                      <span className={FORM_LABEL_CLASS}>Sort by</span>
-                      <div className="mt-2 flex items-center gap-2">
-                        <select
-                          aria-label="Sort by"
-                          value={filters.sort}
-                          onChange={(event) =>
-                            updateFilters((current) => ({
-                              ...current,
-                              sort: event.target.value as WineSortKey,
-                            }))
-                          }
-                          className="min-h-touch flex-1 rounded-[var(--radius-2xl)] border border-[var(--home-rule)] bg-[var(--home-paper)] px-3 py-2 text-sm font-medium text-[var(--home-ink)]"
-                        >
-                          {SORT_OPTIONS.map((option) => (
-                            <option key={option.value} value={option.value}>
-                              {option.label}
-                            </option>
-                          ))}
-                        </select>
-                        <button
-                          type="button"
-                          aria-label={`Sort ${filters.sortDirection === "asc" ? "ascending" : "descending"}`}
-                          onClick={() =>
-                            updateFilters((current) => ({
-                              ...current,
-                              sortDirection:
-                                current.sortDirection === "asc" ? "desc" : "asc",
-                            }))
-                          }
-                          className="inline-flex min-h-touch min-w-touch items-center justify-center rounded-[var(--radius-2xl)] border border-[var(--home-rule)] bg-[var(--home-paper)] px-3 text-sm font-semibold text-[var(--home-ink)] hover:border-[var(--home-signal)] hover:text-[var(--home-signal)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-signal)] focus-visible:ring-offset-2"
-                        >
-                          {filters.sortDirection === "asc" ? "↑" : "↓"}
-                        </button>
-                      </div>
-                    </label>
-                  </div>
-                  {filtersAreActive ? (
+                </label>
+                <label className="block">
+                  <span className="c97-kicker">Type</span>
+                  <select
+                    aria-label="Filter by wine type"
+                    value={filters.type}
+                    onChange={(event) =>
+                      updateFilters((current) => ({
+                        ...current,
+                        type: event.target.value as typeof current.type,
+                      }))
+                    }
+                    className="c97-field"
+                    style={{ marginTop: "var(--c97-sp-1)" }}
+                  >
+                    <option value="all">All types</option>
+                    {WINE_TYPES.map((type) => (
+                      <option key={type} value={type}>
+                        {WINE_TYPE_LABELS[type]}
+                      </option>
+                    ))}
+                  </select>
+                </label>
+                <label className="block">
+                  <span className="c97-kicker">Min rating</span>
+                  <select
+                    aria-label="Minimum rating"
+                    value={String(filters.minRating)}
+                    onChange={(event) =>
+                      updateFilters((current) => ({
+                        ...current,
+                        minRating: Number(event.target.value),
+                      }))
+                    }
+                    className="c97-field"
+                    style={{ marginTop: "var(--c97-sp-1)" }}
+                  >
+                    <option value="0">Any</option>
+                    <option value="3">3+ stars</option>
+                    <option value="3.5">3.5+ stars</option>
+                    <option value="4">4+ stars</option>
+                    <option value="4.5">4.5+ stars</option>
+                    <option value="5">5 stars only</option>
+                  </select>
+                </label>
+                <label className="block">
+                  <span className="c97-kicker">Sort by</span>
+                  <div className="flex items-center gap-2" style={{ marginTop: "var(--c97-sp-1)" }}>
+                    <select
+                      aria-label="Sort by"
+                      value={filters.sort}
+                      onChange={(event) =>
+                        updateFilters((current) => ({
+                          ...current,
+                          sort: event.target.value as WineSortKey,
+                        }))
+                      }
+                      className="c97-field"
+                    >
+                      {SORT_OPTIONS.map((option) => (
+                        <option key={option.value} value={option.value}>
+                          {option.label}
+                        </option>
+                      ))}
+                    </select>
                     <button
                       type="button"
-                      onClick={resetFilters}
-                      className="mt-3 inline-flex w-fit items-center gap-2 rounded-full border border-[var(--home-rule)] bg-[var(--home-paper-alt)] px-3 py-1.5 text-xs font-semibold text-[var(--home-ink-muted)] transition hover:border-[var(--home-signal)] hover:text-[var(--home-signal)]"
+                      aria-label={`Sort ${filters.sortDirection === "asc" ? "ascending" : "descending"}`}
+                      onClick={() =>
+                        updateFilters((current) => ({
+                          ...current,
+                          sortDirection: current.sortDirection === "asc" ? "desc" : "asc",
+                        }))
+                      }
+                      className="c97-btn-outline"
+                      style={{ minHeight: 48, minWidth: 48, justifyContent: "center" }}
                     >
-                      <Filter className="h-3 w-3" />
-                      Reset filters
+                      {filters.sortDirection === "asc" ? "↑" : "↓"}
                     </button>
-                  ) : null}
-                </section>
-
-                {/* Tasting log */}
-                <section
-                  className="tool-card scroll-mt-28"
-                  aria-label="Tasting log"
-                >
-                  <div className="mb-4 flex items-end justify-between gap-3">
-                    <div>
-                      <p className="tool-section-kicker">Cellar</p>
-                      <h2 className="tool-section-title">Tasting log</h2>
-                    </div>
-                    {hasEntries ? (
-                      <p className="rounded-full border border-[var(--home-rule)] bg-[var(--home-paper)] px-3 py-1 text-xs font-semibold text-[var(--home-ink-muted)]">
-                        {visibleEntries.length} of {entries.length}
-                      </p>
-                    ) : null}
                   </div>
+                </label>
+              </div>
 
-                  {!hasEntries ? (
-                    <div className="tool-empty">
-                      <Wine
-                        className="mx-auto h-7 w-7 text-[var(--home-signal)]"
-                        aria-hidden="true"
-                      />
-                      <p className="mt-3 text-sm font-semibold text-[var(--home-ink)]">
-                        Your cellar is empty
-                      </p>
-                      <p>Add your first bottle from the rail →</p>
-                    </div>
-                  ) : !hasVisibleEntries ? (
-                    <div className="tool-empty">
-                      <p className="text-sm font-semibold text-[var(--home-ink)]">
-                        No bottles match these filters
-                      </p>
-                      <p>Try widening your search or reset filters.</p>
-                    </div>
-                  ) : (
-                    <ul className="space-y-3">
-                      {visibleEntries.map((entry) => (
-                        <li
-                          key={entry.id}
-                          className={`rounded-[var(--radius-3xl)] border bg-[var(--home-paper)] px-4 py-4 transition ${
-                            editingId === entry.id
-                              ? "border-[var(--home-signal)] shadow-[var(--shadow-sm)]"
-                              : "border-[var(--home-rule)]"
-                          }`}
-                        >
-                          <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
-                            <div className="min-w-0 flex-1">
-                              <div className="flex flex-wrap items-baseline gap-2">
-                                <p className="text-base font-semibold text-[var(--home-ink)]">
-                                  {entry.name}
-                                </p>
-                                {entry.vintage ? (
-                                  <span className="font-mono text-xs uppercase tracking-[0.16em] text-[var(--home-ink-muted)]">
-                                    {entry.vintage}
-                                  </span>
-                                ) : null}
-                              </div>
-                              {entry.producer ? (
-                                <p className="mt-1 text-sm text-[var(--home-ink-muted)]">
-                                  {entry.producer}
-                                </p>
-                              ) : null}
-                              <div className="mt-3 flex flex-wrap items-center gap-2">
-                                <span className="rounded-full bg-[var(--home-paper-alt)] px-3 py-1 text-2xs font-semibold uppercase tracking-[0.12em] text-[var(--home-ink-muted)]">
-                                  {WINE_TYPE_LABELS[entry.type]}
-                                </span>
-                                {entry.region ? (
-                                  <span className="rounded-full bg-[var(--home-paper-alt)] px-3 py-1 text-2xs font-semibold uppercase tracking-[0.12em] text-[var(--home-ink-muted)]">
-                                    {entry.region}
-                                  </span>
-                                ) : null}
-                                {entry.varietal ? (
-                                  <span className="rounded-full bg-[var(--home-paper-alt)] px-3 py-1 text-2xs font-semibold uppercase tracking-[0.12em] text-[var(--home-ink-muted)]">
-                                    {entry.varietal}
-                                  </span>
-                                ) : null}
-                                <span
-                                  className="rounded-full bg-[var(--home-paper-alt)] px-3 py-1 text-2xs font-semibold uppercase tracking-[0.12em] text-[var(--home-ink-muted)]"
-                                  title={entry.tastedOn}
-                                >
-                                  {formatTastedDate(entry.tastedOn)}
-                                </span>
-                                {entry.price !== null ? (
-                                  <span className="rounded-full bg-[var(--home-paper-alt)] px-3 py-1 text-2xs font-semibold uppercase tracking-[0.12em] text-[var(--home-ink-muted)]">
-                                    {formatCurrency(entry.price)}
-                                  </span>
-                                ) : null}
-                              </div>
-                              {entry.notes ? (
-                                <p className="mt-3 whitespace-pre-line text-sm leading-6 text-[var(--home-ink)]">
-                                  {entry.notes}
-                                </p>
-                              ) : null}
-                            </div>
+              {filtersAreActive ? (
+                <button
+                  type="button"
+                  onClick={resetFilters}
+                  className="c97-btn-outline"
+                  style={{ display: "inline-flex", alignItems: "center", gap: "var(--c97-sp-1)" }}
+                >
+                  <Filter className="h-3 w-3" aria-hidden="true" />
+                  Reset filters
+                </button>
+              ) : null}
 
-                            <div className="flex flex-col items-end gap-3 sm:min-w-[120px]">
-                              <div className="flex flex-col items-end gap-1">
-                                <p className="text-lg font-semibold text-[var(--home-ink)]">
-                                  {entry.rating.toFixed(1)}
-                                </p>
-                                <StarRating value={entry.rating} />
-                              </div>
-                              <div className="flex gap-2">
-                                <button
-                                  type="button"
-                                  aria-label={`Edit ${entry.name}`}
-                                  onClick={() => handleEdit(entry.id)}
-                                  className="inline-flex min-h-touch items-center justify-center gap-1.5 rounded-[var(--radius-2xl)] border border-[var(--home-rule)] bg-[var(--home-paper-alt)] px-3 py-2 text-xs font-semibold text-[var(--home-ink-muted)] hover:border-[var(--home-signal)] hover:text-[var(--home-signal)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-signal)] focus-visible:ring-offset-2"
-                                >
-                                  <Pencil className="h-3.5 w-3.5" />
-                                  Edit
-                                </button>
-                                <button
-                                  type="button"
-                                  aria-label={`Delete ${entry.name}`}
-                                  onClick={() => handleDelete(entry.id)}
-                                  className="inline-flex min-h-touch items-center justify-center gap-1.5 rounded-[var(--radius-2xl)] border border-[var(--home-rule)] bg-[var(--home-paper-alt)] px-3 py-2 text-xs font-semibold text-[var(--home-ink-muted)] hover:border-[var(--home-ink)] hover:text-[var(--home-ink)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-signal)] focus-visible:ring-offset-2"
-                                >
-                                  <Trash2 className="h-3.5 w-3.5" />
-                                  Delete
-                                </button>
-                              </div>
-                            </div>
-                          </div>
-                        </li>
-                      ))}
-                    </ul>
-                  )}
-                </section>
+              <section aria-label="Tasting log">
+                {!hasEntries ? (
+                  <p className="c97-prose">No bottles logged yet. The Log a bottle form adds your first one.</p>
+                ) : !hasVisibleEntries ? (
+                  <p className="c97-prose">
+                    No bottles match these filters. Try widening your search or reset filters.
+                  </p>
+                ) : (
+                  <ul className="c97-wine-log">
+                    {visibleEntries.map((entry) => (
+                      <li
+                        key={entry.id}
+                        data-c97-surface="paper"
+                        className="c97-wine-log-row c97-offset"
+                        aria-current={editingId === entry.id ? "true" : undefined}
+                      >
+                        <p className="c97-wine-label-producer">{entry.producer || "Unknown producer"}</p>
+                        <p className="c97-serif c97-wine-label-name">{entry.name}</p>
+                        <p className="c97-mono c97-wine-label-vintage">{entry.vintage ?? "NV"}</p>
+                        <p className="c97-wine-label-meta">
+                          {[entry.region, entry.varietal].filter(Boolean).join(" · ")}
+                          <span className="c97-wine-type">
+                            <TypeSwatch type={entry.type} />
+                            {WINE_TYPE_LABELS[entry.type]}
+                          </span>
+                        </p>
+                        <div className="c97-wine-label-rating">
+                          <StarRating value={entry.rating} />
+                          <span className="c97-mono">{entry.rating.toFixed(1)}</span>
+                        </div>
+                        {entry.notes ? <p className="c97-prose c97-wine-label-notes">{entry.notes}</p> : null}
+                        <p className="c97-wine-label-foot">
+                          <span title={entry.tastedOn}>{formatTastedDate(entry.tastedOn)}</span>
+                          {entry.price !== null ? <span>{formatCurrency(entry.price)}</span> : null}
+                        </p>
+                        <div className="c97-wine-log-actions">
+                          <button
+                            type="button"
+                            aria-label={`Edit ${entry.name}`}
+                            onClick={() => handleEdit(entry.id)}
+                            className="c97-btn-ghost"
+                          >
+                            <Pencil className="h-3.5 w-3.5" aria-hidden="true" />
+                            Edit
+                          </button>
+                          <button
+                            type="button"
+                            aria-label={`Delete ${entry.name}`}
+                            onClick={() => handleDelete(entry.id)}
+                            className="c97-btn-ghost"
+                          >
+                            <Trash2 className="h-3.5 w-3.5" aria-hidden="true" />
+                            Delete
+                          </button>
+                        </div>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </section>
             </div>
 
             <aside
               aria-label="Wine cellar side panel"
-              className="flex flex-col gap-4 rounded-[var(--radius-3xl)] border border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper-alt)_74%,var(--home-elev-mix))] p-5 shadow-[var(--shadow-sm)] lg:sticky lg:top-0 lg:self-start lg:max-h-[calc(100vh-7rem)] lg:overflow-y-auto"
+              className="space-y-6 xl:sticky xl:top-6"
+              style={{ alignSelf: "start" }}
             >
-              <section id="add-tasting">
-                <p className="tool-rail-label">
-                  <Wine size={12} aria-hidden="true" />
+              <div className="c97-panel" id="add-tasting">
+                <p
+                  className="c97-kicker"
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    gap: "var(--c97-sp-1)",
+                    marginBottom: "var(--c97-sp-3)",
+                  }}
+                >
+                  <Wine className="h-3 w-3" aria-hidden="true" />
                   {editingId ? "Edit bottle" : "Log a bottle"}
                 </p>
                 <form onSubmit={handleSubmit} className="grid gap-3">
                   <label className="block">
-                    <span className={FORM_LABEL_CLASS}>Wine name</span>
+                    <span className="c97-kicker">Wine name</span>
                     <input
                       aria-label="Wine name"
                       required
                       type="text"
                       value={formDraft.name}
                       onChange={(event) =>
-                        setFormDraft((current) => ({
-                          ...current,
-                          name: event.target.value,
-                        }))
+                        setFormDraft((current) => ({ ...current, name: event.target.value }))
                       }
                       placeholder="2018 Brunello di Montalcino"
-                      className={FORM_INPUT_CLASS}
+                      className="c97-field"
+                      style={{ marginTop: "var(--c97-sp-1)" }}
                     />
                   </label>
                   <label className="block">
-                    <span className={FORM_LABEL_CLASS}>Producer</span>
+                    <span className="c97-kicker">Producer</span>
                     <input
                       aria-label="Producer"
                       type="text"
                       value={formDraft.producer}
                       onChange={(event) =>
-                        setFormDraft((current) => ({
-                          ...current,
-                          producer: event.target.value,
-                        }))
+                        setFormDraft((current) => ({ ...current, producer: event.target.value }))
                       }
                       placeholder="Biondi-Santi"
-                      className={FORM_INPUT_CLASS}
+                      className="c97-field"
+                      style={{ marginTop: "var(--c97-sp-1)" }}
                     />
                   </label>
                   <div className="grid gap-3 grid-cols-2">
                     <label className="block">
-                      <span className={FORM_LABEL_CLASS}>Vintage</span>
+                      <span className="c97-kicker">Vintage</span>
                       <input
                         aria-label="Vintage"
                         type="number"
@@ -669,17 +613,15 @@ export function WineCellarClient() {
                         step="1"
                         value={formDraft.vintage}
                         onChange={(event) =>
-                          setFormDraft((current) => ({
-                            ...current,
-                            vintage: event.target.value,
-                          }))
+                          setFormDraft((current) => ({ ...current, vintage: event.target.value }))
                         }
                         placeholder="2018"
-                        className={FORM_INPUT_CLASS}
+                        className="c97-field"
+                        style={{ marginTop: "var(--c97-sp-1)" }}
                       />
                     </label>
                     <label className="block">
-                      <span className={FORM_LABEL_CLASS}>Type</span>
+                      <span className="c97-kicker">Type</span>
                       <select
                         aria-label="Wine type"
                         value={formDraft.type}
@@ -689,7 +631,8 @@ export function WineCellarClient() {
                             type: event.target.value as WineType,
                           }))
                         }
-                        className={FORM_INPUT_CLASS}
+                        className="c97-field"
+                        style={{ marginTop: "var(--c97-sp-1)" }}
                       >
                         {WINE_TYPES.map((type) => (
                           <option key={type} value={type}>
@@ -700,40 +643,36 @@ export function WineCellarClient() {
                     </label>
                   </div>
                   <label className="block">
-                    <span className={FORM_LABEL_CLASS}>Region</span>
+                    <span className="c97-kicker">Region</span>
                     <input
                       aria-label="Region"
                       type="text"
                       value={formDraft.region}
                       onChange={(event) =>
-                        setFormDraft((current) => ({
-                          ...current,
-                          region: event.target.value,
-                        }))
+                        setFormDraft((current) => ({ ...current, region: event.target.value }))
                       }
                       placeholder="Tuscany"
-                      className={FORM_INPUT_CLASS}
+                      className="c97-field"
+                      style={{ marginTop: "var(--c97-sp-1)" }}
                     />
                   </label>
                   <label className="block">
-                    <span className={FORM_LABEL_CLASS}>Varietal / grape</span>
+                    <span className="c97-kicker">Varietal / grape</span>
                     <input
                       aria-label="Varietal"
                       type="text"
                       value={formDraft.varietal}
                       onChange={(event) =>
-                        setFormDraft((current) => ({
-                          ...current,
-                          varietal: event.target.value,
-                        }))
+                        setFormDraft((current) => ({ ...current, varietal: event.target.value }))
                       }
                       placeholder="Sangiovese"
-                      className={FORM_INPUT_CLASS}
+                      className="c97-field"
+                      style={{ marginTop: "var(--c97-sp-1)" }}
                     />
                   </label>
                   <div className="grid gap-3 grid-cols-2">
                     <label className="block">
-                      <span className={FORM_LABEL_CLASS}>Price (USD)</span>
+                      <span className="c97-kicker">Price (USD)</span>
                       <input
                         aria-label="Price"
                         type="number"
@@ -741,35 +680,43 @@ export function WineCellarClient() {
                         step="0.01"
                         value={formDraft.price}
                         onChange={(event) =>
-                          setFormDraft((current) => ({
-                            ...current,
-                            price: event.target.value,
-                          }))
+                          setFormDraft((current) => ({ ...current, price: event.target.value }))
                         }
                         placeholder="48"
-                        className={FORM_INPUT_CLASS}
+                        className="c97-field"
+                        style={{ marginTop: "var(--c97-sp-1)" }}
                       />
                     </label>
                     <label className="block">
-                      <span className={FORM_LABEL_CLASS}>Tasted on</span>
+                      <span className="c97-kicker">Tasted on</span>
                       <input
                         aria-label="Tasted on"
                         type="date"
                         value={formDraft.tastedOn}
                         onChange={(event) =>
-                          setFormDraft((current) => ({
-                            ...current,
-                            tastedOn: event.target.value,
-                          }))
+                          setFormDraft((current) => ({ ...current, tastedOn: event.target.value }))
                         }
-                        className={FORM_INPUT_CLASS}
+                        className="c97-field"
+                        style={{ marginTop: "var(--c97-sp-1)" }}
                       />
                     </label>
                   </div>
                   <label className="block">
-                    <span className="flex items-center justify-between text-2xs font-semibold uppercase tracking-[0.14em] text-[var(--home-ink-muted)]">
+                    <span
+                      className="c97-kicker"
+                      style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}
+                    >
                       <span>Rating</span>
-                      <span className="flex items-center gap-2 text-[var(--home-ink)]">
+                      <span
+                        style={{
+                          display: "flex",
+                          alignItems: "center",
+                          gap: "var(--c97-sp-1)",
+                          color: "var(--c97-ink)",
+                          textTransform: "none",
+                          letterSpacing: "normal",
+                        }}
+                      >
                         {Number(formDraft.rating || 0).toFixed(1)}
                         <StarRating value={Number(formDraft.rating || 0)} />
                       </span>
@@ -782,58 +729,64 @@ export function WineCellarClient() {
                       step="0.5"
                       value={formDraft.rating}
                       onChange={(event) =>
-                        setFormDraft((current) => ({
-                          ...current,
-                          rating: event.target.value,
-                        }))
+                        setFormDraft((current) => ({ ...current, rating: event.target.value }))
                       }
-                      className="mt-3 w-full accent-[var(--home-signal)]"
+                      className="c97-range"
+                      style={{ marginTop: "var(--c97-sp-2)" }}
                     />
                   </label>
                   <label className="block">
-                    <span className={FORM_LABEL_CLASS}>Tasting notes</span>
+                    <span className="c97-kicker">Tasting notes</span>
                     <textarea
                       aria-label="Tasting notes"
                       rows={3}
                       maxLength={1000}
                       value={formDraft.notes}
                       onChange={(event) =>
-                        setFormDraft((current) => ({
-                          ...current,
-                          notes: event.target.value,
-                        }))
+                        setFormDraft((current) => ({ ...current, notes: event.target.value }))
                       }
                       placeholder="Cherry, leather, dried herbs."
-                      className="mt-2 w-full rounded-[var(--radius-2xl)] border border-[var(--home-rule)] bg-[var(--home-paper)] px-3 py-3 text-sm leading-6 text-[var(--home-ink)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-signal)] focus-visible:ring-offset-2"
+                      className="c97-field"
+                      style={{ marginTop: "var(--c97-sp-1)" }}
                     />
                   </label>
-                  <div className="flex flex-wrap items-center gap-2 pt-1">
+                  <div className="flex flex-wrap items-center gap-2" style={{ paddingTop: "var(--c97-sp-1)" }}>
                     <button
                       type="submit"
                       disabled={!formDraft.name.trim()}
-                      className="inline-flex min-h-touch flex-1 items-center justify-center gap-2 rounded-[var(--radius-2xl)] bg-[var(--home-signal)] px-4 py-2.5 text-sm font-semibold text-[var(--home-paper)] shadow-[var(--shadow-sm)] transition hover:opacity-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-signal)] focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-60"
+                      className="c97-btn c97-offset flex-1 disabled:cursor-not-allowed"
+                      style={{ justifyContent: "center", gap: "var(--c97-sp-1)" }}
                     >
-                      <Plus className="h-4 w-4" />
+                      <Plus className="h-4 w-4" aria-hidden="true" />
                       {editingId ? "Save tasting" : "Add tasting"}
                     </button>
                     {editingId ? (
                       <button
                         type="button"
                         onClick={resetForm}
-                        className="inline-flex min-h-touch items-center justify-center gap-1.5 rounded-[var(--radius-2xl)] border border-[var(--home-rule)] bg-[var(--home-paper-alt)] px-3 py-2 text-xs font-semibold text-[var(--home-ink-muted)] transition hover:border-[var(--home-signal)] hover:text-[var(--home-signal)]"
+                        className="c97-btn-outline"
+                        style={{ display: "inline-flex", alignItems: "center", gap: "var(--c97-sp-1)" }}
                       >
-                        <X className="h-3.5 w-3.5" />
+                        <X className="h-3.5 w-3.5" aria-hidden="true" />
                         Cancel
                       </button>
                     ) : null}
                   </div>
                 </form>
-              </section>
+              </div>
 
               {recentFiveStars.length > 0 ? (
-                <section aria-label="Recent five-star bottles">
-                  <p className="tool-rail-label">
-                    <Star size={12} aria-hidden="true" />
+                <div className="c97-panel">
+                  <p
+                    className="c97-kicker"
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      gap: "var(--c97-sp-1)",
+                      marginBottom: "var(--c97-sp-2)",
+                    }}
+                  >
+                    <Star className="h-3 w-3" aria-hidden="true" />
                     Recent five-stars
                   </p>
                   <ul className="flex flex-col gap-2">
@@ -842,167 +795,84 @@ export function WineCellarClient() {
                         <button
                           type="button"
                           onClick={() => handleEdit(entry.id)}
-                          className="grid w-full grid-cols-[1fr_auto] items-center gap-2 rounded-[var(--radius-xl)] border border-[var(--home-rule)] bg-[var(--home-paper)] px-3 py-2 text-left transition hover:border-[var(--home-signal)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-signal)] focus-visible:ring-offset-2"
                           aria-label={`Edit ${entry.name}`}
+                          className="c97-wine-recent-row"
                         >
                           <span className="min-w-0">
-                            <span className="block truncate text-xs font-semibold text-[var(--home-ink)]">
+                            <span
+                              className="block truncate c97-serif"
+                              style={{ fontSize: "var(--c97-fs-body)" }}
+                            >
                               {entry.name}
                             </span>
-                            <span className="block truncate text-2xs uppercase tracking-[0.12em] text-[var(--home-ink-muted)]">
+                            <span className="c97-meta" style={{ margin: 0 }}>
                               {formatTastedDate(entry.tastedOn)}
                             </span>
                           </span>
-                          <span className="font-mono text-1xs font-semibold tabular-nums text-[var(--home-ink)]">
+                          <span className="c97-mono" style={{ fontWeight: 600 }}>
                             {entry.rating.toFixed(1)}
                           </span>
                         </button>
                       </li>
                     ))}
                   </ul>
-                </section>
+                </div>
               ) : null}
 
-              <p className="tool-rail-foot">
-                <Bookmark size={14} aria-hidden="true" />
-                Saved in your browser. No account, no server.
+              <p
+                className="c97-prose"
+                style={{
+                  fontSize: "var(--c97-fs-small)",
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "var(--c97-sp-1)",
+                }}
+              >
+                <Bookmark className="h-3.5 w-3.5" aria-hidden="true" />
+                Your bottles are saved in this browser only, with no account or server behind them.
               </p>
             </aside>
           </div>
+        </div>
+      </section>
 
-          {hasEntries ? (
-            <section
-              className="tool-band"
-              aria-label="Cellar insights"
-              id="insights"
-            >
-              <div className="tool-section-header">
-                <div>
-                  <p className="tool-section-kicker">Cellar insights</p>
-                  <h2 className="tool-section-title">What you've been drinking</h2>
-                </div>
+      {hasEntries ? (
+        <section className="c97-band c97-sheet" data-c97-surface="bone" data-seam="deckle">
+          <div className="c97-shell">
+            <h2 className="c97-poster-sm">What you&apos;ve been drinking</h2>
+            <div className="c97-panel" style={{ marginTop: "var(--c97-sp-4)", maxWidth: "36rem" }}>
+              <div className="space-y-3">
+                {summary.typeBreakdown.map((bucket) => {
+                  const share =
+                    summary.totalWines > 0 ? (bucket.count / summary.totalWines) * 100 : 0;
+                  return (
+                    <div key={bucket.type}>
+                      <div className="flex items-center justify-between gap-3">
+                        <span className="c97-wine-type">
+                          <TypeSwatch type={bucket.type} />
+                          {WINE_TYPE_LABELS[bucket.type]}
+                        </span>
+                        <span className="c97-meta" style={{ margin: 0 }}>
+                          {bucket.count} · avg {bucket.averageRating.toFixed(1)}
+                        </span>
+                      </div>
+                      <div className="c97-wine-bar-track" style={{ marginTop: "var(--c97-sp-1)" }}>
+                        <div
+                          className="c97-wine-bar-fill"
+                          style={{
+                            width: `${Math.min(100, Math.max(0, share))}%`,
+                            ...wineTypeBarStyle(bucket.type),
+                          }}
+                        />
+                      </div>
+                    </div>
+                  );
+                })}
               </div>
-
-              <div className="grid gap-5 xl:grid-cols-3">
-                <div className="tool-card">
-                  <h3 className="text-base font-semibold text-[var(--home-ink)]">
-                    By type
-                  </h3>
-                  <div className="mt-4 space-y-3">
-                    {summary.typeBreakdown.map((bucket) => {
-                      const share =
-                        summary.totalWines > 0
-                          ? (bucket.count / summary.totalWines) * 100
-                          : 0;
-                      return (
-                        <div key={bucket.type}>
-                          <div className="flex items-center justify-between gap-3">
-                            <p className="text-sm font-semibold text-[var(--home-ink)]">
-                              {WINE_TYPE_LABELS[bucket.type]}
-                            </p>
-                            <p className="text-2xs uppercase tracking-[0.14em] text-[var(--home-ink-muted)]">
-                              {bucket.count} · avg {bucket.averageRating.toFixed(1)}
-                            </p>
-                          </div>
-                          <div className="mt-2 h-2 overflow-hidden rounded-full bg-[var(--home-paper-alt)]">
-                            <div
-                              className="h-full rounded-full bg-[var(--home-signal)]"
-                              style={{ width: `${Math.min(100, Math.max(0, share))}%` }}
-                            />
-                          </div>
-                        </div>
-                      );
-                    })}
-                  </div>
-                </div>
-
-                <div className="tool-card">
-                  <h3 className="text-base font-semibold text-[var(--home-ink)]">
-                    Top rated
-                  </h3>
-                  {summary.topRated.length === 0 ? (
-                    <p className="mt-3 text-sm text-[var(--home-ink-muted)]">
-                      Add a few bottles to surface your favorites.
-                    </p>
-                  ) : (
-                    <ul className="mt-4 space-y-3">
-                      {summary.topRated.map((entry) => (
-                        <li
-                          key={entry.id}
-                          className="rounded-[var(--radius-2xl)] border border-[var(--home-rule)] bg-[var(--home-paper-alt)] px-3 py-3"
-                        >
-                          <div className="flex items-start justify-between gap-3">
-                            <div className="min-w-0">
-                              <p className="truncate text-sm font-semibold text-[var(--home-ink)]">
-                                {entry.name}
-                              </p>
-                              <p className="mt-1 text-2xs uppercase tracking-[0.14em] text-[var(--home-ink-muted)]">
-                                {entry.producer || WINE_TYPE_LABELS[entry.type]}
-                              </p>
-                            </div>
-                            <div className="flex flex-col items-end">
-                              <p className="text-sm font-semibold text-[var(--home-ink)]">
-                                {entry.rating.toFixed(1)}
-                              </p>
-                              <StarRating value={entry.rating} />
-                            </div>
-                          </div>
-                        </li>
-                      ))}
-                    </ul>
-                  )}
-                </div>
-
-                <div className="tool-card">
-                  <h3 className="text-base font-semibold text-[var(--home-ink)]">
-                    Recent pours
-                  </h3>
-                  {summary.recent.length === 0 ? (
-                    <p className="mt-3 text-sm text-[var(--home-ink-muted)]">
-                      Recent tastings will show up here.
-                    </p>
-                  ) : (
-                    <ul className="mt-4 space-y-3">
-                      {summary.recent.map((entry) => (
-                        <li
-                          key={entry.id}
-                          className="rounded-[var(--radius-2xl)] border border-[var(--home-rule)] bg-[var(--home-paper-alt)] px-3 py-3"
-                        >
-                          <div className="flex items-start justify-between gap-3">
-                            <div className="min-w-0">
-                              <p className="truncate text-sm font-semibold text-[var(--home-ink)]">
-                                {entry.name}
-                              </p>
-                              <p
-                                className="mt-1 text-2xs uppercase tracking-[0.14em] text-[var(--home-ink-muted)]"
-                                title={entry.tastedOn}
-                              >
-                                {formatTastedDate(entry.tastedOn)} ·{" "}
-                                {WINE_TYPE_LABELS[entry.type]}
-                              </p>
-                            </div>
-                            <p className="text-sm font-semibold text-[var(--home-ink)]">
-                              {entry.rating.toFixed(1)}
-                            </p>
-                          </div>
-                        </li>
-                      ))}
-                    </ul>
-                  )}
-                  {summary.topVarietal ? (
-                    <p className="mt-4 rounded-[var(--radius-2xl)] border border-dashed border-[var(--home-rule)] bg-[var(--home-paper-alt)] px-3 py-3 text-2xs uppercase tracking-[0.14em] text-[var(--home-ink-muted)]">
-                      Most-poured varietal:{" "}
-                      <span className="font-semibold text-[var(--home-ink)]">
-                        {summary.topVarietal}
-                      </span>
-                    </p>
-                  ) : null}
-                </div>
-              </div>
-            </section>
-          ) : null}
-        </motion.div>
-      </div>
-    </section>
+            </div>
+          </div>
+        </section>
+      ) : null}
+    </>
   );
 }
