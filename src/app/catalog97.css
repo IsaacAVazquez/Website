@@ -1525,7 +1525,8 @@ select.c97-field {
   font: inherit;
 }
 
-.c97-segmented > button[aria-pressed="true"] {
+.c97-segmented > button[aria-pressed="true"],
+.c97-segmented > button[aria-selected="true"] {
   color: var(--c97-ink);
   text-decoration: underline;
   text-decoration-thickness: 2px;
@@ -2503,7 +2504,7 @@ select.c97-field {
 
 .c97-project-hero-readouts {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(8.5rem, 1fr));
   gap: var(--c97-sp-4);
   margin: var(--c97-sp-5) 0 0;
   max-width: 48rem;
@@ -2517,8 +2518,15 @@ select.c97-field {
   margin-top: var(--c97-sp-5);
 }
 
-.c97-project-hero-signature svg {
+/* The signature chart fills the slot; icons inside it keep their own size. */
+.c97-project-hero-signature svg:not(.lucide) {
   display: block;
   width: 100%;
   height: auto;
+}
+
+/* A hero's as-of line is one run of text, so it flows as a block. */
+.c97-project-hero .c97-meta {
+  display: block;
+  max-width: 60rem;
 }

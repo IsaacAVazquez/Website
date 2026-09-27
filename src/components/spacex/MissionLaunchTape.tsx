@@ -38,15 +38,15 @@ export function MissionLaunchTape({ recentLaunches, upcomingLaunches }: MissionL
       key: `result-${launch.id}`,
       content: (
         <>
-          <span className="font-medium text-[var(--home-ink)]">{launch.name}</span>
-          <span className="text-3xs uppercase tracking-[0.06em] text-[var(--home-ink-muted)]">
+          <span className="font-medium text-[var(--c97-ink)]">{launch.name}</span>
+          <span className="text-3xs uppercase tracking-[0.06em] text-[var(--c97-ink-2)]">
             {shortCode(launch.rocketName)}
           </span>
           <span
             className="inline-flex items-center gap-1.5 text-3xs font-semibold uppercase tracking-[0.08em]"
-            style={{ color: launch.success ? "var(--home-positive)" : "var(--home-negative)" }}
+            style={{ color: launch.success ? "var(--c97-positive)" : "var(--c97-negative)" }}
           >
-            <span aria-hidden="true" className="h-1.5 w-1.5 rounded-full bg-current" />
+            <span aria-hidden="true" className="h-1.5 w-1.5 bg-current" />
             {launch.success ? "OK" : "Fail"}
           </span>
         </>
@@ -56,11 +56,11 @@ export function MissionLaunchTape({ recentLaunches, upcomingLaunches }: MissionL
       key: `upcoming-${launch.id}`,
       content: (
         <>
-          <span className="text-[var(--home-ink-muted)]">{launch.name}</span>
-          <span className="text-3xs uppercase tracking-[0.06em] text-[var(--home-ink-muted)]">
+          <span className="text-[var(--c97-ink-2)]">{launch.name}</span>
+          <span className="text-3xs uppercase tracking-[0.06em] text-[var(--c97-ink-2)]">
             {shortCode(launch.rocketName)}
           </span>
-          <span className="text-3xs text-[color-mix(in_srgb,var(--home-ink-muted)_72%,var(--home-ink))]">
+          <span className="text-3xs text-[color-mix(in_srgb,var(--c97-ink-2)_72%,var(--c97-ink))]">
             {launch.hasExactTime ? SCHEDULE_FORMATTER.format(new Date(launch.dateUtc)) : "TBD"}
           </span>
         </>
@@ -71,20 +71,20 @@ export function MissionLaunchTape({ recentLaunches, upcomingLaunches }: MissionL
   return (
     <section
       aria-label="Launch tape"
-      className="overflow-hidden rounded-[var(--radius-3xl)] border border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper-alt)_62%,var(--home-paper))]"
+      className="overflow-hidden border border-[var(--c97-rule)] bg-[color-mix(in_srgb,var(--c97-field)_62%,var(--c97-surface))]"
     >
       <InstrumentTape
         className="px-3"
         ariaLabel="Recent launch outcomes and upcoming launch windows"
         label={
           <span className="inline-flex items-center gap-2">
-            <span aria-hidden="true" className="h-1.5 w-1.5 rounded-full bg-[var(--home-signal)]" />
+            <span aria-hidden="true" className="h-1.5 w-1.5 bg-[var(--c97-accent)]" />
             {latestFlightNumber ? `Latest · Flight ${latestFlightNumber}` : "Launch tape"}
           </span>
         }
         items={items}
         emptyFallback={
-          <p className="px-4 py-3.5 text-sm text-[var(--home-ink-muted)]">
+          <p className="px-4 py-3.5 text-sm text-[var(--c97-ink-2)]">
             No recent outcomes or upcoming windows are available from the current snapshot.
           </p>
         }

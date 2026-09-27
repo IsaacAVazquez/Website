@@ -1,4 +1,4 @@
-import { fireEvent, render, screen, within } from "@testing-library/react";
+import { fireEvent, render, screen } from "@testing-library/react";
 import type { FrontierModel } from "@/types/frontierModels";
 import { frontierModelsSnapshot } from "@/data/frontierModelsSnapshot";
 import { FrontierModelsClient } from "../frontier-models-client";
@@ -59,7 +59,7 @@ describe("FrontierModelsClient", () => {
     mockReplace.mockReset();
   });
 
-  it("renders the model tracker and navigates filter/view changes", () => {
+  it("renders the model tracker with the chart in the hero and navigates filter changes", () => {
     render(
       <FrontierModelsClient
         initialState={DEFAULT_FRONTIER_MODELS_STATE}
@@ -70,20 +70,11 @@ describe("FrontierModelsClient", () => {
     expect(
       screen.getByRole("heading", { level: 1, name: /frontier model tracker/i })
     ).toBeVisible();
+    expect(screen.getByTestId("frontier-chart")).toBeVisible();
     expect(screen.getByTestId("frontier-table")).toBeVisible();
 
     fireEvent.click(screen.getByRole("button", { name: /OpenAI/ }));
     expect(mockPush).toHaveBeenLastCalledWith("/frontier-models?provider=openai", {
-      scroll: false,
-    });
-
-    fireEvent.click(
-      within(screen.getByRole("tablist", { name: "Frontier model view" })).getByRole(
-        "tab",
-        { name: "Chart" }
-      )
-    );
-    expect(mockPush).toHaveBeenLastCalledWith("/frontier-models?view=chart", {
       scroll: false,
     });
   });
