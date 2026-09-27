@@ -85,6 +85,7 @@ function laterRoundGame(
   matchup: MatchupLike | undefined,
   seeds: Map<string, number>,
   feederY: [number, number] | null,
+  totalInRound: number,
   note?: string
 ): BracketGame {
   const t1 = matchup?.t1 ?? "";
@@ -96,7 +97,12 @@ function laterRoundGame(
   return {
     round,
     index,
-    y: feederY ? (feederY[0] + feederY[1]) / 2 : index + 0.5,
+    // `y` is a fraction (0..1) of the region's full bracket height (see
+    // BracketGame.y). When the previous round is missing this game's feeder
+    // pair (a malformed round), fall back to an even fractional spacing
+    // rather than a raw `index + 0.5`, which is only in range for the first
+    // game and pushes every later one far below the chart.
+    y: feederY ? (feederY[0] + feederY[1]) / 2 : (index + 0.5) / Math.max(totalInRound, 1),
     slots: [
       { name: t1, seed: seed1 },
       { name: t2, seed: seed2 },
@@ -143,17 +149,19 @@ export function regionBracket(data: RegionData | null | undefined): RegionBracke
     };
   });
 
-  const r2Games: BracketGame[] = asArray(data?.r2).map((game, index) =>
-    laterRoundGame("r2", index, game, seeds, feederYOf(r1Games, index))
+  const r2Source = asArray(data?.r2);
+  const r2Games: BracketGame[] = r2Source.map((game, index) =>
+    laterRoundGame("r2", index, game, seeds, feederYOf(r1Games, index), r2Source.length)
   );
 
-  const s16Games: BracketGame[] = asArray(data?.s16).map((game, index) =>
-    laterRoundGame("s16", index, game, seeds, feederYOf(r2Games, index))
+  const s16Source = asArray(data?.s16);
+  const s16Games: BracketGame[] = s16Source.map((game, index) =>
+    laterRoundGame("s16", index, game, seeds, feederYOf(r2Games, index), s16Source.length)
   );
 
   const e8Source = data?.e8;
   const e8Games: BracketGame[] = e8Source
-    ? [laterRoundGame("e8", 0, e8Source, seeds, feederYOf(s16Games, 0), e8Source.note)]
+    ? [laterRoundGame("e8", 0, e8Source, seeds, feederYOf(s16Games, 0), 1, e8Source.note)]
     : [];
 
   return {

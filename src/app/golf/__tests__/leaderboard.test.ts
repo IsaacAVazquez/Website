@@ -73,6 +73,27 @@ describe("leaderboardSlats", () => {
     expect(slat.totalTone).toBe("over");
   });
 
+  it("tones a mid-round snapshot's in-progress round from the live to-par stat, not the full course par", () => {
+    // Thru 9 holes at 34 strokes: -38 against a par-71 full round would be a
+    // false deep-red reading. -2 (today) is the real, broadcast-correct tone.
+    const [slat] = leaderboardSlats(
+      [
+        entry({
+          roundScores: [70, 70, 34],
+          thru: "9",
+          today: -2,
+          totalToPar: -3,
+        }),
+      ],
+      OPTS
+    ).slats;
+
+    expect(slat.rounds[0]).toEqual({ score: 70, toPar: -1, tone: "under" });
+    expect(slat.rounds[1]).toEqual({ score: 70, toPar: -1, tone: "under" });
+    expect(slat.rounds[2]).toEqual({ score: 34, toPar: -2, tone: "under" });
+    expect(slat.rounds[3]).toEqual({ score: null, toPar: null, tone: null });
+  });
+
   it("draws the cut line after the last player whose status made the cut", () => {
     const { cutIndex, slats } = leaderboardSlats(
       [

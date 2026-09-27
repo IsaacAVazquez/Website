@@ -1,10 +1,14 @@
 import { SurfaceCard } from "./SurfaceCard";
 import { FixtureCard, type GenericFixture } from "./FixtureCard";
+import { DISPLAY_TIME_ZONE } from "@/lib/date-formatters";
 
+// fixture.utcDate is a kickoff instant, grouped by its calendar day in the
+// display zone so the grouping matches the kickoff time shown on each card.
 const DATE_FORMATTER = new Intl.DateTimeFormat("en-US", {
   weekday: "short",
   month: "short",
   day: "numeric",
+  timeZone: DISPLAY_TIME_ZONE,
 });
 
 function formatFixtureDate(utcDate: string): string {

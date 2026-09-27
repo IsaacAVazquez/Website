@@ -37,6 +37,7 @@ import { PROJECT_PRESS } from "@/constants/projectPress";
 import { bracketTree } from "./bracketTree";
 import { WorldCupBracket } from "./WorldCupBracket";
 import "./world-cup.css";
+import { DATE_ONLY_TIME_ZONE, DISPLAY_TIME_ZONE } from "@/lib/date-formatters";
 
 interface WorldCupClientProps {
   initialState: WorldCupRouteState;
@@ -73,7 +74,7 @@ function formatLongDate(iso: string): string {
     month: "long",
     day: "numeric",
     year: "numeric",
-    timeZone: "UTC",
+    timeZone: DATE_ONLY_TIME_ZONE,
   }).format(date);
 }
 
@@ -86,7 +87,7 @@ function formatTournamentWindow(start: string, end: string): string {
   const startLabel = new Intl.DateTimeFormat("en-US", {
     month: "long",
     day: "numeric",
-    timeZone: "UTC",
+    timeZone: DATE_ONLY_TIME_ZONE,
   }).format(startDate);
   return `${startLabel} to ${formatLongDate(end)}`;
 }
@@ -263,11 +264,13 @@ export function WorldCupClient({
 
   const snapshotDateLabel = useMemo(
     () =>
+      // tournament.generatedAt is a full ISO instant, so it reads in the
+      // display zone rather than UTC.
       new Intl.DateTimeFormat("en-US", {
         month: "short",
         day: "numeric",
         year: "numeric",
-        timeZone: "UTC",
+        timeZone: DISPLAY_TIME_ZONE,
       }).format(new Date(tournament.generatedAt)),
     [tournament]
   );

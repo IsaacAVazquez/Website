@@ -48,11 +48,3 @@
 .c97-golf-card[aria-current="true"] {
   box-shadow: inset 4px 0 0 0 var(--c97-ink);
 }
-
-/* The hero board scrolls inside its own plate rather than the page; the full
- * field below keeps every round column at every width. */
-@media (max-width: 639px) {
-  .c97-golf-table {
-    min-width: 26rem;
-  }
-}
