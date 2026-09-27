@@ -266,6 +266,7 @@ body:has(.c97-page) {
   --c97-accent: #6e2b36;
   --c97-rule: rgba(43, 33, 26, 0.18);
   --c97-field: #e4dbc9;
+  --c97-panel: #e4dbc9;
   --c97-positive: #1b4d2c;
   --c97-negative: #7a1c1c;
   --c97-warning: #5c3600;
@@ -280,6 +281,7 @@ body:has(.c97-page) {
   --c97-accent: #6e2b36;
   --c97-rule: rgba(43, 33, 26, 0.2);
   --c97-field: #f1ebdf;
+  --c97-panel: #f1ebdf;
   --c97-positive: #1b4d2c;
   --c97-negative: #7a1c1c;
   --c97-warning: #5c3600;
@@ -306,6 +308,7 @@ body:has(.c97-page) {
   --c97-accent: #2b211a;
   --c97-rule: rgba(43, 33, 26, 0.3);
   --c97-field: #f1ebdf;
+  --c97-panel: #f1ebdf;
   --c97-positive: #1b4d2c;
   --c97-negative: #7a1c1c;
   --c97-warning: #5c3600;
@@ -320,6 +323,7 @@ body:has(.c97-page) {
   --c97-accent: #6e2b36;
   --c97-rule: rgba(43, 33, 26, 0.26);
   --c97-field: #f1ebdf;
+  --c97-panel: #f1ebdf;
   --c97-positive: #1b4d2c;
   --c97-negative: #7a1c1c;
   --c97-warning: #5c3600;
@@ -339,6 +343,7 @@ body:has(.c97-page) {
   --c97-accent: #17110d;
   --c97-rule: rgba(23, 17, 13, 0.32);
   --c97-field: #f1ebdf;
+  --c97-panel: #f1ebdf;
   --c97-positive: #17110d;
   --c97-negative: #17110d;
   --c97-warning: #17110d;
@@ -354,6 +359,7 @@ body:has(.c97-page) {
   --c97-accent: #d9b487;
   --c97-rule: rgba(241, 235, 223, 0.24);
   --c97-field: #f1ebdf;
+  --c97-panel: #3a2b1f;
   --c97-positive: #a8e0b4;
   --c97-negative: #fbcdc7;
   --c97-warning: #f5cf7a;
@@ -368,6 +374,7 @@ body:has(.c97-page) {
   --c97-accent: #edb722;
   --c97-rule: rgba(241, 235, 223, 0.24);
   --c97-field: #e4dbc9;
+  --c97-panel: #0f2a73;
   --c97-positive: #a8e0b4;
   --c97-negative: #fbcdc7;
   --c97-warning: #f5cf7a;
@@ -387,6 +394,7 @@ body:has(.c97-page) {
   --c97-accent: #17110d;
   --c97-rule: rgba(23, 17, 13, 0.32);
   --c97-field: #f1ebdf;
+  --c97-panel: #f1ebdf;
   --c97-positive: #17110d;
   --c97-negative: #17110d;
   --c97-warning: #17110d;
@@ -401,6 +409,7 @@ body:has(.c97-page) {
   --c97-accent: #17110d;
   --c97-rule: rgba(23, 17, 13, 0.32);
   --c97-field: #f1ebdf;
+  --c97-panel: #f1ebdf;
   --c97-positive: #17110d;
   --c97-negative: #17110d;
   --c97-warning: #17110d;
@@ -421,6 +430,7 @@ body:has(.c97-page) {
   --c97-accent: #f1ebdf;
   --c97-rule: rgba(241, 235, 223, 0.26);
   --c97-field: #e4dbc9;
+  --c97-panel: #034a4e;
   --c97-positive: #f1ebdf;
   --c97-negative: #f1ebdf;
   --c97-warning: #f1ebdf;
@@ -435,6 +445,7 @@ body:has(.c97-page) {
   --c97-accent: #c09461;
   --c97-rule: rgba(241, 235, 223, 0.18);
   --c97-field: #e4dbc9;
+  --c97-panel: #3a2d23;
   --c97-positive: #a8e0b4;
   --c97-negative: #fbcdc7;
   --c97-warning: #f5cf7a;
@@ -450,6 +461,7 @@ body:has(.c97-page) {
   --c97-accent: #2b211a;
   --c97-rule: rgba(43, 33, 26, 0.28);
   --c97-field: #f1ebdf;
+  --c97-panel: #f1ebdf;
   --c97-positive: #1b4d2c;
   --c97-negative: #7a1c1c;
   --c97-warning: #5c3600;
@@ -531,6 +543,7 @@ body:has(.c97-page) {
   --c97-accent: #c2707c;
   --c97-rule: rgba(241, 235, 223, 0.16);
   --c97-field: #241d16;
+  --c97-panel: #241d16;
   --c97-positive: #a8e0b4;
   --c97-negative: #fbcdc7;
   --c97-warning: #f5cf7a;
@@ -545,6 +558,7 @@ body:has(.c97-page) {
   --c97-accent: #c2707c;
   --c97-rule: rgba(241, 235, 223, 0.18);
   --c97-field: #14100c;
+  --c97-panel: #14100c;
   --c97-positive: #a8e0b4;
   --c97-negative: #fbcdc7;
   --c97-warning: #f5cf7a;
@@ -560,6 +574,7 @@ body:has(.c97-page) {
   --c97-accent: #17110d;
   --c97-rule: rgba(23, 17, 13, 0.3);
   --c97-field: #1e1811;
+  --c97-panel: #dcae45;
   --c97-positive: #17110d;
   --c97-negative: #17110d;
   --c97-warning: #17110d;
@@ -574,6 +589,7 @@ body:has(.c97-page) {
   --c97-accent: #17110d;
   --c97-rule: rgba(23, 17, 13, 0.3);
   --c97-field: #1e1811;
+  --c97-panel: #d9a283;
   --c97-positive: #17110d;
   --c97-negative: #17110d;
   --c97-warning: #17110d;
@@ -588,6 +604,7 @@ body:has(.c97-page) {
   --c97-accent: #f7f2e8;
   --c97-rule: rgba(247, 242, 232, 0.26);
   --c97-field: #1e1811;
+  --c97-panel: #1e1811;
   --c97-positive: #f7f2e8;
   --c97-negative: #f7f2e8;
   --c97-warning: #f7f2e8;
@@ -602,6 +619,7 @@ body:has(.c97-page) {
   --c97-accent: #d9b487;
   --c97-rule: rgba(241, 235, 223, 0.2);
   --c97-field: #1e1811;
+  --c97-panel: #2b2017;
   --c97-positive: #a8e0b4;
   --c97-negative: #fbcdc7;
   --c97-warning: #f5cf7a;
@@ -616,6 +634,7 @@ body:has(.c97-page) {
   --c97-accent: #edb722;
   --c97-rule: rgba(241, 235, 223, 0.2);
   --c97-field: #14100c;
+  --c97-panel: #061d57;
   --c97-positive: #a8e0b4;
   --c97-negative: #fbcdc7;
   --c97-warning: #f5cf7a;
@@ -631,6 +650,7 @@ body:has(.c97-page) {
   --c97-accent: #f7f2e8;
   --c97-rule: rgba(247, 242, 232, 0.26);
   --c97-field: #1e1811;
+  --c97-panel: #1e1811;
   --c97-positive: #f7f2e8;
   --c97-negative: #f7f2e8;
   --c97-warning: #f7f2e8;
@@ -645,6 +665,7 @@ body:has(.c97-page) {
   --c97-accent: #f7f2e8;
   --c97-rule: rgba(247, 242, 232, 0.26);
   --c97-field: #1e1811;
+  --c97-panel: #08474b;
   --c97-positive: #f7f2e8;
   --c97-negative: #f7f2e8;
   --c97-warning: #f7f2e8;
@@ -659,6 +680,7 @@ body:has(.c97-page) {
   --c97-accent: #f7f2e8;
   --c97-rule: rgba(247, 242, 232, 0.26);
   --c97-field: #1e1811;
+  --c97-panel: #1e1811;
   --c97-positive: #f7f2e8;
   --c97-negative: #f7f2e8;
   --c97-warning: #f7f2e8;
@@ -673,6 +695,7 @@ body:has(.c97-page) {
   --c97-accent: #d9b487;
   --c97-rule: rgba(241, 235, 223, 0.16);
   --c97-field: #1e1811;
+  --c97-panel: #1e1811;
   --c97-positive: #a8e0b4;
   --c97-negative: #fbcdc7;
   --c97-warning: #f5cf7a;
@@ -688,6 +711,7 @@ body:has(.c97-page) {
   --c97-accent: #f7e6cd;
   --c97-rule: rgba(247, 242, 232, 0.26);
   --c97-field: #1e1811;
+  --c97-panel: #1e1811;
   --c97-positive: #a8e0b4;
   --c97-negative: #fbcdc7;
   --c97-warning: #f5cf7a;
@@ -1536,11 +1560,15 @@ select.c97-field {
 
 /*
  * A raised card, drawer, or sidebar. In this language elevation is a surface
- * change, so a panel is the field tint with no border and no shadow. Set
- * data-c97-surface on it instead when it needs its own ink.
+ * change, so a panel is a tint of its sheet with no border and no shadow.
+ * --c97-panel is the field tint on the dark-ink sheets and a darker tint of
+ * the sheet on blue, teal, espresso, and chocolate, where the field is pale
+ * under a pale ink (1.16:1). Every sheet's ink, ink-2, and label clear 4.5:1
+ * on it, held by catalog97-inks.test.ts. Set data-c97-surface on a panel
+ * instead when it needs its own ink.
  */
 .c97-panel {
-  background: var(--c97-field);
+  background: var(--c97-panel);
   padding: var(--c97-sp-3);
 }
 
