@@ -22,7 +22,7 @@ function verdictCopy(
     return {
       title: "Build both sides",
       body: "Add at least one player to each package to see an estimate.",
-      tone: "var(--home-ink-muted)",
+      tone: "var(--c97-ink-2)",
     };
   }
   switch (result?.verdict) {
@@ -32,37 +32,37 @@ function verdictCopy(
       return {
         title: "Balanced offer",
         body: "The central values are within 5% of each other.",
-        tone: "var(--home-ink)",
+        tone: "var(--c97-ink)",
       };
     case "leans-side-a":
       return {
         title: "You are giving more",
         body: "The central estimate leans toward the package you would send.",
-        tone: "var(--home-negative)",
+        tone: "var(--c97-negative)",
       };
     case "leans-side-b":
       return {
         title: "Leans your way",
         body: "The central estimate leans toward the package you would receive.",
-        tone: "var(--home-positive)",
+        tone: "var(--c97-positive)",
       };
     case "clear-edge-side-a":
       return {
         title: "Clear edge to the other side",
         body: "The sensitivity ranges do not overlap, and the package you send is higher.",
-        tone: "var(--home-negative)",
+        tone: "var(--c97-negative)",
       };
     case "clear-edge-side-b":
       return {
         title: "Clear edge your way",
         body: "The sensitivity ranges do not overlap, and the package you receive is higher.",
-        tone: "var(--home-positive)",
+        tone: "var(--c97-positive)",
       };
     default:
       return {
         title: "Verdict withheld",
         body: "The available inputs are too old, incomplete, or unsupported for a verdict.",
-        tone: "var(--home-warning)",
+        tone: "var(--c97-warning)",
       };
   }
 }
@@ -85,10 +85,10 @@ export function TradeVerdictStrip({
   return (
     <div
       data-testid="trade-verdict-strip"
-      className="sticky top-0 z-20 flex items-center justify-between gap-3 rounded-[var(--radius-xl)] border px-3 py-1.5 lg:hidden"
+      className="sticky top-0 z-20 flex items-center justify-between gap-3 border px-3 py-1.5 lg:hidden"
       style={{
-        borderColor: "var(--home-rule)",
-        background: "var(--home-paper-raised)",
+        borderColor: "var(--c97-rule)",
+        background: "var(--c97-field)",
         boxShadow: "var(--shadow-sm)",
       }}
     >
@@ -96,13 +96,13 @@ export function TradeVerdictStrip({
         <p className="truncate text-sm font-semibold tracking-[-0.02em]" style={{ color: copy.tone }}>
           {copy.title}
         </p>
-        <p className="font-mono text-3xs uppercase tracking-[0.1em] text-[var(--home-ink-muted)]">
+        <p className="font-mono text-3xs uppercase tracking-[0.1em] text-[var(--c97-ink-2)]">
           {result.coverage} coverage
         </p>
       </div>
       <a
         href="#trade-evaluation"
-        className="inline-flex min-h-touch shrink-0 items-center rounded-full border border-[var(--home-rule)] bg-[var(--home-paper)] px-3 text-xs font-semibold text-[var(--home-ink)] transition-[border-color,background-color] hover:border-[var(--home-signal)]"
+        className="inline-flex min-h-touch shrink-0 items-center border border-[var(--c97-rule)] bg-[var(--c97-surface)] px-3 text-xs font-semibold text-[var(--c97-ink)] transition-[border-color,background-color] hover:border-[var(--c97-accent)]"
       >
         Evidence
       </a>
@@ -115,25 +115,25 @@ function coverageStyle(coverage: FantasyTradeCoverage | null) {
   // belongs to a result that actually carries a coverage warning.
   if (coverage === null) {
     return {
-      borderColor: "var(--home-rule)",
-      background: "var(--home-paper)",
+      borderColor: "var(--c97-rule)",
+      background: "var(--c97-surface)",
     };
   }
   if (coverage === "supported") {
     return {
-      borderColor: "color-mix(in srgb, var(--home-positive) 35%, var(--home-rule))",
-      background: "color-mix(in srgb, var(--home-positive) 10%, var(--home-paper))",
+      borderColor: "color-mix(in srgb, var(--c97-positive) 35%, var(--c97-rule))",
+      background: "color-mix(in srgb, var(--c97-positive) 10%, var(--c97-surface))",
     };
   }
   if (coverage === "insufficient") {
     return {
-      borderColor: "color-mix(in srgb, var(--home-negative) 35%, var(--home-rule))",
-      background: "color-mix(in srgb, var(--home-negative) 8%, var(--home-paper))",
+      borderColor: "color-mix(in srgb, var(--c97-negative) 35%, var(--c97-rule))",
+      background: "color-mix(in srgb, var(--c97-negative) 8%, var(--c97-surface))",
     };
   }
   return {
-    borderColor: "color-mix(in srgb, var(--home-warning) 35%, var(--home-rule))",
-    background: "color-mix(in srgb, var(--home-warning) 9%, var(--home-paper))",
+    borderColor: "color-mix(in srgb, var(--c97-warning) 35%, var(--c97-rule))",
+    background: "color-mix(in srgb, var(--c97-warning) 9%, var(--c97-surface))",
   };
 }
 
@@ -152,13 +152,13 @@ function ValueReadout({
 }) {
   return (
     <div>
-      <dt className="font-mono text-3xs uppercase tracking-[0.12em] text-[var(--home-ink-muted)]">
+      <dt className="font-mono text-3xs uppercase tracking-[0.12em] text-[var(--c97-ink-2)]">
         {label}
       </dt>
-      <dd className="mt-1 font-mono text-xl tabular-nums text-[var(--home-ink)]">
+      <dd className="mt-1 font-mono text-xl tabular-nums text-[var(--c97-ink)]">
         {valuesAvailable ? formatIndex(side?.value) : "--"}
       </dd>
-      <dd className="mt-0.5 text-2xs text-[var(--home-ink-muted)]">
+      <dd className="mt-0.5 text-2xs text-[var(--c97-ink-2)]">
         {valuesAvailable && side
           ? `${formatIndex(side.range.low)} to ${formatIndex(side.range.high)}`
           : "Sensitivity unavailable"}
@@ -200,15 +200,15 @@ export function TradeResultRail({
     <aside
       id="trade-evaluation"
       aria-label="Trade evaluation"
-      className="scroll-mt-24 rounded-[var(--radius-3xl)] border border-[var(--home-rule)] bg-[var(--home-paper-alt)] p-4 lg:sticky lg:top-0 lg:self-start"
+      className="scroll-mt-24 border border-[var(--c97-rule)] bg-[var(--c97-field)] p-4 lg:sticky lg:top-0 lg:self-start"
     >
-      <div className="flex items-center justify-between gap-3 border-b border-[var(--home-rule)] pb-3">
-        <span className="inline-flex items-center gap-2 font-mono text-2xs uppercase tracking-[0.12em] text-[var(--home-ink-muted)]">
+      <div className="flex items-center justify-between gap-3 border-b border-[var(--c97-rule)] pb-3">
+        <span className="inline-flex items-center gap-2 font-mono text-2xs uppercase tracking-[0.12em] text-[var(--c97-ink-2)]">
           <Scale className="h-4 w-4" aria-hidden="true" />
           Evaluation
         </span>
         <span
-          className="rounded-full border px-2.5 py-1 font-mono text-3xs uppercase tracking-[0.1em] text-[var(--home-ink)]"
+          className="border px-2.5 py-1 font-mono text-3xs uppercase tracking-[0.1em] text-[var(--c97-ink)]"
           style={coverageStyle(coverage)}
         >
           {coverage ? `${coverage} coverage` : "Waiting"}
@@ -219,10 +219,10 @@ export function TradeResultRail({
         <p className="text-xl font-semibold tracking-[-0.03em]" style={{ color: copy.tone }}>
           {copy.title}
         </p>
-        <p className="mt-1 text-sm leading-6 text-[var(--home-ink-muted)]">{copy.body}</p>
+        <p className="mt-1 text-sm leading-6 text-[var(--c97-ink-2)]">{copy.body}</p>
       </div>
 
-      <div className="mt-4 border-y border-[var(--home-rule)] py-3">
+      <div className="mt-4 border-y border-[var(--c97-rule)] py-3">
         <TradeBalanceScale result={hasBothSides ? result : null} />
       </div>
 
@@ -231,35 +231,35 @@ export function TradeResultRail({
         <ValueReadout label="You get" side={result?.sideB ?? null} valuesAvailable={valuesAvailable} />
       </dl>
 
-      <div className="mt-5 border-t border-[var(--home-rule)] pt-4">
-        <h2 className="text-sm font-semibold text-[var(--home-ink)]">Evidence mix</h2>
+      <div className="mt-5 border-t border-[var(--c97-rule)] pt-4">
+        <h2 className="text-sm font-semibold text-[var(--c97-ink)]">Evidence mix</h2>
         <dl className="mt-3 grid gap-3 text-sm">
           <div className="flex items-start justify-between gap-3">
-            <dt className="inline-flex items-center text-[var(--home-ink-muted)]">
+            <dt className="inline-flex items-center text-[var(--c97-ink-2)]">
               Expert consensus
               <MetricTooltip
                 term="Expert consensus"
                 definition="Aggregate preseason expert rankings on the overall board. This is not a named creator model or a points projection."
               />
             </dt>
-            <dd className="text-right font-mono text-2xs text-[var(--home-ink)]">
+            <dd className="text-right font-mono text-2xs text-[var(--c97-ink)]">
               {expertPlayers}/{totalPlayers || 0}
-              <span className="mt-0.5 block text-[var(--home-ink-muted)]">
+              <span className="mt-0.5 block text-[var(--c97-ink-2)]">
                 {result ? formatUpdatedAt(result.sources.expert.asOf) : "Waiting for players"}
               </span>
             </dd>
           </div>
           <div className="flex items-start justify-between gap-3">
-            <dt className="inline-flex items-center text-[var(--home-ink-muted)]">
+            <dt className="inline-flex items-center text-[var(--c97-ink-2)]">
               Draft market
               <MetricTooltip
                 term="Draft market"
                 definition="Current mock-draft average position. It is a preseason price signal, not a database of completed trades."
               />
             </dt>
-            <dd className="text-right font-mono text-2xs text-[var(--home-ink)]">
+            <dd className="text-right font-mono text-2xs text-[var(--c97-ink)]">
               {marketPlayers}/{totalPlayers || 0}
-              <span className="mt-0.5 block text-[var(--home-ink-muted)]">
+              <span className="mt-0.5 block text-[var(--c97-ink-2)]">
                 {/* "Not current" is a staleness claim, so it waits for an
                     evaluated result that actually found the market unusable.
                     Before that the header already carries the source date. */}
@@ -272,10 +272,10 @@ export function TradeResultRail({
             </dd>
           </div>
           <div className="flex items-start justify-between gap-3">
-            <dt className="text-[var(--home-ink-muted)]">League fit</dt>
-            <dd className="text-right font-mono text-2xs text-[var(--home-ink)]">
+            <dt className="text-[var(--c97-ink-2)]">League fit</dt>
+            <dd className="text-right font-mono text-2xs text-[var(--c97-ink)]">
               {result ? `${result.league.teams} teams` : "--"}
-              <span className="mt-0.5 block text-[var(--home-ink-muted)]">
+              <span className="mt-0.5 block text-[var(--c97-ink-2)]">
                 {result ? `${result.league.rosterSize} roster spots` : "Set your league"}
               </span>
             </dd>
@@ -283,11 +283,11 @@ export function TradeResultRail({
         </dl>
       </div>
 
-      <div className="mt-4 border-t border-[var(--home-rule)] pt-4">
-        <p className="font-mono text-3xs uppercase tracking-[0.12em] text-[var(--home-ink-muted)]">
+      <div className="mt-4 border-t border-[var(--c97-rule)] pt-4">
+        <p className="font-mono text-3xs uppercase tracking-[0.12em] text-[var(--c97-ink-2)]">
           Roster-slot effect
         </p>
-        <p className="mt-1 text-sm leading-6 text-[var(--home-ink)]">
+        <p className="mt-1 text-sm leading-6 text-[var(--c97-ink)]">
           {rosterDelta > 0
             ? `Receiving ${rosterDelta} extra ${rosterDelta === 1 ? "player" : "players"} assumes the same number of replacement-level cuts.`
             : rosterDelta < 0
@@ -296,11 +296,11 @@ export function TradeResultRail({
         </p>
       </div>
 
-      <div className="mt-4 border-y border-[var(--home-rule)]">
+      <div className="mt-4 border-y border-[var(--c97-rule)]">
         {warnings.length > 0 ? (
           <details>
-            <summary className="flex min-h-touch cursor-pointer list-none items-center gap-2 text-sm font-semibold text-[var(--home-ink)] marker:content-none">
-              <AlertTriangle className="h-4 w-4 shrink-0 text-[var(--home-warning)]" aria-hidden="true" />
+            <summary className="flex min-h-touch cursor-pointer list-none items-center gap-2 text-sm font-semibold text-[var(--c97-ink)] marker:content-none">
+              <AlertTriangle className="h-4 w-4 shrink-0 text-[var(--c97-warning)]" aria-hidden="true" />
               {/* The panel mixes top-level and per-player notes, so its title
                   must match the coverage chip above it instead of asserting
                   "limited" beside a supported or insufficient result. */}
@@ -310,12 +310,12 @@ export function TradeResultRail({
                   ? "Why coverage is limited"
                   : "Notes on this result"}
             </summary>
-            <ul className="grid gap-2 pb-3 pl-1 text-xs leading-5 text-[var(--home-ink-muted)]">
+            <ul className="grid gap-2 pb-3 pl-1 text-xs leading-5 text-[var(--c97-ink-2)]">
               {warnings.map((warning) => (
                 <li key={warning} className="flex gap-2">
                   <span
                     aria-hidden="true"
-                    className="mt-[0.45rem] h-1 w-1 shrink-0 rounded-full bg-[var(--home-warning)]"
+                    className="mt-[0.45rem] h-1 w-1 shrink-0 bg-[var(--c97-warning)]"
                   />
                   <span>{warning}</span>
                 </li>
@@ -323,27 +323,27 @@ export function TradeResultRail({
             </ul>
           </details>
         ) : hasBothSides ? (
-          <p className="flex min-h-touch items-center gap-2 text-xs leading-5 text-[var(--home-ink-muted)]">
-            <Check className="h-3.5 w-3.5 shrink-0 text-[var(--home-positive)]" aria-hidden="true" />
+          <p className="flex min-h-touch items-center gap-2 text-xs leading-5 text-[var(--c97-ink-2)]">
+            <Check className="h-3.5 w-3.5 shrink-0 text-[var(--c97-positive)]" aria-hidden="true" />
             Both sources cover every selected player and the sensitivity range is available.
           </p>
         ) : null}
 
         <details
-          className={warnings.length > 0 || hasBothSides ? "border-t border-[var(--home-rule)]" : undefined}
+          className={warnings.length > 0 || hasBothSides ? "border-t border-[var(--c97-rule)]" : undefined}
         >
-          <summary className="flex min-h-touch cursor-pointer list-none items-center gap-2 text-sm font-semibold text-[var(--home-ink)] marker:content-none">
-            <Info className="h-4 w-4 shrink-0 text-[var(--home-ink-muted)]" aria-hidden="true" />
+          <summary className="flex min-h-touch cursor-pointer list-none items-center gap-2 text-sm font-semibold text-[var(--c97-ink)] marker:content-none">
+            <Info className="h-4 w-4 shrink-0 text-[var(--c97-ink-2)]" aria-hidden="true" />
             How the estimate works
           </summary>
-          <div className="pb-3 text-xs leading-5 text-[var(--home-ink-muted)]">
+          <div className="pb-3 text-xs leading-5 text-[var(--c97-ink-2)]">
             <p>
               Overall expert rank and reliable current ADP are converted into a replacement-relative index for this league size and lineup. Source spreads create the sensitivity range.
             </p>
             <p
               className="mt-2 text-sm leading-6"
               style={{
-                fontFamily: "var(--font-home-serif)",
+                fontFamily: "var(--c97-font-display)",
                 fontStyle: "italic",
                 fontWeight: 400,
               }}

@@ -24,18 +24,18 @@ function defaultTeamName(teamNumber: number): string {
 }
 
 const STEAL_CHIP_STYLE = {
-  borderColor: "color-mix(in srgb, var(--home-positive) 28%, var(--home-rule))",
-  background: "color-mix(in srgb, var(--home-positive) 10%, var(--home-paper))",
+  borderColor: "color-mix(in srgb, var(--c97-positive) 28%, var(--c97-rule))",
+  background: "color-mix(in srgb, var(--c97-positive) 10%, var(--c97-surface))",
 } as const;
 
 const REACH_CHIP_STYLE = {
-  borderColor: "color-mix(in srgb, var(--home-warning) 30%, var(--home-rule))",
-  background: "color-mix(in srgb, var(--home-warning) 12%, var(--home-paper))",
+  borderColor: "color-mix(in srgb, var(--c97-warning) 30%, var(--c97-rule))",
+  background: "color-mix(in srgb, var(--c97-warning) 12%, var(--c97-surface))",
 } as const;
 
 const PANEL_TILE_STYLE = {
-  borderColor: "var(--home-rule)",
-  background: "color-mix(in srgb, var(--home-paper-alt) 55%, var(--home-elev-mix))",
+  borderColor: "var(--c97-rule)",
+  background: "color-mix(in srgb, var(--c97-field) 55%, var(--c97-field))",
 } as const;
 
 function formatDelta(delta: number): string {
@@ -70,7 +70,7 @@ function PickValueRow({
   const delta = getPickDelta(pick) ?? 0;
 
   return (
-    <div className="rounded-[var(--radius-3xl)] border px-4 py-3" style={PANEL_TILE_STYLE}>
+    <div className="border px-4 py-3" style={PANEL_TILE_STYLE}>
       <div className="flex flex-wrap items-center gap-2">
         <p className="text-sm font-semibold">{pick.player.name}</p>
         <span className={FANTASY_CHIP_CLASS} style={getPositionTone(pick.player.position)}>
@@ -83,7 +83,7 @@ function PickValueRow({
           {label} {formatDelta(delta)}
         </span>
       </div>
-      <p className="mt-1 text-xs" style={{ color: "var(--home-ink-muted)" }}>
+      <p className="mt-1 text-xs" style={{ color: "var(--c97-ink-2)" }}>
         {teamName} • Pick {pick.pickNumber} • Round {pick.round}
       </p>
     </div>
@@ -113,11 +113,11 @@ export function DraftAnalyticsPanel({
     const showEmerging = emergingRun && (!activeRun || activeRun.position !== emergingRun.position);
 
     return (
-      <article className="home-card p-5 sm:p-6">
-        <p className="home-kicker mb-1">Draft signals</p>
+      <article className="c97-panel p-5 sm:p-6">
+        <p className="c97-kicker mb-1">Draft signals</p>
         <div className="mt-3 grid gap-3">
           {latestFlaggedPick === null && activeRun === null && !showEmerging ? (
-            <p className="text-sm leading-6" style={{ color: "var(--home-ink-muted)" }}>
+            <p className="text-sm leading-6" style={{ color: "var(--c97-ink-2)" }}>
               Nothing unusual yet. Steals, reaches, and position runs show up here as picks come in.
             </p>
           ) : (
@@ -130,11 +130,11 @@ export function DraftAnalyticsPanel({
                 />
               )}
               {activeRun && (
-                <div className="rounded-[var(--radius-3xl)] border px-4 py-3" style={PANEL_TILE_STYLE}>
+                <div className="border px-4 py-3" style={PANEL_TILE_STYLE}>
                   <p className="text-sm font-semibold">
                     {activeRun.position} run in progress
                   </p>
-                  <p className="mt-1 text-xs" style={{ color: "var(--home-ink-muted)" }}>
+                  <p className="mt-1 text-xs" style={{ color: "var(--c97-ink-2)" }}>
                     {activeRun.playersSelected} {activeRun.position}s gone since pick{" "}
                     {activeRun.startPick}. The run changes likely availability, but it does not make
                     a reach worthwhile on its own.
@@ -143,14 +143,14 @@ export function DraftAnalyticsPanel({
               )}
               {showEmerging && emergingRun && (
                 <div
-                  className="rounded-[var(--radius-3xl)] border px-4 py-3"
+                  className="border px-4 py-3"
                   style={{
-                    borderColor: "color-mix(in srgb, var(--home-signal) 36%, var(--home-rule))",
-                    background: "color-mix(in srgb, var(--home-signal) 10%, var(--home-paper))",
+                    borderColor: "color-mix(in srgb, var(--c97-accent) 36%, var(--c97-rule))",
+                    background: "color-mix(in srgb, var(--c97-accent) 10%, var(--c97-surface))",
                   }}
                 >
                   <p className="text-sm font-semibold">{emergingRun.position}s starting to go</p>
-                  <p className="mt-1 text-xs" style={{ color: "var(--home-ink-muted)" }}>
+                  <p className="mt-1 text-xs" style={{ color: "var(--c97-ink-2)" }}>
                     {emergingRun.count} went in the last few picks. Compare the next options inside
                     their current tier before changing your plan.
                   </p>
@@ -159,7 +159,7 @@ export function DraftAnalyticsPanel({
             </>
           )}
         </div>
-        <p className="mt-3 text-xs leading-5" style={{ color: "var(--home-ink-muted)" }}>
+        <p className="mt-3 text-xs leading-5" style={{ color: "var(--c97-ink-2)" }}>
           {describeBaseline(adpAvailable, adpUnavailableReason)}
         </p>
       </article>
@@ -175,10 +175,10 @@ export function DraftAnalyticsPanel({
   );
 
   return (
-    <article className="home-card p-5 sm:p-6">
-      <p className="home-kicker mb-1">Draft recap</p>
+    <article className="c97-panel p-5 sm:p-6">
+      <p className="c97-kicker mb-1">Draft recap</p>
       <h2 className="text-2xl font-semibold">How the room drafted</h2>
-      <p className="mt-2 max-w-[68ch] text-sm leading-7" style={{ color: "var(--home-ink-muted)" }}>
+      <p className="mt-2 max-w-[68ch] text-sm leading-7" style={{ color: "var(--c97-ink-2)" }}>
         {describeBaseline(adpAvailable, adpUnavailableReason)} A positive total means a team kept landing players past
         where the market expected them to go. None of it predicts the season. It only summarizes
         market-price discipline. Draft Outlook is the separate room ranking because it also includes
@@ -187,36 +187,36 @@ export function DraftAnalyticsPanel({
 
       <div className="mt-5 grid gap-4 lg:grid-cols-2">
         <div className="grid gap-3">
-          <p className="home-kicker mb-0">Biggest steal</p>
+          <p className="c97-kicker mb-0">Biggest steal</p>
           {biggestSteal ? (
             <PickValueRow pick={biggestSteal} label="Steal" teamName={getTeamName(biggestSteal.teamNumber)} />
           ) : (
-            <p className="text-sm" style={{ color: "var(--home-ink-muted)" }}>
+            <p className="text-sm" style={{ color: "var(--c97-ink-2)" }}>
               No pick beat its baseline by enough to count.
             </p>
           )}
 
-          <p className="home-kicker mb-0 mt-2">Biggest reach</p>
+          <p className="c97-kicker mb-0 mt-2">Biggest reach</p>
           {biggestReach ? (
             <PickValueRow pick={biggestReach} label="Reach" teamName={getTeamName(biggestReach.teamNumber)} />
           ) : (
-            <p className="text-sm" style={{ color: "var(--home-ink-muted)" }}>
+            <p className="text-sm" style={{ color: "var(--c97-ink-2)" }}>
               Nobody jumped a player far enough ahead of his baseline to count.
             </p>
           )}
 
           {analytics.positionRunAnalysis.length > 0 && (
             <>
-              <p className="home-kicker mb-0 mt-2">Position runs</p>
+              <p className="c97-kicker mb-0 mt-2">Position runs</p>
               <div className="grid gap-2">
                 {analytics.positionRunAnalysis.map((run) => (
                   <div
                     key={`run-${run.position}-${run.startPick ?? run.startRound}`}
-                    className="rounded-[var(--radius-3xl)] border px-4 py-3 text-sm"
+                    className="border px-4 py-3 text-sm"
                     style={PANEL_TILE_STYLE}
                   >
                     <span className="font-semibold">{run.position} run</span>
-                    <span style={{ color: "var(--home-ink-muted)" }}>
+                    <span style={{ color: "var(--c97-ink-2)" }}>
                       {", "}
                       {run.playersSelected} picks
                       {run.startPick && run.endPick
@@ -231,12 +231,12 @@ export function DraftAnalyticsPanel({
         </div>
 
         <div className="grid gap-3 content-start">
-          <p className="home-kicker mb-0">Market value by team</p>
+          <p className="c97-kicker mb-0">Market value by team</p>
           <div className="grid gap-2">
             {rankedTeams.map((team) => (
               <div
                 key={`team-value-${team.teamNumber}`}
-                className="flex items-center justify-between gap-3 rounded-[var(--radius-3xl)] border px-4 py-3"
+                className="flex items-center justify-between gap-3 border px-4 py-3"
                 style={PANEL_TILE_STYLE}
               >
                 <div className="min-w-0">
@@ -245,7 +245,7 @@ export function DraftAnalyticsPanel({
                     {team.teamNumber === userTeamNumber ? " (you)" : ""}
                   </p>
                   {team.weaknesses.length > 0 && (
-                    <p className="mt-1 truncate text-xs" style={{ color: "var(--home-ink-muted)" }}>
+                    <p className="mt-1 truncate text-xs" style={{ color: "var(--c97-ink-2)" }}>
                       Open starting slots at {team.weaknesses.join(", ")}
                     </p>
                   )}
@@ -263,7 +263,7 @@ export function DraftAnalyticsPanel({
           </div>
 
           {userAssessment && userAssessment.strengths.length > 0 && (
-            <p className="text-xs leading-5" style={{ color: "var(--home-ink-muted)" }}>
+            <p className="text-xs leading-5" style={{ color: "var(--c97-ink-2)" }}>
               Your roster runs deep at {userAssessment.strengths.join(", ")}.
             </p>
           )}

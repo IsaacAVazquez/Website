@@ -238,10 +238,10 @@ const PAGE_SIZE = 80;
 // the room, so a 12-pick plate would put its players two rounds off their real one.
 
 const PILL_ACTION_CLASS =
-  "inline-flex min-h-touch items-center rounded-full border px-4 font-mono text-2xs uppercase tracking-[0.06em] no-underline";
+  "inline-flex min-h-touch items-center border px-4 font-mono text-2xs uppercase tracking-[0.06em] no-underline";
 
 /** Phone rows carry their own value labels, since the column-label row is md-and-up. */
-const ROW_MICRO_LABEL_CLASS = "text-3xs uppercase tracking-[0.06em] text-[var(--home-ink-muted)] md:hidden";
+const ROW_MICRO_LABEL_CLASS = "text-3xs uppercase tracking-[0.06em] text-[var(--c97-ink-2)] md:hidden";
 
 // Pinned to UTC so a date-only value like "2026-08-09" is not parsed as UTC
 // midnight and then rendered a day earlier for viewers west of UTC.
@@ -405,8 +405,8 @@ function BestBallPlayerRow({
 
   return (
     <li
-      className="relative border-t transition-colors duration-150 hover:bg-[color-mix(in_srgb,var(--home-paper-alt)_55%,transparent)]"
-      style={{ borderColor: "color-mix(in srgb, var(--home-rule) 60%, transparent)" }}
+      className="relative border-t transition-colors duration-150 hover:bg-[color-mix(in_srgb,var(--c97-field)_55%,transparent)]"
+      style={{ borderColor: "color-mix(in srgb, var(--c97-rule) 60%, transparent)" }}
     >
       {/* The open control overlays the row instead of wrapping it: an aria-label
           on a wrapping button would override every cell for screen readers.
@@ -417,7 +417,7 @@ function BestBallPlayerRow({
         type="button"
         aria-label={`Open ${player.name} details`}
         onClick={() => onOpenDetail(player)}
-        className="absolute inset-0 z-[1] cursor-pointer focus-visible:outline focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-[var(--home-signal)]"
+        className="absolute inset-0 z-[1] cursor-pointer focus-visible:outline focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-[var(--c97-accent)]"
       />
       <div
         className="relative z-[2] flex min-h-11 w-full cursor-pointer flex-wrap items-center gap-x-3.5 gap-y-1 px-3.5 py-1.5 text-left"
@@ -435,15 +435,15 @@ function BestBallPlayerRow({
         <span className="flex min-w-0 flex-[1_1_180px] items-baseline gap-2">
           <span className="truncate text-sm font-semibold tracking-tight">{player.name}</span>
           <span
-            className="inline-flex shrink-0 items-center rounded-[2px] border px-1.5 py-0.5 font-mono text-3xs tracking-[0.06em]"
-            style={{ ...tone, color: "var(--home-ink)" }}
+            className="inline-flex shrink-0 items-center border px-1.5 py-0.5 font-mono text-3xs tracking-[0.06em]"
+            style={{ ...tone, color: "var(--c97-ink)" }}
           >
             {player.position}
             {!withheld && Number.isFinite(player.positionRank) ? player.positionRank : ""}
           </span>
           <span
             className="shrink-0 font-mono text-3xs uppercase tracking-[0.06em]"
-            style={{ color: "var(--home-ink-muted)" }}
+            style={{ color: "var(--c97-ink-2)" }}
           >
             {player.team || "FA"}
           </span>
@@ -457,7 +457,7 @@ function BestBallPlayerRow({
                 ? "At the contest-floor placeholder, not a literal price"
                 : "Current Underdog average draft position"
             }
-            style={{ color: "var(--home-ink-muted)" }}
+            style={{ color: "var(--c97-ink-2)" }}
           >
             <span aria-hidden="true" className={ROW_MICRO_LABEL_CLASS}>
               ADP{" "}
@@ -468,7 +468,7 @@ function BestBallPlayerRow({
           <span
             className={`w-auto font-mono md:w-14 md:text-right ${withheld ? "text-3xs uppercase" : "text-xs font-medium"}`}
             title={withheld ? WITHHELD_CELL_TITLE : "PPR best ball expert consensus rank"}
-            style={withheld ? { color: "var(--home-ink-muted)" } : undefined}
+            style={withheld ? { color: "var(--c97-ink-2)" } : undefined}
           >
             <span aria-hidden="true" className={ROW_MICRO_LABEL_CLASS}>
               ECR{" "}
@@ -482,16 +482,16 @@ function BestBallPlayerRow({
             style={{
               color:
                 delta !== null && delta >= 3
-                  ? "var(--home-positive)"
+                  ? "var(--c97-positive)"
                   : delta !== null && delta <= -3
-                    ? "var(--home-warning)"
-                    : "var(--home-ink-muted)",
+                    ? "var(--c97-warning)"
+                    : "var(--c97-ink-2)",
             }}
           >
             <span
               aria-hidden="true"
               className={ROW_MICRO_LABEL_CLASS}
-              style={{ color: "var(--home-ink-muted)" }}
+              style={{ color: "var(--c97-ink-2)" }}
             >
               Value{" "}
             </span>
@@ -500,7 +500,7 @@ function BestBallPlayerRow({
           <span className="sr-only">Bye week</span>
           <span
             className="w-auto font-mono text-xs md:w-8 md:text-right"
-            style={{ color: "var(--home-ink-muted)" }}
+            style={{ color: "var(--c97-ink-2)" }}
           >
             <span aria-hidden="true" className={ROW_MICRO_LABEL_CLASS}>
               Bye{" "}
@@ -517,8 +517,8 @@ function BestBallPlayerRow({
             }
             style={{
               color: showsWeek17
-                ? "var(--home-ink-muted)"
-                : "color-mix(in srgb, var(--home-ink-muted) 40%, transparent)",
+                ? "var(--c97-ink-2)"
+                : "color-mix(in srgb, var(--c97-ink-2) 40%, transparent)",
             }}
           >
             {/* The dimmed lens keeps its whole cell dim, label included, so the
@@ -700,7 +700,7 @@ export function BestBallClient({ initialState }: BestBallClientProps) {
 
   return (
     <section
-      className="home-page home-dash min-h-screen"
+      className="c97-dash relative overflow-x-clip min-h-screen"
       aria-label="Best ball rankings and strategy"
       data-testid="best-ball-shell"
     >
@@ -708,9 +708,9 @@ export function BestBallClient({ initialState }: BestBallClientProps) {
         <div className="flex flex-wrap items-baseline gap-x-4 gap-y-1.5">
           <span
             className="inline-flex items-center gap-2 font-mono text-2xs uppercase tracking-[0.1em]"
-            style={{ color: "var(--home-ink-muted)" }}
+            style={{ color: "var(--c97-ink-2)" }}
           >
-            <span className="h-2 w-2 rounded-full" style={{ background: "var(--home-signal)" }} aria-hidden="true" />
+            <span className="h-2 w-2" style={{ background: "var(--c97-accent)" }} aria-hidden="true" />
             Best ball{snapshot?.season ? ` · ${snapshot.season}` : ""}
           </span>
           <h1
@@ -719,7 +719,7 @@ export function BestBallClient({ initialState }: BestBallClientProps) {
             style={{ fontSize: "clamp(1.55rem, 1.3rem + 1.25vw, 2.1rem)", letterSpacing: "-0.05em" }}
           >
             Best{" "}
-            <em style={{ fontFamily: "var(--font-home-serif)", fontStyle: "italic", fontWeight: 500 }}>Ball</em>
+            <em style={{ fontFamily: "var(--c97-font-display)", fontStyle: "italic", fontWeight: 500 }}>Ball</em>
           </h1>
         </div>
         <div className="flex flex-wrap gap-1.5">
@@ -728,9 +728,9 @@ export function BestBallClient({ initialState }: BestBallClientProps) {
               key={chip}
               className={HEADER_CHIP_CLASS}
               style={{
-                borderColor: "var(--home-rule)",
-                background: "var(--home-paper-alt)",
-                color: "var(--home-ink-muted)",
+                borderColor: "var(--c97-rule)",
+                background: "var(--c97-field)",
+                color: "var(--c97-ink-2)",
               }}
             >
               {chip}
@@ -747,7 +747,7 @@ export function BestBallClient({ initialState }: BestBallClientProps) {
             Best ball is drafted before the season and scored through it, so this board describes a
             market that closed at kickoff. Rankings and ADP here are the preseason readings your
             drafts were made against, kept for reference rather than refreshed. Ranks that still
-            move are on the <Link href="/fantasy-football/weekly" className="underline decoration-[var(--home-signal)] underline-offset-4">weekly board</Link>.
+            move are on the <Link href="/fantasy-football/weekly" className="underline decoration-[var(--c97-accent)] underline-offset-4">weekly board</Link>.
           </SeasonalScopeNote>
         </div>
       ) : null}
@@ -758,12 +758,12 @@ export function BestBallClient({ initialState }: BestBallClientProps) {
       <div
         className="border-y"
         style={{
-          borderColor: "var(--home-rule)",
-          background: "var(--home-paper)",
+          borderColor: "var(--c97-rule)",
+          background: "var(--c97-surface)",
         }}
       >
         <div className={`${SHELL_CLASS} flex flex-wrap items-center gap-x-3 gap-y-2.5 py-2.5`}>
-          <span className={`shrink-0 ${MONO_LABEL_CLASS}`} style={{ color: "var(--home-ink-muted)" }}>
+          <span className={`shrink-0 ${MONO_LABEL_CLASS}`} style={{ color: "var(--c97-ink-2)" }}>
             Contest
           </span>
           <div role="group" aria-label="Best ball contest" className="flex flex-wrap gap-1.5">
@@ -775,14 +775,14 @@ export function BestBallClient({ initialState }: BestBallClientProps) {
                   type="button"
                   aria-pressed={active}
                   onClick={() => updateRouteState({ contest: contest.id })}
-                  className="min-h-touch cursor-pointer rounded-full border px-3.5 font-mono text-2xs uppercase tracking-[0.05em] transition-colors duration-150"
+                  className="min-h-touch cursor-pointer border px-3.5 font-mono text-2xs uppercase tracking-[0.05em] transition-colors duration-150"
                   style={
                     active
-                      ? { borderColor: "var(--home-ink)", background: "var(--home-ink)", color: "var(--home-paper)" }
+                      ? { borderColor: "var(--c97-ink)", background: "var(--c97-ink)", color: "var(--c97-surface)" }
                       : {
-                          borderColor: "var(--home-rule)",
-                          background: "color-mix(in srgb, var(--home-paper-alt) 52%, var(--home-elev-mix))",
-                          color: "var(--home-ink)",
+                          borderColor: "var(--c97-rule)",
+                          background: "color-mix(in srgb, var(--c97-field) 52%, var(--c97-field))",
+                          color: "var(--c97-ink)",
                         }
                   }
                 >
@@ -793,7 +793,7 @@ export function BestBallClient({ initialState }: BestBallClientProps) {
           </div>
           <span
             className="ml-auto whitespace-nowrap font-mono text-2xs"
-            style={{ color: "var(--home-ink-muted)" }}
+            style={{ color: "var(--c97-ink-2)" }}
           >
             Rules checked {formatDate(activePreset.rulesAsOf)}
           </span>
@@ -802,15 +802,15 @@ export function BestBallClient({ initialState }: BestBallClientProps) {
 
       <section aria-label="Selected format" className={`${SHELL_CLASS} pt-3.5`}>
         <div
-          className="overflow-hidden rounded-lg border"
-          style={{ borderColor: "var(--home-rule)", background: "var(--home-paper-raised)" }}
+          className="overflow-hidden border"
+          style={{ borderColor: "var(--c97-rule)", background: "var(--c97-field)" }}
         >
           <div
             className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1.5 border-b px-4 py-3"
-            style={{ borderColor: "var(--home-rule)" }}
+            style={{ borderColor: "var(--c97-rule)" }}
           >
             <div className="flex min-w-0 flex-wrap items-baseline gap-x-3 gap-y-1">
-              <p className={`m-0 ${MONO_LABEL_CLASS}`} style={{ color: "var(--home-ink-muted)" }}>
+              <p className={`m-0 ${MONO_LABEL_CLASS}`} style={{ color: "var(--c97-ink-2)" }}>
                 Contest lens
               </p>
               {/* text-2xl tops out at the same 34px as the page h1, which renders this
@@ -821,7 +821,7 @@ export function BestBallClient({ initialState }: BestBallClientProps) {
                 {activeContest.label}
               </h2>
             </div>
-            <span className="font-mono text-2xs" style={{ color: "var(--home-ink-muted)" }}>
+            <span className="font-mono text-2xs" style={{ color: "var(--c97-ink-2)" }}>
               {activeContest.format}
             </span>
           </div>
@@ -836,7 +836,7 @@ export function BestBallClient({ initialState }: BestBallClientProps) {
               { label: "What I would watch", body: activeContest.risk },
             ].map((cell) => (
               <div key={cell.label} className="min-w-0">
-                <p className={`mb-1.5 mt-0 ${MONO_LABEL_CLASS}`} style={{ color: "var(--home-ink-muted)" }}>
+                <p className={`mb-1.5 mt-0 ${MONO_LABEL_CLASS}`} style={{ color: "var(--c97-ink-2)" }}>
                   {cell.label}
                 </p>
                 <p className="m-0 text-sm leading-6">{cell.body}</p>
@@ -845,11 +845,11 @@ export function BestBallClient({ initialState }: BestBallClientProps) {
           </div>
           <div
             className="flex flex-wrap items-center justify-between gap-x-4 gap-y-2.5 border-t px-4 py-3"
-            style={{ borderColor: "var(--home-rule)", background: "var(--home-paper)" }}
+            style={{ borderColor: "var(--c97-rule)", background: "var(--c97-surface)" }}
           >
             <p
               className="m-0 min-w-0 flex-[1_1_260px] font-mono text-2xs leading-relaxed"
-              style={{ color: "var(--home-ink-muted)" }}
+              style={{ color: "var(--c97-ink-2)" }}
             >
               {policyLine}
             </p>
@@ -861,7 +861,7 @@ export function BestBallClient({ initialState }: BestBallClientProps) {
               <Link
                 href={trackerHref}
                 className={PILL_ACTION_CLASS}
-                style={{ borderColor: "var(--home-ink)", background: "var(--home-ink)", color: "var(--home-paper)" }}
+                style={{ borderColor: "var(--c97-ink)", background: "var(--c97-ink)", color: "var(--c97-surface)" }}
               >
                 Draft with this lens&nbsp;<span aria-hidden="true">↗</span>
               </Link>
@@ -870,7 +870,7 @@ export function BestBallClient({ initialState }: BestBallClientProps) {
                 target="_blank"
                 rel="noopener noreferrer"
                 className={PILL_ACTION_CLASS}
-                style={{ borderColor: "var(--home-rule)", color: "var(--home-ink)" }}
+                style={{ borderColor: "var(--c97-rule)", color: "var(--c97-ink)" }}
               >
                 Scoring rules&nbsp;<span aria-hidden="true">↗</span>
               </a>
@@ -883,10 +883,10 @@ export function BestBallClient({ initialState }: BestBallClientProps) {
         <div className={`${SHELL_CLASS} pt-3.5`}>
           <div
             role="status"
-            className="rounded-lg border px-4 py-3 text-sm leading-6"
+            className="border px-4 py-3 text-sm leading-6"
             style={{
-              borderColor: "color-mix(in srgb, var(--home-warning) 48%, var(--home-rule))",
-              background: "color-mix(in srgb, var(--home-warning) 10%, var(--home-paper))",
+              borderColor: "color-mix(in srgb, var(--c97-warning) 48%, var(--c97-rule))",
+              background: "color-mix(in srgb, var(--c97-warning) 10%, var(--c97-surface))",
             }}
           >
             {freshnessWarning}
@@ -902,10 +902,10 @@ export function BestBallClient({ initialState }: BestBallClientProps) {
           <div
             role="note"
             data-testid="best-ball-consensus-note"
-            className="rounded-lg border px-4 py-3 text-sm leading-6"
+            className="border px-4 py-3 text-sm leading-6"
             style={{
-              borderColor: "color-mix(in srgb, var(--home-warning) 48%, var(--home-rule))",
-              background: "color-mix(in srgb, var(--home-warning) 10%, var(--home-paper))",
+              borderColor: "color-mix(in srgb, var(--c97-warning) 48%, var(--c97-rule))",
+              background: "color-mix(in srgb, var(--c97-warning) 10%, var(--c97-surface))",
             }}
           >
             <p className="m-0">
@@ -913,7 +913,7 @@ export function BestBallClient({ initialState }: BestBallClientProps) {
               {consensusIssue.charAt(0).toUpperCase()}
               {consensusIssue.slice(1)}.
             </p>
-            <p className="m-0 mt-1" style={{ color: "var(--home-ink-muted)" }}>
+            <p className="m-0 mt-1" style={{ color: "var(--c97-ink-2)" }}>
               {withheldCount} of {orderedPlayers.length} rows on this board print no ECR, value,
               tier, or position rank. Each one keeps its best, average, and worst expert rank, which
               agree with each other. Board order is unchanged.
@@ -934,8 +934,8 @@ export function BestBallClient({ initialState }: BestBallClientProps) {
           style={{
             marginInline: "calc(-1 * clamp(1rem, 4vw, 2.5rem))",
             paddingInline: "clamp(1rem, 4vw, 2.5rem)",
-            borderColor: "var(--home-rule)",
-            background: "color-mix(in srgb, var(--home-paper) 90%, transparent)",
+            borderColor: "var(--c97-rule)",
+            background: "color-mix(in srgb, var(--c97-surface) 90%, transparent)",
             backdropFilter: "blur(8px)",
             WebkitBackdropFilter: "blur(8px)",
           }}
@@ -954,7 +954,7 @@ export function BestBallClient({ initialState }: BestBallClientProps) {
               </label>
               <Search
                 className="pointer-events-none absolute left-2.5 top-1/2 h-3.5 w-3.5 -translate-y-1/2"
-                style={{ color: "var(--home-ink-muted)" }}
+                style={{ color: "var(--c97-ink-2)" }}
                 aria-hidden="true"
               />
               <input
@@ -967,18 +967,18 @@ export function BestBallClient({ initialState }: BestBallClientProps) {
                 disabled={Boolean(error)}
                 autoComplete="off"
                 placeholder="Search player or team"
-                className="min-h-touch w-[200px] rounded-[4px] border pl-8 pr-2.5 font-mono text-xs placeholder:text-[var(--home-ink-muted)] disabled:cursor-not-allowed disabled:opacity-60"
+                className="min-h-touch w-[200px] border pl-8 pr-2.5 font-mono text-xs placeholder:text-[var(--c97-ink-2)] disabled:cursor-not-allowed disabled:opacity-60"
                 style={{
-                  borderColor: "var(--home-rule)",
-                  background: "var(--home-paper-raised)",
-                  color: "var(--home-ink)",
+                  borderColor: "var(--c97-rule)",
+                  background: "var(--c97-field)",
+                  color: "var(--c97-ink)",
                 }}
               />
             </div>
             <span
               aria-live={error ? undefined : "polite"}
               className="ml-auto whitespace-nowrap font-mono text-2xs"
-              style={{ color: "var(--home-ink-muted)" }}
+              style={{ color: "var(--c97-ink-2)" }}
             >
               {isLoading
                 ? "Loading players"
@@ -996,8 +996,8 @@ export function BestBallClient({ initialState }: BestBallClientProps) {
               aria-hidden="true"
               className="hidden items-center gap-x-3.5 border-t px-3.5 py-1.5 font-mono text-3xs uppercase tracking-[0.12em] md:flex"
               style={{
-                color: "var(--home-ink-muted)",
-                borderColor: "color-mix(in srgb, var(--home-rule) 60%, transparent)",
+                color: "var(--c97-ink-2)",
+                borderColor: "color-mix(in srgb, var(--c97-rule) 60%, transparent)",
               }}
             >
               <span className="w-[34px] shrink-0" />
@@ -1018,23 +1018,23 @@ export function BestBallClient({ initialState }: BestBallClientProps) {
         {error ? (
           <div
             role="alert"
-            className="rounded-lg border px-5 py-8"
+            className="border px-5 py-8"
             style={{
-              borderColor: "var(--home-negative)",
-              background: "color-mix(in srgb, var(--home-negative) 8%, var(--home-paper))",
+              borderColor: "var(--c97-negative)",
+              background: "color-mix(in srgb, var(--c97-negative) 8%, var(--c97-surface))",
             }}
           >
-            <p className="font-semibold" style={{ color: "var(--home-negative)" }}>
+            <p className="font-semibold" style={{ color: "var(--c97-negative)" }}>
               {error}
             </p>
-            <p className="mt-2 text-sm" style={{ color: "var(--home-ink-muted)" }}>
+            <p className="mt-2 text-sm" style={{ color: "var(--c97-ink-2)" }}>
               The strategy notes are still available while the published board reloads.
             </p>
             <button
               type="button"
               onClick={retry}
-              className="mt-4 inline-flex min-h-touch items-center rounded-full border px-4 text-sm font-semibold"
-              style={{ borderColor: "var(--home-ink)", background: "var(--home-ink)", color: "var(--home-paper)" }}
+              className="mt-4 inline-flex min-h-touch items-center border px-4 text-sm font-semibold"
+              style={{ borderColor: "var(--c97-ink)", background: "var(--c97-ink)", color: "var(--c97-surface)" }}
             >
               Retry rankings
             </button>
@@ -1044,10 +1044,10 @@ export function BestBallClient({ initialState }: BestBallClientProps) {
             {Array.from({ length: 10 }).map((_, index) => (
               <div
                 key={index}
-                className="h-11 rounded-lg border motion-safe:animate-pulse"
+                className="h-11 border motion-safe:animate-pulse"
                 style={{
-                  borderColor: "var(--home-rule)",
-                  background: "color-mix(in srgb, var(--home-paper-alt) 55%, var(--home-elev-mix))",
+                  borderColor: "var(--c97-rule)",
+                  background: "color-mix(in srgb, var(--c97-field) 55%, var(--c97-field))",
                 }}
               />
             ))}
@@ -1063,24 +1063,24 @@ export function BestBallClient({ initialState }: BestBallClientProps) {
                   aria-label={`Round ${group.round}`}
                 >
                   <div
-                    className="overflow-hidden rounded-lg border border-l-[3px]"
+                    className="overflow-hidden border border-l-[3px]"
                     style={{
-                      borderColor: "var(--home-rule)",
-                      borderLeftColor: `color-mix(in srgb, var(--home-signal) ${getTierRailIntensity(group.round)}%, var(--home-rule))`,
-                      background: "var(--home-paper-raised)",
+                      borderColor: "var(--c97-rule)",
+                      borderLeftColor: `color-mix(in srgb, var(--c97-accent) ${getTierRailIntensity(group.round)}%, var(--c97-rule))`,
+                      background: "var(--c97-field)",
                     }}
                   >
                     <div className="flex flex-wrap items-baseline gap-x-3.5 gap-y-1 px-3.5 pb-2 pt-2.5">
                       <span className="text-2xl font-bold leading-none tracking-tight tabular-nums">
                         {String(group.round).padStart(2, "0")}
                       </span>
-                      <span className={MONO_LABEL_CLASS} style={{ color: "var(--home-ink-muted)" }}>
+                      <span className={MONO_LABEL_CLASS} style={{ color: "var(--c97-ink-2)" }}>
                         Round
                       </span>
-                      <span className="font-mono text-2xs" style={{ color: "var(--home-ink-muted)" }}>
+                      <span className="font-mono text-2xs" style={{ color: "var(--c97-ink-2)" }}>
                         {fullRound ? "full round on this board" : `${group.rows.length} shown`}
                       </span>
-                      <span className="ml-auto font-mono text-2xs" style={{ color: "var(--home-ink-muted)" }}>
+                      <span className="ml-auto font-mono text-2xs" style={{ color: "var(--c97-ink-2)" }}>
                         picks {group.round * roundSize - (roundSize - 1)}–{group.round * roundSize}
                       </span>
                     </div>
@@ -1105,8 +1105,8 @@ export function BestBallClient({ initialState }: BestBallClientProps) {
               <button
                 type="button"
                 onClick={() => setVisibleCount((count) => count + PAGE_SIZE)}
-                className="mt-4 inline-flex min-h-touch w-full items-center justify-center rounded-full border px-4 text-sm font-semibold transition-colors hover:border-[var(--home-ink)]"
-                style={{ borderColor: "var(--home-rule)", color: "var(--home-ink)" }}
+                className="mt-4 inline-flex min-h-touch w-full items-center justify-center border px-4 text-sm font-semibold transition-colors hover:border-[var(--c97-ink)]"
+                style={{ borderColor: "var(--c97-rule)", color: "var(--c97-ink)" }}
               >
                 Show the next {Math.min(PAGE_SIZE, filteredPlayers.length - visibleCount)} players
               </button>
@@ -1114,10 +1114,10 @@ export function BestBallClient({ initialState }: BestBallClientProps) {
           </>
         ) : (
           <div
-            className="rounded-lg border border-dashed px-5 py-9 text-center"
-            style={{ borderColor: "var(--home-rule)" }}
+            className="border border-dashed px-5 py-9 text-center"
+            style={{ borderColor: "var(--c97-rule)" }}
           >
-            <p className="font-mono text-xs" style={{ color: "var(--home-ink-muted)" }}>
+            <p className="font-mono text-xs" style={{ color: "var(--c97-ink-2)" }}>
               No players match on this board.
             </p>
             {/* Each control clears only itself, so the way out never resets a
@@ -1129,8 +1129,8 @@ export function BestBallClient({ initialState }: BestBallClientProps) {
                   setSearchQuery("");
                   updateRouteState({ query: "" });
                 }}
-                className="mt-3.5 inline-flex min-h-touch items-center rounded-full border px-4 font-mono text-2xs uppercase tracking-[0.06em]"
-                style={{ borderColor: "var(--home-ink)", background: "var(--home-ink)", color: "var(--home-paper)" }}
+                className="mt-3.5 inline-flex min-h-touch items-center border px-4 font-mono text-2xs uppercase tracking-[0.06em]"
+                style={{ borderColor: "var(--c97-ink)", background: "var(--c97-ink)", color: "var(--c97-surface)" }}
               >
                 Clear search
               </button>
@@ -1138,8 +1138,8 @@ export function BestBallClient({ initialState }: BestBallClientProps) {
               <button
                 type="button"
                 onClick={() => updateRouteState({ position: "all" })}
-                className="mt-3.5 inline-flex min-h-touch items-center rounded-full border px-4 font-mono text-2xs uppercase tracking-[0.06em]"
-                style={{ borderColor: "var(--home-ink)", background: "var(--home-ink)", color: "var(--home-paper)" }}
+                className="mt-3.5 inline-flex min-h-touch items-center border px-4 font-mono text-2xs uppercase tracking-[0.06em]"
+                style={{ borderColor: "var(--c97-ink)", background: "var(--c97-ink)", color: "var(--c97-surface)" }}
               >
                 Show all positions
               </button>
@@ -1149,7 +1149,7 @@ export function BestBallClient({ initialState }: BestBallClientProps) {
 
         <div
           className="mt-3 font-mono text-2xs leading-relaxed"
-          style={{ color: "var(--home-ink-muted)" }}
+          style={{ color: "var(--c97-ink-2)" }}
         >
           {adpAvailable && (
             <p className="m-0">
@@ -1219,13 +1219,13 @@ export function BestBallClient({ initialState }: BestBallClientProps) {
       </div>
 
       <section aria-labelledby="field-notes-heading" className={`${SHELL_CLASS} pt-7`}>
-        <p className={`m-0 ${MONO_LABEL_CLASS}`} style={{ color: "var(--home-ink-muted)" }}>
+        <p className={`m-0 ${MONO_LABEL_CLASS}`} style={{ color: "var(--c97-ink-2)" }}>
           Field notes
         </p>
         <h2 id="field-notes-heading" className="mb-0 mt-1.5 text-xl font-semibold leading-tight tracking-tight">
           What has worked, and how I would use it
         </h2>
-        <p className="mb-0 mt-2.5 max-w-[70ch] text-sm leading-6" style={{ color: "var(--home-ink-muted)" }}>
+        <p className="mb-0 mt-2.5 max-w-[70ch] text-sm leading-6" style={{ color: "var(--c97-ink-2)" }}>
           The findings below describe past drafts and are not proof that one construction will win the
           next tournament. I use them to set boundaries, then let the current room and the selected
           contest decide the roster.
@@ -1235,13 +1235,13 @@ export function BestBallClient({ initialState }: BestBallClientProps) {
           style={{ gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))" }}
         >
           <div className="min-w-0">
-            <p className={`mb-0.5 mt-0 ${MONO_LABEL_CLASS}`} style={{ color: "var(--home-ink-muted)" }}>
+            <p className={`mb-0.5 mt-0 ${MONO_LABEL_CLASS}`} style={{ color: "var(--c97-ink-2)" }}>
               Observed in past drafts
             </p>
             {OBSERVED_FINDINGS.map((finding) => (
-              <div key={finding.title} className="border-t py-2.5" style={{ borderColor: "var(--home-rule)" }}>
+              <div key={finding.title} className="border-t py-2.5" style={{ borderColor: "var(--c97-rule)" }}>
                 <p className="m-0 text-sm font-semibold tracking-tight">{finding.title}</p>
-                <p className="m-0 mt-1 text-sm leading-6" style={{ color: "var(--home-ink-muted)" }}>
+                <p className="m-0 mt-1 text-sm leading-6" style={{ color: "var(--c97-ink-2)" }}>
                   {finding.body}
                 </p>
                 {/* A standalone link line rather than a link inside a sentence,
@@ -1260,21 +1260,21 @@ export function BestBallClient({ initialState }: BestBallClientProps) {
             ))}
           </div>
           <div className="min-w-0">
-            <p className={`mb-0.5 mt-0 ${MONO_LABEL_CLASS}`} style={{ color: "var(--home-ink-muted)" }}>
+            <p className={`mb-0.5 mt-0 ${MONO_LABEL_CLASS}`} style={{ color: "var(--c97-ink-2)" }}>
               2026 recommendation
             </p>
             {RECOMMENDATIONS.map((recommendation) => (
               <div
                 key={recommendation.number}
                 className="flex gap-3 border-t py-2.5"
-                style={{ borderColor: "var(--home-rule)" }}
+                style={{ borderColor: "var(--c97-rule)" }}
               >
-                <span className="w-6 shrink-0 font-mono text-xs" style={{ color: "var(--home-ink-muted)" }}>
+                <span className="w-6 shrink-0 font-mono text-xs" style={{ color: "var(--c97-ink-2)" }}>
                   {recommendation.number}
                 </span>
                 <div className="min-w-0">
                   <p className="m-0 text-sm font-semibold tracking-tight">{recommendation.title}</p>
-                  <p className="mb-0 mt-1 text-sm leading-6" style={{ color: "var(--home-ink-muted)" }}>
+                  <p className="mb-0 mt-1 text-sm leading-6" style={{ color: "var(--c97-ink-2)" }}>
                     {recommendation.body}
                   </p>
                   {recommendation.href && (
@@ -1296,17 +1296,17 @@ export function BestBallClient({ initialState }: BestBallClientProps) {
 
       <section aria-label="Format reference" className={`${SHELL_CLASS} pt-5`}>
         <div
-          className="flex flex-wrap items-start justify-between gap-x-6 gap-y-3.5 rounded-lg border px-4 py-4"
-          style={{ borderColor: "var(--home-rule)", background: "var(--home-paper-raised)" }}
+          className="flex flex-wrap items-start justify-between gap-x-6 gap-y-3.5 border px-4 py-4"
+          style={{ borderColor: "var(--c97-rule)", background: "var(--c97-field)" }}
         >
           <div className="min-w-0 max-w-[68ch] flex-[1_1_380px]">
-            <p className={`m-0 ${MONO_LABEL_CLASS}`} style={{ color: "var(--home-ink-muted)" }}>
+            <p className={`m-0 ${MONO_LABEL_CLASS}`} style={{ color: "var(--c97-ink-2)" }}>
               Format reference
             </p>
             <h3 className="mb-0 mt-1.5 text-lg font-semibold tracking-tight">
               The baseline Underdog roster
             </h3>
-            <p className="mb-0 mt-2 text-sm leading-6" style={{ color: "var(--home-ink-muted)" }}>
+            <p className="mb-0 mt-2 text-sm leading-6" style={{ color: "var(--c97-ink-2)" }}>
               Standard NFL best ball drafts use 12 teams and 18 rounds with one quarterback, two
               running backs, three receivers, one tight end, one flex, and ten bench spots. The site
               sets the strongest lineup each week, and there are no waivers, trades, or manual lineup
@@ -1318,7 +1318,7 @@ export function BestBallClient({ initialState }: BestBallClientProps) {
             target="_blank"
             rel="noopener noreferrer"
             className={`${PILL_ACTION_CLASS} shrink-0`}
-            style={{ borderColor: "var(--home-rule)", color: "var(--home-ink)" }}
+            style={{ borderColor: "var(--c97-rule)", color: "var(--c97-ink)" }}
           >
             Official scoring and lineup rules&nbsp;<span aria-hidden="true">↗</span>
           </a>
@@ -1328,9 +1328,9 @@ export function BestBallClient({ initialState }: BestBallClientProps) {
       <div className={`${SHELL_CLASS} pb-11 pt-5`}>
         <div
           className="flex flex-wrap items-baseline justify-between gap-x-5 gap-y-2 border-t pt-3.5"
-          style={{ borderColor: "var(--home-rule)" }}
+          style={{ borderColor: "var(--c97-rule)" }}
         >
-          <span className="font-mono text-2xs" style={{ color: "var(--home-ink-muted)" }}>
+          <span className="font-mono text-2xs" style={{ color: "var(--c97-ink-2)" }}>
             Working ranges, not quotas, and nothing here guarantees a result
           </span>
           <span className="flex flex-wrap gap-x-4 gap-y-1">

@@ -55,13 +55,13 @@ const VIEWS = {
 } as const;
 
 const TOGGLE_CLASS =
-  "inline-flex min-h-touch items-center rounded-[2px] border px-3 text-sm font-semibold transition-[border-color,background-color]";
+  "inline-flex min-h-touch items-center border px-3 text-sm font-semibold transition-[border-color,background-color]";
 
 const GROUP_LEGEND_CLASS =
-  "font-mono text-3xs uppercase tracking-[0.12em] text-[var(--home-ink-muted)]";
+  "font-mono text-3xs uppercase tracking-[0.12em] text-[var(--c97-ink-2)]";
 
 const STATUS_CLASS =
-  "mt-4 font-mono text-2xs uppercase tracking-[0.1em] text-[var(--home-ink-muted)]";
+  "mt-4 font-mono text-2xs uppercase tracking-[0.1em] text-[var(--c97-ink-2)]";
 
 /**
  * The header cell of a long table, pinned to the top of the viewport while the
@@ -73,8 +73,8 @@ const STATUS_CLASS =
 const STICKY_HEADER_CLASS = "sticky z-10";
 const STICKY_HEADER_STYLE = {
   top: 0,
-  background: "var(--home-paper-raised)",
-  boxShadow: "inset 0 -1px 0 var(--home-rule)",
+  background: "var(--c97-field)",
+  boxShadow: "inset 0 -1px 0 var(--c97-rule)",
 } as const;
 
 /** Tailwind's `md`, the width at which the tables fit without clipping. */
@@ -186,7 +186,7 @@ function SourceLink({ href, label }: { href: string; label: string }) {
   return (
     <a
       href={href}
-      className="underline decoration-[var(--home-rule)] underline-offset-4"
+      className="underline decoration-[var(--c97-rule)] underline-offset-4"
       rel="noreferrer noopener"
       target="_blank"
     >
@@ -199,14 +199,14 @@ function SourceLink({ href, label }: { href: string; label: string }) {
 function ReadoutPair({ label, value, emphasis = false }: { label: string; value: string; emphasis?: boolean }) {
   return (
     <div className="flex items-baseline gap-1.5">
-      <dt className="text-3xs uppercase tracking-[0.1em] text-[var(--home-ink-muted)]">
+      <dt className="text-3xs uppercase tracking-[0.1em] text-[var(--c97-ink-2)]">
         {label}
       </dt>
       <dd
         className={`tabular-nums ${
           emphasis
-            ? "font-semibold text-[var(--home-ink)]"
-            : "text-[var(--home-ink)]"
+            ? "font-semibold text-[var(--c97-ink)]"
+            : "text-[var(--c97-ink)]"
         }`}
       >
         {value}
@@ -363,34 +363,34 @@ export function WeeklyBoardClient({
 
   return (
     <section
-      className="home-page home-dash min-h-screen"
+      className="c97-dash relative overflow-x-clip min-h-screen"
       aria-label={viewConfig.ariaLabel}
     >
       <div className={`${SHELL_CLASS} space-y-5 pb-10 pt-7`}>
-        <header className="border-b border-[var(--home-rule)] pb-5">
-          <h1 className="m-0 text-[clamp(1.55rem,1.3rem+1.25vw,2.1rem)] font-semibold leading-none tracking-[-0.05em] text-[var(--home-ink)]">
+        <header className="border-b border-[var(--c97-rule)] pb-5">
+          <h1 className="m-0 text-[clamp(1.55rem,1.3rem+1.25vw,2.1rem)] font-semibold leading-none tracking-[-0.05em] text-[var(--c97-ink)]">
             Fantasy Football{" "}
             {view === "waivers" ? "Waivers" : "Weekly"}
           </h1>
           {view === "rankings" ? (
-            <p className="mt-3 max-w-[62ch] text-sm leading-6 text-[var(--home-ink-muted)]">
+            <p className="mt-3 max-w-[62ch] text-sm leading-6 text-[var(--c97-ink-2)]">
               I use this board to compare weekly rankings, opponents, and rostered
               percentages. Save your team below for lineup and add/drop comparisons,
               or browse the{" "}
               <Link
                 href="/fantasy-football/waivers"
-                className="underline decoration-[var(--home-signal)] underline-offset-4"
+                className="underline decoration-[var(--c97-accent)] underline-offset-4"
               >
                 waiver targets
               </Link>.
             </p>
           ) : (
-            <p className="mt-3 max-w-[62ch] text-sm leading-6 text-[var(--home-ink-muted)]">
+            <p className="mt-3 max-w-[62ch] text-sm leading-6 text-[var(--c97-ink-2)]">
               The players the experts rank ahead of where the rostering rate
               puts them, read off the same weekly consensus that feeds the{" "}
               <Link
                 href="/fantasy-football/weekly"
-                className="underline decoration-[var(--home-signal)] underline-offset-4"
+                className="underline decoration-[var(--c97-accent)] underline-offset-4"
               >
                 weekly board
               </Link>
@@ -399,7 +399,7 @@ export function WeeklyBoardClient({
             </p>
           )}
           {snapshot && activeBoard && source ? (
-            <div className="mt-4 flex flex-wrap items-center gap-x-3 gap-y-2 font-mono text-2xs uppercase tracking-[0.1em] text-[var(--home-ink-muted)]">
+            <div className="mt-4 flex flex-wrap items-center gap-x-3 gap-y-2 font-mono text-2xs uppercase tracking-[0.1em] text-[var(--c97-ink-2)]">
               <span>
                 {snapshot.season} Week {snapshot.week}
               </span>
@@ -421,7 +421,7 @@ export function WeeklyBoardClient({
                     style={{
                       color:
                         staleness === "stale"
-                          ? "var(--home-negative)"
+                          ? "var(--c97-negative)"
                           : undefined,
                     }}
                   >
@@ -436,7 +436,7 @@ export function WeeklyBoardClient({
                     style={{
                       color:
                         staleness === "stale"
-                          ? "var(--home-negative)"
+                          ? "var(--c97-negative)"
                           : undefined,
                     }}
                   >
@@ -451,7 +451,7 @@ export function WeeklyBoardClient({
         </header>
 
         {isLoading || boardPending ? (
-          <p role="status" className="text-sm text-[var(--home-ink-muted)]">
+          <p role="status" className="text-sm text-[var(--c97-ink-2)]">
             Loading the weekly board.
           </p>
         ) : null}
@@ -459,16 +459,16 @@ export function WeeklyBoardClient({
         {notPublished ? (
           <div
             role="note"
-            className="rounded-[var(--radius-3xl)] border px-4 py-3 text-sm"
+            className="border px-4 py-3 text-sm"
             style={{
               borderColor:
-                "color-mix(in srgb, var(--home-warning) 45%, var(--home-rule))",
+                "color-mix(in srgb, var(--c97-warning) 45%, var(--c97-rule))",
               background:
-                "color-mix(in srgb, var(--home-warning) 8%, var(--home-paper))",
+                "color-mix(in srgb, var(--c97-warning) 8%, var(--c97-surface))",
             }}
           >
-            <p className="text-[var(--home-ink-muted)]">
-              <span className="font-semibold text-[var(--home-ink)]">
+            <p className="text-[var(--c97-ink-2)]">
+              <span className="font-semibold text-[var(--c97-ink)]">
                 The weekly board opens with Week 1.
               </span>{" "}
               It is deliberately empty until then. Rostered percentages before
@@ -477,7 +477,7 @@ export function WeeklyBoardClient({
               something I cannot support. Until kickoff, the{" "}
               <Link
                 href="/fantasy-football"
-                className="underline decoration-[var(--home-signal)] underline-offset-4"
+                className="underline decoration-[var(--c97-accent)] underline-offset-4"
               >
                 draft rankings
               </Link>{" "}
@@ -489,13 +489,13 @@ export function WeeklyBoardClient({
         {error && !activeBoard ? (
           <div
             role="alert"
-            className="rounded-[var(--radius-3xl)] border border-[var(--home-negative)] bg-[var(--home-paper)] p-5"
+            className="border border-[var(--c97-negative)] bg-[var(--c97-surface)] p-5"
           >
-            <p className="text-sm text-[var(--home-ink)]">{error}</p>
+            <p className="text-sm text-[var(--c97-ink)]">{error}</p>
             <button
               type="button"
               onClick={retry}
-              className={`${TOGGLE_CLASS} mt-3 border-[var(--home-rule)] bg-[var(--home-paper-alt)] text-[var(--home-ink)] hover:border-[var(--home-signal)]`}
+              className={`${TOGGLE_CLASS} mt-3 border-[var(--c97-rule)] bg-[var(--c97-field)] text-[var(--c97-ink)] hover:border-[var(--c97-accent)]`}
             >
               Try again
             </button>
@@ -519,8 +519,8 @@ export function WeeklyBoardClient({
                       onClick={() => updateRouteState({ scoring: option })}
                       className={`${TOGGLE_CLASS} ${
                         scoring === option
-                          ? "border-[var(--home-ink)] bg-[var(--home-ink)] text-[var(--home-paper)]"
-                          : "border-[var(--home-rule)] bg-[var(--home-paper)] text-[var(--home-ink-muted)]"
+                          ? "border-[var(--c97-ink)] bg-[var(--c97-ink)] text-[var(--c97-surface)]"
+                          : "border-[var(--c97-rule)] bg-[var(--c97-surface)] text-[var(--c97-ink-2)]"
                       }`}
                     >
                       {FANTASY_SCORING_LABELS[option]}
@@ -529,7 +529,7 @@ export function WeeklyBoardClient({
                 </div>
               </fieldset>
               <a href={view === "waivers" ? "#weekly-waivers" : "#weekly-board"}
-                className="inline-flex min-h-touch items-center self-end text-sm underline decoration-[var(--home-signal)] underline-offset-4">
+                className="inline-flex min-h-touch items-center self-end text-sm underline decoration-[var(--c97-accent)] underline-offset-4">
                 {view === "waivers" ? "Jump to waiver targets" : "Jump to rankings"}
               </a>
             </div>
@@ -539,15 +539,15 @@ export function WeeklyBoardClient({
             {view === "waivers" ? (
               <section
                 aria-labelledby="weekly-waivers"
-                className="border-t border-[var(--home-ink)] pt-5"
+                className="border-t border-[var(--c97-ink)] pt-5"
               >
                 <h2
                   id="weekly-waivers"
-                  className="scroll-mt-24 text-2xl font-semibold tracking-[-0.02em] text-[var(--home-ink)]"
+                  className="scroll-mt-24 text-2xl font-semibold tracking-[-0.02em] text-[var(--c97-ink)]"
                 >
                   This week&rsquo;s list
                 </h2>
-                <p className="mt-2 max-w-[68ch] text-sm leading-6 text-[var(--home-ink-muted)]">
+                <p className="mt-2 max-w-[68ch] text-sm leading-6 text-[var(--c97-ink-2)]">
                   Players the experts rank ahead of where the rostering rate
                   puts them. The gap is the player&rsquo;s percentile on this
                   board minus the percentage of leagues rostering him, so both
@@ -571,7 +571,7 @@ export function WeeklyBoardClient({
                 {waivers.length === 0 ? (
                   <p
                     role="status"
-                    className="mt-4 text-sm text-[var(--home-ink-muted)]"
+                    className="mt-4 text-sm text-[var(--c97-ink-2)]"
                   >
                     No player clears the gap this week, which happens when the
                     widely rostered players are also the ones the experts like.
@@ -596,7 +596,7 @@ export function WeeklyBoardClient({
                         <table className="w-full border-collapse text-sm">
                           <caption className="sr-only">{waiversCaption}</caption>
                           <thead>
-                            <tr className="border-b border-[var(--home-rule)] text-left font-mono text-3xs uppercase tracking-[0.12em] text-[var(--home-ink-muted)]">
+                            <tr className="border-b border-[var(--c97-rule)] text-left font-mono text-3xs uppercase tracking-[0.12em] text-[var(--c97-ink-2)]">
                               <th scope="col" className="py-2 pr-3">
                                 Player
                               </th>
@@ -621,16 +621,16 @@ export function WeeklyBoardClient({
                             {waivers.map((candidate) => (
                               <tr
                                 key={`${candidate.board}-${candidate.player.id}`}
-                                className="border-b border-[var(--home-rule)]"
+                                className="border-b border-[var(--c97-rule)]"
                               >
                                 <th
                                   scope="row"
                                   className="py-2 pr-3 text-left font-normal"
                                 >
-                                  <span className="font-semibold text-[var(--home-ink)]">
+                                  <span className="font-semibold text-[var(--c97-ink)]">
                                     {candidate.player.name}
                                   </span>{" "}
-                                  <span className="text-[var(--home-ink-muted)]">
+                                  <span className="text-[var(--c97-ink-2)]">
                                     {candidate.player.position}{" "}
                                     {candidate.player.team}
                                     {candidate.player.opponent
@@ -638,19 +638,19 @@ export function WeeklyBoardClient({
                                       : ""}
                                   </span>
                                 </th>
-                                <td className="py-2 pr-3 text-right font-mono tabular-nums font-semibold text-[var(--home-ink)]">
+                                <td className="py-2 pr-3 text-right font-mono tabular-nums font-semibold text-[var(--c97-ink)]">
                                   {candidate.gap.toFixed(1)}
                                 </td>
-                                <td className="py-2 pr-3 pl-3 text-[var(--home-ink-muted)]">
+                                <td className="py-2 pr-3 pl-3 text-[var(--c97-ink-2)]">
                                   {candidate.board === "flex" ? "Flex" : "QB"}
                                 </td>
-                                <td className="py-2 pr-3 text-right font-mono tabular-nums text-[var(--home-ink)]">
+                                <td className="py-2 pr-3 text-right font-mono tabular-nums text-[var(--c97-ink)]">
                                   {candidate.player.rank}
                                 </td>
-                                <td className="py-2 pr-3 text-right font-mono tabular-nums text-[var(--home-ink-muted)]">
+                                <td className="py-2 pr-3 text-right font-mono tabular-nums text-[var(--c97-ink-2)]">
                                   {candidate.rankPercentile.toFixed(1)}
                                 </td>
-                                <td className="py-2 text-right font-mono tabular-nums text-[var(--home-ink-muted)]">
+                                <td className="py-2 text-right font-mono tabular-nums text-[var(--c97-ink-2)]">
                                   {formatOwnership(candidate.ownership)}
                                 </td>
                               </tr>
@@ -662,18 +662,18 @@ export function WeeklyBoardClient({
                       <ol
                         role="list"
                         aria-label={waiversCaption}
-                        className="mt-3 list-none border-t border-[var(--home-rule)] p-0"
+                        className="mt-3 list-none border-t border-[var(--c97-rule)] p-0"
                       >
                         {waivers.map((candidate) => (
                           <li
                             key={`${candidate.board}-${candidate.player.id}`}
-                            className="border-b border-[var(--home-rule)] py-2.5"
+                            className="border-b border-[var(--c97-rule)] py-2.5"
                           >
                             <p className="text-sm">
-                              <span className="font-semibold text-[var(--home-ink)]">
+                              <span className="font-semibold text-[var(--c97-ink)]">
                                 {candidate.player.name}
                               </span>{" "}
-                              <span className="text-[var(--home-ink-muted)]">
+                              <span className="text-[var(--c97-ink-2)]">
                                 {candidate.player.position}{" "}
                                 {candidate.player.team}
                                 {candidate.player.opponent
@@ -710,7 +710,7 @@ export function WeeklyBoardClient({
                     )}
                   </>
                 )}
-                <p className="mt-4 text-2xs text-[var(--home-ink-muted)]">
+                <p className="mt-4 text-2xs text-[var(--c97-ink-2)]">
                   {activeBoard.flexSource.playerCount} players on the{" "}
                   {describeFantasyWeeklySource(activeBoard.flexSource, "flex")}{" "}
                   and {activeBoard.quarterbackSource.playerCount} on the{" "}
@@ -731,14 +731,14 @@ export function WeeklyBoardClient({
                 </p>
               </section>
             ) : (
-              <section aria-labelledby="weekly-board" className="border-t border-[var(--home-ink)] pt-5">
+              <section aria-labelledby="weekly-board" className="border-t border-[var(--c97-ink)] pt-5">
                 <h2
                   id="weekly-board"
-                  className="scroll-mt-24 text-2xl font-semibold tracking-[-0.02em] text-[var(--home-ink)]"
+                  className="scroll-mt-24 text-2xl font-semibold tracking-[-0.02em] text-[var(--c97-ink)]"
                 >
                   {board === "flex" ? "Flex rankings" : "Quarterback rankings"}
                 </h2>
-                <p className="mt-2 max-w-[68ch] text-sm leading-6 text-[var(--home-ink-muted)]">
+                <p className="mt-2 max-w-[68ch] text-sm leading-6 text-[var(--c97-ink-2)]">
                   Consensus rank within this board only. A flex rank and a
                   quarterback rank are not comparable, because FantasyPros
                   publishes no single in-season overall board and I would rather
@@ -765,8 +765,8 @@ export function WeeklyBoardClient({
                         onClick={() => updateRouteState({ board: value })}
                         className={`${TOGGLE_CLASS} ${
                           board === value
-                            ? "border-[var(--home-ink)] bg-[var(--home-ink)] text-[var(--home-paper)]"
-                            : "border-[var(--home-rule)] bg-[var(--home-paper)] text-[var(--home-ink-muted)]"
+                            ? "border-[var(--c97-ink)] bg-[var(--c97-ink)] text-[var(--c97-surface)]"
+                            : "border-[var(--c97-rule)] bg-[var(--c97-surface)] text-[var(--c97-ink-2)]"
                         }`}
                       >
                         {label}
@@ -788,7 +788,7 @@ export function WeeklyBoardClient({
                       autoComplete="off"
                       onChange={(event) => setSearchQuery(event.target.value)}
                       placeholder="Search player or team"
-                      className="mt-2 min-h-touch w-[220px] max-w-full rounded-[4px] border border-[var(--home-rule)] bg-[var(--home-paper)] px-3 font-mono text-xs text-[var(--home-ink)] placeholder:text-[var(--home-ink-muted)]"
+                      className="mt-2 min-h-touch w-[220px] max-w-full border border-[var(--c97-rule)] bg-[var(--c97-surface)] px-3 font-mono text-xs text-[var(--c97-ink)] placeholder:text-[var(--c97-ink-2)]"
                     />
                   </div>
                   {board === "flex" ? (
@@ -803,8 +803,8 @@ export function WeeklyBoardClient({
                             onClick={() => setPositionFilter(option)}
                             className={`${TOGGLE_CLASS} ${
                               positionFilter === option
-                                ? "border-[var(--home-ink)] bg-[var(--home-ink)] text-[var(--home-paper)]"
-                                : "border-[var(--home-rule)] bg-[var(--home-paper)] text-[var(--home-ink-muted)]"
+                                ? "border-[var(--c97-ink)] bg-[var(--c97-ink)] text-[var(--c97-surface)]"
+                                : "border-[var(--c97-rule)] bg-[var(--c97-surface)] text-[var(--c97-ink-2)]"
                             }`}
                           >
                             {option === "ALL" ? "All" : option}
@@ -815,7 +815,7 @@ export function WeeklyBoardClient({
                   ) : null}
                 </div>
                 {players.length === 0 ? (
-                  <p className="mt-4 text-sm text-[var(--home-ink-muted)]">
+                  <p className="mt-4 text-sm text-[var(--c97-ink-2)]">
                     This board published with no rows, which usually means the
                     source page came back empty. Check back after the next
                     refresh, or use the other board until then.
@@ -843,7 +843,7 @@ export function WeeklyBoardClient({
                           setSearchQuery("");
                           setPositionFilter("ALL");
                         }}
-                        className={`${TOGGLE_CLASS} mt-3 border-[var(--home-rule)] bg-[var(--home-paper-alt)] text-[var(--home-ink)] hover:border-[var(--home-signal)]`}
+                        className={`${TOGGLE_CLASS} mt-3 border-[var(--c97-rule)] bg-[var(--c97-field)] text-[var(--c97-ink)] hover:border-[var(--c97-accent)]`}
                       >
                         Show all players
                       </button>
@@ -855,7 +855,7 @@ export function WeeklyBoardClient({
                       <table className="mt-3 w-full border-collapse text-sm">
                         <caption className="sr-only">{rankingsCaption}</caption>
                         <thead>
-                          <tr className="text-left font-mono text-3xs uppercase tracking-[0.12em] text-[var(--home-ink-muted)]">
+                          <tr className="text-left font-mono text-3xs uppercase tracking-[0.12em] text-[var(--c97-ink-2)]">
                             <th
                               scope="col"
                               className={`${STICKY_HEADER_CLASS} py-2 pr-3 text-right`}
@@ -897,19 +897,19 @@ export function WeeklyBoardClient({
                           {visiblePlayers.map((player) => (
                             <tr
                               key={player.id}
-                              className="border-b border-[var(--home-rule)]"
+                              className="border-b border-[var(--c97-rule)]"
                             >
-                              <td className="py-2 pr-3 text-right font-mono tabular-nums text-[var(--home-ink-muted)]">
+                              <td className="py-2 pr-3 text-right font-mono tabular-nums text-[var(--c97-ink-2)]">
                                 {player.rank}
                               </td>
                               <th
                                 scope="row"
                                 className="py-2 pr-3 text-left font-normal"
                               >
-                                <span className="font-semibold text-[var(--home-ink)]">
+                                <span className="font-semibold text-[var(--c97-ink)]">
                                   {player.name}
                                 </span>{" "}
-                                <span className="text-[var(--home-ink-muted)]">
+                                <span className="text-[var(--c97-ink-2)]">
                                   {player.position}
                                   {player.positionRank !== undefined
                                     ? player.positionRank
@@ -917,13 +917,13 @@ export function WeeklyBoardClient({
                                   {player.team}
                                 </span>
                               </th>
-                              <td className="py-2 pr-3 text-[var(--home-ink-muted)]">
+                              <td className="py-2 pr-3 text-[var(--c97-ink-2)]">
                                 {player.opponent ?? "--"}
                               </td>
-                              <td className="py-2 pr-3 text-right font-mono tabular-nums text-[var(--home-ink-muted)]">
+                              <td className="py-2 pr-3 text-right font-mono tabular-nums text-[var(--c97-ink-2)]">
                                 {formatSpread(player)}
                               </td>
-                              <td className="py-2 text-right font-mono tabular-nums text-[var(--home-ink-muted)]">
+                              <td className="py-2 text-right font-mono tabular-nums text-[var(--c97-ink-2)]">
                                 {formatOwnership(player.ownership)}
                               </td>
                             </tr>
@@ -934,23 +934,23 @@ export function WeeklyBoardClient({
                       <ol
                         role="list"
                         aria-label={rankingsCaption}
-                        className="mt-3 list-none border-t border-[var(--home-rule)] p-0"
+                        className="mt-3 list-none border-t border-[var(--c97-rule)] p-0"
                       >
                         {visiblePlayers.map((player) => (
                           <li
                             key={player.id}
-                            className="flex items-start gap-3 border-b border-[var(--home-rule)] py-2.5"
+                            className="flex items-start gap-3 border-b border-[var(--c97-rule)] py-2.5"
                           >
-                            <span className="w-8 shrink-0 text-right font-mono text-sm tabular-nums text-[var(--home-ink-muted)]">
+                            <span className="w-8 shrink-0 text-right font-mono text-sm tabular-nums text-[var(--c97-ink-2)]">
                               <span className="sr-only">Rank </span>
                               {player.rank}
                             </span>
                             <div className="min-w-0 flex-1">
                               <p className="text-sm">
-                                <span className="font-semibold text-[var(--home-ink)]">
+                                <span className="font-semibold text-[var(--c97-ink)]">
                                   {player.name}
                                 </span>{" "}
-                                <span className="text-[var(--home-ink-muted)]">
+                                <span className="text-[var(--c97-ink-2)]">
                                   {player.position}
                                   {player.positionRank !== undefined
                                     ? player.positionRank
@@ -990,7 +990,7 @@ export function WeeklyBoardClient({
                               ),
                             })
                           }
-                          className={`${TOGGLE_CLASS} border-[var(--home-rule)] bg-[var(--home-paper)] text-[var(--home-ink)] hover:border-[var(--home-signal)]`}
+                          className={`${TOGGLE_CLASS} border-[var(--c97-rule)] bg-[var(--c97-surface)] text-[var(--c97-ink)] hover:border-[var(--c97-accent)]`}
                         >
                           Load more ({remainingCount} left)
                         </button>
@@ -1008,7 +1008,7 @@ export function WeeklyBoardClient({
                             );
                             countLineRef.current?.focus();
                           }}
-                          className={`${TOGGLE_CLASS} border-[var(--home-rule)] bg-[var(--home-paper)] text-[var(--home-ink-muted)] hover:border-[var(--home-signal)]`}
+                          className={`${TOGGLE_CLASS} border-[var(--c97-rule)] bg-[var(--c97-surface)] text-[var(--c97-ink-2)] hover:border-[var(--c97-accent)]`}
                         >
                           Show all {filteredPlayers.length}
                         </button>
@@ -1017,7 +1017,7 @@ export function WeeklyBoardClient({
                   </>
                 )}
                 {source ? (
-                  <p className="mt-4 text-2xs text-[var(--home-ink-muted)]">
+                  <p className="mt-4 text-2xs text-[var(--c97-ink-2)]">
                     {source.playerCount} players on the{" "}
                     {describeFantasyWeeklySource(
                       source,
@@ -1037,9 +1037,9 @@ export function WeeklyBoardClient({
             dead-ends away from the rest of the fantasy tools. */}
         <nav
           aria-label="More fantasy football tools"
-          className="flex flex-wrap items-baseline gap-x-5 gap-y-2 border-t border-[var(--home-rule)] pt-3.5"
+          className="flex flex-wrap items-baseline gap-x-5 gap-y-2 border-t border-[var(--c97-rule)] pt-3.5"
         >
-          <span className="font-mono text-2xs text-[var(--home-ink-muted)]">
+          <span className="font-mono text-2xs text-[var(--c97-ink-2)]">
             More fantasy tools
           </span>
           <Link

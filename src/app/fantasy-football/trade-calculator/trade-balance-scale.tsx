@@ -37,7 +37,7 @@ export function TradeBalanceScale({ result }: { result: FantasyTradeEvaluation |
 
   return (
     <figure className="m-0" aria-label={label} role="img">
-      <svg viewBox="0 0 240 58" className="h-auto w-full text-[var(--home-ink)]" aria-hidden="true">
+      <svg viewBox="0 0 240 58" className="h-auto w-full text-[var(--c97-ink)]" aria-hidden="true">
         <rect
           x={CENTRE - BALANCED_BAND}
           y="20"
@@ -67,13 +67,13 @@ export function TradeBalanceScale({ result }: { result: FantasyTradeEvaluation |
           className="motion-safe:transition-transform motion-safe:duration-300 motion-safe:ease-out"
           style={{ transform: `translateX(${markerOffset}px)` }}
         >
-          <path d="M120 15V40" stroke="var(--home-signal)" strokeWidth="2" />
+          <path d="M120 15V40" stroke="var(--c97-accent)" strokeWidth="2" />
           <circle
             cx="120"
             cy="27.5"
             r="5.5"
-            fill="var(--home-paper)"
-            stroke="var(--home-signal)"
+            fill="var(--c97-surface)"
+            stroke="var(--c97-accent)"
             strokeWidth="3"
           />
         </g>

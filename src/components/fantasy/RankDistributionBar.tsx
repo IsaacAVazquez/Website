@@ -13,12 +13,12 @@ interface RankDistributionBarProps {
 }
 
 const SPREAD_FILL: Record<string, string> = {
-  tight: "color-mix(in srgb, var(--home-positive) 34%, var(--home-paper))",
-  mixed: "color-mix(in srgb, var(--home-signal) 46%, var(--home-paper))",
-  volatile: "color-mix(in srgb, var(--home-warning) 38%, var(--home-paper))",
+  tight: "color-mix(in srgb, var(--c97-positive) 34%, var(--c97-surface))",
+  mixed: "color-mix(in srgb, var(--c97-accent) 46%, var(--c97-surface))",
+  volatile: "color-mix(in srgb, var(--c97-warning) 38%, var(--c97-surface))",
 };
 const UNKNOWN_SPREAD_FILL =
-  "color-mix(in srgb, var(--home-ink) 22%, var(--home-paper))";
+  "color-mix(in srgb, var(--c97-ink) 22%, var(--c97-surface))";
 
 /**
  * Visualizes how widely the experts disagree about a player by plotting his
@@ -37,7 +37,7 @@ export function RankDistributionBar({ player, scaleMin, scaleMax, compact = fals
 
   if (!Number.isFinite(min) || !Number.isFinite(max)) {
     return (
-      <p className="text-xs" style={{ color: "var(--home-ink-muted)" }}>
+      <p className="text-xs" style={{ color: "var(--c97-ink-2)" }}>
         Expert range unavailable for this board.
       </p>
     );
@@ -56,31 +56,31 @@ export function RankDistributionBar({ player, scaleMin, scaleMax, compact = fals
   return (
     <div className="w-full">
       <div
-        className="relative h-2.5 w-full overflow-hidden rounded-full"
-        style={{ background: "color-mix(in srgb, var(--home-ink) 8%, var(--home-paper))" }}
+        className="relative h-2.5 w-full overflow-hidden"
+        style={{ background: "color-mix(in srgb, var(--c97-ink) 8%, var(--c97-surface))" }}
         role="img"
         aria-label={`Expert rank range ${formatRankValue(min)} to ${formatRankValue(max)}${
           avg !== undefined ? `, average ${formatRankValue(avg)}` : ""
         }`}
       >
         <span
-          className="absolute inset-y-0 rounded-full"
+          className="absolute inset-y-0"
           style={{ left: `${left}%`, width: `${Math.max(right - left, 2)}%`, background: fill }}
         />
         {avg !== undefined && (
           <span
-            className="absolute inset-y-0 w-[2px] rounded-full"
-            style={{ left: `calc(${pct(avg)}% - 1px)`, background: "var(--home-ink)" }}
+            className="absolute inset-y-0 w-[2px]"
+            style={{ left: `calc(${pct(avg)}% - 1px)`, background: "var(--c97-ink)" }}
           />
         )}
       </div>
       {!compact && (
         <div
           className="mt-1 flex items-center justify-between text-2xs font-semibold uppercase tracking-[0.1em]"
-          style={{ color: "var(--home-ink-muted)" }}
+          style={{ color: "var(--c97-ink-2)" }}
         >
           <span>Best {formatRankValue(min)}</span>
-          {avg !== undefined && <span style={{ color: "var(--home-ink)" }}>Avg {formatRankValue(avg)}</span>}
+          {avg !== undefined && <span style={{ color: "var(--c97-ink)" }}>Avg {formatRankValue(avg)}</span>}
           <span>Worst {formatRankValue(max)}</span>
         </div>
       )}

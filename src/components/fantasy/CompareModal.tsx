@@ -141,7 +141,7 @@ export function CompareModal({
       ? publishedRank(p)
       : formatRankValue(p.rankEcr ?? p.averageRank);
   const withheldToken = (
-    <span className="text-2xs font-semibold uppercase tracking-[0.1em]" style={{ color: "var(--home-ink-muted)" }}>
+    <span className="text-2xs font-semibold uppercase tracking-[0.1em]" style={{ color: "var(--c97-ink-2)" }}>
       Withheld
     </span>
   );
@@ -205,13 +205,13 @@ export function CompareModal({
             {adpAvailable ? formatAdp(p.adp) : "Unavailable"}
             {signal?.signal && (
               <span
-                className="rounded-full px-1.5 py-0.5 text-3xs font-semibold uppercase"
+                className="px-1.5 py-0.5 text-3xs font-semibold uppercase"
                 title={signal.signal === "value" ? FANTASY_VALUE_TOOLTIP : FANTASY_REACH_TOOLTIP}
                 style={{
                   background:
                     signal.signal === "value"
-                      ? "color-mix(in srgb, var(--home-positive) 16%, var(--home-paper))"
-                      : "color-mix(in srgb, var(--home-warning) 16%, var(--home-paper))",
+                      ? "color-mix(in srgb, var(--c97-positive) 16%, var(--c97-surface))"
+                      : "color-mix(in srgb, var(--c97-warning) 16%, var(--c97-surface))",
                 }}
               >
                 {signal.signal}
@@ -252,7 +252,7 @@ export function CompareModal({
           aria-label="Close compare"
           onClick={onClose}
           className="absolute inset-0 h-full w-full cursor-default"
-          style={{ background: "color-mix(in srgb, var(--home-ink) 42%, transparent)" }}
+          style={{ background: "color-mix(in srgb, var(--c97-ink) 42%, transparent)" }}
           tabIndex={-1}
         />
         <motion.div
@@ -265,20 +265,20 @@ export function CompareModal({
           animate={{ opacity: 1, y: 0, scale: 1 }}
           exit={reduceMotion ? { opacity: 0 } : { opacity: 0, y: 18, scale: 0.98 }}
           transition={{ duration: reduceMotion ? 0 : 0.22, ease: [0.25, 0.46, 0.45, 0.94] }}
-          className="relative max-h-[88vh] w-full max-w-2xl overscroll-contain overflow-auto rounded-[var(--radius-3xl)] border p-5"
-          style={{ borderColor: "var(--home-rule)", background: "var(--home-paper)", boxShadow: "var(--shadow-xl)" }}
+          className="relative max-h-[88vh] w-full max-w-2xl overscroll-contain overflow-auto border p-5"
+          style={{ borderColor: "var(--c97-rule)", background: "var(--c97-surface)", boxShadow: "var(--shadow-xl)" }}
         >
           <div className="mb-4 flex items-center justify-between">
             <div>
-              <p className="home-kicker mb-0">Side by side</p>
+              <p className="c97-kicker mb-0">Side by side</p>
               <h2 className="text-xl font-semibold">Compare players</h2>
             </div>
             <button
               type="button"
               onClick={onClose}
               aria-label="Close"
-              className="inline-flex min-h-touch min-w-touch items-center justify-center rounded-full border"
-              style={{ borderColor: "var(--home-rule)", background: "var(--home-paper)" }}
+              className="inline-flex min-h-touch min-w-touch items-center justify-center border"
+              style={{ borderColor: "var(--c97-rule)", background: "var(--c97-surface)" }}
             >
               <X size={18} aria-hidden="true" />
             </button>
@@ -322,7 +322,7 @@ export function CompareModal({
                     column of bare numbers. The labels are the last thing
                     allowed to leave.
                   */}
-                  <th scope="col" className="sticky left-0 z-10" style={{ background: "var(--home-paper)" }}>
+                  <th scope="col" className="sticky left-0 z-10" style={{ background: "var(--c97-surface)" }}>
                     <span className="sr-only">Metric</span>
                   </th>
                   {players.map((player) => (
@@ -341,12 +341,12 @@ export function CompareModal({
                       className="h-full p-0 pl-2 align-top font-normal"
                     >
                       <div
-                        className="flex h-full flex-col items-start gap-1 rounded-[var(--radius-3xl)] border p-2.5"
-                        style={{ borderColor: "var(--home-rule)", background: "color-mix(in srgb, var(--home-paper) 88%, var(--home-elev-mix))" }}
+                        className="flex h-full flex-col items-start gap-1 border p-2.5"
+                        style={{ borderColor: "var(--c97-rule)", background: "color-mix(in srgb, var(--c97-surface) 88%, var(--c97-field))" }}
                       >
                         <div className="flex w-full items-start justify-between gap-1">
                           <span
-                            className="inline-flex items-center rounded-full border px-2 py-0.5 text-3xs font-semibold uppercase tracking-[0.1em]"
+                            className="inline-flex items-center border px-2 py-0.5 text-3xs font-semibold uppercase tracking-[0.1em]"
                             style={getPositionTone(player.position)}
                           >
                             {player.position}
@@ -355,8 +355,8 @@ export function CompareModal({
                             type="button"
                             onClick={() => onRemove(player.id)}
                             aria-label={`Remove ${player.name} from compare`}
-                            className="inline-flex min-h-touch min-w-touch items-center justify-center rounded-full border"
-                            style={{ borderColor: "var(--home-rule)" }}
+                            className="inline-flex min-h-touch min-w-touch items-center justify-center border"
+                            style={{ borderColor: "var(--c97-rule)" }}
                           >
                             <X size={12} aria-hidden="true" />
                           </button>
@@ -368,7 +368,7 @@ export function CompareModal({
                             one-line name left its card 20px shorter than the
                             one beside it and the bottom edge came out ragged. */}
                         <span className="min-h-[2lh] text-sm font-semibold leading-tight">{player.name}</span>
-                        <span className="text-2xs" style={{ color: "var(--home-ink-muted)" }}>
+                        <span className="text-2xs" style={{ color: "var(--c97-ink-2)" }}>
                           {player.team}
                         </span>
                       </div>
@@ -384,7 +384,7 @@ export function CompareModal({
                       <th
                         scope="row"
                         className="sticky left-0 z-10 py-2 pr-2 text-2xs font-semibold uppercase tracking-[0.1em]"
-                        style={{ color: "var(--home-ink-muted)", background: "var(--home-paper)" }}
+                        style={{ color: "var(--c97-ink-2)", background: "var(--c97-surface)" }}
                       >
                         {row.label}
                       </th>
@@ -393,10 +393,10 @@ export function CompareModal({
                           key={player.id}
                           className="border-t py-2 pl-2 text-sm font-semibold tabular-nums"
                           style={{
-                            borderColor: "var(--home-rule)",
+                            borderColor: "var(--c97-rule)",
                             background:
                               winner === index
-                                ? "color-mix(in srgb, var(--home-signal) 18%, transparent)"
+                                ? "color-mix(in srgb, var(--c97-accent) 18%, transparent)"
                                 : "transparent",
                           }}
                         >
@@ -424,12 +424,12 @@ export function CompareModal({
                     <th
                       scope="row"
                       className="sticky left-0 z-10 py-3 pr-2 align-top text-2xs font-semibold uppercase tracking-[0.1em]"
-                      style={{ color: "var(--home-ink-muted)", background: "var(--home-paper)" }}
+                      style={{ color: "var(--c97-ink-2)", background: "var(--c97-surface)" }}
                     >
                       Range
                     </th>
                     {players.map((player) => (
-                      <td key={player.id} className="border-t py-3 pl-2" style={{ borderColor: "var(--home-rule)" }}>
+                      <td key={player.id} className="border-t py-3 pl-2" style={{ borderColor: "var(--c97-rule)" }}>
                         <RankDistributionBar player={player} scaleMin={scaleMin} scaleMax={scaleMax} compact />
                       </td>
                     ))}
@@ -439,7 +439,7 @@ export function CompareModal({
             </table>
           </div>
 
-          <p className="mt-4 text-2xs" style={{ color: "var(--home-ink-muted)" }}>
+          <p className="mt-4 text-2xs" style={{ color: "var(--c97-ink-2)" }}>
             Best marks the stronger value on a row, meaning a lower rank or ADP and a higher rostered percentage.
             Differences too small to act on stay unmarked, so a tier apart counts and a tenth of a point of rostered
             does not. Range bars share one scale, so a wider fill means more expert disagreement.

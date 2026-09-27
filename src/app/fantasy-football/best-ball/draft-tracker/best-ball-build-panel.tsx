@@ -9,14 +9,14 @@ import type { DraftValueReport } from "@/lib/fantasyTeamValue";
 const POSITIONS = ["QB", "RB", "WR", "TE"] as const;
 
 const PANEL_TILE_STYLE = {
-  borderColor: "var(--home-rule)",
-  background: "color-mix(in srgb, var(--home-paper-alt) 62%, var(--home-elev-mix))",
+  borderColor: "var(--c97-rule)",
+  background: "color-mix(in srgb, var(--c97-field) 62%, var(--c97-field))",
 } as const;
 
 function targetTone(drafted: number, minimum: number, maximum: number): string {
-  if (drafted > maximum) return "var(--home-negative)";
-  if (drafted >= minimum) return "var(--home-positive)";
-  return "var(--home-ink-muted)";
+  if (drafted > maximum) return "var(--c97-negative)";
+  if (drafted >= minimum) return "var(--c97-positive)";
+  return "var(--c97-ink-2)";
 }
 
 export function BestBallBuildPanel({
@@ -53,11 +53,11 @@ export function BestBallBuildPanel({
   return (
     <div className="grid gap-4">
       <div>
-        <p className="home-kicker mb-1">My build</p>
+        <p className="c97-kicker mb-1">My build</p>
         <h2 id={headingId} className="text-xl font-semibold">
           {userPicks.length} of {preset.rosterSize} players
         </h2>
-        <p className="mt-2 text-sm leading-6" style={{ color: "var(--home-ink-muted)" }}>
+        <p className="mt-2 text-sm leading-6" style={{ color: "var(--c97-ink-2)" }}>
           {nextUserPick
             ? `Your next pick is ${nextUserPick}. The room is ${completion}% complete.`
             : "Your roster is complete."}
@@ -65,10 +65,10 @@ export function BestBallBuildPanel({
       </div>
 
       <div>
-        <div className="h-2 overflow-hidden rounded-full" style={{ background: "var(--home-stone)" }}>
+        <div className="h-2 overflow-hidden" style={{ background: "var(--c97-rule)" }}>
           <div
-            className="h-full rounded-full"
-            style={{ width: `${completion}%`, background: "var(--home-signal)" }}
+            className="h-full"
+            style={{ width: `${completion}%`, background: "var(--c97-accent)" }}
             role="progressbar"
             aria-label="Draft room completion"
             aria-valuemin={0}
@@ -78,7 +78,7 @@ export function BestBallBuildPanel({
         </div>
       </div>
 
-      <div className="border-t pt-4" style={{ borderColor: "var(--home-rule)" }}>
+      <div className="border-t pt-4" style={{ borderColor: "var(--c97-rule)" }}>
         <DraftValuePanel
           report={draftValue}
           unavailableReason={draftValueUnavailableReason}
@@ -102,7 +102,7 @@ export function BestBallBuildPanel({
             return (
               <div
                 key={position}
-                className="rounded-[var(--radius-2xl)] border px-3 py-3"
+                className="border px-3 py-3"
                 style={PANEL_TILE_STYLE}
               >
                 <div className="flex items-center justify-between gap-2">
@@ -114,10 +114,10 @@ export function BestBallBuildPanel({
                     {target.drafted} / {target.recommended}
                   </span>
                 </div>
-                <p className="mt-1 text-2xs" style={{ color: "var(--home-ink-muted)" }}>
+                <p className="mt-1 text-2xs" style={{ color: "var(--c97-ink-2)" }}>
                   Range {target.minimum} to {target.maximum}
                 </p>
-                <p className="mt-2 text-2xs leading-5" style={{ color: "var(--home-ink-muted)" }}>
+                <p className="mt-2 text-2xs leading-5" style={{ color: "var(--c97-ink-2)" }}>
                   {target.reason}
                 </p>
               </div>
@@ -125,7 +125,7 @@ export function BestBallBuildPanel({
           })}
         </div>
         {analysis.targets.reasons.length > 0 ? (
-          <ul className="mt-3 grid gap-1 text-xs leading-5" style={{ color: "var(--home-ink-muted)" }}>
+          <ul className="mt-3 grid gap-1 text-xs leading-5" style={{ color: "var(--c97-ink-2)" }}>
             {analysis.targets.reasons.map((reason) => (
               <li key={reason}>{reason}</li>
             ))}
@@ -142,11 +142,11 @@ export function BestBallBuildPanel({
             {analysis.stacks.slice(0, 4).map((stack) => (
               <div
                 key={stack.team}
-                className="rounded-[var(--radius-2xl)] border px-3 py-3 text-xs leading-5"
+                className="border px-3 py-3 text-xs leading-5"
                 style={PANEL_TILE_STYLE}
               >
                 <span className="font-semibold">{stack.team}</span>{" "}
-                <span style={{ color: "var(--home-ink-muted)" }}>
+                <span style={{ color: "var(--c97-ink-2)" }}>
                   {stack.quarterbacks.map((player) => player.name).join(", ")} with{" "}
                   {stack.passCatchers.map((player) => player.name).join(", ")}
                 </span>
@@ -154,7 +154,7 @@ export function BestBallBuildPanel({
             ))}
           </div>
         ) : (
-          <p className="mt-2 text-xs leading-5" style={{ color: "var(--home-ink-muted)" }}>
+          <p className="mt-2 text-xs leading-5" style={{ color: "var(--c97-ink-2)" }}>
             A quarterback paired with one of his pass catchers will appear here.
           </p>
         )}
@@ -169,14 +169,14 @@ export function BestBallBuildPanel({
             {analysis.byeConflicts.slice(0, 3).map((conflict) => (
               <div
                 key={conflict.byeWeek}
-                className="rounded-[var(--radius-2xl)] border px-3 py-3 text-xs leading-5"
+                className="border px-3 py-3 text-xs leading-5"
                 style={{
                   ...PANEL_TILE_STYLE,
-                  borderColor: "color-mix(in srgb, var(--home-warning) 45%, var(--home-rule))",
+                  borderColor: "color-mix(in srgb, var(--c97-warning) 45%, var(--c97-rule))",
                 }}
               >
                 <span className="font-semibold">Week {conflict.byeWeek}</span>{" "}
-                <span style={{ color: "var(--home-ink-muted)" }}>
+                <span style={{ color: "var(--c97-ink-2)" }}>
                   {conflict.count} players, including{" "}
                   {conflict.players.slice(0, 3).map((player) => player.name).join(", ")}
                 </span>
@@ -184,7 +184,7 @@ export function BestBallBuildPanel({
             ))}
           </div>
         ) : (
-          <p className="mt-2 text-xs leading-5" style={{ color: "var(--home-ink-muted)" }}>
+          <p className="mt-2 text-xs leading-5" style={{ color: "var(--c97-ink-2)" }}>
             No bye overlap is showing yet.
           </p>
         )}
@@ -195,7 +195,7 @@ export function BestBallBuildPanel({
           Week 17 correlation
         </h3>
         {usesWeek17Correlation && !week17Available ? (
-          <p className="mt-2 text-xs leading-5" style={{ color: "var(--home-ink-muted)" }}>
+          <p className="mt-2 text-xs leading-5" style={{ color: "var(--c97-ink-2)" }}>
             Week 17 guidance is paused until the published schedule refreshes.
           </p>
         ) : usesWeek17Correlation && analysis.week17Pairs.length > 0 ? (
@@ -203,11 +203,11 @@ export function BestBallBuildPanel({
             {analysis.week17Pairs.slice(0, 3).map((pair) => (
               <div
                 key={pair.teams.join("-")}
-                className="rounded-[var(--radius-2xl)] border px-3 py-3 text-xs leading-5"
+                className="border px-3 py-3 text-xs leading-5"
                 style={PANEL_TILE_STYLE}
               >
                 <span className="font-semibold">{pair.teams.join(" vs ")}</span>
-                <p className="mt-1" style={{ color: "var(--home-ink-muted)" }}>
+                <p className="mt-1" style={{ color: "var(--c97-ink-2)" }}>
                   {pair.teams
                     .flatMap((team) => pair.playersByTeam[team] ?? [])
                     .map((player) => player.name)
@@ -217,7 +217,7 @@ export function BestBallBuildPanel({
             ))}
           </div>
         ) : (
-          <p className="mt-2 text-xs leading-5" style={{ color: "var(--home-ink-muted)" }}>
+          <p className="mt-2 text-xs leading-5" style={{ color: "var(--c97-ink-2)" }}>
             {usesWeek17Correlation
               ? "Use this as a close call tiebreaker after the main roster needs are covered."
               : "This contest profile does not add a separate Week 17 opponent adjustment."}
@@ -234,18 +234,18 @@ export function BestBallBuildPanel({
             {[...userPicks].reverse().map((pick) => (
               <li
                 key={pick.pickNumber}
-                className="flex items-center justify-between gap-3 rounded-[var(--radius-2xl)] border px-3 py-3 text-xs"
+                className="flex items-center justify-between gap-3 border px-3 py-3 text-xs"
                 style={PANEL_TILE_STYLE}
               >
                 <span className="min-w-0 truncate font-semibold">{pick.player.name}</span>
-                <span className="shrink-0 tabular-nums" style={{ color: "var(--home-ink-muted)" }}>
+                <span className="shrink-0 tabular-nums" style={{ color: "var(--c97-ink-2)" }}>
                   {pick.player.position} {pick.pickNumber}
                 </span>
               </li>
             ))}
           </ol>
         ) : (
-          <p className="mt-2 text-xs leading-5" style={{ color: "var(--home-ink-muted)" }}>
+          <p className="mt-2 text-xs leading-5" style={{ color: "var(--c97-ink-2)" }}>
             Your selections will appear here as you log the room.
           </p>
         )}

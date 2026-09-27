@@ -47,16 +47,16 @@ interface DraftSetupProps {
 const START_ARM_TIMEOUT_MS = 5000;
 
 const FIELD_CLASS =
-  "min-h-touch w-full rounded border px-3 font-mono text-xs transition-[background-color,border-color,box-shadow] duration-200";
+  "min-h-touch w-full border px-3 font-mono text-xs transition-[background-color,border-color,box-shadow] duration-200";
 
 const FIELD_STYLE: CSSProperties = {
-  borderColor: "var(--home-rule)",
-  background: "var(--home-paper)",
-  color: "var(--home-ink)",
+  borderColor: "var(--c97-rule)",
+  background: "var(--c97-surface)",
+  color: "var(--c97-ink)",
 };
 
 const PILL_BUTTON_CLASS =
-  "inline-flex min-h-touch items-center justify-center rounded-full border px-3.5 font-mono text-2xs uppercase tracking-[0.06em]";
+  "inline-flex min-h-touch items-center justify-center border px-3.5 font-mono text-2xs uppercase tracking-[0.06em]";
 
 const SCORING_OPTIONS: { value: ScoringFormat; label: string }[] = [
   { value: "PPR", label: "PPR" },
@@ -106,7 +106,7 @@ function SegmentedButtons<Value extends string | number>({
   onSelect: (value: Value) => void;
 }) {
   return (
-    <div className="inline-flex overflow-hidden rounded border" style={{ borderColor: "var(--home-rule)" }}>
+    <div className="inline-flex overflow-hidden border" style={{ borderColor: "var(--c97-rule)" }}>
       {options.map((option) => {
         const active = option.value === value;
         return (
@@ -118,8 +118,8 @@ function SegmentedButtons<Value extends string | number>({
             className="min-h-touch flex-1 px-2.5 font-mono text-2xs uppercase tracking-[0.06em]"
             style={
               active
-                ? { background: "var(--home-ink)", color: "var(--home-paper)" }
-                : { background: "transparent", color: "var(--home-ink)" }
+                ? { background: "var(--c97-ink)", color: "var(--c97-surface)" }
+                : { background: "transparent", color: "var(--c97-ink)" }
             }
           >
             {option.label}
@@ -276,15 +276,15 @@ export function DraftSetup({
 
   return (
     <div
-      className="overflow-hidden rounded-lg border"
-      style={{ borderColor: "var(--home-rule)", background: "var(--home-paper-raised)" }}
+      className="overflow-hidden border"
+      style={{ borderColor: "var(--c97-rule)", background: "var(--c97-field)" }}
     >
       <div
         className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-2 border-b px-4 py-3.5 sm:px-5"
-        style={{ borderColor: "var(--home-rule)" }}
+        style={{ borderColor: "var(--c97-rule)" }}
       >
         <div className="min-w-0">
-          <p className={MONO_LABEL_CLASS} style={{ color: "var(--home-ink-muted)" }}>
+          <p className={MONO_LABEL_CLASS} style={{ color: "var(--c97-ink-2)" }}>
             Room setup
           </p>
           <h2 className="mt-1 text-xl font-semibold tracking-[-0.03em]">One screen, then draft.</h2>
@@ -294,7 +294,7 @@ export function DraftSetup({
             type="button"
             onClick={onResume}
             className={PILL_BUTTON_CLASS}
-            style={{ borderColor: "var(--home-rule)", background: "var(--home-paper)", color: "var(--home-ink)" }}
+            style={{ borderColor: "var(--c97-rule)", background: "var(--c97-surface)", color: "var(--c97-ink)" }}
           >
             Back to room →
           </button>
@@ -303,9 +303,9 @@ export function DraftSetup({
 
       <div
         className="grid gap-2.5 border-b px-4 py-3.5 sm:px-5"
-        style={{ borderColor: "var(--home-rule)" }}
+        style={{ borderColor: "var(--c97-rule)" }}
       >
-        <span className={MONO_LABEL_CLASS} style={{ color: "var(--home-ink-muted)" }}>
+        <span className={MONO_LABEL_CLASS} style={{ color: "var(--c97-ink-2)" }}>
           League presets
         </span>
         {presets.length > 0 ? (
@@ -313,8 +313,8 @@ export function DraftSetup({
             {presets.map((preset) => (
               <span
                 key={preset.id}
-                className="inline-flex items-center overflow-hidden rounded-full border"
-                style={{ borderColor: "var(--home-rule)", background: "var(--home-paper)" }}
+                className="inline-flex items-center overflow-hidden border"
+                style={{ borderColor: "var(--c97-rule)", background: "var(--c97-surface)" }}
               >
                 <button
                   type="button"
@@ -322,7 +322,7 @@ export function DraftSetup({
                   title={describeDraftPreset(preset)}
                   aria-label={`Apply preset ${preset.name}`}
                   className="inline-flex min-h-touch items-center px-3 font-mono text-2xs"
-                  style={{ color: "var(--home-ink)" }}
+                  style={{ color: "var(--c97-ink)" }}
                 >
                   {preset.name}
                 </button>
@@ -331,7 +331,7 @@ export function DraftSetup({
                   onClick={() => deletePreset(preset.id)}
                   aria-label={`Delete preset ${preset.name}`}
                   className="inline-flex min-h-touch min-w-touch items-center justify-center border-l"
-                  style={{ borderColor: "var(--home-rule)", color: "var(--home-ink-muted)" }}
+                  style={{ borderColor: "var(--c97-rule)", color: "var(--c97-ink-2)" }}
                 >
                   ×
                 </button>
@@ -351,19 +351,19 @@ export function DraftSetup({
             maxLength={40}
             placeholder="Name these settings"
             autoComplete="off"
-            className="min-h-touch w-56 rounded border px-3 font-mono text-xs"
+            className="min-h-touch w-56 border px-3 font-mono text-xs"
             style={FIELD_STYLE}
           />
           <button
             type="button"
             onClick={saveCurrentPreset}
             className={PILL_BUTTON_CLASS}
-            style={{ borderColor: "var(--home-rule)", background: "var(--home-paper)", color: "var(--home-ink)" }}
+            style={{ borderColor: "var(--c97-rule)", background: "var(--c97-surface)", color: "var(--c97-ink)" }}
           >
             Save current settings
           </button>
         </div>
-        <p className="m-0 font-mono text-3xs leading-relaxed" style={{ color: "var(--home-ink-muted)" }}>
+        <p className="m-0 font-mono text-3xs leading-relaxed" style={{ color: "var(--c97-ink-2)" }}>
           A preset stores teams, slot, rounds, scoring, order, clock, lineup, and league name on
           this device. Applying one fills the form and starts nothing.
         </p>
@@ -374,7 +374,7 @@ export function DraftSetup({
         style={{ gridTemplateColumns: "repeat(auto-fit, minmax(210px, 1fr))" }}
       >
         <label className="grid content-start gap-1.5 text-sm" htmlFor="draft-league-name">
-          <span className={MONO_LABEL_CLASS} style={{ color: "var(--home-ink-muted)" }}>
+          <span className={MONO_LABEL_CLASS} style={{ color: "var(--c97-ink-2)" }}>
             League name
           </span>
           <input
@@ -391,7 +391,7 @@ export function DraftSetup({
         </label>
 
         <label className="grid content-start gap-1.5 text-sm" htmlFor="draft-total-teams">
-          <span className={MONO_LABEL_CLASS} style={{ color: "var(--home-ink-muted)" }}>
+          <span className={MONO_LABEL_CLASS} style={{ color: "var(--c97-ink-2)" }}>
             Teams
           </span>
           <select
@@ -411,7 +411,7 @@ export function DraftSetup({
         </label>
 
         <label className="grid content-start gap-1.5 text-sm" htmlFor="draft-user-team">
-          <span className={MONO_LABEL_CLASS} style={{ color: "var(--home-ink-muted)" }}>
+          <span className={MONO_LABEL_CLASS} style={{ color: "var(--c97-ink-2)" }}>
             Your draft slot
           </span>
           <select
@@ -431,7 +431,7 @@ export function DraftSetup({
         </label>
 
         <label className="grid content-start gap-1.5 text-sm" htmlFor="draft-rounds">
-          <span className={MONO_LABEL_CLASS} style={{ color: "var(--home-ink-muted)" }}>
+          <span className={MONO_LABEL_CLASS} style={{ color: "var(--c97-ink-2)" }}>
             Rounds
           </span>
           <select
@@ -451,14 +451,14 @@ export function DraftSetup({
         </label>
 
         <div className="grid content-start gap-1.5 text-sm">
-          <span className={MONO_LABEL_CLASS} style={{ color: "var(--home-ink-muted)" }}>
+          <span className={MONO_LABEL_CLASS} style={{ color: "var(--c97-ink-2)" }}>
             Scoring
           </span>
           <SegmentedButtons options={SCORING_OPTIONS} value={formState.scoringFormat} onSelect={updateScoringFormat} />
         </div>
 
         <div className="grid content-start gap-1.5 text-sm">
-          <span className={MONO_LABEL_CLASS} style={{ color: "var(--home-ink-muted)" }}>
+          <span className={MONO_LABEL_CLASS} style={{ color: "var(--c97-ink-2)" }}>
             Draft order
           </span>
           <SegmentedButtons
@@ -469,7 +469,7 @@ export function DraftSetup({
         </div>
 
         <div className="grid content-start gap-1.5 text-sm">
-          <span className={MONO_LABEL_CLASS} style={{ color: "var(--home-ink-muted)" }}>
+          <span className={MONO_LABEL_CLASS} style={{ color: "var(--c97-ink-2)" }}>
             Pick clock · advisory
           </span>
           <SegmentedButtons
@@ -488,7 +488,7 @@ export function DraftSetup({
       </div>
 
       <fieldset className="grid gap-2.5 px-4 pb-4 sm:px-5">
-        <legend className={`${MONO_LABEL_CLASS} mb-2`} style={{ color: "var(--home-ink-muted)" }}>
+        <legend className={`${MONO_LABEL_CLASS} mb-2`} style={{ color: "var(--c97-ink-2)" }}>
           Starting lineup
         </legend>
         <div className="grid gap-2" style={{ gridTemplateColumns: "repeat(auto-fit, minmax(190px, 1fr))" }}>
@@ -500,11 +500,11 @@ export function DraftSetup({
                 type="button"
                 aria-pressed={active}
                 onClick={() => updateField("lineup", { ...preset.lineup })}
-                className="min-h-[56px] rounded border px-3 py-2 text-left"
+                className="min-h-[56px] border px-3 py-2 text-left"
                 style={
                   active
-                    ? { borderColor: "var(--home-ink)", background: "var(--home-ink)", color: "var(--home-paper)" }
-                    : { borderColor: "var(--home-rule)", background: "var(--home-paper)", color: "var(--home-ink)" }
+                    ? { borderColor: "var(--c97-ink)", background: "var(--c97-ink)", color: "var(--c97-surface)" }
+                    : { borderColor: "var(--c97-rule)", background: "var(--c97-surface)", color: "var(--c97-ink)" }
                 }
               >
                 <span className="block text-sm font-semibold tracking-[-0.01em]">{preset.label}</span>
@@ -512,8 +512,8 @@ export function DraftSetup({
                   className="mt-0.5 block font-mono text-3xs tracking-[0.04em]"
                   style={{
                     color: active
-                      ? "color-mix(in srgb, var(--home-paper) 75%, transparent)"
-                      : "var(--home-ink-muted)",
+                      ? "color-mix(in srgb, var(--c97-surface) 75%, transparent)"
+                      : "var(--c97-ink-2)",
                   }}
                 >
                   {preset.description}
@@ -528,7 +528,7 @@ export function DraftSetup({
             one-QB rankings only, so Superflex rooms are not modeled here. */}
         <div className="grid gap-x-4 gap-y-2.5" style={{ gridTemplateColumns: "repeat(auto-fit, minmax(150px, 1fr))" }}>
           <div className="grid content-start gap-1.5 text-sm">
-            <span className={MONO_LABEL_CLASS} style={{ color: "var(--home-ink-muted)" }}>
+            <span className={MONO_LABEL_CLASS} style={{ color: "var(--c97-ink-2)" }}>
               Quarterbacks
             </span>
             <span className="py-2.5 font-mono text-xs">1</span>
@@ -539,7 +539,7 @@ export function DraftSetup({
               className="grid content-start gap-1.5 text-sm"
               htmlFor={`lineup-${field.key.toLowerCase()}`}
             >
-              <span className={MONO_LABEL_CLASS} style={{ color: "var(--home-ink-muted)" }}>
+              <span className={MONO_LABEL_CLASS} style={{ color: "var(--c97-ink-2)" }}>
                 {field.label}
               </span>
               <select
@@ -562,10 +562,10 @@ export function DraftSetup({
 
       <div
         className="flex flex-wrap items-center justify-between gap-x-4 gap-y-2.5 border-t px-4 py-3.5 sm:px-5"
-        style={{ borderColor: "var(--home-rule)", background: "var(--home-paper)" }}
+        style={{ borderColor: "var(--c97-rule)", background: "var(--c97-surface)" }}
       >
         <div className="grid min-w-0 gap-1.5">
-          <p className="m-0 font-mono text-2xs leading-relaxed" style={{ color: "var(--home-ink-muted)" }}>
+          <p className="m-0 font-mono text-2xs leading-relaxed" style={{ color: "var(--c97-ink-2)" }}>
             {summary}
           </p>
           {rankingsStatus === "loading" ? (
@@ -574,14 +574,14 @@ export function DraftSetup({
             </p>
           ) : rankingsStatus === "error" ? (
             <div role="alert" className="flex flex-wrap items-center gap-2 text-sm">
-              <p className="m-0 font-semibold" style={{ color: "var(--home-negative)" }}>
+              <p className="m-0 font-semibold" style={{ color: "var(--c97-negative)" }}>
                 {rankingsError ?? "Fantasy rankings are unavailable right now."}
               </p>
               <button
                 type="button"
                 onClick={onRetryRankings}
                 className={PILL_BUTTON_CLASS}
-                style={{ borderColor: "var(--home-rule)", background: "var(--home-paper)", color: "var(--home-ink)" }}
+                style={{ borderColor: "var(--c97-rule)", background: "var(--c97-surface)", color: "var(--c97-ink)" }}
               >
                 Retry rankings
               </button>
@@ -595,7 +595,7 @@ export function DraftSetup({
             <p
               role="status"
               className="m-0 max-w-[60ch] text-sm font-semibold leading-6"
-              style={{ color: "var(--home-negative)" }}
+              style={{ color: "var(--c97-negative)" }}
             >
               Starting clears the {parkedPickCount}{" "}
               {parkedPickCount === 1 ? "pick" : "picks"} already logged in the parked room, and undo
@@ -615,15 +615,15 @@ export function DraftSetup({
                 ? "Start draft, which clears the parked room"
                 : undefined
           }
-          className="inline-flex min-h-touch items-center justify-center rounded-full border px-5 font-mono text-2xs uppercase tracking-[0.08em] disabled:cursor-not-allowed disabled:opacity-70"
+          className="inline-flex min-h-touch items-center justify-center border px-5 font-mono text-2xs uppercase tracking-[0.08em] disabled:cursor-not-allowed disabled:opacity-70"
           style={
             startArmed
               ? {
-                  borderColor: "var(--home-negative)",
-                  background: "var(--home-negative)",
-                  color: "var(--home-paper)",
+                  borderColor: "var(--c97-negative)",
+                  background: "var(--c97-negative)",
+                  color: "var(--c97-surface)",
                 }
-              : { borderColor: "var(--home-ink)", background: "var(--home-ink)", color: "var(--home-paper)" }
+              : { borderColor: "var(--c97-ink)", background: "var(--c97-ink)", color: "var(--c97-surface)" }
           }
         >
           {isStarting

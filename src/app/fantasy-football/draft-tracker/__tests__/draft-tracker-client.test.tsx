@@ -187,7 +187,7 @@ describe("DraftTrackerClient", () => {
   it("renders the editorial shell and sourced-only draft board copy", () => {
     const { container } = render(<DraftTrackerClient />);
 
-    expect(container.firstChild).toHaveClass("home-page");
+    expect(container.firstChild).toHaveClass("c97-dash");
     // This fixture is a running draft (one pick logged, isActive), so the
     // header kicker reads live state and the fascia carries the pick number,
     // the team on the clock, and the advisory clock.

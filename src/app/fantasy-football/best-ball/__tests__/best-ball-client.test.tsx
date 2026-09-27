@@ -157,7 +157,7 @@ describe("BestBallClient", () => {
       <BestBallClient initialState={{ contest: "superflex", position: "all", query: "" }} />,
     );
 
-    expect(container.firstChild).toHaveClass("home-page");
+    expect(container.firstChild).toHaveClass("c97-dash");
     expect(screen.getByRole("button", { name: "Superflex" })).toHaveAttribute("aria-pressed", "true");
     expect(screen.getByRole("heading", { name: "Superflex", level: 2 })).toBeInTheDocument();
     expect(screen.getAllByText(/Week 17/).length).toBeGreaterThan(0);

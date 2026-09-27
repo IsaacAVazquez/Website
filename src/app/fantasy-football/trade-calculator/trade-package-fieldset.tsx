@@ -39,16 +39,16 @@ export function TradePackageFieldset({
   const atLimit = playerIds.length >= FANTASY_TRADE_MAX_PLAYERS_PER_SIDE;
 
   return (
-    <fieldset className="min-w-0 rounded-[var(--radius-3xl)] border border-[var(--home-rule)] bg-[var(--home-paper)] px-4 pb-4 pt-2 sm:px-5 sm:pb-5">
+    <fieldset className="min-w-0 border border-[var(--c97-rule)] bg-[var(--c97-surface)] px-4 pb-4 pt-2 sm:px-5 sm:pb-5">
       <legend className="px-1">
-        <span className="text-xl font-semibold tracking-[-0.03em] text-[var(--home-ink)]">
+        <span className="text-xl font-semibold tracking-[-0.03em] text-[var(--c97-ink)]">
           {legend}
         </span>
       </legend>
       <div className="mt-1 flex items-start justify-between gap-3">
-        <p className="max-w-[32ch] text-sm leading-6 text-[var(--home-ink-muted)]">{description}</p>
+        <p className="max-w-[32ch] text-sm leading-6 text-[var(--c97-ink-2)]">{description}</p>
         <span
-          className="shrink-0 font-mono text-2xs uppercase tracking-[0.12em] text-[var(--home-ink-muted)]"
+          className="shrink-0 font-mono text-2xs uppercase tracking-[0.12em] text-[var(--c97-ink-2)]"
           aria-live="polite"
         >
           {playerIds.length}/{FANTASY_TRADE_MAX_PLAYERS_PER_SIDE}
@@ -67,7 +67,7 @@ export function TradePackageFieldset({
 
       <ul className="mt-4 grid gap-2" aria-label={`${legend} players`}>
         {playerIds.length === 0 ? (
-          <li className="flex min-h-24 items-center justify-center rounded-[var(--radius-lg)] border border-dashed border-[var(--home-rule)] bg-[var(--home-paper-alt)] px-4 text-center text-sm leading-6 text-[var(--home-ink-muted)]">
+          <li className="flex min-h-24 items-center justify-center border border-dashed border-[var(--c97-rule)] bg-[var(--c97-field)] px-4 text-center text-sm leading-6 text-[var(--c97-ink-2)]">
             Search the overall board and add the first player.
           </li>
         ) : (
@@ -80,7 +80,7 @@ export function TradePackageFieldset({
             return (
               <li
                 key={playerId}
-                className="flex min-h-[64px] items-center gap-3 rounded-[var(--radius-lg)] border border-[var(--home-rule)] bg-[var(--home-paper-alt)] py-2 pl-3 pr-1"
+                className="flex min-h-[64px] items-center gap-3 border border-[var(--c97-rule)] bg-[var(--c97-field)] py-2 pl-3 pr-1"
               >
                 {position ? (
                   <span className={FANTASY_CHIP_CLASS} style={getPositionTone(position)}>
@@ -88,10 +88,10 @@ export function TradePackageFieldset({
                   </span>
                 ) : null}
                 <span className="min-w-0 flex-1">
-                  <span className="block truncate text-sm font-semibold text-[var(--home-ink)]">
+                  <span className="block truncate text-sm font-semibold text-[var(--c97-ink)]">
                     {name}
                   </span>
-                  <span className="mt-0.5 block text-2xs text-[var(--home-ink-muted)]">
+                  <span className="mt-0.5 block text-2xs text-[var(--c97-ink-2)]">
                     {team || "Not on this scoring board"}
                     {exactValuesAvailable && evaluated?.marketAdp
                       ? ` · ADP ${evaluated.marketAdp.toFixed(1)}`
@@ -99,10 +99,10 @@ export function TradePackageFieldset({
                   </span>
                 </span>
                 <span className="shrink-0 text-right">
-                  <span className="block font-mono text-sm tabular-nums text-[var(--home-ink)]">
+                  <span className="block font-mono text-sm tabular-nums text-[var(--c97-ink)]">
                     {exactValuesAvailable ? formatTradeValue(evaluated?.blendedValue) : "--"}
                   </span>
-                  <span className="block font-mono text-3xs uppercase tracking-[0.1em] text-[var(--home-ink-muted)]">
+                  <span className="block font-mono text-3xs uppercase tracking-[0.1em] text-[var(--c97-ink-2)]">
                     index
                   </span>
                 </span>
@@ -110,7 +110,7 @@ export function TradePackageFieldset({
                   type="button"
                   onClick={() => onRemove(playerId)}
                   aria-label={`Remove ${name} from players ${legend.toLowerCase()}`}
-                  className="inline-flex min-h-touch min-w-touch shrink-0 items-center justify-center rounded-full text-[var(--home-ink-muted)] transition-[color,background-color] hover:bg-[var(--home-paper)] hover:text-[var(--home-negative)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-signal)]"
+                  className="inline-flex min-h-touch min-w-touch shrink-0 items-center justify-center text-[var(--c97-ink-2)] transition-[color,background-color] hover:bg-[var(--c97-surface)] hover:text-[var(--c97-negative)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--c97-accent)]"
                 >
                   <X className="h-4 w-4" aria-hidden="true" />
                 </button>

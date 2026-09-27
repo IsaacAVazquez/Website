@@ -667,7 +667,7 @@ export function getFantasySourceCapabilities({
  * badge recipe). Interactive pills keep min-h-[44px] separately for touch targets.
  */
 export const FANTASY_CHIP_CLASS =
-  "inline-flex items-center rounded-full border px-2.5 py-1 text-2xs font-semibold uppercase tracking-[0.12em]";
+  "inline-flex items-center border px-2.5 py-1 text-2xs font-semibold uppercase tracking-[0.12em]";
 
 /** The template's 1080px column; each page manages its own shell width. */
 export const SHELL_CLASS = "mx-auto w-full max-w-[1080px] px-[clamp(1rem,4vw,2.5rem)]";
@@ -677,65 +677,65 @@ export const MONO_LABEL_CLASS = "font-mono text-3xs uppercase tracking-[0.12em]"
 /** Square-cornered mono chip from the template header (distinct from the shared pill chip).
     It wraps inside itself instead of running past the screen edge when text is enlarged. */
 export const HEADER_CHIP_CLASS =
-  "inline-flex max-w-full items-center rounded-[2px] border px-2 py-1 font-mono text-3xs uppercase tracking-[0.08em]";
+  "inline-flex max-w-full items-center border px-2 py-1 font-mono text-3xs uppercase tracking-[0.08em]";
 
 /** Square-cornered mono position chip from the template (not the shared pill chip). */
 export const POSITION_CHIP_CLASS =
-  "inline-flex flex-none items-center rounded-[2px] border px-1.5 py-0.5 font-mono text-2xs tracking-[0.06em]";
+  "inline-flex flex-none items-center border px-1.5 py-0.5 font-mono text-2xs tracking-[0.06em]";
 
 export const PILL_BUTTON_CLASS =
-  "inline-flex min-h-touch items-center justify-center rounded-full border px-3 font-mono text-3xs uppercase tracking-[0.06em] disabled:cursor-not-allowed disabled:opacity-50";
+  "inline-flex min-h-touch items-center justify-center border px-3 font-mono text-3xs uppercase tracking-[0.06em] disabled:cursor-not-allowed disabled:opacity-50";
 
 export const PILL_BUTTON_STYLE: CSSProperties = {
-  borderColor: "var(--home-rule)",
-  background: "var(--home-paper)",
-  color: "var(--home-ink)",
+  borderColor: "var(--c97-rule)",
+  background: "var(--c97-surface)",
+  color: "var(--c97-ink)",
 };
 
 /** Sticky offset that clears the site header on the draft surfaces. */
 export const FASCIA_TOP_CLASS = "top-0";
 
 export const WARNING_CARD_STYLE: CSSProperties = {
-  borderColor: "color-mix(in srgb, var(--home-warning) 55%, var(--home-rule))",
-  background: "color-mix(in srgb, var(--home-warning) 10%, var(--home-paper))",
+  borderColor: "color-mix(in srgb, var(--c97-warning) 55%, var(--c97-rule))",
+  background: "color-mix(in srgb, var(--c97-warning) 10%, var(--c97-surface))",
 };
 
 export function getPositionTone(position: string): CSSProperties {
   switch (position) {
     case "QB":
       return {
-        background: "color-mix(in srgb, var(--home-signal) 14%, var(--home-paper))",
-        borderColor: "color-mix(in srgb, var(--home-signal) 28%, var(--home-rule))",
+        background: "color-mix(in srgb, var(--c97-accent) 14%, var(--c97-surface))",
+        borderColor: "color-mix(in srgb, var(--c97-accent) 28%, var(--c97-rule))",
       };
     case "RB":
       return {
-        background: "color-mix(in srgb, var(--home-positive) 14%, var(--home-paper))",
-        borderColor: "color-mix(in srgb, var(--home-positive) 24%, var(--home-rule))",
+        background: "color-mix(in srgb, var(--c97-positive) 14%, var(--c97-surface))",
+        borderColor: "color-mix(in srgb, var(--c97-positive) 24%, var(--c97-rule))",
       };
     case "WR":
       return {
-        background: "color-mix(in srgb, var(--home-ink) 10%, var(--home-paper))",
-        borderColor: "color-mix(in srgb, var(--home-ink) 24%, var(--home-rule))",
+        background: "color-mix(in srgb, var(--c97-ink) 10%, var(--c97-surface))",
+        borderColor: "color-mix(in srgb, var(--c97-ink) 24%, var(--c97-rule))",
       };
     case "TE":
       return {
-        background: "color-mix(in srgb, var(--home-warning) 18%, var(--home-paper))",
-        borderColor: "color-mix(in srgb, var(--home-warning) 26%, var(--home-rule))",
+        background: "color-mix(in srgb, var(--c97-warning) 18%, var(--c97-surface))",
+        borderColor: "color-mix(in srgb, var(--c97-warning) 26%, var(--c97-rule))",
       };
     case "K":
       return {
-        background: "color-mix(in srgb, var(--home-stone) 45%, var(--home-paper))",
-        borderColor: "color-mix(in srgb, var(--home-stone) 60%, var(--home-rule))",
+        background: "color-mix(in srgb, var(--c97-rule) 45%, var(--c97-surface))",
+        borderColor: "color-mix(in srgb, var(--c97-rule) 60%, var(--c97-rule))",
       };
     case "DST":
       return {
-        background: "color-mix(in srgb, var(--home-ink) 16%, var(--home-paper))",
-        borderColor: "color-mix(in srgb, var(--home-ink) 34%, var(--home-rule))",
+        background: "color-mix(in srgb, var(--c97-ink) 16%, var(--c97-surface))",
+        borderColor: "color-mix(in srgb, var(--c97-ink) 34%, var(--c97-rule))",
       };
     default:
       return {
-        background: "color-mix(in srgb, var(--home-paper-alt) 90%, var(--home-elev-mix))",
-        borderColor: "var(--home-rule)",
+        background: "color-mix(in srgb, var(--c97-field) 90%, var(--c97-field))",
+        borderColor: "var(--c97-rule)",
       };
   }
 }

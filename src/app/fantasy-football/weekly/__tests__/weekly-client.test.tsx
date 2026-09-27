@@ -214,7 +214,7 @@ describe("WeeklyBoardClient rankings view", () => {
     renderClient("rankings");
     const card = screen.getByRole("region", { name: "Flex rankings" });
     expect(card).toHaveClass("border-t");
-    expect(card).not.toHaveClass("home-card");
+    expect(card).not.toHaveClass("c97-panel");
   });
 
   it("uses the quarterback depth on the quarterback board", () => {

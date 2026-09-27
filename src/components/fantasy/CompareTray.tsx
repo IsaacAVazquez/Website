@@ -96,10 +96,10 @@ export function CompareTray({
             <div className="home-shell home-shell-wide flex justify-center">
             {showHiddenSelections ? (
               <div
-                className="flex w-full items-center gap-3 rounded-[var(--radius-3xl)] border px-4 py-3"
+                className="flex w-full items-center gap-3 border px-4 py-3"
                 style={{
-                  borderColor: "var(--home-rule)",
-                  background: "color-mix(in srgb, var(--home-paper) 94%, var(--home-elev-mix))",
+                  borderColor: "var(--c97-rule)",
+                  background: "color-mix(in srgb, var(--c97-surface) 94%, var(--c97-field))",
                   boxShadow: "var(--shadow-lg)",
                   backdropFilter: "blur(8px)",
                 }}
@@ -110,8 +110,8 @@ export function CompareTray({
                 <button
                   type="button"
                   onClick={() => compare.clear()}
-                  className="inline-flex min-h-touch items-center rounded-full border px-4 text-sm font-semibold"
-                  style={{ borderColor: "var(--home-rule)", color: "var(--home-ink)" }}
+                  className="inline-flex min-h-touch items-center border px-4 text-sm font-semibold"
+                  style={{ borderColor: "var(--c97-rule)", color: "var(--c97-ink)" }}
                 >
                   Clear compare
                 </button>
@@ -122,10 +122,10 @@ export function CompareTray({
                 onClick={() => setCollapsed(false)}
                 aria-expanded={false}
                 aria-label={`Compare ${players.length}, show the tray`}
-                className="inline-flex min-h-touch items-center gap-2 rounded-full border px-4 text-sm font-semibold"
+                className="inline-flex min-h-touch items-center gap-2 border px-4 text-sm font-semibold"
                 style={{
-                  borderColor: "var(--home-rule)",
-                  background: "color-mix(in srgb, var(--home-paper) 94%, var(--home-elev-mix))",
+                  borderColor: "var(--c97-rule)",
+                  background: "color-mix(in srgb, var(--c97-surface) 94%, var(--c97-field))",
                   boxShadow: "var(--shadow-lg)",
                   backdropFilter: "blur(8px)",
                 }}
@@ -135,15 +135,15 @@ export function CompareTray({
               </button>
             ) : (
             <div
-              className="flex w-full flex-wrap items-center gap-2 rounded-[var(--radius-3xl)] border px-3 py-2.5"
+              className="flex w-full flex-wrap items-center gap-2 border px-3 py-2.5"
               style={{
-                borderColor: "var(--home-rule)",
-                background: "color-mix(in srgb, var(--home-paper) 94%, var(--home-elev-mix))",
+                borderColor: "var(--c97-rule)",
+                background: "color-mix(in srgb, var(--c97-surface) 94%, var(--c97-field))",
                 boxShadow: "var(--shadow-lg)",
                 backdropFilter: "blur(8px)",
               }}
             >
-              <span className="home-kicker mb-0 hidden sm:block">Compare</span>
+              <span className="c97-kicker mb-0 hidden sm:block">Compare</span>
               {/*
                 Below sm the names yield and the bar states a count instead.
                 Each chip is 44px tall because its remove button is, so three
@@ -181,8 +181,8 @@ export function CompareTray({
                       Compare buttons beside it also gives the whole band one
                       cadence instead of two.
                     */
-                    className="inline-flex items-center gap-1 rounded-full border py-0 pl-3 pr-0 text-xs font-semibold"
-                    style={{ borderColor: "var(--home-rule)", ...getPositionTone(player.position) }}
+                    className="inline-flex items-center gap-1 border py-0 pl-3 pr-0 text-xs font-semibold"
+                    style={{ borderColor: "var(--c97-rule)", ...getPositionTone(player.position) }}
                   >
                     {/* 8rem cut "Jaxon Smith-Njigba" and "Marvin Harrison Jr."
                         down to stubs that read almost the same. 12rem clears
@@ -195,15 +195,15 @@ export function CompareTray({
                       type="button"
                       onClick={() => compare.remove(player.id)}
                       aria-label={`Remove ${player.name} from compare`}
-                      className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-full"
-                      style={{ background: "color-mix(in srgb, var(--home-ink) 8%, transparent)" }}
+                      className="inline-flex h-11 w-11 shrink-0 items-center justify-center"
+                      style={{ background: "color-mix(in srgb, var(--c97-ink) 8%, transparent)" }}
                     >
                       <X size={12} aria-hidden="true" />
                     </button>
                   </span>
                 ))}
                 {hiddenCount > 0 ? (
-                  <span className="px-2 text-xs font-semibold" style={{ color: "var(--home-ink-muted)" }}>
+                  <span className="px-2 text-xs font-semibold" style={{ color: "var(--c97-ink-2)" }}>
                     {hiddenCount} pinned elsewhere
                   </span>
                 ) : null}
@@ -211,8 +211,8 @@ export function CompareTray({
               <button
                 type="button"
                 onClick={() => compare.clear()}
-                className="inline-flex min-h-touch items-center rounded-full px-3 text-xs font-semibold"
-                style={{ color: "var(--home-ink-muted)" }}
+                className="inline-flex min-h-touch items-center px-3 text-xs font-semibold"
+                style={{ color: "var(--c97-ink-2)" }}
               >
                 Clear
               </button>
@@ -220,8 +220,8 @@ export function CompareTray({
                 type="button"
                 onClick={() => setOpen(true)}
                 disabled={!canCompare}
-                className="inline-flex min-h-touch items-center gap-2 rounded-full border px-4 text-sm font-semibold disabled:cursor-not-allowed disabled:opacity-55"
-                style={{ borderColor: "var(--home-ink)", background: "var(--home-ink)", color: "var(--home-paper)" }}
+                className="inline-flex min-h-touch items-center gap-2 border px-4 text-sm font-semibold disabled:cursor-not-allowed disabled:opacity-55"
+                style={{ borderColor: "var(--c97-ink)", background: "var(--c97-ink)", color: "var(--c97-surface)" }}
                 title={canCompare ? undefined : "Pin at least two players"}
               >
                 <GitCompareArrows size={16} aria-hidden="true" />
@@ -232,8 +232,8 @@ export function CompareTray({
                 onClick={() => setCollapsed(true)}
                 aria-expanded
                 aria-label="Minimize the compare tray"
-                className="inline-flex min-h-touch min-w-touch items-center justify-center rounded-full border"
-                style={{ borderColor: "var(--home-rule)", color: "var(--home-ink-muted)" }}
+                className="inline-flex min-h-touch min-w-touch items-center justify-center border"
+                style={{ borderColor: "var(--c97-rule)", color: "var(--c97-ink-2)" }}
               >
                 <ChevronDown size={16} aria-hidden="true" />
               </button>

@@ -87,21 +87,21 @@ export function PositionFilterBar<T extends string>({
         let style: CSSProperties;
         if (isActive) {
           style = {
-            borderColor: "var(--home-ink)",
-            background: "var(--home-ink)",
-            color: "var(--home-paper)",
+            borderColor: "var(--c97-ink)",
+            background: "var(--c97-ink)",
+            color: "var(--c97-surface)",
           };
         } else if (isUnavailable) {
           style = {
-            borderColor: "color-mix(in srgb, var(--home-warning) 30%, var(--home-rule))",
-            background: "color-mix(in srgb, var(--home-warning) 8%, var(--home-paper))",
-            color: "var(--home-ink-muted)",
+            borderColor: "color-mix(in srgb, var(--c97-warning) 30%, var(--c97-rule))",
+            background: "color-mix(in srgb, var(--c97-warning) 8%, var(--c97-surface))",
+            color: "var(--c97-ink-2)",
           };
         } else {
           style = {
-            borderColor: "var(--home-control-rule)",
-            background: "color-mix(in srgb, var(--home-paper-alt) 52%, var(--home-elev-mix))",
-            color: "var(--home-ink)",
+            borderColor: "var(--c97-ink-2)",
+            background: "color-mix(in srgb, var(--c97-field) 52%, var(--c97-field))",
+            color: "var(--c97-ink)",
             // A faint position tint on the inactive pill ties the control to the board.
             boxShadow: option.position
               ? `inset 0 0 0 999px ${getPositionTone(option.position).background as string}`
@@ -128,7 +128,7 @@ export function PositionFilterBar<T extends string>({
             }}
             onClick={() => !isDisabled && onChange(option.value)}
             onKeyDown={(event) => handleRadioKeyDown(event, index)}
-            className="inline-flex min-h-touch min-w-touch shrink-0 items-center justify-center gap-1.5 rounded-full border px-3.5 text-sm font-semibold transition-colors disabled:cursor-not-allowed"
+            className="inline-flex min-h-touch min-w-touch shrink-0 items-center justify-center gap-1.5 border px-3.5 text-sm font-semibold transition-colors disabled:cursor-not-allowed"
             style={style}
           >
             <span>{option.label}</span>
