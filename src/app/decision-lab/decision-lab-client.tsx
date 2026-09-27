@@ -1,14 +1,16 @@
 "use client";
 
-import { ChartScatter, Link, RefreshCw, SlidersHorizontal, Target, Zap } from "lucide-react";
-import { startTransition, useEffect, useState, type CSSProperties } from "react";
+import { Link as LinkIcon, RefreshCw, Target, Zap } from "lucide-react";
+import { startTransition, useEffect, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
+import { Catalog97ProjectHero } from "@/components/catalog97/Catalog97ProjectHero";
+import { PROJECT_PRESS } from "@/constants/projectPress";
 import {
   DECISION_PRESETS,
   evaluateDecision,
   getDecisionPreset,
+  type DecisionEvaluation,
   type DecisionMetrics,
-  type DecisionRecommendation,
 } from "./decision-lab-data";
 import {
   buildDecisionLabHref,
@@ -16,7 +18,8 @@ import {
   normalizeDecisionLabState,
   type DecisionLabState,
 } from "./decision-lab-state";
-import { HomeStatsPanel, type HomeStatsCell } from "@/components/home/HomeStatsPanel";
+import { verdictContributions, verdictStamp, type VerdictContribution } from "./verdictStamp";
+import "./decision-lab.css";
 
 interface DecisionLabClientProps {
   initialState: DecisionLabState;
@@ -26,208 +29,246 @@ interface MetricDefinition {
   key: keyof DecisionMetrics;
   label: string;
   helper: string;
-  accent: string;
 }
 
 const metricDefinitions: readonly MetricDefinition[] = [
-  {
-    key: "impact",
-    label: "Impact",
-    helper: "How much outcome I expect if this lands.",
-    accent: "var(--home-signal)",
-  },
-  {
-    key: "confidence",
-    label: "Confidence",
-    helper: "How much proof I think I have right now.",
-    accent: "var(--home-positive)",
-  },
+  { key: "impact", label: "Impact", helper: "How much outcome I expect if this lands." },
+  { key: "confidence", label: "Confidence", helper: "How much proof I think I have right now." },
   {
     key: "effort",
     label: "Effort",
     helper: "How expensive the build feels relative to the team. Lower is better here.",
-    accent: "var(--home-ink)",
   },
   {
     key: "reversibility",
     label: "Reversibility",
     helper: "How easy it would be to unwind if I learn I was wrong.",
-    accent: "var(--home-signal)",
   },
 ] as const;
 
-const recommendationCopy: Record<DecisionRecommendation, string> = {
-  ship: "SHIP",
-  test: "TEST",
-  hold: "HOLD",
-};
+// --- Matrix geometry --------------------------------------------------------
+// A square plot, confidence on x and impact on y (inverted, since a high
+// impact point sits near the top). Padding on every side leaves room for the
+// axis titles the frame carries.
 
-const recommendationTone: Record<
-  DecisionRecommendation,
-  { fill: string; tint: string; ring: string }
-> = {
-  ship: {
-    fill: "var(--home-signal)",
-    tint: "color-mix(in srgb, var(--home-signal) 16%, var(--home-paper))",
-    ring: "color-mix(in srgb, var(--home-signal) 38%, var(--home-rule))",
-  },
-  test: {
-    fill: "var(--home-signal)",
-    tint: "color-mix(in srgb, var(--home-signal) 22%, var(--home-paper))",
-    ring: "color-mix(in srgb, var(--home-signal) 42%, var(--home-rule))",
-  },
-  hold: {
-    fill: "var(--home-stone)",
-    tint: "color-mix(in srgb, var(--home-stone) 28%, var(--home-paper))",
-    ring: "color-mix(in srgb, var(--home-stone) 55%, var(--home-rule))",
-  },
-};
+const PAD_L = 54;
+const PAD_R = 24;
+const PAD_T = 26;
+const PAD_B = 64;
+const PLOT_SIZE = 382;
+const VIEW_W = PAD_L + PLOT_SIZE + PAD_R;
+const VIEW_H = PAD_T + PLOT_SIZE + PAD_B;
+// The impact and confidence gates a ship call needs (evaluateDecision in
+// decision-lab-data.ts). The score gate has no axis, so it is not drawn.
+const SHIP_CONFIDENCE = 60;
+const SHIP_IMPACT = 65;
 
-function getMatrixCoordinates(confidence: number, impact: number, padding: number, size: number) {
-  const x = padding + (confidence / 100) * size;
-  const y = padding + ((100 - impact) / 100) * size;
-  return { x, y };
+function plotX(confidence: number): number {
+  return PAD_L + (confidence / 100) * PLOT_SIZE;
 }
 
-function DecisionMatrix({ state }: { state: DecisionLabState }) {
-  const padding = 22;
-  const size = 220;
-  const width = size + padding * 2;
-  const height = size + padding * 2 + 14;
+function plotY(impact: number): number {
+  return PAD_T + ((100 - impact) / 100) * PLOT_SIZE;
+}
+
+/** Keeps a centered label's edges inside [min, max]. */
+function fitCenterX(x: number, halfWidth: number, min: number, max: number): number {
+  if (max - min <= halfWidth * 2) return (min + max) / 2;
+  return Math.min(max - halfWidth, Math.max(min + halfWidth, x));
+}
+
+function DecisionMatrix({
+  metrics,
+  evaluation,
+  pointLabel,
+}: {
+  metrics: DecisionMetrics;
+  evaluation: DecisionEvaluation;
+  pointLabel: string;
+}) {
+  const stamp = verdictStamp(evaluation.recommendation);
+  const activeX = plotX(metrics.confidence);
+  const activeY = plotY(metrics.impact);
+  const thresholdX = PAD_L + (SHIP_CONFIDENCE / 100) * PLOT_SIZE;
+  const thresholdY = PAD_T + ((100 - SHIP_IMPACT) / 100) * PLOT_SIZE;
+
+  // The stamp prints in the quadrant the active point is not in, so it
+  // never covers the mark it is explaining.
+  const pointOnRight = metrics.confidence >= SHIP_CONFIDENCE;
+  const pointOnTop = metrics.impact >= SHIP_IMPACT;
+  const stampCx = PAD_L + (pointOnRight ? 0.25 : 0.75) * PLOT_SIZE;
+  const stampCy = PAD_T + (pointOnTop ? 0.75 : 0.25) * PLOT_SIZE;
+
+  const activeLabelX = fitCenterX(activeX, 34, PAD_L, PAD_L + PLOT_SIZE);
+  // Above the point unless that crowds the frame or another preset's ring,
+  // then below it.
+  const neighbours = DECISION_PRESETS.map((preset) => [plotX(preset.confidence), plotY(preset.impact)]).filter(
+    ([x, y]) => Math.hypot(x - activeX, y - activeY) > 2,
+  );
+  const labelClear = (y: number) =>
+    y - PAD_T > 12 && neighbours.every(([x, ny]) => Math.abs(x - activeLabelX) > 40 || Math.abs(ny - (y - 5)) > 12);
+  const activeLabelY = [activeY - 18, activeY + 24].find(labelClear) ?? (activeY - PAD_T > 30 ? activeY - 18 : activeY + 24);
 
   return (
     <svg
-      viewBox={`0 0 ${width} ${height}`}
+      viewBox={`0 0 ${VIEW_W} ${VIEW_H}`}
       role="img"
-      aria-label="Confidence and impact matrix for Decision Lab presets"
-      className="w-full max-w-full"
-      style={{ display: "block" }}
+      aria-label={`Confidence ${metrics.confidence}, impact ${metrics.impact}, for ${pointLabel}. Verdict stamped ${stamp.word}.`}
+      className="c97-decision-matrix"
     >
-      <rect
-        x={padding}
-        y={padding}
-        width={size}
-        height={size}
-        rx={16}
-        fill="color-mix(in srgb, var(--home-paper) 82%, var(--home-elev-mix))"
-        stroke="var(--home-rule)"
-      />
+      <rect x={PAD_L} y={PAD_T} width={PLOT_SIZE} height={PLOT_SIZE} fill="none" stroke="var(--c97-rule)" />
 
-      {[0, 25, 50, 75, 100].map((tick) => {
-        const x = padding + (tick / 100) * size;
-        const y = padding + ((100 - tick) / 100) * size;
-        return (
-          <g key={tick}>
-            <line
-              x1={x}
-              y1={padding}
-              x2={x}
-              y2={padding + size}
-              stroke="color-mix(in srgb, var(--home-rule) 75%, var(--home-elev-mix))"
-              strokeDasharray="3 5"
-            />
-            <line
-              x1={padding}
-              y1={y}
-              x2={padding + size}
-              y2={y}
-              stroke="color-mix(in srgb, var(--home-rule) 75%, var(--home-elev-mix))"
-              strokeDasharray="3 5"
-            />
-          </g>
-        );
-      })}
+      {[25, 50, 75].map((tick) => (
+        <g key={tick} aria-hidden="true">
+          <line
+            x1={PAD_L + (tick / 100) * PLOT_SIZE}
+            y1={PAD_T}
+            x2={PAD_L + (tick / 100) * PLOT_SIZE}
+            y2={PAD_T + PLOT_SIZE}
+            stroke="var(--c97-rule)"
+            strokeDasharray="2 6"
+          />
+          <line
+            x1={PAD_L}
+            y1={PAD_T + (tick / 100) * PLOT_SIZE}
+            x2={PAD_L + PLOT_SIZE}
+            y2={PAD_T + (tick / 100) * PLOT_SIZE}
+            stroke="var(--c97-rule)"
+            strokeDasharray="2 6"
+          />
+        </g>
+      ))}
 
-      <line
-        x1={padding + 0.6 * size}
-        y1={padding}
-        x2={padding + 0.6 * size}
-        y2={padding + size}
-        stroke="color-mix(in srgb, var(--home-signal) 45%, var(--home-rule))"
-        strokeWidth="1.5"
-      />
-      <line
-        x1={padding}
-        y1={padding + 0.4 * size}
-        x2={padding + size}
-        y2={padding + 0.4 * size}
-        stroke="color-mix(in srgb, var(--home-signal) 45%, var(--home-rule))"
-        strokeWidth="1.5"
-      />
+      <g aria-hidden="true">
+        <line
+          x1={thresholdX}
+          y1={PAD_T}
+          x2={thresholdX}
+          y2={PAD_T + PLOT_SIZE}
+          stroke="var(--c97-ink-2)"
+          strokeWidth={2}
+        />
+        <line
+          x1={PAD_L}
+          y1={thresholdY}
+          x2={PAD_L + PLOT_SIZE}
+          y2={thresholdY}
+          stroke="var(--c97-ink-2)"
+          strokeWidth={2}
+        />
+      </g>
 
-      {DECISION_PRESETS.map((preset) => {
-        const isActive = preset.id === state.preset;
-        const point = isActive
-          ? getMatrixCoordinates(state.confidence, state.impact, padding, size)
-          : getMatrixCoordinates(preset.confidence, preset.impact, padding, size);
+      <g aria-hidden="true">
+        {DECISION_PRESETS.map((preset) => (
+          <circle
+            key={preset.id}
+            cx={plotX(preset.confidence)}
+            cy={plotY(preset.impact)}
+            r={5}
+            fill="none"
+            stroke="var(--c97-ink-2)"
+            strokeWidth={1.5}
+          />
+        ))}
+        <circle cx={activeX} cy={activeY} r={8} fill="var(--c97-ink)" stroke="var(--c97-surface)" strokeWidth={2} />
+        <text x={activeLabelX} y={activeLabelY} textAnchor="middle" className="c97-decision-point-label">
+          ACTIVE
+        </text>
+      </g>
 
-        return (
-          <g key={preset.id}>
-            <circle
-              cx={point.x}
-              cy={point.y}
-              r={isActive ? 6.5 : 4.5}
-              fill={
-                isActive
-                  ? "var(--home-signal)"
-                  : "color-mix(in srgb, var(--home-ink) 55%, var(--home-paper))"
-              }
-              stroke={isActive ? "var(--home-paper)" : "transparent"}
-              strokeWidth={isActive ? 2.5 : 0}
-            />
-            {isActive ? (
-              <text
-                x={point.x}
-                y={point.y - 12}
-                textAnchor="middle"
-                style={{
-                  fill: "var(--home-ink)",
-                  fontFamily: "var(--font-home-sans)",
-                  fontSize: "10px",
-                  fontWeight: 700,
-                  letterSpacing: "0.08em",
-                  textTransform: "uppercase",
-                }}
-              >
-                ACTIVE
-              </text>
-            ) : null}
-          </g>
-        );
-      })}
-
-      <text
-        x={padding + size / 2}
-        y={height - 2}
-        textAnchor="middle"
-        style={{
-          fill: "var(--home-ink-muted)",
-          fontFamily: "var(--font-home-sans)",
-          fontSize: "10.5px",
-          fontWeight: 700,
-          letterSpacing: "0.14em",
-          textTransform: "uppercase",
-        }}
+      <g
+        className="c97-decision-stamp"
+        transform={`rotate(-9 ${stampCx} ${stampCy})`}
+        aria-hidden="true"
       >
+        <rect
+          x={stampCx - 86}
+          y={stampCy - 34}
+          width={172}
+          height={68}
+          fill="none"
+          stroke="var(--c97-overprint)"
+          strokeWidth={3}
+        />
+        <rect
+          x={stampCx - 78}
+          y={stampCy - 26}
+          width={156}
+          height={52}
+          fill="none"
+          stroke="var(--c97-overprint)"
+          strokeWidth={1.5}
+        />
+        <text x={stampCx} y={stampCy + 13} textAnchor="middle" className="c97-decision-stamp-word">
+          {stamp.word}
+        </text>
+      </g>
+
+      <text x={PAD_L + PLOT_SIZE / 2} y={VIEW_H - 8} textAnchor="middle" className="c97-decision-axis-label">
         Confidence
       </text>
-      <text
-        x={10}
-        y={padding + size / 2}
-        textAnchor="middle"
-        transform={`rotate(-90 10 ${padding + size / 2})`}
-        style={{
-          fill: "var(--home-ink-muted)",
-          fontFamily: "var(--font-home-sans)",
-          fontSize: "10.5px",
-          fontWeight: 700,
-          letterSpacing: "0.14em",
-          textTransform: "uppercase",
-        }}
-      >
+      {/* A rotated label reads a getScreenCTM 'a' of ~0 to the route probe
+          (its horizontal scale term drops out at 90deg), so this sits
+          horizontal above the y-axis instead of running along it. */}
+      <text x={PAD_L} y={PAD_T - 10} textAnchor="start" className="c97-decision-axis-label">
         Impact
       </text>
     </svg>
+  );
+}
+
+function ContributionRow({ row }: { row: VerdictContribution }) {
+  return (
+    <div className="c97-decision-contribution-row">
+      <div>
+        <p className="c97-serif" style={{ margin: 0, fontSize: "var(--c97-fs-h3)" }}>
+          {row.label}
+        </p>
+        <span className="c97-meter" style={{ marginTop: "var(--c97-sp-1)" }}>
+          <span style={{ width: `${row.raw}%` }} />
+        </span>
+      </div>
+      <p className="c97-mono c97-tabular" style={{ margin: 0, color: "var(--c97-ink)" }}>
+        {row.raw} × {row.weight.toFixed(2)} = <strong>{row.contribution.toFixed(1)}</strong>
+      </p>
+    </div>
+  );
+}
+
+function WhyThisVerdict({
+  metrics,
+  evaluation,
+}: {
+  metrics: DecisionMetrics;
+  evaluation: DecisionEvaluation;
+}) {
+  const contributions = verdictContributions(metrics);
+
+  return (
+    <div>
+      <p className="c97-kicker" style={{ display: "flex", alignItems: "center", gap: "var(--c97-sp-1)" }}>
+        <Zap size={14} aria-hidden="true" />
+        Why this verdict
+      </p>
+      <div style={{ marginTop: "var(--c97-sp-2)" }}>
+        {contributions.map((row) => (
+          <ContributionRow key={row.axis} row={row} />
+        ))}
+      </div>
+      <p
+        className="c97-prose"
+        style={{ fontSize: "var(--c97-fs-small)", color: "var(--c97-ink-2)", marginTop: "var(--c97-sp-3)" }}
+      >
+        Ship needs score ≥ 68 with impact ≥ 65 and confidence ≥ 60. Test fires when impact ≥
+        60 or score ≥ 50. Otherwise it holds.
+      </p>
+      <p className="c97-prose" style={{ color: "var(--c97-ink)", marginTop: "var(--c97-sp-2)" }}>
+        {evaluation.rationale}
+      </p>
+      <p className="c97-prose" style={{ color: "var(--c97-ink-2)", marginTop: "var(--c97-sp-1)" }}>
+        Decision Lab keeps those axes separate, then forces a plain call.
+      </p>
+    </div>
   );
 }
 
@@ -236,14 +277,12 @@ function MetricSlider({
   helper,
   value,
   baseValue,
-  accent,
   onChange,
 }: {
   label: string;
   helper: string;
   value: number;
   baseValue: number;
-  accent: string;
   onChange: (value: number) => void;
 }) {
   const inputId = `decision-lab-${label.toLowerCase()}`;
@@ -251,43 +290,31 @@ function MetricSlider({
   const deltaLabel = delta === 0 ? "Preset" : `${delta > 0 ? "+" : ""}${delta} vs preset`;
 
   return (
-    <div className="grid gap-2">
-      <div className="flex items-baseline justify-between gap-3">
-        <label
-          htmlFor={inputId}
-          className="text-xs font-semibold tracking-[-0.01em]"
-          style={{ color: "var(--home-ink)" }}
-        >
+    <div style={{ display: "grid", gap: "var(--c97-sp-2)" }}>
+      <div style={{ display: "flex", alignItems: "baseline", justifyContent: "space-between", gap: "var(--c97-sp-3)" }}>
+        <label htmlFor={inputId} className="c97-serif" style={{ fontSize: "var(--c97-fs-h3)" }}>
           {label}
         </label>
-        <div className="flex items-center gap-2 text-2xs" style={{ color: "var(--home-ink-muted)" }}>
-          <span
-            className="rounded-full border px-2 py-0.5 font-semibold tabular-nums"
-            style={{
-              borderColor: `color-mix(in srgb, ${accent} 35%, var(--home-rule))`,
-              background: `color-mix(in srgb, ${accent} 18%, var(--home-paper))`,
-              color: "var(--home-ink)",
-            }}
-          >
-            {value}
+        <div style={{ display: "flex", alignItems: "center", gap: "var(--c97-sp-2)" }}>
+          <span className="c97-chip c97-tabular">{value}</span>
+          <span className="c97-mono c97-tabular" style={{ fontSize: "var(--c97-fs-small)", color: "var(--c97-ink-2)" }}>
+            {deltaLabel}
           </span>
-          <span className="tabular-nums">{deltaLabel}</span>
         </div>
       </div>
-      <p className="m-0 text-1xs leading-snug" style={{ color: "var(--home-ink-muted)" }}>
+      <p className="c97-prose" style={{ margin: 0, fontSize: "var(--c97-fs-small)", color: "var(--c97-ink-2)" }}>
         {helper}
       </p>
       <input
         id={inputId}
         type="range"
-        min="0"
-        max="100"
-        step="1"
+        min={0}
+        max={100}
+        step={1}
         value={value}
         onChange={(event) => onChange(Number.parseInt(event.target.value, 10))}
-        className="block min-h-touch w-full"
         aria-label={label}
-        style={{ accentColor: accent }}
+        className="c97-range"
       />
     </div>
   );
@@ -305,14 +332,20 @@ function DecisionLabWorkbench({
 
   const activePreset = getDecisionPreset(draftState.preset);
   const evaluation = evaluateDecision(draftState);
+  const stamp = verdictStamp(evaluation.recommendation);
   const currentHref = buildDecisionLabHref(draftState);
-  const tone = recommendationTone[evaluation.recommendation];
   const hasPresetOverride =
     draftState.impact !== activePreset.impact ||
     draftState.confidence !== activePreset.confidence ||
     draftState.effort !== activePreset.effort ||
     draftState.reversibility !== activePreset.reversibility;
   const crumbLabel = hasPresetOverride ? "Custom" : activePreset.name;
+  const presetDelta =
+    draftState.impact -
+    activePreset.impact +
+    (draftState.confidence - activePreset.confidence) +
+    (draftState.effort - activePreset.effort) +
+    (draftState.reversibility - activePreset.reversibility);
 
   function commitState(nextState: DecisionLabState) {
     setDraftState(nextState);
@@ -352,393 +385,155 @@ function DecisionLabWorkbench({
       if (!navigator.clipboard) {
         throw new Error("clipboard unavailable");
       }
-      await navigator.clipboard.writeText(
-        new URL(currentHref, window.location.origin).toString()
-      );
+      await navigator.clipboard.writeText(new URL(currentHref, window.location.origin).toString());
       setCopyStatus("copied");
     } catch {
       setCopyStatus("error");
     }
   }
 
-  // "Why this verdict" — surface the per-axis contributions to the weighted score.
-  // Mirrors the formula in decision-lab-data.ts: impact*0.35 + confidence*0.25 + (100-effort)*0.25 + reversibility*0.15
-  const contributions: ReadonlyArray<{
-    axis: keyof DecisionMetrics;
-    label: string;
-    weight: number;
-    raw: number;
-    contribution: number;
-    accent: string;
-  }> = [
-    {
-      axis: "impact",
-      label: "Impact",
-      weight: 0.35,
-      raw: draftState.impact,
-      contribution: draftState.impact * 0.35,
-      accent: "var(--home-signal)",
-    },
-    {
-      axis: "confidence",
-      label: "Confidence",
-      weight: 0.25,
-      raw: draftState.confidence,
-      contribution: draftState.confidence * 0.25,
-      accent: "var(--home-positive)",
-    },
-    {
-      axis: "effort",
-      label: "Effort (inverted)",
-      weight: 0.25,
-      raw: 100 - draftState.effort,
-      contribution: (100 - draftState.effort) * 0.25,
-      accent: "var(--home-ink)",
-    },
-    {
-      axis: "reversibility",
-      label: "Reversibility",
-      weight: 0.15,
-      raw: draftState.reversibility,
-      contribution: draftState.reversibility * 0.15,
-      accent: "var(--home-signal)",
-    },
-  ];
-
-  const heroStyle: CSSProperties = {
-    background: tone.tint,
-    borderColor: tone.ring,
-  };
-
-  const presetDelta =
-    (draftState.impact - activePreset.impact) +
-    (draftState.confidence - activePreset.confidence) +
-    (draftState.effort - activePreset.effort) +
-    (draftState.reversibility - activePreset.reversibility);
-
-  const decisionStatsCells: HomeStatsCell[] = [
-    { label: "Impact", value: draftState.impact },
-    { label: "Confidence", value: draftState.confidence },
-    { label: "Effort", value: draftState.effort, sub: "Lower is better" },
-    { label: "Reversibility", value: draftState.reversibility },
-    { label: "Weighted score", value: evaluation.weightedScore },
-    {
-      label: "Verdict",
-      value: recommendationCopy[evaluation.recommendation],
-      tone: evaluation.recommendation === "ship" ? "good" : "default",
-    },
-    { label: "Active preset", value: activePreset.name },
-    {
-      label: "Delta from preset",
-      value: hasPresetOverride ? `${presetDelta > 0 ? "+" : ""}${presetDelta}` : "—",
-      sub: hasPresetOverride ? "Sum across axes" : "Matches preset",
-    },
-  ];
+  const lead = PROJECT_PRESS[DECISION_LAB_ROUTE].lead;
+  const standfirst =
+    "I built this to pressure-test product bets before a confident story outruns the actual tradeoff.";
 
   return (
-    <section className="home-page min-h-screen" aria-label="Decision Lab" data-testid="decision-lab-shell">
-      <div className="home-shell home-section">
-        <div
-          className="flex flex-col gap-6"
-        >
-          <div className="tool-topbar" id="hero">
-                <div>
-                  <p className="tool-crumbs">
-                    Decision Lab / <strong>{crumbLabel}</strong>
-                  </p>
-                  <h1>Decision Lab</h1>
-                </div>
-
-                <button
-                  type="button"
-                  onClick={handleResetToPreset}
-                  disabled={!hasPresetOverride}
-                  className="inline-flex min-h-touch items-center gap-2 rounded-full border px-4 py-2 text-1xs font-semibold transition-colors disabled:cursor-not-allowed disabled:opacity-55"
-                  style={{
-                    borderColor: "var(--home-rule)",
-                    background: "var(--home-paper-raised)",
-                    color: "var(--home-ink)",
-                  }}
-                >
-                  <RefreshCw size={14} aria-hidden="true" />
-                  Reset to defaults
-                </button>
-              </div>
-
-              {/* Live verdict chip */}
-              <div className="tool-meta-chip" role="status" aria-live="polite">
-                <span
-                  className="tool-meta-chip-dot"
-                  aria-hidden="true"
-                  style={{
-                    background: tone.fill,
-                    boxShadow: `0 0 0 3px color-mix(in srgb, ${tone.fill} 22%, transparent)`,
-                  }}
-                />
-                <span>
-                  Impact <strong>{draftState.impact}</strong>
-                </span>
-                <span className="tool-meta-chip-divider" aria-hidden="true">·</span>
-                <span>
-                  Confidence <strong>{draftState.confidence}</strong>
-                </span>
-                <span className="tool-meta-chip-divider" aria-hidden="true">·</span>
-                <span>
-                  Effort <strong>{draftState.effort}</strong>
-                </span>
-                <span className="tool-meta-chip-divider" aria-hidden="true">·</span>
-                <span>
-                  Reversibility <strong>{draftState.reversibility}</strong>
-                </span>
-                <span className="tool-meta-chip-spacer" />
-                <span className="tool-meta-chip-meta tabular-nums">
-                  Score {evaluation.weightedScore} · {recommendationCopy[evaluation.recommendation]}
-                </span>
-              </div>
-
-              <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,320px)]">
-                <div className="flex flex-col gap-5">
-                <HomeStatsPanel
-                  id="decision-lab-stats"
-                  title="Decision at a glance"
-                  meta={`Score ${evaluation.weightedScore} · ${recommendationCopy[evaluation.recommendation]}`}
-                  hideLiveDot
-                  cells={decisionStatsCells}
-                  pills={[
-                    { label: "Presets", href: "#hero" },
-                    { label: "Sliders", href: "#hero" },
-                    { label: "Verdict", href: "#hero" },
-                  ]}
-                />
-
-                {/* Hero verdict card */}
-                <div className="tool-card tool-card-hero" style={heroStyle}>
-                  <div className="flex flex-wrap items-start justify-between gap-4">
-                    <div className="min-w-0">
-                      <p className="tool-section-kicker">Recommendation</p>
-                      <p
-                        className="m-0 mt-2 text-3xl font-semibold leading-none tracking-[-0.05em] tabular-nums"
-                        style={{ color: "var(--home-ink)", fontFamily: "var(--font-home-sans)" }}
-                      >
-                        {recommendationCopy[evaluation.recommendation]}
-                      </p>
-                    </div>
-                    <div
-                      className="rounded-full px-4 py-2 text-2xs font-semibold tabular-nums"
-                      style={{
-                        background: tone.tint,
-                        border: `1px solid ${tone.ring}`,
-                        color: "var(--home-ink)",
-                        letterSpacing: "0.08em",
-                      }}
-                    >
-                      SCORE {evaluation.weightedScore}
-                    </div>
-                  </div>
-
-                  <p
-                    className="mt-5 max-w-3xl text-balance"
-                    style={{
-                      color: "var(--home-ink)",
-                      fontFamily: "var(--font-home-sans)",
-                      fontSize: "clamp(1.4rem, 1.4vw + 0.95rem, 1.85rem)",
-                      fontWeight: 600,
-                      lineHeight: 1.15,
-                      letterSpacing: "-0.04em",
-                      margin: 0,
-                    }}
-                  >
-                    I built this to pressure-test product bets before a confident story outruns the actual tradeoff.
-                  </p>
-
-                  <p
-                    className="mt-3 max-w-2xl text-xs leading-relaxed"
-                    style={{ color: "var(--home-ink)" }}
-                  >
-                    {evaluation.rationale}
-                  </p>
-                  <p
-                    className="mt-2 max-w-2xl text-xs leading-relaxed"
-                    style={{ color: "var(--home-ink-muted)" }}
-                  >
-                    Decision Lab keeps those axes separate, then forces a plain call.
-                  </p>
-                </div>
-
-                {/* Sliders */}
-                <div className="tool-card">
-                  <div className="tool-section-header mb-4">
-                    <div>
-                      <p className="tool-section-kicker">
-                        <SlidersHorizontal size={12} aria-hidden="true" className="mr-1.5 inline align-middle" />
-                        Inputs
-                      </p>
-                      <h2 className="tool-section-title">Score the tradeoff</h2>
-                    </div>
-                    <span className="text-2xs" style={{ color: "var(--home-ink-muted)" }}>
-                      Active: {activePreset.name}
-                    </span>
-                  </div>
-                  <div className="grid gap-4">
-                    {metricDefinitions.map((metric) => (
-                      <MetricSlider
-                        key={metric.key}
-                        label={metric.label}
-                        helper={metric.helper}
-                        value={draftState[metric.key]}
-                        baseValue={activePreset[metric.key]}
-                        accent={metric.accent}
-                        onChange={(value) => handleMetricChange(metric.key, value)}
-                      />
-                    ))}
-                  </div>
-                </div>
-
-                {/* Matrix */}
-                <div className="tool-card">
-                  <div className="tool-section-header mb-3">
-                    <div>
-                      <p className="tool-section-kicker">
-                        <ChartScatter size={12} aria-hidden="true" className="mr-1.5 inline align-middle" />
-                        Matrix
-                      </p>
-                      <h2 className="tool-section-title">Confidence vs. impact</h2>
-                    </div>
-                    <span className="text-2xs" style={{ color: "var(--home-ink-muted)" }}>
-                      Active point updates with the sliders
-                    </span>
-                  </div>
-                  <DecisionMatrix state={draftState} />
-                </div>
-              </div>
-
-            {/* Rail */}
-            <aside
-              aria-label="Verdict rail"
-              className="flex flex-col gap-4 rounded-[var(--radius-3xl)] border border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper-alt)_74%,var(--home-elev-mix))] p-5 shadow-[var(--shadow-sm)] lg:sticky lg:top-0 lg:self-start lg:max-h-[calc(100vh-7rem)] lg:overflow-y-auto"
-            >
-              <section>
-                <p className="tool-rail-label">
-                  <Zap size={12} aria-hidden="true" />
-                  Why this verdict
-                </p>
-                <ul className="m-0 flex list-none flex-col gap-1.5 p-0">
-                  {contributions.map((c) => (
-                    <li
-                      key={c.axis}
-                      className="grid items-center gap-3 rounded-[var(--radius-3xl)] border px-3 py-2 text-1xs"
-                      style={{
-                        gridTemplateColumns: "auto 1fr auto",
-                        borderColor: "var(--home-rule)",
-                        background: "var(--home-paper-raised)",
-                        color: "var(--home-ink)",
-                      }}
-                    >
-                      <span
-                        aria-hidden="true"
-                        className="inline-block h-2 w-2 rounded-full"
-                        style={{ background: c.accent }}
-                      />
-                      <span className="min-w-0 truncate font-medium" style={{ color: "var(--home-ink)" }}>
-                        {c.label}
-                      </span>
-                      <span
-                        className="tabular-nums text-2xs"
-                        style={{ color: "var(--home-ink-muted)" }}
-                      >
-                        {c.raw} × {c.weight.toFixed(2)} ={" "}
-                        <strong style={{ color: "var(--home-ink)" }}>{c.contribution.toFixed(1)}</strong>
-                      </span>
-                    </li>
-                  ))}
-                </ul>
-                <p
-                  className="mt-3 mb-0 text-2xs leading-snug"
-                  style={{ color: "var(--home-ink-muted)" }}
-                >
-                  Ship needs score ≥ 68 with impact ≥ 65 and confidence ≥ 60. Test fires when
-                  impact ≥ 60 or score ≥ 50. Otherwise it holds.
-                </p>
-              </section>
-
-              <section>
-                <p className="tool-rail-label">
-                  <Target size={12} aria-hidden="true" />
-                  Presets
-                </p>
-                <div className="grid gap-1.5">
-                  {DECISION_PRESETS.map((preset) => {
-                    const isActive = preset.id === draftState.preset;
-                    return (
-                      <button
-                        key={preset.id}
-                        type="button"
-                        onClick={() => handlePresetChange(preset.id)}
-                        aria-pressed={isActive}
-                        className="min-h-touch rounded-[var(--radius-xl)] border px-3 py-2 text-left text-1xs font-semibold transition-colors"
-                        style={{
-                          borderColor: isActive
-                            ? "color-mix(in srgb, var(--home-signal) 35%, var(--home-rule))"
-                            : "var(--home-rule)",
-                          background: isActive
-                            ? "color-mix(in srgb, var(--home-signal) 14%, var(--home-paper))"
-                            : "var(--home-paper-raised)",
-                          color: "var(--home-ink)",
-                        }}
-                      >
-                        <span className="block truncate">{preset.name}</span>
-                        <span
-                          className="block truncate text-2xs font-normal"
-                          style={{ color: "var(--home-ink-muted)" }}
-                        >
-                          {preset.outcomeHint}
-                        </span>
-                      </button>
-                    );
-                  })}
-                </div>
-              </section>
-
-              <div className="tool-rail-foot">
-                <div className="grid w-full gap-2">
-                  <p
-                    className="m-0 flex items-center gap-1.5 text-2xs font-bold uppercase tracking-[0.14em]"
-                    style={{ color: "var(--home-ink-muted)" }}
-                  >
-                    <Link size={11} aria-hidden="true" />
-                    URL state
-                  </p>
-                  <button
-                    type="button"
-                    onClick={() => {
-                      void handleCopyLink();
-                    }}
-                    className="min-h-touch rounded-full border px-3 py-1.5 text-1xs font-semibold transition-colors"
-                    style={{
-                      borderColor: "color-mix(in srgb, var(--home-signal) 28%, var(--home-rule))",
-                      background: "color-mix(in srgb, var(--home-signal) 12%, var(--home-paper))",
-                      color: "var(--home-ink)",
-                    }}
-                  >
-                    Copy link
-                  </button>
-                  <p
-                    className="m-0 text-2xs leading-snug"
-                    style={{ color: "var(--home-ink-muted)" }}
-                  >
-                    {copyStatus === "copied"
-                      ? "Link copied"
-                      : copyStatus === "error"
-                        ? "Copy failed"
-                        : "Copy to share. Every slider change is encoded."}
-                  </p>
-                </div>
-              </div>
-            </aside>
+    <>
+      <Catalog97ProjectHero
+        ink={lead}
+        title="Decision Lab"
+        standfirst={standfirst}
+        readouts={[
+          { label: "Weighted score", value: evaluation.weightedScore },
+          { label: "Active preset", value: crumbLabel },
+          {
+            label: "Vs preset",
+            value: hasPresetOverride ? `${presetDelta > 0 ? "+" : ""}${presetDelta}` : "0",
+            detail: hasPresetOverride ? "Sum across axes" : "Matches preset",
+          },
+        ]}
+      >
+        <div data-c97-surface="paper" className="c97-offset" style={{ padding: "var(--c97-sp-3)" }}>
+          <div className="c97-decision-signature">
+            <figure style={{ margin: 0 }}>
+              <DecisionMatrix metrics={draftState} evaluation={evaluation} pointLabel={crumbLabel} />
+              <p className="c97-decision-caption" role="status" aria-live="polite">
+                Score {evaluation.weightedScore} · {stamp.word}
+              </p>
+            </figure>
+            <WhyThisVerdict metrics={draftState} evaluation={evaluation} />
           </div>
         </div>
-      </div>
-    </section>
+      </Catalog97ProjectHero>
+
+      <section
+        className="c97-band c97-sheet"
+        data-c97-surface="paper"
+        data-seam="torn"
+        data-testid="decision-lab-shell"
+      >
+        <div className="c97-shell">
+          <h2 className="c97-poster-sm">Score the tradeoff</h2>
+          <p className="c97-meta" style={{ marginTop: "var(--c97-sp-1)" }}>
+            Active: {activePreset.name}
+          </p>
+
+          <div className="c97-decision-body-grid" style={{ marginTop: "var(--c97-sp-4)" }}>
+            <div style={{ display: "grid", gap: "var(--c97-sp-4)" }}>
+              {metricDefinitions.map((metric) => (
+                <MetricSlider
+                  key={metric.key}
+                  label={metric.label}
+                  helper={metric.helper}
+                  value={draftState[metric.key]}
+                  baseValue={activePreset[metric.key]}
+                  onChange={(value) => handleMetricChange(metric.key, value)}
+                />
+              ))}
+            </div>
+
+            <div>
+              <p className="c97-kicker" style={{ display: "flex", alignItems: "center", gap: "var(--c97-sp-1)" }}>
+                <Target size={12} aria-hidden="true" />
+                Presets
+              </p>
+              <div className="c97-decision-preset-grid" style={{ marginTop: "var(--c97-sp-2)" }}>
+                {DECISION_PRESETS.map((preset) => {
+                  const isActive = preset.id === draftState.preset;
+                  return (
+                    <button
+                      key={preset.id}
+                      type="button"
+                      aria-pressed={isActive}
+                      onClick={() => handlePresetChange(preset.id)}
+                      className="c97-panel"
+                      style={{
+                        textAlign: "left",
+                        minHeight: 44,
+                        cursor: "pointer",
+                        border: isActive ? "2px solid var(--c97-ink)" : "1px solid var(--c97-rule)",
+                      }}
+                    >
+                      <span className="c97-serif" style={{ display: "block" }}>
+                        {preset.name}
+                      </span>
+                      <span
+                        className="c97-mono"
+                        style={{
+                          display: "block",
+                          fontSize: "var(--c97-fs-small)",
+                          color: "var(--c97-ink-2)",
+                          marginTop: "var(--c97-sp-1)",
+                        }}
+                      >
+                        {preset.outcomeHint}
+                      </span>
+                    </button>
+                  );
+                })}
+              </div>
+
+              <button
+                type="button"
+                onClick={handleResetToPreset}
+                disabled={!hasPresetOverride}
+                className="c97-btn-ghost"
+                style={{ marginTop: "var(--c97-sp-3)" }}
+              >
+                <RefreshCw size={14} aria-hidden="true" style={{ marginRight: 6, verticalAlign: "middle" }} />
+                Reset to defaults
+              </button>
+
+              <div style={{ marginTop: "var(--c97-sp-4)" }}>
+                <p className="c97-kicker" style={{ display: "flex", alignItems: "center", gap: "var(--c97-sp-1)" }}>
+                  <LinkIcon size={12} aria-hidden="true" />
+                  URL state
+                </p>
+                <button
+                  type="button"
+                  onClick={() => {
+                    void handleCopyLink();
+                  }}
+                  className="c97-btn"
+                  style={{ marginTop: "var(--c97-sp-2)" }}
+                >
+                  Copy link
+                </button>
+                <p
+                  className="c97-prose"
+                  style={{ fontSize: "var(--c97-fs-small)", color: "var(--c97-ink-2)", marginTop: "var(--c97-sp-2)" }}
+                >
+                  {copyStatus === "copied"
+                    ? "Link copied"
+                    : copyStatus === "error"
+                      ? "Copy failed"
+                      : "Copy to share. Every slider change is encoded."}
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </>
   );
 }
 

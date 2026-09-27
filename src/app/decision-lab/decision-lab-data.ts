@@ -18,6 +18,19 @@ export interface DecisionMetrics {
   reversibility: number;
 }
 
+/**
+ * The weight each axis carries in `evaluateDecision`'s score. Exported so the
+ * "Why this verdict" contribution list (`verdictContributions` in
+ * `verdictStamp.ts`) reads the same numbers rather than a copy that could
+ * drift from the score.
+ */
+export const DECISION_WEIGHTS: Record<DecisionAxis, number> = {
+  impact: 0.35,
+  confidence: 0.25,
+  effort: 0.25,
+  reversibility: 0.15,
+};
+
 export interface DecisionPreset extends DecisionMetrics {
   id: DecisionPresetId;
   name: string;
@@ -153,10 +166,10 @@ export function getDecisionPresetMetrics(presetId: DecisionPresetId): DecisionMe
 export function evaluateDecision(metrics: DecisionMetrics): DecisionEvaluation {
   const weightedScore = Number(
     (
-      metrics.impact * 0.35 +
-      metrics.confidence * 0.25 +
-      (100 - metrics.effort) * 0.25 +
-      metrics.reversibility * 0.15
+      metrics.impact * DECISION_WEIGHTS.impact +
+      metrics.confidence * DECISION_WEIGHTS.confidence +
+      (100 - metrics.effort) * DECISION_WEIGHTS.effort +
+      metrics.reversibility * DECISION_WEIGHTS.reversibility
     ).toFixed(1)
   );
 
