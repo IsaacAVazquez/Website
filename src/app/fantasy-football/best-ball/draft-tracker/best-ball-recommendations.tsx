@@ -57,15 +57,13 @@ export function BestBallRecommendations({
     : "The sourced board and roster targets remain available, but this preset does not produce exact player cards.";
 
   return (
-    <section className="c97-panel p-5 sm:p-6" aria-labelledby="best-ball-recommendations-heading">
+    <section className="c97-panel" aria-labelledby="best-ball-recommendations-heading">
       {/* The heading block is top-aligned and the explainer runs full width
           beneath it. The old items-end pairing bottom-aligned the heading to
           an eleven-line column and left 209px of empty card above it. */}
       <div>
         <p className="c97-kicker mb-1">Your next pick</p>
-        {/* text-2xl tops out at 34px, exactly where an open room's h1 sits, so this
-            would render at its parent's size. text-xl is the step the rest of the room uses. */}
-        <h2 id="best-ball-recommendations-heading" className="text-xl font-semibold">
+        <h2 id="best-ball-recommendations-heading" className="c97-serif c97-h3">
           {recommendationMode === "exact"
             ? "Best fits for your next pick"
             : "Board and roster guidance"}

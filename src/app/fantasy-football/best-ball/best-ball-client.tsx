@@ -14,6 +14,7 @@ import {
 } from "@/components/fantasy";
 import { useBestBallSnapshot } from "@/hooks/useBestBallSnapshot";
 import { useDebounce } from "@/hooks/useDebounce";
+import { PROJECT_PRESS } from "@/constants/projectPress";
 import {
   getBestBallConsensusIssue,
   getContestPreset,
@@ -704,45 +705,90 @@ export function BestBallClient({ initialState }: BestBallClientProps) {
       aria-label="Best ball rankings and strategy"
       data-testid="best-ball-shell"
     >
-      <header className={`${SHELL_CLASS} flex flex-wrap items-baseline justify-between gap-x-6 gap-y-3 pb-3.5 pt-7`}>
-        <div className="flex flex-wrap items-baseline gap-x-4 gap-y-1.5">
-          <span
-            className="inline-flex items-center gap-2 font-mono text-2xs uppercase tracking-[0.1em]"
-            style={{ color: "var(--c97-ink-2)" }}
-          >
-            <span className="h-2 w-2" style={{ background: "var(--c97-accent)" }} aria-hidden="true" />
+      <section
+        className="c97-sheet"
+        data-c97-surface={`ink-${PROJECT_PRESS["/fantasy-football/best-ball"].lead}`}
+        style={{ paddingBlock: "var(--c97-sp-5)" }}
+      >
+        <div className={SHELL_CLASS}>
+          <h1 className="c97-poster">Best Ball</h1>
+          <p className="c97-lead" style={{ marginTop: "var(--c97-sp-3)" }}>
+            I keep one best ball board and read it through six different contest lenses, since the
+            value that matters in a tournament built around a Week 17 bracket is not the value that
+            matters in a season long format like Sit and Go.
+          </p>
+          <p className="c97-meta" style={{ marginTop: "var(--c97-sp-2)" }}>
             Best ball{snapshot?.season ? ` · ${snapshot.season}` : ""}
-          </span>
-          <h1
-            className="m-0 font-semibold leading-none"
-            /* DESIGN.md title ramp, the same one the rankings board h1 sits on. */
-            style={{ fontSize: "clamp(1.55rem, 1.3rem + 1.25vw, 2.1rem)", letterSpacing: "-0.05em" }}
+          </p>
+
+          {/* Every status and accent token resolves to the sheet's ink on
+              green, so the chips and the contest selector, which both carry
+              accent-toned states, sit on their own paper plate instead. */}
+          <div
+            data-c97-surface="paper"
+            className="c97-offset"
+            style={{ marginTop: "var(--c97-sp-4)", padding: "var(--c97-sp-3)" }}
           >
-            Best{" "}
-            <em style={{ fontFamily: "var(--c97-font-display)", fontStyle: "italic", fontWeight: 500 }}>Ball</em>
-          </h1>
+            <div className="flex flex-wrap gap-1.5">
+              {headerChips.map((chip) => (
+                <span
+                  key={chip}
+                  className={HEADER_CHIP_CLASS}
+                  style={{
+                    borderColor: "var(--c97-rule)",
+                    background: "var(--c97-field)",
+                    color: "var(--c97-ink-2)",
+                  }}
+                >
+                  {chip}
+                </span>
+              ))}
+            </div>
+
+            <div className="mt-3 flex flex-wrap items-center gap-x-3 gap-y-2.5">
+              <span className={`shrink-0 ${MONO_LABEL_CLASS}`} style={{ color: "var(--c97-ink-2)" }}>
+                Contest
+              </span>
+              <div role="group" aria-label="Best ball contest" className="flex flex-wrap gap-1.5">
+                {CONTESTS.map((contest) => {
+                  const active = contest.id === routeState.contest;
+                  return (
+                    <button
+                      key={contest.id}
+                      type="button"
+                      aria-pressed={active}
+                      onClick={() => updateRouteState({ contest: contest.id })}
+                      className="min-h-touch cursor-pointer border px-3.5 font-mono text-2xs uppercase tracking-[0.05em] transition-colors duration-150"
+                      style={
+                        active
+                          ? { borderColor: "var(--c97-ink)", background: "var(--c97-ink)", color: "var(--c97-surface)" }
+                          : {
+                              borderColor: "var(--c97-rule)",
+                              background: "color-mix(in srgb, var(--c97-field) 52%, var(--c97-field))",
+                              color: "var(--c97-ink)",
+                            }
+                      }
+                    >
+                      {contest.shortLabel}
+                    </button>
+                  );
+                })}
+              </div>
+              <span
+                className="ml-auto whitespace-nowrap font-mono text-2xs"
+                style={{ color: "var(--c97-ink-2)" }}
+              >
+                Rules checked {formatDate(activePreset.rulesAsOf)}
+              </span>
+            </div>
+          </div>
         </div>
-        <div className="flex flex-wrap gap-1.5">
-          {headerChips.map((chip) => (
-            <span
-              key={chip}
-              className={HEADER_CHIP_CLASS}
-              style={{
-                borderColor: "var(--c97-rule)",
-                background: "var(--c97-field)",
-                color: "var(--c97-ink-2)",
-              }}
-            >
-              {chip}
-            </span>
-          ))}
-        </div>
-      </header>
+      </section>
 
       {/* Wrapped in the shell like the rankings board's note, so it sits in
           the content column rather than running edge to edge as an alert. */}
       {seasonalWeek >= 1 ? (
-        <div className={`${SHELL_CLASS} pb-3.5`}>
+        <div className={`${SHELL_CLASS} pb-3.5 pt-3.5`}>
           <SeasonalScopeNote season={snapshot?.season ?? 0} week={seasonalWeek}>
             Best ball is drafted before the season and scored through it, so this board describes a
             market that closed at kickoff. Rankings and ADP here are the preseason readings your
@@ -751,54 +797,6 @@ export function BestBallClient({ initialState }: BestBallClientProps) {
           </SeasonalScopeNote>
         </div>
       ) : null}
-
-      {/* The lens is chosen once and then the board is read, so the pinned line
-          belongs to the board controls further down. Two sticky bars at the same
-          offset would paint over each other. */}
-      <div
-        className="border-y"
-        style={{
-          borderColor: "var(--c97-rule)",
-          background: "var(--c97-surface)",
-        }}
-      >
-        <div className={`${SHELL_CLASS} flex flex-wrap items-center gap-x-3 gap-y-2.5 py-2.5`}>
-          <span className={`shrink-0 ${MONO_LABEL_CLASS}`} style={{ color: "var(--c97-ink-2)" }}>
-            Contest
-          </span>
-          <div role="group" aria-label="Best ball contest" className="flex flex-wrap gap-1.5">
-            {CONTESTS.map((contest) => {
-              const active = contest.id === routeState.contest;
-              return (
-                <button
-                  key={contest.id}
-                  type="button"
-                  aria-pressed={active}
-                  onClick={() => updateRouteState({ contest: contest.id })}
-                  className="min-h-touch cursor-pointer border px-3.5 font-mono text-2xs uppercase tracking-[0.05em] transition-colors duration-150"
-                  style={
-                    active
-                      ? { borderColor: "var(--c97-ink)", background: "var(--c97-ink)", color: "var(--c97-surface)" }
-                      : {
-                          borderColor: "var(--c97-rule)",
-                          background: "color-mix(in srgb, var(--c97-field) 52%, var(--c97-field))",
-                          color: "var(--c97-ink)",
-                        }
-                  }
-                >
-                  {contest.shortLabel}
-                </button>
-              );
-            })}
-          </div>
-          <span
-            className="ml-auto whitespace-nowrap font-mono text-2xs"
-            style={{ color: "var(--c97-ink-2)" }}
-          >
-            Rules checked {formatDate(activePreset.rulesAsOf)}
-          </span>
-        </div>
-      </div>
 
       <section aria-label="Selected format" className={`${SHELL_CLASS} pt-3.5`}>
         <div
@@ -813,11 +811,7 @@ export function BestBallClient({ initialState }: BestBallClientProps) {
               <p className={`m-0 ${MONO_LABEL_CLASS}`} style={{ color: "var(--c97-ink-2)" }}>
                 Contest lens
               </p>
-              {/* text-2xl tops out at the same 34px as the page h1, which renders this
-                  child heading at exactly its parent's size: the nesting is announced to a
-                  screen reader and invisible on the page. text-xl holds the step the mock
-                  draft already uses. */}
-              <h2 className="m-0 text-xl font-semibold leading-tight tracking-tight">
+              <h2 className="c97-serif c97-h3">
                 {activeContest.label}
               </h2>
             </div>
@@ -922,7 +916,13 @@ export function BestBallClient({ initialState }: BestBallClientProps) {
         </div>
       ) : null}
 
-      <div className={`${SHELL_CLASS} pt-4`} data-testid="best-ball-board">
+      <section
+        className="c97-sheet"
+        data-c97-surface="paper"
+        data-seam="torn"
+        style={{ paddingBlock: "var(--c97-sp-5)" }}
+      >
+      <div className={SHELL_CLASS} data-testid="best-ball-board">
         <h2 className="sr-only">{activeContest.shortLabel} board</h2>
         {/* One pinned control line at every width. The board runs hundreds of
             rows, so position, search, and the count have to stay reachable
@@ -1217,12 +1217,20 @@ export function BestBallClient({ initialState }: BestBallClientProps) {
           )}
         </div>
       </div>
+      </section>
 
-      <section aria-labelledby="field-notes-heading" className={`${SHELL_CLASS} pt-7`}>
+      <section
+        aria-labelledby="field-notes-heading"
+        className="c97-sheet"
+        data-c97-surface="bone"
+        data-seam="torn"
+        style={{ paddingBlock: "var(--c97-sp-5)" }}
+      >
+      <div className={SHELL_CLASS}>
         <p className={`m-0 ${MONO_LABEL_CLASS}`} style={{ color: "var(--c97-ink-2)" }}>
           Field notes
         </p>
-        <h2 id="field-notes-heading" className="mb-0 mt-1.5 text-xl font-semibold leading-tight tracking-tight">
+        <h2 id="field-notes-heading" className="c97-poster-sm" style={{ marginTop: "var(--c97-sp-1)" }}>
           What has worked, and how I would use it
         </h2>
         <p className="mb-0 mt-2.5 max-w-[70ch] text-sm leading-6" style={{ color: "var(--c97-ink-2)" }}>
@@ -1292,6 +1300,7 @@ export function BestBallClient({ initialState }: BestBallClientProps) {
             ))}
           </div>
         </div>
+      </div>
       </section>
 
       <section aria-label="Format reference" className={`${SHELL_CLASS} pt-5`}>
@@ -1303,7 +1312,7 @@ export function BestBallClient({ initialState }: BestBallClientProps) {
             <p className={`m-0 ${MONO_LABEL_CLASS}`} style={{ color: "var(--c97-ink-2)" }}>
               Format reference
             </p>
-            <h3 className="mb-0 mt-1.5 text-lg font-semibold tracking-tight">
+            <h3 className="c97-serif c97-h3" style={{ marginTop: "var(--c97-sp-2)" }}>
               The baseline Underdog roster
             </h3>
             <p className="mb-0 mt-2 text-sm leading-6" style={{ color: "var(--c97-ink-2)" }}>

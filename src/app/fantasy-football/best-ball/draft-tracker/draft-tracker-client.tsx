@@ -86,6 +86,14 @@ const OUTLINE_ACTION_STYLE = {
   color: "var(--c97-ink)",
 } as const;
 
+// A disabled control reads as unprinted rather than faded: no opacity dim
+// (which drops "Undo last pick" below 4.5:1), a dashed edge, and ink-2 text
+// that stays legible.
+const OUTLINE_ACTION_DISABLED_STYLE = {
+  ...OUTLINE_ACTION_STYLE,
+  color: "var(--c97-ink-2)",
+} as const;
+
 function formatSnapshotDate(value: string | null | undefined): string {
   if (!value || Number.isNaN(Date.parse(value))) return "not available";
   return new Intl.DateTimeFormat("en-US", {
@@ -178,6 +186,7 @@ export function BestBallDraftTrackerClient({
       data-hydrated={isHydrated ? "true" : "false"}
     >
       <div className={`${WIDE_SHELL_CLASS} space-y-5 py-[clamp(1.25rem,2vw,2rem)]`}>
+      <section className="c97-sheet space-y-4" data-c97-surface="paper" style={{ paddingBlock: "var(--c97-sp-4)" }}>
         <Breadcrumbs customItems={BREADCRUMBS} className="pt-2" />
         {seasonalWeek >= 1 ? (
           <SeasonalScopeNote season={snapshot?.season ?? 0} week={seasonalWeek}>
@@ -192,7 +201,7 @@ export function BestBallDraftTrackerClient({
               {/* An open room demotes the pitch: the h1 stays for the outline,
                   compact, and the live state below leads. Freshness survives the
                   collapse on purpose; it is a credibility feature. */}
-              <h1 className="text-2xl font-semibold tracking-tight">
+              <h1 className="c97-serif c97-h3" style={{ marginTop: "var(--c97-sp-1)" }}>
                 Track every pick and see what your build still needs.
               </h1>
               <p className="text-xs" style={{ color: "var(--c97-ink-2)" }}>
@@ -208,16 +217,7 @@ export function BestBallDraftTrackerClient({
           ) : (
             <div className="space-y-3">
               <p className="c97-kicker mb-0">Best ball draft assistant</p>
-              <h1
-                style={{
-                  fontFamily: "var(--c97-font-body)",
-                  fontSize: "clamp(2.15rem, 1.6rem + 2.75vw, 4.2rem)", // DESIGN.md headline step
-                  fontWeight: 600,
-                  letterSpacing: "-0.04em",
-                  lineHeight: 0.98,
-                  maxWidth: "18ch",
-                }}
-              >
+              <h1 className="c97-poster-sm">
                 Track every pick and see what your build still needs.
               </h1>
               <p className="max-w-[66ch] text-sm leading-7" style={{ color: "var(--c97-ink-2)" }}>
@@ -275,6 +275,7 @@ export function BestBallDraftTrackerClient({
             </div>
           ) : null}
         </header>
+      </section>
 
         {sourceIssue ? (
           <div
@@ -305,7 +306,7 @@ export function BestBallDraftTrackerClient({
         ) : null}
 
         {error ? (
-          <article className="c97-panel p-5 sm:p-6" style={{ borderColor: "var(--c97-negative)" }}>
+          <article className="c97-panel" style={{ borderColor: "var(--c97-negative)" }}>
             <p className="font-semibold" style={{ color: "var(--c97-negative)" }}>
               {error}
             </p>
@@ -321,18 +322,20 @@ export function BestBallDraftTrackerClient({
         ) : null}
 
         {isLoading && !snapshot ? (
-          <article className="c97-panel p-6 text-sm" style={{ color: "var(--c97-ink-2)" }}>
+          <article className="c97-panel text-sm" style={{ color: "var(--c97-ink-2)" }}>
             Loading best ball rankings and room rules...
           </article>
         ) : null}
 
         {snapshot ? (
-          <BestBallDraftRoom
-            key={`${snapshot.season}-${contestId}`}
-            snapshot={snapshot}
-            preset={preset}
-            onRoomOpenChange={setRoomOpen}
-          />
+          <section className="c97-sheet" data-c97-surface="paper" style={{ paddingBlock: "var(--c97-sp-4)" }}>
+            <BestBallDraftRoom
+              key={`${snapshot.season}-${contestId}`}
+              snapshot={snapshot}
+              preset={preset}
+              onRoomOpenChange={setRoomOpen}
+            />
+          </section>
         ) : null}
       </div>
     </section>
@@ -580,7 +583,7 @@ function BestBallDraftRoom({
 
   if (!draft.isLoaded) {
     return (
-      <article className="c97-panel p-6 text-sm" style={{ color: "var(--c97-ink-2)" }}>
+      <article className="c97-panel text-sm" style={{ color: "var(--c97-ink-2)" }}>
         Checking this browser for a saved {preset.shortName} room...
       </article>
     );
@@ -589,9 +592,9 @@ function BestBallDraftRoom({
   if (showSetup) {
     return (
       <div className="grid gap-5 lg:grid-cols-[minmax(0,1.25fr)_minmax(18rem,0.75fr)]">
-        <section className="c97-panel p-5 sm:p-7" aria-labelledby="best-ball-room-setup-heading">
+        <section className="c97-panel" aria-labelledby="best-ball-room-setup-heading">
           <p className="c97-kicker mb-1">Room setup</p>
-          <h2 id="best-ball-room-setup-heading" className="text-3xl font-semibold">
+          <h2 id="best-ball-room-setup-heading" className="c97-poster-sm">
             Choose your draft slot
           </h2>
           <p className="mt-3 max-w-[58ch] text-sm leading-7" style={{ color: "var(--c97-ink-2)" }}>
@@ -646,7 +649,7 @@ function BestBallDraftRoom({
           <button
             type="button"
             onClick={openRoom}
-            className="mt-6 inline-flex min-h-[48px] w-full items-center justify-center border px-6 text-sm font-semibold transition-[background-color,border-color,color,box-shadow] duration-200 sm:w-auto"
+            className="c97-offset mt-6 inline-flex min-h-[48px] w-full items-center justify-center border px-6 text-sm font-semibold transition-[background-color,border-color,color,box-shadow] duration-200 sm:w-auto"
             style={{
               borderColor: "var(--c97-ink)",
               background: "var(--c97-ink)",
@@ -657,9 +660,9 @@ function BestBallDraftRoom({
           </button>
         </section>
 
-        <aside aria-label="Contest details" className="c97-panel p-5 sm:p-6">
+        <aside aria-label="Contest details" className="c97-panel">
           <p className="c97-kicker mb-1">{preset.shortName}</p>
-          <h2 className="text-2xl font-semibold">{preset.name}</h2>
+          <h2 className="c97-serif c97-h3">{preset.name}</h2>
           <p className="mt-3 text-sm leading-7" style={{ color: "var(--c97-ink-2)" }}>
             {preset.description}
           </p>
@@ -770,20 +773,17 @@ function BestBallDraftRoom({
       */}
       <section
         ref={statusCardRef}
-        className="c97-panel p-5 sm:p-6"
+        className="c97-panel"
         aria-labelledby="best-ball-room-status-heading"
       >
         <div className="flex flex-wrap items-start justify-between gap-4">
           <div className="min-w-0">
             <p className="c97-kicker mb-1">Live room</p>
-            {/* An open room collapses the h1 to 34px, which is exactly where text-2xl
-                tops out, so a text-2xl section heading renders at its parent's size.
-                text-xl is the step this file already uses for "Saved in this browser". */}
             <h2
               id="best-ball-room-status-heading"
               ref={statusHeadingRef}
               tabIndex={-1}
-              className="text-xl font-semibold"
+              className="c97-serif c97-h3"
             >
               {draft.isComplete
                 ? "Draft complete"
@@ -809,8 +809,8 @@ function BestBallDraftRoom({
               onClick={draft.undoLastPick}
               disabled={draft.state.picks.length === 0}
               aria-describedby={lastPick ? "best-ball-undo-target" : undefined}
-              className="inline-flex min-h-[44px] items-center gap-2 border px-4 text-sm font-semibold disabled:cursor-not-allowed disabled:opacity-50"
-              style={OUTLINE_ACTION_STYLE}
+              className="inline-flex min-h-[44px] items-center gap-2 border px-4 text-sm font-semibold disabled:cursor-not-allowed disabled:border-dashed"
+              style={draft.state.picks.length === 0 ? OUTLINE_ACTION_DISABLED_STYLE : OUTLINE_ACTION_STYLE}
             >
               <Undo2 className="h-4 w-4" aria-hidden="true" />
               Undo last pick
@@ -824,8 +824,8 @@ function BestBallDraftRoom({
                   ? `Redo pick ${draft.nextRedoPick.pickNumber} (${draft.nextRedoPick.player.name})`
                   : "Redo pick (nothing to redo)"
               }
-              className="inline-flex min-h-[44px] items-center gap-2 border px-4 text-sm font-semibold disabled:cursor-not-allowed disabled:opacity-50"
-              style={OUTLINE_ACTION_STYLE}
+              className="inline-flex min-h-[44px] items-center gap-2 border px-4 text-sm font-semibold disabled:cursor-not-allowed disabled:border-dashed"
+              style={draft.canRedo ? OUTLINE_ACTION_STYLE : OUTLINE_ACTION_DISABLED_STYLE}
             >
               <Redo2 className="h-4 w-4" aria-hidden="true" />
               Redo pick
@@ -900,7 +900,7 @@ function BestBallDraftRoom({
           aria-label="Roster build"
           className="hidden self-start lg:sticky lg:top-0 lg:grid lg:max-h-[calc(100vh-7rem)] lg:gap-5 lg:overflow-y-auto lg:overscroll-contain"
         >
-          <section className="c97-panel p-5" aria-labelledby="best-ball-desktop-build-heading">
+          <section className="c97-panel" aria-labelledby="best-ball-desktop-build-heading">
             <BestBallBuildPanel
               analysis={analysis}
               preset={preset}
@@ -917,9 +917,9 @@ function BestBallDraftRoom({
             />
           </section>
 
-          <section className="c97-panel p-5" aria-labelledby="best-ball-room-actions-heading">
+          <section className="c97-panel" aria-labelledby="best-ball-room-actions-heading">
             <p className="c97-kicker mb-1">Room controls</p>
-            <h2 id="best-ball-room-actions-heading" className="text-xl font-semibold">
+            <h2 id="best-ball-room-actions-heading" className="c97-serif c97-h3">
               Saved in this browser
             </h2>
             <p className="mt-2 text-xs leading-5" style={{ color: "var(--c97-ink-2)" }}>
@@ -1004,11 +1004,11 @@ function BestBallDraftRoom({
           type="button"
           onClick={draft.undoLastPick}
           disabled={draft.state.picks.length === 0}
-          className="inline-flex min-h-[52px] shrink-0 items-center gap-2 border px-4 text-sm font-semibold shadow-[var(--shadow-xl)] disabled:cursor-not-allowed disabled:opacity-50"
+          className="inline-flex min-h-[52px] shrink-0 items-center gap-2 border px-4 text-sm font-semibold shadow-[var(--shadow-xl)] disabled:cursor-not-allowed disabled:border-dashed"
           style={{
             borderColor: "var(--c97-rule)",
             background: "var(--c97-surface)",
-            color: "var(--c97-ink)",
+            color: draft.state.picks.length === 0 ? "var(--c97-ink-2)" : "var(--c97-ink)",
           }}
         >
           <Undo2 className="h-4 w-4" aria-hidden="true" />
@@ -1059,8 +1059,8 @@ function BestBallDraftRoom({
             type="button"
             onClick={draft.undoLastPick}
             disabled={draft.state.picks.length === 0}
-            className="inline-flex min-h-[44px] items-center justify-center gap-2 border px-4 text-sm font-semibold disabled:opacity-50"
-            style={OUTLINE_ACTION_STYLE}
+            className="inline-flex min-h-[44px] items-center justify-center gap-2 border px-4 text-sm font-semibold disabled:border-dashed"
+            style={draft.state.picks.length === 0 ? OUTLINE_ACTION_DISABLED_STYLE : OUTLINE_ACTION_STYLE}
           >
             <Undo2 className="h-4 w-4" aria-hidden="true" />
             Undo last pick

@@ -122,7 +122,7 @@ export function BestBallDraftBoard({
         <div className="flex flex-wrap items-end justify-between gap-3">
           <div>
             <p className="c97-kicker mb-1">Room board</p>
-            <h2 id="best-ball-player-board-heading" className="text-xl font-semibold">
+            <h2 id="best-ball-player-board-heading" className="c97-serif c97-h3">
               Log the player selected
             </h2>
           </div>

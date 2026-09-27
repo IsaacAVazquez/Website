@@ -54,7 +54,7 @@ export function BestBallBuildPanel({
     <div className="grid gap-4">
       <div>
         <p className="c97-kicker mb-1">My build</p>
-        <h2 id={headingId} className="text-xl font-semibold">
+        <h2 id={headingId} className="c97-serif c97-h3">
           {userPicks.length} of {preset.rosterSize} players
         </h2>
         <p className="mt-2 text-sm leading-6" style={{ color: "var(--c97-ink-2)" }}>
