@@ -382,6 +382,7 @@ export function TradeCalculatorClient() {
       <section
         className="c97-sheet"
         data-c97-surface={`ink-${PROJECT_PRESS["/fantasy-football/trade-calculator"].lead}`}
+        data-seam="torn"
       >
         <div className={WIDE_SHELL_CLASS} style={{ paddingBlock: "var(--c97-sp-5)" }}>
           <div className="flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
@@ -390,11 +391,11 @@ export function TradeCalculatorClient() {
               <p className="c97-lead max-w-[68ch]" style={{ marginTop: "1rem" }}>
                 Compare both sides of a one-QB redraft trade using expert consensus, mock-draft ADP, and your league’s scoring, size, and lineup. The result shows where the estimate is strong and where the data is thin.
               </p>
-              <p className="c97-meta" style={{ marginTop: "0.75rem" }}>
+              <p className="c97-meta" style={{ marginTop: "0.75rem", display: "block", lineHeight: 1.8 }}>
                 <span>Expert board {formatUpdatedAt(snapshot?.upstreamUpdatedAt)}</span>
-                <span aria-hidden="true">·</span>
+                <span aria-hidden="true"> · </span>
                 <span>Draft market {formatUpdatedAt(snapshot?.adpSource?.asOf)}</span>
-                <span aria-hidden="true">·</span>
+                <span aria-hidden="true"> · </span>
                 <span style={{ color: sourceFreshness === "stale" ? "var(--c97-negative)" : undefined }}>
                   {sourceFreshness} sources
                 </span>
