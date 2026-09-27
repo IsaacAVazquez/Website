@@ -1,4 +1,5 @@
 import dynamic from "next/dynamic";
+import type { ProjectPress } from "@/constants/projectPress";
 import { Catalog97Shell } from "./Catalog97Shell";
 
 const ProjectBuildNote = dynamic(() =>
@@ -25,6 +26,8 @@ interface Catalog97ToolShellProps {
   band?: Catalog97ToolBand;
   /** Link to the build-note write-up, from `projectBuildNoteLinks`. */
   buildNoteHref?: string;
+  /** The route's ink pair from `PROJECT_PRESS`. Its second ink becomes the overprint on every sheet in the body. */
+  press?: ProjectPress;
 }
 
 /**
@@ -39,6 +42,7 @@ export function Catalog97ToolShell({
   route,
   band,
   buildNoteHref,
+  press,
 }: Catalog97ToolShellProps) {
   return (
     <Catalog97Shell>
@@ -61,7 +65,7 @@ export function Catalog97ToolShell({
           </div>
         </section>
       ) : null}
-      <div data-c97-surface="paper">
+      <div data-c97-surface="paper" data-c97-press-second={press?.second}>
         {children}
         {buildNoteHref ? <ProjectBuildNote href={buildNoteHref} route={route} /> : null}
       </div>

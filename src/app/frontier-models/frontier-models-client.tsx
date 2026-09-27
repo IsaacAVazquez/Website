@@ -2,22 +2,22 @@
 
 import { startTransition, useEffect, useMemo, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
+import { Catalog97ProjectHero } from "@/components/catalog97/Catalog97ProjectHero";
+import { PROJECT_PRESS } from "@/constants/projectPress";
 import { EmptyPanel } from "@/components/football/EmptyPanel";
-import { HomeStatsPanel, type HomeStatsCell } from "@/components/home/HomeStatsPanel";
-import { ChartBar, FileText } from "@/components/ui/ServerIcons";
 import {
   filterFrontierModels,
+  formatPriceUsd,
   formatTokenCount,
-  medianContextWindow,
   PRICE_TIER_LABELS,
 } from "@/lib/frontierModels";
+import { frontierReadouts } from "./readouts";
 import { FrontierModelsTable } from "./components/FrontierModelsTable";
 import { FrontierCostContextChart } from "./components/FrontierCostContextChart";
 import {
   buildFrontierModelsHref,
   FRONTIER_MODALITY_LABELS,
-  FRONTIER_MODELS_VIEW_LABELS,
-  FRONTIER_MODELS_VIEW_OPTIONS,
+  FRONTIER_MODELS_ROUTE,
   normalizeFrontierModelsState,
   resolveFrontierModelsState,
 } from "./frontier-models-state";
@@ -28,7 +28,6 @@ import type {
   FrontierPriceTier,
   FrontierProviderFilter,
   FrontierTierFilter,
-  FrontierView,
 } from "@/types/frontierModels";
 
 interface FrontierModelsClientProps {
@@ -79,7 +78,7 @@ export function FrontierModelsClient({
   const resolvedState = resolveFrontierModelsState(routeState, snapshot);
 
   const currentQuery = searchParams.toString();
-  const currentHref = `/frontier-models${currentQuery ? `?${currentQuery}` : ""}`;
+  const currentHref = `${FRONTIER_MODELS_ROUTE}${currentQuery ? `?${currentQuery}` : ""}`;
   const desiredHref = buildFrontierModelsHref(resolvedState, searchParams);
 
   useEffect(() => {
@@ -117,28 +116,7 @@ export function FrontierModelsClient({
     ]
   );
 
-  const median = useMemo(
-    () => medianContextWindow(snapshot.models),
-    [snapshot.models]
-  );
-
-  const visionCount = useMemo(
-    () => snapshot.models.filter((m) => m.modalities.includes("vision")).length,
-    [snapshot.models]
-  );
-  const audioCount = useMemo(
-    () => snapshot.models.filter((m) => m.modalities.includes("audio")).length,
-    [snapshot.models]
-  );
-  const openWeightCount = useMemo(
-    () =>
-      snapshot.models.filter(
-        (m) => m.provider === "meta" || m.provider === "deepseek" || m.provider === "mistral"
-      ).length,
-    [snapshot.models]
-  );
-  const budgetTier = snapshot.priceTiers.find((t) => t.id === "budget")?.count ?? 0;
-  const premiumTier = snapshot.priceTiers.find((t) => t.id === "premium")?.count ?? 0;
+  const readouts = useMemo(() => frontierReadouts(snapshot.models), [snapshot.models]);
 
   const updatedAt = formatGeneratedAt(snapshot.generatedAt);
   const [reviewIsOverdue, setReviewIsOverdue] = useState(!snapshot.verified);
@@ -153,203 +131,152 @@ export function FrontierModelsClient({
     );
   }, [snapshot.asOf, snapshot.generatedAt, snapshot.verified]);
 
-  const frontierCells: HomeStatsCell[] = [
-    {
-      label: "Models tracked",
-      value: <span className="tabular-nums">{snapshot.models.length}</span>,
-      sub: "Across listed providers",
-    },
-    {
-      label: "Providers covered",
-      value: <span className="tabular-nums">{snapshot.providers.length}</span>,
-      sub: "Anthropic, OpenAI, Google, etc.",
-    },
-    {
-      label: "Median context window",
-      value: <span className="tabular-nums">{formatTokenCount(median)}</span>,
-      sub: "Tokens, half the field at or above",
-    },
-    {
-      label: "Budget tier",
-      value: <span className="tabular-nums">{budgetTier}</span>,
-      sub: "Input and output both under $1/M",
-    },
-    {
-      label: "Premium tier",
-      value: <span className="tabular-nums">{premiumTier}</span>,
-      sub: "Top of the price ladder",
-    },
-    {
-      label: "Vision-capable",
-      value: <span className="tabular-nums">{visionCount}</span>,
-      sub: "Models that accept images",
-    },
-    {
-      label: "Audio-capable",
-      value: <span className="tabular-nums">{audioCount}</span>,
-      sub: "Models that handle audio",
-    },
-    {
-      label: "Open-weight models",
-      value: <span className="tabular-nums">{openWeightCount}</span>,
-      sub: "Meta, DeepSeek, Mistral",
-    },
-  ];
-
   function handleSelectModel(id: string | null) {
     navigate({ ...resolvedState, selectedModelId: id });
   }
 
+  const lead = PROJECT_PRESS[FRONTIER_MODELS_ROUTE].lead;
+  const standfirst =
+    "A curated table of leading large language models with context windows, pricing, and modality coverage. Side-by-side facts, no marketing.";
+  const liveFactsNote = snapshot.liveFacts
+    ? ` · facts auto-checked ${snapshot.liveFacts.checkedAt.slice(0, 10)} against ${snapshot.liveFacts.sources.join(" + ")}`
+    : "";
+  const dateMeta = `Curated by Isaac · data as of ${snapshot.asOf ?? snapshot.generatedAt.slice(0, 10)} · updated ${updatedAt}${!snapshot.verified ? " · independent review pending" : ""}${liveFactsNote}`;
+
   return (
-    <div className="home-shell home-section space-y-8">
-      <header className="space-y-3">
-        <p className="home-kicker">Modern tech</p>
-        <h1 className="text-3xl font-semibold tracking-[-0.04em] text-[var(--home-ink)] sm:text-4xl">
-          Frontier Model Tracker
-        </h1>
-        <p className="max-w-2xl text-base leading-7 text-[var(--home-ink-muted)]">
-          A curated table of leading large language models with context windows,
-          pricing, and modality coverage. Side-by-side facts, no marketing.
-        </p>
-        <p className="text-xs uppercase tracking-[0.18em] text-[var(--home-ink-muted)]">
-          Curated by Isaac · Data as of {snapshot.asOf ?? snapshot.generatedAt.slice(0, 10)} · Updated {updatedAt}
-          {!snapshot.verified ? " · Independent review pending" : ""}
-          {snapshot.liveFacts
-            ? ` · Facts auto-checked ${snapshot.liveFacts.checkedAt.slice(0, 10)} against ${snapshot.liveFacts.sources.join(" + ")}`
-            : ""}
-        </p>
-      </header>
-
-      {reviewIsOverdue ? (
-        <div
-          role="status"
-          className="rounded-[var(--radius-2xl)] border border-[var(--home-warning)] bg-[color-mix(in_srgb,var(--home-warning)_8%,var(--home-paper))] p-4 text-sm leading-6 text-[var(--home-ink)]"
-        >
-          This dataset is outside its 45-day review window or still unverified. I
-          would not use its prices or model availability for a purchase decision
-          until the source list is reviewed.
-        </div>
-      ) : null}
-
-      <HomeStatsPanel
-        id="frontier-models-stats"
-        title="Frontier models at a glance"
-        meta={`Updated ${updatedAt}`}
-        cells={frontierCells}
-        pills={[
-          { label: "Table", href: "/frontier-models", icon: FileText },
-          { label: "Chart", href: "/frontier-models?view=chart", icon: ChartBar },
+    <div>
+      <Catalog97ProjectHero
+        ink={lead}
+        title="Frontier Model Tracker"
+        standfirst={standfirst}
+        meta={dateMeta}
+        readouts={[
+          {
+            label: "Models tracked",
+            value: `${readouts.count}`,
+            detail: `${snapshot.providers.length} providers`,
+          },
+          {
+            label: "Cheapest input price",
+            value: readouts.cheapest ? formatPriceUsd(readouts.cheapest.inputPricePerMTokens) : "—",
+            detail: readouts.cheapest
+              ? `${readouts.cheapest.providerLabel} ${readouts.cheapest.name}`
+              : "No priced models",
+          },
+          {
+            label: "Largest context window",
+            value: readouts.largestContext ? formatTokenCount(readouts.largestContext.contextWindow) : "—",
+            detail: readouts.largestContext
+              ? `${readouts.largestContext.providerLabel} ${readouts.largestContext.name}`
+              : "No models tracked",
+          },
         ]}
-      />
-
-      <section className="space-y-3">
-        <FilterGroup
-          label="Provider"
-          options={[
-            { id: "all", label: "All providers" },
-            ...snapshot.providers.map((provider) => ({
-              id: provider.id,
-              label: `${provider.label} (${provider.count})`,
-            })),
-          ]}
-          value={resolvedState.provider}
-          onChange={(value) =>
-            navigate({
-              ...resolvedState,
-              provider: value as FrontierProviderFilter,
-              selectedModelId: null,
-            })
-          }
-        />
-        <FilterGroup
-          label="Modality"
-          options={MODALITY_FILTERS.map((modality) => ({
-            id: modality,
-            label:
-              modality === "all"
-                ? "Any modality"
-                : FRONTIER_MODALITY_LABELS[modality],
-          }))}
-          value={resolvedState.modality}
-          onChange={(value) =>
-            navigate({
-              ...resolvedState,
-              modality: value as FrontierModalityFilter,
-              selectedModelId: null,
-            })
-          }
-        />
-        <FilterGroup
-          label="Price tier"
-          options={TIER_FILTERS.map((tier) => ({
-            id: tier,
-            label:
-              tier === "all"
-                ? "Any tier"
-                : PRICE_TIER_LABELS[tier as FrontierPriceTier],
-          }))}
-          value={resolvedState.priceTier}
-          onChange={(value) =>
-            navigate({
-              ...resolvedState,
-              priceTier: value as FrontierTierFilter,
-              selectedModelId: null,
-            })
-          }
-        />
-      </section>
-
-      <section className="flex flex-wrap items-center justify-between gap-3">
-        <div
-          role="tablist"
-          aria-label="Frontier model view"
-          className="inline-flex rounded-full border border-[var(--home-rule)] bg-[var(--home-paper-alt)] p-1"
-        >
-          {FRONTIER_MODELS_VIEW_OPTIONS.map((view) => {
-            const isActive = resolvedState.view === view;
-            return (
-              <button
-                key={view}
-                type="button"
-                role="tab"
-                aria-selected={isActive}
-                onClick={() =>
-                  navigate({ ...resolvedState, view: view as FrontierView })
-                }
-                className={`min-h-[44px] rounded-full px-4 text-sm font-semibold transition-colors ${
-                  isActive
-                    ? "bg-[var(--home-paper)] text-[var(--home-ink)] shadow-sm"
-                    : "text-[var(--home-ink-muted)] hover:text-[var(--home-ink)]"
-                }`}
-              >
-                {FRONTIER_MODELS_VIEW_LABELS[view]}
-              </button>
-            );
-          })}
+      >
+        {/* Provider colours are data and several vanish on pink, so the chart prints on a paper plate. */}
+        <div data-c97-surface="paper" className="c97-offset" style={{ padding: "var(--c97-sp-3)" }}>
+          <FrontierCostContextChart
+            models={filteredModels}
+            selectedModelId={resolvedState.selectedModelId}
+            onSelectModel={handleSelectModel}
+          />
         </div>
-        <p className="text-sm text-[var(--home-ink-muted)]">
-          {filteredModels.length} of {snapshot.models.length} models shown
-        </p>
-      </section>
+      </Catalog97ProjectHero>
 
-      {filteredModels.length === 0 ? (
-        <EmptyPanel
-          title="No models match those filters"
-          description="Try widening the provider, modality, or price-tier filters to see more options."
-        />
-      ) : resolvedState.view === "chart" ? (
-        <FrontierCostContextChart
-          models={filteredModels}
-          selectedModelId={resolvedState.selectedModelId}
-          onSelectModel={handleSelectModel}
-        />
-      ) : (
-        <FrontierModelsTable
-          models={filteredModels}
-          selectedModelId={resolvedState.selectedModelId}
-          onSelectModel={handleSelectModel}
-        />
-      )}
+      <section className="c97-band c97-sheet" data-c97-surface="paper" data-seam="torn">
+        <div className="c97-shell">
+          {reviewIsOverdue ? (
+            <p
+              className="c97-prose"
+              role="status"
+              style={{ marginBottom: "var(--c97-sp-5)", color: "var(--c97-warning)" }}
+            >
+              This dataset is outside its 45-day review window or still unverified. I would not
+              use its prices or model availability for a purchase decision until the source list
+              is reviewed.
+            </p>
+          ) : null}
+
+          <h2 className="c97-poster-sm">The spec sheet</h2>
+
+          <div style={{ marginTop: "var(--c97-sp-4)", display: "grid", gap: "var(--c97-sp-3)" }}>
+            <FilterGroup
+              label="Provider"
+              options={[
+                { id: "all", label: "All providers" },
+                ...snapshot.providers.map((provider) => ({
+                  id: provider.id,
+                  label: `${provider.label} (${provider.count})`,
+                })),
+              ]}
+              value={resolvedState.provider}
+              onChange={(value) =>
+                navigate({
+                  ...resolvedState,
+                  provider: value as FrontierProviderFilter,
+                  selectedModelId: null,
+                })
+              }
+            />
+            <FilterGroup
+              label="Modality"
+              options={MODALITY_FILTERS.map((modality) => ({
+                id: modality,
+                label:
+                  modality === "all"
+                    ? "Any modality"
+                    : FRONTIER_MODALITY_LABELS[modality],
+              }))}
+              value={resolvedState.modality}
+              onChange={(value) =>
+                navigate({
+                  ...resolvedState,
+                  modality: value as FrontierModalityFilter,
+                  selectedModelId: null,
+                })
+              }
+            />
+            <FilterGroup
+              label="Price tier"
+              options={TIER_FILTERS.map((tier) => ({
+                id: tier,
+                label:
+                  tier === "all"
+                    ? "Any tier"
+                    : PRICE_TIER_LABELS[tier as FrontierPriceTier],
+              }))}
+              value={resolvedState.priceTier}
+              onChange={(value) =>
+                navigate({
+                  ...resolvedState,
+                  priceTier: value as FrontierTierFilter,
+                  selectedModelId: null,
+                })
+              }
+            />
+          </div>
+
+          <p className="c97-meta" style={{ marginTop: "var(--c97-sp-4)" }}>
+            {filteredModels.length} of {snapshot.models.length} models shown
+          </p>
+
+          {filteredModels.length === 0 ? (
+            <div style={{ marginTop: "var(--c97-sp-4)" }}>
+              <EmptyPanel
+                title="No models match those filters"
+                description="Try widening the provider, modality, or price-tier filters to see more options."
+              />
+            </div>
+          ) : (
+            <div style={{ marginTop: "var(--c97-sp-4)" }}>
+              <FrontierModelsTable
+                models={filteredModels}
+                selectedModelId={resolvedState.selectedModelId}
+                onSelectModel={handleSelectModel}
+              />
+            </div>
+          )}
+        </div>
+      </section>
     </div>
   );
 }
@@ -364,7 +291,7 @@ interface FilterGroupProps {
 function FilterGroup({ label, options, value, onChange }: FilterGroupProps) {
   return (
     <div className="flex flex-wrap items-center gap-2">
-      <span className="min-w-[88px] text-2xs font-semibold uppercase tracking-[0.18em] text-[var(--home-ink-muted)]">
+      <span className="c97-kicker" style={{ minWidth: "88px" }}>
         {label}
       </span>
       <div className="flex flex-wrap gap-1.5">
@@ -376,11 +303,12 @@ function FilterGroup({ label, options, value, onChange }: FilterGroupProps) {
               type="button"
               aria-pressed={isActive}
               onClick={() => onChange(option.id)}
-              className={`min-h-[44px] rounded-full border px-4 text-sm font-medium transition-colors ${
+              className="min-h-[44px] border px-4 text-sm font-medium"
+              style={
                 isActive
-                  ? "border-[var(--home-ink)] bg-[var(--home-ink)] text-[var(--home-paper)]"
-                  : "border-[var(--home-rule)] bg-[var(--home-paper-alt)] text-[var(--home-ink-muted)] hover:text-[var(--home-ink)]"
-              }`}
+                  ? { borderColor: "var(--c97-ink)", background: "var(--c97-ink)", color: "var(--c97-surface)" }
+                  : { borderColor: "var(--c97-rule)", background: "var(--c97-field)", color: "var(--c97-ink-2)" }
+              }
             >
               {option.label}
             </button>

@@ -98,28 +98,28 @@ export function getRatingPillStyle(rating: RaceRating): CSSProperties {
 export function getActiveViewStyle(isActive: boolean): CSSProperties {
   if (isActive) {
     return {
-      background: "var(--home-ink)",
-      color: "var(--home-paper)",
-      borderColor: "var(--home-ink)",
+      background: "var(--c97-ink)",
+      color: "var(--c97-surface)",
+      borderColor: "var(--c97-ink)",
     };
   }
   return {
-    borderColor: "var(--home-rule)",
-    background: "color-mix(in srgb, var(--home-paper-alt) 80%, var(--home-elev-mix))",
-    color: "var(--home-ink-muted)",
+    borderColor: "var(--c97-rule)",
+    background: "var(--c97-field)",
+    color: "var(--c97-ink-2)",
   };
 }
 
 export function getRowStyle(isSelected: boolean): CSSProperties {
   if (isSelected) {
     return {
-      borderColor: "color-mix(in srgb, var(--home-signal) 35%, var(--home-rule))",
-      background: "color-mix(in srgb, var(--home-signal) 8%, var(--home-paper-alt))",
+      borderColor: "color-mix(in srgb, var(--c97-accent) 35%, var(--c97-rule))",
+      background: "color-mix(in srgb, var(--c97-accent) 8%, var(--c97-field))",
     };
   }
   return {
-    borderColor: "var(--home-rule)",
-    background: "color-mix(in srgb, var(--home-paper-alt) 80%, var(--home-elev-mix))",
+    borderColor: "var(--c97-rule)",
+    background: "var(--c97-field)",
   };
 }
 

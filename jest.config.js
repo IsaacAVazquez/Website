@@ -16,6 +16,9 @@ const customJestConfig = {
   // Module name mapper for path aliases
   moduleNameMapper: {
     '^@/(.*)$': '<rootDir>/src/$1',
+    // d3 ships ESM only and next/jest never transforms node_modules, so tests
+    // load its UMD bundle. The app build still imports the ESM modules.
+    '^d3$': '<rootDir>/node_modules/d3/dist/d3.js',
   },
 
   // Coverage configuration

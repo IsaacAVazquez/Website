@@ -27,18 +27,18 @@ export function MissionCadenceStrip({ cadence }: MissionCadenceStripProps) {
           <span
             key={point.monthKey}
             title={`${point.label}: ${point.count} launch${point.count === 1 ? "" : "es"}`}
-            className="w-[9px] rounded-t-[1px]"
+            className="w-[9px] "
             style={{
               height: `${Math.max(4, Math.round((point.count / max) * 100))}%`,
               background:
                 index === cadence.points.length - 1
-                  ? "var(--home-signal)"
-                  : "color-mix(in srgb, var(--home-ink) 20%, var(--home-paper))",
+                  ? "var(--c97-accent)"
+                  : "color-mix(in srgb, var(--c97-ink) 20%, var(--c97-surface))",
             }}
           />
         ))}
       </div>
-      <div className="mt-2 flex items-center justify-between gap-3 font-mono text-3xs uppercase tracking-[0.1em] text-[var(--home-ink-muted)]">
+      <div className="mt-2 flex items-center justify-between gap-3 font-mono text-3xs uppercase tracking-[0.1em] text-[var(--c97-ink-2)]">
         <span>Launches / month</span>
         <span>{cadence.rangeLabel}</span>
       </div>

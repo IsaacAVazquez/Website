@@ -2,7 +2,7 @@
 
 Deep implementation context for Claude Code and other agents working in this repo.
 
-**Last updated:** 2026-09-22
+**Last updated:** 2026-09-25
 
 ---
 
@@ -257,6 +257,13 @@ where they disagree with `catalog97.css`, the CSS wins.
   `.c97-poster`/`.c97-poster-sm` Anton headings with the
   `--c97-overprint` offset, `.c97-halftone` for tone, and `.c97-offset` as the only shadow. The
   method and its rules are in `STYLING.md` under "Print shop layout"; Home is the reference build.
+- Project routes print the same way (2026-09-25). Each takes its ink pair from
+  `src/constants/projectPress.ts` (six inks now, green, teal, and pink added), opens on
+  `Catalog97ProjectHero` with its signature visual as the child, and drops `HomeStatsPanel`.
+  Anything inside the hero that paints a field or panel needs its own `data-c97-surface`.
+  `node scripts/migrateHomeTokens.mjs <files>` moves a route off `--home-*`, and
+  `node scripts/contrastSweep.mjs <baseUrl> <routes…>` measures text contrast in both themes.
+  Spec: `docs/superpowers/specs/2026-09-25-project-specific-ui-design.md`.
 - A migrated route is a sequence of `c97-band` sections inside `Catalog97ToolShell`,
   each carrying its own `data-c97-surface`, and it uses only the `catalog97.css`
   vocabulary: `.c97-kicker`, `.c97-display`, `.c97-serif` with `.c97-h2`/`.c97-h3`,

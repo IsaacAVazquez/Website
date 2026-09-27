@@ -1,0 +1,176 @@
+/* GitHub Trending Pulse: the star log board and language strip. */
+
+.c97-star-log {
+  display: grid;
+  gap: var(--c97-sp-4);
+}
+
+.c97-star-log-strip {
+  display: flex;
+  align-items: flex-start;
+  width: 100%;
+  margin-bottom: var(--c97-sp-5);
+}
+
+.c97-star-log-strip-segment {
+  display: flex;
+  flex-direction: column;
+  min-width: 2px;
+}
+
+.c97-star-log-strip-swatch {
+  display: block;
+  height: 28px;
+  width: 100%;
+}
+
+.c97-star-log-strip-label {
+  margin-top: var(--c97-sp-1);
+  font-family: var(--c97-font-mono);
+  font-size: var(--c97-fs-small);
+  color: var(--c97-ink-2);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.c97-star-log-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--c97-sp-2) var(--c97-sp-4);
+  font-size: var(--c97-fs-small);
+  color: var(--c97-ink-2);
+}
+
+.c97-star-log-swatch {
+  display: inline-block;
+  width: 20px;
+  height: 10px;
+  margin-right: var(--c97-sp-1);
+  vertical-align: middle;
+  background: var(--c97-ink);
+}
+
+.c97-star-log-swatch[data-status="partial"] {
+  background-color: transparent;
+  background-image: repeating-linear-gradient(
+    45deg,
+    var(--c97-ink),
+    var(--c97-ink) 2px,
+    transparent 2px,
+    transparent 5px
+  );
+  border: 1px solid var(--c97-ink);
+}
+
+.c97-star-log-swatch[data-status="baseline"] {
+  background: transparent;
+  border: 1.5px solid var(--c97-ink);
+}
+
+.c97-star-log-rows {
+  display: grid;
+  gap: var(--c97-sp-2);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.c97-star-log-row {
+  display: grid;
+  grid-template-columns: 5rem minmax(6rem, 1fr) minmax(0, 2fr) 4.5rem;
+  align-items: center;
+  gap: var(--c97-sp-3);
+  min-height: 44px;
+}
+
+.c97-star-log-delta {
+  font-size: var(--c97-fs-small);
+  text-align: right;
+  white-space: nowrap;
+}
+
+.c97-star-log-bar-track {
+  display: block;
+  height: 14px;
+  background: var(--c97-field);
+}
+
+.c97-star-log-bar {
+  display: block;
+  height: 100%;
+  background: var(--c97-ink);
+}
+
+.c97-star-log-bar[data-status="partial"] {
+  background-color: transparent;
+  background-image: repeating-linear-gradient(
+    45deg,
+    var(--c97-ink),
+    var(--c97-ink) 3px,
+    transparent 3px,
+    transparent 7px
+  );
+  border: 1px solid var(--c97-ink);
+}
+
+.c97-star-log-bar[data-status="baseline"] {
+  background: transparent;
+  border: 1.5px solid var(--c97-ink);
+}
+
+.c97-star-log-name {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: var(--c97-ink);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.c97-star-log-name:hover {
+  text-decoration: underline;
+}
+
+.c97-star-log-total {
+  text-align: right;
+  color: var(--c97-ink-2);
+  font-size: var(--c97-fs-small);
+  white-space: nowrap;
+}
+
+/* At phone width the row wraps into two lines instead of squeezing four
+ * columns into 390px. */
+@media (max-width: 639px) {
+  .c97-star-log-row {
+    grid-template-columns: 4.5rem minmax(3rem, 1fr) auto;
+    grid-template-areas:
+      "delta bar bar"
+      "name name total";
+    row-gap: var(--c97-sp-1);
+  }
+
+  .c97-star-log-delta {
+    grid-area: delta;
+    text-align: left;
+  }
+
+  .c97-star-log-bar-track {
+    grid-area: bar;
+  }
+
+  .c97-star-log-name {
+    grid-area: name;
+  }
+
+  .c97-star-log-total {
+    grid-area: total;
+  }
+
+  /* A narrow strip has no room for per-language labels without them
+   * crowding into each other; the "leading language" readout above already
+   * carries the top one. */
+  .c97-star-log-strip-label {
+    display: none;
+  }
+}

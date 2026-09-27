@@ -1,0 +1,47 @@
+/* Tech Startup Tracker: the valuation treemap signature. */
+
+.c97-startup-treemap {
+  color: var(--c97-ink);
+}
+
+.c97-startup-treemap-sector-label {
+  font-family: var(--c97-font-body);
+  font-size: var(--c97-fs-label);
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  fill: var(--c97-ink-2);
+}
+
+.c97-startup-treemap-tile-name {
+  font-family: var(--c97-font-serif);
+  font-size: 15px;
+  fill: var(--c97-ink);
+}
+
+.c97-startup-treemap-tile-value {
+  font-family: var(--c97-font-mono);
+  font-variant-numeric: tabular-nums;
+  font-size: 13px;
+  fill: var(--c97-ink-2);
+}
+
+.c97-startup-treemap-tile {
+  cursor: pointer;
+}
+
+.c97-startup-treemap-tile[data-selected="true"] rect {
+  stroke: var(--c97-ink);
+  stroke-width: 2.5;
+}
+
+/* At phone width the viewBox scales down enough (about 1000 units into
+ * ~350px) that in-chart text stops being legible at any reasonable font
+ * size. The tiles still read as a proportional picture; names and figures
+ * move to each tile's <title> and the table below. */
+@media (max-width: 639px) {
+  .c97-startup-treemap-tile-label,
+  .c97-startup-treemap-sector-label-group {
+    display: none;
+  }
+}

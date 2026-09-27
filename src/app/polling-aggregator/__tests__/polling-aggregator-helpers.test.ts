@@ -40,17 +40,17 @@ describe("polling-aggregator-helpers", () => {
       borderColor: "#93C5FD",
     });
     expect(getActiveViewStyle(true)).toMatchObject({
-      background: "var(--home-ink)",
-      color: "var(--home-paper)",
+      background: "var(--c97-ink)",
+      color: "var(--c97-surface)",
     });
     expect(getActiveViewStyle(false)).toMatchObject({
-      color: "var(--home-ink-muted)",
+      color: "var(--c97-ink-2)",
     });
     expect(getRowStyle(true)).toMatchObject({
-      borderColor: "color-mix(in srgb, var(--home-signal) 35%, var(--home-rule))",
+      borderColor: "color-mix(in srgb, var(--c97-accent) 35%, var(--c97-rule))",
     });
     expect(getRowStyle(false)).toMatchObject({
-      borderColor: "var(--home-rule)",
+      borderColor: "var(--c97-rule)",
     });
   });
 

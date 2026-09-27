@@ -9,11 +9,21 @@ function normalizeWhitespace(value: string): string {
   return value.replace(/\s+/g, " ").trim();
 }
 
+const MARKUP_TAG = /<\/?[a-z][^>]*>/i;
+
+function textOf(markup: string): string {
+  // A space ahead of block ends keeps paragraphs from running together.
+  const spaced = markup.replace(/<\/(p|div|li|h[1-6])>|<br\s*\/?>/gi, " $&");
+  return load(`<root>${spaced}</root>`).root().text();
+}
+
 function decodeMarkup(value: string): string {
   if (!value) return "";
   const normalizedValue = value.replace(/<!\[CDATA\[([\s\S]*?)\]\]>/g, "$1");
-  const $ = load(`<root>${normalizedValue}</root>`);
-  return normalizeWhitespace($.root().text());
+  const text = textOf(normalizedValue);
+  // Some feeds (the Guardian's) entity-escape their HTML, so one pass leaves
+  // literal tags behind as text. Decode once more when that happens.
+  return normalizeWhitespace(MARKUP_TAG.test(text) ? textOf(text) : text);
 }
 
 function getDirectChild(parent: Cheerio<AnyNode>, selector: string): Cheerio<AnyNode> {
