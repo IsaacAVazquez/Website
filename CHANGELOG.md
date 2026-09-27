@@ -10,6 +10,7 @@ All notable changes to this repository are documented here. Format: `YYYY-MM-DD`
 - Move food map onto OpenStreetMap tiles ([#467](https://github.com/IsaacAVazquez/Website/pull/467)).
 - Document paint scripts in the automation inventory ([#468](https://github.com/IsaacAVazquez/Website/pull/468)).
 - Finish the Sept 24 SEO audit and get main's checks green ([#469](https://github.com/IsaacAVazquez/Website/pull/469)).
+- Project UI foundation (six inks, press, project hero) ([#470](https://github.com/IsaacAVazquez/Website/pull/470)).
 
 ---
 
