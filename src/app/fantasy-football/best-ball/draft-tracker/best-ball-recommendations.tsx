@@ -62,7 +62,7 @@ export function BestBallRecommendations({
           beneath it. The old items-end pairing bottom-aligned the heading to
           an eleven-line column and left 209px of empty card above it. */}
       <div>
-        <p className="c97-kicker mb-1">Your next pick</p>
+        <p className="c97-kicker" style={{ marginBottom: "0.25rem" }}>Your next pick</p>
         <h2 id="best-ball-recommendations-heading" className="c97-serif c97-h3">
           {recommendationMode === "exact"
             ? "Best fits for your next pick"

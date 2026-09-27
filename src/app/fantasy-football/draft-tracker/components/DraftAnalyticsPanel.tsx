@@ -114,7 +114,7 @@ export function DraftAnalyticsPanel({
 
     return (
       <article className="c97-panel">
-        <p className="c97-kicker mb-1">Draft signals</p>
+        <p className="c97-kicker" style={{ marginBottom: "0.25rem" }}>Draft signals</p>
         <div className="mt-3 grid gap-3">
           {latestFlaggedPick === null && activeRun === null && !showEmerging ? (
             <p className="text-sm leading-6" style={{ color: "var(--c97-ink-2)" }}>
@@ -178,7 +178,7 @@ export function DraftAnalyticsPanel({
 
   return (
     <article className="c97-panel">
-      <p className="c97-kicker mb-1">Draft recap</p>
+      <p className="c97-kicker" style={{ marginBottom: "0.25rem" }}>Draft recap</p>
       <h2 className="c97-serif c97-h3">How the room drafted</h2>
       <p className="mt-2 max-w-[68ch] text-sm leading-7" style={{ color: "var(--c97-ink-2)" }}>
         {describeBaseline(adpAvailable, adpUnavailableReason)} A positive total means a team kept landing players past
@@ -189,7 +189,7 @@ export function DraftAnalyticsPanel({
 
       <div className="mt-5 grid gap-4 lg:grid-cols-2">
         <div className="grid gap-3">
-          <p className="c97-kicker mb-0">Biggest steal</p>
+          <p className="c97-kicker">Biggest steal</p>
           {biggestSteal ? (
             <PickValueRow pick={biggestSteal} label="Steal" teamName={getTeamName(biggestSteal.teamNumber)} />
           ) : (
@@ -198,7 +198,7 @@ export function DraftAnalyticsPanel({
             </p>
           )}
 
-          <p className="c97-kicker mb-0 mt-2">Biggest reach</p>
+          <p className="c97-kicker" style={{ marginTop: "0.5rem" }}>Biggest reach</p>
           {biggestReach ? (
             <PickValueRow pick={biggestReach} label="Reach" teamName={getTeamName(biggestReach.teamNumber)} />
           ) : (
@@ -209,7 +209,7 @@ export function DraftAnalyticsPanel({
 
           {analytics.positionRunAnalysis.length > 0 && (
             <>
-              <p className="c97-kicker mb-0 mt-2">Position runs</p>
+              <p className="c97-kicker" style={{ marginTop: "0.5rem" }}>Position runs</p>
               <div className="grid gap-2">
                 {analytics.positionRunAnalysis.map((run) => (
                   <div
@@ -233,7 +233,7 @@ export function DraftAnalyticsPanel({
         </div>
 
         <div className="grid gap-3 content-start">
-          <p className="c97-kicker mb-0">Market value by team</p>
+          <p className="c97-kicker">Market value by team</p>
           <div className="grid gap-2">
             {rankedTeams.map((team) => (
               <div

@@ -197,7 +197,7 @@ export function BestBallDraftTrackerClient({
         <header className="space-y-4">
           {roomOpen ? (
             <div className="space-y-2">
-              <p className="c97-kicker mb-0">Best ball draft assistant</p>
+              <p className="c97-kicker">Best ball draft assistant</p>
               {/* An open room demotes the pitch: the h1 stays for the outline,
                   compact, and the live state below leads. Freshness survives the
                   collapse on purpose; it is a credibility feature. */}
@@ -216,7 +216,7 @@ export function BestBallDraftTrackerClient({
             </div>
           ) : (
             <div className="space-y-3">
-              <p className="c97-kicker mb-0">Best ball draft assistant</p>
+              <p className="c97-kicker">Best ball draft assistant</p>
               <h1 className="c97-poster-sm">
                 Track every pick and see what your build still needs.
               </h1>
@@ -593,7 +593,7 @@ function BestBallDraftRoom({
     return (
       <div className="grid gap-5 lg:grid-cols-[minmax(0,1.25fr)_minmax(18rem,0.75fr)]">
         <section className="c97-panel" aria-labelledby="best-ball-room-setup-heading">
-          <p className="c97-kicker mb-1">Room setup</p>
+          <p className="c97-kicker" style={{ marginBottom: "0.25rem" }}>Room setup</p>
           <h2 id="best-ball-room-setup-heading" className="c97-poster-sm">
             Choose your draft slot
           </h2>
@@ -661,7 +661,7 @@ function BestBallDraftRoom({
         </section>
 
         <aside aria-label="Contest details" className="c97-panel">
-          <p className="c97-kicker mb-1">{preset.shortName}</p>
+          <p className="c97-kicker" style={{ marginBottom: "0.25rem" }}>{preset.shortName}</p>
           <h2 className="c97-serif c97-h3">{preset.name}</h2>
           <p className="mt-3 text-sm leading-7" style={{ color: "var(--c97-ink-2)" }}>
             {preset.description}
@@ -778,7 +778,7 @@ function BestBallDraftRoom({
       >
         <div className="flex flex-wrap items-start justify-between gap-4">
           <div className="min-w-0">
-            <p className="c97-kicker mb-1">Live room</p>
+            <p className="c97-kicker" style={{ marginBottom: "0.25rem" }}>Live room</p>
             <h2
               id="best-ball-room-status-heading"
               ref={statusHeadingRef}
@@ -918,7 +918,7 @@ function BestBallDraftRoom({
           </section>
 
           <section className="c97-panel" aria-labelledby="best-ball-room-actions-heading">
-            <p className="c97-kicker mb-1">Room controls</p>
+            <p className="c97-kicker" style={{ marginBottom: "0.25rem" }}>Room controls</p>
             <h2 id="best-ball-room-actions-heading" className="c97-serif c97-h3">
               Saved in this browser
             </h2>

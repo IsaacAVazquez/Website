@@ -712,12 +712,7 @@ export function BestBallClient({ initialState }: BestBallClientProps) {
       >
         <div className={SHELL_CLASS}>
           <h1 className="c97-poster">Best Ball</h1>
-          <p className="c97-lead" style={{ marginTop: "var(--c97-sp-3)" }}>
-            I keep one best ball board and read it through six different contest lenses, since the
-            value that matters in a tournament built around a Week 17 bracket is not the value that
-            matters in a season long format like Sit and Go.
-          </p>
-          <p className="c97-meta" style={{ marginTop: "var(--c97-sp-2)" }}>
+          <p className="c97-meta" style={{ marginTop: "var(--c97-sp-3)" }}>
             Best ball{snapshot?.season ? ` · ${snapshot.season}` : ""}
           </p>
 
@@ -787,8 +782,14 @@ export function BestBallClient({ initialState }: BestBallClientProps) {
 
       {/* Wrapped in the shell like the rankings board's note, so it sits in
           the content column rather than running edge to edge as an alert. */}
+      <section
+        className="c97-sheet"
+        data-c97-surface="paper"
+        data-seam="torn"
+        style={{ paddingBlock: "var(--c97-sp-5)" }}
+      >
       {seasonalWeek >= 1 ? (
-        <div className={`${SHELL_CLASS} pb-3.5 pt-3.5`}>
+        <div className={`${SHELL_CLASS} pb-3.5`}>
           <SeasonalScopeNote season={snapshot?.season ?? 0} week={seasonalWeek}>
             Best ball is drafted before the season and scored through it, so this board describes a
             market that closed at kickoff. Rankings and ADP here are the preseason readings your
@@ -916,13 +917,7 @@ export function BestBallClient({ initialState }: BestBallClientProps) {
         </div>
       ) : null}
 
-      <section
-        className="c97-sheet"
-        data-c97-surface="paper"
-        data-seam="torn"
-        style={{ paddingBlock: "var(--c97-sp-5)" }}
-      >
-      <div className={SHELL_CLASS} data-testid="best-ball-board">
+      <div className={`${SHELL_CLASS} pt-4`} data-testid="best-ball-board">
         <h2 className="sr-only">{activeContest.shortLabel} board</h2>
         {/* One pinned control line at every width. The board runs hundreds of
             rows, so position, search, and the count have to stay reachable
@@ -1303,6 +1298,7 @@ export function BestBallClient({ initialState }: BestBallClientProps) {
       </div>
       </section>
 
+      <div className="c97-sheet" data-c97-surface="paper" data-seam="torn">
       <section aria-label="Format reference" className={`${SHELL_CLASS} pt-5`}>
         <div
           className="flex flex-wrap items-start justify-between gap-x-6 gap-y-3.5 border px-4 py-4"
@@ -1354,6 +1350,7 @@ export function BestBallClient({ initialState }: BestBallClientProps) {
             </Link>
           </span>
         </div>
+      </div>
       </div>
 
       {/* bestBallRank is the board order under the lens, which on the ADP

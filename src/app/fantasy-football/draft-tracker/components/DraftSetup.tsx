@@ -288,7 +288,7 @@ export function DraftSetup({
           <p className={MONO_LABEL_CLASS} style={{ color: "var(--c97-ink-2)" }}>
             Room setup
           </p>
-          <h2 className="c97-poster-sm mt-1">One screen, then draft.</h2>
+          <h2 className="c97-poster-sm" style={{ marginTop: "0.25rem" }}>One screen, then draft.</h2>
         </div>
         {canResume && onResume ? (
           <button

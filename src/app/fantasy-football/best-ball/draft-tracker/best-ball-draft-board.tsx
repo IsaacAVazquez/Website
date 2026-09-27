@@ -121,7 +121,7 @@ export function BestBallDraftBoard({
       <div className="border-b p-5 sm:p-6" style={{ borderColor: "var(--c97-rule)" }}>
         <div className="flex flex-wrap items-end justify-between gap-3">
           <div>
-            <p className="c97-kicker mb-1">Room board</p>
+            <p className="c97-kicker" style={{ marginBottom: "0.25rem" }}>Room board</p>
             <h2 id="best-ball-player-board-heading" className="c97-serif c97-h3">
               Log the player selected
             </h2>

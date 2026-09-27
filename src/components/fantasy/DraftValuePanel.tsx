@@ -363,7 +363,7 @@ function ContestMath({
       style={TILE_STYLE}
       aria-labelledby={headingId}
     >
-      <p className="c97-kicker mb-1">Published contest math</p>
+      <p className="c97-kicker" style={{ marginBottom: "0.25rem" }}>Published contest math</p>
       <h4 id={headingId} className="text-sm font-semibold">
         {contestName ? `${contestName} field baseline` : "Published field baseline"}
       </h4>
@@ -468,7 +468,7 @@ export function DraftValuePanel({
     <section className="grid gap-4" aria-labelledby={headingId}>
       <div>
         <div className="flex flex-wrap items-center justify-between gap-2">
-          <p className="c97-kicker mb-0">Draft outlook</p>
+          <p className="c97-kicker">Draft outlook</p>
           {report && !unavailableReason ? (
             <span
               className="border px-2.5 py-1 text-2xs font-semibold"

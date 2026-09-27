@@ -911,7 +911,7 @@ export function MockDraftClient() {
                 <p className={`m-0 ${MONO_LABEL_CLASS}`} style={{ color: "var(--c97-ink-2)" }}>
                   Room setup
                 </p>
-                <h2 className="c97-serif c97-h3 m-0 mt-1">
+                <h2 className="c97-serif c97-h3 m-0" style={{ marginTop: "0.25rem" }}>
                   Rep the rounds that decide leagues.
                 </h2>
               </div>

@@ -143,7 +143,7 @@ export function CompareTray({
                 backdropFilter: "blur(8px)",
               }}
             >
-              <span className="c97-kicker mb-0 hidden sm:block">Compare</span>
+              <span className="c97-kicker hidden sm:block">Compare</span>
               {/*
                 Below sm the names yield and the bar states a count instead.
                 Each chip is 44px tall because its remove button is, so three

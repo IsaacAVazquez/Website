@@ -1059,7 +1059,7 @@ export function DraftTrackerClient() {
         <header
           className={`${SHELL_CLASS} flex flex-wrap items-baseline justify-between gap-x-6 gap-y-3 pb-3.5 pt-7`}
         >
-          <div className="flex flex-wrap items-baseline gap-x-4 gap-y-1.5">
+          <div className={showSetup ? "flex flex-col items-start gap-y-2" : "flex flex-wrap items-baseline gap-x-4 gap-y-1.5"}>
             <span
               className="inline-flex items-center gap-2 font-mono text-2xs uppercase tracking-[0.1em]"
               style={{ color: "var(--c97-ink-2)" }}
@@ -1677,7 +1677,7 @@ export function DraftTrackerClient() {
                   </details>
                 )}
                 <article className="c97-panel">
-                  <p className="c97-kicker mb-1">Room actions</p>
+                  <p className="c97-kicker" style={{ marginBottom: "0.25rem" }}>Room actions</p>
                   <div className="mt-3 flex flex-wrap gap-2">
                     <button
                       type="button"

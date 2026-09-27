@@ -408,24 +408,24 @@ export function WeeklyBoardClient({
               className="c97-offset inline-block"
               style={{ marginTop: "var(--c97-sp-4)", padding: "var(--c97-sp-3)" }}
             >
-              <p className="c97-meta">
+              <p className="c97-meta" style={{ display: "block", lineHeight: 1.8 }}>
                 <span>
                   {snapshot.season} Week {snapshot.week}
                 </span>
-                <span aria-hidden="true">·</span>
+                <span aria-hidden="true"> · </span>
                 {view === "waivers" ? (
                   <>
                     <span>
                       Flex updated {formatSourceStamp(activeBoard.flexSource.asOf, isHydrated)},{" "}
                       {activeBoard.flexSource.expertCount} experts
                     </span>
-                    <span aria-hidden="true">·</span>
+                    <span aria-hidden="true"> · </span>
                     <span>
                       QB updated{" "}
                       {formatSourceStamp(activeBoard.quarterbackSource.asOf, isHydrated)},{" "}
                       {activeBoard.quarterbackSource.expertCount} experts
                     </span>
-                    <span aria-hidden="true">·</span>
+                    <span aria-hidden="true"> · </span>
                     <span
                       style={{
                         color:
@@ -440,7 +440,7 @@ export function WeeklyBoardClient({
                 ) : (
                   <>
                     <span>Source updated {formatSourceStamp(source.asOf, isHydrated)}</span>
-                    <span aria-hidden="true">·</span>
+                    <span aria-hidden="true"> · </span>
                     <span
                       style={{
                         color:
@@ -451,7 +451,7 @@ export function WeeklyBoardClient({
                     >
                       {getSnapshotStalenessLabel(staleness)}
                     </span>
-                    <span aria-hidden="true">·</span>
+                    <span aria-hidden="true"> · </span>
                     <span>{source.expertCount} experts</span>
                   </>
                 )}

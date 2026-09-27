@@ -270,7 +270,7 @@ export function CompareModal({
         >
           <div className="mb-4 flex items-center justify-between">
             <div>
-              <p className="c97-kicker mb-0">Side by side</p>
+              <p className="c97-kicker">Side by side</p>
               <h2 className="c97-serif c97-h3">Compare players</h2>
             </div>
             <button

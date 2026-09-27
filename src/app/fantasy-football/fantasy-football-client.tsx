@@ -2354,7 +2354,7 @@ export function FantasyFootballClient({ initialState, initialSnapshot = null }: 
       <section className="c97-sheet" data-c97-surface="bone" data-seam="torn" aria-labelledby="fantasy-rankings-questions">
         <div className={SHELL_CLASS} style={{ paddingBlock: "var(--c97-sp-5)" }}>
           <div className="max-w-3xl">
-            <p className="c97-kicker mb-2">How the board works</p>
+            <p className="c97-kicker" style={{ marginBottom: "0.5rem" }}>How the board works</p>
             <h2 id="fantasy-rankings-questions" className="c97-poster-sm">
               Fantasy rankings questions
             </h2>

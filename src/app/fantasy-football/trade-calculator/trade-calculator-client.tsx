@@ -387,10 +387,10 @@ export function TradeCalculatorClient() {
           <div className="flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
             <div className="max-w-3xl">
               <h1 className="c97-poster">Build a Trade Offer</h1>
-              <p className="c97-lead mt-4 max-w-[68ch]">
+              <p className="c97-lead max-w-[68ch]" style={{ marginTop: "1rem" }}>
                 Compare both sides of a one-QB redraft trade using expert consensus, mock-draft ADP, and your league’s scoring, size, and lineup. The result shows where the estimate is strong and where the data is thin.
               </p>
-              <p className="c97-meta mt-3">
+              <p className="c97-meta" style={{ marginTop: "0.75rem" }}>
                 <span>Expert board {formatUpdatedAt(snapshot?.upstreamUpdatedAt)}</span>
                 <span aria-hidden="true">·</span>
                 <span>Draft market {formatUpdatedAt(snapshot?.adpSource?.asOf)}</span>

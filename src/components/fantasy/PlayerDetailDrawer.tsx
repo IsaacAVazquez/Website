@@ -239,7 +239,7 @@ export function PlayerDetailDrawer({ player, publishedRank, publishedRankLabel =
                     </span>
                   )}
                 </div>
-                <h2 className="c97-serif c97-h2 mt-1.5 truncate">{player.name}</h2>
+                <h2 className="c97-serif c97-h2 truncate" style={{ marginTop: "0.375rem" }}>{player.name}</h2>
                 <p className="text-sm" style={{ color: "var(--c97-ink-2)" }}>
                   {player.team || "Free agent"}
                   {player.byeWeek ? ` · Bye ${player.byeWeek}` : ""}
@@ -476,7 +476,7 @@ export function PlayerDetailDrawer({ player, publishedRank, publishedRankLabel =
             {/* Expert consensus spread */}
             <div>
               <div className="mb-2 flex items-center justify-between">
-                <p className="c97-kicker mb-0 inline-flex items-center">
+                <p className="c97-kicker inline-flex items-center">
                   Expert spread
                   <MetricTooltip term="Expert spread" definition={FANTASY_EXPERT_SPREAD_TOOLTIP} />
                 </p>
@@ -493,7 +493,7 @@ export function PlayerDetailDrawer({ player, publishedRank, publishedRankLabel =
             <div>
               <label
                 htmlFor="player-note"
-                className="c97-kicker mb-2 block"
+                className="c97-kicker block" style={{ marginBottom: "0.5rem" }}
               >
                 Private note
               </label>
