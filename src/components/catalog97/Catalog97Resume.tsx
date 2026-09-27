@@ -58,6 +58,8 @@ interface Entry {
   when: string;
   kind: string;
   description: string;
+  /** The long-form write-up of this job under /writing, where one exists. */
+  writeUp?: string;
 }
 
 /*
@@ -75,12 +77,22 @@ const experience: Entry[] = [
       "Leads client engagement for a global mobility technology company, managing stakeholder communication, workflow execution, and alignment across a cross-functional consulting team.",
   },
   {
+    role: "MBA Growth Intern",
+    company: "Juno",
+    when: "May to Aug 2026",
+    kind: "Internship",
+    description:
+      "Growth intern on the MBA team at a fintech marketplace that negotiates group student-loan rates. Reverse-engineered the production dashboard's SQL until it matched to the dollar and automated it into an hourly-refreshing 33-tab dashboard and executive view, turned on the first GA4 conversion events and shipped four Google Tag Manager releases, and audited the Customer.io lifecycle program across 233 campaigns and 2,071 broadcasts, which led to running the SMS program as its product manager. Replaced a naive meeting-conversion lift with a matched-cohort estimate and designed a pre-registered experiment with a power analysis.",
+    writeUp: "/writing/juno-mba-growth-internship",
+  },
+  {
     role: "Quality Assurance Engineer",
     company: "Civitech",
     when: "Feb to Aug 2025",
     kind: "Full time",
     description:
       "Translated leadership and user feedback into product requirements for RunningMate, a campaign management platform, aligning engineering and product teams. Redesigned onboarding tutorials and first-time user flows after analyzing clickstream data, lifting activation 25%, and built AI-powered QA and workflow automation that cut bug triage time 40%. Standardized manual and automated testing across two core products, moving releases from monthly to biweekly and cutting release validation time 30%. Built a real-time event system in Google Cloud that moved clients to self-service and cut onboarding time 60%.",
+    writeUp: "/writing/civitech-quality-and-product-work",
   },
   {
     role: "Quality Assurance Analyst",
@@ -88,7 +100,7 @@ const experience: Entry[] = [
     when: "Jan 2022 to Jan 2025",
     kind: "Full time",
     description:
-      "Owned product vision for a peer-to-peer texting platform, prioritizing features from direct customer conversations and quantitative impact assessments that drove a 35% increase in engagement. Led a cross-functional pricing strategy across engineering, sales, and finance that generated $4M in additional revenue, and pushed release standards to 99.999% uptime, cutting critical defects 90% and improving release efficiency 50%.",
+      "Owned product vision for a peer-to-peer texting platform, prioritizing features from direct customer conversations and quantitative impact assessments that drove a 35% increase in engagement. Led a cross-functional pricing strategy across engineering, sales, and finance that generated $4M in additional revenue in 2024, and pushed release standards to 99.999% uptime, cutting critical defects 90% and improving release efficiency 50%.",
   },
   {
     role: "Client Services Manager",
@@ -273,6 +285,16 @@ export function Catalog97Resume() {
                     >
                       {entry.description}
                     </p>
+                    {entry.writeUp ? (
+                      <p
+                        className={styles.screenOnly}
+                        style={{ marginTop: "var(--c97-sp-2)" }}
+                      >
+                        <Link className="c97-microlink" href={entry.writeUp}>
+                          Read the write-up
+                        </Link>
+                      </p>
+                    ) : null}
                   </div>
                 </article>
               ))}
