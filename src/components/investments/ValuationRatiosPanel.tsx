@@ -187,7 +187,7 @@ export function ValuationRatiosPanel({
       {isLoading && (
         <div className="space-y-2">
           {Array.from({ length: 5 }).map((_, i) => (
-            <div key={i} className="h-10 rounded bg-[var(--c97-rule)] animate-pulse" />
+            <div key={i} className="h-10 bg-[var(--c97-rule)] animate-pulse" />
           ))}
         </div>
       )}

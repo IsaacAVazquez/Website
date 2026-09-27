@@ -231,9 +231,13 @@ describe("MBAJobsClient", () => {
     ).not.toBeInTheDocument();
     expect(atlassianButton).toHaveStyle("background: var(--c97-field)");
     expect(atlassianDot).not.toBeNull();
-    expect(atlassianDot).toHaveStyle(
-      "background: color-mix(in srgb, var(--c97-ink) 68%, var(--c97-rule) 32%)"
+    // jsdom drops color-mix() values, so the active dot's category colour can't be
+    // read back from its style. Check the colour it is given and that the active dot
+    // does not fall back to the inactive rule colour.
+    expect(MBA_COMPANIES.find((company) => company.id === "atlassian")?.color).toBe(
+      "color-mix(in srgb, var(--c97-ink) 68%, var(--c97-rule) 32%)"
     );
+    expect(atlassianDot).not.toHaveStyle("background: var(--c97-rule)");
     expect(chipRail).toHaveClass("flex-wrap");
     expect(chipRail).not.toHaveClass("shrink-0");
   });

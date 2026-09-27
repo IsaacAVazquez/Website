@@ -316,11 +316,11 @@ export function PortfolioHeroCard({
             <span className="invest-hero-livedot" aria-hidden="true" />
             Fetching market quotes
           </span>
-          <div className="my-3 h-12 w-56 rounded bg-[var(--c97-panel)] animate-pulse" />
-          <div className="h-5 w-44 rounded bg-[var(--c97-panel)] animate-pulse" />
+          <div className="my-3 h-12 w-56 bg-[var(--c97-panel)] animate-pulse" />
+          <div className="h-5 w-44 bg-[var(--c97-panel)] animate-pulse" />
         </div>
         <div className="invest-chart-wrap">
-          <div className="m-auto h-32 w-3/4 rounded bg-[var(--c97-panel)] animate-pulse" />
+          <div className="m-auto h-32 w-3/4 bg-[var(--c97-panel)] animate-pulse" />
         </div>
       </div>
     );

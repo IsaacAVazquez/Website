@@ -198,9 +198,9 @@ function Skeleton() {
       </div>
       {[1, 2, 3, 4].map((i) => (
         <div key={i} className="border border-[var(--c97-rule)] p-5 space-y-3">
-          <div className="h-4 w-32 rounded bg-[var(--c97-rule)]" />
+          <div className="h-4 w-32 bg-[var(--c97-rule)]" />
           {[1, 2, 3, 4].map((j) => (
-            <div key={j} className="h-8 rounded bg-[var(--c97-rule)]" />
+            <div key={j} className="h-8 bg-[var(--c97-rule)]" />
           ))}
         </div>
       ))}
