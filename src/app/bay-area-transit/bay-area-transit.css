@@ -12,10 +12,9 @@
 }
 
 /*
- * Not `.c97-panel`: on espresso, `--c97-field` is a light card tint meant for
- * a light surface, and text here still inherits the surface's light
- * `--c97-ink`. Padding only, so the board's own dark surface background
- * shows through instead of a near-white field under light text.
+ * Padding only, so the board's own espresso surface is the background. It was
+ * kept off `.c97-panel` when panels painted the pale field tint; panels now
+ * paint `--c97-panel`, which is dark on espresso, so either would read.
  */
 .c97-transit-board-inner {
   height: 100%;

@@ -52,12 +52,7 @@ function PlatformBoard({
 }) {
   return (
     <div className="c97-transit-board" data-c97-surface="espresso">
-      {/*
-       * Not `.c97-panel`: its `--c97-field` is a light card tint meant to sit
-       * on a light surface. On espresso (a dark surface with light ink) that
-       * field paints light text on a near-white box. The dark espresso
-       * background is the board itself, so this stays unstyled but padded.
-       */}
+      {/* Padded only, so the espresso surface is the board itself. */}
       <div className="c97-transit-board-inner">
         <p className="c97-kicker mb-1">Next trains</p>
         {!station ? (
