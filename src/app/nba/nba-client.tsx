@@ -1,36 +1,22 @@
 "use client";
 
-import {
-  startTransition,
-  useEffect,
-  useMemo,
-  useState,
-  type CSSProperties,
-} from "react";
+import { startTransition, useEffect, useMemo, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
+import { CircleAlert, ExternalLink } from "lucide-react";
 import {
-  BarChart3,
-  CircleAlert,
-  ExternalLink,
-  Shield,
-  Trophy,
-} from "lucide-react";
-import {
-  StatCard,
   MetricCard,
   CrestAvatar,
   TeamResultPill,
   FixtureCard,
   LeaderList,
 } from "@/components/football";
-import { HomeStatsPanel, type HomeStatsCell } from "@/components/home/HomeStatsPanel";
 import {
-  Article,
-  Briefcase,
-  Calendar,
-  ChartBar,
-  User,
-} from "@/components/ui/ServerIcons";
+  Catalog97ProjectHero,
+  type Catalog97Readout,
+} from "@/components/catalog97/Catalog97ProjectHero";
+import { SeedLadder, type LadderTeam } from "@/components/football/SeedLadderPanel";
+import { seedLadder, type SeedBandSpec } from "@/components/football/seedLadder";
+import { PROJECT_PRESS } from "@/constants/projectPress";
 import type {
   NbaLeader,
   NbaRouteState,
@@ -54,15 +40,23 @@ interface NbaClientProps {
   initialState: NbaRouteState;
   summary: NbaSummarySnapshot;
   initialTeamSnapshot: NbaTeamSnapshot | null;
+  /** Hex colours keyed by team id, built server-side from the per-team snapshots. */
+  teamColors: Record<string, string | null>;
 }
 
 const REGULAR_SEASON_GAMES = 82;
 
-const viewOptions: Array<{ id: NbaView; label: string; description: string }> = [
-  { id: "east", label: "Eastern Conference", description: "All 15 teams in the East." },
-  { id: "west", label: "Western Conference", description: "All 15 teams in the West." },
-  { id: "playoff", label: "Playoff seeds", description: "Top six teams in each conference." },
-  { id: "play-in", label: "Play-in race", description: "Seeds 7-10 in each conference." },
+const NBA_BANDS: SeedBandSpec[] = [
+  { label: "In", throughSeed: 6 },
+  { label: "Play-in", throughSeed: 10 },
+  { label: "Out" },
+];
+
+const viewOptions: Array<{ id: NbaView; label: string }> = [
+  { id: "east", label: "Eastern Conference" },
+  { id: "west", label: "Western Conference" },
+  { id: "playoff", label: "Playoff seeds" },
+  { id: "play-in", label: "Play-in race" },
 ];
 
 async function fetchNbaTeamSnapshot(
@@ -77,11 +71,26 @@ async function fetchNbaTeamSnapshot(
   return payload;
 }
 
-export function NbaClient({ initialState, summary, initialTeamSnapshot }: NbaClientProps) {
+function toLadderTeams(teams: NbaTeam[], teamColors: Record<string, string | null>): LadderTeam[] {
+  return teams.map((team) => ({
+    id: team.id,
+    seed: team.conferenceSeed,
+    wins: team.wins,
+    losses: team.losses,
+    shortName: team.shortName,
+    record: `${team.wins}-${team.losses}`,
+    color: teamColors[team.id] ?? null,
+  }));
+}
+
+export function NbaClient({ initialState, summary, initialTeamSnapshot, teamColors }: NbaClientProps) {
   const router = useRouter();
   const searchParams = useSearchParams();
   const currentQuery = searchParams.toString();
   const currentHref = `${NBA_ROUTE}${currentQuery ? `?${currentQuery}` : ""}`;
+  const lead = PROJECT_PRESS[NBA_ROUTE].lead;
+  const standfirst =
+    "I wanted the playoff picture in one glance, from who leads each conference, to how many games separate the cutoff, to who's already out, so this sorts every team into a band, in, play-in, or out, with the gap at each line written right on it.";
 
   const east = summary.teamsByConference.east;
   const west = summary.teamsByConference.west;
@@ -116,15 +125,6 @@ export function NbaClient({ initialState, summary, initialTeamSnapshot }: NbaCli
   const scorersByTeam = useMemo(() => groupLeadersByTeam(summary.scorers), [summary.scorers]);
   const reboundersByTeam = useMemo(() => groupLeadersByTeam(summary.rebounders), [summary.rebounders]);
   const assistsByTeam = useMemo(() => groupLeadersByTeam(summary.assistLeaders), [summary.assistLeaders]);
-  const hottestTeam = useMemo(() => {
-    const pool = allTeams.filter((team) => /^W\d+/i.test(team.streak ?? ""));
-    pool.sort(
-      (a, b) =>
-        (Number.parseInt((b.streak ?? "").slice(1), 10) || 0) -
-        (Number.parseInt((a.streak ?? "").slice(1), 10) || 0)
-    );
-    return pool[0] ?? null;
-  }, [allTeams]);
   const logoByTeamId = useMemo(
     () =>
       new Map(
@@ -144,6 +144,21 @@ export function NbaClient({ initialState, summary, initialTeamSnapshot }: NbaCli
       }).format(new Date(summary.updatedAt)),
     [summary.updatedAt]
   );
+
+  const eastLadder = useMemo(
+    () => seedLadder(toLadderTeams(east, teamColors), NBA_BANDS),
+    [east, teamColors]
+  );
+  const westLadder = useMemo(
+    () => seedLadder(toLadderTeams(west, teamColors), NBA_BANDS),
+    [west, teamColors]
+  );
+  const tightestGap = useMemo(() => {
+    const gaps = [...eastLadder.lines, ...westLadder.lines]
+      .map((line) => line.gamesClear)
+      .filter((gap): gap is number => gap !== null);
+    return gaps.length > 0 ? Math.min(...gaps) : null;
+  }, [eastLadder, westLadder]);
 
   const hasManagedParams =
     searchParams.get("view") !== null || searchParams.get("team") !== null;
@@ -237,19 +252,43 @@ export function NbaClient({ initialState, summary, initialTeamSnapshot }: NbaCli
     };
   }, [selectedTeam, teamSnapshots]);
 
+  const eastTop = east[0];
+  const westTop = west[0];
+
+  const heroReadouts: [Catalog97Readout, Catalog97Readout, Catalog97Readout] = [
+    {
+      label: "East leader",
+      value: eastTop ? `${eastTop.wins}-${eastTop.losses}` : "—",
+      detail: eastTop?.shortName,
+    },
+    {
+      label: "West leader",
+      value: westTop ? `${westTop.wins}-${westTop.losses}` : "—",
+      detail: westTop?.shortName,
+    },
+    {
+      label: "Tightest line",
+      value: tightestGap !== null ? `${tightestGap.toFixed(1)} games` : "—",
+      detail: "separates the closest cutoff across both conferences",
+    },
+  ];
+
+  const heroMeta = `${summary.sourceLabel} · Season ${summary.season} · ${allTeams.length} teams · snapshot ${snapshotDateLabel}`;
+
+  const heroSignature = (
+    <SeedLadder
+      conferences={[
+        { label: "Eastern Conference", ladder: eastLadder },
+        { label: "Western Conference", ladder: westLadder },
+      ]}
+    />
+  );
+
   if (!selectedTeam) {
     return (
-      <div className="home-page min-h-screen">
-        <div className="home-shell home-section space-y-5 sm:space-y-6">
-          <div className="rounded-[var(--radius-2xl)] border border-dashed border-[var(--home-rule)] bg-[var(--home-paper-alt)] p-6 text-sm text-[var(--home-ink-muted)]">
-            <p className="home-kicker mb-2 text-[var(--home-ink)]">NBA Pulse</p>
-            <p className="mb-0">
-              Conference standings, playoff seeding, and stat leaders will
-              appear here once the next snapshot is published.
-            </p>
-          </div>
-        </div>
-      </div>
+      <Catalog97ProjectHero ink={lead} title="NBA Pulse" standfirst={standfirst} meta="Conference standings, playoff seeding, and stat leaders will appear here once the next snapshot is published.">
+        {heroSignature}
+      </Catalog97ProjectHero>
     );
   }
 
@@ -272,403 +311,184 @@ export function NbaClient({ initialState, summary, initialTeamSnapshot }: NbaCli
   const upcomingFixtures = (teamSnapshot?.upcomingFixtures ?? []).slice(0, 3);
   const remainingGames = Math.max(0, REGULAR_SEASON_GAMES - selectedTeam.gamesPlayed);
 
-  const eastTop = eastTeams[0];
-  const eastSixth = eastTeams[5];
-  const eastSeventh = eastTeams[6];
-  const eastTenth = eastTeams[9];
-  const eastEleventh = eastTeams[10];
-  const westTop = westTeams[0];
-  const westSixth = westTeams[5];
-  const westSeventh = westTeams[6];
-  const westTenth = westTeams[9];
-  const westEleventh = westTeams[10];
-
-  // Stats panel cells
-  const topScorerEntry = summary.scorers[0] ?? null;
-  const biggestDifferentialTeam =
-    [...allTeams].sort((a, b) => b.pointDifferential - a.pointDifferential)[0] ?? null;
-  const avgGamesPlayed = allTeams.length === 0
-    ? 0
-    : Math.round(allTeams.reduce((acc, team) => acc + team.gamesPlayed, 0) / allTeams.length);
-
-  const statsPanelCells: HomeStatsCell[] = [
-    {
-      label: "East leader",
-      tooltip: "Top team in the Eastern Conference and current win-loss record.",
-      value: eastTop ? `${eastTop.shortName} · ${eastTop.wins}-${eastTop.losses}` : "—",
-    },
-    {
-      label: "West leader",
-      tooltip: "Top team in the Western Conference and current win-loss record.",
-      value: westTop ? `${westTop.shortName} · ${westTop.wins}-${westTop.losses}` : "—",
-    },
-    {
-      label: "Top scorer",
-      tooltip: "Player leading the league in points per game this season.",
-      value: topScorerEntry
-        ? `${topScorerEntry.name} · ${topScorerEntry.perGame.toFixed(1)}`
-        : "—",
-      sub: topScorerEntry ? topScorerEntry.teamAbbreviation : undefined,
-    },
-    {
-      label: "Biggest point differential",
-      tooltip: "Team with the largest net points differential across the league.",
-      value: biggestDifferentialTeam
-        ? `${biggestDifferentialTeam.shortName} · ${
-            biggestDifferentialTeam.pointDifferential > 0 ? "+" : ""
-          }${biggestDifferentialTeam.pointDifferential.toFixed(1)}`
-        : "—",
-    },
-    {
-      label: "Hottest streak",
-      tooltip: "Team currently riding the longest active winning streak.",
-      value: hottestTeam ? `${hottestTeam.shortName} · ${hottestTeam.streak}` : "—",
-      sub: hottestTeam ? `Last 10: ${hottestTeam.lastTen ?? "—"}` : "No active win streaks",
-    },
-    {
-      label: "East playoff line",
-      tooltip: "Wins separating the sixth seed in the East from the seventh.",
-      value: eastSixth && eastSeventh ? `+${eastSixth.wins - eastSeventh.wins} games` : "—",
-      sub: eastSixth && eastSeventh ? `${eastSixth.shortName} over ${eastSeventh.shortName}` : undefined,
-    },
-    {
-      label: "West playoff line",
-      tooltip: "Wins separating the sixth seed in the West from the seventh.",
-      value: westSixth && westSeventh ? `+${westSixth.wins - westSeventh.wins} games` : "—",
-      sub: westSixth && westSeventh ? `${westSixth.shortName} over ${westSeventh.shortName}` : undefined,
-    },
-    {
-      label: "Games played",
-      tooltip: "Average games played across all 30 teams in this snapshot.",
-      value: `${avgGamesPlayed} / ${REGULAR_SEASON_GAMES}`,
-    },
-    {
-      label: "Snapshot",
-      tooltip: "Date the most recent snapshot was generated.",
-      value: snapshotDateLabel,
-    },
-  ];
-
   return (
-    <div className="home-page min-h-screen">
-      <div className="home-shell home-section space-y-5 sm:space-y-6">
-        {/* Page header */}
-        <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
-          <div>
-            <p className="home-kicker mb-1">Basketball Data Tool</p>
-            <h1 className="text-2xl font-bold tracking-tight text-[var(--home-ink)] sm:text-3xl">
-              NBA Pulse
-            </h1>
-            <p className="mt-1 max-w-[52ch] text-sm leading-6 text-[var(--home-ink-muted)]">
-              Conference standings compressed into one view. Top-six seeding, play-in pressure, and league stat leaders refreshed from the latest snapshot.
-            </p>
+    <>
+      <Catalog97ProjectHero ink={lead} title="NBA Pulse" standfirst={standfirst} meta={heroMeta} readouts={heroReadouts}>
+        {heroSignature}
+      </Catalog97ProjectHero>
+
+      <section className="c97-band c97-sheet" data-c97-surface="paper" data-seam="torn">
+        <div className="c97-shell">
+          <div className="flex flex-wrap items-end justify-between gap-3">
+            <h2 className="c97-poster-sm">Standings</h2>
+            <p className="c97-meta">{visibleTeams.length} teams</p>
           </div>
-          <div className="flex flex-wrap gap-1.5 text-2xs text-[var(--home-ink-muted)]">
-            {[
-              `Season ${summary.season}`,
-              `${eastTeams.length + westTeams.length} teams`,
-              `Snapshot ${snapshotDateLabel}`,
-            ].map((label) => (
-              <span
-                key={label}
-                className="rounded-full border border-[var(--home-rule)] bg-[var(--home-paper-alt)] px-2.5 py-1 font-medium"
-              >
-                {label}
-              </span>
-            ))}
+
+          <div role="group" aria-label="Conference and seeding view" className="c97-segmented mt-4">
+            {viewOptions.map((option) => {
+              const isActive = option.id === routeState.view;
+              return (
+                <button
+                  key={option.id}
+                  type="button"
+                  onClick={() => handleViewChange(option.id)}
+                  aria-pressed={isActive}
+                  className="min-h-[44px] text-sm font-semibold"
+                >
+                  {option.label}{" "}
+                  <span className="c97-mono" style={{ color: "var(--c97-label)" }}>
+                    {filterTeams(east, west, option.id).length}
+                  </span>
+                </button>
+              );
+            })}
           </div>
-        </div>
 
-        {/* Dense stats panel */}
-        <HomeStatsPanel
-          id="nba-stats-panel"
-          title="NBA at a glance"
-          meta={`Live · refreshed ${snapshotDateLabel}`}
-          cells={statsPanelCells}
-          pills={[
-            { label: "East standings", href: "?view=east", icon: ChartBar },
-            { label: "West standings", href: "?view=west", icon: ChartBar },
-            { label: "Playoff picture", href: "?view=playoff", icon: Briefcase },
-            { label: "Recent games", href: "#nba-standings", icon: Calendar },
-            { label: "Team detail", href: "#nba-standings", icon: User },
-            { label: "Article", href: "/writing", icon: Article },
-          ]}
-        />
-
-        {/* Key conference gaps */}
-        <div className="grid grid-cols-2 gap-3 md:grid-cols-4">
-          {eastTop ? (
-            <StatCard
-              variant="compact"
-              eyebrow="East leader"
-              metric={`${eastTop.shortName} · ${eastTop.wins}-${eastTop.losses}`}
-              detail={
-                eastSixth
-                  ? `${eastTop.wins - eastSixth.wins} games up on the playoff cutoff`
-                  : "Top of the Eastern Conference"
-              }
-              icon={<Trophy className="h-4 w-4" />}
-            />
-          ) : null}
-          {westTop ? (
-            <StatCard
-              variant="compact"
-              eyebrow="West leader"
-              metric={`${westTop.shortName} · ${westTop.wins}-${westTop.losses}`}
-              detail={
-                westSixth
-                  ? `${westTop.wins - westSixth.wins} games up on the playoff cutoff`
-                  : "Top of the Western Conference"
-              }
-              icon={<Trophy className="h-4 w-4" />}
-            />
-          ) : null}
-          {eastSixth && eastSeventh ? (
-            <StatCard
-              variant="compact"
-              eyebrow="East playoff line"
-              metric={`+${eastSixth.wins - eastSeventh.wins} games`}
-              detail={`${eastSixth.shortName} over ${eastSeventh.shortName}`}
-              icon={<BarChart3 className="h-4 w-4" />}
-            />
-          ) : null}
-          {westTenth && westEleventh ? (
-            <StatCard
-              variant="compact"
-              eyebrow="West play-in line"
-              metric={`+${westTenth.wins - westEleventh.wins} games`}
-              detail={`${westTenth.shortName} over ${westEleventh.shortName}`}
-              icon={<Shield className="h-4 w-4" />}
-            />
-          ) : eastTenth && eastEleventh ? (
-            <StatCard
-              variant="compact"
-              eyebrow="East play-in line"
-              metric={`+${eastTenth.wins - eastEleventh.wins} games`}
-              detail={`${eastTenth.shortName} over ${eastEleventh.shortName}`}
-              icon={<Shield className="h-4 w-4" />}
-            />
-          ) : null}
-        </div>
-
-        {/* Standings + sidebar */}
-        <div id="nba-standings" className="grid gap-5 md:grid-cols-[minmax(0,1fr)_280px] lg:grid-cols-[minmax(0,1fr)_320px]">
-          <section className="rounded-[var(--radius-2xl)] border border-[var(--home-rule)] bg-[var(--home-paper-raised)] p-5 sm:p-6 shadow-[var(--shadow-sm)]">
-            <div className="flex items-center justify-between border-b border-[var(--home-rule)] pb-4">
-              <h2 className="text-lg font-bold text-[var(--home-ink)]">Standings</h2>
-              <span className="text-sm text-[var(--home-ink-muted)]">{visibleTeams.length} teams</span>
-            </div>
-
-            <div className="mt-4 flex flex-wrap gap-2">
-              {viewOptions.map((option) => {
-                const isActive = option.id === routeState.view;
-                return (
-                  <button
-                    key={option.id}
-                    type="button"
-                    onClick={() => handleViewChange(option.id)}
-                    aria-pressed={isActive}
-                    className="inline-flex min-h-[44px] items-center gap-2 rounded-full border px-4 py-2 text-sm font-medium transition-colors"
-                    style={getViewButtonStyle(isActive)}
-                  >
-                    <span className="text-[var(--home-ink)]">{option.label}</span>
-                    <span className="text-xs text-[var(--home-ink-soft)]">
-                      {filterTeams(east, west, option.id).length}
-                    </span>
-                  </button>
-                );
-              })}
-            </div>
-
+          <div className="mt-6 grid gap-8 xl:grid-cols-[minmax(0,1fr)_320px]">
             <div
-              className="scroll-shadow-x mt-6 overflow-x-auto"
               role="region"
               aria-label="NBA standings (scrollable)"
               tabIndex={0}
+              style={{ overflowX: "auto" }}
             >
-              <table className="min-w-full border-separate border-spacing-y-2" aria-label="NBA standings">
+              <table className="c97-table" aria-label="NBA standings">
                 <thead>
-                  <tr className="text-left text-xs uppercase tracking-[0.14em] text-[var(--home-ink-soft)]">
-                    <th scope="col" className="px-3 py-2 font-semibold">Seed</th>
-                    <th scope="col" className="px-3 py-2 font-semibold">Team</th>
-                    <th scope="col" className="hidden px-3 py-2 font-semibold sm:table-cell">Record</th>
-                    <th scope="col" className="px-3 py-2 font-semibold">W%</th>
-                    <th scope="col" className="hidden px-3 py-2 font-semibold md:table-cell">GB</th>
-                    <th scope="col" className="hidden px-3 py-2 font-semibold lg:table-cell">PF</th>
-                    <th scope="col" className="hidden px-3 py-2 font-semibold lg:table-cell">PA</th>
-                    <th scope="col" className="px-3 py-2 font-semibold">Diff</th>
+                  <tr>
+                    <th scope="col">Seed</th>
+                    <th scope="col">Team</th>
+                    <th scope="col">Record</th>
+                    <th scope="col" data-align="end">W%</th>
+                    <th scope="col" data-align="end">GB</th>
+                    <th scope="col" data-align="end">PF</th>
+                    <th scope="col" data-align="end">PA</th>
+                    <th scope="col" data-align="end">Diff</th>
                   </tr>
                 </thead>
                 <tbody>
                   {visibleTeams.map((team) => {
                     const isSelected = team.id === selectedTeam.id;
                     const zone = getTeamZone(team.conferenceSeed);
-
                     return (
                       <tr
                         key={`${team.conference}-${team.id}`}
-                        className="border border-[var(--home-rule)]"
-                        style={getTableRowStyle(isSelected)}
+                        style={isSelected ? { boxShadow: "inset 4px 0 0 0 var(--c97-ink)" } : undefined}
                       >
-                        <td className="rounded-l-2xl px-3 py-3 align-middle">
-                          <div className="flex items-center gap-2">
+                        <td>
+                          <span className="inline-flex items-center gap-1.5">
                             <span
-                              className="h-2 w-2 flex-shrink-0 rounded-full"
-                              style={{ backgroundColor: getZoneDotColor(zone) }}
-                              title={getZoneLabel(zone)}
+                              aria-hidden="true"
+                              style={{
+                                width: 8,
+                                height: 8,
+                                display: "inline-block",
+                                background: zoneDotColor(zone),
+                              }}
                             />
-                            <span className="text-sm font-semibold text-[var(--home-ink)]">
-                              {team.conferenceSeed}
-                            </span>
-                          </div>
+                            {team.conferenceSeed}
+                          </span>
                         </td>
-                        <td className="px-3 py-3 align-middle">
+                        <td>
                           <button
                             type="button"
                             onClick={() => handleTeamChange(team.id)}
                             aria-pressed={isSelected}
                             aria-label={`Show ${team.name} details`}
-                            className="flex min-h-[44px] w-full items-center gap-2 rounded-[var(--radius-xl)] text-left"
+                            className="flex min-h-[44px] items-center gap-2 text-left"
                           >
-                            <CrestAvatar
-                              crest={logoByTeamId.get(team.id) ?? null}
-                              name={team.shortName}
-                              size="sm"
-                            />
-                            <span className="font-semibold text-[var(--home-ink)]">{team.shortName}</span>
-                            <span className="text-3xs uppercase tracking-[0.14em] text-[var(--home-ink-muted)]">
+                            <CrestAvatar crest={logoByTeamId.get(team.id) ?? null} name={team.shortName} size="sm" />
+                            <span style={{ fontWeight: 600, color: "var(--c97-ink)" }}>{team.shortName}</span>
+                            <span className="c97-mono" style={{ color: "var(--c97-ink-2)", fontSize: "var(--c97-fs-label)" }}>
                               {team.conference === "east" ? "E" : "W"}
                             </span>
                           </button>
                         </td>
-                        <td className="hidden px-3 py-3 align-middle text-sm text-[var(--home-ink-muted)] sm:table-cell">
-                          {team.wins}-{team.losses}
-                        </td>
-                        <td className="px-3 py-3 align-middle text-sm font-semibold text-[var(--home-ink)]">
+                        <td>{team.wins}-{team.losses}</td>
+                        <td data-align="end">
                           {Number.isFinite(team.winPercent) ? team.winPercent.toFixed(3).replace(/^0/, "") : "—"}
                         </td>
-                        <td className="hidden px-3 py-3 align-middle text-sm text-[var(--home-ink-muted)] md:table-cell">
-                          {formatGamesBack(team.gamesBack)}
-                        </td>
-                        <td className="hidden px-3 py-3 align-middle text-sm text-[var(--home-ink-muted)] lg:table-cell">
-                          {team.pointsFor.toFixed(1)}
-                        </td>
-                        <td className="hidden px-3 py-3 align-middle text-sm text-[var(--home-ink-muted)] lg:table-cell">
-                          {team.pointsAgainst.toFixed(1)}
-                        </td>
-                        <td className="rounded-r-2xl px-3 py-3 align-middle text-sm font-medium text-[var(--home-ink)]">
-                          {formatPointDiff(team.pointDifferential)}
-                        </td>
+                        <td data-align="end">{formatGamesBack(team.gamesBack)}</td>
+                        <td data-align="end">{team.pointsFor.toFixed(1)}</td>
+                        <td data-align="end">{team.pointsAgainst.toFixed(1)}</td>
+                        <td data-align="end">{formatPointDiff(perGameDifferential(team))}</td>
                       </tr>
                     );
                   })}
                 </tbody>
               </table>
             </div>
-          </section>
 
-          {/* Compact team sidebar */}
-          <aside className="md:sticky md:top-0 md:self-start">
-            <section
-              className="rounded-[var(--radius-2xl)] border border-[var(--home-rule)] bg-[var(--home-paper-raised)] p-5 shadow-[var(--shadow-sm)]"
-              aria-live="polite"
-              data-testid="nba-selected-team"
-            >
-              <div className="flex items-start gap-3">
-                <CrestAvatar
-                  crest={logoByTeamId.get(selectedTeam.id) ?? null}
-                  name={selectedTeam.name}
-                  size="lg"
-                />
-                <div className="min-w-0 flex-1">
-                  <h2 className="truncate text-lg font-bold text-[var(--home-ink)]">
-                    {selectedTeam.name}
-                  </h2>
-                  <div className="mt-1.5 flex flex-wrap gap-1.5">
-                    <span
-                      className="inline-flex items-center rounded-full border px-2.5 py-1 text-2xs font-semibold uppercase tracking-[0.12em]"
-                      style={getZonePillStyle(selectedZone)}
-                    >
-                      {getZoneLabel(selectedZone)}
-                    </span>
-                    <span className="inline-flex items-center rounded-full border border-[var(--home-rule)] bg-[var(--home-paper-alt)] px-2.5 py-1 text-2xs font-semibold uppercase tracking-[0.12em] text-[var(--home-ink-muted)]">
-                      {selectedTeam.wins}-{selectedTeam.losses}
-                    </span>
-                    <span className="inline-flex items-center rounded-full border border-[var(--home-rule)] bg-[var(--home-paper-alt)] px-2.5 py-1 text-2xs font-semibold uppercase tracking-[0.12em] text-[var(--home-ink-muted)]">
-                      {remainingGames} left
-                    </span>
+            <aside>
+              <section className="c97-panel" aria-live="polite" data-testid="nba-selected-team">
+                <div className="flex items-start gap-3">
+                  <CrestAvatar crest={logoByTeamId.get(selectedTeam.id) ?? null} name={selectedTeam.name} size="lg" />
+                  <div className="min-w-0 flex-1">
+                    <h2 className="c97-serif c97-h3">{selectedTeam.name}</h2>
+                    <div className="c97-meta mt-1.5" style={{ textTransform: "none" }}>
+                      <span className={zoneChipClass(selectedZone)}>{getZoneLabel(selectedZone)}</span>
+                      <span className="c97-chip">{selectedTeam.wins}-{selectedTeam.losses}</span>
+                      <span className="c97-chip">{remainingGames} left</span>
+                    </div>
+                  </div>
+                  <div className="c97-stat">
+                    <p className="c97-stat-label">Seed</p>
+                    <p className="c97-stat-value">{selectedTeam.conferenceSeed}</p>
                   </div>
                 </div>
-                <div className="flex-shrink-0 rounded-[var(--radius-xl)] bg-[var(--home-signal)] px-3 py-2 text-center text-[var(--home-paper)] shadow-sm">
-                  <p className="text-3xs uppercase tracking-[0.14em] opacity-80">Seed</p>
-                  <p className="text-xl font-bold">{selectedTeam.conferenceSeed}</p>
-                </div>
-              </div>
 
-              <dl className="mt-4 grid grid-cols-2 gap-x-4 gap-y-2 border-t border-[var(--home-rule)] pt-4">
-                {(
-                  [
+                <dl className="mt-4 grid grid-cols-2 gap-x-4 gap-y-2 border-t pt-4" style={{ borderColor: "var(--c97-rule)" }}>
+                  {(
                     [
-                      "Win %",
-                      Number.isFinite(selectedTeam.winPercent)
-                        ? selectedTeam.winPercent.toFixed(3).replace(/^0/, "")
-                        : "—",
-                    ],
-                    ["GB", formatGamesBack(selectedTeam.gamesBack)],
-                    ["L10", selectedTeam.lastTen ?? "—"],
-                    ["Streak", selectedTeam.streak ?? "—"],
-                    ["Offense", `#${teamRanks.offense}`],
-                    ["Defense", `#${teamRanks.defense}`],
-                    ["PF/g", selectedTeam.pointsFor.toFixed(1)],
-                    ["PA/g", selectedTeam.pointsAgainst.toFixed(1)],
-                  ] as const
-                ).map(([label, value]) => (
-                  <div key={label} className="flex items-baseline justify-between gap-2">
-                    <dt className="text-2xs font-semibold uppercase tracking-[0.12em] text-[var(--home-ink-soft)]">
-                      {label}
-                    </dt>
-                    <dd className="text-sm font-bold text-[var(--home-ink)]">{value}</dd>
+                      ["Win %", Number.isFinite(selectedTeam.winPercent) ? selectedTeam.winPercent.toFixed(3).replace(/^0/, "") : "—"],
+                      ["GB", formatGamesBack(selectedTeam.gamesBack)],
+                      ["L10", selectedTeam.lastTen ?? "—"],
+                      ["Streak", selectedTeam.streak ?? "—"],
+                      ["Offense", `#${teamRanks.offense}`],
+                      ["Defense", `#${teamRanks.defense}`],
+                      ["PF/g", selectedTeam.pointsFor.toFixed(1)],
+                      ["PA/g", selectedTeam.pointsAgainst.toFixed(1)],
+                    ] as const
+                  ).map(([label, value]) => (
+                    <div key={label} className="flex items-baseline justify-between gap-2">
+                      <dt className="c97-kicker">{label}</dt>
+                      <dd className="c97-mono" style={{ margin: 0, fontWeight: 600, color: "var(--c97-ink)" }}>{value}</dd>
+                    </div>
+                  ))}
+                </dl>
+
+                {formSequence.length > 0 && (
+                  <div className="mt-4 border-t pt-4" style={{ borderColor: "var(--c97-rule)" }}>
+                    <p className="c97-kicker">Form</p>
+                    <div className="mt-2 flex gap-1.5">
+                      {formSequence.slice(-5).map((result, i) => (
+                        <TeamResultPill key={i} result={result} />
+                      ))}
+                    </div>
                   </div>
-                ))}
-              </dl>
+                )}
 
-              {formSequence.length > 0 && (
-                <div className="mt-4 border-t border-[var(--home-rule)] pt-4">
-                  <p className="text-2xs font-semibold uppercase tracking-[0.12em] text-[var(--home-ink-soft)]">
-                    Form
-                  </p>
-                  <div className="mt-2 flex gap-1.5">
-                    {formSequence.slice(-5).map((result, i) => (
-                      <TeamResultPill key={i} result={result} />
-                    ))}
-                  </div>
-                </div>
-              )}
-
-              <p className="mt-3 line-clamp-2 text-sm leading-relaxed text-[var(--home-ink-muted)]">
-                {teamStoryline}
-              </p>
-
-              {!teamSnapshot && (isTeamSnapshotLoading || teamSnapshotError) ? (
-                <p
-                  className="mt-4 border-t border-[var(--home-rule)] pt-4 text-sm text-[var(--home-ink-muted)]"
-                  role={teamSnapshotError ? "alert" : "status"}
-                  aria-live="polite"
-                >
-                  {isTeamSnapshotLoading ? "Loading team snapshot…" : teamSnapshotError}
+                <p className="c97-prose mt-3 line-clamp-2" style={{ fontSize: "var(--c97-fs-small)" }}>
+                  {teamStoryline}
                 </p>
-              ) : null}
-            </section>
-          </aside>
-        </div>
 
-        {/* Tabbed detail strip */}
-        <div className="rounded-[var(--radius-2xl)] border border-[var(--home-rule)] bg-[var(--home-paper-raised)] p-5 sm:p-6 shadow-[var(--shadow-sm)]">
-          <div
-            className="flex gap-2 overflow-x-auto rounded-[var(--radius-3xl)] border border-[var(--home-rule)] bg-[var(--home-paper-raised)] p-1.5"
-            role="tablist"
-            aria-label="Team and league details"
-          >
+                {!teamSnapshot && (isTeamSnapshotLoading || teamSnapshotError) ? (
+                  <p
+                    className="c97-prose mt-4 border-t pt-4"
+                    style={{ borderColor: "var(--c97-rule)", fontSize: "var(--c97-fs-small)" }}
+                    role={teamSnapshotError ? "alert" : "status"}
+                    aria-live="polite"
+                  >
+                    {isTeamSnapshotLoading ? "Loading team snapshot…" : teamSnapshotError}
+                  </p>
+                ) : null}
+              </section>
+            </aside>
+          </div>
+        </div>
+      </section>
+
+      <section className="c97-band c97-sheet" data-c97-surface="bone" data-seam="torn">
+        <div className="c97-shell">
+          <div role="tablist" aria-label="Team and league details" className="c97-segmented">
             {(["team", "schedule", "leaders"] as const).map((tab) => {
               const labels = { team: "Team Detail", schedule: "Schedule", leaders: "Stat Leaders" } as const;
               return (
@@ -679,13 +499,8 @@ export function NbaClient({ initialState, summary, initialTeamSnapshot }: NbaCli
                   type="button"
                   aria-selected={activeDetailTab === tab}
                   aria-controls="nba-detail-panel"
-                  tabIndex={activeDetailTab === tab ? 0 : -1}
                   onClick={() => setActiveDetailTab(tab)}
-                  className={`min-h-[44px] whitespace-nowrap rounded-[var(--radius-2xl)] px-5 py-2.5 text-sm font-semibold transition-colors ${
-                    activeDetailTab === tab
-                      ? "bg-[var(--home-signal)] text-[var(--home-paper)] shadow-sm"
-                      : "text-[var(--home-ink-muted)] hover:bg-[var(--home-paper-alt)] hover:text-[var(--home-ink)]"
-                  }`}
+                  className="min-h-[44px] text-sm font-semibold"
                 >
                   {labels[tab]}
                 </button>
@@ -693,27 +508,16 @@ export function NbaClient({ initialState, summary, initialTeamSnapshot }: NbaCli
             })}
           </div>
 
-          <div
-            id="nba-detail-panel"
-            role="tabpanel"
-            aria-labelledby={`nba-detail-tab-${activeDetailTab}`}
-            className="mt-6"
-          >
+          <div id="nba-detail-panel" role="tabpanel" aria-labelledby={`nba-detail-tab-${activeDetailTab}`} className="mt-6">
             {activeDetailTab === "team" && (
               <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
                 <div className="space-y-5">
                   <div>
-                    <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[var(--home-ink-soft)]">
-                      Performance
-                    </p>
-                    <div className="mt-3 grid grid-cols-2 gap-3">
+                    <p className="c97-kicker mb-2">Performance</p>
+                    <div className="grid grid-cols-2 gap-3">
                       <MetricCard
                         label="Win %"
-                        value={
-                          Number.isFinite(selectedTeam.winPercent)
-                            ? selectedTeam.winPercent.toFixed(3).replace(/^0/, "")
-                            : "—"
-                        }
+                        value={Number.isFinite(selectedTeam.winPercent) ? selectedTeam.winPercent.toFixed(3).replace(/^0/, "") : "—"}
                       />
                       <MetricCard label="Record" value={`${selectedTeam.wins}-${selectedTeam.losses}`} />
                       <MetricCard label="Offense rank" value={`#${teamRanks.offense}`} />
@@ -723,9 +527,9 @@ export function NbaClient({ initialState, summary, initialTeamSnapshot }: NbaCli
                     </div>
                   </div>
 
-                  <div className="rounded-[var(--radius-2xl)] border border-[var(--home-rule)] bg-[var(--home-paper-alt)] p-4">
-                    <p className="text-sm font-semibold text-[var(--home-ink)]">Pressure points</p>
-                    <ul className="mt-3 space-y-2 pl-5 text-sm leading-relaxed text-[var(--home-ink-muted)]">
+                  <div className="c97-panel">
+                    <p className="c97-kicker mb-2">Pressure points</p>
+                    <ul className="c97-prose" style={{ margin: 0, paddingLeft: "1.1em" }}>
                       {teamPressurePoints.map((item) => (
                         <li key={item}>{item}</li>
                       ))}
@@ -753,29 +557,19 @@ export function NbaClient({ initialState, summary, initialTeamSnapshot }: NbaCli
                     />
                   </div>
 
-                  <p className="text-sm leading-relaxed text-[var(--home-ink-muted)]">
-                    {teamStoryline}
-                  </p>
+                  <p className="c97-prose">{teamStoryline}</p>
                 </div>
 
                 {!teamSnapshot && (isTeamSnapshotLoading || teamSnapshotError) && (
-                  <div
-                    className="rounded-[var(--radius-2xl)] border border-[var(--home-rule)] bg-[var(--home-paper-alt)] p-4"
-                    role={teamSnapshotError ? "alert" : "status"}
-                    aria-live="polite"
-                  >
-                    <p className="text-sm text-[var(--home-ink-muted)]">
-                      {isTeamSnapshotLoading ? "Loading recent team games…" : teamSnapshotError}
-                    </p>
+                  <div className="c97-panel" role={teamSnapshotError ? "alert" : "status"} aria-live="polite">
+                    <p className="c97-prose">{isTeamSnapshotLoading ? "Loading recent team games…" : teamSnapshotError}</p>
                   </div>
                 )}
 
                 {recentFixtures.length > 0 && (
                   <div>
-                    <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[var(--home-ink-soft)]">
-                      Recent results
-                    </p>
-                    <div className="mt-3 space-y-2">
+                    <p className="c97-kicker mb-2">Recent results</p>
+                    <div className="space-y-2">
                       {recentFixtures.map((fixture) => (
                         <FixtureCard
                           key={fixture.id}
@@ -790,10 +584,8 @@ export function NbaClient({ initialState, summary, initialTeamSnapshot }: NbaCli
 
                 {upcomingFixtures.length > 0 && (
                   <div>
-                    <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[var(--home-ink-soft)]">
-                      Upcoming games
-                    </p>
-                    <div className="mt-3 space-y-2">
+                    <p className="c97-kicker mb-2">Upcoming games</p>
+                    <div className="space-y-2">
                       {upcomingFixtures.map((fixture) => (
                         <FixtureCard
                           key={fixture.id}
@@ -812,11 +604,8 @@ export function NbaClient({ initialState, summary, initialTeamSnapshot }: NbaCli
               <div className="grid gap-6 md:grid-cols-2">
                 {summary.recentFixtures.length > 0 && (
                   <div>
-                    <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[var(--home-ink-soft)]">
-                      Recent slate
-                    </p>
-                    <h3 className="mt-2 text-xl font-semibold text-[var(--home-ink)]">Latest results</h3>
-                    <div className="mt-4 space-y-3">
+                    <p className="c97-kicker mb-2">Latest results</p>
+                    <div className="space-y-3">
                       {summary.recentFixtures.map((f) => (
                         <FixtureCard key={f.id} fixture={f} onOpenTeam={handleTeamChange} />
                       ))}
@@ -825,24 +614,20 @@ export function NbaClient({ initialState, summary, initialTeamSnapshot }: NbaCli
                 )}
                 {summary.upcomingFixtures.length > 0 && (
                   <div>
-                    <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[var(--home-ink-soft)]">
-                      Next up
-                    </p>
-                    <h3 className="mt-2 text-xl font-semibold text-[var(--home-ink)]">Upcoming games</h3>
-                    <div className="mt-4 space-y-3">
+                    <p className="c97-kicker mb-2">Upcoming games</p>
+                    <div className="space-y-3">
                       {summary.upcomingFixtures.map((f) => (
                         <FixtureCard key={f.id} fixture={f} onOpenTeam={handleTeamChange} />
                       ))}
                     </div>
                   </div>
                 )}
-                {summary.recentFixtures.length === 0 &&
-                  summary.upcomingFixtures.length === 0 && (
-                    <p className="text-sm text-[var(--home-ink-muted)] md:col-span-2">
-                      No games are on the schedule right now. Recent results and upcoming
-                      matchups will appear here once the next snapshot is published.
-                    </p>
-                  )}
+                {summary.recentFixtures.length === 0 && summary.upcomingFixtures.length === 0 && (
+                  <p className="c97-prose md:col-span-2">
+                    No games are on the schedule right now. Recent results and upcoming
+                    matchups will appear here once the next snapshot is published.
+                  </p>
+                )}
               </div>
             )}
 
@@ -850,68 +635,41 @@ export function NbaClient({ initialState, summary, initialTeamSnapshot }: NbaCli
               <div className="grid gap-6 md:grid-cols-3">
                 <div>
                   <div className="flex items-start justify-between gap-3">
-                    <div>
-                      <p className="text-sm font-semibold uppercase tracking-[0.16em] text-[var(--home-ink-soft)]">
-                        Points
-                      </p>
-                      <h3 className="mt-2 text-xl font-bold text-[var(--home-ink)]">Top scorers</h3>
-                    </div>
-                    <a
-                      href={summary.sourceUrls.leaders}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="inline-flex min-h-[44px] items-center gap-2 rounded-[var(--radius-xl)] border border-[var(--home-rule)] bg-[var(--home-paper-alt)] px-3 py-2 text-sm font-medium text-[var(--home-ink-muted)] transition-colors hover:text-[var(--home-signal)]"
-                    >
+                    <p className="c97-kicker mb-0">Top scorers</p>
+                    <a href={summary.sourceUrls.leaders} target="_blank" rel="noreferrer" className="c97-btn-outline">
                       Official
                       <ExternalLink className="h-4 w-4" />
                     </a>
                   </div>
-                  <LeaderList
-                    leaders={toLeaderEntries(summary.scorers.slice(0, 5))}
-                    statLabel="ppg"
-                    clubLookup={teamLookup}
-                  />
+                  <LeaderList leaders={toLeaderEntries(summary.scorers.slice(0, 5))} statLabel="ppg" clubLookup={teamLookup} />
                 </div>
                 <div>
-                  <p className="text-sm font-semibold uppercase tracking-[0.16em] text-[var(--home-ink-soft)]">
-                    Rebounds
-                  </p>
-                  <h3 className="mt-2 text-xl font-bold text-[var(--home-ink)]">Top rebounders</h3>
-                  <LeaderList
-                    leaders={toLeaderEntries(summary.rebounders.slice(0, 5))}
-                    statLabel="rpg"
-                    clubLookup={teamLookup}
-                  />
+                  <p className="c97-kicker mb-0">Top rebounders</p>
+                  <LeaderList leaders={toLeaderEntries(summary.rebounders.slice(0, 5))} statLabel="rpg" clubLookup={teamLookup} />
                 </div>
                 <div>
-                  <p className="text-sm font-semibold uppercase tracking-[0.16em] text-[var(--home-ink-soft)]">
-                    Assists
-                  </p>
-                  <h3 className="mt-2 text-xl font-bold text-[var(--home-ink)]">Top playmakers</h3>
-                  <LeaderList
-                    leaders={toLeaderEntries(summary.assistLeaders.slice(0, 5))}
-                    statLabel="apg"
-                    clubLookup={teamLookup}
-                  />
+                  <p className="c97-kicker mb-0">Top playmakers</p>
+                  <LeaderList leaders={toLeaderEntries(summary.assistLeaders.slice(0, 5))} statLabel="apg" clubLookup={teamLookup} />
                 </div>
               </div>
             )}
           </div>
         </div>
+      </section>
 
-        {/* Disclaimer */}
-        <section className="rounded-[var(--radius-3xl)] border border-[var(--home-rule)] bg-[var(--home-paper-alt)] p-5 text-sm text-[var(--home-ink-muted)] shadow-sm">
+      <section className="c97-band c97-sheet" data-c97-surface="paper" data-seam="torn">
+        <div className="c97-shell">
           <div className="flex items-start gap-3">
-            <CircleAlert className="mt-0.5 h-4 w-4 flex-shrink-0 text-[var(--home-signal)]" />
-            <p className="mb-0 max-w-none leading-relaxed">
-              This page is a curated snapshot rather than a live feed. Standings,
+            <CircleAlert className="mt-0.5 h-4 w-4 flex-shrink-0" style={{ color: "var(--c97-ink-2)" }} aria-hidden="true" />
+            <p className="c97-prose" style={{ fontSize: "var(--c97-fs-small)" }}>
+              This page is a curated snapshot, refreshed on a schedule. Standings,
               scoreboard, and stat leaders are pulled from ESPN&apos;s public NBA
               endpoints and committed back into the repo on each refresh.
             </p>
           </div>
-        </section>
-      </div>
-    </div>
+        </div>
+      </section>
+    </>
   );
 }
 
@@ -956,6 +714,15 @@ function formatPointDiff(value: number): string {
   return value > 0 ? `+${value.toFixed(1)}` : value.toFixed(1);
 }
 
+/**
+ * `pointDifferential` in the snapshot is a season total (confirmed against
+ * `pointsFor`/`pointsAgainst`, which are per game), so every display of it
+ * alongside per-game stats normalizes by games played first.
+ */
+function perGameDifferential(team: NbaTeam): number {
+  return team.gamesPlayed > 0 ? team.pointDifferential / team.gamesPlayed : 0;
+}
+
 type NbaZone = "playoff" | "play-in" | "lottery";
 
 function getTeamZone(seed: number): NbaZone {
@@ -976,67 +743,28 @@ function getZoneLabel(zone: NbaZone): string {
   }
 }
 
-function getZoneDotColor(zone: NbaZone): string {
+function zoneChipClass(zone: NbaZone): string {
   switch (zone) {
     case "playoff":
-      return "var(--home-positive)";
+      return "c97-chip c97-chip-positive";
     case "play-in":
-      return "color-mix(in srgb, var(--home-positive) 55%, var(--home-ink))";
+      return "c97-chip c97-chip-warning";
     case "lottery":
     default:
-      return "color-mix(in srgb, var(--home-ink) 65%, var(--home-stone))";
+      return "c97-chip";
   }
 }
 
-function getZonePillStyle(zone: NbaZone): CSSProperties {
+function zoneDotColor(zone: NbaZone): string {
   switch (zone) {
     case "playoff":
-      return {
-        color: "color-mix(in srgb, var(--home-positive) 60%, var(--home-ink))",
-        borderColor: "color-mix(in srgb, var(--home-positive) 45%, var(--home-rule))",
-        background: "color-mix(in srgb, var(--home-positive) 16%, var(--home-paper-alt))",
-      };
+      return "var(--c97-positive)";
     case "play-in":
-      return {
-        color: "color-mix(in srgb, var(--home-positive) 45%, var(--home-ink))",
-        borderColor: "color-mix(in srgb, var(--home-positive) 28%, var(--home-rule))",
-        background: "color-mix(in srgb, var(--home-positive) 9%, var(--home-paper-alt))",
-      };
+      return "var(--c97-warning)";
     case "lottery":
     default:
-      return {
-        color: "var(--home-ink)",
-        borderColor: "color-mix(in srgb, var(--home-ink) 30%, var(--home-rule))",
-        background: "color-mix(in srgb, var(--home-stone) 65%, var(--home-paper-alt))",
-      };
+      return "var(--c97-ink-2)";
   }
-}
-
-function getViewButtonStyle(isActive: boolean): CSSProperties {
-  if (isActive) {
-    return {
-      borderColor: "color-mix(in srgb, var(--home-signal) 35%, var(--home-rule))",
-      background: "color-mix(in srgb, var(--home-signal) 9%, var(--home-paper-alt))",
-      boxShadow: "var(--shadow-sm)",
-    };
-  }
-  return {
-    borderColor: "var(--home-rule)",
-    background: "var(--home-paper-alt)",
-  };
-}
-
-function getTableRowStyle(isSelected: boolean): CSSProperties {
-  if (isSelected) {
-    return {
-      borderColor: "color-mix(in srgb, var(--home-signal) 35%, var(--home-rule))",
-      background: "color-mix(in srgb, var(--home-signal) 9%, var(--home-paper-alt))",
-    };
-  }
-  return {
-    borderColor: "var(--home-rule)",
-    background: "var(--home-paper-alt)",
-  };
 }
 
 interface ConferenceContext {
@@ -1095,7 +823,7 @@ function getTeamPressurePoints(
   if (seed === 1 && topSeed && sixthSeed) {
     return [
       `${team.wins - sixthSeed.wins} games clear of the playoff cutoff.`,
-      `Net rating: ${formatPointDiff(team.pointDifferential)} per game.`,
+      `Net rating: ${formatPointDiff(perGameDifferential(team))} per game.`,
       `${remaining} games remain on the schedule.`,
       `Offense rank #${ranks.offense} · Defense rank #${ranks.defense}.`,
     ];
@@ -1104,7 +832,7 @@ function getTeamPressurePoints(
     return [
       `${topSeed.wins - team.wins} games back from the conference top seed.`,
       `${team.wins - seventhSeed.wins} games clear of the play-in line.`,
-      `Net rating: ${formatPointDiff(team.pointDifferential)} per game.`,
+      `Net rating: ${formatPointDiff(perGameDifferential(team))} per game.`,
       `Offense rank #${ranks.offense} · Defense rank #${ranks.defense}.`,
     ];
   }
@@ -1112,13 +840,13 @@ function getTeamPressurePoints(
     return [
       `${sixthSeed.wins - team.wins} games short of a top-six seed.`,
       `${team.wins - eleventhSeed.wins} games above the lottery line.`,
-      `Net rating: ${formatPointDiff(team.pointDifferential)} per game.`,
+      `Net rating: ${formatPointDiff(perGameDifferential(team))} per game.`,
       `Offense rank #${ranks.offense} · Defense rank #${ranks.defense}.`,
     ];
   }
   return [
     tenthSeed ? `${tenthSeed.wins - team.wins} games back of the play-in.` : "Outside the play-in field.",
-    `Net rating: ${formatPointDiff(team.pointDifferential)} per game.`,
+    `Net rating: ${formatPointDiff(perGameDifferential(team))} per game.`,
     `${remaining} games remain to climb the seeding.`,
     `Offense rank #${ranks.offense} · Defense rank #${ranks.defense}.`,
   ];
@@ -1136,22 +864,18 @@ function TeamLeaderCard({
   emptyLabel: string;
 }) {
   return (
-    <div className="rounded-[var(--radius-2xl)] border border-[var(--home-rule)] bg-[var(--home-paper-alt)] p-4">
-      <p className="text-xs font-semibold uppercase tracking-[0.14em] text-[var(--home-ink-soft)]">
-        {title}
-      </p>
+    <div className="c97-panel">
+      <p className="c97-kicker">{title}</p>
       {leader ? (
         <>
-          <p className="mt-2 text-lg font-bold text-[var(--home-ink)]">{leader.name}</p>
-          <p className="mt-1 text-sm text-[var(--home-ink-muted)]">
+          <p className="c97-h3 c97-serif mt-2">{leader.name}</p>
+          <p className="c97-prose mt-1" style={{ fontSize: "var(--c97-fs-small)" }}>
             {leader.perGame.toFixed(1)} {statLabel.toLowerCase()} per game
           </p>
-          <p className="mt-2 text-xs font-medium uppercase tracking-[0.12em] text-[var(--home-ink-soft)]">
-            {leader.teamAbbreviation}
-          </p>
+          <p className="c97-kicker mt-2">{leader.teamAbbreviation}</p>
         </>
       ) : (
-        <p className="mt-2 text-sm leading-relaxed text-[var(--home-ink-muted)]">{emptyLabel}</p>
+        <p className="c97-prose mt-2" style={{ fontSize: "var(--c97-fs-small)" }}>{emptyLabel}</p>
       )}
     </div>
   );
