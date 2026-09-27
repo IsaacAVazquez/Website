@@ -104,11 +104,9 @@ export function MetricTooltip({ term, definition, children, focusable }: Props) 
   const bubbleId = `metric-tip-${reactId}`;
   const open = hovered || focused;
   // The page root rather than document.body, because the --c97-* tokens only
-  // resolve inside it. Read at render; the bubble only opens after mount.
+  // resolve inside it. The bubble only opens after mount, so SSR never reads it.
   const portalTarget =
-    typeof document === "undefined"
-      ? null
-      : (triggerRef.current?.closest(".c97-page") ?? document.body);
+    typeof document === "undefined" ? null : (document.querySelector(".c97-page") ?? document.body);
 
   const reposition = React.useCallback(() => {
     const trigger = triggerRef.current;

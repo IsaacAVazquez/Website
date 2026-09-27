@@ -309,7 +309,7 @@ className="m-0 list-none p-0 box-border overflow-hidden border border-[var(--c97
             ))}
           </ul>
           </div>,
-          inputRef.current?.closest(".c97-page") ?? document.body
+          document.querySelector(".c97-page") ?? document.body
         )}
 
       {shouldShowCuratedOnlyHint && (
