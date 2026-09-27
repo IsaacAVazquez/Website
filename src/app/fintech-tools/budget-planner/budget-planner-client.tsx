@@ -99,8 +99,8 @@ export function BudgetPlannerClient() {
   }, [totalIncome, totalExpenses]);
 
   const register = useMemo(
-    () => checkRegister(totalIncome, summary.expenseEntries),
-    [totalIncome, summary.expenseEntries]
+    () => checkRegister(summary.availableToBudget, summary.expenseEntries),
+    [summary.availableToBudget, summary.expenseEntries]
   );
 
   function handleMonthChange(nextMonthKey: string) {
@@ -215,6 +215,9 @@ export function BudgetPlannerClient() {
       </Catalog97ProjectHero>
 
       <div data-testid="budget-planner-shell">
+        <p role="status" aria-live="polite" className="sr-only">
+          {`${formatCurrency(totalExpenses)} spent, ${formatCurrency(remaining)} left to spend`}
+        </p>
         <section className="c97-band c97-sheet" data-c97-surface="paper" data-seam="torn">
           <div className="c97-shell">
             <div className="flex flex-wrap items-center justify-between gap-3">
@@ -532,7 +535,7 @@ export function BudgetPlannerClient() {
                         <td data-label="Balance" data-align="end" className="c97-tabular">
                           {formatSignedCurrency(row.balance)}
                         </td>
-                        <td data-label="Actions" style={{ border: "none" }}>
+                        <td style={{ border: "none" }}>
                           <div className="flex justify-end" style={{ gap: "var(--c97-sp-2)" }}>
                             <button
                               type="button"

@@ -13,6 +13,7 @@ interface Props {
 import { holdingColor } from "./holdingPalette";
 
 export function AllocationChart({ holdings }: Props) {
+  const portfolio = holdings.map((h) => h.symbol);
   const svgRef = useRef<SVGSVGElement>(null);
   const tooltipRef = useRef<HTMLDivElement>(null);
 
@@ -63,7 +64,7 @@ export function AllocationChart({ holdings }: Props) {
       .data(pie(data))
       .join("path")
       .attr("d", arc)
-      .attr("fill", (d) => holdingColor(d.data.symbol))
+      .attr("fill", (d) => holdingColor(d.data.symbol, portfolio))
       .style("stroke", "var(--c97-panel)")
       .attr("stroke-width", 2)
       .style("cursor", "pointer")
@@ -113,7 +114,7 @@ export function AllocationChart({ holdings }: Props) {
           maximumFractionDigits: 1,
         }).format(totalValue)
       );
-  }, [data]);
+  }, [data, portfolio]);
 
   if (data.length === 0) return null;
 
@@ -143,7 +144,7 @@ export function AllocationChart({ holdings }: Props) {
             <li key={h.symbol} className="flex items-center gap-2 border border-[var(--c97-rule)] bg-[var(--c97-panel)] px-3 py-2.5">
               <span
                 className="w-2.5 h-2.5 rounded-full shrink-0"
-                style={{ backgroundColor: holdingColor(h.symbol) }}
+                style={{ backgroundColor: holdingColor(h.symbol, portfolio) }}
                 aria-hidden="true"
               />
               <span className="font-medium text-[var(--c97-ink)] w-14 shrink-0">{h.symbol}</span>
@@ -159,7 +160,7 @@ export function AllocationChart({ holdings }: Props) {
                   className="h-full"
                   style={{
                     width: `${Math.min(h.allocationPercent ?? 0, 100)}%`,
-                    backgroundColor: holdingColor(h.symbol),
+                    backgroundColor: holdingColor(h.symbol, portfolio),
                   }}
                 />
               </div>

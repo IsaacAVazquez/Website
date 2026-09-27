@@ -40,3 +40,8 @@
     padding-top: 0;
   }
 }
+
+/* This page's ghost buttons carry a leading icon, so give it room from the label. */
+.mba-ghost {
+  gap: var(--c97-sp-1);
+}

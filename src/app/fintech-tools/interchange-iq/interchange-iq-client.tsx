@@ -307,7 +307,7 @@ export function InterchangeIQClient() {
                     aria-label="Learn about card mix"
                     aria-expanded={showInfo}
                     aria-controls="card-mix-info"
-                    style={{ color: "var(--c97-label)", display: "inline-flex" }}
+                    style={{ color: "var(--c97-label)", display: "inline-flex", alignItems: "center", justifyContent: "center", minWidth: 44, minHeight: 44 }}
                   >
                     <Info size={14} aria-hidden="true" />
                   </button>

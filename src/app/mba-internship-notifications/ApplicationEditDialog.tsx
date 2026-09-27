@@ -84,7 +84,7 @@ export default function ApplicationEditDialog({
   return (
     <div
       className="fixed inset-0 z-50 flex items-center justify-center overflow-y-auto p-4"
-      style={{ background: "rgba(0,0,0,0.45)" }}
+      style={{ background: "color-mix(in srgb, var(--c97-print-black) 45%, transparent)" }}
       role="presentation"
       onClick={(event) => {
         if (event.target === event.currentTarget) onClose();

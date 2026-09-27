@@ -17,6 +17,8 @@ interface Props {
   onUpdate: (symbol: string, updates: { shares?: number; averageCost?: number }) => void;
   onRemove: (symbol: string) => void;
   onResearch: (symbol: string) => void;
+  /** Every symbol in the portfolio, so a filtered table keeps each holding's colour. */
+  portfolioSymbols?: readonly string[];
 }
 
 
@@ -327,7 +329,7 @@ function buildHoldingsCsv(holdings: EnhancedHolding[]): string {
   return `\uFEFF${[header.join(","), ...rows].join("\r\n")}`;
 }
 
-export function HoldingsTable({ holdings, onUpdate, onRemove, onResearch }: Props) {
+export function HoldingsTable({ holdings, onUpdate, onRemove, onResearch, portfolioSymbols }: Props) {
   const sorted = React.useMemo(
     () =>
       [...holdings].sort(
@@ -390,7 +392,7 @@ export function HoldingsTable({ holdings, onUpdate, onRemove, onResearch }: Prop
               <HoldingRow
                 key={h.symbol}
                 holding={h}
-                color={holdingColor(h.symbol)}
+                color={holdingColor(h.symbol, portfolioSymbols ?? holdings.map((holding) => holding.symbol))}
                 onUpdate={onUpdate}
                 onRemove={onRemove}
                 onResearch={onResearch}

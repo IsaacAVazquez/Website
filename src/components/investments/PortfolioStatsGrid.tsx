@@ -8,7 +8,6 @@ import type {
 import {
   formatCurrency,
   formatPercent,
-  formatSignedCurrency,
 } from "@/lib/investmentFormatting";
 import styles from "@/app/investments/investments.module.css";
 
@@ -16,8 +15,6 @@ interface Props {
   summary: PortfolioSummaryType;
   holdings: EnhancedHolding[];
   marketStatus: string;
-  hasLiveQuotes: boolean;
-  allQuotesLive: boolean;
 }
 
 interface ComputedStats {
@@ -117,11 +114,7 @@ export function PortfolioStatsGrid({
   summary,
   holdings,
   marketStatus,
-  hasLiveQuotes,
-  allQuotesLive,
 }: Props) {
-  const gainPositive = summary.totalGainLoss >= 0;
-  const dayPositive = summary.dayChange >= 0;
   const stats = computeStats(holdings);
 
   return (
@@ -140,26 +133,6 @@ export function PortfolioStatsGrid({
       </div>
 
       <div className={styles.statsGrid}>
-        <StatCell
-          label="Day P/L"
-          hint="Latest market-session change, summed across positions with current quotes."
-          value={hasLiveQuotes ? formatSignedCurrency(summary.dayChange) : "—"}
-          sub={
-            hasLiveQuotes
-              ? `${formatPercent(summary.dayChangePercent)}${allQuotesLive ? "" : " · partial"}`
-              : "No current quotes"
-          }
-          tone={hasLiveQuotes ? (dayPositive ? "pos" : "neg") : "default"}
-          subTone={hasLiveQuotes ? (dayPositive ? "pos" : "neg") : "default"}
-        />
-        <StatCell
-          label="All-time return"
-          hint="Total dollar return since you started tracking each position."
-          value={formatSignedCurrency(summary.totalGainLoss)}
-          sub={formatPercent(summary.totalGainLossPercent)}
-          tone={gainPositive ? "pos" : "neg"}
-          subTone={gainPositive ? "pos" : "neg"}
-        />
         <StatCell
           label="Cost basis"
           hint="What you paid for the holdings you're still tracking."

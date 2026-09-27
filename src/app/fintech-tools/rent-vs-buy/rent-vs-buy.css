@@ -32,7 +32,19 @@
 /* At phone width the plate's own width shrinks faster than the fixed 640
  * viewBox, so the same coordinate space renders smaller type unless the
  * type itself is set larger in viewBox units. */
+.c97-rvb-narrow {
+  display: none;
+}
+
 @media (max-width: 639px) {
+  .c97-rvb-wide {
+    display: none;
+  }
+
+  .c97-rvb-narrow {
+    display: inline;
+  }
+
   .c97-rvb-axis {
     font-size: 28px;
   }

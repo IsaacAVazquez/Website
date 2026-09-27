@@ -168,6 +168,7 @@ export function ResearchSection({
             symbol={symbol}
             isInPortfolio={isInPortfolio}
             portfolioShares={position?.shares ?? null}
+            portfolioSymbols={portfolioSymbols}
           />
 
           {position ? <ResearchPosition position={position} /> : null}

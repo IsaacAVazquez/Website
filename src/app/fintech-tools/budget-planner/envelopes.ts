@@ -47,14 +47,14 @@ export function envelope(spent: number, budgeted: number): Envelope {
 }
 
 export interface CheckRegisterRow extends BudgetExpenseLine {
-  /** Running balance after this row, starting from income and subtracting each expense in date order. */
+  /** Running balance after this row, starting from what the month has to spend (income less the savings target) and subtracting each expense in date order. */
   balance: number;
 }
 
 /** Chronological order, ties broken by the entries' own order (a stable sort). */
-export function checkRegister(income: number, expenseEntries: BudgetExpenseLine[]): CheckRegisterRow[] {
+export function checkRegister(startingBalance: number, expenseEntries: BudgetExpenseLine[]): CheckRegisterRow[] {
   const ordered = [...expenseEntries].sort((a, b) => (a.date < b.date ? -1 : a.date > b.date ? 1 : 0));
-  let balance = Number.isFinite(income) ? income : 0;
+  let balance = Number.isFinite(startingBalance) ? startingBalance : 0;
 
   return ordered.map((entry) => {
     balance = roundCents(balance - entry.amount);

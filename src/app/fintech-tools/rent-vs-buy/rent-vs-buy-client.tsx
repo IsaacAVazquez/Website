@@ -6,6 +6,7 @@ import { Catalog97ProjectHero } from "@/components/catalog97/Catalog97ProjectHer
 import { PROJECT_PRESS } from "@/constants/projectPress";
 import { useRentVsBuy } from "@/hooks/useRentVsBuy";
 import type { RentVsBuyInput, RentVsBuyResult } from "@/lib/rentVsBuy/types";
+import { fitLabel } from "@/app/travel-deals/fareGauge";
 import { netWorthChart } from "./netWorthChart";
 import "./rent-vs-buy.css";
 
@@ -78,14 +79,12 @@ function NetWorthChartSignature({ result }: { result: RentVsBuyResult }) {
   const buyerLabelY = chart.buyerEndY <= chart.renterEndY ? chart.buyerEndY - nudge : chart.buyerEndY + nudge;
   const renterLabelY = chart.renterEndY <= chart.buyerEndY ? chart.renterEndY - nudge : chart.renterEndY + nudge;
 
-  const breakEvenAnchor: "start" | "middle" | "end" =
-    chart.breakEvenX === null
-      ? "middle"
-      : chart.breakEvenX > chart.width * 0.7
-        ? "end"
-        : chart.breakEvenX < chart.width * 0.3
-          ? "start"
-          : "middle";
+  // The label prints twice, fitted inside the frame for each type size
+  // (mono glyphs advance about 0.62em; 15 units wide, 30 on phones), and the
+  // stylesheet shows the one that matches the screen.
+  const breakEvenText = `Break-even ${formatBreakEvenShort(result)}`;
+  const fitBreakEven = (unit: number) =>
+    chart.breakEvenX === null ? 0 : fitLabel(chart.breakEvenX, breakEvenText.length * unit * 0.62 + 8, 0, chart.width);
 
   const description = `Net worth by year, buyer versus renter. ${formatBreakEven(result)}. At year ${result.horizonYears}, ${
     result.netWorthDeltaAtHorizon >= 0 ? "buying" : "renting"
@@ -123,8 +122,11 @@ function NetWorthChartSignature({ result }: { result: RentVsBuyResult }) {
               strokeWidth={1.5}
               strokeDasharray="4 4"
             />
-            <text x={chart.breakEvenX} y={14} textAnchor={breakEvenAnchor} className="c97-rvb-label">
-              {`Buying pulls ahead, year ${formatBreakEvenShort(result)}`}
+            <text x={fitBreakEven(15)} y={32} textAnchor="middle" className="c97-rvb-label c97-rvb-wide">
+              {breakEvenText}
+            </text>
+            <text x={fitBreakEven(30)} y={32} textAnchor="middle" className="c97-rvb-label c97-rvb-narrow">
+              {breakEvenText}
             </text>
           </>
         ) : null}
@@ -286,7 +288,7 @@ export function RentVsBuyClient() {
           {
             label: "Net worth gap",
             value: formatSignedCurrency(result.netWorthDeltaAtHorizon),
-            detail: `At year ${result.horizonYears}`,
+            detail: `Buyer minus renter at year ${result.horizonYears}`,
           },
           {
             label: "Cash to buy",

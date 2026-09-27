@@ -13,8 +13,8 @@ import { RetirementPlanner } from "./retirement/RetirementPlanner";
 import { useInvestments } from "@/hooks/useInvestments";
 import type { ResearchTab } from "@/app/investments/investments-state";
 import { InstrumentTape, type InstrumentTapeItem } from "@/components/editorial/InstrumentTape";
-import { Catalog97ProjectHero, type Catalog97Readout } from "@/components/catalog97/Catalog97ProjectHero";
-import { formatCurrency, formatPercent, formatSignedCurrency } from "@/lib/investmentFormatting";
+import { Catalog97ProjectHero } from "@/components/catalog97/Catalog97ProjectHero";
+import { formatCurrency, formatPercent } from "@/lib/investmentFormatting";
 import { holdingColor } from "./holdingPalette";
 import type { InvestmentsPriceHealth } from "@/types/investment";
 import styles from "@/app/investments/investments.module.css";
@@ -130,41 +130,6 @@ export function InvestmentsDashboard({
   );
 
   const isEmpty = enhancedHoldings.length === 0;
-  const hasLiveQuotes = enhancedHoldings.some((h) => h.priceSource === "live");
-
-  // The hero carries at most three numbers: what the book is worth, how it
-  // moved today, and its return since each position was opened. All three
-  // need a current quote (or, for the total, at least one saved holding) to
-  // mean anything, so an empty book or a quote-less session prints an em dash
-  // rather than a misleading $0.00.
-  const heroReadouts: [Catalog97Readout, Catalog97Readout, Catalog97Readout] = [
-    {
-      label: "Total value",
-      value: isEmpty ? "—" : formatCurrency(summary.totalValue, 0),
-    },
-    {
-      label: "Day change",
-      value: hasLiveQuotes ? formatSignedCurrency(summary.dayChange) : "—",
-      detail: hasLiveQuotes ? (
-        <span
-          style={{ color: summary.dayChange >= 0 ? "var(--c97-positive)" : "var(--c97-negative)" }}
-        >
-          {formatPercent(summary.dayChangePercent)}
-        </span>
-      ) : undefined,
-    },
-    {
-      label: "Total return",
-      value: isEmpty ? "—" : formatSignedCurrency(summary.totalGainLoss),
-      detail: isEmpty ? undefined : (
-        <span
-          style={{ color: summary.totalGainLoss >= 0 ? "var(--c97-positive)" : "var(--c97-negative)" }}
-        >
-          {formatPercent(summary.totalGainLossPercent)}
-        </span>
-      ),
-    },
-  ];
 
   // Quote tape uses only live/saved market prices. Cost basis is an accounting
   // input and should never masquerade as a quote.
@@ -176,7 +141,7 @@ export function InvestmentsDashboard({
           key: h.symbol,
           content: (
             <span className={styles.quote}>
-              <span className={styles.quoteSym} style={{ borderLeft: `3px solid ${holdingColor(h.symbol)}`, paddingLeft: 8 }}>
+              <span className={styles.quoteSym} style={{ borderLeft: `3px solid ${holdingColor(h.symbol, portfolioSymbols)}`, paddingLeft: 8 }}>
                 {h.symbol}
               </span>
               <span className={styles.quotePx}>
@@ -191,7 +156,7 @@ export function InvestmentsDashboard({
           ),
         };
       }),
-    [enhancedHoldings],
+    [enhancedHoldings, portfolioSymbols],
   );
 
   const navItems: NavItem[] = useMemo(
@@ -256,7 +221,6 @@ export function InvestmentsDashboard({
           title="Investments"
           standfirst="I built this to track a portfolio, look into a curated set of companies, and run a retirement plan off the same allocation math. Holdings and plan inputs save only to your browser."
           meta={`Research data as of ${formatDatasetDate(datasetLastUpdated)} · Market quotes via Finnhub`}
-          readouts={heroReadouts}
         >
           <div data-c97-surface="espresso" className="c97-offset" style={{ padding: "var(--c97-sp-3)" }}>
             {!isEmpty ? (
@@ -287,7 +251,9 @@ export function InvestmentsDashboard({
       </div>
 
       <section data-c97-surface="espresso" className="c97-band c97-sheet" data-seam="torn">
-        <div className="c97-shell">
+        {/* The terminal's sidebar, main column, and rail need more than the
+            1080px page measure, so this one sheet runs at the old wide shell. */}
+        <div className="c97-shell" style={{ maxWidth: "86rem" }}>
         {/* Section jumps for narrow viewports, where the sidebar is hidden.
             Same targets in the same order, so `navItems` stays the one source
             of truth and the two navigations cannot drift apart. Only one of the
@@ -437,6 +403,7 @@ export function InvestmentsDashboard({
                   onUpdate={updateHolding}
                   onRemove={removeHolding}
                   onResearch={handleResearch}
+                  portfolioSymbols={portfolioSymbols}
                 />
               ) : (
                 <div className="border border-dashed border-[var(--c97-rule)] bg-[var(--c97-panel)] px-6 py-16 text-center ">

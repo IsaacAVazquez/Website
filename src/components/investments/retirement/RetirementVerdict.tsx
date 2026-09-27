@@ -7,7 +7,7 @@ import { formatCompactCurrency, formatPercent, formatScenarioCount } from "@/lib
 const VERDICT_COPY: Record<Verdict, { label: string; tone: string }> = {
   "on-track": { label: "On track", tone: "var(--c97-positive)" },
   good: { label: "Looking good", tone: "var(--c97-positive)" },
-  fair: { label: "Fair — worth a look", tone: "var(--c97-warning)" },
+  fair: { label: "Fair, worth a look", tone: "var(--c97-warning)" },
   "at-risk": { label: "Needs attention", tone: "var(--c97-negative)" },
 };
 
@@ -119,8 +119,8 @@ export function RetirementVerdict({ result, isSampleScenario = false }: Props) {
           {isFixedPercent
             ? "spending falls below your target"
             : "the portfolio is exhausted"}{" "}
-          around age {deterministic.depletionAge}. Monte Carlo (above) is the more honest read — a
-          range, not a point estimate.
+          around age {deterministic.depletionAge}. Monte Carlo (above) is the more honest read, since it
+          gives a range.
         </p>
       ) : null}
     </section>

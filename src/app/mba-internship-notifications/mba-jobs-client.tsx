@@ -739,7 +739,7 @@ function JobCard({
                 onTrack();
                 onMarkSeen();
               }}
-              className="c97-btn-ghost"
+              className="c97-btn-ghost mba-ghost"
             >
               <Save className="h-3.5 w-3.5" aria-hidden="true" />
               {application ? "Tracked" : "Track"}
@@ -750,7 +750,7 @@ function JobCard({
                 onMarkApplied();
                 onMarkSeen();
               }}
-              className="c97-btn-ghost"
+              className="c97-btn-ghost mba-ghost"
             >
               <BriefcaseBusiness className="h-3.5 w-3.5" aria-hidden="true" />
               Mark applied
@@ -759,7 +759,7 @@ function JobCard({
               <button
                 type="button"
                 onClick={onEditApplication}
-                className="c97-btn-ghost"
+                className="c97-btn-ghost mba-ghost"
               >
                 <Edit3 className="h-3.5 w-3.5" aria-hidden="true" />
                 Edit
@@ -847,7 +847,8 @@ function SearchElsewhereStrip({ currentState }: { currentState: MBAJobsSearchSta
   const links = buildExternalSearchLinks(currentState);
 
   return (
-    <section className="space-y-4" aria-labelledby="mba-search-elsewhere-heading">
+    <section className="c97-band c97-sheet" data-c97-surface="bone" data-seam="deckle" aria-labelledby="mba-search-elsewhere-heading">
+      <div className="c97-shell space-y-4">
       <SectionLead
         kicker="Search elsewhere"
         title="Open the same search on outside boards."
@@ -866,6 +867,7 @@ function SearchElsewhereStrip({ currentState }: { currentState: MBAJobsSearchSta
             />
           ))}
         </div>
+      </div>
       </div>
     </section>
   );
@@ -994,7 +996,7 @@ function NotificationBell({
     <button
       type="button"
       onClick={onRequest}
-      className="c97-btn-ghost"
+      className="c97-btn-ghost mba-ghost"
     >
       <Bell className="h-4 w-4" aria-hidden="true" />
       Enable notifications
@@ -1049,7 +1051,7 @@ function EmailDigestButton({
       type="button"
       onClick={onSend}
       disabled={disabled || sending}
-      className="c97-btn-ghost disabled:opacity-50"
+      className="c97-btn-ghost mba-ghost disabled:opacity-50"
     >
       <Mail className="h-4 w-4" aria-hidden="true" />
       {sending ? "Sending…" : "Email digest"}
@@ -1369,7 +1371,7 @@ function AttentionRow({
           <button
             type="button"
             onClick={() => onClearFollowUp(application.id)}
-            className="c97-btn-ghost"
+            className="c97-btn-ghost mba-ghost"
           >
             <CheckCircle2 className="h-3.5 w-3.5" aria-hidden="true" />
             Mark done
@@ -1378,7 +1380,7 @@ function AttentionRow({
           <button
             type="button"
             onClick={() => onMarkApplied(application.id)}
-            className="c97-btn-ghost"
+            className="c97-btn-ghost mba-ghost"
           >
             <BriefcaseBusiness className="h-3.5 w-3.5" aria-hidden="true" />
             Mark applied
@@ -1387,7 +1389,7 @@ function AttentionRow({
         <button
           type="button"
           onClick={() => onEdit(application)}
-          className="c97-btn-ghost"
+          className="c97-btn-ghost mba-ghost"
         >
           <Edit3 className="h-3.5 w-3.5" aria-hidden="true" />
           Edit
@@ -1487,7 +1489,7 @@ function ApplicationCard({
     application.followUpDate !== null && application.followUpDate <= getTodayDateKey();
   return (
     <article className="c97-panel">
-      <div className="flex items-start justify-between gap-3">
+      <div className="flex flex-wrap items-start justify-between gap-3">
         <div className="min-w-0">
           <p className="c97-serif" style={{ fontSize: "var(--c97-fs-body)" }}>
             {application.jobSnapshot.companyName}
@@ -1548,7 +1550,7 @@ function ApplicationCard({
             </option>
           ))}
         </select>
-        <button type="button" onClick={onEdit} className="c97-btn-ghost">
+        <button type="button" onClick={onEdit} className="c97-btn-ghost mba-ghost">
           <Edit3 className="h-3.5 w-3.5" aria-hidden="true" />
           Edit
         </button>
@@ -1562,11 +1564,11 @@ function ApplicationCard({
           />
         )}
         {application.status !== "archived" && (
-          <button type="button" onClick={onArchive} className="c97-btn-ghost">
+          <button type="button" onClick={onArchive} className="c97-btn-ghost mba-ghost">
             Archive
           </button>
         )}
-        <button type="button" onClick={onRemove} className="c97-btn-ghost">
+        <button type="button" onClick={onRemove} className="c97-btn-ghost mba-ghost">
           <Trash2 className="h-3.5 w-3.5" aria-hidden="true" />
           Delete
         </button>
@@ -1644,7 +1646,8 @@ function ApplicationPipeline({
   }
 
   return (
-    <section className="space-y-4" aria-labelledby="mba-application-pipeline-heading">
+    <section className="c97-band c97-sheet" data-c97-surface="paper" data-seam="torn" aria-labelledby="mba-application-pipeline-heading">
+      <div className="c97-shell space-y-4">
       <SectionLead
         kicker="Applications"
         title="Work the pipeline, not another spreadsheet."
@@ -1691,18 +1694,18 @@ function ApplicationPipeline({
             <button type="button" onClick={onCreate} className="c97-btn">
               Add application
             </button>
-            <button type="button" onClick={onExportJson} className="c97-btn-ghost">
+            <button type="button" onClick={onExportJson} className="c97-btn-ghost mba-ghost">
               <Download className="h-4 w-4" aria-hidden="true" />
               JSON backup
             </button>
-            <button type="button" onClick={onExportCsv} className="c97-btn-ghost">
+            <button type="button" onClick={onExportCsv} className="c97-btn-ghost mba-ghost">
               <Download className="h-4 w-4" aria-hidden="true" />
               CSV
             </button>
             <button
               type="button"
               onClick={() => importInputRef.current?.click()}
-              className="c97-btn-ghost"
+              className="c97-btn-ghost mba-ghost"
             >
               <Upload className="h-4 w-4" aria-hidden="true" />
               Import
@@ -1783,6 +1786,7 @@ function ApplicationPipeline({
           </div>
         )}
       </div>
+      </div>
     </section>
   );
 }
@@ -1804,7 +1808,8 @@ function SourceHealthPanel({
   ).length;
 
   return (
-    <section className="space-y-4" aria-labelledby="mba-source-health-heading">
+    <section className="c97-band c97-sheet" data-c97-surface="bone" data-seam="deckle" aria-labelledby="mba-source-health-heading">
+      <div className="c97-shell space-y-4">
       <SectionLead
         kicker="Source health"
         title="Know which feeds answered."
@@ -1842,6 +1847,7 @@ function SourceHealthPanel({
             );
           })}
         </div>
+      </div>
       </div>
     </section>
   );
@@ -2142,9 +2148,9 @@ export function MBAJobsClient({
             I monitor {totalTracked} public job boards across {totalCompanies} target companies
             for internships and full-time product, PMM, strategy, operations, growth, finance,
             analytics, and adjacent business roles. External leads stay opt-in, and LinkedIn stays
-            an outbound search shortcut instead of a scraped feed. I search the board, narrow it
-            by role and company type, then track what I apply to below so follow-ups and deadlines
-            surface on their own.
+            an outbound search shortcut instead of a scraped feed. The board below narrows by role
+            and company type, and any role tracked from it lands in the pipeline so follow-ups and
+            deadlines surface on their own.
           </>
         }
         meta={refreshLabel}
@@ -2175,7 +2181,7 @@ export function MBAJobsClient({
               type="button"
               onClick={refresh}
               disabled={isLoading}
-              className="c97-btn-ghost disabled:opacity-50"
+              className="c97-btn-ghost mba-ghost disabled:opacity-50"
             >
               <RefreshCcw
                 className={`h-4 w-4 ${isLoading ? "animate-spin" : ""}`}
@@ -2198,7 +2204,7 @@ export function MBAJobsClient({
             />
 
             {!isLoading && newJobCount > 0 && (
-              <button type="button" onClick={markAllSeen} className="c97-btn-ghost">
+              <button type="button" onClick={markAllSeen} className="c97-btn-ghost mba-ghost">
                 Mark all seen
               </button>
             )}
@@ -2243,30 +2249,30 @@ export function MBAJobsClient({
         />
       ) : (
         <>
-          {fetchErrors.length > 0 && !isLoading && (
-            <div
-              className="flex items-start gap-3 px-5 py-4"
-              style={{
-                borderColor: "color-mix(in srgb, var(--c97-accent) 32%, var(--c97-rule))",
-                background: "color-mix(in srgb, var(--c97-accent) 10%, var(--c97-surface))",
-                border: "1px solid",
-              }}
-              role="status"
-            >
-              <CircleAlert
-                className="mt-0.5 h-4 w-4 shrink-0"
-                style={{ color: "color-mix(in srgb, var(--c97-accent) 55%, var(--c97-ink))" }}
-                aria-hidden="true"
-              />
-              <p className="mb-0 text-sm" style={{ color: "var(--c97-ink)" }}>
-                Some companies could not be reached:{" "}
-                {fetchErrors.map((e) => e.companyName).join(", ")}. Results shown are partial.
-              </p>
-            </div>
-          )}
 
           <section className="c97-band c97-sheet" data-c97-surface="paper" data-seam="torn" aria-labelledby="mba-role-tracker-filters-heading">
             <div className="c97-shell space-y-4">
+              {fetchErrors.length > 0 && !isLoading && (
+                <div
+                  className="flex items-start gap-3 px-5 py-4"
+                  style={{
+                    borderColor: "color-mix(in srgb, var(--c97-accent) 32%, var(--c97-rule))",
+                    background: "color-mix(in srgb, var(--c97-accent) 10%, var(--c97-surface))",
+                    border: "1px solid",
+                  }}
+                  role="status"
+                >
+                  <CircleAlert
+                    className="mt-0.5 h-4 w-4 shrink-0"
+                    style={{ color: "color-mix(in srgb, var(--c97-accent) 55%, var(--c97-ink))" }}
+                    aria-hidden="true"
+                  />
+                  <p className="mb-0 text-sm" style={{ color: "var(--c97-ink)" }}>
+                    Some companies could not be reached:{" "}
+                    {fetchErrors.map((e) => e.companyName).join(", ")}. Results shown are partial.
+                  </p>
+                </div>
+              )}
             <SectionLead
               kicker="Filters"
               title="Search and narrow the board."

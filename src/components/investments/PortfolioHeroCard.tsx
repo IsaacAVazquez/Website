@@ -124,20 +124,25 @@ export function PortfolioHeroCard({
         .attr("height", HEIGHT)
         .append("g")
         .attr("transform", `translate(${MARGIN.left},${MARGIN.top})`);
-      root
+      // Two short lines centred on the whole svg, so the note fits a phone-width chart.
+      const lines =
+        snapshots.length === 0
+          ? ["A point is saved each day you visit,", "and the line draws once there are two."]
+          : ["Not enough saved points", "in this range yet."];
+      const note = root
         .append("text")
-        .attr("x", innerW / 2)
-        .attr("y", innerH / 2)
+        .attr("y", innerH / 2 - 8)
         .attr("text-anchor", "middle")
-        .attr("dominant-baseline", "middle")
         .style("fill", "var(--c97-ink-2)")
         .style("font-size", "12px")
-        .style("font-style", "italic")
-        .text(
-          snapshots.length === 0
-            ? "A point is saved each day you visit; the line draws once there are two"
-            : "Not enough saved points in this range yet",
-        );
+        .style("font-style", "italic");
+      lines.forEach((line, i) => {
+        note
+          .append("tspan")
+          .attr("x", width / 2 - MARGIN.left)
+          .attr("dy", i === 0 ? 0 : 16)
+          .text(line);
+      });
       return;
     }
 
