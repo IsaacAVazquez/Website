@@ -239,7 +239,7 @@ export function PlayerDetailDrawer({ player, publishedRank, publishedRankLabel =
                     </span>
                   )}
                 </div>
-                <h2 className="mt-1.5 truncate text-2xl font-semibold tracking-tight">{player.name}</h2>
+                <h2 className="c97-serif c97-h2 mt-1.5 truncate">{player.name}</h2>
                 <p className="text-sm" style={{ color: "var(--c97-ink-2)" }}>
                   {player.team || "Free agent"}
                   {player.byeWeek ? ` · Bye ${player.byeWeek}` : ""}

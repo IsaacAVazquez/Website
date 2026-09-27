@@ -67,6 +67,7 @@ import {
   type FantasyVorpTeamSize,
 } from "@/lib/fantasyVorp";
 import { PositionFilterBar, type PositionFilterOption } from "@/components/fantasy/PositionFilterBar";
+import { PROJECT_PRESS } from "@/constants/projectPress";
 import { Player } from "@/types";
 import { FANTASY_FOOTBALL_FAQ } from "./fantasy-faq";
 import {
@@ -1819,86 +1820,81 @@ export function FantasyFootballClient({ initialState, initialSnapshot = null }: 
       data-testid="fantasy-football-shell"
       data-hydrated={isHydrated ? "true" : "false"}
     >
-      <header className={`${SHELL_CLASS} flex flex-wrap items-baseline justify-between gap-x-6 gap-y-3 pb-4 pt-7`}>
-        <div className="flex flex-wrap items-baseline gap-x-4 gap-y-1.5">
-          <span
-            className="inline-flex items-center gap-2 font-mono text-2xs uppercase tracking-[0.1em]"
-            style={{ color: "var(--c97-ink-2)" }}
-          >
-            <span className="h-2 w-2" style={{ background: "var(--c97-accent)" }} aria-hidden="true" />
-            Draft rankings{metadata?.season ? ` · ${metadata.season}` : ""}
-          </span>
-          <h1
-            className="m-0 font-semibold leading-none"
-            style={{ fontSize: "clamp(1.55rem, 1.3rem + 1.25vw, 2.1rem)", letterSpacing: "-0.05em" }}
-          >
-            Fantasy Football{" "}
-            <em style={{ fontFamily: "var(--c97-font-display)", fontStyle: "italic", fontWeight: 500 }}>Rankings</em>
-          </h1>
-          <p className="m-0 w-full max-w-[62ch] text-sm" style={{ color: "var(--c97-ink-2)" }}>
+      <section className="c97-sheet" data-c97-surface={`ink-${PROJECT_PRESS["/fantasy-football"].lead}`}>
+        <div className={SHELL_CLASS} style={{ paddingBlock: "var(--c97-sp-5)" }}>
+          <h1 className="c97-poster">Fantasy Football Rankings</h1>
+          <p className="c97-lead" style={{ marginTop: "var(--c97-sp-3)" }}>
             {vorpMode
               ? `VORP ranks FantasyPros' projected season points above the same-position waiver replacement in a ${routeState.teams}-team league. FantasyPros supplies the roster baseline for this view.`
               : "The board pairs the expert consensus with market ADP, and the tier plates and cliff lines mark where the board actually drops off."}
           </p>
+          <p className="c97-meta" style={{ marginTop: "var(--c97-sp-2)" }}>
+            Draft rankings{metadata?.season ? ` · ${metadata.season}` : ""}
+          </p>
+          <div
+            data-c97-surface="paper"
+            className="c97-offset"
+            style={{ padding: "var(--c97-sp-3)", marginTop: "var(--c97-sp-4)" }}
+          >
+            <div className="flex flex-wrap gap-1.5">
+              {headerChips.map((chip) => (
+                <span
+                  key={chip.label}
+                  className={HEADER_CHIP_CLASS}
+                  style={
+                    chip.tone ?? {
+                      borderColor: "var(--c97-rule)",
+                      background: "var(--c97-field)",
+                      color: "var(--c97-ink-2)",
+                    }
+                  }
+                >
+                  {chip.shortLabel ? (
+                    <>
+                      <span className="md:hidden">{chip.shortLabel}</span>
+                      <span className="hidden md:inline">{chip.label}</span>
+                    </>
+                  ) : (
+                    chip.label
+                  )}
+                </span>
+              ))}
+            </div>
+          </div>
         </div>
-        <div className="flex flex-wrap gap-1.5">
-          {headerChips.map((chip) => (
-            <span
-              key={chip.label}
-              className={HEADER_CHIP_CLASS}
-              style={
-                chip.tone ?? {
-                  borderColor: "var(--c97-rule)",
-                  background: "var(--c97-field)",
-                  color: "var(--c97-ink-2)",
-                }
-              }
-            >
-              {chip.shortLabel ? (
-                <>
-                  <span className="md:hidden">{chip.shortLabel}</span>
-                  <span className="hidden md:inline">{chip.label}</span>
-                </>
-              ) : (
-                chip.label
-              )}
-            </span>
-          ))}
-        </div>
-      </header>
+      </section>
 
-      {seasonalWeek >= 1 ? (
-        <div className={`${SHELL_CLASS} pb-4`}>
-          <SeasonalScopeNote season={metadata?.season ?? 0} week={seasonalWeek}>
-            Every board on this page is the preseason draft consensus, kept as a
-            reference once games begin rather than refreshed for weekly starts.
-            Ranks that still move are on the{" "}
-            <Link
-              href="/fantasy-football/weekly"
-              className="underline decoration-[var(--c97-accent)] underline-offset-4"
-            >
-              weekly board
-            </Link>{" "}
-            and the{" "}
-            <Link
-              href="/fantasy-football/waivers"
-              className="underline decoration-[var(--c97-accent)] underline-offset-4"
-            >
-              waiver targets
-            </Link>
-            .
-          </SeasonalScopeNote>
-        </div>
-      ) : null}
+      <section className="c97-sheet" data-c97-surface="paper" data-seam="torn">
+        {seasonalWeek >= 1 ? (
+          <div className={`${SHELL_CLASS} pt-4 pb-4`}>
+            <SeasonalScopeNote season={metadata?.season ?? 0} week={seasonalWeek}>
+              Every board on this page is the preseason draft consensus, kept as a
+              reference once games begin rather than refreshed for weekly starts.
+              Ranks that still move are on the{" "}
+              <Link
+                href="/fantasy-football/weekly"
+                className="underline decoration-[var(--c97-accent)] underline-offset-4"
+              >
+                weekly board
+              </Link>{" "}
+              and the{" "}
+              <Link
+                href="/fantasy-football/waivers"
+                className="underline decoration-[var(--c97-accent)] underline-offset-4"
+              >
+                waiver targets
+              </Link>
+              .
+            </SeasonalScopeNote>
+          </div>
+        ) : null}
 
       <div
         data-testid="fantasy-board-controls"
         className="sticky top-0 z-30 border-y"
         style={{
           borderColor: "var(--c97-rule)",
-          background: "color-mix(in srgb, var(--c97-surface) 90%, transparent)",
-          backdropFilter: "blur(8px)",
-          WebkitBackdropFilter: "blur(8px)",
+          background: "var(--c97-surface)",
         }}
       >
         <div className={`${SHELL_CLASS} hidden flex-wrap items-center gap-x-3.5 gap-y-2 py-1 md:flex`}>
@@ -2352,28 +2348,29 @@ export function FantasyFootballClient({ initialState, initialSnapshot = null }: 
             ))}
           </nav>
         </div>
+      </div>
+      </section>
 
-        <section className="mt-10" aria-labelledby="fantasy-rankings-questions">
+      <section className="c97-sheet" data-c97-surface="bone" data-seam="torn" aria-labelledby="fantasy-rankings-questions">
+        <div className={SHELL_CLASS} style={{ paddingBlock: "var(--c97-sp-5)" }}>
           <div className="max-w-3xl">
             <p className="c97-kicker mb-2">How the board works</p>
-            {/* sm:text-2xl tops out at 34px, the same size as the page h1 on the title
-                ramp, so the section would render at exactly its parent's size. */}
-            <h2 id="fantasy-rankings-questions" className="text-xl font-semibold">
+            <h2 id="fantasy-rankings-questions" className="c97-poster-sm">
               Fantasy rankings questions
             </h2>
           </div>
           <div className="mt-5 grid gap-4 lg:grid-cols-3">
             {FANTASY_FOOTBALL_FAQ.map((item) => (
               <article key={item.question} className="c97-panel p-5 sm:p-6">
-                <h3 className="text-lg font-semibold">{item.question}</h3>
+                <h3 className="c97-serif c97-h3">{item.question}</h3>
                 <p className="mt-3 text-sm leading-7" style={{ color: "var(--c97-ink-2)" }}>
                   {item.answer}
                 </p>
               </article>
             ))}
           </div>
-        </section>
-      </div>
+        </div>
+      </section>
 
       {detailPlayer && (
         <DraftPlayerDrawer
