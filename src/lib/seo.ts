@@ -55,7 +55,6 @@ export const siteConfig = {
   ogImage: "/opengraph-image", // 1200x630 OG image optimized for social media & AI previews
   ogImageAlt: "Isaac Vazquez - Product Manager & UC Berkeley Haas MBA Candidate",
   links: {
-    twitter: profile.sameAs.twitter,
     github: profile.sameAs.github,
     linkedin: profile.sameAs.linkedin,
   },
@@ -233,8 +232,6 @@ export function constructMetadata({
       title: socialTitle,
       description: resolvedDescription,
       images: [absoluteImage],
-      creator: "@isaacvazquez",
-      site: "@isaacvazquez",
     },
     icons,
     metadataBase,
