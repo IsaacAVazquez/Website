@@ -19,7 +19,7 @@ import {
 } from "./food-map-data";
 
 interface FoodMapLeafletProps {
-  /** Spots to plot — already filtered by the page. */
+  /** Spots to plot, already filtered by the page. */
   spots: ReadonlyArray<FoodMapPlace>;
   /** Currently selected spot, highlighted and centered. */
   activeSpotId: string | null;
@@ -45,16 +45,21 @@ const escapeHtml = (value: string): string =>
       })[c] as string
   );
 
-const pinIcon = (L: LeafletStatic, color: string, active: boolean) =>
-  L.divIcon({
+// A plain circular ink dot rather than the old teardrop shape. The print
+// shop CSS system only allows a border-radius of 0 or 50%, and a teardrop
+// needs an asymmetric radius. The anchor is the dot's own center, since a
+// circle (unlike a teardrop) has no point to anchor from.
+const pinIcon = (L: LeafletStatic, color: string, active: boolean) => {
+  const size = active ? 26 : 18;
+  const half = size / 2;
+  return L.divIcon({
     className: `fm-pin-el${active ? " fm-pin-active" : ""}`,
-    html: `<span class="fm-pin-dot" style="
-      width:${active ? 30 : 22}px;height:${active ? 30 : 22}px;background:${color};
-    "></span>`,
-    iconSize: active ? [30, 30] : [22, 22],
-    iconAnchor: active ? [15, 28] : [11, 21],
-    popupAnchor: [0, active ? -26 : -20],
+    html: `<span class="fm-pin-dot" style="width:${size}px;height:${size}px;background:${color};"></span>`,
+    iconSize: [size, size],
+    iconAnchor: [half, half],
+    popupAnchor: [0, -half - 6],
   });
+};
 
 export function FoodMapLeaflet({
   spots,
@@ -113,7 +118,7 @@ export function FoodMapLeaflet({
       tileRef.current = null;
       markers.clear();
     };
-    // Only run on mount — center/zoom/theme changes are handled below.
+    // Only run on mount. Center/zoom/theme changes are handled below.
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
