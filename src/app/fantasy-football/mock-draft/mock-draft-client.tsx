@@ -2,6 +2,7 @@
 
 import { useEffect, useMemo, useRef, useState, type CSSProperties } from "react";
 import { SeasonalScopeNote } from "@/components/fantasy/SeasonalScopeNote";
+import { PROJECT_PRESS } from "@/constants/projectPress";
 import Link from "next/link";
 import type { DraftPick, Player, RedraftLineupSettings, ScoringFormat } from "@/types";
 import { useFantasySnapshot } from "@/hooks/useFantasySnapshot";
@@ -45,13 +46,29 @@ import {
 
 /** Ink-filled action pill (the template's "Draft" / "Start mock" buttons). */
 const SOLID_BUTTON_CLASS =
-  "inline-flex min-h-touch items-center justify-center border px-4 font-mono text-2xs uppercase tracking-[0.08em] disabled:cursor-not-allowed disabled:opacity-50";
+  "inline-flex min-h-touch items-center justify-center border px-4 font-mono text-2xs uppercase tracking-[0.08em] disabled:cursor-not-allowed";
 
 const SOLID_BUTTON_STYLE: CSSProperties = {
   borderColor: "var(--c97-ink)",
   background: "var(--c97-ink)",
   color: "var(--c97-surface)",
 };
+
+/**
+ * The opacity fade `disabled:opacity-50` used to apply measured 4.38:1 light
+ * and 3.42:1 dark once blended over the page, so disabled drops the fade and
+ * prints as a dashed ink-2 outline instead of a faded ink fill.
+ */
+const SOLID_BUTTON_DISABLED_STYLE: CSSProperties = {
+  borderColor: "var(--c97-ink-2)",
+  borderStyle: "dashed",
+  background: "transparent",
+  color: "var(--c97-ink-2)",
+};
+
+function solidButtonStyle(disabled: boolean): CSSProperties {
+  return disabled ? SOLID_BUTTON_DISABLED_STYLE : SOLID_BUTTON_STYLE;
+}
 
 const WARNING_CHIP_TONE: CSSProperties = {
   background: "color-mix(in srgb, var(--c97-warning) 18%, var(--c97-surface))",
@@ -795,6 +812,10 @@ export function MockDraftClient() {
   // rehearsing a market that no longer exists. Name the season rather than letting
   // it read as current.
   const seasonalWeek = getNflRegularSeasonWeek(metadata?.season ?? 0);
+  // The seasonal note is the first paper sheet under the green hero when it
+  // renders, so it carries the torn seam; when it does not render, whichever
+  // state sheet (setup, live, recap) follows the hero carries it instead.
+  const showScopeNote = seasonalWeek >= 1;
   // The header chip reads the freshness gate, so the stamp line has to as well:
   // an ADP that has a date but is past its window is dated and unused, and the
   // line says both so the two do not disagree two lines apart.
@@ -814,72 +835,69 @@ export function MockDraftClient() {
       aria-label="Fantasy football mock draft"
       data-testid="fantasy-mock-draft-shell"
     >
-      <header
-        className={`${SHELL_CLASS} flex flex-wrap items-baseline justify-between gap-x-6 gap-y-3 pb-3.5 pt-7`}
+      <section
+        className="c97-sheet"
+        data-c97-surface={`ink-${PROJECT_PRESS["/fantasy-football/mock-draft"].lead}`}
       >
-        <div className="flex flex-wrap items-baseline gap-x-4 gap-y-1.5">
-          <span
-            className="inline-flex items-center gap-2 font-mono text-2xs uppercase tracking-[0.1em]"
-            style={{ color: "var(--c97-ink-2)" }}
-          >
+        <div className={SHELL_CLASS} style={{ paddingBlock: "var(--c97-sp-5)" }}>
+          <h1 className="c97-poster m-0">Mock Draft</h1>
+          <p className="c97-meta" style={{ marginTop: "var(--c97-sp-2)" }}>
             <span
               className="h-2 w-2"
               style={{ background: "var(--c97-accent)" }}
               aria-hidden="true"
             />
             {kicker}
-          </span>
-          <h1
-            className="m-0 font-semibold leading-none"
-            style={{ fontSize: "clamp(1.55rem, 1.3rem + 1.25vw, 2.1rem)", letterSpacing: "-0.05em" }}
+          </p>
+          <div
+            data-c97-surface="paper"
+            className="c97-offset flex flex-wrap gap-1.5"
+            style={{ padding: "var(--c97-sp-3)", marginTop: "var(--c97-sp-4)" }}
           >
-            Mock{" "}
-            <em style={{ fontFamily: "var(--c97-font-display)", fontStyle: "italic", fontWeight: 500 }}>
-              Draft
-            </em>
-          </h1>
-        </div>
-        <div className="flex flex-wrap gap-1.5">
-          {headerChips.map((chip) => (
-            <span
-              key={chip.label}
-              className={HEADER_CHIP_CLASS}
-              style={
-                chip.tone ?? {
-                  borderColor: "var(--c97-rule)",
-                  background: "var(--c97-field)",
-                  color: "var(--c97-ink-2)",
+            {headerChips.map((chip) => (
+              <span
+                key={chip.label}
+                className={HEADER_CHIP_CLASS}
+                style={
+                  chip.tone ?? {
+                    borderColor: "var(--c97-rule)",
+                    background: "var(--c97-field)",
+                    color: "var(--c97-ink-2)",
+                  }
                 }
-              }
-            >
-              {chip.label}
-            </span>
-          ))}
+              >
+                {chip.label}
+              </span>
+            ))}
+          </div>
         </div>
-      </header>
+      </section>
 
       <p role="status" aria-live="polite" className="sr-only">
         {draftAnnouncement}
       </p>
 
-      {seasonalWeek >= 1 ? (
-        <div className={`${SHELL_CLASS} pb-4`}>
-          <SeasonalScopeNote season={metadata?.season ?? 0} week={seasonalWeek}>
-            The room drafts off the published preseason consensus board and the mock-draft ADP
-            that goes with it, so rehearsing a draft here in November rehearses August. I left it
-            running because the practice is still practice, and the room pauses simulated picks
-            if the published board goes stale. Ranks that still move are on the{" "}
-            <Link href="/fantasy-football/weekly" className="underline decoration-[var(--c97-accent)] underline-offset-4">weekly board</Link>.
-            <span className="mt-1.5 block font-mono text-2xs uppercase tracking-[0.08em]">
-              {boardReady
-                ? `Board dated ${formatStampDate(boardUpdatedAt)} · ${adpStampLabel}`
-                : "Board and ADP dates arrive with the board"}
-            </span>
-          </SeasonalScopeNote>
+      {showScopeNote ? (
+        <div className="c97-sheet" data-c97-surface="paper" data-seam="torn">
+          <div className={`${SHELL_CLASS} pb-4 pt-4`}>
+            <SeasonalScopeNote season={metadata?.season ?? 0} week={seasonalWeek}>
+              The room drafts off the published preseason consensus board and the mock-draft ADP
+              that goes with it, so rehearsing a draft here in November rehearses August. I left it
+              running because the practice is still practice, and the room pauses simulated picks
+              if the published board goes stale. Ranks that still move are on the{" "}
+              <Link href="/fantasy-football/weekly" className="underline decoration-[var(--c97-accent)] underline-offset-4">weekly board</Link>.
+              <span className="mt-1.5 block font-mono text-2xs uppercase tracking-[0.08em]">
+                {boardReady
+                  ? `Board dated ${formatStampDate(boardUpdatedAt)} · ${adpStampLabel}`
+                  : "Board and ADP dates arrive with the board"}
+              </span>
+            </SeasonalScopeNote>
+          </div>
         </div>
       ) : null}
 
       {showSetup && (
+        <div className="c97-sheet" data-c97-surface="paper" data-seam={showScopeNote ? undefined : "torn"}>
         <div className="mx-auto w-full max-w-[780px] px-[clamp(1rem,4vw,2.5rem)] pb-12 pt-1">
           <div
             className="overflow-hidden border"
@@ -893,7 +911,7 @@ export function MockDraftClient() {
                 <p className={`m-0 ${MONO_LABEL_CLASS}`} style={{ color: "var(--c97-ink-2)" }}>
                   Room setup
                 </p>
-                <h2 className="m-0 mt-1 text-xl font-semibold tracking-[-0.04em]">
+                <h2 className="c97-serif c97-h3 m-0 mt-1">
                   Rep the rounds that decide leagues.
                 </h2>
               </div>
@@ -1099,7 +1117,7 @@ export function MockDraftClient() {
                 onClick={startRoom}
                 disabled={!simulationAvailable}
                 className={SOLID_BUTTON_CLASS}
-                style={SOLID_BUTTON_STYLE}
+                style={solidButtonStyle(!simulationAvailable)}
               >
                 Start mock
               </button>
@@ -1131,10 +1149,11 @@ export function MockDraftClient() {
             outcomes.
           </p>
         </div>
+        </div>
       )}
 
       {isLive && (
-        <>
+        <div className="c97-sheet" data-c97-surface="paper" data-seam={showScopeNote ? undefined : "torn"}>
           <section
             aria-label="Live mock draft status"
             className={`sticky ${FASCIA_TOP_CLASS} z-30 border-y`}
@@ -1615,7 +1634,7 @@ export function MockDraftClient() {
                                 disabled={!simulationAvailable}
                                 aria-label={`Draft ${player.name}`}
                                 className={SOLID_BUTTON_CLASS}
-                                style={SOLID_BUTTON_STYLE}
+                                style={solidButtonStyle(!simulationAvailable)}
                               >
                                 Draft
                               </button>
@@ -1668,10 +1687,11 @@ export function MockDraftClient() {
               {footerLinks}
             </div>
           </div>
-        </>
+        </div>
       )}
 
       {isRecap && (
+        <div className="c97-sheet" data-c97-surface="paper" data-seam={showScopeNote ? undefined : "torn"}>
         <div className={`${SHELL_CLASS} pb-11 pt-1`}>
           <section
             ref={valueReportRef}
@@ -1793,7 +1813,7 @@ export function MockDraftClient() {
             style={{ borderColor: "var(--c97-rule)", background: "var(--c97-field)" }}
           >
             <div className="flex flex-wrap items-baseline gap-x-3.5 gap-y-1 px-3.5 py-2.5">
-              <h2 className="m-0 text-base font-semibold tracking-[-0.03em]">The board</h2>
+              <h2 className="c97-serif c97-h3 m-0">The board</h2>
               <span className="font-mono text-2xs" style={{ color: "var(--c97-ink-2)" }}>
                 {`room #${roomLabel(state.seed)} · ${settings.draftType} order · your column outlined`}
               </span>
@@ -1984,7 +2004,7 @@ export function MockDraftClient() {
               disabled={!simulationAvailable}
               aria-describedby={simulationAvailable ? undefined : "mock-rerun-blocked"}
               className={SOLID_BUTTON_CLASS}
-              style={SOLID_BUTTON_STYLE}
+              style={solidButtonStyle(!simulationAvailable)}
             >
               Run it back <span aria-hidden="true">→</span>
             </button>
@@ -2010,6 +2030,7 @@ export function MockDraftClient() {
             </span>
             {footerLinks}
           </div>
+        </div>
         </div>
       )}
     </section>
