@@ -15,6 +15,7 @@ All notable changes to this repository are documented here. Format: `YYYY-MM-DD`
 - Sports dashboards rebuilt around their signatures ([#478](https://github.com/IsaacAVazquez/Website/pull/478)).
 - Fintech and work tools rebuilt around their signatures ([#480](https://github.com/IsaacAVazquez/Website/pull/480)).
 - Fantasy suite printed in the house inks ([#482](https://github.com/IsaacAVazquez/Website/pull/482)).
+- Record the Sept 24 re-audit and pull four post-dated source links ([#481](https://github.com/IsaacAVazquez/Website/pull/481)).
 
 ---
 
