@@ -82,8 +82,9 @@ function ScorelineHeatmap({ analysis }: { analysis: FixtureAnalysis }) {
               </th>
               {Array.from({ length: size }, (_, away) => {
                 const p = grid[home][away];
-                // Capped at 55% so the strongest cell keeps 4.5:1 label contrast in dark mode (72% gave 3.71:1).
-                const strength = max > 0 ? Math.round((p / max) * 55) : 0;
+                // Capped at 40% so the strongest cell keeps 4.5:1 label contrast on the panel in both
+                // themes: 5.11:1 light and 6.61:1 dark. 55% measured 3.85:1 in light.
+                const strength = max > 0 ? Math.round((p / max) * 40) : 0;
                 return (
                   <td
                     key={away}
@@ -345,7 +346,14 @@ export function FixtureDetailDrawer({
                     </p>
                     <button
                       type="button"
-                      className={`${PILL_BUTTON} mt-2 w-full`}
+                      className={`${PILL_BUTTON} w-full justify-center`}
+                      // .c97-btn is unlayered and sets nowrap and wide padding, so the
+                      // three-up column needs its own inline spacing to fit the label.
+                      style={{
+                        marginTop: "var(--c97-sp-1)",
+                        paddingInline: "var(--c97-sp-1)",
+                        whiteSpace: "normal",
+                      }}
                       onClick={() => onSetPick(fixture.id, pick.score)}
                     >
                       Use as my pick

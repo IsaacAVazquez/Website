@@ -1,5 +1,5 @@
 /*
- * InstrumentTape — layout chrome only. Colors reference the shared --c97-*
+ * InstrumentTape, layout chrome only. Colors reference the shared --c97-*
  * tokens directly (no local palette to alias, no hardcoded hex). The only
  * reason this is a CSS module rather than inline Tailwind, like the rest of
  * `editorial/`, is the webkit scrollbar-hiding pseudo-element, which can't be

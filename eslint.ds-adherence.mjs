@@ -198,7 +198,8 @@ function buildComponentRules() {
  * the lint half of the ban; `src/app/__tests__/catalog97-closeout.test.ts` is
  * the Jest half and also covers CSS files, which ESLint does not read.
  */
-const DEAD_TOKEN_PATTERN = "/var\\(--home-|--font-home-/";
+// `\(--` catches `var(--home-x)` and the Tailwind v4 shorthand `bg-(--home-x)`.
+const DEAD_TOKEN_PATTERN = "/\\(--home-|--font-home-/";
 const DEAD_TOKEN_RULES = [
   `Literal[value=${DEAD_TOKEN_PATTERN}]`,
   `TemplateElement[value.raw=${DEAD_TOKEN_PATTERN}]`,
@@ -220,9 +221,9 @@ export const dsComponentContracts = COMPONENT_CONTRACTS;
  * the file is skipped rather than every call site being flagged.
  *
  * Verified by scanning `src` for a local declaration of any of the synced names:
- * these two are the only genuine shadows. `FixtureLedger.tsx` and
- * `dropdown-menu.tsx` also turn up, but those are the canonical modules living
- * under a filename that does not match the export, not shadows.
+ * these two are the only genuine shadows. `FixtureLedger.tsx` also turns up,
+ * but it is the canonical module living under a filename that does not match
+ * the export.
  */
 const SHADOWED_BY_LOCAL_COMPONENTS = [
   // Declares its own SurfaceCard and SectionIntro, imports neither.

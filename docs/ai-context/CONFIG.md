@@ -2,7 +2,7 @@
 
 Current config-file reference.
 
-**Last updated:** 2026-09-21
+**Last updated:** 2026-09-27
 
 ---
 
@@ -51,8 +51,8 @@ If you update routes or package behavior, this file is one of the first places t
 Key facts:
 
 - dark mode is class-based
-- fonts map to Inter and JetBrains Mono variables from `layout.tsx`; the editorial system also uses Instrument Sans and Instrument Serif through globals
-- colors, spacing, border colors, and shadows map to CSS variables from `globals.css`, with `--home-*` as the current palette
+- `font-sans` and `font-mono` map to the Instrument Sans and Fragment Mono variables from `layout.tsx`; Catalog 97 components use the `--c97-font-*` tokens instead
+- font sizes map to the fluid `--text-*` scale in `globals.css`, and the radius and shadow scales compile to `0` and `none`; colours are not mapped, since components read the `--c97-*` tokens
 - 44px touch helpers are defined here
 
 ---

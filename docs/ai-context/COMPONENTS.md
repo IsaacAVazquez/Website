@@ -2,7 +2,7 @@
 
 Current component ownership reference.
 
-**Last updated:** 2026-09-21
+**Last updated:** 2026-09-27
 
 ---
 
@@ -34,7 +34,7 @@ The seven designed routes each render one page component from `src/components/ca
 | `/resume` | `Catalog97Resume` |
 | `/contact` | `Catalog97Contact` |
 
-`Catalog97Primitives.tsx` holds the shared `Catalog97Plate` and `Catalog97Slot` pieces. `SectionIntro` (`src/components/ui/SectionIntro.tsx`) is still the shared page and section intro for tool routes, and `headingLevel` should be set explicitly when it is used below the route `h1`.
+`Catalog97Primitives.tsx` holds the shared `Catalog97Plate` and `Catalog97Slot` pieces. Tool routes open on their own band or on `Catalog97ProjectHero`, since `SectionIntro` was deleted on 2026-09-27.
 
 The earlier homepage and portfolio components (`ModernHero`, `FeaturedWorkSection`, `PortfolioProjectCard`, `ThinkingPreview`, `ContactSection`, `About`, `ContactContent`, `ProjectsContent`, `WritingPreview`) no longer exist. See the root `COMPONENTS.md` and `AGENTS.md` for the wider component map.
 
@@ -158,23 +158,11 @@ These work with the generated fantasy snapshots (loaded through `useFantasySnaps
 
 ## UI Primitives
 
-Current primitives worth reusing first:
-
-- `WarmCard`
-- `ModernButton`
-- `Heading`
-- `Paragraph`
-- `Badge`
-- `Chip`
-- `Kicker`
-- `SectionIntro`
-- `ThemeToggle`
-- `ServerIcons`
+The React primitives still in use are `ModernButton`, `ThemeToggle`, `AuthorBio`, and `ServerIcons`. Most UI is composed from the `catalog97.css` classes instead (`.c97-panel`, `.c97-chip`, `.c97-btn`, `.c97-table`), and `WarmCard`, `Heading`, `Paragraph`, `Badge`, `Chip`, `Kicker`, and `SectionIntro` were deleted on 2026-09-27.
 
 Shared primitive rules:
 
 - `Catalog97Shell` owns the only page-level `main`, on every route; `ConditionalLayout` renders none
-- `SectionIntro` should be treated as semantic, not decorative; pass `headingLevel={1}` only for the page-level heading
 - shared shell primitives should not use `transition-all`
 
 ---

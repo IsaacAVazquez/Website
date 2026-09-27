@@ -40,20 +40,26 @@ const config: Config = {
        */
       borderRadius: {
         DEFAULT: '0',
+        xs: '0',
         sm: '0',
         md: '0',
         lg: '0',
         xl: '0',
         '2xl': '0',
         '3xl': '0',
+        '4xl': '0',
         full: '0',
       },
       boxShadow: {
         DEFAULT: 'none',
+        '2xs': 'none',
+        xs: 'none',
         sm: 'none',
         md: 'none',
         lg: 'none',
         xl: 'none',
+        '2xl': 'none',
+        inner: 'none',
       },
       transitionTimingFunction: {
         'spring': 'cubic-bezier(0.34, 1.56, 0.64, 1)',

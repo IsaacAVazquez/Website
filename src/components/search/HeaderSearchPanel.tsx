@@ -202,7 +202,7 @@ export function HeaderSearchPanel({ onClose }: HeaderSearchPanelProps) {
               type="button"
               onClick={onClose}
               aria-label="Close search"
-              className="inline-flex h-9 w-9 shrink-0 items-center justify-center transition-colors hover:bg-[var(--c97-field)]"
+              className="inline-flex h-11 w-11 shrink-0 items-center justify-center transition-colors hover:bg-[var(--c97-field)]"
               style={{ color: "var(--c97-ink-2)" }}
             >
               <X className="h-4 w-4" aria-hidden="true" />

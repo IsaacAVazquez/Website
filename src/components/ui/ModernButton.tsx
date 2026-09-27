@@ -73,9 +73,8 @@ export const ModernButton = React.memo(function ModernButton({
       "bg-[var(--c97-accent)] hover:bg-[color-mix(in_srgb,var(--c97-accent)_88%,var(--c97-ink))]",
       "text-[var(--c97-surface)]"
     ),
-    // Squared instrument-plate treatment (resume, ink plates). Catalog 97 has
-    // no radius anywhere, so this variant no longer needs to override a pill
-    // base — only the font/border treatment is variant-specific now.
+    // Squared instrument-plate treatment (resume, ink plates). Only the font
+    // and border are variant-specific, since nothing on the site has a radius.
     mono: cn(
       "border border-[var(--c97-ink)]",
       "font-mono text-[0.75rem] font-normal uppercase tracking-[0.09em]",

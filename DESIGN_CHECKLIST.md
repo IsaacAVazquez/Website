@@ -106,7 +106,9 @@ across `STYLING.md`, `CLAUDE.md`, and `SNAPSHOT_DRIVEN_DASHBOARDS.md`.
 
 ## Print shop layout
 
-See `STYLING.md` for the method. Before merging a change to any route:
+See `STYLING.md` for the method. Before merging a change to one of the seven designed routes or a project
+route (the ones in `src/constants/projectPress.ts`); the utility pages, Score Pools, and `/admin` use the
+bands and vocabulary without the poster hero:
 
 - [ ] The page prints in two lead inks (blue, saffron, vermilion, green, teal, pink, with peach as a
       vermilion tint), a project route takes its pair from `src/constants/projectPress.ts`, and nothing on
