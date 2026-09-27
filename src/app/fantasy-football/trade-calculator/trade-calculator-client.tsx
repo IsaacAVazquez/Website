@@ -86,7 +86,7 @@ function LeagueSelect({
 }) {
   return (
     <label className="block">
-      <span className="font-mono text-3xs uppercase tracking-[0.12em] text-[var(--c97-ink-2)]">
+      <span className="c97-kicker">
         {label}
       </span>
       <select
@@ -126,7 +126,7 @@ function LeagueSettings({
       </div>
 
       <fieldset className="mt-4">
-        <legend className="font-mono text-3xs uppercase tracking-[0.12em] text-[var(--c97-ink-2)]">
+        <legend className="c97-kicker">
           Scoring
         </legend>
         <div className="mt-2 grid gap-1.5">
@@ -184,7 +184,7 @@ function LeagueSettings({
       </div>
 
       <label className="mt-4 block">
-        <span className="font-mono text-3xs uppercase tracking-[0.12em] text-[var(--c97-ink-2)]">
+        <span className="c97-kicker">
           Starting lineup
         </span>
         <select
@@ -206,7 +206,7 @@ function LeagueSettings({
       </label>
 
       <div className="mt-4 border-t border-[var(--c97-rule)] pt-3">
-        <p className="font-mono text-3xs uppercase tracking-[0.12em] text-[var(--c97-ink-2)]">
+        <p className="c97-kicker">
           Supported format
         </p>
         <p className="mt-1 text-xs leading-5 text-[var(--c97-ink-2)]">
