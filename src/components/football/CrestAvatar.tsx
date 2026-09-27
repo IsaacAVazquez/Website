@@ -32,7 +32,7 @@ export function CrestAvatar({
         loading="lazy"
         decoding="async"
         className={cn(
-          "rounded-full border border-[var(--home-rule)] bg-[var(--home-dark-ink)] object-contain p-1",
+          "border border-[var(--c97-rule)] bg-[var(--c97-print-bone)] object-contain p-1",
           dimensionClass
         )}
       />
@@ -42,7 +42,7 @@ export function CrestAvatar({
   return (
     <div
       className={cn(
-        "flex items-center justify-center rounded-full border border-[var(--home-rule)] bg-[var(--home-paper-alt)] font-semibold text-[var(--home-ink)]",
+        "flex items-center justify-center border border-[var(--c97-rule)] bg-[var(--c97-field)] font-semibold text-[var(--c97-ink)]",
         dimensionClass
       )}
       aria-hidden="true"

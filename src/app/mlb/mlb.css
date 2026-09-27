@@ -1,0 +1,100 @@
+/* MLB Pulse: the out-of-town scoreboard signature and the standings bands. */
+
+.c97-mlb-scoreboard {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--c97-sp-4);
+  padding: var(--c97-sp-4);
+}
+
+/* A division panel needs about 260px for the code, record, games back, and
+ * ten squares on one line. From 760px the board splits by league the way a
+ * ballpark's out-of-town board does, the American League down the left and
+ * the National League down the right, since DIVISION_ORDER lists AL first. */
+@media (min-width: 760px) {
+  .c97-mlb-scoreboard {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-rows: repeat(3, auto);
+    grid-auto-flow: column;
+  }
+}
+
+.c97-mlb-scoreboard-panel {
+  border: 1px solid var(--c97-rule);
+  padding: var(--c97-sp-3);
+  min-width: 0;
+}
+
+.c97-mlb-scoreboard-list {
+  display: grid;
+  gap: var(--c97-sp-2);
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.c97-mlb-scoreboard-row {
+  display: grid;
+  grid-template-columns: 2.6rem 3.6rem 2.6rem minmax(0, 1fr);
+  align-items: center;
+  gap: var(--c97-sp-2);
+  font-size: var(--c97-fs-small);
+  min-width: 0;
+}
+
+.c97-mlb-scoreboard-code {
+  font-weight: 600;
+}
+
+.c97-mlb-scoreboard-record,
+.c97-mlb-scoreboard-gb {
+  color: var(--c97-ink-2);
+  white-space: nowrap;
+}
+
+/* Ten fixed tracks keep the squares on one row at a size that reads, and
+ * the row's last column is wide enough for them at every breakpoint. */
+.c97-mlb-scoreboard-squares {
+  display: grid;
+  grid-template-columns: repeat(10, 7px);
+  justify-content: end;
+  gap: 2px;
+}
+
+@media (min-width: 1200px) {
+  .c97-mlb-scoreboard-squares {
+    grid-template-columns: repeat(10, 9px);
+  }
+}
+
+.c97-mlb-scoreboard-square {
+  width: 100%;
+  aspect-ratio: 1;
+  border: 1px solid var(--c97-ink);
+  background: transparent;
+}
+
+.c97-mlb-scoreboard-square[data-square="W"] {
+  background: var(--c97-ink);
+}
+
+/* Postseason status dot in the standings table (division leader, wild card
+ * slot, out) and the selected-row highlight, both driven by data attributes
+ * rather than inline color-mix noise. */
+.c97-mlb-zone-dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  flex-shrink: 0;
+}
+
+.c97-mlb-table tbody tr[data-selected] {
+  background: var(--c97-panel);
+}
+
+@media (max-width: 479px) {
+  .c97-mlb-scoreboard-row {
+    grid-template-columns: 2.2rem 3.2rem 2.3rem minmax(0, 1fr);
+    gap: var(--c97-sp-1);
+  }
+}

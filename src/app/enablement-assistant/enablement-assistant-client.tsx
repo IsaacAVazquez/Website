@@ -7,6 +7,8 @@ import {
   type FormEvent,
   type ReactNode,
 } from "react";
+import { Catalog97ProjectHero } from "@/components/catalog97/Catalog97ProjectHero";
+import { PROJECT_PRESS } from "@/constants/projectPress";
 import {
   CI_OPTIONS,
   DEFAULT_TEAM_INTAKE,
@@ -41,6 +43,8 @@ import {
 } from "./enablement-state";
 
 type WorkspaceView = "program" | "team";
+
+const ROUTE = "/enablement-assistant";
 
 /*
  * Every section on this route is a Catalog 97 band. The shared styles below
@@ -141,7 +145,7 @@ function SectionHeading({
   return (
     <div style={{ maxWidth: "var(--c97-column)" }}>
       <p className="c97-kicker">{kicker}</p>
-      <h2 className="c97-serif c97-h2" style={{ marginTop: "var(--c97-sp-2)" }}>
+      <h2 className="c97-poster-sm" style={{ marginTop: "var(--c97-sp-2)" }}>
         {title}
       </h2>
       {children ? (
@@ -239,8 +243,9 @@ function ProgramDashboard({ onStart }: { onStart: () => void }) {
     <div role="tabpanel" aria-label="Program dashboard">
       <section
         aria-labelledby="program-metrics-heading"
-        className="c97-band"
+        className="c97-band c97-sheet"
         data-c97-surface="bone"
+        data-seam="deckle"
       >
         <div className="c97-shell">
           <div style={headerRowStyle}>
@@ -283,15 +288,16 @@ function ProgramDashboard({ onStart }: { onStart: () => void }) {
 
       <section
         aria-labelledby="feedback-loop-heading"
-        className="c97-band c97-band-tall"
+        className="c97-band c97-sheet c97-band-tall"
         data-c97-surface="ink-blue"
+        data-seam="torn"
       >
         <div className="c97-shell c97-columns">
           <div>
             <p className="c97-kicker">Feedback loop</p>
             <h2
               id="feedback-loop-heading"
-              className="c97-serif c97-h2"
+              className="c97-poster-sm"
               style={{ marginTop: "var(--c97-sp-2)" }}
             >
               The failure log becomes the documentation roadmap.
@@ -357,8 +363,9 @@ function ProgramDashboard({ onStart }: { onStart: () => void }) {
 
       <section
         aria-labelledby="adoption-heading"
-        className="c97-band"
+        className="c97-band c97-sheet"
         data-c97-surface="paper"
+        data-seam="torn"
       >
         <div className="c97-shell">
           <SectionHeading kicker="Team adoption" title="One standard, twelve local realities">
@@ -441,8 +448,9 @@ function ProgramDashboard({ onStart }: { onStart: () => void }) {
 
       <section
         aria-labelledby="drift-heading"
-        className="c97-band"
+        className="c97-band c97-sheet"
         data-c97-surface="bone"
+        data-seam="deckle"
       >
         <div className="c97-shell">
           <SectionHeading kicker="Standards drift" title="Where teams are leaving the shared path">
@@ -967,8 +975,9 @@ function RecommendationSection({
       <section
         id="recommendation"
         aria-labelledby="recommendation-heading"
-        className="c97-band"
+        className="c97-band c97-sheet"
         data-c97-surface="paper"
+        data-seam="deckle"
         style={{ scrollMarginTop: "var(--c97-sp-6)" }}
       >
         <div className="c97-shell">
@@ -1032,8 +1041,9 @@ function RecommendationSection({
         <section
           id="plan"
           aria-labelledby="plan-heading"
-          className="c97-band"
+          className="c97-band c97-sheet"
           data-c97-surface="bone"
+          data-seam="deckle"
           style={{ scrollMarginTop: "var(--c97-sp-6)" }}
         >
           <div className="c97-shell">
@@ -1139,8 +1149,18 @@ function RecommendationSection({
       <section
         id="troubleshooting"
         aria-labelledby="troubleshooting-heading"
-        className="c97-band"
+        /*
+         * The plan band only renders when the recommendation clears the
+         * confidence threshold, so this band's previous surface changes with
+         * it: bone when the plan showed, the same paper as the recommendation
+         * band above when it was skipped. Seam only when the surface actually
+         * changes.
+         */
+        className={
+          recommendation.shouldEscalate ? "c97-band" : "c97-band c97-sheet"
+        }
         data-c97-surface="paper"
+        data-seam={recommendation.shouldEscalate ? undefined : "deckle"}
         style={{ scrollMarginTop: "var(--c97-sp-6)" }}
       >
         <div className="c97-shell">
@@ -1334,12 +1354,12 @@ function RecommendationSection({
           aria-labelledby="handoff-heading"
           style={{ scrollMarginTop: "var(--c97-sp-6)" }}
         >
-          <div className="c97-band" data-c97-surface="ink-blue">
+          <div className="c97-band c97-sheet" data-c97-surface="ink-blue" data-seam="torn">
             <div className="c97-shell">
               <p className="c97-kicker">Escalation handoff</p>
               <h2
                 id="handoff-heading"
-                className="c97-serif c97-h2"
+                className="c97-poster-sm"
                 style={{ marginTop: "var(--c97-sp-2)" }}
               >
                 Give the central team the context up front.
@@ -1354,7 +1374,7 @@ function RecommendationSection({
               </p>
             </div>
           </div>
-          <div className="c97-band" data-c97-surface="bone">
+          <div className="c97-band c97-sheet" data-c97-surface="bone" data-seam="torn">
             <div
               className="c97-shell"
               style={{
@@ -1437,8 +1457,9 @@ function TeamOnboarding() {
     <div role="tabpanel" aria-label="Team onboarding">
       <section
         aria-labelledby="intake-heading"
-        className="c97-band"
+        className="c97-band c97-sheet"
         data-c97-surface="bone"
+        data-seam="deckle"
       >
         <div className="c97-shell">
           <div style={headerRowStyle}>
@@ -1561,30 +1582,13 @@ export function EnablementAssistantClient() {
 
   return (
     <div>
-      <section className="c97-band c97-band-tall" data-c97-surface="paper">
-        <div className="c97-shell">
-          <p className="c97-kicker">Internal platform enablement · deterministic demo</p>
-          <h1 className="c97-display" style={{ marginTop: "var(--c97-sp-3)" }}>
-            Automation Enablement Assistant
-          </h1>
-          <p
-            className="c97-lead"
-            style={{
-              marginTop: "var(--c97-sp-3)",
-              color: "var(--c97-ink-2)",
-              maxWidth: "var(--c97-column)",
-            }}
-          >
-            I built this to help a small central tooling team support many independent
-            product teams without repeating the same onboarding work one team at a time.
-            It recommends a standard stack, writes the adoption plan, answers the common
-            setup questions, and turns every failure into a clearer documentation backlog.
-          </p>
-        </div>
-      </section>
-
-      <section className="c97-band c97-band-tight" data-c97-surface="ink-blue">
-        <div className="c97-shell">
+      <Catalog97ProjectHero
+        ink={PROJECT_PRESS[ROUTE].lead}
+        title="Automation Enablement Assistant"
+        standfirst="I built this to help a small central tooling team support many independent product teams without repeating the same onboarding work one team at a time. It recommends a standard stack, writes the adoption plan, answers the common setup questions, and turns every failure into a clearer documentation backlog."
+        meta="Internal platform enablement · deterministic demo"
+      >
+        <div className="c97-panel">
           <p className="c97-kicker">Model boundary</p>
           <p
             className="c97-prose"
@@ -1594,12 +1598,13 @@ export function EnablementAssistantClient() {
             and program data all run from committed TypeScript rules and invented seed data.
           </p>
         </div>
-      </section>
+      </Catalog97ProjectHero>
 
       <section
         id="workspace"
-        className="c97-band c97-band-tight"
+        className="c97-band c97-sheet c97-band-tight"
         data-c97-surface="paper"
+        data-seam="torn"
         style={{ scrollMarginTop: "var(--c97-sp-6)" }}
       >
         <div

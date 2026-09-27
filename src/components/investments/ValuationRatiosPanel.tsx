@@ -34,23 +34,23 @@ function CompareRow({ label, value, industryAvg }: { label: string; value: numbe
       : value >= industryAvg
     : null;
   return (
-    <div className="flex items-center gap-3 py-2.5 border-b border-[var(--home-rule)] last:border-0">
-      <span className="text-sm text-[var(--home-ink-muted)] flex-1">{label}</span>
+    <div className="flex items-center gap-3 py-2.5 border-b border-[var(--c97-rule)] last:border-0">
+      <span className="text-sm text-[var(--c97-ink-2)] flex-1">{label}</span>
       <div className="flex items-center gap-4 shrink-0">
         <div className="text-right">
-          <p className="text-xs text-[var(--home-ink-soft)]">Stock</p>
-          <p className="text-sm font-semibold text-[var(--home-ink)]">{formatComparisonMetricValue(label, value)}</p>
+          <p className="text-xs text-[var(--c97-label)]">Stock</p>
+          <p className="text-sm font-semibold text-[var(--c97-ink)]">{formatComparisonMetricValue(label, value)}</p>
         </div>
         <div className="text-right">
-          <p className="text-xs text-[var(--home-ink-soft)]">Industry</p>
-          <p className="text-sm text-[var(--home-ink-muted)]">{formatComparisonMetricValue(label, industryAvg)}</p>
+          <p className="text-xs text-[var(--c97-label)]">Industry</p>
+          <p className="text-sm text-[var(--c97-ink-2)]">{formatComparisonMetricValue(label, industryAvg)}</p>
         </div>
         {hasComparison && (
           <span
             className={`text-xs font-medium px-1.5 py-0.5 rounded ${
               favorable
-                ? "bg-[color-mix(in_srgb,var(--home-positive)_12%,var(--home-paper-alt))] text-[color-mix(in_srgb,var(--home-positive)_70%,var(--home-ink))]"
-                : "bg-[color-mix(in_srgb,var(--home-negative)_11%,var(--home-paper-alt))] text-[color-mix(in_srgb,var(--home-negative)_70%,var(--home-ink))]"
+                ? "bg-[color-mix(in_srgb,var(--c97-positive)_12%,var(--c97-panel))] text-[color-mix(in_srgb,var(--c97-positive)_70%,var(--c97-ink))]"
+                : "bg-[color-mix(in_srgb,var(--c97-negative)_11%,var(--c97-panel))] text-[color-mix(in_srgb,var(--c97-negative)_70%,var(--c97-ink))]"
             }`}
           >
             {isAbove ? "Above" : "Below"}
@@ -80,14 +80,14 @@ function StandaloneMetric({
   detail?: string;
 }) {
   return (
-    <div className="rounded-[var(--radius-sm)] border border-[var(--home-rule)] bg-[var(--home-paper-raised)] px-4 py-3">
-      <p className="flex items-center gap-1 text-2xs font-semibold uppercase tracking-[0.18em] text-[var(--home-ink-soft)]">
+    <div className="border border-[var(--c97-rule)] bg-[var(--c97-panel)] px-4 py-3">
+      <p className="flex items-center gap-1 text-2xs font-semibold uppercase tracking-[0.18em] text-[var(--c97-label)]">
         {label}
         <MetricTooltip term={label} />
       </p>
-      <p className="mt-2 text-lg font-semibold text-[var(--home-ink)]">{value}</p>
+      <p className="mt-2 text-lg font-semibold text-[var(--c97-ink)]">{value}</p>
       {detail ? (
-        <p className="mt-1 text-xs text-[var(--home-ink-muted)]">{detail}</p>
+        <p className="mt-1 text-xs text-[var(--c97-ink-2)]">{detail}</p>
       ) : null}
     </div>
   );
@@ -126,10 +126,10 @@ export function ValuationRatiosPanel({
   if (!showIndustryComparison) {
     return (
       <TerminalPanel padding="sm">
-        <h3 className="text-sm font-semibold text-[var(--home-ink)] mb-1">
+        <h3 className="text-sm font-semibold text-[var(--c97-ink)] mb-1">
           Valuation Snapshot
         </h3>
-        <p className="text-xs text-[var(--home-ink-soft)] mb-4">
+        <p className="text-xs text-[var(--c97-label)] mb-4">
           Standalone valuation view when industry comparison data is unavailable
           for this curated research symbol.
         </p>
@@ -179,15 +179,15 @@ export function ValuationRatiosPanel({
 
   return (
     <TerminalPanel padding="sm">
-      <h3 className="text-sm font-semibold text-[var(--home-ink)] mb-1">Valuation vs Industry</h3>
-      <p className="text-xs text-[var(--home-ink-soft)] mb-3">
+      <h3 className="text-sm font-semibold text-[var(--c97-ink)] mb-1">Valuation vs Industry</h3>
+      <p className="text-xs text-[var(--c97-label)] mb-3">
         Comparing this stock&apos;s valuation ratios against its industry average.
       </p>
 
       {isLoading && (
         <div className="space-y-2">
           {Array.from({ length: 5 }).map((_, i) => (
-            <div key={i} className="h-10 rounded bg-[var(--home-stone)] animate-pulse" />
+            <div key={i} className="h-10 rounded bg-[var(--c97-rule)] animate-pulse" />
           ))}
         </div>
       )}

@@ -1,23 +1,9 @@
 "use client";
 
 import { type FormEvent, useMemo, useState } from "react";
-import { motion, useReducedMotion } from "framer-motion";
-import {
-  ArrowLeft,
-  ArrowRight,
-  CalendarRange,
-  ChartPie,
-  Download,
-  Landmark,
-  ListChecks,
-  PiggyBank,
-  Plus,
-  ReceiptText,
-  RotateCcw,
-  Sparkles,
-  Trash2,
-} from "lucide-react";
-import { getReducedMotionVariants, fadeInVariants } from "@/components/investments/animations";
+import { ArrowLeft, ArrowRight, Download, Plus, RotateCcw, Trash2 } from "lucide-react";
+import { Catalog97ProjectHero } from "@/components/catalog97/Catalog97ProjectHero";
+import { PROJECT_PRESS } from "@/constants/projectPress";
 import {
   buildBudgetCsv,
   formatBudgetMonthLabel,
@@ -26,7 +12,11 @@ import {
   isBudgetMonthKey,
 } from "@/lib/budgetPlanner";
 import { useBudgetPlanner } from "@/hooks/useBudgetPlanner";
-import { HomeStatsPanel, type HomeStatsCell } from "@/components/home/HomeStatsPanel";
+import { checkRegister, formatCurrency } from "./envelopes";
+import { EnvelopesSignature } from "./EnvelopesSignature";
+import "./budget-planner.css";
+
+const ROUTE = "/fintech-tools/budget-planner";
 
 interface ExpenseDraft {
   categoryId: string;
@@ -35,25 +25,10 @@ interface ExpenseDraft {
   note: string;
 }
 
-function formatCurrency(value: number) {
-  return value.toLocaleString("en-US", {
-    style: "currency",
-    currency: "USD",
-    minimumFractionDigits: 0,
-    maximumFractionDigits: value % 1 === 0 ? 0 : 2,
-  });
-}
-
 function formatSignedCurrency(value: number) {
   if (value > 0) return formatCurrency(value);
   if (value < 0) return `-${formatCurrency(Math.abs(value))}`;
   return formatCurrency(0);
-}
-
-function getBalanceTone(value: number) {
-  if (value > 0) return "text-[var(--home-positive)]";
-  if (value < 0) return "text-[var(--home-negative)]";
-  return "text-[var(--home-ink)]";
 }
 
 const EXPENSE_DATE_FORMATTER = new Intl.DateTimeFormat("en-US", {
@@ -63,7 +38,7 @@ const EXPENSE_DATE_FORMATTER = new Intl.DateTimeFormat("en-US", {
 
 function formatExpenseDate(iso: string): string {
   // ISO YYYY-MM-DD constructed in local time so a user's "today" lines up
-  // with the calendar — appending T00:00 avoids the UTC-offset off-by-one.
+  // with the calendar. Appending T00:00 avoids the UTC-offset off-by-one.
   const date = new Date(`${iso}T00:00`);
   return Number.isNaN(date.getTime()) ? iso : EXPENSE_DATE_FORMATTER.format(date);
 }
@@ -82,13 +57,6 @@ function parseAmountInput(value: string) {
   if (!Number.isFinite(parsed)) return 0;
   return Math.max(0, Math.round(parsed * 100) / 100);
 }
-
-const NAV_ITEMS = [
-  { id: "income", label: "Income", icon: Landmark, href: "#section-income" },
-  { id: "categories", label: "Categories", icon: ChartPie, href: "#section-categories" },
-  { id: "expenses", label: "Expenses", icon: ReceiptText, href: "#section-expenses" },
-  { id: "summary", label: "Summary", icon: ListChecks, href: "#section-summary" },
-] as const;
 
 export function BudgetPlannerClient() {
   const {
@@ -114,10 +82,6 @@ export function BudgetPlannerClient() {
   const [expenseDraft, setExpenseDraft] = useState<ExpenseDraft>(() =>
     createEmptyExpenseDraft(activeMonthKey, activeMonth.categories[0]?.id ?? "")
   );
-  const shouldReduceMotion = useReducedMotion();
-  const motionVariants = shouldReduceMotion
-    ? getReducedMotionVariants().fadeInVariants
-    : fadeInVariants;
   const resolvedExpenseCategoryId = activeMonth.categories.some(
     (category) => category.id === expenseDraft.categoryId
   )
@@ -125,9 +89,6 @@ export function BudgetPlannerClient() {
     : activeMonth.categories[0]?.id ?? "";
 
   const monthLabel = formatBudgetMonthLabel(activeMonthKey);
-
-  // Hero summary numbers. "Spent" is the canonical "money out" number for the
-  // hero card; remaining mirrors what the user has left to spend this month.
   const totalIncome = activeMonth.income;
   const totalExpenses = summary.spentTotal;
   const remaining = summary.remainingToSpend;
@@ -136,63 +97,17 @@ export function BudgetPlannerClient() {
     if (totalIncome <= 0) return null;
     return Math.min(999, Math.round((totalExpenses / totalIncome) * 100));
   }, [totalIncome, totalExpenses]);
-  const progressWidth = `${percentSpent === null ? (totalExpenses > 0 ? 100 : 0) : Math.min(100, Math.max(0, percentSpent))}%`;
 
-  const topCategories = useMemo(
-    () =>
-      [...summary.categorySummaries]
-        .filter((category) => category.spent > 0)
-        .sort((a, b) => b.spent - a.spent)
-        .slice(0, 5),
-    [summary.categorySummaries]
+  const register = useMemo(
+    () => checkRegister(summary.availableToBudget, summary.expenseEntries),
+    [summary.availableToBudget, summary.expenseEntries]
   );
-
-  const largestCategory = topCategories[0] ?? null;
-
-  const budgetStatsCells: HomeStatsCell[] = [
-    {
-      label: "Income",
-      value: formatCurrency(totalIncome),
-    },
-    {
-      label: "Spent",
-      value: formatCurrency(totalExpenses),
-    },
-    {
-      label: "Remaining",
-      value: formatSignedCurrency(remaining),
-      tone: remaining > 0 ? "good" : "default",
-    },
-    {
-      label: "Savings target",
-      value: formatCurrency(activeMonth.savingsTarget),
-    },
-    {
-      label: "Percent spent",
-      value: percentSpent === null ? "No income set" : `${percentSpent}%`,
-    },
-    {
-      label: "Categories",
-      value: activeMonth.categories.length.toLocaleString(),
-    },
-    {
-      label: "Largest category",
-      value: largestCategory ? largestCategory.name || "Untitled" : "—",
-      sub: largestCategory ? formatCurrency(largestCategory.spent) : "No spend yet",
-    },
-    {
-      label: "Active month",
-      value: monthLabel,
-    },
-  ];
 
   function handleMonthChange(nextMonthKey: string) {
     if (!isBudgetMonthKey(nextMonthKey)) return;
     setEditingExpenseId(null);
     setConfirmReset(false);
-    setExpenseDraft(
-      createEmptyExpenseDraft(nextMonthKey, activeMonth.categories[0]?.id ?? "")
-    );
+    setExpenseDraft(createEmptyExpenseDraft(nextMonthKey, activeMonth.categories[0]?.id ?? ""));
     selectMonth(nextMonthKey);
   }
 
@@ -265,90 +180,83 @@ export function BudgetPlannerClient() {
     });
   }
 
-  // Field styling reused across rail + main forms. Tightened to fit the 290px
-  // rail without horizontal scroll.
-  const fieldLabel =
-    "block text-2xs font-semibold uppercase tracking-[0.16em] text-[var(--home-ink-soft)]";
-  const fieldInput =
-    "mt-1.5 w-full min-h-touch rounded-[var(--radius-xl)] border border-[var(--home-rule)] bg-[var(--home-paper)] px-3 py-2 text-xs text-[var(--home-ink)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-signal)] focus-visible:ring-offset-2";
-  const numericInput = `${fieldInput} [font-variant-numeric:tabular-nums]`;
+  const lead = PROJECT_PRESS[ROUTE].lead;
+  const standfirst =
+    "I built this to plan a month's spending before it happens. Set an income and a savings target, put each category in its own envelope, and log expenses as they happen so the envelopes and the ledger below both move together.";
 
   return (
-    <section
-      className="home-page min-h-screen"
-      aria-label="Budget Planner"
-      data-testid="budget-planner-shell"
-    >
-      <div className="home-shell home-section">
-        <motion.div
-          variants={motionVariants}
-          initial="hidden"
-          animate="visible"
-          className="flex flex-col gap-6"
-        >
-          {/* In-page section nav (replaces sidebar) */}
-          <nav className="flex flex-wrap gap-2" aria-label="Section navigation">
-            {NAV_ITEMS.map((item) => {
-              const Icon = item.icon;
-              return (
-                <a
-                  key={item.id}
-                  href={item.href}
-                  className="inline-flex min-h-touch items-center gap-2 rounded-full border border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper)_92%,var(--home-elev-mix))] px-4 py-1.5 text-sm font-semibold text-[var(--home-ink-muted)] transition hover:border-[var(--home-signal)] hover:text-[var(--home-ink)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-signal)] focus-visible:ring-offset-2"
-                  style={{ fontFamily: "var(--font-home-sans)" }}
-                >
-                  <Icon size={16} aria-hidden="true" />
-                  <span>{item.label}</span>
-                </a>
-              );
-            })}
-          </nav>
+    <>
+      <Catalog97ProjectHero
+        ink={lead}
+        title="Budget Planner"
+        standfirst={standfirst}
+        meta={`${monthLabel} · Saved in this browser, no account needed.`}
+        readouts={[
+          {
+            label: "Income",
+            value: formatCurrency(totalIncome),
+            detail: `Savings target ${formatCurrency(activeMonth.savingsTarget)}`,
+          },
+          {
+            label: "Spent",
+            value: formatCurrency(totalExpenses),
+            detail: percentSpent === null ? "No income set" : `${percentSpent}% of income`,
+          },
+          {
+            label: "Left to spend",
+            value: formatSignedCurrency(remaining),
+            detail: remaining >= 0 ? "After savings target" : `Over by ${formatCurrency(Math.abs(remaining))}`,
+          },
+        ]}
+      >
+        <div data-c97-surface="paper" className="c97-offset" style={{ padding: "var(--c97-sp-3)" }}>
+          <EnvelopesSignature categories={summary.categorySummaries} />
+        </div>
+      </Catalog97ProjectHero>
 
-          <div className="tool-topbar">
-              <div className="min-w-0">
-                <p className="tool-crumbs">
-                  Budget Planner / <strong>{monthLabel}</strong>
-                </p>
-                <h1>Budget Planner</h1>
-              </div>
-
-              <div className="flex items-center gap-2 rounded-full border border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper)_92%,var(--home-elev-mix))] p-1 shadow-[var(--shadow-sm)]">
+      <div data-testid="budget-planner-shell">
+        <p role="status" aria-live="polite" className="sr-only">
+          {`${formatCurrency(totalExpenses)} spent, ${formatCurrency(remaining)} left to spend`}
+        </p>
+        <section className="c97-band c97-sheet" data-c97-surface="paper" data-seam="torn">
+          <div className="c97-shell">
+            <div className="flex flex-wrap items-center justify-between gap-3">
+              <div className="flex flex-wrap items-center" style={{ gap: "var(--c97-sp-2)" }}>
                 <button
                   type="button"
                   aria-label="Previous month"
                   onClick={() => handleMonthChange(getAdjacentBudgetMonthKey(activeMonthKey, -1))}
-                  className="inline-flex h-11 w-11 items-center justify-center rounded-full text-[var(--home-ink-muted)] transition-colors hover:bg-[color-mix(in_srgb,var(--home-signal)_18%,transparent)] hover:text-[var(--home-ink)]"
+                  className="c97-btn-ghost"
+                  style={{ minWidth: 44, justifyContent: "center" }}
                 >
-                  <ArrowLeft className="h-4 w-4" />
+                  <ArrowLeft size={16} aria-hidden="true" />
                 </button>
-                <label className="flex items-center gap-1.5 px-2 text-1xs font-semibold text-[var(--home-ink)]">
-                  <CalendarRange className="h-3.5 w-3.5 text-[var(--home-signal)]" aria-hidden="true" />
+                <label style={{ display: "flex", flexDirection: "column", gap: "var(--c97-sp-1)" }}>
+                  <span className="c97-kicker">Budget month</span>
                   <input
                     aria-label="Budget month"
                     type="month"
                     value={activeMonthKey}
                     onChange={(event) => handleMonthChange(event.target.value)}
-                    className="border-0 bg-transparent p-0 text-1xs font-semibold text-[var(--home-ink)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-signal)] focus-visible:ring-offset-2"
-                    style={{ width: "115px" }}
+                    className="c97-field c97-mono"
+                    style={{ width: "12rem", maxWidth: "100%" }}
                   />
                 </label>
                 <button
                   type="button"
                   aria-label="Next month"
                   onClick={() => handleMonthChange(getAdjacentBudgetMonthKey(activeMonthKey, 1))}
-                  className="inline-flex h-11 w-11 items-center justify-center rounded-full text-[var(--home-ink-muted)] transition-colors hover:bg-[color-mix(in_srgb,var(--home-signal)_18%,transparent)] hover:text-[var(--home-ink)]"
+                  className="c97-btn-ghost"
+                  style={{ minWidth: 44, justifyContent: "center" }}
                 >
-                  <ArrowRight className="h-4 w-4" />
+                  <ArrowRight size={16} aria-hidden="true" />
                 </button>
+                <span className="c97-serif c97-h3">{monthLabel}</span>
               </div>
 
-              <div className="flex flex-wrap items-center gap-2">
-                <button
-                  type="button"
-                  onClick={handleExportCsv}
-                  className="inline-flex min-h-[44px] items-center gap-2 rounded-full border border-[var(--home-rule)] px-4 py-2 text-1xs font-semibold text-[var(--home-ink)] transition-colors hover:bg-[color-mix(in_srgb,var(--home-signal)_14%,transparent)]"
-                >
-                  <Download className="h-4 w-4" aria-hidden="true" />
+              <div className="flex flex-wrap items-center" style={{ gap: "var(--c97-sp-2)" }}>
+                <button type="button" onClick={handleExportCsv} className="c97-btn-ghost">
+                  <Download size={16} aria-hidden="true" style={{ marginRight: "var(--c97-sp-1)" }} />
                   Export CSV
                 </button>
                 {confirmReset ? (
@@ -356,514 +264,312 @@ export function BudgetPlannerClient() {
                     <button
                       type="button"
                       onClick={handleResetMonth}
-                      className="inline-flex min-h-[44px] items-center gap-2 rounded-full border px-4 py-2 text-1xs font-semibold transition-colors"
-                      style={{
-                        borderColor: "var(--home-negative)",
-                        color: "var(--home-negative)",
-                      }}
+                      className="c97-btn-ghost"
+                      style={{ color: "var(--c97-negative)" }}
                     >
-                      <RotateCcw className="h-4 w-4" aria-hidden="true" />
+                      <RotateCcw size={16} aria-hidden="true" style={{ marginRight: "var(--c97-sp-1)" }} />
                       Reset month?
                     </button>
-                    <button
-                      type="button"
-                      onClick={() => setConfirmReset(false)}
-                      className="inline-flex min-h-[44px] items-center rounded-full border border-[var(--home-rule)] px-4 py-2 text-1xs font-semibold text-[var(--home-ink-muted)] transition-colors hover:text-[var(--home-ink)]"
-                    >
+                    <button type="button" onClick={() => setConfirmReset(false)} className="c97-btn-ghost">
                       Cancel
                     </button>
                   </>
                 ) : (
-                  <button
-                    type="button"
-                    onClick={() => setConfirmReset(true)}
-                    className="inline-flex min-h-[44px] items-center gap-2 rounded-full border border-[var(--home-rule)] px-4 py-2 text-1xs font-semibold text-[var(--home-ink-muted)] transition-colors hover:text-[var(--home-ink)]"
-                  >
-                    <RotateCcw className="h-4 w-4" aria-hidden="true" />
+                  <button type="button" onClick={() => setConfirmReset(true)} className="c97-btn-ghost">
+                    <RotateCcw size={16} aria-hidden="true" style={{ marginRight: "var(--c97-sp-1)" }} />
                     Reset month
                   </button>
                 )}
               </div>
             </div>
+          </div>
+        </section>
 
-            <div className="tool-meta-chip" role="status" aria-live="polite">
-              <span className="tool-meta-chip-dot" aria-hidden="true" />
-              <span>
-                Income <strong>{formatCurrency(totalIncome)}</strong>
-              </span>
-              <span className="tool-meta-chip-divider" aria-hidden="true">·</span>
-              <span>
-                Spent <strong>{formatCurrency(totalExpenses)}</strong>
-              </span>
-              <span className="tool-meta-chip-divider" aria-hidden="true">·</span>
-              <span>
-                Left after savings <strong className={getBalanceTone(remaining)}>{formatSignedCurrency(remaining)}</strong>
-              </span>
-              <span className="tool-meta-chip-spacer" />
-              <span className="tool-meta-chip-meta">{percentSpent === null ? "No income set" : `${percentSpent}% of income`}</span>
+        <section className="c97-band c97-sheet" data-c97-surface="bone" data-seam="deckle">
+          <div className="c97-shell">
+            <h2 className="c97-poster-sm">Income</h2>
+            <div className="grid gap-3 sm:grid-cols-2" style={{ marginTop: "var(--c97-sp-3)" }}>
+              <label style={{ display: "block" }}>
+                <span className="c97-kicker">Monthly income</span>
+                <input
+                  aria-label="Monthly income"
+                  type="number"
+                  min="0"
+                  step="50"
+                  value={String(activeMonth.income)}
+                  onChange={(event) => updateIncome(Number(event.target.value))}
+                  className="c97-field c97-mono"
+                />
+              </label>
+              <label style={{ display: "block" }}>
+                <span className="c97-kicker">Savings target</span>
+                <input
+                  aria-label="Savings target"
+                  type="number"
+                  min="0"
+                  step="25"
+                  value={String(activeMonth.savingsTarget)}
+                  onChange={(event) => updateSavingsTarget(Number(event.target.value))}
+                  className="c97-field c97-mono"
+                />
+              </label>
+            </div>
+          </div>
+        </section>
+
+        <section className="c97-band c97-sheet" data-c97-surface="paper" data-seam="torn">
+          <div className="c97-shell">
+            <div className="flex flex-wrap items-end justify-between gap-3">
+              <h2 className="c97-poster-sm">Categories</h2>
+              <p className="c97-meta">Budgeted {formatCurrency(summary.budgetedTotal)}</p>
             </div>
 
-            <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,320px)]">
-              <div className="flex flex-col gap-5">
-              <div id="section-summary" className="scroll-mt-28">
-                <HomeStatsPanel
-                  id="budget-planner-stats"
-                  title="Budget at a glance"
-                  meta={
-                    summary.remainingToBudget < 0
-                      ? `Over budget by ${formatSignedCurrency(summary.remainingToBudget).replace(/^[-+]/, "")}`
-                      : `${formatSignedCurrency(summary.remainingToBudget)} left to budget`
-                  }
-                  hideLiveDot
-                  cells={budgetStatsCells}
-                  pills={[
-                    { label: "Income", href: "#section-income" },
-                    { label: "Categories", href: "#section-categories" },
-                    { label: "Expenses", href: "#section-expenses" },
-                    { label: "Summary", href: "#section-summary" },
-                  ]}
-                />
-                <div className="mt-3">
-                  <div className="mb-2 flex items-center justify-between text-2xs font-semibold uppercase tracking-[0.14em] text-[var(--home-ink-muted)]">
-                    <span>Spend progress</span>
-                    <span className="[font-variant-numeric:tabular-nums]">{percentSpent === null ? "No income set" : `${percentSpent}%`}</span>
-                  </div>
-                  <div className="h-2 overflow-hidden rounded-full bg-[color-mix(in_srgb,var(--home-paper-alt)_80%,var(--home-elev-mix))]">
-                    <div
-                      className={`h-full rounded-full ${
-                        percentSpent === null || percentSpent >= 100
-                          ? "bg-[var(--home-negative)]"
-                          : percentSpent >= 85
-                            ? "bg-[var(--home-warning)]"
-                            : "bg-[var(--home-signal)]"
-                      }`}
-                      style={{ width: progressWidth }}
-                    />
-                  </div>
-                </div>
-              </div>
-
-              {/* Income + Savings target */}
-              <section
-                id="section-income"
-                className="tool-card scroll-mt-28"
-                aria-label="Income and savings target"
-              >
-                <div className="flex flex-wrap items-end justify-between gap-3">
-                  <div>
-                    <p className="tool-section-kicker">Planning</p>
-                    <h2 className="tool-section-title">Income</h2>
-                  </div>
-                </div>
-                <div className="mt-4 grid gap-3 sm:grid-cols-2">
-                  <label className="block">
-                    <span className={fieldLabel}>Monthly income</span>
-                    <input
-                      aria-label="Monthly income"
-                      type="number"
-                      min="0"
-                      step="50"
-                      value={String(activeMonth.income)}
-                      onChange={(event) => updateIncome(Number(event.target.value))}
-                      className={numericInput}
-                    />
-                  </label>
-                  <label className="block">
-                    <span className={fieldLabel}>Savings target</span>
-                    <input
-                      aria-label="Savings target"
-                      type="number"
-                      min="0"
-                      step="25"
-                      value={String(activeMonth.savingsTarget)}
-                      onChange={(event) => updateSavingsTarget(Number(event.target.value))}
-                      className={numericInput}
-                    />
-                  </label>
-                </div>
-              </section>
-
-              {/* Categories */}
-              <section
-                id="section-categories"
-                className="tool-card scroll-mt-28"
-                aria-label="Category budgets"
-              >
-                <div className="flex flex-wrap items-end justify-between gap-3">
-                  <div>
-                    <p className="tool-section-kicker">Allocation</p>
-                    <h2 className="tool-section-title">Categories</h2>
-                  </div>
-                  <p className="text-1xs text-[var(--home-ink-muted)]">
-                    Budgeted{" "}
-                    <span className="font-semibold text-[var(--home-ink)] [font-variant-numeric:tabular-nums]">
-                      {formatCurrency(summary.budgetedTotal)}
-                    </span>
-                  </p>
-                </div>
-
-                <div className="mt-4 flex flex-col gap-2 divide-y divide-[var(--home-rule)]">
-                  {summary.categorySummaries.map((category) => {
-                    const displayName = category.name || "Untitled";
-                    const utilWidth = `${Math.min(100, Math.max(0, category.utilization * 100))}%`;
-                    const hasLinkedExpenses = category.expenseCount > 0;
-                    const empty = category.name.trim() === "";
-                    return (
-                      <div key={category.id} className="grid gap-2 py-3 first:pt-0">
-                        <div className="grid items-center gap-2 sm:grid-cols-[minmax(0,1fr)_120px_auto]">
-                          <label className="min-w-0 block">
-                            <span className="sr-only">Category name for {displayName}</span>
-                            <input
-                              aria-label={`Category name for ${displayName}`}
-                              aria-invalid={empty ? true : undefined}
-                              aria-describedby={empty ? `category-${category.id}-error` : undefined}
-                              type="text"
-                              value={category.name}
-                              onChange={(event) => renameCategory(category.id, event.target.value)}
-                              onBlur={(event) => {
-                                if (!event.target.value.trim()) {
-                                  renameCategory(category.id, "Untitled");
-                                }
-                              }}
-                              className="w-full min-h-touch rounded-lg border border-transparent bg-transparent px-2 py-1 text-xs font-medium text-[var(--home-ink)] hover:border-[var(--home-rule)] focus-visible:border-[var(--home-rule)] focus-visible:bg-[var(--home-paper)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-signal)] focus-visible:ring-offset-2 aria-[invalid=true]:border-[var(--home-negative)]"
-                            />
-                          </label>
-                          <label className="block">
-                            <span className="sr-only">Budget amount for {displayName}</span>
-                            <input
-                              aria-label={`Budget amount for ${displayName}`}
-                              type="number"
-                              min="0"
-                              step="25"
-                              value={String(category.budgetedAmount)}
-                              onChange={(event) =>
-                                updateCategoryBudget(category.id, Number(event.target.value))
-                              }
-                              className="w-full min-h-touch rounded-lg border border-[var(--home-rule)] bg-[var(--home-paper)] px-2 py-1 text-xs font-medium text-[var(--home-ink)] [font-variant-numeric:tabular-nums] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-signal)] focus-visible:ring-offset-2"
-                            />
-                          </label>
-                          <button
-                            type="button"
-                            aria-label={`Delete ${displayName}`}
-                            aria-describedby={
-                              hasLinkedExpenses ? `category-${category.id}-delete-help` : undefined
-                            }
-                            disabled={hasLinkedExpenses}
-                            onClick={() => removeCategory(category.id)}
-                            className="inline-flex min-h-touch items-center justify-center gap-1.5 rounded-lg border border-[var(--home-rule)] bg-[var(--home-paper)] px-3 text-1xs font-medium text-[var(--home-ink-muted)] transition hover:border-[var(--home-negative)] hover:text-[var(--home-negative)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-signal)] focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:border-dashed disabled:opacity-40"
-                          >
-                            <Trash2 className="h-3.5 w-3.5" />
-                            Delete
-                          </button>
-                        </div>
-
-                        {empty ? (
-                          <span
-                            id={`category-${category.id}-error`}
-                            className="text-2xs text-[var(--home-negative)]"
-                          >
-                            Name a category. Empty fields fall back to "Untitled".
-                          </span>
-                        ) : null}
-
-                        <div className="flex items-center gap-3 text-2xs text-[var(--home-ink-muted)]">
-                          <span className="[font-variant-numeric:tabular-nums]">
-                            {formatCurrency(category.spent)} / {formatCurrency(category.budgetedAmount)}
-                          </span>
-                          <span aria-hidden="true">·</span>
-                          <span
-                            className={`${getBalanceTone(category.remaining)} [font-variant-numeric:tabular-nums]`}
-                          >
-                            {formatSignedCurrency(category.remaining)} left
-                          </span>
-                          <span aria-hidden="true">·</span>
-                          <span className="[font-variant-numeric:tabular-nums]">
-                            {category.expenseCount} {category.expenseCount === 1 ? "entry" : "entries"}
-                          </span>
-                        </div>
-
-                        <div className="h-1.5 overflow-hidden rounded-full bg-[color-mix(in_srgb,var(--home-paper-alt)_80%,var(--home-elev-mix))]">
-                          <div
-                            className={`h-full rounded-full ${
-                              category.overBudget
-                                ? "bg-[var(--home-negative)]"
-                                : category.utilization >= 0.85
-                                  ? "bg-[var(--home-warning)]"
-                                  : "bg-[var(--home-signal)]"
-                            }`}
-                            style={{ width: utilWidth }}
-                          />
-                        </div>
-
-                        {hasLinkedExpenses ? (
-                          <p
-                            id={`category-${category.id}-delete-help`}
-                            className="text-2xs text-[var(--home-ink-muted)]"
-                          >
-                            Remove linked expenses before deleting this category.
-                          </p>
-                        ) : null}
-                      </div>
-                    );
-                  })}
-                </div>
-
-                <form onSubmit={handleAddCategory} className="mt-4 flex flex-col gap-2 sm:flex-row">
-                  <label className="flex-1">
-                    <span className="sr-only">New category name</span>
-                    <input
-                      aria-label="New category name"
-                      type="text"
-                      value={newCategoryName}
-                      onChange={(event) => setNewCategoryName(event.target.value)}
-                      placeholder="Add a custom category"
-                      className="w-full min-h-touch rounded-lg border border-[var(--home-rule)] bg-[var(--home-paper)] px-3 py-2 text-xs text-[var(--home-ink)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-signal)] focus-visible:ring-offset-2"
-                    />
-                  </label>
-                  <button
-                    type="submit"
-                    className="inline-flex min-h-touch items-center justify-center gap-2 rounded-lg bg-[var(--home-ink)] px-4 text-xs font-semibold text-[var(--home-paper)] shadow-[var(--shadow-sm)] transition hover:bg-[color-mix(in_srgb,var(--home-ink)_88%,var(--home-signal))] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-signal)] focus-visible:ring-offset-2"
+            <div className="flex flex-col" style={{ marginTop: "var(--c97-sp-3)" }}>
+              {summary.categorySummaries.map((category) => {
+                const displayName = category.name || "Untitled";
+                const hasLinkedExpenses = category.expenseCount > 0;
+                const empty = category.name.trim() === "";
+                return (
+                  <div
+                    key={category.id}
+                    className="grid gap-2"
+                    style={{
+                      padding: "var(--c97-sp-2) 0",
+                      borderBottom: "1px solid var(--c97-rule)",
+                    }}
                   >
-                    <Plus className="h-3.5 w-3.5" />
-                    Add category
-                  </button>
-                </form>
-              </section>
+                    <div className="grid items-center gap-2 sm:grid-cols-[minmax(0,1fr)_120px_auto]">
+                      <label className="min-w-0" style={{ display: "block" }}>
+                        <span className="sr-only">Category name for {displayName}</span>
+                        <input
+                          aria-label={`Category name for ${displayName}`}
+                          aria-invalid={empty ? true : undefined}
+                          type="text"
+                          value={category.name}
+                          onChange={(event) => renameCategory(category.id, event.target.value)}
+                          onBlur={(event) => {
+                            if (!event.target.value.trim()) {
+                              renameCategory(category.id, "Untitled");
+                            }
+                          }}
+                          className="c97-field"
+                        />
+                      </label>
+                      <label style={{ display: "block" }}>
+                        <span className="sr-only">Budget amount for {displayName}</span>
+                        <input
+                          aria-label={`Budget amount for ${displayName}`}
+                          type="number"
+                          min="0"
+                          step="25"
+                          value={String(category.budgetedAmount)}
+                          onChange={(event) => updateCategoryBudget(category.id, Number(event.target.value))}
+                          className="c97-field c97-mono"
+                        />
+                      </label>
+                      <button
+                        type="button"
+                        aria-label={`Delete ${displayName}`}
+                        aria-describedby={hasLinkedExpenses ? `category-${category.id}-meta` : undefined}
+                        disabled={hasLinkedExpenses}
+                        onClick={() => removeCategory(category.id)}
+                        className="c97-btn-ghost"
+                      >
+                        <Trash2 size={14} aria-hidden="true" style={{ marginRight: "var(--c97-sp-1)" }} />
+                        Delete
+                      </button>
+                    </div>
 
-              {/* Expenses ledger */}
-              <section
-                id="section-expenses"
-                className="tool-card scroll-mt-28"
-                aria-label="Expenses ledger"
-              >
-                <div className="flex flex-wrap items-end justify-between gap-3">
-                  <div>
-                    <p className="tool-section-kicker">Ledger</p>
-                    <h2 className="tool-section-title">Expenses ledger</h2>
-                  </div>
-                  <p className="text-1xs text-[var(--home-ink-muted)] [font-variant-numeric:tabular-nums]">
-                    {summary.expenseEntries.length}{" "}
-                    {summary.expenseEntries.length === 1 ? "entry" : "entries"}
-                  </p>
-                </div>
-
-                {summary.expenseEntries.length === 0 ? (
-                  <div className="tool-empty mt-4">
-                    <p className="text-xs font-semibold text-[var(--home-ink)]">
-                      Ledger is empty
+                    <p
+                      className="c97-meta"
+                      id={hasLinkedExpenses ? `category-${category.id}-meta` : undefined}
+                    >
+                      {formatCurrency(category.spent)} of {formatCurrency(category.budgetedAmount)} ·{" "}
+                      {formatSignedCurrency(category.remaining)} left ·{" "}
+                      {category.expenseCount} {category.expenseCount === 1 ? "entry" : "entries"}
+                      {hasLinkedExpenses ? " · remove linked expenses before deleting" : ""}
                     </p>
-                    <p>Add the first expense using the form on the right.</p>
                   </div>
-                ) : (
-                  <ul className="mt-4 divide-y divide-[var(--home-rule)]">
-                    {summary.expenseEntries.map((expense) => (
-                      <li key={expense.id} className="grid gap-2 py-3 first:pt-0">
-                        <div className="grid items-center gap-3 sm:grid-cols-[minmax(0,1fr)_auto_auto]">
-                          <div className="min-w-0">
-                            <p className="truncate text-xs font-semibold text-[var(--home-ink)]">
-                              {expense.note || expense.categoryName}
-                            </p>
-                            <p className="mt-0.5 text-2xs uppercase tracking-[0.14em] text-[var(--home-ink-muted)]">
-                              <span>{expense.categoryName}</span>
-                              <span aria-hidden="true"> · </span>
-                              <span title={expense.date}>{formatExpenseDate(expense.date)}</span>
-                            </p>
-                          </div>
-                          <p className="text-xs font-semibold text-[var(--home-ink)] [font-variant-numeric:tabular-nums]">
-                            {formatCurrency(expense.amount)}
-                          </p>
-                          <div className="flex items-center gap-1.5">
+                );
+              })}
+            </div>
+
+            <form
+              onSubmit={handleAddCategory}
+              className="flex flex-col gap-2 sm:flex-row"
+              style={{ marginTop: "var(--c97-sp-3)" }}
+            >
+              <label className="flex-1">
+                <span className="sr-only">New category name</span>
+                <input
+                  aria-label="New category name"
+                  type="text"
+                  value={newCategoryName}
+                  onChange={(event) => setNewCategoryName(event.target.value)}
+                  placeholder="Add a custom category"
+                  className="c97-field"
+                />
+              </label>
+              <button type="submit" className="c97-btn c97-offset">
+                <Plus size={14} aria-hidden="true" style={{ marginRight: "var(--c97-sp-1)" }} />
+                Add category
+              </button>
+            </form>
+          </div>
+        </section>
+
+        <section className="c97-band c97-sheet" data-c97-surface="bone" data-seam="deckle">
+          <div className="c97-shell">
+            <div className="flex flex-wrap items-end justify-between gap-3">
+              <h2 className="c97-poster-sm">Expenses ledger</h2>
+              <p className="c97-meta">
+                {summary.expenseEntries.length} {summary.expenseEntries.length === 1 ? "entry" : "entries"}
+              </p>
+            </div>
+
+            <form
+              onSubmit={handleExpenseSubmit}
+              className="grid gap-3 sm:grid-cols-[minmax(0,1fr)_minmax(0,140px)_minmax(0,160px)_minmax(0,1fr)_auto]"
+              style={{ marginTop: "var(--c97-sp-3)", alignItems: "end" }}
+            >
+              <label style={{ display: "block" }}>
+                <span className="c97-kicker">Category</span>
+                <select
+                  aria-label="Expense category"
+                  value={resolvedExpenseCategoryId}
+                  onChange={(event) =>
+                    setExpenseDraft((current) => ({ ...current, categoryId: event.target.value }))
+                  }
+                  className="c97-field"
+                >
+                  {activeMonth.categories.map((category) => (
+                    <option key={category.id} value={category.id}>
+                      {category.name || "Untitled"}
+                    </option>
+                  ))}
+                </select>
+              </label>
+              <label style={{ display: "block" }}>
+                <span className="c97-kicker">Amount</span>
+                <input
+                  aria-label="Expense amount"
+                  type="number"
+                  min="0"
+                  step="0.01"
+                  value={expenseDraft.amount}
+                  onChange={(event) =>
+                    setExpenseDraft((current) => ({ ...current, amount: event.target.value }))
+                  }
+                  className="c97-field c97-mono"
+                />
+              </label>
+              <label style={{ display: "block" }}>
+                <span className="c97-kicker">Date</span>
+                <input
+                  aria-label="Expense date"
+                  type="date"
+                  value={expenseDraft.date}
+                  onChange={(event) => setExpenseDraft((current) => ({ ...current, date: event.target.value }))}
+                  className="c97-field"
+                />
+              </label>
+              <label style={{ display: "block" }}>
+                <span className="c97-kicker">Note</span>
+                <input
+                  aria-label="Expense note"
+                  type="text"
+                  value={expenseDraft.note}
+                  onChange={(event) => setExpenseDraft((current) => ({ ...current, note: event.target.value }))}
+                  placeholder="Coffee, rent, groceries"
+                  className="c97-field"
+                />
+              </label>
+              <div className="flex" style={{ gap: "var(--c97-sp-2)" }}>
+                <button
+                  type="submit"
+                  disabled={!resolvedExpenseCategoryId || !expenseDraft.amount || !expenseDraft.date}
+                  className="c97-btn c97-offset"
+                >
+                  {editingExpenseId ? "Save expense" : "Add expense"}
+                </button>
+                {editingExpenseId ? (
+                  <button type="button" onClick={resetExpenseDraft} className="c97-btn-ghost">
+                    Cancel
+                  </button>
+                ) : null}
+              </div>
+            </form>
+
+            {register.length === 0 ? (
+              <p className="c97-prose" style={{ marginTop: "var(--c97-sp-4)", color: "var(--c97-ink-2)" }}>
+                Ledger is empty. Add the first expense above.
+              </p>
+            ) : (
+              <div className="overflow-x-auto" style={{ marginTop: "var(--c97-sp-4)" }}>
+              <table className="c97-table c97-checkregister">
+                <thead>
+                  <tr>
+                    <th>Date</th>
+                    <th>Note</th>
+                    <th>Category</th>
+                    <th data-align="end">Amount</th>
+                    <th data-align="end">Balance</th>
+                    <th>
+                      <span className="sr-only">Actions</span>
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {register.map((row) => {
+                    const displayNote = row.note || row.categoryName;
+                    return (
+                      <tr key={row.id}>
+                        <td data-label="Date" title={row.date}>
+                          {formatExpenseDate(row.date)}
+                        </td>
+                        <td data-label="Note">{row.note || "—"}</td>
+                        <td data-label="Category">{row.categoryName}</td>
+                        <td data-label="Amount" data-align="end" className="c97-tabular">
+                          {formatCurrency(row.amount)}
+                        </td>
+                        <td data-label="Balance" data-align="end" className="c97-tabular">
+                          {formatSignedCurrency(row.balance)}
+                        </td>
+                        <td style={{ border: "none" }}>
+                          <div className="flex justify-end" style={{ gap: "var(--c97-sp-2)" }}>
                             <button
                               type="button"
-                              aria-label={`Edit ${expense.note || expense.categoryName} expense`}
-                              onClick={() => handleEditExpense(expense.id)}
-                              className="inline-flex min-h-touch items-center justify-center rounded-lg border border-[var(--home-rule)] bg-[var(--home-paper)] px-3 text-1xs font-medium text-[var(--home-ink-muted)] transition hover:border-[var(--home-signal)] hover:text-[var(--home-signal)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-signal)] focus-visible:ring-offset-2"
+                              aria-label={`Edit ${displayNote} expense`}
+                              onClick={() => handleEditExpense(row.id)}
+                              className="c97-btn-ghost"
                             >
                               Edit
                             </button>
                             <button
                               type="button"
-                              aria-label={`Delete ${expense.note || expense.categoryName} expense`}
+                              aria-label={`Delete ${displayNote} expense`}
                               onClick={() => {
-                                removeExpense(expense.id);
-                                if (editingExpenseId === expense.id) {
+                                removeExpense(row.id);
+                                if (editingExpenseId === row.id) {
                                   resetExpenseDraft();
                                 }
                               }}
-                              className="inline-flex min-h-touch items-center justify-center rounded-lg border border-[var(--home-rule)] bg-[var(--home-paper)] px-3 text-1xs font-medium text-[var(--home-ink-muted)] transition hover:border-[var(--home-negative)] hover:text-[var(--home-negative)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-signal)] focus-visible:ring-offset-2"
+                              className="c97-btn-ghost"
                             >
                               Delete
                             </button>
                           </div>
-                        </div>
-                      </li>
-                    ))}
-                  </ul>
-                )}
-              </section>
-            </div>
-
-          <aside
-            aria-label="Budget tools"
-            className="flex flex-col gap-4 rounded-[var(--radius-3xl)] border border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper-alt)_74%,var(--home-elev-mix))] p-5 shadow-[var(--shadow-sm)] lg:sticky lg:top-0 lg:self-start lg:max-h-[calc(100vh-7rem)] lg:overflow-y-auto"
-          >
-            <section aria-labelledby="rail-add-expense">
-              <p className="tool-rail-label" id="rail-add-expense">
-                <Plus size={12} aria-hidden="true" />
-                {editingExpenseId ? "Edit expense" : "Add expense"}
-              </p>
-              <form
-                onSubmit={handleExpenseSubmit}
-                className="flex flex-col gap-3 rounded-[var(--radius-2xl)] border border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper)_94%,var(--home-elev-mix))] p-3 shadow-[var(--shadow-sm)]"
-              >
-                <label className="block">
-                  <span className={fieldLabel}>Category</span>
-                  <select
-                    aria-label="Expense category"
-                    value={resolvedExpenseCategoryId}
-                    onChange={(event) =>
-                      setExpenseDraft((current) => ({
-                        ...current,
-                        categoryId: event.target.value,
-                      }))
-                    }
-                    className={fieldInput}
-                  >
-                    {activeMonth.categories.map((category) => (
-                      <option key={category.id} value={category.id}>
-                        {category.name || "Untitled"}
-                      </option>
-                    ))}
-                  </select>
-                </label>
-
-                <div className="grid grid-cols-2 gap-2">
-                  <label className="block">
-                    <span className={fieldLabel}>Amount</span>
-                    <input
-                      aria-label="Expense amount"
-                      type="number"
-                      min="0"
-                      step="0.01"
-                      value={expenseDraft.amount}
-                      onChange={(event) =>
-                        setExpenseDraft((current) => ({
-                          ...current,
-                          amount: event.target.value,
-                        }))
-                      }
-                      className={numericInput}
-                    />
-                  </label>
-                  <label className="block">
-                    <span className={fieldLabel}>Date</span>
-                    <input
-                      aria-label="Expense date"
-                      type="date"
-                      value={expenseDraft.date}
-                      onChange={(event) =>
-                        setExpenseDraft((current) => ({
-                          ...current,
-                          date: event.target.value,
-                        }))
-                      }
-                      className={fieldInput}
-                    />
-                  </label>
-                </div>
-
-                <label className="block">
-                  <span className={fieldLabel}>Note</span>
-                  <input
-                    aria-label="Expense note"
-                    type="text"
-                    value={expenseDraft.note}
-                    onChange={(event) =>
-                      setExpenseDraft((current) => ({
-                        ...current,
-                        note: event.target.value,
-                      }))
-                    }
-                    placeholder="Coffee, rent, groceries"
-                    className={fieldInput}
-                  />
-                </label>
-
-                <div className="flex flex-wrap gap-2">
-                  <button
-                    type="submit"
-                    disabled={
-                      !resolvedExpenseCategoryId || !expenseDraft.amount || !expenseDraft.date
-                    }
-                    className="inline-flex min-h-touch flex-1 items-center justify-center gap-1.5 rounded-lg bg-[var(--home-ink)] px-3 text-xs font-semibold text-[var(--home-paper)] shadow-[var(--shadow-sm)] transition hover:bg-[color-mix(in_srgb,var(--home-ink)_88%,var(--home-signal))] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-signal)] focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
-                  >
-                    <Plus className="h-3.5 w-3.5" />
-                    {editingExpenseId ? "Save expense" : "Add expense"}
-                  </button>
-                  {editingExpenseId ? (
-                    <button
-                      type="button"
-                      onClick={resetExpenseDraft}
-                      className="inline-flex min-h-touch items-center justify-center rounded-lg border border-[var(--home-rule)] bg-[var(--home-paper)] px-3 text-1xs font-semibold text-[var(--home-ink-muted)] transition hover:border-[var(--home-signal)] hover:text-[var(--home-signal)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-signal)] focus-visible:ring-offset-2"
-                    >
-                      Cancel
-                    </button>
-                  ) : null}
-                </div>
-              </form>
-            </section>
-
-            <section aria-labelledby="rail-top-categories">
-              <p className="tool-rail-label" id="rail-top-categories">
-                <Sparkles size={12} aria-hidden="true" />
-                Top categories
-              </p>
-              {topCategories.length === 0 ? (
-                <p className="text-1xs leading-6 text-[var(--home-ink-muted)]">
-                  No spend yet. Add an expense and the categories with the most movement will
-                  surface here.
-                </p>
-              ) : (
-                <ul className="flex flex-col gap-3">
-                  {topCategories.map((category) => {
-                    const utilWidth = `${Math.min(100, Math.max(0, category.utilization * 100))}%`;
-                    return (
-                      <li key={category.id} className="flex flex-col gap-1.5">
-                        <div className="flex items-baseline justify-between gap-2 text-1xs">
-                          <span className="truncate font-medium text-[var(--home-ink)]">
-                            {category.name || "Untitled"}
-                          </span>
-                          <span className="text-[var(--home-ink-muted)] [font-variant-numeric:tabular-nums]">
-                            {formatCurrency(category.spent)}
-                          </span>
-                        </div>
-                        <div className="h-1 overflow-hidden rounded-full bg-[color-mix(in_srgb,var(--home-paper-alt)_80%,var(--home-elev-mix))]">
-                          <div
-                            className={`h-full rounded-full ${
-                              category.overBudget
-                                ? "bg-[var(--home-negative)]"
-                                : category.utilization >= 0.85
-                                  ? "bg-[var(--home-warning)]"
-                                  : "bg-[var(--home-signal)]"
-                            }`}
-                            style={{ width: utilWidth }}
-                          />
-                        </div>
-                      </li>
+                        </td>
+                      </tr>
                     );
                   })}
-                </ul>
-              )}
-            </section>
-
-            <p className="tool-rail-foot">
-              <PiggyBank size={14} aria-hidden="true" />
-              Saved in your browser. No account, no server.
-            </p>
-          </aside>
-        </div>
-      </motion.div>
+                </tbody>
+              </table>
+              </div>
+            )}
+          </div>
+        </section>
       </div>
-    </section>
+    </>
   );
 }

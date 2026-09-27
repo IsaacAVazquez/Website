@@ -1,0 +1,53 @@
+/* NFL Pulse: the division grid below the hero. */
+
+.c97-nfl-divisions {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr));
+  gap: var(--c97-sp-4);
+}
+
+.c97-nfl-division-rows {
+  display: grid;
+  border-top: 1px solid var(--c97-rule);
+  margin: var(--c97-sp-2) 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.c97-nfl-division-row {
+  display: grid;
+  grid-template-columns: 10px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: var(--c97-sp-2);
+  min-height: 34px;
+  padding: var(--c97-sp-1) 0;
+  border-bottom: 1px solid var(--c97-rule);
+  font-size: var(--c97-fs-small);
+}
+
+.c97-nfl-division-stripe {
+  width: 10px;
+  height: 22px;
+  border: 1px solid var(--c97-ink-2);
+}
+
+.c97-nfl-division-name {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: var(--c97-ink);
+}
+
+.c97-nfl-division-leader {
+  margin-left: var(--c97-sp-2);
+  font-family: var(--c97-font-body);
+  font-size: var(--c97-fs-label);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--c97-label);
+}
+
+.c97-nfl-division-record {
+  text-align: right;
+  color: var(--c97-ink-2);
+}

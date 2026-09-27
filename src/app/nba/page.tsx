@@ -27,6 +27,14 @@ export default async function NbaPage({ searchParams }: NbaPageProps) {
   const initialState = normalizeNbaState(await searchParams);
   const summary = await getNbaSummarySnapshot();
   const initialTeamSnapshot = await getNbaTeamSnapshot(initialState.team).catch(() => null);
+  // Team colours live only on the per-team snapshots (hex without "#"), not
+  // on the lean `summary` the client renders from, so the server builds the
+  // small lookup once here.
+  const teamColors: Record<string, string | null> = {};
+  for (const [teamId, teamSnapshot] of Object.entries(nbaSnapshot.teamSnapshots)) {
+    const hex = teamSnapshot.team?.primaryColor ?? null;
+    teamColors[teamId] = hex ? `#${hex.replace(/^#/, "")}` : null;
+  }
   const breadcrumbs = [
     { name: "Home", url: "/" },
     { name: "NBA Pulse", url: "/nba" },
@@ -63,6 +71,7 @@ export default async function NbaPage({ searchParams }: NbaPageProps) {
         initialState={initialState}
         summary={summary}
         initialTeamSnapshot={initialTeamSnapshot}
+        teamColors={teamColors}
       />
     </>
   );

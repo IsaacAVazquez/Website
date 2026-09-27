@@ -113,28 +113,34 @@ test.describe("Product surfaces", () => {
   test("fintech tools accept calculator and ledger input", async ({ page }) => {
     await expectHealthyRoute(page, "/fintech-tools/interchange-iq", /Interchange IQ/i);
 
+    // Both pages now paint their inputs on the server, so input made before
+    // React hydrates is dropped. Retry until the page owns the field.
     const monthlyVolume = page.getByLabel("Monthly volume");
-    await monthlyVolume.evaluate((node) => {
-      const input = node as HTMLInputElement;
-      const valueSetter = Object.getOwnPropertyDescriptor(
-        window.HTMLInputElement.prototype,
-        "value"
-      )?.set;
+    await expect(async () => {
+      await monthlyVolume.evaluate((node) => {
+        const input = node as HTMLInputElement;
+        const valueSetter = Object.getOwnPropertyDescriptor(
+          window.HTMLInputElement.prototype,
+          "value"
+        )?.set;
 
-      valueSetter?.call(input, "125000");
-      input.dispatchEvent(new Event("input", { bubbles: true }));
-      input.dispatchEvent(new Event("change", { bubbles: true }));
-    });
-    await expect(monthlyVolume).toHaveAttribute("aria-valuenow", "125000");
+        valueSetter?.call(input, "125000");
+        input.dispatchEvent(new Event("input", { bubbles: true }));
+        input.dispatchEvent(new Event("change", { bubbles: true }));
+      });
+      await expect(monthlyVolume).toHaveAttribute("aria-valuenow", "125000", { timeout: 1_000 });
+    }).toPass({ timeout: 20_000 });
     await expect(page.getByTestId("interchange-iq-shell")).toBeVisible();
     await expectNoHorizontalOverflow(page);
 
     await expectHealthyRoute(page, "/fintech-tools/budget-planner", /Budget Planner/i);
     await expect(page.getByTestId("budget-planner-shell")).toBeVisible();
 
-    await page.getByLabel("Expense amount").fill("42.50");
-    await page.getByLabel("Expense note").fill("E2E lunch");
-    await expect(page.getByRole("button", { name: /^Add expense$/i })).toBeEnabled();
+    await expect(async () => {
+      await page.getByLabel("Expense amount").fill("42.50");
+      await page.getByLabel("Expense note").fill("E2E lunch");
+      await expect(page.getByRole("button", { name: /^Add expense$/i })).toBeEnabled({ timeout: 1_000 });
+    }).toPass({ timeout: 20_000 });
     await page.getByLabel("Expense note").press("Enter");
 
     await expect(page.getByText("E2E lunch")).toBeVisible();

@@ -1,0 +1,108 @@
+/* Decision Lab: the confidence/impact matrix, its rubber-stamp verdict, and
+ * the "why this verdict" contribution list beside it. */
+
+.c97-decision-signature {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: var(--c97-sp-5);
+  align-items: start;
+}
+
+@media (max-width: 840px) {
+  .c97-decision-signature {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+.c97-decision-matrix {
+  display: block;
+  width: 100%;
+}
+
+.c97-decision-axis-label {
+  font-family: var(--c97-font-mono);
+  font-size: 19px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  fill: var(--c97-ink-2);
+}
+
+
+.c97-decision-point-label {
+  font-family: var(--c97-font-mono);
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  fill: var(--c97-ink);
+}
+
+.c97-decision-stamp-word {
+  font-family: var(--c97-font-poster);
+  font-size: 52px;
+  letter-spacing: 0.02em;
+  fill: var(--c97-overprint);
+}
+
+/* The stamp's own group, so its stamp-down animation never touches the rest
+ * of the SVG (and never the page, which is what the blank-body bug did). */
+.c97-decision-stamp {
+  transform-box: fill-box;
+  transform-origin: center;
+  opacity: 1;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .c97-decision-stamp {
+    animation: c97-decision-stamp-down 260ms cubic-bezier(0.34, 1.56, 0.64, 1) both;
+  }
+}
+
+@keyframes c97-decision-stamp-down {
+  from {
+    opacity: 0;
+    transform: scale(1.35);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.c97-decision-caption {
+  margin: var(--c97-sp-2) 0 0;
+  font-size: var(--c97-fs-small);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--c97-ink-2);
+}
+
+.c97-decision-contribution-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: var(--c97-sp-3);
+  align-items: center;
+  padding: var(--c97-sp-2) 0;
+  border-bottom: 1px solid var(--c97-rule);
+}
+
+.c97-decision-contribution-row:last-child {
+  border-bottom: 0;
+}
+
+.c97-decision-body-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 320px);
+  gap: var(--c97-sp-5);
+}
+
+@media (max-width: 700px) {
+  .c97-decision-body-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+.c97-decision-preset-grid {
+  display: grid;
+  gap: var(--c97-sp-2);
+}

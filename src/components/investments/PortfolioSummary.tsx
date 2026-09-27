@@ -62,8 +62,6 @@ export function PortfolioSummary({
         summary={summary}
         holdings={holdings}
         marketStatus={marketStatus}
-        hasLiveQuotes={hasLiveQuotes}
-        allQuotesLive={allQuotesLive}
       />
     </div>
   );

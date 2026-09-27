@@ -1,42 +1,24 @@
 "use client";
 
-import {
-  startTransition,
-  useEffect,
-  useMemo,
-  useState,
-  type CSSProperties,
-} from "react";
+import { startTransition, useEffect, useMemo, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
+import { CircleAlert, ExternalLink, Flag } from "lucide-react";
+import { MetricCard, CrestAvatar, TeamResultPill, FixtureCard } from "@/components/football";
 import {
-  BarChart3,
-  CircleAlert,
-  ExternalLink,
-  Flag,
-  Shield,
-  TrendingUp,
-  Trophy,
-} from "lucide-react";
-import {
-  StatCard,
-  MetricCard,
-  CrestAvatar,
-  TeamResultPill,
-  FixtureCard,
-} from "@/components/football";
-import { HomeStatsPanel, type HomeStatsCell } from "@/components/home/HomeStatsPanel";
-import {
-  Article,
-  Briefcase,
-  Calendar,
-  ChartBar,
-  User,
-} from "@/components/ui/ServerIcons";
+  Catalog97ProjectHero,
+  type Catalog97Readout,
+} from "@/components/catalog97/Catalog97ProjectHero";
+import { SeedLadder, type LadderTeam, type SeedLadderConference } from "@/components/football/SeedLadderPanel";
+import { formatGamesGap, seedLadder, nflSeeds, type SeedBandSpec, type SeedLadderResult } from "@/components/football/seedLadder";
+import { PROJECT_PRESS } from "@/constants/projectPress";
+import { NflDivisionGrid, type DivisionGridGroup } from "./NflDivisionGrid";
+import "./nfl.css";
 import type {
   NFLLeader,
   NFLLeaderboards,
   NFLRouteState,
   NFLSummarySnapshot,
+  NFLTeamOption,
   NFLTeamSnapshot,
   NFLTeamStanding,
   NFLView,
@@ -60,41 +42,27 @@ interface NflClientProps {
 
 type LeaderCategory = keyof NFLLeaderboards;
 
-const REGULAR_SEASON_GAMES = 17;
+const NFL_BANDS: SeedBandSpec[] = [{ label: "In", throughSeed: 7 }, { label: "Out" }];
 
-const VIEW_OPTIONS: Array<{
-  id: NFLView;
-  label: string;
-  description: string;
-}> = [
-  {
-    id: "league",
-    label: "Full league",
-    description: "All 32 teams sorted by conference seeding.",
-  },
-  {
-    id: "afc",
-    label: "AFC",
-    description: "American Football Conference standings.",
-  },
-  {
-    id: "nfc",
-    label: "NFC",
-    description: "National Football Conference standings.",
-  },
-  {
-    id: "playoffs",
-    label: "Playoff field",
-    description: "The 14 teams that earned a postseason seed.",
-  },
+const DIVISION_ORDER = [
+  "AFC East",
+  "AFC North",
+  "AFC South",
+  "AFC West",
+  "NFC East",
+  "NFC North",
+  "NFC South",
+  "NFC West",
+] as const;
+
+const VIEW_OPTIONS: Array<{ id: NFLView; label: string }> = [
+  { id: "league", label: "Full league" },
+  { id: "afc", label: "AFC" },
+  { id: "nfc", label: "NFC" },
+  { id: "playoffs", label: "Playoff field" },
 ];
 
-const LEADER_TABS: Array<{
-  id: LeaderCategory;
-  label: string;
-  unit: string;
-  unitLong: string;
-}> = [
+const LEADER_TABS: Array<{ id: LeaderCategory; label: string; unit: string; unitLong: string }> = [
   { id: "passing", label: "Passing yards", unit: "yds", unitLong: "passing yards" },
   { id: "rushing", label: "Rushing yards", unit: "yds", unitLong: "rushing yards" },
   { id: "receiving", label: "Receiving yards", unit: "yds", unitLong: "receiving yards" },
@@ -113,15 +81,73 @@ async function fetchNflTeamSnapshot(
   return payload;
 }
 
-export function NflClient({
-  initialState,
-  summary,
-  initialTeamSnapshot,
-}: NflClientProps) {
+/**
+ * The NFL only has a real seed for the top seven per conference; everyone
+ * else gets a stable tiebreak order (win pct, then point differential) so
+ * the "first team out" in the gap calculation is the actual closest team,
+ * not an arbitrary one. That order never reaches the UI, since the ladder
+ * only displays the seeded band.
+ */
+function toLadderTeams(
+  teams: NFLTeamStanding[],
+  seeds: Map<string, number>,
+  optionsById: Map<string, NFLTeamOption>
+): LadderTeam[] {
+  const unseededByTiebreak = teams
+    .filter((team) => !seeds.has(team.id))
+    .toSorted((a, b) => b.winPct - a.winPct || b.pointDifferential - a.pointDifferential);
+  const outOrder = new Map(unseededByTiebreak.map((team, index) => [team.id, 8 + index] as const));
+
+  return teams.map((team) => ({
+    id: team.id,
+    seed: seeds.get(team.id) ?? outOrder.get(team.id) ?? 99,
+    wins: team.wins,
+    losses: team.losses,
+    ties: team.ties,
+    shortName: team.shortName,
+    record: formatRecord(team),
+    color: optionsById.get(team.id)?.primaryColor ?? null,
+  }));
+}
+
+/** Hides the unseeded "Out" band's rows without touching the computed gap. */
+function seededOnly(ladder: SeedLadderResult<LadderTeam>): SeedLadderResult<LadderTeam> {
+  return {
+    bands: ladder.bands.map((band, index) =>
+      index === ladder.bands.length - 1 ? { ...band, teams: [] } : band
+    ),
+    lines: ladder.lines,
+  };
+}
+
+function buildDivisionGroups(
+  teams: NFLTeamStanding[],
+  optionsById: Map<string, NFLTeamOption>
+): DivisionGridGroup[] {
+  return DIVISION_ORDER.map((division) => ({
+    name: division,
+    teams: teams
+      .filter((team) => team.division === division)
+      .toSorted((a, b) => a.divisionRank - b.divisionRank)
+      .map((team) => ({
+        id: team.id,
+        shortName: team.shortName,
+        record: formatRecord(team),
+        primaryColor: optionsById.get(team.id)?.primaryColor ?? null,
+        secondaryColor: optionsById.get(team.id)?.secondaryColor ?? null,
+        isLeader: team.divisionRank === 1,
+      })),
+  }));
+}
+
+export function NflClient({ initialState, summary, initialTeamSnapshot }: NflClientProps) {
   const router = useRouter();
   const searchParams = useSearchParams();
   const currentQuery = searchParams.toString();
   const currentHref = `${NFL_ROUTE}${currentQuery ? `?${currentQuery}` : ""}`;
+  const lead = PROJECT_PRESS[NFL_ROUTE].lead;
+  const standfirst =
+    "I wanted the playoff picture as it would stand if the season ended today. The snapshot carries no seeds, so I derive them from the standings, the four division leaders first and then the three best of the rest, and draw the line where the field ends.";
 
   const teams = summary.teams;
   const aliasMap = useMemo(() => buildTeamAliasMap(summary.teams), [summary.teams]);
@@ -130,6 +156,10 @@ export function NflClient({
   const teamShortNameById = useMemo(
     () => new Map(teams.map((team) => [team.id, team.shortName])),
     [teams]
+  );
+  const optionsById = useMemo(
+    () => new Map(summary.teamOptions.map((option) => [option.id, option])),
+    [summary.teamOptions]
   );
   const logoByTeamId = useMemo(
     () => new Map(summary.teamOptions.map((option) => [option.id, option.logo])),
@@ -140,11 +170,7 @@ export function NflClient({
     () =>
       new Map(
         teams
-          .toSorted(
-            (left, right) =>
-              right.pointsFor - left.pointsFor ||
-              right.winPct - left.winPct
-          )
+          .toSorted((left, right) => right.pointsFor - left.pointsFor || right.winPct - left.winPct)
           .map((team, index) => [team.id, index + 1] as const)
       ),
     [teams]
@@ -154,9 +180,7 @@ export function NflClient({
       new Map(
         teams
           .toSorted(
-            (left, right) =>
-              left.pointsAgainst - right.pointsAgainst ||
-              right.winPct - left.winPct
+            (left, right) => left.pointsAgainst - right.pointsAgainst || right.winPct - left.winPct
           )
           .map((team, index) => [team.id, index + 1] as const)
       ),
@@ -172,6 +196,25 @@ export function NflClient({
       }).format(new Date(summary.updatedAt)),
     [summary.updatedAt]
   );
+
+  const seeds = useMemo(() => nflSeeds(teams), [teams]);
+  const afcTeams = useMemo(() => teams.filter((team) => team.conference === "AFC"), [teams]);
+  const nfcTeams = useMemo(() => teams.filter((team) => team.conference === "NFC"), [teams]);
+  const afcLadder = useMemo(
+    () => seedLadder(toLadderTeams(afcTeams, seeds, optionsById), NFL_BANDS),
+    [afcTeams, seeds, optionsById]
+  );
+  const nfcLadder = useMemo(
+    () => seedLadder(toLadderTeams(nfcTeams, seeds, optionsById), NFL_BANDS),
+    [nfcTeams, seeds, optionsById]
+  );
+  const tightestGap = useMemo(() => {
+    const gaps = [...afcLadder.lines, ...nfcLadder.lines]
+      .map((line) => line.gamesClear)
+      .filter((gap): gap is number => gap !== null);
+    return gaps.length > 0 ? Math.min(...gaps) : null;
+  }, [afcLadder, nfcLadder]);
+  const divisionGroups = useMemo(() => buildDivisionGroups(teams, optionsById), [teams, optionsById]);
 
   const hasManagedParams =
     searchParams.get("view") !== null || searchParams.get("team") !== null;
@@ -194,10 +237,7 @@ export function NflClient({
   const teamSnapshot = selectedTeam ? teamSnapshots[selectedTeam.id] ?? null : null;
   const isTeamSnapshotLoading = selectedTeam ? loadingTeamId === selectedTeam.id : false;
   const desiredHref = buildHref(
-    {
-      view: routeState.view,
-      team: selectedTeamId,
-    },
+    { view: routeState.view, team: selectedTeamId },
     defaultState,
     aliasMap,
     searchParams
@@ -272,434 +312,266 @@ export function NflClient({
     };
   }, [selectedTeam, teamSnapshots]);
 
-  const conferenceContext = useMemo(() => buildConferenceContext(teams), [teams]);
+  const conferenceContext = useMemo(() => buildConferenceContext(teams, seeds), [teams, seeds]);
 
-  const [activeDetailTab, setActiveDetailTab] = useState<
-    "team" | "fixtures" | "leaders"
-  >("team");
+  const [activeDetailTab, setActiveDetailTab] = useState<"team" | "fixtures" | "leaders">("team");
   const [activeLeaderTab, setActiveLeaderTab] = useState<LeaderCategory>("passing");
+
+  const afcTop = conferenceContext.AFC.topSeed;
+  const nfcTop = conferenceContext.NFC.topSeed;
+  const totalRegSeasonWeeks = 18;
+  const heroReadouts: [Catalog97Readout, Catalog97Readout, Catalog97Readout] = [
+    { label: "AFC leader", value: afcTop ? formatRecord(afcTop) : "—", detail: afcTop?.shortName },
+    { label: "NFC leader", value: nfcTop ? formatRecord(nfcTop) : "—", detail: nfcTop?.shortName },
+    {
+      label: "Tightest line",
+      value: tightestGap !== null ? formatGamesGap(tightestGap) : "—",
+      detail: "separates the seventh seed from the closest team out",
+    },
+  ];
+  const heroMeta = `${summary.sourceLabel} · Season ${summary.season} · ${
+    summary.week ? `through week ${summary.week} of ${totalRegSeasonWeeks}` : "final regular season"
+  } · snapshot ${snapshotDateLabel}`;
+
+  const ladderConferences: SeedLadderConference[] = [
+    { label: "AFC", ladder: seededOnly(afcLadder) },
+    { label: "NFC", ladder: seededOnly(nfcLadder) },
+  ];
+  const heroSignature = (
+    <SeedLadder
+      conferences={ladderConferences}
+      note="These seeds come from each team's division rank and conference rank in the snapshot, so they read as the picture if the season ended today."
+    />
+  );
 
   if (!selectedTeam) {
     return (
-      <div className="home-page min-h-screen">
-        <div className="home-shell home-section space-y-5 sm:space-y-6">
-          <div className="rounded-[var(--radius-2xl)] border border-dashed border-[var(--home-rule)] bg-[var(--home-paper-alt)] p-6 text-sm text-[var(--home-ink-muted)]">
-            <p className="home-kicker mb-2 text-[var(--home-ink)]">NFL Pulse</p>
-            <p className="mb-0">
-              Conference standings, playoff seeding, and stat leaders will
-              appear here once the next snapshot is published.
-            </p>
-          </div>
-        </div>
-      </div>
+      <Catalog97ProjectHero
+        ink={lead}
+        title="NFL Pulse"
+        standfirst={standfirst}
+        meta="Conference standings, playoff seeding, and stat leaders will appear here once the next snapshot is published."
+      >
+        {heroSignature}
+      </Catalog97ProjectHero>
     );
   }
 
-  const teamStoryline = getTeamStoryline(selectedTeam, conferenceContext);
+  const teamStoryline = getTeamStoryline(selectedTeam, conferenceContext, seeds);
   const teamPressurePoints = getTeamPressurePoints(selectedTeam, {
     conferenceContext,
     offenseRankByTeam,
     defenseRankByTeam,
+    seeds,
   });
-  const selectedZone = getTeamZone(selectedTeam);
+  const selectedZone = getTeamZone(selectedTeam, seeds);
+  const selectedSeed = seeds.get(selectedTeam.id) ?? null;
   const selectedTeamLeaders = collectLeadersForTeam(selectedTeam.id, summary.leaders);
   const formSequence = teamSnapshot?.form?.sequence ?? [];
   const recentFixtures = (teamSnapshot?.recentFixtures ?? []).slice(0, 3);
   const upcomingFixtures = (teamSnapshot?.upcomingFixtures ?? []).slice(0, 3);
 
-  const activeLeaderMeta =
-    LEADER_TABS.find((tab) => tab.id === activeLeaderTab) ?? LEADER_TABS[0];
+  const activeLeaderMeta = LEADER_TABS.find((tab) => tab.id === activeLeaderTab) ?? LEADER_TABS[0];
   const activeLeaders = summary.leaders[activeLeaderTab] ?? [];
 
-  const afcContext = conferenceContext.AFC;
-  const nfcContext = conferenceContext.NFC;
-  const afcTopSeed = afcContext.topSeed;
-  const nfcTopSeed = nfcContext.topSeed;
-  const afcCutoff = afcContext.lastIn;
-  const afcFirstOut = afcContext.firstOut;
-  const nfcCutoff = nfcContext.lastIn;
-  const nfcFirstOut = nfcContext.firstOut;
-
-  // Stats panel cells
-  const passingLeader = summary.leaders.passing[0] ?? null;
-  const rushingLeader = summary.leaders.rushing[0] ?? null;
-  const receivingLeader = summary.leaders.receiving[0] ?? null;
-  const totalRegSeasonWeeks = 18;
-
-  const statsPanelCells: HomeStatsCell[] = [
-    {
-      label: "AFC #1 seed",
-      tooltip: "Top seed in the American Football Conference and current record.",
-      value: afcTopSeed ? `${afcTopSeed.shortName} · ${formatRecord(afcTopSeed)}` : "—",
-      sub: afcTopSeed ? `${formatDifferential(afcTopSeed.pointDifferential)} pt diff` : undefined,
-    },
-    {
-      label: "NFC #1 seed",
-      tooltip: "Top seed in the National Football Conference and current record.",
-      value: nfcTopSeed ? `${nfcTopSeed.shortName} · ${formatRecord(nfcTopSeed)}` : "—",
-      sub: nfcTopSeed ? `${formatDifferential(nfcTopSeed.pointDifferential)} pt diff` : undefined,
-    },
-    {
-      label: "AFC playoff cutoff",
-      tooltip: "Last AFC team currently inside the playoff field and their record.",
-      value: afcCutoff ? `${afcCutoff.shortName} · ${formatRecord(afcCutoff)}` : "—",
-      sub: afcFirstOut
-        ? `${Math.max(0, afcCutoff.wins - afcFirstOut.wins)} wins clear of ${afcFirstOut.shortName}`
-        : undefined,
-    },
-    {
-      label: "NFC playoff cutoff",
-      tooltip: "Last NFC team currently inside the playoff field and their record.",
-      value: nfcCutoff ? `${nfcCutoff.shortName} · ${formatRecord(nfcCutoff)}` : "—",
-      sub: nfcFirstOut
-        ? `${Math.max(0, nfcCutoff.wins - nfcFirstOut.wins)} wins clear of ${nfcFirstOut.shortName}`
-        : undefined,
-    },
-    {
-      label: "Passing leader",
-      tooltip: "Player leading the league in passing yards this season.",
-      value: passingLeader
-        ? `${passingLeader.name} · ${passingLeader.total.toLocaleString()} yds`
-        : "—",
-      sub: passingLeader ? passingLeader.teamCode : undefined,
-    },
-    {
-      label: "Rushing leader",
-      tooltip: "Player leading the league in rushing yards this season.",
-      value: rushingLeader
-        ? `${rushingLeader.name} · ${rushingLeader.total.toLocaleString()} yds`
-        : "—",
-      sub: rushingLeader ? rushingLeader.teamCode : undefined,
-    },
-    {
-      label: "Receiving leader",
-      tooltip: "Player leading the league in receiving yards this season.",
-      value: receivingLeader
-        ? `${receivingLeader.name} · ${receivingLeader.total.toLocaleString()} yds`
-        : "—",
-      sub: receivingLeader ? receivingLeader.teamCode : undefined,
-    },
-    {
-      label: "Through week",
-      tooltip: "Most recently completed week within the regular season.",
-      value: summary.week ? `Week ${summary.week} of ${totalRegSeasonWeeks}` : "Final regular season",
-    },
-  ];
-
   return (
-    <div className="home-page min-h-screen">
-      <div className="home-shell home-section space-y-5 sm:space-y-6">
-        {/* Page header */}
-        <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
-          <div>
-            <p className="home-kicker mb-1">NFL Data Tool</p>
-            <h1 className="text-2xl font-bold tracking-tight text-[var(--home-ink)] sm:text-3xl">
-              NFL Pulse
-            </h1>
-            <p className="mt-1 max-w-[52ch] text-sm leading-6 text-[var(--home-ink-muted)]">
-              The NFL season compressed into one view. Conference seedings, division leaders, the playoff cutoff, and stat leaders, refreshed from a curated NFLverse snapshot.
-            </p>
-          </div>
-          <div className="flex flex-wrap gap-1.5 text-2xs text-[var(--home-ink-muted)]">
-            {[
-              `Season ${summary.season}`,
-              summary.week ? `Through Week ${summary.week}` : "Final regular season",
-              `Snapshot ${snapshotDateLabel}`,
-            ].map((label) => (
-              <span
-                key={label}
-                className="rounded-full border border-[var(--home-rule)] bg-[var(--home-paper-alt)] px-2.5 py-1 font-medium"
-              >
-                {label}
-              </span>
-            ))}
+    <>
+      <Catalog97ProjectHero ink={lead} title="NFL Pulse" standfirst={standfirst} meta={heroMeta} readouts={heroReadouts}>
+        {heroSignature}
+      </Catalog97ProjectHero>
+
+      <section className="c97-band c97-sheet" data-c97-surface="bone" data-seam="torn">
+        <div className="c97-shell">
+          <h2 className="c97-poster-sm">Divisions</h2>
+          <p className="c97-prose mt-2" style={{ fontSize: "var(--c97-fs-small)" }}>
+            Each team striped in its own colours, division leaders marked.
+          </p>
+          <div className="mt-4">
+            <NflDivisionGrid divisions={divisionGroups} />
           </div>
         </div>
+      </section>
 
-        {/* Dense stats panel */}
-        <HomeStatsPanel
-          id="nfl-stats-panel"
-          title="NFL at a glance"
-          meta={`Live · refreshed ${snapshotDateLabel}`}
-          cells={statsPanelCells}
-          pills={[
-            { label: "AFC", href: "?view=afc", icon: ChartBar },
-            { label: "NFC", href: "?view=nfc", icon: ChartBar },
-            { label: "Playoff bracket", href: "?view=playoffs", icon: Briefcase },
-            { label: "Stat leaders", href: "#nfl-standings", icon: User },
-            { label: "Schedule", href: "#nfl-standings", icon: Calendar },
-            { label: "Article", href: "/writing", icon: Article },
-          ]}
-        />
+      <section className="c97-band c97-sheet" data-c97-surface="paper" data-seam="torn">
+        <div className="c97-shell">
+          <div className="flex flex-wrap items-end justify-between gap-3">
+            <h2 className="c97-poster-sm">Standings</h2>
+            <p className="c97-meta">{visibleTeams.length} teams</p>
+          </div>
 
-        {/* Key gaps */}
-        <div className="grid grid-cols-2 gap-3 md:grid-cols-4">
-          {afcTopSeed && (
-            <StatCard
-              variant="compact"
-              eyebrow="AFC #1 seed"
-              metric={`${afcTopSeed.shortName} · ${formatRecord(afcTopSeed)}`}
-              detail={`${formatDifferential(afcTopSeed.pointDifferential)} pt diff`}
-              icon={<Trophy className="h-4 w-4" />}
-            />
-          )}
-          {nfcTopSeed && (
-            <StatCard
-              variant="compact"
-              eyebrow="NFC #1 seed"
-              metric={`${nfcTopSeed.shortName} · ${formatRecord(nfcTopSeed)}`}
-              detail={`${formatDifferential(nfcTopSeed.pointDifferential)} pt diff`}
-              icon={<TrendingUp className="h-4 w-4" />}
-            />
-          )}
-          {afcCutoff && (
-            <StatCard
-              variant="compact"
-              eyebrow="AFC playoff cutoff"
-              metric={`${afcCutoff.shortName} · ${formatRecord(afcCutoff)}`}
-              detail={
-                afcFirstOut
-                  ? `${Math.max(0, afcCutoff.wins - afcFirstOut.wins)} wins clear of ${afcFirstOut.shortName}`
-                  : `Last AFC playoff team`
-              }
-              icon={<Shield className="h-4 w-4" />}
-            />
-          )}
-          {nfcCutoff && (
-            <StatCard
-              variant="compact"
-              eyebrow="NFC playoff cutoff"
-              metric={`${nfcCutoff.shortName} · ${formatRecord(nfcCutoff)}`}
-              detail={
-                nfcFirstOut
-                  ? `${Math.max(0, nfcCutoff.wins - nfcFirstOut.wins)} wins clear of ${nfcFirstOut.shortName}`
-                  : `Last NFC playoff team`
-              }
-              icon={<BarChart3 className="h-4 w-4" />}
-            />
-          )}
-        </div>
+          <div role="group" aria-label="Conference and seeding view" className="c97-segmented mt-4">
+            {VIEW_OPTIONS.map((option) => {
+              const isActive = option.id === routeState.view;
+              return (
+                <button
+                  key={option.id}
+                  type="button"
+                  onClick={() => handleViewChange(option.id)}
+                  aria-pressed={isActive}
+                  className="min-h-[44px] text-sm font-semibold"
+                >
+                  {option.label}{" "}
+                  <span className="c97-mono" style={{ color: "var(--c97-label)" }}>
+                    {filterTeams(summary.teams, option.id).length}
+                  </span>
+                </button>
+              );
+            })}
+          </div>
 
-        {/* Main standings + sidebar */}
-        <div id="nfl-standings" className="grid gap-5 md:grid-cols-[minmax(0,1fr)_280px] lg:grid-cols-[minmax(0,1fr)_320px]">
-          <section className="rounded-[var(--radius-2xl)] border border-[var(--home-rule)] bg-[var(--home-paper-raised)] p-5 sm:p-6 shadow-[var(--shadow-sm)]">
-            <div className="flex items-center justify-between border-b border-[var(--home-rule)] pb-4">
-              <h2 className="text-lg font-bold text-[var(--home-ink)]">Standings</h2>
-              <span className="text-sm text-[var(--home-ink-muted)]">{visibleTeams.length} teams</span>
-            </div>
-
-            <div className="mt-4 flex flex-wrap gap-2">
-              {VIEW_OPTIONS.map((option) => {
-                const isActive = option.id === routeState.view;
-                return (
-                  <button
-                    key={option.id}
-                    type="button"
-                    onClick={() => handleViewChange(option.id)}
-                    aria-pressed={isActive}
-                    className="inline-flex min-h-[44px] items-center gap-2 rounded-full border px-4 py-2 text-sm font-medium transition-colors"
-                    style={getViewButtonStyle(isActive)}
-                  >
-                    <span className="text-[var(--home-ink)]">{option.label}</span>
-                    <span className="text-xs text-[var(--home-ink-soft)]">
-                      {filterTeams(summary.teams, option.id).length}
-                    </span>
-                  </button>
-                );
-              })}
-            </div>
-
+          <div className="mt-6 grid gap-8 xl:grid-cols-[minmax(0,1fr)_320px]">
             <div
-              className="scroll-shadow-x mt-6 overflow-x-auto"
               role="region"
               aria-label="NFL standings (scrollable)"
               tabIndex={0}
+              style={{ overflowX: "auto" }}
             >
-              <table className="min-w-full border-separate border-spacing-y-2" aria-label="NFL standings">
+              <table className="c97-table" aria-label="NFL standings">
                 <thead>
-                  <tr className="text-left text-xs uppercase tracking-[0.14em] text-[var(--home-ink-soft)]">
-                    <th scope="col" className="px-3 py-2 font-semibold">Seed</th>
-                    <th scope="col" className="px-3 py-2 font-semibold">Team</th>
-                    <th scope="col" className="hidden px-3 py-2 font-semibold sm:table-cell">Record</th>
-                    <th scope="col" className="px-3 py-2 font-semibold">Pct</th>
-                    <th scope="col" className="hidden px-3 py-2 font-semibold md:table-cell">Division</th>
-                    <th scope="col" className="hidden px-3 py-2 font-semibold lg:table-cell">PF</th>
-                    <th scope="col" className="hidden px-3 py-2 font-semibold lg:table-cell">PA</th>
-                    <th scope="col" className="px-3 py-2 font-semibold">Diff</th>
+                  <tr>
+                    <th scope="col">Seed</th>
+                    <th scope="col">Team</th>
+                    <th scope="col">Record</th>
+                    <th scope="col" data-align="end">Pct</th>
+                    <th scope="col">Division</th>
+                    <th scope="col" data-align="end">PF</th>
+                    <th scope="col" data-align="end">PA</th>
+                    <th scope="col" data-align="end">Diff</th>
                   </tr>
                 </thead>
                 <tbody>
                   {visibleTeams.map((team) => {
                     const isSelected = team.id === selectedTeam.id;
-                    const zone = getTeamZone(team);
+                    const zone = getTeamZone(team, seeds);
                     return (
                       <tr
                         key={team.id}
-                        className="border border-[var(--home-rule)]"
-                        style={getTableRowStyle(isSelected)}
+                        style={isSelected ? { boxShadow: "inset 4px 0 0 0 var(--c97-ink)" } : undefined}
                       >
-                        <td className="rounded-l-2xl px-3 py-3 align-middle">
-                          <div className="flex items-center gap-2">
+                        <td>
+                          <span className="inline-flex items-center gap-1.5">
                             <span
-                              className="h-2 w-2 flex-shrink-0 rounded-full"
-                              style={{ backgroundColor: getZoneDotColor(zone) }}
-                              title={getZoneLabel(zone)}
+                              aria-hidden="true"
+                              style={{
+                                width: 8,
+                                height: 8,
+                                display: "inline-block",
+                                background: zoneDotColor(zone),
+                              }}
                             />
-                            <span className="text-sm font-semibold text-[var(--home-ink)]">
-                              {team.seed ?? "—"}
-                            </span>
-                          </div>
+                            {seeds.get(team.id) ?? "—"}
+                          </span>
                         </td>
-                        <td className="px-3 py-3 align-middle">
+                        <td>
                           <button
                             type="button"
                             onClick={() => handleTeamChange(team.id)}
                             aria-pressed={isSelected}
                             aria-label={`Show ${team.name} details`}
-                            className="flex min-h-[44px] w-full items-center gap-2 rounded-[var(--radius-xl)] text-left"
+                            className="flex min-h-[44px] items-center gap-2 text-left"
                           >
-                            <CrestAvatar
-                              crest={logoByTeamId.get(team.id) ?? null}
-                              name={team.shortName}
-                              size="sm"
-                            />
-                            <span className="font-semibold text-[var(--home-ink)]">
-                              {team.shortName}
-                            </span>
+                            <CrestAvatar crest={logoByTeamId.get(team.id) ?? null} name={team.shortName} size="sm" />
+                            <span style={{ fontWeight: 600, color: "var(--c97-ink)" }}>{team.shortName}</span>
                           </button>
                         </td>
-                        <td className="hidden px-3 py-3 align-middle text-sm text-[var(--home-ink-muted)] sm:table-cell">
-                          {formatRecord(team)}
-                        </td>
-                        <td className="px-3 py-3 align-middle text-sm font-semibold text-[var(--home-ink)]">
-                          {team.winPct.toFixed(3).replace(/^0/, "")}
-                        </td>
-                        <td className="hidden px-3 py-3 align-middle text-sm text-[var(--home-ink-muted)] md:table-cell">
-                          {team.division}
-                        </td>
-                        <td className="hidden px-3 py-3 align-middle text-sm text-[var(--home-ink-muted)] lg:table-cell">
-                          {team.pointsFor}
-                        </td>
-                        <td className="hidden px-3 py-3 align-middle text-sm text-[var(--home-ink-muted)] lg:table-cell">
-                          {team.pointsAgainst}
-                        </td>
-                        <td className="rounded-r-2xl px-3 py-3 align-middle text-sm font-medium text-[var(--home-ink)]">
-                          {formatDifferential(team.pointDifferential)}
-                        </td>
+                        <td>{formatRecord(team)}</td>
+                        <td data-align="end">{team.winPct.toFixed(3).replace(/^0/, "")}</td>
+                        <td>{team.division}</td>
+                        <td data-align="end">{team.pointsFor}</td>
+                        <td data-align="end">{team.pointsAgainst}</td>
+                        <td data-align="end">{formatDifferential(team.pointDifferential)}</td>
                       </tr>
                     );
                   })}
                 </tbody>
               </table>
             </div>
-          </section>
 
-          {/* Compact team sidebar */}
-          <aside className="md:sticky md:top-0 md:self-start">
-            <section
-              className="rounded-[var(--radius-2xl)] border border-[var(--home-rule)] bg-[var(--home-paper-raised)] p-5 shadow-[var(--shadow-sm)]"
-              aria-live="polite"
-              data-testid="nfl-selected-team"
-            >
-              <div className="flex items-start gap-3">
-                <CrestAvatar
-                  crest={logoByTeamId.get(selectedTeam.id) ?? null}
-                  name={selectedTeam.name}
-                  size="lg"
-                />
-                <div className="min-w-0 flex-1">
-                  <h2 className="truncate text-lg font-bold text-[var(--home-ink)]">
-                    {selectedTeam.name}
-                  </h2>
-                  <div className="mt-1.5 flex flex-wrap gap-1.5">
-                    <span
-                      className="inline-flex items-center rounded-full border px-2.5 py-1 text-2xs font-semibold uppercase tracking-[0.12em]"
-                      style={getZonePillStyle(selectedZone)}
-                    >
-                      {getZoneLabel(selectedZone)}
-                    </span>
-                    <span className="inline-flex items-center rounded-full border border-[var(--home-rule)] bg-[var(--home-paper-alt)] px-2.5 py-1 text-2xs font-semibold uppercase tracking-[0.12em] text-[var(--home-ink-muted)]">
-                      {formatRecord(selectedTeam)}
-                    </span>
-                    <span className="inline-flex items-center rounded-full border border-[var(--home-rule)] bg-[var(--home-paper-alt)] px-2.5 py-1 text-2xs font-semibold uppercase tracking-[0.12em] text-[var(--home-ink-muted)]">
-                      {selectedTeam.division}
-                    </span>
+            <aside>
+              <section className="c97-panel" aria-live="polite" data-testid="nfl-selected-team">
+                <div className="flex items-start gap-3">
+                  <CrestAvatar crest={logoByTeamId.get(selectedTeam.id) ?? null} name={selectedTeam.name} size="lg" />
+                  <div className="min-w-0 flex-1">
+                    <h2 className="c97-serif c97-h3">{selectedTeam.name}</h2>
+                    <div className="c97-meta mt-1.5" style={{ textTransform: "none" }}>
+                      <span className={zoneChipClass(selectedZone)}>{getZoneLabel(selectedZone)}</span>
+                      <span className="c97-chip">{formatRecord(selectedTeam)}</span>
+                      <span className="c97-chip">{selectedTeam.division}</span>
+                    </div>
+                  </div>
+                  <div className="c97-stat">
+                    <p className="c97-stat-label">Seed</p>
+                    <p className="c97-stat-value">{selectedSeed ?? "—"}</p>
                   </div>
                 </div>
-                <div className="flex-shrink-0 rounded-[var(--radius-xl)] bg-[var(--home-signal)] px-3 py-2 text-center text-[var(--home-paper)] shadow-sm">
-                  <p className="text-3xs uppercase tracking-[0.14em] opacity-80">Seed</p>
-                  <p className="text-xl font-bold">{selectedTeam.seed ?? "—"}</p>
-                </div>
-              </div>
 
-              <dl className="mt-4 grid grid-cols-2 gap-x-4 gap-y-2 border-t border-[var(--home-rule)] pt-4">
-                {(
-                  [
-                    ["Win %", selectedTeam.winPct.toFixed(3).replace(/^0/, "")],
-                    ["Record", formatRecord(selectedTeam)],
-                    ["Offense", `#${offenseRankByTeam.get(selectedTeam.id) ?? "-"}`],
-                    ["Defense", `#${defenseRankByTeam.get(selectedTeam.id) ?? "-"}`],
+                <dl className="mt-4 grid grid-cols-2 gap-x-4 gap-y-2 border-t pt-4" style={{ borderColor: "var(--c97-rule)" }}>
+                  {(
                     [
-                      "PF / game",
-                      formatPerGame(
-                        selectedTeam.pointsFor /
-                          Math.max(1, selectedTeam.wins + selectedTeam.losses + selectedTeam.ties)
-                      ),
-                    ],
-                    [
-                      "PA / game",
-                      formatPerGame(
-                        selectedTeam.pointsAgainst /
-                          Math.max(1, selectedTeam.wins + selectedTeam.losses + selectedTeam.ties)
-                      ),
-                    ],
-                  ] as const
-                ).map(([label, value]) => (
-                  <div key={label} className="flex items-baseline justify-between gap-2">
-                    <dt className="text-2xs font-semibold uppercase tracking-[0.12em] text-[var(--home-ink-soft)]">
-                      {label}
-                    </dt>
-                    <dd className="text-sm font-bold text-[var(--home-ink)]">{value}</dd>
+                      ["Win %", selectedTeam.winPct.toFixed(3).replace(/^0/, "")],
+                      ["Record", formatRecord(selectedTeam)],
+                      ["Offense", `#${offenseRankByTeam.get(selectedTeam.id) ?? "-"}`],
+                      ["Defense", `#${defenseRankByTeam.get(selectedTeam.id) ?? "-"}`],
+                      [
+                        "PF / game",
+                        formatPerGame(
+                          selectedTeam.pointsFor /
+                            Math.max(1, selectedTeam.wins + selectedTeam.losses + selectedTeam.ties)
+                        ),
+                      ],
+                      [
+                        "PA / game",
+                        formatPerGame(
+                          selectedTeam.pointsAgainst /
+                            Math.max(1, selectedTeam.wins + selectedTeam.losses + selectedTeam.ties)
+                        ),
+                      ],
+                    ] as const
+                  ).map(([label, value]) => (
+                    <div key={label} className="flex items-baseline justify-between gap-2">
+                      <dt className="c97-kicker">{label}</dt>
+                      <dd className="c97-mono" style={{ margin: 0, fontWeight: 600, color: "var(--c97-ink)" }}>{value}</dd>
+                    </div>
+                  ))}
+                </dl>
+
+                {formSequence.length > 0 && (
+                  <div className="mt-4 border-t pt-4" style={{ borderColor: "var(--c97-rule)" }}>
+                    <p className="c97-kicker">Form (last 5)</p>
+                    <div className="mt-2 flex gap-1.5">
+                      {formatTeamFormPills(formSequence.slice(-5)).map((result, i) => (
+                        <TeamResultPill key={i} result={result} />
+                      ))}
+                    </div>
                   </div>
-                ))}
-              </dl>
+                )}
 
-              {formSequence.length > 0 && (
-                <div className="mt-4 border-t border-[var(--home-rule)] pt-4">
-                  <p className="text-2xs font-semibold uppercase tracking-[0.12em] text-[var(--home-ink-soft)]">
-                    Form (last 5)
-                  </p>
-                  <div className="mt-2 flex gap-1.5">
-                    {formatTeamFormPills(formSequence.slice(-5)).map((result, i) => (
-                      <TeamResultPill key={i} result={result} />
-                    ))}
-                  </div>
-                </div>
-              )}
-
-              <p className="mt-3 line-clamp-2 text-sm leading-relaxed text-[var(--home-ink-muted)]">
-                {teamStoryline}
-              </p>
-
-              {!teamSnapshot && (isTeamSnapshotLoading || teamSnapshotError) ? (
-                <p
-                  className="mt-4 border-t border-[var(--home-rule)] pt-4 text-sm text-[var(--home-ink-muted)]"
-                  role={teamSnapshotError ? "alert" : "status"}
-                  aria-live="polite"
-                >
-                  {isTeamSnapshotLoading ? "Loading team snapshot…" : teamSnapshotError}
+                <p className="c97-prose mt-3 line-clamp-2" style={{ fontSize: "var(--c97-fs-small)" }}>
+                  {teamStoryline}
                 </p>
-              ) : null}
-            </section>
-          </aside>
-        </div>
 
-        {/* Tabbed detail strip */}
-        <div className="rounded-[var(--radius-2xl)] border border-[var(--home-rule)] bg-[var(--home-paper-raised)] p-5 sm:p-6 shadow-[var(--shadow-sm)]">
+                {!teamSnapshot && (isTeamSnapshotLoading || teamSnapshotError) ? (
+                  <p
+                    className="c97-prose mt-4 border-t pt-4"
+                    style={{ borderColor: "var(--c97-rule)", fontSize: "var(--c97-fs-small)" }}
+                    role={teamSnapshotError ? "alert" : "status"}
+                    aria-live="polite"
+                  >
+                    {isTeamSnapshotLoading ? "Loading team snapshot…" : teamSnapshotError}
+                  </p>
+                ) : null}
+              </section>
+            </aside>
+          </div>
+        </div>
+      </section>
+
+      <section className="c97-band c97-sheet" data-c97-surface="bone" data-seam="torn">
+        <div className="c97-shell">
           <div
-            className="flex gap-2 overflow-x-auto rounded-[var(--radius-3xl)] border border-[var(--home-rule)] bg-[var(--home-paper-raised)] p-1.5"
             role="tablist"
             aria-label="Team and league details"
+            className="c97-segmented"
           >
             {(
               [
@@ -717,13 +589,8 @@ export function NflClient({
                   type="button"
                   aria-selected={isActive}
                   aria-controls="nfl-detail-panel"
-                  tabIndex={isActive ? 0 : -1}
                   onClick={() => setActiveDetailTab(tab.id)}
-                  className={`min-h-[44px] whitespace-nowrap rounded-[var(--radius-2xl)] px-5 py-2.5 text-sm font-semibold transition-colors ${
-                    isActive
-                      ? "bg-[var(--home-signal)] text-[var(--home-paper)] shadow-sm"
-                      : "text-[var(--home-ink-muted)] hover:bg-[var(--home-paper-alt)] hover:text-[var(--home-ink)]"
-                  }`}
+                  className="min-h-[44px] text-sm font-semibold"
                 >
                   {tab.label}
                 </button>
@@ -731,49 +598,25 @@ export function NflClient({
             })}
           </div>
 
-          <div
-            id="nfl-detail-panel"
-            role="tabpanel"
-            aria-labelledby={`nfl-detail-tab-${activeDetailTab}`}
-            className="mt-6"
-          >
+          <div id="nfl-detail-panel" role="tabpanel" aria-labelledby={`nfl-detail-tab-${activeDetailTab}`} className="mt-6">
             {activeDetailTab === "team" && (
               <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
                 <div className="space-y-5">
                   <div>
-                    <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[var(--home-ink-soft)]">
-                      Performance
-                    </p>
-                    <div className="mt-3 grid grid-cols-2 gap-3">
-                      <MetricCard
-                        label="Win %"
-                        value={selectedTeam.winPct.toFixed(3).replace(/^0/, "")}
-                      />
+                    <p className="c97-kicker mb-2">Performance</p>
+                    <div className="grid grid-cols-2 gap-3">
+                      <MetricCard label="Win %" value={selectedTeam.winPct.toFixed(3).replace(/^0/, "")} />
                       <MetricCard label="Record" value={formatRecord(selectedTeam)} />
-                      <MetricCard
-                        label="Offense rank"
-                        value={`#${offenseRankByTeam.get(selectedTeam.id) ?? "-"}`}
-                      />
-                      <MetricCard
-                        label="Defense rank"
-                        value={`#${defenseRankByTeam.get(selectedTeam.id) ?? "-"}`}
-                      />
-                      <MetricCard
-                        label="Points for"
-                        value={`${selectedTeam.pointsFor}`}
-                      />
-                      <MetricCard
-                        label="Points against"
-                        value={`${selectedTeam.pointsAgainst}`}
-                      />
+                      <MetricCard label="Offense rank" value={`#${offenseRankByTeam.get(selectedTeam.id) ?? "-"}`} />
+                      <MetricCard label="Defense rank" value={`#${defenseRankByTeam.get(selectedTeam.id) ?? "-"}`} />
+                      <MetricCard label="Points for" value={`${selectedTeam.pointsFor}`} />
+                      <MetricCard label="Points against" value={`${selectedTeam.pointsAgainst}`} />
                     </div>
                   </div>
 
-                  <div className="rounded-[var(--radius-2xl)] border border-[var(--home-rule)] bg-[var(--home-paper-alt)] p-4">
-                    <p className="text-sm font-semibold text-[var(--home-ink)]">
-                      Pressure points
-                    </p>
-                    <ul className="mt-3 space-y-2 pl-5 text-sm leading-relaxed text-[var(--home-ink-muted)]">
+                  <div className="c97-panel">
+                    <p className="c97-kicker mb-2">Pressure points</p>
+                    <ul className="c97-prose" style={{ margin: 0, paddingLeft: "1.1em" }}>
                       {teamPressurePoints.map((item) => (
                         <li key={item}>{item}</li>
                       ))}
@@ -781,65 +624,27 @@ export function NflClient({
                   </div>
 
                   <div className="grid gap-3 sm:grid-cols-2">
-                    <TeamLeaderCard
-                      title="Top passer"
-                      leader={selectedTeamLeaders.passing}
-                      unitLong="passing yards"
-                      emptyLabel="No passer in the league top 10."
-                    />
-                    <TeamLeaderCard
-                      title="Top rusher"
-                      leader={selectedTeamLeaders.rushing}
-                      unitLong="rushing yards"
-                      emptyLabel="No rusher in the league top 10."
-                    />
-                    <TeamLeaderCard
-                      title="Top receiver"
-                      leader={selectedTeamLeaders.receiving}
-                      unitLong="receiving yards"
-                      emptyLabel="No receiver in the league top 10."
-                    />
-                    <TeamLeaderCard
-                      title="Sacks leader"
-                      leader={selectedTeamLeaders.sacks}
-                      unitLong="sacks"
-                      emptyLabel="No defender in the league top 10."
-                    />
+                    <TeamLeaderCard title="Top passer" leader={selectedTeamLeaders.passing} unitLong="passing yards" emptyLabel="No passer in the league top 10." />
+                    <TeamLeaderCard title="Top rusher" leader={selectedTeamLeaders.rushing} unitLong="rushing yards" emptyLabel="No rusher in the league top 10." />
+                    <TeamLeaderCard title="Top receiver" leader={selectedTeamLeaders.receiving} unitLong="receiving yards" emptyLabel="No receiver in the league top 10." />
+                    <TeamLeaderCard title="Sacks leader" leader={selectedTeamLeaders.sacks} unitLong="sacks" emptyLabel="No defender in the league top 10." />
                   </div>
 
-                  <p className="text-sm leading-relaxed text-[var(--home-ink-muted)]">
-                    {teamStoryline}
-                  </p>
+                  <p className="c97-prose">{teamStoryline}</p>
                 </div>
 
                 {!teamSnapshot && (isTeamSnapshotLoading || teamSnapshotError) && (
-                  <div
-                    className="rounded-[var(--radius-2xl)] border border-[var(--home-rule)] bg-[var(--home-paper-alt)] p-4"
-                    role={teamSnapshotError ? "alert" : "status"}
-                    aria-live="polite"
-                  >
-                    <p className="text-sm text-[var(--home-ink-muted)]">
-                      {isTeamSnapshotLoading
-                        ? "Loading recent team games…"
-                        : teamSnapshotError}
-                    </p>
+                  <div className="c97-panel" role={teamSnapshotError ? "alert" : "status"} aria-live="polite">
+                    <p className="c97-prose">{isTeamSnapshotLoading ? "Loading recent team games…" : teamSnapshotError}</p>
                   </div>
                 )}
 
                 {recentFixtures.length > 0 && (
                   <div>
-                    <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[var(--home-ink-soft)]">
-                      Recent results
-                    </p>
-                    <div className="mt-3 space-y-2">
+                    <p className="c97-kicker mb-2">Recent results</p>
+                    <div className="space-y-2">
                       {recentFixtures.map((fixture) => (
-                        <FixtureCard
-                          periodLabel="Week"
-                          key={fixture.id}
-                          fixture={fixture}
-                          contextTeamId={teamSnapshot?.team?.id ?? undefined}
-                          compact
-                        />
+                        <FixtureCard periodLabel="Week" key={fixture.id} fixture={fixture} contextTeamId={teamSnapshot?.team?.id ?? undefined} compact />
                       ))}
                     </div>
                   </div>
@@ -847,18 +652,10 @@ export function NflClient({
 
                 {upcomingFixtures.length > 0 && (
                   <div>
-                    <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[var(--home-ink-soft)]">
-                      Upcoming games
-                    </p>
-                    <div className="mt-3 space-y-2">
+                    <p className="c97-kicker mb-2">Upcoming games</p>
+                    <div className="space-y-2">
                       {upcomingFixtures.map((fixture) => (
-                        <FixtureCard
-                          periodLabel="Week"
-                          key={fixture.id}
-                          fixture={fixture}
-                          contextTeamId={teamSnapshot?.team?.id ?? undefined}
-                          compact
-                        />
+                        <FixtureCard periodLabel="Week" key={fixture.id} fixture={fixture} contextTeamId={teamSnapshot?.team?.id ?? undefined} compact />
                       ))}
                     </div>
                   </div>
@@ -870,50 +667,30 @@ export function NflClient({
               <div className="grid gap-6 md:grid-cols-2">
                 {summary.recentFixtures.length > 0 && (
                   <div>
-                    <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[var(--home-ink-soft)]">
-                      Recent slate
-                    </p>
-                    <h3 className="mt-2 text-xl font-semibold text-[var(--home-ink)]">
-                      Latest results
-                    </h3>
-                    <div className="mt-4 space-y-3">
+                    <p className="c97-kicker mb-2">Latest results</p>
+                    <div className="space-y-3">
                       {summary.recentFixtures.map((fixture) => (
-                        <FixtureCard
-                          periodLabel="Week"
-                          key={fixture.id}
-                          fixture={fixture}
-                          onOpenTeam={handleTeamChange}
-                        />
+                        <FixtureCard periodLabel="Week" key={fixture.id} fixture={fixture} onOpenTeam={handleTeamChange} />
                       ))}
                     </div>
                   </div>
                 )}
                 {summary.upcomingFixtures.length > 0 ? (
                   <div>
-                    <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[var(--home-ink-soft)]">
-                      Next up
-                    </p>
-                    <h3 className="mt-2 text-xl font-semibold text-[var(--home-ink)]">
-                      Upcoming games
-                    </h3>
-                    <div className="mt-4 space-y-3">
+                    <p className="c97-kicker mb-2">Upcoming games</p>
+                    <div className="space-y-3">
                       {summary.upcomingFixtures.map((fixture) => (
-                        <FixtureCard
-                          periodLabel="Week"
-                          key={fixture.id}
-                          fixture={fixture}
-                          onOpenTeam={handleTeamChange}
-                        />
+                        <FixtureCard periodLabel="Week" key={fixture.id} fixture={fixture} onOpenTeam={handleTeamChange} />
                       ))}
                     </div>
                   </div>
                 ) : (
-                  <div className="rounded-[var(--radius-2xl)] border border-dashed border-[var(--home-rule)] bg-[var(--home-paper-alt)] p-6 text-sm leading-relaxed text-[var(--home-ink-muted)]">
-                    <p className="flex items-center gap-2 font-semibold text-[var(--home-ink)]">
-                      <Flag className="h-4 w-4" />
+                  <div className="c97-panel">
+                    <p className="flex items-center gap-2" style={{ fontWeight: 600, color: "var(--c97-ink)" }}>
+                      <Flag className="h-4 w-4" aria-hidden="true" />
                       Offseason
                     </p>
-                    <p className="mt-2">
+                    <p className="c97-prose mt-2">
                       The {summary.season} regular season is complete. New fixtures will appear when the next season&apos;s schedule is published.
                     </p>
                   </div>
@@ -924,7 +701,7 @@ export function NflClient({
             {activeDetailTab === "leaders" && (
               <div className="space-y-5">
                 <div className="flex flex-wrap items-center justify-between gap-3">
-                  <div className="flex flex-wrap gap-2">
+                  <div className="c97-segmented">
                     {LEADER_TABS.map((tab) => {
                       const isActive = tab.id === activeLeaderTab;
                       return (
@@ -933,20 +710,14 @@ export function NflClient({
                           type="button"
                           onClick={() => setActiveLeaderTab(tab.id)}
                           aria-pressed={isActive}
-                          className="inline-flex min-h-[44px] items-center gap-2 rounded-full border px-4 py-2 text-sm font-medium transition-colors"
-                          style={getViewButtonStyle(isActive)}
+                          className="min-h-[44px] text-sm font-semibold"
                         >
-                          <span className="text-[var(--home-ink)]">{tab.label}</span>
+                          {tab.label}
                         </button>
                       );
                     })}
                   </div>
-                  <a
-                    href={summary.sourceUrls.leaders}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="inline-flex min-h-[44px] items-center gap-2 rounded-[var(--radius-xl)] border border-[var(--home-rule)] bg-[var(--home-paper-alt)] px-3 py-2 text-sm font-medium text-[var(--home-ink-muted)] transition-colors hover:text-[var(--home-signal)]"
-                  >
+                  <a href={summary.sourceUrls.leaders} target="_blank" rel="noreferrer" className="c97-btn-outline">
                     NFLverse source
                     <ExternalLink className="h-4 w-4" />
                   </a>
@@ -954,25 +725,12 @@ export function NflClient({
 
                 <div className="grid gap-6 md:grid-cols-2">
                   <div>
-                    <p className="text-sm font-semibold uppercase tracking-[0.16em] text-[var(--home-ink-soft)]">
-                      {activeLeaderMeta.label} leaderboard
-                    </p>
-                    <h3 className="mt-2 text-xl font-bold text-[var(--home-ink)]">
-                      Top {activeLeaderMeta.unitLong}
-                    </h3>
-                    <NflLeaderList
-                      leaders={activeLeaders.slice(0, 5)}
-                      unit={activeLeaderMeta.unit}
-                      teamLookup={teamShortNameById}
-                    />
+                    <p className="c97-kicker mb-2">Top {activeLeaderMeta.unitLong}</p>
+                    <NflLeaderList leaders={activeLeaders.slice(0, 5)} unit={activeLeaderMeta.unit} teamLookup={teamShortNameById} />
                   </div>
                   {activeLeaders.length > 5 && (
                     <div>
-                      <NflLeaderList
-                        leaders={activeLeaders.slice(5, 10)}
-                        unit={activeLeaderMeta.unit}
-                        teamLookup={teamShortNameById}
-                      />
+                      <NflLeaderList leaders={activeLeaders.slice(5, 10)} unit={activeLeaderMeta.unit} teamLookup={teamShortNameById} />
                     </div>
                   )}
                 </div>
@@ -980,18 +738,22 @@ export function NflClient({
             )}
           </div>
         </div>
+      </section>
 
-        {/* Disclaimer */}
-        <section className="rounded-[var(--radius-3xl)] border border-[var(--home-rule)] bg-[var(--home-paper-alt)] p-5 text-sm text-[var(--home-ink-muted)] shadow-sm">
+      <section className="c97-band c97-sheet" data-c97-surface="paper" data-seam="torn">
+        <div className="c97-shell">
           <div className="flex items-start gap-3">
-            <CircleAlert className="mt-0.5 h-4 w-4 flex-shrink-0 text-[var(--home-signal)]" />
-            <p className="mb-0 max-w-none leading-relaxed">
-              This page is a curated NFLverse snapshot rather than a live feed. Standings come from the public NFLverse standings dataset, schedule and scores from the NFLverse games table, and stat leaders from the regular-season player stats release linked above.
+            <CircleAlert className="mt-0.5 h-4 w-4 flex-shrink-0" style={{ color: "var(--c97-ink-2)" }} aria-hidden="true" />
+            <p className="c97-prose" style={{ fontSize: "var(--c97-fs-small)" }}>
+              This page is a curated NFLverse snapshot, refreshed on a schedule. Standings come
+              from the public NFLverse standings dataset, schedule and scores from the NFLverse
+              games table, and stat leaders from the regular-season player stats release linked
+              above.
             </p>
           </div>
-        </section>
-      </div>
-    </div>
+        </div>
+      </section>
+    </>
   );
 }
 
@@ -1007,27 +769,21 @@ function TeamLeaderCard({
   emptyLabel: string;
 }) {
   return (
-    <div className="rounded-[var(--radius-2xl)] border border-[var(--home-rule)] bg-[var(--home-paper-alt)] p-4">
-      <p className="text-xs font-semibold uppercase tracking-[0.14em] text-[var(--home-ink-soft)]">
-        {title}
-      </p>
+    <div className="c97-panel">
+      <p className="c97-kicker">{title}</p>
       {leader ? (
         <>
-          <p className="mt-2 text-lg font-bold text-[var(--home-ink)]">
+          <p className="c97-h3 c97-serif mt-2">
             {leader.name}
-            <span className="ml-2 text-xs font-medium uppercase tracking-[0.12em] text-[var(--home-ink-muted)]">
-              {leader.position}
-            </span>
+            <span className="c97-kicker" style={{ marginLeft: "var(--c97-sp-2)" }}>{leader.position}</span>
           </p>
-          <p className="mt-1 text-sm text-[var(--home-ink-muted)]">
+          <p className="c97-prose mt-1" style={{ fontSize: "var(--c97-fs-small)" }}>
             {formatLeaderTotal(leader)} {unitLong} in {leader.games} games
           </p>
-          <p className="mt-2 text-xs font-medium uppercase tracking-[0.12em] text-[var(--home-ink-soft)]">
-            {formatPerGame(leader.perGame)} per game
-          </p>
+          <p className="c97-kicker mt-2">{formatPerGame(leader.perGame)} per game</p>
         </>
       ) : (
-        <p className="mt-2 text-sm leading-relaxed text-[var(--home-ink-muted)]">{emptyLabel}</p>
+        <p className="c97-prose mt-2" style={{ fontSize: "var(--c97-fs-small)" }}>{emptyLabel}</p>
       )}
     </div>
   );
@@ -1043,37 +799,26 @@ function NflLeaderList({
   teamLookup: Map<string, string>;
 }) {
   return (
-    <ol className="mt-5 space-y-3 pl-0">
+    <ol className="mt-3 space-y-2 pl-0">
       {leaders.map((leader) => {
         const teamName = teamLookup.get(leader.teamId) ?? leader.teamCode;
         return (
-          <li
-            key={`${unit}-${leader.rank}-${leader.name}`}
-            className="flex items-center justify-between gap-4 rounded-[var(--radius-2xl)] border border-[var(--home-rule)] bg-[var(--home-paper-alt)] px-4 py-3"
-          >
+          <li key={`${unit}-${leader.rank}-${leader.name}`} className="c97-panel flex items-center justify-between gap-4">
             <div className="flex min-w-0 items-center gap-3">
-              <div className="inline-flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-[var(--home-paper)] text-sm font-bold text-[var(--home-signal)] shadow-sm">
-                {leader.rank}
-              </div>
+              <span className="c97-mono" style={{ color: "var(--c97-ink-2)" }}>{leader.rank}</span>
               <div className="min-w-0">
-                <p className="truncate font-semibold text-[var(--home-ink)]">
+                <p className="truncate" style={{ fontWeight: 600, color: "var(--c97-ink)" }}>
                   {leader.name}
-                  <span className="ml-2 text-xs font-medium uppercase tracking-[0.12em] text-[var(--home-ink-muted)]">
-                    {leader.position}
-                  </span>
+                  <span className="c97-kicker" style={{ marginLeft: "var(--c97-sp-2)" }}>{leader.position}</span>
                 </p>
-                <p className="text-sm text-[var(--home-ink-muted)]">
+                <p className="c97-prose" style={{ fontSize: "var(--c97-fs-small)" }}>
                   {teamName} · {leader.games} games
                 </p>
               </div>
             </div>
             <div className="text-right">
-              <p className="text-lg font-bold text-[var(--home-ink)]">
-                {formatLeaderTotal(leader)}
-              </p>
-              <p className="text-xs uppercase tracking-[0.12em] text-[var(--home-ink-soft)]">
-                {unit}
-              </p>
+              <p style={{ fontWeight: 700, color: "var(--c97-ink)", margin: 0 }}>{formatLeaderTotal(leader)}</p>
+              <p className="c97-kicker">{unit}</p>
             </div>
           </li>
         );
@@ -1083,10 +828,9 @@ function NflLeaderList({
 }
 
 interface ConferenceSlice {
-  topSeed: NFLTeamStanding;
-  divisionLeaders: NFLTeamStanding[];
-  lastIn: NFLTeamStanding;
-  firstOut: NFLTeamStanding | null;
+  topSeed: NFLTeamStanding | undefined;
+  lastIn: NFLTeamStanding | undefined;
+  firstOut: NFLTeamStanding | undefined;
 }
 
 interface ConferenceContext {
@@ -1094,29 +838,28 @@ interface ConferenceContext {
   NFC: ConferenceSlice;
 }
 
-function buildConferenceContext(teams: NFLTeamStanding[]): ConferenceContext {
+function buildConferenceContext(teams: NFLTeamStanding[], seeds: Map<string, number>): ConferenceContext {
   return {
-    AFC: buildConferenceSlice(teams, "AFC"),
-    NFC: buildConferenceSlice(teams, "NFC"),
+    AFC: buildConferenceSlice(teams, "AFC", seeds),
+    NFC: buildConferenceSlice(teams, "NFC", seeds),
   };
 }
 
 function buildConferenceSlice(
   teams: NFLTeamStanding[],
-  conference: "AFC" | "NFC"
+  conference: "AFC" | "NFC",
+  seeds: Map<string, number>
 ): ConferenceSlice {
   const inConference = teams.filter((team) => team.conference === conference);
   const seeded = inConference
-    .filter((team): team is NFLTeamStanding & { seed: number } => team.seed !== null)
-    .sort((a, b) => a.seed - b.seed);
-  const topSeed = seeded[0] ?? inConference[0];
-  const divisionLeaders = inConference.filter((team) => team.divisionRank === 1);
-  const lastIn = seeded.at(-1) ?? topSeed;
-  const firstOut =
-    inConference
-      .filter((team) => team.seed === null)
-      .sort((a, b) => b.winPct - a.winPct || b.pointDifferential - a.pointDifferential)[0] ?? null;
-  return { topSeed, divisionLeaders, lastIn, firstOut };
+    .filter((team) => seeds.has(team.id))
+    .toSorted((a, b) => (seeds.get(a.id) ?? 0) - (seeds.get(b.id) ?? 0));
+  const topSeed = seeded[0];
+  const lastIn = seeded.at(-1);
+  const firstOut = inConference
+    .filter((team) => !seeds.has(team.id))
+    .toSorted((a, b) => b.winPct - a.winPct || b.pointDifferential - a.pointDifferential)[0];
+  return { topSeed, lastIn, firstOut };
 }
 
 function collectLeadersForTeam(teamId: string, leaders: NFLLeaderboards) {
@@ -1128,13 +871,14 @@ function collectLeadersForTeam(teamId: string, leaders: NFLLeaderboards) {
   };
 }
 
-type NflZone = "top-seed" | "division" | "wildcard" | "eliminated";
+type NflZone = "top-seed" | "division" | "wildcard" | "outside";
 
-function getTeamZone(team: NFLTeamStanding): NflZone {
-  if (team.seed === 1) return "top-seed";
-  if (team.seed !== null && team.divisionRank === 1) return "division";
-  if (team.seed !== null) return "wildcard";
-  return "eliminated";
+function getTeamZone(team: NFLTeamStanding, seeds: Map<string, number>): NflZone {
+  const seed = seeds.get(team.id) ?? null;
+  if (seed === 1) return "top-seed";
+  if (seed !== null && team.divisionRank === 1) return "division";
+  if (seed !== null) return "wildcard";
+  return "outside";
 }
 
 function getZoneLabel(zone: NflZone): string {
@@ -1145,102 +889,60 @@ function getZoneLabel(zone: NflZone): string {
       return "Division winner";
     case "wildcard":
       return "Wild card";
-    case "eliminated":
+    case "outside":
     default:
-      return "Eliminated";
+      return "Outside the picture";
   }
 }
 
-function getZoneDotColor(zone: NflZone): string {
+function zoneChipClass(zone: NflZone): string {
   switch (zone) {
     case "top-seed":
-      return "var(--home-signal)";
     case "division":
-      return "var(--home-positive)";
     case "wildcard":
-      return "color-mix(in srgb, var(--home-positive) 55%, var(--home-ink))";
-    case "eliminated":
+      return "c97-chip c97-chip-positive";
+    case "outside":
     default:
-      return "var(--home-rule)";
+      return "c97-chip";
   }
 }
 
-function getZonePillStyle(zone: NflZone): CSSProperties {
+function zoneDotColor(zone: NflZone): string {
   switch (zone) {
     case "top-seed":
-      return {
-        color: "var(--home-signal)",
-        borderColor: "color-mix(in srgb, var(--home-signal) 30%, var(--home-rule))",
-        background: "color-mix(in srgb, var(--home-signal) 10%, var(--home-paper-alt))",
-      };
     case "division":
-      return {
-        color: "color-mix(in srgb, var(--home-positive) 60%, var(--home-ink))",
-        borderColor: "color-mix(in srgb, var(--home-positive) 45%, var(--home-rule))",
-        background: "color-mix(in srgb, var(--home-positive) 16%, var(--home-paper-alt))",
-      };
     case "wildcard":
-      return {
-        color: "color-mix(in srgb, var(--home-positive) 45%, var(--home-ink))",
-        borderColor: "color-mix(in srgb, var(--home-positive) 28%, var(--home-rule))",
-        background: "color-mix(in srgb, var(--home-positive) 9%, var(--home-paper-alt))",
-      };
-    case "eliminated":
+      return "var(--c97-positive)";
+    case "outside":
     default:
-      return {
-        color: "var(--home-ink-muted)",
-        borderColor: "var(--home-rule)",
-        background: "var(--home-paper-alt)",
-      };
+      return "var(--c97-ink-2)";
   }
 }
 
-function getViewButtonStyle(isActive: boolean): CSSProperties {
-  if (isActive) {
-    return {
-      borderColor: "color-mix(in srgb, var(--home-signal) 35%, var(--home-rule))",
-      background: "color-mix(in srgb, var(--home-signal) 9%, var(--home-paper-alt))",
-      boxShadow: "var(--shadow-sm)",
-    };
-  }
-  return {
-    borderColor: "var(--home-rule)",
-    background: "var(--home-paper-alt)",
-  };
-}
-
-function getTableRowStyle(isSelected: boolean): CSSProperties {
-  if (isSelected) {
-    return {
-      borderColor: "color-mix(in srgb, var(--home-signal) 35%, var(--home-rule))",
-      background: "color-mix(in srgb, var(--home-signal) 9%, var(--home-paper-alt))",
-    };
-  }
-  return {
-    borderColor: "var(--home-rule)",
-    background: "var(--home-paper-alt)",
-  };
-}
-
-function getTeamStoryline(team: NFLTeamStanding, context: ConferenceContext): string {
+function getTeamStoryline(
+  team: NFLTeamStanding,
+  context: ConferenceContext,
+  seeds: Map<string, number>
+): string {
   const slice = context[team.conference];
-  const zone = getTeamZone(team);
+  const zone = getTeamZone(team, seeds);
   const record = formatRecord(team);
+  const seed = seeds.get(team.id);
 
   if (zone === "top-seed") {
-    return `${team.shortName} claimed the ${team.conference} #1 seed and home-field advantage at ${record}, scoring ${team.pointsFor} points to ${team.pointsAgainst} allowed.`;
+    return `${team.shortName} hold the ${team.conference} #1 seed at ${record}, scoring ${team.pointsFor} points to ${team.pointsAgainst} allowed.`;
   }
   if (zone === "division") {
-    return `${team.shortName} won the ${team.division} at ${record} and earned the #${team.seed} seed, with a ${formatDifferential(team.pointDifferential)} point differential.`;
+    return `${team.shortName} lead the ${team.division} at ${record} and sit at the #${seed} seed, with a ${formatDifferential(team.pointDifferential)} point differential.`;
   }
   if (zone === "wildcard") {
-    return `${team.shortName} grabbed a wild card spot at #${team.seed} (${record}) and finished ${team.divisionRank}${ordinalSuffix(team.divisionRank)} in the ${team.division}.`;
+    return `${team.shortName} hold a wild card spot at #${seed} (${record}) and sit ${team.divisionRank}${ordinalSuffix(team.divisionRank)} in the ${team.division}.`;
   }
   if (slice.lastIn) {
     const winsBack = Math.max(0, slice.lastIn.wins - team.wins);
-    return `${team.shortName} finished ${team.divisionRank}${ordinalSuffix(team.divisionRank)} in the ${team.division} at ${record}, ${winsBack === 0 ? "tied with the last playoff team on wins" : `${winsBack} win${winsBack === 1 ? "" : "s"} short of the last playoff seed`}.`;
+    return `${team.shortName} sit ${team.divisionRank}${ordinalSuffix(team.divisionRank)} in the ${team.division} at ${record}, ${winsBack === 0 ? "tied with the last team in the picture on wins" : `${winsBack} win${winsBack === 1 ? "" : "s"} short of the seventh seed`}.`;
   }
-  return `${team.shortName} finished ${team.divisionRank}${ordinalSuffix(team.divisionRank)} in the ${team.division} at ${record}.`;
+  return `${team.shortName} sit ${team.divisionRank}${ordinalSuffix(team.divisionRank)} in the ${team.division} at ${record}.`;
 }
 
 function getTeamPressurePoints(
@@ -1249,13 +951,15 @@ function getTeamPressurePoints(
     conferenceContext: ConferenceContext;
     offenseRankByTeam: Map<string, number>;
     defenseRankByTeam: Map<string, number>;
+    seeds: Map<string, number>;
   }
 ): string[] {
-  const { conferenceContext, offenseRankByTeam, defenseRankByTeam } = context;
+  const { conferenceContext, offenseRankByTeam, defenseRankByTeam, seeds } = context;
   const slice = conferenceContext[team.conference];
   const offenseRank = offenseRankByTeam.get(team.id) ?? 0;
   const defenseRank = defenseRankByTeam.get(team.id) ?? 0;
-  const zone = getTeamZone(team);
+  const zone = getTeamZone(team, seeds);
+  const seed = seeds.get(team.id);
   const points: string[] = [];
 
   if (zone === "top-seed") {
@@ -1265,19 +969,19 @@ function getTeamPressurePoints(
     );
   } else if (zone === "division") {
     points.push(
-      `Won the ${team.division} as the #${team.seed} seed (${formatRecord(team)}).`,
-      `${team.pointsFor - team.pointsAgainst >= 0 ? "+" : ""}${team.pointsFor - team.pointsAgainst} point differential over ${REGULAR_SEASON_GAMES} games.`
+      `Leads the ${team.division} as the #${seed} seed (${formatRecord(team)}).`,
+      `${formatDifferential(team.pointDifferential)} point differential this season.`
     );
   } else if (zone === "wildcard") {
     points.push(
-      `Wild card #${team.seed} at ${formatRecord(team)}.`,
+      `Wild card #${seed} at ${formatRecord(team)}.`,
       `${team.pointsFor} PF / ${team.pointsAgainst} PA (${formatDifferential(team.pointDifferential)}).`
     );
   } else {
     const lastInWins = slice.lastIn?.wins ?? team.wins;
     const winsBack = Math.max(0, lastInWins - team.wins);
     points.push(
-      `${winsBack === 0 ? "Equal" : `${winsBack} win${winsBack === 1 ? "" : "s"} short`} on wins to the last ${team.conference} playoff team.`,
+      `${winsBack === 0 ? "Equal" : `${winsBack} win${winsBack === 1 ? "" : "s"} short`} on wins to the last ${team.conference} team in the picture.`,
       `${team.pointsFor} PF / ${team.pointsAgainst} PA (${formatDifferential(team.pointDifferential)}).`
     );
   }
@@ -1345,4 +1049,3 @@ function formatPlayoffResult(result: string): string {
 function formatTeamFormPills(sequence: Array<"W" | "T" | "L">): Array<"W" | "D" | "L"> {
   return sequence.map((result) => (result === "T" ? "D" : result));
 }
-

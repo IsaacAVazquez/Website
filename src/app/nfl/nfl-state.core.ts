@@ -1,4 +1,5 @@
 import type { ReadonlyURLSearchParams } from "next/navigation";
+import { nflSeeds } from "@/components/football/seedLadder";
 import type { NFLRouteState, NFLTeamStanding, NFLView } from "@/types/nfl";
 
 // Pure, snapshot-free route-state core for /nfl. Importing this module never
@@ -63,8 +64,16 @@ export function filterTeams(
       return teams.filter((team) => team.conference === "AFC");
     case "nfc":
       return teams.filter((team) => team.conference === "NFC");
-    case "playoffs":
-      return teams.filter((team) => team.seed !== null && team.seed >= 1 && team.seed <= 7);
+    case "playoffs": {
+      // The NFLverse snapshot leaves `seed` null until the league actually
+      // publishes it, so the playoffs view is built from the same derived
+      // seeding the seed-ladder signature uses instead of the raw field,
+      // which would otherwise leave this view empty all season.
+      const seeds = nflSeeds(teams);
+      return teams
+        .filter((team) => seeds.has(team.id))
+        .toSorted((a, b) => (seeds.get(a.id) ?? 0) - (seeds.get(b.id) ?? 0));
+    }
     case "league":
     default:
       return [...teams];

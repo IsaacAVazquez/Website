@@ -115,14 +115,14 @@ export function ResearchSection({
       <section
         id="research-section"
         aria-label="Stock research"
-        className="scroll-mt-28 rounded-[var(--radius-sm)] border border-dashed border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper)_92%,var(--home-elev-mix))] px-6 py-12 text-center "
+        className="scroll-mt-28 border border-dashed border-[var(--c97-rule)] bg-[color-mix(in_srgb,var(--c97-surface)_92%,var(--c97-panel))] px-6 py-12 text-center "
       >
         <p className="invest-rail-section-label">Research</p>
-        <p className="text-sm font-semibold text-[var(--home-ink)]">
+        <p className="text-sm font-semibold text-[var(--c97-ink)]">
           Pick a holding to research
         </p>
-        <p className="mx-auto mt-2 max-w-md text-sm text-[var(--home-ink-muted)]">
-          Click <strong className="text-[var(--home-ink)]">Research</strong> on any holding above
+        <p className="mx-auto mt-2 max-w-md text-sm text-[var(--c97-ink-2)]">
+          Click <strong className="text-[var(--c97-ink)]">Research</strong> on any holding above
           to load the deep-dive view with fundamentals, valuation, growth, and a price chart.
         </p>
       </section>
@@ -136,29 +136,29 @@ export function ResearchSection({
       className="scroll-mt-28 space-y-5"
     >
       {showLoadingState ? (
-        <div className="rounded-[var(--radius-sm)] border border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper)_92%,var(--home-elev-mix))] px-6 py-16 text-center ">
-          <p className="text-sm font-semibold text-[var(--home-ink)]">
+        <div className="border border-[var(--c97-rule)] bg-[color-mix(in_srgb,var(--c97-surface)_92%,var(--c97-panel))] px-6 py-16 text-center ">
+          <p className="text-sm font-semibold text-[var(--c97-ink)]">
             Loading research data…
           </p>
-          <p className="mt-2 text-sm text-[var(--home-ink-soft)]">
+          <p className="mt-2 text-sm text-[var(--c97-label)]">
             Pulling the latest curated snapshot for {symbol.toUpperCase()}.
           </p>
         </div>
       ) : showCuratedOnlyState ? (
-        <div className="rounded-[var(--radius-sm)] border border-[color-mix(in_srgb,var(--home-warning)_35%,var(--home-rule))] bg-[color-mix(in_srgb,var(--home-warning)_10%,var(--home-paper-alt))] px-5 py-6 text-center ">
-          <p className="text-sm font-semibold text-[var(--home-ink)]">
+        <div className="border border-[color-mix(in_srgb,var(--c97-warning)_35%,var(--c97-rule))] bg-[color-mix(in_srgb,var(--c97-warning)_10%,var(--c97-panel))] px-5 py-6 text-center ">
+          <p className="text-sm font-semibold text-[var(--c97-ink)]">
             This symbol is not in the current research set.
           </p>
-          <p className="mt-2 text-sm text-[var(--home-ink-muted)]">
+          <p className="mt-2 text-sm text-[var(--c97-ink-2)]">
             {getCuratedOnlyMessage(symbol)}
           </p>
         </div>
       ) : showResearchErrorState ? (
-        <div className="rounded-[var(--radius-sm)] border border-[color-mix(in_srgb,var(--home-negative)_35%,var(--home-rule))] bg-[color-mix(in_srgb,var(--home-negative)_8%,var(--home-paper-alt))] px-5 py-6 text-center ">
-          <p className="text-sm font-semibold text-[var(--home-ink)]">
+        <div className="border border-[color-mix(in_srgb,var(--c97-negative)_35%,var(--c97-rule))] bg-[color-mix(in_srgb,var(--c97-negative)_8%,var(--c97-panel))] px-5 py-6 text-center ">
+          <p className="text-sm font-semibold text-[var(--c97-ink)]">
             Research data is temporarily unavailable.
           </p>
-          <p className="mt-2 text-sm text-[var(--home-ink-muted)]">
+          <p className="mt-2 text-sm text-[var(--c97-ink-2)]">
             {getResearchErrorMessage(symbolError)}
           </p>
         </div>
@@ -168,13 +168,14 @@ export function ResearchSection({
             symbol={symbol}
             isInPortfolio={isInPortfolio}
             portfolioShares={position?.shares ?? null}
+            portfolioSymbols={portfolioSymbols}
           />
 
           {position ? <ResearchPosition position={position} /> : null}
 
           {visibleTabs.length > 0 ? (
             <div
-              className="flex gap-2 overflow-x-auto rounded-[var(--radius-sm)] border border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper)_92%,var(--home-elev-mix))] p-2 "
+              className="flex gap-2 overflow-x-auto border border-[var(--c97-rule)] bg-[color-mix(in_srgb,var(--c97-surface)_92%,var(--c97-panel))] p-2 "
               role="tablist"
               aria-label="Research sections"
             >
@@ -188,10 +189,10 @@ export function ResearchSection({
                   tabIndex={resolvedActiveTab === key ? 0 : -1}
                   onKeyDown={(e) => handleVisibleTabKeyDown(e, index)}
                   onClick={() => onTabChange(key)}
-                  className={`min-h-touch whitespace-nowrap rounded-[var(--radius-sm)] px-4 py-2 text-sm font-semibold transition ${
+                  className={`min-h-touch whitespace-nowrap px-4 py-2 text-sm font-semibold transition ${
                     resolvedActiveTab === key
-                      ? "bg-[var(--home-ink)] text-[var(--home-paper)]"
-                      : "text-[var(--home-ink-muted)] hover:bg-[var(--home-paper-alt)] hover:text-[var(--home-ink)]"
+                      ? "bg-[var(--c97-ink)] text-[var(--c97-surface)]"
+                      : "text-[var(--c97-ink-2)] hover:bg-[var(--c97-panel)] hover:text-[var(--c97-ink)]"
                   }`}
                 >
                   {label}

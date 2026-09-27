@@ -8,18 +8,14 @@ import {
   useRef,
   useState,
   type CSSProperties,
-  type ReactNode,
 } from "react";
-import { motion, useReducedMotion } from "framer-motion";
 import { useRouter, useSearchParams } from "next/navigation";
 import {
   Bell,
   BellOff,
   BriefcaseBusiness,
   CalendarClock,
-  CalendarDays,
   CheckCircle2,
-  ChevronRight,
   CircleAlert,
   Clock,
   Download,
@@ -40,11 +36,10 @@ import {
   UtilityStrip,
   getPillStyle,
 } from "@/components/editorial";
-import { HomeStatsPanel, type HomeStatsCell } from "@/components/home/HomeStatsPanel";
-import { Chip } from "@/components/ui/Chip";
-import { Kicker } from "@/components/ui/Kicker";
-import { Briefcase, ChartBar, Article, FileText, Mail as MailIcon } from "@/components/ui/ServerIcons";
 import { ChevronDown } from "lucide-react";
+import { Catalog97ProjectHero } from "@/components/catalog97/Catalog97ProjectHero";
+import { PROJECT_PRESS } from "@/constants/projectPress";
+import { pipelineStages } from "./pipelineStages";
 import {
   MBA_APPLICATION_PRIORITIES,
   MBA_APPLICATION_PRIORITY_LABELS,
@@ -106,24 +101,14 @@ import {
   applicationInputStyle,
   type ApplicationFormState,
 } from "./application-form";
+import "./mba-jobs.css";
 
 // Interaction-gated dialogs are code-split so their chunks load only when a
 // user opens them — keeping them out of this large client page's initial bundle.
 const EmailDigestDialog = dynamic(() => import("./EmailDigestDialog"));
 const ApplicationEditDialog = dynamic(() => import("./ApplicationEditDialog"));
 
-// ---------------------------------------------------------------------------
-// Motion variants
-// ---------------------------------------------------------------------------
-
-const fadeIn = {
-  hidden: { opacity: 0, y: 12 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.35 } },
-};
-const noMotion = {
-  hidden: { opacity: 0, y: 12 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0 } },
-};
+const ROUTE = "/mba-internship-notifications";
 
 // ---------------------------------------------------------------------------
 // Helpers
@@ -165,50 +150,37 @@ function getPostedAtTime(value: string): number {
   return Number.isFinite(timestamp) ? timestamp : 0;
 }
 
+// Category, role, status, and priority accents are swatch colours only now —
+// chip text always prints in ink, never in the accent, per the print shop
+// rule that party/status colour as small text fails 4.5:1.
 const CATEGORY_COLOR: Record<MBACategory | "all", string> = {
-  all: "var(--home-ink)",
-  "big-tech": "color-mix(in srgb, var(--home-ink) 68%, var(--home-stone) 32%)",
-  fintech: "color-mix(in srgb, var(--home-positive) 60%, var(--home-ink))",
-  startup: "var(--home-signal)",
+  all: "var(--c97-ink-2)",
+  "big-tech": "var(--c97-chart-2)",
+  fintech: "var(--c97-positive)",
+  startup: "var(--c97-accent)",
 };
 
-const CHIP_FONT_FAMILY = "var(--font-home-sans)";
 const TRACKED_COMPANY_CATEGORIES: MBACategory[] = ["fintech", "startup", "big-tech"];
 
-const ROLE_TYPE_STYLES: Record<
-  MBAJobRoleType,
-  { accent: string; backgroundWeight: number; borderWeight: number }
-> = {
-  internship: {
-    accent: "var(--home-signal)",
-    backgroundWeight: 24,
-    borderWeight: 34,
-  },
-  "full-time": {
-    accent: "color-mix(in srgb, var(--home-ink) 72%, var(--home-stone))",
-    backgroundWeight: 20,
-    borderWeight: 30,
-  },
-  unclear: {
-    accent: "var(--home-ink-muted)",
-    backgroundWeight: 18,
-    borderWeight: 28,
-  },
+const ROLE_TYPE_ACCENTS: Record<MBAJobRoleType, string> = {
+  internship: "var(--c97-accent)",
+  "full-time": "var(--c97-chart-2)",
+  unclear: "var(--c97-ink-2)",
 };
 
 const APPLICATION_STATUS_ACCENTS: Record<MBAApplicationStatus, string> = {
-  saved: "var(--home-ink-muted)",
-  applied: "var(--home-signal)",
-  interviewing: "var(--home-warning)",
-  offer: "var(--home-positive)",
-  rejected: "var(--home-negative)",
-  archived: "var(--home-ink-muted)",
+  saved: "var(--c97-ink-2)",
+  applied: "var(--c97-accent)",
+  interviewing: "var(--c97-warning)",
+  offer: "var(--c97-positive)",
+  rejected: "var(--c97-negative)",
+  archived: "var(--c97-ink-2)",
 };
 
 const APPLICATION_PRIORITY_ACCENTS: Record<MBAApplicationPriority, string> = {
-  low: "var(--home-stone)",
-  medium: "var(--home-warning)",
-  high: "var(--home-signal)",
+  low: "var(--c97-ink-2)",
+  medium: "var(--c97-warning)",
+  high: "var(--c97-accent)",
 };
 
 const ACTIVE_APPLICATION_STATUSES: MBAApplicationStatus[] = [
@@ -219,73 +191,61 @@ const ACTIVE_APPLICATION_STATUSES: MBAApplicationStatus[] = [
   "rejected",
 ];
 
-// Progression stages shown in the pipeline funnel (outcome branches like
-// "rejected" are reported separately rather than as a funnel step).
-const APPLICATION_FUNNEL_STAGES: {
-  key: keyof MBAApplicationInsights["funnel"];
-  label: string;
-}[] = [
-  { key: "saved", label: "Saved" },
-  { key: "applied", label: "Applied" },
-  { key: "interviewing", label: "Interview" },
-  { key: "offer", label: "Offer" },
-];
-
 const ATTENTION_KIND_ACCENTS: Record<MBAAttentionKind, string> = {
-  "follow-up-overdue": "var(--home-negative)",
-  "deadline-passed": "var(--home-negative)",
-  "follow-up-today": "var(--home-signal)",
-  "deadline-soon": "var(--home-warning)",
+  "follow-up-overdue": "var(--c97-negative)",
+  "deadline-passed": "var(--c97-negative)",
+  "follow-up-today": "var(--c97-accent)",
+  "deadline-soon": "var(--c97-warning)",
 };
 
 function formatRate(value: number | null): string {
   return value === null ? "—" : `${Math.round(value * 100)}%`;
 }
 
-function getReadableAccentColor(accent: string): string {
-  return `color-mix(in srgb, var(--home-ink) 76%, ${accent} 24%)`;
-}
-
-function getChipStyle(
-  accent: string,
-  backgroundWeight = 18,
-  borderWeight = 28
-): CSSProperties {
-  return {
-    background: `color-mix(in srgb, ${accent} ${backgroundWeight}%, var(--home-paper))`,
-    border: `1px solid color-mix(in srgb, ${accent} ${borderWeight}%, var(--home-rule))`,
-    color: getReadableAccentColor(accent),
-    fontFamily: CHIP_FONT_FAMILY,
-    letterSpacing: "0.01em",
-  };
+/** A small colour swatch plus a label printed in ink, never in the accent itself. */
+function ColorTag({
+  accent,
+  label,
+  title,
+}: {
+  accent: string;
+  label: string;
+  title?: string;
+}) {
+  return (
+    <span className="c97-chip" style={{ color: "var(--c97-ink)" }} title={title}>
+      <span
+        aria-hidden="true"
+        style={{ width: "8px", height: "8px", flexShrink: 0, background: accent }}
+      />
+      {label}
+    </span>
+  );
 }
 
 function getRoleFamilyAccent(family: MBAJobRoleFamily): string {
   if (family === "product" || family === "product-marketing") {
-    return "var(--home-signal)";
+    return "var(--c97-accent)";
   }
   if (family === "finance" || family === "analytics") {
-    return "color-mix(in srgb, var(--home-positive) 55%, var(--home-ink))";
+    return "var(--c97-positive)";
   }
-  return "color-mix(in srgb, var(--home-ink) 70%, var(--home-stone))";
+  return "var(--c97-ink-2)";
 }
 
 function getTrackedCompanyButtonStyle(company: MBACompany, active: boolean): CSSProperties {
   if (active) {
     return {
-      background: "color-mix(in srgb, var(--home-paper-alt) 78%, var(--home-elev-mix))",
-      borderColor: `color-mix(in srgb, ${company.color} 28%, var(--home-rule))`,
-      color: "var(--home-ink)",
-      boxShadow: "inset 0 0 0 1px color-mix(in srgb, var(--home-paper) 88%, var(--home-elev-mix))",
-      fontFamily: CHIP_FONT_FAMILY,
+      background: "var(--c97-field)",
+      borderColor: company.color,
+      color: "var(--c97-ink)",
     };
   }
 
   return {
-    background: "color-mix(in srgb, var(--home-paper-alt) 84%, var(--home-elev-mix))",
-    borderColor: "var(--home-rule)",
-    color: "var(--home-ink-muted)",
-    fontFamily: CHIP_FONT_FAMILY,
+    background: "var(--c97-field)",
+    borderColor: "var(--c97-rule)",
+    color: "var(--c97-ink-2)",
   };
 }
 
@@ -555,129 +515,72 @@ function SectionLead({
   id?: string;
 }) {
   return (
-    <div className="home-section-intro gap-3">
-      <div className="space-y-2">
-        <Kicker variant="plain" className="mb-0">
-          {kicker}
-        </Kicker>
-        <h2
-          id={id}
-          className="home-project-title mb-0 max-w-[18ch]"
-          style={{ color: "var(--home-ink)" }}
-        >
+    <div style={{ display: "flex", flexDirection: "column", gap: "var(--c97-sp-3)" }}>
+      <div style={{ display: "flex", flexDirection: "column", gap: "var(--c97-sp-2)" }}>
+        <p className="c97-kicker">{kicker}</p>
+        <h2 id={id} className="c97-poster-sm" style={{ maxWidth: "18ch" }}>
           {title}
         </h2>
       </div>
-      <p className="home-note-copy mb-0 max-w-[40rem]">{description}</p>
+      <p className="c97-prose" style={{ maxWidth: "40rem" }}>{description}</p>
     </div>
   );
 }
 
 function CompanyAvatar({ company }: { company: MBACompany | undefined }) {
-  const color = company?.color ?? "var(--home-signal)";
+  const color = company?.color ?? "var(--c97-accent)";
   const initials = company?.logoInitials ?? "??";
   return (
     <div
-      className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg text-xs font-bold"
+      className="flex h-9 w-9 shrink-0 items-center justify-center text-xs font-bold"
       style={{ background: color }}
       aria-hidden="true"
     >
-      <span style={{ color: "var(--home-paper)" }}>{initials}</span>
+      <span style={{ color: "var(--c97-surface)" }}>{initials}</span>
     </div>
   );
 }
 
 function NewBadge() {
-  return (
-    <span
-      className="inline-flex items-center rounded-full px-3 py-1 text-2xs font-bold uppercase tracking-[0.12em]"
-      style={{
-        background: "var(--home-signal)",
-        color: "var(--home-ink)",
-        fontFamily: CHIP_FONT_FAMILY,
-      }}
-    >
-      New
-    </span>
-  );
+  return <span className="c97-chip" style={{ color: "var(--c97-ink)" }}>New</span>;
 }
 
 function CategoryChip({ category }: { category: MBACategory }) {
-  const color = CATEGORY_COLOR[category];
-  return (
-    <span
-      className="inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-2xs font-semibold"
-      style={getChipStyle(color, 18, 28)}
-    >
-      <span
-        className="h-1.5 w-1.5 rounded-full"
-        style={{ background: color }}
-        aria-hidden="true"
-      />
-      {CATEGORY_LABELS[category]}
-    </span>
-  );
+  return <ColorTag accent={CATEGORY_COLOR[category]} label={CATEGORY_LABELS[category]} />;
 }
 
 function RoleTypeChip({ roleType }: { roleType: MBAJobRoleType }) {
-  const style = ROLE_TYPE_STYLES[roleType];
-  return (
-    <span
-      className="inline-flex items-center rounded-full px-3 py-1 text-2xs font-semibold"
-      style={getChipStyle(
-        style.accent,
-        style.backgroundWeight,
-        style.borderWeight
-      )}
-    >
-      {ROLE_TYPE_LABELS[roleType]}
-    </span>
-  );
+  return <ColorTag accent={ROLE_TYPE_ACCENTS[roleType]} label={ROLE_TYPE_LABELS[roleType]} />;
 }
 
 function RoleFamilyChip({ family }: { family: MBAJobRoleFamily }) {
-  const accent = getRoleFamilyAccent(family);
-
-  return (
-    <span
-      className="inline-flex items-center rounded-full px-3 py-1 text-2xs font-semibold"
-      style={getChipStyle(accent, 18, 28)}
-    >
-      {MBA_ROLE_FAMILY_LABELS[family]}
-    </span>
-  );
+  return <ColorTag accent={getRoleFamilyAccent(family)} label={MBA_ROLE_FAMILY_LABELS[family]} />;
 }
 
 function ApplicationStatusChip({ status }: { status: MBAApplicationStatus }) {
   return (
-    <span
-      className="inline-flex items-center rounded-full px-3 py-1 text-2xs font-semibold"
-      style={getChipStyle(APPLICATION_STATUS_ACCENTS[status], 18, 30)}
-    >
-      {MBA_APPLICATION_STATUS_LABELS[status]}
-    </span>
+    <ColorTag
+      accent={APPLICATION_STATUS_ACCENTS[status]}
+      label={MBA_APPLICATION_STATUS_LABELS[status]}
+    />
   );
 }
 
 function ExternalLeadChip({ sourceName }: { sourceName?: string }) {
   return (
-    <span
-      className="inline-flex items-center rounded-full px-3 py-1 text-2xs font-semibold"
-      style={getChipStyle("var(--home-signal)", 16, 28)}
-    >
-      {sourceName ? `${sourceName} lead` : "External lead"}
-    </span>
+    <ColorTag
+      accent="var(--c97-accent)"
+      label={sourceName ? `${sourceName} lead` : "External lead"}
+    />
   );
 }
 
 function ApplicationPriorityChip({ priority }: { priority: MBAApplicationPriority }) {
   return (
-    <span
-      className="inline-flex items-center rounded-full px-3 py-1 text-2xs font-semibold"
-      style={getChipStyle(APPLICATION_PRIORITY_ACCENTS[priority], 14, 24)}
-    >
-      {MBA_APPLICATION_PRIORITY_LABELS[priority]} priority
-    </span>
+    <ColorTag
+      accent={APPLICATION_PRIORITY_ACCENTS[priority]}
+      label={`${MBA_APPLICATION_PRIORITY_LABELS[priority]} priority`}
+    />
   );
 }
 
@@ -701,9 +604,8 @@ function CardActionLink({
       href={href}
       target="_blank"
       rel="noopener noreferrer"
-      className={`home-button ${
-        variant === "primary" ? "home-button-primary" : "home-button-secondary"
-      } px-4 py-3 text-sm`}
+      className={variant === "primary" ? "c97-btn" : "c97-btn-ghost"}
+      style={{ gap: "var(--c97-sp-1)" }}
       onClick={onClick}
       aria-label={ariaLabel}
     >
@@ -740,7 +642,7 @@ function JobCard({
 
   return (
     <article
-      className="home-card flex h-full flex-col p-6 sm:p-7"
+      className="c97-panel flex h-full flex-col"
       onMouseEnter={onMarkSeen}
     >
       <div className="flex h-full flex-col gap-5">
@@ -748,8 +650,8 @@ function JobCard({
           <div className="min-w-0 flex items-center gap-3">
             <CompanyAvatar company={company} />
             <div className="min-w-0">
-              <p className="home-meta mb-0">{job.companyName}</p>
-              <p className="mb-0 mt-1 text-sm" style={{ color: "var(--home-ink-muted)" }}>
+              <p className="c97-serif" style={{ fontSize: "var(--c97-fs-body)" }}>{job.companyName}</p>
+              <p className="mb-0 mt-1 text-sm" style={{ color: "var(--c97-ink-2)" }}>
                 {job.department}
                 {job.sourceName ? ` · via ${job.sourceName}` : ""}
               </p>
@@ -773,15 +675,15 @@ function JobCard({
           <h3
             className="mb-0 text-lg font-semibold leading-[1.08] tracking-[-0.04em] sm:text-xl"
             style={{
-              fontFamily: "var(--font-home-sans)",
-              color: "var(--home-ink)",
+              fontFamily: "var(--c97-font-body)",
+              color: "var(--c97-ink)",
             }}
           >
             {job.title}
           </h3>
 
           {job.snippet && (
-            <p className="home-note-copy mb-0 line-clamp-3 break-words">{job.snippet}</p>
+            <p className="c97-prose mb-0 line-clamp-3 break-words">{job.snippet}</p>
           )}
         </div>
 
@@ -794,9 +696,9 @@ function JobCard({
         )}
 
         <div
-          className="mt-auto border-t border-[var(--home-rule)] pt-5"
+          className="mt-auto border-t border-[var(--c97-rule)] pt-5"
         >
-          <p className="home-meta mb-0">
+          <p className="c97-meta mb-0">
             {relativePostedAt ? (
               <>
                 {job.location} ·{" "}
@@ -812,7 +714,7 @@ function JobCard({
             )}
           </p>
           {job.sourceName && (
-            <p className="home-note-copy mb-0 mt-2 text-sm">
+            <p className="c97-prose mb-0 mt-2 text-sm">
               Found through {job.sourceName}
               {job.sourceUrl ? (
                 <>
@@ -822,7 +724,7 @@ function JobCard({
                     href={job.sourceUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="underline decoration-[var(--home-rule)] underline-offset-4"
+                    className="underline decoration-[var(--c97-rule)] underline-offset-4"
                   >
                     Source
                   </a>
@@ -837,7 +739,7 @@ function JobCard({
                 onTrack();
                 onMarkSeen();
               }}
-              className="home-button home-button-secondary px-4 py-3 text-sm"
+              className="c97-btn-ghost mba-ghost"
             >
               <Save className="h-3.5 w-3.5" aria-hidden="true" />
               {application ? "Tracked" : "Track"}
@@ -848,7 +750,7 @@ function JobCard({
                 onMarkApplied();
                 onMarkSeen();
               }}
-              className="home-button home-button-secondary px-4 py-3 text-sm"
+              className="c97-btn-ghost mba-ghost"
             >
               <BriefcaseBusiness className="h-3.5 w-3.5" aria-hidden="true" />
               Mark applied
@@ -857,7 +759,7 @@ function JobCard({
               <button
                 type="button"
                 onClick={onEditApplication}
-                className="home-button home-button-secondary px-4 py-3 text-sm"
+                className="c97-btn-ghost mba-ghost"
               >
                 <Edit3 className="h-3.5 w-3.5" aria-hidden="true" />
                 Edit
@@ -897,15 +799,15 @@ function ManualCompanyCard({
 
   return (
     <article
-      className="home-card flex h-full flex-col p-6 sm:p-7"
+      className="c97-panel flex h-full flex-col"
     >
       <div className="flex h-full flex-col gap-5">
         <div className="flex items-start justify-between gap-4">
           <div className="flex min-w-0 items-center gap-3">
             <CompanyAvatar company={company} />
             <div className="min-w-0">
-              <p className="home-meta mb-0">{company.name}</p>
-              <p className="mb-0 mt-1 text-sm" style={{ color: "var(--home-ink-muted)" }}>
+              <p className="c97-serif" style={{ fontSize: "var(--c97-fs-body)" }}>{company.name}</p>
+              <p className="mb-0 mt-1 text-sm" style={{ color: "var(--c97-ink-2)" }}>
                 Manual fallback
               </p>
             </div>
@@ -913,13 +815,13 @@ function ManualCompanyCard({
           <CategoryChip category={company.category} />
         </div>
 
-        <p className="home-note-copy mb-0">
+        <p className="c97-prose mb-0">
           I do not have a stable public feed for this company yet, so I keep the career page and
           a role-aware LinkedIn search here instead.
         </p>
 
         <div
-          className="mt-auto border-t border-[var(--home-rule)] pt-5"
+          className="mt-auto border-t border-[var(--c97-rule)] pt-5"
         >
           <div className="flex flex-wrap items-center gap-3">
             <CardActionLink
@@ -945,14 +847,15 @@ function SearchElsewhereStrip({ currentState }: { currentState: MBAJobsSearchSta
   const links = buildExternalSearchLinks(currentState);
 
   return (
-    <section className="space-y-4" aria-labelledby="mba-search-elsewhere-heading">
+    <section className="c97-band c97-sheet" data-c97-surface="bone" data-seam="deckle" aria-labelledby="mba-search-elsewhere-heading">
+      <div className="c97-shell space-y-4">
       <SectionLead
         kicker="Search elsewhere"
         title="Open the same search on outside boards."
         description="These are outbound searches only. LinkedIn stays a shortcut here, not a server-side source."
         id="mba-search-elsewhere-heading"
       />
-      <div className="section-panel">
+      <div className="c97-panel">
         <div className="flex flex-wrap gap-3">
           {links.map((link) => (
             <CardActionLink
@@ -964,6 +867,7 @@ function SearchElsewhereStrip({ currentState }: { currentState: MBAJobsSearchSta
             />
           ))}
         </div>
+      </div>
       </div>
     </section>
   );
@@ -980,33 +884,33 @@ function JobGridSkeleton() {
       {[0, 1, 2, 4, 5, 6].map((i) => (
         <div
           key={i}
-          className="home-card flex flex-col gap-4 p-6 sm:p-7"
+          className="c97-panel flex flex-col gap-4"
           aria-hidden="true"
         >
           <div className="flex items-center gap-3">
             <div
-              className="h-9 w-9 animate-pulse rounded-lg"
-              style={{ background: "color-mix(in srgb, var(--home-stone) 40%, var(--home-paper))" }}
+              className="h-9 w-9 animate-pulse"
+              style={{ background: "color-mix(in srgb, var(--c97-rule) 40%, var(--c97-surface))" }}
             />
             <div className="space-y-2">
               <div
-                className="h-2.5 w-20 animate-pulse rounded-full"
-                style={{ background: "color-mix(in srgb, var(--home-stone) 40%, var(--home-paper))" }}
+                className="h-2.5 w-20 animate-pulse"
+                style={{ background: "color-mix(in srgb, var(--c97-rule) 40%, var(--c97-surface))" }}
               />
               <div
-                className="h-2 w-14 animate-pulse rounded-full"
-                style={{ background: "color-mix(in srgb, var(--home-stone) 30%, var(--home-paper))" }}
+                className="h-2 w-14 animate-pulse"
+                style={{ background: "color-mix(in srgb, var(--c97-rule) 30%, var(--c97-surface))" }}
               />
             </div>
           </div>
           <div className="space-y-2">
             <div
-              className="h-4 w-3/4 animate-pulse rounded-full"
-              style={{ background: "color-mix(in srgb, var(--home-stone) 40%, var(--home-paper))" }}
+              className="h-4 w-3/4 animate-pulse"
+              style={{ background: "color-mix(in srgb, var(--c97-rule) 40%, var(--c97-surface))" }}
             />
             <div
-              className="h-3 w-1/2 animate-pulse rounded-full"
-              style={{ background: "color-mix(in srgb, var(--home-stone) 30%, var(--home-paper))" }}
+              className="h-3 w-1/2 animate-pulse"
+              style={{ background: "color-mix(in srgb, var(--c97-rule) 30%, var(--c97-surface))" }}
             />
           </div>
         </div>
@@ -1028,12 +932,12 @@ function SortDropdown({
   // keeps the surrounding pill treatment shared with the filter chips.
   return (
     <label
-      className="inline-flex min-h-[44px] cursor-pointer items-center gap-2 rounded-full border px-4 py-2 text-sm font-semibold transition-[background-color,border-color,color,box-shadow] duration-200 ease focus-within:outline focus-within:outline-2 focus-within:outline-offset-2 focus-within:outline-[var(--home-signal)]"
+      className="inline-flex min-h-[44px] cursor-pointer items-center gap-2 rounded-full border px-4 py-2 text-sm font-semibold transition-[background-color,border-color,color,box-shadow] duration-200 ease focus-within:outline focus-within:outline-2 focus-within:outline-offset-2 focus-within:outline-[var(--c97-accent)]"
       style={getPillStyle(false)}
     >
       <span
         className="text-2xs font-semibold uppercase tracking-[0.12em]"
-        style={{ fontFamily: "var(--font-home-sans)" }}
+        style={{ fontFamily: "var(--c97-font-body)" }}
       >
         Sort
       </span>
@@ -1041,7 +945,7 @@ function SortDropdown({
         value={value}
         onChange={(event) => onValueChange(event.target.value as MBASortOrder)}
         className="cursor-pointer appearance-none border-none bg-transparent text-sm font-semibold text-inherit outline-none"
-        style={{ fontFamily: "var(--font-home-sans)" }}
+        style={{ fontFamily: "var(--c97-font-body)" }}
       >
         {SORT_OPTIONS.map((opt) => (
           <option key={opt} value={opt}>
@@ -1067,9 +971,9 @@ function NotificationBell({
       <div
         className="inline-flex min-h-[48px] items-center gap-2 rounded-full border px-4 py-2 text-sm font-semibold"
         style={{
-          color: "color-mix(in srgb, var(--home-signal) 78%, var(--home-ink))",
-          borderColor: "color-mix(in srgb, var(--home-signal) 40%, var(--home-rule))",
-          background: "color-mix(in srgb, var(--home-signal) 18%, var(--home-paper))",
+          color: "color-mix(in srgb, var(--c97-accent) 78%, var(--c97-ink))",
+          borderColor: "color-mix(in srgb, var(--c97-accent) 40%, var(--c97-rule))",
+          background: "color-mix(in srgb, var(--c97-accent) 18%, var(--c97-surface))",
         }}
       >
         <Bell className="h-4 w-4" aria-hidden="true" />
@@ -1081,7 +985,7 @@ function NotificationBell({
     return (
       <div
         className="inline-flex min-h-[48px] items-center gap-2 rounded-full border px-4 py-2 text-sm"
-        style={{ color: "var(--home-ink-muted)", borderColor: "var(--home-rule)" }}
+        style={{ color: "var(--c97-ink-2)", borderColor: "var(--c97-rule)" }}
       >
         <BellOff className="h-4 w-4" aria-hidden="true" />
         Notifications blocked in browser
@@ -1092,7 +996,7 @@ function NotificationBell({
     <button
       type="button"
       onClick={onRequest}
-      className="home-button home-button-secondary text-sm"
+      className="c97-btn-ghost mba-ghost"
     >
       <Bell className="h-4 w-4" aria-hidden="true" />
       Enable notifications
@@ -1119,14 +1023,14 @@ function EmailDigestButton({
         className="inline-flex min-h-[44px] items-center gap-2 rounded-full border px-4 py-2 text-sm font-semibold"
         style={{
           color: result.ok
-            ? "color-mix(in srgb, var(--home-positive) 60%, var(--home-ink))"
-            : "color-mix(in srgb, var(--home-negative) 55%, var(--home-ink))",
+            ? "color-mix(in srgb, var(--c97-positive) 60%, var(--c97-ink))"
+            : "color-mix(in srgb, var(--c97-negative) 55%, var(--c97-ink))",
           borderColor: result.ok
-            ? "color-mix(in srgb, var(--home-positive) 36%, var(--home-rule))"
-            : "color-mix(in srgb, var(--home-negative) 32%, var(--home-rule))",
+            ? "color-mix(in srgb, var(--c97-positive) 36%, var(--c97-rule))"
+            : "color-mix(in srgb, var(--c97-negative) 32%, var(--c97-rule))",
           background: result.ok
-            ? "color-mix(in srgb, var(--home-positive) 10%, var(--home-paper))"
-            : "color-mix(in srgb, var(--home-negative) 10%, var(--home-paper))",
+            ? "color-mix(in srgb, var(--c97-positive) 10%, var(--c97-surface))"
+            : "color-mix(in srgb, var(--c97-negative) 10%, var(--c97-surface))",
         }}
         role="status"
       >
@@ -1147,7 +1051,7 @@ function EmailDigestButton({
       type="button"
       onClick={onSend}
       disabled={disabled || sending}
-      className="home-button home-button-secondary text-sm disabled:opacity-50"
+      className="c97-btn-ghost mba-ghost disabled:opacity-50"
     >
       <Mail className="h-4 w-4" aria-hidden="true" />
       {sending ? "Sending…" : "Email digest"}
@@ -1197,24 +1101,24 @@ function CompanyFilterStrip({
   }, [totalLiveCount, watchedLiveCount]);
 
   return (
-    <div className="section-panel" style={style}>
+    <div className="c97-panel" style={style}>
       <button
         type="button"
         onClick={() => setIsExpanded((current) => !current)}
-        className="flex w-full items-start justify-between gap-4 rounded-[var(--radius-3xl)] border px-4 py-4 text-left transition-[border-color,background-color] duration-200 ease sm:items-center"
+        className="flex w-full items-start justify-between gap-4 border px-4 py-4 text-left transition-[border-color,background-color] duration-200 ease sm:items-center"
         style={{
-          borderColor: "var(--home-rule)",
-          background: "color-mix(in srgb, var(--home-paper-alt) 56%, var(--home-elev-mix))",
+          borderColor: "var(--c97-rule)",
+          background: "var(--c97-field)",
         }}
         aria-expanded={isExpanded}
         aria-controls="tracked-companies-controls"
       >
         <div className="space-y-3">
           <div>
-            <p className="home-meta mb-0">Tracked company feeds</p>
+            <p className="c97-meta mb-0">Tracked company feeds</p>
             <p
               className="mt-2 text-sm"
-              style={{ color: "var(--home-ink-muted)", fontFamily: CHIP_FONT_FAMILY }}
+              style={{ color: "var(--c97-ink-2)" }}
             >
               {watchedLiveCount} of {totalLiveCount} live boards are in your scan right now.
             </p>
@@ -1228,15 +1132,15 @@ function CompanyFilterStrip({
         <div className="flex items-center gap-3">
           <span
             className="hidden text-2xs font-semibold uppercase tracking-[0.12em] sm:inline"
-            style={{ color: "var(--home-ink-muted)", fontFamily: CHIP_FONT_FAMILY }}
+            style={{ color: "var(--c97-ink-2)" }}
           >
             {isExpanded ? "Hide list" : "Show list"}
           </span>
           <span
             className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full border"
             style={{
-              borderColor: "var(--home-rule)",
-              background: "var(--home-paper-raised)",
+              borderColor: "var(--c97-rule)",
+              background: "var(--c97-field)",
             }}
             aria-hidden="true"
           >
@@ -1244,7 +1148,7 @@ function CompanyFilterStrip({
               className={`h-4 w-4 transition-transform duration-150 ease ${
                 isExpanded ? "rotate-180" : ""
               }`}
-              style={{ color: "var(--home-ink-muted)" }}
+              style={{ color: "var(--c97-ink-2)" }}
             />
           </span>
         </div>
@@ -1266,7 +1170,7 @@ function CompanyFilterStrip({
                 className="inline-flex min-h-[44px] items-center rounded-full border px-4 py-2 text-2xs font-semibold uppercase tracking-[0.12em] transition-[background-color,border-color,color] duration-200 ease disabled:opacity-40"
                 style={{
                   ...getPillStyle(false),
-                  color: "var(--home-signal)",
+                  color: "var(--c97-accent)",
                 }}
               >
                 All on
@@ -1291,16 +1195,16 @@ function CompanyFilterStrip({
                 <div
                   key={group.category}
                   data-testid={`tracked-companies-${group.category}`}
-                  className="rounded-[var(--radius-3xl)] border p-3 sm:p-4"
+                  className=" border p-3 sm:p-4"
                   style={{
-                    borderColor: "var(--home-rule)",
-                    background: "color-mix(in srgb, var(--home-paper-alt) 58%, var(--home-elev-mix))",
+                    borderColor: "var(--c97-rule)",
+                    background: "var(--c97-field)",
                   }}
                 >
                   <button
                     type="button"
-                    className="flex min-h-[44px] w-full items-center justify-between gap-3 rounded-[var(--radius-2xl)] px-2 py-1.5 text-left transition-[background-color] duration-150 ease"
-                    style={{ color: "var(--home-ink)" }}
+                    className="flex min-h-[44px] w-full items-center justify-between gap-3 px-2 py-1.5 text-left transition-[background-color] duration-150 ease"
+                    style={{ color: "var(--c97-ink)" }}
                     aria-expanded={isGroupExpanded}
                     aria-controls={`tracked-companies-panel-${group.category}`}
                     onClick={() =>
@@ -1311,10 +1215,10 @@ function CompanyFilterStrip({
                     }
                   >
                     <div className="min-w-0">
-                      <p className="home-meta mb-0">{group.label}</p>
+                      <p className="c97-meta mb-0">{group.label}</p>
                       <p
                         className="mt-1 text-xs"
-                        style={{ fontFamily: CHIP_FONT_FAMILY, color: "var(--home-ink-muted)" }}
+                        style={{ color: "var(--c97-ink-2)" }}
                       >
                         {watchedCount} / {group.companies.length} watched
                       </p>
@@ -1323,7 +1227,7 @@ function CompanyFilterStrip({
                       className={`h-4 w-4 shrink-0 transition-transform duration-150 ease ${
                         isGroupExpanded ? "rotate-180" : ""
                       }`}
-                      style={{ color: "var(--home-ink-muted)" }}
+                      style={{ color: "var(--c97-ink-2)" }}
                       aria-hidden="true"
                     />
                   </button>
@@ -1339,13 +1243,13 @@ function CompanyFilterStrip({
                             key={company.id}
                             type="button"
                             onClick={() => onToggle(company.id)}
-                            className="inline-flex min-h-[44px] w-full items-center gap-2 rounded-[var(--radius-2xl)] border px-3 py-3 text-left text-xs font-semibold transition-[background-color,border-color,color,box-shadow] duration-150 ease"
+                            className="inline-flex min-h-[44px] w-full items-center gap-2 border px-3 py-3 text-left text-xs font-semibold transition-[background-color,border-color,color,box-shadow] duration-150 ease"
                             style={getTrackedCompanyButtonStyle(company, active)}
                             aria-pressed={active}
                           >
                             <span
                               className="h-2.5 w-2.5 shrink-0 rounded-full"
-                              style={{ background: active ? company.color : "var(--home-stone)" }}
+                              style={{ background: active ? company.color : "var(--c97-rule)" }}
                               aria-hidden="true"
                             />
                             <span className="min-w-0 truncate">{company.name}</span>
@@ -1364,116 +1268,59 @@ function CompanyFilterStrip({
   );
 }
 
-function InsightTile({
-  label,
-  value,
-  sub,
-  tone = "default",
+/**
+ * The four-column pipeline signature: applied, responded, interview, offer,
+ * each a big mono count with the conversion rate from the stage before it.
+ * The first stage has nothing before it, so it carries no rate.
+ */
+function PipelineSignature({
+  insights,
+  hasApplications,
 }: {
-  label: string;
-  value: ReactNode;
-  sub?: string;
-  tone?: "default" | "good";
+  insights: MBAApplicationInsights;
+  hasApplications: boolean;
 }) {
-  const valueColor =
-    tone === "good"
-      ? "color-mix(in srgb, var(--home-positive) 60%, var(--home-ink))"
-      : "var(--home-ink)";
-  return (
-    <div
-      className="rounded-[var(--radius-3xl)] border p-4"
-      style={{ borderColor: "var(--home-rule)" }}
-    >
-      <p className="home-meta mb-0">{label}</p>
-      <p
-        className="mb-0 mt-2 text-2xl font-semibold tabular-nums"
-        style={{ color: valueColor }}
-      >
-        {value}
-      </p>
-      {sub && <p className="home-note-copy mb-0 mt-1 text-xs">{sub}</p>}
-    </div>
-  );
-}
+  const stages = pipelineStages(insights);
 
-function PipelineInsights({ insights }: { insights: MBAApplicationInsights }) {
-  const { funnel, submitted } = insights;
   return (
-    <div className="space-y-5">
-      <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
-        <InsightTile
-          label="Active"
-          value={insights.total}
-          sub="In play right now"
-          tone={insights.total > 0 ? "good" : "default"}
-        />
-        <InsightTile label="Submitted" value={submitted} sub="Applied or further" />
-        <InsightTile
-          label="Response rate"
-          value={formatRate(insights.responseRate)}
-          sub={
-            submitted > 0
-              ? `${insights.responded} of ${submitted} heard back`
-              : "No submissions yet"
-          }
-        />
-        <InsightTile
-          label="Interview rate"
-          value={formatRate(insights.interviewRate)}
-          sub={
-            submitted > 0
-              ? `${insights.interviews} reached interview`
-              : "No submissions yet"
-          }
-        />
-      </div>
-
-      <div
-        className="rounded-[var(--radius-3xl)] border p-4"
-        style={{
-          borderColor: "var(--home-rule)",
-          background: "color-mix(in srgb, var(--home-paper-alt) 58%, var(--home-elev-mix))",
-        }}
-      >
-        <div className="flex flex-wrap items-center justify-between gap-2">
-          <p className="home-meta mb-0">Pipeline funnel</p>
-          <p
-            className="mb-0 text-xs"
-            style={{ color: "var(--home-ink-muted)", fontFamily: CHIP_FONT_FAMILY }}
-          >
-            {funnel.rejected} rejected · {insights.archived} archived
-          </p>
-        </div>
-        <div className="mt-3 flex flex-wrap items-center gap-2">
-          {APPLICATION_FUNNEL_STAGES.map((stage, index) => (
-            <div key={stage.key} className="flex items-center gap-2">
-              <div
-                className="min-w-[5.25rem] rounded-[var(--radius-2xl)] border px-3 py-2"
-                style={{ borderColor: "var(--home-rule)", background: "var(--home-paper)" }}
-              >
-                <p
-                  className="mb-0 text-lg font-semibold tabular-nums"
-                  style={{ color: "var(--home-ink)", fontFamily: CHIP_FONT_FAMILY }}
-                >
-                  {funnel[stage.key]}
+    <div>
+      <p className="c97-kicker">Pipeline funnel</p>
+      <div className="mba-pipeline-stages" style={{ marginTop: "var(--c97-sp-3)" }}>
+        {stages.map((stage, index) => (
+          <div key={stage.key} className={index > 0 ? "mba-pipeline-rate" : undefined}>
+            <p className="c97-stat-value c97-mono" style={{ margin: 0 }}>
+              {stage.count}
+            </p>
+            <p className="c97-meta" style={{ marginTop: "var(--c97-sp-1)" }}>
+              {stage.label}
+            </p>
+            {index > 0 && (
+              <div style={{ marginTop: "var(--c97-sp-2)" }}>
+                <p className="c97-meta">{stage.rateLabel}</p>
+                <p className="c97-mono" style={{ margin: 0, fontSize: "var(--c97-fs-h3)" }}>
+                  {formatRate(stage.rateFromPrevious)}
                 </p>
-                <p className="home-meta mb-0">{stage.label}</p>
+                <p className="c97-prose" style={{ fontSize: "var(--c97-fs-small)", color: "var(--c97-ink-2)" }}>
+                  {stage.count} of {stages[index - 1].count}{" "}
+                  {stage.key === "responded"
+                    ? "heard back"
+                    : stage.key === "interview"
+                      ? "reached interview"
+                      : "got an offer"}
+                </p>
               </div>
-              {index < APPLICATION_FUNNEL_STAGES.length - 1 && (
-                <ChevronRight
-                  className="h-4 w-4 shrink-0"
-                  style={{ color: "var(--home-ink-muted)" }}
-                  aria-hidden="true"
-                />
-              )}
-            </div>
-          ))}
-        </div>
-        <p className="home-note-copy mb-0 mt-3 text-xs">
-          Rates are the share of submitted applications (applied or further) that reached each
-          stage, computed from your browser-local pipeline.
-        </p>
+            )}
+          </div>
+        ))}
       </div>
+      <p className="c97-prose" style={{ marginTop: "var(--c97-sp-3)", color: "var(--c97-ink-2)" }}>
+        {insights.funnel.rejected} rejected · {insights.archived} archived
+      </p>
+      {!hasApplications && (
+        <p className="c97-prose" style={{ marginTop: "var(--c97-sp-2)" }}>
+          Track a role below to start filling this in.
+        </p>
+      )}
     </div>
   );
 }
@@ -1496,35 +1343,25 @@ function AttentionRow({
 
   return (
     <div
-      className="flex flex-col gap-3 rounded-[var(--radius-3xl)] border p-4 sm:flex-row sm:items-center sm:justify-between"
-      style={{
-        borderColor: `color-mix(in srgb, ${accent} 30%, var(--home-rule))`,
-        background: `color-mix(in srgb, ${accent} 8%, var(--home-paper))`,
-      }}
+      className="c97-panel flex flex-col gap-3"
     >
       <div className="flex min-w-0 items-start gap-3">
+        {/* The colour is a swatch/mark only — every word beside it prints in ink. */}
         <span
-          className="mt-0.5 inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full"
-          style={{
-            background: `color-mix(in srgb, ${accent} 18%, var(--home-paper))`,
-            color: getReadableAccentColor(accent),
-          }}
+          className="mt-0.5 inline-flex h-8 w-8 shrink-0 items-center justify-center"
+          style={{ background: accent, color: "var(--c97-surface)" }}
           aria-hidden="true"
         >
           <Icon className="h-4 w-4" />
         </span>
         <div className="min-w-0">
-          <p className="home-meta mb-0">{application.jobSnapshot.companyName}</p>
-          <p
-            className="mb-0 mt-1 text-sm font-semibold"
-            style={{ color: "var(--home-ink)", fontFamily: "var(--font-home-sans)" }}
-          >
+          <p className="c97-serif" style={{ fontSize: "var(--c97-fs-body)" }}>
+            {application.jobSnapshot.companyName}
+          </p>
+          <p className="mb-0 mt-1 text-sm font-semibold" style={{ color: "var(--c97-ink)" }}>
             {application.jobSnapshot.title}
           </p>
-          <p
-            className="mb-0 mt-1 text-xs font-semibold"
-            style={{ color: getReadableAccentColor(accent), fontFamily: CHIP_FONT_FAMILY }}
-          >
+          <p className="c97-meta" style={{ marginTop: "var(--c97-sp-1)" }}>
             {describeAttentionItem(item)}
           </p>
         </div>
@@ -1534,7 +1371,7 @@ function AttentionRow({
           <button
             type="button"
             onClick={() => onClearFollowUp(application.id)}
-            className="home-button home-button-secondary text-sm"
+            className="c97-btn-ghost mba-ghost"
           >
             <CheckCircle2 className="h-3.5 w-3.5" aria-hidden="true" />
             Mark done
@@ -1543,7 +1380,7 @@ function AttentionRow({
           <button
             type="button"
             onClick={() => onMarkApplied(application.id)}
-            className="home-button home-button-secondary text-sm"
+            className="c97-btn-ghost mba-ghost"
           >
             <BriefcaseBusiness className="h-3.5 w-3.5" aria-hidden="true" />
             Mark applied
@@ -1552,7 +1389,7 @@ function AttentionRow({
         <button
           type="button"
           onClick={() => onEdit(application)}
-          className="home-button home-button-secondary text-sm"
+          className="c97-btn-ghost mba-ghost"
         >
           <Edit3 className="h-3.5 w-3.5" aria-hidden="true" />
           Edit
@@ -1594,34 +1431,28 @@ function NeedsAttentionPanel({
         description="Overdue and same-day follow-ups plus deadlines closing on roles you have not submitted yet, pulled straight from your tracked pipeline."
         id="mba-attention-heading"
       />
-      <div className="section-panel">
+      <div>
         {items.length === 0 ? (
-          <div className="flex items-center gap-3">
+          <div className="c97-panel flex items-center gap-3">
             <span
-              className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-full"
-              style={{
-                background: "color-mix(in srgb, var(--home-positive) 16%, var(--home-paper))",
-                color: "color-mix(in srgb, var(--home-positive) 60%, var(--home-ink))",
-              }}
+              className="inline-flex h-9 w-9 shrink-0 items-center justify-center"
+              style={{ background: "var(--c97-positive)", color: "var(--c97-surface)" }}
               aria-hidden="true"
             >
               <CheckCircle2 className="h-5 w-5" />
             </span>
             <div>
-              <p
-                className="mb-0 text-sm font-semibold"
-                style={{ color: "var(--home-ink)", fontFamily: "var(--font-home-sans)" }}
-              >
+              <p className="mb-0 text-sm font-semibold" style={{ color: "var(--c97-ink)" }}>
                 You&rsquo;re all caught up.
               </p>
-              <p className="home-note-copy mb-0 mt-1 text-sm">
+              <p className="c97-prose mb-0 mt-1 text-sm">
                 No follow-ups or deadlines need action right now. Add a follow-up date when you
                 apply and it will surface here on the day.
               </p>
             </div>
           </div>
         ) : (
-          <ul className="space-y-3">
+          <ul className="space-y-3" style={{ listStyle: "none", margin: 0, padding: 0 }}>
             {items.map((item) => (
               <li key={`${item.application.id}-${item.kind}`}>
                 <AttentionRow
@@ -1657,61 +1488,45 @@ function ApplicationCard({
   const followUpIsDue =
     application.followUpDate !== null && application.followUpDate <= getTodayDateKey();
   return (
-    <article
-      className="rounded-[var(--radius-3xl)] border p-4"
-      style={{
-        borderColor: "var(--home-rule)",
-        background: "color-mix(in srgb, var(--home-paper-alt) 72%, var(--home-elev-mix))",
-      }}
-    >
-      <div className="flex items-start justify-between gap-3">
+    <article className="c97-panel">
+      <div className="flex flex-wrap items-start justify-between gap-3">
         <div className="min-w-0">
-          <p className="home-meta mb-0">{application.jobSnapshot.companyName}</p>
+          <p className="c97-serif" style={{ fontSize: "var(--c97-fs-body)" }}>
+            {application.jobSnapshot.companyName}
+          </p>
           <h3
             className="mb-0 mt-2 text-base font-semibold leading-tight"
-            style={{ color: "var(--home-ink)", fontFamily: "var(--font-home-sans)" }}
+            style={{ color: "var(--c97-ink)" }}
           >
             {application.jobSnapshot.title}
           </h3>
         </div>
         <ApplicationPriorityChip priority={application.priority} />
       </div>
-      <p className="home-note-copy mb-0 mt-3 text-sm">
+      <p className="c97-prose mb-0 mt-3 text-sm">
         {application.jobSnapshot.department} · {application.jobSnapshot.location}
       </p>
       <div className="mt-4 flex flex-wrap gap-2">
         <ApplicationStatusChip status={application.status} />
         {application.followUpDate && (
-          <span
-            className="inline-flex items-center gap-1 rounded-full px-3 py-1 text-2xs font-semibold"
-            style={getChipStyle(
-              followUpIsDue ? "var(--home-signal)" : "var(--home-ink-muted)",
-              16,
-              26
-            )}
-          >
-            <CalendarDays className="h-3 w-3" aria-hidden="true" />
-            Follow up {formatDateKey(application.followUpDate)}
-          </span>
+          <ColorTag
+            accent={followUpIsDue ? "var(--c97-accent)" : "var(--c97-ink-2)"}
+            label={`Follow up ${formatDateKey(application.followUpDate)}`}
+          />
         )}
         {application.deadline && (
-          <span
-            className="inline-flex items-center gap-1 rounded-full px-3 py-1 text-2xs font-semibold"
-            style={getChipStyle("var(--home-warning)", 14, 24)}
-          >
-            Due {formatDateKey(application.deadline)}
-          </span>
+          <ColorTag accent="var(--c97-warning)" label={`Due ${formatDateKey(application.deadline)}`} />
         )}
       </div>
       {application.notes && (
-        <p className="home-note-copy mb-0 mt-4 line-clamp-3 text-sm">{application.notes}</p>
+        <p className="c97-prose mb-0 mt-4 line-clamp-3 text-sm">{application.notes}</p>
       )}
-      <div className="mt-4 flex flex-wrap items-center gap-2 border-t border-[var(--home-rule)] pt-4">
+      <div className="mt-4 flex flex-wrap items-center gap-2 border-t border-[var(--c97-rule)] pt-4">
         <select
           value={application.status}
           onChange={(event) => onStatusChange(event.target.value as MBAApplicationStatus)}
-          className="min-h-[44px] rounded-full border px-3 py-2 text-sm"
-          style={applicationInputStyle}
+          className="c97-field"
+          style={{ width: "auto" }}
           aria-label={`Application status for ${application.jobSnapshot.title}`}
         >
           {MBA_APPLICATION_STATUSES.map((status) => (
@@ -1725,8 +1540,8 @@ function ApplicationCard({
           onChange={(event) =>
             onPriorityChange(event.target.value as MBAApplicationPriority)
           }
-          className="min-h-[44px] rounded-full border px-3 py-2 text-sm"
-          style={applicationInputStyle}
+          className="c97-field"
+          style={{ width: "auto" }}
           aria-label={`Priority for ${application.jobSnapshot.title}`}
         >
           {MBA_APPLICATION_PRIORITIES.map((priority) => (
@@ -1735,7 +1550,7 @@ function ApplicationCard({
             </option>
           ))}
         </select>
-        <button type="button" onClick={onEdit} className="home-button home-button-secondary text-sm">
+        <button type="button" onClick={onEdit} className="c97-btn-ghost mba-ghost">
           <Edit3 className="h-3.5 w-3.5" aria-hidden="true" />
           Edit
         </button>
@@ -1749,19 +1564,11 @@ function ApplicationCard({
           />
         )}
         {application.status !== "archived" && (
-          <button type="button" onClick={onArchive} className="home-button home-button-secondary text-sm">
+          <button type="button" onClick={onArchive} className="c97-btn-ghost mba-ghost">
             Archive
           </button>
         )}
-        <button
-          type="button"
-          onClick={onRemove}
-          className="inline-flex min-h-[44px] items-center gap-2 rounded-full border px-4 py-2 text-sm font-semibold"
-          style={{
-            ...getPillStyle(false),
-            color: "color-mix(in srgb, var(--home-signal) 55%, var(--home-ink))",
-          }}
-        >
+        <button type="button" onClick={onRemove} className="c97-btn-ghost mba-ghost">
           <Trash2 className="h-3.5 w-3.5" aria-hidden="true" />
           Delete
         </button>
@@ -1772,7 +1579,6 @@ function ApplicationCard({
 
 function ApplicationPipeline({
   applications,
-  insights,
   onCreate,
   onEdit,
   onStatusChange,
@@ -1784,7 +1590,6 @@ function ApplicationPipeline({
   onImport,
 }: {
   applications: MBATrackedApplication[];
-  insights: MBAApplicationInsights;
   onCreate: () => void;
   onEdit: (application: MBATrackedApplication) => void;
   onStatusChange: (id: string, status: MBAApplicationStatus) => void;
@@ -1841,22 +1646,21 @@ function ApplicationPipeline({
   }
 
   return (
-    <section className="space-y-4" aria-labelledby="mba-application-pipeline-heading">
+    <section className="c97-band c97-sheet" data-c97-surface="paper" data-seam="torn" aria-labelledby="mba-application-pipeline-heading">
+      <div className="c97-shell space-y-4">
       <SectionLead
         kicker="Applications"
         title="Work the pipeline, not another spreadsheet."
         description="Track roles from the live feed, add manual opportunities, and keep follow-ups visible without sending personal application data to the server."
         id="mba-application-pipeline-heading"
       />
-      <div className="section-panel space-y-6">
-        <PipelineInsights insights={insights} />
-
+      <div className="c97-panel space-y-6">
         <div className="flex flex-col gap-3 xl:flex-row xl:items-center xl:justify-between">
           <div className="grid gap-3 md:grid-cols-[minmax(0,1fr)_220px] xl:min-w-[34rem]">
             <div className="relative">
               <Search
                 className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2"
-                style={{ color: "var(--home-ink-muted)" }}
+                style={{ color: "var(--c97-ink-2)" }}
                 aria-hidden="true"
               />
               <input
@@ -1864,8 +1668,8 @@ function ApplicationPipeline({
                 onChange={(event) => setQuery(event.target.value)}
                 placeholder="Search company, role, notes, contact..."
                 aria-label="Search applications"
-                className="w-full min-h-[48px] rounded-[var(--radius-3xl)] border pl-11 pr-4 text-sm outline-none transition-[border-color,box-shadow] duration-200 ease focus-visible:border-[var(--home-signal)] focus-visible:ring-2 focus-visible:ring-[color-mix(in_srgb,var(--home-signal)_35%,transparent)]"
-                style={applicationInputStyle}
+                className="c97-field"
+                style={{ paddingLeft: "2.5rem" }}
               />
             </div>
             <select
@@ -1887,21 +1691,21 @@ function ApplicationPipeline({
           </div>
 
           <div className="flex flex-wrap gap-2">
-            <button type="button" onClick={onCreate} className="home-button home-button-primary text-sm">
+            <button type="button" onClick={onCreate} className="c97-btn">
               Add application
             </button>
-            <button type="button" onClick={onExportJson} className="home-button home-button-secondary text-sm">
+            <button type="button" onClick={onExportJson} className="c97-btn-ghost mba-ghost">
               <Download className="h-4 w-4" aria-hidden="true" />
               JSON backup
             </button>
-            <button type="button" onClick={onExportCsv} className="home-button home-button-secondary text-sm">
+            <button type="button" onClick={onExportCsv} className="c97-btn-ghost mba-ghost">
               <Download className="h-4 w-4" aria-hidden="true" />
               CSV
             </button>
             <button
               type="button"
               onClick={() => importInputRef.current?.click()}
-              className="home-button home-button-secondary text-sm"
+              className="c97-btn-ghost mba-ghost"
             >
               <Upload className="h-4 w-4" aria-hidden="true" />
               Import
@@ -1918,7 +1722,7 @@ function ApplicationPipeline({
         </div>
 
         {importMessage && (
-          <p className="home-note-copy mb-0" role="status">
+          <p className="c97-prose mb-0" role="status">
             {importMessage}
           </p>
         )}
@@ -1945,22 +1749,16 @@ function ApplicationPipeline({
               );
               return (
                 <div key={status} className="space-y-3">
-                  <div
-                    className="flex items-center justify-between rounded-[var(--radius-3xl)] border px-3 py-3"
-                    style={{
-                      borderColor: "var(--home-rule)",
-                      background: "color-mix(in srgb, var(--home-paper-alt) 72%, var(--home-elev-mix))",
-                    }}
-                  >
-                    <p className="home-meta mb-0">{MBA_APPLICATION_STATUS_LABELS[status]}</p>
+                  <div className="c97-panel flex items-center justify-between">
+                    <p className="c97-meta mb-0">{MBA_APPLICATION_STATUS_LABELS[status]}</p>
                     <span className="resume-chip">{statusApplications.length}</span>
                   </div>
                   {statusApplications.length === 0 ? (
                     <div
-                      className="rounded-[var(--radius-3xl)] border border-dashed p-4 text-sm"
+                      className="border border-dashed p-4 text-sm"
                       style={{
-                        borderColor: "var(--home-rule)",
-                        color: "var(--home-ink-muted)",
+                        borderColor: "var(--c97-rule)",
+                        color: "var(--c97-ink-2)",
                       }}
                     >
                       Nothing here.
@@ -1988,6 +1786,7 @@ function ApplicationPipeline({
           </div>
         )}
       </div>
+      </div>
     </section>
   );
 }
@@ -2009,14 +1808,15 @@ function SourceHealthPanel({
   ).length;
 
   return (
-    <section className="space-y-4" aria-labelledby="mba-source-health-heading">
+    <section className="c97-band c97-sheet" data-c97-surface="bone" data-seam="deckle" aria-labelledby="mba-source-health-heading">
+      <div className="c97-shell space-y-4">
       <SectionLead
         kicker="Source health"
         title="Know which feeds answered."
         description="The tracker separates healthy feeds, failed requests, and manual-only sources so partial results are easier to trust."
         id="mba-source-health-heading"
       />
-      <div className="section-panel">
+      <div className="c97-panel">
         <div className="flex flex-wrap gap-2">
           <span className="resume-chip">{okCount} healthy</span>
           <span className="resume-chip">{failedCount} failed</span>
@@ -2029,30 +1829,25 @@ function SourceHealthPanel({
           {sourceStatuses.map((source) => {
             const accent =
               source.status === "ok"
-                ? "var(--home-positive)"
+                ? "var(--c97-positive)"
                 : source.status === "failed"
-                  ? "var(--home-negative)"
+                  ? "var(--c97-negative)"
                   : source.status === "external-disabled"
-                    ? "var(--home-warning)"
-                    : "var(--home-stone)";
+                    ? "var(--c97-warning)"
+                    : "var(--c97-ink-2)";
             return (
-              <span
+              <ColorTag
                 key={`${source.companyId}-${source.status}`}
-                className="inline-flex items-center gap-2 rounded-full px-3 py-1 text-2xs font-semibold"
-                style={getChipStyle(accent, 14, 24)}
+                accent={accent}
                 title={source.message}
-              >
-                <span
-                  className="h-1.5 w-1.5 rounded-full"
-                  style={{ background: accent }}
-                  aria-hidden="true"
-                />
-                {source.companyName} ·{" "}
-                {source.status === "ok" ? `${source.jobCount} roles` : source.status}
-              </span>
+                label={`${source.companyName} · ${
+                  source.status === "ok" ? `${source.jobCount} roles` : source.status
+                }`}
+              />
             );
           })}
         </div>
+      </div>
       </div>
     </section>
   );
@@ -2073,8 +1868,6 @@ export function MBAJobsClient({
 }: MBAJobsClientProps) {
   const router = useRouter();
   const searchParams = useSearchParams();
-  const shouldReduceMotion = useReducedMotion();
-  const variants = shouldReduceMotion ? noMotion : fadeIn;
   const searchParamsKey = searchParams.toString();
   const routeState = useMemo(
     () => (searchParamsKey ? normalizeMBAJobsState(searchParams) : initialState),
@@ -2235,8 +2028,6 @@ export function MBAJobsClient({
   const totalTracked = MBA_COMPANIES.filter((c) => c.atsType !== "manual").length;
   const totalCompanies = MBA_COMPANIES.length;
   const externalLeadCount = jobs.filter((job) => job.atsType === "external-api").length;
-  const internshipCount = jobs.filter((job) => job.roleType === "internship").length;
-  const fullTimeCount = jobs.filter((job) => job.roleType === "full-time").length;
   const normalizedLocationFilter = normalizeSearchText(uiState.location);
   const matchingRoleCount = locationScopedEntries.length;
   const refreshLabel = isLoading
@@ -2245,66 +2036,8 @@ export function MBAJobsClient({
       ? `Updated ${formatFetchedAt(lastFetchedAt)}`
       : "Not yet fetched";
 
-  const lastRefreshRelative = isLoading
-    ? "Refreshing"
-    : lastFetchedAt
-      ? timeAgo(lastFetchedAt.toISOString())
-      : "—";
 
-  const statsCells: HomeStatsCell[] = [
-    {
-      label: "Live roles",
-      value: <span className="tabular-nums">{isLoading ? "—" : jobs.length}</span>,
-      sub: "Across tracked feeds",
-    },
-    {
-      label: "Internships",
-      value: <span className="tabular-nums">{isLoading ? "—" : internshipCount}</span>,
-      sub: "Summer and intern roles",
-    },
-    {
-      label: "Full-time",
-      value: <span className="tabular-nums">{isLoading ? "—" : fullTimeCount}</span>,
-      sub: "Post-MBA roles",
-    },
-    {
-      label: "New since last visit",
-      value: <span className="tabular-nums">{isLoading ? "—" : newJobCount}</span>,
-      sub: newJobCount > 0 ? "Mark all seen to clear" : "Caught up",
-      tone: newJobCount > 0 ? "good" : "default",
-    },
-    {
-      label: "Tracked apps",
-      value: <span className="tabular-nums">{activeApplications.length}</span>,
-      sub: "Browser-local pipeline",
-      tone: activeApplications.length > 0 ? "good" : "default",
-    },
-    {
-      label: "Companies tracked",
-      value: <span className="tabular-nums">{totalCompanies}</span>,
-      sub: "Public boards plus manual fallbacks",
-    },
-    {
-      label: "Live feeds",
-      value: <span className="tabular-nums">{totalTracked}</span>,
-      sub: "Auto-polled boards",
-    },
-    {
-      label: "External leads",
-      value: <span className="tabular-nums">{externalLeadCount}</span>,
-      sub: uiState.external === "on" ? "Opt-in aggregator" : "Off by default",
-    },
-    {
-      label: "Manual fallbacks",
-      value: <span className="tabular-nums">{manualCompanies.length}</span>,
-      sub: "Career page or LinkedIn search",
-    },
-    {
-      label: "Last refresh",
-      value: lastRefreshRelative,
-      sub: "Polls every 30 min",
-    },
-  ];
+  const hasApplications = applications.length > 0;
 
   async function handleEmailSend(email: string) {
     setEmailDialogOpen(false);
@@ -2407,245 +2140,154 @@ export function MBAJobsClient({
         />
       )}
 
-      <section className="home-page min-h-screen" aria-label="MBA role tracker">
-        <div className="home-shell home-section space-y-8 sm:space-y-10">
-          <HomeStatsPanel
-            id="mba-jobs-stats"
-            title="MBA tracker at a glance"
-            meta={refreshLabel}
-            cells={statsCells}
-            pills={[
-              {
-                label: "Internships",
-                href: buildMBAJobsHref({ ...uiState, view: "feed", roleType: "internship" }),
-                icon: Briefcase,
-              },
-              {
-                label: "Product",
-                href: buildMBAJobsHref({ ...uiState, view: "feed", roleFamily: "product" }),
-                icon: ChartBar,
-              },
-              {
-                label: "Finance",
-                href: buildMBAJobsHref({ ...uiState, view: "feed", roleFamily: "finance" }),
-                icon: FileText,
-              },
-              {
-                label: "Strategy",
-                href: buildMBAJobsHref({ ...uiState, view: "feed", roleFamily: "strategy" }),
-                icon: Article,
-              },
-              {
-                label: "Newsletter",
-                href: "/contact",
-                icon: MailIcon,
-              },
-            ]}
-          />
+      <Catalog97ProjectHero
+        ink={PROJECT_PRESS[ROUTE].lead}
+        title="Job search"
+        standfirst={
+          <>
+            I monitor {totalTracked} public job boards across {totalCompanies} target companies
+            for internships and full-time product, PMM, strategy, operations, growth, finance,
+            analytics, and adjacent business roles. External leads stay opt-in, and LinkedIn stays
+            an outbound search shortcut instead of a scraped feed. The board below narrows by role
+            and company type, and any role tracked from it lands in the pipeline so follow-ups and
+            deadlines surface on their own.
+          </>
+        }
+        meta={refreshLabel}
+        readouts={[
+          { label: "Live roles tracked", value: isLoading ? "—" : jobs.length },
+          { label: "Active applications", value: activeApplications.length },
+          { label: "Needs attention", value: attentionItems.length },
+        ]}
+      >
+        <div data-c97-surface="paper" className="c97-offset" style={{ padding: "var(--c97-sp-4)" }}>
+          <div className="mba-signature-grid">
+            <PipelineSignature insights={applicationInsights} hasApplications={hasApplications} />
+            <NeedsAttentionPanel
+              items={attentionItems}
+              hasApplications={hasApplications}
+              onEdit={openApplicationDialog}
+              onMarkApplied={(id) => updateStatus(id, "applied")}
+              onClearFollowUp={handleClearFollowUp}
+            />
+          </div>
+        </div>
+      </Catalog97ProjectHero>
 
-          <motion.div
-            className="section-panel overflow-hidden"
-            variants={variants}
-            initial="hidden"
-            animate="visible"
-          >
-            <div className="grid gap-8 xl:grid-cols-[minmax(0,1.15fr)_minmax(280px,0.85fr)]">
-              <div className="space-y-4">
-                <p
-                  className="home-kicker mb-0"
-                  style={{ color: "var(--home-signal)", fontFamily: "var(--font-home-sans)" }}
-                >
-                  MBA recruiting
-                </p>
-                <h1 className="home-section-title mb-0 max-w-[9ch]">Job search</h1>
-                <p className="home-body mb-0 max-w-[44rem]">
-                  I monitor {totalTracked} public job boards across {totalCompanies} target
-                  companies for internships and full-time product, PMM, strategy, operations,
-                  growth, finance, analytics, and adjacent business roles. External leads stay
-                  opt-in, and LinkedIn stays an outbound search shortcut instead of a scraped feed.
-                </p>
-              </div>
-              <div className="grid gap-3 self-start sm:grid-cols-2 xl:grid-cols-1">
-                <div
-                  className="rounded-[var(--radius-3xl)] border p-4"
-                  style={{
-                    borderColor: "var(--home-rule)",
-                    background: "color-mix(in srgb, var(--home-paper-alt) 62%, var(--home-elev-mix))",
-                  }}
-                >
-                  <p className="home-meta mb-0">Coverage</p>
-                  <p className="home-note-copy mb-0 mt-3">
-                    {totalTracked} live public feeds plus manual fallbacks across {totalCompanies}{" "}
-                    companies.
-                  </p>
-                </div>
-                <div
-                  className="rounded-[var(--radius-3xl)] border p-4"
-                  style={{
-                    borderColor: "var(--home-rule)",
-                    background: "color-mix(in srgb, var(--home-paper-alt) 62%, var(--home-elev-mix))",
-                  }}
-                >
-                  <p className="home-meta mb-0">Workflow</p>
-                  <p className="home-note-copy mb-0 mt-3">
-                    Search the board, narrow by role and company type, then use alerts and digests
-                    when you want a faster recruiting scan.
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            <div className="mt-6 border-t border-[var(--home-rule)] pt-6">
-              <div className="flex flex-wrap gap-2">
-                <span className="resume-chip">
-                    {isLoading ? "Loading…" : `${jobs.length} live roles`}
-                </span>
-                {!isLoading && <span className="resume-chip">{internshipCount} internships</span>}
-                {!isLoading && <span className="resume-chip">{fullTimeCount} full-time</span>}
-                <Chip>{totalTracked} live feeds</Chip>
-                {uiState.external === "on" && (
-                  <span className="resume-chip">{externalLeadCount} external leads</span>
-                )}
-                <span className="resume-chip">{totalCompanies} target companies</span>
-                <span className="resume-chip">{refreshLabel}</span>
-                {!isLoading && newJobCount > 0 && (
-                  <span
-                    className="resume-chip"
-                    style={{ background: "var(--home-signal)", color: "var(--home-ink)" }}
-                  >
-                    {newJobCount} new since last visit
-                  </span>
-                )}
-                <span className="resume-chip">Polls every 30 min</span>
-              </div>
-            </div>
-
-            <div className="mt-5 flex flex-wrap items-center gap-3">
-              <button
-                type="button"
-                onClick={refresh}
-                disabled={isLoading}
-                className="home-button home-button-secondary text-sm disabled:opacity-50"
-              >
-                <RefreshCcw
-                  className={`h-4 w-4 ${isLoading ? "animate-spin" : ""}`}
-                  aria-hidden="true"
-                />
-                {isLoading ? "Loading…" : "Refresh now"}
-              </button>
-
-              <NotificationBell
-                permission={notificationPermission}
-                onRequest={requestNotificationPermission}
-              />
-
-              <EmailDigestButton
-                onSend={() => setEmailDialogOpen(true)}
-                sending={emailSending}
-                result={emailResult}
-                onClear={clearEmailResult}
-                disabled={isLoading || jobs.length === 0}
-              />
-
-              {!isLoading && newJobCount > 0 && (
-                <button
-                  type="button"
-                  onClick={markAllSeen}
-                  className="home-button home-button-secondary text-sm"
-                >
-                  Mark all seen
-                </button>
-              )}
-            </div>
-
-            <div
-              className="mt-5 flex flex-wrap gap-2 border-t border-[var(--home-rule)] pt-5"
-              role="tablist"
-              aria-label="Job tracker view"
+      <section className="c97-band c97-sheet" data-c97-surface="paper" data-seam="torn">
+        <div className="c97-shell" style={{ display: "flex", flexDirection: "column", gap: "var(--c97-sp-4)" }}>
+          <div className="flex flex-wrap items-center gap-3">
+            <button
+              type="button"
+              onClick={refresh}
+              disabled={isLoading}
+              className="c97-btn-ghost mba-ghost disabled:opacity-50"
             >
-              {(["feed", "applications"] as const).map((view) => (
-                <EditorialPillButton
-                  key={view}
-                  active={uiState.view === view}
-                  onClick={() => updateRouteState({ view })}
-                  role="tab"
-                  ariaSelected={uiState.view === view}
-                  size="sm"
-                >
-                  {VIEW_LABELS[view]}
-                </EditorialPillButton>
-              ))}
-            </div>
-          </motion.div>
-
-          <SourceHealthPanel sourceStatuses={sourceStatuses} isLoading={isLoading} />
-
-          {uiState.view === "applications" ? (
-            <>
-              <NeedsAttentionPanel
-                items={attentionItems}
-                hasApplications={applications.length > 0}
-                onEdit={openApplicationDialog}
-                onMarkApplied={(id) => updateStatus(id, "applied")}
-                onClearFollowUp={handleClearFollowUp}
-              />
-              <ApplicationPipeline
-                applications={applications}
-                insights={applicationInsights}
-                onCreate={() => openApplicationDialog(null)}
-                onEdit={openApplicationDialog}
-                onStatusChange={updateStatus}
-                onPriorityChange={updatePriority}
-                onArchive={archiveApplication}
-                onRemove={removeApplication}
-                onExportJson={handleExportJson}
-                onExportCsv={handleExportCsv}
-                onImport={importApplications}
-              />
-            </>
-          ) : (
-            <>
-          {fetchErrors.length > 0 && !isLoading && (
-            <div
-              className="flex items-start gap-3 rounded-[var(--radius-3xl)] px-5 py-4"
-              style={{
-                borderColor: "color-mix(in srgb, var(--home-signal) 32%, var(--home-rule))",
-                background: "color-mix(in srgb, var(--home-signal) 10%, var(--home-paper))",
-                border: "1px solid",
-              }}
-              role="status"
-            >
-              <CircleAlert
-                className="mt-0.5 h-4 w-4 shrink-0"
-                style={{ color: "color-mix(in srgb, var(--home-signal) 55%, var(--home-ink))" }}
+              <RefreshCcw
+                className={`h-4 w-4 ${isLoading ? "animate-spin" : ""}`}
                 aria-hidden="true"
               />
-              <p className="mb-0 text-sm" style={{ color: "var(--home-ink)" }}>
-                Some companies could not be reached:{" "}
-                {fetchErrors.map((e) => e.companyName).join(", ")}. Results shown are partial.
-              </p>
-            </div>
-          )}
+              {isLoading ? "Loading…" : "Refresh now"}
+            </button>
 
-          <section className="space-y-4" aria-labelledby="mba-role-tracker-filters-heading">
+            <NotificationBell
+              permission={notificationPermission}
+              onRequest={requestNotificationPermission}
+            />
+
+            <EmailDigestButton
+              onSend={() => setEmailDialogOpen(true)}
+              sending={emailSending}
+              result={emailResult}
+              onClear={clearEmailResult}
+              disabled={isLoading || jobs.length === 0}
+            />
+
+            {!isLoading && newJobCount > 0 && (
+              <button type="button" onClick={markAllSeen} className="c97-btn-ghost mba-ghost">
+                Mark all seen
+              </button>
+            )}
+            {!isLoading && newJobCount > 0 && (
+              <p className="c97-meta" style={{ margin: 0 }}>
+                {newJobCount} new since last visit
+              </p>
+            )}
+          </div>
+
+          <div role="tablist" aria-label="Job tracker view" className="flex flex-wrap gap-2">
+            {(["feed", "applications"] as const).map((view) => (
+              <EditorialPillButton
+                key={view}
+                active={uiState.view === view}
+                onClick={() => updateRouteState({ view })}
+                role="tab"
+                ariaSelected={uiState.view === view}
+                size="sm"
+              >
+                {VIEW_LABELS[view]}
+              </EditorialPillButton>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <SourceHealthPanel sourceStatuses={sourceStatuses} isLoading={isLoading} />
+
+      {uiState.view === "applications" ? (
+        <ApplicationPipeline
+          applications={applications}
+          onCreate={() => openApplicationDialog(null)}
+          onEdit={openApplicationDialog}
+          onStatusChange={updateStatus}
+          onPriorityChange={updatePriority}
+          onArchive={archiveApplication}
+          onRemove={removeApplication}
+          onExportJson={handleExportJson}
+          onExportCsv={handleExportCsv}
+          onImport={importApplications}
+        />
+      ) : (
+        <>
+
+          <section className="c97-band c97-sheet" data-c97-surface="paper" data-seam="torn" aria-labelledby="mba-role-tracker-filters-heading">
+            <div className="c97-shell space-y-4">
+              {fetchErrors.length > 0 && !isLoading && (
+                <div
+                  className="flex items-start gap-3 px-5 py-4"
+                  style={{
+                    borderColor: "color-mix(in srgb, var(--c97-accent) 32%, var(--c97-rule))",
+                    background: "color-mix(in srgb, var(--c97-accent) 10%, var(--c97-surface))",
+                    border: "1px solid",
+                  }}
+                  role="status"
+                >
+                  <CircleAlert
+                    className="mt-0.5 h-4 w-4 shrink-0"
+                    style={{ color: "color-mix(in srgb, var(--c97-accent) 55%, var(--c97-ink))" }}
+                    aria-hidden="true"
+                  />
+                  <p className="mb-0 text-sm" style={{ color: "var(--c97-ink)" }}>
+                    Some companies could not be reached:{" "}
+                    {fetchErrors.map((e) => e.companyName).join(", ")}. Results shown are partial.
+                  </p>
+                </div>
+              )}
             <SectionLead
               kicker="Filters"
               title="Search and narrow the board."
               description="Search roles, narrow by location, sort the feed, and filter by role type, role family, and company category without leaving the page."
               id="mba-role-tracker-filters-heading"
             />
-            <motion.div
-              className="section-panel"
-              variants={variants}
-              initial="hidden"
-              animate="visible"
+            <div
+              className="c97-panel"
             >
               <div className="space-y-6">
                 <div className="grid gap-3 xl:grid-cols-[minmax(0,1.15fr)_minmax(240px,0.85fr)_auto] xl:items-center">
                   <div className="relative">
                     <Search
                       className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2"
-                      style={{ color: "var(--home-ink-muted)" }}
+                      style={{ color: "var(--c97-ink-2)" }}
                       aria-hidden="true"
                     />
                     <input
@@ -2655,15 +2297,8 @@ export function MBAJobsClient({
                       onChange={(event) => updateRouteState({ q: event.target.value })}
                       placeholder="Search PM, PMM, strategy, ops, growth, finance..."
                       aria-label="Search roles"
-                      className="w-full min-h-[48px] rounded-[var(--radius-3xl)] border pl-11 pr-12 text-sm outline-none transition-[border-color,box-shadow] duration-200 ease focus-visible:border-[var(--home-signal)] focus-visible:ring-2 focus-visible:ring-[color-mix(in_srgb,var(--home-signal)_35%,transparent)]"
-                      style={{
-                        background: "color-mix(in srgb, var(--home-paper-alt) 84%, var(--home-elev-mix))",
-                        borderColor: "var(--home-rule)",
-                        color: "var(--home-ink)",
-                        fontFamily: "var(--font-home-sans)",
-                        paddingTop: "0.85rem",
-                        paddingBottom: "0.85rem",
-                      }}
+                      className="c97-field"
+                      style={{ paddingLeft: "2.5rem", paddingRight: "2.5rem" }}
                     />
                     {uiState.q && (
                       <button
@@ -2672,9 +2307,9 @@ export function MBAJobsClient({
                           updateRouteState({ q: "" });
                           searchInputRef.current?.focus();
                         }}
-                        className="absolute right-3 top-1/2 inline-flex min-h-[44px] min-w-[44px] -translate-y-1/2 items-center justify-center rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-signal)] focus-visible:ring-offset-2"
+                        className="absolute right-3 top-1/2 inline-flex min-h-[44px] min-w-[44px] -translate-y-1/2 items-center justify-center"
                         aria-label="Clear search"
-                        style={{ color: "var(--home-ink-muted)" }}
+                        style={{ color: "var(--c97-ink-2)" }}
                       >
                         <X className="h-4 w-4" aria-hidden="true" />
                       </button>
@@ -2684,7 +2319,7 @@ export function MBAJobsClient({
                   <div className="relative">
                     <MapPin
                       className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2"
-                      style={{ color: "var(--home-ink-muted)" }}
+                      style={{ color: "var(--c97-ink-2)" }}
                       aria-hidden="true"
                     />
                     <input
@@ -2694,15 +2329,8 @@ export function MBAJobsClient({
                       onChange={(event) => updateRouteState({ location: event.target.value })}
                       placeholder="Remote, New York, San Francisco..."
                       aria-label="Filter by location"
-                      className="w-full min-h-[48px] rounded-[var(--radius-3xl)] border pl-11 pr-12 text-sm outline-none transition-[border-color,box-shadow] duration-200 ease focus-visible:border-[var(--home-signal)] focus-visible:ring-2 focus-visible:ring-[color-mix(in_srgb,var(--home-signal)_35%,transparent)]"
-                      style={{
-                        background: "color-mix(in srgb, var(--home-paper-alt) 84%, var(--home-elev-mix))",
-                        borderColor: "var(--home-rule)",
-                        color: "var(--home-ink)",
-                        fontFamily: "var(--font-home-sans)",
-                        paddingTop: "0.85rem",
-                        paddingBottom: "0.85rem",
-                      }}
+                      className="c97-field"
+                      style={{ paddingLeft: "2.5rem", paddingRight: "2.5rem" }}
                     />
                     {uiState.location && (
                       <button
@@ -2711,9 +2339,9 @@ export function MBAJobsClient({
                           updateRouteState({ location: "" });
                           locationInputRef.current?.focus();
                         }}
-                        className="absolute right-3 top-1/2 inline-flex min-h-[44px] min-w-[44px] -translate-y-1/2 items-center justify-center rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-signal)] focus-visible:ring-offset-2"
+                        className="absolute right-3 top-1/2 inline-flex min-h-[44px] min-w-[44px] -translate-y-1/2 items-center justify-center"
                         aria-label="Clear location filter"
-                        style={{ color: "var(--home-ink-muted)" }}
+                        style={{ color: "var(--c97-ink-2)" }}
                       >
                         <X className="h-4 w-4" aria-hidden="true" />
                       </button>
@@ -2740,17 +2368,17 @@ export function MBAJobsClient({
 
                 {locationOptions.length > 0 && (
                   <div
-                    className="rounded-[var(--radius-3xl)] border px-4 py-4"
+                    className=" border px-4 py-4"
                     style={{
-                      borderColor: "var(--home-rule)",
-                      background: "color-mix(in srgb, var(--home-paper-alt) 62%, var(--home-elev-mix))",
+                      borderColor: "var(--c97-rule)",
+                      background: "var(--c97-field)",
                     }}
                   >
                     <div className="flex flex-wrap items-center justify-between gap-2">
-                      <p className="home-meta mb-0">Popular locations</p>
+                      <p className="c97-meta mb-0">Popular locations</p>
                       <p
                         className="mb-0 text-1xs"
-                        style={{ color: "var(--home-ink-muted)", fontFamily: CHIP_FONT_FAMILY }}
+                        style={{ color: "var(--c97-ink-2)" }}
                       >
                         {matchingRoleCount} roles before location filtering
                       </p>
@@ -2785,9 +2413,9 @@ export function MBAJobsClient({
                   </div>
                 )}
 
-                <div className="space-y-4 border-t border-[var(--home-rule)] pt-6">
+                <div className="space-y-4 border-t border-[var(--c97-rule)] pt-6">
                   <div className="space-y-2">
-                    <p className="home-meta mb-0">Role type</p>
+                    <p className="c97-meta mb-0">Role type</p>
                     <div className="flex flex-wrap gap-2" role="tablist" aria-label="Filter by role type">
                       {ROLE_TYPE_OPTIONS.map((roleType) => (
                         <EditorialPillButton
@@ -2807,7 +2435,7 @@ export function MBAJobsClient({
                   </div>
 
                   <div className="space-y-2">
-                    <p className="home-meta mb-0">Role family</p>
+                    <p className="c97-meta mb-0">Role family</p>
                     <div
                       className="flex flex-wrap gap-2"
                       role="tablist"
@@ -2831,7 +2459,7 @@ export function MBAJobsClient({
                   </div>
 
                   <div className="space-y-2">
-                    <p className="home-meta mb-0">Company category</p>
+                    <p className="c97-meta mb-0">Company category</p>
                     <div
                       className="flex flex-wrap gap-2"
                       role="tablist"
@@ -2855,7 +2483,7 @@ export function MBAJobsClient({
                   </div>
 
                   <div className="space-y-2">
-                    <p className="home-meta mb-0">Sources</p>
+                    <p className="c97-meta mb-0">Sources</p>
                     <div className="flex flex-wrap gap-2" role="tablist" aria-label="External lead sources">
                       {(["off", "on"] as const).map((external) => (
                         <EditorialPillButton
@@ -2874,88 +2502,51 @@ export function MBAJobsClient({
                 </div>
 
                 {activeFilters && (
-                  <div className="flex flex-wrap items-center gap-2 border-t border-[var(--home-rule)] pt-6">
+                  <div className="flex flex-wrap items-center gap-2 border-t border-[var(--c97-rule)] pt-6">
                     {uiState.q.trim() && (
-                      <span
-                        className="inline-flex items-center rounded-full px-3 py-1 text-xs font-semibold"
-                        style={{
-                          background: "var(--home-ink)",
-                          color: "var(--home-paper)",
-                          fontFamily: CHIP_FONT_FAMILY,
-                        }}
-                      >
-                        Search: {uiState.q.trim()}
-                      </span>
+                      <ColorTag accent="var(--c97-ink)" label={`Search: ${uiState.q.trim()}`} />
                     )}
                     {uiState.location.trim() && (
-                      <span
-                        className="inline-flex items-center rounded-full px-3 py-1 text-xs font-semibold"
-                        style={{
-                          background: "color-mix(in srgb, var(--home-paper-alt) 84%, var(--home-elev-mix))",
-                          color: "var(--home-ink)",
-                          fontFamily: CHIP_FONT_FAMILY,
-                        }}
-                      >
-                        Location: {uiState.location.trim()}
-                      </span>
+                      <ColorTag
+                        accent="var(--c97-ink-2)"
+                        label={`Location: ${uiState.location.trim()}`}
+                      />
                     )}
                     {uiState.roleType !== "all" && (
-                      <span
-                        className="inline-flex items-center rounded-full px-3 py-1 text-xs font-semibold"
-                        style={getChipStyle(
-                          ROLE_TYPE_STYLES[uiState.roleType].accent,
-                          ROLE_TYPE_STYLES[uiState.roleType].backgroundWeight,
-                          ROLE_TYPE_STYLES[uiState.roleType].borderWeight
-                        )}
-                      >
-                        {ROLE_TYPE_LABELS[uiState.roleType]}
-                      </span>
+                      <ColorTag
+                        accent={ROLE_TYPE_ACCENTS[uiState.roleType]}
+                        label={ROLE_TYPE_LABELS[uiState.roleType]}
+                      />
                     )}
                     {uiState.roleFamily !== "all" && (
-                      <span
-                        className="inline-flex items-center rounded-full px-3 py-1 text-xs font-semibold"
-                        style={getChipStyle(getRoleFamilyAccent(uiState.roleFamily), 18, 28)}
-                      >
-                        {ROLE_FAMILY_LABELS[uiState.roleFamily]}
-                      </span>
+                      <ColorTag
+                        accent={getRoleFamilyAccent(uiState.roleFamily)}
+                        label={ROLE_FAMILY_LABELS[uiState.roleFamily]}
+                      />
                     )}
                     {uiState.category !== "all" && (
-                      <span
-                        className="inline-flex items-center rounded-full px-3 py-1 text-xs font-semibold"
-                        style={getChipStyle(CATEGORY_COLOR[uiState.category], 18, 28)}
-                      >
-                        {CATEGORY_LABELS[uiState.category]}
-                      </span>
+                      <ColorTag
+                        accent={CATEGORY_COLOR[uiState.category]}
+                        label={CATEGORY_LABELS[uiState.category]}
+                      />
                     )}
                     {uiState.sort !== DEFAULT_MBA_JOBS_STATE.sort && (
-                      <span
-                        className="inline-flex items-center rounded-full px-3 py-1 text-xs font-semibold"
-                        style={{
-                          background: "color-mix(in srgb, var(--home-paper-alt) 84%, var(--home-elev-mix))",
-                          color: "var(--home-ink)",
-                          fontFamily: CHIP_FONT_FAMILY,
-                        }}
-                      >
-                        {SORT_LABELS[uiState.sort]}
-                      </span>
+                      <ColorTag accent="var(--c97-ink-2)" label={SORT_LABELS[uiState.sort]} />
                     )}
                     {uiState.external !== DEFAULT_MBA_JOBS_STATE.external && (
-                      <span
-                        className="inline-flex items-center rounded-full px-3 py-1 text-xs font-semibold"
-                        style={getChipStyle("var(--home-signal)", 16, 28)}
-                      >
-                        {EXTERNAL_LABELS[uiState.external]}
-                      </span>
+                      <ColorTag accent="var(--c97-accent)" label={EXTERNAL_LABELS[uiState.external]} />
                     )}
                   </div>
                 )}
               </div>
-            </motion.div>
+            </div>
+            </div>
           </section>
 
           <SearchElsewhereStrip currentState={uiState} />
 
-          <section className="space-y-4" aria-labelledby="mba-role-tracker-companies-heading">
+          <section className="c97-band c97-sheet" data-c97-surface="paper" data-seam="torn" aria-labelledby="mba-role-tracker-companies-heading">
+            <div className="c97-shell space-y-4">
             <SectionLead
               kicker="Tracked companies"
               title="Choose which live feeds stay in view."
@@ -2968,9 +2559,11 @@ export function MBAJobsClient({
               onSelectAll={() => setAllCompanies(true)}
               onClearAll={() => setAllCompanies(false)}
             />
+            </div>
           </section>
 
-          <section className="space-y-4" aria-labelledby="mba-role-tracker-roles-heading">
+          <section className="c97-band c97-sheet" data-c97-surface="bone" data-seam="deckle" aria-labelledby="mba-role-tracker-roles-heading">
+            <div className="c97-shell space-y-4">
             <SectionLead
               kicker="Live roles"
               title="Current openings across the tracked boards."
@@ -2996,8 +2589,8 @@ export function MBAJobsClient({
                   <span
                     className="resume-chip"
                     style={{
-                      background: "color-mix(in srgb, var(--home-paper-alt) 78%, var(--home-elev-mix))",
-                      color: "var(--home-ink)",
+                      background: "var(--c97-field)",
+                      color: "var(--c97-ink)",
                     }}
                   >
                     Location: {uiState.location.trim()}
@@ -3022,12 +2615,9 @@ export function MBAJobsClient({
                 icon={<BriefcaseBusiness className="h-5 w-5" aria-hidden="true" />}
               />
             ) : (
-              <motion.div
+              <div
                 className="grid gap-6 md:grid-cols-2 xl:grid-cols-3"
                 data-testid="live-jobs-grid"
-                variants={variants}
-                initial="hidden"
-                animate="visible"
               >
                 {displayJobs.map((job) => {
                   const application = getApplicationForJob(job);
@@ -3048,12 +2638,14 @@ export function MBAJobsClient({
                     />
                   );
                 })}
-              </motion.div>
+              </div>
             )}
+            </div>
           </section>
 
           {manualCompanies.length > 0 && (
-            <section className="space-y-4" aria-labelledby="mba-role-tracker-manual-heading">
+            <section className="c97-band c97-sheet" data-c97-surface="paper" data-seam="torn" aria-labelledby="mba-role-tracker-manual-heading">
+              <div className="c97-shell space-y-4">
               <SectionLead
                 kicker="Manual checks"
                 title="Fallback paths for companies without stable public feeds."
@@ -3068,6 +2660,7 @@ export function MBAJobsClient({
                   <ManualCompanyCard key={c.id} company={c} currentState={uiState} />
                 ))}
               </div>
+              </div>
             </section>
           )}
 
@@ -3079,10 +2672,8 @@ export function MBAJobsClient({
               </UtilityStrip>
             </div>
           )}
-            </>
-          )}
-        </div>
-      </section>
+        </>
+      )}
     </>
   );
 }

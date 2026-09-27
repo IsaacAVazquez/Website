@@ -20,11 +20,11 @@ function Field({
 }: { label: string; id: string } & React.InputHTMLAttributes<HTMLInputElement>) {
   return (
     <label htmlFor={id} className="block">
-      <span className="block text-xs font-medium text-[var(--home-ink-muted)] mb-1">{label}</span>
+      <span className="block text-xs font-medium text-[var(--c97-ink-2)] mb-1">{label}</span>
       <input
         id={id}
         name={id}
-        className="min-h-[44px] w-full px-3 py-2 text-sm rounded-lg border border-[var(--home-rule)] bg-[var(--home-paper-alt)] text-[var(--home-ink)] placeholder:text-[var(--home-ink-soft)] focus:outline-none focus:ring-2 focus:ring-[var(--home-signal)] focus:border-transparent transition"
+        className="min-h-[44px] w-full px-3 py-2 text-sm border-0 border-b border-[var(--c97-ink-2)] bg-[var(--c97-panel)] text-[var(--c97-ink)] placeholder:text-[var(--c97-label)] focus:outline-none focus:border-[var(--c97-accent)] transition"
         {...props}
       />
     </label>
@@ -133,14 +133,14 @@ export function AddStockForm({ onAdd }: Props) {
     <TerminalPanel padding="sm" ariaLabel="Add stock form">
       <div className="mb-5 flex items-center justify-between">
         <div>
-          <h3 className="text-sm font-semibold text-[var(--home-ink)]">Add Position</h3>
-          <p className="mt-1 text-xs text-[var(--home-ink-soft)]">
+          <h3 className="text-sm font-semibold text-[var(--c97-ink)]">Add Position</h3>
+          <p className="mt-1 text-xs text-[var(--c97-label)]">
             Save a holding locally to include it in portfolio analytics.
           </p>
         </div>
         <button
           onClick={() => { setOpen(false); clearError(); }}
-          className="text-[var(--home-ink-soft)] hover:text-[var(--home-ink)] transition min-h-[44px] min-w-[44px] flex items-center justify-center"
+          className="text-[var(--c97-label)] hover:text-[var(--c97-ink)] transition min-h-[44px] min-w-[44px] flex items-center justify-center"
           aria-label="Close add stock form"
         >
           <X size={18} />
@@ -204,7 +204,7 @@ export function AddStockForm({ onAdd }: Props) {
         </div>
 
         {error && (
-          <p id="add-form-error" role="alert" className="mb-4 text-xs text-[var(--home-negative)]">
+          <p id="add-form-error" role="alert" className="mb-4 text-xs text-[var(--c97-negative)]">
             {error}
           </p>
         )}

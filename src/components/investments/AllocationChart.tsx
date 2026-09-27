@@ -13,6 +13,7 @@ interface Props {
 import { holdingColor } from "./holdingPalette";
 
 export function AllocationChart({ holdings }: Props) {
+  const portfolio = holdings.map((h) => h.symbol);
   const svgRef = useRef<SVGSVGElement>(null);
   const tooltipRef = useRef<HTMLDivElement>(null);
 
@@ -63,8 +64,8 @@ export function AllocationChart({ holdings }: Props) {
       .data(pie(data))
       .join("path")
       .attr("d", arc)
-      .attr("fill", (d) => holdingColor(d.data.symbol))
-      .style("stroke", "var(--home-paper-raised)")
+      .attr("fill", (d) => holdingColor(d.data.symbol, portfolio))
+      .style("stroke", "var(--c97-panel)")
       .attr("stroke-width", 2)
       .style("cursor", "pointer")
       .style("transition", "opacity 0.15s ease");
@@ -96,13 +97,13 @@ export function AllocationChart({ holdings }: Props) {
     g.append("text")
       .attr("text-anchor", "middle")
       .attr("dy", "-0.3em")
-      .attr("fill", "var(--home-ink-muted)")
-      .attr("font-size", "11px")
+      .attr("fill", "var(--c97-ink-2)")
+      .attr("font-size", "13px")
       .text("Portfolio");
     g.append("text")
       .attr("text-anchor", "middle")
       .attr("dy", "1.1em")
-      .attr("fill", "var(--home-ink)")
+      .attr("fill", "var(--c97-ink)")
       .attr("font-size", "13px")
       .attr("font-weight", "600")
       .text(
@@ -113,15 +114,15 @@ export function AllocationChart({ holdings }: Props) {
           maximumFractionDigits: 1,
         }).format(totalValue)
       );
-  }, [data]);
+  }, [data, portfolio]);
 
   if (data.length === 0) return null;
 
   return (
     <TerminalPanel padding="sm" ariaLabel="Portfolio allocation chart">
       <div className="mb-4">
-        <h3 className="text-sm font-semibold text-[var(--home-ink)]">Allocation</h3>
-        <p className="mt-1 text-xs text-[var(--home-ink-soft)]">
+        <h3 className="text-sm font-semibold text-[var(--c97-ink)]">Allocation</h3>
+        <p className="mt-1 text-xs text-[var(--c97-label)]">
           Position weights based on current market value.
         </p>
       </div>
@@ -131,7 +132,7 @@ export function AllocationChart({ holdings }: Props) {
           <div
             ref={tooltipRef}
             style={{ display: "none", position: "absolute", pointerEvents: "none" }}
-            className="px-2 py-1.5 rounded text-xs bg-[var(--home-ink)] text-[var(--home-paper)] whitespace-nowrap leading-relaxed"
+            className="px-2 py-1.5 rounded text-xs bg-[var(--c97-ink)] text-[var(--c97-surface)] whitespace-nowrap leading-relaxed"
           />
         </div>
 
@@ -140,15 +141,15 @@ export function AllocationChart({ holdings }: Props) {
           aria-label="Holdings legend with allocation percentages"
         >
           {data.map((h) => (
-            <li key={h.symbol} className="flex items-center gap-2 rounded-[var(--radius-sm)] border border-[var(--home-rule)] bg-[var(--home-paper-alt)] px-3 py-2.5">
+            <li key={h.symbol} className="flex items-center gap-2 border border-[var(--c97-rule)] bg-[var(--c97-panel)] px-3 py-2.5">
               <span
                 className="w-2.5 h-2.5 rounded-full shrink-0"
-                style={{ backgroundColor: holdingColor(h.symbol) }}
+                style={{ backgroundColor: holdingColor(h.symbol, portfolio) }}
                 aria-hidden="true"
               />
-              <span className="font-medium text-[var(--home-ink)] w-14 shrink-0">{h.symbol}</span>
+              <span className="font-medium text-[var(--c97-ink)] w-14 shrink-0">{h.symbol}</span>
               <div
-                className="flex-1 h-1 rounded-full bg-[var(--home-stone)] overflow-hidden"
+                className="flex-1 h-1 bg-[var(--c97-rule)] overflow-hidden"
                 role="progressbar"
                 aria-valuenow={Math.round(h.allocationPercent ?? 0)}
                 aria-valuemin={0}
@@ -156,14 +157,14 @@ export function AllocationChart({ holdings }: Props) {
                 aria-label={`${h.symbol} allocation`}
               >
                 <div
-                  className="h-full rounded-full"
+                  className="h-full"
                   style={{
                     width: `${Math.min(h.allocationPercent ?? 0, 100)}%`,
-                    backgroundColor: holdingColor(h.symbol),
+                    backgroundColor: holdingColor(h.symbol, portfolio),
                   }}
                 />
               </div>
-              <span className="text-[var(--home-ink-muted)] shrink-0 w-12 text-right">
+              <span className="text-[var(--c97-ink-2)] shrink-0 w-12 text-right">
                 {(h.allocationPercent ?? 0).toFixed(1)}%
               </span>
             </li>

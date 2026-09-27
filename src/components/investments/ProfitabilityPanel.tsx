@@ -18,12 +18,12 @@ function Bar({ value, max = 100 }: { value: number | undefined; max?: number }) 
   const pct = Math.min(Math.max((value ?? 0) / max, 0), 1) * 100;
   const positive = (value ?? 0) >= 0;
   return (
-    <div className="h-1.5 rounded-full bg-[var(--home-stone)] overflow-hidden flex-1">
+    <div className="h-1.5 bg-[var(--c97-rule)] overflow-hidden flex-1">
       <div
-        className="h-full rounded-full transition-[width] duration-500"
+        className="h-full transition-[width] duration-500"
         style={{
           width: `${pct}%`,
-          backgroundColor: positive ? "var(--home-positive)" : "var(--home-negative)",
+          backgroundColor: positive ? "var(--c97-positive)" : "var(--c97-negative)",
         }}
         aria-hidden="true"
       />
@@ -44,15 +44,15 @@ function MetricRow({
 }) {
   const positive = (value ?? 0) >= 0;
   return (
-    <div className="flex items-center gap-3 py-2 border-b border-[var(--home-rule)] last:border-0">
-      <span className="flex items-center gap-0.5 text-sm text-[var(--home-ink-muted)] w-40 shrink-0">
+    <div className="flex items-center gap-3 py-2 border-b border-[var(--c97-rule)] last:border-0">
+      <span className="flex items-center gap-0.5 text-sm text-[var(--c97-ink-2)] w-40 shrink-0">
         {label}
         <MetricTooltip term={label} />
       </span>
       <Bar value={value} max={max} />
       <span
         className={`text-sm font-medium w-16 text-right shrink-0 ${
-          positive ? "text-[var(--home-positive)]" : "text-[var(--home-negative)]"
+          positive ? "text-[var(--c97-positive)]" : "text-[var(--c97-negative)]"
         }`}
       >
         {fmt(value, unit)}
@@ -71,19 +71,19 @@ export function ProfitabilityPanel({ symbol }: Props) {
 
   return (
     <TerminalPanel padding="sm">
-      <h3 className="text-sm font-semibold text-[var(--home-ink)] mb-3">Profitability & Margins</h3>
+      <h3 className="text-sm font-semibold text-[var(--c97-ink)] mb-3">Profitability & Margins</h3>
 
       {isLoading ? (
         <div className="space-y-2">
           {Array.from({ length: 8 }).map((_, i) => (
-            <div key={i} className="h-8 rounded bg-[var(--home-stone)] animate-pulse" />
+            <div key={i} className="h-8 rounded bg-[var(--c97-rule)] animate-pulse" />
           ))}
         </div>
       ) : (
         <>
           {prof && !prof.error && (
             <div className="mb-4">
-              <p className="text-xs font-medium text-[var(--home-ink-soft)] uppercase tracking-wide mb-2">Returns</p>
+              <p className="text-xs font-medium text-[var(--c97-label)] uppercase tracking-wide mb-2">Returns</p>
               <MetricRow label="Return on Equity (ROE)" value={prof.roe} max={50} />
               <MetricRow label="Return on Assets (ROA)" value={prof.roa} max={30} />
               <MetricRow label="Return on Inv. Capital" value={prof.roic} max={40} />
@@ -94,7 +94,7 @@ export function ProfitabilityPanel({ symbol }: Props) {
 
           {margins && !margins.error && (
             <div>
-              <p className="text-xs font-medium text-[var(--home-ink-soft)] uppercase tracking-wide mb-2">Margins (latest)</p>
+              <p className="text-xs font-medium text-[var(--c97-label)] uppercase tracking-wide mb-2">Margins (latest)</p>
               <MetricRow label="Gross Margin" value={margins.grossMargin} />
               <MetricRow label="Operating Margin" value={margins.operatingMargin} />
               <MetricRow label="Net Margin" value={margins.netMargin} />

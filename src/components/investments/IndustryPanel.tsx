@@ -38,10 +38,10 @@ function Indicator({ metric, value, avg }: { metric: string; value: number | und
   const favorable = isLowerBetterMetric(metric) ? pct < 0 : pct > 0;
   const tone =
     pct === 0
-      ? "bg-[var(--home-paper-alt)] text-[var(--home-ink-muted)]"
+      ? "bg-[var(--c97-panel)] text-[var(--c97-ink-2)]"
       : favorable
-        ? "bg-[color-mix(in_srgb,var(--home-positive)_12%,var(--home-paper-alt))] text-[color-mix(in_srgb,var(--home-positive)_70%,var(--home-ink))]"
-        : "bg-[color-mix(in_srgb,var(--home-negative)_11%,var(--home-paper-alt))] text-[color-mix(in_srgb,var(--home-negative)_70%,var(--home-ink))]";
+        ? "bg-[color-mix(in_srgb,var(--c97-positive)_12%,var(--c97-panel))] text-[color-mix(in_srgb,var(--c97-positive)_70%,var(--c97-ink))]"
+        : "bg-[color-mix(in_srgb,var(--c97-negative)_11%,var(--c97-panel))] text-[color-mix(in_srgb,var(--c97-negative)_70%,var(--c97-ink))]";
   const sign = pct > 0 ? "+" : pct < 0 ? "−" : "";
   return (
     <span className={`ml-2 inline-flex items-center text-xs font-medium px-1.5 py-0.5 rounded ${tone}`}>
@@ -56,14 +56,14 @@ export function IndustryPanel({ symbol }: Props) {
 
   return (
     <TerminalPanel padding="sm">
-      <h3 className="text-sm font-semibold text-[var(--home-ink)] mb-3">
+      <h3 className="text-sm font-semibold text-[var(--c97-ink)] mb-3">
         Industry Comparison
       </h3>
 
       {isLoading && (
         <div className="space-y-2">
           {Array.from({ length: 6 }).map((_, i) => (
-            <div key={i} className="h-10 rounded bg-[var(--home-stone)] animate-pulse" />
+            <div key={i} className="h-10 rounded bg-[var(--c97-rule)] animate-pulse" />
           ))}
         </div>
       )}
@@ -76,21 +76,21 @@ export function IndustryPanel({ symbol }: Props) {
         <div className="overflow-x-auto">
           <table className="w-full text-sm min-w-[400px]" aria-label="Industry comparison table">
             <thead>
-              <tr className="border-b border-[var(--home-rule)]">
-                <th className="text-left py-2 text-[var(--home-ink-soft)] font-medium">Metric</th>
-                <th className="text-right py-2 text-[var(--home-ink-soft)] font-medium">This Stock</th>
-                <th className="text-right py-2 text-[var(--home-ink-soft)] font-medium">Industry Avg</th>
-                <th className="text-right py-2 text-[var(--home-ink-soft)] font-medium">vs Avg</th>
+              <tr className="border-b border-[var(--c97-rule)]">
+                <th className="text-left py-2 text-[var(--c97-label)] font-medium">Metric</th>
+                <th className="text-right py-2 text-[var(--c97-label)] font-medium">This Stock</th>
+                <th className="text-right py-2 text-[var(--c97-label)] font-medium">Industry Avg</th>
+                <th className="text-right py-2 text-[var(--c97-label)] font-medium">vs Avg</th>
               </tr>
             </thead>
             <tbody>
               {rows.map((row, i) => (
-                <tr key={i} className="border-b border-[var(--home-rule)] last:border-0 hover:bg-[var(--home-paper-alt)] transition-colors">
-                  <td className="py-2.5 text-[var(--home-ink-muted)]">{row.metric}</td>
-                  <td className="py-2.5 text-right font-medium text-[var(--home-ink)]">
+                <tr key={i} className="border-b border-[var(--c97-rule)] last:border-0 hover:bg-[var(--c97-panel)] transition-colors">
+                  <td className="py-2.5 text-[var(--c97-ink-2)]">{row.metric}</td>
+                  <td className="py-2.5 text-right font-medium text-[var(--c97-ink)]">
                     {formatComparisonMetricValue(row.metric, row.value)}
                   </td>
-                  <td className="py-2.5 text-right text-[var(--home-ink-muted)]">
+                  <td className="py-2.5 text-right text-[var(--c97-ink-2)]">
                     {formatComparisonMetricValue(row.metric, row.industryAvg)}
                   </td>
                   <td className="py-2.5 text-right">

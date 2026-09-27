@@ -8,23 +8,16 @@ import {
   type CSSProperties,
 } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
-import { BarChart3, CircleAlert, ExternalLink, Flame, TrendingUp, Trophy } from "lucide-react";
+import { ExternalLink } from "lucide-react";
 import {
-  StatCard,
-  MetricCard,
   CrestAvatar,
   TeamResultPill,
   FixtureCard,
   LeaderList,
   type LeaderEntry,
 } from "@/components/football";
-import { HomeStatsPanel, type HomeStatsCell } from "@/components/home/HomeStatsPanel";
-import {
-  Article,
-  Briefcase,
-  ChartBar,
-  User,
-} from "@/components/ui/ServerIcons";
+import { Catalog97ProjectHero } from "@/components/catalog97/Catalog97ProjectHero";
+import { PROJECT_PRESS } from "@/constants/projectPress";
 import type {
   MlbHittingLeaders,
   MlbLeader,
@@ -45,6 +38,9 @@ import {
   normalizeState,
   resolveDefaultState,
 } from "./mlb-state.core";
+import { divisionBoard } from "./scoreboard";
+import { MlbScoreboard } from "./MlbScoreboard";
+import "./mlb.css";
 
 interface MlbClientProps {
   initialState: MlbRouteState;
@@ -282,20 +278,6 @@ export function MlbClient({ initialState, summary, initialTeamSnapshot }: MlbCli
       )[0] ?? null,
     [standings]
   );
-  const alLeader = useMemo(
-    () =>
-      [...standings]
-        .filter((row) => row.league === "AL")
-        .sort((a, b) => b.pct - a.pct || b.wins - a.wins)[0] ?? null,
-    [standings]
-  );
-  const nlLeader = useMemo(
-    () =>
-      [...standings]
-        .filter((row) => row.league === "NL")
-        .sort((a, b) => b.pct - a.pct || b.wins - a.wins)[0] ?? null,
-    [standings]
-  );
   const hottest = useMemo(() => {
     const pool = [...standings].filter((row) => /^W\d+/i.test(row.streak));
     pool.sort((a, b) => {
@@ -304,14 +286,6 @@ export function MlbClient({ initialState, summary, initialTeamSnapshot }: MlbCli
       return bRun - aRun;
     });
     return pool[0] ?? null;
-  }, [standings]);
-
-  const hasStandings = standings.length > 0 && standings.some((row) => row.wins + row.losses > 0);
-
-  // Stats panel cells
-  const worstRecord = useMemo(() => {
-    if (standings.length === 0) return null;
-    return [...standings].sort((a, b) => a.pct - b.pct || a.wins - b.wins)[0] ?? null;
   }, [standings]);
 
   // Tightest division: smallest games-back among 2nd-place teams
@@ -323,205 +297,98 @@ export function MlbClient({ initialState, summary, initialTeamSnapshot }: MlbCli
     return [...seconds].sort((a, b) => a.gamesBack - b.gamesBack)[0] ?? null;
   }, [standings]);
 
-  const avgGamesPlayed = useMemo(() => {
-    if (standings.length === 0) return 0;
-    return Math.round(
-      standings.reduce((acc, row) => acc + row.wins + row.losses, 0) / standings.length
-    );
-  }, [standings]);
+  const hasStandings = standings.length > 0 && standings.some((row) => row.wins + row.losses > 0);
 
-  const totalRegularSeasonGames = 162;
+  const scoreboard = useMemo(() => divisionBoard(standings), [standings]);
 
-  const statsPanelCells: HomeStatsCell[] = [
-    {
-      label: "Best record",
-      tooltip: "Club with the highest winning percentage across both leagues.",
-      value: leagueLeader ? `${leagueLeader.shortName} · ${formatRecord(leagueLeader)}` : "—",
-      sub: leagueLeader ? `${formatFixed(leagueLeader.pct, 3)} W%` : undefined,
-    },
-    {
-      label: "AL leader",
-      tooltip: "Top American League club by winning percentage.",
-      value: alLeader ? `${alLeader.shortName} · ${formatRecord(alLeader)}` : "—",
-      sub: alLeader ? `${formatFixed(alLeader.pct, 3)} W%` : undefined,
-    },
-    {
-      label: "NL leader",
-      tooltip: "Top National League club by winning percentage.",
-      value: nlLeader ? `${nlLeader.shortName} · ${formatRecord(nlLeader)}` : "—",
-      sub: nlLeader ? `${formatFixed(nlLeader.pct, 3)} W%` : undefined,
-    },
-    {
-      label: "Hottest streak",
-      tooltip: "Club currently riding the longest active winning streak.",
-      value: hottest ? `${hottest.shortName} · ${hottest.streak}` : "—",
-      sub: hottest ? `Last 10: ${hottest.last10}` : "No active win streaks",
-    },
-    {
-      label: "Worst record",
-      tooltip: "Club with the lowest winning percentage across both leagues.",
-      value: worstRecord ? `${worstRecord.shortName} · ${formatRecord(worstRecord)}` : "—",
-      sub: worstRecord ? `${formatFixed(worstRecord.pct, 3)} W%` : undefined,
-    },
-    {
-      label: "Tightest division",
-      tooltip: "Division where the second-place club is closest to first.",
-      value: tightestDivision
-        ? `${tightestDivision.division.replace("AL ", "AL ").replace("NL ", "NL ")} · ${tightestDivision.gamesBack.toFixed(1)} GB`
-        : "—",
-      sub: tightestDivision ? `${tightestDivision.shortName} chasing` : undefined,
-    },
-    {
-      label: "Through games",
-      tooltip: "Average games played across all 30 clubs in this snapshot.",
-      value: `${avgGamesPlayed} / ${totalRegularSeasonGames}`,
-    },
-    {
-      label: "Snapshot",
-      tooltip: "Date the most recent snapshot was generated.",
-      value: snapshotDateLabel,
-    },
-  ];
+  const lead = PROJECT_PRESS[MLB_ROUTE].lead;
+  const standfirst =
+    "I wanted the division and wild card races laid out the way the out-of-town scoreboard at the ballpark shows them, team by team, with the games back and each club's last ten games easy to scan. It reads from a curated MLB Stats API snapshot that refreshes on a schedule, so tonight's games show up after the next refresh.";
 
   return (
-    <div className="home-page min-h-screen">
-      <div className="home-shell home-section space-y-5 sm:space-y-6">
-        <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
-          <div>
-            <p className="home-kicker mb-1">Baseball Data Tool</p>
-            <h1 className="text-2xl font-bold tracking-tight text-[var(--home-ink)] sm:text-3xl">
-              MLB Pulse
-            </h1>
-            <p className="mt-1 max-w-[52ch] text-sm leading-6 text-[var(--home-ink-muted)]">
-              Major League Baseball compressed into one view. Division standings, AL and NL splits, and the wild card race, refreshed from a curated MLB Stats API snapshot.
-            </p>
-          </div>
-          <div className="flex flex-wrap gap-1.5 text-2xs text-[var(--home-ink-muted)]">
-            {[
-              `Season ${summary.season}`,
-              ...(summary.updatedAt && summary.updatedAt > "1970-01-02"
-                ? [`Snapshot ${snapshotDateLabel}`]
-                : []),
-            ].map((label) => (
-              <span
-                key={label}
-                className="rounded-full border border-[var(--home-rule)] bg-[var(--home-paper-alt)] px-2.5 py-1 font-medium"
+    <>
+      <Catalog97ProjectHero
+        ink={lead}
+        title="MLB Pulse"
+        standfirst={standfirst}
+        meta={`${summary.sourceLabel} · Season ${summary.season}${
+          summary.updatedAt && summary.updatedAt > "1970-01-02"
+            ? ` · updated ${snapshotDateLabel}`
+            : ""
+        }`}
+        readouts={[
+          {
+            label: "Best record",
+            value: leagueLeader ? formatRecord(leagueLeader) : "—",
+            detail: leagueLeader ? `${leagueLeader.shortName}, ${formatFixed(leagueLeader.pct, 3)} W%` : undefined,
+          },
+          {
+            label: "Closest division race",
+            value: tightestDivision ? `${tightestDivision.gamesBack.toFixed(1)} GB` : "—",
+            detail: tightestDivision
+              ? `${tightestDivision.division}, ${tightestDivision.shortName} chasing`
+              : undefined,
+          },
+          {
+            label: "Hottest streak",
+            value: hottest ? hottest.streak : "—",
+            detail: hottest ? `${hottest.shortName}, ${hottest.last10} in the last 10` : "No active win streaks",
+          },
+        ]}
+      >
+        <MlbScoreboard divisions={scoreboard} />
+      </Catalog97ProjectHero>
+
+      <section className="c97-band c97-sheet" data-c97-surface="paper" data-seam="torn">
+        <div className="c97-shell">
+          <h2 className="c97-poster-sm mb-5">Standings</h2>
+
+          <div className="c97-segmented" role="tablist" aria-label="Standings view">
+            {viewOptions.map((option) => (
+              <button
+                key={option.id}
+                type="button"
+                role="tab"
+                aria-selected={option.id === routeState.view}
+                onClick={() => handleViewChange(option.id)}
+                className="min-h-[44px] text-sm font-semibold"
               >
-                {label}
-              </span>
+                {option.label}
+                <span style={{ marginLeft: "var(--c97-sp-1)", color: "var(--c97-ink-2)" }}>
+                  {filterStandings(standings, option.id).length}
+                </span>
+              </button>
             ))}
           </div>
-        </div>
 
-        {/* Dense stats panel */}
-        <HomeStatsPanel
-          id="mlb-stats-panel"
-          title="MLB at a glance"
-          meta={`Live · refreshed ${snapshotDateLabel}`}
-          cells={statsPanelCells}
-          pills={[
-            { label: "Standings", href: "#mlb-standings", icon: ChartBar },
-            { label: "Wild card", href: "?view=wildcard", icon: Briefcase },
-            { label: "American League", href: "?view=al", icon: ChartBar },
-            { label: "National League", href: "?view=nl", icon: ChartBar },
-            { label: "Hot streaks", href: "#mlb-standings", icon: User },
-            { label: "Article", href: "/writing", icon: Article },
-          ]}
-        />
+          {!hasStandings && (
+            <p className="c97-prose mt-6">
+              The 30 clubs are listed below. Win and loss data will appear once the next
+              snapshot is published.
+            </p>
+          )}
 
-        <div className="grid grid-cols-2 gap-3 md:grid-cols-4">
-          <StatCard
-            variant="compact"
-            eyebrow="Best record"
-            metric={leagueLeader ? `${leagueLeader.shortName} · ${formatRecord(leagueLeader)}` : "—"}
-            detail={leagueLeader ? `${formatFixed(leagueLeader.pct, 3)} W%` : "Awaiting standings"}
-            icon={<Trophy className="h-4 w-4" />}
-          />
-          <StatCard
-            variant="compact"
-            eyebrow="AL leader"
-            metric={alLeader ? `${alLeader.shortName} · ${formatRecord(alLeader)}` : "—"}
-            detail={alLeader ? `${formatFixed(alLeader.pct, 3)} W%` : "Awaiting standings"}
-            icon={<TrendingUp className="h-4 w-4" />}
-          />
-          <StatCard
-            variant="compact"
-            eyebrow="NL leader"
-            metric={nlLeader ? `${nlLeader.shortName} · ${formatRecord(nlLeader)}` : "—"}
-            detail={nlLeader ? `${formatFixed(nlLeader.pct, 3)} W%` : "Awaiting standings"}
-            icon={<BarChart3 className="h-4 w-4" />}
-          />
-          <StatCard
-            variant="compact"
-            eyebrow="Hottest streak"
-            metric={hottest ? `${hottest.shortName} · ${hottest.streak}` : "—"}
-            detail={hottest ? `Last 10: ${hottest.last10}` : "No active win streaks"}
-            icon={<Flame className="h-4 w-4" />}
-          />
-        </div>
-
-        <div id="mlb-standings" className="grid gap-5 md:grid-cols-[minmax(0,1fr)_280px] lg:grid-cols-[minmax(0,1fr)_320px]">
-          <section className="rounded-[var(--radius-2xl)] border border-[var(--home-rule)] bg-[var(--home-paper-raised)] p-5 sm:p-6 shadow-[var(--shadow-sm)]">
-            <div className="flex items-center justify-between border-b border-[var(--home-rule)] pb-4">
-              <h2 className="text-lg font-bold text-[var(--home-ink)]">Standings</h2>
-              <span className="text-sm text-[var(--home-ink-muted)]">
-                {visibleStandings.length} clubs
-              </span>
-            </div>
-
-            <div className="mt-4 flex flex-wrap gap-2">
-              {viewOptions.map((option) => {
-                const isActive = option.id === routeState.view;
-                return (
-                  <button
-                    key={option.id}
-                    type="button"
-                    onClick={() => handleViewChange(option.id)}
-                    aria-pressed={isActive}
-                    className="inline-flex min-h-[44px] items-center gap-2 rounded-full border px-4 py-2 text-sm font-medium transition-colors"
-                    style={getViewButtonStyle(isActive)}
-                  >
-                    <span className="text-[var(--home-ink)]">{option.label}</span>
-                    <span className="text-xs text-[var(--home-ink-soft)]">
-                      {filterStandings(standings, option.id).length}
-                    </span>
-                  </button>
-                );
-              })}
-            </div>
-
-            {!hasStandings && (
-              <p className="mt-6 rounded-[var(--radius-2xl)] border border-dashed border-[var(--home-rule)] bg-[var(--home-paper-alt)] p-4 text-sm text-[var(--home-ink-muted)]">
-                The 30 clubs are listed below. Win and loss data will appear
-                once the next snapshot is published.
-              </p>
-            )}
-
+          <div className="mt-6 grid gap-8 xl:grid-cols-[minmax(0,1.7fr)_minmax(300px,0.92fr)]">
             <div
-              className="scroll-shadow-x mt-6 space-y-6 overflow-x-auto"
+              className="space-y-6 overflow-x-auto"
               role="region"
               aria-label="MLB standings (scrollable)"
               tabIndex={0}
             >
               {groupedStandings.map(([groupName, rows]) => (
                 <div key={groupName}>
-                  <p className="px-1 text-xs font-semibold uppercase tracking-[0.16em] text-[var(--home-ink-soft)]">
-                    {groupName}
-                  </p>
-                  <table
-                    className="mt-2 min-w-full border-separate border-spacing-y-2"
-                    aria-label={`${groupName} standings`}
-                  >
+                  <p className="c97-kicker mb-2">{groupName}</p>
+                  <table className="c97-table c97-mlb-table" aria-label={`${groupName} standings`}>
                     <thead>
-                      <tr className="text-left text-xs uppercase tracking-[0.14em] text-[var(--home-ink-soft)]">
-                        <th scope="col" className="px-3 py-2 font-semibold">Pos</th>
-                        <th scope="col" className="px-3 py-2 font-semibold">Team</th>
-                        <th scope="col" className="px-3 py-2 font-semibold">W-L</th>
-                        <th scope="col" className="hidden px-3 py-2 font-semibold sm:table-cell">PCT</th>
-                        <th scope="col" className="hidden px-3 py-2 font-semibold md:table-cell">GB</th>
-                        <th scope="col" className="hidden px-3 py-2 font-semibold lg:table-cell">RS</th>
-                        <th scope="col" className="hidden px-3 py-2 font-semibold lg:table-cell">RA</th>
-                        <th scope="col" className="hidden px-3 py-2 font-semibold xl:table-cell">L10</th>
+                      <tr>
+                        <th scope="col">Pos</th>
+                        <th scope="col">Team</th>
+                        <th scope="col">W-L</th>
+                        <th scope="col" className="hidden sm:table-cell">PCT</th>
+                        <th scope="col" className="hidden md:table-cell">GB</th>
+                        <th scope="col" className="hidden lg:table-cell">RS</th>
+                        <th scope="col" className="hidden lg:table-cell">RA</th>
+                        <th scope="col" className="hidden xl:table-cell">L10</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -533,59 +400,42 @@ export function MlbClient({ initialState, summary, initialTeamSnapshot }: MlbCli
                             : row.divisionRank;
                         const zone = getTeamZone(row);
                         return (
-                          <tr
-                            key={row.id}
-                            className="border border-[var(--home-rule)]"
-                            style={getTableRowStyle(isSelected)}
-                          >
-                            <td className="rounded-l-2xl px-3 py-3 align-middle">
+                          <tr key={row.id} data-selected={isSelected || undefined}>
+                            <td>
                               <div className="flex items-center gap-2">
                                 <span
-                                  className="h-2 w-2 flex-shrink-0 rounded-full"
+                                  className="c97-mlb-zone-dot"
                                   style={{ backgroundColor: getZoneDotColor(zone) }}
                                   title={getZoneLabel(zone)}
                                 />
-                                <span className="text-sm font-semibold text-[var(--home-ink)]">
-                                  {positionLabel}
-                                </span>
+                                <span className="c97-mono">{positionLabel}</span>
                               </div>
                             </td>
-                            <td className="px-3 py-3 align-middle">
+                            <td>
                               <button
                                 type="button"
                                 onClick={() => handleTeamChange(row.id)}
                                 aria-pressed={isSelected}
                                 aria-label={`Show ${row.name} details`}
-                                className="flex min-h-[44px] w-full items-center gap-2 rounded-[var(--radius-xl)] text-left"
+                                className="flex min-h-[44px] w-full items-center gap-2 text-left"
+                                style={{ background: "none", border: 0, padding: 0 }}
                               >
                                 <CrestAvatar
                                   crest={logoByTeamId.get(row.id) ?? null}
                                   name={row.shortName}
                                   size="sm"
                                 />
-                                <span className="font-semibold text-[var(--home-ink)]">
+                                <span className="c97-serif" style={{ fontWeight: 600 }}>
                                   {row.shortName}
                                 </span>
                               </button>
                             </td>
-                            <td className="px-3 py-3 align-middle text-sm font-semibold text-[var(--home-ink)]">
-                              {formatRecord(row)}
-                            </td>
-                            <td className="hidden px-3 py-3 align-middle text-sm text-[var(--home-ink-muted)] sm:table-cell">
-                              {formatFixed(row.pct, 3)}
-                            </td>
-                            <td className="hidden px-3 py-3 align-middle text-sm text-[var(--home-ink-muted)] md:table-cell">
-                              {formatGamesBack(row.gamesBack)}
-                            </td>
-                            <td className="hidden px-3 py-3 align-middle text-sm text-[var(--home-ink-muted)] lg:table-cell">
-                              {row.runsScored}
-                            </td>
-                            <td className="hidden px-3 py-3 align-middle text-sm text-[var(--home-ink-muted)] lg:table-cell">
-                              {row.runsAllowed}
-                            </td>
-                            <td className="hidden rounded-r-2xl px-3 py-3 align-middle text-sm font-medium text-[var(--home-ink)] xl:table-cell">
-                              {row.last10}
-                            </td>
+                            <td className="c97-mono">{formatRecord(row)}</td>
+                            <td className="c97-mono hidden sm:table-cell">{formatFixed(row.pct, 3)}</td>
+                            <td className="c97-mono hidden md:table-cell">{formatGamesBack(row.gamesBack)}</td>
+                            <td className="c97-mono hidden lg:table-cell">{row.runsScored}</td>
+                            <td className="c97-mono hidden lg:table-cell">{row.runsAllowed}</td>
+                            <td className="c97-mono hidden xl:table-cell">{row.last10}</td>
                           </tr>
                         );
                       })}
@@ -594,105 +444,89 @@ export function MlbClient({ initialState, summary, initialTeamSnapshot }: MlbCli
                 </div>
               ))}
             </div>
-          </section>
 
-          <aside className="md:sticky md:top-0 md:self-start">
-            <section
-              className="rounded-[var(--radius-2xl)] border border-[var(--home-rule)] bg-[var(--home-paper-raised)] p-5 shadow-[var(--shadow-sm)]"
-              aria-live="polite"
-              data-testid="mlb-selected-team"
-            >
-              {selectedRow ? (
-                <>
-                  <div className="flex items-start gap-3">
-                    <CrestAvatar
-                      crest={logoByTeamId.get(selectedRow.id) ?? null}
-                      name={selectedRow.name}
-                      size="lg"
-                    />
-                    <div className="min-w-0 flex-1">
-                      <h2 className="truncate text-lg font-bold text-[var(--home-ink)]">
-                        {selectedRow.name}
-                      </h2>
-                      <div className="mt-1.5 flex flex-wrap gap-1.5">
-                        <span
-                          className="inline-flex items-center rounded-full border px-2.5 py-1 text-2xs font-semibold uppercase tracking-[0.12em]"
-                          style={getDivisionPillStyle(selectedRow.league)}
-                        >
-                          {selectedRow.division || `${selectedRow.league} club`}
-                        </span>
-                        <span className="inline-flex items-center rounded-full border border-[var(--home-rule)] bg-[var(--home-paper-alt)] px-2.5 py-1 text-2xs font-semibold uppercase tracking-[0.12em] text-[var(--home-ink-muted)]">
-                          {formatRecord(selectedRow)}
-                        </span>
-                        {selectedRow.streak && (
-                          <span className="inline-flex items-center rounded-full border border-[var(--home-rule)] bg-[var(--home-paper-alt)] px-2.5 py-1 text-2xs font-semibold uppercase tracking-[0.12em] text-[var(--home-ink-muted)]">
-                            {selectedRow.streak}
+            <aside className="xl:sticky xl:top-6 xl:self-start">
+              <div className="c97-panel" aria-live="polite" data-testid="mlb-selected-team">
+                {selectedRow ? (
+                  <>
+                    <div className="flex items-start gap-3">
+                      <CrestAvatar
+                        crest={logoByTeamId.get(selectedRow.id) ?? null}
+                        name={selectedRow.name}
+                        size="lg"
+                      />
+                      <div className="min-w-0 flex-1">
+                        <h3 className="c97-serif truncate" style={{ fontSize: "var(--c97-fs-h3)" }}>
+                          {selectedRow.name}
+                        </h3>
+                        <div className="mt-2 flex flex-wrap gap-2">
+                          <span className="c97-chip">
+                            {selectedRow.division || `${selectedRow.league} club`}
                           </span>
-                        )}
+                          <span className="c97-chip">{formatRecord(selectedRow)}</span>
+                          {selectedRow.streak && <span className="c97-chip">{selectedRow.streak}</span>}
+                        </div>
                       </div>
+                      <span className="c97-chip" style={{ flexShrink: 0 }}>
+                        Div {selectedRow.divisionRank || "—"}
+                      </span>
                     </div>
-                    <div className="flex-shrink-0 rounded-[var(--radius-xl)] bg-[var(--home-signal)] px-3 py-2 text-center text-[var(--home-paper)] shadow-sm">
-                      <p className="text-3xs uppercase tracking-[0.14em] opacity-80">Div</p>
-                      <p className="text-xl font-bold">{selectedRow.divisionRank || "—"}</p>
-                    </div>
-                  </div>
 
-                  <dl className="mt-4 grid grid-cols-2 gap-x-4 gap-y-2 border-t border-[var(--home-rule)] pt-4">
-                    {(
-                      [
-                        ["W%", formatFixed(selectedRow.pct, 3)],
-                        ["GB", formatGamesBack(selectedRow.gamesBack)],
-                        ["Run diff", formatRunDiff(selectedRow.runDifferential)],
-                        ["L10", selectedRow.last10],
-                        ["Offense", `#${offenseRankByTeam.get(selectedRow.id) ?? "-"}`],
-                        ["Defense", `#${defenseRankByTeam.get(selectedRow.id) ?? "-"}`],
-                      ] as const
-                    ).map(([label, value]) => (
-                      <div key={label} className="flex items-baseline justify-between gap-2">
-                        <dt className="text-2xs font-semibold uppercase tracking-[0.12em] text-[var(--home-ink-soft)]">
-                          {label}
-                        </dt>
-                        <dd className="text-sm font-bold text-[var(--home-ink)]">{value}</dd>
-                      </div>
-                    ))}
-                  </dl>
-
-                  {(teamSnapshot?.form?.sequence?.length ?? 0) > 0 && (
-                    <div className="mt-4 border-t border-[var(--home-rule)] pt-4">
-                      <p className="text-2xs font-semibold uppercase tracking-[0.12em] text-[var(--home-ink-soft)]">
-                        Last 5
-                      </p>
-                      <div className="mt-2 flex gap-1.5">
-                        {(teamSnapshot?.form.sequence ?? []).slice(-5).map((result, idx) => (
-                          <TeamResultPill key={idx} result={result} />
-                        ))}
-                      </div>
-                    </div>
-                  )}
-
-                  {!teamSnapshot && (isTeamSnapshotLoading || teamSnapshotError) ? (
-                    <p
-                      className="mt-4 border-t border-[var(--home-rule)] pt-4 text-sm text-[var(--home-ink-muted)]"
-                      role={teamSnapshotError ? "alert" : "status"}
-                      aria-live="polite"
+                    <dl
+                      className="mt-4 grid grid-cols-2 gap-x-4 gap-y-2"
+                      style={{ borderTop: "1px solid var(--c97-rule)", paddingTop: "var(--c97-sp-3)" }}
                     >
-                      {isTeamSnapshotLoading ? "Loading team snapshot…" : teamSnapshotError}
-                    </p>
-                  ) : null}
-                </>
-              ) : (
-                <p className="text-sm text-[var(--home-ink-muted)]">Select a team to view detail.</p>
-              )}
-            </section>
-          </aside>
-        </div>
+                      {(
+                        [
+                          ["W%", formatFixed(selectedRow.pct, 3)],
+                          ["GB", formatGamesBack(selectedRow.gamesBack)],
+                          ["Run diff", formatRunDiff(selectedRow.runDifferential)],
+                          ["L10", selectedRow.last10],
+                          ["Offense", `#${offenseRankByTeam.get(selectedRow.id) ?? "-"}`],
+                          ["Defense", `#${defenseRankByTeam.get(selectedRow.id) ?? "-"}`],
+                        ] as const
+                      ).map(([label, value]) => (
+                        <div key={label} className="flex items-baseline justify-between gap-2">
+                          <dt className="c97-kicker mb-0">{label}</dt>
+                          <dd className="c97-mono mb-0" style={{ fontWeight: 600 }}>{value}</dd>
+                        </div>
+                      ))}
+                    </dl>
 
-        <div className="rounded-[var(--radius-2xl)] border border-[var(--home-rule)] bg-[var(--home-paper-raised)] p-5 sm:p-6 shadow-[var(--shadow-sm)]">
-          <div
-            className="flex gap-2 overflow-x-auto rounded-[var(--radius-3xl)] border border-[var(--home-rule)] bg-[var(--home-paper-raised)] p-1.5"
-            role="tablist"
-            aria-label="Team and league details"
-          >
+                    {(teamSnapshot?.form?.sequence?.length ?? 0) > 0 && (
+                      <div className="mt-4" style={{ borderTop: "1px solid var(--c97-rule)", paddingTop: "var(--c97-sp-3)" }}>
+                        <p className="c97-kicker mb-2">Last 5</p>
+                        <div className="flex gap-1.5">
+                          {(teamSnapshot?.form.sequence ?? []).slice(-5).map((result, idx) => (
+                            <TeamResultPill key={idx} result={result} />
+                          ))}
+                        </div>
+                      </div>
+                    )}
+
+                    {!teamSnapshot && (isTeamSnapshotLoading || teamSnapshotError) ? (
+                      <p
+                        className="c97-prose mt-4 mb-0"
+                        style={{ borderTop: "1px solid var(--c97-rule)", paddingTop: "var(--c97-sp-3)" }}
+                        role={teamSnapshotError ? "alert" : "status"}
+                        aria-live="polite"
+                      >
+                        {isTeamSnapshotLoading ? "Loading team snapshot…" : teamSnapshotError}
+                      </p>
+                    ) : null}
+                  </>
+                ) : (
+                  <p className="c97-prose mb-0">Select a team to view detail.</p>
+                )}
+              </div>
+            </aside>
+          </div>
+        </div>
+      </section>
+
+      <section className="c97-band c97-sheet" data-c97-surface="bone" data-seam="deckle">
+        <div className="c97-shell">
+          <div className="c97-segmented" role="tablist" aria-label="Team and league details">
             {(["team", "games", "leaders"] as const).map((tab) => {
               const labels = {
                 team: "Team detail",
@@ -707,13 +541,8 @@ export function MlbClient({ initialState, summary, initialTeamSnapshot }: MlbCli
                   type="button"
                   aria-selected={activeDetailTab === tab}
                   aria-controls="mlb-detail-panel"
-                  tabIndex={activeDetailTab === tab ? 0 : -1}
                   onClick={() => setActiveDetailTab(tab)}
-                  className={`min-h-[44px] whitespace-nowrap rounded-[var(--radius-2xl)] px-5 py-2.5 text-sm font-semibold transition-colors ${
-                    activeDetailTab === tab
-                      ? "bg-[var(--home-signal)] text-[var(--home-paper)] shadow-sm"
-                      : "text-[var(--home-ink-muted)] hover:bg-[var(--home-paper-alt)] hover:text-[var(--home-ink)]"
-                  }`}
+                  className="min-h-[44px] text-sm font-semibold"
                 >
                   {labels[tab]}
                 </button>
@@ -730,29 +559,9 @@ export function MlbClient({ initialState, summary, initialTeamSnapshot }: MlbCli
             {activeDetailTab === "team" && selectedRow && (
               <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
                 <div className="space-y-5">
-                  <div>
-                    <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[var(--home-ink-soft)]">
-                      Performance
-                    </p>
-                    <div className="mt-3 grid grid-cols-2 gap-3">
-                      <MetricCard label="W%" value={formatFixed(selectedRow.pct, 3)} />
-                      <MetricCard label="Record" value={formatRecord(selectedRow)} />
-                      <MetricCard label="Run diff" value={formatRunDiff(selectedRow.runDifferential)} />
-                      <MetricCard label="Last 10" value={selectedRow.last10} />
-                      <MetricCard
-                        label="Offense rank"
-                        value={`#${offenseRankByTeam.get(selectedRow.id) ?? "-"}`}
-                      />
-                      <MetricCard
-                        label="Defense rank"
-                        value={`#${defenseRankByTeam.get(selectedRow.id) ?? "-"}`}
-                      />
-                    </div>
-                  </div>
-
-                  <div className="rounded-[var(--radius-2xl)] border border-[var(--home-rule)] bg-[var(--home-paper-alt)] p-4">
-                    <p className="text-sm font-semibold text-[var(--home-ink)]">Pressure points</p>
-                    <ul className="mt-3 space-y-2 pl-5 text-sm leading-relaxed text-[var(--home-ink-muted)]">
+                  <div className="c97-panel">
+                    <p className="c97-kicker mb-2">Pressure points</p>
+                    <ul className="c97-list mb-0">
                       {getPressurePoints(selectedRow).map((item) => (
                         <li key={item}>{item}</li>
                       ))}
@@ -760,19 +569,19 @@ export function MlbClient({ initialState, summary, initialTeamSnapshot }: MlbCli
                   </div>
 
                   {selectedTeam?.venue && (
-                    <p className="text-sm leading-relaxed text-[var(--home-ink-muted)]">
-                      Home park: <span className="font-medium text-[var(--home-ink)]">{selectedTeam.venue}</span>.
+                    <p className="c97-prose mb-0">
+                      Home park is {selectedTeam.venue}.
                     </p>
                   )}
                 </div>
 
                 {!teamSnapshot && (isTeamSnapshotLoading || teamSnapshotError) && (
                   <div
-                    className="rounded-[var(--radius-2xl)] border border-[var(--home-rule)] bg-[var(--home-paper-alt)] p-4"
+                    className="c97-panel"
                     role={teamSnapshotError ? "alert" : "status"}
                     aria-live="polite"
                   >
-                    <p className="text-sm text-[var(--home-ink-muted)]">
+                    <p className="c97-prose mb-0">
                       {isTeamSnapshotLoading ? "Loading recent team games…" : teamSnapshotError}
                     </p>
                   </div>
@@ -780,10 +589,8 @@ export function MlbClient({ initialState, summary, initialTeamSnapshot }: MlbCli
 
                 {(teamSnapshot?.recentGames.length ?? 0) > 0 && (
                   <div>
-                    <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[var(--home-ink-soft)]">
-                      Recent results
-                    </p>
-                    <div className="mt-3 space-y-2">
+                    <p className="c97-kicker mb-3">Recent results</p>
+                    <div className="space-y-2">
                       {(teamSnapshot?.recentGames ?? []).slice(0, 3).map((game) => (
                         <FixtureCard
                           key={game.id}
@@ -798,10 +605,8 @@ export function MlbClient({ initialState, summary, initialTeamSnapshot }: MlbCli
 
                 {(teamSnapshot?.upcomingGames.length ?? 0) > 0 && (
                   <div>
-                    <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[var(--home-ink-soft)]">
-                      Upcoming games
-                    </p>
-                    <div className="mt-3 space-y-2">
+                    <p className="c97-kicker mb-3">Upcoming games</p>
+                    <div className="space-y-2">
                       {(teamSnapshot?.upcomingGames ?? []).slice(0, 3).map((game) => (
                         <FixtureCard
                           key={game.id}
@@ -820,11 +625,9 @@ export function MlbClient({ initialState, summary, initialTeamSnapshot }: MlbCli
               <div className="grid gap-6 md:grid-cols-2">
                 {summary.recentGames.length > 0 && (
                   <div>
-                    <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[var(--home-ink-soft)]">
-                      Recent slate
-                    </p>
-                    <h3 className="mt-2 text-xl font-semibold text-[var(--home-ink)]">Latest results</h3>
-                    <div className="mt-4 space-y-3">
+                    <p className="c97-kicker mb-2">Recent slate</p>
+                    <h3 className="c97-serif mb-2" style={{ fontSize: "var(--c97-fs-h3)" }}>Latest results</h3>
+                    <div className="space-y-3">
                       {summary.recentGames.map((game) => (
                         <FixtureCard key={game.id} fixture={game} onOpenTeam={handleTeamChange} />
                       ))}
@@ -833,11 +636,9 @@ export function MlbClient({ initialState, summary, initialTeamSnapshot }: MlbCli
                 )}
                 {summary.upcomingGames.length > 0 && (
                   <div>
-                    <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[var(--home-ink-soft)]">
-                      Next up
-                    </p>
-                    <h3 className="mt-2 text-xl font-semibold text-[var(--home-ink)]">Upcoming games</h3>
-                    <div className="mt-4 space-y-3">
+                    <p className="c97-kicker mb-2">Next up</p>
+                    <h3 className="c97-serif mb-2" style={{ fontSize: "var(--c97-fs-h3)" }}>Upcoming games</h3>
+                    <div className="space-y-3">
                       {summary.upcomingGames.map((game) => (
                         <FixtureCard key={game.id} fixture={game} onOpenTeam={handleTeamChange} />
                       ))}
@@ -845,7 +646,7 @@ export function MlbClient({ initialState, summary, initialTeamSnapshot }: MlbCli
                   </div>
                 )}
                 {summary.recentGames.length === 0 && summary.upcomingGames.length === 0 && (
-                  <p className="text-sm text-[var(--home-ink-muted)]">
+                  <p className="c97-prose mb-0">
                     No games are loaded yet. Run the snapshot script to populate the schedule.
                   </p>
                 )}
@@ -862,17 +663,18 @@ export function MlbClient({ initialState, summary, initialTeamSnapshot }: MlbCli
             )}
           </div>
         </div>
+      </section>
 
-        <section className="rounded-[var(--radius-3xl)] border border-[var(--home-rule)] bg-[var(--home-paper-alt)] p-5 text-sm text-[var(--home-ink-muted)] shadow-sm">
-          <div className="flex items-start gap-3">
-            <CircleAlert className="mt-0.5 h-4 w-4 flex-shrink-0 text-[var(--home-signal)]" />
-            <p className="mb-0 max-w-none leading-relaxed">
-              This page is a curated snapshot rather than a live API feed. Standings, schedule, and league leaders mirror the {summary.sourceLabel} endpoints and refresh on the regular update cadence.
-            </p>
-          </div>
-        </section>
-      </div>
-    </div>
+      <section className="c97-band c97-sheet" data-c97-surface="paper" data-seam="torn">
+        <div className="c97-shell">
+          <p className="c97-kicker mb-2">Snapshot note</p>
+          <p className="c97-prose mb-0" style={{ fontSize: "var(--c97-fs-small)" }}>
+            This page reads from a curated snapshot of the {summary.sourceLabel} endpoints.
+            Standings, schedule, and league leaders all refresh on the regular update cadence.
+          </p>
+        </div>
+      </section>
+    </>
   );
 }
 
@@ -905,15 +707,10 @@ function LeagueLeaders({
   if (populated.length === 0) {
     return (
       <div className="flex items-start justify-between gap-3">
-        <p className="text-sm text-[var(--home-ink-muted)]">
+        <p className="c97-prose mb-0">
           League leader boards are not loaded yet. Run the snapshot script to populate hitting and pitching leaders.
         </p>
-        <a
-          href={sourceUrl}
-          target="_blank"
-          rel="noreferrer"
-          className="inline-flex min-h-[44px] items-center gap-2 rounded-[var(--radius-xl)] border border-[var(--home-rule)] bg-[var(--home-paper-alt)] px-3 py-2 text-sm font-medium text-[var(--home-ink-muted)] transition-colors hover:text-[var(--home-signal)]"
-        >
+        <a href={sourceUrl} target="_blank" rel="noreferrer" className="c97-btn-ghost">
           Source
           <ExternalLink className="h-4 w-4" />
         </a>
@@ -924,12 +721,7 @@ function LeagueLeaders({
   return (
     <div className="space-y-4">
       <div className="flex flex-wrap items-center justify-end gap-3">
-        <a
-          href={sourceUrl}
-          target="_blank"
-          rel="noreferrer"
-          className="inline-flex min-h-[44px] items-center gap-2 rounded-[var(--radius-xl)] border border-[var(--home-rule)] bg-[var(--home-paper-alt)] px-3 py-2 text-sm font-medium text-[var(--home-ink-muted)] transition-colors hover:text-[var(--home-signal)]"
-        >
+        <a href={sourceUrl} target="_blank" rel="noreferrer" className="c97-btn-ghost">
           Official
           <ExternalLink className="h-4 w-4" />
         </a>
@@ -937,14 +729,8 @@ function LeagueLeaders({
       <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
         {populated.map((group) => (
           <div key={group.title}>
-            <div className="flex items-start justify-between gap-3">
-              <div>
-                <p className="text-sm font-semibold uppercase tracking-[0.16em] text-[var(--home-ink-soft)]">
-                  Leaderboard
-                </p>
-                <h3 className="mt-2 text-xl font-bold text-[var(--home-ink)]">{group.title}</h3>
-              </div>
-            </div>
+            <p className="c97-kicker mb-2">Leaderboard</p>
+            <h3 className="c97-serif mb-3" style={{ fontSize: "var(--c97-fs-h3)" }}>{group.title}</h3>
             <LeaderList
               leaders={leadersToEntries(group.leaders, group.statLabel === "AVG" || group.statLabel === "ERA" ? 3 : 0)}
               statLabel={group.statLabel}
@@ -955,48 +741,6 @@ function LeagueLeaders({
       </div>
     </div>
   );
-}
-
-function getDivisionPillStyle(league: "AL" | "NL"): CSSProperties {
-  if (league === "AL") {
-    return {
-      color: "var(--home-signal)",
-      borderColor: "color-mix(in srgb, var(--home-signal) 30%, var(--home-rule))",
-      background: "color-mix(in srgb, var(--home-signal) 10%, var(--home-paper-alt))",
-    };
-  }
-  return {
-    color: "color-mix(in srgb, var(--home-ink) 88%, var(--home-stone))",
-    borderColor: "color-mix(in srgb, var(--home-ink) 28%, var(--home-rule))",
-    background: "color-mix(in srgb, var(--home-ink) 7%, var(--home-paper-alt))",
-  };
-}
-
-function getViewButtonStyle(isActive: boolean): CSSProperties {
-  if (isActive) {
-    return {
-      borderColor: "color-mix(in srgb, var(--home-signal) 35%, var(--home-rule))",
-      background: "color-mix(in srgb, var(--home-signal) 9%, var(--home-paper-alt))",
-      boxShadow: "var(--shadow-sm)",
-    };
-  }
-  return {
-    borderColor: "var(--home-rule)",
-    background: "var(--home-paper-alt)",
-  };
-}
-
-function getTableRowStyle(isSelected: boolean): CSSProperties {
-  if (isSelected) {
-    return {
-      borderColor: "color-mix(in srgb, var(--home-signal) 35%, var(--home-rule))",
-      background: "color-mix(in srgb, var(--home-signal) 9%, var(--home-paper-alt))",
-    };
-  }
-  return {
-    borderColor: "var(--home-rule)",
-    background: "var(--home-paper-alt)",
-  };
 }
 
 function formatRunDiff(diff: number): string {
@@ -1024,15 +768,15 @@ function getZoneLabel(zone: MlbZone): string {
   }
 }
 
-function getZoneDotColor(zone: MlbZone): string {
+function getZoneDotColor(zone: MlbZone): CSSProperties["backgroundColor"] {
   switch (zone) {
     case "division":
-      return "var(--home-positive)";
+      return "var(--c97-positive)";
     case "wildcard":
-      return "color-mix(in srgb, var(--home-positive) 55%, var(--home-ink))";
+      return "color-mix(in srgb, var(--c97-positive) 55%, var(--c97-ink))";
     case "out":
     default:
-      return "color-mix(in srgb, var(--home-ink) 65%, var(--home-stone))";
+      return "var(--c97-ink-2)";
   }
 }
 
@@ -1064,4 +808,3 @@ function getPressurePoints(row: MlbStandingsRow): string[] {
   }
   return points;
 }
-

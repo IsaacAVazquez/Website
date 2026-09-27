@@ -202,11 +202,11 @@ export function PriceChartPanel({ symbol, costBasis = null }: Props) {
       .call((ax) =>
         ax
           .selectAll(".tick line")
-          .style("stroke", "var(--home-rule)")
+          .style("stroke", "var(--c97-rule)")
           .attr("stroke-opacity", "0.4")
       )
       .selectAll("text")
-      .style("fill", "var(--home-ink-soft)")
+      .style("fill", "var(--c97-label)")
       .attr("font-size", "10px")
       .attr("dx", "-4px");
 
@@ -216,7 +216,7 @@ export function PriceChartPanel({ symbol, costBasis = null }: Props) {
       .attr("x", -pInnerH / 2)
       .attr("y", -48)
       .attr("text-anchor", "middle")
-      .style("fill", "var(--home-ink-soft)")
+      .style("fill", "var(--c97-label)")
       .attr("font-size", "10px")
       .text(vsSpyActive ? "Indexed (start = 100)" : "Price (USD)");
 
@@ -232,7 +232,7 @@ export function PriceChartPanel({ symbol, costBasis = null }: Props) {
         .datum(spyIndexed)
         .attr("d", spyLine)
         .attr("fill", "none")
-        .style("stroke", "var(--home-ink-muted)")
+        .style("stroke", "var(--c97-ink-2)")
         .attr("stroke-width", 1.4)
         .attr("stroke-dasharray", "4,3");
     }
@@ -247,7 +247,7 @@ export function PriceChartPanel({ symbol, costBasis = null }: Props) {
     pg.append("path")
       .datum(entries)
       .attr("d", area)
-      .style("fill", "var(--home-signal)")
+      .style("fill", "var(--c97-accent)")
       .attr("fill-opacity", "0.12");
 
     // Line
@@ -260,7 +260,7 @@ export function PriceChartPanel({ symbol, costBasis = null }: Props) {
       .datum(entries)
       .attr("d", line)
       .attr("fill", "none")
-      .style("stroke", "var(--home-signal)")
+      .style("stroke", "var(--c97-accent)")
       .attr("stroke-width", 1.5);
 
     // 50-day moving average (dashed, neutral) — only the points that have a
@@ -276,7 +276,7 @@ export function PriceChartPanel({ symbol, costBasis = null }: Props) {
         .datum(entries)
         .attr("d", maLine)
         .attr("fill", "none")
-        .style("stroke", "var(--home-ink-muted)")
+        .style("stroke", "var(--c97-ink-2)")
         .attr("stroke-width", 1.25)
         .attr("stroke-dasharray", "5,4")
         .attr("opacity", 0.85);
@@ -293,16 +293,16 @@ export function PriceChartPanel({ symbol, costBasis = null }: Props) {
         .attr("x2", pInnerW)
         .attr("y1", cy)
         .attr("y2", cy)
-        .style("stroke", "var(--home-positive)")
+        .style("stroke", "var(--c97-positive)")
         .attr("stroke-width", 1.25)
         .attr("stroke-dasharray", "2,3");
       pg.append("text")
         .attr("x", pInnerW)
         .attr("y", cy - 4)
         .attr("text-anchor", "end")
-        .style("fill", "var(--home-positive)")
+        .style("fill", "var(--c97-positive)")
         .attr("font-size", "9px")
-        .attr("font-family", "var(--font-jetbrains-mono, monospace)")
+        .attr("font-family", "var(--c97-font-mono)")
         .text(`Cost $${(costBasis as number).toFixed(2)}`);
     }
 
@@ -312,13 +312,13 @@ export function PriceChartPanel({ symbol, costBasis = null }: Props) {
       .call(axisBottom(xScale).ticks(5))
       .call((ax) => ax.select(".domain").remove())
       .selectAll("text")
-      .style("fill", "var(--home-ink-soft)")
+      .style("fill", "var(--c97-label)")
       .attr("font-size", "10px");
 
     // Hairline + tooltip on hover
     const hairline = pg
       .append("line")
-      .style("stroke", "var(--home-ink-soft)")
+      .style("stroke", "var(--c97-label)")
       .attr("stroke-dasharray", "3,3")
       .attr("y1", 0)
       .attr("y2", pInnerH)
@@ -391,7 +391,7 @@ export function PriceChartPanel({ symbol, costBasis = null }: Props) {
       .attr("y", (d) => vyScale(d.volume))
       .attr("width", barWidth)
       .attr("height", (d) => vInnerH - vyScale(d.volume))
-      .attr("fill", (d) => (d.up ? "var(--home-positive)" : "var(--home-negative)"))
+      .attr("fill", (d) => (d.up ? "var(--c97-positive)" : "var(--c97-negative)"))
       .attr("opacity", "0.45");
 
     // X axis on volume chart
@@ -400,7 +400,7 @@ export function PriceChartPanel({ symbol, costBasis = null }: Props) {
       .call(axisBottom(vxScale).ticks(5))
       .call((ax) => ax.select(".domain").remove())
       .selectAll("text")
-      .style("fill", "var(--home-ink-soft)")
+      .style("fill", "var(--c97-label)")
       .attr("font-size", "10px");
 
     // Volume label
@@ -409,7 +409,7 @@ export function PriceChartPanel({ symbol, costBasis = null }: Props) {
       .attr("x", -vInnerH / 2)
       .attr("y", -48)
       .attr("text-anchor", "middle")
-      .style("fill", "var(--home-ink-soft)")
+      .style("fill", "var(--c97-label)")
       .attr("font-size", "9px")
       .text("Volume");
   }, [slicedData, symbol, showMA, showCostBasis, hasCostBasis, costBasis, vsSpyActive, spySliced]);
@@ -421,20 +421,20 @@ export function PriceChartPanel({ symbol, costBasis = null }: Props) {
     <TerminalPanel padding="sm" ariaLabel="Price chart">
       <div className="mb-5 flex flex-wrap items-center justify-between gap-3">
         <div>
-          <h3 className="text-sm font-semibold text-[var(--home-ink)]">Price History</h3>
-          <p className="mt-1 text-xs text-[var(--home-ink-soft)]">
+          <h3 className="text-sm font-semibold text-[var(--c97-ink)]">Price History</h3>
+          <p className="mt-1 text-xs text-[var(--c97-label)]">
             Trend and volume from the curated research snapshot.
           </p>
-          <p className="mt-2 text-xs text-[var(--home-ink-muted)]">
+          <p className="mt-2 text-xs text-[var(--c97-ink-2)]">
             Historical series through {formatHistoryAsOf(latestHistoricalDate)}. The latest market quote, when available, appears in the research header.
           </p>
           {historyFreshness.isStale ? (
-            <p className="mt-1 text-xs font-medium text-[var(--home-warning)]">
+            <p className="mt-1 text-xs font-medium text-[var(--c97-warning)]">
               Historical chart data ends {historyFreshness.lagDays} days before today.
             </p>
           ) : null}
           {spyUnavailable ? (
-            <p className="mt-1 text-xs text-[var(--home-warning)]">
+            <p className="mt-1 text-xs text-[var(--c97-warning)]">
               SPY comparison data isn&apos;t in this data build yet, so the chart shows absolute price instead.
             </p>
           ) : null}
@@ -447,16 +447,16 @@ export function PriceChartPanel({ symbol, costBasis = null }: Props) {
                   type="button"
                   onClick={() => setShowMA((v) => !v)}
                   aria-pressed={showMA}
-                  className={`inline-flex min-h-[44px] items-center gap-2 rounded-[var(--radius-sm)] px-3.5 py-2 text-xs font-semibold transition ${
+                  className={`inline-flex min-h-[44px] items-center gap-2 px-3.5 py-2 text-xs font-semibold transition ${
                     showMA
-                      ? "border border-[var(--home-ink-muted)] bg-[var(--home-paper-alt)] text-[var(--home-ink)]"
-                      : "border border-[var(--home-rule)] text-[var(--home-ink-soft)] hover:bg-[var(--home-paper-alt)]"
+                      ? "border border-[var(--c97-ink-2)] bg-[var(--c97-panel)] text-[var(--c97-ink)]"
+                      : "border border-[var(--c97-rule)] text-[var(--c97-label)] hover:bg-[var(--c97-panel)]"
                   }`}
                 >
                   <span
                     aria-hidden="true"
                     className="inline-block h-0 w-4 border-t-[1.5px] border-dashed"
-                    style={{ borderColor: "var(--home-ink-muted)" }}
+                    style={{ borderColor: "var(--c97-ink-2)" }}
                   />
                   50-day MA
                 </button>
@@ -465,16 +465,16 @@ export function PriceChartPanel({ symbol, costBasis = null }: Props) {
                     type="button"
                     onClick={() => setShowCostBasis((v) => !v)}
                     aria-pressed={showCostBasis}
-                    className={`inline-flex min-h-[44px] items-center gap-2 rounded-[var(--radius-sm)] px-3.5 py-2 text-xs font-semibold transition ${
+                    className={`inline-flex min-h-[44px] items-center gap-2 px-3.5 py-2 text-xs font-semibold transition ${
                       showCostBasis
-                        ? "border border-[color-mix(in_srgb,var(--home-positive)_45%,var(--home-rule))] bg-[color-mix(in_srgb,var(--home-positive)_10%,var(--home-paper-alt))] text-[var(--home-ink)]"
-                        : "border border-[var(--home-rule)] text-[var(--home-ink-soft)] hover:bg-[var(--home-paper-alt)]"
+                        ? "border border-[color-mix(in_srgb,var(--c97-positive)_45%,var(--c97-rule))] bg-[color-mix(in_srgb,var(--c97-positive)_10%,var(--c97-panel))] text-[var(--c97-ink)]"
+                        : "border border-[var(--c97-rule)] text-[var(--c97-label)] hover:bg-[var(--c97-panel)]"
                     }`}
                   >
                     <span
                       aria-hidden="true"
                       className="inline-block h-0 w-4 border-t-[1.5px] border-dashed"
-                      style={{ borderColor: "var(--home-positive)" }}
+                      style={{ borderColor: "var(--c97-positive)" }}
                     />
                     Cost basis
                   </button>
@@ -486,10 +486,10 @@ export function PriceChartPanel({ symbol, costBasis = null }: Props) {
                 type="button"
                 onClick={() => setVsSpy((v) => !v)}
                 aria-pressed={vsSpy}
-                className={`inline-flex min-h-[44px] items-center gap-2 rounded-[var(--radius-sm)] px-3.5 py-2 text-xs font-semibold transition ${
+                className={`inline-flex min-h-[44px] items-center gap-2 px-3.5 py-2 text-xs font-semibold transition ${
                   vsSpy
-                    ? "border border-[color-mix(in_srgb,var(--home-signal)_55%,var(--home-rule))] text-[var(--home-signal)]"
-                    : "border border-[var(--home-rule)] text-[var(--home-ink-soft)] hover:bg-[var(--home-paper-alt)]"
+                    ? "border border-[color-mix(in_srgb,var(--c97-accent)_55%,var(--c97-rule))] text-[var(--c97-accent)]"
+                    : "border border-[var(--c97-rule)] text-[var(--c97-label)] hover:bg-[var(--c97-panel)]"
                 }`}
               >
                 vs SPY
@@ -503,10 +503,10 @@ export function PriceChartPanel({ symbol, costBasis = null }: Props) {
                 type="button"
                 aria-pressed={range === r}
                 onClick={() => setRange(r)}
-                className={`min-h-[44px] min-w-[44px] rounded-[var(--radius-sm)] px-3.5 py-2 text-xs font-semibold transition ${
+                className={`min-h-[44px] min-w-[44px] px-3.5 py-2 text-xs font-semibold transition ${
                   range === r
-                    ? "bg-[var(--home-signal)] text-[var(--home-paper)] "
-                    : "border border-[var(--home-rule)] text-[var(--home-ink-muted)] hover:bg-[var(--home-paper-alt)] hover:text-[var(--home-ink)]"
+                    ? "bg-[var(--c97-accent)] text-[var(--c97-surface)] "
+                    : "border border-[var(--c97-rule)] text-[var(--c97-ink-2)] hover:bg-[var(--c97-panel)] hover:text-[var(--c97-ink)]"
                 }`}
               >
                 {r}
@@ -518,8 +518,8 @@ export function PriceChartPanel({ symbol, costBasis = null }: Props) {
 
       {isLoading && (
         <div className="space-y-3">
-          <div className="h-[260px] rounded bg-[var(--home-stone)] animate-pulse" />
-          <div className="h-[80px] rounded bg-[var(--home-stone)] animate-pulse" />
+          <div className="h-[260px] rounded bg-[var(--c97-rule)] animate-pulse" />
+          <div className="h-[80px] rounded bg-[var(--c97-rule)] animate-pulse" />
         </div>
       )}
 
@@ -533,7 +533,7 @@ export function PriceChartPanel({ symbol, costBasis = null }: Props) {
           <svg ref={volumeRef} className="mt-2 w-full" />
           <div
             ref={tooltipRef}
-            className="absolute pointer-events-none hidden z-10 bg-[var(--home-paper-raised)] border border-[var(--home-rule)] rounded-[var(--radius-sm)] px-2 py-1 text-xs text-[var(--home-ink)] whitespace-nowrap"
+            className="absolute pointer-events-none hidden z-10 bg-[var(--c97-panel)] border border-[var(--c97-rule)] px-2 py-1 text-xs text-[var(--c97-ink)] whitespace-nowrap"
           />
         </div>
       )}
