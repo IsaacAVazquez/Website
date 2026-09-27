@@ -2,26 +2,13 @@
 
 import { startTransition, useEffect, useMemo, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
-import {
-  CalendarDays,
-  CircleAlert,
-  Clock,
-  Flag,
-  Globe,
-  ListOrdered,
-  MapPin,
-  Medal,
-  Trophy,
-  Users,
-  X,
-} from "lucide-react";
+import { CalendarDays, Clock, Flag, Medal, X } from "lucide-react";
 import {
   CrestAvatar,
   EmptyPanel,
   FixtureCard,
   FixtureGroupSection,
   InfoChip,
-  StatCard,
   SurfaceCard,
   TeamResultPill,
 } from "@/components/football";
@@ -45,6 +32,11 @@ import {
   normalizeWorldCupState,
   WORLD_CUP_ROUTE,
 } from "./world-cup-state";
+import { Catalog97ProjectHero } from "@/components/catalog97/Catalog97ProjectHero";
+import { PROJECT_PRESS } from "@/constants/projectPress";
+import { bracketTree } from "./bracketTree";
+import { WorldCupBracket } from "./WorldCupBracket";
+import "./world-cup.css";
 
 interface WorldCupClientProps {
   initialState: WorldCupRouteState;
@@ -65,12 +57,12 @@ const VIEW_OPTIONS: Array<{
   {
     id: "knockout",
     label: "Knockout bracket",
-    description: "The 32-team bracket from the Round of 32 to the final.",
+    description: "Every tie from the Round of 32 to the final, round by round.",
   },
   {
     id: "schedule",
     label: "Match schedule",
-    description: "Recent results and upcoming fixtures.",
+    description: "Every result across the tournament.",
   },
 ];
 
@@ -89,14 +81,14 @@ function formatTournamentWindow(start: string, end: string): string {
   const startDate = new Date(`${start}T00:00:00.000Z`);
   const endDate = new Date(`${end}T00:00:00.000Z`);
   if (Number.isNaN(startDate.getTime()) || Number.isNaN(endDate.getTime())) {
-    return `${start} – ${end}`;
+    return `${start} to ${end}`;
   }
   const startLabel = new Intl.DateTimeFormat("en-US", {
     month: "long",
     day: "numeric",
     timeZone: "UTC",
   }).format(startDate);
-  return `${startLabel} – ${formatLongDate(end)}`;
+  return `${startLabel} to ${formatLongDate(end)}`;
 }
 
 const DAY_MS = 24 * 60 * 60 * 1000;
@@ -104,7 +96,8 @@ const DAY_MS = 24 * 60 * 60 * 1000;
 /**
  * Whole days between now and kickoff, computed after mount so the count never
  * triggers a server/client hydration mismatch. Returns null until mounted and 0
- * once the tournament has started.
+ * once the tournament has started. The 2026 tournament finished on July 19, so
+ * this stays null on this route and the countdown it feeds renders nothing.
  */
 function useDaysUntilKickoff(startDate: string): number | null {
   const [days, setDays] = useState<number | null>(null);
@@ -126,8 +119,8 @@ function KickoffCountdown({ startDate }: { startDate: string }) {
   const days = useDaysUntilKickoff(startDate);
   if (days === null || days <= 0) return null;
   return (
-    <span className="inline-flex flex-shrink-0 items-center gap-1.5 self-start rounded-full border border-[color-mix(in_srgb,var(--home-signal)_35%,var(--home-rule))] bg-[color-mix(in_srgb,var(--home-signal)_10%,var(--home-paper-alt))] px-3 py-1 text-xs font-semibold text-[var(--home-ink)]">
-      <Clock className="h-3.5 w-3.5 text-[var(--home-signal)]" />
+    <span className="c97-chip" style={{ gap: "var(--c97-sp-1)" }}>
+      <Clock className="h-3.5 w-3.5" aria-hidden="true" />
       {days === 1 ? "Kicks off tomorrow" : `Kicks off in ${days} days`}
     </span>
   );
@@ -162,6 +155,7 @@ export function WorldCupClient({
     () => new Map(teamOptions.map((team) => [team.id, team])),
     [teamOptions]
   );
+  const tree = useMemo(() => bracketTree(knockout), [knockout]);
 
   const hasManagedParams =
     searchParams.get("view") !== null || searchParams.get("team") !== null;
@@ -278,11 +272,6 @@ export function WorldCupClient({
     [tournament]
   );
 
-  const tournamentWindow = formatTournamentWindow(
-    tournament.startDate,
-    tournament.endDate
-  );
-
   const venuesByCountry = useMemo(() => {
     const map = new Map<string, typeof tournament.venues>();
     for (const venue of tournament.venues) {
@@ -293,239 +282,188 @@ export function WorldCupClient({
     return Array.from(map.entries());
   }, [tournament]);
 
-  const heroCards = [
-    {
-      eyebrow: "Teams",
-      metric: `${tournament.teamCount}`,
-      detail: `${tournament.groupCount} groups of four`,
-      icon: <Users className="h-4 w-4" />,
-    },
-    {
-      eyebrow: "Matches",
-      metric: `${tournament.matchCount}`,
-      detail: "Across the whole tournament",
-      icon: <ListOrdered className="h-4 w-4" />,
-    },
-    {
-      eyebrow: "Host nations",
-      metric: `${new Set(tournament.venues.map((v) => v.country)).size}`,
-      detail: tournament.hosts.join(", "),
-      icon: <Globe className="h-4 w-4" />,
-    },
-    {
-      eyebrow: "Host cities",
-      metric: `${tournament.venues.length}`,
-      detail: "Stadiums on the schedule",
-      icon: <MapPin className="h-4 w-4" />,
-    },
-  ];
+  // The final fixture and the champion it settled, straight from the bracket
+  // tree, so the hero's headline numbers can never disagree with the bracket
+  // drawn beneath them.
+  const finalNode = tree.columns[tree.columns.length - 1]?.fixtures[0] ?? null;
+  const champion =
+    finalNode && tree.championId
+      ? finalNode.fixture.homeTeam.id === tree.championId
+        ? finalNode.fixture.homeTeam
+        : finalNode.fixture.awayTeam.id === tree.championId
+          ? finalNode.fixture.awayTeam
+          : null
+      : null;
+  const runnerUp =
+    finalNode && champion
+      ? finalNode.fixture.homeTeam.id === champion.id
+        ? finalNode.fixture.awayTeam
+        : finalNode.fixture.homeTeam
+      : null;
+  const finalScoreLine = finalNode
+    ? `${finalNode.fixture.homeTeam.shortName} ${finalNode.fixture.score.home}-${finalNode.fixture.score.away} ${finalNode.fixture.awayTeam.shortName}`
+    : null;
+
+  const lead = PROJECT_PRESS[WORLD_CUP_ROUTE].lead;
+  const standfirst =
+    "I wanted the last World Cup laid out the way a bracket poster reads after the final whistle, from the group tables through every knockout round to the trophy. It comes from a curated ESPN snapshot of the 2026 tournament, which wrapped in July, so nothing on this page updates live.";
 
   return (
-    <div className="home-page min-h-screen">
-      <div className="home-shell home-section space-y-5 sm:space-y-6">
-        {/* Page header */}
-        <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
-          <div>
-            <p className="home-kicker mb-1">World Cup Data Tool</p>
-            <h1 className="text-2xl font-bold tracking-tight text-[var(--home-ink)] sm:text-3xl">
-              World Cup Pulse
-            </h1>
-            <p className="mt-1 max-w-[58ch] text-sm leading-6 text-[var(--home-ink-muted)]">
-              The 2026 FIFA World Cup in one view. Group standings, the expanded
-              32-team knockout bracket, the full schedule, and the 16 host
-              cities, refreshed from a curated ESPN snapshot.
-            </p>
-          </div>
-          <div className="flex flex-wrap gap-1.5 text-2xs text-[var(--home-ink-muted)]">
-            {[
-              tournament.phase,
-              tournamentWindow,
-              `Snapshot ${snapshotDateLabel}`,
-            ].map((label) => (
-              <span
-                key={label}
-                className="rounded-full border border-[var(--home-rule)] bg-[var(--home-paper-alt)] px-2.5 py-1 font-medium"
-              >
-                {label}
-              </span>
-            ))}
-          </div>
-        </div>
+    <>
+      <Catalog97ProjectHero
+        ink={lead}
+        title="World Cup Pulse"
+        standfirst={standfirst}
+        meta={`${tournament.name} · ${tournament.phase} · Snapshot ${snapshotDateLabel}`}
+        readouts={[
+          {
+            label: "Champion",
+            value: champion?.shortName ?? "—",
+            detail: runnerUp ? `Beat ${runnerUp.shortName} in the final` : undefined,
+          },
+          {
+            label: "Final",
+            value: finalScoreLine ?? "—",
+            detail: finalNode?.fixture.venue ?? undefined,
+          },
+          {
+            label: "Matches",
+            value: `${tournament.matchCount}`,
+            detail: `${tournament.teamCount} teams · ${tournament.groupCount} groups`,
+          },
+        ]}
+      >
+        <WorldCupBracket tree={tree} onOpenTeam={handleTeamChange} />
+      </Catalog97ProjectHero>
 
-        {/* Status line */}
-        <SurfaceCard className="p-4 sm:p-5">
-          <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
-            <div className="flex items-start gap-3">
-              <Trophy className="mt-0.5 h-5 w-5 flex-shrink-0 text-[var(--home-signal)]" />
-              <div>
-                <p className="text-sm font-semibold text-[var(--home-ink)]">
-                  {tournament.name} · {tournament.phase}
-                </p>
-                <p className="mt-1 text-sm leading-6 text-[var(--home-ink-muted)]">
-                  {tournament.status}
-                </p>
-              </div>
-            </div>
+      <section className="c97-band c97-sheet" data-c97-surface="paper" data-seam="torn">
+        <div className="c97-shell">
+          <div className="flex flex-wrap items-center justify-between gap-3">
+            <h2 className="c97-poster-sm">Explore the tournament</h2>
             <KickoffCountdown startDate={tournament.startDate} />
           </div>
-        </SurfaceCard>
 
-        {/* Hero stat cards */}
-        <div className="grid grid-cols-2 gap-3 md:grid-cols-4">
-          {heroCards.map((card) => (
-            <StatCard
-              key={card.eyebrow}
-              variant="compact"
-              eyebrow={card.eyebrow}
-              metric={card.metric}
-              detail={card.detail}
-              icon={card.icon}
-            />
-          ))}
-        </div>
-
-        {/* View tabs */}
-        <div className="flex flex-wrap gap-2">
-          {VIEW_OPTIONS.map((option) => {
-            const isActive = option.id === routeState.view;
-            return (
+          <div className="c97-segmented mt-4" role="tablist" aria-label="World Cup view switcher">
+            {VIEW_OPTIONS.map((option) => (
               <button
                 key={option.id}
                 type="button"
+                role="tab"
+                id={`world-cup-tab-${option.id}`}
+                aria-controls={`world-cup-tabpanel-${option.id}`}
+                aria-selected={option.id === routeState.view}
                 onClick={() => handleViewChange(option.id)}
-                aria-pressed={isActive}
-                className={`inline-flex min-h-[44px] flex-col items-start rounded-[var(--radius-2xl)] border px-4 py-2 text-left transition-colors ${
-                  isActive
-                    ? "border-[color-mix(in_srgb,var(--home-signal)_35%,var(--home-rule))] bg-[color-mix(in_srgb,var(--home-signal)_9%,var(--home-paper-alt))] shadow-[var(--shadow-sm)]"
-                    : "border-[var(--home-rule)] bg-[var(--home-paper-alt)] hover:text-[var(--home-signal)]"
-                }`}
+                className="min-h-[44px] text-sm font-semibold"
               >
-                <span className="text-sm font-semibold text-[var(--home-ink)]">
-                  {option.label}
-                </span>
-                <span className="text-2xs text-[var(--home-ink-muted)]">
-                  {option.description}
-                </span>
+                {option.label}
               </button>
-            );
-          })}
-        </div>
+            ))}
+          </div>
+          <p className="c97-prose mt-2 mb-0" style={{ fontSize: "var(--c97-fs-small)" }}>
+            {VIEW_OPTIONS.find((option) => option.id === routeState.view)?.description}
+          </p>
 
-        {/* Main content + sidebar */}
-        <div className="grid gap-5 md:grid-cols-[minmax(0,1fr)_300px] lg:grid-cols-[minmax(0,1fr)_340px]">
-          <section className="space-y-5">
-            {routeState.view === "groups" && (
-              <GroupsView
-                groups={groups}
-                selectedTeamId={selectedTeamId}
-                onOpenTeam={handleTeamChange}
-              />
-            )}
-            {routeState.view === "knockout" && (
-              <KnockoutView
-                rounds={knockout}
-                selectedTeamId={selectedTeamId}
-                onOpenTeam={handleTeamChange}
-              />
-            )}
-            {routeState.view === "schedule" && (
-              <ScheduleView
-                recentFixtures={summary.recentFixtures}
-                upcomingFixtures={summary.upcomingFixtures}
-                onOpenTeam={handleTeamChange}
-              />
-            )}
-          </section>
-
-          {/* Sidebar */}
-          <aside className="md:sticky md:top-0 md:self-start">
-            {selectedTeamOption ? (
-              <TeamDetailCard
-                option={selectedTeamOption}
-                snapshot={teamSnapshot}
-                isLoading={isTeamSnapshotLoading}
-                error={teamSnapshotError}
-                onClear={clearTeam}
-                onOpenTeam={handleTeamChange}
-              />
-            ) : (
-              <FormatCard tournament={tournament} />
-            )}
-          </aside>
-        </div>
-
-        {/* Top scorers */}
-        {scorers.length > 0 && (
-          <SurfaceCard className="p-5 sm:p-6">
-            <div className="flex items-center justify-between border-b border-[var(--home-rule)] pb-4">
-              <h2 className="text-lg font-bold text-[var(--home-ink)]">
-                Golden Boot race
-              </h2>
-              <span className="text-sm text-[var(--home-ink-muted)]">
-                Top scorers
-              </span>
+          <div className="mt-6 grid gap-8 xl:grid-cols-[minmax(0,1.7fr)_minmax(300px,0.92fr)]">
+            <div
+              role="tabpanel"
+              id={`world-cup-tabpanel-${routeState.view}`}
+              aria-labelledby={`world-cup-tab-${routeState.view}`}
+            >
+              {routeState.view === "groups" && (
+                <GroupsView
+                  groups={groups}
+                  selectedTeamId={selectedTeamId}
+                  onOpenTeam={handleTeamChange}
+                />
+              )}
+              {routeState.view === "knockout" && (
+                <KnockoutView
+                  rounds={knockout}
+                  selectedTeamId={selectedTeamId}
+                  onOpenTeam={handleTeamChange}
+                />
+              )}
+              {routeState.view === "schedule" && (
+                <ScheduleView
+                  recentFixtures={summary.recentFixtures}
+                  upcomingFixtures={summary.upcomingFixtures}
+                  onOpenTeam={handleTeamChange}
+                />
+              )}
             </div>
-            <ol className="mt-5 space-y-3 pl-0">
-              {scorers.slice(0, 10).map((scorer) => (
-                <li
-                  key={`${scorer.rank}-${scorer.name}`}
-                  className="flex items-center justify-between gap-4 rounded-[var(--radius-2xl)] border border-[var(--home-rule)] bg-[var(--home-paper-alt)] px-4 py-3"
-                >
-                  <div className="flex min-w-0 items-center gap-3">
-                    <div className="inline-flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-[var(--home-paper)] text-sm font-bold text-[var(--home-signal)] shadow-sm">
-                      {scorer.rank}
-                    </div>
-                    <div className="min-w-0">
-                      <p className="truncate font-semibold text-[var(--home-ink)]">
-                        {scorer.name}
-                      </p>
-                      <p className="text-sm text-[var(--home-ink-muted)]">
-                        {scorer.teamCode}
-                        {scorer.assists > 0 ? ` · ${scorer.assists} assists` : ""}
-                      </p>
-                    </div>
-                  </div>
-                  <div className="text-right">
-                    <p className="text-lg font-bold text-[var(--home-ink)]">
-                      {scorer.goals}
-                    </p>
-                    <p className="text-xs uppercase tracking-[0.12em] text-[var(--home-ink-soft)]">
-                      goals
-                    </p>
-                  </div>
-                </li>
-              ))}
-            </ol>
-          </SurfaceCard>
-        )}
 
-        {/* Host venues */}
-        <SurfaceCard className="p-5 sm:p-6">
-          <div className="flex items-center justify-between border-b border-[var(--home-rule)] pb-4">
-            <h2 className="text-lg font-bold text-[var(--home-ink)]">
-              Host venues
-            </h2>
-            <span className="text-sm text-[var(--home-ink-muted)]">
+            <aside className="xl:sticky xl:top-6 xl:self-start">
+              {selectedTeamOption ? (
+                <TeamDetailCard
+                  option={selectedTeamOption}
+                  snapshot={teamSnapshot}
+                  isLoading={isTeamSnapshotLoading}
+                  error={teamSnapshotError}
+                  onClear={clearTeam}
+                  onOpenTeam={handleTeamChange}
+                />
+              ) : (
+                <FormatCard tournament={tournament} />
+              )}
+            </aside>
+          </div>
+        </div>
+      </section>
+
+      {scorers.length > 0 && (
+        <section className="c97-band c97-sheet" data-c97-surface="bone" data-seam="deckle">
+          <div className="c97-shell">
+            <h2 className="c97-poster-sm mb-5">Golden boot race</h2>
+            <table className="c97-table" aria-label="Top scorers">
+              <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Player</th>
+                  <th scope="col">Team</th>
+                  <th scope="col" data-align="end">Goals</th>
+                  <th scope="col" data-align="end" className="hidden sm:table-cell">Assists</th>
+                </tr>
+              </thead>
+              <tbody>
+                {scorers.slice(0, 10).map((scorer) => (
+                  <tr key={`${scorer.rank}-${scorer.name}`}>
+                    <td className="c97-mono">{scorer.rank}</td>
+                    <td className="c97-serif">{scorer.name}</td>
+                    <td className="c97-mono">{scorer.teamCode}</td>
+                    <td className="c97-mono" data-align="end">{scorer.goals}</td>
+                    <td className="c97-mono hidden sm:table-cell" data-align="end">
+                      {scorer.assists}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </section>
+      )}
+
+      <section className="c97-band c97-sheet" data-c97-surface="paper" data-seam="torn">
+        <div className="c97-shell">
+          <div className="flex items-center justify-between">
+            <h2 className="c97-poster-sm">Host venues</h2>
+            <span className="c97-meta">
               {tournament.venues.length} stadiums · {venuesByCountry.length} nations
             </span>
           </div>
           <div className="mt-5 space-y-6">
             {venuesByCountry.map(([country, venues]) => (
               <div key={country}>
-                <p className="mb-3 flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.14em] text-[var(--home-ink-soft)]">
-                  <Flag className="h-3.5 w-3.5" />
+                <p className="c97-kicker mb-3 flex items-center gap-2">
+                  <Flag className="h-3.5 w-3.5" aria-hidden="true" />
                   {country} · {venues.length}
                 </p>
                 <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
                   {venues.map((venue) => (
-                    <div
-                      key={`${venue.city}-${venue.stadium}`}
-                      className="rounded-[var(--radius-2xl)] border border-[var(--home-rule)] bg-[var(--home-paper-alt)] px-4 py-3"
-                    >
-                      <p className="font-semibold text-[var(--home-ink)]">
+                    <div key={`${venue.city}-${venue.stadium}`} className="c97-panel">
+                      <p className="c97-serif mb-0" style={{ fontWeight: 600 }}>
                         {venue.city}
                       </p>
-                      <p className="mt-0.5 text-sm text-[var(--home-ink-muted)]">
+                      <p className="c97-prose mt-1 mb-0" style={{ fontSize: "var(--c97-fs-small)" }}>
                         {venue.stadium}
                       </p>
                     </div>
@@ -534,22 +472,20 @@ export function WorldCupClient({
               </div>
             ))}
           </div>
-        </SurfaceCard>
+        </div>
+      </section>
 
-        {/* Disclaimer */}
-        <section className="rounded-[var(--radius-3xl)] border border-[var(--home-rule)] bg-[var(--home-paper-alt)] p-5 text-sm text-[var(--home-ink-muted)] shadow-sm">
-          <div className="flex items-start gap-3">
-            <CircleAlert className="mt-0.5 h-4 w-4 flex-shrink-0 text-[var(--home-signal)]" />
-            <p className="mb-0 max-w-none leading-relaxed">
-              This page is a curated snapshot rather than a live feed. Group
-              standings, fixtures, and the knockout bracket come from ESPN&apos;s
-              public World Cup endpoints and refresh on a schedule. Tournament
-              format and host venues are fixed facts carried in the snapshot.
-            </p>
-          </div>
-        </section>
-      </div>
-    </div>
+      <section className="c97-band c97-sheet" data-c97-surface="bone" data-seam="deckle">
+        <div className="c97-shell">
+          <p className="c97-kicker mb-2">Snapshot note</p>
+          <p className="c97-prose mb-0" style={{ fontSize: "var(--c97-fs-small)" }}>
+            This page is a curated snapshot that refreshes on a schedule. Group standings,
+            fixtures, and the knockout bracket come from ESPN&apos;s public World Cup endpoints.
+            Tournament format and host venues are fixed facts carried in the snapshot.
+          </p>
+        </div>
+      </section>
+    </>
   );
 }
 
@@ -569,7 +505,7 @@ function GroupsView({
     return (
       <EmptyPanel
         title="Group standings open with the first whistle"
-        description="All 12 group tables populate here once the group stage begins on June 11. Until then, browse the host venues and the tournament format below."
+        description="All 12 group tables populate here once the group stage begins. Until then, browse the host venues and the tournament format below."
       />
     );
   }
@@ -599,19 +535,13 @@ function GroupsView({
 
 function QualificationLegend() {
   return (
-    <div className="flex flex-wrap items-center gap-x-5 gap-y-2 rounded-[var(--radius-2xl)] border border-[var(--home-rule)] bg-[var(--home-paper-alt)] px-4 py-3 text-xs text-[var(--home-ink-muted)]">
-      <span className="flex items-center gap-1.5">
-        <span
-          className="h-2 w-2 flex-shrink-0 rounded-full"
-          style={{ backgroundColor: "var(--home-positive)" }}
-        />
+    <div className="flex flex-wrap items-center gap-x-5 gap-y-2">
+      <span className="flex items-center gap-1.5 c97-meta">
+        <span className="c97-wc-zone-dot" style={{ backgroundColor: "var(--c97-positive)" }} />
         Top two advance to the Round of 32
       </span>
-      <span className="flex items-center gap-1.5">
-        <span
-          className="h-2 w-2 flex-shrink-0 rounded-full"
-          style={{ backgroundColor: "var(--home-signal)" }}
-        />
+      <span className="flex items-center gap-1.5 c97-meta">
+        <span className="c97-wc-zone-dot" style={{ backgroundColor: "var(--c97-accent)" }} />
         Third place enters the eight-team wildcard race
       </span>
     </div>
@@ -628,102 +558,76 @@ function GroupTable({
   onOpenTeam: (teamId: string) => void;
 }) {
   return (
-    <SurfaceCard className="p-4 sm:p-5">
-      <div className="flex items-center justify-between border-b border-[var(--home-rule)] pb-3">
-        <h2 className="text-base font-bold text-[var(--home-ink)]">
+    <SurfaceCard className="@container p-4 sm:p-5">
+      <div className="flex items-center justify-between pb-2">
+        <h3 className="c97-serif" style={{ fontSize: "var(--c97-fs-h3)" }}>
           {group.name}
-        </h2>
-        <span className="text-xs uppercase tracking-[0.12em] text-[var(--home-ink-soft)]">
-          {group.standings.length} teams
-        </span>
+        </h3>
+        <span className="c97-meta">{group.standings.length} teams</span>
       </div>
-      <table className="mt-3 w-full border-separate border-spacing-y-1.5 text-sm">
+      <table className="c97-table" aria-label={`${group.name} standings`}>
         <thead>
-          <tr className="text-left text-2xs uppercase tracking-[0.12em] text-[var(--home-ink-soft)]">
-            <th scope="col" className="px-2 py-1 font-semibold">#</th>
-            <th scope="col" className="px-2 py-1 font-semibold">Team</th>
-            <th scope="col" className="px-2 py-1 text-center font-semibold">P</th>
-            <th scope="col" className="hidden px-2 py-1 text-center font-semibold sm:table-cell">
-              W
-            </th>
-            <th scope="col" className="hidden px-2 py-1 text-center font-semibold sm:table-cell">
-              D
-            </th>
-            <th scope="col" className="hidden px-2 py-1 text-center font-semibold sm:table-cell">
-              L
-            </th>
-            <th scope="col" className="px-2 py-1 text-center font-semibold">GD</th>
-            <th scope="col" className="px-2 py-1 text-center font-semibold">Pts</th>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Team</th>
+            <th scope="col" data-align="end">P</th>
+            <th scope="col" data-align="end" className="hidden @md:table-cell">W</th>
+            <th scope="col" data-align="end" className="hidden @md:table-cell">D</th>
+            <th scope="col" data-align="end" className="hidden @md:table-cell">L</th>
+            <th scope="col" data-align="end">GD</th>
+            <th scope="col" data-align="end">Pts</th>
           </tr>
         </thead>
         <tbody>
           {group.standings.map((row, index) => {
             const isSelected = row.teamId === selectedTeamId;
-            const dotColor =
+            const zoneColor =
               index < 2
-                ? "var(--home-positive)"
+                ? "var(--c97-positive)"
                 : index === 2
-                  ? "var(--home-signal)"
-                  : "var(--home-rule)";
-            const dotTitle =
+                  ? "var(--c97-accent)"
+                  : "var(--c97-rule)";
+            const zoneTitle =
               index < 2
                 ? "In a direct qualifying place"
                 : index === 2
                   ? "In the third-place wildcard race"
-                  : "";
+                  : undefined;
             return (
-              <tr
-                key={row.teamId}
-                className="border border-[var(--home-rule)]"
-                style={
-                  isSelected
-                    ? {
-                        background:
-                          "color-mix(in srgb, var(--home-signal) 9%, var(--home-paper-alt))",
-                      }
-                    : { background: "var(--home-paper-alt)" }
-                }
-              >
-                <td className="rounded-l-xl px-2 py-2 align-middle">
+              <tr key={row.teamId} data-selected={isSelected || undefined}>
+                <td>
                   <span className="flex items-center gap-1.5">
                     <span
-                      className="h-1.5 w-1.5 flex-shrink-0 rounded-full"
-                      style={{ backgroundColor: dotColor }}
-                      title={dotTitle}
+                      className="c97-wc-zone-dot"
+                      style={{ backgroundColor: zoneColor }}
+                      title={zoneTitle}
                     />
-                    <span className="font-semibold text-[var(--home-ink)]">
-                      {row.rank}
-                    </span>
+                    <span className="c97-mono">{row.rank}</span>
                   </span>
                 </td>
-                <td className="px-2 py-2 align-middle">
+                <td>
                   <button
                     type="button"
                     onClick={() => onOpenTeam(row.teamId)}
-                    className="flex min-h-[44px] w-full items-center gap-2 rounded-lg text-left transition hover:text-[var(--home-signal)]"
+                    aria-pressed={isSelected}
+                    aria-label={`Show ${row.name} details`}
+                    className="flex min-h-[44px] w-full items-center gap-2 text-left"
+                    style={{ background: "none", border: 0, padding: 0 }}
                   >
                     <CrestAvatar crest={row.crest} name={row.name} size="sm" />
-                    <span className="truncate font-semibold text-[var(--home-ink)]">
+                    <span className="c97-serif" style={{ fontWeight: 600 }}>
                       {row.code || row.name}
                     </span>
                   </button>
                 </td>
-                <td className="px-2 py-2 text-center align-middle text-[var(--home-ink-muted)]">
-                  {row.played}
-                </td>
-                <td className="hidden px-2 py-2 text-center align-middle text-[var(--home-ink-muted)] sm:table-cell">
-                  {row.wins}
-                </td>
-                <td className="hidden px-2 py-2 text-center align-middle text-[var(--home-ink-muted)] sm:table-cell">
-                  {row.draws}
-                </td>
-                <td className="hidden px-2 py-2 text-center align-middle text-[var(--home-ink-muted)] sm:table-cell">
-                  {row.losses}
-                </td>
-                <td className="px-2 py-2 text-center align-middle text-[var(--home-ink-muted)]">
+                <td className="c97-mono" data-align="end">{row.played}</td>
+                <td className="c97-mono hidden @md:table-cell" data-align="end">{row.wins}</td>
+                <td className="c97-mono hidden @md:table-cell" data-align="end">{row.draws}</td>
+                <td className="c97-mono hidden @md:table-cell" data-align="end">{row.losses}</td>
+                <td className="c97-mono" data-align="end">
                   {row.goalDifference > 0 ? `+${row.goalDifference}` : row.goalDifference}
                 </td>
-                <td className="rounded-r-xl px-2 py-2 text-center align-middle font-bold text-[var(--home-ink)]">
+                <td className="c97-mono" data-align="end" style={{ fontWeight: 700 }}>
                   {row.points}
                 </td>
               </tr>
@@ -750,98 +654,77 @@ function ThirdPlaceRace({
 
   return (
     <SurfaceCard className="p-5 sm:p-6">
-      <div className="flex items-center justify-between border-b border-[var(--home-rule)] pb-4">
+      <div className="flex items-center justify-between pb-3">
         <div className="flex items-center gap-2">
-          <Medal className="h-5 w-5 flex-shrink-0 text-[var(--home-signal)]" />
-          <h2 className="text-lg font-bold text-[var(--home-ink)]">
+          <Medal className="h-4 w-4" aria-hidden="true" style={{ color: "var(--c97-accent)" }} />
+          <h3 className="c97-serif" style={{ fontSize: "var(--c97-fs-h3)" }}>
             Third-place race
-          </h2>
+          </h3>
         </div>
-        <span className="text-sm text-[var(--home-ink-muted)]">
+        <span className="c97-meta">
           Best {THIRD_PLACE_QUALIFY_COUNT} of {rows.length} advance
         </span>
       </div>
 
       {!started ? (
-        <p className="mt-4 text-sm leading-6 text-[var(--home-ink-muted)]">
-          For the first time the World Cup keeps eight third-placed teams. Once
-          the group matches begin, the side that finishes third in every group is
-          ranked here by points, then goal difference, then goals scored, and the
-          best eight join the top two from each group in the Round of 32.
+        <p className="c97-prose mb-0">
+          This World Cup keeps eight third-placed teams. Once the group matches begin, the side
+          that finishes third in every group is ranked here by points, then goal difference, then
+          goals scored, and the best eight join the top two from each group in the Round of 32.
         </p>
       ) : (
         <>
-          <table className="mt-4 w-full border-separate border-spacing-y-1.5 text-sm">
+          <table className="c97-table" aria-label="Third-place wildcard race">
             <thead>
-              <tr className="text-left text-2xs uppercase tracking-[0.12em] text-[color-mix(in_srgb,var(--home-ink)_45%,var(--home-paper))]">
-                <th className="px-2 py-1 font-semibold">#</th>
-                <th className="px-2 py-1 font-semibold">Team</th>
-                <th className="px-2 py-1 text-center font-semibold">Grp</th>
-                <th className="px-2 py-1 text-center font-semibold">P</th>
-                <th className="px-2 py-1 text-center font-semibold">GD</th>
-                <th className="px-2 py-1 text-center font-semibold">Pts</th>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Team</th>
+                <th scope="col">Grp</th>
+                <th scope="col" data-align="end">P</th>
+                <th scope="col" data-align="end">GD</th>
+                <th scope="col" data-align="end">Pts</th>
               </tr>
             </thead>
             <tbody>
               {rows.map((row) => {
                 const isSelected = row.teamId === selectedTeamId;
                 return (
-                  <tr
-                    key={row.teamId}
-                    className="border border-[var(--home-rule)]"
-                    style={
-                      isSelected
-                        ? {
-                            background:
-                              "color-mix(in srgb, var(--home-signal) 9%, var(--home-paper-alt))",
-                          }
-                        : { background: "var(--home-paper-alt)" }
-                    }
-                  >
-                    <td className="rounded-l-xl px-2 py-2 align-middle">
+                  <tr key={row.teamId} data-selected={isSelected || undefined}>
+                    <td>
                       <span className="flex items-center gap-1.5">
                         <span
-                          className="h-1.5 w-1.5 flex-shrink-0 rounded-full"
+                          className="c97-wc-zone-dot"
                           style={{
                             backgroundColor: row.qualifies
-                              ? "var(--home-positive)"
-                              : "var(--home-rule)",
+                              ? "var(--c97-positive)"
+                              : "var(--c97-rule)",
                           }}
-                          title={
-                            row.qualifies
-                              ? "In a qualifying place"
-                              : "Outside the cut"
-                          }
+                          title={row.qualifies ? "In a qualifying place" : "Outside the cut"}
                         />
-                        <span className="font-semibold text-[var(--home-ink)]">
-                          {row.rank}
-                        </span>
+                        <span className="c97-mono">{row.rank}</span>
                       </span>
                     </td>
-                    <td className="px-2 py-2 align-middle">
+                    <td>
                       <button
                         type="button"
                         onClick={() => onOpenTeam(row.teamId)}
-                        className="flex min-h-[44px] w-full items-center gap-2 rounded-lg text-left transition hover:text-[var(--home-signal)]"
+                        aria-pressed={isSelected}
+                        aria-label={`Show ${row.name} details`}
+                        className="flex min-h-[44px] w-full items-center gap-2 text-left"
+                        style={{ background: "none", border: 0, padding: 0 }}
                       >
                         <CrestAvatar crest={row.crest} name={row.name} size="sm" />
-                        <span className="truncate font-semibold text-[var(--home-ink)]">
+                        <span className="c97-serif" style={{ fontWeight: 600 }}>
                           {row.code || row.name}
                         </span>
                       </button>
                     </td>
-                    <td className="px-2 py-2 text-center align-middle text-[var(--home-ink-muted)]">
-                      {row.group}
+                    <td className="c97-mono">{row.group}</td>
+                    <td className="c97-mono" data-align="end">{row.played}</td>
+                    <td className="c97-mono" data-align="end">
+                      {row.goalDifference > 0 ? `+${row.goalDifference}` : row.goalDifference}
                     </td>
-                    <td className="px-2 py-2 text-center align-middle text-[var(--home-ink-muted)]">
-                      {row.played}
-                    </td>
-                    <td className="px-2 py-2 text-center align-middle text-[var(--home-ink-muted)]">
-                      {row.goalDifference > 0
-                        ? `+${row.goalDifference}`
-                        : row.goalDifference}
-                    </td>
-                    <td className="rounded-r-xl px-2 py-2 text-center align-middle font-bold text-[var(--home-ink)]">
+                    <td className="c97-mono" data-align="end" style={{ fontWeight: 700 }}>
                       {row.points}
                     </td>
                   </tr>
@@ -849,9 +732,9 @@ function ThirdPlaceRace({
               })}
             </tbody>
           </table>
-          <p className="mt-3 text-xs leading-5 text-[var(--home-ink-muted)]">
-            The top {THIRD_PLACE_QUALIFY_COUNT} third-placed teams reach the Round
-            of 32. The order stays provisional until every group has finished.
+          <p className="c97-prose mt-3 mb-0" style={{ fontSize: "var(--c97-fs-small)" }}>
+            The top {THIRD_PLACE_QUALIFY_COUNT} third-placed teams reach the Round of 32. The
+            order stays provisional until every group has finished.
           </p>
         </>
       )}
@@ -872,7 +755,7 @@ function KnockoutView({
     return (
       <EmptyPanel
         title="The bracket builds after the group stage"
-        description="For the first time the knockout stage opens with a Round of 32: the top two from every group plus the eight best third-placed teams. From there it runs through the Round of 16, quarterfinals, semifinals, and the final on July 19."
+        description="This World Cup's knockout stage opens with a Round of 32: the top two from every group plus the eight best third-placed teams. From there it runs through the Round of 16, quarterfinals, semifinals, and the final."
       />
     );
   }
@@ -881,15 +764,13 @@ function KnockoutView({
     <div className="space-y-5">
       {rounds.map((round) => (
         <SurfaceCard key={round.id} className="p-5 sm:p-6">
-          <div className="flex items-center justify-between border-b border-[var(--home-rule)] pb-4">
-            <h3 className="text-lg font-semibold text-[var(--home-ink)]">
+          <div className="flex items-center justify-between pb-4">
+            <h3 className="c97-serif" style={{ fontSize: "var(--c97-fs-h3)" }}>
               {round.name}
             </h3>
-            <span className="text-sm text-[var(--home-ink-muted)]">
-              {round.fixtures.length} ties
-            </span>
+            <span className="c97-meta">{round.fixtures.length} ties</span>
           </div>
-          <div className="mt-5 grid gap-3 sm:grid-cols-2">
+          <div className="grid gap-3 sm:grid-cols-2">
             {round.fixtures.map((fixture) => (
               <FixtureCard
                 key={fixture.id}
@@ -925,7 +806,7 @@ function ScheduleView({
     return (
       <EmptyPanel
         title="The full schedule lands here"
-        description="Once ESPN publishes the fixtures, recent results and upcoming matches show up in this view, grouped by day and linked to each team."
+        description="Once ESPN publishes the fixtures, results and upcoming matches show up in this view, grouped by day and linked to each team."
       />
     );
   }
@@ -961,41 +842,40 @@ function FormatCard({
 }) {
   return (
     <SurfaceCard className="p-5">
-      <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[var(--home-ink-soft)]">
-        How 2026 works
-      </p>
-      <h2 className="mt-2 text-lg font-bold text-[var(--home-ink)]">
+      <p className="c97-kicker mb-2">How 2026 worked</p>
+      <h3 className="c97-serif mb-3" style={{ fontSize: "var(--c97-fs-h3)" }}>
         A bigger, three-country World Cup
-      </h2>
-      <p className="mt-3 text-sm leading-6 text-[var(--home-ink-muted)]">
-        {tournament.format}
-      </p>
-      <dl className="mt-4 grid grid-cols-2 gap-x-4 gap-y-2 border-t border-[var(--home-rule)] pt-4">
+      </h3>
+      <p className="c97-prose mb-0">{tournament.format}</p>
+      <dl
+        className="mt-4 grid grid-cols-2 gap-x-4 gap-y-2"
+        style={{ borderTop: "1px solid var(--c97-rule)", paddingTop: "var(--c97-sp-3)" }}
+      >
         {(
           [
             ["Teams", `${tournament.teamCount}`],
             ["Groups", `${tournament.groupCount}`],
-            ["Matches", `${tournament.matchCount}`],
             ["Host cities", `${tournament.venues.length}`],
           ] as const
         ).map(([label, value]) => (
           <div key={label} className="flex items-baseline justify-between gap-2">
-            <dt className="text-2xs font-semibold uppercase tracking-[0.12em] text-[var(--home-ink-soft)]">
-              {label}
-            </dt>
-            <dd className="text-sm font-bold text-[var(--home-ink)]">{value}</dd>
+            <dt className="c97-kicker mb-0">{label}</dt>
+            <dd className="c97-mono mb-0" style={{ fontWeight: 700 }}>{value}</dd>
           </div>
         ))}
       </dl>
-      <div className="mt-4 flex flex-wrap gap-2 border-t border-[var(--home-rule)] pt-4">
-        <span className="flex items-center gap-1.5 text-xs font-semibold uppercase tracking-[0.12em] text-[var(--home-ink-soft)]">
-          <CalendarDays className="h-3.5 w-3.5" />
+      <div
+        className="mt-4 flex flex-wrap gap-2"
+        style={{ borderTop: "1px solid var(--c97-rule)", paddingTop: "var(--c97-sp-3)" }}
+      >
+        <span className="c97-meta flex items-center gap-1.5">
+          <CalendarDays className="h-3.5 w-3.5" aria-hidden="true" />
           {formatTournamentWindow(tournament.startDate, tournament.endDate)}
         </span>
       </div>
-      <p className="mt-4 text-xs leading-5 text-[var(--home-ink-muted)]">
-        Pick any team from the group tables to pin its standing, recent form, and
-        upcoming fixtures here.
+      <p className="c97-prose mt-4 mb-0" style={{ fontSize: "var(--c97-fs-small)" }}>
+        Pick any team from the group tables or the bracket to pin its standing, form, and
+        fixtures here.
       </p>
     </SurfaceCard>
   );
@@ -1024,21 +904,21 @@ function TeamDetailCard({
   return (
     <SurfaceCard className="p-5">
       {/*
-        The live region is this wrapper rather than the card itself.
-        SurfaceCard takes only children and className and spreads no rest
-        props, so an aria-live set on it was silently dropped and the panel
-        announced nothing when the selected team changed. TypeScript could
-        not catch it: hyphenated JSX attribute names skip excess-property
-        checking, so `aria-live` type-checked against a props type that has
-        no such prop.
+        The live region and the test id sit on this wrapper rather than the
+        card itself. SurfaceCard takes only children and className and
+        spreads no rest props, so an aria-live (or a data-testid) set on it
+        is silently dropped and the panel announced nothing when the
+        selected team changed. TypeScript could not catch it: hyphenated JSX
+        attribute names skip excess-property checking, so `aria-live`
+        type-checked against a props type that has no such prop.
       */}
-      <div aria-live="polite">
+      <div aria-live="polite" data-testid="world-cup-selected-team">
         <div className="flex items-start gap-3">
           <CrestAvatar crest={option.crest} name={option.name} size="lg" />
           <div className="min-w-0 flex-1">
-            <h2 className="truncate text-lg font-bold text-[var(--home-ink)]">
+            <h3 className="c97-serif truncate" style={{ fontSize: "var(--c97-fs-h3)" }}>
               {option.name}
-            </h2>
+            </h3>
             <div className="mt-1.5 flex flex-wrap gap-1.5">
               {option.group && <InfoChip label={`Group ${option.group}`} />}
               {option.code && <InfoChip label={option.code} />}
@@ -1048,14 +928,18 @@ function TeamDetailCard({
             type="button"
             onClick={onClear}
             aria-label="Clear selected team"
-            className="inline-flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-full border border-[var(--home-rule)] bg-[var(--home-paper-alt)] text-[var(--home-ink-muted)] transition hover:text-[var(--home-signal)]"
+            className="c97-btn-ghost"
+            style={{ flexShrink: 0, minHeight: 44, minWidth: 44, padding: 0 }}
           >
-            <X className="h-4 w-4" />
+            <X className="h-4 w-4" aria-hidden="true" />
           </button>
         </div>
 
         {standing && (
-          <dl className="mt-4 grid grid-cols-3 gap-x-3 gap-y-2 border-t border-[var(--home-rule)] pt-4">
+          <dl
+            className="mt-4 grid grid-cols-3 gap-x-3 gap-y-2"
+            style={{ borderTop: "1px solid var(--c97-rule)", paddingTop: "var(--c97-sp-3)" }}
+          >
             {(
               [
                 ["Pos", `${standing.rank}`],
@@ -1073,21 +957,20 @@ function TeamDetailCard({
               ] as const
             ).map(([label, value]) => (
               <div key={label}>
-                <dt className="text-3xs font-semibold uppercase tracking-[0.12em] text-[var(--home-ink-soft)]">
-                  {label}
-                </dt>
-                <dd className="text-sm font-bold text-[var(--home-ink)]">{value}</dd>
+                <dt className="c97-kicker mb-0">{label}</dt>
+                <dd className="c97-mono mb-0" style={{ fontWeight: 700 }}>{value}</dd>
               </div>
             ))}
           </dl>
         )}
 
         {form.length > 0 && (
-          <div className="mt-4 border-t border-[var(--home-rule)] pt-4">
-            <p className="text-2xs font-semibold uppercase tracking-[0.12em] text-[var(--home-ink-soft)]">
-              Form (last 5)
-            </p>
-            <div className="mt-2 flex gap-1.5">
+          <div
+            className="mt-4"
+            style={{ borderTop: "1px solid var(--c97-rule)", paddingTop: "var(--c97-sp-3)" }}
+          >
+            <p className="c97-kicker mb-2">Form (last 5)</p>
+            <div className="flex gap-1.5">
               {form.map((result, index) => (
                 <TeamResultPill key={index} result={result} />
               ))}
@@ -1096,10 +979,11 @@ function TeamDetailCard({
         )}
 
         {recent.length > 0 && (
-          <div className="mt-4 border-t border-[var(--home-rule)] pt-4">
-            <p className="mb-2 text-2xs font-semibold uppercase tracking-[0.12em] text-[var(--home-ink-soft)]">
-              Recent results
-            </p>
+          <div
+            className="mt-4"
+            style={{ borderTop: "1px solid var(--c97-rule)", paddingTop: "var(--c97-sp-3)" }}
+          >
+            <p className="c97-kicker mb-2">Recent results</p>
             <div className="space-y-2">
               {recent.map((fixture) => (
                 <FixtureCard
@@ -1115,10 +999,11 @@ function TeamDetailCard({
         )}
 
         {upcoming.length > 0 && (
-          <div className="mt-4 border-t border-[var(--home-rule)] pt-4">
-            <p className="mb-2 text-2xs font-semibold uppercase tracking-[0.12em] text-[var(--home-ink-soft)]">
-              Upcoming
-            </p>
+          <div
+            className="mt-4"
+            style={{ borderTop: "1px solid var(--c97-rule)", paddingTop: "var(--c97-sp-3)" }}
+          >
+            <p className="c97-kicker mb-2">Upcoming</p>
             <div className="space-y-2">
               {upcoming.map((fixture) => (
                 <FixtureCard
@@ -1135,7 +1020,8 @@ function TeamDetailCard({
 
         {!snapshot && (isLoading || error) && (
           <p
-            className="mt-4 border-t border-[var(--home-rule)] pt-4 text-sm text-[var(--home-ink-muted)]"
+            className="c97-prose mt-4 mb-0"
+            style={{ borderTop: "1px solid var(--c97-rule)", paddingTop: "var(--c97-sp-3)" }}
             role={error ? "alert" : "status"}
           >
             {isLoading ? "Loading team snapshot…" : error}
@@ -1143,9 +1029,12 @@ function TeamDetailCard({
         )}
 
         {snapshot && !standing && recent.length === 0 && upcoming.length === 0 && (
-          <p className="mt-4 border-t border-[var(--home-rule)] pt-4 text-sm text-[var(--home-ink-muted)]">
-            Standings and fixtures for {option.name} appear here once the
-            tournament is underway.
+          <p
+            className="c97-prose mt-4 mb-0"
+            style={{ borderTop: "1px solid var(--c97-rule)", paddingTop: "var(--c97-sp-3)" }}
+          >
+            Standings and fixtures for {option.name} appear here once the tournament reached
+            that stage.
           </p>
         )}
       </div>

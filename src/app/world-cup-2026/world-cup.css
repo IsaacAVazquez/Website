@@ -1,0 +1,120 @@
+/* World Cup Pulse: the knockout bracket signature and the body bands. */
+
+.c97-bracket-plate {
+  padding: var(--c97-sp-4);
+}
+
+/* Qualification and wildcard zone markers on the group and third-place tables. */
+.c97-wc-zone-dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  flex-shrink: 0;
+}
+
+/*
+ * The bracket is drawn at a fixed pixel size rather than scaled to the
+ * plate's width, so at phone width it scrolls sideways inside this wrapper
+ * instead of shrinking its type below a legible size. The ::after is a
+ * standing hint that there is more bracket to the right; it stays pinned to
+ * the wrapper's own edge (not the scrolled content) because the wrapper is
+ * the positioned ancestor.
+ */
+.c97-bracket-scroll {
+  position: relative;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: thin;
+}
+
+.c97-bracket-scroll::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 28px;
+  pointer-events: none;
+  background: linear-gradient(
+    to right,
+    transparent,
+    color-mix(in srgb, var(--c97-ink) 16%, transparent)
+  );
+}
+
+/* From here the whole bracket fits its plate, so the scroll hint goes. */
+@media (min-width: 1180px) {
+  .c97-bracket-scroll::after {
+    display: none;
+  }
+}
+
+.c97-bracket-svg {
+  display: block;
+  /* Overrides the shared project-hero rule that scales a signature's SVG to
+   * the slot's full width; this one keeps its own pixel size so it scrolls
+   * instead of shrinking. */
+  width: auto !important;
+  height: auto !important;
+  max-width: none;
+}
+
+.c97-bracket-round-label {
+  font-family: var(--c97-font-mono);
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  fill: var(--c97-label);
+}
+
+.c97-bracket-box {
+  fill: var(--c97-field);
+  stroke: var(--c97-rule);
+  stroke-width: 1;
+}
+
+.c97-bracket-box-rule {
+  stroke: var(--c97-rule);
+  stroke-width: 1;
+}
+
+.c97-bracket-name {
+  font-family: var(--c97-font-display);
+  font-size: 12px;
+  font-weight: 500;
+  fill: var(--c97-ink);
+}
+
+.c97-bracket-name-winner {
+  font-weight: 700;
+  fill: var(--c97-ink);
+}
+
+.c97-bracket-name-loser {
+  font-weight: 400;
+  fill: var(--c97-ink-2);
+}
+
+.c97-bracket-score {
+  font-family: var(--c97-font-mono);
+  font-size: 12px;
+  fill: var(--c97-ink);
+}
+
+.c97-bracket-line {
+  stroke: var(--c97-ink);
+  stroke-width: 1.5;
+}
+
+.c97-bracket-champion-box {
+  fill: var(--c97-panel);
+  stroke: var(--c97-ink);
+  stroke-width: 2;
+}
+
+.c97-bracket-champion {
+  font-family: var(--c97-font-display);
+  font-size: 15px;
+  font-weight: 700;
+  fill: var(--c97-ink);
+}
