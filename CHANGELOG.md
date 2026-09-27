@@ -14,6 +14,7 @@ All notable changes to this repository are documented here. Format: `YYYY-MM-DD`
 - Personal tools rebuilt around their signatures (re-land of #474) ([#477](https://github.com/IsaacAVazquez/Website/pull/477)).
 - Sports dashboards rebuilt around their signatures ([#478](https://github.com/IsaacAVazquez/Website/pull/478)).
 - Fintech and work tools rebuilt around their signatures ([#480](https://github.com/IsaacAVazquez/Website/pull/480)).
+- Fantasy suite printed in the house inks ([#482](https://github.com/IsaacAVazquez/Website/pull/482)).
 
 ---
 
