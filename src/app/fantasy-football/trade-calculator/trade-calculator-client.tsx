@@ -6,6 +6,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useMemo, useState, useSyncExternalStore } from "react";
 import { SeasonalScopeNote } from "@/components/fantasy/SeasonalScopeNote";
 import { Breadcrumbs, createBreadcrumbItems } from "@/components/navigation/Breadcrumbs";
+import { PROJECT_PRESS } from "@/constants/projectPress";
 import { useFantasySnapshot } from "@/hooks/useFantasySnapshot";
 import { useFantasyTradeCalculator } from "@/hooks/useFantasyTradeCalculator";
 import { FANTASY_SCORING_LABELS } from "@/lib/fantasy";
@@ -116,7 +117,7 @@ function LeagueSettings({
       className="border border-[var(--c97-rule)] bg-[var(--c97-field)] p-4 lg:sticky lg:top-0 lg:self-start"
     >
       <div className="border-b border-[var(--c97-rule)] pb-3">
-        <h2 className="text-lg font-semibold tracking-[-0.03em] text-[var(--c97-ink)]">
+        <h2 className="c97-serif c97-h3">
           League settings
         </h2>
         <p className="mt-1 text-xs leading-5 text-[var(--c97-ink-2)]">
@@ -365,6 +366,8 @@ export function TradeCalculatorClient() {
     [trade.getPlayerIds, trade.givePlayerIds]
   );
 
+  const clearDisabled = trade.givePlayerIds.length + trade.getPlayerIds.length === 0;
+
   return (
     <section
       className="c97-dash relative overflow-x-clip min-h-screen"
@@ -372,23 +375,37 @@ export function TradeCalculatorClient() {
       data-testid="fantasy-trade-calculator-shell"
       data-hydrated={isHydrated ? "true" : "false"}
     >
-      <div className={`${WIDE_SHELL_CLASS} space-y-5 py-[clamp(1.25rem,2vw,2rem)]`}>
+      <div className={WIDE_SHELL_CLASS} style={{ paddingBlock: "var(--c97-sp-2)" }}>
         <Breadcrumbs customItems={BREADCRUMBS} className="!py-0" />
+      </div>
 
-        <header className="border-b border-[var(--c97-rule)] pb-5">
+      <section
+        className="c97-sheet"
+        data-c97-surface={`ink-${PROJECT_PRESS["/fantasy-football/trade-calculator"].lead}`}
+      >
+        <div className={WIDE_SHELL_CLASS} style={{ paddingBlock: "var(--c97-sp-5)" }}>
           <div className="flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
             <div className="max-w-3xl">
-              <h1
-                className="max-w-[15ch] text-[clamp(2.25rem,1.7rem+2.5vw,4.2rem)] font-semibold leading-[0.98] tracking-[-0.04em] text-[var(--c97-ink)]"
-              >
-                Build a Trade Offer
-              </h1>
-              <p className="mt-4 max-w-[68ch] text-base leading-7 text-[var(--c97-ink-2)]">
+              <h1 className="c97-poster">Build a Trade Offer</h1>
+              <p className="c97-lead mt-4 max-w-[68ch]">
                 Compare both sides of a one-QB redraft trade using expert consensus, mock-draft ADP, and your league’s scoring, size, and lineup. The result shows where the estimate is strong and where the data is thin.
               </p>
+              <p className="c97-meta mt-3">
+                <span>Expert board {formatUpdatedAt(snapshot?.upstreamUpdatedAt)}</span>
+                <span aria-hidden="true">·</span>
+                <span>Draft market {formatUpdatedAt(snapshot?.adpSource?.asOf)}</span>
+                <span aria-hidden="true">·</span>
+                <span style={{ color: sourceFreshness === "stale" ? "var(--c97-negative)" : undefined }}>
+                  {sourceFreshness} sources
+                </span>
+              </p>
             </div>
-            <div className="flex flex-wrap items-center gap-2">
-              <span className="inline-flex min-h-touch items-center gap-2 border border-[var(--c97-rule)] bg-[var(--c97-field)] px-3 font-mono text-2xs uppercase tracking-[0.1em] text-[var(--c97-ink)]">
+            <div
+              data-c97-surface="paper"
+              className="c97-offset flex flex-wrap items-center gap-2"
+              style={{ padding: "var(--c97-sp-2) var(--c97-sp-3)" }}
+            >
+              <span className="inline-flex min-h-touch items-center gap-2 font-mono text-2xs uppercase tracking-[0.1em] text-[var(--c97-ink)]">
                 <ShieldCheck className="h-4 w-4 text-[var(--c97-accent)]" aria-hidden="true" />
                 Preseason redraft · Model v1
               </span>
@@ -400,17 +417,11 @@ export function TradeCalculatorClient() {
               </Link>
             </div>
           </div>
-          <div className="mt-4 flex flex-wrap items-center gap-x-3 gap-y-2 font-mono text-2xs uppercase tracking-[0.1em] text-[var(--c97-ink-2)]">
-            <span>Expert board {formatUpdatedAt(snapshot?.upstreamUpdatedAt)}</span>
-            <span aria-hidden="true">·</span>
-            <span>Draft market {formatUpdatedAt(snapshot?.adpSource?.asOf)}</span>
-            <span aria-hidden="true">·</span>
-            <span style={{ color: sourceFreshness === "stale" ? "var(--c97-negative)" : undefined }}>
-              {sourceFreshness} sources
-            </span>
-          </div>
-        </header>
+        </div>
+      </section>
 
+      <section className="c97-sheet" data-c97-surface="paper" data-seam="torn">
+        <div className={`${WIDE_SHELL_CLASS} space-y-5 py-[clamp(1.25rem,2vw,2rem)]`}>
         {seasonWeek >= 1 && snapshot ? (
           <SeasonalScopeNote season={snapshot.season} week={seasonWeek}>
             {marketFreshness === "stale" ? (
@@ -509,7 +520,7 @@ export function TradeCalculatorClient() {
               <section aria-labelledby="trade-ledger-title" className="min-w-0">
                 <div className="mb-3 flex flex-wrap items-center justify-between gap-3">
                   <div>
-                    <h2 id="trade-ledger-title" className="text-xl font-semibold tracking-[-0.03em] text-[var(--c97-ink)]">
+                    <h2 id="trade-ledger-title" className="c97-serif c97-h3">
                       Trade ledger
                     </h2>
                     <p className="mt-1 text-sm text-[var(--c97-ink-2)]">
@@ -521,7 +532,7 @@ export function TradeCalculatorClient() {
                       type="button"
                       onClick={trade.swapSides}
                       disabled={!hasBothSides}
-                      className="inline-flex min-h-touch items-center gap-2 border border-[var(--c97-rule)] bg-[var(--c97-surface)] px-3 text-sm font-semibold text-[var(--c97-ink)] transition-[border-color,background-color] hover:border-[var(--c97-accent)] hover:bg-[var(--c97-field)] disabled:cursor-not-allowed disabled:opacity-45"
+                      className="inline-flex min-h-touch items-center gap-2 border border-[var(--c97-rule)] bg-[var(--c97-surface)] px-3 text-sm font-semibold text-[var(--c97-ink)] transition-[border-color,background-color,color] hover:border-[var(--c97-accent)] hover:bg-[var(--c97-field)] disabled:cursor-not-allowed disabled:border-dashed disabled:border-[var(--c97-ink-2)] disabled:bg-transparent disabled:text-[var(--c97-ink-2)] disabled:hover:border-[var(--c97-ink-2)] disabled:hover:bg-transparent"
                     >
                       <ArrowLeftRight className="h-4 w-4" aria-hidden="true" />
                       Swap
@@ -536,10 +547,16 @@ export function TradeCalculatorClient() {
                           setResetArmed(true);
                         }
                       }}
-                      disabled={trade.givePlayerIds.length + trade.getPlayerIds.length === 0}
+                      disabled={clearDisabled}
                       aria-label={resetArmed ? "Confirm clear trade" : "Clear trade"}
-                      className="inline-flex min-h-touch items-center gap-2 border border-[var(--c97-rule)] bg-[var(--c97-surface)] px-3 text-sm font-semibold transition-[border-color,background-color,color] hover:bg-[var(--c97-field)] disabled:cursor-not-allowed disabled:opacity-45"
-                      style={{ color: resetArmed ? "var(--c97-negative)" : "var(--c97-ink)" }}
+                      className="inline-flex min-h-touch items-center gap-2 border border-[var(--c97-rule)] bg-[var(--c97-surface)] px-3 text-sm font-semibold transition-[border-color,background-color,color] hover:bg-[var(--c97-field)] disabled:cursor-not-allowed disabled:border-dashed disabled:border-[var(--c97-ink-2)] disabled:bg-transparent disabled:hover:bg-transparent"
+                      style={{
+                        color: clearDisabled
+                          ? "var(--c97-ink-2)"
+                          : resetArmed
+                            ? "var(--c97-negative)"
+                            : "var(--c97-ink)",
+                      }}
                     >
                       <RotateCcw className="h-4 w-4" aria-hidden="true" />
                       {resetArmed ? "Confirm clear" : "Clear"}
@@ -585,16 +602,19 @@ export function TradeCalculatorClient() {
                 getCount={trade.getPlayerIds.length}
               />
             </div>
-
-            <TradeRosterImpact
-              result={result}
-              valuesAvailable={valuesAvailable}
-              giveCount={trade.givePlayerIds.length}
-              getCount={trade.getPlayerIds.length}
-            />
           </>
         )}
       </div>
+      </section>
+
+      {!error && !isLoading && !pendingShare ? (
+        <TradeRosterImpact
+          result={result}
+          valuesAvailable={valuesAvailable}
+          giveCount={trade.givePlayerIds.length}
+          getCount={trade.getPlayerIds.length}
+        />
+      ) : null}
     </section>
   );
 }
