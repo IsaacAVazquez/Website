@@ -121,7 +121,7 @@ export function MyTeamPanel({ snapshot, board, scoring, onScoringChange }: {
             </select>
           </label>)}
         </div>
-        <p className="mt-2 text-xs text-[var(--home-ink-muted)]">One starting QB. Flex accepts RB, WR, or TE. Weekly ranks cover QB, RB, WR, and TE.</p>
+        <p className="mt-2 text-xs text-[var(--c97-ink-2)]">One starting QB. Flex accepts RB, WR, or TE. Weekly ranks cover QB, RB, WR, and TE.</p>
 
         </div>
       </div>}
@@ -138,8 +138,8 @@ export function MyTeamPanel({ snapshot, board, scoring, onScoringChange }: {
         <label className={styles.searchLabel}>Find a player to roster or mark available
           <span className={styles.searchField}><Search size={20} aria-hidden="true" /><input type="search" className={`${control} w-full`} value={query} onChange={event => setQuery(event.target.value)} placeholder="Player, team, or position" /></span>
         </label>
-        {query.trim() && <p className="mt-2 text-xs text-[var(--home-ink-muted)]">{matches.length ? `Showing up to 12 matches from the weekly board.` : "No weekly match. Add an unranked player below."}</p>}
-        <ul className="mt-2 divide-y divide-[var(--home-rule)]">
+        {query.trim() && <p className="mt-2 text-xs text-[var(--c97-ink-2)]">{matches.length ? `Showing up to 12 matches from the weekly board.` : "No weekly match. Add an unranked player below."}</p>}
+        <ul className="mt-2 divide-y divide-[var(--c97-rule)]">
           {matches.map(player => <li key={player.id} className="flex flex-wrap items-center justify-between gap-2 py-2">
             <span className="text-sm">{player.name} · {player.position} {player.team}</span>
             {team.players.some(p => p.id === player.id) ? <span className="text-xs">On your roster</span> : <div className="flex flex-wrap gap-2">
@@ -167,12 +167,12 @@ export function MyTeamPanel({ snapshot, board, scoring, onScoringChange }: {
             </select></label>
             <button className={button} type="submit">Add unranked player</button>
           </form>
-          <p className="mt-2 text-xs text-[var(--home-ink-muted)]">Unranked players remain on your roster without a weekly recommendation. Replace a manual entry with its weekly search result when it appears.</p>
+          <p className="mt-2 text-xs text-[var(--c97-ink-2)]">Unranked players remain on your roster without a weekly recommendation. Replace a manual entry with its weekly search result when it appears.</p>
         </details>
 
         <h3 className={styles.subheading}>Saved roster</h3>
         {team.players.length === 0 && <p className="mt-2 text-sm">Search above or import your redraft roster to get started.</p>}
-        <ul className="mt-2 divide-y divide-[var(--home-rule)]">
+        <ul className="mt-2 divide-y divide-[var(--c97-rule)]">
           {team.players.map(player => <li key={player.id} className={styles.rosterRow}>
             <span><span className={styles.playerName}>{player.name}</span><span className={styles.playerMeta}>{player.position} {player.team}{!weekly.has(player.id) ? " · No weekly rank" : ""}</span></span>
             <button className={styles.textButton} type="button" aria-label={`Remove ${player.name}`} onClick={() => {
@@ -237,7 +237,7 @@ export function MyTeamPanel({ snapshot, board, scoring, onScoringChange }: {
             <p>{comparison.startingSlot ? `${add.name} enters the ranked lineup at ${comparison.startingSlot}.` : `${add.name} stays outside the ranked starting lineup.`}</p>
             <p className="mt-2">{comparison.rankGain === null ? "A rank difference is unavailable across separate boards or when either player is unranked." : comparison.rankGain === 0 ? "Both players have the same weekly rank." : `${add.name} ranks ${Math.abs(comparison.rankGain)} places ${comparison.rankGain > 0 ? "ahead of" : "behind"} ${drop.name} on the ${add.position === "QB" ? "QB" : "flex"} board.`}</p>
             {comparison.newGaps.length > 0 && <p className="mt-2">This move leaves no ranked player at {comparison.newGaps.map(slot => slot.slot).join(", ")}.</p>}
-            <p className="mt-2 text-[var(--home-ink-muted)]">This comparison covers Week {snapshot.week}. It does not estimate season-long value, points gained, or a waiver bid.</p>
+            <p className="mt-2 text-[var(--c97-ink-2)]">This comparison covers Week {snapshot.week}. It does not estimate season-long value, points gained, or a waiver bid.</p>
             <button className={`${styles.primaryButton} mt-3`} type="button" onClick={() => {
               update(current => ({ ...current, scoring, players: uniqueTeamPlayers([...current.players.filter(player => player.id !== drop.id), add]), availableIds: current.availableIds.filter(id => id !== add.id) }));
               setAddId(""); setDropId("");

@@ -6,6 +6,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useMemo, useState, useSyncExternalStore } from "react";
 import { SeasonalScopeNote } from "@/components/fantasy/SeasonalScopeNote";
 import { Breadcrumbs, createBreadcrumbItems } from "@/components/navigation/Breadcrumbs";
+import { PROJECT_PRESS } from "@/constants/projectPress";
 import { useFantasySnapshot } from "@/hooks/useFantasySnapshot";
 import { useFantasyTradeCalculator } from "@/hooks/useFantasyTradeCalculator";
 import { FANTASY_SCORING_LABELS } from "@/lib/fantasy";
@@ -24,6 +25,7 @@ import {
   getNflRegularSeasonWeek,
   getSnapshotStaleness,
   type FantasySnapshotStaleness,
+  WIDE_SHELL_CLASS,
 } from "@/lib/fantasyUtils";
 import { getCurrentDraftSeason } from "@/app/fantasy-football/draft-tracker/hooks/useDraftState";
 import { REDRAFT_LINEUP_PRESETS } from "@/lib/redraftLineup";
@@ -65,7 +67,7 @@ function formatMarketDate(asOf: string | null | undefined): string | null {
 // control, so the links carry the touch floor with negative vertical margins
 // that keep the line rhythm of the surrounding sentence.
 const SCOPE_LINK_CLASS =
-  "inline-flex min-h-touch items-center -my-3 underline decoration-[var(--home-signal)] underline-offset-4";
+  "inline-flex min-h-touch items-center -my-3 underline decoration-[var(--c97-accent)] underline-offset-4";
 
 const subscribeToHydration = () => () => undefined;
 const getHydratedSnapshot = () => true;
@@ -84,13 +86,13 @@ function LeagueSelect({
 }) {
   return (
     <label className="block">
-      <span className="font-mono text-3xs uppercase tracking-[0.12em] text-[var(--home-ink-muted)]">
+      <span className="font-mono text-3xs uppercase tracking-[0.12em] text-[var(--c97-ink-2)]">
         {label}
       </span>
       <select
         value={value}
         onChange={(event) => onChange(Number(event.target.value))}
-        className="mt-1.5 min-h-touch w-full rounded-[var(--radius-lg)] border border-[var(--home-rule)] bg-[var(--home-paper)] px-3 text-sm text-[var(--home-ink)] outline-none transition-[border-color,box-shadow] focus:border-[var(--home-signal)] focus:ring-2 focus:ring-[color-mix(in_srgb,var(--home-signal)_22%,transparent)]"
+        className="mt-1.5 min-h-touch w-full border border-[var(--c97-rule)] bg-[var(--c97-surface)] px-3 text-sm text-[var(--c97-ink)] outline-none transition-[border-color,box-shadow] focus:border-[var(--c97-accent)] focus:ring-2 focus:ring-[color-mix(in_srgb,var(--c97-accent)_22%,transparent)]"
       >
         {options.map((option) => (
           <option key={option} value={option}>
@@ -112,36 +114,36 @@ function LeagueSettings({
   return (
     <aside
       aria-label="League settings"
-      className="rounded-[var(--radius-3xl)] border border-[var(--home-rule)] bg-[var(--home-paper-alt)] p-4 lg:sticky lg:top-0 lg:self-start"
+      className="border border-[var(--c97-rule)] bg-[var(--c97-field)] p-4 lg:sticky lg:top-0 lg:self-start"
     >
-      <div className="border-b border-[var(--home-rule)] pb-3">
-        <h2 className="text-lg font-semibold tracking-[-0.03em] text-[var(--home-ink)]">
+      <div className="border-b border-[var(--c97-rule)] pb-3">
+        <h2 className="c97-serif c97-h3">
           League settings
         </h2>
-        <p className="mt-1 text-xs leading-5 text-[var(--home-ink-muted)]">
+        <p className="mt-1 text-xs leading-5 text-[var(--c97-ink-2)]">
           These settings move the starter and bench replacement lines.
         </p>
       </div>
 
       <fieldset className="mt-4">
-        <legend className="font-mono text-3xs uppercase tracking-[0.12em] text-[var(--home-ink-muted)]">
+        <legend className="font-mono text-3xs uppercase tracking-[0.12em] text-[var(--c97-ink-2)]">
           Scoring
         </legend>
         <div className="mt-2 grid gap-1.5">
           {(["ppr", "half_ppr", "standard"] as const).map((scoring) => (
             <label
               key={scoring}
-              className="flex min-h-touch cursor-pointer items-center gap-2 rounded-[var(--radius-lg)] border px-3 text-sm font-semibold transition-[border-color,background-color]"
+              className="flex min-h-touch cursor-pointer items-center gap-2 border px-3 text-sm font-semibold transition-[border-color,background-color]"
               style={
                 state.scoring === scoring
                   ? {
-                      borderColor: "var(--home-signal)",
+                      borderColor: "var(--c97-accent)",
                       background:
-                        "color-mix(in srgb, var(--home-signal) 10%, var(--home-paper))",
+                        "color-mix(in srgb, var(--c97-accent) 10%, var(--c97-surface))",
                     }
                   : {
-                      borderColor: "var(--home-rule)",
-                      background: "var(--home-paper)",
+                      borderColor: "var(--c97-rule)",
+                      background: "var(--c97-surface)",
                     }
               }
             >
@@ -151,7 +153,7 @@ function LeagueSettings({
                 value={scoring}
                 checked={state.scoring === scoring}
                 onChange={() => onChange({ ...state, scoring })}
-                className="h-4 w-4 accent-[var(--home-signal)]"
+                className="h-4 w-4 accent-[var(--c97-accent)]"
               />
               {FANTASY_SCORING_LABELS[scoring]}
             </label>
@@ -182,7 +184,7 @@ function LeagueSettings({
       </div>
 
       <label className="mt-4 block">
-        <span className="font-mono text-3xs uppercase tracking-[0.12em] text-[var(--home-ink-muted)]">
+        <span className="font-mono text-3xs uppercase tracking-[0.12em] text-[var(--c97-ink-2)]">
           Starting lineup
         </span>
         <select
@@ -193,7 +195,7 @@ function LeagueSettings({
               lineup: event.target.value as TradeCalculatorSearchState["lineup"],
             })
           }
-          className="mt-1.5 min-h-touch w-full rounded-[var(--radius-lg)] border border-[var(--home-rule)] bg-[var(--home-paper)] px-3 text-sm text-[var(--home-ink)] outline-none transition-[border-color,box-shadow] focus:border-[var(--home-signal)] focus:ring-2 focus:ring-[color-mix(in_srgb,var(--home-signal)_22%,transparent)]"
+          className="mt-1.5 min-h-touch w-full border border-[var(--c97-rule)] bg-[var(--c97-surface)] px-3 text-sm text-[var(--c97-ink)] outline-none transition-[border-color,box-shadow] focus:border-[var(--c97-accent)] focus:ring-2 focus:ring-[color-mix(in_srgb,var(--c97-accent)_22%,transparent)]"
         >
           {REDRAFT_LINEUP_PRESETS.map((preset) => (
             <option key={preset.id} value={preset.id}>
@@ -203,11 +205,11 @@ function LeagueSettings({
         </select>
       </label>
 
-      <div className="mt-4 border-t border-[var(--home-rule)] pt-3">
-        <p className="font-mono text-3xs uppercase tracking-[0.12em] text-[var(--home-ink-muted)]">
+      <div className="mt-4 border-t border-[var(--c97-rule)] pt-3">
+        <p className="font-mono text-3xs uppercase tracking-[0.12em] text-[var(--c97-ink-2)]">
           Supported format
         </p>
-        <p className="mt-1 text-xs leading-5 text-[var(--home-ink-muted)]">
+        <p className="mt-1 text-xs leading-5 text-[var(--c97-ink-2)]">
           Preseason managed redraft with one starting QB. Dynasty, picks, keepers, IDP, Superflex, and tight end premium are not modeled.
         </p>
       </div>
@@ -219,10 +221,10 @@ function LoadingCard({ className }: { className: string }) {
   return (
     <div
       aria-hidden="true"
-      className={`rounded-[var(--radius-3xl)] border motion-safe:animate-pulse ${className}`}
+      className={`border motion-safe:animate-pulse ${className}`}
       style={{
-        borderColor: "var(--home-rule)",
-        background: "color-mix(in srgb, var(--home-paper-alt) 55%, var(--home-elev-mix))",
+        borderColor: "var(--c97-rule)",
+        background: "var(--c97-field)",
       }}
     />
   );
@@ -364,52 +366,67 @@ export function TradeCalculatorClient() {
     [trade.getPlayerIds, trade.givePlayerIds]
   );
 
+  const clearDisabled = trade.givePlayerIds.length + trade.getPlayerIds.length === 0;
+
   return (
     <section
-      className="home-page home-dash min-h-screen"
+      className="c97-dash relative overflow-x-clip min-h-screen"
       aria-label="Fantasy football trade calculator"
       data-testid="fantasy-trade-calculator-shell"
       data-hydrated={isHydrated ? "true" : "false"}
     >
-      <div className="home-shell home-shell-wide home-section space-y-5">
+      <div className={WIDE_SHELL_CLASS} style={{ paddingBlock: "var(--c97-sp-2)" }}>
         <Breadcrumbs customItems={BREADCRUMBS} className="!py-0" />
+      </div>
 
-        <header className="border-b border-[var(--home-rule)] pb-5">
+      <section
+        className="c97-sheet"
+        data-c97-surface={`ink-${PROJECT_PRESS["/fantasy-football/trade-calculator"].lead}`}
+        data-seam="torn"
+      >
+        <div className={WIDE_SHELL_CLASS} style={{ paddingBlock: "var(--c97-sp-5)" }}>
           <div className="flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
             <div className="max-w-3xl">
-              <h1
-                className="max-w-[15ch] text-[clamp(2.25rem,1.7rem+2.5vw,4.2rem)] font-semibold leading-[0.98] tracking-[-0.04em] text-[var(--home-ink)]"
-              >
-                Build a Trade Offer
-              </h1>
-              <p className="mt-4 max-w-[68ch] text-base leading-7 text-[var(--home-ink-muted)]">
+              <h1 className="c97-poster">Build a Trade Offer</h1>
+              <p className="c97-lead" style={{ marginTop: "1rem", maxInlineSize: "68ch" }}>
                 Compare both sides of a one-QB redraft trade using expert consensus, mock-draft ADP, and your league’s scoring, size, and lineup. The result shows where the estimate is strong and where the data is thin.
               </p>
             </div>
-            <div className="flex flex-wrap items-center gap-2">
-              <span className="inline-flex min-h-touch items-center gap-2 rounded-full border border-[var(--home-rule)] bg-[var(--home-paper-alt)] px-3 font-mono text-2xs uppercase tracking-[0.1em] text-[var(--home-ink)]">
-                <ShieldCheck className="h-4 w-4 text-[var(--home-signal)]" aria-hidden="true" />
-                Preseason redraft · Model v1
-              </span>
-              <Link
-                href={`/fantasy-football?position=overall&scoring=${routeState.scoring}`}
-                className="inline-flex min-h-touch items-center rounded-full border border-[var(--home-rule)] bg-[var(--home-paper)] px-4 text-sm font-semibold text-[var(--home-ink)] transition-[border-color,background-color] hover:border-[var(--home-signal)] hover:bg-[var(--home-paper-alt)]"
-              >
-                View rankings
-              </Link>
+            {/* Every status colour is ink on the green sheet, so the source
+                line, which turns stale in the negative ink, prints on paper. */}
+            <div
+              data-c97-surface="paper"
+              className="c97-offset lg:max-w-[28rem]"
+              style={{ padding: "var(--c97-sp-3)" }}
+            >
+              <p className="c97-meta" style={{ display: "block", lineHeight: 1.8 }}>
+                <span>Expert board {formatUpdatedAt(snapshot?.upstreamUpdatedAt)}</span>
+                <span aria-hidden="true"> · </span>
+                <span>Draft market {formatUpdatedAt(snapshot?.adpSource?.asOf)}</span>
+                <span aria-hidden="true"> · </span>
+                <span style={{ color: sourceFreshness === "stale" ? "var(--c97-negative)" : undefined }}>
+                  {sourceFreshness} sources
+                </span>
+              </p>
+              <div className="flex flex-wrap items-center gap-2" style={{ marginTop: "var(--c97-sp-2)" }}>
+                <span className="inline-flex min-h-touch items-center gap-2 font-mono text-2xs uppercase tracking-[0.1em] text-[var(--c97-ink)]">
+                  <ShieldCheck className="h-4 w-4 text-[var(--c97-accent)]" aria-hidden="true" />
+                  Preseason redraft · Model v1
+                </span>
+                <Link
+                  href={`/fantasy-football?position=overall&scoring=${routeState.scoring}`}
+                  className="inline-flex min-h-touch items-center border border-[var(--c97-rule)] bg-[var(--c97-surface)] px-4 text-sm font-semibold text-[var(--c97-ink)] transition-[border-color,background-color] hover:border-[var(--c97-accent)] hover:bg-[var(--c97-field)]"
+                >
+                  View rankings
+                </Link>
+              </div>
             </div>
           </div>
-          <div className="mt-4 flex flex-wrap items-center gap-x-3 gap-y-2 font-mono text-2xs uppercase tracking-[0.1em] text-[var(--home-ink-muted)]">
-            <span>Expert board {formatUpdatedAt(snapshot?.upstreamUpdatedAt)}</span>
-            <span aria-hidden="true">·</span>
-            <span>Draft market {formatUpdatedAt(snapshot?.adpSource?.asOf)}</span>
-            <span aria-hidden="true">·</span>
-            <span style={{ color: sourceFreshness === "stale" ? "var(--home-negative)" : undefined }}>
-              {sourceFreshness} sources
-            </span>
-          </div>
-        </header>
+        </div>
+      </section>
 
+      <section className="c97-sheet" data-c97-surface="paper" data-seam="torn">
+        <div className={`${WIDE_SHELL_CLASS} space-y-5 py-[clamp(1.25rem,2vw,2rem)]`}>
         {seasonWeek >= 1 && snapshot ? (
           <SeasonalScopeNote season={snapshot.season} week={seasonWeek}>
             {marketFreshness === "stale" ? (
@@ -447,14 +464,14 @@ export function TradeCalculatorClient() {
         {trade.persistenceStatus === "memory-only" ? (
           <div
             role="status"
-            className="rounded-[var(--radius-3xl)] border px-4 py-3 text-sm"
+            className="border px-4 py-3 text-sm"
             style={{
-              borderColor: "color-mix(in srgb, var(--home-warning) 45%, var(--home-rule))",
-              background: "color-mix(in srgb, var(--home-warning) 8%, var(--home-paper))",
+              borderColor: "color-mix(in srgb, var(--c97-warning) 45%, var(--c97-rule))",
+              background: "color-mix(in srgb, var(--c97-warning) 8%, var(--c97-surface))",
             }}
           >
-            <p className="font-semibold text-[var(--home-ink)]">Browser storage is unavailable.</p>
-            <p className="mt-1 text-[var(--home-ink-muted)]">
+            <p className="font-semibold text-[var(--c97-ink)]">Browser storage is unavailable.</p>
+            <p className="mt-1 text-[var(--c97-ink-2)]">
               This trade will work in the current tab, but it will not survive a reload.
             </p>
           </div>
@@ -463,16 +480,16 @@ export function TradeCalculatorClient() {
         {error ? (
           <div
             role="alert"
-            className="rounded-[var(--radius-3xl)] border border-[var(--home-negative)] bg-[var(--home-paper)] p-5"
+            className="border border-[var(--c97-negative)] bg-[var(--c97-surface)] p-5"
           >
-            <p className="font-semibold text-[var(--home-negative)]">{error}</p>
-            <p className="mt-1 text-sm text-[var(--home-ink-muted)]">
+            <p className="font-semibold text-[var(--c97-negative)]">{error}</p>
+            <p className="mt-1 text-sm text-[var(--c97-ink-2)]">
               Retry the snapshot before adding players to the deal.
             </p>
             <button
               type="button"
               onClick={retry}
-              className="mt-4 inline-flex min-h-touch items-center rounded-full bg-[var(--home-ink)] px-4 text-sm font-semibold text-[var(--home-paper)]"
+              className="mt-4 inline-flex min-h-touch items-center bg-[var(--c97-ink)] px-4 text-sm font-semibold text-[var(--c97-surface)]"
             >
               Retry rankings
             </button>
@@ -508,10 +525,10 @@ export function TradeCalculatorClient() {
               <section aria-labelledby="trade-ledger-title" className="min-w-0">
                 <div className="mb-3 flex flex-wrap items-center justify-between gap-3">
                   <div>
-                    <h2 id="trade-ledger-title" className="text-xl font-semibold tracking-[-0.03em] text-[var(--home-ink)]">
+                    <h2 id="trade-ledger-title" className="c97-serif c97-h3">
                       Trade ledger
                     </h2>
-                    <p className="mt-1 text-sm text-[var(--home-ink-muted)]">
+                    <p className="mt-1 text-sm text-[var(--c97-ink-2)]">
                       {`${players.length} players available in ${FANTASY_SCORING_LABELS[routeState.scoring]}.`}
                     </p>
                   </div>
@@ -520,7 +537,7 @@ export function TradeCalculatorClient() {
                       type="button"
                       onClick={trade.swapSides}
                       disabled={!hasBothSides}
-                      className="inline-flex min-h-touch items-center gap-2 rounded-full border border-[var(--home-rule)] bg-[var(--home-paper)] px-3 text-sm font-semibold text-[var(--home-ink)] transition-[border-color,background-color] hover:border-[var(--home-signal)] hover:bg-[var(--home-paper-alt)] disabled:cursor-not-allowed disabled:opacity-45"
+                      className="inline-flex min-h-touch items-center gap-2 border border-[var(--c97-rule)] bg-[var(--c97-surface)] px-3 text-sm font-semibold text-[var(--c97-ink)] transition-[border-color,background-color,color] hover:border-[var(--c97-accent)] hover:bg-[var(--c97-field)] disabled:cursor-not-allowed disabled:border-dashed disabled:border-[var(--c97-ink-2)] disabled:bg-transparent disabled:text-[var(--c97-ink-2)] disabled:hover:border-[var(--c97-ink-2)] disabled:hover:bg-transparent"
                     >
                       <ArrowLeftRight className="h-4 w-4" aria-hidden="true" />
                       Swap
@@ -535,10 +552,16 @@ export function TradeCalculatorClient() {
                           setResetArmed(true);
                         }
                       }}
-                      disabled={trade.givePlayerIds.length + trade.getPlayerIds.length === 0}
+                      disabled={clearDisabled}
                       aria-label={resetArmed ? "Confirm clear trade" : "Clear trade"}
-                      className="inline-flex min-h-touch items-center gap-2 rounded-full border border-[var(--home-rule)] bg-[var(--home-paper)] px-3 text-sm font-semibold transition-[border-color,background-color,color] hover:bg-[var(--home-paper-alt)] disabled:cursor-not-allowed disabled:opacity-45"
-                      style={{ color: resetArmed ? "var(--home-negative)" : "var(--home-ink)" }}
+                      className="inline-flex min-h-touch items-center gap-2 border border-[var(--c97-rule)] bg-[var(--c97-surface)] px-3 text-sm font-semibold transition-[border-color,background-color,color] hover:bg-[var(--c97-field)] disabled:cursor-not-allowed disabled:border-dashed disabled:border-[var(--c97-ink-2)] disabled:bg-transparent disabled:hover:bg-transparent"
+                      style={{
+                        color: clearDisabled
+                          ? "var(--c97-ink-2)"
+                          : resetArmed
+                            ? "var(--c97-negative)"
+                            : "var(--c97-ink)",
+                      }}
                     >
                       <RotateCcw className="h-4 w-4" aria-hidden="true" />
                       {resetArmed ? "Confirm clear" : "Clear"}
@@ -571,7 +594,7 @@ export function TradeCalculatorClient() {
                   />
                 </div>
 
-                <p className="mt-3 text-xs leading-5 text-[var(--home-ink-muted)]">
+                <p className="mt-3 text-xs leading-5 text-[var(--c97-ink-2)]">
                   Up to {FANTASY_TRADE_MAX_PLAYERS_PER_SIDE} players per side. Unequal offers assume each extra player displaces a replacement-level roster spot.
                 </p>
               </section>
@@ -585,6 +608,8 @@ export function TradeCalculatorClient() {
               />
             </div>
 
+            {/* Inside the same shell as the verdict strip, so on a phone the
+                strip stays pinned down through the package table. */}
             <TradeRosterImpact
               result={result}
               valuesAvailable={valuesAvailable}
@@ -594,6 +619,7 @@ export function TradeCalculatorClient() {
           </>
         )}
       </div>
+      </section>
     </section>
   );
 }

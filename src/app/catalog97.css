@@ -2594,3 +2594,27 @@ select.c97-field {
   display: block;
   max-width: 60rem;
 }
+
+/*
+ * A dense data surface, such as the fantasy boards and draft rooms. Its
+ * paragraphs and lists are labels, values, and rows rather than prose, so the
+ * base margins and the 65ch cap only add phantom space. It sits in
+ * @layer components, as .home-dash did, so margin and padding utilities
+ * still win.
+ */
+@layer components {
+  .c97-dash p {
+    margin-bottom: 0;
+    max-inline-size: none;
+  }
+
+  .c97-dash ul,
+  .c97-dash ol {
+    margin-bottom: 0;
+    padding-left: 0;
+  }
+
+  .c97-dash li {
+    margin-bottom: 0;
+  }
+}

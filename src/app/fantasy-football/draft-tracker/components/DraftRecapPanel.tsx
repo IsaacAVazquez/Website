@@ -117,17 +117,14 @@ export function DraftRecapPanel({
   ];
 
   return (
-    <article className="home-card p-5 sm:p-6" aria-labelledby="draft-recap-heading">
-      <p className="home-kicker mb-1">Model recap</p>
-      <h3
-        id="draft-recap-heading"
-        className="m-0 text-xl font-semibold tracking-[-0.03em]"
-      >
+    <article className="c97-panel" aria-labelledby="draft-recap-heading">
+      <p className="c97-kicker" style={{ marginBottom: "0.25rem" }}>Model recap</p>
+      <h3 id="draft-recap-heading" className="c97-serif c97-h3">
         How the recommendations held up
       </h3>
       <p
         className="m-0 mt-1.5 max-w-[72ch] text-xs leading-5"
-        style={{ color: "var(--home-ink-muted)" }}
+        style={{ color: "var(--c97-ink-2)" }}
       >
         Scored against this room&apos;s final pick log and the board saved with each
         recommendation. {recap.totalTurns} of your {totalUserTurns} turns carried
@@ -136,20 +133,20 @@ export function DraftRecapPanel({
       </p>
 
       <div
-        className="mt-4 grid gap-px overflow-hidden rounded-lg border"
+        className="mt-4 grid gap-px overflow-hidden border"
         style={{
           gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))",
-          borderColor: "var(--home-rule)",
-          background: "var(--home-rule)",
+          borderColor: "var(--c97-rule)",
+          background: "var(--c97-rule)",
         }}
       >
         {cells.map((cell) => (
-          <div key={cell.key} className="px-3.5 py-2.5" style={{ background: "var(--home-paper)" }}>
-            <p className={`m-0 ${MONO_LABEL_CLASS}`} style={{ color: "var(--home-ink-muted)" }}>
+          <div key={cell.key} className="px-3.5 py-2.5" style={{ background: "var(--c97-surface)" }}>
+            <p className={`m-0 ${MONO_LABEL_CLASS}`} style={{ color: "var(--c97-ink-2)" }}>
               {cell.label}
             </p>
             <p className="m-0 mt-1 font-mono text-lg leading-tight tabular-nums">{cell.value}</p>
-            <p className="m-0 mt-0.5 font-mono text-3xs" style={{ color: "var(--home-ink-muted)" }}>
+            <p className="m-0 mt-0.5 font-mono text-3xs" style={{ color: "var(--c97-ink-2)" }}>
               {cell.sub}
             </p>
           </div>
@@ -157,7 +154,7 @@ export function DraftRecapPanel({
       </div>
 
       <div className="mt-5">
-        <p className={`m-0 ${MONO_LABEL_CLASS}`} style={{ color: "var(--home-ink-muted)" }}>
+        <p className={`m-0 ${MONO_LABEL_CLASS}`} style={{ color: "var(--c97-ink-2)" }}>
           Turn replay
         </p>
         <ul className="m-0 mt-1.5 list-none p-0">
@@ -167,10 +164,10 @@ export function DraftRecapPanel({
             <li
               key={`turn-${outcome.record.pick}`}
               className="border-t py-2"
-              style={{ borderColor: "color-mix(in srgb, var(--home-rule) 70%, transparent)" }}
+              style={{ borderColor: "color-mix(in srgb, var(--c97-rule) 70%, transparent)" }}
             >
               <div className="flex flex-wrap items-baseline gap-x-2.5 gap-y-0.5">
-                <span className="w-10 flex-none font-mono text-sm" style={{ color: "var(--home-ink-muted)" }}>
+                <span className="w-10 flex-none font-mono text-sm" style={{ color: "var(--c97-ink-2)" }}>
                   #{outcome.record.pick}
                 </span>
                 <span className="text-sm font-semibold tracking-[-0.01em]">
@@ -180,8 +177,8 @@ export function DraftRecapPanel({
                   className="font-mono text-3xs uppercase tracking-[0.08em]"
                   style={{
                     color: outcome.followedRecommendation
-                      ? "var(--home-positive)"
-                      : "var(--home-ink-muted)",
+                      ? "var(--c97-positive)"
+                      : "var(--c97-ink-2)",
                   }}
                 >
                   {outcome.followedRecommendation ? "recommended" : "off the card"}
@@ -190,7 +187,7 @@ export function DraftRecapPanel({
               {summary ? (
                 <p
                   className="m-0 mt-0.5 pl-[3.125rem] font-mono text-3xs leading-5"
-                  style={{ color: "var(--home-ink-muted)" }}
+                  style={{ color: "var(--c97-ink-2)" }}
                 >
                   {summary}
                 </p>

@@ -357,6 +357,16 @@ describe("TradeCalculatorClient", () => {
     ).not.toBeInTheDocument();
   });
 
+  it("prints the stale source line on a paper plate, since every status colour is ink on the green hero", () => {
+    useSnapshot(buildSnapshot({ stale: true }));
+    render(<TradeCalculatorClient />);
+
+    expect(screen.getByText(/stale sources/i).closest("[data-c97-surface]")).toHaveAttribute(
+      "data-c97-surface",
+      "paper"
+    );
+  });
+
   it("withholds the verdict and exact values when the expert snapshot is stale", async () => {
     useSnapshot(buildSnapshot({ stale: true }));
     render(<TradeCalculatorClient />);

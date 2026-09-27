@@ -67,6 +67,7 @@ import {
   type FantasyVorpTeamSize,
 } from "@/lib/fantasyVorp";
 import { PositionFilterBar, type PositionFilterOption } from "@/components/fantasy/PositionFilterBar";
+import { PROJECT_PRESS } from "@/constants/projectPress";
 import { Player } from "@/types";
 import { FANTASY_FOOTBALL_FAQ } from "./fantasy-faq";
 import {
@@ -94,10 +95,10 @@ const RANKINGS_PAGE_SIZE = FANTASY_RANKINGS_PAGE_SIZE;
  * 72% toward ink is the same repair the draft tracker, mock draft, and best
  * ball recommendations carry, and it lifts the resting margin as well.
  */
-const SIGNAL_TEXT_COLOR = "color-mix(in srgb, var(--home-signal) 72%, var(--home-ink))";
+const SIGNAL_TEXT_COLOR = "color-mix(in srgb, var(--c97-accent) 72%, var(--c97-ink))";
 
 /** Phone rows carry their own value labels, since the column-label row is md-and-up. */
-const ROW_MICRO_LABEL_CLASS = "text-3xs uppercase tracking-[0.06em] text-[var(--home-ink-muted)] md:hidden";
+const ROW_MICRO_LABEL_CLASS = "text-3xs uppercase tracking-[0.06em] text-[var(--c97-ink-2)] md:hidden";
 
 /**
  * The other fantasy surfaces, listed once in the footer nav. The tiers routes
@@ -120,19 +121,19 @@ const getServerHydratedSnapshot = () => false;
 
 const STALENESS_TONE: Record<FantasySnapshotStaleness, CSSProperties> = {
   fresh: {
-    background: "color-mix(in srgb, var(--home-positive) 16%, var(--home-paper))",
-    borderColor: "color-mix(in srgb, var(--home-positive) 30%, var(--home-rule))",
-    color: "var(--home-ink)",
+    background: "color-mix(in srgb, var(--c97-positive) 16%, var(--c97-surface))",
+    borderColor: "color-mix(in srgb, var(--c97-positive) 30%, var(--c97-rule))",
+    color: "var(--c97-ink)",
   },
   aging: {
-    background: "color-mix(in srgb, var(--home-warning) 18%, var(--home-paper))",
-    borderColor: "color-mix(in srgb, var(--home-warning) 32%, var(--home-rule))",
-    color: "var(--home-ink)",
+    background: "color-mix(in srgb, var(--c97-warning) 18%, var(--c97-surface))",
+    borderColor: "color-mix(in srgb, var(--c97-warning) 32%, var(--c97-rule))",
+    color: "var(--c97-ink)",
   },
   stale: {
-    background: "color-mix(in srgb, var(--home-negative) 16%, var(--home-paper))",
-    borderColor: "color-mix(in srgb, var(--home-negative) 30%, var(--home-rule))",
-    color: "var(--home-ink)",
+    background: "color-mix(in srgb, var(--c97-negative) 16%, var(--c97-surface))",
+    borderColor: "color-mix(in srgb, var(--c97-negative) 30%, var(--c97-rule))",
+    color: "var(--c97-ink)",
   },
 };
 
@@ -196,10 +197,10 @@ function describeVsAdp(player: Player): { text: string; color: string; judged: b
   const text = formatPickDelta(value.delta);
   const color =
     value.signal === "value"
-      ? "var(--home-positive)"
+      ? "var(--c97-positive)"
       : value.signal === "reach"
-        ? "var(--home-negative)"
-        : "var(--home-ink-muted)";
+        ? "var(--c97-negative)"
+        : "var(--c97-ink-2)";
   return { text, color, judged: hasReliableAdpSample(player) };
 }
 
@@ -225,19 +226,19 @@ function ValueReachChip({ player }: { player: Player }) {
   const isValue = value.signal === "value";
   return (
     <span
-      className="inline-flex shrink-0 items-center rounded-[2px] border px-1.5 py-0.5 font-mono text-3xs uppercase tracking-[0.06em]"
+      className="inline-flex shrink-0 items-center border px-1.5 py-0.5 font-mono text-3xs uppercase tracking-[0.06em]"
       title={isValue ? FANTASY_VALUE_TOOLTIP : FANTASY_REACH_TOOLTIP}
       style={
         isValue
           ? {
-              borderColor: "color-mix(in srgb, var(--home-positive) 32%, var(--home-rule))",
-              background: "color-mix(in srgb, var(--home-positive) 12%, var(--home-paper))",
-              color: "var(--home-ink)",
+              borderColor: "color-mix(in srgb, var(--c97-positive) 32%, var(--c97-rule))",
+              background: "color-mix(in srgb, var(--c97-positive) 12%, var(--c97-surface))",
+              color: "var(--c97-ink)",
             }
           : {
-              borderColor: "color-mix(in srgb, var(--home-negative) 32%, var(--home-rule))",
-              background: "color-mix(in srgb, var(--home-negative) 12%, var(--home-paper))",
-              color: "var(--home-ink)",
+              borderColor: "color-mix(in srgb, var(--c97-negative) 32%, var(--c97-rule))",
+              background: "color-mix(in srgb, var(--c97-negative) 12%, var(--c97-surface))",
+              color: "var(--c97-ink)",
             }
       }
     >
@@ -268,8 +269,8 @@ function ScoringToggle({
     <div
       role="group"
       aria-label="Scoring format"
-      className="inline-flex shrink-0 rounded-[4px] border"
-      style={{ borderColor: "var(--home-control-rule)" }}
+      className="inline-flex shrink-0 border"
+      style={{ borderColor: "var(--c97-ink-2)" }}
     >
       {SCORING_OPTIONS.map((option) => {
         const active = value === option.key;
@@ -280,11 +281,11 @@ function ScoringToggle({
             aria-pressed={active}
             aria-label={option.label}
             onClick={() => onChange(option.key)}
-            className="relative min-h-touch cursor-pointer px-3 font-mono text-3xs uppercase tracking-[0.08em] transition-colors duration-150 first:rounded-l-[3px] last:rounded-r-[3px] focus-visible:z-10"
+            className="relative min-h-touch cursor-pointer px-3 font-mono text-3xs uppercase tracking-[0.08em] transition-colors duration-150 focus-visible:z-10"
             style={
               active
-                ? { background: "var(--home-ink)", color: "var(--home-paper)" }
-                : { background: "transparent", color: "var(--home-ink)" }
+                ? { background: "var(--c97-ink)", color: "var(--c97-surface)" }
+                : { background: "transparent", color: "var(--c97-ink)" }
             }
           >
             {compact === "below-xl" ? (
@@ -324,8 +325,8 @@ function RankingToggle({
     <div
       role="group"
       aria-label="Ranking method"
-      className="inline-flex shrink-0 rounded-[4px] border"
-      style={{ borderColor: "var(--home-control-rule)" }}
+      className="inline-flex shrink-0 border"
+      style={{ borderColor: "var(--c97-ink-2)" }}
     >
       {(["consensus", "vorp"] as const).map((option) => {
         const active = value === option;
@@ -337,11 +338,11 @@ function RankingToggle({
             aria-pressed={active}
             disabled={disabled}
             onClick={() => onChange(option)}
-            className="relative min-h-touch cursor-pointer px-3 font-mono text-3xs uppercase tracking-[0.08em] transition-colors duration-150 first:rounded-l-[3px] last:rounded-r-[3px] focus-visible:z-10 disabled:cursor-not-allowed disabled:opacity-50"
+            className="relative min-h-touch cursor-pointer px-3 font-mono text-3xs uppercase tracking-[0.08em] transition-colors duration-150 focus-visible:z-10 disabled:cursor-not-allowed disabled:opacity-50"
             style={
               active
-                ? { background: "var(--home-ink)", color: "var(--home-paper)" }
-                : { background: "transparent", color: "var(--home-ink)" }
+                ? { background: "var(--c97-ink)", color: "var(--c97-surface)" }
+                : { background: "transparent", color: "var(--c97-ink)" }
             }
           >
             {option === "consensus" ? "Consensus" : "VORP"}
@@ -367,11 +368,11 @@ function VorpTeamSizeSelect({
         aria-label="VORP league size"
         value={value}
         onChange={(event) => onChange(Number(event.target.value) as FantasyVorpTeamSize)}
-        className="relative min-h-touch rounded-r-[3px] border-l px-2 font-mono text-3xs uppercase tracking-[0.06em] focus-visible:z-10"
+        className="relative min-h-touch border-l px-2 font-mono text-3xs uppercase tracking-[0.06em] focus-visible:z-10"
         style={{
-          borderColor: "var(--home-rule)",
-          background: "var(--home-paper-raised)",
-          color: "var(--home-ink)",
+          borderColor: "var(--c97-rule)",
+          background: "var(--c97-field)",
+          color: "var(--c97-ink)",
         }}
       >
         {FANTASY_VORP_TEAM_SIZES.map((teamSize) => (
@@ -407,19 +408,19 @@ function QueuedFilterButton({
       aria-pressed={pressed}
       aria-label={`Show only queued players (${count} on this board)`}
       onClick={onToggle}
-      className={`${className} inline-flex min-h-touch min-w-touch shrink-0 cursor-pointer items-center justify-center rounded-[4px] border`}
+      className={`${className} inline-flex min-h-touch min-w-touch shrink-0 cursor-pointer items-center justify-center border`}
       style={
         pressed
-          ? { borderColor: "var(--home-ink)", background: "var(--home-ink)", color: "var(--home-paper)" }
-          : { borderColor: "var(--home-control-rule)", background: "var(--home-paper-raised)", color: "var(--home-ink)" }
+          ? { borderColor: "var(--c97-ink)", background: "var(--c97-ink)", color: "var(--c97-surface)" }
+          : { borderColor: "var(--c97-ink-2)", background: "var(--c97-field)", color: "var(--c97-ink)" }
       }
     >
       <Star className="h-4 w-4" fill={pressed ? "currentColor" : "none"} aria-hidden="true" />
       {count > 0 && (
         <span
           aria-hidden="true"
-          className="absolute -right-1 -top-1 rounded-full px-1 font-mono text-3xs tracking-normal tabular-nums"
-          style={{ background: "var(--home-signal)", color: "var(--home-paper)" }}
+          className="absolute -right-1 -top-1 px-1 font-mono text-3xs tracking-normal tabular-nums"
+          style={{ background: "var(--c97-accent)", color: "var(--c97-surface)" }}
         >
           {count}
         </span>
@@ -463,11 +464,11 @@ function CompactRankingSelect({
           const size = Number(next.replace("vorp-", ""));
           if (isFantasyVorpTeamSize(size)) onChange({ ranking: "vorp", teams: size });
         }}
-        className="min-h-touch rounded-[4px] border px-2 font-mono text-2xs uppercase tracking-[0.06em]"
+        className="min-h-touch border px-2 font-mono text-2xs uppercase tracking-[0.06em]"
         style={{
-          borderColor: "var(--home-control-rule)",
-          background: "var(--home-paper-raised)",
-          color: "var(--home-ink)",
+          borderColor: "var(--c97-ink-2)",
+          background: "var(--c97-field)",
+          color: "var(--c97-ink)",
         }}
       >
         <option value="consensus">Consensus</option>
@@ -506,21 +507,21 @@ function ExpertSpreadBar({ player, scale }: { player: Player; scale: number }) {
       aria-hidden="true"
     >
       <span
-        className="absolute inset-x-0 top-[5px] h-1 rounded-[2px]"
-        style={{ background: "color-mix(in srgb, var(--home-rule) 70%, transparent)" }}
+        className="absolute inset-x-0 top-[5px] h-1"
+        style={{ background: "color-mix(in srgb, var(--c97-rule) 70%, transparent)" }}
       />
       <span
-        className="absolute top-[5px] h-1 rounded-[2px]"
+        className="absolute top-[5px] h-1"
         style={{
           left: `${left}%`,
           width: `${Math.min(width, 100 - left)}%`,
-          background: `color-mix(in srgb, var(--home-signal) ${intensity}%, var(--home-stone))`,
+          background: `color-mix(in srgb, var(--c97-accent) ${intensity}%, var(--c97-rule))`,
         }}
       />
       {avg !== null && (
         <span
-          className="absolute top-[3px] h-2 w-0.5 rounded-[1px]"
-          style={{ left: `${toPercent(avg)}%`, background: "var(--home-ink)" }}
+          className="absolute top-[3px] h-2 w-0.5"
+          style={{ left: `${toPercent(avg)}%`, background: "var(--c97-ink)" }}
         />
       )}
     </span>
@@ -561,12 +562,12 @@ function DrawerStat({
     <div
       className={
         lead
-          ? "col-span-2 flex flex-wrap items-baseline justify-between gap-x-3 gap-y-0.5 rounded-[4px] border px-2.5 py-2"
-          : "rounded-[4px] border px-2.5 py-2"
+          ? "col-span-2 flex flex-wrap items-baseline justify-between gap-x-3 gap-y-0.5 border px-2.5 py-2"
+          : "border px-2.5 py-2"
       }
-      style={{ borderColor: "var(--home-rule)", background: "var(--home-paper-raised)" }}
+      style={{ borderColor: "var(--c97-rule)", background: "var(--c97-field)" }}
     >
-      <p className={MONO_LABEL_CLASS} style={{ color: "var(--home-ink-muted)" }}>
+      <p className={MONO_LABEL_CLASS} style={{ color: "var(--c97-ink-2)" }}>
         {title ? (
           <MetricTooltip term={term ?? label} definition={title} focusable>
             {label}
@@ -577,7 +578,7 @@ function DrawerStat({
       </p>
       <p
         className={`${lead ? "" : "mt-1 "}font-mono text-base tabular-nums`}
-        style={{ color: valueColor ?? "var(--home-ink)" }}
+        style={{ color: valueColor ?? "var(--c97-ink)" }}
       >
         {value}
       </p>
@@ -713,35 +714,35 @@ function DraftPlayerDrawer({
           // signal:null can also mean "sample too thin to judge" — never call
           // that market agreement (fantasyUtils gates at 20 mock selections).
           text: "Too few mock selections behind his ADP to judge the market gap yet, so no market read.",
-          color: "var(--home-ink-muted)",
-          background: "color-mix(in srgb, var(--home-ink) 4%, transparent)",
+          color: "var(--c97-ink-2)",
+          background: "color-mix(in srgb, var(--c97-ink) 4%, transparent)",
         }
       : value.signal === "value"
         ? {
             text: `Rooms take him about ${Math.round(Math.abs(value.delta))} picks after the consensus rank. Value if he lasts to your pick.`,
-            color: "var(--home-positive)",
-            background: "color-mix(in srgb, var(--home-positive) 7%, transparent)",
+            color: "var(--c97-positive)",
+            background: "color-mix(in srgb, var(--c97-positive) 7%, transparent)",
           }
         : value.signal === "reach"
           ? {
               text: `Rooms take him about ${Math.round(Math.abs(value.delta))} picks before the consensus rank. Plan the reach or let him go.`,
-              color: "var(--home-negative)",
-              background: "color-mix(in srgb, var(--home-negative) 6%, transparent)",
+              color: "var(--c97-negative)",
+              background: "color-mix(in srgb, var(--c97-negative) 6%, transparent)",
             }
           : {
               text: "Market and consensus sit inside this player's noise band. Take him on schedule.",
-              color: "var(--home-ink-muted)",
-              background: "color-mix(in srgb, var(--home-ink) 4%, transparent)",
+              color: "var(--c97-ink-2)",
+              background: "color-mix(in srgb, var(--c97-ink) 4%, transparent)",
             }
     : null;
 
   const spreadFill = spread
     ? spread.level === "tight"
-      ? "color-mix(in srgb, var(--home-positive) 34%, var(--home-paper))"
+      ? "color-mix(in srgb, var(--c97-positive) 34%, var(--c97-surface))"
       : spread.level === "mixed"
-        ? "color-mix(in srgb, var(--home-signal) 46%, var(--home-paper))"
-        : "color-mix(in srgb, var(--home-warning) 38%, var(--home-paper))"
-    : "color-mix(in srgb, var(--home-stone) 70%, var(--home-paper))";
+        ? "color-mix(in srgb, var(--c97-accent) 46%, var(--c97-surface))"
+        : "color-mix(in srgb, var(--c97-warning) 38%, var(--c97-surface))"
+    : "color-mix(in srgb, var(--c97-rule) 70%, var(--c97-surface))";
 
   const lo = Number.isFinite(player.minRank) ? (player.minRank as number) : null;
   const hi = Number.isFinite(player.maxRank) ? (player.maxRank as number) : null;
@@ -814,7 +815,7 @@ function DraftPlayerDrawer({
         aria-label="Close player detail"
         tabIndex={-1}
         className="absolute inset-0 cursor-default"
-        style={{ background: "color-mix(in srgb, var(--home-ink) 38%, transparent)" }}
+        style={{ background: "color-mix(in srgb, var(--c97-ink) 38%, transparent)" }}
       />
       <aside
         ref={panelRef}
@@ -824,9 +825,8 @@ function DraftPlayerDrawer({
         tabIndex={-1}
         className="relative flex h-full w-[min(400px,94vw)] flex-col gap-4 overflow-y-auto overscroll-contain border-l p-5"
         style={{
-          borderColor: "var(--home-rule)",
-          background: "var(--home-paper)",
-          boxShadow: "-18px 0 44px color-mix(in srgb, var(--home-ink) 18%, transparent)",
+          borderColor: "var(--c97-rule)",
+          background: "var(--c97-surface)",
         }}
       >
         <div className="flex items-start justify-between gap-3">
@@ -834,17 +834,16 @@ function DraftPlayerDrawer({
             {/* The kicker names whichever rank the board behind the drawer is
                 sorted by. In VORP mode the consensus rank stays on the next
                 line, since the gap between the two is itself the reading. */}
-            <p className={MONO_LABEL_CLASS} style={{ color: "var(--home-signal)" }}>
+            <p className={MONO_LABEL_CLASS} style={{ color: "var(--c97-accent)" }}>
               {vorpMode && vorp ? `VORP #${vorp.rank} · ${vorpTeams}-team` : consensusLine}
             </p>
             {vorpMode && vorp ? (
-              <p className={`${MONO_LABEL_CLASS} mt-1`} style={{ color: "var(--home-ink-muted)" }}>
+              <p className={`${MONO_LABEL_CLASS} mt-1`} style={{ color: "var(--c97-ink-2)" }}>
                 {consensusLine}
               </p>
             ) : null}
-            {/* text-2xl tops out at 34px, above the 33.6px page h1 at 1440. */}
-            <h2 className="mt-1.5 truncate text-xl font-semibold leading-tight tracking-tight">{player.name}</h2>
-            <p className="mt-1 font-mono text-2xs uppercase tracking-[0.06em]" style={{ color: "var(--home-ink-muted)" }}>
+            <h2 className="c97-serif c97-h3 truncate" style={{ marginTop: "0.375rem" }}>{player.name}</h2>
+            <p className="mt-1 font-mono text-2xs uppercase tracking-[0.06em]" style={{ color: "var(--c97-ink-2)" }}>
               {player.position}
               {Number.isFinite(player.positionRank) ? player.positionRank : ""} · {player.team || "FA"}
               {player.byeWeek ? ` · Bye ${player.byeWeek}` : ""}
@@ -854,8 +853,8 @@ function DraftPlayerDrawer({
             type="button"
             onClick={onClose}
             aria-label="Close"
-            className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-[4px] border"
-            style={{ borderColor: "var(--home-rule)", background: "var(--home-paper)", color: "var(--home-ink)" }}
+            className="inline-flex h-11 w-11 shrink-0 items-center justify-center border"
+            style={{ borderColor: "var(--c97-rule)", background: "var(--c97-surface)", color: "var(--c97-ink)" }}
           >
             <X size={16} aria-hidden="true" />
           </button>
@@ -870,12 +869,12 @@ function DraftPlayerDrawer({
         {verdict && (
           <p
             className="border-l-[3px] px-3 py-2.5 text-sm leading-6"
-            style={{ borderColor: verdict.color, background: verdict.background, color: "var(--home-ink)" }}
+            style={{ borderColor: verdict.color, background: verdict.background, color: "var(--c97-ink)" }}
           >
             {/* The verdict compares ADP with the consensus rank, so under a
                 VORP kicker it says which rank it is reading against. */}
             {vorpMode ? (
-              <span className={`${MONO_LABEL_CLASS} mb-1 block`} style={{ color: "var(--home-ink-muted)" }}>
+              <span className={`${MONO_LABEL_CLASS} mb-1 block`} style={{ color: "var(--c97-ink-2)" }}>
                 Market read against the consensus rank
               </span>
             ) : null}
@@ -888,35 +887,35 @@ function DraftPlayerDrawer({
             <div className="flex items-baseline justify-between gap-2.5">
               <span
                 className={`${MONO_LABEL_CLASS} inline-flex items-center`}
-                style={{ color: "var(--home-ink-muted)" }}
+                style={{ color: "var(--c97-ink-2)" }}
               >
                 Expert spread
                 <MetricTooltip term="Expert spread" definition={FANTASY_EXPERT_SPREAD_TOOLTIP} />
               </span>
               {spread && (
-                <span className={MONO_LABEL_CLASS} style={{ color: "var(--home-ink-muted)" }}>
+                <span className={MONO_LABEL_CLASS} style={{ color: "var(--c97-ink-2)" }}>
                   {spread.label}
                 </span>
               )}
             </div>
             <div
-              className="relative mt-2 h-2.5 overflow-hidden rounded-full"
-              style={{ background: "color-mix(in srgb, var(--home-ink) 8%, var(--home-paper))" }}
+              className="relative mt-2 h-2.5 overflow-hidden"
+              style={{ background: "color-mix(in srgb, var(--c97-ink) 8%, var(--c97-surface))" }}
             >
               <span className="absolute inset-0" style={{ background: spreadFill }} />
               {avgTickLeft !== null && (
                 <span
                   className="absolute bottom-0 top-0 w-0.5"
-                  style={{ left: `calc(${avgTickLeft}% - 1px)`, background: "var(--home-ink)" }}
+                  style={{ left: `calc(${avgTickLeft}% - 1px)`, background: "var(--c97-ink)" }}
                 />
               )}
             </div>
             <div
               className="mt-1.5 flex justify-between font-mono text-3xs uppercase tracking-[0.08em]"
-              style={{ color: "var(--home-ink-muted)" }}
+              style={{ color: "var(--c97-ink-2)" }}
             >
               <span>Best {lo}</span>
-              {avg !== null && <span style={{ color: "var(--home-ink)" }}>Avg {avg.toFixed(1)}</span>}
+              {avg !== null && <span style={{ color: "var(--c97-ink)" }}>Avg {avg.toFixed(1)}</span>}
               <span>Worst {hi}</span>
             </div>
           </div>
@@ -927,7 +926,7 @@ function DraftPlayerDrawer({
             <div className="flex items-baseline justify-between gap-2.5">
               <span
                 className={`${MONO_LABEL_CLASS} inline-flex items-center`}
-                style={{ color: "var(--home-ink-muted)" }}
+                style={{ color: "var(--c97-ink-2)" }}
               >
                 Points per game
                 <MetricTooltip
@@ -937,22 +936,22 @@ function DraftPlayerDrawer({
               </span>
               <span
                 className="font-mono text-3xs uppercase tracking-[0.1em]"
-                style={{ color: "var(--home-ink-muted)" }}
+                style={{ color: "var(--c97-ink-2)" }}
               >
                 {gameLog.season} season · {scoringLabel} · {gameLog.games}{" "}
                 {gameLog.games === 1 ? "game" : "games"}
               </span>
             </div>
             <div
-              className="relative mt-2 h-2.5 overflow-hidden rounded-full"
-              style={{ background: "color-mix(in srgb, var(--home-stone) 70%, var(--home-paper))" }}
+              className="relative mt-2 h-2.5 overflow-hidden"
+              style={{ background: "color-mix(in srgb, var(--c97-rule) 70%, var(--c97-surface))" }}
             >
               <span
                 className="absolute bottom-0 top-0 w-0.5"
                 title="Median"
                 style={{
                   left: `calc(${gameLogTickLeft(gameLog.median)}% - 1px)`,
-                  background: "var(--home-ink)",
+                  background: "var(--c97-ink)",
                 }}
               />
               <span
@@ -960,48 +959,48 @@ function DraftPlayerDrawer({
                 title="Average"
                 style={{
                   left: `calc(${gameLogTickLeft(gameLog.average)}% - 1px)`,
-                  background: "var(--home-signal)",
+                  background: "var(--c97-accent)",
                 }}
               />
             </div>
             <dl className="mt-2 grid grid-cols-4 gap-2">
               <div>
-                <dt className={MONO_LABEL_CLASS} style={{ color: "var(--home-ink-muted)" }}>
+                <dt className={MONO_LABEL_CLASS} style={{ color: "var(--c97-ink-2)" }}>
                   Low
                 </dt>
                 <dd
                   className="mt-0.5 font-mono text-2xs tabular-nums"
-                  style={{ color: "var(--home-ink-muted)" }}
+                  style={{ color: "var(--c97-ink-2)" }}
                 >
                   {gameLog.low.toFixed(1)}
                 </dd>
               </div>
               <div>
-                <dt className={MONO_LABEL_CLASS} style={{ color: "var(--home-ink-muted)" }}>
+                <dt className={MONO_LABEL_CLASS} style={{ color: "var(--c97-ink-2)" }}>
                   Median
                 </dt>
-                <dd className="mt-0.5 font-mono text-2xs tabular-nums" style={{ color: "var(--home-ink)" }}>
+                <dd className="mt-0.5 font-mono text-2xs tabular-nums" style={{ color: "var(--c97-ink)" }}>
                   {gameLog.median.toFixed(1)}
                 </dd>
               </div>
               <div>
-                <dt className={MONO_LABEL_CLASS} style={{ color: "var(--home-signal)" }}>
+                <dt className={MONO_LABEL_CLASS} style={{ color: "var(--c97-accent)" }}>
                   Avg
                 </dt>
                 <dd
                   className="mt-0.5 font-mono text-2xs font-medium tabular-nums"
-                  style={{ color: "var(--home-ink)" }}
+                  style={{ color: "var(--c97-ink)" }}
                 >
                   {gameLog.average.toFixed(1)}
                 </dd>
               </div>
               <div>
-                <dt className={MONO_LABEL_CLASS} style={{ color: "var(--home-ink-muted)" }}>
+                <dt className={MONO_LABEL_CLASS} style={{ color: "var(--c97-ink-2)" }}>
                   High
                 </dt>
                 <dd
                   className="mt-0.5 font-mono text-2xs tabular-nums"
-                  style={{ color: "var(--home-ink-muted)" }}
+                  style={{ color: "var(--c97-ink-2)" }}
                 >
                   {gameLog.high.toFixed(1)}
                 </dd>
@@ -1013,19 +1012,19 @@ function DraftPlayerDrawer({
         {neighbors.length > 1 && (
           <div>
             <div className="flex items-baseline justify-between gap-2.5">
-              <span className={MONO_LABEL_CLASS} style={{ color: "var(--home-ink-muted)" }}>
+              <span className={MONO_LABEL_CLASS} style={{ color: "var(--c97-ink-2)" }}>
                 Board neighborhood
               </span>
               {/* The list follows the board's sort, so its numbers name that
                   sort: VORP rank and value in VORP mode, board rank and
                   consensus average otherwise. */}
-              <span className={MONO_LABEL_CLASS} style={{ color: "var(--home-ink-muted)" }}>
+              <span className={MONO_LABEL_CLASS} style={{ color: "var(--c97-ink-2)" }}>
                 {vorpMode ? "VORP rank · VORP" : "Rank · avg"}
               </span>
             </div>
             <ul
-              className="mt-2 list-none overflow-hidden rounded-[6px] border"
-              style={{ borderColor: "var(--home-rule)" }}
+              className="mt-2 list-none overflow-hidden border"
+              style={{ borderColor: "var(--c97-rule)" }}
             >
               {neighbors.map((neighbor) => {
                 const selected = neighbor.id === player.id;
@@ -1033,7 +1032,7 @@ function DraftPlayerDrawer({
                   <li
                     key={neighbor.id}
                     className="border-t first:border-t-0"
-                    style={{ borderColor: "color-mix(in srgb, var(--home-rule) 55%, transparent)" }}
+                    style={{ borderColor: "color-mix(in srgb, var(--c97-rule) 55%, transparent)" }}
                   >
                     <button
                       type="button"
@@ -1041,16 +1040,16 @@ function DraftPlayerDrawer({
                       aria-current={selected || undefined}
                       className="flex min-h-11 w-full items-baseline gap-2.5 border-l-[3px] px-2.5 py-1.5 text-left"
                       style={{
-                        borderColor: selected ? "var(--home-signal)" : "transparent",
+                        borderColor: selected ? "var(--c97-accent)" : "transparent",
                         background: selected
-                          ? "color-mix(in srgb, var(--home-signal) 8%, transparent)"
+                          ? "color-mix(in srgb, var(--c97-accent) 8%, transparent)"
                           : "transparent",
-                        color: "var(--home-ink)",
+                        color: "var(--c97-ink)",
                       }}
                     >
                       <span
                         className="w-7 shrink-0 text-right font-mono text-2xs"
-                        style={{ color: "var(--home-ink-muted)" }}
+                        style={{ color: "var(--c97-ink-2)" }}
                       >
                         {vorpMode
                           ? formatRankValue(vorpIndex.get(neighbor.id)?.rank)
@@ -1059,7 +1058,7 @@ function DraftPlayerDrawer({
                       <span className="min-w-0 flex-1 truncate text-sm font-semibold tracking-tight">
                         {neighbor.name}
                       </span>
-                      <span className="shrink-0 font-mono text-2xs" style={{ color: "var(--home-ink-muted)" }}>
+                      <span className="shrink-0 font-mono text-2xs" style={{ color: "var(--c97-ink-2)" }}>
                         {vorpMode
                           ? formatVorpValue(vorpIndex.get(neighbor.id))
                           : formatAvg(neighbor)}
@@ -1076,15 +1075,15 @@ function DraftPlayerDrawer({
           type="button"
           onClick={() => queue.toggle(player.id)}
           aria-pressed={isQueued}
-          className="inline-flex min-h-touch items-center justify-center gap-2 rounded-[4px] border font-mono text-2xs uppercase tracking-[0.08em]"
+          className="inline-flex min-h-touch items-center justify-center gap-2 border font-mono text-2xs uppercase tracking-[0.08em]"
           style={
             isQueued
               ? {
-                  borderColor: "color-mix(in srgb, var(--home-signal) 60%, var(--home-rule))",
-                  background: "color-mix(in srgb, var(--home-signal) 26%, var(--home-paper))",
-                  color: "var(--home-ink)",
+                  borderColor: "color-mix(in srgb, var(--c97-accent) 60%, var(--c97-rule))",
+                  background: "color-mix(in srgb, var(--c97-accent) 26%, var(--c97-surface))",
+                  color: "var(--c97-ink)",
                 }
-              : { borderColor: "var(--home-rule)", background: "var(--home-paper)", color: "var(--home-ink)" }
+              : { borderColor: "var(--c97-rule)", background: "var(--c97-surface)", color: "var(--c97-ink)" }
           }
         >
           <Star size={14} fill={isQueued ? "currentColor" : "none"} aria-hidden="true" />
@@ -1092,7 +1091,7 @@ function DraftPlayerDrawer({
         </button>
 
         <div>
-          <label htmlFor="board-player-note" className={MONO_LABEL_CLASS} style={{ color: "var(--home-ink-muted)" }}>
+          <label htmlFor="board-player-note" className={MONO_LABEL_CLASS} style={{ color: "var(--c97-ink-2)" }}>
             Private note
           </label>
           <textarea
@@ -1106,19 +1105,19 @@ function DraftPlayerDrawer({
               notes.setNote(player.id, event.target.value);
             }}
             placeholder="Handcuff for Hall… target round 6… avoid."
-            className="mt-2 block w-full resize-none rounded-[4px] border px-2.5 py-2 font-mono text-xs leading-normal"
+            className="mt-2 block w-full resize-none border px-2.5 py-2 font-mono text-xs leading-normal"
             style={{
-              borderColor: "var(--home-rule)",
-              background: "var(--home-paper-raised)",
-              color: "var(--home-ink)",
+              borderColor: "var(--c97-rule)",
+              background: "var(--c97-field)",
+              color: "var(--c97-ink)",
             }}
           />
-          <p className="mt-1 text-right font-mono text-3xs" style={{ color: "var(--home-ink-muted)" }}>
+          <p className="mt-1 text-right font-mono text-3xs" style={{ color: "var(--c97-ink-2)" }}>
             {draftNote.length}/{notes.maxLength} · saved on this device
           </p>
         </div>
 
-        <p className="font-mono text-3xs leading-relaxed" style={{ color: "var(--home-ink-muted)" }}>
+        <p className="font-mono text-3xs leading-relaxed" style={{ color: "var(--c97-ink-2)" }}>
           Ranks, tiers, and expert ranges come from the published snapshot, and per-game scoring is the prior
           regular season from nflverse. Queue and notes stay on this device.
         </p>
@@ -1512,10 +1511,10 @@ export function FantasyFootballClient({ initialState, initialSnapshot = null }: 
     const lastRank = displayRank(group.rows[group.rows.length - 1]);
     const railTone =
       vorpMode
-        ? "var(--home-signal)"
+        ? "var(--c97-accent)"
         : group.tier !== null
-        ? `color-mix(in srgb, var(--home-signal) ${getTierRailIntensity(group.tier)}%, var(--home-rule))`
-        : "var(--home-rule)";
+        ? `color-mix(in srgb, var(--c97-accent) ${getTierRailIntensity(group.tier)}%, var(--c97-rule))`
+        : "var(--c97-rule)";
 
     let cliff = 0;
     if (!vorpMode && index > 0) {
@@ -1556,26 +1555,26 @@ export function FantasyFootballClient({ initialState, initialSnapshot = null }: 
           <div aria-hidden="true" className="flex items-center gap-3 px-0.5 pb-2.5">
             <span
               className="flex-1 border-t border-dashed"
-              style={{ borderColor: "color-mix(in srgb, var(--home-ink) 24%, transparent)" }}
+              style={{ borderColor: "color-mix(in srgb, var(--c97-ink) 24%, transparent)" }}
             />
             <span
               className="whitespace-nowrap font-mono text-3xs uppercase tracking-[0.12em]"
-              style={{ color: "var(--home-signal)" }}
+              style={{ color: "var(--c97-accent)" }}
             >
               ↓ {cliff.toFixed(1)} avg-rank cliff
             </span>
             <span
               className="flex-1 border-t border-dashed"
-              style={{ borderColor: "color-mix(in srgb, var(--home-ink) 24%, transparent)" }}
+              style={{ borderColor: "color-mix(in srgb, var(--c97-ink) 24%, transparent)" }}
             />
           </div>
         )}
         <div
-          className="overflow-hidden rounded-lg border border-l-[3px]"
+          className="overflow-hidden border border-l-[3px]"
           style={{
-            borderColor: "var(--home-rule)",
+            borderColor: "var(--c97-rule)",
             borderLeftColor: railTone,
-            background: "var(--home-paper-raised)",
+            background: "var(--c97-field)",
           }}
         >
           <div className="flex flex-wrap items-baseline gap-x-3.5 gap-y-1 px-3.5 pb-2 pt-2.5">
@@ -1586,17 +1585,17 @@ export function FantasyFootballClient({ initialState, initialSnapshot = null }: 
                   ? String(group.tier).padStart(2, "0")
                   : "—"}
             </span>
-            <span className={MONO_LABEL_CLASS} style={{ color: "var(--home-ink-muted)" }}>
+            <span className={MONO_LABEL_CLASS} style={{ color: "var(--c97-ink-2)" }}>
               {vorpMode
                 ? `${routeState.teams}-team rankings`
                 : group.tier !== null
                   ? "Tier"
                   : "No published tier"}
             </span>
-            <span className="font-mono text-2xs" style={{ color: "var(--home-ink-muted)" }}>
+            <span className="font-mono text-2xs" style={{ color: "var(--c97-ink-2)" }}>
               {group.rows.length} {group.rows.length === 1 ? "player" : "players"}
             </span>
-            <span className="ml-auto font-mono text-2xs" style={{ color: "var(--home-ink-muted)" }}>
+            <span className="ml-auto font-mono text-2xs" style={{ color: "var(--c97-ink-2)" }}>
               {vorpMode ? "#" : "R"}{firstRank} to {vorpMode ? "#" : "R"}{lastRank}
             </span>
           </div>
@@ -1609,8 +1608,8 @@ export function FantasyFootballClient({ initialState, initialSnapshot = null }: 
               return (
                 <li
                   key={player.id}
-                  className="group relative border-t transition-colors duration-150 hover:bg-[color-mix(in_srgb,var(--home-paper-alt)_55%,transparent)]"
-                  style={{ borderColor: "color-mix(in srgb, var(--home-rule) 60%, transparent)" }}
+                  className="group relative border-t transition-colors duration-150 hover:bg-[color-mix(in_srgb,var(--c97-field)_55%,transparent)]"
+                  style={{ borderColor: "color-mix(in srgb, var(--c97-rule) 60%, transparent)" }}
                 >
                   {/* The open control overlays the row instead of wrapping it: an
                       aria-label on a wrapping button would override every cell,
@@ -1622,18 +1621,18 @@ export function FantasyFootballClient({ initialState, initialSnapshot = null }: 
                     type="button"
                     aria-label={`Open ${player.name} detail${isQueued ? " (in your queue)" : ""}`}
                     onClick={() => setDetailPlayerId(player.id)}
-                    className="absolute inset-0 z-[1] cursor-pointer focus-visible:outline focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-[var(--home-signal)]"
+                    className="absolute inset-0 z-[1] cursor-pointer focus-visible:outline focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-[var(--c97-accent)]"
                   />
                   {isQueued && (
                     <span
                       aria-hidden="true"
                       className="absolute inset-y-0 left-0 z-[2] w-1"
-                      style={{ background: "var(--home-signal)" }}
+                      style={{ background: "var(--c97-accent)" }}
                     />
                   )}
                   <div
                     className="relative z-[2] flex min-h-11 w-full cursor-pointer flex-wrap items-center gap-x-4 gap-y-1 py-1.5 pl-3.5 pr-15 text-left"
-                    style={{ color: "var(--home-ink)" }}
+                    style={{ color: "var(--c97-ink)" }}
                     onClick={() => {
                       if (window.getSelection()?.toString()) return;
                       setDetailPlayerId(player.id);
@@ -1649,7 +1648,7 @@ export function FantasyFootballClient({ initialState, initialSnapshot = null }: 
                             : "Board rank"
                       }
                       style={{
-                        color: isQueued ? SIGNAL_TEXT_COLOR : "var(--home-ink)",
+                        color: isQueued ? SIGNAL_TEXT_COLOR : "var(--c97-ink)",
                       }}
                     >
                       {displayRank(player)}
@@ -1668,15 +1667,15 @@ export function FantasyFootballClient({ initialState, initialSnapshot = null }: 
                         <span className="min-w-[7rem] truncate text-sm font-semibold tracking-tight">{player.name}</span>
                         <span className="flex min-w-0 items-center gap-x-2 @min-[21.5rem]:shrink-0">
                           <span
-                            className="inline-flex shrink-0 items-center rounded-[2px] border px-1.5 py-0.5 font-mono text-3xs tracking-[0.06em]"
-                            style={{ ...tone, color: "var(--home-ink)" }}
+                            className="inline-flex shrink-0 items-center border px-1.5 py-0.5 font-mono text-3xs tracking-[0.06em]"
+                            style={{ ...tone, color: "var(--c97-ink)" }}
                           >
                             {player.position}
                             {Number.isFinite(player.positionRank) ? player.positionRank : ""}
                           </span>
                           <span
                             className="min-w-0 font-mono text-3xs uppercase tracking-[0.06em]"
-                            style={{ color: "var(--home-ink-muted)" }}
+                            style={{ color: "var(--c97-ink-2)" }}
                           >
                             {player.team}
                             {player.byeWeek ? ` · Bye ${player.byeWeek}` : ""}
@@ -1702,8 +1701,8 @@ export function FantasyFootballClient({ initialState, initialSnapshot = null }: 
                                 vorp && vorp.value > 0
                                   ? vorpMode
                                     ? SIGNAL_TEXT_COLOR
-                                    : "var(--home-ink)"
-                                  : "var(--home-ink-muted)",
+                                    : "var(--c97-ink)"
+                                  : "var(--c97-ink-2)",
                             }}
                           >
                             <span aria-hidden="true" className={ROW_MICRO_LABEL_CLASS}>
@@ -1720,7 +1719,7 @@ export function FantasyFootballClient({ initialState, initialSnapshot = null }: 
                       <span
                         className="w-auto font-mono text-xs md:w-16 md:text-right"
                         title={FANTASY_EXPERT_SPREAD_TOOLTIP}
-                        style={{ color: "var(--home-ink-muted)" }}
+                        style={{ color: "var(--c97-ink-2)" }}
                       >
                         <span aria-hidden="true" className={ROW_MICRO_LABEL_CLASS}>
                           Rng{" "}
@@ -1743,7 +1742,7 @@ export function FantasyFootballClient({ initialState, initialSnapshot = null }: 
                           <span
                             className="w-auto font-mono text-xs md:w-16 md:text-right"
                             title={adpTooltip}
-                            style={{ color: "var(--home-ink-muted)" }}
+                            style={{ color: "var(--c97-ink-2)" }}
                           >
                             <span aria-hidden="true" className={ROW_MICRO_LABEL_CLASS}>
                               ADP{" "}
@@ -1760,12 +1759,12 @@ export function FantasyFootballClient({ initialState, initialSnapshot = null }: 
                                     ? "Early mock-draft sample, so the gap carries no value or reach read yet"
                                     : FANTASY_VS_ADP_TOOLTIP
                                 }
-                                style={{ color: vsAdp ? vsAdp.color : "var(--home-ink-muted)" }}
+                                style={{ color: vsAdp ? vsAdp.color : "var(--c97-ink-2)" }}
                               >
                                 <span
                                   aria-hidden="true"
                                   className={ROW_MICRO_LABEL_CLASS}
-                                  style={{ color: "var(--home-ink-muted)" }}
+                                  style={{ color: "var(--c97-ink-2)" }}
                                 >
                                   ±ADP{" "}
                                 </span>
@@ -1793,12 +1792,12 @@ export function FantasyFootballClient({ initialState, initialSnapshot = null }: 
                         event.stopPropagation();
                         queue.toggle(player.id);
                       }}
-                      className={`absolute right-2 top-1/2 flex h-11 w-11 -translate-y-1/2 cursor-pointer items-center justify-center rounded-[4px] transition-opacity duration-150 focus-visible:outline focus-visible:outline-2 focus-visible:outline-[var(--home-signal)] ${
+                      className={`absolute right-2 top-1/2 flex h-11 w-11 -translate-y-1/2 cursor-pointer items-center justify-center transition-opacity duration-150 focus-visible:outline focus-visible:outline-2 focus-visible:outline-[var(--c97-accent)] ${
                         isQueued
                           ? ""
                           : "pointer-fine:opacity-0 pointer-fine:group-focus-within:opacity-100 pointer-fine:group-hover:opacity-100"
                       }`}
-                      style={{ color: isQueued ? "var(--home-signal)" : "var(--home-ink-muted)" }}
+                      style={{ color: isQueued ? "var(--c97-accent)" : "var(--c97-ink-2)" }}
                     >
                       <Star size={16} fill={isQueued ? "currentColor" : "none"} aria-hidden="true" />
                     </button>
@@ -1814,91 +1813,86 @@ export function FantasyFootballClient({ initialState, initialSnapshot = null }: 
 
   return (
     <section
-      className="home-page home-dash min-h-screen"
+      className="c97-dash relative overflow-x-clip min-h-screen"
       aria-label="Fantasy football rankings"
       data-testid="fantasy-football-shell"
       data-hydrated={isHydrated ? "true" : "false"}
     >
-      <header className={`${SHELL_CLASS} flex flex-wrap items-baseline justify-between gap-x-6 gap-y-3 pb-4 pt-7`}>
-        <div className="flex flex-wrap items-baseline gap-x-4 gap-y-1.5">
-          <span
-            className="inline-flex items-center gap-2 font-mono text-2xs uppercase tracking-[0.1em]"
-            style={{ color: "var(--home-ink-muted)" }}
-          >
-            <span className="h-2 w-2 rounded-full" style={{ background: "var(--home-signal)" }} aria-hidden="true" />
-            Draft rankings{metadata?.season ? ` · ${metadata.season}` : ""}
-          </span>
-          <h1
-            className="m-0 font-semibold leading-none"
-            style={{ fontSize: "clamp(1.55rem, 1.3rem + 1.25vw, 2.1rem)", letterSpacing: "-0.05em" }}
-          >
-            Fantasy Football{" "}
-            <em style={{ fontFamily: "var(--font-home-serif)", fontStyle: "italic", fontWeight: 500 }}>Rankings</em>
-          </h1>
-          <p className="m-0 w-full max-w-[62ch] text-sm" style={{ color: "var(--home-ink-muted)" }}>
+      <section className="c97-sheet" data-c97-surface={`ink-${PROJECT_PRESS["/fantasy-football"].lead}`}>
+        <div className={SHELL_CLASS} style={{ paddingBlock: "var(--c97-sp-5)" }}>
+          <h1 className="c97-poster">Fantasy Football Rankings</h1>
+          <p className="c97-lead" style={{ marginTop: "var(--c97-sp-3)" }}>
             {vorpMode
               ? `VORP ranks FantasyPros' projected season points above the same-position waiver replacement in a ${routeState.teams}-team league. FantasyPros supplies the roster baseline for this view.`
               : "The board pairs the expert consensus with market ADP, and the tier plates and cliff lines mark where the board actually drops off."}
           </p>
+          <p className="c97-meta" style={{ marginTop: "var(--c97-sp-2)" }}>
+            Draft rankings{metadata?.season ? ` · ${metadata.season}` : ""}
+          </p>
+          <div
+            data-c97-surface="paper"
+            className="c97-offset"
+            style={{ padding: "var(--c97-sp-3)", marginTop: "var(--c97-sp-4)" }}
+          >
+            <div className="flex flex-wrap gap-1.5">
+              {headerChips.map((chip) => (
+                <span
+                  key={chip.label}
+                  className={HEADER_CHIP_CLASS}
+                  style={
+                    chip.tone ?? {
+                      borderColor: "var(--c97-rule)",
+                      background: "var(--c97-field)",
+                      color: "var(--c97-ink-2)",
+                    }
+                  }
+                >
+                  {chip.shortLabel ? (
+                    <>
+                      <span className="md:hidden">{chip.shortLabel}</span>
+                      <span className="hidden md:inline">{chip.label}</span>
+                    </>
+                  ) : (
+                    chip.label
+                  )}
+                </span>
+              ))}
+            </div>
+          </div>
         </div>
-        <div className="flex flex-wrap gap-1.5">
-          {headerChips.map((chip) => (
-            <span
-              key={chip.label}
-              className={HEADER_CHIP_CLASS}
-              style={
-                chip.tone ?? {
-                  borderColor: "var(--home-rule)",
-                  background: "var(--home-paper-alt)",
-                  color: "var(--home-ink-muted)",
-                }
-              }
-            >
-              {chip.shortLabel ? (
-                <>
-                  <span className="md:hidden">{chip.shortLabel}</span>
-                  <span className="hidden md:inline">{chip.label}</span>
-                </>
-              ) : (
-                chip.label
-              )}
-            </span>
-          ))}
-        </div>
-      </header>
+      </section>
 
-      {seasonalWeek >= 1 ? (
-        <div className={`${SHELL_CLASS} pb-4`}>
-          <SeasonalScopeNote season={metadata?.season ?? 0} week={seasonalWeek}>
-            Every board on this page is the preseason draft consensus, kept as a
-            reference once games begin rather than refreshed for weekly starts.
-            Ranks that still move are on the{" "}
-            <Link
-              href="/fantasy-football/weekly"
-              className="underline decoration-[var(--home-signal)] underline-offset-4"
-            >
-              weekly board
-            </Link>{" "}
-            and the{" "}
-            <Link
-              href="/fantasy-football/waivers"
-              className="underline decoration-[var(--home-signal)] underline-offset-4"
-            >
-              waiver targets
-            </Link>
-            .
-          </SeasonalScopeNote>
-        </div>
-      ) : null}
+      <section className="c97-sheet" data-c97-surface="paper" data-seam="torn">
+        {seasonalWeek >= 1 ? (
+          <div className={`${SHELL_CLASS} pt-4 pb-4`}>
+            <SeasonalScopeNote season={metadata?.season ?? 0} week={seasonalWeek}>
+              Every board on this page is the preseason draft consensus, kept as a
+              reference once games begin rather than refreshed for weekly starts.
+              Ranks that still move are on the{" "}
+              <Link
+                href="/fantasy-football/weekly"
+                className="underline decoration-[var(--c97-accent)] underline-offset-4"
+              >
+                weekly board
+              </Link>{" "}
+              and the{" "}
+              <Link
+                href="/fantasy-football/waivers"
+                className="underline decoration-[var(--c97-accent)] underline-offset-4"
+              >
+                waiver targets
+              </Link>
+              .
+            </SeasonalScopeNote>
+          </div>
+        ) : null}
 
       <div
         data-testid="fantasy-board-controls"
         className="sticky top-0 z-30 border-y"
         style={{
-          borderColor: "var(--home-rule)",
-          background: "color-mix(in srgb, var(--home-paper) 90%, transparent)",
-          backdropFilter: "blur(8px)",
-          WebkitBackdropFilter: "blur(8px)",
+          borderColor: "var(--c97-rule)",
+          background: "var(--c97-surface)",
         }}
       >
         <div className={`${SHELL_CLASS} hidden flex-wrap items-center gap-x-3.5 gap-y-2 py-1 md:flex`}>
@@ -1937,7 +1931,7 @@ export function FantasyFootballClient({ initialState, initialSnapshot = null }: 
                 </label>
                 <Search
                   className="pointer-events-none absolute left-2.5 top-1/2 h-3.5 w-3.5 -translate-y-1/2"
-                  style={{ color: "var(--home-ink-muted)" }}
+                  style={{ color: "var(--c97-ink-2)" }}
                   aria-hidden="true"
                 />
                 <input
@@ -1953,11 +1947,11 @@ export function FantasyFootballClient({ initialState, initialSnapshot = null }: 
                   disabled={currentSliceUnavailable}
                   autoComplete="off"
                   placeholder="Search player or team"
-                  className="min-h-touch w-full rounded-[4px] border pl-8 pr-2.5 font-mono text-xs placeholder:text-[var(--home-ink-muted)] disabled:cursor-not-allowed disabled:opacity-60"
+                  className="min-h-touch w-full border pl-8 pr-2.5 font-mono text-xs placeholder:text-[var(--c97-ink-2)] disabled:cursor-not-allowed disabled:opacity-60"
                   style={{
-                    borderColor: "var(--home-control-rule)",
-                    background: "var(--home-paper-raised)",
-                    color: "var(--home-ink)",
+                    borderColor: "var(--c97-ink-2)",
+                    background: "var(--c97-field)",
+                    color: "var(--c97-ink)",
                   }}
                 />
               </div>
@@ -1970,11 +1964,11 @@ export function FantasyFootballClient({ initialState, initialSnapshot = null }: 
                     setSearchQuery("");
                     updateRouteState({ query: "" });
                   }}
-                  className="inline-flex min-h-touch min-w-touch shrink-0 items-center justify-center rounded-[4px] border"
+                  className="inline-flex min-h-touch min-w-touch shrink-0 items-center justify-center border"
                   style={{
-                    borderColor: "var(--home-control-rule)",
-                    background: "var(--home-paper-raised)",
-                    color: "var(--home-ink)",
+                    borderColor: "var(--c97-ink-2)",
+                    background: "var(--c97-field)",
+                    color: "var(--c97-ink)",
                   }}
                 >
                   <X className="h-4 w-4" aria-hidden="true" />
@@ -1985,11 +1979,11 @@ export function FantasyFootballClient({ initialState, initialSnapshot = null }: 
                 aria-label="Done searching, keep the filter"
                 onMouseDown={(event) => event.preventDefault()}
                 onClick={() => setMobileSearchOpen(false)}
-                className="inline-flex min-h-touch shrink-0 items-center rounded-[4px] border px-3 font-mono text-3xs uppercase tracking-[0.08em]"
+                className="inline-flex min-h-touch shrink-0 items-center border px-3 font-mono text-3xs uppercase tracking-[0.08em]"
                 style={{
-                  borderColor: "var(--home-control-rule)",
-                  background: "var(--home-paper-raised)",
-                  color: "var(--home-ink)",
+                  borderColor: "var(--c97-ink-2)",
+                  background: "var(--c97-field)",
+                  color: "var(--c97-ink)",
                 }}
               >
                 Done
@@ -2004,11 +1998,11 @@ export function FantasyFootballClient({ initialState, initialSnapshot = null }: 
                 id="fantasy-position-select"
                 value={routeState.position}
                 onChange={(event) => updateRouteState({ position: event.target.value as FantasyRoutePosition })}
-                className="min-h-touch shrink-0 rounded-[4px] border px-2 font-mono text-2xs uppercase tracking-[0.06em]"
+                className="min-h-touch shrink-0 border px-2 font-mono text-2xs uppercase tracking-[0.06em]"
                 style={{
-                  borderColor: "var(--home-control-rule)",
-                  background: "var(--home-paper-raised)",
-                  color: "var(--home-ink)",
+                  borderColor: "var(--c97-ink-2)",
+                  background: "var(--c97-field)",
+                  color: "var(--c97-ink)",
                 }}
               >
                 {positionOptions.map((option) => {
@@ -2041,13 +2035,13 @@ export function FantasyFootballClient({ initialState, initialSnapshot = null }: 
                 }
                 onClick={() => setMobileSearchOpen(true)}
                 disabled={currentSliceUnavailable}
-                className="inline-flex min-h-touch min-w-touch shrink-0 items-center justify-center rounded-[4px] border disabled:cursor-not-allowed disabled:opacity-60"
+                className="inline-flex min-h-touch min-w-touch shrink-0 items-center justify-center border disabled:cursor-not-allowed disabled:opacity-60"
                 style={
                   /* A collapsed search still filters the board, so the control
                      carries the active state rather than hiding the filter. */
                   searchQuery
-                    ? { borderColor: "var(--home-ink)", background: "var(--home-ink)", color: "var(--home-paper)" }
-                    : { borderColor: "var(--home-control-rule)", background: "var(--home-paper-raised)", color: "var(--home-ink)" }
+                    ? { borderColor: "var(--c97-ink)", background: "var(--c97-ink)", color: "var(--c97-surface)" }
+                    : { borderColor: "var(--c97-ink-2)", background: "var(--c97-field)", color: "var(--c97-ink)" }
                 }
               >
                 <Search className="h-4 w-4" aria-hidden="true" />
@@ -2083,7 +2077,7 @@ export function FantasyFootballClient({ initialState, initialSnapshot = null }: 
           <span
             aria-live={error ? undefined : "polite"}
             className="min-w-0 flex-1 text-right font-mono text-2xs leading-snug"
-            style={{ color: "var(--home-ink-muted)" }}
+            style={{ color: "var(--c97-ink-2)" }}
           >
             {countLine}
           </span>
@@ -2099,12 +2093,12 @@ export function FantasyFootballClient({ initialState, initialSnapshot = null }: 
             edited; only the labels wait for rows. */}
         <div
           className="hidden border-t md:block"
-          style={{ borderColor: "color-mix(in srgb, var(--home-rule) 60%, transparent)" }}
+          style={{ borderColor: "color-mix(in srgb, var(--c97-rule) 60%, transparent)" }}
         >
           <div className={SHELL_CLASS}>
             <div
               className="relative flex items-center gap-x-4 py-1 pl-3.5 pr-15 font-mono text-3xs uppercase tracking-[0.12em]"
-              style={{ color: "var(--home-ink-muted)" }}
+              style={{ color: "var(--c97-ink-2)" }}
             >
               <span className="w-[34px] shrink-0" />
               <span className="flex min-w-0 flex-[1_1_12rem] items-center gap-x-3">
@@ -2114,7 +2108,7 @@ export function FantasyFootballClient({ initialState, initialSnapshot = null }: 
                   </label>
                   <Search
                     className="pointer-events-none absolute left-2.5 top-1/2 h-3.5 w-3.5 -translate-y-1/2"
-                    style={{ color: "var(--home-ink-muted)" }}
+                    style={{ color: "var(--c97-ink-2)" }}
                     aria-hidden="true"
                   />
                   <input
@@ -2126,11 +2120,11 @@ export function FantasyFootballClient({ initialState, initialSnapshot = null }: 
                     disabled={currentSliceUnavailable}
                     autoComplete="off"
                     placeholder="Player or team"
-                    className="min-h-touch w-40 max-w-full rounded-[4px] border pl-8 pr-2.5 font-mono text-xs normal-case tracking-normal placeholder:text-[var(--home-ink-muted)] disabled:cursor-not-allowed disabled:opacity-60 lg:w-[200px]"
+                    className="min-h-touch w-40 max-w-full border pl-8 pr-2.5 font-mono text-xs normal-case tracking-normal placeholder:text-[var(--c97-ink-2)] disabled:cursor-not-allowed disabled:opacity-60 lg:w-[200px]"
                     style={{
-                      borderColor: "var(--home-control-rule)",
-                      background: "var(--home-paper-raised)",
-                      color: "var(--home-ink)",
+                      borderColor: "var(--c97-ink-2)",
+                      background: "var(--c97-field)",
+                      color: "var(--c97-ink)",
                     }}
                   />
                 </span>
@@ -2179,7 +2173,7 @@ export function FantasyFootballClient({ initialState, initialSnapshot = null }: 
           <span
             aria-live={error ? undefined : "polite"}
             className="font-mono text-2xs"
-            style={{ color: "var(--home-ink-muted)" }}
+            style={{ color: "var(--c97-ink-2)" }}
           >
             {countLine}
           </span>
@@ -2188,14 +2182,14 @@ export function FantasyFootballClient({ initialState, initialSnapshot = null }: 
         {localToolsMemoryOnly && (
           <div
             role="status"
-            className="mb-4 rounded-lg border px-4 py-3 text-sm"
+            className="mb-4 border px-4 py-3 text-sm"
             style={{
-              borderColor: "color-mix(in srgb, var(--home-warning) 55%, var(--home-rule))",
-              background: "color-mix(in srgb, var(--home-warning) 10%, var(--home-paper))",
+              borderColor: "color-mix(in srgb, var(--c97-warning) 55%, var(--c97-rule))",
+              background: "color-mix(in srgb, var(--c97-warning) 10%, var(--c97-surface))",
             }}
           >
             <p className="font-semibold">Browser storage is unavailable.</p>
-            <p className="mt-1" style={{ color: "var(--home-ink-muted)" }}>
+            <p className="mt-1" style={{ color: "var(--c97-ink-2)" }}>
               Queue and notes still work in this tab, but they will not survive a reload.
             </p>
           </div>
@@ -2206,10 +2200,10 @@ export function FantasyFootballClient({ initialState, initialSnapshot = null }: 
             {Array.from({ length: 12 }).map((_, index) => (
               <div
                 key={`loading-${index}`}
-                className="h-11 rounded-lg border motion-safe:animate-pulse"
+                className="h-11 border motion-safe:animate-pulse"
                 style={{
-                  borderColor: "var(--home-rule)",
-                  background: "color-mix(in srgb, var(--home-paper-alt) 55%, var(--home-elev-mix))",
+                  borderColor: "var(--c97-rule)",
+                  background: "var(--c97-field)",
                 }}
               />
             ))}
@@ -2217,57 +2211,57 @@ export function FantasyFootballClient({ initialState, initialSnapshot = null }: 
         ) : error ? (
           <div
             role="alert"
-            className="rounded-lg border px-5 py-8"
+            className="border px-5 py-8"
             style={{
-              borderColor: "var(--home-negative)",
-              background: "color-mix(in srgb, var(--home-negative) 8%, var(--home-paper))",
+              borderColor: "var(--c97-negative)",
+              background: "color-mix(in srgb, var(--c97-negative) 8%, var(--c97-surface))",
             }}
           >
-            <p className="font-semibold" style={{ color: "var(--home-negative)" }}>
+            <p className="font-semibold" style={{ color: "var(--c97-negative)" }}>
               {error}
             </p>
-            <p className="mt-2 text-sm" style={{ color: "var(--home-ink-muted)" }}>
+            <p className="mt-2 text-sm" style={{ color: "var(--c97-ink-2)" }}>
               Check your connection and try loading the published snapshot again.
             </p>
             <button
               type="button"
               onClick={retry}
-              className="mt-4 inline-flex min-h-touch items-center rounded-full border px-4 text-sm font-semibold"
-              style={{ borderColor: "var(--home-ink)", background: "var(--home-ink)", color: "var(--home-paper)" }}
+              className="mt-4 inline-flex min-h-touch items-center border px-4 text-sm font-semibold"
+              style={{ borderColor: "var(--c97-ink)", background: "var(--c97-ink)", color: "var(--c97-surface)" }}
             >
               Retry rankings
             </button>
           </div>
         ) : currentSliceUnavailable ? (
           <div
-            className="rounded-lg border px-5 py-12 text-center"
+            className="border px-5 py-12 text-center"
             style={{
-              borderColor: "color-mix(in srgb, var(--home-warning) 32%, var(--home-rule))",
-              background: "color-mix(in srgb, var(--home-warning) 10%, var(--home-paper))",
+              borderColor: "color-mix(in srgb, var(--c97-warning) 32%, var(--c97-rule))",
+              background: "color-mix(in srgb, var(--c97-warning) 10%, var(--c97-surface))",
             }}
           >
             <p className="text-lg font-semibold">
               {selectedScoringLabel} {FANTASY_POSITION_LABELS[routeState.position]} rankings are unavailable.
             </p>
-            <p className="mt-2 text-sm" style={{ color: "var(--home-ink-muted)" }}>
+            <p className="mt-2 text-sm" style={{ color: "var(--c97-ink-2)" }}>
               {sliceMetadata?.reason ??
                 "This scoring-position combination is not published in the current snapshot."}
             </p>
           </div>
         ) : filteredPlayers.length === 0 ? (
           <div
-            className="rounded-lg border border-dashed px-5 py-9 text-center"
-            style={{ borderColor: "var(--home-rule)" }}
+            className="border border-dashed px-5 py-9 text-center"
+            style={{ borderColor: "var(--c97-rule)" }}
           >
-            <p className="font-mono text-xs" style={{ color: "var(--home-ink-muted)" }}>
+            <p className="font-mono text-xs" style={{ color: "var(--c97-ink-2)" }}>
               {queuedOnly ? "No queued players on this board." : "No players match on this board."}
             </p>
             {queuedOnly ? (
               <button
                 type="button"
                 onClick={() => setQueuedOnly(false)}
-                className="mt-3.5 inline-flex min-h-touch items-center rounded-full border px-4 font-mono text-2xs uppercase tracking-[0.06em]"
-                style={{ borderColor: "var(--home-ink)", background: "var(--home-ink)", color: "var(--home-paper)" }}
+                className="mt-3.5 inline-flex min-h-touch items-center border px-4 font-mono text-2xs uppercase tracking-[0.06em]"
+                style={{ borderColor: "var(--c97-ink)", background: "var(--c97-ink)", color: "var(--c97-surface)" }}
               >
                 Show all players
               </button>
@@ -2279,8 +2273,8 @@ export function FantasyFootballClient({ initialState, initialSnapshot = null }: 
                     setSearchQuery("");
                     updateRouteState({ query: "" });
                   }}
-                  className="inline-flex min-h-touch items-center rounded-full border px-4 font-mono text-2xs uppercase tracking-[0.06em]"
-                  style={{ borderColor: "var(--home-ink)", background: "var(--home-ink)", color: "var(--home-paper)" }}
+                  className="inline-flex min-h-touch items-center border px-4 font-mono text-2xs uppercase tracking-[0.06em]"
+                  style={{ borderColor: "var(--c97-ink)", background: "var(--c97-ink)", color: "var(--c97-surface)" }}
                 >
                   Clear search
                 </button>
@@ -2288,8 +2282,8 @@ export function FantasyFootballClient({ initialState, initialSnapshot = null }: 
                   <button
                     type="button"
                     onClick={() => updateRouteState({ position: "overall" })}
-                    className="inline-flex min-h-touch items-center rounded-full border px-4 font-mono text-2xs uppercase tracking-[0.06em]"
-                    style={{ borderColor: "var(--home-rule)", background: "var(--home-paper)", color: "var(--home-ink)" }}
+                    className="inline-flex min-h-touch items-center border px-4 font-mono text-2xs uppercase tracking-[0.06em]"
+                    style={{ borderColor: "var(--c97-rule)", background: "var(--c97-surface)", color: "var(--c97-ink)" }}
                   >
                     Found on the overall board
                   </button>
@@ -2307,8 +2301,8 @@ export function FantasyFootballClient({ initialState, initialSnapshot = null }: 
                   onClick={() =>
                     setVisibleCount((count) => Math.min(count + RANKINGS_PAGE_SIZE, filteredPlayers.length))
                   }
-                  className="inline-flex min-h-touch items-center gap-2 rounded-full border px-5 text-sm font-semibold"
-                  style={{ borderColor: "var(--home-rule)", background: "var(--home-paper)" }}
+                  className="inline-flex min-h-touch items-center gap-2 border px-5 text-sm font-semibold"
+                  style={{ borderColor: "var(--c97-rule)", background: "var(--c97-surface)" }}
                 >
                   Load more ({filteredPlayers.length - windowedPlayers.length} left)
                 </button>
@@ -2319,15 +2313,15 @@ export function FantasyFootballClient({ initialState, initialSnapshot = null }: 
 
         <div
           className="mt-7 flex flex-wrap items-baseline justify-between gap-x-5 gap-y-2 border-t pt-3.5"
-          style={{ borderColor: "var(--home-rule)" }}
+          style={{ borderColor: "var(--c97-rule)" }}
         >
           <span
             className="font-mono text-2xs"
             style={{
               color:
                 sourceStaleness === "fresh" || frozenInSeason
-                  ? "var(--home-ink-muted)"
-                  : "var(--home-warning)",
+                  ? "var(--c97-ink-2)"
+                  : "var(--c97-warning)",
             }}
           >
             {frozenInSeason
@@ -2344,7 +2338,7 @@ export function FantasyFootballClient({ initialState, initialSnapshot = null }: 
                 key={tool.href}
                 href={tool.href}
                 className="inline-flex min-h-touch items-center text-sm font-semibold no-underline"
-                style={{ color: "var(--home-ink)" }}
+                style={{ color: "var(--c97-ink)" }}
               >
                 {tool.label}
                 <span aria-hidden="true">&nbsp;↗</span>
@@ -2352,28 +2346,29 @@ export function FantasyFootballClient({ initialState, initialSnapshot = null }: 
             ))}
           </nav>
         </div>
+      </div>
+      </section>
 
-        <section className="mt-10" aria-labelledby="fantasy-rankings-questions">
+      <section className="c97-sheet" data-c97-surface="bone" data-seam="torn" aria-labelledby="fantasy-rankings-questions">
+        <div className={SHELL_CLASS} style={{ paddingBlock: "var(--c97-sp-5)" }}>
           <div className="max-w-3xl">
-            <p className="home-kicker mb-2">How the board works</p>
-            {/* sm:text-2xl tops out at 34px, the same size as the page h1 on the title
-                ramp, so the section would render at exactly its parent's size. */}
-            <h2 id="fantasy-rankings-questions" className="text-xl font-semibold">
+            <p className="c97-kicker" style={{ marginBottom: "0.5rem" }}>How the board works</p>
+            <h2 id="fantasy-rankings-questions" className="c97-poster-sm">
               Fantasy rankings questions
             </h2>
           </div>
           <div className="mt-5 grid gap-4 lg:grid-cols-3">
             {FANTASY_FOOTBALL_FAQ.map((item) => (
-              <article key={item.question} className="home-card p-5 sm:p-6">
-                <h3 className="text-lg font-semibold">{item.question}</h3>
-                <p className="mt-3 text-sm leading-7" style={{ color: "var(--home-ink-muted)" }}>
+              <article key={item.question} className="c97-panel">
+                <h3 className="c97-serif c97-h3">{item.question}</h3>
+                <p className="mt-3 text-sm leading-7" style={{ color: "var(--c97-ink-2)" }}>
                   {item.answer}
                 </p>
               </article>
             ))}
           </div>
-        </section>
-      </div>
+        </div>
+      </section>
 
       {detailPlayer && (
         <DraftPlayerDrawer

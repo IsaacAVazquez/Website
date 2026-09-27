@@ -214,7 +214,7 @@ describe("WeeklyBoardClient rankings view", () => {
     renderClient("rankings");
     const card = screen.getByRole("region", { name: "Flex rankings" });
     expect(card).toHaveClass("border-t");
-    expect(card).not.toHaveClass("home-card");
+    expect(card).not.toHaveClass("c97-panel");
   });
 
   it("uses the quarterback depth on the quarterback board", () => {
@@ -353,6 +353,8 @@ describe("WeeklyBoardClient waivers view", () => {
     expect(screen.getByRole("heading", { level: 2, name: "This week’s list" })).toHaveTextContent(
       "This week’s list",
     );
+    // A section h2 that heads the board prints in poster type.
+    expect(screen.getByRole("heading", { level: 2, name: "This week’s list" })).toHaveClass("c97-poster-sm");
     expect(screen.getByRole("status")).toHaveTextContent(
       "2 players clear the gap in PPR scoring",
     );

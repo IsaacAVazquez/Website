@@ -82,15 +82,15 @@ function MetricCell({
     <div
       role="cell"
       aria-label={`${label}: ${value}`}
-      className={`min-w-0 border-[var(--home-rule)] px-3 py-3 sm:px-4 md:flex md:min-h-20 md:items-center md:justify-center md:py-4 ${METRIC_CELL_BORDERS[index] ?? ""}`}
+      className={`min-w-0 border-[var(--c97-rule)] px-3 py-3 sm:px-4 md:flex md:min-h-20 md:items-center md:justify-center md:py-4 ${METRIC_CELL_BORDERS[index] ?? ""}`}
     >
       <span
         aria-hidden="true"
-        className="block font-mono text-3xs uppercase tracking-[0.1em] text-[var(--home-ink-muted)] md:hidden"
+        className="block font-mono text-3xs uppercase tracking-[0.1em] text-[var(--c97-ink-2)] md:hidden"
       >
         {label}
       </span>
-      <span className="mt-1 block font-mono text-base font-semibold tabular-nums text-[var(--home-ink)] md:mt-0 md:text-center">
+      <span className="mt-1 block font-mono text-base font-semibold tabular-nums text-[var(--c97-ink)] md:mt-0 md:text-center">
         {value}
       </span>
     </div>
@@ -129,13 +129,11 @@ export function TradeRosterImpact({
   return (
     <section
       aria-labelledby="trade-roster-impact-title"
-      className="min-w-0 border-y border-[var(--home-rule)] bg-[var(--home-paper)]"
+      className="min-w-0 border-y border-[var(--c97-rule)]"
+      data-c97-surface="bone"
     >
-      <header className="border-b border-[var(--home-rule)] px-4 py-4 sm:px-5">
-        <h2
-          id="trade-roster-impact-title"
-          className="text-lg font-semibold tracking-[-0.03em] text-[var(--home-ink)]"
-        >
+      <header className="border-b border-[var(--c97-rule)] px-4 py-4 sm:px-5">
+        <h2 id="trade-roster-impact-title" className="c97-serif c97-h3">
           Package fit after the trade
         </h2>
       </header>
@@ -143,9 +141,9 @@ export function TradeRosterImpact({
       <div role="table" aria-label="Package fit after the trade">
         <div
           role="row"
-          className="hidden grid-cols-[minmax(8rem,1.15fr)_repeat(4,minmax(0,1fr))] border-b border-[var(--home-rule)] md:grid"
+          className="hidden grid-cols-[minmax(8rem,1.15fr)_repeat(4,minmax(0,1fr))] border-b border-[var(--c97-rule)] md:grid"
         >
-          <span role="columnheader" className="px-4 py-2.5 font-mono text-3xs uppercase tracking-[0.1em] text-[var(--home-ink-muted)]">
+          <span role="columnheader" className="px-4 py-2.5 font-mono text-3xs uppercase tracking-[0.1em] text-[var(--c97-ink-2)]">
             Roster
           </span>
           {[
@@ -157,14 +155,14 @@ export function TradeRosterImpact({
             <span
               key={label}
               role="columnheader"
-              className="border-l border-[var(--home-rule)] px-3 py-2.5 text-center font-mono text-3xs uppercase leading-4 tracking-[0.1em] text-[var(--home-ink-muted)]"
+              className="border-l border-[var(--c97-rule)] px-3 py-2.5 text-center font-mono text-3xs uppercase leading-4 tracking-[0.1em] text-[var(--c97-ink-2)]"
             >
               {label}
             </span>
           ))}
         </div>
 
-        <div className="divide-y divide-[var(--home-rule)]">
+        <div className="divide-y divide-[var(--c97-rule)]">
           {rows.map((row) => (
             <div
               key={row.label}
@@ -173,9 +171,9 @@ export function TradeRosterImpact({
             >
               <div
                 role="rowheader"
-                className="min-w-0 border-b border-[var(--home-rule)] px-4 py-3 md:flex md:min-h-20 md:items-center md:border-b-0 md:border-r md:py-4"
+                className="min-w-0 border-b border-[var(--c97-rule)] px-4 py-3 md:flex md:min-h-20 md:items-center md:border-b-0 md:border-r md:py-4"
               >
-                <span className="text-sm font-semibold text-[var(--home-ink)]">
+                <span className="text-sm font-semibold text-[var(--c97-ink)]">
                   {row.label}
                 </span>
               </div>
@@ -198,7 +196,7 @@ export function TradeRosterImpact({
         </div>
       </div>
 
-      <p className="border-t border-[var(--home-rule)] px-4 py-3 text-xs leading-5 text-[var(--home-ink-muted)] sm:px-5">
+      <p className="border-t border-[var(--c97-rule)] px-4 py-3 text-xs leading-5 text-[var(--c97-ink-2)] sm:px-5">
         This compares the assets in the offer against league-specific starter and roster lines. It does not project either full roster.
       </p>
     </section>

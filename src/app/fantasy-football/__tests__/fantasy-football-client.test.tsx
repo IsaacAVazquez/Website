@@ -227,7 +227,7 @@ describe("FantasyFootballClient", () => {
 
     const { container } = renderClient();
 
-    expect(container.firstChild).toHaveClass("home-page");
+    expect(container.firstChild).toHaveClass("c97-dash");
     expect(screen.getByRole("heading", { name: /RB rankings/i })).toBeInTheDocument();
     expect(screen.getByRole("radio", { name: /RB/i })).not.toBeDisabled();
 
@@ -318,7 +318,7 @@ describe("FantasyFootballClient", () => {
     const chaseButton = screen.getByRole("button", { name: "Open Ja'Marr Chase detail" });
     const chaseRow = chaseButton.closest("li") as HTMLElement;
     // Chase: ADP 30 vs rank 12 clears the noise threshold, so the delta is toned.
-    expect(within(chaseRow).getByText("+18")).toHaveStyle({ color: "var(--home-positive)" });
+    expect(within(chaseRow).getByText("+18")).toHaveStyle({ color: "var(--c97-positive)" });
     // The named chip rides beside the player, since the signed delta alone is
     // what a drafter has to translate. It carries the word only, because the
     // delta is already in the row's vs ADP cell above.
@@ -327,7 +327,7 @@ describe("FantasyFootballClient", () => {
     const higginsRow = screen
       .getByRole("button", { name: "Open Tee Higgins detail" })
       .closest("li") as HTMLElement;
-    expect(within(higginsRow).getByText("+1")).toHaveStyle({ color: "var(--home-ink-muted)" });
+    expect(within(higginsRow).getByText("+1")).toHaveStyle({ color: "var(--c97-ink-2)" });
     expect(within(higginsRow).queryByText(/^(Value|Reach)$/)).not.toBeInTheDocument();
 
     fireEvent.click(chaseButton);
@@ -572,7 +572,7 @@ describe("FantasyFootballClient", () => {
     };
     const vorpRankings = { "12": [{ playerId: "rb-1", rank: 1, value: 70 }] };
     const players = [makePlayer({ id: "rb-1", name: "Consensus First", rankEcr: 1 })];
-    const signalText = "color-mix(in srgb, var(--home-signal) 72%, var(--home-ink))";
+    const signalText = "color-mix(in srgb, var(--c97-accent) 72%, var(--c97-ink))";
 
     currentSearchParams = new URLSearchParams("position=overall&scoring=ppr");
     mockSnapshot({ position: "overall", vorpSource, vorpRankings, players });
@@ -581,7 +581,7 @@ describe("FantasyFootballClient", () => {
       .getByRole("button", { name: "Open Consensus First detail" })
       .closest("li") as HTMLElement;
     // On the consensus board the column is data in ink, not forty accented numbers.
-    expect(within(consensusRow).getByTitle(/replacement/i)).toHaveStyle({ color: "var(--home-ink)" });
+    expect(within(consensusRow).getByTitle(/replacement/i)).toHaveStyle({ color: "var(--c97-ink)" });
     // The queued rank digit takes the 72%-toward-ink mix: bare signal on
     // paper-raised measured 4.61:1 at rest and 4.41:1 on hover in light mode.
     fireEvent.click(screen.getByRole("button", { name: "Queue Consensus First" }));
@@ -748,7 +748,7 @@ describe("FantasyFootballClient", () => {
     const row = screen
       .getByRole("button", { name: "Open Tyler Allgeier detail" })
       .closest("li") as HTMLElement;
-    expect(within(row).getByText("+26.3")).toHaveStyle({ color: "var(--home-ink-muted)" });
+    expect(within(row).getByText("+26.3")).toHaveStyle({ color: "var(--c97-ink-2)" });
 
     fireEvent.click(screen.getByRole("button", { name: "Open Tyler Allgeier detail" }));
     const dialog = screen.getByRole("dialog", { name: "Tyler Allgeier detail" });

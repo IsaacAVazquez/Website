@@ -79,13 +79,13 @@ function formatBoardMove(value: number): string {
 function StatCell({ label, children }: { label: string; children: React.ReactNode }) {
   return (
     <div
-      className="rounded-[var(--radius-3xl)] border px-3 py-2.5"
+      className="border px-3 py-2.5"
       style={{
-        borderColor: "var(--home-rule)",
-        background: "color-mix(in srgb, var(--home-paper) 88%, var(--home-elev-mix))",
+        borderColor: "var(--c97-rule)",
+        background: "color-mix(in srgb, var(--c97-surface) 88%, var(--c97-field))",
       }}
     >
-      <p className="text-2xs font-semibold uppercase tracking-[0.12em]" style={{ color: "var(--home-ink-muted)" }}>
+      <p className="text-2xs font-semibold uppercase tracking-[0.12em]" style={{ color: "var(--c97-ink-2)" }}>
         {label}
       </p>
       <p className="mt-0.5 text-base font-semibold tabular-nums">{children}</p>
@@ -202,7 +202,7 @@ export function PlayerDetailDrawer({ player, publishedRank, publishedRankLabel =
             aria-label="Close player detail"
             onClick={onClose}
             className="absolute inset-0 h-full w-full cursor-default"
-            style={{ background: "color-mix(in srgb, var(--home-ink) 38%, transparent)" }}
+            style={{ background: "color-mix(in srgb, var(--c97-ink) 38%, transparent)" }}
             tabIndex={-1}
           />
           <motion.div
@@ -215,11 +215,10 @@ export function PlayerDetailDrawer({ player, publishedRank, publishedRankLabel =
             animate={{ opacity: 1, y: 0 }}
             exit={reduceMotion ? { opacity: 0 } : { opacity: 0, y: 24 }}
             transition={{ duration: reduceMotion ? 0 : 0.24, ease: [0.25, 0.46, 0.45, 0.94] }}
-            className="relative flex max-h-[88vh] w-full flex-col gap-4 overscroll-contain overflow-y-auto rounded-t-[var(--radius-3xl)] border p-5 sm:max-h-none sm:h-full sm:w-[26rem] sm:rounded-l-[var(--radius-3xl)] sm:rounded-tr-none"
+            className="relative flex max-h-[88vh] w-full flex-col gap-4 overscroll-contain overflow-y-auto border p-5 sm:max-h-none sm:h-full sm:w-[26rem]"
             style={{
-              borderColor: "var(--home-rule)",
-              background: "var(--home-paper)",
-              boxShadow: "var(--shadow-xl)",
+              borderColor: "var(--c97-rule)",
+              background: "var(--c97-surface)",
             }}
           >
             {/* Header */}
@@ -227,20 +226,20 @@ export function PlayerDetailDrawer({ player, publishedRank, publishedRankLabel =
               <div className="min-w-0">
                 <div className="flex items-center gap-2">
                   <span
-                    className="inline-flex items-center rounded-full border px-2.5 py-0.5 text-2xs font-semibold uppercase tracking-[0.12em]"
+                    className="inline-flex items-center border px-2.5 py-0.5 text-2xs font-semibold uppercase tracking-[0.12em]"
                     style={getPositionTone(player.position)}
                   >
                     {player.position}
                     {Number.isFinite(player.positionRank) ? ` ${player.positionRank}` : ""}
                   </span>
                   {publishedRank && (
-                    <span className="text-2xs font-semibold uppercase tracking-[0.12em]" style={{ color: "var(--home-ink-muted)" }}>
+                    <span className="text-2xs font-semibold uppercase tracking-[0.12em]" style={{ color: "var(--c97-ink-2)" }}>
                       {publishedRankLabel} {publishedRank}
                     </span>
                   )}
                 </div>
-                <h2 className="mt-1.5 truncate text-2xl font-semibold tracking-tight">{player.name}</h2>
-                <p className="text-sm" style={{ color: "var(--home-ink-muted)" }}>
+                <h2 className="c97-serif c97-h2 truncate" style={{ marginTop: "0.375rem" }}>{player.name}</h2>
+                <p className="text-sm" style={{ color: "var(--c97-ink-2)" }}>
                   {player.team || "Free agent"}
                   {player.byeWeek ? ` · Bye ${player.byeWeek}` : ""}
                 </p>
@@ -249,8 +248,8 @@ export function PlayerDetailDrawer({ player, publishedRank, publishedRankLabel =
                 type="button"
                 onClick={onClose}
                 aria-label="Close"
-                className="inline-flex min-h-touch min-w-touch shrink-0 items-center justify-center rounded-full border"
-                style={{ borderColor: "var(--home-rule)", background: "var(--home-paper)" }}
+                className="inline-flex min-h-touch min-w-touch shrink-0 items-center justify-center border"
+                style={{ borderColor: "var(--c97-rule)", background: "var(--c97-surface)" }}
               >
                 <X size={18} aria-hidden="true" />
               </button>
@@ -262,11 +261,11 @@ export function PlayerDetailDrawer({ player, publishedRank, publishedRankLabel =
                 <button
                   type="button"
                   onClick={() => onLogPick(player)}
-                  className="inline-flex min-h-touch flex-1 items-center justify-center gap-2 rounded-full border px-4 text-sm font-semibold"
+                  className="inline-flex min-h-touch flex-1 items-center justify-center gap-2 border px-4 text-sm font-semibold"
                   style={{
-                    borderColor: "var(--home-ink)",
-                    background: "var(--home-ink)",
-                    color: "var(--home-paper)",
+                    borderColor: "var(--c97-ink)",
+                    background: "var(--c97-ink)",
+                    color: "var(--c97-surface)",
                   }}
                 >
                   Log this pick
@@ -276,15 +275,15 @@ export function PlayerDetailDrawer({ player, publishedRank, publishedRankLabel =
                 type="button"
                 onClick={() => queue.toggle(player.id)}
                 aria-pressed={isQueued}
-                className="inline-flex min-h-touch flex-1 items-center justify-center gap-2 rounded-full border px-4 text-sm font-semibold"
+                className="inline-flex min-h-touch flex-1 items-center justify-center gap-2 border px-4 text-sm font-semibold"
                 style={
                   isQueued
                     ? {
-                        borderColor: "color-mix(in srgb, var(--home-signal) 60%, var(--home-rule))",
-                        background: "color-mix(in srgb, var(--home-signal) 30%, var(--home-paper))",
-                        color: "var(--home-ink)",
+                        borderColor: "color-mix(in srgb, var(--c97-accent) 60%, var(--c97-rule))",
+                        background: "color-mix(in srgb, var(--c97-accent) 30%, var(--c97-surface))",
+                        color: "var(--c97-ink)",
                       }
-                    : { borderColor: "var(--home-rule)", background: "var(--home-paper)", color: "var(--home-ink)" }
+                    : { borderColor: "var(--c97-rule)", background: "var(--c97-surface)", color: "var(--c97-ink)" }
                 }
               >
                 <Star size={16} fill={isQueued ? "currentColor" : "none"} aria-hidden="true" />
@@ -297,11 +296,11 @@ export function PlayerDetailDrawer({ player, publishedRank, publishedRankLabel =
                 aria-pressed={inCompare}
                 disabled={compareDisabled}
                 title={compareDisabled ? `Compare holds ${compare.limit} players` : undefined}
-                className="min-h-touch inline-flex flex-1 items-center justify-center gap-2 rounded-full border px-4 text-sm font-semibold disabled:cursor-not-allowed disabled:opacity-55"
+                className="min-h-touch inline-flex flex-1 items-center justify-center gap-2 border px-4 text-sm font-semibold disabled:cursor-not-allowed disabled:opacity-55"
                 style={
                   inCompare
-                    ? { borderColor: "var(--home-ink)", background: "var(--home-ink)", color: "var(--home-paper)" }
-                    : { borderColor: "var(--home-rule)", background: "var(--home-paper)", color: "var(--home-ink)" }
+                    ? { borderColor: "var(--c97-ink)", background: "var(--c97-ink)", color: "var(--c97-surface)" }
+                    : { borderColor: "var(--c97-rule)", background: "var(--c97-surface)", color: "var(--c97-ink)" }
                 }
               >
                 <GitCompareArrows size={16} aria-hidden="true" />
@@ -333,7 +332,7 @@ export function PlayerDetailDrawer({ player, publishedRank, publishedRankLabel =
               Number.isFinite(player.adpMove14d)) && (
               <p
                 className="m-0 font-mono text-2xs leading-5"
-                style={{ color: "var(--home-ink-muted)" }}
+                style={{ color: "var(--c97-ink-2)" }}
               >
                 <MetricTooltip
                   term="Movement"
@@ -367,7 +366,7 @@ export function PlayerDetailDrawer({ player, publishedRank, publishedRankLabel =
                 <div className="flex flex-wrap items-baseline justify-between gap-x-2.5 gap-y-0.5">
                   <span
                     className="inline-flex items-center text-2xs font-semibold uppercase tracking-[0.12em]"
-                    style={{ color: "var(--home-ink-muted)" }}
+                    style={{ color: "var(--c97-ink-2)" }}
                   >
                     Points per game
                     <MetricTooltip
@@ -377,7 +376,7 @@ export function PlayerDetailDrawer({ player, publishedRank, publishedRankLabel =
                   </span>
                   <span
                     className="font-mono text-3xs uppercase tracking-[0.1em]"
-                    style={{ color: "var(--home-ink-muted)" }}
+                    style={{ color: "var(--c97-ink-2)" }}
                   >
                     {player.gameLog.season} season · {player.gameLog.games}{" "}
                     {player.gameLog.games === 1 ? "game" : "games"}
@@ -395,13 +394,13 @@ export function PlayerDetailDrawer({ player, publishedRank, publishedRankLabel =
                     <div key={cell.label}>
                       <dt
                         className="text-2xs font-semibold uppercase tracking-[0.12em]"
-                        style={{ color: "var(--home-ink-muted)" }}
+                        style={{ color: "var(--c97-ink-2)" }}
                       >
                         {cell.label}
                       </dt>
                       <dd
                         className="m-0 mt-0.5 font-mono text-2xs tabular-nums"
-                        style={{ color: cell.muted ? "var(--home-ink-muted)" : "var(--home-ink)" }}
+                        style={{ color: cell.muted ? "var(--c97-ink-2)" : "var(--c97-ink)" }}
                       >
                         {cell.value.toFixed(1)}
                       </dd>
@@ -414,16 +413,16 @@ export function PlayerDetailDrawer({ player, publishedRank, publishedRankLabel =
             {/* ADP + value signal */}
             {adpAvailable && Number.isFinite(player.adp) && (
               <div
-                className="flex items-center justify-between rounded-[var(--radius-3xl)] border px-3 py-2.5"
+                className="flex items-center justify-between border px-3 py-2.5"
                 style={{
-                  borderColor: "var(--home-rule)",
-                  background: "color-mix(in srgb, var(--home-paper) 88%, var(--home-elev-mix))",
+                  borderColor: "var(--c97-rule)",
+                  background: "color-mix(in srgb, var(--c97-surface) 88%, var(--c97-field))",
                 }}
               >
                 <div>
                   <p
                     className="inline-flex items-center text-2xs font-semibold uppercase tracking-[0.12em]"
-                    style={{ color: "var(--home-ink-muted)" }}
+                    style={{ color: "var(--c97-ink-2)" }}
                   >
                     Market ADP
                     <MetricTooltip term="Market ADP" definition={FANTASY_ADP_TOOLTIP} />
@@ -432,7 +431,7 @@ export function PlayerDetailDrawer({ player, publishedRank, publishedRankLabel =
                   {(Number.isFinite(player.adpTimesDrafted) ||
                     Number.isFinite(player.adpStandardDeviation) ||
                     (Number.isFinite(player.adpHigh) && Number.isFinite(player.adpLow))) && (
-                    <p className="mt-0.5 text-2xs leading-4" style={{ color: "var(--home-ink-muted)" }}>
+                    <p className="mt-0.5 text-2xs leading-4" style={{ color: "var(--c97-ink-2)" }}>
                       {Number.isFinite(player.adpHigh) && Number.isFinite(player.adpLow)
                         ? `Drafted between picks ${formatAdp(player.adpHigh)} and ${formatAdp(player.adpLow)} · `
                         : ""}
@@ -455,14 +454,14 @@ export function PlayerDetailDrawer({ player, publishedRank, publishedRankLabel =
                     style={
                       valueSignal.signal === "value"
                         ? {
-                            borderColor: "color-mix(in srgb, var(--home-positive) 30%, var(--home-rule))",
-                            background: "color-mix(in srgb, var(--home-positive) 12%, var(--home-paper))",
-                            color: "var(--home-ink)",
+                            borderColor: "color-mix(in srgb, var(--c97-positive) 30%, var(--c97-rule))",
+                            background: "color-mix(in srgb, var(--c97-positive) 12%, var(--c97-surface))",
+                            color: "var(--c97-ink)",
                           }
                         : {
-                            borderColor: "color-mix(in srgb, var(--home-warning) 32%, var(--home-rule))",
-                            background: "color-mix(in srgb, var(--home-warning) 12%, var(--home-paper))",
-                            color: "var(--home-ink)",
+                            borderColor: "color-mix(in srgb, var(--c97-warning) 32%, var(--c97-rule))",
+                            background: "color-mix(in srgb, var(--c97-warning) 12%, var(--c97-surface))",
+                            color: "var(--c97-ink)",
                           }
                     }
                   >
@@ -476,12 +475,12 @@ export function PlayerDetailDrawer({ player, publishedRank, publishedRankLabel =
             {/* Expert consensus spread */}
             <div>
               <div className="mb-2 flex items-center justify-between">
-                <p className="home-kicker mb-0 inline-flex items-center">
+                <p className="c97-kicker inline-flex items-center">
                   Expert spread
                   <MetricTooltip term="Expert spread" definition={FANTASY_EXPERT_SPREAD_TOOLTIP} />
                 </p>
                 {spread && (
-                  <span className="text-2xs font-semibold uppercase tracking-[0.12em]" style={{ color: "var(--home-ink-muted)" }}>
+                  <span className="text-2xs font-semibold uppercase tracking-[0.12em]" style={{ color: "var(--c97-ink-2)" }}>
                     {spread.label}
                   </span>
                 )}
@@ -493,7 +492,7 @@ export function PlayerDetailDrawer({ player, publishedRank, publishedRankLabel =
             <div>
               <label
                 htmlFor="player-note"
-                className="home-kicker mb-2 block"
+                className="c97-kicker block" style={{ marginBottom: "0.5rem" }}
               >
                 Private note
               </label>
@@ -508,19 +507,19 @@ export function PlayerDetailDrawer({ player, publishedRank, publishedRankLabel =
                 }}
                 rows={2}
                 placeholder="Handcuff for Hall… target round 6… avoid."
-                className="w-full resize-none rounded-[var(--radius-3xl)] border px-3 py-2 text-sm focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--home-signal)]"
+                className="w-full resize-none border px-3 py-2 text-sm focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--c97-accent)]"
                 style={{
-                  borderColor: "var(--home-rule)",
-                  background: "color-mix(in srgb, var(--home-paper) 92%, var(--home-elev-mix))",
-                  color: "var(--home-ink)",
+                  borderColor: "var(--c97-rule)",
+                  background: "color-mix(in srgb, var(--c97-surface) 92%, var(--c97-field))",
+                  color: "var(--c97-ink)",
                 }}
               />
-              <p className="mt-1 text-right text-2xs" style={{ color: "var(--home-ink-muted)" }}>
+              <p className="mt-1 text-right text-2xs" style={{ color: "var(--c97-ink-2)" }}>
                 {draftNote.length}/{notes.maxLength} · saved to this browser
               </p>
             </div>
 
-            <p className="text-2xs" style={{ color: "var(--home-ink-muted)" }}>
+            <p className="text-2xs" style={{ color: "var(--c97-ink-2)" }}>
               Ranks, tiers, and expert ranges come from the published FantasyPros consensus snapshot. Queue,
               notes, and compare stay on this device.
             </p>

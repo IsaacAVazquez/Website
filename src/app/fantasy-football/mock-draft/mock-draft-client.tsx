@@ -2,6 +2,7 @@
 
 import { useEffect, useMemo, useRef, useState, type CSSProperties } from "react";
 import { SeasonalScopeNote } from "@/components/fantasy/SeasonalScopeNote";
+import { PROJECT_PRESS } from "@/constants/projectPress";
 import Link from "next/link";
 import type { DraftPick, Player, RedraftLineupSettings, ScoringFormat } from "@/types";
 import { useFantasySnapshot } from "@/hooks/useFantasySnapshot";
@@ -45,18 +46,34 @@ import {
 
 /** Ink-filled action pill (the template's "Draft" / "Start mock" buttons). */
 const SOLID_BUTTON_CLASS =
-  "inline-flex min-h-touch items-center justify-center rounded-full border px-4 font-mono text-2xs uppercase tracking-[0.08em] disabled:cursor-not-allowed disabled:opacity-50";
+  "inline-flex min-h-touch items-center justify-center border px-4 font-mono text-2xs uppercase tracking-[0.08em] disabled:cursor-not-allowed";
 
 const SOLID_BUTTON_STYLE: CSSProperties = {
-  borderColor: "var(--home-ink)",
-  background: "var(--home-ink)",
-  color: "var(--home-paper)",
+  borderColor: "var(--c97-ink)",
+  background: "var(--c97-ink)",
+  color: "var(--c97-surface)",
 };
 
+/**
+ * The opacity fade `disabled:opacity-50` used to apply measured 4.38:1 light
+ * and 3.42:1 dark once blended over the page, so disabled drops the fade and
+ * prints as a dashed ink-2 outline instead of a faded ink fill.
+ */
+const SOLID_BUTTON_DISABLED_STYLE: CSSProperties = {
+  borderColor: "var(--c97-ink-2)",
+  borderStyle: "dashed",
+  background: "transparent",
+  color: "var(--c97-ink-2)",
+};
+
+function solidButtonStyle(disabled: boolean): CSSProperties {
+  return disabled ? SOLID_BUTTON_DISABLED_STYLE : SOLID_BUTTON_STYLE;
+}
+
 const WARNING_CHIP_TONE: CSSProperties = {
-  background: "color-mix(in srgb, var(--home-warning) 18%, var(--home-paper))",
-  borderColor: "color-mix(in srgb, var(--home-warning) 32%, var(--home-rule))",
-  color: "var(--home-ink)",
+  background: "color-mix(in srgb, var(--c97-warning) 18%, var(--c97-surface))",
+  borderColor: "color-mix(in srgb, var(--c97-warning) 32%, var(--c97-rule))",
+  color: "var(--c97-ink)",
 };
 
 /**
@@ -65,14 +82,14 @@ const WARNING_CHIP_TONE: CSSProperties = {
  * once for assistive tech at every width. Same contract as the draft tracker.
  */
 const ROW_MICRO_LABEL_CLASS =
-  "font-mono text-3xs uppercase tracking-[0.06em] text-[var(--home-ink-muted)] md:hidden";
+  "font-mono text-3xs uppercase tracking-[0.06em] text-[var(--c97-ink-2)] md:hidden";
 
 /**
  * The recap board's "#n · POS" line sits on each cell's position wash, where
  * plain muted ink measured 4.16 to 4.41:1 in light. Muted mixed 72% toward ink
  * clears 4.5:1 on every wash in both themes and stays lighter than the name.
  */
-const RECAP_CELL_LABEL_COLOR = "color-mix(in srgb, var(--home-ink-muted) 72%, var(--home-ink))";
+const RECAP_CELL_LABEL_COLOR = "color-mix(in srgb, var(--c97-ink-2) 72%, var(--c97-ink))";
 
 /**
  * Date-only stamp pinned to UTC, so the board and ADP dates in the header chip
@@ -184,13 +201,13 @@ function deltaAtPick(
   if (isPlayerValueAtPick(player, pickNumber, round)) {
     return {
       text: formatPickDelta(delta),
-      color: "var(--home-positive)",
+      color: "var(--c97-positive)",
       title: `Still on the board ${magnitude} picks past his market ADP`,
     };
   }
   return {
     text: formatPickDelta(delta),
-    color: "var(--home-ink-muted)",
+    color: "var(--c97-ink-2)",
     title:
       delta < 0
         ? `Rooms usually take him about ${magnitude} picks after #${pickNumber}`
@@ -210,8 +227,8 @@ function SegmentedButtons<Value extends string>({
 }) {
   return (
     <div
-      className="inline-flex overflow-hidden rounded border"
-      style={{ borderColor: "var(--home-rule)" }}
+      className="inline-flex overflow-hidden border"
+      style={{ borderColor: "var(--c97-rule)" }}
     >
       {options.map((option) => {
         const active = option.value === value;
@@ -224,8 +241,8 @@ function SegmentedButtons<Value extends string>({
             className="min-h-touch flex-1 px-2.5 font-mono text-2xs uppercase tracking-[0.06em]"
             style={
               active
-                ? { background: "var(--home-ink)", color: "var(--home-paper)" }
-                : { background: "transparent", color: "var(--home-ink)" }
+                ? { background: "var(--c97-ink)", color: "var(--c97-surface)" }
+                : { background: "transparent", color: "var(--c97-ink)" }
             }
           >
             {option.label}
@@ -772,8 +789,8 @@ export function MockDraftClient() {
       compact: `You · slot ${settings.userTeam}/${settings.totalTeams}`,
       compactPrefix: "On the clock",
       // Signal mixed toward ink clears 4.5:1 on the signal wash in both themes.
-      valueColor: "color-mix(in srgb, var(--home-signal) 72%, var(--home-ink))",
-      background: "color-mix(in srgb, var(--home-signal) 8%, var(--home-paper))",
+      valueColor: "color-mix(in srgb, var(--c97-accent) 72%, var(--c97-ink))",
+      background: "color-mix(in srgb, var(--c97-accent) 8%, var(--c97-surface))",
     },
     {
       key: "between",
@@ -795,6 +812,10 @@ export function MockDraftClient() {
   // rehearsing a market that no longer exists. Name the season rather than letting
   // it read as current.
   const seasonalWeek = getNflRegularSeasonWeek(metadata?.season ?? 0);
+  // The seasonal note is the first paper sheet under the green hero when it
+  // renders, so it carries the torn seam; when it does not render, whichever
+  // state sheet (setup, live, recap) follows the hero carries it instead.
+  const showScopeNote = seasonalWeek >= 1;
   // The header chip reads the freshness gate, so the stamp line has to as well:
   // an ADP that has a date but is past its window is dated and unused, and the
   // line says both so the two do not disagree two lines apart.
@@ -810,90 +831,80 @@ export function MockDraftClient() {
 
   return (
     <section
-      className="home-page home-dash min-h-screen"
+      className="c97-dash relative overflow-x-clip min-h-screen"
       aria-label="Fantasy football mock draft"
       data-testid="fantasy-mock-draft-shell"
     >
-      <header
-        className={`${SHELL_CLASS} flex flex-wrap items-baseline justify-between gap-x-6 gap-y-3 pb-3.5 pt-7`}
+      <section
+        className="c97-sheet"
+        data-c97-surface={`ink-${PROJECT_PRESS["/fantasy-football/mock-draft"].lead}`}
       >
-        <div className="flex flex-wrap items-baseline gap-x-4 gap-y-1.5">
-          <span
-            className="inline-flex items-center gap-2 font-mono text-2xs uppercase tracking-[0.1em]"
-            style={{ color: "var(--home-ink-muted)" }}
+        <div className={SHELL_CLASS} style={{ paddingBlock: "var(--c97-sp-5)" }}>
+          <h1 className="c97-poster m-0">Mock Draft</h1>
+          <p className="c97-meta" style={{ marginTop: "var(--c97-sp-2)" }}>{kicker}</p>
+          <div
+            data-c97-surface="paper"
+            className="c97-offset flex flex-wrap gap-1.5"
+            style={{ padding: "var(--c97-sp-3)", marginTop: "var(--c97-sp-4)" }}
           >
-            <span
-              className="h-2 w-2 rounded-full"
-              style={{ background: "var(--home-signal)" }}
-              aria-hidden="true"
-            />
-            {kicker}
-          </span>
-          <h1
-            className="m-0 font-semibold leading-none"
-            style={{ fontSize: "clamp(1.55rem, 1.3rem + 1.25vw, 2.1rem)", letterSpacing: "-0.05em" }}
-          >
-            Mock{" "}
-            <em style={{ fontFamily: "var(--font-home-serif)", fontStyle: "italic", fontWeight: 500 }}>
-              Draft
-            </em>
-          </h1>
-        </div>
-        <div className="flex flex-wrap gap-1.5">
-          {headerChips.map((chip) => (
-            <span
-              key={chip.label}
-              className={HEADER_CHIP_CLASS}
-              style={
-                chip.tone ?? {
-                  borderColor: "var(--home-rule)",
-                  background: "var(--home-paper-alt)",
-                  color: "var(--home-ink-muted)",
+            {headerChips.map((chip) => (
+              <span
+                key={chip.label}
+                className={HEADER_CHIP_CLASS}
+                style={
+                  chip.tone ?? {
+                    borderColor: "var(--c97-rule)",
+                    background: "var(--c97-field)",
+                    color: "var(--c97-ink-2)",
+                  }
                 }
-              }
-            >
-              {chip.label}
-            </span>
-          ))}
+              >
+                {chip.label}
+              </span>
+            ))}
+          </div>
         </div>
-      </header>
+      </section>
 
       <p role="status" aria-live="polite" className="sr-only">
         {draftAnnouncement}
       </p>
 
-      {seasonalWeek >= 1 ? (
-        <div className={`${SHELL_CLASS} pb-4`}>
-          <SeasonalScopeNote season={metadata?.season ?? 0} week={seasonalWeek}>
-            The room drafts off the published preseason consensus board and the mock-draft ADP
-            that goes with it, so rehearsing a draft here in November rehearses August. I left it
-            running because the practice is still practice, and the room pauses simulated picks
-            if the published board goes stale. Ranks that still move are on the{" "}
-            <Link href="/fantasy-football/weekly" className="underline decoration-[var(--home-signal)] underline-offset-4">weekly board</Link>.
-            <span className="mt-1.5 block font-mono text-2xs uppercase tracking-[0.08em]">
-              {boardReady
-                ? `Board dated ${formatStampDate(boardUpdatedAt)} · ${adpStampLabel}`
-                : "Board and ADP dates arrive with the board"}
-            </span>
-          </SeasonalScopeNote>
+      {showScopeNote ? (
+        <div className="c97-sheet" data-c97-surface="paper" data-seam="torn">
+          <div className={`${SHELL_CLASS} pb-4 pt-4`}>
+            <SeasonalScopeNote season={metadata?.season ?? 0} week={seasonalWeek}>
+              The room drafts off the published preseason consensus board and the mock-draft ADP
+              that goes with it, so rehearsing a draft here in November rehearses August. I left it
+              running because the practice is still practice, and the room pauses simulated picks
+              if the published board goes stale. Ranks that still move are on the{" "}
+              <Link href="/fantasy-football/weekly" className="underline decoration-[var(--c97-accent)] underline-offset-4">weekly board</Link>.
+              <span className="mt-1.5 block font-mono text-2xs uppercase tracking-[0.08em]">
+                {boardReady
+                  ? `Board dated ${formatStampDate(boardUpdatedAt)} · ${adpStampLabel}`
+                  : "Board and ADP dates arrive with the board"}
+              </span>
+            </SeasonalScopeNote>
+          </div>
         </div>
       ) : null}
 
       {showSetup && (
+        <div className="c97-sheet" data-c97-surface="paper" data-seam={showScopeNote ? undefined : "torn"}>
         <div className="mx-auto w-full max-w-[780px] px-[clamp(1rem,4vw,2.5rem)] pb-12 pt-1">
           <div
-            className="overflow-hidden rounded-lg border"
-            style={{ borderColor: "var(--home-rule)", background: "var(--home-paper-raised)" }}
+            className="overflow-hidden border"
+            style={{ borderColor: "var(--c97-rule)", background: "var(--c97-field)" }}
           >
             <div
               className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-2 border-b px-4 py-3.5"
-              style={{ borderColor: "var(--home-rule)" }}
+              style={{ borderColor: "var(--c97-rule)" }}
             >
               <div className="min-w-0">
-                <p className={`m-0 ${MONO_LABEL_CLASS}`} style={{ color: "var(--home-ink-muted)" }}>
+                <p className={`m-0 ${MONO_LABEL_CLASS}`} style={{ color: "var(--c97-ink-2)" }}>
                   Room setup
                 </p>
-                <h2 className="m-0 mt-1 text-xl font-semibold tracking-[-0.04em]">
+                <h2 className="c97-serif c97-h3 m-0" style={{ marginTop: "0.25rem" }}>
                   Rep the rounds that decide leagues.
                 </h2>
               </div>
@@ -914,7 +925,7 @@ export function MockDraftClient() {
               style={{ gridTemplateColumns: "repeat(auto-fit, minmax(210px, 1fr))" }}
             >
               <label className="grid content-start gap-1.5">
-                <span className={MONO_LABEL_CLASS} style={{ color: "var(--home-ink-muted)" }}>
+                <span className={MONO_LABEL_CLASS} style={{ color: "var(--c97-ink-2)" }}>
                   Teams
                 </span>
                 <select
@@ -927,11 +938,11 @@ export function MockDraftClient() {
                       slot: form.slot === 0 ? 0 : Math.min(form.slot, totalTeams),
                     }));
                   }}
-                  className="min-h-touch rounded border px-2.5 font-mono text-xs"
+                  className="min-h-touch border px-2.5 font-mono text-xs"
                   style={{
-                    borderColor: "var(--home-rule)",
-                    background: "var(--home-paper)",
-                    color: "var(--home-ink)",
+                    borderColor: "var(--c97-rule)",
+                    background: "var(--c97-surface)",
+                    color: "var(--c97-ink)",
                   }}
                 >
                   {TEAM_OPTIONS.map((value) => (
@@ -943,7 +954,7 @@ export function MockDraftClient() {
               </label>
 
               <label className="grid content-start gap-1.5">
-                <span className={MONO_LABEL_CLASS} style={{ color: "var(--home-ink-muted)" }}>
+                <span className={MONO_LABEL_CLASS} style={{ color: "var(--c97-ink-2)" }}>
                   Your slot
                 </span>
                 <select
@@ -951,11 +962,11 @@ export function MockDraftClient() {
                   onChange={(event) =>
                     setSetupForm((form) => ({ ...form, slot: Number(event.target.value) }))
                   }
-                  className="min-h-touch rounded border px-2.5 font-mono text-xs"
+                  className="min-h-touch border px-2.5 font-mono text-xs"
                   style={{
-                    borderColor: "var(--home-rule)",
-                    background: "var(--home-paper)",
-                    color: "var(--home-ink)",
+                    borderColor: "var(--c97-rule)",
+                    background: "var(--c97-surface)",
+                    color: "var(--c97-ink)",
                   }}
                 >
                   <option value={0}>Random slot</option>
@@ -970,7 +981,7 @@ export function MockDraftClient() {
               </label>
 
               <label className="grid content-start gap-1.5">
-                <span className={MONO_LABEL_CLASS} style={{ color: "var(--home-ink-muted)" }}>
+                <span className={MONO_LABEL_CLASS} style={{ color: "var(--c97-ink-2)" }}>
                   Rounds · early rep
                 </span>
                 <select
@@ -978,11 +989,11 @@ export function MockDraftClient() {
                   onChange={(event) =>
                     setSetupForm((form) => ({ ...form, rounds: Number(event.target.value) }))
                   }
-                  className="min-h-touch rounded border px-2.5 font-mono text-xs"
+                  className="min-h-touch border px-2.5 font-mono text-xs"
                   style={{
-                    borderColor: "var(--home-rule)",
-                    background: "var(--home-paper)",
-                    color: "var(--home-ink)",
+                    borderColor: "var(--c97-rule)",
+                    background: "var(--c97-surface)",
+                    color: "var(--c97-ink)",
                   }}
                 >
                   {ROUND_OPTIONS.map((value) => (
@@ -994,7 +1005,7 @@ export function MockDraftClient() {
               </label>
 
               <div className="grid content-start gap-1.5">
-                <span className={MONO_LABEL_CLASS} style={{ color: "var(--home-ink-muted)" }}>
+                <span className={MONO_LABEL_CLASS} style={{ color: "var(--c97-ink-2)" }}>
                   Scoring
                 </span>
                 <SegmentedButtons
@@ -1008,7 +1019,7 @@ export function MockDraftClient() {
               </div>
 
               <div className="grid content-start gap-1.5">
-                <span className={MONO_LABEL_CLASS} style={{ color: "var(--home-ink-muted)" }}>
+                <span className={MONO_LABEL_CLASS} style={{ color: "var(--c97-ink-2)" }}>
                   Draft order
                 </span>
                 <SegmentedButtons
@@ -1019,7 +1030,7 @@ export function MockDraftClient() {
               </div>
 
               <div className="grid content-start gap-1.5">
-                <span className={MONO_LABEL_CLASS} style={{ color: "var(--home-ink-muted)" }}>
+                <span className={MONO_LABEL_CLASS} style={{ color: "var(--c97-ink-2)" }}>
                   Room temper
                 </span>
                 <SegmentedButtons
@@ -1027,14 +1038,14 @@ export function MockDraftClient() {
                   value={setupForm.temper}
                   onSelect={(temper) => setSetupForm((form) => ({ ...form, temper }))}
                 />
-                <p className="m-0 font-mono text-3xs leading-relaxed" style={{ color: "var(--home-ink-muted)" }}>
+                <p className="m-0 font-mono text-3xs leading-relaxed" style={{ color: "var(--c97-ink-2)" }}>
                   {TEMPER_NOTES[setupForm.temper]}
                 </p>
               </div>
             </div>
 
             <div className="px-4 pb-4">
-              <p className={`m-0 mb-2 ${MONO_LABEL_CLASS}`} style={{ color: "var(--home-ink-muted)" }}>
+              <p className={`m-0 mb-2 ${MONO_LABEL_CLASS}`} style={{ color: "var(--c97-ink-2)" }}>
                 Starting lineup
               </p>
               <div
@@ -1051,18 +1062,18 @@ export function MockDraftClient() {
                       onClick={() =>
                         setSetupForm((form) => ({ ...form, lineup: { ...preset.lineup } }))
                       }
-                      className="min-h-[56px] rounded border px-3 py-2 text-left"
+                      className="min-h-[56px] border px-3 py-2 text-left"
                       style={
                         active
                           ? {
-                              borderColor: "var(--home-ink)",
-                              background: "var(--home-ink)",
-                              color: "var(--home-paper)",
+                              borderColor: "var(--c97-ink)",
+                              background: "var(--c97-ink)",
+                              color: "var(--c97-surface)",
                             }
                           : {
-                              borderColor: "var(--home-rule)",
-                              background: "var(--home-paper)",
-                              color: "var(--home-ink)",
+                              borderColor: "var(--c97-rule)",
+                              background: "var(--c97-surface)",
+                              color: "var(--c97-ink)",
                             }
                       }
                     >
@@ -1073,8 +1084,8 @@ export function MockDraftClient() {
                         className="mt-0.5 block font-mono text-3xs tracking-[0.04em]"
                         style={{
                           color: active
-                            ? "color-mix(in srgb, var(--home-paper) 75%, transparent)"
-                            : "var(--home-ink-muted)",
+                            ? "color-mix(in srgb, var(--c97-surface) 75%, transparent)"
+                            : "var(--c97-ink-2)",
                         }}
                       >
                         {lineupShort(preset.lineup)}
@@ -1087,9 +1098,9 @@ export function MockDraftClient() {
 
             <div
               className="flex flex-wrap items-center justify-between gap-x-4 gap-y-2.5 border-t px-4 py-3.5"
-              style={{ borderColor: "var(--home-rule)", background: "var(--home-paper)" }}
+              style={{ borderColor: "var(--c97-rule)", background: "var(--c97-surface)" }}
             >
-              <p className="m-0 font-mono text-2xs leading-relaxed" style={{ color: "var(--home-ink-muted)" }}>
+              <p className="m-0 font-mono text-2xs leading-relaxed" style={{ color: "var(--c97-ink-2)" }}>
                 {`${setupForm.totalTeams}-team ${setupForm.draftType} · ${
                   setupForm.slot === 0 ? "random slot" : `slot ${setupForm.slot}`
                 } · ${setupForm.rounds}-round rep · ${scoringLabel} · ${lineupShort(setupForm.lineup)}`}
@@ -1099,7 +1110,7 @@ export function MockDraftClient() {
                 onClick={startRoom}
                 disabled={!simulationAvailable}
                 className={SOLID_BUTTON_CLASS}
-                style={SOLID_BUTTON_STYLE}
+                style={solidButtonStyle(!simulationAvailable)}
               >
                 Start mock
               </button>
@@ -1111,7 +1122,7 @@ export function MockDraftClient() {
               role="status"
               aria-live="polite"
               className="mx-0.5 mt-3.5 text-sm leading-6"
-              style={{ color: "var(--home-ink-muted)" }}
+              style={{ color: "var(--c97-ink-2)" }}
             >
               {boardStatusLine}
               {error && (
@@ -1125,22 +1136,23 @@ export function MockDraftClient() {
               )}
             </p>
           )}
-          <p className="mx-0.5 mt-3.5 font-mono text-2xs leading-relaxed" style={{ color: "var(--home-ink-muted)" }}>
+          <p className="mx-0.5 mt-3.5 font-mono text-2xs leading-relaxed" style={{ color: "var(--c97-ink-2)" }}>
             The room drafts around you, so you are on the clock every turn. Each run is a fresh
             seeded room with the same settings, and nothing here is a projection of season
             outcomes.
           </p>
         </div>
+        </div>
       )}
 
       {isLive && (
-        <>
+        <div className="c97-sheet" data-c97-surface="paper" data-seam={showScopeNote ? undefined : "torn"}>
           <section
             aria-label="Live mock draft status"
             className={`sticky ${FASCIA_TOP_CLASS} z-30 border-y`}
             style={{
-              borderColor: "var(--home-rule)",
-              background: "color-mix(in srgb, var(--home-paper) 90%, transparent)",
+              borderColor: "var(--c97-rule)",
+              background: "color-mix(in srgb, var(--c97-surface) 90%, transparent)",
               backdropFilter: "blur(8px)",
               WebkitBackdropFilter: "blur(8px)",
             }}
@@ -1157,7 +1169,7 @@ export function MockDraftClient() {
               */}
               <div
                 className="border-x lg:flex lg:items-stretch"
-                style={{ borderColor: "var(--home-rule)", background: "var(--home-paper)" }}
+                style={{ borderColor: "var(--c97-rule)", background: "var(--c97-surface)" }}
               >
                 <dl
                   className="m-0 hidden min-w-0 md:grid lg:flex-1"
@@ -1168,22 +1180,22 @@ export function MockDraftClient() {
                       key={cell.key}
                       className={`min-w-0 px-3 py-2 ${index > 0 ? "border-l" : ""}`}
                       style={{
-                        background: cell.background ?? "var(--home-paper)",
-                        borderColor: "var(--home-rule)",
+                        background: cell.background ?? "var(--c97-surface)",
+                        borderColor: "var(--c97-rule)",
                       }}
                     >
-                      <dt className={`m-0 ${MONO_LABEL_CLASS}`} style={{ color: "var(--home-ink-muted)" }}>
+                      <dt className={`m-0 ${MONO_LABEL_CLASS}`} style={{ color: "var(--c97-ink-2)" }}>
                         {cell.label}
                       </dt>
                       <dd
                         className="m-0 mt-1 font-mono text-lg leading-tight tabular-nums"
-                        style={{ color: cell.valueColor ?? "var(--home-ink)" }}
+                        style={{ color: cell.valueColor ?? "var(--c97-ink)" }}
                       >
                         {cell.value}
                       </dd>
                       <dd
                         className="m-0 mt-0.5 font-mono text-3xs leading-snug"
-                        style={{ color: "var(--home-ink-muted)" }}
+                        style={{ color: "var(--c97-ink-2)" }}
                       >
                         {cell.sub}
                       </dd>
@@ -1192,16 +1204,16 @@ export function MockDraftClient() {
                 </dl>
                 <p
                   className="m-0 flex flex-wrap items-baseline gap-x-2.5 gap-y-0.5 px-3 py-2 font-mono text-xs tabular-nums md:hidden"
-                  style={{ color: "var(--home-ink)" }}
+                  style={{ color: "var(--c97-ink)" }}
                 >
                   {fasciaCells.map((cell, index) => (
                     <span
                       key={cell.key}
                       className="whitespace-nowrap"
-                      style={{ color: cell.valueColor ?? "var(--home-ink)" }}
+                      style={{ color: cell.valueColor ?? "var(--c97-ink)" }}
                     >
                       {index > 0 && (
-                        <span aria-hidden="true" style={{ color: "var(--home-ink-muted)" }}>
+                        <span aria-hidden="true" style={{ color: "var(--c97-ink-2)" }}>
                           ·{" "}
                         </span>
                       )}
@@ -1212,7 +1224,7 @@ export function MockDraftClient() {
                 </p>
                 <div
                   className="flex flex-wrap items-center gap-1.5 border-t px-3 py-1.5 lg:flex-none lg:border-l lg:border-t-0"
-                  style={{ borderColor: "var(--home-rule)" }}
+                  style={{ borderColor: "var(--c97-rule)" }}
                 >
                   <button
                     type="button"
@@ -1244,7 +1256,7 @@ export function MockDraftClient() {
                     type="button"
                     onClick={openSetup}
                     className={PILL_BUTTON_CLASS}
-                    style={{ ...PILL_BUTTON_STYLE, color: "var(--home-ink-muted)" }}
+                    style={{ ...PILL_BUTTON_STYLE, color: "var(--c97-ink-2)" }}
                   >
                     New mock
                   </button>
@@ -1257,7 +1269,7 @@ export function MockDraftClient() {
             <div className={`${SHELL_CLASS} pt-2.5`}>
               <div
                 role="alert"
-                className="rounded border px-3.5 py-2.5 text-sm leading-6"
+                className="border px-3.5 py-2.5 text-sm leading-6"
                 style={WARNING_CARD_STYLE}
               >
                 {boardStatusLine} {pauseRecovery}
@@ -1279,24 +1291,24 @@ export function MockDraftClient() {
               aria-label="Room picks since your last turn"
               className={`${SHELL_CLASS} flex items-center gap-2 overflow-x-auto pt-2.5`}
             >
-              <span className={`${MONO_LABEL_CLASS} flex-none`} style={{ color: "var(--home-ink-muted)" }}>
+              <span className={`${MONO_LABEL_CLASS} flex-none`} style={{ color: "var(--c97-ink-2)" }}>
                 Since your last pick
               </span>
               {tapePicks.map((pick) => (
                 <span
                   key={`tape-${pick.pickNumber}`}
-                  className="inline-flex flex-none items-baseline gap-1.5 rounded-[2px] border px-2 py-0.5 font-mono text-2xs"
+                  className="inline-flex flex-none items-baseline gap-1.5 border px-2 py-0.5 font-mono text-2xs"
                   style={{
-                    borderColor: "var(--home-rule)",
-                    background: "var(--home-paper-raised)",
-                    color: "var(--home-ink)",
+                    borderColor: "var(--c97-rule)",
+                    background: "var(--c97-field)",
+                    color: "var(--c97-ink)",
                   }}
                 >
-                  <span style={{ color: "var(--home-ink-muted)" }}>#{pick.pickNumber}</span>
+                  <span style={{ color: "var(--c97-ink-2)" }}>#{pick.pickNumber}</span>
                   <span className="font-sans text-xs font-semibold tracking-[-0.01em]">
                     {shortName(pick.player)}
                   </span>
-                  <span style={{ color: "var(--home-ink-muted)" }}>
+                  <span style={{ color: "var(--c97-ink-2)" }}>
                     {pick.player.position} · S{pick.teamNumber}
                   </span>
                 </span>
@@ -1308,26 +1320,26 @@ export function MockDraftClient() {
             aria-label="Your roster"
             className={`${SHELL_CLASS} flex flex-wrap items-center gap-1.5 pt-2.5`}
           >
-            <span className={`${MONO_LABEL_CLASS} flex-none`} style={{ color: "var(--home-ink-muted)" }}>
+            <span className={`${MONO_LABEL_CLASS} flex-none`} style={{ color: "var(--c97-ink-2)" }}>
               Your roster
             </span>
             {lineupAssignment.slots.map((slot, index) => (
               <span
                 key={`slot-${slot.slot}-${index}`}
-                className="inline-flex items-baseline gap-1.5 rounded-[2px] border px-1.5 py-0.5 font-mono text-3xs uppercase tracking-[0.06em]"
+                className="inline-flex items-baseline gap-1.5 border px-1.5 py-0.5 font-mono text-3xs uppercase tracking-[0.06em]"
                 style={
                   slot.player
                     ? {
                         borderStyle: "solid",
-                        borderColor: "var(--home-rule)",
-                        background: "var(--home-paper-raised)",
-                        color: "var(--home-ink-muted)",
+                        borderColor: "var(--c97-rule)",
+                        background: "var(--c97-field)",
+                        color: "var(--c97-ink-2)",
                       }
                     : {
                         borderStyle: "dashed",
-                        borderColor: "color-mix(in srgb, var(--home-rule) 80%, transparent)",
+                        borderColor: "color-mix(in srgb, var(--c97-rule) 80%, transparent)",
                         background: "transparent",
-                        color: "var(--home-ink-muted)",
+                        color: "var(--c97-ink-2)",
                       }
                 }
               >
@@ -1335,7 +1347,7 @@ export function MockDraftClient() {
                 {slot.player ? (
                   <span
                     className="font-sans text-xs font-semibold normal-case tracking-[-0.01em]"
-                    style={{ color: "var(--home-ink)" }}
+                    style={{ color: "var(--c97-ink)" }}
                   >
                     {shortName(slot.player)}
                   </span>
@@ -1345,7 +1357,7 @@ export function MockDraftClient() {
               </span>
             ))}
             {lineupAssignment.bench > 0 && (
-              <span className="font-mono text-3xs" style={{ color: "var(--home-ink-muted)" }}>
+              <span className="font-mono text-3xs" style={{ color: "var(--c97-ink-2)" }}>
                 +{lineupAssignment.bench} bench
               </span>
             )}
@@ -1362,28 +1374,28 @@ export function MockDraftClient() {
             className={`${SHELL_CLASS} mt-3.5 scroll-mt-60`}
           >
             <div
-              className="overflow-hidden rounded-lg border"
+              className="overflow-hidden border"
               style={{
-                borderColor: "color-mix(in srgb, var(--home-signal) 45%, var(--home-rule))",
-                background: "color-mix(in srgb, var(--home-signal) 7%, var(--home-paper))",
+                borderColor: "color-mix(in srgb, var(--c97-accent) 45%, var(--c97-rule))",
+                background: "color-mix(in srgb, var(--c97-accent) 7%, var(--c97-surface))",
               }}
             >
               <div
                 className="flex flex-wrap items-baseline gap-x-3.5 gap-y-1.5 border-b px-3.5 py-2"
-                style={{ borderColor: "color-mix(in srgb, var(--home-signal) 28%, var(--home-rule))" }}
+                style={{ borderColor: "color-mix(in srgb, var(--c97-accent) 28%, var(--c97-rule))" }}
               >
                 <span
                   className="inline-flex items-center gap-2 font-mono text-2xs uppercase tracking-[0.12em]"
-                  style={{ color: "color-mix(in srgb, var(--home-signal) 72%, var(--home-ink))" }}
+                  style={{ color: "color-mix(in srgb, var(--c97-accent) 72%, var(--c97-ink))" }}
                 >
                   <span
-                    className="h-[7px] w-[7px] rounded-full"
-                    style={{ background: "var(--home-signal)" }}
+                    className="h-[7px] w-[7px]"
+                    style={{ background: "var(--c97-accent)" }}
                     aria-hidden="true"
                   />
                   You&apos;re up
                 </span>
-                <span className="font-mono text-2xs" style={{ color: "var(--home-ink-muted)" }}>
+                <span className="font-mono text-2xs" style={{ color: "var(--c97-ink-2)" }}>
                   {`Pick #${currentPick} · round ${currentRound} of ${settings.rounds} · the room resumes the moment you draft`}
                 </span>
               </div>
@@ -1394,26 +1406,26 @@ export function MockDraftClient() {
                     type="button"
                     onClick={() => draftPlayer(quick.player)}
                     title={quick.title}
-                    className="inline-flex min-h-touch items-center gap-2 rounded-full border px-3.5 font-mono text-2xs"
+                    className="inline-flex min-h-touch items-center gap-2 border px-3.5 font-mono text-2xs"
                     style={{
-                      borderColor: "var(--home-rule)",
-                      background: "var(--home-paper)",
-                      color: "var(--home-ink)",
+                      borderColor: "var(--c97-rule)",
+                      background: "var(--c97-surface)",
+                      color: "var(--c97-ink)",
                     }}
                   >
                     <span
                       className="text-3xs uppercase tracking-[0.1em]"
-                      style={{ color: "var(--home-signal)" }}
+                      style={{ color: "var(--c97-accent)" }}
                     >
                       {quick.tag}
                     </span>
                     <span className="font-sans text-xs font-semibold tracking-[-0.01em]">
                       {shortName(quick.player)}
                     </span>
-                    <span style={{ color: "var(--home-ink-muted)" }}>{quick.sub}</span>
+                    <span style={{ color: "var(--c97-ink-2)" }}>{quick.sub}</span>
                   </button>
                 ))}
-                <span className="font-mono text-3xs" style={{ color: "var(--home-ink-muted)" }}>
+                <span className="font-mono text-3xs" style={{ color: "var(--c97-ink-2)" }}>
                   or draft from the board <span aria-hidden="true">↓</span>
                 </span>
               </div>
@@ -1440,16 +1452,16 @@ export function MockDraftClient() {
                 onChange={(event) => setSearchQuery(event.target.value)}
                 autoComplete="off"
                 placeholder="Search player or team"
-                className="min-h-touch w-[190px] rounded-[4px] border px-2.5 font-mono text-xs placeholder:text-[var(--home-ink-muted)]"
+                className="min-h-touch w-[190px] border px-2.5 font-mono text-xs placeholder:text-[var(--c97-ink-2)]"
                 style={{
-                  borderColor: "var(--home-rule)",
-                  background: "var(--home-paper-raised)",
-                  color: "var(--home-ink)",
+                  borderColor: "var(--c97-rule)",
+                  background: "var(--c97-field)",
+                  color: "var(--c97-ink)",
                 }}
               />
               <span
                 className="ml-auto whitespace-nowrap font-mono text-2xs"
-                style={{ color: "var(--home-ink-muted)" }}
+                style={{ color: "var(--c97-ink-2)" }}
               >
                 {filteredAvailable.length} of {availablePlayers.length} available
               </span>
@@ -1464,7 +1476,7 @@ export function MockDraftClient() {
               <div
                 aria-hidden="true"
                 className={`hidden items-center gap-x-3.5 px-3.5 pb-1.5 md:flex ${MONO_LABEL_CLASS}`}
-                style={{ color: "var(--home-ink-muted)" }}
+                style={{ color: "var(--c97-ink-2)" }}
               >
                 <span className="w-[34px]" />
                 <span className="min-w-0 flex-1">Player</span>
@@ -1477,8 +1489,8 @@ export function MockDraftClient() {
             {tierGroups.map((group, index) => {
               const railTone =
                 group.tier !== null
-                  ? `color-mix(in srgb, var(--home-signal) ${getTierRailIntensity(group.tier)}%, var(--home-rule))`
-                  : "var(--home-rule)";
+                  ? `color-mix(in srgb, var(--c97-accent) ${getTierRailIntensity(group.tier)}%, var(--c97-rule))`
+                  : "var(--c97-rule)";
               let cliff = 0;
               if (index > 0) {
                 const previous = tierGroups[index - 1];
@@ -1503,39 +1515,39 @@ export function MockDraftClient() {
                     <div aria-hidden="true" className="flex items-center gap-3 px-0.5 pb-2">
                       <span
                         className="flex-1 border-t border-dashed"
-                        style={{ borderColor: "color-mix(in srgb, var(--home-ink) 24%, transparent)" }}
+                        style={{ borderColor: "color-mix(in srgb, var(--c97-ink) 24%, transparent)" }}
                       />
                       <span
                         className="whitespace-nowrap font-mono text-3xs uppercase tracking-[0.12em]"
-                        style={{ color: "var(--home-signal)" }}
+                        style={{ color: "var(--c97-accent)" }}
                       >
                         ↓ {cliff.toFixed(1)} avg-rank cliff
                       </span>
                       <span
                         className="flex-1 border-t border-dashed"
-                        style={{ borderColor: "color-mix(in srgb, var(--home-ink) 24%, transparent)" }}
+                        style={{ borderColor: "color-mix(in srgb, var(--c97-ink) 24%, transparent)" }}
                       />
                     </div>
                   )}
                   <div
-                    className="overflow-hidden rounded-lg border border-l-[3px]"
+                    className="overflow-hidden border border-l-[3px]"
                     style={{
-                      borderColor: "var(--home-rule)",
+                      borderColor: "var(--c97-rule)",
                       borderLeftColor: railTone,
-                      background: "var(--home-paper-raised)",
+                      background: "var(--c97-field)",
                     }}
                   >
                     <div className="flex flex-wrap items-baseline gap-x-3.5 gap-y-1 px-3.5 pb-1.5 pt-2">
                       <span className="text-2xl font-bold leading-none tracking-[-0.04em] tabular-nums">
                         {group.tier !== null ? String(group.tier).padStart(2, "0") : "—"}
                       </span>
-                      <span className={MONO_LABEL_CLASS} style={{ color: "var(--home-ink-muted)" }}>
+                      <span className={MONO_LABEL_CLASS} style={{ color: "var(--c97-ink-2)" }}>
                         {group.tier !== null ? "Tier" : "No published tier"}
                       </span>
-                      <span className="font-mono text-2xs" style={{ color: "var(--home-ink-muted)" }}>
+                      <span className="font-mono text-2xs" style={{ color: "var(--c97-ink-2)" }}>
                         {group.rows.length} left
                       </span>
-                      <span className="ml-auto font-mono text-2xs" style={{ color: "var(--home-ink-muted)" }}>
+                      <span className="ml-auto font-mono text-2xs" style={{ color: "var(--c97-ink-2)" }}>
                         R{formatRankValue(group.rows[0].rankEcr ?? group.rows[0].averageRank)}–R
                         {formatRankValue(
                           group.rows[group.rows.length - 1].rankEcr ??
@@ -1554,7 +1566,7 @@ export function MockDraftClient() {
                             key={player.id}
                             className="flex flex-wrap items-center gap-x-3.5 gap-y-1 border-t px-3.5 py-1.5"
                             style={{
-                              borderColor: "color-mix(in srgb, var(--home-rule) 60%, transparent)",
+                              borderColor: "color-mix(in srgb, var(--c97-rule) 60%, transparent)",
                             }}
                           >
                             <span
@@ -1568,7 +1580,7 @@ export function MockDraftClient() {
                                 {player.name}
                               </span>
                               <span
-                                className="inline-flex shrink-0 items-center rounded-[2px] border px-1.5 py-0.5 font-mono text-3xs tracking-[0.06em]"
+                                className="inline-flex shrink-0 items-center border px-1.5 py-0.5 font-mono text-3xs tracking-[0.06em]"
                                 style={positionTone}
                               >
                                 {player.position}
@@ -1576,7 +1588,7 @@ export function MockDraftClient() {
                               </span>
                               <span
                                 className="shrink-0 font-mono text-3xs uppercase tracking-[0.06em]"
-                                style={{ color: "var(--home-ink-muted)" }}
+                                style={{ color: "var(--c97-ink-2)" }}
                               >
                                 {player.team}
                                 {player.byeWeek ? ` · Bye ${player.byeWeek}` : ""}
@@ -1588,7 +1600,7 @@ export function MockDraftClient() {
                                   <span className="sr-only">ADP</span>
                                   <span
                                     className="w-auto text-right font-mono text-xs md:w-11"
-                                    style={{ color: "var(--home-ink-muted)" }}
+                                    style={{ color: "var(--c97-ink-2)" }}
                                     title="Average draft position in mock rooms"
                                   >
                                     <span aria-hidden="true" className={ROW_MICRO_LABEL_CLASS}>
@@ -1599,7 +1611,7 @@ export function MockDraftClient() {
                                   <span className="sr-only">versus ADP at pick {currentPick}</span>
                                   <span
                                     className="w-auto text-right font-mono text-xs md:w-14"
-                                    style={{ color: delta?.color ?? "var(--home-ink-muted)" }}
+                                    style={{ color: delta?.color ?? "var(--c97-ink-2)" }}
                                     title={delta?.title ?? "No reliable market sample for this player"}
                                   >
                                     <span aria-hidden="true" className={ROW_MICRO_LABEL_CLASS}>
@@ -1615,7 +1627,7 @@ export function MockDraftClient() {
                                 disabled={!simulationAvailable}
                                 aria-label={`Draft ${player.name}`}
                                 className={SOLID_BUTTON_CLASS}
-                                style={SOLID_BUTTON_STYLE}
+                                style={solidButtonStyle(!simulationAvailable)}
                               >
                                 Draft
                               </button>
@@ -1631,10 +1643,10 @@ export function MockDraftClient() {
 
             {filteredAvailable.length === 0 && (
               <div
-                className="rounded-lg border border-dashed px-6 py-8 text-center"
-                style={{ borderColor: "var(--home-rule)" }}
+                className="border border-dashed px-6 py-8 text-center"
+                style={{ borderColor: "var(--c97-rule)" }}
               >
-                <p className="m-0 mb-3.5 font-mono text-xs" style={{ color: "var(--home-ink-muted)" }}>
+                <p className="m-0 mb-3.5 font-mono text-xs" style={{ color: "var(--c97-ink-2)" }}>
                   No available players match on this board.
                 </p>
                 <button
@@ -1651,7 +1663,7 @@ export function MockDraftClient() {
               </div>
             )}
             {filteredAvailable.length > VISIBLE_BOARD_ROWS && (
-              <p className="mt-3 font-mono text-3xs" style={{ color: "var(--home-ink-muted)" }}>
+              <p className="mt-3 font-mono text-3xs" style={{ color: "var(--c97-ink-2)" }}>
                 Showing the top {VISIBLE_BOARD_ROWS} of {filteredAvailable.length} available
                 players. Search or filter to reach the rest.
               </p>
@@ -1659,49 +1671,50 @@ export function MockDraftClient() {
 
             <div
               className="mt-6 flex flex-wrap items-baseline justify-between gap-x-5 gap-y-2 border-t pt-3.5"
-              style={{ borderColor: "var(--home-rule)" }}
+              style={{ borderColor: "var(--c97-rule)" }}
             >
-              <span className="font-mono text-2xs" style={{ color: "var(--home-ink-muted)" }}>
+              <span className="font-mono text-2xs" style={{ color: "var(--c97-ink-2)" }}>
                 Take a pick back and the same room replays · sim to end finishes the room and
                 cannot be taken back · nothing leaves this device
               </span>
               {footerLinks}
             </div>
           </div>
-        </>
+        </div>
       )}
 
       {isRecap && (
+        <div className="c97-sheet" data-c97-surface="paper" data-seam={showScopeNote ? undefined : "torn"}>
         <div className={`${SHELL_CLASS} pb-11 pt-1`}>
           <section
             ref={valueReportRef}
             tabIndex={-1}
             aria-label="Value report"
-            className="mt-2.5 flex flex-wrap overflow-hidden rounded-lg border"
-            style={{ borderColor: "var(--home-rule)", background: "var(--home-paper-raised)" }}
+            className="mt-2.5 flex flex-wrap overflow-hidden border"
+            style={{ borderColor: "var(--c97-rule)", background: "var(--c97-field)" }}
           >
             <div
               className="w-full border-b p-4 sm:w-[200px] sm:border-b-0 sm:border-r"
               style={{
-                borderColor: "var(--home-rule)",
-                background: "color-mix(in srgb, var(--home-signal) 6%, var(--home-paper))",
+                borderColor: "var(--c97-rule)",
+                background: "color-mix(in srgb, var(--c97-accent) 6%, var(--c97-surface))",
               }}
             >
-              <p className={`m-0 ${MONO_LABEL_CLASS}`} style={{ color: "var(--home-ink-muted)" }}>
+              <p className={`m-0 ${MONO_LABEL_CLASS}`} style={{ color: "var(--c97-ink-2)" }}>
                 Draft grade
               </p>
               <p
                 className="m-0 mt-1.5 text-5xl font-bold leading-none tracking-[-0.05em]"
-                style={{ color: "var(--home-signal)" }}
+                style={{ color: "var(--c97-accent)" }}
               >
                 {recap.grade ?? "—"}
               </p>
-              <p className="m-0 mt-2 font-mono text-2xs" style={{ color: "var(--home-ink)" }}>
+              <p className="m-0 mt-2 font-mono text-2xs" style={{ color: "var(--c97-ink)" }}>
                 {recap.judged.length > 0
                   ? `${formatPickDelta(recap.total)} vs the draft baseline`
                   : "no judged picks"}
               </p>
-              <p className="m-0 mt-1 font-mono text-3xs leading-relaxed" style={{ color: "var(--home-ink-muted)" }}>
+              <p className="m-0 mt-1 font-mono text-3xs leading-relaxed" style={{ color: "var(--c97-ink-2)" }}>
                 {recap.judged.length > 0
                   ? `summed pick delta vs the ADP-or-consensus baseline across ${recap.judged.length} of your ${userPicks.length} picks`
                   : "no pick had a market or consensus baseline to score against"}
@@ -1711,7 +1724,7 @@ export function MockDraftClient() {
               className="grid min-w-0 flex-1 basis-[340px] gap-px"
               style={{
                 gridTemplateColumns: "repeat(auto-fit, minmax(170px, 1fr))",
-                background: "var(--home-rule)",
+                background: "var(--c97-rule)",
               }}
             >
               {[
@@ -1722,14 +1735,14 @@ export function MockDraftClient() {
                       sub: `${formatPickDelta(recap.bestPick.delta)} vs baseline at #${recap.bestPick.pick.pickNumber}`,
                       subColor:
                         classifyPickValue(recap.bestPick.pick) === "steal"
-                          ? "var(--home-positive)"
-                          : "var(--home-ink-muted)",
+                          ? "var(--c97-positive)"
+                          : "var(--c97-ink-2)",
                     }
                   : {
                       label: "Your best pick",
                       value: "—",
                       sub: "no judged picks",
-                      subColor: "var(--home-ink-muted)",
+                      subColor: "var(--c97-ink-2)",
                     },
                 recap.biggestReach
                   ? {
@@ -1740,13 +1753,13 @@ export function MockDraftClient() {
                           ? "you"
                           : `slot ${recap.biggestReach.pick.teamNumber}`
                       } · ${formatPickDelta(recap.biggestReach.delta)} vs baseline`,
-                      subColor: "var(--home-warning)",
+                      subColor: "var(--c97-warning)",
                     }
                   : {
                       label: "Biggest room reach",
                       value: "None",
                       sub: "no pick cleared the reach threshold",
-                      subColor: "var(--home-ink-muted)",
+                      subColor: "var(--c97-ink-2)",
                     },
                 {
                   label: "Your shape",
@@ -1756,21 +1769,21 @@ export function MockDraftClient() {
                       ? `${lineupAssignment.bench} to bench`
                       : "all starters"
                   }`,
-                  subColor: "var(--home-ink-muted)",
+                  subColor: "var(--c97-ink-2)",
                 },
                 {
                   label: "Room temper",
                   value: TEMPER_LABELS[settings.temper],
                   sub: `seeded room #${roomLabel(state.seed)}`,
-                  subColor: "var(--home-ink-muted)",
+                  subColor: "var(--c97-ink-2)",
                 },
               ].map((fact) => (
                 <div
                   key={fact.label}
                   className="min-w-0 px-3.5 py-3"
-                  style={{ background: "var(--home-paper-raised)" }}
+                  style={{ background: "var(--c97-field)" }}
                 >
-                  <p className={`m-0 ${MONO_LABEL_CLASS}`} style={{ color: "var(--home-ink-muted)" }}>
+                  <p className={`m-0 ${MONO_LABEL_CLASS}`} style={{ color: "var(--c97-ink-2)" }}>
                     {fact.label}
                   </p>
                   <p className="m-0 mt-1 overflow-hidden text-ellipsis whitespace-nowrap text-sm font-semibold tracking-[-0.02em]">
@@ -1789,12 +1802,12 @@ export function MockDraftClient() {
 
           <section
             aria-label="Draft board grid"
-            className="mt-3.5 overflow-hidden rounded-lg border"
-            style={{ borderColor: "var(--home-rule)", background: "var(--home-paper-raised)" }}
+            className="mt-3.5 overflow-hidden border"
+            style={{ borderColor: "var(--c97-rule)", background: "var(--c97-field)" }}
           >
             <div className="flex flex-wrap items-baseline gap-x-3.5 gap-y-1 px-3.5 py-2.5">
-              <h2 className="m-0 text-base font-semibold tracking-[-0.03em]">The board</h2>
-              <span className="font-mono text-2xs" style={{ color: "var(--home-ink-muted)" }}>
+              <h2 className="c97-serif c97-h3 m-0">The board</h2>
+              <span className="font-mono text-2xs" style={{ color: "var(--c97-ink-2)" }}>
                 {`room #${roomLabel(state.seed)} · ${settings.draftType} order · your column outlined`}
               </span>
             </div>
@@ -1815,7 +1828,7 @@ export function MockDraftClient() {
               <table
                 className="w-full table-fixed border-collapse border-t"
                 style={{
-                  borderColor: "var(--home-rule)",
+                  borderColor: "var(--c97-rule)",
                   minWidth: `${34 + 88 * settings.totalTeams}px`,
                 }}
               >
@@ -1834,7 +1847,7 @@ export function MockDraftClient() {
                 </caption>
                 <thead>
                   <tr>
-                    <th scope="col" className="border-t p-0" style={{ borderColor: "var(--home-rule)", background: "var(--home-paper)" }}>
+                    <th scope="col" className="border-t p-0" style={{ borderColor: "var(--c97-rule)", background: "var(--c97-surface)" }}>
                       <span className="sr-only">Round</span>
                     </th>
                     {Array.from({ length: settings.totalTeams }, (_, index) => {
@@ -1847,13 +1860,13 @@ export function MockDraftClient() {
                           aria-label={isUser ? "Your slot" : `Slot ${slot}`}
                           className="whitespace-nowrap border-l border-t px-2 py-1.5 text-center font-mono text-3xs font-normal uppercase tracking-[0.1em]"
                           style={{
-                            borderColor: "var(--home-rule)",
+                            borderColor: "var(--c97-rule)",
                             background: isUser
-                              ? "color-mix(in srgb, var(--home-signal) 10%, var(--home-paper))"
-                              : "var(--home-paper)",
+                              ? "color-mix(in srgb, var(--c97-accent) 10%, var(--c97-surface))"
+                              : "var(--c97-surface)",
                             color: isUser
-                              ? "color-mix(in srgb, var(--home-signal) 72%, var(--home-ink))"
-                              : "var(--home-ink-muted)",
+                              ? "color-mix(in srgb, var(--c97-accent) 72%, var(--c97-ink))"
+                              : "var(--c97-ink-2)",
                           }}
                         >
                           {isUser ? "You" : `S${slot}`}
@@ -1870,9 +1883,9 @@ export function MockDraftClient() {
                         aria-label={`Round ${row.round}`}
                         className="border-t text-center align-middle font-mono text-3xs font-normal tracking-[0.08em]"
                         style={{
-                          borderColor: "var(--home-rule)",
-                          background: "var(--home-paper)",
-                          color: "var(--home-ink-muted)",
+                          borderColor: "var(--c97-rule)",
+                          background: "var(--c97-surface)",
+                          color: "var(--c97-ink-2)",
                         }}
                       >
                         R{row.round}
@@ -1882,13 +1895,13 @@ export function MockDraftClient() {
                           key={`cell-${cell.pickNumber}`}
                           className="min-w-0 border-l border-t px-2 py-1.5 align-top"
                           style={{
-                            borderColor: "var(--home-rule)",
+                            borderColor: "var(--c97-rule)",
                             background: cell.pick
                               ? (getPositionTone(cell.pick.player.position).background as string)
-                              : "var(--home-paper)",
+                              : "var(--c97-surface)",
                             boxShadow:
                               cell.slot === settings.userTeam
-                                ? "inset 0 0 0 1px color-mix(in srgb, var(--home-signal) 55%, transparent)"
+                                ? "inset 0 0 0 1px color-mix(in srgb, var(--c97-accent) 55%, transparent)"
                                 : undefined,
                           }}
                         >
@@ -1904,7 +1917,7 @@ export function MockDraftClient() {
                           </p>
                           <p
                             className="m-0 mt-0.5 overflow-hidden text-ellipsis whitespace-nowrap text-xs font-semibold tracking-[-0.01em]"
-                            style={{ color: cell.pick ? "var(--home-ink)" : "var(--home-ink-muted)" }}
+                            style={{ color: cell.pick ? "var(--c97-ink)" : "var(--c97-ink-2)" }}
                           >
                             {cell.pick ? shortName(cell.pick.player) : "—"}
                           </p>
@@ -1918,7 +1931,7 @@ export function MockDraftClient() {
           </section>
 
           <div className="mt-3.5 flex flex-wrap items-center gap-1.5" aria-label="Your haul">
-            <span className={`${MONO_LABEL_CLASS} flex-none`} style={{ color: "var(--home-ink-muted)" }}>
+            <span className={`${MONO_LABEL_CLASS} flex-none`} style={{ color: "var(--c97-ink-2)" }}>
               Your haul
             </span>
             {userPicks.map((pick) => {
@@ -1927,14 +1940,14 @@ export function MockDraftClient() {
               return (
                 <span
                   key={`haul-${pick.pickNumber}`}
-                  className="inline-flex items-baseline gap-1.5 rounded-[2px] border px-2 py-0.5 font-mono text-2xs"
+                  className="inline-flex items-baseline gap-1.5 border px-2 py-0.5 font-mono text-2xs"
                   style={{
-                    borderColor: "var(--home-rule)",
-                    background: "var(--home-paper-raised)",
-                    color: "var(--home-ink)",
+                    borderColor: "var(--c97-rule)",
+                    background: "var(--c97-field)",
+                    color: "var(--c97-ink)",
                   }}
                 >
-                  <span style={{ color: "var(--home-ink-muted)" }}>#{pick.pickNumber}</span>
+                  <span style={{ color: "var(--c97-ink-2)" }}>#{pick.pickNumber}</span>
                   <span className="font-sans text-xs font-semibold tracking-[-0.01em]">
                     {shortName(pick.player)}
                   </span>
@@ -1943,10 +1956,10 @@ export function MockDraftClient() {
                       style={{
                         color:
                           verdict === "steal"
-                            ? "var(--home-positive)"
+                            ? "var(--c97-positive)"
                             : verdict === "reach"
-                              ? "var(--home-warning)"
-                              : "var(--home-ink-muted)",
+                              ? "var(--c97-warning)"
+                              : "var(--c97-ink-2)",
                       }}
                     >
                       {formatPickDelta(delta)}
@@ -1961,7 +1974,7 @@ export function MockDraftClient() {
             <p
               id="mock-rerun-blocked"
               role="status"
-              className="m-0 mt-4 rounded border px-3.5 py-2.5 text-sm leading-6"
+              className="m-0 mt-4 border px-3.5 py-2.5 text-sm leading-6"
               style={WARNING_CARD_STYLE}
             >
               {boardStatusLine} {rerunRecovery}
@@ -1984,7 +1997,7 @@ export function MockDraftClient() {
               disabled={!simulationAvailable}
               aria-describedby={simulationAvailable ? undefined : "mock-rerun-blocked"}
               className={SOLID_BUTTON_CLASS}
-              style={SOLID_BUTTON_STYLE}
+              style={solidButtonStyle(!simulationAvailable)}
             >
               Run it back <span aria-hidden="true">→</span>
             </button>
@@ -1996,20 +2009,21 @@ export function MockDraftClient() {
             >
               Change setup
             </button>
-            <span className="font-mono text-2xs" style={{ color: "var(--home-ink-muted)" }}>
+            <span className="font-mono text-2xs" style={{ color: "var(--c97-ink-2)" }}>
               same settings, fresh room · grades score every pick against the same baseline
             </span>
           </div>
 
           <div
             className="mt-6 flex flex-wrap items-baseline justify-between gap-x-5 gap-y-2 border-t pt-3.5"
-            style={{ borderColor: "var(--home-rule)" }}
+            style={{ borderColor: "var(--c97-rule)" }}
           >
-            <span className="font-mono text-2xs" style={{ color: "var(--home-ink-muted)" }}>
+            <span className="font-mono text-2xs" style={{ color: "var(--c97-ink-2)" }}>
               Practice reps only, with no prediction in them · rooms stay on this device
             </span>
             {footerLinks}
           </div>
+        </div>
         </div>
       )}
     </section>

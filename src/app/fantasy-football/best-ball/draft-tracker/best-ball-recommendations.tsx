@@ -57,15 +57,13 @@ export function BestBallRecommendations({
     : "The sourced board and roster targets remain available, but this preset does not produce exact player cards.";
 
   return (
-    <section className="home-card p-5 sm:p-6" aria-labelledby="best-ball-recommendations-heading">
+    <section className="c97-panel" aria-labelledby="best-ball-recommendations-heading">
       {/* The heading block is top-aligned and the explainer runs full width
           beneath it. The old items-end pairing bottom-aligned the heading to
           an eleven-line column and left 209px of empty card above it. */}
       <div>
-        <p className="home-kicker mb-1">Your next pick</p>
-        {/* text-2xl tops out at 34px, exactly where an open room's h1 sits, so this
-            would render at its parent's size. text-xl is the step the rest of the room uses. */}
-        <h2 id="best-ball-recommendations-heading" className="text-xl font-semibold">
+        <p className="c97-kicker" style={{ marginBottom: "0.25rem" }}>Your next pick</p>
+        <h2 id="best-ball-recommendations-heading" className="c97-serif c97-h3">
           {recommendationMode === "exact"
             ? "Best fits for your next pick"
             : "Board and roster guidance"}
@@ -74,7 +72,7 @@ export function BestBallRecommendations({
           <p
             data-testid="best-ball-score-explainer"
             className="mt-2 max-w-[92ch] text-xs leading-5"
-            style={{ color: "var(--home-ink-muted)" }}
+            style={{ color: "var(--c97-ink-2)" }}
           >
             {description}
           </p>
@@ -84,14 +82,14 @@ export function BestBallRecommendations({
       {recommendationMode === "reference" ? (
         <div
           role="note"
-          className="mt-4 rounded-[var(--radius-2xl)] border px-4 py-3 text-sm leading-6"
+          className="mt-4 border px-4 py-3 text-sm leading-6"
           style={{
-            borderColor: "var(--home-rule)",
-            background: "color-mix(in srgb, var(--home-paper-alt) 58%, var(--home-paper))",
+            borderColor: "var(--c97-rule)",
+            background: "color-mix(in srgb, var(--c97-field) 58%, var(--c97-surface))",
           }}
         >
           <p className="font-semibold">Reference guidance only</p>
-          <p className="mt-1" style={{ color: "var(--home-ink-muted)" }}>
+          <p className="mt-1" style={{ color: "var(--c97-ink-2)" }}>
             {recommendationReason} Use the board and roster targets to plan the position or tier you
             want next.
           </p>
@@ -100,13 +98,13 @@ export function BestBallRecommendations({
         <p
           role="alert"
           className="mt-4 text-sm leading-6"
-          style={{ color: "var(--home-negative)" }}
+          style={{ color: "var(--c97-negative)" }}
         >
           Exact player cards are unavailable because {sourceIssue}. The room can still log picks,
           but it will not present an unsupported board as a current recommendation.
         </p>
       ) : !isUserPick ? (
-        <p className="mt-3 text-sm leading-6" style={{ color: "var(--home-ink-muted)" }}>
+        <p className="mt-3 text-sm leading-6" style={{ color: "var(--c97-ink-2)" }}>
           Exact player cards stay hidden until your turn because this model does not estimate the
           chance that each player survives the intervening picks. Use the board and roster targets
           to plan the position or tier you want next.
@@ -133,22 +131,22 @@ export function BestBallRecommendations({
             return (
               <article
                 key={recommendation.player.id}
-                className="rounded-[var(--radius-3xl)] border p-4"
+                className="border p-4"
                 style={{
                   borderColor:
                     index === 0
-                      ? "color-mix(in srgb, var(--home-signal) 52%, var(--home-rule))"
-                      : "var(--home-rule)",
+                      ? "color-mix(in srgb, var(--c97-accent) 52%, var(--c97-rule))"
+                      : "var(--c97-rule)",
                   background:
                     index === 0
-                      ? "color-mix(in srgb, var(--home-signal-soft) 38%, var(--home-paper))"
-                      : "color-mix(in srgb, var(--home-paper-alt) 58%, var(--home-paper))",
+                      ? "color-mix(in srgb, var(--c97-accent-soft) 38%, var(--c97-surface))"
+                      : "color-mix(in srgb, var(--c97-field) 58%, var(--c97-surface))",
                 }}
               >
                 <div className="flex items-start justify-between gap-3">
                   <div className="min-w-0">
                     <p className="truncate font-semibold">{recommendation.player.name}</p>
-                    <p className="mt-1 text-xs" style={{ color: "var(--home-ink-muted)" }}>
+                    <p className="mt-1 text-xs" style={{ color: "var(--c97-ink-2)" }}>
                       {recommendation.player.position} · {recommendation.player.team}
                       {adpAvailable
                         ? ` · ADP ${recommendation.player.adp?.toFixed(1) ?? "not available"}`
@@ -159,10 +157,10 @@ export function BestBallRecommendations({
                       measures 4.32:1 at 12px. The 72%-toward-ink mix used across the rest
                       of the fantasy surfaces clears AA on both card backgrounds. */}
                   <span
-                    className="shrink-0 rounded-full border px-2.5 py-1 text-xs font-semibold tabular-nums"
+                    className="shrink-0 border px-2.5 py-1 text-xs font-semibold tabular-nums"
                     style={{
-                      borderColor: "var(--home-rule)",
-                      color: "color-mix(in srgb, var(--home-signal) 72%, var(--home-ink))",
+                      borderColor: "var(--c97-rule)",
+                      color: "color-mix(in srgb, var(--c97-accent) 72%, var(--c97-ink))",
                     }}
                   >
                     {recommendation.score.toFixed(1)}
@@ -174,10 +172,10 @@ export function BestBallRecommendations({
                     {componentScores.map(([component, score]) => (
                       <span
                         key={component}
-                        className="rounded-full border px-2 py-1 text-2xs font-medium"
+                        className="border px-2 py-1 text-2xs font-medium"
                         style={{
-                          borderColor: "var(--home-rule)",
-                          color: score < 0 ? "var(--home-negative)" : "var(--home-ink-muted)",
+                          borderColor: "var(--c97-rule)",
+                          color: score < 0 ? "var(--c97-negative)" : "var(--c97-ink-2)",
                         }}
                       >
                         {component === "adpValue" && !adpAvailable
@@ -197,10 +195,10 @@ export function BestBallRecommendations({
                     <ChevronDown
                       className="h-3.5 w-3.5 transition-transform group-open:rotate-180"
                       aria-hidden="true"
-                      style={{ color: "var(--home-ink-muted)" }}
+                      style={{ color: "var(--c97-ink-2)" }}
                     />
                   </summary>
-                  <ul className="grid gap-1.5 pb-1" style={{ color: "var(--home-ink-muted)" }}>
+                  <ul className="grid gap-1.5 pb-1" style={{ color: "var(--c97-ink-2)" }}>
                     {recommendation.reasons.map((reason) => (
                       <li key={`${reason.component}-${reason.detail}`}>{reason.detail}</li>
                     ))}
@@ -211,11 +209,11 @@ export function BestBallRecommendations({
                   <button
                     type="button"
                     onClick={() => onDraftPlayer(recommendation.player)}
-                    className="mt-3 inline-flex min-h-[44px] w-full items-center justify-center rounded-full border px-4 text-sm font-semibold transition-[background-color,border-color,color,box-shadow] duration-200"
+                    className="mt-3 inline-flex min-h-[44px] w-full items-center justify-center border px-4 text-sm font-semibold transition-[background-color,border-color,color,box-shadow] duration-200"
                     style={{
-                      borderColor: "var(--home-ink)",
-                      background: "var(--home-ink)",
-                      color: "var(--home-paper)",
+                      borderColor: "var(--c97-ink)",
+                      background: "var(--c97-ink)",
+                      color: "var(--c97-surface)",
                     }}
                   >
                     Log for my team
@@ -226,7 +224,7 @@ export function BestBallRecommendations({
           })}
         </div>
       ) : (
-        <p className="mt-4 text-sm" style={{ color: "var(--home-ink-muted)" }}>
+        <p className="mt-4 text-sm" style={{ color: "var(--c97-ink-2)" }}>
           Recommendations will appear when the room has available players.
         </p>
       )}

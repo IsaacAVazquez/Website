@@ -47,7 +47,7 @@ interface DraftBoardProps {
  * assistive tech at every width. Same contract as the rankings board.
  */
 const ROW_MICRO_LABEL_CLASS =
-  "font-mono text-3xs uppercase tracking-[0.06em] text-[var(--home-ink-muted)] md:hidden";
+  "font-mono text-3xs uppercase tracking-[0.06em] text-[var(--c97-ink-2)] md:hidden";
 
 type BoardFilter = "ALL" | "QB" | "RB" | "WR" | "TE" | "K" | "DST" | "FLEX";
 
@@ -285,7 +285,7 @@ export function DraftBoard({
     if (delta >= 2) {
       return {
         text: `+${magnitude}`,
-        color: isValue ? "var(--home-positive)" : "var(--home-ink-muted)",
+        color: isValue ? "var(--c97-positive)" : "var(--c97-ink-2)",
         title: isValue
           ? `Lasted ${magnitude} picks past his ADP, so this reads as value at pick ${currentPick}`
           : `Lasted ${magnitude} picks past his ADP, inside the noise band for this market sample`,
@@ -294,13 +294,13 @@ export function DraftBoard({
     if (delta <= -2) {
       return {
         text: `−${magnitude}`,
-        color: "var(--home-ink-muted)",
+        color: "var(--c97-ink-2)",
         title: `Mock rooms usually take him ${magnitude} picks after pick ${currentPick}`,
       };
     }
     return {
       text: `±${magnitude}`,
-      color: "var(--home-ink-muted)",
+      color: "var(--c97-ink-2)",
       title: "Priced about right at this pick",
     };
   }
@@ -312,8 +312,8 @@ export function DraftBoard({
     );
     const railTone =
       group.tier !== null
-        ? `color-mix(in srgb, var(--home-signal) ${getTierRailIntensity(group.tier)}%, var(--home-rule))`
-        : "var(--home-rule)";
+        ? `color-mix(in srgb, var(--c97-accent) ${getTierRailIntensity(group.tier)}%, var(--c97-rule))`
+        : "var(--c97-rule)";
 
     let cliff = 0;
     if (index > 0) {
@@ -349,39 +349,39 @@ export function DraftBoard({
           <div aria-hidden="true" className="flex items-center gap-3 px-0.5 pb-2.5">
             <span
               className="flex-1 border-t border-dashed"
-              style={{ borderColor: "color-mix(in srgb, var(--home-ink) 24%, transparent)" }}
+              style={{ borderColor: "color-mix(in srgb, var(--c97-ink) 24%, transparent)" }}
             />
             <span
               className="whitespace-nowrap font-mono text-3xs uppercase tracking-[0.12em]"
-              style={{ color: "var(--home-signal)" }}
+              style={{ color: "var(--c97-accent)" }}
             >
               ↓ {cliff.toFixed(1)} avg-rank cliff
             </span>
             <span
               className="flex-1 border-t border-dashed"
-              style={{ borderColor: "color-mix(in srgb, var(--home-ink) 24%, transparent)" }}
+              style={{ borderColor: "color-mix(in srgb, var(--c97-ink) 24%, transparent)" }}
             />
           </div>
         )}
         <div
-          className="overflow-hidden rounded-lg border border-l-[3px]"
+          className="overflow-hidden border border-l-[3px]"
           style={{
-            borderColor: "var(--home-rule)",
+            borderColor: "var(--c97-rule)",
             borderLeftColor: railTone,
-            background: "var(--home-paper-raised)",
+            background: "var(--c97-field)",
           }}
         >
           <div className="flex flex-wrap items-baseline gap-x-3.5 gap-y-1 px-3.5 pb-2 pt-2.5">
             <span className="text-2xl font-bold leading-none tracking-tight tabular-nums">
               {group.tier !== null ? String(group.tier).padStart(2, "0") : "—"}
             </span>
-            <span className={MONO_LABEL_CLASS} style={{ color: "var(--home-ink-muted)" }}>
+            <span className={MONO_LABEL_CLASS} style={{ color: "var(--c97-ink-2)" }}>
               {group.tier !== null ? "Tier" : "No published tier"}
             </span>
-            <span className="font-mono text-2xs" style={{ color: "var(--home-ink-muted)" }}>
+            <span className="font-mono text-2xs" style={{ color: "var(--c97-ink-2)" }}>
               {group.rows.length} left
             </span>
-            <span className="ml-auto font-mono text-2xs" style={{ color: "var(--home-ink-muted)" }}>
+            <span className="ml-auto font-mono text-2xs" style={{ color: "var(--c97-ink-2)" }}>
               R{firstRank}–R{lastRank}
             </span>
           </div>
@@ -395,13 +395,13 @@ export function DraftBoard({
                 <li
                   key={player.id}
                   ref={isHighlighted ? scrollHighlightedRow : undefined}
-                  className="flex flex-wrap items-center gap-x-3.5 gap-y-1 border-t border-l-[3px] py-1 pl-2 pr-3 transition-colors duration-150 hover:bg-[color-mix(in_srgb,var(--home-paper-alt)_55%,transparent)]"
+                  className="flex flex-wrap items-center gap-x-3.5 gap-y-1 border-t border-l-[3px] py-1 pl-2 pr-3 transition-colors duration-150 hover:bg-[color-mix(in_srgb,var(--c97-field)_55%,transparent)]"
                   style={{
-                    borderTopColor: "color-mix(in srgb, var(--home-rule) 60%, transparent)",
+                    borderTopColor: "color-mix(in srgb, var(--c97-rule) 60%, transparent)",
                     borderLeftColor:
-                      isHighlighted || isQueued ? "var(--home-signal)" : "transparent",
+                      isHighlighted || isQueued ? "var(--c97-accent)" : "transparent",
                     background: isHighlighted
-                      ? "color-mix(in srgb, var(--home-signal) 10%, var(--home-paper-raised))"
+                      ? "color-mix(in srgb, var(--c97-accent) 10%, var(--c97-field))"
                       : undefined,
                   }}
                 >
@@ -428,7 +428,7 @@ export function DraftBoard({
                     </span>
                     <span
                       className="flex-none font-mono text-2xs uppercase tracking-[0.06em]"
-                      style={{ color: "var(--home-ink-muted)" }}
+                      style={{ color: "var(--c97-ink-2)" }}
                     >
                       {player.team}
                       {typeof player.byeWeek === "number" && Number.isFinite(player.byeWeek)
@@ -449,8 +449,8 @@ export function DraftBoard({
                           style={{
                             color:
                               vorp.value > 0
-                                ? "var(--home-ink)"
-                                : "var(--home-ink-muted)",
+                                ? "var(--c97-ink)"
+                                : "var(--c97-ink-2)",
                           }}
                           title={FANTASY_VORP_TOOLTIP}
                         >
@@ -466,7 +466,7 @@ export function DraftBoard({
                         <span className="sr-only">ADP</span>
                         <span
                           className="w-auto font-mono text-xs md:w-11 md:text-right"
-                          style={{ color: "var(--home-ink-muted)" }}
+                          style={{ color: "var(--c97-ink-2)" }}
                           title={FANTASY_ADP_TOOLTIP}
                         >
                           <span aria-hidden="true" className={ROW_MICRO_LABEL_CLASS}>
@@ -477,7 +477,7 @@ export function DraftBoard({
                         <span className="sr-only">versus ADP at pick {currentPick}</span>
                         <span
                           className="w-auto font-mono text-xs md:w-12 md:text-right"
-                          style={{ color: delta?.color ?? "var(--home-ink-muted)" }}
+                          style={{ color: delta?.color ?? "var(--c97-ink-2)" }}
                           title={delta?.title}
                         >
                           <span aria-hidden="true" className={ROW_MICRO_LABEL_CLASS}>
@@ -492,12 +492,12 @@ export function DraftBoard({
                       onClick={() => queue.toggle(player.id)}
                       aria-pressed={isQueued}
                       aria-label={isQueued ? `Remove ${player.name} from queue` : `Add ${player.name} to queue`}
-                      className="inline-flex h-11 w-11 items-center justify-center rounded-full border"
+                      className="inline-flex h-11 w-11 items-center justify-center border"
                       style={{
                         borderColor: isQueued
-                          ? "color-mix(in srgb, var(--home-signal) 55%, var(--home-rule))"
-                          : "var(--home-rule)",
-                        color: isQueued ? "var(--home-signal)" : "var(--home-ink-muted)",
+                          ? "color-mix(in srgb, var(--c97-accent) 55%, var(--c97-rule))"
+                          : "var(--c97-rule)",
+                        color: isQueued ? "var(--c97-accent)" : "var(--c97-ink-2)",
                       }}
                     >
                       {isQueued ? "★" : "☆"}
@@ -506,8 +506,8 @@ export function DraftBoard({
                       type="button"
                       onClick={() => handleDraftPlayer(player)}
                       aria-label={`Log ${player.name}`}
-                      className="inline-flex min-h-touch items-center justify-center rounded-full border px-3.5 font-mono text-3xs uppercase tracking-[0.06em]"
-                      style={{ borderColor: "var(--home-ink)", background: "var(--home-ink)", color: "var(--home-paper)" }}
+                      className="inline-flex min-h-touch items-center justify-center border px-3.5 font-mono text-3xs uppercase tracking-[0.06em]"
+                      style={{ borderColor: "var(--c97-ink)", background: "var(--c97-ink)", color: "var(--c97-surface)" }}
                     >
                       Log
                     </button>
@@ -525,13 +525,13 @@ export function DraftBoard({
     <section aria-label="Draft board">
       {queuedAvailable.length > 0 && (
         <div
-          className="mb-3 flex flex-wrap items-center gap-1.5 rounded border px-2.5 py-1.5"
+          className="mb-3 flex flex-wrap items-center gap-1.5 border px-2.5 py-1.5"
           style={{
-            borderColor: "color-mix(in srgb, var(--home-signal) 38%, var(--home-rule))",
-            background: "color-mix(in srgb, var(--home-signal) 9%, var(--home-paper))",
+            borderColor: "color-mix(in srgb, var(--c97-accent) 38%, var(--c97-rule))",
+            background: "color-mix(in srgb, var(--c97-accent) 9%, var(--c97-surface))",
           }}
         >
-          <span className={MONO_LABEL_CLASS} style={{ color: "var(--home-signal)" }}>
+          <span className={MONO_LABEL_CLASS} style={{ color: "var(--c97-accent)" }}>
             ★ Queue · still on the board
           </span>
           {queuedAvailable.slice(0, 8).map((player) => (
@@ -540,10 +540,10 @@ export function DraftBoard({
               type="button"
               onClick={() => handleDraftPlayer(player)}
               title={`Log ${player.name}`}
-              className="inline-flex min-h-touch items-baseline gap-1.5 rounded-full border px-2.5 font-mono text-2xs"
-              style={{ borderColor: "var(--home-rule)", background: "var(--home-paper)", color: "var(--home-ink)" }}
+              className="inline-flex min-h-touch items-baseline gap-1.5 border px-2.5 font-mono text-2xs"
+              style={{ borderColor: "var(--c97-rule)", background: "var(--c97-surface)", color: "var(--c97-ink)" }}
             >
-              <span style={{ color: "var(--home-ink-muted)" }}>
+              <span style={{ color: "var(--c97-ink-2)" }}>
                 #{formatRankValue(player.rankEcr ?? player.averageRank)}
               </span>
               <span className="max-w-[8rem] truncate font-sans text-xs font-semibold tracking-[-0.01em]">
@@ -557,7 +557,7 @@ export function DraftBoard({
       {vorpValues.size > 0 && vorpTeamSize ? (
         <p
           className="mb-3 text-xs leading-5"
-          style={{ color: "var(--home-ink-muted)" }}
+          style={{ color: "var(--c97-ink-2)" }}
         >
           VORP is FantasyPros&apos; projected season points above the same-position waiver replacement for a {vorpTeamSize}-team league. FantasyPros supplies the roster baseline, while your lineup settings drive the replacement index and scarcity panel below.
         </p>
@@ -570,7 +570,7 @@ export function DraftBoard({
           rows need. */}
       <div
         className="lg:sticky lg:z-20"
-        style={{ top: stickyTop, background: "var(--home-paper)" }}
+        style={{ top: stickyTop, background: "var(--c97-surface)" }}
       >
         <div className="flex flex-wrap items-center gap-x-3.5 gap-y-2.5 pb-3">
           <PositionFilterBar
@@ -603,17 +603,17 @@ export function DraftBoard({
             aria-describedby="draft-board-search-keys"
             autoComplete="off"
             placeholder="Search player or team"
-            className="min-h-touch w-48 rounded border px-3 font-mono text-xs"
+            className="min-h-touch w-48 border px-3 font-mono text-xs"
             style={{
-              borderColor: "var(--home-rule)",
-              background: "var(--home-paper-raised)",
-              color: "var(--home-ink)",
+              borderColor: "var(--c97-rule)",
+              background: "var(--c97-field)",
+              color: "var(--c97-ink)",
             }}
           />
           <span
             aria-live="polite"
             className="ml-auto whitespace-nowrap font-mono text-2xs"
-            style={{ color: "var(--home-ink-muted)" }}
+            style={{ color: "var(--c97-ink-2)" }}
           >
             {filteredPlayers.length} of {availablePlayers.length} available
           </span>
@@ -623,7 +623,7 @@ export function DraftBoard({
           <div
             aria-hidden="true"
             className="hidden items-center gap-x-3.5 px-3.5 pb-1.5 md:flex"
-            style={{ color: "var(--home-ink-muted)" }}
+            style={{ color: "var(--c97-ink-2)" }}
           >
             <span className="w-8" />
             <span className={`${MONO_LABEL_CLASS} min-w-0 flex-1 basis-44`}>Player</span>
@@ -656,10 +656,10 @@ export function DraftBoard({
         </>
       ) : (
         <div
-          className="rounded-lg border border-dashed px-6 py-9 text-center"
-          style={{ borderColor: "var(--home-rule)" }}
+          className="border border-dashed px-6 py-9 text-center"
+          style={{ borderColor: "var(--c97-rule)" }}
         >
-          <p className="m-0 font-mono text-xs" style={{ color: "var(--home-ink-muted)" }}>
+          <p className="m-0 font-mono text-xs" style={{ color: "var(--c97-ink-2)" }}>
             No available players match on this board.
           </p>
           <button
@@ -668,8 +668,8 @@ export function DraftBoard({
               setSearchQuery("");
               setSelectedPosition("ALL");
             }}
-            className="mt-3.5 inline-flex min-h-touch items-center justify-center rounded-full border px-4 font-mono text-2xs uppercase tracking-[0.06em]"
-            style={{ borderColor: "var(--home-ink)", background: "var(--home-ink)", color: "var(--home-paper)" }}
+            className="mt-3.5 inline-flex min-h-touch items-center justify-center border px-4 font-mono text-2xs uppercase tracking-[0.06em]"
+            style={{ borderColor: "var(--c97-ink)", background: "var(--c97-ink)", color: "var(--c97-surface)" }}
           >
             Clear search
           </button>

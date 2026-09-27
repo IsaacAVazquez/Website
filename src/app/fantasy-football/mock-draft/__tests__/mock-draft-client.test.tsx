@@ -142,7 +142,6 @@ describe("MockDraftClient", () => {
       );
       expect(note).toHaveTextContent("Board dated Sep 10, 2026 · ADP dated Sep 10, 2026");
       expect(note).not.toHaveTextContent(/stops refreshing/i);
-      expect(note).toHaveClass("rounded-[var(--radius-3xl)]");
       // Wrapped in the page shell like the rankings board's note.
       expect(note.parentElement?.className).toContain("max-w-[1080px]");
       expect(screen.getByText("Board Current · Sep 10, 2026")).toBeInTheDocument();
@@ -295,7 +294,7 @@ describe("MockDraftClient", () => {
     expect(cellLabels).toHaveLength(50);
     cellLabels.forEach((label) => {
       expect(label).toHaveStyle({
-        color: "color-mix(in srgb, var(--home-ink-muted) 72%, var(--home-ink))",
+        color: "color-mix(in srgb, var(--c97-ink-2) 72%, var(--c97-ink))",
       });
     });
     expect(screen.getByText("Draft grade")).toBeInTheDocument();

@@ -22,14 +22,14 @@ export function SeasonalScopeNote({
   return (
     <div
       role="note"
-      className="rounded-[var(--radius-3xl)] border px-4 py-3 text-sm"
+      className="border px-4 py-3 text-sm"
       style={{
-        borderColor: "color-mix(in srgb, var(--home-warning) 45%, var(--home-rule))",
-        background: "color-mix(in srgb, var(--home-warning) 8%, var(--home-paper))",
+        borderColor: "color-mix(in srgb, var(--c97-warning) 45%, var(--c97-rule))",
+        background: "color-mix(in srgb, var(--c97-warning) 8%, var(--c97-surface))",
       }}
     >
-      <p className="text-[var(--home-ink-muted)]">
-        <span className="font-semibold text-[var(--home-ink)]">
+      <p className="text-[var(--c97-ink-2)]">
+        <span className="font-semibold text-[var(--c97-ink)]">
           Week {week} of the {season} season.
         </span>{" "}
         {children}

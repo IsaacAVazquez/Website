@@ -108,7 +108,7 @@ export function TradePlayerCombobox({
         <span className="sr-only">Add a player to {sideLabel}</span>
         <span className="relative block">
           <Search
-            className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-[var(--home-ink-muted)]"
+            className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-[var(--c97-ink-2)]"
             aria-hidden="true"
           />
           <input
@@ -152,7 +152,7 @@ export function TradePlayerCombobox({
               }
             }}
             placeholder={disabled ? "Six-player limit reached" : "Search name, team, or position"}
-            className="min-h-[48px] w-full rounded-[var(--radius-lg)] border border-[var(--home-rule)] bg-[var(--home-paper-alt)] py-2 pl-10 pr-3 text-sm text-[var(--home-ink)] outline-none transition-[border-color,box-shadow,background-color] placeholder:text-[var(--home-ink-muted)] hover:border-[color-mix(in_srgb,var(--home-ink)_28%,var(--home-rule))] focus:border-[var(--home-signal)] focus:bg-[var(--home-paper)] focus:ring-2 focus:ring-[color-mix(in_srgb,var(--home-signal)_22%,transparent)] disabled:cursor-not-allowed disabled:opacity-60"
+            className="min-h-[48px] w-full border border-[var(--c97-rule)] bg-[var(--c97-field)] py-2 pl-10 pr-3 text-sm text-[var(--c97-ink)] outline-none transition-[border-color,box-shadow,background-color] placeholder:text-[var(--c97-ink-2)] hover:border-[color-mix(in_srgb,var(--c97-ink)_28%,var(--c97-rule))] focus:border-[var(--c97-accent)] focus:bg-[var(--c97-surface)] focus:ring-2 focus:ring-[color-mix(in_srgb,var(--c97-accent)_22%,transparent)] disabled:cursor-not-allowed disabled:opacity-60"
           />
         </span>
       </label>
@@ -167,7 +167,7 @@ export function TradePlayerCombobox({
 
       {listOpen ? (
         <div
-          className="absolute inset-x-0 top-[calc(100%+0.35rem)] z-30 overflow-hidden rounded-[var(--radius-3xl)] border border-[var(--home-rule)] bg-[var(--home-paper)] shadow-[var(--shadow-lg)]"
+          className="absolute inset-x-0 top-[calc(100%+0.35rem)] z-30 overflow-hidden border border-[var(--c97-rule)] bg-[var(--c97-surface)]"
         >
           {/* The listbox stays mounted for as long as the popup is open, so
               aria-controls always resolves and aria-expanded never reports
@@ -199,7 +199,7 @@ export function TradePlayerCombobox({
                       active
                         ? {
                             background:
-                              "color-mix(in srgb, var(--home-signal) 12%, var(--home-paper))",
+                              "color-mix(in srgb, var(--c97-accent) 12%, var(--c97-surface))",
                           }
                         : undefined
                     }
@@ -208,7 +208,7 @@ export function TradePlayerCombobox({
                       {player.position}
                     </span>
                     <span className="min-w-0 flex-1 truncate font-semibold">{player.name}</span>
-                    <span className="shrink-0 text-2xs text-[var(--home-ink-muted)]">
+                    <span className="shrink-0 text-2xs text-[var(--c97-ink-2)]">
                       {excluded ? "Already added" : `${player.team} · ECR ${playerRank(player)}`}
                     </span>
                   </button>
@@ -217,7 +217,7 @@ export function TradePlayerCombobox({
             })}
           </ul>
           {results.length === 0 ? (
-            <p className="px-4 py-5 text-sm text-[var(--home-ink-muted)]">{emptyMessage}</p>
+            <p className="px-4 py-5 text-sm text-[var(--c97-ink-2)]">{emptyMessage}</p>
           ) : null}
         </div>
       ) : null}
