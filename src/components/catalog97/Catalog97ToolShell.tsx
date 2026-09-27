@@ -34,8 +34,7 @@ interface Catalog97ToolShellProps {
  * The shell for every route that is not one of the seven designed Catalog 97
  * pages. It is `Catalog97Shell` (header, the only `main`, espresso footer)
  * plus an optional title band and the build-note aside that `ConditionalLayout`
- * used to append. Because it puts the `.c97-page` scope around the route, the
- * bridge in catalog97.css repaints the route's `--home-*` consumers.
+ * used to append. It puts the `.c97-page` token scope around the route.
  */
 export function Catalog97ToolShell({
   children,

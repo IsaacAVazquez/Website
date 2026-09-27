@@ -11,13 +11,7 @@ import { useScorePools } from "@/hooks/useScorePools";
 import { effectiveResult, scoreParticipantPicks } from "@/lib/scorePools/poolAnalysis";
 import type { Scoreline } from "@/lib/scorePools";
 import type { ScorePoolsSnapshot, SnapshotFixture } from "@/types/scorePools";
-import {
-  CHIP_BUTTON,
-  PILL_BUTTON,
-  chipStyle,
-  formatKickoff,
-  formatScoreline,
-} from "../score-pools-ui";
+import { PILL_BUTTON, formatKickoff, formatScoreline } from "../score-pools-ui";
 
 interface TrackerClientProps {
   snapshot: ScorePoolsSnapshot;
@@ -85,10 +79,10 @@ function ManualResultForm({
         inputMode="numeric"
         value={value.home}
         onChange={(event) => set({ ...value, home: event.target.value })}
-        className="min-h-[44px] w-14 rounded-lg border border-[var(--home-rule)] bg-[var(--home-paper)] px-2 py-1 text-center text-sm text-[var(--home-ink)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-signal)]"
+        className="min-h-[44px] w-14 border border-[var(--c97-rule)] bg-[var(--c97-surface)] px-2 py-1 text-center text-sm text-[var(--c97-ink)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--c97-accent)]"
         aria-label={`${label} home goals`}
       />
-      <span className="text-[var(--home-ink-muted)]">-</span>
+      <span className="text-[var(--c97-ink-2)]">-</span>
       <input
         type="number"
         min={0}
@@ -96,15 +90,15 @@ function ManualResultForm({
         inputMode="numeric"
         value={value.away}
         onChange={(event) => set({ ...value, away: event.target.value })}
-        className="min-h-[44px] w-14 rounded-lg border border-[var(--home-rule)] bg-[var(--home-paper)] px-2 py-1 text-center text-sm text-[var(--home-ink)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-signal)]"
+        className="min-h-[44px] w-14 border border-[var(--c97-rule)] bg-[var(--c97-surface)] px-2 py-1 text-center text-sm text-[var(--c97-ink)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--c97-accent)]"
         aria-label={`${label} away goals`}
       />
     </span>
   );
 
   return (
-    <div className="mt-2 flex flex-wrap items-center gap-3 text-2xs text-[var(--home-ink-muted)]">
-      <span className="font-semibold text-[var(--home-ink)]">Enter result:</span>
+    <div className="mt-2 flex flex-wrap items-center gap-3 text-2xs text-[var(--c97-ink-2)]">
+      <span className="font-semibold text-[var(--c97-ink)]">Enter result:</span>
       90&apos; {scoreInput(ninety, setNinety, "Ninety minute")}
       {fixture.knockout ? (
         <>
@@ -114,7 +108,7 @@ function ManualResultForm({
             <select
               value={pens}
               onChange={(event) => setPens(event.target.value as "" | "home" | "away")}
-              className="min-h-[44px] rounded-lg border border-[var(--home-rule)] bg-[var(--home-paper)] px-2 py-1 text-sm text-[var(--home-ink)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-signal)]"
+              className="min-h-[44px] border border-[var(--c97-rule)] bg-[var(--c97-surface)] px-2 py-1 text-sm text-[var(--c97-ink)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--c97-accent)]"
             >
               <option value="">none</option>
               <option value="home">{fixture.homeTeam}</option>
@@ -127,7 +121,7 @@ function ManualResultForm({
         Save result
       </button>
       {error ? (
-        <span className="font-semibold" style={{ color: "var(--home-negative)" }}>
+        <span className="font-semibold" style={{ color: "var(--c97-negative)" }}>
           {error}
         </span>
       ) : null}
@@ -189,24 +183,24 @@ export function TrackerClient({ snapshot }: TrackerClientProps) {
   const selectedRival = activePool?.rivals.find((rival) => rival.id === selectedRivalId) ?? null;
 
   return (
-    <div className="home-page min-h-screen">
-      <div className="home-shell home-section space-y-6">
+    <section className="c97-band min-h-screen" data-c97-surface="paper">
+      <div className="c97-shell space-y-6">
         <header>
-          <p className="home-kicker mb-1">Prediction Tools</p>
-          <h1 className="text-2xl font-bold tracking-tight text-[var(--home-ink)] sm:text-3xl">
+          <p className="c97-kicker mb-1">Prediction Tools</p>
+          <h1 className="text-2xl font-bold tracking-tight text-[var(--c97-ink)] sm:text-3xl">
             Score{" "}
-            <em style={{ fontFamily: "var(--font-home-serif)", fontStyle: "italic", fontWeight: 400 }}>
+            <em style={{ fontFamily: "var(--c97-font-display)", fontStyle: "italic", fontWeight: 400 }}>
               Tracker
             </em>
           </h1>
-          <p className="mt-2 max-w-3xl text-sm leading-relaxed text-[var(--home-ink-muted)]">
+          <p className="mt-2 max-w-3xl text-sm leading-relaxed text-[var(--c97-ink-2)]">
             Submitted picks scored against results under your pool&apos;s rules as games finish,
             with a running total and rival comparisons where you know their picks. Back to the{" "}
-            <Link className="underline decoration-[var(--home-rule)] underline-offset-4 hover:decoration-[var(--home-signal)]" href="/score-pools">
+            <Link className="underline decoration-[var(--c97-rule)] underline-offset-4 hover:decoration-[var(--c97-accent)]" href="/score-pools">
               pick sheet
             </Link>{" "}
             or the{" "}
-            <Link className="underline decoration-[var(--home-rule)] underline-offset-4 hover:decoration-[var(--home-signal)]" href="/score-pools/settings">
+            <Link className="underline decoration-[var(--c97-rule)] underline-offset-4 hover:decoration-[var(--c97-accent)]" href="/score-pools/settings">
               settings
             </Link>
             .
@@ -214,21 +208,20 @@ export function TrackerClient({ snapshot }: TrackerClientProps) {
         </header>
 
         {!activePool || !league ? (
-          <p className="text-sm text-[var(--home-ink-muted)]">
+          <p className="text-sm text-[var(--c97-ink-2)]">
             No pool yet. Create one on the{" "}
             <Link className="underline" href="/score-pools">pick sheet</Link> first.
           </p>
         ) : (
           <>
             {pools.length > 1 ? (
-              <nav className="flex flex-wrap gap-2" aria-label="Pools">
+              <nav className="c97-segmented" aria-label="Pools">
                 {pools.map((pool) => (
                   <button
                     key={pool.id}
                     type="button"
                     aria-pressed={pool.id === activePool.id}
-                    className={CHIP_BUTTON}
-                    style={chipStyle(pool.id === activePool.id)}
+                    className="min-h-[44px] text-sm font-semibold"
                     onClick={() => setActivePool(pool.id)}
                   >
                     {pool.name}
@@ -238,36 +231,24 @@ export function TrackerClient({ snapshot }: TrackerClientProps) {
             ) : null}
 
             <section className="grid gap-3 sm:grid-cols-3" aria-label="Totals">
-              <div className="rounded-[var(--radius-2xl)] border border-[var(--home-rule)] bg-[var(--home-paper-raised)] p-4 shadow-[var(--shadow-sm)]">
-                <p className="text-3xs font-semibold uppercase tracking-[0.12em] text-[var(--home-ink-muted)]">
-                  Tracked points
-                </p>
-                <p className="mt-1 font-mono text-3xl font-bold text-[var(--home-ink)]">
-                  {myScoring?.total ?? 0}
-                </p>
-                <p className="mt-1 text-2xs text-[var(--home-ink-muted)]">
+              <div className="c97-stat" style={{ background: "var(--c97-panel)", padding: "var(--c97-sp-3)" }}>
+                <p className="c97-stat-label">Tracked points</p>
+                <p className="c97-stat-value c97-mono">{myScoring?.total ?? 0}</p>
+                <p className="c97-stat-delta">
                   from {myScoring?.rows.filter((row) => row.score).length ?? 0} scored picks
                 </p>
               </div>
-              <div className="rounded-[var(--radius-2xl)] border border-[var(--home-rule)] bg-[var(--home-paper-raised)] p-4 shadow-[var(--shadow-sm)]">
-                <p className="text-3xs font-semibold uppercase tracking-[0.12em] text-[var(--home-ink-muted)]">
-                  Standing (settings)
-                </p>
-                <p className="mt-1 font-mono text-3xl font-bold text-[var(--home-ink)]">
-                  {activePool.standing.myPoints}
-                </p>
-                <p className="mt-1 text-2xs text-[var(--home-ink-muted)]">
-                  what the leaderboard layer plans around
-                </p>
+              <div className="c97-stat" style={{ background: "var(--c97-panel)", padding: "var(--c97-sp-3)" }}>
+                <p className="c97-stat-label">Standing (settings)</p>
+                <p className="c97-stat-value c97-mono">{activePool.standing.myPoints}</p>
+                <p className="c97-stat-delta">what the leaderboard layer plans around</p>
               </div>
-              <div className="rounded-[var(--radius-2xl)] border border-[var(--home-rule)] bg-[var(--home-paper-raised)] p-4 shadow-[var(--shadow-sm)]">
-                <p className="text-3xs font-semibold uppercase tracking-[0.12em] text-[var(--home-ink-muted)]">
-                  Rules
-                </p>
-                <p className="mt-1 font-mono text-3xl font-bold text-[var(--home-ink)]">
+              <div className="c97-stat" style={{ background: "var(--c97-panel)", padding: "var(--c97-sp-3)" }}>
+                <p className="c97-stat-label">Rules</p>
+                <p className="c97-stat-value c97-mono">
                   {activePool.rules.exact}/{activePool.rules.correctDifference}/{activePool.rules.correctOutcome}
                 </p>
-                <p className="mt-1 text-2xs text-[var(--home-ink-muted)]">
+                <p className="c97-stat-delta">
                   scored on the{" "}
                   {activePool.rules.basis === "ninetyMinutes" ? "90-minute" : "final"} result
                 </p>
@@ -276,11 +257,11 @@ export function TrackerClient({ snapshot }: TrackerClientProps) {
 
             {myScoring && myScoring.rows.length > 0 ? (
               <section aria-label="My scored picks">
-                <h2 className="text-lg font-bold text-[var(--home-ink)]">My picks</h2>
+                <h2 className="text-lg font-bold text-[var(--c97-ink)]">My picks</h2>
                 <div className="scroll-shadow-x mt-3 overflow-x-auto" role="region" aria-label="My scored picks (scrollable)" tabIndex={0}>
                   <table className="min-w-full border-separate border-spacing-y-2" aria-label="My picks scored against results">
                     <thead>
-                      <tr className="text-left text-xs uppercase tracking-[0.14em] text-[var(--home-ink-soft)]">
+                      <tr className="text-left text-xs uppercase tracking-[0.14em] text-[var(--c97-label)]">
                         <th scope="col" className="px-3 py-2 font-semibold">Match</th>
                         <th scope="col" className="px-3 py-2 font-semibold">My pick</th>
                         <th scope="col" className="px-3 py-2 font-semibold">Result</th>
@@ -292,19 +273,19 @@ export function TrackerClient({ snapshot }: TrackerClientProps) {
                     <tbody>
                       {myScoring.rows.map((row) => {
                         return (
-                          <tr key={row.fixture.id} className="bg-[var(--home-paper-raised)] text-sm text-[var(--home-ink)] shadow-[var(--shadow-sm)]">
-                            <td className="rounded-l-xl border-y border-l border-[var(--home-rule)] px-3 py-2.5">
+                          <tr key={row.fixture.id} className="bg-[var(--c97-panel)] text-sm text-[var(--c97-ink)]">
+                            <td className="border-y border-l border-[var(--c97-rule)] px-3 py-2.5">
                               <p className="font-semibold">
                                 {row.fixture.homeTeam} vs {row.fixture.awayTeam}
                               </p>
-                              <p className="text-2xs text-[var(--home-ink-muted)]">
+                              <p className="text-2xs text-[var(--c97-ink-2)]">
                                 {formatKickoff(row.fixture.kickoff, activePool.timezone)}
                               </p>
                             </td>
-                            <td className="border-y border-[var(--home-rule)] px-3 py-2.5 font-mono font-bold tabular-nums">
+                            <td className="border-y border-[var(--c97-rule)] px-3 py-2.5 font-mono font-bold tabular-nums">
                               {formatScoreline(row.pick)}
                             </td>
-                            <td className="border-y border-[var(--home-rule)] px-3 py-2.5 font-mono tabular-nums">
+                            <td className="border-y border-[var(--c97-rule)] px-3 py-2.5 font-mono tabular-nums">
                               {row.result ? (
                                 <>
                                   {formatScoreline(row.result.ninetyMinutes)}
@@ -314,15 +295,13 @@ export function TrackerClient({ snapshot }: TrackerClientProps) {
                                   {row.result.penaltyWinner ? " p" : ""}
                                   {activePool.manualResults[row.fixture.id] && !row.fixture.result ? (
                                     <span className="mt-1 flex items-center gap-2 font-sans">
-                                      <span className="rounded-full border border-[var(--home-rule)] px-1.5 py-0.5 text-3xs font-semibold uppercase tracking-[0.12em] text-[var(--home-ink-muted)]">
-                                        manual
-                                      </span>
+                                      <span className="c97-chip">manual</span>
                                       <button
                                         type="button"
                                         onClick={() =>
                                           setManualResult(activePool.id, row.fixture.id, null)
                                         }
-                                        className="inline-flex min-h-[44px] items-center text-2xs font-semibold text-[var(--home-signal)] hover:underline"
+                                        className="inline-flex min-h-[44px] items-center text-2xs font-semibold text-[var(--c97-accent)] hover:underline"
                                       >
                                         Clear
                                       </button>
@@ -330,16 +309,16 @@ export function TrackerClient({ snapshot }: TrackerClientProps) {
                                   ) : null}
                                 </>
                               ) : (
-                                <span className="text-2xs text-[var(--home-ink-muted)]">pending</span>
+                                <span className="text-2xs text-[var(--c97-ink-2)]">pending</span>
                               )}
                             </td>
-                            <td className="hidden border-y border-[var(--home-rule)] px-3 py-2.5 text-2xs text-[var(--home-ink-muted)] sm:table-cell">
+                            <td className="hidden border-y border-[var(--c97-rule)] px-3 py-2.5 text-2xs text-[var(--c97-ink-2)] sm:table-cell">
                               {row.score ? COMPONENT_LABELS[row.score.component] : "—"}
                             </td>
-                            <td className="border-y border-[var(--home-rule)] px-3 py-2.5 font-mono font-bold tabular-nums">
+                            <td className="border-y border-[var(--c97-rule)] px-3 py-2.5 font-mono font-bold tabular-nums">
                               {row.score ? row.score.points : "—"}
                             </td>
-                            <td className="hidden rounded-r-xl border-y border-r border-[var(--home-rule)] px-3 py-2.5 font-mono tabular-nums sm:table-cell">
+                            <td className="hidden border-y border-r border-[var(--c97-rule)] px-3 py-2.5 font-mono tabular-nums sm:table-cell">
                               {row.running ?? ""}
                             </td>
                           </tr>
@@ -350,21 +329,21 @@ export function TrackerClient({ snapshot }: TrackerClientProps) {
                 </div>
               </section>
             ) : (
-              <p className="text-sm text-[var(--home-ink-muted)]">
+              <p className="text-sm text-[var(--c97-ink-2)]">
                 No saved picks yet. Save a submission from the pick sheet and it lands here.
               </p>
             )}
 
             {needsResult.length > 0 ? (
               <section aria-label="Missing results">
-                <h2 className="text-base font-bold text-[var(--home-ink)]">Missing results</h2>
-                <p className="mt-1 text-2xs text-[var(--home-ink-muted)]">
+                <h2 className="text-base font-bold text-[var(--c97-ink)]">Missing results</h2>
+                <p className="mt-1 text-2xs text-[var(--c97-ink-2)]">
                   These games have picks but no result from the data feed. Enter the result by hand
                   and the scoring uses it until a feed result shows up.
                 </p>
                 <ul className="mt-2 space-y-3">
                   {needsResult.map((fixture) => (
-                    <li key={fixture.id} className="rounded-xl border border-[var(--home-rule)] bg-[var(--home-paper-raised)] px-4 py-3 text-sm text-[var(--home-ink)]">
+                    <li key={fixture.id} className="border border-[var(--c97-rule)] bg-[var(--c97-panel)] px-4 py-3 text-sm text-[var(--c97-ink)]">
                       <p className="font-semibold">
                         {fixture.homeTeam} vs {fixture.awayTeam}
                       </p>
@@ -379,9 +358,9 @@ export function TrackerClient({ snapshot }: TrackerClientProps) {
             ) : null}
 
             <section aria-label="Rivals">
-              <h2 className="text-lg font-bold text-[var(--home-ink)]">Rivals</h2>
+              <h2 className="text-lg font-bold text-[var(--c97-ink)]">Rivals</h2>
               {activePool.rivals.length === 0 ? (
-                <p className="mt-1 text-sm text-[var(--home-ink-muted)]">
+                <p className="mt-1 text-sm text-[var(--c97-ink-2)]">
                   Add rivals on the{" "}
                   <Link className="underline" href="/score-pools/settings">settings page</Link>{" "}
                   and enter their picks here to see the gaps game by game.
@@ -391,7 +370,7 @@ export function TrackerClient({ snapshot }: TrackerClientProps) {
                   <div className="scroll-shadow-x mt-3 overflow-x-auto" role="region" aria-label="Rival totals (scrollable)" tabIndex={0}>
                     <table className="min-w-full border-separate border-spacing-y-2" aria-label="Rival totals">
                       <thead>
-                        <tr className="text-left text-xs uppercase tracking-[0.14em] text-[var(--home-ink-soft)]">
+                        <tr className="text-left text-xs uppercase tracking-[0.14em] text-[var(--c97-label)]">
                           <th scope="col" className="px-3 py-2 font-semibold">Rival</th>
                           <th scope="col" className="px-3 py-2 font-semibold">Tracked</th>
                           <th scope="col" className="px-3 py-2 font-semibold">Adjustment</th>
@@ -406,12 +385,12 @@ export function TrackerClient({ snapshot }: TrackerClientProps) {
                           const myTotal = (myScoring?.total ?? 0) + activePool.standing.myPoints;
                           const gap = total - myTotal;
                           return (
-                            <tr key={rival.id} className="bg-[var(--home-paper-raised)] text-sm text-[var(--home-ink)] shadow-[var(--shadow-sm)]">
-                              <td className="rounded-l-xl border-y border-l border-[var(--home-rule)] px-3 py-2.5 font-semibold">{rival.name}</td>
-                              <td className="border-y border-[var(--home-rule)] px-3 py-2.5 font-mono tabular-nums">{scoring.total}</td>
-                              <td className="border-y border-[var(--home-rule)] px-3 py-2.5 font-mono tabular-nums">{rival.pointsAdjustment}</td>
-                              <td className="border-y border-[var(--home-rule)] px-3 py-2.5 font-mono font-bold tabular-nums">{total}</td>
-                              <td className="rounded-r-xl border-y border-r border-[var(--home-rule)] px-3 py-2.5 font-mono tabular-nums">
+                            <tr key={rival.id} className="bg-[var(--c97-panel)] text-sm text-[var(--c97-ink)]">
+                              <td className="border-y border-l border-[var(--c97-rule)] px-3 py-2.5 font-semibold">{rival.name}</td>
+                              <td className="border-y border-[var(--c97-rule)] px-3 py-2.5 font-mono tabular-nums">{scoring.total}</td>
+                              <td className="border-y border-[var(--c97-rule)] px-3 py-2.5 font-mono tabular-nums">{rival.pointsAdjustment}</td>
+                              <td className="border-y border-[var(--c97-rule)] px-3 py-2.5 font-mono font-bold tabular-nums">{total}</td>
+                              <td className="border-y border-r border-[var(--c97-rule)] px-3 py-2.5 font-mono tabular-nums">
                                 {gap > 0 ? `+${gap} on me` : gap < 0 ? `${-gap} behind` : "level"}
                               </td>
                             </tr>
@@ -422,15 +401,14 @@ export function TrackerClient({ snapshot }: TrackerClientProps) {
                   </div>
 
                   <div className="mt-4">
-                    <h3 className="text-sm font-bold text-[var(--home-ink)]">Enter rival picks</h3>
-                    <div className="mt-2 flex flex-wrap gap-2">
+                    <h3 className="text-sm font-bold text-[var(--c97-ink)]">Enter rival picks</h3>
+                    <div className="c97-segmented mt-2">
                       {activePool.rivals.map((rival) => (
                         <button
                           key={rival.id}
                           type="button"
                           aria-pressed={rival.id === selectedRivalId}
-                          className={CHIP_BUTTON}
-                          style={chipStyle(rival.id === selectedRivalId)}
+                          className="min-h-[44px] text-sm font-semibold"
                           onClick={() =>
                             setSelectedRivalId(rival.id === selectedRivalId ? null : rival.id)
                           }
@@ -445,11 +423,11 @@ export function TrackerClient({ snapshot }: TrackerClientProps) {
                           const existing = selectedRival.picks[fixture.id];
                           const draft = rivalPickDrafts[fixture.id] ?? { home: "", away: "" };
                           return (
-                            <li key={fixture.id} className="flex flex-wrap items-center gap-3 rounded-xl border border-[var(--home-rule)] bg-[var(--home-paper-raised)] px-4 py-2.5 text-sm text-[var(--home-ink)]">
+                            <li key={fixture.id} className="flex flex-wrap items-center gap-3 border border-[var(--c97-rule)] bg-[var(--c97-panel)] px-4 py-2.5 text-sm text-[var(--c97-ink)]">
                               <span className="min-w-48 font-semibold">
                                 {fixture.homeTeam} vs {fixture.awayTeam}
                               </span>
-                              <span className="font-mono text-2xs text-[var(--home-ink-muted)]">
+                              <span className="font-mono text-2xs text-[var(--c97-ink-2)]">
                                 {existing ? `saved ${formatScoreline(existing)}` : "no pick saved"}
                               </span>
                               <span className="flex items-center gap-1.5">
@@ -465,10 +443,10 @@ export function TrackerClient({ snapshot }: TrackerClientProps) {
                                       [fixture.id]: { ...draft, home: event.target.value },
                                     }))
                                   }
-                                  className="min-h-[44px] w-14 rounded-lg border border-[var(--home-rule)] bg-[var(--home-paper)] px-2 py-1 text-center text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-signal)]"
+                                  className="min-h-[44px] w-14 border border-[var(--c97-rule)] bg-[var(--c97-surface)] px-2 py-1 text-center text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--c97-accent)]"
                                   aria-label={`${selectedRival.name} pick, ${fixture.homeTeam} goals`}
                                 />
-                                <span className="text-[var(--home-ink-muted)]">-</span>
+                                <span className="text-[var(--c97-ink-2)]">-</span>
                                 <input
                                   type="number"
                                   min={0}
@@ -481,7 +459,7 @@ export function TrackerClient({ snapshot }: TrackerClientProps) {
                                       [fixture.id]: { ...draft, away: event.target.value },
                                     }))
                                   }
-                                  className="min-h-[44px] w-14 rounded-lg border border-[var(--home-rule)] bg-[var(--home-paper)] px-2 py-1 text-center text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-signal)]"
+                                  className="min-h-[44px] w-14 border border-[var(--c97-rule)] bg-[var(--c97-surface)] px-2 py-1 text-center text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--c97-accent)]"
                                   aria-label={`${selectedRival.name} pick, ${fixture.awayTeam} goals`}
                                 />
                                 <button
@@ -534,6 +512,6 @@ export function TrackerClient({ snapshot }: TrackerClientProps) {
           </>
         )}
       </div>
-    </div>
+    </section>
   );
 }

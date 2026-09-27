@@ -9,10 +9,9 @@ interface MissionStatFasciaProps {
 }
 
 /**
- * Fused hairline stat fascia: cards share a 1px `--home-rule` gutter so the
- * strip reads as one instrument panel instead of four separately-bordered
- * cards. A route-local variant rather than a restyle of the shared
- * `HomeStatsPanel` (used elsewhere with a different, more spacious look).
+ * Fused hairline stat fascia: cards share a 1px rule gutter so the strip
+ * reads as one panel instead of four separately bordered cards. It is the
+ * route's own row and repeats nothing in the hero above it.
  */
 export function MissionStatFascia({ cells }: MissionStatFasciaProps) {
   if (cells.length === 0) {

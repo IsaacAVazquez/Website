@@ -11,12 +11,10 @@ import type { StoredPool } from "@/lib/scorePools/persistence";
 import type { DevigMethod, Posture, ScoringBasis } from "@/lib/scorePools";
 import type { ScorePoolsSnapshot } from "@/types/scorePools";
 import {
-  CHIP_BUTTON,
   FIELD_HINT,
   FIELD_INPUT,
   FIELD_LABEL,
   PILL_BUTTON,
-  chipStyle,
   formatAge,
 } from "../score-pools-ui";
 
@@ -35,7 +33,13 @@ const TIMEZONES = [
   "UTC",
 ];
 
-const SECTION = "rounded-[var(--radius-2xl)] border border-[var(--home-rule)] bg-[var(--home-paper-raised)] p-5 shadow-[var(--shadow-sm)]";
+const SECTION = "bg-[var(--c97-panel)] p-5";
+const HINT_STYLE = {
+  display: "block" as const,
+  marginTop: "var(--c97-sp-1)",
+  fontSize: "var(--c97-fs-small)",
+  color: "var(--c97-ink-2)",
+};
 
 function NumberSetting({
   label,
@@ -57,8 +61,8 @@ function NumberSetting({
   allowEmpty?: boolean;
 }) {
   return (
-    <label className={FIELD_LABEL}>
-      {label}
+    <label className="block">
+      <span className={FIELD_LABEL}>{label}</span>
       <input
         type="number"
         inputMode="decimal"
@@ -76,8 +80,13 @@ function NumberSetting({
           if (Number.isFinite(parsed)) onChange(parsed);
         }}
         className={FIELD_INPUT}
+        style={{ marginTop: "var(--c97-sp-1)" }}
       />
-      {hint ? <span className={FIELD_HINT}>{hint}</span> : null}
+      {hint ? (
+        <span className={FIELD_HINT} style={HINT_STYLE}>
+          {hint}
+        </span>
+      ) : null}
     </label>
   );
 }
@@ -96,12 +105,13 @@ function SelectSetting<T extends string>({
   hint?: string;
 }) {
   return (
-    <label className={FIELD_LABEL}>
-      {label}
+    <label className="block">
+      <span className={FIELD_LABEL}>{label}</span>
       <select
         value={value}
         onChange={(event) => onChange(event.target.value as T)}
         className={FIELD_INPUT}
+        style={{ marginTop: "var(--c97-sp-1)" }}
       >
         {options.map((option) => (
           <option key={option.value} value={option.value}>
@@ -109,7 +119,11 @@ function SelectSetting<T extends string>({
           </option>
         ))}
       </select>
-      {hint ? <span className={FIELD_HINT}>{hint}</span> : null}
+      {hint ? (
+        <span className={FIELD_HINT} style={HINT_STYLE}>
+          {hint}
+        </span>
+      ) : null}
     </label>
   );
 }
@@ -139,21 +153,21 @@ export function SettingsClient({ snapshot }: SettingsClientProps) {
   };
 
   return (
-    <div className="home-page min-h-screen">
-      <div className="home-shell home-section space-y-6">
+    <section className="c97-band min-h-screen" data-c97-surface="paper">
+      <div className="c97-shell space-y-6">
         <header>
-          <p className="home-kicker mb-1">Prediction Tools</p>
-          <h1 className="text-2xl font-bold tracking-tight text-[var(--home-ink)] sm:text-3xl">
+          <p className="c97-kicker mb-1">Prediction Tools</p>
+          <h1 className="text-2xl font-bold tracking-tight text-[var(--c97-ink)] sm:text-3xl">
             Pool{" "}
-            <em style={{ fontFamily: "var(--font-home-serif)", fontStyle: "italic", fontWeight: 400 }}>
+            <em style={{ fontFamily: "var(--c97-font-display)", fontStyle: "italic", fontWeight: 400 }}>
               Settings
             </em>
           </h1>
-          <p className="mt-2 max-w-3xl text-sm leading-relaxed text-[var(--home-ink-muted)]">
+          <p className="mt-2 max-w-3xl text-sm leading-relaxed text-[var(--c97-ink-2)]">
             The scoring rules drive the whole optimization, and the standing drives the risk
             posture, so this page is where the recommendations actually get their shape. Back to
             the{" "}
-            <Link className="underline decoration-[var(--home-rule)] underline-offset-4 hover:decoration-[var(--home-signal)]" href="/score-pools">
+            <Link className="underline decoration-[var(--c97-rule)] underline-offset-4 hover:decoration-[var(--c97-accent)]" href="/score-pools">
               pick sheet
             </Link>
             .
@@ -161,15 +175,14 @@ export function SettingsClient({ snapshot }: SettingsClientProps) {
         </header>
 
         <section className={SECTION} aria-label="Pools">
-          <h2 className="text-lg font-bold text-[var(--home-ink)]">Pools</h2>
-          <div className="mt-2 flex flex-wrap gap-2">
+          <h2 className="text-lg font-bold text-[var(--c97-ink)]">Pools</h2>
+          <div className="c97-segmented mt-2">
             {pools.map((entry) => (
               <button
                 key={entry.id}
                 type="button"
                 aria-pressed={entry.id === pool?.id}
-                className={CHIP_BUTTON}
-                style={chipStyle(entry.id === pool?.id)}
+                className="min-h-[44px] text-sm font-semibold"
                 onClick={() => {
                   setActivePool(entry.id);
                   setConfirmDelete(false);
@@ -180,12 +193,13 @@ export function SettingsClient({ snapshot }: SettingsClientProps) {
             ))}
           </div>
           <div className="mt-3 flex flex-wrap items-end gap-3">
-            <label className={FIELD_LABEL}>
-              League
+            <label className="block">
+              <span className={FIELD_LABEL}>League</span>
               <select
                 value={newPoolLeague}
                 onChange={(event) => setNewPoolLeague(event.target.value)}
                 className={FIELD_INPUT}
+                style={{ marginTop: "var(--c97-sp-1)" }}
               >
                 {snapshot.leagues.map((entry) => (
                   <option key={entry.key} value={entry.key}>
@@ -195,14 +209,15 @@ export function SettingsClient({ snapshot }: SettingsClientProps) {
                 ))}
               </select>
             </label>
-            <label className={FIELD_LABEL}>
-              Name
+            <label className="block">
+              <span className={FIELD_LABEL}>Name</span>
               <input
                 type="text"
                 value={newPoolName}
                 onChange={(event) => setNewPoolName(event.target.value)}
                 placeholder="Office pool"
                 className={FIELD_INPUT}
+                style={{ marginTop: "var(--c97-sp-1)" }}
               />
             </label>
             <button
@@ -222,17 +237,18 @@ export function SettingsClient({ snapshot }: SettingsClientProps) {
         {pool ? (
           <>
             <section className={SECTION} aria-label="Pool basics">
-              <h2 className="text-lg font-bold text-[var(--home-ink)]">
+              <h2 className="text-lg font-bold text-[var(--c97-ink)]">
                 {pool.name}
               </h2>
               <div className="mt-3 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-                <label className={FIELD_LABEL}>
-                  Pool name
+                <label className="block">
+                  <span className={FIELD_LABEL}>Pool name</span>
                   <input
                     type="text"
                     value={pool.name}
                     onChange={(event) => patch((current) => ({ ...current, name: event.target.value }))}
                     className={FIELD_INPUT}
+                    style={{ marginTop: "var(--c97-sp-1)" }}
                   />
                 </label>
                 <SelectSetting
@@ -282,8 +298,8 @@ export function SettingsClient({ snapshot }: SettingsClientProps) {
             </section>
 
             <section className={SECTION} aria-label="Scoring rules">
-              <h2 className="text-lg font-bold text-[var(--home-ink)]">Scoring rules</h2>
-              <p className="mt-1 max-w-2xl text-2xs text-[var(--home-ink-muted)]">
+              <h2 className="text-lg font-bold text-[var(--c97-ink)]">Scoring rules</h2>
+              <p className="mt-1 max-w-2xl text-2xs text-[var(--c97-ink-2)]">
                 The basis flag matters most in knockouts: under 90-minute scoring a game that
                 finishes 1-1 and goes to penalties scores as a 1-1 draw, and under final-result
                 scoring your pick compares against the score after extra time.
@@ -336,7 +352,7 @@ export function SettingsClient({ snapshot }: SettingsClientProps) {
                     patch((current) => ({ ...current, rules: { ...current.rules, basis } }))
                   }
                 />
-                <label className="flex min-h-[44px] cursor-pointer items-center gap-2 self-end rounded-lg border border-[var(--home-rule)] bg-[var(--home-paper)] px-3 py-2">
+                <label className="flex min-h-[44px] cursor-pointer items-center gap-2 self-end border border-[var(--c97-rule)] bg-[var(--c97-surface)] px-3 py-2">
                   <input
                     type="checkbox"
                     checked={pool.rules.penaltiesCountAsWin}
@@ -346,9 +362,9 @@ export function SettingsClient({ snapshot }: SettingsClientProps) {
                         rules: { ...current.rules, penaltiesCountAsWin: event.target.checked },
                       }))
                     }
-                    className="h-4 w-4 accent-[var(--home-signal)]"
+                    className="h-4 w-4 accent-[var(--c97-accent)]"
                   />
-                  <span className="text-xs font-semibold text-[var(--home-ink)]">
+                  <span className="text-xs font-semibold text-[var(--c97-ink)]">
                     Shootout winner counts as the winner
                   </span>
                 </label>
@@ -356,8 +372,8 @@ export function SettingsClient({ snapshot }: SettingsClientProps) {
             </section>
 
             <section className={SECTION} aria-label="Standing and posture">
-              <h2 className="text-lg font-bold text-[var(--home-ink)]">Standing and posture</h2>
-              <p className="mt-1 max-w-2xl text-2xs text-[var(--home-ink-muted)]">
+              <h2 className="text-lg font-bold text-[var(--c97-ink)]">Standing and posture</h2>
+              <p className="mt-1 max-w-2xl text-2xs text-[var(--c97-ink-2)]">
                 The gap to whoever sits nearest above and below, against the games remaining, sets
                 how much variance the recommendation courts. Auto derives it; protect and chase
                 force it.
@@ -442,8 +458,8 @@ export function SettingsClient({ snapshot }: SettingsClientProps) {
             </section>
 
             <section className={SECTION} aria-label="Field model">
-              <h2 className="text-lg font-bold text-[var(--home-ink)]">Field model</h2>
-              <p className="mt-1 max-w-2xl text-2xs text-[var(--home-ink-muted)]">
+              <h2 className="text-lg font-bold text-[var(--c97-ink)]">Field model</h2>
+              <p className="mt-1 max-w-2xl text-2xs text-[var(--c97-ink-2)]">
                 A heuristic for what the rest of the pool submits: mostly the favorite with the
                 modal scoreline. Rival picks you enter in the tracker score the rival table only and
                 do not change this model.
@@ -480,16 +496,16 @@ export function SettingsClient({ snapshot }: SettingsClientProps) {
             </section>
 
             <section className={SECTION} aria-label="Rivals">
-              <h2 className="text-lg font-bold text-[var(--home-ink)]">Rivals</h2>
-              <p className="mt-1 text-2xs text-[var(--home-ink-muted)]">
+              <h2 className="text-lg font-bold text-[var(--c97-ink)]">Rivals</h2>
+              <p className="mt-1 text-2xs text-[var(--c97-ink-2)]">
                 The people you&apos;re actually racing. Their picks go in on the tracker page; the
                 adjustment covers points they banked before you started tracking.
               </p>
               <ul className="mt-3 space-y-2">
                 {pool.rivals.map((rival) => (
-                  <li key={rival.id} className="flex flex-wrap items-end gap-3 rounded-xl border border-[var(--home-rule)] bg-[var(--home-paper)] px-4 py-3">
-                    <label className={FIELD_LABEL}>
-                      Name
+                  <li key={rival.id} className="flex flex-wrap items-end gap-3 border border-[var(--c97-rule)] bg-[var(--c97-surface)] px-4 py-3">
+                    <label className="block">
+                      <span className={FIELD_LABEL}>Name</span>
                       <input
                         type="text"
                         value={rival.name}
@@ -500,6 +516,7 @@ export function SettingsClient({ snapshot }: SettingsClientProps) {
                           }))
                         }
                         className={FIELD_INPUT}
+                        style={{ marginTop: "var(--c97-sp-1)" }}
                       />
                     </label>
                     <NumberSetting
@@ -523,14 +540,15 @@ export function SettingsClient({ snapshot }: SettingsClientProps) {
                 ))}
               </ul>
               <div className="mt-3 flex flex-wrap items-end gap-3">
-                <label className={FIELD_LABEL}>
-                  New rival
+                <label className="block">
+                  <span className={FIELD_LABEL}>New rival</span>
                   <input
                     type="text"
                     value={newRivalName}
                     onChange={(event) => setNewRivalName(event.target.value)}
                     placeholder="Dana"
                     className={FIELD_INPUT}
+                    style={{ marginTop: "var(--c97-sp-1)" }}
                   />
                 </label>
                 <button
@@ -548,11 +566,11 @@ export function SettingsClient({ snapshot }: SettingsClientProps) {
             </section>
 
             <section className={SECTION} aria-label="Data status">
-              <h2 className="text-lg font-bold text-[var(--home-ink)]">Data status</h2>
+              <h2 className="text-lg font-bold text-[var(--c97-ink)]">Data status</h2>
               <div className="scroll-shadow-x mt-3 overflow-x-auto" role="region" aria-label="League data status (scrollable)" tabIndex={0}>
                 <table className="min-w-full border-separate border-spacing-y-2" aria-label="Snapshot status per league">
                   <thead>
-                    <tr className="text-left text-xs uppercase tracking-[0.14em] text-[var(--home-ink-soft)]">
+                    <tr className="text-left text-xs uppercase tracking-[0.14em] text-[var(--c97-label)]">
                       <th scope="col" className="px-3 py-2 font-semibold">League</th>
                       <th scope="col" className="px-3 py-2 font-semibold">Refreshed</th>
                       <th scope="col" className="px-3 py-2 font-semibold">Fixtures</th>
@@ -561,20 +579,20 @@ export function SettingsClient({ snapshot }: SettingsClientProps) {
                   </thead>
                   <tbody>
                     {snapshot.leagues.map((league) => (
-                      <tr key={league.key} className="bg-[var(--home-paper)] text-sm text-[var(--home-ink)]">
-                        <td className="rounded-l-xl border-y border-l border-[var(--home-rule)] px-3 py-2.5 font-semibold">
+                      <tr key={league.key} className="bg-[var(--c97-surface)] text-sm text-[var(--c97-ink)]">
+                        <td className="border-y border-l border-[var(--c97-rule)] px-3 py-2.5 font-semibold">
                           {league.name}
                           {league.sample ? (
-                            <span className="ml-1.5 text-3xs uppercase text-[var(--home-ink-muted)]">sample</span>
+                            <span className="ml-1.5 text-3xs uppercase text-[var(--c97-ink-2)]">sample</span>
                           ) : null}
                         </td>
-                        <td className="border-y border-[var(--home-rule)] px-3 py-2.5 text-2xs text-[var(--home-ink-muted)]">
+                        <td className="border-y border-[var(--c97-rule)] px-3 py-2.5 text-2xs text-[var(--c97-ink-2)]">
                           {formatAge(league.generatedAt, nowIso)}
                         </td>
-                        <td className="border-y border-[var(--home-rule)] px-3 py-2.5 font-mono tabular-nums">
+                        <td className="border-y border-[var(--c97-rule)] px-3 py-2.5 font-mono tabular-nums">
                           {league.fixtures.length}
                         </td>
-                        <td className="hidden rounded-r-xl border-y border-r border-[var(--home-rule)] px-3 py-2.5 text-2xs text-[var(--home-ink-muted)] sm:table-cell">
+                        <td className="hidden border-y border-r border-[var(--c97-rule)] px-3 py-2.5 text-2xs text-[var(--c97-ink-2)] sm:table-cell">
                           {league.sources.fixtures} / {league.sources.odds}
                         </td>
                       </tr>
@@ -582,7 +600,7 @@ export function SettingsClient({ snapshot }: SettingsClientProps) {
                   </tbody>
                 </table>
               </div>
-              <p className="mt-2 text-2xs text-[var(--home-ink-muted)]">
+              <p className="mt-2 text-2xs text-[var(--c97-ink-2)]">
                 A scheduled job is set to refresh the snapshot every six hours, but it only runs when the data API keys are configured, so check the as-of dates above. You can also refresh it with{" "}
                 <code className="font-mono">npm run update:score-pools</code>. Odds history keeps
                 every price change per game, so line movement stays visible in the match detail.
@@ -590,8 +608,8 @@ export function SettingsClient({ snapshot }: SettingsClientProps) {
             </section>
 
             <section className={SECTION} aria-label="Delete pool">
-              <h2 className="text-base font-bold text-[var(--home-ink)]">Delete this pool</h2>
-              <p className="mt-1 text-2xs text-[var(--home-ink-muted)]">
+              <h2 className="text-base font-bold text-[var(--c97-ink)]">Delete this pool</h2>
+              <p className="mt-1 text-2xs text-[var(--c97-ink-2)]">
                 Removes the pool, its picks, rivals, flags, and hand-entered odds from this
                 browser. There is no undo.
               </p>
@@ -605,7 +623,6 @@ export function SettingsClient({ snapshot }: SettingsClientProps) {
                     <button
                       type="button"
                       className={PILL_BUTTON}
-                      style={{ borderColor: "var(--home-negative)", color: "var(--home-negative)" }}
                       onClick={() => {
                         removePool(pool.id);
                         setConfirmDelete(false);
@@ -622,11 +639,11 @@ export function SettingsClient({ snapshot }: SettingsClientProps) {
             </section>
           </>
         ) : (
-          <p className="text-sm text-[var(--home-ink-muted)]">
+          <p className="text-sm text-[var(--c97-ink-2)]">
             No pool selected. Add one above and its settings show up here.
           </p>
         )}
       </div>
-    </div>
+    </section>
   );
 }

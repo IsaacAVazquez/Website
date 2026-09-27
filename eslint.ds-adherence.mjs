@@ -1,3 +1,5 @@
+import { builtinRules } from "eslint/use-at-your-own-risk";
+
 /**
  * Design-system adherence rules, imported from the Claude Design project
  * "Working Instrument Design System" (00466307-2745-4bc3-b1fc-7af6cadd0349).
@@ -54,7 +56,9 @@ const UNIVERSAL_PROPS = ["key", "ref", "className", "style", "children"];
 const SPREADS_DOM_PROPS = new Set(["ModernButton"]);
 
 /**
- * The 39 synced components, keyed by display name.
+ * The synced components that still exist, keyed by display name. The design
+ * project published 39; the rest were deleted from `src` by 2026-09-27, when
+ * the Catalog 97 close-out removed the last of the Working Instrument ones.
  *
  * `props` is the declared prop list. `enums` maps a prop to its allowed string
  * literal values. Both come from the design project's published contracts,
@@ -69,26 +73,6 @@ const COMPONENT_CONTRACTS = {
     ],
     enums: { variant: ["inline", "compact", "full", "light"] },
   },
-  Badge: {
-    props: ["variant", "size", "children", "glow", "href", "className", "id", "style"],
-    enums: {
-      variant: ["default", "success", "warning", "error", "outline"],
-      size: ["sm", "md", "lg"],
-    },
-  },
-  Chip: {
-    props: ["tone", "children", "className", "id", "style"],
-    enums: { tone: ["default", "signal"] },
-  },
-  DropdownMenu: {
-    props: ["children", "dir", "open", "defaultOpen", "onOpenChange", "modal"],
-    enums: { dir: ["ltr", "rtl"] },
-  },
-  Heading: { props: ["className", "children", "as", "level"], enums: {} },
-  Kicker: {
-    props: ["variant", "children", "className", "id", "style"],
-    enums: { variant: ["dot", "plain"] },
-  },
   ModernButton: {
     props: [
       "href", "variant", "size", "children", "ariaLabel", "fullWidth",
@@ -99,31 +83,12 @@ const COMPONENT_CONTRACTS = {
       size: ["sm", "md", "lg"],
     },
   },
-  Paragraph: { props: ["className", "children"], enums: {} },
-  SectionIntro: {
-    props: [
-      "eyebrow", "title", "description", "actions", "headingLevel", "align",
-      "size", "className", "titleClassName", "descriptionClassName",
-    ],
-    enums: { align: ["center", "left"], size: ["md", "lg"] },
-  },
   ThemeToggle: { props: ["className"], enums: {} },
-  WarmCard: {
-    props: [
-      "children", "className", "hover", "padding", "ariaLabel",
-      "ariaDescription", "onClick",
-    ],
-    enums: { padding: ["sm", "md", "lg", "none", "xl"] },
-  },
 
   // --- editorial ----------------------------------------------------------
   EditorialPillButton: {
     props: ["active", "children", "onClick", "title", "role", "ariaSelected", "size"],
     enums: { role: ["tab"], size: ["sm", "md"] },
-  },
-  InlineSectionLead: {
-    props: ["kicker", "children", "maxWidthClassName"],
-    enums: {},
   },
   InstrumentTape: {
     props: ["label", "items", "ariaLabel", "className", "emptyFallback"],
@@ -175,10 +140,6 @@ const COMPONENT_CONTRACTS = {
   SegmentedTabs: {
     props: ["tabs", "activeId", "onChange", "ariaLabel", "idPrefix", "panelId", "className"],
     enums: {},
-  },
-  StatCard: {
-    props: ["eyebrow", "title", "metric", "detail", "icon", "variant"],
-    enums: { variant: ["compact", "full"] },
   },
   StatFascia: { props: ["items", "dense", "className"], enums: {} },
   SurfaceCard: { props: ["children", "className"], enums: {} },
@@ -232,20 +193,20 @@ function buildComponentRules() {
 }
 
 /**
- * The design system ships exactly three families, loaded by `next/font/google`
- * in `src/app/layout.tsx`. Anything else in a `font-family` declaration is not
- * available to a design built against this system.
- *
- * Scoped to the three DS layers rather than all of `src`: the Catalog 97 routes
- * are a different design language with their own `--c97-font-*` stack, and
- * several standalone dashboards predate the system.
+ * The Working Instrument tokens were deleted on 2026-09-27, when the Catalog 97
+ * unification closed, so a string that reads one resolves to nothing. This is
+ * the lint half of the ban; `src/app/__tests__/catalog97-closeout.test.ts` is
+ * the Jest half and also covers CSS files, which ESLint does not read.
  */
-const FONT_FAMILY_RULE = {
-  selector:
-    "Literal[value=/font-family\\s*:\\s*(?!['\"]?(?:Instrument Sans|Instrument Serif|Fragment Mono))/i]",
+const DEAD_TOKEN_PATTERN = "/var\\(--home-|--font-home-/";
+const DEAD_TOKEN_RULES = [
+  `Literal[value=${DEAD_TOKEN_PATTERN}]`,
+  `TemplateElement[value.raw=${DEAD_TOKEN_PATTERN}]`,
+].map((selector) => ({
+  selector,
   message:
-    "Font not provided by the design system. Available: Instrument Sans, Instrument Serif, Fragment Mono.",
-};
+    "Working Instrument tokens were deleted. Read the --c97-* tokens from src/app/catalog97.css inside a data-c97-surface.",
+}));
 
 export const dsComponentContracts = COMPONENT_CONTRACTS;
 
@@ -258,7 +219,7 @@ export const dsComponentContracts = COMPONENT_CONTRACTS;
  * spot. Where a route rolls its own primitive the contract does not apply and
  * the file is skipped rather than every call site being flagged.
  *
- * Verified by scanning `src` for a local declaration of any of the 39 names:
+ * Verified by scanning `src` for a local declaration of any of the synced names:
  * these two are the only genuine shadows. `FixtureLedger.tsx` and
  * `dropdown-menu.tsx` also turn up, but those are the canonical modules living
  * under a filename that does not match the export, not shadows.
@@ -283,15 +244,17 @@ export const dsAdherenceConfig = {
 };
 
 /**
- * Font restriction, scoped to the design system's own source layers.
+ * The token ban runs as an error under its own rule name, because ESLint lets a
+ * file configure `no-restricted-syntax` only once and the contracts above are
+ * warnings. The core rule's implementation is reused, so the selectors behave
+ * exactly as they would there.
  */
-export const dsFontConfig = {
-  files: [
-    "src/components/ui/**/*.{ts,tsx}",
-    "src/components/editorial/**/*.{ts,tsx}",
-    "src/components/football/**/*.{ts,tsx}",
-  ],
+export const dsTokenConfig = {
+  files: ["src/**/*.{ts,tsx}"],
+  plugins: {
+    c97: { rules: { "no-working-instrument-tokens": builtinRules.get("no-restricted-syntax") } },
+  },
   rules: {
-    "no-restricted-syntax": ["warn", FONT_FAMILY_RULE],
+    "c97/no-working-instrument-tokens": ["error", ...DEAD_TOKEN_RULES],
   },
 };

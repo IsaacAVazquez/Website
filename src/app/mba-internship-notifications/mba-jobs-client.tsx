@@ -932,7 +932,7 @@ function SortDropdown({
   // keeps the surrounding pill treatment shared with the filter chips.
   return (
     <label
-      className="inline-flex min-h-[44px] cursor-pointer items-center gap-2 rounded-full border px-4 py-2 text-sm font-semibold transition-[background-color,border-color,color,box-shadow] duration-200 ease focus-within:outline focus-within:outline-2 focus-within:outline-offset-2 focus-within:outline-[var(--c97-accent)]"
+      className="inline-flex min-h-[44px] cursor-pointer items-center gap-2 border px-4 py-2 text-sm font-semibold transition-[background-color,border-color,color,box-shadow] duration-200 ease focus-within:outline focus-within:outline-2 focus-within:outline-offset-2 focus-within:outline-[var(--c97-accent)]"
       style={getPillStyle(false)}
     >
       <span
@@ -969,7 +969,7 @@ function NotificationBell({
   if (permission === "granted") {
     return (
       <div
-        className="inline-flex min-h-[48px] items-center gap-2 rounded-full border px-4 py-2 text-sm font-semibold"
+        className="inline-flex min-h-[48px] items-center gap-2 border px-4 py-2 text-sm font-semibold"
         style={{
           color: "color-mix(in srgb, var(--c97-accent) 78%, var(--c97-ink))",
           borderColor: "color-mix(in srgb, var(--c97-accent) 40%, var(--c97-rule))",
@@ -984,7 +984,7 @@ function NotificationBell({
   if (permission === "denied") {
     return (
       <div
-        className="inline-flex min-h-[48px] items-center gap-2 rounded-full border px-4 py-2 text-sm"
+        className="inline-flex min-h-[48px] items-center gap-2 border px-4 py-2 text-sm"
         style={{ color: "var(--c97-ink-2)", borderColor: "var(--c97-rule)" }}
       >
         <BellOff className="h-4 w-4" aria-hidden="true" />
@@ -1020,7 +1020,7 @@ function EmailDigestButton({
   if (result) {
     return (
       <div
-        className="inline-flex min-h-[44px] items-center gap-2 rounded-full border px-4 py-2 text-sm font-semibold"
+        className="inline-flex min-h-[44px] items-center gap-2 border px-4 py-2 text-sm font-semibold"
         style={{
           color: result.ok
             ? "color-mix(in srgb, var(--c97-positive) 60%, var(--c97-ink))"
@@ -1038,7 +1038,7 @@ function EmailDigestButton({
         <button
           type="button"
           onClick={onClear}
-          className="ml-1 inline-flex min-h-[44px] min-w-[44px] items-center justify-center rounded-full text-xs opacity-70 transition-opacity duration-200 ease hover:opacity-100"
+          className="ml-1 inline-flex min-h-[44px] min-w-[44px] items-center justify-center text-xs opacity-70 transition-opacity duration-200 ease hover:opacity-100"
           aria-label="Dismiss"
         >
           ✕
@@ -1124,9 +1124,9 @@ function CompanyFilterStrip({
             </p>
           </div>
           <div className="flex flex-wrap gap-2">
-            <span className="resume-chip">{totalLiveCount} live feeds</span>
-            <span className="resume-chip">{watchedLiveCount} watched now</span>
-            <span className="resume-chip">{groups.length} company groups</span>
+            <span className="c97-chip">{totalLiveCount} live feeds</span>
+            <span className="c97-chip">{watchedLiveCount} watched now</span>
+            <span className="c97-chip">{groups.length} company groups</span>
           </div>
         </div>
         <div className="flex items-center gap-3">
@@ -1137,7 +1137,7 @@ function CompanyFilterStrip({
             {isExpanded ? "Hide list" : "Show list"}
           </span>
           <span
-            className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full border"
+            className="inline-flex h-10 w-10 shrink-0 items-center justify-center border"
             style={{
               borderColor: "var(--c97-rule)",
               background: "var(--c97-field)",
@@ -1158,16 +1158,16 @@ function CompanyFilterStrip({
         <div id="tracked-companies-controls" className="mt-6">
           <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
             <div className="flex flex-wrap gap-2">
-              <span className="resume-chip">{totalLiveCount} live feeds</span>
-              <span className="resume-chip">{watchedLiveCount} watched now</span>
-              <span className="resume-chip">{groups.length} company groups</span>
+              <span className="c97-chip">{totalLiveCount} live feeds</span>
+              <span className="c97-chip">{watchedLiveCount} watched now</span>
+              <span className="c97-chip">{groups.length} company groups</span>
             </div>
             <div className="flex flex-wrap items-center gap-2">
               <button
                 type="button"
                 onClick={onSelectAll}
                 disabled={allOn}
-                className="inline-flex min-h-[44px] items-center rounded-full border px-4 py-2 text-2xs font-semibold uppercase tracking-[0.12em] transition-[background-color,border-color,color] duration-200 ease disabled:opacity-40"
+                className="inline-flex min-h-[44px] items-center border px-4 py-2 text-2xs font-semibold uppercase tracking-[0.12em] transition-[background-color,border-color,color] duration-200 ease disabled:opacity-40"
                 style={{
                   ...getPillStyle(false),
                   color: "var(--c97-accent)",
@@ -1179,7 +1179,7 @@ function CompanyFilterStrip({
                 type="button"
                 onClick={onClearAll}
                 disabled={allOff}
-                className="inline-flex min-h-[44px] items-center rounded-full border px-4 py-2 text-2xs font-semibold uppercase tracking-[0.12em] transition-[background-color,border-color,color] duration-200 ease disabled:opacity-40"
+                className="inline-flex min-h-[44px] items-center border px-4 py-2 text-2xs font-semibold uppercase tracking-[0.12em] transition-[background-color,border-color,color] duration-200 ease disabled:opacity-40"
                 style={getPillStyle(false)}
               >
                 All off
@@ -1248,7 +1248,7 @@ function CompanyFilterStrip({
                             aria-pressed={active}
                           >
                             <span
-                              className="h-2.5 w-2.5 shrink-0 rounded-full"
+                              className="h-2.5 w-2.5 shrink-0"
                               style={{ background: active ? company.color : "var(--c97-rule)" }}
                               aria-hidden="true"
                             />
@@ -1751,7 +1751,7 @@ function ApplicationPipeline({
                 <div key={status} className="space-y-3">
                   <div className="c97-panel flex items-center justify-between">
                     <p className="c97-meta mb-0">{MBA_APPLICATION_STATUS_LABELS[status]}</p>
-                    <span className="resume-chip">{statusApplications.length}</span>
+                    <span className="c97-chip">{statusApplications.length}</span>
                   </div>
                   {statusApplications.length === 0 ? (
                     <div
@@ -1818,11 +1818,11 @@ function SourceHealthPanel({
       />
       <div className="c97-panel">
         <div className="flex flex-wrap gap-2">
-          <span className="resume-chip">{okCount} healthy</span>
-          <span className="resume-chip">{failedCount} failed</span>
-          <span className="resume-chip">{skippedCount} manual-only</span>
+          <span className="c97-chip">{okCount} healthy</span>
+          <span className="c97-chip">{failedCount} failed</span>
+          <span className="c97-chip">{skippedCount} manual-only</span>
           {externalDisabledCount > 0 && (
-            <span className="resume-chip">{externalDisabledCount} external disabled</span>
+            <span className="c97-chip">{externalDisabledCount} external disabled</span>
           )}
         </div>
         <div className="mt-4 flex flex-wrap gap-2">
@@ -2357,7 +2357,7 @@ export function MBAJobsClient({
                       <button
                         type="button"
                         onClick={() => updateRouteState(DEFAULT_MBA_JOBS_STATE)}
-                        className="inline-flex min-h-[44px] items-center rounded-full border px-4 py-2 text-sm font-semibold transition-[background-color,border-color,color] duration-200 ease"
+                        className="inline-flex min-h-[44px] items-center border px-4 py-2 text-sm font-semibold transition-[background-color,border-color,color] duration-200 ease"
                         style={getPillStyle(false)}
                       >
                         Clear filters
@@ -2577,22 +2577,16 @@ export function MBAJobsClient({
                 aria-live="polite"
                 aria-atomic="true"
               >
-                <span className="resume-chip">{displayJobs.length} matching roles</span>
-                <span className="resume-chip">{watchedCompanyIds.size} watched feeds active</span>
+                <span className="c97-chip">{displayJobs.length} matching roles</span>
+                <span className="c97-chip">{watchedCompanyIds.size} watched feeds active</span>
                 {uiState.external === "on" && (
-                  <span className="resume-chip">{externalLeadCount} external leads</span>
+                  <span className="c97-chip">{externalLeadCount} external leads</span>
                 )}
                 {uiState.location.trim() && (
-                  <span className="resume-chip">{matchingRoleCount} before location filter</span>
+                  <span className="c97-chip">{matchingRoleCount} before location filter</span>
                 )}
                 {uiState.location.trim() && (
-                  <span
-                    className="resume-chip"
-                    style={{
-                      background: "var(--c97-field)",
-                      color: "var(--c97-ink)",
-                    }}
-                  >
+                  <span className="c97-chip">
                     Location: {uiState.location.trim()}
                   </span>
                 )}

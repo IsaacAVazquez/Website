@@ -5,7 +5,6 @@ import {
   Fragment_Mono,
   Great_Vibes,
   Instrument_Sans,
-  Instrument_Serif,
   Newsreader,
 } from "next/font/google";
 import { twMerge } from "tailwind-merge";
@@ -13,26 +12,13 @@ import { constructMetadata } from "@/lib/seo";
 import { ConditionalLayout } from "@/components/ConditionalLayout";
 import { Providers } from "@/components/Providers";
 
-// Working Instrument type stack (2026-07 redesign): three families instead of
-// the previous five. Instrument Sans is the primary display + body face, so it
-// loads with swap + preload — it is used above the fold on every route.
-// Bricolage Grotesque, Inter, and JetBrains Mono are retired; globals.css
-// aliases their old CSS variables to this stack for any stale references.
+// Instrument Sans is what Tailwind's font-sans utility names (see
+// tailwind.config.ts). It is left over from the Working Instrument, and a few
+// fantasy and score pools elements still set font-sans.
 const instrumentSans = Instrument_Sans({
   subsets: ["latin"],
   variable: "--font-instrument-sans",
   display: "swap",
-});
-
-// Serif survives for a single italic gesture in deks and manifestos.
-// display: "optional" keeps the decorative face from causing a late shift.
-const instrumentSerif = Instrument_Serif({
-  subsets: ["latin"],
-  weight: "400",
-  style: ["normal", "italic"],
-  variable: "--font-instrument-serif",
-  display: "optional",
-  preload: false,
 });
 
 // Fragment Mono (400 only) carries readouts, kickers, and micro-labels. It
@@ -53,9 +39,8 @@ const fragmentMono = Fragment_Mono({
 });
 
 /*
- * Catalog 97 type stack. These four load for the seven portfolio-shell routes
- * (see catalog97.css). All are preload: false — the Working Instrument stack
- * above still owns the other ~40 routes and should keep the preload budget.
+ * Catalog 97 type stack, used on every route (see catalog97.css). Anton
+ * preloads because every h1 is poster type; the rest load on demand.
  */
 
 // Newsreader carries every heading and serif lead in Catalog 97.
@@ -109,8 +94,8 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <head>
-        <meta name="theme-color" media="(prefers-color-scheme: light)" content="#F6F5F1" />
-        <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#151412" />
+        <meta name="theme-color" media="(prefers-color-scheme: light)" content="#f1ebdf" />
+        <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#14100c" />
         <meta name="color-scheme" content="light dark" />
         <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
         <meta name="mobile-web-app-capable" content="yes" />
@@ -119,7 +104,7 @@ export default function RootLayout({
         <meta name="apple-mobile-web-app-title" content="Isaac Vazquez" />
         <meta name="application-name" content="Isaac Vazquez Portfolio" />
         <meta name="format-detection" content="telephone=no, date=no, email=no, address=no" />
-        <meta name="msapplication-TileColor" content="#191813" />
+        <meta name="msapplication-TileColor" content="#2b211a" />
         <meta name="msapplication-config" content="/browserconfig.xml" />
         <link rel="manifest" href="/manifest.json" />
         <link rel="apple-touch-icon" sizes="152x152" href="/icons/icon-152x152.png" />
@@ -130,7 +115,6 @@ export default function RootLayout({
       <body
         className={twMerge(
           instrumentSans.variable,
-          instrumentSerif.variable,
           fragmentMono.variable,
           c97Newsreader.variable,
           c97Archivo.variable,
@@ -142,11 +126,7 @@ export default function RootLayout({
         <Providers>
           <a
             href="#main-content"
-            className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[60] focus:px-4 focus:py-2 focus:rounded-lg focus:shadow-lg focus:outline-none focus:ring-2 focus:ring-[var(--home-signal)] focus:ring-offset-2"
-            style={{
-              backgroundColor: "var(--home-ink)",
-              color: "var(--home-paper)",
-            }}
+            className="c97-skip-link sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[60] focus:px-4 focus:py-2"
           >
             Skip to main content
           </a>

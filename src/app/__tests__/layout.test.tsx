@@ -4,8 +4,7 @@ import { renderToStaticMarkup } from "react-dom/server";
 jest.mock("next/font/google", () => ({
   Fragment_Mono: () => ({ variable: "font-fragment-mono" }),
   Instrument_Sans: () => ({ variable: "font-instrument-sans" }),
-  Instrument_Serif: () => ({ variable: "font-instrument-serif" }),
-  // Catalog 97 stack, loaded for the seven portfolio-shell routes.
+  // Catalog 97 stack.
   Newsreader: () => ({ variable: "font-c97-newsreader" }),
   Archivo: () => ({ variable: "font-c97-archivo" }),
   Anton: () => ({ variable: "font-c97-anton" }),

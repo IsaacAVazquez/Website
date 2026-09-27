@@ -21,10 +21,10 @@
 
 .title { font-size: 1.5rem; font-weight: 600; line-height: 1.1; letter-spacing: -0.03em; }
 .description { max-width: 42ch; margin-top: 0.5rem; color: var(--team-muted); font-size: 0.9375rem; }
-.week { display: grid; grid-template-columns: auto auto; column-gap: 0.5rem; align-items: baseline; flex-shrink: 0; font-family: var(--font-mono); font-size: 0.75rem; }
+.week { display: grid; grid-template-columns: auto auto; column-gap: 0.5rem; align-items: baseline; flex-shrink: 0; font-family: var(--c97-font-mono); font-size: 0.75rem; }
 .week > :nth-child(2) { font-variant-numeric: tabular-nums; }
 .week > :last-child { color: var(--team-muted); }
-.context { display: flex; flex-wrap: wrap; gap: 0.5rem 1.5rem; padding-block: 0.75rem; border-top: 1px solid var(--team-rule); color: var(--team-muted); font-family: var(--font-mono); font-size: 0.75rem; font-variant-numeric: tabular-nums; }
+.context { display: flex; flex-wrap: wrap; gap: 0.5rem 1.5rem; padding-block: 0.75rem; border-top: 1px solid var(--team-rule); color: var(--team-muted); font-family: var(--c97-font-mono); font-size: 0.75rem; font-variant-numeric: tabular-nums; }
 .viewNav { display: flex; flex-wrap: wrap; gap: 1.5rem; border-bottom: 1px solid var(--team-rule); }
 .viewButton { min-height: 44px; border-bottom: 2px solid transparent; padding: 0.625rem 0; font-size: 0.875rem; font-weight: 600; color: var(--team-muted); }
 .viewButton[aria-pressed="true"] { border-color: var(--c97-accent); color: var(--team-ink); }
@@ -62,15 +62,15 @@
 .decisions { display: grid; }
 .lineup { min-width: 0; padding-block: 1.5rem; }
 .lineupHeading { display: flex; align-items: baseline; flex-wrap: wrap; gap: 0.5rem 1.5rem; justify-content: space-between; }
-.coverage { font-family: var(--font-mono); font-size: 0.6875rem; color: var(--team-muted); }
+.coverage { font-family: var(--c97-font-mono); font-size: 0.6875rem; color: var(--team-muted); }
 .lineupLabels, .lineupRow { display: grid; grid-template-columns: 3.5rem minmax(0, 1fr) 3rem; gap: 0.75rem; align-items: center; }
 .lineupLabels { margin-top: 1.25rem; padding-block: 0.5rem; font-size: 0.75rem; color: var(--team-muted); border-bottom: 1px solid var(--team-ink); }
 .lineupLabels > :last-child { text-align: right; }
 .lineupRow { min-height: 64px; padding-block: 0.75rem; border-bottom: 1px solid var(--team-rule); }
-.slot { font-family: var(--font-mono); font-size: 0.75rem; }
+.slot { font-family: var(--c97-font-mono); font-size: 0.75rem; }
 .playerCell { min-width: 0; }
 .vacant { color: var(--team-muted); font-size: 0.8125rem; }
-.rank { display: grid; justify-items: end; font-family: var(--font-mono); font-size: 1rem; font-variant-numeric: tabular-nums; }
+.rank { display: grid; justify-items: end; font-family: var(--c97-font-mono); font-size: 1rem; font-variant-numeric: tabular-nums; }
 .rank small { color: var(--team-muted); font-size: 0.625rem; }
 .method { margin-top: 1rem; }
 .method summary { min-height: 44px; padding-block: 0.75rem; font-size: 0.8125rem; cursor: pointer; }

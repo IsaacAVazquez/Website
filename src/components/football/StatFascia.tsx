@@ -6,7 +6,7 @@ export interface StatFasciaItem {
 }
 
 /**
- * Fused hairline stat strip: a CSS grid with a 1px `--home-rule` background
+ * Fused hairline stat strip: a CSS grid with a 1px `--c97-rule` background
  * showing through the grid gap, so adjoining cards read as one strip with
  * shared hairlines instead of separately-bordered cards. Used both at the
  * page level (4 cells: leader / top scorer / most goals / best defense) and

@@ -12,8 +12,8 @@ interface StatusPanelProps {
 
 /**
  * Centered editorial status card used for loading, empty, and error states.
- * Tone controls border/background accent while keeping the --home-* palette
- * so it works in both light and dark mode without extra work.
+ * Tone puts its colour on the border rule and the icon swatch only; the
+ * title and message stay in ink so the text always clears contrast.
  */
 export function StatusPanel({
   title,
@@ -28,54 +28,37 @@ export function StatusPanel({
   // an explicit `statusRole` still overrides.
   const role = statusRole ?? (tone === "error" ? "alert" : "status");
 
-  const toneStyle =
+  const toneAccent =
     tone === "error"
-      ? {
-          borderColor: "color-mix(in srgb, var(--home-negative) 30%, var(--home-rule))",
-          background: "color-mix(in srgb, var(--home-negative) 10%, var(--home-paper))",
-          accent: "var(--home-negative)",
-        }
+      ? "var(--c97-negative)"
       : tone === "warning"
-        ? {
-            borderColor: "color-mix(in srgb, var(--home-warning) 32%, var(--home-rule))",
-            background: "color-mix(in srgb, var(--home-warning) 12%, var(--home-paper))",
-            accent: "var(--home-warning)",
-          }
-        : {
-            borderColor: "var(--home-rule)",
-            background: "color-mix(in srgb, var(--home-paper-alt) 78%, var(--home-elev-mix))",
-            accent: "var(--home-signal)",
-          };
+        ? "var(--c97-warning)"
+        : "var(--c97-accent)";
+  const borderColor = tone === "default" ? "var(--c97-rule)" : toneAccent;
 
   return (
     <div
-      className="home-card-static px-6 py-10 text-center"
-      style={{
-        borderColor: toneStyle.borderColor,
-        background: toneStyle.background,
-      }}
+      className="c97-panel border text-center"
+      style={{ borderColor, padding: "var(--c97-sp-4) var(--c97-sp-3)" }}
       role={role}
     >
       {icon ? (
         <div
-          className="mx-auto mb-4 flex h-11 w-11 items-center justify-center rounded-full"
-          style={{
-            background: "color-mix(in srgb, var(--home-paper) 88%, var(--home-elev-mix))",
-            color: toneStyle.accent,
-          }}
+          className="mx-auto mb-4 flex h-11 w-11 items-center justify-center"
+          style={{ background: toneAccent, color: "var(--c97-surface)" }}
         >
           {icon}
         </div>
       ) : null}
       <h2
         className="text-xl font-semibold"
-        style={{ fontFamily: "var(--font-home-sans)", color: "var(--home-ink)" }}
+        style={{ fontFamily: "var(--c97-font-body)", color: "var(--c97-ink)" }}
       >
         {title}
       </h2>
       <p
         className="mx-auto mt-3 mb-0 max-w-[36rem] text-sm leading-7"
-        style={{ fontFamily: "var(--font-home-sans)", color: "var(--home-ink-muted)" }}
+        style={{ fontFamily: "var(--c97-font-body)", color: "var(--c97-ink-2)" }}
       >
         {message}
       </p>

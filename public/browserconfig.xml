@@ -7,7 +7,7 @@
             <square310x150logo src="/icons/mstile-310x150.png"/>
             <square310x310logo src="/icons/mstile-310x310.png"/>
             <wide310x150logo src="/icons/mstile-310x150.png"/>
-            <TileColor>#191813</TileColor>
+            <TileColor>#2b211a</TileColor>
         </tile>
         <notification>
             <polling-uri src="/api/notifications/poll"/>

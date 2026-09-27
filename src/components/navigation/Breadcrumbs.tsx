@@ -108,22 +108,22 @@ export function Breadcrumbs({
       aria-label="Breadcrumb"
       className={`py-4 ${className}`}
     >
-      <ol className="flex flex-wrap items-center gap-2 p-3 bg-[var(--home-paper)]/60 rounded-[var(--radius-xl)] border border-[var(--home-rule)] backdrop-blur-sm shadow-[var(--shadow-sm)]">
+      <ol className="flex flex-wrap items-center gap-2 p-3 bg-[var(--c97-surface)]/60 border border-[var(--c97-rule)] backdrop-blur-sm">
         {breadcrumbs.map((item, index) => (
           <li key={item.href} className="flex items-center">
-            {/* Separator is ink-muted, not warning. A separator is not a
+            {/* Separator is ink-2, not warning. A separator is not a
                 status, and spending a status token on decoration is what
                 makes a real warning stop reading as one. */}
             {index > 0 && (
-              <ChevronRight className="w-4 h-4 text-[var(--home-ink-muted)] mx-1.5" aria-hidden="true" />
+              <ChevronRight className="w-4 h-4 text-[var(--c97-ink-2)] mx-1.5" aria-hidden="true" />
             )}
 
-            {/* Active item is ink on the signal wash, not signal on it.
-                Signal text over a 10% signal tint measured 3.96:1, under the
-                4.5:1 this size needs. The tint and the weight already mark
-                the current page, so the accent keeps its job at 14.18:1. */}
+            {/* Active item is ink on the accent wash, not accent on it.
+                Accent text this size over a light accent tint runs too close
+                to the 4.5:1 floor to trust, so ink carries the text and the
+                tint plus the weight mark the current page instead. */}
             {item.isActive ? (
-              <span className="text-[var(--home-ink)] font-semibold text-sm px-2 py-1 rounded-lg bg-[var(--home-signal)]/10">
+              <span className="text-[var(--c97-ink)] font-semibold text-sm px-2 py-1 bg-[var(--c97-accent)]/10">
                 {item.label === "Home" && showHome ? (
                   <span className="flex items-center gap-1.5">
                     <House className="w-4 h-4" />
@@ -136,7 +136,7 @@ export function Breadcrumbs({
             ) : (
               <Link
                 href={item.href}
-                className="inline-flex min-h-touch items-center text-[var(--home-ink-muted)] hover:text-[var(--home-signal)] transition-[color,background-color] duration-200 text-sm px-2 py-1 rounded-lg hover:bg-[var(--home-paper-alt)] font-medium"
+                className="inline-flex min-h-touch items-center text-[var(--c97-ink-2)] hover:text-[var(--c97-accent)] transition-[color,background-color] duration-200 text-sm px-2 py-1 hover:bg-[var(--c97-field)] font-medium"
               >
                 {item.label === "Home" && showHome ? (
                   <span className="flex items-center gap-1.5">
