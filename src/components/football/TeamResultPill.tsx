@@ -3,15 +3,15 @@ import { cn } from "@/lib/utils";
 export function TeamResultPill({ result }: { result: "W" | "D" | "L" }) {
   const colorClass =
     result === "W"
-      ? "border-[color-mix(in_srgb,var(--home-positive)_45%,var(--home-rule))] bg-[color-mix(in_srgb,var(--home-positive)_16%,var(--home-paper-alt))] text-[color-mix(in_srgb,var(--home-positive)_70%,var(--home-ink))]"
+      ? "border-[color-mix(in_srgb,var(--c97-positive)_45%,var(--c97-rule))] bg-[color-mix(in_srgb,var(--c97-positive)_16%,var(--c97-field))] text-[color-mix(in_srgb,var(--c97-positive)_70%,var(--c97-ink))]"
       : result === "L"
-        ? "border-[color-mix(in_srgb,var(--home-negative)_40%,var(--home-rule))] bg-[color-mix(in_srgb,var(--home-negative)_12%,var(--home-paper-alt))] text-[color-mix(in_srgb,var(--home-negative)_70%,var(--home-ink))]"
-        : "border-[var(--home-rule)] bg-[var(--home-paper-alt)] text-[var(--home-ink-muted)]";
+        ? "border-[color-mix(in_srgb,var(--c97-negative)_40%,var(--c97-rule))] bg-[color-mix(in_srgb,var(--c97-negative)_12%,var(--c97-field))] text-[color-mix(in_srgb,var(--c97-negative)_70%,var(--c97-ink))]"
+        : "border-[var(--c97-rule)] bg-[var(--c97-field)] text-[var(--c97-ink-2)]";
 
   return (
     <span
       className={cn(
-        "inline-flex h-8 w-8 items-center justify-center rounded-full border text-xs font-bold",
+        "inline-flex h-8 w-8 items-center justify-center border text-xs font-bold",
         colorClass
       )}
     >

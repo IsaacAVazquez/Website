@@ -24,22 +24,22 @@ export function LeaderList({
         return (
           <li
             key={`${statLabel}-${leader.rank}-${leader.name}`}
-            className="flex items-center justify-between gap-4 rounded-[var(--radius-2xl)] border border-[var(--home-rule)] bg-[var(--home-paper-alt)] px-4 py-3"
+            className="flex items-center justify-between gap-4 border border-[var(--c97-rule)] bg-[var(--c97-field)] px-4 py-3"
           >
             <div className="flex min-w-0 items-center gap-3">
-              <div className="inline-flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-[var(--home-paper)] text-sm font-bold text-[var(--home-signal)] shadow-[var(--shadow-sm)]">
+              <div className="inline-flex h-10 w-10 flex-shrink-0 items-center justify-center bg-[var(--c97-surface)] text-sm font-bold text-[var(--c97-accent)] ">
                 {leader.rank}
               </div>
               <div className="min-w-0">
-                <p className="truncate font-semibold text-[var(--home-ink)]">{leader.name}</p>
-                <p className="text-sm text-[var(--home-ink-muted)]">
+                <p className="truncate font-semibold text-[var(--c97-ink)]">{leader.name}</p>
+                <p className="text-sm text-[var(--c97-ink-2)]">
                   {clubName} · {leader.appearances} apps
                 </p>
               </div>
             </div>
             <div className="text-right">
-              <p className="text-lg font-bold text-[var(--home-ink)]">{leader.total}</p>
-              <p className="text-xs uppercase tracking-[0.12em] text-[var(--home-ink-soft)]">
+              <p className="text-lg font-bold text-[var(--c97-ink)]">{leader.total}</p>
+              <p className="text-xs uppercase tracking-[0.12em] text-[var(--c97-label)]">
                 {statLabel}
               </p>
             </div>

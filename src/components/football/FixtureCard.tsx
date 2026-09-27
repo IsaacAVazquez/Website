@@ -71,7 +71,7 @@ export function FixtureCard({
   return (
     <div
       className={cn(
-        "rounded-[var(--radius-2xl)] border border-[var(--home-rule)] bg-[var(--home-paper-alt)]",
+        "border border-[var(--c97-rule)] bg-[var(--c97-field)]",
         compact ? "px-3 py-2.5" : "px-4 py-4"
       )}
       style={style}
@@ -79,11 +79,11 @@ export function FixtureCard({
       <div className="flex flex-wrap items-start justify-between gap-3">
         {!compact && (
           <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.14em] text-[var(--home-ink-soft)]">
+            <p className="text-xs font-semibold uppercase tracking-[0.14em] text-[var(--c97-label)]">
               {fixture.matchday ? `${periodLabel} ${fixture.matchday}` : fallbackLabel}
             </p>
-            <p className="mt-1 flex items-center gap-2 text-sm text-[var(--home-ink-muted)]">
-              <Clock3 className="h-4 w-4 text-[var(--home-signal)]" />
+            <p className="mt-1 flex items-center gap-2 text-sm text-[var(--c97-ink-2)]">
+              <Clock3 className="h-4 w-4 text-[var(--c97-accent)]" />
               {fixture.status === "FINISHED"
                 ? `Final · ${formatFixtureDateTime(fixture.utcDate)}`
                 : formatFixtureDateTime(fixture.utcDate)}
@@ -91,7 +91,7 @@ export function FixtureCard({
           </div>
         )}
         {compact && (
-          <p className="flex items-center gap-1.5 text-xs text-[var(--home-ink-soft)]">
+          <p className="flex items-center gap-1.5 text-xs text-[var(--c97-label)]">
             <Clock3 className="h-3 w-3" />
             {fixture.status === "FINISHED" ? "Final" : formatFixtureDateTime(fixture.utcDate)}
           </p>
@@ -114,13 +114,13 @@ export function FixtureCard({
                 <button
                   type="button"
                   onClick={() => onOpenTeam(team.id)}
-                  className="flex min-h-[44px] min-w-0 flex-1 items-center gap-3 rounded-[var(--radius-xl)] text-left transition-colors hover:text-[var(--home-signal)]"
+                  className="flex min-h-[44px] min-w-0 flex-1 items-center gap-3 text-left transition-colors hover:text-[var(--c97-accent)]"
                 >
                   <CrestAvatar crest={team.crest} name={team.shortName} size="sm" />
                   <span
                     className={cn(
                       "truncate text-sm",
-                      isWinner ? "font-semibold text-[var(--home-ink)]" : "text-[var(--home-ink-muted)]"
+                      isWinner ? "font-semibold text-[var(--c97-ink)]" : "text-[var(--c97-ink-2)]"
                     )}
                   >
                     {team.shortName}
@@ -132,19 +132,19 @@ export function FixtureCard({
                   <span
                     className={cn(
                       "truncate text-sm",
-                      isWinner ? "font-semibold text-[var(--home-ink)]" : "text-[var(--home-ink-muted)]"
+                      isWinner ? "font-semibold text-[var(--c97-ink)]" : "text-[var(--c97-ink-2)]"
                     )}
                   >
                     {team.shortName}
                   </span>
                 </div>
               )}
-              <span className="shrink-0 whitespace-nowrap text-right text-sm font-semibold text-[var(--home-ink)]">
+              <span className="shrink-0 whitespace-nowrap text-right text-sm font-semibold text-[var(--c97-ink)]">
                 {fixture.status === "FINISHED" && score !== null ? (
                   <>
                     {score}
                     {shootout != null ? (
-                      <span className="ml-1 text-xs font-medium text-[var(--home-ink-soft)]">
+                      <span className="ml-1 text-xs font-medium text-[var(--c97-label)]">
                         ({shootout})
                       </span>
                     ) : null}

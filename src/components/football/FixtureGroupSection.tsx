@@ -46,20 +46,20 @@ export function FixtureGroupSection({
 
   return (
     <SurfaceCard className="p-5 sm:p-6">
-      <div className="flex flex-col gap-2 border-b border-[var(--home-rule)] pb-5">
-        <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[var(--home-ink-soft)]">
+      <div className="flex flex-col gap-2 border-b border-[var(--c97-rule)] pb-5">
+        <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[var(--c97-label)]">
           {title}
         </p>
-        <h3 className="text-xl font-semibold text-[var(--home-ink)]">{description}</h3>
+        <h3 className="text-xl font-semibold text-[var(--c97-ink)]">{description}</h3>
       </div>
 
       <div className="mt-5 space-y-6">
         {groups.length === 0 ? (
-          <p className="text-sm text-[var(--home-ink-muted)]">No matches available right now.</p>
+          <p className="text-sm text-[var(--c97-ink-2)]">No matches available right now.</p>
         ) : (
           groups.map((group) => (
             <div key={group.label}>
-              <p className="mb-3 text-xs font-semibold uppercase tracking-[0.14em] text-[var(--home-ink-soft)]">
+              <p className="mb-3 text-xs font-semibold uppercase tracking-[0.14em] text-[var(--c97-label)]">
                 {group.label}
               </p>
               <div className="space-y-3">

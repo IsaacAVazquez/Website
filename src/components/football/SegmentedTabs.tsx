@@ -30,7 +30,7 @@ export function SegmentedTabs({
 }) {
   return (
     <div
-      className={`inline-flex flex-wrap gap-px overflow-hidden border border-[var(--home-rule)] bg-[var(--home-rule)] ${className}`.trim()}
+      className={`inline-flex flex-wrap gap-px overflow-hidden border border-[var(--c97-rule)] bg-[var(--c97-rule)] ${className}`.trim()}
       role="tablist"
       aria-label={ariaLabel}
     >
@@ -48,8 +48,8 @@ export function SegmentedTabs({
             onClick={() => onChange(tab.id)}
             className={`inline-flex min-h-[44px] items-center whitespace-nowrap px-5 font-mono text-2xs uppercase tracking-[0.08em] transition-colors ${
               isActive
-                ? "bg-[var(--home-ink)] text-[var(--home-paper)]"
-                : "bg-[var(--home-paper)] text-[var(--home-ink-muted)] hover:bg-[var(--home-paper-raised)] hover:text-[var(--home-ink)]"
+                ? "bg-[var(--c97-ink)] text-[var(--c97-surface)]"
+                : "bg-[var(--c97-surface)] text-[var(--c97-ink-2)] hover:bg-[var(--c97-field)] hover:text-[var(--c97-ink)]"
             }`}
           >
             {tab.label}
