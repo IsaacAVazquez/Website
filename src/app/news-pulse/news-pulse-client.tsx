@@ -577,7 +577,7 @@ function CoverageView({
   }
 
   return (
-    <div style={{ display: "grid", gap: "var(--c97-sp-6)" }}>
+    <div style={{ display: "grid", gridTemplateColumns: "minmax(0, 1fr)", gap: "var(--c97-sp-6)" }}>
       {topics.length > 0 ? (
         <div>
           <h2 className="c97-poster-sm">Trending topics</h2>
