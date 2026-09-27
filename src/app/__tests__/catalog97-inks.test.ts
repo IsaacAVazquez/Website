@@ -37,8 +37,65 @@ describe.each(INKS)("%s", (ink) => {
   }
 });
 
+/*
+ * A panel is a box printed on a sheet, so its text keeps the sheet's inks.
+ * The field tint is pale on the light-ink sheets (blue, teal, espresso,
+ * chocolate), which is why panels get their own token.
+ */
+const SURFACES = [
+  "paper",
+  "bone",
+  "stone",
+  "chocolate",
+  "espresso",
+  "ink-blue",
+  "ink-saffron",
+  "ink-vermilion",
+  "ink-peach",
+  "ink-green",
+  "ink-teal",
+  "ink-pink",
+];
+
+describe.each(SURFACES)("%s panel", (surface) => {
+  for (const theme of ["light", "dark"] as const) {
+    it(`${theme}: ink, ink-2, and label clear 4.5:1 on --c97-panel`, () => {
+      const t = block(`${theme === "dark" ? ".dark " : ""}.c97-page [data-c97-surface="${surface}"]`);
+      expect(t["--c97-panel"]).toMatch(/^#[0-9a-f]{6}$/);
+      for (const token of ["--c97-ink", "--c97-ink-2", "--c97-label"]) {
+        const ratio = contrast(t[token], t["--c97-panel"]);
+        expect({ token, ratio: Number(ratio.toFixed(2)), clears: ratio >= 4.5 }).toMatchObject({ token, clears: true });
+      }
+    });
+  }
+});
+
+it("paints panels with the panel token", () => {
+  const start = css.indexOf(".c97-panel {");
+  expect(css.slice(start, css.indexOf("}", start))).toMatch(/background:\s*var\(--c97-panel\)/);
+});
+
 it("declares a riso constant for every ink", () => {
   for (const name of ["blue", "saffron", "vermilion", "peach", "green", "teal", "pink"]) {
     expect(css).toMatch(new RegExp(`--c97-riso-${name}:\\s*#[0-9a-f]{6}`, "i"));
   }
+});
+
+/*
+ * On paper and bone the panel and the field share a tint, so a field needs a
+ * printed edge of its own. It uses ink-2, which the panel test above already
+ * holds at 4.5:1 on every panel, so the edge clears the 3:1 bar for controls.
+ */
+it("gives fields a printed edge in ink-2", () => {
+  const start = css.indexOf(".c97-field {");
+  expect(css.slice(start, css.indexOf("}", start))).toMatch(/border-bottom:\s*\d+px solid var\(--c97-ink-2\)/);
+});
+
+it("marks disabled buttons and fields without dimming their text", () => {
+  const rule = css.match(/([^{}]*:disabled[^{}]*)\{([^}]*)\}/);
+  expect(rule).not.toBeNull();
+  const [, selector, body] = rule!;
+  expect(selector).toMatch(/\.c97-btn/);
+  expect(selector).toMatch(/\.c97-field/);
+  expect(body).not.toMatch(/opacity/);
 });

@@ -21,6 +21,12 @@ export const PROJECT_PRESS: Readonly<Record<string, ProjectPress>> = {
   "/polling-aggregator": { lead: "saffron", second: "teal" },
   "/bay-area-transit": { lead: "teal", second: "saffron" },
   "/spacex-mission-control": { lead: "blue", second: "vermilion" },
+  "/wine-cellar": { lead: "vermilion", second: "blue" },
+  "/museum-log": { lead: "pink", second: "blue" },
+  "/recipe-finder": { lead: "saffron", second: "vermilion" },
+  "/travel": { lead: "teal", second: "saffron" },
+  "/travel-deals": { lead: "blue", second: "saffron" },
+  "/food-map": { lead: "vermilion", second: "saffron" },
 };
 
 export function getProjectPress(route: string): ProjectPress | undefined {

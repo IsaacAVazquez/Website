@@ -9,6 +9,7 @@ import {
 } from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import { useRouter, useSearchParams } from "next/navigation";
+import { PROJECT_PRESS } from "@/constants/projectPress";
 import {
   FOOD_MAP_AS_OF,
   FOOD_MAP_CITIES,
@@ -55,6 +56,8 @@ const noMotion = {
   hidden: { opacity: 0, y: 14 },
   visible: { opacity: 1, y: 0, transition: { duration: 0 } },
 };
+
+const FOOD_MAP_INK = PROJECT_PRESS[FOOD_MAP_ROUTE].lead;
 
 /* -------------------------------------------------------------------------- */
 /* Masthead ticker                                                            */
@@ -223,10 +226,10 @@ function PlaceTicket({
         {String(index + 1).padStart(2, "0")}
       </span>
       <p className="fm-ticket-cuisine">{cuisine.label}</p>
-      <p className="fm-ticket-name">{place.name}</p>
+      <p className="fm-ticket-name c97-serif">{place.name}</p>
       <p className="fm-ticket-meta">
         <span>{locale}</span>
-        {place.price ? <span className="fm-ticket-price">{place.price}</span> : null}
+        {place.price ? <span className="c97-chip">{place.price}</span> : null}
       </p>
     </button>
   );
@@ -277,13 +280,13 @@ function PlaceDossier({
 
   return (
     <div className="fm-dossier" style={{ ["--fm-accent" as string]: accent }}>
-      <button type="button" onClick={onClear} className="fm-back">
+      <button type="button" onClick={onClear} className="c97-btn-ghost">
         ← Clear pick
       </button>
 
       <div className="fm-dossier-head" style={{ ["--fm-accent" as string]: accent }}>
         <p className="fm-dossier-cuisine">{cuisine.label}</p>
-        <h2 className="fm-dossier-name">{place.name}</h2>
+        <h2 className="fm-dossier-name c97-serif">{place.name}</h2>
         <p className="fm-dossier-locale">
           {locale}
           {place.price ? ` · ${place.price}` : ""}
@@ -300,13 +303,14 @@ function PlaceDossier({
           </div>
         </div>
 
-        <p className="fm-dossier-why">{place.why}</p>
+        <p className="fm-dossier-why c97-prose">{place.why}</p>
 
         <a
           href={mapsLink(place)}
           target="_blank"
           rel="noopener noreferrer"
-          className="fm-dossier-link"
+          className="c97-btn c97-offset"
+          style={{ marginTop: "var(--c97-sp-3)" }}
         >
           Open in Google Maps ↗
         </a>
@@ -398,23 +402,21 @@ function FoodMapWorkbench({
     onCommit(resetFoodMapFilters(routeState));
   }
 
-  const bourdainCount = FOOD_MAP_PLACES.filter((p) =>
-    p.curators.includes("bourdain")
-  ).length;
-
   return (
     <section className="fm" aria-label="Food Map" data-testid="food-map-shell">
-      <div className="fm-shell">
-        <motion.div variants={variants} initial="hidden" animate="visible">
-          {/* Masthead */}
-          <header className="fm-hero" id="food-map-main">
-            <div className="fm-hero-top">
+      <motion.div variants={variants} initial="hidden" animate="visible">
+        {/* Masthead */}
+        <header
+          className="c97-band c97-sheet c97-project-hero"
+          data-c97-surface={`ink-${FOOD_MAP_INK}`}
+          id="food-map-main"
+        >
+          <div className="c97-shell">
+            <div className="fm-masthead-top">
               <div>
-                <p className="fm-kicker">A field guide · where to eat</p>
-                <h1 className="fm-title">
-                  Food <em>Map</em>
-                </h1>
-                <p className="fm-lede">
+                <p className="c97-kicker">A field guide · where to eat</p>
+                <h1 className="c97-poster">Food Map</h1>
+                <p className="fm-lede c97-lead">
                   The spots I actually send people to, plus the ones the late Anthony
                   Bourdain and the crowd swear by, plotted across ten cities from Austin
                   to Tokyo. Pick a city, filter by who is vouching for it, and pull up
@@ -430,178 +432,180 @@ function FoodMapWorkbench({
             </div>
 
             <HeroTicker />
-          </header>
 
-          {/* Search + stats */}
-          <div className="fm-ribbon">
-            <div className="fm-stat">
-              <p className="fm-stat-label">Curated stops</p>
-              <p className="fm-stat-val">{FOOD_MAP_PLACES.length}</p>
-            </div>
-            <div className="fm-stat">
-              <p className="fm-stat-label">Cities</p>
-              <p className="fm-stat-val">{FOOD_MAP_CITIES.length}</p>
-            </div>
-            <div className="fm-stat">
-              <p className="fm-stat-label">Bourdain picks</p>
-              <p className="fm-stat-val">{bourdainCount}</p>
-            </div>
-            <div className="fm-stat">
-              <p className="fm-stat-label">In {activeCity.name}</p>
-              <p className="fm-stat-val">
-                {visiblePlaces.length}
-                <em>/{cityCount}</em>
-              </p>
-            </div>
-          </div>
-
-          <div className="fm-status" role="status" aria-live="polite">
-            <span className="fm-status-dot" aria-hidden="true" />
-            <span>
-              Showing {visiblePlaces.length} of {cityCount} in {activeCity.name} ·
-              Reviewed {FOOD_MAP_AS_OF} · I would still verify hours before going.
-            </span>
-          </div>
-
-          {/* Main grid */}
-          <div className="fm-grid">
-            <div className="fm-col">
-              {/* Map */}
-              <div className="fm-mapwrap">
-                <div className="fm-mapwrap-head">
-                  <p className="fm-kicker">The map · {activeCity.name}</p>
-                  <span className="fm-map-legend" aria-hidden="true">
-                    {FOOD_MAP_CURATORS.map((c) => (
-                      <i key={c.id}>
-                        <b style={{ background: c.accent }} />
-                        {c.name.split(" ")[0]}
-                      </i>
-                    ))}
-                  </span>
-                </div>
-                <div className="fm-map-ticks" aria-hidden="true">
-                  <span />
-                  <span />
-                  <span />
-                  <span />
-                </div>
-                <FoodMapLeaflet
-                  spots={filteredPlaces}
-                  activeSpotId={routeState.pick}
-                  onSelectSpot={handleSelectPlace}
-                  center={activeCity.center}
-                  zoom={activeCity.zoom}
-                  reduceMotion={reduceMotion}
-                />
+            <dl className="c97-project-hero-readouts fm-masthead-stats">
+              <div className="c97-stat">
+                <dt className="c97-stat-label">Curated stops</dt>
+                <dd className="c97-stat-value">{FOOD_MAP_PLACES.length}</dd>
+                <dd className="c97-stat-delta">across {FOOD_MAP_CITIES.length} cities</dd>
               </div>
-
-              {/* Filters */}
-              <div className="fm-panel">
-                <div className="fm-deck-head">
-                  <p className="fm-kicker">Filters</p>
-                  <button
-                    type="button"
-                    onClick={handleResetFilters}
-                    disabled={!hasFilters}
-                    className="fm-reset"
-                  >
-                    Reset
-                  </button>
-                </div>
-
-                <div style={{ display: "flex", flexDirection: "column", gap: 16, marginTop: 14 }}>
-                  <div className="fm-fieldset">
-                    <span className="fm-legend">City</span>
-                    <CityTabs
-                      state={routeState}
-                      counts={cityCounts}
-                      onSelect={handleSelectCity}
-                    />
-                  </div>
-
-                  <div className="fm-fieldset">
-                    <span className="fm-legend">Curator</span>
-                    <CuratorStamps state={routeState} onToggle={handleToggleCurator} />
-                  </div>
-
-                  <div className="fm-fieldset">
-                    <span className="fm-legend">Cuisine</span>
-                    <CuisinePills
-                      cuisines={cityCuisines}
-                      state={routeState}
-                      onToggle={handleToggleCuisine}
-                    />
-                  </div>
-                </div>
+              <div className="c97-stat">
+                <dt className="c97-stat-label">In {activeCity.name}</dt>
+                <dd className="c97-stat-value">{visiblePlaces.length}</dd>
+                <dd className="c97-stat-delta">of {cityCount} total</dd>
               </div>
+              <div className="c97-stat">
+                <dt className="c97-stat-label">Cities mapped</dt>
+                <dd className="c97-stat-value">{FOOD_MAP_CITIES.length}</dd>
+                <dd className="c97-stat-delta">Austin to Tokyo</dd>
+              </div>
+            </dl>
+          </div>
+        </header>
 
-              {/* Index */}
-              <div className="fm-index-head">
-                <h2 className="fm-index-title">The stops</h2>
-                <label className="fm-search" aria-label="Filter by name or cuisine">
-                  <Search size={15} aria-hidden="true" />
-                  <input
-                    type="search"
-                    placeholder="Filter by name or cuisine…"
-                    value={searchQuery}
-                    onChange={(e) => setSearchQuery(e.target.value)}
+        <section className="c97-band c97-sheet" data-c97-surface="paper" data-seam="torn">
+          <div className="c97-shell">
+            <p className="fm-status" role="status" aria-live="polite">
+              <span className="fm-status-dot" aria-hidden="true" />
+              <span>
+                Showing {visiblePlaces.length} of {cityCount} in {activeCity.name} ·
+                Reviewed {FOOD_MAP_AS_OF} · I would still verify hours before going.
+              </span>
+            </p>
+
+            {/* Main grid */}
+            <div className="fm-grid">
+              <div className="fm-col">
+                {/* Map */}
+                <div className="fm-mapwrap c97-panel">
+                  <div className="fm-mapwrap-head">
+                    <p className="c97-kicker">The map · {activeCity.name}</p>
+                    <span className="fm-map-legend" aria-hidden="true">
+                      {FOOD_MAP_CURATORS.map((c) => (
+                        <i key={c.id}>
+                          <b style={{ background: c.accent }} />
+                          {c.name.split(" ")[0]}
+                        </i>
+                      ))}
+                    </span>
+                  </div>
+                  <FoodMapLeaflet
+                    spots={filteredPlaces}
+                    activeSpotId={routeState.pick}
+                    onSelectSpot={handleSelectPlace}
+                    center={activeCity.center}
+                    zoom={activeCity.zoom}
+                    reduceMotion={reduceMotion}
                   />
-                </label>
+                </div>
+
+                {/* Filters */}
+                <div className="c97-panel">
+                  <div className="fm-deck-head">
+                    <p className="c97-kicker">Filters</p>
+                    <button
+                      type="button"
+                      onClick={handleResetFilters}
+                      disabled={!hasFilters}
+                      className="c97-btn-ghost"
+                    >
+                      Reset
+                    </button>
+                  </div>
+
+                  <div
+                    style={{
+                      display: "flex",
+                      flexDirection: "column",
+                      gap: "var(--c97-sp-3)",
+                      marginTop: "var(--c97-sp-3)",
+                    }}
+                  >
+                    <div className="fm-fieldset">
+                      <span className="c97-kicker">City</span>
+                      <CityTabs
+                        state={routeState}
+                        counts={cityCounts}
+                        onSelect={handleSelectCity}
+                      />
+                    </div>
+
+                    <div className="fm-fieldset">
+                      <span className="c97-kicker">Curator</span>
+                      <CuratorStamps state={routeState} onToggle={handleToggleCurator} />
+                    </div>
+
+                    <div className="fm-fieldset">
+                      <span className="c97-kicker">Cuisine</span>
+                      <CuisinePills
+                        cuisines={cityCuisines}
+                        state={routeState}
+                        onToggle={handleToggleCuisine}
+                      />
+                    </div>
+                  </div>
+                </div>
+
+                {/* Index */}
+                <div className="fm-index-head">
+                  <h2 className="c97-poster-sm">The stops</h2>
+                  <label className="fm-search" aria-label="Filter by name or cuisine">
+                    <Search size={15} aria-hidden="true" />
+                    <input
+                      type="search"
+                      placeholder="Filter by name or cuisine…"
+                      value={searchQuery}
+                      onChange={(e) => setSearchQuery(e.target.value)}
+                    />
+                  </label>
+                </div>
+
+                {visiblePlaces.length === 0 ? (
+                  <div className="fm-empty">
+                    <p className="c97-serif" style={{ fontSize: "var(--c97-fs-h3)" }}>
+                      Nothing matches that combination yet.
+                    </p>
+                    <p className="c97-prose">
+                      The list intentionally stays short, so a few filters can rule it out
+                      entirely. Loosen one and it comes back.
+                    </p>
+                    <button type="button" onClick={handleResetFilters} className="c97-btn-ghost">
+                      Reset filters
+                    </button>
+                  </div>
+                ) : (
+                  <div className="fm-index">
+                    {visiblePlaces.map((place, i) => (
+                      <PlaceTicket
+                        key={place.id}
+                        place={place}
+                        index={i}
+                        isSelected={routeState.pick === place.id}
+                        onSelect={handleSelectPlace}
+                      />
+                    ))}
+                  </div>
+                )}
               </div>
 
-              {visiblePlaces.length === 0 ? (
-                <div className="fm-empty">
-                  <p className="fm-empty-title">Nothing matches that combination yet.</p>
-                  <p>
-                    The list intentionally stays short, so a few filters can rule it out
-                    entirely. Loosen one and it comes back.
-                  </p>
-                  <button type="button" onClick={handleResetFilters} className="fm-reset">
-                    Reset filters
-                  </button>
-                </div>
-              ) : (
-                <div className="fm-index">
-                  {visiblePlaces.map((place, i) => (
-                    <PlaceTicket
-                      key={place.id}
-                      place={place}
-                      index={i}
-                      isSelected={routeState.pick === place.id}
-                      onSelect={handleSelectPlace}
-                    />
-                  ))}
-                </div>
-              )}
+              {/* Rail */}
+              <aside aria-label="Food map side panel" className="fm-rail">
+                {selectedPlace ? (
+                  <PlaceDossier place={selectedPlace} onClear={handleClearPick} />
+                ) : (
+                  <>
+                    <p className="c97-kicker">The curators</p>
+                    <p className="fm-rail-lede c97-prose" style={{ fontSize: "var(--c97-fs-small)" }}>
+                      Pins are colored by who recommends them. Tap a pin or a stop to see
+                      what to order and why it earns the spot.
+                    </p>
+                    <CuratorPassport />
+                  </>
+                )}
+                <p className="fm-rail-foot">
+                  These are the spots I actually send people to.
+                </p>
+              </aside>
             </div>
-
-            {/* Rail */}
-            <aside aria-label="Food map side panel" className="fm-rail">
-              {selectedPlace ? (
-                <PlaceDossier place={selectedPlace} onClear={handleClearPick} />
-              ) : (
-                <>
-                  <p className="fm-kicker">The curators</p>
-                  <p className="fm-rail-lede">
-                    Pins are colored by who recommends them. Tap a pin or a stop to see
-                    what to order and why it earns the spot.
-                  </p>
-                  <CuratorPassport />
-                </>
-              )}
-              <p className="fm-rail-foot">
-                These are the spots I actually send people to.
-              </p>
-            </aside>
           </div>
-        </motion.div>
-      </div>
+        </section>
+      </motion.div>
     </section>
   );
 }
 
-/** Resolve a pick id, but only if it belongs to the active city — a pick from a
- *  different city shouldn't render in the detail panel. */
+/** Resolve a pick id, but only if it belongs to the active city, since a pick
+ *  from a different city shouldn't render in the detail panel. */
 function getFoodMapPlaceInCity(
   id: string,
   city: FoodMapCityId

@@ -71,9 +71,8 @@ export interface FoodMapCurator {
   id: FoodMapCuratorId;
   name: string;
   blurb: string;
-  /** Hex accent for the map pin + card. Leaflet markers are inline SVG, so a
-   *  real color value is required here rather than a CSS variable. Tuned to sit
-   *  alongside the editorial palette. */
+  /** Accent for the map pin and card, a chart ramp token so it follows the
+   *  theme. The pins are divIcon HTML inside the page, so the variable resolves. */
   accent: string;
 }
 
@@ -83,19 +82,19 @@ export const FOOD_MAP_CURATORS: readonly FoodMapCurator[] = [
     name: "Anthony Bourdain",
     blurb:
       "The late chef's no-reservations picks — dives, legends, and gut-truth cooking.",
-    accent: "#B3493E",
+    accent: "var(--c97-chart-3)",
   },
   {
     id: "isaac",
     name: "Isaac's Picks",
     blurb: "My personal go-tos — the places I actually send friends to.",
-    accent: "#C2872E",
+    accent: "var(--c97-chart-2)",
   },
   {
     id: "google",
     name: "Top Rated on Google",
     blurb: "Crowd favorites with the reviews to back them up.",
-    accent: "#3B7A57",
+    accent: "var(--c97-chart-1)",
   },
 ] as const;
 

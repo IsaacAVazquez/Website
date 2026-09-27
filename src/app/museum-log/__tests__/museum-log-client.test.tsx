@@ -34,6 +34,7 @@ describe("MuseumLogClient", () => {
     expect(screen.getByRole("heading", { level: 1, name: "Museum Log" })).toBeVisible();
     expect(screen.getByRole("navigation", { name: "Section navigation" })).toBeVisible();
 
+    expect(screen.getByRole("button", { name: /discover/i, pressed: true })).toBeVisible();
     fireEvent.click(screen.getByRole("button", { name: /journal/i }));
     expect(mockPush).toHaveBeenLastCalledWith("/museum-log?view=journal", {
       scroll: false,
@@ -61,5 +62,21 @@ describe("MuseumLogClient", () => {
     expect(mockPush).toHaveBeenLastCalledWith("/museum-log?museum=moma", {
       scroll: false,
     });
+  });
+
+  it("gives each view a section heading under the page title", () => {
+    render(<MuseumLogClient initialState={DEFAULT_MUSEUM_STATE} snapshot={museumSnapshot} />);
+    expect(screen.getAllByRole("heading", { level: 2 }).length).toBeGreaterThan(0);
+  });
+
+  it("prints each journal visit date where a screen reader reaches it", () => {
+    render(
+      <MuseumLogClient initialState={{ ...DEFAULT_MUSEUM_STATE, view: "journal" }} snapshot={museumSnapshot} />
+    );
+    const stamps = document.querySelectorAll("time[datetime]");
+    expect(stamps.length).toBeGreaterThan(0);
+    for (const stamp of stamps) {
+      expect(stamp.closest('[aria-hidden="true"]')).toBeNull();
+    }
   });
 });

@@ -8,6 +8,25 @@ import type {
   MuseumRegionFilter,
 } from "@/types/museum";
 
+export interface AdmissionStubLines {
+  name: string;
+  city: string;
+  /** "Est. <founded>", or null when the founding year is unknown (0 or non-finite). */
+  founded: string | null;
+  admission: string;
+  curatorRating: number;
+  /** Whether any exhibit is running today, per `getMuseumExhibitStatus`. */
+  exhibitNow: boolean;
+}
+
+export interface VisitStampParts {
+  month: string;
+  day: string;
+  year: string;
+}
+
+const STAMP_MONTH_FMT = new Intl.DateTimeFormat("en-US", { month: "short" });
+
 export type MuseumExhibitStatus = "current" | "upcoming" | "ended";
 
 /**
@@ -40,6 +59,7 @@ const SHORT_DATE_FMT = new Intl.DateTimeFormat("en-US", {
 const UPDATED_FMT = new Intl.DateTimeFormat("en-US", {
   month: "short",
   day: "numeric",
+  year: "numeric",
   hour: "numeric",
   minute: "2-digit",
 });
@@ -77,6 +97,30 @@ export function formatRuntime(minutes: number): string {
 export function formatAdmission(usd: number | null): string {
   if (usd === null) return "Free";
   return `$${usd}`;
+}
+
+/** The printed lines of an admission ticket stub. */
+export function admissionStub(museum: Museum, today: string | null): AdmissionStubLines {
+  return {
+    name: museum.name,
+    city: museum.city,
+    founded:
+      Number.isFinite(museum.founded) && museum.founded > 0 ? `Est. ${museum.founded}` : null,
+    admission: formatAdmission(museum.admissionUSD),
+    curatorRating: museum.curatorRating,
+    exhibitNow: museum.exhibits.some((ex) => getMuseumExhibitStatus(ex, today) === "current"),
+  };
+}
+
+/** The date parts a visit's rubber stamp prints, or null for an unparseable date. */
+export function visitStamp(iso: string): VisitStampParts | null {
+  const d = parseDateOnly(iso);
+  if (Number.isNaN(d.getTime())) return null;
+  return {
+    month: STAMP_MONTH_FMT.format(d).toUpperCase(),
+    day: String(d.getDate()).padStart(2, "0"),
+    year: String(d.getFullYear()),
+  };
 }
 
 // ─── Type / region labels and palettes ───────────────────────────────────────
@@ -191,16 +235,6 @@ export function starFractions(rating: number): number[] {
     }
   }
   return stars;
-}
-
-export function ratingBadgeStyle(rating: number) {
-  if (rating >= 4.5)
-    return { background: "color-mix(in srgb, var(--home-signal) 28%, var(--home-paper))", color: "var(--home-ink)" };
-  if (rating >= 3.5)
-    return { background: "color-mix(in srgb, var(--home-signal) 30%, var(--home-paper))", color: "var(--home-ink)" };
-  if (rating >= 2.5)
-    return { background: "color-mix(in srgb, var(--home-paper-alt) 80%, var(--home-elev-mix))", color: "var(--home-ink)" };
-  return { background: "color-mix(in srgb, var(--home-stone) 30%, var(--home-paper))", color: "var(--home-ink-muted)" };
 }
 
 // ─── Stats ───────────────────────────────────────────────────────────────────

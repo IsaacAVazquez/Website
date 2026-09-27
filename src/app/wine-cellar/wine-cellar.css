@@ -1,0 +1,266 @@
+/* Wine Cellar: the rack signature, the bottle-label log rows, and the rail. */
+
+.c97-wine-rack-plate {
+  display: flex;
+  flex-direction: column;
+  gap: var(--c97-sp-3);
+}
+
+/* The rack: region cubbies side by side, each a lattice of cells. */
+.c97-wine-rack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--c97-sp-4) var(--c97-sp-3);
+}
+
+.c97-wine-cubby {
+  margin: 0;
+  display: grid;
+  gap: var(--c97-sp-2);
+  justify-items: start;
+}
+
+.c97-wine-cubby-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 2.25rem);
+  border-top: 2px solid var(--c97-ink);
+  border-left: 2px solid var(--c97-ink);
+}
+
+.c97-wine-cell {
+  display: grid;
+  place-items: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  border-right: 2px solid var(--c97-ink);
+  border-bottom: 2px solid var(--c97-ink);
+  background: var(--c97-field);
+}
+
+/* The empty rack's first cubby, where the first bottle goes. */
+.c97-wine-cell[data-first="true"] {
+  background-image: radial-gradient(circle, var(--c97-ink-2) 1px, transparent 1.5px);
+  background-size: 5px 5px;
+}
+
+.c97-wine-end {
+  box-sizing: border-box;
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 50%;
+  background: var(--wine-mark);
+}
+
+.c97-wine-end[data-hollow="true"] {
+  background: none;
+  border: 4px solid var(--wine-mark);
+}
+
+.c97-wine-cubby-label {
+  font-family: var(--c97-font-mono);
+  font-size: var(--c97-fs-small);
+  color: var(--c97-ink);
+}
+
+.c97-wine-rack-empty {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: var(--c97-sp-3) var(--c97-sp-5);
+}
+
+.c97-wine-rack-empty-link {
+  margin-bottom: var(--c97-sp-1);
+}
+
+.c97-wine-rack-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--c97-sp-3);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.c97-wine-rack-legend-item {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--c97-sp-1);
+  font-size: var(--c97-fs-small);
+  color: var(--c97-ink);
+}
+
+.c97-wine-swatch {
+  flex-shrink: 0;
+}
+
+.c97-wine-type {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--c97-sp-1);
+}
+
+.c97-wine-search {
+  display: flex;
+  align-items: center;
+  gap: var(--c97-sp-2);
+  min-height: 48px;
+  background: var(--c97-field);
+  padding: 0 var(--c97-sp-2);
+}
+
+.c97-wine-search input {
+  flex: 1;
+  min-width: 0;
+  border: 0;
+  background: transparent;
+  padding: 0;
+  font-family: inherit;
+  font-size: var(--c97-fs-body);
+  color: var(--c97-ink);
+}
+
+/*
+ * The log is a shelf of bottle labels: producer over the name, the vintage,
+ * then region, varietal, type, and the rating, framed in a double rule.
+ */
+.c97-wine-log {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 260px), 1fr));
+  gap: var(--c97-sp-4);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.c97-wine-log-row {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--c97-sp-1);
+  padding: var(--c97-sp-4) var(--c97-sp-3) var(--c97-sp-2);
+  border: 4px double var(--c97-ink);
+  background: var(--c97-surface);
+  color: var(--c97-ink);
+  text-align: center;
+}
+
+.c97-wine-log-row[aria-current="true"] {
+  outline: 2px solid var(--c97-ink);
+  outline-offset: 3px;
+}
+
+.c97-wine-log-row p {
+  margin: 0;
+}
+
+.c97-wine-label-producer {
+  font-size: var(--c97-fs-label);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--c97-ink-2);
+}
+
+.c97-wine-label-name {
+  font-size: var(--c97-fs-h3);
+  line-height: 1.15;
+  overflow-wrap: anywhere;
+}
+
+.c97-wine-label-vintage {
+  font-size: var(--c97-fs-small);
+  padding-bottom: var(--c97-sp-2);
+  border-bottom: 1px solid var(--c97-rule);
+  min-width: 4rem;
+}
+
+.c97-wine-label-meta {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: var(--c97-sp-1) var(--c97-sp-3);
+  padding-top: var(--c97-sp-1);
+  font-size: var(--c97-fs-small);
+  color: var(--c97-ink-2);
+}
+
+.c97-wine-label-rating {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--c97-sp-2);
+}
+
+.c97-wine-label-notes {
+  font-size: var(--c97-fs-small);
+  font-style: italic;
+  white-space: pre-line;
+}
+
+.c97-wine-label-foot {
+  display: flex;
+  gap: var(--c97-sp-3);
+  font-size: var(--c97-fs-label);
+  letter-spacing: 0.06em;
+  color: var(--c97-ink-2);
+}
+
+.c97-wine-log-actions {
+  display: flex;
+  gap: var(--c97-sp-2);
+}
+
+.c97-wine-log-actions .c97-btn-ghost {
+  gap: var(--c97-sp-1);
+}
+
+.c97-wine-recent-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: var(--c97-sp-2);
+  align-items: center;
+  width: 100%;
+  min-height: 44px;
+  padding: var(--c97-sp-1) var(--c97-sp-2);
+  border: 0;
+  background: transparent;
+  text-align: left;
+  font: inherit;
+  color: var(--c97-ink);
+  cursor: pointer;
+}
+
+.c97-wine-recent-row:hover {
+  background: var(--c97-field);
+}
+
+/* The track is a hairline box, since the panel it sits on shares the field tint. */
+.c97-wine-bar-track {
+  height: 8px;
+  border: 1px solid var(--c97-rule);
+}
+
+.c97-wine-bar-fill {
+  height: 100%;
+  border-width: 0;
+  box-sizing: border-box;
+}
+
+/* The sort direction toggle, a square the height of the field beside it. */
+.c97-wine-icon-btn {
+  flex: 0 0 48px;
+  display: inline-grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  border: 1px solid var(--c97-ink-2);
+  background: none;
+  color: var(--c97-ink);
+  font-size: var(--c97-fs-body);
+  cursor: pointer;
+}
+
+.c97-wine-icon-btn:hover {
+  background: var(--c97-ink);
+  color: var(--c97-surface);
+}
