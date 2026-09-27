@@ -624,6 +624,16 @@
   z-index: 600;
 }
 
+/* OSM tiles are loud by default, so the tile pane is washed toward the page:
+   warm paper by day, a dim field map at night. Pins sit in the marker pane and
+   keep their curator colours. */
+.fm-map .leaflet-tile-pane {
+  filter: grayscale(0.8) sepia(0.25) contrast(0.92) brightness(1.03);
+}
+.dark .fm-map .leaflet-tile-pane {
+  filter: invert(1) hue-rotate(180deg) grayscale(0.85) brightness(0.82) contrast(0.95);
+}
+
 /* Leaflet chrome, restyled to match. */
 .fm-map .leaflet-control-zoom a {
   background: var(--fm-surface);

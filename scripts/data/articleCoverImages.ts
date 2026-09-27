@@ -64,6 +64,8 @@ const RECAP_CARD = "Season-recap post that already ships a bespoke editorial cov
 const COVER_WRONG_SUBJECT = "The fetched photo showed a different subject than the post, so it was dropped on review.";
 // Set on 2026-09-24 when the riso plates replaced the fetched photos.
 const RISO_PLATE = "Riso plate made for the site; no third-party credit, and the builder must not overwrite it.";
+// Set on 2026-09-25 for the write-ups about past employers.
+const CAREER_WRITEUP = "Career write-up about a past employer; the only real subject is the company's own brand, which is not ours to use.";
 
 export const ARTICLE_COVER_IMAGES: ArticleCoverImageSpec[] = [
   // ---------------------------------------------------------------------------
@@ -334,4 +336,8 @@ export const ARTICLE_COVER_IMAGES: ArticleCoverImageSpec[] = [
   { slug: "building-a-rent-vs-buy-calculator", strategy: "manual", note: RISO_PLATE },
   { slug: "dashboards-that-read-committed-files", strategy: "manual", note: RISO_PLATE },
   { slug: "building-a-draft-companion-that-cannot-click", strategy: "editorial-card", reason: ABSTRACT_PRODUCT },
+
+  // September 2026 batch
+  { slug: "juno-mba-growth-internship", strategy: "editorial-card", reason: CAREER_WRITEUP },
+  { slug: "civitech-quality-and-product-work", strategy: "editorial-card", reason: CAREER_WRITEUP },
 ];

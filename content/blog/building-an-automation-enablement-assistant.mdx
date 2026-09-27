@@ -2,6 +2,7 @@
 title: "Building an Automation Enablement Assistant Around the Questions It Cannot Answer"
 excerpt: "I built an onboarding and support tool for central automation teams, but the part I care about most is the failure log because it shows where the standard still cannot travel on its own."
 publishedAt: "2026-07-30"
+updatedAt: "2026-09-25"
 category: "Quality Engineering"
 tags: ["Quality Engineering", "Test Automation", "Platform Enablement", "Developer Tooling", "CI/CD", "Product Design", "Next.js"]
 featured: false
@@ -58,4 +59,4 @@ The demo runs in the browser with committed TypeScript data. The matching is a s
 
 I actually like the heuristic for this version because it makes the recommendation easy to challenge. A real implementation could retrieve from approved standards, support tickets, and integration guides, but I would keep the visible factors, confidence cutoff, and structured handoff. A more capable matching system still has to show why an answer fits and say when the available material is insufficient.
 
-The pattern I would pull out of this is that a central platform team scales when its knowledge can travel without its authors, and the clearest test of that system is where the knowledge stops. The recommendation starts the adoption, the onboarding plan makes it concrete, and the failure log shows where the platform still depends on a person. You can see the full loop in the [Automation Enablement Assistant](/enablement-assistant). For the adjacent quality engineering context, [Unlocking Daily Deploys by Treating QA as a Reusable System](/writing/qa-automation-daily-deploys) covers the same instinct from the test infrastructure side.
+The pattern I would pull out of this is that a central platform team scales when its knowledge can travel without its authors, and the clearest test of that system is where the knowledge stops. The recommendation starts the adoption, the onboarding plan makes it concrete, and the failure log shows where the platform still depends on a person. You can see the full loop in the [Automation Enablement Assistant](/enablement-assistant). For the adjacent quality engineering context, [Moving to Biweekly Releases by Treating QA as a Reusable System](/writing/qa-automation-daily-deploys) covers the same instinct from the test infrastructure side.
