@@ -13,6 +13,7 @@ import { RetirementPlanner } from "./retirement/RetirementPlanner";
 import { useInvestments } from "@/hooks/useInvestments";
 import type { ResearchTab } from "@/app/investments/investments-state";
 import { InstrumentTape, type InstrumentTapeItem } from "@/components/editorial/InstrumentTape";
+import { Catalog97ProjectHero } from "@/components/catalog97/Catalog97ProjectHero";
 import { formatCurrency, formatPercent } from "@/lib/investmentFormatting";
 import { holdingColor } from "./holdingPalette";
 import type { InvestmentsPriceHealth } from "@/types/investment";
@@ -140,14 +141,14 @@ export function InvestmentsDashboard({
           key: h.symbol,
           content: (
             <span className={styles.quote}>
-              <span className={styles.quoteSym} style={{ borderLeft: `3px solid ${holdingColor(h.symbol)}`, paddingLeft: 8 }}>
+              <span className={styles.quoteSym} style={{ borderLeft: `3px solid ${holdingColor(h.symbol, portfolioSymbols)}`, paddingLeft: 8 }}>
                 {h.symbol}
               </span>
               <span className={styles.quotePx}>
                 {h.priceSource === "costBasis" ? "Price unavailable" : formatCurrency(h.currentPrice)}
               </span>
               {h.priceSource === "live" ? (
-                <span className={positive ? "text-[var(--home-positive)]" : "text-[var(--home-negative)]"}>
+                <span className={positive ? "text-[var(--c97-positive)]" : "text-[var(--c97-negative)]"}>
                   {formatPercent(h.dayChangePercent)}
                 </span>
               ) : null}
@@ -155,7 +156,7 @@ export function InvestmentsDashboard({
           ),
         };
       }),
-    [enhancedHoldings],
+    [enhancedHoldings, portfolioSymbols],
   );
 
   const navItems: NavItem[] = useMemo(
@@ -213,65 +214,46 @@ export function InvestmentsDashboard({
   }
 
   return (
-    <div className="invest-page-stack">
-    <div className="invest-shell" data-testid="invest-shell">
-      <aside className="invest-sidebar" aria-label="Investments navigation">
-        <div className="invest-brand">
-          <div className="invest-brand-iv" aria-hidden="true">IV</div>
-          <div className="invest-brand-name">
-            Isaac Vazquez
-            <small>Investments</small>
+    <>
+      <div id="hero">
+        <Catalog97ProjectHero
+          ink="blue"
+          title="Investments"
+          standfirst="I built this to track a portfolio, look into a curated set of companies, and run a retirement plan off the same allocation math. Holdings and plan inputs save only to your browser."
+          meta={`Research data as of ${formatDatasetDate(datasetLastUpdated)} · Market quotes via Finnhub`}
+        >
+          <div data-c97-surface="espresso" className="c97-offset" style={{ padding: "var(--c97-sp-3)" }}>
+            {!isEmpty ? (
+              <InstrumentTape
+                className={styles.quoteTape}
+                label={
+                  <span className={styles.quoteTapeTag}>
+                    {enhancedHoldings.some((h) => h.priceSource === "live")
+                      ? "Live quotes"
+                      : enhancedHoldings.some((h) => h.priceSource === "saved")
+                        ? "Last saved prices"
+                        : "Prices unavailable"}
+                  </span>
+                }
+                items={tapeItems}
+                ariaLabel="Holdings quote tape"
+              />
+            ) : (
+              <p
+                className="c97-mono"
+                style={{ margin: 0, padding: "var(--c97-sp-2) var(--c97-sp-3)", color: "var(--c97-ink-2)" }}
+              >
+                Add a holding below to see live quotes here.
+              </p>
+            )}
           </div>
-        </div>
+        </Catalog97ProjectHero>
+      </div>
 
-        <nav className="flex flex-col gap-1.5" aria-label="Section navigation">
-          {navItems.map((item) => {
-            const Icon = item.icon;
-            return (
-              <a key={item.id} href={item.href} className="invest-nav-link">
-                <Icon size={18} aria-hidden="true" />
-                {item.label}
-                {item.pill ? <span className="invest-nav-pill">{item.pill}</span> : null}
-              </a>
-            );
-          })}
-        </nav>
-
-        <div className="invest-sidebar-footer">
-          <Bookmark size={16} aria-hidden="true" />
-          <span>Local browser storage</span>
-        </div>
-      </aside>
-
-      <div className="invest-main" id="hero">
-        <div className="invest-topbar">
-          <div>
-            <p className="invest-crumbs">Investments / <strong>Dashboard</strong></p>
-            <h1>Investments</h1>
-          </div>
-
-          <label className="invest-search" aria-label="Filter holdings">
-            <Search size={14} aria-hidden="true" />
-            <input
-              ref={filterInputRef}
-              type="search"
-              placeholder="Filter holdings…"
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-            />
-            <span className="invest-search-kbd" aria-hidden="true">⌘K</span>
-          </label>
-
-          <div className="flex items-center gap-2">
-            <DataFreshnessIndicator
-              lastUpdated={lastUpdated}
-              onRefresh={refetch}
-              isRefreshing={isLoading}
-            />
-            <span className="invest-avatar" aria-hidden="true">IV</span>
-          </div>
-        </div>
-
+      <section data-c97-surface="espresso" className="c97-band c97-sheet" data-seam="torn">
+        {/* The terminal's sidebar, main column, and rail need more than the
+            1080px page measure, so this one sheet runs at the old wide shell. */}
+        <div className="c97-shell" style={{ maxWidth: "86rem" }}>
         {/* Section jumps for narrow viewports, where the sidebar is hidden.
             Same targets in the same order, so `navItems` stays the one source
             of truth and the two navigations cannot drift apart. Only one of the
@@ -291,23 +273,6 @@ export function InvestmentsDashboard({
             );
           })}
         </nav>
-
-        {!isEmpty ? (
-          <InstrumentTape
-            className={styles.quoteTape}
-            label={
-              <span className={styles.quoteTapeTag}>
-                {enhancedHoldings.some((h) => h.priceSource === "live")
-                  ? "Live quotes"
-                  : enhancedHoldings.some((h) => h.priceSource === "saved")
-                    ? "Last saved prices"
-                    : "Prices unavailable"}
-              </span>
-            }
-            items={tapeItems}
-            ariaLabel="Holdings quote tape"
-          />
-        ) : null}
 
         {/* Compact dataset freshness chip */}
         <div className="invest-dataset-chip" role="status" aria-live="polite">
@@ -364,161 +329,219 @@ export function InvestmentsDashboard({
         </div>
 
         {error ? (
-          <div className="mt-4 rounded-[var(--radius-sm)] border border-[color-mix(in_srgb,var(--home-warning)_35%,var(--home-rule))] bg-[color-mix(in_srgb,var(--home-warning)_10%,var(--home-paper-alt))] px-4 py-3 text-sm text-[var(--home-ink-muted)]">
+          <div className="mt-4 border border-[color-mix(in_srgb,var(--c97-warning)_35%,var(--c97-rule))] bg-[color-mix(in_srgb,var(--c97-warning)_10%,var(--c97-panel))] px-4 py-3 text-sm text-[var(--c97-ink-2)]">
             {error}
           </div>
         ) : null}
 
         {persistenceStatus === "memory-only" ? (
-          <div className="mt-4 rounded-[var(--radius-sm)] border border-[color-mix(in_srgb,var(--home-warning)_35%,var(--home-rule))] bg-[color-mix(in_srgb,var(--home-warning)_10%,var(--home-paper-alt))] px-4 py-3 text-sm text-[var(--home-ink-muted)]" role="status">
+          <div className="mt-4 border border-[color-mix(in_srgb,var(--c97-warning)_35%,var(--c97-rule))] bg-[color-mix(in_srgb,var(--c97-warning)_10%,var(--c97-panel))] px-4 py-3 text-sm text-[var(--c97-ink-2)]" role="status">
             Portfolio changes are available in this tab, but browser storage is
             unavailable, so they may not remain after you close it.
           </div>
         ) : null}
 
-        <div className="mt-5 space-y-5">
-          <PortfolioSummary
-            summary={summary}
-            holdings={enhancedHoldings}
-            snapshots={snapshots}
-            isLoading={isLoading}
-            onAddHolding={focusAddHolding}
-            onRefresh={refetch}
-            lastUpdated={lastUpdated}
-          />
+        <div className="invest-shell" data-testid="invest-shell">
+          <aside className="invest-sidebar" aria-label="Investments navigation">
+            <nav className="flex flex-col gap-1.5" aria-label="Section navigation">
+              {navItems.map((item) => {
+                const Icon = item.icon;
+                return (
+                  <a key={item.id} href={item.href} className="invest-nav-link">
+                    <Icon size={18} aria-hidden="true" />
+                    {item.label}
+                    {item.pill ? <span className="invest-nav-pill">{item.pill}</span> : null}
+                  </a>
+                );
+              })}
+            </nav>
 
-          {!isEmpty ? (
-            <HoldingsTable
-              holdings={filteredHoldings}
-              onUpdate={updateHolding}
-              onRemove={removeHolding}
-              onResearch={handleResearch}
-            />
-          ) : (
-            <div className="rounded-[var(--radius-sm)] border border-dashed border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper)_92%,var(--home-elev-mix))] px-6 py-16 text-center ">
-              <p className="mb-2 text-sm font-semibold text-[var(--home-ink)]">
-                No positions yet
-              </p>
-              <p className="mx-auto max-w-xs text-sm text-[var(--home-ink-soft)]">
-                Add your first stock with the Add a holding form. Holdings are saved in your browser and persist across visits.
-              </p>
+            <div className="invest-sidebar-footer">
+              <Bookmark size={16} aria-hidden="true" />
+              <span>Local browser storage</span>
             </div>
-          )}
-        </div>
-      </div>
+          </aside>
 
-      <aside className="invest-rail" aria-label="Portfolio side panel">
-        <section
-          ref={addHoldingRef}
-          id="add-holding"
-          aria-label="Add a holding"
-          className="scroll-mt-28"
+          <div className="invest-main">
+            <div className="invest-topbar">
+              <label className="invest-search" aria-label="Filter holdings">
+                <Search size={14} aria-hidden="true" />
+                <input
+                  ref={filterInputRef}
+                  type="search"
+                  placeholder="Filter holdings…"
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                />
+                <span className="invest-search-kbd" aria-hidden="true">⌘K</span>
+              </label>
+
+              <div className="flex items-center gap-2">
+                <DataFreshnessIndicator
+                  lastUpdated={lastUpdated}
+                  onRefresh={refetch}
+                  isRefreshing={isLoading}
+                />
+                <span className="invest-avatar" aria-hidden="true">IV</span>
+              </div>
+            </div>
+
+            <div className="mt-5 space-y-5">
+              <PortfolioSummary
+                summary={summary}
+                holdings={enhancedHoldings}
+                snapshots={snapshots}
+                isLoading={isLoading}
+                onAddHolding={focusAddHolding}
+                onRefresh={refetch}
+                lastUpdated={lastUpdated}
+              />
+
+              {!isEmpty ? (
+                <HoldingsTable
+                  holdings={filteredHoldings}
+                  onUpdate={updateHolding}
+                  onRemove={removeHolding}
+                  onResearch={handleResearch}
+                  portfolioSymbols={portfolioSymbols}
+                />
+              ) : (
+                <div className="border border-dashed border-[var(--c97-rule)] bg-[var(--c97-panel)] px-6 py-16 text-center ">
+                  <p className="mb-2 text-sm font-semibold text-[var(--c97-ink)]">
+                    No positions yet
+                  </p>
+                  <p className="mx-auto max-w-xs text-sm text-[var(--c97-label)]">
+                    Add your first stock with the Add a holding form. Holdings are saved in your browser and persist across visits.
+                  </p>
+                </div>
+              )}
+            </div>
+          </div>
+
+          <aside className="invest-rail" aria-label="Portfolio side panel">
+            <section
+              ref={addHoldingRef}
+              id="add-holding"
+              aria-label="Add a holding"
+              className="scroll-mt-28"
+            >
+              <p className="invest-rail-section-label">
+                <Wallet size={12} aria-hidden="true" className="mr-1.5 inline align-middle" />
+                Add a holding
+              </p>
+              <AddStockForm onAdd={addHolding} />
+            </section>
+
+            {!isEmpty ? (
+              <section id="allocation" className="scroll-mt-28">
+                <p className="invest-rail-section-label">Allocation</p>
+                <AllocationChart holdings={enhancedHoldings} />
+              </section>
+            ) : null}
+
+            {enhancedHoldings.some((holding) => holding.priceSource === "live") ? (
+              <section className="invest-rail-movers">
+                <p className="invest-rail-section-label">Latest movers</p>
+                <ul className="invest-rail-mover-list">
+                  {[...enhancedHoldings]
+                    .filter((holding) => holding.priceSource === "live")
+                    .sort(
+                      (a, b) =>
+                        Math.abs(b.dayChangePercent) - Math.abs(a.dayChangePercent),
+                    )
+                    .slice(0, 4)
+                    .map((h) => {
+                      const positive = h.dayChangePercent >= 0;
+                      const showName =
+                        h.name && h.name.toUpperCase() !== h.symbol.toUpperCase();
+                      return (
+                        <li key={h.symbol}>
+                          <button
+                            type="button"
+                            className="invest-rail-mover"
+                            onClick={() => handleResearch(h.symbol)}
+                          >
+                            <span className="invest-rail-mover-sym">{h.symbol}</span>
+                            <span className="invest-rail-mover-name">
+                              {showName ? h.name : ""}
+                            </span>
+                            <span
+                              className={
+                                positive
+                                  ? "invest-rail-mover-delta pos"
+                                  : "invest-rail-mover-delta neg"
+                              }
+                            >
+                              {positive ? "+" : "−"}
+                              {Math.abs(h.dayChangePercent).toFixed(2)}%
+                            </span>
+                          </button>
+                        </li>
+                      );
+                    })}
+                </ul>
+              </section>
+            ) : null}
+
+            <p className="mt-auto flex items-center gap-2 text-2xs text-[var(--c97-ink-2)]">
+              <CircleQuestionMark size={14} aria-hidden="true" />
+              Holdings live only in your browser. No logins, no cloud sync.
+            </p>
+          </aside>
+        </div>
+        </div>
+      </section>
+
+      {/* Research deep-dive — its own sheet below the terminal body. Symbol
+          comes from clicking "Research" on a holding row or the picker below. */}
+      <section
+        ref={researchSectionRef}
+        data-c97-surface="chocolate"
+        className="c97-band c97-sheet"
+        data-seam="torn"
+        aria-label="Research deep dive"
+      >
+        <div className="c97-shell">
+          <div className="invest-section-header">
+            <div>
+              <p className="invest-section-kicker">Deep dive</p>
+              <h2 className="c97-poster-sm" style={{ marginTop: "var(--c97-sp-1)" }}>Research</h2>
+            </div>
+            <div className="invest-section-search">
+              <StockSearch value={researchSymbol} onChange={handleSymbolPick} />
+            </div>
+          </div>
+
+          <ResearchSection
+            symbol={researchSymbol}
+            activeTab={researchTab}
+            onTabChange={onResearchTabChange}
+            portfolioSymbols={portfolioSymbols}
+            position={researchPosition}
+          />
+        </div>
+      </section>
+
+      <div data-c97-surface="paper" className="c97-band c97-band-tight c97-sheet" data-seam="torn">
+        <p
+          role="note"
+          className="c97-prose mx-auto flex max-w-3xl items-start gap-2 text-2xs leading-6"
+          style={{ color: "var(--c97-ink-2)" }}
         >
-          <p className="invest-rail-section-label">
-            <Wallet size={12} aria-hidden="true" className="mr-1.5 inline align-middle" />
-            Add a holding
-          </p>
-          <AddStockForm onAdd={addHolding} />
-        </section>
-
-        {!isEmpty ? (
-          <section id="allocation" className="scroll-mt-28">
-            <p className="invest-rail-section-label">Allocation</p>
-            <AllocationChart holdings={enhancedHoldings} />
-          </section>
-        ) : null}
-
-        {enhancedHoldings.some((holding) => holding.priceSource === "live") ? (
-          <section className="invest-rail-movers">
-            <p className="invest-rail-section-label">Latest movers</p>
-            <ul className="invest-rail-mover-list">
-              {[...enhancedHoldings]
-                .filter((holding) => holding.priceSource === "live")
-                .sort(
-                  (a, b) =>
-                    Math.abs(b.dayChangePercent) - Math.abs(a.dayChangePercent),
-                )
-                .slice(0, 4)
-                .map((h) => {
-                  const positive = h.dayChangePercent >= 0;
-                  const showName =
-                    h.name && h.name.toUpperCase() !== h.symbol.toUpperCase();
-                  return (
-                    <li key={h.symbol}>
-                      <button
-                        type="button"
-                        className="invest-rail-mover"
-                        onClick={() => handleResearch(h.symbol)}
-                      >
-                        <span className="invest-rail-mover-sym">{h.symbol}</span>
-                        <span className="invest-rail-mover-name">
-                          {showName ? h.name : ""}
-                        </span>
-                        <span
-                          className={
-                            positive
-                              ? "invest-rail-mover-delta pos"
-                              : "invest-rail-mover-delta neg"
-                          }
-                        >
-                          {positive ? "+" : "−"}
-                          {Math.abs(h.dayChangePercent).toFixed(2)}%
-                        </span>
-                      </button>
-                    </li>
-                  );
-                })}
-            </ul>
-          </section>
-        ) : null}
-
-        <p className="mt-auto flex items-center gap-2 text-2xs text-[var(--home-ink-muted)]">
-          <CircleQuestionMark size={14} aria-hidden="true" />
-          Holdings live only in your browser. No logins, no cloud sync.
+          <CircleQuestionMark size={14} className="mt-0.5 shrink-0" aria-hidden="true" />
+          Research, valuations, and portfolio figures here are for general information
+          and education only and are not investment, tax, or financial advice.
         </p>
-      </aside>
-    </div>
-
-    {/* Research deep-dive — full width below the shell so it doesn't leave
-        the rail empty next to a long single-asset view. Symbol comes from
-        clicking "Research" on a holding row or the picker below. */}
-    <section
-      ref={researchSectionRef}
-      className="invest-research-band"
-      aria-label="Research deep dive"
-    >
-      <div className="invest-section-header">
-        <div>
-          <p className="invest-section-kicker">Deep dive</p>
-          <h2 className="invest-section-title">Research</h2>
-        </div>
-        <div className="invest-section-search">
-          <StockSearch value={researchSymbol} onChange={handleSymbolPick} />
-        </div>
       </div>
 
-      <ResearchSection
-        symbol={researchSymbol}
-        activeTab={researchTab}
-        onTabChange={onResearchTabChange}
-        portfolioSymbols={portfolioSymbols}
-        position={researchPosition}
-      />
-    </section>
-
-    <p
-      role="note"
-      className="mx-auto mt-2 flex max-w-3xl items-start gap-2 text-2xs leading-6 text-[var(--home-ink-muted)]"
-    >
-      <CircleQuestionMark size={14} className="mt-0.5 shrink-0" aria-hidden="true" />
-      Research, valuations, and portfolio figures here are for general information
-      and education only and are not investment, tax, or financial advice.
-    </p>
-
-    {/* Retirement planner — projects whether the portfolio + savings last
-        through retirement, with allocation-derived Monte Carlo. Offers the
-        live portfolio value as a one-click starting balance. */}
-    <RetirementPlanner portfolioValue={summary.totalValue > 0 ? summary.totalValue : undefined} />
-    </div>
+      {/* Retirement planner — projects whether the portfolio + savings last
+          through retirement, with allocation-derived Monte Carlo. Offers the
+          live portfolio value as a one-click starting balance. */}
+      <section data-c97-surface="espresso" className="c97-band c97-sheet" data-seam="torn">
+        <div className="c97-shell">
+          <RetirementPlanner portfolioValue={summary.totalValue > 0 ? summary.totalValue : undefined} />
+        </div>
+      </section>
+    </>
   );
 }

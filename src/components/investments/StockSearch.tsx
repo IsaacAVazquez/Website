@@ -238,7 +238,7 @@ export function StockSearch({ value, onChange }: Props) {
       <div className="relative">
         <Search
           size={16}
-          className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-[var(--home-ink-soft)]"
+          className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-[var(--c97-label)]"
         />
 
         <input
@@ -259,7 +259,7 @@ export function StockSearch({ value, onChange }: Props) {
           placeholder="Search symbol or company…"
           autoComplete="off"
           spellCheck={false}
-          className="box-border w-full rounded-[var(--radius-sm)] border border-[var(--home-rule)] bg-[var(--home-paper-alt)] py-3 pl-9 pr-4 text-sm text-[var(--home-ink)] transition placeholder:text-[var(--home-ink-soft)] focus:border-transparent focus:outline-none focus:ring-2 focus:ring-[var(--home-signal)]"
+          className="box-border w-full border-0 border-b border-[var(--c97-ink-2)] bg-[var(--c97-panel)] py-3 pl-9 pr-4 text-sm text-[var(--c97-ink)] transition placeholder:text-[var(--c97-label)] focus:outline-none focus:border-[var(--c97-accent)]"
           aria-label="Search stock symbol"
           aria-autocomplete="list"
           aria-controls="stock-search-listbox"
@@ -281,7 +281,7 @@ export function StockSearch({ value, onChange }: Props) {
   role="listbox"
   aria-label="Symbol suggestions"
   style={dropdownStyle}
-className="m-0 list-none p-0 box-border overflow-hidden rounded-[var(--radius-sm)] border border-[var(--home-rule)] bg-[var(--home-paper-alt)]"
+className="m-0 list-none p-0 box-border overflow-hidden border border-[var(--c97-rule)] bg-[var(--c97-panel)]"
 >
             {suggestions.map((entry, indexPosition) => (
               <li key={entry.symbol}>
@@ -292,12 +292,12 @@ className="m-0 list-none p-0 box-border overflow-hidden rounded-[var(--radius-sm
                   onMouseDown={() => selectEntry(entry)}
                   className={`flex min-h-[52px] w-full flex-col items-start justify-center px-3 py-2 text-left text-sm transition ${
                     indexPosition === activeIndex
-                      ? "bg-[color-mix(in_srgb,var(--home-signal)_14%,var(--home-paper-alt))] text-[var(--home-ink)]"
-                      : "text-[var(--home-ink)] hover:bg-[color-mix(in_srgb,var(--home-ink)_6%,var(--home-paper-alt))]"
+                      ? "bg-[color-mix(in_srgb,var(--c97-accent)_14%,var(--c97-panel))] text-[var(--c97-ink)]"
+                      : "text-[var(--c97-ink)] hover:bg-[color-mix(in_srgb,var(--c97-ink)_6%,var(--c97-panel))]"
                   }`}
                 >
                   <span className="font-semibold">{entry.symbol}</span>
-                  <span className="text-xs text-[var(--home-ink-muted)]">
+                  <span className="text-xs text-[var(--c97-ink-2)]">
                     {entry.longName !== entry.symbol ? entry.longName : entry.shortName}
                   </span>
                 </button>
@@ -308,7 +308,7 @@ className="m-0 list-none p-0 box-border overflow-hidden rounded-[var(--radius-sm
         )}
 
       {shouldShowCuratedOnlyHint && (
-        <p className="mt-1.5 flex items-center gap-1.5 text-xs text-[var(--home-warning)]">
+        <p className="mt-1.5 flex items-center gap-1.5 text-xs text-[var(--c97-warning)]">
           <CircleAlert size={13} />
           <span>
             This workspace currently supports the curated research set only. Pick a ticker from the suggestions.

@@ -15,20 +15,20 @@ export function ErrorState({ message, isNotFetched, onRetry }: ErrorStateProps) 
       {isNotFetched ? (
         <Info
           size={32}
-          style={{ color: "var(--home-ink-soft)" }}
+          style={{ color: "var(--c97-label)" }}
           aria-hidden="true"
         />
       ) : (
         <TriangleAlert
           size={32}
-          style={{ color: "var(--home-negative)" }}
+          style={{ color: "var(--c97-negative)" }}
           aria-hidden="true"
         />
       )}
 
       <p
         className="text-sm max-w-xs"
-        style={{ color: isNotFetched ? "var(--home-ink-soft)" : "var(--home-negative)" }}
+        style={{ color: isNotFetched ? "var(--c97-label)" : "var(--c97-negative)" }}
       >
         {message}
       </p>

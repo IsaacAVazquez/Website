@@ -7,7 +7,7 @@ import {
   useMemo,
   useState,
 } from "react";
-import { motion, useReducedMotion } from "framer-motion";
+import { useReducedMotion } from "framer-motion";
 import { useRouter, useSearchParams } from "next/navigation";
 import { PROJECT_PRESS } from "@/constants/projectPress";
 import {
@@ -46,16 +46,6 @@ import "./food-map.css";
 interface FoodMapClientProps {
   initialState: FoodMapState;
 }
-
-const fadeIn = {
-  hidden: { opacity: 0, y: 14 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.4 } },
-};
-
-const noMotion = {
-  hidden: { opacity: 0, y: 14 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0 } },
-};
 
 const FOOD_MAP_INK = PROJECT_PRESS[FOOD_MAP_ROUTE].lead;
 
@@ -325,12 +315,10 @@ function PlaceDossier({
 
 function FoodMapWorkbench({
   routeState,
-  variants,
   reduceMotion,
   onCommit,
 }: {
   routeState: FoodMapState;
-  variants: typeof fadeIn;
   reduceMotion: boolean;
   onCommit: (next: FoodMapState) => void;
 }) {
@@ -404,7 +392,7 @@ function FoodMapWorkbench({
 
   return (
     <section className="fm" aria-label="Food Map" data-testid="food-map-shell">
-      <motion.div variants={variants} initial="hidden" animate="visible">
+      <div>
         {/* Masthead */}
         <header
           className="c97-band c97-sheet c97-project-hero"
@@ -599,7 +587,7 @@ function FoodMapWorkbench({
             </div>
           </div>
         </section>
-      </motion.div>
+      </div>
     </section>
   );
 }
@@ -618,7 +606,6 @@ export function FoodMapClient({ initialState }: FoodMapClientProps) {
   const router = useRouter();
   const searchParams = useSearchParams();
   const shouldReduceMotion = useReducedMotion();
-  const variants = shouldReduceMotion ? noMotion : fadeIn;
 
   const normalizedRouteState = normalizeFoodMapState(searchParams);
   const currentQuery = searchParams.toString();
@@ -642,7 +629,6 @@ export function FoodMapClient({ initialState }: FoodMapClientProps) {
   return (
     <FoodMapWorkbench
       routeState={routeState}
-      variants={variants}
       reduceMotion={Boolean(shouldReduceMotion)}
       onCommit={(next) => router.replace(buildFoodMapHref(next), { scroll: false })}
     />

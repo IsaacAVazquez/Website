@@ -31,7 +31,7 @@ export function RetirementPlanner({ portfolioValue, seedAllocation }: Props) {
       <div className="invest-section-header">
         <div>
           <p className="invest-section-kicker">Plan ahead</p>
-          <h2 className="invest-section-title">Retirement planner</h2>
+          <h2 className="c97-poster-sm" style={{ marginTop: "var(--c97-sp-1)" }}>Retirement planner</h2>
         </div>
         <span className="invest-retire-band-tag">
           <ChartColumn size={14} aria-hidden="true" />
@@ -41,7 +41,7 @@ export function RetirementPlanner({ portfolioValue, seedAllocation }: Props) {
       </div>
 
       <p className="invest-retire-intro">
-        Am I on track to retire — and what should I change? Start with five numbers for an instant
+        Am I on track to retire, and what should I change? Start with five numbers for an instant
         read, then open the advanced sections to refine accounts, allocation, income, and
         assumptions.
       </p>

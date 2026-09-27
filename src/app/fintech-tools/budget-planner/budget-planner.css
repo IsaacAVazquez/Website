@@ -1,0 +1,138 @@
+/* Budget Planner: the envelope signature and the expenses check register. */
+
+.c97-envelope-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--c97-sp-3);
+}
+
+@media (min-width: 640px) {
+  .c97-envelope-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1024px) {
+  .c97-envelope-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+/* The top padding keeps the name below the flap, sealed or torn, however many lines the body wraps to. */
+.c97-envelope {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: var(--c97-sp-1);
+  min-height: 148px;
+  padding: calc(var(--envelope-flap) + var(--c97-sp-1)) var(--c97-sp-2) var(--c97-sp-2);
+  --envelope-flap: 52px;
+  overflow: hidden;
+  border: 1px solid var(--c97-rule);
+}
+
+/* The fill bar, anchored to the bottom, its height set inline from `envelope().fill`. */
+.c97-envelope-fill {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--c97-positive);
+  opacity: 0.28;
+}
+
+.c97-envelope[data-torn="true"] .c97-envelope-fill {
+  background: var(--c97-negative);
+  opacity: 0.32;
+}
+
+/* The closed flap, a plain fold when sealed. */
+.c97-envelope-flap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: var(--envelope-flap);
+  background: var(--c97-rule);
+  opacity: 0.4;
+  clip-path: polygon(0 0, 50% 62%, 100% 0);
+}
+
+/* Torn open: the flap is gone and a jagged rip takes its place, in the mark colour. */
+.c97-envelope[data-torn="true"] .c97-envelope-flap {
+  height: calc(var(--envelope-flap) * 0.7);
+  background: var(--c97-negative);
+  opacity: 0.55;
+  clip-path: polygon(
+    0% 100%,
+    6% 35%,
+    13% 88%,
+    19% 30%,
+    26% 82%,
+    32% 25%,
+    39% 90%,
+    45% 32%,
+    52% 86%,
+    58% 28%,
+    65% 88%,
+    71% 30%,
+    78% 84%,
+    84% 25%,
+    91% 90%,
+    97% 30%,
+    100% 100%
+  );
+}
+
+.c97-envelope-body {
+  position: relative;
+  z-index: 1;
+  padding-top: var(--c97-sp-1);
+}
+
+.c97-envelope-name {
+  margin: 0;
+}
+
+.c97-envelope-amount,
+.c97-envelope-over {
+  margin: var(--c97-sp-1) 0 0;
+  font-size: var(--c97-fs-small);
+}
+
+/* The check register. `.c97-table` handles the desktop layout; below 640px it
+   stacks each row into a labelled block so five columns never force a page
+   scroll on a phone. */
+@media (max-width: 639px) {
+  .c97-checkregister thead {
+    display: none;
+  }
+
+  .c97-checkregister,
+  .c97-checkregister tbody,
+  .c97-checkregister tr,
+  .c97-checkregister td {
+    display: block;
+    width: 100%;
+  }
+
+  .c97-checkregister tr {
+    padding: var(--c97-sp-2) 0;
+    border-bottom: 1px solid var(--c97-rule);
+  }
+
+  .c97-checkregister td {
+    padding: 1px 0;
+    border-bottom: none;
+    text-align: left !important;
+  }
+
+  .c97-checkregister td[data-label]::before {
+    content: attr(data-label) ": ";
+    font-size: var(--c97-fs-label);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--c97-label);
+  }
+}

@@ -167,7 +167,7 @@ export function MetricTooltip({ term, definition, children, focusable }: Props) 
               width: `min(${BUBBLE_WIDTH}px, calc(100vw - ${VIEWPORT_PAD * 2}px))`,
               opacity: pos ? 1 : 0,
             }}
-            className="pointer-events-none z-[100] rounded-[var(--radius-sm)] bg-[var(--home-ink)] px-3 py-2.5 text-2xs leading-snug text-[var(--home-paper)] shadow-[var(--shadow-md)] motion-safe:transition-opacity motion-safe:duration-150"
+            className="pointer-events-none z-[100] bg-[var(--c97-ink)] px-3 py-2.5 text-2xs leading-snug text-[var(--c97-surface)] motion-safe:transition-opacity motion-safe:duration-150"
           >
             {text}
             {pos && (
@@ -181,8 +181,8 @@ export function MetricTooltip({ term, definition, children, focusable }: Props) 
                 }}
                 className={
                   pos.placement === "top"
-                    ? "border-4 border-transparent border-t-[var(--home-ink)]"
-                    : "border-4 border-transparent border-b-[var(--home-ink)]"
+                    ? "border-4 border-transparent border-t-[var(--c97-ink)]"
+                    : "border-4 border-transparent border-b-[var(--c97-ink)]"
                 }
               />
             )}
@@ -219,7 +219,7 @@ export function MetricTooltip({ term, definition, children, focusable }: Props) 
                 triggerRef.current?.blur();
               }
             }}
-            className="relative m-0 cursor-help border-0 bg-transparent p-0 text-inherit underline decoration-dotted decoration-from-font underline-offset-[3px] outline-none focus-visible:rounded-[2px] focus-visible:ring-2 focus-visible:ring-[var(--home-ink)] after:absolute after:-inset-x-1 after:-inset-y-3 after:content-['']"
+            className="relative m-0 cursor-help border-0 bg-transparent p-0 text-inherit underline decoration-dotted decoration-from-font underline-offset-[3px] outline-none focus-visible:ring-2 focus-visible:ring-[var(--c97-ink)] after:absolute after:-inset-x-1 after:-inset-y-3 after:content-['']"
           >
             {children}
           </button>
@@ -273,9 +273,9 @@ export function MetricTooltip({ term, definition, children, focusable }: Props) 
             triggerRef.current?.blur();
           }
         }}
-        className="pointer-events-auto absolute left-1/2 top-1/2 flex min-h-touch min-w-touch -translate-x-1/2 -translate-y-1/2 cursor-help items-center justify-center rounded-full outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-ink)]"
+        className="pointer-events-auto absolute left-1/2 top-1/2 flex min-h-touch min-w-touch -translate-x-1/2 -translate-y-1/2 cursor-help items-center justify-center outline-none focus-visible:ring-2 focus-visible:ring-[var(--c97-ink)]"
       >
-        <span className="flex h-4 w-4 items-center justify-center rounded-full bg-[var(--home-paper-alt)] text-3xs font-bold leading-none text-[var(--home-ink-muted)] ring-1 ring-[var(--home-rule)]">
+        <span className="flex h-4 w-4 items-center justify-center bg-[var(--c97-panel)] text-3xs font-bold leading-none text-[var(--c97-ink-2)] ring-1 ring-[var(--c97-rule)]">
           ?
         </span>
       </button>

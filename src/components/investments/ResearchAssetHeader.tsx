@@ -23,6 +23,7 @@ interface Props {
   isInPortfolio?: boolean;
   portfolioShares?: number | null;
   onAddToPortfolio?: () => void;
+  portfolioSymbols?: readonly string[];
 }
 
 
@@ -136,10 +137,10 @@ interface KeyMetricCellProps {
 function KeyMetricCell({ metric }: KeyMetricCellProps) {
   const valueColor =
     metric.tone === "pos"
-      ? "text-[var(--home-positive)]"
+      ? "text-[var(--c97-positive)]"
       : metric.tone === "neg"
-        ? "text-[var(--home-negative)]"
-        : "text-[var(--home-ink)]";
+        ? "text-[var(--c97-negative)]"
+        : "text-[var(--c97-ink)]";
   return (
     <div className="research-key-metric">
       <span
@@ -162,6 +163,7 @@ export function ResearchAssetHeader({
   isInPortfolio = false,
   portfolioShares = null,
   onAddToPortfolio,
+  portfolioSymbols = [],
 }: Props) {
   const { data: info, freshness } = useStockData<CompanyInfo>(symbol || null, "info");
   const { data: fundamentals } = useStockData<Fundamentals>(symbol || null, "fundamentals");
@@ -253,7 +255,7 @@ export function ResearchAssetHeader({
       : null;
 
   const upper = symbol.toUpperCase();
-  const tone = holdingColor(upper);
+  const tone = holdingColor(upper, portfolioSymbols);
   const quoteName = !quote?.error ? quote?.name : undefined;
   const displayName =
     info?.longName ||

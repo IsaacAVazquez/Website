@@ -99,3 +99,40 @@ it("marks disabled buttons and fields without dimming their text", () => {
   expect(selector).toMatch(/\.c97-field/);
   expect(body).not.toMatch(/opacity/);
 });
+
+/*
+ * The light chart ramp's darkest steps are espresso and chocolate themselves,
+ * so a chart printed on those sheets vanished in light mode. They print the
+ * dark ramp in both themes, and the four steps that read apart hold the 3:1
+ * bar for marks on espresso. Chocolate is a lighter sheet, so charts belong on
+ * espresso and chocolate is held only for the first three steps.
+ */
+describe("the dark sheets print the dark chart ramp", () => {
+  const start = css.indexOf('.c97-page :is([data-c97-surface="espresso"], [data-c97-surface="chocolate"]) {');
+  const ramp =
+    start === -1
+      ? {}
+      : Object.fromEntries(
+          [...css.slice(start, css.indexOf("}", start)).matchAll(/(--c97-chart-\d):\s*(#[0-9a-f]{6})/gi)].map((m) => [
+            m[1],
+            m[2].toLowerCase(),
+          ]),
+        );
+  const cases: [string, string[]][] = [
+    ["espresso", ["--c97-chart-1", "--c97-chart-2", "--c97-chart-3", "--c97-chart-6"]],
+    ["chocolate", ["--c97-chart-1", "--c97-chart-2", "--c97-chart-3"]],
+  ];
+  for (const [surface, steps] of cases) {
+    for (const theme of ["light", "dark"] as const) {
+      it(`${surface} ${theme}: ${steps.length} steps clear 3:1`, () => {
+        const t = block(`${theme === "dark" ? ".dark " : ""}.c97-page [data-c97-surface="${surface}"]`);
+        for (const step of steps) {
+          const value = (ramp as Record<string, string>)[step];
+          expect(value).toMatch(/^#[0-9a-f]{6}$/);
+          const ratio = contrast(value, t["--c97-surface"]);
+          expect({ step, ratio: Number(ratio.toFixed(2)), clears: ratio >= 3 }).toMatchObject({ step, clears: true });
+        }
+      });
+    }
+  }
+});

@@ -34,8 +34,8 @@ function shareLabel(n: number): string {
 }
 
 function toneClass(n: number | undefined): string {
-  if (n === undefined || !Number.isFinite(n) || n === 0) return "text-[var(--home-ink)]";
-  return n > 0 ? "text-[var(--home-positive)]" : "text-[var(--home-negative)]";
+  if (n === undefined || !Number.isFinite(n) || n === 0) return "text-[var(--c97-ink)]";
+  return n > 0 ? "text-[var(--c97-positive)]" : "text-[var(--c97-negative)]";
 }
 
 /**
@@ -90,7 +90,7 @@ export function ResearchPosition({ position }: Props) {
       <div className="mb-4 flex items-center justify-between gap-3">
         <div>
           <p className="invest-rail-section-label">Your position</p>
-          <p className="mt-1 text-xs text-[var(--home-ink-soft)]">
+          <p className="mt-1 text-xs text-[var(--c97-label)]">
             From your local portfolio. Latest market quote when available, else last saved close.
           </p>
         </div>
@@ -112,19 +112,19 @@ export function ResearchPosition({ position }: Props) {
 
       {alloc !== null ? (
         <div className="mt-4">
-          <div className="mb-1.5 flex items-center justify-between text-xs text-[var(--home-ink-muted)]">
+          <div className="mb-1.5 flex items-center justify-between text-xs text-[var(--c97-ink-2)]">
             <span>Allocation</span>
-            <span className="font-semibold text-[var(--home-ink)]">
+            <span className="font-semibold text-[var(--c97-ink)]">
               {alloc.toFixed(1)}%
             </span>
           </div>
           <div
-            className="h-2 w-full overflow-hidden rounded-full bg-[var(--home-paper-alt)]"
+            className="h-2 w-full overflow-hidden bg-[var(--c97-panel)]"
             role="img"
             aria-label={`Allocation ${alloc.toFixed(1)} percent of portfolio`}
           >
             <div
-              className="h-full rounded-full bg-[var(--home-signal)]"
+              className="h-full bg-[var(--c97-accent)]"
               style={{ width: `${alloc}%` }}
             />
           </div>

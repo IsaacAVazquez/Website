@@ -179,9 +179,9 @@ describe("MBAJobsClient", () => {
       name: "Apply for MBA Product Intern at Stripe",
     });
 
-    expect(googleLinkedIn).toHaveClass("home-button", "home-button-secondary");
-    expect(microsoftCareerPage).toHaveClass("home-button", "home-button-primary");
-    expect(applyButton).toHaveClass("home-button", "home-button-primary");
+    expect(googleLinkedIn).toHaveClass("c97-btn-ghost");
+    expect(microsoftCareerPage).toHaveClass("c97-btn");
+    expect(applyButton).toHaveClass("c97-btn");
   });
 
   it("groups tracked companies by category and keeps job-card chips wrappable", () => {
@@ -229,9 +229,7 @@ describe("MBAJobsClient", () => {
     expect(
       within(startupGroup).queryByRole("button", { name: "OpenAI" })
     ).not.toBeInTheDocument();
-    expect(atlassianButton).toHaveStyle(
-      "background: color-mix(in srgb, var(--home-paper-alt) 78%, var(--home-elev-mix))"
-    );
+    expect(atlassianButton).toHaveStyle("background: var(--c97-field)");
     expect(atlassianDot).not.toBeNull();
     expect(atlassianDot).toHaveStyle(
       "background: color-mix(in srgb, var(--home-ink) 68%, var(--home-stone) 32%)"

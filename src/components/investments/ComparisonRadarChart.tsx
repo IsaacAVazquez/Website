@@ -41,16 +41,15 @@ export function ComparisonRadarChart({ data, symbolA, symbolB }: Props) {
     // root still returns the old :root values and would miss the repaint.
     const computedStyle = getComputedStyle(svgRef.current);
     const colorA =
-      computedStyle.getPropertyValue("--home-signal").trim() || "#C93F19";
+      computedStyle.getPropertyValue("--c97-accent").trim() || "currentColor";
     const colorB =
-      computedStyle.getPropertyValue("--home-ink").trim() || "#191813";
+      computedStyle.getPropertyValue("--c97-ink").trim() || "currentColor";
     const inkMuted =
-      computedStyle.getPropertyValue("--home-ink-muted").trim() || "#68655A";
+      computedStyle.getPropertyValue("--c97-ink-2").trim() || "currentColor";
     const rule =
-      computedStyle.getPropertyValue("--home-rule").trim() ||
-      "rgba(25,24,19,0.14)";
+      computedStyle.getPropertyValue("--c97-rule").trim() || "currentColor";
     const paper =
-      computedStyle.getPropertyValue("--home-paper").trim() || "#F6F5F1";
+      computedStyle.getPropertyValue("--c97-surface").trim() || "currentColor";
 
     const svg = select(svgRef.current);
     svg.selectAll("*").remove();
@@ -96,7 +95,7 @@ export function ComparisonRadarChart({ data, symbolA, symbolB }: Props) {
         .attr("text-anchor", Math.abs(x) < 5 ? "middle" : x > 0 ? "start" : "end")
         .attr("fill", inkMuted)
         .attr("font-size", "11px")
-        .style("font-family", "var(--font-home-sans), system-ui")
+        .style("font-family", "var(--c97-font-body), system-ui")
         .text(d.dimension);
     });
 
@@ -158,7 +157,7 @@ export function ComparisonRadarChart({ data, symbolA, symbolB }: Props) {
 
   if (data.length < 3) {
     return (
-      <p className="py-12 text-center text-sm text-[var(--home-ink-muted)]">
+      <p className="py-12 text-center text-sm text-[var(--c97-ink-2)]">
         There are not enough shared, verified metrics to draw this comparison.
       </p>
     );
@@ -177,18 +176,18 @@ export function ComparisonRadarChart({ data, symbolA, symbolB }: Props) {
         <span className="flex items-center gap-1.5">
           <span
             className="inline-block h-3 w-3 rounded-full"
-            style={{ backgroundColor: "var(--home-signal)" }}
+            style={{ backgroundColor: "var(--c97-accent)" }}
           />
-          <span className="font-medium" style={{ color: "var(--home-signal)" }}>
+          <span className="font-medium" style={{ color: "var(--c97-accent)" }}>
             {symbolA}
           </span>
         </span>
         <span className="flex items-center gap-1.5">
           <span
             className="inline-block h-3 w-3 rounded-full"
-            style={{ backgroundColor: "var(--home-ink)" }}
+            style={{ backgroundColor: "var(--c97-ink)" }}
           />
-          <span className="font-medium" style={{ color: "var(--home-ink)" }}>
+          <span className="font-medium" style={{ color: "var(--c97-ink)" }}>
             {symbolB}
           </span>
         </span>

@@ -12,7 +12,7 @@ interface Props {
 const W = 760;
 const H = 340;
 const MARGIN = { top: 16, right: 18, bottom: 36, left: 60 };
-const ACCENT = "var(--home-signal)";
+const ACCENT = "var(--c97-accent)";
 
 /**
  * Balance over time with a shaded 10th–90th percentile confidence band and a
@@ -50,41 +50,39 @@ export function RetirementProjectionChart({ result }: Props) {
       .attr("x2", innerW)
       .attr("y1", (d) => y(d))
       .attr("y2", (d) => y(d))
-      .attr("stroke", "var(--home-rule)")
+      .attr("stroke", "var(--c97-rule)")
       .attr("stroke-dasharray", "2 3")
       .attr("opacity", 0.6);
 
-    g.selectAll("text.ylabel")
+    g.selectAll("text.invest-retire-chart-label")
       .data(yTicks)
       .join("text")
-      .attr("class", "ylabel")
+      .attr("class", "invest-retire-chart-label")
       .attr("x", -10)
       .attr("y", (d) => y(d))
       .attr("dy", "0.32em")
       .attr("text-anchor", "end")
-      .attr("font-size", "10px")
-      .attr("fill", "var(--home-ink-muted)")
+      .attr("fill", "var(--c97-ink-2)")
       .text((d) => formatCompactCurrency(d));
 
     // X axis (age) ticks.
     const xTicks = x.ticks(6);
-    g.selectAll("text.xlabel")
+    g.selectAll("text.invest-retire-chart-label.is-x")
       .data(xTicks)
       .join("text")
-      .attr("class", "xlabel")
+      .attr("class", "invest-retire-chart-label is-x")
       .attr("x", (d) => x(d))
       .attr("y", innerH + 22)
       .attr("text-anchor", "middle")
-      .attr("font-size", "10px")
-      .attr("fill", "var(--home-ink-muted)")
+      .attr("fill", "var(--c97-ink-2)")
       .text((d) => `${d}`);
 
     g.append("text")
+      .attr("class", "invest-retire-chart-label")
       .attr("x", innerW)
       .attr("y", innerH + 22)
       .attr("text-anchor", "end")
-      .attr("font-size", "9px")
-      .attr("fill", "var(--home-ink-muted)")
+      .attr("fill", "var(--c97-ink-2)")
       .attr("opacity", 0.7)
       .text("age →");
 
@@ -125,16 +123,16 @@ export function RetirementProjectionChart({ result }: Props) {
         .attr("x2", x(retireAge))
         .attr("y1", 0)
         .attr("y2", innerH)
-        .attr("stroke", "var(--home-ink)")
+        .attr("stroke", "var(--c97-ink)")
         .attr("stroke-width", 1)
         .attr("stroke-dasharray", "4 3")
         .attr("opacity", 0.5);
       g.append("text")
+        .attr("class", "invest-retire-chart-label is-marker")
         .attr("x", x(retireAge) + 4)
         .attr("y", 12)
-        .attr("font-size", "9.5px")
         .attr("font-weight", "600")
-        .attr("fill", "var(--home-ink)")
+        .attr("fill", "var(--c97-ink)")
         .text(`retire ${retireAge}`);
     }
   }, [bands, result.input.retirementAge]);

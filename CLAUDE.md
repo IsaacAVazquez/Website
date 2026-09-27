@@ -292,8 +292,8 @@ where they disagree with `catalog97.css`, the CSS wins.
 - D3/SVG charts resolve token colors at render time via `getComputedStyle` and never bake
   a token's hex into a constant. Read from the chart's own element, since the tokens are
   scoped to the `[data-c97]` container and `document.documentElement` still returns the
-  old `:root` values. `PortfolioPerformanceChart` reads the document root as of
-  2026-09-21 and has not been moved yet.
+  old `:root` values. `PortfolioPerformanceChart` and `ComparisonRadarChart` read the
+  `--c97-*` names from their own svg as of 2026-09-27.
 - No arbitrary `text-[Npx]` micro-type — use `text-3xs`/`text-2xs` (see `STYLING.md`).
 - CSS-Module surfaces must alias the global tokens (`--x-paper: var(--home-paper)`), never
   re-declare the palette as fresh hex with its own `.dark` mirror.

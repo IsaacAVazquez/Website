@@ -1,7 +1,6 @@
 "use client";
 
 import { type FormEvent, useMemo, useRef, useState } from "react";
-import { motion, useReducedMotion } from "framer-motion";
 import {
   AlertTriangle,
   BedDouble,
@@ -21,7 +20,6 @@ import {
   Trash2,
   UtensilsCrossed,
 } from "lucide-react";
-import { getReducedMotionVariants, fadeInVariants } from "@/components/investments/animations";
 import { Catalog97ProjectHero } from "@/components/catalog97/Catalog97ProjectHero";
 import { PROJECT_PRESS } from "@/constants/projectPress";
 import {
@@ -125,8 +123,6 @@ export function TravelPlannerClient() {
     removeJournal,
   } = planner;
 
-  const shouldReduceMotion = useReducedMotion();
-  const motionVariants = shouldReduceMotion ? getReducedMotionVariants().fadeInVariants : fadeInVariants;
 
   const today = getTodayKey();
   const lead = PROJECT_PRESS[ROUTE].lead;
@@ -240,7 +236,7 @@ export function TravelPlannerClient() {
     "I wanted one dated plan per trip, laid out by day, with the stops I've done ticked off and a journal for what actually happened along the way.";
 
   return (
-    <motion.div variants={motionVariants} initial="hidden" animate="visible" data-testid="travel-planner-shell">
+    <div data-testid="travel-planner-shell">
       <Catalog97ProjectHero
         ink={lead}
         title="Travel Planner"
@@ -704,7 +700,7 @@ export function TravelPlannerClient() {
           </div>
         </div>
       </section>
-    </motion.div>
+    </div>
   );
 }
 

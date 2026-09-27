@@ -15,11 +15,11 @@ interface TerminalPanelProps {
 
 /**
  * Drop-in replacement for `WarmCard` scoped to the investments "terminal"
- * surface: a fused hairline plate (1px `--home-rule` border, `--radius-sm`
- * 2px corners, no shadow) instead of a floating rounded/shadowed card. Same
- * prop shape as WarmCard so it can be swapped in without touching call-site
- * children — the terminal identity forbids floating cards and shadows
- * everywhere WarmCard was previously used inside /investments.
+ * surface: a fused hairline plate (a 1px `--c97-rule` border, square corners,
+ * no shadow) instead of a floating rounded/shadowed card. Same prop shape as
+ * WarmCard so it can be swapped in without touching call-site children — the
+ * terminal identity forbids floating cards and shadows everywhere WarmCard
+ * was previously used inside /investments.
  */
 export const TerminalPanel = React.memo(function TerminalPanel({
   children,

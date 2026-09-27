@@ -72,7 +72,7 @@ function GrowthChart({ data }: { data: { label: string; growth: number }[] }) {
     g.append("line")
       .attr("x1", 0).attr("x2", innerW)
       .attr("y1", y(0)).attr("y2", y(0))
-      .attr("stroke", "var(--home-rule)")
+      .attr("stroke", "var(--c97-rule)")
       .attr("stroke-width", 1);
 
     // Bars
@@ -85,7 +85,7 @@ function GrowthChart({ data }: { data: { label: string; growth: number }[] }) {
       .attr("height", (d) => Math.abs(y(d.growth) - y(0)))
       .attr("rx", 3)
       .attr("fill", (d) =>
-        d.growth >= 0 ? "var(--home-positive)" : "var(--home-negative)"
+        d.growth >= 0 ? "var(--c97-positive)" : "var(--c97-negative)"
       );
 
     // X axis
@@ -94,7 +94,7 @@ function GrowthChart({ data }: { data: { label: string; growth: number }[] }) {
       .call(axisBottom(x).tickSize(0))
       .call((ax) => ax.select(".domain").remove())
       .selectAll("text")
-      .attr("fill", "var(--home-ink-soft)")
+      .attr("fill", "var(--c97-label)")
       .attr("font-size", "10px")
       .attr("transform", "rotate(-35)")
       .attr("text-anchor", "end")
@@ -110,11 +110,11 @@ function GrowthChart({ data }: { data: { label: string; growth: number }[] }) {
       )
       .call((ax) => ax.select(".domain").remove())
       .selectAll("text")
-      .attr("fill", "var(--home-ink-soft)")
+      .attr("fill", "var(--c97-label)")
       .attr("font-size", "10px");
 
     g.selectAll(".tick line")
-      .attr("stroke", "var(--home-rule)")
+      .attr("stroke", "var(--c97-rule)")
       .attr("stroke-dasharray", "3,3");
   }, [data]);
 
@@ -127,10 +127,10 @@ export function GrowthPanel({ symbol }: Props) {
 
   return (
     <TerminalPanel padding="sm">
-      <h3 className="text-sm font-semibold text-[var(--home-ink)] mb-3">YoY Growth</h3>
+      <h3 className="text-sm font-semibold text-[var(--c97-ink)] mb-3">YoY Growth</h3>
 
       {isLoading && (
-        <div className="h-48 rounded bg-[var(--home-stone)] animate-pulse" />
+        <div className="h-48 rounded bg-[var(--c97-rule)] animate-pulse" />
       )}
 
       {!isLoading && (error || metrics.length === 0) && (
@@ -143,10 +143,10 @@ export function GrowthPanel({ symbol }: Props) {
           <div className="mt-3 grid grid-cols-2 sm:grid-cols-3 gap-2">
             {metrics.map((m) => (
               <div key={m.label} className="text-center">
-                <p className="text-xs text-[var(--home-ink-soft)] truncate">{m.label}</p>
+                <p className="text-xs text-[var(--c97-label)] truncate">{m.label}</p>
                 <p
                   className={`text-sm font-semibold ${
-                    m.growth >= 0 ? "text-[var(--home-positive)]" : "text-[var(--home-negative)]"
+                    m.growth >= 0 ? "text-[var(--c97-positive)]" : "text-[var(--c97-negative)]"
                   }`}
                 >
                   {m.growth >= 0 ? "+" : ""}

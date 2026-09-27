@@ -42,6 +42,32 @@ describe("BudgetPlannerClient", () => {
     expect(months["2026-04"].categories.length).toBeGreaterThan(1);
   });
 
+  it("ends the check register on the same amount the hero calls left to spend", async () => {
+    localStorage.setItem(
+      BUDGET_PLANNER_STORAGE_KEY,
+      JSON.stringify({
+        "2026-04": {
+          monthKey: "2026-04",
+          income: 7200,
+          savingsTarget: 1000,
+          categories: [{ id: "groceries", name: "Groceries", budgetedAmount: 600 }],
+          expenses: [
+            { id: "e1", categoryId: "groceries", amount: 120, date: "2026-04-01", note: "Market" },
+            { id: "e2", categoryId: "groceries", amount: 45, date: "2026-04-02", note: "Bakery" },
+          ],
+        },
+      })
+    );
+
+    render(<BudgetPlannerClient />);
+
+    // 7200 income, 1000 set aside, 165 spent.
+    const matches = await screen.findAllByText("$6,035");
+    expect(matches.some((el) => el.classList.contains("c97-stat-value"))).toBe(true);
+    const balances = screen.getAllByRole("cell").filter((cell) => cell.getAttribute("data-label") === "Balance");
+    expect(balances[balances.length - 1]).toHaveTextContent("$6,035");
+  });
+
   it("hydrates saved values and seeds a new month when the selector changes", async () => {
     localStorage.setItem(
       BUDGET_PLANNER_STORAGE_KEY,

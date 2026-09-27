@@ -1,0 +1,106 @@
+/* Interchange IQ: the fee statement bars, the view nav, and the breakeven scale. */
+
+/* One grid for every row, so the value column is as wide as its widest
+ * entry in all rows and every bar's track is the same length. Per-row grids
+ * sized the track around each row's own value and broke the shared scale. */
+.c97-iq-statement {
+  display: grid;
+  grid-template-columns: minmax(0, 160px) minmax(0, 1fr) auto;
+  gap: var(--c97-sp-3);
+}
+
+.c97-iq-row {
+  display: grid;
+  grid-column: 1 / -1;
+  grid-template-columns: subgrid;
+  align-items: center;
+}
+
+@media (max-width: 639px) {
+  .c97-iq-statement {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .c97-iq-row {
+    row-gap: var(--c97-sp-1);
+  }
+}
+
+.c97-iq-row-label {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  gap: var(--c97-sp-1);
+}
+
+.c97-iq-tag {
+  font-size: var(--c97-fs-label);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--c97-label);
+}
+
+.c97-iq-row-value {
+  display: flex;
+  align-items: center;
+  gap: var(--c97-sp-2);
+  white-space: nowrap;
+}
+
+.c97-iq-row-mark {
+  font-size: var(--c97-fs-label);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border: 1px solid var(--c97-ink);
+  padding: 0 var(--c97-sp-1);
+  color: var(--c97-ink);
+}
+
+/* View filter nav: plain links styled like a segmented control. The e2e
+ * regression pins `role="link"`, so these stay anchors rather than buttons. */
+.c97-iq-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--c97-sp-3);
+  margin: 0;
+  padding: 0;
+}
+
+.c97-iq-nav a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  color: var(--c97-label);
+  text-decoration: none;
+  font-size: var(--c97-fs-small);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.c97-iq-nav a[aria-current="true"] {
+  color: var(--c97-ink);
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 6px;
+  text-decoration-color: var(--c97-accent);
+}
+
+/* Breakeven scale, $5 to $500. */
+.c97-iq-breakeven-track {
+  position: relative;
+  height: 8px;
+  background: var(--c97-rule);
+  margin-top: var(--c97-sp-2);
+}
+
+.c97-iq-breakeven-mark {
+  position: absolute;
+  top: -6px;
+  bottom: -6px;
+  width: 2px;
+  background: var(--c97-ink);
+}
+
+.c97-iq-breakeven-mark[data-kind="breakeven"] {
+  background: var(--c97-overprint);
+}

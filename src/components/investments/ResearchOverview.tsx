@@ -37,10 +37,10 @@ function newsMonogram(item: NewsItem): string {
 
 function NewsCard({ item }: { item: NewsItem }) {
   return (
-    <div className="flex items-start gap-3 py-3 border-b border-[var(--home-rule)] last:border-0">
+    <div className="flex items-start gap-3 py-3 border-b border-[var(--c97-rule)] last:border-0">
       <div
         aria-hidden="true"
-        className="mt-0.5 grid h-10 w-10 shrink-0 place-items-center rounded-[var(--radius-sm)] border border-[var(--home-rule)] bg-[var(--home-paper-alt)] text-xs font-semibold tracking-[0.04em] text-[var(--home-ink-muted)]"
+        className="mt-0.5 grid h-10 w-10 shrink-0 place-items-center border border-[var(--c97-rule)] bg-[var(--c97-panel)] text-xs font-semibold tracking-[0.04em] text-[var(--c97-ink-2)]"
       >
         {newsMonogram(item)}
       </div>
@@ -50,25 +50,25 @@ function NewsCard({ item }: { item: NewsItem }) {
             href={item.link}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-start gap-1 text-sm font-medium text-[var(--home-ink)] hover:text-[var(--home-signal)] transition line-clamp-2"
+            className="inline-flex items-start gap-1 text-sm font-medium text-[var(--c97-ink)] hover:text-[var(--c97-accent)] transition line-clamp-2"
           >
             <span>{item.title}</span>
-            <ExternalLink size={12} className="mt-1 shrink-0 text-[var(--home-ink-soft)]" />
+            <ExternalLink size={12} className="mt-1 shrink-0 text-[var(--c97-label)]" />
           </a>
         ) : (
-          <p className="text-sm font-medium leading-6 text-[var(--home-ink)] line-clamp-2">{item.title}</p>
+          <p className="text-sm font-medium leading-6 text-[var(--c97-ink)] line-clamp-2">{item.title}</p>
         )}
         <div className="mt-1.5 flex items-center gap-2">
           {item.publisher ? (
-            <span className="text-xs text-[var(--home-ink-muted)]">{item.publisher}</span>
+            <span className="text-xs text-[var(--c97-ink-2)]">{item.publisher}</span>
           ) : null}
           {item.publisher && item.reportDate ? (
-            <span aria-hidden="true" className="text-[var(--home-ink-soft)]">·</span>
+            <span aria-hidden="true" className="text-[var(--c97-label)]">·</span>
           ) : null}
           {item.reportDate ? (
             <span
-              className="text-2xs uppercase tracking-[0.04em] text-[var(--home-ink-soft)]"
-              style={{ fontFamily: "var(--font-jetbrains-mono, monospace)" }}
+              className="text-2xs uppercase tracking-[0.04em] text-[var(--c97-label)]"
+              style={{ fontFamily: "var(--c97-font-mono)" }}
             >
               {formatDate(item.reportDate)}
             </span>
@@ -132,9 +132,9 @@ function buildSignals({
 }
 
 function toneClasses(tone: "positive" | "neutral" | "negative") {
-  if (tone === "positive") return "border-[color-mix(in_srgb,var(--home-positive)_30%,var(--home-rule))] bg-[color-mix(in_srgb,var(--home-positive)_9%,var(--home-paper-alt))] text-[color-mix(in_srgb,var(--home-positive)_70%,var(--home-ink))]";
-  if (tone === "negative") return "border-[color-mix(in_srgb,var(--home-negative)_30%,var(--home-rule))] bg-[color-mix(in_srgb,var(--home-negative)_9%,var(--home-paper-alt))] text-[color-mix(in_srgb,var(--home-negative)_70%,var(--home-ink))]";
-  return "border-[var(--home-rule)] bg-[var(--home-paper-alt)] text-[var(--home-ink-muted)]";
+  if (tone === "positive") return "border-[color-mix(in_srgb,var(--c97-positive)_30%,var(--c97-rule))] bg-[color-mix(in_srgb,var(--c97-positive)_9%,var(--c97-panel))] text-[color-mix(in_srgb,var(--c97-positive)_70%,var(--c97-ink))]";
+  if (tone === "negative") return "border-[color-mix(in_srgb,var(--c97-negative)_30%,var(--c97-rule))] bg-[color-mix(in_srgb,var(--c97-negative)_9%,var(--c97-panel))] text-[color-mix(in_srgb,var(--c97-negative)_70%,var(--c97-ink))]";
+  return "border-[var(--c97-rule)] bg-[var(--c97-panel)] text-[var(--c97-ink-2)]";
 }
 
 export function ResearchOverview({ symbol, showNews = true }: Props) {
@@ -162,13 +162,13 @@ export function ResearchOverview({ symbol, showNews = true }: Props) {
       {/* Company bio */}
       <TerminalPanel
         padding="none"
-        className="overflow-hidden rounded-[var(--radius-sm)] border-[color-mix(in_srgb,var(--home-signal)_16%,var(--home-rule))] "
+        className="overflow-hidden border-[color-mix(in_srgb,var(--c97-accent)_16%,var(--c97-rule))] "
       >
         <div className="p-5 sm:p-6">
-          <p className="text-2xs font-semibold uppercase tracking-[0.18em] text-[var(--home-ink-soft)]">
+          <p className="text-2xs font-semibold uppercase tracking-[0.18em] text-[var(--c97-label)]">
             About
           </p>
-          <p className="mt-3 text-sm leading-[1.7] text-[var(--home-ink-muted)] w-full max-w-full overflow-hidden text-ellipsis ">
+          <p className="mt-3 text-sm leading-[1.7] text-[var(--c97-ink-2)] w-full max-w-full overflow-hidden text-ellipsis ">
             {info?.longBusinessSummary ??
               "A company summary is not available for this symbol, but the core valuation, quality, and operating metrics are still available from the research snapshot."}
           </p>
@@ -177,7 +177,7 @@ export function ResearchOverview({ symbol, showNews = true }: Props) {
               href={info.website}
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-4 inline-flex items-center gap-1 text-xs font-medium text-[var(--home-signal)] hover:underline"
+              className="mt-4 inline-flex items-center gap-1 text-xs font-medium text-[var(--c97-accent)] hover:underline"
             >
               {info.website.replace(/^https?:\/\//, "")}
             </a>
@@ -192,25 +192,25 @@ export function ResearchOverview({ symbol, showNews = true }: Props) {
          
         >
           <div className="p-5 sm:p-6">
-            <p className="text-2xs font-semibold uppercase tracking-[0.18em] text-[var(--home-ink-soft)]">
+            <p className="text-2xs font-semibold uppercase tracking-[0.18em] text-[var(--c97-label)]">
               Leadership
             </p>
             <div className="mt-4 grid gap-3 sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4">
               {officers.map((officer, i) => (
                 <div
                   key={i}
-                  className="rounded-[var(--radius-sm)] border border-[var(--home-rule)] bg-[var(--home-paper-alt)] p-3"
+                  className="border border-[var(--c97-rule)] bg-[var(--c97-panel)] p-3"
                 >
-                  <p className="text-sm font-semibold leading-tight text-[var(--home-ink)]">
+                  <p className="text-sm font-semibold leading-tight text-[var(--c97-ink)]">
                     {officer.name ?? "—"}
                   </p>
                   {officer.title ? (
-                    <p className="mt-0.5 text-xs leading-snug text-[var(--home-ink-muted)]">
+                    <p className="mt-0.5 text-xs leading-snug text-[var(--c97-ink-2)]">
                       {officer.title}
                     </p>
                   ) : null}
                   {officer.totalPay ? (
-                    <p className="mt-1.5 text-2xs font-medium text-[var(--home-signal)]">
+                    <p className="mt-1.5 text-2xs font-medium text-[var(--c97-accent)]">
                       {formatPay(officer.totalPay)}
                     </p>
                   ) : null}
@@ -226,9 +226,9 @@ export function ResearchOverview({ symbol, showNews = true }: Props) {
         {/* Signals */}
         <TerminalPanel
           padding="sm"
-          className="rounded-[var(--radius-sm)] border-[color-mix(in_srgb,var(--home-positive)_18%,var(--home-rule))] "
+          className="border-[color-mix(in_srgb,var(--c97-positive)_18%,var(--c97-rule))] "
         >
-          <p className="text-2xs font-semibold uppercase tracking-[0.18em] text-[var(--home-ink-soft)]">
+          <p className="text-2xs font-semibold uppercase tracking-[0.18em] text-[var(--c97-label)]">
             Signals
           </p>
           <div className="mt-4 space-y-3">
@@ -236,14 +236,14 @@ export function ResearchOverview({ symbol, showNews = true }: Props) {
               signals.map((signal) => (
                 <div
                   key={signal.label}
-                  className={`rounded-[var(--radius-sm)] border px-4 py-3 ${toneClasses(signal.tone)}`}
+                  className={`border px-4 py-3 ${toneClasses(signal.tone)}`}
                 >
                   <p className="text-xs font-semibold uppercase tracking-[0.16em]">{signal.label}</p>
-                  <p className="mt-2 text-sm leading-6 text-[var(--home-ink)]">{signal.body}</p>
+                  <p className="mt-2 text-sm leading-6 text-[var(--c97-ink)]">{signal.body}</p>
                 </div>
               ))
             ) : (
-              <div className="rounded-[var(--radius-sm)] border border-[var(--home-rule)] px-4 py-3 text-sm text-[var(--home-ink-muted)]">
+              <div className="border border-[var(--c97-rule)] px-4 py-3 text-sm text-[var(--c97-ink-2)]">
                 Signals will appear once valuation and operating data are available.
               </div>
             )}
@@ -253,7 +253,7 @@ export function ResearchOverview({ symbol, showNews = true }: Props) {
         {/* News */}
         {newsItems.length > 0 ? (
           <TerminalPanel padding="sm">
-            <p className="text-2xs font-semibold uppercase tracking-[0.18em] text-[var(--home-ink-soft)]">
+            <p className="text-2xs font-semibold uppercase tracking-[0.18em] text-[var(--c97-label)]">
               Latest News
             </p>
             <div className="mt-3 max-h-[400px] overflow-y-auto pr-1">
@@ -264,10 +264,10 @@ export function ResearchOverview({ symbol, showNews = true }: Props) {
           </TerminalPanel>
         ) : !showNews ? (
           <TerminalPanel padding="sm">
-            <p className="text-2xs font-semibold uppercase tracking-[0.18em] text-[var(--home-ink-soft)]">
+            <p className="text-2xs font-semibold uppercase tracking-[0.18em] text-[var(--c97-label)]">
               Snapshot Mode
             </p>
-            <p className="mt-3 text-sm leading-6 text-[var(--home-ink-muted)]">
+            <p className="mt-3 text-sm leading-6 text-[var(--c97-ink-2)]">
               Valuation, quality, and operating data are available while the curated headline feed is unavailable.
             </p>
           </TerminalPanel>

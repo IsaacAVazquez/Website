@@ -62,12 +62,8 @@ export function getApplicationFormState(
   };
 }
 
-export const applicationInputClass =
-  "w-full min-h-[44px] rounded-[var(--radius-2xl)] border px-3 py-2 text-sm outline-none transition-[border-color,box-shadow] duration-200 ease focus-visible:border-[var(--home-signal)] focus-visible:ring-2 focus-visible:ring-[color-mix(in_srgb,var(--home-signal)_35%,transparent)]";
+// The Catalog 97 field primitive already sets width, height, border, background,
+// colour, and font, so every caller can share one class with no per-site style.
+export const applicationInputClass = "c97-field";
 
-export const applicationInputStyle: CSSProperties = {
-  background: "var(--home-paper-alt)",
-  borderColor: "var(--home-rule)",
-  color: "var(--home-ink)",
-  fontFamily: "var(--font-home-sans)",
-};
+export const applicationInputStyle: CSSProperties = {};

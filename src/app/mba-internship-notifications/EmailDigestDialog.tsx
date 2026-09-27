@@ -70,7 +70,7 @@ export default function EmailDigestDialog({
   return (
     <div
       className="fixed inset-0 z-50 flex items-center justify-center p-4"
-      style={{ background: "rgba(0,0,0,0.45)" }}
+      style={{ background: "color-mix(in srgb, var(--c97-print-black) 45%, transparent)" }}
       role="presentation"
       onClick={(event) => {
         if (event.target === event.currentTarget && !sending) onClose();
@@ -82,20 +82,20 @@ export default function EmailDigestDialog({
         aria-modal="true"
         aria-labelledby="email-digest-title"
         aria-describedby="email-digest-description"
-        className="home-card w-full max-w-sm p-6 sm:p-7"
-        style={{ background: "var(--home-paper)" }}
+        className="c97-panel c97-offset w-full max-w-sm"
+        style={{ background: "var(--c97-surface)" }}
       >
         <h2
           id="email-digest-title"
           className="mb-3 text-lg font-semibold"
-          style={{ fontFamily: "var(--font-home-sans)", color: "var(--home-ink)" }}
+          style={{ fontFamily: "var(--c97-font-body)", color: "var(--c97-ink)" }}
         >
           Send email digest
         </h2>
         <p
           id="email-digest-description"
           className="mb-4 text-sm"
-          style={{ color: "var(--home-ink-muted)" }}
+          style={{ color: "var(--c97-ink-2)" }}
         >
           Enter your email to receive the current job list as a digest.
         </p>
@@ -104,12 +104,8 @@ export default function EmailDigestDialog({
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           placeholder="you@example.com"
-          className="mb-4 w-full rounded-[var(--radius-xl)] border px-4 py-3 text-sm outline-none focus-visible:border-[var(--home-signal)] focus-visible:ring-2 focus-visible:ring-[color-mix(in_srgb,var(--home-signal)_35%,transparent)]"
-          style={{
-            background: "var(--home-paper-alt)",
-            borderColor: "var(--home-rule)",
-            color: "var(--home-ink)",
-          }}
+          className="c97-field"
+          style={{ marginBottom: "var(--c97-sp-3)" }}
           disabled={sending}
           autoComplete="email"
           aria-label="Your email address"
@@ -119,7 +115,7 @@ export default function EmailDigestDialog({
             type="button"
             onClick={() => onSubmit(email)}
             disabled={sending || !email.includes("@")}
-            className="home-button home-button-primary flex-1 disabled:opacity-50"
+            className="c97-btn flex-1 disabled:opacity-50"
           >
             {sending ? "Sending…" : "Send"}
           </button>
@@ -127,7 +123,7 @@ export default function EmailDigestDialog({
             type="button"
             onClick={onClose}
             disabled={sending}
-            className="home-button home-button-secondary"
+            className="c97-btn-ghost"
           >
             Cancel
           </button>

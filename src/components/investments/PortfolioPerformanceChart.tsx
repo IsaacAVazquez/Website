@@ -125,11 +125,11 @@ export function PortfolioPerformanceChart({ snapshots }: Props) {
     // root still returns the old :root values and would miss the repaint.
     const computedStyle = getComputedStyle(svg);
     const homeSignal =
-      computedStyle.getPropertyValue("--home-signal").trim() || "#C93F19";
+      computedStyle.getPropertyValue("--c97-accent").trim() || "currentColor";
     const homeInkMuted =
-      computedStyle.getPropertyValue("--home-ink-muted").trim() || "#68655A";
+      computedStyle.getPropertyValue("--c97-ink-2").trim() || "currentColor";
     const homeRule =
-      computedStyle.getPropertyValue("--home-rule").trim() || "rgba(18,17,15,0.12)";
+      computedStyle.getPropertyValue("--c97-rule").trim() || "currentColor";
 
     // X axis
     root
@@ -215,7 +215,7 @@ export function PortfolioPerformanceChart({ snapshots }: Props) {
         .attr("cy", (d) => yScale(d.value))
         .attr("r", 2.5)
         .attr("fill", homeSignal)
-        .style("stroke", "var(--home-paper)")
+        .style("stroke", "var(--c97-surface)")
         .attr("stroke-width", 1);
     }
 
@@ -245,7 +245,7 @@ export function PortfolioPerformanceChart({ snapshots }: Props) {
       .append("circle")
       .attr("r", 4)
       .attr("fill", homeSignal)
-      .attr("stroke", "var(--home-paper)")
+      .attr("stroke", "var(--c97-surface)")
       .attr("stroke-width", 2)
       .style("opacity", 0)
       .style("pointer-events", "none");
@@ -272,14 +272,14 @@ export function PortfolioPerformanceChart({ snapshots }: Props) {
         const gainLoss = d.value - d.cost;
         const gainLossPct = d.cost > 0 ? (gainLoss / d.cost) * 100 : 0;
         const sign = gainLoss >= 0 ? "+" : "";
-        const gainColor = gainLoss >= 0 ? "var(--home-positive)" : "var(--home-negative)";
+        const gainColor = gainLoss >= 0 ? "var(--c97-positive)" : "var(--c97-negative)";
 
         tooltip.style.opacity = "1";
         tooltip.innerHTML = `
           <div style="font-size:var(--invest-fs-label);color:${homeInkMuted};margin-bottom:2px;">
             ${timeFormat("%b %d, %Y")(d.date)}
           </div>
-          <div style="font-size:var(--invest-fs-body);font-weight:600;color:var(--home-ink);">
+          <div style="font-size:var(--invest-fs-body);font-weight:600;color:var(--c97-ink);">
             $${format(",.2f")(d.value)}
           </div>
           <div style="font-size:var(--invest-fs-label);color:${gainColor};margin-top:1px;">
@@ -314,13 +314,13 @@ export function PortfolioPerformanceChart({ snapshots }: Props) {
       <TerminalPanel padding="sm">
         <h3
           className="text-base font-semibold mb-0"
-          style={{ color: "var(--home-ink)" }}
+          style={{ color: "var(--c97-ink)" }}
         >
           Portfolio Value History
         </h3>
         <div
           className="py-12 text-center text-sm"
-          style={{ color: "var(--home-ink-soft)" }}
+          style={{ color: "var(--c97-label)" }}
         >
           Value history starts after 2 days of data
         </div>
@@ -334,11 +334,11 @@ export function PortfolioPerformanceChart({ snapshots }: Props) {
         <div>
           <h3
             className="text-base font-semibold"
-            style={{ color: "var(--home-ink)" }}
+            style={{ color: "var(--c97-ink)" }}
           >
             Portfolio Value History
           </h3>
-          <p className="mt-1 text-xs text-[var(--home-ink-soft)]">
+          <p className="mt-1 text-xs text-[var(--c97-label)]">
             Value versus cost basis across the saved snapshot history.
           </p>
         </div>
@@ -348,16 +348,16 @@ export function PortfolioPerformanceChart({ snapshots }: Props) {
             <button
               key={r.label}
               onClick={() => setSelectedRange(r.label)}
-              className="min-h-[44px] rounded-full px-3.5 py-2 text-xs font-semibold transition-colors"
+              className="min-h-[44px] px-3.5 py-2 text-xs font-semibold transition-colors"
               style={{
                 backgroundColor:
                   selectedRange === r.label
-                    ? "var(--home-signal)"
-                    : "var(--home-paper-alt)",
+                    ? "var(--c97-accent)"
+                    : "var(--c97-panel)",
                 color:
                   selectedRange === r.label
-                    ? "var(--home-paper)"
-                    : "var(--home-ink-soft)",
+                    ? "var(--c97-surface)"
+                    : "var(--c97-label)",
               }}
               aria-label={`Show ${r.label} range`}
               aria-pressed={selectedRange === r.label}
@@ -373,12 +373,12 @@ export function PortfolioPerformanceChart({ snapshots }: Props) {
         <svg ref={svgRef} className="w-full" style={{ height: HEIGHT }} />
         <div
         ref={tooltipRef}
-        className="absolute rounded-[var(--radius-sm)] pointer-events-none transition-opacity duration-150"
+        className="absolute pointer-events-none transition-opacity duration-150"
         style={{
           opacity: 0,
           padding: "8px 10px",
-            backgroundColor: "var(--home-paper-raised)",
-            border: "1px solid var(--home-rule)",
+            backgroundColor: "var(--c97-panel)",
+            border: "1px solid var(--c97-rule)",
             zIndex: 10,
           }}
         />
@@ -386,9 +386,9 @@ export function PortfolioPerformanceChart({ snapshots }: Props) {
 
       {/* Legend */}
       <div
-        className="mt-3 flex flex-wrap items-center gap-5 border-t border-[var(--home-rule)] pt-3 text-xs text-[var(--home-ink-soft)]"
+        className="mt-3 flex flex-wrap items-center gap-5 border-t border-[var(--c97-rule)] pt-3 text-xs text-[var(--c97-label)]"
         style={{
-          color: "var(--home-ink-soft)",
+          color: "var(--c97-label)",
         }}
       >
         <div className="flex items-center gap-1.5">
@@ -398,7 +398,7 @@ export function PortfolioPerformanceChart({ snapshots }: Props) {
               y1="1"
               x2="20"
               y2="1"
-              stroke="var(--home-signal)"
+              stroke="var(--c97-accent)"
               strokeWidth="2"
             />
           </svg>
@@ -411,7 +411,7 @@ export function PortfolioPerformanceChart({ snapshots }: Props) {
               y1="1"
               x2="20"
               y2="1"
-              stroke="var(--home-ink-soft)"
+              stroke="var(--c97-label)"
               strokeWidth="1.5"
               strokeDasharray="4 2"
             />

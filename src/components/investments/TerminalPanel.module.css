@@ -6,8 +6,7 @@
  * file needs no token overrides of its own.
  */
 .panel {
-  border: 1px solid var(--home-rule);
-  border-radius: var(--radius-sm);
-  background: var(--home-paper);
+  border: 1px solid var(--c97-rule);
+  background: var(--c97-surface);
   overflow: hidden;
 }

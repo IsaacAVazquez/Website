@@ -1,0 +1,47 @@
+/* Job Search — route-local rules the shared catalog97.css vocabulary doesn't
+   already cover: the pipeline/attention signature grid and the stage-to-stage
+   connector between pipeline columns. Everything else composes c97-* classes
+   with inline --c97-sp-* spacing. */
+
+.mba-signature-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--c97-sp-5);
+}
+
+@media (min-width: 800px) {
+  .mba-signature-grid {
+    grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+  }
+}
+
+.mba-pipeline-stages {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--c97-sp-4);
+}
+
+@media (min-width: 480px) {
+  .mba-pipeline-stages {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+/* The rate readout sits between two stage columns on wide layouts and drops
+   under the stage it belongs to once the grid stacks to one column. */
+.mba-pipeline-rate {
+  border-top: 1px solid var(--c97-rule);
+  padding-top: var(--c97-sp-1);
+}
+
+@media (min-width: 480px) {
+  .mba-pipeline-rate {
+    border-top: 0;
+    padding-top: 0;
+  }
+}
+
+/* This page's ghost buttons carry a leading icon, so give it room from the label. */
+.mba-ghost {
+  gap: var(--c97-sp-1);
+}

@@ -701,6 +701,22 @@ body:has(.c97-page) {
   --c97-warning: #f5cf7a;
 }
 
+/*
+ * The light chart ramp's darkest steps are espresso and chocolate themselves,
+ * so the dark sheets print the dark ramp in both themes. On espresso the four
+ * steps that read apart measure 4.82, 5.73, 4.42, and 3.04 in light mode and
+ * more in dark. Chocolate is lighter, where chart-6 falls to 2.17, so charts
+ * belong on espresso. Held by src/app/__tests__/catalog97-inks.test.ts.
+ */
+.c97-page :is([data-c97-surface="espresso"], [data-c97-surface="chocolate"]) {
+  --c97-chart-1: #5a9a8c;
+  --c97-chart-2: #c09461;
+  --c97-chart-3: #c2707c;
+  --c97-chart-4: #a79e8f;
+  --c97-chart-5: #e4dbc9;
+  --c97-chart-6: #8a6642;
+}
+
 /* Dark stone is a mid-tone: status colour measures 3.81 to 3.99 here, so it is large-text-or-mark only, like light stone. */
 .dark .c97-page [data-c97-surface="stone"] {
   --c97-surface: #6e655a;

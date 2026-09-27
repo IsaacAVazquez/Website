@@ -33,13 +33,13 @@ function getRelativeTime(date: Date): {
 
   let color: string;
   if (diffHours < 1) {
-    color = "var(--home-positive)";
+    color = "var(--c97-positive)";
   } else if (diffHours < 24) {
-    color = "var(--home-signal)";
+    color = "var(--c97-accent)";
   } else if (diffDays < 3) {
-    color = "var(--home-warning)";
+    color = "var(--c97-warning)";
   } else {
-    color = "var(--home-negative)";
+    color = "var(--c97-negative)";
   }
 
   return { label, color, diffDays };
@@ -74,9 +74,9 @@ export function DataFreshnessIndicator({
       <div className="inline-flex items-center gap-2">
         <div
           className="w-2 h-2 rounded-full"
-          style={{ backgroundColor: "var(--home-negative)" }}
+          style={{ backgroundColor: "var(--c97-negative)" }}
         />
-        <span className="text-xs text-[var(--home-ink-soft)]">
+        <span className="text-xs text-[var(--c97-label)]">
           {mode === "dataset"
             ? "No dataset"
             : mode === "price"
@@ -86,12 +86,12 @@ export function DataFreshnessIndicator({
         {onRefresh && (
           <button
             onClick={onRefresh}
-            className="inline-flex min-h-touch min-w-touch items-center justify-center rounded-full text-[var(--home-ink-soft)] transition hover:bg-[var(--home-paper-alt)] hover:text-[var(--home-ink)]"
+            className="inline-flex min-h-touch min-w-touch items-center justify-center text-[var(--c97-label)] transition hover:bg-[var(--c97-panel)] hover:text-[var(--c97-ink)]"
             aria-label="Refresh data"
           >
             <RefreshCw
               size={14}
-              className={`text-[var(--home-ink-soft)] ${isRefreshing ? "animate-spin" : ""}`}
+              className={`text-[var(--c97-label)] ${isRefreshing ? "animate-spin" : ""}`}
             />
           </button>
         )}
@@ -117,18 +117,18 @@ export function DataFreshnessIndicator({
         className="w-2 h-2 rounded-full"
         style={{ backgroundColor: color }}
       />
-      <span className="text-xs text-[var(--home-ink-soft)]">
+      <span className="text-xs text-[var(--c97-label)]">
         {displayedLabel}
       </span>
       {onRefresh && (
         <button
           onClick={onRefresh}
-          className="inline-flex min-h-touch min-w-touch items-center justify-center rounded-full text-[var(--home-ink-soft)] transition hover:bg-[var(--home-paper-alt)] hover:text-[var(--home-ink)]"
+          className="inline-flex min-h-touch min-w-touch items-center justify-center text-[var(--c97-label)] transition hover:bg-[var(--c97-panel)] hover:text-[var(--c97-ink)]"
           aria-label="Refresh data"
         >
           <RefreshCw
             size={14}
-            className={`text-[var(--home-ink-soft)] ${isRefreshing ? "animate-spin" : ""}`}
+            className={`text-[var(--c97-label)] ${isRefreshing ? "animate-spin" : ""}`}
           />
         </button>
       )}
