@@ -4,6 +4,15 @@ All notable changes to this repository are documented here. Format: `YYYY-MM-DD`
 
 ---
 
+## 2026-09-27
+
+- Add Juno and Civitech career write-ups, and reconcile Civitech figures ([#466](https://github.com/IsaacAVazquez/Website/pull/466)).
+- Move food map onto OpenStreetMap tiles ([#467](https://github.com/IsaacAVazquez/Website/pull/467)).
+- Document paint scripts in the automation inventory ([#468](https://github.com/IsaacAVazquez/Website/pull/468)).
+- Finish the Sept 24 SEO audit and get main's checks green ([#469](https://github.com/IsaacAVazquez/Website/pull/469)).
+
+---
+
 ## 2026-09-24
 
 - Print shop layout for the seven designed routes, with riso plates, two lead inks per page, and the homepage collage ([#462](https://github.com/IsaacAVazquez/Website/pull/462)).

@@ -1,0 +1,83 @@
+---
+title: "What I Built During My MBA Growth Internship at Juno"
+excerpt: "I spent the summer of 2026 as the growth intern on Juno's MBA team. I rebuilt the team's reporting, set up conversion measurement, audited the email program, took over the SMS program, and replaced a few flattering numbers with honest ones."
+publishedAt: "2026-09-25"
+category: "Career"
+tags: ["Career", "MBA Internship", "Growth Analytics", "Fintech", "Lifecycle Marketing", "Experimentation", "Google Analytics 4"]
+featured: false
+cluster: "Fintech Product & Pricing"
+author: "Isaac Vazquez"
+coverImage: "/writing/juno-mba-growth-internship/opengraph-image"
+cta:
+  eyebrow: "For recruiters"
+  title: "See the full resume"
+  description: "The resume has every role in one place, and I am happy to walk through any of this work in more detail."
+  href: "/resume"
+  actionLabel: "Open the resume"
+seo:
+  title: "My MBA Growth Internship at Juno"
+  description: "What I built as Juno's MBA growth intern in 2026, from an hourly reporting pipeline and GA4 conversion tracking to an email audit and the SMS program."
+  keywords: ["MBA growth internship", "Juno student loans", "growth analytics internship", "lifecycle marketing audit", "GA4 conversion tracking", "fintech growth", "Berkeley Haas MBA internship"]
+---
+
+# What I Built During My MBA Growth Internship at Juno
+
+From May 27 to August 14, 2026, I was the growth intern on Juno's MBA team. Juno is a fintech marketplace that negotiates group rates on student loans, so members get a lower rate by borrowing together, and the MBA team is the part of the company that works with business school students. My mandate was to understand the funnel end to end, from the first signup to a signed loan, and find the places where it could convert better. In the first few weeks I found that several of the instruments the team relied on needed work before their numbers could be trusted, so most of my summer went into making the growth work measurable and then using those measurements to change what the team did. I think that sequence, fixing the instrument before trusting the number, runs through everything below, and it is a habit I brought directly from my years in QA at [Civitech](/writing/civitech-quality-and-product-work).
+
+The timing made it a more interesting summer than most internships get. The federal Grad PLUS loan program closed to new borrowers in July 2026, which pushes more of the cost of an MBA onto private loans, and that meant the questions I was asked to answer had real decisions waiting on them.
+
+## Rebuilding the reporting the team ran on
+
+The first project was reporting. The team's MBA dashboard ran on SQL that nobody had fully documented, so I reverse-engineered it, running 362 validation queries until my version matched the production numbers to the dollar, and then wrote the team's first shared definitions for each metric. From there I automated it into a pipeline that pulled from a replica of the production MySQL database, processed the data in Python, and pushed it into Google Sheets through Apps Script. That became a 33-tab analytics dashboard and a separate 9-tab executive view. The growth lead asked for it to refresh every hour so the team could use it as the live view of the season, and 75 automated tests gated each refresh.
+
+Alongside the dashboard I ran three daily automated reports, one on Google Analytics, one on the loan database, and one on Microsoft Clarity session behavior. Each landed in Slack and email every morning with statistical anomaly flags, so the team saw what had moved before standup. Running a pipeline every hour also meant finding its bugs, and two of them stuck with me. One was a date-boundary bug in the year-over-year comparison, and the other was a timezone rollover bug that dropped half a day of signed loans from a snapshot over a holiday weekend. Both produced numbers that looked plausible, which is the kind of bug I most want to catch in a reporting system, because nobody reading the chart would have flagged it.
+
+## Turning on conversion measurement
+
+The second thread was measurement across the marketing stack. I turned on the first conversion events on the company's Google Analytics 4 property so conversions could be counted, and I designed the counting so that a form event firing several times per user could not inflate the totals. I published four production releases in Google Tag Manager on the live site, which fixed a Meta pixel that had been firing twice, removed a leftover Google Optimize setup from a tool Google retired in 2023, and started sending loan-amount conversion values to Google Ads so bidding could learn from loan value.
+
+When I went through two years of emails, almost none of the links back to the company's own site carried campaign tags, which meant a large number of clicks never showed up in analytics. I wrote the company's UTM tagging standard to close that gap. I also built a six-bucket attribution taxonomy over the raw signup data, which moved almost all of the signed loan volume that had been sitting in an unknown-source bucket into named channels.
+
+## Auditing the email program and taking over SMS
+
+The largest single piece of work was the lifecycle program in Customer.io. I asked for read access to answer one question and ended up auditing the whole program, 233 campaigns, 2,071 broadcasts, and 1,502 segments, in a 43-tab analysis dashboard whose numbers were re-derived by 14 independent verification suites running 869 automated checks. The finding that changed the most was structural. Messages triggered by a change in a member's own loan status earned many times the clicks of a general broadcast, while repeated sends of the same message drew less response each time. The send strategy moved toward messages that carried new information for that member, and the weekly batch moved to a new send time based on the timing analysis.
+
+At the end of July the growth lead handed me the SMS program to run as its product manager on the strength of that audit. The first thing I found was that the channel had no click measurement, so I started there. I built the workflow tracker and an objectives sheet, sized the audiences we could text, and wrote compliance checks into the plan, including quiet hours under the Telephone Consumer Protection Act and an opt-out check at every step. I also designed a set of lifecycle journeys grounded in where members were measurably dropping off, from a 14-day activation journey for new signups, to a recovery journey for stalled applications, to a list-health setup with a preference center, and I wrote the operations spec for the rate-match automation journeys with final copy and timing.
+
+## Diagnosing paid media
+
+I never owned the ad budget, so my paid media work was diagnosis and a clean handoff. The nightly conversion imports into Google Ads had been failing for weeks, and the team read it as a plumbing problem. The error said the clicks were too old, and when I traced it the cause turned out to be structural. Google only accepts imported conversions within 90 days of the click, and a large share of Google-attributed loans sign more than 90 days after signup, because many members sign up months before they borrow. What had looked like a mystery failure became a documented limit on what the import could ever cover, along with an export fix for the person who owned it.
+
+The same audit found a bidding target setting that had starved the brand campaign of spend, and I handed the account owner a 16-tab dashboard and a prioritized fix plan. I also verified conversion tags across six ad platforms by reading the live site's network requests, and I corrected the team's older tracking audit where it had gone stale.
+
+## Replacing a flattering number with an honest one
+
+The work I am proudest of is the experimentation and causal inference, because three separate times the easy reading of the data turned out to be wrong and I could show why. The first was the effect of one-on-one advising meetings on conversion. The simple comparison made the meetings look like they multiplied conversion several times over, but when I checked the order of events, most of the meetings had happened after the conversion they were being credited with. I built a matched comparison using coarsened exact matching and added placebo checks, and the matched estimate came out at a fraction of the headline. The placebo checks then suggested that most of what remained was selection, meaning the members who booked meetings were already more likely to convert.
+
+The second was a requested metric on the lift from phone calls. I showed it could not be answered as posed, because phone numbers were captured on the same form that counted as the conversion, and an inbound-caller placebo showed that the apparent lift was selection again, so the number was never reported. The third was an A/B test on a call to action that came back null. The tempting readout was that the change had no effect, but the honest one was that limiting the test to one vertical on a shared page had cut the eligible sample so far that it could not reach a conclusion for months, when the same test run across the whole page would have finished in under two weeks. I also pointed the team at a drop-off right after members chose an offer, which nothing was testing.
+
+For the meetings question I designed a pre-registered encouragement experiment with a power analysis, stopping rules, and guardrails. I also built a nine-test experiment roadmap with a sample size, baseline, and minimum detectable effect for each test, which let me drop one proposed test on the power math alone and turn another into a direct launch once I measured how low its baseline was.
+
+## Finding where the funnel leaked
+
+The team's working theory at the start of the summer was that the funnel leaked when members abandoned applications. The click event the funnel relied on had been recording more applications than the clicks that come before them, which is arithmetically impossible, and once I corrected it the largest loss moved a step earlier, to members who had an approved rate and never clicked through to a lender. I sized what a lift at that step would be worth and built a tiered list of those members that refreshed twice each workday, so the team could work it directly.
+
+I found the same kind of reframe in the rate-match program, where members bring a competing offer for Juno to match. Its biggest queue was labeled Awaiting Documents and read like a paperwork backlog, but almost none of the stuck claims had ever attached a document, and members either attached one right away or never did. What that means is the queue was form abandonment, so the fix moved from staffing operations to form design and follow-up. I walked that flow as a member and then at the code level and wrote up the issues with proposed fixes, and some of those recommendations were already being implemented before I left.
+
+I also compared the MBA funnel against Juno's other school verticals on cohorts matched for maturity, found that the gap sat at the very first step of the funnel, and catalogued the plays the stronger verticals were running. Along the way I surfaced segments the company dashboard did not break out, including Executive MBA students converting well above the full-time rate and international students without a cosigner converting far below domestic students, a gap that traces back to the rates those students can get.
+
+## Keeping the numbers honest
+
+This is the part that connects most directly to my background. In early July a year-over-year read on applications looked much stronger than it should have, and I traced it to a batch of deals created on a single day during a data migration. I shipped the corrected number the same day and later made the caveat compute itself from live data so it could not go stale. When re-checks found errors in numbers I had already published, a cost per converting user and an event inflation figure that were both larger than I first reported, I published the corrections and fixed every copy of each number in the same pass.
+
+The lesson I took most seriously came from my own verification suite. It had twelve checks and they were all passing while certifying wrong numbers, because the checks shared assumptions with the pipeline they were checking. I replaced it with an independent recompute from raw data pulls, which then caught two real timing defects. For the larger audits I used multi-agent AI workflows, up to 43 agents on a single audit, to re-derive published numbers independently before anything went to the team.
+
+## Working through other people's systems
+
+Most of what I shipped touched systems I did not own, so a lot of the job was writing specs clear enough that the owner could act on them. My measurement plan went out as four change orders, one per owner, and engineering shipped the offline conversion events change into production. Three times a growth idea ran into lending or messaging regulation, from marketing to applicants who had been declined, to sending loan outcomes to ad platforms, to a 9 a.m. Eastern text send that would have reached Pacific members at 6 a.m., and each time the deliverable went out with the legal check written into it.
+
+I also built the team's knowledge base, a 291-item wiki mined from Slack history with every fact linked to its source, which became the team's FAQ library. Alongside it I kept a decisions register and a handoff record covering more than 300 tracked artifacts, and I sent the growth lead written status updates twice a week.
+
+## What I took from the summer
+
+The pattern I'd pull out of this is that the instrument comes first. Almost every useful thing I did at Juno started with checking whether a number was measuring what everyone assumed it measured, from the dashboard SQL, to the click event, to the meetings comparison, to my own verification suite, and the team's decisions got better once the instruments were right. It is the same instinct I built over three and a half years in QA at Civitech, and this summer showed me it carries over to growth and product work almost unchanged. By my last week some of the findings had already been acted on and others were queued for the next peak season, and I left a handoff organized so the next person can pick the work up without me.

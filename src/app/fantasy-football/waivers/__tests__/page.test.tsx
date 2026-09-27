@@ -38,4 +38,21 @@ describe("WaiverTargetsPage", () => {
       { as: "fetch", crossOrigin: "anonymous" },
     );
   });
+
+  // The board's rows are in the HTML only if the page hands the client real
+  // data; a crawler that runs no JavaScript never sees the client's own fetch.
+  it("seeds the client with the published board for the requested scoring", async () => {
+    jest.spyOn(ReactDOM, "preload").mockImplementation(() => {});
+
+    render(
+      await WaiverTargetsPage({
+        searchParams: Promise.resolve({ scoring: "standard" }),
+      }),
+    );
+
+    const { initialSnapshot } = clientProps[0] as {
+      initialSnapshot: { boards: Record<string, unknown> } | null;
+    };
+    expect(Object.keys(initialSnapshot?.boards ?? {})).toEqual(["standard"]);
+  });
 });

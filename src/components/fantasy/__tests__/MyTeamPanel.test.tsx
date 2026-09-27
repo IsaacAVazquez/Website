@@ -14,7 +14,7 @@ beforeEach(() => { localStorage.clear(); resetBrowserStorageMemory(); });
 
 it("leads with weekly decisions for a saved roster and reveals settings on request", () => {
   localStorage.setItem(getMyTeamStorageKey(2026), JSON.stringify({ ...emptyMyTeam(2026), players: [rb] }));
-  render(<MyTeamPanel snapshot={snapshot} scoring="ppr" onScoringChange={jest.fn()} />);
+  render(<MyTeamPanel snapshot={snapshot} board={snapshot.boards.ppr} scoring="ppr" onScoringChange={jest.fn()} />);
   expect(screen.getByRole("heading", { name: "Weekly lineup by consensus" })).toBeVisible();
   expect(screen.getAllByText("Weekly rankings unavailable")).toHaveLength(2);
   expect(screen.getAllByText("No ranked player").length).toBeGreaterThan(0);
@@ -28,7 +28,7 @@ it("leads with weekly decisions for a saved roster and reveals settings on reque
 });
 
 it("saves a roster, marks league availability, compares and applies a move, and survives remount", () => {
-  const view = render(<MyTeamPanel snapshot={snapshot} scoring="ppr" onScoringChange={jest.fn()} />);
+  const view = render(<MyTeamPanel snapshot={snapshot} board={snapshot.boards.ppr} scoring="ppr" onScoringChange={jest.fn()} />);
   fireEvent.change(screen.getByLabelText("Find a player to roster or mark available"), { target: { value: "Roster" } });
   fireEvent.click(screen.getByRole("button", { name: "Roster Roster Runner" }));
   expect(screen.getByLabelText("Find a player to roster or mark available")).toBeVisible();
@@ -43,14 +43,14 @@ it("saves a roster, marks league availability, compares and applies a move, and 
   expect(stored.players.map((p: { id: string }) => p.id)).toEqual(["add"]);
   expect(stored.availableIds).toEqual([]);
   view.unmount();
-  render(<MyTeamPanel snapshot={snapshot} scoring="ppr" onScoringChange={jest.fn()} />);
+  render(<MyTeamPanel snapshot={snapshot} board={snapshot.boards.ppr} scoring="ppr" onScoringChange={jest.fn()} />);
   expect(screen.getByRole("option", { name: "Available Runner (RB)" })).toBeInTheDocument();
 });
 
 it("pauses recommendations on stale inputs", () => {
   localStorage.setItem(getMyTeamStorageKey(2026), JSON.stringify({ ...emptyMyTeam(2026), players: [rb], availableIds: [add.id] }));
   const staleBoard = { ...board, flexSource: { ...source, asOf: "2020-01-01T00:00:00Z" } };
-  render(<MyTeamPanel snapshot={{ ...snapshot, boards: { ...snapshot.boards, ppr: staleBoard } }} scoring="ppr" onScoringChange={jest.fn()} />);
+  render(<MyTeamPanel snapshot={snapshot} board={staleBoard} scoring="ppr" onScoringChange={jest.fn()} />);
   fireEvent.change(screen.getByLabelText("Available player to add"), { target: { value: "add" } });
   fireEvent.change(screen.getByLabelText("Roster player to drop"), { target: { value: "rb" } });
   expect(screen.getByText(/Weekly data is stale/)).toBeInTheDocument();
@@ -62,7 +62,7 @@ it("imports a redraft roster without overwriting draft storage", () => {
   const raw = JSON.stringify({ settings: { userTeam: 1, totalTeams: 12, scoringFormat: "HALF_PPR" }, picks: [{ teamNumber: 1, player: rb }] });
   localStorage.setItem(key, raw);
   const scoring = jest.fn();
-  render(<MyTeamPanel snapshot={snapshot} scoring="ppr" onScoringChange={scoring} />);
+  render(<MyTeamPanel snapshot={snapshot} board={snapshot.boards.ppr} scoring="ppr" onScoringChange={scoring} />);
   fireEvent.click(screen.getByRole("button", { name: "Import draft tracker roster" }));
   expect(localStorage.getItem(key)).toBe(raw);
   expect(scoring).toHaveBeenCalledWith("half_ppr");
@@ -72,7 +72,7 @@ it("imports a redraft roster without overwriting draft storage", () => {
 it("retains edits in memory and explains when browser writes fail", () => {
   const write = jest.spyOn(Storage.prototype, "setItem").mockImplementation(() => { throw new Error("quota"); });
   try {
-    render(<MyTeamPanel snapshot={snapshot} scoring="ppr" onScoringChange={jest.fn()} />);
+    render(<MyTeamPanel snapshot={snapshot} board={snapshot.boards.ppr} scoring="ppr" onScoringChange={jest.fn()} />);
     fireEvent.change(screen.getByLabelText("Find a player to roster or mark available"), { target: { value: "Roster" } });
     fireEvent.click(screen.getByRole("button", { name: "Roster Roster Runner" }));
     expect(screen.getByText(/Changes last only in this tab/)).toBeInTheDocument();

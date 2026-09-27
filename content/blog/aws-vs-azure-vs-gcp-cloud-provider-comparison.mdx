@@ -2,6 +2,7 @@
 title: "AWS vs Azure vs GCP: The Comparison That Actually Matters"
 excerpt: "Most cloud comparisons line up service catalogs and call it a decision. The real differences show up later, in your team's day-to-day, your bill, and what you end up fighting against."
 publishedAt: "2026-04-28"
+updatedAt: "2026-09-24"
 category: "Technology"
 tags: ["Cloud", "AWS", "Azure", "GCP", "Infrastructure", "Engineering", "Strategy"]
 featured: false
@@ -31,7 +32,7 @@ GCP is optimizing for the data and ML-native team. The networking is excellent, 
 
 Compute is where most comparisons start, and it is also where the differences matter the least. EC2, Azure VMs, and Compute Engine are all fine. Each has a quirky instance taxonomy, each has spot or preemptible variants, and each will run your container or your VM at roughly comparable price points once you account for committed-use discounts. If your decision hinges on whether one cloud's general-purpose instance is six percent cheaper than another's, you are likely solving the wrong problem. The compute layer is commoditized in any way that should drive a strategic choice.
 
-Networking is where I notice the divide more sharply. GCP's global VPC is a single resource that spans regions, which means cross-region routing and shared subnets behave the way most engineers intuitively expect. AWS forces you into a per-region VPC model that is more powerful but more ceremonial, with Transit Gateway as the connective tissue once you grow beyond a single account. Azure sits in between, with hub-and-spoke patterns that are flexible but have a learning curve before they feel natural. None of this is a dealbreaker on day one. It compounds quietly across years as your topology grows.
+Networking is where I notice the divide more sharply. [GCP's global VPC](https://docs.cloud.google.com/vpc/docs/vpc) is a single resource that spans regions, which means cross-region routing and shared subnets behave the way most engineers intuitively expect. AWS forces you into a [per-region VPC model](https://docs.aws.amazon.com/vpc/latest/userguide/vpc-subnet-basics.html) that is more powerful but more ceremonial, with Transit Gateway as the connective tissue once you grow beyond a single account. Azure sits in between, with hub-and-spoke patterns that are flexible but have a learning curve before they feel natural. None of this is a dealbreaker on day one. It compounds quietly across years as your topology grows.
 
 Identity and access is where the philosophical differences are most visible. AWS IAM is policy-as-data, fine-grained, and unforgiving. You will get it wrong before you get it right, and the blast radius of a misconfigured policy is real. Azure RBAC is role-as-data, coarser by default, and more forgiving for an organization that wants identity to map to job function rather than to JSON. GCP's IAM model sits closer to Azure's spirit but with primitive bindings that make scoping permissions to specific resources easier than AWS makes it. If your security team thinks in roles and identities first, Azure will feel right. If your platform team thinks in policies and conditions first, AWS will feel right. GCP is a reasonable compromise that has historically been less battle-tested at the largest enterprise scales.
 

@@ -4,6 +4,7 @@ import { StructuredData } from "@/components/StructuredData";
 import { constructMetadata, generateBreadcrumbStructuredData } from "@/lib/seo";
 import { normalizeFantasyRouteScoring } from "@/lib/fantasy";
 import { getNflRegularSeasonWeek } from "@/lib/fantasyUtils";
+import { loadFantasyWeeklySeed } from "@/lib/fantasySnapshotServer";
 import { fantasySnapshotRevision } from "@/data/fantasySnapshotRevision.generated";
 import { WeeklyBoardClient, type WeeklyRouteState } from "./weekly-client";
 
@@ -53,6 +54,11 @@ export default async function WeeklyBoardPage({ searchParams }: WeeklyBoardPageP
     });
   }
 
+  // The first rows ride in the HTML so the board is readable without
+  // JavaScript, as the rankings board already is. A failed read falls back to
+  // the client fetch.
+  const initialSnapshot = await loadFantasyWeeklySeed(initialState.scoring).catch(() => null);
+
   return (
     <>
       <StructuredData
@@ -73,7 +79,11 @@ export default async function WeeklyBoardPage({ searchParams }: WeeklyBoardPageP
         }}
       />
 
-      <WeeklyBoardClient initialState={initialState} view="rankings" />
+      <WeeklyBoardClient
+        initialState={initialState}
+        initialSnapshot={initialSnapshot}
+        view="rankings"
+      />
     </>
   );
 }

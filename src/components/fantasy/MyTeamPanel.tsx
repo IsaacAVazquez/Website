@@ -11,7 +11,7 @@ import {
   buildMyTeamLineup, compareMyTeamWaiver, importMyTeamDraft, readMyTeamPlayer,
   uniqueTeamPlayers, weeklyPlayerMap, type MyTeamPlayer,
 } from "@/lib/fantasyMyTeam";
-import type { FantasyWeeklySnapshot } from "@/lib/fantasyWeeklySnapshot";
+import type { FantasyWeeklyBoard, FantasyWeeklySnapshot } from "@/lib/fantasyWeeklySnapshot";
 import { getSnapshotStaleness } from "@/lib/fantasyUtils";
 import { REDRAFT_LINEUP_PRESETS } from "@/lib/redraftLineup";
 
@@ -19,8 +19,10 @@ const control = styles.control;
 const button = styles.button;
 type TeamView = "lineup" | "roster" | "settings";
 
-export function MyTeamPanel({ snapshot, scoring, onScoringChange }: {
-  snapshot: FantasyWeeklySnapshot;
+export function MyTeamPanel({ snapshot, board, scoring, onScoringChange }: {
+  snapshot: Pick<FantasyWeeklySnapshot, "season" | "week">;
+  /** The weekly board for `scoring`. A server seed may carry no other format. */
+  board: FantasyWeeklyBoard;
   scoring: FantasyRouteScoring;
   onScoringChange: (scoring: FantasyRouteScoring) => void;
 }) {
@@ -33,7 +35,6 @@ export function MyTeamPanel({ snapshot, scoring, onScoringChange }: {
   const [notice, setNotice] = useState("");
   const [manualName, setManualName] = useState("");
   const [manualPosition, setManualPosition] = useState<MyTeamPlayer["position"]>("RB");
-  const board = snapshot.boards[scoring];
   const weekly = useMemo(() => weeklyPlayerMap(board), [board]);
   const players = useMemo(() => [...weekly.values()].flatMap(player => {
     const parsed = readMyTeamPlayer(player);
