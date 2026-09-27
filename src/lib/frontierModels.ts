@@ -20,6 +20,23 @@ const PROVIDER_ORDER: FrontierProvider[] = [
   "mistral",
 ];
 
+/**
+ * Each provider's real brand colour, not a categorical chart palette, so
+ * these stay as a documented data constant instead of the chart's `--c97-chart-*`
+ * tokens. Only used on a graphical mark (a scatter-plot dot and its legend
+ * swatch) — never printed as small text, since a provider colour on text
+ * fails 4.5:1 against the plate in at least one theme.
+ */
+export const FRONTIER_PROVIDER_COLORS: Record<FrontierProvider, string> = {
+  anthropic: "#d97706",
+  openai: "#10a37f",
+  google: "#4285f4",
+  meta: "#1877f2",
+  xai: "#475569",
+  deepseek: "#7c3aed",
+  mistral: "#fa5400",
+};
+
 const PRICE_TIER_ORDER: FrontierPriceTier[] = ["budget", "standard", "premium"];
 
 export const PRICE_TIER_LABELS: Record<FrontierPriceTier, string> = {

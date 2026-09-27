@@ -3,12 +3,18 @@
 import { InstrumentTape, type InstrumentTapeItem } from "@/components/editorial";
 import type { MissionLaunchCard } from "@/types/spacex";
 import { deriveVehicleFamily, VEHICLE_SHORT_CODE } from "@/lib/spacexVehicleFamily";
+import { DISPLAY_TIME_ZONE } from "@/lib/date-formatters";
 
+// launch.dateUtc is a real instant and this shows a clock time, so it's
+// pinned to the display zone and names it, since the compact tape entry
+// doesn't otherwise say which zone.
 const SCHEDULE_FORMATTER = new Intl.DateTimeFormat("en-US", {
   month: "short",
   day: "2-digit",
   hour: "2-digit",
   minute: "2-digit",
+  timeZone: DISPLAY_TIME_ZONE,
+  timeZoneName: "short",
 });
 
 function shortCode(rocketName: string | null): string {

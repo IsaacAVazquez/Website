@@ -7,6 +7,8 @@ import { EmptyPanel } from "@/components/football/EmptyPanel";
 import { BrandGithub } from "@/components/ui/ServerIcons";
 import { Catalog97ProjectHero } from "@/components/catalog97/Catalog97ProjectHero";
 import { PROJECT_PRESS } from "@/constants/projectPress";
+import { DISPLAY_TIME_ZONE } from "@/lib/date-formatters";
+import { useClientNow } from "@/hooks/useClientNow";
 import { SurfaceMap, ToolCategoryIcon } from "./SurfaceMap";
 import {
   AI_DEV_TOOL_CADENCE_LABELS,
@@ -78,6 +80,7 @@ function formatGeneratedAt(iso: string): string {
     month: "long",
     day: "numeric",
     year: "numeric",
+    timeZone: DISPLAY_TIME_ZONE,
   });
 }
 
@@ -135,10 +138,16 @@ function sortTools(tools: AiDevTool[], sort: SortKey): AiDevTool[] {
 }
 
 // Days since the latest release → a freshness tone. Recent ships read as
-// momentum; long gaps read as a watch-out.
-function releaseFreshness(tool: AiDevTool, nowMs: number): { dot: string; title: string } {
+// momentum; long gaps read as a watch-out. `nowMs` is null while
+// useClientNow() hasn't resolved yet (server render and first hydration
+// pass), so the dot stays neutral and the title shows the absolute date
+// instead of a day count that could disagree between server and client.
+function releaseFreshness(tool: AiDevTool, nowMs: number | null): { dot: string; title: string } {
   const ms = releaseTimeMs(tool);
   if (!ms) return { dot: "var(--c97-rule)", title: "No dated release" };
+  if (nowMs === null) {
+    return { dot: "var(--c97-rule)", title: `Released ${formatReleaseDate(tool.latestRelease)}` };
+  }
   const days = Math.max(0, Math.round((nowMs - ms) / 86_400_000));
   if (days <= 30) return { dot: "var(--c97-positive)", title: `Shipped ${days}d ago` };
   if (days <= 120) return { dot: "var(--c97-ink-2)", title: `Shipped ${days}d ago` };
@@ -211,7 +220,7 @@ export function AiDevToolsClient({ initialState }: AiDevToolsClientProps) {
   const visibleDetailTool = selectedTool ?? sortedTools[0] ?? null;
   const openSourceCount = aiDevTools.filter((tool) => tool.sourceStatus === "open-source").length;
 
-  const [renderedAtMs] = useState<number>(() => Date.now());
+  const now = useClientNow();
   const mostRecentTool = useMemo(
     () =>
       aiDevTools.reduce<AiDevTool | null>((newest, tool) => {
@@ -223,14 +232,15 @@ export function AiDevToolsClient({ initialState }: AiDevToolsClientProps) {
   );
   const latestReleaseAge = useMemo(() => {
     if (!mostRecentTool) return "—";
+    if (now === null) return formatReleaseDate(mostRecentTool.latestRelease);
     const days = Math.max(
       0,
-      Math.round((renderedAtMs - releaseTimeMs(mostRecentTool)) / (1000 * 60 * 60 * 24))
+      Math.round((now - releaseTimeMs(mostRecentTool)) / (1000 * 60 * 60 * 24))
     );
     if (days === 0) return "Today";
     if (days === 1) return "1d ago";
     return `${days}d ago`;
-  }, [mostRecentTool, renderedAtMs]);
+  }, [mostRecentTool, now]);
 
   const updatedAt = formatGeneratedAt(AI_DEV_TOOLS_GENERATED_AT);
 
@@ -376,7 +386,7 @@ export function AiDevToolsClient({ initialState }: AiDevToolsClientProps) {
                 <ToolDirectoryList
                   tools={sortedTools}
                   maxStars={maxStars}
-                  nowMs={renderedAtMs}
+                  nowMs={now}
                   selectedToolId={visibleDetailTool?.id ?? null}
                   onSelect={handleSelectTool}
                 />
@@ -420,7 +430,7 @@ function FilterSelect({ label, value, options, onChange }: FilterSelectProps) {
 interface ToolDirectoryListProps {
   tools: AiDevTool[];
   maxStars: number;
-  nowMs: number;
+  nowMs: number | null;
   selectedToolId: string | null;
   onSelect: (toolId: string) => void;
 }

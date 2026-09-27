@@ -107,14 +107,20 @@
   padding: var(--c97-sp-3);
 }
 
-/* At phone width the board and map stack, and the SVG type scales up to stay legible. */
-@media (max-width: 639px) {
+/* Below 1050px the two-column grid squeezes the map's 640-unit viewBox down
+ * far enough that its 15px station labels render under 11px, so the board
+ * and map stack here instead and the SVG gets the full shell width. The type
+ * still scales up further at phone width, where even a full-width column is
+ * narrower still. */
+@media (max-width: 1049px) {
   .c97-transit-signature {
     grid-template-columns: minmax(0, 1fr);
   }
+}
 
+@media (max-width: 639px) {
   .c97-transit-station-label {
-    font-size: 22px;
+    font-size: 25px;
   }
 }
 

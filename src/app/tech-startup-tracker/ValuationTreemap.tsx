@@ -23,6 +23,25 @@ const CHART_TOKENS = [
   "var(--c97-chart-6)",
 ];
 
+// ponytail: character-count width estimate, not a real text measurement (no
+// canvas/ref available at this render point). Calibrated against actual
+// getBBox() widths of rendered tile names in the Newsreader display face at
+// 15px (observed ~6.4 to 8.5 user units per character); 7.5 errs toward
+// truncating a touch early rather than ever overflowing. Upgrade path: a
+// layout-effect pass that measures real getBBox() per tile and re-truncates,
+// if a future name is wide enough that this estimate stops holding.
+const CHAR_WIDTH_ESTIMATE = 7.5;
+const NAME_LABEL_START_OFFSET = 10;
+
+/** Truncates `name` with an ellipsis so it fits inside `tileWidth` at the
+ * tile-name font size, so a long startup name can never overflow its tile. */
+function fitTileName(name: string, tileWidth: number): string {
+  const available = tileWidth - NAME_LABEL_START_OFFSET;
+  if (name.length * CHAR_WIDTH_ESTIMATE <= available) return name;
+  const maxChars = Math.max(1, Math.floor(available / CHAR_WIDTH_ESTIMATE) - 1);
+  return `${name.slice(0, maxChars)}…`;
+}
+
 
 /**
  * The page's signature, a valuation treemap. Each disclosed startup becomes
@@ -97,7 +116,7 @@ export function ValuationTreemap({ startups, selectedId, onSelect, sectorLabels 
                       fillOpacity={0.88}
                     />
                     <text x={tile.x0 + 10} y={tile.y0 + 22} className="c97-startup-treemap-tile-name">
-                      {tile.name}
+                      {fitTileName(tile.name, width)}
                     </text>
                     <text x={tile.x0 + 10} y={tile.y0 + 40} className="c97-startup-treemap-tile-value">
                       {formatUsdCompact(tile.valuation)}

@@ -11,6 +11,7 @@ import {
   formatTokenCount,
   PRICE_TIER_LABELS,
 } from "@/lib/frontierModels";
+import { DISPLAY_TIME_ZONE } from "@/lib/date-formatters";
 import { frontierReadouts } from "./readouts";
 import { FrontierModelsTable } from "./components/FrontierModelsTable";
 import { FrontierCostContextChart } from "./components/FrontierCostContextChart";
@@ -55,6 +56,7 @@ function formatGeneratedAt(iso: string): string {
     month: "long",
     day: "numeric",
     year: "numeric",
+    timeZone: DISPLAY_TIME_ZONE,
   });
 }
 

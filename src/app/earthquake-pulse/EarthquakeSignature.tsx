@@ -116,6 +116,11 @@ export function EarthquakeSignature({ quakes, windowEnd, strongest: dayStrongest
           y={TRACE_BASE + 44}
           textAnchor={hour === 0 ? "start" : hour === 24 ? "end" : "middle"}
           className="c97-quake-axis"
+          // The 6h/18h ticks sit close enough to their neighbours that the
+          // larger phone-width type (needed to clear the 11px floor) makes
+          // them collide, so they're dropped there; 0/12/24 still span the
+          // full window.
+          data-quake-tick={hour === 6 || hour === 18 ? "mid" : "edge"}
         >
           {hour === 24 ? "Now" : `${24 - hour}h ago`}
         </text>

@@ -45,6 +45,7 @@ const LAST_UPDATED_FORMATTER = new Intl.DateTimeFormat("en-US", {
   hour: "numeric",
   minute: "2-digit",
   timeZone: "America/Los_Angeles",
+  timeZoneName: "short",
 });
 
 function formatGeneratedAt(value: string | null | undefined): string {
