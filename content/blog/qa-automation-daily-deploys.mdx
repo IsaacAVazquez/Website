@@ -1,22 +1,23 @@
 ---
-title: "Unlocking Daily Deploys by Treating QA as a Reusable System"
+title: "Moving to Biweekly Releases by Treating QA as a Reusable System"
 excerpt: "I designed an automation framework and release workflow that turned manual validation work into reusable infrastructure. The lesson was that stable narrow coverage beats broad flaky coverage almost every time."
 publishedAt: "2026-04-29"
+updatedAt: "2026-09-25"
 category: "Quality Engineering"
-tags: ["QA", "Automation", "CI/CD", "Test Strategy", "Release Management", "Selenium"]
+tags: ["QA", "Automation", "CI/CD", "Test Strategy", "Release Management", "Cypress"]
 featured: false
 cluster: "Systems & Quality"
 author: "Isaac Vazquez"
 coverImage: "/writing/qa-automation-daily-deploys/opengraph-image"
 seo:
-  title: "Unlocking Daily Deploys with a Modular QA Automation Framework"
-  description: "How I built a modular QA automation framework with reusable patterns, containerized execution, and CI integration that cut production defects by 50% and made daily deploys realistic."
-  keywords: ["QA automation framework", "daily deploys", "CI/CD testing", "Selenium framework", "test automation strategy", "release confidence"]
+  title: "Reusable QA Automation for Biweekly Releases"
+  description: "How I built reusable QA automation and test planning across two products that moved releases from monthly to biweekly and cut release validation time 30%."
+  keywords: ["QA automation framework", "biweekly releases", "CI/CD testing", "Cypress testing", "test automation strategy", "release confidence"]
 ---
 
-# Unlocking Daily Deploys by Treating QA as a Reusable System
+# Moving to Biweekly Releases by Treating QA as a Reusable System
 
-Most teams who say they want daily deploys are really saying they want the confidence to do daily deploys. The deploy pipeline is rarely the thing that breaks. The thing that breaks is the validation work in front of it, which gets slower as the product gets larger until "ship" becomes a multi-day decision instead of a single push.
+Most teams who say they want to ship more often are really saying they want the confidence to ship more often. The deploy pipeline is rarely the thing that breaks. The thing that breaks is the validation work in front of it, which gets slower as the product gets larger until "ship" becomes a multi-day decision instead of a single push.
 
 That was the situation when I started this work. Manual testing across multiple tech stacks was slowing releases and letting defects reach production after long, repetitive validation cycles. The team did not need a faster pipeline. They needed a way to trust the pipeline they already had.
 
@@ -34,11 +35,11 @@ The framework I built focused on stable critical-path automation before anything
 
 Two principles ended up shaping the rest of the work. Reliability and maintainability mattered more than chasing the largest possible test count. And reporting needed to group failures by likely cause instead of raw failure volume, because a wall of red is operationally identical to no signal at all.
 
-Docker standardized execution across teams and environments, which eliminated a class of "works on my machine" issues that had been quietly draining time on every release.
+The suite ran on Cypress for end-to-end tests, Postman for API tests, and JMeter for load tests, and it grew to more than 400 manual and automated tests across two products.
 
 ## What Changed
 
-Production defects dropped by 50%. Critical-path coverage reached 85%. Test execution moved from days to hours. The team saved roughly 160 QA hours per month through reusable automation, which is enough labor that the framework paid for itself many times over inside the first year, with ROI ending up around 300%.
+Releases moved from monthly to biweekly, and release validation time dropped 30%. Alongside the new deployment rules I set with engineering and DevOps, critical defects dropped 90%.
 
 The harder-to-measure outcome was that QA work stopped being the bottleneck conversation. The team could plan releases around real signal instead of around how nervous someone was about a particular release. That kind of confidence does not show up in a single metric, but it changes how the team operates day to day.
 

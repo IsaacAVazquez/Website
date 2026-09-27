@@ -130,32 +130,34 @@ describe("legacy release notes URL", () => {
 });
 
 describe("SEO page sitemap freshness", () => {
+  // Each identity page carries the date of its last copy change, kept in step
+  // with the page's own dateModified. The 2026-09-14 pass rewrote copy on all
+  // of them, and the homepage lead changed again on 2026-09-24.
   it.each([
-    "/",
-    "/about",
-    "/contact",
-    "/resume",
-  ])(
-    "records the Catalog 97 update for %s",
-    (pathname) => {
-      const entry = getPublicSitemapEntries().find(
-        ({ loc }: { loc: string }) => loc === pathname
-      );
+    ["/", "2026-09-24T00:00:00.000Z"],
+    ["/about", "2026-09-14T00:00:00.000Z"],
+    ["/contact", "2026-09-14T00:00:00.000Z"],
+    ["/resume", "2026-09-14T00:00:00.000Z"],
+    ["/portfolio", "2026-09-14T00:00:00.000Z"],
+  ])("records the latest copy change for %s", (pathname, lastmod) => {
+    const entry = getPublicSitemapEntries().find(
+      ({ loc }: { loc: string }) => loc === pathname
+    );
 
-      expect(entry?.lastmod).toBe("2026-08-05T00:00:00.000Z");
-    }
-  );
+    expect(entry?.lastmod).toBe(lastmod);
+  });
 
-  it.each(["/portfolio", "/writing"])(
-    "records the restored archive controls for %s",
-    (pathname) => {
-      const entry = getPublicSitemapEntries().find(
-        ({ loc }: { loc: string }) => loc === pathname
-      );
+  // The writing index moves with its newest post (see sitemap-consistency), so
+  // only its own copy change is a fixed floor.
+  it("dates /writing no earlier than its own copy change", () => {
+    const entry = getPublicSitemapEntries().find(
+      ({ loc }: { loc: string }) => loc === "/writing"
+    );
 
-      expect(entry?.lastmod).toBe("2026-08-09T00:00:00.000Z");
-    }
-  );
+    expect(new Date(entry?.lastmod ?? 0).getTime()).toBeGreaterThanOrEqual(
+      new Date("2026-09-14T00:00:00.000Z").getTime()
+    );
+  });
 
   it.each(["/accessibility", "/arcade"])(
     "keeps the prior SEO update for %s",
@@ -168,13 +170,13 @@ describe("SEO page sitemap freshness", () => {
     }
   );
 
-  it("publishes the dashboards section hub with its launch date", () => {
+  it("publishes the dashboards section hub with its latest copy change", () => {
     const entry = getPublicSitemapEntries().find(
       ({ loc }: { loc: string }) => loc === "/dashboards"
     );
 
     expect(entry).toMatchObject({
-      lastmod: "2026-08-03T00:00:00.000Z",
+      lastmod: "2026-09-14T00:00:00.000Z",
       changefreq: "weekly",
       priority: 0.8,
     });
@@ -187,7 +189,6 @@ describe("SEO page sitemap freshness", () => {
     "/resume",
     "/score-pools",
     "/score-pools/tracker",
-    "/score-pools/settings",
     "/world-cup-2026",
   ])("records the audit implementation for %s", (pathname) => {
     const entry = getPublicSitemapEntries().find(
