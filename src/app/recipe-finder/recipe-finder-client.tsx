@@ -213,7 +213,7 @@ export function RecipeFinderClient() {
 
   const lead = PROJECT_PRESS[RECIPE_FINDER_ROUTE].lead;
   const standfirst =
-    "I built this because I could never remember what I actually had on hand when it was time to figure out dinner. Add what's in your kitchen, from a few staples I assume everyone already has, to whatever's actually in the fridge, and the recipes below reorder to show what you can cook right now.";
+    "Add the ingredients you have on hand and the recipes below reorder by what you're missing, so the ones you can actually cook tonight come first. I assume a few staples like salt, pepper, and oil are already in every kitchen, so those tick on their own.";
 
   return (
     <>
