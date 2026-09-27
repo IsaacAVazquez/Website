@@ -1,17 +1,15 @@
 "use client";
 
 import { useId, useMemo, useState } from "react";
-import {
-  Home,
-  Building2,
-  Landmark,
-  RotateCcw,
-  Scale,
-  TrendingUp,
-  Info,
-} from "lucide-react";
+import { Building2, Home, Landmark, RotateCcw } from "lucide-react";
+import { Catalog97ProjectHero } from "@/components/catalog97/Catalog97ProjectHero";
+import { PROJECT_PRESS } from "@/constants/projectPress";
 import { useRentVsBuy } from "@/hooks/useRentVsBuy";
 import type { RentVsBuyInput, RentVsBuyResult } from "@/lib/rentVsBuy/types";
+import { netWorthChart } from "./netWorthChart";
+import "./rent-vs-buy.css";
+
+const ROUTE = "/fintech-tools/rent-vs-buy";
 
 function formatCurrency(value: number, fractionDigits = 0) {
   return value.toLocaleString("en-US", {
@@ -26,6 +24,13 @@ function formatSignedCurrency(value: number) {
   const sign = value < 0 ? "-" : "+";
   return `${sign}${formatCurrency(Math.abs(value))}`;
 }
+
+const COMPACT_USD = new Intl.NumberFormat("en-US", {
+  style: "currency",
+  currency: "USD",
+  notation: "compact",
+  maximumFractionDigits: 1,
+});
 
 const plural = (count: number, unit: string) => `${count} ${unit}${count === 1 ? "" : "s"}`;
 
@@ -42,105 +47,127 @@ function formatBreakEven(result: RentVsBuyResult) {
   return `Buying pulls ahead after about ${plural(years, "year")} and ${plural(months, "month")}`;
 }
 
-const VERDICT_COPY: Record<RentVsBuyResult["verdict"], { title: string; tone: string }> = {
-  buying: { title: "Buying comes out ahead", tone: "var(--home-positive)" },
-  renting: { title: "Renting comes out ahead", tone: "var(--home-signal-ink)" },
-  close: { title: "It's close to a wash", tone: "var(--home-ink)" },
+/** A short form for the hero readout: "4y 6m" or "Not within 7 years". */
+function formatBreakEvenShort(result: RentVsBuyResult) {
+  if (result.breakEvenYears === null) {
+    return `Not within ${plural(result.horizonYears, "year")}`;
+  }
+  const years = Math.floor(result.breakEvenYears);
+  const months = Math.round((result.breakEvenYears - years) * 12);
+  if (years === 0) return `${months}m`;
+  if (months === 0) return `${years}y`;
+  return `${years}y ${months}m`;
+}
+
+const VERDICT_TITLE: Record<RentVsBuyResult["verdict"], string> = {
+  buying: "Buying comes out ahead",
+  renting: "Renting comes out ahead",
+  close: "It's close to a wash",
 };
 
-// ── Small net-worth chart ──────────────────────────────────────────────────
-function NetWorthChart({ result }: { result: RentVsBuyResult }) {
-  const points = useMemo(() => {
-    const years = [0, ...result.yearly.map((y) => y.year)];
-    const buyer = [0, ...result.yearly.map((y) => y.buyerNetWorth)];
-    const renter = [result.upfrontCash, ...result.yearly.map((y) => y.renterNetWorth)];
-    const all = [...buyer, ...renter];
-    const min = Math.min(0, ...all);
-    const max = Math.max(...all, 1);
-    const width = 320;
-    const height = 150;
-    const padX = 6;
-    const padY = 10;
-    const x = (i: number) => padX + (i / (years.length - 1)) * (width - padX * 2);
-    const y = (v: number) =>
-      height - padY - ((v - min) / (max - min || 1)) * (height - padY * 2);
-    const line = (series: number[]) => series.map((v, i) => `${x(i)},${y(v)}`).join(" ");
-    // The years array is [0, 1, 2, …] so a fractional break-even year maps
-    // straight onto the x index.
-    const breakEvenX =
-      result.breakEvenYears === null ? null : x(result.breakEvenYears);
-    return {
-      width,
-      height,
-      buyerLine: line(buyer),
-      renterLine: line(renter),
-      zeroY: y(0),
-      breakEvenX,
-    };
-  }, [result]);
+// ── Net-worth signature ─────────────────────────────────────────────────────
+function NetWorthChartSignature({ result }: { result: RentVsBuyResult }) {
+  const chart = useMemo(() => netWorthChart(result), [result]);
+
+  // Nudge the two end-of-line labels apart when the lines finish close
+  // together, so "Buyer" and "Renter" don't print on top of each other. The
+  // threshold and offset are sized for the larger mobile type (the same
+  // viewBox coordinates render both sizes), so they're generous at desktop.
+  const endGap = Math.abs(chart.buyerEndY - chart.renterEndY);
+  const nudge = endGap < 40 ? 16 : 0;
+  const buyerLabelY = chart.buyerEndY <= chart.renterEndY ? chart.buyerEndY - nudge : chart.buyerEndY + nudge;
+  const renterLabelY = chart.renterEndY <= chart.buyerEndY ? chart.renterEndY - nudge : chart.renterEndY + nudge;
+
+  const breakEvenAnchor: "start" | "middle" | "end" =
+    chart.breakEvenX === null
+      ? "middle"
+      : chart.breakEvenX > chart.width * 0.7
+        ? "end"
+        : chart.breakEvenX < chart.width * 0.3
+          ? "start"
+          : "middle";
+
+  const description = `Net worth by year, buyer versus renter. ${formatBreakEven(result)}. At year ${result.horizonYears}, ${
+    result.netWorthDeltaAtHorizon >= 0 ? "buying" : "renting"
+  } leads by ${formatCurrency(Math.abs(result.netWorthDeltaAtHorizon))}.`;
 
   return (
-    <figure className="m-0">
+    <>
       <svg
-        viewBox={`0 0 ${points.width} ${points.height}`}
-        className="h-auto w-full"
+        viewBox={`0 0 ${chart.width} ${chart.height}`}
         role="img"
-        aria-label={`Net worth over ${plural(result.horizonYears, "year")}. ${formatBreakEven(result)}.`}
+        aria-label={description}
+        className="c97-rvb-signature"
       >
-        <line
-          x1={0}
-          y1={points.zeroY}
-          x2={points.width}
-          y2={points.zeroY}
-          stroke="var(--home-rule)"
-          strokeWidth={1}
-        />
-        {points.breakEvenX !== null && points.breakEvenX !== undefined ? (
-          <line
-            x1={points.breakEvenX}
-            y1={0}
-            x2={points.breakEvenX}
-            y2={points.height}
-            stroke="var(--home-positive)"
-            strokeWidth={1}
-            strokeDasharray="3 3"
-            opacity={0.7}
-          />
+        {chart.yTicks.map((tick) => (
+          <g key={tick.value}>
+            <line x1={0} x2={chart.width} y1={tick.y} y2={tick.y} stroke="var(--c97-rule)" strokeWidth={1} />
+            <text x={4} y={tick.y - 4} className="c97-rvb-axis">
+              {COMPACT_USD.format(tick.value)}
+            </text>
+          </g>
+        ))}
+
+        {chart.zeroY !== null ? (
+          <line x1={0} x2={chart.width} y1={chart.zeroY} y2={chart.zeroY} stroke="var(--c97-ink-2)" strokeWidth={1.5} />
         ) : null}
+
+        {chart.breakEvenX !== null ? (
+          <>
+            <line
+              x1={chart.breakEvenX}
+              x2={chart.breakEvenX}
+              y1={0}
+              y2={chart.height - 20}
+              stroke="var(--c97-ink)"
+              strokeWidth={1.5}
+              strokeDasharray="4 4"
+            />
+            <text x={chart.breakEvenX} y={14} textAnchor={breakEvenAnchor} className="c97-rvb-label">
+              {`Buying pulls ahead, year ${formatBreakEvenShort(result)}`}
+            </text>
+          </>
+        ) : null}
+
         <polyline
-          points={points.renterLine}
+          points={chart.renterLine}
           fill="none"
-          stroke="var(--home-signal)"
-          strokeWidth={2}
+          stroke="var(--c97-chart-3)"
+          strokeWidth={2.5}
+          strokeDasharray="7 5"
           strokeLinejoin="round"
         />
-        <polyline
-          points={points.buyerLine}
-          fill="none"
-          stroke="var(--home-positive)"
-          strokeWidth={2}
-          strokeLinejoin="round"
-        />
+        <polyline points={chart.buyerLine} fill="none" stroke="var(--c97-chart-1)" strokeWidth={2.5} strokeLinejoin="round" />
+
+        <text x={chart.buyerEndX - 20} y={buyerLabelY} textAnchor="end" className="c97-rvb-label c97-rvb-end">
+          Buyer
+        </text>
+        <text x={chart.renterEndX - 20} y={renterLabelY} textAnchor="end" className="c97-rvb-label c97-rvb-end">
+          Renter
+        </text>
+
+        <text x={chart.xForYear(0)} y={chart.height - 6} className="c97-rvb-axis">
+          Today
+        </text>
+        <text x={chart.xForYear(result.horizonYears)} y={chart.height - 6} textAnchor="end" className="c97-rvb-axis">
+          {`Year ${result.horizonYears}`}
+        </text>
       </svg>
-      <figcaption className="mt-2 flex flex-wrap items-center gap-x-4 gap-y-1 text-2xs text-[var(--home-ink-muted)]">
-        <span className="inline-flex items-center gap-1.5">
-          <span
-            className="inline-block h-2 w-2 rounded-full"
-            style={{ background: "var(--home-positive)" }}
-            aria-hidden="true"
-          />
-          Buyer net worth
+      <div style={{ display: "flex", gap: "var(--c97-sp-3)", marginTop: "var(--c97-sp-2)", flexWrap: "wrap" }}>
+        <span className="c97-rvb-swatch">
+          <span className="c97-rvb-swatch-mark" data-series="buyer" aria-hidden="true" />
+          <span className="c97-kicker" style={{ color: "var(--c97-ink)" }}>
+            Buyer
+          </span>
         </span>
-        <span className="inline-flex items-center gap-1.5">
-          <span
-            className="inline-block h-2 w-2 rounded-full"
-            style={{ background: "var(--home-signal)" }}
-            aria-hidden="true"
-          />
-          Renter net worth
+        <span className="c97-rvb-swatch">
+          <span className="c97-rvb-swatch-mark" data-series="renter" aria-hidden="true" />
+          <span className="c97-kicker" style={{ color: "var(--c97-ink)" }}>
+            Renter
+          </span>
         </span>
-      </figcaption>
-    </figure>
+      </div>
+    </>
   );
 }
 
@@ -174,12 +201,20 @@ function NumberField({
   const [draft, setDraft] = useState<string | null>(null);
   return (
     <label htmlFor={id} className="block">
-      <span className="block text-2xs font-semibold uppercase tracking-[0.14em] text-[var(--home-ink-soft)]">
+      <span className="c97-kicker" style={{ display: "block", marginBottom: "var(--c97-sp-1)" }}>
         {label}
       </span>
-      <span className="mt-1.5 flex min-h-touch items-center rounded-[var(--radius-xl)] border border-[var(--home-rule)] bg-[var(--home-paper)] px-3 focus-within:ring-2 focus-within:ring-[var(--home-signal)] focus-within:ring-offset-2">
+      <span
+        className="c97-field"
+        style={{
+          display: "flex",
+          alignItems: "center",
+          gap: "var(--c97-sp-1)",
+          ...(disabled ? { background: "none", borderBottom: "1px dashed var(--c97-ink-2)" } : null),
+        }}
+      >
         {prefix ? (
-          <span className="mr-1 text-xs text-[var(--home-ink-muted)]" aria-hidden="true">
+          <span aria-hidden="true" style={{ color: "var(--c97-ink-2)", fontSize: "var(--c97-fs-small)" }}>
             {prefix}
           </span>
         ) : null}
@@ -199,10 +234,19 @@ function NumberField({
             if (next.trim() !== "" && Number.isFinite(Number(next))) onChange(Number(next));
           }}
           onBlur={() => setDraft(null)}
-          className="w-full border-0 bg-transparent py-2 text-xs text-[var(--home-ink)] [font-variant-numeric:tabular-nums] focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-50"
+          className="c97-mono"
+          style={{
+            flex: 1,
+            minWidth: 0,
+            border: 0,
+            background: "transparent",
+            padding: 0,
+            color: "var(--c97-ink)",
+            fontSize: "var(--c97-fs-body)",
+          }}
         />
         {suffix ? (
-          <span className="ml-1 text-2xs text-[var(--home-ink-muted)]" aria-hidden="true">
+          <span aria-hidden="true" style={{ color: "var(--c97-ink-2)", fontSize: "var(--c97-fs-small)" }}>
             {suffix}
           </span>
         ) : null}
@@ -217,229 +261,216 @@ export function RentVsBuyClient() {
   // fields to drop any draft still showing a value the store no longer holds.
   const [resetKey, setResetKey] = useState(0);
 
-  const verdict = VERDICT_COPY[result.verdict];
   const num = <K extends keyof RentVsBuyInput>(key: K) =>
     (value: number) => setField(key, value as RentVsBuyInput[K]);
 
+  const lead = PROJECT_PRESS[ROUTE].lead;
+  const standfirst =
+    "Most rent-vs-buy comparisons stop at the monthly payment, but the honest question is what you are worth years from now on each path. This tool runs a month-by-month model that credits the renter the money a buyer sinks into a down payment and closing costs, invests every month's cost difference on whichever side spends less, and then finds the year buying finally pulls ahead.";
+
   return (
-    <section className="home-page min-h-screen" aria-label="Rent vs. buy calculator">
-      <div className="home-shell home-section">
-        <div
-          className="flex flex-col gap-6"
-        >
-          <div className="tool-topbar">
-            <div className="min-w-0">
-              <p className="tool-crumbs">
-                Fintech Tools / <strong>Rent vs. Buy</strong>
-              </p>
-              <h1>Rent vs. Buy Calculator</h1>
-            </div>
+    <>
+      <Catalog97ProjectHero
+        ink={lead}
+        title="Rent vs. Buy Calculator"
+        standfirst={standfirst}
+        readouts={[
+          {
+            label: "Break-even",
+            value: formatBreakEvenShort(result),
+            detail:
+              result.breakEvenYears === null
+                ? undefined
+                : `Staying ${plural(result.horizonYears, "year")}`,
+          },
+          {
+            label: "Net worth gap",
+            value: formatSignedCurrency(result.netWorthDeltaAtHorizon),
+            detail: `At year ${result.horizonYears}`,
+          },
+          {
+            label: "Cash to buy",
+            value: formatCurrency(result.upfrontCash),
+            detail: "Down payment + closing costs",
+          },
+        ]}
+      >
+        <div data-c97-surface="paper" className="c97-offset" style={{ padding: "var(--c97-sp-3)" }}>
+          <p role="status" aria-live="polite" className="c97-serif c97-h3" style={{ margin: 0 }}>
+            <span>{VERDICT_TITLE[result.verdict]}</span>
+            {". "}
+            <span className="c97-prose" style={{ fontSize: "var(--c97-fs-small)", color: "var(--c97-ink-2)" }}>
+              {formatBreakEven(result)}.
+            </span>
+          </p>
+
+          <div style={{ marginTop: "var(--c97-sp-3)" }}>
+            <NetWorthChartSignature result={result} />
+          </div>
+
+          <p className="c97-prose" style={{ fontSize: "var(--c97-fs-small)", color: "var(--c97-ink-2)", marginTop: "var(--c97-sp-3)" }}>
+            Educational only, not financial or tax advice.
+          </p>
+          <p style={{ marginTop: "var(--c97-sp-2)" }}>
+            <span className="c97-kicker">Assumptions &amp; limits</span>
+            <span
+              className="c97-prose"
+              style={{ display: "block", fontSize: "var(--c97-fs-small)", color: "var(--c97-ink-2)", marginTop: "var(--c97-sp-1)" }}
+            >
+              Figures are nominal dollars. {result.assumptions.taxNote} SALT cap{" "}
+              {formatCurrency(result.assumptions.saltCap)}. Tax figures as of {result.assumptions.asOf} and not
+              yet re-pinned to a primary source.
+            </span>
+          </p>
+        </div>
+      </Catalog97ProjectHero>
+
+      <section className="c97-band c97-sheet" data-c97-surface="paper" data-seam="torn">
+        <div className="c97-shell">
+          <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: "var(--c97-sp-3)", flexWrap: "wrap" }}>
+            <p className="c97-kicker">Your numbers</p>
             <button
               type="button"
               onClick={() => {
                 reset();
                 setResetKey((current) => current + 1);
               }}
-              className="inline-flex min-h-touch items-center gap-2 rounded-full border border-[var(--home-rule)] bg-[var(--home-paper)] px-4 text-1xs font-semibold text-[var(--home-ink-muted)] transition hover:border-[var(--home-signal)] hover:text-[var(--home-ink)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--home-signal)] focus-visible:ring-offset-2"
+              className="c97-btn-ghost"
             >
-              <RotateCcw className="h-3.5 w-3.5" aria-hidden="true" />
+              <RotateCcw size={14} aria-hidden="true" style={{ marginRight: "var(--c97-sp-1)" }} />
               Reset
             </button>
           </div>
 
-          <p className="max-w-2xl text-sm leading-7 text-[var(--home-ink-muted)]">
-            Most rent-vs-buy comparisons stop at the monthly payment, but the honest
-            question is what you are worth years from now on each path. This tool runs a
-            month-by-month model that credits the renter the money a buyer sinks into a
-            down payment and closing costs, invests every month's cost difference on
-            whichever side spends less, and then finds the year buying finally pulls ahead.
-          </p>
-
-          <div className="tool-meta-chip" role="status" aria-live="polite">
-            <span
-              className="tool-meta-chip-dot"
-              style={{ background: verdict.tone }}
-              aria-hidden="true"
-            />
-            <span>
-              <strong style={{ color: verdict.tone }}>{verdict.title}</strong>
-            </span>
-            <span className="tool-meta-chip-divider" aria-hidden="true">
-              ·
-            </span>
-            <span>
-              Over {result.horizonYears} years · {formatBreakEven(result)}
-            </span>
-          </div>
-
-          <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,340px)]">
-            {/* Inputs */}
-            <div key={resetKey} className="flex flex-col gap-5">
-              <section className="tool-card" aria-label="The home you would buy">
-                <div className="flex items-center gap-2">
-                  <Home className="h-4 w-4 text-[var(--home-signal)]" aria-hidden="true" />
-                  <div>
-                    <p className="tool-section-kicker">Buying</p>
-                    <h2 className="tool-section-title">The home you'd buy</h2>
-                  </div>
-                </div>
-                <div className="mt-4 grid gap-3 sm:grid-cols-2">
-                  <NumberField label="Home price" prefix="$" step={5000} value={input.homePrice} onChange={num("homePrice")} />
-                  <NumberField label="Down payment" suffix="%" step={1} max={100} value={input.downPaymentPercent} onChange={num("downPaymentPercent")} />
-                  <NumberField label="Mortgage rate" suffix="%" step={0.05} value={input.mortgageRatePercent} onChange={num("mortgageRatePercent")} />
-                  <NumberField label="Loan term" suffix="yrs" step={1} value={input.loanTermYears} onChange={num("loanTermYears")} />
-                  <NumberField label="Property tax" suffix="%/yr" step={0.05} value={input.propertyTaxPercent} onChange={num("propertyTaxPercent")} />
-                  <NumberField label="Home insurance" prefix="$" suffix="/yr" step={100} value={input.homeInsuranceAnnual} onChange={num("homeInsuranceAnnual")} />
-                  <NumberField label="Maintenance" suffix="%/yr" step={0.1} value={input.maintenancePercent} onChange={num("maintenancePercent")} />
-                  <NumberField label="HOA dues" prefix="$" suffix="/mo" step={25} value={input.hoaMonthly} onChange={num("hoaMonthly")} />
-                  <NumberField label="Closing costs" suffix="%" step={0.5} value={input.closingCostPercent} onChange={num("closingCostPercent")} />
-                  <NumberField label="Selling costs" suffix="%" step={0.5} value={input.sellingCostPercent} onChange={num("sellingCostPercent")} />
-                  <NumberField label="Home appreciation" suffix="%/yr" step={0.25} min={-10} value={input.homeAppreciationPercent} onChange={num("homeAppreciationPercent")} />
-                </div>
-              </section>
-
-              <section className="tool-card" aria-label="The rent you would pay">
-                <div className="flex items-center gap-2">
-                  <Building2 className="h-4 w-4 text-[var(--home-signal)]" aria-hidden="true" />
-                  <div>
-                    <p className="tool-section-kicker">Renting</p>
-                    <h2 className="tool-section-title">The rent you'd pay</h2>
-                  </div>
-                </div>
-                <div className="mt-4 grid gap-3 sm:grid-cols-2">
-                  <NumberField label="Monthly rent" prefix="$" step={50} value={input.monthlyRent} onChange={num("monthlyRent")} />
-                  <NumberField label="Rent growth" suffix="%/yr" step={0.25} min={-10} value={input.rentGrowthPercent} onChange={num("rentGrowthPercent")} />
-                  <NumberField label="Renter's insurance" prefix="$" suffix="/mo" step={5} value={input.rentersInsuranceMonthly} onChange={num("rentersInsuranceMonthly")} />
-                </div>
-              </section>
-
-              <section className="tool-card" aria-label="Money and taxes">
-                <div className="flex items-center gap-2">
-                  <Landmark className="h-4 w-4 text-[var(--home-signal)]" aria-hidden="true" />
-                  <div>
-                    <p className="tool-section-kicker">Money &amp; taxes</p>
-                    <h2 className="tool-section-title">Assumptions</h2>
-                  </div>
-                </div>
-                <div className="mt-4 grid gap-3 sm:grid-cols-2">
-                  <NumberField label="Investment return" suffix="%/yr" step={0.25} min={-10} value={input.investmentReturnPercent} onChange={num("investmentReturnPercent")} />
-                  <NumberField label="Inflation" suffix="%/yr" step={0.25} value={input.generalInflationPercent} onChange={num("generalInflationPercent")} />
-                  <NumberField label="Marginal tax rate" suffix="%" step={1} max={60} value={input.marginalTaxRatePercent} onChange={num("marginalTaxRatePercent")} disabled={!input.itemizes} />
-                  <NumberField label="Years staying" suffix="yrs" step={1} min={1} max={40} value={input.yearsStaying} onChange={num("yearsStaying")} />
-                  <label className="flex min-h-touch cursor-pointer items-center justify-between gap-3 self-end rounded-[var(--radius-xl)] border border-[var(--home-rule)] bg-[var(--home-paper)] px-3">
-                    <span className="text-2xs font-semibold uppercase tracking-[0.14em] text-[var(--home-ink-soft)]">
-                      Itemize deductions
-                    </span>
-                    <input
-                      type="checkbox"
-                      checked={input.itemizes}
-                      onChange={(event) => setField("itemizes", event.target.checked)}
-                      className="h-4 w-4 accent-[var(--home-signal)]"
-                    />
-                  </label>
-                </div>
-              </section>
+          <div key={resetKey} style={{ display: "flex", flexDirection: "column", gap: "var(--c97-sp-5)", marginTop: "var(--c97-sp-4)" }}>
+            <div>
+              <div style={{ display: "flex", alignItems: "center", gap: "var(--c97-sp-2)" }}>
+                <Home size={18} aria-hidden="true" />
+                <h2 className="c97-poster-sm">The home you&apos;d buy</h2>
+              </div>
+              <div className="grid gap-3 sm:grid-cols-2" style={{ marginTop: "var(--c97-sp-3)" }}>
+                <NumberField label="Home price" prefix="$" step={5000} value={input.homePrice} onChange={num("homePrice")} />
+                <NumberField label="Down payment" suffix="%" step={1} max={100} value={input.downPaymentPercent} onChange={num("downPaymentPercent")} />
+                <NumberField label="Mortgage rate" suffix="%" step={0.05} value={input.mortgageRatePercent} onChange={num("mortgageRatePercent")} />
+                <NumberField label="Loan term" suffix="yrs" step={1} value={input.loanTermYears} onChange={num("loanTermYears")} />
+                <NumberField label="Property tax" suffix="%/yr" step={0.05} value={input.propertyTaxPercent} onChange={num("propertyTaxPercent")} />
+                <NumberField label="Home insurance" prefix="$" suffix="/yr" step={100} value={input.homeInsuranceAnnual} onChange={num("homeInsuranceAnnual")} />
+                <NumberField label="Maintenance" suffix="%/yr" step={0.1} value={input.maintenancePercent} onChange={num("maintenancePercent")} />
+                <NumberField label="HOA dues" prefix="$" suffix="/mo" step={25} value={input.hoaMonthly} onChange={num("hoaMonthly")} />
+                <NumberField label="Closing costs" suffix="%" step={0.5} value={input.closingCostPercent} onChange={num("closingCostPercent")} />
+                <NumberField label="Selling costs" suffix="%" step={0.5} value={input.sellingCostPercent} onChange={num("sellingCostPercent")} />
+                <NumberField label="Home appreciation" suffix="%/yr" step={0.25} min={-10} value={input.homeAppreciationPercent} onChange={num("homeAppreciationPercent")} />
+              </div>
             </div>
 
-            {/* Result rail */}
-            <aside
-              aria-label="Result"
-              className="flex flex-col gap-4 rounded-[var(--radius-3xl)] border border-[var(--home-rule)] bg-[color-mix(in_srgb,var(--home-paper-alt)_74%,var(--home-elev-mix))] p-5 shadow-[var(--shadow-sm)] lg:sticky lg:top-0 lg:self-start lg:max-h-[calc(100vh-7rem)] lg:overflow-y-auto"
-            >
-              <div>
-                <p className="tool-rail-label" id="rail-verdict">
-                  <Scale size={12} aria-hidden="true" />
-                  Verdict
-                </p>
-                <p className="text-lg font-semibold" style={{ color: verdict.tone }}>
-                  {verdict.title}
-                </p>
-                <p className="mt-1 text-1xs text-[var(--home-ink-muted)]">{formatBreakEven(result)}</p>
+            <div>
+              <div style={{ display: "flex", alignItems: "center", gap: "var(--c97-sp-2)" }}>
+                <Building2 size={18} aria-hidden="true" />
+                <h2 className="c97-poster-sm">The rent you&apos;d pay</h2>
               </div>
+              <div className="grid gap-3 sm:grid-cols-2" style={{ marginTop: "var(--c97-sp-3)" }}>
+                <NumberField label="Monthly rent" prefix="$" step={50} value={input.monthlyRent} onChange={num("monthlyRent")} />
+                <NumberField label="Rent growth" suffix="%/yr" step={0.25} min={-10} value={input.rentGrowthPercent} onChange={num("rentGrowthPercent")} />
+                <NumberField label="Renter's insurance" prefix="$" suffix="/mo" step={5} value={input.rentersInsuranceMonthly} onChange={num("rentersInsuranceMonthly")} />
+              </div>
+            </div>
 
-              <NetWorthChart result={result} />
-
-              <dl className="grid grid-cols-2 gap-x-4 gap-y-3 border-t border-[var(--home-rule)] pt-4 text-1xs">
-                <div>
-                  <dt className="text-[var(--home-ink-muted)]">Buy · monthly (yr 1)</dt>
-                  <dd className="font-semibold text-[var(--home-ink)] [font-variant-numeric:tabular-nums]">
-                    {formatCurrency(result.monthlyBuyingCostYear1)}
-                  </dd>
-                </div>
-                <div>
-                  <dt className="text-[var(--home-ink-muted)]">Rent · monthly (yr 1)</dt>
-                  <dd className="font-semibold text-[var(--home-ink)] [font-variant-numeric:tabular-nums]">
-                    {formatCurrency(result.monthlyRentingCostYear1)}
-                  </dd>
-                </div>
-                <div>
-                  <dt className="text-[var(--home-ink-muted)]">Cash to buy</dt>
-                  <dd className="font-semibold text-[var(--home-ink)] [font-variant-numeric:tabular-nums]">
-                    {formatCurrency(result.upfrontCash)}
-                  </dd>
-                </div>
-                <div>
-                  <dt className="text-[var(--home-ink-muted)]">Monthly P&amp;I</dt>
-                  <dd className="font-semibold text-[var(--home-ink)] [font-variant-numeric:tabular-nums]">
-                    {formatCurrency(result.monthlyPaymentYear1)}
-                  </dd>
-                </div>
-                <div>
-                  <dt className="text-[var(--home-ink-muted)]">Buyer net worth · yr {result.horizonYears}</dt>
-                  <dd className="font-semibold text-[var(--home-positive)] [font-variant-numeric:tabular-nums]">
-                    {formatCurrency(result.buyerNetWorthAtHorizon)}
-                  </dd>
-                </div>
-                <div>
-                  <dt className="text-[var(--home-ink-muted)]">Renter net worth · yr {result.horizonYears}</dt>
-                  <dd className="font-semibold text-[var(--home-signal-ink)] [font-variant-numeric:tabular-nums]">
-                    {formatCurrency(result.renterNetWorthAtHorizon)}
-                  </dd>
-                </div>
-              </dl>
-
-              <div className="flex items-center justify-between gap-3 rounded-[var(--radius-2xl)] border border-[var(--home-rule)] bg-[var(--home-paper)] px-3 py-2.5">
-                <span className="inline-flex items-center gap-1.5 text-1xs font-semibold text-[var(--home-ink)]">
-                  <TrendingUp className="h-3.5 w-3.5 text-[var(--home-signal)]" aria-hidden="true" />
-                  Net-worth gap at year {result.horizonYears}
-                </span>
-                <span
-                  className="text-sm font-semibold [font-variant-numeric:tabular-nums]"
+            <div>
+              <div style={{ display: "flex", alignItems: "center", gap: "var(--c97-sp-2)" }}>
+                <Landmark size={18} aria-hidden="true" />
+                <h2 className="c97-poster-sm">Assumptions</h2>
+              </div>
+              <div className="grid gap-3 sm:grid-cols-2" style={{ marginTop: "var(--c97-sp-3)" }}>
+                <NumberField label="Investment return" suffix="%/yr" step={0.25} min={-10} value={input.investmentReturnPercent} onChange={num("investmentReturnPercent")} />
+                <NumberField label="Inflation" suffix="%/yr" step={0.25} value={input.generalInflationPercent} onChange={num("generalInflationPercent")} />
+                <NumberField
+                  label="Marginal tax rate"
+                  suffix="%"
+                  step={1}
+                  max={60}
+                  value={input.marginalTaxRatePercent}
+                  onChange={num("marginalTaxRatePercent")}
+                  disabled={!input.itemizes}
+                />
+                <NumberField label="Years staying" suffix="yrs" step={1} min={1} max={40} value={input.yearsStaying} onChange={num("yearsStaying")} />
+                <label
                   style={{
-                    color:
-                      result.netWorthDeltaAtHorizon >= 0
-                        ? "var(--home-positive)"
-                        : "var(--home-signal-ink)",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "space-between",
+                    gap: "var(--c97-sp-2)",
+                    minHeight: "44px",
                   }}
                 >
-                  {formatSignedCurrency(result.netWorthDeltaAtHorizon)}
-                </span>
+                  <span className="c97-kicker">Itemize deductions</span>
+                  <input
+                    type="checkbox"
+                    className="c97-check"
+                    checked={input.itemizes}
+                    onChange={(event) => setField("itemizes", event.target.checked)}
+                  />
+                </label>
               </div>
-
-              <p className="text-1xs text-[var(--home-ink-muted)]">
-                Educational only, not financial or tax advice.
-              </p>
-              <details className="rounded-[var(--radius-2xl)] border border-[var(--home-rule)] bg-[var(--home-paper)] px-3 py-2.5 text-1xs text-[var(--home-ink-muted)]">
-                <summary className="flex cursor-pointer items-center gap-1.5 font-semibold text-[var(--home-ink)]">
-                  <Info className="h-3.5 w-3.5" aria-hidden="true" />
-                  Assumptions &amp; limits
-                </summary>
-                <p className="mt-2 leading-6">
-                  Figures are nominal dollars. {result.assumptions.taxNote} SALT cap{" "}
-                  {formatCurrency(result.assumptions.saltCap)}.
-                  Tax figures as of {result.assumptions.asOf} and not yet re-pinned to a
-                  primary source.
-                </p>
-              </details>
-
-              <p className="tool-rail-foot">
-                <Home size={14} aria-hidden="true" />
-                Saved in your browser. No account, no server.
-              </p>
-            </aside>
+            </div>
           </div>
+
+          <p className="c97-prose" style={{ fontSize: "var(--c97-fs-small)", color: "var(--c97-ink-2)", marginTop: "var(--c97-sp-4)" }}>
+            Saved in your browser. No account, no server.
+          </p>
         </div>
-      </div>
-    </section>
+      </section>
+
+      <section className="c97-band c97-sheet" data-c97-surface="bone" data-seam="deckle">
+        <div className="c97-shell">
+          <h2 className="c97-poster-sm">What the numbers say</h2>
+          <table className="c97-table" style={{ marginTop: "var(--c97-sp-3)" }}>
+            <thead>
+              <tr>
+                <th>Figure</th>
+                <th data-align="end">Value</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Buy, monthly (year 1)</td>
+                <td data-align="end" className="c97-mono">
+                  {formatCurrency(result.monthlyBuyingCostYear1)}
+                </td>
+              </tr>
+              <tr>
+                <td>Rent, monthly (year 1)</td>
+                <td data-align="end" className="c97-mono">
+                  {formatCurrency(result.monthlyRentingCostYear1)}
+                </td>
+              </tr>
+              <tr>
+                <td>Cash to buy</td>
+                <td data-align="end" className="c97-mono">
+                  {formatCurrency(result.upfrontCash)}
+                </td>
+              </tr>
+              <tr>
+                <td>Monthly P&amp;I</td>
+                <td data-align="end" className="c97-mono">
+                  {formatCurrency(result.monthlyPaymentYear1)}
+                </td>
+              </tr>
+              <tr>
+                <td>Buyer net worth, year {result.horizonYears}</td>
+                <td data-align="end" className="c97-mono">
+                  {formatCurrency(result.buyerNetWorthAtHorizon)}
+                </td>
+              </tr>
+              <tr>
+                <td>Renter net worth, year {result.horizonYears}</td>
+                <td data-align="end" className="c97-mono">
+                  {formatCurrency(result.renterNetWorthAtHorizon)}
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </>
   );
 }

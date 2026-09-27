@@ -1,0 +1,67 @@
+/* Rent vs. Buy: the net-worth-by-year signature and its legend swatches. */
+
+.c97-rvb-signature {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.c97-rvb-axis {
+  font-family: var(--c97-font-mono);
+  font-size: 15px;
+  fill: var(--c97-ink-2);
+  paint-order: stroke;
+  stroke: var(--c97-surface);
+  stroke-width: 5px;
+  stroke-linejoin: round;
+}
+
+/* A paper-coloured halo so a line the label sits over doesn't cut through
+ * the glyphs where the two series converge near their own end labels. */
+.c97-rvb-label {
+  font-family: var(--c97-font-mono);
+  font-size: 15px;
+  font-weight: 600;
+  fill: var(--c97-ink);
+  paint-order: stroke;
+  stroke: var(--c97-surface);
+  stroke-width: 5px;
+  stroke-linejoin: round;
+}
+
+/* At phone width the plate's own width shrinks faster than the fixed 640
+ * viewBox, so the same coordinate space renders smaller type unless the
+ * type itself is set larger in viewBox units. */
+@media (max-width: 639px) {
+  .c97-rvb-axis {
+    font-size: 28px;
+  }
+
+  .c97-rvb-label {
+    font-size: 30px;
+  }
+
+  /* The two lines converge at their ends in a chart this short, so the end
+   * labels drop and the legend under the chart names them. */
+  .c97-rvb-end {
+    display: none;
+  }
+}
+
+.c97-rvb-swatch {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--c97-sp-1);
+}
+
+.c97-rvb-swatch-mark {
+  display: inline-block;
+  width: 18px;
+  height: 0;
+  border-top: 3px solid var(--c97-chart-1);
+}
+
+.c97-rvb-swatch-mark[data-series="renter"] {
+  border-top-style: dashed;
+  border-top-color: var(--c97-chart-3);
+}
