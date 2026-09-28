@@ -104,7 +104,18 @@ async function main(baseUrl, routes) {
       await page.goto(new URL(route, baseUrl).href, { waitUntil: "networkidle", timeout: 120000 });
       await page.waitForTimeout(800);
       const seen = new Set();
-      for (const f of await page.evaluate(measurePage)) {
+      // The App Router rewrites history once after hydration; if that lands
+      // mid-measure the context resets, so settle and measure once more.
+      let found;
+      try {
+        found = await page.evaluate(measurePage);
+      } catch (error) {
+        if (!/Execution context was destroyed/.test(String(error))) throw error;
+        await page.waitForLoadState("networkidle");
+        await page.waitForTimeout(800);
+        found = await page.evaluate(measurePage);
+      }
+      for (const f of found) {
         const key = `${f.selector}|${f.text}`;
         if (seen.has(key)) continue;
         seen.add(key);

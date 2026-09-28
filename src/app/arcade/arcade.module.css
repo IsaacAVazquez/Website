@@ -25,7 +25,8 @@
   --ph-green: #19f7a3;
   --ph-text: #ece4ff;
   --ph-text-dim: rgba(236, 228, 255, 0.62);
-  --ph-text-faint: rgba(236, 228, 255, 0.34);
+  /* 0.34 measured 2.6:1 on the void; 0.58 clears 4.5:1 and still sits under dim. */
+  --ph-text-faint: rgba(236, 228, 255, 0.58);
 
   position: relative;
   isolation: isolate;
