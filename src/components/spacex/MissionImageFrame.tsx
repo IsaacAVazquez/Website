@@ -1,4 +1,5 @@
 import { type ReactNode, useEffect, useMemo, useState } from "react";
+import Image from "next/image";
 import { Rocket } from "lucide-react";
 
 interface MissionImageFrameProps {
@@ -39,6 +40,11 @@ function sanitizeMissionImageSrc(value: string | null | undefined): string | nul
   }
 
   return trimmedValue;
+}
+
+/** A path under /public, as opposed to another host or an inline image. */
+function isStoredWithSite(source: string): boolean {
+  return source.startsWith("/") && !source.startsWith("//");
 }
 
 function getInitials(name: string): string {
@@ -99,15 +105,24 @@ export function MissionImageFrame({
       {activeImage ? (
         <>
           <div className={`absolute inset-0 ${imageInsetClassName}`}>
-            <img
+            <Image
               src={activeImage}
               alt={alt}
+              fill
+              // Every frame is 220px tall and one column wide at most, so the
+              // browser can ask for a file near that size. The originals run
+              // to 4096px and 2.6 MB.
+              sizes="(min-width: 1024px) 560px, 100vw"
+              // Only files stored with the site go through the optimizer.
+              // Launch Library's hosts are not in next.config's
+              // remotePatterns, so those load as they are.
+              unoptimized={!isStoredWithSite(activeImage)}
               referrerPolicy="no-referrer"
               loading={priority ? "eager" : "lazy"}
               fetchPriority={priority ? "high" : "auto"}
               decoding="async"
               draggable={false}
-              className={`h-full w-full transition-opacity duration-300 ${
+              className={`transition-opacity duration-300 ${
                 imageFit === "contain" ? "object-contain" : "object-cover"
               } ${isLoaded ? "opacity-100" : "opacity-0"}`}
               style={{ objectPosition: imagePosition }}
