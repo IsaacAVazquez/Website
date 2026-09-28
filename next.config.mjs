@@ -321,7 +321,10 @@ const nextConfig = {
   },
   // Performance optimizations
   compiler: {
-    removeConsole: process.env.NODE_ENV === "production",
+    // `true` strips every console call from server code as well as client
+    // code, which left logger.error with an empty body in production.
+    removeConsole:
+      process.env.NODE_ENV === "production" ? { exclude: ["error", "warn"] } : false,
   },
   // Enable experimental features for better performance
   experimental: {
