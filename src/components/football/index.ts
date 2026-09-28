@@ -21,5 +21,3 @@ export { SegmentedTabs } from "./SegmentedTabs";
 export type { SegmentedTabItem } from "./SegmentedTabs";
 export { FixtureLedgerSection } from "./FixtureLedger";
 export { groupFixturesByMatchday } from "./fixtureLedgerUtils";
-export { ClubDrawer } from "./ClubDrawer";
-export type { ClubDrawerClub, ClubDrawerScorer } from "./ClubDrawer";
