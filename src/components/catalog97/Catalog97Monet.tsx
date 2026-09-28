@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import { usePathname } from "next/navigation";
 
 /** The portrait's painters, in click order. Monet is the default, with no attribute. */
-const PAINTERS = ["monet", "van-gogh", "seurat", "hopper"] as const;
+const PAINTERS = ["monet", "van-gogh", "seurat", "hopper", "lichtenstein"] as const;
 
 /** Which header canvas the visitor's local hour gets (see catalog97.css). */
 function daypart(hour: number): "morning" | "midday" | "evening" {
