@@ -7,6 +7,7 @@ All notable changes to this repository are documented here. Format: `YYYY-MM-DD`
 ## 2026-09-28
 
 - Final pass on the project UI redesign ([#484](https://github.com/IsaacAVazquez/Website/pull/484)).
+- Bump react, jest, testing library, playwright, and dev types ([#485](https://github.com/IsaacAVazquez/Website/pull/485)).
 
 ---
 
