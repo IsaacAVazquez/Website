@@ -18,6 +18,18 @@ jest.mock("@/hooks/useBestBallSnapshot", () => ({
   useBestBallSnapshot: () => mockUseBestBallSnapshot(),
 }));
 
+// In the app the drawer and the tray load the first time they are needed.
+// Here they are the real components, mounted directly, so these tests stay
+// about the board and stay synchronous. The loading itself is covered in
+// DeferredPlayerDetailDrawer.test.tsx.
+jest.mock("@/components/fantasy/DeferredPlayerDetailDrawer", () => ({
+  DeferredPlayerDetailDrawer: jest.requireActual("@/components/fantasy/PlayerDetailDrawer")
+    .PlayerDetailDrawer,
+}));
+jest.mock("@/components/fantasy/DeferredCompareTray", () => ({
+  DeferredCompareTray: jest.requireActual("@/components/fantasy/CompareTray").CompareTray,
+}));
+
 // The client checks source freshness against the real clock (stale after four
 // days in draft season), so a pinned asOf rots the suite as time passes. Keep
 // every source inside the fresh window relative to the run.

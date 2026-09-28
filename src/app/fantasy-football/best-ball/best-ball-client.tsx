@@ -6,8 +6,8 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { Search } from "lucide-react";
 import { startTransition, useCallback, useEffect, useMemo, useOptimistic, useState } from "react";
 
-import { CompareTray } from "@/components/fantasy/CompareTray";
-import { PlayerDetailDrawer } from "@/components/fantasy/PlayerDetailDrawer";
+import { DeferredCompareTray } from "@/components/fantasy/DeferredCompareTray";
+import { DeferredPlayerDetailDrawer } from "@/components/fantasy/DeferredPlayerDetailDrawer";
 import { PositionFilterBar, type PositionFilterOption } from "@/components/fantasy/PositionFilterBar";
 import { useBestBallSnapshot } from "@/hooks/useBestBallSnapshot";
 import { useDebounce } from "@/hooks/useDebounce";
@@ -1353,7 +1353,7 @@ export function BestBallClient({ initialState }: BestBallClientProps) {
           chip and the modal row carry that name with the number. The modal
           adds its own consensus row from rankEcr, so the two rank spaces stay
           named and separate. */}
-      <PlayerDetailDrawer
+      <DeferredPlayerDetailDrawer
         player={detailPlayer ? withholdConsensus(detailPlayer) : null}
         publishedRank={detailPlayer ? String(detailPlayer.bestBallRank) : undefined}
         publishedRankLabel="Board rank"
@@ -1363,7 +1363,7 @@ export function BestBallClient({ initialState }: BestBallClientProps) {
         valueSignalAvailable={adpAvailable}
         onClose={() => setDetailPlayer(null)}
       />
-      <CompareTray
+      <DeferredCompareTray
         resolvePlayer={resolveComparablePlayer}
         playerDataReady={!isLoading && Boolean(snapshot)}
         pruneUnresolvedIds={false}

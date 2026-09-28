@@ -105,6 +105,26 @@ describe("bundle guards", () => {
     expect(reached).toEqual([]);
   });
 
+  // The overlays load the first time they open. A static import of one puts
+  // its code, and framer-motion with it, back in the route's first load.
+  it.each([
+    [
+      "src/app/fantasy-football/best-ball/best-ball-client.tsx",
+      ["src/components/fantasy/PlayerDetailDrawer.tsx", "src/components/fantasy/CompareTray.tsx"],
+    ],
+    [
+      "src/app/fantasy-football/best-ball/draft-tracker/draft-tracker-client.tsx",
+      ["src/components/fantasy/PlayerDetailDrawer.tsx"],
+    ],
+    [
+      "src/app/fantasy-football/draft-tracker/draft-tracker-client.tsx",
+      ["src/components/fantasy/PlayerDetailDrawer.tsx"],
+    ],
+  ])("keeps the overlays out of the static imports of %s", (client, overlays) => {
+    const reached = reachableFrom(client).files;
+    expect(overlays.filter((overlay) => reached.has(overlay))).toEqual([]);
+  });
+
   // Next does not prerender a route on the edge runtime, so an Open Graph
   // image that sets it is drawn again for every crawler that asks.
   it("leaves every Open Graph image free to prerender", () => {

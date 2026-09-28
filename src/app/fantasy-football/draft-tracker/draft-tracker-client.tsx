@@ -69,7 +69,7 @@ import {
   withoutPlayerAdp,
 } from "@/lib/fantasyUtils";
 import { DraftValuePanel, type ExpectedReturnFormState } from "@/components/fantasy/DraftValuePanel";
-import { PlayerDetailDrawer } from "@/components/fantasy/PlayerDetailDrawer";
+import { DeferredPlayerDetailDrawer } from "@/components/fantasy/DeferredPlayerDetailDrawer";
 import { RedraftDecisionPanel } from "@/components/fantasy/RedraftDecisionPanel";
 import type { Player, RedraftLineupSettings, ScoringFormat } from "@/types";
 
@@ -1826,7 +1826,7 @@ export function DraftTrackerClient() {
         ) : null}
       </div>
 
-      <PlayerDetailDrawer
+      <DeferredPlayerDetailDrawer
         player={detailPlayer}
         publishedRank={detailPlayer ? publishedDraftRank(detailPlayer) : undefined}
         boardTierCount={boardTierCount > 0 ? boardTierCount : undefined}
