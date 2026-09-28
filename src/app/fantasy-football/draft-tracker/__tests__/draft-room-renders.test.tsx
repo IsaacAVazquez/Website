@@ -141,4 +141,43 @@ describe("draft room renders", () => {
 
     expect(mockBoardRenders.mock.calls.length).toBe(rendersBefore);
   });
+
+  // The pick clock ticks once a second. Held in the room's root, each tick
+  // re-rendered the board, the value panel, and the drawer.
+  it("moves the pick clock without rendering the board again", () => {
+    jest.useFakeTimers();
+    try {
+      render(<DraftTrackerClient />);
+      expect(screen.getByRole("timer")).toHaveAccessibleName("90 seconds left on the pick clock");
+      expect(screen.getByText(/1:30 advisory/)).toBeInTheDocument();
+      const rendersBefore = mockBoardRenders.mock.calls.length;
+
+      act(() => {
+        jest.advanceTimersByTime(3000);
+      });
+
+      expect(screen.getByRole("timer")).toHaveAccessibleName("87 seconds left on the pick clock");
+      expect(screen.getByRole("timer")).toHaveTextContent("1:27");
+      expect(screen.getByText(/1:27 advisory/)).toBeInTheDocument();
+      expect(mockBoardRenders.mock.calls.length).toBe(rendersBefore);
+    } finally {
+      jest.useRealTimers();
+    }
+  });
+
+  it("reads the clock as expired once it runs out", () => {
+    jest.useFakeTimers();
+    try {
+      render(<DraftTrackerClient />);
+
+      act(() => {
+        jest.advanceTimersByTime(91_000);
+      });
+
+      expect(screen.getByRole("timer")).toHaveAccessibleName("Pick clock expired");
+      expect(screen.getByRole("timer")).toHaveTextContent("0:00");
+    } finally {
+      jest.useRealTimers();
+    }
+  });
 });
