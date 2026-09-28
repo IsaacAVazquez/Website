@@ -73,4 +73,10 @@ describe("bundle guards", () => {
     ].map((entry) => [entry, packagesReachableFrom(entry).get("tailwind-merge")]);
     expect(reached.filter(([, importer]) => importer !== undefined)).toEqual([]);
   });
+
+  // The fantasy components are imported from their own files. A barrel here
+  // gave each draft room the drawers, trays, and panels of the other rooms.
+  it("has no fantasy barrel", () => {
+    expect(existsSync(path.join(root, "src/components/fantasy/index.ts"))).toBe(false);
+  });
 });

@@ -7,7 +7,8 @@ import { useCallback, useEffect, useMemo, useRef, useState, useSyncExternalStore
 import { useReducedMotion } from "framer-motion";
 import { Redo2, RotateCcw, Undo2 } from "lucide-react";
 import { Breadcrumbs } from "@/components/navigation/Breadcrumbs";
-import { PlayerDetailDrawer, type ExpectedReturnFormState } from "@/components/fantasy";
+import type { ExpectedReturnFormState } from "@/components/fantasy/DraftValuePanel";
+import { PlayerDetailDrawer } from "@/components/fantasy/PlayerDetailDrawer";
 import { useBestBallSnapshot } from "@/hooks/useBestBallSnapshot";
 import {
   BEST_BALL_CONTESTS,

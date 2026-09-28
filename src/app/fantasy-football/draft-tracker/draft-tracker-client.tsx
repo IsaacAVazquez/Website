@@ -63,12 +63,9 @@ import {
   shortName,
   withoutPlayerAdp,
 } from "@/lib/fantasyUtils";
-import {
-  DraftValuePanel,
-  PlayerDetailDrawer,
-  RedraftDecisionPanel,
-  type ExpectedReturnFormState,
-} from "@/components/fantasy";
+import { DraftValuePanel, type ExpectedReturnFormState } from "@/components/fantasy/DraftValuePanel";
+import { PlayerDetailDrawer } from "@/components/fantasy/PlayerDetailDrawer";
+import { RedraftDecisionPanel } from "@/components/fantasy/RedraftDecisionPanel";
 import type { Player, RedraftLineupSettings, ScoringFormat } from "@/types";
 
 const subscribeToHydration = () => () => undefined;

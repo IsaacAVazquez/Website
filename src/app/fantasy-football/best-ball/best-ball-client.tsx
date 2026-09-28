@@ -6,12 +6,9 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { Search } from "lucide-react";
 import { startTransition, useCallback, useEffect, useMemo, useOptimistic, useState } from "react";
 
-import {
-  CompareTray,
-  PlayerDetailDrawer,
-  PositionFilterBar,
-  type PositionFilterOption,
-} from "@/components/fantasy";
+import { CompareTray } from "@/components/fantasy/CompareTray";
+import { PlayerDetailDrawer } from "@/components/fantasy/PlayerDetailDrawer";
+import { PositionFilterBar, type PositionFilterOption } from "@/components/fantasy/PositionFilterBar";
 import { useBestBallSnapshot } from "@/hooks/useBestBallSnapshot";
 import { useDebounce } from "@/hooks/useDebounce";
 import { PROJECT_PRESS } from "@/constants/projectPress";
