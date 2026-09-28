@@ -3,6 +3,7 @@
 import React, { useEffect, useMemo } from "react";
 import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import { ResearchAssetHeader } from "./ResearchAssetHeader";
+import { ResearchLoading } from "./ResearchLoading";
 import { ResearchPosition } from "./ResearchPosition";
 import { ResearchOverview } from "./ResearchOverview";
 import { FinancialStatementsPanel } from "./FinancialStatementsPanel";
@@ -25,7 +26,7 @@ import type {
 } from "@/types/investment";
 import type { ResearchTab } from "@/app/investments/investments-state";
 
-interface Props {
+export interface ResearchSectionProps {
   symbol: string;
   activeTab: ResearchTab;
   onTabChange: (tab: ResearchTab) => void;
@@ -66,13 +67,17 @@ function isTabAvailable(tab: ResearchTab, capabilities: InvestmentCapabilities):
   }
 }
 
-export function ResearchSection({
+/**
+ * The research view for a picked symbol. ResearchSection loads it on demand
+ * and renders the empty state itself, so this always has a symbol.
+ */
+export function ResearchWorkspace({
   symbol,
   activeTab,
   onTabChange,
   portfolioSymbols = [],
   position = null,
-}: Props) {
+}: ResearchSectionProps) {
   const shouldReduceMotion = useReducedMotion();
   const {
     error: symbolError,
@@ -110,25 +115,6 @@ export function ResearchSection({
     (t) => onTabChange(t.key),
   );
 
-  if (!symbol) {
-    return (
-      <section
-        id="research-section"
-        aria-label="Stock research"
-        className="scroll-mt-28 border border-dashed border-[var(--c97-rule)] bg-[color-mix(in_srgb,var(--c97-surface)_92%,var(--c97-panel))] px-6 py-12 text-center "
-      >
-        <p className="invest-rail-section-label">Research</p>
-        <p className="text-sm font-semibold text-[var(--c97-ink)]">
-          Pick a holding to research
-        </p>
-        <p className="mx-auto mt-2 max-w-md text-sm text-[var(--c97-ink-2)]">
-          Click <strong className="text-[var(--c97-ink)]">Research</strong> on any holding above
-          to load the deep-dive view with fundamentals, valuation, growth, and a price chart.
-        </p>
-      </section>
-    );
-  }
-
   return (
     <section
       id="research-section"
@@ -136,14 +122,7 @@ export function ResearchSection({
       className="scroll-mt-28 space-y-5"
     >
       {showLoadingState ? (
-        <div className="border border-[var(--c97-rule)] bg-[color-mix(in_srgb,var(--c97-surface)_92%,var(--c97-panel))] px-6 py-16 text-center ">
-          <p className="text-sm font-semibold text-[var(--c97-ink)]">
-            Loading research data…
-          </p>
-          <p className="mt-2 text-sm text-[var(--c97-label)]">
-            Pulling the latest curated snapshot for {symbol.toUpperCase()}.
-          </p>
-        </div>
+        <ResearchLoading symbol={symbol} />
       ) : showCuratedOnlyState ? (
         <div className="border border-[color-mix(in_srgb,var(--c97-warning)_35%,var(--c97-rule))] bg-[color-mix(in_srgb,var(--c97-warning)_10%,var(--c97-panel))] px-5 py-6 text-center ">
           <p className="text-sm font-semibold text-[var(--c97-ink)]">

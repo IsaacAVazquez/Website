@@ -126,6 +126,17 @@ describe("bundle guards", () => {
       "src/app/spacex-mission-control/spacex-mission-control-client.tsx",
       ["src/components/spacex/MissionDrawer.tsx"],
     ],
+    ["src/app/score-pools/score-pools-client.tsx", ["src/app/score-pools/fixture-detail-drawer.tsx"]],
+    // The research workspace shows nothing until a symbol is picked, and the
+    // default is no symbol, so the section loads it on demand.
+    [
+      "src/components/investments/ResearchSection.tsx",
+      [
+        "src/components/investments/ResearchWorkspace.tsx",
+        "src/components/investments/ResearchOverview.tsx",
+        "src/components/investments/PriceChartPanel.tsx",
+      ],
+    ],
   ])("keeps the overlays out of the static imports of %s", (client, overlays) => {
     const reached = reachableFrom(client).files;
     expect(overlays.filter((overlay) => reached.has(overlay))).toEqual([]);
