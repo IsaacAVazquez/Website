@@ -6,12 +6,12 @@
 // copyable submission table underneath and the per-match detail drawer.
 
 import { useCallback, useMemo, useState } from "react";
+import dynamic from "next/dynamic";
 import Link from "next/link";
 import { useScorePools } from "@/hooks/useScorePools";
 import { analyzePoolFixtures, type PoolFixtureAnalysis } from "@/lib/scorePools/poolAnalysis";
 import type { Scoreline } from "@/lib/scorePools";
 import type { ScorePoolsSnapshot, SnapshotFixture } from "@/types/scorePools";
-import { FixtureDetailDrawer } from "./fixture-detail-drawer";
 import {
   ConfidenceChip,
   EpMeter,
@@ -22,6 +22,13 @@ import {
   formatPoints,
   formatScoreline,
 } from "./score-pools-ui";
+
+// Loaded when a fixture is opened. `loading` gives the drawer its own Suspense
+// boundary, so the first open cannot suspend up to the route's loading.tsx.
+const FixtureDetailDrawer = dynamic(
+  () => import("./fixture-detail-drawer").then((module) => module.FixtureDetailDrawer),
+  { loading: () => null },
+);
 
 interface ScorePoolsClientProps {
   snapshot: ScorePoolsSnapshot;
