@@ -1,11 +1,13 @@
-"""Portrait-tuned Van Gogh / Seurat / Hopper renderings of the home headshot.
+"""Portrait-tuned Van Gogh / Seurat / Hopper / Lichtenstein renderings of the home headshot.
 
 A portrait variant of scripts/paint_plates.py: the plate styles were tuned for
 landscapes, so here stroke and dot sizes shrink over the face, the palettes
 carry skin tones, and Hopper's planes come from a k-means posterize with the
 figure's cast shadow on the wall instead of the matchday's hand-drawn shapes.
+Lichtenstein reuses that posterize, prints each plane as one flat primary or a
+Ben-Day dot screen, and outlines every plane in black.
 
-    python3 scripts/paint_headshot.py vangogh|seurat|hopper public/images/headshot-home.webp OUT.png
+    python3 scripts/paint_headshot.py vangogh|seurat|hopper|lichtenstein public/images/headshot-home.webp OUT.png
     cwebp -m 6 -q Q -resize 720 1080 OUT.png -o public/images/home/headshot-<style>.webp
 """
 import sys
@@ -433,7 +435,83 @@ def hopper():
     return img.filter(ImageFilter.GaussianBlur(0.6))
 
 
-PAINTERS = {"vangogh": vangogh, "seurat": seurat, "hopper": hopper}
+# --------------------------------------------------------------------------
+# Lichtenstein
+# --------------------------------------------------------------------------
+
+# Flat printer's primaries on newsprint, the way his comic panels print.
+LICH_INKS = np.array([
+    [248, 244, 232],   # 0 paper
+    [248, 244, 232],   # 1 skin: red Ben-Day dots on paper
+    [24, 86, 172],     # 2 blue
+    [22, 20, 24],      # 3 black
+    [250, 212, 36],    # 4 yellow
+    [248, 244, 232],   # 5 background: blue Ben-Day dots on paper
+], float)
+LICH_RED = np.array([216, 40, 46], float)
+
+
+def ben_day(spacing, radius):
+    """A Ben-Day screen: dots on a lattice turned 45 degrees, True inside a dot."""
+    u, v = (XX + YY) / np.sqrt(2), (XX - YY) / np.sqrt(2)
+    return np.hypot(u % spacing - spacing / 2, v % spacing - spacing / 2) < radius
+
+
+def lichtenstein():
+    src = SRC_IMG.resize((W, H), Image.LANCZOS)
+    fig = figure_mask(src.filter(ImageFilter.MedianFilter(5)))
+    body = src
+    for size in (7, 7):
+        body = body.filter(ImageFilter.MedianFilter(size))
+    body = np.asarray(body, float)
+
+    # The figure posterized into a dozen colours, each printed as one flat ink.
+    # The beard and the navy suit are the same cool dark, so position splits
+    # them: above the collar darks print black and lights print as dotted skin,
+    # with blue only for the hair's highlights, as his dark hair always has.
+    fp = body[fig]
+    cf = kmeans(fp[rng.choice(len(fp), 30000, replace=False)], 12)
+    post = cf[assign(body.reshape(-1, 3), cf).reshape(H, W)]
+    lum = post @ [0.299, 0.587, 0.114] / 255
+    head = (FACE > 0.3) & (YY < 835 * S)
+    collar = head & (YY > 700 * S) & (lum > 0.6) & (post[..., 2] > post[..., 0] * 1.03)
+    ink = np.where(lum < 0.1, 3, np.where(lum < 0.45, 2, 0))
+    head_ink = np.where(lum < 0.2, 3, 1)
+    head_ink = np.where((YY < 440 * S) & (lum < 0.36), np.where(lum < 0.2, 3, 2), head_ink)
+    ink = np.where(head & ~collar, head_ink, ink)
+
+    # Behind him, the brightest panels of the building become flat yellow and
+    # the rest a field of blue dots. The wall is averaged in tall columns with
+    # the figure masked out, so the panels stand straight like its verticals.
+    grey = np.asarray(src.convert("L"), float)
+    w = (~fig).astype(float)
+    tall = lambda z: np.asarray(Image.fromarray(z.astype("float32"), "F").resize((W // 10, 5), Image.BOX)
+                                .resize((W, H), Image.BILINEAR), float)
+    wall = tall(grey * w) / (tall(w) + 1e-6)
+    bright = wall > np.percentile(wall[~fig], 75)
+    ink = np.where(fig, ink, np.where(bright, 4, 5))
+    ink = smooth_labels(ink, len(LICH_INKS), 3)
+
+    out = LICH_INKS[ink]
+    out[(ink == 1) & ben_day(11, 3.4)] = LICH_RED
+    out[(ink == 5) & ben_day(13, 3.6)] = LICH_INKS[2]
+
+    # Heavy black outlines wherever two inks meet, then the features drawn in
+    # from the photo's local darks: brows, eyes, nostrils, and the mouth.
+    edge = np.zeros((H, W), bool)
+    edge[1:, :] |= ink[1:, :] != ink[:-1, :]
+    edge[:, 1:] |= ink[:, 1:] != ink[:, :-1]
+    edge = np.asarray(Image.fromarray((edge * 255).astype("uint8")).filter(ImageFilter.MaxFilter(5)), float) > 127
+    lum = np.asarray(src.convert("L").filter(ImageFilter.GaussianBlur(1.2)), float) / 255
+    local = np.asarray(src.convert("L").filter(ImageFilter.GaussianBlur(9)), float) / 255
+    feat = (lum < local - 0.05) & (FACE > 0.45) & (ink == 1)
+    feat = Image.fromarray((feat * 255).astype("uint8")).filter(ImageFilter.MedianFilter(5))
+    feat = np.asarray(feat.filter(ImageFilter.MaxFilter(5)), float) > 127
+    out[edge | feat] = LICH_INKS[3]
+    return Image.fromarray(np.clip(out, 0, 255).astype("uint8")).filter(ImageFilter.GaussianBlur(0.5))
+
+
+PAINTERS = {"vangogh": vangogh, "seurat": seurat, "hopper": hopper, "lichtenstein": lichtenstein}
 img = PAINTERS[STYLE]()
 img.save(OUT)
 print(img.size)

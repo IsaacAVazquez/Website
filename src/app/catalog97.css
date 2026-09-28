@@ -2382,6 +2382,10 @@ select.c97-field {
   --c97-paint: url("/images/home/headshot-hopper.webp");
 }
 
+[data-c97-paint="portrait"][data-c97-painter="lichtenstein"] {
+  --c97-paint: url("/images/home/headshot-lichtenstein.webp");
+}
+
 [data-c97-paint]::before {
   content: "";
   position: absolute;
