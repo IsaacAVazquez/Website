@@ -18,7 +18,7 @@ import { calculateDraftOrder, useDraftState } from "./hooks/useDraftState";
 import { useDraftTelemetry } from "./hooks/useDraftTelemetry";
 import { useDraftTimer } from "./hooks/useDraftTimer";
 import { useFantasySnapshot } from "@/hooks/useFantasySnapshot";
-import { usePlayerNotes } from "@/hooks/usePlayerNotes";
+import { loadNotes } from "@/lib/fantasyLocal";
 import {
   computeDraftAnalytics,
   isPlayerValueAtPick,
@@ -247,7 +247,6 @@ export function DraftTrackerClient() {
     persistenceError,
   } = useDraftState();
 
-  const notes = usePlayerNotes();
   const telemetry = useDraftTelemetry(draftState.draftId);
 
   // A running room stays immutable behind New room. Setup can preview another
@@ -829,7 +828,9 @@ export function DraftTrackerClient() {
   }
 
   function handleExport(format: "csv" | "recap-csv" | "json") {
-    exportDraftResults(format, { notes: notes.notes, picks: picksForDisplay });
+    // Read at export time. Subscribing to the notes store here re-rendered the
+    // whole room on every keystroke in a note.
+    exportDraftResults(format, { notes: loadNotes(), picks: picksForDisplay });
     const label =
       format === "recap-csv" ? "team recap CSV" : format === "json" ? "JSON" : "picks CSV";
     setExportToast(`Exported ${label}.`);
