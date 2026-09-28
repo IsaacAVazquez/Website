@@ -10,13 +10,23 @@ export function formatCurrency(value: number, maximumFractionDigits = 0): string
   }).format(Math.round(value * 10 ** maximumFractionDigits) / 10 ** maximumFractionDigits);
 }
 
+const COMPACT_SUFFIXES = ["", "K", "M", "B", "T"];
+
+/**
+ * "$950", "$100K", "$1.5M", "-$22.5K". Written out by hand because `Intl`
+ * compact currency prints "$100.0K" on Node 20 and "$100K" in browsers, and
+ * that difference breaks hydration wherever the server renders one.
+ */
 export function formatCompactCurrency(value: number): string {
-  return new Intl.NumberFormat("en-US", {
-    style: "currency",
-    currency: "USD",
-    notation: "compact",
-    maximumFractionDigits: 1,
-  }).format(value);
+  const sign = value < 0 ? "-" : "";
+  let scaled = Math.abs(value);
+  let tier = 0;
+  // Step up a unit whenever rounding would print a thousand of this one.
+  while (tier < COMPACT_SUFFIXES.length - 1 && Math.round(scaled * 10) / 10 >= 1000) {
+    scaled /= 1000;
+    tier += 1;
+  }
+  return `${sign}$${Math.round(scaled * 10) / 10}${COMPACT_SUFFIXES[tier]}`;
 }
 
 export function formatPercent(value: number, fractionDigits = 1): string {

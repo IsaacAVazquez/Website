@@ -42,7 +42,7 @@ Leave radius and shadow at zero, since the system has none.
 ## One idiomatic composition
 
 ```jsx
-const { PreviewProvider, SurfaceCard, Kicker, StatCard } = window.WorkingInstrument;
+const { PreviewProvider, SurfaceCard, MetricCard } = window.WorkingInstrument;
 
 <PreviewProvider>
   <section className="c97-band">
@@ -50,11 +50,10 @@ const { PreviewProvider, SurfaceCard, Kicker, StatCard } = window.WorkingInstrum
       <p className="c97-kicker">Premier League</p>
       <h2 className="c97-serif c97-h2" style={{ marginTop: "var(--c97-sp-2)" }}>Season pulse</h2>
       <SurfaceCard>
-        <Kicker variant="dot">Arsenal</Kicker>
         <div style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: "var(--c97-sp-3)", marginTop: "var(--c97-sp-3)" }}>
-          <StatCard variant="compact" eyebrow="Points" metric="86" detail="1st of 20"
+          <MetricCard label="Points" value="86" detail="1st of 20"
             icon={<svg width="18" height="18" stroke="currentColor" fill="none" viewBox="0 0 24 24"><path d="M12 2v20M2 12h20"/></svg>} />
-          <StatCard variant="compact" eyebrow="Goal diff" metric="+57" detail="Best in the league"
+          <MetricCard label="Goal diff" value="+57" detail="Best in the league"
             icon={<svg width="18" height="18" stroke="currentColor" fill="none" viewBox="0 0 24 24"><path d="M5 12h14"/></svg>} />
         </div>
       </SurfaceCard>

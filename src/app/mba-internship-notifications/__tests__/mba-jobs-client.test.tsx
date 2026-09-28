@@ -231,9 +231,13 @@ describe("MBAJobsClient", () => {
     ).not.toBeInTheDocument();
     expect(atlassianButton).toHaveStyle("background: var(--c97-field)");
     expect(atlassianDot).not.toBeNull();
-    expect(atlassianDot).toHaveStyle(
-      "background: color-mix(in srgb, var(--c97-ink) 68%, var(--c97-rule) 32%)"
+    // jsdom drops color-mix() values, so the active dot's category colour can't be
+    // read back from its style. Check the colour it is given and that the active dot
+    // does not fall back to the inactive rule colour.
+    expect(MBA_COMPANIES.find((company) => company.id === "atlassian")?.color).toBe(
+      "color-mix(in srgb, var(--c97-ink) 68%, var(--c97-rule) 32%)"
     );
+    expect(atlassianDot).not.toHaveStyle("background: var(--c97-rule)");
     expect(chipRail).toHaveClass("flex-wrap");
     expect(chipRail).not.toHaveClass("shrink-0");
   });
@@ -385,6 +389,32 @@ describe("MBAJobsClient", () => {
     expect(mockPush).toHaveBeenLastCalledWith("/mba-internship-notifications", {
       scroll: false,
     });
+  });
+
+  it("paginates the live grid and resets to the first page when a filter changes", () => {
+    const jobs = Array.from({ length: 75 }, (_, i) =>
+      buildJob({
+        id: `job-${i}`,
+        title: `Role ${i}`,
+        postedAt: `2026-04-${String((i % 27) + 1).padStart(2, "0")}T10:00:00.000Z`,
+      })
+    );
+    mockUseMBAJobs.mockReturnValue(buildHookValue({ jobs }));
+
+    render(<MBAJobsClient initialState={DEFAULT_MBA_JOBS_STATE} />);
+
+    const liveJobsGrid = screen.getByTestId("live-jobs-grid");
+    expect(within(liveJobsGrid).getAllByRole("heading", { level: 3 })).toHaveLength(60);
+    expect(screen.getByRole("button", { name: "Show more (60 of 75 shown)" })).toBeVisible();
+
+    fireEvent.click(screen.getByRole("button", { name: /Show more/ }));
+    expect(within(liveJobsGrid).getAllByRole("heading", { level: 3 })).toHaveLength(75);
+    expect(screen.queryByRole("button", { name: /Show more/ })).not.toBeInTheDocument();
+
+    // A filter change (not a data refresh) starts back at the first page.
+    fireEvent.change(screen.getByLabelText("Sort"), { target: { value: "oldest" } });
+    expect(within(liveJobsGrid).getAllByRole("heading", { level: 3 })).toHaveLength(60);
+    expect(screen.getByRole("button", { name: "Show more (60 of 75 shown)" })).toBeVisible();
   });
 
   it("renders outbound search shortcuts and toggles external leads through URL state", () => {

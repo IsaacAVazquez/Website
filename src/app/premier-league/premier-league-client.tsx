@@ -9,6 +9,7 @@ import {
 } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { ExternalLink } from "lucide-react";
+import { DISPLAY_TIME_ZONE } from "@/lib/date-formatters";
 import {
   MetricCard,
   CrestAvatar,
@@ -71,7 +72,12 @@ function zoneChipStyle(zone: LeagueZone): CSSProperties {
 }
 
 const LAST_UPDATED_FORMATTER = new Intl.DateTimeFormat("en-US", {
-  month: "short", day: "numeric", hour: "numeric", minute: "2-digit",
+  month: "short",
+  day: "numeric",
+  hour: "numeric",
+  minute: "2-digit",
+  timeZone: DISPLAY_TIME_ZONE,
+  timeZoneName: "short",
 });
 
 function formatGeneratedAt(value: string): string {

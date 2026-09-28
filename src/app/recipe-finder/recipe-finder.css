@@ -58,6 +58,10 @@
 .c97-recipe-quickadd {
   display: inline-flex;
   min-height: 44px;
+  /* The icon-only "add ingredient" submit button reuses this class and needs
+     a floor on both axes; the text quick-picks are already wider than this. */
+  min-width: 44px;
+  justify-content: center;
   align-items: center;
   gap: var(--c97-sp-1);
   padding: 0 var(--c97-sp-2);

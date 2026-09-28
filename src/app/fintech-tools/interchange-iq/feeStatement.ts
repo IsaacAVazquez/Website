@@ -28,21 +28,25 @@ export interface FeeStatementRow {
 
 /**
  * Put every processor's monthly fee on one scale set by the most expensive
- * fee, and mark the cheapest. `calcProcessorResults` already sorts
- * cheapest first, but this finds the minimum itself rather than assuming
- * that order.
+ * fee, and mark every processor tied for cheapest. `calcProcessorResults`
+ * already sorts cheapest first, but this finds the minimum itself rather
+ * than assuming that order. Two processors (Stripe IC+ and Checkout.com)
+ * share the same interchange-plus markup, so their fee is the same float at
+ * every input, not just close, but the comparison still uses a cents
+ * tolerance rather than `===` so a near-tie from a future rate change reads
+ * the same way.
  */
+const CENTS = 100;
+
 export function feeStatement(results: ProcessorResult[]): FeeStatementRow[] {
   if (results.length === 0) return [];
 
   const fees = results.map((result) => result.monthlyFee);
   const maxFee = Math.max(...fees);
-  const minFee = Math.min(...fees);
-  let cheapestMarked = false;
+  const minFeeCents = Math.round(Math.min(...fees) * CENTS);
 
   return results.map((result) => {
-    const isCheapest = !cheapestMarked && result.monthlyFee === minFee;
-    if (isCheapest) cheapestMarked = true;
+    const isCheapest = Math.round(result.monthlyFee * CENTS) === minFeeCents;
 
     const rawFraction = maxFee > 0 ? result.monthlyFee / maxFee : 0;
     const fraction = rawFraction > 0 ? Math.max(rawFraction, MIN_VISIBLE_FRACTION) : 0;

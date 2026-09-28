@@ -1,5 +1,6 @@
 import type { ReactNode } from "react";
 import { InstrumentTape, type InstrumentTapeItem } from "@/components/editorial/InstrumentTape";
+import { DISPLAY_TIME_ZONE } from "@/lib/date-formatters";
 
 /**
  * Minimal fixture shape ResultsTape needs — deliberately narrower than
@@ -21,6 +22,8 @@ const KICKOFF_FORMATTER = new Intl.DateTimeFormat("en-US", {
   weekday: "short",
   hour: "numeric",
   minute: "2-digit",
+  timeZone: DISPLAY_TIME_ZONE,
+  timeZoneName: "short",
 });
 
 function teamLabel(team: { shortName: string; tla?: string | null }): string {

@@ -1,11 +1,14 @@
 import { CrestAvatar } from "./CrestAvatar";
 import type { GenericFixture } from "./FixtureCard";
 import type { FixtureLedgerGroup } from "./fixtureLedgerUtils";
+import { DISPLAY_TIME_ZONE } from "@/lib/date-formatters";
 
 const KICKOFF_FORMATTER = new Intl.DateTimeFormat("en-US", {
   weekday: "short",
   hour: "numeric",
   minute: "2-digit",
+  timeZone: DISPLAY_TIME_ZONE,
+  timeZoneName: "short",
 });
 
 function formatKickoff(utcDate: string): string {

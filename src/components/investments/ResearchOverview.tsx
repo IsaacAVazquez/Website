@@ -4,6 +4,7 @@ import { ExternalLink } from "lucide-react";
 import React from "react";
 import { TerminalPanel } from "./TerminalPanel";
 import { useStockData } from "@/hooks/useStockData";
+import { DISPLAY_TIME_ZONE } from "@/lib/date-formatters";
 import type {
   CompanyInfo,
   GrowthData,
@@ -20,11 +21,19 @@ interface Props {
   showNews?: boolean;
 }
 
+// `raw` (a news item's reportDate) is a full instant from the provider feed,
+// not a bare date, so it's pinned to the display zone rather than the
+// runtime's own zone.
 function formatDate(raw: string | undefined): string {
   if (!raw) return "";
   const d = new Date(raw);
   if (isNaN(d.getTime())) return raw;
-  return d.toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" });
+  return d.toLocaleDateString("en-US", {
+    month: "short",
+    day: "numeric",
+    year: "numeric",
+    timeZone: DISPLAY_TIME_ZONE,
+  });
 }
 
 function newsMonogram(item: NewsItem): string {

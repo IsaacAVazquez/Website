@@ -1,6 +1,18 @@
 @import "tailwindcss";
 
 /*
+ * Tailwind scans the whole repository for class names. The docs, the design
+ * records, and the design-sync bundle still quote retired Working Instrument
+ * classes, so leave them out of the scan and they stop emitting dead utilities.
+ * content/ stays in, since the MDX articles can carry classes.
+ */
+@source not "../../docs";
+@source not "../../.impeccable";
+@source not "../../.design-sync";
+@source not "../../*.md";
+@source not "../../eslint.ds-adherence.mjs";
+
+/*
  * Load the JS config. Tailwind v4 does not auto-detect tailwind.config.ts,
  * and without this directive the config (darkMode: "class", min-h/min-w-touch,
  * the fluid text-* scale, the zeroed radius and shadow scales) is silently

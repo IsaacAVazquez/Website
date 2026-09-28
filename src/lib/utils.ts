@@ -36,11 +36,14 @@ export function slugify(value: string): string {
 /**
  * Compact age label for a timestamp: "5m ago", "3h ago", "2d ago".
  * Sub-minute ages round up to "1m ago"; unparseable input reads "Unknown".
+ * Takes "now" as a parameter (from useClientNow(), or Date.now() from inside
+ * an effect) instead of reading the clock itself, so a render-path caller
+ * can't disagree with the server on the first paint.
  */
-export function relativeAge(iso: string): string {
+export function relativeAge(iso: string, now: number): string {
   const date = new Date(iso);
   if (Number.isNaN(date.getTime())) return "Unknown";
-  const diffMs = Date.now() - date.getTime();
+  const diffMs = now - date.getTime();
   const minutes = Math.floor(diffMs / 60_000);
   if (minutes < 60) return `${Math.max(1, minutes)}m ago`;
   const hours = Math.floor(minutes / 60);

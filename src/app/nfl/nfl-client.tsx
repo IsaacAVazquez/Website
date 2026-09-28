@@ -3,6 +3,7 @@
 import { startTransition, useEffect, useMemo, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { CircleAlert, ExternalLink, Flag } from "lucide-react";
+import { DATE_ONLY_TIME_ZONE } from "@/lib/date-formatters";
 import { MetricCard, CrestAvatar, TeamResultPill, FixtureCard } from "@/components/football";
 import {
   Catalog97ProjectHero,
@@ -193,6 +194,8 @@ export function NflClient({ initialState, summary, initialTeamSnapshot }: NflCli
         month: "short",
         day: "numeric",
         year: "numeric",
+        // summary.updatedAt is a YYYY-MM-DD date-only value (parses to UTC midnight).
+        timeZone: DATE_ONLY_TIME_ZONE,
       }).format(new Date(summary.updatedAt)),
     [summary.updatedAt]
   );
@@ -349,8 +352,7 @@ export function NflClient({ initialState, summary, initialTeamSnapshot }: NflCli
       <Catalog97ProjectHero
         ink={lead}
         title="NFL Pulse"
-        standfirst={standfirst}
-        meta="Conference standings, playoff seeding, and stat leaders will appear here once the next snapshot is published."
+        standfirst={`${standfirst} Conference standings, playoff seeding, and stat leaders will appear here once the next snapshot is published.`}
       >
         {heroSignature}
       </Catalog97ProjectHero>

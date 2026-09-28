@@ -15,6 +15,7 @@ import type { ResearchTab } from "@/app/investments/investments-state";
 import { InstrumentTape, type InstrumentTapeItem } from "@/components/editorial/InstrumentTape";
 import { Catalog97ProjectHero } from "@/components/catalog97/Catalog97ProjectHero";
 import { formatCurrency, formatPercent } from "@/lib/investmentFormatting";
+import { DISPLAY_TIME_ZONE } from "@/lib/date-formatters";
 import { holdingColor } from "./holdingPalette";
 import type { InvestmentsPriceHealth } from "@/types/investment";
 import styles from "@/app/investments/investments.module.css";
@@ -40,11 +41,20 @@ interface NavItem {
   pill?: string;
 }
 
+// `raw` is the index snapshot's `lastUpdated`, a full instant ("2026-09-15T01:03:45+00:00"),
+// not a bare date, so it needs the display zone pinned rather than the
+// runtime's own zone. Unpinned, this is the confirmed "Sep 15" (server, UTC)
+// vs "Sep 14" (a Pacific browser) hydration mismatch.
 function formatDatasetDate(raw: string | null | undefined): string {
   if (!raw) return "—";
   const d = new Date(raw);
   if (Number.isNaN(d.getTime())) return raw;
-  return d.toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" });
+  return d.toLocaleDateString("en-US", {
+    month: "short",
+    day: "numeric",
+    year: "numeric",
+    timeZone: DISPLAY_TIME_ZONE,
+  });
 }
 
 export function InvestmentsDashboard({

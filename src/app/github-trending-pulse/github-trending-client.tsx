@@ -15,6 +15,7 @@ import { EmptyPanel } from "@/components/football/EmptyPanel";
 import { Catalog97ProjectHero } from "@/components/catalog97/Catalog97ProjectHero";
 import { PROJECT_PRESS } from "@/constants/projectPress";
 import { relativeAge } from "@/lib/utils";
+import { useClientNow } from "@/hooks/useClientNow";
 import {
   formatGitHubCompactNumber,
   sortGitHubTrendingRepositories,
@@ -39,6 +40,7 @@ import {
 } from "./github-trending-state";
 import { StarLogBoard } from "./StarLogBoard";
 import { languageShares } from "./star-log";
+import { SHORT_DATE_FORMATTER, DATE_ONLY_TIME_ZONE, formatDateTime } from "@/lib/date-formatters";
 import "./github-trending-pulse.css";
 
 interface GitHubTrendingClientProps {
@@ -46,16 +48,20 @@ interface GitHubTrendingClientProps {
   snapshot: GitHubTrendingClientSnapshot;
 }
 
-const DATE_FORMATTER = new Intl.DateTimeFormat("en-US", {
+// weeklyStarsBaselineDate is a bare "YYYY-MM-DD" key (UTC midnight), never an
+// instant, so it formats in UTC rather than the display zone to keep its day.
+const DATE_ONLY_FORMATTER = new Intl.DateTimeFormat("en-US", {
   month: "short",
   day: "numeric",
+  timeZone: DATE_ONLY_TIME_ZONE,
 });
 
 function formatShortDate(isoOrDateKey: string): string {
-  const value = isoOrDateKey.length === 10 ? `${isoOrDateKey}T00:00:00Z` : isoOrDateKey;
+  const isDateOnly = isoOrDateKey.length === 10;
+  const value = isDateOnly ? `${isoOrDateKey}T00:00:00Z` : isoOrDateKey;
   const date = new Date(value);
   if (Number.isNaN(date.getTime())) return "Unknown";
-  return DATE_FORMATTER.format(date);
+  return isDateOnly ? DATE_ONLY_FORMATTER.format(date) : SHORT_DATE_FORMATTER.format(date);
 }
 
 function formatDelta(repo: GitHubTrendingClientRepository): string {
@@ -111,6 +117,7 @@ function handleRowKeyDown(event: KeyboardEvent<HTMLTableRowElement>, onToggle: (
 export function GitHubTrendingClient({ initialState, snapshot }: GitHubTrendingClientProps) {
   const router = useRouter();
   const searchParams = useSearchParams();
+  const now = useClientNow();
   const hasManagedParams =
     searchParams.get("view") !== null ||
     searchParams.get("segment") !== null ||
@@ -183,7 +190,9 @@ export function GitHubTrendingClient({ initialState, snapshot }: GitHubTrendingC
   )[0];
   const standfirst =
     "I keep a daily snapshot of active public repositories by language and topic, and I wanted the board to read the way a git log does, so each repository's weekly star movement reads as a bar you can compare at a glance. The strip across the top shows which languages picked up the week's stars.";
-  const meta = `${snapshot.sourceLabel} · updated ${relativeAge(snapshot.generatedAt)} · ${snapshot.activityWindowDays}d active repo window · ${measuredShare}% of deltas measured`;
+  const updatedLabel =
+    now === null ? formatDateTime(snapshot.generatedAt) : relativeAge(snapshot.generatedAt, now);
+  const meta = `${snapshot.sourceLabel} · updated ${updatedLabel} · ${snapshot.activityWindowDays}d active repo window · ${measuredShare}% of deltas measured`;
 
   return (
     <>

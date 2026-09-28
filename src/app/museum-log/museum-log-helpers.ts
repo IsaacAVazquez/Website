@@ -7,6 +7,7 @@ import type {
   MuseumTypeFilter,
   MuseumRegionFilter,
 } from "@/types/museum";
+import { DATE_ONLY_TIME_ZONE, DISPLAY_TIME_ZONE } from "@/lib/date-formatters";
 
 export interface AdmissionStubLines {
   name: string;
@@ -25,7 +26,12 @@ export interface VisitStampParts {
   year: string;
 }
 
-const STAMP_MONTH_FMT = new Intl.DateTimeFormat("en-US", { month: "short" });
+// The stamp shows a visit's calendar day only, so it is pinned like every
+// other date-only field in this file (see the formatters below).
+const STAMP_MONTH_FMT = new Intl.DateTimeFormat("en-US", {
+  month: "short",
+  timeZone: DATE_ONLY_TIME_ZONE,
+});
 
 export type MuseumExhibitStatus = "current" | "upcoming" | "ended";
 
@@ -46,39 +52,41 @@ export function getMuseumExhibitStatus(
 
 // ─── Date formatters ──────────────────────────────────────────────────────────
 
+// All three date-only strings here ("2026-06-15": exhibit dates, visit dates,
+// list updatedAt) parse as UTC midnight per spec, so pinning the formatter to
+// the same zone (DATE_ONLY_TIME_ZONE) always prints the calendar day that was
+// stored, on the server and on the client, regardless of either one's zone.
 const FULL_DATE_FMT = new Intl.DateTimeFormat("en-US", {
   month: "long",
   day: "numeric",
   year: "numeric",
+  timeZone: DATE_ONLY_TIME_ZONE,
 });
 const SHORT_DATE_FMT = new Intl.DateTimeFormat("en-US", {
   month: "short",
   day: "numeric",
   year: "numeric",
+  timeZone: DATE_ONLY_TIME_ZONE,
 });
+// generatedAt is an instant ("...T06:00:00Z"), so it prints in Isaac's zone
+// with the zone named, since the surrounding copy doesn't state one.
 const UPDATED_FMT = new Intl.DateTimeFormat("en-US", {
   month: "short",
   day: "numeric",
   year: "numeric",
   hour: "numeric",
   minute: "2-digit",
+  timeZone: DISPLAY_TIME_ZONE,
+  timeZoneName: "short",
 });
 
-// Date-only ISO strings ("2026-06-15") parse as UTC midnight, which the local
-// Intl formatters can shift to the previous day. Parse those as local dates so
-// the displayed day matches what the user logged.
-function parseDateOnly(iso: string): Date {
-  const m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(iso);
-  return m ? new Date(Number(m[1]), Number(m[2]) - 1, Number(m[3])) : new Date(iso);
-}
-
 export function formatDate(iso: string): string {
-  const d = parseDateOnly(iso);
+  const d = new Date(iso);
   return Number.isNaN(d.getTime()) ? iso : FULL_DATE_FMT.format(d);
 }
 
 export function formatShortDate(iso: string): string {
-  const d = parseDateOnly(iso);
+  const d = new Date(iso);
   return Number.isNaN(d.getTime()) ? iso : SHORT_DATE_FMT.format(d);
 }
 
@@ -114,12 +122,15 @@ export function admissionStub(museum: Museum, today: string | null): AdmissionSt
 
 /** The date parts a visit's rubber stamp prints, or null for an unparseable date. */
 export function visitStamp(iso: string): VisitStampParts | null {
-  const d = parseDateOnly(iso);
+  const d = new Date(iso);
   if (Number.isNaN(d.getTime())) return null;
+  // d is the UTC-midnight instant for this date-only string, so read it back
+  // with UTC getters (the local getDate/getFullYear pair would disagree with
+  // the pinned month above once the runtime's zone is ahead of UTC).
   return {
     month: STAMP_MONTH_FMT.format(d).toUpperCase(),
-    day: String(d.getDate()).padStart(2, "0"),
-    year: String(d.getFullYear()),
+    day: String(d.getUTCDate()).padStart(2, "0"),
+    year: String(d.getUTCFullYear()),
   };
 }
 

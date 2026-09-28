@@ -30,11 +30,14 @@ describe("feeStatement", () => {
     expect(rows.every((r) => Number.isFinite(r.fraction))).toBe(true);
   });
 
-  it("marks only the first of tied cheapest processors", () => {
+  it("marks every processor tied for cheapest, not just the first", () => {
     const rows = feeStatement([row("a", 40), row("b", 40), row("c", 90)]);
-    expect(rows.filter((r) => r.isCheapest)).toHaveLength(1);
-    expect(rows[0].isCheapest).toBe(true);
-    expect(rows[1].isCheapest).toBe(false);
+    expect(rows.filter((r) => r.isCheapest).map((r) => r.id)).toEqual(["a", "b"]);
+  });
+
+  it("treats fees within a cent as tied rather than comparing floats exactly", () => {
+    const rows = feeStatement([row("a", 40), row("b", 40.004), row("c", 90)]);
+    expect(rows.filter((r) => r.isCheapest).map((r) => r.id)).toEqual(["a", "b"]);
   });
 
   it("keeps a 50x outlier's cheapest fee visible on the shared scale", () => {

@@ -960,12 +960,12 @@ export function BestBallClient({ initialState }: BestBallClientProps) {
                 disabled={Boolean(error)}
                 autoComplete="off"
                 placeholder="Search player or team"
-                className="min-h-touch w-[200px] border pl-8 pr-2.5 font-mono text-xs placeholder:text-[var(--c97-ink-2)] disabled:cursor-not-allowed disabled:opacity-60"
-                style={{
-                  borderColor: "var(--c97-rule)",
-                  background: "var(--c97-field)",
-                  color: "var(--c97-ink)",
-                }}
+                className="min-h-touch w-[200px] border pl-8 pr-2.5 font-mono text-xs placeholder:text-[var(--c97-ink-2)] disabled:cursor-not-allowed disabled:border-dashed"
+                style={
+                  error
+                    ? { borderColor: "var(--c97-ink-2)", background: "none", color: "var(--c97-ink-2)" }
+                    : { borderColor: "var(--c97-rule)", background: "var(--c97-field)", color: "var(--c97-ink)" }
+                }
               />
             </div>
             <span

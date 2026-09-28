@@ -3,39 +3,54 @@
  * was previously declaring its own `Intl.DateTimeFormat` — having a single
  * source ensures formatting stays consistent and timezone context is shown
  * everywhere it matters.
+ *
+ * Every formatter pins a `timeZone`. The server renders in UTC (Netlify) and
+ * each visitor's browser in its own zone, so an unpinned formatter prints
+ * different text on each side and breaks hydration.
  */
+
+/** The zone displayed clock times are pinned to. Isaac is in the Bay Area, and BART already reads in it. */
+export const DISPLAY_TIME_ZONE = "America/Los_Angeles";
+
+/** Date-only values ("2026-09-15") parse as UTC midnight, so they format in UTC to keep their calendar day. */
+export const DATE_ONLY_TIME_ZONE = "UTC";
 
 /** Short date: "Apr 25" */
 export const SHORT_DATE_FORMATTER = new Intl.DateTimeFormat("en-US", {
   month: "short",
   day: "numeric",
+  timeZone: DISPLAY_TIME_ZONE,
 });
 
-/** Date + time + timezone: "Apr 25, 2:30 PM EDT" */
+/** Date + time + timezone: "Apr 25, 2:30 PM PDT" */
 export const DATE_TIME_FORMATTER = new Intl.DateTimeFormat("en-US", {
   month: "short",
   day: "numeric",
   hour: "numeric",
   minute: "2-digit",
+  timeZone: DISPLAY_TIME_ZONE,
   timeZoneName: "short",
 });
 
-/** Long date + time + timezone: "Sat, Apr 25, 2:30 PM EDT" */
+/** Long date + time + timezone: "Sat, Apr 25, 2:30 PM PDT" */
 export const LONG_DATE_TIME_FORMATTER = new Intl.DateTimeFormat("en-US", {
   weekday: "short",
   month: "short",
   day: "numeric",
   hour: "numeric",
   minute: "2-digit",
+  timeZone: DISPLAY_TIME_ZONE,
   timeZoneName: "short",
 });
 
-/** "Updated at" timestamp: "Apr 25, 2:30 PM" */
+/** "Updated at" timestamp: "Apr 25, 2:30 PM PDT" */
 export const UPDATED_AT_FORMATTER = new Intl.DateTimeFormat("en-US", {
   month: "short",
   day: "numeric",
   hour: "numeric",
   minute: "2-digit",
+  timeZone: DISPLAY_TIME_ZONE,
+  timeZoneName: "short",
 });
 
 /** Full calendar date: "Apr 25, 2026" */
@@ -43,6 +58,7 @@ const FULL_DATE_FORMATTER = new Intl.DateTimeFormat("en-US", {
   month: "short",
   day: "numeric",
   year: "numeric",
+  timeZone: DISPLAY_TIME_ZONE,
 });
 
 export function formatShortDate(value: string | Date): string {
@@ -65,7 +81,10 @@ export function formatFullDate(value: string | Date): string {
   return Number.isNaN(date.getTime()) ? "Unavailable" : FULL_DATE_FORMATTER.format(date);
 }
 
-/** Calendar key in the user's local timezone: `YYYY-MM-DD`. */
+/**
+ * Calendar key in the user's local timezone: `YYYY-MM-DD`. Browser-only, for
+ * data the visitor entered; never render it during SSR.
+ */
 export function toLocalDateKey(date: Date = new Date()): string {
   if (Number.isNaN(date.getTime())) return "";
   const year = date.getFullYear();

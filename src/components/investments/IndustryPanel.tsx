@@ -44,7 +44,7 @@ function Indicator({ metric, value, avg }: { metric: string; value: number | und
         : "bg-[color-mix(in_srgb,var(--c97-negative)_11%,var(--c97-panel))] text-[color-mix(in_srgb,var(--c97-negative)_70%,var(--c97-ink))]";
   const sign = pct > 0 ? "+" : pct < 0 ? "−" : "";
   return (
-    <span className={`ml-2 inline-flex items-center text-xs font-medium px-1.5 py-0.5 rounded ${tone}`}>
+    <span className={`ml-2 inline-flex items-center text-xs font-medium px-1.5 py-0.5 ${tone}`}>
       {sign}{Math.abs(pct).toFixed(1)}% vs industry
     </span>
   );
@@ -63,7 +63,7 @@ export function IndustryPanel({ symbol }: Props) {
       {isLoading && (
         <div className="space-y-2">
           {Array.from({ length: 6 }).map((_, i) => (
-            <div key={i} className="h-10 rounded bg-[var(--c97-rule)] animate-pulse" />
+            <div key={i} className="h-10 bg-[var(--c97-rule)] animate-pulse" />
           ))}
         </div>
       )}

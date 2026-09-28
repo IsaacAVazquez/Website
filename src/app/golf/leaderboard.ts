@@ -65,22 +65,34 @@ export function leaderboardSlats(
   entries: GolfLeaderboardEntry[],
   { cutLine, cutState, coursePar, rounds }: LeaderboardSlatsOptions
 ): LeaderboardSlatsResult {
-  const slats: LeaderboardSlat[] = entries.map((entry) => ({
-    playerId: entry.playerId,
-    position: entry.position,
-    name: entry.playerName,
-    rounds: Array.from({ length: rounds }, (_, i) => {
-      const score = entry.roundScores[i] ?? null;
-      if (score === null) {
-        return { score: null, toPar: null, tone: null };
-      }
-      const toPar = score - coursePar;
-      return { score, toPar, tone: parTone(toPar) };
-    }),
-    total: entry.totalToPar,
-    totalTone: parTone(entry.totalToPar),
-    madeCut: !MISSED_CUT_STATUS.test(entry.status),
-  }));
+  const slats: LeaderboardSlat[] = entries.map((entry) => {
+    // `thru` other than "F"/"—" means the player's latest round (the last
+    // entry in roundScores, since a round with no strokes yet is filtered out
+    // upstream) is still in progress, so its roundScores value is a partial
+    // stroke count, not a full round. Comparing that partial total to the
+    // full course par would show a wildly wrong tone (a front-nine 34 read
+    // against a par-72 course, say), so the in-progress round borrows ESPN's
+    // own live to-par figure (`today`, already shown as the "Today" stat)
+    // instead of `score - coursePar`.
+    const currentRoundIsPartial = entry.thru !== "F" && entry.thru !== "—";
+    return {
+      playerId: entry.playerId,
+      position: entry.position,
+      name: entry.playerName,
+      rounds: Array.from({ length: rounds }, (_, i) => {
+        const score = entry.roundScores[i] ?? null;
+        if (score === null) {
+          return { score: null, toPar: null, tone: null };
+        }
+        const isLatestRound = i === entry.roundScores.length - 1;
+        const toPar = isLatestRound && currentRoundIsPartial ? entry.today : score - coursePar;
+        return { score, toPar, tone: parTone(toPar) };
+      }),
+      total: entry.totalToPar,
+      totalTone: parTone(entry.totalToPar),
+      madeCut: !MISSED_CUT_STATUS.test(entry.status),
+    };
+  });
 
   let cutIndex: number | null = null;
   if (cutState === "made" && cutLine !== null) {

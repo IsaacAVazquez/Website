@@ -31,6 +31,9 @@ function formatSignedCurrency(value: number) {
   return formatCurrency(0);
 }
 
+// tz-local: `iso` is the visitor's own logged expense date, entered through
+// <input type="date"> and stored in this browser only, so it formats in the
+// visitor's own zone rather than a pinned one.
 const EXPENSE_DATE_FORMATTER = new Intl.DateTimeFormat("en-US", {
   month: "short",
   day: "numeric",

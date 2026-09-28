@@ -518,8 +518,8 @@ export function PriceChartPanel({ symbol, costBasis = null }: Props) {
 
       {isLoading && (
         <div className="space-y-3">
-          <div className="h-[260px] rounded bg-[var(--c97-rule)] animate-pulse" />
-          <div className="h-[80px] rounded bg-[var(--c97-rule)] animate-pulse" />
+          <div className="h-[260px] bg-[var(--c97-rule)] animate-pulse" />
+          <div className="h-[80px] bg-[var(--c97-rule)] animate-pulse" />
         </div>
       )}
 

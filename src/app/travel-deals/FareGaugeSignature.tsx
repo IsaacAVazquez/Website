@@ -2,14 +2,15 @@
 
 import { useMemo } from "react";
 import type { DestinationRegion } from "@/types/travelDeals";
-import { formatUsd, type FareRating } from "@/lib/travelDeals";
+import { formatUsd, isIsoDate, type FareRating } from "@/lib/travelDeals";
 import { bookingStrip, fareGauge, fitLabel } from "./fareGauge";
 
 interface FareGaugeSignatureProps {
   quoted: number;
   region: DestinationRegion;
   departureDate: string;
-  today: string;
+  /** Null until the client resolves its own clock; see bookingStrip. */
+  today: string | null;
 }
 
 const W = 640;
@@ -94,13 +95,16 @@ export function FareGaugeSignature({ quoted, region, departureDate, today }: Far
   // A far-off departure stretches the strip and narrows the window, so its two edge labels merge into one.
   const sweetLabelsFit = sweetW >= (sweetMaxLabel.length + sweetMinLabel.length) * CHAR_WIDE + 24;
 
+  const departureIsSet = isIsoDate(departureDate);
   const fareDesc =
     quoted > 0
       ? `Your fare of ${formatUsd(quoted)} a seat is a ${RATING_LABEL[gauge.rating].toLowerCase()} deal against the typical ${formatUsd(region.typicalFare)}.`
       : "No fare entered yet.";
   const bookingDesc =
     strip.daysOut === null
-      ? "No departure date set."
+      ? departureIsSet
+        ? "Checking today's date."
+        : "No departure date set."
       : strip.position === "inside"
       ? `At ${strip.daysOut} days out, today is inside the sweet spot.`
       : strip.position === "before"
@@ -205,7 +209,9 @@ export function FareGaugeSignature({ quoted, region, departureDate, today }: Far
         </>
       ) : (
         <text x={W / 2} y={STRIP_BELOW_ROW_Y} textAnchor="middle" className="c97-fare-axis c97-fare-prompt">
-          Add a departure date below to place today on the strip
+          {departureIsSet
+            ? "Checking today's date"
+            : "Add a departure date below to place today on the strip"}
         </text>
       )}
     </svg>

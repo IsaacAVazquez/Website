@@ -7,7 +7,7 @@ related_targets: ["src/app/fantasy-football/waivers/page.tsx","src/app/fantasy-f
 
 # Fantasy Football Waiver Targets
 
-**Status note, 2026-09-21.** This route has rendered inside `Catalog97ToolShell` since the bridge on 2026-09-16. Its components still read `--home-*` names, and the bridge block in `src/app/catalog97.css` aliases those onto Catalog 97 values, sets every `--radius-*` token to 0, and sets every `--shadow-*` token to `none`. `DESIGN.md` still describes the Working Instrument and does not govern this route. The old site header was sticky at 73px and was deleted in that change, and `Catalog97Header` is `position: relative`, so every measurement below that assumes a 73px sticky header predates the bridge. Contrast figures below were measured against Working Instrument values and need re-measuring.
+**Status note, 2026-09-27.** This route renders inside `Catalog97ToolShell` and reads `--c97-*` tokens directly under `data-c97-surface`. `DESIGN.md` now describes Catalog 97 and governs this route. The old site header was sticky at 73px and was deleted on 2026-09-16, and `Catalog97Header` is `position: relative`, so every measurement below that assumes a 73px sticky header predates that change. Contrast figures below were measured against Working Instrument values carried through the since-removed bridge and may need re-measuring against the shipped `--c97-*` colors.
 
 ## Mode
 

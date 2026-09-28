@@ -132,7 +132,7 @@ export function AllocationChart({ holdings }: Props) {
           <div
             ref={tooltipRef}
             style={{ display: "none", position: "absolute", pointerEvents: "none" }}
-            className="px-2 py-1.5 rounded text-xs bg-[var(--c97-ink)] text-[var(--c97-surface)] whitespace-nowrap leading-relaxed"
+            className="px-2 py-1.5 text-xs bg-[var(--c97-ink)] text-[var(--c97-surface)] whitespace-nowrap leading-relaxed"
           />
         </div>
 
@@ -143,7 +143,7 @@ export function AllocationChart({ holdings }: Props) {
           {data.map((h) => (
             <li key={h.symbol} className="flex items-center gap-2 border border-[var(--c97-rule)] bg-[var(--c97-panel)] px-3 py-2.5">
               <span
-                className="w-2.5 h-2.5 rounded-full shrink-0"
+                className="w-2.5 h-2.5 shrink-0"
                 style={{ backgroundColor: holdingColor(h.symbol, portfolio) }}
                 aria-hidden="true"
               />

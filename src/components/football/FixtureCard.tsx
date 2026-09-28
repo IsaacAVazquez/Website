@@ -1,6 +1,7 @@
 import type { CSSProperties } from "react";
 import { Clock3 } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { DISPLAY_TIME_ZONE } from "@/lib/date-formatters";
 import { CrestAvatar } from "./CrestAvatar";
 import { TeamResultPill } from "./TeamResultPill";
 
@@ -27,6 +28,8 @@ const DATE_TIME_FORMATTER = new Intl.DateTimeFormat("en-US", {
   day: "numeric",
   hour: "numeric",
   minute: "2-digit",
+  timeZone: DISPLAY_TIME_ZONE,
+  timeZoneName: "short",
 });
 
 function formatFixtureDateTime(utcDate: string): string {

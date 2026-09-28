@@ -26,14 +26,18 @@ export function todayKey(date = new Date()): string {
   return `${year}-${month}-${day}`;
 }
 
-function parseDateKey(value: string): Date | null {
+function parseDateKey(value: unknown): Date | null {
   if (!isIsoDate(value)) return null;
   const date = new Date(`${value}T00:00`);
   return Number.isNaN(date.getTime()) ? null : date;
 }
 
-/** Whole days from `fromKey` to `toKey`; negative when `toKey` is in the past. */
-export function daysBetween(fromKey: string, toKey: string): number | null {
+/**
+ * Whole days from `fromKey` to `toKey`; negative when `toKey` is in the past.
+ * Either key can be null (the caller's "today" not resolved yet on the
+ * client), which reads the same as an invalid key: null out.
+ */
+export function daysBetween(fromKey: string | null, toKey: string | null): number | null {
   const from = parseDateKey(fromKey);
   const to = parseDateKey(toKey);
   if (!from || !to) return null;
@@ -79,12 +83,27 @@ const LAST_CALL_DAYS = 14;
 export function getBookingWindow(
   region: DestinationRegion,
   departureDateKey: string,
-  today = todayKey(),
+  // Null means the caller's "today" isn't known yet (the client hasn't
+  // resolved its own clock), which reads differently from a missing
+  // departure date, so it gets its own branch below rather than falling
+  // into daysBetween returning null for either bad input.
+  today: string | null = todayKey(),
 ): BookingWindow {
   const base = {
     sweetSpotMinDays: region.sweetSpotMinDays,
     sweetSpotMaxDays: region.sweetSpotMaxDays,
   };
+
+  if (today === null) {
+    return {
+      ...base,
+      status: "watching",
+      daysUntilDeparture: null,
+      daysUntilSweetSpot: 0,
+      headline: "Checking today's date",
+      message: "Lining up today's date against your departure.",
+    };
+  }
 
   const daysUntil = daysBetween(today, departureDateKey);
   if (daysUntil === null) {

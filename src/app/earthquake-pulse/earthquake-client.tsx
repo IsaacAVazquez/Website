@@ -33,6 +33,8 @@ import {
 import { Catalog97ProjectHero } from "@/components/catalog97/Catalog97ProjectHero";
 import { PROJECT_PRESS } from "@/constants/projectPress";
 import { EarthquakeSignature } from "./EarthquakeSignature";
+import { DATE_TIME_FORMATTER } from "@/lib/date-formatters";
+import { useClientNow } from "@/hooks/useClientNow";
 import "./earthquake-pulse.css";
 
 interface EarthquakeClientProps {
@@ -40,17 +42,14 @@ interface EarthquakeClientProps {
   summary: EarthquakeSummary;
 }
 
-const TIME_FORMATTER = new Intl.DateTimeFormat("en-US", {
-  month: "short",
-  day: "numeric",
-  hour: "numeric",
-  minute: "2-digit",
-});
-
+// USGS reports quake time in UTC and the row already labels it "UTC", so this
+// stays pinned to UTC rather than the display zone. `hourCycle` rather than
+// `hour12: false`, which prints midnight as "24:05" on Node 20 and "00:05" in
+// browsers.
 const CLOCK_FORMATTER = new Intl.DateTimeFormat("en-US", {
   hour: "2-digit",
   minute: "2-digit",
-  hour12: false,
+  hourCycle: "h23",
   timeZone: "UTC",
 });
 
@@ -65,12 +64,12 @@ function formatMagnitude(value: number | null | undefined): string {
   return `M${value.toFixed(1)}`;
 }
 
-function formatTimeAgo(iso: string): string {
+function formatTimeAgo(iso: string, now: number): string {
   const then = new Date(iso).getTime();
   if (Number.isNaN(then)) {
     return "Unknown";
   }
-  const diffMs = then - Date.now();
+  const diffMs = then - now;
   const diffMin = Math.round(diffMs / 60000);
   if (Math.abs(diffMin) < 60) {
     return RELATIVE_FORMATTER.format(diffMin, "minute");
@@ -87,7 +86,7 @@ function formatTimestamp(iso: string | null | undefined): string {
     return "Unavailable";
   }
   const date = new Date(iso);
-  return Number.isNaN(date.getTime()) ? "Unavailable" : TIME_FORMATTER.format(date);
+  return Number.isNaN(date.getTime()) ? "Unavailable" : DATE_TIME_FORMATTER.format(date);
 }
 
 function formatDepth(depthKm: number): string {
@@ -170,10 +169,12 @@ function QuakeRow({
   quake,
   isSelected,
   onSelect,
+  now,
 }: {
   quake: QuakeEvent;
   isSelected: boolean;
   onSelect: (id: string) => void;
+  now: number | null;
 }) {
   return (
     <button
@@ -183,9 +184,11 @@ function QuakeRow({
       className="c97-quake-log-row"
       style={getRowStyle(isSelected, quake.magnitude)}
     >
-      <span className="c97-mono c97-quake-log-time" suppressHydrationWarning>
+      <span className="c97-mono c97-quake-log-time">
         {CLOCK_FORMATTER.format(new Date(quake.time))} UTC
-        <span className="c97-quake-log-ago">{formatTimeAgo(quake.time)}</span>
+        {now !== null ? (
+          <span className="c97-quake-log-ago">{formatTimeAgo(quake.time, now)}</span>
+        ) : null}
       </span>
       <MagnitudeBadge mag={quake.magnitude} />
       <span className="c97-quake-log-place">
@@ -201,7 +204,7 @@ function QuakeRow({
             {quake.felt ? (
               <span className="inline-flex items-center gap-1">
                 <Activity className="h-3.5 w-3.5" aria-hidden="true" />
-                {quake.felt.toLocaleString()} felt
+                {quake.felt.toLocaleString("en-US")} felt
               </span>
             ) : null}
           </span>
@@ -365,7 +368,7 @@ function DetailStat({ label, value }: { label: string; value: string }) {
   );
 }
 
-function QuakeDetailPanel({ quake }: { quake: QuakeEvent | null }) {
+function QuakeDetailPanel({ quake, now }: { quake: QuakeEvent | null; now: number | null }) {
   if (!quake) {
     return (
       <p
@@ -396,8 +399,8 @@ function QuakeDetailPanel({ quake }: { quake: QuakeEvent | null }) {
             className="mb-0 text-sm"
             style={{ color: "var(--c97-ink-2)", fontFamily: "var(--c97-font-body)" }}
           >
-            {formatTimestamp(quake.time)} ·{" "}
-            <span suppressHydrationWarning>{formatTimeAgo(quake.time)}</span>
+            {formatTimestamp(quake.time)}
+            {now !== null ? <> · {formatTimeAgo(quake.time, now)}</> : null}
           </p>
         </div>
         <span
@@ -433,11 +436,11 @@ function QuakeDetailPanel({ quake }: { quake: QuakeEvent | null }) {
         <DetailStat label="Region" value={quake.region} />
         <DetailStat
           label="Felt reports"
-          value={quake.felt ? quake.felt.toLocaleString() : "None yet"}
+          value={quake.felt ? quake.felt.toLocaleString("en-US") : "None yet"}
         />
         <DetailStat label="Mag type" value={quake.magType ? quake.magType.toUpperCase() : "—"} />
         <DetailStat label="Coordinates" value={formatCoordinates(quake.latitude, quake.longitude)} />
-        <DetailStat label="Significance" value={quake.significance.toLocaleString()} />
+        <DetailStat label="Significance" value={quake.significance.toLocaleString("en-US")} />
       </div>
 
       {quake.url ? (
@@ -467,6 +470,7 @@ export function EarthquakeClient({
   const router = useRouter();
   const searchParams = useSearchParams();
   const [summary, setSummary] = useState(initialSummary);
+  const now = useClientNow();
   const currentQuery = searchParams.toString();
   const currentHref = `${EARTHQUAKE_ROUTE}${currentQuery ? `?${currentQuery}` : ""}`;
   const hasManagedParams =
@@ -682,6 +686,7 @@ export function EarthquakeClient({
                         quake={quake}
                         isSelected={quake.id === selectedQuakeId}
                         onSelect={handleSelectQuake}
+                        now={now}
                       />
                     ))}
                   </div>
@@ -695,7 +700,7 @@ export function EarthquakeClient({
                   <Gauge className="h-4 w-4" aria-hidden="true" style={{ color: "var(--c97-ink-2)" }} />
                   <p className="c97-kicker mb-0">Selected quake</p>
                 </div>
-                <QuakeDetailPanel quake={selectedQuake} />
+                <QuakeDetailPanel quake={selectedQuake} now={now} />
               </div>
             </aside>
           </div>

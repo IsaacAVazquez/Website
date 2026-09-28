@@ -70,6 +70,10 @@ export function PortfolioPerformanceChart({ snapshots }: Props) {
   }, []);
 
   const filteredSnapshots = React.useMemo(() => {
+    // `snapshots` is only ever populated on the client, and the D3 draw that
+    // reads this memo runs inside a useEffect below, never during SSR or the
+    // first paint — so this stays in the visitor's own local zone to match
+    // how `s.date` was recorded, rather than a pinned one.
     const range = RANGES.find((r) => r.label === selectedRange);
     if (!range || range.days === Infinity) return snapshots;
 

@@ -217,8 +217,12 @@ export function CompareTray({
                 type="button"
                 onClick={() => setOpen(true)}
                 disabled={!canCompare}
-                className="inline-flex min-h-touch items-center gap-2 border px-4 text-sm font-semibold disabled:cursor-not-allowed disabled:opacity-55"
-                style={{ borderColor: "var(--c97-ink)", background: "var(--c97-ink)", color: "var(--c97-surface)" }}
+                className="inline-flex min-h-touch items-center gap-2 border px-4 text-sm font-semibold disabled:cursor-not-allowed disabled:border-dashed"
+                style={
+                  canCompare
+                    ? { borderColor: "var(--c97-ink)", background: "var(--c97-ink)", color: "var(--c97-surface)" }
+                    : { borderColor: "var(--c97-ink-2)", background: "none", color: "var(--c97-ink-2)" }
+                }
                 title={canCompare ? undefined : "Pin at least two players"}
               >
                 <GitCompareArrows size={16} aria-hidden="true" />

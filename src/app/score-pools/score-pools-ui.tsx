@@ -11,7 +11,8 @@ export function formatScoreline(score: Scoreline): string {
 
 export function formatKickoff(iso: string, timezone: string | null): string {
   try {
-    return new Intl.DateTimeFormat(undefined, {
+    // tz-local: timezone is a per-pool localStorage setting (null = the visitor's own device zone); never renders before a pool exists.
+    return new Intl.DateTimeFormat("en-US", {
       weekday: "short",
       month: "short",
       day: "numeric",
@@ -26,7 +27,8 @@ export function formatKickoff(iso: string, timezone: string | null): string {
 
 export function formatTime(iso: string, timezone: string | null): string {
   try {
-    return new Intl.DateTimeFormat(undefined, {
+    // tz-local: see formatKickoff above; same per-pool, localStorage-only setting.
+    return new Intl.DateTimeFormat("en-US", {
       hour: "numeric",
       minute: "2-digit",
       ...(timezone ? { timeZone: timezone } : {}),
