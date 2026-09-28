@@ -423,12 +423,13 @@ export async function getFeaturedBlogPosts(): Promise<BlogPost[]> {
 export async function getRelatedBlogPosts(
   slug: string,
   limit = 3
-): Promise<BlogPost[]> {
-  const currentPost = await getBlogPostBySlug(slug);
+): Promise<BlogPostPreview[]> {
+  // Scoring reads frontmatter only, so it works from previews. Loading full
+  // posts rendered the whole archive to HTML once for every article page.
+  const currentPost = getBlogPostPreviewBySlug(slug);
   if (!currentPost) return [];
 
-  const allPosts = await getAllBlogPosts();
-  const otherPosts = allPosts.filter((post) => post.slug !== slug);
+  const otherPosts = getAllBlogPostPreviews().filter((post) => post.slug !== slug);
 
   const scoredPosts = otherPosts.map((post) => {
     let score = 0;
