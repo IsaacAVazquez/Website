@@ -4,6 +4,12 @@ All notable changes to this repository are documented here. Format: `YYYY-MM-DD`
 
 ---
 
+## 2026-09-28
+
+- Final pass on the project UI redesign ([#484](https://github.com/IsaacAVazquez/Website/pull/484)).
+
+---
+
 ## 2026-09-27
 
 - Add Juno and Civitech career write-ups, and reconcile Civitech figures ([#466](https://github.com/IsaacAVazquez/Website/pull/466)).
