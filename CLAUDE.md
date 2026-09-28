@@ -308,6 +308,8 @@ Catalog 97, and where it disagrees with `catalog97.css`, the CSS wins.
 - Server components take icons from `@/components/ui/ServerIcons` (inline SVG). The
   installed icon library is `lucide-react`. `@tabler/icons-react` and `better-sqlite3`
   are not dependencies, so do not add imports of either.
+- Every easter egg is listed in `docs/EASTER_EGGS.md`. A change that adds, alters, or
+  removes one updates that file in the same change.
 - `/api/search` is still a limited, mostly hardcoded index — do not describe it as
   comprehensive site search.
 - All user-facing text (articles, UI copy, page descriptions, bios, hero text) must
@@ -356,6 +358,7 @@ Subsystem references:
   ranking refresh, automatic pick sync, and the opt-in away controller
 - `docs/DATA_UPDATE_OPERATIONS.md` — command → artifact → schedule runbook for every refresh
 - `docs/ARTICLE_IMAGE_WORKFLOW.md` — blog cover-image plan, the fetch builder, and the writing-time step
+- `docs/EASTER_EGGS.md` — every easter egg on the site, with its trigger, what it shows, and its code
 
 **Legacy / historical** (do not quote as current without checking code): root-level
 SEO/UX summary docs and non-live references under `content/`. `SEO.md` is the current SEO

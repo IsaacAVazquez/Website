@@ -50,6 +50,7 @@ Subsystem references (current):
 - `FANTASY_DRAFT_MODEL.md` - fantasy draft and trade metrics, formulas, data limits, and validation contract
 - `FANTASY_DRAFT_COMPANION.md` - private Chrome and Edge side panel build, installation, and operating limits
 - `ARTICLE_IMAGE_WORKFLOW.md` - blog cover-image plan, the fetch builder, and the writing-time step
+- `EASTER_EGGS.md` - every easter egg on the site, with its trigger, what it shows, and its code
 
 ---
 
