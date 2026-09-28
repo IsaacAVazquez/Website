@@ -1,8 +1,16 @@
-import { existsSync, readFileSync } from "node:fs";
+import { existsSync, readdirSync, readFileSync } from "node:fs";
 import path from "node:path";
 
 const root = process.cwd();
 const read = (file: string) => readFileSync(path.join(root, file), "utf8");
+
+function filesNamed(dir: string, name: string): string[] {
+  return readdirSync(path.join(root, dir), { withFileTypes: true }).flatMap((entry) => {
+    const rel = path.join(dir, entry.name);
+    if (entry.isDirectory()) return filesNamed(rel, name);
+    return entry.name === name ? [rel] : [];
+  });
+}
 
 /*
  * Value imports and re-exports only. `import type` and `export type` are
@@ -95,5 +103,13 @@ describe("bundle guards", () => {
       "src/components/fantasy/MyTeamPanel.tsx",
     ].filter((entry) => reachableFrom(entry).files.has(hook));
     expect(reached).toEqual([]);
+  });
+
+  // Next does not prerender a route on the edge runtime, so an Open Graph
+  // image that sets it is drawn again for every crawler that asks.
+  it("leaves every Open Graph image free to prerender", () => {
+    const images = filesNamed("src/app", "opengraph-image.tsx");
+    expect(images.length).toBeGreaterThan(20);
+    expect(images.filter((file) => /runtime\s*=\s*["']edge["']/.test(read(file)))).toEqual([]);
   });
 });
