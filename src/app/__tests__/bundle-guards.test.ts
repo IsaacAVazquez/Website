@@ -4,13 +4,15 @@ import path from "node:path";
 const root = process.cwd();
 const read = (file: string) => readFileSync(path.join(root, file), "utf8");
 
-function filesNamed(dir: string, name: string): string[] {
+function filesMatching(dir: string, matches: (name: string) => boolean): string[] {
   return readdirSync(path.join(root, dir), { withFileTypes: true }).flatMap((entry) => {
     const rel = path.join(dir, entry.name);
-    if (entry.isDirectory()) return filesNamed(rel, name);
-    return entry.name === name ? [rel] : [];
+    if (entry.isDirectory()) return filesMatching(rel, matches);
+    return matches(entry.name) ? [rel] : [];
   });
 }
+
+const filesNamed = (dir: string, name: string) => filesMatching(dir, (file) => file === name);
 
 /*
  * Value imports and re-exports only. `import type` and `export type` are
@@ -140,6 +142,22 @@ describe("bundle guards", () => {
   ])("keeps the overlays out of the static imports of %s", (client, overlays) => {
     const reached = reachableFrom(client).files;
     expect(overlays.filter((overlay) => reached.has(overlay))).toEqual([]);
+  });
+
+  // next/dynamic gives a lazy component its own Suspense boundary only when
+  // `loading` is set or `ssr` is false. Without one, mounting it after a click
+  // suspends up to the route's loading.tsx, and the whole page is swapped for
+  // the loading band until the chunk arrives.
+  it("gives every lazy component in a client file its own Suspense boundary", () => {
+    const LAZY = /const\s+(\w+)\s*=\s*dynamic(?:<[^>]*>)?\(([\s\S]*?)\);/g;
+    const unguarded = filesMatching("src", (file) => file.endsWith(".tsx")).flatMap((file) => {
+      const source = read(file);
+      if (!/^["']use client["']/.test(source) || source.includes("<Suspense")) return [];
+      return [...source.matchAll(LAZY)]
+        .filter(([, , call]) => !/\bloading\s*:/.test(call) && !/\bssr\s*:\s*false/.test(call))
+        .map(([, name]) => `${file}: ${name}`);
+    });
+    expect(unguarded).toEqual([]);
   });
 
   // Next does not prerender a route on the edge runtime, so an Open Graph
