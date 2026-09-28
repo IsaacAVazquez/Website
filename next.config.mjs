@@ -325,7 +325,10 @@ const nextConfig = {
   },
   // Enable experimental features for better performance
   experimental: {
-    optimizePackageImports: ['lucide-react', 'framer-motion'],
+    // d3 re-exports thirty subpackages and declares no sideEffects, so a named
+    // import from "d3" pulled d3-transition and its dependencies into every
+    // chart chunk. Nothing here calls .transition().
+    optimizePackageImports: ['lucide-react', 'framer-motion', 'd3'],
     scrollRestoration: true,
   },
   // Enhanced webpack configuration for performance
