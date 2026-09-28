@@ -93,6 +93,27 @@ export function getNflRegularSeasonWeek(season: number, now: Date = new Date()):
   return Math.min(NFL_REGULAR_SEASON_WEEKS, weeksElapsed + 1);
 }
 
+export const DRAFT_STORAGE_VERSION = 3;
+
+/**
+ * NFL season for the current draft window. The league year rolls over with
+ * the new league year in March, so anything before March belongs to the prior
+ * season. Used to scope persisted draft state per-season so a stale 2025
+ * draft doesn't bleed into a fresh 2026 setup.
+ *
+ * It sits here with the other season math so the trade calculator and the
+ * weekly My Team panel can read it without bundling the draft state hook.
+ */
+export function getCurrentDraftSeason(now: Date = new Date()): number {
+  const year = now.getUTCFullYear();
+  const month = now.getUTCMonth();
+  return month < 2 ? year - 1 : year;
+}
+
+export function getFantasyDraftStorageKey(season: number = getCurrentDraftSeason()): string {
+  return `fantasy-draft-tracker-v${DRAFT_STORAGE_VERSION}-${season}`;
+}
+
 /**
  * True while the refresh cron runs daily rather than weekly, which is July
  * through December: drafts through early September, then the season itself

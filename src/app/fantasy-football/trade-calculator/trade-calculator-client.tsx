@@ -21,13 +21,13 @@ import {
 } from "@/lib/fantasyTradePersistence";
 import {
   formatUpdatedAt,
+  getCurrentDraftSeason,
   getFantasyAdpFreshness,
   getNflRegularSeasonWeek,
   getSnapshotStaleness,
   type FantasySnapshotStaleness,
   WIDE_SHELL_CLASS,
 } from "@/lib/fantasyUtils";
-import { getCurrentDraftSeason } from "@/app/fantasy-football/draft-tracker/hooks/useDraftState";
 import { REDRAFT_LINEUP_PRESETS } from "@/lib/redraftLineup";
 import { TradePackageFieldset } from "./trade-package-fieldset";
 import { TradeResultRail, TradeVerdictStrip } from "./trade-result-rail";

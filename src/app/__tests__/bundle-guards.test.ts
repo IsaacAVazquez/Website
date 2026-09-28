@@ -23,15 +23,18 @@ function resolveSource(from: string, specifier: string): string | null {
   return candidates.find((file) => /\.tsx?$/.test(file) && existsSync(path.join(root, file))) ?? null;
 }
 
-/** Every package a file pulls in statically, mapped to the file that imports it. */
-function packagesReachableFrom(entry: string): Map<string, string> {
+/**
+ * Every project file a file pulls in statically, and every package, mapped to
+ * the file that imports it.
+ */
+function reachableFrom(entry: string): { files: Set<string>; packages: Map<string, string> } {
   const packages = new Map<string, string>();
-  const seen = new Set<string>();
+  const files = new Set<string>();
   const queue = [entry];
   while (queue.length > 0) {
     const file = queue.pop() as string;
-    if (seen.has(file)) continue;
-    seen.add(file);
+    if (files.has(file)) continue;
+    files.add(file);
     for (const [, specifier] of read(file).matchAll(VALUE_IMPORT)) {
       const source = resolveSource(file, specifier);
       if (source) queue.push(source);
@@ -40,13 +43,16 @@ function packagesReachableFrom(entry: string): Map<string, string> {
       }
     }
   }
-  return packages;
+  return { files, packages };
 }
+
+const packagesReachableFrom = (entry: string) => reachableFrom(entry).packages;
 
 describe("bundle guards", () => {
   it("follows imports the way the guards below rely on", () => {
-    const reached = packagesReachableFrom("src/components/football/ClubDrawer.tsx");
-    expect(reached.get("framer-motion")).toBe("src/components/football/ClubDrawer.tsx");
+    const reached = reachableFrom("src/components/football/ClubDrawer.tsx");
+    expect(reached.packages.get("framer-motion")).toBe("src/components/football/ClubDrawer.tsx");
+    expect(reached.files.has("src/components/football/CrestAvatar.tsx")).toBe(true);
   });
 
   // Six route clients import this barrel and two of them render the drawer.
@@ -78,5 +84,16 @@ describe("bundle guards", () => {
   // gave each draft room the drawers, trays, and panels of the other rooms.
   it("has no fantasy barrel", () => {
     expect(existsSync(path.join(root, "src/components/fantasy/index.ts"))).toBe(false);
+  });
+
+  // Two pure helpers lived in the draft state hook's module, so reading the
+  // season or the storage key bundled the whole hook and its analytics.
+  it("keeps the draft state hook out of files that only need its helpers", () => {
+    const hook = "src/app/fantasy-football/draft-tracker/hooks/useDraftState.ts";
+    const reached = [
+      "src/app/fantasy-football/trade-calculator/trade-calculator-client.tsx",
+      "src/components/fantasy/MyTeamPanel.tsx",
+    ].filter((entry) => reachableFrom(entry).files.has(hook));
+    expect(reached).toEqual([]);
   });
 });
