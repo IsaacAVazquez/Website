@@ -120,6 +120,12 @@ describe("bundle guards", () => {
       "src/app/fantasy-football/draft-tracker/draft-tracker-client.tsx",
       ["src/components/fantasy/PlayerDetailDrawer.tsx"],
     ],
+    ["src/app/premier-league/premier-league-client.tsx", ["src/components/football/ClubDrawer.tsx"]],
+    ["src/app/la-liga/la-liga-client.tsx", ["src/components/football/ClubDrawer.tsx"]],
+    [
+      "src/app/spacex-mission-control/spacex-mission-control-client.tsx",
+      ["src/components/spacex/MissionDrawer.tsx"],
+    ],
   ])("keeps the overlays out of the static imports of %s", (client, overlays) => {
     const reached = reachableFrom(client).files;
     expect(overlays.filter((overlay) => reached.has(overlay))).toEqual([]);

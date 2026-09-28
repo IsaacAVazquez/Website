@@ -20,7 +20,7 @@ import { MissionCadenceStrip } from "@/components/spacex/MissionCadenceStrip";
 import { MissionStatFascia, type MissionStatFasciaCell } from "@/components/spacex/MissionStatFascia";
 import { MissionVehicleCatalog } from "@/components/spacex/MissionVehicleCatalog";
 import { MissionRecoveryPanel } from "@/components/spacex/MissionRecoveryPanel";
-import { MissionDrawer } from "@/components/spacex/MissionDrawer";
+import { DeferredMissionDrawer } from "@/components/spacex/DeferredMissionDrawer";
 import {
   buildMissionControlHref,
   DEFAULT_MISSION_CONTROL_STATE,
@@ -647,7 +647,7 @@ export function SpaceXMissionControlClient({
         </div>
       </section>
 
-      <MissionDrawer
+      <DeferredMissionDrawer
         launchId={routeState.launch}
         detail={routeState.launch ? detail : null}
         activePanel={routeState.panel}
