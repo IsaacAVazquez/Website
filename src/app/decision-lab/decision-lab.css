@@ -37,6 +37,13 @@
   fill: var(--c97-ink);
 }
 
+/* The matrix scales to about 0.6 at phone width, which took the label to 10px. */
+@media (max-width: 639px) {
+  .c97-decision-point-label {
+    font-size: 20px;
+  }
+}
+
 .c97-decision-stamp-word {
   font-family: var(--c97-font-poster);
   font-size: 52px;
