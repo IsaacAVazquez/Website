@@ -43,11 +43,13 @@ interface EarthquakeClientProps {
 }
 
 // USGS reports quake time in UTC and the row already labels it "UTC", so this
-// stays pinned to UTC rather than the display zone.
+// stays pinned to UTC rather than the display zone. `hourCycle` rather than
+// `hour12: false`, which prints midnight as "24:05" on Node 20 and "00:05" in
+// browsers.
 const CLOCK_FORMATTER = new Intl.DateTimeFormat("en-US", {
   hour: "2-digit",
   minute: "2-digit",
-  hour12: false,
+  hourCycle: "h23",
   timeZone: "UTC",
 });
 
