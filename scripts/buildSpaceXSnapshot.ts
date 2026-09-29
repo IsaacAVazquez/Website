@@ -85,6 +85,13 @@ export async function buildSpaceXSnapshot(
     throw error;
   }
 
+  // The cadence fetch is best-effort and comes back null when it fails. The
+  // last good series keeps its own generatedAt, so old counts stay dated as old.
+  if (!snapshot.cadence && existingSnapshot?.cadence) {
+    logger.log("SpaceX cadence refresh failed. Keeping the existing cadence.");
+    snapshot = { ...snapshot, cadence: existingSnapshot.cadence };
+  }
+
   await fs.mkdir(path.dirname(snapshotPath), { recursive: true });
   // Atomic write: write to a temp file first, then rename. This prevents
   // readers from seeing a partial/truncated snapshot if the process is

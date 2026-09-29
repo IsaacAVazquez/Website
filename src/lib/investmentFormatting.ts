@@ -57,6 +57,21 @@ export function formatComparisonMetricValue(label: string, n: number | undefined
 }
 
 /**
+ * "just now" / "1m ago" / "Xm ago" / "Xh ago" from a fixed instant. `now` is
+ * the caller's `useClientNow()` reading, not `Date.now()` taken directly:
+ * several of these dashboards seed real data during SSR, so computing "ago"
+ * from `Date.now()` at render time would print different text on the server
+ * than it does once the client hydrates a moment later and break hydration.
+ */
+export function formatMinutesAgo(date: Date, now: number): string {
+  const minutes = Math.max(0, Math.floor((now - date.getTime()) / 60000));
+  if (minutes < 1) return "just now";
+  if (minutes === 1) return "1m ago";
+  if (minutes < 60) return `${minutes}m ago`;
+  return `${Math.floor(minutes / 60)}h ago`;
+}
+
+/**
  * Splits a balance into a whole-dollar part and a cents part so the hero card
  * can render them at different type sizes (e.g. `$12,345` + `.67`).
  */

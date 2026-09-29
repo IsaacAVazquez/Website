@@ -9,6 +9,9 @@
  */
 
 const MAX_BACKOFF_MS = 60_000;
+// A server can ask for any wait it likes, and an hour would hold the job until
+// its timeout cancelled it, which opens no failure issue.
+const MAX_RETRY_AFTER_MS = 120_000;
 const JITTER_MS = 500;
 
 interface HttpStatusError {
@@ -95,7 +98,9 @@ export async function withRetry<T>(
       if (attempt < attempts) {
         const exponential = Math.min(backoffBaseMs * 2 ** (attempt - 1), MAX_BACKOFF_MS);
         const jitter = Math.floor(Math.random() * JITTER_MS);
-        const retryAfter = getRetryAfterMs(error);
+        const requested = getRetryAfterMs(error);
+        const retryAfter =
+          requested === null ? null : Math.min(requested, MAX_RETRY_AFTER_MS);
         const wait = retryAfter !== null ? retryAfter + jitter : exponential + jitter;
 
         console.warn(

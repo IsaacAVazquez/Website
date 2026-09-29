@@ -32,6 +32,7 @@ jest.mock("@/lib/fantasySnapshotServer", () => ({
 }));
 
 import { fantasyRateLimiter, rateLimitResponse } from "@/lib/rateLimit";
+import { logger } from "@/lib/logger";
 import { buildFantasySnapshot } from "@/lib/fantasySnapshotBuilder";
 import { normalizeFantasySnapshot } from "@/lib/fantasy";
 import { loadFantasySnapshot } from "@/lib/fantasySnapshotServer";
@@ -182,6 +183,32 @@ describe("GET /api/fantasy-data", () => {
     expect(body.metadata.slices.dst.available).toBe(true);
     expect(body.data.overall.every((player: Record<string, unknown>) => !("projectedPoints" in player))).toBe(true);
     expect(body.data.overall.every((player: Record<string, unknown>) => !("expertRanks" in player))).toBe(true);
+  });
+
+  it("answers a failed snapshot read with a fixed message and logs the detail", async () => {
+    // What readFile rejects with when the snapshot is missing from the bundle.
+    const failure = Object.assign(
+      new Error(
+        "ENOENT: no such file or directory, open '/var/task/public/data/fantasy/ppr.json'"
+      ),
+      {
+        errno: -2,
+        code: "ENOENT",
+        syscall: "open",
+        path: "/var/task/public/data/fantasy/ppr.json",
+      }
+    );
+    mockLoadFantasySnapshot.mockRejectedValueOnce(failure);
+
+    const response = await GET(makeRequest({ scoring: "ppr" }));
+    const body = await response.json();
+
+    expect(response.status).toBe(500);
+    expect(response.headers.get("Cache-Control")).toBe("no-store");
+    expect(body.success).toBe(false);
+    expect(body.error).toBe("Fantasy rankings are unavailable right now.");
+    expect(JSON.stringify(body)).not.toMatch(/ENOENT|\/var\/task/);
+    expect(logger.error).toHaveBeenCalledWith("Fantasy snapshot read failed", failure);
   });
 
   it("uses the rate limit response when the request is limited", async () => {

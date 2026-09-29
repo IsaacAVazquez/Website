@@ -1,7 +1,8 @@
 "use client";
 
-import { startTransition, useEffect, useMemo } from "react";
+import { startTransition, useEffect } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
+import { useClientNow } from "@/hooks/useClientNow";
 import { Catalog97ProjectHero } from "@/components/catalog97/Catalog97ProjectHero";
 import { PROJECT_PRESS } from "@/constants/projectPress";
 import type { PollingRouteState, PollingSnapshot, PollingView, Race, RacePoll } from "@/types/polling";
@@ -16,9 +17,9 @@ import {
 import {
   formatDate,
   formatShortDate,
-  formatUpdated,
   formatMargin,
   formatNet,
+  newestPollDate,
   partyColor,
   getRatingPillStyle,
   getRowStyle,
@@ -33,6 +34,8 @@ import "./polling-aggregator.css";
 interface Props {
   initialState: PollingRouteState;
   snapshot: PollingSnapshot;
+  /** Written on the server, so the browser's clock cannot change the markup. */
+  staleSourceNote?: string | null;
 }
 
 // ─── Local metric card (home-token equivalent) ─────────────────────────────────
@@ -83,8 +86,14 @@ function TrendChart({ snapshot }: { snapshot: PollingSnapshot }) {
     <div className="overflow-x-auto">
       <svg
         // The y labels sit left of the plot and the end labels right of the last
-        // point, so the box widens on both sides instead of clipping them.
-        viewBox={`-32 0 ${W + 76} ${H + 32}`}
+        // point, so the box widens on both sides instead of clipping them. The
+        // margins fit the larger phone type (25 units, polling-aggregator.css),
+        // where a y label measured 53 units and an end label 73; sized for the
+        // 10-unit desktop type they clipped "37%" to "7%" on phones. The
+        // extra 8px of bottom margin (beyond the x-axis label row) keeps the
+        // minVal gridline label clear of the x-axis row at the larger phone
+        // font size, where the two used to touch by under a pixel.
+        viewBox={`-48 0 ${W + 118} ${H + 40}`}
         className="w-full min-w-[300px]"
         aria-label={chartSummary}
         role="img"
@@ -122,11 +131,22 @@ function TrendChart({ snapshot }: { snapshot: PollingSnapshot }) {
           );
         })()}
 
-        {/* X-axis labels */}
+        {/* X-axis labels. At phone width the larger type (below) needed to
+            clear the 11px floor makes every label collide with its
+            neighbour, so every other one is hidden there via CSS. */}
         {trend.map((d, i) => {
           const x = scaleX(i);
           return (
-            <text key={d.date} x={x} y={H + 20} textAnchor="middle" fontSize={10} className="c97-polling-chart-text" fill="var(--c97-ink-2)">
+            <text
+              key={d.date}
+              x={x}
+              y={H + 28}
+              textAnchor="middle"
+              fontSize={10}
+              className="c97-polling-chart-text"
+              fill="var(--c97-ink-2)"
+              data-tick-parity={i % 2 === 0 ? "even" : "odd"}
+            >
               {formatShortDate(d.date)}
             </text>
           );
@@ -331,7 +351,7 @@ function RaceSidebar({ race }: { race: Race }) {
                   </span>
                 </div>
                 <p className="mt-0.5 text-xs text-[var(--c97-ink-2)]">
-                  {formatDate(poll.endDate)} · {poll.sampleSize.toLocaleString()} {poll.sampleType}
+                  {formatDate(poll.endDate)} · {poll.sampleSize.toLocaleString("en-US")} {poll.sampleType}
                   {poll.moe === null ? "" : ` · ±${poll.moe}`}
                 </p>
                 <div className="mt-2 flex flex-wrap gap-2">
@@ -432,7 +452,7 @@ function PollsTable<T extends PollLike>({
                   {formatDate(poll.endDate)}
                 </td>
                 <td className="hidden px-3 py-3 align-middle text-xs text-[var(--c97-ink-2)] sm:table-cell">
-                  {poll.sampleSize.toLocaleString()} {poll.sampleType}
+                  {poll.sampleSize.toLocaleString("en-US")} {poll.sampleType}
                 </td>
                 <td className="px-3 py-3 align-middle text-sm font-semibold" style={{ color: DEM_COLOR }}>
                   {left}%
@@ -560,7 +580,7 @@ function RacesPanel({
         </div>
       </section>
 
-      <aside className="lg:sticky lg:top-28 lg:self-start">
+      <aside className="lg:sticky lg:top-6 lg:self-start">
         {selectedRace && <RaceSidebar race={selectedRace} />}
       </aside>
       </div>
@@ -582,14 +602,14 @@ function OverviewPanel({ snapshot }: { snapshot: PollingSnapshot }) {
 
   return (
     <div className="c97-panel">
-      <p className="c97-kicker mb-0">Where the midterms stand</p>
+      <p className="c97-kicker">Where the midterms stand</p>
       {hasRaceData ? (
         <div className="mt-4 grid gap-4 sm:grid-cols-2">
           <SeatCountRow label="Senate" counts={senateCounts} />
           <SeatCountRow label="Governors" counts={govCounts} />
         </div>
       ) : (
-        <p className="c97-prose mt-2 mb-0">
+        <p className="c97-prose" style={{ marginTop: "var(--c97-sp-1)" }}>
           The Senate and Governors tabs open a rated table and a state grid once I can
           verify who each race's candidates actually are, which the source doesn't
           expose yet. Until then, the approval trend and the generic ballot above are
@@ -621,7 +641,7 @@ function SeatCountRow({
 
 // ─── Main client component ─────────────────────────────────────────────────────
 
-export function PollingAggregatorClient({ initialState, snapshot }: Props) {
+export function PollingAggregatorClient({ initialState, snapshot, staleSourceNote }: Props) {
   const router = useRouter();
   const searchParams = useSearchParams();
   const currentQuery = searchParams.toString();
@@ -654,20 +674,21 @@ export function PollingAggregatorClient({ initialState, snapshot }: Props) {
     navigate({ view: routeState.view, race: raceId });
   }
 
-  const lastUpdated = useMemo(
-    () => formatUpdated(snapshot.sourceAsOf ?? snapshot.generatedAt),
-    [snapshot.generatedAt, snapshot.sourceAsOf]
-  );
+  // sourceAsOf is the newer of the two series, so it hides an older one.
+  const approvalDate = newestPollDate(snapshot.approvalPolls);
+  const genericBallotDate = newestPollDate(snapshot.genericBallotPolls);
 
   const lead = PROJECT_PRESS["/polling-aggregator"].lead;
   const approvalNet = snapshot.approvalAvg.net;
   const ballotMargin = snapshot.genericBallotAvg.margin;
-  const daysToElection = Math.round(
-    (new Date("2026-11-03").getTime() - new Date().getTime()) / (1000 * 60 * 60 * 24)
-  );
+  const now = useClientNow();
+  const daysToElection =
+    now === null
+      ? null
+      : Math.round((new Date("2026-11-03T00:00:00Z").getTime() - now) / (1000 * 60 * 60 * 24));
   const totalPolls = snapshot.approvalPolls.length + snapshot.genericBallotPolls.length;
   const standfirst =
-    "I built this to track presidential approval and the 2026 generic ballot in one place, built only from polls with a named source. VoteHub feeds it, and the trend and the race ratings below update as new polls come in.";
+    "I built this to track presidential approval and the 2026 generic ballot in one place, built only from polls with a named source. VoteHub feeds it, and the averages and the trend update as new polls come in.";
 
   return (
     <>
@@ -675,7 +696,14 @@ export function PollingAggregatorClient({ initialState, snapshot }: Props) {
         ink={lead}
         title="Polling Aggregator"
         standfirst={standfirst}
-        meta={`${snapshot.sourceLabel} · updated ${lastUpdated} · ${totalPolls} polls tracked`}
+        meta={[
+          snapshot.sourceLabel,
+          approvalDate && `newest approval poll ${formatDate(approvalDate)}`,
+          genericBallotDate && `newest generic ballot poll ${formatDate(genericBallotDate)}`,
+          `${totalPolls} polls tracked`,
+        ]
+          .filter(Boolean)
+          .join(" · ")}
         readouts={[
           {
             label: "Approval net",
@@ -689,7 +717,7 @@ export function PollingAggregatorClient({ initialState, snapshot }: Props) {
           },
           {
             label: "Days to election",
-            value: daysToElection > 0 ? `${daysToElection}` : "Election day",
+            value: daysToElection === null ? "Nov 3" : daysToElection > 0 ? `${daysToElection}` : "Election day",
             detail: "Nov 3, 2026 midterms",
           },
         ]}
@@ -721,7 +749,7 @@ export function PollingAggregatorClient({ initialState, snapshot }: Props) {
               background: "color-mix(in srgb, var(--c97-warning) 8%, var(--c97-surface))",
             }}
           >
-            <p className="c97-prose mb-0">
+            <p className="c97-prose">
               Approval and generic ballot polls come from the{" "}
               <a
                 href="https://votehub.com/polls/api/"
@@ -731,13 +759,14 @@ export function PollingAggregatorClient({ initialState, snapshot }: Props) {
               >
                 VoteHub Polling API
               </a>{" "}
-              under CC BY 4.0. I leave statewide race averages empty until the
-              source includes candidate-party metadata I can verify.
+              under CC BY 4.0.{staleSourceNote ? ` ${staleSourceNote}` : ""} I
+              leave statewide race averages empty until the source includes
+              candidate-party metadata I can verify.
             </p>
           </div>
 
           {/* View tabs */}
-          <div className="c97-segmented" aria-label="Polling view switcher">
+          <div className="c97-segmented" style={{ marginBottom: "var(--c97-sp-3)" }} aria-label="Polling view switcher">
             {POLLING_VIEW_OPTIONS.filter(
               (key) =>
                 (key !== "senate" || snapshot.senateRaces.length > 0) &&
@@ -762,8 +791,8 @@ export function PollingAggregatorClient({ initialState, snapshot }: Props) {
             <div className="grid gap-6 lg:grid-cols-[3fr_2fr]">
               <div className="c97-panel" style={{ padding: "1.25rem 1.5rem" }}>
                 <div className="border-b border-[var(--c97-rule)] pb-4">
-                  <p className="c97-kicker mb-0">Recent polls</p>
-                  <h3 className="c97-serif c97-h3 mt-2">
+                  <p className="c97-kicker">Recent polls</p>
+                  <h3 className="c97-serif c97-h3" style={{ marginTop: "var(--c97-sp-1)" }}>
                     Presidential approval · {snapshot.approvalAvg.approve.toFixed(1)}% avg
                   </h3>
                 </div>
@@ -774,8 +803,8 @@ export function PollingAggregatorClient({ initialState, snapshot }: Props) {
 
               <div className="c97-panel" style={{ padding: "1.25rem 1.5rem" }}>
                 <div className="border-b border-[var(--c97-rule)] pb-4">
-                  <p className="c97-kicker mb-0">Congressional preference</p>
-                  <h3 className="c97-serif c97-h3 mt-2">
+                  <p className="c97-kicker">Congressional preference</p>
+                  <h3 className="c97-serif c97-h3" style={{ marginTop: "var(--c97-sp-1)" }}>
                     Generic ballot · {formatMargin(snapshot.genericBallotAvg.margin)}
                   </h3>
                 </div>

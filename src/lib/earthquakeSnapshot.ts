@@ -35,6 +35,9 @@ interface EarthquakeSummaryOptions {
 // per instance. The TTL matches the route's max-age=60 so this cache and the
 // CDN expire together.
 const LIVE_CACHE_TTL_MS = 60_000;
+// A visitor is waiting on this read and Netlify ends a synchronous function at
+// 60 seconds, so it gets one short attempt before the committed snapshot.
+const LIVE_FETCH_BUDGET = { timeoutMs: 4_000, attempts: 1 };
 let liveSummaryCache: { summary: EarthquakeSummary; expiresAt: number } | null =
   null;
 let liveSummaryInflight: Promise<EarthquakeSummary> | null = null;
@@ -54,7 +57,7 @@ export async function getEarthquakeSummary(
   }
   if (liveSummaryInflight) return liveSummaryInflight;
 
-  liveSummaryInflight = buildEarthquakeSnapshotData()
+  liveSummaryInflight = buildEarthquakeSnapshotData(LIVE_FETCH_BUDGET)
     .then((snapshot) => {
       liveSummaryCache = {
         summary: snapshot.summary,
@@ -63,10 +66,15 @@ export async function getEarthquakeSummary(
       return snapshot.summary;
     })
     // The committed snapshot is the last-known-good fallback when USGS is
-    // unavailable. Its generatedAt timestamp keeps the fallback explicit in
-    // response headers and the UI instead of making old data look current.
+    // unavailable. It is refreshed daily, so its age alone grades as fresh,
+    // and feedStatus is what tells the route and the page it is a fallback.
     // Failures are not negative-cached, so the next miss retries USGS.
-    .catch(() => earthquakeSnapshot.summary)
+    .catch(
+      (): EarthquakeSummary => ({
+        ...earthquakeSnapshot.summary,
+        feedStatus: "stale-fallback",
+      })
+    )
     .finally(() => {
       liveSummaryInflight = null;
     });

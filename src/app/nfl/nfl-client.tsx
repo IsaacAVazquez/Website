@@ -3,6 +3,7 @@
 import { startTransition, useEffect, useMemo, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { CircleAlert, ExternalLink, Flag } from "lucide-react";
+import { DATE_ONLY_TIME_ZONE } from "@/lib/date-formatters";
 import { MetricCard, CrestAvatar, TeamResultPill, FixtureCard } from "@/components/football";
 import {
   Catalog97ProjectHero,
@@ -193,6 +194,8 @@ export function NflClient({ initialState, summary, initialTeamSnapshot }: NflCli
         month: "short",
         day: "numeric",
         year: "numeric",
+        // summary.updatedAt is a YYYY-MM-DD date-only value (parses to UTC midnight).
+        timeZone: DATE_ONLY_TIME_ZONE,
       }).format(new Date(summary.updatedAt)),
     [summary.updatedAt]
   );
@@ -330,7 +333,7 @@ export function NflClient({ initialState, summary, initialTeamSnapshot }: NflCli
     },
   ];
   const heroMeta = `${summary.sourceLabel} · Season ${summary.season} · ${
-    summary.week ? `through week ${summary.week} of ${totalRegSeasonWeeks}` : "final regular season"
+    summary.week ? `through week ${summary.week} of ${totalRegSeasonWeeks}` : "week 1 in progress"
   } · snapshot ${snapshotDateLabel}`;
 
   const ladderConferences: SeedLadderConference[] = [
@@ -349,8 +352,7 @@ export function NflClient({ initialState, summary, initialTeamSnapshot }: NflCli
       <Catalog97ProjectHero
         ink={lead}
         title="NFL Pulse"
-        standfirst={standfirst}
-        meta="Conference standings, playoff seeding, and stat leaders will appear here once the next snapshot is published."
+        standfirst={`${standfirst} Conference standings, playoff seeding, and stat leaders will appear here once the next snapshot is published.`}
       >
         {heroSignature}
       </Catalog97ProjectHero>
@@ -383,7 +385,7 @@ export function NflClient({ initialState, summary, initialTeamSnapshot }: NflCli
       <section className="c97-band c97-sheet" data-c97-surface="bone" data-seam="torn">
         <div className="c97-shell">
           <h2 className="c97-poster-sm">Divisions</h2>
-          <p className="c97-prose mt-2" style={{ fontSize: "var(--c97-fs-small)" }}>
+          <p className="c97-prose" style={{ marginTop: "var(--c97-sp-1)", fontSize: "var(--c97-fs-small)" }}>
             Each team striped in its own colours, division leaders marked.
           </p>
           <div className="mt-4">
@@ -399,7 +401,7 @@ export function NflClient({ initialState, summary, initialTeamSnapshot }: NflCli
             <p className="c97-meta">{visibleTeams.length} teams</p>
           </div>
 
-          <div role="group" aria-label="Conference and seeding view" className="c97-segmented mt-4">
+          <div role="group" aria-label="Conference and seeding view" className="c97-segmented" style={{ marginTop: "var(--c97-sp-2)" }}>
             {VIEW_OPTIONS.map((option) => {
               const isActive = option.id === routeState.view;
               return (
@@ -493,7 +495,7 @@ export function NflClient({ initialState, summary, initialTeamSnapshot }: NflCli
                   <CrestAvatar crest={logoByTeamId.get(selectedTeam.id) ?? null} name={selectedTeam.name} size="lg" />
                   <div className="min-w-0 flex-1">
                     <h2 className="c97-serif c97-h3">{selectedTeam.name}</h2>
-                    <div className="c97-meta mt-1.5" style={{ textTransform: "none" }}>
+                    <div className="c97-meta" style={{ marginTop: "var(--c97-sp-1)", textTransform: "none" }}>
                       <span className={zoneChipClass(selectedZone)}>{getZoneLabel(selectedZone)}</span>
                       <span className="c97-chip">{formatRecord(selectedTeam)}</span>
                       <span className="c97-chip">{selectedTeam.division}</span>
@@ -546,14 +548,14 @@ export function NflClient({ initialState, summary, initialTeamSnapshot }: NflCli
                   </div>
                 )}
 
-                <p className="c97-prose mt-3 line-clamp-2" style={{ fontSize: "var(--c97-fs-small)" }}>
+                <p className="c97-prose line-clamp-2" style={{ marginTop: "var(--c97-sp-2)", fontSize: "var(--c97-fs-small)" }}>
                   {teamStoryline}
                 </p>
 
                 {!teamSnapshot && (isTeamSnapshotLoading || teamSnapshotError) ? (
                   <p
-                    className="c97-prose mt-4 border-t pt-4"
-                    style={{ borderColor: "var(--c97-rule)", fontSize: "var(--c97-fs-small)" }}
+                    className="c97-prose border-t pt-4"
+                    style={{ marginTop: "var(--c97-sp-2)", borderColor: "var(--c97-rule)", fontSize: "var(--c97-fs-small)" }}
                     role={teamSnapshotError ? "alert" : "status"}
                     aria-live="polite"
                   >
@@ -603,7 +605,7 @@ export function NflClient({ initialState, summary, initialTeamSnapshot }: NflCli
               <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
                 <div className="space-y-5">
                   <div>
-                    <p className="c97-kicker mb-2">Performance</p>
+                    <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-1)" }}>Performance</p>
                     <div className="grid grid-cols-2 gap-3">
                       <MetricCard label="Win %" value={selectedTeam.winPct.toFixed(3).replace(/^0/, "")} />
                       <MetricCard label="Record" value={formatRecord(selectedTeam)} />
@@ -615,7 +617,7 @@ export function NflClient({ initialState, summary, initialTeamSnapshot }: NflCli
                   </div>
 
                   <div className="c97-panel">
-                    <p className="c97-kicker mb-2">Pressure points</p>
+                    <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-1)" }}>Pressure points</p>
                     <ul className="c97-prose" style={{ margin: 0, paddingLeft: "1.1em" }}>
                       {teamPressurePoints.map((item) => (
                         <li key={item}>{item}</li>
@@ -641,7 +643,7 @@ export function NflClient({ initialState, summary, initialTeamSnapshot }: NflCli
 
                 {recentFixtures.length > 0 && (
                   <div>
-                    <p className="c97-kicker mb-2">Recent results</p>
+                    <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-1)" }}>Recent results</p>
                     <div className="space-y-2">
                       {recentFixtures.map((fixture) => (
                         <FixtureCard periodLabel="Week" key={fixture.id} fixture={fixture} contextTeamId={teamSnapshot?.team?.id ?? undefined} compact />
@@ -652,7 +654,7 @@ export function NflClient({ initialState, summary, initialTeamSnapshot }: NflCli
 
                 {upcomingFixtures.length > 0 && (
                   <div>
-                    <p className="c97-kicker mb-2">Upcoming games</p>
+                    <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-1)" }}>Upcoming games</p>
                     <div className="space-y-2">
                       {upcomingFixtures.map((fixture) => (
                         <FixtureCard periodLabel="Week" key={fixture.id} fixture={fixture} contextTeamId={teamSnapshot?.team?.id ?? undefined} compact />
@@ -667,7 +669,7 @@ export function NflClient({ initialState, summary, initialTeamSnapshot }: NflCli
               <div className="grid gap-6 md:grid-cols-2">
                 {summary.recentFixtures.length > 0 && (
                   <div>
-                    <p className="c97-kicker mb-2">Latest results</p>
+                    <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-1)" }}>Latest results</p>
                     <div className="space-y-3">
                       {summary.recentFixtures.map((fixture) => (
                         <FixtureCard periodLabel="Week" key={fixture.id} fixture={fixture} onOpenTeam={handleTeamChange} />
@@ -677,7 +679,7 @@ export function NflClient({ initialState, summary, initialTeamSnapshot }: NflCli
                 )}
                 {summary.upcomingFixtures.length > 0 ? (
                   <div>
-                    <p className="c97-kicker mb-2">Upcoming games</p>
+                    <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-1)" }}>Upcoming games</p>
                     <div className="space-y-3">
                       {summary.upcomingFixtures.map((fixture) => (
                         <FixtureCard periodLabel="Week" key={fixture.id} fixture={fixture} onOpenTeam={handleTeamChange} />
@@ -690,7 +692,7 @@ export function NflClient({ initialState, summary, initialTeamSnapshot }: NflCli
                       <Flag className="h-4 w-4" aria-hidden="true" />
                       Offseason
                     </p>
-                    <p className="c97-prose mt-2">
+                    <p className="c97-prose" style={{ marginTop: "var(--c97-sp-1)" }}>
                       The {summary.season} regular season is complete. New fixtures will appear when the next season&apos;s schedule is published.
                     </p>
                   </div>
@@ -725,7 +727,7 @@ export function NflClient({ initialState, summary, initialTeamSnapshot }: NflCli
 
                 <div className="grid gap-6 md:grid-cols-2">
                   <div>
-                    <p className="c97-kicker mb-2">Top {activeLeaderMeta.unitLong}</p>
+                    <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-1)" }}>Top {activeLeaderMeta.unitLong}</p>
                     <NflLeaderList leaders={activeLeaders.slice(0, 5)} unit={activeLeaderMeta.unit} teamLookup={teamShortNameById} />
                   </div>
                   {activeLeaders.length > 5 && (
@@ -773,17 +775,17 @@ function TeamLeaderCard({
       <p className="c97-kicker">{title}</p>
       {leader ? (
         <>
-          <p className="c97-h3 c97-serif mt-2">
+          <p className="c97-h3 c97-serif" style={{ marginTop: "var(--c97-sp-1)" }}>
             {leader.name}
             <span className="c97-kicker" style={{ marginLeft: "var(--c97-sp-2)" }}>{leader.position}</span>
           </p>
-          <p className="c97-prose mt-1" style={{ fontSize: "var(--c97-fs-small)" }}>
+          <p className="c97-prose" style={{ marginTop: "var(--c97-sp-1)", fontSize: "var(--c97-fs-small)" }}>
             {formatLeaderTotal(leader)} {unitLong} in {leader.games} games
           </p>
-          <p className="c97-kicker mt-2">{formatPerGame(leader.perGame)} per game</p>
+          <p className="c97-kicker" style={{ marginTop: "var(--c97-sp-1)" }}>{formatPerGame(leader.perGame)} per game</p>
         </>
       ) : (
-        <p className="c97-prose mt-2" style={{ fontSize: "var(--c97-fs-small)" }}>{emptyLabel}</p>
+        <p className="c97-prose" style={{ marginTop: "var(--c97-sp-1)", fontSize: "var(--c97-fs-small)" }}>{emptyLabel}</p>
       )}
     </div>
   );

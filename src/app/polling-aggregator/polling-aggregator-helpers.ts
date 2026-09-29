@@ -1,19 +1,40 @@
 import type { CSSProperties } from "react";
 import type { RaceRating, Party } from "@/types/polling";
+import { DATE_ONLY_TIME_ZONE, DISPLAY_TIME_ZONE } from "@/lib/date-formatters";
 
 // ─── Formatting ────────────────────────────────────────────────────────────────
 
+// endDate/date/lastPolled are ISO dates (no time component), so they're
+// pinned to UTC to keep their calendar day instead of the visitor's zone.
 const DATE_FMT = new Intl.DateTimeFormat("en-US", {
   month: "short",
   day: "numeric",
   year: "numeric",
+  timeZone: DATE_ONLY_TIME_ZONE,
 });
-const SHORT_DATE_FMT = new Intl.DateTimeFormat("en-US", { month: "short", day: "numeric" });
+const SHORT_DATE_FMT = new Intl.DateTimeFormat("en-US", {
+  month: "short",
+  day: "numeric",
+  timeZone: DATE_ONLY_TIME_ZONE,
+});
+// generatedAt is an instant with a clock time, so it's pinned to the display
+// zone and names it, since nothing nearby states the zone.
 const UPDATED_FMT = new Intl.DateTimeFormat("en-US", {
   month: "short",
   day: "numeric",
   hour: "numeric",
   minute: "2-digit",
+  timeZone: DISPLAY_TIME_ZONE,
+  timeZoneName: "short",
+});
+// sourceAsOf, unlike generatedAt, is one of the poll endDate values (an ISO
+// date with no clock time), so it's pinned to UTC like formatDate/
+// formatShortDate above rather than the display zone, or it would show a day
+// early in the Americas.
+const UPDATED_DATE_ONLY_FMT = new Intl.DateTimeFormat("en-US", {
+  month: "short",
+  day: "numeric",
+  timeZone: DATE_ONLY_TIME_ZONE,
 });
 
 export function formatDate(iso: string): string {
@@ -26,9 +47,44 @@ export function formatShortDate(iso: string): string {
   return Number.isNaN(d.getTime()) ? iso : SHORT_DATE_FMT.format(d);
 }
 
+// ─── Source freshness ──────────────────────────────────────────────────────────
+
+const STALE_AFTER_MS = 14 * 24 * 60 * 60 * 1000;
+
+export function newestPollDate(polls: { endDate: string }[]): string | null {
+  return polls.map((poll) => poll.endDate).sort().at(-1) ?? null;
+}
+
+/**
+ * One sentence for the source note when a series has had no new poll for more
+ * than 14 days. It speaks for the polls the page kept, because the builder
+ * drops small samples and incomplete rows and cannot speak for the whole feed.
+ */
+export function describeStaleSource(
+  approvalDate: string | null,
+  genericBallotDate: string | null,
+  now = Date.now()
+): string | null {
+  const [first, second] = [
+    { series: "approval", date: approvalDate },
+    { series: "generic ballot", date: genericBallotDate },
+  ].filter(
+    (entry): entry is { series: string; date: string } =>
+      entry.date !== null && now - Date.parse(entry.date) > STALE_AFTER_MS
+  );
+  if (!first) return null;
+  const lead = `The newest ${first.series} poll I have from VoteHub ended ${formatDate(first.date)}`;
+  return second
+    ? `${lead} and the newest ${second.series} poll ended ${formatDate(second.date)}, so the averages describe polling up to those dates.`
+    : `${lead}, so the ${first.series} average describes polling up to that date.`;
+}
+
 export function formatUpdated(iso: string): string {
   const d = new Date(iso);
-  return Number.isNaN(d.getTime()) ? "Unavailable" : UPDATED_FMT.format(d);
+  if (Number.isNaN(d.getTime())) return "Unavailable";
+  // A date-only "YYYY-MM-DD" string (sourceAsOf) is exactly 10 characters;
+  // generatedAt is a full ISO instant and always longer.
+  return iso.length === 10 ? UPDATED_DATE_ONLY_FMT.format(d) : UPDATED_FMT.format(d);
 }
 
 export function formatMargin(margin: number): string {

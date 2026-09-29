@@ -37,6 +37,7 @@ import { PROJECT_PRESS } from "@/constants/projectPress";
 import { bracketTree } from "./bracketTree";
 import { WorldCupBracket } from "./WorldCupBracket";
 import "./world-cup.css";
+import { DATE_ONLY_TIME_ZONE, DISPLAY_TIME_ZONE } from "@/lib/date-formatters";
 
 interface WorldCupClientProps {
   initialState: WorldCupRouteState;
@@ -73,7 +74,7 @@ function formatLongDate(iso: string): string {
     month: "long",
     day: "numeric",
     year: "numeric",
-    timeZone: "UTC",
+    timeZone: DATE_ONLY_TIME_ZONE,
   }).format(date);
 }
 
@@ -86,7 +87,7 @@ function formatTournamentWindow(start: string, end: string): string {
   const startLabel = new Intl.DateTimeFormat("en-US", {
     month: "long",
     day: "numeric",
-    timeZone: "UTC",
+    timeZone: DATE_ONLY_TIME_ZONE,
   }).format(startDate);
   return `${startLabel} to ${formatLongDate(end)}`;
 }
@@ -263,11 +264,13 @@ export function WorldCupClient({
 
   const snapshotDateLabel = useMemo(
     () =>
+      // tournament.generatedAt is a full ISO instant, so it reads in the
+      // display zone rather than UTC.
       new Intl.DateTimeFormat("en-US", {
         month: "short",
         day: "numeric",
         year: "numeric",
-        timeZone: "UTC",
+        timeZone: DISPLAY_TIME_ZONE,
       }).format(new Date(tournament.generatedAt)),
     [tournament]
   );
@@ -344,7 +347,7 @@ export function WorldCupClient({
             <KickoffCountdown startDate={tournament.startDate} />
           </div>
 
-          <div className="c97-segmented mt-4" role="tablist" aria-label="World Cup view switcher">
+          <div className="c97-segmented" style={{ marginTop: "var(--c97-sp-2)" }} role="tablist" aria-label="World Cup view switcher">
             {VIEW_OPTIONS.map((option) => (
               <button
                 key={option.id}
@@ -360,7 +363,7 @@ export function WorldCupClient({
               </button>
             ))}
           </div>
-          <p className="c97-prose mt-2 mb-0" style={{ fontSize: "var(--c97-fs-small)" }}>
+          <p className="c97-prose" style={{ marginTop: "var(--c97-sp-1)", fontSize: "var(--c97-fs-small)" }}>
             {VIEW_OPTIONS.find((option) => option.id === routeState.view)?.description}
           </p>
 
@@ -454,17 +457,17 @@ export function WorldCupClient({
           <div className="mt-5 space-y-6">
             {venuesByCountry.map(([country, venues]) => (
               <div key={country}>
-                <p className="c97-kicker mb-3 flex items-center gap-2">
+                <p className="c97-kicker flex items-center gap-2" style={{ marginBottom: "var(--c97-sp-2)" }}>
                   <Flag className="h-3.5 w-3.5" aria-hidden="true" />
                   {country} · {venues.length}
                 </p>
                 <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
                   {venues.map((venue) => (
                     <div key={`${venue.city}-${venue.stadium}`} className="c97-panel">
-                      <p className="c97-serif mb-0" style={{ fontWeight: 600 }}>
+                      <p className="c97-serif" style={{ fontWeight: 600 }}>
                         {venue.city}
                       </p>
-                      <p className="c97-prose mt-1 mb-0" style={{ fontSize: "var(--c97-fs-small)" }}>
+                      <p className="c97-prose" style={{ marginTop: "var(--c97-sp-1)", fontSize: "var(--c97-fs-small)" }}>
                         {venue.stadium}
                       </p>
                     </div>
@@ -478,8 +481,8 @@ export function WorldCupClient({
 
       <section className="c97-band c97-sheet" data-c97-surface="bone" data-seam="deckle">
         <div className="c97-shell">
-          <p className="c97-kicker mb-2">Snapshot note</p>
-          <p className="c97-prose mb-0" style={{ fontSize: "var(--c97-fs-small)" }}>
+          <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-1)" }}>Snapshot note</p>
+          <p className="c97-prose" style={{ fontSize: "var(--c97-fs-small)" }}>
             This page is a curated snapshot that refreshes on a schedule. Group standings,
             fixtures, and the knockout bracket come from ESPN&apos;s public World Cup endpoints.
             Tournament format and host venues are fixed facts carried in the snapshot.
@@ -537,11 +540,11 @@ function GroupsView({
 function QualificationLegend() {
   return (
     <div className="flex flex-wrap items-center gap-x-5 gap-y-2">
-      <span className="flex items-center gap-1.5 c97-meta">
+      <span className="flex items-center c97-meta">
         <span className="c97-wc-zone-dot" style={{ backgroundColor: "var(--c97-positive)" }} />
         Top two advance to the Round of 32
       </span>
-      <span className="flex items-center gap-1.5 c97-meta">
+      <span className="flex items-center c97-meta">
         <span className="c97-wc-zone-dot" style={{ backgroundColor: "var(--c97-accent)" }} />
         Third place enters the eight-team wildcard race
       </span>
@@ -654,7 +657,8 @@ function ThirdPlaceRace({
   if (rows.length === 0) return null;
 
   return (
-    <SurfaceCard className="p-5 sm:p-6">
+    // A container, like the group tables, so Played drops out where six columns won't fit a phone.
+    <SurfaceCard className="@container p-4 sm:p-6">
       <div className="flex items-center justify-between pb-3">
         <div className="flex items-center gap-2">
           <Medal className="h-4 w-4" aria-hidden="true" style={{ color: "var(--c97-accent)" }} />
@@ -668,7 +672,7 @@ function ThirdPlaceRace({
       </div>
 
       {!started ? (
-        <p className="c97-prose mb-0">
+        <p className="c97-prose">
           This World Cup keeps eight third-placed teams. Once the group matches begin, the side
           that finishes third in every group is ranked here by points, then goal difference, then
           goals scored, and the best eight join the top two from each group in the Round of 32.
@@ -681,7 +685,7 @@ function ThirdPlaceRace({
                 <th scope="col">#</th>
                 <th scope="col">Team</th>
                 <th scope="col">Grp</th>
-                <th scope="col" data-align="end">P</th>
+                <th scope="col" data-align="end" className="hidden @md:table-cell">P</th>
                 <th scope="col" data-align="end">GD</th>
                 <th scope="col" data-align="end">Pts</th>
               </tr>
@@ -721,7 +725,7 @@ function ThirdPlaceRace({
                       </button>
                     </td>
                     <td className="c97-mono">{row.group}</td>
-                    <td className="c97-mono" data-align="end">{row.played}</td>
+                    <td className="c97-mono hidden @md:table-cell" data-align="end">{row.played}</td>
                     <td className="c97-mono" data-align="end">
                       {row.goalDifference > 0 ? `+${row.goalDifference}` : row.goalDifference}
                     </td>
@@ -733,7 +737,7 @@ function ThirdPlaceRace({
               })}
             </tbody>
           </table>
-          <p className="c97-prose mt-3 mb-0" style={{ fontSize: "var(--c97-fs-small)" }}>
+          <p className="c97-prose" style={{ marginTop: "var(--c97-sp-2)", fontSize: "var(--c97-fs-small)" }}>
             The top {THIRD_PLACE_QUALIFY_COUNT} third-placed teams reach the Round of 32. The
             order stays provisional until every group has finished.
           </p>
@@ -843,13 +847,13 @@ function FormatCard({
 }) {
   return (
     <SurfaceCard className="p-5">
-      <p className="c97-kicker mb-2">How 2026 worked</p>
-      <h3 className="c97-serif mb-3" style={{ fontSize: "var(--c97-fs-h3)" }}>
+      <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-1)" }}>How 2026 worked</p>
+      <h3 className="c97-serif" style={{ marginBottom: "var(--c97-sp-2)", fontSize: "var(--c97-fs-h3)" }}>
         A bigger, three-country World Cup
       </h3>
-      <p className="c97-prose mb-0">{tournament.format}</p>
+      <p className="c97-prose">{tournament.format}</p>
       <dl
-        className="mt-4 grid grid-cols-2 gap-x-4 gap-y-2"
+        className="mt-4 grid gap-y-2"
         style={{ borderTop: "1px solid var(--c97-rule)", paddingTop: "var(--c97-sp-3)" }}
       >
         {(
@@ -860,7 +864,7 @@ function FormatCard({
           ] as const
         ).map(([label, value]) => (
           <div key={label} className="flex items-baseline justify-between gap-2">
-            <dt className="c97-kicker mb-0">{label}</dt>
+            <dt className="c97-kicker">{label}</dt>
             <dd className="c97-mono mb-0" style={{ fontWeight: 700 }}>{value}</dd>
           </div>
         ))}
@@ -869,12 +873,12 @@ function FormatCard({
         className="mt-4 flex flex-wrap gap-2"
         style={{ borderTop: "1px solid var(--c97-rule)", paddingTop: "var(--c97-sp-3)" }}
       >
-        <span className="c97-meta flex items-center gap-1.5">
+        <span className="c97-meta flex items-center">
           <CalendarDays className="h-3.5 w-3.5" aria-hidden="true" />
           {formatTournamentWindow(tournament.startDate, tournament.endDate)}
         </span>
       </div>
-      <p className="c97-prose mt-4 mb-0" style={{ fontSize: "var(--c97-fs-small)" }}>
+      <p className="c97-prose" style={{ marginTop: "var(--c97-sp-2)", fontSize: "var(--c97-fs-small)" }}>
         Pick any team from the group tables or the bracket to pin its standing, form, and
         fixtures here.
       </p>
@@ -958,7 +962,7 @@ function TeamDetailCard({
               ] as const
             ).map(([label, value]) => (
               <div key={label}>
-                <dt className="c97-kicker mb-0">{label}</dt>
+                <dt className="c97-kicker">{label}</dt>
                 <dd className="c97-mono mb-0" style={{ fontWeight: 700 }}>{value}</dd>
               </div>
             ))}
@@ -970,7 +974,7 @@ function TeamDetailCard({
             className="mt-4"
             style={{ borderTop: "1px solid var(--c97-rule)", paddingTop: "var(--c97-sp-3)" }}
           >
-            <p className="c97-kicker mb-2">Form (last 5)</p>
+            <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-1)" }}>Form (last 5)</p>
             <div className="flex gap-1.5">
               {form.map((result, index) => (
                 <TeamResultPill key={index} result={result} />
@@ -984,7 +988,7 @@ function TeamDetailCard({
             className="mt-4"
             style={{ borderTop: "1px solid var(--c97-rule)", paddingTop: "var(--c97-sp-3)" }}
           >
-            <p className="c97-kicker mb-2">Recent results</p>
+            <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-1)" }}>Recent results</p>
             <div className="space-y-2">
               {recent.map((fixture) => (
                 <FixtureCard
@@ -1004,7 +1008,7 @@ function TeamDetailCard({
             className="mt-4"
             style={{ borderTop: "1px solid var(--c97-rule)", paddingTop: "var(--c97-sp-3)" }}
           >
-            <p className="c97-kicker mb-2">Upcoming</p>
+            <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-1)" }}>Upcoming</p>
             <div className="space-y-2">
               {upcoming.map((fixture) => (
                 <FixtureCard
@@ -1021,8 +1025,8 @@ function TeamDetailCard({
 
         {!snapshot && (isLoading || error) && (
           <p
-            className="c97-prose mt-4 mb-0"
-            style={{ borderTop: "1px solid var(--c97-rule)", paddingTop: "var(--c97-sp-3)" }}
+            className="c97-prose"
+            style={{ marginTop: "var(--c97-sp-2)", borderTop: "1px solid var(--c97-rule)", paddingTop: "var(--c97-sp-3)" }}
             role={error ? "alert" : "status"}
           >
             {isLoading ? "Loading team snapshot…" : error}
@@ -1031,8 +1035,8 @@ function TeamDetailCard({
 
         {snapshot && !standing && recent.length === 0 && upcoming.length === 0 && (
           <p
-            className="c97-prose mt-4 mb-0"
-            style={{ borderTop: "1px solid var(--c97-rule)", paddingTop: "var(--c97-sp-3)" }}
+            className="c97-prose"
+            style={{ marginTop: "var(--c97-sp-2)", borderTop: "1px solid var(--c97-rule)", paddingTop: "var(--c97-sp-3)" }}
           >
             Standings and fixtures for {option.name} appear here once the tournament reached
             that stage.

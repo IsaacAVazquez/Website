@@ -2,14 +2,19 @@
  * @jest-environment node
  */
 import {
-  buildMlbLiveSummaryData,
   getCurrentSeason,
   getMlbSummary,
   getMlbTeamSnapshot,
   isValidMlbTeamId,
   createEmptyMlbSnapshot,
 } from "../mlbData";
-import type { MlbGame, MlbSummarySnapshot, MlbTeamOption } from "@/types/mlb";
+import {
+  DODGERS_SCHEDULE_DATES,
+  HYDRATED_LEADERS_RESPONSE,
+  LATE_GAME_SCHEDULE_DATES,
+  ORIOLES_SCHEDULE_DATES,
+  RESUMED_GAME_SCHEDULE_DATES,
+} from "./fixtures/mlbStatsApi.fixture";
 
 function jsonResponse(payload: unknown, status = 200): Response {
   return new Response(JSON.stringify(payload), {
@@ -269,6 +274,8 @@ function upcomingSchedulePayload() {
 function leadersPayload(category: string) {
   // Use distinct values so we can confirm the right category routed through.
   const value = category === "battingAverage" ? "0.345" : "30";
+  // Games played sits on the hydrated season line, as it does upstream.
+  const seasonLine = (gamesPlayed: number) => [{ splits: [{ stat: { gamesPlayed } }] }];
   return {
     leagueLeaders: [
       {
@@ -279,24 +286,21 @@ function leadersPayload(category: string) {
           {
             rank: 1,
             value,
-            person: { id: 5001, fullName: "Aaron Judge" },
+            person: { id: 5001, fullName: "Aaron Judge", stats: seasonLine(90) },
             team: { id: 147, name: "New York Yankees", abbreviation: "NYY" },
-            numGames: 90,
           },
           {
             rank: 2,
             value: category === "battingAverage" ? "0.330" : "28",
-            person: { id: 5002, fullName: "Mookie Betts" },
+            person: { id: 5002, fullName: "Mookie Betts", stats: seasonLine(88) },
             team: { id: 119, name: "Los Angeles Dodgers", abbreviation: "LAD" },
-            numGames: 88,
           },
           // Malformed entry (missing person name) must be dropped.
           {
             rank: 3,
             value: "27",
-            person: { id: 5003, fullName: null },
+            person: { id: 5003, fullName: null, stats: seasonLine(85) },
             team: { id: 111, abbreviation: "BOS" },
-            numGames: 85,
           },
         ],
       },
@@ -321,23 +325,12 @@ function routeFetch(input: RequestInfo | URL): Response {
     return jsonResponse(leadersPayload(category));
   }
   if (url.includes("/schedule?")) {
-    // Distinguish recent vs upcoming windows by the startDate query param.
-    // Recent window starts in the past (startDate < today); upcoming starts today/future.
-    const startMatch = url.match(/startDate=([^&]+)/);
+    // The two windows overlap, so the end date tells them apart. The recent
+    // window ends today and the upcoming window ends in the future.
     const endMatch = url.match(/endDate=([^&]+)/);
-    const start = startMatch ? startMatch[1] : "";
     const end = endMatch ? endMatch[1] : "";
-    // Recent schedule's endDate is yesterday (offset -1); upcoming's startDate is today (offset 0).
-    // The recent window's start is strictly before its end and both are in the past.
     const today = new Date().toISOString().slice(0, 10);
-    if (end < today || end === undefined) {
-      return jsonResponse(recentSchedulePayload());
-    }
-    if (start >= today) {
-      return jsonResponse(upcomingSchedulePayload());
-    }
-    // Fallback: treat as recent.
-    return jsonResponse(recentSchedulePayload());
+    return jsonResponse(end > today ? upcomingSchedulePayload() : recentSchedulePayload());
   }
 
   throw new Error(`Unexpected fetch URL in test: ${url}`);
@@ -674,14 +667,10 @@ function makeTeamRouter(payloads: {
       return jsonResponse(payloads.teams ?? teamsPayload());
     }
     if (url.includes("/schedule?")) {
-      const startMatch = url.match(/startDate=([^&]+)/);
       const endMatch = url.match(/endDate=([^&]+)/);
-      const start = startMatch ? startMatch[1] : "";
       const end = endMatch ? endMatch[1] : "";
       const today = new Date().toISOString().slice(0, 10);
-      if (end && end < today) return jsonResponse(payloads.recent);
-      if (start && start >= today) return jsonResponse(payloads.upcoming);
-      return jsonResponse(payloads.recent);
+      return jsonResponse(end > today ? payloads.upcoming : payloads.recent);
     }
     throw new Error(`Unexpected fetch URL in test: ${url}`);
   };
@@ -846,266 +835,164 @@ describe("getMlbTeamSnapshot", () => {
   });
 });
 
-// ---- Live summary builder --------------------------------------------------
+// ---- Rows shaped like the live API -------------------------------------------
 
-function isoDate(daysFromToday: number): string {
-  const date = new Date();
-  date.setUTCDate(date.getUTCDate() + daysFromToday);
-  return date.toISOString().slice(0, 10);
-}
+type ScheduleDates = Array<{
+  date: string;
+  games: Array<{
+    teams: { away: { team: { id: number } }; home: { team: { id: number } } };
+  }>;
+}>;
 
-function isoDateTime(daysFromToday: number, time = "T20:00:00Z"): string {
-  return `${isoDate(daysFromToday)}${time}`;
-}
-
-const LIVE_TEAMS: MlbTeamOption[] = [
-  {
-    id: "147",
-    name: "New York Yankees",
-    shortName: "Yankees",
-    abbreviation: "NYY",
-    league: "AL",
-    division: "AL East",
-    venue: "Yankee Stadium",
-    logo: "https://www.mlbstatic.com/team-logos/147.svg",
-  },
-  {
-    id: "111",
-    name: "Boston Red Sox",
-    shortName: "Red Sox",
-    abbreviation: "BOS",
-    league: "AL",
-    division: "AL East",
-    venue: "Fenway Park",
-    logo: "https://www.mlbstatic.com/team-logos/111.svg",
-  },
-];
-
-function committedGame(
-  id: string,
-  utcDate: string,
-  status: string,
-  score: MlbGame["score"] = { winner: null, home: null, away: null }
-): MlbGame {
+// Answers a schedule request the way the API does, by US calendar date and club.
+function scheduleResponse(dates: ScheduleDates, url: string) {
+  const params = new URL(url).searchParams;
+  const start = params.get("startDate") ?? "";
+  const end = params.get("endDate") ?? "";
+  const teamId = Number(params.get("teamId"));
   return {
-    id,
-    utcDate,
-    status,
-    matchday: null,
-    stage: "R",
-    homeTeam: {
-      id: "147",
-      name: "New York Yankees",
-      shortName: "Yankees",
-      abbreviation: "NYY",
-      crest: "https://www.mlbstatic.com/team-logos/147.svg",
-    },
-    awayTeam: {
-      id: "111",
-      name: "Boston Red Sox",
-      shortName: "Red Sox",
-      abbreviation: "BOS",
-      crest: "https://www.mlbstatic.com/team-logos/111.svg",
-    },
-    score,
+    dates: dates
+      .filter((entry) => entry.date >= start && entry.date <= end)
+      .map((entry) => ({
+        ...entry,
+        games: entry.games.filter(
+          (game) =>
+            !teamId ||
+            game.teams.home.team.id === teamId ||
+            game.teams.away.team.id === teamId
+        ),
+      }))
+      .filter((entry) => entry.games.length > 0),
   };
 }
 
-function liveFallbackSummary(): MlbSummarySnapshot {
+// The season line is on a leader only when the request hydrates it.
+function leadersResponse(url: string) {
+  if (url.includes("hydrate=")) return HYDRATED_LEADERS_RESPONSE;
   return {
-    season: "2026",
-    generatedAt: isoDateTime(-1),
-    updatedAt: isoDate(-1),
-    sourceLabel: "MLB Stats API",
-    sourceUrls: { standings: "standings", schedule: "schedule", leaders: "leaders" },
-    teams: LIVE_TEAMS,
-    standings: [],
-    recentGames: [
-      committedGame("900001", isoDateTime(-3), "FINISHED", {
-        winner: "HOME_TEAM",
-        home: 4,
-        away: 1,
-      }),
-    ],
-    upcomingGames: [
-      committedGame("900101", isoDateTime(0), "Scheduled"),
-      committedGame("900103", isoDateTime(0, "T17:00:00Z"), "Scheduled"),
-      committedGame("900102", isoDateTime(1), "Scheduled"),
-    ],
-    hittingLeaders: { homeRuns: [], runsBattedIn: [], battingAverage: [] },
-    pitchingLeaders: { earnedRunAverage: [], wins: [], strikeouts: [] },
+    leagueLeaders: HYDRATED_LEADERS_RESPONSE.leagueLeaders.map((group) => ({
+      ...group,
+      leaders: group.leaders.map(({ person, ...leader }) => ({
+        ...leader,
+        person: { id: person.id, fullName: person.fullName },
+      })),
+    })),
   };
 }
 
-function rawScheduleGame(
-  gamePk: number,
-  gameDate: string,
-  abstractGameState: string,
-  detailedState: string,
-  homeScore: number | null = null,
-  awayScore: number | null = null
-) {
-  return {
-    gamePk,
-    gameDate,
-    gameType: "R",
-    status: { abstractGameState, detailedState },
-    teams: {
-      home: {
-        team: { id: 147, name: "New York Yankees", abbreviation: "NYY" },
-        score: homeScore,
-        isWinner: null,
-      },
-      away: {
-        team: { id: 111, name: "Boston Red Sox", abbreviation: "BOS" },
-        score: awayScore,
-        isWinner: null,
-      },
-    },
-  };
-}
-
-function makeLiveScheduleRouter(
-  yesterdayResponse: () => Response,
-  todayResponse: () => Response
-) {
-  return async (input: RequestInfo | URL): Promise<Response> => {
+function mockApi(dates: ScheduleDates, now?: string) {
+  if (now) {
+    jest.useFakeTimers();
+    jest.setSystemTime(new Date(now));
+  }
+  jest.spyOn(global, "fetch").mockImplementation((async (input: RequestInfo | URL) => {
     const url = typeof input === "string" ? input : input.toString();
-    if (!url.includes("/schedule?")) {
-      throw new Error(`Unexpected fetch URL in test: ${url}`);
-    }
-    const startMatch = url.match(/startDate=([^&]+)/);
-    const start = startMatch ? startMatch[1] : "";
-    if (start < isoDate(0)) return yesterdayResponse();
-    return todayResponse();
-  };
+    if (url.includes("/schedule?")) return jsonResponse(scheduleResponse(dates, url));
+    if (/\/teams\/\d+\?/.test(url)) return jsonResponse({ teams: [] });
+    if (url.includes("/teams?")) return jsonResponse(teamsPayload());
+    if (url.includes("/standings?")) return jsonResponse(standingsPayload());
+    if (url.includes("/stats/leaders?")) return jsonResponse(leadersResponse(url));
+    throw new Error(`Unexpected fetch URL in test: ${url}`);
+  }) as unknown as typeof fetch);
 }
 
-describe("buildMlbLiveSummaryData", () => {
+describe("schedule and leader rows from the live API", () => {
   afterEach(() => {
+    jest.useRealTimers();
     jest.restoreAllMocks();
   });
 
-  it("merges yesterday's finals and today's scoreboard into the committed summary", async () => {
-    jest.spyOn(global, "fetch").mockImplementation(
-      makeLiveScheduleRouter(
-        () =>
-          jsonResponse({
-            dates: [
-              {
-                date: isoDate(-1),
-                games: [
-                  rawScheduleGame(900050, isoDateTime(-1), "Final", "Final", 3, 2),
-                ],
-              },
-            ],
-          }),
-        () =>
-          jsonResponse({
-            dates: [
-              {
-                date: isoDate(0),
-                games: [
-                  rawScheduleGame(
-                    900101,
-                    isoDateTime(0),
-                    "Live",
-                    "In Progress",
-                    2,
-                    1
-                  ),
-                  rawScheduleGame(
-                    900103,
-                    isoDateTime(0, "T17:00:00Z"),
-                    "Final",
-                    "Final",
-                    6,
-                    5
-                  ),
-                ],
-              },
-            ],
-          })
-      ) as unknown as typeof fetch
-    );
+  it("drops a postponed row and lists its makeup once", async () => {
+    mockApi(ORIOLES_SCHEDULE_DATES, "2026-09-27T19:50:00Z");
 
-    const fallback = liveFallbackSummary();
-    const summary = await buildMlbLiveSummaryData(fallback);
+    const snapshot = await getMlbTeamSnapshot("110");
 
-    // Today's in-progress game replaces its committed entry with live score
-    // and state; the now-finished game leaves the upcoming list.
-    expect(summary.upcomingGames.map((g) => g.id)).toEqual(["900101", "900102"]);
-    const liveGame = summary.upcomingGames[0];
-    expect(liveGame.status).toBe("In Progress");
-    expect(liveGame.score).toEqual({ winner: null, home: 2, away: 1 });
-    // Known-team enrichment still applies to live games.
-    expect(liveGame.homeTeam.shortName).toBe("Yankees");
-
-    // Finals from both windows merge ahead of the committed recents, newest first.
-    expect(summary.recentGames.map((g) => g.id)).toEqual([
-      "900103",
-      "900050",
-      "900001",
+    expect(snapshot.recentGames.map((g) => `${g.id} ${g.utcDate}`)).toEqual([
+      "823489 2026-09-25T20:10:00Z",
+      "823491 2026-09-25T20:05:00Z",
+      "824784 2026-09-23T22:35:00Z",
+      "824785 2026-09-23T17:35:00Z",
+      "824787 2026-09-21T22:35:00Z",
     ]);
-    expect(summary.recentGames[0].score).toEqual({
-      winner: "HOME_TEAM",
-      home: 6,
-      away: 5,
+    expect(snapshot.recentGames.every((g) => g.score.home !== null)).toBe(true);
+    expect(snapshot.form).toEqual({
+      sequence: ["L", "W", "W", "W", "W"],
+      wins: 4,
+      losses: 1,
+      runsFor: 25,
+      runsAgainst: 15,
     });
-
-    // Non-time-sensitive sections stay committed; the stamp refreshes.
-    expect(summary.standings).toBe(fallback.standings);
-    expect(summary.hittingLeaders).toBe(fallback.hittingLeaders);
-    expect(summary.teams).toBe(fallback.teams);
-    expect(summary.generatedAt).toMatch(/^\d{4}-\d{2}-\d{2}T/);
-    expect(summary.updatedAt).toBe(isoDate(0));
+    expect(snapshot.upcomingGames.map((g) => g.id)).toEqual(["823490"]);
   });
 
-  it("keeps the committed games for a window whose fetch fails", async () => {
-    jest.spyOn(global, "fetch").mockImplementation(
-      makeLiveScheduleRouter(
-        () => jsonResponse({}, 404),
-        () =>
-          jsonResponse({
-            dates: [
-              {
-                date: isoDate(0),
-                games: [
-                  rawScheduleGame(
-                    900103,
-                    isoDateTime(0, "T17:00:00Z"),
-                    "Final",
-                    "Final",
-                    6,
-                    5
-                  ),
-                ],
-              },
-            ],
-          })
-      ) as unknown as typeof fetch
-    );
+  it("lists a resumed game once, under the date it finished", async () => {
+    mockApi(RESUMED_GAME_SCHEDULE_DATES, "2026-06-18T12:00:00Z");
 
-    const fallback = liveFallbackSummary();
-    const summary = await buildMlbLiveSummaryData(fallback);
+    const summary = await getMlbSummary();
 
-    // Yesterday's window failed, so only today's final joins the committed recents.
-    expect(summary.recentGames.map((g) => g.id)).toEqual(["900103", "900001"]);
-    expect(summary.upcomingGames.map((g) => g.id)).toEqual(["900101", "900102"]);
+    expect(summary.recentGames.map((g) => `${g.id} ${g.utcDate}`)).toEqual([
+      "824913 2026-06-17T23:15:00Z",
+      "824912 2026-06-17T18:00:00Z",
+    ]);
   });
 
-  it("throws when every live schedule window fails so callers can fall back wholesale", async () => {
-    jest
-      .spyOn(global, "fetch")
-      .mockImplementation(
-        makeLiveScheduleRouter(
-          () => jsonResponse({}, 404),
-          () => jsonResponse({}, 404)
-        ) as unknown as typeof fetch
-      );
+  it("carries start times that are not set and games played only if necessary", async () => {
+    mockApi(DODGERS_SCHEDULE_DATES, "2026-09-27T19:50:00Z");
 
-    await expect(buildMlbLiveSummaryData(liveFallbackSummary())).rejects.toMatchObject({
-      status: 503,
-    });
+    const snapshot = await getMlbTeamSnapshot("119");
+
+    expect(
+      snapshot.upcomingGames.map((g) => [g.id, g.stage, g.startTimeTbd, g.ifNecessary])
+    ).toEqual([
+      ["823164", "R", false, false],
+      ["849828", "D", true, false],
+      ["849823", "D", true, false],
+      ["849819", "D", true, false],
+      ["849822", "D", true, true],
+    ]);
+  });
+
+  it("keeps a game in progress after the UTC date has rolled over", async () => {
+    mockApi(LATE_GAME_SCHEDULE_DATES, "2026-09-27T03:00:00Z");
+
+    const summary = await getMlbSummary();
+    const astros = await getMlbTeamSnapshot("117");
+    const athletics = await getMlbTeamSnapshot("133");
+
+    for (const upcoming of [
+      summary.upcomingGames,
+      astros.upcomingGames,
+      athletics.upcomingGames,
+    ]) {
+      expect(upcoming.map((g) => [g.id, g.status])).toEqual([
+        ["824949", "In Progress"],
+        ["824948", "Scheduled"],
+      ]);
+      expect(upcoming[0].score).toEqual({ winner: null, home: 1, away: 6 });
+    }
+  });
+
+  it("lists a game that finished earlier on the current UTC date as a result", async () => {
+    mockApi(DODGERS_SCHEDULE_DATES, "2026-09-26T23:30:00Z");
+
+    const summary = await getMlbSummary();
+    const dodgers = await getMlbTeamSnapshot("119");
+
+    expect(summary.recentGames.map((g) => g.id)).toEqual(["823165"]);
+    expect(dodgers.recentGames.map((g) => g.id)).toEqual(["823165"]);
+  });
+
+  it("reads games played from the hydrated season line", async () => {
+    mockApi([]);
+
+    const summary = await getMlbSummary();
+
+    // A traded player has a combined split and one per club, and the combined
+    // one is his season total.
+    expect(summary.hittingLeaders.battingAverage.map((l) => [l.name, l.games])).toEqual([
+      ["Yordan Alvarez", 158],
+      ["Luis Arraez", 151],
+    ]);
   });
 });
+

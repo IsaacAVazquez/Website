@@ -142,13 +142,13 @@ export async function GET(request: NextRequest) {
       },
     });
   } catch (error) {
-    const message = error instanceof Error ? error.message : "Unknown fantasy snapshot error";
-    logger.error(`Fantasy snapshot read failed: ${message}`);
+    // The detail stays in the server log. The message can carry a file path.
+    logger.error("Fantasy snapshot read failed", error);
 
     return NextResponse.json(
       {
         success: false,
-        error: message,
+        error: "Fantasy rankings are unavailable right now.",
         metadata: {
           position,
           scoringFormat: routeScoringToScoringFormat(scoring),

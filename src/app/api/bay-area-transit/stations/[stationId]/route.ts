@@ -57,6 +57,7 @@ export async function GET(
         sourceAsOf: board.generatedAt,
         cacheControl: SUCCESS_CACHE_CONTROL,
         source: "bart-runtime-with-snapshot-fallback",
+        status: board.status === "fresh" ? undefined : board.status,
       }),
     });
   } catch (error) {

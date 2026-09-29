@@ -21,10 +21,27 @@ import {
   type PersistenceStatus,
 } from "@/lib/browserStorage";
 import { useLocalStoragePersistenceStatus } from "@/hooks/useLocalStorageString";
+import { DISPLAY_TIME_ZONE } from "@/lib/date-formatters";
 
 const STORAGE_KEY = "retirement_plan";
 const STORAGE_VERSION = 1;
 const RECOMPUTE_DEBOUNCE_MS = 200;
+
+const CURRENT_YEAR_FORMATTER = new Intl.DateTimeFormat("en-US", {
+  timeZone: DISPLAY_TIME_ZONE,
+  year: "numeric",
+});
+
+/**
+ * The projection engine runs synchronously during render (including SSR), so
+ * an unpinned `new Date().getFullYear()` would size "this year" off whichever
+ * system zone happened to render that pass — UTC on the server, whatever a
+ * visitor's browser reports on the client — and disagree for everyone near a
+ * New Year's boundary, mismatching the entire hydrated projection.
+ */
+function getCurrentYear(): number {
+  return Number(CURRENT_YEAR_FORMATTER.format(new Date()));
+}
 
 interface StoredPlan {
   version: number;
@@ -107,7 +124,21 @@ export interface UseRetirementPlanReturn {
   reset: () => void;
 }
 
-export function useRetirementPlan(seed?: RetirementSeed): UseRetirementPlanReturn {
+/**
+ * `enabled` holds the projection back. The planner passes false until its
+ * section is near the viewport, because it is the last section on the
+ * investments page and the projection measured about 150 ms of main-thread
+ * work on a desktop. The plan still hydrates and persists while disabled.
+ *
+ * ponytail: once enabled, the lever search still runs in one task and blocks
+ * for that long on every settled edit. Move computeLevers to a Web Worker if
+ * interaction timing on /investments shows it. The engine is pure, so it moves
+ * as is.
+ */
+export function useRetirementPlan(
+  seed?: RetirementSeed,
+  enabled = true,
+): UseRetirementPlanReturn {
   const persistenceStatus = useLocalStoragePersistenceStatus(STORAGE_KEY);
   const [plan, setPlan] = useState<RetirementPlanInput>(() => createDefaultPlan());
   const [debouncedPlan, setDebouncedPlan] = useState<RetirementPlanInput>(plan);
@@ -160,13 +191,13 @@ export function useRetirementPlan(seed?: RetirementSeed): UseRetirementPlanRetur
   // failure must be distinguishable from "still computing", or the UI shows a
   // permanent loading state.
   const { core, hasError } = useMemo(() => {
-    if (!ready) return { core: null, hasError: false };
+    if (!ready || !enabled) return { core: null, hasError: false };
     try {
-      return { core: projectCore(debouncedPlan, new Date().getFullYear()), hasError: false };
+      return { core: projectCore(debouncedPlan, getCurrentYear()), hasError: false };
     } catch {
       return { core: null, hasError: true };
     }
-  }, [debouncedPlan, ready]);
+  }, [debouncedPlan, ready, enabled]);
 
   // Heavier lever sensitivity runs off the critical path, after the core paints.
   // We track which plan the levers belong to so "computing" can be derived
@@ -182,7 +213,7 @@ export function useRetirementPlan(seed?: RetirementSeed): UseRetirementPlanRetur
       try {
         setLeverState({
           plan: debouncedPlan,
-          levers: computeLevers(debouncedPlan, new Date().getFullYear()),
+          levers: computeLevers(debouncedPlan, getCurrentYear()),
         });
       } catch {
         setLeverState({ plan: debouncedPlan, levers: [] });
@@ -198,7 +229,9 @@ export function useRetirementPlan(seed?: RetirementSeed): UseRetirementPlanRetur
   }, [core, leverState, debouncedPlan]);
 
   const leversReady = leverState.plan === debouncedPlan;
-  const isComputing = ready && !hasError && (debouncedPlan !== plan || !leversReady);
+  // Nothing is computing while the projection is held back.
+  const isComputing =
+    enabled && ready && !hasError && (debouncedPlan !== plan || !leversReady);
 
   // ─── Mutators ──────────────────────────────────────────────────────────────
 

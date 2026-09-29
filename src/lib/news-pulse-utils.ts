@@ -67,24 +67,25 @@ const NEGATIVE_WORDS = new Set([
 
 const STOP_WORDS = new Set([
   "a", "about", "above", "after", "again", "against", "all", "also", "am",
-  "an", "and", "any", "are", "as", "at", "be", "because", "been", "before",
-  "being", "below", "between", "both", "but", "by", "can", "come", "could",
-  "day", "did", "do", "does", "doing", "don", "down", "during", "each",
-  "even", "every", "few", "first", "for", "from", "get", "go", "going",
-  "got", "had", "has", "have", "having", "he", "her", "here", "hers",
-  "herself", "him", "himself", "his", "how", "i", "if", "in", "into", "is",
-  "it", "its", "itself", "just", "know", "last", "like", "ll", "long",
-  "look", "made", "make", "many", "may", "me", "might", "more", "most",
-  "much", "must", "my", "myself", "new", "news", "no", "nor", "not", "now",
-  "of", "off", "on", "once", "one", "only", "or", "other", "our", "ours",
-  "ourselves", "out", "over", "own", "part", "people", "per", "re", "s",
-  "said", "same", "say", "says", "she", "should", "show", "since", "so",
-  "some", "still", "such", "t", "take", "tell", "than", "that", "the",
-  "their", "theirs", "them", "themselves", "then", "there", "these", "they",
-  "this", "those", "through", "time", "to", "too", "under", "until", "up",
-  "us", "use", "ve", "very", "want", "was", "way", "we", "well", "were",
-  "what", "when", "where", "which", "while", "who", "whom", "why", "will",
-  "with", "won", "would", "year", "years", "you", "your", "yours",
+  "an", "and", "any", "are", "around", "as", "at", "back", "be", "because",
+  "been", "before", "being", "below", "between", "both", "but", "by", "call",
+  "can", "city", "come", "could", "day", "days", "did", "do", "does", "doing",
+  "don", "down", "during", "each", "even", "every", "few", "first", "for",
+  "from", "get", "go", "going", "got", "had", "has", "have", "having", "he",
+  "her", "here", "hers", "herself", "him", "himself", "his", "how", "i",
+  "if", "in", "into", "is", "it", "its", "itself", "just", "know", "last",
+  "life", "like", "ll", "long", "look", "made", "make", "many", "may", "me",
+  "might", "more", "most", "much", "must", "my", "myself", "new", "news",
+  "no", "nor", "not", "now", "of", "off", "on", "once", "one", "only", "or",
+  "other", "our", "ours", "ourselves", "out", "over", "own", "part",
+  "people", "per", "play", "president", "re", "s", "said", "same", "say",
+  "says", "she", "should", "show", "since", "so", "some", "state", "still",
+  "such", "t", "take", "tell", "than", "that", "the", "their", "theirs",
+  "them", "themselves", "then", "there", "these", "they", "this", "those",
+  "through", "time", "to", "too", "under", "until", "up", "us", "use", "ve",
+  "very", "want", "was", "way", "we", "week", "well", "were", "what", "when",
+  "where", "which", "while", "who", "whom", "why", "will", "with", "won",
+  "work", "world", "would", "year", "years", "you", "your", "yours",
   "yourself", "yourselves",
 ]);
 
@@ -101,7 +102,9 @@ const OUTLET_FILLER_WORDS = new Set([
 
 const CLUSTER_MIN_SHARED_TOKENS = 2;
 const CLUSTER_MIN_SIMILARITY = 0.2;
-const STORY_CLUSTER_STOP_WORDS = new Set([
+// Journalism-meta and outlet-name filler. Shared by topic extraction and
+// story clustering, since a word like "live" or "latest" is noise in both.
+const TOPIC_FILLER_WORDS = new Set([
   ...Array.from(CLUSTER_FILLER_WORDS),
   ...Array.from(OUTLET_FILLER_WORDS),
 ]);
@@ -204,7 +207,7 @@ export function extractTopics(
 
   for (const article of articles) {
     const seen = new Set<string>();
-    for (const token of tokenize(`${article.title} ${article.description}`)) {
+    for (const token of tokenize(`${article.title} ${article.description}`, TOPIC_FILLER_WORDS)) {
       if (seen.has(token)) continue;
       seen.add(token);
 
@@ -251,7 +254,7 @@ export function clusterArticlesByStory(
 ): StoryCluster[] {
   const fingerprints = articles.map((article) => ({
     article,
-    tokens: new Set(tokenize(`${article.title} ${article.description}`, STORY_CLUSTER_STOP_WORDS)),
+    tokens: new Set(tokenize(`${article.title} ${article.description}`, TOPIC_FILLER_WORDS)),
   }));
 
   const rawClusters: Array<{

@@ -62,7 +62,6 @@
   display: flex;
   flex-wrap: wrap;
   gap: var(--c97-sp-3);
-  margin: 0;
   padding: 0;
 }
 

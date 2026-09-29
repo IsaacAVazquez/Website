@@ -64,6 +64,7 @@ export default function AdminPage() {
     return (
       <section className="c97-band" data-c97-surface="paper" aria-label="Loading">
         <div className="min-h-screen flex items-center justify-center">
+          <h1 className="sr-only">Admin</h1>
           <p className="c97-prose" style={{ color: 'var(--c97-ink-2)' }}>Loading...</p>
         </div>
       </section>

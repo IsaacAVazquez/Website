@@ -90,6 +90,12 @@ describe("getBookingWindow", () => {
     expect(window.daysUntilDeparture).toBeNull();
     expect(window.headline).toMatch(/date/i);
   });
+
+  it("reports checking rather than a missing date while today isn't known yet", () => {
+    const window = getBookingWindow(region, dateAtOffset(90), null);
+    expect(window.daysUntilDeparture).toBeNull();
+    expect(window.headline).toMatch(/today/i);
+  });
 });
 
 describe("scoreFare", () => {

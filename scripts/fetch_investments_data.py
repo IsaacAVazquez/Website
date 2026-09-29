@@ -13,7 +13,7 @@ Usage:
     (or: npm run update:investments, which also builds curated snapshots)
 
 Requirements:
-    .venv/bin/pip install defeatbeta-api==0.0.47
+    .venv/bin/pip install -r scripts/requirements-investments.txt
 """
 
 import json
@@ -21,7 +21,7 @@ import os
 import signal
 import sys
 import time
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
 # ---------------------------------------------------------------------------
@@ -31,7 +31,7 @@ try:
     from defeatbeta_api.data.ticker import Ticker  # type: ignore
 except ImportError:
     print("Error: defeatbeta-api is not installed.")
-    print("Install it with:  .venv/bin/pip install defeatbeta-api==0.0.47")
+    print("Install it with:  .venv/bin/pip install -r scripts/requirements-investments.txt")
     sys.exit(1)
 
 import pandas as pd  # type: ignore  # noqa: E402 — guaranteed by defeatbeta-api
@@ -159,16 +159,32 @@ class SymbolTimeout(Exception):
     """Raised when an individual symbol exhausts its active time budget."""
 
 
+# defeatbeta-api's query() rewraps whatever it catches as a plain Exception,
+# and DuckDB reports an interrupted query in its own words, so the
+# SymbolTimeout the alarm raises inside a query never reaches the symbol loop.
+# The handler records that it fired and safe_call checks the record.
+_symbol_timed_out = False
+
+
+def raise_if_symbol_timed_out() -> None:
+    if _symbol_timed_out:
+        raise SymbolTimeout(
+            f"symbol time budget exhausted after {_active_symbol_timeout_seconds:.1f}s"
+        )
+
+
 def safe_call(fn):
     """Call fn(), returning {"error": ...} on failure."""
     try:
-        return fn()
+        result = fn()
     except SymbolTimeout:
         # This is process control, not a provider-field error. Let the outer
         # symbol loop retain the prior deployed snapshot.
         raise
     except Exception as exc:
-        return {"error": str(exc)}
+        result = {"error": str(exc)}
+    raise_if_symbol_timed_out()
+    return result
 
 
 def df_to_json(obj) -> object:
@@ -306,6 +322,10 @@ def get_latest_price_date(price_payload) -> str | None:
 
 def validate_price_freshness(symbol: str, price_payload) -> str:
     """Reject a provider response whose newest market date is too old."""
+    if isinstance(price_payload, dict) and price_payload.get("error"):
+        # safe_call turns a provider failure into {"error": ...}. Name it, or
+        # a moved dataset reads as "no valid source date" (2026-09-16 outage).
+        raise ValueError(f"price fetch failed: {price_payload['error']}")
     latest = get_latest_price_date(price_payload)
     if latest is None:
         raise ValueError("price history has no valid source date")
@@ -384,13 +404,44 @@ def fetch_officers(t: Ticker, out: Path) -> None:
     write_json(out / "officers.json", df_to_json(safe_call(lambda: t.officers())))
 
 
+PRICE_HISTORY_ROWS = 252
+# 252 trading days span about 366 calendar days. The margin covers holidays.
+BULK_PRICE_LOOKBACK_DAYS = 400
+
+
 def fetch_price(t: Ticker, out: Path):
     print("  price...")
     result = df_to_json(safe_call(lambda: t.price()))
     if isinstance(result, list):
-        result = result[-252:]
+        result = result[-PRICE_HISTORY_ROWS:]
     write_json(out / "price.json", result)
     return result
+
+
+def write_bulk_prices(symbols: list[str]) -> int:
+    """Fetch price history for every symbol in one query.
+
+    Price used to ride along with the slow sections, so a symbol the rotation
+    did not reach kept a price that was weeks old. Rows are written in the
+    shape fetch_price writes, as bulk_price.json. The file name is what tells
+    the snapshot builder this price did not come from a full refresh.
+    """
+    handle = Ticker(symbols[0])
+    url = handle.huggingface_client.get_url_path("stock_prices")
+    since = datetime.now(timezone.utc).date() - timedelta(days=BULK_PRICE_LOOKBACK_DAYS)
+    in_list = ", ".join(f"'{symbol}'" for symbol in symbols)
+    frame = handle.duckdb_client.query(
+        f"SELECT * FROM '{url}' WHERE symbol IN ({in_list}) "
+        f"AND report_date >= '{since.isoformat()}' ORDER BY symbol, report_date"
+    )
+    written = 0
+    for symbol, rows in frame.groupby("symbol"):
+        write_json(
+            OUTPUT_DIR / str(symbol) / "bulk_price.json",
+            df_to_json(rows)[-PRICE_HISTORY_ROWS:],
+        )
+        written += 1
+    return written
 
 
 def fetch_beta(t: Ticker, out: Path) -> None:
@@ -473,14 +524,9 @@ def fetch_growth(t: Ticker, out: Path) -> None:
 def statement_to_json(stmt) -> object:
     if isinstance(stmt, dict):  # error case
         return stmt
-    try:
-        return df_to_json(stmt.df())
-    except SymbolTimeout:
-        # ITIMER_REAL is one-shot. If this escapes as an ordinary section error,
-        # the rest of the symbol would continue without a watchdog.
-        raise
-    except Exception as exc:
-        return {"error": str(exc)}
+    # ITIMER_REAL is one-shot. If a timeout escapes as an ordinary section
+    # error, the rest of the symbol would continue without a watchdog.
+    return safe_call(lambda: df_to_json(stmt.df()))
 
 
 def fetch_statements(t: Ticker, out: Path) -> None:
@@ -506,26 +552,43 @@ def fetch_wacc(t: Ticker, out: Path) -> None:
     write_json(out / "wacc.json", df_to_json(safe_call(lambda: t.wacc())))
 
 
-def fetch_industry(t: Ticker, out: Path) -> None:
+def industry_of(info_payload) -> str | None:
+    record = info_payload[0] if isinstance(info_payload, list) and info_payload else info_payload
+    return pick_string(record, ["industry"]) if isinstance(record, dict) else None
+
+
+# Every industry field is an aggregate over all the tickers in the industry,
+# and the library only uses the asking ticker to order that list. One fetch
+# per industry serves every symbol in it for the rest of the run.
+_industry_cache: dict[str, dict] = {}
+
+
+def fetch_industry(t: Ticker, out: Path, industry: str | None = None) -> None:
     print("  industry...")
-    data = {}
-    for key, fn in [
-        ("ttm_pe",            lambda: t.industry_ttm_pe()),
-        ("ps_ratio",          lambda: t.industry_ps_ratio()),
-        ("pb_ratio",          lambda: t.industry_pb_ratio()),
-        ("roe",               lambda: t.industry_roe()),
-        ("roa",               lambda: t.industry_roa()),
-        ("equity_multiplier", lambda: t.industry_equity_multiplier()),
-        ("gross_margin",      lambda: t.industry_quarterly_gross_margin()),
-        ("ebitda_margin",     lambda: t.industry_quarterly_ebitda_margin()),
-        ("net_margin",        lambda: t.industry_quarterly_net_margin()),
-        ("asset_turnover",    lambda: t.industry_asset_turnover()),
-    ]:
-        result = safe_call(fn)
-        if isinstance(result, dict) and "error" in result:
-            data[key] = []  # skip broken fields; don't write error objects to disk
-        else:
-            data[key] = df_to_json(result)
+    data = _industry_cache.get(industry) if industry else None
+    if data is None:
+        data = {}
+        for key, fn in [
+            ("ttm_pe",            lambda: t.industry_ttm_pe()),
+            ("ps_ratio",          lambda: t.industry_ps_ratio()),
+            ("pb_ratio",          lambda: t.industry_pb_ratio()),
+            ("roe",               lambda: t.industry_roe()),
+            ("roa",               lambda: t.industry_roa()),
+            ("equity_multiplier", lambda: t.industry_equity_multiplier()),
+            ("gross_margin",      lambda: t.industry_quarterly_gross_margin()),
+            ("ebitda_margin",     lambda: t.industry_quarterly_ebitda_margin()),
+            ("net_margin",        lambda: t.industry_quarterly_net_margin()),
+            ("asset_turnover",    lambda: t.industry_asset_turnover()),
+        ]:
+            result = safe_call(fn)
+            if isinstance(result, dict) and "error" in result:
+                data[key] = []  # skip broken fields; don't write error objects to disk
+            else:
+                data[key] = df_to_json(result)
+        # A result with an empty field is not shared, so the next symbol in
+        # the industry asks again.
+        if industry and all(data.values()):
+            _industry_cache[industry] = data
     write_json(out / "industry.json", data)
 
 
@@ -558,7 +621,7 @@ def fetch_symbol(symbol: str, out_dir: Path) -> dict[str, str]:
     fetch_growth(t, out_dir)
     fetch_statements(t, out_dir)
     fetch_wacc(t, out_dir)
-    fetch_industry(t, out_dir)
+    fetch_industry(t, out_dir, industry_of(info_payload))
     fetch_news(t, out_dir)
     entry = build_index_entry(symbol, info_payload)
     entry["priceAsOf"] = price_as_of
@@ -603,22 +666,37 @@ def symbol_timeout_seconds(
     return max(0.0, min(float(per_symbol_limit), remaining))
 
 
+# A moved dataset or a library break fails every symbol the same way, usually
+# in under a second. Once a run opens with this many identical failures and no
+# success, stop and name the cause instead of repeating it for the whole
+# universe and leaving only a stale index behind.
+MAX_IDENTICAL_LEADING_FAILURES = 5
+
+
+def is_systemic_failure(failed: list[dict[str, str]]) -> bool:
+    """True when a run has opened with nothing but one repeated failure."""
+    reasons = {item["reason"].replace(item["symbol"], "<symbol>") for item in failed}
+    return len(failed) >= MAX_IDENTICAL_LEADING_FAILURES and len(reasons) == 1
+
+
 def _alarm_handler(signum, frame):  # noqa: ARG001 — signal handler signature
-    raise SymbolTimeout(
-        f"symbol time budget exhausted after {_active_symbol_timeout_seconds:.1f}s"
-    )
+    global _symbol_timed_out
+    _symbol_timed_out = True
+    raise_if_symbol_timed_out()
 
 
 def main() -> None:
-    global _active_symbol_timeout_seconds
+    global _active_symbol_timeout_seconds, _symbol_timed_out
+    universe = read_symbols()
     previous_index = read_previous_index()
     previous_attempts = previous_index.get("fetchAttempts")
+    # Both ledgers keep only the current universe, so a retired ticker leaves.
     fetch_attempts = {
         str(symbol).upper(): timestamp
         for symbol, timestamp in (
             previous_attempts.items() if isinstance(previous_attempts, dict) else []
         )
-        if isinstance(timestamp, str) and timestamp
+        if isinstance(timestamp, str) and timestamp and str(symbol).upper() in universe
     }
     previous_failures = previous_index.get("fetchFailures")
     fetch_failures = {
@@ -626,9 +704,9 @@ def main() -> None:
         for symbol, value in (
             previous_failures.items() if isinstance(previous_failures, dict) else []
         )
-        if isinstance(value, dict)
+        if isinstance(value, dict) and str(symbol).upper() in universe
     }
-    symbols = sort_symbols_stalest_first(read_symbols(), fetch_attempts)
+    symbols = sort_symbols_stalest_first(universe, fetch_attempts)
     print(f"Processing {len(symbols)} symbols (stalest first): {', '.join(symbols)}")
     print(f"Output directory: {OUTPUT_DIR}")
     print(f"Per-symbol timeout: {PER_SYMBOL_TIMEOUT_SECONDS}s")
@@ -644,6 +722,18 @@ def main() -> None:
 
     signal.signal(signal.SIGALRM, _alarm_handler)
     start = time.monotonic()
+
+    _active_symbol_timeout_seconds = symbol_timeout_seconds(0.0)
+    signal.setitimer(signal.ITIMER_REAL, _active_symbol_timeout_seconds)
+    try:
+        bulk_priced = write_bulk_prices(symbols)
+        print(f"Bulk price: wrote {bulk_priced} of {len(symbols)} symbols.\n")
+    except Exception as exc:
+        # The per symbol path below still fetches price for every symbol it
+        # reaches, which is how the lane worked before the bulk query.
+        print(f"::warning::Bulk price query failed, continuing per symbol: {exc}\n")
+    finally:
+        signal.setitimer(signal.ITIMER_REAL, 0)
 
     for symbol in symbols:
         elapsed = time.monotonic() - start
@@ -666,6 +756,7 @@ def main() -> None:
         fetch_attempts[symbol] = symbol_attempted_at
         out_dir = OUTPUT_DIR / symbol
         _active_symbol_timeout_seconds = active_timeout
+        _symbol_timed_out = False
         signal.setitimer(signal.ITIMER_REAL, active_timeout)
         try:
             index_entry = fetch_symbol(symbol, out_dir)
@@ -701,6 +792,15 @@ def main() -> None:
             write_json(out_dir / "error.json", {"symbol": symbol, "error": str(exc)})
         finally:
             signal.setitimer(signal.ITIMER_REAL, 0)
+
+        if not successful and is_systemic_failure(failed):
+            # Exit before the index is rewritten, so the committed one stands.
+            print(
+                f"::error::The first {len(failed)} symbols all failed the same way "
+                f"({failed[0]['reason']}). The provider or its dataset has changed, "
+                "so check PyPI for a newer defeatbeta-api before anything else."
+            )
+            sys.exit(1)
 
     # Resilience: before declaring a symbol unavailable, fall back to any good
     # snapshot already on disk from an earlier run (mirrors the "keep previous

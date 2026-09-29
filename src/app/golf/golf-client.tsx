@@ -30,16 +30,29 @@ interface GolfClientProps {
   initialPlayerSnapshot: GolfPlayerSnapshot | null;
 }
 
+// Pinned to UTC so the server and the browser print the same string.
 const LAST_UPDATED_FORMATTER = new Intl.DateTimeFormat("en-US", {
   month: "short",
   day: "numeric",
   hour: "numeric",
   minute: "2-digit",
+  timeZone: "UTC",
+  timeZoneName: "short",
 });
 
+// Tournament dates arrive as calendar days, which parse as UTC midnight, so
+// they print in UTC. In local time a reader west of Greenwich saw the day before.
 const DATE_RANGE_FORMATTER = new Intl.DateTimeFormat("en-US", {
   month: "short",
   day: "numeric",
+  timeZone: "UTC",
+});
+
+const DATE_RANGE_END_FORMATTER = new Intl.DateTimeFormat("en-US", {
+  month: "short",
+  day: "numeric",
+  year: "numeric",
+  timeZone: "UTC",
 });
 
 /** Under par prints in golf's red; even and over stay ink, matching the leaderboard signature. */
@@ -78,9 +91,10 @@ function formatGeneratedAt(value: string | null | undefined): string {
   return Number.isNaN(date.getTime()) ? "Unavailable" : LAST_UPDATED_FORMATTER.format(date);
 }
 
-/** A bare YYYY-MM-DD parses as UTC midnight, which prints the day before west of Greenwich. */
+// A bare YYYY-MM-DD parses as UTC midnight, which DATE_RANGE_FORMATTER's
+// pinned UTC timeZone then reads back correctly.
 function parseDay(value: string): Date {
-  return new Date(/^\d{4}-\d{2}-\d{2}$/.test(value) ? `${value}T12:00:00` : value);
+  return new Date(value);
 }
 
 function formatDateRange(startDate: string, endDate: string): string {
@@ -90,11 +104,17 @@ function formatDateRange(startDate: string, endDate: string): string {
   const endValid = !Number.isNaN(end.getTime());
 
   if (startValid && endValid) {
-    return `${DATE_RANGE_FORMATTER.format(start)} – ${DATE_RANGE_FORMATTER.format(end)}`;
+    return `${DATE_RANGE_FORMATTER.format(start)} – ${DATE_RANGE_END_FORMATTER.format(end)}`;
   }
-  if (endValid) return DATE_RANGE_FORMATTER.format(end);
-  if (startValid) return DATE_RANGE_FORMATTER.format(start);
+  if (endValid) return DATE_RANGE_END_FORMATTER.format(end);
+  if (startValid) return DATE_RANGE_END_FORMATTER.format(start);
   return "Dates TBD";
+}
+
+/** "Round 4 · Final", without repeating the round when the status already names it. */
+function formatRoundStatus(roundLabel: string, status: string): string {
+  if (!status || !roundLabel) return status || roundLabel;
+  return status.includes(roundLabel) ? status : `${roundLabel} · ${status}`;
 }
 
 async function fetchGolfPlayerSnapshot(
@@ -233,7 +253,7 @@ function MobileLeaderboardCards({
           >
             <div className="flex items-start justify-between gap-4">
               <div>
-                <p className="c97-kicker mb-0">{row.position}</p>
+                <p className="c97-kicker">{row.position}</p>
                 <h3 className="c97-serif c97-h3">{row.playerName}</h3>
                 <p className="c97-stat-delta">{row.country}</p>
               </div>
@@ -285,7 +305,7 @@ function PlayerCards({
           >
             <div className="flex items-start justify-between gap-4">
               <div>
-                <p className="c97-kicker mb-0">{row.position}</p>
+                <p className="c97-kicker">{row.position}</p>
                 <h3 className="c97-serif c97-h3">{row.playerName}</h3>
                 <p className="c97-stat-delta">{row.country}</p>
               </div>
@@ -411,8 +431,7 @@ export function GolfClient({ initialState, summary, initialPlayerSnapshot }: Gol
       <Catalog97ProjectHero
         ink={lead}
         title="PGA Tour Pulse"
-        standfirst="I wanted the leaderboard to read like a manual scoreboard, names on slats, rounds across, and red for anything under par."
-        meta="The snapshot for this tournament is not available yet."
+        standfirst="I wanted the leaderboard to read like a manual scoreboard, names on slats, rounds across, and red for anything under par. The snapshot for this tournament is not available yet."
       />
     );
   }
@@ -451,7 +470,7 @@ export function GolfClient({ initialState, summary, initialPlayerSnapshot }: Gol
         ink={lead}
         title="PGA Tour Pulse"
         standfirst="I wanted the leaderboard to read like a manual scoreboard, names on slats, rounds across, and red for anything under par. It reads from a checked-in snapshot of the PGA Tour leaderboard that refreshes on a schedule."
-        meta={`${tournament.tour} · snapshot refreshed ${formatGeneratedAt(tournament.generatedAt)}`}
+        meta={`${tournament.tour} · last checked ${formatGeneratedAt(tournament.generatedAt)}`}
         readouts={heroReadouts}
       >
         <div className="c97-panel" style={{ marginBottom: "var(--c97-sp-4)" }}>
@@ -459,7 +478,7 @@ export function GolfClient({ initialState, summary, initialPlayerSnapshot }: Gol
             {tournament.name}
           </h2>
           <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-2)" }}>
-            {tournament.roundLabel}
+            {formatRoundStatus(tournament.roundLabel, tournament.status)}
           </p>
           <div className="c97-prose" style={{ fontSize: "var(--c97-fs-small)", color: "var(--c97-ink-2)" }}>
             <p className="mb-1 flex items-start gap-2">
@@ -493,7 +512,7 @@ export function GolfClient({ initialState, summary, initialPlayerSnapshot }: Gol
           <div className="grid gap-8 xl:grid-cols-[minmax(0,1.7fr)_minmax(320px,0.92fr)]">
             <div className="space-y-6">
               <h2 className="c97-poster-sm">The board</h2>
-              <div className="c97-segmented" role="tablist" aria-label="Golf view switcher">
+              <div className="c97-segmented" style={{ marginBottom: "var(--c97-sp-3)" }} role="tablist" aria-label="Golf view switcher">
                 {GOLF_VIEW_OPTIONS.map((view) => (
                   <button
                     key={view}
@@ -516,7 +535,7 @@ export function GolfClient({ initialState, summary, initialPlayerSnapshot }: Gol
                 id={`golf-tabpanel-${routeState.view}`}
                 aria-labelledby={`golf-tab-${routeState.view}`}
               >
-                <p className="c97-prose mb-0">
+                <p className="c97-prose" style={{ marginBottom: "var(--c97-sp-2)" }}>
                   {routeState.view === "leaderboard"
                     ? "The table when you want the fastest read on score, round splits, and movement."
                     : "The player cards when you want a softer scan that still keeps score and momentum visible."}
@@ -548,7 +567,7 @@ export function GolfClient({ initialState, summary, initialPlayerSnapshot }: Gol
 
             <aside className="space-y-4">
               <div className="c97-panel xl:sticky xl:top-6">
-                <p className="c97-kicker mb-2">Selected player</p>
+                <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-1)" }}>Selected player</p>
 
                 {selectedRow ? (
                   <>
@@ -576,7 +595,7 @@ export function GolfClient({ initialState, summary, initialPlayerSnapshot }: Gol
                     </div>
 
                     {isPlayerSnapshotLoading ? (
-                      <p className="c97-prose mt-5" role="status" style={{ fontSize: "var(--c97-fs-small)", color: "var(--c97-ink-2)" }}>
+                      <p className="c97-prose" role="status" style={{ marginTop: "var(--c97-sp-3)", fontSize: "var(--c97-fs-small)", color: "var(--c97-ink-2)" }}>
                         Loading player detail…
                       </p>
                     ) : null}
@@ -595,11 +614,11 @@ export function GolfClient({ initialState, summary, initialPlayerSnapshot }: Gol
                     {playerSnapshot?.player ? (
                       <div className="mt-5 space-y-5">
                         <div className="space-y-2" style={{ fontSize: "var(--c97-fs-small)" }}>
-                          <p className="mb-0 flex items-center gap-2">
+                          <p className="flex items-center gap-2">
                             <UserRound className="h-4 w-4 shrink-0" aria-hidden="true" />
                             <span>{playerSnapshot.player.country}</span>
                           </p>
-                          <p className="mb-0 flex items-center gap-2">
+                          <p className="flex items-center gap-2">
                             <Gauge className="h-4 w-4 shrink-0" aria-hidden="true" />
                             <span>Next round tee time {playerSnapshot.tournamentStatus.nextTeeTime ?? "TBD"}</span>
                           </p>
@@ -610,7 +629,7 @@ export function GolfClient({ initialState, summary, initialPlayerSnapshot }: Gol
                         </div>
 
                         <div>
-                          <p className="c97-kicker mb-2">Round by round</p>
+                          <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-1)" }}>Round by round</p>
                           <table className="c97-table">
                             <caption className="sr-only">Round by round scoring for {selectedRow.playerName}</caption>
                             <thead>
@@ -635,7 +654,7 @@ export function GolfClient({ initialState, summary, initialPlayerSnapshot }: Gol
                         </div>
 
                         <div>
-                          <p className="c97-kicker mb-2">Scoring split</p>
+                          <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-1)" }}>Scoring split</p>
                           {/* The feed sends zeros when it has no hole data, and a winner with no birdies is not a real reading. */}
                           {playerSnapshot.scoring.birdies +
                             playerSnapshot.scoring.bogeys +
@@ -649,7 +668,7 @@ export function GolfClient({ initialState, summary, initialPlayerSnapshot }: Gol
                               <StatBlock label="Eagles" value={`${playerSnapshot.scoring.eagles}`} detail="Round-changing swings" />
                             </div>
                           ) : (
-                            <p className="c97-prose mb-0" style={{ fontSize: "var(--c97-fs-small)" }}>
+                            <p className="c97-prose" style={{ fontSize: "var(--c97-fs-small)" }}>
                               The snapshot carries no birdie, par, or bogey counts for this event, so I only show the rounds.
                             </p>
                           )}
@@ -658,7 +677,7 @@ export function GolfClient({ initialState, summary, initialPlayerSnapshot }: Gol
                     ) : null}
                   </>
                 ) : (
-                  <p className="c97-prose mb-0" style={{ fontSize: "var(--c97-fs-small)" }}>
+                  <p className="c97-prose" style={{ fontSize: "var(--c97-fs-small)" }}>
                     No player is available in the current snapshot.
                   </p>
                 )}
@@ -670,15 +689,17 @@ export function GolfClient({ initialState, summary, initialPlayerSnapshot }: Gol
 
       <section className="c97-band c97-sheet" data-c97-surface="bone" data-seam="deckle">
         <div className="c97-shell space-y-3">
-          <p className="c97-kicker mb-0">Snapshot note</p>
-          <p className="c97-prose mb-0" style={{ fontSize: "var(--c97-fs-small)" }}>
+          <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-2)" }}>Snapshot note</p>
+          <p className="c97-prose" style={{ marginBottom: "var(--c97-sp-2)", fontSize: "var(--c97-fs-small)" }}>
             This page is a checked-in tournament snapshot that refreshes on a schedule.
             Scores, movement, and player drilldowns reflect the local dataset shipped with the app.
           </p>
-          <p className="c97-prose mb-0" style={{ fontSize: "var(--c97-fs-small)" }}>
+          <p className="c97-prose" style={{ fontSize: "var(--c97-fs-small)" }}>
             The leaderboard, cut line, and player movement come from ESPN&apos;s public golf
             leaderboard API and refresh on a schedule, so figures can trail the broadcast.
-            Snapshot refreshed {formatGeneratedAt(tournament.generatedAt)}.
+            Between tournaments, and during team events like the Presidents Cup, I keep the
+            last finished leaderboard up, since there is no individual board to show. Last
+            checked {formatGeneratedAt(tournament.generatedAt)}.
           </p>
         </div>
       </section>

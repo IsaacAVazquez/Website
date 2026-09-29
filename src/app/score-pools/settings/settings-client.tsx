@@ -15,7 +15,9 @@ import {
   FIELD_INPUT,
   FIELD_LABEL,
   PILL_BUTTON,
+  SampleDataNotice,
   formatAge,
+  leagueOptionLabel,
 } from "../score-pools-ui";
 
 interface SettingsClientProps {
@@ -100,7 +102,7 @@ function SelectSetting<T extends string>({
 }: {
   label: string;
   value: T;
-  options: Array<{ value: T; label: string }>;
+  options: Array<{ value: T; label: string; disabled?: boolean }>;
   onChange: (value: T) => void;
   hint?: string;
 }) {
@@ -114,7 +116,7 @@ function SelectSetting<T extends string>({
         style={{ marginTop: "var(--c97-sp-1)" }}
       >
         {options.map((option) => (
-          <option key={option.value} value={option.value}>
+          <option key={option.value} value={option.value} disabled={option.disabled}>
             {option.label}
           </option>
         ))}
@@ -140,7 +142,9 @@ export function SettingsClient({ snapshot }: SettingsClientProps) {
     updateRival,
     removeRival,
   } = useScorePools();
-  const [newPoolLeague, setNewPoolLeague] = useState(snapshot.leagues[0]?.key ?? "");
+  const [newPoolLeague, setNewPoolLeague] = useState(
+    snapshot.leagues.find((entry) => entry.fixtures.length > 0)?.key ?? "",
+  );
   const [newPoolName, setNewPoolName] = useState("");
   const [newRivalName, setNewRivalName] = useState("");
   const [confirmDelete, setConfirmDelete] = useState(false);
@@ -156,7 +160,7 @@ export function SettingsClient({ snapshot }: SettingsClientProps) {
     <section className="c97-band min-h-screen" data-c97-surface="paper">
       <div className="c97-shell space-y-6">
         <header>
-          <p className="c97-kicker mb-1">Prediction Tools</p>
+          <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-1)" }}>Prediction Tools</p>
           <h1 className="text-2xl font-bold tracking-tight text-[var(--c97-ink)] sm:text-3xl">
             Pool{" "}
             <em style={{ fontFamily: "var(--c97-font-display)", fontStyle: "italic", fontWeight: 400 }}>
@@ -174,9 +178,11 @@ export function SettingsClient({ snapshot }: SettingsClientProps) {
           </p>
         </header>
 
+        <SampleDataNotice snapshot={snapshot} />
+
         <section className={SECTION} aria-label="Pools">
           <h2 className="text-lg font-bold text-[var(--c97-ink)]">Pools</h2>
-          <div className="c97-segmented mt-2">
+          <div className="c97-segmented" style={{ marginTop: "var(--c97-sp-1)" }}>
             {pools.map((entry) => (
               <button
                 key={entry.id}
@@ -202,9 +208,8 @@ export function SettingsClient({ snapshot }: SettingsClientProps) {
                 style={{ marginTop: "var(--c97-sp-1)" }}
               >
                 {snapshot.leagues.map((entry) => (
-                  <option key={entry.key} value={entry.key}>
-                    {entry.name}
-                    {entry.sample ? " (sample data)" : ""}
+                  <option key={entry.key} value={entry.key} disabled={entry.fixtures.length === 0}>
+                    {leagueOptionLabel(entry)}
                   </option>
                 ))}
               </select>
@@ -256,7 +261,8 @@ export function SettingsClient({ snapshot }: SettingsClientProps) {
                   value={pool.leagueKey}
                   options={snapshot.leagues.map((entry) => ({
                     value: entry.key,
-                    label: `${entry.name}${entry.sample ? " (sample data)" : ""}`,
+                    label: leagueOptionLabel(entry),
+                    disabled: entry.fixtures.length === 0,
                   }))}
                   onChange={(leagueKey) => patch((current) => ({ ...current, leagueKey }))}
                 />

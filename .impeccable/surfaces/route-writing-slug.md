@@ -5,6 +5,8 @@ primary_target: "route:/writing/[slug]"
 related_targets: ["src/app/writing/[slug]/page.tsx","src/components/analytics/ArticleCodeCopy.tsx","src/components/ui/AuthorBio.tsx","scripts/data/articleCoverImages.ts"]
 ---
 
+Updated on 2026-09-28 by the responsive pass. Inline code breaks anywhere, so a long path no longer pushes a phone sideways, and the previous and next links sit side by side from 640px with Next set right, but stack and set left on a phone.
+
 # Article reading view surface brief
 
 The `/writing/[slug]` route, rendered by `src/app/writing/[slug]/page.tsx`, with the code copy control in `src/components/analytics/ArticleCodeCopy.tsx`, the end bio in `src/components/ui/AuthorBio.tsx`, and the cover plan in `scripts/data/articleCoverImages.ts`.
@@ -15,7 +17,7 @@ Mode is Read, so structure for comprehension comes first. The audience is a Haas
 
 ## Visual world
 
-Articles are Catalog 97 through the bridge as of 2026-09-16. They render inside `Catalog97ToolShell`, their components still read `--home-*` names, and the bridge block in `src/app/catalog97.css` aliases those onto Catalog 97 values with every `--radius-*` token at 0 and every `--shadow-*` token at `none`. `DESIGN.md` still describes the Working Instrument and does not govern them. Before the bridge the header changed world on the click in from `/writing`, and the decision recorded below was about that change. The index and the article now share one shell, so that decision no longer has anything to decide. Contrast figures below were measured before the bridge and need re-measuring.
+Articles are Catalog 97, as shipped. They render inside `Catalog97ToolShell` and their components read `--c97-*` tokens directly. `DESIGN.md` now describes Catalog 97 and governs them. Before the pre-2026-09-16 bridge, the header changed world on the click in from `/writing`, and the decision recorded below was about that change; the index and the article now share one shell, so that decision no longer has anything to decide. Contrast figures below were measured before the 2026-09-27 close-out and may need re-measuring.
 
 ## Decisions not to re-litigate (settled 2026-09-14)
 

@@ -426,15 +426,16 @@
    (that needed an asymmetric border-radius the print shop system bans). A
    circle plus a theme-invariant keyline reads just as well as a map pin. */
 .fm-pin-el { background: transparent; border: 0; }
+/* A bone edge inside a black ring, so a pin separates from light and dark
+   tiles alike and from a neighbouring pin of the same curator colour. */
 .fm-pin-dot {
   display: block;
   border-radius: 50%;
   border: 2px solid var(--c97-print-bone);
+  outline: 1.5px solid var(--c97-print-black);
 }
 .fm-pin-active .fm-pin-dot {
-  outline: 3px solid var(--c97-print-bone);
-  outline-offset: 2px;
-  animation: fm-pulse 1.8s ease-in-out infinite;
+  outline: 3px solid var(--c97-print-black);
 }
 
 /* ==========================================================================
@@ -615,7 +616,6 @@
 @media (prefers-reduced-motion: reduce) {
   .fm-ticker-track { animation: none; transform: none; }
   .fm-status-dot { animation: none; }
-  .fm-pin-active .fm-pin-dot { animation: none; }
   .fm-tab:hover,
   .fm-stamp:hover,
   .fm-pill:hover,

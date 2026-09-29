@@ -14,6 +14,7 @@ import {
 } from "lucide-react";
 import { Catalog97ProjectHero } from "@/components/catalog97/Catalog97ProjectHero";
 import { PROJECT_PRESS } from "@/constants/projectPress";
+import { useClientNow } from "@/hooks/useClientNow";
 import {
   DEAL_TACTICS,
   DESTINATION_REGIONS,
@@ -205,7 +206,11 @@ export function TravelDealLabClient() {
   }, [state, hydrated]);
 
   const region = getRegion(state.regionId) ?? DESTINATION_REGIONS[0];
-  const today = useMemo(() => todayKey(), []);
+  // "Today" depends on the visitor's own clock and zone, so it can only be
+  // known on the client; null here means the server render and the first
+  // hydration pass agree on "not yet known" instead of disagreeing on "now".
+  const nowMs = useClientNow();
+  const today = useMemo(() => (nowMs === null ? null : todayKey(new Date(nowMs))), [nowMs]);
   const booking = useMemo(
     () => getBookingWindow(region, state.departureDate, today),
     [region, state.departureDate, today],
@@ -313,12 +318,12 @@ export function TravelDealLabClient() {
         <div className="c97-shell">
           <div className="grid gap-8 lg:grid-cols-[minmax(0,360px)_minmax(0,1fr)]">
             <div className="space-y-4">
-              <p className="c97-kicker" style={{ display: "flex", alignItems: "center", gap: "var(--c97-sp-1)" }}>
+              <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-2)", display: "flex", alignItems: "center", gap: "var(--c97-sp-1)" }}>
                 <Compass size={14} aria-hidden="true" />
                 Your trip
               </p>
 
-              <label className="space-y-1.5" style={{ display: "block" }}>
+              <label className="grid gap-1.5">
                 <span className="c97-kicker">Destination region</span>
                 <select
                   value={state.regionId}
@@ -333,7 +338,7 @@ export function TravelDealLabClient() {
                 </select>
               </label>
 
-              <label className="space-y-1.5" style={{ display: "block" }}>
+              <label className="grid gap-1.5">
                 <span className="c97-kicker">Departure date</span>
                 <input
                   type="date"
@@ -343,7 +348,7 @@ export function TravelDealLabClient() {
                 />
               </label>
 
-              <label className="space-y-1.5" style={{ display: "block" }}>
+              <label className="grid gap-1.5">
                 <span className="c97-kicker">Quoted fare, whole party (USD)</span>
                 <input
                   type="number"
@@ -415,7 +420,7 @@ export function TravelDealLabClient() {
                   </div>
                 </div>
               ) : (
-                <p className="c97-prose" style={{ color: "var(--c97-ink-2)" }}>
+                <p className="c97-prose" style={{ marginBottom: "var(--c97-sp-3)", color: "var(--c97-ink-2)" }}>
                   Add a quoted fare to score it against the typical band for {region.label}.
                 </p>
               )}
@@ -471,11 +476,11 @@ export function TravelDealLabClient() {
         <div className="c97-shell">
           <div className="grid gap-8 lg:grid-cols-2">
             <div className="space-y-4">
-              <p className="c97-kicker" style={{ display: "flex", alignItems: "center", gap: "var(--c97-sp-1)" }}>
+              <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-2)", display: "flex", alignItems: "center", gap: "var(--c97-sp-1)" }}>
                 <Coins size={14} aria-hidden="true" />
                 Cash or points
               </p>
-              <p className="c97-prose">
+              <p className="c97-prose" style={{ marginBottom: "var(--c97-sp-2)" }}>
                 I net out the taxes and fees an award still charges in cash, then value the rest per
                 point against a {POINTS_BASELINE_CENTS.toFixed(1)}¢ baseline for a transferable point.
               </p>
@@ -521,7 +526,7 @@ export function TravelDealLabClient() {
                   <div style={{ display: "flex", alignItems: "center", gap: "var(--c97-sp-2)" }}>
                     <RatingChip tone={POINTS_CHIP_TONE[points.rating]} label={POINTS_RATING_LABEL[points.rating]} />
                   </div>
-                  <p className="c97-prose">{points.message}</p>
+                  <p className="c97-prose" style={{ marginBottom: "var(--c97-sp-2)" }}>{points.message}</p>
                 </>
               ) : (
                 <p className="c97-prose" style={{ color: "var(--c97-ink-2)" }}>
@@ -545,7 +550,7 @@ export function TravelDealLabClient() {
             </span>
           </div>
 
-          <div className="c97-segmented" role="tablist" aria-label="Filter tactics and tools">
+          <div className="c97-segmented" style={{ marginBottom: "var(--c97-sp-3)" }} role="tablist" aria-label="Filter tactics and tools">
             {FILTER_OPTIONS.map((option) => (
               <button
                 key={option.value}
@@ -576,16 +581,16 @@ export function TravelDealLabClient() {
 
       <section className="c97-band c97-sheet" data-c97-surface="bone" data-seam="deckle">
         <div className="c97-shell space-y-4">
-          <p className="c97-kicker">The toolkit</p>
+          <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-2)" }}>The toolkit</p>
           <h2 className="c97-poster-sm">Where I actually search</h2>
 
           {visibleTools.length === 0 ? (
-            <p className="c97-prose">
+            <p className="c97-prose" style={{ marginBottom: "var(--c97-sp-2)" }}>
               No tools tagged for this category. The tactics above still apply, and switching the
               filter back to Everything brings back the full toolkit.
             </p>
           ) : (
-            <ul style={{ display: "grid", gap: "var(--c97-sp-1)", padding: 0, margin: 0, listStyle: "none" }}>
+            <ul style={{ display: "grid", gap: "var(--c97-sp-1)", padding: 0, margin: "0 0 var(--c97-sp-2)", listStyle: "none" }}>
               {visibleTools.map((tool) => (
                 <li key={tool.id}>
                   <a
@@ -635,7 +640,7 @@ interface NumberFieldProps {
 
 function NumberField({ label, value, min, max, step = 1, onChange }: NumberFieldProps) {
   return (
-    <label className="space-y-1.5" style={{ display: "block" }}>
+    <label className="grid gap-1.5">
       <span className="c97-kicker">{label}</span>
       <input
         type="number"
@@ -678,7 +683,7 @@ function TacticCard({ tactic, checked, onToggle }: TacticCardProps) {
         {tactic.body}
       </p>
 
-      <button type="button" onClick={onToggle} aria-pressed={checked} className="c97-btn-ghost" style={{ alignSelf: "flex-start", padding: 0 }}>
+      <button type="button" onClick={onToggle} aria-pressed={checked} className="c97-btn-ghost" style={{ alignSelf: "flex-start" }}>
         <Check size={14} aria-hidden="true" style={{ marginRight: "var(--c97-sp-1)" }} />
         {checked ? "Applied" : "Mark applied"}
       </button>

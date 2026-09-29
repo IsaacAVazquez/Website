@@ -35,7 +35,7 @@ Important current behavior:
   - contact variations (`/get-in-touch`, `/hire-me`) and resume variations (`/cv`, `/resume.pdf`)
 - `poweredByHeader = false`
 - site-wide security headers via `async headers()` (HSTS, X-Content-Type-Options, X-Frame-Options SAMEORIGIN, Referrer-Policy, Permissions-Policy, X-DNS-Prefetch-Control) plus a `Content-Security-Policy-Report-Only` header; the enforcing CSP is set in `src/proxy.ts`
-- `compiler.removeConsole` in production
+- `compiler.removeConsole` in production, keeping `console.error` and `console.warn`
 - TypeScript build errors are enforced; `npm run typecheck` also runs explicitly in CI
 - `serverExternalPackages = ['better-sqlite3', 'sharp']`
 - tracing excludes heavy image and investments data assets from server bundles
@@ -125,4 +125,4 @@ Posts are discovered from `content/blog/`.
 
 ## Middleware
 
-There is no `middleware.ts`, but `src/proxy.ts` is the Next.js 16 equivalent. It sets the enforcing `Content-Security-Policy` and the other security headers on HTML routes, widens the CSP for Google Analytics only when `NEXT_PUBLIC_GA_MEASUREMENT_ID` is a valid ID, sets `Netlify-CDN-Cache-Control: no-store`, and redirects `/blog` and `/blog/*` to `/writing`. The rest of the redirects are declared in `next.config.mjs` via `async redirects()`, and `async headers()` there adds a second set of security headers.
+There is no `middleware.ts`, but `src/proxy.ts` is the Next.js 16 equivalent. It sets the enforcing `Content-Security-Policy` and the other security headers on HTML routes, widens the CSP for Google Analytics only when `NEXT_PUBLIC_GA_MEASUREMENT_ID` is a valid ID, sets `Netlify-CDN-Cache-Control: no-store`, and redirects `/blog` and `/blog/*` to `/writing`. On Netlify the proxy runs in front of the CDN cache, so that header reaches the browser and does not decide what the cache stores. Prerendered pages are served from the cache with it set, and the pages in `cdnCachedPages` in `next.config.mjs` ask to be cached through headers of their own. The rest of the redirects are declared in `next.config.mjs` via `async redirects()`, and `async headers()` there adds a second set of security headers.

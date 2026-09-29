@@ -9,14 +9,16 @@ architecture or the per-workflow prose:
 - Per-script and per-workflow detail: `AUTOMATION_SCRIPTS.md`, `CRON_SETUP.md`,
   and the **Automation Surfaces** section of `../AGENTS.md`
 
-**Last updated:** 2026-09-21
+**Last updated:** 2026-09-28
 
 The `update:*` commands write committed TypeScript or JSON artifacts. A failed
 or empty fetch keeps the previous snapshot, and every scheduled job now checks
 the artifact timestamp against one shared freshness policy before it can
 commit. The earthquake and BART API routes also refresh their time-sensitive
 data at request time, with the committed artifact retained as the last-good
-fallback.
+fallback. Each of those request-time reads makes one attempt with a 4 second
+timeout, and a response served from the committed artifact carries the
+`stale-fallback` status.
 
 ---
 
@@ -24,20 +26,20 @@ fallback.
 
 | Surface | `npm run` | Script(s) | Upstream source | Committed artifact | Workflow | Cadence |
 |---|---|---|---|---|---|---|
-| Fantasy football (redraft) | `update:fantasy:redraft` | `buildFantasyPositionData.ts` → `buildFantasyAdpData.ts` → `buildFantasyGameLogData.ts` → `buildFantasyVorpData.ts` → `buildFantasySnapshots.ts` | FantasyPros cheatsheets + FF Calculator ADP + nflverse weekly player stats | `public/data/fantasy/{ppr,half_ppr,standard}.json`, `src/data/fantasy*.generated.ts`, `src/data/fantasyRankHistory.generated.json` (rolling 17-day ECR/ADP history behind the 7 and 14-day movement stamps) | `update-fantasy.yml` | daily July through December; Wednesdays January through June |
+| Fantasy football (redraft) | `update:fantasy:redraft` | `buildFantasyPositionData.ts` → `buildFantasyAdpData.ts` → `buildFantasyGameLogData.ts` → `buildFantasyVorpData.ts` → `buildFantasySnapshots.ts` | FantasyPros cheatsheets + FF Calculator ADP + nflverse weekly player stats | `public/data/fantasy/{ppr,half_ppr,standard}.json`, `src/data/fantasy*.generated.ts`, `src/data/fantasyRankHistory.generated.json` (rolling 17-day ECR/ADP history behind the 7 and 14-day movement stamps) | `update-fantasy.yml` | daily 17:17 UTC July through December and January 1 through 12; Wednesdays 17:17 UTC January through June; Sundays 11:47 UTC in January and September through December |
 | Fantasy football (best ball) | `update:fantasy:best-ball` | `buildBestBallSnapshot.ts` | FantasyPros best ball + Superflex consensus, Underdog ADP via Hayden Winks, ESPN schedule | `public/data/fantasy/best-ball.json` | `update-fantasy.yml` | same job, separate lane and commit |
-| Fantasy football (weekly) | `update:fantasy:weekly` | `buildFantasyWeeklySnapshot.ts` | FantasyPros weekly FLEX and QB consensus | `public/data/fantasy/weekly.json` | `update-fantasy.yml` | same job, separate lane and commit; dormant February through July |
-| Investments | `update:investments` | `fetch_investments_data.py` (needs `.venv`) → `buildInvestmentsSnapshots.ts` | `defeatbeta-api` (Python) | `public/data/investments/index.json` + `{SYMBOL}/snapshot.json` | `update-investments.yml` | weekdays 22:15 UTC |
+| Fantasy football (weekly) | `update:fantasy:weekly` | `buildFantasyWeeklySnapshot.ts` | FantasyPros weekly FLEX and QB consensus | `public/data/fantasy/weekly.json` | `update-fantasy.yml` | same job, builds and commits first; the builder writes nothing before Week 1 or from seven days after Week 18 opens |
+| Investments | `update:investments` | `fetch_investments_data.py` (needs `.venv`) → `buildInvestmentsSnapshots.ts` | `defeatbeta-api` (Python) | `public/data/investments/index.json` + `{SYMBOL}/snapshot.json` | `update-investments.yml` | Tuesday through Saturday 08:30 UTC |
 | Football (both) | `update:football` | `updateFootballSnapshots.ts` | football-data.org *(token)* | `src/data/premierLeagueSnapshot.ts` + `laLigaSnapshot.ts` | none *(full run is manual ~weekly)* | manual |
 | Premier League | `update:premier-league` | `buildPremierLeagueSnapshot.ts` | football-data.org *(token)* | `src/data/premierLeagueSnapshot.ts` | `update-premier-league.yml` | every 4h, August through May |
 | La Liga | `update:la-liga` | `updateLaLigaSnapshot.ts` | football-data.org *(token)* | `src/data/laLigaSnapshot.ts` | `update-la-liga.yml` | every 4h, August through May |
-| NFL | `update:nfl` | `updateNflSnapshot.ts` | NFLverse CSVs | `src/data/nflSnapshot.ts` | `update-nfl.yml` | Tue 10:35 UTC, September through February |
-| MLB | `update:mlb` | `updateMlbSnapshot.ts` | MLB Stats API | `src/data/mlbSnapshot.ts` | `update-mlb.yml` | every 4h, March through November |
+| NFL | `update:nfl` | `updateNflSnapshot.ts` | NFLverse CSVs | `src/data/nflSnapshot.ts` | `update-nfl.yml` | daily 10:35 UTC, September through February |
+| MLB | `update:mlb` | `updateMlbSnapshot.ts` | MLB Stats API | `src/data/mlbSnapshot.ts` | `update-mlb.yml` | every 4h, March 20 through November 6 |
 | NBA | `update:nba` | `updateNbaSnapshot.ts` | ESPN NBA | `src/data/nbaSnapshot.ts` | `update-nba.yml` | every 4h, mid-October through June |
 | Golf | `update:golf` | `buildGolfSnapshot.ts` | ESPN golf | `src/data/golfSnapshot.ts` | `update-golf.yml` | every 3h Thursday through Sunday; daily otherwise |
 | Formula 1 | `update:formula-1` | `buildFormula1Snapshot.ts` | OpenF1 | `src/data/formula1Snapshot.ts` | `update-formula-1.yml` | every 3h Thursday through Sunday; daily otherwise |
-| World Cup 2026 | `update:world-cup` | `buildWorldCupSnapshot.ts` | ESPN `soccer/fifa.world` | `src/data/worldCupSnapshot.ts` | `update-world-cup.yml` | every 30m, June through July |
-| Score pools | `update:score-pools` | `buildScorePoolsSnapshot.ts` | The Odds API + API-Football *(tokens required for live leagues)* + manual/CSV | `src/data/scorePoolsSnapshot.ts` | `update-score-pools.yml` | every 6h |
+| World Cup 2026 | `update:world-cup` | `buildWorldCupSnapshot.ts` | ESPN `soccer/fifa.world` | `src/data/worldCupSnapshot.ts` | `update-world-cup.yml` | no schedule; manual dispatch only |
+| Score pools | `update:score-pools` | `buildScorePoolsSnapshot.ts` | The Odds API + API-Football *(tokens required for live leagues)* + manual/CSV | `src/data/scorePoolsSnapshot.ts` | `update-score-pools.yml` | every 6h; the run skips the refresh and passes with a notice until both provider keys are set |
 | Bay Area Transit | `update:bay-area-transit` | `buildBayAreaTransitSnapshot.ts` | BART public API *(`BART_API_KEY` optional; demo-key fallback)* | `src/data/bayAreaTransitSnapshot.ts` | `update-bay-area-transit.yml` | every 6h, year-round |
 | Earthquake Pulse | `update:earthquake` | `buildEarthquakeSnapshot.ts` | USGS GeoJSON feeds | `src/data/earthquakeSnapshot.ts` | `update-earthquake.yml` | daily 06:20 UTC |
 | GitHub Trending | `update:github-trending` | `buildGitHubTrendingSnapshot.ts` | GitHub Search API *(`GITHUB_TOKEN` optional)* | `src/data/githubTrendingSnapshot.ts` | `update-github-trending.yml` | daily 07:45 UTC |
@@ -49,6 +51,9 @@ fallback.
 | Museum log | none | hand-authored catalog | museum websites and curator notes | `src/data/museumSnapshot.ts` | `audit-curated-data.yml` | weekly review |
 | Travel deals | none | hand-authored estimates | editorial fare bands and tactics | `src/data/travelDealsSnapshot.ts` | `audit-curated-data.yml` | weekly review |
 | Food map | none | hand-authored catalog | curator recommendations and map references | `src/app/food-map/food-map-data.ts` | `audit-curated-data.yml` | weekly review |
+| Capital market assumptions | none | hand-authored constants | J.P. Morgan's annual release for two returns, illustrative estimates for the rest | `src/lib/retirement/capitalMarketAssumptions.ts` | `audit-curated-data.yml` | weekly review, 400 day window |
+| Rent versus buy tax constants | none | hand-authored constants | IRS pages, 26 USC 164, Freddie Mac's weekly survey | `src/lib/rentVsBuy/defaults.ts` | `audit-curated-data.yml` | weekly review, 400 day window |
+| March Madness 2026 | none | hand-authored picks | the picks as made on 2026-03-17, with the results noted | `src/app/march-madness-2026/march-madness-data.ts` | `audit-curated-data.yml` | archived, never overdue |
 | Polling | `update:polling` *(seed)* | `buildPollingSnapshot.ts` + `netlify/functions/refresh-polling.ts` (shared `src/lib/pollingData.ts`) | VoteHub Polling API, CC BY 4.0 | `src/data/pollingSnapshot.ts` *(seed)* + `dashboard-snapshots` blob | `update-polling.yml` *(seed)* + Netlify scheduled function | seed daily 05:55 UTC; blob every 6h |
 | Article cover images | `update:article-images` | `buildArticleCoverImages.ts` (plan: `scripts/data/articleCoverImages.ts`) | Wikimedia Commons *(no token)* | `public/images/writing/covers/*` + `content/blog/*.mdx` frontmatter | `update-article-images.yml` | weekly Mon 06:40 UTC + dispatch |
 
@@ -59,19 +64,57 @@ out of automated commits, and a failed symbol keeps its prior snapshot and
 original freshness metadata. A non-empty price array is not enough to promote a
 symbol: its latest source date must be within seven calendar days of the run.
 The builder writes `priceAsOf` for every symbol and an aggregate `priceHealth`
-block so source freshness stays separate from snapshot build time. The current
-source and licensing ledger is `INVESTMENTS_DATA_SOURCES.md`.
+block so source freshness stays separate from snapshot build time. Prices for
+the whole symbol list come from one bulk query, written per symbol as
+`bulk_price.json`, so a symbol the per-symbol pass did not reach still gets its
+newest price. The workflow fails when fewer than 95% of priced symbols carry a
+price from the last seven days. The Python packages are pinned in
+`scripts/requirements-investments.txt`. The current source and licensing ledger
+is `INVESTMENTS_DATA_SOURCES.md`.
 
 News Pulse remains API-backed at request time and has no committed snapshot. Its
 last good per-feed data, and the MBA jobs route's last good result, are persisted
 in Netlify Blobs so cold starts do not erase their fallback.
 
-Frontier models pilots the blob-backed refresh lane: a daily Netlify scheduled
-function fact-checks the curated seed against models.dev and OpenRouter, writes
-the result to the `dashboard-snapshots` blob store, and purges the surface's
-CDN cache tag. No commit and no rebuild is involved; the committed seed stays
-the fallback and the editorial source of truth. See the lane description in
-`../SNAPSHOT_DRIVEN_DASHBOARDS.md`.
+Frontier models pilots the blob-backed refresh lane. A daily Netlify scheduled
+function fact-checks the curated seed against models.dev and OpenRouter and
+writes the result to the `dashboard-snapshots` blob store. No commit and no
+rebuild is involved, and the committed seed stays the fallback and the editorial
+source of truth. See the lane description in `../SNAPSHOT_DRIVEN_DASHBOARDS.md`.
+
+---
+
+## Freshness targets
+
+`src/lib/dataFreshnessPolicy.ts` holds one target per surface, and
+`scripts/verifyDataRefresh.ts` and `/api/data-revisions` both read it. The
+targets were reset on 2026-09-28 from how often the jobs really run. GitHub
+started about two thirds of the scheduled runs in September 2026, often hours
+late, and `publish-data.yml` deploys four times a day, so a four hour target
+failed on most days without anything being wrong.
+
+| Surface | In season or always | Out of season |
+|---|---|---|
+| Bay Area transit, score pools | 20 hours | same |
+| Premier League, La Liga | 20 hours | 75 days in June and July |
+| MLB | 20 hours from April 5 through November 6 | 170 days |
+| NBA | 20 hours from October 15 through June | 150 days |
+| NFL | 3 days from September through February | 240 days |
+| Formula 1, golf | 20 hours Thursday through Sunday, 36 hours Monday through Wednesday | same |
+| Earthquake, SpaceX | 36 hours | same |
+| GitHub trending, polling | 48 hours | same |
+| Investments | 102 hours, which covers a weekend | same |
+| Fantasy football | 36 hours from July until Week 1 opens, then 200 days from that kickoff while FantasyPros leaves the draft board frozen | 10 days |
+| World Cup 2026 | never goes stale, since the tournament is over | same |
+| News Pulse | 6 hours | same |
+| MBA jobs | 30 hours | same |
+| Frontier models | 45 days | same |
+| AI dev tools | 60 days | same |
+| Tech startups | 90 days | same |
+| Museum log, travel deals, food map | 180 days | same |
+
+Polling is measured from when the refresh ran. VoteHub can go weeks without a
+new poll, so the age of the newest poll fails nothing and the page prints it.
 
 ---
 
@@ -80,11 +123,12 @@ the fallback and the editorial source of truth. See the lane description in
 | Need | Used by |
 |------|---------|
 | `FOOTBALL_DATA_API_TOKEN` | `update:football`, `update:premier-league`, `update:la-liga` (only when rebuilding). The deployed pages read the committed snapshots and do not need it |
-| `THE_ODDS_API_KEY` (required in the scheduled workflow) | `update:score-pools` |
-| `API_FOOTBALL_KEY` (required in the scheduled workflow) | `update:score-pools` |
+| `THE_ODDS_API_KEY` (needed for live data; the scheduled workflow skips with a notice without it) | `update:score-pools` |
+| `API_FOOTBALL_KEY` (needed for live data; the scheduled workflow skips with a notice without it) | `update:score-pools` |
+| `SPACEDEVS_API_TOKEN` (optional; the anonymous tier is rate limited) | `update:spacex`, `update:spacex-images` |
 | `GITHUB_TOKEN` / `GH_TOKEN` (optional, higher rate limit) | `update:github-trending` |
 | `BART_API_KEY` (optional; falls back to the published demo key) | request-time transit refresh, `update:bay-area-transit` |
-| Python `.venv` (`.venv/bin/python3`; `defeatbeta-api`) | `update:investments` |
+| Python `.venv` (`.venv/bin/python3`, packages from `scripts/requirements-investments.txt`) | `update:investments` |
 | *No token* | MLB, NBA, NFL, golf, Formula 1, World Cup, BART (demo-key fallback), USGS, SpaceX, VoteHub polling |
 
 ---
@@ -145,7 +189,7 @@ commits, then pushes to `HEAD:main` with a retry loop (default 8 attempts;
 override via `SNAPSHOT_PUSH_ATTEMPTS`). On each push rejection it
 `git fetch origin main` and `git rebase --autostash origin/main`, then retries
 with capped exponential backoff plus jitter, which absorbs the contention from
-many snapshot bots (world cup in-tournament, transit, etc.) pushing to
+many snapshot bots (the football leagues, transit, and the rest) pushing to
 `main` concurrently. It bails (exit 1) only on a genuine rebase conflict or after
 exhausting every attempt. Usage is asserted by
 `.github/workflows/__tests__/snapshot-workflows.test.ts` (and the investments

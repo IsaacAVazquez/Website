@@ -72,13 +72,15 @@ interface EspnStandingsResponse {
 interface EspnEventCompetitor {
   homeAway?: "home" | "away" | string | null;
   team?: EspnTeam | null;
-  score?: string | null;
+  // The scoreboard sends "119" and the team schedule sends { value: 119 }.
+  score?: string | EspnStat | null;
   winner?: boolean | null;
 }
 
 interface EspnEventCompetition {
   competitors?: EspnEventCompetitor[] | null;
   status?: { type?: { name?: string | null; completed?: boolean | null } | null } | null;
+  type?: { abbreviation?: string | null } | null;
 }
 
 interface EspnEvent {
@@ -86,7 +88,10 @@ interface EspnEvent {
   date?: string | null;
   status?: { type?: { name?: string | null; completed?: boolean | null } | null } | null;
   competitions?: EspnEventCompetition[] | null;
+  // The scoreboard carries the season type here and the team schedule carries
+  // it on `seasonType`.
   season?: { type?: number | null } | null;
+  seasonType?: { type?: number | null } | null;
 }
 
 interface EspnScoreboardResponse {
@@ -234,6 +239,12 @@ function normalizeFixtureTeam(competitor: EspnEventCompetitor | null | undefined
   };
 }
 
+const STAGE_BY_SEASON_TYPE: Record<number, string> = {
+  2: "Regular Season",
+  3: "Playoffs",
+  5: "Play-In",
+};
+
 function normalizeFixture(event: EspnEvent | null | undefined): NbaFixture | null {
   const id = event?.id;
   const utcDate = event?.date?.trim();
@@ -249,6 +260,10 @@ function normalizeFixture(event: EspnEvent | null | undefined): NbaFixture | nul
     event?.status?.type?.name?.trim() ||
     competition?.status?.type?.name?.trim() ||
     "STATUS_SCHEDULED";
+  const seasonType = event?.seasonType?.type ?? event?.season?.type ?? 0;
+  // Preseason games are exhibitions. A postponed game stays on ESPN's schedule
+  // under its original date after the makeup is played as a new event.
+  if (seasonType === 1 || statusName === "STATUS_POSTPONED") return null;
   const isFinished = Boolean(
     event?.status?.type?.completed ?? competition?.status?.type?.completed
   );
@@ -268,16 +283,22 @@ function normalizeFixture(event: EspnEvent | null | undefined): NbaFixture | nul
     utcDate,
     status: isFinished ? "FINISHED" : statusName,
     matchday: null,
-    stage: event?.season?.type === 3 ? "Playoffs" : event?.season?.type === 2 ? "Regular Season" : null,
+    // The NBA Cup final arrives as a regular season game and counts toward no record.
+    stage:
+      competition?.type?.abbreviation === "CC"
+        ? "NBA Cup"
+        : STAGE_BY_SEASON_TYPE[seasonType] ?? null,
     homeTeam,
     awayTeam,
     score: { winner, home: homeScore, away: awayScore },
   };
 }
 
-function parseScore(score: string | null | undefined): number | null {
-  if (typeof score !== "string" || score.trim() === "") return null;
-  const parsed = Number(score);
+function parseScore(score: EspnEventCompetitor["score"]): number | null {
+  const parsed = statNumber(
+    typeof score === "string" ? { value: score } : score ?? null,
+    Number.NaN
+  );
   return Number.isFinite(parsed) ? parsed : null;
 }
 
@@ -379,10 +400,8 @@ function normalizeStandingEntry(
     pickStat(entry.stats, "avgPointDifferential", "pointDifferential", "differential"),
     pointsFor - pointsAgainst
   );
-  const conferenceSeed = statNumber(
-    pickStat(entry.stats, "playoffSeed", "conferenceRank", "rank"),
-    position
-  );
+  // ESPN sends 0 until a season has games, which the caller reads as unseeded.
+  const conferenceSeed = statNumber(pickStat(entry.stats, "playoffSeed", "conferenceRank", "rank"));
   const games = wins + losses;
 
   return {
@@ -392,7 +411,7 @@ function normalizeStandingEntry(
     shortName: teamShortName(team),
     conference,
     division: null,
-    conferenceSeed: Math.max(1, Math.round(conferenceSeed)),
+    conferenceSeed: Math.max(0, Math.round(conferenceSeed)),
     position,
     wins,
     losses,
@@ -435,6 +454,10 @@ function normalizeTeamProfile(team: EspnTeam | null | undefined, conference: Nba
 }
 
 const LEADER_LIMIT = 10;
+const REGULAR_SEASON_GAMES = 82;
+// The league qualifies a per-game leader at 58 of his team's 82 games, and
+// ESPN lists every player short of that after the ones who reach it.
+const LEADER_QUALIFYING_GAMES = 58;
 
 /**
  * The byathlete endpoint encodes per-athlete stats as positional arrays inside
@@ -476,6 +499,7 @@ function topByAthletes(
   totalStat: string,
   index: Map<string, Map<string, number>>,
   limit: number,
+  gamesPlayedByTeam: Map<string, number>,
 ): NbaLeader[] {
   const ranked: NbaLeader[] = [];
   for (const entry of entries) {
@@ -486,6 +510,12 @@ function topByAthletes(
     if (perGame <= 0) continue;
     const total = readByAthleteStat(entry, categoryName, totalStat, index);
     const games = readByAthleteStat(entry, "general", "gamesPlayed", index);
+    // Scaled to the games the player's team has played so far, so the floor
+    // holds in week one as well as in April.
+    // ponytail: games played only. The league also lets a player qualify on
+    // season totals, so add that if a leader is ever missed.
+    const teamGames = gamesPlayedByTeam.get(teamAbbrRaw.toLowerCase()) ?? 0;
+    if (games < Math.ceil((teamGames * LEADER_QUALIFYING_GAMES) / REGULAR_SEASON_GAMES)) continue;
     ranked.push({
       rank: 0,
       name,
@@ -603,8 +633,107 @@ export function createEmptyNbaSnapshot(): NbaSnapshot {
   };
 }
 
+interface NbaSeasonTables {
+  seasonEndYear: number;
+  teamsByConference: { east: NbaTeam[]; west: NbaTeam[] };
+  scorers: NbaLeader[];
+  rebounders: NbaLeader[];
+  assistLeaders: NbaLeader[];
+}
+
+async function fetchSeasonTables(seasonEndYear: number): Promise<NbaSeasonTables> {
+  // `level=2` returns conferences with 15 entries each. The previous query
+  // (`level=3&group=conference`) returns 400 as of 2026-04, since
+  // `&group=conference` is rejected, and `level=3` alone splits down to
+  // divisions, leaving the conference children with empty `entries` arrays.
+  const standingsUrl = `${ESPN_STANDINGS_URL}?level=2&season=${seasonEndYear}`;
+  // Without a season type ESPN serves the postseason once it has started, and
+  // those averages cover a handful of games.
+  const leadersUrl = `${ESPN_BYATHLETE_URL}&season=${seasonEndYear}&seasontype=2`;
+
+  const [standingsResponse, leadersResponse] = await Promise.all([
+    fetchEspnJson<EspnStandingsResponse>(standingsUrl, SUMMARY_REVALIDATE_SECONDS),
+    fetchEspnJson<EspnByAthleteResponse>(leadersUrl, SUMMARY_REVALIDATE_SECONDS),
+  ]);
+
+  // ESPN's seed carries the league's tiebreakers and the play-in results. It
+  // is 0 until a season has games, so those teams fall back to their record.
+  const seedOrder = (team: NbaTeam) => team.conferenceSeed || Number.MAX_SAFE_INTEGER;
+  const teamsByConference: { east: NbaTeam[]; west: NbaTeam[] } = { east: [], west: [] };
+  for (const group of standingsResponse.children ?? []) {
+    const conference = inferConference(group);
+    const entries = group.standings?.entries ?? [];
+    const teams = entries
+      .map((entry, index) => normalizeStandingEntry(entry, conference, index + 1))
+      .filter((team): team is NbaTeam => team !== null)
+      .sort(
+        (a, b) => seedOrder(a) - seedOrder(b) || b.winPercent - a.winPercent || b.wins - a.wins
+      )
+      .map((team, index) => ({ ...team, position: index + 1, conferenceSeed: index + 1 }));
+    teamsByConference[conference] = teams;
+  }
+
+  const gamesPlayedByTeam = new Map(
+    [...teamsByConference.east, ...teamsByConference.west].map((team) => [
+      team.id,
+      team.gamesPlayed,
+    ])
+  );
+  const statIndex = buildByAthleteStatIndex(leadersResponse.categories);
+  const allAthletes = leadersResponse.athletes ?? [];
+
+  const scorers = topByAthletes(
+    allAthletes,
+    "offensive",
+    "avgPoints",
+    "points",
+    statIndex,
+    LEADER_LIMIT,
+    gamesPlayedByTeam,
+  );
+  const rebounders = topByAthletes(
+    allAthletes,
+    "general",
+    "avgRebounds",
+    "rebounds",
+    statIndex,
+    LEADER_LIMIT,
+    gamesPlayedByTeam,
+  );
+  const assistLeaders = topByAthletes(
+    allAthletes,
+    "offensive",
+    "avgAssists",
+    "assists",
+    statIndex,
+    LEADER_LIMIT,
+    gamesPlayedByTeam,
+  );
+
+  return { seasonEndYear, teamsByConference, scorers, rebounders, assistLeaders };
+}
+
+/**
+ * The calendar rolls to the new season on October 1, weeks before tip-off, and
+ * until the first games ESPN has every team at 0-0 and no leaders. Serve the
+ * completed season's standings, leaders, and label together until the new one
+ * has numbers.
+ */
+async function fetchLatestSeasonTables(pinnedSeasonEndYear: number): Promise<NbaSeasonTables> {
+  const pinned = await fetchSeasonTables(pinnedSeasonEndYear);
+  // A season with games and no leaders is an upstream fault. Stepping back
+  // there would publish last season in the middle of this one.
+  const hasGames = [...pinned.teamsByConference.east, ...pinned.teamsByConference.west].some(
+    (team) => team.gamesPlayed > 0
+  );
+  if (hasGames || pinned.scorers.length > 0) return pinned;
+  const previous = await fetchSeasonTables(pinnedSeasonEndYear - 1);
+  return previous.scorers.length > 0 ? previous : pinned;
+}
+
 export async function getNbaSummary(): Promise<{
   season: string;
+  seasonEndYear: number;
   teamsByConference: { east: NbaTeam[]; west: NbaTeam[] };
   scorers: NbaLeader[];
   rebounders: NbaLeader[];
@@ -620,43 +749,28 @@ export async function getNbaSummary(): Promise<{
   // records, which is how the snapshot ended up labelling the 2025-26 Finals as
   // "2026-27". Pinning the ending year fixes both the returned data and the label.
   const today = new Date();
-  const seasonEndYear = resolveNbaSeasonEndYear(today);
-  // `level=2` returns conferences with 15 entries each. The previous query
-  // (`level=3&group=conference`) returns 400 as of 2026-04 — `&group=conference`
-  // is rejected, and `level=3` alone splits down to divisions, leaving the
-  // conference children with empty `entries` arrays.
-  const standingsUrl = `${ESPN_STANDINGS_URL}?level=2&season=${seasonEndYear}`;
-  const yesterday = new Date(today);
-  yesterday.setUTCDate(today.getUTCDate() - 7);
-  const tomorrow = new Date(today);
-  tomorrow.setUTCDate(today.getUTCDate() + 7);
-  const dateRange = `${formatEspnDate(yesterday)}-${formatEspnDate(tomorrow)}`;
-  const scoreboardUrl = `${ESPN_BASE_URL}/scoreboard?dates=${dateRange}&limit=200`;
-  const leadersUrl = `${ESPN_BYATHLETE_URL}&season=${seasonEndYear}`;
   const teamsUrl = `${ESPN_BASE_URL}/teams?limit=40`;
 
-  const [standingsResponse, scoreboardResponse, leadersResponse, teamsResponse] = await Promise.all([
-    fetchEspnJson<EspnStandingsResponse>(standingsUrl, SUMMARY_REVALIDATE_SECONDS),
-    fetchEspnJson<EspnScoreboardResponse>(scoreboardUrl, SUMMARY_REVALIDATE_SECONDS),
-    fetchEspnJson<EspnByAthleteResponse>(leadersUrl, SUMMARY_REVALIDATE_SECONDS),
+  const [season, scoreboardEvents, teamsResponse] = await Promise.all([
+    fetchLatestSeasonTables(resolveNbaSeasonEndYear(today)),
+    fetchScoreboardWindow(today),
     fetchEspnJson<EspnTeamsResponse>(teamsUrl, SUMMARY_REVALIDATE_SECONDS),
   ]);
+  const { seasonEndYear, teamsByConference, scorers, rebounders, assistLeaders } = season;
 
-  const teamsByConference: { east: NbaTeam[]; west: NbaTeam[] } = { east: [], west: [] };
-  for (const group of standingsResponse.children ?? []) {
-    const conference = inferConference(group);
-    const entries = group.standings?.entries ?? [];
-    const teams = entries
-      .map((entry, index) => normalizeStandingEntry(entry, conference, index + 1))
-      .filter((team): team is NbaTeam => team !== null)
-      .sort((a, b) => b.winPercent - a.winPercent || b.wins - a.wins)
-      .map((team, index) => ({ ...team, position: index + 1, conferenceSeed: index + 1 }));
-    teamsByConference[conference] = teams;
+  const conferenceById = new Map<string, NbaConference>();
+  for (const team of [...teamsByConference.east, ...teamsByConference.west]) {
+    conferenceById.set(team.id, team.conference);
   }
 
-  const fixtures = (scoreboardResponse.events ?? [])
+  const fixtures = scoreboardEvents
     .map((event) => normalizeFixture(event))
-    .filter((fixture): fixture is NbaFixture => fixture !== null);
+    .filter((fixture): fixture is NbaFixture => fixture !== null)
+    // All-Star sides are not in the standings.
+    .filter(
+      (fixture) =>
+        conferenceById.has(fixture.homeTeam.id) && conferenceById.has(fixture.awayTeam.id)
+    );
 
   const recentFixtures = fixtures
     .filter((fixture) => fixture.status === "FINISHED")
@@ -667,39 +781,6 @@ export async function getNbaSummary(): Promise<{
     .filter((fixture) => fixture.status !== "FINISHED")
     .sort((a, b) => new Date(a.utcDate).getTime() - new Date(b.utcDate).getTime())
     .slice(0, UPCOMING_FIXTURE_LIMIT);
-
-  const statIndex = buildByAthleteStatIndex(leadersResponse.categories);
-  const allAthletes = leadersResponse.athletes ?? [];
-
-  const scorers = topByAthletes(
-    allAthletes,
-    "offensive",
-    "avgPoints",
-    "points",
-    statIndex,
-    LEADER_LIMIT,
-  );
-  const rebounders = topByAthletes(
-    allAthletes,
-    "general",
-    "avgRebounds",
-    "rebounds",
-    statIndex,
-    LEADER_LIMIT,
-  );
-  const assistLeaders = topByAthletes(
-    allAthletes,
-    "offensive",
-    "avgAssists",
-    "assists",
-    statIndex,
-    LEADER_LIMIT,
-  );
-
-  const conferenceById = new Map<string, NbaConference>();
-  for (const team of [...teamsByConference.east, ...teamsByConference.west]) {
-    conferenceById.set(team.id, team.conference);
-  }
 
   const teams = (teamsResponse.sports?.[0]?.leagues?.[0]?.teams ?? [])
     .map((wrapper) => {
@@ -712,6 +793,7 @@ export async function getNbaSummary(): Promise<{
 
   return {
     season: buildSeasonLabel(seasonEndYear),
+    seasonEndYear,
     teamsByConference,
     scorers,
     rebounders,
@@ -730,18 +812,56 @@ function formatEspnDate(date: Date): string {
   return `${year}${month}${day}`;
 }
 
+const SCOREBOARD_WINDOW_DAYS = 7;
+const SCOREBOARD_CONCURRENCY = 3;
+
+/**
+ * ESPN answers a date range on the scoreboard with a 400 (seen 2026-09-27)
+ * while a single day still works, so the window goes out one day at a time. A
+ * day that fails is skipped, which keeps the scoreboard from taking standings
+ * and leaders down with it.
+ */
+async function fetchScoreboardWindow(today: Date): Promise<EspnEvent[]> {
+  const days = Array.from({ length: SCOREBOARD_WINDOW_DAYS * 2 + 1 }, (_, index) => {
+    const day = new Date(today);
+    day.setUTCDate(today.getUTCDate() + index - SCOREBOARD_WINDOW_DAYS);
+    return formatEspnDate(day);
+  });
+  const events = new Map<string, EspnEvent>();
+  for (let start = 0; start < days.length; start += SCOREBOARD_CONCURRENCY) {
+    const responses = await Promise.all(
+      days.slice(start, start + SCOREBOARD_CONCURRENCY).map((day) =>
+        fetchEspnJson<EspnScoreboardResponse>(
+          `${ESPN_BASE_URL}/scoreboard?dates=${day}`,
+          SUMMARY_REVALIDATE_SECONDS
+        ).catch((error: Error) => {
+          console.warn(`  Skipping scoreboard day ${day}: ${error.message}`);
+          return {} as EspnScoreboardResponse;
+        })
+      )
+    );
+    for (const event of responses.flatMap((response) => response.events ?? [])) {
+      if (event.id) events.set(event.id, event);
+    }
+  }
+  return [...events.values()];
+}
+
 export async function getNbaTeamSnapshot(
   teamId: string,
-  conference: NbaConference = "east"
+  conference: NbaConference = "east",
+  seasonEndYear: number = resolveNbaSeasonEndYear()
 ): Promise<NbaTeamSnapshot> {
   if (!isValidNbaTeamId(teamId)) {
     throw createNbaDataError("Invalid NBA team id.", 400);
   }
-  const scheduleUrl = `${ESPN_BASE_URL}/teams/${encodeURIComponent(teamId)}/schedule`;
+  // ESPN returns one season type per request, and with none named it serves
+  // the current one, which is the preseason through most of October.
+  const scheduleUrl = `${ESPN_BASE_URL}/teams/${encodeURIComponent(teamId)}/schedule?season=${seasonEndYear}`;
   const detailUrl = `${ESPN_BASE_URL}/teams/${encodeURIComponent(teamId)}`;
 
   const [scheduleResponse, detailResponse] = await Promise.all([
-    fetchEspnJson<EspnTeamScheduleResponse>(scheduleUrl, TEAM_REVALIDATE_SECONDS),
+    fetchEspnJson<EspnTeamScheduleResponse>(`${scheduleUrl}&seasontype=2`, TEAM_REVALIDATE_SECONDS),
     fetchEspnJson<EspnTeamDetailResponse>(detailUrl, TEAM_REVALIDATE_SECONDS).catch(() => ({} as EspnTeamDetailResponse)),
   ]);
 
@@ -750,6 +870,17 @@ export async function getNbaTeamSnapshot(
   const fixtures = (scheduleResponse.events ?? [])
     .map((event) => normalizeFixture(event))
     .filter((fixture): fixture is NbaFixture => fixture !== null);
+  // The playoffs only need asking for once the regular season has no games left.
+  if (fixtures.every((fixture) => fixture.status === "FINISHED")) {
+    const postseason = await fetchEspnJson<EspnTeamScheduleResponse>(
+      `${scheduleUrl}&seasontype=3`,
+      TEAM_REVALIDATE_SECONDS
+    );
+    for (const event of postseason.events ?? []) {
+      const fixture = normalizeFixture(event);
+      if (fixture) fixtures.push(fixture);
+    }
+  }
   const teamCanonicalId = team?.id ?? teamId.toLowerCase();
 
   const recentFixtures = fixtures
@@ -811,7 +942,7 @@ export async function buildNbaSnapshot(options?: { skipTeamSnapshots?: boolean }
       await delay(TEAM_FETCH_DELAY_MS);
       const conference = conferenceById.get(team.id) ?? "east";
       try {
-        const snap = await getNbaTeamSnapshot(team.id, conference);
+        const snap = await getNbaTeamSnapshot(team.id, conference, summary.seasonEndYear);
         teamSnapshots[team.id] = { ...snap, generatedAt };
       } catch (err) {
         console.warn(`  Skipping team ${team.id} (${team.shortName}): ${(err as Error).message} — keeping previous snapshot if any.`);

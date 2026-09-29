@@ -95,3 +95,9 @@
   gap: var(--c97-sp-1);
   margin-top: var(--c97-sp-1);
 }
+
+/* A tag longer than a phone's column wraps inside its chip instead of running past the page. */
+.mm-matchup-tags .c97-chip {
+  max-width: 100%;
+  white-space: normal;
+}

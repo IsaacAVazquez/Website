@@ -5,6 +5,8 @@ primary_target: "route:/fintech-tools/interchange-iq"
 related_targets: ["src/app/fintech-tools/interchange-iq/interchange-iq-client.tsx","src/lib/interchangeIq.ts"]
 ---
 
+Updated on 2026-09-28 by the responsive pass. The rates note at the foot of the page sets left like the rest of the page, since centred text inside a left-anchored 54ch box sat off the page's centre, and the view nav's margin reset that swallowed its stack's gap is gone.
+
 # Interchange IQ surface brief
 
 Scope. The `/fintech-tools/interchange-iq` route, rendered by `src/app/fintech-tools/interchange-iq/interchange-iq-client.tsx` over the pricing engine in `src/lib/interchangeIq.ts`.
@@ -13,7 +15,7 @@ Visitor mode. Operate. The visitor is working through their own numbers, so scan
 
 Audience. Someone comparing flat-rate card processing against interchange plus (IC+) pricing for their own monthly volume, ticket size and card mix, who will read the caveats and check whether the totals hold up.
 
-Visual world. Catalog 97 through the bridge, as of 2026-09-16. The route renders inside `Catalog97ToolShell`. Its components still read `--home-*` names, and the bridge block in `src/app/catalog97.css` aliases each one onto the Catalog 97 value for the enclosing surface, sets every `--radius-*` token to 0, and sets every `--shadow-*` token to `none`. `DESIGN.md` still describes the Working Instrument, so judging this route against it manufactures false findings. The tool shell brief, `src-components-catalog97-catalog97toolshell-tsx.md`, has the detail. Hex values and contrast figures further down this brief were measured before the bridge, so they are Working Instrument values and need re-measuring before anyone acts on them.
+Visual world. Catalog 97, as shipped. The route renders inside `Catalog97ToolShell` and its components read `--c97-*` tokens directly under `data-c97-surface`. `DESIGN.md` now describes Catalog 97, so judging this route against it is correct. The tool shell brief, `src-components-catalog97-catalog97toolshell-tsx.md`, has the detail. Hex values and contrast figures further down this brief were measured before the 2026-09-27 close-out and may need re-measuring against the shipped `--c97-*` colors.
 
 ## Loop, 2026-09-14
 

@@ -1,10 +1,12 @@
 import { SurfaceCard } from "./SurfaceCard";
 import { FixtureCard, type GenericFixture } from "./FixtureCard";
 
+// The same zone FixtureCard prints kickoffs in, so a game sits under its own day.
 const DATE_FORMATTER = new Intl.DateTimeFormat("en-US", {
   weekday: "short",
   month: "short",
   day: "numeric",
+  timeZone: "America/New_York",
 });
 
 function formatFixtureDate(utcDate: string): string {

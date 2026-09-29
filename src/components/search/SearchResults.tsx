@@ -2,6 +2,7 @@
 
 import { Briefcase, Clock, FileText, House, Search } from "lucide-react";
 import Link from "next/link";
+import { publishedDateFormatter } from "@/lib/utils";
 import type { SearchResult } from "./SearchInterface";
 
 interface SearchResultsProps {
@@ -79,8 +80,8 @@ export function SearchResults({
       <p className="c97-kicker">Results</p>
       <h2 className="c97-serif c97-h2" style={{ marginTop: "var(--c97-sp-2)" }}>
         {results.length < totalResults
-          ? `Showing ${results.length.toLocaleString()} of ${totalResults.toLocaleString()} results`
-          : `${totalResults.toLocaleString()} result${totalResults !== 1 ? 's' : ''} found`}
+          ? `Showing ${results.length.toLocaleString("en-US")} of ${totalResults.toLocaleString("en-US")} results`
+          : `${totalResults.toLocaleString("en-US")} result${totalResults !== 1 ? 's' : ''} found`}
         {query ? (
           <>
             {' '}for &ldquo;{query}&rdquo;
@@ -230,7 +231,7 @@ function SearchResultCard({ result, query }: SearchResultCardProps) {
           <span style={{ display: "inline-flex", alignItems: "center", gap: "var(--c97-sp-1)" }}>
             <Clock className="h-4 w-4" aria-hidden="true" />
             <span className="c97-tabular">
-              {new Date(result.publishedAt).toLocaleDateString()}
+              {publishedDateFormatter.format(new Date(result.publishedAt))}
             </span>
           </span>
         )}

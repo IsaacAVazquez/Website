@@ -26,39 +26,18 @@ import { Catalog97ProjectHero } from "@/components/catalog97/Catalog97ProjectHer
 import { PROJECT_PRESS } from "@/constants/projectPress";
 import { TimingTowerSignature } from "./TimingTowerSignature";
 import styles from "./formula-1.module.css";
+import {
+  DATE_TIME_FORMATTER,
+  LONG_DATE_TIME_FORMATTER,
+  SHORT_DATE_FORMATTER,
+  UPDATED_AT_FORMATTER,
+} from "@/lib/date-formatters";
 
 interface Formula1ClientProps {
   initialState: Formula1RouteState;
   summary: Formula1Summary;
   initialMeeting: Formula1MeetingSummary | null;
 }
-
-const SHORT_DATE_FORMATTER = new Intl.DateTimeFormat("en-US", {
-  month: "short",
-  day: "numeric",
-});
-
-const DATE_TIME_FORMATTER = new Intl.DateTimeFormat("en-US", {
-  month: "short",
-  day: "numeric",
-  hour: "numeric",
-  minute: "2-digit",
-});
-
-const LONG_DATE_TIME_FORMATTER = new Intl.DateTimeFormat("en-US", {
-  weekday: "short",
-  month: "short",
-  day: "numeric",
-  hour: "numeric",
-  minute: "2-digit",
-});
-
-const UPDATED_AT_FORMATTER = new Intl.DateTimeFormat("en-US", {
-  month: "short",
-  day: "numeric",
-  hour: "numeric",
-  minute: "2-digit",
-});
 
 function formatDateLabel(value: string): string {
   const date = new Date(value);
@@ -84,7 +63,7 @@ function formatPoints(value: number): string {
   return Number.isFinite(value) ? value.toFixed(0) : "0";
 }
 
-const DELTA_FORMATTER = new Intl.NumberFormat(undefined, {
+const DELTA_FORMATTER = new Intl.NumberFormat("en-US", {
   signDisplay: "exceptZero",
   maximumFractionDigits: 0,
 });
@@ -552,7 +531,7 @@ function SectionHeader({
   return (
     <div className="mb-4 flex flex-col gap-2 sm:flex-row sm:flex-wrap sm:items-baseline sm:justify-between sm:gap-3">
       <div>
-        <p className="c97-kicker mb-1">{kicker}</p>
+        <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-1)" }}>{kicker}</p>
         <h3 className="c97-serif c97-h3">{title}</h3>
       </div>
       <p className="mb-0 sm:max-w-[32ch] sm:text-right" style={{ fontSize: "var(--c97-fs-small)", color: "var(--c97-ink-2)" }}>
@@ -642,10 +621,10 @@ function MeetingDetailPanel({
       <div className="flex flex-wrap items-start justify-between gap-4">
         <div className="min-w-0">
           <div className="flex items-center gap-2">
-            <p className="c97-kicker mb-0">{getMeetingStatusCopy(meeting)}</p>
+            <p className="c97-kicker">{getMeetingStatusCopy(meeting)}</p>
             <CountryFlag flagUrl={meeting.countryFlag} countryName={meeting.countryName} />
           </div>
-          <h3 className="c97-serif c97-h3 mt-1">{meeting.name}</h3>
+          <h3 className="c97-serif c97-h3" style={{ marginTop: "var(--c97-sp-1)" }}>{meeting.name}</h3>
           <p className="mt-2 mb-0 max-w-[48ch] text-sm leading-6" style={{ color: "var(--c97-ink-2)" }}>
             {meeting.circuitShortName} in {meeting.location}. I keep the schedule and the
             classification in one place so the weekend reads cleanly.
@@ -661,7 +640,7 @@ function MeetingDetailPanel({
 
       <div className={`mt-6 grid grid-cols-1 gap-6 ${compact ? "lg:grid-cols-[1.1fr_0.9fr]" : "xl:grid-cols-[1.05fr_0.95fr]"}`}>
         <div>
-          <p className="c97-kicker mb-3">Weekend schedule</p>
+          <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-2)" }}>Weekend schedule</p>
           <MeetingSchedule meeting={meeting} />
           <p className="mt-4 mb-0 text-xs leading-6" style={{ color: "var(--c97-ink-2)" }}>
             Times render in your local timezone. The weekend offset chip shows the track timezone.
@@ -669,7 +648,7 @@ function MeetingDetailPanel({
         </div>
 
         <div>
-          <p className="c97-kicker mb-3">
+          <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-2)" }}>
             {meeting.resultPublished ? "Race classification" : "Result status"}
           </p>
           {meeting.resultPublished ? (
@@ -768,10 +747,10 @@ function MeetingStrip({
             aria-pressed={isSelected}
           >
             <div className="flex items-center justify-between gap-2">
-              <p className="c97-kicker mb-0">{meeting.status}</p>
+              <p className="c97-kicker">{meeting.status}</p>
               <CountryFlag flagUrl={meeting.countryFlag} countryName={meeting.countryName} />
             </div>
-            <p className="c97-serif mt-2 mb-0" style={{ fontSize: "var(--c97-fs-body)" }}>
+            <p className="c97-serif" style={{ marginTop: "var(--c97-sp-1)", fontSize: "var(--c97-fs-body)" }}>
               {meeting.name}
             </p>
             <p className="mt-1 mb-0 text-sm" style={{ color: "var(--c97-ink-2)" }}>
@@ -816,7 +795,7 @@ function CalendarTimeline({
                 </p>
                 <div className="mt-2 flex items-center gap-2">
                   <CountryFlag flagUrl={meeting.countryFlag} countryName={meeting.countryName} />
-                  <p className="c97-serif mb-0 truncate" style={{ fontSize: "var(--c97-fs-body)" }}>
+                  <p className="c97-serif truncate" style={{ fontSize: "var(--c97-fs-body)" }}>
                     {meeting.name}
                   </p>
                 </div>
@@ -884,10 +863,10 @@ function MeetingDetailFallback({
   return (
     <div className="c97-panel">
       <div className="flex items-center gap-2">
-        <p className="c97-kicker mb-0">{getMeetingStatusCopy(meeting)}</p>
+        <p className="c97-kicker">{getMeetingStatusCopy(meeting)}</p>
         <CountryFlag flagUrl={meeting.countryFlag} countryName={meeting.countryName} />
       </div>
-      <h3 className="c97-serif c97-h3 mt-1">{meeting.name}</h3>
+      <h3 className="c97-serif c97-h3" style={{ marginTop: "var(--c97-sp-1)" }}>{meeting.name}</h3>
       {error ? (
         <div
           className="mt-4 px-4 py-4"
@@ -1057,8 +1036,7 @@ export function Formula1Client({ initialState, summary, initialMeeting }: Formul
       <Catalog97ProjectHero
         ink={lead}
         title="Formula 1 Pulse"
-        standfirst={standfirst}
-        meta="The season snapshot has not generated yet. The dashboard fills in on the next scheduled refresh."
+        standfirst={`${standfirst} The season snapshot has not generated yet. The dashboard fills in on the next scheduled refresh.`}
       />
     );
   }
@@ -1072,7 +1050,7 @@ export function Formula1Client({ initialState, summary, initialMeeting }: Formul
         ink={lead}
         title="Formula 1 Pulse"
         standfirst={standfirst}
-        meta={`${summary.sourceLabel} · updated ${formatUpdatedAt(summary.generatedAt)}`}
+        meta={`${summary.sourceLabel} · checked ${formatUpdatedAt(summary.generatedAt)}`}
         readouts={[
           {
             label: "Driver leader",
@@ -1110,7 +1088,7 @@ export function Formula1Client({ initialState, summary, initialMeeting }: Formul
             <div className="c97-panel" style={{ marginTop: "var(--c97-sp-4)" }}>
               <div className="flex flex-wrap items-start justify-between gap-4">
                 <div>
-                  <p className="c97-kicker mb-1">{getMeetingStatusCopy(highlightMeeting)}</p>
+                  <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-1)" }}>{getMeetingStatusCopy(highlightMeeting)}</p>
                   <h3 className="c97-serif c97-h3 flex items-center gap-2">
                     <CountryFlag flagUrl={highlightMeeting.countryFlag} countryName={highlightMeeting.countryName} />
                     {highlightMeeting.name}
@@ -1225,7 +1203,7 @@ export function Formula1Client({ initialState, summary, initialMeeting }: Formul
           {resolvedState.view === "calendar" ? (
             <div className="grid grid-cols-1 gap-6 xl:grid-cols-[0.88fr_1.12fr]" style={{ marginTop: "var(--c97-sp-5)" }}>
               <div>
-                <h3 className="c97-serif c97-h3 mb-3">Full season timeline</h3>
+                <h3 className="c97-serif c97-h3" style={{ marginBottom: "var(--c97-sp-2)" }}>Full season timeline</h3>
                 <CalendarTimeline
                   meetings={summary.meetings}
                   selectedMeetingKey={selectedMeetingKey}
@@ -1286,8 +1264,8 @@ export function Formula1Client({ initialState, summary, initialMeeting }: Formul
       <section className="c97-band c97-sheet" data-c97-surface="paper" data-seam="deckle">
         <div className="c97-shell grid grid-cols-1 gap-6 lg:grid-cols-2">
           <div>
-            <p className="c97-kicker mb-2">Data notes</p>
-            <p className="c97-prose mb-0">
+            <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-1)" }}>Data notes</p>
+            <p className="c97-prose">
               I pull OpenF1&apos;s historical endpoints for this route, then freeze the result into a
               checked-in snapshot. That keeps the page fast and predictable while still letting the
               calendar, standings, and classifications move with the season.
@@ -1295,8 +1273,8 @@ export function Formula1Client({ initialState, summary, initialMeeting }: Formul
           </div>
 
           <div>
-            <p className="c97-kicker mb-2">Attribution</p>
-            <p className="c97-prose mb-0">
+            <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-1)" }}>Attribution</p>
+            <p className="c97-prose">
               OpenF1 is community-run and unofficial. This dashboard is not affiliated with Formula 1,
               the FIA, or Formula One Management. Read the{" "}
               <a href={summary.sourceUrls.docs} style={{ color: "var(--c97-accent)" }}>

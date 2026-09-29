@@ -7,6 +7,7 @@ import {
   blendedPricePerMTokens,
   formatPriceUsd,
   formatTokenCount,
+  FRONTIER_PROVIDER_COLORS,
 } from "@/lib/frontierModels";
 import type {
   FrontierModel,
@@ -24,16 +25,6 @@ interface PlottedModel {
   x: number;
   y: number;
 }
-
-const PROVIDER_COLORS: Record<FrontierProvider, string> = {
-  anthropic: "#d97706",
-  openai: "#10a37f",
-  google: "#4285f4",
-  meta: "#1877f2",
-  xai: "#475569",
-  deepseek: "#7c3aed",
-  mistral: "#fa5400",
-};
 
 const HEIGHT = 360;
 const MARGIN = { top: 20, right: 24, bottom: 56, left: 64 };
@@ -187,7 +178,7 @@ export function FrontierCostContextChart({
         selection.selectAll("line").attr("stroke", gridColor).attr("stroke-dasharray", "2,3");
       });
 
-    g.append("text")
+    const xTitle = g.append("text")
       .attr("x", innerWidth / 2)
       .attr("y", innerHeight + 40)
       .attr("text-anchor", "middle")
@@ -197,6 +188,11 @@ export function FrontierCostContextChart({
       .attr("letter-spacing", "0.18em")
       .attr("text-transform", "uppercase")
       .text("CONTEXT WINDOW (TOKENS, LOG)");
+    // The title centres on the plot, 20px right of the chart's centre, so it fits
+    // while it is under width - 40. A phone's chart is narrower and drops "window".
+    if ((xTitle.node()?.getComputedTextLength?.() ?? 0) > width - 40) {
+      xTitle.text("CONTEXT (TOKENS, LOG)");
+    }
 
     g.append("text")
       .attr("transform", `translate(-46,${innerHeight / 2}) rotate(-90)`)
@@ -216,10 +212,15 @@ export function FrontierCostContextChart({
       .attr("cx", (d) => xScale(d.x))
       .attr("cy", (d) => yScale(d.y))
       .attr("r", (d) => (d.model.id === selectedModelId ? 11 : 8))
-      .attr("fill", (d) => PROVIDER_COLORS[d.model.provider])
+      .attr("fill", (d) => FRONTIER_PROVIDER_COLORS[d.model.provider])
       .attr("fill-opacity", 0.85)
-      .attr("stroke", "var(--c97-surface)")
-      .attr("stroke-width", 2)
+      // A provider colour alone doesn't clear 3:1 against the plate in every
+      // theme (blended anthropic/openai/google/meta/mistral fall short on
+      // light paper, xai/deepseek on dark paper), so every dot gets an ink
+      // edge as its own contrasting boundary rather than the surface colour,
+      // which did nothing against a same-colour background.
+      .attr("stroke", "var(--c97-ink-2)")
+      .attr("stroke-width", 1.5)
       .attr("tabindex", 0)
       .attr("role", "button")
       .attr(
@@ -274,7 +275,10 @@ export function FrontierCostContextChart({
             <span
               aria-hidden="true"
               className="inline-block h-2.5 w-2.5"
-              style={{ background: PROVIDER_COLORS[provider] }}
+              style={{
+                background: FRONTIER_PROVIDER_COLORS[provider],
+                border: "1px solid var(--c97-ink-2)",
+              }}
             />
             <span style={{ color: "var(--c97-ink)" }}>{label}</span>
           </span>

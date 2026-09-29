@@ -5,6 +5,8 @@ primary_target: "route:/"
 related_targets: ["src/components/catalog97/Catalog97Home.tsx"]
 ---
 
+Updated on 2026-09-28 by the responsive pass. Home no longer renders `.c97-columns`, so the note below about that class's track describes the class and not this page. The Selected work grid is three columns above 880px and one at 880px and under, where the collage stacks too, which ended its 2+1 at 768 and 844. When "Start a conversation" wraps under "See the work" on a phone, its label now starts on the column edge, since `.c97-btn-ghost` gives back its start padding.
+
 **Superseded in part on 2026-09-23.** The seven designed routes now use the print shop layout in `STYLING.md`, and it overrides anything below that disagrees. The pine, camel, and tobacco surfaces were renamed and repainted as `ink-blue`, `ink-saffron`, and `ink-vermilion`, and `ink-peach` was added, so read any mention of pine, camel, or tobacco below as the ink that replaced it. Anton now also sets the h1 and section h2s through `.c97-poster`, so the numerals-only Anton rule is retired. Vermilion carries body text with the darkest ink (4.62:1), so the tobacco large-text-only rule is retired too. Bands that change surface tear over each other, and the one allowed shadow is the hard `.c97-offset` in the second ink.
 
 # Home surface brief
@@ -17,7 +19,7 @@ related_targets: ["src/components/catalog97/Catalog97Home.tsx"]
 
 **Route constraints.** The h1 "I build test harnesses, and dashboards that run on public data." is a test anchor in `src/app/__tests__/portfolio-shell.test.tsx` and `e2e/homepage.spec.ts` and must not change wording. Carries plates 01 through 05. The three live readouts (quake, market, launch) each fail soft to null upstream, so a missing snapshot drops its column rather than rendering an empty slot; do not "fix" the conditional. Band order as of 2026-09-23 is a proofed paper hero (portrait, and the dashboard collage whose plates are links with live readouts), then blue Selected work, paper Recent writing, and the vermilion close. The hero's internal composition is not settled and changed on 2026-08-03, so read the layout entry at the end of this brief before treating any part of this route's composition as closed.
 
-**Visual world: Catalog 97, not Working Instrument.** `DESIGN.md` describes The Working Instrument, and until the bridge on 2026-09-16 it governed every other route. Those routes now render inside `Catalog97ToolShell` and are Catalog 97 too, so `DESIGN.md` is stale everywhere until the close-out PR rewrites it. It does NOT govern this surface. `context.mjs` auto-loads it anyway, so a pass that treats it as the spec here will read every deliberate Catalog 97 decision as a violation and manufacture a page of false findings. Tokens live in `src/app/catalog97.css`.
+**Visual world: Catalog 97.** `DESIGN.md` describes Catalog 97 as shipped, and `context.mjs` auto-loading it now points a pass at the right spec for this surface. Tokens live in `src/app/catalog97.css`.
 
 **Do not re-litigate (settled 2026-08-02).**
 - Tobacco is a large-text-only field. Paper ink on it is 4.36:1, which clears 3:1 for large text and never clears 4.5:1 for body. A tobacco band carries `--c97-fs-h2` (24px floor) and up, or no text at all. Not a defect; solved by size rather than by darkening the colour.

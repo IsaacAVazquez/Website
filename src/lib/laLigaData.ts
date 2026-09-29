@@ -16,8 +16,6 @@ import type {
 import { getLaLigaClubAccentColor } from "@/data/clubColors";
 
 import {
-  FOOTBALL_DATA_BASE_URL,
-  REQUEST_TIMEOUT_MS,
   SUMMARY_REVALIDATE_SECONDS,
   TEAM_REVALIDATE_SECONDS,
   RECENT_FIXTURE_LIMIT,
@@ -25,6 +23,8 @@ import {
   TEAM_FIXTURE_LIMIT,
   SEASON_FIXTURES_REVALIDATE_SECONDS,
   buildSeasonLabel,
+  fetchFootballDataJson as fetchLeagueJson,
+  pruneToTable,
   type FootballDataTeam,
   type FootballDataSeason,
   type FootballDataStandingEntry,
@@ -41,12 +41,8 @@ function createLaLigaDataError(message: string, status: number): FootballDataErr
   return Object.assign(new Error(message), { status });
 }
 
-function getFootballDataToken(): string {
-  const token = process.env.FOOTBALL_DATA_API_TOKEN?.trim();
-  if (!token) {
-    throw createLaLigaDataError("La Liga data source is not configured.", 503);
-  }
-  return token;
+function fetchFootballDataJson<T>(path: string, revalidateSeconds: number): Promise<T> {
+  return fetchLeagueJson<T>("La Liga", path, revalidateSeconds);
 }
 
 function seasonStartYear(startDate?: string | null): number | null {
@@ -115,10 +111,14 @@ function normalizeFixture(raw: FootballDataMatch | null | undefined): LaLigaFixt
   const homeTeam = normalizeFixtureTeam(raw?.homeTeam);
   const awayTeam = normalizeFixtureTeam(raw?.awayTeam);
   if (typeof matchId !== "number" || !utcDate || !homeTeam || !awayTeam) return null;
+  const status = raw?.status?.trim() || "UNKNOWN";
   return {
     id: String(matchId),
     utcDate,
-    status: raw?.status?.trim() || "UNKNOWN",
+    status,
+    // The provider keeps a match SCHEDULED at midnight UTC while it only has a
+    // rough date, and moves it to TIMED once the kickoff is fixed.
+    ...(status === "SCHEDULED" ? { startTimeTbd: true } : {}),
     matchday: raw?.matchday ?? null,
     stage: raw?.stage?.trim() || null,
     homeTeam,
@@ -252,57 +252,6 @@ function buildTeamFormSummary(teamId: string, fixtures: LaLigaFixture[]): LaLiga
   );
 }
 
-async function fetchFootballDataJsonOnce<T>(path: string, revalidateSeconds: number): Promise<T> {
-  const token = getFootballDataToken();
-  const response = await fetch(`${FOOTBALL_DATA_BASE_URL}${path}`, {
-    headers: { "X-Auth-Token": token },
-    signal: AbortSignal.timeout(REQUEST_TIMEOUT_MS),
-    next: { revalidate: revalidateSeconds },
-  });
-  if (!response.ok) {
-    if (response.status === 401 || response.status === 403) {
-      throw createLaLigaDataError("La Liga data provider rejected the configured API token.", 503);
-    }
-    if (response.status === 404) {
-      throw createLaLigaDataError("Requested La Liga resource was not found.", 404);
-    }
-    throw createLaLigaDataError(
-      "Unable to load La Liga data from the upstream provider.",
-      response.status >= 500 ? 503 : 502
-    );
-  }
-  return (await response.json()) as T;
-}
-
-/**
- * Wraps the per-attempt fetch in a 3-attempt retry. Backs off on 5xx and on
- * network/timeout errors, but NOT on 4xx (client-side errors won't recover).
- * Mirrors the pattern in src/lib/nflData.ts (`fetchTextOnce` + `fetchText`).
- */
-async function fetchFootballDataJson<T>(path: string, revalidateSeconds: number): Promise<T> {
-  let lastError: unknown;
-  for (let attempt = 0; attempt < 3; attempt += 1) {
-    try {
-      return await fetchFootballDataJsonOnce<T>(path, revalidateSeconds);
-    } catch (error) {
-      lastError = error;
-      if (error instanceof Error && (error.name === "AbortError" || error.name === "TimeoutError")) {
-        if (attempt < 2) {
-          await new Promise((resolve) => setTimeout(resolve, 1000 * (attempt + 1)));
-          continue;
-        }
-        throw createLaLigaDataError("La Liga data provider timed out.", 504);
-      }
-      const status = (error as FootballDataError).status;
-      if (typeof status === "number" && status >= 400 && status < 500) throw error;
-      if (attempt < 2) {
-        await new Promise((resolve) => setTimeout(resolve, 1000 * (attempt + 1)));
-      }
-    }
-  }
-  throw lastError;
-}
-
 function buildQueryString(params: Record<string, string | number | undefined>): string {
   const searchParams = new URLSearchParams();
   for (const [key, value] of Object.entries(params)) {
@@ -355,34 +304,12 @@ export async function getLaLigaSummary(options?: { season?: number }): Promise<{
     ? `?${buildQueryString({ season: options.season })}`
     : "";
 
-  const [standingsResponse, recentRes, upcomingRes, teamsRes, scorersRes, seasonFixturesRes] = await Promise.all([
-    fetchFootballDataJson<FootballDataCompetitionStandingsResponse>(
-      `/competitions/${LA_LIGA_CODE}/standings${seasonQuery}`,
-      SUMMARY_REVALIDATE_SECONDS
-    ),
-    fetchFootballDataJson<FootballDataMatchesResponse>(
-      `/competitions/${LA_LIGA_CODE}/matches?${buildQueryString({ status: "FINISHED", limit: RECENT_FIXTURE_LIMIT, ...seasonParams })}`,
-      SUMMARY_REVALIDATE_SECONDS
-    ),
-    fetchFootballDataJson<FootballDataMatchesResponse>(
-      `/competitions/${LA_LIGA_CODE}/matches?${buildQueryString({ status: "SCHEDULED", limit: UPCOMING_FIXTURE_LIMIT, ...seasonParams })}`,
-      SUMMARY_REVALIDATE_SECONDS
-    ),
-    fetchFootballDataJson<FootballDataCompetitionTeamsResponse>(
-      `/competitions/${LA_LIGA_CODE}/teams${seasonQuery}`,
-      SUMMARY_REVALIDATE_SECONDS
-    ),
-    fetchFootballDataJson<FootballDataScorersResponse>(
-      `/competitions/${LA_LIGA_CODE}/scorers${seasonQuery}`,
-      SUMMARY_REVALIDATE_SECONDS
-    ),
-    // Season-long fixture log for the goals-per-matchday pulse — every
-    // FINISHED match, no `limit`, distinct from the 8-most-recent `recentRes`.
-    fetchFootballDataJson<FootballDataMatchesResponse>(
-      `/competitions/${LA_LIGA_CODE}/matches?${buildQueryString({ status: "FINISHED", ...seasonParams })}`,
-      SEASON_FIXTURES_REVALIDATE_SECONDS
-    ),
-  ]);
+  // One request at a time, so the rate headers on each response can hold
+  // the next request back.
+  const standingsResponse = await fetchFootballDataJson<FootballDataCompetitionStandingsResponse>(
+    `/competitions/${LA_LIGA_CODE}/standings${seasonQuery}`,
+    SUMMARY_REVALIDATE_SECONDS
+  );
 
   const standingsGroup =
     standingsResponse.standings?.find((g) => g?.type === "TOTAL") ??
@@ -396,13 +323,31 @@ export async function getLaLigaSummary(options?: { season?: number }): Promise<{
   // Off-season rollover guard: if the current season hasn't started, re-fetch
   // pinned to the completed prior season so the page shows a real final table
   // with a correct label and populated scorers instead of an empty/stale one.
-  // Re-pins at most once (the recursive call passes a season).
+  // Re-pins at most once (the recursive call passes a season). This runs
+  // before the other requests so the re-pin does not repeat them.
   if (options?.season === undefined && seasonNotStarted(standingsResponse.season, clubs)) {
     const currentSeasonStart = seasonStartYear(standingsResponse.season?.startDate);
     if (currentSeasonStart !== null) {
       return getLaLigaSummary({ season: currentSeasonStart - 1 });
     }
   }
+
+  const finishedRes = await fetchFootballDataJson<FootballDataMatchesResponse>(
+    `/competitions/${LA_LIGA_CODE}/matches?${buildQueryString({ status: "FINISHED", ...seasonParams })}`,
+    SEASON_FIXTURES_REVALIDATE_SECONDS
+  );
+  const upcomingRes = await fetchFootballDataJson<FootballDataMatchesResponse>(
+    `/competitions/${LA_LIGA_CODE}/matches?${buildQueryString({ status: "SCHEDULED", limit: UPCOMING_FIXTURE_LIMIT, ...seasonParams })}`,
+    SUMMARY_REVALIDATE_SECONDS
+  );
+  const teamsRes = await fetchFootballDataJson<FootballDataCompetitionTeamsResponse>(
+    `/competitions/${LA_LIGA_CODE}/teams${seasonQuery}`,
+    SUMMARY_REVALIDATE_SECONDS
+  );
+  const scorersRes = await fetchFootballDataJson<FootballDataScorersResponse>(
+    `/competitions/${LA_LIGA_CODE}/scorers${seasonQuery}`,
+    SUMMARY_REVALIDATE_SECONDS
+  );
 
   const scorers = (scorersRes.scorers ?? [])
     .map((entry, i) => normalizeScorer(entry, i + 1))
@@ -420,9 +365,9 @@ export async function getLaLigaSummary(options?: { season?: number }): Promise<{
     .map((entry, i) => normalizeAssister(entry, i + 1))
     .filter((a): a is LaLigaLeader => a !== null);
 
-  const goalsPerMatchday = buildGoalsPerMatchday(seasonFixturesRes.matches ?? []);
+  const goalsPerMatchday = buildGoalsPerMatchday(finishedRes.matches ?? []);
 
-  const recentFixtures = (recentRes.matches ?? [])
+  const recentFixtures = (finishedRes.matches ?? [])
     .map((m) => normalizeFixture(m))
     .filter((f): f is LaLigaFixture => f !== null)
     .sort((a, b) => new Date(b.utcDate).getTime() - new Date(a.utcDate).getTime())
@@ -552,17 +497,15 @@ export async function getLaLigaTeamSnapshot(teamId: string): Promise<LaLigaTeamS
     throw createLaLigaDataError("Invalid La Liga team id.", 400);
   }
 
-  const [teamResponse, recentRes, upcomingRes] = await Promise.all([
-    fetchFootballDataJson<FootballDataTeam>(`/teams/${teamId}`, TEAM_REVALIDATE_SECONDS),
-    fetchFootballDataJson<FootballDataMatchesResponse>(
-      `/teams/${teamId}/matches?${buildQueryString({ competitions: LA_LIGA_CODE, status: "FINISHED", limit: TEAM_FIXTURE_LIMIT })}`,
-      TEAM_REVALIDATE_SECONDS
-    ),
-    fetchFootballDataJson<FootballDataMatchesResponse>(
-      `/teams/${teamId}/matches?${buildQueryString({ competitions: LA_LIGA_CODE, status: "SCHEDULED", limit: TEAM_FIXTURE_LIMIT })}`,
-      TEAM_REVALIDATE_SECONDS
-    ),
-  ]);
+  const teamResponse = await fetchFootballDataJson<FootballDataTeam>(`/teams/${teamId}`, TEAM_REVALIDATE_SECONDS);
+  const recentRes = await fetchFootballDataJson<FootballDataMatchesResponse>(
+    `/teams/${teamId}/matches?${buildQueryString({ competitions: LA_LIGA_CODE, status: "FINISHED", limit: TEAM_FIXTURE_LIMIT })}`,
+    TEAM_REVALIDATE_SECONDS
+  );
+  const upcomingRes = await fetchFootballDataJson<FootballDataMatchesResponse>(
+    `/teams/${teamId}/matches?${buildQueryString({ competitions: LA_LIGA_CODE, status: "SCHEDULED", limit: TEAM_FIXTURE_LIMIT })}`,
+    TEAM_REVALIDATE_SECONDS
+  );
 
   const team = normalizeTeamProfile(teamResponse);
   const recentFixtures = (recentRes.matches ?? [])
@@ -585,14 +528,7 @@ export async function getLaLigaTeamSnapshot(teamId: string): Promise<LaLigaTeamS
   };
 }
 
-// football-data.org free tier: 10 req/min. Each team snapshot = 3 requests,
-// so wait ~20 s between teams to stay safely under the limit.
-const TEAM_FETCH_DELAY_MS = 20_000;
 const LA_LIGA_SNAPSHOT_PATH = "src/data/laLigaSnapshot.ts";
-
-function delay(ms: number) {
-  return new Promise<void>((resolve) => setTimeout(resolve, ms));
-}
 
 function readExistingTeamSnapshots(filePath: string): Record<string, LaLigaTeamSnapshot> {
   try {
@@ -622,16 +558,28 @@ export async function buildLaLigaSnapshot(options?: { skipTeamSnapshots?: boolea
     // team's previous data instead of dropping it from the snapshot.
     teamSnapshots = { ...readExistingTeamSnapshots(LA_LIGA_SNAPSHOT_PATH) };
     for (const team of summary.teams) {
-      await delay(TEAM_FETCH_DELAY_MS);
       const snapKey = team.tla?.toLowerCase() || team.id;
       try {
         const snap = await getLaLigaTeamSnapshot(team.id);
-        teamSnapshots[snapKey] = { ...snap, generatedAt };
+        const stored = teamSnapshots[snapKey];
+        // The club fetch has no season pin, so it returns no results between
+        // the season rollover and the first match. The stored ones stay.
+        const keepStored = stored && snap.recentFixtures.length === 0;
+        teamSnapshots[snapKey] = {
+          ...snap,
+          ...(keepStored ? { recentFixtures: stored.recentFixtures, form: stored.form } : {}),
+          generatedAt,
+        };
       } catch (err) {
         console.warn(`  Skipping team ${snapKey} (${team.shortName}): ${(err as Error).message} — keeping previous snapshot if any.`);
       }
     }
   }
+
+  teamSnapshots = pruneToTable(
+    teamSnapshots,
+    summary.clubs.map((club) => club.id)
+  );
 
   return {
     season: summary.season,
@@ -640,9 +588,9 @@ export async function buildLaLigaSnapshot(options?: { skipTeamSnapshots?: boolea
     updatedAt: generatedAt.slice(0, 10),
     sourceLabel: "football-data.org",
     sourceUrls: {
-      standings: `https://www.football-data.org/v4/competitions/${LA_LIGA_CODE}/standings`,
-      scorers: `https://www.football-data.org/v4/competitions/${LA_LIGA_CODE}/scorers`,
-      assists: `https://www.football-data.org/v4/competitions/${LA_LIGA_CODE}/scorers`,
+      standings: "https://www.football-data.org/documentation/api",
+      scorers: "https://www.football-data.org/documentation/api",
+      assists: "https://www.football-data.org/documentation/api",
     },
     clubs: summary.clubs,
     scorers: summary.scorers,

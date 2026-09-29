@@ -34,6 +34,9 @@ export interface MlbGame {
   status: string;
   matchday: number | null;
   stage: string | null;
+  /** The clock time in `utcDate` is a placeholder. Absent on snapshots built before 2026-09-27. */
+  startTimeTbd?: boolean;
+  ifNecessary?: boolean;
   homeTeam: MlbGameTeam;
   awayTeam: MlbGameTeam;
   score: {

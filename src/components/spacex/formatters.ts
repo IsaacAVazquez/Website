@@ -1,18 +1,32 @@
 import type { MissionLaunchCard } from "@/types/spacex";
+import { DISPLAY_TIME_ZONE } from "@/lib/date-formatters";
 
+// Every launch moment (dateUtc) is a real instant, so each formatter below
+// pins the display zone. The hour-precision one also names the zone since
+// nothing else in a mission timing line states it.
+// dateStyle/timeStyle can't combine with timeZoneName (Intl throws), so this
+// spells out the "medium date, short time" shape as explicit fields instead.
 const DATE_TIME_FORMATTER = new Intl.DateTimeFormat("en-US", {
-  dateStyle: "medium",
-  timeStyle: "short",
+  month: "short",
+  day: "numeric",
+  year: "numeric",
+  hour: "numeric",
+  minute: "2-digit",
+  timeZone: DISPLAY_TIME_ZONE,
+  timeZoneName: "short",
 });
 const DATE_FORMATTER = new Intl.DateTimeFormat("en-US", {
   dateStyle: "medium",
+  timeZone: DISPLAY_TIME_ZONE,
 });
 const MONTH_FORMATTER = new Intl.DateTimeFormat("en-US", {
   month: "long",
   year: "numeric",
+  timeZone: DISPLAY_TIME_ZONE,
 });
 const YEAR_FORMATTER = new Intl.DateTimeFormat("en-US", {
   year: "numeric",
+  timeZone: DISPLAY_TIME_ZONE,
 });
 
 export function humanizeMissionPrecision(precision: string): string {

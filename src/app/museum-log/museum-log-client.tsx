@@ -161,10 +161,23 @@ function AdmissionStub({ museum, today }: { museum: Museum; today: string | null
 }
 
 /** The hero's small run of stubs: the most recently visited museums, or a blank stub on a first visit. */
-function HeroStubRun({ museums, today }: { museums: Museum[]; today: string | null }) {
+function HeroStubRun({
+  museums,
+  today,
+  hydrated,
+}: {
+  museums: Museum[];
+  today: string | null;
+  hydrated: boolean;
+}) {
   return (
     <div data-c97-surface="paper" style={{ padding: "var(--c97-sp-3)" }}>
-      {museums.length === 0 ? (
+      {!hydrated ? (
+        // Neither the first-visit stub nor a returning visitor's admission
+        // stubs are known yet, so show a neutral placeholder the same size as
+        // the empty stub rather than guessing and flashing to the real state.
+        <span className="c97-skeleton" style={{ minHeight: "8rem", width: "100%" }} />
+      ) : museums.length === 0 ? (
         <div className="c97-stub c97-stub-empty">
           <span className="c97-stub-admit" aria-hidden="true">
             Admit one
@@ -407,7 +420,7 @@ function DiscoverView({
         </div>
       </div>
 
-      <p className="c97-prose" style={{ fontSize: "var(--c97-fs-small)" }}>
+      <p className="c97-prose" style={{ marginBottom: "var(--c97-sp-3)", fontSize: "var(--c97-fs-small)" }}>
         {sorted.length} {sorted.length === 1 ? "museum" : "museums"} in the catalog
         {state.type !== "all" && ` · ${TYPE_LABEL[state.type]}`}
         {state.region !== "all" && ` · ${REGION_LABEL[state.region]}`}
@@ -706,7 +719,7 @@ function ListsView({
       .filter((m): m is Museum => Boolean(m));
     return (
       <div className="space-y-6">
-        <button type="button" onClick={() => onSelectList(null)} className="c97-btn-ghost" style={{ padding: 0 }}>
+        <button type="button" onClick={() => onSelectList(null)} className="c97-btn-ghost">
           ← All catalogues
         </button>
         <header>
@@ -898,7 +911,7 @@ function MuseumDetailView({
 
   return (
     <div className="space-y-6">
-      <button type="button" onClick={onBack} className="c97-btn-ghost" style={{ padding: 0 }}>
+      <button type="button" onClick={onBack} className="c97-btn-ghost">
         ← Back to catalog
       </button>
 
@@ -906,10 +919,10 @@ function MuseumDetailView({
         <div className="grid gap-6 lg:grid-cols-[minmax(0,220px)_minmax(0,1fr)]">
           <AdmissionStub museum={museum} today={today} />
           <div className="space-y-3">
-            <p className="c97-kicker">
+            <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-2)" }}>
               {TYPE_LABEL[museum.type]} · {REGION_LABEL[museum.region]}
             </p>
-            <h2 className="c97-display">{museum.name}</h2>
+            <h2 className="c97-display" style={{ marginBottom: "var(--c97-sp-2)" }}>{museum.name}</h2>
             <p className="c97-stub-meta">
               {museum.country} · {formatRuntime(museum.visitMinutesAvg)} average visit
             </p>
@@ -917,7 +930,7 @@ function MuseumDetailView({
               <RatingPill rating={museum.curatorRating} label="curator" />
               {visit && <RatingPill rating={visit.rating} label="you" />}
             </div>
-            <p className="c97-prose">{museum.blurb}</p>
+            <p className="c97-prose" style={{ marginBottom: "var(--c97-sp-2)" }}>{museum.blurb}</p>
             <QuickActions
               museum={museum}
               visit={visit}
@@ -936,7 +949,7 @@ function MuseumDetailView({
             />
             {museum.websiteUrl && (
               <p className="c97-stub-meta">
-                <a className="c97-btn-ghost" style={{ padding: 0 }} href={museum.websiteUrl} target="_blank" rel="noopener noreferrer">
+                <a className="c97-btn-ghost" href={museum.websiteUrl} target="_blank" rel="noopener noreferrer">
                   Visit official site
                 </a>
               </p>
@@ -1035,12 +1048,12 @@ function MuseumDetailView({
             <div className="space-y-3" style={{ marginTop: "var(--c97-sp-3)" }}>
               {visit ? (
                 <>
-                  <p className="c97-prose">
+                  <p className="c97-prose" style={{ marginBottom: "var(--c97-sp-2)" }}>
                     Visited on {formatDate(visit.date)}
                   </p>
                   <RatingPill rating={visit.rating} />
                   {visit.note && (
-                    <p className="c97-prose" style={{ fontSize: "var(--c97-fs-small)", fontStyle: "italic" }}>
+                    <p className="c97-prose" style={{ marginBottom: "var(--c97-sp-2)", fontSize: "var(--c97-fs-small)", fontStyle: "italic" }}>
                       &ldquo;{visit.note}&rdquo;
                     </p>
                   )}
@@ -1050,7 +1063,7 @@ function MuseumDetailView({
                 </>
               ) : (
                 <>
-                  <p className="c97-prose" style={{ fontSize: "var(--c97-fs-small)" }}>
+                  <p className="c97-prose" style={{ marginBottom: "var(--c97-sp-2)", fontSize: "var(--c97-fs-small)" }}>
                     No visit logged yet. Use the buttons above to mark this one done, save it for later, or like it.
                   </p>
                   <RateAndLogForm
@@ -1098,7 +1111,7 @@ function MuseumDetailView({
               <ul style={{ listStyle: "none", margin: 0, padding: 0, marginTop: "var(--c97-sp-2)", display: "flex", flexDirection: "column", gap: "var(--c97-sp-1)" }}>
                 {inLists.map((list) => (
                   <li key={list.id}>
-                    <button type="button" onClick={() => onOpenList(list.slug)} className="c97-btn-ghost" style={{ padding: 0 }}>
+                    <button type="button" onClick={() => onOpenList(list.slug)} className="c97-btn-ghost">
                       {list.title} · {list.museumIds.length} museums
                     </button>
                   </li>
@@ -1382,7 +1395,7 @@ export function MuseumLogClient({ initialState, snapshot }: Props) {
           },
         ]}
       >
-        <HeroStubRun museums={heroVisits} today={today} />
+        <HeroStubRun museums={heroVisits} today={today} hydrated={hydrated} />
       </Catalog97ProjectHero>
 
       <section className="c97-band c97-sheet" data-c97-surface="paper" data-seam="torn">

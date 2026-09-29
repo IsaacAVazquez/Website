@@ -5,9 +5,11 @@ primary_target: "route:/fantasy-football"
 related_targets: ["src/app/fantasy-football/fantasy-football-client.tsx","src/app/fantasy-football/draft-tracker/draft-tracker-client.tsx","src/app/fantasy-football/best-ball/draft-tracker/draft-tracker-client.tsx","src/app/fantasy-football/best-ball/best-ball-client.tsx"]
 ---
 
+Updated on 2026-09-28 by the responsive pass. `SHELL_CLASS` is `c97-shell c97-frame` now, so every fantasy route uses the site gutter and its h1 lines up with the wordmark (it started at 16 against 28 on a phone), and `WIDE_SHELL_CLASS` is gone. The trade calculator and the best ball draft room are wide tool routes, so the header and footer widen with the 1376px tool instead of the tool running past a 1080px header. Every auto-fit floor in the fantasy grids carries `min(100%, N)`, which stopped the best ball page clipping its content at 320.
+
 # Fantasy Football
 
-**Status note, 2026-09-21.** This route has rendered inside `Catalog97ToolShell` since the bridge on 2026-09-16. Its components still read `--home-*` names, and the bridge block in `src/app/catalog97.css` aliases those onto Catalog 97 values, sets every `--radius-*` token to 0, and sets every `--shadow-*` token to `none`. `DESIGN.md` still describes the Working Instrument and does not govern this route. The old site header was sticky at 73px and was deleted in that change, and `Catalog97Header` is `position: relative`, so every measurement below that assumes a 73px sticky header predates the bridge. Contrast figures below were measured against Working Instrument values and need re-measuring.
+**Status note, 2026-09-27.** This route renders inside `Catalog97ToolShell` and reads `--c97-*` tokens directly under `data-c97-surface`. `DESIGN.md` now describes Catalog 97 and governs this route. The old site header was sticky at 73px and was deleted on 2026-09-16, and `Catalog97Header` is `position: relative`, so every measurement below that assumes a 73px sticky header predates that change. Contrast figures below were measured against Working Instrument values carried through the since-removed bridge and may need re-measuring against the shipped `--c97-*` colors.
 
 ## Mode
 
@@ -125,7 +127,7 @@ The two branches still need merging. `fix/skip-link-and-status-contrast` and `re
 
 The heading inversion on the running tracker header is still there, at 20.5px for the `h1` against 30.4px for the board `h2`. It was deliberate and the document outline is correct, but it is a visual inversion someone should decide about rather than inherit.
 
-The shared `getPositionTone` in `src/lib/fantasyUtils.ts` still spends `--home-signal` on QB, `--home-positive` on RB, and `--home-warning` on TE for position identity, which is the same category-versus-status confusion `polish` fixed on the best ball room board. It was left alone on purpose, because it backs the row chips, filter pills, drawer, and compare tray across every fantasy route and the critique did not name it. Changing it is a system-wide visual decision, not a cleanup.
+The shared `getPositionTone` in `src/lib/fantasyUtils.ts` still spends `--c97-accent` on QB, `--c97-positive` on RB, and `--c97-warning` on TE for position identity (renamed from `--home-signal`/`--home-positive`/`--home-warning` in the 2026-09-27 close-out, same tokens otherwise), which is the same category-versus-status confusion `polish` fixed on the best ball room board. It was left alone on purpose, because it backs the row chips, filter pills, drawer, and compare tray across every fantasy route and the critique did not name it. Changing it is a system-wide visual decision, not a cleanup.
 
 The composition finding from the Design Specificity Verdict is answered as far as it is going to be, and this is a decision rather than an open item. Asked directly on 2026-08-07 whether the landing-page hero ahead of every control was deliberate, Isaac chose to cut it on the trackers only and keep it on the two boards. So the boards opening with a display headline and a pitch paragraph is intended, not a leftover. A search arrival on a board needs the orientation; someone mid-draft does not. Do not re-raise it, and do not remove those heroes.
 

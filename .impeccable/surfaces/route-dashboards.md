@@ -5,6 +5,8 @@ primary_target: "route:/dashboards"
 related_targets: ["src/components/catalog97/Catalog97Dashboards.tsx"]
 ---
 
+Updated on 2026-09-28 by the responsive pass. A `.c97-mosaic` of four tiles prints two by two from 700px, which ended the fintech group's 3+1 and its two-tile hole from 1045px up, and a mosaic of three stacks below 881px and sets three across from there.
+
 **Superseded in part on 2026-09-23.** The seven designed routes now use the print shop layout in `STYLING.md`, and it overrides anything below that disagrees. The pine, camel, and tobacco surfaces were renamed and repainted as `ink-blue`, `ink-saffron`, and `ink-vermilion`, and `ink-peach` was added, so read any mention of pine, camel, or tobacco below as the ink that replaced it. Anton now also sets the h1 and section h2s through `.c97-poster`, so the numerals-only Anton rule is retired. Vermilion carries body text with the darkest ink (4.62:1), so the tobacco large-text-only rule is retired too. Bands that change surface tear over each other, and the one allowed shadow is the hard `.c97-offset` in the second ink.
 
 # Dashboard index surface brief
@@ -17,7 +19,7 @@ related_targets: ["src/components/catalog97/Catalog97Dashboards.tsx"]
 
 **Route constraints.** The mosaic cycle is four wide with one Pine (`pine, camel, bone, camel`) so Pine does not take half of 33 tiles and the Pine tile walks diagonally across a three-column grid rather than stacking into a stripe. The status tile states the fail-soft convention rather than printing a snapshot timestamp, because no per-tool timestamp is readable at render time and inventing one is barred.
 
-**Visual world: Catalog 97, not Working Instrument.** `DESIGN.md` describes The Working Instrument, and until the bridge on 2026-09-16 it governed every other route. Those routes now render inside `Catalog97ToolShell` and are Catalog 97 too, so `DESIGN.md` is stale everywhere until the close-out PR rewrites it. It does NOT govern this surface. `context.mjs` auto-loads it anyway, so a pass that treats it as the spec here will read every deliberate Catalog 97 decision as a violation and manufacture a page of false findings. Tokens live in `src/app/catalog97.css`.
+**Visual world: Catalog 97.** `DESIGN.md` describes Catalog 97 as shipped, and `context.mjs` auto-loading it now points a pass at the right spec for this surface. Tokens live in `src/app/catalog97.css`.
 
 **Do not re-litigate (settled 2026-08-02).**
 - Tobacco is a large-text-only field. Paper ink on it is 4.36:1, which clears 3:1 for large text and never clears 4.5:1 for body. A tobacco band carries `--c97-fs-h2` (24px floor) and up, or no text at all. Not a defect; solved by size rather than by darkening the colour.

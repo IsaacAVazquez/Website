@@ -92,6 +92,13 @@
 
   --c97-container: 1080px;
   /*
+   * The dense tools' column (the trade calculator, the best ball draft room,
+   * Investments, and score pools). `WIDE_TOOL_ROUTES` in catalog97Nav.ts marks
+   * those pages with data-c97-wide, and every shell on them takes this width,
+   * header and footer included, so the page keeps one edge.
+   */
+  --c97-container-wide: 1376px;
+  /*
    * The running-prose column. The three measures below are for single
    * paragraphs and stay frozen; a whole article also carries tables and code
    * blocks beside its prose, and at the 54ch wide measure both were cramped.
@@ -814,6 +821,26 @@ body {
 }
 
 /*
+ * On a wide tool route every shell widens together, the header's and the
+ * footer's included, so the page title, the tool, and the wordmark share one
+ * edge at every width.
+ */
+.c97-page[data-c97-wide] .c97-shell {
+  max-width: var(--c97-container-wide);
+}
+
+/*
+ * A shell that carries its own gutter, for content that sits outside a
+ * `.c97-band`. Content-box sizing keeps max-width on the content, so the edges
+ * land where a band's shell would. Pair it with `.c97-shell` and never with a
+ * 100% width, which would add the gutter on top and overflow.
+ */
+.c97-frame {
+  box-sizing: content-box;
+  padding-inline: var(--c97-gutter);
+}
+
+/*
  * A full-bleed horizontal band. Vertical rhythm comes off the spacing ladder
  * via --c97-band-y, which defaults to step 5.
  */
@@ -1165,12 +1192,21 @@ body {
   background: var(--c97-ink-2);
 }
 
-/* Text-only action, underlined rather than boxed. */
+/*
+ * Text-only action, underlined rather than boxed. The side padding widens the
+ * hit area, and the start margin takes it back so a ghost that begins a line
+ * sets its label on the column edge. Whatever sits right before a ghost, a
+ * boxed button or another ghost, gives the step back on its end side, so on a
+ * shared line the label keeps its old distance and the hit boxes never
+ * overlap, and when the ghost wraps to a new line its label still starts on
+ * the edge.
+ */
 .c97-btn-ghost {
   min-height: 48px;
   display: inline-flex;
   align-items: center;
   padding: 0 var(--c97-sp-1);
+  margin-inline-start: calc(-1 * var(--c97-sp-1));
   background: none;
   border: 0;
   color: var(--c97-label);
@@ -1188,6 +1224,11 @@ body {
 
 .c97-btn-ghost:hover {
   color: var(--c97-ink);
+}
+
+.c97-btn:has(+ .c97-btn-ghost),
+.c97-btn-ghost:has(+ .c97-btn-ghost) {
+  margin-inline-end: var(--c97-sp-1);
 }
 
 /*
@@ -1652,6 +1693,8 @@ select.c97-field {
   background: var(--c97-field);
   color: var(--c97-ink);
   padding: 0 0.35em;
+  /* A long path or command has no spaces to break at, and would push a phone sideways. */
+  overflow-wrap: anywhere;
 }
 
 /*
@@ -1920,6 +1963,28 @@ select.c97-field {
   gap: var(--c97-sp-1);
 }
 
+/*
+ * Like `.c97-columns`, a mosaic of three or four tiles never strands one on
+ * the last row. /dashboards printed its four fintech tiles 3+1 from 1045px up.
+ * Three go from one column to three at 881px, and four print two by two from
+ * 700px, since four across would squeeze each tile's paragraph.
+ */
+.c97-mosaic:has(> :nth-child(3):last-child) {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+@media (min-width: 700px) {
+  .c97-mosaic:has(> :nth-child(4):last-child) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 881px) {
+  .c97-mosaic:has(> :nth-child(3):last-child) {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
 .c97-tile {
   padding: var(--c97-sp-4);
   min-height: clamp(200px, 22vw, 260px);
@@ -1976,6 +2041,35 @@ select.c97-field {
    */
   grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr));
   gap: var(--c97-sp-5);
+}
+
+/*
+ * Three or four children never leave one alone on the last row, which auto-fit
+ * did at tablet widths (2+1 on /about at 768, 3+1 at 1024). Three go from one
+ * column to three at 881px, where the Home collage switches, and four go to
+ * two at 560px and to four at 1200px. Other counts keep the auto-fit above.
+ */
+.c97-columns:has(> :nth-child(3):last-child),
+.c97-columns:has(> :nth-child(4):last-child) {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+@media (min-width: 560px) {
+  .c97-columns:has(> :nth-child(4):last-child) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 881px) {
+  .c97-columns:has(> :nth-child(3):last-child) {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1200px) {
+  .c97-columns:has(> :nth-child(4):last-child) {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
 }
 
 /* Keep the navigation and signature together, with a fixed signature size. */
@@ -2382,6 +2476,10 @@ select.c97-field {
   --c97-paint: url("/images/home/headshot-hopper.webp");
 }
 
+[data-c97-paint="portrait"][data-c97-painter="lichtenstein"] {
+  --c97-paint: url("/images/home/headshot-lichtenstein.webp");
+}
+
 [data-c97-paint]::before {
   content: "";
   position: absolute;
@@ -2451,6 +2549,15 @@ select.c97-field {
   color: var(--c97-surface);
 }
 
+/*
+ * The theme toggle ends the nav and is a 44px hit box around a 20px glyph, so
+ * it gives back the glyph's side inset and the icon lands on the column's
+ * right edge, the way `.c97-microlink` sets text on it.
+ */
+.c97-header-nav > :last-child {
+  margin-inline-end: calc((20px - 44px) / 2);
+}
+
 .c97-header-util {
   border: 0;
   background: none;
@@ -2500,6 +2607,22 @@ select.c97-field {
   margin: 0;
 }
 
+/*
+ * Three readouts on a phone printed two across with the third alone under
+ * them on every project route. Below 560px the first now runs across the
+ * column as the lead figure and the other two sit side by side under it.
+ * From 560px the auto-fit above puts all three on one line.
+ */
+@media (max-width: 559px) {
+  .c97-project-hero-readouts:has(> :nth-child(3):last-child) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .c97-project-hero-readouts > :first-child:nth-last-child(3) {
+    grid-column: 1 / -1;
+  }
+}
+
 .c97-project-hero-signature {
   margin-top: var(--c97-sp-5);
 }
@@ -2515,6 +2638,11 @@ select.c97-field {
 .c97-project-hero .c97-meta {
   display: block;
   max-width: 60rem;
+}
+
+/* On a wide tool route the standfirst keeps the standard column's measure. */
+.c97-page[data-c97-wide] .c97-project-hero .c97-lead {
+  max-inline-size: var(--c97-container);
 }
 
 /*

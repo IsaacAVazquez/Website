@@ -1,7 +1,6 @@
 "use client";
 
 import { useCallback, useEffect, useState } from "react";
-import { fantasySnapshotRevision } from "@/data/fantasySnapshotRevision.generated";
 import {
   normalizeBestBallSnapshot,
   type BestBallSnapshot,
@@ -18,10 +17,12 @@ async function loadBestBallSnapshot(): Promise<BestBallSnapshot> {
     const controller = new AbortController();
     const timer = window.setTimeout(() => controller.abort(), 10_000);
     try {
-      const response = await fetch(
-        `/data/fantasy/best-ball.json?v=${fantasySnapshotRevision}`,
-        { cache: "force-cache", signal: controller.signal }
-      );
+      // No version parameter and no cache mode. The only revision the site
+      // generates belongs to the redraft boards, and force-cache never asks
+      // how old a stored copy is, so the response's cache headers decide.
+      const response = await fetch("/data/fantasy/best-ball.json", {
+        signal: controller.signal,
+      });
       if (!response.ok) {
         throw new Error(`Best ball snapshot fetch failed (${response.status}).`);
       }

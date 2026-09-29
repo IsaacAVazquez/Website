@@ -86,7 +86,7 @@ Core production variables:
 
 Operational variables:
 
-- `CRON_SECRET`
+- `MBA_DIGEST_SECRET`
 - `FOOTBALL_DATA_API_TOKEN`
 
 The fantasy snapshot builder can use `FANTASYPROS_API_KEY` as an optional build-only credential for local authenticated refreshes. The scheduled GitHub workflow uses the public rankings pages and does not receive this secret. The deployed runtime does not need it.

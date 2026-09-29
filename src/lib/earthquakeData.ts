@@ -31,6 +31,7 @@ const WEEK_URL = `${FEED_BASE}/2.5_week.geojson`;
 const SIGNIFICANT_MONTH_URL = `${FEED_BASE}/significant_month.geojson`;
 
 const REQUEST_TIMEOUT_MS = 15_000;
+const REQUEST_ATTEMPTS = 3;
 const RECENT_LIMIT = EARTHQUAKE_RECENT_LIMIT;
 const SIGNIFICANT_LIMIT = 24;
 const REGION_LIMIT = 12;
@@ -188,12 +189,20 @@ function parseFeed(response: UsgsFeedResponse): {
   return { events, feedUpdated };
 }
 
-async function fetchFeed(url: string): Promise<UsgsFeedResponse> {
+interface FetchBudget {
+  timeoutMs?: number;
+  attempts?: number;
+}
+
+async function fetchFeed(
+  url: string,
+  { timeoutMs = REQUEST_TIMEOUT_MS, attempts = REQUEST_ATTEMPTS }: FetchBudget
+): Promise<UsgsFeedResponse> {
   let lastError: unknown;
-  for (let attempt = 0; attempt < 3; attempt += 1) {
+  for (let attempt = 0; attempt < attempts; attempt += 1) {
     try {
       const response = await fetch(url, {
-        signal: AbortSignal.timeout(REQUEST_TIMEOUT_MS),
+        signal: AbortSignal.timeout(timeoutMs),
         headers: { Accept: "application/json" },
       });
       if (!response.ok) {
@@ -212,7 +221,7 @@ async function fetchFeed(url: string): Promise<UsgsFeedResponse> {
         (error.name === "AbortError" || error.name === "TimeoutError");
       const isNetwork = error instanceof TypeError;
       const isRetryable = Boolean((error as { retryable?: boolean })?.retryable);
-      if (attempt < 2 && (isTimeout || isNetwork || isRetryable)) {
+      if (attempt < attempts - 1 && (isTimeout || isNetwork || isRetryable)) {
         await new Promise((resolve) => setTimeout(resolve, 1000 * (attempt + 1)));
         continue;
       }
@@ -261,11 +270,18 @@ function buildRegionCounts(events: QuakeEvent[]): RegionCount[] {
     .slice(0, REGION_LIMIT);
 }
 
-export async function buildEarthquakeSnapshotData(): Promise<EarthquakeSnapshot> {
+/**
+ * The budget defaults to the snapshot builder's three 15 second attempts. A
+ * caller answering a visitor passes a tighter one so a stalled USGS cannot
+ * hold the request open.
+ */
+export async function buildEarthquakeSnapshotData(
+  budget: FetchBudget = {}
+): Promise<EarthquakeSnapshot> {
   const [dayFeed, weekFeed, significantFeed] = await Promise.all([
-    fetchFeed(ALL_DAY_URL),
-    fetchFeed(WEEK_URL),
-    fetchFeed(SIGNIFICANT_MONTH_URL),
+    fetchFeed(ALL_DAY_URL, budget),
+    fetchFeed(WEEK_URL, budget),
+    fetchFeed(SIGNIFICANT_MONTH_URL, budget),
   ]);
 
   const day = parseFeed(dayFeed);
@@ -318,11 +334,16 @@ export async function buildEarthquakeSnapshotData(): Promise<EarthquakeSnapshot>
     null
   );
 
+  const regions = buildRegionCounts(weekEvents);
+
   const summary: EarthquakeSummary = {
     generatedAt,
     feedUpdated: day.feedUpdated ?? week.feedUpdated ?? significantParsed.feedUpdated,
     heroStats: {
-      total24h: last24h.length,
+      // The week feed is M2.5+ only, so the day count uses the same floor.
+      total24h: last24h.filter(
+        (event) => event.magnitude >= RECENT_MIN_MAGNITUDE
+      ).length,
       total7d: weekEvents.length,
       felt24h: last24h.filter((event) => event.felt !== null).length,
       strongest24hMag: strongest24h?.magnitude ?? null,
@@ -335,14 +356,21 @@ export async function buildEarthquakeSnapshotData(): Promise<EarthquakeSnapshot>
     recent,
     significant,
     magnitudeBuckets: buildMagnitudeBuckets(weekEvents),
-    regions: buildRegionCounts(weekEvents),
+    regions,
     quakeDetails: {},
   };
 
   // The detail panel reads from a flat id→event map. Significant events take
   // precedence over the (lighter) recent copy when the same quake appears in both.
+  // A region's strongest quake is often days old and in neither list, and the
+  // region row has nothing to open without it.
+  const strongestIds = new Set(regions.map((region) => region.strongestId));
   const details: Record<string, QuakeEvent> = {};
-  for (const event of [...recent, ...significant]) {
+  for (const event of [
+    ...weekEvents.filter((event) => strongestIds.has(event.id)),
+    ...recent,
+    ...significant,
+  ]) {
     details[event.id] = event;
   }
   summary.quakeDetails = details;

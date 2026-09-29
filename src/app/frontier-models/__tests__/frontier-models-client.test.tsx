@@ -79,6 +79,28 @@ describe("FrontierModelsClient", () => {
     });
   });
 
+  it("states how many models the fact check changed, matched, and could not find", () => {
+    render(
+      <FrontierModelsClient
+        initialState={DEFAULT_FRONTIER_MODELS_STATE}
+        snapshot={{
+          ...frontierModelsSnapshot,
+          liveFacts: {
+            checkedAt: "2026-09-27T07:30:00.000Z",
+            sources: ["models.dev", "openrouter"],
+            updated: 6,
+            confirmed: 1,
+            curatedOnly: 2,
+          },
+        }}
+      />
+    );
+
+    expect(screen.getByText(/facts auto-checked 2026-09-27/)).toHaveTextContent(
+      "facts auto-checked 2026-09-27 against models.dev + openrouter · 6 changed by the check, 1 matched, 2 not found in either catalog"
+    );
+  });
+
   it("selects a model through the rendered table", () => {
     render(
       <FrontierModelsClient
@@ -87,10 +109,12 @@ describe("FrontierModelsClient", () => {
       />
     );
 
-    fireEvent.click(screen.getByRole("button", { name: "GPT-5.6" }));
+    // Read from the snapshot, so refreshing the curated list cannot break this.
+    const [model] = frontierModelsSnapshot.models;
+    fireEvent.click(screen.getByRole("button", { name: model.name }));
 
     expect(mockPush).toHaveBeenLastCalledWith(
-      "/frontier-models?model=openai-gpt-5-6",
+      `/frontier-models?model=${model.id}`,
       { scroll: false }
     );
   });

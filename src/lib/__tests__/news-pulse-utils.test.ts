@@ -1,6 +1,6 @@
 import { SOURCE_META } from "@/lib/news-pulse-sources";
 import type { NewsArticle } from "@/lib/news-pulse-utils";
-import { clusterArticlesByStory } from "@/lib/news-pulse-utils";
+import { clusterArticlesByStory, extractTopics } from "@/lib/news-pulse-utils";
 
 const clusteredArticles: NewsArticle[] = [
   {
@@ -44,6 +44,80 @@ const clusteredArticles: NewsArticle[] = [
     sourceColor: SOURCE_META.npr.color,
   },
 ];
+
+function makeTopicArticle(
+  index: number,
+  title: string,
+  source: NewsArticle["source"],
+): NewsArticle {
+  return {
+    title,
+    link: `https://example.com/topic-${index}`,
+    description: "",
+    pubDate: "2026-09-27T16:20:00.000Z",
+    category: "General",
+    source,
+    sourceName: SOURCE_META[source].name,
+    sourceColor: SOURCE_META[source].color,
+  };
+}
+
+describe("extractTopics", () => {
+  it("drops generic words that recur across unrelated headlines instead of one shared subject", () => {
+    // Same sentence from four different outlets, the way "world", "back",
+    // "city", "state", "life", "play", and "week" actually turned up as
+    // topics on the live site: not because outlets covered one shared
+    // subject, but because each word is common enough to recur incidentally.
+    const sentence =
+      "Trump takes a world tour, throws a state dinner, drives back into the city, ends a long week, shares family life, and finds time to play";
+    const articles: NewsArticle[] = [
+      makeTopicArticle(1, sentence, "atlantic"),
+      makeTopicArticle(2, sentence, "guardian"),
+      makeTopicArticle(3, sentence, "bbc"),
+      makeTopicArticle(4, sentence, "npr"),
+    ];
+
+    const topics = extractTopics(articles, 50).map((topic) => topic.topic);
+
+    for (const noise of ["world", "back", "city", "state", "life", "play", "week"]) {
+      expect(topics).not.toContain(noise);
+    }
+    expect(topics).toContain("trump");
+  });
+
+  it("drops a second batch of generic connector words seen the same way", () => {
+    // "president", "call", "around", "work", and "days" also turned up as
+    // topics on the live site for the same reason: incidental recurrence
+    // across headlines about unrelated stories, not a shared subject.
+    const sentence =
+      "The president made a call around the world about work after days of talks about Iran";
+    const articles: NewsArticle[] = [
+      makeTopicArticle(1, sentence, "atlantic"),
+      makeTopicArticle(2, sentence, "guardian"),
+      makeTopicArticle(3, sentence, "bbc"),
+      makeTopicArticle(4, sentence, "npr"),
+    ];
+
+    const topics = extractTopics(articles, 50).map((topic) => topic.topic);
+
+    for (const noise of ["president", "call", "around", "work", "days"]) {
+      expect(topics).not.toContain(noise);
+    }
+    expect(topics).toContain("iran");
+  });
+
+  it("drops journalism-meta filler words, not just from story clusters", () => {
+    // "live" is a live-blog tag ("NFL week three ... – live"), not a topic.
+    const articles: NewsArticle[] = [
+      makeTopicArticle(1, "Nations League roundup tonight – live", "bbc"),
+      makeTopicArticle(2, "Premier League matchday coverage – live", "guardian"),
+      makeTopicArticle(3, "Storm warnings issued for the coastline – live", "npr"),
+    ];
+
+    const topics = extractTopics(articles).map((topic) => topic.topic);
+    expect(topics).not.toContain("live");
+  });
+});
 
 describe("clusterArticlesByStory", () => {
   it("groups same-story coverage across outlets and drops single-source clusters", () => {

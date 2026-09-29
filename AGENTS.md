@@ -179,7 +179,7 @@ cp .env.example .env.local
 npm run dev
 ```
 
-- Prefer Node 20 locally to match GitHub Actions.
+- Use Node 22 locally to match GitHub Actions. `.nvmrc` pins it, every workflow reads that file, and `package.json` requires 22.12 or newer.
 - `npm run update:investments` also requires `.venv/bin/python3`.
 - `npm run update:football`, `npm run update:premier-league`, and `npm run update:la-liga` use `FOOTBALL_DATA_API_TOKEN` only when rebuilding checked-in football snapshots. The football pages never call the provider at request time. `src/lib/premierLeagueSnapshot.ts` and `src/lib/laLigaSnapshot.ts` each have a `preferLive` refresh path, but no caller passes it, so the pages always serve the committed snapshots.
 - `npm run update:mlb`, `npm run update:nba`, `npm run update:nfl`, `npm run update:golf`, and `npm run update:world-cup` use public sports data sources and do not require auth tokens.
@@ -189,7 +189,7 @@ npm run dev
 - `npm run update:github-trending` reads the public GitHub Search API. GitHub Actions passes `GITHUB_TOKEN` for higher rate limits.
 - `npm run update:spacex` and `npm run update:spacex-images` read public Launch Library / SpaceDevs endpoints. An API key is not strictly required, but the anonymous tier is heavily rate limited (shared CI IPs get 429'd fast, which silently freezes the snapshot) — set the optional `SPACEDEVS_API_TOKEN` to authenticate and raise the limit. The `update-spacex.yml` workflow now also fails loudly if the snapshot goes stale (older than 4 days).
 - `npm run update:frontier-models` rebuilds `src/data/frontierModelsSnapshot.ts` from `scripts/data/frontierModels.source.ts`.
-- If the investments fetch step fails on imports, install the pinned Python dependency with `.venv/bin/pip install defeatbeta-api==0.0.47`.
+- If the investments fetch step fails on imports, install the pinned Python packages with `.venv/bin/pip install -r scripts/requirements-investments.txt`. That file is the one place the `defeatbeta-api` version is set.
 
 ### Day-to-day verification
 
@@ -423,33 +423,31 @@ Checked-in operational workflows:
 - `.github/workflows/audit-curated-data.yml`
 - `.github/workflows/changelog-on-merge.yml`
 - `.github/workflows/publish-data.yml`
-- `netlify/functions/purge-cache.ts`
 
 Current behavior:
 
 - `test.yml` runs unit tests, build, sharded Chromium Playwright E2E, and lint on pushes to `main` or `develop`, plus pull requests targeting `main` or `develop`; full-matrix Playwright runs only on pushes to `main`
 - `changelog-on-merge.yml` appends a dated bullet to `CHANGELOG.md` on `main` for every merged pull request; add the `skip-changelog` label to opt a PR out. Snapshot-refresh bots push straight to `main` without a PR, so they never trigger it, and the commit lands with `[skip ci]` to avoid a trigger loop
-- `update-investments.yml` runs on manual dispatch and weekdays at `22:15 UTC`, then commits refreshed compact snapshots under `public/data/investments`; raw provider responses are not committed
-- `update-premier-league.yml` and `update-la-liga.yml` run every four hours during the season (August through May; skipped June and July)
-- `update-fantasy.yml` runs daily at 17:00 UTC July through December and weekly on Wednesdays January through June
+- `update-investments.yml` runs on manual dispatch and Tuesday through Saturday at `08:30 UTC`, after the provider's dataset for the prior trading day lands (05:53 UTC on 2026-09-28), then commits refreshed compact snapshots under `public/data/investments`; raw provider responses are not committed. The run fails when fewer than 95% of symbols carry a recent price
+- `update-premier-league.yml` and `update-la-liga.yml` run every four hours during the season (August through May; skipped June and July). They share one concurrency group, since both spend the same football-data.org request budget
+- `update-fantasy.yml` runs daily at 17:17 UTC July through December and January 1 through 12, on Wednesdays January through June, and on Sundays at 11:47 UTC September through January so the weekly board is current before kickoff. It builds and commits the weekly board first, and it discards redraft files that failed their gates so a later lane never commits them
 - `update-github-trending.yml` runs on manual dispatch and daily at `07:45 UTC`, then commits `src/data/githubTrendingSnapshot.ts` when tracked repositories change
 - `update-formula-1.yml` runs every three hours Thursday through Sunday and daily otherwise
 - `update-spacex.yml` runs on manual dispatch and daily at `09:25 UTC` and `21:25 UTC`, then commits SpaceX data, manifest, image reference, and cached image artifacts when they change
-- `update-mlb.yml` runs every four hours March through November
+- `update-mlb.yml` runs every four hours from March 20 through November 6
 - `update-nba.yml` runs every four hours from mid-October through June
-- `update-nfl.yml` runs on manual dispatch and Tuesdays September through February at `10:35 UTC`, then commits `src/data/nflSnapshot.ts` when it changes
+- `update-nfl.yml` runs on manual dispatch and daily September through February at `10:35 UTC`, then commits `src/data/nflSnapshot.ts` when it changes
 - `update-golf.yml` runs every three hours Thursday through Sunday and daily otherwise
-- `update-world-cup.yml` runs every 30 minutes during June and July
-- `update-score-pools.yml` runs every six hours, requires both live provider tokens, and rejects provider-empty or stale live-league output
+- `update-world-cup.yml` has no schedule, since the tournament ended, and runs on manual dispatch only
+- `update-score-pools.yml` runs every six hours. Until both provider keys are set as repository secrets it skips the refresh and passes with a notice. With the keys set it rejects provider-empty or stale live-league output
 - `update-bay-area-transit.yml` runs on manual dispatch and every six hours year-round, then commits `src/data/bayAreaTransitSnapshot.ts` when it changes
 - `update-earthquake.yml` runs on manual dispatch and daily at 06:20 UTC, then commits `src/data/earthquakeSnapshot.ts` when it changes — a fallback-seed refresh only, since the summary API fetches USGS live at request time
-- `update-polling.yml` runs daily at 05:55 UTC as the fallback-seed refresh; day-to-day polling freshness comes from `netlify/functions/refresh-polling.ts`, a Netlify scheduled function that writes the VoteHub data to the `dashboard-snapshots` blob store every six hours and purges the `polling` CDN cache tag
-- `audit-curated-data.yml` checks review dates, verification flags, and structural integrity across Frontier Models, Tech Startups, AI Dev Tools, Museum Log, Travel Deals, and Food Map every Monday
-- `netlify/functions/refresh-frontier-models.ts` is a Netlify scheduled function (daily 07:30 UTC, no GitHub Action) that fact-checks the frontier-models seed against models.dev and OpenRouter, writes the result to the `dashboard-snapshots` Netlify Blobs store, and purges the `frontier-models` CDN cache tag; the committed seed stays the fallback
+- `update-polling.yml` runs daily at 05:55 UTC as the fallback-seed refresh; day-to-day polling freshness comes from `netlify/functions/refresh-polling.ts`, a Netlify scheduled function that writes the VoteHub data to the `dashboard-snapshots` blob store every six hours
+- `audit-curated-data.yml` checks review dates and structural integrity every Monday across Frontier Models, Tech Startups, AI Dev Tools, Museum Log, Travel Deals, Food Map, the retirement planner's capital market assumptions, the rent versus buy tax constants, and the March Madness page. A dataset fails on age or structure, and the verified flag is a label that never fails it. A failing run writes its report into the body of the `curated-data-review` issue and ends red
+- `netlify/functions/refresh-frontier-models.ts` is a Netlify scheduled function (daily 07:30 UTC, no GitHub Action) that fact-checks the frontier-models seed against models.dev and OpenRouter, and writes the result to the `dashboard-snapshots` Netlify Blobs store; the committed seed stays the fallback. A fact listed in a model's `pinnedFacts` keeps its curated value, which is how a price read from the provider's own page survives a catalog that states it differently
 - The tech startup tracker has no workflow by design — its dataset is editorially curated, so refreshes happen by editing the seed and running `npm run update:tech-startups` locally
 - All 17 `update-*.yml` workflows commit and push through the shared `scripts/ci/commit-and-push-snapshot.sh` helper (usage: `commit-and-push-snapshot.sh <commit-message> <pathspec...>`). It regenerates and stages sitemap freshness metadata with the snapshot, sets the `github-actions[bot]` identity, exits cleanly on a no-op refresh, and pushes to `HEAD:main` with a fetch/`rebase --autostash` retry loop (default 8 attempts, `SNAPSHOT_PUSH_ATTEMPTS` override) plus capped exponential backoff to absorb concurrent snapshot-bot pushes. Behavior is asserted by `.github/workflows/__tests__/snapshot-workflows.test.ts` and `update-investments.test.ts`.
 - `publish-data.yml` coalesces successful refreshes, builds the site in GitHub Actions, uploads it with `netlify deploy --prod --context production` (free Actions minutes on a public repo, and a build that never runs on Netlify's infrastructure does not spend its 300 monthly build minutes, which ran out on 2026-08-06), and verifies the full `/api/data-revisions` ledger before closing publication incidents. `scripts/ci/netlify-ignore.sh` keeps Netlify from building `main` or dependabot branches itself. Needs the `NETLIFY_AUTH_TOKEN` repository secret
-- `purge-cache.ts` is protected by `Authorization: Bearer <CRON_SECRET>` or `x-cron-secret` and calls Netlify Durable Cache purge; query-string secrets are intentionally rejected
 
 For public fantasy updates, GitHub Actions is the source of truth.
 
@@ -483,6 +481,8 @@ Subsystem references:
 - `RETIREMENT_PLANNER_ENGINE.md` — pure retirement projection engine
 - `SCORE_POOLS_ENGINE.md` — exact-score prediction engine and its data flow
 - `docs/DATA_UPDATE_OPERATIONS.md` — command → artifact → schedule runbook
+- `docs/EASTER_EGGS.md` — every easter egg, its trigger, and its code; update it in any change that adds, alters, or removes one
+- `docs/TODO.md` — open items that need Isaac or a scheduled run; add blocked work there and delete an item when it is done
 
 Older plans, redesign notes, and summary docs are kept for history. Check `docs/README.md` before treating a markdown file as current.
 

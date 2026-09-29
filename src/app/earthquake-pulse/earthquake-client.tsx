@@ -33,6 +33,7 @@ import {
 import { Catalog97ProjectHero } from "@/components/catalog97/Catalog97ProjectHero";
 import { PROJECT_PRESS } from "@/constants/projectPress";
 import { EarthquakeSignature } from "./EarthquakeSignature";
+import { useClientNow } from "@/hooks/useClientNow";
 import "./earthquake-pulse.css";
 
 interface EarthquakeClientProps {
@@ -45,12 +46,17 @@ const TIME_FORMATTER = new Intl.DateTimeFormat("en-US", {
   day: "numeric",
   hour: "numeric",
   minute: "2-digit",
+  timeZone: "UTC",
 });
 
+// USGS reports quake time in UTC and the row already labels it "UTC", so this
+// stays pinned to UTC rather than the display zone. `hourCycle` rather than
+// `hour12: false`, which prints midnight as "24:05" on Node 20 and "00:05" in
+// browsers.
 const CLOCK_FORMATTER = new Intl.DateTimeFormat("en-US", {
   hour: "2-digit",
   minute: "2-digit",
-  hour12: false,
+  hourCycle: "h23",
   timeZone: "UTC",
 });
 
@@ -65,12 +71,12 @@ function formatMagnitude(value: number | null | undefined): string {
   return `M${value.toFixed(1)}`;
 }
 
-function formatTimeAgo(iso: string): string {
+function formatTimeAgo(iso: string, now: number): string {
   const then = new Date(iso).getTime();
   if (Number.isNaN(then)) {
     return "Unknown";
   }
-  const diffMs = then - Date.now();
+  const diffMs = then - now;
   const diffMin = Math.round(diffMs / 60000);
   if (Math.abs(diffMin) < 60) {
     return RELATIVE_FORMATTER.format(diffMin, "minute");
@@ -87,7 +93,9 @@ function formatTimestamp(iso: string | null | undefined): string {
     return "Unavailable";
   }
   const date = new Date(iso);
-  return Number.isNaN(date.getTime()) ? "Unavailable" : TIME_FORMATTER.format(date);
+  return Number.isNaN(date.getTime())
+    ? "Unavailable"
+    : `${TIME_FORMATTER.format(date)} UTC`;
 }
 
 function formatDepth(depthKm: number): string {
@@ -170,10 +178,12 @@ function QuakeRow({
   quake,
   isSelected,
   onSelect,
+  now,
 }: {
   quake: QuakeEvent;
   isSelected: boolean;
   onSelect: (id: string) => void;
+  now: number | null;
 }) {
   return (
     <button
@@ -183,9 +193,11 @@ function QuakeRow({
       className="c97-quake-log-row"
       style={getRowStyle(isSelected, quake.magnitude)}
     >
-      <span className="c97-mono c97-quake-log-time" suppressHydrationWarning>
+      <span className="c97-mono c97-quake-log-time">
         {CLOCK_FORMATTER.format(new Date(quake.time))} UTC
-        <span className="c97-quake-log-ago">{formatTimeAgo(quake.time)}</span>
+        {now !== null ? (
+          <span className="c97-quake-log-ago">{formatTimeAgo(quake.time, now)}</span>
+        ) : null}
       </span>
       <MagnitudeBadge mag={quake.magnitude} />
       <span className="c97-quake-log-place">
@@ -201,7 +213,7 @@ function QuakeRow({
             {quake.felt ? (
               <span className="inline-flex items-center gap-1">
                 <Activity className="h-3.5 w-3.5" aria-hidden="true" />
-                {quake.felt.toLocaleString()} felt
+                {quake.felt.toLocaleString("en-US")} felt
               </span>
             ) : null}
           </span>
@@ -354,7 +366,7 @@ function DetailStat({ label, value }: { label: string; value: string }) {
         background: "color-mix(in srgb, var(--c97-surface) 92%, var(--c97-field))",
       }}
     >
-      <p className="c97-kicker mb-1">{label}</p>
+      <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-1)" }}>{label}</p>
       <p
         className="mb-0 text-base font-semibold"
         style={{ color: "var(--c97-ink)", fontFamily: "var(--c97-font-body)" }}
@@ -365,7 +377,7 @@ function DetailStat({ label, value }: { label: string; value: string }) {
   );
 }
 
-function QuakeDetailPanel({ quake }: { quake: QuakeEvent | null }) {
+function QuakeDetailPanel({ quake, now }: { quake: QuakeEvent | null; now: number | null }) {
   if (!quake) {
     return (
       <p
@@ -396,8 +408,8 @@ function QuakeDetailPanel({ quake }: { quake: QuakeEvent | null }) {
             className="mb-0 text-sm"
             style={{ color: "var(--c97-ink-2)", fontFamily: "var(--c97-font-body)" }}
           >
-            {formatTimestamp(quake.time)} ·{" "}
-            <span suppressHydrationWarning>{formatTimeAgo(quake.time)}</span>
+            {formatTimestamp(quake.time)}
+            {now !== null ? <> · {formatTimeAgo(quake.time, now)}</> : null}
           </p>
         </div>
         <span
@@ -433,11 +445,11 @@ function QuakeDetailPanel({ quake }: { quake: QuakeEvent | null }) {
         <DetailStat label="Region" value={quake.region} />
         <DetailStat
           label="Felt reports"
-          value={quake.felt ? quake.felt.toLocaleString() : "None yet"}
+          value={quake.felt ? quake.felt.toLocaleString("en-US") : "None yet"}
         />
         <DetailStat label="Mag type" value={quake.magType ? quake.magType.toUpperCase() : "—"} />
         <DetailStat label="Coordinates" value={formatCoordinates(quake.latitude, quake.longitude)} />
-        <DetailStat label="Significance" value={quake.significance.toLocaleString()} />
+        <DetailStat label="Significance" value={quake.significance.toLocaleString("en-US")} />
       </div>
 
       {quake.url ? (
@@ -467,6 +479,7 @@ export function EarthquakeClient({
   const router = useRouter();
   const searchParams = useSearchParams();
   const [summary, setSummary] = useState(initialSummary);
+  const now = useClientNow();
   const currentQuery = searchParams.toString();
   const currentHref = `${EARTHQUAKE_ROUTE}${currentQuery ? `?${currentQuery}` : ""}`;
   const hasManagedParams =
@@ -573,7 +586,7 @@ export function EarthquakeClient({
         ink={lead}
         title="Earthquake Pulse"
         standfirst={standfirst}
-        meta="The first snapshot is still being generated from the USGS feeds. The dashboard fills in on the next scheduled refresh."
+        meta="The first snapshot is still being generated from the USGS feeds. The dashboard fills in on the next successful read of USGS."
       />
     );
   }
@@ -584,7 +597,11 @@ export function EarthquakeClient({
         ink={lead}
         title="Earthquake Pulse"
         standfirst={standfirst}
-        meta={`USGS Earthquake Hazards Program · feed updated ${formatTimestamp(feedTime)}`}
+        meta={`USGS Earthquake Hazards Program · feed updated ${formatTimestamp(feedTime)}${
+          summary.feedStatus === "stale-fallback"
+            ? " · USGS could not be reached, so this is the last saved snapshot"
+            : ""
+        }`}
         readouts={[
           {
             label: "Strongest in 24h",
@@ -592,14 +609,14 @@ export function EarthquakeClient({
             detail: summary.heroStats.strongest24hPlace ?? "No notable quake yet",
           },
           {
-            label: "Quakes in 24h",
+            label: "M2.5+ quakes in 24h",
             value: `${summary.heroStats.total24h}`,
-            detail: `${summary.heroStats.total7d} over the past week`,
+            detail: `${summary.heroStats.total7d} M2.5+ over the past week`,
           },
           {
             label: "Felt in 24h",
             value: `${summary.heroStats.felt24h}`,
-            detail: "with a Did You Feel It? report",
+            detail: "of any magnitude, with a Did You Feel It? report",
           },
         ]}
       >
@@ -620,7 +637,7 @@ export function EarthquakeClient({
           <div className="grid gap-8 xl:grid-cols-[minmax(0,1.7fr)_minmax(320px,0.92fr)]">
             <div className="space-y-6">
               <h2 className="c97-poster-sm">The log</h2>
-              <div className="c97-segmented" role="tablist" aria-label="Earthquake view switcher">
+              <div className="c97-segmented" style={{ marginBottom: "var(--c97-sp-3)" }} role="tablist" aria-label="Earthquake view switcher">
                 {EARTHQUAKE_VIEW_OPTIONS.map((view) => (
                   <button
                     key={view}
@@ -644,14 +661,14 @@ export function EarthquakeClient({
                 aria-labelledby={`earthquake-tab-${routeState.view}`}
               >
                 <div className="space-y-2">
-                  <p className="c97-kicker mb-0">
+                  <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-1)" }}>
                     {routeState.view === "recent"
                       ? "Last 24 hours"
                       : routeState.view === "significant"
                       ? "Significant, past 30 days"
                       : "Where the ground is busiest"}
                   </p>
-                  <p className="c97-prose mb-0">
+                  <p className="c97-prose">
                     {routeState.view === "recent"
                       ? "The most recent notable quakes worldwide (M2.5 and up), newest first, logged by origin time. Tap one for depth, felt reports, and coordinates."
                       : routeState.view === "significant"
@@ -665,12 +682,12 @@ export function EarthquakeClient({
                     <div className="c97-panel">
                       <div className="mb-4 flex items-center gap-2">
                         <BarChart3 className="h-4 w-4" aria-hidden="true" style={{ color: "var(--c97-ink-2)" }} />
-                        <p className="c97-kicker mb-0">Magnitude distribution · 7 days</p>
+                        <p className="c97-kicker">Magnitude distribution · 7 days</p>
                       </div>
                       <DistributionBars summary={summary} />
                     </div>
                     <div>
-                      <p className="c97-kicker mb-3">Busiest regions · 7 days</p>
+                      <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-2)" }}>Busiest regions · 7 days</p>
                       <RegionList summary={summary} onSelect={handleSelectQuake} />
                     </div>
                   </div>
@@ -682,6 +699,7 @@ export function EarthquakeClient({
                         quake={quake}
                         isSelected={quake.id === selectedQuakeId}
                         onSelect={handleSelectQuake}
+                        now={now}
                       />
                     ))}
                   </div>
@@ -693,9 +711,9 @@ export function EarthquakeClient({
               <div className="c97-panel xl:sticky xl:top-6">
                 <div className="mb-3 flex items-center gap-2">
                   <Gauge className="h-4 w-4" aria-hidden="true" style={{ color: "var(--c97-ink-2)" }} />
-                  <p className="c97-kicker mb-0">Selected quake</p>
+                  <p className="c97-kicker">Selected quake</p>
                 </div>
-                <QuakeDetailPanel quake={selectedQuake} />
+                <QuakeDetailPanel quake={selectedQuake} now={now} />
               </div>
             </aside>
           </div>
@@ -704,11 +722,12 @@ export function EarthquakeClient({
 
       <section className="c97-band c97-sheet" data-c97-surface="bone" data-seam="deckle">
         <div className="c97-shell">
-          <p className="c97-kicker mb-2">Snapshot note</p>
-          <p className="c97-prose mb-0">
-            This page is a checked-in snapshot of public USGS Earthquake Hazards Program feeds,
-            refreshed on a schedule, and it is not a live emergency feed. For official alerts and
-            the latest data, always defer to USGS and your local authorities.
+          <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-1)" }}>Data note</p>
+          <p className="c97-prose">
+            This page reads the public USGS Earthquake Hazards Program feeds each time it loads
+            and falls back to a snapshot saved once a day when USGS cannot be reached, and it is
+            not an emergency alert feed. For official alerts and the latest data, always defer to
+            USGS and your local authorities.
           </p>
         </div>
       </section>

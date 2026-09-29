@@ -21,7 +21,6 @@ import {
   Download,
   Edit3,
   ExternalLink,
-  Mail,
   MapPin,
   RefreshCcw,
   Save,
@@ -58,6 +57,8 @@ import {
 } from "@/lib/mba-application-insights";
 import { useMBAApplications } from "@/hooks/useMBAApplications";
 import { useMBAJobs } from "@/hooks/useMBAJobs";
+import { useClientNow } from "@/hooks/useClientNow";
+import { DISPLAY_TIME_ZONE } from "@/lib/date-formatters";
 import { MBA_COMPANIES, MBA_COMPANY_MAP } from "@/constants/mba-companies";
 import {
   MBA_ROLE_FAMILY_LABELS,
@@ -105,21 +106,32 @@ import "./mba-jobs.css";
 
 // Interaction-gated dialogs are code-split so their chunks load only when a
 // user opens them — keeping them out of this large client page's initial bundle.
-const EmailDigestDialog = dynamic(() => import("./EmailDigestDialog"));
-const ApplicationEditDialog = dynamic(() => import("./ApplicationEditDialog"));
+// `loading` is what gives each dialog its own Suspense boundary. Without it the
+// first open suspends up to the route's loading.tsx and blanks the page.
+const ApplicationEditDialog = dynamic(() => import("./ApplicationEditDialog"), {
+  loading: () => null,
+});
 
 const ROUTE = "/mba-internship-notifications";
+const JOB_PAGE_SIZE = 60;
 
 // ---------------------------------------------------------------------------
 // Helpers
 // ---------------------------------------------------------------------------
 
-const RELATIVE_FORMATTER = new Intl.RelativeTimeFormat("en", { numeric: "auto" });
+const RELATIVE_FORMATTER = new Intl.RelativeTimeFormat("en-US", { numeric: "auto" });
 
-function timeAgo(iso: string): string {
+// `now` is the caller's `useClientNow()` reading (null on the server and
+// during hydration), not `Date.now()` directly: `postedAt` is a real
+// timestamp present on the very first server-rendered paint (it comes from
+// the page's SSR `initialData`), so computing "ago" from `Date.now()` at
+// render time prints different text server-side than it does once the
+// client hydrates a moment later, and React flags the mismatch.
+function timeAgo(iso: string, now: number | null): string {
+  if (now === null) return "";
   const timestamp = getPostedAtTime(iso);
   if (!timestamp) return "";
-  const diff = timestamp - Date.now();
+  const diff = timestamp - now;
   const absDiff = Math.abs(diff);
   if (absDiff < 60_000) return "just now";
   if (absDiff < 3_600_000)
@@ -129,12 +141,20 @@ function timeAgo(iso: string): string {
   return RELATIVE_FORMATTER.format(Math.round(diff / 86_400_000), "day");
 }
 
+// An instant (the fetch time, and each job's `postedAt`) pinned to the
+// display zone so the server (UTC) and every visitor's browser print the
+// same clock time instead of disagreeing and breaking hydration.
 const DATE_FORMATTER = new Intl.DateTimeFormat("en-US", {
   month: "short",
   day: "numeric",
   hour: "numeric",
   minute: "2-digit",
+  timeZone: DISPLAY_TIME_ZONE,
+  timeZoneName: "short",
 });
+// tz-local: follow-up/deadline dates the visitor picked in <input type="date">
+// on their own tracked applications (client-only, localStorage-backed; never
+// renders with real data during SSR since `applications` starts empty).
 const DATE_KEY_FORMATTER = new Intl.DateTimeFormat("en-US", {
   month: "short",
   day: "numeric",
@@ -624,6 +644,7 @@ function JobCard({
   onMarkApplied,
   onEditApplication,
   currentState,
+  now,
 }: {
   job: MBAJob;
   isNew: boolean;
@@ -633,12 +654,13 @@ function JobCard({
   onMarkApplied: () => void;
   onEditApplication: () => void;
   currentState: MBAJobsSearchState;
+  now: number | null;
 }) {
   const company = MBA_COMPANY_MAP.get(job.companyId);
   const linkedinUrl = `https://www.linkedin.com/jobs/search/?keywords=${encodeURIComponent(
     [currentState.q.trim(), job.title, job.companyName].filter(Boolean).join(" ")
   )}`;
-  const relativePostedAt = timeAgo(job.postedAt);
+  const relativePostedAt = timeAgo(job.postedAt, now);
 
   return (
     <article
@@ -673,7 +695,7 @@ function JobCard({
 
         <div className="space-y-3">
           <h3
-            className="mb-0 text-lg font-semibold leading-[1.08] tracking-[-0.04em] sm:text-xl"
+            className="text-lg font-semibold leading-[1.08] tracking-[-0.04em] sm:text-xl"
             style={{
               fontFamily: "var(--c97-font-body)",
               color: "var(--c97-ink)",
@@ -683,7 +705,7 @@ function JobCard({
           </h3>
 
           {job.snippet && (
-            <p className="c97-prose mb-0 line-clamp-3 break-words">{job.snippet}</p>
+            <p className="c97-prose line-clamp-3 break-words">{job.snippet}</p>
           )}
         </div>
 
@@ -698,7 +720,7 @@ function JobCard({
         <div
           className="mt-auto border-t border-[var(--c97-rule)] pt-5"
         >
-          <p className="c97-meta mb-0">
+          <p className="c97-meta">
             {relativePostedAt ? (
               <>
                 {job.location} ·{" "}
@@ -714,7 +736,7 @@ function JobCard({
             )}
           </p>
           {job.sourceName && (
-            <p className="c97-prose mb-0 mt-2 text-sm">
+            <p className="c97-prose text-sm" style={{ marginTop: "var(--c97-sp-1)" }}>
               Found through {job.sourceName}
               {job.sourceUrl ? (
                 <>
@@ -815,7 +837,7 @@ function ManualCompanyCard({
           <CategoryChip category={company.category} />
         </div>
 
-        <p className="c97-prose mb-0">
+        <p className="c97-prose">
           I do not have a stable public feed for this company yet, so I keep the career page and
           a role-aware LinkedIn search here instead.
         </p>
@@ -1004,61 +1026,6 @@ function NotificationBell({
   );
 }
 
-function EmailDigestButton({
-  onSend,
-  sending,
-  result,
-  onClear,
-  disabled,
-}: {
-  onSend: () => void;
-  sending: boolean;
-  result: { ok: boolean; message: string } | null;
-  onClear: () => void;
-  disabled: boolean;
-}) {
-  if (result) {
-    return (
-      <div
-        className="inline-flex min-h-[44px] items-center gap-2 border px-4 py-2 text-sm font-semibold"
-        style={{
-          color: result.ok
-            ? "color-mix(in srgb, var(--c97-positive) 60%, var(--c97-ink))"
-            : "color-mix(in srgb, var(--c97-negative) 55%, var(--c97-ink))",
-          borderColor: result.ok
-            ? "color-mix(in srgb, var(--c97-positive) 36%, var(--c97-rule))"
-            : "color-mix(in srgb, var(--c97-negative) 32%, var(--c97-rule))",
-          background: result.ok
-            ? "color-mix(in srgb, var(--c97-positive) 10%, var(--c97-surface))"
-            : "color-mix(in srgb, var(--c97-negative) 10%, var(--c97-surface))",
-        }}
-        role="status"
-      >
-        {result.message}
-        <button
-          type="button"
-          onClick={onClear}
-          className="ml-1 inline-flex min-h-[44px] min-w-[44px] items-center justify-center text-xs opacity-70 transition-opacity duration-200 ease hover:opacity-100"
-          aria-label="Dismiss"
-        >
-          ✕
-        </button>
-      </div>
-    );
-  }
-  return (
-    <button
-      type="button"
-      onClick={onSend}
-      disabled={disabled || sending}
-      className="c97-btn-ghost mba-ghost disabled:opacity-50"
-    >
-      <Mail className="h-4 w-4" aria-hidden="true" />
-      {sending ? "Sending…" : "Email digest"}
-    </button>
-  );
-}
-
 // ---------------------------------------------------------------------------
 // Company filter strip
 // ---------------------------------------------------------------------------
@@ -1115,7 +1082,7 @@ function CompanyFilterStrip({
       >
         <div className="space-y-3">
           <div>
-            <p className="c97-meta mb-0">Tracked company feeds</p>
+            <p className="c97-meta">Tracked company feeds</p>
             <p
               className="mt-2 text-sm"
               style={{ color: "var(--c97-ink-2)" }}
@@ -1215,7 +1182,7 @@ function CompanyFilterStrip({
                     }
                   >
                     <div className="min-w-0">
-                      <p className="c97-meta mb-0">{group.label}</p>
+                      <p className="c97-meta">{group.label}</p>
                       <p
                         className="mt-1 text-xs"
                         style={{ color: "var(--c97-ink-2)" }}
@@ -1445,7 +1412,7 @@ function NeedsAttentionPanel({
               <p className="mb-0 text-sm font-semibold" style={{ color: "var(--c97-ink)" }}>
                 You&rsquo;re all caught up.
               </p>
-              <p className="c97-prose mb-0 mt-1 text-sm">
+              <p className="c97-prose text-sm" style={{ marginTop: "var(--c97-sp-1)" }}>
                 No follow-ups or deadlines need action right now. Add a follow-up date when you
                 apply and it will surface here on the day.
               </p>
@@ -1503,7 +1470,7 @@ function ApplicationCard({
         </div>
         <ApplicationPriorityChip priority={application.priority} />
       </div>
-      <p className="c97-prose mb-0 mt-3 text-sm">
+      <p className="c97-prose text-sm" style={{ marginTop: "var(--c97-sp-2)" }}>
         {application.jobSnapshot.department} · {application.jobSnapshot.location}
       </p>
       <div className="mt-4 flex flex-wrap gap-2">
@@ -1519,7 +1486,7 @@ function ApplicationCard({
         )}
       </div>
       {application.notes && (
-        <p className="c97-prose mb-0 mt-4 line-clamp-3 text-sm">{application.notes}</p>
+        <p className="c97-prose line-clamp-3 text-sm" style={{ marginTop: "var(--c97-sp-2)" }}>{application.notes}</p>
       )}
       <div className="mt-4 flex flex-wrap items-center gap-2 border-t border-[var(--c97-rule)] pt-4">
         <select
@@ -1722,7 +1689,7 @@ function ApplicationPipeline({
         </div>
 
         {importMessage && (
-          <p className="c97-prose mb-0" role="status">
+          <p className="c97-prose" style={{ marginBottom: "var(--c97-sp-3)" }} role="status">
             {importMessage}
           </p>
         )}
@@ -1750,7 +1717,7 @@ function ApplicationPipeline({
               return (
                 <div key={status} className="space-y-3">
                   <div className="c97-panel flex items-center justify-between">
-                    <p className="c97-meta mb-0">{MBA_APPLICATION_STATUS_LABELS[status]}</p>
+                    <p className="c97-meta">{MBA_APPLICATION_STATUS_LABELS[status]}</p>
                     <span className="c97-chip">{statusApplications.length}</span>
                   </div>
                   {statusApplications.length === 0 ? (
@@ -1866,6 +1833,7 @@ export function MBAJobsClient({
   initialData,
   initialState,
 }: MBAJobsClientProps) {
+  const now = useClientNow();
   const router = useRouter();
   const searchParams = useSearchParams();
   const searchParamsKey = searchParams.toString();
@@ -1907,16 +1875,11 @@ export function MBAJobsClient({
     setAllCompanies,
     requestNotificationPermission,
     refresh,
-    sendEmailDigest,
-    emailSending,
-    emailResult,
-    clearEmailResult,
   } = useMBAJobs({
     externalLeads: uiState.external === "on",
     initialData,
   });
 
-  const [emailDialogOpen, setEmailDialogOpen] = useState(false);
   const [applicationDialogOpen, setApplicationDialogOpen] = useState(false);
   const [editingApplication, setEditingApplication] =
     useState<MBATrackedApplication | null>(null);
@@ -2018,6 +1981,27 @@ export function MBAJobsClient({
     return filtered.map((entry) => entry.job);
   }, [effectiveState.location, effectiveState.sort, locationScopedEntries]);
 
+  // ── Pagination: the live grid can carry ~1,870 unfiltered cards, so only
+  // the first page renders until "Show more" is clicked, and any filter
+  // change starts back at the first page.
+  const [visibleJobCount, setVisibleJobCount] = useState(JOB_PAGE_SIZE);
+  useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- resets pagination when the filters that produced `displayJobs` change, not on every render
+    setVisibleJobCount(JOB_PAGE_SIZE);
+  }, [
+    effectiveState.category,
+    effectiveState.external,
+    effectiveState.q,
+    effectiveState.roleFamily,
+    effectiveState.roleType,
+    effectiveState.location,
+    effectiveState.sort,
+  ]);
+  const visibleJobs = useMemo(
+    () => displayJobs.slice(0, visibleJobCount),
+    [displayJobs, visibleJobCount]
+  );
+
   // ── Manual (Big Tech) companies filtered by category ─────────────────
   const manualCompanies = useMemo(() => {
     const all = MBA_COMPANIES.filter((c) => c.atsType === "manual");
@@ -2038,11 +2022,6 @@ export function MBAJobsClient({
 
 
   const hasApplications = applications.length > 0;
-
-  async function handleEmailSend(email: string) {
-    setEmailDialogOpen(false);
-    await sendEmailDigest(email, displayJobs.length > 0 ? displayJobs : jobs);
-  }
 
   function openApplicationDialog(application: MBATrackedApplication | null) {
     setEditingApplication(application);
@@ -2120,14 +2099,6 @@ export function MBAJobsClient({
 
   return (
     <>
-      {emailDialogOpen && (
-        <EmailDigestDialog
-          isOpen
-          onClose={() => setEmailDialogOpen(false)}
-          onSubmit={handleEmailSend}
-          sending={emailSending}
-        />
-      )}
       {applicationDialogOpen && (
         <ApplicationEditDialog
           isOpen
@@ -2193,14 +2164,6 @@ export function MBAJobsClient({
             <NotificationBell
               permission={notificationPermission}
               onRequest={requestNotificationPermission}
-            />
-
-            <EmailDigestButton
-              onSend={() => setEmailDialogOpen(true)}
-              sending={emailSending}
-              result={emailResult}
-              onClear={clearEmailResult}
-              disabled={isLoading || jobs.length === 0}
             />
 
             {!isLoading && newJobCount > 0 && (
@@ -2375,7 +2338,7 @@ export function MBAJobsClient({
                     }}
                   >
                     <div className="flex flex-wrap items-center justify-between gap-2">
-                      <p className="c97-meta mb-0">Popular locations</p>
+                      <p className="c97-meta">Popular locations</p>
                       <p
                         className="mb-0 text-1xs"
                         style={{ color: "var(--c97-ink-2)" }}
@@ -2415,7 +2378,7 @@ export function MBAJobsClient({
 
                 <div className="space-y-4 border-t border-[var(--c97-rule)] pt-6">
                   <div className="space-y-2">
-                    <p className="c97-meta mb-0">Role type</p>
+                    <p className="c97-meta" style={{ marginBottom: "var(--c97-sp-1)" }}>Role type</p>
                     <div className="flex flex-wrap gap-2" role="tablist" aria-label="Filter by role type">
                       {ROLE_TYPE_OPTIONS.map((roleType) => (
                         <EditorialPillButton
@@ -2435,7 +2398,7 @@ export function MBAJobsClient({
                   </div>
 
                   <div className="space-y-2">
-                    <p className="c97-meta mb-0">Role family</p>
+                    <p className="c97-meta" style={{ marginBottom: "var(--c97-sp-1)" }}>Role family</p>
                     <div
                       className="flex flex-wrap gap-2"
                       role="tablist"
@@ -2459,7 +2422,7 @@ export function MBAJobsClient({
                   </div>
 
                   <div className="space-y-2">
-                    <p className="c97-meta mb-0">Company category</p>
+                    <p className="c97-meta" style={{ marginBottom: "var(--c97-sp-1)" }}>Company category</p>
                     <div
                       className="flex flex-wrap gap-2"
                       role="tablist"
@@ -2483,7 +2446,7 @@ export function MBAJobsClient({
                   </div>
 
                   <div className="space-y-2">
-                    <p className="c97-meta mb-0">Sources</p>
+                    <p className="c97-meta" style={{ marginBottom: "var(--c97-sp-1)" }}>Sources</p>
                     <div className="flex flex-wrap gap-2" role="tablist" aria-label="External lead sources">
                       {(["off", "on"] as const).map((external) => (
                         <EditorialPillButton
@@ -2609,30 +2572,44 @@ export function MBAJobsClient({
                 icon={<BriefcaseBusiness className="h-5 w-5" aria-hidden="true" />}
               />
             ) : (
-              <div
-                className="grid gap-6 md:grid-cols-2 xl:grid-cols-3"
-                data-testid="live-jobs-grid"
-              >
-                {displayJobs.map((job) => {
-                  const application = getApplicationForJob(job);
-                  return (
-                    <JobCard
-                      key={job.id}
-                      job={job}
-                      isNew={!seenIds.has(job.id)}
-                      application={application}
-                      onMarkSeen={() => markJobSeen(job.id)}
-                      onTrack={() => handleTrackJob(job)}
-                      onMarkApplied={() => handleTrackJob(job, "applied")}
-                      onEditApplication={() => {
-                        const tracked = getApplicationForJob(job) ?? trackJob(job);
-                        openApplicationDialog(tracked);
-                      }}
-                      currentState={uiState}
-                    />
-                  );
-                })}
-              </div>
+              <>
+                <div
+                  className="grid gap-6 md:grid-cols-2 xl:grid-cols-3"
+                  data-testid="live-jobs-grid"
+                >
+                  {visibleJobs.map((job) => {
+                    const application = getApplicationForJob(job);
+                    return (
+                      <JobCard
+                        key={job.id}
+                        job={job}
+                        isNew={!seenIds.has(job.id)}
+                        application={application}
+                        onMarkSeen={() => markJobSeen(job.id)}
+                        onTrack={() => handleTrackJob(job)}
+                        onMarkApplied={() => handleTrackJob(job, "applied")}
+                        onEditApplication={() => {
+                          const tracked = getApplicationForJob(job) ?? trackJob(job);
+                          openApplicationDialog(tracked);
+                        }}
+                        currentState={uiState}
+                        now={now}
+                      />
+                    );
+                  })}
+                </div>
+                {displayJobs.length > visibleJobs.length && (
+                  <div className="flex justify-center" style={{ marginTop: "var(--c97-sp-4)" }}>
+                    <button
+                      type="button"
+                      className="c97-btn"
+                      onClick={() => setVisibleJobCount((n) => n + JOB_PAGE_SIZE)}
+                    >
+                      Show more ({visibleJobs.length} of {displayJobs.length} shown)
+                    </button>
+                  </div>
+                )}
+              </>
             )}
             </div>
           </section>
@@ -2661,7 +2638,7 @@ export function MBAJobsClient({
           {!isLoading && !error && (
             <div className="flex justify-center pb-2">
               <UtilityStrip>
-                {displayJobs.length} role{displayJobs.length !== 1 ? "s" : ""} shown ·{" "}
+                {visibleJobs.length} of {displayJobs.length} role{displayJobs.length !== 1 ? "s" : ""} shown ·{" "}
                 {formatFetchedAt(lastFetchedAt)} · Polls every 30 min
               </UtilityStrip>
             </div>

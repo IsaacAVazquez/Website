@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useCallback, useRef } from "react";
+import { useState, useEffect, useCallback, useMemo, useRef } from "react";
 import type {
   PortfolioHolding,
   EnhancedHolding,
@@ -805,23 +805,29 @@ export function useInvestments(): UseInvestmentsReturn {
 
   // ─── Derived ──────────────────────────────────────────────────────────────
 
-  const enhancedHoldings = buildEnhanced(holdings, quotes, isLoading);
+  // Memoized because the dashboard keys its own memos and two D3 charts on
+  // these. A new array on every render rebuilt the allocation donut on each
+  // keystroke in the holdings filter.
+  const enhancedHoldings = useMemo(
+    () => buildEnhanced(holdings, quotes, isLoading),
+    [holdings, quotes, isLoading],
+  );
 
-  const rawSummary = buildSummary(enhancedHoldings);
-  const summary: PortfolioSummary = {
-    ...rawSummary,
-    totalGainLossPercent:
-      rawSummary.totalCost > 0
-        ? (rawSummary.totalGainLoss / rawSummary.totalCost) * 100
-        : 0,
-    dayChangePercent: (() => {
-      const liveValue = enhancedHoldings
-        .filter((holding) => holding.priceSource === "live")
-        .reduce((sum, holding) => sum + holding.currentValue, 0);
-      const previousValue = liveValue - rawSummary.dayChange;
-      return previousValue > 0 ? (rawSummary.dayChange / previousValue) * 100 : 0;
-    })(),
-  };
+  const summary = useMemo<PortfolioSummary>(() => {
+    const rawSummary = buildSummary(enhancedHoldings);
+    const liveValue = enhancedHoldings
+      .filter((holding) => holding.priceSource === "live")
+      .reduce((sum, holding) => sum + holding.currentValue, 0);
+    const previousValue = liveValue - rawSummary.dayChange;
+    return {
+      ...rawSummary,
+      totalGainLossPercent:
+        rawSummary.totalCost > 0
+          ? (rawSummary.totalGainLoss / rawSummary.totalCost) * 100
+          : 0,
+      dayChangePercent: previousValue > 0 ? (rawSummary.dayChange / previousValue) * 100 : 0,
+    };
+  }, [enhancedHoldings]);
 
   return {
     holdings,

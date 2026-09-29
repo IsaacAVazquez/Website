@@ -6,6 +6,7 @@ import { Catalog97ProjectHero } from "@/components/catalog97/Catalog97ProjectHer
 import { PROJECT_PRESS } from "@/constants/projectPress";
 import { useRentVsBuy } from "@/hooks/useRentVsBuy";
 import type { RentVsBuyInput, RentVsBuyResult } from "@/lib/rentVsBuy/types";
+import { formatCompactCurrency } from "@/lib/retirement/format";
 import { fitLabel } from "@/app/travel-deals/fareGauge";
 import { netWorthChart } from "./netWorthChart";
 import "./rent-vs-buy.css";
@@ -25,13 +26,6 @@ function formatSignedCurrency(value: number) {
   const sign = value < 0 ? "-" : "+";
   return `${sign}${formatCurrency(Math.abs(value))}`;
 }
-
-const COMPACT_USD = new Intl.NumberFormat("en-US", {
-  style: "currency",
-  currency: "USD",
-  notation: "compact",
-  maximumFractionDigits: 1,
-});
 
 const plural = (count: number, unit: string) => `${count} ${unit}${count === 1 ? "" : "s"}`;
 
@@ -102,7 +96,7 @@ function NetWorthChartSignature({ result }: { result: RentVsBuyResult }) {
           <g key={tick.value}>
             <line x1={0} x2={chart.width} y1={tick.y} y2={tick.y} stroke="var(--c97-rule)" strokeWidth={1} />
             <text x={4} y={tick.y - 4} className="c97-rvb-axis">
-              {COMPACT_USD.format(tick.value)}
+              {formatCompactCurrency(tick.value)}
             </text>
           </g>
         ))}
@@ -319,9 +313,11 @@ export function RentVsBuyClient() {
               className="c97-prose"
               style={{ display: "block", fontSize: "var(--c97-fs-small)", color: "var(--c97-ink-2)", marginTop: "var(--c97-sp-1)" }}
             >
-              Figures are nominal dollars. {result.assumptions.taxNote} SALT cap{" "}
-              {formatCurrency(result.assumptions.saltCap)}. Tax figures as of {result.assumptions.asOf} and not
-              yet re-pinned to a primary source.
+              Figures are nominal dollars. {result.assumptions.taxNote} Tax figures are for tax year{" "}
+              {result.assumptions.taxYear}, were read from the IRS and the text of the law on{" "}
+              {result.assumptions.asOf}, and have not had an independent review. The default mortgage rate of{" "}
+              {result.assumptions.defaultMortgageRatePercent}% is the Freddie Mac 30 year fixed average as of{" "}
+              {result.assumptions.mortgageRateAsOf}.
             </span>
           </p>
         </div>

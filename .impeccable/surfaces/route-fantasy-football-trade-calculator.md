@@ -5,9 +5,11 @@ primary_target: "route:/fantasy-football/trade-calculator"
 related_targets: ["src/app/fantasy-football/trade-calculator/page.tsx","src/app/fantasy-football/trade-calculator/trade-calculator-client.tsx"]
 ---
 
+Updated on 2026-09-28 by the responsive pass. The trade calculator is a wide tool route. At 1920 the wordmark, the breadcrumb, the title, and the footer all start at x 272, where the tool used to run from 152 to 1768 under a header at 420. The result rail's 96px scroll margin, sized for the deleted sticky header, is gone.
+
 # Fantasy Football Trade Calculator
 
-**Status note, 2026-09-21.** This route has rendered inside `Catalog97ToolShell` since the bridge on 2026-09-16. Its components still read `--home-*` names, and the bridge block in `src/app/catalog97.css` aliases those onto Catalog 97 values, sets every `--radius-*` token to 0, and sets every `--shadow-*` token to `none`. `DESIGN.md` still describes the Working Instrument and does not govern this route. The old site header was sticky at 73px and was deleted in that change, and `Catalog97Header` is `position: relative`, so every measurement below that assumes a 73px sticky header predates the bridge. Contrast figures below were measured against Working Instrument values and need re-measuring.
+**Status note, 2026-09-27.** This route renders inside `Catalog97ToolShell` and reads `--c97-*` tokens directly under `data-c97-surface`. `DESIGN.md` now describes Catalog 97 and governs this route. The old site header was sticky at 73px and was deleted on 2026-09-16, and `Catalog97Header` is `position: relative`, so every measurement below that assumes a 73px sticky header predates that change. Contrast figures below were measured against Working Instrument values carried through the since-removed bridge and may need re-measuring against the shipped `--c97-*` colors.
 
 ## Scope and mode
 
@@ -26,7 +28,7 @@ The main action is to add players to You give and You get, then read a plain ver
 - The result is withheld when a required input is stale, unsupported, or materially incomplete.
 - Player selection is keyboard operable and prevents duplicates across both sides.
 - Private player selections persist as IDs in versioned browser storage. League settings live in the URL.
-- The page uses the existing Working Instrument system, one page-level `h1`, no nested `main`, 44px controls, dark mode, and no required motion.
+- The page uses the shipped Catalog 97 system, one page-level `h1`, no nested `main`, 44px controls, dark mode, and no required motion.
 - The first version supports PPR, Half PPR, and Standard managed redraft. Unsupported formats are stated plainly.
 
 ## Approved direction

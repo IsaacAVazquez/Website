@@ -11,7 +11,7 @@ import { useScorePools } from "@/hooks/useScorePools";
 import { effectiveResult, scoreParticipantPicks } from "@/lib/scorePools/poolAnalysis";
 import type { Scoreline } from "@/lib/scorePools";
 import type { ScorePoolsSnapshot, SnapshotFixture } from "@/types/scorePools";
-import { PILL_BUTTON, formatKickoff, formatScoreline } from "../score-pools-ui";
+import { PILL_BUTTON, SampleDataNotice, formatKickoff, formatScoreline } from "../score-pools-ui";
 
 interface TrackerClientProps {
   snapshot: ScorePoolsSnapshot;
@@ -186,7 +186,7 @@ export function TrackerClient({ snapshot }: TrackerClientProps) {
     <section className="c97-band min-h-screen" data-c97-surface="paper">
       <div className="c97-shell space-y-6">
         <header>
-          <p className="c97-kicker mb-1">Prediction Tools</p>
+          <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-1)" }}>Prediction Tools</p>
           <h1 className="text-2xl font-bold tracking-tight text-[var(--c97-ink)] sm:text-3xl">
             Score{" "}
             <em style={{ fontFamily: "var(--c97-font-display)", fontStyle: "italic", fontWeight: 400 }}>
@@ -207,6 +207,8 @@ export function TrackerClient({ snapshot }: TrackerClientProps) {
           </p>
         </header>
 
+        <SampleDataNotice snapshot={snapshot} />
+
         {!activePool || !league ? (
           <p className="text-sm text-[var(--c97-ink-2)]">
             No pool yet. Create one on the{" "}
@@ -215,7 +217,7 @@ export function TrackerClient({ snapshot }: TrackerClientProps) {
         ) : (
           <>
             {pools.length > 1 ? (
-              <nav className="c97-segmented" aria-label="Pools">
+              <nav className="c97-segmented" style={{ marginBottom: "var(--c97-sp-3)" }} aria-label="Pools">
                 {pools.map((pool) => (
                   <button
                     key={pool.id}
@@ -402,7 +404,7 @@ export function TrackerClient({ snapshot }: TrackerClientProps) {
 
                   <div className="mt-4">
                     <h3 className="text-sm font-bold text-[var(--c97-ink)]">Enter rival picks</h3>
-                    <div className="c97-segmented mt-2">
+                    <div className="c97-segmented" style={{ marginTop: "var(--c97-sp-1)" }}>
                       {activePool.rivals.map((rival) => (
                         <button
                           key={rival.id}

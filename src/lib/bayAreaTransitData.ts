@@ -38,6 +38,9 @@ function bartApiKey(): string {
   return process.env.BART_API_KEY?.trim() || BART_DEMO_KEY;
 }
 const REQUEST_TIMEOUT_MS = 15_000;
+// A visitor is waiting on the live path, and the function serving them is cut
+// off at 60 seconds, so it gets one short attempt and then the fallback.
+const LIVE_REQUEST = { timeoutMs: 4_000, attempts: 1 };
 const MIN_STATIONS = 10;
 const MIN_LINES = 3;
 /** Polite spacing between sequential route detail calls. */
@@ -85,6 +88,7 @@ interface BartEstimate {
   hexcolor?: string | null;
   bikeflag?: string | null;
   delay?: string | null;
+  cancelflag?: string | null;
 }
 
 interface BartEtd {
@@ -138,14 +142,17 @@ function asArray<T>(value: T | T[] | null | undefined): T[] {
   return Array.isArray(value) ? value : [value];
 }
 
-async function fetchBartJson<T>(path: string): Promise<T> {
+async function fetchBartJson<T>(
+  path: string,
+  { timeoutMs = REQUEST_TIMEOUT_MS, attempts = 3 } = {}
+): Promise<T> {
   const separator = path.includes("?") ? "&" : "?";
   const url = `${BART_API_BASE}/${path}${separator}key=${encodeURIComponent(bartApiKey())}&json=y`;
   let lastError: unknown;
-  for (let attempt = 0; attempt < 3; attempt += 1) {
+  for (let attempt = 0; attempt < attempts; attempt += 1) {
     try {
       const response = await fetch(url, {
-        signal: AbortSignal.timeout(REQUEST_TIMEOUT_MS),
+        signal: AbortSignal.timeout(timeoutMs),
         headers: { Accept: "application/json" },
       });
       if (!response.ok) {
@@ -155,7 +162,18 @@ async function fetchBartJson<T>(path: string): Promise<T> {
         (error as { retryable?: boolean }).retryable = response.status >= 500;
         throw error;
       }
-      return (await response.json()) as T;
+      const body = (await response.json()) as {
+        root?: { message?: { error?: { text?: string } } | string | null } | null;
+      };
+      // BART reports a bad key, station, or command inside the body. Without
+      // this an error that arrives with a 200 reads as a feed with nothing in it.
+      const message = body.root?.message;
+      if (message && typeof message === "object" && message.error) {
+        throw new Error(
+          `BART answered ${path} with an error: ${message.error.text ?? "no detail"}.`
+        );
+      }
+      return body as T;
     } catch (error) {
       lastError = error;
       const isTimeout =
@@ -163,7 +181,10 @@ async function fetchBartJson<T>(path: string): Promise<T> {
         (error.name === "AbortError" || error.name === "TimeoutError");
       const isNetwork = error instanceof TypeError;
       const isRetryable = Boolean((error as { retryable?: boolean })?.retryable);
-      if (attempt < 2 && (isTimeout || isNetwork || isRetryable)) {
+      if (
+        attempt < attempts - 1 &&
+        (isTimeout || isNetwork || isRetryable)
+      ) {
         await new Promise((resolve) => setTimeout(resolve, 1000 * (attempt + 1)));
         continue;
       }
@@ -362,6 +383,7 @@ export async function buildBayAreaTransitSnapshotData(
     const departures: TransitDeparture[] = [];
     for (const etd of asArray(etdStation.etd)) {
       for (const estimate of asArray(etd.estimate)) {
+        if (estimate.cancelflag === "1") continue;
         departures.push({
           destination: (etd.destination ?? "").trim(),
           destinationAbbr: (etd.abbreviation ?? "").trim(),
@@ -402,8 +424,10 @@ export async function buildBayAreaTransitSnapshotData(
   // the fetch returns less than half of them, and disclose it through
   // sectionStatus instead of presenting the remnant as fresh. A proportional
   // floor rather than "fewer than before" so a genuinely closed station cannot
-  // ratchet the guard permanently shut. This mirrors the guard that
-  // buildBayAreaTransitLiveSnapshotData already applies below.
+  // ratchet the guard permanently shut. buildBayAreaTransitLiveSnapshotData
+  // does not share this guard. It answers a visitor at that moment, so it
+  // serves a thin or empty feed as it is, while these boards are the cold start
+  // fallback and have to stay full.
   const previousBoards = options.previousBoards ?? {};
   const previousBoardCount = Object.keys(previousBoards).length;
   const freshBoardCount = Object.keys(freshBoards).length;
@@ -471,17 +495,17 @@ export async function buildBayAreaTransitLiveSnapshotData(
     await Promise.allSettled([
       fetchBartJson<{
         root?: { bsa?: BartAdvisory | BartAdvisory[] | null } | null;
-      }>("bsa.aspx?cmd=bsa"),
+      }>("bsa.aspx?cmd=bsa", LIVE_REQUEST),
       fetchBartJson<{
         root?: { bsa?: BartAdvisory | BartAdvisory[] | null } | null;
-      }>("bsa.aspx?cmd=elev"),
+      }>("bsa.aspx?cmd=elev", LIVE_REQUEST),
       fetchBartJson<{
         root?: {
           time?: string | null;
           date?: string | null;
           station?: BartEtdStation[] | null;
         } | null;
-      }>("etd.aspx?cmd=etd&orig=ALL"),
+      }>("etd.aspx?cmd=etd&orig=ALL", LIVE_REQUEST),
     ]);
 
   if (
@@ -546,6 +570,7 @@ export async function buildBayAreaTransitLiveSnapshotData(
 
       for (const etd of asArray(etdStation.etd)) {
         for (const estimate of asArray(etd.estimate)) {
+          if (estimate.cancelflag === "1") continue;
           departures.push({
             destination: (etd.destination ?? "").trim(),
             destinationAbbr: (etd.abbreviation ?? "").trim(),
@@ -572,7 +597,10 @@ export async function buildBayAreaTransitLiveSnapshotData(
       };
     }
 
-    if (Object.keys(boards).length > 0) stationBoards = boards;
+    // An answer with no departures is what BART sends when no trains run, so
+    // it replaces the committed boards. An error never reaches this branch,
+    // because fetchBartJson rejects it.
+    stationBoards = boards;
   }
 
   const defaultStation =

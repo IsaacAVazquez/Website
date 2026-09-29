@@ -185,9 +185,12 @@ export function FoodMapLeaflet({
 
   if (status === "error") {
     return (
-      <div className="fm-map-fallback" role="img" aria-label="Map unavailable">
-        <MapPin size={28} aria-hidden="true" />
-        <p style={{ maxWidth: "22rem", margin: 0, fontSize: 13.5 }}>
+      <div className="fm-map-fallback c97-panel">
+        <MapPin size={24} aria-hidden="true" />
+        <p
+          className="c97-prose"
+          style={{ maxInlineSize: "var(--c97-measure-body)", fontSize: "var(--c97-fs-small)" }}
+        >
           The interactive map couldn&apos;t load right now. The full list of stops is
           still below.
         </p>

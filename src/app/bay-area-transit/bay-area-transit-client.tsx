@@ -45,6 +45,7 @@ const LAST_UPDATED_FORMATTER = new Intl.DateTimeFormat("en-US", {
   hour: "numeric",
   minute: "2-digit",
   timeZone: "America/Los_Angeles",
+  timeZoneName: "short",
 });
 
 function formatGeneratedAt(value: string | null | undefined): string {
@@ -111,9 +112,9 @@ function LineCard({ line }: { line: TransitLine }) {
           aria-hidden="true"
         />
         <div className="min-w-0">
-          <p className="c97-kicker mb-1">{line.colorName} line</p>
+          <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-1)" }}>{line.colorName} line</p>
           <h3
-            className="c97-serif mb-0 truncate"
+            className="c97-serif truncate"
             style={{ fontWeight: 600, fontSize: "var(--c97-fs-h3)" }}
           >
             {line.name}
@@ -122,7 +123,7 @@ function LineCard({ line }: { line: TransitLine }) {
       </div>
 
       <div className="mt-3 flex items-center justify-between gap-3">
-        <p className="c97-prose mb-0 flex items-center gap-2" style={{ fontSize: "var(--c97-fs-small)" }}>
+        <p className="c97-prose flex items-center gap-2" style={{ fontSize: "var(--c97-fs-small)" }}>
           <Navigation className="h-4 w-4 shrink-0" aria-hidden="true" />
           <span>
             {line.origin || "—"} → {line.destination || "—"}
@@ -508,8 +509,8 @@ export function BayAreaTransitClient({
             {routeState.view === "lines" ? (
               <>
                 <div className="space-y-2">
-                  <p className="c97-kicker mb-0">Lines</p>
-                  <p className="c97-prose mb-0">
+                  <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-1)" }}>Lines</p>
+                  <p className="c97-prose">
                     Every BART line with its official color and end-to-end
                     route. Switch to Departures to see the next trains at a
                     station.
@@ -526,8 +527,8 @@ export function BayAreaTransitClient({
             {routeState.view === "stations" ? (
               <>
                 <div className="space-y-2">
-                  <p className="c97-kicker mb-0">Stations</p>
-                  <p className="c97-prose mb-0">
+                  <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-1)" }}>Stations</p>
+                  <p className="c97-prose">
                     Pick a station to load its departure board above. The
                     colored dots show which lines stop there.
                   </p>
@@ -549,8 +550,8 @@ export function BayAreaTransitClient({
             {routeState.view === "advisories" ? (
               <>
                 <div className="space-y-2">
-                  <p className="c97-kicker mb-0">Service alerts</p>
-                  <p className="c97-prose mb-0">
+                  <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-1)" }}>Service alerts</p>
+                  <p className="c97-prose">
                     Advisories and elevator outages posted by BART at the
                     last refresh.
                   </p>
@@ -630,8 +631,8 @@ export function BayAreaTransitClient({
 
       <section className="c97-band c97-sheet" data-c97-surface="bone" data-seam="deckle">
         <div className="c97-shell">
-          <p className="c97-kicker mb-2">Data note</p>
-          <p className="c97-prose mb-0">
+          <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-1)" }}>Data note</p>
+          <p className="c97-prose">
             {system.seed
               ? "This is a hand-authored seed shipped with the app. The first refresh from the BART public API replaces it with the full network and real-time departures."
               : "The route catalog comes from the checked-in snapshot. Departures, advisories, and elevator outages refresh from BART in the browser, with the last good snapshot held back as a fallback."}

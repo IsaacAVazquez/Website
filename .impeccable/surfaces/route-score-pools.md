@@ -5,6 +5,8 @@ primary_target: "route:/score-pools"
 related_targets: ["src/app/score-pools/score-pools-client.tsx","src/app/score-pools/fixture-detail-drawer.tsx","src/app/score-pools/tracker/tracker-client.tsx","src/app/score-pools/settings/settings-client.tsx","src/lib/scorePoolsData.ts","src/data/scorePoolsSnapshot.ts"]
 ---
 
+Updated on 2026-09-28 by the responsive pass. /score-pools is a wide tool route, so its header and footer widen with its 1376px shell, and its h1 no longer starts 23px left of the wordmark at 1280. The tracker and settings pages stay on the standard column.
+
 # Score pools surface brief
 
 Scope. The score pools product across three pages, `/score-pools` (`src/app/score-pools/score-pools-client.tsx` with `fixture-detail-drawer.tsx`), `/score-pools/tracker` (`tracker/tracker-client.tsx`) and `/score-pools/settings` (`settings/settings-client.tsx`). Data comes from the committed snapshot in `src/data/scorePoolsSnapshot.ts`, built by `src/lib/scorePoolsData.ts`, and the engine spec is `SCORE_POOLS_ENGINE.md`. Pool config and picks live in localStorage.
@@ -13,7 +15,7 @@ Visitor mode. Operate. The visitor is making and tracking picks against a pool's
 
 Audience. A friend setting up or joining an exact-score pool, who will not know terms like de-vig or modal pick, plus keyboard and screen reader users working through the drawer and tracker. The honesty framing, meaning as-of stamps, sample and manual labels and residual disclosure, is a constraint.
 
-Visual world. Catalog 97 through the bridge, as of 2026-09-16. The route renders inside `Catalog97ToolShell`. Its components still read `--home-*` names, and the bridge block in `src/app/catalog97.css` aliases each one onto the Catalog 97 value for the enclosing surface, sets every `--radius-*` token to 0, and sets every `--shadow-*` token to `none`. `DESIGN.md` still describes the Working Instrument, so judging this route against it manufactures false findings. The tool shell brief, `src-components-catalog97-catalog97toolshell-tsx.md`, has the detail. Hex values and contrast figures further down this brief were measured before the bridge, so they are Working Instrument values and need re-measuring before anyone acts on them.
+Visual world. Catalog 97, as shipped. The route renders inside `Catalog97ToolShell` and its components read `--c97-*` tokens directly under `data-c97-surface`. `DESIGN.md` now describes Catalog 97, so judging this route against it is correct. The tool shell brief, `src-components-catalog97-catalog97toolshell-tsx.md`, has the detail. Hex values and contrast figures further down this brief were measured before the 2026-09-27 close-out and may need re-measuring against the shipped `--c97-*` colors.
 
 ## Loop, 2026-09-14
 

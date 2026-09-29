@@ -336,8 +336,15 @@ export function BestBallDraftBoard({
               }}
               disabled={isComplete}
               aria-label={`Draft ${player.name} at pick ${currentPick}`}
-              className="inline-flex min-h-[44px] items-center justify-center border px-3 text-xs font-semibold transition-[background-color,color,opacity] duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--c97-accent)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--c97-surface)] disabled:cursor-not-allowed disabled:opacity-50"
-              style={{ borderColor: "var(--c97-ink)", background: "var(--c97-ink)", color: "var(--c97-surface)" }}
+              className="inline-flex min-h-[44px] items-center justify-center border px-3 text-xs font-semibold transition-[background-color,color] duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--c97-accent)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--c97-surface)] disabled:cursor-not-allowed disabled:border-dashed"
+              // Disabled prints unfilled (no fill, dashed ink-2 edge, ink-2 text)
+              // instead of fading the filled button with opacity, matching every
+              // other disabled control in the system since PR #482.
+              style={
+                isComplete
+                  ? { borderColor: "var(--c97-ink-2)", background: "none", color: "var(--c97-ink-2)" }
+                  : { borderColor: "var(--c97-ink)", background: "var(--c97-ink)", color: "var(--c97-surface)" }
+              }
             >
               Draft
             </button>

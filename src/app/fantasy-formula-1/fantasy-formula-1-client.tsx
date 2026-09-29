@@ -5,6 +5,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { ArrowDownUp, Lock, Plus, RefreshCcw, Sparkles, Trash2, Unlock } from "lucide-react";
 import { Catalog97ProjectHero } from "@/components/catalog97/Catalog97ProjectHero";
 import { PROJECT_PRESS } from "@/constants/projectPress";
+import { DISPLAY_TIME_ZONE } from "@/lib/date-formatters";
 import {
   buildFantasyFormula1Assets,
   EMPTY_FANTASY_FORMULA1_LINEUP,
@@ -51,6 +52,8 @@ const UPDATED_AT_FORMATTER = new Intl.DateTimeFormat("en-US", {
   day: "numeric",
   hour: "numeric",
   minute: "2-digit",
+  timeZone: DISPLAY_TIME_ZONE,
+  timeZoneName: "short",
 });
 
 function formatUpdatedAt(value: string | null | undefined): string {
@@ -179,8 +182,8 @@ function LineupAssetRow({
       <div className="flex min-w-0 items-center gap-3">
         <AssetAvatar asset={asset} />
         <div className="min-w-0">
-          <p className="c97-serif mb-0 truncate">{asset.name}</p>
-          <p className="c97-kicker mb-0" style={{ marginTop: "var(--c97-sp-1)" }}>
+          <p className="c97-serif truncate">{asset.name}</p>
+          <p className="c97-kicker" style={{ marginTop: "var(--c97-sp-1)" }}>
             {asset.kind === "driver" ? asset.teamName : "Constructor"} &middot; {formatMoney(asset.price)}
           </p>
         </div>
@@ -248,7 +251,7 @@ function LineupPanel({
 
       <div className="grid gap-4 lg:grid-cols-2">
         <div>
-          <p className="c97-kicker mb-3">Drivers</p>
+          <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-2)" }}>Drivers</p>
           <ol className="space-y-2 pl-0">
             {summary.drivers.map((asset) => (
               <LineupAssetRow
@@ -265,7 +268,7 @@ function LineupPanel({
           </ol>
         </div>
         <div>
-          <p className="c97-kicker mb-3">Constructors</p>
+          <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-2)" }}>Constructors</p>
           <ol className="space-y-2 pl-0">
             {summary.constructors.map((asset) => (
               <LineupAssetRow
@@ -297,7 +300,7 @@ function RecommendationCard({
     <article className="c97-panel">
       <div className="flex items-start justify-between gap-4">
         <div>
-          <p className="c97-kicker mb-1">Option {candidate.rank}</p>
+          <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-1)" }}>Option {candidate.rank}</p>
           <h3 className="c97-h3 mb-0">{formatPoints(candidate.projectedPoints)} projected</h3>
         </div>
         <button type="button" className="c97-ff1-btn" onClick={() => onApply(candidate)}>
@@ -307,23 +310,23 @@ function RecommendationCard({
       </div>
       <div className="mt-4 grid grid-cols-3 gap-2 text-sm">
         <div className="flex min-w-0 flex-col gap-1 border px-2 py-2" style={{ borderColor: "var(--c97-rule)" }}>
-          <span className="c97-kicker mb-0">Cost</span>
+          <span className="c97-kicker">Cost</span>
           <strong className="c97-mono">{formatMoney(candidate.totalPrice)}</strong>
         </div>
         <div className="flex min-w-0 flex-col gap-1 border px-2 py-2" style={{ borderColor: "var(--c97-rule)" }}>
-          <span className="c97-kicker mb-0">Left</span>
+          <span className="c97-kicker">Left</span>
           <strong className="c97-mono">{formatMoney(candidate.budgetRemaining)}</strong>
         </div>
         <div className="flex min-w-0 flex-col gap-1 border px-2 py-2" style={{ borderColor: "var(--c97-rule)" }}>
-          <span className="c97-kicker mb-0">Value</span>
+          <span className="c97-kicker">Value</span>
           <strong className="c97-mono">{formatPoints(candidate.valueRating)}</strong>
         </div>
       </div>
       <div className="mt-4 space-y-2">
-        <p className="c97-serif mb-0 text-sm font-semibold">
+        <p className="c97-serif text-sm font-semibold" style={{ marginBottom: "var(--c97-sp-1)" }}>
           {candidate.drivers.map((asset) => asset.shortName).join(" · ")}
         </p>
-        <p className="c97-prose mb-0 text-sm" style={{ color: "var(--c97-ink-2)" }}>
+        <p className="c97-prose text-sm" style={{ color: "var(--c97-ink-2)" }}>
           {candidate.constructors.map((asset) => asset.name).join(" · ")}
         </p>
       </div>
@@ -356,7 +359,7 @@ function RecommendationsPanel({
       ) : (
         <article className="c97-panel">
           <p className="mb-0 font-semibold">No valid optimized lineup is available.</p>
-          <p className="c97-prose mb-0 mt-2 text-sm" style={{ color: "var(--c97-ink-2)" }}>
+          <p className="c97-prose text-sm" style={{ marginTop: "var(--c97-sp-1)", color: "var(--c97-ink-2)" }}>
             Unlock a few picks or reset the team. The optimizer only returns complete lineups
             inside the budget.
           </p>
@@ -419,7 +422,7 @@ function AssetsTable({
     return (
       <article className="c97-panel">
         <p className="mb-0 font-semibold">No Formula 1 fantasy assets are available.</p>
-        <p className="c97-prose mb-0 mt-2 text-sm" style={{ color: "var(--c97-ink-2)" }}>
+        <p className="c97-prose text-sm" style={{ marginTop: "var(--c97-sp-1)", color: "var(--c97-ink-2)" }}>
           The checked-in OpenF1 snapshot needs standings or a published race classification before
           this model can build a slate.
         </p>
@@ -464,8 +467,8 @@ function AssetsTable({
                   <div className="flex min-w-0 items-center gap-3">
                     <AssetAvatar asset={asset} />
                     <div className="min-w-0">
-                      <p className="c97-serif mb-0 truncate">{asset.name}</p>
-                      <p className="c97-kicker mb-0" style={{ marginTop: "var(--c97-sp-1)" }}>
+                      <p className="c97-serif truncate">{asset.name}</p>
+                      <p className="c97-kicker" style={{ marginTop: "var(--c97-sp-1)" }}>
                         {asset.standingPosition ? `P${asset.standingPosition}` : "Unranked"}
                       </p>
                     </div>
@@ -504,9 +507,9 @@ function RulesPanel() {
   return (
     <section className="grid gap-5 lg:grid-cols-[minmax(0,1fr)_minmax(18rem,24rem)]">
       <article className="c97-panel">
-        <p className="c97-kicker mb-1">Model notes</p>
+        <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-1)" }}>Model notes</p>
         <h2 className="c97-poster-sm mb-0">This is a planning model.</h2>
-        <p className="c97-prose mt-3" style={{ color: "var(--c97-ink-2)" }}>
+        <p className="c97-prose" style={{ marginTop: "var(--c97-sp-2)", color: "var(--c97-ink-2)" }}>
           I use the checked-in OpenF1 season snapshot to estimate prices, weekend projection,
           value, form, and risk. The point is to make lineup tradeoffs legible before a race
           weekend, with a simplified scoring model.
@@ -526,9 +529,9 @@ function RulesPanel() {
       </article>
 
       <article className="c97-panel">
-        <p className="c97-kicker mb-1">Signals</p>
+        <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-1)" }}>Signals</p>
         <h2 className="c97-poster-sm mb-0">What the model rewards</h2>
-        <p className="c97-prose mt-3" style={{ color: "var(--c97-ink-2)" }}>
+        <p className="c97-prose" style={{ marginTop: "var(--c97-sp-2)", color: "var(--c97-ink-2)" }}>
           Season points keep the model anchored. Last-race movement catches form. Standings rank
           keeps premium assets expensive. Value rating pushes cheaper assets up when the projection
           justifies the slot.
@@ -771,7 +774,7 @@ export function FantasyFormula1Client({
       >
         <div className="c97-shell space-y-6">
           <div className="flex flex-wrap items-start justify-between gap-4">
-            <p className="c97-prose mb-0 max-w-[62ch]">
+            <p className="c97-prose">
               {selectedAssetNames
                 ? `This lineup has ${selectedAssetNames}.`
                 : "No picks yet. Start from an optimized lineup below, or add drivers and constructors from the asset board."}

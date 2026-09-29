@@ -4,8 +4,64 @@ import {
   normalizeInvestmentFreshness,
   normalizeInvestmentSnapshot,
   mergeInvestmentSnapshots,
+  replaceSnapshotPrice,
 } from "../investmentFreshness";
 import type { InvestmentSnapshot } from "@/types/investment";
+
+describe("replaceSnapshotPrice", () => {
+  const prior: InvestmentSnapshot = {
+    symbol: "AAPL",
+    source: "prefetched",
+    lastUpdated: "2026-08-14T23:00:00.000Z",
+    freshness: {
+      snapshotBuiltAt: "2026-08-14T23:00:00.000Z",
+      sections: { price: "2026-08-14" },
+      retainedSections: ["price", "fundamentals"],
+    },
+    capabilities: { price: true, fundamentals: true },
+    sections: {
+      price: [{ date: "2026-08-14", open: 9, high: 10, low: 8, close: 9, volume: 90 }],
+      fundamentals: { ttmPe: 25 },
+    },
+  };
+  const priced = (date: string): InvestmentSnapshot => ({
+    symbol: "AAPL",
+    source: "prefetched",
+    lastUpdated: null,
+    freshness: { snapshotBuiltAt: null, sections: { price: date } },
+    capabilities: { price: true },
+    sections: {
+      price: [{ date, open: 10, high: 11, low: 9, close: 10, volume: 100 }],
+    },
+  });
+
+  it("advances the price and leaves every other section and date as they were", () => {
+    const result = replaceSnapshotPrice(prior, priced("2026-09-25"));
+
+    expect(result.sections.price).toEqual(priced("2026-09-25").sections.price);
+    expect(result.sections.fundamentals).toEqual({ ttmPe: 25 });
+    expect(result.lastUpdated).toBe("2026-08-14T23:00:00.000Z");
+    expect(result.freshness).toEqual({
+      snapshotBuiltAt: "2026-08-14T23:00:00.000Z",
+      sections: { price: "2026-09-25" },
+      retainedSections: ["fundamentals"],
+    });
+  });
+
+  it("keeps the prior price when the new one is older or missing", () => {
+    expect(replaceSnapshotPrice(prior, priced("2026-08-13")).sections.price).toEqual(
+      prior.sections.price
+    );
+
+    const unpriced = replaceSnapshotPrice(prior, {
+      ...priced("2026-09-25"),
+      freshness: { snapshotBuiltAt: null, sections: {} },
+      sections: {},
+    });
+    expect(unpriced.freshness?.sections.price).toBe("2026-08-14");
+    expect(unpriced.freshness?.retainedSections).toEqual(["price", "fundamentals"]);
+  });
+});
 
 describe("investmentFreshness", () => {
   it("derives the latest saved price date from date and report_date rows", () => {

@@ -38,6 +38,8 @@ import {
   type NewsPulseSearchState,
   type NewsSource,
 } from "./news-pulse-state";
+import { DATE_TIME_FORMATTER } from "@/lib/date-formatters";
+import { useClientNow } from "@/hooks/useClientNow";
 import "./news-pulse.css";
 
 interface NewsPulseClientProps {
@@ -47,18 +49,13 @@ interface NewsPulseClientProps {
 
 type FeedResponse = NewsPulseFeedResponse;
 
-const LAST_FETCHED_FORMATTER = new Intl.DateTimeFormat("en-US", {
-  month: "short",
-  day: "numeric",
-  hour: "numeric",
-  minute: "2-digit",
-});
-
-function timeAgo(dateStr: string): string {
+/** Relative age computed against a caller-supplied "now" rather than reading
+ * Date.now() during render, so server and client agree on the first paint. */
+function timeAgo(dateStr: string, now: number): string {
   const date = new Date(dateStr);
   if (Number.isNaN(date.getTime())) return "";
 
-  const diff = Date.now() - date.getTime();
+  const diff = now - date.getTime();
   const minutes = Math.floor(diff / 60_000);
   if (minutes < 1) return "just now";
   if (minutes < 60) return `${minutes}m ago`;
@@ -70,11 +67,18 @@ function timeAgo(dateStr: string): string {
   return `${days}d ago`;
 }
 
+/** Fallback for timeAgo() while useClientNow() is still null (server render
+ * and first hydration pass), so the pubDate always shows something true. */
+function formatAbsolutePubDate(dateStr: string): string {
+  const date = new Date(dateStr);
+  return Number.isNaN(date.getTime()) ? "" : DATE_TIME_FORMATTER.format(date);
+}
+
 function formatFetchedAt(value: string): string {
   const date = new Date(value);
   return Number.isNaN(date.getTime())
     ? "Waiting on a refresh"
-    : LAST_FETCHED_FORMATTER.format(date);
+    : DATE_TIME_FORMATTER.format(date);
 }
 
 function getSourceBadgeStyle(sourceColor: string): CSSProperties {
@@ -396,7 +400,7 @@ function LoadingState() {
       <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-2)" }}>
         Refreshing live feeds
       </p>
-      <p className="c97-prose mb-0">
+      <p className="c97-prose">
         I am pulling the latest RSS headlines now so the dashboard can rebuild the digest and
         comparison views.
       </p>
@@ -410,7 +414,7 @@ function ErrorState({ message, onRetry }: { message: string; onRetry: () => void
       <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-2)" }}>
         I could not load the feeds.
       </p>
-      <p className="c97-prose mb-0">{message}</p>
+      <p className="c97-prose">{message}</p>
       <button
         type="button"
         onClick={onRetry}
@@ -439,6 +443,7 @@ function groupByOutlet(articles: NewsArticle[]): { source: NewsFeedId; items: Ne
 }
 
 function HeadlinesView({ articles }: { articles: NewsArticle[] }) {
+  const now = useClientNow();
   const [visibleCount, setVisibleCount] = useState(HEADLINES_PAGE_SIZE);
   // Reset when the underlying article set changes (source filter, refresh).
   useEffect(() => {
@@ -452,7 +457,7 @@ function HeadlinesView({ articles }: { articles: NewsArticle[] }) {
         <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-2)" }}>
           No headlines match this filter.
         </p>
-        <p className="c97-prose mb-0">
+        <p className="c97-prose">
           That source did not return any articles in the current pull, so there is nothing to
           compare yet.
         </p>
@@ -511,7 +516,7 @@ function HeadlinesView({ articles }: { articles: NewsArticle[] }) {
                       {article.title}
                     </h2>
                     <p className="c97-meta" style={{ marginTop: "var(--c97-sp-1)" }}>
-                      {timeAgo(article.pubDate)}
+                      {now === null ? formatAbsolutePubDate(article.pubDate) : timeAgo(article.pubDate, now)}
                       {article.category && article.category !== "General" ? ` · ${article.category}` : ""}
                     </p>
                     {article.description ? (
@@ -559,6 +564,7 @@ function CoverageView({
   articles: NewsArticle[];
   topics: TopicCluster[];
 }) {
+  const now = useClientNow();
   const sourceIds = useMemo(() => getOrderedSourcesForArticles(articles), [articles]);
   const storyClusters = useMemo(() => clusterArticlesByStory(articles), [articles]);
   const maxTopicCount = topics.reduce((max, topic) => Math.max(max, topic.count), 0);
@@ -569,7 +575,7 @@ function CoverageView({
         <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-2)" }}>
           The cross-outlet overlap is thin right now.
         </p>
-        <p className="c97-prose mb-0">
+        <p className="c97-prose">
           I need at least two outlets on the same storyline before this view becomes useful.
         </p>
       </div>
@@ -720,7 +726,11 @@ function CoverageView({
                       <p className="c97-meta" style={{ marginTop: "var(--c97-sp-1)" }}>
                         {cluster.representative.sourceName}
                         {cluster.representative.pubDate
-                          ? ` · ${timeAgo(cluster.representative.pubDate)}`
+                          ? ` · ${
+                              now === null
+                                ? formatAbsolutePubDate(cluster.representative.pubDate)
+                                : timeAgo(cluster.representative.pubDate, now)
+                            }`
                           : ""}
                       </p>
                     </td>
@@ -807,7 +817,7 @@ function AnalysisView({ articles }: { articles: NewsArticle[] }) {
         <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-2)" }}>
           There is no analysis to compare yet.
         </p>
-        <p className="c97-prose mb-0">
+        <p className="c97-prose">
           The dashboard needs headline data before it can calculate tone, length, and readability
           by outlet.
         </p>

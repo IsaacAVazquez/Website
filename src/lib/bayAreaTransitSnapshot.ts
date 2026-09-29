@@ -59,12 +59,14 @@ export function isTransitStationIdShape(stationId: string): boolean {
 }
 
 export function isValidTransitStationId(stationId: string): boolean {
-  // Use hasOwn (not `in`) so prototype keys like "constructor"/"toString" can't
-  // resolve through the prototype chain and turn a 404 into a cacheable 200
-  // serializing a built-in, matching the world-cup validator's guard.
+  // The station list and not the board map, because BART's departures feed
+  // leaves out any station with no train in its lookahead window. Matching on
+  // the list also keeps prototype keys like "constructor" from resolving.
   return (
     TRANSIT_STATION_ID_PATTERN.test(stationId) &&
-    Object.hasOwn(bayAreaTransitSnapshot.stationBoards, stationId)
+    bayAreaTransitSnapshot.summary.stations.some(
+      (station) => station.id === stationId
+    )
   );
 }
 
@@ -73,6 +75,9 @@ interface TransitSnapshotOptions {
 }
 
 const LIVE_CACHE_TTL_MS = 45_000;
+// Long enough that the station request behind a failed summary request does
+// not wait on BART again, short enough that a recovery shows within a minute.
+const LIVE_FAILURE_TTL_MS = 30_000;
 let liveSnapshotCache:
   | { snapshot: typeof bayAreaTransitSnapshot; expiresAt: number }
   | null = null;
@@ -96,7 +101,24 @@ async function getTransitSnapshot(
       };
       return typedSnapshot;
     })
-    .catch(() => bayAreaTransitSnapshot)
+    .catch(() => {
+      const snapshot: typeof bayAreaTransitSnapshot = {
+        ...bayAreaTransitSnapshot,
+        summary: {
+          ...bayAreaTransitSnapshot.summary,
+          sectionStatus: {
+            advisories: "stale-fallback",
+            elevator: "stale-fallback",
+            departures: "stale-fallback",
+          },
+        },
+      };
+      liveSnapshotCache = {
+        snapshot,
+        expiresAt: Date.now() + LIVE_FAILURE_TTL_MS,
+      };
+      return snapshot;
+    })
     .finally(() => {
       liveSnapshotInflight = null;
     });
@@ -115,14 +137,29 @@ export async function getTransitStationBoard(
   options: TransitSnapshotOptions = {}
 ): Promise<TransitStationBoard> {
   const snapshot = await getTransitSnapshot(options);
-  const board = snapshot.stationBoards[stationId];
+  const station = snapshot.summary.stations.find(
+    (entry) => entry.id === stationId
+  );
 
-  if (!board) {
+  if (!station) {
     throw createTransitSnapshotError(
       "Transit station board was not found.",
       404
     );
   }
 
-  return board;
+  // A real station with no board has no train in BART's lookahead window.
+  const board = snapshot.stationBoards[stationId] ?? {
+    id: station.id,
+    abbr: station.abbr,
+    name: station.name,
+    departures: [],
+    generatedAt:
+      snapshot.summary.system?.generatedAt ?? new Date().toISOString(),
+  };
+
+  return {
+    ...board,
+    status: snapshot.summary.sectionStatus?.departures ?? "fresh",
+  };
 }

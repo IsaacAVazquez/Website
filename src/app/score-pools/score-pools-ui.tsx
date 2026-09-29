@@ -4,6 +4,8 @@
 // chips, and the small token-styled controls the three pages reuse.
 
 import type { ConfidenceLevel, Scoreline } from "@/lib/scorePools";
+import { hasLiveScorePoolsData } from "@/lib/scorePoolsSnapshot";
+import type { ScorePoolLeagueSnapshot, ScorePoolsSnapshot } from "@/types/scorePools";
 
 export function formatScoreline(score: Scoreline): string {
   return `${score.home}-${score.away}`;
@@ -11,7 +13,8 @@ export function formatScoreline(score: Scoreline): string {
 
 export function formatKickoff(iso: string, timezone: string | null): string {
   try {
-    return new Intl.DateTimeFormat(undefined, {
+    // tz-local: timezone is a per-pool localStorage setting (null = the visitor's own device zone); never renders before a pool exists.
+    return new Intl.DateTimeFormat("en-US", {
       weekday: "short",
       month: "short",
       day: "numeric",
@@ -26,7 +29,8 @@ export function formatKickoff(iso: string, timezone: string | null): string {
 
 export function formatTime(iso: string, timezone: string | null): string {
   try {
-    return new Intl.DateTimeFormat(undefined, {
+    // tz-local: see formatKickoff above; same per-pool, localStorage-only setting.
+    return new Intl.DateTimeFormat("en-US", {
       hour: "numeric",
       minute: "2-digit",
       ...(timezone ? { timeZone: timezone } : {}),
@@ -105,6 +109,36 @@ export function EpMeter({ value, max }: { value: number; max: number }) {
       </span>
     </span>
   );
+}
+
+export const SAMPLE_NOTICE =
+  "border border-[var(--c97-rule)] bg-[var(--c97-overlay)] px-4 py-3 text-2xs text-[var(--c97-ink-2)]";
+
+// UTC, so the server render and the browser print the same day.
+const SNAPSHOT_DATE = new Intl.DateTimeFormat("en-US", { dateStyle: "long", timeZone: "UTC" });
+
+/** Printed on every score-pools page until a provider league carries fetched odds. */
+export function SampleDataNotice({ snapshot }: { snapshot: ScorePoolsSnapshot }) {
+  if (hasLiveScorePoolsData(snapshot)) return null;
+  const built = new Date(snapshot.generatedAt);
+  const builtOn = Number.isNaN(built.getTime()) ? "an unknown date" : SNAPSHOT_DATE.format(built);
+  // Hand-entered fixtures in a real league are not a sample, so they get their own wording.
+  const sampleOnly = snapshot.leagues.every(
+    (league) => league.sample || league.fixtures.length === 0,
+  );
+  return (
+    <p className={SAMPLE_NOTICE}>
+      {sampleOnly
+        ? `This page is showing sample data only. The sample was built on ${builtOn}, and no live odds feed is connected.`
+        : `No live odds feed is connected. The odds on this page were entered by hand, and the snapshot was built on ${builtOn}.`}
+    </p>
+  );
+}
+
+/** A league with no fixtures can't run a pool, so its option says so and is disabled. */
+export function leagueOptionLabel(league: ScorePoolLeagueSnapshot): string {
+  const name = `${league.name}${league.sample ? " (sample data)" : ""}`;
+  return league.fixtures.length === 0 ? `${name} · no fixtures yet` : name;
 }
 
 export const PILL_BUTTON = "c97-btn";

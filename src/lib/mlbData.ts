@@ -10,7 +10,6 @@ import type {
   MlbPitchingLeaders,
   MlbSnapshot,
   MlbStandingsRow,
-  MlbSummarySnapshot,
   MlbTeamOption,
   MlbTeamProfile,
   MlbTeamSnapshot,
@@ -92,7 +91,12 @@ interface StatsApiScheduleGame {
   gamePk?: number | null;
   gameDate?: string | null;
   gameType?: string | null;
-  status?: { abstractGameState?: string | null; detailedState?: string | null } | null;
+  ifNecessary?: string | null;
+  status?: {
+    abstractGameState?: string | null;
+    detailedState?: string | null;
+    startTimeTBD?: boolean | null;
+  } | null;
   teams?: {
     home?: {
       team?: { id?: number | null; name?: string | null; abbreviation?: string | null } | null;
@@ -114,10 +118,14 @@ interface StatsApiScheduleResponse {
 interface StatsApiLeaderEntry {
   rank?: number | null;
   value?: string | null;
-  person?: { id?: number | null; fullName?: string | null } | null;
+  person?: {
+    id?: number | null;
+    fullName?: string | null;
+    stats?: Array<{
+      splits?: Array<{ stat?: { gamesPlayed?: number | null } | null }> | null;
+    }> | null;
+  } | null;
   team?: { id?: number | null; name?: string | null; abbreviation?: string | null } | null;
-  numGames?: number | null;
-  gamesPlayed?: number | null;
 }
 
 interface StatsApiLeadersResponse {
@@ -219,6 +227,9 @@ function normalizeGame(raw: StatsApiScheduleGame, teamLookup: Map<string, MlbTea
   const awayTeam = normalizeGameTeam(raw.teams ?? null, "away", teamLookup);
   if (!homeTeam || !awayTeam) return null;
   const detailed = raw.status?.detailedState?.trim() || raw.status?.abstractGameState?.trim() || "Scheduled";
+  // The API reports a postponed or cancelled game as Final with no score, and
+  // lists the makeup under the same gamePk on its new date.
+  if (/^(postponed|cancelled)/i.test(detailed)) return null;
   const isFinal = (raw.status?.abstractGameState ?? "").toLowerCase() === "final";
   const homeScore = typeof raw.teams?.home?.score === "number" ? raw.teams.home.score : null;
   const awayScore = typeof raw.teams?.away?.score === "number" ? raw.teams.away.score : null;
@@ -237,6 +248,8 @@ function normalizeGame(raw: StatsApiScheduleGame, teamLookup: Map<string, MlbTea
     status: isFinal ? "FINISHED" : detailed,
     matchday: null,
     stage: raw.gameType?.trim() || null,
+    startTimeTbd: raw.status?.startTimeTBD === true,
+    ifNecessary: raw.ifNecessary === "Y",
     homeTeam,
     awayTeam,
     score: { winner, home: homeScore, away: awayScore },
@@ -306,7 +319,12 @@ function normalizeLeader(entry: StatsApiLeaderEntry, teamLookup: Map<string, Mlb
   const teamId = entry.team?.id;
   if (!name || typeof teamId !== "number") return null;
   const value = Number.parseFloat(entry.value ?? "0");
-  const games = entry.numGames ?? entry.gamesPlayed ?? 0;
+  // The leader rows carry no games played, so it is read from the hydrated
+  // season line, where a traded player's combined split is the largest.
+  const games = Math.max(
+    0,
+    ...(entry.person?.stats?.[0]?.splits ?? []).map((split) => split.stat?.gamesPlayed ?? 0)
+  );
   const known = teamLookup.get(String(teamId));
   return {
     rank: entry.rank ?? 0,
@@ -345,6 +363,9 @@ function buildTeamFormSummary(teamId: string, games: MlbGame[]): MlbFormSummary 
   );
 }
 
+// The API files a game under its US calendar date, which trails UTC through
+// the evening games, so the recent and upcoming windows overlap and the status
+// filter decides which list a game belongs in.
 function dateOffsetIso(days: number): string {
   const date = new Date();
   date.setUTCDate(date.getUTCDate() + days);
@@ -465,23 +486,44 @@ async function getStandings(season: string, teamLookup: Map<string, MlbTeamOptio
   });
 }
 
+function hasScore(game: MlbGame): boolean {
+  return game.score.home !== null && game.score.away !== null;
+}
+
+// A rescheduled or resumed game keeps its gamePk and is listed under both
+// dates, so the entry with a score is kept, and otherwise the later date.
+function collectScheduleGames(
+  response: StatsApiScheduleResponse,
+  teamLookup: Map<string, MlbTeamOption>
+): MlbGame[] {
+  const games = new Map<string, MlbGame>();
+  for (const date of response.dates ?? []) {
+    for (const raw of date.games ?? []) {
+      const game = normalizeGame(raw, teamLookup);
+      if (!game) continue;
+      const kept = games.get(game.id);
+      const replaces =
+        !kept ||
+        (hasScore(game) === hasScore(kept)
+          ? Date.parse(game.utcDate) > Date.parse(kept.utcDate)
+          : hasScore(game));
+      if (replaces) games.set(game.id, game);
+    }
+  }
+  return Array.from(games.values());
+}
+
 async function getRecentSchedule(teamLookup: Map<string, MlbTeamOption>): Promise<MlbGame[]> {
   const response = await fetchStatsApiJson<StatsApiScheduleResponse>(
     `/schedule?${buildQueryString({
       sportId: SPORT_ID,
       startDate: dateOffsetIso(-RECENT_WINDOW_DAYS),
-      endDate: dateOffsetIso(-1),
+      endDate: dateOffsetIso(0),
     })}`,
     SUMMARY_REVALIDATE_SECONDS
   );
-  const games: MlbGame[] = [];
-  for (const date of response.dates ?? []) {
-    for (const raw of date.games ?? []) {
-      const game = normalizeGame(raw, teamLookup);
-      if (game && game.status === "FINISHED") games.push(game);
-    }
-  }
-  return games
+  return collectScheduleGames(response, teamLookup)
+    .filter((game) => game.status === "FINISHED")
     .sort((a, b) => new Date(b.utcDate).getTime() - new Date(a.utcDate).getTime())
     .slice(0, RECENT_GAME_LIMIT);
 }
@@ -490,19 +532,13 @@ async function getUpcomingSchedule(teamLookup: Map<string, MlbTeamOption>): Prom
   const response = await fetchStatsApiJson<StatsApiScheduleResponse>(
     `/schedule?${buildQueryString({
       sportId: SPORT_ID,
-      startDate: dateOffsetIso(0),
+      startDate: dateOffsetIso(-1),
       endDate: dateOffsetIso(UPCOMING_WINDOW_DAYS),
     })}`,
     SUMMARY_REVALIDATE_SECONDS
   );
-  const games: MlbGame[] = [];
-  for (const date of response.dates ?? []) {
-    for (const raw of date.games ?? []) {
-      const game = normalizeGame(raw, teamLookup);
-      if (game && game.status !== "FINISHED") games.push(game);
-    }
-  }
-  return games
+  return collectScheduleGames(response, teamLookup)
+    .filter((game) => game.status !== "FINISHED")
     .sort((a, b) => new Date(a.utcDate).getTime() - new Date(b.utcDate).getTime())
     .slice(0, UPCOMING_GAME_LIMIT);
 }
@@ -520,6 +556,7 @@ async function getLeaders(
       sportId: SPORT_ID,
       statGroup,
       limit: 10,
+      hydrate: `person(stats(group=[${statGroup}],type=[season],season=${season}))`,
     })}`,
     SUMMARY_REVALIDATE_SECONDS
   );
@@ -578,109 +615,6 @@ export async function getMlbSummary(): Promise<{
   };
 }
 
-// Live schedule windows are fetched at request time, so they bypass the
-// framework fetch cache; the accessor's in-memory TTL cache bounds call volume.
-const LIVE_SCHEDULE_REVALIDATE_SECONDS = 0;
-
-function fetchLiveScheduleWindow(
-  startOffsetDays: number,
-  endOffsetDays: number
-): Promise<StatsApiScheduleResponse> {
-  return fetchStatsApiJson<StatsApiScheduleResponse>(
-    `/schedule?${buildQueryString({
-      sportId: SPORT_ID,
-      startDate: dateOffsetIso(startOffsetDays),
-      endDate: dateOffsetIso(endOffsetDays),
-    })}`,
-    LIVE_SCHEDULE_REVALIDATE_SECONDS
-  );
-}
-
-function collectScheduleGames(
-  response: StatsApiScheduleResponse,
-  teamLookup: Map<string, MlbTeamOption>
-): MlbGame[] {
-  const games: MlbGame[] = [];
-  for (const date of response.dates ?? []) {
-    for (const raw of date.games ?? []) {
-      const game = normalizeGame(raw, teamLookup);
-      if (game) games.push(game);
-    }
-  }
-  return games;
-}
-
-/**
- * Request-time refresh of only the time-sensitive summary sections: yesterday's
- * finals and today's scoreboard (live scores and game states). Standings,
- * leaders, and the team list always come from the committed snapshot passed in
- * as the fallback. Each schedule window falls back to the committed games when
- * its fetch fails; the builder throws only when both windows fail so the
- * accessor can fall back to the committed summary wholesale. Two upstream
- * calls per refresh, mirroring buildBayAreaTransitLiveSnapshotData.
- */
-export async function buildMlbLiveSummaryData(
-  fallback: MlbSummarySnapshot
-): Promise<MlbSummarySnapshot> {
-  const teamLookup = new Map(fallback.teams.map((team) => [team.id, team]));
-
-  const [yesterdayResult, todayResult] = await Promise.allSettled([
-    fetchLiveScheduleWindow(-1, -1),
-    fetchLiveScheduleWindow(0, 0),
-  ]);
-
-  if (yesterdayResult.status === "rejected" && todayResult.status === "rejected") {
-    throw createMlbDataError("Every MLB live schedule window was unavailable.", 503);
-  }
-
-  const freshFinished: MlbGame[] = [];
-  let upcomingGames = fallback.upcomingGames;
-
-  if (yesterdayResult.status === "fulfilled") {
-    for (const game of collectScheduleGames(yesterdayResult.value, teamLookup)) {
-      if (game.status === "FINISHED") freshFinished.push(game);
-    }
-  }
-
-  if (todayResult.status === "fulfilled") {
-    const todayGames = collectScheduleGames(todayResult.value, teamLookup);
-    const todayIds = new Set(todayGames.map((game) => game.id));
-    const pending = todayGames.filter((game) => game.status !== "FINISHED");
-    for (const game of todayGames) {
-      if (game.status === "FINISHED") freshFinished.push(game);
-    }
-    // Fresh pending games replace their committed entries so live scores and
-    // game states stay current. Committed entries for today's now-finished
-    // games drop out here and re-enter through recentGames instead.
-    upcomingGames = [
-      ...pending,
-      ...fallback.upcomingGames.filter((game) => !todayIds.has(game.id)),
-    ]
-      .sort((a, b) => new Date(a.utcDate).getTime() - new Date(b.utcDate).getTime())
-      .slice(0, UPCOMING_GAME_LIMIT);
-  }
-
-  let recentGames = fallback.recentGames;
-  if (freshFinished.length > 0) {
-    const freshIds = new Set(freshFinished.map((game) => game.id));
-    recentGames = [
-      ...freshFinished,
-      ...fallback.recentGames.filter((game) => !freshIds.has(game.id)),
-    ]
-      .sort((a, b) => new Date(b.utcDate).getTime() - new Date(a.utcDate).getTime())
-      .slice(0, RECENT_GAME_LIMIT);
-  }
-
-  const generatedAt = new Date().toISOString();
-  return {
-    ...fallback,
-    generatedAt,
-    updatedAt: generatedAt.slice(0, 10),
-    recentGames,
-    upcomingGames,
-  };
-}
-
 export async function getMlbTeamSnapshot(teamId: string, teamLookup?: Map<string, MlbTeamOption>): Promise<MlbTeamSnapshot> {
   if (!isValidMlbTeamId(teamId)) {
     throw createMlbDataError("Invalid MLB team id.", 400);
@@ -698,7 +632,7 @@ export async function getMlbTeamSnapshot(teamId: string, teamLookup?: Map<string
         sportId: SPORT_ID,
         teamId,
         startDate: dateOffsetIso(-RECENT_WINDOW_DAYS - 5),
-        endDate: dateOffsetIso(-1),
+        endDate: dateOffsetIso(0),
       })}`,
       TEAM_REVALIDATE_SECONDS
     ),
@@ -706,7 +640,7 @@ export async function getMlbTeamSnapshot(teamId: string, teamLookup?: Map<string
       `/schedule?${buildQueryString({
         sportId: SPORT_ID,
         teamId,
-        startDate: dateOffsetIso(0),
+        startDate: dateOffsetIso(-1),
         endDate: dateOffsetIso(UPCOMING_WINDOW_DAYS + 5),
       })}`,
       TEAM_REVALIDATE_SECONDS
@@ -714,16 +648,12 @@ export async function getMlbTeamSnapshot(teamId: string, teamLookup?: Map<string
   ]);
 
   const profile = normalizeTeamProfile(profileResponse.teams?.[0] ?? {});
-  const recentGames = (recentResponse.dates ?? [])
-    .flatMap((d) => d.games ?? [])
-    .map((game) => normalizeGame(game, lookup))
-    .filter((g): g is MlbGame => g !== null && g.status === "FINISHED")
+  const recentGames = collectScheduleGames(recentResponse, lookup)
+    .filter((game) => game.status === "FINISHED")
     .sort((a, b) => new Date(b.utcDate).getTime() - new Date(a.utcDate).getTime())
     .slice(0, TEAM_GAME_LIMIT);
-  const upcomingGames = (upcomingResponse.dates ?? [])
-    .flatMap((d) => d.games ?? [])
-    .map((game) => normalizeGame(game, lookup))
-    .filter((g): g is MlbGame => g !== null && g.status !== "FINISHED")
+  const upcomingGames = collectScheduleGames(upcomingResponse, lookup)
+    .filter((game) => game.status !== "FINISHED")
     .sort((a, b) => new Date(a.utcDate).getTime() - new Date(b.utcDate).getTime())
     .slice(0, TEAM_GAME_LIMIT);
 

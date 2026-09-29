@@ -36,13 +36,13 @@ Active secrets used by the running app and update scripts:
 | `RESEND_API_KEY` | Transactional email for the MBA internship digest and contact creation for the public newsletter signup. |
 | `RESEND_NEWSLETTER_SEGMENT_ID` | Optional Resend segment used to keep public newsletter signups grouped separately. |
 | `MBA_DIGEST_ALLOWED_RECIPIENTS` | Comma-separated email/domain allowlist for `/api/mba-jobs/email`, for example `name@example.com,@example.edu`; use `*` only if the public relay risk is intentional. |
-| `CRON_SECRET` | Bearer token required by the Netlify `purge-cache` function. |
+| `MBA_DIGEST_SECRET` | Shared secret required by `/api/mba-jobs/email` in the `x-mba-digest-secret` header. A browser cannot hold it, so the caller has to be a server or a scheduled job. |
 | `GOOGLE_SITE_VERIFICATION` | Optional; surfaced in metadata for Search Console verification. |
 | `SITE_URL` / `NEXT_PUBLIC_SITE_URL` | Canonical site URL for SEO and absolute links. |
 
 Rotation guidance:
 
-- rotate `NEXTAUTH_SECRET`, `ADMIN_PASSWORD`, and `CRON_SECRET` after any suspected exposure or hand-off
+- rotate `NEXTAUTH_SECRET`, `ADMIN_PASSWORD`, and `MBA_DIGEST_SECRET` after any suspected exposure or hand-off
 - rotate third-party API keys (`FANTASYPROS_API_KEY`, `FOOTBALL_DATA_API_TOKEN`, `FINNHUB_API_KEY`, `RESEND_API_KEY`) immediately if a key appears in logs, screenshots, or a public commit
 - after rotation, verify the relevant secret store. Redeploy for runtime keys and rerun the affected GitHub Actions job for snapshot credentials
 
@@ -68,7 +68,7 @@ Hardening expectations:
 ### Operationally protected
 
 - `/api/auth/[...nextauth]` is the NextAuth handler for `/admin` sign-in
-- `netlify/functions/purge-cache.ts` requires `Authorization: Bearer <CRON_SECRET>` or `x-cron-secret: <CRON_SECRET>`; query-string secrets are intentionally rejected
+- `/api/mba-jobs/email` requires the `x-mba-digest-secret` header to match `MBA_DIGEST_SECRET`, compared in constant time, and answers `503` while that variable is unset. The recipient allowlist still applies after the secret passes
 
 ### Public, read-only endpoints
 
@@ -114,7 +114,7 @@ There is no `/api/scheduled-update`, `/api/data-manager`, `/api/fantasy-pros-ses
 - never log raw credentials, bearer tokens, or full provider response payloads at INFO/WARN levels
 - redact `Authorization`, `Cookie`, and any `*_KEY`/`*_SECRET` headers before logging request metadata
 - scrapers and update scripts should log failures (status code + URL path) without dumping sensitive request headers or full HTML bodies
-- in production, `compiler.removeConsole` is on (see `next.config.mjs`); rely on structured Netlify logs rather than ad-hoc `console.*` calls
+- in production, `compiler.removeConsole` strips `console.log`, `console.info`, and `console.debug` and keeps `console.error` and `console.warn` (see `next.config.mjs`), so anything passed to those two reaches the Netlify logs and the visitor's browser console, and the rules above apply to every call to them
 
 ---
 

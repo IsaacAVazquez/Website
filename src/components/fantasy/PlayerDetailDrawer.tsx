@@ -19,6 +19,7 @@ import {
   getConsensusSpread,
   getFantasyPointsPerGameTooltip,
   getPositionTone,
+  getSnapshotStaleness,
   getValueVsAdp,
   formatPickDelta,
   hasReliableAdpSample,
@@ -183,6 +184,10 @@ export function PlayerDetailDrawer({ player, publishedRank, publishedRankLabel =
   const valueSignal =
     player && adpAvailable && valueSignalAvailable ? getValueVsAdp(player) : null;
   const spread = player ? getConsensusSpread(player) : null;
+  // The stamps measure the 7 and 14 days before the board was last updated,
+  // so on a board that has stopped moving they describe a window that ended
+  // when it stopped.
+  const movementCurrent = player ? getSnapshotStaleness(player.lastUpdated) !== "stale" : false;
   const isQueued = player ? queue.isQueued(player.id) : false;
   const inCompare = player ? compare.inCompare(player.id) : false;
   const compareDisabled = !inCompare && compare.isFull;
@@ -296,11 +301,13 @@ export function PlayerDetailDrawer({ player, publishedRank, publishedRankLabel =
                 aria-pressed={inCompare}
                 disabled={compareDisabled}
                 title={compareDisabled ? `Compare holds ${compare.limit} players` : undefined}
-                className="min-h-touch inline-flex flex-1 items-center justify-center gap-2 border px-4 text-sm font-semibold disabled:cursor-not-allowed disabled:opacity-55"
+                className="min-h-touch inline-flex flex-1 items-center justify-center gap-2 border px-4 text-sm font-semibold disabled:cursor-not-allowed disabled:border-dashed"
                 style={
-                  inCompare
-                    ? { borderColor: "var(--c97-ink)", background: "var(--c97-ink)", color: "var(--c97-surface)" }
-                    : { borderColor: "var(--c97-rule)", background: "var(--c97-surface)", color: "var(--c97-ink)" }
+                  compareDisabled
+                    ? { borderColor: "var(--c97-ink-2)", background: "none", color: "var(--c97-ink-2)" }
+                    : inCompare
+                      ? { borderColor: "var(--c97-ink)", background: "var(--c97-ink)", color: "var(--c97-surface)" }
+                      : { borderColor: "var(--c97-rule)", background: "var(--c97-surface)", color: "var(--c97-ink)" }
                 }
               >
                 <GitCompareArrows size={16} aria-hidden="true" />
@@ -325,8 +332,10 @@ export function PlayerDetailDrawer({ player, publishedRank, publishedRankLabel =
             </div>
 
             {/* Board movement, present only once the committed rank history is
-                old enough for the window. Positive means up the board. */}
-            {(Number.isFinite(player.rankMove7d) ||
+                old enough for the window and while the board is still being
+                updated. Positive means up the board. */}
+            {movementCurrent &&
+              (Number.isFinite(player.rankMove7d) ||
               Number.isFinite(player.rankMove14d) ||
               Number.isFinite(player.adpMove7d) ||
               Number.isFinite(player.adpMove14d)) && (

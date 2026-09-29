@@ -5,6 +5,8 @@ primary_target: "route:/writing"
 related_targets: ["src/components/catalog97/Catalog97Writing.tsx"]
 ---
 
+Updated on 2026-09-28 by the responsive pass. The topic grid's floor went from 240px to 180px, so the seven topics print 4+3 from about 990px instead of 3+3 with one alone.
+
 **Superseded in part on 2026-09-23.** The seven designed routes now use the print shop layout in `STYLING.md`, and it overrides anything below that disagrees. The pine, camel, and tobacco surfaces were renamed and repainted as `ink-blue`, `ink-saffron`, and `ink-vermilion`, and `ink-peach` was added, so read any mention of pine, camel, or tobacco below as the ink that replaced it. Anton now also sets the h1 and section h2s through `.c97-poster`, so the numerals-only Anton rule is retired. Vermilion carries body text with the darkest ink (4.62:1), so the tobacco large-text-only rule is retired too. Bands that change surface tear over each other, and the one allowed shadow is the hard `.c97-offset` in the second ink.
 
 # Writing index surface brief
@@ -27,7 +29,7 @@ related_targets: ["src/components/catalog97/Catalog97Writing.tsx"]
 
 **Settled 2026-08-03 (heading sweep, degraded single-context).** "Archive" was an `h2` carrying `c97-kicker`, so it rendered at 11px directly above 26px `h3` children. It carries `c97-serif c97-h2` now. `c97-h3` is not available as the fix here, because the archive rows already draw at that step and the header would have landed exactly on its own children, which is the trap the machine-level notes describe. The featured pair moved with it, from `c97-h3` to `c97-h2`. Those two titles were drawing at 26px, the same step as the archive rows below them, so the route's two tiers were typographically identical and the whole distinction rested on the image slot and the "Featured" kicker, which is not what the band's own comment claims for them. Every `h2` on the route is one size now, 32px at 1440 and 24px at 390, against `h3` at 26px and 20px. Verified live at both widths with no heading overflowing its box, no horizontal scroll and no element overflow. This was the fifth of the seven Catalog 97 routes to carry the 11px section-heading defect.
 
-**Visual world: Catalog 97, not Working Instrument.** `DESIGN.md` describes The Working Instrument, and until the bridge on 2026-09-16 it governed every other route. Those routes now render inside `Catalog97ToolShell` and are Catalog 97 too, so `DESIGN.md` is stale everywhere until the close-out PR rewrites it. It does NOT govern this surface. `context.mjs` auto-loads it anyway, so a pass that treats it as the spec here will read every deliberate Catalog 97 decision as a violation and manufacture a page of false findings. Tokens live in `src/app/catalog97.css`.
+**Visual world: Catalog 97.** `DESIGN.md` describes Catalog 97 as shipped, and `context.mjs` auto-loading it now points a pass at the right spec for this surface. Tokens live in `src/app/catalog97.css`.
 
 **Do not re-litigate (settled 2026-08-02).**
 - Tobacco is a large-text-only field. Paper ink on it is 4.36:1, which clears 3:1 for large text and never clears 4.5:1 for body. A tobacco band carries `--c97-fs-h2` (24px floor) and up, or no text at all. Not a defect; solved by size rather than by darkening the colour.

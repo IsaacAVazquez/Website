@@ -76,6 +76,50 @@ describe("GET /api/bay-area-transit/summary", () => {
     expect(mockGetTransitSummary).toHaveBeenCalledWith({ preferLive: true });
   });
 
+  it.each([
+    [
+      "stale-fallback",
+      "every section came from the committed snapshot",
+      "stale-fallback",
+      "stale-fallback",
+    ],
+    ["degraded", "one feed fell back", "fresh", "stale-fallback"],
+    ["fresh", "every feed answered", "fresh", "fresh"],
+  ] as const)(
+    "reports %s when %s",
+    async (expected, _when, advisories, departures) => {
+      mockGetTransitSummary.mockResolvedValue({
+        system: {
+          name: "Bay Area Rapid Transit",
+          abbr: "BART",
+          source: "BART public API (api.bart.gov)",
+          feedTime: "09/27/2026 12:03:47 PM PDT",
+          // Inside the freshness window, so age alone would read as fresh.
+          generatedAt: new Date().toISOString(),
+          seed: false,
+        },
+        heroStats: {
+          lineCount: 6,
+          stationCount: 50,
+          activeAdvisories: 2,
+          elevatorOutages: 1,
+          trainsTracked: 460,
+        },
+        lines: [],
+        stations: [],
+        advisories: [],
+        elevator: [],
+        sectionStatus: { advisories, elevator: advisories, departures },
+        defaultStation: "embr",
+      });
+
+      const response = await GET();
+
+      expect(response.status).toBe(200);
+      expect(response.headers.get("X-Data-Status")).toBe(expected);
+    }
+  );
+
   it("returns a stable empty payload when the summary lookup fails", async () => {
     mockGetTransitSummary.mockRejectedValue(
       Object.assign(new Error("Transit snapshot is not available."), {

@@ -1,7 +1,6 @@
 "use client";
 
 import { startTransition, useCallback, useEffect, useMemo, useRef, useState } from "react";
-import { motion, useReducedMotion } from "framer-motion";
 import { useRouter, useSearchParams } from "next/navigation";
 import { AlertTriangle, DatabaseZap, RefreshCcw } from "lucide-react";
 import type {
@@ -21,7 +20,7 @@ import { MissionCadenceStrip } from "@/components/spacex/MissionCadenceStrip";
 import { MissionStatFascia, type MissionStatFasciaCell } from "@/components/spacex/MissionStatFascia";
 import { MissionVehicleCatalog } from "@/components/spacex/MissionVehicleCatalog";
 import { MissionRecoveryPanel } from "@/components/spacex/MissionRecoveryPanel";
-import { MissionDrawer } from "@/components/spacex/MissionDrawer";
+import { DeferredMissionDrawer } from "@/components/spacex/DeferredMissionDrawer";
 import {
   buildMissionControlHref,
   DEFAULT_MISSION_CONTROL_STATE,
@@ -95,7 +94,6 @@ export function SpaceXMissionControlClient({
   const [renderedAtMs] = useState(() => renderedAtMsProp ?? Date.now());
   const router = useRouter();
   const searchParams = useSearchParams();
-  const shouldReduceMotion = useReducedMotion();
   const hasManagedParams =
     searchParams.get("status") !== null ||
     searchParams.get("launch") !== null ||
@@ -474,12 +472,6 @@ export function SpaceXMissionControlClient({
       ? "Refreshing SpaceX feed"
       : "SpaceX data cached locally";
 
-  const motionProps = {
-    initial: { opacity: 0, y: 18 },
-    animate: { opacity: 1, y: 0 },
-    transition: { duration: shouldReduceMotion ? 0 : 0.42 },
-  };
-
   // Fused stat fascia — four cells, all computed from the same
   // `buildInsights()` aggregate the board already relies on elsewhere. Only
   // fields that are actually populated today are shown (see the mission
@@ -528,7 +520,7 @@ export function SpaceXMissionControlClient({
         meta={`Launch Library 2 data from The Space Devs · ${liveStatusLabel}`}
       >
         {/* The card paints the field tint, which is pale on the blue sheet, so it prints on its own paper plate. */}
-        <motion.div data-c97-surface="paper" className="c97-offset" {...motionProps}>
+        <div data-c97-surface="paper" className="c97-offset">
           <MissionControlHero
             summary={summary}
             isLoading={summaryLoading}
@@ -541,12 +533,12 @@ export function SpaceXMissionControlClient({
               setSummaryFetchKey((value) => value + 1);
             }}
           />
-        </motion.div>
+        </div>
       </Catalog97ProjectHero>
 
       <section className="c97-band c97-sheet" data-c97-surface="paper" data-seam="torn">
         <div className="c97-shell">
-          <motion.div className="flex flex-wrap items-center gap-3" {...motionProps}>
+          <div className="flex flex-wrap items-center gap-3">
             <button
               type="button"
               onClick={handleRetryAll}
@@ -559,7 +551,7 @@ export function SpaceXMissionControlClient({
               <DatabaseZap className="h-4 w-4 text-[var(--c97-accent)]" />
               {liveStatusLabel}
             </div>
-          </motion.div>
+          </div>
 
           {hasPartialDataIssue ? (
             <div
@@ -579,23 +571,23 @@ export function SpaceXMissionControlClient({
             </div>
           ) : null}
 
-          <motion.div className="mt-5" {...motionProps}>
+          <div className="mt-5">
             <MissionLaunchTape
               recentLaunches={tapeRecentLaunches}
               upcomingLaunches={tapeUpcomingLaunches}
             />
-          </motion.div>
+          </div>
 
-          <motion.div className="mt-5 space-y-4" {...motionProps}>
+          <div className="mt-5 space-y-4">
             <MissionStatFascia cells={statFasciaCells} />
             <MissionCadenceStrip cadence={cadence} />
-          </motion.div>
+          </div>
         </div>
       </section>
 
       <section className="c97-band c97-sheet" data-c97-surface="bone" data-seam="deckle">
         <div className="c97-shell">
-          <motion.div {...motionProps}>
+          <div>
             <div role="tablist" aria-label="Mission control sections" className="c97-segmented">
               {SECTION_OPTIONS.map((option) => (
                 <button
@@ -610,9 +602,9 @@ export function SpaceXMissionControlClient({
                 </button>
               ))}
             </div>
-          </motion.div>
+          </div>
 
-          <motion.div className="mt-5" {...motionProps}>
+          <div className="mt-5">
             {section === "manifest" ? (
               <MissionLaunchBoard
                 launches={launches}
@@ -639,14 +631,14 @@ export function SpaceXMissionControlClient({
             ) : (
               <MissionRecoveryPanel launchDetails={vehicleCatalogDetails} />
             )}
-          </motion.div>
+          </div>
         </div>
       </section>
 
       <section className="c97-band c97-sheet" data-c97-surface="paper" data-seam="torn">
         <div className="c97-shell">
-          <p className="c97-kicker mb-2">Data source</p>
-          <p className="c97-prose mb-0">
+          <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-1)" }}>Data source</p>
+          <p className="c97-prose">
             This dashboard runs on a checked-in snapshot of Launch Library 2
             data from The Space Devs, served through this site&apos;s own API
             routes rather than live upstream calls. It is an independent
@@ -655,7 +647,7 @@ export function SpaceXMissionControlClient({
         </div>
       </section>
 
-      <MissionDrawer
+      <DeferredMissionDrawer
         launchId={routeState.launch}
         detail={routeState.launch ? detail : null}
         activePanel={routeState.panel}

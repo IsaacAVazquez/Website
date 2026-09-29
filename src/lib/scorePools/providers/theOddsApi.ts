@@ -54,6 +54,13 @@ const PREFERRED_BOOKMAKERS = [
   "fanduel",
 ];
 
+// A request costs markets x regions credits, so h2h and totals over one
+// region is 2. Four runs a day is 8 credits, 248 in a 31 day month, against
+// the free plan's 500. Adding uk and us makes it 6 a request and 744 a
+// month. The engine prices one book per event, and Pinnacle and Betfair
+// Exchange, the first two preferences above, both sit in eu.
+const REGIONS = "eu";
+
 function pickBookmaker(event: OddsApiEvent): OddsApiBookmaker | null {
   for (const key of PREFERRED_BOOKMAKERS) {
     const found = event.bookmakers.find((book) => book.key === key);
@@ -96,8 +103,8 @@ export async function fetchTheOddsApiEvents(
 ): Promise<ProviderOddsEvent[]> {
   const url =
     `https://api.the-odds-api.com/v4/sports/${encodeURIComponent(sportKey)}/odds` +
-    `?apiKey=${encodeURIComponent(apiKey)}&regions=eu,uk,us&markets=h2h,totals&oddsFormat=decimal&dateFormat=iso`;
-  const response = await fetchImpl(url);
+    `?apiKey=${encodeURIComponent(apiKey)}&regions=${REGIONS}&markets=h2h,totals&oddsFormat=decimal&dateFormat=iso`;
+  const response = await fetchImpl(url, { signal: AbortSignal.timeout(15_000) });
   if (!response.ok) {
     throw Object.assign(new Error(`The Odds API responded ${response.status} for ${sportKey}`), {
       status: response.status,

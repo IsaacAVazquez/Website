@@ -16,9 +16,14 @@ import { DraftRecapPanel } from "./components/DraftRecapPanel";
 import { DraftSetup } from "./components/DraftSetup";
 import { calculateDraftOrder, useDraftState } from "./hooks/useDraftState";
 import { useDraftTelemetry } from "./hooks/useDraftTelemetry";
-import { useDraftTimer } from "./hooks/useDraftTimer";
+import {
+  DraftClockInline,
+  DraftClockProvider,
+  formatClock,
+  useDraftClock,
+} from "./components/DraftClock";
 import { useFantasySnapshot } from "@/hooks/useFantasySnapshot";
-import { usePlayerNotes } from "@/hooks/usePlayerNotes";
+import { loadNotes } from "@/lib/fantasyLocal";
 import {
   computeDraftAnalytics,
   isPlayerValueAtPick,
@@ -63,12 +68,9 @@ import {
   shortName,
   withoutPlayerAdp,
 } from "@/lib/fantasyUtils";
-import {
-  DraftValuePanel,
-  PlayerDetailDrawer,
-  RedraftDecisionPanel,
-  type ExpectedReturnFormState,
-} from "@/components/fantasy";
+import { DraftValuePanel, type ExpectedReturnFormState } from "@/components/fantasy/DraftValuePanel";
+import { DeferredPlayerDetailDrawer } from "@/components/fantasy/DeferredPlayerDetailDrawer";
+import { RedraftDecisionPanel } from "@/components/fantasy/RedraftDecisionPanel";
 import type { Player, RedraftLineupSettings, ScoringFormat } from "@/types";
 
 const subscribeToHydration = () => () => undefined;
@@ -87,9 +89,113 @@ function numericDraftRank(player: Player): number | null {
   return isFiniteNumber(player.averageRank) ? player.averageRank : null;
 }
 
-/** "J. Chase" for the tight fascia and tape rows; DST names stay whole. */
-function formatClock(seconds: number): string {
-  return `${Math.floor(seconds / 60)}:${String(seconds % 60).padStart(2, "0")}`;
+// Below `sm` the fascia tiles are 118px wide with 94px of content, so each
+// cell can carry a shorter value and sub line for that width. The pick
+// counter must never truncate; "#24 / 180" measured 101px there.
+interface FasciaCell {
+  key: string;
+  label: string;
+  labelCompact?: string;
+  value: string;
+  valueCompact?: string;
+  sub: string;
+  subCompact?: string;
+  valueColor?: string;
+  background?: string;
+  timer?: boolean;
+  focusTarget?: boolean;
+  phoneHidden?: boolean;
+}
+
+function FasciaTile({
+  cell,
+  tileRef,
+  timerLabel,
+}: {
+  cell: FasciaCell;
+  tileRef?: React.Ref<HTMLDivElement>;
+  /** Set on the clock tile only, which is announced as a timer. */
+  timerLabel?: string;
+}) {
+  return (
+    <div
+      ref={tileRef}
+      tabIndex={cell.focusTarget ? -1 : undefined}
+      className={`min-w-0 px-3 py-1.5 sm:py-2 ${cell.phoneHidden ? "hidden sm:block" : ""}`}
+      style={{ background: cell.background ?? "var(--c97-surface)" }}
+      {...(timerLabel !== undefined
+        ? { role: "timer", "aria-live": "off" as const, "aria-label": timerLabel }
+        : {})}
+    >
+      <p className={`m-0 ${MONO_LABEL_CLASS}`} style={{ color: "var(--c97-ink-2)" }}>
+        {cell.labelCompact !== undefined ? (
+          <>
+            <span className="sm:hidden">{cell.labelCompact}</span>
+            <span className="hidden sm:inline">{cell.label}</span>
+          </>
+        ) : (
+          cell.label
+        )}
+      </p>
+      <p
+        className="m-0 mt-1 overflow-hidden text-ellipsis whitespace-nowrap font-mono text-base leading-tight tabular-nums sm:text-lg"
+        style={{ color: cell.valueColor ?? "var(--c97-ink)" }}
+      >
+        {cell.valueCompact !== undefined && cell.valueCompact !== cell.value ? (
+          <>
+            <span className="sm:hidden">{cell.valueCompact}</span>
+            <span className="hidden sm:inline">{cell.value}</span>
+          </>
+        ) : (
+          cell.value
+        )}
+      </p>
+      <p
+        className="m-0 mt-0.5 overflow-hidden text-ellipsis whitespace-nowrap font-mono text-3xs"
+        style={{ color: "var(--c97-ink-2)" }}
+      >
+        {cell.subCompact !== undefined && cell.subCompact !== cell.sub ? (
+          <>
+            <span className="sm:hidden">{cell.subCompact}</span>
+            <span className="hidden sm:inline">{cell.sub}</span>
+          </>
+        ) : (
+          cell.sub
+        )}
+      </p>
+    </div>
+  );
+}
+
+/**
+ * The clock tile reads the pick clock itself, so a tick renders this tile and
+ * not the room around it. The clock is advisory and nothing fires at zero, so
+ * it stays quiet by default: muted while other teams pick, and it only earns
+ * the signal accent in the final 15 seconds of the user's own pick.
+ */
+function DraftClockTile({ cell, canBeUrgent }: { cell: FasciaCell; canBeUrgent: boolean }) {
+  const clock = useDraftClock();
+  const urgent = canBeUrgent && !clock.isExpired && clock.secondsLeft <= 15;
+
+  return (
+    <FasciaTile
+      cell={{
+        ...cell,
+        value: formatClock(Math.max(0, clock.secondsLeft)),
+        valueColor: urgent
+          ? "color-mix(in srgb, var(--c97-accent) 72%, var(--c97-ink))"
+          : cell.valueColor,
+        background: urgent
+          ? "color-mix(in srgb, var(--c97-accent) 10%, var(--c97-surface))"
+          : cell.background,
+      }}
+      timerLabel={
+        clock.isExpired
+          ? "Pick clock expired"
+          : `${clock.secondsLeft} seconds left on the pick clock`
+      }
+    />
+  );
 }
 
 interface DecisionRec {
@@ -250,7 +356,6 @@ export function DraftTrackerClient() {
     persistenceError,
   } = useDraftState();
 
-  const notes = usePlayerNotes();
   const telemetry = useDraftTelemetry(draftState.draftId);
 
   // A running room stays immutable behind New room. Setup can preview another
@@ -436,18 +541,8 @@ export function DraftTrackerClient() {
     hasUsableDraftBoard &&
     !isLoading &&
     !error;
-  const timer = useDraftTimer({
-    currentPick: draftState.currentPick,
-    durationSeconds: draftState.settings.timerSeconds ?? 0,
-    enabled: timerEnabled,
-    isActive: draftState.isActive,
-  });
   const clockVisible =
     (draftState.settings.timerSeconds ?? 0) > 0 && !showSetup && hasUsableDraftBoard;
-  // The clock is advisory and nothing fires at zero, so it stays quiet by
-  // default: muted while other teams pick, and it only earns the signal accent
-  // in the final 15 seconds of the user's own pick.
-  const clockUrgent = timerEnabled && !timer.isExpired && timer.secondsLeft <= 15 && isUserPick;
 
   const nextUserPick = useMemo(() => {
     if (isDraftComplete) return 0;
@@ -832,7 +927,9 @@ export function DraftTrackerClient() {
   }
 
   function handleExport(format: "csv" | "recap-csv" | "json") {
-    exportDraftResults(format, { notes: notes.notes, picks: picksForDisplay });
+    // Read at export time. Subscribing to the notes store here re-rendered the
+    // whole room on every keystroke in a note.
+    exportDraftResults(format, { notes: loadNotes(), picks: picksForDisplay });
     const label =
       format === "recap-csv" ? "team recap CSV" : format === "json" ? "JSON" : "picks CSV";
     setExportToast(`Exported ${label}.`);
@@ -845,24 +942,6 @@ export function DraftTrackerClient() {
     const name = getTeamName(currentTeamNumber);
     return name === `Team ${currentTeamNumber}` ? `Slot ${currentTeamNumber}` : name;
   })();
-
-  // Below `sm` the fascia tiles are 118px wide with 94px of content, so each
-  // cell can carry a shorter value and sub line for that width. The pick
-  // counter must never truncate; "#24 / 180" measured 101px there.
-  interface FasciaCell {
-    key: string;
-    label: string;
-    labelCompact?: string;
-    value: string;
-    valueCompact?: string;
-    sub: string;
-    subCompact?: string;
-    valueColor?: string;
-    background?: string;
-    timer?: boolean;
-    focusTarget?: boolean;
-    phoneHidden?: boolean;
-  }
 
   const fasciaCells: FasciaCell[] = [
     {
@@ -895,17 +974,13 @@ export function DraftTrackerClient() {
           {
             key: "clock",
             label: "Clock",
-            value: isDraftComplete ? "—" : formatClock(Math.max(0, timer.secondsLeft)),
+            // While the draft runs, DraftClockTile supplies the value, the
+            // urgent colours, and the timer label, so this component does not
+            // read the clock and does not render on its ticks.
+            value: "—",
             sub: `advisory · ${draftState.settings.timerSeconds}s per pick`,
             subCompact: `${draftState.settings.timerSeconds}s advisory`,
-            valueColor: clockUrgent
-              ? "color-mix(in srgb, var(--c97-accent) 72%, var(--c97-ink))"
-              : isUserPick
-                ? "var(--c97-ink)"
-                : "var(--c97-ink-2)",
-            background: clockUrgent
-              ? "color-mix(in srgb, var(--c97-accent) 10%, var(--c97-surface))"
-              : undefined,
+            valueColor: isUserPick ? "var(--c97-ink)" : "var(--c97-ink-2)",
             timer: !isDraftComplete,
           } satisfies FasciaCell,
         ]
@@ -1049,6 +1124,14 @@ export function DraftTrackerClient() {
   ]);
 
   return (
+    // The pick clock ticks inside this provider, so a tick renders the two
+    // components that read it and leaves the room below alone.
+    <DraftClockProvider
+      currentPick={draftState.currentPick}
+      durationSeconds={draftState.settings.timerSeconds ?? 0}
+      enabled={timerEnabled}
+      isActive={draftState.isActive}
+    >
     <section
       className="c97-dash relative overflow-x-clip min-h-screen"
       aria-label="Fantasy football draft assistant"
@@ -1137,7 +1220,7 @@ export function DraftTrackerClient() {
 
       <div className="c97-sheet" data-c97-surface="paper">
       {showSetup ? (
-        <div className="mx-auto w-full max-w-[820px] px-[clamp(1rem,4vw,2.5rem)] pb-12 pt-1">
+        <div className="c97-shell c97-frame pb-12 pt-1" style={{ maxWidth: 740 }}>
           <DraftSetup
             settings={draftState.settings}
             onSaveSettings={updateSettings}
@@ -1181,9 +1264,9 @@ export function DraftTrackerClient() {
             className={`sticky ${FASCIA_TOP_CLASS} z-30 border-y`}
             style={{
               borderColor: "var(--c97-rule)",
-              background: "color-mix(in srgb, var(--c97-surface) 90%, transparent)",
-              backdropFilter: "blur(8px)",
-              WebkitBackdropFilter: "blur(8px)",
+              // Opaque on the sheet it sits on, matching the board's own
+              // sticky bar (DraftBoard.tsx) rather than a translucent blur.
+              background: "var(--c97-surface)",
             }}
           >
             {/*
@@ -1208,61 +1291,21 @@ export function DraftTrackerClient() {
                   borderColor: "var(--c97-rule)",
                 }}
               >
-                {fasciaCells.map((cell) => (
-                  <div
-                    key={cell.key}
-                    ref={cell.focusTarget ? onClockRef : undefined}
-                    tabIndex={cell.focusTarget ? -1 : undefined}
-                    className={`min-w-0 px-3 py-1.5 sm:py-2 ${cell.phoneHidden ? "hidden sm:block" : ""}`}
-                    style={{ background: cell.background ?? "var(--c97-surface)" }}
-                    {...(cell.timer
-                      ? {
-                          role: "timer",
-                          "aria-live": "off" as const,
-                          "aria-label": timer.isExpired
-                            ? "Pick clock expired"
-                            : `${timer.secondsLeft} seconds left on the pick clock`,
-                        }
-                      : {})}
-                  >
-                    <p className={`m-0 ${MONO_LABEL_CLASS}`} style={{ color: "var(--c97-ink-2)" }}>
-                      {cell.labelCompact !== undefined ? (
-                        <>
-                          <span className="sm:hidden">{cell.labelCompact}</span>
-                          <span className="hidden sm:inline">{cell.label}</span>
-                        </>
-                      ) : (
-                        cell.label
-                      )}
-                    </p>
-                    <p
-                      className="m-0 mt-1 overflow-hidden text-ellipsis whitespace-nowrap font-mono text-base leading-tight tabular-nums sm:text-lg"
-                      style={{ color: cell.valueColor ?? "var(--c97-ink)" }}
-                    >
-                      {cell.valueCompact !== undefined && cell.valueCompact !== cell.value ? (
-                        <>
-                          <span className="sm:hidden">{cell.valueCompact}</span>
-                          <span className="hidden sm:inline">{cell.value}</span>
-                        </>
-                      ) : (
-                        cell.value
-                      )}
-                    </p>
-                    <p
-                      className="m-0 mt-0.5 overflow-hidden text-ellipsis whitespace-nowrap font-mono text-3xs"
-                      style={{ color: "var(--c97-ink-2)" }}
-                    >
-                      {cell.subCompact !== undefined && cell.subCompact !== cell.sub ? (
-                        <>
-                          <span className="sm:hidden">{cell.subCompact}</span>
-                          <span className="hidden sm:inline">{cell.sub}</span>
-                        </>
-                      ) : (
-                        cell.sub
-                      )}
-                    </p>
-                  </div>
-                ))}
+                {fasciaCells.map((cell) =>
+                  cell.timer ? (
+                    <DraftClockTile
+                      key={cell.key}
+                      cell={cell}
+                      canBeUrgent={timerEnabled && isUserPick}
+                    />
+                  ) : (
+                    <FasciaTile
+                      key={cell.key}
+                      cell={cell}
+                      tileRef={cell.focusTarget ? onClockRef : undefined}
+                    />
+                  )
+                )}
                 <div
                   className={`flex min-w-0 flex-wrap content-center items-center gap-1.5 px-3 py-1.5 sm:col-span-1 sm:py-2 ${phoneActionsSpanClass}`}
                   style={{ background: "var(--c97-surface)" }}
@@ -1417,7 +1460,7 @@ export function DraftTrackerClient() {
                   </span>
                   <span className="font-mono text-2xs" style={{ color: "var(--c97-ink-2)" }}>
                     Pick #{draftState.currentPick} of {totalPicks}
-                    {timerEnabled ? ` · ${formatClock(Math.max(0, timer.secondsLeft))} advisory` : ""}
+                    {timerEnabled ? <DraftClockInline /> : ""}
                     {nextUserPick ? ` · your next turn #${nextUserPick}` : ""}
                   </span>
                   <button
@@ -1443,7 +1486,7 @@ export function DraftTrackerClient() {
                   id="draft-decision-strip"
                   className="grid gap-px"
                   style={{
-                    gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))",
+                    gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 320px), 1fr))",
                     background: "var(--c97-surface)",
                   }}
                 >
@@ -1717,7 +1760,7 @@ export function DraftTrackerClient() {
                   {showTeamEditor && (
                     <div
                       className="mt-4 grid gap-x-4 gap-y-2.5"
-                      style={{ gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))" }}
+                      style={{ gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 200px), 1fr))" }}
                     >
                       {draftState.teams.map((team) => (
                         <label key={team.teamNumber} className="grid gap-1 text-xs">
@@ -1783,7 +1826,7 @@ export function DraftTrackerClient() {
         ) : null}
       </div>
 
-      <PlayerDetailDrawer
+      <DeferredPlayerDetailDrawer
         player={detailPlayer}
         publishedRank={detailPlayer ? publishedDraftRank(detailPlayer) : undefined}
         boardTierCount={boardTierCount > 0 ? boardTierCount : undefined}
@@ -1803,5 +1846,6 @@ export function DraftTrackerClient() {
         onClose={() => setDetailPlayer(null)}
       />
     </section>
+    </DraftClockProvider>
   );
 }

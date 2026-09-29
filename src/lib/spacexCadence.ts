@@ -1,8 +1,15 @@
 import type { MissionControlCadence, MissionControlCadencePoint } from "@/types/spacex";
+import { DATE_ONLY_TIME_ZONE } from "@/lib/date-formatters";
 
+// Each bucket date is Date.UTC(year, month, 1) — a month key, not a real
+// moment — so the label is pinned to UTC like any other date-only value.
+// Pinning it to the display zone instead would print the bucket's own
+// previous month, since UTC midnight on the 1st falls on the last day of the
+// prior month west of Greenwich.
 const MONTH_LABEL_FORMATTER = new Intl.DateTimeFormat("en-US", {
   month: "short",
   year: "2-digit",
+  timeZone: DATE_ONLY_TIME_ZONE,
 });
 
 function monthKeyOf(date: Date): string {

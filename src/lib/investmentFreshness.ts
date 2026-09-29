@@ -154,6 +154,59 @@ export function normalizeInvestmentSnapshot(
   };
 }
 
+function priceWouldRegress(
+  current: InvestmentSnapshot,
+  prior: InvestmentSnapshot
+): boolean {
+  const currentPriceAsOf = current.freshness?.sections?.price ?? null;
+  const priorPriceAsOf = prior.freshness?.sections?.price ?? null;
+  const currentPriceRows = Array.isArray(current.sections.price)
+    ? current.sections.price.length
+    : 0;
+  const priorPriceRows = Array.isArray(prior.sections.price)
+    ? prior.sections.price.length
+    : 0;
+  const priceRegressed =
+    prior.capabilities.price === true &&
+    !!priorPriceAsOf &&
+    (!currentPriceAsOf || currentPriceAsOf < priorPriceAsOf);
+  const priceCoverageCollapsed =
+    priorPriceRows >= 20 &&
+    currentPriceRows < Math.ceil(priorPriceRows * 0.8);
+  return priceRegressed || priceCoverageCollapsed;
+}
+
+/**
+ * Advance only the price history of a retained snapshot. One query prices the
+ * whole universe on every run while the other sections arrive on a slower
+ * rotation, so each of those keeps its own value and its own date.
+ */
+export function replaceSnapshotPrice(
+  priorSnapshot: InvestmentSnapshot,
+  pricedSnapshot: InvestmentSnapshot
+): InvestmentSnapshot {
+  const prior = normalizeInvestmentSnapshot(priorSnapshot);
+  const priced = normalizeInvestmentSnapshot(pricedSnapshot);
+  if (priced.capabilities.price !== true || priceWouldRegress(priced, prior)) {
+    return prior;
+  }
+
+  return normalizeInvestmentSnapshot({
+    ...prior,
+    sections: { ...prior.sections, price: priced.sections.price },
+    freshness: buildInvestmentFreshness({
+      snapshotBuiltAt: prior.freshness?.snapshotBuiltAt ?? prior.lastUpdated,
+      sections: {
+        ...prior.freshness?.sections,
+        price: priced.freshness?.sections?.price,
+      },
+      retainedSections: prior.freshness?.retainedSections?.filter(
+        (section) => section !== "price"
+      ),
+    }),
+  });
+}
+
 /**
  * Quarantine partial provider failures at section granularity. Valid fresh
  * price data is allowed to advance while any section that became
@@ -169,30 +222,13 @@ export function mergeInvestmentSnapshots(
   const sections = { ...current.sections };
   const retainedSections = new Set<InvestmentSection>();
   const sectionFreshness = { ...(current.freshness?.sections ?? {}) };
-  const currentPriceAsOf = current.freshness?.sections?.price ?? null;
-  const priorPriceAsOf = prior.freshness?.sections?.price ?? null;
-  const currentPriceRows = Array.isArray(current.sections.price)
-    ? current.sections.price.length
-    : 0;
-  const priorPriceRows = Array.isArray(prior.sections.price)
-    ? prior.sections.price.length
-    : 0;
+  const priceRegressed = priceWouldRegress(current, prior);
 
   for (const section of RETAINABLE_SECTIONS) {
-    const priceRegressed =
-      section === "price" &&
-      prior.capabilities.price === true &&
-      !!priorPriceAsOf &&
-      (!currentPriceAsOf || currentPriceAsOf < priorPriceAsOf);
-    const priceCoverageCollapsed =
-      section === "price" &&
-      priorPriceRows >= 20 &&
-      currentPriceRows < Math.ceil(priorPriceRows * 0.8);
     const retainWholeSection =
       (
         current.capabilities[section] !== true ||
-        priceRegressed ||
-        priceCoverageCollapsed
+        (section === "price" && priceRegressed)
       ) &&
       prior.capabilities[section] === true &&
       prior.sections[section] !== undefined;

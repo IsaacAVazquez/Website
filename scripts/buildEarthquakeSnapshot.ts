@@ -72,7 +72,7 @@ export const earthquakeSnapshot: EarthquakeSnapshot = ${JSON.stringify(
 
   const stats = snapshot.summary.heroStats;
   console.log(
-    `🌎 Done. ${stats.total24h} quakes in 24h, ${stats.total7d} over 7 days, ` +
+    `🌎 Done. ${stats.total24h} M2.5+ quakes in 24h, ${stats.total7d} over 7 days, ` +
       `${snapshot.summary.significant.length} significant. Strongest 24h: ` +
       `M${stats.strongest24hMag ?? "?"} (${stats.strongest24hPlace ?? "?"}).`
   );

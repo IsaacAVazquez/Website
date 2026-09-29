@@ -32,6 +32,22 @@ function hasContents(snapshot: GolfSnapshot | null): snapshot is GolfSnapshot {
   return Boolean(snapshot && snapshot.summary.leaderboard.length > 0);
 }
 
+/**
+ * A re-stamp vouches that the committed board is still the newest one there
+ * is. The longest gap between PGA Tour boards is about four weeks over the
+ * winter break, so past this age the claim stops being believable and the
+ * freshness gate is left to go red.
+ */
+const MAX_RESTAMP_DAYS = 45;
+
+function isRecentBoard(endDate: string | undefined): boolean {
+  const endedAt = Date.parse(endDate ?? "");
+  return (
+    Number.isFinite(endedAt) &&
+    Date.now() - endedAt <= MAX_RESTAMP_DAYS * 24 * 60 * 60 * 1000
+  );
+}
+
 async function main() {
   const outPath = resolve(__dirname, "../src/data/golfSnapshot.ts");
 
@@ -44,17 +60,21 @@ async function main() {
     if (!hasContents(existing)) {
       throw error;
     }
-    if (!(error instanceof GolfNoLiveEventError) || !existing.summary.tournament) {
+    if (
+      !(error instanceof GolfNoLiveEventError) ||
+      !existing.summary.tournament ||
+      !isRecentBoard(existing.summary.tournament.endDate)
+    ) {
       console.warn(
         "⛳ Golf snapshot refresh failed; keeping the existing snapshot.",
         error
       );
       return;
     }
-    // Between tournaments ESPN lists only the next event with no field, so the
-    // last final board is still the freshest data that exists. Re-stamp its
-    // verification time so the freshness gate reads a checked source rather
-    // than a frozen one for the whole off week.
+    // Between tournaments, and during a team event, ESPN has no individual
+    // field to score, so the last final board is still the freshest data that
+    // exists. Re-stamp its verification time so the freshness gate reads a
+    // checked source rather than a frozen one for the whole off week.
     const generatedAt = new Date().toISOString();
     snapshot = {
       ...existing,

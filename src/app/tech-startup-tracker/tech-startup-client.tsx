@@ -18,6 +18,7 @@ import { Catalog97ProjectHero } from "@/components/catalog97/Catalog97ProjectHer
 import { PROJECT_PRESS } from "@/constants/projectPress";
 import { formatUsdCompact, sortTechStartups } from "@/lib/techStartups";
 import { relativeAge } from "@/lib/utils";
+import { DATE_ONLY_TIME_ZONE } from "@/lib/date-formatters";
 import type {
   TechStartup,
   TechStartupRouteState,
@@ -44,9 +45,12 @@ interface TechStartupClientProps {
   snapshot: TechStartupSnapshot;
 }
 
+// yearMonth is a date-only "YYYY-MM" value, so it's pinned to UTC to keep
+// its calendar month instead of rolling back a day in western zones.
 const ROUND_FORMATTER = new Intl.DateTimeFormat("en-US", {
   month: "short",
   year: "numeric",
+  timeZone: DATE_ONLY_TIME_ZONE,
 });
 
 function formatRoundDate(yearMonth: string): string {
@@ -110,7 +114,7 @@ export function TechStartupClient({ initialState, snapshot }: TechStartupClientP
   const [sourceIsOverdue, setSourceIsOverdue] = useState(!snapshot.verified);
   useEffect(() => {
     // eslint-disable-next-line react-hooks/set-state-in-effect -- Compute the relative timestamp only after mount to avoid SSR/client hydration drift
-    setRelativeUpdated(relativeAge(snapshot.generatedAt));
+    setRelativeUpdated(relativeAge(snapshot.generatedAt, Date.now()));
   }, [snapshot.generatedAt]);
   useEffect(() => {
     const sourceAgeMs = Date.now() - Date.parse(snapshot.asOf);
@@ -495,7 +499,7 @@ function StartupRow({ startup, rank, isExpanded, sectorLabel, stageLabel, onTogg
                   </div>
                 </dl>
                 <div>
-                  <p className="c97-stat-label mb-2 inline-flex items-center gap-1">
+                  <p className="c97-stat-label inline-flex items-center gap-1" style={{ marginBottom: "var(--c97-sp-1)" }}>
                     <Tags aria-hidden="true" size={12} />
                     Focus
                   </p>
@@ -508,7 +512,7 @@ function StartupRow({ startup, rank, isExpanded, sectorLabel, stageLabel, onTogg
                   </div>
                 </div>
                 <div>
-                  <p className="c97-stat-label mb-2">Notable investors</p>
+                  <p className="c97-stat-label" style={{ marginBottom: "var(--c97-sp-1)" }}>Notable investors</p>
                   <div className="flex flex-wrap gap-2">
                     {startup.notableInvestors.map((investor) => (
                       <span key={investor} className="c97-chip">
@@ -546,9 +550,25 @@ function StartupRow({ startup, rank, isExpanded, sectorLabel, stageLabel, onTogg
                 <div className="col-span-2">
                   <dt className="c97-stat-label">Round led by</dt>
                   <dd className="m-0 mt-1" style={{ color: "var(--c97-ink)" }}>
-                    {startup.lastRound.leadInvestors.join(", ")}
+                    {startup.lastRound.leadInvestors.join(", ") || "Undisclosed"}
                   </dd>
                 </div>
+                {startup.lastRound.sourceUrl ? (
+                  <div className="col-span-2">
+                    <dt className="c97-stat-label">Round source</dt>
+                    <dd className="m-0 mt-1">
+                      <a
+                        href={startup.lastRound.sourceUrl}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="c97-link inline-flex min-h-[44px] items-center gap-2"
+                      >
+                        {new URL(startup.lastRound.sourceUrl).hostname.replace(/^www\./, "")}
+                        <ExternalLink aria-hidden="true" size={14} />
+                      </a>
+                    </dd>
+                  </div>
+                ) : null}
               </dl>
             </div>
           </td>
@@ -572,7 +592,7 @@ function SegmentSummary({ segments, startups, selectedSegment, onSelectSegment }
     <aside className="c97-panel" aria-labelledby="tech-startup-segment-heading">
       <div className="mb-4 flex items-center justify-between gap-3">
         <div>
-          <p className="c97-kicker mb-1">Segments</p>
+          <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-1)" }}>Segments</p>
           <h2
             id="tech-startup-segment-heading"
             className="c97-serif"

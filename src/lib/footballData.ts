@@ -1,5 +1,6 @@
 /**
- * Shared football-data.org v4 wire types and request constants.
+ * Shared football-data.org v4 wire types, request constants, and the paced
+ * fetch both leagues use.
  *
  * The Premier League and La Liga dashboards read the same API with different
  * competition codes, so the response schema lives here rather than being
@@ -14,8 +15,8 @@ export const TEAM_REVALIDATE_SECONDS = 300;
 export const RECENT_FIXTURE_LIMIT = 8;
 export const UPCOMING_FIXTURE_LIMIT = 8;
 export const TEAM_FIXTURE_LIMIT = 5;
-// Full-season goals-per-matchday aggregation reads every FINISHED match, not
-// just the most recent ones, so that call intentionally omits `limit`.
+// The provider ignores `limit` on competition matches, so one request returns
+// every FINISHED match and feeds both the recent list and goals per matchday.
 export const SEASON_FIXTURES_REVALIDATE_SECONDS = 300;
 
 export interface FootballDataArea {
@@ -123,6 +124,160 @@ export interface FootballDataScorersResponse {
 
 export interface FootballDataError extends Error {
   status: number;
+}
+
+// Both leagues have 20 clubs. A shorter table is a partial response.
+const FULL_TABLE_SIZE = 20;
+
+// The free tier allows 10 requests a minute on one token that both leagues
+// share. A run stops at 8 so a request made anywhere else does not push it over.
+const RATE_WINDOW_MS = 61_000;
+const MAX_REQUESTS_PER_WINDOW = 8;
+const RATE_LIMIT_RESERVE = 2;
+const MAX_RATE_LIMIT_WAIT_MS = 70_000;
+
+let requestTimes: number[] = [];
+let blockedUntil = 0;
+
+export function resetFootballDataPacingForTests(): void {
+  requestTimes = [];
+  blockedUntil = 0;
+}
+
+function createFootballDataError(message: string, status: number): FootballDataError {
+  return Object.assign(new Error(message), { status });
+}
+
+function wait(ms: number) {
+  return new Promise<void>((resolve) => setTimeout(resolve, ms));
+}
+
+function readHeaderNumber(headers: Headers, name: string): number | null {
+  const raw = headers.get(name)?.trim();
+  const value = raw ? Number(raw) : NaN;
+  return Number.isFinite(value) && value >= 0 ? value : null;
+}
+
+function blockUntilReset(headers: Headers): void {
+  const seconds =
+    readHeaderNumber(headers, "x-requestcounter-reset") ??
+    readHeaderNumber(headers, "retry-after") ??
+    60;
+  const waitMs = Math.min((seconds + 1) * 1000, MAX_RATE_LIMIT_WAIT_MS);
+  blockedUntil = Math.max(blockedUntil, Date.now() + waitMs);
+}
+
+async function waitForRequestSlot(): Promise<void> {
+  for (;;) {
+    const now = Date.now();
+    requestTimes = requestTimes.filter((time) => now - time < RATE_WINDOW_MS);
+    const windowWaitMs =
+      requestTimes.length >= MAX_REQUESTS_PER_WINDOW ? requestTimes[0] + RATE_WINDOW_MS - now : 0;
+    const waitMs = Math.max(windowWaitMs, blockedUntil - now);
+    if (waitMs <= 0) {
+      requestTimes.push(now);
+      return;
+    }
+    await wait(waitMs);
+  }
+}
+
+async function fetchFootballDataJsonOnce<T>(
+  league: string,
+  path: string,
+  revalidateSeconds: number
+): Promise<T> {
+  const token = process.env.FOOTBALL_DATA_API_TOKEN?.trim();
+  if (!token) {
+    throw createFootballDataError(`${league} data source is not configured.`, 503);
+  }
+
+  await waitForRequestSlot();
+  // AbortSignal.timeout fires its own per-attempt timeout cleanly without us
+  // having to manage a setTimeout / clearTimeout pair around every call.
+  const response = await fetch(`${FOOTBALL_DATA_BASE_URL}${path}`, {
+    headers: {
+      "X-Auth-Token": token,
+    },
+    signal: AbortSignal.timeout(REQUEST_TIMEOUT_MS),
+    next: {
+      revalidate: revalidateSeconds,
+    },
+  });
+
+  // The counter covers every run on the token, so it is the only view of what
+  // another run has already used in this minute.
+  const available = readHeaderNumber(response.headers, "x-requests-available-minute");
+  if (response.status === 429 || (available !== null && available <= RATE_LIMIT_RESERVE)) {
+    blockUntilReset(response.headers);
+  }
+
+  if (!response.ok) {
+    if (response.status === 401 || response.status === 403) {
+      throw createFootballDataError(
+        `${league} data provider rejected the configured API token.`,
+        503
+      );
+    }
+
+    if (response.status === 404) {
+      throw createFootballDataError(`Requested ${league} resource was not found.`, 404);
+    }
+
+    throw createFootballDataError(
+      `Unable to load ${league} data from the upstream provider (HTTP ${response.status}).`,
+      response.status >= 500 ? 503 : 502
+    );
+  }
+
+  return (await response.json()) as T;
+}
+
+/**
+ * Wraps the per-attempt fetch in a 3-attempt retry with a short backoff. A 404
+ * is not retried. A 429 is retried once the window the API reported has reset,
+ * because the next attempt waits for its slot like any other request.
+ * Mirrors the pattern in src/lib/nflData.ts (`fetchTextOnce` + `fetchText`).
+ */
+export async function fetchFootballDataJson<T>(
+  league: string,
+  path: string,
+  revalidateSeconds: number
+): Promise<T> {
+  let lastError: unknown;
+  for (let attempt = 0; attempt < 3; attempt += 1) {
+    try {
+      return await fetchFootballDataJsonOnce<T>(league, path, revalidateSeconds);
+    } catch (error) {
+      lastError = error;
+      // Treat AbortError / TimeoutError as a network failure for retry purposes.
+      if (error instanceof Error && (error.name === "AbortError" || error.name === "TimeoutError")) {
+        if (attempt < 2) {
+          await wait(1000 * (attempt + 1));
+          continue;
+        }
+        throw createFootballDataError(`${league} data provider timed out.`, 504);
+      }
+      const status = (error as FootballDataError).status;
+      if (typeof status === "number" && status >= 400 && status < 500) throw error;
+      if (attempt < 2) {
+        await wait(1000 * (attempt + 1));
+      }
+    }
+  }
+  throw lastError;
+}
+
+/**
+ * Drops the snapshots of clubs that left the league. A table short of the full
+ * 20 prunes nothing, so a partial response cannot delete a club.
+ */
+export function pruneToTable<T>(
+  snapshots: Record<string, T>,
+  tableIds: readonly string[]
+): Record<string, T> {
+  if (tableIds.length !== FULL_TABLE_SIZE) return snapshots;
+  return Object.fromEntries(Object.entries(snapshots).filter(([id]) => tableIds.includes(id)));
 }
 
 

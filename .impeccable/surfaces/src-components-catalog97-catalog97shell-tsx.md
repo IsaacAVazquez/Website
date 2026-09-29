@@ -5,6 +5,8 @@ primary_target: "src/components/catalog97/Catalog97Shell.tsx"
 related_targets: ["src/components/catalog97/Catalog97Header.tsx","src/components/ui/DeferredThemeToggle.tsx","src/components/search/HeaderSearchPanel.tsx"]
 ---
 
+Updated on 2026-09-28 by the responsive pass. The footer tiles switch at 560px and 960px (`.c97-footer-tiles` in catalog97.css), so the note below about 640 and 1080 describes a grid that is gone. On the four routes in `WIDE_TOOL_ROUTES` the page carries `data-c97-wide`, and the header row, the search panel, the footer, and every body shell widen to `--c97-container-wide` (1376px) together, which puts the wordmark, the page title, and the footer at x 272 at 1920 on the trade calculator and Investments. The search panel is `c97-shell c97-frame` now and sits on the header row's edges at every width. The theme toggle, the nav's last item, gives back its 12px glyph inset with a negative end margin, so the icon sits on the column's right edge.
+
 **Superseded in part on 2026-09-23.** The seven designed routes now use the print shop layout in `STYLING.md`, and it overrides anything below that disagrees. The pine, camel, and tobacco surfaces were renamed and repainted as `ink-blue`, `ink-saffron`, and `ink-vermilion`, and `ink-peach` was added, so read any mention of pine, camel, or tobacco below as the ink that replaced it. Anton now also sets the h1 and section h2s through `.c97-poster`, so the numerals-only Anton rule is retired. Vermilion carries body text with the darkest ink (4.62:1), so the tobacco large-text-only rule is retired too. Bands that change surface tear over each other, and the one allowed shadow is the hard `.c97-offset` in the second ink.
 
 # Catalog 97 shell surface brief
@@ -15,7 +17,7 @@ related_targets: ["src/components/catalog97/Catalog97Header.tsx","src/components
 
 **Job / action.** Get oriented, then leave for the right route.
 
-**Visual world: Catalog 97, not Working Instrument.** `DESIGN.md` describes The Working Instrument, and until the bridge on 2026-09-16 it governed every other route. Those routes now render inside `Catalog97ToolShell` and are Catalog 97 too, so `DESIGN.md` is stale everywhere until the close-out PR rewrites it. It does NOT govern this file. `context.mjs` auto-loads it anyway, so a pass that treats it as the spec here will read every deliberate Catalog 97 decision as a violation and manufacture false findings. Tokens live in `src/app/catalog97.css`.
+**Visual world: Catalog 97.** `DESIGN.md` describes Catalog 97 as shipped, and `context.mjs` auto-loading it now points a pass at the right spec for this file. Tokens live in `src/app/catalog97.css`.
 
 **Settled 2026-08-03 (layout). The footer has its own grid and no longer borrows `.c97-columns`.** The footer holds one colophon paragraph and three short link lists, and those are not equivalent content, so equal tracks were a framework default rather than a decision. On four equal 219px tracks the colophon set at 27 characters a line, well under the 34ch its own `--c97-measure-body` already allows, which means the track and not the token was what bound it. `.c97-footer-grid` gives the colophon `2fr` against `1fr` for each list above 1080px, so at 1440 the tracks are 350px and three of 175px, the paragraph reaches its 34ch cap at 284px, and "Accessibility", the widest label at 124px, still clears its 175px column with room. The footer also came down from 510px to 436px, because the paragraph stopped wrapping into a ribbon.
 

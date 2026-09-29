@@ -1,7 +1,7 @@
 import type { PollingSnapshot } from "@/types/polling";
 
 export const pollingSnapshot: PollingSnapshot = {
-  "generatedAt": "2026-09-27T10:50:58.769Z",
+  "generatedAt": "2026-09-28T12:02:31.271Z",
   "sourceAsOf": "2026-09-08",
   "sourceLabel": "VoteHub Polling API, CC BY 4.0",
   "approvalAvg": {
@@ -13,7 +13,7 @@ export const pollingSnapshot: PollingSnapshot = {
     {
       "date": "2025-09-15",
       "approve": 44.2,
-      "disapprove": 52.7
+      "disapprove": 52.5
     },
     {
       "date": "2025-10-15",

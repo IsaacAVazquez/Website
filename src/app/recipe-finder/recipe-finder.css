@@ -3,6 +3,8 @@
 /* The hero holds the shelf only. Its closest match is the first card in the grid below. */
 .c97-recipe-hero-grid {
   display: grid;
+  /* A column that can shrink; an implicit one grew to the shelf's widest row and pushed a phone sideways. */
+  grid-template-columns: minmax(0, 1fr);
   max-width: 48rem;
 }
 
@@ -58,6 +60,10 @@
 .c97-recipe-quickadd {
   display: inline-flex;
   min-height: 44px;
+  /* The icon-only "add ingredient" submit button reuses this class and needs
+     a floor on both axes; the text quick-picks are already wider than this. */
+  min-width: 44px;
+  justify-content: center;
   align-items: center;
   gap: var(--c97-sp-1);
   padding: 0 var(--c97-sp-2);

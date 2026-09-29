@@ -154,6 +154,13 @@ export function InterchangeIQClient() {
   const annualSavings = savingsVsWorst * 12;
 
   const statementRows = useMemo(() => feeStatement(results), [results]);
+  const cheapestRows = useMemo(() => statementRows.filter((row) => row.isCheapest), [statementRows]);
+  const cheapestIds = useMemo(() => new Set(cheapestRows.map((row) => row.id)), [cheapestRows]);
+  const cheapestNames = cheapestRows.map((row) => row.name).join(" and ");
+  const cheapestModels = new Set(cheapestRows.map((row) => row.model));
+  const cheapestDetail =
+    cheapestModels.size === 1 ? `${cheapestNames} · ${cheapest.model}` : cheapestNames;
+  const cheapestVerdict = cheapestRows.length > 1 ? `${cheapestNames} tie` : `${cheapestNames} wins`;
 
   // The Flat-rate / Interchange-plus nav tabs narrow the processor list to that
   // pricing model; the hero verdict and signature stay computed from the full set.
@@ -193,7 +200,7 @@ export function InterchangeIQClient() {
           {
             label: "Cheapest monthly fee",
             value: fmtFull(cheapest.monthlyFee),
-            detail: `${cheapest.name} · ${cheapest.model}`,
+            detail: cheapestDetail,
           },
           {
             label: "Savings vs priciest",
@@ -207,7 +214,7 @@ export function InterchangeIQClient() {
         ]}
       >
         <div data-c97-surface="paper" className="c97-offset" style={{ padding: "var(--c97-sp-3)" }}>
-          <FeeStatementSignature rows={statementRows} verdict={`${cheapest.name} wins`} />
+          <FeeStatementSignature rows={statementRows} verdict={cheapestVerdict} />
         </div>
       </Catalog97ProjectHero>
 
@@ -252,7 +259,7 @@ export function InterchangeIQClient() {
 
           <div className="grid gap-8 lg:grid-cols-[minmax(0,360px)_minmax(0,1fr)]">
             <div className="space-y-4">
-              <p className="c97-kicker">Inputs</p>
+              <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-2)" }}>Inputs</p>
 
               <Slider
                 label="Monthly volume"
@@ -366,12 +373,12 @@ export function InterchangeIQClient() {
                     }}
                   >
                     <div>
-                      <span className="c97-serif" style={{ fontWeight: r.id === cheapest.id ? 700 : 400 }}>
+                      <span className="c97-serif" style={{ fontWeight: cheapestIds.has(r.id) ? 700 : 400 }}>
                         {r.name}
                       </span>{" "}
                       <span className="c97-iq-tag">{r.model}</span>
                       <div className="c97-meta" style={{ marginTop: "var(--c97-sp-1)" }}>
-                        <span>{Math.round(r.txCount).toLocaleString()} tx/mo</span>
+                        <span>{Math.round(r.txCount).toLocaleString("en-US")} tx/mo</span>
                         <span>{fmtFull(r.perTxAvg)}/tx avg</span>
                         <span>{(r.effectiveRate * 100).toFixed(2)}% eff.</span>
                       </div>
@@ -394,7 +401,7 @@ export function InterchangeIQClient() {
 
           {breakevenTicket !== null && breakevenTicket > 0 ? (
             <>
-              <p className="c97-prose">
+              <p className="c97-prose" style={{ marginBottom: "var(--c97-sp-2)" }}>
                 With your card mix, Stripe IC+ becomes cheaper than Stripe flat rate once the average
                 ticket passes <span className="c97-mono">${breakevenTicket.toFixed(2)}</span>. Your
                 current average ticket is <span className="c97-mono">${avgTicket}</span>, and{" "}
@@ -435,7 +442,7 @@ export function InterchangeIQClient() {
                 </figcaption>
               </figure>
 
-              <p className="c97-prose" style={{ fontSize: "var(--c97-fs-small)", color: "var(--c97-ink-2)" }}>
+              <p className="c97-prose" style={{ marginBottom: "var(--c97-sp-2)", fontSize: "var(--c97-fs-small)", color: "var(--c97-ink-2)" }}>
                 Note: Stripe IC+ requires a custom contract and typically $250k+/year in volume, and
                 the IC+ totals here leave out card network and assessment fees, so real IC+ costs run
                 higher.
@@ -443,7 +450,7 @@ export function InterchangeIQClient() {
             </>
           ) : (
             <>
-              <p className="c97-prose">
+              <p className="c97-prose" style={{ marginBottom: "var(--c97-sp-2)" }}>
                 At your current card mix, Stripe IC+ costs less than Stripe flat at every ticket size,
                 so there is no breakeven to find. IC+ usually needs a custom contract and about $250k a
                 year in volume, and the IC+ totals here leave out card network and assessment fees, so
@@ -480,7 +487,7 @@ export function InterchangeIQClient() {
 
       <section className="c97-band c97-sheet" data-c97-surface="paper" data-seam="torn" aria-label="How payment processing fees work">
         <div className="c97-shell space-y-6">
-          <p className="c97-kicker">Reference</p>
+          <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-3)" }}>Reference</p>
           <h2 className="c97-poster-sm">How payment processing fees work</h2>
 
           <div className="grid md:grid-cols-3 gap-4">
@@ -496,7 +503,7 @@ export function InterchangeIQClient() {
             ))}
           </div>
 
-          <p className="c97-prose" style={{ fontSize: "var(--c97-fs-small)", color: "var(--c97-ink-2)", textAlign: "center" }}>
+          <p className="c97-prose" style={{ fontSize: "var(--c97-fs-small)", color: "var(--c97-ink-2)" }}>
             Interchange rates based on published 2024 Visa/Mastercard US schedules and Amex OptBlue
             program averages. Processor fees from public pricing pages. For educational purposes
             only. Actual rates vary by industry, card type, and negotiated terms.

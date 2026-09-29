@@ -8,9 +8,11 @@ on:
     - cron: "15 */4 * 1-5,8-12 *"
   workflow_dispatch:
 
-# Don't stack a manual dispatch on top of a scheduled run.
+# Both football lanes draw on one football-data.org token and its limit of
+# 10 requests a minute. Run side by side they took each other's budget, and
+# most runs skipped a club or lost the table. One group makes them take turns.
 concurrency:
-  group: refresh-premier-league
+  group: football-data-org
   cancel-in-progress: false
 
 jobs:
@@ -18,7 +20,7 @@ jobs:
     name: Refresh Premier League Snapshot
     runs-on: ubuntu-latest
     # Cap a hung football-data.org call so we don't burn 6 hours of runner.
-    timeout-minutes: 20
+    timeout-minutes: 30
 
     permissions:
       contents: write
@@ -34,13 +36,14 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v7
         with:
-          node-version: "20"
+          node-version-file: .nvmrc
           cache: "npm"
 
       - name: Install dependencies
         run: npm ci --prefer-offline --no-audit --fund=false
 
       - name: Refresh Premier League snapshot
+        timeout-minutes: 20
         run: npm run update:premier-league
         env:
           FOOTBALL_DATA_API_TOKEN: ${{ secrets.FOOTBALL_DATA_API_TOKEN }}
@@ -126,7 +129,7 @@ jobs:
           echo "" >> "$GITHUB_STEP_SUMMARY"
           echo "**Status:** ${{ job.status }}" >> "$GITHUB_STEP_SUMMARY"
           echo "**Run Date:** $(date -u +'%Y-%m-%d %H:%M:%S UTC')" >> "$GITHUB_STEP_SUMMARY"
-          echo "**Schedule:** Daily at 06:15 UTC, Aug–May" >> "$GITHUB_STEP_SUMMARY"
+          echo "**Schedule:** Every four hours, August through May" >> "$GITHUB_STEP_SUMMARY"
           echo "" >> "$GITHUB_STEP_SUMMARY"
           if [ -n "${{ steps.verify_quality.outputs.standings_count }}" ]; then
             echo "**Teams in standings:** ${{ steps.verify_quality.outputs.standings_count }}" >> "$GITHUB_STEP_SUMMARY"

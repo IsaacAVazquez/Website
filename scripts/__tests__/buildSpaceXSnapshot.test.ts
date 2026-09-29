@@ -5,6 +5,7 @@ import os from "os";
 import path from "path";
 import { promises as fs } from "fs";
 import { buildSpaceXSnapshot } from "../buildSpaceXSnapshot";
+import { aggregateLaunchCadence } from "../../src/lib/spacexCadence";
 import { buildMissionControlSnapshot } from "../../src/lib/spacexData";
 import type { MissionControlSnapshot } from "../../src/types/spacex";
 
@@ -133,5 +134,47 @@ describe("buildSpaceXSnapshot", () => {
 
     expect(result.snapshot).toEqual(existingSnapshot);
     await expect(readSnapshot(projectRoot)).resolves.toEqual(existingSnapshot);
+  });
+
+  it("keeps the last good cadence, dated as it was, when a refresh comes back without one", async () => {
+    const projectRoot = await makeProjectRoot();
+    const lastGoodCadence = aggregateLaunchCadence(
+      ["2025-10-03T10:06:00Z", "2026-09-26T14:00:54Z"],
+      Date.parse("2026-09-27T14:45:23.691Z")
+    );
+    const existingSnapshot: MissionControlSnapshot = {
+      generatedAt: "2026-09-27T14:45:23.692Z",
+      sourceLabel: "launch-library-2 snapshot",
+      summary: null,
+      upcomingLaunches: [],
+      pastLaunches: [],
+      launchDetails: {},
+      cadence: lastGoodCadence,
+    };
+    const refreshedSnapshot: MissionControlSnapshot = {
+      ...existingSnapshot,
+      generatedAt: "2026-09-27T21:25:40.000Z",
+      cadence: null,
+    };
+
+    await fs.mkdir(path.join(projectRoot, "src", "data"), { recursive: true });
+    await fs.writeFile(
+      path.join(projectRoot, "src", "data", "spacexSnapshot.generated.json"),
+      `${JSON.stringify(existingSnapshot, null, 2)}\n`,
+      "utf8"
+    );
+
+    mockBuildMissionControlSnapshot.mockResolvedValue(refreshedSnapshot);
+
+    await buildSpaceXSnapshot({
+      projectRoot,
+      logger: { log: jest.fn(), error: jest.fn() },
+    });
+
+    const written = await readSnapshot(projectRoot);
+
+    expect(written.generatedAt).toBe("2026-09-27T21:25:40.000Z");
+    expect(written.cadence).toEqual(lastGoodCadence);
+    expect(written.cadence?.generatedAt).toBe("2026-09-27T14:45:23.691Z");
   });
 });

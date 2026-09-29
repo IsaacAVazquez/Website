@@ -1,7 +1,9 @@
+import { createHash, timingSafeEqual } from "node:crypto";
 import { NextRequest, NextResponse } from "next/server";
 import { Resend } from "resend";
 import { emailDigestRateLimiter, getClientIp, rateLimitResponse } from "@/lib/rateLimit";
 import { logger } from "@/lib/logger";
+import { DISPLAY_TIME_ZONE } from "@/lib/date-formatters";
 
 // ---------------------------------------------------------------------------
 // POST /api/mba-jobs/email — send an email digest of MBA job listings via Resend
@@ -67,10 +69,12 @@ const RESPONSE_HEADERS = {
   "Cache-Control": "no-store",
 };
 
+// Server-only (no hydration to break), but pinned anyway so the printed
+// posted date doesn't shift with whatever zone the deploy host happens to run in.
 function formatDate(iso: string): string {
   const d = new Date(iso);
   if (isNaN(d.getTime())) return "";
-  return d.toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" });
+  return d.toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric", timeZone: DISPLAY_TIME_ZONE });
 }
 
 function json(body: Record<string, unknown>, init?: ResponseInit) {
@@ -268,7 +272,26 @@ function buildEmailHtml(jobs: EmailDigestJob[], to: string): string {
 </html>`;
 }
 
+const DIGEST_SECRET_HEADER = "x-mba-digest-secret";
+
+// Hashing both sides first gives timingSafeEqual the equal lengths it needs
+// without revealing how long the secret is.
+function secretsMatch(provided: string, expected: string): boolean {
+  const hash = (value: string) => createHash("sha256").update(value).digest();
+  return timingSafeEqual(hash(provided), hash(expected));
+}
+
 export async function POST(request: NextRequest) {
+  // The allowlist limits who receives a digest, not who can send one, so the
+  // caller proves itself before anything else runs.
+  const secret = process.env.MBA_DIGEST_SECRET?.trim();
+  if (!secret) {
+    return json({ error: "Email delivery is not configured." }, { status: 503 });
+  }
+  if (!secretsMatch(request.headers.get(DIGEST_SECRET_HEADER) ?? "", secret)) {
+    return json({ error: "A valid digest secret is required." }, { status: 401 });
+  }
+
   const contentLength = Number.parseInt(request.headers.get("content-length") ?? "0", 10);
   if (Number.isFinite(contentLength) && contentLength > MAX_BODY_BYTES) {
     return json({ error: "Email digest request is too large." }, { status: 413 });

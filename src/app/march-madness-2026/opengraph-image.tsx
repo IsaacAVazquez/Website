@@ -1,7 +1,5 @@
 import { ImageResponse } from "next/og";
 
-export const runtime = "edge";
-
 export const alt = "March Madness 2026 Bracket Analysis";
 
 export const size = {

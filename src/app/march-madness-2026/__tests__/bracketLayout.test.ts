@@ -1,4 +1,4 @@
-import { BRACKET } from "../march-madness-data";
+import { BRACKET, type RegionData } from "../march-madness-data";
 import { regionBracket } from "../bracketLayout";
 
 describe("regionBracket", () => {
@@ -78,6 +78,39 @@ describe("regionBracket", () => {
     expect(layout.games.filter((g) => g.round === "r1")).toHaveLength(1);
     expect(layout.games.filter((g) => g.round === "r2")).toHaveLength(0);
     expect(layout.games.filter((g) => g.round === "e8")).toHaveLength(0);
+  });
+
+  it("keeps a later round's fallback y-centre inside the 0..1 bracket height when only some of its games have a feeder pair", () => {
+    // r1 only has 2 games (a malformed/incomplete round), but r2 has 2 games,
+    // so r2 index 0 has a feeder pair (r1[0]/r1[1]) while r2 index 1 does not
+    // (r1[2]/r1[3] don't exist) and must fall back.
+    const partial = {
+      region: "Partial",
+      site: "Nowhere, USA",
+      winner: null,
+      r1: [
+        { s1: 1, t1: "Alpha", s2: 16, t2: "Zulu", w: 1, tags: [] },
+        { s1: 8, t1: "Bravo", s2: 9, t2: "Yankee", w: 1, tags: [] },
+      ],
+      r2: [
+        { t1: "Alpha", t2: "Bravo", w: 0, tags: [] },
+        { t1: "Charlie", t2: "Delta", w: 0, tags: [] },
+      ],
+      s16: [],
+    } as unknown as RegionData;
+
+    const layout = regionBracket(partial);
+    const r2Games = layout.games.filter((g) => g.round === "r2");
+    expect(r2Games).toHaveLength(2);
+
+    expect(r2Games[0].feederY).not.toBeNull();
+    expect(r2Games[1].feederY).toBeNull();
+    // The old fallback (`index + 0.5`) gave 1.5, well outside the 0..1 range
+    // BracketGame.y documents and RegionBracket.tsx multiplies by the chart's
+    // full height, which pushed the game far below the visible bracket.
+    expect(r2Games[1].y).toBeCloseTo(0.75);
+    expect(r2Games[1].y).toBeGreaterThanOrEqual(0);
+    expect(r2Games[1].y).toBeLessThanOrEqual(1);
   });
 
   it("handles a missing region without throwing", () => {

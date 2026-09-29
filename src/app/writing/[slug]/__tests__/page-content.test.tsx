@@ -128,7 +128,7 @@ describe("Writing article page", () => {
     };
     mockGetBlogPostBySlug.mockResolvedValue(post);
     mockGetRelatedBlogPosts.mockResolvedValueOnce([
-      { ...post, slug: "other-post", title: "Other Post", content: "<p>Other</p>" },
+      { ...post, slug: "other-post", title: "Other Post" },
     ]);
 
     render(await BlogPostPage({ params: Promise.resolve({ slug: "test-post" }) }));

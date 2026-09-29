@@ -117,6 +117,9 @@ const FANTASY_PROS_MAX_OFF_BOARD_ROW_SHARE = 0.05;
 const FANTASY_PROS_OFFICIAL_API_BASE_URL =
   "https://api.fantasypros.com/public/v2/json/nfl";
 const FANTASY_PROS_OFFICIAL_API_MAX_CLOCK_SKEW_MS = 5 * 60 * 1000;
+// A hung connection would otherwise hold the refresh job until its own cap,
+// and a job that times out is cancelled before it can report the failure.
+const FANTASY_PROS_FETCH_TIMEOUT_MS = 20_000;
 const FLEX_ELIGIBLE_BOARD_POSITIONS: readonly Position[] = ["RB", "WR", "TE"];
 
 const FANTASY_PROS_MIN_BOARD_PLAYERS: Readonly<Record<FantasyProsBoardPosition, number>> =
@@ -913,6 +916,7 @@ async function fetchFantasyProsOfficialApiConsensusBoard(
       Accept: "application/json",
       "x-api-key": apiKey,
     },
+    signal: AbortSignal.timeout(FANTASY_PROS_FETCH_TIMEOUT_MS),
   });
 
   if (!response.ok) {
@@ -952,6 +956,7 @@ export async function fetchFantasyProsPublicHtmlConsensusBoard(
       "Accept-Language": "en-US,en;q=0.9",
       Referer: "https://www.fantasypros.com/nfl/rankings/",
     },
+    signal: AbortSignal.timeout(FANTASY_PROS_FETCH_TIMEOUT_MS),
   });
 
   if (!response.ok) {

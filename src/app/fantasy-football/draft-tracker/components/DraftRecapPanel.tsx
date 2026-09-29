@@ -135,7 +135,7 @@ export function DraftRecapPanel({
       <div
         className="mt-4 grid gap-px overflow-hidden border"
         style={{
-          gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))",
+          gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 200px), 1fr))",
           borderColor: "var(--c97-rule)",
           background: "var(--c97-rule)",
         }}

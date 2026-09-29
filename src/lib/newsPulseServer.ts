@@ -10,6 +10,8 @@ const ERROR_TTL_MS = 30 * 1000;
 const TOTAL_OUTAGE_MESSAGE =
   "No usable headlines came through on this refresh. I could not build a trustworthy comparison view.";
 const DURABLE_LAST_GOOD_MAX_AGE_MS = 24 * 60 * 60 * 1000;
+const MAX_ARTICLES_PER_FEED = 30;
+const MAX_ARTICLE_AGE_MS = 7 * 24 * 60 * 60 * 1000;
 
 export interface NewsPulseFeedResponse {
   articles: NewsArticle[];
@@ -24,12 +26,13 @@ interface NewsPulseDataResult {
   body: NewsPulseFeedResponse;
   status: number;
   isError: boolean;
-  // Some feeds failed but every served article is fresh. Reported in the body
-  // (dataStatus: "degraded") but cached like a success — one dead feed must
-  // not disable CDN caching or the 5-minute server TTL for the whole route.
+  // Some feeds failed and at least one is fresh. A failed feed shows its last
+  // good headlines when it has them. Reported in the body (dataStatus:
+  // "degraded") but cached like a success, since one dead feed must not
+  // disable CDN caching or the 5-minute server TTL for the whole route.
   isDegraded?: boolean;
-  // A usable but stale response: the latest refresh failed, so we serve the last
-  // good headlines. Cached with the short error TTL (retry soon) but returned to
+  // A usable but stale response: every feed failed, so we serve the last good
+  // headlines. Cached with the short error TTL (retry soon) but returned to
   // the client as a 200 with a note rather than a blank 503.
   isStale?: boolean;
 }
@@ -102,6 +105,15 @@ function describeFeedError(reason: unknown): string {
   return "unknown error";
 }
 
+function getPublishedTime(article: NewsArticle): number {
+  const time = Date.parse(article.pubDate || "");
+  return Number.isNaN(time) ? 0 : time;
+}
+
+function byNewest(left: NewsArticle, right: NewsArticle): number {
+  return getPublishedTime(right) - getPublishedTime(left);
+}
+
 async function fetchAllFeeds(): Promise<NewsPulseDataResult> {
   await hydrateDurableLastGood();
   const errors: string[] = [];
@@ -128,7 +140,22 @@ async function fetchAllFeeds(): Promise<NewsPulseDataResult> {
           throw new Error("returned no usable entries");
         }
 
-        return articles;
+        // One outlet's feed can carry several times the items of the others
+        // and reach back years, so each feed is cut to its newest items. An
+        // undated item has no age to judge, so it stays and sorts last.
+        const oldestAllowed = Date.now() - MAX_ARTICLE_AGE_MS;
+        const recent = articles
+          .filter(
+            (article) =>
+              !article.pubDate || getPublishedTime(article) >= oldestAllowed
+          )
+          .sort(byNewest)
+          .slice(0, MAX_ARTICLES_PER_FEED);
+        if (recent.length === 0) {
+          throw new Error("returned nothing from the last 7 days");
+        }
+
+        return recent;
       } finally {
         clearTimeout(timeout);
       }
@@ -149,12 +176,16 @@ async function fetchAllFeeds(): Promise<NewsPulseDataResult> {
       continue;
     }
 
-    errors.push(`${feed.name}: ${describeFeedError(result.reason)}`);
+    const reason = `${feed.name}: ${describeFeedError(result.reason)}`;
     const lastGoodFeed = lastGoodByFeed.get(feed.id);
-    if (lastGoodFeed) {
-      articles.push(...lastGoodFeed.articles);
-      staleSources.push(feed.name);
+    if (!lastGoodFeed) {
+      errors.push(reason);
+      continue;
     }
+    articles.push(...lastGoodFeed.articles);
+    staleSources.push(feed.name);
+    const lastGoodAt = lastGoodFeed.fetchedAt.slice(0, 16).replace("T", " ");
+    errors.push(`${reason} (showing headlines fetched ${lastGoodAt} UTC)`);
   }
 
   if (successfulFeedCount > 0) {
@@ -166,11 +197,7 @@ async function fetchAllFeeds(): Promise<NewsPulseDataResult> {
     );
   }
 
-  articles.sort((left, right) => {
-    const leftTime = Date.parse(left.pubDate || "");
-    const rightTime = Date.parse(right.pubDate || "");
-    return (Number.isNaN(rightTime) ? 0 : rightTime) - (Number.isNaN(leftTime) ? 0 : leftTime);
-  });
+  articles.sort(byNewest);
 
   const body: NewsPulseFeedResponse = {
     articles,
@@ -196,7 +223,7 @@ async function fetchAllFeeds(): Promise<NewsPulseDataResult> {
             : fetchedAt,
           dataStatus: "stale-fallback",
           message:
-            "Showing the last good headlines — the most recent refresh could not reach the feeds.",
+            "I am showing the last good headlines because the most recent refresh could not reach the feeds.",
         },
         status: 200,
         isError: false,
@@ -221,7 +248,6 @@ async function fetchAllFeeds(): Promise<NewsPulseDataResult> {
     status: 200,
     isError: false,
     isDegraded: errors.length > 0,
-    isStale: staleSources.length > 0,
   };
 }
 
