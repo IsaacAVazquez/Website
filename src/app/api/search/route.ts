@@ -607,9 +607,9 @@ async function getAllSearchableContent(): Promise<SearchableContent[]> {
       id: 'page-now',
       title: 'Now',
       excerpt:
-        'What I am focused on right now, from my second year at Haas to what I am building and reading.',
+        'What I am focused on right now, from my second year at Haas to what I am building.',
       content:
-        'now page current focus projects priorities reading what I am working on status update',
+        'now page current focus projects priorities what I am working on status update',
       url: '/now',
       type: 'page',
       category: 'Site',

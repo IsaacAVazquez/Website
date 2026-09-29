@@ -156,9 +156,9 @@ export function Catalog97Home({
               <p className={`c97-lead ${styles.lead}`}>
                 Before Haas I spent six years in campaign data and QA, mostly at
                 Civitech, where my QA job grew into product work, and in summer
-                2026 I was the MBA growth intern at Juno. I’m most interested in
-                fintech and AI, and I’m looking for a full-time product role
-                that starts after I graduate in May 2027.
+                2026 I was the MBA growth intern at Juno. I’m interested in
+                consumer tech broadly, and I’m looking for a full-time product
+                role that starts after I graduate in May 2027.
               </p>
 
             </div>

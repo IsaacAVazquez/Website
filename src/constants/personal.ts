@@ -76,14 +76,14 @@ export const careerTimeline = [
     role: "Innovation Consultant Team Lead",
     company: "Haas@Work",
     logo: "/images/logos/berkeley-logo.png",
-    description: "I lead a Haas@Work consulting team on a project for a global rideshare technology company, where I handle communication with the client and keep the team's work moving.",
+    description: "From January to May 2026 I led a Haas@Work consulting team on a project for a global rideshare technology company, where I handled communication with the client and kept the team's work moving.",
     techStack: ["Consulting", "Stakeholder Management", "Program Execution"],
   },
   {
     year: 2026,
     role: "MBA Growth Intern",
     company: "Juno",
-    description: "I spent summer 2026 on Juno's MBA growth team, where I rebuilt the team's reporting into an hourly dashboard, set up conversion measurement, audited the email program, and took over the SMS program as its product manager.",
+    description: "I spent summer 2026 on Juno's MBA growth team, where I rebuilt the team's reporting into an hourly dashboard, set up conversion measurement, audited the email program, and took over the SMS program.",
     techStack: ["Growth Analytics", "SQL", "Google Analytics 4", "Customer.io", "Experimentation"],
   },
 ];
