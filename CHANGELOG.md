@@ -14,6 +14,7 @@ All notable changes to this repository are documented here. Format: `YYYY-MM-DD`
 - Anchor jest worktree ignore patterns to rootDir ([#504](https://github.com/IsaacAVazquez/Website/pull/504)).
 - Rewrite the about-me copy in Isaac's voice across the site ([#505](https://github.com/IsaacAVazquez/Website/pull/505)).
 - Print the retirement projection when the planner is out of view ([#506](https://github.com/IsaacAVazquez/Website/pull/506)).
+- Name the projection chart's age axis in the caption ([#507](https://github.com/IsaacAVazquez/Website/pull/507)).
 
 ---
 
