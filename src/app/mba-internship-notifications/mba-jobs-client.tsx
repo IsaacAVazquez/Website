@@ -21,7 +21,6 @@ import {
   Download,
   Edit3,
   ExternalLink,
-  Mail,
   MapPin,
   RefreshCcw,
   Save,
@@ -109,7 +108,6 @@ import "./mba-jobs.css";
 // user opens them — keeping them out of this large client page's initial bundle.
 // `loading` is what gives each dialog its own Suspense boundary. Without it the
 // first open suspends up to the route's loading.tsx and blanks the page.
-const EmailDigestDialog = dynamic(() => import("./EmailDigestDialog"), { loading: () => null });
 const ApplicationEditDialog = dynamic(() => import("./ApplicationEditDialog"), {
   loading: () => null,
 });
@@ -1028,61 +1026,6 @@ function NotificationBell({
   );
 }
 
-function EmailDigestButton({
-  onSend,
-  sending,
-  result,
-  onClear,
-  disabled,
-}: {
-  onSend: () => void;
-  sending: boolean;
-  result: { ok: boolean; message: string } | null;
-  onClear: () => void;
-  disabled: boolean;
-}) {
-  if (result) {
-    return (
-      <div
-        className="inline-flex min-h-[44px] items-center gap-2 border px-4 py-2 text-sm font-semibold"
-        style={{
-          color: result.ok
-            ? "color-mix(in srgb, var(--c97-positive) 60%, var(--c97-ink))"
-            : "color-mix(in srgb, var(--c97-negative) 55%, var(--c97-ink))",
-          borderColor: result.ok
-            ? "color-mix(in srgb, var(--c97-positive) 36%, var(--c97-rule))"
-            : "color-mix(in srgb, var(--c97-negative) 32%, var(--c97-rule))",
-          background: result.ok
-            ? "color-mix(in srgb, var(--c97-positive) 10%, var(--c97-surface))"
-            : "color-mix(in srgb, var(--c97-negative) 10%, var(--c97-surface))",
-        }}
-        role="status"
-      >
-        {result.message}
-        <button
-          type="button"
-          onClick={onClear}
-          className="ml-1 inline-flex min-h-[44px] min-w-[44px] items-center justify-center text-xs opacity-70 transition-opacity duration-200 ease hover:opacity-100"
-          aria-label="Dismiss"
-        >
-          ✕
-        </button>
-      </div>
-    );
-  }
-  return (
-    <button
-      type="button"
-      onClick={onSend}
-      disabled={disabled || sending}
-      className="c97-btn-ghost mba-ghost disabled:opacity-50"
-    >
-      <Mail className="h-4 w-4" aria-hidden="true" />
-      {sending ? "Sending…" : "Email digest"}
-    </button>
-  );
-}
-
 // ---------------------------------------------------------------------------
 // Company filter strip
 // ---------------------------------------------------------------------------
@@ -1932,16 +1875,11 @@ export function MBAJobsClient({
     setAllCompanies,
     requestNotificationPermission,
     refresh,
-    sendEmailDigest,
-    emailSending,
-    emailResult,
-    clearEmailResult,
   } = useMBAJobs({
     externalLeads: uiState.external === "on",
     initialData,
   });
 
-  const [emailDialogOpen, setEmailDialogOpen] = useState(false);
   const [applicationDialogOpen, setApplicationDialogOpen] = useState(false);
   const [editingApplication, setEditingApplication] =
     useState<MBATrackedApplication | null>(null);
@@ -2085,11 +2023,6 @@ export function MBAJobsClient({
 
   const hasApplications = applications.length > 0;
 
-  async function handleEmailSend(email: string) {
-    setEmailDialogOpen(false);
-    await sendEmailDigest(email, displayJobs.length > 0 ? displayJobs : jobs);
-  }
-
   function openApplicationDialog(application: MBATrackedApplication | null) {
     setEditingApplication(application);
     setApplicationDialogOpen(true);
@@ -2166,14 +2099,6 @@ export function MBAJobsClient({
 
   return (
     <>
-      {emailDialogOpen && (
-        <EmailDigestDialog
-          isOpen
-          onClose={() => setEmailDialogOpen(false)}
-          onSubmit={handleEmailSend}
-          sending={emailSending}
-        />
-      )}
       {applicationDialogOpen && (
         <ApplicationEditDialog
           isOpen
@@ -2239,14 +2164,6 @@ export function MBAJobsClient({
             <NotificationBell
               permission={notificationPermission}
               onRequest={requestNotificationPermission}
-            />
-
-            <EmailDigestButton
-              onSend={() => setEmailDialogOpen(true)}
-              sending={emailSending}
-              result={emailResult}
-              onClear={clearEmailResult}
-              disabled={isLoading || jobs.length === 0}
             />
 
             {!isLoading && newJobCount > 0 && (

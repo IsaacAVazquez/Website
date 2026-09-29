@@ -9,7 +9,7 @@ export const MUSEUM_SNAPSHOT_VERIFIED = false;
  * lives in browser localStorage via useMuseumLog.
  */
 export const museumSnapshot: MuseumSnapshot = {
-  generatedAt: "2026-04-28T06:00:00Z",
+  generatedAt: "2026-09-28T06:00:00Z",
   sourceLabel: "Curated by Isaac Vazquez",
   curatorName: "Isaac Vazquez",
   curatorBio:
@@ -416,18 +416,6 @@ export const museumSnapshot: MuseumSnapshot = {
       recommendedFor: "Anyone who wants the opposite of museum fatigue",
     },
     {
-      id: "r-2",
-      museumId: "m-met",
-      rating: 5,
-      headline: "Sargent and Paris is the show of the spring",
-      body:
-        "Sargent before he was Sargent — Carolus-Duran's studio, the early portrait commissions, and the road into Madame X. The room of preliminary drawings reframes everything you think you know about him. Worth the timed entry premium.",
-      dateVisited: "2026-04-25",
-      exhibitTitle: "Sargent and Paris",
-      tags: ["special exhibition", "portraits"],
-      liked: true,
-    },
-    {
       id: "r-3",
       museumId: "m-menil",
       rating: 5,
@@ -517,13 +505,6 @@ export const museumSnapshot: MuseumSnapshot = {
 
   // ─── Visit log (the curator's "diary" view) ────────────────────────────────
   visitLog: [
-    {
-      id: "v-1",
-      museumId: "m-met",
-      date: "2026-04-25",
-      rating: 5,
-      exhibitTitle: "Sargent and Paris",
-    },
     { id: "v-2", museumId: "m-frick", date: "2026-04-12", rating: 5 },
     {
       id: "v-3",

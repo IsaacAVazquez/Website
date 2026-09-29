@@ -656,8 +656,9 @@ export const FOOD_MAP_PLACES: readonly FoodMapPlace[] = [
     curators: ["isaac"],
     cuisine: "american",
     coords: [33.7546, -84.3717],
-    order: "The tasting menu — the pâté is non-negotiable.",
-    why: "A nonprofit fine-dining room that quietly became one of the South's best.",
+    // Market menu and Thursday to Sunday hours from https://www.staplehouse.com/, read 2026-09-28.
+    order: "Whatever is on the market menu, out on the patio.",
+    why: "It made its name as one of the South's best tasting-menu rooms, and now it's a neighborhood spot in Old Fourth Ward, open Thursday to Sunday.",
   },
   {
     id: "antico-pizza",
