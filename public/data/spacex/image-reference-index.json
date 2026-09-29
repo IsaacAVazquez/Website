@@ -174,9 +174,14 @@
   "24675e3d-2458-48a3-8c70-5196e44d4dc3": {
     "launchId": "24675e3d-2458-48a3-8c70-5196e44d4dc3",
     "launchName": "Falcon 9 Block 5 | NROL-95",
-    "window": "upcoming",
+    "window": "previous",
     "images": {
       "launch": [
+        {
+          "label": "Falcon 9 Block 5 | NROL-95",
+          "localPath": "/data/spacex/images/750d876ef5565f63.jpg",
+          "remoteUrl": "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/falcon_9_at_slc_image_20260729112529.jpeg"
+        },
         {
           "label": "Falcon 9 Block 5 | NROL-95",
           "localPath": "/data/spacex/images/83daf3ce21b64d93.jpg",
@@ -366,13 +371,18 @@
   "521f3a1c-f977-4306-9b7f-495858719adf": {
     "launchId": "521f3a1c-f977-4306-9b7f-495858719adf",
     "launchName": "Falcon Heavy | Nancy Grace Roman Space Telescope",
-    "window": "upcoming",
+    "window": "previous",
     "images": {
       "launch": [
         {
           "label": "Falcon Heavy | Nancy Grace Roman Space Telescope",
           "localPath": "/data/spacex/images/c62ac3115cf4d061.jpg",
           "remoteUrl": "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/falcon_heavy_image_20220129192819.jpeg"
+        },
+        {
+          "label": "Falcon Heavy | Nancy Grace Roman Space Telescope",
+          "localPath": "/data/spacex/images/8d69f2920b2ba598.jpg",
+          "remoteUrl": "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/falcon_heavy_on_image_20260830111425.jpeg"
         }
       ],
       "patch": [],
@@ -390,14 +400,19 @@
   },
   "55b79515-ddbf-4198-8a59-29a12ed21330": {
     "launchId": "55b79515-ddbf-4198-8a59-29a12ed21330",
-    "launchName": "Falcon 9 Block 5 | R-1",
-    "window": "upcoming",
+    "launchName": "Falcon 9 Block 5 | USSF-366",
+    "window": "previous",
     "images": {
       "launch": [
         {
           "label": "Falcon 9 Block 5 | R-1",
           "localPath": "/data/spacex/images/83daf3ce21b64d93.jpg",
           "remoteUrl": "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/falcon_9_image_20230807133459.jpeg"
+        },
+        {
+          "label": "Falcon 9 Block 5 | USSF-366",
+          "localPath": "/data/spacex/images/11492e0a09c1640e.jpg",
+          "remoteUrl": "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/falcon_9_liftof_image_20260816171423.jpg"
         }
       ],
       "patch": [],
@@ -693,17 +708,22 @@
   },
   "7d1afb26-6f9c-429b-9ccf-29012fd1e519": {
     "launchId": "7d1afb26-6f9c-429b-9ccf-29012fd1e519",
-    "launchName": "Starship | Flight 14",
-    "window": "upcoming",
+    "launchName": "Starship | Starlink Group 31-1 (Starship Flight 14)",
+    "window": "previous",
     "images": {
       "launch": [
         {
-          "label": "Starship | Flight 14",
+          "label": "Starship | Starlink Group 31-1 (Starship Flight 14)",
           "localPath": "/data/spacex/images/4bf502ff63e8fce9.jpg",
           "remoteUrl": "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/starship_on_the_image_20260724044615.jpg"
         }
       ],
       "patch": [
+        {
+          "label": "Space X Starlink Mission Patch",
+          "localPath": "/data/spacex/images/1927035cad14a77c.png",
+          "remoteUrl": "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/mission_patch_images/space2520x252_mission_patch_20221011205756.png"
+        },
         {
           "label": "Starship IFT patch",
           "localPath": "/data/spacex/images/c044d36407569003.png",
@@ -855,7 +875,7 @@
   "ad358a4d-c541-409b-9366-9c2f2da4aeb9": {
     "launchId": "ad358a4d-c541-409b-9366-9c2f2da4aeb9",
     "launchName": "Falcon 9 Block 5 | O3b mPower 11-13",
-    "window": "upcoming",
+    "window": "previous",
     "images": {
       "launch": [
         {
@@ -874,6 +894,11 @@
       ],
       "spacecraft": [],
       "pad": [
+        {
+          "label": "Space Launch Complex 40",
+          "localPath": "/data/spacex/images/9b1f5cf5035d37b9.jpg",
+          "remoteUrl": "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/map_images/pad_80_20200803143323.jpg"
+        },
         {
           "label": "Unknown Pad",
           "localPath": "/data/spacex/images/5b975bfd1358b82e.jpg",
@@ -1041,6 +1066,11 @@
       ],
       "spacecraft": [],
       "pad": [
+        {
+          "label": "Space Launch Complex 40",
+          "localPath": "/data/spacex/images/9b1f5cf5035d37b9.jpg",
+          "remoteUrl": "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/map_images/pad_80_20200803143323.jpg"
+        },
         {
           "label": "Unknown Pad",
           "localPath": "/data/spacex/images/5b975bfd1358b82e.jpg",
