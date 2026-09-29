@@ -151,8 +151,9 @@ new poll, so the age of the newest poll fails nothing and the page prints it.
   complete `/api/data-revisions` ledger before it closes a publication incident.
   The check reads the ledger from the Netlify origin, `isaacvazquez.netlify.app`,
   because Cloudflare challenges runner traffic on the custom domain. On
-  2026-09-29 that challenge failed seven publishes in a row whose deploys were
-  fine, after the workflow moved from Node 20 to Node 22.
+  2026-09-29 that challenge failed every publish from 02:16 UTC until the check
+  moved, while the deploys themselves were fine. It started when the workflow
+  moved from Node 20 to Node 22.
   Building in Actions is deliberate. The Netlify account is on the free tier with
   300 build minutes a month, it ran out on 2026-08-06, and every git-triggered
   build after that was skipped, so committed data stopped reaching production.

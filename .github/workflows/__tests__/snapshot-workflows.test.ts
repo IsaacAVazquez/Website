@@ -139,8 +139,8 @@ describe("snapshot refresh workflow infrastructure", () => {
     // to stay wired up.
     expect(publicationCommands).toContain("verify-deploy-assets.mjs");
     // The ledger is read from the Netlify origin. Cloudflare challenges runner
-    // traffic on the custom domain, which failed seven publishes in a row on
-    // 2026-09-29 while every deploy was fine.
+    // traffic on the custom domain, which failed every publish on 2026-09-29
+    // from 02:16 UTC until the check moved, while every deploy was fine.
     expect(publicationCommands).toContain(
       ":-https://isaacvazquez.netlify.app/api/data-revisions}"
     );

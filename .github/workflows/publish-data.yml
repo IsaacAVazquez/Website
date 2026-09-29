@@ -126,9 +126,10 @@ jobs:
           # cf-mitigated: challenge) depending on the client. Measured from six
           # runners on 2026-09-29, it challenged Node 22, Node 24, and curl and
           # let Node 20 through, so moving this workflow from Node 20 to Node 22
-          # failed seven publishes in a row whose deploys were fine. The origin
-          # answered 200 to every client on the same runners. The secret is an
-          # override and does not need to be set.
+          # failed every publish from 02:16 UTC that day until this check moved,
+          # while the deploys themselves were fine. The origin answered 200 to
+          # every client on the same runners. The secret is an override and does
+          # not need to be set.
           revision_url="${PRODUCTION_DATA_REVISION_URL:-https://isaacvazquez.netlify.app/api/data-revisions}"
           # The third argument is the build hook, and it is deliberately empty
           # because the deploy above is already published and there is nothing
