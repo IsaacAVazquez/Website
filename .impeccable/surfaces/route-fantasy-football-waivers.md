@@ -5,6 +5,8 @@ primary_target: "route:/fantasy-football/waivers"
 related_targets: ["src/app/fantasy-football/waivers/page.tsx","src/app/fantasy-football/weekly/weekly-client.tsx","src/lib/fantasyWeeklySnapshot.ts","src/hooks/useFantasyWeeklySnapshot.ts"]
 ---
 
+Updated on 2026-09-28 by the responsive pass. The page uses the site gutter through `SHELL_CLASS`, and `MyTeamPanel`'s 96px scroll margin, sized for the deleted sticky header, is gone, since nothing is pinned above it.
+
 # Fantasy Football Waiver Targets
 
 **Status note, 2026-09-27.** This route renders inside `Catalog97ToolShell` and reads `--c97-*` tokens directly under `data-c97-surface`. `DESIGN.md` now describes Catalog 97 and governs this route. The old site header was sticky at 73px and was deleted on 2026-09-16, and `Catalog97Header` is `position: relative`, so every measurement below that assumes a 73px sticky header predates that change. Contrast figures below were measured against Working Instrument values carried through the since-removed bridge and may need re-measuring against the shipped `--c97-*` colors.

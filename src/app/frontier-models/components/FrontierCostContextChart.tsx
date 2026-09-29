@@ -178,7 +178,7 @@ export function FrontierCostContextChart({
         selection.selectAll("line").attr("stroke", gridColor).attr("stroke-dasharray", "2,3");
       });
 
-    g.append("text")
+    const xTitle = g.append("text")
       .attr("x", innerWidth / 2)
       .attr("y", innerHeight + 40)
       .attr("text-anchor", "middle")
@@ -188,6 +188,11 @@ export function FrontierCostContextChart({
       .attr("letter-spacing", "0.18em")
       .attr("text-transform", "uppercase")
       .text("CONTEXT WINDOW (TOKENS, LOG)");
+    // The title centres on the plot, 20px right of the chart's centre, so it fits
+    // while it is under width - 40. A phone's chart is narrower and drops "window".
+    if ((xTitle.node()?.getComputedTextLength?.() ?? 0) > width - 40) {
+      xTitle.text("CONTEXT (TOKENS, LOG)");
+    }
 
     g.append("text")
       .attr("transform", `translate(-46,${innerHeight / 2}) rotate(-90)`)

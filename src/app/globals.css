@@ -178,13 +178,36 @@
     margin-bottom: 0.25em;
     line-height: 1.6;
   }
+
+  /*
+   * A Tailwind grid that sets its columns only from a breakpoint up has no
+   * template below it, and its implicit column grows to the widest child's
+   * min-content, which pushed /mlb and /world-cup-2026 sideways at 320. One
+   * column that can shrink is the default instead. Any grid-cols utility,
+   * route stylesheet, or inline template still wins, since they all outrank
+   * @layer base.
+   */
+  .grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
 }
 
-/* Theme transition. Only the theme-aware properties, never all of them. */
-*:not([class*="motion-"]):not(svg):not(path) {
-  transition-property: color, background-color, border-color;
-  transition-duration: 150ms;
-  transition-timing-function: ease;
+@layer base {
+  /*
+   * Theme transition. Only the theme-aware properties, never all of them.
+   *
+   * It sits in the base layer at zero specificity, so it is a default, and a
+   * component or utility that declares its own transition replaces it. Left
+   * outside a layer at (0,1,2) it outranked every Tailwind transition utility
+   * and every single-class transition in catalog97.css, so those never ran.
+   * A component that transitions something else, such as transform, lists its
+   * colour properties too if it wants them to fade when the theme changes.
+   */
+  :where(*:not(svg):not(path)) {
+    transition-property: color, background-color, border-color;
+    transition-duration: 150ms;
+    transition-timing-function: ease;
+  }
 }
 
 @layer utilities {

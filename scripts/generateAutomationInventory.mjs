@@ -42,6 +42,8 @@ const DESCRIPTIONS = {
     "Regenerates the tables in docs/AUTOMATION_SCRIPTS.md from scripts/, the npm entry points in package.json, and the workflow schedules",
   "contrastSweep.mjs":
     "Measures text contrast on live pages in light and dark and reports anything under 4.5:1, or 3:1 for large text",
+  "layoutSweep.mjs":
+    "Loads every public route at phone, tablet, laptop, and big-monitor sizes and reports overflow, edges that miss the header's column, squeezed or clipped text, and orphaned grid rows",
   "paint_headshot.py":
     "Renders the home headshot as portrait-tuned Van Gogh, Seurat, Hopper, and Lichtenstein paintings for the painter hover",
   "paint_impressionist.py":

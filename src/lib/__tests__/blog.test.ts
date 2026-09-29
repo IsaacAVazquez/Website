@@ -517,6 +517,16 @@ describe('aggregation helpers (real functions)', () => {
     expect(related.some((p) => p.slug === 'tech-a')).toBe(false);
   });
 
+  // Scoring reads category, cluster, bucket, tags, and date, all of which are
+  // frontmatter. Rendering every post to HTML for it ran the markdown
+  // pipeline over the whole archive once per article page.
+  it('getRelatedBlogPosts renders no markdown', async () => {
+    mockRemark.mockClear();
+    const related = await getRelatedBlogPosts('tech-a', 2);
+    expect(related).toHaveLength(2);
+    expect(mockRemark).not.toHaveBeenCalled();
+  });
+
   it('getRelatedBlogPosts returns [] for an unknown slug', async () => {
     setupPosts({});
     expect(await getRelatedBlogPosts('missing')).toEqual([]);

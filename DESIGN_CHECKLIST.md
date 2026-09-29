@@ -86,6 +86,9 @@ across `STYLING.md`, `CLAUDE.md`, and `SNAPSHOT_DRIVEN_DASHBOARDS.md`.
 - [ ] CSS animations/transitions have a `prefers-reduced-motion` fallback (or use `motion-safe:`).
 - [ ] No `transition-all` in shared primitives. Transition only the properties that change
       (`transition-[background-color,transform]`).
+- [ ] A hover or state change that should animate declares its own transition. The default in
+      `globals.css` covers colour, background, and border at 150ms, and it gives way to any
+      transition the element declares.
 
 ## Responsive
 
@@ -93,6 +96,9 @@ across `STYLING.md`, `CLAUDE.md`, and `SNAPSHOT_DRIVEN_DASHBOARDS.md`.
 - [ ] Wide data tables use the scroll pattern, an `overflow-x-auto` wrapper with `role="region"`, `tabIndex`,
       and a label (progressive column-hiding is a plus).
 - [ ] Grids collapse to one column on mobile (responsive `grid-cols-*`).
+- [ ] A grid of three or four cards never leaves one alone on its last row; `.c97-columns` and `.c97-mosaic` handle both counts.
+- [ ] The h1, any breadcrumb, and the footer start on the header's content edge at every width, including the wide tool routes.
+- [ ] Run `node scripts/layoutSweep.mjs <baseUrl> <routes…>` against a production build and clear every fail at phone (320 to 430), tablet, laptop (1280 to 1512), and big-monitor (1920 and 2560) sizes.
 - [ ] In-page section nav has a mobile equivalent (don't `display:none` it away with no replacement).
 - [ ] Hero value-prop + primary CTA stay above the fold on mobile for portfolio/hero routes.
 

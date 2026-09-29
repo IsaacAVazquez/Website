@@ -54,7 +54,7 @@ On the ink sheets where a status colour cannot clear 4.5:1, the status tokens fa
 
 ### Constants on the page root
 
-`[data-c97]` also declares the fonts (`--c97-font-body` for Archivo standing in for Helvetica Neue, `--c97-font-display` for Newsreader, `--c97-font-poster` and `--c97-font-numeral` for Anton, `--c97-font-script` for the footer wordmark, `--c97-font-mono` for Fragment Mono), the six-step categorical chart ramp `--c97-chart-1` through `--c97-chart-6` with a dark ramp under `.dark`, the riso ink constants (`--c97-riso-*`), the seam and grain masks, the 1080px `--c97-container`, the 720px running-prose `--c97-column`, and the frozen scales below.
+`[data-c97]` also declares the fonts (`--c97-font-body` for Archivo standing in for Helvetica Neue, `--c97-font-display` for Newsreader, `--c97-font-poster` and `--c97-font-numeral` for Anton, `--c97-font-script` for the footer wordmark, `--c97-font-mono` for Fragment Mono), the six-step categorical chart ramp `--c97-chart-1` through `--c97-chart-6` with a dark ramp under `.dark`, the riso ink constants (`--c97-riso-*`), the seam and grain masks, the 1080px `--c97-container`, the 1376px `--c97-container-wide` for the dense tools, the 720px running-prose `--c97-column`, and the frozen scales below.
 
 | Scale | Tokens |
 |-------|--------|
@@ -91,7 +91,7 @@ Project routes print the same way. A route's ink pair lives in `src/constants/pr
 
 ## Component vocabulary
 
-A route is a sequence of `c97-band` sections, each with its own `data-c97-surface`, and each band's content sits in a `.c97-shell` (1080px). A dense tool that needs more width widens that one shell inline, the way the Investments terminal does.
+A route is a sequence of `c97-band` sections, each with its own `data-c97-surface`, and each band's content sits in a `.c97-shell` (1080px). The four dense tools in `WIDE_TOOL_ROUTES` (`src/constants/catalog97Nav.ts`), which are the trade calculator, the best ball draft room, Investments, and score pools, print on the 1376px `--c97-container-wide` instead. `ConditionalLayout` marks those pages with `data-c97-wide`, and every shell on them widens together, the header's and the footer's included, so the title, the tool, and the wordmark keep one edge at every width. Content that sits outside a band pairs `.c97-shell` with `.c97-frame`, which carries the gutter itself, and the fantasy `SHELL_CLASS` is that pair. A shell is never widened inline, because its edge then misses the header's.
 
 | Need | Class |
 |------|-------|
@@ -108,7 +108,7 @@ A route is a sequence of `c97-band` sections, each with its own `data-c97-surfac
 | Page furniture | `.c97-article` for injected HTML, `.c97-list`, `.c97-breadcrumb`, `.c97-disclosure`, `.c97-kbd`, `.c97-skeleton`, `.c97-meter` |
 | Dense data surfaces | `.c97-dash`, which drops the paragraph and list margins |
 
-Four traps come with the vocabulary. The type classes and `.c97-panel` are unlayered and set their own margin or padding, so a Tailwind margin, padding, or `space-y-*` utility on the same element silently loses, and that spacing belongs in an inline style. `.c97-lead` sets `max-inline-size: none` and `.c97-prose` sets `margin: 0`, both unlayered. `.c97-disclosure` is a collapsible details widget, so a disclaimer never goes inside it. `sticky` only pins within its parent, so a sticky rail needs a parent as tall as the content it rides beside.
+Four traps come with the vocabulary. The type classes and `.c97-panel` are unlayered and set their own margin or padding, so a Tailwind margin, padding, gap, or max-width utility on the same element silently loses, and that spacing belongs in an inline style. `src/app/__tests__/catalog97-closeout.test.ts` fails on any such pair. A `space-y-*` parent's gap never reaches a child whose class zeroes its margin either, so that child takes an inline `marginBottom` on the ladder, and a stack of inline children such as a label's span and input uses `grid gap-*` instead. `.c97-lead` sets `max-inline-size: none` and `.c97-prose` sets `margin: 0`, both unlayered. `.c97-disclosure` is a collapsible details widget, so a disclaimer never goes inside it. `sticky` only pins within its parent, so a sticky rail needs a parent as tall as the content it rides beside.
 
 ---
 
@@ -134,6 +134,8 @@ Headings default to the body face at 700 with tight tracking and balanced wrappi
 
 Dark mode is class based. `next-themes` puts `.dark` on `<html>`, and every surface block in `catalog97.css` has a `.dark` counterpart, so components that read tokens adapt without any `dark:` utility. The body outside the page root paints the paper values as printed, which covers the overscroll gutter and the skip link (`.c97-skip-link`).
 
+A theme change fades colour, background, and border over 150ms. That comes from one rule in `globals.css`, which sits in `@layer base` at zero specificity, so it is a default, and any transition a component or a utility declares replaces it. A component that transitions something else, such as `transform`, lists its colour properties too if it wants them to fade when the theme changes.
+
 ### Charts and D3
 
 D3 and SVG fills can't read Tailwind classes, so charts resolve token colours at render time. Read them with `getComputedStyle(svgElement).getPropertyValue('--c97-accent')` from the chart's own element, since the tokens are scoped to the `[data-c97]` container and `document.documentElement` resolves none of them, and re-resolve on theme change (`useTheme().resolvedTheme` as an effect dependency). `var()` and `color-mix()` never resolve inside SVG presentation attributes, so pass resolved values to `.attr()` or use `.style()`. Never bake a token's hex into a constant.
@@ -155,7 +157,10 @@ The light chart ramp has four steps that read apart (chart-1, 2, 3, and 6), so a
 ## Practical rules
 
 - Compose bands from the vocabulary before writing route CSS, and scope any route CSS to a route class so it cannot style another route after that route has loaded.
-- A grid wrapper with no `grid-template-columns` sizes its column to max-content and blows out the page, so give it `minmax(0, 1fr)`.
+- A grid wrapper with no `grid-template-columns` sizes its column to max-content and blows out the page, so give it `minmax(0, 1fr)`. A Tailwind `.grid` already gets that one column from `globals.css`, which covers the grids that set their columns only from a breakpoint up, and an auto-fit floor always carries `min(100%, Npx)`.
+- `.c97-columns` and `.c97-mosaic` never leave one item alone on the last row when they hold three or four. Three go from one column to three at 881px, four go to two across at 560px (700px in a mosaic), and in `.c97-columns` four go to four across at 1200px. Three project hero readouts print the first across the column and the other two under it below 560px.
+- A `.c97-btn-ghost` takes back its side padding on its start edge, so a ghost that begins a line sets its label on the column, and a boxed button right before a ghost gives that space back on its end side. A ghost's padding is never cancelled by hand.
+- `node scripts/layoutSweep.mjs <baseUrl>` loads every public route against a running server at phone, tablet, laptop, and big-monitor sizes and reports overflow, edges that miss the header's column, squeezed or clipped text, and orphaned grid rows. `--shots` adds screenshots and a contact sheet, `--scan` walks one load from 320 to 1920, and `--webkit` adds Safari. `e2e/layoutChecks.ts` runs the cheap part of it in CI, holding the h1, any breadcrumb, and the footer to the header's edges at 390, 1440, and 1920.
 - Do not use `transition-all` in shared primitives; transition only the properties that change.
 - Portfolio and writing cards reveal role, problem space, and impact in the default scan state.
 - If a route already has a visual language, extend it.

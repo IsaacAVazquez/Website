@@ -569,7 +569,7 @@ function ToolDetail({ tool }: { tool: AiDevTool | null }) {
   }
 
   return (
-    <aside className="c97-panel h-fit min-w-0 xl:sticky xl:top-24">
+    <aside className="c97-panel h-fit min-w-0 xl:sticky xl:top-6">
       <div className="flex items-start justify-between gap-4">
         <div className="flex items-start gap-3">
           <span className="inline-flex h-11 w-11 shrink-0 items-center justify-center border border-[var(--c97-rule)] bg-[var(--c97-field)] text-[var(--c97-ink)]">

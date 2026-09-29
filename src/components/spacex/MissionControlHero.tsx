@@ -309,6 +309,9 @@ export function MissionControlHero({
             className="h-[220px] min-h-[220px]"
             label="Vehicle view"
             dataTestId="mission-hero-visual"
+            // The 220px column from 1024px up. Below that the frame measured
+            // 277px on a 375px screen and 626px on a 768px one.
+            sizes="(min-width: 1024px) 220px, 85vw"
           />
           <div className="border border-[var(--c97-rule)] bg-[var(--c97-field)]/90 p-4 ">
             <div className="flex items-center gap-2">

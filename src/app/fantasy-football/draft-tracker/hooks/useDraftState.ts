@@ -10,25 +10,17 @@ import {
   reconcileTeamRosters,
 } from '@/lib/draftAnalytics';
 import { DEFAULT_REDRAFT_LINEUP, normalizeRedraftLineup } from '@/lib/redraftLineup';
+import {
+  DRAFT_STORAGE_VERSION,
+  getCurrentDraftSeason,
+  getFantasyDraftStorageKey,
+} from '@/lib/fantasyUtils';
 
-export const DRAFT_STORAGE_VERSION = 3;
+// Defined in fantasyUtils so a caller that only needs the season or the key
+// does not bundle this hook. Re-exported for the mock draft and the tests.
+export { DRAFT_STORAGE_VERSION, getCurrentDraftSeason, getFantasyDraftStorageKey };
+
 const LEGACY_FANTASY_DRAFT_STORAGE_KEY = 'fantasy-draft-tracker';
-
-/**
- * NFL season for the current draft window. The league year rolls over with
- * the new league year in March, so anything before March belongs to the prior
- * season. Used to scope persisted draft state per-season so a stale 2025
- * draft doesn't bleed into a fresh 2026 setup.
- */
-export function getCurrentDraftSeason(now: Date = new Date()): number {
-  const year = now.getUTCFullYear();
-  const month = now.getUTCMonth();
-  return month < 2 ? year - 1 : year;
-}
-
-export function getFantasyDraftStorageKey(season: number = getCurrentDraftSeason()): string {
-  return `fantasy-draft-tracker-v${DRAFT_STORAGE_VERSION}-${season}`;
-}
 
 // Exposed for tests and callers that want the active key without recomputing
 // the season. Old unversioned key is intentionally NOT migrated — the schema

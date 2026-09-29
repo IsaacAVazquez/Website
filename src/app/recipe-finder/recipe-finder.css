@@ -3,6 +3,8 @@
 /* The hero holds the shelf only. Its closest match is the first card in the grid below. */
 .c97-recipe-hero-grid {
   display: grid;
+  /* A column that can shrink; an implicit one grew to the shelf's widest row and pushed a phone sideways. */
+  grid-template-columns: minmax(0, 1fr);
   max-width: 48rem;
 }
 

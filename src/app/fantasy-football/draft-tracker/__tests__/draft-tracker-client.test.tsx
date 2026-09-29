@@ -52,6 +52,15 @@ jest.mock("@/hooks/useFantasySnapshot", () => ({
   useFantasySnapshot: (options: unknown) => mockUseFantasySnapshot(options),
 }));
 
+// In the app the drawer loads the first time a player is opened. Here it is
+// the real drawer, mounted directly, so these tests stay about the room and
+// stay synchronous. The loading itself is covered in
+// DeferredPlayerDetailDrawer.test.tsx.
+jest.mock("@/components/fantasy/DeferredPlayerDetailDrawer", () => ({
+  DeferredPlayerDetailDrawer: jest.requireActual("@/components/fantasy/PlayerDetailDrawer")
+    .PlayerDetailDrawer,
+}));
+
 jest.mock("../hooks/useDraftState", () => ({
   // Keep the module's pure exports (calculateDraftOrder feeds the fascia's
   // "your next turn" cell) while stubbing the stateful hook.
@@ -447,7 +456,7 @@ describe("DraftTrackerClient", () => {
     // new row instead of squeezing the first three (240px let four 249px columns
     // clip two names at 1440).
     expect(document.querySelector("#draft-decision-strip")).toHaveStyle({
-      gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))",
+      gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 320px), 1fr))",
     });
     expect(screen.queryByText(/^Board #1 · Tier 1/)).not.toBeInTheDocument();
     expect(screen.queryByText("Fills WR1")).not.toBeInTheDocument();

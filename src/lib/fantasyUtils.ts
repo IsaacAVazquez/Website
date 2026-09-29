@@ -99,6 +99,27 @@ export function getNflRegularSeasonWeek(season: number, now: Date = new Date()):
   return Math.min(NFL_REGULAR_SEASON_WEEKS, weeksElapsed + 1);
 }
 
+export const DRAFT_STORAGE_VERSION = 3;
+
+/**
+ * NFL season for the current draft window. The league year rolls over with
+ * the new league year in March, so anything before March belongs to the prior
+ * season. Used to scope persisted draft state per-season so a stale 2025
+ * draft doesn't bleed into a fresh 2026 setup.
+ *
+ * It sits here with the other season math so the trade calculator and the
+ * weekly My Team panel can read it without bundling the draft state hook.
+ */
+export function getCurrentDraftSeason(now: Date = new Date()): number {
+  const year = now.getUTCFullYear();
+  const month = now.getUTCMonth();
+  return month < 2 ? year - 1 : year;
+}
+
+export function getFantasyDraftStorageKey(season: number = getCurrentDraftSeason()): string {
+  return `fantasy-draft-tracker-v${DRAFT_STORAGE_VERSION}-${season}`;
+}
+
 /**
  * True while the refresh cron runs daily rather than weekly, which is July
  * through December: drafts through early September, then the season itself
@@ -687,11 +708,12 @@ export function getFantasySourceCapabilities({
 export const FANTASY_CHIP_CLASS =
   "inline-flex items-center border px-2.5 py-1 text-2xs font-semibold uppercase tracking-[0.12em]";
 
-/** The template's 1080px column; each page manages its own shell width. */
-export const SHELL_CLASS = "mx-auto w-full max-w-[1080px] px-[clamp(1rem,4vw,2.5rem)]";
-
-/** The wide column the trade desk, the best ball room, and the compare tray use, 1680px from 1440 up. */
-export const WIDE_SHELL_CLASS = "mx-auto w-full max-w-[86rem] px-4 sm:px-6 lg:px-8 min-[1440px]:max-w-[1680px]";
+/**
+ * The site column with its own gutter, so fantasy content that sits outside a
+ * `.c97-band` shares the header's edges. It widens on the wide tool routes
+ * (the trade calculator and the best ball draft room) with every other shell.
+ */
+export const SHELL_CLASS = "c97-shell c97-frame";
 
 export const MONO_LABEL_CLASS = "font-mono text-3xs uppercase tracking-[0.12em]";
 

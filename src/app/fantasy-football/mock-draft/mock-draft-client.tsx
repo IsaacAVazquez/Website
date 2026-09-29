@@ -891,7 +891,7 @@ export function MockDraftClient() {
 
       {showSetup && (
         <div className="c97-sheet" data-c97-surface="paper" data-seam={showScopeNote ? undefined : "torn"}>
-        <div className="mx-auto w-full max-w-[780px] px-[clamp(1rem,4vw,2.5rem)] pb-12 pt-1">
+        <div className="c97-shell c97-frame pb-12 pt-1" style={{ maxWidth: 700 }}>
           <div
             className="overflow-hidden border"
             style={{ borderColor: "var(--c97-rule)", background: "var(--c97-field)" }}
@@ -904,7 +904,7 @@ export function MockDraftClient() {
                 <p className={`m-0 ${MONO_LABEL_CLASS}`} style={{ color: "var(--c97-ink-2)" }}>
                   Room setup
                 </p>
-                <h2 className="c97-serif c97-h3 m-0" style={{ marginTop: "0.25rem" }}>
+                <h2 className="c97-serif c97-h3" style={{ marginTop: "0.25rem" }}>
                   Rep the rounds that decide leagues.
                 </h2>
               </div>
@@ -922,7 +922,7 @@ export function MockDraftClient() {
 
             <div
               className="grid gap-x-4 gap-y-3.5 px-4 py-4"
-              style={{ gridTemplateColumns: "repeat(auto-fit, minmax(210px, 1fr))" }}
+              style={{ gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 210px), 1fr))" }}
             >
               <label className="grid content-start gap-1.5">
                 <span className={MONO_LABEL_CLASS} style={{ color: "var(--c97-ink-2)" }}>
@@ -1050,7 +1050,7 @@ export function MockDraftClient() {
               </p>
               <div
                 className="grid gap-2"
-                style={{ gridTemplateColumns: "repeat(auto-fit, minmax(190px, 1fr))" }}
+                style={{ gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 190px), 1fr))" }}
               >
                 {REDRAFT_LINEUP_PRESETS.map((preset) => {
                   const active = sameLineup(preset.lineup, setupForm.lineup);
@@ -1723,7 +1723,7 @@ export function MockDraftClient() {
             <div
               className="grid min-w-0 flex-1 basis-[340px] gap-px"
               style={{
-                gridTemplateColumns: "repeat(auto-fit, minmax(170px, 1fr))",
+                gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 170px), 1fr))",
                 background: "var(--c97-rule)",
               }}
             >
@@ -1806,7 +1806,7 @@ export function MockDraftClient() {
             style={{ borderColor: "var(--c97-rule)", background: "var(--c97-field)" }}
           >
             <div className="flex flex-wrap items-baseline gap-x-3.5 gap-y-1 px-3.5 py-2.5">
-              <h2 className="c97-serif c97-h3 m-0">The board</h2>
+              <h2 className="c97-serif c97-h3">The board</h2>
               <span className="font-mono text-2xs" style={{ color: "var(--c97-ink-2)" }}>
                 {`room #${roomLabel(state.seed)} · ${settings.draftType} order · your column outlined`}
               </span>

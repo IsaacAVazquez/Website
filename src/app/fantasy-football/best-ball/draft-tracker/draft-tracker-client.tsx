@@ -7,7 +7,8 @@ import { useCallback, useEffect, useMemo, useRef, useState, useSyncExternalStore
 import { useReducedMotion } from "framer-motion";
 import { Redo2, RotateCcw, Undo2 } from "lucide-react";
 import { Breadcrumbs } from "@/components/navigation/Breadcrumbs";
-import { PlayerDetailDrawer, type ExpectedReturnFormState } from "@/components/fantasy";
+import type { ExpectedReturnFormState } from "@/components/fantasy/DraftValuePanel";
+import { DeferredPlayerDetailDrawer } from "@/components/fantasy/DeferredPlayerDetailDrawer";
 import { useBestBallSnapshot } from "@/hooks/useBestBallSnapshot";
 import {
   BEST_BALL_CONTESTS,
@@ -32,7 +33,7 @@ import {
   resolveDraftPicksForModel,
   withoutPlayerAdp,
   getNflRegularSeasonWeek,
-  WIDE_SHELL_CLASS,
+  SHELL_CLASS,
 } from "@/lib/fantasyUtils";
 import { calculateBestBallDraftValues } from "@/lib/fantasyTeamValue";
 import { BestBallBuildPanel } from "./best-ball-build-panel";
@@ -185,7 +186,7 @@ export function BestBallDraftTrackerClient({
       data-testid="best-ball-draft-tracker-shell"
       data-hydrated={isHydrated ? "true" : "false"}
     >
-      <div className={`${WIDE_SHELL_CLASS} space-y-5 py-[clamp(1.25rem,2vw,2rem)]`}>
+      <div className={`${SHELL_CLASS} space-y-5 py-[clamp(1.25rem,2vw,2rem)]`}>
       <section className="c97-sheet space-y-4" data-c97-surface="paper" style={{ paddingBlock: "var(--c97-sp-4)" }}>
         <Breadcrumbs customItems={BREADCRUMBS} className="pt-2" />
         {seasonalWeek >= 1 ? (
@@ -197,11 +198,11 @@ export function BestBallDraftTrackerClient({
         <header className="space-y-4">
           {roomOpen ? (
             <div className="space-y-2">
-              <p className="c97-kicker">Best ball draft assistant</p>
+              <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-1)" }}>Best ball draft assistant</p>
               {/* An open room demotes the pitch: the h1 stays for the outline,
                   compact, and the live state below leads. Freshness survives the
                   collapse on purpose; it is a credibility feature. */}
-              <h1 className="c97-serif c97-h3" style={{ marginTop: "var(--c97-sp-1)" }}>
+              <h1 className="c97-serif c97-h3" style={{ marginBottom: "var(--c97-sp-1)", marginTop: "var(--c97-sp-1)" }}>
                 Track every pick and see what your build still needs.
               </h1>
               <p className="text-xs" style={{ color: "var(--c97-ink-2)" }}>
@@ -216,7 +217,7 @@ export function BestBallDraftTrackerClient({
             </div>
           ) : (
             <div className="space-y-3">
-              <p className="c97-kicker">Best ball draft assistant</p>
+              <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-2)" }}>Best ball draft assistant</p>
               <h1 className="c97-poster">
                 Track every pick and see what your build still needs.
               </h1>
@@ -1120,7 +1121,7 @@ function BestBallDraftRoom({
         the Compare button stays out, and logging from the drawer records the
         current pick and closes it, mirroring the redraft tracker.
       */}
-      <PlayerDetailDrawer
+      <DeferredPlayerDetailDrawer
         player={drawerPlayer}
         publishedRank={detailPlayer ? String(detailPlayer.bestBallRank) : undefined}
         adpAvailable={adpAvailable && !detailPlayer?.isUndraftedAtContestFloor}

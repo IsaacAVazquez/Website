@@ -114,7 +114,7 @@ There is no `/api/scheduled-update`, `/api/data-manager`, `/api/fantasy-pros-ses
 - never log raw credentials, bearer tokens, or full provider response payloads at INFO/WARN levels
 - redact `Authorization`, `Cookie`, and any `*_KEY`/`*_SECRET` headers before logging request metadata
 - scrapers and update scripts should log failures (status code + URL path) without dumping sensitive request headers or full HTML bodies
-- in production, `compiler.removeConsole` is on (see `next.config.mjs`); rely on structured Netlify logs rather than ad-hoc `console.*` calls
+- in production, `compiler.removeConsole` strips `console.log`, `console.info`, and `console.debug` and keeps `console.error` and `console.warn` (see `next.config.mjs`), so anything passed to those two reaches the Netlify logs and the visitor's browser console, and the rules above apply to every call to them
 
 ---
 

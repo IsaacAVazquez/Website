@@ -435,7 +435,7 @@ function RepoRow({ repo, rank, isExpanded, matchedSegments, windowDays, onToggle
               {rank}
             </span>
             <div className="min-w-0">
-              <p className="c97-serif mb-1" style={{ fontWeight: 600, color: "var(--c97-ink)" }}>
+              <p className="c97-serif" style={{ marginBottom: "var(--c97-sp-1)", fontWeight: 600, color: "var(--c97-ink)" }}>
                 {repo.fullName}
               </p>
               <p
@@ -544,7 +544,7 @@ function SegmentSummary({ segments, repositories, selectedSegment, onSelectSegme
     <aside className="c97-panel" aria-labelledby="github-segment-summary-heading">
       <div className="mb-4 flex items-center justify-between gap-3">
         <div>
-          <p className="c97-kicker mb-1">Segments</p>
+          <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-1)" }}>Segments</p>
           <h2 id="github-segment-summary-heading" className="c97-serif" style={{ fontSize: "var(--c97-fs-h3)" }}>
             Snapshot leaders
           </h2>

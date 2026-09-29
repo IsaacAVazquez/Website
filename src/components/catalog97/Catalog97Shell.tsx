@@ -172,6 +172,8 @@ interface Catalog97ShellProps {
    * That band is gone, so the flag now only governs the mark itself.
    */
   wordmark?: boolean;
+  /** Widens every shell on the page, header and footer included (see `WIDE_TOOL_ROUTES`). */
+  wide?: boolean;
 }
 
 /**
@@ -190,9 +192,10 @@ interface Catalog97ShellProps {
 export function Catalog97Shell({
   children,
   wordmark = true,
+  wide = false,
 }: Catalog97ShellProps) {
   return (
-    <div className="c97-page" data-c97 data-c97-surface="paper">
+    <div className="c97-page" data-c97 data-c97-surface="paper" data-c97-wide={wide || undefined}>
       <Catalog97Header />
       <main id="main-content" tabIndex={-1}>
         {children}

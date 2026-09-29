@@ -9,6 +9,8 @@ import { MBAJobsClient } from "@/app/mba-internship-notifications/mba-jobs-clien
 import { DEFAULT_MBA_JOBS_STATE } from "@/app/mba-internship-notifications/mba-jobs-state";
 import { FoodMapClient } from "@/app/food-map/food-map-client";
 import { DEFAULT_FOOD_MAP_STATE } from "@/app/food-map/food-map-state";
+import { SpaceXMissionControlClient } from "@/app/spacex-mission-control/spacex-mission-control-client";
+import { DEFAULT_MISSION_CONTROL_STATE } from "@/app/spacex-mission-control/spacex-mission-control-state";
 
 // Real framer-motion on purpose. The route tests mock it, which is how a
 // page-wide fade that server-rendered every page at opacity 0 went unseen.
@@ -48,5 +50,15 @@ describe("server-rendered first paint", () => {
     ["Food Map", <FoodMapClient key="f" initialState={DEFAULT_FOOD_MAP_STATE} />],
   ])("%s ships its headline visible before any script runs", (_name, element) => {
     expect(serverRenderedHeadingOpacity(element)).toBe(1);
+  });
+
+  // The headline check cannot see a wrapper that sits beside the h1. Mission
+  // Control had one on the hero card, the tape, the stats, the tabs, and the
+  // board, so everything below the headline waited for the script.
+  it("Mission Control ships no section at opacity 0", () => {
+    const markup = renderToStaticMarkup(
+      <SpaceXMissionControlClient initialState={DEFAULT_MISSION_CONTROL_STATE} renderedAtMs={0} />,
+    );
+    expect(markup.match(/opacity:\s*0[;"]/g) ?? []).toEqual([]);
   });
 });

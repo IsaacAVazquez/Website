@@ -240,6 +240,18 @@ For the operational view (command → artifact → schedule in one table) see
 
 ---
 
+## Edge caching for dashboard pages
+
+A dashboard page that reads `searchParams` renders on every request, even when its data only changes with a deploy. `next.config.mjs` holds a list, `cdnCachedPages`, of the pages whose HTML depends on the deploy and the query string and nothing else, and it sends two headers on each one. `Netlify-CDN-Cache-Control` lets Netlify's CDN keep a copy for six hours, which is the interval of the scheduled production deploy, and `Netlify-Vary: query` makes the whole query string part of the cache key. Browsers still receive `private, no-store`, so only the CDN caches.
+
+A page belongs on the list only if nothing in its server render reads the clock, a random number, live data, or Netlify Blobs. A countdown or an age label is fine when it is computed in an effect or read through `useClientNow()`, since the server HTML then carries no time. `src/lib/__tests__/edge-cache-policy.test.ts` spells out the list and the nine pages that stay off it, so adding a page means editing that test too.
+
+One consequence to know about. Twenty of the 23 pages have a `loading.tsx`, so a page that throws after its loading screen has gone out still answers 200 with its error screen, and the CDN would keep that copy until the next deploy or a purge through `netlify/functions/purge-cache.ts`. `/food-map`, `/museum-log`, and `/search` have no `loading.tsx`, so a throw there answers 500. The two headers go out with every status. On the deploy preview for this change, on 2026-09-28, a 404 under them was not stored, and I have not seen what Netlify does with a 500.
+
+What the preview showed for a cached page is a copy kept for the six hours the header asks for. The first request renders the page and stores it, a later request to an edge node that has no copy is answered from Netlify's durable cache, and a request to an edge node that has one is answered from that node. On `/mlb` those took 0.72 s, 0.21 to 0.41 s, and 0.04 s, against 0.36 to 0.57 s for the same page rendered on every request in production, eight requests each from one machine.
+
+---
+
 ## Per-route error boundaries
 
 Every snapshot dashboard **must** ship a per-route `error.tsx` (re-exporting the shared
@@ -289,6 +301,9 @@ the snapshot type **and** render an on-page disclosure card (mirror `tech-startu
    `scripts/ci/commit-and-push-snapshot.sh`.
 10. **Docs** — add a row to the table above and to
     `docs/DATA_UPDATE_OPERATIONS.md`; register in `AGENTS.md` Automation Surfaces.
+11. Edge cache. If the page's server render reads no clock, random number, live
+    data, or Blobs, add its path to `cdnCachedPages` in `next.config.mjs` and to
+    `src/lib/__tests__/edge-cache-policy.test.ts`.
 
 Reuse the shared football components in `src/components/football/` (FixtureCard,
 LeaderList, StatCard, CrestAvatar, …) wherever the surface is a league/standings

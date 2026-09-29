@@ -5,6 +5,8 @@ primary_target: "route:/investments"
 related_targets: ["src/app/investments/page.tsx","src/app/investments/investments-client.tsx","src/components/investments/InvestmentsDashboard.tsx","src/app/investments/investments.module.css","src/components/investments/PriceChartPanel.tsx","src/lib/investmentsHistory.ts"]
 ---
 
+Updated on 2026-09-28 by the responsive pass. /investments is a wide tool route, so every shell on it prints at 1376px, and the wordmark, the hero title, and the footer share x 272 at 1920, where the terminal's shell used to run wider than the header's column from 1280px up. The inline 86rem on the terminal band is gone, and the disclaimer sits in a shell. Section anchors clear the 45px section rail at 900px and under and take no offset above it, where nothing is pinned. The retirement chart measures its y-axis labels to set its left margin, so "$3.5M" keeps its "$" at desktop type and its digits at the doubled phone type.
+
 # Investments surface brief
 
 **Status note, 2026-09-27.** This route renders inside `Catalog97ToolShell`. `.terminalScope` in `investments.module.css` no longer hand-copies a dark palette; the terminal's containers carry `data-c97-surface="espresso"`/`"chocolate"` and read `--c97-*` tokens directly, so it repaints correctly in both site themes instead of running permanently dark. `StaticHeader.tsx`, named in the history below, was deleted on 2026-09-16. The old header was sticky at 73px and `Catalog97Header` is `position: relative`, while `--invest-rail-top` is still 73px as of this date.

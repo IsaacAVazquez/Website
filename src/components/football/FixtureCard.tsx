@@ -1,6 +1,6 @@
 import type { CSSProperties } from "react";
 import { Clock3 } from "lucide-react";
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/cn";
 import { CrestAvatar } from "./CrestAvatar";
 import { formatFixtureDateTime, getResultForTeam } from "./fixtureFormat";
 import { TeamResultPill } from "./TeamResultPill";

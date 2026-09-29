@@ -1,8 +1,8 @@
 "use client"
 
+import { clsx } from "clsx"
 import { Moon, Sun } from "lucide-react"
 import { useTheme } from "next-themes"
-import { cn } from "@/lib/utils"
 
 interface ThemeToggleProps {
   className?: string;
@@ -18,7 +18,7 @@ export function ThemeToggle({ className }: ThemeToggleProps) {
     <button
       type="button"
       onClick={() => setTheme(nextTheme)}
-      className={cn(
+      className={clsx(
         "relative inline-flex min-h-[44px] min-w-[44px] shrink-0 items-center justify-center text-[var(--c97-ink-2)] transition-colors hover:text-[var(--c97-ink)]",
         className
       )}

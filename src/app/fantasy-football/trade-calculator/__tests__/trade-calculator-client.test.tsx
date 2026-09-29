@@ -1,4 +1,5 @@
 import {
+  act,
   cleanup,
   fireEvent,
   render,
@@ -167,6 +168,9 @@ async function addPlayerWithKeyboard(
     name: `Add a player to ${side}`,
   });
 
+  // A visitor cannot type into a field without being in it, and leaving the
+  // other package's search is what closes its list.
+  input.focus();
   fireEvent.change(input, { target: { value: playerName } });
   expect(screen.getByRole("option", { name: new RegExp(playerName) })).toBeEnabled();
 
@@ -238,6 +242,50 @@ describe("TradeCalculatorClient", () => {
     const getPlayers = screen.getByRole("list", { name: "You get players" });
     expect(within(getPlayers).getByText("Depth Runner")).toBeInTheDocument();
     expect(within(getPlayers).queryByText("Elite Runner")).not.toBeInTheDocument();
+  });
+
+  describe("the refocus a frame after an add", () => {
+    let frames: FrameRequestCallback[];
+
+    beforeEach(() => {
+      frames = [];
+      window.requestAnimationFrame = (callback: FrameRequestCallback) => frames.push(callback);
+      useSnapshot(buildSnapshot());
+    });
+
+    function addEliteRunnerToYouGive() {
+      render(<TradeCalculatorClient />);
+      const giveInput = screen.getByRole("combobox", { name: "Add a player to you give" });
+      giveInput.focus();
+      fireEvent.change(giveInput, { target: { value: "Elite Runner" } });
+      fireEvent.keyDown(giveInput, { key: "ArrowDown" });
+      fireEvent.keyDown(giveInput, { key: "Enter" });
+      return giveInput;
+    }
+
+    // On a slow frame the visitor can be in the other package's search before
+    // the refocus runs, and taking focus back closes the list they just opened.
+    it("leaves focus where the visitor has moved it", () => {
+      addEliteRunnerToYouGive();
+      const getInput = screen.getByRole("combobox", { name: "Add a player to you get" });
+      getInput.focus();
+      fireEvent.change(getInput, { target: { value: "Depth" } });
+
+      act(() => frames.forEach((frame) => frame(0)));
+
+      expect(getInput).toHaveFocus();
+      expect(screen.getByRole("listbox", { name: "Players for you get" })).toBeInTheDocument();
+    });
+
+    it("returns focus to the search when the add left it nowhere", () => {
+      const giveInput = addEliteRunnerToYouGive();
+      giveInput.blur();
+      expect(document.body).toHaveFocus();
+
+      act(() => frames.forEach((frame) => frame(0)));
+
+      expect(giveInput).toHaveFocus();
+    });
   });
 
   it("swaps the packages and requires confirmation before clearing them", async () => {

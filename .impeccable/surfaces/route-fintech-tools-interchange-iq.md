@@ -5,6 +5,8 @@ primary_target: "route:/fintech-tools/interchange-iq"
 related_targets: ["src/app/fintech-tools/interchange-iq/interchange-iq-client.tsx","src/lib/interchangeIq.ts"]
 ---
 
+Updated on 2026-09-28 by the responsive pass. The rates note at the foot of the page sets left like the rest of the page, since centred text inside a left-anchored 54ch box sat off the page's centre, and the view nav's margin reset that swallowed its stack's gap is gone.
+
 # Interchange IQ surface brief
 
 Scope. The `/fintech-tools/interchange-iq` route, rendered by `src/app/fintech-tools/interchange-iq/interchange-iq-client.tsx` over the pricing engine in `src/lib/interchangeIq.ts`.

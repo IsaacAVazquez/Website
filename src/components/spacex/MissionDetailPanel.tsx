@@ -238,6 +238,9 @@ export function MissionDetailPanel({
             className="h-[220px] min-h-[220px]"
             label="Vehicle photo"
             dataTestId="mission-vehicle-photo"
+            // The drawer stops at 30rem, where the frame measured 439px, and
+            // on a 375px screen it measured 334px.
+            sizes="(min-width: 480px) 440px, 90vw"
           />
 
           <div className="border border-[var(--c97-rule)] bg-[var(--c97-surface)] p-5">

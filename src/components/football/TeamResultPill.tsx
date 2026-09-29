@@ -1,4 +1,4 @@
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/cn";
 
 export function TeamResultPill({ result }: { result: "W" | "D" | "L" }) {
   const colorClass =

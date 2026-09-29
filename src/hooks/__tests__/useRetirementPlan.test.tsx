@@ -47,6 +47,29 @@ describe("useRetirementPlan", () => {
     expect(projection!.targetNestEgg).toBeGreaterThan(0);
   });
 
+  // The planner is the last section on the investments page, and the
+  // projection is about 150 ms of main-thread work, so the planner holds the
+  // hook back until its section is near the viewport.
+  it("runs no projection until it is enabled", async () => {
+    const { result, rerender } = renderHook(
+      ({ enabled }: { enabled: boolean }) => useRetirementPlan(undefined, enabled),
+      { initialProps: { enabled: false } },
+    );
+
+    await waitFor(() => expect(result.current.ready).toBe(true));
+    await act(async () => {
+      await new Promise((resolve) => setTimeout(resolve, 0));
+    });
+    expect(result.current.result).toBeNull();
+    expect(result.current.isComputing).toBe(false);
+    expect(result.current.hasError).toBe(false);
+
+    rerender({ enabled: true });
+
+    await waitFor(() => expect(result.current.result).not.toBeNull());
+    await waitFor(() => expect(result.current.result?.levers.length).toBeGreaterThan(0));
+  });
+
   it("seeds a fresh plan from a portfolio value into a taxable account", async () => {
     const seed: RetirementSeed = {
       portfolioValue: 250000,

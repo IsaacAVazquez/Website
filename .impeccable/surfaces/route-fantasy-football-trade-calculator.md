@@ -5,6 +5,8 @@ primary_target: "route:/fantasy-football/trade-calculator"
 related_targets: ["src/app/fantasy-football/trade-calculator/page.tsx","src/app/fantasy-football/trade-calculator/trade-calculator-client.tsx"]
 ---
 
+Updated on 2026-09-28 by the responsive pass. The trade calculator is a wide tool route. At 1920 the wordmark, the breadcrumb, the title, and the footer all start at x 272, where the tool used to run from 152 to 1768 under a header at 420. The result rail's 96px scroll margin, sized for the deleted sticky header, is gone.
+
 # Fantasy Football Trade Calculator
 
 **Status note, 2026-09-27.** This route renders inside `Catalog97ToolShell` and reads `--c97-*` tokens directly under `data-c97-surface`. `DESIGN.md` now describes Catalog 97 and governs this route. The old site header was sticky at 73px and was deleted on 2026-09-16, and `Catalog97Header` is `position: relative`, so every measurement below that assumes a 73px sticky header predates that change. Contrast figures below were measured against Working Instrument values carried through the since-removed bridge and may need re-measuring against the shipped `--c97-*` colors.

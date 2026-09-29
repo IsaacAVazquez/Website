@@ -25,6 +25,58 @@ const retiredPortfolioDestinations = {
     "/writing/digital-acquisition-strategy",
 };
 
+// Pages that render on every request only because they read searchParams.
+// Their HTML depends on the deploy and the query string and nothing else, so
+// Netlify's CDN can keep a copy. Each path is exact, because a pattern would
+// also match the redirects under /fantasy-football.
+//
+// A route belongs here only if nothing in its server render reads the clock,
+// a random number, live data, or Netlify Blobs. Five dashboards print a
+// request-time value into their HTML and four fetch live data or read Blobs,
+// and src/lib/__tests__/edge-cache-policy.test.ts names all nine.
+const cdnCachedPages = [
+  "/ai-dev-tools",
+  "/bay-area-transit",
+  "/decision-lab",
+  "/earthquake-pulse",
+  "/fantasy-football/best-ball",
+  "/fantasy-football/best-ball/draft-tracker",
+  "/fantasy-football/trade-calculator",
+  "/fantasy-formula-1",
+  "/food-map",
+  "/formula-1",
+  "/github-trending-pulse",
+  "/golf",
+  "/investments",
+  "/la-liga",
+  "/march-madness-2026",
+  "/mlb",
+  "/museum-log",
+  "/nba",
+  "/nfl",
+  "/premier-league",
+  "/search",
+  "/tech-startup-tracker",
+  "/world-cup-2026",
+];
+
+// The two headers always travel together. @netlify/plugin-nextjs leaves an
+// app-supplied Netlify-CDN-Cache-Control alone and merges Netlify-Vary into
+// its own cache key, which always holds the RSC request header. Without
+// `query` that key holds only `_rsc` and `__nextDataReq` from the query
+// string, so /nfl?team=SF would be served the copy cached for /nfl.
+//
+// Browsers still get Next's `private, no-store`. Six hours is the interval of
+// the scheduled production deploy in publish-data.yml, and a deploy clears the
+// CDN, so a copy is never older than the data it was built from.
+const cdnCacheHeaders = [
+  {
+    key: "Netlify-CDN-Cache-Control",
+    value: "public, durable, s-maxage=21600, stale-while-revalidate=86400",
+  },
+  { key: "Netlify-Vary", value: "query" },
+];
+
 const nextConfig = {
   poweredByHeader: false,
   // Inlined at build so /api/data-revisions can name the commit it was built
@@ -322,15 +374,22 @@ const nextConfig = {
         source: "/:path*",
         headers: securityHeaders,
       },
+      ...cdnCachedPages.map((source) => ({ source, headers: cdnCacheHeaders })),
     ];
   },
   // Performance optimizations
   compiler: {
-    removeConsole: process.env.NODE_ENV === "production",
+    // `true` strips every console call from server code as well as client
+    // code, which left logger.error with an empty body in production.
+    removeConsole:
+      process.env.NODE_ENV === "production" ? { exclude: ["error", "warn"] } : false,
   },
   // Enable experimental features for better performance
   experimental: {
-    optimizePackageImports: ['lucide-react', 'framer-motion'],
+    // d3 re-exports thirty subpackages and declares no sideEffects, so a named
+    // import from "d3" pulled d3-transition and its dependencies into every
+    // chart chunk. Nothing here calls .transition().
+    optimizePackageImports: ['lucide-react', 'framer-motion', 'd3'],
     scrollRestoration: true,
   },
   // Enhanced webpack configuration for performance

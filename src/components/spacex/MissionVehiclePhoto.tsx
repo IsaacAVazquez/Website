@@ -7,6 +7,8 @@ interface MissionVehiclePhotoProps {
   className?: string;
   label?: string;
   dataTestId?: string;
+  /** The width of the frame on the page, as a `sizes` value. */
+  sizes?: string;
 }
 
 export function MissionVehiclePhoto({
@@ -16,6 +18,7 @@ export function MissionVehiclePhoto({
   className = "",
   label = "Vehicle view",
   dataTestId,
+  sizes,
 }: MissionVehiclePhotoProps) {
   return (
     <MissionImageFrame
@@ -23,6 +26,7 @@ export function MissionVehiclePhoto({
       image={image}
       fallbackImage={fallbackImage}
       dataTestId={dataTestId}
+      sizes={sizes}
       alt={`${name} ${label.toLowerCase()}`}
       priority={dataTestId === "mission-hero-visual"}
       surface="espresso"
