@@ -244,7 +244,7 @@ test.describe("Investments", () => {
     await expect(page.getByRole("textbox", { name: /search stock symbol/i })).toHaveValue("V");
     await expect(page.getByText("Visa Inc.")).toBeVisible();
     await expect(page.getByText("$352.45")).toBeVisible();
-    await expect(page.getByText(/latest market quote/i).first()).toBeVisible();
+    await expect(page.getByText(/market quote as of/i).first()).toBeVisible();
 
     await page.getByRole("tab", { name: /^chart$/i }).click();
     await expect(page).toHaveURL(/section=chart/);
