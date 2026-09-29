@@ -233,7 +233,7 @@ A dashboard page that reads `searchParams` renders on every request, even when i
 
 A page belongs on the list only if nothing in its server render reads the clock, a random number, live data, or Netlify Blobs. A countdown or an age label is fine when it is computed in an effect or read through `useClientNow()`, since the server HTML then carries no time. `src/lib/__tests__/edge-cache-policy.test.ts` spells out the list and the nine pages that stay off it, so adding a page means editing that test too.
 
-One consequence to know about. Every dashboard has a `loading.tsx`, so a page that throws still answers 200 with its error screen, and the CDN keeps that copy until the next deploy or a purge through `netlify/functions/purge-cache.ts`.
+One consequence to know about. Twenty of the 23 pages have a `loading.tsx`, so a page that throws after its loading screen has gone out still answers 200 with its error screen, and the CDN would keep that copy until the next deploy or a purge through `netlify/functions/purge-cache.ts`. `/food-map`, `/museum-log`, and `/search` have no `loading.tsx`, so a throw there answers 500. The two headers go out with every status, and what Netlify stores for a 404 or a 500 under them is not something I have checked yet.
 
 ---
 
