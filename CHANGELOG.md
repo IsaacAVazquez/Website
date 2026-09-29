@@ -7,6 +7,7 @@ All notable changes to this repository are documented here. Format: `YYYY-MM-DD`
 ## 2026-09-29
 
 - Ship less JavaScript on first load and cache dashboard pages at the CDN ([#495](https://github.com/IsaacAVazquez/Website/pull/495)).
+- Line every route up with the header from phone to big monitor ([#496](https://github.com/IsaacAVazquez/Website/pull/496)).
 
 ---
 
