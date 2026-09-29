@@ -72,6 +72,17 @@ price from the last seven days. The Python packages are pinned in
 `scripts/requirements-investments.txt`. The current source and licensing ledger
 is `INVESTMENTS_DATA_SOURCES.md`.
 
+Every section other than price comes from a rotation. A run has a 22 minute
+budget and fully fetches part of the list, oldest attempt first. It reached 31,
+35, and 62 of the 151 symbols in the three runs from 2026-09-15 to 2026-09-29,
+so those sections turn over about once a week when every run passes. The industry
+section runs last, because its aggregates read every ticker in the industry and
+the large industries can outlast the symbol timer. When it does, the symbol
+keeps the sections it already fetched and carries its prior industry section
+forward. The workflow counts the symbols more than 21 days past their last full
+fetch, commits the snapshots anyway, and then fails the run so the backlog opens
+an issue.
+
 News Pulse remains API-backed at request time and has no committed snapshot. Its
 last good per-feed data, and the MBA jobs route's last good result, are persisted
 in Netlify Blobs so cold starts do not erase their fallback.

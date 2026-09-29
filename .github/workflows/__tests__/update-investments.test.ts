@@ -54,6 +54,22 @@ describe("update-investments workflow contract", () => {
     expect(workflow).not.toContain("likely a systemic provider outage");
   });
 
+  it("reports a rotation that has fallen behind, after the commit", () => {
+    // On 2026-09-29 PNC and USB were 74 days past their last full fetch and
+    // nothing reported it. The check must not hold the snapshots back, so the
+    // step that fails the run sits after the commit.
+    expect(workflow).toContain("ROTATION_MAX_AGE_DAYS = 21");
+    expect(workflow).toContain("rotation_overdue=");
+    const commitStep = workflow.indexOf(
+      "name: Commit and push refreshed investments data"
+    );
+    const rotationStep = workflow.indexOf(
+      "name: Fail the run when the rotation is behind"
+    );
+    expect(commitStep).toBeGreaterThan(-1);
+    expect(rotationStep).toBeGreaterThan(commitStep);
+  });
+
   it("commits only deployable snapshots, not raw provider responses", () => {
     expect(workflow).toContain("bash scripts/ci/commit-and-push-snapshot.sh");
     expect(workflow).toContain("public/data/investments");

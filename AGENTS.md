@@ -274,6 +274,8 @@ Only the index and compacted snapshots under `public/` ship with deploys and are
 
 The refresh now rejects a symbol when its latest market date is more than seven calendar days old, even if the provider returned a non-empty price array. The index records per-symbol `priceAsOf` plus aggregate `priceHealth`, and the UI reports recent and delayed histories separately from snapshot build time. The legacy EPS-based DCF and its Buy/Hold/Sell output are disabled until a statement-backed model replaces them. Current provider, licensing, and migration decisions live in `docs/INVESTMENTS_DATA_SOURCES.md`.
 
+Prices refresh for every symbol on every run. The other sections rotate, 31 to 62 of the 151 symbols a run in September 2026, so they turn over about once a week. The industry section is fetched last, and a timeout inside it costs that one section while the symbol keeps the rest. The workflow fails after the commit when any symbol is more than 21 days past its last full fetch.
+
 ### Football dashboard data workflow
 
 The football dashboards read committed TypeScript snapshots at runtime. The token is only needed when rebuilding those snapshots.
