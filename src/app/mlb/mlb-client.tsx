@@ -365,7 +365,7 @@ export function MlbClient({ initialState, summary, initialTeamSnapshot }: MlbCli
           </div>
 
           {!hasStandings && (
-            <p className="c97-prose mt-6">
+            <p className="c97-prose" style={{ marginTop: "var(--c97-sp-3)" }}>
               The 30 clubs are listed below. Win and loss data will appear once the next
               snapshot is published.
             </p>
@@ -380,7 +380,7 @@ export function MlbClient({ initialState, summary, initialTeamSnapshot }: MlbCli
             >
               {groupedStandings.map(([groupName, rows]) => (
                 <div key={groupName}>
-                  <p className="c97-kicker mb-2">{groupName}</p>
+                  <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-1)" }}>{groupName}</p>
                   <table className="c97-table c97-mlb-table" aria-label={`${groupName} standings`}>
                     <thead>
                       <tr>
@@ -490,7 +490,7 @@ export function MlbClient({ initialState, summary, initialTeamSnapshot }: MlbCli
                         ] as const
                       ).map(([label, value]) => (
                         <div key={label} className="flex items-baseline justify-between gap-2">
-                          <dt className="c97-kicker mb-0">{label}</dt>
+                          <dt className="c97-kicker">{label}</dt>
                           <dd className="c97-mono mb-0" style={{ fontWeight: 600 }}>{value}</dd>
                         </div>
                       ))}
@@ -498,7 +498,7 @@ export function MlbClient({ initialState, summary, initialTeamSnapshot }: MlbCli
 
                     {(teamSnapshot?.form?.sequence?.length ?? 0) > 0 && (
                       <div className="mt-4" style={{ borderTop: "1px solid var(--c97-rule)", paddingTop: "var(--c97-sp-3)" }}>
-                        <p className="c97-kicker mb-2">Last 5</p>
+                        <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-1)" }}>Last 5</p>
                         <div className="flex gap-1.5">
                           {(teamSnapshot?.form.sequence ?? []).slice(-5).map((result, idx) => (
                             <TeamResultPill key={idx} result={result} />
@@ -509,8 +509,8 @@ export function MlbClient({ initialState, summary, initialTeamSnapshot }: MlbCli
 
                     {!teamSnapshot && (isTeamSnapshotLoading || teamSnapshotError) ? (
                       <p
-                        className="c97-prose mt-4 mb-0"
-                        style={{ borderTop: "1px solid var(--c97-rule)", paddingTop: "var(--c97-sp-3)" }}
+                        className="c97-prose"
+                        style={{ marginTop: "var(--c97-sp-2)", borderTop: "1px solid var(--c97-rule)", paddingTop: "var(--c97-sp-3)" }}
                         role={teamSnapshotError ? "alert" : "status"}
                         aria-live="polite"
                       >
@@ -519,7 +519,7 @@ export function MlbClient({ initialState, summary, initialTeamSnapshot }: MlbCli
                     ) : null}
                   </>
                 ) : (
-                  <p className="c97-prose mb-0">Select a team to view detail.</p>
+                  <p className="c97-prose">Select a team to view detail.</p>
                 )}
               </div>
             </aside>
@@ -563,8 +563,8 @@ export function MlbClient({ initialState, summary, initialTeamSnapshot }: MlbCli
               <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
                 <div className="space-y-5">
                   <div className="c97-panel">
-                    <p className="c97-kicker mb-2">Pressure points</p>
-                    <ul className="c97-list mb-0">
+                    <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-1)" }}>Pressure points</p>
+                    <ul className="c97-list">
                       {getPressurePoints(selectedRow).map((item) => (
                         <li key={item}>{item}</li>
                       ))}
@@ -572,7 +572,7 @@ export function MlbClient({ initialState, summary, initialTeamSnapshot }: MlbCli
                   </div>
 
                   {selectedTeam?.venue && (
-                    <p className="c97-prose mb-0">
+                    <p className="c97-prose">
                       Home park is {selectedTeam.venue}.
                     </p>
                   )}
@@ -584,7 +584,7 @@ export function MlbClient({ initialState, summary, initialTeamSnapshot }: MlbCli
                     role={teamSnapshotError ? "alert" : "status"}
                     aria-live="polite"
                   >
-                    <p className="c97-prose mb-0">
+                    <p className="c97-prose">
                       {isTeamSnapshotLoading ? "Loading recent team games…" : teamSnapshotError}
                     </p>
                   </div>
@@ -592,7 +592,7 @@ export function MlbClient({ initialState, summary, initialTeamSnapshot }: MlbCli
 
                 {(teamSnapshot?.recentGames.length ?? 0) > 0 && (
                   <div>
-                    <p className="c97-kicker mb-3">Recent results</p>
+                    <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-2)" }}>Recent results</p>
                     <div className="space-y-2">
                       {(teamSnapshot?.recentGames ?? []).slice(0, 3).map((game) => (
                         <FixtureCard
@@ -608,7 +608,7 @@ export function MlbClient({ initialState, summary, initialTeamSnapshot }: MlbCli
 
                 {(teamSnapshot?.upcomingGames.length ?? 0) > 0 && (
                   <div>
-                    <p className="c97-kicker mb-3">Upcoming games</p>
+                    <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-2)" }}>Upcoming games</p>
                     <div className="space-y-2">
                       {(teamSnapshot?.upcomingGames ?? []).slice(0, 3).map((game) => (
                         <FixtureCard
@@ -628,8 +628,8 @@ export function MlbClient({ initialState, summary, initialTeamSnapshot }: MlbCli
               <div className="grid gap-6 md:grid-cols-2">
                 {summary.recentGames.length > 0 && (
                   <div>
-                    <p className="c97-kicker mb-2">Recent slate</p>
-                    <h3 className="c97-serif mb-2" style={{ fontSize: "var(--c97-fs-h3)" }}>Latest results</h3>
+                    <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-1)" }}>Recent slate</p>
+                    <h3 className="c97-serif" style={{ marginBottom: "var(--c97-sp-1)", fontSize: "var(--c97-fs-h3)" }}>Latest results</h3>
                     <div className="space-y-3">
                       {summary.recentGames.map((game) => (
                         <FixtureCard key={game.id} fixture={game} onOpenTeam={handleTeamChange} />
@@ -639,8 +639,8 @@ export function MlbClient({ initialState, summary, initialTeamSnapshot }: MlbCli
                 )}
                 {summary.upcomingGames.length > 0 && (
                   <div>
-                    <p className="c97-kicker mb-2">Next up</p>
-                    <h3 className="c97-serif mb-2" style={{ fontSize: "var(--c97-fs-h3)" }}>Upcoming games</h3>
+                    <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-1)" }}>Next up</p>
+                    <h3 className="c97-serif" style={{ marginBottom: "var(--c97-sp-1)", fontSize: "var(--c97-fs-h3)" }}>Upcoming games</h3>
                     <div className="space-y-3">
                       {summary.upcomingGames.map((game) => (
                         <FixtureCard key={game.id} fixture={game} onOpenTeam={handleTeamChange} />
@@ -649,7 +649,7 @@ export function MlbClient({ initialState, summary, initialTeamSnapshot }: MlbCli
                   </div>
                 )}
                 {summary.recentGames.length === 0 && summary.upcomingGames.length === 0 && (
-                  <p className="c97-prose mb-0">
+                  <p className="c97-prose">
                     No games are loaded yet. Run the snapshot script to populate the schedule.
                   </p>
                 )}
@@ -670,8 +670,8 @@ export function MlbClient({ initialState, summary, initialTeamSnapshot }: MlbCli
 
       <section className="c97-band c97-sheet" data-c97-surface="paper" data-seam="torn">
         <div className="c97-shell">
-          <p className="c97-kicker mb-2">Snapshot note</p>
-          <p className="c97-prose mb-0" style={{ fontSize: "var(--c97-fs-small)" }}>
+          <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-1)" }}>Snapshot note</p>
+          <p className="c97-prose" style={{ fontSize: "var(--c97-fs-small)" }}>
             This page reads from a curated snapshot of the {summary.sourceLabel} endpoints.
             Standings, schedule, and league leaders all refresh on the regular update cadence.
           </p>
@@ -710,7 +710,7 @@ function LeagueLeaders({
   if (populated.length === 0) {
     return (
       <div className="flex items-start justify-between gap-3">
-        <p className="c97-prose mb-0">
+        <p className="c97-prose">
           League leader boards are not loaded yet. Run the snapshot script to populate hitting and pitching leaders.
         </p>
         <a href={sourceUrl} target="_blank" rel="noreferrer" className="c97-btn-ghost">
@@ -732,8 +732,8 @@ function LeagueLeaders({
       <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
         {populated.map((group) => (
           <div key={group.title}>
-            <p className="c97-kicker mb-2">Leaderboard</p>
-            <h3 className="c97-serif mb-3" style={{ fontSize: "var(--c97-fs-h3)" }}>{group.title}</h3>
+            <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-1)" }}>Leaderboard</p>
+            <h3 className="c97-serif" style={{ marginBottom: "var(--c97-sp-2)", fontSize: "var(--c97-fs-h3)" }}>{group.title}</h3>
             <LeaderList
               leaders={leadersToEntries(group.leaders, group.statLabel === "AVG" || group.statLabel === "ERA" ? 3 : 0)}
               statLabel={group.statLabel}

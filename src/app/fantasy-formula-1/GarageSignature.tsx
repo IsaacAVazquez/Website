@@ -30,10 +30,10 @@ function GarageBox({ slot, locked }: { slot: GarageSlot; locked: boolean }) {
         aria-hidden="true"
         style={{ background: stripeColor ?? "var(--c97-ink-2)" }}
       />
-      <p className="c97-kicker mb-0">{slot.kind === "driver" ? "Driver" : "Constructor"}</p>
+      <p className="c97-kicker">{slot.kind === "driver" ? "Driver" : "Constructor"}</p>
       {asset ? (
         <>
-          <p className="c97-serif c97-ff1-box-name mb-0">{asset.name}</p>
+          <p className="c97-serif c97-ff1-box-name">{asset.name}</p>
           <p className="c97-mono c97-ff1-box-figures mb-0">
             {formatMoney(asset.price)} &middot; {formatPoints(asset.projectedPoints)}
           </p>

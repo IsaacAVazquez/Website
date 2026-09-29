@@ -331,7 +331,7 @@ export function NbaClient({ initialState, summary, initialTeamSnapshot, teamColo
             <p className="c97-meta">{visibleTeams.length} teams</p>
           </div>
 
-          <div role="group" aria-label="Conference and seeding view" className="c97-segmented mt-4">
+          <div role="group" aria-label="Conference and seeding view" className="c97-segmented" style={{ marginTop: "var(--c97-sp-2)" }}>
             {viewOptions.map((option) => {
               const isActive = option.id === routeState.view;
               return (
@@ -430,7 +430,7 @@ export function NbaClient({ initialState, summary, initialTeamSnapshot, teamColo
                   <CrestAvatar crest={logoByTeamId.get(selectedTeam.id) ?? null} name={selectedTeam.name} size="lg" />
                   <div className="min-w-0 flex-1">
                     <h2 className="c97-serif c97-h3">{selectedTeam.name}</h2>
-                    <div className="c97-meta mt-1.5" style={{ textTransform: "none" }}>
+                    <div className="c97-meta" style={{ marginTop: "var(--c97-sp-1)", textTransform: "none" }}>
                       <span className={zoneChipClass(selectedZone)}>{getZoneLabel(selectedZone)}</span>
                       <span className="c97-chip">{selectedTeam.wins}-{selectedTeam.losses}</span>
                       <span className="c97-chip">{remainingGames} left</span>
@@ -473,14 +473,14 @@ export function NbaClient({ initialState, summary, initialTeamSnapshot, teamColo
                   </div>
                 )}
 
-                <p className="c97-prose mt-3 line-clamp-2" style={{ fontSize: "var(--c97-fs-small)" }}>
+                <p className="c97-prose line-clamp-2" style={{ marginTop: "var(--c97-sp-2)", fontSize: "var(--c97-fs-small)" }}>
                   {teamStoryline}
                 </p>
 
                 {!teamSnapshot && (isTeamSnapshotLoading || teamSnapshotError) ? (
                   <p
-                    className="c97-prose mt-4 border-t pt-4"
-                    style={{ borderColor: "var(--c97-rule)", fontSize: "var(--c97-fs-small)" }}
+                    className="c97-prose border-t pt-4"
+                    style={{ marginTop: "var(--c97-sp-2)", borderColor: "var(--c97-rule)", fontSize: "var(--c97-fs-small)" }}
                     role={teamSnapshotError ? "alert" : "status"}
                     aria-live="polite"
                   >
@@ -520,7 +520,7 @@ export function NbaClient({ initialState, summary, initialTeamSnapshot, teamColo
               <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
                 <div className="space-y-5">
                   <div>
-                    <p className="c97-kicker mb-2">Performance</p>
+                    <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-1)" }}>Performance</p>
                     <div className="grid grid-cols-2 gap-3">
                       <MetricCard
                         label="Win %"
@@ -535,7 +535,7 @@ export function NbaClient({ initialState, summary, initialTeamSnapshot, teamColo
                   </div>
 
                   <div className="c97-panel">
-                    <p className="c97-kicker mb-2">Pressure points</p>
+                    <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-1)" }}>Pressure points</p>
                     <ul className="c97-prose" style={{ margin: 0, paddingLeft: "1.1em" }}>
                       {teamPressurePoints.map((item) => (
                         <li key={item}>{item}</li>
@@ -575,7 +575,7 @@ export function NbaClient({ initialState, summary, initialTeamSnapshot, teamColo
 
                 {recentFixtures.length > 0 && (
                   <div>
-                    <p className="c97-kicker mb-2">Recent results</p>
+                    <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-1)" }}>Recent results</p>
                     <div className="space-y-2">
                       {recentFixtures.map((fixture) => (
                         <FixtureCard
@@ -591,7 +591,7 @@ export function NbaClient({ initialState, summary, initialTeamSnapshot, teamColo
 
                 {upcomingFixtures.length > 0 && (
                   <div>
-                    <p className="c97-kicker mb-2">Upcoming games</p>
+                    <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-1)" }}>Upcoming games</p>
                     <div className="space-y-2">
                       {upcomingFixtures.map((fixture) => (
                         <FixtureCard
@@ -611,7 +611,7 @@ export function NbaClient({ initialState, summary, initialTeamSnapshot, teamColo
               <div className="grid gap-6 md:grid-cols-2">
                 {summary.recentFixtures.length > 0 && (
                   <div>
-                    <p className="c97-kicker mb-2">Latest results</p>
+                    <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-1)" }}>Latest results</p>
                     <div className="space-y-3">
                       {summary.recentFixtures.map((f) => (
                         <FixtureCard key={f.id} fixture={f} onOpenTeam={handleTeamChange} />
@@ -621,7 +621,7 @@ export function NbaClient({ initialState, summary, initialTeamSnapshot, teamColo
                 )}
                 {summary.upcomingFixtures.length > 0 && (
                   <div>
-                    <p className="c97-kicker mb-2">Upcoming games</p>
+                    <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-1)" }}>Upcoming games</p>
                     <div className="space-y-3">
                       {summary.upcomingFixtures.map((f) => (
                         <FixtureCard key={f.id} fixture={f} onOpenTeam={handleTeamChange} />
@@ -642,7 +642,7 @@ export function NbaClient({ initialState, summary, initialTeamSnapshot, teamColo
               <div className="grid gap-6 md:grid-cols-3">
                 <div>
                   <div className="flex items-start justify-between gap-3">
-                    <p className="c97-kicker mb-0">Top scorers</p>
+                    <p className="c97-kicker">Top scorers</p>
                     <a href={summary.sourceUrls.leaders} target="_blank" rel="noreferrer" className="c97-btn-outline">
                       Official
                       <ExternalLink className="h-4 w-4" />
@@ -651,11 +651,11 @@ export function NbaClient({ initialState, summary, initialTeamSnapshot, teamColo
                   <LeaderList leaders={toLeaderEntries(summary.scorers.slice(0, 5))} statLabel="ppg" clubLookup={teamLookup} />
                 </div>
                 <div>
-                  <p className="c97-kicker mb-0">Top rebounders</p>
+                  <p className="c97-kicker">Top rebounders</p>
                   <LeaderList leaders={toLeaderEntries(summary.rebounders.slice(0, 5))} statLabel="rpg" clubLookup={teamLookup} />
                 </div>
                 <div>
-                  <p className="c97-kicker mb-0">Top playmakers</p>
+                  <p className="c97-kicker">Top playmakers</p>
                   <LeaderList leaders={toLeaderEntries(summary.assistLeaders.slice(0, 5))} statLabel="apg" clubLookup={teamLookup} />
                 </div>
               </div>
@@ -875,14 +875,14 @@ function TeamLeaderCard({
       <p className="c97-kicker">{title}</p>
       {leader ? (
         <>
-          <p className="c97-h3 c97-serif mt-2">{leader.name}</p>
-          <p className="c97-prose mt-1" style={{ fontSize: "var(--c97-fs-small)" }}>
+          <p className="c97-h3 c97-serif" style={{ marginTop: "var(--c97-sp-1)" }}>{leader.name}</p>
+          <p className="c97-prose" style={{ marginTop: "var(--c97-sp-1)", fontSize: "var(--c97-fs-small)" }}>
             {leader.perGame.toFixed(1)} {statLabel.toLowerCase()} per game
           </p>
-          <p className="c97-kicker mt-2">{leader.teamAbbreviation}</p>
+          <p className="c97-kicker" style={{ marginTop: "var(--c97-sp-1)" }}>{leader.teamAbbreviation}</p>
         </>
       ) : (
-        <p className="c97-prose mt-2" style={{ fontSize: "var(--c97-fs-small)" }}>{emptyLabel}</p>
+        <p className="c97-prose" style={{ marginTop: "var(--c97-sp-1)", fontSize: "var(--c97-fs-small)" }}>{emptyLabel}</p>
       )}
     </div>
   );
