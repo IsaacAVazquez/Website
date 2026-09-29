@@ -5,6 +5,8 @@ primary_target: "route:/fintech-tools/budget-planner"
 related_targets: ["src/app/fintech-tools/budget-planner/budget-planner-client.tsx","src/lib/budgetPlanner.ts"]
 ---
 
+Updated on 2026-09-28 by the responsive pass. Envelope names hyphenate, so "Entertainment" and "Transportation" no longer clip at 320.
+
 # Budget planner surface brief
 
 Scope. The `/fintech-tools/budget-planner` route, rendered by `src/app/fintech-tools/budget-planner/budget-planner-client.tsx` over the arithmetic in `src/lib/budgetPlanner.ts`. State lives in the browser.

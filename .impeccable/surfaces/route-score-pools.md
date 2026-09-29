@@ -5,6 +5,8 @@ primary_target: "route:/score-pools"
 related_targets: ["src/app/score-pools/score-pools-client.tsx","src/app/score-pools/fixture-detail-drawer.tsx","src/app/score-pools/tracker/tracker-client.tsx","src/app/score-pools/settings/settings-client.tsx","src/lib/scorePoolsData.ts","src/data/scorePoolsSnapshot.ts"]
 ---
 
+Updated on 2026-09-28 by the responsive pass. /score-pools is a wide tool route, so its header and footer widen with its 1376px shell, and its h1 no longer starts 23px left of the wordmark at 1280. The tracker and settings pages stay on the standard column.
+
 # Score pools surface brief
 
 Scope. The score pools product across three pages, `/score-pools` (`src/app/score-pools/score-pools-client.tsx` with `fixture-detail-drawer.tsx`), `/score-pools/tracker` (`tracker/tracker-client.tsx`) and `/score-pools/settings` (`settings/settings-client.tsx`). Data comes from the committed snapshot in `src/data/scorePoolsSnapshot.ts`, built by `src/lib/scorePoolsData.ts`, and the engine spec is `SCORE_POOLS_ENGINE.md`. Pool config and picks live in localStorage.

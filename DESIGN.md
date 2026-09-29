@@ -199,7 +199,7 @@ Two fixed micro sizes, `text-3xs` (10px) and `text-2xs` (11px), plus a fixed `te
 
 ## Layout
 
-The centered measure is `.c97-shell`, capped at 1080px (`--c97-container`) with margin-inline auto. A dense tool that needs more width, such as the Investments terminal, widens that one shell inline. The running-prose column, `--c97-column`, is 720px, wide enough to hold the tables and code blocks a long article carries alongside its paragraphs. Horizontal gutter (`--c97-gutter`) is fluid, `clamp(28px, 6vw, 96px)`, and it sits off the spacing ladder because it answers a different question than block rhythm does.
+The centered measure is `.c97-shell`, capped at 1080px (`--c97-container`) with margin-inline auto. The four dense tools in `WIDE_TOOL_ROUTES` (the trade calculator, the best ball draft room, Investments, and score pools) print on the 1376px `--c97-container-wide`, and every shell on those pages widens with them, the header's and footer's included, so each page keeps one edge. The running-prose column, `--c97-column`, is 720px, wide enough to hold the tables and code blocks a long article carries alongside its paragraphs. Horizontal gutter (`--c97-gutter`) is fluid, `clamp(28px, 6vw, 96px)`, and it sits off the spacing ladder because it answers a different question than block rhythm does.
 
 Vertical rhythm comes entirely off a seven-step spacing ladder, and nothing in a Catalog 97 route may use a gap, margin, or band padding that is not one of these seven values:
 
