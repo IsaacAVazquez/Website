@@ -8,34 +8,50 @@ import { useEffect, useState } from "react";
  * server.
  *
  * It pairs with `next/dynamic` to keep an overlay's code out of first load.
- * The overlay mounts the first time it opens and stays mounted after that, so
- * its exit animation has something to run on and focus can return to whatever
- * opened it.
+ * The overlay stays mounted once it has mounted, so its exit animation has
+ * something to run on and focus can return to whatever opened it.
  *
- * `preload` is called once, when the browser is idle, so the first open does
- * not wait on the network. Pass a module-level function, since a new function
- * on every render would schedule it again.
+ * `preload` is called once, when the browser is idle, and the overlay mounts
+ * closed as soon as that code is in. React shows a lazy component's fallback
+ * the first time it renders and then holds the real content for 300 ms, so an
+ * overlay that first rendered on the click opened that much later. Pass a
+ * module-level function, since a new function on every render would schedule
+ * the load again.
  */
 export function useMountOnFirstOpen(
   open: boolean,
   preload?: () => Promise<unknown>,
 ): boolean {
-  const [hasOpened, setHasOpened] = useState(open);
-  if (open && !hasOpened) setHasOpened(true);
+  const [mounted, setMounted] = useState(open);
+  if (open && !mounted) setMounted(true);
 
   useEffect(() => {
-    if (!preload) return;
-    // A failed preload is not an error here. The overlay asks for the same
-    // chunk again when it opens, and that request reports its own failure.
-    const run = () => void preload().catch(() => undefined);
+    if (!preload || mounted) return;
+    let cancelled = false;
+    const run = () =>
+      void preload().then(
+        () => {
+          if (!cancelled) setMounted(true);
+        },
+        // A failed preload is not an error here. The overlay asks for the
+        // same chunk again when it opens, and that request reports its own
+        // failure.
+        () => undefined,
+      );
 
     if (typeof window.requestIdleCallback === "function") {
       const handle = window.requestIdleCallback(run, { timeout: 4000 });
-      return () => window.cancelIdleCallback(handle);
+      return () => {
+        cancelled = true;
+        window.cancelIdleCallback(handle);
+      };
     }
     const handle = window.setTimeout(run, 2000);
-    return () => window.clearTimeout(handle);
-  }, [preload]);
+    return () => {
+      cancelled = true;
+      window.clearTimeout(handle);
+    };
+  }, [preload, mounted]);
 
-  return hasOpened || open;
+  return mounted || open;
 }

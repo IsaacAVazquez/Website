@@ -47,6 +47,49 @@ describe("useMountOnFirstOpen", () => {
     }
   });
 
+  // React shows a lazy component's fallback the first time it renders, even
+  // when the code is already in memory, and then holds the real content for
+  // 300 ms. Opening a drawer that way took 310 to 318 ms in Chromium against
+  // 9 to 22 ms on main, so the overlay mounts closed as soon as its code is in
+  // and the first open only changes a prop.
+  it("mounts the overlay, still closed, once its code has loaded", async () => {
+    jest.useFakeTimers();
+    try {
+      const preload = jest.fn(() => Promise.resolve());
+      const { result } = renderHook(() => useMountOnFirstOpen(false, preload));
+      expect(result.current).toBe(false);
+
+      await act(async () => {
+        jest.advanceTimersByTime(2000);
+      });
+
+      expect(result.current).toBe(true);
+    } finally {
+      jest.useRealTimers();
+    }
+  });
+
+  it("stays unmounted when its code fails to load, and still mounts on open", async () => {
+    jest.useFakeTimers();
+    try {
+      const preload = jest.fn(() => Promise.reject(new Error("offline")));
+      const { result, rerender } = renderHook(
+        ({ open }: { open: boolean }) => useMountOnFirstOpen(open, preload),
+        { initialProps: { open: false } },
+      );
+
+      await act(async () => {
+        jest.advanceTimersByTime(2000);
+      });
+      expect(result.current).toBe(false);
+
+      rerender({ open: true });
+      expect(result.current).toBe(true);
+    } finally {
+      jest.useRealTimers();
+    }
+  });
+
   it("drops the pending load when it unmounts first", () => {
     jest.useFakeTimers();
     try {
