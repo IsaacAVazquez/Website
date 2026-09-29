@@ -35,7 +35,10 @@ describe("PremierLeagueClient", () => {
       <PremierLeagueClient
         initialState={DEFAULT_PREMIER_LEAGUE_STATE}
         summary={premierLeagueSnapshot.summary}
-        initialTeamSnapshot={premierLeagueSnapshot.teamSnapshots["57"] ?? null}
+        initialTeamSnapshot={
+          // A plain visit shows the leader, so that is the snapshot the page sends.
+          premierLeagueSnapshot.teamSnapshots[premierLeagueSnapshot.summary.standings[0]!.team.id] ?? null
+        }
       />
     );
 
@@ -66,8 +69,63 @@ describe("PremierLeagueClient", () => {
 
     await user.keyboard("{Escape}");
 
-    const [href] = mockPush.mock.calls.at(-1) ?? [];
-    expect(href).toBe("/premier-league");
+    // Closing hides the overlay and leaves the selection in the URL, so the
+    // ladder, the table, and Club Detail stay on the club that was open.
+    expect(screen.queryByRole("dialog")).not.toBeInTheDocument();
+    expect(mockPush).not.toHaveBeenCalled();
+  });
+
+  describe("from a plain visit", () => {
+    // The router is a mock, so a push has to be fed back in as the next
+    // search params for the page to see the URL it asked for.
+    function renderFollowingPushes() {
+      mockPush.mockImplementation((href: string) => {
+        currentSearchParams = new URLSearchParams(href.split("?")[1] ?? "");
+      });
+      const ui = () => (
+        <PremierLeagueClient
+          initialState={DEFAULT_PREMIER_LEAGUE_STATE}
+          summary={premierLeagueSnapshot.summary}
+          initialTeamSnapshot={null}
+        />
+      );
+      const view = render(ui());
+      return { settle: () => view.rerender(ui()) };
+    }
+
+    it.each(["Fixtures", "Top Scorers"])("switching to the %s tab opens no drawer", async (name) => {
+      const user = userEvent.setup();
+      const { settle } = renderFollowingPushes();
+
+      await user.click(screen.getByRole("tab", { name }));
+      settle();
+
+      expect(mockPush).toHaveBeenCalled();
+      expect(screen.getByRole("tab", { name })).toHaveAttribute("aria-selected", "true");
+      expect(screen.queryByRole("dialog")).not.toBeInTheDocument();
+    });
+
+    it.each([/title chase/i, /relegation fight/i])("the %s filter opens no drawer", async (name) => {
+      const user = userEvent.setup();
+      const { settle } = renderFollowingPushes();
+
+      await user.click(screen.getByRole("button", { name }));
+      settle();
+
+      expect(mockPush).toHaveBeenCalled();
+      expect(screen.queryByRole("dialog")).not.toBeInTheDocument();
+    });
+
+    it("picking a club in the table opens that club's drawer", async () => {
+      const user = userEvent.setup();
+      const { settle } = renderFollowingPushes();
+      const club = premierLeagueSnapshot.summary.standings[6]!;
+
+      await user.click(screen.getByRole("button", { name: `Show ${club.team.name} details` }));
+      settle();
+
+      expect(screen.getByRole("dialog", { name: `${club.team.name} detail` })).toBeInTheDocument();
+    });
   });
 
   it("canonicalizes invalid query params back to the default route", async () => {

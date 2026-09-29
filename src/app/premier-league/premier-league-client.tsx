@@ -146,6 +146,7 @@ export function PremierLeagueClient({
   }
 
   function handleTeamChange(teamId: string) {
+    setDrawerTeamId(teamId);
     navigate({ view: routeState.view, team: teamId, detail: routeState.detail });
   }
 
@@ -301,11 +302,13 @@ export function PremierLeagueClient({
   const lastUpdated = formatGeneratedAt(summary.generatedAt);
   const currentMatchday = summary.competition?.currentMatchday ?? null;
 
-  // Club drawer — opens only when a club is explicitly selected (an
-  // explicit ?team= in the URL, not the leader-default fallback used to
-  // keep the "Club Detail" tab populated), so a bare /premier-league visit
-  // never shows the overlay unsolicited.
-  const isDrawerOpen = Boolean(canonicalTeamId);
+  // Club drawer — its own state, the way La Liga keeps it, because the tabs
+  // and the view filters also write ?team= and must not open the overlay.
+  // It starts open only for a deep link to a valid club, and after that only
+  // `handleTeamChange` opens it. It holds the club that was asked for and
+  // waits for the route to reach that club, so it never shows the last one.
+  const [drawerTeamId, setDrawerTeamId] = useState<string | null>(canonicalTeamId);
+  const isDrawerOpen = drawerTeamId !== null && drawerTeamId === selectedTeamId;
   const drawerClub: ClubDrawerClub | null = isDrawerOpen && selectedRow
     ? {
       id: selectedRow.team.id,
@@ -331,7 +334,7 @@ export function PremierLeagueClient({
       .map((s) => ({ name: s.name, goals: s.goals, assists: s.assists }))
     : [];
   function handleCloseDrawer() {
-    navigate({ view: routeState.view, team: null, detail: routeState.detail });
+    setDrawerTeamId(null);
   }
 
   const ladderClubs = useMemo(() => summary.standings.map((row) => ({
@@ -468,7 +471,10 @@ export function PremierLeagueClient({
             aria-labelledby={`pl-detail-tab-${activeDetailTab}`}
           >
             {activeDetailTab === "club" && selectedRow && (
-              <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+              <div
+                className="grid xl:grid-cols-[minmax(0,1.2fr)_minmax(0,1fr)]"
+                style={{ gap: "var(--c97-sp-4)" }}
+              >
                 <div className="space-y-5">
                   <div className="flex items-center justify-between gap-3">
                     <div className="flex min-w-0 items-center gap-3">
@@ -523,6 +529,12 @@ export function PremierLeagueClient({
                   ) : null}
                 </div>
 
+                {/* Fixtures sit side by side under the club on a tablet and
+                    stack beside it on a wide screen, so no card is left alone. */}
+                <div
+                  className="grid content-start md:grid-cols-2 xl:grid-cols-1"
+                  style={{ gap: "var(--c97-sp-3)" }}
+                >
                 {!teamSnapshot && (isTeamSnapshotLoading || teamSnapshotError) && (
                   <div
                     className="c97-panel"
@@ -568,6 +580,7 @@ export function PremierLeagueClient({
                     </div>
                   </div>
                 )}
+                </div>
               </div>
             )}
 
@@ -595,7 +608,7 @@ export function PremierLeagueClient({
             {activeDetailTab === "scorers" && (
               <div className="grid gap-6 md:grid-cols-2">
                 <div>
-                  <div className="flex items-start justify-between gap-3">
+                  <div className="flex min-h-[44px] items-start justify-between gap-3">
                     <p className="c97-kicker">Goals &amp; assists leaderboard</p>
                     <a
                       href="https://www.premierleague.com/en/stats/top/players/goals"
@@ -608,7 +621,7 @@ export function PremierLeagueClient({
                       <ExternalLink className="h-4 w-4" />
                     </a>
                   </div>
-                  <div className="mt-3">
+                  <div style={{ marginTop: "var(--c97-sp-2)" }}>
                     <LeaderLedger
                       title="Top scorers"
                       unit="G"
@@ -623,7 +636,10 @@ export function PremierLeagueClient({
                   </div>
                 </div>
                 <div>
-                  <div className="mt-3 md:mt-9">
+                  {/* Holds the height of the heading row beside it, so the
+                      two ledgers start on the same line. */}
+                  <div className="hidden min-h-[44px] md:block" aria-hidden="true" />
+                  <div style={{ marginTop: "var(--c97-sp-2)" }}>
                     <LeaderLedger
                       title="Most assists"
                       unit="A"
