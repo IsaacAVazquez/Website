@@ -9,7 +9,7 @@ import type {
 } from "@/lib/fantasyProsVorpSource";
 import type { ScoringFormat } from "@/types";
 
-export const fantasyVorpDataGeneratedAt = "2026-09-29T05:49:46.703Z";
+export const fantasyVorpDataGeneratedAt = "2026-09-29T21:26:55.403Z";
 
 export interface FantasyVorpDataset {
   season: number;
@@ -26,7 +26,7 @@ export const fantasyVorpData: Record<
     "10": {
       "season": 2026,
       "sourceUrl": "https://www.fantasypros.com/nfl/rankings/ppr-vorp.php?team_size=10",
-      "accessedAt": "2026-09-29T05:49:47.246Z",
+      "accessedAt": "2026-09-29T21:26:55.886Z",
       "players": [
         {
           "playerId": "fp-22968",
@@ -1948,7 +1948,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-25533",
           "name": "Blake Grupe",
-          "team": "NYJ",
+          "team": "FA",
           "position": "K",
           "positionRank": 27,
           "rank": 214,
@@ -3883,7 +3883,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-23682",
           "name": "Devin Neal",
-          "team": "FA",
+          "team": "MIN",
           "position": "RB",
           "positionRank": 130,
           "rank": 429,
@@ -4072,7 +4072,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-12127",
           "name": "Odell Beckham Jr.",
-          "team": "NYG",
+          "team": "FA",
           "position": "WR",
           "positionRank": 153,
           "rank": 450,
@@ -4765,7 +4765,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-27724",
           "name": "Ke'Shawn Williams",
-          "team": "CIN",
+          "team": "FA",
           "position": "WR",
           "positionRank": 193,
           "rank": 527,
@@ -4936,7 +4936,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-24181",
           "name": "John FitzPatrick",
-          "team": "FA",
+          "team": "CLE",
           "position": "TE",
           "positionRank": 118,
           "rank": 546,
@@ -5388,7 +5388,7 @@ export const fantasyVorpData: Record<
     "12": {
       "season": 2026,
       "sourceUrl": "https://www.fantasypros.com/nfl/rankings/ppr-vorp.php",
-      "accessedAt": "2026-09-29T05:49:48.263Z",
+      "accessedAt": "2026-09-29T21:26:56.581Z",
       "players": [
         {
           "playerId": "fp-22968",
@@ -7508,7 +7508,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-25533",
           "name": "Blake Grupe",
-          "team": "NYJ",
+          "team": "FA",
           "position": "K",
           "positionRank": 27,
           "rank": 236,
@@ -8813,7 +8813,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-23682",
           "name": "Devin Neal",
-          "team": "FA",
+          "team": "MIN",
           "position": "RB",
           "positionRank": 130,
           "rank": 381,
@@ -9254,7 +9254,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-12127",
           "name": "Odell Beckham Jr.",
-          "team": "NYG",
+          "team": "FA",
           "position": "WR",
           "positionRank": 153,
           "rank": 430,
@@ -9812,7 +9812,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-27724",
           "name": "Ke'Shawn Williams",
-          "team": "CIN",
+          "team": "FA",
           "position": "WR",
           "positionRank": 193,
           "rank": 492,
@@ -10298,7 +10298,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-24181",
           "name": "John FitzPatrick",
-          "team": "FA",
+          "team": "CLE",
           "position": "TE",
           "positionRank": 118,
           "rank": 546,
@@ -10750,7 +10750,7 @@ export const fantasyVorpData: Record<
     "14": {
       "season": 2026,
       "sourceUrl": "https://www.fantasypros.com/nfl/rankings/ppr-vorp.php?team_size=14",
-      "accessedAt": "2026-09-29T05:49:48.895Z",
+      "accessedAt": "2026-09-29T21:26:57.204Z",
       "players": [
         {
           "playerId": "fp-22968",
@@ -13212,7 +13212,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-25533",
           "name": "Blake Grupe",
-          "team": "NYJ",
+          "team": "FA",
           "position": "K",
           "positionRank": 27,
           "rank": 274,
@@ -14085,7 +14085,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-23682",
           "name": "Devin Neal",
-          "team": "FA",
+          "team": "MIN",
           "position": "RB",
           "positionRank": 130,
           "rank": 371,
@@ -14679,7 +14679,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-12127",
           "name": "Odell Beckham Jr.",
-          "team": "NYG",
+          "team": "FA",
           "position": "WR",
           "positionRank": 153,
           "rank": 437,
@@ -15354,7 +15354,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-27724",
           "name": "Ke'Shawn Williams",
-          "team": "CIN",
+          "team": "FA",
           "position": "WR",
           "positionRank": 193,
           "rank": 512,
@@ -15660,7 +15660,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-24181",
           "name": "John FitzPatrick",
-          "team": "FA",
+          "team": "CLE",
           "position": "TE",
           "positionRank": 118,
           "rank": 546,
@@ -16114,7 +16114,7 @@ export const fantasyVorpData: Record<
     "10": {
       "season": 2026,
       "sourceUrl": "https://www.fantasypros.com/nfl/rankings/half-ppr-vorp.php?team_size=10",
-      "accessedAt": "2026-09-29T05:49:49.564Z",
+      "accessedAt": "2026-09-29T21:26:58.052Z",
       "players": [
         {
           "playerId": "fp-22968",
@@ -18090,7 +18090,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-25533",
           "name": "Blake Grupe",
-          "team": "NYJ",
+          "team": "FA",
           "position": "K",
           "positionRank": 27,
           "rank": 220,
@@ -19602,7 +19602,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-23682",
           "name": "Devin Neal",
-          "team": "FA",
+          "team": "MIN",
           "position": "RB",
           "positionRank": 130,
           "rank": 388,
@@ -20385,7 +20385,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-12127",
           "name": "Odell Beckham Jr.",
-          "team": "NYG",
+          "team": "FA",
           "position": "WR",
           "positionRank": 155,
           "rank": 475,
@@ -20799,7 +20799,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-24181",
           "name": "John FitzPatrick",
-          "team": "FA",
+          "team": "CLE",
           "position": "TE",
           "positionRank": 118,
           "rank": 521,
@@ -20970,7 +20970,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-27724",
           "name": "Ke'Shawn Williams",
-          "team": "CIN",
+          "team": "FA",
           "position": "WR",
           "positionRank": 192,
           "rank": 540,
@@ -21476,7 +21476,7 @@ export const fantasyVorpData: Record<
     "12": {
       "season": 2026,
       "sourceUrl": "https://www.fantasypros.com/nfl/rankings/half-ppr-vorp.php",
-      "accessedAt": "2026-09-29T05:49:50.060Z",
+      "accessedAt": "2026-09-29T21:26:58.898Z",
       "players": [
         {
           "playerId": "fp-22968",
@@ -23641,7 +23641,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-25533",
           "name": "Blake Grupe",
-          "team": "NYJ",
+          "team": "FA",
           "position": "K",
           "positionRank": 27,
           "rank": 241,
@@ -25072,7 +25072,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-23682",
           "name": "Devin Neal",
-          "team": "FA",
+          "team": "MIN",
           "position": "RB",
           "positionRank": 130,
           "rank": 400,
@@ -25360,7 +25360,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-12127",
           "name": "Odell Beckham Jr.",
-          "team": "NYG",
+          "team": "FA",
           "position": "WR",
           "positionRank": 155,
           "rank": 432,
@@ -25927,7 +25927,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-27724",
           "name": "Ke'Shawn Williams",
-          "team": "CIN",
+          "team": "FA",
           "position": "WR",
           "positionRank": 192,
           "rank": 495,
@@ -26359,7 +26359,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-24181",
           "name": "John FitzPatrick",
-          "team": "FA",
+          "team": "CLE",
           "position": "TE",
           "positionRank": 118,
           "rank": 543,
@@ -26838,7 +26838,7 @@ export const fantasyVorpData: Record<
     "14": {
       "season": 2026,
       "sourceUrl": "https://www.fantasypros.com/nfl/rankings/half-ppr-vorp.php?team_size=14",
-      "accessedAt": "2026-09-29T05:49:50.499Z",
+      "accessedAt": "2026-09-29T21:26:59.539Z",
       "players": [
         {
           "playerId": "fp-22968",
@@ -29327,7 +29327,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-25533",
           "name": "Blake Grupe",
-          "team": "NYJ",
+          "team": "FA",
           "position": "K",
           "positionRank": 27,
           "rank": 277,
@@ -30119,7 +30119,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-23682",
           "name": "Devin Neal",
-          "team": "FA",
+          "team": "MIN",
           "position": "RB",
           "positionRank": 130,
           "rank": 365,
@@ -30740,7 +30740,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-12127",
           "name": "Odell Beckham Jr.",
-          "team": "NYG",
+          "team": "FA",
           "position": "WR",
           "positionRank": 155,
           "rank": 434,
@@ -31397,7 +31397,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-27724",
           "name": "Ke'Shawn Williams",
-          "team": "CIN",
+          "team": "FA",
           "position": "WR",
           "positionRank": 192,
           "rank": 507,
@@ -31739,7 +31739,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-24181",
           "name": "John FitzPatrick",
-          "team": "FA",
+          "team": "CLE",
           "position": "TE",
           "positionRank": 118,
           "rank": 545,
@@ -32202,7 +32202,7 @@ export const fantasyVorpData: Record<
     "10": {
       "season": 2026,
       "sourceUrl": "https://www.fantasypros.com/nfl/rankings/vorp.php?team_size=10",
-      "accessedAt": "2026-09-29T05:49:51.127Z",
+      "accessedAt": "2026-09-29T21:27:00.314Z",
       "players": [
         {
           "playerId": "fp-22968",
@@ -34259,7 +34259,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-25533",
           "name": "Blake Grupe",
-          "team": "NYJ",
+          "team": "FA",
           "position": "K",
           "positionRank": 27,
           "rank": 229,
@@ -35933,7 +35933,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-23682",
           "name": "Devin Neal",
-          "team": "FA",
+          "team": "MIN",
           "position": "RB",
           "positionRank": 130,
           "rank": 415,
@@ -36383,7 +36383,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-12127",
           "name": "Odell Beckham Jr.",
-          "team": "NYG",
+          "team": "FA",
           "position": "WR",
           "positionRank": 155,
           "rank": 465,
@@ -36977,7 +36977,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-27724",
           "name": "Ke'Shawn Williams",
-          "team": "CIN",
+          "team": "FA",
           "position": "WR",
           "positionRank": 192,
           "rank": 531,
@@ -37013,7 +37013,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-24181",
           "name": "John FitzPatrick",
-          "team": "FA",
+          "team": "CLE",
           "position": "TE",
           "positionRank": 118,
           "rank": 535,
@@ -37564,7 +37564,7 @@ export const fantasyVorpData: Record<
     "12": {
       "season": 2026,
       "sourceUrl": "https://www.fantasypros.com/nfl/rankings/vorp.php",
-      "accessedAt": "2026-09-29T05:49:51.608Z",
+      "accessedAt": "2026-09-29T21:27:00.745Z",
       "players": [
         {
           "playerId": "fp-22968",
@@ -39765,7 +39765,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-25533",
           "name": "Blake Grupe",
-          "team": "NYJ",
+          "team": "FA",
           "position": "K",
           "positionRank": 27,
           "rank": 245,
@@ -41232,7 +41232,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-23682",
           "name": "Devin Neal",
-          "team": "FA",
+          "team": "MIN",
           "position": "RB",
           "positionRank": 130,
           "rank": 408,
@@ -41772,7 +41772,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-12127",
           "name": "Odell Beckham Jr.",
-          "team": "NYG",
+          "team": "FA",
           "position": "WR",
           "positionRank": 155,
           "rank": 468,
@@ -42312,7 +42312,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-24181",
           "name": "John FitzPatrick",
-          "team": "FA",
+          "team": "CLE",
           "position": "TE",
           "positionRank": 118,
           "rank": 528,
@@ -42384,7 +42384,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-27724",
           "name": "Ke'Shawn Williams",
-          "team": "CIN",
+          "team": "FA",
           "position": "WR",
           "positionRank": 192,
           "rank": 536,
@@ -42926,7 +42926,7 @@ export const fantasyVorpData: Record<
     "14": {
       "season": 2026,
       "sourceUrl": "https://www.fantasypros.com/nfl/rankings/vorp.php?team_size=14",
-      "accessedAt": "2026-09-29T05:49:52.035Z",
+      "accessedAt": "2026-09-29T21:27:01.174Z",
       "players": [
         {
           "playerId": "fp-22968",
@@ -45676,7 +45676,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-25533",
           "name": "Blake Grupe",
-          "team": "NYJ",
+          "team": "FA",
           "position": "K",
           "positionRank": 27,
           "rank": 306,
@@ -46333,7 +46333,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-23682",
           "name": "Devin Neal",
-          "team": "FA",
+          "team": "MIN",
           "position": "RB",
           "positionRank": 130,
           "rank": 379,
@@ -46819,7 +46819,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-12127",
           "name": "Odell Beckham Jr.",
-          "team": "NYG",
+          "team": "FA",
           "position": "WR",
           "positionRank": 155,
           "rank": 433,
@@ -47440,7 +47440,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-27724",
           "name": "Ke'Shawn Williams",
-          "team": "CIN",
+          "team": "FA",
           "position": "WR",
           "positionRank": 192,
           "rank": 502,
@@ -47800,7 +47800,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-24181",
           "name": "John FitzPatrick",
-          "team": "FA",
+          "team": "CLE",
           "position": "TE",
           "positionRank": 118,
           "rank": 542,
