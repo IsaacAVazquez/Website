@@ -155,8 +155,12 @@ export function normalizeFantasyRoutePosition(rawPosition: string | null | undef
     : "overall";
 }
 
-export function normalizeFantasyRouteScoring(rawScoring: string | null | undefined): FantasyRouteScoring {
-  const normalized = rawScoring?.trim().toLowerCase().replace("-", "_");
+export function normalizeFantasyRouteScoring(
+  rawScoring: string | string[] | null | undefined
+): FantasyRouteScoring {
+  // Next.js hands a repeated query parameter to a page as an array.
+  const firstValue = Array.isArray(rawScoring) ? rawScoring[0] : rawScoring;
+  const normalized = firstValue?.trim().toLowerCase().replace("-", "_");
 
   switch (normalized) {
     case "half":

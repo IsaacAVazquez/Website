@@ -49,10 +49,14 @@ const SNAPSHOT_DETAIL_LIMIT_PER_STATUS = 3;
 // (below) is folded in, so the snapshot refresh stays comfortably under the
 // same 15-calls/hour budget the comment above describes.
 const SNAPSHOT_DETAIL_ID_CAP = 8;
-// Single extra list call (not one per month) to compute the trailing-12-month
-// launch cadence. SpaceX's current cadence is roughly 150-200+ launches/year,
-// so this generously covers a year of history in one request.
-const CADENCE_HISTORY_LIMIT = 260;
+// Launch Library serves at most 100 rows a page whatever limit is asked for,
+// so the trailing-12-month cadence is read a page at a time. The board's own
+// `previous` request is the first page, which keeps a run at the number of
+// calls it made when cadence was a single oversized request.
+const LAUNCH_LIBRARY_PAGE_SIZE = 100;
+// ponytail: three pages hold 300 launches, about twice the 154 flown in the
+// year to September 2026. Raise this when a trailing year outgrows it.
+const CADENCE_MAX_PAGES = 3;
 const CADENCE_MONTHS_BACK = 12;
 
 type LaunchCollectionMode = "upcoming" | "previous";
@@ -324,6 +328,14 @@ interface RawLl2Launch {
   agency_launch_attempt_count?: number | null;
 }
 
+// What a `mode=list` row shares with a full one. List mode flattens mission
+// and pad to strings and drops the provider object, so a list row can be
+// counted but never normalized into a card.
+type RawLl2LaunchDate = Pick<
+  RawLl2Launch,
+  "id" | "net" | "window_start" | "launch_service_provider"
+>;
+
 let launchLibraryRateLimitedUntil = 0;
 let launchLibraryConsecutive429s = 0;
 
@@ -469,7 +481,8 @@ async function fetchLaunchLibraryJson<T>(
 function buildLaunchCollectionPath(
   mode: LaunchCollectionMode,
   limit: number,
-  ordering: string
+  ordering: string,
+  listOffset?: number
 ): string {
   const params = new URLSearchParams({
     format: "json",
@@ -477,6 +490,11 @@ function buildLaunchCollectionPath(
     ordering,
     lsp__ids: `${SPACEX_AGENCY_ID}`,
   });
+
+  if (listOffset !== undefined) {
+    params.set("mode", "list");
+    params.set("offset", `${listOffset}`);
+  }
 
   return `/launch/${mode}/?${params.toString()}`;
 }
@@ -591,7 +609,7 @@ function isPastDate(dateUtc?: string | null, graceMs = 0): boolean {
   return timestamp < Date.now() - graceMs;
 }
 
-function dedupeLaunches(launches: RawLl2Launch[]): RawLl2Launch[] {
+function dedupeLaunches<T extends RawLl2LaunchDate>(launches: T[]): T[] {
   const seen = new Set<string>();
 
   return launches.filter((launch) => {
@@ -604,15 +622,22 @@ function dedupeLaunches(launches: RawLl2Launch[]): RawLl2Launch[] {
   });
 }
 
-function filterLaunchCollection(
-  launches: RawLl2Launch[],
+function filterLaunchCollection<T extends RawLl2LaunchDate>(
+  launches: T[],
   mode: LaunchCollectionMode
-): RawLl2Launch[] {
-  return dedupeLaunches(launches).filter((launch) =>
-    mode === "upcoming"
+): T[] {
+  return dedupeLaunches(launches).filter((launch) => {
+    // `lsp__ids` filters on the server, so this only matters if that parameter
+    // is ever renamed or ignored. List mode rows carry no provider object.
+    const providerId = launch.launch_service_provider?.id ?? SPACEX_AGENCY_ID;
+    if (providerId !== SPACEX_AGENCY_ID) {
+      return false;
+    }
+
+    return mode === "upcoming"
       ? !isPastDate(launch.net, UPCOMING_STALE_GRACE_MS)
-      : !launch.net || Date.parse(launch.net) <= Date.now()
-  );
+      : !launch.net || Date.parse(launch.net) <= Date.now();
+  });
 }
 
 function clampBoardLimit(limit: number): number {
@@ -1277,7 +1302,9 @@ export async function getMissionLaunchDetail(
     }
 
     if (!shouldAllowLiveFallback(source)) {
-      throw createSpaceXError("SpaceX snapshot launch detail is unavailable", 503);
+      throw hasSpaceXSnapshotData()
+        ? createSpaceXError("Launch not found", 404)
+        : createSpaceXError("SpaceX snapshot launch detail is unavailable", 503);
     }
   }
 
@@ -1331,7 +1358,7 @@ export async function buildMissionControlSnapshot(): Promise<MissionControlSnaps
   );
   const previousResponse = await fetchLaunchCollection(
     "previous",
-    MAX_BOARD_LIMIT + 6,
+    LAUNCH_LIBRARY_PAGE_SIZE,
     300
   );
   const agency = await fetchSpaceXAgency(900);
@@ -1410,16 +1437,43 @@ export async function buildMissionControlSnapshot(): Promise<MissionControlSnaps
   }
 
   // Trailing-12-month launch cadence. Best-effort and isolated from the rest
-  // of the build: a failure here (rate limit, network) just leaves cadence
-  // null so the UI renders its empty state instead of failing the whole
-  // snapshot refresh.
+  // of the build: a failed page (rate limit, network) or a window the page
+  // bound cannot reach leaves cadence null instead of failing the whole
+  // snapshot refresh. It is never a partial count, since a short series reads
+  // as quiet months.
   let cadence: MissionControlCadence | null;
   try {
-    const cadenceResponse = await fetchLaunchCollection("previous", CADENCE_HISTORY_LIMIT, 3600);
-    const cadenceDates = filterLaunchCollection(cadenceResponse.results, "previous").map(
-      (launch) => launch.net ?? launch.window_start ?? null
+    const referenceMs = Date.now();
+    const reference = new Date(referenceMs);
+    const windowStartMs = Date.UTC(
+      reference.getUTCFullYear(),
+      reference.getUTCMonth() - (CADENCE_MONTHS_BACK - 1),
+      1
     );
-    cadence = aggregateLaunchCadence(cadenceDates, Date.now(), CADENCE_MONTHS_BACK);
+    const cadenceLaunches: RawLl2LaunchDate[] = [...previousResponse.results];
+    const cadenceDates = () =>
+      filterLaunchCollection(cadenceLaunches, "previous").map(
+        (launch) => launch.net ?? launch.window_start ?? null
+      );
+    const reachesWindowStart = () =>
+      cadenceDates().some((date) => Date.parse(date ?? "") < windowStartMs);
+
+    for (let page = 1; page < CADENCE_MAX_PAGES && !reachesWindowStart(); page += 1) {
+      const response = await fetchLaunchLibraryJson<RawLl2ListResponse<RawLl2LaunchDate>>(
+        buildLaunchCollectionPath(
+          "previous",
+          LAUNCH_LIBRARY_PAGE_SIZE,
+          "-net",
+          cadenceLaunches.length
+        ),
+        3600
+      );
+      cadenceLaunches.push(...response.results);
+    }
+
+    cadence = reachesWindowStart()
+      ? aggregateLaunchCadence(cadenceDates(), referenceMs, CADENCE_MONTHS_BACK)
+      : null;
   } catch {
     cadence = null;
   }

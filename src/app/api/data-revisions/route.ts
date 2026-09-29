@@ -53,7 +53,11 @@ export const dynamic = "force-dynamic";
 export const runtime = "nodejs";
 
 function getDeploymentCommit(): string | null {
+  // COMMIT_REF and GITHUB_SHA exist while the site builds and not while it
+  // serves, so the publish workflow passes the commit in and next.config.mjs
+  // inlines it.
   const candidates = [
+    process.env.DEPLOYMENT_COMMIT,
     process.env.COMMIT_REF,
     process.env.GITHUB_SHA,
   ];
@@ -144,13 +148,19 @@ export async function GET() {
     entry("la-liga", laLigaSnapshot, laLigaSnapshot.generatedAt),
     entry("mlb", mlbSnapshot, mlbSnapshot.generatedAt),
     entry("nba", nbaSnapshot, nbaSnapshot.generatedAt),
-    entry("nfl", nflSnapshot, nflSnapshot.updatedAt),
-    entry("fantasy-football", fantasySnapshot, fantasySnapshot.generatedAt),
+    entry("nfl", nflSnapshot, nflSnapshot.generatedAt ?? nflSnapshot.updatedAt),
+    // The same field the refresh verifier reads, so the two cannot disagree.
+    entry(
+      "fantasy-football",
+      fantasySnapshot,
+      fantasySnapshot.upstreamUpdatedAt ?? fantasySnapshot.generatedAt
+    ),
+    // A snapshot that has never held provider data is sample data with a build
+    // date, and grading that date would call a sample stale or fresh.
     entry(
       "score-pools",
       scorePoolsSnapshot,
-      scorePoolsSnapshot.generatedAt,
-      hasLiveScorePoolsData(scorePoolsSnapshot) ? undefined : "degraded"
+      hasLiveScorePoolsData(scorePoolsSnapshot) ? scorePoolsSnapshot.generatedAt : null
     ),
     entry(
       "frontier-models",
@@ -191,7 +201,7 @@ export async function GET() {
     entry(
       "polling",
       pollingSnapshot,
-      pollingSnapshot.sourceAsOf ?? pollingSnapshot.generatedAt
+      pollingSnapshot.generatedAt
     ),
   ];
   const entries = [

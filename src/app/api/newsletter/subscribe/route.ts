@@ -64,6 +64,8 @@ export async function POST(request: NextRequest) {
       : "writing";
   const apiKey = process.env.RESEND_API_KEY?.trim();
   if (!apiKey) {
+    // Without this line a missing key looked like a quiet day for signups.
+    logger.error("Newsletter signup is off because RESEND_API_KEY is not set", { source });
     return NextResponse.json(
       {
         success: false,

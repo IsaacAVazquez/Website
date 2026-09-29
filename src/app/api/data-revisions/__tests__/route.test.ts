@@ -10,7 +10,9 @@ import {
   createDataRevision,
   type DataRevisionEntry,
 } from "@/lib/dataRevision";
-import { DATA_SURFACE_IDS } from "@/lib/dataFreshnessPolicy";
+import { DATA_SURFACE_IDS, type DataSurfaceId } from "@/lib/dataFreshnessPolicy";
+import { DATA_REFRESH_ARTIFACTS } from "../../../../../scripts/dataRefreshRegistry";
+import { buildRefreshManifest } from "../../../../../scripts/verifyDataRefresh";
 
 async function getLedgerEntry(surface: string): Promise<DataRevisionEntry> {
   const response = await GET();
@@ -29,6 +31,25 @@ describe("GET /api/data-revisions", () => {
     expect(body.entries.map((entry) => entry.surface).sort()).toEqual(
       [...DATA_SURFACE_IDS].sort()
     );
+  });
+
+  it("reads the same source time as the refresh verifier for every registered surface", async () => {
+    // They drifted apart once. The verifier read the fantasy board's upstream
+    // time and this ledger read its build time, so the two graded one file
+    // against two different dates.
+    const response = await GET();
+    const body = (await response.json()) as { entries: DataRevisionEntry[] };
+    const surfaces = (Object.keys(DATA_REFRESH_ARTIFACTS) as DataSurfaceId[]).filter(
+      // The ledger reports sample data as having no source time at all.
+      (surface) => surface !== "score-pools"
+    );
+
+    expect(surfaces.length).toBeGreaterThan(10);
+    for (const surface of surfaces) {
+      const manifest = await buildRefreshManifest(surface);
+      const entry = body.entries.find((item) => item.surface === surface);
+      expect([surface, entry?.sourceAsOf]).toEqual([surface, manifest.sourceAsOf]);
+    }
   });
 
   it("separates committed publication state from live runtime heartbeats", async () => {

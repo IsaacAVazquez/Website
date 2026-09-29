@@ -28,12 +28,10 @@ const WEEKLY_FLEX_URLS: Record<ScoringFormat, string> = {
 const WEEKLY_QB_URL = "https://www.fantasypros.com/nfl/rankings/qb.php";
 
 /**
- * Rest-of-season boards. They are wired but not yet reachable: as of
- * 2026-08-21 all three still serve year 2025 with a last_updated of 12/25, so
- * the season check rejects them, which is the correct outcome rather than a
- * bug. They start returning the current season once FantasyPros rolls the
- * pages over, and the builder treats an unavailable rest-of-season board as
- * optional so nothing breaks in the meantime.
+ * Rest-of-season boards. On 2026-09-27 all three served year 2026 with 396 to
+ * 397 players from 6 experts, so they pass the season check. Nothing publishes
+ * them yet, and the weekly builder does not request one, which keeps a request
+ * off FantasyPros on every run until a board is built from them.
  */
 export const REST_OF_SEASON_URLS: Record<ScoringFormat, string> = {
   PPR: "https://www.fantasypros.com/nfl/rankings/ros-ppr-overall.php",

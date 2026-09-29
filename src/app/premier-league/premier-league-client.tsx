@@ -73,6 +73,7 @@ function zoneChipStyle(zone: LeagueZone): CSSProperties {
   }
 }
 
+// Pinned to UTC, with the zone printed, so the server and the browser agree.
 const LAST_UPDATED_FORMATTER = new Intl.DateTimeFormat("en-US", {
   month: "short",
   day: "numeric",
@@ -597,7 +598,7 @@ export function PremierLeagueClient({
                   <div className="flex items-start justify-between gap-3">
                     <p className="c97-kicker">Goals &amp; assists leaderboard</p>
                     <a
-                      href="https://www.premierleague.com/stats/top/players/goals"
+                      href="https://www.premierleague.com/en/stats/top/players/goals"
                       target="_blank"
                       rel="noreferrer"
                       className="inline-flex min-h-[44px] items-center gap-2 border px-3 py-2 text-sm font-medium"

@@ -15,6 +15,8 @@ import {
   INJURIES,
   MARCH_MADNESS_ARTICLE_SLUG,
   MARCH_MADNESS_FAQ,
+  MARCH_MADNESS_POSTMORTEM_SLUG,
+  MARCH_MADNESS_RESULT_NOTE,
   MARCH_MADNESS_THESIS,
   MARCH_MADNESS_UPDATED_LABEL,
   MODEL_PILLARS,
@@ -872,14 +874,18 @@ export function MarchMadnessClient({
             National champion pick
           </p>
           <h2 className="c97-serif c97-h2" style={{ marginBottom: "var(--c97-sp-2)" }}>{championshipWinner ?? "TBD"}</h2>
+          <p className="c97-prose">{MARCH_MADNESS_RESULT_NOTE}</p>
           <p className="c97-prose">
-            I think {championshipWinner} is the cleanest title pick in the field. The team ranks first
-            across the blended metric set on this page, and it carries zero total travel penalty
-            through every round, the same edge the Final Four summary below tracks.
+            I thought {championshipWinner} was the cleanest title pick in the field. The team ranked
+            first across the blended metric set on this page, and it carried zero total travel
+            penalty through every round, the same edge the Final Four summary below tracks.
             {championRanking
-              ? ` Its record sits at ${championRanking.record}, with the best adjusted defensive efficiency in the bracket at 90.8, and that is a big part of why the championship odds land at ${championRanking.odds}.`
+              ? ` Its record sat at ${championRanking.record} going in, with the best adjusted defensive efficiency in the bracket at 90.8, and that is a big part of why the championship odds landed at ${championRanking.odds}.`
               : null}
           </p>
+          <Link href={`/writing/${MARCH_MADNESS_POSTMORTEM_SLUG}`} className="c97-btn-ghost">
+            Read the postmortem
+          </Link>
         </div>
       </section>
 

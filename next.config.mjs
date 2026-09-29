@@ -79,6 +79,11 @@ const cdnCacheHeaders = [
 
 const nextConfig = {
   poweredByHeader: false,
+  // Inlined at build so /api/data-revisions can name the commit it was built
+  // from. The publish workflow sets it, and it is empty everywhere else.
+  env: {
+    DEPLOYMENT_COMMIT: process.env.DEPLOYMENT_COMMIT ?? '',
+  },
   // URL redirects for better SEO and user experience
   async redirects() {
     return [

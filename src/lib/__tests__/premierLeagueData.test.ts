@@ -2,6 +2,7 @@
  * @jest-environment node
  */
 import {
+  buildPremierLeagueSnapshot,
   getPremierLeagueSummary,
   getPremierLeagueTeamSnapshot,
   isValidPremierLeagueTeamId,
@@ -9,6 +10,25 @@ import {
   createEmptyPremierLeagueTeamSnapshot,
   sumPlayedGames,
 } from "../premierLeagueData";
+import { resetFootballDataPacingForTests } from "../footballData";
+import type {
+  PremierLeagueSnapshot,
+  PremierLeagueSummary,
+  PremierLeagueTeamSnapshot,
+} from "@/types/premier-league";
+import {
+  CLUBS,
+  busiestMinute,
+  createFootballDataApi,
+  runOnFakeClock,
+  writeStoredSnapshot,
+  type ServedRequest,
+} from "./fixtures/footballDataApi";
+
+// The request pacing is module state, so each test starts with a clear minute.
+beforeEach(() => {
+  resetFootballDataPacingForTests();
+});
 
 function jsonResponse(payload: unknown, status = 200): Response {
   return new Response(JSON.stringify(payload), {
@@ -708,5 +728,239 @@ describe("getPremierLeagueTeamSnapshot", () => {
     jest.spyOn(global, "fetch").mockResolvedValue(jsonResponse({}));
 
     await expect(getPremierLeagueTeamSnapshot("57")).rejects.toThrow(/not configured/i);
+  });
+});
+
+function storedTeamSnapshot(clubId: number): PremierLeagueTeamSnapshot {
+  const club = { id: String(clubId), name: `Club ${clubId}`, shortName: `Club ${clubId}`, tla: null, crest: null };
+  return {
+    team: null,
+    recentFixtures: [
+      {
+        id: `stored-${clubId}`,
+        utcDate: "2026-05-24T15:00:00Z",
+        status: "FINISHED",
+        matchday: 38,
+        stage: "REGULAR_SEASON",
+        homeTeam: club,
+        awayTeam: { ...club, id: "1" },
+        score: { winner: "HOME_TEAM", home: 2, away: 0 },
+      },
+    ],
+    upcomingFixtures: [],
+    form: { sequence: ["W"], wins: 1, draws: 0, losses: 0, points: 3, goalsFor: 2, goalsAgainst: 0 },
+    generatedAt: "2026-05-29T10:13:00.000Z",
+  };
+}
+
+function storedSnapshotRoot(clubIds: number[]): string {
+  return writeStoredSnapshot("premierLeagueSnapshot.ts", "premierLeagueSnapshot", {
+    teamSnapshots: Object.fromEntries(clubIds.map((id) => [String(id), storedTeamSnapshot(id)])),
+  });
+}
+
+function rateLimitedResponse(headers: Record<string, string>): Response {
+  return new Response(
+    JSON.stringify({ message: "You reached your request limit. Wait 60 seconds.", errorCode: 429 }),
+    { status: 429, headers: { "content-type": "application/json;charset=UTF-8", ...headers } }
+  );
+}
+
+describe("Premier League data on the free tier rate limit", () => {
+  const ORIGINAL_TOKEN = process.env.FOOTBALL_DATA_API_TOKEN;
+  const CLUB_IDS = CLUBS.map((club) => club.id);
+
+  function tally(served: readonly ServedRequest[]) {
+    return {
+      requests: served.length,
+      rateLimited: served.filter((request) => request.status === 429).length,
+      busiestMinute: busiestMinute(served),
+    };
+  }
+
+  beforeEach(() => {
+    process.env.FOOTBALL_DATA_API_TOKEN = "test-token";
+    jest.useFakeTimers({ doNotFake: ["nextTick", "queueMicrotask", "setImmediate"] });
+    jest.setSystemTime(new Date("2026-09-01T12:00:00Z"));
+    jest.spyOn(console, "warn").mockImplementation(() => undefined);
+    jest.spyOn(console, "log").mockImplementation(() => undefined);
+  });
+
+  afterEach(() => {
+    jest.useRealTimers();
+    jest.restoreAllMocks();
+    if (ORIGINAL_TOKEN === undefined) {
+      delete process.env.FOOTBALL_DATA_API_TOKEN;
+    } else {
+      process.env.FOOTBALL_DATA_API_TOKEN = ORIGINAL_TOKEN;
+    }
+  });
+
+  it("refreshes every club in one full run without a 429", async () => {
+    jest.spyOn(process, "cwd").mockReturnValue(storedSnapshotRoot([]));
+    const api = createFootballDataApi({ code: "PL" });
+    jest.spyOn(global, "fetch").mockImplementation(api.fetchMock);
+
+    const snapshot = (await runOnFakeClock(buildPremierLeagueSnapshot())) as PremierLeagueSnapshot;
+
+    expect(tally(api.served)).toEqual({ requests: 65, rateLimited: 0, busiestMinute: 8 });
+    expect(Object.keys(snapshot.teamSnapshots)).toHaveLength(20);
+  });
+
+  it("re-pins a table with zero games played without bursting past the limit", async () => {
+    jest.setSystemTime(new Date("2026-08-05T12:00:00Z"));
+    jest.spyOn(process, "cwd").mockReturnValue(storedSnapshotRoot(CLUB_IDS));
+    const api = createFootballDataApi({ code: "PL", seasonStarted: false });
+    jest.spyOn(global, "fetch").mockImplementation(api.fetchMock);
+
+    const snapshot = (await runOnFakeClock(buildPremierLeagueSnapshot())) as PremierLeagueSnapshot;
+
+    expect(snapshot).not.toBeInstanceOf(Error);
+    expect(tally(api.served)).toEqual({ requests: 66, rateLimited: 0, busiestMinute: 8 });
+    expect(snapshot.summary.competition?.seasonLabel).toBe("2025/26");
+    expect(sumPlayedGames(snapshot.summary.standings)).toBe(20 * 38);
+  });
+
+  it("keeps a club's stored results and form when the fresh list is empty", async () => {
+    jest.setSystemTime(new Date("2026-08-05T12:00:00Z"));
+    jest.spyOn(process, "cwd").mockReturnValue(storedSnapshotRoot(CLUB_IDS));
+    const api = createFootballDataApi({ code: "PL", seasonStarted: false });
+    jest.spyOn(global, "fetch").mockImplementation(api.fetchMock);
+
+    const snapshot = (await runOnFakeClock(buildPremierLeagueSnapshot())) as PremierLeagueSnapshot;
+    const club = snapshot.teamSnapshots["101"];
+
+    expect(club.recentFixtures).toEqual(storedTeamSnapshot(101).recentFixtures);
+    expect(club.form).toEqual(storedTeamSnapshot(101).form);
+    // Everything else on the club is the fresh fetch.
+    expect(club.team?.manager).toBe("Coach CAA");
+    expect(club.upcomingFixtures).toHaveLength(4);
+    expect(club.generatedAt).toBe(snapshot.summary.generatedAt);
+  });
+
+  it.each([
+    ["the reset header", { "x-requests-available-minute": "0", "x-requestcounter-reset": "42" }, 43_000],
+    ["Retry-After when the reset header is missing", { "retry-after": "30" }, 31_000],
+    ["60 seconds when neither header is present", {}, 61_000],
+    ["70 seconds at most", { "x-requestcounter-reset": "500" }, 70_000],
+  ])("waits for %s after a 429 and then retries", async (_label, headers, expectedWaitMs) => {
+    const api = createFootballDataApi({ code: "PL" });
+    const attempts: number[] = [];
+    jest.spyOn(global, "fetch").mockImplementation((input) => {
+      attempts.push(Date.now());
+      return attempts.length === 1
+        ? Promise.resolve(rateLimitedResponse(headers))
+        : api.fetchMock(input);
+    });
+
+    const snapshot = await runOnFakeClock(getPremierLeagueTeamSnapshot("101"));
+
+    expect(snapshot).not.toBeInstanceOf(Error);
+    expect(attempts[1] - attempts[0]).toBe(expectedWaitMs);
+  });
+
+  it("names the upstream status when the limit never clears", async () => {
+    jest
+      .spyOn(global, "fetch")
+      .mockImplementation(() =>
+        Promise.resolve(rateLimitedResponse({ "x-requests-available-minute": "0", "x-requestcounter-reset": "60" }))
+      );
+
+    const outcome = await runOnFakeClock(getPremierLeagueTeamSnapshot("101"));
+
+    expect(outcome).toBeInstanceOf(Error);
+    expect((outcome as Error).message).toBe(
+      "Unable to load Premier League data from the upstream provider (HTTP 429)."
+    );
+  });
+
+  it("holds the next request back when the API reports two or fewer left", async () => {
+    const api = createFootballDataApi({ code: "PL" });
+    const attempts: number[] = [];
+    jest.spyOn(global, "fetch").mockImplementation(async (input) => {
+      attempts.push(Date.now());
+      const response = await api.fetchMock(input);
+      if (attempts.length > 1) return response;
+      // Another run on the same token has used most of this minute.
+      const headers = new Headers(response.headers);
+      headers.set("x-requests-available-minute", "2");
+      headers.set("x-requestcounter-reset", "25");
+      return new Response(response.body, { status: response.status, headers });
+    });
+
+    const snapshot = await runOnFakeClock(getPremierLeagueTeamSnapshot("101"));
+
+    expect(snapshot).not.toBeInstanceOf(Error);
+    expect(attempts[1] - attempts[0]).toBe(26_000);
+    expect(api.served.filter((request) => request.status === 429)).toHaveLength(0);
+  });
+
+  it("drops a relegated club's snapshot only when the table is full", async () => {
+    jest.spyOn(process, "cwd").mockReturnValue(storedSnapshotRoot([...CLUB_IDS, 999]));
+    const full = createFootballDataApi({ code: "PL" });
+    jest.spyOn(global, "fetch").mockImplementation(full.fetchMock);
+
+    const pruned = (await runOnFakeClock(
+      buildPremierLeagueSnapshot({ skipTeamSnapshots: true })
+    )) as PremierLeagueSnapshot;
+
+    expect(Object.keys(pruned.teamSnapshots)).toHaveLength(20);
+    expect(pruned.teamSnapshots["999"]).toBeUndefined();
+
+    resetFootballDataPacingForTests();
+    const partial = createFootballDataApi({
+      code: "PL",
+      override: (path) => {
+        if (!path.includes("/standings")) return undefined;
+        const body = JSON.parse(JSON.stringify(standingsPayload()));
+        body.standings[0].table = CLUBS.slice(0, 19).map((team, index) => ({
+          position: index + 1,
+          team,
+          playedGames: 2,
+          points: 3,
+        }));
+        return body;
+      },
+    });
+    jest.spyOn(global, "fetch").mockImplementation(partial.fetchMock);
+
+    const kept = (await runOnFakeClock(
+      buildPremierLeagueSnapshot({ skipTeamSnapshots: true })
+    )) as PremierLeagueSnapshot;
+
+    expect(kept.summary.standings).toHaveLength(19);
+    expect(Object.keys(kept.teamSnapshots)).toHaveLength(21);
+    expect(kept.teamSnapshots["999"]).toBeDefined();
+  });
+
+  it("asks for finished matches once and slices the recent list locally", async () => {
+    const api = createFootballDataApi({ code: "PL" });
+    jest.spyOn(global, "fetch").mockImplementation(api.fetchMock);
+
+    const summary = (await runOnFakeClock(getPremierLeagueSummary())) as PremierLeagueSummary;
+
+    expect(api.served.filter((request) => request.path.includes("status=FINISHED"))).toHaveLength(1);
+    expect(api.served).toHaveLength(5);
+    // The API returned all 20 finished matches, and the newest 8 are matchday 2.
+    expect(summary.recentFixtures).toHaveLength(8);
+    expect(summary.recentFixtures.every((fixture) => fixture.matchday === 2)).toBe(true);
+    expect(summary.goalsPerMatchday?.map((entry) => entry.matchday)).toEqual([1, 2]);
+  });
+
+  it("marks a fixture whose kickoff time is not confirmed yet", async () => {
+    const api = createFootballDataApi({ code: "PL" });
+    jest.spyOn(global, "fetch").mockImplementation(api.fetchMock);
+
+    const snapshot = (await runOnFakeClock(
+      getPremierLeagueTeamSnapshot("101")
+    )) as PremierLeagueTeamSnapshot;
+
+    expect(
+      snapshot.upcomingFixtures.map(({ utcDate, status, startTimeTbd }) => ({ utcDate, status, startTimeTbd }))
+    ).toEqual([
+      { utcDate: "2026-09-12T12:30:00Z", status: "TIMED", startTimeTbd: undefined },
+      { utcDate: "2026-09-19T00:00:00Z", status: "SCHEDULED", startTimeTbd: true },
+    ]);
+    expect(snapshot.recentFixtures.some((fixture) => fixture.startTimeTbd)).toBe(false);
   });
 });

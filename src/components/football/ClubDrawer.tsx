@@ -7,7 +7,6 @@ import { CrestAvatar } from "./CrestAvatar";
 import { TeamResultPill } from "./TeamResultPill";
 import { StatFascia, type StatFasciaItem } from "./StatFascia";
 import type { GenericFixture } from "./FixtureCard";
-import { DISPLAY_TIME_ZONE } from "@/lib/date-formatters";
 
 export interface ClubDrawerScorer {
   name: string;
@@ -41,11 +40,12 @@ export interface ClubDrawerClub {
   venue?: string | null;
 }
 
+// Pinned to one named zone so the server and the browser print the same string.
 const KICKOFF_FORMATTER = new Intl.DateTimeFormat("en-US", {
   weekday: "short",
   hour: "numeric",
   minute: "2-digit",
-  timeZone: DISPLAY_TIME_ZONE,
+  timeZone: "America/New_York",
   timeZoneName: "short",
 });
 

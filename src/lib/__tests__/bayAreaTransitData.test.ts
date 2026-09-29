@@ -1,8 +1,14 @@
 /**
  * @jest-environment node
  */
-import { buildBayAreaTransitSnapshotData } from "../bayAreaTransitData";
-import type { TransitStationBoard } from "@/types/bayAreaTransit";
+import {
+  buildBayAreaTransitLiveSnapshotData,
+  buildBayAreaTransitSnapshotData,
+} from "../bayAreaTransitData";
+import type {
+  TransitSnapshot,
+  TransitStationBoard,
+} from "@/types/bayAreaTransit";
 
 function jsonResponse(payload: unknown, status = 200): Response {
   return new Response(JSON.stringify(payload), {
@@ -274,6 +280,226 @@ function fetcherWithEtd(etd: unknown): (url: string) => Response {
     url.includes("etd.aspx") ? jsonResponse(etd) : defaultFetcher(url);
 }
 
+// --- Real response shapes, copied from api.bart.gov on 2026-09-27 -------------
+
+const XML_HEADER = { "@version": "1.0", "@encoding": "utf-8" };
+
+function realRoot(command: string, body: Record<string, unknown>) {
+  return {
+    "?xml": XML_HEADER,
+    root: {
+      "@id": "1",
+      uri: { "#cdata-section": `http://api.bart.gov/api/${command}&json=y` },
+      date: "09/27/2026",
+      time: "12:03:47 PM PDT",
+      ...body,
+    },
+  };
+}
+
+function realEstimate(minutes: string, overrides: Record<string, string> = {}) {
+  return {
+    minutes,
+    platform: "2",
+    direction: "North",
+    length: "8",
+    color: "YELLOW",
+    hexcolor: "#ffff33",
+    bikeflag: "1",
+    delay: "0",
+    cancelflag: "0",
+    dynamicflag: "0",
+    ...overrides,
+  };
+}
+
+function realStation(name: string, abbr: string, estimates: unknown[]) {
+  return {
+    name,
+    abbr,
+    etd: [
+      {
+        destination: "Antioch",
+        abbreviation: "ANTC",
+        limited: "0",
+        estimate: estimates,
+      },
+    ],
+  };
+}
+
+/** etd.aspx?cmd=etd&orig=ALL. The message is a plain string on a good day. */
+function realEtdAll(stations: unknown[]) {
+  return realRoot("etd.aspx?cmd=etd&orig=ALL", {
+    station: stations,
+    message: "Direction not supported for ALL ETD messages.",
+  });
+}
+
+/** How BART answers when nothing matches, which is how a night with no trains reads. */
+const REAL_ETD_NO_DATA = realRoot("etd.aspx?cmd=etd&orig=ALL", {
+  message: { warning: "No data matched your criteria." },
+});
+
+/** A bad key, station, or command. BART sends it with a 400 today. */
+const REAL_ERROR_BODY = {
+  "?xml": XML_HEADER,
+  root: {
+    message: {
+      error: {
+        text: "Invalid key",
+        details: "The api key was missing or invalid.",
+      },
+    },
+  },
+};
+
+const REAL_ADVISORIES = realRoot("bsa.aspx?cmd=bsa", {
+  bsa: [
+    {
+      "@id": "551",
+      station: "BART",
+      type: "DELAY",
+      description: {
+        "#cdata-section":
+          "Passengers traveling between Union City and Warm Springs this weekend must transfer to a free bus while crews make track upgrades. ",
+      },
+      sms_text: {
+        "#cdata-section":
+          "Riders between UCTY and warm this weekend must transfer to a free bus.",
+      },
+      posted: "Sun Sep 27 2026 07:50 AM PDT",
+      expires: "No time provided.",
+    },
+  ],
+  message: "",
+});
+
+const REAL_ELEVATORS = realRoot("bsa.aspx?cmd=elev", {
+  bsa: [
+    {
+      "@id": "09271239",
+      station: "BART",
+      type: "ELEVATOR",
+      description: {
+        "#cdata-section":
+          "There are 2 elevators out of service at this time: 24TH: Station; PITT: Station - SF/East Bay",
+      },
+      sms_text: {
+        "#cdata-section": "2 elevs out of svc: 24TH: stn; PITT: stn - sf/East Bay",
+      },
+      posted: "",
+      expires: "",
+    },
+  ],
+  message: "",
+});
+
+interface LiveFeeds {
+  advisories?: () => Response;
+  elevators?: () => Response;
+  departures?: () => Response;
+}
+
+function liveFetcher(feeds: LiveFeeds = {}): Fetcher {
+  return (url) => {
+    if (url.includes("cmd=elev")) {
+      return feeds.elevators?.() ?? jsonResponse(REAL_ELEVATORS);
+    }
+    if (url.includes("cmd=bsa")) {
+      return feeds.advisories?.() ?? jsonResponse(REAL_ADVISORIES);
+    }
+    if (url.includes("etd.aspx")) {
+      return (
+        feeds.departures?.() ??
+        jsonResponse(
+          realEtdAll([
+            realStation("Embarcadero", "EMBR", [
+              realEstimate("Leaving"),
+              realEstimate("12"),
+            ]),
+            realStation("Lake Merritt", "LAKE", [realEstimate("6")]),
+          ])
+        )
+      );
+    }
+    return jsonResponse(REAL_ERROR_BODY, 400);
+  };
+}
+
+/** The committed snapshot the live builder falls back on. */
+function makeFallbackSnapshot(): TransitSnapshot {
+  return {
+    summary: {
+      system: {
+        name: "Bay Area Rapid Transit",
+        abbr: "BART",
+        source: "BART public API (api.bart.gov)",
+        feedTime: "09/27/2026 10:14:18 AM PDT",
+        generatedAt: "2026-09-27T17:14:27.469Z",
+        seed: false,
+      },
+      heroStats: {
+        lineCount: 6,
+        stationCount: 50,
+        activeAdvisories: 1,
+        elevatorOutages: 1,
+        trainsTracked: 4,
+      },
+      lines: [],
+      stations: [],
+      advisories: [
+        {
+          id: "advisory-0",
+          type: "DELAY",
+          description: "The advisory in the committed snapshot.",
+          station: "BART",
+          posted: "Sun Sep 27 2026 07:50 AM PDT",
+        },
+      ],
+      elevator: [
+        {
+          id: "elevator-0",
+          description: "The elevator outage in the committed snapshot.",
+          posted: "",
+        },
+      ],
+      sectionStatus: {
+        advisories: "fresh",
+        elevator: "fresh",
+        departures: "fresh",
+      },
+      defaultStation: "embr",
+    },
+    stationBoards: makePreviousBoards(["embr", "mont", "powl", "12th"]),
+  };
+}
+
+/**
+ * A feed that never answers. AbortSignal.timeout runs on a timer Jest cannot
+ * fake, so the signal arrives already timed out and the stub rejects the way a
+ * real hung request does once its timer fires. The real reason is a
+ * DOMException named TimeoutError, which Jest builds in another realm, so a
+ * plain Error carries the name here to keep `instanceof Error` true.
+ */
+function mockHungFetch() {
+  const timeout = jest
+    .spyOn(AbortSignal, "timeout")
+    .mockImplementation(() =>
+      AbortSignal.abort(
+        Object.assign(new Error("The operation timed out."), {
+          name: "TimeoutError",
+        })
+      )
+    );
+  const fetchSpy = jest
+    .spyOn(global, "fetch")
+    .mockImplementation((_input: unknown, init?: RequestInit) =>
+      Promise.reject(init?.signal?.reason)
+    );
+  return { timeout, fetchSpy };
+}
+
 describe("buildBayAreaTransitSnapshotData", () => {
   afterEach(() => {
     jest.restoreAllMocks();
@@ -482,4 +708,207 @@ describe("buildBayAreaTransitSnapshotData", () => {
       }
     }
   }, 20000);
+
+  // The committed boards are the cold start fallback, so an empty overnight
+  // feed must not replace them. The request path makes the opposite choice.
+  it("keeps the previous boards when an overnight feed has no departures", async () => {
+    mockFetch(fetcherWithEtd(REAL_ETD_NO_DATA));
+
+    const { summary, stationBoards } = await buildBayAreaTransitSnapshotData({
+      previousBoards: makePreviousBoards(["embr", "mont", "powl", "12th"]),
+    });
+
+    expect(Object.keys(stationBoards)).toHaveLength(4);
+    expect(summary.sectionStatus?.departures).toBe("stale-fallback");
+    expect(summary.heroStats.trainsTracked).toBe(4);
+  });
+
+  it("leaves a cancelled train out of the committed boards", async () => {
+    mockFetch(
+      fetcherWithEtd(
+        realEtdAll([
+          realStation("Embarcadero", "EMBR", [
+            realEstimate("4", { cancelflag: "1" }),
+            realEstimate("19"),
+          ]),
+        ])
+      )
+    );
+
+    const { summary, stationBoards } = await buildBayAreaTransitSnapshotData();
+
+    expect(stationBoards.embr.departures.map((d) => d.minutes)).toEqual([19]);
+    expect(summary.heroStats.trainsTracked).toBe(1);
+  });
+
+  it("keeps fifteen seconds and three attempts for the scheduled build", async () => {
+    jest.useFakeTimers();
+    try {
+      const { timeout, fetchSpy } = mockHungFetch();
+
+      const build = buildBayAreaTransitSnapshotData();
+      const settled = expect(build).rejects.toMatchObject({
+        name: "TimeoutError",
+      });
+      // The one and two second waits between attempts.
+      await jest.advanceTimersByTimeAsync(3_000);
+      await settled;
+
+      expect(fetchSpy).toHaveBeenCalledTimes(3);
+      expect(timeout.mock.calls.map(([ms]) => ms)).toEqual([
+        15_000, 15_000, 15_000,
+      ]);
+    } finally {
+      jest.useRealTimers();
+    }
+  });
+});
+
+describe("buildBayAreaTransitLiveSnapshotData", () => {
+  afterEach(() => {
+    jest.restoreAllMocks();
+  });
+
+  it("reads the three live feeds over the committed catalog", async () => {
+    mockFetch(liveFetcher());
+    const fallback = makeFallbackSnapshot();
+
+    const { summary, stationBoards } =
+      await buildBayAreaTransitLiveSnapshotData(fallback);
+
+    expect(Object.keys(stationBoards).sort()).toEqual(["embr", "lake"]);
+    // "Leaving" sorts ahead of the timed train.
+    expect(stationBoards.embr.departures.map((d) => d.minutes)).toEqual([
+      null,
+      12,
+    ]);
+    expect(stationBoards.embr.generatedAt).toBe(summary.system?.generatedAt);
+    expect(summary.system?.generatedAt).not.toBe(
+      fallback.summary.system?.generatedAt
+    );
+    expect(summary.system?.feedTime).toBe("09/27/2026 12:03:47 PM PDT");
+    expect(summary.heroStats.trainsTracked).toBe(3);
+    expect(summary.heroStats.lineCount).toBe(6);
+    expect(summary.advisories).toHaveLength(1);
+    expect(summary.advisories[0].description).toContain("Union City");
+    expect(summary.elevator[0].description).toContain("2 elevators");
+    expect(summary.sectionStatus).toEqual({
+      advisories: "fresh",
+      elevator: "fresh",
+      departures: "fresh",
+    });
+  });
+
+  it("keeps the committed copy of a feed that fails and says so", async () => {
+    mockFetch(
+      liveFetcher({ departures: () => jsonResponse(REAL_ERROR_BODY, 400) })
+    );
+    const fallback = makeFallbackSnapshot();
+
+    const { summary, stationBoards } =
+      await buildBayAreaTransitLiveSnapshotData(fallback);
+
+    expect(stationBoards).toBe(fallback.stationBoards);
+    expect(summary.heroStats.trainsTracked).toBe(4);
+    expect(summary.sectionStatus).toEqual({
+      advisories: "fresh",
+      elevator: "fresh",
+      departures: "stale-fallback",
+    });
+  });
+
+  it("throws when every feed fails, so the caller can label the fallback", async () => {
+    mockFetch(() => jsonResponse(REAL_ERROR_BODY, 400));
+
+    await expect(
+      buildBayAreaTransitLiveSnapshotData(makeFallbackSnapshot())
+    ).rejects.toThrow(/every bart live feed was unavailable/i);
+  });
+
+  it("reads an error inside a 200 response as a failed feed", async () => {
+    mockFetch(() => jsonResponse(REAL_ERROR_BODY));
+
+    await expect(
+      buildBayAreaTransitLiveSnapshotData(makeFallbackSnapshot())
+    ).rejects.toThrow(/every bart live feed was unavailable/i);
+  });
+
+  it("keeps the committed advisories when that feed answers 200 with an error", async () => {
+    mockFetch(liveFetcher({ advisories: () => jsonResponse(REAL_ERROR_BODY) }));
+    const fallback = makeFallbackSnapshot();
+
+    const { summary } = await buildBayAreaTransitLiveSnapshotData(fallback);
+
+    expect(summary.advisories).toEqual(fallback.summary.advisories);
+    expect(summary.heroStats.activeAdvisories).toBe(1);
+    expect(summary.sectionStatus?.advisories).toBe("stale-fallback");
+    expect(summary.sectionStatus?.departures).toBe("fresh");
+  });
+
+  it("serves no boards when BART answers with no departures", async () => {
+    mockFetch(liveFetcher({ departures: () => jsonResponse(REAL_ETD_NO_DATA) }));
+
+    const { summary, stationBoards } =
+      await buildBayAreaTransitLiveSnapshotData(makeFallbackSnapshot());
+
+    expect(stationBoards).toEqual({});
+    expect(summary.heroStats.trainsTracked).toBe(0);
+    expect(summary.sectionStatus?.departures).toBe("fresh");
+    expect(summary.defaultStation).toBe("embr");
+  });
+
+  // The shape api.bart.gov gave for Fremont during the 2026-09-27 track work.
+  it("reads a station listed with no trains as an empty board", async () => {
+    mockFetch(
+      liveFetcher({
+        departures: () =>
+          jsonResponse(
+            realRoot("etd.aspx?cmd=etd&orig=ALL", {
+              station: [{ name: "Fremont", abbr: "FRMT" }],
+              message: { warning: "No data matched your criteria." },
+            })
+          ),
+      })
+    );
+
+    const { stationBoards } = await buildBayAreaTransitLiveSnapshotData(
+      makeFallbackSnapshot()
+    );
+
+    expect(Object.keys(stationBoards)).toEqual(["frmt"]);
+    expect(stationBoards.frmt.departures).toEqual([]);
+  });
+
+  it("leaves a cancelled train off the board", async () => {
+    mockFetch(
+      liveFetcher({
+        departures: () =>
+          jsonResponse(
+            realEtdAll([
+              realStation("Embarcadero", "EMBR", [
+                realEstimate("4", { cancelflag: "1" }),
+                realEstimate("19"),
+              ]),
+            ])
+          ),
+      })
+    );
+
+    const { summary, stationBoards } =
+      await buildBayAreaTransitLiveSnapshotData(makeFallbackSnapshot());
+
+    expect(stationBoards.embr.departures.map((d) => d.minutes)).toEqual([19]);
+    expect(summary.heroStats.trainsTracked).toBe(1);
+  });
+
+  it("gives each live feed one attempt and four seconds", async () => {
+    const { timeout, fetchSpy } = mockHungFetch();
+
+    await expect(
+      buildBayAreaTransitLiveSnapshotData(makeFallbackSnapshot())
+    ).rejects.toThrow(/every bart live feed was unavailable/i);
+
+    expect(fetchSpy).toHaveBeenCalledTimes(3);
+    expect(timeout.mock.calls.map(([ms]) => ms)).toEqual([4_000, 4_000, 4_000]);
+  });
 });

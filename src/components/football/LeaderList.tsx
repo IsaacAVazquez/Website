@@ -33,7 +33,10 @@ export function LeaderList({
               <div className="min-w-0">
                 <p className="truncate font-semibold text-[var(--c97-ink)]">{leader.name}</p>
                 <p className="text-sm text-[var(--c97-ink-2)]">
-                  {clubName} · {leader.appearances} apps
+                  {/* Some feeds send no games count, and "0 apps" would be false. */}
+                  {leader.appearances > 0
+                    ? `${clubName} · ${leader.appearances} apps`
+                    : clubName}
                 </p>
               </div>
             </div>

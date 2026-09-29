@@ -124,4 +124,19 @@ describe("GitHubTrendingClient", () => {
       { scroll: false }
     );
   });
+
+  it("names the pool behind the leading language share", () => {
+    render(
+      <GitHubTrendingClient
+        initialState={DEFAULT_GITHUB_TRENDING_STATE}
+        snapshot={snapshot}
+      />
+    );
+
+    expect(
+      screen.getByText(
+        "100% of the stars the 1 tracked repos gained over the past week"
+      )
+    ).toBeVisible();
+  });
 });

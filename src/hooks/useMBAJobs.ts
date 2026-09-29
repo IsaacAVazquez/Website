@@ -25,6 +25,7 @@ const WATCHED_KEY = "mba_watched_companies_v2";
 
 const POLL_INTERVAL_MS = 30 * 60 * 1_000; // 30 minutes
 const DEDUPE_WINDOW_MS = 2_000;
+const RETRY_AFTER_503_MS = 10_000;
 const MAX_SEEN_IDS = 500;
 // Mirrors MAX_DIGEST_JOBS in /api/mba-jobs/email. Keep these in sync.
 const EMAIL_DIGEST_MAX_JOBS = 25;
@@ -277,7 +278,14 @@ export function useMBAJobs(options: UseMBAJobsOptions = {}): UseMBAJobsResult {
       const url = `/api/mba-jobs?${params.toString()}`;
 
       try {
-        const res = await fetch(url);
+        let res = await fetch(url);
+        // A cold server answers 503 while its first refresh is still running,
+        // and the next poll is 30 minutes away, so try once more.
+        if (res.status === 503) {
+          await new Promise((resolve) => setTimeout(resolve, RETRY_AFTER_503_MS));
+          if (!isMountedRef.current || requestIdRef.current !== requestId) return;
+          res = await fetch(url);
+        }
         if (!res.ok) {
           const outage = await parseOutageBody(res);
           if (

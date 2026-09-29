@@ -50,6 +50,20 @@ const FANTASY_FUTURE_SKEW_TOLERANCE_MS = 5 * 60 * 1000;
 const NFL_REGULAR_SEASON_WEEKS = 18;
 
 /**
+ * When week 1 opens, in UTC milliseconds. That is Labor Day (the first Monday
+ * of September) plus two days, a Wednesday anchor: 2026 opens Wednesday
+ * September 9 rather than the usual Thursday, and week 12 opens Wednesday
+ * November 25, both verified against nflverse games.csv in the week-opener
+ * test. A Thursday anchor reads week 0 on opening day and week 11 on
+ * Thanksgiving week.
+ */
+export function getNflWeek1Kickoff(season: number): number {
+  const septFirst = new Date(Date.UTC(season, 8, 1));
+  const offsetToMonday = (8 - septFirst.getUTCDay()) % 7;
+  return Date.UTC(season, 8, 1 + offsetToMonday) + 2 * MS_PER_DAY;
+}
+
+/**
  * Derives the NFL regular-season week for a season from the calendar so a
  * snapshot built mid-season isn't perpetually stamped "Preseason" (week 0).
  *
@@ -75,15 +89,7 @@ export function getNflRegularSeasonWeek(season: number, now: Date = new Date()):
   if (season < 1920) {
     return 0;
   }
-  // First Monday of September (Labor Day), evaluated in UTC. Labor Day + 2 is
-  // a Wednesday anchor: 2026 opens Wednesday September 9 rather than the usual
-  // Thursday, and week 12 opens Wednesday November 25, both verified against
-  // nflverse games.csv in the week-opener test. A Thursday anchor reads week 0
-  // on opening day and week 11 on Thanksgiving week.
-  const septFirst = new Date(Date.UTC(season, 8, 1));
-  const offsetToMonday = (8 - septFirst.getUTCDay()) % 7;
-  const laborDay = new Date(Date.UTC(season, 8, 1 + offsetToMonday));
-  const week1Kickoff = laborDay.getTime() + 2 * MS_PER_DAY;
+  const week1Kickoff = getNflWeek1Kickoff(season);
 
   if (now.getTime() < week1Kickoff) {
     return 0;

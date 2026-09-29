@@ -1,5 +1,7 @@
-import { fireEvent, render, screen } from "@testing-library/react";
-import { TransitSignature } from "../TransitSignature";
+import { act, fireEvent, render, screen } from "@testing-library/react";
+import { renderToString } from "react-dom/server";
+import type { TransitStationBoard } from "@/types/bayAreaTransit";
+import { TransitSignature, upcomingDepartures } from "../TransitSignature";
 
 const station = (id: string, abbr: string, lat: number, lon: number) =>
   ({ id, abbr, name: `${abbr} station`, latitude: lat, longitude: lon, city: "SF", lines: ["Yellow"] }) as never;
@@ -54,4 +56,167 @@ it("warns on the board when departures come from the last good snapshot", () => 
 it("says so on the board when BART has no departures to give", () => {
   renderSignature({ departuresStatus: "unavailable" });
   expect(screen.getByText(/departures are unavailable/i)).toBeInTheDocument();
+});
+
+/** A board in the shape the station route serves. */
+function servedBoard(
+  minutes: Array<number | null>,
+  generatedAt: string
+): TransitStationBoard {
+  return {
+    id: "embr",
+    abbr: "EMBR",
+    name: "Embarcadero",
+    departures: minutes.map((value) => ({
+      destination: "Antioch",
+      destinationAbbr: "ANTC",
+      minutes: value,
+      platform: "2",
+      direction: "North",
+      length: 8,
+      colorName: "YELLOW",
+      hexColor: "#ffff33",
+      delaySeconds: 0,
+      bikesAllowed: true,
+    })),
+    generatedAt,
+    status: "fresh",
+  };
+}
+
+const READ_AT = "2026-09-27T17:14:27.469Z";
+const minutesAfterRead = (minutes: number, seconds = 0) =>
+  Date.parse(READ_AT) + minutes * 60_000 + seconds * 1_000;
+
+describe("upcomingDepartures", () => {
+  it("counts the minutes from now instead of from when the board was read", () => {
+    const board = servedBoard([4, 12, 31], READ_AT);
+
+    expect(
+      upcomingDepartures(board, minutesAfterRead(3, 59)).map((d) => d.minutes)
+    ).toEqual([1, 9, 28]);
+  });
+
+  it("drops a train whose time has passed and keeps one that is due now", () => {
+    const board = servedBoard([null, 2, 5, 12], READ_AT);
+
+    expect(
+      upcomingDepartures(board, minutesAfterRead(5)).map((d) => d.minutes)
+    ).toEqual([0, 7]);
+  });
+
+  it("empties a board that is older than its last train", () => {
+    // The committed 10:14 AM board as the page served it at 12:23 PM.
+    const board = servedBoard([null, 7, 27, 47], READ_AT);
+
+    expect(upcomingDepartures(board, minutesAfterRead(129))).toEqual([]);
+  });
+
+  it("leaves the board alone inside the first minute", () => {
+    const board = servedBoard([null, 4], READ_AT);
+
+    expect(upcomingDepartures(board, minutesAfterRead(0, 59))).toBe(
+      board.departures
+    );
+  });
+
+  it("leaves the board alone when the age cannot be trusted", () => {
+    const behind = servedBoard([4], READ_AT);
+    const unreadable = servedBoard([4], "");
+
+    expect(upcomingDepartures(behind, minutesAfterRead(-10))).toBe(
+      behind.departures
+    );
+    expect(upcomingDepartures(unreadable, minutesAfterRead(10))).toBe(
+      unreadable.departures
+    );
+  });
+});
+
+describe("the platform board's clock", () => {
+  afterEach(() => {
+    jest.useRealTimers();
+  });
+
+  it("adjusts the minutes for the board's age once it has mounted", () => {
+    jest.useFakeTimers({ now: minutesAfterRead(5) });
+    renderSignature({ stationBoard: servedBoard([4, 12], READ_AT) });
+
+    expect(screen.getByText("7 min")).toBeInTheDocument();
+    expect(screen.queryByText("4 min")).not.toBeInTheDocument();
+    expect(screen.queryByText("12 min")).not.toBeInTheDocument();
+  });
+
+  it("keeps counting down while the page stays open", () => {
+    jest.useFakeTimers({ now: minutesAfterRead(0) });
+    renderSignature({ stationBoard: servedBoard([3], READ_AT) });
+    expect(screen.getByText("3 min")).toBeInTheDocument();
+
+    act(() => {
+      jest.advanceTimersByTime(2 * 60_000);
+    });
+
+    expect(screen.getByText("1 min")).toBeInTheDocument();
+  });
+
+  // The server has no viewer clock to read, so it prints the board as it was
+  // read, and the first client render has to print the same thing.
+  it("prints the same minutes on the server whatever the time is", () => {
+    const signature = (
+      <TransitSignature
+        stations={stations}
+        lines={lines}
+        selectedStation={stations[0]}
+        stationBoard={servedBoard([4, 12], READ_AT)}
+        isLoading={false}
+        error={null}
+        onSelect={() => {}}
+        onRetry={() => {}}
+      />
+    );
+
+    jest.useFakeTimers({ now: minutesAfterRead(0) });
+    const early = renderToString(signature);
+    jest.setSystemTime(minutesAfterRead(90));
+    const late = renderToString(signature);
+
+    expect(late).toBe(early);
+    expect(early).toContain("4 min");
+    expect(early).toContain("12 min");
+  });
+});
+
+describe("an empty platform board", () => {
+  afterEach(() => {
+    jest.useRealTimers();
+  });
+
+  it("says no trains are scheduled when BART's live answer has none", () => {
+    renderSignature({ stationBoard: servedBoard([], READ_AT) });
+
+    expect(
+      screen.getByText("No trains are scheduled at EMBR station right now.")
+    ).toBeInTheDocument();
+  });
+
+  it("keeps the snapshot wording when the empty board is the fallback copy", () => {
+    renderSignature({
+      stationBoard: servedBoard([], READ_AT),
+      departuresStatus: "stale-fallback",
+    });
+
+    expect(
+      screen.getByText("No upcoming departures in this snapshot for EMBR station.")
+    ).toBeInTheDocument();
+    expect(screen.queryByText(/no trains are scheduled/i)).not.toBeInTheDocument();
+  });
+
+  it("keeps the snapshot wording when every train on an old board has left", () => {
+    jest.useFakeTimers({ now: minutesAfterRead(129) });
+    renderSignature({ stationBoard: servedBoard([null, 7, 47], READ_AT) });
+
+    expect(
+      screen.getByText("No upcoming departures in this snapshot for EMBR station.")
+    ).toBeInTheDocument();
+  });
 });

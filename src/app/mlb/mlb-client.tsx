@@ -58,6 +58,14 @@ const viewOptions: Array<{ id: MlbView; label: string; description: string }> = 
   { id: "wildcard", label: "Wild card", description: "Top wild card contenders in both leagues." },
 ];
 
+// Keyed by the API's gameType, which the snapshot carries as `stage`.
+const postseasonRoundLabels: Record<string, string> = {
+  F: "Wild Card Series",
+  D: "Division Series",
+  L: "League Championship Series",
+  W: "World Series",
+};
+
 async function fetchMlbTeamSnapshot(
   teamId: string,
   signal: AbortSignal
@@ -632,7 +640,12 @@ export function MlbClient({ initialState, summary, initialTeamSnapshot }: MlbCli
                     <h3 className="c97-serif" style={{ marginBottom: "var(--c97-sp-1)", fontSize: "var(--c97-fs-h3)" }}>Latest results</h3>
                     <div className="space-y-3">
                       {summary.recentGames.map((game) => (
-                        <FixtureCard key={game.id} fixture={game} onOpenTeam={handleTeamChange} />
+                        <FixtureCard
+                          key={game.id}
+                          fixture={game}
+                          onOpenTeam={handleTeamChange}
+                          fallbackLabel={postseasonRoundLabels[game.stage ?? ""]}
+                        />
                       ))}
                     </div>
                   </div>
@@ -643,7 +656,12 @@ export function MlbClient({ initialState, summary, initialTeamSnapshot }: MlbCli
                     <h3 className="c97-serif" style={{ marginBottom: "var(--c97-sp-1)", fontSize: "var(--c97-fs-h3)" }}>Upcoming games</h3>
                     <div className="space-y-3">
                       {summary.upcomingGames.map((game) => (
-                        <FixtureCard key={game.id} fixture={game} onOpenTeam={handleTeamChange} />
+                        <FixtureCard
+                          key={game.id}
+                          fixture={game}
+                          onOpenTeam={handleTeamChange}
+                          fallbackLabel={postseasonRoundLabels[game.stage ?? ""]}
+                        />
                       ))}
                     </div>
                   </div>

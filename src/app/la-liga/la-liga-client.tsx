@@ -135,6 +135,7 @@ export function LaLigaClient({
     )
   ), [summary.teams, aliasMap]);
   const snapshotDateLabel = useMemo(() => (
+    // Pinned to UTC so the server and the browser print the same date.
     new Intl.DateTimeFormat("en-US", {
       month: "short",
       day: "numeric",
@@ -611,7 +612,7 @@ export function LaLigaClient({
                   <div className="flex items-start justify-between gap-3">
                     <p className="c97-kicker">Goals &amp; assists leaderboard</p>
                     <a
-                      href={summary.sourceUrls.scorers}
+                      href="https://www.laliga.com/en-GB/stats/laliga-easports/scorers"
                       target="_blank"
                       rel="noreferrer"
                       className="inline-flex min-h-[44px] items-center gap-2 border px-3 py-2 text-sm font-medium"
@@ -660,7 +661,7 @@ export function LaLigaClient({
         <div className="c97-shell">
           <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-1)" }}>Snapshot note</p>
           <p className="c97-prose" style={{ fontSize: "var(--c97-fs-small)" }}>
-            This page is a curated snapshot, refreshed on a schedule. Standings come from the official LALIGA table, and the scorer and assist boards mirror the official stats pages linked above.
+            This page is a checked-in football-data.org snapshot, refreshed on a schedule. Standings, scorers, assists, club form, and fixtures all come from that snapshot. The Official link above opens the LALIGA stats page, which is a separate source.
           </p>
         </div>
       </section>

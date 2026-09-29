@@ -4,7 +4,7 @@ import { ExternalLink } from "lucide-react";
 import React from "react";
 import { TerminalPanel } from "./TerminalPanel";
 import { useStockData } from "@/hooks/useStockData";
-import { DISPLAY_TIME_ZONE } from "@/lib/date-formatters";
+import { DATE_ONLY_TIME_ZONE } from "@/lib/date-formatters";
 import type {
   CompanyInfo,
   GrowthData,
@@ -21,9 +21,9 @@ interface Props {
   showNews?: boolean;
 }
 
-// `raw` (a news item's reportDate) is a full instant from the provider feed,
-// not a bare date, so it's pinned to the display zone rather than the
-// runtime's own zone.
+// `raw` (a news item's reportDate) is a bare YYYY-MM-DD from the provider,
+// which parses as UTC midnight, so it prints in UTC to keep its day. In the
+// display zone it printed the day before.
 function formatDate(raw: string | undefined): string {
   if (!raw) return "";
   const d = new Date(raw);
@@ -32,7 +32,7 @@ function formatDate(raw: string | undefined): string {
     month: "short",
     day: "numeric",
     year: "numeric",
-    timeZone: DISPLAY_TIME_ZONE,
+    timeZone: DATE_ONLY_TIME_ZONE,
   });
 }
 

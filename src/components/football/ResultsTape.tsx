@@ -1,6 +1,5 @@
 import type { ReactNode } from "react";
 import { InstrumentTape, type InstrumentTapeItem } from "@/components/editorial/InstrumentTape";
-import { DISPLAY_TIME_ZONE } from "@/lib/date-formatters";
 
 /**
  * Minimal fixture shape ResultsTape needs — deliberately narrower than
@@ -18,11 +17,12 @@ export interface ResultsTapeFixture {
   score: { winner: "HOME_TEAM" | "AWAY_TEAM" | "DRAW" | null; home: number | null; away: number | null };
 }
 
+// Pinned to one named zone so the server and the browser print the same string.
 const KICKOFF_FORMATTER = new Intl.DateTimeFormat("en-US", {
   weekday: "short",
   hour: "numeric",
   minute: "2-digit",
-  timeZone: DISPLAY_TIME_ZONE,
+  timeZone: "America/New_York",
   timeZoneName: "short",
 });
 

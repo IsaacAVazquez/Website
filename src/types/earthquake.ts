@@ -62,9 +62,11 @@ export interface RegionCount {
 }
 
 export interface EarthquakeHeroStats {
+  /** M2.5+ quakes in the past 24h, the same population as `total7d`. */
   total24h: number;
+  /** M2.5+ quakes in the past 7 days. */
   total7d: number;
-  /** Events in the past 24h with at least one felt report. */
+  /** Events of any magnitude in the past 24h with at least one felt report. */
   felt24h: number;
   strongest24hMag: number | null;
   strongest24hPlace: string | null;
@@ -90,6 +92,11 @@ export interface EarthquakeSummary {
   regions: RegionCount[];
   /** Every surfaced quake keyed by id, for the detail panel. */
   quakeDetails: Record<string, QuakeEvent>;
+  /**
+   * Set only when a live read of USGS failed and the committed snapshot was
+   * served in its place.
+   */
+  feedStatus?: "stale-fallback";
 }
 
 export interface EarthquakeSnapshot {

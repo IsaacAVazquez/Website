@@ -145,4 +145,17 @@ describe("GET /api/spacex/launches/[id]", () => {
     expect(body.error).toMatch(/temporarily rate limited/i);
     expect(response.headers.get("Cache-Control")).toBe("no-store");
   });
+
+  it("answers 404 when the committed snapshot does not hold a well formed id", async () => {
+    const actual = jest.requireActual<typeof import("@/lib/spacexData")>("@/lib/spacexData");
+    mockIsValidMissionLaunchId.mockImplementation(actual.isValidMissionLaunchId);
+    mockGetMissionLaunchDetail.mockImplementation(actual.getMissionLaunchDetail);
+
+    const response = await GET(new Request("https://isaacvazquez.com"), {
+      params: Promise.resolve({ id: "00000000-0000-0000-0000-000000000000" }),
+    });
+
+    expect(response.status).toBe(404);
+    expect(response.headers.get("Cache-Control")).toBe("no-store");
+  });
 });

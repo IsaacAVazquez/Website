@@ -105,8 +105,8 @@ Usage is `commit-and-push-snapshot.sh <commit-message> <pathspec...>`. The scrip
    with capped exponential backoff (`attempt² × 2`, capped at 30s) plus `RANDOM`
    jitter.
 
-The retry loop exists because `main` moves constantly — many snapshot bots
-(world cup every 30 minutes in-tournament, transit, etc.) push to the same branch and collide.
+The retry loop exists because `main` moves constantly. Many snapshot bots
+(the football leagues every four hours, transit, and the rest) push to the same branch and collide.
 A refresh commit only touches its own snapshot files, so a rebase never truly
 conflicts; the failure mode is just losing the race repeatedly. The script bails
 (exit 1) only on a **genuine rebase conflict** (it aborts the rebase) or after
@@ -156,13 +156,13 @@ by BART abbr, world-cup `/teams/[teamId]` by team slug.
 |---|---|---|---|---|---|
 | `/premier-league` | `src/data/premierLeagueSnapshot.ts` | `buildPremierLeagueSnapshot.ts` · `update:premier-league` / `update:football` | `update-premier-league.yml` | football-data.org (token, build time only) | every 4h, Aug–May |
 | `/la-liga` | `src/data/laLigaSnapshot.ts` | `updateLaLigaSnapshot.ts` · `update:la-liga` / `update:football` | `update-la-liga.yml` | football-data.org (token, build time only) | every 4h, Aug–May |
-| `/nfl` | `src/data/nflSnapshot.ts` | `updateNflSnapshot.ts` · `update:nfl` | `update-nfl.yml` | NFLverse CSVs | Tue 10:35 UTC, Sep–Feb |
-| `/mlb` | `src/data/mlbSnapshot.ts` | `updateMlbSnapshot.ts` · `update:mlb` | `update-mlb.yml` | MLB Stats API | every 4h, Mar–Nov |
+| `/nfl` | `src/data/nflSnapshot.ts` | `updateNflSnapshot.ts` · `update:nfl` | `update-nfl.yml` | NFLverse CSVs | daily 10:35 UTC, Sep–Feb |
+| `/mlb` | `src/data/mlbSnapshot.ts` | `updateMlbSnapshot.ts` · `update:mlb` | `update-mlb.yml` | MLB Stats API | every 4h, Mar 20–Nov 6 |
 | `/nba` | `src/data/nbaSnapshot.ts` | `updateNbaSnapshot.ts` · `update:nba` | `update-nba.yml` | ESPN NBA | every 4h, mid-Oct–Jun |
 | `/golf` | `src/data/golfSnapshot.ts` | `buildGolfSnapshot.ts` · `update:golf` | `update-golf.yml` | ESPN golf | every 3h Thu–Sun, daily 08:40 UTC Mon–Wed |
 | `/formula-1`, `/fantasy-formula-1` | `src/data/formula1Snapshot.ts` | `buildFormula1Snapshot.ts` · `update:formula-1` | `update-formula-1.yml` | OpenF1 | every 3h Thu–Sun, daily 08:10 UTC Mon–Wed |
-| `/world-cup-2026` | `src/data/worldCupSnapshot.ts` | `buildWorldCupSnapshot.ts` · `update:world-cup` | `update-world-cup.yml` | ESPN `soccer/fifa.world` | every 30 min, Jun–Jul |
-| `/score-pools` (+ `/tracker`, `/settings`) | `src/data/scorePoolsSnapshot.ts` | `buildScorePoolsSnapshot.ts` · `update:score-pools` | `update-score-pools.yml` | The Odds API + API-Football (both tokens required by the scheduled workflow) + manual/CSV | every 6h |
+| `/world-cup-2026` | `src/data/worldCupSnapshot.ts` | `buildWorldCupSnapshot.ts` · `update:world-cup` | `update-world-cup.yml` | ESPN `soccer/fifa.world` | no schedule, manual dispatch only (the tournament ended) |
+| `/score-pools` (+ `/tracker`, `/settings`) | `src/data/scorePoolsSnapshot.ts` | `buildScorePoolsSnapshot.ts` · `update:score-pools` | `update-score-pools.yml` | The Odds API + API-Football + manual/CSV | every 6h, and the run skips the refresh with a notice until both provider keys are set |
 | `/bay-area-transit` | `src/data/bayAreaTransitSnapshot.ts` | `buildBayAreaTransitSnapshot.ts` · `update:bay-area-transit` | `update-bay-area-transit.yml` | BART public API (demo key) | every 6h, year-round |
 | `/earthquake-pulse` | `src/data/earthquakeSnapshot.ts` | `buildEarthquakeSnapshot.ts` · `update:earthquake` | `update-earthquake.yml` | USGS GeoJSON feeds | daily 06:20 UTC (fallback seed; the API serves live USGS at request time) |
 | `/github-trending-pulse` | `src/data/githubTrendingSnapshot.ts` | `buildGitHubTrendingSnapshot.ts` · `update:github-trending` | `update-github-trending.yml` | GitHub Search API | daily 07:45 UTC |
@@ -191,14 +191,22 @@ second lane that skips both:
 2. It writes the refreshed snapshot to the **`dashboard-snapshots` Netlify
    Blobs store** via `src/lib/snapshotBlobStore.ts` (strong consistency,
    `{ savedAt, value }` envelope). Reads are fail-soft and return `null`
-   off-Netlify or on any store error; **writes throw**, so a broken refresh is
-   a failed function run in the Netlify logs, never silent stasis.
-3. It purges the surface's **CDN cache tag** (`purgeCache({ tags })`), so API
-   responses flip to the fresh data immediately instead of aging out.
-4. The accessor (`src/lib/frontierModelsSnapshot.ts`) reads **blob first with
-   the committed seed as fallback**, behind a short in-memory TTL. A blob
-   older than its max age is ignored — a dead refresh function must not keep
-   stamping old facts as fresh — and local dev and tests always serve the seed.
+   off-Netlify, on any store error, and after a 3 second timeout. **Writes
+   throw**, so a broken refresh is a failed function run in the Netlify logs.
+   The store is reachable when the runtime sets `NETLIFY_BLOBS_CONTEXT`. The
+   `NETLIFY` variable exists during builds only, and gating on it kept this
+   lane closed in production, which was serving the committed seeds on
+   2026-09-27.
+3. The accessor (`src/lib/frontierModelsSnapshot.ts`) reads **blob first with
+   the committed seed as fallback**, behind a short in-memory TTL. A blob is
+   served only when it is inside its max age, was saved after the committed
+   seed was generated, and passes a shape check, so a dead refresh function, a
+   seed that was edited since, and a blob from the other side of a schema
+   change all fall back to the seed. Local dev and tests always serve the seed.
+
+Nothing purges a CDN cache here. The pages that read these blobs are served
+`private, no-store` and set no cache tags, so the purge the lane used to call
+removed nothing, and `netlify/functions/purge-cache.ts` was deleted with it.
 
 The committed seed keeps every property the git lane had (reviewable diffs,
 local dev, cold-start data); the blob only carries the freshness. Failure at
@@ -210,15 +218,20 @@ while models.dev + OpenRouter (both keyless) refresh pricing, context windows,
 output limits, and cutoffs. Matching is exact-normalized-name per provider,
 never fuzzy (the fantasy ADP rule), and each model carries a `liveCheck`
 outcome (`confirmed` / `updated` / `curated-only`) surfaced in the on-page
-disclosure line.
+disclosure line. A catalog is a secondary source, and on 2026-09-28 both
+catalogs stated DeepSeek's prices differently from DeepSeek's own pricing page.
+A model can list facts in `pinnedFacts`, and the check leaves those at their
+curated value.
 
 **Related but not this pattern:**
 - `/polling-aggregator` is the **second blob-lane surface**: the shared
   VoteHub fetch/transform lives in `src/lib/pollingData.ts`, a Netlify
   scheduled function (`netlify/functions/refresh-polling.ts`, every 6h)
-  writes the `polling` blob and purges its cache tag, the page reads
-  blob-first via `src/lib/pollingSnapshot.ts`, and `update-polling.yml`
-  refreshes the committed seed daily as the fallback.
+  writes the `polling` blob, the page reads blob-first via
+  `src/lib/pollingSnapshot.ts`, and `update-polling.yml` refreshes the
+  committed seed daily as the fallback. Freshness is measured from when the
+  refresh ran. VoteHub can go weeks without a new poll, so the page prints the
+  newest poll date for each series and the age of the newest poll fails nothing.
 - `/news-pulse` is **API-backed at request time** (`/api/news-pulse` →
   `src/lib/news-pulse-utils.ts`), not a build-time snapshot.
 

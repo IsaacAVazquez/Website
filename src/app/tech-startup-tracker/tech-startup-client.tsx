@@ -550,9 +550,25 @@ function StartupRow({ startup, rank, isExpanded, sectorLabel, stageLabel, onTogg
                 <div className="col-span-2">
                   <dt className="c97-stat-label">Round led by</dt>
                   <dd className="m-0 mt-1" style={{ color: "var(--c97-ink)" }}>
-                    {startup.lastRound.leadInvestors.join(", ")}
+                    {startup.lastRound.leadInvestors.join(", ") || "Undisclosed"}
                   </dd>
                 </div>
+                {startup.lastRound.sourceUrl ? (
+                  <div className="col-span-2">
+                    <dt className="c97-stat-label">Round source</dt>
+                    <dd className="m-0 mt-1">
+                      <a
+                        href={startup.lastRound.sourceUrl}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="c97-link inline-flex min-h-[44px] items-center gap-2"
+                      >
+                        {new URL(startup.lastRound.sourceUrl).hostname.replace(/^www\./, "")}
+                        <ExternalLink aria-hidden="true" size={14} />
+                      </a>
+                    </dd>
+                  </div>
+                ) : null}
               </dl>
             </div>
           </td>

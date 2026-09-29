@@ -5,10 +5,16 @@ on:
   # September, then the season itself through the Week 17 championships. The
   # daily lane used to stop September 30, which left a live in-season board on
   # a weekly refresh. February through June a weekly pass is enough to catch
-  # provider corrections and rollover work.
+  # provider corrections and rollover work. The minute sits off the top of the
+  # hour, where GitHub delays and drops the most scheduled runs.
   schedule:
-    - cron: "0 17 * 7-12 *"
-    - cron: "0 17 * 1-6 3"
+    - cron: "17 17 * 7-12 *"
+    # Weeks 17 and 18 are played in the first ten days of January.
+    - cron: "17 17 1-12 1 *"
+    - cron: "17 17 * 1-6 3"
+    # Sunday morning in season, so the weekly board is current at kickoff. The
+    # 17:17 run has started as late as 20:50 UTC, after the early games.
+    - cron: "47 11 * 1,9-12 0"
   workflow_dispatch:
 
 # Don't stack a manual dispatch on top of a scheduled run.
@@ -36,11 +42,24 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v7
         with:
-          node-version: "20"
+          node-version-file: .nvmrc
           cache: "npm"
 
       - name: Install dependencies
         run: npm ci --prefer-offline --no-audit --fund=false
+
+      # The weekly board is its own soft lane. It is the only artifact that
+      # changes in season, so it builds first, ahead of the two dozen FantasyPros
+      # requests the draft boards make from the same address. It no-ops before
+      # Week 1, and a failure here must not stop the draft boards from committing.
+      - name: Build weekly board
+        id: build_weekly
+        continue-on-error: true
+        timeout-minutes: 10
+        run: npm run update:fantasy:weekly
+        env:
+          FANTASYPROS_SOURCE: public-html
+          NODE_ENV: production
 
       # The redraft and best ball boards come from different upstream sources and
       # are now committed independently. They were one `npm run update:fantasy`
@@ -56,6 +75,7 @@ jobs:
         # commit still requires verify_freshness and verify_quality to pass, and
         # the terminal report step below turns the run red.
         continue-on-error: true
+        timeout-minutes: 15
         run: npm run update:fantasy:redraft
         env:
           # The official endpoint began returning a declared full board with
@@ -68,18 +88,8 @@ jobs:
       - name: Build best ball snapshot
         id: build_best_ball
         continue-on-error: true
+        timeout-minutes: 10
         run: npm run update:fantasy:best-ball
-        env:
-          FANTASYPROS_SOURCE: public-html
-          NODE_ENV: production
-
-      # The weekly board is its own soft lane. It is the only in-season
-      # artifact, it no-ops before Week 1, and a failure here must not stop the
-      # draft boards from committing.
-      - name: Build weekly board
-        id: build_weekly
-        continue-on-error: true
-        run: npm run update:fantasy:weekly
         env:
           FANTASYPROS_SOURCE: public-html
           NODE_ENV: production
@@ -418,10 +428,18 @@ jobs:
           const ageFailLimit = inDraftSeason ? 4 : 14;
           const futureSkewToleranceDays = 5 / 1440;
           const darkFormats = [];
+          let seasonOpened = false;
 
           for (const format of formats) {
             try {
               const snapshot = JSON.parse(fs.readFileSync(path.join(DATA_DIR, format + '.json'), 'utf8'));
+              // Draft ADP and the draft board stop moving once Week 1 opens
+              // (FantasyPros froze its 2026 board at week 0 on 9/10), so from then
+              // on their age is a warning, the same rule as the best ball gate.
+              const season = Number(snapshot.season || 0);
+              const septFirst = new Date(Date.UTC(season, 8, 1));
+              const laborDay = Date.UTC(season, 8, 1 + ((8 - septFirst.getUTCDay()) % 7));
+              seasonOpened = season >= 1920 && now >= laborDay + 2 * 86400000;
               const topBoard = Array.isArray(snapshot.overall)
                 ? snapshot.overall.slice(0, TOP_BOARD_SIZE)
                 : [];
@@ -439,7 +457,9 @@ jobs:
               if (coverage < MIN_COVERAGE) {
                 console.log('::warning::' + format + ' top-board ADP coverage is ' + pct + '%, below the ' + (MIN_COVERAGE * 100) + '% floor. Check the matcher or the upstream feed.');
               }
-              if (!Number.isFinite(adpAgeDays) || adpAgeDays < -futureSkewToleranceDays || adpAgeDays > ageFailLimit) {
+              if (seasonOpened && adpAgeDays > ageFailLimit) {
+                console.log('::warning::' + format + ' ADP source is ' + ageLabel + ' old; the season has opened and draft ADP is frozen at its last reading.');
+              } else if (!Number.isFinite(adpAgeDays) || adpAgeDays < -futureSkewToleranceDays || adpAgeDays > ageFailLimit) {
                 darkFormats.push(format + ' (' + ageLabel + ')');
               } else if (adpAgeDays > ageWarnLimit) {
                 console.log('::warning::' + format + ' ADP source is ' + ageLabel + ' old (warn above ' + ageWarnLimit + ', fail above ' + ageFailLimit + '). The site treats it as stale and hides ADP surfaces.');
@@ -457,6 +477,30 @@ jobs:
             fs.appendFileSync(process.env.GITHUB_OUTPUT, 'adp_dark=' + (darkFormats.length > 0 ? 'true' : 'false') + '\n');
           }
           "
+
+      # The weekly board commits first, as it builds first. `git status
+      # --porcelain` rather than `git diff --quiet`: the weekly board does not
+      # exist in the repo before Week 1, and `git diff` ignores untracked files,
+      # so the first board of the season built cleanly and then read as "no
+      # changes" and was never committed (2026 Week 1).
+      - name: Check for weekly board changes
+        id: check_weekly_changes
+        if: steps.build_weekly.outcome == 'success'
+        run: |
+          if [ -z "$(git status --porcelain -- public/data/fantasy/weekly.json)" ]; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            echo "No weekly board changes detected."
+          else
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+            echo "Weekly board changes detected."
+          fi
+
+      - name: Commit and push weekly board
+        if: steps.check_weekly_changes.outputs.changed == 'true'
+        run: |
+          bash scripts/ci/commit-and-push-snapshot.sh \
+            "chore: update fantasy weekly board [automated] [skip ci]" \
+            public/data/fantasy/weekly.json
 
       - name: Check for snapshot changes
         id: check_changes
@@ -494,6 +538,24 @@ jobs:
             public/data/fantasy/half_ppr.json \
             public/data/fantasy/standard.json
 
+      # A lane that fails its gates leaves rewritten files in the working tree,
+      # and the commit helper dates the sitemap from whatever is on disk. On
+      # 2026-09-26 that put a new date on six fantasy routes while the committed
+      # rankings were two weeks old. Put the files back before the next lane.
+      - name: Discard redraft artifacts that failed their gates
+        if: steps.check_changes.outcome == 'skipped'
+        run: |
+          git checkout -- \
+            src/data/fantasyPositionData.generated.ts \
+            src/data/fantasyAdpData.generated.ts \
+            src/data/fantasyGameLogData.generated.ts \
+            src/data/fantasyVorpData.generated.ts \
+            src/data/fantasyRankHistory.generated.json \
+            src/data/fantasySnapshotRevision.generated.ts \
+            public/data/fantasy/ppr.json \
+            public/data/fantasy/half_ppr.json \
+            public/data/fantasy/standard.json
+
       # Best ball commits on its own so neither lane can withhold the other's
       # validated data. It only reaches here when its build and its gate both
       # passed; otherwise the report step below turns the run red.
@@ -515,29 +577,6 @@ jobs:
           bash scripts/ci/commit-and-push-snapshot.sh \
             "chore: update best ball snapshot [automated] [skip ci]" \
             public/data/fantasy/best-ball.json
-
-      # `git status --porcelain` rather than `git diff --quiet`: the weekly
-      # board does not exist in the repo before Week 1, and `git diff` ignores
-      # untracked files, so the first board of the season built cleanly and
-      # then read as "no changes" and was never committed (2026 Week 1).
-      - name: Check for weekly board changes
-        id: check_weekly_changes
-        if: steps.build_weekly.outcome == 'success'
-        run: |
-          if [ -z "$(git status --porcelain -- public/data/fantasy/weekly.json)" ]; then
-            echo "changed=false" >> "$GITHUB_OUTPUT"
-            echo "No weekly board changes detected."
-          else
-            echo "changed=true" >> "$GITHUB_OUTPUT"
-            echo "Weekly board changes detected."
-          fi
-
-      - name: Commit and push weekly board
-        if: steps.check_weekly_changes.outputs.changed == 'true'
-        run: |
-          bash scripts/ci/commit-and-push-snapshot.sh \
-            "chore: update fantasy weekly board [automated] [skip ci]" \
-            public/data/fantasy/weekly.json
 
       # Both soft lanes report here rather than at the point of failure, so the
       # run still goes red and the failure issue still opens without either lane

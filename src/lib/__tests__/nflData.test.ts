@@ -2,13 +2,18 @@
  * @jest-environment node
  */
 import { buildNflSnapshot, etToUtcIso } from "../nflData";
+import {
+  NFLVERSE_GAMES_CSV,
+  NFLVERSE_STANDINGS_CSV,
+  NFLVERSE_TEAMS_CSV,
+} from "./fixtures/nflverse.fixture";
 
 const STANDINGS_URL =
   "https://github.com/nflverse/nfldata/raw/master/data/standings.csv";
 const GAMES_URL =
   "https://github.com/nflverse/nfldata/raw/master/data/games.csv";
 const TEAMS_LOGOS_URL =
-  "https://github.com/nflverse/nflfastR-data/raw/master/teams_colors_logos.csv";
+  "https://raw.githubusercontent.com/nflverse/nflverse-pbp/master/teams_colors_logos.csv";
 
 const SEASON = "2025";
 
@@ -85,6 +90,7 @@ function mockFetch(
     games: string;
     teams: string;
     stats: string;
+    statsStatus: number;
   }> = {}
 ) {
   return jest
@@ -104,7 +110,7 @@ function mockFetch(
       }
       if (url.includes("stats_player_reg_")) {
         return Promise.resolve(
-          csvResponse(overrides.stats ?? playerStatsCsv())
+          csvResponse(overrides.stats ?? playerStatsCsv(), overrides.statsStatus)
         );
       }
       return Promise.reject(new Error(`Unexpected fetch URL: ${url}`));
@@ -182,7 +188,7 @@ describe("buildNflSnapshot", () => {
     expect(snapshot.recentFixtures.length).toBe(3);
     expect(snapshot.upcomingFixtures.length).toBe(1);
 
-    // The current week is the max finished REG week (week 3).
+    // Weeks 1 to 3 are complete and week 18 is not.
     expect(snapshot.week).toBe(3);
 
     // A tie game records a TIE winner.
@@ -266,6 +272,34 @@ describe("buildNflSnapshot", () => {
     expect(snapshot.teams.length).toBeGreaterThan(0);
   });
 
+  it("retries a missing stats file and then builds without leaders", async () => {
+    jest.useFakeTimers();
+    jest.spyOn(console, "warn").mockImplementation(() => undefined);
+    const spy = mockFetch({ statsStatus: 404 });
+
+    try {
+      let settled = false;
+      const pending = buildNflSnapshot({ skipTeamSnapshots: true }).finally(
+        () => {
+          settled = true;
+        }
+      );
+      while (!settled) {
+        await jest.advanceTimersByTimeAsync(1000);
+      }
+      const snapshot = await pending;
+
+      const statsRequests = spy.mock.calls.filter((call) =>
+        String(call[0]).includes("stats_player_reg_")
+      );
+      expect(statsRequests).toHaveLength(3);
+      expect(snapshot.leaders.passing).toEqual([]);
+      expect(snapshot.teams).toHaveLength(4);
+    } finally {
+      jest.useRealTimers();
+    }
+  });
+
   it("throws when standings have no games played", async () => {
     mockFetch({
       standings:
@@ -291,5 +325,152 @@ describe("buildNflSnapshot", () => {
     expect(kcSnap.form.wins).toBe(1);
     expect(kcSnap.recentFixtures.length).toBe(1);
     expect(kcSnap.upcomingFixtures.length).toBe(1);
+  });
+});
+
+describe("buildNflSnapshot against upstream rows", () => {
+  // The standings file as it stood after the 2025 Super Bowl.
+  const standingsThrough2025 = NFLVERSE_STANDINGS_CSV.split("\n")
+    .filter((line) => !line.startsWith("2026,"))
+    .join("\n");
+
+  function mockUpstream(
+    overrides: Partial<{ standings: string; games: string }> = {}
+  ) {
+    return mockFetch({
+      teams: NFLVERSE_TEAMS_CSV,
+      standings: NFLVERSE_STANDINGS_CSV,
+      games: NFLVERSE_GAMES_CSV,
+      ...overrides,
+    });
+  }
+
+  afterEach(() => {
+    jest.restoreAllMocks();
+  });
+
+  it("names relocated franchises by their current cities", async () => {
+    mockUpstream();
+
+    const snapshot = await buildNflSnapshot({ skipPlayerLeaders: true });
+    const nameOf = (abbr: string) =>
+      snapshot.teams.find((team) => team.abbr === abbr)?.name;
+
+    expect(nameOf("LV")).toBe("Las Vegas Raiders");
+    expect(nameOf("LAC")).toBe("Los Angeles Chargers");
+    expect(nameOf("LA")).toBe("Los Angeles Rams");
+    expect(
+      snapshot.teamOptions.find((option) => option.abbr === "LV")?.location
+    ).toBe("Las Vegas");
+    expect(snapshot.teamSnapshots.lac.team?.name).toBe("Los Angeles Chargers");
+  });
+
+  it("lists the playoffs of a completed season", async () => {
+    mockUpstream({ standings: standingsThrough2025 });
+
+    const snapshot = await buildNflSnapshot({ skipPlayerLeaders: true });
+
+    expect(snapshot.season).toBe("2025");
+    expect(snapshot.week).toBe(18);
+    expect(snapshot.recentFixtures[0].id).toBe("2025_22_SEA_NE");
+    expect(snapshot.recentFixtures.map((fixture) => fixture.gameType)).toEqual([
+      "SB",
+      "CON",
+      "CON",
+      "DIV",
+      "DIV",
+      "DIV",
+      "DIV",
+      "WC",
+    ]);
+
+    const seattle = snapshot.teamSnapshots.sea;
+    expect(seattle.recentFixtures.map((fixture) => fixture.gameType)).toEqual([
+      "SB",
+      "CON",
+      "DIV",
+      "REG",
+    ]);
+    expect(seattle.form.sequence).toEqual(["W", "W", "W", "W"]);
+  });
+
+  it("lists an unplayed playoff game as upcoming", async () => {
+    // The Super Bowl row as upstream carries it before kickoff, with the
+    // score, result, total, and overtime columns empty.
+    const games = NFLVERSE_GAMES_CSV.replace(
+      "SEA,29,NE,13,Neutral,-16,42,0,",
+      "SEA,,NE,,Neutral,,,,"
+    );
+    mockUpstream({ standings: standingsThrough2025, games });
+
+    const snapshot = await buildNflSnapshot({ skipPlayerLeaders: true });
+
+    expect(snapshot.upcomingFixtures.map((fixture) => fixture.id)).toEqual([
+      "2025_22_SEA_NE",
+    ]);
+    expect(
+      snapshot.teamSnapshots.ne.upcomingFixtures.map((fixture) => fixture.id)
+    ).toEqual(["2025_22_SEA_NE"]);
+    expect(
+      snapshot.teams.find((team) => team.abbr === "SEA")?.playoffResult
+    ).toBeNull();
+  });
+
+  it("takes the Super Bowl result from the game when the standings leave it empty", async () => {
+    mockUpstream({ standings: standingsThrough2025 });
+
+    const snapshot = await buildNflSnapshot({
+      skipPlayerLeaders: true,
+      skipTeamSnapshots: true,
+    });
+    const resultOf = (abbr: string) =>
+      snapshot.teams.find((team) => team.abbr === abbr)?.playoffResult;
+
+    expect(resultOf("SEA")).toBe("WonSB");
+    expect(resultOf("NE")).toBe("LostSB");
+    expect(resultOf("DEN")).toBe("LostCC");
+    expect(resultOf("LV")).toBeNull();
+  });
+
+  it("stamps the build time on the snapshot root", async () => {
+    mockUpstream();
+
+    const before = Date.now();
+    const snapshot = await buildNflSnapshot({ skipPlayerLeaders: true });
+    const after = Date.now();
+
+    expect(snapshot.generatedAt).toMatch(
+      /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}\.\d{3}Z$/
+    );
+    const builtAt = Date.parse(snapshot.generatedAt ?? "");
+    expect(builtAt).toBeGreaterThanOrEqual(before);
+    expect(builtAt).toBeLessThanOrEqual(after);
+    expect(snapshot.updatedAt).toBe(snapshot.generatedAt?.slice(0, 10));
+    expect(snapshot.teamSnapshots.sea.generatedAt).toBe(snapshot.generatedAt);
+  });
+
+  it("reads team metadata from the renamed repository", async () => {
+    mockUpstream();
+
+    const snapshot = await buildNflSnapshot({
+      skipPlayerLeaders: true,
+      skipTeamSnapshots: true,
+    });
+
+    expect(snapshot.sourceUrls.teams).toBe(TEAMS_LOGOS_URL);
+  });
+
+  it("counts a week once every game in it is final", async () => {
+    mockUpstream();
+
+    const snapshot = await buildNflSnapshot({
+      skipPlayerLeaders: true,
+      skipTeamSnapshots: true,
+    });
+
+    expect(snapshot.season).toBe("2026");
+    // One of the six week 3 games in the file is final.
+    expect(snapshot.recentFixtures[0].id).toBe("2026_03_ATL_GB");
+    expect(snapshot.week).toBe(2);
   });
 });

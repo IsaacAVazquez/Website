@@ -51,6 +51,9 @@ async function main() {
         "🏈 NFL snapshot refresh failed; keeping the existing snapshot.",
         error
       );
+      // The kept snapshot can still pass the freshness check, so the exit code
+      // is what reports this run.
+      process.exitCode = 1;
       return;
     }
     throw error;
@@ -64,6 +67,7 @@ async function main() {
       console.warn(
         "🏈 NFL snapshot build returned no teams; keeping the existing snapshot."
       );
+      process.exitCode = 1;
       return;
     }
   }

@@ -1,10 +1,10 @@
 name: Refresh Investments Snapshots
 
 on:
-  # Weekdays at 22:15 UTC, after the US market close. Run manually anytime via
-  # workflow_dispatch.
+  # Tuesday through Saturday at 08:30 UTC, after the provider's dataset for the
+  # prior trading day has landed. Run manually anytime via workflow_dispatch.
   schedule:
-    - cron: "15 22 * * 1-5"
+    - cron: "30 8 * * 2-6"
   workflow_dispatch:
 
 # Cancel stacked runs (e.g. dispatch fired while a scheduled run is queued)
@@ -35,7 +35,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v7
         with:
-          node-version: "20"
+          node-version-file: .nvmrc
           cache: "npm"
 
       - name: Set up Python
@@ -46,7 +46,8 @@ jobs:
 
       # Cache the entire venv so we skip both the python -m venv and the
       # pip install on subsequent runs. Keyed on the exact resolved python
-      # version (e.g. 3.11.16) + the pinned defeatbeta-api version. The venv's
+      # version (e.g. 3.11.16) + the hash of the requirements file, which pins
+      # defeatbeta-api and every package it brings in. The venv's
       # bin/python3 is a symlink into the runner's toolcache, so a key on the
       # minor version alone restored a venv pointing at a removed 3.11.15
       # interpreter and every run from 2026-08-19 exited 127.
@@ -55,14 +56,14 @@ jobs:
         uses: actions/cache@v6
         with:
           path: .venv
-          key: investments-venv-${{ runner.os }}-py${{ steps.setup-python.outputs.python-version }}-defeatbeta-api-0.0.47
+          key: investments-venv-${{ runner.os }}-py${{ steps.setup-python.outputs.python-version }}-${{ hashFiles('scripts/requirements-investments.txt') }}
 
       - name: Create venv and install fetch dependency
         if: steps.venv-cache.outputs.cache-hit != 'true'
         run: |
           python -m venv .venv
           .venv/bin/pip install --upgrade pip
-          .venv/bin/pip install defeatbeta-api==0.0.47
+          .venv/bin/pip install -r scripts/requirements-investments.txt
 
       # defeatbeta-api stores its DuckDB/parquet cache at /tmp/defeatbeta. The
       # very first ticker fetch on a fresh runner downloads the upstream
@@ -97,6 +98,7 @@ jobs:
         run: .venv/bin/python3 -m unittest scripts.tests.test_fetch_investments_data
 
       - name: Refresh investments snapshots
+        timeout-minutes: 28
         run: npm run update:investments
         env:
           NODE_ENV: production
@@ -179,6 +181,18 @@ jobs:
           }
           if (staleRatio > 0.9) {
             console.error('::error::More than 90% of the research universe is using earlier snapshots.');
+            process.exit(1);
+          }
+          // Prices come from one query for the whole universe, so they do not wait on
+          // the rotation the other sections use. index.lastUpdated is the time of the
+          // run and says nothing about the dates of the data: on 2026-09-15 it read
+          // three seconds old while 119 of 151 prices were a month or two old.
+          const priceHealth = index.priceHealth || {};
+          const pricedTotal = (priceHealth.pricedCount || 0) + (priceHealth.missingCount || 0);
+          const recentPriceShare = pricedTotal > 0 ? (priceHealth.recentCount || 0) / pricedTotal : 0;
+          console.log('Symbols with a price inside ' + (priceHealth.maxAgeDays || 7) + ' days:', priceHealth.recentCount || 0, 'of', pricedTotal, '· oldest', priceHealth.oldestAsOf || 'unknown');
+          if (recentPriceShare < 0.95) {
+            console.error('::error::Only ' + (recentPriceShare * 100).toFixed(1) + '% of symbols have a recent price (need 95%). The universe price query failed or the provider stopped publishing.');
             process.exit(1);
           }
           // partialCount is reported, not gated. The fetch is a budget-limited
@@ -371,7 +385,7 @@ jobs:
           echo "" >> "$GITHUB_STEP_SUMMARY"
           echo "**Status:** ${{ job.status }}" >> "$GITHUB_STEP_SUMMARY"
           echo "**Run Date:** $(date -u +'%Y-%m-%d %H:%M:%S UTC')" >> "$GITHUB_STEP_SUMMARY"
-          echo "**Schedule:** Weekdays at 22:15 UTC" >> "$GITHUB_STEP_SUMMARY"
+          echo "**Schedule:** Tuesday through Saturday at 08:30 UTC" >> "$GITHUB_STEP_SUMMARY"
           echo "" >> "$GITHUB_STEP_SUMMARY"
           if [ -n "${{ steps.verify_freshness.outputs.success_count }}" ]; then
             echo "**Symbols available:** ${{ steps.verify_freshness.outputs.success_count }}" >> "$GITHUB_STEP_SUMMARY"

@@ -333,7 +333,7 @@ export function NflClient({ initialState, summary, initialTeamSnapshot }: NflCli
     },
   ];
   const heroMeta = `${summary.sourceLabel} · Season ${summary.season} · ${
-    summary.week ? `through week ${summary.week} of ${totalRegSeasonWeeks}` : "final regular season"
+    summary.week ? `through week ${summary.week} of ${totalRegSeasonWeeks}` : "week 1 in progress"
   } · snapshot ${snapshotDateLabel}`;
 
   const ladderConferences: SeedLadderConference[] = [

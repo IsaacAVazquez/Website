@@ -83,6 +83,33 @@ function makeAtomFeed({
     </feed>`;
 }
 
+// The route drops items older than 7 days, so fixture dates are set from the
+// clock. RSS carries RFC 822 dates and Atom carries ISO 8601, as the real feeds do.
+function hoursAgo(hours: number): Date {
+  return new Date(Date.now() - hours * 60 * 60 * 1000);
+}
+
+function makeRssItems(
+  items: Array<{ title: string; link: string; pubDate: string }>
+) {
+  return `<?xml version="1.0" encoding="UTF-8"?>
+    <rss version="2.0">
+      <channel>
+        ${items
+          .map(
+            (item) => `<item>
+          <title>${item.title}</title>
+          <link>${item.link}</link>
+          <description>&lt;p&gt;${item.title} summary&lt;/p&gt;</description>
+          <pubDate>${item.pubDate}</pubDate>
+          <guid>${item.link}</guid>
+        </item>`
+          )
+          .join("\n")}
+      </channel>
+    </rss>`;
+}
+
 function buildFeedMap(overrides: Partial<Record<string, string | Error>> = {}) {
   return {
     [FEED_URLS.atlantic]: makeAtomFeed({
@@ -90,43 +117,43 @@ function buildFeedMap(overrides: Partial<Record<string, string | Error>> = {}) {
       link: "https://www.theatlantic.com/technology/2026/04/sample-story/",
       summary: "Atlantic <strong>summary</strong>",
       content: "<p>Atlantic content fallback</p>",
-      published: "2026-04-03T14:15:00-04:00",
-      updated: "2026-04-03T14:20:09-04:00",
+      published: hoursAgo(7).toISOString(),
+      updated: hoursAgo(6).toISOString(),
       category: "Technology",
     }),
     [FEED_URLS.nyt]: makeRssFeed({
       title: "NYT Headline",
       link: "https://www.nytimes.com/2026/04/03/world/sample-story.html",
       description: "NYT summary",
-      pubDate: "Fri, 03 Apr 2026 18:30:00 GMT",
+      pubDate: hoursAgo(1).toUTCString(),
       category: "World",
     }),
     [FEED_URLS.guardian]: makeRssFeed({
       title: "Guardian Headline",
       link: "https://www.theguardian.com/world/2026/apr/03/sample-story",
       description: "Guardian summary",
-      pubDate: "Fri, 03 Apr 2026 17:30:00 GMT",
+      pubDate: hoursAgo(2).toUTCString(),
       category: "World",
     }),
     [FEED_URLS.bbc]: makeRssFeed({
       title: "BBC Headline",
       link: "https://www.bbc.com/news/sample-story",
       description: "BBC summary",
-      pubDate: "Fri, 03 Apr 2026 16:30:00 GMT",
+      pubDate: hoursAgo(3).toUTCString(),
       category: "UK",
     }),
     [FEED_URLS.npr]: makeRssFeed({
       title: "NPR Headline",
       link: "https://www.npr.org/2026/04/03/sample-story",
       description: "NPR summary",
-      pubDate: "Fri, 03 Apr 2026 15:30:00 GMT",
+      pubDate: hoursAgo(4).toUTCString(),
       category: "Politics",
     }),
     [FEED_URLS.aljazeera]: makeRssFeed({
       title: "Al Jazeera Headline",
       link: "https://www.aljazeera.com/news/2026/4/3/sample-story",
       description: "Al Jazeera summary",
-      pubDate: "Fri, 03 Apr 2026 14:30:00 GMT",
+      pubDate: hoursAgo(5).toUTCString(),
       category: "World",
     }),
     ...overrides,
@@ -255,7 +282,7 @@ describe("GET /api/news-pulse", () => {
           title: "Updated NYT Headline",
           link: "https://www.nytimes.com/2026/04/03/world/updated-story.html",
           description: "Updated NYT summary",
-          pubDate: "Fri, 03 Apr 2026 19:30:00 GMT",
+          pubDate: hoursAgo(0.5).toUTCString(),
           category: "World",
         }),
         [FEED_URLS.bbc]: new Error("network down"),
@@ -265,9 +292,18 @@ describe("GET /api/news-pulse", () => {
       const partialBody = await partial.json();
 
       expect(partial.status).toBe(200);
-      expect(partial.headers.get("Cache-Control")).toBe("no-store");
+      // Five feeds are fresh and the sixth is backfilled, so one flaky feed
+      // does not take the page out of the CDN cache.
+      expect(partial.headers.get("Cache-Control")).toBe(
+        "public, s-maxage=300, stale-while-revalidate=600",
+      );
       expect(partialBody.dataStatus).toBe("degraded");
       expect(partialBody.staleSources).toEqual(["BBC"]);
+      expect(partialBody.errors).toEqual([
+        expect.stringMatching(
+          /^BBC: network down \(showing headlines fetched \d{4}-\d{2}-\d{2} \d{2}:\d{2} UTC\)$/,
+        ),
+      ]);
       expect(partialBody.articles).toHaveLength(6);
       expect(partialBody.articles).toEqual(
         expect.arrayContaining([
@@ -276,7 +312,8 @@ describe("GET /api/news-pulse", () => {
         ]),
       );
 
-      jest.advanceTimersByTime(31 * 1000);
+      // Past the 5 minute success lifetime the partial result now gets.
+      jest.advanceTimersByTime(6 * 60 * 1000);
       installFetchMock(
         Object.fromEntries(
           NEWS_FEEDS.map((feed) => [feed.url, new Error("network down")]),
@@ -346,13 +383,69 @@ describe("GET /api/news-pulse", () => {
     }
   });
 
+  it("keeps the newest 30 items of a feed and drops items older than 7 days", async () => {
+    // Shaped like the Guardian feed of 2026-09-27, which carried 113 items
+    // reaching back to 2019-07-09 against 10 to 30 for the other outlets.
+    const recent = Array.from({ length: 35 }, (_, index) => ({
+      title: `Guardian story ${index}`,
+      link: `https://www.theguardian.com/world/2026/sep/27/story-${index}`,
+      pubDate: hoursAgo(index + 1).toUTCString(),
+    }));
+    installFetchMock(buildFeedMap({
+      [FEED_URLS.guardian]: makeRssItems([
+        {
+          title: "Guardian story from 2019",
+          link: "https://www.theguardian.com/info/2019/jul/09/old-story",
+          pubDate: "Tue, 09 Jul 2019 08:19:21 GMT",
+        },
+        {
+          title: "Guardian story from 8 days ago",
+          link: "https://www.theguardian.com/world/2026/sep/19/older-story",
+          pubDate: hoursAgo(8 * 24).toUTCString(),
+        },
+        // Oldest first, so the cap has to sort and cannot take the first 30.
+        ...[...recent].reverse(),
+      ]),
+    }));
+
+    const response = await GET();
+    const body = await response.json();
+    const guardianTitles = (body.articles as Array<{ source: string; title: string }>)
+      .filter((article) => article.source === "guardian")
+      .map((article) => article.title);
+
+    expect(response.status).toBe(200);
+    expect(body.errors).toEqual([]);
+    expect(guardianTitles).toEqual(recent.slice(0, 30).map((item) => item.title));
+    expect(body.articles).toHaveLength(35);
+  });
+
+  it("reports a feed whose items are all older than 7 days", async () => {
+    installFetchMock(buildFeedMap({
+      [FEED_URLS.bbc]: makeRssItems([
+        {
+          title: "BBC story from 2025",
+          link: "https://www.bbc.com/news/articles/old-story",
+          pubDate: "Wed, 30 Apr 2025 14:04:28 GMT",
+        },
+      ]),
+    }));
+
+    const response = await GET();
+    const body = await response.json();
+
+    expect(response.status).toBe(200);
+    expect(body.articles).toHaveLength(5);
+    expect(body.errors).toEqual(["BBC: returned nothing from the last 7 days"]);
+  });
+
   it("parses The Atlantic Atom feed with markup stripped and entities decoded", async () => {
     installFetchMock(buildFeedMap({
       [FEED_URLS.atlantic]: makeAtomFeed({
         title: "AT&amp;T <em>merger</em> update",
         link: "https://www.theatlantic.com/business/archive/2026/04/sample-story/",
         summary: "Markets <strong>watch</strong> Tom &amp; Jerry",
-        updated: "2026-04-03T14:20:09-04:00",
+        updated: hoursAgo(6).toISOString(),
         category: "Business",
       }),
     }));

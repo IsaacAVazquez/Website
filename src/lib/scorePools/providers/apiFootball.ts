@@ -49,6 +49,7 @@ async function apiFootballGet<T>(
 ): Promise<T> {
   const response = await fetchImpl(`${API_BASE}${path}`, {
     headers: { "x-apisports-key": apiKey },
+    signal: AbortSignal.timeout(15_000),
   });
   if (!response.ok) {
     throw Object.assign(new Error(`API-Football responded ${response.status} for ${path}`), {
@@ -57,6 +58,13 @@ async function apiFootballGet<T>(
     });
   }
   const payload = (await response.json()) as { response: T; errors?: unknown };
+  // A refused request (a plan limit, a spent quota) can still answer 200,
+  // with the reason in `errors` and an empty `response`.
+  const errors =
+    payload.errors && typeof payload.errors === "object" ? Object.values(payload.errors) : [];
+  if (errors.length > 0) {
+    throw new Error(`API-Football refused ${path}: ${errors.join("; ")}`);
+  }
   return payload.response;
 }
 

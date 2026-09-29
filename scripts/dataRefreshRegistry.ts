@@ -92,8 +92,11 @@ export const DATA_REFRESH_ARTIFACTS: Partial<
   nba: definition("nba", "src/data/nbaSnapshot.ts", ["generatedAt"], {
     exportName: "nbaSnapshot",
   }),
-  nfl: definition("nfl", "src/data/nflSnapshot.ts", ["updatedAt"], {
+  // updatedAt is a date with no time, which reads as midnight UTC. It stays as
+  // the fallback until the first refresh writes generatedAt.
+  nfl: definition("nfl", "src/data/nflSnapshot.ts", ["generatedAt"], {
     exportName: "nflSnapshot",
+    sourceAsOfFallbackPath: ["updatedAt"],
   }),
   "fantasy-football": definition(
     "fantasy-football",
@@ -110,7 +113,7 @@ export const DATA_REFRESH_ARTIFACTS: Partial<
   polling: definition(
     "polling",
     "src/data/pollingSnapshot.ts",
-    ["sourceAsOf"],
+    ["generatedAt"],
     { exportName: "pollingSnapshot" }
   ),
 };

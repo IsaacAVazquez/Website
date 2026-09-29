@@ -19,6 +19,7 @@ import {
   getConsensusSpread,
   getFantasyPointsPerGameTooltip,
   getPositionTone,
+  getSnapshotStaleness,
   getValueVsAdp,
   formatPickDelta,
   hasReliableAdpSample,
@@ -183,6 +184,10 @@ export function PlayerDetailDrawer({ player, publishedRank, publishedRankLabel =
   const valueSignal =
     player && adpAvailable && valueSignalAvailable ? getValueVsAdp(player) : null;
   const spread = player ? getConsensusSpread(player) : null;
+  // The stamps measure the 7 and 14 days before the board was last updated,
+  // so on a board that has stopped moving they describe a window that ended
+  // when it stopped.
+  const movementCurrent = player ? getSnapshotStaleness(player.lastUpdated) !== "stale" : false;
   const isQueued = player ? queue.isQueued(player.id) : false;
   const inCompare = player ? compare.inCompare(player.id) : false;
   const compareDisabled = !inCompare && compare.isFull;
@@ -327,8 +332,10 @@ export function PlayerDetailDrawer({ player, publishedRank, publishedRankLabel =
             </div>
 
             {/* Board movement, present only once the committed rank history is
-                old enough for the window. Positive means up the board. */}
-            {(Number.isFinite(player.rankMove7d) ||
+                old enough for the window and while the board is still being
+                updated. Positive means up the board. */}
+            {movementCurrent &&
+              (Number.isFinite(player.rankMove7d) ||
               Number.isFinite(player.rankMove14d) ||
               Number.isFinite(player.adpMove7d) ||
               Number.isFinite(player.adpMove14d)) && (

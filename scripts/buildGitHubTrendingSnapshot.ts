@@ -288,6 +288,35 @@ function effectiveStatus(response: Response): number {
   return response.status;
 }
 
+const MAX_RATE_LIMIT_WAIT_SECONDS = 65;
+
+/**
+ * A primary limit sends no `retry-after`, only the `x-ratelimit-reset` epoch,
+ * and `withRetry` waits on `retry-after` alone, so its backoff spent every
+ * attempt inside the exhausted window. Restating the reset as `retry-after`
+ * makes the retry wait for the next window. The cap keeps a far-off reset from
+ * stalling the job, since a search window is one minute.
+ */
+function effectiveHeaders(response: Response): Headers {
+  const resetSeconds = Number(response.headers.get("x-ratelimit-reset"));
+  if (
+    effectiveStatus(response) !== 429 ||
+    response.headers.get("x-ratelimit-remaining") !== "0" ||
+    response.headers.has("retry-after") ||
+    !(resetSeconds > 0)
+  ) {
+    return response.headers;
+  }
+
+  const waitSeconds = Math.ceil(resetSeconds - Date.now() / 1000);
+  const headers = new Headers(response.headers);
+  headers.set(
+    "retry-after",
+    String(Math.min(Math.max(waitSeconds, 0), MAX_RATE_LIMIT_WAIT_SECONDS))
+  );
+  return headers;
+}
+
 async function fetchSegment(
   segment: TrackedSegmentConfig,
   generatedAt: string,
@@ -323,7 +352,7 @@ async function fetchSegment(
     throw new GitHubSearchHttpError(
       `GitHub search failed for ${segment.label} (HTTP ${response.status}): ${detail}`,
       effectiveStatus(response),
-      response.headers
+      effectiveHeaders(response)
     );
   }
 
@@ -332,7 +361,17 @@ async function fetchSegment(
     payload = (await response.json()) as GitHubSearchResponse;
   } catch (parseError) {
     throw new Error(
-      `GitHub search returned unparseable JSON for ${segment.label}: ${String(parseError)}`
+      `GitHub search returned unparseable JSON for ${segment.label}: ${String(parseError)}`,
+      { cause: parseError }
+    );
+  }
+
+  // GitHub sets this when the search timed out and returned a partial list.
+  // Throwing sends it through the retry and then the previous segment, so a
+  // short list is never written as a fresh one.
+  if (payload.incomplete_results) {
+    throw new Error(
+      `GitHub search returned incomplete results for ${segment.label}`
     );
   }
 

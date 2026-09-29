@@ -246,7 +246,9 @@ function FrontierRow({ model, isExpanded, onToggle, onKeyDown }: FrontierRowProp
                     Max output
                   </dt>
                   <dd className="c97-mono m-0" style={{ color: "var(--c97-ink)" }}>
-                    {formatTokenCount(model.maxOutputTokens)} tokens
+                    {model.maxOutputTokens === null
+                      ? "Not published"
+                      : `${formatTokenCount(model.maxOutputTokens)} tokens`}
                   </dd>
                 </div>
                 <div>

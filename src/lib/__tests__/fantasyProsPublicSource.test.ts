@@ -386,6 +386,34 @@ describe("fantasyProsPublicSource", () => {
     expect(board.sourceLabel).toBe(FANTASY_PROS_PUBLIC_SOURCE);
   });
 
+  // A connection that hangs would otherwise hold the refresh job until its
+  // 30 minute cap, and a job that times out is cancelled before it can report.
+  it("gives a public page request 20 seconds before it aborts", async () => {
+    const timeout = jest.spyOn(AbortSignal, "timeout");
+    const fetchMock = jest
+      .spyOn(global, "fetch")
+      .mockResolvedValue(responseStub({ html: fantasyProsPublicConsensusFixture }));
+
+    await fetchFantasyProsPublicConsensusBoard("PPR", "RB", 2026);
+
+    expect(timeout).toHaveBeenCalledWith(20_000);
+    expect(fetchMock.mock.calls[0][1]?.signal).toBe(timeout.mock.results[0].value);
+  });
+
+  it("gives an official API request 20 seconds before it aborts", async () => {
+    process.env.FANTASYPROS_SOURCE = "official-api";
+    process.env.FANTASYPROS_API_KEY = "test-fantasypros-key";
+    const timeout = jest.spyOn(AbortSignal, "timeout");
+    const fetchMock = jest
+      .spyOn(global, "fetch")
+      .mockResolvedValue(responseStub({ body: fantasyProsOfficialConsensusFixture }));
+
+    await fetchFantasyProsPublicConsensusBoard("PPR", "RB", 2026);
+
+    expect(timeout).toHaveBeenCalledWith(20_000);
+    expect(fetchMock.mock.calls[0][1]?.signal).toBe(timeout.mock.results[0].value);
+  });
+
   it("keeps a scheduled public-HTML selection off the partial official endpoint", async () => {
     process.env.FANTASYPROS_SOURCE = "public-html";
     process.env.FANTASYPROS_API_KEY = "configured-but-not-selected";

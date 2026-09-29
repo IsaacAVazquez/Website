@@ -5,6 +5,7 @@ import {
   getPriceAsOf,
   mergeInvestmentSnapshots,
   normalizeInvestmentSnapshot,
+  replaceSnapshotPrice,
 } from "../src/lib/investmentFreshness";
 import {
   buildInvestmentsPriceHealth,
@@ -157,19 +158,41 @@ async function buildSymbolSnapshot(
   // operation — and out of public/ so they never ship with a deploy.
 }
 
-async function sanitizeExistingSnapshot(symbol: string): Promise<void> {
+async function sanitizeExistingSnapshot(
+  symbol: string,
+  assessedAt: string
+): Promise<void> {
   const snapshotPath = path.join(PUBLIC_DIR, symbol, "snapshot.json");
   const priorSnapshot = await readJson<InvestmentSnapshot>(snapshotPath);
   if (!priorSnapshot) {
     throw new Error(`Missing retained snapshot for stale symbol ${symbol}`);
   }
 
-  const normalized = normalizeInvestmentSnapshot(priorSnapshot);
+  // bulk_price.json is the fetch script's one query for the whole universe.
+  // It advances the price of a symbol whose full refresh did not happen this
+  // run, under the same age rule a full refresh has to pass.
+  const priced = buildInvestmentSnapshot(symbol, null, {
+    price: await readJson<unknown>(path.join(RAW_DIR, symbol, "bulk_price.json")),
+  });
+  const bulkPriceAsOf = priced.freshness?.sections?.price;
+  const hasRecentBulkPrice = isRecentInvestmentPrice(
+    bulkPriceAsOf,
+    assessedAt,
+    PRICE_HEALTH_MAX_AGE_DAYS
+  );
+  if (hasRecentBulkPrice) {
+    console.log(`[${symbol}] Bulk price through ${bulkPriceAsOf} applied.`);
+  }
+
+  const normalized = hasRecentBulkPrice
+    ? replaceSnapshotPrice(priorSnapshot, priced)
+    : normalizeInvestmentSnapshot(priorSnapshot);
   await writeJsonAtomic(snapshotPath, `${JSON.stringify(normalized, null, 2)}\n`);
 }
 
 async function enrichIndexPriceHealth(
-  index: InvestmentsIndex
+  index: InvestmentsIndex,
+  assessedAt: string
 ): Promise<InvestmentsIndex> {
   const existingEntries = new Map(
     (index.entries ?? []).map((entry) => [entry.symbol.toUpperCase(), entry])
@@ -188,7 +211,7 @@ async function enrichIndexPriceHealth(
         getPriceAsOf(snapshot?.sections?.price);
       const isDelayed = !isRecentInvestmentPrice(
         priceAsOf,
-        index.lastUpdated,
+        assessedAt,
         PRICE_HEALTH_MAX_AGE_DAYS
       );
       const hasRetainedSections =
@@ -218,7 +241,7 @@ async function enrichIndexPriceHealth(
 
   const priceHealth = buildInvestmentsPriceHealth(
     priceDates,
-    index.lastUpdated,
+    assessedAt,
     PRICE_HEALTH_MAX_AGE_DAYS
   );
   const derivedStaleCount = entries.filter((entry) => entry.stale).length;
@@ -252,6 +275,9 @@ async function main() {
   if (!index) {
     throw new Error("Missing public/data/investments/index.json");
   }
+  // Price age is measured from this run. lastUpdated stays at an earlier run
+  // when no symbol refreshed in full, and a price is only recent against now.
+  const assessedAt = index.refreshAttemptedAt ?? index.lastUpdated;
 
   // Use allSettled so one failing symbol does not abort the others and leave
   // the deployed public/data/investments set half-applied. Successful symbols
@@ -274,7 +300,7 @@ async function main() {
         console.warn(
           `[${symbol}] Latest fetch failed — keeping the existing snapshot and freshness metadata.`
         );
-        await sanitizeExistingSnapshot(symbol);
+        await sanitizeExistingSnapshot(symbol, assessedAt);
         return;
       }
       const rawPrice = await readJson<unknown>(
@@ -285,14 +311,14 @@ async function main() {
         rawPrice !== undefined &&
         !isRecentInvestmentPrice(
           rawPriceAsOf,
-          index.lastUpdated,
+          assessedAt,
           PRICE_HEALTH_MAX_AGE_DAYS
         )
       ) {
         console.warn(
           `[${symbol}] Raw price history is delayed (${rawPriceAsOf ?? "missing"}) — retaining the existing snapshot.`
         );
-        await sanitizeExistingSnapshot(symbol);
+        await sanitizeExistingSnapshot(symbol, assessedAt);
         return;
       }
       await buildSymbolSnapshot(symbol, index.lastUpdated);
@@ -318,7 +344,7 @@ async function main() {
     process.exitCode = 1;
   }
 
-  const enrichedIndex = await enrichIndexPriceHealth(index);
+  const enrichedIndex = await enrichIndexPriceHealth(index, assessedAt);
   await writeJsonAtomic(
     path.join(PUBLIC_DIR, "index.json"),
     `${JSON.stringify(enrichedIndex, null, 2)}\n`

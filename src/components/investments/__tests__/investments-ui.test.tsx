@@ -20,6 +20,7 @@ import { AddStockForm } from "../AddStockForm";
 import { __testUtils as liveQuoteTestUtils } from "@/hooks/useLiveQuote";
 import { __testUtils as stockDataTestUtils } from "@/hooks/useStockData";
 import { clearClientInvestmentDataCachesForTests } from "@/lib/investmentsClientData";
+import { DISPLAY_TIME_ZONE } from "@/lib/date-formatters";
 
 (globalThis as Record<string, unknown>).IS_REACT_ACT_ENVIRONMENT = true;
 const mockFetch = jest.fn();
@@ -323,7 +324,7 @@ describe("investments UI", () => {
     );
   });
 
-  it("uses market quotes for current price while labeling stale historical data", async () => {
+  function mockVisaQuote(asOf: string) {
     mockFetch.mockImplementation((input: RequestInfo | URL) => {
       const url = String(input);
 
@@ -358,7 +359,7 @@ describe("investments UI", () => {
                 volume: 2500000,
                 marketCap: 0,
                 name: "Visa Inc.",
-                asOf: new Date().toISOString(),
+                asOf,
                 source: "finnhub",
               },
             ],
@@ -369,7 +370,9 @@ describe("investments UI", () => {
 
       return Promise.reject(new Error(`Unhandled fetch: ${url}`));
     });
+  }
 
+  async function renderVisaResearch() {
     await act(async () => {
       root.render(
         <ResearchSection
@@ -381,10 +384,45 @@ describe("investments UI", () => {
     });
     await flushPromises();
     await flushPromises();
+  }
+
+  function marketTimeLabel(asOf: string) {
+    return new Date(asOf).toLocaleString("en-US", {
+      month: "short",
+      day: "numeric",
+      year: "numeric",
+      hour: "numeric",
+      minute: "2-digit",
+      timeZone: DISPLAY_TIME_ZONE,
+      timeZoneName: "short",
+    });
+  }
+
+  it("dates a weekend quote with its market time and shows no live dot", async () => {
+    // A Sunday visit gets Friday's close. The provider's response time is new,
+    // and the trade it describes is two days old.
+    const asOf = new Date(Date.now() - 47 * 60 * 60 * 1000).toISOString();
+    mockVisaQuote(asOf);
+    await renderVisaResearch();
+
+    expect(container.textContent).toContain("$352.45");
+    expect(container.textContent).toContain(
+      `Market quote as of ${marketTimeLabel(asOf)}`
+    );
+    expect(container.querySelector(".invest-hero-livedot")).toBeNull();
+  });
+
+  it("uses market quotes for current price while labeling stale historical data", async () => {
+    const asOf = new Date().toISOString();
+    mockVisaQuote(asOf);
+    await renderVisaResearch();
 
     expect(container.textContent).toContain("Visa Inc.");
     expect(container.textContent).toContain("$352.45");
-    expect(container.textContent).toContain("Latest market quote");
+    expect(container.textContent).toContain(
+      `Market quote as of ${marketTimeLabel(asOf)}`
+    );
+    expect(container.querySelector(".invest-hero-livedot")).not.toBeNull();
 
     const tabs = queryTabs(container);
     expect(tabs).toEqual(

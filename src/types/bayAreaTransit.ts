@@ -80,6 +80,8 @@ export interface TransitStationBoard {
   name: string;
   departures: TransitDeparture[];
   generatedAt: string;
+  /** Set when the board is served, so a fallback board cannot pass as live. */
+  status?: TransitSectionStatus;
 }
 
 export interface TransitHeroStats {

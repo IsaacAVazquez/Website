@@ -48,6 +48,52 @@ function okResponse(id: number): Response {
   );
 }
 
+const NOW_MS = Date.parse(GENERATED_AT);
+
+/** The rate limit headers GitHub sends on an unauthenticated search. */
+function searchHeaders(remaining: number, resetEpochSeconds: number) {
+  return {
+    "content-type": "application/json; charset=utf-8",
+    "x-ratelimit-limit": "10",
+    "x-ratelimit-remaining": String(remaining),
+    "x-ratelimit-used": String(10 - remaining),
+    "x-ratelimit-resource": "search",
+    "x-ratelimit-reset": String(resetEpochSeconds),
+  };
+}
+
+/** A 200 whose search timed out, so `items` holds only what was found in time. */
+function incompleteResponse(id: number): Response {
+  return new Response(
+    JSON.stringify({ total_count: 18913, incomplete_results: true, items: [makeRepoItem(id)] }),
+    { status: 200, headers: searchHeaders(9, NOW_MS / 1000 + 60) }
+  );
+}
+
+/** A primary rate limit: the window is spent and GitHub sends no `retry-after`. */
+function rateLimitedResponse(status: number, resetEpochSeconds: number): Response {
+  return new Response(
+    JSON.stringify({
+      message:
+        "API rate limit exceeded for 203.0.113.7. (But here's the good news: Authenticated requests get a higher rate limit. Check out the documentation for more details.)",
+      documentation_url:
+        "https://docs.github.com/rest/overview/resources-in-the-rest-api#rate-limiting",
+    }),
+    { status, headers: searchHeaders(0, resetEpochSeconds) }
+  );
+}
+
+/** Records each delay the builder asks for and fires the timer straight away. */
+function recordTimerDelays(): number[] {
+  const delays: number[] = [];
+  const realSetTimeout = global.setTimeout;
+  jest.spyOn(global, "setTimeout").mockImplementation(((callback: () => void, ms = 0) => {
+    delays.push(ms);
+    return realSetTimeout(callback, 0);
+  }) as unknown as typeof setTimeout);
+  return delays;
+}
+
 /** Extracts the segment qualifier (e.g. "language:Rust") from a search URL. */
 function qualifierFromUrl(input: string): string {
   const query = new URL(input).searchParams.get("q") ?? "";
@@ -59,6 +105,8 @@ interface FetchOutcome {
   status?: number;
   /** Fail this many leading attempts, then succeed. Omit/Infinity = always fail. */
   failTimes?: number;
+  /** Full response to return while failing, for cases a bare status cannot express. */
+  respond?: (id: number) => Response;
 }
 
 /**
@@ -75,16 +123,23 @@ function createFetchMock(outcomes: Record<string, FetchOutcome> = {}) {
     const calls = (callsByQualifier.get(qualifier) ?? 0) + 1;
     callsByQualifier.set(qualifier, calls);
 
-    const outcome = outcomes[qualifier];
-    if (outcome && calls <= (outcome.failTimes ?? Number.POSITIVE_INFINITY)) {
-      return new Response("upstream unavailable", { status: outcome.status ?? 503 });
-    }
-
+    // Assigned before the outcome so a failing segment keeps the same id across
+    // two mocks, which the reuse test relies on.
     if (!idByQualifier.has(qualifier)) {
       idByQualifier.set(qualifier, nextId);
       nextId += 1;
     }
-    return okResponse(idByQualifier.get(qualifier)!);
+    const id = idByQualifier.get(qualifier)!;
+
+    const outcome = outcomes[qualifier];
+    if (outcome && calls <= (outcome.failTimes ?? Number.POSITIVE_INFINITY)) {
+      return (
+        outcome.respond?.(id) ??
+        new Response("upstream unavailable", { status: outcome.status ?? 503 })
+      );
+    }
+
+    return okResponse(id);
   });
 }
 
@@ -105,6 +160,7 @@ describe("buildGitHubTrendingSnapshot resilience", () => {
   });
 
   afterEach(async () => {
+    jest.restoreAllMocks();
     if (originalToken === undefined) delete process.env.GITHUB_TOKEN;
     else process.env.GITHUB_TOKEN = originalToken;
     if (originalGhToken === undefined) delete process.env.GH_TOKEN;
@@ -231,5 +287,111 @@ export const githubTrendingSnapshot: GitHubTrendingSnapshot = ${JSON.stringify(
 
     // The committed snapshot must be left exactly as it was.
     await expect(readSnapshotRaw(projectRoot)).resolves.toBe(existing);
+  });
+
+  it("retries a segment whose results GitHub flags as incomplete", async () => {
+    const projectRoot = await makeProjectRoot();
+    const fetchImpl = createFetchMock({
+      "language:Rust": { failTimes: 1, respond: incompleteResponse },
+    });
+
+    const { snapshot } = await buildGitHubTrendingSnapshot({
+      projectRoot,
+      generatedAt: GENERATED_AT,
+      logger: SILENT_LOGGER,
+      fetchImpl: fetchImpl as unknown as typeof fetch,
+      requestDelayMs: 0,
+      retryBackoffMs: 0,
+    });
+
+    // 14 complete calls + the incomplete first attempt for Rust.
+    expect(fetchImpl).toHaveBeenCalledTimes(15);
+    expect(snapshot.sourceStatus?.status).toBe("fresh");
+  });
+
+  it("reuses the previous segment when the results stay incomplete", async () => {
+    const projectRoot = await makeProjectRoot();
+    const options = {
+      projectRoot,
+      logger: SILENT_LOGGER,
+      requestDelayMs: 0,
+      retryBackoffMs: 0,
+    };
+    await buildGitHubTrendingSnapshot({
+      ...options,
+      generatedAt: "2026-06-14T00:00:00.000Z",
+      fetchImpl: createFetchMock() as unknown as typeof fetch,
+    });
+    const fetchImpl = createFetchMock({
+      "language:Rust": { respond: incompleteResponse },
+    });
+
+    const { snapshot } = await buildGitHubTrendingSnapshot({
+      ...options,
+      generatedAt: GENERATED_AT,
+      fetchImpl: fetchImpl as unknown as typeof fetch,
+    });
+
+    expect(snapshot.sourceStatus).toEqual({
+      status: "degraded",
+      failedSegments: ["Rust"],
+      reusedSegments: ["Rust"],
+    });
+    expect(snapshot.totals.repositories).toBe(14);
+    // 13 complete calls + 4 incomplete attempts for Rust.
+    expect(fetchImpl).toHaveBeenCalledTimes(17);
+  });
+
+  it.each([403, 429])(
+    "waits for the rate limit reset before retrying an HTTP %i",
+    async (status) => {
+      const projectRoot = await makeProjectRoot();
+      const fetchImpl = createFetchMock({
+        "language:Rust": {
+          failTimes: 1,
+          respond: () => rateLimitedResponse(status, NOW_MS / 1000 + 40),
+        },
+      });
+      jest.spyOn(Date, "now").mockReturnValue(NOW_MS);
+      jest.spyOn(Math, "random").mockReturnValue(0);
+      const delays = recordTimerDelays();
+
+      const { snapshot } = await buildGitHubTrendingSnapshot({
+        projectRoot,
+        generatedAt: GENERATED_AT,
+        logger: SILENT_LOGGER,
+        fetchImpl: fetchImpl as unknown as typeof fetch,
+        requestDelayMs: 0,
+        retryBackoffMs: 0,
+      });
+
+      expect(delays).toContain(40_000);
+      expect(fetchImpl).toHaveBeenCalledTimes(15);
+      expect(snapshot.sourceStatus?.status).toBe("fresh");
+    }
+  );
+
+  it("caps the rate limit wait when the reset is far off", async () => {
+    const projectRoot = await makeProjectRoot();
+    const fetchImpl = createFetchMock({
+      "language:Rust": {
+        failTimes: 1,
+        respond: () => rateLimitedResponse(403, NOW_MS / 1000 + 3600),
+      },
+    });
+    jest.spyOn(Date, "now").mockReturnValue(NOW_MS);
+    jest.spyOn(Math, "random").mockReturnValue(0);
+    const delays = recordTimerDelays();
+
+    await buildGitHubTrendingSnapshot({
+      projectRoot,
+      generatedAt: GENERATED_AT,
+      logger: SILENT_LOGGER,
+      fetchImpl: fetchImpl as unknown as typeof fetch,
+      requestDelayMs: 0,
+      retryBackoffMs: 0,
+    });
+
+    expect(Math.max(...delays)).toBe(65_000);
   });
 });

@@ -55,4 +55,45 @@ describe("NbaClient", () => {
       "true"
     );
   });
+
+  it("dates the snapshot in UTC and says when the standings are final", async () => {
+    const committed = await getNbaSummarySnapshot();
+    const initialTeamSnapshot = await getNbaTeamSnapshot(DEFAULT_NBA_STATE.team);
+    const withGamesPlayed = (gamesPlayed: number) => ({
+      ...committed,
+      season: "2025-26",
+      updatedAt: "2026-06-20",
+      teamsByConference: {
+        east: committed.teamsByConference.east.map((team) => ({ ...team, gamesPlayed })),
+        west: committed.teamsByConference.west.map((team) => ({ ...team, gamesPlayed })),
+      },
+    });
+
+    const { unmount } = render(
+      <NbaClient
+        initialState={DEFAULT_NBA_STATE}
+        summary={withGamesPlayed(82)}
+        initialTeamSnapshot={initialTeamSnapshot}
+        teamColors={{}}
+      />
+    );
+    expect(
+      screen.getByText(
+        "ESPN · Season 2025-26 · final regular season standings · 30 teams · snapshot Jun 20, 2026"
+      )
+    ).toBeVisible();
+    unmount();
+
+    render(
+      <NbaClient
+        initialState={DEFAULT_NBA_STATE}
+        summary={withGamesPlayed(41)}
+        initialTeamSnapshot={initialTeamSnapshot}
+        teamColors={{}}
+      />
+    );
+    expect(
+      screen.getByText("ESPN · Season 2025-26 · 30 teams · snapshot Jun 20, 2026")
+    ).toBeVisible();
+  });
 });

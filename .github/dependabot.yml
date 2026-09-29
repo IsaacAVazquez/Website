@@ -29,3 +29,12 @@ updates:
       interval: "weekly"
       day: "monday"
     open-pull-requests-limit: 3
+  # The investments fetch pins defeatbeta-api, whose version is tied to the
+  # layout of the dataset it reads. The pin went stale on 2026-09-15 and the
+  # lane was down for twelve days before anyone saw why.
+  - package-ecosystem: "pip"
+    directory: "/scripts"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+    open-pull-requests-limit: 2

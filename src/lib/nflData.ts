@@ -18,13 +18,15 @@ const STANDINGS_URL =
 const GAMES_URL =
   "https://github.com/nflverse/nfldata/raw/master/data/games.csv";
 const TEAMS_LOGOS_URL =
-  "https://github.com/nflverse/nflfastR-data/raw/master/teams_colors_logos.csv";
+  "https://raw.githubusercontent.com/nflverse/nflverse-pbp/master/teams_colors_logos.csv";
 
 const REQUEST_TIMEOUT_MS = 30_000;
 const RECENT_FIXTURE_LIMIT = 8;
 const UPCOMING_FIXTURE_LIMIT = 8;
 const TEAM_FIXTURE_LIMIT = 5;
 const LEADER_LIMIT = 10;
+// games.csv marks the postseason WC, DIV, CON, and SB, never POST.
+const SNAPSHOT_GAME_TYPES = ["REG", "WC", "DIV", "CON", "SB"];
 
 interface NFLDataError extends Error {
   status: number;
@@ -63,8 +65,6 @@ async function fetchText(url: string): Promise<string> {
       return await fetchTextOnce(url);
     } catch (error) {
       lastError = error;
-      const status = (error as NFLDataError).status;
-      if (status === 404 || status === 400) throw error;
       if (attempt < 2) {
         await new Promise((resolve) => setTimeout(resolve, 1000 * (attempt + 1)));
       }
@@ -186,6 +186,8 @@ async function loadTeamMeta(): Promise<Map<string, TeamMeta>> {
   for (const row of rows) {
     const abbr = canonicalizeTeamAbbr(row.team_abbr);
     if (!abbr) continue;
+    // The file lists the retired OAK, SD, and STL rows after the current ones.
+    if (abbr !== row.team_abbr.toUpperCase() && out.has(abbr)) continue;
     const conference = row.team_conf;
     const division = row.team_division;
     if (!isConference(conference) || !isDivision(division)) continue;
@@ -529,12 +531,44 @@ function buildFixtures(
   return fixtures;
 }
 
-function getCurrentWeek(fixtures: NFLFixture[]): number {
-  const finishedRegular = fixtures.filter(
-    (f) => f.status === "FINISHED" && f.gameType === "REG" && f.week !== null
+function isSnapshotGame(fixture: NFLFixture): boolean {
+  return SNAPSHOT_GAME_TYPES.includes(fixture.gameType ?? "");
+}
+
+// The page prints this as "through week N", so a week counts once every game
+// in it is final.
+function getLastCompletedWeek(fixtures: NFLFixture[]): number {
+  const regular = fixtures.filter((f) => f.gameType === "REG" && f.week !== null);
+  const openWeeks = new Set(
+    regular.filter((f) => f.status !== "FINISHED").map((f) => f.week)
   );
-  if (finishedRegular.length === 0) return 0;
-  return Math.max(...finishedRegular.map((f) => f.week ?? 0));
+  return Math.max(
+    0,
+    ...regular.filter((f) => !openWeeks.has(f.week)).map((f) => f.week ?? 0)
+  );
+}
+
+// Upstream left the playoff column empty for both Super Bowl teams in 2023
+// and 2025.
+function withSuperBowlResult(
+  standings: NFLTeamStanding[],
+  fixtures: NFLFixture[]
+): NFLTeamStanding[] {
+  const superBowl = fixtures.find(
+    (f) => f.gameType === "SB" && f.status === "FINISHED"
+  );
+  if (!superBowl || superBowl.score.winner === "TIE") return standings;
+  const homeWon = superBowl.score.winner === "HOME_TEAM";
+  return standings.map((team) => {
+    if (team.playoffResult !== null) return team;
+    if (team.id === superBowl.homeTeam.id) {
+      return { ...team, playoffResult: homeWon ? "WonSB" : "LostSB" };
+    }
+    if (team.id === superBowl.awayTeam.id) {
+      return { ...team, playoffResult: homeWon ? "LostSB" : "WonSB" };
+    }
+    return team;
+  });
 }
 
 function buildFormSummary(teamId: string, fixtures: NFLFixture[]): NFLFormSummary {
@@ -576,7 +610,7 @@ function buildTeamSnapshot(
     .filter(
       (f) => f.homeTeam.id === standing.id || f.awayTeam.id === standing.id
     )
-    .filter((f) => f.gameType === "REG" || f.gameType === "POST");
+    .filter(isSnapshotGame);
   const recentFixtures = teamFixtures
     .filter((f) => f.status === "FINISHED")
     .sort((a, b) => new Date(b.utcDate).getTime() - new Date(a.utcDate).getTime())
@@ -683,18 +717,16 @@ export async function buildNflSnapshot(
 
   const gamesCsv = await fetchText(GAMES_URL);
   const allFixtures = buildFixtures(parseCsv(gamesCsv), season, teamMeta);
-  const week = getCurrentWeek(allFixtures);
+  const week = getLastCompletedWeek(allFixtures);
 
-  const regularFixtures = allFixtures.filter(
-    (f) => f.gameType === "REG" || f.gameType === "POST"
-  );
+  const seasonFixtures = allFixtures.filter(isSnapshotGame);
 
-  const recentFixtures = regularFixtures
+  const recentFixtures = seasonFixtures
     .filter((f) => f.status === "FINISHED")
     .sort((a, b) => new Date(b.utcDate).getTime() - new Date(a.utcDate).getTime())
     .slice(0, RECENT_FIXTURE_LIMIT);
 
-  const upcomingFixtures = regularFixtures
+  const upcomingFixtures = seasonFixtures
     .filter((f) => f.status !== "FINISHED")
     .sort((a, b) => new Date(a.utcDate).getTime() - new Date(b.utcDate).getTime())
     .slice(0, UPCOMING_FIXTURE_LIMIT);
@@ -710,7 +742,7 @@ export async function buildNflSnapshot(
     teamSnapshots = Object.fromEntries(
       standings.map((standing) => [
         standing.id,
-        buildTeamSnapshot(standing, regularFixtures, teamMeta, generatedAt),
+        buildTeamSnapshot(standing, seasonFixtures, teamMeta, generatedAt),
       ])
     );
   }
@@ -719,6 +751,7 @@ export async function buildNflSnapshot(
     season,
     week,
     updatedAt: generatedAt.slice(0, 10),
+    generatedAt,
     sourceLabel: "NFLverse",
     sourceUrls: {
       standings: STANDINGS_URL,
@@ -726,7 +759,7 @@ export async function buildNflSnapshot(
       teams: TEAMS_LOGOS_URL,
       leaders: `https://github.com/nflverse/nflverse-data/releases/tag/stats_player`,
     },
-    teams: standings,
+    teams: withSuperBowlResult(standings, allFixtures),
     leaders,
     recentFixtures,
     upcomingFixtures,

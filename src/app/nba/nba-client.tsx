@@ -276,7 +276,10 @@ export function NbaClient({ initialState, summary, initialTeamSnapshot, teamColo
     },
   ];
 
-  const heroMeta = `${summary.sourceLabel} · Season ${summary.season} · ${allTeams.length} teams · snapshot ${snapshotDateLabel}`;
+  const isFinal = allTeams.every((team) => team.gamesPlayed >= REGULAR_SEASON_GAMES);
+  const heroMeta = `${summary.sourceLabel} · Season ${summary.season}${
+    isFinal ? " · final regular season standings" : ""
+  } · ${allTeams.length} teams · snapshot ${snapshotDateLabel}`;
 
   const heroSignature = (
     <SeedLadder

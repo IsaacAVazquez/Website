@@ -4,7 +4,10 @@ import {
   resetFantasyWeeklySnapshotCacheForTests,
   useFantasyWeeklySnapshot,
 } from "../useFantasyWeeklySnapshot";
-import { normalizeFantasyWeeklySnapshot } from "@/lib/fantasyWeeklySnapshot";
+import {
+  FANTASY_WEEKLY_SNAPSHOT_URL,
+  normalizeFantasyWeeklySnapshot,
+} from "@/lib/fantasyWeeklySnapshot";
 
 const published = JSON.parse(fs.readFileSync("public/data/fantasy/weekly.json", "utf8"));
 const full = normalizeFantasyWeeklySnapshot(published);
@@ -60,5 +63,25 @@ describe("useFantasyWeeklySnapshot", () => {
     expect(result.current.isLoading).toBe(true);
     await waitFor(() => expect(result.current.snapshot?.boards.ppr).toEqual(full.boards.ppr));
     expect(result.current.isLoading).toBe(false);
+  });
+
+  // force-cache hands back a stored copy without checking its age, and the
+  // version in the URL was the redraft revision, which stopped moving at
+  // kickoff. Together they pinned a browser to the first board it ever stored.
+  it("requests the file with no version and leaves caching to the response headers", async () => {
+    const fetchMock = jest.fn().mockResolvedValue({
+      ok: true,
+      status: 200,
+      json: async () => published,
+    });
+    global.fetch = fetchMock;
+
+    const { result } = renderHook(() => useFantasyWeeklySnapshot());
+    await waitFor(() => expect(result.current.isLoading).toBe(false));
+
+    const [url, init] = fetchMock.mock.calls[0];
+    expect(url).toBe("/data/fantasy/weekly.json");
+    expect(url).toBe(FANTASY_WEEKLY_SNAPSHOT_URL);
+    expect(init).not.toHaveProperty("cache");
   });
 });
