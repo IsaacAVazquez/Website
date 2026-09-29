@@ -20,7 +20,8 @@ re-flag them as gaps:
   auth/redirect pages that don't need it.
 - **Code health.** Zero `TODO`/`FIXME`/`HACK` markers in `src/`. No stray `console.log`
   in components — logging is concentrated in `src/lib/logger.ts` and data scripts.
-  `removeConsole` is on for production builds (`next.config.mjs`).
+  `removeConsole` is on for production builds and keeps `console.error` and `console.warn`
+  (`next.config.mjs`).
 - **Dependencies.** Current stack — Next.js 16, React 19, TypeScript 6, Playwright,
   Jest 30, MSW. No obviously stale packages.
 - **Fonts.** All web fonts use `display: swap`/`optional` with pinned weights and system
@@ -46,7 +47,9 @@ fixture lists with no lazy loading.
 
 - **Status: addressed.** `CrestAvatar` now sets `loading="lazy"` + `decoding="async"` and
   explicit dimensions; `decoding="async"` added to the F1/Fantasy-F1 avatars for
-  consistency.
+  consistency. As of 2026-09-28 the SpaceX mission photos that are stored with the site
+  under `/data/spacex/images/` go through `next/image` in `MissionImageFrame`, and a photo
+  from any other host still loads as it is.
 
 ### 2. Add `loading.tsx` to data-driven dashboard routes
 There were **zero** `loading.tsx` files across the app. Dashboard routes pair an
@@ -67,6 +70,15 @@ A few `"use client"` pages ship very large bundles:
   (`EmailDigestDialog`, `ApplicationEditDialog`) were extracted to their own modules and
   are now lazy-loaded via `next/dynamic`, gated on open state, so their JS only loads when
   a user opens a dialog. Shared form types/helpers moved to `application-form.ts`.
+  As of 2026-09-28 the same pattern covers the player drawer and compare tray on the
+  fantasy boards, the club drawer on the two soccer pages, the mission drawer, and the
+  investments research workspace. Each `next/dynamic` call sets `loading`, because
+  without it the first open suspends up to the route's `loading.tsx` and swaps the whole
+  page for the loading band. The drawers and the tray also mount closed once their code
+  has loaded in idle time (`useMountOnFirstOpen`), because React holds a lazy component's
+  first render for 300 ms and a drawer that first rendered on the click opened that much
+  later. The score pools fixture drawer stays a static import for that reason, since it
+  is keyed by fixture and cannot mount ahead of the click.
 - **Follow-up:** apply the same interaction-gated `next/dynamic` pattern to the heaviest
   panels in `museum-log-client.tsx` and `nfl-client.tsx`. These carry more shared state,
   so they warrant their own focused PR with interactive verification.

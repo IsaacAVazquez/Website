@@ -16,6 +16,13 @@ jest.mock("next/navigation", () => ({
   useSearchParams: () => currentSearchParams,
 }));
 
+// In the app the drawer loads the first time a club is opened. Here it is the
+// real drawer, mounted directly, so these tests stay about the page and stay
+// synchronous.
+jest.mock("@/components/football/DeferredClubDrawer", () => ({
+  DeferredClubDrawer: jest.requireActual("@/components/football/ClubDrawer").ClubDrawer,
+}));
+
 describe("PremierLeagueClient", () => {
   beforeEach(() => {
     currentSearchParams = new URLSearchParams();

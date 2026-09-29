@@ -134,6 +134,8 @@ Headings default to the body face at 700 with tight tracking and balanced wrappi
 
 Dark mode is class based. `next-themes` puts `.dark` on `<html>`, and every surface block in `catalog97.css` has a `.dark` counterpart, so components that read tokens adapt without any `dark:` utility. The body outside the page root paints the paper values as printed, which covers the overscroll gutter and the skip link (`.c97-skip-link`).
 
+A theme change fades colour, background, and border over 150ms. That comes from one rule in `globals.css`, which sits in `@layer base` at zero specificity, so it is a default, and any transition a component or a utility declares replaces it. A component that transitions something else, such as `transform`, lists its colour properties too if it wants them to fade when the theme changes.
+
 ### Charts and D3
 
 D3 and SVG fills can't read Tailwind classes, so charts resolve token colours at render time. Read them with `getComputedStyle(svgElement).getPropertyValue('--c97-accent')` from the chart's own element, since the tokens are scoped to the `[data-c97]` container and `document.documentElement` resolves none of them, and re-resolve on theme change (`useTheme().resolvedTheme` as an effect dependency). `var()` and `color-mix()` never resolve inside SVG presentation attributes, so pass resolved values to `.attr()` or use `.style()`. Never bake a token's hex into a constant.

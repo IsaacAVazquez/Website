@@ -54,6 +54,7 @@ export function TradePlayerCombobox({
   onSelect,
 }: TradePlayerComboboxProps) {
   const inputRef = useRef<HTMLInputElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
   const listboxId = useId();
   const helpId = useId();
   const [query, setQuery] = useState("");
@@ -91,11 +92,19 @@ export function TradePlayerCombobox({
     setQuery("");
     setOpen(false);
     setActiveIndex(-1);
-    window.requestAnimationFrame(() => inputRef.current?.focus());
+    // A frame later, once the list has closed. If the visitor is already in
+    // another field by then, the focus stays with them.
+    window.requestAnimationFrame(() => {
+      const focused = document.activeElement;
+      if (!focused || focused === document.body || containerRef.current?.contains(focused)) {
+        inputRef.current?.focus();
+      }
+    });
   };
 
   return (
     <div
+      ref={containerRef}
       className="relative"
       onBlur={(event) => {
         if (!event.currentTarget.contains(event.relatedTarget as Node | null)) {

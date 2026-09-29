@@ -107,8 +107,12 @@ import "./mba-jobs.css";
 
 // Interaction-gated dialogs are code-split so their chunks load only when a
 // user opens them — keeping them out of this large client page's initial bundle.
-const EmailDigestDialog = dynamic(() => import("./EmailDigestDialog"));
-const ApplicationEditDialog = dynamic(() => import("./ApplicationEditDialog"));
+// `loading` is what gives each dialog its own Suspense boundary. Without it the
+// first open suspends up to the route's loading.tsx and blanks the page.
+const EmailDigestDialog = dynamic(() => import("./EmailDigestDialog"), { loading: () => null });
+const ApplicationEditDialog = dynamic(() => import("./ApplicationEditDialog"), {
+  loading: () => null,
+});
 
 const ROUTE = "/mba-internship-notifications";
 const JOB_PAGE_SIZE = 60;

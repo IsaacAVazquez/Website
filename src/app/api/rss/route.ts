@@ -1,6 +1,10 @@
 import { NextResponse } from "next/server";
 import { getAllBlogPosts } from "@/lib/blog";
 
+// Built once per deploy. The feed only changes when a post does, and a
+// request that missed the cache rendered every post to HTML to answer.
+export const dynamic = "force-static";
+
 export async function GET() {
   const baseUrl = (process.env.SITE_URL || "https://isaacvazquez.com").replace(/\/$/, "");
   const posts = (await getAllBlogPosts()).filter((post) => {

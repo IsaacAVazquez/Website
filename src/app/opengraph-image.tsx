@@ -1,7 +1,5 @@
 import { createEditorialOgImage } from "@/lib/og";
 
-export const runtime = "edge";
-
 export const alt = "Isaac Vazquez, product manager and Berkeley Haas MBA '27";
 export const size = {
   width: 1200,

@@ -5,7 +5,7 @@ jest.mock("@/lib/blog", () => ({
   getAllBlogPosts: jest.fn(),
 }));
 
-import { GET } from "../route";
+import { GET, dynamic } from "../route";
 import { getAllBlogPosts } from "@/lib/blog";
 
 const mockGetAllBlogPosts = getAllBlogPosts as jest.MockedFunction<
@@ -16,6 +16,13 @@ describe("GET /api/rss", () => {
   beforeEach(() => {
     jest.clearAllMocks();
     delete process.env.SITE_URL;
+  });
+
+  // The feed changes only when a post does, which takes a deploy. Left
+  // dynamic, a request that missed the cache rendered every post to HTML and
+  // measured 4.18 seconds in production.
+  it("is built once per deploy", () => {
+    expect(dynamic).toBe("force-static");
   });
 
   it("builds RSS items from blog frontmatter", async () => {

@@ -1,5 +1,5 @@
 import { createEditorialOgImage } from "@/lib/og";
-import { getBlogPostPreviewBySlug } from "@/lib/blog";
+import { getAllBlogPostPreviews, getBlogPostPreviewBySlug } from "@/lib/blog";
 import { getBlogClusterTheme, getBlogPostCollectionLabel } from "@/lib/blog-config";
 
 export const runtime = "nodejs";
@@ -9,6 +9,13 @@ export const size = {
   height: 630,
 };
 export const alt = "Isaac Vazquez writing";
+
+// One image per published article, drawn at build, matching the slugs the
+// article page prerenders. Without it the route is dynamic, and a request for
+// an article's share image measured about two seconds in production.
+export function generateStaticParams() {
+  return getAllBlogPostPreviews().map((post) => ({ slug: post.slug }));
+}
 
 export default async function Image({
   params,

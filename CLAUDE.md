@@ -385,3 +385,6 @@ you need them.
   and the investments API routes.
 - When adding a new data dashboard, follow the snapshot-driven pattern end to end
   (snapshot, builder, fail-soft fetch, accessors, API route, and an `error.tsx`).
+- A dashboard page is cached at Netlify's CDN only if it is listed in `cdnCachedPages`
+  in `next.config.mjs`. It belongs there when its server render reads no clock, random
+  number, live data, or Blobs. `SNAPSHOT_DRIVEN_DASHBOARDS.md` has the rule.

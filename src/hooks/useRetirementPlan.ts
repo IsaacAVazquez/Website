@@ -124,7 +124,21 @@ export interface UseRetirementPlanReturn {
   reset: () => void;
 }
 
-export function useRetirementPlan(seed?: RetirementSeed): UseRetirementPlanReturn {
+/**
+ * `enabled` holds the projection back. The planner passes false until its
+ * section is near the viewport, because it is the last section on the
+ * investments page and the projection measured about 150 ms of main-thread
+ * work on a desktop. The plan still hydrates and persists while disabled.
+ *
+ * ponytail: once enabled, the lever search still runs in one task and blocks
+ * for that long on every settled edit. Move computeLevers to a Web Worker if
+ * interaction timing on /investments shows it. The engine is pure, so it moves
+ * as is.
+ */
+export function useRetirementPlan(
+  seed?: RetirementSeed,
+  enabled = true,
+): UseRetirementPlanReturn {
   const persistenceStatus = useLocalStoragePersistenceStatus(STORAGE_KEY);
   const [plan, setPlan] = useState<RetirementPlanInput>(() => createDefaultPlan());
   const [debouncedPlan, setDebouncedPlan] = useState<RetirementPlanInput>(plan);
@@ -177,13 +191,13 @@ export function useRetirementPlan(seed?: RetirementSeed): UseRetirementPlanRetur
   // failure must be distinguishable from "still computing", or the UI shows a
   // permanent loading state.
   const { core, hasError } = useMemo(() => {
-    if (!ready) return { core: null, hasError: false };
+    if (!ready || !enabled) return { core: null, hasError: false };
     try {
       return { core: projectCore(debouncedPlan, getCurrentYear()), hasError: false };
     } catch {
       return { core: null, hasError: true };
     }
-  }, [debouncedPlan, ready]);
+  }, [debouncedPlan, ready, enabled]);
 
   // Heavier lever sensitivity runs off the critical path, after the core paints.
   // We track which plan the levers belong to so "computing" can be derived
@@ -215,7 +229,9 @@ export function useRetirementPlan(seed?: RetirementSeed): UseRetirementPlanRetur
   }, [core, leverState, debouncedPlan]);
 
   const leversReady = leverState.plan === debouncedPlan;
-  const isComputing = ready && !hasError && (debouncedPlan !== plan || !leversReady);
+  // Nothing is computing while the projection is held back.
+  const isComputing =
+    enabled && ready && !hasError && (debouncedPlan !== plan || !leversReady);
 
   // ─── Mutators ──────────────────────────────────────────────────────────────
 

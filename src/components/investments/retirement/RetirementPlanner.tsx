@@ -1,7 +1,7 @@
 "use client";
 
 import { ChartColumn } from "lucide-react";
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useRetirementPlan, type RetirementSeed } from "@/hooks/useRetirementPlan";
 import { RetirementInputs } from "./RetirementInputs";
 import { RetirementVerdict } from "./RetirementVerdict";
@@ -19,11 +19,35 @@ interface Props {
 
 export function RetirementPlanner({ portfolioValue, seedAllocation }: Props) {
   const seed: RetirementSeed = { portfolioValue, allocation: seedAllocation };
-  const controller = useRetirementPlan(seed);
+
+  // The planner is the last section on the page, so the projection waits until
+  // the section is within 600px of the viewport, the margin the fantasy boards
+  // use for their own windowing. It latches on, and a browser with no
+  // IntersectionObserver runs the projection straight away.
+  const sectionRef = useRef<HTMLElement | null>(null);
+  const [nearViewport, setNearViewport] = useState(
+    () => typeof IntersectionObserver === "undefined",
+  );
+
+  useEffect(() => {
+    const element = sectionRef.current;
+    if (nearViewport || !element) return;
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries.some((entry) => entry.isIntersecting)) setNearViewport(true);
+      },
+      { rootMargin: "600px" },
+    );
+    observer.observe(element);
+    return () => observer.disconnect();
+  }, [nearViewport]);
+
+  const controller = useRetirementPlan(seed, nearViewport);
   const { result, ready, isComputing, hasError, persistenceStatus, isSampleScenario } = controller;
 
   return (
     <section
+      ref={sectionRef}
       id="retirement"
       className="invest-research-band invest-retire-band scroll-mt-12 min-[901px]:scroll-mt-0"
       aria-label="Retirement planner"

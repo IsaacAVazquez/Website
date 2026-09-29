@@ -20,11 +20,13 @@ import {
   FixtureLedgerSection,
   groupFixturesByMatchday,
   LeaderLedger,
-  ClubDrawer,
   type LeaderEntry,
-  type ClubDrawerClub,
-  type ClubDrawerScorer,
 } from "@/components/football";
+// The drawer is the one football component that needs framer-motion, so it
+// stays out of the barrel, which four other routes share, and it loads the
+// first time a club is opened.
+import { DeferredClubDrawer } from "@/components/football/DeferredClubDrawer";
+import type { ClubDrawerClub, ClubDrawerScorer } from "@/components/football/ClubDrawer";
 import { PointsLadder } from "@/components/football/PointsLadderChart";
 import { LeagueProgrammeTable, type ProgrammeTableRow } from "@/components/football/LeagueProgrammeTable";
 import { LEAGUE_ZONE_LABEL, leagueZone, type LeagueZone, formatPointsGap } from "@/components/football/ladderGeometry";
@@ -649,7 +651,7 @@ export function PremierLeagueClient({
         </div>
       </section>
 
-      <ClubDrawer
+      <DeferredClubDrawer
         club={drawerClub}
         formSequence={teamSnapshot?.form.sequence ?? []}
         topScorers={drawerTopScorers}

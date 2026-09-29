@@ -86,6 +86,9 @@ across `STYLING.md`, `CLAUDE.md`, and `SNAPSHOT_DRIVEN_DASHBOARDS.md`.
 - [ ] CSS animations/transitions have a `prefers-reduced-motion` fallback (or use `motion-safe:`).
 - [ ] No `transition-all` in shared primitives. Transition only the properties that change
       (`transition-[background-color,transform]`).
+- [ ] A hover or state change that should animate declares its own transition. The default in
+      `globals.css` covers colour, background, and border at 150ms, and it gives way to any
+      transition the element declares.
 
 ## Responsive
 
