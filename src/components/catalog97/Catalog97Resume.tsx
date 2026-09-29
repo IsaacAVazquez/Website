@@ -342,8 +342,6 @@ export function Catalog97Resume() {
             <div
               className="c97-columns"
               style={{
-                gridTemplateColumns:
-                  "repeat(auto-fit,minmax(min(100%, 200px),1fr))",
                 gap: "var(--c97-sp-4)",
                 marginTop: "var(--c97-sp-4)",
               }}
@@ -376,8 +374,6 @@ export function Catalog97Resume() {
           <div
             className="c97-shell c97-columns"
             style={{
-              gridTemplateColumns:
-                "repeat(auto-fit,minmax(min(100%, 220px),1fr))",
               gap: "var(--c97-sp-4)",
             }}
           >

@@ -556,8 +556,10 @@ export function Catalog97Writing({
           <div
             style={{
               display: "grid",
+              // A 180px floor fits four across from about 990px, so the seven
+              // topics print 4+3 instead of 3+3 and one on its own.
               gridTemplateColumns:
-                "repeat(auto-fit,minmax(min(100%,240px),1fr))",
+                "repeat(auto-fit,minmax(min(100%,180px),1fr))",
               columnGap: "var(--c97-sp-5)",
               // Each topic link is a 50px hit box, so a --c97-sp-2 gap let every
               // row overlap the next by 15 to 20px. 34px keeps the boxes apart.

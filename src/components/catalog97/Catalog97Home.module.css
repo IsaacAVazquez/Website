@@ -109,9 +109,10 @@
 .workHead { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: var(--c97-sp-2) var(--c97-sp-4); }
 .workNote { display: flex; flex-wrap: wrap; align-items: baseline; gap: var(--c97-sp-1) var(--c97-sp-3); }
 .workIntro { max-width: none; color: var(--c97-ink-2); }
+/* Three across, or one column at 880px and under, where the collage stacks too. */
 .workGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: var(--c97-sp-5) var(--c97-sp-4);
   margin-top: var(--c97-sp-5);
 }
@@ -150,6 +151,7 @@
 .post > :last-child { white-space: nowrap; }
 
 @media (max-width: 880px) {
+  .workGrid { grid-template-columns: minmax(0, 1fr); }
 }
 
 @media (prefers-reduced-motion: reduce) {
