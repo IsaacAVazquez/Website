@@ -69,6 +69,7 @@ jobs:
           echo "commit=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
 
       - name: Build and deploy the production bundle
+        id: deploy
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
           # next.config.mjs inlines this, so /api/data-revisions can name the
@@ -138,6 +139,10 @@ jobs:
             "$EXPECTED_REVISION" "$revision_url" "" "$EXPECTED_COMMIT"
 
       - name: Verify the deploy published its static assets
+        # Runs whenever the deploy went out, even if the ledger check failed.
+        # During incident #500 a failed ledger check skipped this step on every
+        # run, so nothing was checking the uploads.
+        if: ${{ !cancelled() && steps.deploy.outcome == 'success' }}
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
           EXPECTED_COMMIT: ${{ steps.ledger.outputs.commit }}

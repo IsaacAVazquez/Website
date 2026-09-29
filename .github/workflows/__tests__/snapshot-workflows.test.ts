@@ -138,6 +138,11 @@ describe("snapshot refresh workflow infrastructure", () => {
     // which is exactly what shipped on 2026-08-20, so the file-manifest check has
     // to stay wired up.
     expect(publicationCommands).toContain("verify-deploy-assets.mjs");
+    // A failed ledger check must not skip the asset check. It did on every run
+    // of incident #500.
+    expect(publicationCommands).toMatch(
+      /name: Verify the deploy published its static assets\n\s+if: \$\{\{ !cancelled\(\) && steps\.deploy\.outcome == 'success' \}\}/
+    );
     // The ledger is read from the Netlify origin. Cloudflare challenges runner
     // traffic on the custom domain, which failed every publish on 2026-09-29
     // from 02:16 UTC until the check moved, while every deploy was fine.
