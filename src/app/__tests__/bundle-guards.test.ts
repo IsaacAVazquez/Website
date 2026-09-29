@@ -19,7 +19,7 @@ const filesNamed = (dir: string, name: string) => filesMatching(dir, (file) => f
  * erased at build, and a dynamic `import()` is a separate chunk, so neither
  * puts a package in the importing route's first-load JavaScript.
  */
-const VALUE_IMPORT = /^(?:import|export)\s+(?!type\b)[^;]*?from\s+"([^"]+)"/gm;
+const VALUE_IMPORT = /^(?:import|export)\s+(?!type\b)[^;]*?from\s+["']([^"']+)["']/gm;
 
 /** A repo-relative source file for a project specifier, or null for a package. */
 function resolveSource(from: string, specifier: string): string | null {
@@ -63,6 +63,10 @@ describe("bundle guards", () => {
     const reached = reachableFrom("src/components/football/ClubDrawer.tsx");
     expect(reached.packages.get("framer-motion")).toBe("src/components/football/ClubDrawer.tsx");
     expect(reached.files.has("src/components/football/CrestAvatar.tsx")).toBe(true);
+    // Five source files quote their imports with single quotes, and this hook
+    // is the one a guarded route reaches.
+    const hook = reachableFrom("src/app/fantasy-football/draft-tracker/hooks/useDraftState.ts");
+    expect(hook.files.has("src/lib/draftAnalytics.ts")).toBe(true);
   });
 
   // Six route clients import this barrel and two of them render the drawer.
