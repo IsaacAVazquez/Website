@@ -17,6 +17,7 @@ All notable changes to this repository are documented here. Format: `YYYY-MM-DD`
 - Name the projection chart's age axis in the caption ([#507](https://github.com/IsaacAVazquez/Website/pull/507)).
 - Narrow the branch cleanup item to the one lane branch left ([#508](https://github.com/IsaacAVazquez/Website/pull/508)).
 - Read the publish ledger from the Netlify origin ([#509](https://github.com/IsaacAVazquez/Website/pull/509)).
+- Drop the product manager title examples and the lane branch TODO ([#513](https://github.com/IsaacAVazquez/Website/pull/513)).
 
 ---
 
