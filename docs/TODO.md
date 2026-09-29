@@ -21,4 +21,4 @@ These are the open items that need Isaac, either because they need an account, a
 
 - [ ] The editorial notes on the frontier models added in #497 mostly restate the provider's own description, and could say what's actually different about each model.
 - [ ] Whether to stop committing `public/sitemap.xml`. It drifts after every snapshot refresh and makes pull requests fail the sitemap check until main is merged back in.
-- [ ] Delete the 19 local `fix/lane-*` branches and `fix/stale-snapshot-lanes` once they're no longer wanted. They hold the data audit's per-lane work, already shipped in #497, plus the J.P. Morgan capital market matrix on `fix/lane-curated-finance`, which was left out because it's marked not for retail use or distribution. They were never pushed, so they exist only on this machine.
+- [ ] Delete the local `fix/lane-curated-finance` branch once it's no longer wanted. It holds the J.P. Morgan capital market matrix, which was left out of #497 because it's marked not for retail use or distribution. It was never pushed, so it exists only on this machine. The other lane branches were deleted on 2026-09-28 after their work was confirmed on main.
