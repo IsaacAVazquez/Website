@@ -29,6 +29,15 @@ function startServer(
       response.end(JSON.stringify(ledger));
       return;
     }
+    if (request.url?.startsWith("/challenged")) {
+      response.writeHead(403, {
+        "Content-Type": "text/html",
+        Server: "cloudflare",
+        "cf-mitigated": "challenge",
+      });
+      response.end("<title>Just a moment...</title>");
+      return;
+    }
     if (request.url === "/hook" && request.method === "POST") {
       hookCalls += 1;
       if (afterHookLedger) ledger = afterHookLedger;
@@ -199,6 +208,28 @@ describe("production data publication verifier", () => {
       // The run still fails, because production never confirmed the revision.
       // What matters is that the publish was attempted rather than skipped.
       expect(server.hookCalls()).toBe(1);
+    } finally {
+      await server.close();
+    }
+  });
+
+  it("names the layer that answered when the check is rejected", async () => {
+    // Incident #500 was a Cloudflare challenge, and the error said only HTTP 403.
+    const server = await startServer({
+      revision: "b".repeat(64),
+      publicationRevision: expectedRevision,
+      deploymentCommit: null,
+    });
+    try {
+      await expect(
+        runVerifier(
+          server,
+          expectedRevision,
+          headCommit,
+          `${server.baseUrl}/challenged`
+        )
+      ).rejects.toThrow(/HTTP 403 from cloudflare \(cf-mitigated: challenge\)/);
+      expect(server.hookCalls()).toBe(0);
     } finally {
       await server.close();
     }
