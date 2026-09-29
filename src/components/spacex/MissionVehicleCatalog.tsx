@@ -147,7 +147,7 @@ export function MissionVehicleCatalog({ launchDetails }: MissionVehicleCatalogPr
         ))}
       </div>
 
-      <div className="border border-[var(--c97-rule)] bg-[var(--c97-surface)] p-4 lg:sticky lg:top-28">
+      <div className="border border-[var(--c97-rule)] bg-[var(--c97-surface)] p-4 lg:sticky lg:top-6">
         <h3 className="font-mono text-3xs font-semibold uppercase tracking-[0.12em] text-[var(--c97-ink-2)]">
           Scale · to height
         </h3>

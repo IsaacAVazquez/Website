@@ -693,7 +693,7 @@ function JobCard({
 
         <div className="space-y-3">
           <h3
-            className="mb-0 text-lg font-semibold leading-[1.08] tracking-[-0.04em] sm:text-xl"
+            className="text-lg font-semibold leading-[1.08] tracking-[-0.04em] sm:text-xl"
             style={{
               fontFamily: "var(--c97-font-body)",
               color: "var(--c97-ink)",
@@ -703,7 +703,7 @@ function JobCard({
           </h3>
 
           {job.snippet && (
-            <p className="c97-prose mb-0 line-clamp-3 break-words">{job.snippet}</p>
+            <p className="c97-prose line-clamp-3 break-words">{job.snippet}</p>
           )}
         </div>
 
@@ -718,7 +718,7 @@ function JobCard({
         <div
           className="mt-auto border-t border-[var(--c97-rule)] pt-5"
         >
-          <p className="c97-meta mb-0">
+          <p className="c97-meta">
             {relativePostedAt ? (
               <>
                 {job.location} ·{" "}
@@ -734,7 +734,7 @@ function JobCard({
             )}
           </p>
           {job.sourceName && (
-            <p className="c97-prose mb-0 mt-2 text-sm">
+            <p className="c97-prose text-sm" style={{ marginTop: "var(--c97-sp-1)" }}>
               Found through {job.sourceName}
               {job.sourceUrl ? (
                 <>
@@ -835,7 +835,7 @@ function ManualCompanyCard({
           <CategoryChip category={company.category} />
         </div>
 
-        <p className="c97-prose mb-0">
+        <p className="c97-prose">
           I do not have a stable public feed for this company yet, so I keep the career page and
           a role-aware LinkedIn search here instead.
         </p>
@@ -1135,7 +1135,7 @@ function CompanyFilterStrip({
       >
         <div className="space-y-3">
           <div>
-            <p className="c97-meta mb-0">Tracked company feeds</p>
+            <p className="c97-meta">Tracked company feeds</p>
             <p
               className="mt-2 text-sm"
               style={{ color: "var(--c97-ink-2)" }}
@@ -1235,7 +1235,7 @@ function CompanyFilterStrip({
                     }
                   >
                     <div className="min-w-0">
-                      <p className="c97-meta mb-0">{group.label}</p>
+                      <p className="c97-meta">{group.label}</p>
                       <p
                         className="mt-1 text-xs"
                         style={{ color: "var(--c97-ink-2)" }}
@@ -1465,7 +1465,7 @@ function NeedsAttentionPanel({
               <p className="mb-0 text-sm font-semibold" style={{ color: "var(--c97-ink)" }}>
                 You&rsquo;re all caught up.
               </p>
-              <p className="c97-prose mb-0 mt-1 text-sm">
+              <p className="c97-prose text-sm" style={{ marginTop: "var(--c97-sp-1)" }}>
                 No follow-ups or deadlines need action right now. Add a follow-up date when you
                 apply and it will surface here on the day.
               </p>
@@ -1523,7 +1523,7 @@ function ApplicationCard({
         </div>
         <ApplicationPriorityChip priority={application.priority} />
       </div>
-      <p className="c97-prose mb-0 mt-3 text-sm">
+      <p className="c97-prose text-sm" style={{ marginTop: "var(--c97-sp-2)" }}>
         {application.jobSnapshot.department} · {application.jobSnapshot.location}
       </p>
       <div className="mt-4 flex flex-wrap gap-2">
@@ -1539,7 +1539,7 @@ function ApplicationCard({
         )}
       </div>
       {application.notes && (
-        <p className="c97-prose mb-0 mt-4 line-clamp-3 text-sm">{application.notes}</p>
+        <p className="c97-prose line-clamp-3 text-sm" style={{ marginTop: "var(--c97-sp-2)" }}>{application.notes}</p>
       )}
       <div className="mt-4 flex flex-wrap items-center gap-2 border-t border-[var(--c97-rule)] pt-4">
         <select
@@ -1742,7 +1742,7 @@ function ApplicationPipeline({
         </div>
 
         {importMessage && (
-          <p className="c97-prose mb-0" role="status">
+          <p className="c97-prose" style={{ marginBottom: "var(--c97-sp-3)" }} role="status">
             {importMessage}
           </p>
         )}
@@ -1770,7 +1770,7 @@ function ApplicationPipeline({
               return (
                 <div key={status} className="space-y-3">
                   <div className="c97-panel flex items-center justify-between">
-                    <p className="c97-meta mb-0">{MBA_APPLICATION_STATUS_LABELS[status]}</p>
+                    <p className="c97-meta">{MBA_APPLICATION_STATUS_LABELS[status]}</p>
                     <span className="c97-chip">{statusApplications.length}</span>
                   </div>
                   {statusApplications.length === 0 ? (
@@ -2417,7 +2417,7 @@ export function MBAJobsClient({
                     }}
                   >
                     <div className="flex flex-wrap items-center justify-between gap-2">
-                      <p className="c97-meta mb-0">Popular locations</p>
+                      <p className="c97-meta">Popular locations</p>
                       <p
                         className="mb-0 text-1xs"
                         style={{ color: "var(--c97-ink-2)" }}
@@ -2457,7 +2457,7 @@ export function MBAJobsClient({
 
                 <div className="space-y-4 border-t border-[var(--c97-rule)] pt-6">
                   <div className="space-y-2">
-                    <p className="c97-meta mb-0">Role type</p>
+                    <p className="c97-meta" style={{ marginBottom: "var(--c97-sp-1)" }}>Role type</p>
                     <div className="flex flex-wrap gap-2" role="tablist" aria-label="Filter by role type">
                       {ROLE_TYPE_OPTIONS.map((roleType) => (
                         <EditorialPillButton
@@ -2477,7 +2477,7 @@ export function MBAJobsClient({
                   </div>
 
                   <div className="space-y-2">
-                    <p className="c97-meta mb-0">Role family</p>
+                    <p className="c97-meta" style={{ marginBottom: "var(--c97-sp-1)" }}>Role family</p>
                     <div
                       className="flex flex-wrap gap-2"
                       role="tablist"
@@ -2501,7 +2501,7 @@ export function MBAJobsClient({
                   </div>
 
                   <div className="space-y-2">
-                    <p className="c97-meta mb-0">Company category</p>
+                    <p className="c97-meta" style={{ marginBottom: "var(--c97-sp-1)" }}>Company category</p>
                     <div
                       className="flex flex-wrap gap-2"
                       role="tablist"
@@ -2525,7 +2525,7 @@ export function MBAJobsClient({
                   </div>
 
                   <div className="space-y-2">
-                    <p className="c97-meta mb-0">Sources</p>
+                    <p className="c97-meta" style={{ marginBottom: "var(--c97-sp-1)" }}>Sources</p>
                     <div className="flex flex-wrap gap-2" role="tablist" aria-label="External lead sources">
                       {(["off", "on"] as const).map((external) => (
                         <EditorialPillButton

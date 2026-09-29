@@ -645,8 +645,8 @@ export function SpaceXMissionControlClient({
 
       <section className="c97-band c97-sheet" data-c97-surface="paper" data-seam="torn">
         <div className="c97-shell">
-          <p className="c97-kicker mb-2">Data source</p>
-          <p className="c97-prose mb-0">
+          <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-1)" }}>Data source</p>
+          <p className="c97-prose">
             This dashboard runs on a checked-in snapshot of Launch Library 2
             data from The Space Devs, served through this site&apos;s own API
             routes rather than live upstream calls. It is an independent
