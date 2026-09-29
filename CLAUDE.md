@@ -368,6 +368,7 @@ Subsystem references:
 - `docs/DATA_UPDATE_OPERATIONS.md` — command → artifact → schedule runbook for every refresh
 - `docs/ARTICLE_IMAGE_WORKFLOW.md` — blog cover-image plan, the fetch builder, and the writing-time step
 - `docs/EASTER_EGGS.md` — every easter egg on the site, with its trigger, what it shows, and its code
+- `docs/TODO.md` — open items that need Isaac (secrets, dashboards, decisions) or a scheduled run; add blocked work here and delete an item when it is done
 
 **Legacy / historical** (do not quote as current without checking code): root-level
 SEO/UX summary docs and non-live references under `content/`. `SEO.md` is the current SEO
