@@ -499,7 +499,7 @@ function StartupRow({ startup, rank, isExpanded, sectorLabel, stageLabel, onTogg
                   </div>
                 </dl>
                 <div>
-                  <p className="c97-stat-label mb-2 inline-flex items-center gap-1">
+                  <p className="c97-stat-label inline-flex items-center gap-1" style={{ marginBottom: "var(--c97-sp-1)" }}>
                     <Tags aria-hidden="true" size={12} />
                     Focus
                   </p>
@@ -512,7 +512,7 @@ function StartupRow({ startup, rank, isExpanded, sectorLabel, stageLabel, onTogg
                   </div>
                 </div>
                 <div>
-                  <p className="c97-stat-label mb-2">Notable investors</p>
+                  <p className="c97-stat-label" style={{ marginBottom: "var(--c97-sp-1)" }}>Notable investors</p>
                   <div className="flex flex-wrap gap-2">
                     {startup.notableInvestors.map((investor) => (
                       <span key={investor} className="c97-chip">
@@ -576,7 +576,7 @@ function SegmentSummary({ segments, startups, selectedSegment, onSelectSegment }
     <aside className="c97-panel" aria-labelledby="tech-startup-segment-heading">
       <div className="mb-4 flex items-center justify-between gap-3">
         <div>
-          <p className="c97-kicker mb-1">Segments</p>
+          <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-1)" }}>Segments</p>
           <h2
             id="tech-startup-segment-heading"
             className="c97-serif"

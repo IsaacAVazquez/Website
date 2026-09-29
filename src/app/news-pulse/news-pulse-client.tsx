@@ -400,7 +400,7 @@ function LoadingState() {
       <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-2)" }}>
         Refreshing live feeds
       </p>
-      <p className="c97-prose mb-0">
+      <p className="c97-prose">
         I am pulling the latest RSS headlines now so the dashboard can rebuild the digest and
         comparison views.
       </p>
@@ -414,7 +414,7 @@ function ErrorState({ message, onRetry }: { message: string; onRetry: () => void
       <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-2)" }}>
         I could not load the feeds.
       </p>
-      <p className="c97-prose mb-0">{message}</p>
+      <p className="c97-prose">{message}</p>
       <button
         type="button"
         onClick={onRetry}
@@ -457,7 +457,7 @@ function HeadlinesView({ articles }: { articles: NewsArticle[] }) {
         <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-2)" }}>
           No headlines match this filter.
         </p>
-        <p className="c97-prose mb-0">
+        <p className="c97-prose">
           That source did not return any articles in the current pull, so there is nothing to
           compare yet.
         </p>
@@ -575,7 +575,7 @@ function CoverageView({
         <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-2)" }}>
           The cross-outlet overlap is thin right now.
         </p>
-        <p className="c97-prose mb-0">
+        <p className="c97-prose">
           I need at least two outlets on the same storyline before this view becomes useful.
         </p>
       </div>
@@ -817,7 +817,7 @@ function AnalysisView({ articles }: { articles: NewsArticle[] }) {
         <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-2)" }}>
           There is no analysis to compare yet.
         </p>
-        <p className="c97-prose mb-0">
+        <p className="c97-prose">
           The dashboard needs headline data before it can calculate tone, length, and readability
           by outlet.
         </p>

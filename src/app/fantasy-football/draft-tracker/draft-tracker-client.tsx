@@ -1220,7 +1220,7 @@ export function DraftTrackerClient() {
 
       <div className="c97-sheet" data-c97-surface="paper">
       {showSetup ? (
-        <div className="mx-auto w-full max-w-[820px] px-[clamp(1rem,4vw,2.5rem)] pb-12 pt-1">
+        <div className="c97-shell c97-frame pb-12 pt-1" style={{ maxWidth: 740 }}>
           <DraftSetup
             settings={draftState.settings}
             onSaveSettings={updateSettings}
@@ -1486,7 +1486,7 @@ export function DraftTrackerClient() {
                   id="draft-decision-strip"
                   className="grid gap-px"
                   style={{
-                    gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))",
+                    gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 320px), 1fr))",
                     background: "var(--c97-surface)",
                   }}
                 >
@@ -1760,7 +1760,7 @@ export function DraftTrackerClient() {
                   {showTeamEditor && (
                     <div
                       className="mt-4 grid gap-x-4 gap-y-2.5"
-                      style={{ gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))" }}
+                      style={{ gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 200px), 1fr))" }}
                     >
                       {draftState.teams.map((team) => (
                         <label key={team.teamNumber} className="grid gap-1 text-xs">

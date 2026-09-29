@@ -434,7 +434,7 @@ export function LaLigaClient({
             />
           </div>
 
-          <div className="c97-segmented">
+          <div className="c97-segmented" style={{ marginBottom: "var(--c97-sp-3)" }}>
             {VIEW_OPTIONS.map((option) => {
               const isActive = option.id === routeState.view;
               return (
@@ -506,7 +506,7 @@ export function LaLigaClient({
                   </div>
 
                   <div>
-                    <p className="c97-kicker mb-3">Performance</p>
+                    <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-2)" }}>Performance</p>
                     <div className="grid grid-cols-2 gap-3">
                       <MetricCard label="PPG" value={formatFixed(selectedClub.points / selectedClub.played)} />
                       <MetricCard label="Record" value={`${selectedClub.won}-${selectedClub.drawn}-${selectedClub.lost}`} />
@@ -518,7 +518,7 @@ export function LaLigaClient({
                   </div>
 
                   <div className="c97-panel">
-                    <p className="c97-kicker mb-3">Pressure points</p>
+                    <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-2)" }}>Pressure points</p>
                     <ul className="space-y-2 pl-5 c97-prose">
                       {clubPressurePoints.map((item) => (
                         <li key={item}>{item}</li>
@@ -542,7 +542,7 @@ export function LaLigaClient({
                     role={teamSnapshotError ? "alert" : "status"}
                     aria-live="polite"
                   >
-                    <p className="c97-prose mb-0">
+                    <p className="c97-prose">
                       {isTeamSnapshotLoading
                         ? "Loading recent club fixtures…"
                         : teamSnapshotError}
@@ -552,7 +552,7 @@ export function LaLigaClient({
 
                 {recentFixtures.length > 0 && (
                   <div>
-                    <p className="c97-kicker mb-3">Recent results</p>
+                    <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-2)" }}>Recent results</p>
                     <div className="space-y-2">
                       {recentFixtures.map((fixture) => (
                         <FixtureCard
@@ -568,7 +568,7 @@ export function LaLigaClient({
 
                 {upcomingFixtures.length > 0 && (
                   <div>
-                    <p className="c97-kicker mb-3">Upcoming fixtures</p>
+                    <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-2)" }}>Upcoming fixtures</p>
                     <div className="space-y-2">
                       {upcomingFixtures.map((fixture) => (
                         <FixtureCard
@@ -587,16 +587,16 @@ export function LaLigaClient({
             {activeDetailTab === "fixtures" && (
               <div className="grid gap-6 md:grid-cols-2">
                 <div>
-                  <p className="c97-kicker mb-2">Recent slate</p>
-                  <h3 className="c97-h3 c97-serif mb-3">Latest results</h3>
+                  <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-1)" }}>Recent slate</p>
+                  <h3 className="c97-h3 c97-serif" style={{ marginBottom: "var(--c97-sp-2)" }}>Latest results</h3>
                   <FixtureLedgerSection
                     groups={groupFixturesByMatchday(summary.recentFixtures)}
                     onOpenTeam={handleClubChange}
                   />
                 </div>
                 <div>
-                  <p className="c97-kicker mb-2">Next up</p>
-                  <h3 className="c97-h3 c97-serif mb-3">Upcoming fixtures</h3>
+                  <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-1)" }}>Next up</p>
+                  <h3 className="c97-h3 c97-serif" style={{ marginBottom: "var(--c97-sp-2)" }}>Upcoming fixtures</h3>
                   <FixtureLedgerSection
                     groups={groupFixturesByMatchday(summary.upcomingFixtures, { suffix: "upcoming" })}
                     onOpenTeam={handleClubChange}
@@ -658,8 +658,8 @@ export function LaLigaClient({
 
       <section className="c97-band c97-sheet" data-c97-surface="paper" data-seam="torn">
         <div className="c97-shell">
-          <p className="c97-kicker mb-2">Snapshot note</p>
-          <p className="c97-prose mb-0" style={{ fontSize: "var(--c97-fs-small)" }}>
+          <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-1)" }}>Snapshot note</p>
+          <p className="c97-prose" style={{ fontSize: "var(--c97-fs-small)" }}>
             This page is a curated snapshot, refreshed on a schedule. Standings come from the official LALIGA table, and the scorer and assist boards mirror the official stats pages linked above.
           </p>
         </div>
@@ -696,16 +696,16 @@ function ClubLeaderCard({
       <p className="c97-kicker">{title}</p>
       {leader ? (
         <>
-          <p className="mt-2 text-lg font-bold c97-serif">{leader.name}</p>
-          <p className="mt-1 c97-prose">
+          <p className="text-lg font-bold c97-serif" style={{ marginTop: "var(--c97-sp-1)" }}>{leader.name}</p>
+          <p className="c97-prose" style={{ marginTop: "var(--c97-sp-1)" }}>
             {leader.total} {statLabel.toLowerCase()} in {leader.appearances} matches
           </p>
-          <p className="mt-2 c97-kicker">
+          <p className="c97-kicker" style={{ marginTop: "var(--c97-sp-1)" }}>
             {formatFixed(leader.perMatch)} per match
           </p>
         </>
       ) : (
-        <p className="mt-2 c97-prose">{emptyLabel}</p>
+        <p className="c97-prose" style={{ marginTop: "var(--c97-sp-1)" }}>{emptyLabel}</p>
       )}
     </div>
   );

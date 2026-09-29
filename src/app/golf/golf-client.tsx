@@ -239,7 +239,7 @@ function MobileLeaderboardCards({
           >
             <div className="flex items-start justify-between gap-4">
               <div>
-                <p className="c97-kicker mb-0">{row.position}</p>
+                <p className="c97-kicker">{row.position}</p>
                 <h3 className="c97-serif c97-h3">{row.playerName}</h3>
                 <p className="c97-stat-delta">{row.country}</p>
               </div>
@@ -291,7 +291,7 @@ function PlayerCards({
           >
             <div className="flex items-start justify-between gap-4">
               <div>
-                <p className="c97-kicker mb-0">{row.position}</p>
+                <p className="c97-kicker">{row.position}</p>
                 <h3 className="c97-serif c97-h3">{row.playerName}</h3>
                 <p className="c97-stat-delta">{row.country}</p>
               </div>
@@ -498,7 +498,7 @@ export function GolfClient({ initialState, summary, initialPlayerSnapshot }: Gol
           <div className="grid gap-8 xl:grid-cols-[minmax(0,1.7fr)_minmax(320px,0.92fr)]">
             <div className="space-y-6">
               <h2 className="c97-poster-sm">The board</h2>
-              <div className="c97-segmented" role="tablist" aria-label="Golf view switcher">
+              <div className="c97-segmented" style={{ marginBottom: "var(--c97-sp-3)" }} role="tablist" aria-label="Golf view switcher">
                 {GOLF_VIEW_OPTIONS.map((view) => (
                   <button
                     key={view}
@@ -521,7 +521,7 @@ export function GolfClient({ initialState, summary, initialPlayerSnapshot }: Gol
                 id={`golf-tabpanel-${routeState.view}`}
                 aria-labelledby={`golf-tab-${routeState.view}`}
               >
-                <p className="c97-prose mb-0">
+                <p className="c97-prose" style={{ marginBottom: "var(--c97-sp-2)" }}>
                   {routeState.view === "leaderboard"
                     ? "The table when you want the fastest read on score, round splits, and movement."
                     : "The player cards when you want a softer scan that still keeps score and momentum visible."}
@@ -553,7 +553,7 @@ export function GolfClient({ initialState, summary, initialPlayerSnapshot }: Gol
 
             <aside className="space-y-4">
               <div className="c97-panel xl:sticky xl:top-6">
-                <p className="c97-kicker mb-2">Selected player</p>
+                <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-1)" }}>Selected player</p>
 
                 {selectedRow ? (
                   <>
@@ -581,7 +581,7 @@ export function GolfClient({ initialState, summary, initialPlayerSnapshot }: Gol
                     </div>
 
                     {isPlayerSnapshotLoading ? (
-                      <p className="c97-prose mt-5" role="status" style={{ fontSize: "var(--c97-fs-small)", color: "var(--c97-ink-2)" }}>
+                      <p className="c97-prose" role="status" style={{ marginTop: "var(--c97-sp-3)", fontSize: "var(--c97-fs-small)", color: "var(--c97-ink-2)" }}>
                         Loading player detail…
                       </p>
                     ) : null}
@@ -600,11 +600,11 @@ export function GolfClient({ initialState, summary, initialPlayerSnapshot }: Gol
                     {playerSnapshot?.player ? (
                       <div className="mt-5 space-y-5">
                         <div className="space-y-2" style={{ fontSize: "var(--c97-fs-small)" }}>
-                          <p className="mb-0 flex items-center gap-2">
+                          <p className="flex items-center gap-2">
                             <UserRound className="h-4 w-4 shrink-0" aria-hidden="true" />
                             <span>{playerSnapshot.player.country}</span>
                           </p>
-                          <p className="mb-0 flex items-center gap-2">
+                          <p className="flex items-center gap-2">
                             <Gauge className="h-4 w-4 shrink-0" aria-hidden="true" />
                             <span>Next round tee time {playerSnapshot.tournamentStatus.nextTeeTime ?? "TBD"}</span>
                           </p>
@@ -615,7 +615,7 @@ export function GolfClient({ initialState, summary, initialPlayerSnapshot }: Gol
                         </div>
 
                         <div>
-                          <p className="c97-kicker mb-2">Round by round</p>
+                          <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-1)" }}>Round by round</p>
                           <table className="c97-table">
                             <caption className="sr-only">Round by round scoring for {selectedRow.playerName}</caption>
                             <thead>
@@ -640,7 +640,7 @@ export function GolfClient({ initialState, summary, initialPlayerSnapshot }: Gol
                         </div>
 
                         <div>
-                          <p className="c97-kicker mb-2">Scoring split</p>
+                          <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-1)" }}>Scoring split</p>
                           {/* The feed sends zeros when it has no hole data, and a winner with no birdies is not a real reading. */}
                           {playerSnapshot.scoring.birdies +
                             playerSnapshot.scoring.bogeys +
@@ -654,7 +654,7 @@ export function GolfClient({ initialState, summary, initialPlayerSnapshot }: Gol
                               <StatBlock label="Eagles" value={`${playerSnapshot.scoring.eagles}`} detail="Round-changing swings" />
                             </div>
                           ) : (
-                            <p className="c97-prose mb-0" style={{ fontSize: "var(--c97-fs-small)" }}>
+                            <p className="c97-prose" style={{ fontSize: "var(--c97-fs-small)" }}>
                               The snapshot carries no birdie, par, or bogey counts for this event, so I only show the rounds.
                             </p>
                           )}
@@ -663,7 +663,7 @@ export function GolfClient({ initialState, summary, initialPlayerSnapshot }: Gol
                     ) : null}
                   </>
                 ) : (
-                  <p className="c97-prose mb-0" style={{ fontSize: "var(--c97-fs-small)" }}>
+                  <p className="c97-prose" style={{ fontSize: "var(--c97-fs-small)" }}>
                     No player is available in the current snapshot.
                   </p>
                 )}
@@ -675,12 +675,12 @@ export function GolfClient({ initialState, summary, initialPlayerSnapshot }: Gol
 
       <section className="c97-band c97-sheet" data-c97-surface="bone" data-seam="deckle">
         <div className="c97-shell space-y-3">
-          <p className="c97-kicker mb-0">Snapshot note</p>
-          <p className="c97-prose mb-0" style={{ fontSize: "var(--c97-fs-small)" }}>
+          <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-2)" }}>Snapshot note</p>
+          <p className="c97-prose" style={{ marginBottom: "var(--c97-sp-2)", fontSize: "var(--c97-fs-small)" }}>
             This page is a checked-in tournament snapshot that refreshes on a schedule.
             Scores, movement, and player drilldowns reflect the local dataset shipped with the app.
           </p>
-          <p className="c97-prose mb-0" style={{ fontSize: "var(--c97-fs-small)" }}>
+          <p className="c97-prose" style={{ fontSize: "var(--c97-fs-small)" }}>
             The leaderboard, cut line, and player movement come from ESPN&apos;s public golf
             leaderboard API and refresh on a schedule, so figures can trail the broadcast.
             Snapshot refreshed {formatGeneratedAt(tournament.generatedAt)}.

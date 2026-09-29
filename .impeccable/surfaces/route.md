@@ -5,6 +5,8 @@ primary_target: "route:/"
 related_targets: ["src/components/catalog97/Catalog97Home.tsx"]
 ---
 
+Updated on 2026-09-28 by the responsive pass. Home no longer renders `.c97-columns`, so the note below about that class's track describes the class and not this page. The Selected work grid is three columns above 880px and one at 880px and under, where the collage stacks too, which ended its 2+1 at 768 and 844. When "Start a conversation" wraps under "See the work" on a phone, its label now starts on the column edge, since `.c97-btn-ghost` gives back its start padding.
+
 **Superseded in part on 2026-09-23.** The seven designed routes now use the print shop layout in `STYLING.md`, and it overrides anything below that disagrees. The pine, camel, and tobacco surfaces were renamed and repainted as `ink-blue`, `ink-saffron`, and `ink-vermilion`, and `ink-peach` was added, so read any mention of pine, camel, or tobacco below as the ink that replaced it. Anton now also sets the h1 and section h2s through `.c97-poster`, so the numerals-only Anton rule is retired. Vermilion carries body text with the darkest ink (4.62:1), so the tobacco large-text-only rule is retired too. Bands that change surface tear over each other, and the one allowed shadow is the hard `.c97-offset` in the second ink.
 
 # Home surface brief

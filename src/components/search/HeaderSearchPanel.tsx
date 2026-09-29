@@ -170,7 +170,7 @@ export function HeaderSearchPanel({ onClose }: HeaderSearchPanelProps) {
         onClick={onClose}
         className="fixed inset-0 -z-10 cursor-default bg-[var(--c97-overlay)]"
       />
-      <div className="c97-shell" style={{ paddingInline: "var(--c97-gutter)" }}>
+      <div className="c97-shell c97-frame">
         <div
           data-c97-surface="paper"
           className="c97-offset mt-2 overflow-hidden border"

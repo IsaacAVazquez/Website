@@ -8,7 +8,6 @@
   background: var(--team-paper);
   border-top: 1px solid var(--team-ink);
   border-bottom: 1px solid var(--team-rule);
-  scroll-margin-top: 6rem;
 }
 
 .header {

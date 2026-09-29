@@ -119,7 +119,7 @@ export function ResearchWorkspace({
     <section
       id="research-section"
       aria-label={`Research · ${symbol.toUpperCase()}`}
-      className="scroll-mt-28 space-y-5"
+      className="scroll-mt-12 min-[901px]:scroll-mt-0 space-y-5"
     >
       {showLoadingState ? (
         <ResearchLoading symbol={symbol} />

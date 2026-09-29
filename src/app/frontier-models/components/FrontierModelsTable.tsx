@@ -233,7 +233,7 @@ function FrontierRow({ model, isExpanded, onToggle, onKeyDown }: FrontierRowProp
       {isExpanded ? (
         <tr id={`frontier-row-detail-${model.id}`}>
           <td colSpan={6} className="px-4 py-5">
-            <div className="grid gap-4 lg:grid-cols-[2fr,1fr]">
+            <div className="grid gap-4 lg:grid-cols-[minmax(0,2fr)_minmax(0,1fr)]">
               <p className="m-0 text-sm leading-7" style={{ color: "var(--c97-ink)" }}>
                 {model.editorialNote}
               </p>

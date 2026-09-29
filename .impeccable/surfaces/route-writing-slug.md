@@ -5,6 +5,8 @@ primary_target: "route:/writing/[slug]"
 related_targets: ["src/app/writing/[slug]/page.tsx","src/components/analytics/ArticleCodeCopy.tsx","src/components/ui/AuthorBio.tsx","scripts/data/articleCoverImages.ts"]
 ---
 
+Updated on 2026-09-28 by the responsive pass. Inline code breaks anywhere, so a long path no longer pushes a phone sideways, and the previous and next links sit side by side from 640px with Next set right, but stack and set left on a phone.
+
 # Article reading view surface brief
 
 The `/writing/[slug]` route, rendered by `src/app/writing/[slug]/page.tsx`, with the code copy control in `src/components/analytics/ArticleCodeCopy.tsx`, the end bio in `src/components/ui/AuthorBio.tsx`, and the cover plan in `scripts/data/articleCoverImages.ts`.

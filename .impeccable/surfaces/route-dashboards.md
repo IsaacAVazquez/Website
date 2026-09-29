@@ -5,6 +5,8 @@ primary_target: "route:/dashboards"
 related_targets: ["src/components/catalog97/Catalog97Dashboards.tsx"]
 ---
 
+Updated on 2026-09-28 by the responsive pass. A `.c97-mosaic` of four tiles prints two by two from 700px, which ended the fintech group's 3+1 and its two-tile hole from 1045px up, and a mosaic of three stacks below 881px and sets three across from there.
+
 **Superseded in part on 2026-09-23.** The seven designed routes now use the print shop layout in `STYLING.md`, and it overrides anything below that disagrees. The pine, camel, and tobacco surfaces were renamed and repainted as `ink-blue`, `ink-saffron`, and `ink-vermilion`, and `ink-peach` was added, so read any mention of pine, camel, or tobacco below as the ink that replaced it. Anton now also sets the h1 and section h2s through `.c97-poster`, so the numerals-only Anton rule is retired. Vermilion carries body text with the darkest ink (4.62:1), so the tobacco large-text-only rule is retired too. Bands that change surface tear over each other, and the one allowed shadow is the hard `.c97-offset` in the second ink.
 
 # Dashboard index surface brief

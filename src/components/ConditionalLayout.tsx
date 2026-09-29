@@ -3,7 +3,7 @@
 import { usePathname } from "next/navigation";
 import { Catalog97ToolShell } from "@/components/catalog97/Catalog97ToolShell";
 import { projectBuildNoteLinks } from "@/components/projectBuildNoteLinks";
-import { isCatalog97Route } from "@/constants/catalog97Nav";
+import { isCatalog97Route, WIDE_TOOL_ROUTES } from "@/constants/catalog97Nav";
 import { getProjectPress } from "@/constants/projectPress";
 
 interface ConditionalLayoutProps {
@@ -33,6 +33,7 @@ export function ConditionalLayout({ children }: ConditionalLayoutProps) {
       route={pathname}
       buildNoteHref={projectBuildNoteLinks[pathname]}
       press={getProjectPress(pathname)}
+      wide={WIDE_TOOL_ROUTES.has(pathname)}
     >
       {children}
     </Catalog97ToolShell>

@@ -5,6 +5,8 @@ primary_target: "route:/fantasy-football/mock-draft"
 related_targets: ["src/app/fantasy-football/mock-draft/mock-draft-client.tsx","src/app/fantasy-football/mock-draft/hooks/useMockDraftState.ts","src/lib/mockDraft.ts"]
 ---
 
+Updated on 2026-09-28 by the responsive pass. The page uses the site gutter through `SHELL_CLASS`, and the setup column keeps its text width with an inline 700px max. The on-the-clock panel's 240px scroll margin still assumes the old sticky header plus the strip, and it was left alone because the room could not be started to measure the strip while the board was stale.
+
 # Fantasy Football Mock Draft
 
 **Status note, 2026-09-27.** This route renders inside `Catalog97ToolShell` and reads `--c97-*` tokens directly under `data-c97-surface`. `DESIGN.md` now describes Catalog 97 and governs this route. The old site header was sticky at 73px and was deleted on 2026-09-16, and `Catalog97Header` is `position: relative`, so every measurement below that assumes a 73px sticky header predates that change. Contrast figures below were measured against Working Instrument values carried through the since-removed bridge and may need re-measuring against the shipped `--c97-*` colors.

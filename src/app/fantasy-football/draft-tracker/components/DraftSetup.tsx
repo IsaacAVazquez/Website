@@ -372,7 +372,7 @@ export function DraftSetup({
 
       <div
         className="grid gap-x-4 gap-y-3.5 px-4 py-4 sm:px-5"
-        style={{ gridTemplateColumns: "repeat(auto-fit, minmax(210px, 1fr))" }}
+        style={{ gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 210px), 1fr))" }}
       >
         <label className="grid content-start gap-1.5 text-sm" htmlFor="draft-league-name">
           <span className={MONO_LABEL_CLASS} style={{ color: "var(--c97-ink-2)" }}>
@@ -492,7 +492,7 @@ export function DraftSetup({
         <legend className={`${MONO_LABEL_CLASS} mb-2`} style={{ color: "var(--c97-ink-2)" }}>
           Starting lineup
         </legend>
-        <div className="grid gap-2" style={{ gridTemplateColumns: "repeat(auto-fit, minmax(190px, 1fr))" }}>
+        <div className="grid gap-2" style={{ gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 190px), 1fr))" }}>
           {REDRAFT_LINEUP_PRESETS.map((preset) => {
             const active = sameLineup(formState.lineup, preset.lineup);
             return (
@@ -527,7 +527,7 @@ export function DraftSetup({
         {/* Presets cover the common rooms; these selects keep odd home-league
             lineups reachable. Flex accepts RB, WR, or TE, and the board scores
             one-QB rankings only, so Superflex rooms are not modeled here. */}
-        <div className="grid gap-x-4 gap-y-2.5" style={{ gridTemplateColumns: "repeat(auto-fit, minmax(150px, 1fr))" }}>
+        <div className="grid gap-x-4 gap-y-2.5" style={{ gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 150px), 1fr))" }}>
           <div className="grid content-start gap-1.5 text-sm">
             <span className={MONO_LABEL_CLASS} style={{ color: "var(--c97-ink-2)" }}>
               Quarterbacks

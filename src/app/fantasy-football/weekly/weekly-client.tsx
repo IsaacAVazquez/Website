@@ -556,7 +556,7 @@ export function WeeklyBoardClient({
               >
                 <h2
                   id="weekly-waivers"
-                  className="c97-poster-sm scroll-mt-24"
+                  className="c97-poster-sm"
                 >
                   This week&rsquo;s list
                 </h2>
@@ -747,7 +747,7 @@ export function WeeklyBoardClient({
               <section aria-labelledby="weekly-board" className="border-t border-[var(--c97-ink)] pt-5">
                 <h2
                   id="weekly-board"
-                  className="c97-poster-sm scroll-mt-24"
+                  className="c97-poster-sm"
                 >
                   {board === "flex" ? "Flex rankings" : "Quarterback rankings"}
                 </h2>

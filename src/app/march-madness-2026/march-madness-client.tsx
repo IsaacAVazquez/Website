@@ -88,7 +88,7 @@ function SectionIntro({
 }) {
   return (
     <div className="space-y-3">
-      <p className="c97-kicker" style={{ margin: 0 }}>
+      <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-2)" }}>
         {eyebrow}
       </p>
       <h2 id={titleId} className="c97-poster-sm">
@@ -269,7 +269,8 @@ function TabBar<T extends string>({
   };
 
   return (
-    <div className="c97-segmented" role="tablist" aria-label={label}>
+    // Every TabBar sits in a space-y-5 stack, whose gap .c97-segmented's margin: 0 would drop.
+    <div className="c97-segmented" role="tablist" aria-label={label} style={{ marginBottom: "var(--c97-sp-3)" }}>
       {items.map((item, index) => (
         <button
           key={item.value}
@@ -331,7 +332,7 @@ const RANKINGS_COLUMNS = [
 function RankingsSection() {
   return (
     <div className="space-y-4">
-      <p className="c97-prose" style={{ fontSize: "var(--c97-fs-small)" }}>
+      <p className="c97-prose" style={{ marginBottom: "var(--c97-sp-2)", fontSize: "var(--c97-fs-small)" }}>
         Blended average across BPI, Evan Miya, KPI, NET, KenPom, SOR, T-Rank, and WAB, excluding the
         minimum and maximum system values.
       </p>
@@ -867,10 +868,10 @@ export function MarchMadnessClient({
 
       <section className="c97-band c97-sheet" data-c97-surface="paper" data-seam="torn">
         <div className="c97-shell space-y-4">
-          <p className="c97-kicker" style={{ margin: 0 }}>
+          <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-2)" }}>
             National champion pick
           </p>
-          <h2 className="c97-serif c97-h2">{championshipWinner ?? "TBD"}</h2>
+          <h2 className="c97-serif c97-h2" style={{ marginBottom: "var(--c97-sp-2)" }}>{championshipWinner ?? "TBD"}</h2>
           <p className="c97-prose">
             I think {championshipWinner} is the cleanest title pick in the field. The team ranks first
             across the blended metric set on this page, and it carries zero total travel penalty
@@ -902,7 +903,6 @@ export function MarchMadnessClient({
         className="c97-band c97-sheet"
         data-c97-surface="paper"
         data-seam="torn"
-        style={{ scrollMarginTop: "7rem" }}
       >
         <div className="c97-shell space-y-6">
           <SectionIntro
@@ -983,7 +983,7 @@ export function MarchMadnessClient({
 
       <section className="c97-band c97-sheet" data-c97-surface="paper" data-seam="torn">
         <div className="c97-shell space-y-5">
-          <p className="c97-kicker" style={{ margin: 0 }}>
+          <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-3)" }}>
             Final Four &middot; Indianapolis, IN (ET)
           </p>
           <div className="c97-columns">
@@ -1012,7 +1012,6 @@ export function MarchMadnessClient({
         className="c97-band c97-sheet"
         data-c97-surface="bone"
         data-seam="deckle"
-        style={{ scrollMarginTop: "7rem" }}
       >
         <div className="c97-shell space-y-5">
           <h2 className="c97-poster-sm">The analysis workspace</h2>

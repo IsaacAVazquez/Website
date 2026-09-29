@@ -206,7 +206,7 @@ export function Catalog97LayoutsCanvas({
             <div
               style={{
                 display: "grid",
-                gridTemplateColumns: "repeat(auto-fit,minmax(230px,1fr))",
+                gridTemplateColumns: "repeat(auto-fit,minmax(min(100%, 230px),1fr))",
                 gap: "var(--c97-sp-5)",
                 marginTop: "var(--c97-sp-3)",
               }}

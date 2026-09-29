@@ -49,7 +49,7 @@ export function RetirementPlanner({ portfolioValue, seedAllocation }: Props) {
     <section
       ref={sectionRef}
       id="retirement"
-      className="invest-research-band invest-retire-band scroll-mt-28"
+      className="invest-research-band invest-retire-band scroll-mt-12 min-[901px]:scroll-mt-0"
       aria-label="Retirement planner"
     >
       <div className="invest-section-header">

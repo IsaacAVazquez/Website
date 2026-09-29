@@ -2,7 +2,7 @@
 
 Deep implementation context for Claude Code and other agents working in this repo.
 
-**Last updated:** 2026-09-27
+**Last updated:** 2026-09-28
 
 ---
 
@@ -277,6 +277,12 @@ Catalog 97, and where it disagrees with `catalog97.css`, the CSS wins.
   `--c97-column`. The type classes and `.c97-panel` are unlayered and set their own
   margin or padding, so a Tailwind margin or padding utility on the same element silently
   loses; put that spacing in an inline style.
+- The four dense tools in `WIDE_TOOL_ROUTES` (`src/constants/catalog97Nav.ts`) print on the
+  1376px `--c97-container-wide`, and every shell on those pages widens with them, header and
+  footer included, so a page keeps one edge. Content outside a `.c97-band` pairs `.c97-shell`
+  with `.c97-frame`. `node scripts/layoutSweep.mjs <baseUrl>` checks every route from phone to
+  big-monitor sizes, and `e2e/layoutChecks.ts` holds the h1, breadcrumb, and footer to the
+  header's edges in CI.
 - Tailwind's radius and shadow scales compile to `0` and `none` in `tailwind.config.ts`,
   so a leftover `rounded-lg` or `shadow-sm` paints nothing. Remove it when you touch the
   file. The hard `.c97-offset` is the one shadow the system allows.

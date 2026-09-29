@@ -39,3 +39,18 @@ const catalog97Routes = new Set(catalog97NavLinks.map((link) => link.href));
 export function isCatalog97Route(pathname: string): boolean {
   return catalog97Routes.has(pathname);
 }
+
+/**
+ * The dense tools that print on the wide column (`--c97-container-wide`).
+ * `ConditionalLayout` marks these pages, and every shell on them widens, the
+ * header's and footer's included, so the title, the tool, and the wordmark
+ * share one edge. A route list rather than a marker inside the page, so the
+ * loading and error states widen too. Exact matches, so the score pools
+ * tracker and settings stay on the standard column.
+ */
+export const WIDE_TOOL_ROUTES: ReadonlySet<string> = new Set([
+  "/fantasy-football/trade-calculator",
+  "/fantasy-football/best-ball/draft-tracker",
+  "/investments",
+  "/score-pools",
+]);

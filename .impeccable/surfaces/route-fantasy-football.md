@@ -5,6 +5,8 @@ primary_target: "route:/fantasy-football"
 related_targets: ["src/app/fantasy-football/fantasy-football-client.tsx","src/app/fantasy-football/draft-tracker/draft-tracker-client.tsx","src/app/fantasy-football/best-ball/draft-tracker/draft-tracker-client.tsx","src/app/fantasy-football/best-ball/best-ball-client.tsx"]
 ---
 
+Updated on 2026-09-28 by the responsive pass. `SHELL_CLASS` is `c97-shell c97-frame` now, so every fantasy route uses the site gutter and its h1 lines up with the wordmark (it started at 16 against 28 on a phone), and `WIDE_SHELL_CLASS` is gone. The trade calculator and the best ball draft room are wide tool routes, so the header and footer widen with the 1376px tool instead of the tool running past a 1080px header. Every auto-fit floor in the fantasy grids carries `min(100%, N)`, which stopped the best ball page clipping its content at 320.
+
 # Fantasy Football
 
 **Status note, 2026-09-27.** This route renders inside `Catalog97ToolShell` and reads `--c97-*` tokens directly under `data-c97-surface`. `DESIGN.md` now describes Catalog 97 and governs this route. The old site header was sticky at 73px and was deleted on 2026-09-16, and `Catalog97Header` is `position: relative`, so every measurement below that assumes a 73px sticky header predates that change. Contrast figures below were measured against Working Instrument values carried through the since-removed bridge and may need re-measuring against the shipped `--c97-*` colors.

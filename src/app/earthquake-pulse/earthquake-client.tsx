@@ -357,7 +357,7 @@ function DetailStat({ label, value }: { label: string; value: string }) {
         background: "color-mix(in srgb, var(--c97-surface) 92%, var(--c97-field))",
       }}
     >
-      <p className="c97-kicker mb-1">{label}</p>
+      <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-1)" }}>{label}</p>
       <p
         className="mb-0 text-base font-semibold"
         style={{ color: "var(--c97-ink)", fontFamily: "var(--c97-font-body)" }}
@@ -624,7 +624,7 @@ export function EarthquakeClient({
           <div className="grid gap-8 xl:grid-cols-[minmax(0,1.7fr)_minmax(320px,0.92fr)]">
             <div className="space-y-6">
               <h2 className="c97-poster-sm">The log</h2>
-              <div className="c97-segmented" role="tablist" aria-label="Earthquake view switcher">
+              <div className="c97-segmented" style={{ marginBottom: "var(--c97-sp-3)" }} role="tablist" aria-label="Earthquake view switcher">
                 {EARTHQUAKE_VIEW_OPTIONS.map((view) => (
                   <button
                     key={view}
@@ -648,14 +648,14 @@ export function EarthquakeClient({
                 aria-labelledby={`earthquake-tab-${routeState.view}`}
               >
                 <div className="space-y-2">
-                  <p className="c97-kicker mb-0">
+                  <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-1)" }}>
                     {routeState.view === "recent"
                       ? "Last 24 hours"
                       : routeState.view === "significant"
                       ? "Significant, past 30 days"
                       : "Where the ground is busiest"}
                   </p>
-                  <p className="c97-prose mb-0">
+                  <p className="c97-prose">
                     {routeState.view === "recent"
                       ? "The most recent notable quakes worldwide (M2.5 and up), newest first, logged by origin time. Tap one for depth, felt reports, and coordinates."
                       : routeState.view === "significant"
@@ -669,12 +669,12 @@ export function EarthquakeClient({
                     <div className="c97-panel">
                       <div className="mb-4 flex items-center gap-2">
                         <BarChart3 className="h-4 w-4" aria-hidden="true" style={{ color: "var(--c97-ink-2)" }} />
-                        <p className="c97-kicker mb-0">Magnitude distribution · 7 days</p>
+                        <p className="c97-kicker">Magnitude distribution · 7 days</p>
                       </div>
                       <DistributionBars summary={summary} />
                     </div>
                     <div>
-                      <p className="c97-kicker mb-3">Busiest regions · 7 days</p>
+                      <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-2)" }}>Busiest regions · 7 days</p>
                       <RegionList summary={summary} onSelect={handleSelectQuake} />
                     </div>
                   </div>
@@ -698,7 +698,7 @@ export function EarthquakeClient({
               <div className="c97-panel xl:sticky xl:top-6">
                 <div className="mb-3 flex items-center gap-2">
                   <Gauge className="h-4 w-4" aria-hidden="true" style={{ color: "var(--c97-ink-2)" }} />
-                  <p className="c97-kicker mb-0">Selected quake</p>
+                  <p className="c97-kicker">Selected quake</p>
                 </div>
                 <QuakeDetailPanel quake={selectedQuake} now={now} />
               </div>
@@ -709,8 +709,8 @@ export function EarthquakeClient({
 
       <section className="c97-band c97-sheet" data-c97-surface="bone" data-seam="deckle">
         <div className="c97-shell">
-          <p className="c97-kicker mb-2">Snapshot note</p>
-          <p className="c97-prose mb-0">
+          <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-1)" }}>Snapshot note</p>
+          <p className="c97-prose">
             This page is a checked-in snapshot of public USGS Earthquake Hazards Program feeds,
             refreshed on a schedule, and it is not a live emergency feed. For official alerts and
             the latest data, always defer to USGS and your local authorities.
