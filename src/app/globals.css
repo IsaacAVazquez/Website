@@ -178,6 +178,18 @@
     margin-bottom: 0.25em;
     line-height: 1.6;
   }
+
+  /*
+   * A Tailwind grid that sets its columns only from a breakpoint up has no
+   * template below it, and its implicit column grows to the widest child's
+   * min-content, which pushed /mlb and /world-cup-2026 sideways at 320. One
+   * column that can shrink is the default instead. Any grid-cols utility,
+   * route stylesheet, or inline template still wins, since they all outrank
+   * @layer base.
+   */
+  .grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
 }
 
 /* Theme transition. Only the theme-aware properties, never all of them. */
