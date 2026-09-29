@@ -6,7 +6,7 @@
 import type { FantasyAdpEntry } from "@/lib/fantasyAdpSource";
 import type { ScoringFormat } from "@/types";
 
-export const fantasyAdpDataGeneratedAt = "2026-09-10T19:28:30.703Z";
+export const fantasyAdpDataGeneratedAt = "2026-09-29T05:49:42.549Z";
 
 export const fantasyAdpData: Record<
   ScoringFormat,
