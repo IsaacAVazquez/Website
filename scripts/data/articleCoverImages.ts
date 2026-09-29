@@ -66,6 +66,8 @@ const COVER_WRONG_SUBJECT = "The fetched photo showed a different subject than t
 const RISO_PLATE = "Riso plate made for the site; no third-party credit, and the builder must not overwrite it.";
 // Set on 2026-09-25 for the write-ups about past employers.
 const CAREER_WRITEUP = "Career write-up about a past employer; the only real subject is the company's own brand, which is not ours to use.";
+// Set on 2026-09-28 for the monthly company series.
+const COMPANY_SERIES = "Monthly company commentary; the only real subject is the company's own brand, which is not ours to use.";
 
 export const ARTICLE_COVER_IMAGES: ArticleCoverImageSpec[] = [
   // ---------------------------------------------------------------------------
@@ -340,4 +342,42 @@ export const ARTICLE_COVER_IMAGES: ArticleCoverImageSpec[] = [
   // September 2026 batch
   { slug: "juno-mba-growth-internship", strategy: "editorial-card", reason: CAREER_WRITEUP },
   { slug: "civitech-quality-and-product-work", strategy: "editorial-card", reason: CAREER_WRITEUP },
+
+  // Company series, October 2025 to September 2026 (Anthropic, Apple, Microsoft)
+  { slug: "anthropic-agent-skills-written-procedures-platform-bet", strategy: "editorial-card", reason: COMPANY_SERIES },
+  { slug: "anthropic-espionage-report-trust-needs-evidence", strategy: "editorial-card", reason: COMPANY_SERIES },
+  { slug: "anthropic-enterprise-lead-narrower-than-40-percent", strategy: "editorial-card", reason: COMPANY_SERIES },
+  { slug: "anthropic-subscription-harness-block-developer-trust", strategy: "editorial-card", reason: COMPANY_SERIES },
+  { slug: "anthropic-launch-posts-move-stocks-research-preview", strategy: "editorial-card", reason: COMPANY_SERIES },
+  { slug: "anthropic-pentagon-red-lines-usage-policy-product", strategy: "editorial-card", reason: COMPANY_SERIES },
+  { slug: "anthropic-strategic-investors-paid-half-vc-price", strategy: "editorial-card", reason: COMPANY_SERIES },
+  { slug: "anthropic-services-firm-enterprise-delivery-bottleneck", strategy: "editorial-card", reason: COMPANY_SERIES },
+  { slug: "anthropic-fable-5-three-guarantees-enterprise-buyers", strategy: "editorial-card", reason: COMPANY_SERIES },
+  { slug: "anthropic-fable-credits-opus-5-subscription-ceiling", strategy: "editorial-card", reason: COMPANY_SERIES },
+  { slug: "anthropic-ipo-founder-control-prospectus-accountability", strategy: "editorial-card", reason: COMPANY_SERIES },
+  { slug: "anthropic-pacing-holds-ceiling-cuts-price", strategy: "editorial-card", reason: COMPANY_SERIES },
+  { slug: "apple-privacy-line-moves-with-who-is-asking", strategy: "editorial-card", reason: COMPANY_SERIES },
+  { slug: "apple-tv-sports-rights-bundle-retention", strategy: "editorial-card", reason: COMPANY_SERIES },
+  { slug: "apple-music-in-chatgpt-assistant-entry-point", strategy: "editorial-card", reason: COMPANY_SERIES },
+  { slug: "apple-record-quarter-ai-arrives-as-memory-costs", strategy: "editorial-card", reason: COMPANY_SERIES },
+  { slug: "apple-xcode-rival-coding-agents-developer-bet", strategy: "editorial-card", reason: COMPANY_SERIES },
+  { slug: "apple-macbook-neo-selective-pricing-power", strategy: "editorial-card", reason: COMPANY_SERIES },
+  { slug: "apple-cook-executive-chairman-policy-role", strategy: "editorial-card", reason: COMPANY_SERIES },
+  { slug: "apple-siri-switchboard-ai-openness-on-its-terms", strategy: "editorial-card", reason: COMPANY_SERIES },
+  { slug: "apple-on-device-ai-memory-price-tag", strategy: "editorial-card", reason: COMPANY_SERIES },
+  { slug: "apple-openai-lawsuit-hardware-talent-deterrence", strategy: "editorial-card", reason: COMPANY_SERIES },
+  { slug: "apple-eu-single-terms-neutral-att-symmetry", strategy: "editorial-card", reason: COMPANY_SERIES },
+  { slug: "apple-intelligence-usage-limits-metered-siri", strategy: "editorial-card", reason: COMPANY_SERIES },
+  { slug: "microsoft-consumer-copilot-bundle-visible-exit", strategy: "editorial-card", reason: COMPANY_SERIES },
+  { slug: "microsoft-ignite-agent-365-governed-layer", strategy: "editorial-card", reason: COMPANY_SERIES },
+  { slug: "microsoft-sovereignty-commitments-canada-india", strategy: "editorial-card", reason: COMPANY_SERIES },
+  { slug: "microsoft-gpu-allocation-copilot-over-azure", strategy: "editorial-card", reason: COMPANY_SERIES },
+  { slug: "microsoft-openai-stateless-exclusivity-amazon", strategy: "editorial-card", reason: COMPANY_SERIES },
+  { slug: "microsoft-copilot-one-owner-fewer-entry-points", strategy: "editorial-card", reason: COMPANY_SERIES },
+  { slug: "github-copilot-usage-billing-order-of-operations", strategy: "editorial-card", reason: COMPANY_SERIES },
+  { slug: "microsoft-msrc-zero-day-dumps-legal-threat", strategy: "editorial-card", reason: COMPANY_SERIES },
+  { slug: "microsoft-project-solara-android-agent-devices", strategy: "editorial-card", reason: COMPANY_SERIES },
+  { slug: "xbox-reset-studios-subscription-platform", strategy: "editorial-card", reason: COMPANY_SERIES },
+  { slug: "microsoft-copilot-app-merger-front-door-to-m365", strategy: "editorial-card", reason: COMPANY_SERIES },
+  { slug: "microsoft-copilot-seat-plus-meter-pricing", strategy: "editorial-card", reason: COMPANY_SERIES },
 ];
