@@ -138,6 +138,17 @@ describe("snapshot refresh workflow infrastructure", () => {
     // which is exactly what shipped on 2026-08-20, so the file-manifest check has
     // to stay wired up.
     expect(publicationCommands).toContain("verify-deploy-assets.mjs");
+    // A failed ledger check must not skip the asset check. It did on every run
+    // of incident #500.
+    expect(publicationCommands).toMatch(
+      /name: Verify the deploy published its static assets\n\s+if: \$\{\{ !cancelled\(\) && steps\.deploy\.outcome == 'success' \}\}/
+    );
+    // The ledger is read from the Netlify origin. Cloudflare challenges runner
+    // traffic on the custom domain, which failed every publish on 2026-09-29
+    // from 02:16 UTC until the check moved, while every deploy was fine.
+    expect(publicationCommands).toContain(
+      ":-https://isaacvazquez.netlify.app/api/data-revisions}"
+    );
     expect(verifier).toContain("cacheBust");
     expect(verifier).toContain("publicationRevision");
     expect(verifier).toContain("merge-base");
@@ -199,6 +210,48 @@ describe("snapshot refresh workflow infrastructure", () => {
     expect(workflow).toContain("const MIN_COVERAGE = 0.9");
     expect(workflow).toContain("top-board ADP coverage");
     expect(workflow).toContain("rankingExperts < 4");
+    // Draft ADP freezes at Week 1, so in season its age is a warning. The
+    // board's own freeze lives in the freshness policy, which leaves the
+    // freshness gate strict here and lets the redraft lane commit.
+    expect(workflow).toContain("draft ADP is frozen at its last reading");
+    expect(workflow).toContain("steps.verify_freshness.outcome == 'failure' ||");
+    expect(workflow).not.toContain("season_open");
+  });
+
+  it("builds and commits the weekly board ahead of the draft boards", () => {
+    const workflow = fs.readFileSync(
+      path.join(workflowsDir, "update-fantasy.yml"),
+      "utf8"
+    );
+
+    // It is the only fantasy artifact that changes in season, and it used to
+    // run after two dozen FantasyPros requests from the same address.
+    expect(workflow.indexOf("- name: Build weekly board")).toBeLessThan(
+      workflow.indexOf("- name: Build fantasy snapshots")
+    );
+    expect(workflow.indexOf("- name: Commit and push weekly board")).toBeLessThan(
+      workflow.indexOf("- name: Commit and push snapshot updates")
+    );
+    // Weeks 17 and 18 fall in January, after the daily lane used to stop.
+    expect(workflow).toContain('cron: "17 17 1-12 1 *"');
+  });
+
+  it("puts a gated-out lane's files back before the next lane commits", () => {
+    const workflow = fs.readFileSync(
+      path.join(workflowsDir, "update-fantasy.yml"),
+      "utf8"
+    );
+    const discardStep = workflow.match(
+      /- name: Discard redraft artifacts that failed their gates[\s\S]*?(?=\n\s+# Best ball commits)/
+    )?.[0];
+
+    expect(discardStep).toBeDefined();
+    expect(discardStep).toContain("if: steps.check_changes.outcome == 'skipped'");
+    expect(discardStep).toContain("git checkout --");
+    expect(discardStep).toContain("public/data/fantasy/ppr.json");
+    expect(workflow.indexOf("- name: Discard redraft artifacts")).toBeLessThan(
+      workflow.indexOf("- name: Check for best ball snapshot changes")
+    );
   });
 
   it("commits the generated VORP source, validates every published VORP board, and only warns when one is absent", () => {
@@ -210,9 +263,10 @@ describe("snapshot refresh workflow infrastructure", () => {
       /- name: Verify fantasy snapshot quality[\s\S]*?(?=\n\s+- name:)/
     )?.[0];
 
+    // The change check, the commit, the discard step, and the job summary.
     expect(
       workflow.match(/src\/data\/fantasyVorpData\.generated\.ts/g)
-    ).toHaveLength(3);
+    ).toHaveLength(4);
     expect(qualityStep).toBeDefined();
     expect(qualityStep).toContain("const MIN_VORP = 300");
     expect(qualityStep).toContain(

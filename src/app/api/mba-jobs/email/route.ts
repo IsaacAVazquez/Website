@@ -1,3 +1,4 @@
+import { createHash, timingSafeEqual } from "node:crypto";
 import { NextRequest, NextResponse } from "next/server";
 import { Resend } from "resend";
 import { emailDigestRateLimiter, getClientIp, rateLimitResponse } from "@/lib/rateLimit";
@@ -271,7 +272,26 @@ function buildEmailHtml(jobs: EmailDigestJob[], to: string): string {
 </html>`;
 }
 
+const DIGEST_SECRET_HEADER = "x-mba-digest-secret";
+
+// Hashing both sides first gives timingSafeEqual the equal lengths it needs
+// without revealing how long the secret is.
+function secretsMatch(provided: string, expected: string): boolean {
+  const hash = (value: string) => createHash("sha256").update(value).digest();
+  return timingSafeEqual(hash(provided), hash(expected));
+}
+
 export async function POST(request: NextRequest) {
+  // The allowlist limits who receives a digest, not who can send one, so the
+  // caller proves itself before anything else runs.
+  const secret = process.env.MBA_DIGEST_SECRET?.trim();
+  if (!secret) {
+    return json({ error: "Email delivery is not configured." }, { status: 503 });
+  }
+  if (!secretsMatch(request.headers.get(DIGEST_SECRET_HEADER) ?? "", secret)) {
+    return json({ error: "A valid digest secret is required." }, { status: 401 });
+  }
+
   const contentLength = Number.parseInt(request.headers.get("content-length") ?? "0", 10);
   if (Number.isFinite(contentLength) && contentLength > MAX_BODY_BYTES) {
     return json({ error: "Email digest request is too large." }, { status: 413 });

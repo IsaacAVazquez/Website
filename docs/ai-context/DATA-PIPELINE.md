@@ -88,7 +88,7 @@ The pages read the summaries on the server, and the team drilldown routes under 
 
 Golf uses `src/data/golfSnapshot.ts`, rebuilt by `npm run update:golf` (`scripts/buildGolfSnapshot.ts`) from ESPN's public golf leaderboard endpoint; `.github/workflows/update-golf.yml` refreshes it every three hours Thursday through Sunday and once a day Monday through Wednesday. A failed fetch keeps the previous snapshot.
 
-The 2026 World Cup hub uses `src/data/worldCupSnapshot.ts`, rebuilt by `npm run update:world-cup` from ESPN's public `soccer/fifa.world` endpoints; `.github/workflows/update-world-cup.yml` refreshes it every 30 minutes during June and July. Runtime routes under `/api/world-cup/*` read the committed snapshot.
+The 2026 World Cup hub uses `src/data/worldCupSnapshot.ts`, rebuilt by `npm run update:world-cup` from ESPN's public `soccer/fifa.world` endpoints; `.github/workflows/update-world-cup.yml` has no schedule now that the tournament is over and runs on manual dispatch only. Runtime routes under `/api/world-cup/*` read the committed snapshot.
 
 ---
 

@@ -16,6 +16,13 @@ jest.mock("next/navigation", () => ({
   useSearchParams: () => currentSearchParams,
 }));
 
+// In the app the drawer loads the first time a club is opened. Here it is the
+// real drawer, mounted directly, so these tests stay about the page and stay
+// synchronous.
+jest.mock("@/components/football/DeferredClubDrawer", () => ({
+  DeferredClubDrawer: jest.requireActual("@/components/football/ClubDrawer").ClubDrawer,
+}));
+
 describe("PremierLeagueClient", () => {
   beforeEach(() => {
     currentSearchParams = new URLSearchParams();
@@ -106,5 +113,23 @@ describe("PremierLeagueClient", () => {
     const nextParams = new URLSearchParams(href.split("?")[1] ?? "");
     expect(nextParams.get("view")).toBe("title-race");
     expect(nextParams.get("team")).toBe(titleRaceTeamId);
+  });
+
+  it("links to the Premier League stats page and credits football-data.org for the data", () => {
+    currentSearchParams = new URLSearchParams("detail=scorers");
+
+    render(
+      <PremierLeagueClient
+        initialState={DEFAULT_PREMIER_LEAGUE_STATE}
+        summary={premierLeagueSnapshot.summary}
+        initialTeamSnapshot={null}
+      />
+    );
+
+    expect(screen.getByRole("link", { name: /official/i })).toHaveAttribute(
+      "href",
+      "https://www.premierleague.com/en/stats/top/players/goals"
+    );
+    expect(screen.getByText(/checked-in football-data\.org snapshot/)).toBeInTheDocument();
   });
 });

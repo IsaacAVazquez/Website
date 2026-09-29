@@ -4,10 +4,31 @@ All notable changes to this repository are documented here. Format: `YYYY-MM-DD`
 
 ---
 
+## 2026-09-29
+
+- Ship less JavaScript on first load and cache dashboard pages at the CDN ([#495](https://github.com/IsaacAVazquez/Website/pull/495)).
+- Line every route up with the header from phone to big monitor ([#496](https://github.com/IsaacAVazquez/Website/pull/496)).
+- Harden every data lane and open the blob stores at runtime ([#497](https://github.com/IsaacAVazquez/Website/pull/497)).
+- Settle the data audit's content follow-ups ([#502](https://github.com/IsaacAVazquez/Website/pull/502)).
+- Bump next, vite, plugin-react, netlify blobs, and dotenv ([#503](https://github.com/IsaacAVazquez/Website/pull/503)).
+- Anchor jest worktree ignore patterns to rootDir ([#504](https://github.com/IsaacAVazquez/Website/pull/504)).
+- Rewrite the about-me copy in Isaac's voice across the site ([#505](https://github.com/IsaacAVazquez/Website/pull/505)).
+- Print the retirement projection when the planner is out of view ([#506](https://github.com/IsaacAVazquez/Website/pull/506)).
+- Name the projection chart's age axis in the caption ([#507](https://github.com/IsaacAVazquez/Website/pull/507)).
+- Narrow the branch cleanup item to the one lane branch left ([#508](https://github.com/IsaacAVazquez/Website/pull/508)).
+- Read the publish ledger from the Netlify origin ([#509](https://github.com/IsaacAVazquez/Website/pull/509)).
+- Drop the product manager title examples and the lane branch TODO ([#513](https://github.com/IsaacAVazquez/Website/pull/513)).
+- Fit the projection chart's margins to its type ([#514](https://github.com/IsaacAVazquez/Website/pull/514)).
+- Add seven easter eggs ([#516](https://github.com/IsaacAVazquez/Website/pull/516)).
+
+---
+
 ## 2026-09-28
 
 - Final pass on the project UI redesign ([#484](https://github.com/IsaacAVazquez/Website/pull/484)).
 - Bump react, jest, testing library, playwright, and dev types ([#485](https://github.com/IsaacAVazquez/Website/pull/485)).
+- Add a Lichtenstein painter to the portrait hover ([#488](https://github.com/IsaacAVazquez/Website/pull/488)).
+- Track every easter egg in docs/EASTER_EGGS.md ([#489](https://github.com/IsaacAVazquez/Website/pull/489)).
 
 ---
 

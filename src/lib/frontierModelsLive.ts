@@ -18,9 +18,12 @@ export const FRONTIER_MODELS_BLOB_KEY = "frontier-models";
  *
  * The curated seed stays the source of truth for WHICH models are listed and
  * for every editorial note. This module refreshes the checkable facts
- * (pricing, context window, output limit, knowledge cutoff, release date)
+ * (pricing, context window, output limit, knowledge cutoff)
  * against two keyless public catalogs — models.dev's api.json and
  * OpenRouter's /api/v1/models — and stamps each model with the outcome.
+ * The release date stays curated, because a catalog's date can contradict
+ * its own entry. On 2026-09-27 models.dev listed mistral-large-2512 as
+ * released 2024-11-01.
  *
  * Matching is deliberately conservative, mirroring the fantasy ADP rule of
  * "tiered exact matching, never fuzzy": a curated model only picks up live
@@ -44,7 +47,6 @@ interface LiveModelFacts {
   inputPricePerMTokens?: number;
   outputPricePerMTokens?: number;
   knowledgeCutoff?: string;
-  releaseDate?: string;
   reasoning?: boolean;
   modalities?: FrontierModality[];
   source: "models.dev" | "openrouter";
@@ -118,7 +120,6 @@ interface ModelsDevModel {
   name?: string;
   reasoning?: boolean;
   knowledge?: string;
-  release_date?: string;
   modalities?: { input?: string[] };
   cost?: { input?: number; output?: number };
   limit?: { context?: number; output?: number };
@@ -160,9 +161,6 @@ function parseModelsDev(payload: unknown): LiveFactsCatalog["byProvider"] {
       if (outputCost !== undefined) facts.outputPricePerMTokens = outputCost;
       if (typeof model.knowledge === "string" && model.knowledge) {
         facts.knowledgeCutoff = model.knowledge;
-      }
-      if (typeof model.release_date === "string" && model.release_date) {
-        facts.releaseDate = model.release_date;
       }
       if (typeof model.reasoning === "boolean") {
         facts.reasoning = model.reasoning;
@@ -268,6 +266,7 @@ const CHECKED_FACT_KEYS = [
   "maxOutputTokens",
   "inputPricePerMTokens",
   "outputPricePerMTokens",
+  "knowledgeCutoff",
 ] as const;
 
 /**
@@ -310,16 +309,36 @@ export function applyLiveModelFacts(
     }
 
     const next = { ...curated };
-    if (facts.contextWindow) next.contextWindow = facts.contextWindow;
-    if (facts.maxOutputTokens) next.maxOutputTokens = facts.maxOutputTokens;
-    if (facts.inputPricePerMTokens !== undefined) {
+    // A pinned fact was read from the provider's own page, so a catalog that
+    // states it differently never overwrites it.
+    const pinned = new Set<string>(model.pinnedFacts ?? []);
+    if (facts.contextWindow && !pinned.has("contextWindow")) {
+      next.contextWindow = facts.contextWindow;
+    }
+    // A catalog that has no output limit repeats the context window in its
+    // place, so that value leaves the curated limit standing.
+    if (
+      facts.maxOutputTokens &&
+      facts.maxOutputTokens !== next.contextWindow &&
+      !pinned.has("maxOutputTokens")
+    ) {
+      next.maxOutputTokens = facts.maxOutputTokens;
+    }
+    if (
+      facts.inputPricePerMTokens !== undefined &&
+      !pinned.has("inputPricePerMTokens")
+    ) {
       next.inputPricePerMTokens = facts.inputPricePerMTokens;
     }
-    if (facts.outputPricePerMTokens !== undefined) {
+    if (
+      facts.outputPricePerMTokens !== undefined &&
+      !pinned.has("outputPricePerMTokens")
+    ) {
       next.outputPricePerMTokens = facts.outputPricePerMTokens;
     }
-    if (facts.knowledgeCutoff) next.knowledgeCutoff = facts.knowledgeCutoff;
-    if (facts.releaseDate) next.releaseDate = facts.releaseDate;
+    if (facts.knowledgeCutoff && !pinned.has("knowledgeCutoff")) {
+      next.knowledgeCutoff = facts.knowledgeCutoff;
+    }
     if (facts.reasoning !== undefined) next.reasoning = facts.reasoning;
     if (facts.modalities) next.modalities = facts.modalities;
 

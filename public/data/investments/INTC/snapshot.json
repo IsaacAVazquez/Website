@@ -1,17 +1,11 @@
 {
   "symbol": "INTC",
-  "lastUpdated": "2026-09-15T01:03:45.681080+00:00",
+  "lastUpdated": "2026-09-29T07:04:00.244178+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-09-15T01:03:45.681080+00:00",
+    "snapshotBuiltAt": "2026-09-29T07:04:00.244178+00:00",
     "sections": {
-      "price": "2026-09-11"
-    },
-    "retainedSections": [
-      "fundamentals",
-      "wacc",
-      "beta",
-      "news"
-    ]
+      "price": "2026-09-28"
+    }
   },
   "source": "prefetched",
   "capabilities": {
@@ -46,10 +40,10 @@
     },
     "fundamentals": {
       "ttmEps": -2.12,
-      "ttmPe": -48.56,
-      "marketCap": 519126420000,
-      "psRatio": 9.1,
-      "pbRatio": 5.93,
+      "ttmPe": 3518.87,
+      "marketCap": 585139290000,
+      "psRatio": 10.26,
+      "pbRatio": 6.68,
       "pegRatio": 28.58
     },
     "profitability": {
@@ -6016,105 +6010,17 @@
       ]
     },
     "wacc": {
-      "wacc": 20.830000000000002,
-      "costOfEquity": 22.5,
-      "costOfDebt": 0.59,
+      "wacc": 20.330000000000002,
+      "costOfEquity": 22.05,
+      "costOfDebt": 0.64,
       "taxRate": 40,
-      "beta": 2.1593,
-      "marketCap": 552055840000
+      "beta": 2.2036,
+      "marketCap": 585139290000
     },
     "beta": {
-      "beta5y": 2.1593
+      "beta5y": 2.2036
     },
     "price": [
-      {
-        "date": "2025-09-11",
-        "open": 24.76,
-        "high": 24.93,
-        "low": 24.57,
-        "close": 24.61,
-        "volume": 55536900
-      },
-      {
-        "date": "2025-09-12",
-        "open": 24.61,
-        "high": 24.63,
-        "low": 24.05,
-        "close": 24.08,
-        "volume": 52672800
-      },
-      {
-        "date": "2025-09-15",
-        "open": 24.33,
-        "high": 25.46,
-        "low": 24.22,
-        "close": 24.77,
-        "volume": 83951600
-      },
-      {
-        "date": "2025-09-16",
-        "open": 24.82,
-        "high": 25.34,
-        "low": 24.69,
-        "close": 25.27,
-        "volume": 60336600
-      },
-      {
-        "date": "2025-09-17",
-        "open": 25.08,
-        "high": 25.26,
-        "low": 24.45,
-        "close": 24.9,
-        "volume": 63093700
-      },
-      {
-        "date": "2025-09-18",
-        "open": 31.78,
-        "high": 32.38,
-        "low": 30.16,
-        "close": 30.57,
-        "volume": 523908000
-      },
-      {
-        "date": "2025-09-19",
-        "open": 30.38,
-        "high": 30.63,
-        "low": 29.33,
-        "close": 29.58,
-        "volume": 225702900
-      },
-      {
-        "date": "2025-09-22",
-        "open": 29.67,
-        "high": 30.1,
-        "low": 28.73,
-        "close": 28.76,
-        "volume": 130314500
-      },
-      {
-        "date": "2025-09-23",
-        "open": 28.99,
-        "high": 30.2,
-        "low": 28.82,
-        "close": 29.34,
-        "volume": 126317900
-      },
-      {
-        "date": "2025-09-24",
-        "open": 29.38,
-        "high": 31.7,
-        "low": 29.23,
-        "close": 31.22,
-        "volume": 164458500
-      },
-      {
-        "date": "2025-09-25",
-        "open": 31.61,
-        "high": 34.25,
-        "low": 31.21,
-        "close": 33.99,
-        "volume": 295709300
-      },
       {
         "date": "2025-09-26",
         "open": 35.02,
@@ -8041,7 +7947,95 @@
         "high": 104.9,
         "low": 101.07,
         "close": 102.94,
-        "volume": 86840900
+        "volume": 86990400
+      },
+      {
+        "date": "2026-09-14",
+        "open": 95.82,
+        "high": 98.86,
+        "low": 94.52,
+        "close": 97.19,
+        "volume": 96459700
+      },
+      {
+        "date": "2026-09-15",
+        "open": 98.83,
+        "high": 100.48,
+        "low": 96.52,
+        "close": 97.14,
+        "volume": 84999300
+      },
+      {
+        "date": "2026-09-16",
+        "open": 101.37,
+        "high": 104.42,
+        "low": 99.29,
+        "close": 101.05,
+        "volume": 119923600
+      },
+      {
+        "date": "2026-09-17",
+        "open": 104.7,
+        "high": 111.37,
+        "low": 104.7,
+        "close": 108.8,
+        "volume": 149726000
+      },
+      {
+        "date": "2026-09-18",
+        "open": 109.8,
+        "high": 110.49,
+        "low": 106.4,
+        "close": 108.6,
+        "volume": 174996700
+      },
+      {
+        "date": "2026-09-21",
+        "open": 116.53,
+        "high": 124.73,
+        "low": 114.93,
+        "close": 121.78,
+        "volume": 191638400
+      },
+      {
+        "date": "2026-09-22",
+        "open": 120.15,
+        "high": 124.09,
+        "low": 120.08,
+        "close": 123.86,
+        "volume": 108379400
+      },
+      {
+        "date": "2026-09-23",
+        "open": 123.87,
+        "high": 124.25,
+        "low": 119.44,
+        "close": 122.6,
+        "volume": 85621100
+      },
+      {
+        "date": "2026-09-24",
+        "open": 120.61,
+        "high": 127.44,
+        "low": 119.55,
+        "close": 127.39,
+        "volume": 119296700
+      },
+      {
+        "date": "2026-09-25",
+        "open": 126.83,
+        "high": 126.93,
+        "low": 122.84,
+        "close": 123,
+        "volume": 97728400
+      },
+      {
+        "date": "2026-09-28",
+        "open": 120.68,
+        "high": 121.71,
+        "low": 114.71,
+        "close": 116.03,
+        "volume": 111220000
       }
     ],
     "news": [
@@ -8118,35 +8112,21 @@
         "type": "STORY"
       },
       {
-        "uuid": "5aeb5313-0a8a-304b-9136-ed60d6dfb814",
-        "title": "Why Arm Holdings Stock Was Moving Higher Today",
+        "uuid": "4e7d3ddf-3e5f-37c6-a16b-3e53c35496f0",
+        "title": "Why Intel Stock Is Sinking Today",
         "publisher": "Motley Fool",
         "reportDate": "2025-05-15",
-        "link": "https://finance.yahoo.com/m/5aeb5313-0a8a-304b-9136-ed60d6dfb814/why-arm-holdings-stock-was.html",
+        "link": "https://finance.yahoo.com/m/4e7d3ddf-3e5f-37c6-a16b-3e53c35496f0/why-intel-stock-is-sinking.html",
         "type": "STORY"
       }
     ],
     "officers": [
-      {
-        "name": "Dr. Rui Wang",
-        "title": "Senior VP & Chair of Intel China",
-        "age": 64,
-        "yearBorn": 1961
-      },
-      {
-        "name": "Mr. Allon Stabinsky",
-        "title": "Senior VP and Chief Deputy General Counsel of the Law & Policy Group"
-      },
       {
         "name": "Mr. David A. Zinsner",
         "title": "Executive VP, CFO and Principal Financial & Accounting Officer",
         "age": 56,
         "yearBorn": 1969,
         "totalPay": 4218200
-      },
-      {
-        "name": "Mr. James A. Murray",
-        "title": "Chief Antitrust Counsel and VP of Law & Policy Group"
       },
       {
         "name": "Mr. John William Pitzer",
@@ -8186,43 +8166,43 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": -48.56,
-        "industryAvg": 0.1
+        "value": 3518.87,
+        "industryAvg": 30.1
       },
       {
         "metric": "P/S Ratio",
-        "value": 9.1,
-        "industryAvg": 0.05
+        "value": 10.26,
+        "industryAvg": 14.37
       },
       {
         "metric": "P/B Ratio",
-        "value": 5.93,
-        "industryAvg": 0.04
+        "value": 6.68,
+        "industryAvg": 12.55
       },
       {
         "metric": "ROE",
         "value": -11.09,
-        "industryAvg": 37.62
+        "industryAvg": 59.62
       },
       {
         "metric": "ROA",
         "value": -5.41,
-        "industryAvg": 27.560000000000002
+        "industryAvg": 42.54
       },
       {
         "metric": "Gross Margin",
         "value": 40.36,
-        "industryAvg": 81.58999999999999
+        "industryAvg": 68.30000000000001
       },
       {
         "metric": "EBITDA Margin",
         "value": -45.1,
-        "industryAvg": 138.09
+        "industryAvg": 81.55
       },
       {
         "metric": "Net Margin",
         "value": -68.41000000000001,
-        "industryAvg": 101.56
+        "industryAvg": 56.779999999999994
       }
     ]
   }

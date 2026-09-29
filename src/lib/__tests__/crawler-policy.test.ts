@@ -132,12 +132,13 @@ describe("legacy release notes URL", () => {
 describe("SEO page sitemap freshness", () => {
   // Each identity page carries the date of its last copy change, kept in step
   // with the page's own dateModified. The 2026-09-14 pass rewrote copy on all
-  // of them, and the homepage lead changed again on 2026-09-24.
+  // of them, and the 2026-09-28 bio pass rewrote home, about, contact, and the
+  // résumé again.
   it.each([
-    ["/", "2026-09-24T00:00:00.000Z"],
-    ["/about", "2026-09-14T00:00:00.000Z"],
-    ["/contact", "2026-09-14T00:00:00.000Z"],
-    ["/resume", "2026-09-14T00:00:00.000Z"],
+    ["/", "2026-09-28T00:00:00.000Z"],
+    ["/about", "2026-09-28T00:00:00.000Z"],
+    ["/contact", "2026-09-28T00:00:00.000Z"],
+    ["/resume", "2026-09-28T00:00:00.000Z"],
     ["/portfolio", "2026-09-14T00:00:00.000Z"],
   ])("records the latest copy change for %s", (pathname, lastmod) => {
     const entry = getPublicSitemapEntries().find(
@@ -155,7 +156,7 @@ describe("SEO page sitemap freshness", () => {
     );
 
     expect(new Date(entry?.lastmod ?? 0).getTime()).toBeGreaterThanOrEqual(
-      new Date("2026-09-14T00:00:00.000Z").getTime()
+      new Date("2026-09-28T00:00:00.000Z").getTime()
     );
   });
 

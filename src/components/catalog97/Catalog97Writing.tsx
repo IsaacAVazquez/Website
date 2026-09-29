@@ -184,11 +184,13 @@ export function Catalog97Writing({
       >
         <div className="c97-shell">
           <h1 className="c97-poster">
-            Race reports, market notes, and write-ups of the tools on this site.
+            I write about product management, AI, and a lot of sports.
           </h1>
           <p className="c97-prose" style={{ marginTop: "var(--c97-sp-2)" }}>
-            Formula 1 after each Grand Prix, markets and policy, and a build
-            note for each dashboard and tool.
+            A lot of the product writing comes out of work I&rsquo;ve done at
+            Civitech, Juno, and Haas or out of building the tools on this site,
+            and the sports writing covers Formula 1, soccer, and fantasy
+            football.
           </p>
         </div>
       </section>
@@ -556,8 +558,10 @@ export function Catalog97Writing({
           <div
             style={{
               display: "grid",
+              // A 180px floor fits four across from about 990px, so the seven
+              // topics print 4+3 instead of 3+3 and one on its own.
               gridTemplateColumns:
-                "repeat(auto-fit,minmax(min(100%,240px),1fr))",
+                "repeat(auto-fit,minmax(min(100%,180px),1fr))",
               columnGap: "var(--c97-sp-5)",
               // Each topic link is a 50px hit box, so a --c97-sp-2 gap let every
               // row overlap the next by 15 to 20px. 34px keeps the boxes apart.

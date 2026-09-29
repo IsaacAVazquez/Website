@@ -50,6 +50,20 @@ const FANTASY_FUTURE_SKEW_TOLERANCE_MS = 5 * 60 * 1000;
 const NFL_REGULAR_SEASON_WEEKS = 18;
 
 /**
+ * When week 1 opens, in UTC milliseconds. That is Labor Day (the first Monday
+ * of September) plus two days, a Wednesday anchor: 2026 opens Wednesday
+ * September 9 rather than the usual Thursday, and week 12 opens Wednesday
+ * November 25, both verified against nflverse games.csv in the week-opener
+ * test. A Thursday anchor reads week 0 on opening day and week 11 on
+ * Thanksgiving week.
+ */
+export function getNflWeek1Kickoff(season: number): number {
+  const septFirst = new Date(Date.UTC(season, 8, 1));
+  const offsetToMonday = (8 - septFirst.getUTCDay()) % 7;
+  return Date.UTC(season, 8, 1 + offsetToMonday) + 2 * MS_PER_DAY;
+}
+
+/**
  * Derives the NFL regular-season week for a season from the calendar so a
  * snapshot built mid-season isn't perpetually stamped "Preseason" (week 0).
  *
@@ -75,15 +89,7 @@ export function getNflRegularSeasonWeek(season: number, now: Date = new Date()):
   if (season < 1920) {
     return 0;
   }
-  // First Monday of September (Labor Day), evaluated in UTC. Labor Day + 2 is
-  // a Wednesday anchor: 2026 opens Wednesday September 9 rather than the usual
-  // Thursday, and week 12 opens Wednesday November 25, both verified against
-  // nflverse games.csv in the week-opener test. A Thursday anchor reads week 0
-  // on opening day and week 11 on Thanksgiving week.
-  const septFirst = new Date(Date.UTC(season, 8, 1));
-  const offsetToMonday = (8 - septFirst.getUTCDay()) % 7;
-  const laborDay = new Date(Date.UTC(season, 8, 1 + offsetToMonday));
-  const week1Kickoff = laborDay.getTime() + 2 * MS_PER_DAY;
+  const week1Kickoff = getNflWeek1Kickoff(season);
 
   if (now.getTime() < week1Kickoff) {
     return 0;
@@ -91,6 +97,27 @@ export function getNflRegularSeasonWeek(season: number, now: Date = new Date()):
 
   const weeksElapsed = Math.floor((now.getTime() - week1Kickoff) / (7 * MS_PER_DAY));
   return Math.min(NFL_REGULAR_SEASON_WEEKS, weeksElapsed + 1);
+}
+
+export const DRAFT_STORAGE_VERSION = 3;
+
+/**
+ * NFL season for the current draft window. The league year rolls over with
+ * the new league year in March, so anything before March belongs to the prior
+ * season. Used to scope persisted draft state per-season so a stale 2025
+ * draft doesn't bleed into a fresh 2026 setup.
+ *
+ * It sits here with the other season math so the trade calculator and the
+ * weekly My Team panel can read it without bundling the draft state hook.
+ */
+export function getCurrentDraftSeason(now: Date = new Date()): number {
+  const year = now.getUTCFullYear();
+  const month = now.getUTCMonth();
+  return month < 2 ? year - 1 : year;
+}
+
+export function getFantasyDraftStorageKey(season: number = getCurrentDraftSeason()): string {
+  return `fantasy-draft-tracker-v${DRAFT_STORAGE_VERSION}-${season}`;
 }
 
 /**
@@ -681,11 +708,12 @@ export function getFantasySourceCapabilities({
 export const FANTASY_CHIP_CLASS =
   "inline-flex items-center border px-2.5 py-1 text-2xs font-semibold uppercase tracking-[0.12em]";
 
-/** The template's 1080px column; each page manages its own shell width. */
-export const SHELL_CLASS = "mx-auto w-full max-w-[1080px] px-[clamp(1rem,4vw,2.5rem)]";
-
-/** The wide column the trade desk, the best ball room, and the compare tray use, 1680px from 1440 up. */
-export const WIDE_SHELL_CLASS = "mx-auto w-full max-w-[86rem] px-4 sm:px-6 lg:px-8 min-[1440px]:max-w-[1680px]";
+/**
+ * The site column with its own gutter, so fantasy content that sits outside a
+ * `.c97-band` shares the header's edges. It widens on the wide tool routes
+ * (the trade calculator and the best ball draft room) with every other shell.
+ */
+export const SHELL_CLASS = "c97-shell c97-frame";
 
 export const MONO_LABEL_CLASS = "font-mono text-3xs uppercase tracking-[0.12em]";
 

@@ -1,11 +1,12 @@
 import { test, expect } from "@playwright/test";
+import { expectAlignedLayout } from "./layoutChecks";
 
 // Structural shell invariants for the primary routes. We deliberately do NOT
 // pin exact hero copy here — that drifts with editorial redesigns (and broke
 // this suite once already). The data-layer ordering/copy is covered by unit
 // tests; here we assert each route has a title, exactly one h1, one main
-// landmark, and no horizontal overflow.
-const routes = ["/", "/portfolio", "/contact", "/writing", "/resume"];
+// landmark, no horizontal overflow, and edges that line up with the header.
+const routes = ["/", "/portfolio", "/writing", "/dashboards", "/about", "/resume", "/contact"];
 
 test.describe("Portfolio shell", () => {
   for (const path of routes) {
@@ -25,6 +26,7 @@ test.describe("Portfolio shell", () => {
 
       expect(layoutState.mainCount).toBe(1);
       expect(layoutState.hasOverflow).toBe(false);
+      await expectAlignedLayout(page);
     });
   }
 

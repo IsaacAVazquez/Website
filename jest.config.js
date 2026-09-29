@@ -57,8 +57,11 @@ const customJestConfig = {
     '/e2e/',
     '/.next/',
     '/.open-next/',
-    '/.worktrees/',
-    '/.claude/',
+    // Jest matches these patterns against absolute paths, and a worktree under
+    // .claude/worktrees/ has /.claude/ in every path. Anchoring keeps nested
+    // clones out of root discovery and lets a worktree run its own tests.
+    '<rootDir>/.worktrees/',
+    '<rootDir>/.claude/',
   ],
 
   // Keep local worktree clones out of root test discovery and coverage reports.

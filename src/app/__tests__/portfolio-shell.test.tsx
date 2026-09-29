@@ -68,7 +68,7 @@ describe("Portfolio shell page semantics", () => {
     expect(
       screen.getByRole("heading", {
         level: 1,
-        name: /i build test harnesses, and dashboards that run on public data/i,
+        name: /second-year MBA at Berkeley Haas, moving into product/i,
       })
     ).toBeVisible();
   });

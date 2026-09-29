@@ -5,12 +5,14 @@ export type TechStartupSortKey = "momentum" | "valuation" | "raised" | "recent";
 export interface TechStartupRound {
   /** Latest disclosed round label, e.g. "Series C", "Seed". */
   stage: string;
-  /** Round size in USD. */
-  amount: number;
+  /** Round size in USD, or null when the company did not disclose it. */
+  amount: number | null;
   /** Announcement month, formatted YYYY-MM. */
   date: string;
-  /** Lead investor(s) on the round. */
+  /** Lead investor(s) on the round. Empty when none was named. */
   leadInvestors: string[];
+  /** The page the round's figures were read from. */
+  sourceUrl?: string;
 }
 
 export interface TechStartup {

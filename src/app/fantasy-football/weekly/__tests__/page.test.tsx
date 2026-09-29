@@ -32,10 +32,28 @@ describe("WeeklyBoardPage", () => {
 
     render(await WeeklyBoardPage({ searchParams: Promise.resolve({}) }));
 
-    expect(preload).toHaveBeenCalledWith(
-      expect.stringContaining("/data/fantasy/weekly.json?v="),
-      { as: "fetch", crossOrigin: "anonymous" }
+    // Exactly the URL useFantasyWeeklySnapshot requests. Any difference makes
+    // the browser discard the preload and download the file a second time.
+    expect(preload).toHaveBeenCalledWith("/data/fantasy/weekly.json", {
+      as: "fetch",
+      crossOrigin: "anonymous",
+    });
+  });
+
+  // Next.js hands a repeated query parameter to a page as an array, and
+  // ?scoring=ppr&scoring=standard took the page down with a TypeError.
+  it("reads the first value when scoring is repeated in the URL", async () => {
+    jest.spyOn(ReactDOM, "preload").mockImplementation(() => {});
+
+    render(
+      await WeeklyBoardPage({
+        searchParams: Promise.resolve({
+          scoring: ["standard", "ppr"],
+        } as unknown as { scoring?: string }),
+      })
     );
+
+    expect(clientProps[0]).toMatchObject({ initialState: { scoring: "standard" } });
   });
 
   // The board's rows are in the HTML only if the page hands the client real

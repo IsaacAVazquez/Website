@@ -1,4 +1,3 @@
-import { createHash } from "node:crypto";
 import { load } from "cheerio";
 import { after } from "next/server";
 import type {
@@ -17,8 +16,13 @@ import { recordRuntimeSurfaceHeartbeat } from "@/lib/runtimeSurfaceHeartbeat";
 
 const TIMEOUT_MS = 8_000;
 const MAX_SNIPPET_LENGTH = 220;
+// The job card clamps the snippet to 3 lines of at most 54ch, so the response
+// carries no more than that. Role matching still reads the longer text.
+const SERVED_SNIPPET_LENGTH = 160;
 const DIRECT_HTML_DETAIL_CONCURRENCY = 6;
 const SMARTRECRUITERS_DETAIL_CONCURRENCY = 6;
+const SMARTRECRUITERS_PAGE_SIZE = 100;
+const SMARTRECRUITERS_MAX_PAGES = 5;
 const ADZUNA_RESULTS_PER_PAGE = 25;
 type PollableMBACompany = MBACompany & {
   atsType: Exclude<MBAATSType, "manual" | "external-api">;
@@ -84,6 +88,10 @@ function normalizeJobSnippet(html: string): string | null {
 
   if (!plainText) return null;
   return truncatePlainText(plainText, MAX_SNIPPET_LENGTH);
+}
+
+function trimServedSnippet(snippet: string | null): string | null {
+  return snippet ? truncatePlainText(snippet, SERVED_SNIPPET_LENGTH) : null;
 }
 
 function getPostedAtTime(value: string): number {
@@ -162,6 +170,7 @@ function buildMBAJob(
 ): MBAJob {
   return {
     ...job,
+    snippet: trimServedSnippet(job.snippet),
     companyId: company.id,
     companyName: company.name,
     category: company.category,
@@ -350,6 +359,7 @@ interface SmartRecruitersPosting {
 }
 
 interface SmartRecruitersListResponse {
+  totalFound?: number;
   content?: SmartRecruitersPosting[];
 }
 
@@ -392,9 +402,24 @@ async function fetchSmartRecruiters(
   const listUrl = new URL(
     `https://api.smartrecruiters.com/v1/companies/${company.sourceKey}/postings`
   );
-  listUrl.searchParams.set("limit", "100");
-  const data = await fetchJson<SmartRecruitersListResponse>(listUrl.toString());
-  const postings = data.content ?? [];
+  listUrl.searchParams.set("limit", String(SMARTRECRUITERS_PAGE_SIZE));
+  const firstPage = await fetchJson<SmartRecruitersListResponse>(listUrl.toString());
+  const pageCount = Math.min(
+    Math.ceil((firstPage.totalFound ?? 0) / SMARTRECRUITERS_PAGE_SIZE),
+    SMARTRECRUITERS_MAX_PAGES
+  );
+  const laterPages = await Promise.all(
+    Array.from({ length: Math.max(pageCount - 1, 0) }, (_, index) => {
+      listUrl.searchParams.set(
+        "offset",
+        String((index + 1) * SMARTRECRUITERS_PAGE_SIZE)
+      );
+      return fetchJson<SmartRecruitersListResponse>(listUrl.toString());
+    })
+  );
+  const postings = [firstPage, ...laterPages].flatMap(
+    (page) => page.content ?? []
+  );
 
   const matchedSeeds = postings.flatMap((job) => {
     const department = job.department?.label ?? job.function?.label ?? "General";
@@ -738,7 +763,7 @@ async function fetchAdzunaExternalLeads(): Promise<ExternalFetchResult> {
           postedAt: job.created ?? new Date().toISOString(),
           atsType: "external-api" as const,
           category: knownCompany?.category ?? "startup",
-          snippet,
+          snippet: trimServedSnippet(snippet),
           roleType: match.roleType,
           roleFamilies: match.roleFamilies,
           sourceName: "Adzuna",
@@ -796,16 +821,75 @@ interface JobsCacheEntry {
   value: MBAJobsDataResult | null;
 }
 
+interface LastGoodSource {
+  jobs: MBAJob[];
+  fetchedAt: string;
+}
+
 const jobsCache = new Map<string, JobsCacheEntry>();
-const lastGoodJobs = new Map<string, MBAJobsDataResult>();
+// Last good jobs per source, so a board that fails on every run cannot stop
+// the boards that answered from being saved.
+const lastGoodBySource = new Map<string, LastGoodSource>();
 // The most recent non-error result per key, degraded ones included. Only the
 // refresh deadline in waitForRefresh reads it.
 const lastServedJobs = new Map<string, MBAJobsDataResult>();
 const MAX_CACHE_KEYS = 100;
-const DURABLE_LAST_GOOD_MAX_AGE_MS = 24 * 60 * 60 * 1000;
+const LAST_GOOD_MAX_AGE_MS = 24 * 60 * 60 * 1000;
+// A week old list with its fetched date shown is more useful than an error.
+const SERVED_MAX_AGE_MS = 7 * 24 * 60 * 60 * 1000;
+// Fixed keys. Only the default scan is persisted, so query strings cannot add
+// blobs to the store.
+const DURABLE_SOURCES_KEY = "mba-jobs/sources";
+const DURABLE_SERVED_KEY = "mba-jobs-served/default";
+const DEFAULT_CACHE_KEY = buildCacheKey(getDefaultMBACompanyIds(), false);
+let durableHydrationPromise: Promise<void> | null = null;
 
-function getDurableJobsKey(cacheKey: string, prefix = "mba-jobs"): string {
-  return `${prefix}/${createHash("sha256").update(cacheKey).digest("hex")}`;
+function buildCacheKey(targetIds: string[], includeExternalLeads: boolean): string {
+  return (
+    [...targetIds]
+      .sort()
+      .concat(includeExternalLeads ? ["external:adzuna"] : [])
+      .join(",") || "__empty__"
+  );
+}
+
+// Runs once per instance. A cold start has nothing in memory, so the saved
+// copies are what a failed board or a slow refresh falls back on.
+function hydrateFromDurableStore(): Promise<void> {
+  if (durableHydrationPromise) return durableHydrationPromise;
+  durableHydrationPromise = (async () => {
+    const [sources, served] = await Promise.all([
+      readDurableJson<Record<string, LastGoodSource>>(
+        DURABLE_SOURCES_KEY,
+        LAST_GOOD_MAX_AGE_MS
+      ),
+      readDurableJson<MBAJobsDataResult>(DURABLE_SERVED_KEY, SERVED_MAX_AGE_MS),
+    ]);
+    for (const [sourceId, lastGood] of Object.entries(sources ?? {})) {
+      if (Array.isArray(lastGood?.jobs) && !lastGoodBySource.has(sourceId)) {
+        lastGoodBySource.set(sourceId, lastGood);
+      }
+    }
+    if (
+      served &&
+      !served.isError &&
+      Array.isArray(served.body?.jobs) &&
+      !lastServedJobs.has(DEFAULT_CACHE_KEY)
+    ) {
+      setBoundedCacheValue(lastServedJobs, DEFAULT_CACHE_KEY, served);
+    }
+  })();
+  return durableHydrationPromise;
+}
+
+function getLastGoodSource(sourceId: string): LastGoodSource | null {
+  const lastGood = lastGoodBySource.get(sourceId);
+  if (!lastGood) return null;
+  if (Date.now() - Date.parse(lastGood.fetchedAt) <= LAST_GOOD_MAX_AGE_MS) {
+    return lastGood;
+  }
+  lastGoodBySource.delete(sourceId);
+  return null;
 }
 
 function setBoundedCacheValue<T>(map: Map<string, T>, key: string, value: T): void {
@@ -849,47 +933,70 @@ async function fetchAllJobs(
     })
   );
 
+  const externalResult = includeExternalLeads
+    ? await fetchAdzunaExternalLeads()
+    : null;
+
+  const fetchedAt = new Date().toISOString();
+  const recoveredAt: number[] = [];
   const jobs: MBAJob[] = [];
+
+  // A source that answered replaces its last good copy. A source that failed
+  // is still reported as failed, and its last good jobs stand in so a partial
+  // outage does not make its postings vanish.
+  const addSource = (source: MBAJobsSourceStatus, fresh: MBAJob[]) => {
+    if (source.status !== "failed") {
+      if (source.status === "ok") {
+        lastGoodBySource.set(source.companyId, { jobs: fresh, fetchedAt });
+      }
+      jobs.push(...fresh);
+      sourceStatuses.push(source);
+      return;
+    }
+
+    const message = source.message ?? "unknown error";
+    errors.push({
+      companyId: source.companyId,
+      companyName: source.companyName,
+      message,
+    });
+    const lastGood = getLastGoodSource(source.companyId);
+    if (!lastGood || lastGood.jobs.length === 0) {
+      sourceStatuses.push(source);
+      return;
+    }
+    recoveredAt.push(Date.parse(lastGood.fetchedAt));
+    jobs.push(...lastGood.jobs);
+    sourceStatuses.push({
+      ...source,
+      jobCount: lastGood.jobs.length,
+      message: `${message} (serving previously fetched roles)`,
+    });
+  };
+
   results.forEach((r, i) => {
     const company = targets[i];
+    const source = {
+      companyId: company.id,
+      companyName: company.name,
+      atsType: company.atsType,
+    };
     if (r.status === "fulfilled") {
-      jobs.push(...r.value);
-      sourceStatuses.push({
-        companyId: company.id,
-        companyName: company.name,
-        atsType: company.atsType,
-        status: "ok",
-        jobCount: r.value.length,
-      });
+      addSource({ ...source, status: "ok", jobCount: r.value.length }, r.value);
     } else {
-      errors.push({
-        companyId: company.id,
-        companyName: company.name,
-        message: (r.reason as Error)?.message ?? "unknown error",
-      });
-      sourceStatuses.push({
-        companyId: company.id,
-        companyName: company.name,
-        atsType: company.atsType,
-        status: "failed",
-        jobCount: 0,
-        message: (r.reason as Error)?.message ?? "unknown error",
-      });
+      addSource(
+        {
+          ...source,
+          status: "failed",
+          jobCount: 0,
+          message: (r.reason as Error)?.message ?? "unknown error",
+        },
+        []
+      );
     }
   });
 
-  if (includeExternalLeads) {
-    const externalResult = await fetchAdzunaExternalLeads();
-    jobs.push(...externalResult.jobs);
-    sourceStatuses.push(externalResult.status);
-    if (externalResult.status.status === "failed") {
-      errors.push({
-        companyId: externalResult.status.companyId,
-        companyName: externalResult.status.companyName,
-        message: externalResult.status.message ?? "External leads failed.",
-      });
-    }
-  }
+  if (externalResult) addSource(externalResult.status, externalResult.jobs);
 
   const dedupedJobs = dedupeJobs(jobs);
 
@@ -913,77 +1020,23 @@ async function fetchAllJobs(
   // outage payload.
   const isError = dedupedJobs.length === 0 && allAttemptedSourcesFailed;
   const isDegraded = failedSources.length > 0 && !isError;
+  // Every source failed and the jobs all come from last good copies, so the
+  // list carries the date of the newest of those copies.
+  const isStale = allAttemptedSourcesFailed && !isError;
 
   return {
     body: {
       jobs: dedupedJobs,
-      fetchedAt: new Date().toISOString(),
+      fetchedAt: isStale
+        ? new Date(Math.max(...recoveredAt)).toISOString()
+        : fetchedAt,
       errors,
       companiesRequested: targets.map((target) => target.id),
       sourceStatuses,
     },
     isError,
     isDegraded,
-  };
-}
-
-function buildStaleJobsResult(
-  good: MBAJobsDataResult,
-  failure: MBAJobsDataResult
-): MBAJobsDataResult {
-  return {
-    body: {
-      ...good.body,
-      errors: failure.body.errors,
-      sourceStatuses: failure.body.sourceStatuses,
-    },
-    isError: false,
-    isDegraded: true,
-    isStale: true,
-  };
-}
-
-// When only some boards failed, backfill the response with the last-good
-// jobs from exactly those failed sources so a partial outage does not make
-// their postings silently vanish. Fresh jobs win on id collisions, and the
-// failed sources' statuses note that earlier data is being served.
-function mergeLastGoodIntoDegraded(
-  good: MBAJobsDataResult,
-  degraded: MBAJobsDataResult
-): MBAJobsDataResult {
-  const failedCompanyIds = new Set(
-    (degraded.body.sourceStatuses ?? [])
-      .filter((source) => source.status === "failed")
-      .map((source) => source.companyId)
-  );
-  const freshJobIds = new Set(degraded.body.jobs.map((job) => job.id));
-  const recoveredJobs = good.body.jobs.filter(
-    (job) => failedCompanyIds.has(job.companyId) && !freshJobIds.has(job.id)
-  );
-  if (recoveredJobs.length === 0) return degraded;
-
-  const recoveredCounts = new Map<string, number>();
-  recoveredJobs.forEach((job) => {
-    recoveredCounts.set(job.companyId, (recoveredCounts.get(job.companyId) ?? 0) + 1);
-  });
-
-  const jobs = [...degraded.body.jobs, ...recoveredJobs].sort(
-    (a, b) => getPostedAtTime(b.postedAt) - getPostedAtTime(a.postedAt)
-  );
-  const sourceStatuses = (degraded.body.sourceStatuses ?? []).map((source) => {
-    const recoveredCount = recoveredCounts.get(source.companyId);
-    if (source.status !== "failed" || !recoveredCount) return source;
-    return {
-      ...source,
-      jobCount: recoveredCount,
-      message: `${source.message ?? "unknown error"} (serving previously fetched roles)`,
-    };
-  });
-
-  return {
-    body: { ...degraded.body, jobs, sourceStatuses },
-    isError: false,
-    isDegraded: true,
+    isStale,
   };
 }
 
@@ -1016,71 +1069,46 @@ function getOrFetchJobs(
   };
 
   entry.promise = (async () => {
-    if (!lastGoodJobs.has(cacheKey)) {
-      const durableGood = await readDurableJson<MBAJobsDataResult>(
-        getDurableJobsKey(cacheKey),
-        DURABLE_LAST_GOOD_MAX_AGE_MS
-      );
-      if (durableGood && !durableGood.isError && !durableGood.isDegraded) {
-        setBoundedCacheValue(lastGoodJobs, cacheKey, durableGood);
-      }
-    }
-    if (!lastServedJobs.has(cacheKey)) {
-      const durableServed = await readDurableJson<MBAJobsDataResult>(
-        getDurableJobsKey(cacheKey, "mba-jobs-served"),
-        DURABLE_LAST_GOOD_MAX_AGE_MS
-      );
-      if (durableServed && !durableServed.isError) {
-        setBoundedCacheValue(lastServedJobs, cacheKey, durableServed);
-      }
-    }
+    await hydrateFromDurableStore();
 
     const settle = async (
       result: MBAJobsDataResult
     ): Promise<MBAJobsDataResult> => {
-      let served = result;
-      let status: DataDeliveryStatus;
+      const status: DataDeliveryStatus = result.isError
+        ? "unavailable"
+        : result.isStale
+          ? "stale-fallback"
+          : result.isDegraded
+            ? "degraded"
+            : "fresh";
 
-      if (!result.isError && !result.isDegraded) {
-        setBoundedCacheValue(lastGoodJobs, cacheKey, result);
-        await writeDurableJson(getDurableJobsKey(cacheKey), result);
-        status = "fresh";
-      } else if (result.isError) {
-        const good = lastGoodJobs.get(cacheKey);
-        if (good) {
-          served = buildStaleJobsResult(good, result);
-          status = "stale-fallback";
-        } else {
-          status = "unavailable";
+      if (!result.isError) {
+        setBoundedCacheValue(lastServedJobs, cacheKey, result);
+        // A stale result holds nothing new, and saving it again would reset
+        // the age the saved copies are read against.
+        if (cacheKey === DEFAULT_CACHE_KEY && !result.isStale) {
+          await Promise.all([
+            writeDurableJson(
+              DURABLE_SOURCES_KEY,
+              Object.fromEntries(lastGoodBySource)
+            ),
+            writeDurableJson(DURABLE_SERVED_KEY, result),
+          ]);
         }
-      } else {
-        // Degraded: some boards answered, some failed. Never promote this to
-        // lastGoodJobs, but do backfill the failed boards from it.
-        const good = lastGoodJobs.get(cacheKey);
-        if (good) served = mergeLastGoodIntoDegraded(good, result);
-        status = "degraded";
       }
 
-      if (!served.isError) {
-        setBoundedCacheValue(lastServedJobs, cacheKey, served);
-        await writeDurableJson(
-          getDurableJobsKey(cacheKey, "mba-jobs-served"),
-          served
-        );
-      }
-
-      entry.value = served;
+      entry.value = result;
       entry.completedAt = Date.now();
       // Stamp the revision-ledger heartbeat with the served condition. A total
       // outage with no last-good (unavailable) served nothing, so it's skipped
       // and the last known-good heartbeat stands.
       if (status !== "unavailable") {
         await recordRuntimeSurfaceHeartbeat("mba-jobs", {
-          fetchedAt: served.body.fetchedAt,
+          fetchedAt: result.body.fetchedAt,
           status,
         });
       }
-      return served;
+      return result;
     };
 
     try {
@@ -1113,6 +1141,26 @@ function getOrFetchJobs(
   return entry.promise;
 }
 
+// A key this instance has not served yet is answered from the default scan's
+// copy, narrowed to the boards that were asked for.
+function filterDefaultServedJobs(
+  targets: PollableMBACompany[]
+): MBAJobsDataResult | undefined {
+  const served = lastServedJobs.get(DEFAULT_CACHE_KEY);
+  if (!served || targets.length === 0) return undefined;
+  const targetIds = new Set(targets.map((target) => target.id));
+  return {
+    ...served,
+    body: {
+      ...served.body,
+      jobs: served.body.jobs.filter((job) => targetIds.has(job.companyId)),
+      errors: served.body.errors.filter((error) =>
+        targetIds.has(error.companyId)
+      ),
+    },
+  };
+}
+
 // A cold instance or an expired entry refreshes by fanning out to every board,
 // and in production requests waiting on that fan-out were cut off 18 to 27
 // seconds in, after the Job Search page's loading shell (what ended them was
@@ -1124,6 +1172,7 @@ const REFRESH_WAIT_MS = 5_000;
 
 async function waitForRefresh(
   cacheKey: string,
+  targets: PollableMBACompany[],
   refresh: Promise<MBAJobsDataResult>
 ): Promise<MBAJobsDataResult> {
   let timer: ReturnType<typeof setTimeout> | undefined;
@@ -1142,7 +1191,8 @@ async function waitForRefresh(
     // no function to keep alive.
   }
 
-  const served = lastServedJobs.get(cacheKey);
+  const served =
+    lastServedJobs.get(cacheKey) ?? filterDefaultServedJobs(targets);
   if (served) return { ...served, isDegraded: true, isStale: true };
   return {
     body: {
@@ -1227,14 +1277,14 @@ export async function getMBAJobsData(
   // Stable cache key: sorted validated pollable company ids. Manual-only and
   // unknown ids do not affect fetched data, so they are added to source health
   // outside the single-flight cache.
-  const cacheKey = targets
-    .map((target) => target.id)
-    .sort()
-    .concat(includeExternalLeads ? ["external:adzuna"] : [])
-    .join(",") || "__empty__";
+  const cacheKey = buildCacheKey(
+    targets.map((target) => target.id),
+    includeExternalLeads
+  );
 
   const result = await waitForRefresh(
     cacheKey,
+    targets,
     getOrFetchJobs(cacheKey, targets, includeExternalLeads)
   );
   const sourceStatuses = orderSourceStatuses(requestedIds, [
@@ -1260,7 +1310,8 @@ export async function getMBAJobsData(
   Symbol.for("__mbaJobsCacheResetForTesting")
 ] = (): void => {
   jobsCache.clear();
-  lastGoodJobs.clear();
+  lastGoodBySource.clear();
   lastServedJobs.clear();
+  durableHydrationPromise = null;
   mbaJobsRateLimiter.reset();
 };

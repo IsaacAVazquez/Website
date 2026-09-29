@@ -2,6 +2,7 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 import Link from "next/link";
+import { isKonami, pushKonamiKey, shouldIgnoreKey } from "@/components/catalog97/konami";
 import styles from "./arcade.module.css";
 
 /*
@@ -21,6 +22,10 @@ const START_WINDOW = 1250; // ms a target stays "hittable" on round 0
 const MIN_WINDOW = 460; // floor so late game stays fair
 const WINDOW_DECAY = 26; // ms shaved per round survived
 const START_LIVES = 3;
+// What the Konami code gives, as it did in Contra.
+const CHEAT_LIVES = 30;
+const COIN_NOTE = "● ● ● INSERT COIN";
+const CHEAT_NOTE = "> cheat accepted. 30 lives.";
 const HISCORE_KEY = "arcade-reactor-hiscore-v1";
 
 const BOOT_LINES = [
@@ -51,6 +56,9 @@ export default function ArcadeClient() {
   const [combo, setCombo] = useState(1);
   const [lives, setLives] = useState(START_LIVES);
   const [hiScore, setHiScore] = useState(0);
+  // A run played on 30 lives, and whether the code is waiting for the next start.
+  const [cheatRun, setCheatRun] = useState(false);
+  const [cheatArmed, setCheatArmed] = useState(false);
 
   const [liveCell, setLiveCell] = useState<number | null>(null);
   const [decoyCell, setDecoyCell] = useState<number | null>(null);
@@ -64,6 +72,8 @@ export default function ArcadeClient() {
   const scoreRef = useRef(0);
   const comboRef = useRef(1);
   const livesRef = useRef(START_LIVES);
+  const cheatRunRef = useRef(false);
+  const cheatArmedRef = useRef(false);
   const liveCellRef = useRef<number | null>(null);
   const decoyCellRef = useRef<number | null>(null);
   const deadlineRef = useRef(0);
@@ -119,8 +129,9 @@ export default function ArcadeClient() {
       setDecoyCell(null);
 
       if (next === "over") {
-        // Commit the high score here (event-driven), not in an effect.
-        const finalScore = scoreRef.current;
+        // Commit the high score here (event-driven), not in an effect. A run
+        // on 30 lives is not a fair score, so the cabinet does not keep it.
+        const finalScore = cheatRunRef.current ? 0 : scoreRef.current;
         const stored = readHiScore();
         if (finalScore > stored) {
           try {
@@ -237,13 +248,19 @@ export default function ArcadeClient() {
 
   const startGame = useCallback(() => {
     clearTimers();
+    // The code covers one run, so starting spends it.
+    const cheat = cheatArmedRef.current;
+    cheatArmedRef.current = false;
+    cheatRunRef.current = cheat;
+    setCheatArmed(false);
+    setCheatRun(cheat);
     roundRef.current = 0;
     scoreRef.current = 0;
     comboRef.current = 1;
-    livesRef.current = START_LIVES;
+    livesRef.current = cheat ? CHEAT_LIVES : START_LIVES;
     setScore(0);
     setCombo(1);
-    setLives(START_LIVES);
+    setLives(livesRef.current);
     setFeedback(null);
     statusRef.current = "playing";
     setStatus("playing");
@@ -264,21 +281,50 @@ export default function ArcadeClient() {
     return () => window.removeEventListener("keydown", onKey);
   }, [handleCellClick]);
 
+  // The Konami code. Mid-run it tops the lives up on the spot, and on the
+  // boot or game over screen it waits for the next start.
+  useEffect(() => {
+    let history: string[] = [];
+    const onKey = (e: KeyboardEvent) => {
+      if (shouldIgnoreKey(e)) return;
+      history = pushKonamiKey(history, e.key);
+      if (!isKonami(history)) return;
+      history = [];
+      if (statusRef.current === "playing") {
+        cheatRunRef.current = true;
+        livesRef.current = CHEAT_LIVES;
+        setCheatRun(true);
+        setLives(CHEAT_LIVES);
+      } else {
+        cheatArmedRef.current = true;
+        setCheatArmed(true);
+      }
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, []);
+
   const isOverlay = status !== "playing";
+  // The cheat shows while it waits for a start and through the run it covers.
+  const cheatShowing = cheatArmed || (cheatRun && status === "playing");
 
   return (
     <div className={styles.root}>
       <div className={styles.shell}>
         <div className={styles.topbar}>
           <p className={styles.kicker}>ISAAC VAZQUEZ // SIDE-QUEST #07</p>
-          <p className={styles.coin}>● ● ● INSERT COIN</p>
+          {/* Only the cheat note is live, so the coin line is never announced. */}
+          <p className={styles.coin}>
+            {cheatShowing ? null : COIN_NOTE}
+            <span role="status">{cheatShowing ? CHEAT_NOTE : null}</span>
+          </p>
         </div>
 
         <div className={styles.titleWrap}>
           <h1 className={styles.title}>REACTOR</h1>
           <p className={styles.tagline}>
             A neon reflex cabinet bolted onto a buttoned-up portfolio. The rest
-            of this site is paper, ink, and serif restraint — this is{" "}
+            of this site is paper, ink, and serif restraint, and this is{" "}
             <b>none of that</b>. Light the live cell before it fades. Dodge the
             dashed decoys. Keep the combo alive.
           </p>
@@ -301,11 +347,13 @@ export default function ArcadeClient() {
             <div className={styles.stat}>
               <span className={styles.statLabel}>LIVES</span>
               <span className={`${styles.statValue} ${styles.lives}`}>
-                {Array.from({ length: START_LIVES }, (_, i) => (
-                  <span key={i} className={i >= lives ? styles.spent : ""}>
-                    ♥
-                  </span>
-                ))}
+                {cheatRun
+                  ? `♥ x${lives}`
+                  : Array.from({ length: START_LIVES }, (_, i) => (
+                      <span key={i} className={i >= lives ? styles.spent : ""}>
+                        ♥
+                      </span>
+                    ))}
               </span>
             </div>
           </div>
@@ -374,10 +422,11 @@ export default function ArcadeClient() {
                       <strong style={{ color: "var(--ph-acid)" }}>
                         {score}
                       </strong>
-                      .{" "}
-                      {score >= hiScore && score > 0
-                        ? "New high score — the cabinet remembers."
-                        : `High score to beat: ${hiScore}.`}
+                      {cheatRun
+                        ? ` with 30 lives, so the cabinet isn't counting it. High score to beat: ${hiScore}.`
+                        : score >= hiScore && score > 0
+                          ? ". New high score, and the cabinet remembers."
+                          : `. High score to beat: ${hiScore}.`}
                     </p>
                     <button
                       type="button"

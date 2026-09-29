@@ -1,7 +1,8 @@
 "use client";
 
-import { useMemo } from "react";
+import { useEffect, useMemo, useState } from "react";
 import type {
+  TransitDeparture,
   TransitLine,
   TransitSectionStatus,
   TransitStation,
@@ -35,6 +36,30 @@ function formatMinutes(minutes: number | null): string {
   return `${minutes} min`;
 }
 
+/**
+ * The trains still ahead at `now`, with their minutes counted from `now`.
+ * BART counts minutes from the moment it answered, so a board that has been
+ * held for a while overstates every wait by its own age.
+ *
+ * ponytail: trusts the viewer's clock. Send the server's time with the board
+ * if skewed clocks turn up.
+ */
+export function upcomingDepartures(
+  board: TransitStationBoard,
+  now: number
+): TransitDeparture[] {
+  const elapsed = Math.floor((now - Date.parse(board.generatedAt)) / 60_000);
+  // Written this way round so an unreadable generatedAt, which gives NaN, and
+  // a clock that runs behind the server both leave the board as it was read.
+  if (!(elapsed >= 1)) return board.departures;
+  return board.departures
+    .filter((departure) => (departure.minutes ?? 0) >= elapsed)
+    .map((departure) => ({
+      ...departure,
+      minutes: (departure.minutes ?? 0) - elapsed,
+    }));
+}
+
 function PlatformBoard({
   station,
   board,
@@ -50,11 +75,23 @@ function PlatformBoard({
   onRetry: () => void;
   departuresStatus: TransitSectionStatus;
 }) {
+  // Null on the server and on the first client render, so both print the board
+  // as it was read and hydration matches. The viewer's clock takes over after.
+  const [now, setNow] = useState<number | null>(null);
+  useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- The viewer's clock can only be read after mount without breaking hydration
+    setNow(Date.now());
+    const timer = window.setInterval(() => setNow(Date.now()), 30_000);
+    return () => window.clearInterval(timer);
+  }, []);
+  const departures =
+    board && now !== null ? upcomingDepartures(board, now) : board?.departures ?? [];
+
   return (
     <div className="c97-transit-board" data-c97-surface="espresso">
       {/* Padded only, so the espresso surface is the board itself. */}
       <div className="c97-transit-board-inner">
-        <p className="c97-kicker mb-1">Next trains</p>
+        <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-1)" }}>Next trains</p>
         {!station ? (
           <p className="mb-0 text-sm leading-6" style={{ color: "var(--c97-ink-2)" }}>
             No station is available in the current snapshot.
@@ -88,9 +125,9 @@ function PlatformBoard({
             ) : null}
 
             {!isLoading && !error && board ? (
-              board.departures.length > 0 ? (
+              departures.length > 0 ? (
                 <ul className="c97-transit-departures">
-                  {board.departures.slice(0, 8).map((departure, index) => (
+                  {departures.slice(0, 8).map((departure, index) => (
                     <li
                       key={`${departure.destinationAbbr}-${departure.platform}-${index}`}
                       className="c97-transit-departure-row"
@@ -116,7 +153,9 @@ function PlatformBoard({
                 </ul>
               ) : (
                 <p className="mb-0 text-sm leading-6" style={{ color: "var(--c97-ink-2)" }}>
-                  No upcoming departures in this snapshot for {station.name}.
+                  {departuresStatus === "fresh" && board.departures.length === 0
+                    ? `No trains are scheduled at ${station.name} right now.`
+                    : `No upcoming departures in this snapshot for ${station.name}.`}
                 </p>
               )
             ) : null}

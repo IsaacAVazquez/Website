@@ -36,7 +36,11 @@ export type ArticleCoverImageSpec =
   | {
       slug: string;
       strategy: "wikimedia";
-      /** Wikimedia Commons full-text search phrase (File namespace). */
+      /**
+       * Wikimedia Commons search in the File namespace. A pinned cover names
+       * the file with `intitle:"<file title>"`, since a loose phrase matches
+       * scanned books. The builder adds `filetype:bitmap` itself.
+       */
       query: string;
       /** Alt text written to frontmatter. Keep true for any top result. */
       alt: string;
@@ -66,6 +70,8 @@ const COVER_WRONG_SUBJECT = "The fetched photo showed a different subject than t
 const RISO_PLATE = "Riso plate made for the site; no third-party credit, and the builder must not overwrite it.";
 // Set on 2026-09-25 for the write-ups about past employers.
 const CAREER_WRITEUP = "Career write-up about a past employer; the only real subject is the company's own brand, which is not ours to use.";
+// Set on 2026-09-27, when the loose Commons queries were replaced with pinned file titles.
+const NO_PINNED_PHOTO = "No Commons photograph was pinned for this post in the 2026-09-27 cover review, so it keeps the editorial card.";
 // Set on 2026-09-28 for the monthly company series.
 const COMPANY_SERIES = "Monthly company commentary; the only real subject is the company's own brand, which is not ours to use.";
 
@@ -76,14 +82,14 @@ export const ARTICLE_COVER_IMAGES: ArticleCoverImageSpec[] = [
   { slug: "2025-fantasy-football-draft-strategy", strategy: "manual", note: RISO_PLATE },
   { slug: "fantasy-football-beginners-complete-guide", strategy: "manual", note: RISO_PLATE },
   { slug: "june-fantasy-football-prep-2026", strategy: "editorial-card", reason: COVER_WRONG_SUBJECT },
-  { slug: "mastering-fantasy-football-analytics", strategy: "wikimedia", query: "American football NFL play line of scrimmage", alt: "American football players lined up for a play" },
+  { slug: "mastering-fantasy-football-analytics", strategy: "editorial-card", reason: "The Commons candidate is a photo of a named player, and the post is not about him." },
   { slug: "rb-vs-wr-draft-strategy-modeling-positional-value", strategy: "manual", note: RISO_PLATE },
   { slug: "understanding-fantasy-football-analytics", strategy: "editorial-card", reason: COVER_WRONG_SUBJECT },
   { slug: "waiver-wire-mastery-hidden-gems", strategy: "manual", note: RISO_PLATE },
   { slug: "building-a-fantasy-football-rankings-platform", strategy: "manual", note: RISO_PLATE },
 
   { slug: "2026-march-madness-bracket-analysis", strategy: "editorial-card", reason: COVER_WRONG_SUBJECT },
-  { slug: "2026-march-madness-postmortem", strategy: "wikimedia", query: "college basketball arena crowd game", alt: "A packed arena during a college basketball game" },
+  { slug: "2026-march-madness-postmortem", strategy: "editorial-card", reason: "The Commons candidate shows a February 2023 game between Kentucky and Arkansas, and the post mentions neither team." },
 
   { slug: "building-a-fantasy-formula-1-optimizer", strategy: "editorial-card", reason: COVER_WRONG_SUBJECT },
   { slug: "building-a-formula-1-dashboard", strategy: "editorial-card", reason: COVER_WRONG_SUBJECT },
@@ -96,12 +102,12 @@ export const ARTICLE_COVER_IMAGES: ArticleCoverImageSpec[] = [
   { slug: "world-cup-2026-groups-a-b-c-decided", strategy: "editorial-card", reason: COVER_WRONG_SUBJECT },
   { slug: "world-cup-2026-groups-d-e-f-final-round", strategy: "editorial-card", reason: COVER_WRONG_SUBJECT },
   { slug: "world-cup-2026-groups-g-h-i-final-round", strategy: "editorial-card", reason: COVER_WRONG_SUBJECT },
-  { slug: "world-cup-2026-groups-j-k-l-final-round", strategy: "wikimedia", query: "football soccer goal net pitch", alt: "A football and goal net" },
+  { slug: "world-cup-2026-groups-j-k-l-final-round", strategy: "editorial-card", reason: NO_PINNED_PHOTO },
   { slug: "world-cup-2026-top-ten-contenders", strategy: "editorial-card", reason: COVER_WRONG_SUBJECT },
   { slug: "world-cup-2026-48-team-format-verdict", strategy: "editorial-card", reason: COVER_WRONG_SUBJECT },
-  { slug: "world-cup-2026-final-spain-argentina", strategy: "wikimedia", query: "Spain national football team match", alt: "Spain's national football team during a match" },
+  { slug: "world-cup-2026-final-spain-argentina", strategy: "editorial-card", reason: NO_PINNED_PHOTO },
 
-  { slug: "building-a-pga-tour-dashboard", strategy: "wikimedia", query: "golf tournament player green PGA", alt: "A golfer on the green during a tournament" },
+  { slug: "building-a-pga-tour-dashboard", strategy: "wikimedia", query: 'intitle:"TPC Sawgrass 17"', alt: "The 17th hole at TPC Sawgrass in Ponte Vedra, Florida, photographed in 2008" },
   { slug: "building-an-mlb-dashboard", strategy: "manual", note: RISO_PLATE },
   { slug: "building-an-nba-dashboard", strategy: "manual", note: RISO_PLATE },
   { slug: "building-an-nfl-dashboard", strategy: "manual", note: RISO_PLATE },
@@ -110,11 +116,11 @@ export const ARTICLE_COVER_IMAGES: ArticleCoverImageSpec[] = [
   // Signals & Commentary — concrete where a neutral subject exists
   // ---------------------------------------------------------------------------
   { slug: "2026-week-april-6-tariffs-trade-war-market-reaction", strategy: "manual", note: RISO_PLATE },
-  { slug: "2026-week-in-tech-agentic-ai-infrastructure-arms-race", strategy: "wikimedia", query: "data center server room racks", alt: "Rows of servers in a data center" },
+  { slug: "2026-week-in-tech-agentic-ai-infrastructure-arms-race", strategy: "wikimedia", query: 'intitle:"Datacenter Server Racks"', alt: "Server racks in a data center, photographed in 2015" },
   { slug: "2026-week-in-tech-ai-infra-geopolitics", strategy: "editorial-card", reason: COVER_WRONG_SUBJECT },
-  { slug: "a-history-of-horology", strategy: "wikimedia", query: "antique mechanical pocket watch movement", alt: "The movement of an antique mechanical pocket watch" },
-  { slug: "aws-vs-azure-vs-gcp-cloud-provider-comparison", strategy: "wikimedia", query: "data center servers cloud computing", alt: "Servers in a cloud data center" },
-  { slug: "companies-and-watches-that-shaped-horology", strategy: "wikimedia", query: "luxury mechanical wristwatch", alt: "A mechanical luxury wristwatch" },
+  { slug: "a-history-of-horology", strategy: "wikimedia", query: 'intitle:"Pocket watch movement (AM 2004.51.45-2)"', alt: "A Waltham pocket watch movement in its display case, from the Auckland Museum collection" },
+  { slug: "aws-vs-azure-vs-gcp-cloud-provider-comparison", strategy: "editorial-card", reason: NO_PINNED_PHOTO },
+  { slug: "companies-and-watches-that-shaped-horology", strategy: "wikimedia", query: 'intitle:"Omega Speedmaster compilation pp01"', alt: "Three views of an Omega Speedmaster Professional on a white background" },
   { slug: "is-the-ai-mega-cap-rally-a-bubble", strategy: "manual", note: RISO_PLATE },
   { slug: "reading-q1-2026-earnings-ai-capex-lens", strategy: "manual", note: RISO_PLATE },
   { slug: "spacex-ipo-case-for-going-public", strategy: "manual", note: RISO_PLATE },
@@ -129,7 +135,7 @@ export const ARTICLE_COVER_IMAGES: ArticleCoverImageSpec[] = [
   { slug: "building-a-travel-planner", strategy: "manual", note: RISO_PLATE },
   { slug: "building-a-wine-cellar-app", strategy: "manual", note: RISO_PLATE },
   { slug: "building-an-austin-food-map", strategy: "manual", note: RISO_PLATE },
-  { slug: "building-an-earthquake-dashboard", strategy: "wikimedia", query: "seismograph seismogram earthquake recording", alt: "A seismograph recording ground motion" },
+  { slug: "building-an-earthquake-dashboard", strategy: "wikimedia", query: 'intitle:"Seismogram at Weston Observatory"', alt: "A seismograph recording a seismogram at the Weston Observatory in Massachusetts, photographed in 2014" },
   { slug: "building-news-pulse-dashboard", strategy: "manual", note: RISO_PLATE },
   { slug: "building-spacex-mission-control", strategy: "manual", note: RISO_PLATE },
 
@@ -260,20 +266,23 @@ export const ARTICLE_COVER_IMAGES: ArticleCoverImageSpec[] = [
   { slug: "premier-league-2025-26-september-promoted-teams", strategy: "editorial-card", reason: RECAP_CARD },
   { slug: "world-cup-2026-round-of-16-recap", strategy: "editorial-card", reason: RECAP_CARD },
   { slug: "world-cup-2026-round-of-32-recap", strategy: "editorial-card", reason: RECAP_CARD },
-  // La Liga round-ups have no cover yet; fetch a licensed match photo like the peers.
-  { slug: "la-liga-2025-26-arbeloa-madrid-midseason", strategy: "wikimedia", query: "La Liga football soccer match stadium", alt: "A football match at a stadium" },
-  { slug: "la-liga-2025-26-barcelona-clinch-title", strategy: "wikimedia", query: "La Liga football soccer match stadium", alt: "A football match at a stadium" },
-  { slug: "la-liga-2025-26-barcelona-retake-top", strategy: "wikimedia", query: "La Liga football soccer match stadium", alt: "A football match at a stadium" },
-  { slug: "la-liga-2025-26-final-day", strategy: "wikimedia", query: "La Liga football soccer match stadium", alt: "A football match at a stadium" },
-  { slug: "la-liga-2025-26-first-clasico", strategy: "wikimedia", query: "La Liga football soccer match stadium", alt: "A football match at a stadium" },
-  { slug: "la-liga-2025-26-joan-garcia-zamora", strategy: "wikimedia", query: "La Liga football soccer match stadium", alt: "A football match at a stadium" },
-  { slug: "la-liga-2025-26-mbappe-pichichi", strategy: "wikimedia", query: "La Liga football soccer match stadium", alt: "A football match at a stadium" },
-  { slug: "la-liga-2025-26-oviedo-relegated", strategy: "wikimedia", query: "La Liga football soccer match stadium", alt: "A football match at a stadium" },
-  { slug: "la-liga-2025-26-real-madrid-flying-start", strategy: "wikimedia", query: "La Liga football soccer match stadium", alt: "A football match at a stadium" },
-  { slug: "la-liga-2025-26-season-preview", strategy: "wikimedia", query: "La Liga football soccer match stadium", alt: "A football match at a stadium" },
-  { slug: "la-liga-2025-26-season-verdict", strategy: "wikimedia", query: "La Liga football soccer match stadium", alt: "A football match at a stadium" },
-  { slug: "la-liga-2025-26-supercopa-alonso-sacked", strategy: "wikimedia", query: "La Liga football soccer match stadium", alt: "A football match at a stadium" },
-  { slug: "la-liga-2025-26-title-race-run-in", strategy: "wikimedia", query: "La Liga football soccer match stadium", alt: "A football match at a stadium" },
+  // La Liga round-ups about one club or one match take a photo of that club's
+  // ground. The photos are from 2014 or earlier, so each alt text says when.
+  { slug: "la-liga-2025-26-arbeloa-madrid-midseason", strategy: "wikimedia", query: 'intitle:"Estadio Santiago Bernabéu 03"', alt: "Inside the Santiago Bernabéu stadium in Madrid, photographed in 2007" },
+  { slug: "la-liga-2025-26-barcelona-clinch-title", strategy: "wikimedia", query: 'intitle:"Camp Nou, La Liga match (Ank Kumar) 08"', alt: "Camp Nou during a La Liga match between Barcelona and Athletic Bilbao in September 2014" },
+  { slug: "la-liga-2025-26-barcelona-retake-top", strategy: "wikimedia", query: 'intitle:"Camp Nou, La Liga match (Ank Kumar) 02"', alt: "Camp Nou during a La Liga match between Barcelona and Athletic Bilbao in September 2014" },
+  { slug: "la-liga-2025-26-final-day", strategy: "wikimedia", query: 'intitle:"Estadi de Montilivi 1"', alt: "Estadi de Montilivi, the home ground of Girona, photographed in 2010" },
+  { slug: "la-liga-2025-26-first-clasico", strategy: "wikimedia", query: 'intitle:"Santiago Bernabéu Stadium, 2007"', alt: "Real Madrid playing at the Santiago Bernabéu stadium in 2007" },
+  { slug: "la-liga-2025-26-joan-garcia-zamora", strategy: "editorial-card", reason: NO_PINNED_PHOTO },
+  { slug: "la-liga-2025-26-mbappe-pichichi", strategy: "editorial-card", reason: NO_PINNED_PHOTO },
+  { slug: "la-liga-2025-26-oviedo-relegated", strategy: "wikimedia", query: 'intitle:"Estadio Carlos Tartiere 2008"', alt: "Estadio Carlos Tartiere, the home ground of Real Oviedo, in a photo from 2013 or earlier" },
+  // This title matches two photos of the same stadium, one of its west wall
+  // dated 2006 and one uploaded in 2012, so the alt text holds for either.
+  { slug: "la-liga-2025-26-real-madrid-flying-start", strategy: "wikimedia", query: 'intitle:"Estadio Santiago Bernabéu - 02"', alt: "The Santiago Bernabéu stadium in Madrid, in a photo from 2012 or earlier" },
+  { slug: "la-liga-2025-26-season-preview", strategy: "editorial-card", reason: NO_PINNED_PHOTO },
+  { slug: "la-liga-2025-26-season-verdict", strategy: "editorial-card", reason: NO_PINNED_PHOTO },
+  { slug: "la-liga-2025-26-supercopa-alonso-sacked", strategy: "editorial-card", reason: NO_PINNED_PHOTO },
+  { slug: "la-liga-2025-26-title-race-run-in", strategy: "editorial-card", reason: NO_PINNED_PHOTO },
 
   // ---------------------------------------------------------------------------
   // Weekly series — year coverage (Sundays, 2025-07-20 through 2026-07-19)

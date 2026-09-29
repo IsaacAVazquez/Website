@@ -143,7 +143,7 @@ describe("MockDraftClient", () => {
       expect(note).toHaveTextContent("Board dated Sep 10, 2026 · ADP dated Sep 10, 2026");
       expect(note).not.toHaveTextContent(/stops refreshing/i);
       // Wrapped in the page shell like the rankings board's note.
-      expect(note.parentElement?.className).toContain("max-w-[1080px]");
+      expect(note.parentElement?.className).toContain("c97-shell");
       expect(screen.getByText("Board Current · Sep 10, 2026")).toBeInTheDocument();
       expect(screen.getByRole("button", { name: "Start mock" })).toBeEnabled();
     });

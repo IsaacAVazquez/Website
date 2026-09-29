@@ -19,6 +19,47 @@ function flush() {
   });
 }
 
+// jest.setup.js installs an observer that never fires. This one hands its
+// callback to the test, which decides when the section comes into view.
+let reportIntersection: ((isIntersecting: boolean) => void) | null = null;
+const SetupIntersectionObserver = global.IntersectionObserver;
+
+class ControlledIntersectionObserver {
+  constructor(callback: IntersectionObserverCallback) {
+    reportIntersection = (isIntersecting) =>
+      callback(
+        [{ isIntersecting } as IntersectionObserverEntry],
+        this as unknown as IntersectionObserver,
+      );
+  }
+  observe() {}
+  unobserve() {}
+  disconnect() {}
+  takeRecords() {
+    return [];
+  }
+}
+
+async function bringIntoView() {
+  await act(async () => {
+    reportIntersection?.(true);
+  });
+  await flush();
+}
+
+// The browser lays a print out from the DOM as it stands when the beforeprint
+// handlers return. It does not scroll, so the observer never reports the
+// section, and it does not wait for a timer. This copies the planner at that
+// moment, before anything queued can run.
+function pageAtPrint(container: HTMLElement): HTMLElement {
+  const copies: HTMLElement[] = [];
+  act(() => {
+    window.dispatchEvent(new Event("beforeprint"));
+    copies.push(container.cloneNode(true) as HTMLElement);
+  });
+  return copies[0];
+}
+
 describe("RetirementPlanner", () => {
   let container: HTMLDivElement;
   let root: Root;
@@ -27,11 +68,83 @@ describe("RetirementPlanner", () => {
     container = document.createElement("div");
     document.body.appendChild(container);
     localStorage.clear();
+    reportIntersection = null;
+    global.IntersectionObserver =
+      ControlledIntersectionObserver as unknown as typeof IntersectionObserver;
   });
 
   afterEach(() => {
     act(() => root.unmount());
     container.remove();
+    global.IntersectionObserver = SetupIntersectionObserver;
+  });
+
+  it("holds the projection until the section is near the viewport", async () => {
+    await act(async () => {
+      root = createRoot(container);
+      root.render(<RetirementPlanner />);
+    });
+    await flush();
+
+    // The section, its anchor, and the disclaimer are there from first paint.
+    expect(container.querySelector("#retirement")).not.toBeNull();
+    expect(container.textContent).toContain("Retirement planner");
+    expect(container.textContent).toMatch(/educational purposes only/i);
+    // No projection has run, and the header does not claim one is running.
+    expect(container.textContent).toContain("Crunching scenarios");
+    expect(container.textContent).not.toMatch(/\d+ of 100/);
+    expect(container.textContent).not.toContain("updating");
+
+    await act(async () => {
+      reportIntersection?.(false);
+    });
+    await flush();
+    expect(container.textContent).not.toMatch(/\d+ of 100/);
+
+    await bringIntoView();
+    expect(container.textContent).toMatch(/\d+ of 100/);
+    expect(container.textContent).toContain("Save more");
+  });
+
+  it("prints the verdict when the section never came near the viewport", async () => {
+    await act(async () => {
+      root = createRoot(container);
+      root.render(<RetirementPlanner />);
+    });
+    await flush();
+    expect(container.textContent).toContain("Crunching scenarios");
+
+    const printed = pageAtPrint(container);
+
+    expect(printed.textContent).toMatch(/\d+ of 100/);
+    expect(printed.textContent).not.toContain("Crunching scenarios");
+  });
+
+  it("prints the levers, which otherwise arrive a tick after the verdict", async () => {
+    await act(async () => {
+      root = createRoot(container);
+      root.render(<RetirementPlanner />);
+    });
+    await flush();
+
+    const printed = pageAtPrint(container);
+
+    expect(printed.textContent).toContain("Save more");
+    expect(printed.querySelector(".invest-retire-lever-skeleton")).toBeNull();
+  });
+
+  it("prints the assumptions and the disclaimer with the projection", async () => {
+    await act(async () => {
+      root = createRoot(container);
+      root.render(<RetirementPlanner />);
+    });
+    await flush();
+
+    const printed = pageAtPrint(container);
+
+    expect(printed.querySelector('[aria-label="Assumptions used"]')).not.toBeNull();
+    expect(printed.textContent).toContain("Capital market assumptions:");
+    expect(printed.textContent).toMatch(/educational purposes only/i);
   });
 
   it("renders a verdict and levers from the default plan", async () => {
@@ -40,6 +153,7 @@ describe("RetirementPlanner", () => {
       root.render(<RetirementPlanner />);
     });
     await flush();
+    await bringIntoView();
 
     // Headline verdict paints from the fast core path.
     expect(container.textContent).toContain("Retirement planner");
@@ -58,6 +172,7 @@ describe("RetirementPlanner", () => {
       root.render(<RetirementPlanner portfolioValue={250000} />);
     });
     await flush();
+    await bringIntoView();
 
     expect(container.textContent).toMatch(/Use my portfolio balance/i);
   });

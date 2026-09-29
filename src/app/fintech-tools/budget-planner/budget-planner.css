@@ -91,8 +91,12 @@
   padding-top: var(--c97-sp-1);
 }
 
+/* Two envelopes across a 320px phone leave about 97px for the name, less than
+   "Entertainment" needs, so a long category name hyphenates instead of being cut. */
 .c97-envelope-name {
   margin: 0;
+  hyphens: auto;
+  overflow-wrap: break-word;
 }
 
 .c97-envelope-amount,

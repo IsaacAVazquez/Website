@@ -43,7 +43,9 @@ async function getAllSearchableContent(): Promise<SearchableContent[]> {
     logger.error('Search corpus: failed to load blog posts', err);
   }
 
-  // ---- Project case studies (one entry per /portfolio/[slug]) ------------
+  // ---- Project case studies ---------------------------------------------
+  // A case study that names a live tool redirects there from
+  // /portfolio/<slug>, so its entry points at the tool itself.
   for (const study of Object.values(caseStudiesData)) {
     content.push({
       id: `project-case-${study.slug}`,
@@ -59,7 +61,7 @@ async function getAllSearchableContent(): Promise<SearchableContent[]> {
       ]
         .filter(Boolean)
         .join(' '),
-      url: `/portfolio/${study.slug}`,
+      url: study.link?.startsWith('/') ? study.link : `/portfolio/${study.slug}`,
       type: 'project',
       category: 'Portfolio',
       tags: study.tools,
@@ -72,7 +74,7 @@ async function getAllSearchableContent(): Promise<SearchableContent[]> {
       id: 'page-home',
       title: 'Isaac Vazquez',
       excerpt:
-        'Portfolio site for Isaac Vazquez — product manager, builder, and analytics-focused operator.',
+        'My background, selected work, newest writing, and the dashboards I built.',
       content:
         'home portfolio Isaac Vazquez product manager analytics fintech builder Berkeley Bay Area',
       url: '/',
@@ -83,7 +85,7 @@ async function getAllSearchableContent(): Promise<SearchableContent[]> {
       id: 'page-about',
       title: 'About Isaac Vazquez',
       excerpt:
-        'Background, work history, and how I think about product management, analytics, and decision-support tooling.',
+        'How I got from campaign data and QA to Berkeley Haas, and the habits I work by.',
       content:
         'about Isaac Vazquez background bio product manager analytics civic tech fintech Berkeley',
       url: '/about',
@@ -105,7 +107,7 @@ async function getAllSearchableContent(): Promise<SearchableContent[]> {
       id: 'page-resume',
       title: 'Resume - Isaac Vazquez',
       excerpt:
-        'Resume for a product manager with 6+ years across QA, analytics, civic tech, and fintech-style product work.',
+        'My résumé, covering Open Progress, Civitech, my 2026 growth internship at Juno, and my Berkeley Haas MBA.',
       content:
         'Resume product manager QA analytics civic tech fintech product work Berkeley Bay Area',
       url: '/resume',
@@ -116,7 +118,7 @@ async function getAllSearchableContent(): Promise<SearchableContent[]> {
       id: 'page-contact',
       title: 'Contact Isaac Vazquez',
       excerpt:
-        'Get in touch about product roles, analytics work, AI workflows, or fintech-focused projects.',
+        'How to reach me about full-time product roles, Haas, or anything on this site.',
       content:
         'Contact product manager analytics AI workflows fintech product collaboration Berkeley Bay Area',
       url: '/contact',
@@ -533,9 +535,9 @@ async function getAllSearchableContent(): Promise<SearchableContent[]> {
       id: 'page-food-map',
       title: 'Food Map',
       excerpt:
-        'A curated, deep-linkable map of the Austin restaurants I send people to first, filterable by neighborhood, cuisine, and meal.',
+        'A curated, deep-linkable map of where to eat across ten cities, starting with the Austin restaurants I send people to first, filterable by city, curator, and cuisine.',
       content:
-        'Food map Austin restaurants curated city guide neighborhood cuisine meal filters deep-linkable',
+        'Food map restaurants curated city guide Austin San Francisco New York New Orleans Los Angeles Miami Atlanta Tokyo Copenhagen San Sebastian curator cuisine filters deep-linkable',
       url: '/food-map',
       type: 'project',
       category: 'Personal',
@@ -605,7 +607,7 @@ async function getAllSearchableContent(): Promise<SearchableContent[]> {
       id: 'page-now',
       title: 'Now',
       excerpt:
-        'What I am focused on right now — current projects, reading, and priorities.',
+        'What I am focused on right now, from my second year at Haas to what I am building and reading.',
       content:
         'now page current focus projects priorities reading what I am working on status update',
       url: '/now',
@@ -624,6 +626,77 @@ async function getAllSearchableContent(): Promise<SearchableContent[]> {
       category: 'Site',
     },
     {
+      id: 'page-dashboards',
+      title: 'Dashboards',
+      excerpt:
+        'The instruments I built and keep running, from football ledgers to markets and spaceflight.',
+      content:
+        'dashboards live data tools index sports markets spaceflight civic trackers calculators snapshot refresh',
+      url: '/dashboards',
+      type: 'page',
+      category: 'Projects',
+    },
+    {
+      id: 'page-fantasy-football-weekly',
+      title: 'Fantasy Football Weekly Rankings',
+      excerpt:
+        "In-season weekly consensus rankings for flex and quarterback, with each player's opponent, expert range, and how widely he is rostered.",
+      content:
+        'Fantasy football weekly rankings in season consensus flex quarterback opponent expert range rostered start sit',
+      url: '/fantasy-football/weekly',
+      type: 'project',
+      category: 'Fantasy Football Analytics',
+      tags: ['Fantasy Football', 'Rankings', 'Weekly'],
+    },
+    {
+      id: 'page-fantasy-football-waivers',
+      title: 'Fantasy Football Waiver Targets',
+      excerpt:
+        'In-season waiver adds where the weekly expert consensus rank runs ahead of how widely a player is rostered.',
+      content:
+        'Fantasy football waiver wire targets adds in season consensus rank rostered percentage percentile pickup',
+      url: '/fantasy-football/waivers',
+      type: 'project',
+      category: 'Fantasy Football Analytics',
+      tags: ['Fantasy Football', 'Waivers', 'Weekly'],
+    },
+    {
+      id: 'page-fantasy-football-draft-tracker',
+      title: 'Fantasy Football Draft Assistant',
+      excerpt:
+        'Manual fantasy football draft assistant with snake-order tracking, roster pressure, a room-relative Draft Outlook, and an expected return calculator.',
+      content:
+        'Fantasy football draft assistant draft tracker snake order roster pressure Draft Outlook expected return redraft recommendations recap',
+      url: '/fantasy-football/draft-tracker',
+      type: 'project',
+      category: 'Fantasy Football Analytics',
+      tags: ['Fantasy Football', 'Draft Tools', 'Redraft'],
+    },
+    {
+      id: 'page-best-ball-draft-tracker',
+      title: 'Best Ball Draft Assistant',
+      excerpt:
+        'A manual best ball draft tracker with contest specific roster targets, a room-relative Draft Outlook, Best Ball Mania field economics, and expected return math.',
+      content:
+        'Best ball draft assistant draft tracker Underdog contest roster targets Draft Outlook Best Ball Mania expected return',
+      url: '/fantasy-football/best-ball/draft-tracker',
+      type: 'project',
+      category: 'Fantasy Football Analytics',
+      tags: ['Fantasy Football', 'Best Ball', 'Draft Tools'],
+    },
+    {
+      id: 'page-score-pools-tracker',
+      title: 'Score Pools Tracker',
+      excerpt:
+        'Running score tracker for exact-score prediction pools, with submitted picks scored against results, cumulative totals, and rival comparisons.',
+      content:
+        'Score pools tracker exact score prediction pool picks results scoring rules cumulative totals rivals leaderboard',
+      url: '/score-pools/tracker',
+      type: 'project',
+      category: 'Decision Tools',
+      tags: ['Score Pools', 'Prediction', 'Tracker'],
+    },
+    {
       id: 'page-arcade',
       title: 'Reactor Arcade',
       excerpt:
@@ -636,39 +709,23 @@ async function getAllSearchableContent(): Promise<SearchableContent[]> {
     },
   ];
 
-  // De-duplicate. A project that ships as both a live tool (static page, e.g.
-  // /fantasy-football) and a written case study (/portfolio/<slug>) carries the
-  // same title under two URLs, so URL-only dedup let both through and the result
-  // list showed the project twice. Collapse by normalized title as well, and
-  // when a title collides prefer the live tool over the case-study writeup (its
-  // URL is the actual product and it carries a specific category + keywords).
+  // De-duplicate. A tool can be indexed already as a case study, under the
+  // same URL or under the same title. The static entry carries the curated
+  // category and keywords, so it takes the case study's place, and the result
+  // list never shows a tool twice.
   const norm = (s: string) => s.trim().toLowerCase().replace(/\s+/g, ' ');
-  const seenUrls = new Set(content.map((c) => c.url));
-  const titleIndex = new Map<string, number>();
-  content.forEach((c, i) => titleIndex.set(norm(c.title), i));
 
   for (const page of staticPages) {
     const titleKey = norm(page.title);
-    const existingIndex = titleIndex.get(titleKey);
+    const existingIndex = content.findIndex(
+      (item) => item.url === page.url || norm(item.title) === titleKey
+    );
 
-    if (existingIndex !== undefined) {
-      // Same project already indexed (typically as a case study). Swap in the
-      // live-tool entry when the existing one is the /portfolio writeup; either
-      // way, never add a second copy of the same title.
-      const existing = content[existingIndex];
-      if (existing.url.startsWith('/portfolio/') && !page.url.startsWith('/portfolio/')) {
-        seenUrls.delete(existing.url);
-        content[existingIndex] = page;
-        seenUrls.add(page.url);
-      }
-      continue;
+    if (existingIndex === -1) {
+      content.push(page);
+    } else if (content[existingIndex].id.startsWith('project-case-')) {
+      content[existingIndex] = page;
     }
-
-    if (seenUrls.has(page.url)) continue;
-
-    content.push(page);
-    titleIndex.set(titleKey, content.length - 1);
-    seenUrls.add(page.url);
   }
 
   return content;
@@ -692,7 +749,7 @@ const KONAMI_ANSWER: SearchableContent = {
   id: 'answer-konami',
   title: 'Konami code',
   excerpt:
-    'Press up up down down left right left right B A on any page except the arcade, and something happens that ends with a link to the arcade.',
+    'Press up up down down left right left right B A on any page and something happens. Outside the arcade it ends with a link to the arcade, and inside the arcade it is worth trying too.',
   content: '',
   url: '/arcade',
   type: 'page',
@@ -719,6 +776,69 @@ const EASTER_EGG_ANSWER: SearchableContent = {
   category: 'Site',
 };
 
+// The hints below each point at one easter egg without giving the trigger
+// away in full. docs/EASTER_EGGS.md has the whole list.
+const DARKROOM_ANSWER: SearchableContent = {
+  id: 'answer-darkroom',
+  title: 'Darkroom',
+  excerpt:
+    'The light switch in the header does more than change the theme if you flip it enough times in a row.',
+  content: '',
+  url: '/',
+  type: 'page',
+  category: 'Site',
+};
+const STAMP_ANSWER: SearchableContent = {
+  id: 'answer-stamp',
+  title: 'Rubber stamp',
+  excerpt:
+    'The wordmark in the footer works like a rubber stamp, and the press notices if you stamp it enough times in a row.',
+  content: '',
+  url: '/',
+  type: 'page',
+  category: 'Site',
+};
+const NIGHT_SHIFT_ANSWER: SearchableContent = {
+  id: 'answer-night-shift',
+  title: 'Night shift',
+  excerpt:
+    'The tab title changes when you switch away from the site, and it reads differently after midnight.',
+  content: '',
+  url: '/',
+  type: 'page',
+  category: 'Site',
+};
+const THIRTY_LIVES_ANSWER: SearchableContent = {
+  id: 'answer-thirty-lives',
+  title: '30 lives',
+  excerpt:
+    'The Konami code works in the arcade too, and it does there what it did in Contra.',
+  content: '',
+  url: '/arcade',
+  type: 'page',
+  category: 'Site',
+};
+const TEAPOT_ANSWER: SearchableContent = {
+  id: 'answer-teapot',
+  title: 'Teapot',
+  excerpt:
+    "There's a teapot at /teapot. It can't brew coffee, and it answers with the status code that says so.",
+  content: '',
+  url: '/teapot',
+  type: 'page',
+  category: 'Site',
+};
+const COLOPHON_ANSWER: SearchableContent = {
+  id: 'answer-colophon',
+  title: 'Colophon',
+  excerpt:
+    'The stack, the typefaces, and the inks behind the site are listed in a plain text file at /humans.txt.',
+  content: '',
+  url: '/humans.txt',
+  type: 'page',
+  category: 'Site',
+};
+
 const HIDDEN_ANSWERS: Record<string, SearchableContent> = {
   monet: MONET_ANSWER,
   konami: KONAMI_ANSWER,
@@ -729,6 +849,20 @@ const HIDDEN_ANSWERS: Record<string, SearchableContent> = {
   'hire isaac': HIRE_ANSWER,
   'easter egg': EASTER_EGG_ANSWER,
   'easter eggs': EASTER_EGG_ANSWER,
+  darkroom: DARKROOM_ANSWER,
+  safelight: DARKROOM_ANSWER,
+  stamp: STAMP_ANSWER,
+  'rubber stamp': STAMP_ANSWER,
+  'night shift': NIGHT_SHIFT_ANSWER,
+  contra: THIRTY_LIVES_ANSWER,
+  '30 lives': THIRTY_LIVES_ANSWER,
+  'thirty lives': THIRTY_LIVES_ANSWER,
+  teapot: TEAPOT_ANSWER,
+  '418': TEAPOT_ANSWER,
+  'i m a teapot': TEAPOT_ANSWER,
+  humans: COLOPHON_ANSWER,
+  'humans txt': COLOPHON_ANSWER,
+  colophon: COLOPHON_ANSWER,
 };
 
 function findHiddenAnswer(query: string): SearchableContent | undefined {

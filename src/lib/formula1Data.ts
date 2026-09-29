@@ -17,6 +17,8 @@ const OPEN_F1_MIN_YEAR = 2023;
 const REQUEST_TIMEOUT_MS = 15_000;
 const DEFAULT_MIN_INTERVAL_MS = 2_100;
 const REQUEST_ATTEMPTS = 3;
+// Keeps a run inside OpenF1's 30 requests a minute when an entry list comes back short.
+const MAX_DRIVER_LOOKUPS = 6;
 
 interface OpenF1Meeting {
   meeting_key?: number | null;
@@ -34,6 +36,7 @@ interface OpenF1Meeting {
   date_start?: string | null;
   date_end?: string | null;
   year?: number | null;
+  is_cancelled?: boolean | null;
 }
 
 interface OpenF1Session {
@@ -74,6 +77,8 @@ interface OpenF1ConstructorStanding {
 }
 
 interface OpenF1Driver {
+  meeting_key?: number | null;
+  session_key?: number | null;
   driver_number?: number | null;
   broadcast_name?: string | null;
   full_name?: string | null;
@@ -226,6 +231,11 @@ function isRaceSession(session: OpenF1Session): boolean {
   return (session.session_name?.trim() ?? "") === "Race";
 }
 
+// A Sprint is a Race by type and a Sprint by name, and both score points.
+function isRaceTypeSession(session: OpenF1Session): boolean {
+  return (session.session_type?.trim() ?? "") === "Race";
+}
+
 function isSprintWeekend(sessions: OpenF1Session[]): boolean {
   return sessions.some((session) => {
     const name = `${session.session_name ?? ""} ${session.session_type ?? ""}`.toLowerCase();
@@ -367,6 +377,17 @@ function normalizeConstructorStanding(
   };
 }
 
+function toDriverDirectoryEntry(driver: OpenF1Driver, driverNumber: number): DriverDirectoryEntry {
+  return {
+    driverName: driver.full_name?.trim() || `Driver ${driverNumber}`,
+    broadcastName: driver.broadcast_name?.trim() || null,
+    acronym: driver.name_acronym?.trim() || null,
+    teamName: driver.team_name?.trim() || null,
+    teamColor: normalizeColor(driver.team_colour),
+    headshotUrl: driver.headshot_url?.trim() || null,
+  };
+}
+
 function buildTeamColorLookup(driverLookup: Map<number, DriverDirectoryEntry>): Map<string, string | null> {
   const teamColorLookup = new Map<string, string | null>();
 
@@ -476,14 +497,17 @@ async function requestCollection<T>(
 
 async function resolveSeasonMeetings(
   request: <T>(pathname: string, params?: Record<string, string | number>) => Promise<T>,
-  preferredYear: number
+  preferredYear: number,
+  now: Date
 ): Promise<{ seasonYear: number; meetings: OpenF1Meeting[] }> {
   for (let year = preferredYear; year >= OPEN_F1_MIN_YEAR; year -= 1) {
     const meetings = (await requestCollection<OpenF1Meeting>(request, "/meetings", { year }))
-      .filter(isGrandPrixMeeting)
+      .filter((meeting) => isGrandPrixMeeting(meeting) && !meeting.is_cancelled)
       .sort(sortByDateAscending);
 
-    if (meetings.length > 0) {
+    // OpenF1 lists next season's calendar months ahead. Until one of its rounds
+    // has finished, the previous season is the one with results to show.
+    if (meetings.some((meeting) => getMeetingStatus(meeting, now) === "completed")) {
       return { seasonYear: year, meetings };
     }
   }
@@ -515,7 +539,8 @@ export async function buildFormula1SnapshotData(
   const request = createOpenF1Requester(fetchImpl, minIntervalMs);
   const { seasonYear: resolvedSeasonYear, meetings: seasonMeetings } = await resolveSeasonMeetings(
     request,
-    seasonYear
+    seasonYear,
+    now
   );
 
   const meetingKeySet = new Set(
@@ -543,13 +568,17 @@ export async function buildFormula1SnapshotData(
   }
 
   const raceSessionsDescending = allSessions
-    .filter((session) => isRaceSession(session) && parseDate(session.date_end) !== null)
+    .filter((session) => isRaceTypeSession(session) && parseDate(session.date_end) !== null)
     .filter((session) => (parseDate(session.date_end) ?? now).getTime() <= now.getTime())
     .sort(sortByDateDescending);
 
   const rawResultsBySessionKey = new Map<number, OpenF1SessionResult[]>();
   let standingsSession: OpenF1Session | null = null;
+  let rawDriverStandings: OpenF1DriverStanding[] = [];
 
+  // A Sprint moves the championship a day before the Grand Prix does, so the
+  // standings come from the newest race or Sprint that has published both its
+  // result and its standings.
   for (const session of raceSessionsDescending) {
     const sessionKey = session.session_key;
     if (typeof sessionKey !== "number") {
@@ -566,7 +595,20 @@ export async function buildFormula1SnapshotData(
     );
     rawResultsBySessionKey.set(sessionKey, results);
 
-    if (results.length > 0) {
+    if (results.length === 0) {
+      continue;
+    }
+
+    rawDriverStandings = await requestCollection<OpenF1DriverStanding>(
+      request,
+      "/championship_drivers",
+      {
+        session_key: sessionKey,
+      },
+      { allow404: true }
+    );
+
+    if (rawDriverStandings.length > 0) {
       standingsSession = session;
       break;
     }
@@ -576,6 +618,7 @@ export async function buildFormula1SnapshotData(
     typeof standingsSession?.session_key === "number" ? standingsSession.session_key : null;
 
   const driverDirectory = new Map<number, DriverDirectoryEntry>();
+  let rawConstructorStandings: OpenF1ConstructorStanding[] = [];
   if (standingsSessionKey !== null) {
     const drivers = await requestCollection<OpenF1Driver>(request, "/drivers", {
       session_key: standingsSessionKey,
@@ -587,44 +630,17 @@ export async function buildFormula1SnapshotData(
         continue;
       }
 
-      driverDirectory.set(driverNumber, {
-        driverName: driver.full_name?.trim() || `Driver ${driverNumber}`,
-        broadcastName: driver.broadcast_name?.trim() || null,
-        acronym: driver.name_acronym?.trim() || null,
-        teamName: driver.team_name?.trim() || null,
-        teamColor: normalizeColor(driver.team_colour),
-        headshotUrl: driver.headshot_url?.trim() || null,
-      });
+      driverDirectory.set(driverNumber, toDriverDirectoryEntry(driver, driverNumber));
     }
+
+    rawConstructorStandings = await requestCollection<OpenF1ConstructorStanding>(
+      request,
+      "/championship_teams",
+      {
+        session_key: standingsSessionKey,
+      }
+    );
   }
-
-  const teamColorLookup = buildTeamColorLookup(driverDirectory);
-
-  const driverStandings =
-    standingsSessionKey === null
-      ? []
-      : (
-          await requestCollection<OpenF1DriverStanding>(request, "/championship_drivers", {
-            session_key: standingsSessionKey,
-          })
-        )
-          .map((standing) => normalizeDriverStanding(standing, driverDirectory))
-          .filter((standing): standing is Formula1DriverStanding => standing !== null)
-          .sort((left, right) => left.position - right.position);
-
-  const constructorStandings =
-    standingsSessionKey === null
-      ? []
-      : (
-          await requestCollection<OpenF1ConstructorStanding>(request, "/championship_teams", {
-            session_key: standingsSessionKey,
-          })
-        )
-          .map((standing) => normalizeConstructorStanding(standing, teamColorLookup))
-          .filter(
-            (standing): standing is Formula1ConstructorStanding => standing !== null
-          )
-          .sort((left, right) => left.position - right.position);
 
   for (const meeting of seasonMeetings) {
     if (getMeetingStatus(meeting, now) !== "completed") {
@@ -655,6 +671,62 @@ export async function buildFormula1SnapshotData(
     );
     rawResultsBySessionKey.set(raceSessionKey, results);
   }
+
+  // The entry list covers one session, so a driver who scored earlier in the
+  // season and sat that session out is missing from it.
+  const missingDriverNumbers = new Set<number>();
+  for (const row of [rawDriverStandings, ...rawResultsBySessionKey.values()].flat()) {
+    const driverNumber = row.driver_number;
+    if (
+      typeof driverNumber === "number" &&
+      Number.isFinite(driverNumber) &&
+      !driverDirectory.has(driverNumber)
+    ) {
+      missingDriverNumbers.add(driverNumber);
+    }
+  }
+
+  const firstSessionKey = Math.min(
+    ...allSessions.map((session) => session.session_key ?? Number.POSITIVE_INFINITY)
+  );
+
+  for (const driverNumber of [...missingDriverNumbers].slice(0, MAX_DRIVER_LOOKUPS)) {
+    // Session keys do not rise with the calendar, so the lower bound alone can
+    // let another season's entries through. The meeting keys cannot.
+    const entries = (
+      await requestCollection<OpenF1Driver>(
+        request,
+        "/drivers",
+        {
+          driver_number: driverNumber,
+          "session_key>": firstSessionKey,
+        },
+        { allow404: true }
+      )
+    )
+      .filter((driver) => meetingKeySet.has(driver.meeting_key ?? -1))
+      .sort((left, right) => (right.session_key ?? 0) - (left.session_key ?? 0));
+
+    if (entries.length > 0) {
+      driverDirectory.set(driverNumber, {
+        ...toDriverDirectoryEntry(entries[0], driverNumber),
+        // OpenF1 sends the newest entries without a headshot while older ones carry it.
+        headshotUrl: entries.map((entry) => entry.headshot_url?.trim()).find(Boolean) ?? null,
+      });
+    }
+  }
+
+  const teamColorLookup = buildTeamColorLookup(driverDirectory);
+
+  const driverStandings = rawDriverStandings
+    .map((standing) => normalizeDriverStanding(standing, driverDirectory))
+    .filter((standing): standing is Formula1DriverStanding => standing !== null)
+    .sort((left, right) => left.position - right.position);
+
+  const constructorStandings = rawConstructorStandings
+    .map((standing) => normalizeConstructorStanding(standing, teamColorLookup))
+    .filter((standing): standing is Formula1ConstructorStanding => standing !== null)
+    .sort((left, right) => left.position - right.position);
 
   const normalizedMeetings = seasonMeetings
     .map((meeting) => {

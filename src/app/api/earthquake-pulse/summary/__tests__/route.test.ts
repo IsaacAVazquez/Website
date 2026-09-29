@@ -32,7 +32,10 @@ jest.mock("@/lib/logger", () => ({
 }));
 
 import { GET } from "../route";
-import { getEarthquakeSummary } from "@/lib/earthquakeSnapshot";
+import {
+  createEmptyEarthquakeSummary,
+  getEarthquakeSummary,
+} from "@/lib/earthquakeSnapshot";
 import { logger } from "@/lib/logger";
 
 const mockGetEarthquakeSummary = getEarthquakeSummary as jest.MockedFunction<
@@ -85,6 +88,32 @@ describe("GET /api/earthquake-pulse/summary", () => {
       "Mon, 06 Jul 2026 12:00:00 GMT"
     );
     expect(mockLoggerError).not.toHaveBeenCalled();
+  });
+
+  it("grades a live summary as fresh", async () => {
+    mockGetEarthquakeSummary.mockResolvedValue({
+      ...createEmptyEarthquakeSummary(),
+      generatedAt: new Date().toISOString(),
+    });
+
+    const response = await GET();
+
+    expect(response.headers.get("X-Data-Status")).toBe("fresh");
+  });
+
+  it("reports a stale fallback even when the committed snapshot is recent", async () => {
+    mockGetEarthquakeSummary.mockResolvedValue({
+      ...createEmptyEarthquakeSummary(),
+      generatedAt: new Date(Date.now() - 60 * 60 * 1000).toISOString(),
+      feedStatus: "stale-fallback",
+    });
+
+    const response = await GET();
+    const body = await response.json();
+
+    expect(response.status).toBe(200);
+    expect(response.headers.get("X-Data-Status")).toBe("stale-fallback");
+    expect(body.feedStatus).toBe("stale-fallback");
   });
 
   it("returns the empty fallback without logging for a sub-500 failure", async () => {

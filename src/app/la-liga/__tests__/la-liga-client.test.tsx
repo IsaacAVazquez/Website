@@ -16,6 +16,13 @@ jest.mock("next/navigation", () => ({
   useSearchParams: () => currentSearchParams,
 }));
 
+// In the app the drawer loads the first time a club is opened. Here it is the
+// real drawer, mounted directly, so these tests stay about the page and stay
+// synchronous.
+jest.mock("@/components/football/DeferredClubDrawer", () => ({
+  DeferredClubDrawer: jest.requireActual("@/components/football/ClubDrawer").ClubDrawer,
+}));
+
 describe("LaLigaClient", () => {
   beforeEach(() => {
     currentSearchParams = new URLSearchParams();
@@ -152,5 +159,37 @@ describe("LaLigaClient", () => {
     expect(
       screen.getByRole("heading", { name: defaultRelegationTeam as string })
     ).toBeInTheDocument();
+  });
+
+  it("links to the LALIGA stats page and credits football-data.org for the data", () => {
+    currentSearchParams = new URLSearchParams("detail=scorers");
+
+    render(
+      <LaLigaClient
+        initialState={DEFAULT_LA_LIGA_STATE}
+        summary={{
+          season: laLigaSnapshot.season,
+          matchday: laLigaSnapshot.matchday,
+          generatedAt: laLigaSnapshot.generatedAt,
+          updatedAt: laLigaSnapshot.updatedAt,
+          sourceLabel: laLigaSnapshot.sourceLabel,
+          sourceUrls: laLigaSnapshot.sourceUrls,
+          clubs: laLigaSnapshot.clubs,
+          scorers: laLigaSnapshot.scorers,
+          assists: laLigaSnapshot.assists,
+          recentFixtures: laLigaSnapshot.recentFixtures.slice(0, 8),
+          upcomingFixtures: laLigaSnapshot.upcomingFixtures.slice(0, 8),
+          teams: laLigaSnapshot.teams,
+        }}
+        initialTeamSnapshot={null}
+      />
+    );
+
+    expect(screen.getByRole("link", { name: /official/i })).toHaveAttribute(
+      "href",
+      "https://www.laliga.com/en-GB/stats/laliga-easports/scorers"
+    );
+    expect(screen.getByText(/checked-in football-data\.org snapshot/)).toBeInTheDocument();
+    expect(screen.queryByText(/official LALIGA table/)).not.toBeInTheDocument();
   });
 });

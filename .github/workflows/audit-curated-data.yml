@@ -22,24 +22,34 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v7
         with:
-          node-version: "20"
+          node-version-file: .nvmrc
           cache: npm
 
       - name: Install dependencies
         run: npm ci --prefer-offline --no-audit --fund=false
 
-      - name: Audit review dates and verification
+      # The step may fail so the review issue can be written first. The last
+      # step fails the run, so an overdue dataset never shows as a green check.
+      - name: Audit review dates and structure
         id: audit
         continue-on-error: true
-        run: npx tsx scripts/auditCuratedData.ts
+        run: npx tsx scripts/auditCuratedData.ts --markdown="$RUNNER_TEMP/curated-audit.md"
 
       - name: Open or update curated data review
         if: steps.audit.outcome == 'failure'
         uses: actions/github-script@v9
         with:
           script: |
+            const fs = require("node:fs");
             const title = "Curated datasets need review";
             const runUrl = `${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}`;
+            const reportPath = `${process.env.RUNNER_TEMP}/curated-audit.md`;
+            const report = fs.existsSync(reportPath)
+              ? fs.readFileSync(reportPath, "utf8")
+              : "The audit failed before it wrote a report.";
+            // The issue body holds the latest report. A weekly comment that
+            // carried only a run link told nobody which dataset was overdue.
+            const body = `${report}\nRun: ${runUrl}`;
             const existing = await github.rest.issues.listForRepo({
               owner: context.repo.owner,
               repo: context.repo.repo,
@@ -48,18 +58,18 @@ jobs:
               per_page: 1,
             });
             if (existing.data[0]) {
-              await github.rest.issues.createComment({
+              await github.rest.issues.update({
                 owner: context.repo.owner,
                 repo: context.repo.repo,
                 issue_number: existing.data[0].number,
-                body: `The weekly review still finds overdue or unverified data. Run: ${runUrl}`,
+                body,
               });
             } else {
               await github.rest.issues.create({
                 owner: context.repo.owner,
                 repo: context.repo.repo,
                 title,
-                body: `One or more curated datasets are overdue, unverified, or structurally invalid. Review the workflow summary: ${runUrl}`,
+                body,
                 labels: ["curated-data-review", "automation"],
               });
             }
@@ -84,3 +94,9 @@ jobs:
                 state: "closed",
               });
             }
+
+      - name: Fail the run while a dataset needs review
+        if: steps.audit.outcome == 'failure'
+        run: |
+          echo "::error::One or more curated datasets are overdue or structurally invalid. The review issue carries the report."
+          exit 1

@@ -2,6 +2,7 @@
  * @jest-environment node
  */
 import {
+  buildNbaSnapshot,
   getNbaSummary,
   getNbaTeamSnapshot,
   isValidNbaTeamId,
@@ -10,7 +11,21 @@ import {
   createEmptyNbaSnapshot,
   preservePriorFixtures,
 } from "../nbaData";
-import type { NbaFixture, NbaTeamSnapshot } from "../../types/nba";
+import type { NbaFixture, NbaLeader, NbaTeam, NbaTeamSnapshot } from "../../types/nba";
+import {
+  NBA_BYATHLETE_2026_POSTSEASON,
+  NBA_BYATHLETE_2026_REGULAR_SEASON,
+  NBA_BYATHLETE_2027,
+  NBA_SCOREBOARD_DAYS,
+  NBA_SCOREBOARD_RANGE_REJECTED,
+  NBA_STANDINGS_2026,
+  NBA_STANDINGS_2027,
+  NBA_TEAM_DETAIL_OKC,
+  NBA_TEAM_SCHEDULE_CHI_2026,
+  NBA_TEAM_SCHEDULE_EMPTY,
+  NBA_TEAM_SCHEDULE_OKC,
+  NBA_TEAMS,
+} from "./fixtures/nbaEspn.fixture";
 
 function jsonResponse(payload: unknown, status = 200): Response {
   return new Response(JSON.stringify(payload), {
@@ -817,5 +832,444 @@ describe("preservePriorFixtures (off-season fixtures guard)", () => {
     const next = createEmptyNbaSnapshot();
     expect(preservePriorFixtures(next, null)).toBe(next);
     expect(preservePriorFixtures(next, createEmptyNbaSnapshot())).toBe(next);
+  });
+});
+
+// Everything below runs against responses cut from ESPN's own payloads, so a
+// field ESPN nests or types differently from what the code expects shows up.
+describe("ESPN's real response shapes", () => {
+  interface LooseStat {
+    name: string;
+    value?: number;
+    displayValue?: string;
+  }
+  interface LooseStandings {
+    children: Array<{
+      standings: { entries: Array<{ team: { abbreviation: string }; stats: LooseStat[] }> };
+    }>;
+  }
+  interface LooseByAthlete {
+    categories: Array<{ name: string; names: string[] }>;
+    athletes: Array<{
+      athlete: { displayName: string };
+      categories: Array<{ name: string; values: number[] }>;
+    }>;
+  }
+
+  const scoreboardDays = NBA_SCOREBOARD_DAYS as Record<string, unknown>;
+  const EMPTY_DAY = "20261019";
+
+  // Only the clock is frozen. The timers stay real so a stubbed response can
+  // still yield between requests.
+  function freezeClock(iso: string) {
+    jest.useFakeTimers({
+      now: new Date(iso),
+      doNotFake: [
+        "hrtime",
+        "nextTick",
+        "performance",
+        "queueMicrotask",
+        "setImmediate",
+        "clearImmediate",
+        "setInterval",
+        "clearInterval",
+        "setTimeout",
+        "clearTimeout",
+      ],
+    });
+  }
+
+  function withRecords(records: Record<string, [number, number]>): LooseStandings {
+    const standings = JSON.parse(JSON.stringify(NBA_STANDINGS_2027)) as LooseStandings;
+    for (const child of standings.children) {
+      for (const entry of child.standings.entries) {
+        const record = records[entry.team.abbreviation];
+        if (!record) continue;
+        const [wins, losses] = record;
+        const values: Record<string, number> = {
+          wins,
+          losses,
+          winPercent: wins / (wins + losses),
+        };
+        for (const stat of entry.stats) {
+          if (stat.name in values) {
+            stat.value = values[stat.name];
+            stat.displayValue = String(values[stat.name]);
+          }
+        }
+      }
+    }
+    return standings;
+  }
+
+  function leadersWithGames(games: Record<string, number>): LooseByAthlete {
+    const leaders = JSON.parse(
+      JSON.stringify(NBA_BYATHLETE_2026_REGULAR_SEASON)
+    ) as LooseByAthlete;
+    const gamesIndex = leaders.categories
+      .find((category) => category.name === "general")!
+      .names.indexOf("gamesPlayed");
+    leaders.athletes = leaders.athletes.filter(
+      (entry) => entry.athlete.displayName in games
+    );
+    for (const entry of leaders.athletes) {
+      entry.categories.find((category) => category.name === "general")!.values[gamesIndex] =
+        games[entry.athlete.displayName];
+    }
+    return leaders;
+  }
+
+  function scheduleFor(team: string, season: string | null, seasonType: string | null) {
+    if (team === "chi") {
+      return season === "2026" && seasonType === "2"
+        ? NBA_TEAM_SCHEDULE_CHI_2026
+        : NBA_TEAM_SCHEDULE_EMPTY;
+    }
+    // With no season type ESPN serves the current one, which was the preseason
+    // when these were fetched.
+    if (!season || !seasonType) return NBA_TEAM_SCHEDULE_OKC.default;
+    if (season === "2026" && seasonType === "2") return NBA_TEAM_SCHEDULE_OKC.regularSeason2026;
+    if (season === "2026" && seasonType === "3") return NBA_TEAM_SCHEDULE_OKC.postseason2026;
+    if (season === "2027" && seasonType === "2") return NBA_TEAM_SCHEDULE_OKC.regularSeason2027;
+    return NBA_TEAM_SCHEDULE_EMPTY;
+  }
+
+  function stubEspn(
+    options: {
+      standings2027?: unknown;
+      byathlete2027?: unknown;
+      failDays?: string[];
+      teams?: unknown;
+    } = {}
+  ) {
+    const requests: string[] = [];
+    let scoreboardInFlight = 0;
+    let scoreboardPeak = 0;
+
+    jest.spyOn(global, "fetch").mockImplementation((async (input: RequestInfo | URL) => {
+      const url = new URL(String(input));
+      const { pathname, searchParams } = url;
+      const season = searchParams.get("season");
+      const seasonType = searchParams.get("seasontype");
+      requests.push(`${pathname.split("/nba/")[1]}${url.search}`);
+
+      if (pathname.endsWith("/standings")) {
+        return jsonResponse(
+          season === "2027" ? options.standings2027 ?? NBA_STANDINGS_2027 : NBA_STANDINGS_2026
+        );
+      }
+      if (pathname.endsWith("/byathlete")) {
+        if (season === "2027") return jsonResponse(options.byathlete2027 ?? NBA_BYATHLETE_2027);
+        // For a finished season ESPN serves the postseason unless the regular
+        // season is asked for.
+        return jsonResponse(
+          seasonType === "2" ? NBA_BYATHLETE_2026_REGULAR_SEASON : NBA_BYATHLETE_2026_POSTSEASON
+        );
+      }
+      if (pathname.endsWith("/scoreboard")) {
+        const dates = searchParams.get("dates") ?? "";
+        scoreboardInFlight += 1;
+        scoreboardPeak = Math.max(scoreboardPeak, scoreboardInFlight);
+        await new Promise((resolve) => setImmediate(resolve));
+        scoreboardInFlight -= 1;
+        if (dates.includes("-") || options.failDays?.includes(dates)) {
+          return jsonResponse(NBA_SCOREBOARD_RANGE_REJECTED, 400);
+        }
+        return jsonResponse(scoreboardDays[dates] ?? scoreboardDays[EMPTY_DAY]);
+      }
+      if (pathname.endsWith("/schedule")) {
+        return jsonResponse(scheduleFor(pathname.split("/").at(-2) ?? "", season, seasonType));
+      }
+      if (pathname.endsWith("/teams")) return jsonResponse(options.teams ?? NBA_TEAMS);
+      if (pathname.includes("/teams/")) return jsonResponse(NBA_TEAM_DETAIL_OKC);
+      throw new Error(`Unexpected fetch URL: ${url}`);
+    }) as unknown as typeof fetch);
+
+    return { requests, scoreboardPeak: () => scoreboardPeak };
+  }
+
+  const names = (leaders: NbaLeader[]) => leaders.map((leader) => leader.name);
+  const seeds = (teams: NbaTeam[]) =>
+    Object.fromEntries(teams.map((team) => [team.abbreviation, team.conferenceSeed]));
+
+  afterEach(() => {
+    jest.useRealTimers();
+    jest.restoreAllMocks();
+  });
+
+  describe("scoreboard window", () => {
+    it("asks for one day at a time because ESPN rejects a date range", async () => {
+      freezeClock("2026-10-15T00:20:00Z");
+      const espn = stubEspn();
+
+      const summary = await getNbaSummary();
+
+      const scoreboardRequests = espn.requests.filter((request) =>
+        request.startsWith("scoreboard")
+      );
+      expect(scoreboardRequests).toHaveLength(15);
+      expect(scoreboardRequests[0]).toBe("scoreboard?dates=20261008");
+      expect(scoreboardRequests.at(-1)).toBe("scoreboard?dates=20261022");
+      expect(espn.scoreboardPeak()).toBeLessThanOrEqual(3);
+      expect(summary.upcomingFixtures.map((fixture) => fixture.id)).toEqual([
+        "401909088",
+        "401909089",
+        "401909090",
+      ]);
+    });
+
+    it("keeps standings and leaders when a day fails", async () => {
+      freezeClock("2026-10-15T00:20:00Z");
+      jest.spyOn(console, "warn").mockImplementation(() => {});
+      stubEspn({ failDays: ["20261020"] });
+
+      const summary = await getNbaSummary();
+
+      expect(summary.upcomingFixtures).toEqual([]);
+      expect(summary.teamsByConference.east).toHaveLength(15);
+      expect(summary.teamsByConference.west).toHaveLength(15);
+      expect(summary.scorers.length).toBeGreaterThanOrEqual(5);
+    });
+
+    it("drops preseason games", async () => {
+      freezeClock("2026-10-03T12:00:00Z");
+      stubEspn();
+
+      const summary = await getNbaSummary();
+
+      expect(summary.upcomingFixtures).toEqual([]);
+      expect(summary.recentFixtures).toEqual([]);
+    });
+
+    it("drops All-Star sides and labels the play-in and the NBA Cup final", async () => {
+      freezeClock("2026-02-15T12:00:00Z");
+      stubEspn();
+      expect((await getNbaSummary()).recentFixtures).toEqual([]);
+
+      jest.setSystemTime(new Date("2026-04-15T12:00:00Z"));
+      expect(
+        (await getNbaSummary()).recentFixtures.map((fixture) => [fixture.id, fixture.stage])
+      ).toEqual([
+        ["401866756", "Play-In"],
+        ["401866757", "Play-In"],
+      ]);
+
+      jest.setSystemTime(new Date("2025-12-16T12:00:00Z"));
+      expect(
+        (await getNbaSummary()).recentFixtures.map((fixture) => [fixture.id, fixture.stage])
+      ).toEqual([["401809839", "NBA Cup"]]);
+    });
+  });
+
+  describe("season rollover", () => {
+    it("steps back to the completed season while the new one has no games and no leaders", async () => {
+      freezeClock("2026-10-15T00:20:00Z");
+      stubEspn();
+
+      const summary = await getNbaSummary();
+
+      expect(summary.season).toBe("2025-26");
+      expect(summary.seasonEndYear).toBe(2026);
+      expect(summary.teamsByConference.west[0]).toMatchObject({
+        abbreviation: "OKC",
+        wins: 64,
+        losses: 18,
+      });
+      expect(summary.scorers[0]).toMatchObject({ name: "Luka Doncic", appearances: 64 });
+      // The refresh workflow refuses a snapshot with fewer than five leaders
+      // in any category.
+      expect(summary.scorers.length).toBeGreaterThanOrEqual(5);
+      expect(summary.rebounders.length).toBeGreaterThanOrEqual(5);
+      expect(summary.assistLeaders.length).toBeGreaterThanOrEqual(5);
+    });
+
+    it("moves to the new season once it has games and leaders", async () => {
+      freezeClock("2026-10-22T12:00:00Z");
+      const espn = stubEspn({
+        standings2027: withRecords({
+          DET: [1, 0],
+          BOS: [0, 1],
+          NY: [1, 0],
+          PHI: [0, 1],
+          SA: [1, 0],
+          OKC: [0, 1],
+        }),
+        byathlete2027: leadersWithGames({
+          "Shai Gilgeous-Alexander": 1,
+          "Jaylen Brown": 1,
+          "Tyrese Maxey": 1,
+          "Cade Cunningham": 1,
+          "Stephon Castle": 1,
+          "Karl-Anthony Towns": 1,
+          "Victor Wembanyama": 1,
+          "Jalen Duren": 1,
+        }),
+      });
+
+      const summary = await getNbaSummary();
+
+      expect(summary.season).toBe("2026-27");
+      expect(summary.seasonEndYear).toBe(2027);
+      expect(summary.scorers[0]).toMatchObject({
+        name: "Shai Gilgeous-Alexander",
+        appearances: 1,
+      });
+      expect(summary.scorers.length).toBeGreaterThanOrEqual(5);
+      expect(espn.requests.some((request) => request.includes("season=2026"))).toBe(false);
+      // ESPN had handed out no seeds yet, so the order falls back to the record.
+      expect(
+        summary.teamsByConference.east.slice(0, 2).map((team) => team.abbreviation)
+      ).toEqual(["DET", "NY"]);
+    });
+
+    it("stays on a season that has games when only the leaders come back empty", async () => {
+      freezeClock("2027-01-10T12:00:00Z");
+      stubEspn({ standings2027: withRecords({ DET: [25, 12], OKC: [30, 8] }) });
+
+      const summary = await getNbaSummary();
+
+      expect(summary.season).toBe("2026-27");
+      expect(summary.scorers).toEqual([]);
+    });
+  });
+
+  describe("leaders", () => {
+    it("reads the regular season and holds leaders to the league's games floor", async () => {
+      freezeClock("2026-06-20T12:00:00Z");
+      const espn = stubEspn();
+
+      const summary = await getNbaSummary();
+
+      expect(espn.requests.find((request) => request.includes("byathlete"))).toContain(
+        "seasontype=2"
+      );
+      expect(
+        summary.scorers.slice(0, 3).map((leader) => [leader.name, leader.appearances])
+      ).toEqual([
+        ["Luka Doncic", 64],
+        ["Shai Gilgeous-Alexander", 68],
+        ["Anthony Edwards", 61],
+      ]);
+      expect(summary.scorers[0].perGame).toBeCloseTo(33.5, 1);
+      // 36, 19, 54, and 20 games, all short of 58.
+      expect(names(summary.scorers)).not.toContain("Giannis Antetokounmpo");
+      expect(names(summary.rebounders)).not.toContain("Domantas Sabonis");
+      expect(names(summary.assistLeaders)).not.toContain("Josh Giddey");
+      expect(names(summary.assistLeaders)).not.toContain("Ja Morant");
+    });
+
+    it("scales the games floor to how many games the team has played", async () => {
+      freezeClock("2026-11-10T12:00:00Z");
+      stubEspn({
+        standings2027: withRecords({ OKC: [8, 2], PHI: [5, 5] }),
+        // Eight of ten games is 58 of 82 rounded up, and seven is one short.
+        byathlete2027: leadersWithGames({
+          "Shai Gilgeous-Alexander": 8,
+          "Jaylen Brown": 7,
+        }),
+      });
+
+      const summary = await getNbaSummary();
+
+      expect(names(summary.scorers)).toEqual(["Shai Gilgeous-Alexander"]);
+    });
+  });
+
+  describe("seeds", () => {
+    it("follows ESPN's playoffSeed, which carries the tiebreakers and the play-in", async () => {
+      freezeClock("2026-06-20T12:00:00Z");
+      stubEspn();
+
+      const { east, west } = (await getNbaSummary()).teamsByConference;
+
+      expect(seeds(east)).toMatchObject({ TOR: 5, ATL: 6, PHI: 7, ORL: 8 });
+      expect(seeds(west)).toMatchObject({ POR: 7, PHX: 8 });
+      expect(east.map((team) => team.position)).toEqual(
+        Array.from({ length: 15 }, (_, index) => index + 1)
+      );
+    });
+  });
+
+  describe("team schedule", () => {
+    it("reads scores and the stage, and adds the playoffs to a finished regular season", async () => {
+      stubEspn();
+
+      const snapshot = await getNbaTeamSnapshot("okc", "west", 2026);
+
+      expect(snapshot.recentFixtures.map((fixture) => fixture.id)).toEqual([
+        "401873203",
+        "401873202",
+        "401873201",
+        "401811051",
+        "401811037",
+      ]);
+      expect(snapshot.recentFixtures[0]).toMatchObject({
+        stage: "Playoffs",
+        status: "FINISHED",
+        score: { winner: "AWAY_TEAM", home: 103, away: 111 },
+      });
+      expect(snapshot.recentFixtures[3]).toMatchObject({
+        stage: "Regular Season",
+        score: { winner: "AWAY_TEAM", home: 103, away: 135 },
+      });
+      expect(snapshot.form).toMatchObject({
+        wins: 1,
+        losses: 4,
+        pointsFor: 531,
+        pointsAgainst: 605,
+      });
+      expect(snapshot.upcomingFixtures).toEqual([]);
+    });
+
+    it("leaves the playoffs alone while regular season games remain", async () => {
+      const espn = stubEspn();
+
+      const snapshot = await getNbaTeamSnapshot("okc", "west", 2027);
+
+      expect(snapshot.recentFixtures).toEqual([]);
+      expect(snapshot.upcomingFixtures.map((fixture) => [fixture.id, fixture.stage])).toEqual([
+        ["401909090", "Regular Season"],
+        ["401909094", "Regular Season"],
+        ["401909865", "Regular Season"],
+      ]);
+      expect(espn.requests.filter((request) => request.includes("/schedule"))).toEqual([
+        "teams/okc/schedule?season=2027&seasontype=2",
+      ]);
+    });
+
+    it("drops a postponed game, which ESPN keeps on the schedule after the makeup", async () => {
+      stubEspn();
+
+      const snapshot = await getNbaTeamSnapshot("chi", "east", 2026);
+
+      expect(snapshot.upcomingFixtures).toEqual([]);
+      expect(snapshot.recentFixtures.map((fixture) => fixture.id)).toEqual([
+        "401811048",
+        "401811032",
+      ]);
+    });
+
+    it("builds team panels for the season the summary settled on", async () => {
+      freezeClock("2026-10-15T00:20:00Z");
+      jest
+        .spyOn(global, "setTimeout")
+        .mockImplementation(((callback: () => void) => {
+          callback();
+          return 0;
+        }) as unknown as typeof setTimeout);
+      const okcOnly = JSON.parse(JSON.stringify(NBA_TEAMS)) as typeof NBA_TEAMS;
+      okcOnly.sports[0].leagues[0].teams = okcOnly.sports[0].leagues[0].teams.filter(
+        (wrapper) => wrapper.team.abbreviation === "OKC"
+      );
+      stubEspn({ teams: okcOnly });
+
+      const snapshot = await buildNbaSnapshot();
+
+      expect(snapshot.season).toBe("2025-26");
+      expect(snapshot.teamSnapshots.okc.recentFixtures[0]).toMatchObject({
+        id: "401873203",
+        score: { home: 103, away: 111 },
+      });
+    });
   });
 });

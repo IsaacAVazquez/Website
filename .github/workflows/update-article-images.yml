@@ -48,26 +48,32 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v7
         with:
-          node-version: "20"
+          node-version-file: .nvmrc
           cache: "npm"
 
       - name: Install dependencies
         run: npm ci --prefer-offline --no-audit --fund=false
 
+      # The builder skips a post that errors and exits 1 at the end. The step
+      # may fail so the covers that landed still commit, and the last step
+      # fails the run so a planned cover that never arrives is visible.
       - name: Refresh article cover images
+        id: refresh
+        continue-on-error: true
+        timeout-minutes: 15
         run: |
-          ARGS=""
-          if [ -n "${{ github.event.inputs.only }}" ]; then
-            ARGS="$ARGS --only=${{ github.event.inputs.only }}"
+          ARGS=()
+          if [ -n "$ONLY" ]; then
+            ARGS+=("--only=$ONLY")
           fi
-          if [ "${{ github.event.inputs.force }}" = "true" ]; then
-            ARGS="$ARGS --force"
+          if [ "$FORCE" = "true" ]; then
+            ARGS+=("--force")
           fi
-          # Fail-soft: individual posts that error are skipped, so a single
-          # unreachable image never blocks committing the covers that landed.
-          npm run update:article-images -- $ARGS || true
+          npm run update:article-images -- "${ARGS[@]}"
         env:
           NODE_ENV: production
+          ONLY: ${{ github.event.inputs.only }}
+          FORCE: ${{ github.event.inputs.force }}
 
       - name: Check for changes
         id: check_changes
@@ -111,6 +117,14 @@ jobs:
           echo "**Run Date:** $(date -u +'%Y-%m-%d %H:%M:%S UTC')" >> "$GITHUB_STEP_SUMMARY"
           if [ "${{ steps.check_changes.outputs.changed }}" = "true" ]; then
             echo "**Result:** New cover images committed." >> "$GITHUB_STEP_SUMMARY"
+          elif [ "${{ steps.refresh.outcome }}" = "failure" ]; then
+            echo "**Result:** No cover landed, and one or more planned covers failed." >> "$GITHUB_STEP_SUMMARY"
           else
             echo "**Result:** All planned covers already present." >> "$GITHUB_STEP_SUMMARY"
           fi
+
+      - name: Fail the run when a planned cover failed
+        if: steps.refresh.outcome == 'failure'
+        run: |
+          echo "::error::One or more planned covers failed. The refresh step's log names each post."
+          exit 1

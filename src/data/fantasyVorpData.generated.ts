@@ -9,7 +9,7 @@ import type {
 } from "@/lib/fantasyProsVorpSource";
 import type { ScoringFormat } from "@/types";
 
-export const fantasyVorpDataGeneratedAt = "2026-09-10T19:28:34.355Z";
+export const fantasyVorpDataGeneratedAt = "2026-09-29T21:26:55.403Z";
 
 export interface FantasyVorpDataset {
   season: number;
@@ -26,7 +26,7 @@ export const fantasyVorpData: Record<
     "10": {
       "season": 2026,
       "sourceUrl": "https://www.fantasypros.com/nfl/rankings/ppr-vorp.php?team_size=10",
-      "accessedAt": "2026-09-10T19:28:35.008Z",
+      "accessedAt": "2026-09-29T21:26:55.886Z",
       "players": [
         {
           "playerId": "fp-22968",
@@ -1191,7 +1191,7 @@ export const fantasyVorpData: Record<
         },
         {
           "playerId": "fp-27331",
-          "name": "KC Concepcion",
+          "name": "KC Concepcion Jr.",
           "team": "CLE",
           "position": "WR",
           "positionRank": 55,
@@ -1948,7 +1948,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-25533",
           "name": "Blake Grupe",
-          "team": "NYJ",
+          "team": "FA",
           "position": "K",
           "positionRank": 27,
           "rank": 214,
@@ -2398,7 +2398,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-12122",
           "name": "Brandin Cooks",
-          "team": "FA",
+          "team": "SF",
           "position": "WR",
           "positionRank": 81,
           "rank": 264,
@@ -2560,7 +2560,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-18706",
           "name": "Darius Slayton",
-          "team": "FA",
+          "team": "IND",
           "position": "WR",
           "positionRank": 94,
           "rank": 282,
@@ -3415,7 +3415,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-23054",
           "name": "Audric Estime",
-          "team": "NO",
+          "team": "FA",
           "position": "RB",
           "positionRank": 105,
           "rank": 377,
@@ -3703,7 +3703,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-23075",
           "name": "Eric Gray",
-          "team": "FA",
+          "team": "CLE",
           "position": "RB",
           "positionRank": 124,
           "rank": 409,
@@ -3847,7 +3847,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-22921",
           "name": "Jerome Ford",
-          "team": "FA",
+          "team": "MIN",
           "position": "RB",
           "positionRank": 129,
           "rank": 425,
@@ -3883,7 +3883,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-23682",
           "name": "Devin Neal",
-          "team": "FA",
+          "team": "MIN",
           "position": "RB",
           "positionRank": 130,
           "rank": 429,
@@ -3919,7 +3919,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-27294",
           "name": "Jimmy Horn Jr.",
-          "team": "CAR",
+          "team": "CLE",
           "position": "WR",
           "positionRank": 145,
           "rank": 433,
@@ -3928,7 +3928,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-24216",
           "name": "Tanner Conner",
-          "team": "FA",
+          "team": "NE",
           "position": "TE",
           "positionRank": 65,
           "rank": 434,
@@ -4072,7 +4072,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-12127",
           "name": "Odell Beckham Jr.",
-          "team": "NYG",
+          "team": "FA",
           "position": "WR",
           "positionRank": 153,
           "rank": 450,
@@ -4702,7 +4702,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-25758",
           "name": "Xavier Gipson",
-          "team": "FA",
+          "team": "PHI",
           "position": "WR",
           "positionRank": 190,
           "rank": 520,
@@ -4765,7 +4765,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-27724",
           "name": "Ke'Shawn Williams",
-          "team": "CIN",
+          "team": "FA",
           "position": "WR",
           "positionRank": 193,
           "rank": 527,
@@ -4900,7 +4900,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-25349",
           "name": "Ben Sims",
-          "team": "MIA",
+          "team": "FA",
           "position": "TE",
           "positionRank": 114,
           "rank": 542,
@@ -4936,7 +4936,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-24181",
           "name": "John FitzPatrick",
-          "team": "FA",
+          "team": "CLE",
           "position": "TE",
           "positionRank": 118,
           "rank": 546,
@@ -5080,7 +5080,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-23018",
           "name": "J.J. McCarthy",
-          "team": "MIN",
+          "team": "NYG",
           "position": "QB",
           "positionRank": 42,
           "rank": 562,
@@ -5388,7 +5388,7 @@ export const fantasyVorpData: Record<
     "12": {
       "season": 2026,
       "sourceUrl": "https://www.fantasypros.com/nfl/rankings/ppr-vorp.php",
-      "accessedAt": "2026-09-10T19:28:35.514Z",
+      "accessedAt": "2026-09-29T21:26:56.581Z",
       "players": [
         {
           "playerId": "fp-22968",
@@ -6517,7 +6517,7 @@ export const fantasyVorpData: Record<
         },
         {
           "playerId": "fp-27331",
-          "name": "KC Concepcion",
+          "name": "KC Concepcion Jr.",
           "team": "CLE",
           "position": "WR",
           "positionRank": 55,
@@ -7508,7 +7508,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-25533",
           "name": "Blake Grupe",
-          "team": "NYJ",
+          "team": "FA",
           "position": "K",
           "positionRank": 27,
           "rank": 236,
@@ -7778,7 +7778,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-12122",
           "name": "Brandin Cooks",
-          "team": "FA",
+          "team": "SF",
           "position": "WR",
           "positionRank": 81,
           "rank": 266,
@@ -8048,7 +8048,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-18706",
           "name": "Darius Slayton",
-          "team": "FA",
+          "team": "IND",
           "position": "WR",
           "positionRank": 94,
           "rank": 296,
@@ -8417,7 +8417,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-23054",
           "name": "Audric Estime",
-          "team": "NO",
+          "team": "FA",
           "position": "RB",
           "positionRank": 105,
           "rank": 337,
@@ -8714,7 +8714,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-23075",
           "name": "Eric Gray",
-          "team": "FA",
+          "team": "CLE",
           "position": "RB",
           "positionRank": 124,
           "rank": 370,
@@ -8804,7 +8804,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-22921",
           "name": "Jerome Ford",
-          "team": "FA",
+          "team": "MIN",
           "position": "RB",
           "positionRank": 129,
           "rank": 380,
@@ -8813,7 +8813,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-23682",
           "name": "Devin Neal",
-          "team": "FA",
+          "team": "MIN",
           "position": "RB",
           "positionRank": 130,
           "rank": 381,
@@ -9128,7 +9128,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-27294",
           "name": "Jimmy Horn Jr.",
-          "team": "CAR",
+          "team": "CLE",
           "position": "WR",
           "positionRank": 145,
           "rank": 416,
@@ -9254,7 +9254,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-12127",
           "name": "Odell Beckham Jr.",
-          "team": "NYG",
+          "team": "FA",
           "position": "WR",
           "positionRank": 153,
           "rank": 430,
@@ -9614,7 +9614,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-24216",
           "name": "Tanner Conner",
-          "team": "FA",
+          "team": "NE",
           "position": "TE",
           "positionRank": 65,
           "rank": 470,
@@ -9731,7 +9731,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-25758",
           "name": "Xavier Gipson",
-          "team": "FA",
+          "team": "PHI",
           "position": "WR",
           "positionRank": 190,
           "rank": 483,
@@ -9812,7 +9812,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-27724",
           "name": "Ke'Shawn Williams",
-          "team": "CIN",
+          "team": "FA",
           "position": "WR",
           "positionRank": 193,
           "rank": 492,
@@ -10262,7 +10262,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-25349",
           "name": "Ben Sims",
-          "team": "MIA",
+          "team": "FA",
           "position": "TE",
           "positionRank": 114,
           "rank": 542,
@@ -10298,7 +10298,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-24181",
           "name": "John FitzPatrick",
-          "team": "FA",
+          "team": "CLE",
           "position": "TE",
           "positionRank": 118,
           "rank": 546,
@@ -10442,7 +10442,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-23018",
           "name": "J.J. McCarthy",
-          "team": "MIN",
+          "team": "NYG",
           "position": "QB",
           "positionRank": 42,
           "rank": 562,
@@ -10750,7 +10750,7 @@ export const fantasyVorpData: Record<
     "14": {
       "season": 2026,
       "sourceUrl": "https://www.fantasypros.com/nfl/rankings/ppr-vorp.php?team_size=14",
-      "accessedAt": "2026-09-10T19:28:36.712Z",
+      "accessedAt": "2026-09-29T21:26:57.204Z",
       "players": [
         {
           "playerId": "fp-22968",
@@ -11915,7 +11915,7 @@ export const fantasyVorpData: Record<
         },
         {
           "playerId": "fp-27331",
-          "name": "KC Concepcion",
+          "name": "KC Concepcion Jr.",
           "team": "CLE",
           "position": "WR",
           "positionRank": 55,
@@ -13212,7 +13212,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-25533",
           "name": "Blake Grupe",
-          "team": "NYJ",
+          "team": "FA",
           "position": "K",
           "positionRank": 27,
           "rank": 274,
@@ -13230,7 +13230,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-12122",
           "name": "Brandin Cooks",
-          "team": "FA",
+          "team": "SF",
           "position": "WR",
           "positionRank": 81,
           "rank": 276,
@@ -13599,7 +13599,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-23054",
           "name": "Audric Estime",
-          "team": "NO",
+          "team": "FA",
           "position": "RB",
           "positionRank": 105,
           "rank": 317,
@@ -13617,7 +13617,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-18706",
           "name": "Darius Slayton",
-          "team": "FA",
+          "team": "IND",
           "position": "WR",
           "positionRank": 94,
           "rank": 319,
@@ -13923,7 +13923,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-23075",
           "name": "Eric Gray",
-          "team": "FA",
+          "team": "CLE",
           "position": "RB",
           "positionRank": 124,
           "rank": 353,
@@ -14058,7 +14058,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-22921",
           "name": "Jerome Ford",
-          "team": "FA",
+          "team": "MIN",
           "position": "RB",
           "positionRank": 129,
           "rank": 368,
@@ -14085,7 +14085,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-23682",
           "name": "Devin Neal",
-          "team": "FA",
+          "team": "MIN",
           "position": "RB",
           "positionRank": 130,
           "rank": 371,
@@ -14562,7 +14562,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-27294",
           "name": "Jimmy Horn Jr.",
-          "team": "CAR",
+          "team": "CLE",
           "position": "WR",
           "positionRank": 145,
           "rank": 424,
@@ -14679,7 +14679,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-12127",
           "name": "Odell Beckham Jr.",
-          "team": "NYG",
+          "team": "FA",
           "position": "WR",
           "positionRank": 153,
           "rank": 437,
@@ -14769,7 +14769,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-24216",
           "name": "Tanner Conner",
-          "team": "FA",
+          "team": "NE",
           "position": "TE",
           "positionRank": 65,
           "rank": 447,
@@ -15282,7 +15282,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-25758",
           "name": "Xavier Gipson",
-          "team": "FA",
+          "team": "PHI",
           "position": "WR",
           "positionRank": 190,
           "rank": 504,
@@ -15354,7 +15354,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-27724",
           "name": "Ke'Shawn Williams",
-          "team": "CIN",
+          "team": "FA",
           "position": "WR",
           "positionRank": 193,
           "rank": 512,
@@ -15624,7 +15624,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-25349",
           "name": "Ben Sims",
-          "team": "MIA",
+          "team": "FA",
           "position": "TE",
           "positionRank": 114,
           "rank": 542,
@@ -15660,7 +15660,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-24181",
           "name": "John FitzPatrick",
-          "team": "FA",
+          "team": "CLE",
           "position": "TE",
           "positionRank": 118,
           "rank": 546,
@@ -15804,7 +15804,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-23018",
           "name": "J.J. McCarthy",
-          "team": "MIN",
+          "team": "NYG",
           "position": "QB",
           "positionRank": 42,
           "rank": 562,
@@ -16114,7 +16114,7 @@ export const fantasyVorpData: Record<
     "10": {
       "season": 2026,
       "sourceUrl": "https://www.fantasypros.com/nfl/rankings/half-ppr-vorp.php?team_size=10",
-      "accessedAt": "2026-09-10T19:28:37.798Z",
+      "accessedAt": "2026-09-29T21:26:58.052Z",
       "players": [
         {
           "playerId": "fp-22968",
@@ -17828,7 +17828,7 @@ export const fantasyVorpData: Record<
         },
         {
           "playerId": "fp-27331",
-          "name": "KC Concepcion",
+          "name": "KC Concepcion Jr.",
           "team": "CLE",
           "position": "WR",
           "positionRank": 55,
@@ -18090,7 +18090,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-25533",
           "name": "Blake Grupe",
-          "team": "NYJ",
+          "team": "FA",
           "position": "K",
           "positionRank": 27,
           "rank": 220,
@@ -18657,7 +18657,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-12122",
           "name": "Brandin Cooks",
-          "team": "FA",
+          "team": "SF",
           "position": "WR",
           "positionRank": 83,
           "rank": 283,
@@ -18909,7 +18909,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-18706",
           "name": "Darius Slayton",
-          "team": "FA",
+          "team": "IND",
           "position": "WR",
           "positionRank": 94,
           "rank": 311,
@@ -19170,7 +19170,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-23054",
           "name": "Audric Estime",
-          "team": "NO",
+          "team": "FA",
           "position": "RB",
           "positionRank": 106,
           "rank": 340,
@@ -19521,7 +19521,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-23075",
           "name": "Eric Gray",
-          "team": "FA",
+          "team": "CLE",
           "position": "RB",
           "positionRank": 127,
           "rank": 379,
@@ -19557,7 +19557,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-22921",
           "name": "Jerome Ford",
-          "team": "FA",
+          "team": "MIN",
           "position": "RB",
           "positionRank": 129,
           "rank": 383,
@@ -19602,7 +19602,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-23682",
           "name": "Devin Neal",
-          "team": "FA",
+          "team": "MIN",
           "position": "RB",
           "positionRank": 130,
           "rank": 388,
@@ -19944,7 +19944,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-24216",
           "name": "Tanner Conner",
-          "team": "FA",
+          "team": "NE",
           "position": "TE",
           "positionRank": 68,
           "rank": 426,
@@ -20214,7 +20214,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-27294",
           "name": "Jimmy Horn Jr.",
-          "team": "CAR",
+          "team": "CLE",
           "position": "WR",
           "positionRank": 143,
           "rank": 456,
@@ -20385,7 +20385,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-12127",
           "name": "Odell Beckham Jr.",
-          "team": "NYG",
+          "team": "FA",
           "position": "WR",
           "positionRank": 155,
           "rank": 475,
@@ -20745,7 +20745,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-25349",
           "name": "Ben Sims",
-          "team": "MIA",
+          "team": "FA",
           "position": "TE",
           "positionRank": 114,
           "rank": 515,
@@ -20799,7 +20799,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-24181",
           "name": "John FitzPatrick",
-          "team": "FA",
+          "team": "CLE",
           "position": "TE",
           "positionRank": 118,
           "rank": 521,
@@ -20943,7 +20943,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-25758",
           "name": "Xavier Gipson",
-          "team": "FA",
+          "team": "PHI",
           "position": "WR",
           "positionRank": 190,
           "rank": 537,
@@ -20970,7 +20970,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-27724",
           "name": "Ke'Shawn Williams",
-          "team": "CIN",
+          "team": "FA",
           "position": "WR",
           "positionRank": 192,
           "rank": 540,
@@ -21168,7 +21168,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-23018",
           "name": "J.J. McCarthy",
-          "team": "MIN",
+          "team": "NYG",
           "position": "QB",
           "positionRank": 42,
           "rank": 562,
@@ -21476,7 +21476,7 @@ export const fantasyVorpData: Record<
     "12": {
       "season": 2026,
       "sourceUrl": "https://www.fantasypros.com/nfl/rankings/half-ppr-vorp.php",
-      "accessedAt": "2026-09-10T19:28:38.451Z",
+      "accessedAt": "2026-09-29T21:26:58.898Z",
       "players": [
         {
           "playerId": "fp-22968",
@@ -22596,7 +22596,7 @@ export const fantasyVorpData: Record<
         },
         {
           "playerId": "fp-27331",
-          "name": "KC Concepcion",
+          "name": "KC Concepcion Jr.",
           "team": "CLE",
           "position": "WR",
           "positionRank": 55,
@@ -23641,7 +23641,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-25533",
           "name": "Blake Grupe",
-          "team": "NYJ",
+          "team": "FA",
           "position": "K",
           "positionRank": 27,
           "rank": 241,
@@ -23803,7 +23803,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-12122",
           "name": "Brandin Cooks",
-          "team": "FA",
+          "team": "SF",
           "position": "WR",
           "positionRank": 83,
           "rank": 259,
@@ -24019,7 +24019,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-18706",
           "name": "Darius Slayton",
-          "team": "FA",
+          "team": "IND",
           "position": "WR",
           "positionRank": 94,
           "rank": 283,
@@ -24676,7 +24676,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-23054",
           "name": "Audric Estime",
-          "team": "NO",
+          "team": "FA",
           "position": "RB",
           "positionRank": 106,
           "rank": 356,
@@ -25018,7 +25018,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-23075",
           "name": "Eric Gray",
-          "team": "FA",
+          "team": "CLE",
           "position": "RB",
           "positionRank": 127,
           "rank": 394,
@@ -25054,7 +25054,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-22921",
           "name": "Jerome Ford",
-          "team": "FA",
+          "team": "MIN",
           "position": "RB",
           "positionRank": 129,
           "rank": 398,
@@ -25072,7 +25072,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-23682",
           "name": "Devin Neal",
-          "team": "FA",
+          "team": "MIN",
           "position": "RB",
           "positionRank": 130,
           "rank": 400,
@@ -25207,7 +25207,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-27294",
           "name": "Jimmy Horn Jr.",
-          "team": "CAR",
+          "team": "CLE",
           "position": "WR",
           "positionRank": 143,
           "rank": 415,
@@ -25360,7 +25360,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-12127",
           "name": "Odell Beckham Jr.",
-          "team": "NYG",
+          "team": "FA",
           "position": "WR",
           "positionRank": 155,
           "rank": 432,
@@ -25711,7 +25711,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-24216",
           "name": "Tanner Conner",
-          "team": "FA",
+          "team": "NE",
           "position": "TE",
           "positionRank": 68,
           "rank": 471,
@@ -25900,7 +25900,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-25758",
           "name": "Xavier Gipson",
-          "team": "FA",
+          "team": "PHI",
           "position": "WR",
           "positionRank": 190,
           "rank": 492,
@@ -25927,7 +25927,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-27724",
           "name": "Ke'Shawn Williams",
-          "team": "CIN",
+          "team": "FA",
           "position": "WR",
           "positionRank": 192,
           "rank": 495,
@@ -26323,7 +26323,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-25349",
           "name": "Ben Sims",
-          "team": "MIA",
+          "team": "FA",
           "position": "TE",
           "positionRank": 114,
           "rank": 539,
@@ -26359,7 +26359,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-24181",
           "name": "John FitzPatrick",
-          "team": "FA",
+          "team": "CLE",
           "position": "TE",
           "positionRank": 118,
           "rank": 543,
@@ -26530,7 +26530,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-23018",
           "name": "J.J. McCarthy",
-          "team": "MIN",
+          "team": "NYG",
           "position": "QB",
           "positionRank": 42,
           "rank": 562,
@@ -26838,7 +26838,7 @@ export const fantasyVorpData: Record<
     "14": {
       "season": 2026,
       "sourceUrl": "https://www.fantasypros.com/nfl/rankings/half-ppr-vorp.php?team_size=14",
-      "accessedAt": "2026-09-10T19:28:38.950Z",
+      "accessedAt": "2026-09-29T21:26:59.539Z",
       "players": [
         {
           "playerId": "fp-22968",
@@ -28147,7 +28147,7 @@ export const fantasyVorpData: Record<
         },
         {
           "playerId": "fp-27331",
-          "name": "KC Concepcion",
+          "name": "KC Concepcion Jr.",
           "team": "CLE",
           "position": "WR",
           "positionRank": 55,
@@ -29327,7 +29327,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-25533",
           "name": "Blake Grupe",
-          "team": "NYJ",
+          "team": "FA",
           "position": "K",
           "positionRank": 27,
           "rank": 277,
@@ -29390,7 +29390,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-12122",
           "name": "Brandin Cooks",
-          "team": "FA",
+          "team": "SF",
           "position": "WR",
           "positionRank": 83,
           "rank": 284,
@@ -29642,7 +29642,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-23054",
           "name": "Audric Estime",
-          "team": "NO",
+          "team": "FA",
           "position": "RB",
           "positionRank": 106,
           "rank": 312,
@@ -29759,7 +29759,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-18706",
           "name": "Darius Slayton",
-          "team": "FA",
+          "team": "IND",
           "position": "WR",
           "positionRank": 94,
           "rank": 325,
@@ -30011,7 +30011,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-23075",
           "name": "Eric Gray",
-          "team": "FA",
+          "team": "CLE",
           "position": "RB",
           "positionRank": 127,
           "rank": 353,
@@ -30083,7 +30083,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-22921",
           "name": "Jerome Ford",
-          "team": "FA",
+          "team": "MIN",
           "position": "RB",
           "positionRank": 129,
           "rank": 361,
@@ -30119,7 +30119,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-23682",
           "name": "Devin Neal",
-          "team": "FA",
+          "team": "MIN",
           "position": "RB",
           "positionRank": 130,
           "rank": 365,
@@ -30614,7 +30614,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-27294",
           "name": "Jimmy Horn Jr.",
-          "team": "CAR",
+          "team": "CLE",
           "position": "WR",
           "positionRank": 143,
           "rank": 420,
@@ -30740,7 +30740,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-12127",
           "name": "Odell Beckham Jr.",
-          "team": "NYG",
+          "team": "FA",
           "position": "WR",
           "positionRank": 155,
           "rank": 434,
@@ -30920,7 +30920,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-24216",
           "name": "Tanner Conner",
-          "team": "FA",
+          "team": "NE",
           "position": "TE",
           "positionRank": 68,
           "rank": 454,
@@ -31370,7 +31370,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-25758",
           "name": "Xavier Gipson",
-          "team": "FA",
+          "team": "PHI",
           "position": "WR",
           "positionRank": 190,
           "rank": 504,
@@ -31397,7 +31397,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-27724",
           "name": "Ke'Shawn Williams",
-          "team": "CIN",
+          "team": "FA",
           "position": "WR",
           "positionRank": 192,
           "rank": 507,
@@ -31703,7 +31703,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-25349",
           "name": "Ben Sims",
-          "team": "MIA",
+          "team": "FA",
           "position": "TE",
           "positionRank": 114,
           "rank": 541,
@@ -31739,7 +31739,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-24181",
           "name": "John FitzPatrick",
-          "team": "FA",
+          "team": "CLE",
           "position": "TE",
           "positionRank": 118,
           "rank": 545,
@@ -31892,7 +31892,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-23018",
           "name": "J.J. McCarthy",
-          "team": "MIN",
+          "team": "NYG",
           "position": "QB",
           "positionRank": 42,
           "rank": 562,
@@ -32202,7 +32202,7 @@ export const fantasyVorpData: Record<
     "10": {
       "season": 2026,
       "sourceUrl": "https://www.fantasypros.com/nfl/rankings/vorp.php?team_size=10",
-      "accessedAt": "2026-09-10T19:28:39.619Z",
+      "accessedAt": "2026-09-29T21:27:00.314Z",
       "players": [
         {
           "playerId": "fp-22968",
@@ -33790,7 +33790,7 @@ export const fantasyVorpData: Record<
         },
         {
           "playerId": "fp-27331",
-          "name": "KC Concepcion",
+          "name": "KC Concepcion Jr.",
           "team": "CLE",
           "position": "WR",
           "positionRank": 56,
@@ -34259,7 +34259,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-25533",
           "name": "Blake Grupe",
-          "team": "NYJ",
+          "team": "FA",
           "position": "K",
           "positionRank": 27,
           "rank": 229,
@@ -34619,7 +34619,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-12122",
           "name": "Brandin Cooks",
-          "team": "FA",
+          "team": "SF",
           "position": "WR",
           "positionRank": 83,
           "rank": 269,
@@ -34817,7 +34817,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-18706",
           "name": "Darius Slayton",
-          "team": "FA",
+          "team": "IND",
           "position": "WR",
           "positionRank": 95,
           "rank": 291,
@@ -35429,7 +35429,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-23054",
           "name": "Audric Estime",
-          "team": "NO",
+          "team": "FA",
           "position": "RB",
           "positionRank": 106,
           "rank": 359,
@@ -35888,7 +35888,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-23075",
           "name": "Eric Gray",
-          "team": "FA",
+          "team": "CLE",
           "position": "RB",
           "positionRank": 128,
           "rank": 410,
@@ -35924,7 +35924,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-22921",
           "name": "Jerome Ford",
-          "team": "FA",
+          "team": "MIN",
           "position": "RB",
           "positionRank": 129,
           "rank": 414,
@@ -35933,7 +35933,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-23682",
           "name": "Devin Neal",
-          "team": "FA",
+          "team": "MIN",
           "position": "RB",
           "positionRank": 130,
           "rank": 415,
@@ -36041,7 +36041,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-24216",
           "name": "Tanner Conner",
-          "team": "FA",
+          "team": "NE",
           "position": "TE",
           "positionRank": 68,
           "rank": 427,
@@ -36077,7 +36077,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-27294",
           "name": "Jimmy Horn Jr.",
-          "team": "CAR",
+          "team": "CLE",
           "position": "WR",
           "positionRank": 140,
           "rank": 431,
@@ -36383,7 +36383,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-12127",
           "name": "Odell Beckham Jr.",
-          "team": "NYG",
+          "team": "FA",
           "position": "WR",
           "positionRank": 155,
           "rank": 465,
@@ -36923,7 +36923,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-25349",
           "name": "Ben Sims",
-          "team": "MIA",
+          "team": "FA",
           "position": "TE",
           "positionRank": 114,
           "rank": 525,
@@ -36959,7 +36959,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-25758",
           "name": "Xavier Gipson",
-          "team": "FA",
+          "team": "PHI",
           "position": "WR",
           "positionRank": 190,
           "rank": 529,
@@ -36977,7 +36977,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-27724",
           "name": "Ke'Shawn Williams",
-          "team": "CIN",
+          "team": "FA",
           "position": "WR",
           "positionRank": 192,
           "rank": 531,
@@ -37013,7 +37013,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-24181",
           "name": "John FitzPatrick",
-          "team": "FA",
+          "team": "CLE",
           "position": "TE",
           "positionRank": 118,
           "rank": 535,
@@ -37256,7 +37256,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-23018",
           "name": "J.J. McCarthy",
-          "team": "MIN",
+          "team": "NYG",
           "position": "QB",
           "positionRank": 42,
           "rank": 562,
@@ -37564,7 +37564,7 @@ export const fantasyVorpData: Record<
     "12": {
       "season": 2026,
       "sourceUrl": "https://www.fantasypros.com/nfl/rankings/vorp.php",
-      "accessedAt": "2026-09-10T19:28:40.345Z",
+      "accessedAt": "2026-09-29T21:27:00.745Z",
       "players": [
         {
           "playerId": "fp-22968",
@@ -39035,7 +39035,7 @@ export const fantasyVorpData: Record<
         },
         {
           "playerId": "fp-27331",
-          "name": "KC Concepcion",
+          "name": "KC Concepcion Jr.",
           "team": "CLE",
           "position": "WR",
           "positionRank": 56,
@@ -39765,7 +39765,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-25533",
           "name": "Blake Grupe",
-          "team": "NYJ",
+          "team": "FA",
           "position": "K",
           "positionRank": 27,
           "rank": 245,
@@ -40017,7 +40017,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-12122",
           "name": "Brandin Cooks",
-          "team": "FA",
+          "team": "SF",
           "position": "WR",
           "positionRank": 83,
           "rank": 273,
@@ -40224,7 +40224,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-18706",
           "name": "Darius Slayton",
-          "team": "FA",
+          "team": "IND",
           "position": "WR",
           "positionRank": 95,
           "rank": 296,
@@ -40746,7 +40746,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-23054",
           "name": "Audric Estime",
-          "team": "NO",
+          "team": "FA",
           "position": "RB",
           "positionRank": 106,
           "rank": 354,
@@ -41205,7 +41205,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-23075",
           "name": "Eric Gray",
-          "team": "FA",
+          "team": "CLE",
           "position": "RB",
           "positionRank": 128,
           "rank": 405,
@@ -41223,7 +41223,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-22921",
           "name": "Jerome Ford",
-          "team": "FA",
+          "team": "MIN",
           "position": "RB",
           "positionRank": 129,
           "rank": 407,
@@ -41232,7 +41232,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-23682",
           "name": "Devin Neal",
-          "team": "FA",
+          "team": "MIN",
           "position": "RB",
           "positionRank": 130,
           "rank": 408,
@@ -41403,7 +41403,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-24216",
           "name": "Tanner Conner",
-          "team": "FA",
+          "team": "NE",
           "position": "TE",
           "positionRank": 68,
           "rank": 427,
@@ -41466,7 +41466,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-27294",
           "name": "Jimmy Horn Jr.",
-          "team": "CAR",
+          "team": "CLE",
           "position": "WR",
           "positionRank": 140,
           "rank": 434,
@@ -41772,7 +41772,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-12127",
           "name": "Odell Beckham Jr.",
-          "team": "NYG",
+          "team": "FA",
           "position": "WR",
           "positionRank": 155,
           "rank": 468,
@@ -42222,7 +42222,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-25349",
           "name": "Ben Sims",
-          "team": "MIA",
+          "team": "FA",
           "position": "TE",
           "positionRank": 114,
           "rank": 518,
@@ -42312,7 +42312,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-24181",
           "name": "John FitzPatrick",
-          "team": "FA",
+          "team": "CLE",
           "position": "TE",
           "positionRank": 118,
           "rank": 528,
@@ -42366,7 +42366,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-25758",
           "name": "Xavier Gipson",
-          "team": "FA",
+          "team": "PHI",
           "position": "WR",
           "positionRank": 190,
           "rank": 534,
@@ -42384,7 +42384,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-27724",
           "name": "Ke'Shawn Williams",
-          "team": "CIN",
+          "team": "FA",
           "position": "WR",
           "positionRank": 192,
           "rank": 536,
@@ -42618,7 +42618,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-23018",
           "name": "J.J. McCarthy",
-          "team": "MIN",
+          "team": "NYG",
           "position": "QB",
           "positionRank": 42,
           "rank": 562,
@@ -42926,7 +42926,7 @@ export const fantasyVorpData: Record<
     "14": {
       "season": 2026,
       "sourceUrl": "https://www.fantasypros.com/nfl/rankings/vorp.php?team_size=14",
-      "accessedAt": "2026-09-10T19:28:41.063Z",
+      "accessedAt": "2026-09-29T21:27:01.174Z",
       "players": [
         {
           "playerId": "fp-22968",
@@ -44208,7 +44208,7 @@ export const fantasyVorpData: Record<
         },
         {
           "playerId": "fp-27331",
-          "name": "KC Concepcion",
+          "name": "KC Concepcion Jr.",
           "team": "CLE",
           "position": "WR",
           "positionRank": 56,
@@ -45190,7 +45190,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-12122",
           "name": "Brandin Cooks",
-          "team": "FA",
+          "team": "SF",
           "position": "WR",
           "positionRank": 83,
           "rank": 252,
@@ -45550,7 +45550,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-18706",
           "name": "Darius Slayton",
-          "team": "FA",
+          "team": "IND",
           "position": "WR",
           "positionRank": 95,
           "rank": 292,
@@ -45676,7 +45676,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-25533",
           "name": "Blake Grupe",
-          "team": "NYJ",
+          "team": "FA",
           "position": "K",
           "positionRank": 27,
           "rank": 306,
@@ -45910,7 +45910,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-23054",
           "name": "Audric Estime",
-          "team": "NO",
+          "team": "FA",
           "position": "RB",
           "positionRank": 106,
           "rank": 332,
@@ -46306,7 +46306,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-23075",
           "name": "Eric Gray",
-          "team": "FA",
+          "team": "CLE",
           "position": "RB",
           "positionRank": 128,
           "rank": 376,
@@ -46324,7 +46324,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-22921",
           "name": "Jerome Ford",
-          "team": "FA",
+          "team": "MIN",
           "position": "RB",
           "positionRank": 129,
           "rank": 378,
@@ -46333,7 +46333,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-23682",
           "name": "Devin Neal",
-          "team": "FA",
+          "team": "MIN",
           "position": "RB",
           "positionRank": 130,
           "rank": 379,
@@ -46648,7 +46648,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-27294",
           "name": "Jimmy Horn Jr.",
-          "team": "CAR",
+          "team": "CLE",
           "position": "WR",
           "positionRank": 140,
           "rank": 414,
@@ -46819,7 +46819,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-12127",
           "name": "Odell Beckham Jr.",
-          "team": "NYG",
+          "team": "FA",
           "position": "WR",
           "positionRank": 155,
           "rank": 433,
@@ -47089,7 +47089,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-24216",
           "name": "Tanner Conner",
-          "team": "FA",
+          "team": "NE",
           "position": "TE",
           "positionRank": 68,
           "rank": 463,
@@ -47422,7 +47422,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-25758",
           "name": "Xavier Gipson",
-          "team": "FA",
+          "team": "PHI",
           "position": "WR",
           "positionRank": 190,
           "rank": 500,
@@ -47440,7 +47440,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-27724",
           "name": "Ke'Shawn Williams",
-          "team": "CIN",
+          "team": "FA",
           "position": "WR",
           "positionRank": 192,
           "rank": 502,
@@ -47764,7 +47764,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-25349",
           "name": "Ben Sims",
-          "team": "MIA",
+          "team": "FA",
           "position": "TE",
           "positionRank": 114,
           "rank": 538,
@@ -47800,7 +47800,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-24181",
           "name": "John FitzPatrick",
-          "team": "FA",
+          "team": "CLE",
           "position": "TE",
           "positionRank": 118,
           "rank": 542,
@@ -47980,7 +47980,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-23018",
           "name": "J.J. McCarthy",
-          "team": "MIN",
+          "team": "NYG",
           "position": "QB",
           "positionRank": 42,
           "rank": 562,

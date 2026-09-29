@@ -1,17 +1,11 @@
 {
   "symbol": "XOM",
-  "lastUpdated": "2026-09-15T01:03:45.681080+00:00",
+  "lastUpdated": "2026-09-29T07:04:00.244178+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-09-15T01:03:45.681080+00:00",
+    "snapshotBuiltAt": "2026-09-29T07:04:00.244178+00:00",
     "sections": {
-      "price": "2026-09-11"
-    },
-    "retainedSections": [
-      "fundamentals",
-      "wacc",
-      "beta",
-      "news"
-    ]
+      "price": "2026-09-28"
+    }
   },
   "source": "prefetched",
   "capabilities": {
@@ -46,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 7.7709,
-      "ttmPe": 21.36,
-      "marketCap": 682550880000,
-      "psRatio": 1.89,
-      "pbRatio": 2.63,
-      "pegRatio": 1.33
+      "ttmPe": 20.91,
+      "marketCap": 668282240000,
+      "psRatio": 1.85,
+      "pbRatio": 2.58,
+      "pegRatio": 0.19
     },
     "profitability": {
       "roe": 5.65,
@@ -5193,105 +5187,17 @@
       ]
     },
     "wacc": {
-      "wacc": 5.6000000000000005,
-      "costOfEquity": 6.02,
-      "costOfDebt": 0.62,
-      "taxRate": 36,
-      "beta": 0.1751,
-      "marketCap": 584983850000
+      "wacc": 6.5,
+      "costOfEquity": 6.890000000000001,
+      "costOfDebt": 0.54,
+      "taxRate": 24,
+      "beta": 0.2159,
+      "marketCap": 668282240000
     },
     "beta": {
-      "beta5y": 0.1751
+      "beta5y": 0.2159
     },
     "price": [
-      {
-        "date": "2025-09-11",
-        "open": 111.4,
-        "high": 112.77,
-        "low": 110.87,
-        "close": 112.14,
-        "volume": 11534500
-      },
-      {
-        "date": "2025-09-12",
-        "open": 112.86,
-        "high": 113.22,
-        "low": 111.88,
-        "close": 112.16,
-        "volume": 11105700
-      },
-      {
-        "date": "2025-09-15",
-        "open": 112.18,
-        "high": 112.46,
-        "low": 111.32,
-        "close": 112.35,
-        "volume": 12880500
-      },
-      {
-        "date": "2025-09-16",
-        "open": 112.96,
-        "high": 115.32,
-        "low": 112.78,
-        "close": 114.68,
-        "volume": 17208000
-      },
-      {
-        "date": "2025-09-17",
-        "open": 114.53,
-        "high": 115.49,
-        "low": 114.05,
-        "close": 115.29,
-        "volume": 13302000
-      },
-      {
-        "date": "2025-09-18",
-        "open": 115.17,
-        "high": 115.35,
-        "low": 113.4,
-        "close": 113.93,
-        "volume": 14628700
-      },
-      {
-        "date": "2025-09-19",
-        "open": 113.9,
-        "high": 113.98,
-        "low": 112.64,
-        "close": 112.82,
-        "volume": 38746500
-      },
-      {
-        "date": "2025-09-22",
-        "open": 112.45,
-        "high": 112.8,
-        "low": 111.56,
-        "close": 112.02,
-        "volume": 15611500
-      },
-      {
-        "date": "2025-09-23",
-        "open": 112.72,
-        "high": 114.75,
-        "low": 112.48,
-        "close": 113.95,
-        "volume": 25369100
-      },
-      {
-        "date": "2025-09-24",
-        "open": 114.57,
-        "high": 115.76,
-        "low": 114.47,
-        "close": 114.56,
-        "volume": 14756100
-      },
-      {
-        "date": "2025-09-25",
-        "open": 114.64,
-        "high": 115.9,
-        "low": 114.41,
-        "close": 115.59,
-        "volume": 15012600
-      },
       {
         "date": "2025-09-26",
         "open": 115.96,
@@ -7219,6 +7125,94 @@
         "low": 164.08,
         "close": 165.99,
         "volume": 11362400
+      },
+      {
+        "date": "2026-09-14",
+        "open": 168.7,
+        "high": 169.45,
+        "low": 164.04,
+        "close": 165.08,
+        "volume": 13942100
+      },
+      {
+        "date": "2026-09-15",
+        "open": 165.36,
+        "high": 169.64,
+        "low": 165.15,
+        "close": 169.32,
+        "volume": 12329200
+      },
+      {
+        "date": "2026-09-16",
+        "open": 167.23,
+        "high": 167.5,
+        "low": 162.56,
+        "close": 163.32,
+        "volume": 13437800
+      },
+      {
+        "date": "2026-09-17",
+        "open": 161.83,
+        "high": 163.39,
+        "low": 161.45,
+        "close": 163.27,
+        "volume": 10976500
+      },
+      {
+        "date": "2026-09-18",
+        "open": 162.5,
+        "high": 163.54,
+        "low": 161.31,
+        "close": 163.54,
+        "volume": 37640600
+      },
+      {
+        "date": "2026-09-21",
+        "open": 160.96,
+        "high": 161.95,
+        "low": 157.94,
+        "close": 158.3,
+        "volume": 15752500
+      },
+      {
+        "date": "2026-09-22",
+        "open": 157.53,
+        "high": 159.97,
+        "low": 155.85,
+        "close": 158.71,
+        "volume": 14189400
+      },
+      {
+        "date": "2026-09-23",
+        "open": 159.62,
+        "high": 162.12,
+        "low": 159.42,
+        "close": 161.23,
+        "volume": 12569300
+      },
+      {
+        "date": "2026-09-24",
+        "open": 163.06,
+        "high": 164.91,
+        "low": 161.2,
+        "close": 162.14,
+        "volume": 12484900
+      },
+      {
+        "date": "2026-09-25",
+        "open": 160.23,
+        "high": 161.79,
+        "low": 159.78,
+        "close": 160.59,
+        "volume": 10996700
+      },
+      {
+        "date": "2026-09-28",
+        "open": 162.8,
+        "high": 163.54,
+        "low": 161.05,
+        "close": 162.52,
+        "volume": 12809500
       }
     ],
     "news": [
@@ -7255,19 +7249,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "fd4f80af-5519-3ab3-90f3-9d5976e9486e",
-        "title": "The Zacks Analyst Blog Highlights Exxon Mobil, Bristol-Myers Squibb, Chubb and Hamilton Beach Brands",
-        "publisher": "Zacks",
-        "reportDate": "2025-04-03",
-        "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-exxon-145000755.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "05a0ef3f-3a4e-3300-ad29-88aba4207891",
         "title": "Top Research Reports for Exxon Mobil, Bristol-Myers Squibb & Chubb",
         "publisher": "Zacks",
         "reportDate": "2025-04-03",
         "link": "https://finance.yahoo.com/news/top-research-reports-exxon-mobil-202600539.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "fd4f80af-5519-3ab3-90f3-9d5976e9486e",
+        "title": "The Zacks Analyst Blog Highlights Exxon Mobil, Bristol-Myers Squibb, Chubb and Hamilton Beach Brands",
+        "publisher": "Zacks",
+        "reportDate": "2025-04-03",
+        "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-exxon-145000755.html",
         "type": "STORY"
       },
       {
@@ -7279,19 +7273,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "455e64a8-8e8e-3019-8c69-a0a13994ef31",
-        "title": "ExxonMobil Begins Installing Fourth FPSO to Tap Guyana's Reserves",
-        "publisher": "Zacks",
-        "reportDate": "2025-04-16",
-        "link": "https://finance.yahoo.com/news/exxonmobil-begins-installing-fourth-fpso-120500291.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "3a9cec62-7b2a-3b13-9156-c2910a14e7e0",
         "title": "StoneCo   and RH have been highlighted as Zacks Bull and Bear of the Day",
         "publisher": "Zacks",
         "reportDate": "2025-04-16",
         "link": "https://finance.yahoo.com/news/stoneco-rh-highlighted-zacks-bull-104000245.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "455e64a8-8e8e-3019-8c69-a0a13994ef31",
+        "title": "ExxonMobil Begins Installing Fourth FPSO to Tap Guyana's Reserves",
+        "publisher": "Zacks",
+        "reportDate": "2025-04-16",
+        "link": "https://finance.yahoo.com/news/exxonmobil-begins-installing-fourth-fpso-120500291.html",
         "type": "STORY"
       },
       {
@@ -7368,43 +7362,43 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 21.36,
-        "industryAvg": 16.8
+        "value": 20.91,
+        "industryAvg": 11.78
       },
       {
         "metric": "P/S Ratio",
-        "value": 1.89,
-        "industryAvg": 1.29
+        "value": 1.85,
+        "industryAvg": 1.01
       },
       {
         "metric": "P/B Ratio",
-        "value": 2.63,
-        "industryAvg": 1.76
+        "value": 2.58,
+        "industryAvg": 1.61
       },
       {
         "metric": "ROE",
         "value": 5.65,
-        "industryAvg": 6.01
+        "industryAvg": 14.71
       },
       {
         "metric": "ROA",
         "value": 3.1300000000000003,
-        "industryAvg": 2.52
+        "industryAvg": 6.23
       },
       {
         "metric": "Gross Margin",
         "value": 22.52,
-        "industryAvg": 24.14
+        "industryAvg": 25.019999999999996
       },
       {
         "metric": "EBITDA Margin",
         "value": 24.740000000000002,
-        "industryAvg": 22.869999999999997
+        "industryAvg": 24.14
       },
       {
         "metric": "Net Margin",
         "value": 12.68,
-        "industryAvg": 10.24
+        "industryAvg": 8.58
       }
     ]
   }

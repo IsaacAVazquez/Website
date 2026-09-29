@@ -1,8 +1,8 @@
 import type { CSSProperties } from "react";
 import { Clock3 } from "lucide-react";
-import { cn } from "@/lib/utils";
-import { DISPLAY_TIME_ZONE } from "@/lib/date-formatters";
+import { cn } from "@/lib/cn";
 import { CrestAvatar } from "./CrestAvatar";
+import { formatFixtureDateTime, getResultForTeam } from "./fixtureFormat";
 import { TeamResultPill } from "./TeamResultPill";
 
 export interface GenericFixture {
@@ -21,35 +21,10 @@ export interface GenericFixture {
     shootoutHome?: number | null;
     shootoutAway?: number | null;
   };
-}
-
-const DATE_TIME_FORMATTER = new Intl.DateTimeFormat("en-US", {
-  month: "short",
-  day: "numeric",
-  hour: "numeric",
-  minute: "2-digit",
-  timeZone: DISPLAY_TIME_ZONE,
-  timeZoneName: "short",
-});
-
-function formatFixtureDateTime(utcDate: string): string {
-  const date = new Date(utcDate);
-  return Number.isNaN(date.getTime()) ? "Time TBD" : DATE_TIME_FORMATTER.format(date);
-}
-
-function getResultForTeam(
-  fixture: GenericFixture,
-  teamId: string
-): "W" | "D" | "L" | null {
-  const isHome = fixture.homeTeam.id === teamId;
-  const isAway = fixture.awayTeam.id === teamId;
-  if (!isHome && !isAway) return null;
-  if (fixture.score.winner === "DRAW") return "D";
-  if (
-    (isHome && fixture.score.winner === "HOME_TEAM") ||
-    (isAway && fixture.score.winner === "AWAY_TEAM")
-  ) return "W";
-  return "L";
+  // The league has set the day and not the time, so utcDate holds a placeholder.
+  startTimeTbd?: boolean;
+  // A playoff game that is played only if the series is still open.
+  ifNecessary?: boolean;
 }
 
 export function FixtureCard({
@@ -88,15 +63,15 @@ export function FixtureCard({
             <p className="mt-1 flex items-center gap-2 text-sm text-[var(--c97-ink-2)]">
               <Clock3 className="h-4 w-4 text-[var(--c97-accent)]" />
               {fixture.status === "FINISHED"
-                ? `Final · ${formatFixtureDateTime(fixture.utcDate)}`
-                : formatFixtureDateTime(fixture.utcDate)}
+                ? `Final · ${formatFixtureDateTime(fixture)}`
+                : formatFixtureDateTime(fixture)}
             </p>
           </div>
         )}
         {compact && (
           <p className="flex items-center gap-1.5 text-xs text-[var(--c97-label)]">
             <Clock3 className="h-3 w-3" />
-            {fixture.status === "FINISHED" ? "Final" : formatFixtureDateTime(fixture.utcDate)}
+            {fixture.status === "FINISHED" ? "Final" : formatFixtureDateTime(fixture)}
           </p>
         )}
         {contextualResult ? <TeamResultPill result={contextualResult} /> : null}

@@ -1,17 +1,11 @@
 {
   "symbol": "ETN",
-  "lastUpdated": "2026-08-18T23:06:20.443188+00:00",
+  "lastUpdated": "2026-09-29T07:04:00.244178+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-08-18T23:06:20.443188+00:00",
+    "snapshotBuiltAt": "2026-09-29T07:04:00.244178+00:00",
     "sections": {
-      "price": "2026-08-14"
-    },
-    "retainedSections": [
-      "fundamentals",
-      "wacc",
-      "beta",
-      "news"
-    ]
+      "price": "2026-09-28"
+    }
   },
   "source": "prefetched",
   "capabilities": {
@@ -46,10 +40,10 @@
     },
     "fundamentals": {
       "ttmEps": 9.8283,
-      "ttmPe": 45.94,
-      "marketCap": 175366484000,
-      "psRatio": 5.84,
-      "pbRatio": 8.66,
+      "ttmPe": 43.89,
+      "marketCap": 167559644000,
+      "psRatio": 5.58,
+      "pbRatio": 8.27,
       "pegRatio": 1.77
     },
     "profitability": {
@@ -5267,257 +5261,17 @@
       ]
     },
     "wacc": {
-      "wacc": 12.57,
-      "costOfEquity": 14.29,
-      "costOfDebt": 0.49,
-      "taxRate": 22,
-      "beta": 1.171,
-      "marketCap": 155149148000
+      "wacc": 12.280000000000001,
+      "costOfEquity": 13.76,
+      "costOfDebt": 0.9400000000000001,
+      "taxRate": 28.000000000000004,
+      "beta": 1.1163,
+      "marketCap": 167559644000
     },
     "beta": {
-      "beta5y": 1.171
+      "beta5y": 1.1163
     },
     "price": [
-      {
-        "date": "2025-08-14",
-        "open": 353.63,
-        "high": 358.69,
-        "low": 352.03,
-        "close": 355.1,
-        "volume": 1895500
-      },
-      {
-        "date": "2025-08-15",
-        "open": 355,
-        "high": 355,
-        "low": 350.27,
-        "close": 351.03,
-        "volume": 1899700
-      },
-      {
-        "date": "2025-08-18",
-        "open": 349.87,
-        "high": 354.05,
-        "low": 348.71,
-        "close": 353.5,
-        "volume": 1158500
-      },
-      {
-        "date": "2025-08-19",
-        "open": 352.72,
-        "high": 353.5,
-        "low": 347.24,
-        "close": 349,
-        "volume": 1870500
-      },
-      {
-        "date": "2025-08-20",
-        "open": 344.04,
-        "high": 347.56,
-        "low": 339.26,
-        "close": 346.22,
-        "volume": 2454300
-      },
-      {
-        "date": "2025-08-21",
-        "open": 345.19,
-        "high": 348.61,
-        "low": 344.29,
-        "close": 345.38,
-        "volume": 1455400
-      },
-      {
-        "date": "2025-08-22",
-        "open": 346.7,
-        "high": 353.08,
-        "low": 345.1,
-        "close": 347.61,
-        "volume": 1964900
-      },
-      {
-        "date": "2025-08-25",
-        "open": 349.31,
-        "high": 350.13,
-        "low": 345.72,
-        "close": 345.76,
-        "volume": 1251400
-      },
-      {
-        "date": "2025-08-26",
-        "open": 346.3,
-        "high": 353.13,
-        "low": 345.71,
-        "close": 352.02,
-        "volume": 1994900
-      },
-      {
-        "date": "2025-08-27",
-        "open": 350.96,
-        "high": 353.68,
-        "low": 350,
-        "close": 351.4,
-        "volume": 1434500
-      },
-      {
-        "date": "2025-08-28",
-        "open": 353.66,
-        "high": 357.16,
-        "low": 352.67,
-        "close": 355.34,
-        "volume": 1773100
-      },
-      {
-        "date": "2025-08-29",
-        "open": 354.95,
-        "high": 356.52,
-        "low": 345.27,
-        "close": 349.14,
-        "volume": 2386100
-      },
-      {
-        "date": "2025-09-02",
-        "open": 343.13,
-        "high": 344.6,
-        "low": 339.89,
-        "close": 343.75,
-        "volume": 2464100
-      },
-      {
-        "date": "2025-09-03",
-        "open": 345.78,
-        "high": 346.07,
-        "low": 339.66,
-        "close": 342.99,
-        "volume": 1521200
-      },
-      {
-        "date": "2025-09-04",
-        "open": 344.22,
-        "high": 348.27,
-        "low": 341.61,
-        "close": 348.22,
-        "volume": 1859300
-      },
-      {
-        "date": "2025-09-05",
-        "open": 350.47,
-        "high": 351.28,
-        "low": 342.27,
-        "close": 349.03,
-        "volume": 2120700
-      },
-      {
-        "date": "2025-09-08",
-        "open": 350,
-        "high": 352.58,
-        "low": 347.77,
-        "close": 349.49,
-        "volume": 1632000
-      },
-      {
-        "date": "2025-09-09",
-        "open": 349.94,
-        "high": 350.27,
-        "low": 343.64,
-        "close": 348.23,
-        "volume": 1763300
-      },
-      {
-        "date": "2025-09-10",
-        "open": 359.59,
-        "high": 365.43,
-        "low": 357,
-        "close": 362.25,
-        "volume": 3484000
-      },
-      {
-        "date": "2025-09-11",
-        "open": 363.68,
-        "high": 365.31,
-        "low": 359.38,
-        "close": 360.08,
-        "volume": 2253200
-      },
-      {
-        "date": "2025-09-12",
-        "open": 359.93,
-        "high": 367.68,
-        "low": 358.78,
-        "close": 365.9,
-        "volume": 3108400
-      },
-      {
-        "date": "2025-09-15",
-        "open": 370.02,
-        "high": 378.16,
-        "low": 369.19,
-        "close": 375.54,
-        "volume": 3031500
-      },
-      {
-        "date": "2025-09-16",
-        "open": 378,
-        "high": 378.98,
-        "low": 369.65,
-        "close": 371.19,
-        "volume": 2251100
-      },
-      {
-        "date": "2025-09-17",
-        "open": 370.59,
-        "high": 371.46,
-        "low": 359.28,
-        "close": 363.35,
-        "volume": 3481400
-      },
-      {
-        "date": "2025-09-18",
-        "open": 366.98,
-        "high": 374.06,
-        "low": 364.45,
-        "close": 371.27,
-        "volume": 1857900
-      },
-      {
-        "date": "2025-09-19",
-        "open": 373.6,
-        "high": 375.36,
-        "low": 369.98,
-        "close": 374.5,
-        "volume": 3483100
-      },
-      {
-        "date": "2025-09-22",
-        "open": 374.08,
-        "high": 382.92,
-        "low": 371.92,
-        "close": 378.31,
-        "volume": 2399300
-      },
-      {
-        "date": "2025-09-23",
-        "open": 381.76,
-        "high": 382,
-        "low": 366.06,
-        "close": 368.52,
-        "volume": 2776200
-      },
-      {
-        "date": "2025-09-24",
-        "open": 369.82,
-        "high": 373.62,
-        "low": 368.22,
-        "close": 372.21,
-        "volume": 2290800
-      },
-      {
-        "date": "2025-09-25",
-        "open": 366.86,
-        "high": 368.16,
-        "low": 360.34,
-        "close": 364.74,
-        "volume": 2029100
-      },
       {
         "date": "2025-09-26",
         "open": 365.01,
@@ -7293,6 +7047,246 @@
         "low": 449.01,
         "close": 451.51,
         "volume": 1401000
+      },
+      {
+        "date": "2026-08-17",
+        "open": 458.96,
+        "high": 458.96,
+        "low": 449,
+        "close": 455.4,
+        "volume": 1605300
+      },
+      {
+        "date": "2026-08-18",
+        "open": 444.19,
+        "high": 444.89,
+        "low": 428.9,
+        "close": 431.33,
+        "volume": 2120700
+      },
+      {
+        "date": "2026-08-19",
+        "open": 435.12,
+        "high": 436.95,
+        "low": 417.22,
+        "close": 424.67,
+        "volume": 1748600
+      },
+      {
+        "date": "2026-08-20",
+        "open": 422.05,
+        "high": 425.42,
+        "low": 415.15,
+        "close": 415.29,
+        "volume": 1684300
+      },
+      {
+        "date": "2026-08-21",
+        "open": 419.5,
+        "high": 423.51,
+        "low": 416.21,
+        "close": 419.2,
+        "volume": 1749400
+      },
+      {
+        "date": "2026-08-24",
+        "open": 415.23,
+        "high": 417.99,
+        "low": 406.95,
+        "close": 408.67,
+        "volume": 1573400
+      },
+      {
+        "date": "2026-08-25",
+        "open": 418.33,
+        "high": 419.99,
+        "low": 407.47,
+        "close": 409.2,
+        "volume": 1521400
+      },
+      {
+        "date": "2026-08-26",
+        "open": 411.97,
+        "high": 420.93,
+        "low": 409.78,
+        "close": 419.44,
+        "volume": 1792900
+      },
+      {
+        "date": "2026-08-27",
+        "open": 427.62,
+        "high": 427.96,
+        "low": 415.21,
+        "close": 416.04,
+        "volume": 1621800
+      },
+      {
+        "date": "2026-08-28",
+        "open": 417.5,
+        "high": 419.03,
+        "low": 402.31,
+        "close": 402.78,
+        "volume": 1822900
+      },
+      {
+        "date": "2026-08-31",
+        "open": 403,
+        "high": 406.98,
+        "low": 399.75,
+        "close": 401.88,
+        "volume": 2165900
+      },
+      {
+        "date": "2026-09-01",
+        "open": 397.99,
+        "high": 401,
+        "low": 387,
+        "close": 390.71,
+        "volume": 2022300
+      },
+      {
+        "date": "2026-09-02",
+        "open": 391.28,
+        "high": 394.89,
+        "low": 386,
+        "close": 390.85,
+        "volume": 1631100
+      },
+      {
+        "date": "2026-09-03",
+        "open": 390.03,
+        "high": 397.87,
+        "low": 384.77,
+        "close": 397.12,
+        "volume": 1476800
+      },
+      {
+        "date": "2026-09-04",
+        "open": 400.9,
+        "high": 411.24,
+        "low": 400.05,
+        "close": 410.85,
+        "volume": 1889700
+      },
+      {
+        "date": "2026-09-08",
+        "open": 423.68,
+        "high": 430.25,
+        "low": 419.5,
+        "close": 422.13,
+        "volume": 2035200
+      },
+      {
+        "date": "2026-09-09",
+        "open": 420.05,
+        "high": 424.23,
+        "low": 415.16,
+        "close": 415.22,
+        "volume": 1775100
+      },
+      {
+        "date": "2026-09-10",
+        "open": 410,
+        "high": 414.37,
+        "low": 405.7,
+        "close": 409.15,
+        "volume": 1529300
+      },
+      {
+        "date": "2026-09-11",
+        "open": 415.4,
+        "high": 427.14,
+        "low": 414,
+        "close": 425.37,
+        "volume": 1630700
+      },
+      {
+        "date": "2026-09-14",
+        "open": 393.01,
+        "high": 400.66,
+        "low": 387,
+        "close": 393.16,
+        "volume": 3188400
+      },
+      {
+        "date": "2026-09-15",
+        "open": 398.8,
+        "high": 400.27,
+        "low": 389.4,
+        "close": 392.4,
+        "volume": 2689300
+      },
+      {
+        "date": "2026-09-16",
+        "open": 397.65,
+        "high": 403.32,
+        "low": 393.6,
+        "close": 397.8,
+        "volume": 1810600
+      },
+      {
+        "date": "2026-09-17",
+        "open": 415.08,
+        "high": 418.86,
+        "low": 408.73,
+        "close": 409.46,
+        "volume": 2602500
+      },
+      {
+        "date": "2026-09-18",
+        "open": 411.48,
+        "high": 425.34,
+        "low": 410.93,
+        "close": 424.77,
+        "volume": 4612300
+      },
+      {
+        "date": "2026-09-21",
+        "open": 430.21,
+        "high": 438.26,
+        "low": 426.06,
+        "close": 435.43,
+        "volume": 2194500
+      },
+      {
+        "date": "2026-09-22",
+        "open": 434.67,
+        "high": 443.64,
+        "low": 433.18,
+        "close": 442.49,
+        "volume": 1875200
+      },
+      {
+        "date": "2026-09-23",
+        "open": 442.56,
+        "high": 443.49,
+        "low": 436.1,
+        "close": 438.76,
+        "volume": 1787100
+      },
+      {
+        "date": "2026-09-24",
+        "open": 429.36,
+        "high": 441.38,
+        "low": 427.96,
+        "close": 440,
+        "volume": 1362000
+      },
+      {
+        "date": "2026-09-25",
+        "open": 444.4,
+        "high": 447.33,
+        "low": 436.18,
+        "close": 439.98,
+        "volume": 1416900
+      },
+      {
+        "date": "2026-09-28",
+        "open": 437.71,
+        "high": 441.94,
+        "low": 423.83,
+        "close": 431.41,
+        "volume": 2367400
       }
     ],
     "news": [
@@ -7313,19 +7307,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "7b1f9a32-8f98-3e6c-a815-862c5aae8bdb",
-        "title": "Eaton Reports Record First Quarter 2025 Results, with Accelerating Organic Growth; Raises Full-Year Organic Growth Guidance",
-        "publisher": "Business Wire",
-        "reportDate": "2025-05-02",
-        "link": "https://finance.yahoo.com/news/eaton-reports-record-first-quarter-103000345.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "514d68fe-9e46-3355-97b4-005d7bb11ba7",
         "title": "Eaton: Q1 Earnings Snapshot",
         "publisher": "Associated Press Finance",
         "reportDate": "2025-05-02",
         "link": "https://finance.yahoo.com/news/eaton-q1-earnings-snapshot-103722378.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "7b1f9a32-8f98-3e6c-a815-862c5aae8bdb",
+        "title": "Eaton Reports Record First Quarter 2025 Results, with Accelerating Organic Growth; Raises Full-Year Organic Growth Guidance",
+        "publisher": "Business Wire",
+        "reportDate": "2025-05-02",
+        "link": "https://finance.yahoo.com/news/eaton-reports-record-first-quarter-103000345.html",
         "type": "STORY"
       },
       {
@@ -7337,19 +7331,19 @@
         "type": "VIDEO"
       },
       {
-        "uuid": "9f379c9d-fcdf-3d28-a66c-eeeae8c6b97a",
-        "title": "Eaton Q1 Earnings and Revenues Surpass Estimates, Organic Sales Rise",
-        "publisher": "Zacks",
-        "reportDate": "2025-05-03",
-        "link": "https://finance.yahoo.com/news/eaton-q1-earnings-revenues-surpass-161100450.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "2532544e-b84d-3cd4-8c6d-d91282a2b05a",
         "title": "Eaton Corp PLC (ETN) Q1 2025 Earnings Call Highlights: Record Revenue and Raised Growth Outlook",
         "publisher": "GuruFocus.com",
         "reportDate": "2025-05-03",
         "link": "https://finance.yahoo.com/news/eaton-corp-plc-etn-q1-070710850.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "9f379c9d-fcdf-3d28-a66c-eeeae8c6b97a",
+        "title": "Eaton Q1 Earnings and Revenues Surpass Estimates, Organic Sales Rise",
+        "publisher": "Zacks",
+        "reportDate": "2025-05-03",
+        "link": "https://finance.yahoo.com/news/eaton-q1-earnings-revenues-surpass-161100450.html",
         "type": "STORY"
       },
       {
@@ -7438,43 +7432,43 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 45.94,
-        "industryAvg": 0
+        "value": 43.89,
+        "industryAvg": 31.32
       },
       {
         "metric": "P/S Ratio",
-        "value": 5.84,
-        "industryAvg": 0
+        "value": 5.58,
+        "industryAvg": 3.56
       },
       {
         "metric": "P/B Ratio",
-        "value": 8.66,
-        "industryAvg": 0
+        "value": 8.27,
+        "industryAvg": 6.36
       },
       {
         "metric": "ROE",
         "value": 4.109999999999999,
-        "industryAvg": 1.69
+        "industryAvg": 18.87
       },
       {
         "metric": "ROA",
         "value": 1.48,
-        "industryAvg": 0.8
+        "industryAvg": 6.1899999999999995
       },
       {
         "metric": "Gross Margin",
         "value": 33.47,
-        "industryAvg": 22.21
+        "industryAvg": 28.96
       },
       {
         "metric": "EBITDA Margin",
         "value": 20.44,
-        "industryAvg": 10.85
+        "industryAvg": 15.58
       },
       {
         "metric": "Net Margin",
         "value": 9.62,
-        "industryAvg": 4.22
+        "industryAvg": 9.790000000000001
       }
     ]
   }

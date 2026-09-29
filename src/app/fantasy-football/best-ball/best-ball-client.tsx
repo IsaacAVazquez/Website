@@ -6,12 +6,9 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { Search } from "lucide-react";
 import { startTransition, useCallback, useEffect, useMemo, useOptimistic, useState } from "react";
 
-import {
-  CompareTray,
-  PlayerDetailDrawer,
-  PositionFilterBar,
-  type PositionFilterOption,
-} from "@/components/fantasy";
+import { DeferredCompareTray } from "@/components/fantasy/DeferredCompareTray";
+import { DeferredPlayerDetailDrawer } from "@/components/fantasy/DeferredPlayerDetailDrawer";
+import { PositionFilterBar, type PositionFilterOption } from "@/components/fantasy/PositionFilterBar";
 import { useBestBallSnapshot } from "@/hooks/useBestBallSnapshot";
 import { useDebounce } from "@/hooks/useDebounce";
 import { PROJECT_PRESS } from "@/constants/projectPress";
@@ -822,7 +819,7 @@ export function BestBallClient({ initialState }: BestBallClientProps) {
           </div>
           <div
             className="grid gap-x-4 gap-y-3.5 px-4 py-3.5"
-            style={{ gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))" }}
+            style={{ gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 220px), 1fr))" }}
           >
             {[
               { label: "The room", body: activeContest.structure },
@@ -927,8 +924,8 @@ export function BestBallClient({ initialState }: BestBallClientProps) {
           data-testid="best-ball-board-controls"
           className="sticky top-0 z-30 mb-3 border-b"
           style={{
-            marginInline: "calc(-1 * clamp(1rem, 4vw, 2.5rem))",
-            paddingInline: "clamp(1rem, 4vw, 2.5rem)",
+            marginInline: "calc(-1 * var(--c97-gutter))",
+            paddingInline: "var(--c97-gutter)",
             borderColor: "var(--c97-rule)",
             background: "var(--c97-surface)",
           }}
@@ -1233,7 +1230,7 @@ export function BestBallClient({ initialState }: BestBallClientProps) {
         </p>
         <div
           className="mt-4 grid gap-x-9 gap-y-2"
-          style={{ gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))" }}
+          style={{ gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 300px), 1fr))" }}
         >
           <div className="min-w-0">
             <p className={`mb-0.5 mt-0 ${MONO_LABEL_CLASS}`} style={{ color: "var(--c97-ink-2)" }}>
@@ -1320,7 +1317,7 @@ export function BestBallClient({ initialState }: BestBallClientProps) {
             href={RULES_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className={`${PILL_ACTION_CLASS} shrink-0`}
+            className={`${PILL_ACTION_CLASS} max-w-full`}
             style={{ borderColor: "var(--c97-rule)", color: "var(--c97-ink)" }}
           >
             Official scoring and lineup rules&nbsp;<span aria-hidden="true">↗</span>
@@ -1356,7 +1353,7 @@ export function BestBallClient({ initialState }: BestBallClientProps) {
           chip and the modal row carry that name with the number. The modal
           adds its own consensus row from rankEcr, so the two rank spaces stay
           named and separate. */}
-      <PlayerDetailDrawer
+      <DeferredPlayerDetailDrawer
         player={detailPlayer ? withholdConsensus(detailPlayer) : null}
         publishedRank={detailPlayer ? String(detailPlayer.bestBallRank) : undefined}
         publishedRankLabel="Board rank"
@@ -1366,7 +1363,7 @@ export function BestBallClient({ initialState }: BestBallClientProps) {
         valueSignalAvailable={adpAvailable}
         onClose={() => setDetailPlayer(null)}
       />
-      <CompareTray
+      <DeferredCompareTray
         resolvePlayer={resolveComparablePlayer}
         playerDataReady={!isLoading && Boolean(snapshot)}
         pruneUnresolvedIds={false}

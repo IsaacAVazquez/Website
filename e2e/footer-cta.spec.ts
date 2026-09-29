@@ -5,7 +5,7 @@ test.describe("Footer CTA cleanup", () => {
     await page.goto("/");
 
     await expect(
-      page.getByText(/if you have a thing that needs proving/i)
+      page.getByText(/hiring for product or want to compare notes/i)
     ).toBeVisible();
 
     const footer = page.getByRole("contentinfo", { name: "Site footer" });
@@ -18,7 +18,7 @@ test.describe("Footer CTA cleanup", () => {
     await page.goto("/contact");
 
     await expect(
-      page.getByRole("heading", { name: /if you have something worth building/i })
+      page.getByRole("heading", { name: /like to hear from you/i })
     ).toBeVisible();
 
     const footer = page.getByRole("contentinfo", { name: "Site footer" });

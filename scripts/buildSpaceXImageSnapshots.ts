@@ -100,6 +100,7 @@ interface RawLl2Launch {
   name?: string | null;
   net?: string | null;
   image?: string | null;
+  launch_service_provider?: { id?: number | null } | null;
   mission_patches?: RawLl2MissionPatch[] | null;
   program?: RawLl2Program[] | null;
   rocket?: RawLl2Rocket | null;
@@ -253,11 +254,18 @@ function filterLaunchCollection(
   launches: RawLl2Launch[],
   mode: LaunchCollectionMode
 ): RawLl2Launch[] {
-  return dedupeLaunches(launches).filter((launch) =>
-    mode === "upcoming"
+  return dedupeLaunches(launches).filter((launch) => {
+    // `lsp__ids` filters on the server, so this only matters if that parameter
+    // is ever renamed or ignored.
+    const providerId = launch.launch_service_provider?.id ?? SPACEX_AGENCY_ID;
+    if (providerId !== SPACEX_AGENCY_ID) {
+      return false;
+    }
+
+    return mode === "upcoming"
       ? !isPastDate(launch.net, UPCOMING_STALE_GRACE_MS)
-      : !launch.net || Date.parse(launch.net) <= Date.now()
-  );
+      : !launch.net || Date.parse(launch.net) <= Date.now();
+  });
 }
 
 function buildLaunchCollectionPath(mode: LaunchCollectionMode, limit: number): string {
@@ -655,6 +663,9 @@ export async function buildSpaceXImageSnapshots(
   // calls/hour per IP, so this spends the detail-call budget only on launches
   // we have not indexed yet.
   const carriedReferences = new Map<string, SpaceXLaunchImageReference>();
+  // List rows that show an image their carried reference lacks. The row is
+  // already in hand, so merging it in costs no Launch Library call.
+  const carriedDrafts: DraftLaunchImageReference[] = [];
 
   for (const { launch: listLaunch, window } of launchesById.values()) {
     const launchId = listLaunch.id?.trim();
@@ -668,8 +679,24 @@ export async function buildSpaceXImageSnapshots(
     const carriedReference = existingReferenceIndex[launchId];
     if (carriedReference) {
       carriedReferences.set(launchId, carriedReference);
+      const listDraft = collectLaunchImageDraft(listLaunch, window);
+      const carriesNewImage = IMAGE_ROLES.some((role) =>
+        (listDraft?.images[role] ?? []).some(
+          (entry) =>
+            !(carriedReference.images[role] ?? []).some(
+              (carried) => carried.remoteUrl === entry.remoteUrl
+            )
+        )
+      );
+      if (listDraft && carriesNewImage) {
+        carriedDrafts.push(listDraft);
+      }
+
       for (const role of IMAGE_ROLES) {
-        for (const entry of carriedReference.images[role] ?? []) {
+        for (const entry of [
+          ...(carriedReference.images[role] ?? []),
+          ...(listDraft && carriesNewImage ? listDraft.images[role] : []),
+        ]) {
           currentWindowUrls.add(entry.remoteUrl);
         }
       }
@@ -766,6 +793,16 @@ export async function buildSpaceXImageSnapshots(
     }
   }
 
+  for (const draft of carriedDrafts) {
+    const carriedReference = carriedReferences.get(draft.launchId);
+    if (carriedReference) {
+      carriedReferences.set(
+        draft.launchId,
+        mergeLaunchReference(carriedReference, materializeLaunchReference(draft, finalManifest))
+      );
+    }
+  }
+
   const materializedReferences = new Map<string, SpaceXLaunchImageReference>();
   for (const { draft } of draftReferences) {
     materializedReferences.set(draft.launchId, materializeLaunchReference(draft, finalManifest));
@@ -781,7 +818,10 @@ export async function buildSpaceXImageSnapshots(
   let finalReferenceIndex: SpaceXImageReferenceIndex;
 
   if (partial) {
-    finalReferenceIndex = { ...existingReferenceIndex };
+    finalReferenceIndex = {
+      ...existingReferenceIndex,
+      ...Object.fromEntries(carriedReferences),
+    };
 
     for (const { draft, complete } of draftReferences) {
       const materialized = materializedReferences.get(draft.launchId);

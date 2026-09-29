@@ -16,8 +16,6 @@ import type {
 import { getPremierLeagueClubAccentColor } from "@/data/clubColors";
 
 import {
-  FOOTBALL_DATA_BASE_URL,
-  REQUEST_TIMEOUT_MS,
   SUMMARY_REVALIDATE_SECONDS,
   TEAM_REVALIDATE_SECONDS,
   RECENT_FIXTURE_LIMIT,
@@ -25,6 +23,8 @@ import {
   TEAM_FIXTURE_LIMIT,
   SEASON_FIXTURES_REVALIDATE_SECONDS,
   buildSeasonLabel,
+  fetchFootballDataJson as fetchLeagueJson,
+  pruneToTable,
   type FootballDataTeam,
   type FootballDataSeason,
   type FootballDataStandingEntry,
@@ -41,16 +41,8 @@ function createPremierLeagueDataError(message: string, status: number): Football
   return Object.assign(new Error(message), { status });
 }
 
-function getFootballDataToken(): string {
-  const token = process.env.FOOTBALL_DATA_API_TOKEN?.trim();
-  if (!token) {
-    throw createPremierLeagueDataError(
-      "Premier League data source is not configured.",
-      503
-    );
-  }
-
-  return token;
+function fetchFootballDataJson<T>(path: string, revalidateSeconds: number): Promise<T> {
+  return fetchLeagueJson<T>("Premier League", path, revalidateSeconds);
 }
 
 function isPositiveIntegerString(value: string): boolean {
@@ -172,10 +164,15 @@ function normalizeFixture(rawMatch: FootballDataMatch | null | undefined): Premi
     return null;
   }
 
+  const status = rawMatch?.status?.trim() || "UNKNOWN";
+
   return {
     id: String(matchId),
     utcDate,
-    status: rawMatch?.status?.trim() || "UNKNOWN",
+    status,
+    // The provider keeps a match SCHEDULED at midnight UTC while it only has a
+    // rough date, and moves it to TIMED once the kickoff is fixed.
+    ...(status === "SCHEDULED" ? { startTimeTbd: true } : {}),
     matchday: rawMatch?.matchday ?? null,
     stage: rawMatch?.stage?.trim() || null,
     homeTeam,
@@ -296,84 +293,6 @@ function buildTeamFormSummary(
   }, createDefaultFormSummary());
 }
 
-async function fetchFootballDataJsonOnce<T>(
-  path: string,
-  revalidateSeconds: number
-): Promise<T> {
-  const token = getFootballDataToken();
-  // AbortSignal.timeout fires its own per-attempt timeout cleanly without us
-  // having to manage a setTimeout / clearTimeout pair around every call.
-  const response = await fetch(`${FOOTBALL_DATA_BASE_URL}${path}`, {
-    headers: {
-      "X-Auth-Token": token,
-    },
-    signal: AbortSignal.timeout(REQUEST_TIMEOUT_MS),
-    next: {
-      revalidate: revalidateSeconds,
-    },
-  });
-
-  if (!response.ok) {
-    if (response.status === 401 || response.status === 403) {
-      throw createPremierLeagueDataError(
-        "Premier League data provider rejected the configured API token.",
-        503
-      );
-    }
-
-    if (response.status === 404) {
-      throw createPremierLeagueDataError(
-        "Requested Premier League resource was not found.",
-        404
-      );
-    }
-
-    throw createPremierLeagueDataError(
-      "Unable to load Premier League data from the upstream provider.",
-      response.status >= 500 ? 503 : 502
-    );
-  }
-
-  return (await response.json()) as T;
-}
-
-/**
- * Wraps the per-attempt fetch in a 3-attempt retry. Backs off on 5xx and on
- * network/timeout errors, but NOT on 4xx (client-side errors won't recover).
- * Mirrors the pattern in src/lib/nflData.ts (`fetchTextOnce` + `fetchText`).
- */
-async function fetchFootballDataJson<T>(
-  path: string,
-  revalidateSeconds: number
-): Promise<T> {
-  let lastError: unknown;
-  for (let attempt = 0; attempt < 3; attempt += 1) {
-    try {
-      return await fetchFootballDataJsonOnce<T>(path, revalidateSeconds);
-    } catch (error) {
-      lastError = error;
-      // Treat AbortError / TimeoutError as a network failure for retry purposes.
-      if (error instanceof Error && (error.name === "AbortError" || error.name === "TimeoutError")) {
-        if (attempt < 2) {
-          await new Promise((resolve) => setTimeout(resolve, 1000 * (attempt + 1)));
-          continue;
-        }
-        throw createPremierLeagueDataError(
-          "Premier League data provider timed out.",
-          504
-        );
-      }
-      const status = (error as FootballDataError).status;
-      // Don't retry 4xx (auth, not found, malformed) — they won't get better.
-      if (typeof status === "number" && status >= 400 && status < 500) throw error;
-      if (attempt < 2) {
-        await new Promise((resolve) => setTimeout(resolve, 1000 * (attempt + 1)));
-      }
-    }
-  }
-  throw lastError;
-}
-
 function buildCompetitionMeta(
   standingsResponse: FootballDataCompetitionStandingsResponse
 ): PremierLeagueCompetitionMeta {
@@ -442,59 +361,12 @@ export async function getPremierLeagueSummary(
     ? `?${buildQueryString({ season: options.season })}`
     : "";
 
-  const standingsPromise = fetchFootballDataJson<FootballDataCompetitionStandingsResponse>(
+  // One request at a time, so the rate headers on each response can hold
+  // the next request back.
+  const standingsResponse = await fetchFootballDataJson<FootballDataCompetitionStandingsResponse>(
     `/competitions/${PREMIER_LEAGUE_CODE}/standings${seasonQuery}`,
     SUMMARY_REVALIDATE_SECONDS
   );
-  const recentFixturesPromise = fetchFootballDataJson<FootballDataMatchesResponse>(
-    `/competitions/${PREMIER_LEAGUE_CODE}/matches?${buildQueryString({
-      status: "FINISHED",
-      limit: RECENT_FIXTURE_LIMIT,
-      ...seasonParams,
-    })}`,
-    SUMMARY_REVALIDATE_SECONDS
-  );
-  const upcomingFixturesPromise = fetchFootballDataJson<FootballDataMatchesResponse>(
-    `/competitions/${PREMIER_LEAGUE_CODE}/matches?${buildQueryString({
-      status: "SCHEDULED",
-      limit: UPCOMING_FIXTURE_LIMIT,
-      ...seasonParams,
-    })}`,
-    SUMMARY_REVALIDATE_SECONDS
-  );
-  const teamsPromise = fetchFootballDataJson<FootballDataCompetitionTeamsResponse>(
-    `/competitions/${PREMIER_LEAGUE_CODE}/teams${seasonQuery}`,
-    SUMMARY_REVALIDATE_SECONDS
-  );
-  const scorersPromise = fetchFootballDataJson<FootballDataScorersResponse>(
-    `/competitions/${PREMIER_LEAGUE_CODE}/scorers${seasonQuery}`,
-    SUMMARY_REVALIDATE_SECONDS
-  );
-  // Season-long fixture log for the goals-per-matchday pulse — every FINISHED
-  // match, no `limit`, distinct from the 8-most-recent `recentFixturesPromise`.
-  const seasonFixturesPromise = fetchFootballDataJson<FootballDataMatchesResponse>(
-    `/competitions/${PREMIER_LEAGUE_CODE}/matches?${buildQueryString({
-      status: "FINISHED",
-      ...seasonParams,
-    })}`,
-    SEASON_FIXTURES_REVALIDATE_SECONDS
-  );
-
-  const [
-    standingsResponse,
-    recentFixturesResponse,
-    upcomingFixturesResponse,
-    teamsResponse,
-    scorersResponse,
-    seasonFixturesResponse,
-  ] = await Promise.all([
-    standingsPromise,
-    recentFixturesPromise,
-    upcomingFixturesPromise,
-    teamsPromise,
-    scorersPromise,
-    seasonFixturesPromise,
-  ]);
 
   const standingsGroup =
     standingsResponse.standings?.find((group) => group?.type === "TOTAL") ??
@@ -512,6 +384,7 @@ export async function getPremierLeagueSummary(
   // but zero games played and the caller hasn't already pinned a season,
   // re-fetch pinned to the completed prior season so the page shows a real
   // final table. Re-pins at most once (the recursive call passes a season).
+  // This runs before the other requests so the re-pin does not repeat them.
   if (options?.season === undefined && seasonNotStarted(standingsResponse.season, standings)) {
     const currentSeasonStart = seasonStartYear(standingsResponse.season?.startDate);
     if (currentSeasonStart !== null) {
@@ -519,7 +392,31 @@ export async function getPremierLeagueSummary(
     }
   }
 
-  const recentFixtures = (recentFixturesResponse.matches ?? [])
+  const finishedFixturesResponse = await fetchFootballDataJson<FootballDataMatchesResponse>(
+    `/competitions/${PREMIER_LEAGUE_CODE}/matches?${buildQueryString({
+      status: "FINISHED",
+      ...seasonParams,
+    })}`,
+    SEASON_FIXTURES_REVALIDATE_SECONDS
+  );
+  const upcomingFixturesResponse = await fetchFootballDataJson<FootballDataMatchesResponse>(
+    `/competitions/${PREMIER_LEAGUE_CODE}/matches?${buildQueryString({
+      status: "SCHEDULED",
+      limit: UPCOMING_FIXTURE_LIMIT,
+      ...seasonParams,
+    })}`,
+    SUMMARY_REVALIDATE_SECONDS
+  );
+  const teamsResponse = await fetchFootballDataJson<FootballDataCompetitionTeamsResponse>(
+    `/competitions/${PREMIER_LEAGUE_CODE}/teams${seasonQuery}`,
+    SUMMARY_REVALIDATE_SECONDS
+  );
+  const scorersResponse = await fetchFootballDataJson<FootballDataScorersResponse>(
+    `/competitions/${PREMIER_LEAGUE_CODE}/scorers${seasonQuery}`,
+    SUMMARY_REVALIDATE_SECONDS
+  );
+
+  const recentFixtures = (finishedFixturesResponse.matches ?? [])
     .map((match) => normalizeFixture(match))
     .filter((match): match is PremierLeagueFixture => match !== null)
     .sort(sortFixturesDescending)
@@ -540,7 +437,7 @@ export async function getPremierLeagueSummary(
     .map((entry, i) => normalizeScorer(entry, i + 1))
     .filter((s): s is import("@/types/premier-league").PremierLeagueScorer => s !== null);
 
-  const goalsPerMatchday = buildGoalsPerMatchday(seasonFixturesResponse.matches ?? []);
+  const goalsPerMatchday = buildGoalsPerMatchday(finishedFixturesResponse.matches ?? []);
 
   return {
     competition: buildCompetitionMeta(standingsResponse),
@@ -651,11 +548,11 @@ export async function getPremierLeagueTeamSnapshot(
     throw createPremierLeagueDataError("Invalid Premier League team id.", 400);
   }
 
-  const teamPromise = fetchFootballDataJson<FootballDataTeam>(
+  const teamResponse = await fetchFootballDataJson<FootballDataTeam>(
     `/teams/${teamId}`,
     TEAM_REVALIDATE_SECONDS
   );
-  const recentFixturesPromise = fetchFootballDataJson<FootballDataMatchesResponse>(
+  const recentFixturesResponse = await fetchFootballDataJson<FootballDataMatchesResponse>(
     `/teams/${teamId}/matches?${buildQueryString({
       competitions: PREMIER_LEAGUE_CODE,
       status: "FINISHED",
@@ -663,7 +560,7 @@ export async function getPremierLeagueTeamSnapshot(
     })}`,
     TEAM_REVALIDATE_SECONDS
   );
-  const upcomingFixturesPromise = fetchFootballDataJson<FootballDataMatchesResponse>(
+  const upcomingFixturesResponse = await fetchFootballDataJson<FootballDataMatchesResponse>(
     `/teams/${teamId}/matches?${buildQueryString({
       competitions: PREMIER_LEAGUE_CODE,
       status: "SCHEDULED",
@@ -671,13 +568,6 @@ export async function getPremierLeagueTeamSnapshot(
     })}`,
     TEAM_REVALIDATE_SECONDS
   );
-
-  const [teamResponse, recentFixturesResponse, upcomingFixturesResponse] =
-    await Promise.all([
-      teamPromise,
-      recentFixturesPromise,
-      upcomingFixturesPromise,
-    ]);
 
   const team = normalizeTeamProfile(teamResponse);
   const recentFixtures = (recentFixturesResponse.matches ?? [])
@@ -700,7 +590,6 @@ export async function getPremierLeagueTeamSnapshot(
   };
 }
 
-const TEAM_FETCH_DELAY_MS = 20_000;
 const PL_SNAPSHOT_PATH = "src/data/premierLeagueSnapshot.ts";
 
 function readExistingPLTeamSnapshots(filePath: string): Record<string, PremierLeagueTeamSnapshot> {
@@ -731,15 +620,27 @@ export async function buildPremierLeagueSnapshot(options?: { skipTeamSnapshots?:
     // team's previous data instead of dropping it from the snapshot.
     teamSnapshots = { ...readExistingPLTeamSnapshots(PL_SNAPSHOT_PATH) };
     for (const team of summary.teams) {
-      await new Promise<void>((resolve) => setTimeout(resolve, TEAM_FETCH_DELAY_MS));
       try {
         const teamSnapshot = await getPremierLeagueTeamSnapshot(team.id);
-        teamSnapshots[team.id] = { ...teamSnapshot, generatedAt };
+        const stored = teamSnapshots[team.id];
+        // The club fetch has no season pin, so it returns no results between
+        // the season rollover and the first match. The stored ones stay.
+        const keepStored = stored && teamSnapshot.recentFixtures.length === 0;
+        teamSnapshots[team.id] = {
+          ...teamSnapshot,
+          ...(keepStored ? { recentFixtures: stored.recentFixtures, form: stored.form } : {}),
+          generatedAt,
+        };
       } catch (err) {
         console.warn(`  Skipping team ${team.id} (${team.shortName}): ${(err as Error).message} — keeping previous snapshot if any.`);
       }
     }
   }
+
+  teamSnapshots = pruneToTable(
+    teamSnapshots,
+    summary.standings.map((row) => row.team.id)
+  );
 
   return {
     sourceLabel: "football-data.org snapshot",

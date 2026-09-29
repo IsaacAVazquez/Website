@@ -30,26 +30,38 @@ jobs:
           ref: main
           fetch-depth: 1
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v7
-        with:
-          node-version: "20"
-          cache: "npm"
-
-      - name: Install dependencies
-        run: npm ci --prefer-offline --no-audit --fund=false
-
-      - name: Validate live provider configuration
+      # A missing key is a lane that was never switched on, which is a different
+      # thing from a provider that failed. It failed all 268 runs from July 20 to
+      # September 27, 2026 as if it were the second, and a lane that is always
+      # red teaches everyone to stop looking. With the keys set, a provider
+      # failure still fails the run and opens the issue.
+      - name: Check provider configuration
+        id: config
         env:
           THE_ODDS_API_KEY: ${{ secrets.THE_ODDS_API_KEY }}
           API_FOOTBALL_KEY: ${{ secrets.API_FOOTBALL_KEY }}
         run: |
           if [ -z "$THE_ODDS_API_KEY" ] || [ -z "$API_FOOTBALL_KEY" ]; then
-            echo "::error::THE_ODDS_API_KEY and API_FOOTBALL_KEY are required for a live score-pools refresh."
-            exit 1
+            echo "configured=false" >> "$GITHUB_OUTPUT"
+            echo "::notice::Score pools is not configured. Set the THE_ODDS_API_KEY and API_FOOTBALL_KEY repository secrets to turn the refresh on. The page shows sample data until then."
+          else
+            echo "configured=true" >> "$GITHUB_OUTPUT"
           fi
 
+      - name: Set up Node.js
+        if: steps.config.outputs.configured == 'true'
+        uses: actions/setup-node@v7
+        with:
+          node-version-file: .nvmrc
+          cache: "npm"
+
+      - name: Install dependencies
+        if: steps.config.outputs.configured == 'true'
+        run: npm ci --prefer-offline --no-audit --fund=false
+
       - name: Refresh score-pools snapshot
+        if: steps.config.outputs.configured == 'true'
+        timeout-minutes: 12
         run: npm run update:score-pools
         env:
           NODE_ENV: production
@@ -58,13 +70,16 @@ jobs:
 
       - name: Verify score-pools snapshot quality
         id: verify_quality
+        if: steps.config.outputs.configured == 'true'
         run: npx tsx scripts/verifyScorePoolsSnapshot.ts
 
       - name: Verify refresh freshness
+        if: steps.config.outputs.configured == 'true'
         run: npx tsx scripts/verifyDataRefresh.ts score-pools
 
       - name: Check for snapshot changes
         id: check_changes
+        if: steps.config.outputs.configured == 'true'
         run: |
           if [ -z "$(git status --porcelain -- src/data/scorePoolsSnapshot.ts)" ]; then
             echo "changed=false" >> "$GITHUB_OUTPUT"
@@ -105,7 +120,9 @@ jobs:
             echo "**Live odds snapshots:** ${{ steps.verify_quality.outputs.live_odds }}" >> "$GITHUB_STEP_SUMMARY"
             echo "" >> "$GITHUB_STEP_SUMMARY"
           fi
-          if [ "${{ steps.check_changes.outputs.changed }}" = "true" ]; then
+          if [ "${{ steps.config.outputs.configured }}" != "true" ]; then
+            echo "Not configured. The provider keys are not set, so nothing was refreshed." >> "$GITHUB_STEP_SUMMARY"
+          elif [ "${{ steps.check_changes.outputs.changed }}" = "true" ]; then
             echo "Score-pools snapshot changed and was committed." >> "$GITHUB_STEP_SUMMARY"
           else
             echo "Score-pools snapshot was already up to date." >> "$GITHUB_STEP_SUMMARY"

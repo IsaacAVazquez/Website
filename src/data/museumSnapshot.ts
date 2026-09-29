@@ -9,7 +9,7 @@ export const MUSEUM_SNAPSHOT_VERIFIED = false;
  * lives in browser localStorage via useMuseumLog.
  */
 export const museumSnapshot: MuseumSnapshot = {
-  generatedAt: "2026-04-28T06:00:00Z",
+  generatedAt: "2026-09-28T06:00:00Z",
   sourceLabel: "Curated by Isaac Vazquez",
   curatorName: "Isaac Vazquez",
   curatorBio:
@@ -39,8 +39,9 @@ export const museumSnapshot: MuseumSnapshot = {
         {
           id: "m-met-x1",
           title: "Sargent and Paris",
-          startDate: "2026-04-21",
-          endDate: "2026-08-03",
+          // Dates from https://www.metmuseum.org/press-releases/sargent-and-paris, read 2026-09-28.
+          startDate: "2025-04-27",
+          endDate: "2025-08-03",
           blurb:
             "Early Sargent in Paris before Madame X — drawings, oils, and the studio years.",
           ticketed: true,
@@ -48,8 +49,9 @@ export const museumSnapshot: MuseumSnapshot = {
         {
           id: "m-met-x2",
           title: "Siena: The Rise of Painting, 1300–1350",
-          startDate: "2025-10-13",
-          endDate: "2026-01-26",
+          // Dates from https://www.metmuseum.org/exhibitions/siena-the-rise-of-painting-1300-1350, read 2026-09-28.
+          startDate: "2024-10-13",
+          endDate: "2025-01-26",
           blurb: "Duccio, Simone Martini, and the Lorenzetti brothers reunited.",
           ticketed: true,
         },
@@ -78,8 +80,9 @@ export const museumSnapshot: MuseumSnapshot = {
         {
           id: "m-moma-x1",
           title: "An-My Lê: Between Two Rivers",
-          startDate: "2025-11-01",
-          endDate: "2026-05-16",
+          // Dates from https://www.moma.org/calendar/exhibitions/5467, read 2026-09-28.
+          startDate: "2023-11-05",
+          endDate: "2024-03-16",
           blurb: "Photographs of military landscape and migration as topography.",
           ticketed: false,
         },
@@ -108,9 +111,10 @@ export const museumSnapshot: MuseumSnapshot = {
         {
           id: "m-whit-x1",
           title: "Whitney Biennial 2026",
-          startDate: "2026-03-20",
-          endDate: "2026-08-09",
-          blurb: "The 81st survey of contemporary American art.",
+          // Dates and edition from https://whitney.org/exhibitions/2026-biennial, read 2026-09-28.
+          startDate: "2026-03-08",
+          endDate: "2026-08-23",
+          blurb: "The 82nd edition of the survey of contemporary American art.",
           ticketed: false,
         },
       ],
@@ -178,8 +182,9 @@ export const museumSnapshot: MuseumSnapshot = {
         {
           id: "m-aic-x1",
           title: "Frida Kahlo's Month in Paris",
-          startDate: "2026-03-22",
-          endDate: "2026-07-13",
+          // Dates from https://www.artic.edu/press/press-releases/380/frida-kahlo-s-month-in-paris-a-friendship-with-mary-reynolds, read 2026-09-28.
+          startDate: "2025-03-29",
+          endDate: "2025-07-13",
           blurb: "1939 sojourn, Surrealist orbit, and the works that came out of it.",
           ticketed: true,
         },
@@ -411,18 +416,6 @@ export const museumSnapshot: MuseumSnapshot = {
       recommendedFor: "Anyone who wants the opposite of museum fatigue",
     },
     {
-      id: "r-2",
-      museumId: "m-met",
-      rating: 5,
-      headline: "Sargent and Paris is the show of the spring",
-      body:
-        "Sargent before he was Sargent — Carolus-Duran's studio, the early portrait commissions, and the road into Madame X. The room of preliminary drawings reframes everything you think you know about him. Worth the timed entry premium.",
-      dateVisited: "2026-04-25",
-      exhibitTitle: "Sargent and Paris",
-      tags: ["special exhibition", "portraits"],
-      liked: true,
-    },
-    {
       id: "r-3",
       museumId: "m-menil",
       rating: 5,
@@ -512,13 +505,6 @@ export const museumSnapshot: MuseumSnapshot = {
 
   // ─── Visit log (the curator's "diary" view) ────────────────────────────────
   visitLog: [
-    {
-      id: "v-1",
-      museumId: "m-met",
-      date: "2026-04-25",
-      rating: 5,
-      exhibitTitle: "Sargent and Paris",
-    },
     { id: "v-2", museumId: "m-frick", date: "2026-04-12", rating: 5 },
     {
       id: "v-3",

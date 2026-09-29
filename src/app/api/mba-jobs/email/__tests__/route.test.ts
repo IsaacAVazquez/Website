@@ -42,10 +42,12 @@ const validJob = {
   roleFamilies: ["product"],
 };
 
+const TEST_DIGEST_SECRET = "test-digest-secret";
+
 function makeRequest(
   body: unknown,
   client = Math.random().toString(36).slice(2),
-  headers: Record<string, string> = {}
+  headers: Record<string, string> = { "x-mba-digest-secret": TEST_DIGEST_SECRET }
 ) {
   return new NextRequest("https://isaacvazquez.com/api/mba-jobs/email", {
     method: "POST",
@@ -69,11 +71,66 @@ describe("POST /api/mba-jobs/email", () => {
     resetMbaEmailDailyCounter();
     process.env.RESEND_API_KEY = "test-resend-key";
     process.env.MBA_DIGEST_ALLOWED_RECIPIENTS = "allowed@example.com,@haas.berkeley.edu";
+    process.env.MBA_DIGEST_SECRET = TEST_DIGEST_SECRET;
     mockSend.mockResolvedValue({ data: { id: "email-1" }, error: null });
   });
 
   afterAll(() => {
     process.env = originalEnv;
+  });
+
+  it("answers 503 when the digest secret is not configured", async () => {
+    delete process.env.MBA_DIGEST_SECRET;
+
+    const response = await POST(
+      makeRequest({ to: "allowed@example.com", jobs: [validJob] })
+    );
+
+    expect(response.status).toBe(503);
+    expect(response.headers.get("Cache-Control")).toBe("no-store");
+    expect(mockSend).not.toHaveBeenCalled();
+  });
+
+  it("answers 401 when the secret header is missing or wrong", async () => {
+    const payload = { to: "allowed@example.com", jobs: [validJob] };
+
+    const missing = await POST(makeRequest(payload, "no-secret", {}));
+    const wrong = await POST(
+      makeRequest(payload, "wrong-secret", {
+        "x-mba-digest-secret": "test-digest-secreT",
+      })
+    );
+    const longer = await POST(
+      makeRequest(payload, "longer-secret", {
+        "x-mba-digest-secret": `${TEST_DIGEST_SECRET}-and-more`,
+      })
+    );
+
+    expect(missing.status).toBe(401);
+    expect(wrong.status).toBe(401);
+    expect(longer.status).toBe(401);
+    expect(mockSend).not.toHaveBeenCalled();
+  });
+
+  it("checks the secret before anything else runs", async () => {
+    const client = "unauthorized-client";
+    const payload = { to: "allowed@example.com", jobs: [validJob] };
+
+    // More attempts than the 3 sends an hour one client is allowed. None of
+    // them reaches the rate limiter, so none uses up the allowance.
+    for (let index = 0; index < 5; index += 1) {
+      const response = await POST(makeRequest(payload, client, {}));
+      expect(response.status).toBe(401);
+    }
+    // An oversized body is refused for its missing secret, not for its size.
+    const oversized = await POST(
+      makeRequest(payload, client, { "content-length": "999999" })
+    );
+    expect(oversized.status).toBe(401);
+
+    const authorized = await POST(makeRequest(payload, client));
+    expect(authorized.status).toBe(200);
+    expect(mockSend).toHaveBeenCalledTimes(1);
   });
 
   it("sends a sanitized digest to an allowed recipient", async () => {

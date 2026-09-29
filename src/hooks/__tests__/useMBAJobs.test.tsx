@@ -265,25 +265,83 @@ describe("useMBAJobs", () => {
         message: "upstream timeout",
       },
     ];
-    installFetch(async () =>
-      jsonResponse(
-        {
-          jobs: [],
-          fetchedAt: "2026-06-23T12:00:00.000Z",
-          errors: outageErrors,
-          companiesRequested: ["stripe"],
-          sourceStatuses: outageStatuses,
-        },
-        503
-      )
-    );
+    jest.useFakeTimers();
+    try {
+      const fetchSpy = installFetch(async () =>
+        jsonResponse(
+          {
+            jobs: [],
+            fetchedAt: "2026-06-23T12:00:00.000Z",
+            errors: outageErrors,
+            companiesRequested: ["stripe"],
+            sourceStatuses: outageStatuses,
+          },
+          503
+        )
+      );
 
-    const { result } = renderHook(() => useMBAJobs());
-    await waitFor(() => expect(result.current.isLoading).toBe(false));
+      const { result } = renderHook(() => useMBAJobs());
+      await act(async () => {
+        await jest.advanceTimersByTimeAsync(10_000);
+      });
 
-    expect(result.current.error).toContain("503");
-    expect(result.current.fetchErrors).toEqual(outageErrors);
-    expect(result.current.sourceStatuses).toEqual(outageStatuses);
+      // One retry only. The second 503 is reported.
+      expect(fetchSpy).toHaveBeenCalledTimes(2);
+      expect(result.current.isLoading).toBe(false);
+      expect(result.current.error).toContain("503");
+      expect(result.current.fetchErrors).toEqual(outageErrors);
+      expect(result.current.sourceStatuses).toEqual(outageStatuses);
+    } finally {
+      jest.useRealTimers();
+    }
+  });
+
+  it("retries once, 10 seconds after a 503, and keeps the list's fetched date", async () => {
+    jest.useFakeTimers();
+    try {
+      // The body a cold server sent on 2026-09-27 while its first refresh ran.
+      const stillRefreshing = {
+        jobs: [],
+        fetchedAt: "2026-09-27T19:10:04.346Z",
+        errors: [
+          {
+            companyId: "",
+            companyName: "",
+            message: "The job boards are still refreshing.",
+          },
+        ],
+        companiesRequested: ["stripe"],
+        sourceStatuses: [],
+      };
+      let calls = 0;
+      const fetchSpy = installFetch(async () => {
+        calls += 1;
+        return calls === 1
+          ? jsonResponse(stillRefreshing, 503)
+          : jsonResponse(buildResponse([jobA]));
+      });
+
+      const { result } = renderHook(() => useMBAJobs());
+      await act(async () => {
+        await jest.advanceTimersByTimeAsync(9_999);
+      });
+      expect(fetchSpy).toHaveBeenCalledTimes(1);
+      expect(result.current.isLoading).toBe(true);
+      expect(result.current.error).toBeNull();
+
+      await act(async () => {
+        await jest.advanceTimersByTimeAsync(1);
+      });
+      expect(fetchSpy).toHaveBeenCalledTimes(2);
+      expect(result.current.isLoading).toBe(false);
+      expect(result.current.error).toBeNull();
+      expect(result.current.jobs.map((job) => job.id)).toEqual(["stripe-1"]);
+      expect(result.current.lastFetchedAt?.toISOString()).toBe(
+        "2026-06-23T12:00:00.000Z"
+      );
+    } finally {
+      jest.useRealTimers();
+    }
   });
 
   it("reads seen ids persisted before mount (cross-tab sync)", async () => {

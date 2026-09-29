@@ -25,7 +25,7 @@ test.describe('Homepage', () => {
     await expect(
       page.getByRole('heading', {
         level: 1,
-        name: /i build test harnesses, and dashboards that run on public data/i,
+        name: /second-year MBA at Berkeley Haas, moving into product/i,
       })
     ).toBeVisible()
   })
@@ -53,7 +53,7 @@ test.describe('Homepage', () => {
     await expect(
       page.getByRole('heading', {
         level: 1,
-        name: /i build test harnesses, and dashboards that run on public data/i,
+        name: /second-year MBA at Berkeley Haas, moving into product/i,
       })
     ).toBeVisible()
     // The primary CTAs sit directly under the hero claim.
@@ -88,7 +88,7 @@ test.describe('Homepage', () => {
 
     const heroHeading = page.getByRole('heading', {
       level: 1,
-      name: /i build test harnesses, and dashboards that run on public data/i,
+      name: /second-year MBA at Berkeley Haas, moving into product/i,
     })
     await expect(heroHeading).toBeVisible()
 

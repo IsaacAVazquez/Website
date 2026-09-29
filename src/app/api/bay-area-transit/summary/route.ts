@@ -16,6 +16,12 @@ const ERROR_CACHE_HEADERS = {
 export async function GET() {
   try {
     const summary = await getTransitSummary({ preferLive: true });
+    const sectionStatuses = Object.values(summary.sectionStatus ?? {});
+    // Every section falling back means BART gave nothing and this is the
+    // committed snapshot, which its age alone would still call fresh.
+    const servedFallback =
+      sectionStatuses.length > 0 &&
+      sectionStatuses.every((sectionStatus) => sectionStatus === "stale-fallback");
 
     return NextResponse.json(summary, {
       headers: createSnapshotResponseHeaders({
@@ -24,10 +30,9 @@ export async function GET() {
         sourceAsOf: summary.system?.generatedAt ?? null,
         cacheControl: SUCCESS_CACHE_CONTROL,
         source: "bart-runtime-with-snapshot-fallback",
-        status:
-          Object.values(summary.sectionStatus ?? {}).some(
-            (sectionStatus) => sectionStatus !== "fresh"
-          )
+        status: servedFallback
+          ? "stale-fallback"
+          : sectionStatuses.some((sectionStatus) => sectionStatus !== "fresh")
             ? "degraded"
             : undefined,
       }),

@@ -259,7 +259,7 @@ export function InterchangeIQClient() {
 
           <div className="grid gap-8 lg:grid-cols-[minmax(0,360px)_minmax(0,1fr)]">
             <div className="space-y-4">
-              <p className="c97-kicker">Inputs</p>
+              <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-2)" }}>Inputs</p>
 
               <Slider
                 label="Monthly volume"
@@ -401,7 +401,7 @@ export function InterchangeIQClient() {
 
           {breakevenTicket !== null && breakevenTicket > 0 ? (
             <>
-              <p className="c97-prose">
+              <p className="c97-prose" style={{ marginBottom: "var(--c97-sp-2)" }}>
                 With your card mix, Stripe IC+ becomes cheaper than Stripe flat rate once the average
                 ticket passes <span className="c97-mono">${breakevenTicket.toFixed(2)}</span>. Your
                 current average ticket is <span className="c97-mono">${avgTicket}</span>, and{" "}
@@ -442,7 +442,7 @@ export function InterchangeIQClient() {
                 </figcaption>
               </figure>
 
-              <p className="c97-prose" style={{ fontSize: "var(--c97-fs-small)", color: "var(--c97-ink-2)" }}>
+              <p className="c97-prose" style={{ marginBottom: "var(--c97-sp-2)", fontSize: "var(--c97-fs-small)", color: "var(--c97-ink-2)" }}>
                 Note: Stripe IC+ requires a custom contract and typically $250k+/year in volume, and
                 the IC+ totals here leave out card network and assessment fees, so real IC+ costs run
                 higher.
@@ -450,7 +450,7 @@ export function InterchangeIQClient() {
             </>
           ) : (
             <>
-              <p className="c97-prose">
+              <p className="c97-prose" style={{ marginBottom: "var(--c97-sp-2)" }}>
                 At your current card mix, Stripe IC+ costs less than Stripe flat at every ticket size,
                 so there is no breakeven to find. IC+ usually needs a custom contract and about $250k a
                 year in volume, and the IC+ totals here leave out card network and assessment fees, so
@@ -487,7 +487,7 @@ export function InterchangeIQClient() {
 
       <section className="c97-band c97-sheet" data-c97-surface="paper" data-seam="torn" aria-label="How payment processing fees work">
         <div className="c97-shell space-y-6">
-          <p className="c97-kicker">Reference</p>
+          <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-3)" }}>Reference</p>
           <h2 className="c97-poster-sm">How payment processing fees work</h2>
 
           <div className="grid md:grid-cols-3 gap-4">
@@ -503,7 +503,7 @@ export function InterchangeIQClient() {
             ))}
           </div>
 
-          <p className="c97-prose" style={{ fontSize: "var(--c97-fs-small)", color: "var(--c97-ink-2)", textAlign: "center" }}>
+          <p className="c97-prose" style={{ fontSize: "var(--c97-fs-small)", color: "var(--c97-ink-2)" }}>
             Interchange rates based on published 2024 Visa/Mastercard US schedules and Amex OptBlue
             program averages. Processor fees from public pricing pages. For educational purposes
             only. Actual rates vary by industry, card type, and negotiated terms.

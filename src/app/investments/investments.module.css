@@ -882,7 +882,7 @@
     border-left: 0;
     border-top: 1px solid var(--c97-rule);
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr));
     gap: 0;
     align-items: start;
   }
@@ -948,7 +948,6 @@
    ============================================================ */
 
 .terminalScope :global(.invest-retire-band) {
-  scroll-margin-top: 1rem;
   border-top: 1px solid var(--c97-rule);
   background: var(--c97-surface);
   padding: 20px 24px 26px;
@@ -1412,6 +1411,8 @@
   border-bottom: 1px solid var(--c97-rule);
   background: var(--c97-surface);
   padding: 16px 20px;
+  /* The caption names the x axis, so a print keeps it on the chart's page. */
+  break-inside: avoid;
 }
 .terminalScope :global(.invest-retire-chart-cap) {
   display: flex;
@@ -1452,8 +1453,10 @@
   margin: 0 2px 0 8px;
 }
 
-/* Fan chart axis text, set in SVG user units against a fixed 760x340
-   viewBox. The chart's rendered width shrinks well below its natural size
+/* Fan chart axis text, set in SVG user units against a viewBox 760 wide.
+   RetirementProjectionChart reads this size and fits its margins to it, so
+   the viewBox is 340 tall at the first size and 392 at the second.
+   The chart's rendered width shrinks well below its natural size
    once it sits beside the 380px input column (and further still once that
    column stacks above it on a narrow viewport), so a size that reads fine at
    1:1 scale renders unreadably small once the viewBox is scaled down. These
@@ -1590,7 +1593,7 @@
 }
 .terminalScope :global(.invest-retire-assumption-grid) {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr));
   gap: 10px 18px;
   margin: 0 0 12px;
 }

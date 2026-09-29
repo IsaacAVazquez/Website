@@ -2,6 +2,7 @@
 title: "Reasoning Model Economics: When Opus Is Worth It and When Sonnet Does the Job"
 excerpt: "The question is not whether the more expensive model is better. It usually is. The question is whether the task actually needs what it adds, and that is a less obvious call than most people realize."
 publishedAt: "2026-04-07"
+updatedAt: "2026-09-29"
 category: "Technology"
 tags: ["AI", "Product Management", "Software Architecture", "AI Infrastructure", "Developer Tools"]
 featured: false
@@ -24,7 +25,7 @@ seo:
 
 The question is not whether the more expensive model is better. It usually is, on tasks that stress-test it. The question is whether the task you are running actually needs what the expensive model adds, and that is a less obvious call than the benchmark numbers suggest.
 
-I think about this a lot because the cost difference between model tiers is not trivial at any meaningful usage volume. Opus-class models cost somewhere between ten and twenty times more per token than mid-tier models like Sonnet, and the latency gap is significant as well. If you are running Opus on tasks that Sonnet would handle equally well, you are paying a substantial premium for a capability the task does not require. And if you are running Sonnet on tasks that actually need Opus, you are getting worse outcomes than the cost savings justify.
+I think about this a lot because the cost difference between model tiers is not trivial at any meaningful usage volume. At Anthropic's list prices on April 7, 2026, [Opus 4.6](https://www.anthropic.com/news/claude-opus-4-6) costs $5 per million input tokens and $25 per million output tokens, against $3 and $15 for [Sonnet 4.6](https://www.anthropic.com/news/claude-sonnet-4-6). That puts Opus at about 1.7 times the price of Sonnet on every token, and the latency gap is significant as well. If you are running Opus on tasks that Sonnet would handle equally well, you are paying a substantial premium for a capability the task does not require. And if you are running Sonnet on tasks that actually need Opus, you are getting worse outcomes than the cost savings justify.
 
 Getting this right requires understanding what the capability difference actually is, which is less obvious than the marketing language around it.
 
@@ -38,7 +39,7 @@ The tasks that actually require reasoning are the ones where the problem is unde
 
 ## The cost reality
 
-The exact pricing changes frequently enough that I am reluctant to quote specific numbers, but the structure is stable. Frontier models like Opus or GPT-4o with extended thinking cost significantly more per input and output token than mid-tier models, and they are substantially slower. At low usage volumes, the cost difference is small in absolute terms. At production scale, meaning thousands of API calls per day, it becomes a meaningful line item.
+The exact pricing changes often enough that I'd treat the April 2026 numbers above as a snapshot, but the structure is stable. Frontier models like Opus or GPT-4o with extended thinking cost significantly more per input and output token than mid-tier models, and they are substantially slower. At low usage volumes, the cost difference is small in absolute terms. At production scale, meaning thousands of API calls per day, it becomes a meaningful line item.
 
 The latency difference matters independently of cost. Tasks that need a response in under two seconds, like interactive UI flows or real-time suggestion features, often cannot use frontier models even if the budget supports it. The throughput ceiling for latency-sensitive applications is real, and it forces a tier decision that money alone cannot solve.
 

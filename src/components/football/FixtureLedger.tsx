@@ -1,13 +1,13 @@
 import { CrestAvatar } from "./CrestAvatar";
 import type { GenericFixture } from "./FixtureCard";
 import type { FixtureLedgerGroup } from "./fixtureLedgerUtils";
-import { DISPLAY_TIME_ZONE } from "@/lib/date-formatters";
 
+// Pinned to one named zone so the server and the browser print the same string.
 const KICKOFF_FORMATTER = new Intl.DateTimeFormat("en-US", {
   weekday: "short",
   hour: "numeric",
   minute: "2-digit",
-  timeZone: DISPLAY_TIME_ZONE,
+  timeZone: "America/New_York",
   timeZoneName: "short",
 });
 

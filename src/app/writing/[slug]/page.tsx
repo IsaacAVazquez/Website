@@ -9,6 +9,7 @@ import {
   fitSearchTitle,
   siteConfig,
 } from "@/lib/seo";
+import { profile } from "@/lib/profile";
 import { AIStructuredData } from "@/components/AIStructuredData";
 import {
   getBlogPostCollectionLabel,
@@ -116,7 +117,7 @@ export default async function BlogPostPage({ params }: PageProps) {
             description: articleDescription,
             author: {
               name: "Isaac Vazquez",
-              jobTitle: "Product Manager & UC Berkeley Haas MBA Candidate",
+              jobTitle: profile.fullTitle,
               url: `${siteConfig.url}/about`,
             },
             datePublished: post.publishedAt,
@@ -399,11 +400,11 @@ export default async function BlogPostPage({ params }: PageProps) {
           <AuthorBio variant="light" />
 
           {olderPost || newerPost ? (
+            // Side by side from 640px, where Next sets right; stacked on a phone, both set left.
             <nav
               aria-label="Article pagination"
+              className="grid sm:grid-cols-2"
               style={{
-                display: "grid",
-                gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 280px), 1fr))",
                 gap: "var(--c97-sp-3)",
                 borderTop: "1px solid var(--c97-rule)",
                 paddingTop: "var(--c97-sp-4)",
@@ -431,13 +432,13 @@ export default async function BlogPostPage({ params }: PageProps) {
                 <Link
                   href={`/writing/${newerPost.slug}`}
                   rel="next"
+                  className="sm:text-right"
                   style={{
                     display: "grid",
                     gap: "var(--c97-sp-1)",
                     alignContent: "start",
                     minHeight: 44,
                     textDecoration: "none",
-                    textAlign: "right",
                   }}
                 >
                   <span className="c97-kicker">Next</span>

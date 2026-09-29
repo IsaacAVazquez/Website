@@ -7,7 +7,6 @@ import { EmptyPanel } from "@/components/football/EmptyPanel";
 import { BrandGithub } from "@/components/ui/ServerIcons";
 import { Catalog97ProjectHero } from "@/components/catalog97/Catalog97ProjectHero";
 import { PROJECT_PRESS } from "@/constants/projectPress";
-import { DISPLAY_TIME_ZONE } from "@/lib/date-formatters";
 import { useClientNow } from "@/hooks/useClientNow";
 import { SurfaceMap, ToolCategoryIcon } from "./SurfaceMap";
 import {
@@ -76,11 +75,12 @@ const sourceOptions: FilterOption[] = [
 ];
 
 function formatGeneratedAt(iso: string): string {
+  // Pinned to UTC so the server and the browser print the same date.
   return new Date(iso).toLocaleDateString("en-US", {
     month: "long",
     day: "numeric",
     year: "numeric",
-    timeZone: DISPLAY_TIME_ZONE,
+    timeZone: "UTC",
   });
 }
 
@@ -267,7 +267,7 @@ export function AiDevToolsClient({ initialState }: AiDevToolsClientProps) {
 
   const lead = PROJECT_PRESS["/ai-dev-tools"].lead;
   const standfirst =
-    "I wanted a cleaner way to compare the coding-agent market, and the split I care about now runs along editor control, terminal control, cloud autonomy, and how directly each product exposes its own model economics. This directory tracks the tools people actually argue about, with pricing, model access, GitHub traction, and release velocity in one place, and I verify pricing and releases by hand.";
+    "I wanted a cleaner way to compare the coding-agent market, and the split I care about now runs along editor control, terminal control, cloud autonomy, and how directly each product exposes its own model economics. This directory tracks the tools people actually argue about, with pricing, model access, GitHub traction, and release velocity in one place. I keep the entries by hand, so every figure is as of the snapshot date and each entry links to the pages it came from.";
   const handleSelectTool = (toolId: string) => navigate({ ...state, selectedToolId: toolId });
 
   return (
@@ -569,7 +569,7 @@ function ToolDetail({ tool }: { tool: AiDevTool | null }) {
   }
 
   return (
-    <aside className="c97-panel h-fit min-w-0 xl:sticky xl:top-24">
+    <aside className="c97-panel h-fit min-w-0 xl:sticky xl:top-6">
       <div className="flex items-start justify-between gap-4">
         <div className="flex items-start gap-3">
           <span className="inline-flex h-11 w-11 shrink-0 items-center justify-center border border-[var(--c97-rule)] bg-[var(--c97-field)] text-[var(--c97-ink)]">

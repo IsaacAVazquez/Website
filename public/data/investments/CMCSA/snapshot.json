@@ -1,17 +1,11 @@
 {
   "symbol": "CMCSA",
-  "lastUpdated": "2026-08-18T23:06:20.443188+00:00",
+  "lastUpdated": "2026-09-29T06:39:51.976581+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-08-18T23:06:20.443188+00:00",
+    "snapshotBuiltAt": "2026-09-29T06:39:51.976581+00:00",
     "sections": {
-      "price": "2026-08-14"
-    },
-    "retainedSections": [
-      "fundamentals",
-      "wacc",
-      "beta",
-      "news"
-    ]
+      "price": "2026-09-28"
+    }
   },
   "source": "prefetched",
   "capabilities": {
@@ -46,10 +40,10 @@
     },
     "fundamentals": {
       "ttmEps": 3.0882,
-      "ttmPe": 8.48,
-      "marketCap": 92844854102,
-      "psRatio": 0.74,
-      "pbRatio": 1.03,
+      "ttmPe": 7.06,
+      "marketCap": 77276140981,
+      "psRatio": 0.62,
+      "pbRatio": 0.86,
       "pegRatio": 0.02
     },
     "profitability": {
@@ -5590,257 +5584,17 @@
       ]
     },
     "wacc": {
-      "wacc": 5.17,
-      "costOfEquity": 9.969999999999999,
+      "wacc": 5.220000000000001,
+      "costOfEquity": 10.32,
       "costOfDebt": 1.16,
       "taxRate": 26,
-      "beta": 0.6539,
-      "marketCap": 84983318394
+      "beta": 0.666,
+      "marketCap": 77276140981
     },
     "beta": {
-      "beta5y": 0.6539
+      "beta5y": 0.666
     },
     "price": [
-      {
-        "date": "2025-08-14",
-        "open": 30.6748,
-        "high": 30.9466,
-        "low": 30.553,
-        "close": 30.8341,
-        "volume": 15556647
-      },
-      {
-        "date": "2025-08-15",
-        "open": 30.956,
-        "high": 31.4339,
-        "low": 30.9278,
-        "close": 31.3496,
-        "volume": 22090314
-      },
-      {
-        "date": "2025-08-18",
-        "open": 31.1621,
-        "high": 31.4902,
-        "low": 31.1246,
-        "close": 31.3308,
-        "volume": 26802933
-      },
-      {
-        "date": "2025-08-19",
-        "open": 31.4246,
-        "high": 31.8557,
-        "low": 31.3496,
-        "close": 31.7619,
-        "volume": 17918344
-      },
-      {
-        "date": "2025-08-20",
-        "open": 31.8088,
-        "high": 31.8838,
-        "low": 30.9841,
-        "close": 31.1996,
-        "volume": 21651244
-      },
-      {
-        "date": "2025-08-21",
-        "open": 31.1434,
-        "high": 31.4995,
-        "low": 31.0403,
-        "close": 31.4902,
-        "volume": 17252536
-      },
-      {
-        "date": "2025-08-22",
-        "open": 31.5933,
-        "high": 32.2399,
-        "low": 31.5933,
-        "close": 32.0056,
-        "volume": 26961169
-      },
-      {
-        "date": "2025-08-25",
-        "open": 31.9119,
-        "high": 32.0337,
-        "low": 31.6963,
-        "close": 31.8744,
-        "volume": 18296276
-      },
-      {
-        "date": "2025-08-26",
-        "open": 31.8463,
-        "high": 31.8463,
-        "low": 31.4152,
-        "close": 31.5651,
-        "volume": 23766145
-      },
-      {
-        "date": "2025-08-27",
-        "open": 31.4808,
-        "high": 31.7245,
-        "low": 31.3496,
-        "close": 31.687,
-        "volume": 18694587
-      },
-      {
-        "date": "2025-08-28",
-        "open": 31.7245,
-        "high": 31.7619,
-        "low": 31.1715,
-        "close": 31.462,
-        "volume": 22818329
-      },
-      {
-        "date": "2025-08-29",
-        "open": 31.4527,
-        "high": 31.8557,
-        "low": 31.3589,
-        "close": 31.8369,
-        "volume": 17850910
-      },
-      {
-        "date": "2025-09-02",
-        "open": 31.5839,
-        "high": 32.015,
-        "low": 31.537,
-        "close": 31.9869,
-        "volume": 21662341
-      },
-      {
-        "date": "2025-09-03",
-        "open": 32.0056,
-        "high": 32.0337,
-        "low": 31.3777,
-        "close": 31.7619,
-        "volume": 19108583
-      },
-      {
-        "date": "2025-09-04",
-        "open": 31.8932,
-        "high": 32.2868,
-        "low": 31.6026,
-        "close": 31.8182,
-        "volume": 29809633
-      },
-      {
-        "date": "2025-09-05",
-        "open": 31.9494,
-        "high": 32.2212,
-        "low": 31.4808,
-        "close": 31.7807,
-        "volume": 22531732
-      },
-      {
-        "date": "2025-09-08",
-        "open": 30.5248,
-        "high": 31.9681,
-        "low": 30.478,
-        "close": 31.865,
-        "volume": 29665908
-      },
-      {
-        "date": "2025-09-09",
-        "open": 31.8557,
-        "high": 31.9025,
-        "low": 31.5558,
-        "close": 31.5558,
-        "volume": 18289981
-      },
-      {
-        "date": "2025-09-10",
-        "open": 31.4246,
-        "high": 31.6214,
-        "low": 30.8341,
-        "close": 31.3777,
-        "volume": 18866267
-      },
-      {
-        "date": "2025-09-11",
-        "open": 31.3589,
-        "high": 31.4527,
-        "low": 31.0965,
-        "close": 31.3027,
-        "volume": 23239900
-      },
-      {
-        "date": "2025-09-12",
-        "open": 31.1809,
-        "high": 31.284,
-        "low": 30.4124,
-        "close": 30.9841,
-        "volume": 25474412
-      },
-      {
-        "date": "2025-09-15",
-        "open": 30.956,
-        "high": 31.0684,
-        "low": 30.478,
-        "close": 30.5717,
-        "volume": 22823023
-      },
-      {
-        "date": "2025-09-16",
-        "open": 30.5717,
-        "high": 30.7029,
-        "low": 29.9719,
-        "close": 30.2624,
-        "volume": 23070781
-      },
-      {
-        "date": "2025-09-17",
-        "open": 30.3093,
-        "high": 30.7404,
-        "low": 30.1781,
-        "close": 30.3936,
-        "volume": 17270569
-      },
-      {
-        "date": "2025-09-18",
-        "open": 30.2999,
-        "high": 30.3843,
-        "low": 29.3627,
-        "close": 29.6532,
-        "volume": 41634233
-      },
-      {
-        "date": "2025-09-19",
-        "open": 29.6532,
-        "high": 29.8782,
-        "low": 29.4283,
-        "close": 29.6064,
-        "volume": 57393503
-      },
-      {
-        "date": "2025-09-22",
-        "open": 29.3627,
-        "high": 29.597,
-        "low": 29.3346,
-        "close": 29.5127,
-        "volume": 38791959
-      },
-      {
-        "date": "2025-09-23",
-        "open": 29.6064,
-        "high": 30.1593,
-        "low": 29.6064,
-        "close": 29.6345,
-        "volume": 28049830
-      },
-      {
-        "date": "2025-09-24",
-        "open": 29.7938,
-        "high": 29.7938,
-        "low": 29.4845,
-        "close": 29.6251,
-        "volume": 24464496
-      },
-      {
-        "date": "2025-09-25",
-        "open": 29.7188,
-        "high": 29.9063,
-        "low": 29.5408,
-        "close": 29.6345,
-        "volume": 20702681
-      },
       {
         "date": "2025-09-26",
         "open": 29.6814,
@@ -7616,23 +7370,263 @@
         "low": 26.13,
         "close": 26.18,
         "volume": 20010500
+      },
+      {
+        "date": "2026-08-17",
+        "open": 25.88,
+        "high": 26.09,
+        "low": 25.5,
+        "close": 25.57,
+        "volume": 21547000
+      },
+      {
+        "date": "2026-08-18",
+        "open": 25.9,
+        "high": 26.28,
+        "low": 25.7,
+        "close": 26.2,
+        "volume": 26609100
+      },
+      {
+        "date": "2026-08-19",
+        "open": 26.14,
+        "high": 27.04,
+        "low": 26.14,
+        "close": 26.59,
+        "volume": 23087500
+      },
+      {
+        "date": "2026-08-20",
+        "open": 26.57,
+        "high": 26.76,
+        "low": 26.25,
+        "close": 26.42,
+        "volume": 18865500
+      },
+      {
+        "date": "2026-08-21",
+        "open": 26.57,
+        "high": 26.97,
+        "low": 26.43,
+        "close": 26.85,
+        "volume": 20308000
+      },
+      {
+        "date": "2026-08-24",
+        "open": 26.9,
+        "high": 27.18,
+        "low": 26.84,
+        "close": 27.02,
+        "volume": 16800400
+      },
+      {
+        "date": "2026-08-25",
+        "open": 26.9,
+        "high": 27.35,
+        "low": 26.69,
+        "close": 27.1,
+        "volume": 22651100
+      },
+      {
+        "date": "2026-08-26",
+        "open": 27.11,
+        "high": 27.27,
+        "low": 26.97,
+        "close": 27.2,
+        "volume": 13763300
+      },
+      {
+        "date": "2026-08-27",
+        "open": 26.81,
+        "high": 27.05,
+        "low": 26.37,
+        "close": 26.41,
+        "volume": 20695400
+      },
+      {
+        "date": "2026-08-28",
+        "open": 26.74,
+        "high": 27.12,
+        "low": 26.53,
+        "close": 27.06,
+        "volume": 20586700
+      },
+      {
+        "date": "2026-08-31",
+        "open": 26.83,
+        "high": 26.97,
+        "low": 26.6,
+        "close": 26.62,
+        "volume": 23305500
+      },
+      {
+        "date": "2026-09-01",
+        "open": 26.52,
+        "high": 26.76,
+        "low": 26.27,
+        "close": 26.3,
+        "volume": 19365100
+      },
+      {
+        "date": "2026-09-02",
+        "open": 26.49,
+        "high": 27.19,
+        "low": 26.46,
+        "close": 26.81,
+        "volume": 18888400
+      },
+      {
+        "date": "2026-09-03",
+        "open": 26.89,
+        "high": 27.13,
+        "low": 26.5,
+        "close": 26.65,
+        "volume": 21940100
+      },
+      {
+        "date": "2026-09-04",
+        "open": 26.62,
+        "high": 26.73,
+        "low": 26.38,
+        "close": 26.49,
+        "volume": 17277600
+      },
+      {
+        "date": "2026-09-08",
+        "open": 26.31,
+        "high": 26.4,
+        "low": 25.96,
+        "close": 26.33,
+        "volume": 27064600
+      },
+      {
+        "date": "2026-09-09",
+        "open": 26.19,
+        "high": 26.25,
+        "low": 24.19,
+        "close": 24.59,
+        "volume": 47078800
+      },
+      {
+        "date": "2026-09-10",
+        "open": 24.6,
+        "high": 25.34,
+        "low": 24.51,
+        "close": 25.17,
+        "volume": 23801600
+      },
+      {
+        "date": "2026-09-11",
+        "open": 25.21,
+        "high": 25.41,
+        "low": 25,
+        "close": 25.2,
+        "volume": 16035600
+      },
+      {
+        "date": "2026-09-14",
+        "open": 25.33,
+        "high": 25.45,
+        "low": 24.82,
+        "close": 24.88,
+        "volume": 37719400
+      },
+      {
+        "date": "2026-09-15",
+        "open": 24.61,
+        "high": 24.77,
+        "low": 24.37,
+        "close": 24.42,
+        "volume": 27246200
+      },
+      {
+        "date": "2026-09-16",
+        "open": 24.38,
+        "high": 24.47,
+        "low": 23.59,
+        "close": 23.73,
+        "volume": 24295800
+      },
+      {
+        "date": "2026-09-17",
+        "open": 23.8,
+        "high": 23.94,
+        "low": 22.84,
+        "close": 22.91,
+        "volume": 36297100
+      },
+      {
+        "date": "2026-09-18",
+        "open": 22.67,
+        "high": 22.91,
+        "low": 22.36,
+        "close": 22.74,
+        "volume": 64980400
+      },
+      {
+        "date": "2026-09-21",
+        "open": 22.8,
+        "high": 23.08,
+        "low": 22.49,
+        "close": 22.93,
+        "volume": 29119300
+      },
+      {
+        "date": "2026-09-22",
+        "open": 23.09,
+        "high": 23.13,
+        "low": 22.35,
+        "close": 22.42,
+        "volume": 45147400
+      },
+      {
+        "date": "2026-09-23",
+        "open": 22.36,
+        "high": 22.87,
+        "low": 22.03,
+        "close": 22.55,
+        "volume": 38887600
+      },
+      {
+        "date": "2026-09-24",
+        "open": 22.7,
+        "high": 22.81,
+        "low": 22.02,
+        "close": 22.13,
+        "volume": 36087900
+      },
+      {
+        "date": "2026-09-25",
+        "open": 21.76,
+        "high": 21.98,
+        "low": 21.41,
+        "close": 21.91,
+        "volume": 41801800
+      },
+      {
+        "date": "2026-09-28",
+        "open": 21.92,
+        "high": 21.97,
+        "low": 21.5,
+        "close": 21.79,
+        "volume": 29771100
       }
     ],
     "news": [
-      {
-        "uuid": "9b20d6b4-283b-3bb9-a8a2-f6cba8273f1a",
-        "title": "Top Analyst Reports for Roche, Comcast & Eaton",
-        "publisher": "Zacks",
-        "reportDate": "2025-03-25",
-        "link": "https://finance.yahoo.com/news/top-analyst-reports-roche-comcast-202300635.html",
-        "type": "STORY"
-      },
       {
         "uuid": "03806763-35db-3fdf-9e5a-7b5d25c48ca0",
         "title": "The Zacks Analyst Blog Roche Holding, Comcast, Eaton Corp and National Presto Industries",
         "publisher": "Zacks",
         "reportDate": "2025-03-25",
         "link": "https://finance.yahoo.com/news/zacks-analyst-blog-roche-holding-071600015.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "9b20d6b4-283b-3bb9-a8a2-f6cba8273f1a",
+        "title": "Top Analyst Reports for Roche, Comcast & Eaton",
+        "publisher": "Zacks",
+        "reportDate": "2025-03-25",
+        "link": "https://finance.yahoo.com/news/top-analyst-reports-roche-comcast-202300635.html",
         "type": "STORY"
       },
       {
@@ -7767,43 +7761,43 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 8.48,
-        "industryAvg": 0
+        "value": 7.06,
+        "industryAvg": 11.08
       },
       {
         "metric": "P/S Ratio",
-        "value": 0.74,
-        "industryAvg": 0
+        "value": 0.62,
+        "industryAvg": 1.13
       },
       {
         "metric": "P/B Ratio",
-        "value": 1.03,
-        "industryAvg": 0
+        "value": 0.86,
+        "industryAvg": 1.66
       },
       {
         "metric": "ROE",
         "value": 3.9600000000000004,
-        "industryAvg": 2.22
+        "industryAvg": 9.1
       },
       {
         "metric": "ROA",
         "value": 1.3599999999999999,
-        "industryAvg": 0.5499999999999999
+        "industryAvg": 2.3
       },
       {
         "metric": "Gross Margin",
         "value": 71.98,
-        "industryAvg": 57.85
+        "industryAvg": 61.24000000000001
       },
       {
         "metric": "EBITDA Margin",
         "value": 31.240000000000002,
-        "industryAvg": 34.239999999999995
+        "industryAvg": 35.19
       },
       {
         "metric": "Net Margin",
         "value": 11.78,
-        "industryAvg": 5.89
+        "industryAvg": 6.43
       }
     ]
   }

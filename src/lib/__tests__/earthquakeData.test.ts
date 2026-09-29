@@ -1,7 +1,19 @@
 /**
  * @jest-environment node
  */
+import { earthquakeSnapshot } from "@/data/earthquakeSnapshot";
+import type { EarthquakeSummary } from "@/types/earthquake";
 import { buildEarthquakeSnapshotData } from "../earthquakeData";
+import {
+  getEarthquakeSummary,
+  resetEarthquakeLiveCacheForTests,
+} from "../earthquakeSnapshot";
+import {
+  USGS_ALL_DAY_FIXTURE,
+  USGS_CAPTURE_NOW,
+  USGS_SIGNIFICANT_MONTH_FIXTURE,
+  USGS_WEEK_FIXTURE,
+} from "./fixtures/usgsFeeds.fixture";
 
 const FEED_BASE =
   "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary";
@@ -234,8 +246,8 @@ describe("buildEarthquakeSnapshotData", () => {
 
     // --- hero stats from the day + week feeds ---
     // 2 valid earthquakes in the day feed (the quarry blast is filtered out),
-    // both within the past 24h.
-    expect(summary.heroStats.total24h).toBe(2);
+    // both within the past 24h, and only the M6.2 clears the M2.5 floor.
+    expect(summary.heroStats.total24h).toBe(1);
     expect(summary.heroStats.felt24h).toBe(1); // only the strong quake has felt
     expect(summary.heroStats.strongest24hMag).toBe(6.2);
     expect(summary.heroStats.strongest24hPlace).toBe("12 km S of Eureka, CA");
@@ -283,9 +295,16 @@ describe("buildEarthquakeSnapshotData", () => {
     );
     expect(strongBucket?.count).toBe(1); // 6.4 Fiji
 
-    // --- quakeDetails: flat id->event map covering recent + significant ---
+    // --- quakeDetails: flat id->event map covering recent + significant,
+    // plus the strongest quake of each region ---
     expect(Object.keys(summary.quakeDetails).sort()).toEqual(
-      ["us-day-strong", "us-sig-1", "us-sig-2"].sort()
+      [
+        "us-day-strong",
+        "us-sig-1",
+        "us-sig-2",
+        "us-week-ca-2",
+        "us-week-fiji",
+      ].sort()
     );
     expect(summary.quakeDetails["us-sig-2"].magnitude).toBe(7.1);
 
@@ -366,5 +385,217 @@ describe("buildEarthquakeSnapshotData", () => {
     const { summary } = await buildEarthquakeSnapshotData();
     expect(summary.recent.map((e) => e.id)).toEqual(["us-good"]);
     expect(summary.heroStats.total24h).toBe(1);
+  });
+
+  describe("with feeds shaped like the live USGS responses", () => {
+    beforeEach(() => {
+      jest.spyOn(Date, "now").mockReturnValue(USGS_CAPTURE_NOW);
+      mockFeeds({
+        day: USGS_ALL_DAY_FIXTURE,
+        week: USGS_WEEK_FIXTURE,
+        significant: USGS_SIGNIFICANT_MONTH_FIXTURE,
+      });
+    });
+
+    it("keeps a detail record for every region's strongest quake", async () => {
+      const { summary } = await buildEarthquakeSnapshotData();
+
+      expect(summary.regions.map((region) => region.region).sort()).toEqual([
+        "Alaska",
+        "CA",
+        "Hawaii",
+        "Indonesia",
+        "Nevada",
+        "New Caledonia",
+      ]);
+      const withoutDetail = summary.regions
+        .filter(
+          (region) =>
+            !region.strongestId ||
+            !Object.hasOwn(summary.quakeDetails, region.strongestId)
+        )
+        .map((region) => region.region);
+      expect(withoutDetail).toEqual([]);
+      // Boonville is a week old event that no other list carries.
+      expect(summary.quakeDetails["nc75442207"].place).toBe(
+        "10 km W of Boonville, CA"
+      );
+    });
+
+    it("counts the 24 hour total from M2.5 and above, as the 7 day total does", async () => {
+      const { summary } = await buildEarthquakeSnapshotData();
+
+      // Ten quakes in the day feed, four of them M2.5 or above once the
+      // M2.47 event rounds to 2.5 the way USGS lists it.
+      expect(summary.heroStats.total24h).toBe(4);
+      expect(summary.heroStats.total7d).toBe(8);
+      expect(summary.heroStats.total24h).toBeLessThanOrEqual(
+        summary.heroStats.total7d
+      );
+      expect(summary.recent).toHaveLength(summary.heroStats.total24h);
+    });
+
+    it("still reads felt reports and the strongest quake from every magnitude", async () => {
+      const { summary } = await buildEarthquakeSnapshotData();
+
+      // Three of the five felt quakes are below M2.5.
+      expect(summary.heroStats.felt24h).toBe(5);
+      expect(summary.heroStats.strongest24hMag).toBe(5.1);
+      expect(summary.heroStats.strongest24hPlace).toBe(
+        "90 km ENE of Tadine, New Caledonia"
+      );
+    });
+  });
+});
+
+/** Never answers, and rejects only when the caller's signal aborts. */
+function hangingFetch(_input: RequestInfo | URL, init?: RequestInit) {
+  return new Promise<Response>((_resolve, reject) => {
+    const signal = init?.signal;
+    signal?.addEventListener("abort", () => reject(signal.reason), {
+      once: true,
+    });
+  });
+}
+
+// AbortSignal.timeout runs on a Node internal timer that fake timers cannot
+// advance, so the tests swap in one built on setTimeout. The reason is a plain
+// Error because a DOMException from outside Jest's sandbox fails instanceof.
+function installFakeAbortTimeout() {
+  jest.useFakeTimers();
+  jest.spyOn(AbortSignal, "timeout").mockImplementation((ms: number) => {
+    const controller = new AbortController();
+    setTimeout(
+      () =>
+        controller.abort(
+          Object.assign(new Error("The operation timed out."), {
+            name: "TimeoutError",
+          })
+        ),
+      ms
+    );
+    return controller.signal;
+  });
+}
+
+describe("USGS fetch budget", () => {
+  afterEach(() => {
+    jest.useRealTimers();
+    jest.restoreAllMocks();
+  });
+
+  it("keeps three 15 second attempts per feed for the snapshot builder", async () => {
+    installFakeAbortTimeout();
+    const fetchSpy = jest
+      .spyOn(global, "fetch")
+      .mockImplementation(hangingFetch);
+
+    const build = buildEarthquakeSnapshotData();
+    const outcome = expect(build).rejects.toMatchObject({
+      name: "TimeoutError",
+    });
+    await jest.advanceTimersByTimeAsync(47_999);
+    expect(fetchSpy).toHaveBeenCalledTimes(9);
+    await jest.advanceTimersByTimeAsync(1);
+
+    await outcome;
+  });
+
+  it("stops after the attempts and timeout the caller passes", async () => {
+    installFakeAbortTimeout();
+    const fetchSpy = jest
+      .spyOn(global, "fetch")
+      .mockImplementation(hangingFetch);
+
+    const build = buildEarthquakeSnapshotData({
+      timeoutMs: 4_000,
+      attempts: 1,
+    });
+    const outcome = expect(build).rejects.toMatchObject({
+      name: "TimeoutError",
+    });
+    await jest.advanceTimersByTimeAsync(4_000);
+
+    await outcome;
+    expect(fetchSpy).toHaveBeenCalledTimes(3);
+  });
+});
+
+describe("getEarthquakeSummary live path", () => {
+  beforeEach(() => {
+    resetEarthquakeLiveCacheForTests();
+  });
+
+  afterEach(() => {
+    jest.useRealTimers();
+    jest.restoreAllMocks();
+  });
+
+  it("serves the committed snapshot within 5 seconds when USGS never answers", async () => {
+    installFakeAbortTimeout();
+    const fetchSpy = jest
+      .spyOn(global, "fetch")
+      .mockImplementation(hangingFetch);
+
+    let served: EarthquakeSummary | undefined;
+    void getEarthquakeSummary({ preferLive: true }).then((summary) => {
+      served = summary;
+    });
+    await jest.advanceTimersByTimeAsync(4_999);
+
+    expect(served?.generatedAt).toBe(earthquakeSnapshot.summary.generatedAt);
+    expect(served?.feedStatus).toBe("stale-fallback");
+    expect(fetchSpy).toHaveBeenCalledTimes(3);
+  });
+
+  it.each([
+    [
+      // USGS answers a missing feed with status 200 and this plain text body.
+      "its plain text 404 page",
+      () =>
+        new Response("404 File Not Found", {
+          status: 200,
+          headers: {
+            "content-type": "text/plain;charset=UTF-8",
+            status: "404 Not Found",
+          },
+        }),
+    ],
+    [
+      "an HTML error page",
+      () =>
+        new Response("<html>Service Unavailable</html>", {
+          status: 503,
+          headers: { "content-type": "text/html" },
+        }),
+    ],
+    ["feeds with no quakes in them", () => jsonResponse(emptyCollection())],
+  ])(
+    "marks the committed snapshot as a fallback when USGS returns %s",
+    async (_label, respond) => {
+      jest
+        .spyOn(global, "fetch")
+        .mockImplementation(() => Promise.resolve(respond()));
+
+      const summary = await getEarthquakeSummary({ preferLive: true });
+
+      expect(summary.generatedAt).toBe(earthquakeSnapshot.summary.generatedAt);
+      expect(summary.recent).toEqual(earthquakeSnapshot.summary.recent);
+      expect(summary.feedStatus).toBe("stale-fallback");
+    }
+  );
+
+  it("leaves a live summary unmarked", async () => {
+    jest.spyOn(Date, "now").mockReturnValue(USGS_CAPTURE_NOW);
+    mockFeeds({
+      day: USGS_ALL_DAY_FIXTURE,
+      week: USGS_WEEK_FIXTURE,
+      significant: USGS_SIGNIFICANT_MONTH_FIXTURE,
+    });
+
+    const summary = await getEarthquakeSummary({ preferLive: true });
+
+    expect(summary.generatedAt).toBe(new Date(USGS_CAPTURE_NOW).toISOString());
+    expect(summary.feedStatus).toBeUndefined();
   });
 });

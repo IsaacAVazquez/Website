@@ -2,6 +2,7 @@
 title: "Building a Tech Startup Tracker With Honest Data, Not Implied Precision"
 excerpt: "I built a startup tracker that organizes notable private companies by sector and stage, with a momentum score and an explicit as-of date instead of pretending the figures are exact."
 publishedAt: "2026-06-14"
+updatedAt: "2026-09-28"
 category: "Market Research"
 tags: ["Startups", "Venture Capital", "Market Research", "Data Product", "Snapshot Driven", "Next.js"]
 featured: false
@@ -28,7 +29,7 @@ Private-company funding data is a mess, and most products that present it preten
 
 ## Why the Honesty Stance Is the Whole Point
 
-The temptation with a startup tracker is to render every valuation in crisp dollars and let the precision of the typography imply a precision the data does not have. I refused to do that, and the refusal shaped the product more than any design decision. The tracker covers twenty-eight startups across six sectors with valuations, total raised, latest rounds, and a derived momentum score, and the figures are explicitly approximate, compiled from public reporting. The page is tagged with an as-of date and a "not independently verified" flag, with an on-page disclosure that says plainly where the data comes from and what its limits are. That is the same honesty approach I use elsewhere on the site for editorially compiled data, and it is the only stance I think is defensible. When you cannot get authoritative real-time numbers, the right move is to disclose the approximation rather than hide it behind a confident interface. A dashboard that tells you it is a curated snapshot from a specific date is more useful than one that implies a live feed it does not have, because at least you know exactly how much weight the numbers can bear.
+The temptation with a startup tracker is to render every valuation in crisp dollars and let the precision of the typography imply a precision the data does not have. I refused to do that, and the refusal shaped the product more than any design decision. The tracker covers twenty-four startups across six sectors with valuations, total raised, latest rounds, and a derived momentum score, and the figures are explicitly approximate, compiled from public reporting. The page is tagged with an as-of date and a "not independently verified" flag, with an on-page disclosure that says plainly where the data comes from and what its limits are. That is the same honesty approach I use elsewhere on the site for editorially compiled data, and it is the only stance I think is defensible. When you cannot get authoritative real-time numbers, the right move is to disclose the approximation rather than hide it behind a confident interface. A dashboard that tells you it is a curated snapshot from a specific date is more useful than one that implies a live feed it does not have, because at least you know exactly how much weight the numbers can bear.
 
 ## How the Curation Actually Works
 
@@ -36,7 +37,7 @@ Unlike the API-backed dashboards I have built, this one has no live source to po
 
 ## The Tradeoffs I Chose
 
-I made the route state deep-linkable so you can land directly on a sector or stage view, apply a segment, set a sort, and open a specific startup, because the comparison is more useful when you can share the exact slice you are looking at. The harder tradeoff was scope. Twenty-eight companies is a curated set, not a comprehensive index, and I chose that deliberately. I would rather maintain a smaller list well, with figures I have actually checked against public reporting and a date I can stand behind, than chase coverage of every funded startup and let the data quality rot. A tracker that covers everything and verifies nothing is worse than one that covers a focused set and tells you exactly how fresh and how certain each number is. The constraint is the feature, the same way curation was the strategy in the investment research workspace rather than a compromise.
+I made the route state deep-linkable so you can land directly on a sector or stage view, apply a segment, set a sort, and open a specific startup, because the comparison is more useful when you can share the exact slice you are looking at. The harder tradeoff was scope. Twenty-four companies is a curated set, not a comprehensive index, and I chose that deliberately. I would rather maintain a smaller list well, with figures I have actually checked against public reporting and a date I can stand behind, than chase coverage of every funded startup and let the data quality rot. A tracker that covers everything and verifies nothing is worse than one that covers a focused set and tells you exactly how fresh and how certain each number is. The constraint is the feature, the same way curation was the strategy in the investment research workspace rather than a compromise.
 
 ## What This Reinforced
 

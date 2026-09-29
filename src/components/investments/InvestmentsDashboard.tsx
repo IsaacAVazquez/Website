@@ -15,7 +15,8 @@ import type { ResearchTab } from "@/app/investments/investments-state";
 import { InstrumentTape, type InstrumentTapeItem } from "@/components/editorial/InstrumentTape";
 import { Catalog97ProjectHero } from "@/components/catalog97/Catalog97ProjectHero";
 import { formatCurrency, formatPercent } from "@/lib/investmentFormatting";
-import { DISPLAY_TIME_ZONE } from "@/lib/date-formatters";
+import { getClientInvestmentsIndex } from "@/lib/investmentsClientData";
+import { buildInvestmentsPriceHealth } from "@/lib/investmentsPriceHealth";
 import { holdingColor } from "./holdingPalette";
 import type { InvestmentsPriceHealth } from "@/types/investment";
 import styles from "@/app/investments/investments.module.css";
@@ -42,9 +43,9 @@ interface NavItem {
 }
 
 // `raw` is the index snapshot's `lastUpdated`, a full instant ("2026-09-15T01:03:45+00:00"),
-// not a bare date, so it needs the display zone pinned rather than the
-// runtime's own zone. Unpinned, this is the confirmed "Sep 15" (server, UTC)
-// vs "Sep 14" (a Pacific browser) hydration mismatch.
+// not a bare date. It prints in UTC, the day the build stamped it, which the
+// server and every browser agree on. Unpinned, this was the "Sep 15" (server,
+// UTC) vs "Sep 14" (a Pacific browser) hydration mismatch.
 function formatDatasetDate(raw: string | null | undefined): string {
   if (!raw) return "—";
   const d = new Date(raw);
@@ -53,7 +54,7 @@ function formatDatasetDate(raw: string | null | undefined): string {
     month: "short",
     day: "numeric",
     year: "numeric",
-    timeZone: DISPLAY_TIME_ZONE,
+    timeZone: "UTC",
   });
 }
 
@@ -67,7 +68,6 @@ export function InvestmentsDashboard({
   datasetFreshCount = 0,
   datasetStaleCount = 0,
   datasetFailedCount = 0,
-  datasetPriceHealth = null,
 }: Props) {
   const {
     enhancedHoldings,
@@ -84,6 +84,27 @@ export function InvestmentsDashboard({
   } = useInvestments();
 
   const [searchQuery, setSearchQuery] = useState("");
+  // The index's own priceHealth was counted when the snapshots were built, so
+  // it goes on calling a price recent for as long as that build is deployed.
+  // This counts the same dates against the day the page is read.
+  const [priceHealth, setPriceHealth] = useState<InvestmentsPriceHealth | null>(null);
+  useEffect(() => {
+    let cancelled = false;
+    getClientInvestmentsIndex()
+      .then((index) => {
+        if (cancelled) return;
+        setPriceHealth(
+          buildInvestmentsPriceHealth(
+            (index.entries ?? []).map((entry) => entry.priceAsOf),
+            new Date().toISOString(),
+          ),
+        );
+      })
+      .catch(() => null);
+    return () => {
+      cancelled = true;
+    };
+  }, []);
   const addHoldingRef = useRef<HTMLDivElement | null>(null);
   const researchSectionRef = useRef<HTMLDivElement | null>(null);
   const filterInputRef = useRef<HTMLInputElement | null>(null);
@@ -262,8 +283,9 @@ export function InvestmentsDashboard({
 
       <section data-c97-surface="espresso" className="c97-band c97-sheet" data-seam="torn">
         {/* The terminal's sidebar, main column, and rail need more than the
-            1080px page measure, so this one sheet runs at the old wide shell. */}
-        <div className="c97-shell" style={{ maxWidth: "86rem" }}>
+            1080px page measure, so /investments is in WIDE_TOOL_ROUTES and
+            every shell on the page, this one included, prints wide. */}
+        <div className="c97-shell">
         {/* Section jumps for narrow viewports, where the sidebar is hidden.
             Same targets in the same order, so `navItems` stays the one source
             of truth and the two navigations cannot drift apart. Only one of the
@@ -320,17 +342,17 @@ export function InvestmentsDashboard({
               </span>
             </>
           ) : null}
-          {datasetPriceHealth && datasetPriceHealth.pricedCount > 0 ? (
+          {priceHealth && priceHealth.pricedCount > 0 ? (
             <>
               <span className="invest-dataset-chip-divider" aria-hidden="true">·</span>
-              <span>{datasetPriceHealth.recentCount} recent price histories</span>
+              <span>{priceHealth.recentCount} recent price histories</span>
             </>
           ) : null}
-          {datasetPriceHealth && datasetPriceHealth.delayedCount > 0 ? (
+          {priceHealth && priceHealth.delayedCount > 0 ? (
             <>
               <span className="invest-dataset-chip-divider" aria-hidden="true">·</span>
               <span className="invest-dataset-chip-warn">
-                {datasetPriceHealth.delayedCount} delayed histories
+                {priceHealth.delayedCount} delayed histories
               </span>
             </>
           ) : null}
@@ -433,7 +455,7 @@ export function InvestmentsDashboard({
               ref={addHoldingRef}
               id="add-holding"
               aria-label="Add a holding"
-              className="scroll-mt-28"
+              className="scroll-mt-12 min-[901px]:scroll-mt-0"
             >
               <p className="invest-rail-section-label">
                 <Wallet size={12} aria-hidden="true" className="mr-1.5 inline align-middle" />
@@ -443,7 +465,7 @@ export function InvestmentsDashboard({
             </section>
 
             {!isEmpty ? (
-              <section id="allocation" className="scroll-mt-28">
+              <section id="allocation" className="scroll-mt-12 min-[901px]:scroll-mt-0">
                 <p className="invest-rail-section-label">Allocation</p>
                 <AllocationChart holdings={enhancedHoldings} />
               </section>
@@ -533,15 +555,17 @@ export function InvestmentsDashboard({
       </section>
 
       <div data-c97-surface="paper" className="c97-band c97-band-tight c97-sheet" data-seam="torn">
-        <p
-          role="note"
-          className="c97-prose mx-auto flex max-w-3xl items-start gap-2 text-2xs leading-6"
-          style={{ color: "var(--c97-ink-2)" }}
-        >
-          <CircleQuestionMark size={14} className="mt-0.5 shrink-0" aria-hidden="true" />
-          Research, valuations, and portfolio figures here are for general information
-          and education only and are not investment, tax, or financial advice.
-        </p>
+        <div className="c97-shell">
+          <p
+            role="note"
+            className="c97-prose flex items-start gap-2 text-2xs leading-6"
+            style={{ color: "var(--c97-ink-2)" }}
+          >
+            <CircleQuestionMark size={14} className="mt-0.5 shrink-0" aria-hidden="true" />
+            Research, valuations, and portfolio figures here are for general information
+            and education only and are not investment, tax, or financial advice.
+          </p>
+        </div>
       </div>
 
       {/* Retirement planner — projects whether the portfolio + savings last

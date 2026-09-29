@@ -9,12 +9,10 @@
  * every /_next/static URL 404ing.
  *
  * Two earlier versions of this check fetched the site from the runner and both
- * were inert. Cloudflare fronts the custom domain and answers 403 to runner IPs
- * on HTML paths, with or without a browser user agent, while leaving alone the
- * API path the ledger check uses. isaacvazquez.netlify.app does not resolve from
- * runners at all. So this asks Netlify what it stored rather than asking the CDN
- * what it serves, which needs no egress to the site, is deterministic, and can
- * fail honestly.
+ * were inert, because Cloudflare fronts the custom domain and challenges runner
+ * traffic. So this asks Netlify what it stored rather than asking the CDN what
+ * it serves, which needs no egress to the site, is deterministic, and can fail
+ * honestly.
  *
  * Verified against both real deploys. The broken 6a876fece3516dcfc6b3bdd5 has
  * 5,613 files, 0 of them under /_next/static/css/, and 3,060 raw build artifacts
@@ -50,14 +48,20 @@ export function inspectDeployFiles(paths) {
 }
 
 async function api(path, token) {
-  const response = await fetch(`${API}${path}`, {
-    headers: { Authorization: `Bearer ${token}` },
-    signal: AbortSignal.timeout(30_000),
-  });
-  if (!response.ok) {
-    throw new Error(`GET ${path} returned HTTP ${response.status}`);
+  for (let attempt = 1; ; attempt += 1) {
+    const response = await fetch(`${API}${path}`, {
+      headers: { Authorization: `Bearer ${token}` },
+      signal: AbortSignal.timeout(30_000),
+    });
+    if (response.ok) return response.json();
+    // A rate limit or a bad minute at Netlify says nothing about the deploy
+    // being checked. One 429 here failed a publish whose deploy was fine.
+    const transient = response.status === 429 || response.status >= 500;
+    if (!transient || attempt === 3) {
+      throw new Error(`GET ${path} returned HTTP ${response.status}`);
+    }
+    await new Promise((resolve) => setTimeout(resolve, attempt * 5_000));
   }
-  return response.json();
 }
 
 async function main() {

@@ -199,7 +199,7 @@ export function TradeResultRail({
     <aside
       id="trade-evaluation"
       aria-label="Trade evaluation"
-      className="scroll-mt-24 border border-[var(--c97-rule)] bg-[var(--c97-field)] p-4 lg:sticky lg:top-0 lg:self-start"
+      className="border border-[var(--c97-rule)] bg-[var(--c97-field)] p-4 lg:sticky lg:top-0 lg:self-start"
     >
       <div className="flex items-center justify-between gap-3 border-b border-[var(--c97-rule)] pb-3">
         <span className="inline-flex items-center gap-2 font-mono text-2xs uppercase tracking-[0.12em] text-[var(--c97-ink-2)]">

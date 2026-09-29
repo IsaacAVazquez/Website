@@ -21,7 +21,7 @@ export function MlbScoreboard({ divisions }: MlbScoreboardProps) {
     <div data-c97-surface="paper" className="c97-offset c97-mlb-scoreboard">
       {divisions.map((division) => (
         <div key={division.name} className="c97-mlb-scoreboard-panel">
-          <p className="c97-kicker mb-2">{division.name}</p>
+          <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-1)" }}>{division.name}</p>
           <ul className="c97-mlb-scoreboard-list">
             {division.teams.map((team) => (
               <li key={team.id} className="c97-mlb-scoreboard-row">

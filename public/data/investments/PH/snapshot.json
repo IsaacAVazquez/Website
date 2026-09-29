@@ -1,17 +1,11 @@
 {
   "symbol": "PH",
-  "lastUpdated": "2026-09-15T01:03:45.681080+00:00",
+  "lastUpdated": "2026-09-29T07:04:00.244178+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-09-15T01:03:45.681080+00:00",
+    "snapshotBuiltAt": "2026-09-29T07:04:00.244178+00:00",
     "sections": {
-      "price": "2026-09-11"
-    },
-    "retainedSections": [
-      "fundamentals",
-      "wacc",
-      "beta",
-      "news"
-    ]
+      "price": "2026-09-28"
+    }
   },
   "source": "prefetched",
   "capabilities": {
@@ -46,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 28.4885,
-      "ttmPe": 33.35,
-      "marketCap": 119728980000,
-      "psRatio": 5.57,
-      "pbRatio": 7.77,
-      "pegRatio": 1.78
+      "ttmPe": 34.03,
+      "marketCap": 122163300000,
+      "psRatio": 5.68,
+      "pbRatio": 7.93,
+      "pegRatio": 1.76
     },
     "profitability": {
       "roe": 7.2700000000000005,
@@ -6317,105 +6311,17 @@
       ]
     },
     "wacc": {
-      "wacc": 12.770000000000001,
-      "costOfEquity": 13.74,
-      "costOfDebt": 1.03,
+      "wacc": 12.85,
+      "costOfEquity": 13.68,
+      "costOfDebt": 1.1199999999999999,
       "taxRate": 19,
-      "beta": 1.1046,
-      "marketCap": 118330380000
+      "beta": 1.1056,
+      "marketCap": 122163300000
     },
     "beta": {
-      "beta5y": 1.1046
+      "beta5y": 1.1056
     },
     "price": [
-      {
-        "date": "2025-09-11",
-        "open": 764.4,
-        "high": 779.77,
-        "low": 764.4,
-        "close": 769.67,
-        "volume": 661100
-      },
-      {
-        "date": "2025-09-12",
-        "open": 767.52,
-        "high": 768.63,
-        "low": 758.29,
-        "close": 758.78,
-        "volume": 463500
-      },
-      {
-        "date": "2025-09-15",
-        "open": 759.87,
-        "high": 769.2,
-        "low": 758.57,
-        "close": 759.96,
-        "volume": 549800
-      },
-      {
-        "date": "2025-09-16",
-        "open": 760,
-        "high": 760.6,
-        "low": 749.17,
-        "close": 754.05,
-        "volume": 652700
-      },
-      {
-        "date": "2025-09-17",
-        "open": 754.56,
-        "high": 758.04,
-        "low": 730.25,
-        "close": 738.5,
-        "volume": 1083500
-      },
-      {
-        "date": "2025-09-18",
-        "open": 744.28,
-        "high": 758.72,
-        "low": 741.32,
-        "close": 755.7,
-        "volume": 652100
-      },
-      {
-        "date": "2025-09-19",
-        "open": 757.93,
-        "high": 758.72,
-        "low": 746.44,
-        "close": 755.68,
-        "volume": 791800
-      },
-      {
-        "date": "2025-09-22",
-        "open": 753.41,
-        "high": 762.99,
-        "low": 750.1,
-        "close": 759.95,
-        "volume": 414800
-      },
-      {
-        "date": "2025-09-23",
-        "open": 761.01,
-        "high": 770.76,
-        "low": 758.3,
-        "close": 760.17,
-        "volume": 399900
-      },
-      {
-        "date": "2025-09-24",
-        "open": 760.82,
-        "high": 763.01,
-        "low": 746,
-        "close": 748.76,
-        "volume": 393000
-      },
-      {
-        "date": "2025-09-25",
-        "open": 741.52,
-        "high": 746.75,
-        "low": 738.38,
-        "close": 745.08,
-        "volume": 402400
-      },
       {
         "date": "2025-09-26",
         "open": 748.78,
@@ -8343,6 +8249,94 @@
         "low": 940.94,
         "close": 950.23,
         "volume": 345600
+      },
+      {
+        "date": "2026-09-14",
+        "open": 929.82,
+        "high": 936.37,
+        "low": 914.83,
+        "close": 928.83,
+        "volume": 663600
+      },
+      {
+        "date": "2026-09-15",
+        "open": 934.62,
+        "high": 939.6,
+        "low": 919.95,
+        "close": 925,
+        "volume": 601700
+      },
+      {
+        "date": "2026-09-16",
+        "open": 931.78,
+        "high": 937.99,
+        "low": 911.41,
+        "close": 918.75,
+        "volume": 420000
+      },
+      {
+        "date": "2026-09-17",
+        "open": 930.27,
+        "high": 935.27,
+        "low": 917.8,
+        "close": 925.29,
+        "volume": 576000
+      },
+      {
+        "date": "2026-09-18",
+        "open": 925.14,
+        "high": 943.89,
+        "low": 923.15,
+        "close": 943.54,
+        "volume": 1064900
+      },
+      {
+        "date": "2026-09-21",
+        "open": 951.61,
+        "high": 964.43,
+        "low": 943.31,
+        "close": 958.17,
+        "volume": 647100
+      },
+      {
+        "date": "2026-09-22",
+        "open": 959.35,
+        "high": 969.42,
+        "low": 954.31,
+        "close": 964.85,
+        "volume": 479900
+      },
+      {
+        "date": "2026-09-23",
+        "open": 960.96,
+        "high": 978.23,
+        "low": 958.68,
+        "close": 971.21,
+        "volume": 581600
+      },
+      {
+        "date": "2026-09-24",
+        "open": 965.06,
+        "high": 979.49,
+        "low": 959.45,
+        "close": 974.98,
+        "volume": 552300
+      },
+      {
+        "date": "2026-09-25",
+        "open": 974,
+        "high": 981.97,
+        "low": 966.24,
+        "close": 978.33,
+        "volume": 591900
+      },
+      {
+        "date": "2026-09-28",
+        "open": 973.23,
+        "high": 983.92,
+        "low": 962.53,
+        "close": 969.55,
+        "volume": 651800
       }
     ],
     "news": [
@@ -8371,19 +8365,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "b783bf9d-8274-3b27-be46-969837c2a60d",
-        "title": "Parker-Hannifin Third Quarter 2025 Earnings: EPS Beats Expectations",
-        "publisher": "Simply Wall St.",
-        "reportDate": "2025-05-06",
-        "link": "https://finance.yahoo.com/news/parker-hannifin-third-quarter-2025-110055439.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "53e30e6f-eaff-39cd-a7de-14dbca17e0a3",
         "title": "Argus Adjusts Price Target on Parker-Hannifin to $680 From $780",
         "publisher": "MT Newswires",
         "reportDate": "2025-05-06",
         "link": "https://finance.yahoo.com/news/argus-adjusts-price-target-parker-120843597.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "b783bf9d-8274-3b27-be46-969837c2a60d",
+        "title": "Parker-Hannifin Third Quarter 2025 Earnings: EPS Beats Expectations",
+        "publisher": "Simply Wall St.",
+        "reportDate": "2025-05-06",
+        "link": "https://finance.yahoo.com/news/parker-hannifin-third-quarter-2025-110055439.html",
         "type": "STORY"
       },
       {
@@ -8441,7 +8435,7 @@
         "title": "President & COO",
         "age": 58,
         "yearBorn": 1967,
-        "totalPay": 2864723
+        "totalPay": 3464219
       },
       {
         "name": "Mr. Dinu J. Parel",
@@ -8458,7 +8452,13 @@
         "title": "Executive VP, General Counsel & Secretary",
         "age": 53,
         "yearBorn": 1972,
-        "totalPay": 2252140
+        "totalPay": 2643602
+      },
+      {
+        "name": "Mr. Mark J. Hart",
+        "title": "Executive Vice President of Human Resources & External Affairs",
+        "age": 60,
+        "yearBorn": 1965
       },
       {
         "name": "Mr. Mark T. Czaja",
@@ -8467,67 +8467,60 @@
         "yearBorn": 1962
       },
       {
-        "name": "Mr. Patrick M. Scott",
-        "title": "VP & President of Fluid Connectors Group",
-        "age": 47,
-        "yearBorn": 1978,
-        "totalPay": 1933650
-      },
-      {
         "name": "Mr. Todd M. Leombruno",
         "title": "Executive VP & CFO",
         "age": 55,
         "yearBorn": 1970,
-        "totalPay": 2792907
+        "totalPay": 3170113
       },
       {
         "name": "Ms. Jennifer A. Parmentier",
         "title": "Chairman of the Board & CEO",
         "age": 58,
         "yearBorn": 1967,
-        "totalPay": 6063164
+        "totalPay": 7332331
       }
     ],
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 33.35,
-        "industryAvg": 35.71
+        "value": 34.03,
+        "industryAvg": 31.32
       },
       {
         "metric": "P/S Ratio",
-        "value": 5.57,
-        "industryAvg": 3.45
+        "value": 5.68,
+        "industryAvg": 3.56
       },
       {
         "metric": "P/B Ratio",
-        "value": 7.77,
-        "industryAvg": 0.43
+        "value": 7.93,
+        "industryAvg": 6.36
       },
       {
         "metric": "ROE",
         "value": 7.2700000000000005,
-        "industryAvg": 1.7500000000000002
+        "industryAvg": 18.87
       },
       {
         "metric": "ROA",
         "value": 3.54,
-        "industryAvg": 0.83
+        "industryAvg": 6.1899999999999995
       },
       {
         "metric": "Gross Margin",
         "value": 39.04,
-        "industryAvg": 22.33
+        "industryAvg": 28.96
       },
       {
         "metric": "EBITDA Margin",
         "value": 29.049999999999997,
-        "industryAvg": 10.96
+        "industryAvg": 15.58
       },
       {
         "metric": "Net Margin",
         "value": 18.96,
-        "industryAvg": 4.3999999999999995
+        "industryAvg": 9.790000000000001
       }
     ]
   }

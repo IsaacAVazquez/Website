@@ -28,6 +28,8 @@ interface Catalog97ToolShellProps {
   buildNoteHref?: string;
   /** The route's ink pair from `PROJECT_PRESS`. Its second ink becomes the overprint on every sheet in the body. */
   press?: ProjectPress;
+  /** True on the dense tools in `WIDE_TOOL_ROUTES`, whose every shell prints on the wide column. */
+  wide?: boolean;
 }
 
 /**
@@ -42,9 +44,10 @@ export function Catalog97ToolShell({
   band,
   buildNoteHref,
   press,
+  wide,
 }: Catalog97ToolShellProps) {
   return (
-    <Catalog97Shell>
+    <Catalog97Shell wide={wide}>
       {band ? (
         <section
           data-c97-surface="paper"

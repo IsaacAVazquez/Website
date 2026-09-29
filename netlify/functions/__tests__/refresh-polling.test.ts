@@ -32,29 +32,31 @@ const snapshot = {
 
 describe("refresh-polling scheduled function", () => {
   beforeEach(() => {
-    jest.useFakeTimers();
-    jest.setSystemTime(new Date("2026-07-20T12:45:00.000Z"));
     jest.clearAllMocks();
     mockBuild.mockResolvedValue(snapshot);
     mockWrite.mockResolvedValue(undefined);
-    mockPurge.mockResolvedValue(undefined);
-  });
-
-  afterEach(() => {
-    jest.useRealTimers();
   });
 
   it("runs every six hours", () => {
     expect(config.schedule).toBe("45 */6 * * *");
   });
 
-  it("writes the refreshed snapshot to the blob store, then purges the tag", async () => {
+  it("writes the refreshed snapshot to the blob store", async () => {
     const response = await handler();
     const body = await response.json();
 
     expect(mockWrite).toHaveBeenCalledWith("polling", snapshot);
-    expect(mockPurge).toHaveBeenCalledWith({ tags: ["polling"] });
-    expect(body).toEqual({ ok: true, sourceAsOf: "2026-07-19" });
+    expect(body).toEqual({
+      ok: true,
+      generatedAt: "2026-07-20T12:45:00.000Z",
+      sourceAsOf: "2026-07-19",
+    });
+  });
+
+  it("does not call the cache purge, since no response carries a cache tag", async () => {
+    await handler();
+
+    expect(mockPurge).not.toHaveBeenCalled();
   });
 
   it("does not write when the VoteHub fetch fails its quality gate", async () => {
@@ -62,35 +64,22 @@ describe("refresh-polling scheduled function", () => {
 
     await expect(handler()).rejects.toThrow("too little usable data");
     expect(mockWrite).not.toHaveBeenCalled();
-    expect(mockPurge).not.toHaveBeenCalled();
   });
 
-  it("does not refresh savedAt when VoteHub returns a full but stale table", async () => {
-    mockBuild.mockResolvedValue({
-      ...snapshot,
-      generatedAt: "2026-07-20T12:45:00.000Z",
-      sourceAsOf: "2026-06-01",
-    });
+  it("still writes when the source has published nothing new for months", async () => {
+    const quietSource = { ...snapshot, sourceAsOf: "2026-04-01" };
+    mockBuild.mockResolvedValue(quietSource);
 
-    await expect(handler()).rejects.toThrow(/source is stale or invalid/i);
-    expect(mockWrite).not.toHaveBeenCalled();
-    expect(mockPurge).not.toHaveBeenCalled();
+    const response = await handler();
+    const body = await response.json();
+
+    expect(mockWrite).toHaveBeenCalledWith("polling", quietSource);
+    expect(body.ok).toBe(true);
   });
 
   it("propagates write failures so the run shows as failed", async () => {
     mockWrite.mockRejectedValue(new Error("store down"));
 
     await expect(handler()).rejects.toThrow("store down");
-    expect(mockPurge).not.toHaveBeenCalled();
-  });
-
-  it("still succeeds when only the purge fails", async () => {
-    mockPurge.mockRejectedValue(new Error("purge api down"));
-
-    const response = await handler();
-    const body = await response.json();
-
-    expect(body.ok).toBe(true);
-    expect(mockWrite).toHaveBeenCalled();
   });
 });

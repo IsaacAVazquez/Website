@@ -6,6 +6,13 @@ export const MARCH_MADNESS_UPDATED_LABEL = "Updated March 17, 2026";
 export const MARCH_MADNESS_THESIS =
   "The edge in this bracket is time zones plus seed errors, not just chalk.";
 export const MARCH_MADNESS_ARTICLE_SLUG = "2026-march-madness-bracket-analysis";
+export const MARCH_MADNESS_POSTMORTEM_SLUG = "2026-march-madness-postmortem";
+// The picks on this page were made before the tournament and stay as written.
+// Results, read 2026-09-28:
+// https://www.ncaa.com/news/basketball-men/article/2026-04-06/michigan-beats-uconn-wins-2026-mens-basketball-national-championship
+// ESPN scoreboard for 2026-03-29, East Region Elite 8, UConn 73, Duke 72.
+export const MARCH_MADNESS_RESULT_NOTE =
+  "I made these picks on March 17, 2026, before the tournament started, and I have left them as I made them. Duke lost to UConn 73-72 in the Elite Eight on March 29, and Michigan won the title on April 6 with a 69-63 win over UConn.";
 
 export interface RankingEntry {
   rank: number;
@@ -431,7 +438,7 @@ export const PICKS: PickEntry[] = [
     region: "East",
     pick: "Duke wins the championship",
     reason: "#1 in all 8 systems · 0% TZ penalty every round · best defense in country (90.8)",
-    body: "Duke is ranked #1 in every one of the 8 metric systems used in the Eisenberg Guide: BPI (1), Evan Miya (1), KPI (1), NCAA NET (1), KenPom (1), SOR (3), T-Rank (1), WAB (2). They hold the best adjusted defensive efficiency in the nation at 90.8. Cooper Boozer scores at 22.5 PPG with 29.6% usage. Critically, Duke plays every single game in Eastern time: Greenville (ET), Washington D.C. (ET), Indianapolis (ET). Zero accumulated travel penalty from first round through the national championship. Their Final Four opponent Arizona absorbs a brutal −9% hit stepping off the plane in Indianapolis. The case is airtight.",
+    body: "Duke is ranked #1 in every one of the 8 metric systems used in the Eisenberg Guide: BPI (1), Evan Miya (1), KPI (1), NCAA NET (1), KenPom (1), SOR (3), T-Rank (1), WAB (2). They hold the best adjusted defensive efficiency in the nation at 90.8. Cameron Boozer scores at 22.5 PPG with 29.6% usage. Critically, Duke plays every single game in Eastern time: Greenville (ET), Washington D.C. (ET), Indianapolis (ET). Zero accumulated travel penalty from first round through the national championship. Their Final Four opponent Arizona absorbs a brutal −9% hit stepping off the plane in Indianapolis. The case is airtight.",
   },
   {
     group: "confirm",
@@ -553,7 +560,7 @@ export const MARCH_MADNESS_FAQ: FAQEntry[] = [
   {
     question: "Who is the champion pick for the 2026 bracket?",
     answer:
-      "Duke is the championship pick because the team ranks first across the blended metric set, carries a 0% total travel penalty through the entire path, and owns the strongest defensive profile in the field.",
+      "Duke was the championship pick, made on March 17, 2026, because the team ranked first across the blended metric set, carried a 0% total travel penalty through the entire path, and owned the strongest defensive profile in the field. Duke lost to UConn 73-72 in the Elite Eight, and Michigan won the title on April 6, 2026.",
   },
   {
     question: "Why does this bracket differ from chalk picks?",

@@ -2,7 +2,7 @@
 
 Current environment variable reference for local development and Netlify deployment.
 
-**Last updated:** 2026-09-21
+**Last updated:** 2026-09-28
 
 ---
 
@@ -52,7 +52,9 @@ There are no live `/api/fantasy-pros-*`, `/api/data-manager`, or `/api/scheduled
 
 | Variable | Required | Purpose |
 | --- | --- | --- |
-| `CRON_SECRET` | yes for Netlify cache purge | Bearer token for `netlify/functions/purge-cache.ts` |
+| `DEPLOYMENT_COMMIT` | set by `publish-data.yml` at build time | The commit the build came from, which `/api/data-revisions` reports as `deploymentCommit` |
+
+`CRON_SECRET` is no longer read anywhere. It protected the cache purge function, which was deleted on 2026-09-28.
 
 ---
 
@@ -60,6 +62,7 @@ There are no live `/api/fantasy-pros-*`, `/api/data-manager`, or `/api/scheduled
 
 | Variable | Required | Purpose |
 | --- | --- | --- |
+| `MBA_DIGEST_SECRET` | yes for `/api/mba-jobs/email` | Shared secret the caller sends in the `x-mba-digest-secret` header. The route answers `503` when it is unset and `401` when the header does not match |
 | `RESEND_API_KEY` | yes for both email endpoints | Resend API key used to deliver the MBA jobs digest and create newsletter contacts |
 | `RESEND_NEWSLETTER_SEGMENT_ID` | recommended for `/api/newsletter/subscribe` | Resend segment that receives public newsletter signups; when omitted, signups are created as unsegmented contacts |
 | `MBA_DIGEST_ALLOWED_RECIPIENTS` | yes for `/api/mba-jobs/email` | Comma-separated recipient allowlist; entries can be exact emails or domains such as `@example.edu` |
@@ -78,8 +81,8 @@ Without this token, the Premier League and La Liga routes still work from the ch
 | --- | --- | --- |
 | `BART_API_KEY` | optional | BART API key read by `src/lib/bayAreaTransitData.ts` at request time and by the transit refresh workflow; falls back to BART's published demo key |
 | `SPACEDEVS_API_TOKEN` | optional | Launch Library 2 token sent as `Authorization: Token <key>` by `src/lib/spacexData.ts` and the two SpaceX snapshot builders, because the anonymous tier is throttled |
-| `THE_ODDS_API_KEY` | required in the scheduled score pools workflow | The Odds API key read by `scripts/buildScorePoolsSnapshot.ts` |
-| `API_FOOTBALL_KEY` | required in the scheduled score pools workflow | API-Football key read by `scripts/buildScorePoolsSnapshot.ts` |
+| `THE_ODDS_API_KEY` | needed for live score pools data | The Odds API key read by `scripts/buildScorePoolsSnapshot.ts`. While either key is missing, the scheduled workflow skips the refresh and passes with a notice, and the page says its odds were entered by hand |
+| `API_FOOTBALL_KEY` | needed for live score pools data | API-Football key read by `scripts/buildScorePoolsSnapshot.ts` |
 | `GITHUB_TOKEN` or `GH_TOKEN` | optional | Token `scripts/buildGitHubTrendingSnapshot.ts` uses for the GitHub Search API; GitHub Actions provides `GITHUB_TOKEN` |
 | `FANTASY_WEEKLY_ALLOW_PRESEASON` | optional, local validation only | Set to `1` to let `scripts/buildFantasyWeeklySnapshot.ts` build a board before Week 1; the script says not to commit the result |
 
@@ -102,6 +105,7 @@ Without this token, the Premier League and La Liga routes still work from the ch
 | --- | --- | --- |
 | `NETLIFY_AUTH_TOKEN` | yes for `publish-data.yml` | Repository secret used by the Actions deploy and by `scripts/ci/verify-deploy-assets.mjs` |
 | `NETLIFY_SITE_ID` | set in the workflow | Site identifier read by `scripts/ci/verify-deploy-assets.mjs`; `publish-data.yml` sets it inline |
+| `PRODUCTION_DATA_REVISION_URL` | optional | Repository secret that overrides where `publish-data.yml` reads the ledger. The default is the Netlify origin, `https://isaacvazquez.netlify.app/api/data-revisions`, because Cloudflare challenges runner traffic on the custom domain |
 | `SNAPSHOT_PUSH_ATTEMPTS` | optional | Overrides the default 8 push attempts in `scripts/ci/commit-and-push-snapshot.sh` |
 | `INDEXNOW_ENDPOINT` | optional | Overrides the default IndexNow endpoint in `scripts/submitIndexNow.mjs` |
 | `E2E_PORT`, `E2E_BASE_URL`, `E2E_FULL_MATRIX`, `PLAYWRIGHT_OUTPUT_DIR` | optional | Playwright settings read in `playwright.config.ts` (port, base URL, the full browser matrix when set to `1`, and the output directory) |
@@ -131,7 +135,7 @@ NEXTAUTH_URL=http://localhost:3000
 NEXTAUTH_SECRET=replace-me
 ADMIN_USERNAME=replace-me
 ADMIN_PASSWORD=replace-me
-CRON_SECRET=replace-me
+MBA_DIGEST_SECRET=replace-me
 MBA_DIGEST_ALLOWED_RECIPIENTS=you@example.com,@example.edu
 ```
 

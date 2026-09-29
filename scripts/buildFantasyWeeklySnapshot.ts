@@ -7,11 +7,7 @@ import {
   FANTASY_PROS_PUBLIC_SOURCE,
   type FantasyProsPublicBoard,
 } from "@/lib/fantasyProsPublicSource";
-import {
-  fetchRestOfSeasonBoard,
-  fetchWeeklyFlexBoard,
-  fetchWeeklyQuarterbackBoard,
-} from "@/lib/fantasyWeeklySource";
+import { fetchWeeklyFlexBoard, fetchWeeklyQuarterbackBoard } from "@/lib/fantasyWeeklySource";
 import {
   FANTASY_WEEKLY_SNAPSHOT_SCHEMA_VERSION,
   FANTASY_WEEKLY_STARTABLE_DEPTH,
@@ -23,8 +19,16 @@ import {
   type FantasyWeeklySnapshot,
 } from "@/lib/fantasyWeeklySnapshot";
 import { getNflRegularSeasonWeek } from "@/lib/fantasyUtils";
+import { withRetry } from "./fetchRetry";
 
 const OUTPUT_PATH = path.join(process.cwd(), "public", "data", "fantasy", "weekly.json");
+
+const MS_PER_HOUR = 3_600_000;
+const FINAL_REGULAR_SEASON_WEEK = 18;
+const OFFSEASON_AFTER_DAYS = 7;
+// Across the 18 boards committed through 2026-09-26 the oldest source was 27.8
+// hours old at build time, on both Mondays.
+const MAX_UPSTREAM_AGE_HOURS = 72;
 
 /**
  * Builds the in-season weekly board. This is the one fantasy snapshot that is
@@ -83,30 +87,60 @@ export function toSource(board: FantasyProsPublicBoard): FantasyWeeklyBoardSourc
   };
 }
 
-async function readPreviousSnapshot(): Promise<FantasyWeeklySnapshot | null> {
+/**
+ * A page that has stopped moving still parses, so without this the builder
+ * publishes the old board under a new generatedAt. The page and the calendar
+ * turn over on different days, so one week of disagreement is normal. The
+ * preseason validation run reads a board that has not started moving yet, so
+ * it is not held to either limit.
+ */
+function assertBoardIsCurrent(
+  board: FantasyProsPublicBoard,
+  label: string,
+  calendarWeek: number,
+  now: Date
+) {
+  if (calendarWeek < 1) return;
+  if (calendarWeek - board.week > 1) {
+    throw new Error(
+      `FantasyPros served week ${board.week} for the ${label} board while the calendar is in week ${calendarWeek}. Refusing to publish a board more than one week behind.`
+    );
+  }
+  const ageHours = (now.getTime() - new Date(board.upstreamUpdatedAt).getTime()) / MS_PER_HOUR;
+  if (ageHours > MAX_UPSTREAM_AGE_HOURS) {
+    throw new Error(
+      `FantasyPros last updated the ${label} board ${ageHours.toFixed(1)} hours ago, at ${board.upstreamUpdatedAt}, past the ${MAX_UPSTREAM_AGE_HOURS} hour limit. Refusing to publish a stalled board as new.`
+    );
+  }
+}
+
+async function readPreviousSnapshot(outputPath: string): Promise<FantasyWeeklySnapshot | null> {
   try {
-    return normalizeFantasyWeeklySnapshot(JSON.parse(await readFile(OUTPUT_PATH, "utf8")));
+    return normalizeFantasyWeeklySnapshot(JSON.parse(await readFile(outputPath, "utf8")));
   } catch {
     return null;
   }
 }
 
-async function atomicWriteSnapshot(snapshot: FantasyWeeklySnapshot) {
-  await mkdir(path.dirname(OUTPUT_PATH), { recursive: true });
-  const tempPath = `${OUTPUT_PATH}.tmp`;
+async function atomicWriteSnapshot(snapshot: FantasyWeeklySnapshot, outputPath: string) {
+  await mkdir(path.dirname(outputPath), { recursive: true });
+  const tempPath = `${outputPath}.tmp`;
   await writeFile(tempPath, `${JSON.stringify(snapshot)}\n`, "utf8");
-  await rename(tempPath, OUTPUT_PATH);
+  await rename(tempPath, outputPath);
 }
 
-async function main() {
-  const season = getSnapshotSeason();
+export async function buildFantasyWeeklySnapshot(
+  now: Date = new Date(),
+  outputPath = OUTPUT_PATH
+): Promise<void> {
+  const season = getSnapshotSeason(now);
   // FantasyPros publishes the coming week's board before the week starts, so
   // the pipeline can be exercised end to end during the preseason. Set
   // FANTASY_WEEKLY_ALLOW_PRESEASON=1 to do that. It is a validation escape
   // hatch and never set in CI, because ownership percentages before leagues
   // have drafted are draft-season artifacts and would make the waiver view lie.
   const allowPreseason = process.env.FANTASY_WEEKLY_ALLOW_PRESEASON === "1";
-  const week = getNflRegularSeasonWeek(season);
+  const week = getNflRegularSeasonWeek(season, now);
 
   if (allowPreseason && week < 1) {
     console.warn(
@@ -121,22 +155,43 @@ async function main() {
     return;
   }
 
-  const previous = await readPreviousSnapshot();
+  // The calendar holds at the final week until the next season opens. Without
+  // this gate the builder spends the winter failing on a page that has rolled
+  // past the regular season, or stamping the last board as new.
+  const weekBeforeGrace = getNflRegularSeasonWeek(
+    season,
+    new Date(now.getTime() - OFFSEASON_AFTER_DAYS * 24 * MS_PER_HOUR)
+  );
+  if (weekBeforeGrace >= FINAL_REGULAR_SEASON_WEEK) {
+    console.log(
+      `Week ${FINAL_REGULAR_SEASON_WEEK} of ${season} opened more than ${OFFSEASON_AFTER_DAYS} days ago, so the regular season is over. Leaving the committed snapshot alone.`
+    );
+    return;
+  }
+
+  const previous = await readPreviousSnapshot(outputPath);
   const scoringKeys = Object.keys(FANTASY_SCORING_LABELS) as FantasyRouteScoring[];
 
-  // One quarterback board serves every format, so it is fetched once.
-  const quarterbackBoard = await fetchWeeklyQuarterbackBoard(season);
+  // One quarterback board serves every format, so it is fetched once, and it
+  // is checked before the flex pages so a stalled source costs one request.
+  const quarterbackBoard = await withRetry("weekly quarterback board", () =>
+    fetchWeeklyQuarterbackBoard(season)
+  );
+  assertBoardIsCurrent(quarterbackBoard, "quarterback", week, now);
   const quarterbacks = quarterbackBoard.players.map(toWeeklyPlayer);
   const quarterbackSource = toSource(quarterbackBoard);
 
   const boards = {} as Record<FantasyRouteScoring, FantasyWeeklyBoard>;
   for (const scoring of scoringKeys) {
-    const flexBoard = await fetchWeeklyFlexBoard(routeScoringToScoringFormat(scoring), season);
+    const flexBoard = await withRetry(`weekly ${scoring} flex board`, () =>
+      fetchWeeklyFlexBoard(routeScoringToScoringFormat(scoring), season)
+    );
     if (flexBoard.week !== quarterbackBoard.week) {
       throw new Error(
         `FantasyPros served week ${flexBoard.week} for the ${scoring} flex board and week ${quarterbackBoard.week} for quarterbacks. Refusing to publish a board that mixes two weeks.`
       );
     }
+    assertBoardIsCurrent(flexBoard, `${scoring} flex`, week, now);
     boards[scoring] = {
       flex: flexBoard.players.map(toWeeklyPlayer),
       quarterbacks,
@@ -149,20 +204,9 @@ async function main() {
     schemaVersion: FANTASY_WEEKLY_SNAPSHOT_SCHEMA_VERSION,
     season,
     week: quarterbackBoard.week,
-    generatedAt: new Date().toISOString(),
+    generatedAt: now.toISOString(),
     boards,
   });
-
-  // Rest-of-season is optional on purpose. As of 2026-08-21 FantasyPros still
-  // serves 2025 on those pages, so the season check rejects them and this logs
-  // the reason rather than failing the build. It starts populating on its own
-  // once the pages roll over.
-  try {
-    const ros = await fetchRestOfSeasonBoard("PPR", season);
-    console.log(`Rest-of-season board is available: ${ros.players.length} players for ${ros.season}.`);
-  } catch (error) {
-    console.log(`Rest-of-season board not usable yet: ${(error as Error).message}`);
-  }
 
   // Absolute floors, applied to every build including the first board of a
   // new week. The same-week regression check below only fires when a previous
@@ -194,7 +238,7 @@ async function main() {
     }
   }
 
-  await atomicWriteSnapshot(snapshot);
+  await atomicWriteSnapshot(snapshot, outputPath);
   console.log(
     `Wrote the ${season} week ${snapshot.week} board with ${snapshot.boards.ppr.flex.length} flex players and ${quarterbacks.length} quarterbacks.`
   );
@@ -205,7 +249,7 @@ const isMainModule =
   path.resolve(process.argv[1]) === fileURLToPath(import.meta.url);
 
 if (isMainModule) {
-  main().catch((error) => {
+  buildFantasyWeeklySnapshot().catch((error) => {
     console.error(error);
     process.exit(1);
   });

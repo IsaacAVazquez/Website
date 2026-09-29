@@ -2,7 +2,7 @@
 
 Deep implementation context for Claude Code and other agents working in this repo.
 
-**Last updated:** 2026-09-27
+**Last updated:** 2026-09-28
 
 ---
 
@@ -119,9 +119,12 @@ Shared conventions worth internalizing:
   than wiping it (shared `readGeneratedSnapshot` fallback). Several seeds ship empty
   or with a hand-authored seed so the page is useful before the first live refresh.
 - **Curated, unverified datasets** include `/tech-startup-tracker`, `/frontier-models`,
-  `/ai-dev-tools`, `/museum-log`, `/travel-deals`, `/food-map`, and the retirement
-  planner CMAs. Their review dates, verification flags, and structural checks feed the
-  weekly curated-data audit. Keep the on-page source and estimate disclosures intact.
+  `/ai-dev-tools`, `/museum-log`, `/travel-deals`, `/food-map`, the retirement
+  planner CMAs, and the rent versus buy tax constants. The weekly curated-data audit
+  fails a dataset on age or structure, and the verified flag is a label that never
+  fails it. When you change a figure in one of these files, name the page it was read
+  from and the date it was read, which is how the 2026-09-28 review recorded each
+  correction. Keep the on-page source and estimate disclosures intact.
 - **Shared football components** in `src/components/football/*` back the soccer, NBA,
   MLB, and NFL dashboards (`FixtureCard`, `LeaderList`, `StatCard`, etc.).
 
@@ -227,7 +230,7 @@ localStorage via dedicated hooks. Reference: `PERSONAL_INTEREST_TOOLS.md`.
   (`fantasy-draft-presets-v1`, `src/lib/draftPresets.ts`) on the setup screen.
 - `useFantasySnapshot` is the single client entry point.
 - Best ball ships separately at `public/data/fantasy/best-ball.json`, with consensus rankings, Underdog ADP, bye weeks, and Week 17 opponents. `useBestBallSnapshot` is its client entry point, and `src/lib/bestBall/` owns contest presets and draft recommendations (`contests.ts`, `draft.ts`, `rankings.ts`, `recommendations.ts`, `strategy.ts`). Keep best ball state and roster logic separate from the redraft tracker.
-- The in-season weekly board ships at `public/data/fantasy/weekly.json` (schema v1), built by `npm run update:fantasy:weekly` (`scripts/buildFantasyWeeklySnapshot.ts`) from the FantasyPros weekly FLEX and QB consensus pages through `src/lib/fantasyWeeklySource.ts`. FantasyPros publishes no single overall board in season, so FLEX stands in for the Overall tab, and flex and quarterback ranks stay in separate rank spaces because a flex rank of 12 and a quarterback rank of 12 are not comparable. `src/lib/fantasyWeeklySnapshot.ts` owns the schema, the reader's validator, and the waiver reading, which is a published rank percentile minus a published rostered percentage and models no bid, projection, or points total. The rest-of-season URLs in the source module are wired but still serve the prior season, so the season check correctly rejects them. `/fantasy-football/weekly` renders the snapshot (`weekly-client.tsx`, via `useFantasyWeeklySnapshot`); when the file is missing, as it is before a season's first weekly board publishes, the hook maps that to a `notPublished` state and the route explains that the board opens with Week 1.
+- The in-season weekly board ships at `public/data/fantasy/weekly.json` (schema v1), built by `npm run update:fantasy:weekly` (`scripts/buildFantasyWeeklySnapshot.ts`) from the FantasyPros weekly FLEX and QB consensus pages through `src/lib/fantasyWeeklySource.ts`. FantasyPros publishes no single overall board in season, so FLEX stands in for the Overall tab, and flex and quarterback ranks stay in separate rank spaces because a flex rank of 12 and a quarterback rank of 12 are not comparable. `src/lib/fantasyWeeklySnapshot.ts` owns the schema, the reader's validator, and the waiver reading, which is a published rank percentile minus a published rostered percentage and models no bid, projection, or points total. The rest-of-season URLs in the source module served the 2026 season on 2026-09-28, so they pass the season check, but no board is built from them and the weekly builder does not request them. `/fantasy-football/weekly` renders the snapshot (`weekly-client.tsx`, via `useFantasyWeeklySnapshot`); when the file is missing, as it is before a season's first weekly board publishes, the hook maps that to a `notPublished` state and the route explains that the board opens with Week 1.
 - `src/components/fantasy/DraftValuePanel.tsx` is the shared UI for Draft Outlook and expected return math. Best Ball Mania VII field economics are published inputs from the dated contest preset. Weekly Winners, Sit and Go, and other variable lobby cards must not receive invented static economics.
 - `/fantasy-football/trade-calculator` reads the same redraft snapshot through `src/lib/fantasyTrade.ts` and `src/hooks/useFantasyTradeCalculator.ts`. Selected player IDs persist under `fantasy-trade-calculator-v1-<season>-<scoring>` via `src/lib/fantasyTradePersistence.ts`; scoring, team count, roster size, and lineup preset stay in the URL. It never issues a verdict when the expert board is stale or when any selected player lacks a reliable current-market reading.
 - The **fantasy draft companion** is a private Chrome/Edge side panel, not a deployed surface. Its source is `extension/` (Vite, `service-worker.ts`, `sidepanel.html`, and `autodraft-content.ts`), its shared logic is `src/lib/fantasyCompanion/*`, and it builds with `npm run build:fantasy-companion` (`scripts/buildFantasyCompanionExtension.mjs`), which packages compact snapshot copies into `extension/dist`. At open it fetches the published snapshot from `isaacvazquez.com` and falls back to the packaged copy. Completed picks sync automatically from Underdog draft-room cells, ESPN's read-only league draft detail API (polled from the signed-in draft-room tab), or Sleeper's read-only draft picks API. The reconciliation path only appends a complete, uniquely matched provider sequence and pauses on gaps or conflicts. ESPN and Sleeper redraft rooms can also use the explicit away controller, which controls only the provider tab armed from the side panel and stops on an uncertain player or page state. Underdog away mode prepares contest specific rankings and position limits for Underdog's native Autopilot. Runbook: `docs/FANTASY_DRAFT_COMPANION.md`.
@@ -277,6 +280,12 @@ Catalog 97, and where it disagrees with `catalog97.css`, the CSS wins.
   `--c97-column`. The type classes and `.c97-panel` are unlayered and set their own
   margin or padding, so a Tailwind margin or padding utility on the same element silently
   loses; put that spacing in an inline style.
+- The four dense tools in `WIDE_TOOL_ROUTES` (`src/constants/catalog97Nav.ts`) print on the
+  1376px `--c97-container-wide`, and every shell on those pages widens with them, header and
+  footer included, so a page keeps one edge. Content outside a `.c97-band` pairs `.c97-shell`
+  with `.c97-frame`. `node scripts/layoutSweep.mjs <baseUrl>` checks every route from phone to
+  big-monitor sizes, and `e2e/layoutChecks.ts` holds the h1, breadcrumb, and footer to the
+  header's edges in CI.
 - Tailwind's radius and shadow scales compile to `0` and `none` in `tailwind.config.ts`,
   so a leftover `rounded-lg` or `shadow-sm` paints nothing. Remove it when you touch the
   file. The hard `.c97-offset` is the one shadow the system allows.
@@ -308,6 +317,8 @@ Catalog 97, and where it disagrees with `catalog97.css`, the CSS wins.
 - Server components take icons from `@/components/ui/ServerIcons` (inline SVG). The
   installed icon library is `lucide-react`. `@tabler/icons-react` and `better-sqlite3`
   are not dependencies, so do not add imports of either.
+- Every easter egg is listed in `docs/EASTER_EGGS.md`. A change that adds, alters, or
+  removes one updates that file in the same change.
 - `/api/search` is still a limited, mostly hardcoded index — do not describe it as
   comprehensive site search.
 - All user-facing text (articles, UI copy, page descriptions, bios, hero text) must
@@ -356,6 +367,8 @@ Subsystem references:
   ranking refresh, automatic pick sync, and the opt-in away controller
 - `docs/DATA_UPDATE_OPERATIONS.md` — command → artifact → schedule runbook for every refresh
 - `docs/ARTICLE_IMAGE_WORKFLOW.md` — blog cover-image plan, the fetch builder, and the writing-time step
+- `docs/EASTER_EGGS.md` — every easter egg on the site, with its trigger, what it shows, and its code
+- `docs/TODO.md` — open items that need Isaac (secrets, dashboards, decisions) or a scheduled run; add blocked work here and delete an item when it is done
 
 **Legacy / historical** (do not quote as current without checking code): root-level
 SEO/UX summary docs and non-live references under `content/`. `SEO.md` is the current SEO
@@ -376,3 +389,6 @@ you need them.
   and the investments API routes.
 - When adding a new data dashboard, follow the snapshot-driven pattern end to end
   (snapshot, builder, fail-soft fetch, accessors, API route, and an `error.tsx`).
+- A dashboard page is cached at Netlify's CDN only if it is listed in `cdnCachedPages`
+  in `next.config.mjs`. It belongs there when its server render reads no clock, random
+  number, live data, or Blobs. `SNAPSHOT_DRIVEN_DASHBOARDS.md` has the rule.

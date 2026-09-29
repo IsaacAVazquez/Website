@@ -63,9 +63,10 @@ interface Entry {
 }
 
 /*
- * Carried over from the previous resume page. Same roles, same dates, same
- * metrics — only the layout changes. Date ranges are unhyphenated per the
- * site's writing voice ("Jan 2022 to Jan 2025").
+ * Roles, dates, and metrics match the PDF résumé except the Haas@Work title and
+ * dates, which come from profile.ts, and the Juno internship, which postdates
+ * the PDF. Some wording is plainer for the web. Date ranges are unhyphenated per
+ * the site's writing voice ("Jan 2022 to Jan 2025").
  */
 const experience: Entry[] = [
   {
@@ -74,7 +75,7 @@ const experience: Entry[] = [
     when: "Jan 2026 to now",
     kind: "Part time",
     description:
-      "Leads client engagement for a global mobility technology company, managing stakeholder communication, workflow execution, and alignment across a cross-functional consulting team.",
+      "Leads a student consulting team on an operations scaling project for a global rideshare technology company, running communication with the client and the team's day to day execution.",
   },
   {
     role: "MBA Growth Intern",
@@ -82,7 +83,7 @@ const experience: Entry[] = [
     when: "May to Aug 2026",
     kind: "Internship",
     description:
-      "Growth intern on the MBA team at a fintech marketplace that negotiates group student-loan rates. Reverse-engineered the production dashboard's SQL until it matched to the dollar and automated it into an hourly-refreshing 33-tab dashboard and executive view, turned on the first GA4 conversion events and shipped four Google Tag Manager releases, and audited the Customer.io lifecycle program across 233 campaigns and 2,071 broadcasts, which led to running the SMS program as its product manager. Replaced a naive meeting-conversion lift with a matched-cohort estimate and designed a pre-registered experiment with a power analysis.",
+      "Growth intern on the MBA team at a fintech marketplace that negotiates group student loan rates. Reverse-engineered the production dashboard's SQL until it matched to the dollar and automated it into an hourly-refreshing 33-tab dashboard and executive view, turned on the first GA4 conversion events and shipped four Google Tag Manager releases, and audited the Customer.io lifecycle program across 233 campaigns and 2,071 broadcasts, which led to running the SMS program as its product manager. Replaced a naive meeting-conversion lift with a matched-cohort estimate and designed a pre-registered experiment with a power analysis.",
     writeUp: "/writing/juno-mba-growth-internship",
   },
   {
@@ -100,7 +101,7 @@ const experience: Entry[] = [
     when: "Jan 2022 to Jan 2025",
     kind: "Full time",
     description:
-      "Owned product vision for a peer-to-peer texting platform, prioritizing features from direct customer conversations and quantitative impact assessments that drove a 35% increase in engagement. Led a cross-functional pricing strategy across engineering, sales, and finance that generated $4M in additional revenue in 2024, and pushed release standards to 99.999% uptime, cutting critical defects 90% and improving release efficiency 50%.",
+      "Owned product vision for a peer-to-peer texting platform, prioritizing features from direct customer conversations and quantitative impact assessments that drove a 35% increase in engagement. Led a cross-functional pricing strategy across engineering, sales, and finance that generated $4M in additional revenue in 2024, and worked with engineering and DevOps on new deployment rules and test plans across two products that held uptime at 99.999%, cut critical defects 90%, and improved release efficiency 50%.",
   },
   {
     role: "Client Services Manager",
@@ -108,7 +109,7 @@ const experience: Entry[] = [
     when: "Jan to Dec 2021",
     kind: "Full time",
     description:
-      "Led client digital and communication strategy, building messaging validation and audience sampling frameworks that lifted response rates 20% while scaling outreach to 50M+ voters. Analyzed voter behavior and campaign performance to brief clients on high-impact opportunities, and delivered 80+ client campaigns on time by aligning cross-functional teams around clear milestones.",
+      "Led client digital and communication strategy, building messaging validation and audience sampling frameworks that lifted response rates 20% while scaling outreach to 50M+ voters. Analyzed voter behavior and campaign performance and briefed clients on what it meant for their targeting. Delivered all 80+ client campaigns on time by setting clear milestones for cross-functional teams.",
   },
   {
     role: "Digital and Data Associate",
@@ -213,7 +214,8 @@ export function Catalog97Resume() {
           >
             <div style={{ flex: "1 1 260px", minWidth: 0 }}>
               <h1 className="c97-poster">
-                Product work, with a quality engineering habit.
+                I&rsquo;ve spent six years in campaign data, QA, and product
+                work.
               </h1>
             </div>
             <a className="c97-btn c97-offset" href={RESUME_PDF} download>
@@ -342,8 +344,6 @@ export function Catalog97Resume() {
             <div
               className="c97-columns"
               style={{
-                gridTemplateColumns:
-                  "repeat(auto-fit,minmax(min(100%, 200px),1fr))",
                 gap: "var(--c97-sp-4)",
                 marginTop: "var(--c97-sp-4)",
               }}
@@ -376,8 +376,6 @@ export function Catalog97Resume() {
           <div
             className="c97-shell c97-columns"
             style={{
-              gridTemplateColumns:
-                "repeat(auto-fit,minmax(min(100%, 220px),1fr))",
               gap: "var(--c97-sp-4)",
             }}
           >

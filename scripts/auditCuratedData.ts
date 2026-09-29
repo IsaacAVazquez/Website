@@ -1,3 +1,5 @@
+import { appendFile, writeFile } from "node:fs/promises";
+
 import {
   AI_DEV_TOOLS_GENERATED_AT,
   AI_DEV_TOOLS_VERIFIED,
@@ -11,6 +13,8 @@ import {
   FOOD_MAP_PLACES,
   FOOD_MAP_VERIFIED,
 } from "../src/app/food-map/food-map-data";
+import { MARCH_MADNESS_UPDATED_AT } from "../src/app/march-madness-2026/march-madness-data";
+import { getMuseumExhibitStatus } from "../src/app/museum-log/museum-log-helpers";
 import { frontierModelsSnapshot } from "../src/data/frontierModelsSnapshot";
 import {
   MUSEUM_SNAPSHOT_VERIFIED,
@@ -24,16 +28,31 @@ import {
   TRAVEL_DEALS_AS_OF,
   TRAVEL_DEALS_VERIFIED,
 } from "../src/data/travelDealsSnapshot";
-import { getDataFreshnessPolicy, type DataSurfaceId } from "../src/lib/dataFreshnessPolicy";
+import { getDataFreshnessPolicy } from "../src/lib/dataFreshnessPolicy";
+import { createAssumptionsMeta } from "../src/lib/rentVsBuy/defaults";
+import { CMA_AS_OF, CMA_VERIFIED } from "../src/lib/retirement/capitalMarketAssumptions";
+import type { Museum } from "../src/types/museum";
 
-export interface CuratedAuditResult {
-  surface: DataSurfaceId;
+const DAY_MS = 86_400_000;
+// The capital market assumptions and the tax constants have no entry in
+// dataFreshnessPolicy. One edition of the assumptions comes out a year and the
+// tax constants change with the tax year, so both get a year plus a month.
+const ANNUAL_EDITION_DAYS = 400;
+
+interface CuratedDataset {
+  surface: string;
   asOf: string;
-  verified: boolean;
-  ageDays: number | null;
-  maxAgeDays: number;
-  needsReview: boolean;
+  /** null when the dataset carries no verified flag. */
+  verified: boolean | null;
+  /** null for a finished event, which is archived and never goes overdue. */
+  maxAgeDays: number | null;
   issues: string[];
+}
+
+export interface CuratedAuditResult extends CuratedDataset {
+  ageDays: number | null;
+  status: string;
+  needsReview: boolean;
 }
 
 function duplicateValues(values: readonly string[]): string[] {
@@ -70,7 +89,28 @@ function aiDevToolIssues(): string[] {
   return issues;
 }
 
-function museumIssues(): string[] {
+/**
+ * Exhibitions the catalog showed as running or upcoming on its as-of date that
+ * have closed since, so the catalog still presents them as current.
+ */
+export function closedExhibitions(
+  snapshot: { generatedAt: string; museums: Array<Pick<Museum, "id" | "exhibits">> },
+  now: Date
+): string[] {
+  const asOf = snapshot.generatedAt.slice(0, 10);
+  const today = now.toISOString().slice(0, 10);
+  return snapshot.museums.flatMap((museum) =>
+    museum.exhibits
+      .filter(
+        (exhibit) =>
+          getMuseumExhibitStatus(exhibit, asOf) !== "ended" &&
+          getMuseumExhibitStatus(exhibit, today) === "ended"
+      )
+      .map((exhibit) => `${museum.id}/${exhibit.id} (closed ${exhibit.endDate})`)
+  );
+}
+
+function museumIssues(now: Date): string[] {
   const issues: string[] = [];
   const duplicateIds = duplicateValues(museumSnapshot.museums.map((museum) => museum.id));
   const duplicateSlugs = duplicateValues(museumSnapshot.museums.map((museum) => museum.slug));
@@ -91,6 +131,10 @@ function museumIssues(): string[] {
   );
   if (invalidExhibitions.length > 0) {
     issues.push(`invalid exhibition dates: ${invalidExhibitions.join(", ")}`);
+  }
+  const closed = closedExhibitions(museumSnapshot, now);
+  if (closed.length > 0) {
+    issues.push(`exhibitions that closed after the as-of date: ${closed.join(", ")}`);
   }
   return issues;
 }
@@ -141,7 +185,32 @@ function foodMapIssues(): string[] {
   return issues;
 }
 
+export function evaluateCuratedDataset(dataset: CuratedDataset, now: Date): CuratedAuditResult {
+  const sourceTime = Date.parse(dataset.asOf);
+  const ageDays = Number.isFinite(sourceTime)
+    ? Math.floor(Math.max(0, now.getTime() - sourceTime) / DAY_MS)
+    : null;
+  const issues =
+    ageDays === null
+      ? [...dataset.issues, `as-of date "${dataset.asOf}" is not a date`]
+      : dataset.issues;
+  const failures = [
+    ...(ageDays !== null && dataset.maxAgeDays !== null && ageDays > dataset.maxAgeDays
+      ? ["overdue"]
+      : []),
+    ...(issues.length > 0 ? ["invalid"] : []),
+  ];
+  return {
+    ...dataset,
+    issues,
+    ageDays,
+    status: failures.join(", ") || (dataset.maxAgeDays === null ? "archived" : "ok"),
+    needsReview: failures.length > 0,
+  };
+}
+
 export function auditCuratedDatasets(now = new Date()): CuratedAuditResult[] {
+  const taxConstants = createAssumptionsMeta("single");
   const datasets = [
     {
       surface: "frontier-models" as const,
@@ -165,7 +234,7 @@ export function auditCuratedDatasets(now = new Date()): CuratedAuditResult[] {
       surface: "museum-log" as const,
       asOf: museumSnapshot.generatedAt,
       verified: MUSEUM_SNAPSHOT_VERIFIED,
-      issues: museumIssues(),
+      issues: museumIssues(now),
     },
     {
       surface: "travel-deals" as const,
@@ -179,39 +248,87 @@ export function auditCuratedDatasets(now = new Date()): CuratedAuditResult[] {
       verified: FOOD_MAP_VERIFIED,
       issues: foodMapIssues(),
     },
+  ].map((dataset) => ({
+    ...dataset,
+    maxAgeDays: Math.floor(getDataFreshnessPolicy(dataset.surface, now).maxAgeMs / DAY_MS),
+  }));
+
+  const outsidePolicy: CuratedDataset[] = [
+    {
+      surface: "capital-market-assumptions",
+      asOf: CMA_AS_OF,
+      verified: CMA_VERIFIED,
+      maxAgeDays: ANNUAL_EDITION_DAYS,
+      issues: [],
+    },
+    {
+      surface: "rent-vs-buy-tax-constants",
+      asOf: taxConstants.asOf,
+      verified: taxConstants.verified,
+      maxAgeDays: ANNUAL_EDITION_DAYS,
+      issues: [],
+    },
+    {
+      // The tournament ended on 2026-04-06, so the page records a finished event.
+      surface: "march-madness-2026",
+      asOf: MARCH_MADNESS_UPDATED_AT,
+      verified: null,
+      maxAgeDays: null,
+      issues: [],
+    },
   ];
 
-  return datasets.map((dataset) => {
-    const policy = getDataFreshnessPolicy(dataset.surface, now);
-    const sourceTime = Date.parse(dataset.asOf);
-    const ageMs = Number.isFinite(sourceTime) ? now.getTime() - sourceTime : Number.NaN;
-    return {
-      ...dataset,
-      ageDays: Number.isFinite(ageMs) ? Math.floor(Math.max(0, ageMs) / 86_400_000) : null,
-      maxAgeDays: Math.floor(policy.maxAgeMs / 86_400_000),
-      needsReview:
-        !dataset.verified ||
-        !Number.isFinite(ageMs) ||
-        ageMs > policy.maxAgeMs ||
-        dataset.issues.length > 0,
-    };
-  });
+  return [...datasets, ...outsidePolicy].map((dataset) => evaluateCuratedDataset(dataset, now));
+}
+
+/** Markdown, so the same text reads in a terminal, a step summary, and an issue comment. */
+export function formatAuditReport(results: CuratedAuditResult[], now: Date): string {
+  const rows = results.map((result) =>
+    [
+      "",
+      result.surface,
+      result.ageDays === null ? result.asOf : result.asOf.slice(0, 10),
+      result.ageDays ?? "unknown",
+      result.maxAgeDays ?? "none",
+      result.status,
+      result.verified === null ? "not tracked" : result.verified ? "yes" : "no",
+      "",
+    ]
+      .join(" | ")
+      .trim()
+  );
+  const issues = results.flatMap((result) =>
+    result.issues.map((issue) => `- ${result.surface}: ${issue}`)
+  );
+  const failing = results.filter((result) => result.needsReview).map((result) => result.surface);
+  return [
+    `## Curated data review, ${now.toISOString().slice(0, 10)}`,
+    "",
+    "| Dataset | As of | Age in days | Window in days | Status | Verified |",
+    "| --- | --- | --- | --- | --- | --- |",
+    ...rows,
+    "",
+    ...(issues.length > 0 ? ["### Issues", "", ...issues, ""] : []),
+    `Review needed for ${failing.length} of ${results.length}${
+      failing.length > 0 ? `: ${failing.join(", ")}` : ""
+    }. A dataset fails on age or structure, and the Verified column is a label that never fails it.`,
+  ].join("\n");
 }
 
 async function main() {
-  const results = auditCuratedDatasets();
-  const summary = results
-    .map(
-      (result) =>
-        `- ${result.surface}: as of ${result.asOf}, ${result.ageDays ?? "unknown"} days old, verified=${result.verified}, issues=${result.issues.length > 0 ? result.issues.join("; ") : "none"}`
-    )
-    .join("\n");
-  console.log(summary);
+  const now = new Date();
+  const results = auditCuratedDatasets(now);
+  const report = formatAuditReport(results, now);
+  console.log(report);
+  // The workflow posts this file on the review issue, so it holds the report and nothing else.
+  const markdownPath = process.argv
+    .find((arg) => arg.startsWith("--markdown="))
+    ?.slice("--markdown=".length);
+  if (markdownPath) await writeFile(markdownPath, `${report}\n`);
   if (process.env.GITHUB_STEP_SUMMARY) {
-    const { appendFile } = await import("node:fs/promises");
-    await appendFile(process.env.GITHUB_STEP_SUMMARY, `## Curated data review\n\n${summary}\n`);
+    await appendFile(process.env.GITHUB_STEP_SUMMARY, `${report}\n`);
   }
-  if (results.some((result) => result.needsReview)) process.exit(1);
+  if (results.some((result) => result.needsReview)) process.exitCode = 1;
 }
 
 if (process.argv[1]?.endsWith("auditCuratedData.ts")) {

@@ -19,6 +19,8 @@ import { useFantasySnapshot } from "@/hooks/useFantasySnapshot";
 import { SeasonalScopeNote } from "@/components/fantasy/SeasonalScopeNote";
 import { usePlayerQueue } from "@/hooks/usePlayerQueue";
 import { usePlayerNotes } from "@/hooks/usePlayerNotes";
+import { useLocalStoragePersistenceStatus } from "@/hooks/useLocalStorageString";
+import { FANTASY_NOTES_STORAGE_KEY } from "@/lib/fantasyLocal";
 import {
   FANTASY_POSITION_LABELS,
   FANTASY_SCORING_LABELS,
@@ -1167,7 +1169,9 @@ export function FantasyFootballClient({ initialState, initialSnapshot = null }: 
   );
 
   const queue = usePlayerQueue();
-  const notes = usePlayerNotes();
+  // Only the status. The notes themselves belong to the drawer, and
+  // subscribing to them here re-rendered every row on each keystroke in one.
+  const notesPersistenceStatus = useLocalStoragePersistenceStatus(FANTASY_NOTES_STORAGE_KEY);
 
   // Null on the server and until the client mounts, then the real year, so
   // the stamps below can drop a matching year without racing new Date().
@@ -1255,7 +1259,7 @@ export function FantasyFootballClient({ initialState, initialSnapshot = null }: 
 
   const currentSliceUnavailable = Boolean(sliceMetadata && !sliceMetadata.available);
   const localToolsMemoryOnly =
-    queue.persistenceStatus === "memory-only" || notes.persistenceStatus === "memory-only";
+    queue.persistenceStatus === "memory-only" || notesPersistenceStatus === "memory-only";
   const adpSource = metadata?.adpSource ?? null;
   const adpFreshness = getFantasyAdpFreshness(adpSource?.asOf, metadata?.season);
   // From Week 1 the draft boards describe a market that has stopped moving, so

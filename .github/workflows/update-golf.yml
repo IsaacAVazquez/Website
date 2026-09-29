@@ -33,13 +33,14 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v7
         with:
-          node-version: "20"
+          node-version-file: .nvmrc
           cache: "npm"
 
       - name: Install dependencies
         run: npm ci --prefer-offline --no-audit --fund=false
 
       - name: Refresh golf snapshot
+        timeout-minutes: 12
         run: npm run update:golf
         env:
           NODE_ENV: production
@@ -142,7 +143,7 @@ jobs:
           echo "" >> "$GITHUB_STEP_SUMMARY"
           echo "**Status:** ${{ job.status }}" >> "$GITHUB_STEP_SUMMARY"
           echo "**Run Date:** $(date -u +'%Y-%m-%d %H:%M:%S UTC')" >> "$GITHUB_STEP_SUMMARY"
-          echo "**Schedule:** Daily at 08:40 UTC" >> "$GITHUB_STEP_SUMMARY"
+          echo "**Schedule:** Every three hours Thursday through Sunday; daily otherwise" >> "$GITHUB_STEP_SUMMARY"
           echo "" >> "$GITHUB_STEP_SUMMARY"
           if [ -n "$LEADERBOARD" ]; then
             echo "**Tournament:** $TOURNAMENT" >> "$GITHUB_STEP_SUMMARY"
@@ -174,7 +175,7 @@ jobs:
               `Check the run logs to diagnose. Common causes:`,
               `- ESPN golf API outage or timeout`,
               `- Quality gate caught a degraded snapshot`,
-              `- Git push rejected after 5 retries`,
+              `- Git push rejected after 8 attempts`,
               ``,
               `The refresh keeps the previous snapshot when ESPN is unreachable, so a transient outage will not wipe the leaderboard.`,
               ``,

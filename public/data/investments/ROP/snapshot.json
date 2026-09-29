@@ -1,17 +1,11 @@
 {
   "symbol": "ROP",
-  "lastUpdated": "2026-09-15T01:03:45.681080+00:00",
+  "lastUpdated": "2026-09-29T07:04:00.244178+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-09-15T01:03:45.681080+00:00",
+    "snapshotBuiltAt": "2026-09-29T07:04:00.244178+00:00",
     "sections": {
-      "price": "2026-09-11"
-    },
-    "retainedSections": [
-      "fundamentals",
-      "wacc",
-      "beta",
-      "news"
-    ]
+      "price": "2026-09-28"
+    }
   },
   "source": "prefetched",
   "capabilities": {
@@ -46,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 24.1307,
-      "ttmPe": 16.1,
-      "marketCap": 38424628000,
-      "psRatio": 4.64,
-      "pbRatio": 2.05,
-      "pegRatio": 0.38
+      "ttmPe": 14.67,
+      "marketCap": 35010600000,
+      "psRatio": 4.23,
+      "pbRatio": 1.87,
+      "pegRatio": 0.06
     },
     "profitability": {
       "roe": 6.23,
@@ -5904,105 +5898,17 @@
       ]
     },
     "wacc": {
-      "wacc": 8.41,
-      "costOfEquity": 10.639999999999999,
-      "costOfDebt": 0.95,
-      "taxRate": 20,
-      "beta": 0.7321,
-      "marketCap": 35814576086
+      "wacc": 8.44,
+      "costOfEquity": 10.879999999999999,
+      "costOfDebt": 0.98,
+      "taxRate": 11,
+      "beta": 0.7393,
+      "marketCap": 35010600000
     },
     "beta": {
-      "beta5y": 0.7321
+      "beta5y": 0.7393
     },
     "price": [
-      {
-        "date": "2025-09-11",
-        "open": 514,
-        "high": 519.2,
-        "low": 513,
-        "close": 517.38,
-        "volume": 849800
-      },
-      {
-        "date": "2025-09-12",
-        "open": 515.58,
-        "high": 517.16,
-        "low": 512.04,
-        "close": 512.53,
-        "volume": 615400
-      },
-      {
-        "date": "2025-09-15",
-        "open": 512.53,
-        "high": 514.39,
-        "low": 504.26,
-        "close": 505.23,
-        "volume": 689100
-      },
-      {
-        "date": "2025-09-16",
-        "open": 505,
-        "high": 506.26,
-        "low": 499,
-        "close": 502.44,
-        "volume": 1871700
-      },
-      {
-        "date": "2025-09-17",
-        "open": 504.38,
-        "high": 517.44,
-        "low": 503.74,
-        "close": 509.65,
-        "volume": 940800
-      },
-      {
-        "date": "2025-09-18",
-        "open": 509.65,
-        "high": 513.12,
-        "low": 507.61,
-        "close": 509.01,
-        "volume": 736900
-      },
-      {
-        "date": "2025-09-19",
-        "open": 508.51,
-        "high": 509.47,
-        "low": 502.95,
-        "close": 504.62,
-        "volume": 1437900
-      },
-      {
-        "date": "2025-09-22",
-        "open": 501.5,
-        "high": 510.46,
-        "low": 501.45,
-        "close": 509.63,
-        "volume": 665300
-      },
-      {
-        "date": "2025-09-23",
-        "open": 507.39,
-        "high": 508.74,
-        "low": 502.15,
-        "close": 503.99,
-        "volume": 1097900
-      },
-      {
-        "date": "2025-09-24",
-        "open": 503.49,
-        "high": 507.34,
-        "low": 502.37,
-        "close": 505.68,
-        "volume": 765700
-      },
-      {
-        "date": "2025-09-25",
-        "open": 506.22,
-        "high": 506.82,
-        "low": 492.25,
-        "close": 495.03,
-        "volume": 949300
-      },
       {
         "date": "2025-09-26",
         "open": 495.22,
@@ -7930,6 +7836,94 @@
         "low": 383.71,
         "close": 388.52,
         "volume": 570700
+      },
+      {
+        "date": "2026-09-14",
+        "open": 397.18,
+        "high": 403.36,
+        "low": 393.93,
+        "close": 394.61,
+        "volume": 797000
+      },
+      {
+        "date": "2026-09-15",
+        "open": 387.06,
+        "high": 389.53,
+        "low": 382.18,
+        "close": 383.94,
+        "volume": 857200
+      },
+      {
+        "date": "2026-09-16",
+        "open": 377.91,
+        "high": 380.98,
+        "low": 373.29,
+        "close": 375.82,
+        "volume": 734600
+      },
+      {
+        "date": "2026-09-17",
+        "open": 374.93,
+        "high": 377.21,
+        "low": 370.52,
+        "close": 374.76,
+        "volume": 659800
+      },
+      {
+        "date": "2026-09-18",
+        "open": 373.99,
+        "high": 375.07,
+        "low": 368.69,
+        "close": 372.74,
+        "volume": 3305400
+      },
+      {
+        "date": "2026-09-21",
+        "open": 372,
+        "high": 374.15,
+        "low": 364.33,
+        "close": 365.4,
+        "volume": 1030900
+      },
+      {
+        "date": "2026-09-22",
+        "open": 370.85,
+        "high": 372.11,
+        "low": 360.65,
+        "close": 363.85,
+        "volume": 1142200
+      },
+      {
+        "date": "2026-09-23",
+        "open": 364.99,
+        "high": 371.1,
+        "low": 361,
+        "close": 366.36,
+        "volume": 730500
+      },
+      {
+        "date": "2026-09-24",
+        "open": 367.6,
+        "high": 372.7,
+        "low": 361.86,
+        "close": 364.02,
+        "volume": 799900
+      },
+      {
+        "date": "2026-09-25",
+        "open": 362.32,
+        "high": 363.86,
+        "low": 357.75,
+        "close": 358.56,
+        "volume": 753400
+      },
+      {
+        "date": "2026-09-28",
+        "open": 353.66,
+        "high": 355.56,
+        "low": 348.77,
+        "close": 354,
+        "volume": 879000
       }
     ],
     "news": [
@@ -7950,19 +7944,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "9053215a-aecb-39ce-81d1-aeaa614087d1",
-        "title": "Roper Technologies (NasdaqGS:ROP) Raises 2025 Revenue Growth Outlook To Approximately 12%",
-        "publisher": "Simply Wall St.",
+        "uuid": "8e57d735-3dd7-3c95-9cc8-85626cce74de",
+        "title": "RBC Lifts Price Target on Roper Technologies to $695 From $694, Keeps Outperform Rating",
+        "publisher": "MT Newswires",
         "reportDate": "2025-04-29",
-        "link": "https://finance.yahoo.com/news/roper-technologies-nasdaqgs-rop-raises-172654383.html",
-        "type": "STORY"
-      },
-      {
-        "uuid": "9f34481e-e6b5-350f-bd12-e657f2223f66",
-        "title": "Roper Technologies Inc (ROP) Q1 2025 Earnings Call Highlights: Strong Revenue Growth and ...",
-        "publisher": "GuruFocus.com",
-        "reportDate": "2025-04-29",
-        "link": "https://finance.yahoo.com/news/roper-technologies-inc-rop-q1-070227558.html",
+        "link": "https://finance.yahoo.com/news/rbc-lifts-price-target-roper-111627383.html",
         "type": "STORY"
       },
       {
@@ -7982,19 +7968,27 @@
         "type": "STORY"
       },
       {
-        "uuid": "8e57d735-3dd7-3c95-9cc8-85626cce74de",
-        "title": "RBC Lifts Price Target on Roper Technologies to $695 From $694, Keeps Outperform Rating",
-        "publisher": "MT Newswires",
-        "reportDate": "2025-04-29",
-        "link": "https://finance.yahoo.com/news/rbc-lifts-price-target-roper-111627383.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "928928c5-6cc3-3dc6-9264-28ec07580766",
         "title": "Stifel Adjusts Price Target on Roper Technologies to $650 From $685, Maintains Buy Rating",
         "publisher": "MT Newswires",
         "reportDate": "2025-04-29",
         "link": "https://finance.yahoo.com/news/stifel-adjusts-price-target-roper-095800472.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "9053215a-aecb-39ce-81d1-aeaa614087d1",
+        "title": "Roper Technologies (NasdaqGS:ROP) Raises 2025 Revenue Growth Outlook To Approximately 12%",
+        "publisher": "Simply Wall St.",
+        "reportDate": "2025-04-29",
+        "link": "https://finance.yahoo.com/news/roper-technologies-nasdaqgs-rop-raises-172654383.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "9f34481e-e6b5-350f-bd12-e657f2223f66",
+        "title": "Roper Technologies Inc (ROP) Q1 2025 Earnings Call Highlights: Strong Revenue Growth and ...",
+        "publisher": "GuruFocus.com",
+        "reportDate": "2025-04-29",
+        "link": "https://finance.yahoo.com/news/roper-technologies-inc-rop-q1-070227558.html",
         "type": "STORY"
       },
       {
@@ -8020,13 +8014,6 @@
         "title": "Senior VP & Group Executive",
         "age": 60,
         "yearBorn": 1965
-      },
-      {
-        "name": "Mr. Jason P. Conley CPA",
-        "title": "Executive VP & CFO",
-        "age": 49,
-        "yearBorn": 1976,
-        "totalPay": 1905193
       },
       {
         "name": "Mr. Jeffrey B. Paulsen",
@@ -8065,6 +8052,10 @@
         "yearBorn": 1966
       },
       {
+        "name": "Mr. Shane Luke",
+        "title": "Senior Vice President of AI"
+      },
+      {
         "name": "Mr. Zack Moxcey",
         "title": "Vice President of Investor Relations"
       },
@@ -8076,43 +8067,43 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 16.1,
-        "industryAvg": 63.51
+        "value": 14.67,
+        "industryAvg": 24.92
       },
       {
         "metric": "P/S Ratio",
-        "value": 4.64,
-        "industryAvg": 4.84
+        "value": 4.23,
+        "industryAvg": 4.75
       },
       {
         "metric": "P/B Ratio",
-        "value": 2.05,
-        "industryAvg": 3.36
+        "value": 1.87,
+        "industryAvg": 5.3
       },
       {
         "metric": "ROE",
         "value": 6.23,
-        "industryAvg": -3.9600000000000004
+        "industryAvg": -12.33
       },
       {
         "metric": "ROA",
         "value": 3.35,
-        "industryAvg": -2.09
+        "industryAvg": -6.800000000000001
       },
       {
         "metric": "Gross Margin",
         "value": 69.71000000000001,
-        "industryAvg": 64.75999999999999
+        "industryAvg": 63.42
       },
       {
         "metric": "EBITDA Margin",
         "value": 78.24,
-        "industryAvg": -8.09
+        "industryAvg": 1.5
       },
       {
         "metric": "Net Margin",
         "value": 55.410000000000004,
-        "industryAvg": -17.95
+        "industryAvg": -15.879999999999999
       }
     ]
   }

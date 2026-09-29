@@ -1,17 +1,11 @@
 {
   "symbol": "MMM",
-  "lastUpdated": "2026-09-15T01:03:45.681080+00:00",
+  "lastUpdated": "2026-09-29T07:04:00.244178+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-09-15T01:03:45.681080+00:00",
+    "snapshotBuiltAt": "2026-09-29T07:04:00.244178+00:00",
     "sections": {
-      "price": "2026-09-11"
-    },
-    "retainedSections": [
-      "fundamentals",
-      "wacc",
-      "beta",
-      "news"
-    ]
+      "price": "2026-09-28"
+    }
   },
   "source": "prefetched",
   "capabilities": {
@@ -46,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 5.632,
-      "ttmPe": 29.29,
-      "marketCap": 85078724328,
-      "psRatio": 3.38,
-      "pbRatio": 28.82,
-      "pegRatio": 0.87
+      "ttmPe": 30.09,
+      "marketCap": 87404632352,
+      "psRatio": 3.47,
+      "pbRatio": 29.61,
+      "pegRatio": 0.9
     },
     "profitability": {
       "roe": 30.020000000000003,
@@ -6291,105 +6285,17 @@
       ]
     },
     "wacc": {
-      "wacc": 11.31,
-      "costOfEquity": 12.839999999999998,
-      "costOfDebt": 1.7000000000000002,
-      "taxRate": 25,
-      "beta": 0.9965,
-      "marketCap": 82157281096
+      "wacc": 11.21,
+      "costOfEquity": 12.629999999999999,
+      "costOfDebt": 1.6099999999999999,
+      "taxRate": 16,
+      "beta": 0.9682,
+      "marketCap": 87404632352
     },
     "beta": {
-      "beta5y": 0.9965
+      "beta5y": 0.9682
     },
     "price": [
-      {
-        "date": "2025-09-11",
-        "open": 153.79,
-        "high": 159.5,
-        "low": 153.4,
-        "close": 159.47,
-        "volume": 3663900
-      },
-      {
-        "date": "2025-09-12",
-        "open": 159.11,
-        "high": 162.1,
-        "low": 157.81,
-        "close": 157.87,
-        "volume": 2865100
-      },
-      {
-        "date": "2025-09-15",
-        "open": 158,
-        "high": 158.38,
-        "low": 155.25,
-        "close": 156.66,
-        "volume": 3219500
-      },
-      {
-        "date": "2025-09-16",
-        "open": 156.9,
-        "high": 157.48,
-        "low": 153.63,
-        "close": 156.5,
-        "volume": 2208600
-      },
-      {
-        "date": "2025-09-17",
-        "open": 156.5,
-        "high": 158.54,
-        "low": 153.54,
-        "close": 155.16,
-        "volume": 2757300
-      },
-      {
-        "date": "2025-09-18",
-        "open": 155.15,
-        "high": 156.92,
-        "low": 154.31,
-        "close": 155.4,
-        "volume": 1795000
-      },
-      {
-        "date": "2025-09-19",
-        "open": 155.91,
-        "high": 157.41,
-        "low": 154.69,
-        "close": 156.6,
-        "volume": 6507100
-      },
-      {
-        "date": "2025-09-22",
-        "open": 155.6,
-        "high": 155.71,
-        "low": 153.64,
-        "close": 153.86,
-        "volume": 2484800
-      },
-      {
-        "date": "2025-09-23",
-        "open": 153.84,
-        "high": 158.14,
-        "low": 153.84,
-        "close": 156.29,
-        "volume": 2254000
-      },
-      {
-        "date": "2025-09-24",
-        "open": 156,
-        "high": 156.5,
-        "low": 154.46,
-        "close": 154.6,
-        "volume": 1739300
-      },
-      {
-        "date": "2025-09-25",
-        "open": 154,
-        "high": 154,
-        "low": 151.82,
-        "close": 153.03,
-        "volume": 2949300
-      },
       {
         "date": "2025-09-26",
         "open": 154.02,
@@ -8317,6 +8223,94 @@
         "low": 162.55,
         "close": 164.97,
         "volume": 3285600
+      },
+      {
+        "date": "2026-09-14",
+        "open": 162.48,
+        "high": 163.38,
+        "low": 160.27,
+        "close": 162.02,
+        "volume": 3000800
+      },
+      {
+        "date": "2026-09-15",
+        "open": 162.32,
+        "high": 166.25,
+        "low": 160.68,
+        "close": 164.67,
+        "volume": 4174800
+      },
+      {
+        "date": "2026-09-16",
+        "open": 165.57,
+        "high": 166.29,
+        "low": 161.37,
+        "close": 162.65,
+        "volume": 2885700
+      },
+      {
+        "date": "2026-09-17",
+        "open": 164.84,
+        "high": 165.46,
+        "low": 162.87,
+        "close": 164.71,
+        "volume": 2401300
+      },
+      {
+        "date": "2026-09-18",
+        "open": 163.8,
+        "high": 166.05,
+        "low": 163.23,
+        "close": 165.89,
+        "volume": 4551900
+      },
+      {
+        "date": "2026-09-21",
+        "open": 166.69,
+        "high": 166.77,
+        "low": 164.84,
+        "close": 164.97,
+        "volume": 2380900
+      },
+      {
+        "date": "2026-09-22",
+        "open": 166.4,
+        "high": 169.32,
+        "low": 165,
+        "close": 169.3,
+        "volume": 3260300
+      },
+      {
+        "date": "2026-09-23",
+        "open": 168.45,
+        "high": 170.43,
+        "low": 167.82,
+        "close": 170.3,
+        "volume": 2787100
+      },
+      {
+        "date": "2026-09-24",
+        "open": 170.23,
+        "high": 170.75,
+        "low": 167.26,
+        "close": 167.52,
+        "volume": 2430700
+      },
+      {
+        "date": "2026-09-25",
+        "open": 168.56,
+        "high": 170.73,
+        "low": 168.13,
+        "close": 169.55,
+        "volume": 2516200
+      },
+      {
+        "date": "2026-09-28",
+        "open": 168.28,
+        "high": 170.62,
+        "low": 168.03,
+        "close": 169.48,
+        "volume": 3783500
       }
     ],
     "news": [
@@ -8345,19 +8339,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "851ab5aa-5348-3d05-8328-b9a523adc9fb",
-        "title": "3M Board Declares Quarterly Dividend",
-        "publisher": "PR Newswire",
-        "reportDate": "2025-05-14",
-        "link": "https://finance.yahoo.com/news/3m-board-declares-quarterly-dividend-201500097.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "07587108-fbac-3f3c-9f60-b2f428b9a291",
         "title": "3M Annual Meeting Results",
         "publisher": "PR Newswire",
         "reportDate": "2025-05-14",
         "link": "https://finance.yahoo.com/news/3m-annual-meeting-results-203000265.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "851ab5aa-5348-3d05-8328-b9a523adc9fb",
+        "title": "3M Board Declares Quarterly Dividend",
+        "publisher": "PR Newswire",
+        "reportDate": "2025-05-14",
+        "link": "https://finance.yahoo.com/news/3m-board-declares-quarterly-dividend-201500097.html",
         "type": "STORY"
       },
       {
@@ -8369,19 +8363,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "67019b29-0da3-3a14-a7ab-72814c697cd4",
-        "title": "JPMorgan Adjusts Price Target on 3M to $167 From $140, Maintains Overweight Rating",
-        "publisher": "MT Newswires",
-        "reportDate": "2025-05-16",
-        "link": "https://finance.yahoo.com/news/jpmorgan-adjusts-price-target-3m-112605430.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "86e201ff-eb84-310e-bea6-450a153f97ef",
         "title": "Mizuho Adjusts Price Target on 3M to $155 From $141, Maintains Neutral Rating",
         "publisher": "MT Newswires",
         "reportDate": "2025-05-16",
         "link": "https://finance.yahoo.com/news/mizuho-adjusts-price-target-3m-112603613.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "67019b29-0da3-3a14-a7ab-72814c697cd4",
+        "title": "JPMorgan Adjusts Price Target on 3M to $167 From $140, Maintains Overweight Rating",
+        "publisher": "MT Newswires",
+        "reportDate": "2025-05-16",
+        "link": "https://finance.yahoo.com/news/jpmorgan-adjusts-price-target-3m-112605430.html",
         "type": "STORY"
       },
       {
@@ -8465,43 +8459,43 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 29.29,
-        "industryAvg": -10.4
+        "value": 30.09,
+        "industryAvg": 13.48
       },
       {
         "metric": "P/S Ratio",
-        "value": 3.38,
-        "industryAvg": 1.47
+        "value": 3.47,
+        "industryAvg": 1.58
       },
       {
         "metric": "P/B Ratio",
-        "value": 28.82,
-        "industryAvg": 0.05
+        "value": 29.61,
+        "industryAvg": 2.8
       },
       {
         "metric": "ROE",
         "value": 30.020000000000003,
-        "industryAvg": 3.7800000000000002
+        "industryAvg": -19.25
       },
       {
         "metric": "ROA",
         "value": 2.65,
-        "industryAvg": 0.97
+        "industryAvg": -5.47
       },
       {
         "metric": "Gross Margin",
         "value": 41.28,
-        "industryAvg": 29.87
+        "industryAvg": 30.36
       },
       {
         "metric": "EBITDA Margin",
         "value": 25.490000000000002,
-        "industryAvg": 28.48
+        "industryAvg": 28.92
       },
       {
         "metric": "Net Margin",
         "value": 14.35,
-        "industryAvg": 9.04
+        "industryAvg": -14.08
       }
     ]
   }

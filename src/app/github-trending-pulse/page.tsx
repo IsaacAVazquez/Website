@@ -8,7 +8,7 @@ import { normalizeGitHubTrendingState } from "./github-trending-state";
 export const metadata = constructMetadata({
   title: "GitHub Trending Pulse",
   description:
-    "Daily-refreshed dashboard tracking active public GitHub repositories by language and topic, with weekly star movement from checked-in snapshots.",
+    "Daily-refreshed dashboard of the most starred active public GitHub repositories by language and topic, ranked by each one's star gain over the past week.",
   canonicalUrl: "/github-trending-pulse",
   dateModified: githubTrendingSnapshot.generatedAt.slice(0, 10),
 });
@@ -51,7 +51,7 @@ export default async function GitHubTrendingPulsePage({
         data={{
           name: "GitHub Trending Pulse",
           description:
-            "Daily-refreshed dashboard tracking active public GitHub repositories by language and topic, with weekly star movement from checked-in snapshots.",
+            "Daily-refreshed dashboard of the most starred active public GitHub repositories by language and topic, ranked by each one's star gain over the past week.",
           url: "https://isaacvazquez.com/github-trending-pulse",
           applicationCategory: "DeveloperApplication",
           programmingLanguage: ["TypeScript", "Next.js"],

@@ -64,12 +64,12 @@ function makeLeaderboard(
     events: [
       {
         id: "401580351",
-        name: "The Memorial Tournament",
+        name: "the Memorial Tournament pres. by Workday",
         shortName: "Memorial",
         startDate: "2026-06-04T12:00:00Z",
         endDate: "2026-06-07T23:00:00Z",
         status: { type: { state: "in" } },
-        tournament: { displayName: "the Memorial Tournament pres. by Workday" },
+        tournament: { displayName: "The Memorial Tournament" },
         league: { name: "PGA TOUR" },
         courses: [
           {
@@ -258,13 +258,247 @@ describe("buildGolfSnapshotData", () => {
     );
   });
 
+  // The three fixtures below are cut down from live ESPN responses probed
+  // 2026-09-27 (leaderboard?event=401824815 and 401811943).
+  const teamMatch = {
+    date: "2026-09-24T16:35Z",
+    status: { type: { state: "post", description: "Final" } },
+    competitors: [
+      { id: "1", team: { displayName: "USA" } },
+      { id: "2", team: { displayName: "INTL" } },
+    ],
+  };
+
+  it("reports a no-live-event state for a team match-play event", async () => {
+    // The Presidents Cup nests competitions as sessions of team matches.
+    jest.spyOn(global, "fetch").mockResolvedValue(
+      jsonResponse(
+        makeLeaderboard([], {
+          name: "Presidents Cup",
+          date: "2026-09-24T04:00Z",
+          startDate: undefined,
+          tournament: { displayName: "Presidents Cup" },
+          status: { type: { state: "in", description: "In Progress" } },
+          competitions: [[teamMatch], [teamMatch, teamMatch]],
+        })
+      )
+    );
+
+    const error = await buildGolfSnapshotData().catch((caught: unknown) => caught);
+    expect(error).toBeInstanceOf(GolfNoLiveEventError);
+    expect((error as Error).message).toMatch(/Presidents Cup starts 2026-09-24/);
+  });
+
+  it("reads match play from the scoring system when the matches arrive flat", async () => {
+    // ESPN's sibling scoreboard endpoint serves the same event unnested.
+    jest.spyOn(global, "fetch").mockResolvedValue(
+      jsonResponse(
+        makeLeaderboard([], {
+          tournament: {
+            displayName: "Presidents Cup",
+            scoringSystem: { id: "2", name: "Match" },
+          },
+          status: { type: { state: "in", description: "In Progress" } },
+          competitions: [{ ...teamMatch, competitors: [] }],
+        })
+      )
+    );
+
+    await expect(buildGolfSnapshotData()).rejects.toBeInstanceOf(
+      GolfNoLiveEventError
+    );
+  });
+
+  it("reports a no-live-event state for a two-man team stroke event", async () => {
+    // The Zurich Classic lists 74 pairs, each a team with a roster, no athlete.
+    const pair = (id: string, name: string) => ({
+      id,
+      team: { displayName: name },
+      roster: [{ athlete: { displayName: name.split(" / ")[0] } }],
+      score: { value: 136, displayValue: "-8" },
+    });
+    jest.spyOn(global, "fetch").mockResolvedValue(
+      jsonResponse(
+        makeLeaderboard([], {
+          tournament: {
+            displayName: "Zurich Classic of New Orleans",
+            scoringSystem: { id: "5", name: "Teamstroke" },
+          },
+          competitions: [
+            {
+              date: "2026-04-23T04:00Z",
+              status: { type: { state: "in" }, period: 2 },
+              competitors: [
+                pair("1", "J. Dufner / A. Cook"),
+                pair("2", "R. McIlroy / S. Lowry"),
+              ],
+            },
+          ],
+        })
+      )
+    );
+
+    await expect(buildGolfSnapshotData()).rejects.toBeInstanceOf(
+      GolfNoLiveEventError
+    );
+  });
+
+  it("still fails loudly when a live field loses its athlete names", async () => {
+    // A renamed ESPN field must not read as a team event and re-stamp forever.
+    const nameless = fiveCompetitors().map(({ athlete: _athlete, ...rest }) => rest);
+    jest
+      .spyOn(global, "fetch")
+      .mockResolvedValue(jsonResponse(makeLeaderboard(nameless as never)));
+
+    const error = await buildGolfSnapshotData().catch((caught: unknown) => caught);
+    expect(error).not.toBeInstanceOf(GolfNoLiveEventError);
+    expect((error as Error).message).toMatch(/too few competitors/i);
+  });
+
+  it("reads the start date from ESPN's date field", async () => {
+    // The leaderboard endpoint has never sent startDate, only date.
+    jest.spyOn(global, "fetch").mockResolvedValue(
+      jsonResponse(
+        makeLeaderboard(fiveCompetitors(), {
+          date: "2026-06-04T04:00Z",
+          startDate: undefined,
+        })
+      )
+    );
+
+    const { summary } = await buildGolfSnapshotData();
+    expect(summary.tournament?.startDate).toBe("2026-06-04");
+    expect(summary.tournament?.id).toMatch(/-2026$/);
+  });
+
+  it("keeps an unstarted field off the board once ESPN posts it", async () => {
+    // Seen in commits a8a972e4, 0c6db919, and a15bc68c: the field for the next
+    // event goes up on Tuesday or Wednesday, everyone at even par.
+    jest.spyOn(global, "fetch").mockResolvedValue(
+      jsonResponse(
+        makeLeaderboard(fiveCompetitors(), {
+          name: "Bank of Utah Championship",
+          date: "2026-10-01T04:00Z",
+          startDate: undefined,
+          status: { type: { state: "pre", description: "Scheduled" } },
+          competitions: [
+            {
+              date: "2026-10-01T04:00Z",
+              status: { type: { state: "pre", description: "Scheduled" }, period: 0 },
+              competitors: fiveCompetitors(),
+            },
+          ],
+        })
+      )
+    );
+
+    const error = await buildGolfSnapshotData().catch((caught: unknown) => caught);
+    expect(error).toBeInstanceOf(GolfNoLiveEventError);
+    expect((error as Error).message).toMatch(
+      /Bank of Utah Championship starts 2026-10-01/
+    );
+  });
+
+  it("prefers a finished board over an unstarted field listed beside it", async () => {
+    const base = makeLeaderboard(fiveCompetitors()).events[0];
+    const finished = {
+      ...base,
+      id: "400",
+      name: "Finished Classic",
+      startDate: "2026-09-17T04:00Z",
+      status: { type: { state: "post" } },
+      competitions: [{ ...base.competitions[0], status: { type: { state: "post" }, period: 4 } }],
+    };
+    const upcoming = {
+      ...base,
+      id: "401",
+      name: "Upcoming Open",
+      startDate: "2026-10-01T04:00Z",
+      status: { type: { state: "pre" } },
+      competitions: [{ ...base.competitions[0], status: { type: { state: "pre" }, period: 0 } }],
+    };
+
+    jest
+      .spyOn(global, "fetch")
+      .mockResolvedValue(
+        jsonResponse({ events: [upcoming, finished], leagues: [{ name: "PGA TOUR" }] })
+      );
+
+    const { summary } = await buildGolfSnapshotData();
+    expect(summary.tournament?.name).toBe("Finished Classic");
+  });
+
+  it("reads a playoff as extra holes and not as a fifth round", async () => {
+    // The 2026 Travelers sent the winner's playoff as period 5 with 3 strokes,
+    // then an empty period 402.
+    const [winner, ...rest] = fiveCompetitors();
+    const playoffWinner = {
+      ...winner,
+      linescores: [
+        { period: 1, value: 65 },
+        { period: 2, value: 61 },
+        { period: 3, value: 64 },
+        { period: 4, value: 69 },
+        { period: 5, value: 3 },
+        { period: 402 },
+      ],
+    };
+    jest.spyOn(global, "fetch").mockResolvedValue(
+      jsonResponse(
+        makeLeaderboard([playoffWinner as never, ...rest], {
+          tournament: { displayName: "Travelers Championship", numberOfRounds: 4 },
+          status: { type: { state: "post", detail: "Final" }, period: 5 },
+          competitions: [
+            {
+              date: "2026-06-25T04:00Z",
+              status: { type: { state: "post", detail: "Final" }, period: 5 },
+              competitors: [playoffWinner, ...rest],
+            },
+          ],
+        })
+      )
+    );
+
+    const { summary, playerSnapshots } = await buildGolfSnapshotData();
+    expect(summary.tournament?.roundLabel).toBe("Playoff");
+    const winnerSnapshot = playerSnapshots[summary.leaderboard[0].playerId];
+    expect(winnerSnapshot.roundByRound.map((round) => round.score)).toEqual([
+      65, 61, 64, 69,
+    ]);
+  });
+
+  it("follows the main event over an opposite-field one in the same week", async () => {
+    const base = makeLeaderboard(fiveCompetitors()).events[0];
+    const oppositeField = {
+      ...base,
+      id: "300",
+      primary: false,
+      name: "Puerto Rico Open",
+    };
+    const main = {
+      ...base,
+      id: "301",
+      primary: true,
+      name: "Arnold Palmer Invitational",
+    };
+
+    jest
+      .spyOn(global, "fetch")
+      .mockResolvedValue(
+        jsonResponse({ events: [oppositeField, main], leagues: [{ name: "PGA TOUR" }] })
+      );
+
+    const { summary } = await buildGolfSnapshotData();
+    expect(summary.tournament?.name).toBe("Arnold Palmer Invitational");
+  });
+
   it("prefers an in-progress event over a more recent finished one", async () => {
     const inProgress = makeLeaderboard(fiveCompetitors()).events[0];
     const finishedLater = {
       ...makeLeaderboard(fiveCompetitors()).events[0],
       id: "999",
       startDate: "2026-07-01T12:00:00Z",
-      tournament: { displayName: "Future Open" },
+      name: "Future Open",
       status: { type: { state: "post" } },
       competitions: [
         {
@@ -291,7 +525,7 @@ describe("buildGolfSnapshotData", () => {
       ...makeLeaderboard(fiveCompetitors()).events[0],
       id: "100",
       startDate: "2026-01-01T12:00:00Z",
-      tournament: { displayName: "January Classic" },
+      name: "January Classic",
       status: { type: { state: "post" } },
       competitions: [
         {
@@ -304,7 +538,7 @@ describe("buildGolfSnapshotData", () => {
       ...makeLeaderboard(fiveCompetitors()).events[0],
       id: "200",
       startDate: "2026-05-01T12:00:00Z",
-      tournament: { displayName: "May Championship" },
+      name: "May Championship",
       status: { type: { state: "post" } },
       competitions: [
         {
@@ -386,6 +620,39 @@ describe("deriveCutState", () => {
     const result = deriveCutState(event as never);
     expect(result.cutState).toBe("pending");
     expect(result.cutLine).toBeNull();
+  });
+
+  it("reads ESPN's zero placeholders as no cut made yet", () => {
+    // What ESPN really sends before a cut, probed 2026-09-27: cutScore 0 and
+    // cutCount 0, where the older fixtures above assumed null.
+    const unstarted = {
+      tournament: { cutScore: 0, cutRound: 2, cutCount: 0, numberOfRounds: 4 },
+    };
+    expect(deriveCutState(unstarted as never)).toEqual({
+      cutLine: null,
+      cutState: "pending",
+      cutCount: null,
+    });
+
+    const noCutEvent = {
+      tournament: { cutScore: 0, cutRound: 0, cutCount: 0, numberOfRounds: 4 },
+    };
+    expect(deriveCutState(noCutEvent as never)).toEqual({
+      cutLine: null,
+      cutState: "none",
+      cutCount: null,
+    });
+  });
+
+  it("keeps a real cut at even par", () => {
+    const event = {
+      tournament: { cutScore: 0, cutRound: 2, cutCount: 70, numberOfRounds: 4 },
+    };
+    expect(deriveCutState(event as never)).toEqual({
+      cutLine: 0,
+      cutState: "made",
+      cutCount: 70,
+    });
   });
 
   it("reports no cut when the described format carries no cut round", () => {

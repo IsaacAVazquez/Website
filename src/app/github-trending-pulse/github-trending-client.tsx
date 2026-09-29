@@ -189,7 +189,7 @@ export function GitHubTrendingClient({ initialState, snapshot }: GitHubTrendingC
     }))
   )[0];
   const standfirst =
-    "I keep a daily snapshot of active public repositories by language and topic, and I wanted the board to read the way a git log does, so each repository's weekly star movement reads as a bar you can compare at a glance. The strip across the top shows which languages picked up the week's stars.";
+    "I keep a daily snapshot of the most starred active public repositories in each language and topic I track, and I wanted the board to read the way a git log does, so each repository's star gain over the past week reads as a bar you can compare at a glance. The strip across the top shows how that star gain splits across languages for the repositories in the current filter.";
   const updatedLabel =
     now === null ? formatDateTime(snapshot.generatedAt) : relativeAge(snapshot.generatedAt, now);
   const meta = `${snapshot.sourceLabel} · updated ${updatedLabel} · ${snapshot.activityWindowDays}d active repo window · ${measuredShare}% of deltas measured`;
@@ -216,7 +216,7 @@ export function GitHubTrendingClient({ initialState, snapshot }: GitHubTrendingC
             label: "Leading language",
             value: leadingLanguage?.language ?? "None yet",
             detail: leadingLanguage
-              ? `${Math.round(leadingLanguage.share * 100)}% of the week's stars`
+              ? `${Math.round(leadingLanguage.share * 100)}% of the stars the ${snapshot.totals.repositories} tracked repos gained over the past week`
               : undefined,
           },
         ]}
@@ -360,8 +360,8 @@ function RepositoryTable({
     <div className="overflow-x-auto">
       <table className="c97-table" style={{ minWidth: "820px" }}>
         <caption className="sr-only">
-          GitHub trending repositories with weekly star movement, total stars, primary
-          language, and last pushed date.
+          The most starred active repositories I track, with each one&apos;s star gain over
+          the past week, total stars, primary language, and last pushed date.
         </caption>
         <thead>
           <tr>
@@ -435,7 +435,7 @@ function RepoRow({ repo, rank, isExpanded, matchedSegments, windowDays, onToggle
               {rank}
             </span>
             <div className="min-w-0">
-              <p className="c97-serif mb-1" style={{ fontWeight: 600, color: "var(--c97-ink)" }}>
+              <p className="c97-serif" style={{ marginBottom: "var(--c97-sp-1)", fontWeight: 600, color: "var(--c97-ink)" }}>
                 {repo.fullName}
               </p>
               <p
@@ -544,7 +544,7 @@ function SegmentSummary({ segments, repositories, selectedSegment, onSelectSegme
     <aside className="c97-panel" aria-labelledby="github-segment-summary-heading">
       <div className="mb-4 flex items-center justify-between gap-3">
         <div>
-          <p className="c97-kicker mb-1">Segments</p>
+          <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-1)" }}>Segments</p>
           <h2 id="github-segment-summary-heading" className="c97-serif" style={{ fontSize: "var(--c97-fs-h3)" }}>
             Snapshot leaders
           </h2>

@@ -16,6 +16,16 @@ import type { Position } from "@/types";
  */
 export const FANTASY_WEEKLY_SNAPSHOT_SCHEMA_VERSION = 1;
 
+/**
+ * The weekly and waiver pages preload this URL and the client hook fetches it,
+ * and the two have to match exactly or the browser discards the preload and
+ * downloads the file a second time. There is no version parameter because the
+ * only revision the site generates belongs to the redraft boards, which stop
+ * moving at kickoff, so the response's cache headers decide how long a stored
+ * copy is good for.
+ */
+export const FANTASY_WEEKLY_SNAPSHOT_URL = "/data/fantasy/weekly.json";
+
 /** Ownership at or above this reads as rostered everywhere, so it is not a waiver add. */
 export const FANTASY_WEEKLY_WIDELY_ROSTERED_PERCENT = 60;
 

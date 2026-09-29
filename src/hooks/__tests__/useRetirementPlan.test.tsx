@@ -1,11 +1,35 @@
 import { act, renderHook, waitFor } from "@testing-library/react";
-import { createDefaultPlan, type RetirementPlanInput } from "@/lib/retirement";
+import {
+  computeLevers,
+  createDefaultPlan,
+  type RetirementPlanInput,
+  type RetirementResult,
+} from "@/lib/retirement";
 import { resetBrowserStorageMemory } from "@/lib/browserStorage";
 import { useRetirementPlan, type RetirementSeed } from "../useRetirementPlan";
+
+// The engine stays real. The lever search is wrapped only so a test can count
+// how many times the hook runs it.
+jest.mock("@/lib/retirement", () => {
+  const actual = jest.requireActual("@/lib/retirement");
+  return { ...actual, computeLevers: jest.fn(actual.computeLevers) };
+});
+const leverSearch = jest.mocked(computeLevers);
 
 const STORAGE_KEY = "retirement_plan";
 const STORAGE_VERSION = 1;
 const VERDICTS = ["on-track", "good", "fair", "at-risk"];
+
+/**
+ * Returns once any lever search the hook has queued has run. The hook queues
+ * it on a zero timeout and a later timer cannot fire ahead of an earlier one,
+ * so this holds however long the search takes.
+ */
+function waitForDeferredWork() {
+  return act(async () => {
+    await new Promise((resolve) => setTimeout(resolve, 50));
+  });
+}
 
 function readStoredPlan(): RetirementPlanInput {
   const raw = window.localStorage.getItem(STORAGE_KEY);
@@ -45,6 +69,81 @@ describe("useRetirementPlan", () => {
     expect(projection!.monteCarlo.successRate).toBeGreaterThanOrEqual(0);
     expect(projection!.monteCarlo.successRate).toBeLessThanOrEqual(1);
     expect(projection!.targetNestEgg).toBeGreaterThan(0);
+  });
+
+  // The planner is the last section on the investments page, and the
+  // projection is about 150 ms of main-thread work, so the planner holds the
+  // hook back until its section is near the viewport.
+  it("runs no projection until it is enabled", async () => {
+    const { result, rerender } = renderHook(
+      ({ enabled }: { enabled: boolean }) => useRetirementPlan(undefined, enabled),
+      { initialProps: { enabled: false } },
+    );
+
+    await waitFor(() => expect(result.current.ready).toBe(true));
+    await act(async () => {
+      await new Promise((resolve) => setTimeout(resolve, 0));
+    });
+    expect(result.current.result).toBeNull();
+    expect(result.current.isComputing).toBe(false);
+    expect(result.current.hasError).toBe(false);
+
+    rerender({ enabled: true });
+
+    await waitFor(() => expect(result.current.result).not.toBeNull());
+    await waitFor(() => expect(result.current.result?.levers.length).toBeGreaterThan(0));
+  });
+
+  // The browser lays a print out when the beforeprint handlers return, and
+  // printing never scrolls the planner into view. A projection that is still
+  // held back has to be complete by then, levers included, and the levers
+  // normally wait behind a timeout.
+  it("has the projection and the levers ready when a beforeprint handler returns", async () => {
+    const { result } = renderHook(() => useRetirementPlan(undefined, false));
+    await waitFor(() => expect(result.current.ready).toBe(true));
+    expect(result.current.result).toBeNull();
+
+    const atPrint: (RetirementResult | null)[] = [];
+    act(() => {
+      window.dispatchEvent(new Event("beforeprint"));
+      atPrint.push(result.current.result);
+    });
+
+    expect(atPrint[0]).not.toBeNull();
+    expect(VERDICTS).toContain(atPrint[0]?.verdict);
+    expect(atPrint[0]?.levers.length).toBeGreaterThan(0);
+  });
+
+  // The lever search is the expensive part, about 150 ms on a desktop, and
+  // the print handler has already run it by the time the page is laid out.
+  it("does not repeat the lever search after a print", async () => {
+    const { result } = renderHook(() => useRetirementPlan(undefined, false));
+    await waitFor(() => expect(result.current.ready).toBe(true));
+    leverSearch.mockClear();
+
+    act(() => {
+      window.dispatchEvent(new Event("beforeprint"));
+    });
+    await waitForDeferredWork();
+
+    expect(leverSearch).toHaveBeenCalledTimes(1);
+  });
+
+  it("prints the levers it already has without searching again", async () => {
+    const { result } = renderHook(() => useRetirementPlan());
+    await waitFor(() => expect(result.current.ready).toBe(true));
+    // The deferred search is queued by now, so this waits on the search
+    // itself. Polling for the levers against a clock failed on a busy machine.
+    await waitForDeferredWork();
+    expect(result.current.result?.levers.length).toBeGreaterThan(0);
+    leverSearch.mockClear();
+
+    act(() => {
+      window.dispatchEvent(new Event("beforeprint"));
+    });
+    await waitForDeferredWork();
+
+    expect(leverSearch).not.toHaveBeenCalled();
   });
 
   it("seeds a fresh plan from a portfolio value into a taxable account", async () => {

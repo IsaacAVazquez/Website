@@ -10,7 +10,7 @@ Fast diagnostics for the current site, data workflows, and deployment path.
 
 ### `npm install` fails
 
-- Confirm Node 20.9 or newer, which the installed `next` package requires, and npm 10+
+- Confirm Node 22.12 or newer, which `package.json` requires and `.nvmrc` pins, and npm 10+
 - Remove `node_modules` and retry
 
 ### `npm run build` fails
@@ -39,12 +39,13 @@ Confirm:
 
 The admin flow uses credential auth in `src/lib/auth.ts`.
 
-### `netlify/functions/purge-cache.ts` returns `401`
+### The email digest route returns `503` or `401`
 
-- Set `CRON_SECRET`
-- Send `Authorization: Bearer <CRON_SECRET>`
+- `503` means `MBA_DIGEST_SECRET` is not set in the Netlify environment
+- `401` means the request did not send that secret in the `x-mba-digest-secret` header
+- The public page no longer has a digest button, since a browser cannot hold the secret and every click got `401`. Call the route from `/admin` or a scheduled job that sends the header
 
-There is no live `/api/scheduled-update` route in the current app tree; older references to that endpoint are historical.
+The cache purge function and its `CRON_SECRET` were removed on 2026-09-28, since the function had no caller. There is no live `/api/scheduled-update` route in the current app tree; older references to that endpoint are historical.
 
 ---
 

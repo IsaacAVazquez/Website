@@ -24,6 +24,7 @@ export async function GET() {
         sourceAsOf: summary.generatedAt,
         cacheControl: SUCCESS_CACHE_CONTROL,
         source: "usgs-runtime-with-snapshot-fallback",
+        status: summary.feedStatus,
       }),
     });
   } catch (error) {

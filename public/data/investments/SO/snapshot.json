@@ -1,17 +1,11 @@
 {
   "symbol": "SO",
-  "lastUpdated": "2026-09-15T01:03:45.681080+00:00",
+  "lastUpdated": "2026-09-29T07:04:00.244178+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-09-15T01:03:45.681080+00:00",
+    "snapshotBuiltAt": "2026-09-29T07:04:00.244178+00:00",
     "sections": {
-      "price": "2026-09-11"
-    },
-    "retainedSections": [
-      "fundamentals",
-      "wacc",
-      "beta",
-      "news"
-    ]
+      "price": "2026-09-28"
+    }
   },
   "source": "prefetched",
   "capabilities": {
@@ -46,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 4.1443,
-      "ttmPe": 21.03,
-      "marketCap": 100277142710,
-      "psRatio": 3.32,
-      "pbRatio": 2.53,
-      "pegRatio": 2.02
+      "ttmPe": 19.87,
+      "marketCap": 94732393050,
+      "psRatio": 3.14,
+      "pbRatio": 2.39,
+      "pegRatio": 0.67
     },
     "profitability": {
       "roe": 3.06,
@@ -853,7 +847,7 @@
           "TTM": "4278784108.23",
           "2026-06-30": "1063408000.0",
           "2026-03-31": "1252545000.0",
-          "2025-12-31": "339370000.0",
+          "2025-12-31": "343802900.0",
           "2025-09-30": "1638224064.42",
           "2025-06-30": "820245183.89",
           "2025-03-31": "1274213000.0",
@@ -1084,7 +1078,7 @@
           "TTM": "0.13",
           "2026-06-30": "0.14",
           "2026-03-31": "0.15",
-          "2025-12-31": "0.21",
+          "2025-12-31": "0.26",
           "2025-09-30": "0.19",
           "2025-06-30": "0.25",
           "2025-03-31": "0.18",
@@ -1105,7 +1099,7 @@
           "TTM": "55784108.23",
           "2026-06-30": "17408000.0",
           "2026-03-31": "17545000.0",
-          "2025-12-31": "20370000.0",
+          "2025-12-31": "24802900.0",
           "2025-09-30": "17224064.42",
           "2025-06-30": "20245183.89",
           "2025-03-31": "13213000.0",
@@ -6332,105 +6326,17 @@
       ]
     },
     "wacc": {
-      "wacc": 4.62,
-      "costOfEquity": 7.24,
-      "costOfDebt": 1.02,
-      "taxRate": 15,
-      "beta": 0.3226,
-      "marketCap": 108649280018
+      "wacc": 4.53,
+      "costOfEquity": 7.489999999999999,
+      "costOfDebt": 1.03,
+      "taxRate": 14.000000000000002,
+      "beta": 0.2955,
+      "marketCap": 94732393050
     },
     "beta": {
-      "beta5y": 0.3226
+      "beta5y": 0.2955
     },
     "price": [
-      {
-        "date": "2025-09-11",
-        "open": 91.55,
-        "high": 92.14,
-        "low": 91.22,
-        "close": 92.13,
-        "volume": 3701900
-      },
-      {
-        "date": "2025-09-12",
-        "open": 91.88,
-        "high": 92.44,
-        "low": 91.72,
-        "close": 92.27,
-        "volume": 4076300
-      },
-      {
-        "date": "2025-09-15",
-        "open": 92.01,
-        "high": 92.4,
-        "low": 91.56,
-        "close": 92.28,
-        "volume": 3922300
-      },
-      {
-        "date": "2025-09-16",
-        "open": 92.1,
-        "high": 92.32,
-        "low": 91.35,
-        "close": 91.36,
-        "volume": 6625700
-      },
-      {
-        "date": "2025-09-17",
-        "open": 91.59,
-        "high": 92.06,
-        "low": 91.4,
-        "close": 91.63,
-        "volume": 5065100
-      },
-      {
-        "date": "2025-09-18",
-        "open": 90.77,
-        "high": 91.88,
-        "low": 90.71,
-        "close": 91.45,
-        "volume": 6073900
-      },
-      {
-        "date": "2025-09-19",
-        "open": 91.04,
-        "high": 92.3,
-        "low": 90.35,
-        "close": 91.8,
-        "volume": 9381500
-      },
-      {
-        "date": "2025-09-22",
-        "open": 91.88,
-        "high": 92.58,
-        "low": 91.63,
-        "close": 92.33,
-        "volume": 5569500
-      },
-      {
-        "date": "2025-09-23",
-        "open": 92.3,
-        "high": 93.72,
-        "low": 92.11,
-        "close": 93.72,
-        "volume": 4413500
-      },
-      {
-        "date": "2025-09-24",
-        "open": 93.61,
-        "high": 94.44,
-        "low": 93.16,
-        "close": 94.41,
-        "volume": 4826500
-      },
-      {
-        "date": "2025-09-25",
-        "open": 94.59,
-        "high": 95.06,
-        "low": 93.58,
-        "close": 93.69,
-        "volume": 6968400
-      },
       {
         "date": "2025-09-26",
         "open": 94.08,
@@ -8358,23 +8264,111 @@
         "low": 86.99,
         "close": 87.17,
         "volume": 5141900
+      },
+      {
+        "date": "2026-09-14",
+        "open": 87.72,
+        "high": 87.97,
+        "low": 86.66,
+        "close": 87,
+        "volume": 5232900
+      },
+      {
+        "date": "2026-09-15",
+        "open": 87.17,
+        "high": 87.22,
+        "low": 85.91,
+        "close": 85.95,
+        "volume": 5102200
+      },
+      {
+        "date": "2026-09-16",
+        "open": 86.41,
+        "high": 86.83,
+        "low": 85.87,
+        "close": 86.23,
+        "volume": 5924100
+      },
+      {
+        "date": "2026-09-17",
+        "open": 86.64,
+        "high": 86.79,
+        "low": 86.02,
+        "close": 86.76,
+        "volume": 5313900
+      },
+      {
+        "date": "2026-09-18",
+        "open": 86.33,
+        "high": 86.35,
+        "low": 85.43,
+        "close": 85.52,
+        "volume": 15145700
+      },
+      {
+        "date": "2026-09-21",
+        "open": 85.52,
+        "high": 86.15,
+        "low": 85.18,
+        "close": 85.46,
+        "volume": 7826800
+      },
+      {
+        "date": "2026-09-22",
+        "open": 85.24,
+        "high": 85.94,
+        "low": 84.97,
+        "close": 85.15,
+        "volume": 4349700
+      },
+      {
+        "date": "2026-09-23",
+        "open": 84.76,
+        "high": 84.9,
+        "low": 83.21,
+        "close": 83.47,
+        "volume": 5571800
+      },
+      {
+        "date": "2026-09-24",
+        "open": 83.98,
+        "high": 83.98,
+        "low": 82.84,
+        "close": 82.89,
+        "volume": 4917500
+      },
+      {
+        "date": "2026-09-25",
+        "open": 82.67,
+        "high": 83.01,
+        "low": 82.09,
+        "close": 82.88,
+        "volume": 4920300
+      },
+      {
+        "date": "2026-09-28",
+        "open": 82.96,
+        "high": 83.07,
+        "low": 81.91,
+        "close": 82.35,
+        "volume": 5048900
       }
     ],
     "news": [
-      {
-        "uuid": "b4401fae-303e-3049-8618-fe2694977919",
-        "title": "The Zacks Analyst Blog Highlights Verizon Communications, The Southern Company, Blackstone, Utah Medical Products and The Eastern Company",
-        "publisher": "Zacks",
-        "reportDate": "2025-04-08",
-        "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-verizon-102100646.html",
-        "type": "STORY"
-      },
       {
         "uuid": "0b88b861-0db2-33ec-be05-8461213e5f27",
         "title": "Top Research Reports for Verizon, The Southern Co. & Blackstone",
         "publisher": "Zacks",
         "reportDate": "2025-04-08",
         "link": "https://finance.yahoo.com/news/top-research-reports-verizon-southern-204500579.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "b4401fae-303e-3049-8618-fe2694977919",
+        "title": "The Zacks Analyst Blog Highlights Verizon Communications, The Southern Company, Blackstone, Utah Medical Products and The Eastern Company",
+        "publisher": "Zacks",
+        "reportDate": "2025-04-08",
+        "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-verizon-102100646.html",
         "type": "STORY"
       },
       {
@@ -8394,6 +8388,14 @@
         "type": "STORY"
       },
       {
+        "uuid": "8216137b-01d4-33b2-beb1-54973601d4be",
+        "title": "Southern Company, PowerSecure collaborate with PGA TOUR to power state-of-the-art PGA TOUR Studios",
+        "publisher": "PR Newswire",
+        "reportDate": "2025-05-20",
+        "link": "https://finance.yahoo.com/news/southern-company-powersecure-collaborate-pga-130000423.html",
+        "type": "STORY"
+      },
+      {
         "uuid": "a2044451-b16d-3017-a34e-6f9d7ce3bf21",
         "title": "Southern Company announces offering of $1.25 billion in aggregate principal amount of Convertible Senior Notes due June 15, 2028",
         "publisher": "PR Newswire",
@@ -8410,14 +8412,6 @@
         "type": "STORY"
       },
       {
-        "uuid": "8216137b-01d4-33b2-beb1-54973601d4be",
-        "title": "Southern Company, PowerSecure collaborate with PGA TOUR to power state-of-the-art PGA TOUR Studios",
-        "publisher": "PR Newswire",
-        "reportDate": "2025-05-20",
-        "link": "https://finance.yahoo.com/news/southern-company-powersecure-collaborate-pga-130000423.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "35455fb8-a76a-32a4-a787-e00dbff0c5b1",
         "title": "Southern Company to Offer $1.25 Billion in Convertible Notes",
         "publisher": "MT Newswires",
@@ -8426,19 +8420,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "8a6dc570-3db0-32d2-9ca4-2ef662fd0020",
-        "title": "Southern Company announces upsize and pricing of $1.45 billion in aggregate principal amount of Series 2025A 3.25% Convertible Senior Notes due June 15, 2028",
-        "publisher": "PR Newswire",
-        "reportDate": "2025-05-21",
-        "link": "https://finance.yahoo.com/news/southern-company-announces-upsize-pricing-003300450.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "d289f937-4760-3f28-b6c2-8291514b6567",
         "title": "Southern Company Prices $1.45 Billion of 2028 Notes in Upsized Private Placement",
         "publisher": "MT Newswires",
         "reportDate": "2025-05-21",
         "link": "https://finance.yahoo.com/news/southern-company-prices-1-45-085601322.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "8a6dc570-3db0-32d2-9ca4-2ef662fd0020",
+        "title": "Southern Company announces upsize and pricing of $1.45 billion in aggregate principal amount of Series 2025A 3.25% Convertible Senior Notes due June 15, 2028",
+        "publisher": "PR Newswire",
+        "reportDate": "2025-05-21",
+        "link": "https://finance.yahoo.com/news/southern-company-announces-upsize-pricing-003300450.html",
         "type": "STORY"
       }
     ],
@@ -8509,43 +8503,43 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 21.03,
-        "industryAvg": 18.43
+        "value": 19.87,
+        "industryAvg": 15.73
       },
       {
         "metric": "P/S Ratio",
-        "value": 3.32,
-        "industryAvg": 1.62
+        "value": 3.14,
+        "industryAvg": 2.18
       },
       {
         "metric": "P/B Ratio",
-        "value": 2.53,
-        "industryAvg": 0.93
+        "value": 2.39,
+        "industryAvg": 1.7
       },
       {
         "metric": "ROE",
         "value": 3.06,
-        "industryAvg": 2.77
+        "industryAvg": 11.24
       },
       {
         "metric": "ROA",
         "value": 0.74,
-        "industryAvg": 0.75
+        "industryAvg": 3.08
       },
       {
         "metric": "Gross Margin",
         "value": 51.27,
-        "industryAvg": 48.41
+        "industryAvg": 46.68
       },
       {
         "metric": "EBITDA Margin",
         "value": 53.99,
-        "industryAvg": 43.54
+        "industryAvg": 44.5
       },
       {
         "metric": "Net Margin",
         "value": 16.830000000000002,
-        "industryAvg": 15.879999999999999
+        "industryAvg": 15.809999999999999
       }
     ]
   }

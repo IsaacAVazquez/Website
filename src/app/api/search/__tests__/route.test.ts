@@ -278,8 +278,36 @@ describe("GET /api/search", () => {
       }
     });
 
+    it.each([
+      ["darkroom", "answer-darkroom", "/"],
+      ["Safelight", "answer-darkroom", "/"],
+      ["rubber stamp", "answer-stamp", "/"],
+      ["night shift", "answer-night-shift", "/"],
+      ["Contra", "answer-thirty-lives", "/arcade"],
+      ["30 lives", "answer-thirty-lives", "/arcade"],
+      ["teapot", "answer-teapot", "/teapot"],
+      ["418", "answer-teapot", "/teapot"],
+      ["I'm a teapot", "answer-teapot", "/teapot"],
+      ["humans.txt", "answer-colophon", "/humans.txt"],
+      ["colophon", "answer-colophon", "/humans.txt"],
+    ])("answers %s with the hint for that easter egg", async (q, id, url) => {
+      const response = await GET(makeRequest(`?q=${encodeURIComponent(q)}`));
+      const body = await response.json();
+
+      expect(body.results[0]).toMatchObject({ id, url, type: "page" });
+    });
+
     it("never shows for unrelated or partial queries, or filtered searches", async () => {
-      for (const qs of ["?q=monetize", "?q=monet%20water", "?q=easter", "?q=monet&type=post"]) {
+      for (const qs of [
+        "?q=monetize",
+        "?q=monet%20water",
+        "?q=easter",
+        "?q=monet&type=post",
+        "?q=teapots",
+        "?q=night",
+        "?q=stamped",
+        "?q=colophon&type=post",
+      ]) {
         const response = await GET(makeRequest(qs));
         const body = await response.json();
         expect(ids(body).some((id) => id.startsWith("answer-"))).toBe(false);
@@ -317,5 +345,48 @@ describe("GET /api/search", () => {
 
     expect(response.status).toBe(200);
     expect(Array.isArray(body.results)).toBe(true);
+  });
+});
+
+describe("GET /api/search corpus", () => {
+  beforeEach(() => {
+    mockGetAllBlogPostPreviews.mockReturnValue([]);
+  });
+
+  it("never returns the same URL twice and never a case study URL that redirects", async () => {
+    // A case study with a live tool redirects from /portfolio/<slug> to the
+    // tool, so "frontier" once returned the tool under two titles.
+    for (const query of ["frontier", "food", "fantasy", "tracker"]) {
+      const response = await GET(makeRequest(`?q=${query}&limit=50`));
+      const body = await response.json();
+      const urls = body.results.map((r: { url: string }) => r.url);
+
+      expect(new Set(urls).size).toBe(urls.length);
+    }
+
+    const response = await GET(makeRequest("?q=frontier&limit=50"));
+    const body = await response.json();
+    const urls = body.results.map((r: { url: string }) => r.url);
+    expect(urls).toContain("/frontier-models");
+    expect(urls).not.toContain("/portfolio/frontier-models");
+  });
+
+  it("indexes the routes that were missing", async () => {
+    const expected = [
+      ["dashboards", "/dashboards"],
+      ["weekly rankings", "/fantasy-football/weekly"],
+      ["waiver", "/fantasy-football/waivers"],
+      ["draft assistant", "/fantasy-football/draft-tracker"],
+      ["best ball draft assistant", "/fantasy-football/best-ball/draft-tracker"],
+      ["score pools tracker", "/score-pools/tracker"],
+    ];
+    for (const [query, url] of expected) {
+      const response = await GET(makeRequest(`?q=${encodeURIComponent(query)}&limit=50`));
+      const body = await response.json();
+      expect([query, body.results.map((r: { url: string }) => r.url)]).toEqual([
+        query,
+        expect.arrayContaining([url]),
+      ]);
+    }
   });
 });

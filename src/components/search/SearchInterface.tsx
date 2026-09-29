@@ -441,7 +441,7 @@ export function SearchInterface({
                       type="button"
                       onClick={() => handleQueryChange(example)}
                       className="c97-btn-ghost"
-                      style={{ textTransform: "none", letterSpacing: 0, paddingLeft: 0 }}
+                      style={{ textTransform: "none", letterSpacing: 0 }}
                     >
                       &ldquo;{example}&rdquo;
                     </button>
