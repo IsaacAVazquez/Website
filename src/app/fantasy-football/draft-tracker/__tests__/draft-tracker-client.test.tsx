@@ -447,7 +447,7 @@ describe("DraftTrackerClient", () => {
     // new row instead of squeezing the first three (240px let four 249px columns
     // clip two names at 1440).
     expect(document.querySelector("#draft-decision-strip")).toHaveStyle({
-      gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))",
+      gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 320px), 1fr))",
     });
     expect(screen.queryByText(/^Board #1 · Tier 1/)).not.toBeInTheDocument();
     expect(screen.queryByText("Fills WR1")).not.toBeInTheDocument();

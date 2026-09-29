@@ -25,7 +25,7 @@ import {
   getNflRegularSeasonWeek,
   getSnapshotStaleness,
   type FantasySnapshotStaleness,
-  WIDE_SHELL_CLASS,
+  SHELL_CLASS,
 } from "@/lib/fantasyUtils";
 import { getCurrentDraftSeason } from "@/app/fantasy-football/draft-tracker/hooks/useDraftState";
 import { REDRAFT_LINEUP_PRESETS } from "@/lib/redraftLineup";
@@ -375,7 +375,7 @@ export function TradeCalculatorClient() {
       data-testid="fantasy-trade-calculator-shell"
       data-hydrated={isHydrated ? "true" : "false"}
     >
-      <div className={WIDE_SHELL_CLASS} style={{ paddingBlock: "var(--c97-sp-2)" }}>
+      <div className={SHELL_CLASS} style={{ paddingBlock: "var(--c97-sp-2)" }}>
         <Breadcrumbs customItems={BREADCRUMBS} className="!py-0" />
       </div>
 
@@ -384,7 +384,7 @@ export function TradeCalculatorClient() {
         data-c97-surface={`ink-${PROJECT_PRESS["/fantasy-football/trade-calculator"].lead}`}
         data-seam="torn"
       >
-        <div className={WIDE_SHELL_CLASS} style={{ paddingBlock: "var(--c97-sp-5)" }}>
+        <div className={SHELL_CLASS} style={{ paddingBlock: "var(--c97-sp-5)" }}>
           <div className="flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
             <div className="max-w-3xl">
               <h1 className="c97-poster">Build a Trade Offer</h1>
@@ -426,7 +426,7 @@ export function TradeCalculatorClient() {
       </section>
 
       <section className="c97-sheet" data-c97-surface="paper" data-seam="torn">
-        <div className={`${WIDE_SHELL_CLASS} space-y-5 py-[clamp(1.25rem,2vw,2rem)]`}>
+        <div className={`${SHELL_CLASS} space-y-5 py-[clamp(1.25rem,2vw,2rem)]`}>
         {seasonWeek >= 1 && snapshot ? (
           <SeasonalScopeNote season={snapshot.season} week={seasonWeek}>
             {marketFreshness === "stale" ? (

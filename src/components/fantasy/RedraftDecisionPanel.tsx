@@ -47,7 +47,7 @@ export function RedraftDecisionPanel({
       <div
         className="grid gap-px overflow-hidden border"
         style={{
-          gridTemplateColumns: "repeat(auto-fit, minmax(235px, 1fr))",
+          gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 235px), 1fr))",
           borderColor: "var(--c97-rule)",
           background: "var(--c97-rule)",
         }}
