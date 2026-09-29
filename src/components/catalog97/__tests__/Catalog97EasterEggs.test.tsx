@@ -18,6 +18,14 @@ function pressKonami() {
   });
 }
 
+/** Hides or shows the tab, the way switching tabs does. */
+function setHidden(hidden: boolean) {
+  Object.defineProperty(document, "hidden", { configurable: true, value: hidden });
+  act(() => {
+    document.dispatchEvent(new Event("visibilitychange"));
+  });
+}
+
 /** The page root the toast portals into, and a footer with the wordmark. */
 function renderOnPage() {
   const page = document.createElement("div");
@@ -235,15 +243,38 @@ describe("Catalog97EasterEggs", () => {
     expect(proof()).toBeNull();
   });
 
+  it("reads the night shift title from midnight until 5am", () => {
+    renderOnPage();
+    document.title = "About | Isaac Vazquez";
+    const awayTitleAt = (hour: number, minute: number) => {
+      jest.setSystemTime(new Date(2026, 8, 28, hour, minute));
+      setHidden(true);
+      const title = document.title;
+      setHidden(false);
+      return title;
+    };
+    try {
+      expect(awayTitleAt(23, 59)).toBe("Still on the press…");
+      expect(awayTitleAt(0, 0)).toBe("Running the night shift…");
+      expect(awayTitleAt(4, 59)).toBe("Running the night shift…");
+      expect(awayTitleAt(5, 0)).toBe("Still on the press…");
+      expect(document.title).toBe("About | Isaac Vazquez");
+
+      // Left before 5am and back after it, the page's own title still returns.
+      jest.setSystemTime(new Date(2026, 8, 28, 4, 59));
+      setHidden(true);
+      jest.setSystemTime(new Date(2026, 8, 28, 5, 1));
+      setHidden(false);
+      expect(document.title).toBe("About | Isaac Vazquez");
+    } finally {
+      Object.defineProperty(document, "hidden", { configurable: true, value: false });
+    }
+  });
+
   it("swaps the tab title while hidden and restores it on return", () => {
     renderOnPage();
     document.title = "About | Isaac Vazquez";
-    const setHidden = (hidden: boolean) => {
-      Object.defineProperty(document, "hidden", { configurable: true, value: hidden });
-      act(() => {
-        document.dispatchEvent(new Event("visibilitychange"));
-      });
-    };
+    jest.setSystemTime(new Date(2026, 8, 28, 12, 0));
     try {
       setHidden(true);
       expect(document.title).toBe("Still on the press…");
@@ -258,6 +289,148 @@ describe("Catalog97EasterEggs", () => {
     } finally {
       Object.defineProperty(document, "hidden", { configurable: true, value: false });
     }
+  });
+
+  it("knocks the press out of register on the sixth stamp inside three seconds", () => {
+    const { page } = renderOnPage();
+    const mark = page.querySelector(".c97-wordmark")!;
+
+    for (let i = 0; i < 5; i += 1) fireEvent.click(mark);
+    expect(document.documentElement).not.toHaveClass("misregistered");
+    expect(screen.queryByText("Out of register")).not.toBeInTheDocument();
+
+    fireEvent.click(mark);
+    expect(document.documentElement).toHaveClass("misregistered");
+    expect(screen.getByRole("status")).toHaveTextContent(
+      "You stamped hard enough to knock the press out of line.",
+    );
+    expect(screen.getByRole("link", { name: "Go to the arcade" })).toHaveAttribute("href", "/arcade");
+
+    act(() => jest.advanceTimersByTime(6000));
+    expect(document.documentElement).not.toHaveClass("misregistered");
+  });
+
+  it("leaves the press alone when the stamps come slowly", () => {
+    const { page } = renderOnPage();
+    const mark = page.querySelector(".c97-wordmark")!;
+
+    // Six stamps take 3.5 seconds at this pace, which is outside the window.
+    for (let i = 0; i < 12; i += 1) {
+      fireEvent.click(mark);
+      expect(document.documentElement).not.toHaveClass("misregistered");
+      act(() => jest.advanceTimersByTime(700));
+    }
+  });
+
+  it("needs six fresh stamps to knock the press a second time", () => {
+    const { page } = renderOnPage();
+    const mark = page.querySelector(".c97-wordmark")!;
+
+    for (let i = 0; i < 6; i += 1) fireEvent.click(mark);
+    fireEvent.click(screen.getByRole("button", { name: "Close" }));
+
+    for (let i = 0; i < 5; i += 1) fireEvent.click(mark);
+    expect(screen.queryByText("Out of register")).not.toBeInTheDocument();
+    fireEvent.click(mark);
+    expect(screen.getByText("Out of register")).toBeInTheDocument();
+  });
+
+  it("stamps on the arcade without knocking the press", () => {
+    window.history.pushState({}, "", "/arcade");
+    try {
+      const { page } = renderOnPage();
+      const mark = page.querySelector(".c97-wordmark")!;
+
+      for (let i = 0; i < 6; i += 1) fireEvent.click(mark);
+      expect(page.querySelectorAll(".imprint")).toHaveLength(5);
+      expect(document.documentElement).not.toHaveClass("misregistered");
+      expect(screen.queryByText("Out of register")).not.toBeInTheDocument();
+    } finally {
+      window.history.pushState({}, "", "/");
+    }
+  });
+
+  describe("darkroom safelight", () => {
+    /** One flip of the theme, delivered to the observer before the next. */
+    const flip = async (times = 1) => {
+      for (let i = 0; i < times; i += 1) {
+        await act(async () => {
+          document.documentElement.classList.toggle("dark");
+        });
+      }
+    };
+    const safelight = (page: HTMLElement) => page.querySelector(".safelight");
+
+    afterEach(() => document.documentElement.classList.remove("dark"));
+
+    it("comes on at the fifth flip of the theme inside four seconds", async () => {
+      const { page } = renderOnPage();
+
+      await flip(4);
+      expect(safelight(page)).toBeNull();
+      expect(screen.queryByText("Safelight on")).not.toBeInTheDocument();
+
+      await flip();
+      expect(safelight(page)).toHaveAttribute("aria-hidden", "true");
+      expect(screen.getByRole("status")).toHaveTextContent(
+        "You flipped the lights enough times to trip the safelight.",
+      );
+      expect(screen.queryByRole("link", { name: "Go to the arcade" })).not.toBeInTheDocument();
+
+      act(() => jest.advanceTimersByTime(6000));
+      expect(safelight(page)).toBeNull();
+    });
+
+    it("stays off when the flips come slowly", async () => {
+      const { page } = renderOnPage();
+
+      // Five flips take five seconds at this pace, which is outside the window.
+      for (let i = 0; i < 10; i += 1) {
+        await flip();
+        expect(safelight(page)).toBeNull();
+        act(() => jest.advanceTimersByTime(1250));
+      }
+    });
+
+    it("ignores the other classes this component puts on the root", async () => {
+      const { page } = renderOnPage();
+
+      for (let i = 0; i < 6; i += 1) {
+        await act(async () => {
+          document.documentElement.classList.toggle("some-other-class");
+        });
+      }
+      expect(safelight(page)).toBeNull();
+    });
+
+    it("does not count flips made while it is on", async () => {
+      const { page } = renderOnPage();
+
+      await flip(5);
+      act(() => jest.advanceTimersByTime(5000));
+      await flip(4);
+      act(() => jest.advanceTimersByTime(1000));
+      expect(safelight(page)).toBeNull();
+
+      // The four made under the light are a second old and inside the window,
+      // and they still don't count, so one more is only the first.
+      await flip();
+      expect(safelight(page)).toBeNull();
+    });
+
+    it("turns off early when the toast is closed", async () => {
+      const { page } = renderOnPage();
+
+      await flip(5);
+      fireEvent.click(screen.getByRole("button", { name: "Close" }));
+      expect(safelight(page)).toBeNull();
+
+      await flip(5);
+      act(() => {
+        fireEvent.keyDown(window, { key: "Escape" });
+      });
+      expect(safelight(page)).toBeNull();
+    });
   });
 
   it("stamps the footer wordmark, caps the impressions, and clears them", () => {
