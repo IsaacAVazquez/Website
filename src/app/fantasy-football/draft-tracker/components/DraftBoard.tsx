@@ -188,7 +188,11 @@ export function DraftBoard({
     return () => document.removeEventListener("keydown", handleSlash);
   }, []);
 
-  const windowedPlayers = filteredPlayers.slice(0, visibleCount);
+  // Memoized so the tier grouping below, which is keyed on it, can be reused.
+  const windowedPlayers = useMemo(
+    () => filteredPlayers.slice(0, visibleCount),
+    [filteredPlayers, visibleCount]
+  );
   const hasMore = visibleCount < filteredPlayers.length;
   const highlightedPlayer =
     highlightIndex >= 0 ? windowedPlayers[highlightIndex] ?? null : null;

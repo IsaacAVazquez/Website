@@ -3,7 +3,6 @@
 import { useEffect, useMemo, useState } from "react";
 import { ArrowRight, Search } from "@/components/ui/ServerIcons";
 import styles from "./MyTeamPanel.module.css";
-import { getFantasyDraftStorageKey } from "@/app/fantasy-football/draft-tracker/hooks/useDraftState";
 import { useFantasyMyTeam } from "@/hooks/useFantasyMyTeam";
 import { readBrowserStorageString } from "@/lib/browserStorage";
 import { FANTASY_SCORING_LABELS, type FantasyRouteScoring } from "@/lib/fantasy";
@@ -12,7 +11,7 @@ import {
   uniqueTeamPlayers, weeklyPlayerMap, type MyTeamPlayer,
 } from "@/lib/fantasyMyTeam";
 import type { FantasyWeeklyBoard, FantasyWeeklySnapshot } from "@/lib/fantasyWeeklySnapshot";
-import { getSnapshotStaleness } from "@/lib/fantasyUtils";
+import { getFantasyDraftStorageKey, getSnapshotStaleness } from "@/lib/fantasyUtils";
 import { REDRAFT_LINEUP_PRESETS } from "@/lib/redraftLineup";
 
 const control = styles.control;

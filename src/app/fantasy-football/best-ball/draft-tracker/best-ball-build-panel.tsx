@@ -3,7 +3,7 @@ import type {
   BestBallRosterAnalysis,
 } from "@/lib/bestBall/types";
 import type { BestBallDraftPick } from "./best-ball-draft-state";
-import { DraftValuePanel, type ExpectedReturnFormState } from "@/components/fantasy";
+import { DraftValuePanel, type ExpectedReturnFormState } from "@/components/fantasy/DraftValuePanel";
 import type { DraftValueReport } from "@/lib/fantasyTeamValue";
 
 const POSITIONS = ["QB", "RB", "WR", "TE"] as const;

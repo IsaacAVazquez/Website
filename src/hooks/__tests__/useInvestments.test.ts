@@ -469,6 +469,30 @@ describe("useInvestments derived calculations", () => {
     expect(result.current.holdings[0]).toEqual({ symbol: "AAPL", shares: 2, averageCost: 150 });
   });
 
+  // The dashboard keys six memos and two D3 charts on these. A new array on
+  // every render rebuilt the allocation donut on each keystroke in the filter.
+  it("keeps the derived holdings and summary across a render that changed nothing", async () => {
+    window.localStorage.setItem(
+      "portfolio_holdings",
+      JSON.stringify([{ symbol: "AAPL", shares: 2, averageCost: 150 }]),
+    );
+    global.fetch = jest.fn().mockResolvedValue({
+      ok: true,
+      json: async () => ({ allFailed: false, quotes: [validQuote("AAPL", 200)] }),
+    });
+
+    const { result, rerender } = renderHook(() => useInvestments());
+    await waitFor(() => expect(result.current.enhancedHoldings[0]?.priceSource).toBe("live"));
+    await waitFor(() => expect(result.current.isLoading).toBe(false));
+
+    const { enhancedHoldings, summary } = result.current;
+    rerender();
+
+    expect(result.current.enhancedHoldings).toBe(enhancedHoldings);
+    expect(result.current.summary).toBe(summary);
+    expect(summary.totalValue).toBe(400);
+  });
+
   it("keeps portfolio edits in memory and surfaces a failed durable write", async () => {
     global.fetch = jest.fn().mockResolvedValue({
       ok: false,

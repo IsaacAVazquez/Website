@@ -10,12 +10,6 @@ export const isMobile = () => {
   const width = window.innerWidth;
   return width < 768; // Match Tailwind's md: breakpoint (768px)
 };
-import { ClassValue, clsx } from "clsx";
-import { twMerge } from "tailwind-merge";
-
-export function cn(...inputs: ClassValue[]) {
-  return twMerge(clsx(inputs));
-}
 
 export function clamp(value: number, minimum: number, maximum: number): number {
   return Math.min(maximum, Math.max(minimum, value));

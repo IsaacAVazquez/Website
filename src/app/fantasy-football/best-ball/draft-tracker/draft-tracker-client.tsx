@@ -7,7 +7,8 @@ import { useCallback, useEffect, useMemo, useRef, useState, useSyncExternalStore
 import { useReducedMotion } from "framer-motion";
 import { Redo2, RotateCcw, Undo2 } from "lucide-react";
 import { Breadcrumbs } from "@/components/navigation/Breadcrumbs";
-import { PlayerDetailDrawer, type ExpectedReturnFormState } from "@/components/fantasy";
+import type { ExpectedReturnFormState } from "@/components/fantasy/DraftValuePanel";
+import { DeferredPlayerDetailDrawer } from "@/components/fantasy/DeferredPlayerDetailDrawer";
 import { useBestBallSnapshot } from "@/hooks/useBestBallSnapshot";
 import {
   BEST_BALL_CONTESTS,
@@ -1120,7 +1121,7 @@ function BestBallDraftRoom({
         the Compare button stays out, and logging from the drawer records the
         current pick and closes it, mirroring the redraft tracker.
       */}
-      <PlayerDetailDrawer
+      <DeferredPlayerDetailDrawer
         player={drawerPlayer}
         publishedRank={detailPlayer ? String(detailPlayer.bestBallRank) : undefined}
         adpAvailable={adpAvailable && !detailPlayer?.isUndraftedAtContestFloor}

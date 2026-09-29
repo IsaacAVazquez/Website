@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useMemo, useRef } from "react";
 import { select, pie as d3Pie, arc as d3Arc } from "d3";
 import type { PieArcDatum } from "d3";
 import { TerminalPanel } from "./TerminalPanel";
@@ -13,13 +13,19 @@ interface Props {
 import { holdingColor } from "./holdingPalette";
 
 export function AllocationChart({ holdings }: Props) {
-  const portfolio = holdings.map((h) => h.symbol);
+  // Both feed the drawing effect below, which clears the SVG and draws it
+  // again, so they keep their identity until the holdings change.
+  const portfolio = useMemo(() => holdings.map((h) => h.symbol), [holdings]);
   const svgRef = useRef<SVGSVGElement>(null);
   const tooltipRef = useRef<HTMLDivElement>(null);
 
-  const data = holdings
-    .filter((h) => h.allocationPercent !== null && h.allocationPercent > 0)
-    .sort((a, b) => (b.allocationPercent ?? 0) - (a.allocationPercent ?? 0));
+  const data = useMemo(
+    () =>
+      holdings
+        .filter((h) => h.allocationPercent !== null && h.allocationPercent > 0)
+        .sort((a, b) => (b.allocationPercent ?? 0) - (a.allocationPercent ?? 0)),
+    [holdings],
+  );
 
   useEffect(() => {
     if (!svgRef.current || data.length === 0) return;

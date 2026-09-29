@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useMemo, useRef } from "react";
 import { select, scaleBand, scaleLinear, max, axisBottom, axisLeft } from "d3";
 import { TerminalPanel } from "./TerminalPanel";
 import { useStockData } from "@/hooks/useStockData";
@@ -123,7 +123,8 @@ function GrowthChart({ data }: { data: { label: string; growth: number }[] }) {
 
 export function GrowthPanel({ symbol }: Props) {
   const { data: raw, isLoading, error, isNotFetched, refetch } = useStockData(symbol, "growth");
-  const metrics = extractMetrics(raw);
+  // The chart redraws whenever this array changes, so it changes with the data.
+  const metrics = useMemo(() => extractMetrics(raw), [raw]);
 
   return (
     <TerminalPanel padding="sm">

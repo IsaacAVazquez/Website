@@ -90,7 +90,10 @@ function withSecurityHeaders(response: NextResponse, request: NextRequest) {
   response.headers.set("Permissions-Policy", "camera=(), microphone=(), geolocation=()");
   response.headers.set("Strict-Transport-Security", "max-age=31536000; includeSubDomains");
 
-  // Prevent Netlify Durable Cache from storing HTML pages.
+  // This header reaches the browser and does not decide what Netlify's cache
+  // stores. Netlify runs the proxy in front of its cache, so a page is stored
+  // under the headers the page itself sends, and prerendered pages are served
+  // from the cache with this header on them.
   // Static assets (/_next/static/) are excluded by the proxy matcher.
   response.headers.set("Netlify-CDN-Cache-Control", "no-store");
 
