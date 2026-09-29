@@ -9,6 +9,7 @@ All notable changes to this repository are documented here. Format: `YYYY-MM-DD`
 - Ship less JavaScript on first load and cache dashboard pages at the CDN ([#495](https://github.com/IsaacAVazquez/Website/pull/495)).
 - Line every route up with the header from phone to big monitor ([#496](https://github.com/IsaacAVazquez/Website/pull/496)).
 - Harden every data lane and open the blob stores at runtime ([#497](https://github.com/IsaacAVazquez/Website/pull/497)).
+- Settle the data audit's content follow-ups ([#502](https://github.com/IsaacAVazquez/Website/pull/502)).
 
 ---
 
