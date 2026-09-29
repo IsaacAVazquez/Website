@@ -1,6 +1,7 @@
 import { expect, test, type Page } from "@playwright/test";
 import { getAllCaseStudies } from "../src/constants/caseStudies";
 import { PROJECT_PRESS } from "../src/constants/projectPress";
+import { expectAlignedLayout } from "./layoutChecks";
 
 // The rendered half of src/constants/__tests__/project-routes-complete.test.ts.
 // Every live portfolio project renders one h1 and one main, opens on its hero
@@ -53,3 +54,25 @@ for (const timezoneId of ["America/Los_Angeles", "Asia/Tokyo"]) {
     }
   });
 }
+
+// Every project route (the fantasy sub-routes included), score pools, a topic,
+// and a post line up with the header at a phone, a laptop, and a big monitor.
+// Chromium only, since the edges don't differ by engine and the full matrix
+// runs every spec in five browsers.
+const LAYOUT_ROUTES = [
+  ...Object.keys(PROJECT_PRESS),
+  "/score-pools",
+  "/writing/topics/sports-fantasy",
+  "/writing/complete-guide-qa-engineering",
+];
+
+test.describe("project route layout", () => {
+  test.skip(({ browserName }) => browserName !== "chromium", "layout is checked in Chromium");
+
+  for (const route of LAYOUT_ROUTES) {
+    test(`${route} lines up with the header at 390, 1440, and 1920`, async ({ page }) => {
+      await page.goto(route);
+      await expectAlignedLayout(page);
+    });
+  }
+});
