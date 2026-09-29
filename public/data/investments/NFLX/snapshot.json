@@ -1,17 +1,11 @@
 {
   "symbol": "NFLX",
-  "lastUpdated": "2026-08-18T23:06:20.443188+00:00",
+  "lastUpdated": "2026-09-29T06:39:51.976581+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-08-18T23:06:20.443188+00:00",
+    "snapshotBuiltAt": "2026-09-29T06:39:51.976581+00:00",
     "sections": {
       "price": "2026-09-28"
-    },
-    "retainedSections": [
-      "fundamentals",
-      "wacc",
-      "beta",
-      "news"
-    ]
+    }
   },
   "source": "prefetched",
   "capabilities": {
@@ -46,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 3.1742,
-      "ttmPe": 24.62,
-      "marketCap": 325453526952,
-      "psRatio": 6.73,
-      "pbRatio": 10.79,
-      "pegRatio": 0.29
+      "ttmPe": 21.81,
+      "marketCap": 288269545431,
+      "psRatio": 5.96,
+      "pbRatio": 9.56,
+      "pegRatio": 1.97
     },
     "profitability": {
       "roe": 11.1,
@@ -4932,15 +4926,15 @@
       ]
     },
     "wacc": {
-      "wacc": 16.38,
-      "costOfEquity": 17.04,
-      "costOfDebt": 1.82,
-      "taxRate": 19,
-      "beta": 1.4974,
-      "marketCap": 326968503525
+      "wacc": 16.650000000000002,
+      "costOfEquity": 17.43,
+      "costOfDebt": 1.23,
+      "taxRate": 16,
+      "beta": 1.597,
+      "marketCap": 288269545431
     },
     "beta": {
-      "beta5y": 1.4974
+      "beta5y": 1.597
     },
     "price": [
       {
@@ -7026,19 +7020,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "31a140c6-af8e-370f-825b-ea2d2f3cb98b",
-        "title": "Big banks report Q1 beats, China stops taking Boeing deliveries: Morning Buzz",
-        "publisher": "TipRanks",
-        "reportDate": "2025-04-16",
-        "link": "https://finance.yahoo.com/news/big-banks-report-q1-beats-155936913.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "5217b401-375d-3116-ac7e-9bf4d8831ecd",
         "title": "Stocks making big moves yesterday: Allegro MicroSystems, Netflix, Hewlett Packard Enterprise, Sterling and Rocket Lab",
         "publisher": "StockStory",
         "reportDate": "2025-04-16",
         "link": "https://finance.yahoo.com/news/stocks-making-big-moves-yesterday-122452289.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "31a140c6-af8e-370f-825b-ea2d2f3cb98b",
+        "title": "Big banks report Q1 beats, China stops taking Boeing deliveries: Morning Buzz",
+        "publisher": "TipRanks",
+        "reportDate": "2025-04-16",
+        "link": "https://finance.yahoo.com/news/big-banks-report-q1-beats-155936913.html",
         "type": "STORY"
       }
     ],
@@ -7104,43 +7098,43 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 24.62,
-        "industryAvg": 37.44
+        "value": 21.81,
+        "industryAvg": 23.54
       },
       {
         "metric": "P/S Ratio",
-        "value": 6.73,
-        "industryAvg": 2.87
+        "value": 5.96,
+        "industryAvg": 2.45
       },
       {
         "metric": "P/B Ratio",
-        "value": 10.79,
-        "industryAvg": 3.13
+        "value": 9.56,
+        "industryAvg": 2.99
       },
       {
         "metric": "ROE",
         "value": 11.1,
-        "industryAvg": 2.86
+        "industryAvg": 8.66
       },
       {
         "metric": "ROA",
         "value": 5.6899999999999995,
-        "industryAvg": 1.17
+        "industryAvg": 3.66
       },
       {
         "metric": "Gross Margin",
         "value": 51.93,
-        "industryAvg": 36.730000000000004
+        "industryAvg": 40.67
       },
       {
         "metric": "EBITDA Margin",
         "value": 68.92,
-        "industryAvg": 27.67
+        "industryAvg": 26.08
       },
       {
         "metric": "Net Margin",
         "value": 27.08,
-        "industryAvg": 8.63
+        "industryAvg": 6.75
       }
     ]
   }

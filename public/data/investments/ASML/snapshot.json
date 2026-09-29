@@ -1,17 +1,11 @@
 {
   "symbol": "ASML",
-  "lastUpdated": "2026-07-21T23:37:48.967691+00:00",
+  "lastUpdated": "2026-09-29T06:39:51.976581+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-07-21T23:37:48.967691+00:00",
+    "snapshotBuiltAt": "2026-09-29T06:39:51.976581+00:00",
     "sections": {
       "price": "2026-09-28"
-    },
-    "retainedSections": [
-      "fundamentals",
-      "wacc",
-      "beta",
-      "news"
-    ]
+    }
   },
   "source": "prefetched",
   "capabilities": {
@@ -46,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 32.121,
-      "ttmPe": 54.14,
-      "marketCap": 670249088654,
-      "psRatio": 16.62,
-      "pbRatio": 26.91,
-      "pegRatio": 1.9
+      "ttmPe": 55.15,
+      "marketCap": 682732767957,
+      "psRatio": 16.93,
+      "pbRatio": 27.41,
+      "pegRatio": 1.74
     },
     "profitability": {
       "roe": 13.68,
@@ -5859,15 +5853,15 @@
       ]
     },
     "wacc": {
-      "wacc": 19.12,
-      "costOfEquity": 19.24,
+      "wacc": 18.44,
+      "costOfEquity": 18.56,
       "costOfDebt": 0.25,
       "taxRate": 15,
-      "beta": 1.7589,
-      "marketCap": 710340237808
+      "beta": 1.7457,
+      "marketCap": 682732767957
     },
     "beta": {
-      "beta5y": 1.7589
+      "beta5y": 1.7457
     },
     "price": [
       {
@@ -7961,11 +7955,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "cf65fdbe-ff73-3e8d-9162-f16a47573a8b",
-        "title": "ASML Holding N.V. (ASML) is Attracting Investor Attention: Here is What You Should Know",
+        "uuid": "bc155dde-75b1-32a4-8e95-930c51b3acb0",
+        "title": "ASML Holding Stock Soars 17% in a Month: Should You Bet on It Now?",
         "publisher": "Zacks",
         "reportDate": "2025-05-21",
-        "link": "https://finance.yahoo.com/news/asml-holding-n-v-asml-130014706.html",
+        "link": "https://finance.yahoo.com/news/asml-holding-stock-soars-17-131400634.html",
         "type": "STORY"
       }
     ],
@@ -7983,21 +7977,21 @@
         "title": "President, CEO and Chair of the Board of Management",
         "age": 52,
         "yearBorn": 1973,
-        "totalPay": 4322796
+        "totalPay": 4304108
       },
       {
         "name": "Mr. Frederic J. M. Schneider-Maunoury",
         "title": "Executive VP, COO & Member of the Management Board",
         "age": 64,
         "yearBorn": 1961,
-        "totalPay": 2563054
+        "totalPay": 2551973
       },
       {
         "name": "Mr. James P. Koonmen",
         "title": "Executive VP, Chief Customer Officer & Member of Management Board",
         "age": 58,
         "yearBorn": 1967,
-        "totalPay": 2728744
+        "totalPay": 2716947
       },
       {
         "name": "Mr. Marco J. A. Pieters",
@@ -8008,7 +8002,7 @@
         "title": "Executive VP, CFO & Member of the Management Board",
         "age": 60,
         "yearBorn": 1965,
-        "totalPay": 2544771
+        "totalPay": 2533769
       },
       {
         "name": "Mr. Ron Kool",
@@ -8019,7 +8013,7 @@
         "title": "Executive VP, Chief Strategic Sourcing & Procurement Officer and Member of Management Board",
         "age": 58,
         "yearBorn": 1967,
-        "totalPay": 2673895
+        "totalPay": 2662335
       },
       {
         "name": "Ms. Cristina Monteiro",
@@ -8029,43 +8023,43 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 54.14,
-        "industryAvg": 58.7
+        "value": 55.15,
+        "industryAvg": 52.41
       },
       {
         "metric": "P/S Ratio",
-        "value": 16.62,
-        "industryAvg": 15.6
+        "value": 16.93,
+        "industryAvg": 14.24
       },
       {
         "metric": "P/B Ratio",
-        "value": 26.91,
-        "industryAvg": 4.26
+        "value": 27.41,
+        "industryAvg": 19.96
       },
       {
         "metric": "ROE",
         "value": 13.68,
-        "industryAvg": 10.73
+        "industryAvg": 38.34
       },
       {
         "metric": "ROA",
         "value": 5.94,
-        "industryAvg": 5.28
+        "industryAvg": 19.11
       },
       {
         "metric": "Gross Margin",
         "value": 53.99,
-        "industryAvg": 49.2
+        "industryAvg": 49.41
       },
       {
         "metric": "EBITDA Margin",
         "value": 37.059999999999995,
-        "industryAvg": 35.089999999999996
+        "industryAvg": 34.61
       },
       {
         "metric": "Net Margin",
         "value": 31.28,
-        "industryAvg": 27.33
+        "industryAvg": 26.69
       }
     ]
   }

@@ -1,12 +1,13 @@
 {
   "symbol": "COST",
-  "lastUpdated": "2026-07-20T23:39:29.444726+00:00",
+  "lastUpdated": "2026-09-29T06:39:51.976581+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-07-20T23:39:29.444726+00:00",
+    "snapshotBuiltAt": "2026-09-29T06:39:51.976581+00:00",
     "sections": {
       "price": "2026-09-28"
     },
     "retainedSections": [
+      "info",
       "fundamentals"
     ]
   },
@@ -21,10 +22,10 @@
     "income_statement": true,
     "balance_sheet": true,
     "cash_flow": true,
-    "wacc": false,
+    "wacc": true,
     "industry": true,
-    "beta": false,
-    "news": false,
+    "beta": true,
+    "news": true,
     "officers": true,
     "compare": true
   },
@@ -42,12 +43,12 @@
       "longName": "Costco Wholesale Corporation"
     },
     "fundamentals": {
-      "ttmEps": 19.8817,
-      "ttmPe": 47.32,
-      "pegRatio": 3.84,
-      "marketCap": 417289017180,
-      "psRatio": 1.42,
-      "pbRatio": 12.45
+      "ttmEps": 20.7627,
+      "ttmPe": 44.45,
+      "pegRatio": 2.96,
+      "marketCap": 409099056720,
+      "psRatio": 1.39,
+      "pbRatio": 12.21
     },
     "profitability": {
       "roe": 6.68,
@@ -84,7 +85,7 @@
       },
       {
         "metric": "EPS YoY",
-        "yoyGrowth": 15.27
+        "yoyGrowth": 15.010000000000002
       }
     ],
     "income_statement": {
@@ -4985,6 +4986,17 @@
         }
       ]
     },
+    "wacc": {
+      "wacc": 11.600000000000001,
+      "costOfEquity": 11.82,
+      "costOfDebt": 0.38999999999999996,
+      "taxRate": 25,
+      "beta": 0.863,
+      "marketCap": 409099056720
+    },
+    "beta": {
+      "beta5y": 0.863
+    },
     "price": [
       {
         "date": "2025-09-26",
@@ -7003,6 +7015,88 @@
         "volume": 2420300
       }
     ],
+    "news": [
+      {
+        "uuid": "e9a0aef3-35a5-38f5-9261-c0e9da5f0052",
+        "title": "Rocket acquires Mr. Cooper, Musk’s xAI acquires X: Morning Buzz",
+        "publisher": "TipRanks",
+        "reportDate": "2025-04-02",
+        "link": "https://finance.yahoo.com/news/rocket-acquires-mr-cooper-musk-161611941.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "163599f2-8ed9-35ed-b1e2-a05195e8bade",
+        "title": "Novavax & RFK Jr., Costco sales, Lovesac earnings: Market Minute",
+        "publisher": "Yahoo Finance Video",
+        "reportDate": "2025-04-11",
+        "link": "https://finance.yahoo.com/video/novavax-rfk-jr-costco-sales-172302724.html",
+        "type": "VIDEO"
+      },
+      {
+        "uuid": "66de343f-f99e-3c56-9594-c7867a8b58dc",
+        "title": "Is This Fast-Growing Chain the Next Costco?",
+        "publisher": "Motley Fool",
+        "reportDate": "2025-04-22",
+        "link": "https://finance.yahoo.com/m/66de343f-f99e-3c56-9594-c7867a8b58dc/is-this-fast-growing-chain.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "6aab8472-3560-3f6a-86f5-e5c442ddc1a3",
+        "title": "The Zacks Analyst Blog Highlights Costco, American Express, Goldman Sachs, Willis Lease Finance and CPS Technologies",
+        "publisher": "Zacks",
+        "reportDate": "2025-04-25",
+        "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-costco-084900829.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "85abaece-e429-3634-8836-6300c308154b",
+        "title": "Affirm Stock Gains as Buy Now, Pay Later Company Announces Costco Deal",
+        "publisher": "Investopedia",
+        "reportDate": "2025-05-14",
+        "link": "https://finance.yahoo.com/m/85abaece-e429-3634-8836-6300c308154b/affirm-stock-gains-as-buy.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "cfeb39ef-8e64-324b-b357-ed4f45e56148",
+        "title": "AFRM Partners With Costco and Mattress Firm for Smarter Payments",
+        "publisher": "Zacks",
+        "reportDate": "2025-05-15",
+        "link": "https://finance.yahoo.com/news/afrm-partners-costco-mattress-firm-152800537.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "3a153ad4-158e-4038-8b5d-788410029417",
+        "title": "Walmart should 'eat the tariffs,' Trump says, after retailer warns of looming price hikes",
+        "publisher": "Yahoo Finance",
+        "reportDate": "2025-05-17",
+        "link": "https://finance.yahoo.com/news/walmart-should-eat-the-tariffs-trump-says-after-retailer-warns-of-looming-price-hikes-155126753.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "a28a0f41-afed-32e6-b6d2-61a5a5dced84",
+        "title": "Sustainable Success Stories: 2 U.S. Companies With a Legacy of Growth",
+        "publisher": "Motley Fool",
+        "reportDate": "2025-05-18",
+        "link": "https://finance.yahoo.com/m/a28a0f41-afed-32e6-b6d2-61a5a5dced84/sustainable-success-stories%3A.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "7a275172-0b55-3960-9f6b-100e23e98d7f",
+        "title": "1 Unpopular Stock that Deserves a Second Chance and 2 to Be Wary Of",
+        "publisher": "StockStory",
+        "reportDate": "2025-05-23",
+        "link": "https://finance.yahoo.com/news/1-unpopular-stock-deserves-second-044203298.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "b2b4bc27-e6fb-338f-8491-a2ea6ede6d69",
+        "title": "Top Research Reports for Costco, Chubb & Cigna",
+        "publisher": "Zacks",
+        "reportDate": "2025-05-24",
+        "link": "https://finance.yahoo.com/news/top-research-reports-costco-chubb-210000731.html",
+        "type": "STORY"
+      }
+    ],
     "officers": [
       {
         "name": "Brenda Weber",
@@ -7066,43 +7160,43 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 47.32,
-        "industryAvg": 38.42
+        "value": 44.45,
+        "industryAvg": 35.73
       },
       {
         "metric": "P/S Ratio",
-        "value": 1.42,
-        "industryAvg": 1.27
+        "value": 1.39,
+        "industryAvg": 1.17
       },
       {
         "metric": "P/B Ratio",
-        "value": 12.45,
-        "industryAvg": 9.15
+        "value": 12.21,
+        "industryAvg": 8.55
       },
       {
         "metric": "ROE",
         "value": 6.68,
-        "industryAvg": 5.86
+        "industryAvg": 25.09
       },
       {
         "metric": "ROA",
         "value": 2.58,
-        "industryAvg": 1.94
+        "industryAvg": 8.19
       },
       {
         "metric": "Gross Margin",
         "value": 12.770000000000001,
-        "industryAvg": 23.09
+        "industryAvg": 23.11
       },
       {
         "metric": "EBITDA Margin",
         "value": 5.06,
-        "industryAvg": 6.67
+        "industryAvg": 6.61
       },
       {
         "metric": "Net Margin",
         "value": 3.11,
-        "industryAvg": 3.2300000000000004
+        "industryAvg": 3.32
       }
     ]
   }

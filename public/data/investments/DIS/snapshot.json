@@ -1,17 +1,11 @@
 {
   "symbol": "DIS",
-  "lastUpdated": "2026-08-18T23:06:20.443188+00:00",
+  "lastUpdated": "2026-09-29T06:39:51.976581+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-08-18T23:06:20.443188+00:00",
+    "snapshotBuiltAt": "2026-09-29T06:39:51.976581+00:00",
     "sections": {
       "price": "2026-09-28"
-    },
-    "retainedSections": [
-      "fundamentals",
-      "wacc",
-      "beta",
-      "news"
-    ]
+    }
   },
   "source": "prefetched",
   "capabilities": {
@@ -46,10 +40,10 @@
     },
     "fundamentals": {
       "ttmEps": 4.8482,
-      "ttmPe": 22.04,
-      "marketCap": 184850500000,
-      "psRatio": 1.87,
-      "pbRatio": 1.68,
+      "ttmPe": 21.78,
+      "marketCap": 182670700000,
+      "psRatio": 1.85,
+      "pbRatio": 1.66,
       "pegRatio": 0.09
     },
     "profitability": {
@@ -6077,15 +6071,15 @@
       ]
     },
     "wacc": {
-      "wacc": 12.770000000000001,
-      "costOfEquity": 16.07,
-      "costOfDebt": 1,
-      "taxRate": 27,
-      "beta": 1.3824,
-      "marketCap": 172782884300
+      "wacc": 12.93,
+      "costOfEquity": 15.989999999999998,
+      "costOfDebt": 1.01,
+      "taxRate": 22,
+      "beta": 1.4088,
+      "marketCap": 182670700000
     },
     "beta": {
-      "beta5y": 1.3824
+      "beta5y": 1.4088
     },
     "price": [
       {
@@ -8147,6 +8141,14 @@
         "type": "STORY"
       },
       {
+        "uuid": "fc344d87-2cd3-330c-8e2b-bb461c9851b9",
+        "title": "Tariffs on films may end up hurting industry, says Barclays",
+        "publisher": "TipRanks",
+        "reportDate": "2025-05-06",
+        "link": "https://finance.yahoo.com/news/tariffs-films-may-end-hurting-151018956.html",
+        "type": "STORY"
+      },
+      {
         "uuid": "998fd320-797b-39de-bf46-2ac265db1f69",
         "title": "Movie studio stocks slide after Trump proposes new foreign film tariff",
         "publisher": "TipRanks",
@@ -8160,14 +8162,6 @@
         "publisher": "TipRanks",
         "reportDate": "2025-05-06",
         "link": "https://finance.yahoo.com/news/morgan-stanley-says-tariff-movies-151039719.html",
-        "type": "STORY"
-      },
-      {
-        "uuid": "fc344d87-2cd3-330c-8e2b-bb461c9851b9",
-        "title": "Tariffs on films may end up hurting industry, says Barclays",
-        "publisher": "TipRanks",
-        "reportDate": "2025-05-06",
-        "link": "https://finance.yahoo.com/news/tariffs-films-may-end-hurting-151018956.html",
         "type": "STORY"
       },
       {
@@ -8250,43 +8244,43 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 22.04,
-        "industryAvg": 37.44
+        "value": 21.78,
+        "industryAvg": 23.54
       },
       {
         "metric": "P/S Ratio",
-        "value": 1.87,
-        "industryAvg": 2.87
+        "value": 1.85,
+        "industryAvg": 2.45
       },
       {
         "metric": "P/B Ratio",
-        "value": 1.68,
-        "industryAvg": 3.13
+        "value": 1.66,
+        "industryAvg": 2.99
       },
       {
         "metric": "ROE",
         "value": 2.41,
-        "industryAvg": 2.86
+        "industryAvg": 8.66
       },
       {
         "metric": "ROA",
         "value": 1.29,
-        "industryAvg": 1.17
+        "industryAvg": 3.66
       },
       {
         "metric": "Gross Margin",
         "value": 40.17,
-        "industryAvg": 36.730000000000004
+        "industryAvg": 40.67
       },
       {
         "metric": "EBITDA Margin",
         "value": 21.87,
-        "industryAvg": 27.67
+        "industryAvg": 26.08
       },
       {
         "metric": "Net Margin",
         "value": 10.45,
-        "industryAvg": 8.63
+        "industryAvg": 6.75
       }
     ]
   }

@@ -1,17 +1,11 @@
 {
   "symbol": "TMUS",
-  "lastUpdated": "2026-08-18T23:06:20.443188+00:00",
+  "lastUpdated": "2026-09-29T06:39:51.976581+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-08-18T23:06:20.443188+00:00",
+    "snapshotBuiltAt": "2026-09-29T06:39:51.976581+00:00",
     "sections": {
       "price": "2026-09-28"
-    },
-    "retainedSections": [
-      "fundamentals",
-      "wacc",
-      "beta",
-      "news"
-    ]
+    }
   },
   "source": "prefetched",
   "capabilities": {
@@ -46,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 9.5556,
-      "ttmPe": 19.11,
-      "marketCap": 196272441936,
-      "psRatio": 2.13,
-      "pbRatio": 3.49,
-      "pegRatio": 1.63
+      "ttmPe": 17.42,
+      "marketCap": 178903389520,
+      "psRatio": 1.94,
+      "pbRatio": 3.18,
+      "pegRatio": 3.23
     },
     "profitability": {
       "roe": 5.779999999999999,
@@ -5724,15 +5718,15 @@
       ]
     },
     "wacc": {
-      "wacc": 4.66,
-      "costOfEquity": 7.199999999999999,
-      "costOfDebt": 0.8500000000000001,
+      "wacc": 4.88,
+      "costOfEquity": 7.7,
+      "costOfDebt": 0.88,
       "taxRate": 25,
-      "beta": 0.323,
-      "marketCap": 192112978344
+      "beta": 0.3224,
+      "marketCap": 178903389520
     },
     "beta": {
-      "beta5y": 0.323
+      "beta5y": 0.3224
     },
     "price": [
       {
@@ -7843,7 +7837,7 @@
       },
       {
         "name": "Mr. André Almeida",
-        "title": "Chief Marketing, Brand & Broadband Officer",
+        "title": "Chief Commercial Officer",
         "age": 48,
         "yearBorn": 1977,
         "totalPay": 117301
@@ -7901,43 +7895,43 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 19.11,
-        "industryAvg": 0
+        "value": 17.42,
+        "industryAvg": 11.08
       },
       {
         "metric": "P/S Ratio",
-        "value": 2.13,
-        "industryAvg": 0
+        "value": 1.94,
+        "industryAvg": 1.13
       },
       {
         "metric": "P/B Ratio",
-        "value": 3.49,
-        "industryAvg": 0
+        "value": 3.18,
+        "industryAvg": 1.66
       },
       {
         "metric": "ROE",
         "value": 5.779999999999999,
-        "industryAvg": 2.22
+        "industryAvg": 9.1
       },
       {
         "metric": "ROA",
         "value": 1.51,
-        "industryAvg": 0.5499999999999999
+        "industryAvg": 2.3
       },
       {
         "metric": "Gross Margin",
         "value": 64.75,
-        "industryAvg": 57.85
+        "industryAvg": 61.24000000000001
       },
       {
         "metric": "EBITDA Margin",
         "value": 38.690000000000005,
-        "industryAvg": 34.239999999999995
+        "industryAvg": 35.19
       },
       {
         "metric": "Net Margin",
         "value": 14.21,
-        "industryAvg": 5.89
+        "industryAvg": 6.43
       }
     ]
   }

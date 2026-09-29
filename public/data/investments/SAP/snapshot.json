@@ -1,17 +1,11 @@
 {
   "symbol": "SAP",
-  "lastUpdated": "2026-08-18T23:06:20.443188+00:00",
+  "lastUpdated": "2026-09-29T06:39:51.976581+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-08-18T23:06:20.443188+00:00",
+    "snapshotBuiltAt": "2026-09-29T06:39:51.976581+00:00",
     "sections": {
       "price": "2026-09-28"
-    },
-    "retainedSections": [
-      "fundamentals",
-      "wacc",
-      "beta",
-      "news"
-    ]
+    }
   },
   "source": "prefetched",
   "capabilities": {
@@ -46,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 7.9544,
-      "ttmPe": 26.15,
-      "marketCap": 240038974000,
-      "psRatio": 5.51,
-      "pbRatio": 4.7,
-      "pegRatio": 1.02
+      "ttmPe": 26.31,
+      "marketCap": 241585602000,
+      "psRatio": 5.54,
+      "pbRatio": 4.73,
+      "pegRatio": 0.79
     },
     "profitability": {
       "roe": 4.87,
@@ -6087,15 +6081,15 @@
       ]
     },
     "wacc": {
-      "wacc": 13.3,
-      "costOfEquity": 13.81,
-      "costOfDebt": 3.71,
-      "taxRate": 28.999999999999996,
-      "beta": 1.1127,
-      "marketCap": 189833417810
+      "wacc": 13.16,
+      "costOfEquity": 13.700000000000001,
+      "costOfDebt": 3.0700000000000003,
+      "taxRate": 27,
+      "beta": 1.1088,
+      "marketCap": 241585602000
     },
     "beta": {
-      "beta5y": 1.1127
+      "beta5y": 1.1088
     },
     "price": [
       {
@@ -8157,19 +8151,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "0753f84c-94d3-3f5e-80a5-3d9416e94ec1",
-        "title": "Tariff-Driven Dollar Woes Help Brighten First-Quarter Earnings",
-        "publisher": "Bloomberg",
-        "reportDate": "2025-05-20",
-        "link": "https://finance.yahoo.com/news/tariff-driven-dollar-woes-help-120000170.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "2d4fc7f6-3a2e-3462-89e4-fd95fa911e69",
         "title": "Accenture and SAP Join Forces to Help Companies Enable Connected Intelligence Across the Enterprise to Drive Speed and Agility in the AI Era",
         "publisher": "Business Wire",
         "reportDate": "2025-05-20",
         "link": "https://finance.yahoo.com/news/accenture-sap-join-forces-help-122900476.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "0753f84c-94d3-3f5e-80a5-3d9416e94ec1",
+        "title": "Tariff-Driven Dollar Woes Help Brighten First-Quarter Earnings",
+        "publisher": "Bloomberg",
+        "reportDate": "2025-05-20",
+        "link": "https://finance.yahoo.com/news/tariff-driven-dollar-woes-help-120000170.html",
         "type": "STORY"
       },
       {
@@ -8203,112 +8197,112 @@
         "title": "Demand Manager & Works Council Europe Representative Member of Supervisory Board",
         "age": 43,
         "yearBorn": 1982,
-        "totalPay": 271975
+        "totalPay": 267371
       },
       {
         "name": "Mr. Andreas Hahn",
         "title": "Chairperson of Works Council Europe & Works Council Europe Rep Member of Supervisory Board",
         "age": 54,
         "yearBorn": 1971,
-        "totalPay": 271975
+        "totalPay": 267371
       },
       {
         "name": "Mr. Christian Klein",
         "title": "CEO & Member of Executive Board",
         "age": 45,
         "yearBorn": 1980,
-        "totalPay": 6091080
+        "totalPay": 5987978
       },
       {
         "name": "Mr. Dominik Asam",
         "title": "CFO & Member of Executive Board",
         "age": 56,
         "yearBorn": 1969,
-        "totalPay": 2928070
+        "totalPay": 2878508
       },
       {
         "name": "Mr. Lars Lamade",
         "title": "Head of Global Sponsorships & Deputy Chairperson of the Supervisory Board",
         "age": 54,
         "yearBorn": 1971,
-        "totalPay": 335629
+        "totalPay": 329948
       },
       {
         "name": "Mr. Muhammad Alam",
         "title": "Lead Product Engineering & Member of Executive Board",
         "age": 47,
         "yearBorn": 1978,
-        "totalPay": 2598228
+        "totalPay": 2554249
       },
       {
         "name": "Mr. Pascal Demat",
         "title": "Solution Advisor HCM & Works Council Europe Representative Member of Supervisory Board",
         "age": 58,
         "yearBorn": 1967,
-        "totalPay": 271975
+        "totalPay": 267371
       },
       {
         "name": "Mr. Sebastian Steinhaeuser",
         "title": "Chief Strategy Officer & COO and Member of Executive Board",
         "age": 39,
         "yearBorn": 1986,
-        "totalPay": 2465134
+        "totalPay": 2423408
       },
       {
         "name": "Mr. Thomas Saueressig",
         "title": "Member of Executive Board",
         "age": 40,
         "yearBorn": 1985,
-        "totalPay": 2887563
+        "totalPay": 2838686
       },
       {
         "name": "Ms. Gina Vargiu-Breuer",
         "title": "Chief People Officer, Labor Director & Member of Executive Board",
         "age": 49,
         "yearBorn": 1976,
-        "totalPay": 2922284
+        "totalPay": 2872819
       }
     ],
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 26.15,
-        "industryAvg": 0.47
+        "value": 26.31,
+        "industryAvg": 24.92
       },
       {
         "metric": "P/S Ratio",
-        "value": 5.51,
-        "industryAvg": 0.03
+        "value": 5.54,
+        "industryAvg": 4.75
       },
       {
         "metric": "P/B Ratio",
-        "value": 4.7,
-        "industryAvg": 0.02
+        "value": 4.73,
+        "industryAvg": 5.3
       },
       {
         "metric": "ROE",
         "value": 4.87,
-        "industryAvg": -3.4799999999999995
+        "industryAvg": -12.33
       },
       {
         "metric": "ROA",
         "value": 2.92,
-        "industryAvg": -1.87
+        "industryAvg": -6.800000000000001
       },
       {
         "metric": "Gross Margin",
         "value": 73.17,
-        "industryAvg": 65.23
+        "industryAvg": 63.42
       },
       {
         "metric": "EBITDA Margin",
         "value": 36.9,
-        "industryAvg": -4.71
+        "industryAvg": 1.5
       },
       {
         "metric": "Net Margin",
         "value": 22.07,
-        "industryAvg": -15.58
+        "industryAvg": -15.879999999999999
       }
     ]
   }

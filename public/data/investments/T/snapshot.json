@@ -1,17 +1,11 @@
 {
   "symbol": "T",
-  "lastUpdated": "2026-08-18T23:06:20.443188+00:00",
+  "lastUpdated": "2026-09-29T06:39:51.976581+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-08-18T23:06:20.443188+00:00",
+    "snapshotBuiltAt": "2026-09-29T06:39:51.976581+00:00",
     "sections": {
       "price": "2026-09-28"
-    },
-    "retainedSections": [
-      "fundamentals",
-      "wacc",
-      "beta",
-      "news"
-    ]
+    }
   },
   "source": "prefetched",
   "capabilities": {
@@ -47,10 +41,10 @@
     "fundamentals": {
       "ttmEps": 3.0239,
       "ttmPe": 8.23,
-      "marketCap": 171212595256,
+      "marketCap": 171281382960,
       "psRatio": 1.35,
       "pbRatio": 1.55,
-      "pegRatio": 0
+      "pegRatio": 1.19
     },
     "profitability": {
       "roe": 4.17,
@@ -3342,7 +3336,7 @@
           "Breakdown": "Share Issued",
           "2026-06-30": "6878770356.0",
           "2026-03-31": "7620748598.0",
-          "2025-12-31": "7620748598.0",
+          "2025-12-31": "7462016598.0",
           "2025-09-30": "7620748598.0",
           "2025-06-30": "7620748598.0",
           "2025-03-31": "7620748598.0",
@@ -3362,7 +3356,7 @@
           "Breakdown": "Ordinary Shares Number",
           "2026-06-30": "6878770356.0",
           "2026-03-31": "6964897715.0",
-          "2025-12-31": "7037502356.0",
+          "2025-12-31": "6878770356.0",
           "2025-09-30": "7109157807.0",
           "2025-06-30": "7161365673.0",
           "2025-03-31": "7195561726.0",
@@ -4272,7 +4266,7 @@
         },
         {
           "Breakdown": "Share Issued",
-          "2025-12-31": "7620748598.0",
+          "2025-12-31": "7462016598.0",
           "2024-12-31": "7620748598.0",
           "2023-12-31": "7620748598.0",
           "2022-12-31": "7621156816.0",
@@ -4282,7 +4276,7 @@
         },
         {
           "Breakdown": "Ordinary Shares Number",
-          "2025-12-31": "7037502356.0",
+          "2025-12-31": "6878770356.0",
           "2024-12-31": "7175895450.0",
           "2023-12-31": "7150063361.0",
           "2022-12-31": "7128000000.0",
@@ -6353,15 +6347,15 @@
       ]
     },
     "wacc": {
-      "wacc": 3.4799999999999995,
-      "costOfEquity": 6.329999999999999,
-      "costOfDebt": 1.15,
-      "taxRate": 22,
-      "beta": 0.2195,
-      "marketCap": 142996812504
+      "wacc": 4.07,
+      "costOfEquity": 6.99,
+      "costOfDebt": 1.16,
+      "taxRate": 14.000000000000002,
+      "beta": 0.2291,
+      "marketCap": 171281382960
     },
     "beta": {
-      "beta5y": 0.2195
+      "beta5y": 0.2291
     },
     "price": [
       {
@@ -8447,19 +8441,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "52572ff0-8db9-302d-b5b4-509603ed432f",
-        "title": "Wireless, Cable and Satellite Stocks Q1 Earnings Review: Comcast (NASDAQ:CMCSA) Shines",
-        "publisher": "StockStory",
-        "reportDate": "2025-05-16",
-        "link": "https://finance.yahoo.com/news/wireless-cable-satellite-stocks-q1-033338038.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "62915b2d-3052-35f6-8dc8-9c24a69041f4",
         "title": "Charter is in talks to combine with rival Cox Communications",
         "publisher": "Bloomberg",
         "reportDate": "2025-05-16",
         "link": "https://finance.yahoo.com/news/charter-talks-combine-rival-cox-074559244.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "52572ff0-8db9-302d-b5b4-509603ed432f",
+        "title": "Wireless, Cable and Satellite Stocks Q1 Earnings Review: Comcast (NASDAQ:CMCSA) Shines",
+        "publisher": "StockStory",
+        "reportDate": "2025-05-16",
+        "link": "https://finance.yahoo.com/news/wireless-cable-satellite-stocks-q1-033338038.html",
         "type": "STORY"
       }
     ],
@@ -8494,17 +8488,16 @@
         "title": "Chief Communications Officer"
       },
       {
-        "name": "Mr. Pascal Desroches CPA",
-        "title": "Senior EVP & CFO",
-        "age": 61,
-        "yearBorn": 1964,
-        "totalPay": 5144684
-      },
-      {
         "name": "Mr. Rick Moore",
         "title": "Senior Vice President of Corporate Development",
         "age": 73,
         "yearBorn": 1952
+      },
+      {
+        "name": "Ms. Darcie M. Cakaric",
+        "title": "Senior EVP & Chief Human Resources Officer",
+        "age": 53,
+        "yearBorn": 1972
       },
       {
         "name": "Ms. Kellyn Smith Kenny M.B.A.",
@@ -8530,42 +8523,42 @@
       {
         "metric": "P/E (TTM)",
         "value": 8.23,
-        "industryAvg": 0
+        "industryAvg": 11.08
       },
       {
         "metric": "P/S Ratio",
         "value": 1.35,
-        "industryAvg": 0
+        "industryAvg": 1.13
       },
       {
         "metric": "P/B Ratio",
         "value": 1.55,
-        "industryAvg": 0
+        "industryAvg": 1.66
       },
       {
         "metric": "ROE",
         "value": 4.17,
-        "industryAvg": 2.22
+        "industryAvg": 9.1
       },
       {
         "metric": "ROA",
         "value": 1.08,
-        "industryAvg": 0.5499999999999999
+        "industryAvg": 2.3
       },
       {
         "metric": "Gross Margin",
         "value": 61.83,
-        "industryAvg": 57.85
+        "industryAvg": 61.24000000000001
       },
       {
         "metric": "EBITDA Margin",
         "value": 40.150000000000006,
-        "industryAvg": 34.239999999999995
+        "industryAvg": 35.19
       },
       {
         "metric": "Net Margin",
         "value": 14.549999999999999,
-        "industryAvg": 5.89
+        "industryAvg": 6.43
       }
     ]
   }

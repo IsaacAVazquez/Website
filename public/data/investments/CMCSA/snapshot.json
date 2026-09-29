@@ -1,17 +1,11 @@
 {
   "symbol": "CMCSA",
-  "lastUpdated": "2026-08-18T23:06:20.443188+00:00",
+  "lastUpdated": "2026-09-29T06:39:51.976581+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-08-18T23:06:20.443188+00:00",
+    "snapshotBuiltAt": "2026-09-29T06:39:51.976581+00:00",
     "sections": {
       "price": "2026-09-28"
-    },
-    "retainedSections": [
-      "fundamentals",
-      "wacc",
-      "beta",
-      "news"
-    ]
+    }
   },
   "source": "prefetched",
   "capabilities": {
@@ -46,10 +40,10 @@
     },
     "fundamentals": {
       "ttmEps": 3.0882,
-      "ttmPe": 8.48,
-      "marketCap": 92844854102,
-      "psRatio": 0.74,
-      "pbRatio": 1.03,
+      "ttmPe": 7.06,
+      "marketCap": 77276140981,
+      "psRatio": 0.62,
+      "pbRatio": 0.86,
       "pegRatio": 0.02
     },
     "profitability": {
@@ -5590,15 +5584,15 @@
       ]
     },
     "wacc": {
-      "wacc": 5.17,
-      "costOfEquity": 9.969999999999999,
+      "wacc": 5.220000000000001,
+      "costOfEquity": 10.32,
       "costOfDebt": 1.16,
       "taxRate": 26,
-      "beta": 0.6539,
-      "marketCap": 84983318394
+      "beta": 0.666,
+      "marketCap": 77276140981
     },
     "beta": {
-      "beta5y": 0.6539
+      "beta5y": 0.666
     },
     "price": [
       {
@@ -7620,19 +7614,19 @@
     ],
     "news": [
       {
-        "uuid": "9b20d6b4-283b-3bb9-a8a2-f6cba8273f1a",
-        "title": "Top Analyst Reports for Roche, Comcast & Eaton",
-        "publisher": "Zacks",
-        "reportDate": "2025-03-25",
-        "link": "https://finance.yahoo.com/news/top-analyst-reports-roche-comcast-202300635.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "03806763-35db-3fdf-9e5a-7b5d25c48ca0",
         "title": "The Zacks Analyst Blog Roche Holding, Comcast, Eaton Corp and National Presto Industries",
         "publisher": "Zacks",
         "reportDate": "2025-03-25",
         "link": "https://finance.yahoo.com/news/zacks-analyst-blog-roche-holding-071600015.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "9b20d6b4-283b-3bb9-a8a2-f6cba8273f1a",
+        "title": "Top Analyst Reports for Roche, Comcast & Eaton",
+        "publisher": "Zacks",
+        "reportDate": "2025-03-25",
+        "link": "https://finance.yahoo.com/news/top-analyst-reports-roche-comcast-202300635.html",
         "type": "STORY"
       },
       {
@@ -7767,43 +7761,43 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 8.48,
-        "industryAvg": 0
+        "value": 7.06,
+        "industryAvg": 11.08
       },
       {
         "metric": "P/S Ratio",
-        "value": 0.74,
-        "industryAvg": 0
+        "value": 0.62,
+        "industryAvg": 1.13
       },
       {
         "metric": "P/B Ratio",
-        "value": 1.03,
-        "industryAvg": 0
+        "value": 0.86,
+        "industryAvg": 1.66
       },
       {
         "metric": "ROE",
         "value": 3.9600000000000004,
-        "industryAvg": 2.22
+        "industryAvg": 9.1
       },
       {
         "metric": "ROA",
         "value": 1.3599999999999999,
-        "industryAvg": 0.5499999999999999
+        "industryAvg": 2.3
       },
       {
         "metric": "Gross Margin",
         "value": 71.98,
-        "industryAvg": 57.85
+        "industryAvg": 61.24000000000001
       },
       {
         "metric": "EBITDA Margin",
         "value": 31.240000000000002,
-        "industryAvg": 34.239999999999995
+        "industryAvg": 35.19
       },
       {
         "metric": "Net Margin",
         "value": 11.78,
-        "industryAvg": 5.89
+        "industryAvg": 6.43
       }
     ]
   }

@@ -1,16 +1,13 @@
 {
   "symbol": "NKE",
-  "lastUpdated": "2026-07-21T23:37:48.967691+00:00",
+  "lastUpdated": "2026-09-29T06:39:51.976581+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-07-21T23:37:48.967691+00:00",
+    "snapshotBuiltAt": "2026-09-29T06:39:51.976581+00:00",
     "sections": {
       "price": "2026-09-28"
     },
     "retainedSections": [
-      "info",
-      "fundamentals",
-      "beta",
-      "news"
+      "info"
     ]
   },
   "source": "prefetched",
@@ -46,11 +43,11 @@
     },
     "fundamentals": {
       "ttmEps": 2.0983,
-      "ttmPe": 20.72,
-      "marketCap": 64466010000,
-      "psRatio": 1.39,
-      "pbRatio": 4.34,
-      "pegRatio": 0.05
+      "ttmPe": 17.34,
+      "marketCap": 53966370000,
+      "psRatio": 1.16,
+      "pbRatio": 3.63,
+      "pegRatio": 0.04
     },
     "profitability": {
       "roe": 7.380000000000001,
@@ -5431,8 +5428,9 @@
         }
       ]
     },
+    "wacc": {},
     "beta": {
-      "beta5y": 1.1062
+      "beta5y": 1.0953
     },
     "price": [
       {
@@ -7478,19 +7476,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "c65b5284-c937-30fd-b168-79a09c7c4e99",
-        "title": "Brunswick (BC) Q1 Earnings: What To Expect",
-        "publisher": "StockStory",
-        "reportDate": "2025-04-23",
-        "link": "https://finance.yahoo.com/news/brunswick-bc-q1-earnings-expect-120216579.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "9297adde-72dc-3939-90ef-da9acee1ded6",
         "title": "Strategic Education (STRA) Reports Earnings Tomorrow: What To Expect",
         "publisher": "StockStory",
         "reportDate": "2025-04-23",
         "link": "https://finance.yahoo.com/news/strategic-education-stra-reports-earnings-120152882.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "c65b5284-c937-30fd-b168-79a09c7c4e99",
+        "title": "Brunswick (BC) Q1 Earnings: What To Expect",
+        "publisher": "StockStory",
+        "reportDate": "2025-04-23",
+        "link": "https://finance.yahoo.com/news/brunswick-bc-q1-earnings-expect-120216579.html",
         "type": "STORY"
       },
       {
@@ -7536,6 +7534,12 @@
     ],
     "officers": [
       {
+        "name": "Mr. David M. Denton",
+        "title": "Executive VP, CFO, Interim Corporate Controller & Principal Accounting Officer",
+        "age": 60,
+        "yearBorn": 1965
+      },
+      {
         "name": "Mr. Elliott J. Hill",
         "title": "CEO, President & Director",
         "age": 61,
@@ -7550,10 +7554,14 @@
       },
       {
         "name": "Mr. Matthew Friend",
-        "title": "Executive VP & CFO",
+        "title": "Advisor",
         "age": 47,
         "yearBorn": 1978,
         "totalPay": 2437500
+      },
+      {
+        "name": "Mr. Michael Gonda",
+        "title": "EVP & Chief Communications and Strategy Officer"
       },
       {
         "name": "Mr. Philip H. Knight",
@@ -7561,48 +7569,69 @@
         "age": 87,
         "yearBorn": 1938,
         "totalPay": 3069594
+      },
+      {
+        "name": "Mr. Robert Leinwand",
+        "title": "EVP & Chief Legal Officer",
+        "totalPay": 1979046
+      },
+      {
+        "name": "Mr. Venkatesh Alagirisamy",
+        "title": "Executive VP & COO",
+        "age": 48,
+        "yearBorn": 1977,
+        "totalPay": 1878496
+      },
+      {
+        "name": "Ms. Nicole Hubbard Graham",
+        "title": "Executive VP & Chief Marketing Officer"
+      },
+      {
+        "name": "Ms. Treasure Heinle",
+        "title": "Executive VP and Chief Human Resources & People Officer",
+        "totalPay": 1938115
       }
     ],
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 20.72,
-        "industryAvg": 32.89
+        "value": 17.34,
+        "industryAvg": 15.72
       },
       {
         "metric": "P/S Ratio",
-        "value": 1.39,
-        "industryAvg": 1.68
+        "value": 1.16,
+        "industryAvg": 1.3
       },
       {
         "metric": "P/B Ratio",
-        "value": 4.34,
-        "industryAvg": 3.53
+        "value": 3.63,
+        "industryAvg": 3.27
       },
       {
         "metric": "ROE",
         "value": 7.380000000000001,
-        "industryAvg": 4.37
+        "industryAvg": 16.669999999999998
       },
       {
         "metric": "ROA",
         "value": 2.83,
-        "industryAvg": 1.8800000000000001
+        "industryAvg": 7.000000000000001
       },
       {
         "metric": "Gross Margin",
         "value": 49.15,
-        "industryAvg": 51.32
+        "industryAvg": 47.17
       },
       {
         "metric": "EBITDA Margin",
         "value": 13.8,
-        "industryAvg": 12.32
+        "industryAvg": 11.67
       },
       {
         "metric": "Net Margin",
         "value": 9.74,
-        "industryAvg": 7.07
+        "industryAvg": 6.29
       }
     ]
   }
