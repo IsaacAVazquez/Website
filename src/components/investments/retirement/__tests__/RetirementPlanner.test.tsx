@@ -47,6 +47,19 @@ async function bringIntoView() {
   await flush();
 }
 
+// The browser lays a print out from the DOM as it stands when the beforeprint
+// handlers return. It does not scroll, so the observer never reports the
+// section, and it does not wait for a timer. This copies the planner at that
+// moment, before anything queued can run.
+function pageAtPrint(container: HTMLElement): HTMLElement {
+  const copies: HTMLElement[] = [];
+  act(() => {
+    window.dispatchEvent(new Event("beforeprint"));
+    copies.push(container.cloneNode(true) as HTMLElement);
+  });
+  return copies[0];
+}
+
 describe("RetirementPlanner", () => {
   let container: HTMLDivElement;
   let root: Root;
@@ -91,6 +104,47 @@ describe("RetirementPlanner", () => {
     await bringIntoView();
     expect(container.textContent).toMatch(/\d+ of 100/);
     expect(container.textContent).toContain("Save more");
+  });
+
+  it("prints the verdict when the section never came near the viewport", async () => {
+    await act(async () => {
+      root = createRoot(container);
+      root.render(<RetirementPlanner />);
+    });
+    await flush();
+    expect(container.textContent).toContain("Crunching scenarios");
+
+    const printed = pageAtPrint(container);
+
+    expect(printed.textContent).toMatch(/\d+ of 100/);
+    expect(printed.textContent).not.toContain("Crunching scenarios");
+  });
+
+  it("prints the levers, which otherwise arrive a tick after the verdict", async () => {
+    await act(async () => {
+      root = createRoot(container);
+      root.render(<RetirementPlanner />);
+    });
+    await flush();
+
+    const printed = pageAtPrint(container);
+
+    expect(printed.textContent).toContain("Save more");
+    expect(printed.querySelector(".invest-retire-lever-skeleton")).toBeNull();
+  });
+
+  it("prints the assumptions and the disclaimer with the projection", async () => {
+    await act(async () => {
+      root = createRoot(container);
+      root.render(<RetirementPlanner />);
+    });
+    await flush();
+
+    const printed = pageAtPrint(container);
+
+    expect(printed.querySelector('[aria-label="Assumptions used"]')).not.toBeNull();
+    expect(printed.textContent).toContain("Capital market assumptions:");
+    expect(printed.textContent).toMatch(/educational purposes only/i);
   });
 
   it("renders a verdict and levers from the default plan", async () => {

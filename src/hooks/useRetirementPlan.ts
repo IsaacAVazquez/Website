@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { flushSync } from "react-dom";
 import {
   projectCore,
   computeLevers,
@@ -87,6 +88,20 @@ function seedFreshPlan(seed?: RetirementSeed): RetirementPlanInput {
   return plan;
 }
 
+/** The levers, and the plan they were worked out for. */
+interface LeverState {
+  plan: RetirementPlanInput | null;
+  levers: LeverEffect[];
+}
+
+function leversFor(plan: RetirementPlanInput): LeverState {
+  try {
+    return { plan, levers: computeLevers(plan, getCurrentYear()) };
+  } catch {
+    return { plan, levers: [] };
+  }
+}
+
 let accountCounter = 0;
 function nextAccountId(): string {
   accountCounter += 1;
@@ -129,6 +144,8 @@ export interface UseRetirementPlanReturn {
  * section is near the viewport, because it is the last section on the
  * investments page and the projection measured about 150 ms of main-thread
  * work on a desktop. The plan still hydrates and persists while disabled.
+ * A print runs the projection whatever `enabled` says, since a page that is
+ * printed without being scrolled never brings the section near the viewport.
  *
  * ponytail: once enabled, the lever search still runs in one task and blocks
  * for that long on every settled edit. Move computeLevers to a Web Worker if
@@ -187,40 +204,53 @@ export function useRetirementPlan(
     return () => clearTimeout(handle);
   }, [plan, ready, isSampleScenario]);
 
+  // A print turns the projection on by itself and it stays on. The browser
+  // lays the page out where it stands, so nothing scrolls the planner into
+  // view and the caller's observer never reports it.
+  const [printRequested, setPrintRequested] = useState(false);
+  const active = enabled || printRequested;
+
   // Fast path — verdict, chart, and assumptions paint immediately. An engine
   // failure must be distinguishable from "still computing", or the UI shows a
   // permanent loading state.
   const { core, hasError } = useMemo(() => {
-    if (!ready || !enabled) return { core: null, hasError: false };
+    if (!ready || !active) return { core: null, hasError: false };
     try {
       return { core: projectCore(debouncedPlan, getCurrentYear()), hasError: false };
     } catch {
       return { core: null, hasError: true };
     }
-  }, [debouncedPlan, ready, enabled]);
+  }, [debouncedPlan, ready, active]);
 
   // Heavier lever sensitivity runs off the critical path, after the core paints.
   // We track which plan the levers belong to so "computing" can be derived
   // (no synchronous setState in the effect body).
-  const [leverState, setLeverState] = useState<{
-    plan: RetirementPlanInput | null;
-    levers: LeverEffect[];
-  }>({ plan: null, levers: [] });
+  const [leverState, setLeverState] = useState<LeverState>({ plan: null, levers: [] });
+  const leversReady = leverState.plan === debouncedPlan;
 
   useEffect(() => {
-    if (!core) return;
-    const handle = setTimeout(() => {
-      try {
-        setLeverState({
-          plan: debouncedPlan,
-          levers: computeLevers(debouncedPlan, getCurrentYear()),
-        });
-      } catch {
-        setLeverState({ plan: debouncedPlan, levers: [] });
-      }
-    }, 0);
+    // A print has already run the search for this plan by the time it turns
+    // the projection on, so there is nothing left to defer.
+    if (!core || leversReady) return;
+    const handle = setTimeout(() => setLeverState(leversFor(debouncedPlan)), 0);
     return () => clearTimeout(handle);
-  }, [debouncedPlan, core]);
+  }, [debouncedPlan, core, leversReady]);
+
+  // The browser lays the print out as soon as this handler returns. A state
+  // change on its own renders in a later task and the lever search waits
+  // behind a timeout, so the search runs here and the change is flushed.
+  useEffect(() => {
+    if (!ready) return;
+    const handleBeforePrint = () => {
+      const printable = leversReady ? leverState : leversFor(debouncedPlan);
+      flushSync(() => {
+        setPrintRequested(true);
+        setLeverState(printable);
+      });
+    };
+    window.addEventListener("beforeprint", handleBeforePrint);
+    return () => window.removeEventListener("beforeprint", handleBeforePrint);
+  }, [ready, debouncedPlan, leverState, leversReady]);
 
   const result = useMemo<RetirementResult | null>(() => {
     if (!core) return null;
@@ -228,10 +258,9 @@ export function useRetirementPlan(
     return { ...core, levers };
   }, [core, leverState, debouncedPlan]);
 
-  const leversReady = leverState.plan === debouncedPlan;
   // Nothing is computing while the projection is held back.
   const isComputing =
-    enabled && ready && !hasError && (debouncedPlan !== plan || !leversReady);
+    active && ready && !hasError && (debouncedPlan !== plan || !leversReady);
 
   // ─── Mutators ──────────────────────────────────────────────────────────────
 
