@@ -1,8 +1,8 @@
 {
   "symbol": "KLAC",
-  "lastUpdated": "2026-09-29T06:12:23.168021+00:00",
+  "lastUpdated": "2026-09-29T07:04:00.244178+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-09-29T06:12:23.168021+00:00",
+    "snapshotBuiltAt": "2026-09-29T07:04:00.244178+00:00",
     "sections": {
       "price": "2026-09-28"
     }
@@ -8368,11 +8368,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "5eeeacf1-26d3-3d4d-a281-9c0a18bbbb13",
-        "title": "KLA Corporation (NASDAQ:KLAC) Posts Better-Than-Expected Sales In Q1, Provides Encouraging Quarterly Revenue Guidance",
-        "publisher": "StockStory",
+        "uuid": "7b284d14-6b62-3ee7-a618-c21dd56b00bc",
+        "title": "KLA Corp (KLAC) Q3 2025 Earnings Call Highlights: Surpassing Revenue Expectations and Strategic ...",
+        "publisher": "GuruFocus.com",
         "reportDate": "2025-05-01",
-        "link": "https://finance.yahoo.com/news/kla-corporation-nasdaq-klac-posts-202749386.html",
+        "link": "https://finance.yahoo.com/news/kla-corp-klac-q3-2025-071854024.html",
         "type": "STORY"
       }
     ],

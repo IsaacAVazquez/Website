@@ -1,17 +1,11 @@
 {
   "symbol": "APH",
-  "lastUpdated": "2026-09-15T01:03:45.681080+00:00",
+  "lastUpdated": "2026-09-29T07:04:00.244178+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-09-15T01:03:45.681080+00:00",
+    "snapshotBuiltAt": "2026-09-29T07:04:00.244178+00:00",
     "sections": {
       "price": "2026-09-28"
-    },
-    "retainedSections": [
-      "fundamentals",
-      "wacc",
-      "beta",
-      "news"
-    ]
+    }
   },
   "source": "prefetched",
   "capabilities": {
@@ -46,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 1.9972,
-      "ttmPe": 42.02,
-      "marketCap": 206879584000,
-      "psRatio": 7.99,
-      "pbRatio": 14.8,
-      "pegRatio": 1.88
+      "ttmPe": 42.37,
+      "marketCap": 208605224000,
+      "psRatio": 8.05,
+      "pbRatio": 14.93,
+      "pegRatio": 0.71
     },
     "profitability": {
       "roe": 6.81,
@@ -5311,15 +5305,15 @@
       ]
     },
     "wacc": {
-      "wacc": 13.58,
-      "costOfEquity": 14.82,
+      "wacc": 13.389999999999999,
+      "costOfEquity": 14.530000000000001,
       "costOfDebt": 1.11,
       "taxRate": 40,
-      "beta": 1.2348,
-      "marketCap": 194647686768
+      "beta": 1.2179,
+      "marketCap": 208605224000
     },
     "beta": {
-      "beta5y": 1.2348
+      "beta5y": 1.2179
     },
     "price": [
       {
@@ -7341,19 +7335,19 @@
     ],
     "news": [
       {
-        "uuid": "12b4e599-f559-3e96-a231-1b45aad4fd72",
-        "title": "Firing on All Cylinders: Benchmark (NYSE:BHE) Q4 Earnings Lead the Way",
-        "publisher": "StockStory",
-        "reportDate": "2025-03-26",
-        "link": "https://finance.yahoo.com/news/firing-cylinders-benchmark-nyse-bhe-090347215.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "1223633b-710c-3392-a927-550d6e2c0f95",
         "title": "Is Amphenol (APH) Stock Outpacing Its Computer and Technology Peers This Year?",
         "publisher": "Zacks",
         "reportDate": "2025-03-26",
         "link": "https://finance.yahoo.com/news/amphenol-aph-stock-outpacing-computer-134008217.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "12b4e599-f559-3e96-a231-1b45aad4fd72",
+        "title": "Firing on All Cylinders: Benchmark (NYSE:BHE) Q4 Earnings Lead the Way",
+        "publisher": "StockStory",
+        "reportDate": "2025-03-26",
+        "link": "https://finance.yahoo.com/news/firing-cylinders-benchmark-nyse-bhe-090347215.html",
         "type": "STORY"
       },
       {
@@ -7373,19 +7367,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "2eb0ffd3-1e17-31a3-8eea-e9efed35334a",
-        "title": "Top Analyst Reports for Novo Nordisk, Honeywell & American Tower",
-        "publisher": "Zacks",
-        "reportDate": "2025-05-07",
-        "link": "https://finance.yahoo.com/news/top-analyst-reports-novo-nordisk-204700487.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "40de7d5f-e710-39e6-a3d3-3994e03989ae",
         "title": "COMM Stock Surges 378.2% in a Year: Is it Still Worth Buying?",
         "publisher": "Zacks",
         "reportDate": "2025-05-07",
         "link": "https://finance.yahoo.com/news/comm-stock-surges-378-2-180800505.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "2eb0ffd3-1e17-31a3-8eea-e9efed35334a",
+        "title": "Top Analyst Reports for Novo Nordisk, Honeywell & American Tower",
+        "publisher": "Zacks",
+        "reportDate": "2025-05-07",
+        "link": "https://finance.yahoo.com/news/top-analyst-reports-novo-nordisk-204700487.html",
         "type": "STORY"
       },
       {
@@ -7488,43 +7482,43 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 42.02,
-        "industryAvg": 56.54
+        "value": 42.37,
+        "industryAvg": 44.15
       },
       {
         "metric": "P/S Ratio",
-        "value": 7.99,
-        "industryAvg": 4.25
+        "value": 8.05,
+        "industryAvg": 3.76
       },
       {
         "metric": "P/B Ratio",
-        "value": 14.8,
-        "industryAvg": 3.57
+        "value": 14.93,
+        "industryAvg": 7.41
       },
       {
         "metric": "ROE",
         "value": 6.81,
-        "industryAvg": 3.64
+        "industryAvg": 16.400000000000002
       },
       {
         "metric": "ROA",
         "value": 2.3800000000000003,
-        "industryAvg": 1.73
+        "industryAvg": 7.08
       },
       {
         "metric": "Gross Margin",
         "value": 36.75,
-        "industryAvg": 22.220000000000002
+        "industryAvg": 23
       },
       {
         "metric": "EBITDA Margin",
         "value": 30.7,
-        "industryAvg": 14.35
+        "industryAvg": 14.82
       },
       {
         "metric": "Net Margin",
         "value": 12.24,
-        "industryAvg": 7.66
+        "industryAvg": 7.53
       }
     ]
   }

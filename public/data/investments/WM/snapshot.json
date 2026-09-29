@@ -1,17 +1,11 @@
 {
   "symbol": "WM",
-  "lastUpdated": "2026-08-18T23:06:20.443188+00:00",
+  "lastUpdated": "2026-09-29T07:04:00.244178+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-08-18T23:06:20.443188+00:00",
+    "snapshotBuiltAt": "2026-09-29T07:04:00.244178+00:00",
     "sections": {
       "price": "2026-09-28"
-    },
-    "retainedSections": [
-      "fundamentals",
-      "wacc",
-      "beta",
-      "news"
-    ]
+    }
   },
   "source": "prefetched",
   "capabilities": {
@@ -46,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 7.0645,
-      "ttmPe": 31.79,
-      "marketCap": 89812747035,
-      "psRatio": 3.5,
-      "pbRatio": 9.05,
-      "pegRatio": 2.53
+      "ttmPe": 29.22,
+      "marketCap": 82569331988,
+      "psRatio": 3.22,
+      "pbRatio": 8.32,
+      "pegRatio": 3.38
     },
     "profitability": {
       "roe": 7.870000000000001,
@@ -850,8 +844,8 @@
         },
         {
           "Breakdown": "Basic EPS",
-          "TTM": "3.8",
-          "2026-06-30": "0.25",
+          "TTM": "7.08",
+          "2026-06-30": "1.96",
           "2026-03-31": "1.79",
           "2025-12-31": "1.84",
           "2025-09-30": "1.5",
@@ -871,8 +865,8 @@
         },
         {
           "Breakdown": "Diluted EPS",
-          "TTM": "3.8",
-          "2026-06-30": "0.24",
+          "TTM": "7.07",
+          "2026-06-30": "1.95",
           "2026-03-31": "1.79",
           "2025-12-31": "1.83",
           "2025-09-30": "1.49",
@@ -892,8 +886,8 @@
         },
         {
           "Breakdown": "Basic Average Shares",
-          "TTM": "1810650000.0",
-          "2026-06-30": "3212000000.0",
+          "TTM": "402600000.0",
+          "2026-06-30": "401500000.0",
           "2026-03-31": "403200000.0",
           "2025-12-31": "403100000.0",
           "2025-09-30": "403000000.0",
@@ -913,8 +907,8 @@
         },
         {
           "Breakdown": "Diluted Average Shares",
-          "TTM": "1815400000.0",
-          "2026-06-30": "3219200000.0",
+          "TTM": "403850000.0",
+          "2026-06-30": "402400000.0",
           "2026-03-31": "404400000.0",
           "2025-12-31": "404500000.0",
           "2025-09-30": "404300000.0",
@@ -5510,15 +5504,15 @@
       ]
     },
     "wacc": {
-      "wacc": 6.710000000000001,
-      "costOfEquity": 8.15,
-      "costOfDebt": 0.98,
-      "taxRate": 19,
-      "beta": 0.4324,
-      "marketCap": 93944642652
+      "wacc": 6.76,
+      "costOfEquity": 8.450000000000001,
+      "costOfDebt": 1,
+      "taxRate": 23,
+      "beta": 0.4213,
+      "marketCap": 82569331988
     },
     "beta": {
-      "beta5y": 0.4324
+      "beta5y": 0.4213
     },
     "price": [
       {
@@ -7686,43 +7680,43 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 31.79,
-        "industryAvg": 40.26
+        "value": 29.22,
+        "industryAvg": 30.87
       },
       {
         "metric": "P/S Ratio",
-        "value": 3.5,
-        "industryAvg": 3.44
+        "value": 3.22,
+        "industryAvg": 3.31
       },
       {
         "metric": "P/B Ratio",
-        "value": 9.05,
-        "industryAvg": 5.74
+        "value": 8.32,
+        "industryAvg": 5.5
       },
       {
         "metric": "ROE",
         "value": 7.870000000000001,
-        "industryAvg": 3.71
+        "industryAvg": 13.76
       },
       {
         "metric": "ROA",
         "value": 1.7000000000000002,
-        "industryAvg": 1.1199999999999999
+        "industryAvg": 4.24
       },
       {
         "metric": "Gross Margin",
         "value": 40.83,
-        "industryAvg": 36.84
+        "industryAvg": 36.809999999999995
       },
       {
         "metric": "EBITDA Margin",
         "value": 29.849999999999998,
-        "industryAvg": 26.3
+        "industryAvg": 26.08
       },
       {
         "metric": "Net Margin",
         "value": 11.74,
-        "industryAvg": 8.1
+        "industryAvg": 8.02
       }
     ]
   }

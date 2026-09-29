@@ -1,17 +1,11 @@
 {
   "symbol": "WELL",
-  "lastUpdated": "2026-09-15T01:03:45.681080+00:00",
+  "lastUpdated": "2026-09-29T07:04:00.244178+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-09-15T01:03:45.681080+00:00",
+    "snapshotBuiltAt": "2026-09-29T07:04:00.244178+00:00",
     "sections": {
       "price": "2026-09-28"
-    },
-    "retainedSections": [
-      "fundamentals",
-      "wacc",
-      "beta",
-      "news"
-    ]
+    }
   },
   "source": "prefetched",
   "capabilities": {
@@ -46,10 +40,10 @@
     },
     "fundamentals": {
       "ttmEps": -0.5498,
-      "ttmPe": -428.56,
-      "marketCap": 169387689240,
-      "psRatio": 14.62,
-      "pbRatio": 3.87,
+      "ttmPe": 141.68,
+      "marketCap": 167475409920,
+      "psRatio": 14.46,
+      "pbRatio": 3.82,
       "pegRatio": 3.5
     },
     "profitability": {
@@ -5387,15 +5381,15 @@
       ]
     },
     "wacc": {
-      "wacc": 9.77,
-      "costOfEquity": 10.84,
+      "wacc": 9.85,
+      "costOfEquity": 10.91,
       "costOfDebt": 0.96,
       "taxRate": 3,
-      "beta": 0.7556,
-      "marketCap": 165113401550
+      "beta": 0.7432,
+      "marketCap": 167475409920
     },
     "beta": {
-      "beta5y": 0.7556
+      "beta5y": 0.7432
     },
     "price": [
       {
@@ -7417,19 +7411,19 @@
     ],
     "news": [
       {
-        "uuid": "c37d1d5d-4baa-3a2d-b21e-cb420cfaee64",
-        "title": "Alpine Income's Q1 Investments Total $79.2M, Dispositions Reach $11.7M",
-        "publisher": "Zacks",
-        "reportDate": "2025-04-04",
-        "link": "https://finance.yahoo.com/news/alpine-incomes-q1-investments-total-150400608.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "1c9bfb27-ffbd-37ba-8fd3-1aa9f390df6b",
         "title": "UMH Properties Provides Q1 Operating Update, Sees Occupancy Gains",
         "publisher": "Zacks",
         "reportDate": "2025-04-04",
         "link": "https://finance.yahoo.com/news/umh-properties-provides-q1-operating-190000941.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "c37d1d5d-4baa-3a2d-b21e-cb420cfaee64",
+        "title": "Alpine Income's Q1 Investments Total $79.2M, Dispositions Reach $11.7M",
+        "publisher": "Zacks",
+        "reportDate": "2025-04-04",
+        "link": "https://finance.yahoo.com/news/alpine-incomes-q1-investments-total-150400608.html",
         "type": "STORY"
       },
       {
@@ -7449,14 +7443,6 @@
         "type": "STORY"
       },
       {
-        "uuid": "d1906480-47aa-351e-b484-79678bc4e3bc",
-        "title": "Why Camden Property Remains a Solid Hold in the Current Market",
-        "publisher": "Zacks",
-        "reportDate": "2025-04-11",
-        "link": "https://finance.yahoo.com/news/why-camden-property-remains-solid-153900499.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "bc41e0cd-3b1b-3c8d-a2da-6519281550c3",
         "title": "Terreno Realty Expands Portfolio With Property Buyout in Redmond",
         "publisher": "Zacks",
@@ -7465,11 +7451,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "928aaddf-8d20-3bc3-90bc-fb29be9ea4b4",
-        "title": "Here's What Key Metrics Tell Us About Welltower (WELL) Q1 Earnings",
+        "uuid": "d1906480-47aa-351e-b484-79678bc4e3bc",
+        "title": "Why Camden Property Remains a Solid Hold in the Current Market",
         "publisher": "Zacks",
-        "reportDate": "2025-04-29",
-        "link": "https://finance.yahoo.com/news/heres-key-metrics-tell-us-220008553.html",
+        "reportDate": "2025-04-11",
+        "link": "https://finance.yahoo.com/news/why-camden-property-remains-solid-153900499.html",
         "type": "STORY"
       },
       {
@@ -7481,11 +7467,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "d330e486-d14e-3b8d-b368-dfbe97bf79d9",
-        "title": "Welltower Inc (WELL) Q1 2025 Earnings Call Highlights: Strong FFO Growth and Strategic ...",
-        "publisher": "GuruFocus.com",
-        "reportDate": "2025-04-30",
-        "link": "https://finance.yahoo.com/news/welltower-inc-well-q1-2025-071314978.html",
+        "uuid": "928aaddf-8d20-3bc3-90bc-fb29be9ea4b4",
+        "title": "Here's What Key Metrics Tell Us About Welltower (WELL) Q1 Earnings",
+        "publisher": "Zacks",
+        "reportDate": "2025-04-29",
+        "link": "https://finance.yahoo.com/news/heres-key-metrics-tell-us-220008553.html",
         "type": "STORY"
       },
       {
@@ -7494,6 +7480,14 @@
         "publisher": "Zacks",
         "reportDate": "2025-04-30",
         "link": "https://finance.yahoo.com/news/welltowers-q1-ffo-revenues-beat-162300193.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "98c1c2e2-dea3-3751-bd49-8afb96bc5212",
+        "title": "Welltower (NYSE:WELL) Increases Dividend And Raises 2025 Earnings Guidance",
+        "publisher": "Simply Wall St.",
+        "reportDate": "2025-04-30",
+        "link": "https://finance.yahoo.com/news/welltower-nyse-well-increases-dividend-174407979.html",
         "type": "STORY"
       }
     ],
@@ -7559,43 +7553,43 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": -428.56,
-        "industryAvg": 111.95
+        "value": 141.68,
+        "industryAvg": 73.42
       },
       {
         "metric": "P/S Ratio",
-        "value": 14.62,
-        "industryAvg": 8.47
+        "value": 14.46,
+        "industryAvg": 9
       },
       {
         "metric": "P/B Ratio",
-        "value": 3.87,
-        "industryAvg": 2.64
+        "value": 3.82,
+        "industryAvg": 2.88
       },
       {
         "metric": "ROE",
         "value": 1.7000000000000002,
-        "industryAvg": 1.32
+        "industryAvg": 2.4899999999999998
       },
       {
         "metric": "ROA",
         "value": 1.08,
-        "industryAvg": 0.66
+        "industryAvg": 1.25
       },
       {
         "metric": "Gross Margin",
         "value": 37.82,
-        "industryAvg": 48.19
+        "industryAvg": 49.07
       },
       {
         "metric": "EBITDA Margin",
         "value": 35.4,
-        "industryAvg": 46.93
+        "industryAvg": 47.05
       },
       {
         "metric": "Net Margin",
         "value": 22.040000000000003,
-        "industryAvg": 15.229999999999999
+        "industryAvg": 7.489999999999999
       }
     ]
   }

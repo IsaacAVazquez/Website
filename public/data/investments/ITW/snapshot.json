@@ -1,17 +1,11 @@
 {
   "symbol": "ITW",
-  "lastUpdated": "2026-08-18T23:06:20.443188+00:00",
+  "lastUpdated": "2026-09-29T07:04:00.244178+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-08-18T23:06:20.443188+00:00",
+    "snapshotBuiltAt": "2026-09-29T07:04:00.244178+00:00",
     "sections": {
       "price": "2026-09-28"
-    },
-    "retainedSections": [
-      "fundamentals",
-      "wacc",
-      "beta",
-      "news"
-    ]
+    }
   },
   "source": "prefetched",
   "capabilities": {
@@ -46,16 +40,16 @@
     },
     "fundamentals": {
       "ttmEps": 11.033,
-      "ttmPe": 26.36,
-      "marketCap": 82822688000,
-      "psRatio": 5.03,
-      "pbRatio": 28.62,
-      "pegRatio": 2.09
+      "ttmPe": 24.82,
+      "marketCap": 77986784000,
+      "psRatio": 4.74,
+      "pbRatio": 26.95,
+      "pegRatio": 2.44
     },
     "profitability": {
       "roe": 26.619999999999997,
       "roa": 4.9799999999999995,
-      "roic": 6.959999999999999,
+      "roic": 7.06,
       "equityMultiplier": 5.35,
       "assetTurnover": 0.26
     },
@@ -1061,7 +1055,7 @@
         {
           "Breakdown": "Tax Rate for Calcs",
           "TTM": "0.22",
-          "2026-06-30": "0.25",
+          "2026-06-30": "0.24",
           "2026-03-31": "0.21",
           "2025-12-31": "0.23",
           "2025-09-30": "0.22",
@@ -6140,15 +6134,15 @@
       ]
     },
     "wacc": {
-      "wacc": 11.559999999999999,
-      "costOfEquity": 12.870000000000001,
-      "costOfDebt": 0.8,
-      "taxRate": 21,
-      "beta": 0.9995,
-      "marketCap": 76269270000
+      "wacc": 11.21,
+      "costOfEquity": 12.53,
+      "costOfDebt": 0.8099999999999999,
+      "taxRate": 24,
+      "beta": 0.9553,
+      "marketCap": 77986784000
     },
     "beta": {
-      "beta5y": 0.9995
+      "beta5y": 0.9553
     },
     "price": [
       {
@@ -8234,19 +8228,19 @@
         "type": "STORY"
       },
       {
+        "uuid": "1771a0f3-2da7-3f95-84dc-bf2313156b30",
+        "title": "BofA Downgrades Illinois Tool Works to Underperform From Neutral, Price Target is $220",
+        "publisher": "MT Newswires",
+        "reportDate": "2025-05-07",
+        "link": "https://finance.yahoo.com/news/bofa-downgrades-illinois-tool-works-113704841.html",
+        "type": "STORY"
+      },
+      {
         "uuid": "bba3ec84-f34c-38a2-a622-52d7620b5e43",
         "title": "AMD upgraded, Electronic Arts downgraded: Wall Street's top analyst calls",
         "publisher": "The Fly",
         "reportDate": "2025-05-07",
         "link": "https://finance.yahoo.com/news/amd-upgraded-electronic-arts-downgraded-133848313.html",
-        "type": "STORY"
-      },
-      {
-        "uuid": "bb123e11-c5fd-3977-a73d-496abb4ad87d",
-        "title": "Implied Volatility Surging for Illinois Tool Works Stock Options",
-        "publisher": "Zacks",
-        "reportDate": "2025-05-07",
-        "link": "https://finance.yahoo.com/news/implied-volatility-surging-illinois-tool-134000247.html",
         "type": "STORY"
       }
     ],
@@ -8318,43 +8312,43 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 26.36,
-        "industryAvg": 0
+        "value": 24.82,
+        "industryAvg": 31.32
       },
       {
         "metric": "P/S Ratio",
-        "value": 5.03,
-        "industryAvg": 0
+        "value": 4.74,
+        "industryAvg": 3.56
       },
       {
         "metric": "P/B Ratio",
-        "value": 28.62,
-        "industryAvg": 0
+        "value": 26.95,
+        "industryAvg": 6.36
       },
       {
         "metric": "ROE",
         "value": 26.619999999999997,
-        "industryAvg": 1.69
+        "industryAvg": 18.87
       },
       {
         "metric": "ROA",
         "value": 4.9799999999999995,
-        "industryAvg": 0.8
+        "industryAvg": 6.1899999999999995
       },
       {
         "metric": "Gross Margin",
         "value": 44.13,
-        "industryAvg": 22.21
+        "industryAvg": 28.96
       },
       {
         "metric": "EBITDA Margin",
         "value": 29.23,
-        "industryAvg": 10.85
+        "industryAvg": 15.58
       },
       {
         "metric": "Net Margin",
         "value": 18.95,
-        "industryAvg": 4.22
+        "industryAvg": 9.790000000000001
       }
     ]
   }

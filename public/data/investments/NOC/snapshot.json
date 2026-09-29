@@ -1,17 +1,11 @@
 {
   "symbol": "NOC",
-  "lastUpdated": "2026-08-18T23:06:20.443188+00:00",
+  "lastUpdated": "2026-09-29T07:04:00.244178+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-08-18T23:06:20.443188+00:00",
+    "snapshotBuiltAt": "2026-09-29T07:04:00.244178+00:00",
     "sections": {
       "price": "2026-09-28"
-    },
-    "retainedSections": [
-      "fundamentals",
-      "wacc",
-      "beta",
-      "news"
-    ]
+    }
   },
   "source": "prefetched",
   "capabilities": {
@@ -46,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 31.538,
-      "ttmPe": 18.58,
-      "marketCap": 83230274049,
-      "psRatio": 1.94,
-      "pbRatio": 4.65,
-      "pegRatio": 0.2
+      "ttmPe": 16.04,
+      "marketCap": 71855313660,
+      "psRatio": 1.68,
+      "pbRatio": 4.02,
+      "pegRatio": 0.18
     },
     "profitability": {
       "roe": 6.25,
@@ -5398,15 +5392,15 @@
       ]
     },
     "wacc": {
-      "wacc": 3.2,
-      "costOfEquity": 3.6999999999999997,
+      "wacc": 3.73,
+      "costOfEquity": 4.37,
       "costOfDebt": 0.9900000000000001,
-      "taxRate": 15,
-      "beta": -0.1033,
-      "marketCap": 77423881185
+      "taxRate": 6,
+      "beta": -0.1146,
+      "marketCap": 71855313660
     },
     "beta": {
-      "beta5y": -0.1033
+      "beta5y": -0.1146
     },
     "price": [
       {
@@ -7460,19 +7454,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "b0ec7ab8-76a5-3663-8030-1647a6673ace",
-        "title": "Northrop's EW Suite Achieves New Milestone: Time to Buy the Stock?",
-        "publisher": "Zacks",
-        "reportDate": "2025-05-07",
-        "link": "https://finance.yahoo.com/news/northrops-ew-suite-achieves-milestone-152100346.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "2eb0ffd3-1e17-31a3-8eea-e9efed35334a",
         "title": "Top Analyst Reports for Novo Nordisk, Honeywell & American Tower",
         "publisher": "Zacks",
         "reportDate": "2025-05-07",
         "link": "https://finance.yahoo.com/news/top-analyst-reports-novo-nordisk-204700487.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "b0ec7ab8-76a5-3663-8030-1647a6673ace",
+        "title": "Northrop's EW Suite Achieves New Milestone: Time to Buy the Stock?",
+        "publisher": "Zacks",
+        "reportDate": "2025-05-07",
+        "link": "https://finance.yahoo.com/news/northrops-ew-suite-achieves-milestone-152100346.html",
         "type": "STORY"
       },
       {
@@ -7484,19 +7478,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "77bead5e-baed-3b2f-9e53-0088e8b46380",
-        "title": "3 Profitable Stocks in Hot Water",
-        "publisher": "StockStory",
-        "reportDate": "2025-05-14",
-        "link": "https://finance.yahoo.com/news/3-profitable-stocks-hot-water-043118929.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "c29f651c-1204-30d6-90fd-fdbab67e64a0",
         "title": "Defense Contractors Stocks Q1 Highlights: Huntington Ingalls (NYSE:HII)",
         "publisher": "StockStory",
         "reportDate": "2025-05-14",
         "link": "https://finance.yahoo.com/news/defense-contractors-stocks-q1-highlights-033617270.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "77bead5e-baed-3b2f-9e53-0088e8b46380",
+        "title": "3 Profitable Stocks in Hot Water",
+        "publisher": "StockStory",
+        "reportDate": "2025-05-14",
+        "link": "https://finance.yahoo.com/news/3-profitable-stocks-hot-water-043118929.html",
         "type": "STORY"
       },
       {
@@ -7571,43 +7565,43 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 18.58,
-        "industryAvg": 0.78
+        "value": 16.04,
+        "industryAvg": 32.24
       },
       {
         "metric": "P/S Ratio",
-        "value": 1.94,
-        "industryAvg": 0.05
+        "value": 1.68,
+        "industryAvg": 2.88
       },
       {
         "metric": "P/B Ratio",
-        "value": 4.65,
-        "industryAvg": 0.07
+        "value": 4.02,
+        "industryAvg": 8.46
       },
       {
         "metric": "ROE",
         "value": 6.25,
-        "industryAvg": 3.7199999999999998
+        "industryAvg": 17.330000000000002
       },
       {
         "metric": "ROA",
         "value": 2.17,
-        "industryAvg": 1.08
+        "industryAvg": 4.51
       },
       {
         "metric": "Gross Margin",
         "value": 19.5,
-        "industryAvg": 21.41
+        "industryAvg": 18.759999999999998
       },
       {
         "metric": "EBITDA Margin",
         "value": 15.590000000000002,
-        "industryAvg": 15.02
+        "industryAvg": 14.35
       },
       {
         "metric": "Net Margin",
         "value": 10.059999999999999,
-        "industryAvg": 6.950000000000001
+        "industryAvg": 7.06
       }
     ]
   }

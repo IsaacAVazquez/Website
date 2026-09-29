@@ -1,17 +1,11 @@
 {
   "symbol": "ETN",
-  "lastUpdated": "2026-08-18T23:06:20.443188+00:00",
+  "lastUpdated": "2026-09-29T07:04:00.244178+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-08-18T23:06:20.443188+00:00",
+    "snapshotBuiltAt": "2026-09-29T07:04:00.244178+00:00",
     "sections": {
       "price": "2026-09-28"
-    },
-    "retainedSections": [
-      "fundamentals",
-      "wacc",
-      "beta",
-      "news"
-    ]
+    }
   },
   "source": "prefetched",
   "capabilities": {
@@ -46,10 +40,10 @@
     },
     "fundamentals": {
       "ttmEps": 9.8283,
-      "ttmPe": 45.94,
-      "marketCap": 175366484000,
-      "psRatio": 5.84,
-      "pbRatio": 8.66,
+      "ttmPe": 43.89,
+      "marketCap": 167559644000,
+      "psRatio": 5.58,
+      "pbRatio": 8.27,
       "pegRatio": 1.77
     },
     "profitability": {
@@ -5267,15 +5261,15 @@
       ]
     },
     "wacc": {
-      "wacc": 12.57,
-      "costOfEquity": 14.29,
-      "costOfDebt": 0.49,
-      "taxRate": 22,
-      "beta": 1.171,
-      "marketCap": 155149148000
+      "wacc": 12.280000000000001,
+      "costOfEquity": 13.76,
+      "costOfDebt": 0.9400000000000001,
+      "taxRate": 28.000000000000004,
+      "beta": 1.1163,
+      "marketCap": 167559644000
     },
     "beta": {
-      "beta5y": 1.171
+      "beta5y": 1.1163
     },
     "price": [
       {
@@ -7313,19 +7307,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "7b1f9a32-8f98-3e6c-a815-862c5aae8bdb",
-        "title": "Eaton Reports Record First Quarter 2025 Results, with Accelerating Organic Growth; Raises Full-Year Organic Growth Guidance",
-        "publisher": "Business Wire",
-        "reportDate": "2025-05-02",
-        "link": "https://finance.yahoo.com/news/eaton-reports-record-first-quarter-103000345.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "514d68fe-9e46-3355-97b4-005d7bb11ba7",
         "title": "Eaton: Q1 Earnings Snapshot",
         "publisher": "Associated Press Finance",
         "reportDate": "2025-05-02",
         "link": "https://finance.yahoo.com/news/eaton-q1-earnings-snapshot-103722378.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "7b1f9a32-8f98-3e6c-a815-862c5aae8bdb",
+        "title": "Eaton Reports Record First Quarter 2025 Results, with Accelerating Organic Growth; Raises Full-Year Organic Growth Guidance",
+        "publisher": "Business Wire",
+        "reportDate": "2025-05-02",
+        "link": "https://finance.yahoo.com/news/eaton-reports-record-first-quarter-103000345.html",
         "type": "STORY"
       },
       {
@@ -7337,19 +7331,19 @@
         "type": "VIDEO"
       },
       {
-        "uuid": "9f379c9d-fcdf-3d28-a66c-eeeae8c6b97a",
-        "title": "Eaton Q1 Earnings and Revenues Surpass Estimates, Organic Sales Rise",
-        "publisher": "Zacks",
-        "reportDate": "2025-05-03",
-        "link": "https://finance.yahoo.com/news/eaton-q1-earnings-revenues-surpass-161100450.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "2532544e-b84d-3cd4-8c6d-d91282a2b05a",
         "title": "Eaton Corp PLC (ETN) Q1 2025 Earnings Call Highlights: Record Revenue and Raised Growth Outlook",
         "publisher": "GuruFocus.com",
         "reportDate": "2025-05-03",
         "link": "https://finance.yahoo.com/news/eaton-corp-plc-etn-q1-070710850.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "9f379c9d-fcdf-3d28-a66c-eeeae8c6b97a",
+        "title": "Eaton Q1 Earnings and Revenues Surpass Estimates, Organic Sales Rise",
+        "publisher": "Zacks",
+        "reportDate": "2025-05-03",
+        "link": "https://finance.yahoo.com/news/eaton-q1-earnings-revenues-surpass-161100450.html",
         "type": "STORY"
       },
       {
@@ -7438,43 +7432,43 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 45.94,
-        "industryAvg": 0
+        "value": 43.89,
+        "industryAvg": 31.32
       },
       {
         "metric": "P/S Ratio",
-        "value": 5.84,
-        "industryAvg": 0
+        "value": 5.58,
+        "industryAvg": 3.56
       },
       {
         "metric": "P/B Ratio",
-        "value": 8.66,
-        "industryAvg": 0
+        "value": 8.27,
+        "industryAvg": 6.36
       },
       {
         "metric": "ROE",
         "value": 4.109999999999999,
-        "industryAvg": 1.69
+        "industryAvg": 18.87
       },
       {
         "metric": "ROA",
         "value": 1.48,
-        "industryAvg": 0.8
+        "industryAvg": 6.1899999999999995
       },
       {
         "metric": "Gross Margin",
         "value": 33.47,
-        "industryAvg": 22.21
+        "industryAvg": 28.96
       },
       {
         "metric": "EBITDA Margin",
         "value": 20.44,
-        "industryAvg": 10.85
+        "industryAvg": 15.58
       },
       {
         "metric": "Net Margin",
         "value": 9.62,
-        "industryAvg": 4.22
+        "industryAvg": 9.790000000000001
       }
     ]
   }

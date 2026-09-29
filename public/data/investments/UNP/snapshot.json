@@ -1,17 +1,11 @@
 {
   "symbol": "UNP",
-  "lastUpdated": "2026-08-18T23:06:20.443188+00:00",
+  "lastUpdated": "2026-09-29T07:04:00.244178+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-08-18T23:06:20.443188+00:00",
+    "snapshotBuiltAt": "2026-09-29T07:04:00.244178+00:00",
     "sections": {
       "price": "2026-09-28"
-    },
-    "retainedSections": [
-      "fundamentals",
-      "wacc",
-      "beta",
-      "news"
-    ]
+    }
   },
   "source": "prefetched",
   "capabilities": {
@@ -46,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 12.3487,
-      "ttmPe": 23.78,
-      "marketCap": 174433291760,
-      "psRatio": 6.86,
-      "pbRatio": 8.44,
-      "pegRatio": 3.8
+      "ttmPe": 22.2,
+      "marketCap": 162803613700,
+      "psRatio": 6.41,
+      "pbRatio": 7.88,
+      "pegRatio": 3.48
     },
     "profitability": {
       "roe": 9.94,
@@ -5005,15 +4999,15 @@
       ]
     },
     "wacc": {
-      "wacc": 10.63,
-      "costOfEquity": 12.49,
-      "costOfDebt": 1.02,
-      "taxRate": 24,
-      "beta": 0.9537,
-      "marketCap": 166797786408
+      "wacc": 10.57,
+      "costOfEquity": 12.44,
+      "costOfDebt": 1,
+      "taxRate": 22,
+      "beta": 0.9433,
+      "marketCap": 162803613700
     },
     "beta": {
-      "beta5y": 0.9537
+      "beta5y": 0.9433
     },
     "price": [
       {
@@ -7059,19 +7053,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "2a45ddb4-58b4-3e4a-af45-f8feeeb2d743",
-        "title": "Transport Stocks Warm as Tariffs Cool. Difficulties Remain.",
-        "publisher": "Barrons.com",
-        "reportDate": "2025-05-13",
-        "link": "https://finance.yahoo.com/m/2a45ddb4-58b4-3e4a-af45-f8feeeb2d743/transport-stocks-warm-as.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "a72ebd97-5e59-3caa-a4d3-cd8b9510f38c",
         "title": "Union Pacific Corporation (UNP): A Bull Case Theory",
         "publisher": "Insider Monkey",
         "reportDate": "2025-05-13",
         "link": "https://finance.yahoo.com/news/union-pacific-corporation-unp-bull-140512502.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "2a45ddb4-58b4-3e4a-af45-f8feeeb2d743",
+        "title": "Transport Stocks Warm as Tariffs Cool. Difficulties Remain.",
+        "publisher": "Barrons.com",
+        "reportDate": "2025-05-13",
+        "link": "https://finance.yahoo.com/m/2a45ddb4-58b4-3e4a-af45-f8feeeb2d743/transport-stocks-warm-as.html",
         "type": "STORY"
       },
       {
@@ -7091,14 +7085,6 @@
         "type": "STORY"
       },
       {
-        "uuid": "84fa3dac-1ce0-3da0-ab28-b322a428e7fc",
-        "title": "Top Research Reports for AMD, Union Pacific & Lowe's",
-        "publisher": "Zacks",
-        "reportDate": "2025-05-16",
-        "link": "https://finance.yahoo.com/news/top-research-reports-amd-union-205400329.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "8634dc71-3253-3775-a52c-0ae332272b4d",
         "title": "The Zacks Analyst Blog Highlights Advanced Micro Devices, Union Pacific, Lowe's Companies and Syntec Optics",
         "publisher": "Zacks",
@@ -7112,6 +7098,14 @@
         "publisher": "MT Newswires",
         "reportDate": "2025-05-16",
         "link": "https://finance.yahoo.com/news/bofa-securities-adjusts-price-target-141706657.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "84fa3dac-1ce0-3da0-ab28-b322a428e7fc",
+        "title": "Top Research Reports for AMD, Union Pacific & Lowe's",
+        "publisher": "Zacks",
+        "reportDate": "2025-05-16",
+        "link": "https://finance.yahoo.com/news/top-research-reports-amd-union-205400329.html",
         "type": "STORY"
       }
     ],
@@ -7182,43 +7176,43 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 23.78,
-        "industryAvg": 27.82
+        "value": 22.2,
+        "industryAvg": 24.89
       },
       {
         "metric": "P/S Ratio",
-        "value": 6.86,
-        "industryAvg": 6.17
+        "value": 6.41,
+        "industryAvg": 5.59
       },
       {
         "metric": "P/B Ratio",
-        "value": 8.44,
-        "industryAvg": 0.19
+        "value": 7.88,
+        "industryAvg": 4.18
       },
       {
         "metric": "ROE",
         "value": 9.94,
-        "industryAvg": 4.97
+        "industryAvg": 11.83
       },
       {
         "metric": "ROA",
         "value": 2.83,
-        "industryAvg": 1.82
+        "industryAvg": 3.19
       },
       {
         "metric": "Gross Margin",
         "value": 45.53,
-        "industryAvg": 37.940000000000005
+        "industryAvg": 36.5
       },
       {
         "metric": "EBITDA Margin",
         "value": 51.080000000000005,
-        "industryAvg": 44.12
+        "industryAvg": 45.59
       },
       {
         "metric": "Net Margin",
         "value": 29.04,
-        "industryAvg": 22.79
+        "industryAvg": 17.28
       }
     ]
   }

@@ -1,17 +1,11 @@
 {
   "symbol": "GD",
-  "lastUpdated": "2026-08-18T23:06:20.443188+00:00",
+  "lastUpdated": "2026-09-29T07:04:00.244178+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-08-18T23:06:20.443188+00:00",
+    "snapshotBuiltAt": "2026-09-29T07:04:00.244178+00:00",
     "sections": {
       "price": "2026-09-28"
-    },
-    "retainedSections": [
-      "fundamentals",
-      "wacc",
-      "beta",
-      "news"
-    ]
+    }
   },
   "source": "prefetched",
   "capabilities": {
@@ -46,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 16.4022,
-      "ttmPe": 24.13,
-      "marketCap": 107081128616,
-      "psRatio": 1.95,
-      "pbRatio": 3.99,
-      "pegRatio": 1.93
+      "ttmPe": 20.37,
+      "marketCap": 90409393952,
+      "psRatio": 1.65,
+      "pbRatio": 3.37,
+      "pegRatio": 1.53
     },
     "profitability": {
       "roe": 4.390000000000001,
@@ -5153,15 +5147,15 @@
       ]
     },
     "wacc": {
-      "wacc": 6.69,
-      "costOfEquity": 7.28,
-      "costOfDebt": 0.7000000000000001,
+      "wacc": 7.02,
+      "costOfEquity": 7.71,
+      "costOfDebt": 0.52,
       "taxRate": 18,
-      "beta": 0.3273,
-      "marketCap": 101224728162
+      "beta": 0.3234,
+      "marketCap": 90409393952
     },
     "beta": {
-      "beta5y": 0.3273
+      "beta5y": 0.3234
     },
     "price": [
       {
@@ -7255,11 +7249,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "1d128de7-3263-3e78-b95b-a2df852a3d02",
-        "title": "Trump to make Golden Dome announcement Tuesday, Reuters reports",
-        "publisher": "TipRanks",
+        "uuid": "6842be06-cb66-36b9-9b89-805d5cda23bc",
+        "title": "Northrop Grumman Rewards Shareholders With 12% Dividend Hike",
+        "publisher": "Zacks",
         "reportDate": "2025-05-21",
-        "link": "https://finance.yahoo.com/m/1d128de7-3263-3e78-b95b-a2df852a3d02/trump-to-make-golden-dome.html",
+        "link": "https://finance.yahoo.com/news/northrop-grumman-rewards-shareholders-12-152200138.html",
         "type": "STORY"
       }
     ],
@@ -7333,43 +7327,43 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 24.13,
-        "industryAvg": 0.78
+        "value": 20.37,
+        "industryAvg": 32.24
       },
       {
         "metric": "P/S Ratio",
-        "value": 1.95,
-        "industryAvg": 0.05
+        "value": 1.65,
+        "industryAvg": 2.88
       },
       {
         "metric": "P/B Ratio",
-        "value": 3.99,
-        "industryAvg": 0.07
+        "value": 3.37,
+        "industryAvg": 8.46
       },
       {
         "metric": "ROE",
         "value": 4.390000000000001,
-        "industryAvg": 3.7199999999999998
+        "industryAvg": 17.330000000000002
       },
       {
         "metric": "ROA",
         "value": 1.95,
-        "industryAvg": 1.08
+        "industryAvg": 4.51
       },
       {
         "metric": "Gross Margin",
         "value": 15.49,
-        "industryAvg": 21.41
+        "industryAvg": 18.759999999999998
       },
       {
         "metric": "EBITDA Margin",
         "value": 11.97,
-        "industryAvg": 15.02
+        "industryAvg": 14.35
       },
       {
         "metric": "Net Margin",
         "value": 8.23,
-        "industryAvg": 6.950000000000001
+        "industryAvg": 7.06
       }
     ]
   }

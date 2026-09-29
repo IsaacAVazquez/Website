@@ -1,8 +1,8 @@
 {
   "symbol": "SPY",
-  "lastUpdated": "2026-08-18T23:06:20.443188+00:00",
+  "lastUpdated": "2026-09-29T07:04:00.244178+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-08-18T23:06:20.443188+00:00",
+    "snapshotBuiltAt": "2026-09-29T07:04:00.244178+00:00",
     "sections": {
       "price": "2026-09-28"
     }
@@ -20,8 +20,8 @@
     "cash_flow": false,
     "wacc": false,
     "industry": false,
-    "beta": false,
-    "news": false,
+    "beta": true,
+    "news": true,
     "officers": false,
     "compare": false
   },
@@ -52,6 +52,10 @@
     "cash_flow": {
       "quarterly": [],
       "annual": []
+    },
+    "wacc": {},
+    "beta": {
+      "beta5y": 1
     },
     "price": [
       {
@@ -2069,6 +2073,88 @@
         "low": 763.72,
         "close": 765.61,
         "volume": 42296700
+      }
+    ],
+    "news": [
+      {
+        "uuid": "38e5c5c8-57d9-3b7a-88ec-e4a4c84f7823",
+        "title": "China announces retaliatory tariffs, U.S. unemployment rises: Morning Buzz",
+        "publisher": "TipRanks",
+        "reportDate": "2025-04-06",
+        "link": "https://finance.yahoo.com/news/china-announces-retaliatory-tariffs-u-161032836.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "19ccc5df-2651-3aab-9365-7eb3d83b9965",
+        "title": "Trump says will ‘protect our farmers’ amid tariff negotiation with China",
+        "publisher": "TipRanks",
+        "reportDate": "2025-04-16",
+        "link": "https://finance.yahoo.com/news/trump-says-protect-farmers-amid-145834613.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "127420de-f523-347a-ac88-313c41c0756c",
+        "title": "Trump announces trade deal, BoE lowers Bank Rate: Morning Buzz",
+        "publisher": "TipRanks",
+        "reportDate": "2025-05-10",
+        "link": "https://finance.yahoo.com/news/trump-announces-trade-deal-boe-160158579.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "ca06a274-32e3-3e67-865f-0b228b4d8f22",
+        "title": "White House calls out Boeing, GE Vernova exports in Saudi Arabia pact",
+        "publisher": "TipRanks",
+        "reportDate": "2025-05-14",
+        "link": "https://finance.yahoo.com/news/white-house-calls-boeing-ge-142742667.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "d0a486fb-b0a2-390f-9bb8-af347d5c82d1",
+        "title": "Exchange-Traded Funds Mixed, Equity Futures Lower Pre-Bell Friday Amid US Tariff Reinstatement Decision",
+        "publisher": "MT Newswires",
+        "reportDate": "2025-05-30",
+        "link": "https://finance.yahoo.com/news/exchange-traded-funds-mixed-equity-122822695.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "2ca19b5a-b003-3d93-899e-ed9ee40096ff",
+        "title": "S&P 500 Wraps Up Best May Since 1990: 5 Top Stocks in the ETF",
+        "publisher": "Zacks",
+        "reportDate": "2025-06-03",
+        "link": "https://finance.yahoo.com/news/p-500-wraps-best-may-153000261.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "212f4ec4-c9c8-42ed-8825-cc70f4a4f77b",
+        "title": "A fresh inflation reading greets a stock market back near all-time highs: What to know this week",
+        "publisher": "Yahoo Finance",
+        "reportDate": "2025-06-08",
+        "link": "https://finance.yahoo.com/news/a-fresh-inflation-reading-greets-a-stock-market-back-near-all-time-highs-what-to-know-this-week-114224467.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "bfe5faf2-429b-4f0b-a2f2-39f527875631",
+        "title": "Stock market today: S&P 500, Nasdaq gain as upbeat US-China trade talks continue",
+        "publisher": "Yahoo Finance",
+        "reportDate": "2025-06-10",
+        "link": "https://finance.yahoo.com/news/live/stock-market-today-sp-500-nasdaq-gain-as-upbeat-us-china-trade-talks-continue-200147751.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "174e185d-23ff-4b12-b670-3f0fe5915ee3",
+        "title": "Stock market today: Dow, S&P 500, Nasdaq drift higher, dollar slides amid renewed tariff threats",
+        "publisher": "Yahoo Finance",
+        "reportDate": "2025-06-13",
+        "link": "https://finance.yahoo.com/news/live/stock-market-today-dow-sp-500-nasdaq-drift-higher-dollar-slides-amid-renewed-tariff-threats-133109321.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "1900ebb6-ed9c-38bc-9be8-5559094c1e9d",
+        "title": "Exchange-Traded Funds Slightly Higher, Equity Futures Mixed Pre-Bell Friday as Geopolitical, Trade Risks Mount",
+        "publisher": "MT Newswires",
+        "reportDate": "2025-06-20",
+        "link": "https://finance.yahoo.com/news/exchange-traded-funds-slightly-higher-122518460.html",
+        "type": "STORY"
       }
     ]
   }

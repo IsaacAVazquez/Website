@@ -1,17 +1,11 @@
 {
   "symbol": "EOG",
-  "lastUpdated": "2026-09-15T01:03:45.681080+00:00",
+  "lastUpdated": "2026-09-29T07:04:00.244178+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-09-15T01:03:45.681080+00:00",
+    "snapshotBuiltAt": "2026-09-29T07:04:00.244178+00:00",
     "sections": {
       "price": "2026-09-28"
-    },
-    "retainedSections": [
-      "fundamentals",
-      "wacc",
-      "beta",
-      "news"
-    ]
+    }
   },
   "source": "prefetched",
   "capabilities": {
@@ -46,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 12.8548,
-      "ttmPe": 11.46,
-      "marketCap": 77437385280,
-      "psRatio": 2.91,
-      "pbRatio": 2.43,
-      "pegRatio": 0.34
+      "ttmPe": 10.94,
+      "marketCap": 73900783740,
+      "psRatio": 2.77,
+      "pbRatio": 2.32,
+      "pegRatio": 0.1
     },
     "profitability": {
       "roe": 8.68,
@@ -5113,15 +5107,15 @@
       ]
     },
     "wacc": {
-      "wacc": 6.23,
-      "costOfEquity": 6.87,
-      "costOfDebt": 0.79,
-      "taxRate": 23,
-      "beta": 0.2779,
-      "marketCap": 73284355315
+      "wacc": 7.380000000000001,
+      "costOfEquity": 8.129999999999999,
+      "costOfDebt": 0.8099999999999999,
+      "taxRate": 22,
+      "beta": 0.3787,
+      "marketCap": 73900783740
     },
     "beta": {
-      "beta5y": 0.2779
+      "beta5y": 0.3787
     },
     "price": [
       {
@@ -7280,43 +7274,43 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 11.46,
-        "industryAvg": 18.43
+        "value": 10.94,
+        "industryAvg": 12.99
       },
       {
         "metric": "P/S Ratio",
-        "value": 2.91,
-        "industryAvg": 3.08
+        "value": 2.77,
+        "industryAvg": 2.48
       },
       {
         "metric": "P/B Ratio",
-        "value": 2.43,
-        "industryAvg": 1.72
+        "value": 2.32,
+        "industryAvg": 1.65
       },
       {
         "metric": "ROE",
         "value": 8.68,
-        "industryAvg": 6.22
+        "industryAvg": 12.5
       },
       {
         "metric": "ROA",
         "value": 5.04,
-        "industryAvg": 3.1399999999999997
+        "industryAvg": 6.34
       },
       {
         "metric": "Gross Margin",
         "value": 71.72,
-        "industryAvg": 47.32
+        "industryAvg": 40.88
       },
       {
         "metric": "EBITDA Margin",
         "value": 56.8,
-        "industryAvg": 59.48
+        "industryAvg": 50.519999999999996
       },
       {
         "metric": "Net Margin",
         "value": 32.07,
-        "industryAvg": 26.6
+        "industryAvg": 16.520000000000003
       }
     ]
   }

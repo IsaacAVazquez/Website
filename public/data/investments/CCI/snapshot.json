@@ -1,17 +1,11 @@
 {
   "symbol": "CCI",
-  "lastUpdated": "2026-09-15T01:03:45.681080+00:00",
+  "lastUpdated": "2026-09-29T07:04:00.244178+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-09-15T01:03:45.681080+00:00",
+    "snapshotBuiltAt": "2026-09-29T07:04:00.244178+00:00",
     "sections": {
       "price": "2026-09-28"
-    },
-    "retainedSections": [
-      "fundamentals",
-      "wacc",
-      "beta",
-      "news"
-    ]
+    }
   },
   "source": "prefetched",
   "capabilities": {
@@ -46,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 4.5368,
-      "ttmPe": 16.67,
-      "marketCap": 32214120000,
-      "psRatio": 7.74,
-      "pbRatio": -9.85,
-      "pegRatio": 0.46
+      "ttmPe": 14.79,
+      "marketCap": 28584600000,
+      "psRatio": 6.87,
+      "pbRatio": -8.74,
+      "pegRatio": 0.45
     },
     "profitability": {
       "roe": -3.62,
@@ -5688,15 +5682,15 @@
       ]
     },
     "wacc": {
-      "wacc": 7.13,
-      "costOfEquity": 12.6,
-      "costOfDebt": 0.79,
-      "taxRate": 2,
-      "beta": 0.9673,
-      "marketCap": 34767766320
+      "wacc": 7.2700000000000005,
+      "costOfEquity": 12.520000000000001,
+      "costOfDebt": 0.86,
+      "taxRate": 1,
+      "beta": 0.9536,
+      "marketCap": 28584600000
     },
     "beta": {
-      "beta5y": 0.9673
+      "beta5y": 0.9536
     },
     "price": [
       {
@@ -7718,14 +7712,6 @@
     ],
     "news": [
       {
-        "uuid": "2519fd03-a890-3a12-971a-c800687dd5c1",
-        "title": "Crown Castle Inc (CCI) Q1 2025 Earnings Call Highlights: Strategic Shift Towards Pure-Play ...",
-        "publisher": "GuruFocus.com",
-        "reportDate": "2025-05-01",
-        "link": "https://finance.yahoo.com/news/crown-castle-inc-cci-q1-071947619.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "67e78153-344f-391e-b3a2-7c41544ac44d",
         "title": "KeyBanc Adjusts Price Target on Crown Castle to $122 From $120",
         "publisher": "MT Newswires",
@@ -7734,11 +7720,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "9a376742-5bed-36c3-93c5-1c5c7bfa4241",
-        "title": "RBC Raises Price Target on Crown Castle to $112 From $107",
-        "publisher": "MT Newswires",
-        "reportDate": "2025-05-02",
-        "link": "https://finance.yahoo.com/news/rbc-raises-price-target-crown-185752092.html",
+        "uuid": "2519fd03-a890-3a12-971a-c800687dd5c1",
+        "title": "Crown Castle Inc (CCI) Q1 2025 Earnings Call Highlights: Strategic Shift Towards Pure-Play ...",
+        "publisher": "GuruFocus.com",
+        "reportDate": "2025-05-01",
+        "link": "https://finance.yahoo.com/news/crown-castle-inc-cci-q1-071947619.html",
         "type": "STORY"
       },
       {
@@ -7758,11 +7744,27 @@
         "type": "STORY"
       },
       {
+        "uuid": "9a376742-5bed-36c3-93c5-1c5c7bfa4241",
+        "title": "RBC Raises Price Target on Crown Castle to $112 From $107",
+        "publisher": "MT Newswires",
+        "reportDate": "2025-05-02",
+        "link": "https://finance.yahoo.com/news/rbc-raises-price-target-crown-185752092.html",
+        "type": "STORY"
+      },
+      {
         "uuid": "0722e51b-eef8-3670-97af-b1556e1fabbd",
         "title": "BMO Capital Adjusts Price Target on Crown Castle to $112 From $108, Maintains Market Perform Rating",
         "publisher": "MT Newswires",
         "reportDate": "2025-05-05",
         "link": "https://finance.yahoo.com/news/bmo-capital-adjusts-price-target-141331038.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "d86f16e8-2322-30ca-a1f5-fb5ffaca9456",
+        "title": "Crown Castle Insider Sold Shares Worth $300,389, According to a Recent SEC Filing",
+        "publisher": "MT Newswires",
+        "reportDate": "2025-05-07",
+        "link": "https://finance.yahoo.com/news/crown-castle-insider-sold-shares-213118856.html",
         "type": "STORY"
       },
       {
@@ -7779,14 +7781,6 @@
         "publisher": "MT Newswires",
         "reportDate": "2025-05-07",
         "link": "https://finance.yahoo.com/news/crown-castle-insider-sold-shares-212747939.html",
-        "type": "STORY"
-      },
-      {
-        "uuid": "d86f16e8-2322-30ca-a1f5-fb5ffaca9456",
-        "title": "Crown Castle Insider Sold Shares Worth $300,389, According to a Recent SEC Filing",
-        "publisher": "MT Newswires",
-        "reportDate": "2025-05-07",
-        "link": "https://finance.yahoo.com/news/crown-castle-insider-sold-shares-213118856.html",
         "type": "STORY"
       },
       {
@@ -7811,15 +7805,15 @@
         "totalPay": 2007765
       },
       {
+        "name": "Mr. Donald J. Reid Jr.",
+        "title": "Corporate Secretary"
+      },
+      {
         "name": "Mr. Edward B. Adams Jr.",
         "title": "Executive VP & General Counsel",
         "age": 56,
         "yearBorn": 1969,
         "totalPay": 1250099
-      },
-      {
-        "name": "Mr. Kris Hinson",
-        "title": "Executive VP & Chief Commercial Officer"
       },
       {
         "name": "Mr. Mark Lennon",
@@ -7845,13 +7839,6 @@
         "yearBorn": 1964
       },
       {
-        "name": "Ms. Catherine Piche",
-        "title": "Executive VP & COO of Towers",
-        "age": 53,
-        "yearBorn": 1972,
-        "totalPay": 1360250
-      },
-      {
         "name": "Ms. Fiona McKone",
         "title": "Vice President of Communications & Marketing"
       }
@@ -7859,43 +7846,43 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 16.67,
-        "industryAvg": 35.74
+        "value": 14.79,
+        "industryAvg": 31.34
       },
       {
         "metric": "P/S Ratio",
-        "value": 7.74,
-        "industryAvg": 4.96
+        "value": 6.87,
+        "industryAvg": 6.41
       },
       {
         "metric": "P/B Ratio",
-        "value": -9.85,
-        "industryAvg": 2.89
+        "value": -8.74,
+        "industryAvg": 4.39
       },
       {
         "metric": "ROE",
         "value": -3.62,
-        "industryAvg": 2.23
+        "industryAvg": 11.66
       },
       {
         "metric": "ROA",
         "value": 0.36,
-        "industryAvg": 0.6799999999999999
+        "industryAvg": 3.56
       },
       {
         "metric": "Gross Margin",
         "value": 73.41,
-        "industryAvg": 57.25
+        "industryAvg": 57.220000000000006
       },
       {
         "metric": "EBITDA Margin",
         "value": 66.96,
-        "industryAvg": 48.47
+        "industryAvg": 53.76
       },
       {
         "metric": "Net Margin",
         "value": 9.33,
-        "industryAvg": 14.44
+        "industryAvg": 19.54
       }
     ]
   }

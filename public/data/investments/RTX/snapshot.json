@@ -1,17 +1,11 @@
 {
   "symbol": "RTX",
-  "lastUpdated": "2026-08-18T23:06:20.443188+00:00",
+  "lastUpdated": "2026-09-29T07:04:00.244178+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-08-18T23:06:20.443188+00:00",
+    "snapshotBuiltAt": "2026-09-29T07:04:00.244178+00:00",
     "sections": {
       "price": "2026-09-28"
-    },
-    "retainedSections": [
-      "fundamentals",
-      "wacc",
-      "beta",
-      "news"
-    ]
+    }
   },
   "source": "prefetched",
   "capabilities": {
@@ -46,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 5.6791,
-      "ttmPe": 39.26,
-      "marketCap": 300509623557,
-      "psRatio": 3.21,
-      "pbRatio": 4.53,
-      "pegRatio": 1.14
+      "ttmPe": 33.04,
+      "marketCap": 252920285046,
+      "psRatio": 2.71,
+      "pbRatio": 3.81,
+      "pegRatio": 1.18
     },
     "profitability": {
       "roe": 3.2199999999999998,
@@ -5880,15 +5874,15 @@
       ]
     },
     "wacc": {
-      "wacc": 6.1899999999999995,
-      "costOfEquity": 6.959999999999999,
-      "costOfDebt": 1.04,
-      "taxRate": 14.000000000000002,
-      "beta": 0.295,
-      "marketCap": 268326667450
+      "wacc": 6.7,
+      "costOfEquity": 7.59,
+      "costOfDebt": 1.0999999999999999,
+      "taxRate": 18,
+      "beta": 0.3079,
+      "marketCap": 252920285046
     },
     "beta": {
-      "beta5y": 0.295
+      "beta5y": 0.3079
     },
     "price": [
       {
@@ -8043,10 +8037,8 @@
         "yearBorn": 1975
       },
       {
-        "name": "Ms. Robin L. Diamonte",
-        "title": "Chief Investment Officer & VP of Pension Investments",
-        "age": 60,
-        "yearBorn": 1965
+        "name": "Ms. Pamela M. Erickson",
+        "title": "Chief Communications Officer"
       },
       {
         "name": "Nathan Ware",
@@ -8056,43 +8048,43 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 39.26,
-        "industryAvg": 0.78
+        "value": 33.04,
+        "industryAvg": 32.24
       },
       {
         "metric": "P/S Ratio",
-        "value": 3.21,
-        "industryAvg": 0.05
+        "value": 2.71,
+        "industryAvg": 2.88
       },
       {
         "metric": "P/B Ratio",
-        "value": 4.53,
-        "industryAvg": 0.07
+        "value": 3.81,
+        "industryAvg": 8.46
       },
       {
         "metric": "ROE",
         "value": 3.2199999999999998,
-        "industryAvg": 3.7199999999999998
+        "industryAvg": 17.330000000000002
       },
       {
         "metric": "ROA",
         "value": 1.24,
-        "industryAvg": 1.08
+        "industryAvg": 4.51
       },
       {
         "metric": "Gross Margin",
         "value": 20.77,
-        "industryAvg": 21.41
+        "industryAvg": 18.759999999999998
       },
       {
         "metric": "EBITDA Margin",
         "value": 17.2,
-        "industryAvg": 15.02
+        "industryAvg": 14.35
       },
       {
         "metric": "Net Margin",
         "value": 8.66,
-        "industryAvg": 6.950000000000001
+        "industryAvg": 7.06
       }
     ]
   }

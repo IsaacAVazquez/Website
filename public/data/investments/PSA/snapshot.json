@@ -1,17 +1,11 @@
 {
   "symbol": "PSA",
-  "lastUpdated": "2026-09-15T01:03:45.681080+00:00",
+  "lastUpdated": "2026-09-29T07:04:00.244178+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-09-15T01:03:45.681080+00:00",
+    "snapshotBuiltAt": "2026-09-29T07:04:00.244178+00:00",
     "sections": {
       "price": "2026-09-28"
-    },
-    "retainedSections": [
-      "fundamentals",
-      "wacc",
-      "beta",
-      "news"
-    ]
+    }
   },
   "source": "prefetched",
   "capabilities": {
@@ -46,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 10.4867,
-      "ttmPe": 28.27,
-      "marketCap": 52071656150,
-      "psRatio": 10.65,
-      "pbRatio": 5.67,
-      "pegRatio": 1
+      "ttmPe": 27.16,
+      "marketCap": 50015133069,
+      "psRatio": 10.23,
+      "pbRatio": 5.44,
+      "pegRatio": 0.6
     },
     "profitability": {
       "roe": 4.89,
@@ -5042,15 +5036,15 @@
       ]
     },
     "wacc": {
-      "wacc": 10.58,
-      "costOfEquity": 12.32,
-      "costOfDebt": 0.8,
-      "taxRate": 0,
-      "beta": 0.934,
-      "marketCap": 56272929592
+      "wacc": 10.280000000000001,
+      "costOfEquity": 12.2,
+      "costOfDebt": 0.83,
+      "taxRate": 1,
+      "beta": 0.9125,
+      "marketCap": 50015133069
     },
     "beta": {
-      "beta5y": 0.934
+      "beta5y": 0.9125
     },
     "price": [
       {
@@ -7088,11 +7082,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "baa82238-85e5-3e2b-8a78-faf5ff1814e6",
-        "title": "Public Storage Q1 FFO Beats Estimates, Occupancy Falls",
+        "uuid": "1ca8c2ff-e64d-3ebf-a9ed-1e05cf7f3ec8",
+        "title": "Public Storage (PSA) Q1 FFO and Revenues Top Estimates",
         "publisher": "Zacks",
         "reportDate": "2025-05-01",
-        "link": "https://finance.yahoo.com/news/public-storage-q1-ffo-beats-155000901.html",
+        "link": "https://finance.yahoo.com/news/public-storage-psa-q1-ffo-212006960.html",
         "type": "STORY"
       },
       {
@@ -7104,11 +7098,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "1ca8c2ff-e64d-3ebf-a9ed-1e05cf7f3ec8",
-        "title": "Public Storage (PSA) Q1 FFO and Revenues Top Estimates",
+        "uuid": "baa82238-85e5-3e2b-8a78-faf5ff1814e6",
+        "title": "Public Storage Q1 FFO Beats Estimates, Occupancy Falls",
         "publisher": "Zacks",
         "reportDate": "2025-05-01",
-        "link": "https://finance.yahoo.com/news/public-storage-psa-q1-ffo-212006960.html",
+        "link": "https://finance.yahoo.com/news/public-storage-q1-ffo-beats-155000901.html",
         "type": "STORY"
       },
       {
@@ -7213,43 +7207,43 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 28.27,
-        "industryAvg": 35.63
+        "value": 27.16,
+        "industryAvg": 27.92
       },
       {
         "metric": "P/S Ratio",
-        "value": 10.65,
-        "industryAvg": 2.46
+        "value": 10.23,
+        "industryAvg": 8.5
       },
       {
         "metric": "P/B Ratio",
-        "value": 5.67,
-        "industryAvg": 0.87
+        "value": 5.44,
+        "industryAvg": 2.28
       },
       {
         "metric": "ROE",
         "value": 4.89,
-        "industryAvg": 2.35
+        "industryAvg": 11.51
       },
       {
         "metric": "ROA",
         "value": 2.25,
-        "industryAvg": 1.15
+        "industryAvg": 5.64
       },
       {
         "metric": "Gross Margin",
         "value": 72.09,
-        "industryAvg": 69.62
+        "industryAvg": 69.92
       },
       {
         "metric": "EBITDA Margin",
         "value": 71.23,
-        "industryAvg": 63.160000000000004
+        "industryAvg": 69.62
       },
       {
         "metric": "Net Margin",
         "value": 36.52,
-        "industryAvg": 26.27
+        "industryAvg": 32.75
       }
     ]
   }

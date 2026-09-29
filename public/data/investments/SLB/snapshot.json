@@ -1,17 +1,11 @@
 {
   "symbol": "SLB",
-  "lastUpdated": "2026-08-18T23:06:20.443188+00:00",
+  "lastUpdated": "2026-09-29T07:04:00.244178+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-08-18T23:06:20.443188+00:00",
+    "snapshotBuiltAt": "2026-09-29T07:04:00.244178+00:00",
     "sections": {
       "price": "2026-09-28"
-    },
-    "retainedSections": [
-      "fundamentals",
-      "wacc",
-      "beta",
-      "news"
-    ]
+    }
   },
   "source": "prefetched",
   "capabilities": {
@@ -46,10 +40,10 @@
     },
     "fundamentals": {
       "ttmEps": 2.0602,
-      "ttmPe": 26.1,
-      "marketCap": 79802379864,
-      "psRatio": 2.19,
-      "pbRatio": 3.06,
+      "ttmPe": 24.99,
+      "marketCap": 76418533368,
+      "psRatio": 2.1,
+      "pbRatio": 2.93,
       "pegRatio": 74.83
     },
     "profitability": {
@@ -3129,7 +3123,7 @@
         },
         {
           "Breakdown": "Share Issued",
-          "2026-06-30": "1484143231.0",
+          "2026-06-30": "1484000000.0",
           "2026-03-31": "1580057661.0",
           "2025-12-31": "1580331485.0",
           "2025-09-30": "1579923635.0",
@@ -3149,7 +3143,7 @@
         },
         {
           "Breakdown": "Ordinary Shares Number",
-          "2026-06-30": "1484143231.0",
+          "2026-06-30": "1484000000.0",
           "2026-03-31": "1495057661.0",
           "2025-12-31": "1495331485.0",
           "2025-09-30": "1493923635.0",
@@ -6024,15 +6018,15 @@
       ]
     },
     "wacc": {
-      "wacc": 9.36,
-      "costOfEquity": 10.76,
+      "wacc": 10.05,
+      "costOfEquity": 11.600000000000001,
       "costOfDebt": 1,
       "taxRate": 20,
-      "beta": 0.7455,
-      "marketCap": 70910586711
+      "beta": 0.8334,
+      "marketCap": 76418533368
     },
     "beta": {
-      "beta5y": 0.7455
+      "beta5y": 0.8334
     },
     "price": [
       {
@@ -8110,11 +8104,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "884696e5-33d7-3d20-8d0c-205e0348294d",
-        "title": "Is Schlumberger Limited (SLB) the Most Undervalued Energy Stock to Buy According to Hedge Funds?",
-        "publisher": "Insider Monkey",
+        "uuid": "3f5455fd-c3ed-36f7-96d4-3d92d3a83551",
+        "title": "SLB OneSubsea and Subsea7 Awarded EPCI Contract for bp's Ginger Project",
+        "publisher": "Business Wire",
         "reportDate": "2025-05-05",
-        "link": "https://finance.yahoo.com/news/schlumberger-limited-slb-most-undervalued-151006323.html",
+        "link": "https://finance.yahoo.com/news/slb-onesubsea-subsea7-awarded-epci-122700119.html",
         "type": "STORY"
       },
       {
@@ -8126,18 +8120,18 @@
         "type": "STORY"
       },
       {
-        "uuid": "3f5455fd-c3ed-36f7-96d4-3d92d3a83551",
-        "title": "SLB OneSubsea and Subsea7 Awarded EPCI Contract for bp's Ginger Project",
-        "publisher": "Business Wire",
+        "uuid": "884696e5-33d7-3d20-8d0c-205e0348294d",
+        "title": "Is Schlumberger Limited (SLB) the Most Undervalued Energy Stock to Buy According to Hedge Funds?",
+        "publisher": "Insider Monkey",
         "reportDate": "2025-05-05",
-        "link": "https://finance.yahoo.com/news/slb-onesubsea-subsea7-awarded-epci-122700119.html",
+        "link": "https://finance.yahoo.com/news/schlumberger-limited-slb-most-undervalued-151006323.html",
         "type": "STORY"
       }
     ],
     "officers": [
       {
-        "name": "Giles Powell",
-        "title": "Director of Corporate Communication"
+        "name": "Josh Byerly",
+        "title": "SVP of Global Communications"
       },
       {
         "name": "Mr. Abdellah Merad",
@@ -8200,43 +8194,43 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 26.1,
-        "industryAvg": 0
+        "value": 24.99,
+        "industryAvg": 21.2
       },
       {
         "metric": "P/S Ratio",
-        "value": 2.19,
-        "industryAvg": 0
+        "value": 2.1,
+        "industryAvg": 1.83
       },
       {
         "metric": "P/B Ratio",
-        "value": 3.06,
-        "industryAvg": 0
+        "value": 2.93,
+        "industryAvg": 2.6
       },
       {
         "metric": "ROE",
         "value": 3.01,
-        "industryAvg": 2.96
+        "industryAvg": 11.110000000000001
       },
       {
         "metric": "ROA",
         "value": 1.43,
-        "industryAvg": 1.35
+        "industryAvg": 5.18
       },
       {
         "metric": "Gross Margin",
         "value": 15.55,
-        "industryAvg": 22.040000000000003
+        "industryAvg": 22.05
       },
       {
         "metric": "EBITDA Margin",
         "value": 20.72,
-        "industryAvg": 20.32
+        "industryAvg": 18.78
       },
       {
         "metric": "Net Margin",
         "value": 8.76,
-        "industryAvg": 8.6
+        "industryAvg": 7.960000000000001
       }
     ]
   }

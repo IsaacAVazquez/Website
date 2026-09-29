@@ -1,17 +1,11 @@
 {
   "symbol": "TDG",
-  "lastUpdated": "2026-09-15T01:03:45.681080+00:00",
+  "lastUpdated": "2026-09-29T07:04:00.244178+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-09-15T01:03:45.681080+00:00",
+    "snapshotBuiltAt": "2026-09-29T07:04:00.244178+00:00",
     "sections": {
       "price": "2026-09-28"
-    },
-    "retainedSections": [
-      "fundamentals",
-      "wacc",
-      "beta",
-      "news"
-    ]
+    }
   },
   "source": "prefetched",
   "capabilities": {
@@ -46,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 32.9774,
-      "ttmPe": 34.58,
-      "marketCap": 63025252809.02,
-      "psRatio": 6.3,
-      "pbRatio": -6.43,
-      "pegRatio": 3.52
+      "ttmPe": 33.64,
+      "marketCap": 61306367556,
+      "psRatio": 6.13,
+      "pbRatio": -6.25,
+      "pegRatio": 3.09
     },
     "profitability": {
       "roe": -5.609999999999999,
@@ -6085,15 +6079,15 @@
       ]
     },
     "wacc": {
-      "wacc": 8.61,
-      "costOfEquity": 11.89,
-      "costOfDebt": 1.51,
-      "taxRate": 23,
-      "beta": 0.8825,
-      "marketCap": 72514002641.36
+      "wacc": 8.36,
+      "costOfEquity": 12.29,
+      "costOfDebt": 1.54,
+      "taxRate": 24,
+      "beta": 0.9241,
+      "marketCap": 61306367556
     },
     "beta": {
-      "beta5y": 0.8825
+      "beta5y": 0.9241
     },
     "price": [
       {
@@ -8123,19 +8117,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "704b40dc-d37f-348f-9e86-981d6c82988c",
-        "title": "TransDigm Group to Acquire Servotronics in Cash Deal Valued at About $110 million",
-        "publisher": "MT Newswires",
-        "reportDate": "2025-05-19",
-        "link": "https://finance.yahoo.com/news/transdigm-group-acquire-servotronics-cash-124829708.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "eb4ff7d6-48e9-3d51-9a5c-b34eb59b0dd2",
         "title": "TransDigm Group and Servotronics, Inc. Announce Acquisition Agreement",
         "publisher": "PR Newswire",
         "reportDate": "2025-05-19",
         "link": "https://finance.yahoo.com/news/transdigm-group-servotronics-inc-announce-123000757.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "704b40dc-d37f-348f-9e86-981d6c82988c",
+        "title": "TransDigm Group to Acquire Servotronics in Cash Deal Valued at About $110 million",
+        "publisher": "MT Newswires",
+        "reportDate": "2025-05-19",
+        "link": "https://finance.yahoo.com/news/transdigm-group-acquire-servotronics-cash-124829708.html",
         "type": "STORY"
       },
       {
@@ -8155,19 +8149,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "102c50e6-9cbd-357c-b4bc-000159fe857b",
-        "title": "Transdigm Group Insider Sold Shares Worth $4,303,050, According to a Recent SEC Filing",
-        "publisher": "MT Newswires",
-        "reportDate": "2025-05-21",
-        "link": "https://finance.yahoo.com/news/transdigm-group-insider-sold-shares-204309384.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "b91afbf1-0770-39ad-afd0-ca8f771ece38",
         "title": "Transdigm Group Insider Sold Shares Worth $6,751,660, According to a Recent SEC Filing",
         "publisher": "MT Newswires",
         "reportDate": "2025-05-21",
         "link": "https://finance.yahoo.com/news/transdigm-group-insider-sold-shares-204345034.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "102c50e6-9cbd-357c-b4bc-000159fe857b",
+        "title": "Transdigm Group Insider Sold Shares Worth $4,303,050, According to a Recent SEC Filing",
+        "publisher": "MT Newswires",
+        "reportDate": "2025-05-21",
+        "link": "https://finance.yahoo.com/news/transdigm-group-insider-sold-shares-204309384.html",
         "type": "STORY"
       },
       {
@@ -8254,43 +8248,43 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 34.58,
-        "industryAvg": 87.16
+        "value": 33.64,
+        "industryAvg": 32.24
       },
       {
         "metric": "P/S Ratio",
-        "value": 6.3,
-        "industryAvg": 5.93
+        "value": 6.13,
+        "industryAvg": 2.88
       },
       {
         "metric": "P/B Ratio",
-        "value": -6.43,
-        "industryAvg": 8
+        "value": -6.25,
+        "industryAvg": 8.46
       },
       {
         "metric": "ROE",
         "value": -5.609999999999999,
-        "industryAvg": 3.5999999999999996
+        "industryAvg": 17.330000000000002
       },
       {
         "metric": "ROA",
         "value": 2.07,
-        "industryAvg": 1.05
+        "industryAvg": 4.51
       },
       {
         "metric": "Gross Margin",
         "value": 59.39,
-        "industryAvg": 21.4
+        "industryAvg": 18.759999999999998
       },
       {
         "metric": "EBITDA Margin",
         "value": 49.11,
-        "industryAvg": 15.03
+        "industryAvg": 14.35
       },
       {
         "metric": "Net Margin",
         "value": 19.66,
-        "industryAvg": 6.87
+        "industryAvg": 7.06
       }
     ]
   }

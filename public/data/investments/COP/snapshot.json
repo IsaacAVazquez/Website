@@ -1,17 +1,11 @@
 {
   "symbol": "COP",
-  "lastUpdated": "2026-09-15T01:03:45.681080+00:00",
+  "lastUpdated": "2026-09-29T07:04:00.244178+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-09-15T01:03:45.681080+00:00",
+    "snapshotBuiltAt": "2026-09-29T07:04:00.244178+00:00",
     "sections": {
       "price": "2026-09-28"
-    },
-    "retainedSections": [
-      "fundamentals",
-      "wacc",
-      "beta",
-      "news"
-    ]
+    }
   },
   "source": "prefetched",
   "capabilities": {
@@ -46,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 7.548,
-      "ttmPe": 18.2,
-      "marketCap": 165003705625,
-      "psRatio": 2.6,
-      "pbRatio": 2.52,
-      "pegRatio": 3.33
+      "ttmPe": 16.7,
+      "marketCap": 151416578500,
+      "psRatio": 2.39,
+      "pbRatio": 2.32,
+      "pegRatio": 0.16
     },
     "profitability": {
       "roe": 6.03,
@@ -5617,15 +5611,15 @@
       ]
     },
     "wacc": {
-      "wacc": 4.97,
-      "costOfEquity": 5.6899999999999995,
-      "costOfDebt": 1.26,
+      "wacc": 6.34,
+      "costOfEquity": 7.19,
+      "costOfDebt": 1.21,
       "taxRate": 35,
-      "beta": 0.1358,
-      "marketCap": 134889511680
+      "beta": 0.2555,
+      "marketCap": 151416578500
     },
     "beta": {
-      "beta5y": 0.1358
+      "beta5y": 0.2555
     },
     "price": [
       {
@@ -7687,19 +7681,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "522e3bd7-dfb3-388a-90bf-2a5daf050d02",
-        "title": "Suncor Energy to Report Q1 Earnings: Here's What to Expect",
-        "publisher": "Zacks",
-        "reportDate": "2025-04-30",
-        "link": "https://finance.yahoo.com/news/suncor-energy-report-q1-earnings-101800012.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "dc3a8355-96fa-385e-96a5-a14c75515cf4",
         "title": "Coterra Energy to Report Q1 Earnings: Key Metrics to Watch",
         "publisher": "Zacks",
         "reportDate": "2025-04-30",
         "link": "https://finance.yahoo.com/news/coterra-energy-report-q1-earnings-134800445.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "522e3bd7-dfb3-388a-90bf-2a5daf050d02",
+        "title": "Suncor Energy to Report Q1 Earnings: Here's What to Expect",
+        "publisher": "Zacks",
+        "reportDate": "2025-04-30",
+        "link": "https://finance.yahoo.com/news/suncor-energy-report-q1-earnings-101800012.html",
         "type": "STORY"
       },
       {
@@ -7719,11 +7713,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "a734f233-b3a7-39f9-a01b-aefeb5a637c3",
-        "title": "OPEC Shifts To Oil Price-War Stance Ahead Of Trump Saudi Visit; These Stocks Rally",
-        "publisher": "Investor's Business Daily",
+        "uuid": "164bdc7b-1cbb-3adb-b047-5a86a1dcef5c",
+        "title": "Why Frontline Stock Popped, but Exxon and ConocoPhillips Dropped",
+        "publisher": "Motley Fool",
         "reportDate": "2025-05-05",
-        "link": "https://finance.yahoo.com/m/a734f233-b3a7-39f9-a01b-aefeb5a637c3/opec-shifts-to-oil-price-war.html",
+        "link": "https://finance.yahoo.com/m/164bdc7b-1cbb-3adb-b047-5a86a1dcef5c/why-frontline-stock-popped%2C.html",
         "type": "STORY"
       }
     ],
@@ -7790,43 +7784,43 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 18.2,
-        "industryAvg": 18.43
+        "value": 16.7,
+        "industryAvg": 12.99
       },
       {
         "metric": "P/S Ratio",
-        "value": 2.6,
-        "industryAvg": 3.08
+        "value": 2.39,
+        "industryAvg": 2.48
       },
       {
         "metric": "P/B Ratio",
-        "value": 2.52,
-        "industryAvg": 1.72
+        "value": 2.32,
+        "industryAvg": 1.65
       },
       {
         "metric": "ROE",
         "value": 6.03,
-        "industryAvg": 6.22
+        "industryAvg": 12.5
       },
       {
         "metric": "ROA",
         "value": 3.17,
-        "industryAvg": 3.1399999999999997
+        "industryAvg": 6.34
       },
       {
         "metric": "Gross Margin",
         "value": 36.720000000000006,
-        "industryAvg": 47.32
+        "industryAvg": 40.88
       },
       {
         "metric": "EBITDA Margin",
         "value": 48.78,
-        "industryAvg": 59.48
+        "industryAvg": 50.519999999999996
       },
       {
         "metric": "Net Margin",
         "value": 20.45,
-        "industryAvg": 26.6
+        "industryAvg": 16.520000000000003
       }
     ]
   }

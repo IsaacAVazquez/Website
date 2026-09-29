@@ -1,17 +1,13 @@
 {
   "symbol": "FDX",
-  "lastUpdated": "2026-08-18T23:06:20.443188+00:00",
+  "lastUpdated": "2026-09-29T07:04:00.244178+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-08-18T23:06:20.443188+00:00",
+    "snapshotBuiltAt": "2026-09-29T07:04:00.244178+00:00",
     "sections": {
       "price": "2026-09-28"
     },
     "retainedSections": [
-      "info",
-      "fundamentals",
-      "industry",
-      "beta",
-      "news"
+      "info"
     ]
   },
   "source": "prefetched",
@@ -47,10 +43,10 @@
     },
     "fundamentals": {
       "ttmEps": 18.537,
-      "ttmPe": 18.05,
-      "marketCap": 80313600000,
-      "psRatio": 0.85,
-      "pbRatio": 2.54,
+      "ttmPe": 15.63,
+      "marketCap": 69516000000,
+      "psRatio": 0.73,
+      "pbRatio": 2.2,
       "pegRatio": 1.01
     },
     "profitability": {
@@ -5413,8 +5409,9 @@
         }
       ]
     },
+    "wacc": {},
     "beta": {
-      "beta5y": 1.2987
+      "beta5y": 1.2758
     },
     "price": [
       {
@@ -7535,26 +7532,21 @@
         "title": "President, CEO & Director",
         "age": 59,
         "yearBorn": 1966,
-        "totalPay": 6521967
-      },
-      {
-        "name": "Mr. Richard W. Smith",
-        "title": "COO of International, CEO of Airline - Federal Express & Director",
-        "age": 47,
-        "yearBorn": 1978
+        "totalPay": 16591566
       },
       {
         "name": "Mr. Vishal Talwar",
         "title": "Executive VP, Chief Digital & Information Officer and President of FedEx Dataworks",
         "age": 48,
-        "yearBorn": 1977
+        "yearBorn": 1977,
+        "totalPay": 7481426
       },
       {
         "name": "Ms. Brie A. Carere",
         "title": "Executive VP & Chief Customer Officer",
         "age": 47,
         "yearBorn": 1978,
-        "totalPay": 2611920
+        "totalPay": 6245789
       },
       {
         "name": "Ms. Gina F. Adams",
@@ -7573,52 +7565,59 @@
         "yearBorn": 1964
       },
       {
+        "name": "Ms. Lisa Suzanne Lisson",
+        "title": "President of Air Operations",
+        "age": 56,
+        "yearBorn": 1969
+      },
+      {
         "name": "Ms. Tracy B. Brightman",
         "title": "Executive VP & Chief People Officer",
         "age": 62,
-        "yearBorn": 1963
+        "yearBorn": 1963,
+        "totalPay": 5717879
       }
     ],
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 16.7,
-        "industryAvg": 19.93
+        "value": 15.63,
+        "industryAvg": 17.96
       },
       {
         "metric": "P/S Ratio",
-        "value": 0.8,
-        "industryAvg": 1.07
+        "value": 0.73,
+        "industryAvg": 0.92
       },
       {
         "metric": "P/B Ratio",
-        "value": 2.48,
-        "industryAvg": 4.04
+        "value": 2.2,
+        "industryAvg": 3.43
       },
       {
         "metric": "ROE",
-        "value": 3.64,
-        "industryAvg": 19.41
+        "value": 5.19,
+        "industryAvg": 18.2
       },
       {
         "metric": "ROA",
-        "value": 1.15,
-        "industryAvg": 6.39
+        "value": 1.6500000000000001,
+        "industryAvg": 3
       },
       {
         "metric": "Gross Margin",
-        "value": 21.349999999999998,
-        "industryAvg": 18.42
+        "value": 22.689999999999998,
+        "industryAvg": 19.6
       },
       {
         "metric": "EBITDA Margin",
-        "value": 11.360000000000001,
+        "value": 13.3,
         "industryAvg": 12
       },
       {
         "metric": "Net Margin",
-        "value": 4.390000000000001,
-        "industryAvg": 5.66
+        "value": 6.38,
+        "industryAvg": 5.62
       }
     ]
   }

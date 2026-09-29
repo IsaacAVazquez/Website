@@ -1,17 +1,11 @@
 {
   "symbol": "INTC",
-  "lastUpdated": "2026-09-15T01:03:45.681080+00:00",
+  "lastUpdated": "2026-09-29T07:04:00.244178+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-09-15T01:03:45.681080+00:00",
+    "snapshotBuiltAt": "2026-09-29T07:04:00.244178+00:00",
     "sections": {
       "price": "2026-09-28"
-    },
-    "retainedSections": [
-      "fundamentals",
-      "wacc",
-      "beta",
-      "news"
-    ]
+    }
   },
   "source": "prefetched",
   "capabilities": {
@@ -46,10 +40,10 @@
     },
     "fundamentals": {
       "ttmEps": -2.12,
-      "ttmPe": -48.56,
-      "marketCap": 519126420000,
-      "psRatio": 9.1,
-      "pbRatio": 5.93,
+      "ttmPe": 3518.87,
+      "marketCap": 585139290000,
+      "psRatio": 10.26,
+      "pbRatio": 6.68,
       "pegRatio": 28.58
     },
     "profitability": {
@@ -6016,15 +6010,15 @@
       ]
     },
     "wacc": {
-      "wacc": 20.830000000000002,
-      "costOfEquity": 22.5,
-      "costOfDebt": 0.59,
+      "wacc": 20.330000000000002,
+      "costOfEquity": 22.05,
+      "costOfDebt": 0.64,
       "taxRate": 40,
-      "beta": 2.1593,
-      "marketCap": 552055840000
+      "beta": 2.2036,
+      "marketCap": 585139290000
     },
     "beta": {
-      "beta5y": 2.1593
+      "beta5y": 2.2036
     },
     "price": [
       {
@@ -8118,35 +8112,21 @@
         "type": "STORY"
       },
       {
-        "uuid": "5aeb5313-0a8a-304b-9136-ed60d6dfb814",
-        "title": "Why Arm Holdings Stock Was Moving Higher Today",
+        "uuid": "4e7d3ddf-3e5f-37c6-a16b-3e53c35496f0",
+        "title": "Why Intel Stock Is Sinking Today",
         "publisher": "Motley Fool",
         "reportDate": "2025-05-15",
-        "link": "https://finance.yahoo.com/m/5aeb5313-0a8a-304b-9136-ed60d6dfb814/why-arm-holdings-stock-was.html",
+        "link": "https://finance.yahoo.com/m/4e7d3ddf-3e5f-37c6-a16b-3e53c35496f0/why-intel-stock-is-sinking.html",
         "type": "STORY"
       }
     ],
     "officers": [
-      {
-        "name": "Dr. Rui Wang",
-        "title": "Senior VP & Chair of Intel China",
-        "age": 64,
-        "yearBorn": 1961
-      },
-      {
-        "name": "Mr. Allon Stabinsky",
-        "title": "Senior VP and Chief Deputy General Counsel of the Law & Policy Group"
-      },
       {
         "name": "Mr. David A. Zinsner",
         "title": "Executive VP, CFO and Principal Financial & Accounting Officer",
         "age": 56,
         "yearBorn": 1969,
         "totalPay": 4218200
-      },
-      {
-        "name": "Mr. James A. Murray",
-        "title": "Chief Antitrust Counsel and VP of Law & Policy Group"
       },
       {
         "name": "Mr. John William Pitzer",
@@ -8186,43 +8166,43 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": -48.56,
-        "industryAvg": 0.1
+        "value": 3518.87,
+        "industryAvg": 30.1
       },
       {
         "metric": "P/S Ratio",
-        "value": 9.1,
-        "industryAvg": 0.05
+        "value": 10.26,
+        "industryAvg": 14.37
       },
       {
         "metric": "P/B Ratio",
-        "value": 5.93,
-        "industryAvg": 0.04
+        "value": 6.68,
+        "industryAvg": 12.55
       },
       {
         "metric": "ROE",
         "value": -11.09,
-        "industryAvg": 37.62
+        "industryAvg": 59.62
       },
       {
         "metric": "ROA",
         "value": -5.41,
-        "industryAvg": 27.560000000000002
+        "industryAvg": 42.54
       },
       {
         "metric": "Gross Margin",
         "value": 40.36,
-        "industryAvg": 81.58999999999999
+        "industryAvg": 68.30000000000001
       },
       {
         "metric": "EBITDA Margin",
         "value": -45.1,
-        "industryAvg": 138.09
+        "industryAvg": 81.55
       },
       {
         "metric": "Net Margin",
         "value": -68.41000000000001,
-        "industryAvg": 101.56
+        "industryAvg": 56.779999999999994
       }
     ]
   }

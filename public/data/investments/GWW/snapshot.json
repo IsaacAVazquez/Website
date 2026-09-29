@@ -1,17 +1,11 @@
 {
   "symbol": "GWW",
-  "lastUpdated": "2026-09-15T01:03:45.681080+00:00",
+  "lastUpdated": "2026-09-29T07:04:00.244178+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-09-15T01:03:45.681080+00:00",
+    "snapshotBuiltAt": "2026-09-29T07:04:00.244178+00:00",
     "sections": {
       "price": "2026-09-28"
-    },
-    "retainedSections": [
-      "fundamentals",
-      "wacc",
-      "beta",
-      "news"
-    ]
+    }
   },
   "source": "prefetched",
   "capabilities": {
@@ -46,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 39.3978,
-      "ttmPe": 32.49,
-      "marketCap": 60288640000,
-      "psRatio": 3.2,
-      "pbRatio": 14.59,
-      "pegRatio": 2
+      "ttmPe": 31.87,
+      "marketCap": 59143622134.95,
+      "psRatio": 3.14,
+      "pbRatio": 14.32,
+      "pegRatio": 1.55
     },
     "profitability": {
       "roe": 14.14,
@@ -5162,15 +5156,15 @@
       ]
     },
     "wacc": {
-      "wacc": 12.55,
-      "costOfEquity": 13.07,
-      "costOfDebt": 0.76,
+      "wacc": 12.3,
+      "costOfEquity": 12.86,
+      "costOfDebt": 0.72,
       "taxRate": 25,
-      "beta": 1.0241,
-      "marketCap": 63725409594
+      "beta": 0.9988,
+      "marketCap": 59143622134.95
     },
     "beta": {
-      "beta5y": 1.0241
+      "beta5y": 0.9988
     },
     "price": [
       {
@@ -7232,19 +7226,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "e70770cb-4bce-39f8-bf9d-63bbef571d8e",
-        "title": "Is W.W. Grainger, Inc. (NYSE:GWW) Worth US$1.0k Based On Its Intrinsic Value?",
-        "publisher": "Simply Wall St.",
-        "reportDate": "2025-05-12",
-        "link": "https://finance.yahoo.com/news/w-w-grainger-inc-nyse-110018632.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "efa58763-404b-39af-9eb4-0e734065d4a0",
         "title": "Q1 Earnings Outperformers: VSE Corporation (NASDAQ:VSEC) And The Rest Of The Maintenance and Repair Distributors Stocks",
         "publisher": "StockStory",
         "reportDate": "2025-05-12",
         "link": "https://finance.yahoo.com/news/q1-earnings-outperformers-vse-corporation-033134363.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "e70770cb-4bce-39f8-bf9d-63bbef571d8e",
+        "title": "Is W.W. Grainger, Inc. (NYSE:GWW) Worth US$1.0k Based On Its Intrinsic Value?",
+        "publisher": "Simply Wall St.",
+        "reportDate": "2025-05-12",
+        "link": "https://finance.yahoo.com/news/w-w-grainger-inc-nyse-110018632.html",
         "type": "STORY"
       },
       {
@@ -7256,19 +7250,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "df7e4f5c-67ef-3c4d-ad6d-6cd45c2fd6f1",
-        "title": "SIEGY vs. GWW: Which Stock Is the Better Value Option?",
-        "publisher": "Zacks",
-        "reportDate": "2025-05-14",
-        "link": "https://finance.yahoo.com/news/siegy-vs-gww-stock-better-154012764.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "8c50dfea-f9d2-302f-b7a7-3a4fd659354a",
         "title": "W.W. Grainger, Inc. (GWW): Among Benjamin Graham Stocks for Defensive Investors",
         "publisher": "Insider Monkey",
         "reportDate": "2025-05-14",
         "link": "https://finance.yahoo.com/news/w-w-grainger-inc-gww-083523334.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "df7e4f5c-67ef-3c4d-ad6d-6cd45c2fd6f1",
+        "title": "SIEGY vs. GWW: Which Stock Is the Better Value Option?",
+        "publisher": "Zacks",
+        "reportDate": "2025-05-14",
+        "link": "https://finance.yahoo.com/news/siegy-vs-gww-stock-better-154012764.html",
         "type": "STORY"
       }
     ],
@@ -7340,43 +7334,43 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 32.49,
-        "industryAvg": 36.1
+        "value": 31.87,
+        "industryAvg": 26.99
       },
       {
         "metric": "P/S Ratio",
-        "value": 3.2,
-        "industryAvg": 1.85
+        "value": 3.14,
+        "industryAvg": 1.68
       },
       {
         "metric": "P/B Ratio",
-        "value": 14.59,
-        "industryAvg": 4.99
+        "value": 14.32,
+        "industryAvg": 5.09
       },
       {
         "metric": "ROE",
         "value": 14.14,
-        "industryAvg": 5.37
+        "industryAvg": 16.49
       },
       {
         "metric": "ROA",
         "value": 5.970000000000001,
-        "industryAvg": 2.29
+        "industryAvg": 6.950000000000001
       },
       {
         "metric": "Gross Margin",
         "value": 39.51,
-        "industryAvg": 29.43
+        "industryAvg": 29.26
       },
       {
         "metric": "EBITDA Margin",
         "value": 17.61,
-        "industryAvg": 11.73
+        "industryAvg": 10.41
       },
       {
         "metric": "Net Margin",
         "value": 11.35,
-        "industryAvg": 6.279999999999999
+        "industryAvg": 5.16
       }
     ]
   }

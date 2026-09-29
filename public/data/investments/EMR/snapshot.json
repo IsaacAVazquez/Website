@@ -1,17 +1,11 @@
 {
   "symbol": "EMR",
-  "lastUpdated": "2026-08-18T23:06:20.443188+00:00",
+  "lastUpdated": "2026-09-29T07:04:00.244178+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-08-18T23:06:20.443188+00:00",
+    "snapshotBuiltAt": "2026-09-29T07:04:00.244178+00:00",
     "sections": {
       "price": "2026-09-28"
-    },
-    "retainedSections": [
-      "fundamentals",
-      "wacc",
-      "beta",
-      "news"
-    ]
+    }
   },
   "source": "prefetched",
   "capabilities": {
@@ -46,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 4.5762,
-      "ttmPe": 35.66,
-      "marketCap": 91016226000,
-      "psRatio": 4.88,
-      "pbRatio": 4.47,
-      "pegRatio": 1.13
+      "ttmPe": 34.83,
+      "marketCap": 88907742000,
+      "psRatio": 4.77,
+      "pbRatio": 4.36,
+      "pegRatio": 1.49
     },
     "profitability": {
       "roe": 3.53,
@@ -873,7 +867,7 @@
           "Breakdown": "Basic Average Shares",
           "TTM": "560925000.0",
           "2026-06-30": "558800000.0",
-          "2026-03-31": "560800000.0",
+          "2026-03-31": "560100000.0",
           "2025-12-31": "561800000.0",
           "2025-09-30": "562800000.0",
           "2025-06-30": "562100000.0",
@@ -1591,7 +1585,7 @@
         },
         {
           "Breakdown": "Basic EPS",
-          "2025-09-30": "4.06",
+          "2025-09-30": "4.07",
           "2024-09-30": "3.45",
           "2023-09-30": "23.11",
           "2022-09-30": "5.46",
@@ -1611,7 +1605,7 @@
         },
         {
           "Breakdown": "Basic Average Shares",
-          "2025-09-30": "564000000.0",
+          "2025-09-30": "562800000.0",
           "2024-09-30": "570200000.0",
           "2023-09-30": "572000000.0",
           "2022-09-30": "591400000.0",
@@ -6101,15 +6095,15 @@
       ]
     },
     "wacc": {
-      "wacc": 12.55,
-      "costOfEquity": 14.75,
-      "costOfDebt": 0.7799999999999999,
-      "taxRate": 22,
-      "beta": 1.2266,
-      "marketCap": 76442448000
+      "wacc": 12.540000000000001,
+      "costOfEquity": 14.31,
+      "costOfDebt": 0.83,
+      "taxRate": 21,
+      "beta": 1.1884,
+      "marketCap": 88907742000
     },
     "beta": {
-      "beta5y": 1.2266
+      "beta5y": 1.1884
     },
     "price": [
       {
@@ -8213,6 +8207,10 @@
     ],
     "officers": [
       {
+        "name": "Doug Ashby",
+        "title": "Director of Investor Relations"
+      },
+      {
         "name": "Mr. Michael Tang",
         "title": "Senior VP, Secretary & Chief Legal Officer",
         "age": 51,
@@ -8234,10 +8232,10 @@
         "totalPay": 2353975
       },
       {
-        "name": "Mr. Peter Zornio",
-        "title": "Senior VP & CTO",
-        "age": 61,
-        "yearBorn": 1964
+        "name": "Mr. Nick J. Piazza",
+        "title": "Senior VP & Chief People Officer",
+        "age": 47,
+        "yearBorn": 1978
       },
       {
         "name": "Mr. Ram R. Krishnan",
@@ -8247,53 +8245,69 @@
         "totalPay": 2839564
       },
       {
+        "name": "Mr. Rudy Sengupta",
+        "title": "Senior VP and Chief Technology & AI Officer"
+      },
+      {
         "name": "Mr. Surendralal Lanca Karsanbhai",
         "title": "President, CEO & Director",
         "age": 55,
         "yearBorn": 1970,
         "totalPay": 5789937
+      },
+      {
+        "name": "Ms. Lisa A. Flavin",
+        "title": "Senior VP, Chief Transformation & Chief Compliance Officer",
+        "age": 60,
+        "yearBorn": 1965
+      },
+      {
+        "name": "Ms. Vidya Ramnath",
+        "title": "Senior VP & Chief Marketing Officer",
+        "age": 58,
+        "yearBorn": 1967
       }
     ],
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 35.66,
-        "industryAvg": 0
+        "value": 34.83,
+        "industryAvg": 31.32
       },
       {
         "metric": "P/S Ratio",
-        "value": 4.88,
-        "industryAvg": 0
+        "value": 4.77,
+        "industryAvg": 3.56
       },
       {
         "metric": "P/B Ratio",
-        "value": 4.47,
-        "industryAvg": 0
+        "value": 4.36,
+        "industryAvg": 6.36
       },
       {
         "metric": "ROE",
         "value": 3.53,
-        "industryAvg": 1.69
+        "industryAvg": 18.87
       },
       {
         "metric": "ROA",
         "value": 1.7000000000000002,
-        "industryAvg": 0.8
+        "industryAvg": 6.1899999999999995
       },
       {
         "metric": "Gross Margin",
         "value": 54.48,
-        "industryAvg": 22.21
+        "industryAvg": 28.96
       },
       {
         "metric": "EBITDA Margin",
         "value": 28.79,
-        "industryAvg": 10.85
+        "industryAvg": 15.58
       },
       {
         "metric": "Net Margin",
         "value": 14.729999999999999,
-        "industryAvg": 4.22
+        "industryAvg": 9.790000000000001
       }
     ]
   }

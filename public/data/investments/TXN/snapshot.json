@@ -1,17 +1,11 @@
 {
   "symbol": "TXN",
-  "lastUpdated": "2026-09-15T01:03:45.681080+00:00",
+  "lastUpdated": "2026-09-29T07:04:00.244178+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-09-15T01:03:45.681080+00:00",
+    "snapshotBuiltAt": "2026-09-29T07:04:00.244178+00:00",
     "sections": {
       "price": "2026-09-28"
-    },
-    "retainedSections": [
-      "fundamentals",
-      "wacc",
-      "beta",
-      "news"
-    ]
+    }
   },
   "source": "prefetched",
   "capabilities": {
@@ -46,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 6.5732,
-      "ttmPe": 40.88,
-      "marketCap": 245323100000,
-      "psRatio": 12.61,
-      "pbRatio": 13.62,
-      "pegRatio": 1.71
+      "ttmPe": 42.34,
+      "marketCap": 254097030000,
+      "psRatio": 13.06,
+      "pbRatio": 14.11,
+      "pegRatio": 0.82
     },
     "profitability": {
       "roe": 11.32,
@@ -5598,15 +5592,15 @@
       ]
     },
     "wacc": {
-      "wacc": 14.719999999999999,
-      "costOfEquity": 15.4,
+      "wacc": 14.649999999999999,
+      "costOfEquity": 15.409999999999998,
       "costOfDebt": 1,
-      "taxRate": 10,
-      "beta": 1.3039,
-      "marketCap": 283457503488
+      "taxRate": 12,
+      "beta": 1.3327,
+      "marketCap": 254097030000
     },
     "beta": {
-      "beta5y": 1.3039
+      "beta5y": 1.3327
     },
     "price": [
       {
@@ -7644,19 +7638,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "18947235-499e-3176-814b-e007504ed5ce",
-        "title": "Himax (HIMX) Q1 Earnings Report Preview: What To Look For",
-        "publisher": "StockStory",
-        "reportDate": "2025-05-07",
-        "link": "https://finance.yahoo.com/news/himax-himx-q1-earnings-report-103324368.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "cdf39a7b-8070-39cb-ae8b-f4edd3620d03",
         "title": "MACOM (MTSI) Reports Earnings Tomorrow: What To Expect",
         "publisher": "StockStory",
         "reportDate": "2025-05-07",
         "link": "https://finance.yahoo.com/news/macom-mtsi-reports-earnings-tomorrow-071223901.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "18947235-499e-3176-814b-e007504ed5ce",
+        "title": "Himax (HIMX) Q1 Earnings Report Preview: What To Look For",
+        "publisher": "StockStory",
+        "reportDate": "2025-05-07",
+        "link": "https://finance.yahoo.com/news/himax-himx-q1-earnings-report-103324368.html",
         "type": "STORY"
       },
       {
@@ -7771,43 +7765,43 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 40.88,
-        "industryAvg": 0.1
+        "value": 42.34,
+        "industryAvg": 30.1
       },
       {
         "metric": "P/S Ratio",
-        "value": 12.61,
-        "industryAvg": 0.05
+        "value": 13.06,
+        "industryAvg": 14.37
       },
       {
         "metric": "P/B Ratio",
-        "value": 13.62,
-        "industryAvg": 0.04
+        "value": 14.11,
+        "industryAvg": 12.55
       },
       {
         "metric": "ROE",
         "value": 11.32,
-        "industryAvg": 37.62
+        "industryAvg": 59.62
       },
       {
         "metric": "ROA",
         "value": 5.6000000000000005,
-        "industryAvg": 27.560000000000002
+        "industryAvg": 42.54
       },
       {
         "metric": "Gross Margin",
         "value": 61.36000000000001,
-        "industryAvg": 81.58999999999999
+        "industryAvg": 68.30000000000001
       },
       {
         "metric": "EBITDA Margin",
         "value": 53.94,
-        "industryAvg": 138.09
+        "industryAvg": 81.55
       },
       {
         "metric": "Net Margin",
         "value": 36.04,
-        "industryAvg": 101.56
+        "industryAvg": 56.779999999999994
       }
     ]
   }

@@ -1,17 +1,11 @@
 {
   "symbol": "CAT",
-  "lastUpdated": "2026-08-18T23:06:20.443188+00:00",
+  "lastUpdated": "2026-09-29T07:04:00.244178+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-08-18T23:06:20.443188+00:00",
+    "snapshotBuiltAt": "2026-09-29T07:04:00.244178+00:00",
     "sections": {
       "price": "2026-09-28"
-    },
-    "retainedSections": [
-      "fundamentals",
-      "wacc",
-      "beta",
-      "news"
-    ]
+    }
   },
   "source": "prefetched",
   "capabilities": {
@@ -46,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 23.2477,
-      "ttmPe": 36.85,
-      "marketCap": 393743729093,
-      "psRatio": 5.27,
-      "pbRatio": 20.3,
-      "pegRatio": 1.58
+      "ttmPe": 35.27,
+      "marketCap": 376910434255,
+      "psRatio": 5.04,
+      "pbRatio": 19.43,
+      "pegRatio": 0.52
     },
     "profitability": {
       "roe": 18.88,
@@ -5533,15 +5527,15 @@
       ]
     },
     "wacc": {
-      "wacc": 16,
-      "costOfEquity": 17.53,
-      "costOfDebt": 0.31,
-      "taxRate": 21,
-      "beta": 1.5555,
-      "marketCap": 443794209760
+      "wacc": 15.229999999999999,
+      "costOfEquity": 17.03,
+      "costOfDebt": 0.3,
+      "taxRate": 23,
+      "beta": 1.5458,
+      "marketCap": 376910434255
     },
     "beta": {
-      "beta5y": 1.5555
+      "beta5y": 1.5458
     },
     "price": [
       {
@@ -7635,11 +7629,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "c52b702e-e7f6-3501-b1fb-2f47570a6b3c",
-        "title": "Caterpillar Earnings Prospects Improve Following Trade War De-escalation, UBS Says in Upgrade",
-        "publisher": "MT Newswires",
+        "uuid": "31b6ac16-e96e-3659-b668-020b7272712b",
+        "title": "CAT Vs KMTUY: Which Heavy Equipment Stock is the Better Buy Now?",
+        "publisher": "Zacks",
         "reportDate": "2025-05-17",
-        "link": "https://finance.yahoo.com/news/caterpillar-earnings-prospects-improve-following-200218943.html",
+        "link": "https://finance.yahoo.com/news/cat-vs-kmtuy-heavy-equipment-180000856.html",
         "type": "STORY"
       }
     ],
@@ -7709,43 +7703,43 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 36.85,
-        "industryAvg": 35.02
+        "value": 35.27,
+        "industryAvg": 32.83
       },
       {
         "metric": "P/S Ratio",
-        "value": 5.27,
-        "industryAvg": 3.16
+        "value": 5.04,
+        "industryAvg": 3.13
       },
       {
         "metric": "P/B Ratio",
-        "value": 20.3,
-        "industryAvg": 3.62
+        "value": 19.43,
+        "industryAvg": 6.89
       },
       {
         "metric": "ROE",
         "value": 18.88,
-        "industryAvg": 4.9399999999999995
+        "industryAvg": 20.29
       },
       {
         "metric": "ROA",
         "value": 3.63,
-        "industryAvg": 1.77
+        "industryAvg": 5.7
       },
       {
         "metric": "Gross Margin",
         "value": 36.02,
-        "industryAvg": 29.110000000000003
+        "industryAvg": 27.76
       },
       {
         "metric": "EBITDA Margin",
         "value": 25.840000000000003,
-        "industryAvg": 17.849999999999998
+        "industryAvg": 17.86
       },
       {
         "metric": "Net Margin",
         "value": 17.49,
-        "industryAvg": 10.9
+        "industryAvg": 8.94
       }
     ]
   }

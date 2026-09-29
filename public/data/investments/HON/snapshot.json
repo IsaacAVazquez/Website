@@ -1,17 +1,11 @@
 {
   "symbol": "HON",
-  "lastUpdated": "2026-08-18T23:06:20.443188+00:00",
+  "lastUpdated": "2026-09-29T07:04:00.244178+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-08-18T23:06:20.443188+00:00",
+    "snapshotBuiltAt": "2026-09-29T07:04:00.244178+00:00",
     "sections": {
       "price": "2026-09-28"
-    },
-    "retainedSections": [
-      "fundamentals",
-      "wacc",
-      "beta",
-      "news"
-    ]
+    }
   },
   "source": "prefetched",
   "capabilities": {
@@ -46,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 27.0441,
-      "ttmPe": 8.65,
-      "marketCap": 74151282400,
-      "psRatio": 2.05,
-      "pbRatio": 4,
-      "pegRatio": 0.07
+      "ttmPe": 7.82,
+      "marketCap": 67039148800,
+      "psRatio": 1.86,
+      "pbRatio": 3.62,
+      "pegRatio": 0.1
     },
     "profitability": {
       "roe": 35.370000000000005,
@@ -6500,15 +6494,15 @@
       ]
     },
     "wacc": {
-      "wacc": 8,
-      "costOfEquity": 11.59,
-      "costOfDebt": 0.97,
-      "taxRate": 10,
-      "beta": 0.8471,
-      "marketCap": 72825762276
+      "wacc": 7.870000000000001,
+      "costOfEquity": 11.43,
+      "costOfDebt": 1.0699999999999998,
+      "taxRate": 21,
+      "beta": 0.8116,
+      "marketCap": 67039148800
     },
     "beta": {
-      "beta5y": 0.8471
+      "beta5y": 0.8116
     },
     "price": [
       {
@@ -8530,19 +8524,19 @@
     ],
     "news": [
       {
-        "uuid": "86e040fd-325a-3b5d-8f30-0b60d9da9725",
-        "title": "The Zacks Analyst Blog Highlights Novo Nordisk, Honeywell International and American Tower",
-        "publisher": "Zacks",
-        "reportDate": "2025-05-07",
-        "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-novo-130900334.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "2eb0ffd3-1e17-31a3-8eea-e9efed35334a",
         "title": "Top Analyst Reports for Novo Nordisk, Honeywell & American Tower",
         "publisher": "Zacks",
         "reportDate": "2025-05-07",
         "link": "https://finance.yahoo.com/news/top-analyst-reports-novo-nordisk-204700487.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "86e040fd-325a-3b5d-8f30-0b60d9da9725",
+        "title": "The Zacks Analyst Blog Highlights Novo Nordisk, Honeywell International and American Tower",
+        "publisher": "Zacks",
+        "reportDate": "2025-05-07",
+        "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-novo-130900334.html",
         "type": "STORY"
       },
       {
@@ -8578,20 +8572,20 @@
         "type": "STORY"
       },
       {
-        "uuid": "0a8a1097-9d77-37d4-8721-dafaf273b623",
-        "title": "Honeywell Adds Elliott Executive to Its Board Ahead of Breakup",
-        "publisher": "The Wall Street Journal",
-        "reportDate": "2025-05-28",
-        "link": "https://finance.yahoo.com/m/0a8a1097-9d77-37d4-8721-dafaf273b623/honeywell-adds-elliott.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "14e5df13-7da2-3ba7-b773-34b9cdc72082",
         "title": "Honeywell, Joby, Fannie Mae & Freddie Mac: Trending Tickers",
         "publisher": "Yahoo Finance Video",
         "reportDate": "2025-05-28",
         "link": "https://finance.yahoo.com/video/honeywell-joby-fannie-mae-freddie-142845093.html",
         "type": "VIDEO"
+      },
+      {
+        "uuid": "0a8a1097-9d77-37d4-8721-dafaf273b623",
+        "title": "Honeywell Adds Elliott Executive to Its Board Ahead of Breakup",
+        "publisher": "The Wall Street Journal",
+        "reportDate": "2025-05-28",
+        "link": "https://finance.yahoo.com/m/0a8a1097-9d77-37d4-8721-dafaf273b623/honeywell-adds-elliott.html",
+        "type": "STORY"
       },
       {
         "uuid": "eae5f931-de46-349a-97b9-b42260f80e74",
@@ -8651,15 +8645,15 @@
         "title": "Senior VP, Chief Technology Officer & President of Honeywell Connected Enterprise"
       },
       {
-        "name": "Mr. Victor J. Miller",
-        "title": "VP, Deputy General Counsel & Chief Compliance Officer"
-      },
-      {
         "name": "Mr. Vimal M. Kapur",
         "title": "Chairman & CEO",
         "age": 60,
         "yearBorn": 1965,
         "totalPay": 5317705
+      },
+      {
+        "name": "Ms. Jennifer J. Reilly",
+        "title": "Senior Vice President & Chief Human Resources Officer"
       },
       {
         "name": "Ms. Su Ping Lu",
@@ -8671,43 +8665,43 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 8.65,
-        "industryAvg": -0.84
+        "value": 7.82,
+        "industryAvg": 13.48
       },
       {
         "metric": "P/S Ratio",
-        "value": 2.05,
-        "industryAvg": 0.12
+        "value": 1.86,
+        "industryAvg": 1.58
       },
       {
         "metric": "P/B Ratio",
-        "value": 4,
-        "industryAvg": 0
+        "value": 3.62,
+        "industryAvg": 2.8
       },
       {
         "metric": "ROE",
         "value": 35.370000000000005,
-        "industryAvg": 3.6999999999999997
+        "industryAvg": -19.25
       },
       {
         "metric": "ROA",
         "value": 7.51,
-        "industryAvg": 0.95
+        "industryAvg": -5.47
       },
       {
         "metric": "Gross Margin",
         "value": 37.59,
-        "industryAvg": 29.84
+        "industryAvg": 30.36
       },
       {
         "metric": "EBITDA Margin",
         "value": 84.41,
-        "industryAvg": 28.189999999999998
+        "industryAvg": 28.92
       },
       {
         "metric": "Net Margin",
         "value": 58.46,
-        "industryAvg": 8.870000000000001
+        "industryAvg": -14.08
       }
     ]
   }

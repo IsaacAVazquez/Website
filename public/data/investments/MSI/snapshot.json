@@ -1,17 +1,11 @@
 {
   "symbol": "MSI",
-  "lastUpdated": "2026-09-15T01:03:45.681080+00:00",
+  "lastUpdated": "2026-09-29T07:04:00.244178+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-09-15T01:03:45.681080+00:00",
+    "snapshotBuiltAt": "2026-09-29T07:04:00.244178+00:00",
     "sections": {
       "price": "2026-09-28"
-    },
-    "retainedSections": [
-      "fundamentals",
-      "wacc",
-      "beta",
-      "news"
-    ]
+    }
   },
   "source": "prefetched",
   "capabilities": {
@@ -46,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 12.6961,
-      "ttmPe": 36.72,
-      "marketCap": 77149480000,
-      "psRatio": 6.31,
-      "pbRatio": 28.87,
-      "pegRatio": 4.03
+      "ttmPe": 35.61,
+      "marketCap": 74819240000,
+      "psRatio": 6.11,
+      "pbRatio": 28,
+      "pegRatio": 3.71
     },
     "profitability": {
       "roe": 21.36,
@@ -6668,15 +6662,15 @@
       ]
     },
     "wacc": {
-      "wacc": 10.52,
-      "costOfEquity": 11.83,
-      "costOfDebt": 1.16,
-      "taxRate": 17,
-      "beta": 0.8746,
-      "marketCap": 69807789624
+      "wacc": 10.67,
+      "costOfEquity": 11.93,
+      "costOfDebt": 1.13,
+      "taxRate": 25,
+      "beta": 0.8763,
+      "marketCap": 74819240000
     },
     "beta": {
-      "beta5y": 0.8746
+      "beta5y": 0.8763
     },
     "price": [
       {
@@ -8706,14 +8700,6 @@
         "type": "STORY"
       },
       {
-        "uuid": "f603d4c0-9c31-31dd-a858-dbb715dcdfd7",
-        "title": "Market Chatter: Motorola Solutions Reportedly in Advanced Talks to Acquire Silvus for $4.5 Billion",
-        "publisher": "MT Newswires",
-        "reportDate": "2025-05-21",
-        "link": "https://finance.yahoo.com/news/market-chatter-motorola-solutions-reportedly-131403183.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "646dee3d-cf1d-3f8c-8f86-1576c7dbca83",
         "title": "Motorola Solutions Nears $4.5 Billion Deal for Radio Maker Silvus",
         "publisher": "Bloomberg",
@@ -8738,6 +8724,14 @@
         "type": "STORY"
       },
       {
+        "uuid": "f603d4c0-9c31-31dd-a858-dbb715dcdfd7",
+        "title": "Market Chatter: Motorola Solutions Reportedly in Advanced Talks to Acquire Silvus for $4.5 Billion",
+        "publisher": "MT Newswires",
+        "reportDate": "2025-05-21",
+        "link": "https://finance.yahoo.com/news/market-chatter-motorola-solutions-reportedly-131403183.html",
+        "type": "STORY"
+      },
+      {
         "uuid": "823920c6-c317-3961-b6f6-26992c43e545",
         "title": "Motorola Solutions Close to $4.5 Billion Deal to Buy Silvus",
         "publisher": "Insider Monkey",
@@ -8754,11 +8748,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "e5cfdc65-d24d-3cc6-81aa-bae9f462c029",
-        "title": "Motorola Agrees to Acquire Radio Maker Silvus for $4.4 Billion",
-        "publisher": "Bloomberg",
+        "uuid": "b15d38f3-ba55-3c73-bce1-bd783cb075a6",
+        "title": "Motorola Solutions to Acquire Silvus Technologies for $4.4 Billion",
+        "publisher": "MT Newswires",
         "reportDate": "2025-05-28",
-        "link": "https://finance.yahoo.com/news/motorola-agrees-acquire-radio-maker-210344797.html",
+        "link": "https://finance.yahoo.com/news/motorola-solutions-acquire-silvus-technologies-204457398.html",
         "type": "STORY"
       },
       {
@@ -8770,12 +8764,12 @@
         "type": "STORY"
       },
       {
-        "uuid": "9ee82bdb-47b7-3377-992d-1c0127ffd46d",
-        "title": "Motorola to Acquire Silvus Technologies, Expand Security Portfolio",
-        "publisher": "Zacks",
+        "uuid": "57e00744-68a6-3ae5-8f51-a97f9174cab7",
+        "title": "Okta sinks & Box jumps on earnings, Motorola Solutions deal",
+        "publisher": "Yahoo Finance Video",
         "reportDate": "2025-05-28",
-        "link": "https://finance.yahoo.com/news/motorola-acquire-silvus-technologies-expand-154400833.html",
-        "type": "STORY"
+        "link": "https://finance.yahoo.com/video/okta-sinks-box-jumps-earnings-212626670.html",
+        "type": "VIDEO"
       }
     ],
     "officers": [
@@ -8846,43 +8840,43 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 36.72,
-        "industryAvg": 38.26
+        "value": 35.61,
+        "industryAvg": 25.13
       },
       {
         "metric": "P/S Ratio",
-        "value": 6.31,
-        "industryAvg": 4.14
+        "value": 6.11,
+        "industryAvg": 4.08
       },
       {
         "metric": "P/B Ratio",
-        "value": 28.87,
-        "industryAvg": 5.79
+        "value": 28,
+        "industryAvg": 5.54
       },
       {
         "metric": "ROE",
         "value": 21.36,
-        "industryAvg": 0.19
+        "industryAvg": 16.13
       },
       {
         "metric": "ROA",
         "value": 2.91,
-        "industryAvg": 0.06999999999999999
+        "industryAvg": 6.11
       },
       {
         "metric": "Gross Margin",
         "value": 53.559999999999995,
-        "industryAvg": 49.46
+        "industryAvg": 48.91
       },
       {
         "metric": "EBITDA Margin",
         "value": 31.89,
-        "industryAvg": 8.34
+        "industryAvg": 17.11
       },
       {
         "metric": "Net Margin",
         "value": 17.78,
-        "industryAvg": 0.51
+        "industryAvg": 10.82
       }
     ]
   }

@@ -1,17 +1,11 @@
 {
   "symbol": "PH",
-  "lastUpdated": "2026-09-15T01:03:45.681080+00:00",
+  "lastUpdated": "2026-09-29T07:04:00.244178+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-09-15T01:03:45.681080+00:00",
+    "snapshotBuiltAt": "2026-09-29T07:04:00.244178+00:00",
     "sections": {
       "price": "2026-09-28"
-    },
-    "retainedSections": [
-      "fundamentals",
-      "wacc",
-      "beta",
-      "news"
-    ]
+    }
   },
   "source": "prefetched",
   "capabilities": {
@@ -46,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 28.4885,
-      "ttmPe": 33.35,
-      "marketCap": 119728980000,
-      "psRatio": 5.57,
-      "pbRatio": 7.77,
-      "pegRatio": 1.78
+      "ttmPe": 34.03,
+      "marketCap": 122163300000,
+      "psRatio": 5.68,
+      "pbRatio": 7.93,
+      "pegRatio": 1.76
     },
     "profitability": {
       "roe": 7.2700000000000005,
@@ -6317,15 +6311,15 @@
       ]
     },
     "wacc": {
-      "wacc": 12.770000000000001,
-      "costOfEquity": 13.74,
-      "costOfDebt": 1.03,
+      "wacc": 12.85,
+      "costOfEquity": 13.68,
+      "costOfDebt": 1.1199999999999999,
       "taxRate": 19,
-      "beta": 1.1046,
-      "marketCap": 118330380000
+      "beta": 1.1056,
+      "marketCap": 122163300000
     },
     "beta": {
-      "beta5y": 1.1046
+      "beta5y": 1.1056
     },
     "price": [
       {
@@ -8371,19 +8365,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "b783bf9d-8274-3b27-be46-969837c2a60d",
-        "title": "Parker-Hannifin Third Quarter 2025 Earnings: EPS Beats Expectations",
-        "publisher": "Simply Wall St.",
-        "reportDate": "2025-05-06",
-        "link": "https://finance.yahoo.com/news/parker-hannifin-third-quarter-2025-110055439.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "53e30e6f-eaff-39cd-a7de-14dbca17e0a3",
         "title": "Argus Adjusts Price Target on Parker-Hannifin to $680 From $780",
         "publisher": "MT Newswires",
         "reportDate": "2025-05-06",
         "link": "https://finance.yahoo.com/news/argus-adjusts-price-target-parker-120843597.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "b783bf9d-8274-3b27-be46-969837c2a60d",
+        "title": "Parker-Hannifin Third Quarter 2025 Earnings: EPS Beats Expectations",
+        "publisher": "Simply Wall St.",
+        "reportDate": "2025-05-06",
+        "link": "https://finance.yahoo.com/news/parker-hannifin-third-quarter-2025-110055439.html",
         "type": "STORY"
       },
       {
@@ -8441,7 +8435,7 @@
         "title": "President & COO",
         "age": 58,
         "yearBorn": 1967,
-        "totalPay": 2864723
+        "totalPay": 3464219
       },
       {
         "name": "Mr. Dinu J. Parel",
@@ -8458,7 +8452,13 @@
         "title": "Executive VP, General Counsel & Secretary",
         "age": 53,
         "yearBorn": 1972,
-        "totalPay": 2252140
+        "totalPay": 2643602
+      },
+      {
+        "name": "Mr. Mark J. Hart",
+        "title": "Executive Vice President of Human Resources & External Affairs",
+        "age": 60,
+        "yearBorn": 1965
       },
       {
         "name": "Mr. Mark T. Czaja",
@@ -8467,67 +8467,60 @@
         "yearBorn": 1962
       },
       {
-        "name": "Mr. Patrick M. Scott",
-        "title": "VP & President of Fluid Connectors Group",
-        "age": 47,
-        "yearBorn": 1978,
-        "totalPay": 1933650
-      },
-      {
         "name": "Mr. Todd M. Leombruno",
         "title": "Executive VP & CFO",
         "age": 55,
         "yearBorn": 1970,
-        "totalPay": 2792907
+        "totalPay": 3170113
       },
       {
         "name": "Ms. Jennifer A. Parmentier",
         "title": "Chairman of the Board & CEO",
         "age": 58,
         "yearBorn": 1967,
-        "totalPay": 6063164
+        "totalPay": 7332331
       }
     ],
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 33.35,
-        "industryAvg": 35.71
+        "value": 34.03,
+        "industryAvg": 31.32
       },
       {
         "metric": "P/S Ratio",
-        "value": 5.57,
-        "industryAvg": 3.45
+        "value": 5.68,
+        "industryAvg": 3.56
       },
       {
         "metric": "P/B Ratio",
-        "value": 7.77,
-        "industryAvg": 0.43
+        "value": 7.93,
+        "industryAvg": 6.36
       },
       {
         "metric": "ROE",
         "value": 7.2700000000000005,
-        "industryAvg": 1.7500000000000002
+        "industryAvg": 18.87
       },
       {
         "metric": "ROA",
         "value": 3.54,
-        "industryAvg": 0.83
+        "industryAvg": 6.1899999999999995
       },
       {
         "metric": "Gross Margin",
         "value": 39.04,
-        "industryAvg": 22.33
+        "industryAvg": 28.96
       },
       {
         "metric": "EBITDA Margin",
         "value": 29.049999999999997,
-        "industryAvg": 10.96
+        "industryAvg": 15.58
       },
       {
         "metric": "Net Margin",
         "value": 18.96,
-        "industryAvg": 4.3999999999999995
+        "industryAvg": 9.790000000000001
       }
     ]
   }

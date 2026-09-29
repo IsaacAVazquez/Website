@@ -1,17 +1,11 @@
 {
   "symbol": "CVX",
-  "lastUpdated": "2026-09-15T01:03:45.681080+00:00",
+  "lastUpdated": "2026-09-29T07:04:00.244178+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-09-15T01:03:45.681080+00:00",
+    "snapshotBuiltAt": "2026-09-29T07:04:00.244178+00:00",
     "sections": {
       "price": "2026-09-28"
-    },
-    "retainedSections": [
-      "fundamentals",
-      "wacc",
-      "beta",
-      "news"
-    ]
+    }
   },
   "source": "prefetched",
   "capabilities": {
@@ -46,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 10.4306,
-      "ttmPe": 20.52,
-      "marketCap": 422933604478,
-      "psRatio": 2.03,
-      "pbRatio": 2.23,
-      "pegRatio": 0.34
+      "ttmPe": 19.79,
+      "marketCap": 407739923181,
+      "psRatio": 1.95,
+      "pbRatio": 2.15,
+      "pegRatio": 0.06
     },
     "profitability": {
       "roe": 6.460000000000001,
@@ -5453,15 +5447,15 @@
       ]
     },
     "wacc": {
-      "wacc": 7.7,
-      "costOfEquity": 8.64,
-      "costOfDebt": 0.76,
-      "taxRate": 40,
-      "beta": 0.4911,
-      "marketCap": 350461447269
+      "wacc": 8.559999999999999,
+      "costOfEquity": 9.28,
+      "costOfDebt": 0.95,
+      "taxRate": 27,
+      "beta": 0.529,
+      "marketCap": 407739923181
     },
     "beta": {
-      "beta5y": 0.4911
+      "beta5y": 0.529
     },
     "price": [
       {
@@ -7633,43 +7627,43 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 20.52,
-        "industryAvg": 16.6
+        "value": 19.79,
+        "industryAvg": 11.78
       },
       {
         "metric": "P/S Ratio",
-        "value": 2.03,
-        "industryAvg": 1.29
+        "value": 1.95,
+        "industryAvg": 1.01
       },
       {
         "metric": "P/B Ratio",
-        "value": 2.23,
-        "industryAvg": 1.76
+        "value": 2.15,
+        "industryAvg": 1.61
       },
       {
         "metric": "ROE",
         "value": 6.460000000000001,
-        "industryAvg": 6.01
+        "industryAvg": 14.71
       },
       {
         "metric": "ROA",
         "value": 3.66,
-        "industryAvg": 2.52
+        "industryAvg": 6.23
       },
       {
         "metric": "Gross Margin",
         "value": 36.47,
-        "industryAvg": 24.14
+        "industryAvg": 25.019999999999996
       },
       {
         "metric": "EBITDA Margin",
         "value": 34.28,
-        "industryAvg": 22.869999999999997
+        "industryAvg": 24.14
       },
       {
         "metric": "Net Margin",
         "value": 17.96,
-        "industryAvg": 10.24
+        "industryAvg": 8.58
       }
     ]
   }

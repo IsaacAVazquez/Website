@@ -1,17 +1,11 @@
 {
   "symbol": "RACE",
-  "lastUpdated": "2026-09-15T01:03:45.681080+00:00",
+  "lastUpdated": "2026-09-29T07:04:00.244178+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-09-15T01:03:45.681080+00:00",
+    "snapshotBuiltAt": "2026-09-29T07:04:00.244178+00:00",
     "sections": {
       "price": "2026-09-28"
-    },
-    "retainedSections": [
-      "fundamentals",
-      "wacc",
-      "beta",
-      "news"
-    ]
+    }
   },
   "source": "prefetched",
   "capabilities": {
@@ -46,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 10.7561,
-      "ttmPe": 38.47,
-      "marketCap": 72790729370,
-      "psRatio": 8.67,
-      "pbRatio": 17.43,
-      "pegRatio": 2.9
+      "ttmPe": 37,
+      "marketCap": 70014767000,
+      "psRatio": 8.34,
+      "pbRatio": 16.77,
+      "pegRatio": 2.84
     },
     "profitability": {
       "roe": 12,
@@ -6047,15 +6041,15 @@
       ]
     },
     "wacc": {
-      "wacc": 11.459999999999999,
-      "costOfEquity": 12.030000000000001,
-      "costOfDebt": 0.33999999999999997,
+      "wacc": 11.62,
+      "costOfEquity": 12.21,
+      "costOfDebt": 0.24,
       "taxRate": 23,
-      "beta": 0.8993,
-      "marketCap": 66424983680
+      "beta": 0.9137,
+      "marketCap": 70014767000
     },
     "beta": {
-      "beta5y": 0.8993
+      "beta5y": 0.9137
     },
     "price": [
       {
@@ -8141,19 +8135,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "91855b6c-81ee-3f12-b7d7-e20a4bcd97c8",
-        "title": "Is Douglas Dynamics (PLOW) Outperforming Other Auto-Tires-Trucks Stocks This Year?",
+        "uuid": "1bd401d7-9a6f-3b96-9a23-0b650ba3477d",
+        "title": "Are Basic Materials Stocks Lagging  CF Industries (CF) This Year?",
         "publisher": "Zacks",
         "reportDate": "2025-06-24",
-        "link": "https://finance.yahoo.com/news/douglas-dynamics-plow-outperforming-other-134003262.html",
+        "link": "https://finance.yahoo.com/news/basic-materials-stocks-lagging-cf-134003198.html",
         "type": "STORY"
       },
       {
-        "uuid": "f68fd351-a8c1-3faa-a47e-d132f2b08f3f",
-        "title": "Is Axos Financial (AX) Stock Outpacing Its Finance Peers This Year?",
+        "uuid": "bad8b102-1dfc-3b76-9374-02a496d137e8",
+        "title": "Are Aerospace Stocks Lagging  CurtissWright (CW) This Year?",
         "publisher": "Zacks",
         "reportDate": "2025-06-24",
-        "link": "https://finance.yahoo.com/news/axos-financial-ax-stock-outpacing-134004384.html",
+        "link": "https://finance.yahoo.com/news/aerospace-stocks-lagging-curtisswright-cw-134004780.html",
         "type": "STORY"
       }
     ],
@@ -8169,7 +8163,7 @@
         "title": "CEO & Executive Director",
         "age": 56,
         "yearBorn": 1969,
-        "totalPay": 9216679
+        "totalPay": 9039114
       },
       {
         "name": "Mr. Carlo Daneo",
@@ -8188,7 +8182,7 @@
         "title": "Executive Chairman",
         "age": 49,
         "yearBorn": 1976,
-        "totalPay": 1749678
+        "totalPay": 1715969
       },
       {
         "name": "Mr. Marco Lovati",
@@ -8220,43 +8214,43 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 38.47,
-        "industryAvg": 83.09
+        "value": 37,
+        "industryAvg": 25.14
       },
       {
         "metric": "P/S Ratio",
-        "value": 8.67,
-        "industryAvg": 1.64
+        "value": 8.34,
+        "industryAvg": 1.18
       },
       {
         "metric": "P/B Ratio",
-        "value": 17.43,
-        "industryAvg": 2.01
+        "value": 16.77,
+        "industryAvg": 1.87
       },
       {
         "metric": "ROE",
         "value": 12,
-        "industryAvg": 1.8599999999999999
+        "industryAvg": 4.5600000000000005
       },
       {
         "metric": "ROA",
         "value": 4.52,
-        "industryAvg": 0.61
+        "industryAvg": 1.5
       },
       {
         "metric": "Gross Margin",
         "value": 52.59,
-        "industryAvg": 15.989999999999998
+        "industryAvg": 14.719999999999999
       },
       {
         "metric": "EBITDA Margin",
         "value": 39.18,
-        "industryAvg": 11.08
+        "industryAvg": 9.65
       },
       {
         "metric": "Net Margin",
         "value": 23.849999999999998,
-        "industryAvg": 4.12
+        "industryAvg": 2.4699999999999998
       }
     ]
   }

@@ -1,17 +1,11 @@
 {
   "symbol": "LRCX",
-  "lastUpdated": "2026-09-15T01:03:45.681080+00:00",
+  "lastUpdated": "2026-09-29T07:04:00.244178+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-09-15T01:03:45.681080+00:00",
+    "snapshotBuiltAt": "2026-09-29T07:04:00.244178+00:00",
     "sections": {
       "price": "2026-09-28"
-    },
-    "retainedSections": [
-      "fundamentals",
-      "wacc",
-      "beta",
-      "news"
-    ]
+    }
   },
   "source": "prefetched",
   "capabilities": {
@@ -46,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 5.7641,
-      "ttmPe": 51.74,
-      "marketCap": 373156125160,
-      "psRatio": 16.06,
-      "pbRatio": 29.92,
-      "pegRatio": 1.63
+      "ttmPe": 54.56,
+      "marketCap": 393489392660,
+      "psRatio": 16.94,
+      "pbRatio": 31.55,
+      "pegRatio": 1.58
     },
     "profitability": {
       "roe": 19.75,
@@ -5617,15 +5611,15 @@
       ]
     },
     "wacc": {
-      "wacc": 19.23,
-      "costOfEquity": 19.39,
-      "costOfDebt": 1.05,
-      "taxRate": 9,
-      "beta": 1.7849,
-      "marketCap": 438112538430
+      "wacc": 19.040000000000003,
+      "costOfEquity": 19.21,
+      "costOfDebt": 0.9199999999999999,
+      "taxRate": 11,
+      "beta": 1.831,
+      "marketCap": 393489392660
     },
     "beta": {
-      "beta5y": 1.7849
+      "beta5y": 1.831
     },
     "price": [
       {
@@ -7663,14 +7657,6 @@
         "type": "STORY"
       },
       {
-        "uuid": "6ea661cf-866d-30ad-a40a-20e88bc0485e",
-        "title": "Zacks Industry Outlook Highlights Broadcom, Lam Research and Impinj",
-        "publisher": "Zacks",
-        "reportDate": "2025-05-23",
-        "link": "https://finance.yahoo.com/news/zacks-industry-outlook-highlights-broadcom-121700216.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "af00fe49-89e9-3a2b-8426-c4bc577bd74a",
         "title": "3 Stocks to Buy From the Prospering Semiconductor Industry",
         "publisher": "Zacks",
@@ -7679,11 +7665,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "8700f987-3350-36fb-a7a6-b57b2c7afa29",
-        "title": "Lam Research Gains 18% in a Month: Should You Buy the Stock Now?",
+        "uuid": "6ea661cf-866d-30ad-a40a-20e88bc0485e",
+        "title": "Zacks Industry Outlook Highlights Broadcom, Lam Research and Impinj",
         "publisher": "Zacks",
-        "reportDate": "2025-05-28",
-        "link": "https://finance.yahoo.com/news/lam-research-gains-18-month-132000265.html",
+        "reportDate": "2025-05-23",
+        "link": "https://finance.yahoo.com/news/zacks-industry-outlook-highlights-broadcom-121700216.html",
         "type": "STORY"
       },
       {
@@ -7692,6 +7678,14 @@
         "publisher": "Zacks",
         "reportDate": "2025-05-28",
         "link": "https://finance.yahoo.com/news/3-nasdaq-listed-tech-stocks-112100288.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "8700f987-3350-36fb-a7a6-b57b2c7afa29",
+        "title": "Lam Research Gains 18% in a Month: Should You Buy the Stock Now?",
+        "publisher": "Zacks",
+        "reportDate": "2025-05-28",
+        "link": "https://finance.yahoo.com/news/lam-research-gains-18-month-132000265.html",
         "type": "STORY"
       },
       {
@@ -7729,17 +7723,11 @@
     ],
     "officers": [
       {
-        "name": "Dr. Karthikeyan Rammohan",
-        "title": "Senior Vice President of Global Operations & Enterprise Solutions",
-        "age": 56,
-        "yearBorn": 1969
-      },
-      {
         "name": "Mr. Douglas R. Bettinger",
         "title": "Executive VP & CFO",
         "age": 58,
         "yearBorn": 1967,
-        "totalPay": 1793514
+        "totalPay": 2550227
       },
       {
         "name": "Mr. Ram Ganesh",
@@ -7750,86 +7738,56 @@
         "title": "Executive VP & COO",
         "age": 50,
         "yearBorn": 1975,
-        "totalPay": 1571591
-      },
-      {
-        "name": "Mr. Steve Fine",
-        "title": "Group VP & Chief Communication Officer"
+        "totalPay": 2333347
       },
       {
         "name": "Mr. Timothy M. Archer",
         "title": "President, CEO & Director",
         "age": 58,
         "yearBorn": 1967,
-        "totalPay": 4197038
-      },
-      {
-        "name": "Mr. Vahid Vahedi Ph.D.",
-        "title": "Senior VP, Chief Technology & Sustainability Officer",
-        "age": 59,
-        "yearBorn": 1966,
-        "totalPay": 1219197
-      },
-      {
-        "name": "Ms. Ava A. Harter J.D.",
-        "title": "Senior VP, Chief Legal Officer & Secretary",
-        "age": 55,
-        "yearBorn": 1970,
-        "totalPay": 1685283
-      },
-      {
-        "name": "Ms. Christina C. Correia",
-        "title": "Chief Accounting Officer & Group VP",
-        "age": 55,
-        "yearBorn": 1970
-      },
-      {
-        "name": "Ms. Mary Teresa Hassett",
-        "title": "Senior VP & Chief Human Resources Officer",
-        "age": 51,
-        "yearBorn": 1974
+        "totalPay": 6815065
       }
     ],
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 51.74,
-        "industryAvg": 58.79
+        "value": 54.56,
+        "industryAvg": 52.41
       },
       {
         "metric": "P/S Ratio",
-        "value": 16.06,
-        "industryAvg": 15.85
+        "value": 16.94,
+        "industryAvg": 14.24
       },
       {
         "metric": "P/B Ratio",
-        "value": 29.92,
-        "industryAvg": 1.81
+        "value": 31.55,
+        "industryAvg": 19.96
       },
       {
         "metric": "ROE",
         "value": 19.75,
-        "industryAvg": 4.88
+        "industryAvg": 38.34
       },
       {
         "metric": "ROA",
         "value": 10.280000000000001,
-        "industryAvg": 2.36
+        "industryAvg": 19.11
       },
       {
         "metric": "Gross Margin",
         "value": 51.74999999999999,
-        "industryAvg": 27.87
+        "industryAvg": 49.41
       },
       {
         "metric": "EBITDA Margin",
         "value": 40.300000000000004,
-        "industryAvg": 22.52
+        "industryAvg": 34.61
       },
       {
         "metric": "Net Margin",
         "value": 33.879999999999995,
-        "industryAvg": 14.530000000000001
+        "industryAvg": 26.69
       }
     ]
   }

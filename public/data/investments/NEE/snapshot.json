@@ -1,17 +1,11 @@
 {
   "symbol": "NEE",
-  "lastUpdated": "2026-09-15T01:03:45.681080+00:00",
+  "lastUpdated": "2026-09-29T07:04:00.244178+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-09-15T01:03:45.681080+00:00",
+    "snapshotBuiltAt": "2026-09-29T07:04:00.244178+00:00",
     "sections": {
       "price": "2026-09-28"
-    },
-    "retainedSections": [
-      "fundamentals",
-      "wacc",
-      "beta",
-      "news"
-    ]
+    }
   },
   "source": "prefetched",
   "capabilities": {
@@ -46,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 4.4569,
-      "ttmPe": 18.47,
-      "marketCap": 171698660000,
-      "psRatio": 5.98,
-      "pbRatio": 3.01,
-      "pegRatio": 0.14
+      "ttmPe": 16.94,
+      "marketCap": 157472140000,
+      "psRatio": 5.49,
+      "pbRatio": 2.76,
+      "pegRatio": 0.32
     },
     "profitability": {
       "roe": 5.6000000000000005,
@@ -875,8 +869,8 @@
           "2026-06-30": "2956200000.0",
           "2026-03-31": "2032600000.0",
           "2025-12-31": "1397338391.5",
-          "2025-09-30": "2183620000.0",
-          "2025-06-30": "1842350000.0",
+          "2025-09-30": "2234061800.0",
+          "2025-06-30": "1885838700.0",
           "2025-03-31": "829840000.0",
           "2024-12-31": "1140284482.76",
           "2024-09-30": "1463170000.0",
@@ -1127,8 +1121,8 @@
           "2026-06-30": "0.4",
           "2026-03-31": "0.4",
           "2025-12-31": "0.17",
-          "2025-09-30": "0.21",
-          "2025-06-30": "0.21",
+          "2025-09-30": "0.26",
+          "2025-06-30": "0.26",
           "2025-03-31": "0.21",
           "2024-12-31": "0.16",
           "2024-09-30": "0.0",
@@ -1148,8 +1142,8 @@
           "2026-06-30": "125200000.0",
           "2026-03-31": "99600000.0",
           "2025-12-31": "28338391.5",
-          "2025-09-30": "67620000.0",
-          "2025-06-30": "49350000.0",
+          "2025-09-30": "70061800.0",
+          "2025-06-30": "48838700.0",
           "2025-03-31": "840000.0",
           "2024-12-31": "12284482.76",
           "2024-09-30": "1170000.0",
@@ -1547,7 +1541,7 @@
         },
         {
           "Breakdown": "Normalized Income",
-          "2025-12-31": "6260670000.0",
+          "2025-12-31": "6428612200.0",
           "2024-12-31": "6171920000.0",
           "2023-12-31": "6577300000.0",
           "2022-12-31": "3932709000.0",
@@ -1667,7 +1661,7 @@
         },
         {
           "Breakdown": "Tax Rate for Calcs",
-          "2025-12-31": "0.21",
+          "2025-12-31": "0.26",
           "2024-12-31": "0.06",
           "2023-12-31": "0.14",
           "2022-12-31": "0.15",
@@ -1677,7 +1671,7 @@
         },
         {
           "Breakdown": "Tax Effect of Unusual Items",
-          "2025-12-31": "152670000.0",
+          "2025-12-31": "139612200.0",
           "2024-12-31": "45920000.0",
           "2023-12-31": "117300000.0",
           "2022-12-31": "38709000.0",
@@ -5887,15 +5881,15 @@
       ]
     },
     "wacc": {
-      "wacc": 6.65,
-      "costOfEquity": 10.03,
-      "costOfDebt": 1.23,
+      "wacc": 6.04,
+      "costOfEquity": 10.08,
+      "costOfDebt": 0.44,
       "taxRate": 40,
-      "beta": 0.6588,
-      "marketCap": 182365336176
+      "beta": 0.6342,
+      "marketCap": 157472140000
     },
     "beta": {
-      "beta5y": 0.6588
+      "beta5y": 0.6342
     },
     "price": [
       {
@@ -7917,6 +7911,14 @@
     ],
     "news": [
       {
+        "uuid": "4150e7ba-4c41-3339-a01a-07b6567d5930",
+        "title": "Crippling Clean-Energy Tax Credits Won’t Fly, GOP Senators Say",
+        "publisher": "Bloomberg",
+        "reportDate": "2025-05-23",
+        "link": "https://finance.yahoo.com/news/crippling-clean-energy-tax-credits-192852454.html",
+        "type": "STORY"
+      },
+      {
         "uuid": "03e55f62-1ff6-3798-8ef9-27158b99013d",
         "title": "SunRun and Other Solar Stocks Fall on Tax Bill",
         "publisher": "The Wall Street Journal",
@@ -7931,14 +7933,6 @@
         "reportDate": "2025-05-23",
         "link": "https://finance.yahoo.com/video/bitcoin-crypto-stocks-rally-solar-161156560.html",
         "type": "VIDEO"
-      },
-      {
-        "uuid": "4150e7ba-4c41-3339-a01a-07b6567d5930",
-        "title": "Crippling Clean-Energy Tax Credits Won’t Fly, GOP Senators Say",
-        "publisher": "Bloomberg",
-        "reportDate": "2025-05-23",
-        "link": "https://finance.yahoo.com/news/crippling-clean-energy-tax-credits-192852454.html",
-        "type": "STORY"
       },
       {
         "uuid": "bbf85e9c-6c76-348e-af03-add4ed60974d",
@@ -7973,19 +7967,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "472f7e64-e595-3e23-99fc-3238bef5acc2",
-        "title": "Is NEE Building Sustainable Growth Through Capital Spending?",
-        "publisher": "Zacks",
-        "reportDate": "2025-06-19",
-        "link": "https://finance.yahoo.com/news/nee-building-sustainable-growth-capital-155900607.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "4f71c377-d695-3cb2-a196-7bcde1c2d0c4",
         "title": "NextEra Energy price target lowered to $94 from $95 at Morgan Stanley",
         "publisher": "TipRanks",
         "reportDate": "2025-06-19",
         "link": "https://finance.yahoo.com/news/nextera-energy-price-target-lowered-132104119.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "472f7e64-e595-3e23-99fc-3238bef5acc2",
+        "title": "Is NEE Building Sustainable Growth Through Capital Spending?",
+        "publisher": "Zacks",
+        "reportDate": "2025-06-19",
+        "link": "https://finance.yahoo.com/news/nee-building-sustainable-growth-capital-155900607.html",
         "type": "STORY"
       },
       {
@@ -8062,43 +8056,43 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 18.47,
-        "industryAvg": 18.43
+        "value": 16.94,
+        "industryAvg": 15.73
       },
       {
         "metric": "P/S Ratio",
-        "value": 5.98,
-        "industryAvg": 1.62
+        "value": 5.49,
+        "industryAvg": 2.18
       },
       {
         "metric": "P/B Ratio",
-        "value": 3.01,
-        "industryAvg": 0.93
+        "value": 2.76,
+        "industryAvg": 1.7
       },
       {
         "metric": "ROE",
         "value": 5.6000000000000005,
-        "industryAvg": 2.77
+        "industryAvg": 11.24
       },
       {
         "metric": "ROA",
         "value": 1.38,
-        "industryAvg": 0.75
+        "industryAvg": 3.08
       },
       {
         "metric": "Gross Margin",
         "value": 62.4,
-        "industryAvg": 48.41
+        "industryAvg": 46.68
       },
       {
         "metric": "EBITDA Margin",
         "value": 65.05,
-        "industryAvg": 43.54
+        "industryAvg": 44.5
       },
       {
         "metric": "Net Margin",
         "value": 41.730000000000004,
-        "industryAvg": 15.879999999999999
+        "industryAvg": 15.809999999999999
       }
     ]
   }

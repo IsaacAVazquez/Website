@@ -1,17 +1,11 @@
 {
   "symbol": "XOM",
-  "lastUpdated": "2026-09-15T01:03:45.681080+00:00",
+  "lastUpdated": "2026-09-29T07:04:00.244178+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-09-15T01:03:45.681080+00:00",
+    "snapshotBuiltAt": "2026-09-29T07:04:00.244178+00:00",
     "sections": {
       "price": "2026-09-28"
-    },
-    "retainedSections": [
-      "fundamentals",
-      "wacc",
-      "beta",
-      "news"
-    ]
+    }
   },
   "source": "prefetched",
   "capabilities": {
@@ -46,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 7.7709,
-      "ttmPe": 21.36,
-      "marketCap": 682550880000,
-      "psRatio": 1.89,
-      "pbRatio": 2.63,
-      "pegRatio": 1.33
+      "ttmPe": 20.91,
+      "marketCap": 668282240000,
+      "psRatio": 1.85,
+      "pbRatio": 2.58,
+      "pegRatio": 0.19
     },
     "profitability": {
       "roe": 5.65,
@@ -5193,15 +5187,15 @@
       ]
     },
     "wacc": {
-      "wacc": 5.6000000000000005,
-      "costOfEquity": 6.02,
-      "costOfDebt": 0.62,
-      "taxRate": 36,
-      "beta": 0.1751,
-      "marketCap": 584983850000
+      "wacc": 6.5,
+      "costOfEquity": 6.890000000000001,
+      "costOfDebt": 0.54,
+      "taxRate": 24,
+      "beta": 0.2159,
+      "marketCap": 668282240000
     },
     "beta": {
-      "beta5y": 0.1751
+      "beta5y": 0.2159
     },
     "price": [
       {
@@ -7255,19 +7249,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "fd4f80af-5519-3ab3-90f3-9d5976e9486e",
-        "title": "The Zacks Analyst Blog Highlights Exxon Mobil, Bristol-Myers Squibb, Chubb and Hamilton Beach Brands",
-        "publisher": "Zacks",
-        "reportDate": "2025-04-03",
-        "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-exxon-145000755.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "05a0ef3f-3a4e-3300-ad29-88aba4207891",
         "title": "Top Research Reports for Exxon Mobil, Bristol-Myers Squibb & Chubb",
         "publisher": "Zacks",
         "reportDate": "2025-04-03",
         "link": "https://finance.yahoo.com/news/top-research-reports-exxon-mobil-202600539.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "fd4f80af-5519-3ab3-90f3-9d5976e9486e",
+        "title": "The Zacks Analyst Blog Highlights Exxon Mobil, Bristol-Myers Squibb, Chubb and Hamilton Beach Brands",
+        "publisher": "Zacks",
+        "reportDate": "2025-04-03",
+        "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-exxon-145000755.html",
         "type": "STORY"
       },
       {
@@ -7279,19 +7273,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "455e64a8-8e8e-3019-8c69-a0a13994ef31",
-        "title": "ExxonMobil Begins Installing Fourth FPSO to Tap Guyana's Reserves",
-        "publisher": "Zacks",
-        "reportDate": "2025-04-16",
-        "link": "https://finance.yahoo.com/news/exxonmobil-begins-installing-fourth-fpso-120500291.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "3a9cec62-7b2a-3b13-9156-c2910a14e7e0",
         "title": "StoneCo   and RH have been highlighted as Zacks Bull and Bear of the Day",
         "publisher": "Zacks",
         "reportDate": "2025-04-16",
         "link": "https://finance.yahoo.com/news/stoneco-rh-highlighted-zacks-bull-104000245.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "455e64a8-8e8e-3019-8c69-a0a13994ef31",
+        "title": "ExxonMobil Begins Installing Fourth FPSO to Tap Guyana's Reserves",
+        "publisher": "Zacks",
+        "reportDate": "2025-04-16",
+        "link": "https://finance.yahoo.com/news/exxonmobil-begins-installing-fourth-fpso-120500291.html",
         "type": "STORY"
       },
       {
@@ -7368,43 +7362,43 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 21.36,
-        "industryAvg": 16.8
+        "value": 20.91,
+        "industryAvg": 11.78
       },
       {
         "metric": "P/S Ratio",
-        "value": 1.89,
-        "industryAvg": 1.29
+        "value": 1.85,
+        "industryAvg": 1.01
       },
       {
         "metric": "P/B Ratio",
-        "value": 2.63,
-        "industryAvg": 1.76
+        "value": 2.58,
+        "industryAvg": 1.61
       },
       {
         "metric": "ROE",
         "value": 5.65,
-        "industryAvg": 6.01
+        "industryAvg": 14.71
       },
       {
         "metric": "ROA",
         "value": 3.1300000000000003,
-        "industryAvg": 2.52
+        "industryAvg": 6.23
       },
       {
         "metric": "Gross Margin",
         "value": 22.52,
-        "industryAvg": 24.14
+        "industryAvg": 25.019999999999996
       },
       {
         "metric": "EBITDA Margin",
         "value": 24.740000000000002,
-        "industryAvg": 22.869999999999997
+        "industryAvg": 24.14
       },
       {
         "metric": "Net Margin",
         "value": 12.68,
-        "industryAvg": 10.24
+        "industryAvg": 8.58
       }
     ]
   }

@@ -1,18 +1,11 @@
 {
   "symbol": "CB",
-  "lastUpdated": "2026-09-15T01:03:45.681080+00:00",
+  "lastUpdated": "2026-09-29T07:04:00.244178+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-09-15T01:03:45.681080+00:00",
+    "snapshotBuiltAt": "2026-09-29T07:04:00.244178+00:00",
     "sections": {
       "price": "2026-09-28"
-    },
-    "retainedSections": [
-      "fundamentals",
-      "wacc",
-      "industry",
-      "beta",
-      "news"
-    ]
+    }
   },
   "source": "prefetched",
   "capabilities": {
@@ -47,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 28.2571,
-      "ttmPe": 11.97,
-      "marketCap": 130440700500,
-      "psRatio": 2.09,
-      "pbRatio": 1.83,
-      "pegRatio": 0.16
+      "ttmPe": 11.73,
+      "marketCap": 127787538580,
+      "psRatio": 2.05,
+      "pbRatio": 1.7,
+      "pegRatio": 0.15
     },
     "profitability": {
       "roe": 3.83,
@@ -5557,15 +5550,15 @@
       ]
     },
     "wacc": {
-      "wacc": 7.1,
-      "costOfEquity": 7.9,
-      "costOfDebt": 1.13,
-      "taxRate": 22,
-      "beta": 0.4022,
-      "marketCap": 134909378583
+      "wacc": 7.12,
+      "costOfEquity": 8.01,
+      "costOfDebt": 1.0999999999999999,
+      "taxRate": 20,
+      "beta": 0.3629,
+      "marketCap": 127787538580
     },
     "beta": {
-      "beta5y": 0.4022
+      "beta5y": 0.3629
     },
     "price": [
       {
@@ -7587,14 +7580,6 @@
     ],
     "news": [
       {
-        "uuid": "fd4f80af-5519-3ab3-90f3-9d5976e9486e",
-        "title": "The Zacks Analyst Blog Highlights Exxon Mobil, Bristol-Myers Squibb, Chubb and Hamilton Beach Brands",
-        "publisher": "Zacks",
-        "reportDate": "2025-04-03",
-        "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-exxon-145000755.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "05a0ef3f-3a4e-3300-ad29-88aba4207891",
         "title": "Top Research Reports for Exxon Mobil, Bristol-Myers Squibb & Chubb",
         "publisher": "Zacks",
@@ -7603,11 +7588,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "f8a64642-b0de-3ae9-996c-8fa7c4dbc687",
-        "title": "Selective Insurance Q1 Earnings Miss Estimates on Higher Expenses",
+        "uuid": "fd4f80af-5519-3ab3-90f3-9d5976e9486e",
+        "title": "The Zacks Analyst Blog Highlights Exxon Mobil, Bristol-Myers Squibb, Chubb and Hamilton Beach Brands",
         "publisher": "Zacks",
-        "reportDate": "2025-04-24",
-        "link": "https://finance.yahoo.com/news/selective-insurance-q1-earnings-miss-132900509.html",
+        "reportDate": "2025-04-03",
+        "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-exxon-145000755.html",
         "type": "STORY"
       },
       {
@@ -7616,6 +7601,14 @@
         "publisher": "Zacks",
         "reportDate": "2025-04-24",
         "link": "https://finance.yahoo.com/news/first-american-q1-earnings-surpass-134200770.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "f8a64642-b0de-3ae9-996c-8fa7c4dbc687",
+        "title": "Selective Insurance Q1 Earnings Miss Estimates on Higher Expenses",
+        "publisher": "Zacks",
+        "reportDate": "2025-04-24",
+        "link": "https://finance.yahoo.com/news/selective-insurance-q1-earnings-miss-132900509.html",
         "type": "STORY"
       },
       {
@@ -7651,26 +7644,36 @@
         "type": "STORY"
       },
       {
-        "uuid": "e0386e5c-a689-3da9-ab64-e98e3b7d4b91",
-        "title": "Chubb Facing Slowing Growth, Peaking Margins, Deutsche Bank Says",
-        "publisher": "MT Newswires",
-        "reportDate": "2025-05-20",
-        "link": "https://finance.yahoo.com/news/chubb-facing-slowing-growth-peaking-142113074.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "23c03313-94ba-3621-96f0-9965660917fe",
         "title": "Chubb rejigs investment and asset management leadership",
         "publisher": "Life Insurance International",
         "reportDate": "2025-05-20",
         "link": "https://finance.yahoo.com/m/23c03313-94ba-3621-96f0-9965660917fe/chubb-rejigs-investment-and.html",
         "type": "STORY"
+      },
+      {
+        "uuid": "8e275efe-3b8c-3fc2-8c11-0992983bc8e1",
+        "title": "Deutsche Bank cuts Chubb rating on ’slowing growth and peaking margins’",
+        "publisher": "Investing.com",
+        "reportDate": "2025-05-20",
+        "link": "https://finance.yahoo.com/news/deutsche-bank-cuts-chubb-rating-140513816.html",
+        "type": "STORY"
       }
     ],
     "officers": [
       {
+        "name": "Mr. Andreas Lewin",
+        "title": "Managing Director of ACE Tempest Re Europe"
+      },
+      {
         "name": "Mr. Christopher J. Hogan CFA",
         "title": "Senior VP of Chubb Group & Chief Investment Officer"
+      },
+      {
+        "name": "Mr. David Michael Alan Furby",
+        "title": "Senior VP & Executive Chairman of EMEA",
+        "age": 63,
+        "yearBorn": 1962
       },
       {
         "name": "Mr. Evan G. Greenberg",
@@ -7695,12 +7698,6 @@
         "totalPay": 6082297
       },
       {
-        "name": "Mr. Joseph F. Wayland J.D.",
-        "title": "Executive VP, General Counsel & Secretary",
-        "age": 67,
-        "yearBorn": 1958
-      },
-      {
         "name": "Mr. Juan Luis Ortega Guarderas",
         "title": "Executive VP of Chubb Group & President of North America Insurance",
         "age": 50,
@@ -7715,54 +7712,50 @@
         "totalPay": 3432728
       },
       {
-        "name": "Ms. Amy Well",
-        "title": "Senior VP of Chubb Group & Chief Marketing and Communications Officer"
-      },
-      {
-        "name": "Ms. Susan P. Spivak Bernstein",
-        "title": "Senior Vice President of Investor Relations",
-        "age": 58,
-        "yearBorn": 1967
+        "name": "Ms. Judith Gonsalves",
+        "title": "VP of Chubb Group & Division President of Chubb Bermuda",
+        "age": 59,
+        "yearBorn": 1966
       }
     ],
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 11.97,
-        "industryAvg": 12.8
+        "value": 11.73,
+        "industryAvg": 8.91
       },
       {
         "metric": "P/S Ratio",
-        "value": 2.09,
-        "industryAvg": 1.23
+        "value": 2.05,
+        "industryAvg": 1.34
       },
       {
         "metric": "P/B Ratio",
-        "value": 1.83,
-        "industryAvg": 1.42
+        "value": 1.7,
+        "industryAvg": 1.68
       },
       {
         "metric": "ROE",
         "value": 3.83,
-        "industryAvg": 6.32
+        "industryAvg": 24.98
       },
       {
         "metric": "ROA",
         "value": 1.03,
-        "industryAvg": 1.5599999999999998
+        "industryAvg": 6.09
       },
       {
         "metric": "Gross Margin",
-        "industryAvg": 0.06999999999999999
+        "industryAvg": 29.24
       },
       {
         "metric": "EBITDA Margin",
-        "industryAvg": 0.01
+        "industryAvg": 5.88
       },
       {
         "metric": "Net Margin",
         "value": 17.88,
-        "industryAvg": 14.96
+        "industryAvg": 15.86
       }
     ]
   }
