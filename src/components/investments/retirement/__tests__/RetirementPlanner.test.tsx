@@ -7,9 +7,32 @@ jest.mock("../RetirementProjectionChart", () => ({
   RetirementProjectionChart: () => null,
 }));
 
+// The engine stays real. The default plan runs 100 simulations where the app
+// runs 1,000, since no test here reads a figure that depends on the count, and
+// 100 is the fewest a stored plan may ask for. That about halves a lever
+// search, and it goes no lower because the search solves its targets at a
+// fixed 250 simulations whatever the plan says.
+jest.mock("@/lib/retirement", () => {
+  const actual = jest.requireActual("@/lib/retirement");
+  return {
+    ...actual,
+    createDefaultPlan: () => {
+      const plan = actual.createDefaultPlan();
+      plan.assumptions.simulations = 100;
+      return plan;
+    },
+  };
+});
+
 import { RetirementPlanner } from "../RetirementPlanner";
 
 (globalThis as Record<string, unknown>).IS_REACT_ACT_ENVIRONMENT = true;
+
+// The projection and the lever search are CPU bound, so they take as long as
+// the machine lets them. On a saturated machine they ran up to fourteen times
+// slower than alone, which Jest's 5 second default does not allow for. No test
+// waits on this limit, and it only ends a test that hangs.
+jest.setTimeout(30_000);
 
 function flush() {
   return act(async () => {
@@ -60,6 +83,19 @@ function pageAtPrint(container: HTMLElement): HTMLElement {
   return copies[0];
 }
 
+// Jest stops waiting for a test that passes its time limit, but the body keeps
+// running. It shares the container, the root, and the observer callback with
+// the next test, and React counts act scopes in one place for the whole file,
+// so a body that resumed during the next test opened scopes that overlapped
+// that test's, and every later act in the file stopped flushing when it
+// closed. Each test runs through this, and afterEach waits for its body to
+// finish before it takes the planner down, so a test that times out fails
+// alone.
+let testBody: Promise<unknown> = Promise.resolve();
+function tracked(body: () => Promise<unknown>) {
+  return () => (testBody = body());
+}
+
 describe("RetirementPlanner", () => {
   let container: HTMLDivElement;
   let root: Root;
@@ -73,13 +109,14 @@ describe("RetirementPlanner", () => {
       ControlledIntersectionObserver as unknown as typeof IntersectionObserver;
   });
 
-  afterEach(() => {
+  afterEach(async () => {
+    await testBody.catch(() => undefined);
     act(() => root.unmount());
     container.remove();
     global.IntersectionObserver = SetupIntersectionObserver;
   });
 
-  it("holds the projection until the section is near the viewport", async () => {
+  it("holds the projection until the section is near the viewport", tracked(async () => {
     await act(async () => {
       root = createRoot(container);
       root.render(<RetirementPlanner />);
@@ -104,9 +141,9 @@ describe("RetirementPlanner", () => {
     await bringIntoView();
     expect(container.textContent).toMatch(/\d+ of 100/);
     expect(container.textContent).toContain("Save more");
-  });
+  }));
 
-  it("prints the verdict when the section never came near the viewport", async () => {
+  it("prints the verdict when the section never came near the viewport", tracked(async () => {
     await act(async () => {
       root = createRoot(container);
       root.render(<RetirementPlanner />);
@@ -118,9 +155,9 @@ describe("RetirementPlanner", () => {
 
     expect(printed.textContent).toMatch(/\d+ of 100/);
     expect(printed.textContent).not.toContain("Crunching scenarios");
-  });
+  }));
 
-  it("prints the levers, which otherwise arrive a tick after the verdict", async () => {
+  it("prints the levers, which otherwise arrive a tick after the verdict", tracked(async () => {
     await act(async () => {
       root = createRoot(container);
       root.render(<RetirementPlanner />);
@@ -131,9 +168,9 @@ describe("RetirementPlanner", () => {
 
     expect(printed.textContent).toContain("Save more");
     expect(printed.querySelector(".invest-retire-lever-skeleton")).toBeNull();
-  });
+  }));
 
-  it("prints the assumptions and the disclaimer with the projection", async () => {
+  it("prints the assumptions and the disclaimer with the projection", tracked(async () => {
     await act(async () => {
       root = createRoot(container);
       root.render(<RetirementPlanner />);
@@ -145,9 +182,9 @@ describe("RetirementPlanner", () => {
     expect(printed.querySelector('[aria-label="Assumptions used"]')).not.toBeNull();
     expect(printed.textContent).toContain("Capital market assumptions:");
     expect(printed.textContent).toMatch(/educational purposes only/i);
-  });
+  }));
 
-  it("renders a verdict and levers from the default plan", async () => {
+  it("renders a verdict and levers from the default plan", tracked(async () => {
     await act(async () => {
       root = createRoot(container);
       root.render(<RetirementPlanner />);
@@ -164,9 +201,9 @@ describe("RetirementPlanner", () => {
     expect(container.textContent).toContain("Save more");
     // The compliance disclaimer is always present on output.
     expect(container.textContent).toMatch(/educational purposes only/i);
-  });
+  }));
 
-  it("offers the portfolio balance as a starting seed", async () => {
+  it("offers the portfolio balance as a starting seed", tracked(async () => {
     await act(async () => {
       root = createRoot(container);
       root.render(<RetirementPlanner portfolioValue={250000} />);
@@ -175,5 +212,5 @@ describe("RetirementPlanner", () => {
     await bringIntoView();
 
     expect(container.textContent).toMatch(/Use my portfolio balance/i);
-  });
+  }));
 });
