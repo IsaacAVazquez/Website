@@ -7,6 +7,7 @@ import type { MBAJob, MBATrackedApplication } from "@/types/mba-jobs";
 import { useMBAJobs } from "@/hooks/useMBAJobs";
 import { useMBAApplications } from "@/hooks/useMBAApplications";
 import { toApplicationDateKey } from "@/lib/mba-application-insights";
+import { DISPLAY_TIME_ZONE } from "@/lib/date-formatters";
 
 // A YYYY-MM-DD key `days` from today, anchored at local noon so the calendar
 // day is stable regardless of the test machine's clock or DST.
@@ -195,6 +196,8 @@ describe("MBAJobsClient", () => {
       day: "numeric",
       hour: "numeric",
       minute: "2-digit",
+      timeZone: DISPLAY_TIME_ZONE,
+      timeZoneName: "short",
     }).format(fetchedAt);
     expect(screen.getByText(`Updated ${shown}`)).toBeVisible();
   });
@@ -244,9 +247,13 @@ describe("MBAJobsClient", () => {
     ).not.toBeInTheDocument();
     expect(stripeButton).toHaveStyle("background: var(--c97-field)");
     expect(stripeDot).not.toBeNull();
-    expect(stripeDot).toHaveStyle(
-      "background: color-mix(in srgb, var(--c97-positive) 62%, var(--c97-ink) 38%)"
+    // jsdom drops color-mix() values, so the active dot's category colour can't be
+    // read back from its style. Check the colour it is given and that the active dot
+    // does not fall back to the inactive rule colour.
+    expect(MBA_COMPANIES.find((company) => company.id === "stripe")?.color).toBe(
+      "color-mix(in srgb, var(--c97-positive) 62%, var(--c97-ink) 38%)"
     );
+    expect(stripeDot).not.toHaveStyle("background: var(--c97-rule)");
     expect(chipRail).toHaveClass("flex-wrap");
     expect(chipRail).not.toHaveClass("shrink-0");
   });
@@ -398,6 +405,32 @@ describe("MBAJobsClient", () => {
     expect(mockPush).toHaveBeenLastCalledWith("/mba-internship-notifications", {
       scroll: false,
     });
+  });
+
+  it("paginates the live grid and resets to the first page when a filter changes", () => {
+    const jobs = Array.from({ length: 75 }, (_, i) =>
+      buildJob({
+        id: `job-${i}`,
+        title: `Role ${i}`,
+        postedAt: `2026-04-${String((i % 27) + 1).padStart(2, "0")}T10:00:00.000Z`,
+      })
+    );
+    mockUseMBAJobs.mockReturnValue(buildHookValue({ jobs }));
+
+    render(<MBAJobsClient initialState={DEFAULT_MBA_JOBS_STATE} />);
+
+    const liveJobsGrid = screen.getByTestId("live-jobs-grid");
+    expect(within(liveJobsGrid).getAllByRole("heading", { level: 3 })).toHaveLength(60);
+    expect(screen.getByRole("button", { name: "Show more (60 of 75 shown)" })).toBeVisible();
+
+    fireEvent.click(screen.getByRole("button", { name: /Show more/ }));
+    expect(within(liveJobsGrid).getAllByRole("heading", { level: 3 })).toHaveLength(75);
+    expect(screen.queryByRole("button", { name: /Show more/ })).not.toBeInTheDocument();
+
+    // A filter change (not a data refresh) starts back at the first page.
+    fireEvent.change(screen.getByLabelText("Sort"), { target: { value: "oldest" } });
+    expect(within(liveJobsGrid).getAllByRole("heading", { level: 3 })).toHaveLength(60);
+    expect(screen.getByRole("button", { name: "Show more (60 of 75 shown)" })).toBeVisible();
   });
 
   it("renders outbound search shortcuts and toggles external leads through URL state", () => {

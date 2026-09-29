@@ -9,6 +9,7 @@ import {
 } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { ExternalLink } from "lucide-react";
+import { DATE_ONLY_TIME_ZONE } from "@/lib/date-formatters";
 import {
   CrestAvatar,
   TeamResultPill,
@@ -169,7 +170,8 @@ export function MlbClient({ initialState, summary, initialTeamSnapshot }: MlbCli
         month: "short",
         day: "numeric",
         year: "numeric",
-        timeZone: "UTC",
+        // summary.updatedAt is a YYYY-MM-DD date-only value (parses to UTC midnight).
+        timeZone: DATE_ONLY_TIME_ZONE,
       }).format(new Date(summary.updatedAt)),
     [summary.updatedAt]
   );

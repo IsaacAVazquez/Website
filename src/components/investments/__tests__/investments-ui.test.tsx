@@ -20,6 +20,7 @@ import { AddStockForm } from "../AddStockForm";
 import { __testUtils as liveQuoteTestUtils } from "@/hooks/useLiveQuote";
 import { __testUtils as stockDataTestUtils } from "@/hooks/useStockData";
 import { clearClientInvestmentDataCachesForTests } from "@/lib/investmentsClientData";
+import { DISPLAY_TIME_ZONE } from "@/lib/date-formatters";
 
 (globalThis as Record<string, unknown>).IS_REACT_ACT_ENVIRONMENT = true;
 const mockFetch = jest.fn();
@@ -392,6 +393,7 @@ describe("investments UI", () => {
       year: "numeric",
       hour: "numeric",
       minute: "2-digit",
+      timeZone: DISPLAY_TIME_ZONE,
       timeZoneName: "short",
     });
   }

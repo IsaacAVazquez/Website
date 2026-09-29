@@ -18,6 +18,7 @@ import { Catalog97ProjectHero } from "@/components/catalog97/Catalog97ProjectHer
 import { PROJECT_PRESS } from "@/constants/projectPress";
 import { formatUsdCompact, sortTechStartups } from "@/lib/techStartups";
 import { relativeAge } from "@/lib/utils";
+import { DATE_ONLY_TIME_ZONE } from "@/lib/date-formatters";
 import type {
   TechStartup,
   TechStartupRouteState,
@@ -44,12 +45,12 @@ interface TechStartupClientProps {
   snapshot: TechStartupSnapshot;
 }
 
-// The month is read as UTC midnight, so it has to print in UTC. In local time
-// a reader west of Greenwich saw every round a month early.
+// yearMonth is a date-only "YYYY-MM" value, so it's pinned to UTC to keep
+// its calendar month instead of rolling back a day in western zones.
 const ROUND_FORMATTER = new Intl.DateTimeFormat("en-US", {
   month: "short",
   year: "numeric",
-  timeZone: "UTC",
+  timeZone: DATE_ONLY_TIME_ZONE,
 });
 
 function formatRoundDate(yearMonth: string): string {
@@ -113,7 +114,7 @@ export function TechStartupClient({ initialState, snapshot }: TechStartupClientP
   const [sourceIsOverdue, setSourceIsOverdue] = useState(!snapshot.verified);
   useEffect(() => {
     // eslint-disable-next-line react-hooks/set-state-in-effect -- Compute the relative timestamp only after mount to avoid SSR/client hydration drift
-    setRelativeUpdated(relativeAge(snapshot.generatedAt));
+    setRelativeUpdated(relativeAge(snapshot.generatedAt, Date.now()));
   }, [snapshot.generatedAt]);
   useEffect(() => {
     const sourceAgeMs = Date.now() - Date.parse(snapshot.asOf);

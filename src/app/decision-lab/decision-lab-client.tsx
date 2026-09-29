@@ -99,7 +99,8 @@ function DecisionMatrix({
   const stampCx = PAD_L + (pointOnRight ? 0.25 : 0.75) * PLOT_SIZE;
   const stampCy = PAD_T + (pointOnTop ? 0.75 : 0.25) * PLOT_SIZE;
 
-  const activeLabelX = fitCenterX(activeX, 34, PAD_L, PAD_L + PLOT_SIZE);
+  // Half of "ACTIVE" at the phone-width size set in decision-lab.css, the wider of the two.
+  const activeLabelX = fitCenterX(activeX, 40, PAD_L, PAD_L + PLOT_SIZE);
   // Above the point unless that crowds the frame or another preset's ring,
   // then below it.
   const neighbours = DECISION_PRESETS.map((preset) => [plotX(preset.confidence), plotY(preset.impact)]).filter(

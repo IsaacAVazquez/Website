@@ -14,7 +14,7 @@
 }
 
 .c97-startup-treemap-tile-name {
-  font-family: var(--c97-font-serif);
+  font-family: var(--c97-font-display);
   font-size: 15px;
   fill: var(--c97-ink);
 }

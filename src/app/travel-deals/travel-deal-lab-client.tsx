@@ -14,6 +14,7 @@ import {
 } from "lucide-react";
 import { Catalog97ProjectHero } from "@/components/catalog97/Catalog97ProjectHero";
 import { PROJECT_PRESS } from "@/constants/projectPress";
+import { useClientNow } from "@/hooks/useClientNow";
 import {
   DEAL_TACTICS,
   DESTINATION_REGIONS,
@@ -205,7 +206,11 @@ export function TravelDealLabClient() {
   }, [state, hydrated]);
 
   const region = getRegion(state.regionId) ?? DESTINATION_REGIONS[0];
-  const today = useMemo(() => todayKey(), []);
+  // "Today" depends on the visitor's own clock and zone, so it can only be
+  // known on the client; null here means the server render and the first
+  // hydration pass agree on "not yet known" instead of disagreeing on "now".
+  const nowMs = useClientNow();
+  const today = useMemo(() => (nowMs === null ? null : todayKey(new Date(nowMs))), [nowMs]);
   const booking = useMemo(
     () => getBookingWindow(region, state.departureDate, today),
     [region, state.departureDate, today],

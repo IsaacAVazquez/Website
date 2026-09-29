@@ -53,6 +53,7 @@ async function readReferenceIndex(projectRoot: string): Promise<SpaceXImageRefer
 
 describe("buildSpaceXImageSnapshots", () => {
   afterEach(async () => {
+    jest.restoreAllMocks();
     const tempRootEntries = await fs.readdir(os.tmpdir());
     await Promise.all(
       tempRootEntries
@@ -617,6 +618,9 @@ describe("buildSpaceXImageSnapshots", () => {
   });
 
   it("skips another provider's launch when the provider filter is ignored", async () => {
+    // The fixture launch is at 2026-09-28T12:15Z and the builder drops an
+    // upcoming launch 30 minutes past its NET, so hold the clock before it.
+    jest.spyOn(Date, "now").mockReturnValue(Date.parse("2026-09-28T00:00:00Z"));
     const projectRoot = await makeProjectRoot();
     const fetchMock = jest.fn(async (input: string | URL) => {
       const url = String(input);

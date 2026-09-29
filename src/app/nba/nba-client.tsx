@@ -3,6 +3,7 @@
 import { startTransition, useEffect, useMemo, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { CircleAlert, ExternalLink } from "lucide-react";
+import { DATE_ONLY_TIME_ZONE } from "@/lib/date-formatters";
 import {
   MetricCard,
   CrestAvatar,
@@ -141,9 +142,8 @@ export function NbaClient({ initialState, summary, initialTeamSnapshot, teamColo
         month: "short",
         day: "numeric",
         year: "numeric",
-        // `updatedAt` is a UTC calendar date, so a visitor's own zone printed
-        // the day before and the client render disagreed with the server's.
-        timeZone: "UTC",
+        // summary.updatedAt is a YYYY-MM-DD date-only value (parses to UTC midnight).
+        timeZone: DATE_ONLY_TIME_ZONE,
       }).format(new Date(summary.updatedAt)),
     [summary.updatedAt]
   );
@@ -292,7 +292,11 @@ export function NbaClient({ initialState, summary, initialTeamSnapshot, teamColo
 
   if (!selectedTeam) {
     return (
-      <Catalog97ProjectHero ink={lead} title="NBA Pulse" standfirst={standfirst} meta="Conference standings, playoff seeding, and stat leaders will appear here once the next snapshot is published.">
+      <Catalog97ProjectHero
+        ink={lead}
+        title="NBA Pulse"
+        standfirst={`${standfirst} Conference standings, playoff seeding, and stat leaders will appear here once the next snapshot is published.`}
+      >
         {heroSignature}
       </Catalog97ProjectHero>
     );

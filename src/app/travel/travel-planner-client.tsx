@@ -690,6 +690,7 @@ export function TravelPlannerClient() {
                       }}
                       aria-label={`Delete trip ${other.name}`}
                       className="c97-btn-ghost"
+                      style={{ minWidth: 44, justifyContent: "center" }}
                     >
                       <Trash2 className="h-3.5 w-3.5" aria-hidden="true" />
                     </button>
@@ -925,7 +926,13 @@ function DayList({
                   <button type="button" onClick={() => onEdit(activity)} className="c97-btn-ghost">
                     Edit
                   </button>
-                  <button type="button" onClick={() => onRemove(activity.id)} aria-label={`Delete ${activity.title}`} className="c97-btn-ghost">
+                  <button
+                    type="button"
+                    onClick={() => onRemove(activity.id)}
+                    aria-label={`Delete ${activity.title}`}
+                    className="c97-btn-ghost"
+                    style={{ minWidth: 44, justifyContent: "center" }}
+                  >
                     <Trash2 className="h-3.5 w-3.5" aria-hidden="true" />
                   </button>
                 </div>
@@ -960,7 +967,13 @@ function JournalPostcard({
             <button type="button" onClick={() => onEdit(entry)} className="c97-btn-ghost">
               Edit
             </button>
-            <button type="button" onClick={() => onRemove(entry.id)} aria-label={`Delete journal entry ${entry.title}`} className="c97-btn-ghost">
+            <button
+              type="button"
+              onClick={() => onRemove(entry.id)}
+              aria-label={`Delete journal entry ${entry.title}`}
+              className="c97-btn-ghost"
+              style={{ minWidth: 44, justifyContent: "center" }}
+            >
               <Trash2 className="h-3.5 w-3.5" aria-hidden="true" />
             </button>
           </div>

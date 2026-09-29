@@ -5,6 +5,10 @@ import { DEFAULT_DECISION_LAB_STATE } from "@/app/decision-lab/decision-lab-stat
 import { BudgetPlannerClient } from "@/app/fintech-tools/budget-planner/budget-planner-client";
 import { RentVsBuyClient } from "@/app/fintech-tools/rent-vs-buy/rent-vs-buy-client";
 import { TravelPlannerClient } from "@/app/travel/travel-planner-client";
+import { MBAJobsClient } from "@/app/mba-internship-notifications/mba-jobs-client";
+import { DEFAULT_MBA_JOBS_STATE } from "@/app/mba-internship-notifications/mba-jobs-state";
+import { FoodMapClient } from "@/app/food-map/food-map-client";
+import { DEFAULT_FOOD_MAP_STATE } from "@/app/food-map/food-map-state";
 
 // Real framer-motion on purpose. The route tests mock it, which is how a
 // page-wide fade that server-rendered every page at opacity 0 went unseen.
@@ -12,6 +16,12 @@ jest.mock("next/navigation", () => ({
   useRouter: () => ({ push: jest.fn(), replace: jest.fn() }),
   useSearchParams: () => new URLSearchParams(),
   usePathname: () => "/",
+}));
+
+// The Leaflet map loads from a CDN at runtime; mock it so this test stays
+// deterministic and doesn't touch the network (matches food-map-client.test.tsx).
+jest.mock("@/app/food-map/food-map-leaflet", () => ({
+  FoodMapLeaflet: () => null,
 }));
 
 /** The h1's server-rendered opacity, walking up through inline styles. */
@@ -34,6 +44,8 @@ describe("server-rendered first paint", () => {
     ["Budget Planner", <BudgetPlannerClient key="b" />],
     ["Rent vs. Buy", <RentVsBuyClient key="r" />],
     ["Travel Planner", <TravelPlannerClient key="t" />],
+    ["Job Search", <MBAJobsClient key="j" initialState={DEFAULT_MBA_JOBS_STATE} />],
+    ["Food Map", <FoodMapClient key="f" initialState={DEFAULT_FOOD_MAP_STATE} />],
   ])("%s ships its headline visible before any script runs", (_name, element) => {
     expect(serverRenderedHeadingOpacity(element)).toBe(1);
   });

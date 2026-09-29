@@ -56,7 +56,7 @@ export function TradeBalanceScale({ result }: { result: FantasyTradeEvaluation |
             x={x}
             y="11"
             textAnchor="middle"
-            fontSize="8"
+            fontSize="9.5"
             fill="currentColor"
             opacity="0.62"
           >
@@ -77,13 +77,13 @@ export function TradeBalanceScale({ result }: { result: FantasyTradeEvaluation |
             strokeWidth="3"
           />
         </g>
-        <text x="24" y="54" fontSize="9" fill="currentColor" opacity="0.62">
+        <text x="24" y="54" fontSize="9.5" fill="currentColor" opacity="0.62">
           GIVE
         </text>
-        <text x="120" y="54" textAnchor="middle" fontSize="9" fill="currentColor" opacity="0.62">
+        <text x="120" y="54" textAnchor="middle" fontSize="9.5" fill="currentColor" opacity="0.62">
           EVEN
         </text>
-        <text x="216" y="54" textAnchor="end" fontSize="9" fill="currentColor" opacity="0.62">
+        <text x="216" y="54" textAnchor="end" fontSize="9.5" fill="currentColor" opacity="0.62">
           GET
         </text>
       </svg>

@@ -13,6 +13,7 @@ import {
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import { Search, Star, X } from "lucide-react";
+import { useClientNow } from "@/hooks/useClientNow";
 import { useDebounce } from "@/hooks/useDebounce";
 import { useFantasySnapshot } from "@/hooks/useFantasySnapshot";
 import { SeasonalScopeNote } from "@/components/fantasy/SeasonalScopeNote";
@@ -137,12 +138,21 @@ const STALENESS_TONE: Record<FantasySnapshotStaleness, CSSProperties> = {
   },
 };
 
-/** Compact "Aug 16" / "Dec 3, 2025" stamp for the header chips and footer line. */
-function formatStamp(timestamp: string | null | undefined): string | null {
+/**
+ * Compact "Aug 16" / "Dec 3, 2025" stamp for the header chips and footer line.
+ * `currentYear` is the caller's own read of "now" (null until the client
+ * knows it), never `new Date()` here: the server and the client's first
+ * render otherwise call `new Date()` at two different instants, which only
+ * disagrees right at a year boundary but was still a real, if rare,
+ * hydration mismatch. While `currentYear` is null every stamp keeps its year,
+ * which is always correct, just occasionally one year longer than needed
+ * until the client settles.
+ */
+function formatStamp(timestamp: string | null | undefined, currentYear: number | null): string | null {
   if (!timestamp) return null;
   const date = new Date(timestamp);
   if (Number.isNaN(date.getTime())) return null;
-  const sameYear = date.getUTCFullYear() === new Date().getUTCFullYear();
+  const sameYear = currentYear !== null && date.getUTCFullYear() === currentYear;
   // Snapshot stamps are built at a UTC instant and rendered as a bare date, so the
   // calendar day has to be read in UTC too. Without this a midnight-UTC stamp renders
   // a day early for every visitor west of UTC, which is how a source dated Sep 1 was
@@ -338,11 +348,13 @@ function RankingToggle({
             aria-pressed={active}
             disabled={disabled}
             onClick={() => onChange(option)}
-            className="relative min-h-touch cursor-pointer px-3 font-mono text-3xs uppercase tracking-[0.08em] transition-colors duration-150 focus-visible:z-10 disabled:cursor-not-allowed disabled:opacity-50"
+            className="relative min-h-touch cursor-pointer px-3 font-mono text-3xs uppercase tracking-[0.08em] transition-colors duration-150 focus-visible:z-10 disabled:cursor-not-allowed"
             style={
               active
                 ? { background: "var(--c97-ink)", color: "var(--c97-surface)" }
-                : { background: "transparent", color: "var(--c97-ink)" }
+                : disabled
+                  ? { background: "transparent", color: "var(--c97-ink-2)" }
+                  : { background: "transparent", color: "var(--c97-ink)" }
             }
           >
             {option === "consensus" ? "Consensus" : "VORP"}
@@ -1157,6 +1169,11 @@ export function FantasyFootballClient({ initialState, initialSnapshot = null }: 
   const queue = usePlayerQueue();
   const notes = usePlayerNotes();
 
+  // Null on the server and until the client mounts, then the real year, so
+  // the stamps below can drop a matching year without racing new Date().
+  const clientNowMs = useClientNow();
+  const currentYear = clientNowMs === null ? null : new Date(clientNowMs).getUTCFullYear();
+
   const hasManagedParams = ["position", "scoring", "ranking", "teams", "q"].some(
     (param) => searchParams.get(param) !== null
   );
@@ -1422,10 +1439,10 @@ export function FantasyFootballClient({ initialState, initialSnapshot = null }: 
     };
   });
 
-  const snapshotStamp = formatStamp(metadata?.generatedAt);
-  const adpStamp = formatStamp(adpSource?.asOf);
-  const vorpStamp = formatStamp(snapshot?.vorpSource?.asOf);
-  const sourceStamp = formatStamp(activeSourceUpdatedAt);
+  const snapshotStamp = formatStamp(metadata?.generatedAt, currentYear);
+  const adpStamp = formatStamp(adpSource?.asOf, currentYear);
+  const vorpStamp = formatStamp(snapshot?.vorpSource?.asOf, currentYear);
+  const sourceStamp = formatStamp(activeSourceUpdatedAt, currentYear);
 
   // Format and source share one chip, and the ADP chip drops its provider
   // name below md: at 390 the strip ran four lines and pushed the first row
@@ -1887,223 +1904,46 @@ export function FantasyFootballClient({ initialState, initialSnapshot = null }: 
           </div>
         ) : null}
 
-      <div
-        data-testid="fantasy-board-controls"
-        className="sticky top-0 z-30 border-y"
-        style={{
-          borderColor: "var(--c97-rule)",
-          background: "var(--c97-surface)",
-        }}
-      >
-        <div className={`${SHELL_CLASS} hidden flex-wrap items-center gap-x-3.5 gap-y-2 py-1 md:flex`}>
-          <PositionFilterBar
-            ariaLabel="Position board"
-            options={positionOptions}
-            value={routeState.position}
-            onChange={(position) => updateRouteState({ position })}
-          />
-          <ScoringToggle
-            value={routeState.scoring}
-            onChange={(scoring) => updateRouteState({ scoring })}
-            compact="below-xl"
-          />
-          <RankingToggle
-            value={routeState.ranking}
-            vorpAvailable={vorpAvailable}
-            onChange={(ranking) => updateRouteState({ ranking })}
-          >
-            {routeState.ranking === "vorp" ? (
-              <VorpTeamSizeSelect
-                value={routeState.teams}
-                onChange={(teams) => updateRouteState({ teams })}
-              />
-            ) : null}
-          </RankingToggle>
-        </div>
-        {/* Wraps instead of clipping, so at 320 wide or with enlarged text the search
-            and queue filter drop to a second line and stay reachable. */}
-        <div className={`${SHELL_CLASS} flex flex-wrap items-center gap-2 py-2 md:hidden`}>
-          {mobileSearchOpen ? (
-            <>
-              <div className="relative min-w-0 flex-1">
-                <label htmlFor="fantasy-search-compact" className="sr-only">
-                  Search the current rankings board
-                </label>
-                <Search
-                  className="pointer-events-none absolute left-2.5 top-1/2 h-3.5 w-3.5 -translate-y-1/2"
-                  style={{ color: "var(--c97-ink-2)" }}
-                  aria-hidden="true"
-                />
-                <input
-                  id="fantasy-search-compact"
-                  name="fantasy-search-compact"
-                  value={searchQuery}
-                  maxLength={80}
-                  autoFocus
-                  onChange={(event) => setSearchQuery(event.target.value)}
-                  onBlur={() => {
-                    if (!searchQuery) setMobileSearchOpen(false);
-                  }}
-                  disabled={currentSliceUnavailable}
-                  autoComplete="off"
-                  placeholder="Search player or team"
-                  className="min-h-touch w-full border pl-8 pr-2.5 font-mono text-xs placeholder:text-[var(--c97-ink-2)] disabled:cursor-not-allowed disabled:opacity-60"
-                  style={{
-                    borderColor: "var(--c97-ink-2)",
-                    background: "var(--c97-field)",
-                    color: "var(--c97-ink)",
-                  }}
-                />
-              </div>
-              {searchQuery && (
-                <button
-                  type="button"
-                  aria-label="Clear search"
-                  onMouseDown={(event) => event.preventDefault()}
-                  onClick={() => {
-                    setSearchQuery("");
-                    updateRouteState({ query: "" });
-                  }}
-                  className="inline-flex min-h-touch min-w-touch shrink-0 items-center justify-center border"
-                  style={{
-                    borderColor: "var(--c97-ink-2)",
-                    background: "var(--c97-field)",
-                    color: "var(--c97-ink)",
-                  }}
-                >
-                  <X className="h-4 w-4" aria-hidden="true" />
-                </button>
-              )}
-              <button
-                type="button"
-                aria-label="Done searching, keep the filter"
-                onMouseDown={(event) => event.preventDefault()}
-                onClick={() => setMobileSearchOpen(false)}
-                className="inline-flex min-h-touch shrink-0 items-center border px-3 font-mono text-3xs uppercase tracking-[0.08em]"
-                style={{
-                  borderColor: "var(--c97-ink-2)",
-                  background: "var(--c97-field)",
-                  color: "var(--c97-ink)",
-                }}
-              >
-                Done
-              </button>
-            </>
-          ) : (
-            <>
-              <label htmlFor="fantasy-position-select" className="sr-only">
-                Position board
-              </label>
-              <select
-                id="fantasy-position-select"
-                value={routeState.position}
-                onChange={(event) => updateRouteState({ position: event.target.value as FantasyRoutePosition })}
-                className="min-h-touch shrink-0 border px-2 font-mono text-2xs uppercase tracking-[0.06em]"
-                style={{
-                  borderColor: "var(--c97-ink-2)",
-                  background: "var(--c97-field)",
-                  color: "var(--c97-ink)",
-                }}
-              >
-                {positionOptions.map((option) => {
-                  /* The desktop pill row already renders an unavailable slice
-                     disabled with its reason. Left plain and enabled here, the
-                     select let a phone visitor pick a board that does not
-                     exist. The selected value never disables itself, or the
-                     control would render blank on a board that went away. */
-                  const isUnavailable =
-                    option.available === false && option.value !== routeState.position;
-                  return (
-                    <option
-                      key={option.value}
-                      value={option.value}
-                      disabled={isUnavailable}
-                      title={isUnavailable ? option.unavailableLabel : undefined}
-                    >
-                      {isUnavailable ? `${option.label} · unavailable` : option.label}
-                    </option>
-                  );
-                })}
-              </select>
-              <ScoringToggle compact value={routeState.scoring} onChange={(scoring) => updateRouteState({ scoring })} />
-              <button
-                type="button"
-                aria-label={
-                  searchQuery
-                    ? `Search the current rankings board, filtering by ${searchQuery}`
-                    : "Search the current rankings board"
-                }
-                onClick={() => setMobileSearchOpen(true)}
-                disabled={currentSliceUnavailable}
-                className="inline-flex min-h-touch min-w-touch shrink-0 items-center justify-center border disabled:cursor-not-allowed disabled:opacity-60"
-                style={
-                  /* A collapsed search still filters the board, so the control
-                     carries the active state rather than hiding the filter. */
-                  searchQuery
-                    ? { borderColor: "var(--c97-ink)", background: "var(--c97-ink)", color: "var(--c97-surface)" }
-                    : { borderColor: "var(--c97-ink-2)", background: "var(--c97-field)", color: "var(--c97-ink)" }
-                }
-              >
-                <Search className="h-4 w-4" aria-hidden="true" />
-              </button>
-              <QueuedFilterButton
-                pressed={queuedOnly}
-                count={queuedOnBoardCount}
-                onToggle={() => setQueuedOnly((value) => !value)}
-              />
-            </>
-          )}
-        </div>
-        {/* The count and the route's only aria-live region used to sit inside
-            the md-and-up bar, so below 768px a filter that landed on six rows
-            announced nothing and showed no count. Phones get their own line,
-            and it stays visible rather than sr-only, because it is also the
-            feedback that a search or the queue filter landed on n rows. Only
-            one of the two is ever rendered, since the other is display:none at
-            that width, so nothing announces twice. The ranking select shares
-            this line: as a Consensus/VORP pair plus a league-size select it
-            took a third row, and the bar pinned 225px of an 844px phone. It
-            yields while the search is open, since the count is what a search
-            needs to see. */}
-        <div className={`${SHELL_CLASS} flex items-center gap-2 pb-2 md:hidden`}>
-          {!mobileSearchOpen ? (
-            <CompactRankingSelect
-              ranking={routeState.ranking}
-              teams={routeState.teams}
-              vorpAvailable={vorpAvailable}
-              onChange={(next) => updateRouteState(next)}
-            />
-          ) : null}
-          <span
-            aria-live={error ? undefined : "polite"}
-            className="min-w-0 flex-1 text-right font-mono text-2xs leading-snug"
-            style={{ color: "var(--c97-ink-2)" }}
-          >
-            {countLine}
-          </span>
-        </div>
-        {/* The second line of the bar. The search sits over the Player
-            column, whose label slot had 184 to 342px of slack while the
-            search pushed the controls onto a second line at 1440; the column
-            labels ride beside it so the numbers keep their names mid-scroll,
-            and the queue filter heads the star column it filters, in the
-            space both rows reserve with pr-15. Phones get per-value
-            micro-labels and their own search instead. The search and the
-            filter are always mounted here so an empty result can still be
-            edited; only the labels wait for rows. */}
         <div
-          className="hidden border-t md:block"
-          style={{ borderColor: "color-mix(in srgb, var(--c97-rule) 60%, transparent)" }}
+          data-testid="fantasy-board-controls"
+          className="sticky top-0 z-30 border-y"
+          style={{
+            borderColor: "var(--c97-rule)",
+            background: "var(--c97-surface)",
+          }}
         >
-          <div className={SHELL_CLASS}>
-            <div
-              className="relative flex items-center gap-x-4 py-1 pl-3.5 pr-15 font-mono text-3xs uppercase tracking-[0.12em]"
-              style={{ color: "var(--c97-ink-2)" }}
+          <div className={`${SHELL_CLASS} hidden flex-wrap items-center gap-x-3.5 gap-y-2 py-1 md:flex`}>
+            <PositionFilterBar
+              ariaLabel="Position board"
+              options={positionOptions}
+              value={routeState.position}
+              onChange={(position) => updateRouteState({ position })}
+            />
+            <ScoringToggle
+              value={routeState.scoring}
+              onChange={(scoring) => updateRouteState({ scoring })}
+              compact="below-xl"
+            />
+            <RankingToggle
+              value={routeState.ranking}
+              vorpAvailable={vorpAvailable}
+              onChange={(ranking) => updateRouteState({ ranking })}
             >
-              <span className="w-[34px] shrink-0" />
-              <span className="flex min-w-0 flex-[1_1_12rem] items-center gap-x-3">
-                <span className="relative min-w-0 shrink">
-                  <label htmlFor="fantasy-search" className="sr-only">
+              {routeState.ranking === "vorp" ? (
+                <VorpTeamSizeSelect
+                  value={routeState.teams}
+                  onChange={(teams) => updateRouteState({ teams })}
+                />
+              ) : null}
+            </RankingToggle>
+          </div>
+          {/* Wraps instead of clipping, so at 320 wide or with enlarged text the search
+              and queue filter drop to a second line and stay reachable. */}
+          <div className={`${SHELL_CLASS} flex flex-wrap items-center gap-2 py-2 md:hidden`}>
+            {mobileSearchOpen ? (
+              <>
+                <div className="relative min-w-0 flex-1">
+                  <label htmlFor="fantasy-search-compact" className="sr-only">
                     Search the current rankings board
                   </label>
                   <Search
@@ -2112,241 +1952,420 @@ export function FantasyFootballClient({ initialState, initialSnapshot = null }: 
                     aria-hidden="true"
                   />
                   <input
-                    id="fantasy-search"
-                    name="fantasy-search"
+                    id="fantasy-search-compact"
+                    name="fantasy-search-compact"
                     value={searchQuery}
                     maxLength={80}
+                    autoFocus
                     onChange={(event) => setSearchQuery(event.target.value)}
+                    onBlur={() => {
+                      if (!searchQuery) setMobileSearchOpen(false);
+                    }}
                     disabled={currentSliceUnavailable}
                     autoComplete="off"
-                    placeholder="Player or team"
-                    className="min-h-touch w-40 max-w-full border pl-8 pr-2.5 font-mono text-xs normal-case tracking-normal placeholder:text-[var(--c97-ink-2)] disabled:cursor-not-allowed disabled:opacity-60 lg:w-[200px]"
+                    placeholder="Search player or team"
+                    className="min-h-touch w-full border pl-8 pr-2.5 font-mono text-xs placeholder:text-[var(--c97-ink-2)] disabled:cursor-not-allowed disabled:border-dashed"
+                    style={
+                      currentSliceUnavailable
+                        ? { borderColor: "var(--c97-ink-2)", background: "none", color: "var(--c97-ink-2)" }
+                        : { borderColor: "var(--c97-ink-2)", background: "var(--c97-field)", color: "var(--c97-ink)" }
+                    }
+                  />
+                </div>
+                {searchQuery && (
+                  <button
+                    type="button"
+                    aria-label="Clear search"
+                    onMouseDown={(event) => event.preventDefault()}
+                    onClick={() => {
+                      setSearchQuery("");
+                      updateRouteState({ query: "" });
+                    }}
+                    className="inline-flex min-h-touch min-w-touch shrink-0 items-center justify-center border"
                     style={{
                       borderColor: "var(--c97-ink-2)",
                       background: "var(--c97-field)",
                       color: "var(--c97-ink)",
                     }}
-                  />
+                  >
+                    <X className="h-4 w-4" aria-hidden="true" />
+                  </button>
+                )}
+                <button
+                  type="button"
+                  aria-label="Done searching, keep the filter"
+                  onMouseDown={(event) => event.preventDefault()}
+                  onClick={() => setMobileSearchOpen(false)}
+                  className="inline-flex min-h-touch shrink-0 items-center border px-3 font-mono text-3xs uppercase tracking-[0.08em]"
+                  style={{
+                    borderColor: "var(--c97-ink-2)",
+                    background: "var(--c97-field)",
+                    color: "var(--c97-ink)",
+                  }}
+                >
+                  Done
+                </button>
+              </>
+            ) : (
+              <>
+                <label htmlFor="fantasy-position-select" className="sr-only">
+                  Position board
+                </label>
+                <select
+                  id="fantasy-position-select"
+                  value={routeState.position}
+                  onChange={(event) => updateRouteState({ position: event.target.value as FantasyRoutePosition })}
+                  className="min-h-touch shrink-0 border px-2 font-mono text-2xs uppercase tracking-[0.06em]"
+                  style={{
+                    borderColor: "var(--c97-ink-2)",
+                    background: "var(--c97-field)",
+                    color: "var(--c97-ink)",
+                  }}
+                >
+                  {positionOptions.map((option) => {
+                    /* The desktop pill row already renders an unavailable slice
+                       disabled with its reason. Left plain and enabled here, the
+                       select let a phone visitor pick a board that does not
+                       exist. The selected value never disables itself, or the
+                       control would render blank on a board that went away. */
+                    const isUnavailable =
+                      option.available === false && option.value !== routeState.position;
+                    return (
+                      <option
+                        key={option.value}
+                        value={option.value}
+                        disabled={isUnavailable}
+                        title={isUnavailable ? option.unavailableLabel : undefined}
+                      >
+                        {isUnavailable ? `${option.label} · unavailable` : option.label}
+                      </option>
+                    );
+                  })}
+                </select>
+                <ScoringToggle compact value={routeState.scoring} onChange={(scoring) => updateRouteState({ scoring })} />
+                <button
+                  type="button"
+                  aria-label={
+                    searchQuery
+                      ? `Search the current rankings board, filtering by ${searchQuery}`
+                      : "Search the current rankings board"
+                  }
+                  onClick={() => setMobileSearchOpen(true)}
+                  disabled={currentSliceUnavailable}
+                  className="inline-flex min-h-touch min-w-touch shrink-0 items-center justify-center border disabled:cursor-not-allowed disabled:border-dashed"
+                  style={
+                    /* A collapsed search still filters the board, so the control
+                       carries the active state rather than hiding the filter. */
+                    currentSliceUnavailable
+                      ? { borderColor: "var(--c97-ink-2)", background: "none", color: "var(--c97-ink-2)" }
+                      : searchQuery
+                        ? { borderColor: "var(--c97-ink)", background: "var(--c97-ink)", color: "var(--c97-surface)" }
+                        : { borderColor: "var(--c97-ink-2)", background: "var(--c97-field)", color: "var(--c97-ink)" }
+                  }
+                >
+                  <Search className="h-4 w-4" aria-hidden="true" />
+                </button>
+                <QueuedFilterButton
+                  pressed={queuedOnly}
+                  count={queuedOnBoardCount}
+                  onToggle={() => setQueuedOnly((value) => !value)}
+                />
+              </>
+            )}
+          </div>
+          {/* The count and the route's only aria-live region used to sit inside
+              the md-and-up bar, so below 768px a filter that landed on six rows
+              announced nothing and showed no count. Phones get their own line,
+              and it stays visible rather than sr-only, because it is also the
+              feedback that a search or the queue filter landed on n rows. Only
+              one of the two is ever rendered, since the other is display:none at
+              that width, so nothing announces twice. The ranking select shares
+              this line: as a Consensus/VORP pair plus a league-size select it
+              took a third row, and the bar pinned 225px of an 844px phone. It
+              yields while the search is open, since the count is what a search
+              needs to see. */}
+          <div className={`${SHELL_CLASS} flex items-center gap-2 pb-2 md:hidden`}>
+            {!mobileSearchOpen ? (
+              <CompactRankingSelect
+                ranking={routeState.ranking}
+                teams={routeState.teams}
+                vorpAvailable={vorpAvailable}
+                onChange={(next) => updateRouteState(next)}
+              />
+            ) : null}
+            <span
+              aria-live={error ? undefined : "polite"}
+              className="min-w-0 flex-1 text-right font-mono text-2xs leading-snug"
+              style={{ color: "var(--c97-ink-2)" }}
+            >
+              {countLine}
+            </span>
+          </div>
+          {/* The second line of the bar. The search sits over the Player
+              column, whose label slot had 184 to 342px of slack while the
+              search pushed the controls onto a second line at 1440; the column
+              labels ride beside it so the numbers keep their names mid-scroll,
+              and the queue filter heads the star column it filters, in the
+              space both rows reserve with pr-15. Phones get per-value
+              micro-labels and their own search instead. The search and the
+              filter are always mounted here so an empty result can still be
+              edited; only the labels wait for rows. */}
+          <div
+            className="hidden border-t md:block"
+            style={{ borderColor: "color-mix(in srgb, var(--c97-rule) 60%, transparent)" }}
+          >
+            <div className={SHELL_CLASS}>
+              <div
+                className="relative flex items-center gap-x-4 py-1 pl-3.5 pr-15 font-mono text-3xs uppercase tracking-[0.12em]"
+                style={{ color: "var(--c97-ink-2)" }}
+              >
+                <span className="w-[34px] shrink-0" />
+                <span className="flex min-w-0 flex-[1_1_12rem] items-center gap-x-3">
+                  <span className="relative min-w-0 shrink">
+                    <label htmlFor="fantasy-search" className="sr-only">
+                      Search the current rankings board
+                    </label>
+                    <Search
+                      className="pointer-events-none absolute left-2.5 top-1/2 h-3.5 w-3.5 -translate-y-1/2"
+                      style={{ color: "var(--c97-ink-2)" }}
+                      aria-hidden="true"
+                    />
+                    <input
+                      id="fantasy-search"
+                      name="fantasy-search"
+                      value={searchQuery}
+                      maxLength={80}
+                      onChange={(event) => setSearchQuery(event.target.value)}
+                      disabled={currentSliceUnavailable}
+                      autoComplete="off"
+                      placeholder="Player or team"
+                      className="min-h-touch w-40 max-w-full border pl-8 pr-2.5 font-mono text-xs normal-case tracking-normal placeholder:text-[var(--c97-ink-2)] disabled:cursor-not-allowed disabled:border-dashed lg:w-[200px]"
+                      style={
+                        currentSliceUnavailable
+                          ? { borderColor: "var(--c97-ink-2)", background: "none", color: "var(--c97-ink-2)" }
+                          : { borderColor: "var(--c97-ink-2)", background: "var(--c97-field)", color: "var(--c97-ink)" }
+                      }
+                    />
+                  </span>
+                  {boardReady && (
+                    <span className="hidden shrink-0 lg:inline-flex">
+                      <MetricTooltip term="Player" definition={FANTASY_PLAYER_COLUMN_TOOLTIP} focusable>
+                        Player
+                      </MetricTooltip>
+                    </span>
+                  )}
                 </span>
                 {boardReady && (
-                  <span className="hidden shrink-0 lg:inline-flex">
-                    <MetricTooltip term="Player" definition={FANTASY_PLAYER_COLUMN_TOOLTIP} focusable>
-                      Player
-                    </MetricTooltip>
+                  <span className="flex shrink-0 items-center gap-4">
+                    {metricColumns.map((column) => (
+                      <span key={column.label} className={column.className}>
+                        {column.title ? (
+                          <MetricTooltip term={column.label} definition={column.title} focusable>
+                            {column.label}
+                          </MetricTooltip>
+                        ) : (
+                          column.label
+                        )}
+                      </span>
+                    ))}
                   </span>
                 )}
-              </span>
-              {boardReady && (
-                <span className="flex shrink-0 items-center gap-4">
-                  {metricColumns.map((column) => (
-                    <span key={column.label} className={column.className}>
-                      {column.title ? (
-                        <MetricTooltip term={column.label} definition={column.title} focusable>
-                          {column.label}
-                        </MetricTooltip>
-                      ) : (
-                        column.label
-                      )}
-                    </span>
-                  ))}
-                </span>
-              )}
-              <QueuedFilterButton
-                pressed={queuedOnly}
-                count={queuedOnBoardCount}
-                onToggle={() => setQueuedOnly((value) => !value)}
-                className="absolute right-2 top-1/2 -translate-y-1/2"
-              />
+                <QueuedFilterButton
+                  pressed={queuedOnly}
+                  count={queuedOnBoardCount}
+                  onToggle={() => setQueuedOnly((value) => !value)}
+                  className="absolute right-2 top-1/2 -translate-y-1/2"
+                />
+              </div>
             </div>
           </div>
         </div>
-      </div>
 
-      <div className={`${SHELL_CLASS} pb-10 pt-4`}>
-        <h2 className="sr-only">
-          {vorpMode ? `${routeState.teams}-team VORP` : FANTASY_POSITION_LABELS[routeState.position]} rankings
-        </h2>
-        {/* The count left the sticky bar: with the search over the Player
-            column the bar's first line holds every control at 1440, and the
-            count would have been the one thing wrapping it to a second. */}
-        <div className="hidden justify-end pb-2 md:flex">
-          <span
-            aria-live={error ? undefined : "polite"}
-            className="font-mono text-2xs"
-            style={{ color: "var(--c97-ink-2)" }}
-          >
-            {countLine}
-          </span>
-        </div>
-
-        {localToolsMemoryOnly && (
-          <div
-            role="status"
-            className="mb-4 border px-4 py-3 text-sm"
-            style={{
-              borderColor: "color-mix(in srgb, var(--c97-warning) 55%, var(--c97-rule))",
-              background: "color-mix(in srgb, var(--c97-warning) 10%, var(--c97-surface))",
-            }}
-          >
-            <p className="font-semibold">Browser storage is unavailable.</p>
-            <p className="mt-1" style={{ color: "var(--c97-ink-2)" }}>
-              Queue and notes still work in this tab, but they will not survive a reload.
-            </p>
-          </div>
-        )}
-
-        {isLoading ? (
-          <div className="grid gap-2" aria-hidden="true">
-            {Array.from({ length: 12 }).map((_, index) => (
-              <div
-                key={`loading-${index}`}
-                className="h-11 border motion-safe:animate-pulse"
-                style={{
-                  borderColor: "var(--c97-rule)",
-                  background: "var(--c97-field)",
-                }}
-              />
-            ))}
-          </div>
-        ) : error ? (
-          <div
-            role="alert"
-            className="border px-5 py-8"
-            style={{
-              borderColor: "var(--c97-negative)",
-              background: "color-mix(in srgb, var(--c97-negative) 8%, var(--c97-surface))",
-            }}
-          >
-            <p className="font-semibold" style={{ color: "var(--c97-negative)" }}>
-              {error}
-            </p>
-            <p className="mt-2 text-sm" style={{ color: "var(--c97-ink-2)" }}>
-              Check your connection and try loading the published snapshot again.
-            </p>
-            <button
-              type="button"
-              onClick={retry}
-              className="mt-4 inline-flex min-h-touch items-center border px-4 text-sm font-semibold"
-              style={{ borderColor: "var(--c97-ink)", background: "var(--c97-ink)", color: "var(--c97-surface)" }}
+        <div className={`${SHELL_CLASS} pb-10 pt-4`}>
+          <h2 className="sr-only">
+            {vorpMode ? `${routeState.teams}-team VORP` : FANTASY_POSITION_LABELS[routeState.position]} rankings
+          </h2>
+          {/* The count left the sticky bar: with the search over the Player
+              column the bar's first line holds every control at 1440, and the
+              count would have been the one thing wrapping it to a second. */}
+          <div className="hidden justify-end pb-2 md:flex">
+            <span
+              aria-live={error ? undefined : "polite"}
+              className="font-mono text-2xs"
+              style={{ color: "var(--c97-ink-2)" }}
             >
-              Retry rankings
-            </button>
+              {countLine}
+            </span>
           </div>
-        ) : currentSliceUnavailable ? (
-          <div
-            className="border px-5 py-12 text-center"
-            style={{
-              borderColor: "color-mix(in srgb, var(--c97-warning) 32%, var(--c97-rule))",
-              background: "color-mix(in srgb, var(--c97-warning) 10%, var(--c97-surface))",
-            }}
-          >
-            <p className="text-lg font-semibold">
-              {selectedScoringLabel} {FANTASY_POSITION_LABELS[routeState.position]} rankings are unavailable.
-            </p>
-            <p className="mt-2 text-sm" style={{ color: "var(--c97-ink-2)" }}>
-              {sliceMetadata?.reason ??
-                "This scoring-position combination is not published in the current snapshot."}
-            </p>
-          </div>
-        ) : filteredPlayers.length === 0 ? (
-          <div
-            className="border border-dashed px-5 py-9 text-center"
-            style={{ borderColor: "var(--c97-rule)" }}
-          >
-            <p className="font-mono text-xs" style={{ color: "var(--c97-ink-2)" }}>
-              {queuedOnly ? "No queued players on this board." : "No players match on this board."}
-            </p>
-            {queuedOnly ? (
+
+          {localToolsMemoryOnly && (
+            <div
+              role="status"
+              className="mb-4 border px-4 py-3 text-sm"
+              style={{
+                borderColor: "color-mix(in srgb, var(--c97-warning) 55%, var(--c97-rule))",
+                background: "color-mix(in srgb, var(--c97-warning) 10%, var(--c97-surface))",
+              }}
+            >
+              <p className="font-semibold">Browser storage is unavailable.</p>
+              <p className="mt-1" style={{ color: "var(--c97-ink-2)" }}>
+                Queue and notes still work in this tab, but they will not survive a reload.
+              </p>
+            </div>
+          )}
+
+          {isLoading ? (
+            <div className="grid gap-2" aria-hidden="true">
+              {Array.from({ length: 12 }).map((_, index) => (
+                <div
+                  key={`loading-${index}`}
+                  className="h-11 border motion-safe:animate-pulse"
+                  style={{
+                    borderColor: "var(--c97-rule)",
+                    background: "var(--c97-field)",
+                  }}
+                />
+              ))}
+            </div>
+          ) : error ? (
+            <div
+              role="alert"
+              className="border px-5 py-8"
+              style={{
+                borderColor: "var(--c97-negative)",
+                background: "color-mix(in srgb, var(--c97-negative) 8%, var(--c97-surface))",
+              }}
+            >
+              <p className="font-semibold" style={{ color: "var(--c97-negative)" }}>
+                {error}
+              </p>
+              <p className="mt-2 text-sm" style={{ color: "var(--c97-ink-2)" }}>
+                Check your connection and try loading the published snapshot again.
+              </p>
               <button
                 type="button"
-                onClick={() => setQueuedOnly(false)}
-                className="mt-3.5 inline-flex min-h-touch items-center border px-4 font-mono text-2xs uppercase tracking-[0.06em]"
+                onClick={retry}
+                className="mt-4 inline-flex min-h-touch items-center border px-4 text-sm font-semibold"
                 style={{ borderColor: "var(--c97-ink)", background: "var(--c97-ink)", color: "var(--c97-surface)" }}
               >
-                Show all players
+                Retry rankings
               </button>
-            ) : (
-              <div className="mt-3.5 flex flex-wrap items-center justify-center gap-2">
+            </div>
+          ) : currentSliceUnavailable ? (
+            <div
+              className="border px-5 py-12 text-center"
+              style={{
+                borderColor: "color-mix(in srgb, var(--c97-warning) 32%, var(--c97-rule))",
+                background: "color-mix(in srgb, var(--c97-warning) 10%, var(--c97-surface))",
+              }}
+            >
+              <p className="text-lg font-semibold">
+                {selectedScoringLabel} {FANTASY_POSITION_LABELS[routeState.position]} rankings are unavailable.
+              </p>
+              <p className="mt-2 text-sm" style={{ color: "var(--c97-ink-2)" }}>
+                {sliceMetadata?.reason ??
+                  "This scoring-position combination is not published in the current snapshot."}
+              </p>
+            </div>
+          ) : filteredPlayers.length === 0 ? (
+            <div
+              className="border border-dashed px-5 py-9 text-center"
+              style={{ borderColor: "var(--c97-rule)" }}
+            >
+              <p className="font-mono text-xs" style={{ color: "var(--c97-ink-2)" }}>
+                {queuedOnly ? "No queued players on this board." : "No players match on this board."}
+              </p>
+              {queuedOnly ? (
                 <button
                   type="button"
-                  onClick={() => {
-                    setSearchQuery("");
-                    updateRouteState({ query: "" });
-                  }}
-                  className="inline-flex min-h-touch items-center border px-4 font-mono text-2xs uppercase tracking-[0.06em]"
+                  onClick={() => setQueuedOnly(false)}
+                  className="mt-3.5 inline-flex min-h-touch items-center border px-4 font-mono text-2xs uppercase tracking-[0.06em]"
                   style={{ borderColor: "var(--c97-ink)", background: "var(--c97-ink)", color: "var(--c97-surface)" }}
                 >
-                  Clear search
+                  Show all players
                 </button>
-                {overallSearchHit && (
+              ) : (
+                <div className="mt-3.5 flex flex-wrap items-center justify-center gap-2">
                   <button
                     type="button"
-                    onClick={() => updateRouteState({ position: "overall" })}
+                    onClick={() => {
+                      setSearchQuery("");
+                      updateRouteState({ query: "" });
+                    }}
                     className="inline-flex min-h-touch items-center border px-4 font-mono text-2xs uppercase tracking-[0.06em]"
-                    style={{ borderColor: "var(--c97-rule)", background: "var(--c97-surface)", color: "var(--c97-ink)" }}
+                    style={{ borderColor: "var(--c97-ink)", background: "var(--c97-ink)", color: "var(--c97-surface)" }}
                   >
-                    Found on the overall board
+                    Clear search
                   </button>
-                )}
-              </div>
-            )}
-          </div>
-        ) : (
-          <>
-            <div>{tierGroups.map((group, index) => renderTierSection(group, index))}</div>
-            {hasMore && (
-              <div ref={sentinelRef} className="mt-4 flex justify-center">
-                <button
-                  type="button"
-                  onClick={() =>
-                    setVisibleCount((count) => Math.min(count + RANKINGS_PAGE_SIZE, filteredPlayers.length))
-                  }
-                  className="inline-flex min-h-touch items-center gap-2 border px-5 text-sm font-semibold"
-                  style={{ borderColor: "var(--c97-rule)", background: "var(--c97-surface)" }}
-                >
-                  Load more ({filteredPlayers.length - windowedPlayers.length} left)
-                </button>
-              </div>
-            )}
-          </>
-        )}
+                  {overallSearchHit && (
+                    <button
+                      type="button"
+                      onClick={() => updateRouteState({ position: "overall" })}
+                      className="inline-flex min-h-touch items-center border px-4 font-mono text-2xs uppercase tracking-[0.06em]"
+                      style={{ borderColor: "var(--c97-rule)", background: "var(--c97-surface)", color: "var(--c97-ink)" }}
+                    >
+                      Found on the overall board
+                    </button>
+                  )}
+                </div>
+              )}
+            </div>
+          ) : (
+            <>
+              <div>{tierGroups.map((group, index) => renderTierSection(group, index))}</div>
+              {hasMore && (
+                <div ref={sentinelRef} className="mt-4 flex justify-center">
+                  <button
+                    type="button"
+                    onClick={() =>
+                      setVisibleCount((count) => Math.min(count + RANKINGS_PAGE_SIZE, filteredPlayers.length))
+                    }
+                    className="inline-flex min-h-touch items-center gap-2 border px-5 text-sm font-semibold"
+                    style={{ borderColor: "var(--c97-rule)", background: "var(--c97-surface)" }}
+                  >
+                    Load more ({filteredPlayers.length - windowedPlayers.length} left)
+                  </button>
+                </div>
+              )}
+            </>
+          )}
 
-        <div
-          className="mt-7 flex flex-wrap items-baseline justify-between gap-x-5 gap-y-2 border-t pt-3.5"
-          style={{ borderColor: "var(--c97-rule)" }}
-        >
-          <span
-            className="font-mono text-2xs"
-            style={{
-              color:
-                sourceStaleness === "fresh" || frozenInSeason
-                  ? "var(--c97-ink-2)"
-                  : "var(--c97-warning)",
-            }}
+          <div
+            className="mt-7 flex flex-wrap items-baseline justify-between gap-x-5 gap-y-2 border-t pt-3.5"
+            style={{ borderColor: "var(--c97-rule)" }}
           >
-            {frozenInSeason
-              ? `Frozen since ${sourceStamp ?? "kickoff"} · draft consensus kept as a reference${snapshotStamp ? ` · snapshot ${snapshotStamp}` : ""}`
-              : sourceStaleness === "fresh"
-                ? vorpMode
-                  ? `FantasyPros VORP checked ${vorpStamp ?? "with this snapshot"} · ${routeState.teams}-team source baseline`
-                  : `Refreshes daily July through December, weekly in the offseason${snapshotStamp ? ` · snapshot ${snapshotStamp}` : ""}`
-                : `${getSnapshotStalenessLabel(sourceStaleness)} board · source updated ${sourceStamp ?? "date unknown"}`}
-          </span>
-          <nav aria-label="More fantasy tools" className="flex flex-wrap gap-x-5 gap-y-2">
-            {FANTASY_TOOLS.map((tool) => (
-              <Link
-                key={tool.href}
-                href={tool.href}
-                className="inline-flex min-h-touch items-center text-sm font-semibold no-underline"
-                style={{ color: "var(--c97-ink)" }}
-              >
-                {tool.label}
-                <span aria-hidden="true">&nbsp;↗</span>
-              </Link>
-            ))}
-          </nav>
+            <span
+              className="font-mono text-2xs"
+              style={{
+                color:
+                  sourceStaleness === "fresh" || frozenInSeason
+                    ? "var(--c97-ink-2)"
+                    : "var(--c97-warning)",
+              }}
+            >
+              {frozenInSeason
+                ? `Frozen since ${sourceStamp ?? "kickoff"} · draft consensus kept as a reference${snapshotStamp ? ` · snapshot ${snapshotStamp}` : ""}`
+                : sourceStaleness === "fresh"
+                  ? vorpMode
+                    ? `FantasyPros VORP checked ${vorpStamp ?? "with this snapshot"} · ${routeState.teams}-team source baseline`
+                    : `Refreshes daily July through December, weekly in the offseason${snapshotStamp ? ` · snapshot ${snapshotStamp}` : ""}`
+                  : `${getSnapshotStalenessLabel(sourceStaleness)} board · source updated ${sourceStamp ?? "date unknown"}`}
+            </span>
+            <nav aria-label="More fantasy tools" className="flex flex-wrap gap-x-5 gap-y-2">
+              {FANTASY_TOOLS.map((tool) => (
+                <Link
+                  key={tool.href}
+                  href={tool.href}
+                  className="inline-flex min-h-touch items-center text-sm font-semibold no-underline"
+                  style={{ color: "var(--c97-ink)" }}
+                >
+                  {tool.label}
+                  <span aria-hidden="true">&nbsp;↗</span>
+                </Link>
+              ))}
+            </nav>
+          </div>
         </div>
-      </div>
       </section>
 
       <section className="c97-sheet" data-c97-surface="bone" data-seam="torn" aria-labelledby="fantasy-rankings-questions">

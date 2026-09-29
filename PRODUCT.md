@@ -32,6 +32,8 @@ A factual part of the story is that the site is not static. Many dashboards are 
 
 The site runs on Next.js 16 (App Router) with React 19 and TypeScript, across roughly fifty routes covering the portfolio, writing, fantasy football analytics, investments and seasonal surfaces, about twenty experimental data dashboards, fintech calculators, an MBA internship tracker, and browser-persisted personal-interest tools.
 
+The site's visual system is Catalog 97, a risograph print shop language of riso inks, torn paper seams, and Anton poster type. `DESIGN.md` is its design-system reference and `STYLING.md` is the fuller written guide to its tokens and layout primitives; both describe the same system that ships in `src/app/catalog97.css`. Two routes keep their own identity outside that shared system by Isaac's decision, `/arcade` and Formula 1 Pulse, and data colors such as team liveries and transit line colors stay data rather than becoming part of the palette.
+
 Data follows a snapshot-driven pattern, where committed snapshots are read at request time with no live external calls, and refreshes fail soft by keeping the previous snapshot rather than wiping it. Personal tools persist state in the browser via localStorage. Financial tools, including the retirement planner and investments surfaces, are educational only and must keep their disclaimers and assumption disclosures intact, which is a compliance constraint, not a style choice.
 
 Some product facts are deliberately left open here, including how prominently each surface should sit in navigation, since that is a design decision that belongs downstream rather than a fixed product truth.

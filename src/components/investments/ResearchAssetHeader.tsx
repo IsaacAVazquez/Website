@@ -4,8 +4,11 @@ import { ExternalLink, FileText, Plus, RefreshCw } from "lucide-react";
 import React from "react";
 import { useLiveQuote } from "@/hooks/useLiveQuote";
 import { useStockData } from "@/hooks/useStockData";
+import { useClientNow } from "@/hooks/useClientNow";
 import { DataFreshnessIndicator } from "./DataFreshnessIndicator";
 import { formatHistoryAsOf } from "@/lib/investmentsHistory";
+import { formatMinutesAgo } from "@/lib/investmentFormatting";
+import { DISPLAY_TIME_ZONE } from "@/lib/date-formatters";
 import type {
   BetaData,
   CompanyInfo,
@@ -53,16 +56,15 @@ function formatPercent(n: number | undefined): string {
   return `${sign}${Math.abs(n).toFixed(2)}%`;
 }
 
-function formatRefreshLabel(raw: string | Date | null | undefined): string {
-  if (!raw) return "Refresh";
+// `now` is the caller's `useClientNow()` reading (null on the server and
+// during hydration): `lastUpdated` is a live-fetched instant, so computing
+// "ago" straight from `Date.now()` at render time would print different text
+// on the server than the client's first render and break hydration.
+function formatRefreshLabel(raw: string | Date | null | undefined, now: number | null): string {
+  if (!raw || now === null) return "Refresh";
   const d = raw instanceof Date ? raw : new Date(raw);
   if (isNaN(d.getTime())) return "Refresh";
-  const minutes = Math.max(0, Math.floor((Date.now() - d.getTime()) / 60000));
-  if (minutes < 1) return "Refreshed just now";
-  if (minutes === 1) return "Refreshed 1m ago";
-  if (minutes < 60) return `Refreshed ${minutes}m ago`;
-  const h = Math.floor(minutes / 60);
-  return `Refreshed ${h}h ago`;
+  return `Refreshed ${formatMinutesAgo(d, now)}`;
 }
 
 function formatMarketAsOf(raw: string | null | undefined): string {
@@ -75,6 +77,7 @@ function formatMarketAsOf(raw: string | null | undefined): string {
     year: "numeric",
     hour: "numeric",
     minute: "2-digit",
+    timeZone: DISPLAY_TIME_ZONE,
     timeZoneName: "short",
   });
 }
@@ -126,9 +129,12 @@ function isQuoteLive(asOf: string | undefined): boolean {
 
 // Mirrors DataFreshnessIndicator's STALE_DATASET_THRESHOLD_DAYS (7). Defined at
 // module scope so the relative-time read isn't flagged as impure during render.
-function isSnapshotStale(snapshotBuiltAt: string | null): boolean {
-  if (!snapshotBuiltAt) return false;
-  const days = Math.floor((Date.now() - new Date(snapshotBuiltAt).getTime()) / 86_400_000);
+// `now` is `useClientNow()`'s reading; while it's null (server render and the
+// first client render, before mount) this reports "not stale" on both sides
+// so the badge never disagrees at hydration, then catches up once mounted.
+function isSnapshotStale(snapshotBuiltAt: string | null, now: number | null): boolean {
+  if (!snapshotBuiltAt || now === null) return false;
+  const days = Math.floor((now - new Date(snapshotBuiltAt).getTime()) / 86_400_000);
   return days >= 7;
 }
 
@@ -174,6 +180,7 @@ export function ResearchAssetHeader({
   onAddToPortfolio,
   portfolioSymbols = [],
 }: Props) {
+  const now = useClientNow();
   const { data: info, freshness } = useStockData<CompanyInfo>(symbol || null, "info");
   const { data: fundamentals } = useStockData<Fundamentals>(symbol || null, "fundamentals");
   const { data: profitability } = useStockData<Profitability>(symbol || null, "profitability");
@@ -304,7 +311,7 @@ export function ResearchAssetHeader({
   // latest fetch failed for it), badge the "as of" date. Fresh symbols stay
   // quiet. Note this is the fundamentals snapshot age, not the market quote.
   const snapshotBuiltAt = freshness?.snapshotBuiltAt ?? null;
-  const snapshotIsStale = isSnapshotStale(snapshotBuiltAt);
+  const snapshotIsStale = isSnapshotStale(snapshotBuiltAt, now);
   const retainedSections = freshness?.retainedSections ?? [];
 
   return (
@@ -441,7 +448,7 @@ export function ResearchAssetHeader({
         </a>
         <span className="invest-ghost research-asset-actions-clock" aria-hidden="true">
           <RefreshCw size={14} aria-hidden="true" />
-          {formatRefreshLabel(lastUpdated)}
+          {formatRefreshLabel(lastUpdated, now)}
         </span>
       </div>
     </section>

@@ -21,10 +21,27 @@ import {
   type PersistenceStatus,
 } from "@/lib/browserStorage";
 import { useLocalStoragePersistenceStatus } from "@/hooks/useLocalStorageString";
+import { DISPLAY_TIME_ZONE } from "@/lib/date-formatters";
 
 const STORAGE_KEY = "retirement_plan";
 const STORAGE_VERSION = 1;
 const RECOMPUTE_DEBOUNCE_MS = 200;
+
+const CURRENT_YEAR_FORMATTER = new Intl.DateTimeFormat("en-US", {
+  timeZone: DISPLAY_TIME_ZONE,
+  year: "numeric",
+});
+
+/**
+ * The projection engine runs synchronously during render (including SSR), so
+ * an unpinned `new Date().getFullYear()` would size "this year" off whichever
+ * system zone happened to render that pass — UTC on the server, whatever a
+ * visitor's browser reports on the client — and disagree for everyone near a
+ * New Year's boundary, mismatching the entire hydrated projection.
+ */
+function getCurrentYear(): number {
+  return Number(CURRENT_YEAR_FORMATTER.format(new Date()));
+}
 
 interface StoredPlan {
   version: number;
@@ -162,7 +179,7 @@ export function useRetirementPlan(seed?: RetirementSeed): UseRetirementPlanRetur
   const { core, hasError } = useMemo(() => {
     if (!ready) return { core: null, hasError: false };
     try {
-      return { core: projectCore(debouncedPlan, new Date().getFullYear()), hasError: false };
+      return { core: projectCore(debouncedPlan, getCurrentYear()), hasError: false };
     } catch {
       return { core: null, hasError: true };
     }
@@ -182,7 +199,7 @@ export function useRetirementPlan(seed?: RetirementSeed): UseRetirementPlanRetur
       try {
         setLeverState({
           plan: debouncedPlan,
-          levers: computeLevers(debouncedPlan, new Date().getFullYear()),
+          levers: computeLevers(debouncedPlan, getCurrentYear()),
         });
       } catch {
         setLeverState({ plan: debouncedPlan, levers: [] });

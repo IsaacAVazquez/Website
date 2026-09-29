@@ -26,39 +26,18 @@ import { Catalog97ProjectHero } from "@/components/catalog97/Catalog97ProjectHer
 import { PROJECT_PRESS } from "@/constants/projectPress";
 import { TimingTowerSignature } from "./TimingTowerSignature";
 import styles from "./formula-1.module.css";
+import {
+  DATE_TIME_FORMATTER,
+  LONG_DATE_TIME_FORMATTER,
+  SHORT_DATE_FORMATTER,
+  UPDATED_AT_FORMATTER,
+} from "@/lib/date-formatters";
 
 interface Formula1ClientProps {
   initialState: Formula1RouteState;
   summary: Formula1Summary;
   initialMeeting: Formula1MeetingSummary | null;
 }
-
-const SHORT_DATE_FORMATTER = new Intl.DateTimeFormat("en-US", {
-  month: "short",
-  day: "numeric",
-});
-
-const DATE_TIME_FORMATTER = new Intl.DateTimeFormat("en-US", {
-  month: "short",
-  day: "numeric",
-  hour: "numeric",
-  minute: "2-digit",
-});
-
-const LONG_DATE_TIME_FORMATTER = new Intl.DateTimeFormat("en-US", {
-  weekday: "short",
-  month: "short",
-  day: "numeric",
-  hour: "numeric",
-  minute: "2-digit",
-});
-
-const UPDATED_AT_FORMATTER = new Intl.DateTimeFormat("en-US", {
-  month: "short",
-  day: "numeric",
-  hour: "numeric",
-  minute: "2-digit",
-});
 
 function formatDateLabel(value: string): string {
   const date = new Date(value);
@@ -84,7 +63,7 @@ function formatPoints(value: number): string {
   return Number.isFinite(value) ? value.toFixed(0) : "0";
 }
 
-const DELTA_FORMATTER = new Intl.NumberFormat(undefined, {
+const DELTA_FORMATTER = new Intl.NumberFormat("en-US", {
   signDisplay: "exceptZero",
   maximumFractionDigits: 0,
 });
@@ -1057,8 +1036,7 @@ export function Formula1Client({ initialState, summary, initialMeeting }: Formul
       <Catalog97ProjectHero
         ink={lead}
         title="Formula 1 Pulse"
-        standfirst={standfirst}
-        meta="The season snapshot has not generated yet. The dashboard fills in on the next scheduled refresh."
+        standfirst={`${standfirst} The season snapshot has not generated yet. The dashboard fills in on the next scheduled refresh.`}
       />
     );
   }

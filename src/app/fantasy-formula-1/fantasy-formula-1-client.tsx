@@ -5,6 +5,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { ArrowDownUp, Lock, Plus, RefreshCcw, Sparkles, Trash2, Unlock } from "lucide-react";
 import { Catalog97ProjectHero } from "@/components/catalog97/Catalog97ProjectHero";
 import { PROJECT_PRESS } from "@/constants/projectPress";
+import { DISPLAY_TIME_ZONE } from "@/lib/date-formatters";
 import {
   buildFantasyFormula1Assets,
   EMPTY_FANTASY_FORMULA1_LINEUP,
@@ -51,6 +52,8 @@ const UPDATED_AT_FORMATTER = new Intl.DateTimeFormat("en-US", {
   day: "numeric",
   hour: "numeric",
   minute: "2-digit",
+  timeZone: DISPLAY_TIME_ZONE,
+  timeZoneName: "short",
 });
 
 function formatUpdatedAt(value: string | null | undefined): string {

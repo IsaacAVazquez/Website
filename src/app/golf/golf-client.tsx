@@ -91,9 +91,10 @@ function formatGeneratedAt(value: string | null | undefined): string {
   return Number.isNaN(date.getTime()) ? "Unavailable" : LAST_UPDATED_FORMATTER.format(date);
 }
 
-/** A bare YYYY-MM-DD parses as UTC midnight, which prints the day before west of Greenwich. */
+// A bare YYYY-MM-DD parses as UTC midnight, which DATE_RANGE_FORMATTER's
+// pinned UTC timeZone then reads back correctly.
 function parseDay(value: string): Date {
-  return new Date(/^\d{4}-\d{2}-\d{2}$/.test(value) ? `${value}T12:00:00` : value);
+  return new Date(value);
 }
 
 function formatDateRange(startDate: string, endDate: string): string {
@@ -430,8 +431,7 @@ export function GolfClient({ initialState, summary, initialPlayerSnapshot }: Gol
       <Catalog97ProjectHero
         ink={lead}
         title="PGA Tour Pulse"
-        standfirst="I wanted the leaderboard to read like a manual scoreboard, names on slats, rounds across, and red for anything under par."
-        meta="The snapshot for this tournament is not available yet."
+        standfirst="I wanted the leaderboard to read like a manual scoreboard, names on slats, rounds across, and red for anything under par. The snapshot for this tournament is not available yet."
       />
     );
   }

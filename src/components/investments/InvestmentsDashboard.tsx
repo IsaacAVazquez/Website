@@ -42,11 +42,20 @@ interface NavItem {
   pill?: string;
 }
 
+// `raw` is the index snapshot's `lastUpdated`, a full instant ("2026-09-15T01:03:45+00:00"),
+// not a bare date. It prints in UTC, the day the build stamped it, which the
+// server and every browser agree on. Unpinned, this was the "Sep 15" (server,
+// UTC) vs "Sep 14" (a Pacific browser) hydration mismatch.
 function formatDatasetDate(raw: string | null | undefined): string {
   if (!raw) return "—";
   const d = new Date(raw);
   if (Number.isNaN(d.getTime())) return raw;
-  return d.toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric", timeZone: "UTC" });
+  return d.toLocaleDateString("en-US", {
+    month: "short",
+    day: "numeric",
+    year: "numeric",
+    timeZone: "UTC",
+  });
 }
 
 export function InvestmentsDashboard({

@@ -224,7 +224,7 @@ export function RecipeFinderClient() {
         readouts={[
           {
             label: "Pantry items",
-            value: pantry.length,
+            value: hydrated ? pantry.length : "—",
             detail: hasPantry ? "saved in your browser" : "add what's in your kitchen",
           },
           {
@@ -247,6 +247,7 @@ export function RecipeFinderClient() {
             <p className="c97-kicker">Pantry shelf</p>
             <PantryShelf
               pantry={pantry}
+              hydrated={hydrated}
               pantryDraft={pantryDraft}
               suggestions={suggestions}
               onDraftChange={setPantryDraft}
@@ -400,6 +401,7 @@ export function RecipeFinderClient() {
 
 interface PantryShelfProps {
   pantry: string[];
+  hydrated: boolean;
   pantryDraft: string;
   suggestions: string[];
   onDraftChange: (value: string) => void;
@@ -412,6 +414,7 @@ interface PantryShelfProps {
 
 function PantryShelf({
   pantry,
+  hydrated,
   pantryDraft,
   suggestions,
   onDraftChange,
@@ -461,7 +464,15 @@ function PantryShelf({
         </button>
       </form>
 
-      {pantry.length === 0 ? (
+      {!hydrated ? (
+        // Neither "empty" nor a returning visitor's saved pantry is known
+        // yet, so show a neutral placeholder instead of flashing the empty
+        // prompt in ahead of the real list.
+        <span
+          className="c97-skeleton"
+          style={{ display: "block", height: "1.25rem", width: "60%", marginTop: "var(--c97-sp-3)" }}
+        />
+      ) : pantry.length === 0 ? (
         <p className="c97-prose" style={{ fontSize: "var(--c97-fs-small)", marginTop: "var(--c97-sp-3)" }}>
           Add what&rsquo;s in your kitchen.
         </p>

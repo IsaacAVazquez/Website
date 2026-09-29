@@ -240,11 +240,13 @@ localStorage via dedicated hooks. Reference: `PERSONAL_INTEREST_TOOLS.md`.
 
 ## Styling Rules
 
-Catalog 97 is the only design language on the site. Every route, `/admin` included, renders
-inside `Catalog97Shell` or `Catalog97ToolShell`, and its tokens and classes live in
-`src/app/catalog97.css`. `STYLING.md` is the reference for it. `DESIGN.md` still describes the
-Working Instrument and waits to be regenerated from the shipped site, so where it disagrees
-with `catalog97.css`, the CSS wins.
+Catalog 97 is the only design language on the site, apart from one sanctioned palette
+exception: `/arcade` keeps its CRT palette, because each project keeps an identity that fits
+it (see `STYLING.md`). Formula 1's old scoped red is gone, and its module reads `--c97-*`. Every
+route, `/admin` included, renders inside `Catalog97Shell` or `Catalog97ToolShell`, and its
+tokens and classes live in
+`src/app/catalog97.css`. `STYLING.md` is the reference for it. `DESIGN.md` describes
+Catalog 97, and where it disagrees with `catalog97.css`, the CSS wins.
 **Before merging any UI, run the single pre-merge `DESIGN_CHECKLIST.md`.**
 
 - Every section sets `data-c97-surface` and reads the `--c97-*` tokens (`--c97-ink`,
@@ -309,6 +311,8 @@ with `catalog97.css`, the CSS wins.
 - Server components take icons from `@/components/ui/ServerIcons` (inline SVG). The
   installed icon library is `lucide-react`. `@tabler/icons-react` and `better-sqlite3`
   are not dependencies, so do not add imports of either.
+- Every easter egg is listed in `docs/EASTER_EGGS.md`. A change that adds, alters, or
+  removes one updates that file in the same change.
 - `/api/search` is still a limited, mostly hardcoded index — do not describe it as
   comprehensive site search.
 - All user-facing text (articles, UI copy, page descriptions, bios, hero text) must
@@ -357,6 +361,7 @@ Subsystem references:
   ranking refresh, automatic pick sync, and the opt-in away controller
 - `docs/DATA_UPDATE_OPERATIONS.md` — command → artifact → schedule runbook for every refresh
 - `docs/ARTICLE_IMAGE_WORKFLOW.md` — blog cover-image plan, the fetch builder, and the writing-time step
+- `docs/EASTER_EGGS.md` — every easter egg on the site, with its trigger, what it shows, and its code
 
 **Legacy / historical** (do not quote as current without checking code): root-level
 SEO/UX summary docs and non-live references under `content/`. `SEO.md` is the current SEO

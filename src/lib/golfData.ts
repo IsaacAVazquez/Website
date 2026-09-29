@@ -474,11 +474,14 @@ export async function buildGolfSnapshotData(): Promise<GolfSnapshot> {
   const period = competition.status?.period ?? event.status?.period ?? null;
   // Guard NaN: an invalid (not just missing) startDate must not produce a
   // "tournament-NaN" id.
+  // UTC getters: this runs in the build script, which may run from a
+  // non-UTC machine, so a local getter could roll the year at a Dec 31/Jan 1
+  // build boundary.
   const startDate = eventStart(event);
   const startYear = startDate ? new Date(startDate).getUTCFullYear() : NaN;
   const year = Number.isFinite(startYear)
     ? startYear
-    : new Date(generatedAt).getFullYear();
+    : new Date(generatedAt).getUTCFullYear();
 
   const cut = deriveCutState(event);
   // A playoff arrives as one more period (the Travelers sent period 5 with a

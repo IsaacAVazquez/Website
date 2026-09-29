@@ -481,6 +481,7 @@ Subsystem references:
 - `RETIREMENT_PLANNER_ENGINE.md` — pure retirement projection engine
 - `SCORE_POOLS_ENGINE.md` — exact-score prediction engine and its data flow
 - `docs/DATA_UPDATE_OPERATIONS.md` — command → artifact → schedule runbook
+- `docs/EASTER_EGGS.md` — every easter egg, its trigger, and its code; update it in any change that adds, alters, or removes one
 
 Older plans, redesign notes, and summary docs are kept for history. Check `docs/README.md` before treating a markdown file as current.
 

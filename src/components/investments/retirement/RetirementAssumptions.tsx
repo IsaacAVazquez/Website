@@ -30,7 +30,7 @@ export function RetirementAssumptions({ result }: Props) {
     { label: "Withdrawal strategy", value: STRATEGY_LABEL[input.assumptions.withdrawalStrategy] ?? input.assumptions.withdrawalStrategy },
     { label: "Safe withdrawal rate (target #)", value: formatPercent(result.safeWithdrawalRate, 1) },
     { label: "On-track threshold", value: formatPercent(assumptions.successThreshold, 0) },
-    { label: "Monte Carlo trials", value: result.monteCarlo.simulations.toLocaleString() },
+    { label: "Monte Carlo trials", value: result.monteCarlo.simulations.toLocaleString("en-US") },
     { label: "Effective tax — traditional", value: formatPercent(input.assumptions.taxRates.traditional, 0) },
     { label: "Effective tax — taxable", value: formatPercent(input.assumptions.taxRates.taxable, 0) },
     { label: "RMD start age (SECURE 2.0)", value: String(assumptions.rmdStartAge) },

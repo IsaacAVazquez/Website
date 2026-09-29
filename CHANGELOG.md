@@ -4,6 +4,15 @@ All notable changes to this repository are documented here. Format: `YYYY-MM-DD`
 
 ---
 
+## 2026-09-28
+
+- Final pass on the project UI redesign ([#484](https://github.com/IsaacAVazquez/Website/pull/484)).
+- Bump react, jest, testing library, playwright, and dev types ([#485](https://github.com/IsaacAVazquez/Website/pull/485)).
+- Add a Lichtenstein painter to the portrait hover ([#488](https://github.com/IsaacAVazquez/Website/pull/488)).
+- Track every easter egg in docs/EASTER_EGGS.md ([#489](https://github.com/IsaacAVazquez/Website/pull/489)).
+
+---
+
 ## 2026-09-27
 
 - Add Juno and Civitech career write-ups, and reconcile Civitech figures ([#466](https://github.com/IsaacAVazquez/Website/pull/466)).

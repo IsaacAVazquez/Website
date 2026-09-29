@@ -154,6 +154,13 @@ export function InterchangeIQClient() {
   const annualSavings = savingsVsWorst * 12;
 
   const statementRows = useMemo(() => feeStatement(results), [results]);
+  const cheapestRows = useMemo(() => statementRows.filter((row) => row.isCheapest), [statementRows]);
+  const cheapestIds = useMemo(() => new Set(cheapestRows.map((row) => row.id)), [cheapestRows]);
+  const cheapestNames = cheapestRows.map((row) => row.name).join(" and ");
+  const cheapestModels = new Set(cheapestRows.map((row) => row.model));
+  const cheapestDetail =
+    cheapestModels.size === 1 ? `${cheapestNames} · ${cheapest.model}` : cheapestNames;
+  const cheapestVerdict = cheapestRows.length > 1 ? `${cheapestNames} tie` : `${cheapestNames} wins`;
 
   // The Flat-rate / Interchange-plus nav tabs narrow the processor list to that
   // pricing model; the hero verdict and signature stay computed from the full set.
@@ -193,7 +200,7 @@ export function InterchangeIQClient() {
           {
             label: "Cheapest monthly fee",
             value: fmtFull(cheapest.monthlyFee),
-            detail: `${cheapest.name} · ${cheapest.model}`,
+            detail: cheapestDetail,
           },
           {
             label: "Savings vs priciest",
@@ -207,7 +214,7 @@ export function InterchangeIQClient() {
         ]}
       >
         <div data-c97-surface="paper" className="c97-offset" style={{ padding: "var(--c97-sp-3)" }}>
-          <FeeStatementSignature rows={statementRows} verdict={`${cheapest.name} wins`} />
+          <FeeStatementSignature rows={statementRows} verdict={cheapestVerdict} />
         </div>
       </Catalog97ProjectHero>
 
@@ -366,12 +373,12 @@ export function InterchangeIQClient() {
                     }}
                   >
                     <div>
-                      <span className="c97-serif" style={{ fontWeight: r.id === cheapest.id ? 700 : 400 }}>
+                      <span className="c97-serif" style={{ fontWeight: cheapestIds.has(r.id) ? 700 : 400 }}>
                         {r.name}
                       </span>{" "}
                       <span className="c97-iq-tag">{r.model}</span>
                       <div className="c97-meta" style={{ marginTop: "var(--c97-sp-1)" }}>
-                        <span>{Math.round(r.txCount).toLocaleString()} tx/mo</span>
+                        <span>{Math.round(r.txCount).toLocaleString("en-US")} tx/mo</span>
                         <span>{fmtFull(r.perTxAvg)}/tx avg</span>
                         <span>{(r.effectiveRate * 100).toFixed(2)}% eff.</span>
                       </div>

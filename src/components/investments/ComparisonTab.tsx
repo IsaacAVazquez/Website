@@ -5,6 +5,7 @@ import { useStockData } from "@/hooks/useStockData";
 import { getClientInvestmentsIndex } from "@/lib/investmentsClientData";
 import { ComparisonRadarChart, type RadarDimension } from "./ComparisonRadarChart";
 import { ComparisonMetricTable, type MetricRow } from "./ComparisonMetricTable";
+import { DISPLAY_TIME_ZONE } from "@/lib/date-formatters";
 import type {
   Fundamentals,
   Profitability,
@@ -13,13 +14,15 @@ import type {
   InvestmentsIndex,
 } from "@/types/investment";
 
-// "Jul 20, 2026" in UTC, or null when the snapshot carries no usable date.
+// "Jul 20, 2026" in the display zone, or null when the snapshot carries no
+// usable date. `raw` is a snapshot's `lastUpdated`, a full instant, not a
+// bare date, so it pins to the display zone rather than UTC.
 function formatSnapshotDate(raw: string | null): string | null {
   if (!raw) return null;
   const date = new Date(raw);
   return Number.isNaN(date.getTime())
     ? null
-    : date.toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric", timeZone: "UTC" });
+    : date.toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric", timeZone: DISPLAY_TIME_ZONE });
 }
 
 const FALLBACK_SYMBOLS = [
@@ -195,9 +198,9 @@ function Skeleton() {
       </div>
       {[1, 2, 3, 4].map((i) => (
         <div key={i} className="border border-[var(--c97-rule)] p-5 space-y-3">
-          <div className="h-4 w-32 rounded bg-[var(--c97-rule)]" />
+          <div className="h-4 w-32 bg-[var(--c97-rule)]" />
           {[1, 2, 3, 4].map((j) => (
-            <div key={j} className="h-8 rounded bg-[var(--c97-rule)]" />
+            <div key={j} className="h-8 bg-[var(--c97-rule)]" />
           ))}
         </div>
       ))}

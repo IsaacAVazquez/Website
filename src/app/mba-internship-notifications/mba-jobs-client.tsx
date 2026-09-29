@@ -58,6 +58,8 @@ import {
 } from "@/lib/mba-application-insights";
 import { useMBAApplications } from "@/hooks/useMBAApplications";
 import { useMBAJobs } from "@/hooks/useMBAJobs";
+import { useClientNow } from "@/hooks/useClientNow";
+import { DISPLAY_TIME_ZONE } from "@/lib/date-formatters";
 import { MBA_COMPANIES, MBA_COMPANY_MAP } from "@/constants/mba-companies";
 import {
   MBA_ROLE_FAMILY_LABELS,
@@ -109,17 +111,25 @@ const EmailDigestDialog = dynamic(() => import("./EmailDigestDialog"));
 const ApplicationEditDialog = dynamic(() => import("./ApplicationEditDialog"));
 
 const ROUTE = "/mba-internship-notifications";
+const JOB_PAGE_SIZE = 60;
 
 // ---------------------------------------------------------------------------
 // Helpers
 // ---------------------------------------------------------------------------
 
-const RELATIVE_FORMATTER = new Intl.RelativeTimeFormat("en", { numeric: "auto" });
+const RELATIVE_FORMATTER = new Intl.RelativeTimeFormat("en-US", { numeric: "auto" });
 
-function timeAgo(iso: string): string {
+// `now` is the caller's `useClientNow()` reading (null on the server and
+// during hydration), not `Date.now()` directly: `postedAt` is a real
+// timestamp present on the very first server-rendered paint (it comes from
+// the page's SSR `initialData`), so computing "ago" from `Date.now()` at
+// render time prints different text server-side than it does once the
+// client hydrates a moment later, and React flags the mismatch.
+function timeAgo(iso: string, now: number | null): string {
+  if (now === null) return "";
   const timestamp = getPostedAtTime(iso);
   if (!timestamp) return "";
-  const diff = timestamp - Date.now();
+  const diff = timestamp - now;
   const absDiff = Math.abs(diff);
   if (absDiff < 60_000) return "just now";
   if (absDiff < 3_600_000)
@@ -129,12 +139,20 @@ function timeAgo(iso: string): string {
   return RELATIVE_FORMATTER.format(Math.round(diff / 86_400_000), "day");
 }
 
+// An instant (the fetch time, and each job's `postedAt`) pinned to the
+// display zone so the server (UTC) and every visitor's browser print the
+// same clock time instead of disagreeing and breaking hydration.
 const DATE_FORMATTER = new Intl.DateTimeFormat("en-US", {
   month: "short",
   day: "numeric",
   hour: "numeric",
   minute: "2-digit",
+  timeZone: DISPLAY_TIME_ZONE,
+  timeZoneName: "short",
 });
+// tz-local: follow-up/deadline dates the visitor picked in <input type="date">
+// on their own tracked applications (client-only, localStorage-backed; never
+// renders with real data during SSR since `applications` starts empty).
 const DATE_KEY_FORMATTER = new Intl.DateTimeFormat("en-US", {
   month: "short",
   day: "numeric",
@@ -624,6 +642,7 @@ function JobCard({
   onMarkApplied,
   onEditApplication,
   currentState,
+  now,
 }: {
   job: MBAJob;
   isNew: boolean;
@@ -633,12 +652,13 @@ function JobCard({
   onMarkApplied: () => void;
   onEditApplication: () => void;
   currentState: MBAJobsSearchState;
+  now: number | null;
 }) {
   const company = MBA_COMPANY_MAP.get(job.companyId);
   const linkedinUrl = `https://www.linkedin.com/jobs/search/?keywords=${encodeURIComponent(
     [currentState.q.trim(), job.title, job.companyName].filter(Boolean).join(" ")
   )}`;
-  const relativePostedAt = timeAgo(job.postedAt);
+  const relativePostedAt = timeAgo(job.postedAt, now);
 
   return (
     <article
@@ -1866,6 +1886,7 @@ export function MBAJobsClient({
   initialData,
   initialState,
 }: MBAJobsClientProps) {
+  const now = useClientNow();
   const router = useRouter();
   const searchParams = useSearchParams();
   const searchParamsKey = searchParams.toString();
@@ -2017,6 +2038,27 @@ export function MBAJobsClient({
 
     return filtered.map((entry) => entry.job);
   }, [effectiveState.location, effectiveState.sort, locationScopedEntries]);
+
+  // ── Pagination: the live grid can carry ~1,870 unfiltered cards, so only
+  // the first page renders until "Show more" is clicked, and any filter
+  // change starts back at the first page.
+  const [visibleJobCount, setVisibleJobCount] = useState(JOB_PAGE_SIZE);
+  useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- resets pagination when the filters that produced `displayJobs` change, not on every render
+    setVisibleJobCount(JOB_PAGE_SIZE);
+  }, [
+    effectiveState.category,
+    effectiveState.external,
+    effectiveState.q,
+    effectiveState.roleFamily,
+    effectiveState.roleType,
+    effectiveState.location,
+    effectiveState.sort,
+  ]);
+  const visibleJobs = useMemo(
+    () => displayJobs.slice(0, visibleJobCount),
+    [displayJobs, visibleJobCount]
+  );
 
   // ── Manual (Big Tech) companies filtered by category ─────────────────
   const manualCompanies = useMemo(() => {
@@ -2609,30 +2651,44 @@ export function MBAJobsClient({
                 icon={<BriefcaseBusiness className="h-5 w-5" aria-hidden="true" />}
               />
             ) : (
-              <div
-                className="grid gap-6 md:grid-cols-2 xl:grid-cols-3"
-                data-testid="live-jobs-grid"
-              >
-                {displayJobs.map((job) => {
-                  const application = getApplicationForJob(job);
-                  return (
-                    <JobCard
-                      key={job.id}
-                      job={job}
-                      isNew={!seenIds.has(job.id)}
-                      application={application}
-                      onMarkSeen={() => markJobSeen(job.id)}
-                      onTrack={() => handleTrackJob(job)}
-                      onMarkApplied={() => handleTrackJob(job, "applied")}
-                      onEditApplication={() => {
-                        const tracked = getApplicationForJob(job) ?? trackJob(job);
-                        openApplicationDialog(tracked);
-                      }}
-                      currentState={uiState}
-                    />
-                  );
-                })}
-              </div>
+              <>
+                <div
+                  className="grid gap-6 md:grid-cols-2 xl:grid-cols-3"
+                  data-testid="live-jobs-grid"
+                >
+                  {visibleJobs.map((job) => {
+                    const application = getApplicationForJob(job);
+                    return (
+                      <JobCard
+                        key={job.id}
+                        job={job}
+                        isNew={!seenIds.has(job.id)}
+                        application={application}
+                        onMarkSeen={() => markJobSeen(job.id)}
+                        onTrack={() => handleTrackJob(job)}
+                        onMarkApplied={() => handleTrackJob(job, "applied")}
+                        onEditApplication={() => {
+                          const tracked = getApplicationForJob(job) ?? trackJob(job);
+                          openApplicationDialog(tracked);
+                        }}
+                        currentState={uiState}
+                        now={now}
+                      />
+                    );
+                  })}
+                </div>
+                {displayJobs.length > visibleJobs.length && (
+                  <div className="flex justify-center" style={{ marginTop: "var(--c97-sp-4)" }}>
+                    <button
+                      type="button"
+                      className="c97-btn"
+                      onClick={() => setVisibleJobCount((n) => n + JOB_PAGE_SIZE)}
+                    >
+                      Show more ({visibleJobs.length} of {displayJobs.length} shown)
+                    </button>
+                  </div>
+                )}
+              </>
             )}
             </div>
           </section>
@@ -2661,7 +2717,7 @@ export function MBAJobsClient({
           {!isLoading && !error && (
             <div className="flex justify-center pb-2">
               <UtilityStrip>
-                {displayJobs.length} role{displayJobs.length !== 1 ? "s" : ""} shown ·{" "}
+                {visibleJobs.length} of {displayJobs.length} role{displayJobs.length !== 1 ? "s" : ""} shown ·{" "}
                 {formatFetchedAt(lastFetchedAt)} · Polls every 30 min
               </UtilityStrip>
             </div>

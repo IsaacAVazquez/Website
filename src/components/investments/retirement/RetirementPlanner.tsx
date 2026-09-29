@@ -35,7 +35,7 @@ export function RetirementPlanner({ portfolioValue, seedAllocation }: Props) {
         </div>
         <span className="invest-retire-band-tag">
           <ChartColumn size={14} aria-hidden="true" />
-          {result ? `${result.monteCarlo.simulations.toLocaleString()} Monte Carlo scenarios` : "Monte Carlo"}
+          {result ? `${result.monteCarlo.simulations.toLocaleString("en-US")} Monte Carlo scenarios` : "Monte Carlo"}
           {isComputing ? <span className="invest-retire-computing" aria-live="polite"> · updating…</span> : null}
         </span>
       </div>

@@ -174,7 +174,7 @@ export function ComparisonRadarChart({ data, symbolA, symbolB }: Props) {
       <div className="flex items-center gap-6 text-sm">
         <span className="flex items-center gap-1.5">
           <span
-            className="inline-block h-3 w-3 rounded-full"
+            className="inline-block h-3 w-3"
             style={{ backgroundColor: "var(--c97-accent)" }}
           />
           <span className="font-medium" style={{ color: "var(--c97-accent)" }}>
@@ -183,7 +183,7 @@ export function ComparisonRadarChart({ data, symbolA, symbolB }: Props) {
         </span>
         <span className="flex items-center gap-1.5">
           <span
-            className="inline-block h-3 w-3 rounded-full"
+            className="inline-block h-3 w-3"
             style={{ backgroundColor: "var(--c97-ink)" }}
           />
           <span className="font-medium" style={{ color: "var(--c97-ink)" }}>

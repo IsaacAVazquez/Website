@@ -108,18 +108,33 @@ function diffDaysSigned(fromKey: string, toKey: string): number {
   return Math.round((to.getTime() - from.getTime()) / 86400000);
 }
 
+// Trip, activity, and journal dates are calendar days the visitor picked in
+// an <input type="date">, stored and only ever read back in this browser.
+// parseDateKey below builds a local-midnight Date on purpose so the day
+// arithmetic elsewhere in this file (diffDaysInclusive, getDayKeysBetween)
+// stays correct with local getters, and formatting that same local instant
+// with no timeZone reproduces the exact day the visitor typed on both the
+// server and the client, regardless of either one's own zone. Pinning a zone
+// here would desync it from that arithmetic and could shift the printed day.
+// tz-local: see above.
 const DATE_FORMATTER = new Intl.DateTimeFormat("en-US", {
   month: "short",
   day: "numeric",
   year: "numeric",
 });
 
+// tz-local: see DATE_FORMATTER above; same calendar-day values, short form.
 const DATE_FORMATTER_SHORT = new Intl.DateTimeFormat("en-US", {
   weekday: "short",
   month: "short",
   day: "numeric",
 });
 
+// formatActivityTime below round-trips an "HH:MM" string through a throwaway
+// local Date (setHours then format with no zone), so only the visitor's own
+// local clock reading is ever produced or displayed; there is no real date or
+// zone-sensitive instant involved.
+// tz-local: see above.
 const TIME_FORMATTER = new Intl.DateTimeFormat("en-US", {
   hour: "numeric",
   minute: "2-digit",

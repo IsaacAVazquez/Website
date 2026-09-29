@@ -2,6 +2,7 @@
 
 import { startTransition, useEffect } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
+import { useClientNow } from "@/hooks/useClientNow";
 import { Catalog97ProjectHero } from "@/components/catalog97/Catalog97ProjectHero";
 import { PROJECT_PRESS } from "@/constants/projectPress";
 import type { PollingRouteState, PollingSnapshot, PollingView, Race, RacePoll } from "@/types/polling";
@@ -85,8 +86,11 @@ function TrendChart({ snapshot }: { snapshot: PollingSnapshot }) {
     <div className="overflow-x-auto">
       <svg
         // The y labels sit left of the plot and the end labels right of the last
-        // point, so the box widens on both sides instead of clipping them.
-        viewBox={`-32 0 ${W + 76} ${H + 32}`}
+        // point, so the box widens on both sides instead of clipping them. The
+        // extra 8px of bottom margin (beyond the x-axis label row) keeps the
+        // minVal gridline label clear of the x-axis row at the larger phone
+        // font size, where the two used to touch by under a pixel.
+        viewBox={`-32 0 ${W + 76} ${H + 40}`}
         className="w-full min-w-[300px]"
         aria-label={chartSummary}
         role="img"
@@ -124,11 +128,22 @@ function TrendChart({ snapshot }: { snapshot: PollingSnapshot }) {
           );
         })()}
 
-        {/* X-axis labels */}
+        {/* X-axis labels. At phone width the larger type (below) needed to
+            clear the 11px floor makes every label collide with its
+            neighbour, so every other one is hidden there via CSS. */}
         {trend.map((d, i) => {
           const x = scaleX(i);
           return (
-            <text key={d.date} x={x} y={H + 20} textAnchor="middle" fontSize={10} className="c97-polling-chart-text" fill="var(--c97-ink-2)">
+            <text
+              key={d.date}
+              x={x}
+              y={H + 28}
+              textAnchor="middle"
+              fontSize={10}
+              className="c97-polling-chart-text"
+              fill="var(--c97-ink-2)"
+              data-tick-parity={i % 2 === 0 ? "even" : "odd"}
+            >
               {formatShortDate(d.date)}
             </text>
           );
@@ -333,7 +348,7 @@ function RaceSidebar({ race }: { race: Race }) {
                   </span>
                 </div>
                 <p className="mt-0.5 text-xs text-[var(--c97-ink-2)]">
-                  {formatDate(poll.endDate)} · {poll.sampleSize.toLocaleString()} {poll.sampleType}
+                  {formatDate(poll.endDate)} · {poll.sampleSize.toLocaleString("en-US")} {poll.sampleType}
                   {poll.moe === null ? "" : ` · ±${poll.moe}`}
                 </p>
                 <div className="mt-2 flex flex-wrap gap-2">
@@ -434,7 +449,7 @@ function PollsTable<T extends PollLike>({
                   {formatDate(poll.endDate)}
                 </td>
                 <td className="hidden px-3 py-3 align-middle text-xs text-[var(--c97-ink-2)] sm:table-cell">
-                  {poll.sampleSize.toLocaleString()} {poll.sampleType}
+                  {poll.sampleSize.toLocaleString("en-US")} {poll.sampleType}
                 </td>
                 <td className="px-3 py-3 align-middle text-sm font-semibold" style={{ color: DEM_COLOR }}>
                   {left}%
@@ -663,9 +678,11 @@ export function PollingAggregatorClient({ initialState, snapshot, staleSourceNot
   const lead = PROJECT_PRESS["/polling-aggregator"].lead;
   const approvalNet = snapshot.approvalAvg.net;
   const ballotMargin = snapshot.genericBallotAvg.margin;
-  const daysToElection = Math.round(
-    (new Date("2026-11-03").getTime() - new Date().getTime()) / (1000 * 60 * 60 * 24)
-  );
+  const now = useClientNow();
+  const daysToElection =
+    now === null
+      ? null
+      : Math.round((new Date("2026-11-03T00:00:00Z").getTime() - now) / (1000 * 60 * 60 * 24));
   const totalPolls = snapshot.approvalPolls.length + snapshot.genericBallotPolls.length;
   const standfirst =
     "I built this to track presidential approval and the 2026 generic ballot in one place, built only from polls with a named source. VoteHub feeds it, and the averages and the trend update as new polls come in.";
@@ -697,7 +714,7 @@ export function PollingAggregatorClient({ initialState, snapshot, staleSourceNot
           },
           {
             label: "Days to election",
-            value: daysToElection > 0 ? `${daysToElection}` : "Election day",
+            value: daysToElection === null ? "Nov 3" : daysToElection > 0 ? `${daysToElection}` : "Election day",
             detail: "Nov 3, 2026 midterms",
           },
         ]}

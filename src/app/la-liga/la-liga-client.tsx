@@ -9,6 +9,7 @@ import {
 } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { ExternalLink } from "lucide-react";
+import { DATE_ONLY_TIME_ZONE } from "@/lib/date-formatters";
 import {
   MetricCard,
   CrestAvatar,
@@ -137,7 +138,8 @@ export function LaLigaClient({
       month: "short",
       day: "numeric",
       year: "numeric",
-      timeZone: "UTC",
+      // summary.updatedAt is a YYYY-MM-DD date-only value (parses to UTC midnight).
+      timeZone: DATE_ONLY_TIME_ZONE,
     }).format(new Date(summary.updatedAt))
   ), [summary.updatedAt]);
   const hasManagedParams =
@@ -283,8 +285,7 @@ export function LaLigaClient({
       <Catalog97ProjectHero
         ink={lead}
         title="La Liga Pulse"
-        standfirst="This is the same points ladder I built for the Premier League page, since La Liga's title race, European scramble, and relegation fight are the same shape of problem."
-        meta="Standings, European places, and scorer leaders will appear here once the next snapshot is published."
+        standfirst="This is the same points ladder I built for the Premier League page, since La Liga's title race, European scramble, and relegation fight are the same shape of problem. Standings, European places, and scorer leaders will appear here once the next snapshot is published."
       />
     );
   }

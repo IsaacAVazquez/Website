@@ -6,6 +6,7 @@ import { Catalog97ProjectHero } from "@/components/catalog97/Catalog97ProjectHer
 import { PROJECT_PRESS } from "@/constants/projectPress";
 import { useRentVsBuy } from "@/hooks/useRentVsBuy";
 import type { RentVsBuyInput, RentVsBuyResult } from "@/lib/rentVsBuy/types";
+import { formatCompactCurrency } from "@/lib/retirement/format";
 import { fitLabel } from "@/app/travel-deals/fareGauge";
 import { netWorthChart } from "./netWorthChart";
 import "./rent-vs-buy.css";
@@ -25,13 +26,6 @@ function formatSignedCurrency(value: number) {
   const sign = value < 0 ? "-" : "+";
   return `${sign}${formatCurrency(Math.abs(value))}`;
 }
-
-const COMPACT_USD = new Intl.NumberFormat("en-US", {
-  style: "currency",
-  currency: "USD",
-  notation: "compact",
-  maximumFractionDigits: 1,
-});
 
 const plural = (count: number, unit: string) => `${count} ${unit}${count === 1 ? "" : "s"}`;
 
@@ -102,7 +96,7 @@ function NetWorthChartSignature({ result }: { result: RentVsBuyResult }) {
           <g key={tick.value}>
             <line x1={0} x2={chart.width} y1={tick.y} y2={tick.y} stroke="var(--c97-rule)" strokeWidth={1} />
             <text x={4} y={tick.y - 4} className="c97-rvb-axis">
-              {COMPACT_USD.format(tick.value)}
+              {formatCompactCurrency(tick.value)}
             </text>
           </g>
         ))}

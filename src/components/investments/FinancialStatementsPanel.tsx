@@ -78,7 +78,7 @@ function StatementTable({
     return (
       <div className="space-y-2 py-2">
         {Array.from({ length: 6 }).map((_, i) => (
-          <div key={i} className="h-7 rounded bg-[var(--c97-rule)] animate-pulse" />
+          <div key={i} className="h-7 bg-[var(--c97-rule)] animate-pulse" />
         ))}
       </div>
     );

@@ -17,7 +17,8 @@ describe("date-formatters", () => {
   });
 
   it("formats date-like values with the shared dashboard formatters", () => {
-    const date = new Date(2026, 3, 25, 14, 30);
+    // 21:30 UTC is 2:30 PM in Pacific daylight time, whatever zone Jest runs in.
+    const date = new Date("2026-04-25T21:30:00Z");
 
     expect(formatShortDate(date)).toBe("Apr 25");
     expect(formatFullDate(date)).toBe("Apr 25, 2026");
@@ -25,6 +26,15 @@ describe("date-formatters", () => {
     expect(formatUpdatedAt(date)).toContain("2:30");
     expect(formatDateTime(date)).toContain("Apr 25");
     expect(formatDateTime(date)).toMatch(/\b2:30\b/);
+    expect(formatDateTime(date)).toContain("PDT");
+  });
+
+  it("prints the same text in every host zone", () => {
+    // Just after midnight UTC is still the previous evening in the Bay Area.
+    const date = new Date("2026-04-26T00:15:00Z");
+    expect(formatShortDate(date)).toBe("Apr 25");
+    expect(formatFullDate(date)).toBe("Apr 25, 2026");
+    expect(formatUpdatedAt(date)).toBe("Apr 25, 5:15 PM PDT");
   });
 
   it("creates calendar keys from local date fields rather than UTC", () => {

@@ -1,6 +1,10 @@
 import {
   calculateBudgetSummary,
   ensureBudgetMonth,
+  formatBudgetMonthLabel,
+  getAdjacentBudgetMonthKey,
+  getCurrentBudgetMonthKey,
+  getDefaultExpenseDate,
   parseBudgetMonths,
 } from "@/lib/budgetPlanner";
 import type { BudgetMonth } from "@/types/budget";
@@ -86,5 +90,39 @@ describe("budgetPlanner helpers", () => {
     });
     expect(months["2026-05"]).toBeDefined();
     expect(months["2026-05"].categories.length).toBeGreaterThan(1);
+  });
+});
+
+// The "current month" and "default expense day" pin to the display zone
+// (America/Los_Angeles) instead of the runtime's own zone, so a UTC server
+// and a visitor's browser agree on the same calendar day near midnight and
+// the same calendar month near month end. These assert against explicit ISO
+// instants and must pass under both TZ=UTC and TZ=Asia/Tokyo.
+describe("budget month/day pinning", () => {
+  it("resolves the current month key from the display zone, not the runtime zone", () => {
+    // 2026-10-01T00:00:00Z is still Sep 30 in America/Los_Angeles (PDT, UTC-7).
+    expect(getCurrentBudgetMonthKey(new Date("2026-10-01T00:00:00.000Z"))).toBe("2026-09");
+    // 2026-10-01T08:00:00Z is Oct 1, 1am in Los Angeles.
+    expect(getCurrentBudgetMonthKey(new Date("2026-10-01T08:00:00.000Z"))).toBe("2026-10");
+  });
+
+  it("resolves the default expense day from the display zone", () => {
+    expect(getDefaultExpenseDate("2026-09", new Date("2026-10-01T00:00:00.000Z"))).toBe(
+      "2026-09-30"
+    );
+    expect(getDefaultExpenseDate("2026-10", new Date("2026-10-01T00:00:00.000Z"))).toBe(
+      "2026-10-01"
+    );
+  });
+
+  it("steps a month key forward and backward with pure arithmetic, including year rollover", () => {
+    expect(getAdjacentBudgetMonthKey("2026-04", 1)).toBe("2026-05");
+    expect(getAdjacentBudgetMonthKey("2026-04", -1)).toBe("2026-03");
+    expect(getAdjacentBudgetMonthKey("2026-01", -1)).toBe("2025-12");
+    expect(getAdjacentBudgetMonthKey("2026-12", 1)).toBe("2027-01");
+  });
+
+  it("formats a month key's label the same regardless of runtime zone", () => {
+    expect(formatBudgetMonthLabel("2026-09")).toBe("September 2026");
   });
 });
