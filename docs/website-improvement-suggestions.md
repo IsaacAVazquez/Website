@@ -71,10 +71,14 @@ A few `"use client"` pages ship very large bundles:
   are now lazy-loaded via `next/dynamic`, gated on open state, so their JS only loads when
   a user opens a dialog. Shared form types/helpers moved to `application-form.ts`.
   As of 2026-09-28 the same pattern covers the player drawer and compare tray on the
-  fantasy boards, the club drawer on the two soccer pages, the mission drawer, the score
-  pools fixture drawer, and the investments research workspace. Each `next/dynamic` call
-  sets `loading`, because without it the first open suspends up to the route's
-  `loading.tsx` and swaps the whole page for the loading band.
+  fantasy boards, the club drawer on the two soccer pages, the mission drawer, and the
+  investments research workspace. Each `next/dynamic` call sets `loading`, because
+  without it the first open suspends up to the route's `loading.tsx` and swaps the whole
+  page for the loading band. The drawers and the tray also mount closed once their code
+  has loaded in idle time (`useMountOnFirstOpen`), because React holds a lazy component's
+  first render for 300 ms and a drawer that first rendered on the click opened that much
+  later. The score pools fixture drawer stays a static import for that reason, since it
+  is keyed by fixture and cannot mount ahead of the click.
 - **Follow-up:** apply the same interaction-gated `next/dynamic` pattern to the heaviest
   panels in `museum-log-client.tsx` and `nfl-client.tsx`. These carry more shared state,
   so they warrant their own focused PR with interactive verification.

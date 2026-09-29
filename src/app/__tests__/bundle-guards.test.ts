@@ -132,7 +132,6 @@ describe("bundle guards", () => {
       "src/app/spacex-mission-control/spacex-mission-control-client.tsx",
       ["src/components/spacex/MissionDrawer.tsx"],
     ],
-    ["src/app/score-pools/score-pools-client.tsx", ["src/app/score-pools/fixture-detail-drawer.tsx"]],
     // The research workspace shows nothing until a symbol is picked, and the
     // default is no symbol, so the section loads it on demand.
     [
@@ -146,6 +145,15 @@ describe("bundle guards", () => {
   ])("keeps the overlays out of the static imports of %s", (client, overlays) => {
     const reached = reachableFrom(client).files;
     expect(overlays.filter((overlay) => reached.has(overlay))).toEqual([]);
+  });
+
+  // This drawer is keyed by fixture and has no closed state, so it cannot mount
+  // ahead of the click the way the other overlays do. Loading it on demand
+  // saved 3 KB and made its first open take 308 to 310 ms where the static
+  // import takes 19 to 21, measured in Chromium on local production builds.
+  it("loads the score pools fixture drawer with the page", () => {
+    const reached = reachableFrom("src/app/score-pools/score-pools-client.tsx").files;
+    expect(reached.has("src/app/score-pools/fixture-detail-drawer.tsx")).toBe(true);
   });
 
   // next/dynamic gives a lazy component its own Suspense boundary only when
