@@ -23,7 +23,9 @@ export function RetirementPlanner({ portfolioValue, seedAllocation }: Props) {
   // The planner is the last section on the page, so the projection waits until
   // the section is within 600px of the viewport, the margin the fantasy boards
   // use for their own windowing. It latches on, and a browser with no
-  // IntersectionObserver runs the projection straight away.
+  // IntersectionObserver runs the projection straight away. A print never
+  // scrolls the section into view, so the hook runs the projection on
+  // beforeprint whatever this says.
   const sectionRef = useRef<HTMLElement | null>(null);
   const [nearViewport, setNearViewport] = useState(
     () => typeof IntersectionObserver === "undefined",

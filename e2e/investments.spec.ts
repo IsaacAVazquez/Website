@@ -16,6 +16,20 @@ async function waitForClientInvestmentsIndex(page: Page) {
   });
 }
 
+// A browser lays a print out from the page as it stands when the beforeprint
+// listeners return, so this reads the planner in the same task as the event.
+async function readPlannerAtPrint(page: Page) {
+  return page.evaluate(() => {
+    window.dispatchEvent(new Event("beforeprint"));
+    const planner = document.querySelector("#retirement");
+    return {
+      text: planner?.textContent ?? "",
+      leverRows: planner?.querySelectorAll(".invest-retire-lever-label").length ?? 0,
+      chartPaths: planner?.querySelectorAll(".invest-retire-chart svg path").length ?? 0,
+    };
+  });
+}
+
 const curatedIndex = {
   symbols: ["AAPL", "MSFT", "V"],
   failed: [],
@@ -394,6 +408,34 @@ test.describe("Investments", () => {
       () => document.documentElement.scrollWidth > window.innerWidth + 1
     );
     expect(hasHorizontalOverflow).toBeFalsy();
+  });
+
+  test("prints the retirement projection when the planner was never scrolled to", async ({ page }) => {
+    await routeInvestmentsFixtures(page);
+
+    await page.goto("/investments");
+    await expectInvestmentsShell(page);
+
+    // The planner is the last section and holds its projection back until it
+    // is near the viewport. Nothing in this test scrolls.
+    await expect(page.locator("#retirement")).toContainText("Crunching scenarios");
+
+    // The event only reaches the planner once the page has hydrated, so it is
+    // repeated until a copy holds the verdict. That same copy then has to hold
+    // everything else, because a print does not get a second pass.
+    let printed = await readPlannerAtPrint(page);
+    await expect
+      .poll(async () => {
+        printed = await readPlannerAtPrint(page);
+        return printed.text;
+      })
+      .toMatch(/\d+ of 100/);
+
+    expect(printed.text).not.toContain("Crunching scenarios");
+    expect(printed.chartPaths).toBeGreaterThan(0);
+    expect(printed.leverRows).toBeGreaterThan(0);
+    expect(printed.text).toContain("Capital market assumptions:");
+    expect(printed.text).toMatch(/educational purposes only/i);
   });
 
   test("homepage prioritizes the fintech project in projects", async ({ page }) => {
