@@ -34,7 +34,8 @@ export interface FrontierModel {
   releaseDate: string;
   knowledgeCutoff: string | null;
   contextWindow: number;
-  maxOutputTokens: number;
+  /** Null when the provider publishes no output limit. */
+  maxOutputTokens: number | null;
   inputPricePerMTokens: number | null;
   outputPricePerMTokens: number | null;
   priceTier: FrontierPriceTier;
@@ -42,8 +43,21 @@ export interface FrontierModel {
   reasoning: boolean;
   editorialNote: string;
   docsUrl: string | null;
+  /**
+   * Facts the automated check must leave alone. Use it for a value read from
+   * the provider's own page that a public catalog states differently.
+   */
+  pinnedFacts?: FrontierCheckedFact[];
   liveCheck?: FrontierModelLiveCheck;
 }
+
+/** The facts the automated check compares against the public catalogs. */
+export type FrontierCheckedFact =
+  | "contextWindow"
+  | "maxOutputTokens"
+  | "inputPricePerMTokens"
+  | "outputPricePerMTokens"
+  | "knowledgeCutoff";
 
 export interface FrontierModelProviderSummary {
   id: FrontierProvider;

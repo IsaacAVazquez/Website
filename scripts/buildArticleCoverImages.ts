@@ -18,7 +18,9 @@
  *
  * Fail-soft: a failed search or download for one post is logged and skipped;
  * the post keeps whatever cover it already had. No source is hammered — a
- * malformed 4xx fails that post immediately rather than retrying.
+ * malformed 4xx fails that post immediately rather than retrying. The run
+ * still exits 1 when any planned cover failed, and the last line it prints
+ * carries the failed count, so a workflow can commit what landed and then fail.
  */
 
 import { promises as fs } from "fs";
@@ -89,7 +91,6 @@ interface CommonsPage {
 interface SelectedImage {
   downloadUrl: string;
   extension: string;
-  alt: string;
   credit: string;
   creditUrl: string;
 }
@@ -175,7 +176,9 @@ function isFreeLicense(info: CommonsImageInfo): boolean {
 }
 
 function buildCredit(info: CommonsImageInfo): string {
-  const artist = extMetaValue(info, "Artist");
+  // A museum object lists its maker as the artist, so the credit goes to the
+  // attribution line where Commons gives one.
+  const artist = extMetaValue(info, "Attribution") ?? extMetaValue(info, "Artist");
   const licenseShort = extMetaValue(info, "LicenseShortName");
   const artistPlain = artist ? stripHtml(artist).slice(0, 120) : "";
   const licensePlain = licenseShort ? stripHtml(licenseShort) : "Public domain";
@@ -203,14 +206,15 @@ async function fetchJson(
 /** Search Commons and return the best free landscape photo for `query`. */
 async function selectCommonsImage(
   fetchImpl: typeof fetch,
-  query: string,
-  fallbackAlt: string
+  query: string
 ): Promise<SelectedImage | null> {
   const params = new URLSearchParams({
     action: "query",
     format: "json",
     generator: "search",
-    gsrsearch: query,
+    // Full-text search also matches the scanned books on Commons, which fill
+    // the result page and leave no photograph to pick.
+    gsrsearch: `${query} filetype:bitmap`,
     gsrnamespace: "6",
     gsrlimit: String(SEARCH_RESULT_LIMIT),
     prop: "imageinfo",
@@ -241,16 +245,9 @@ async function selectCommonsImage(
     return null;
   }
 
-  const description = extMetaValue(chosen, "ImageDescription");
-  const descriptionPlain = description ? stripHtml(description) : "";
   return {
     downloadUrl: chosen.thumburl!,
     extension: ALLOWED_MIME[chosen.mime ?? ""] ?? ".jpg",
-    // Prefer a short real description; otherwise the manifest's generic alt.
-    alt:
-      descriptionPlain && descriptionPlain.length <= 140
-        ? descriptionPlain
-        : fallbackAlt,
     credit: buildCredit(chosen),
     creditUrl: chosen.descriptionurl ?? "",
   };
@@ -369,7 +366,7 @@ async function processWikimediaEntry(
     return "skipped";
   }
 
-  const selection = await selectCommonsImage(fetchImpl, entry.query, entry.alt);
+  const selection = await selectCommonsImage(fetchImpl, entry.query);
   if (!selection) {
     throw new CoverImageFetchError(
       `No freely licensed image found for "${entry.query}"`
@@ -396,7 +393,9 @@ async function processWikimediaEntry(
   const source = await fs.readFile(articlePath, "utf8");
   const updated = applyCoverFrontmatter(source, {
     coverImage: `${PUBLIC_COVERS_PREFIX}/${fileName}`,
-    coverImageAlt: selection.alt,
+    // A Commons description can miss the subject or leave out the year, so
+    // the alt text is the one written for the plan.
+    coverImageAlt: entry.alt,
     coverImageCredit: selection.credit,
     coverImageCreditUrl: selection.creditUrl,
   });

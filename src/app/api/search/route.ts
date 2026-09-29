@@ -43,7 +43,9 @@ async function getAllSearchableContent(): Promise<SearchableContent[]> {
     logger.error('Search corpus: failed to load blog posts', err);
   }
 
-  // ---- Project case studies (one entry per /portfolio/[slug]) ------------
+  // ---- Project case studies ---------------------------------------------
+  // A case study that names a live tool redirects there from
+  // /portfolio/<slug>, so its entry points at the tool itself.
   for (const study of Object.values(caseStudiesData)) {
     content.push({
       id: `project-case-${study.slug}`,
@@ -59,7 +61,7 @@ async function getAllSearchableContent(): Promise<SearchableContent[]> {
       ]
         .filter(Boolean)
         .join(' '),
-      url: `/portfolio/${study.slug}`,
+      url: study.link?.startsWith('/') ? study.link : `/portfolio/${study.slug}`,
       type: 'project',
       category: 'Portfolio',
       tags: study.tools,
@@ -533,9 +535,9 @@ async function getAllSearchableContent(): Promise<SearchableContent[]> {
       id: 'page-food-map',
       title: 'Food Map',
       excerpt:
-        'A curated, deep-linkable map of the Austin restaurants I send people to first, filterable by neighborhood, cuisine, and meal.',
+        'A curated, deep-linkable map of where to eat across ten cities, starting with the Austin restaurants I send people to first, filterable by city, curator, and cuisine.',
       content:
-        'Food map Austin restaurants curated city guide neighborhood cuisine meal filters deep-linkable',
+        'Food map restaurants curated city guide Austin San Francisco New York New Orleans Los Angeles Miami Atlanta Tokyo Copenhagen San Sebastian curator cuisine filters deep-linkable',
       url: '/food-map',
       type: 'project',
       category: 'Personal',
@@ -624,6 +626,77 @@ async function getAllSearchableContent(): Promise<SearchableContent[]> {
       category: 'Site',
     },
     {
+      id: 'page-dashboards',
+      title: 'Dashboards',
+      excerpt:
+        'The instruments I built and keep running, from football ledgers to markets and spaceflight.',
+      content:
+        'dashboards live data tools index sports markets spaceflight civic trackers calculators snapshot refresh',
+      url: '/dashboards',
+      type: 'page',
+      category: 'Projects',
+    },
+    {
+      id: 'page-fantasy-football-weekly',
+      title: 'Fantasy Football Weekly Rankings',
+      excerpt:
+        "In-season weekly consensus rankings for flex and quarterback, with each player's opponent, expert range, and how widely he is rostered.",
+      content:
+        'Fantasy football weekly rankings in season consensus flex quarterback opponent expert range rostered start sit',
+      url: '/fantasy-football/weekly',
+      type: 'project',
+      category: 'Fantasy Football Analytics',
+      tags: ['Fantasy Football', 'Rankings', 'Weekly'],
+    },
+    {
+      id: 'page-fantasy-football-waivers',
+      title: 'Fantasy Football Waiver Targets',
+      excerpt:
+        'In-season waiver adds where the weekly expert consensus rank runs ahead of how widely a player is rostered.',
+      content:
+        'Fantasy football waiver wire targets adds in season consensus rank rostered percentage percentile pickup',
+      url: '/fantasy-football/waivers',
+      type: 'project',
+      category: 'Fantasy Football Analytics',
+      tags: ['Fantasy Football', 'Waivers', 'Weekly'],
+    },
+    {
+      id: 'page-fantasy-football-draft-tracker',
+      title: 'Fantasy Football Draft Assistant',
+      excerpt:
+        'Manual fantasy football draft assistant with snake-order tracking, roster pressure, a room-relative Draft Outlook, and an expected return calculator.',
+      content:
+        'Fantasy football draft assistant draft tracker snake order roster pressure Draft Outlook expected return redraft recommendations recap',
+      url: '/fantasy-football/draft-tracker',
+      type: 'project',
+      category: 'Fantasy Football Analytics',
+      tags: ['Fantasy Football', 'Draft Tools', 'Redraft'],
+    },
+    {
+      id: 'page-best-ball-draft-tracker',
+      title: 'Best Ball Draft Assistant',
+      excerpt:
+        'A manual best ball draft tracker with contest specific roster targets, a room-relative Draft Outlook, Best Ball Mania field economics, and expected return math.',
+      content:
+        'Best ball draft assistant draft tracker Underdog contest roster targets Draft Outlook Best Ball Mania expected return',
+      url: '/fantasy-football/best-ball/draft-tracker',
+      type: 'project',
+      category: 'Fantasy Football Analytics',
+      tags: ['Fantasy Football', 'Best Ball', 'Draft Tools'],
+    },
+    {
+      id: 'page-score-pools-tracker',
+      title: 'Score Pools Tracker',
+      excerpt:
+        'Running score tracker for exact-score prediction pools, with submitted picks scored against results, cumulative totals, and rival comparisons.',
+      content:
+        'Score pools tracker exact score prediction pool picks results scoring rules cumulative totals rivals leaderboard',
+      url: '/score-pools/tracker',
+      type: 'project',
+      category: 'Decision Tools',
+      tags: ['Score Pools', 'Prediction', 'Tracker'],
+    },
+    {
       id: 'page-arcade',
       title: 'Reactor Arcade',
       excerpt:
@@ -636,39 +709,23 @@ async function getAllSearchableContent(): Promise<SearchableContent[]> {
     },
   ];
 
-  // De-duplicate. A project that ships as both a live tool (static page, e.g.
-  // /fantasy-football) and a written case study (/portfolio/<slug>) carries the
-  // same title under two URLs, so URL-only dedup let both through and the result
-  // list showed the project twice. Collapse by normalized title as well, and
-  // when a title collides prefer the live tool over the case-study writeup (its
-  // URL is the actual product and it carries a specific category + keywords).
+  // De-duplicate. A tool can be indexed already as a case study, under the
+  // same URL or under the same title. The static entry carries the curated
+  // category and keywords, so it takes the case study's place, and the result
+  // list never shows a tool twice.
   const norm = (s: string) => s.trim().toLowerCase().replace(/\s+/g, ' ');
-  const seenUrls = new Set(content.map((c) => c.url));
-  const titleIndex = new Map<string, number>();
-  content.forEach((c, i) => titleIndex.set(norm(c.title), i));
 
   for (const page of staticPages) {
     const titleKey = norm(page.title);
-    const existingIndex = titleIndex.get(titleKey);
+    const existingIndex = content.findIndex(
+      (item) => item.url === page.url || norm(item.title) === titleKey
+    );
 
-    if (existingIndex !== undefined) {
-      // Same project already indexed (typically as a case study). Swap in the
-      // live-tool entry when the existing one is the /portfolio writeup; either
-      // way, never add a second copy of the same title.
-      const existing = content[existingIndex];
-      if (existing.url.startsWith('/portfolio/') && !page.url.startsWith('/portfolio/')) {
-        seenUrls.delete(existing.url);
-        content[existingIndex] = page;
-        seenUrls.add(page.url);
-      }
-      continue;
+    if (existingIndex === -1) {
+      content.push(page);
+    } else if (content[existingIndex].id.startsWith('project-case-')) {
+      content[existingIndex] = page;
     }
-
-    if (seenUrls.has(page.url)) continue;
-
-    content.push(page);
-    titleIndex.set(titleKey, content.length - 1);
-    seenUrls.add(page.url);
   }
 
   return content;

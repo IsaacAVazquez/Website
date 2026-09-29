@@ -1,17 +1,22 @@
 import {
   buildPolyline,
+  describeStaleSource,
+  formatDate,
   formatMargin,
   formatNet,
-  formatUpdated,
+  formatShortDate,
   getActiveViewStyle,
   getRatingPillStyle,
   getRowStyle,
+  newestPollDate,
   partyColor,
   partyLabel,
 } from "../polling-aggregator-helpers";
 
+const DAY_MS = 24 * 60 * 60 * 1000;
+
 describe("polling-aggregator-helpers", () => {
-  it("formats margins, net approval values, and invalid update dates", () => {
+  it("formats margins, net approval values, and invalid dates", () => {
     expect(formatMargin(0.01)).toBe("Even");
     expect(formatMargin(3.24)).toBe("D+3.2");
     expect(formatMargin(-1.46)).toBe("R+1.5");
@@ -19,7 +24,56 @@ describe("polling-aggregator-helpers", () => {
     expect(formatNet(0)).toBe("Even");
     expect(formatNet(2.45)).toBe("+2.5");
     expect(formatNet(-1)).toBe("-1.0");
-    expect(formatUpdated("not-a-date")).toBe("Unavailable");
+    expect(formatDate("not-a-date")).toBe("not-a-date");
+  });
+
+  it("prints a poll date as the calendar day the source gave", () => {
+    // A date-only string parsed as UTC midnight prints the day before in any
+    // timezone west of Greenwich.
+    expect(formatDate("2026-09-08")).toBe("Sep 8, 2026");
+    expect(formatShortDate("2026-08-15")).toBe("Aug 15");
+  });
+
+  it("finds the newest poll date in a series whatever the row order", () => {
+    expect(
+      newestPollDate([
+        { endDate: "2026-08-17" },
+        { endDate: "2026-08-28" },
+        { endDate: "2026-08-24" },
+      ])
+    ).toBe("2026-08-28");
+    expect(newestPollDate([])).toBeNull();
+  });
+
+  describe("describeStaleSource", () => {
+    const now = Date.parse("2026-09-27T19:00:00.000Z");
+
+    it("names the source and both dates when both series are old", () => {
+      expect(describeStaleSource("2026-08-28", "2026-09-08", now)).toBe(
+        "The newest approval poll I have from VoteHub ended Aug 28, 2026 and the newest generic ballot poll ended Sep 8, 2026, so the averages describe polling up to those dates."
+      );
+    });
+
+    it("names only the series that is old", () => {
+      expect(describeStaleSource("2026-08-28", "2026-09-25", now)).toBe(
+        "The newest approval poll I have from VoteHub ended Aug 28, 2026, so the approval average describes polling up to that date."
+      );
+      expect(describeStaleSource("2026-09-25", "2026-09-08", now)).toBe(
+        "The newest generic ballot poll I have from VoteHub ended Sep 8, 2026, so the generic ballot average describes polling up to that date."
+      );
+    });
+
+    it("says nothing until a poll is more than 14 days old", () => {
+      const newest = Date.parse("2026-09-08");
+
+      expect(
+        describeStaleSource("2026-09-08", "2026-09-08", newest + 14 * DAY_MS)
+      ).toBeNull();
+      expect(
+        describeStaleSource("2026-09-08", "2026-09-08", newest + 14 * DAY_MS + 1)
+      ).not.toBeNull();
+      expect(describeStaleSource(null, null, now)).toBeNull();
+    });
   });
 
   it("returns party labels and fallback colors", () => {

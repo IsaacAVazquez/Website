@@ -115,6 +115,15 @@ function getPriceDate(entry: (StockPrice & { report_date?: string }) | undefined
   return entry?.date ?? entry?.report_date;
 }
 
+// A quote is live while its own market time is recent. A weekend request is
+// answered now with Friday's close, so the response time cannot stand in.
+const LIVE_QUOTE_MAX_AGE_MS = 20 * 60 * 1000;
+
+function isQuoteLive(asOf: string | undefined): boolean {
+  if (!asOf) return false;
+  return Date.now() - new Date(asOf).getTime() <= LIVE_QUOTE_MAX_AGE_MS;
+}
+
 // Mirrors DataFreshnessIndicator's STALE_DATASET_THRESHOLD_DAYS (7). Defined at
 // module scope so the relative-time read isn't flagged as impure during render.
 function isSnapshotStale(snapshotBuiltAt: string | null): boolean {
@@ -276,7 +285,7 @@ export function ResearchAssetHeader({
   const positive = (dayChange ?? 0) >= 0;
   const priceEyebrow =
     livePrice !== undefined
-      ? "Latest market quote"
+      ? `Market quote as of ${formatMarketAsOf(quote?.asOf)}`
       : savedMarketPrice !== undefined
         ? "Saved market quote"
         : quoteLoading && savedClose === undefined
@@ -357,7 +366,7 @@ export function ResearchAssetHeader({
 
         <div className="research-asset-price">
           <span className="research-asset-price-eyebrow">
-            {livePrice !== undefined ? (
+            {livePrice !== undefined && isQuoteLive(quote?.asOf) ? (
               <span className="invest-hero-livedot" aria-hidden="true" />
             ) : null}
             {priceEyebrow}

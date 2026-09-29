@@ -8,7 +8,7 @@ Current development setup and workflow notes.
 
 ## Prerequisites
 
-- Node.js 20 preferred to match GitHub Actions
+- Node.js 22.12 or newer, which `.nvmrc` pins and GitHub Actions reads from that file
 - npm
 - Git
 - Python 3 for `npm run update:investments`

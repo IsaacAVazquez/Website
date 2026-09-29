@@ -9,10 +9,11 @@ on:
   # entirely outside a short window around them, so the workflow self-arms when a
   # future tournament's dates are seeded and stays dormant the rest of the time.
   # ESPN's site API needs no token.
-  schedule:
-    # Staggered off :20 so it doesn't race the hourly earthquake and 6h transit
-    # refreshes (which also push to main) over the same minute.
-    - cron: "20,50 * * 6,7 *"
+  #
+  # The schedule is off until the next tournament. The 2026 final was July 19,
+  # and a June and July cron would wake about 2,900 times a year to skip every
+  # step. Restore a line like `cron: "20,50 * * 6,7 *"` under `schedule` when a
+  # new tournament's dates are seeded.
   workflow_dispatch:
 
 # Don't stack a manual dispatch on top of a scheduled run.
@@ -40,7 +41,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v7
         with:
-          node-version: "20"
+          node-version-file: .nvmrc
           cache: "npm"
 
       - name: Determine tournament window
@@ -78,6 +79,7 @@ jobs:
 
       - name: Refresh World Cup snapshot
         if: steps.window.outputs.active == 'true'
+        timeout-minutes: 12
         run: npm run update:world-cup
         env:
           NODE_ENV: production
@@ -207,7 +209,7 @@ jobs:
               `Check the run logs to diagnose. Common causes:`,
               `- ESPN soccer API outage or timeout`,
               `- Quality gate could not parse the snapshot`,
-              `- Git push rejected after 5 retries`,
+              `- Git push rejected after 8 attempts`,
               ``,
               `The refresh keeps the previous snapshot when ESPN is unreachable, so a transient outage will not wipe the data.`,
               ``,

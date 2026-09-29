@@ -51,10 +51,12 @@ const TIER_FILTERS: FrontierTierFilter[] = [
 
 function formatGeneratedAt(iso: string): string {
   const date = new Date(iso);
+  // Pinned to UTC so the server and the browser print the same date.
   return date.toLocaleDateString("en-US", {
     month: "long",
     day: "numeric",
     year: "numeric",
+    timeZone: "UTC",
   });
 }
 
@@ -139,7 +141,7 @@ export function FrontierModelsClient({
   const standfirst =
     "A curated table of leading large language models with context windows, pricing, and modality coverage. Side-by-side facts, no marketing.";
   const liveFactsNote = snapshot.liveFacts
-    ? ` · facts auto-checked ${snapshot.liveFacts.checkedAt.slice(0, 10)} against ${snapshot.liveFacts.sources.join(" + ")}`
+    ? ` · facts auto-checked ${snapshot.liveFacts.checkedAt.slice(0, 10)} against ${snapshot.liveFacts.sources.join(" + ")} · ${snapshot.liveFacts.updated} changed by the check, ${snapshot.liveFacts.confirmed} matched, ${snapshot.liveFacts.curatedOnly} not found in either catalog`
     : "";
   const dateMeta = `Curated by Isaac · data as of ${snapshot.asOf ?? snapshot.generatedAt.slice(0, 10)} · updated ${updatedAt}${!snapshot.verified ? " · independent review pending" : ""}${liveFactsNote}`;
 

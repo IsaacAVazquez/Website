@@ -59,6 +59,12 @@ export interface PremierLeagueFixture {
   id: string;
   utcDate: string;
   status: string;
+  /**
+   * True while the provider has only a rough date for the match, which it
+   * reports as status SCHEDULED at midnight UTC. Absent once the kickoff is
+   * fixed (status TIMED), and absent on snapshots written before this field.
+   */
+  startTimeTbd?: boolean;
   matchday: number | null;
   stage: string | null;
   homeTeam: PremierLeagueFixtureTeam;

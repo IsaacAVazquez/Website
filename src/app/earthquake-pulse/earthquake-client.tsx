@@ -45,6 +45,7 @@ const TIME_FORMATTER = new Intl.DateTimeFormat("en-US", {
   day: "numeric",
   hour: "numeric",
   minute: "2-digit",
+  timeZone: "UTC",
 });
 
 const CLOCK_FORMATTER = new Intl.DateTimeFormat("en-US", {
@@ -87,7 +88,9 @@ function formatTimestamp(iso: string | null | undefined): string {
     return "Unavailable";
   }
   const date = new Date(iso);
-  return Number.isNaN(date.getTime()) ? "Unavailable" : TIME_FORMATTER.format(date);
+  return Number.isNaN(date.getTime())
+    ? "Unavailable"
+    : `${TIME_FORMATTER.format(date)} UTC`;
 }
 
 function formatDepth(depthKm: number): string {
@@ -573,7 +576,7 @@ export function EarthquakeClient({
         ink={lead}
         title="Earthquake Pulse"
         standfirst={standfirst}
-        meta="The first snapshot is still being generated from the USGS feeds. The dashboard fills in on the next scheduled refresh."
+        meta="The first snapshot is still being generated from the USGS feeds. The dashboard fills in on the next successful read of USGS."
       />
     );
   }
@@ -584,7 +587,11 @@ export function EarthquakeClient({
         ink={lead}
         title="Earthquake Pulse"
         standfirst={standfirst}
-        meta={`USGS Earthquake Hazards Program · feed updated ${formatTimestamp(feedTime)}`}
+        meta={`USGS Earthquake Hazards Program · feed updated ${formatTimestamp(feedTime)}${
+          summary.feedStatus === "stale-fallback"
+            ? " · USGS could not be reached, so this is the last saved snapshot"
+            : ""
+        }`}
         readouts={[
           {
             label: "Strongest in 24h",
@@ -592,14 +599,14 @@ export function EarthquakeClient({
             detail: summary.heroStats.strongest24hPlace ?? "No notable quake yet",
           },
           {
-            label: "Quakes in 24h",
+            label: "M2.5+ quakes in 24h",
             value: `${summary.heroStats.total24h}`,
-            detail: `${summary.heroStats.total7d} over the past week`,
+            detail: `${summary.heroStats.total7d} M2.5+ over the past week`,
           },
           {
             label: "Felt in 24h",
             value: `${summary.heroStats.felt24h}`,
-            detail: "with a Did You Feel It? report",
+            detail: "of any magnitude, with a Did You Feel It? report",
           },
         ]}
       >
@@ -704,11 +711,12 @@ export function EarthquakeClient({
 
       <section className="c97-band c97-sheet" data-c97-surface="bone" data-seam="deckle">
         <div className="c97-shell">
-          <p className="c97-kicker mb-2">Snapshot note</p>
+          <p className="c97-kicker mb-2">Data note</p>
           <p className="c97-prose mb-0">
-            This page is a checked-in snapshot of public USGS Earthquake Hazards Program feeds,
-            refreshed on a schedule, and it is not a live emergency feed. For official alerts and
-            the latest data, always defer to USGS and your local authorities.
+            This page reads the public USGS Earthquake Hazards Program feeds each time it loads
+            and falls back to a snapshot saved once a day when USGS cannot be reached, and it is
+            not an emergency alert feed. For official alerts and the latest data, always defer to
+            USGS and your local authorities.
           </p>
         </div>
       </section>

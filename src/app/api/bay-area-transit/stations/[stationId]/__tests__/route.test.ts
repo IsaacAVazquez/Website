@@ -79,11 +79,9 @@ describe("GET /api/bay-area-transit/stations/[stationId]", () => {
   });
 
   it("guards a prototype key like 'constructor' with a 400, never reaching the loader", async () => {
-    // Exercise the REAL guards. isValidTransitStationId uses the prototype-aware
-    // `in` operator, so `"constructor" in stationBoards` is true — the only thing
-    // stopping the built-in from resolving into a cacheable 200 is the shape
-    // regex (/^[a-z0-9]{2,8}$/), which bars "constructor" at the 400 stage before
-    // the membership check ever runs.
+    // Exercise the REAL guards. The shape regex (/^[a-z0-9]{2,8}$/) bars
+    // "constructor" at the 400 stage, before the station list is consulted, so
+    // the built-in can never resolve into a cacheable 200.
     const actual = jest.requireActual(
       "@/lib/bayAreaTransitSnapshot"
     ) as typeof import("@/lib/bayAreaTransitSnapshot");
@@ -142,6 +140,113 @@ describe("GET /api/bay-area-transit/stations/[stationId]", () => {
       preferLive: true,
     });
     expect(mockLoggerError).not.toHaveBeenCalled();
+  });
+
+  it("reports stale-fallback when the departures came from the committed snapshot", async () => {
+    mockIsTransitStationIdShape.mockReturnValue(true);
+    mockIsValidTransitStationId.mockReturnValue(true);
+    mockGetTransitStationBoard.mockResolvedValue({
+      id: "embr",
+      abbr: "EMBR",
+      name: "Embarcadero",
+      departures: [],
+      // Inside the freshness window, so age alone would read as fresh.
+      generatedAt: new Date().toISOString(),
+      status: "stale-fallback",
+    });
+
+    const response = await GET(new Request("http://localhost:3000"), {
+      params: Promise.resolve({ stationId: "embr" }),
+    });
+
+    expect(response.status).toBe(200);
+    expect(response.headers.get("X-Data-Status")).toBe("stale-fallback");
+  });
+
+  // Fremont dropped out of BART's departures feed during the 2026-09-27 track
+  // work and the route answered 404 for it. The real guards and loader run
+  // here against a live feed that carries Embarcadero and no Fremont.
+  it("answers a real station that has no board with 200 and no departures", async () => {
+    const actual = jest.requireActual(
+      "@/lib/bayAreaTransitSnapshot"
+    ) as typeof import("@/lib/bayAreaTransitSnapshot");
+    mockIsTransitStationIdShape.mockImplementation(actual.isTransitStationIdShape);
+    mockIsValidTransitStationId.mockImplementation(actual.isValidTransitStationId);
+    mockGetTransitStationBoard.mockImplementation(actual.getTransitStationBoard);
+    const fetchSpy = jest.spyOn(global, "fetch").mockImplementation((input) => {
+      const url = String(input);
+      const feed = url.includes("etd.aspx")
+        ? {
+            station: [
+              {
+                name: "Embarcadero",
+                abbr: "EMBR",
+                etd: [
+                  {
+                    destination: "Antioch",
+                    abbreviation: "ANTC",
+                    limited: "0",
+                    estimate: [
+                      {
+                        minutes: "4",
+                        platform: "2",
+                        direction: "North",
+                        length: "8",
+                        color: "YELLOW",
+                        hexcolor: "#ffff33",
+                        bikeflag: "1",
+                        delay: "0",
+                        cancelflag: "0",
+                        dynamicflag: "0",
+                      },
+                    ],
+                  },
+                ],
+              },
+            ],
+            message: "Direction not supported for ALL ETD messages.",
+          }
+        : {
+            bsa: [
+              {
+                station: "",
+                description: { "#cdata-section": "No delays reported." },
+                sms_text: { "#cdata-section": "No delays reported." },
+              },
+            ],
+            message: "",
+          };
+      return Promise.resolve(
+        new Response(
+          JSON.stringify({
+            "?xml": { "@version": "1.0", "@encoding": "utf-8" },
+            root: {
+              "@id": "1",
+              uri: { "#cdata-section": url.replace(/key=[^&]+&/, "") },
+              date: "09/27/2026",
+              time: "12:03:47 PM PDT",
+              ...feed,
+            },
+          }),
+          { status: 200, headers: { "content-type": "application/json" } }
+        )
+      );
+    });
+
+    try {
+      const response = await GET(new Request("http://localhost:3000"), {
+        params: Promise.resolve({ stationId: "frmt" }),
+      });
+      const body = await response.json();
+
+      expect(response.status).toBe(200);
+      expect(body.name).toBe("Fremont");
+      expect(body.departures).toEqual([]);
+      expect(body.error).toBeUndefined();
+      expect(response.headers.get("X-Data-Status")).toBe("fresh");
+    } finally {
+      fetchSpy.mockRestore();
+    }
   });
 
   it("logs and returns a stable empty payload when the loader throws a 5xx", async () => {

@@ -84,6 +84,9 @@ interface EspnScoreObject {
 interface EspnCompetitor {
   id?: string | null;
   athlete?: EspnAthlete | null;
+  // Team formats (Zurich Classic pairs, Presidents Cup sides) carry a team
+  // here and no athlete.
+  team?: { displayName?: string | null } | null;
   status?: EspnCompetitorStatus | null;
   score?: number | string | EspnScoreObject | null;
   movement?: number | null;
@@ -126,13 +129,22 @@ interface EspnEvent {
   id?: string | null;
   name?: string | null;
   shortName?: string | null;
+  // The leaderboard endpoint sends the start as `date`. `startDate` is kept
+  // because the sibling scoreboard endpoint uses it.
+  date?: string | null;
   startDate?: string | null;
   endDate?: string | null;
-  competitions?: EspnCompetition[] | null;
+  // False on an opposite-field event played the same week as the main one.
+  primary?: boolean | null;
+  // Match play nests this as sessions of matches, hence the array member.
+  competitions?: Array<EspnCompetition | EspnCompetition[]> | null;
   courses?: EspnCourse[] | null;
   status?: EspnCompetitionStatus | null;
   tournament?: {
     displayName?: string | null;
+    // "Medal" is individual stroke play. "Match" (Presidents Cup) and
+    // "Teamstroke" (Zurich Classic) have no individual board.
+    scoringSystem?: { name?: string | null } | null;
     // ESPN publishes the cut here, not on status: cutScore is the to-par cut
     // (e.g. -3), cutRound the round it applies after, cutCount the survivors.
     // cutRound is a static format field (present even after the event is FINAL),
@@ -237,11 +249,15 @@ export function extractCutScore(
   event: EspnEvent | null | undefined
 ): number | null {
   if (!event) return null;
-  const fromTournament = parseCutLine(event.tournament?.cutScore ?? null);
+  // ESPN sends cutScore 0 beside cutCount 0 before a cut is made and on events
+  // that have none, so a score with no survivors is a placeholder.
+  const fromTournament =
+    event.tournament?.cutCount === 0
+      ? null
+      : parseCutLine(event.tournament?.cutScore ?? null);
   if (fromTournament != null) return fromTournament;
-  const competition = event.competitions?.[0];
   return parseCutLine(
-    competition?.status?.cutLine ?? event.status?.cutLine ?? null
+    firstCompetition(event)?.status?.cutLine ?? event.status?.cutLine ?? null
   );
 }
 
@@ -279,28 +295,70 @@ export function deriveCutState(event: EspnEvent | null | undefined): {
     cutState = "unknown";
   }
 
-  return { cutLine, cutState, cutCount };
+  return { cutLine, cutState, cutCount: cutLine != null ? cutCount : null };
+}
+
+/** `||` rather than `??`, because ESPN can send an empty string. */
+function eventStart(event: EspnEvent): string {
+  return event.startDate || event.date || "";
+}
+
+/**
+ * ESPN's tournament.displayName is a legacy label that lags sponsor renames. In
+ * the 2026 calendar it was out of date for 22 of 49 events, and it named the
+ * FedEx St. Jude Championship "WGC-Bridgestone Invitational", so the event's
+ * own name leads.
+ */
+function eventName(event: EspnEvent): string {
+  return event.name || event.tournament?.displayName || event.shortName || "";
+}
+
+function firstCompetition(event: EspnEvent): EspnCompetition | null {
+  const first = event.competitions?.[0];
+  return first && !Array.isArray(first) ? first : null;
+}
+
+/**
+ * True when the event has no individual stroke-play board. It keys on what
+ * ESPN positively reports (the scoring system, nested sessions, or competitors
+ * that carry a team), so a field that merely lost its athlete names still
+ * fails loudly instead of reading as a team event.
+ */
+function isTeamFormat(event: EspnEvent): boolean {
+  const scoring = event.tournament?.scoringSystem?.name ?? "";
+  if (/^(match|teamstroke)$/i.test(scoring)) return true;
+  if (Array.isArray(event.competitions?.[0])) return true;
+  const entries = firstCompetition(event)?.competitors ?? [];
+  return entries.length > 0 && entries.every((entry) => entry.team && !entry.athlete);
+}
+
+function eventState(event: EspnEvent): string {
+  return (
+    firstCompetition(event)?.status?.type?.state ??
+    event.status?.type?.state ??
+    ""
+  );
 }
 
 function pickEvent(events: EspnEvent[]): EspnEvent | null {
   if (events.length === 0) return null;
-  const inProgress = events.find(
+  const inProgress = events.filter(
     (event) =>
       event.status?.type?.state === "in" ||
-      event.competitions?.[0]?.status?.type?.state === "in"
+      firstCompetition(event)?.status?.type?.state === "in"
   );
-  if (inProgress) return inProgress;
-  // ESPN occasionally returns an empty-string startDate for finished events;
-  // `?? 0` doesn't catch "" (not nullish) and `new Date("")` is NaN, which would
-  // make the comparator non-deterministic. Coerce any unparseable date to 0.
-  const startEpoch = (value: string | undefined | null) => {
-    const ms = new Date(value ?? "").getTime();
+  // In a week with an opposite-field event, follow the main one.
+  const live = inProgress.find((event) => event.primary !== false) ?? inProgress[0];
+  if (live) return live;
+  // Coerce any unparseable date to 0 so the comparator stays deterministic.
+  const startEpoch = (event: EspnEvent) => {
+    const ms = new Date(eventStart(event)).getTime();
     return Number.isNaN(ms) ? 0 : ms;
   };
-  const sorted = [...events].sort(
-    (a, b) => startEpoch(b.startDate) - startEpoch(a.startDate)
-  );
-  return sorted[0] ?? events[0];
+  const sorted = [...events].sort((a, b) => startEpoch(b) - startEpoch(a));
+  // A finished board outranks an unstarted field listed beside it.
+  const finished = sorted.find((event) => eventState(event) === "post");
+  return finished ?? sorted[0] ?? events[0];
 }
 
 async function fetchGolfJson<T>(url: string): Promise<T> {
@@ -350,7 +408,7 @@ export class GolfNoLiveEventError extends Error {
     readonly nextEventDate: string
   ) {
     super(
-      `ESPN golf scoreboard has no live field; next event ${nextEventName} starts ${
+      `ESPN golf scoreboard has no individual field to score; listed event ${nextEventName} starts ${
         nextEventDate || "on an unannounced date"
       }.`
     );
@@ -370,18 +428,24 @@ export async function buildGolfSnapshotData(): Promise<GolfSnapshot> {
     throw new Error("ESPN golf leaderboard returned no events.");
   }
 
-  const competition = event.competitions?.[0];
+  const competition = firstCompetition(event);
   const competitors = (competition?.competitors ?? []).filter(
     (competitor) => competitor.athlete?.displayName
   );
+  // An unstarted event has no board to score even once its field is posted.
+  // Building one from it put a leader at even par and a cut at zero on the page
+  // every Tuesday or Wednesday. A team event (Presidents Cup and Zurich
+  // Classic, both probed 2026-09-27) has no individual board either.
+  if (
+    eventState(event) === "pre" ||
+    (competitors.length === 0 && isTeamFormat(event))
+  ) {
+    throw new GolfNoLiveEventError(
+      eventName(event) || "the next event",
+      (eventStart(event) || competition?.date || "").slice(0, 10)
+    );
+  }
   if (!competition || competitors.length < MIN_LEADERBOARD_SIZE) {
-    const state = competition?.status?.type?.state ?? event.status?.type?.state;
-    if (competitors.length === 0 && state === "pre") {
-      throw new GolfNoLiveEventError(
-        event.tournament?.displayName ?? event.name ?? "the next event",
-        (competition?.date ?? event.startDate ?? "").slice(0, 10)
-      );
-    }
     throw new Error(
       `Golf leaderboard returned too few competitors (${competitors.length}).`
     );
@@ -394,11 +458,7 @@ export async function buildGolfSnapshotData(): Promise<GolfSnapshot> {
   }
 
   const generatedAt = new Date().toISOString();
-  const name =
-    event.tournament?.displayName ??
-    event.name ??
-    event.shortName ??
-    "Golf Tournament";
+  const name = eventName(event) || "Golf Tournament";
   const tour =
     event.league?.name ??
     event.leagues?.[0]?.name ??
@@ -414,12 +474,16 @@ export async function buildGolfSnapshotData(): Promise<GolfSnapshot> {
   const period = competition.status?.period ?? event.status?.period ?? null;
   // Guard NaN: an invalid (not just missing) startDate must not produce a
   // "tournament-NaN" id.
-  const startYear = event.startDate ? new Date(event.startDate).getFullYear() : NaN;
+  const startDate = eventStart(event);
+  const startYear = startDate ? new Date(startDate).getUTCFullYear() : NaN;
   const year = Number.isFinite(startYear)
     ? startYear
     : new Date(generatedAt).getFullYear();
 
   const cut = deriveCutState(event);
+  // A playoff arrives as one more period (the Travelers sent period 5 with a
+  // value of 3 strokes), which is extra holes and not a round.
+  const scheduledRounds = event.tournament?.numberOfRounds ?? 4;
   const tournament: GolfTournament = {
     id: `${slugify(name) || event.id || "tournament"}-${year}`,
     name,
@@ -427,13 +491,17 @@ export async function buildGolfSnapshotData(): Promise<GolfSnapshot> {
     course: course?.name ?? "",
     coursePar,
     location,
-    startDate: Number.isFinite(Date.parse(event.startDate ?? ""))
-      ? (event.startDate ?? "").slice(0, 10)
+    startDate: Number.isFinite(Date.parse(startDate))
+      ? startDate.slice(0, 10)
       : "",
     endDate: Number.isFinite(Date.parse(event.endDate ?? ""))
       ? (event.endDate ?? "").slice(0, 10)
       : "",
-    roundLabel: period ? `Round ${period}` : "",
+    roundLabel: !period
+      ? ""
+      : period > scheduledRounds
+        ? "Playoff"
+        : `Round ${period}`,
     status: statusType?.detail ?? statusType?.description ?? "",
     fieldSize: competitors.length,
     cutLine: cut.cutLine,
@@ -461,6 +529,7 @@ export async function buildGolfSnapshotData(): Promise<GolfSnapshot> {
     const country = athlete.flag?.alt ?? athlete.citizenship ?? "";
     const position = competitor.status?.position?.displayName ?? "—";
     const roundScores = (competitor.linescores ?? [])
+      .filter((line) => (line.period ?? 1) <= scheduledRounds)
       .map((line) => line.value)
       .filter((value): value is number => typeof value === "number" && value > 0);
     // ESPN's `competitor.score` is the cumulative STROKE total, not a to-par

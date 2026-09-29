@@ -11,7 +11,7 @@ import { useScorePools } from "@/hooks/useScorePools";
 import { effectiveResult, scoreParticipantPicks } from "@/lib/scorePools/poolAnalysis";
 import type { Scoreline } from "@/lib/scorePools";
 import type { ScorePoolsSnapshot, SnapshotFixture } from "@/types/scorePools";
-import { PILL_BUTTON, formatKickoff, formatScoreline } from "../score-pools-ui";
+import { PILL_BUTTON, SampleDataNotice, formatKickoff, formatScoreline } from "../score-pools-ui";
 
 interface TrackerClientProps {
   snapshot: ScorePoolsSnapshot;
@@ -206,6 +206,8 @@ export function TrackerClient({ snapshot }: TrackerClientProps) {
             .
           </p>
         </header>
+
+        <SampleDataNotice snapshot={snapshot} />
 
         {!activePool || !league ? (
           <p className="text-sm text-[var(--c97-ink-2)]">

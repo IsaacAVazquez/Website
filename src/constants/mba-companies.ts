@@ -252,7 +252,8 @@ export const MBA_COMPANIES: MBACompany[] = [
     id: "hubspot",
     name: "HubSpot",
     atsType: "greenhouse",
-    sourceKey: "hubspot",
+    // The "hubspot" board answers 200 with no postings. The live one is "hubspotjobs".
+    sourceKey: "hubspotjobs",
     category: "startup",
     careersUrl: "https://www.hubspot.com/careers/jobs",
     color: MBA_CATEGORY_COLORS.startup,
@@ -376,7 +377,8 @@ export const MBA_COMPANIES: MBACompany[] = [
   {
     id: "atlassian",
     name: "Atlassian",
-    atsType: "lever",
+    // The Lever board answers 404. Postings now sit on iCIMS portals, which no fetcher here reads.
+    atsType: "manual",
     sourceKey: "atlassian",
     category: "big-tech",
     careersUrl: "https://www.atlassian.com/company/careers/all-jobs",

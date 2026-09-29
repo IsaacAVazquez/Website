@@ -1,6 +1,6 @@
 "use client";
 
-import { startTransition, useEffect, useMemo } from "react";
+import { startTransition, useEffect } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { Catalog97ProjectHero } from "@/components/catalog97/Catalog97ProjectHero";
 import { PROJECT_PRESS } from "@/constants/projectPress";
@@ -16,9 +16,9 @@ import {
 import {
   formatDate,
   formatShortDate,
-  formatUpdated,
   formatMargin,
   formatNet,
+  newestPollDate,
   partyColor,
   getRatingPillStyle,
   getRowStyle,
@@ -33,6 +33,8 @@ import "./polling-aggregator.css";
 interface Props {
   initialState: PollingRouteState;
   snapshot: PollingSnapshot;
+  /** Written on the server, so the browser's clock cannot change the markup. */
+  staleSourceNote?: string | null;
 }
 
 // ─── Local metric card (home-token equivalent) ─────────────────────────────────
@@ -621,7 +623,7 @@ function SeatCountRow({
 
 // ─── Main client component ─────────────────────────────────────────────────────
 
-export function PollingAggregatorClient({ initialState, snapshot }: Props) {
+export function PollingAggregatorClient({ initialState, snapshot, staleSourceNote }: Props) {
   const router = useRouter();
   const searchParams = useSearchParams();
   const currentQuery = searchParams.toString();
@@ -654,10 +656,9 @@ export function PollingAggregatorClient({ initialState, snapshot }: Props) {
     navigate({ view: routeState.view, race: raceId });
   }
 
-  const lastUpdated = useMemo(
-    () => formatUpdated(snapshot.sourceAsOf ?? snapshot.generatedAt),
-    [snapshot.generatedAt, snapshot.sourceAsOf]
-  );
+  // sourceAsOf is the newer of the two series, so it hides an older one.
+  const approvalDate = newestPollDate(snapshot.approvalPolls);
+  const genericBallotDate = newestPollDate(snapshot.genericBallotPolls);
 
   const lead = PROJECT_PRESS["/polling-aggregator"].lead;
   const approvalNet = snapshot.approvalAvg.net;
@@ -667,7 +668,7 @@ export function PollingAggregatorClient({ initialState, snapshot }: Props) {
   );
   const totalPolls = snapshot.approvalPolls.length + snapshot.genericBallotPolls.length;
   const standfirst =
-    "I built this to track presidential approval and the 2026 generic ballot in one place, built only from polls with a named source. VoteHub feeds it, and the trend and the race ratings below update as new polls come in.";
+    "I built this to track presidential approval and the 2026 generic ballot in one place, built only from polls with a named source. VoteHub feeds it, and the averages and the trend update as new polls come in.";
 
   return (
     <>
@@ -675,7 +676,14 @@ export function PollingAggregatorClient({ initialState, snapshot }: Props) {
         ink={lead}
         title="Polling Aggregator"
         standfirst={standfirst}
-        meta={`${snapshot.sourceLabel} · updated ${lastUpdated} · ${totalPolls} polls tracked`}
+        meta={[
+          snapshot.sourceLabel,
+          approvalDate && `newest approval poll ${formatDate(approvalDate)}`,
+          genericBallotDate && `newest generic ballot poll ${formatDate(genericBallotDate)}`,
+          `${totalPolls} polls tracked`,
+        ]
+          .filter(Boolean)
+          .join(" · ")}
         readouts={[
           {
             label: "Approval net",
@@ -731,8 +739,9 @@ export function PollingAggregatorClient({ initialState, snapshot }: Props) {
               >
                 VoteHub Polling API
               </a>{" "}
-              under CC BY 4.0. I leave statewide race averages empty until the
-              source includes candidate-party metadata I can verify.
+              under CC BY 4.0.{staleSourceNote ? ` ${staleSourceNote}` : ""} I
+              leave statewide race averages empty until the source includes
+              candidate-party metadata I can verify.
             </p>
           </div>
 

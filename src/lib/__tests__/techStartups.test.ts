@@ -135,6 +135,29 @@ describe("calculateMomentumScore", () => {
     expect(nullValuation).toBe(97.5);
     expect(nullValuation).toBe(explicitValuation);
   });
+
+  it("scores an undisclosed round size as zero", () => {
+    // A tender offer or a term sheet often names a valuation and no amount.
+    const undisclosed = calculateMomentumScore(
+      {
+        totalRaised: 1,
+        valuation: 999_999_999,
+        lastRound: { stage: "Tender offer", amount: null, date: "2026-07", leadInvestors: [] },
+      },
+      "2026-07-06"
+    );
+    const zero = calculateMomentumScore(
+      {
+        totalRaised: 1,
+        valuation: 999_999_999,
+        lastRound: { stage: "Tender offer", amount: 0, date: "2026-07", leadInvestors: [] },
+      },
+      "2026-07-06"
+    );
+    // recency 60 + round 0 + valuation 13.5
+    expect(undisclosed).toBe(73.5);
+    expect(undisclosed).toBe(zero);
+  });
 });
 
 describe("buildTechStartupSnapshot", () => {

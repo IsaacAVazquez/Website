@@ -1,4 +1,4 @@
-import { createAssumptionsMeta, SALT_CAP } from "./defaults";
+import { createAssumptionsMeta, saltCapForYear, TAX_YEAR } from "./defaults";
 import type { RentVsBuyInput, RentVsBuyResult, RentVsBuyYear, Verdict } from "./types";
 
 /** Convert an annual rate (as a decimal) into its monthly-compounded equivalent. */
@@ -33,8 +33,10 @@ function classifyVerdict(deltaAtHorizon: number, homePrice: number): Verdict {
  * Run the rent-vs-buy comparison. Everything is nominal dollars; the two paths
  * are kept comparable by seeding the renter with the buyer's up-front cash and
  * routing every month's cost difference into whichever side is spending less.
+ * Year 1 is treated as tax year `startYear`, year 2 as the next, and so on, so
+ * the SALT cap follows the law's schedule across the holding period.
  */
-export function calculateRentVsBuy(input: RentVsBuyInput): RentVsBuyResult {
+export function calculateRentVsBuy(input: RentVsBuyInput, startYear = TAX_YEAR): RentVsBuyResult {
   const horizonYears = Math.max(1, Math.round(input.yearsStaying));
   const totalMonths = horizonYears * 12;
 
@@ -56,7 +58,7 @@ export function calculateRentVsBuy(input: RentVsBuyInput): RentVsBuyResult {
   const rentGrowthMonthly = monthlyRate(input.rentGrowthPercent / 100);
 
   const marginalRate = input.itemizes ? input.marginalTaxRatePercent / 100 : 0;
-  const saltCapMonthly = SALT_CAP / 12;
+  const firstTaxYear = Math.round(startYear);
 
   // Buyer sinks the up-front cash into the home; the renter invests the same
   // amount. Each side then accrues a side portfolio from monthly savings.
@@ -70,6 +72,7 @@ export function calculateRentVsBuy(input: RentVsBuyInput): RentVsBuyResult {
 
   let year1BuyingCost = 0;
   let year1RentingCost = 0;
+  let yearTaxDeduction = 0;
 
   const yearly: RentVsBuyYear[] = [];
   let breakEvenMonths: number | null = null;
@@ -95,9 +98,14 @@ export function calculateRentVsBuy(input: RentVsBuyInput): RentVsBuyResult {
     const insurance = (input.homeInsuranceAnnual / 12) * inflationFactor;
     const hoa = input.hoaMonthly * inflationFactor;
 
-    // Tax benefit: interest + capped property tax, at the marginal rate.
-    const deductible = interest + Math.min(propertyTax, saltCapMonthly);
+    // Tax benefit: interest + capped property tax, at the marginal rate. The
+    // cap is the one the law sets for this month's tax year, and the engine
+    // spreads that annual cap evenly over the year's twelve months.
+    const taxYear = firstTaxYear + Math.floor((month - 1) / 12);
+    const saltCap = saltCapForYear(taxYear);
+    const deductible = interest + Math.min(propertyTax, saltCap / 12);
     const taxBenefit = deductible * marginalRate;
+    if (input.itemizes) yearTaxDeduction += deductible;
 
     const buyerCashOutlay = scheduledPayment + propertyTax + maintenance + insurance + hoa;
     const buyerNetCost = buyerCashOutlay - taxBenefit;
@@ -147,7 +155,11 @@ export function calculateRentVsBuy(input: RentVsBuyInput): RentVsBuyResult {
         homeEquity: equity,
         cumulativeBuyingCost: cumulativeBuyingCost + upfrontCash,
         cumulativeRentingCost,
+        taxYear,
+        saltCap,
+        taxDeduction: yearTaxDeduction,
       });
+      yearTaxDeduction = 0;
     }
   }
 

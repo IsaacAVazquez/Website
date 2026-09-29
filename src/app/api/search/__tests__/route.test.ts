@@ -319,3 +319,46 @@ describe("GET /api/search", () => {
     expect(Array.isArray(body.results)).toBe(true);
   });
 });
+
+describe("GET /api/search corpus", () => {
+  beforeEach(() => {
+    mockGetAllBlogPostPreviews.mockReturnValue([]);
+  });
+
+  it("never returns the same URL twice and never a case study URL that redirects", async () => {
+    // A case study with a live tool redirects from /portfolio/<slug> to the
+    // tool, so "frontier" once returned the tool under two titles.
+    for (const query of ["frontier", "food", "fantasy", "tracker"]) {
+      const response = await GET(makeRequest(`?q=${query}&limit=50`));
+      const body = await response.json();
+      const urls = body.results.map((r: { url: string }) => r.url);
+
+      expect(new Set(urls).size).toBe(urls.length);
+    }
+
+    const response = await GET(makeRequest("?q=frontier&limit=50"));
+    const body = await response.json();
+    const urls = body.results.map((r: { url: string }) => r.url);
+    expect(urls).toContain("/frontier-models");
+    expect(urls).not.toContain("/portfolio/frontier-models");
+  });
+
+  it("indexes the routes that were missing", async () => {
+    const expected = [
+      ["dashboards", "/dashboards"],
+      ["weekly rankings", "/fantasy-football/weekly"],
+      ["waiver", "/fantasy-football/waivers"],
+      ["draft assistant", "/fantasy-football/draft-tracker"],
+      ["best ball draft assistant", "/fantasy-football/best-ball/draft-tracker"],
+      ["score pools tracker", "/score-pools/tracker"],
+    ];
+    for (const [query, url] of expected) {
+      const response = await GET(makeRequest(`?q=${encodeURIComponent(query)}&limit=50`));
+      const body = await response.json();
+      expect([query, body.results.map((r: { url: string }) => r.url)]).toEqual([
+        query,
+        expect.arrayContaining([url]),
+      ]);
+    }
+  });
+});

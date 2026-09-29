@@ -13,7 +13,7 @@ export default function Image() {
     eyebrow: "Science Product",
     title: "Earthquake Pulse",
     description:
-      "Global seismic monitor for the past 24 hours, the most significant quakes worldwide, and the busiest regions from a checked-in USGS snapshot.",
+      "Global seismic monitor for the past 24 hours, the most significant quakes worldwide, and the busiest regions from the public USGS feeds.",
     accent: "amber",
     footer: "isaacvazquez.com/earthquake-pulse",
   });

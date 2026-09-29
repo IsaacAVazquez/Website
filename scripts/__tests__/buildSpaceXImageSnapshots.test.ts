@@ -8,6 +8,10 @@ import {
   buildSpaceXImageSnapshots,
   type SpaceXImageReferenceIndex,
 } from "../buildSpaceXImageSnapshots";
+import {
+  LL2_OTHER_PROVIDER_ROW,
+  LL2_UPCOMING_ROW,
+} from "../../src/lib/__tests__/fixtures/spacexLaunchLibrary.fixture";
 
 function createJsonResponse(data: unknown): Response {
   return new Response(JSON.stringify(data), {
@@ -488,5 +492,165 @@ describe("buildSpaceXImageSnapshots", () => {
     await expect(fs.access(path.join(imageDir, "obsolete.png"))).rejects.toMatchObject({
       code: "ENOENT",
     });
+  });
+
+  it("picks up a newer list image for an indexed launch without a detail request", async () => {
+    // The index entry and the list row are the real ones for this launch on
+    // 2026-09-27, when the row already carried a launch day photo.
+    const launchId = "521f3a1c-f977-4306-9b7f-495858719adf";
+    const imageHost = "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media";
+    const indexedImage = `${imageHost}/images/falcon_heavy_image_20220129192819.jpeg`;
+    const newerImage = `${imageHost}/images/falcon_heavy_on_image_20260830111425.jpeg`;
+    const padImage = `${imageHost}/map_images/pad_87_20200803143537.jpg`;
+    const projectRoot = await makeProjectRoot();
+    const imageDir = path.join(projectRoot, "public", "data", "spacex", "images");
+
+    await fs.mkdir(path.join(projectRoot, "src", "data"), { recursive: true });
+    await fs.mkdir(imageDir, { recursive: true });
+    await fs.writeFile(path.join(imageDir, "c62ac3115cf4d061.jpg"), "indexed-image", "utf8");
+    await fs.writeFile(path.join(imageDir, "14b5a064429f38e9.jpg"), "pad-image", "utf8");
+    await fs.writeFile(
+      path.join(projectRoot, "src", "data", "spacexImageManifest.generated.json"),
+      `${JSON.stringify({
+        [indexedImage]: "/data/spacex/images/c62ac3115cf4d061.jpg",
+        [padImage]: "/data/spacex/images/14b5a064429f38e9.jpg",
+      })}\n`,
+      "utf8"
+    );
+    await fs.writeFile(
+      path.join(projectRoot, "public", "data", "spacex", "image-reference-index.json"),
+      `${JSON.stringify({
+        [launchId]: {
+          launchId,
+          launchName: "Falcon Heavy | Nancy Grace Roman Space Telescope",
+          window: "upcoming",
+          images: {
+            launch: [
+              {
+                label: "Falcon Heavy | Nancy Grace Roman Space Telescope",
+                localPath: "/data/spacex/images/c62ac3115cf4d061.jpg",
+                remoteUrl: indexedImage,
+              },
+            ],
+            patch: [],
+            rocket: [],
+            spacecraft: [],
+            pad: [
+              {
+                label: "Launch Complex 39A",
+                localPath: "/data/spacex/images/14b5a064429f38e9.jpg",
+                remoteUrl: padImage,
+              },
+            ],
+            crew: [],
+          },
+        },
+      })}\n`,
+      "utf8"
+    );
+
+    const fetchMock = jest.fn(async (input: string | URL) => {
+      const url = String(input);
+
+      if (url.includes("/launch/upcoming/")) {
+        return createJsonResponse({ count: 0, next: null, previous: null, results: [] });
+      }
+
+      if (url.includes("/launch/previous/")) {
+        return createJsonResponse({
+          count: 1,
+          next: null,
+          previous: null,
+          results: [
+            {
+              id: launchId,
+              name: "Falcon Heavy | Nancy Grace Roman Space Telescope",
+              net: "2026-08-30T11:26:04Z",
+              launch_service_provider: { id: 121, name: "SpaceX", type: "Commercial" },
+              rocket: {
+                id: 7615,
+                configuration: { id: 161, name: "Falcon Heavy", full_name: "Falcon Heavy" },
+              },
+              pad: { name: "Launch Complex 39A", map_image: padImage },
+              image: newerImage,
+              program: [],
+            },
+          ],
+        });
+      }
+
+      if (url === newerImage) {
+        return createImageResponse("newer-image", "image/jpeg");
+      }
+
+      throw new Error(`Unexpected fetch: ${url}`);
+    }) as typeof fetch;
+
+    const result = await buildSpaceXImageSnapshots({
+      projectRoot,
+      fetchImpl: fetchMock,
+      logger: { log: jest.fn(), warn: jest.fn(), error: jest.fn() },
+    });
+
+    const manifest = await readManifest(projectRoot);
+    const reference = (await readReferenceIndex(projectRoot))[launchId];
+
+    expect(result.partial).toBe(false);
+    expect(result.downloaded).toEqual([newerImage]);
+    expect(manifest[newerImage]).toMatch(/^\/data\/spacex\/images\/[a-f0-9]{16}\.jpg$/);
+    expect(reference?.window).toBe("previous");
+    expect(reference?.images.launch).toEqual([
+      {
+        label: "Falcon Heavy | Nancy Grace Roman Space Telescope",
+        localPath: "/data/spacex/images/c62ac3115cf4d061.jpg",
+        remoteUrl: indexedImage,
+      },
+      {
+        label: "Falcon Heavy | Nancy Grace Roman Space Telescope",
+        localPath: manifest[newerImage],
+        remoteUrl: newerImage,
+      },
+    ]);
+    expect(reference?.images.pad).toHaveLength(1);
+    // The two list requests and the one image download
+    expect(fetchMock).toHaveBeenCalledTimes(3);
+  });
+
+  it("skips another provider's launch when the provider filter is ignored", async () => {
+    const projectRoot = await makeProjectRoot();
+    const fetchMock = jest.fn(async (input: string | URL) => {
+      const url = String(input);
+
+      if (url.includes("/launch/upcoming/")) {
+        return createJsonResponse({
+          count: 2,
+          next: null,
+          previous: null,
+          results: [LL2_UPCOMING_ROW, LL2_OTHER_PROVIDER_ROW],
+        });
+      }
+
+      if (url.includes("/launch/previous/")) {
+        return createJsonResponse({ count: 0, next: null, previous: null, results: [] });
+      }
+
+      if (url.includes(`/launch/${LL2_UPCOMING_ROW.id}/`)) {
+        return createJsonResponse(LL2_UPCOMING_ROW);
+      }
+
+      if (url.includes("digitaloceanspaces.com")) {
+        return createImageResponse("image", "image/jpeg");
+      }
+
+      throw new Error(`Unexpected fetch: ${url}`);
+    }) as typeof fetch;
+
+    await buildSpaceXImageSnapshots({
+      projectRoot,
+      fetchImpl: fetchMock,
+      logger: { log: jest.fn(), warn: jest.fn(), error: jest.fn() },
+    });
+
+    expect(Object.keys(await readReferenceIndex(projectRoot))).toEqual([LL2_UPCOMING_ROW.id]);
   });
 });

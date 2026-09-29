@@ -79,20 +79,32 @@ export interface RentVsBuyYear {
   cumulativeBuyingCost: number;
   /** Cumulative cash spent renting through this year. */
   cumulativeRentingCost: number;
+  /** Tax year this projection year is treated as. Year 1 is the start year. */
+  taxYear: number;
+  /** SALT cap the law sets for this tax year, dollars. */
+  saltCap: number;
+  /** Mortgage interest plus capped property tax deducted this year. Zero when not itemizing. */
+  taxDeduction: number;
 }
 
 export type Verdict = "buying" | "renting" | "close";
 
 export interface RentVsBuyAssumptionsMeta {
-  /** SALT cap applied to deductible property tax, dollars. */
+  /** Tax year the figures below are for. Year 1 of the projection is treated as this year. */
+  taxYear: number;
+  /** SALT cap for `taxYear`, dollars. Later years follow `saltCapForYear`. */
   saltCap: number;
   /** Standard deduction for the filing status, dollars (context only). */
   standardDeduction: number;
   /** Primary-residence capital-gains exclusion, dollars (context only). */
   capitalGainsExclusion: number;
-  /** As-of date for the tax figures. */
+  /** Date the tax figures were read from their sources, YYYY-MM-DD. */
   asOf: string;
-  /** Whether the shipped tax figures have been re-pinned to a primary source. */
+  /** Default mortgage rate, annual percent. */
+  defaultMortgageRatePercent: number;
+  /** Survey date of the default mortgage rate, YYYY-MM-DD. */
+  mortgageRateAsOf: string;
+  /** Whether the shipped tax figures have had an independent review against their sources. */
   verified: boolean;
   /** Plain-language description of the tax simplifications. */
   taxNote: string;

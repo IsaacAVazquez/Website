@@ -1072,7 +1072,7 @@ export function Formula1Client({ initialState, summary, initialMeeting }: Formul
         ink={lead}
         title="Formula 1 Pulse"
         standfirst={standfirst}
-        meta={`${summary.sourceLabel} · updated ${formatUpdatedAt(summary.generatedAt)}`}
+        meta={`${summary.sourceLabel} · checked ${formatUpdatedAt(summary.generatedAt)}`}
         readouts={[
           {
             label: "Driver leader",

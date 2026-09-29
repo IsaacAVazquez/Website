@@ -1,8 +1,11 @@
 import type { MissionControlCadence, MissionControlCadencePoint } from "@/types/spacex";
 
+// Month keys are cut in UTC, so the labels have to be too. Without the zone a
+// build on a machine west of Greenwich labelled 2025-10 as "Sep 25".
 const MONTH_LABEL_FORMATTER = new Intl.DateTimeFormat("en-US", {
   month: "short",
   year: "2-digit",
+  timeZone: "UTC",
 });
 
 function monthKeyOf(date: Date): string {

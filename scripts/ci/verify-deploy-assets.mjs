@@ -50,14 +50,20 @@ export function inspectDeployFiles(paths) {
 }
 
 async function api(path, token) {
-  const response = await fetch(`${API}${path}`, {
-    headers: { Authorization: `Bearer ${token}` },
-    signal: AbortSignal.timeout(30_000),
-  });
-  if (!response.ok) {
-    throw new Error(`GET ${path} returned HTTP ${response.status}`);
+  for (let attempt = 1; ; attempt += 1) {
+    const response = await fetch(`${API}${path}`, {
+      headers: { Authorization: `Bearer ${token}` },
+      signal: AbortSignal.timeout(30_000),
+    });
+    if (response.ok) return response.json();
+    // A rate limit or a bad minute at Netlify says nothing about the deploy
+    // being checked. One 429 here failed a publish whose deploy was fine.
+    const transient = response.status === 429 || response.status >= 500;
+    if (!transient || attempt === 3) {
+      throw new Error(`GET ${path} returned HTTP ${response.status}`);
+    }
+    await new Promise((resolve) => setTimeout(resolve, attempt * 5_000));
   }
-  return response.json();
 }
 
 async function main() {

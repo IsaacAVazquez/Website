@@ -624,7 +624,7 @@ export const caseStudiesData: Record<string, CaseStudyData> = {
     role: "Full-Stack Developer & Designer",
     timeline: "2026",
     tools: ["Next.js", "TypeScript", "Snapshot pipeline", "Data design"],
-    metrics: "28 startups · 6 sectors · Sector & stage views",
+    metrics: "24 startups · 6 sectors · Sector & stage views",
     github: "https://github.com/IsaacAVazquez",
     link: "/tech-startup-tracker",
     featured: true,

@@ -1,4 +1,5 @@
 import type { CSSProperties } from "react";
+import { parseLocalDateKey } from "@/lib/date-formatters";
 import type { RaceRating, Party } from "@/types/polling";
 
 // ─── Formatting ────────────────────────────────────────────────────────────────
@@ -9,26 +10,53 @@ const DATE_FMT = new Intl.DateTimeFormat("en-US", {
   year: "numeric",
 });
 const SHORT_DATE_FMT = new Intl.DateTimeFormat("en-US", { month: "short", day: "numeric" });
-const UPDATED_FMT = new Intl.DateTimeFormat("en-US", {
-  month: "short",
-  day: "numeric",
-  hour: "numeric",
-  minute: "2-digit",
-});
+
+// Poll dates arrive as YYYY-MM-DD. Read as UTC midnight they print the day
+// before for readers west of Greenwich, and differently on the server.
+function parsePollDate(iso: string): Date {
+  return parseLocalDateKey(iso) ?? new Date(iso);
+}
 
 export function formatDate(iso: string): string {
-  const d = new Date(iso);
+  const d = parsePollDate(iso);
   return Number.isNaN(d.getTime()) ? iso : DATE_FMT.format(d);
 }
 
 export function formatShortDate(iso: string): string {
-  const d = new Date(iso);
+  const d = parsePollDate(iso);
   return Number.isNaN(d.getTime()) ? iso : SHORT_DATE_FMT.format(d);
 }
 
-export function formatUpdated(iso: string): string {
-  const d = new Date(iso);
-  return Number.isNaN(d.getTime()) ? "Unavailable" : UPDATED_FMT.format(d);
+// ─── Source freshness ──────────────────────────────────────────────────────────
+
+const STALE_AFTER_MS = 14 * 24 * 60 * 60 * 1000;
+
+export function newestPollDate(polls: { endDate: string }[]): string | null {
+  return polls.map((poll) => poll.endDate).sort().at(-1) ?? null;
+}
+
+/**
+ * One sentence for the source note when a series has had no new poll for more
+ * than 14 days. It speaks for the polls the page kept, because the builder
+ * drops small samples and incomplete rows and cannot speak for the whole feed.
+ */
+export function describeStaleSource(
+  approvalDate: string | null,
+  genericBallotDate: string | null,
+  now = Date.now()
+): string | null {
+  const [first, second] = [
+    { series: "approval", date: approvalDate },
+    { series: "generic ballot", date: genericBallotDate },
+  ].filter(
+    (entry): entry is { series: string; date: string } =>
+      entry.date !== null && now - Date.parse(entry.date) > STALE_AFTER_MS
+  );
+  if (!first) return null;
+  const lead = `The newest ${first.series} poll I have from VoteHub ended ${formatDate(first.date)}`;
+  return second
+    ? `${lead} and the newest ${second.series} poll ended ${formatDate(second.date)}, so the averages describe polling up to those dates.`
+    : `${lead}, so the ${first.series} average describes polling up to that date.`;
 }
 
 export function formatMargin(margin: number): string {

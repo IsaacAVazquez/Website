@@ -75,11 +75,24 @@ describe("getEarthquakeSummary", () => {
     expect(mockBuild).toHaveBeenCalledTimes(2);
   });
 
+  it("gives a visitor's request one 4 second attempt at USGS", async () => {
+    mockBuild.mockResolvedValue({
+      summary: liveSummary("2026-07-20T10:00:00.000Z"),
+    } as Awaited<ReturnType<typeof buildEarthquakeSnapshotData>>);
+
+    await getEarthquakeSummary({ preferLive: true });
+
+    expect(mockBuild).toHaveBeenCalledWith({ timeoutMs: 4_000, attempts: 1 });
+  });
+
   it("falls back to the committed snapshot on failure without negative-caching", async () => {
     mockBuild.mockRejectedValueOnce(new Error("USGS unavailable"));
 
     const fallback = await getEarthquakeSummary({ preferLive: true });
-    expect(fallback).toBe(earthquakeSnapshot.summary);
+    expect(fallback).toEqual({
+      ...earthquakeSnapshot.summary,
+      feedStatus: "stale-fallback",
+    });
 
     mockBuild.mockResolvedValueOnce({
       summary: liveSummary("2026-07-20T11:00:00.000Z"),

@@ -141,6 +141,9 @@ export function NbaClient({ initialState, summary, initialTeamSnapshot, teamColo
         month: "short",
         day: "numeric",
         year: "numeric",
+        // `updatedAt` is a UTC calendar date, so a visitor's own zone printed
+        // the day before and the client render disagreed with the server's.
+        timeZone: "UTC",
       }).format(new Date(summary.updatedAt)),
     [summary.updatedAt]
   );
@@ -273,7 +276,10 @@ export function NbaClient({ initialState, summary, initialTeamSnapshot, teamColo
     },
   ];
 
-  const heroMeta = `${summary.sourceLabel} · Season ${summary.season} · ${allTeams.length} teams · snapshot ${snapshotDateLabel}`;
+  const isFinal = allTeams.every((team) => team.gamesPlayed >= REGULAR_SEASON_GAMES);
+  const heroMeta = `${summary.sourceLabel} · Season ${summary.season}${
+    isFinal ? " · final regular season standings" : ""
+  } · ${allTeams.length} teams · snapshot ${snapshotDateLabel}`;
 
   const heroSignature = (
     <SeedLadder

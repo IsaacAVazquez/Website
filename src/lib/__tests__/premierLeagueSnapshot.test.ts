@@ -6,6 +6,12 @@ import {
   getPremierLeagueSummary,
   resetPremierLeagueLiveSummaryCacheForTests,
 } from "../premierLeagueSnapshot";
+import { resetFootballDataPacingForTests } from "../footballData";
+
+// The request pacing is module state, so each test starts with a clear minute.
+beforeEach(() => {
+  resetFootballDataPacingForTests();
+});
 
 function jsonResponse(payload: unknown, status = 200): Response {
   return new Response(JSON.stringify(payload), {

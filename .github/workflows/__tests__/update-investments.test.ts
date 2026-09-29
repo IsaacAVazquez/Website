@@ -10,14 +10,27 @@ describe("update-investments workflow contract", () => {
     "utf8"
   );
 
-  it("keeps the weekday 22:15 UTC schedule and manual trigger", () => {
-    expect(workflow).toContain('cron: "15 22 * * 1-5"');
+  it("runs the morning after each trading day, once the dataset has published", () => {
+    // The dataset lands between 05:09 and 07:32 UTC. At 22:15 the evening run
+    // on Monday 2026-09-14 fetched prices dated the Friday before.
+    expect(workflow).toContain('cron: "30 8 * * 2-6"');
     expect(workflow).toContain("workflow_dispatch:");
   });
 
   it("runs the investments refresh command", () => {
     expect(workflow).toContain("run: npm run update:investments");
-    expect(workflow).toContain("defeatbeta-api==0.0.47");
+    expect(workflow).toContain("pip install -r scripts/requirements-investments.txt");
+    expect(workflow).toContain("hashFiles('scripts/requirements-investments.txt')");
+    const requirements = fs.readFileSync(
+      path.join(process.cwd(), "scripts", "requirements-investments.txt"),
+      "utf8"
+    );
+    expect(requirements).toMatch(/^defeatbeta-api==\d+\.\d+\.\d+$/m);
+  });
+
+  it("gates on the dates of the prices and not on the time of the run", () => {
+    expect(workflow).toContain("recentPriceShare < 0.95");
+    expect(workflow).toContain("priceHealth.recentCount");
   });
 
   it("distinguishes fresh results from stale recoveries", () => {

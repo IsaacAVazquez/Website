@@ -1,4 +1,5 @@
 import {
+  buildMissionControlSnapshot,
   getMissionControlSummary,
   getMissionLaunchCards,
   getMissionLaunchDetail,
@@ -12,6 +13,15 @@ import type {
   MissionLaunchCard,
   MissionLaunchDetail,
 } from "@/types/spacex";
+import {
+  LL2_AGENCY,
+  LL2_FIXTURE_NOW,
+  LL2_NORMAL_ROW,
+  LL2_OTHER_PROVIDER_ROW,
+  LL2_PAGE_CAP,
+  LL2_UPCOMING_ROW,
+  serveLl2PreviousPage,
+} from "./fixtures/spacexLaunchLibrary.fixture";
 
 const mockFetch = jest.fn();
 global.fetch = mockFetch as unknown as typeof fetch;
@@ -496,5 +506,228 @@ describe("spacexData image normalization", () => {
 
     const secondDetail = await getMissionLaunchDetail("63aa7636-d2b7-457f-a3e6-27e564e42941");
     expect(secondDetail.id).toBe(baseLaunch.id);
+  });
+});
+
+const UNKNOWN_LAUNCH_ID = "00000000-0000-0000-0000-000000000000";
+
+function jsonResponse(body: unknown) {
+  return { ok: true, status: 200, json: async () => body };
+}
+
+function throttledResponse() {
+  return {
+    ok: false,
+    status: 429,
+    headers: { get: () => "1716" },
+    json: async () => ({
+      detail: "Request was throttled. Expected available in 1716 seconds.",
+    }),
+  };
+}
+
+// Routes each request the way Launch Library answers it. A detail payload is a
+// superset of the row the list served, so the row stands in for it here.
+function mockLaunchLibrary(
+  previousPage: (url: string) => unknown = (url) => jsonResponse(serveLl2PreviousPage(url))
+) {
+  mockFetch.mockImplementation(async (input: string | URL) => {
+    const url = String(input);
+
+    if (url.includes("/launch/upcoming/")) {
+      return jsonResponse({ count: 1, next: null, previous: null, results: [LL2_UPCOMING_ROW] });
+    }
+
+    if (url.includes("/launch/previous/")) {
+      return previousPage(url);
+    }
+
+    if (url.includes("/agencies/121/")) {
+      return jsonResponse(LL2_AGENCY);
+    }
+
+    const id = url.match(/\/launch\/([0-9a-f-]{36})\//)?.[1];
+    return jsonResponse(
+      id === LL2_UPCOMING_ROW.id ? LL2_UPCOMING_ROW : { ...LL2_NORMAL_ROW, id }
+    );
+  });
+}
+
+function requestedUrls(pathFragment: string): string[] {
+  return mockFetch.mock.calls
+    .map(([input]) => String(input))
+    .filter((url) => url.includes(pathFragment));
+}
+
+describe("spacexData snapshot build", () => {
+  beforeEach(() => {
+    mockFetch.mockReset();
+    resetSpaceXDataCacheForTests();
+    setSpaceXImageManifestForTests(null);
+    setSpaceXSnapshotForTests(emptySnapshot);
+    jest.useFakeTimers();
+    jest.setSystemTime(new Date(LL2_FIXTURE_NOW));
+  });
+
+  afterEach(() => {
+    jest.useRealTimers();
+  });
+
+  it("counts the whole trailing year when Launch Library caps a page at 100 rows", async () => {
+    mockLaunchLibrary();
+
+    const snapshot = await buildMissionControlSnapshot();
+    const points = snapshot.cadence?.points ?? [];
+    const total = points.reduce((sum, point) => sum + point.count, 0);
+
+    for (const result of mockFetch.mock.results) {
+      const body = await (await result.value).json();
+      expect(body.results?.length ?? 0).toBeLessThanOrEqual(LL2_PAGE_CAP);
+    }
+
+    expect(points.map((point) => point.monthKey)).toEqual([
+      "2025-10",
+      "2025-11",
+      "2025-12",
+      "2026-01",
+      "2026-02",
+      "2026-03",
+      "2026-04",
+      "2026-05",
+      "2026-06",
+      "2026-07",
+      "2026-08",
+      "2026-09",
+    ]);
+    expect(total).toBeGreaterThan(100);
+    expect(points[0]?.count).toBe(16);
+    expect(points.map((point) => point.count)).toEqual([
+      16, 13, 13, 13, 12, 15, 12, 12, 14, 13, 14, 7,
+    ]);
+  });
+
+  it("reads the second cadence page in list mode without adding a request", async () => {
+    mockLaunchLibrary();
+
+    const snapshot = await buildMissionControlSnapshot();
+    const previousRequests = requestedUrls("/launch/previous/").map(
+      (url) => new URL(url).searchParams
+    );
+
+    expect(snapshot.pastLaunches).toHaveLength(24);
+    expect(Object.keys(snapshot.launchDetails)).toHaveLength(4);
+    expect(previousRequests).toHaveLength(2);
+    expect(previousRequests[0]?.get("offset")).toBeNull();
+    expect(previousRequests[0]?.get("mode")).toBeNull();
+    expect(previousRequests[1]?.get("offset")).toBe("100");
+    expect(previousRequests[1]?.get("mode")).toBe("list");
+    // upcoming, previous, agency, four details, and one more cadence page
+    expect(mockFetch).toHaveBeenCalledTimes(8);
+  });
+
+  it("publishes no cadence when a later page is rate limited", async () => {
+    mockLaunchLibrary((url) =>
+      new URL(url).searchParams.has("offset")
+        ? throttledResponse()
+        : jsonResponse(serveLl2PreviousPage(url))
+    );
+
+    const snapshot = await buildMissionControlSnapshot();
+
+    expect(snapshot.pastLaunches).toHaveLength(24);
+    expect(snapshot.cadence).toBeNull();
+  });
+
+  it("publishes no cadence when the page bound ends before the window does", async () => {
+    // Every page repeats the newest 100 launches, as an ignored offset would.
+    mockLaunchLibrary((url) => {
+      const firstPage = new URL(url);
+      firstPage.searchParams.delete("offset");
+      return jsonResponse(serveLl2PreviousPage(firstPage.toString()));
+    });
+
+    const snapshot = await buildMissionControlSnapshot();
+
+    expect(snapshot.cadence).toBeNull();
+    expect(requestedUrls("/launch/previous/")).toHaveLength(3);
+  });
+});
+
+describe("spacexData provider guard", () => {
+  beforeEach(() => {
+    mockFetch.mockReset();
+    resetSpaceXDataCacheForTests();
+    setSpaceXImageManifestForTests(null);
+    setSpaceXSnapshotForTests(emptySnapshot);
+    jest.useFakeTimers();
+    jest.setSystemTime(new Date(LL2_FIXTURE_NOW));
+  });
+
+  afterEach(() => {
+    jest.useRealTimers();
+  });
+
+  it("drops another provider's launch when the provider filter is ignored", async () => {
+    mockFetch.mockResolvedValue(
+      jsonResponse({
+        count: 2,
+        next: null,
+        previous: null,
+        results: [LL2_UPCOMING_ROW, LL2_OTHER_PROVIDER_ROW],
+      })
+    );
+
+    const launches = await getMissionLaunchCards("upcoming", 5);
+
+    expect(launches.map((launch) => launch.id)).toEqual([LL2_UPCOMING_ROW.id]);
+  });
+
+  it("keeps a row that carries no provider field", async () => {
+    const { launch_service_provider: _provider, ...rowWithoutProvider } = LL2_UPCOMING_ROW;
+    mockFetch.mockResolvedValue(
+      jsonResponse({ count: 1, next: null, previous: null, results: [rowWithoutProvider] })
+    );
+
+    const launches = await getMissionLaunchCards("upcoming", 5);
+
+    expect(launches.map((launch) => launch.id)).toEqual([LL2_UPCOMING_ROW.id]);
+  });
+});
+
+describe("spacexData snapshot launch lookup", () => {
+  beforeEach(() => {
+    mockFetch.mockReset();
+    resetSpaceXDataCacheForTests();
+    setSpaceXImageManifestForTests(null);
+    setSpaceXSnapshotForTests(emptySnapshot);
+    jest.useFakeTimers();
+    jest.setSystemTime(new Date(LL2_FIXTURE_NOW));
+  });
+
+  afterEach(() => {
+    jest.useRealTimers();
+  });
+
+  it("answers 404 for a well formed id that the snapshot does not hold", async () => {
+    mockLaunchLibrary();
+    setSpaceXSnapshotForTests(await buildMissionControlSnapshot());
+    mockFetch.mockClear();
+
+    await expect(
+      getMissionLaunchDetail(UNKNOWN_LAUNCH_ID, { source: "snapshot" })
+    ).rejects.toMatchObject({ status: 404 });
+    expect(mockFetch).not.toHaveBeenCalled();
+  });
+
+  it("answers 503 when the snapshot holds no data at all", async () => {
+    await expect(
+      getMissionLaunchDetail(UNKNOWN_LAUNCH_ID, { source: "snapshot" })
+    ).rejects.toMatchObject({ status: 503 });
+  });
+
+  it("answers 400 for a malformed id", async () => {
+    await expect(
+      getMissionLaunchDetail("not-a-launch-id", { source: "snapshot" })
+    ).rejects.toMatchObject({ status: 400 });
   });
 });

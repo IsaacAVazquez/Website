@@ -17,10 +17,13 @@ import {
   EpMeter,
   LockBadge,
   PILL_BUTTON,
+  SAMPLE_NOTICE,
+  SampleDataNotice,
   formatAge,
   formatKickoff,
   formatPoints,
   formatScoreline,
+  leagueOptionLabel,
 } from "./score-pools-ui";
 
 interface ScorePoolsClientProps {
@@ -78,7 +81,7 @@ export function ScorePoolsClient({ snapshot, initialFixtureId }: ScorePoolsClien
   const [saveStatus, setSaveStatus] = useState<"idle" | "saved">("idle");
   // Default to the first league that has fixtures; the first entry can be empty.
   const [newPoolLeague, setNewPoolLeague] = useState(
-    (snapshot.leagues.find((entry) => entry.fixtures.length > 0) ?? snapshot.leagues[0])?.key ?? "",
+    snapshot.leagues.find((entry) => entry.fixtures.length > 0)?.key ?? "",
   );
   const [newPoolName, setNewPoolName] = useState("");
 
@@ -214,6 +217,8 @@ export function ScorePoolsClient({ snapshot, initialFixtureId }: ScorePoolsClien
           </p>
         </header>
 
+        <SampleDataNotice snapshot={snapshot} />
+
         {pools.length === 0 || !activePool ? (
           <section className="bg-[var(--c97-panel)] p-5" aria-label="Create your first pool">
             <h2 className="text-lg font-bold text-[var(--c97-ink)]">Set up your first pool</h2>
@@ -231,9 +236,9 @@ export function ScorePoolsClient({ snapshot, initialFixtureId }: ScorePoolsClien
                   style={{ marginTop: "var(--c97-sp-1)" }}
                 >
                   {snapshot.leagues.map((entry) => (
-                    <option key={entry.key} value={entry.key}>
-                      {entry.name}
-                      {entry.sample ? " (sample data)" : ""} · {entry.fixtures.length} fixtures
+                    <option key={entry.key} value={entry.key} disabled={entry.fixtures.length === 0}>
+                      {leagueOptionLabel(entry)}
+                      {entry.fixtures.length > 0 ? ` · ${entry.fixtures.length} fixtures` : ""}
                     </option>
                   ))}
                 </select>
@@ -297,10 +302,12 @@ export function ScorePoolsClient({ snapshot, initialFixtureId }: ScorePoolsClien
             </nav>
 
             {league?.sample ? (
-              <p className="border border-[var(--c97-rule)] bg-[var(--c97-overlay)] px-4 py-3 text-2xs text-[var(--c97-ink-2)]">
+              <p className={SAMPLE_NOTICE}>
                 This league is sample data with fictional teams and hand-set odds, so you can try
-                the whole flow before wiring up a real competition. Swap in a live league from the
-                settings page when you&apos;re ready.
+                the whole flow before wiring up a real competition.
+                {snapshot.leagues.some((entry) => !entry.sample && entry.fixtures.length > 0)
+                  ? " Swap in a live league from the settings page when you're ready."
+                  : null}
               </p>
             ) : null}
             {league && league.notes.length > 0 && !league.sample ? (

@@ -261,10 +261,12 @@ export const FOOD_MAP_PLACES: readonly FoodMapPlace[] = [
     city: "austin",
     curators: ["isaac"],
     cuisine: "coffee",
-    coords: [30.2662, -97.7212],
+    // The East Sixth Street bar closed on 2024-05-29. The pin is the bar at
+    // 48 East Ave, from https://cuveecoffee.com/pages/locations, read 2026-09-28.
+    coords: [30.2563, -97.7387],
     order: "Black & Blue nitro",
     why: "I write here when I need a long, quiet morning. The nitro is the one I miss when I am out of town.",
-    neighborhood: "East Austin",
+    neighborhood: "Rainey Street",
     price: "$",
   },
   {
@@ -336,7 +338,8 @@ export const FOOD_MAP_PLACES: readonly FoodMapPlace[] = [
     coords: [30.2614, -97.7626],
     order: "Cedar Tavern bar snacks",
     why: "Eberly is my downtown move when the night is part work, part dinner. The Cedar Tavern bar still feels like the city's living room.",
-    neighborhood: "Downtown",
+    // 615 South Lamar, from https://eberlyaustin.com/, read 2026-09-28.
+    neighborhood: "South Lamar",
     price: "$$",
   },
 
@@ -431,7 +434,8 @@ export const FOOD_MAP_PLACES: readonly FoodMapPlace[] = [
     cuisine: "steakhouse",
     coords: [40.7099, -73.9626],
     order: "Porterhouse for two, creamed spinach, and the bacon to start.",
-    why: "Williamsburg's cash-only steak temple, slinging porterhouse since 1887.",
+    // Payment terms from https://peterluger.com/, read 2026-09-28.
+    why: "Williamsburg's steak temple, slinging porterhouse since 1887. It takes cash and US debit cards, and no credit cards.",
   },
   {
     id: "xian-famous-foods",
@@ -473,7 +477,9 @@ export const FOOD_MAP_PLACES: readonly FoodMapPlace[] = [
     cuisine: "coffee",
     coords: [29.9575, -90.0617],
     order: "Order of three beignets and a café au lait.",
-    why: "The 24-hour French Quarter coffee stand that defines a NOLA morning.",
+    // The French Market stand opens at 7:15 AM and closes at 11 PM, or midnight
+    // on Friday and Saturday, per https://shop.cafedumonde.com/locations/, read 2026-09-28.
+    why: "The French Quarter coffee stand that defines a NOLA morning.",
   },
   {
     id: "casamentos",

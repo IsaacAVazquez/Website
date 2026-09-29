@@ -1,8 +1,8 @@
 "use client";
 
 import { useCallback, useEffect, useState } from "react";
-import { fantasySnapshotRevision } from "@/data/fantasySnapshotRevision.generated";
 import {
+  FANTASY_WEEKLY_SNAPSHOT_URL,
   normalizeFantasyWeeklySnapshot,
   type FantasyWeeklySeed,
   type FantasyWeeklySnapshot,
@@ -32,10 +32,9 @@ async function loadWeeklySnapshot(): Promise<WeeklyLoadResult> {
     const controller = new AbortController();
     const timer = window.setTimeout(() => controller.abort(), 10_000);
     try {
-      const response = await fetch(
-        `/data/fantasy/weekly.json?v=${fantasySnapshotRevision}`,
-        { cache: "force-cache", signal: controller.signal }
-      );
+      const response = await fetch(FANTASY_WEEKLY_SNAPSHOT_URL, {
+        signal: controller.signal,
+      });
       if (response.status === 404) {
         cachedResult = { kind: "not-published" };
         return cachedResult;

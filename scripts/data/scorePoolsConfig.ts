@@ -20,10 +20,8 @@ export const SCORE_POOL_LEAGUES: ScorePoolLeagueSource[] = [
     knockoutRoundPattern: null,
     teamAliases: {
       "Manchester United": "Manchester United",
-      "Wolverhampton Wanderers": "Wolves",
       "Brighton and Hove Albion": "Brighton",
       "Tottenham Hotspur": "Tottenham",
-      "West Ham United": "West Ham",
       "Newcastle United": "Newcastle",
       "Nottingham Forest": "Nottingham Forest",
     },

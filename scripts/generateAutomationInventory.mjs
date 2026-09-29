@@ -128,6 +128,8 @@ const DESCRIPTIONS = {
   "data/scorePools.manual.ts": "Hand-entered score pools inputs",
   "data/scorePoolsConfig.ts": "Score pools contest configuration",
   "investments_symbols.txt": "Curated symbol list for the investments refresh",
+  "requirements-investments.txt":
+    "Pinned Python packages for the investments refresh, the one place the defeatbeta-api version is set",
 };
 
 const SKIP_DIRS = new Set(["__tests__", "tests", "__pycache__"]);

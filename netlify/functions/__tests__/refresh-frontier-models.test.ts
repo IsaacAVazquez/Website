@@ -45,14 +45,13 @@ describe("refresh-frontier-models scheduled function", () => {
     mockFetchFacts.mockResolvedValue({ fetchedAt: "now", byProvider: {} });
     mockApply.mockReturnValue(refreshedSnapshot);
     mockWrite.mockResolvedValue(undefined);
-    mockPurge.mockResolvedValue(undefined);
   });
 
   it("runs on a daily schedule", () => {
     expect(config.schedule).toBe("30 7 * * *");
   });
 
-  it("writes the refreshed snapshot to the blob store, then purges the tag", async () => {
+  it("writes the refreshed snapshot to the blob store", async () => {
     const response = await handler();
     const body = await response.json();
 
@@ -60,9 +59,14 @@ describe("refresh-frontier-models scheduled function", () => {
       "frontier-models",
       refreshedSnapshot
     );
-    expect(mockPurge).toHaveBeenCalledWith({ tags: ["frontier-models"] });
     expect(body.ok).toBe(true);
     expect(body.liveFacts.updated).toBe(1);
+  });
+
+  it("does not call the cache purge, since no response carries a cache tag", async () => {
+    await handler();
+
+    expect(mockPurge).not.toHaveBeenCalled();
   });
 
   it("does not write when the upstream fetch fails", async () => {
@@ -70,23 +74,11 @@ describe("refresh-frontier-models scheduled function", () => {
 
     await expect(handler()).rejects.toThrow("degraded catalog");
     expect(mockWrite).not.toHaveBeenCalled();
-    expect(mockPurge).not.toHaveBeenCalled();
   });
 
   it("propagates write failures so the run shows as failed", async () => {
     mockWrite.mockRejectedValue(new Error("store down"));
 
     await expect(handler()).rejects.toThrow("store down");
-    expect(mockPurge).not.toHaveBeenCalled();
-  });
-
-  it("still succeeds when only the purge fails", async () => {
-    mockPurge.mockRejectedValue(new Error("purge api down"));
-
-    const response = await handler();
-    const body = await response.json();
-
-    expect(body.ok).toBe(true);
-    expect(mockWrite).toHaveBeenCalled();
   });
 });

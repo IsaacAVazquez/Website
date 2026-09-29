@@ -30,16 +30,29 @@ interface GolfClientProps {
   initialPlayerSnapshot: GolfPlayerSnapshot | null;
 }
 
+// Pinned to UTC so the server and the browser print the same string.
 const LAST_UPDATED_FORMATTER = new Intl.DateTimeFormat("en-US", {
   month: "short",
   day: "numeric",
   hour: "numeric",
   minute: "2-digit",
+  timeZone: "UTC",
+  timeZoneName: "short",
 });
 
+// Tournament dates arrive as calendar days, which parse as UTC midnight, so
+// they print in UTC. In local time a reader west of Greenwich saw the day before.
 const DATE_RANGE_FORMATTER = new Intl.DateTimeFormat("en-US", {
   month: "short",
   day: "numeric",
+  timeZone: "UTC",
+});
+
+const DATE_RANGE_END_FORMATTER = new Intl.DateTimeFormat("en-US", {
+  month: "short",
+  day: "numeric",
+  year: "numeric",
+  timeZone: "UTC",
 });
 
 /** Under par prints in golf's red; even and over stay ink, matching the leaderboard signature. */
@@ -90,11 +103,17 @@ function formatDateRange(startDate: string, endDate: string): string {
   const endValid = !Number.isNaN(end.getTime());
 
   if (startValid && endValid) {
-    return `${DATE_RANGE_FORMATTER.format(start)} – ${DATE_RANGE_FORMATTER.format(end)}`;
+    return `${DATE_RANGE_FORMATTER.format(start)} – ${DATE_RANGE_END_FORMATTER.format(end)}`;
   }
-  if (endValid) return DATE_RANGE_FORMATTER.format(end);
-  if (startValid) return DATE_RANGE_FORMATTER.format(start);
+  if (endValid) return DATE_RANGE_END_FORMATTER.format(end);
+  if (startValid) return DATE_RANGE_END_FORMATTER.format(start);
   return "Dates TBD";
+}
+
+/** "Round 4 · Final", without repeating the round when the status already names it. */
+function formatRoundStatus(roundLabel: string, status: string): string {
+  if (!status || !roundLabel) return status || roundLabel;
+  return status.includes(roundLabel) ? status : `${roundLabel} · ${status}`;
 }
 
 async function fetchGolfPlayerSnapshot(
@@ -451,7 +470,7 @@ export function GolfClient({ initialState, summary, initialPlayerSnapshot }: Gol
         ink={lead}
         title="PGA Tour Pulse"
         standfirst="I wanted the leaderboard to read like a manual scoreboard, names on slats, rounds across, and red for anything under par. It reads from a checked-in snapshot of the PGA Tour leaderboard that refreshes on a schedule."
-        meta={`${tournament.tour} · snapshot refreshed ${formatGeneratedAt(tournament.generatedAt)}`}
+        meta={`${tournament.tour} · last checked ${formatGeneratedAt(tournament.generatedAt)}`}
         readouts={heroReadouts}
       >
         <div className="c97-panel" style={{ marginBottom: "var(--c97-sp-4)" }}>
@@ -459,7 +478,7 @@ export function GolfClient({ initialState, summary, initialPlayerSnapshot }: Gol
             {tournament.name}
           </h2>
           <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-2)" }}>
-            {tournament.roundLabel}
+            {formatRoundStatus(tournament.roundLabel, tournament.status)}
           </p>
           <div className="c97-prose" style={{ fontSize: "var(--c97-fs-small)", color: "var(--c97-ink-2)" }}>
             <p className="mb-1 flex items-start gap-2">
@@ -678,7 +697,9 @@ export function GolfClient({ initialState, summary, initialPlayerSnapshot }: Gol
           <p className="c97-prose mb-0" style={{ fontSize: "var(--c97-fs-small)" }}>
             The leaderboard, cut line, and player movement come from ESPN&apos;s public golf
             leaderboard API and refresh on a schedule, so figures can trail the broadcast.
-            Snapshot refreshed {formatGeneratedAt(tournament.generatedAt)}.
+            Between tournaments, and during team events like the Presidents Cup, I keep the
+            last finished leaderboard up, since there is no individual board to show. Last
+            checked {formatGeneratedAt(tournament.generatedAt)}.
           </p>
         </div>
       </section>

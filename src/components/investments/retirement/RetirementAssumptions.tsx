@@ -81,10 +81,11 @@ export function RetirementAssumptions({ result }: Props) {
       </details>
 
       <p className="invest-retire-cma-source">
-        Capital market assumptions: {assumptions.cmaSource} As of {assumptions.cmaAsOf}.{" "}
+        Capital market assumptions: {assumptions.cmaSource} The oldest published source is dated{" "}
+        {assumptions.cmaAsOf}.{" "}
         {assumptions.cmaVerified
           ? "Pinned to a dated primary source."
-          : "Illustrative — re-verify against the latest primary source before relying on figures."}
+          : "These are illustrative, so check the latest primary source before relying on the figures."}
       </p>
     </section>
   );

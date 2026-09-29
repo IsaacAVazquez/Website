@@ -1,39 +1,34 @@
 import type { Config } from "@netlify/functions";
-import { purgeCache } from "@netlify/functions";
 import {
   buildPollingSnapshotData,
   POLLING_BLOB_KEY,
 } from "../../src/lib/pollingData";
-import { assertPollingSnapshotSourceFresh } from "../../src/lib/pollingFreshness";
 import { writeSnapshotBlob } from "../../src/lib/snapshotBlobStore";
 
 // Six-hour VoteHub refresh through the blob lane (see the lane description in
 // SNAPSHOT_DRIVEN_DASHBOARDS.md). buildPollingSnapshotData throws on thin or
 // malformed VoteHub data and writeSnapshotBlob throws on store failures, so a
 // broken refresh surfaces as a failed function run while the previous blob
-// (or the committed seed) keeps serving.
+// (or the committed seed) keeps serving. How old VoteHub's newest poll is does
+// not fail the run, since a source with nothing new to publish is not a fault
+// in this lane. The page states the newest poll date for each series instead.
 export default async () => {
   const snapshot = await buildPollingSnapshotData();
-  // Blob recency cannot substitute for source recency. VoteHub can return a
-  // full but frozen table, so reject it before a new savedAt masks the outage.
-  assertPollingSnapshotSourceFresh(snapshot);
   await writeSnapshotBlob(POLLING_BLOB_KEY, snapshot);
 
-  try {
-    await purgeCache({ tags: [POLLING_BLOB_KEY] });
-  } catch (error) {
-    // Purge is an optimization; CDN entries age out on their own.
-    console.warn("polling cache tag purge failed:", error);
-  }
-
   console.log(
-    `Polling blob refreshed: ${snapshot.approvalPolls.length} approval, ` +
+    `Polling blob refreshed at ${snapshot.generatedAt}: ` +
+      `${snapshot.approvalPolls.length} approval, ` +
       `${snapshot.genericBallotPolls.length} generic ballot polls, ` +
       `source as of ${snapshot.sourceAsOf}.`
   );
 
   return new Response(
-    JSON.stringify({ ok: true, sourceAsOf: snapshot.sourceAsOf }),
+    JSON.stringify({
+      ok: true,
+      generatedAt: snapshot.generatedAt,
+      sourceAsOf: snapshot.sourceAsOf,
+    }),
     { headers: { "Content-Type": "application/json" } }
   );
 };

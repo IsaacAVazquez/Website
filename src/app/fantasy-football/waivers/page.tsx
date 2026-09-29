@@ -5,6 +5,7 @@ import { constructMetadata, generateBreadcrumbStructuredData } from "@/lib/seo";
 import { normalizeFantasyRouteScoring } from "@/lib/fantasy";
 import { getNflRegularSeasonWeek } from "@/lib/fantasyUtils";
 import { loadFantasyWeeklySeed } from "@/lib/fantasySnapshotServer";
+import { FANTASY_WEEKLY_SNAPSHOT_URL } from "@/lib/fantasyWeeklySnapshot";
 import { fantasySnapshotRevision } from "@/data/fantasySnapshotRevision.generated";
 import {
   WeeklyBoardClient,
@@ -42,7 +43,7 @@ export default async function WaiverTargetsPage({
   };
   // Same preload gate as the weekly board: nothing publishes before Week 1.
   if (getNflRegularSeasonWeek(new Date().getUTCFullYear()) > 0) {
-    ReactDOM.preload(`/data/fantasy/weekly.json?v=${fantasySnapshotRevision}`, {
+    ReactDOM.preload(FANTASY_WEEKLY_SNAPSHOT_URL, {
       as: "fetch",
       crossOrigin: "anonymous",
     });

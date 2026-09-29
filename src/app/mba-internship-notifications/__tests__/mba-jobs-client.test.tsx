@@ -184,6 +184,21 @@ describe("MBAJobsClient", () => {
     expect(applyButton).toHaveClass("c97-btn");
   });
 
+  it("shows the fetched date of the list it displays, however old the list is", () => {
+    const fetchedAt = new Date("2026-09-20T18:30:00.000Z");
+    mockUseMBAJobs.mockReturnValue(buildHookValue({ lastFetchedAt: fetchedAt }));
+
+    render(<MBAJobsClient initialState={DEFAULT_MBA_JOBS_STATE} />);
+
+    const shown = new Intl.DateTimeFormat("en-US", {
+      month: "short",
+      day: "numeric",
+      hour: "numeric",
+      minute: "2-digit",
+    }).format(fetchedAt);
+    expect(screen.getByText(`Updated ${shown}`)).toBeVisible();
+  });
+
   it("groups tracked companies by category and keeps job-card chips wrappable", () => {
     render(<MBAJobsClient initialState={DEFAULT_MBA_JOBS_STATE} />);
 
@@ -202,7 +217,6 @@ describe("MBAJobsClient", () => {
 
     const fintechGroup = screen.getByTestId("tracked-companies-fintech");
     const startupGroup = screen.getByTestId("tracked-companies-startup");
-    const bigTechGroup = screen.getByTestId("tracked-companies-big-tech");
     const chipRail = screen.getByTestId("job-card-stripe-1-chips");
     const fintechTracked = MBA_COMPANIES.filter(
       (company) => company.category === "fintech" && company.atsType !== "manual"
@@ -210,29 +224,28 @@ describe("MBAJobsClient", () => {
     const startupTracked = MBA_COMPANIES.filter(
       (company) => company.category === "startup" && company.atsType !== "manual"
     ).length;
-    const bigTechTracked = MBA_COMPANIES.filter(
-      (company) => company.category === "big-tech" && company.atsType !== "manual"
-    ).length;
     const startupToggle = within(startupGroup).getByRole("button", { name: /Startup/i });
-    const atlassianButton = within(bigTechGroup).getByRole("button", { name: "Atlassian" });
-    const atlassianDot = atlassianButton.querySelector("span");
+    const stripeButton = within(fintechGroup).getByRole("button", { name: "Stripe" });
+    const stripeDot = stripeButton.querySelector("span");
 
-    expect(within(fintechGroup).getByRole("button", { name: "Stripe" })).toBeVisible();
+    expect(stripeButton).toBeVisible();
     expect(within(startupGroup).getByRole("button", { name: "OpenAI" })).toBeVisible();
-    expect(within(bigTechGroup).getByRole("button", { name: "Atlassian" })).toBeVisible();
+    // Every Big Tech company is a manual check, Atlassian included since its
+    // Lever board closed, so that group has no feed to toggle.
+    expect(screen.queryByTestId("tracked-companies-big-tech")).not.toBeInTheDocument();
+    expect(screen.getByRole("link", { name: "Career page for Atlassian" })).toBeVisible();
     expect(within(fintechGroup).getByText(`${fintechTracked} / ${fintechTracked} watched`)).toBeVisible();
     expect(within(startupGroup).getByText(`${startupTracked} / ${startupTracked} watched`)).toBeVisible();
-    expect(within(bigTechGroup).getByText(`${bigTechTracked} / ${bigTechTracked} watched`)).toBeVisible();
     expect(startupToggle).toHaveAttribute("aria-expanded", "true");
     fireEvent.click(startupToggle);
     expect(startupToggle).toHaveAttribute("aria-expanded", "false");
     expect(
       within(startupGroup).queryByRole("button", { name: "OpenAI" })
     ).not.toBeInTheDocument();
-    expect(atlassianButton).toHaveStyle("background: var(--c97-field)");
-    expect(atlassianDot).not.toBeNull();
-    expect(atlassianDot).toHaveStyle(
-      "background: color-mix(in srgb, var(--c97-ink) 68%, var(--c97-rule) 32%)"
+    expect(stripeButton).toHaveStyle("background: var(--c97-field)");
+    expect(stripeDot).not.toBeNull();
+    expect(stripeDot).toHaveStyle(
+      "background: color-mix(in srgb, var(--c97-positive) 62%, var(--c97-ink) 38%)"
     );
     expect(chipRail).toHaveClass("flex-wrap");
     expect(chipRail).not.toHaveClass("shrink-0");

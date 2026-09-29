@@ -32,7 +32,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v7
         with:
-          node-version: "20"
+          node-version-file: .nvmrc
           cache: "npm"
 
       - name: Install dependencies
@@ -44,6 +44,7 @@ jobs:
       # means the board stays current even when the image step exhausts the
       # remaining budget and falls back to existing image artifacts.
       - name: Refresh SpaceX data snapshot
+        timeout-minutes: 12
         run: npm run update:spacex
         env:
           NODE_ENV: production
@@ -53,6 +54,7 @@ jobs:
         run: npx tsx scripts/verifyDataRefresh.ts spacex
 
       - name: Refresh SpaceX image snapshots
+        timeout-minutes: 15
         run: npm run update:spacex-images
         env:
           NODE_ENV: production
@@ -251,7 +253,7 @@ jobs:
               `- Snapshot too stale: the data refresh kept old data past the freshness gate, so the launch board is no longer current`,
               `- Image download failure degraded the manifest or reference index`,
               `- Quality gate caught a degraded snapshot`,
-              `- Git push rejected after 5 retries`,
+              `- Git push rejected after 8 attempts`,
               ``,
               `This issue will be updated if the next run also fails, and auto-closed on the first successful run.`
             ].join('\n');

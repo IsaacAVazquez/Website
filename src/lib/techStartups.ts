@@ -66,7 +66,8 @@ export function calculateMomentumScore(
 ): number {
   const monthsAgo = monthsSince(asOf, entry.lastRound.date);
   const recencyScale = Math.max(0, 24 - monthsAgo) * 2.5;
-  const roundScale = Math.log10(entry.lastRound.amount + 1) * 3;
+  // An undisclosed round size scores as zero, never as a guess.
+  const roundScale = Math.log10((entry.lastRound.amount ?? 0) + 1) * 3;
   const valuationScale =
     Math.log10((entry.valuation ?? entry.totalRaised) + 1) * 1.5;
   return Math.round((recencyScale + roundScale + valuationScale) * 10) / 10;

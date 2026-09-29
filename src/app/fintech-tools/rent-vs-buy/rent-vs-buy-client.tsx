@@ -319,9 +319,11 @@ export function RentVsBuyClient() {
               className="c97-prose"
               style={{ display: "block", fontSize: "var(--c97-fs-small)", color: "var(--c97-ink-2)", marginTop: "var(--c97-sp-1)" }}
             >
-              Figures are nominal dollars. {result.assumptions.taxNote} SALT cap{" "}
-              {formatCurrency(result.assumptions.saltCap)}. Tax figures as of {result.assumptions.asOf} and not
-              yet re-pinned to a primary source.
+              Figures are nominal dollars. {result.assumptions.taxNote} Tax figures are for tax year{" "}
+              {result.assumptions.taxYear}, were read from the IRS and the text of the law on{" "}
+              {result.assumptions.asOf}, and have not had an independent review. The default mortgage rate of{" "}
+              {result.assumptions.defaultMortgageRatePercent}% is the Freddie Mac 30 year fixed average as of{" "}
+              {result.assumptions.mortgageRateAsOf}.
             </span>
           </p>
         </div>

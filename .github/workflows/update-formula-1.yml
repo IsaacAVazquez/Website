@@ -33,18 +33,24 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v7
         with:
-          node-version: "20"
+          node-version-file: .nvmrc
           cache: "npm"
 
       - name: Install dependencies
         run: npm ci --prefer-offline --no-audit --fund=false
 
       - name: Refresh Formula 1 snapshot
+        id: refresh
+        timeout-minutes: 12
         run: npm run update:formula-1
         env:
           NODE_ENV: production
 
+      # OpenF1 closes its API to anonymous callers around a live session, so a
+      # run that lands inside one keeps the snapshot and has nothing to verify.
+      # The next run outside the window is still held to the target.
       - name: Verify refresh freshness
+        if: steps.refresh.outputs.live_lock != 'true'
         run: npx tsx scripts/verifyDataRefresh.ts formula-1
 
       - name: Verify Formula 1 snapshot quality
@@ -188,7 +194,7 @@ jobs:
               `Check the run logs to diagnose. Common causes:`,
               `- OpenF1 API outage or timeout`,
               `- Quality gate caught a degraded snapshot`,
-              `- Git push rejected after 5 retries`,
+              `- Git push rejected after 8 attempts`,
               ``,
               `This issue will be updated if the next run also fails, and auto-closed on the first successful run.`
             ].join('\n');

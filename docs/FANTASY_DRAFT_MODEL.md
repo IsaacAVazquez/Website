@@ -354,7 +354,7 @@ A waiver candidate is a player whose board percentile runs ahead of how widely h
 
 Two filters make the gap mean something. A candidate has to sit inside the top 120 of the flex board or the top 24 quarterbacks, which is roughly what a 12-team league can start, and be rostered in under 60 percent of leagues. Without the depth filter the widest gaps are all deep bench players. The first board built from live data put a receiver ranked 142nd of 284 at the top of the list on a 2.9 percent rostered rate, which is a real discrepancy and not a start.
 
-The rest-of-season board would be the better backbone for this and for the trade calculator's market leg, and it is wired but not reachable. As of 2026-08-21 all three rest-of-season pages still serve year 2025 with a last_updated of 12/25, so the season check rejects them, which is the gate working. The builder treats it as optional and logs the reason, so it starts populating on its own once FantasyPros rolls those pages over. It has not been validated against live current-season data and should be checked in the season's first week.
+The rest-of-season board would be the better backbone for this and for the trade calculator's market leg. On 2026-09-28 all three rest-of-season pages served the 2026 season with 337 players from six experts and a last_updated of 9/28, so they now pass the season check. Nothing is built from them yet, and the weekly builder does not request them, which keeps a request off FantasyPros on every run. A board built from them has not been validated against results, so I would check it across a few weeks before anything depends on it.
 
 ## Winning lineups and season simulation
 

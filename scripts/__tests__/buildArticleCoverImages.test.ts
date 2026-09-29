@@ -1,6 +1,7 @@
 /**
  * @jest-environment node
  */
+import { spawnSync } from "child_process";
 import os from "os";
 import path from "path";
 import { promises as fs } from "fs";
@@ -9,6 +10,7 @@ import {
   applyCoverFrontmatter,
   buildArticleCoverImages,
 } from "../buildArticleCoverImages";
+import { ARTICLE_COVER_IMAGES } from "../data/articleCoverImages";
 
 const THUMB_URL = "https://upload.wikimedia.org/thumb/example/1600px-example.jpg";
 
@@ -23,7 +25,7 @@ function commonsSearchResponse(overrides: Record<string, unknown> = {}): Respons
             {
               thumburl: THUMB_URL,
               descriptionurl: "https://commons.wikimedia.org/wiki/File:Example.jpg",
-              mime: "image/jpeg",
+              mime: overrides.mime ?? "image/jpeg",
               width: 1600,
               height: 900,
               extmetadata: {
@@ -233,6 +235,110 @@ describe("buildArticleCoverImages", () => {
       `${HOROLOGY_FRONTMATTER}\n\n# a-history-of-horology\n\nBody.\n`
     );
   });
+
+  it("restricts the Commons search to bitmap files", async () => {
+    const projectRoot = await makeProjectRoot();
+    await writeArticle(projectRoot, "a-history-of-horology", HOROLOGY_FRONTMATTER);
+    const fetchImpl = makeFetch(() => commonsSearchResponse());
+
+    await buildArticleCoverImages({
+      projectRoot,
+      fetchImpl,
+      only: ["a-history-of-horology"],
+      logger: { log: jest.fn(), warn: jest.fn(), error: jest.fn() },
+    });
+
+    const searchUrl = new URL(String(fetchImpl.mock.calls[0][0]));
+    expect(searchUrl.searchParams.get("gsrsearch")).toMatch(/ filetype:bitmap$/);
+  });
+
+  it("writes the alt text from the plan, whatever the Commons description says", async () => {
+    const projectRoot = await makeProjectRoot();
+    await writeArticle(projectRoot, "a-history-of-horology", HOROLOGY_FRONTMATTER);
+    const planned = ARTICLE_COVER_IMAGES.find(
+      (entry) => entry.slug === "a-history-of-horology"
+    );
+
+    await buildArticleCoverImages({
+      projectRoot,
+      fetchImpl: makeFetch(() => commonsSearchResponse()),
+      only: ["a-history-of-horology"],
+      logger: { log: jest.fn(), warn: jest.fn(), error: jest.fn() },
+    });
+
+    const article = await fs.readFile(
+      path.join(projectRoot, "content/blog/a-history-of-horology.mdx"),
+      "utf8"
+    );
+    expect(planned).toMatchObject({ strategy: "wikimedia" });
+    expect(article).toContain(
+      `coverImageAlt: ${JSON.stringify((planned as { alt: string }).alt)}`
+    );
+    expect(article).not.toContain("An example subject");
+  });
+
+  it("credits the attribution Commons asks for when it differs from the artist", async () => {
+    const projectRoot = await makeProjectRoot();
+    await writeArticle(projectRoot, "a-history-of-horology", HOROLOGY_FRONTMATTER);
+
+    await buildArticleCoverImages({
+      projectRoot,
+      fetchImpl: makeFetch(() =>
+        commonsSearchResponse({
+          extmetadata: {
+            Artist: { value: "Waltham Watch Company" },
+            Attribution: { value: "Auckland Museum" },
+          },
+        })
+      ),
+      only: ["a-history-of-horology"],
+      logger: { log: jest.fn(), warn: jest.fn(), error: jest.fn() },
+    });
+
+    expect(
+      await fs.readFile(
+        path.join(projectRoot, "content/blog/a-history-of-horology.mdx"),
+        "utf8"
+      )
+    ).toContain('coverImageCredit: "Auckland Museum, CC BY 2.0 via Wikimedia Commons"');
+  });
+
+  // The cover workflow reads this exit code, so it is checked on the real
+  // command. The project root has no articles, which fails the entry before
+  // any network call.
+  it("exits non-zero and prints the failed count when a planned cover fails", async () => {
+    const run = spawnSync(
+      path.resolve("node_modules/.bin/tsx"),
+      [path.resolve("scripts/buildArticleCoverImages.ts"), "--only=a-history-of-horology"],
+      { cwd: await makeProjectRoot(), encoding: "utf8" }
+    );
+
+    expect(run.status).toBe(1);
+    expect(run.stdout).toContain("1 failed.");
+    expect(run.stderr).toContain("a-history-of-horology");
+  });
+
+  // Commons serves scanned books as application/pdf and image/vnd.djvu, and a
+  // DjVu scan would pass a check that only looked for an "image/" prefix.
+  it.each(["application/pdf", "image/vnd.djvu"])(
+    "rejects a freely licensed %s result",
+    async (mime) => {
+      const projectRoot = await makeProjectRoot();
+      await writeArticle(projectRoot, "a-history-of-horology", HOROLOGY_FRONTMATTER);
+      const fetchImpl = makeFetch(() => commonsSearchResponse({ mime }));
+
+      const result = await buildArticleCoverImages({
+        projectRoot,
+        fetchImpl,
+        only: ["a-history-of-horology"],
+        logger: { log: jest.fn(), warn: jest.fn(), error: jest.fn() },
+      });
+
+      expect(result.updated).toEqual([]);
+      expect(result.failed).toHaveLength(1);
+      expect(fetchImpl).toHaveBeenCalledTimes(1);
+    }
+  );
 
   it("leaves editorial-card and manual entries untouched", async () => {
     const projectRoot = await makeProjectRoot();

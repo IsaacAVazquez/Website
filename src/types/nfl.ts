@@ -112,6 +112,8 @@ export interface NFLSnapshot {
   season: string;
   week: number;
   updatedAt: string;
+  // Optional until the committed snapshot is rebuilt with it.
+  generatedAt?: string;
   sourceLabel: string;
   sourceUrls: {
     standings: string;

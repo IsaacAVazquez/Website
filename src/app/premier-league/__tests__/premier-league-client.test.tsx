@@ -107,4 +107,22 @@ describe("PremierLeagueClient", () => {
     expect(nextParams.get("view")).toBe("title-race");
     expect(nextParams.get("team")).toBe(titleRaceTeamId);
   });
+
+  it("links to the Premier League stats page and credits football-data.org for the data", () => {
+    currentSearchParams = new URLSearchParams("detail=scorers");
+
+    render(
+      <PremierLeagueClient
+        initialState={DEFAULT_PREMIER_LEAGUE_STATE}
+        summary={premierLeagueSnapshot.summary}
+        initialTeamSnapshot={null}
+      />
+    );
+
+    expect(screen.getByRole("link", { name: /official/i })).toHaveAttribute(
+      "href",
+      "https://www.premierleague.com/en/stats/top/players/goals"
+    );
+    expect(screen.getByText(/checked-in football-data\.org snapshot/)).toBeInTheDocument();
+  });
 });

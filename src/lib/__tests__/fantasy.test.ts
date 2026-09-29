@@ -8,6 +8,7 @@ import {
   getCrossBoardFantasyPlayers,
   getFantasyPlayersForPosition,
   getFantasySliceMetadata,
+  normalizeFantasyRouteScoring,
   normalizeFantasySnapshot,
   publishFantasyPlayer,
 } from "@/lib/fantasy";
@@ -621,5 +622,26 @@ describe("publishFantasyPlayer", () => {
     expect("adpLow" in invalid).toBe(false);
     expect("adpStandardDeviation" in invalid).toBe(false);
     expect("adpTimesDrafted" in invalid).toBe(false);
+  });
+});
+
+describe("normalizeFantasyRouteScoring", () => {
+  it("normalizes a single value and its aliases", () => {
+    expect(normalizeFantasyRouteScoring("std")).toBe("standard");
+    expect(normalizeFantasyRouteScoring(" Half-PPR ")).toBe("half_ppr");
+    expect(normalizeFantasyRouteScoring("ppr")).toBe("ppr");
+  });
+
+  // Next.js passes ?scoring=ppr&scoring=standard to a page as an array.
+  it("reads the first value of a repeated parameter", () => {
+    expect(normalizeFantasyRouteScoring(["standard", "ppr"])).toBe("standard");
+    expect(normalizeFantasyRouteScoring(["ppr", "standard"])).toBe("ppr");
+    expect(normalizeFantasyRouteScoring([])).toBe("ppr");
+  });
+
+  it("falls back to ppr when the parameter is absent or unknown", () => {
+    expect(normalizeFantasyRouteScoring(undefined)).toBe("ppr");
+    expect(normalizeFantasyRouteScoring(null)).toBe("ppr");
+    expect(normalizeFantasyRouteScoring("points-per-reception")).toBe("ppr");
   });
 });

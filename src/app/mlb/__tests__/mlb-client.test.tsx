@@ -1,5 +1,6 @@
 import { fireEvent, render, screen, within } from "@testing-library/react";
 import { getMlbSummarySnapshot, getMlbTeamSnapshot } from "@/lib/mlbSnapshot";
+import type { MlbGame } from "@/types/mlb";
 import { MlbClient } from "../mlb-client";
 import {
   buildMlbHref,
@@ -24,6 +25,10 @@ describe("MlbClient", () => {
     currentSearchParams = new URLSearchParams();
     mockPush.mockReset();
     mockReplace.mockReset();
+  });
+
+  afterEach(() => {
+    jest.restoreAllMocks();
   });
 
   it("renders standings, navigates league filters, and switches detail tabs", async () => {
@@ -53,5 +58,75 @@ describe("MlbClient", () => {
       "aria-selected",
       "true"
     );
+  });
+
+  it("prints the snapshot date as published for a viewer west of UTC", async () => {
+    // Stands in for a US viewer wherever the suite runs. A formatter that
+    // names its own zone is unaffected.
+    const RealDateTimeFormat = Intl.DateTimeFormat;
+    jest.spyOn(Intl, "DateTimeFormat").mockImplementation(((
+      locales?: string | string[],
+      options?: Intl.DateTimeFormatOptions
+    ) =>
+      new RealDateTimeFormat(locales, {
+        timeZone: "America/Los_Angeles",
+        ...options,
+      })) as typeof Intl.DateTimeFormat);
+
+    render(
+      <MlbClient
+        initialState={DEFAULT_MLB_STATE}
+        summary={{ ...(await getMlbSummarySnapshot()), updatedAt: "2026-09-27" }}
+        initialTeamSnapshot={await getMlbTeamSnapshot(DEFAULT_MLB_STATE.team)}
+      />
+    );
+
+    expect(screen.getByText(/updated Sep 27, 2026/)).toBeVisible();
+  });
+
+  it("labels a postseason game with its round", async () => {
+    const divisionSeriesGame: MlbGame = {
+      id: "849828",
+      utcDate: "2026-10-03T10:33:00Z",
+      status: "Scheduled",
+      matchday: null,
+      stage: "D",
+      startTimeTbd: true,
+      ifNecessary: false,
+      homeTeam: {
+        id: "119",
+        name: "Los Angeles Dodgers",
+        shortName: "Dodgers",
+        abbreviation: "LAD",
+        crest: null,
+      },
+      awayTeam: {
+        id: "5532",
+        name: "NL 3/6 Winner",
+        shortName: "NL 3/6 Winner",
+        abbreviation: "5532",
+        crest: null,
+      },
+      score: { winner: null, home: null, away: null },
+    };
+
+    render(
+      <MlbClient
+        initialState={DEFAULT_MLB_STATE}
+        summary={{
+          ...(await getMlbSummarySnapshot()),
+          recentGames: [],
+          upcomingGames: [
+            divisionSeriesGame,
+            { ...divisionSeriesGame, id: "823164", stage: "R", startTimeTbd: false },
+          ],
+        }}
+        initialTeamSnapshot={await getMlbTeamSnapshot(DEFAULT_MLB_STATE.team)}
+      />
+    );
+    fireEvent.click(screen.getByRole("tab", { name: "Games" }));
+
+    expect(screen.getByText("Division Series")).toBeVisible();
+    expect(screen.getByText("League fixture")).toBeVisible();
   });
 });

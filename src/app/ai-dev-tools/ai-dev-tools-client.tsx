@@ -74,10 +74,12 @@ const sourceOptions: FilterOption[] = [
 ];
 
 function formatGeneratedAt(iso: string): string {
+  // Pinned to UTC so the server and the browser print the same date.
   return new Date(iso).toLocaleDateString("en-US", {
     month: "long",
     day: "numeric",
     year: "numeric",
+    timeZone: "UTC",
   });
 }
 
@@ -257,7 +259,7 @@ export function AiDevToolsClient({ initialState }: AiDevToolsClientProps) {
 
   const lead = PROJECT_PRESS["/ai-dev-tools"].lead;
   const standfirst =
-    "I wanted a cleaner way to compare the coding-agent market, and the split I care about now runs along editor control, terminal control, cloud autonomy, and how directly each product exposes its own model economics. This directory tracks the tools people actually argue about, with pricing, model access, GitHub traction, and release velocity in one place, and I verify pricing and releases by hand.";
+    "I wanted a cleaner way to compare the coding-agent market, and the split I care about now runs along editor control, terminal control, cloud autonomy, and how directly each product exposes its own model economics. This directory tracks the tools people actually argue about, with pricing, model access, GitHub traction, and release velocity in one place. I keep the entries by hand, so every figure is as of the snapshot date and each entry links to the pages it came from.";
   const handleSelectTool = (toolId: string) => navigate({ ...state, selectedToolId: toolId });
 
   return (
