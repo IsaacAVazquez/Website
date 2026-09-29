@@ -354,7 +354,7 @@ export function HoldingsTable({ holdings, onUpdate, onRemove, onResearch, portfo
   }
 
   return (
-    <section id="holdings-list" className="invest-panel scroll-mt-28">
+    <section id="holdings-list" className="invest-panel scroll-mt-12 min-[901px]:scroll-mt-0">
       <div className="invest-panel-head">
         <div>
           <h2>Holdings</h2>

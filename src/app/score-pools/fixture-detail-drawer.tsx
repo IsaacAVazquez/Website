@@ -265,7 +265,7 @@ export function FixtureDetailDrawer({
       >
         <header className="flex items-start justify-between gap-4 border-b border-[var(--c97-rule)] pb-4">
           <div>
-            <p className="c97-kicker mb-1">{fixture.stage ?? fixture.round ?? "Fixture"}</p>
+            <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-1)" }}>{fixture.stage ?? fixture.round ?? "Fixture"}</p>
             <h2 className="text-lg font-bold text-[var(--c97-ink)]">
               {fixture.homeTeam} vs {fixture.awayTeam}
             </h2>

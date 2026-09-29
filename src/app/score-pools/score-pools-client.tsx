@@ -185,9 +185,9 @@ export function ScorePoolsClient({ snapshot, initialFixtureId }: ScorePoolsClien
 
   return (
     <section className="c97-band min-h-screen" data-c97-surface="paper">
-      <div className="c97-shell space-y-6" style={{ maxWidth: "86rem" }}>
+      <div className="c97-shell space-y-6">
         <header>
-          <p className="c97-kicker mb-1">Prediction Tools</p>
+          <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-1)" }}>Prediction Tools</p>
           <h1 className="text-2xl font-bold tracking-tight text-[var(--c97-ink)] sm:text-3xl">
             Score{" "}
             <em style={{ fontFamily: "var(--c97-font-display)", fontStyle: "italic", fontWeight: 400 }}>
@@ -264,7 +264,7 @@ export function ScorePoolsClient({ snapshot, initialFixtureId }: ScorePoolsClien
           </section>
         ) : (
           <>
-            <nav className="c97-segmented items-center" aria-label="Pools and rounds">
+            <nav className="c97-segmented items-center" style={{ marginBottom: "var(--c97-sp-3)" }} aria-label="Pools and rounds">
               {pools.map((pool) => (
                 <button
                   key={pool.id}

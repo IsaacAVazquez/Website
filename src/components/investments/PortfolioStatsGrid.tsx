@@ -125,7 +125,7 @@ export function PortfolioStatsGrid({
     <section
       id="portfolio-stats"
       aria-label="Portfolio stats"
-      className={styles.statsPanel + " scroll-mt-28"}
+      className={styles.statsPanel + " scroll-mt-12 min-[901px]:scroll-mt-0"}
     >
       <div className={styles.statsCap}>
         <span>Portfolio stats</span>

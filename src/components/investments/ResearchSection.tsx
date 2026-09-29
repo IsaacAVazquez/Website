@@ -115,7 +115,7 @@ export function ResearchSection({
       <section
         id="research-section"
         aria-label="Stock research"
-        className="scroll-mt-28 border border-dashed border-[var(--c97-rule)] bg-[color-mix(in_srgb,var(--c97-surface)_92%,var(--c97-panel))] px-6 py-12 text-center "
+        className="scroll-mt-12 min-[901px]:scroll-mt-0 border border-dashed border-[var(--c97-rule)] bg-[color-mix(in_srgb,var(--c97-surface)_92%,var(--c97-panel))] px-6 py-12 text-center "
       >
         <p className="invest-rail-section-label">Research</p>
         <p className="text-sm font-semibold text-[var(--c97-ink)]">
@@ -133,7 +133,7 @@ export function ResearchSection({
     <section
       id="research-section"
       aria-label={`Research · ${symbol.toUpperCase()}`}
-      className="scroll-mt-28 space-y-5"
+      className="scroll-mt-12 min-[901px]:scroll-mt-0 space-y-5"
     >
       {showLoadingState ? (
         <div className="border border-[var(--c97-rule)] bg-[color-mix(in_srgb,var(--c97-surface)_92%,var(--c97-panel))] px-6 py-16 text-center ">
