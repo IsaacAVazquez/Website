@@ -482,6 +482,7 @@ Subsystem references:
 - `SCORE_POOLS_ENGINE.md` — exact-score prediction engine and its data flow
 - `docs/DATA_UPDATE_OPERATIONS.md` — command → artifact → schedule runbook
 - `docs/EASTER_EGGS.md` — every easter egg, its trigger, and its code; update it in any change that adds, alters, or removes one
+- `docs/TODO.md` — open items that need Isaac or a scheduled run; add blocked work there and delete an item when it is done
 
 Older plans, redesign notes, and summary docs are kept for history. Check `docs/README.md` before treating a markdown file as current.
 

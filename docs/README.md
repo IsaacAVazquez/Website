@@ -51,6 +51,7 @@ Subsystem references (current):
 - `FANTASY_DRAFT_COMPANION.md` - private Chrome and Edge side panel build, installation, and operating limits
 - `ARTICLE_IMAGE_WORKFLOW.md` - blog cover-image plan, the fetch builder, and the writing-time step
 - `EASTER_EGGS.md` - every easter egg on the site, with its trigger, what it shows, and its code
+- `TODO.md` - open items that need Isaac or a scheduled run, each with why it is blocked
 
 ---
 
