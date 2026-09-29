@@ -12,6 +12,7 @@ All notable changes to this repository are documented here. Format: `YYYY-MM-DD`
 - Settle the data audit's content follow-ups ([#502](https://github.com/IsaacAVazquez/Website/pull/502)).
 - Bump next, vite, plugin-react, netlify blobs, and dotenv ([#503](https://github.com/IsaacAVazquez/Website/pull/503)).
 - Anchor jest worktree ignore patterns to rootDir ([#504](https://github.com/IsaacAVazquez/Website/pull/504)).
+- Rewrite the about-me copy in Isaac's voice across the site ([#505](https://github.com/IsaacAVazquez/Website/pull/505)).
 
 ---
 
