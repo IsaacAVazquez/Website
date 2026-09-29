@@ -15,6 +15,8 @@ interface MissionImageFrameProps {
   imageInsetClassName?: string;
   /** Catalog 97 surface for the frame, when its overlay text needs a fixed ground. */
   surface?: "espresso" | "paper";
+  /** The width of the frame on the page, as a `sizes` value. */
+  sizes?: string;
   children?: ReactNode;
 }
 
@@ -67,6 +69,7 @@ export function MissionImageFrame({
   imagePosition = "center center",
   imageInsetClassName = "",
   surface,
+  sizes = "100vw",
   children,
 }: MissionImageFrameProps) {
   const candidates = useMemo(
@@ -109,10 +112,10 @@ export function MissionImageFrame({
               src={activeImage}
               alt={alt}
               fill
-              // Every frame is 220px tall and one column wide at most, so the
-              // browser can ask for a file near that size. The originals run
-              // to 4096px and 2.6 MB.
-              sizes="(min-width: 1024px) 560px, 100vw"
+              // The width the caller measured for its frame, so the browser
+              // can ask for a file near that size. The originals run to
+              // 4096px and 2.6 MB.
+              sizes={sizes}
               // Only files stored with the site go through the optimizer.
               // Launch Library's hosts are not in next.config's
               // remotePatterns, so those load as they are.

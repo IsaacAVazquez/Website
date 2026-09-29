@@ -1,6 +1,7 @@
 import { fireEvent, render, waitFor } from "@testing-library/react";
 
 import { MissionImageFrame } from "../MissionImageFrame";
+import { MissionVehiclePhoto } from "../MissionVehiclePhoto";
 
 describe("MissionImageFrame", () => {
   // The frame is 220px tall. The hero image in the snapshot is 660 KB at
@@ -21,6 +22,24 @@ describe("MissionImageFrame", () => {
     );
     expect(image?.getAttribute("sizes")).toBeTruthy();
     expect(image).toHaveAttribute("alt", "Starship vehicle view");
+  });
+
+  // The optimizer picks a file for the width it is told. The hero photo is
+  // 220px wide on a desktop and the drawer photo 439px, so one width for both
+  // asked for a file nearly three times the size the hero needs.
+  it("asks for the width its caller measured", () => {
+    const { container } = render(
+      <MissionVehiclePhoto
+        name="Falcon 9"
+        image="/data/spacex/images/abc123.jpg"
+        sizes="(min-width: 1024px) 220px, 85vw"
+      />
+    );
+
+    expect(container.querySelector("img")).toHaveAttribute(
+      "sizes",
+      "(min-width: 1024px) 220px, 85vw"
+    );
   });
 
   // Launch Library's hosts are not in next.config's remotePatterns, so the
