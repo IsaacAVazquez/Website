@@ -10,6 +10,7 @@ import {
   fitSearchTitle,
   siteConfig,
 } from "@/lib/seo";
+import { profile } from "@/lib/profile";
 
 const CASE_STUDY_SEO_DATE = "2026-04-04";
 
@@ -118,12 +119,12 @@ export default async function CaseStudyPage({
             dateModified: CASE_STUDY_SEO_DATE,
             author: {
               name: siteConfig.name,
-              jobTitle: "Product Manager",
+              jobTitle: profile.fullTitle,
               url: siteConfig.url,
             },
             creator: {
               name: siteConfig.name,
-              jobTitle: "Product Manager",
+              jobTitle: profile.fullTitle,
               url: siteConfig.url,
             },
             keywords: projectKeywords,
