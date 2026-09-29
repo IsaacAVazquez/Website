@@ -4,11 +4,11 @@ import { profile, profileSameAs } from "@/lib/profile";
 import { Catalog97About } from "@/components/catalog97/Catalog97About";
 
 export const metadata = generateAIOptimizedMetadata({
-  title: "About Isaac Vazquez | Product Manager and Berkeley Haas MBA",
+  title: "About Isaac Vazquez | Berkeley Haas MBA Candidate",
   description:
-    "I'm Isaac Vazquez, a Berkeley Haas MBA candidate and product manager with six years across QA, analytics, SaaS, and civic tech.",
+    "I'm a second-year Berkeley Haas MBA moving into product, after six years in campaign data and QA and a summer on Juno's MBA growth team.",
   canonicalUrl: "https://isaacvazquez.com/about",
-  dateModified: "2026-09-14",
+  dateModified: "2026-09-28",
 });
 
 export default function AboutPage() {
@@ -33,9 +33,9 @@ export default function AboutPage() {
           type: "ProfilePage",
           data: {
             url: "https://isaacvazquez.com/about",
-            lastReviewed: "2026-09-14",
+            lastReviewed: "2026-09-28",
             description:
-              "Isaac Vazquez is a product manager and Berkeley Haas MBA candidate with six years across QA, analytics, SaaS, and civic tech.",
+              "Isaac Vazquez is a second-year Berkeley Haas MBA candidate moving into product, with six years in campaign data and QA and a summer 2026 growth internship at Juno.",
             person: {
               name: profile.name,
               jobTitle: profile.fullTitle,
@@ -57,13 +57,6 @@ export default function AboutPage() {
                 "@type": "Organization",
                 name: profile.currentRole.organization,
               },
-              hasOccupation: [
-                {
-                  "@type": "Occupation",
-                  name: "Product Manager",
-                  skills: profile.knowsAbout,
-                },
-              ],
             },
           },
         }}

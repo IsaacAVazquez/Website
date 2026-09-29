@@ -72,7 +72,7 @@ async function getAllSearchableContent(): Promise<SearchableContent[]> {
       id: 'page-home',
       title: 'Isaac Vazquez',
       excerpt:
-        'Portfolio site for Isaac Vazquez — product manager, builder, and analytics-focused operator.',
+        'My background, selected work, newest writing, and the dashboards I built.',
       content:
         'home portfolio Isaac Vazquez product manager analytics fintech builder Berkeley Bay Area',
       url: '/',
@@ -83,7 +83,7 @@ async function getAllSearchableContent(): Promise<SearchableContent[]> {
       id: 'page-about',
       title: 'About Isaac Vazquez',
       excerpt:
-        'Background, work history, and how I think about product management, analytics, and decision-support tooling.',
+        'How I got from campaign data and QA to Berkeley Haas, and the habits I work by.',
       content:
         'about Isaac Vazquez background bio product manager analytics civic tech fintech Berkeley',
       url: '/about',
@@ -105,7 +105,7 @@ async function getAllSearchableContent(): Promise<SearchableContent[]> {
       id: 'page-resume',
       title: 'Resume - Isaac Vazquez',
       excerpt:
-        'Resume for a product manager with 6+ years across QA, analytics, civic tech, and fintech-style product work.',
+        'My résumé, covering Open Progress, Civitech, my 2026 growth internship at Juno, and my Berkeley Haas MBA.',
       content:
         'Resume product manager QA analytics civic tech fintech product work Berkeley Bay Area',
       url: '/resume',
@@ -116,7 +116,7 @@ async function getAllSearchableContent(): Promise<SearchableContent[]> {
       id: 'page-contact',
       title: 'Contact Isaac Vazquez',
       excerpt:
-        'Get in touch about product roles, analytics work, AI workflows, or fintech-focused projects.',
+        'How to reach me about full-time product roles, Haas, or anything on this site.',
       content:
         'Contact product manager analytics AI workflows fintech product collaboration Berkeley Bay Area',
       url: '/contact',
@@ -605,7 +605,7 @@ async function getAllSearchableContent(): Promise<SearchableContent[]> {
       id: 'page-now',
       title: 'Now',
       excerpt:
-        'What I am focused on right now — current projects, reading, and priorities.',
+        'What I am focused on right now, from my second year at Haas to what I am building and reading.',
       content:
         'now page current focus projects priorities reading what I am working on status update',
       url: '/now',

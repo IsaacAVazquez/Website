@@ -134,7 +134,7 @@ export function AuthorBio({
   name = "Isaac Vazquez",
   title = "UC Berkeley Haas MBA Candidate",
   image = "/images/headshot-home.webp",
-  bio = "I'm an MBA candidate at UC Berkeley Haas with six years in QA and product across SaaS and civic tech. Most of what I write comes from things I've actually built or gotten wrong, including investment research tooling, draft strategy models, and product decisions that didn't go the way I planned. I write to work through ideas, not to summarize them.",
+  bio = "I'm a second-year MBA candidate at Berkeley Haas moving into product, after six years in campaign data and QA and a summer on Juno's MBA growth team. Most of my product writing comes from things I've actually built or gotten wrong, and writing is how I work out what I think about them.",
   expertise = [
     "Product Management",
     "Product Strategy",

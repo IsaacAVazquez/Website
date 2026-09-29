@@ -5,16 +5,16 @@ import { careerTimeline } from "@/constants/personal";
 
 const principles = [
   {
-    title: "Show the compromise",
-    body: "Every model gives something up somewhere. I would rather put that on the page than hide it behind a confident number.",
+    title: "Check what produces the number",
+    body: "Before I act on a metric, I read the query or the event behind it. At Juno, correcting one click event moved the funnel's biggest drop off a step earlier, to members who had an approved rate and never clicked through to a lender.",
   },
   {
-    title: "Fail toward yesterday",
-    body: "A stale number with a date on it is still useful, but a blank panel at two in the morning is not.",
+    title: "Watch customers use the real thing",
+    body: "At Civitech I ran TextOut's alpha demos by having customers work through their own workflows in the new builds. Those sessions showed the messaging window was cutting off message content, so I wrote the user story and the business case, and the fix shipped within a week.",
   },
   {
-    title: "Lead with the problem",
-    body: "The stack is the least interesting part of any project, so it goes last in the write-up and never in the headline.",
+    title: "Put the limits next to the number",
+    body: "At Juno the simple comparison made advising meetings look like they multiplied conversion, but most of those meetings happened after the conversion they were credited with. The matched estimate I built came out at a fraction of the headline, and placebo checks suggested most of what was left was selection.",
   },
 ];
 
@@ -25,10 +25,10 @@ const principles = [
  * chocolate timeline, with the saffron pull quote bottom-aligned inside a tall
  * band between them. All three are kept.
  *
- * The three "How I work" principles come from the design because they describe
- * what this codebase actually does — fail-soft snapshots, stated uncertainty,
- * and problem-first write-ups are real conventions here. Nothing else from the
- * mockup's biography ships: the timeline is the real one in `personal.ts`.
+ * The three "How I work" principles are working habits, each paired with the
+ * example that shows it, taken from the Civitech and Juno write-ups under
+ * /writing. Nothing from the mockup's biography ships, and the timeline is the
+ * real one in `personal.ts`.
  */
 export function Catalog97About() {
   // Newest first, which is the order the design's timeline reads in. The source
@@ -45,7 +45,7 @@ export function Catalog97About() {
       >
         <div className="c97-shell">
           <h1 className="c97-poster">
-            I build products, and I show the work behind them.
+            Before I trust a number, I check what&rsquo;s producing it.
           </h1>
         </div>
       </section>
@@ -89,24 +89,41 @@ export function Catalog97About() {
                 maxWidth: "var(--c97-measure-body)",
               }}
             >
-              Most of what I build exists to answer one question, which is
-              whether the thing in front of us works.
+              I&rsquo;m a second-year MBA candidate at Berkeley Haas, and before
+              that I spent six years in campaign data and QA, where a lot of my
+              job turned into product work.
             </p>
             <p className="c97-prose" style={{ marginTop: "var(--c97-sp-2)" }}>
-              I came to product through quality engineering, which means I spent
-              years writing the harnesses and checks that catch a regression
-              before a customer does. Most of that was at Civitech, a SaaS
-              company building software for political campaigns, after a few
-              years of digital and data work at Open Progress, and I&rsquo;m at
-              Berkeley Haas for my MBA now. The dashboards and ledgers on this
-              site are the same instinct pointed somewhere lighter, and both
-              halves want the same thing from a screen, which is a number I can
-              trust and a note about how it was arrived at.
+              I studied political science and international affairs at Florida
+              State and started out in digital and data work for campaigns at
+              Open Progress. When Civitech, a campaign software company in
+              Austin, acquired Open Progress, I moved over in January 2022 as
+              the only QA analyst on its applications engineering team, and
+              over three and a half years the job grew
+              well past testing into product work, from owning the vision for a
+              texting platform, to leading a pricing initiative, to turning
+              leadership and user feedback into requirements for a new
+              platform&rsquo;s launch.
             </p>
             <p className="c97-prose" style={{ marginTop: "var(--c97-sp-2)" }}>
-              When something here is uncertain, it says so. When a feed fails,
-              it keeps yesterday and prints the date rather than showing an
-              empty page and letting you guess.
+              I left Civitech in August 2025 to start at Haas, because I wanted
+              to move fully into product management, and I spent summer 2026 as
+              the MBA growth intern at Juno, a fintech company that negotiates
+              group rates on student loans. Now I&rsquo;m looking for a
+              full-time product management role that starts after I graduate in
+              May 2027, ideally in fintech or AI, and I&rsquo;m most interested
+              in products where people make decisions from data they need to be
+              able to trust.
+            </p>
+            <p className="c97-prose" style={{ marginTop: "var(--c97-sp-2)" }}>
+              I picked up the habit of checking a number before trusting it in
+              QA, and my summer at Juno showed me it carries over to growth and
+              product work almost unchanged, since almost every useful thing I
+              did there started with finding out whether a number measured what
+              everyone assumed it measured. The tools on this site follow the
+              same rule, so most dashboards show where their numbers came from
+              and when, and a failed refresh keeps the last good snapshot and
+              prints its date.
             </p>
           </div>
 
@@ -152,8 +169,8 @@ export function Catalog97About() {
           }}
         >
           <p className="c97-poster-sm" style={{ maxWidth: "24ch" }}>
-            What I find interesting about quality work is knowing which bug was
-            always going to matter.
+            QA put me close to both the customer and the code, and I learned to
+            use that position to decide what the product should do next.
           </p>
         </div>
       </section>

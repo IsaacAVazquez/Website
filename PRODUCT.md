@@ -18,7 +18,7 @@ A personal, portfolio-first site that establishes Isaac Vazquez as a credible pr
 
 ## Positioning
 
-Isaac is a working product manager with a quality-assurance-to-product path, which is an uncommon origin story, and he demonstrates his thinking in a direct, first-person, opinion-forward voice that reads like a practitioner explaining real work rather than a thought-leadership feed. His lived career arc grounds this, from civic technology at scale, to a Haas MBA, to building fintech, AI-workflow, and decision-support tools. A neighboring product-manager portfolio could copy the format, but it could not truthfully copy that voice, that career record, or the fact that the site is a live, continuously maintained system he keeps shipping into.
+Isaac is a second-year Berkeley Haas MBA candidate moving into product management. He is not a product manager yet and does not want the site to call him one (his correction on 2026-09-28). His path from QA into product work at Civitech is an uncommon origin story, and he demonstrates his thinking in a direct, first-person, opinion-forward voice that reads like a practitioner explaining real work rather than a thought-leadership feed. His lived career arc grounds this, from civic technology at scale, to a Haas MBA, to building fintech, AI-workflow, and decision-support tools. A neighboring MBA or product portfolio could copy the format, but it could not truthfully copy that voice, that career record, or the fact that the site is a live, continuously maintained system he keeps shipping into.
 
 The breadth of working tools on the site is genuinely distinctive, but per Isaac it is personal work rather than the headline proof, so positioning leans on the thinking and the track record, not on the tool count.
 

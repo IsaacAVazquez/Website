@@ -142,7 +142,7 @@ export function Catalog97Home({
           <div className={styles.heroGrid}>
             <div className={styles.heroCopy}>
               <h1 className={`c97-poster ${styles.headline}`}>
-                I build test harnesses, and dashboards that run on public data.
+                I’m a second-year MBA at Berkeley Haas, moving into product.
               </h1>
               <div className={styles.actions}>
                 <Link className="c97-btn c97-offset" href="/portfolio">
@@ -154,11 +154,11 @@ export function Catalog97Home({
               </div>
 
               <p className={`c97-lead ${styles.lead}`}>
-                I’m a product manager and builder at Berkeley Haas, MBA ’27, and
-                I came to product through quality engineering at Civitech. The
-                dashboards below read snapshots that a scheduled job pulls from
-                public sources and commits to this site’s repository, so each
-                one shows where its numbers came from and when.
+                Before Haas I spent six years in campaign data and QA, mostly at
+                Civitech, where my QA job grew into product work, and in summer
+                2026 I was the MBA growth intern at Juno. I’m most interested in
+                fintech and AI, and I’m looking for a full-time product role
+                that starts after I graduate in May 2027.
               </p>
 
             </div>
@@ -298,8 +298,8 @@ export function Catalog97Home({
       >
         <div className={`c97-shell ${styles.contactRow}`}>
           <p className={`c97-poster-sm ${styles.contactMessage}`}>
-            If you have a thing that needs proving, I would like to hear about
-            it.
+            If you’re hiring for product or want to compare notes, I’d like to
+            hear from you.
           </p>
           <Link className="c97-btn-outline c97-offset" href="/contact">
             Get in touch

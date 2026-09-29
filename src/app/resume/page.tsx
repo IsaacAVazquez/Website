@@ -5,9 +5,9 @@ import { Catalog97Resume } from "@/components/catalog97/Catalog97Resume";
 export const metadata = constructMetadata({
   title: "Isaac Vazquez Resume | Product and Analytics",
   description:
-    "My resume covers six years across civic tech, QA, analytics, and product work, plus my Berkeley Haas MBA and current product focus.",
+    "My résumé covers campaign data at Open Progress, QA and product work at Civitech, a 2026 growth internship at Juno, and my Berkeley Haas MBA.",
   canonicalUrl: "/resume",
-  dateModified: "2026-09-14",
+  dateModified: "2026-09-28",
 });
 
 export default function ResumePage() {
