@@ -49,11 +49,11 @@ function resolveSiteUrl(): string {
 
 export const siteConfig = {
   name: profile.name,
-  title: "Product Manager and Berkeley Haas MBA",
+  title: "Berkeley Haas MBA Candidate",
   description: profile.description,
   url: resolveSiteUrl(),
   ogImage: "/opengraph-image", // 1200x630 OG image optimized for social media & AI previews
-  ogImageAlt: "Isaac Vazquez - Product Manager & UC Berkeley Haas MBA Candidate",
+  ogImageAlt: "Isaac Vazquez, UC Berkeley Haas MBA candidate",
   links: {
     github: profile.sameAs.github,
     linkedin: profile.sameAs.linkedin,
@@ -403,13 +403,6 @@ export function buildPersonEntity(): Record<string, unknown> {
       "@type": "Organization",
       name: profile.currentRole.organization,
     },
-    hasOccupation: [
-      {
-        "@type": "Occupation",
-        name: "Product Manager",
-        skills: profile.knowsAbout,
-      },
-    ],
     knowsAbout: profile.knowsAbout,
   };
 }
