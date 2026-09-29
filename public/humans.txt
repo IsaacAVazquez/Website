@@ -1,0 +1,14 @@
+/* TEAM */
+  Isaac Vazquez
+  Site: https://isaacvazquez.com
+
+/* SITE */
+  Built with: Next.js 16, React 19, TypeScript, Tailwind CSS 4
+  Typefaces: Anton, Newsreader, Archivo, Fragment Mono, Great Vibes
+  Inks: blue, saffron, vermilion, peach, green, teal, pink
+  Hosted on: Netlify
+  Source: https://github.com/IsaacAVazquez/Website
+
+/* NOTE */
+  If you're reading this file, you're probably the kind of person who also
+  opens the browser console. There's a note for you there too.
