@@ -372,6 +372,35 @@ describe("DraftTrackerClient", () => {
     expect(search).toHaveFocus();
   });
 
+  it("notes a second kicker on the user's roster", () => {
+    const state = mockUseDraftState();
+    mockUseDraftState.mockReturnValue({
+      ...state,
+      draftState: {
+        ...state.draftState,
+        picks: [
+          { pickNumber: 1, teamNumber: 1, round: 10, player: { id: "k-1", position: "K", adp: 140 } },
+        ],
+        currentRound: 14,
+      },
+    });
+    const snapshotResult = mockUseFantasySnapshot();
+    mockUseFantasySnapshot.mockReturnValue({
+      ...snapshotResult,
+      snapshot: {
+        ...snapshotResult.snapshot,
+        overall: [
+          { ...snapshotResult.snapshot.overall[0], id: "k-2", name: "Sample Kicker", position: "K" },
+        ],
+      },
+    });
+
+    render(<DraftTrackerClient />);
+    fireEvent.click(screen.getByRole("button", { name: "Log Sample Kicker" }));
+
+    expect(screen.getByText(/A second kicker is a bold call\./)).toBeVisible();
+  });
+
   it("does not focus board search when a pick was logged without a search", () => {
     render(<DraftTrackerClient />);
 

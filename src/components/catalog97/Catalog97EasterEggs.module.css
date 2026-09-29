@@ -283,6 +283,41 @@
   }
 }
 
+/* ---- Darkroom safelight (theme flipped five times) ---- */
+
+/*
+ * One sheet of vermilion over the viewport, multiplied into the page, so
+ * paper prints red and ink stays dark, the way a print looks under a
+ * safelight. It sits over the header and under the toast, which has to stay
+ * readable, and it never takes the pointer. With reduced motion it comes on
+ * and goes off with no fade.
+ */
+.safelight {
+  position: fixed;
+  inset: 0;
+  z-index: 55;
+  pointer-events: none;
+  background: var(--c97-riso-vermilion);
+  mix-blend-mode: multiply;
+}
+
+@media screen and (prefers-reduced-motion: no-preference) {
+  .safelight {
+    animation: safelightGlow 6s ease-in-out;
+  }
+}
+
+@keyframes safelightGlow {
+  0%,
+  100% {
+    opacity: 0;
+  }
+  12%,
+  88% {
+    opacity: 1;
+  }
+}
+
 /* ---- Reduced motion: a still misprint and a still impression, nothing moves ---- */
 
 @media screen and (prefers-reduced-motion: reduce) {
@@ -309,7 +344,8 @@
 @media print {
   .region,
   .imprint,
-  .proof {
+  .proof,
+  .safelight {
     display: none !important;
   }
 }
