@@ -28,7 +28,7 @@ Single source of truth for site-wide constants. Import this anywhere you need a 
 ```ts
 export const siteConfig = {
   name: "Isaac Vazquez",
-  title: "Product Manager and Berkeley Haas MBA",
+  title: "Berkeley Haas MBA Candidate",
   description: "...",
   url: "https://isaacvazquez.com",    // NEXT_PUBLIC_SITE_URL or SITE_URL when set
   ogImage: "/opengraph-image",        // 1200x630

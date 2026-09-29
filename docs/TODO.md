@@ -19,4 +19,3 @@ These are the open items that need Isaac, either because they need an account, a
 ## Open calls, not blocked
 
 - [ ] The editorial notes on the frontier models added in #497 mostly restate the provider's own description, and could say what's actually different about each model.
-- [ ] Delete the local `fix/lane-curated-finance` branch once it's no longer wanted. It holds the J.P. Morgan capital market matrix, which was left out of #497 because it's marked not for retail use or distribution. It was never pushed, so it exists only on this machine. The other lane branches were deleted on 2026-09-28 after their work was confirmed on main.
