@@ -105,6 +105,7 @@ Without this token, the Premier League and La Liga routes still work from the ch
 | --- | --- | --- |
 | `NETLIFY_AUTH_TOKEN` | yes for `publish-data.yml` | Repository secret used by the Actions deploy and by `scripts/ci/verify-deploy-assets.mjs` |
 | `NETLIFY_SITE_ID` | set in the workflow | Site identifier read by `scripts/ci/verify-deploy-assets.mjs`; `publish-data.yml` sets it inline |
+| `PRODUCTION_DATA_REVISION_URL` | optional | Repository secret that overrides where `publish-data.yml` reads the ledger. The default is the Netlify origin, `https://isaacvazquez.netlify.app/api/data-revisions`, because Cloudflare challenges runner traffic on the custom domain |
 | `SNAPSHOT_PUSH_ATTEMPTS` | optional | Overrides the default 8 push attempts in `scripts/ci/commit-and-push-snapshot.sh` |
 | `INDEXNOW_ENDPOINT` | optional | Overrides the default IndexNow endpoint in `scripts/submitIndexNow.mjs` |
 | `E2E_PORT`, `E2E_BASE_URL`, `E2E_FULL_MATRIX`, `PLAYWRIGHT_OUTPUT_DIR` | optional | Playwright settings read in `playwright.config.ts` (port, base URL, the full browser matrix when set to `1`, and the output directory) |

@@ -138,6 +138,12 @@ describe("snapshot refresh workflow infrastructure", () => {
     // which is exactly what shipped on 2026-08-20, so the file-manifest check has
     // to stay wired up.
     expect(publicationCommands).toContain("verify-deploy-assets.mjs");
+    // The ledger is read from the Netlify origin. Cloudflare challenges runner
+    // traffic on the custom domain, which failed seven publishes in a row on
+    // 2026-09-29 while every deploy was fine.
+    expect(publicationCommands).toContain(
+      ":-https://isaacvazquez.netlify.app/api/data-revisions}"
+    );
     expect(verifier).toContain("cacheBust");
     expect(verifier).toContain("publicationRevision");
     expect(verifier).toContain("merge-base");
