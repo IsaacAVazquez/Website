@@ -1,10 +1,10 @@
 {
   "symbol": "SPY",
-  "lastUpdated": "2026-08-18T23:06:20.443188+00:00",
+  "lastUpdated": "2026-09-29T07:04:00.244178+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-08-18T23:06:20.443188+00:00",
+    "snapshotBuiltAt": "2026-09-29T07:04:00.244178+00:00",
     "sections": {
-      "price": "2026-08-14"
+      "price": "2026-09-28"
     }
   },
   "source": "prefetched",
@@ -20,8 +20,8 @@
     "cash_flow": false,
     "wacc": false,
     "industry": false,
-    "beta": false,
-    "news": false,
+    "beta": true,
+    "news": true,
     "officers": false,
     "compare": false
   },
@@ -53,247 +53,11 @@
       "quarterly": [],
       "annual": []
     },
+    "wacc": {},
+    "beta": {
+      "beta5y": 1
+    },
     "price": [
-      {
-        "date": "2025-08-14",
-        "open": 642.79,
-        "high": 645.62,
-        "low": 642.34,
-        "close": 644.95,
-        "volume": 59327500
-      },
-      {
-        "date": "2025-08-15",
-        "open": 645.99,
-        "high": 646.09,
-        "low": 642.52,
-        "close": 643.44,
-        "volume": 68592500
-      },
-      {
-        "date": "2025-08-18",
-        "open": 642.86,
-        "high": 644,
-        "low": 642.18,
-        "close": 643.3,
-        "volume": 43804900
-      },
-      {
-        "date": "2025-08-19",
-        "open": 643.12,
-        "high": 644.11,
-        "low": 638.48,
-        "close": 639.81,
-        "volume": 69750700
-      },
-      {
-        "date": "2025-08-20",
-        "open": 639.4,
-        "high": 639.66,
-        "low": 632.95,
-        "close": 638.11,
-        "volume": 88890300
-      },
-      {
-        "date": "2025-08-21",
-        "open": 636.28,
-        "high": 637.97,
-        "low": 633.81,
-        "close": 635.55,
-        "volume": 54805800
-      },
-      {
-        "date": "2025-08-22",
-        "open": 637.76,
-        "high": 646.5,
-        "low": 637.25,
-        "close": 645.31,
-        "volume": 84083200
-      },
-      {
-        "date": "2025-08-25",
-        "open": 644.04,
-        "high": 645.29,
-        "low": 642.35,
-        "close": 642.47,
-        "volume": 51274300
-      },
-      {
-        "date": "2025-08-26",
-        "open": 642.2,
-        "high": 645.51,
-        "low": 641.57,
-        "close": 645.16,
-        "volume": 51581600
-      },
-      {
-        "date": "2025-08-27",
-        "open": 644.57,
-        "high": 647.37,
-        "low": 644.42,
-        "close": 646.63,
-        "volume": 48341100
-      },
-      {
-        "date": "2025-08-28",
-        "open": 647.24,
-        "high": 649.48,
-        "low": 645.34,
-        "close": 648.92,
-        "volume": 61519500
-      },
-      {
-        "date": "2025-08-29",
-        "open": 647.47,
-        "high": 647.84,
-        "low": 643.14,
-        "close": 645.05,
-        "volume": 74522200
-      },
-      {
-        "date": "2025-09-02",
-        "open": 637.5,
-        "high": 640.49,
-        "low": 634.92,
-        "close": 640.27,
-        "volume": 81983500
-      },
-      {
-        "date": "2025-09-03",
-        "open": 642.67,
-        "high": 644.21,
-        "low": 640.46,
-        "close": 643.74,
-        "volume": 70820900
-      },
-      {
-        "date": "2025-09-04",
-        "open": 644.42,
-        "high": 649.15,
-        "low": 643.51,
-        "close": 649.12,
-        "volume": 65219200
-      },
-      {
-        "date": "2025-09-05",
-        "open": 651.48,
-        "high": 652.21,
-        "low": 643.33,
-        "close": 647.24,
-        "volume": 85178900
-      },
-      {
-        "date": "2025-09-08",
-        "open": 648.62,
-        "high": 649.84,
-        "low": 647.23,
-        "close": 648.83,
-        "volume": 63133100
-      },
-      {
-        "date": "2025-09-09",
-        "open": 648.97,
-        "high": 650.86,
-        "low": 647.22,
-        "close": 650.33,
-        "volume": 66133900
-      },
-      {
-        "date": "2025-09-10",
-        "open": 653.62,
-        "high": 654.55,
-        "low": 650.63,
-        "close": 652.21,
-        "volume": 78034500
-      },
-      {
-        "date": "2025-09-11",
-        "open": 654.18,
-        "high": 658.33,
-        "low": 653.59,
-        "close": 657.63,
-        "volume": 69934400
-      },
-      {
-        "date": "2025-09-12",
-        "open": 657.6,
-        "high": 659.11,
-        "low": 656.9,
-        "close": 657.41,
-        "volume": 72780100
-      },
-      {
-        "date": "2025-09-15",
-        "open": 659.64,
-        "high": 661.04,
-        "low": 659.34,
-        "close": 660.91,
-        "volume": 63772400
-      },
-      {
-        "date": "2025-09-16",
-        "open": 661.47,
-        "high": 661.78,
-        "low": 659.21,
-        "close": 660,
-        "volume": 61169000
-      },
-      {
-        "date": "2025-09-17",
-        "open": 660.01,
-        "high": 661.72,
-        "low": 654.3,
-        "close": 659.18,
-        "volume": 101952200
-      },
-      {
-        "date": "2025-09-18",
-        "open": 661.89,
-        "high": 664.89,
-        "low": 660.27,
-        "close": 662.26,
-        "volume": 90459200
-      },
-      {
-        "date": "2025-09-19",
-        "open": 662.33,
-        "high": 664.55,
-        "low": 660.37,
-        "close": 663.7,
-        "volume": 97945600
-      },
-      {
-        "date": "2025-09-22",
-        "open": 662.2,
-        "high": 667.29,
-        "low": 662.17,
-        "close": 666.84,
-        "volume": 69452200
-      },
-      {
-        "date": "2025-09-23",
-        "open": 666.72,
-        "high": 667.34,
-        "low": 661.98,
-        "close": 663.21,
-        "volume": 81708900
-      },
-      {
-        "date": "2025-09-24",
-        "open": 664.51,
-        "high": 664.61,
-        "low": 659.67,
-        "close": 661.1,
-        "volume": 68082200
-      },
-      {
-        "date": "2025-09-25",
-        "open": 657.94,
-        "high": 659.41,
-        "low": 654.41,
-        "close": 658.05,
-        "volume": 89622100
-      },
       {
         "date": "2025-09-26",
         "open": 659.51,
@@ -2069,6 +1833,328 @@
         "low": 775.43,
         "close": 776.34,
         "volume": 31367900
+      },
+      {
+        "date": "2026-08-17",
+        "open": 776.18,
+        "high": 776.78,
+        "low": 772.51,
+        "close": 772.67,
+        "volume": 34356600
+      },
+      {
+        "date": "2026-08-18",
+        "open": 768.7,
+        "high": 769.5,
+        "low": 766.92,
+        "close": 767.45,
+        "volume": 43920900
+      },
+      {
+        "date": "2026-08-19",
+        "open": 770.36,
+        "high": 772.47,
+        "low": 768.1,
+        "close": 769.06,
+        "volume": 40306000
+      },
+      {
+        "date": "2026-08-20",
+        "open": 765.96,
+        "high": 768.15,
+        "low": 762.04,
+        "close": 762.6,
+        "volume": 45520300
+      },
+      {
+        "date": "2026-08-21",
+        "open": 766.05,
+        "high": 767.85,
+        "low": 764.17,
+        "close": 765.72,
+        "volume": 39188700
+      },
+      {
+        "date": "2026-08-24",
+        "open": 764.78,
+        "high": 765.22,
+        "low": 762.08,
+        "close": 763.47,
+        "volume": 32430900
+      },
+      {
+        "date": "2026-08-25",
+        "open": 766.16,
+        "high": 766.78,
+        "low": 763.05,
+        "close": 765.91,
+        "volume": 27422300
+      },
+      {
+        "date": "2026-08-26",
+        "open": 764.73,
+        "high": 767.35,
+        "low": 763.93,
+        "close": 766.08,
+        "volume": 28751600
+      },
+      {
+        "date": "2026-08-27",
+        "open": 768.5,
+        "high": 772.36,
+        "low": 767.16,
+        "close": 771.1,
+        "volume": 34557100
+      },
+      {
+        "date": "2026-08-28",
+        "open": 771.76,
+        "high": 775.3,
+        "low": 768.31,
+        "close": 769.35,
+        "volume": 36744300
+      },
+      {
+        "date": "2026-08-31",
+        "open": 767.33,
+        "high": 768,
+        "low": 764.72,
+        "close": 767.05,
+        "volume": 38810800
+      },
+      {
+        "date": "2026-09-01",
+        "open": 762.01,
+        "high": 764.67,
+        "low": 759.48,
+        "close": 761.78,
+        "volume": 41126300
+      },
+      {
+        "date": "2026-09-02",
+        "open": 762.45,
+        "high": 766.43,
+        "low": 761.73,
+        "close": 765.16,
+        "volume": 29566200
+      },
+      {
+        "date": "2026-09-03",
+        "open": 767.9,
+        "high": 774.03,
+        "low": 767.45,
+        "close": 773.17,
+        "volume": 43531600
+      },
+      {
+        "date": "2026-09-04",
+        "open": 772.01,
+        "high": 772.87,
+        "low": 769,
+        "close": 770.19,
+        "volume": 34054200
+      },
+      {
+        "date": "2026-09-08",
+        "open": 769.07,
+        "high": 769.7,
+        "low": 765.14,
+        "close": 765.96,
+        "volume": 44746100
+      },
+      {
+        "date": "2026-09-09",
+        "open": 764.08,
+        "high": 764.47,
+        "low": 760.94,
+        "close": 762.4,
+        "volume": 32812400
+      },
+      {
+        "date": "2026-09-10",
+        "open": 758.03,
+        "high": 760.11,
+        "low": 756.64,
+        "close": 757.83,
+        "volume": 42740400
+      },
+      {
+        "date": "2026-09-11",
+        "open": 764.72,
+        "high": 766.38,
+        "low": 763.6,
+        "close": 764.29,
+        "volume": 45512700
+      },
+      {
+        "date": "2026-09-14",
+        "open": 759,
+        "high": 763.52,
+        "low": 757.93,
+        "close": 760.88,
+        "volume": 43992400
+      },
+      {
+        "date": "2026-09-15",
+        "open": 760.12,
+        "high": 760.35,
+        "low": 756.15,
+        "close": 757.39,
+        "volume": 46195000
+      },
+      {
+        "date": "2026-09-16",
+        "open": 759.5,
+        "high": 761.67,
+        "low": 749.6,
+        "close": 754.05,
+        "volume": 59217700
+      },
+      {
+        "date": "2026-09-17",
+        "open": 763.15,
+        "high": 763.57,
+        "low": 759.96,
+        "close": 762.6,
+        "volume": 49652800
+      },
+      {
+        "date": "2026-09-18",
+        "open": 761.31,
+        "high": 762,
+        "low": 757.97,
+        "close": 761.69,
+        "volume": 65395100
+      },
+      {
+        "date": "2026-09-21",
+        "open": 766.25,
+        "high": 774.89,
+        "low": 766.03,
+        "close": 773.5,
+        "volume": 50484700
+      },
+      {
+        "date": "2026-09-22",
+        "open": 774.03,
+        "high": 775.14,
+        "low": 772.57,
+        "close": 773.38,
+        "volume": 34802300
+      },
+      {
+        "date": "2026-09-23",
+        "open": 772.79,
+        "high": 773.05,
+        "low": 766.5,
+        "close": 767.81,
+        "volume": 54931700
+      },
+      {
+        "date": "2026-09-24",
+        "open": 764.07,
+        "high": 768.95,
+        "low": 763.25,
+        "close": 767.18,
+        "volume": 43983700
+      },
+      {
+        "date": "2026-09-25",
+        "open": 768.78,
+        "high": 772.28,
+        "low": 766.29,
+        "close": 771.35,
+        "volume": 36666700
+      },
+      {
+        "date": "2026-09-28",
+        "open": 768.35,
+        "high": 769.54,
+        "low": 763.72,
+        "close": 765.61,
+        "volume": 42296700
+      }
+    ],
+    "news": [
+      {
+        "uuid": "38e5c5c8-57d9-3b7a-88ec-e4a4c84f7823",
+        "title": "China announces retaliatory tariffs, U.S. unemployment rises: Morning Buzz",
+        "publisher": "TipRanks",
+        "reportDate": "2025-04-06",
+        "link": "https://finance.yahoo.com/news/china-announces-retaliatory-tariffs-u-161032836.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "19ccc5df-2651-3aab-9365-7eb3d83b9965",
+        "title": "Trump says will ‘protect our farmers’ amid tariff negotiation with China",
+        "publisher": "TipRanks",
+        "reportDate": "2025-04-16",
+        "link": "https://finance.yahoo.com/news/trump-says-protect-farmers-amid-145834613.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "127420de-f523-347a-ac88-313c41c0756c",
+        "title": "Trump announces trade deal, BoE lowers Bank Rate: Morning Buzz",
+        "publisher": "TipRanks",
+        "reportDate": "2025-05-10",
+        "link": "https://finance.yahoo.com/news/trump-announces-trade-deal-boe-160158579.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "ca06a274-32e3-3e67-865f-0b228b4d8f22",
+        "title": "White House calls out Boeing, GE Vernova exports in Saudi Arabia pact",
+        "publisher": "TipRanks",
+        "reportDate": "2025-05-14",
+        "link": "https://finance.yahoo.com/news/white-house-calls-boeing-ge-142742667.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "d0a486fb-b0a2-390f-9bb8-af347d5c82d1",
+        "title": "Exchange-Traded Funds Mixed, Equity Futures Lower Pre-Bell Friday Amid US Tariff Reinstatement Decision",
+        "publisher": "MT Newswires",
+        "reportDate": "2025-05-30",
+        "link": "https://finance.yahoo.com/news/exchange-traded-funds-mixed-equity-122822695.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "2ca19b5a-b003-3d93-899e-ed9ee40096ff",
+        "title": "S&P 500 Wraps Up Best May Since 1990: 5 Top Stocks in the ETF",
+        "publisher": "Zacks",
+        "reportDate": "2025-06-03",
+        "link": "https://finance.yahoo.com/news/p-500-wraps-best-may-153000261.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "212f4ec4-c9c8-42ed-8825-cc70f4a4f77b",
+        "title": "A fresh inflation reading greets a stock market back near all-time highs: What to know this week",
+        "publisher": "Yahoo Finance",
+        "reportDate": "2025-06-08",
+        "link": "https://finance.yahoo.com/news/a-fresh-inflation-reading-greets-a-stock-market-back-near-all-time-highs-what-to-know-this-week-114224467.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "bfe5faf2-429b-4f0b-a2f2-39f527875631",
+        "title": "Stock market today: S&P 500, Nasdaq gain as upbeat US-China trade talks continue",
+        "publisher": "Yahoo Finance",
+        "reportDate": "2025-06-10",
+        "link": "https://finance.yahoo.com/news/live/stock-market-today-sp-500-nasdaq-gain-as-upbeat-us-china-trade-talks-continue-200147751.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "174e185d-23ff-4b12-b670-3f0fe5915ee3",
+        "title": "Stock market today: Dow, S&P 500, Nasdaq drift higher, dollar slides amid renewed tariff threats",
+        "publisher": "Yahoo Finance",
+        "reportDate": "2025-06-13",
+        "link": "https://finance.yahoo.com/news/live/stock-market-today-dow-sp-500-nasdaq-drift-higher-dollar-slides-amid-renewed-tariff-threats-133109321.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "1900ebb6-ed9c-38bc-9be8-5559094c1e9d",
+        "title": "Exchange-Traded Funds Slightly Higher, Equity Futures Mixed Pre-Bell Friday as Geopolitical, Trade Risks Mount",
+        "publisher": "MT Newswires",
+        "reportDate": "2025-06-20",
+        "link": "https://finance.yahoo.com/news/exchange-traded-funds-slightly-higher-122518460.html",
+        "type": "STORY"
       }
     ]
   }

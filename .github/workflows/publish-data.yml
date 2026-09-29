@@ -69,6 +69,7 @@ jobs:
           echo "commit=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
 
       - name: Build and deploy the production bundle
+        id: deploy
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
           # next.config.mjs inlines this, so /api/data-revisions can name the
@@ -120,7 +121,17 @@ jobs:
           EXPECTED_COMMIT: ${{ steps.ledger.outputs.commit }}
           PRODUCTION_DATA_REVISION_URL: ${{ secrets.PRODUCTION_DATA_REVISION_URL }}
         run: |
-          revision_url="${PRODUCTION_DATA_REVISION_URL:-https://isaacvazquez.com/api/data-revisions}"
+          # The check reads the Netlify origin, which serves the same deploy as
+          # the custom domain without Cloudflare in front of it. Cloudflare
+          # answers a runner with a managed challenge (HTTP 403 and
+          # cf-mitigated: challenge) depending on the client. Measured from six
+          # runners on 2026-09-29, it challenged Node 22, Node 24, and curl and
+          # let Node 20 through, so moving this workflow from Node 20 to Node 22
+          # failed every publish from 02:16 UTC that day until this check moved,
+          # while the deploys themselves were fine. The origin answered 200 to
+          # every client on the same runners. The secret is an override and does
+          # not need to be set.
+          revision_url="${PRODUCTION_DATA_REVISION_URL:-https://isaacvazquez.netlify.app/api/data-revisions}"
           # The third argument is the build hook, and it is deliberately empty
           # because the deploy above is already published and there is nothing
           # left to trigger.
@@ -128,6 +139,10 @@ jobs:
             "$EXPECTED_REVISION" "$revision_url" "" "$EXPECTED_COMMIT"
 
       - name: Verify the deploy published its static assets
+        # Runs whenever the deploy went out, even if the ledger check failed.
+        # During incident #500 a failed ledger check skipped this step on every
+        # run, so nothing was checking the uploads.
+        if: ${{ !cancelled() && steps.deploy.outcome == 'success' }}
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
           EXPECTED_COMMIT: ${{ steps.ledger.outputs.commit }}
@@ -138,12 +153,10 @@ jobs:
           # reported success while serving an unstyled site.
           #
           # Two earlier versions of this step fetched the site from the runner
-          # and both were inert, warning and skipping on every run. Cloudflare
-          # answers 403 to runner IPs on the custom domain's HTML paths, with or
-          # without a browser user agent, and isaacvazquez.netlify.app does not
-          # resolve from runners at all. The script asks Netlify which files the
-          # deploy stored instead, so it needs no egress to the site and can fail
-          # honestly.
+          # and both were inert, warning and skipping on every run, because
+          # Cloudflare challenges runner traffic on the custom domain. The script
+          # asks Netlify which files the deploy stored instead, so it needs no
+          # egress to the site and can fail honestly.
           node scripts/ci/verify-deploy-assets.mjs
 
 

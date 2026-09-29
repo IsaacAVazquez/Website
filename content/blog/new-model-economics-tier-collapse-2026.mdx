@@ -2,7 +2,7 @@
 title: "Which Model to Use Is Now an Architecture Question, Not a Budget Question"
 excerpt: "Model pricing has collapsed fast enough that the old decision framework for choosing an AI model is obsolete. What replaces it is closer to system design than cost optimization, and builders who still treat this as a budget exercise are leaving a lot of value on the table."
 publishedAt: "2026-04-21"
-updatedAt: "2026-07-23"
+updatedAt: "2026-09-29"
 category: "Agentic AI"
 tags: ["AI", "Model Economics", "Reasoning Models", "Product Strategy", "AI Architecture", "Claude", "GPT", "Gemini", "Agentic AI"]
 featured: false
@@ -24,7 +24,7 @@ I still see teams optimizing for the old problem. I'd argue that's now where the
 
 ## The shape of the cost collapse
 
-The numbers are worth stating clearly, with an as-of date because they move too fast to treat as permanent. As of July 23, 2026, [OpenAI lists](https://developers.openai.com/api/docs/pricing) GPT-5.6 Sol at $5 per million input tokens and $30 per million output tokens, Terra at $2.50 and $15, and Luna at $1 and $6. [Anthropic lists](https://platform.claude.com/docs/en/about-claude/pricing) Fable 5 at $10 and $50, Opus 4.8 at $5 and $25, Sonnet 5 at an introductory $2 and $10 through August, and Haiku 4.5 at $1 and $5. [Google publishes](https://ai.google.dev/gemini-api/docs/pricing) separate Gemini rates by model and service tier. The exact brackets differ, but the pattern inside each vendor is the part I care about. There is enough price and capability range to design a pipeline instead of forcing one model to do every job.
+The numbers are worth stating clearly, with an as-of date because they move too fast to treat as permanent. As of April 21, 2026, Anthropic's API list prices run from [Claude Opus 4.7](https://www.anthropic.com/news/claude-opus-4-7) at $5 per million input tokens and $25 per million output tokens, to [Sonnet 4.6](https://www.anthropic.com/news/claude-sonnet-4-6) at $3 and $15, to [Haiku 4.5](https://www.anthropic.com/news/claude-haiku-4-5) at $1 and $5, so the top of the lineup costs five times what the bottom does. OpenAI and Google each sell a similar range of larger and smaller models at their own prices. The exact brackets differ, but the pattern inside each vendor is the part I care about. There is enough price and capability range to design a pipeline instead of forcing one model to do every job.
 
 The ratio between frontier and mid-tier pricing matters less once inference stops being the binding constraint for a particular product. If frontier inference consumes 60% of the unit economics, routing aggressively to cheaper models is the obvious move. If it consumes 8%, the better question is where that 8% buys the most marginal product quality. Those percentages are examples, not market averages, and the actual threshold depends on the workload.
 

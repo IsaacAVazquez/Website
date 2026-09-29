@@ -3,9 +3,9 @@
 import { constructMetadata } from "@/lib/seo";
 
 export const metadata = constructMetadata({
-  title: "Isaac Vazquez | Product Manager and Berkeley Haas MBA",
+  title: "Isaac Vazquez | Berkeley Haas MBA Candidate",
   description:
-    "I'm a product manager and Berkeley Haas MBA candidate building AI workflow, fintech, analytics, and decision-support products.",
+    "I'm a second-year Berkeley Haas MBA moving into product. I spent six years in campaign data and QA, and summer 2026 on Juno's MBA growth team.",
   canonicalUrl: "/",
-  dateModified: "2026-09-24",
+  dateModified: "2026-09-28",
 });

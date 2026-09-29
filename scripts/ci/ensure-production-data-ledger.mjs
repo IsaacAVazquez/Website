@@ -69,8 +69,12 @@ async function readProductionLedger() {
   // Deliberate: an access rule blocking the publisher is a real misconfiguration
   // and must fail loudly rather than read as an undeployed revision.
   if (response.status === 401 || response.status === 403) {
+    // Name the layer that answered. Incident #500 took a probe to learn that the
+    // 403 was a Cloudflare challenge and not the origin.
+    const server = response.headers.get("server") ?? "an unnamed server";
+    const mitigated = response.headers.get("cf-mitigated");
     throw new Error(
-      `Production health endpoint rejected the publication check with HTTP ${response.status}. Check the Cloudflare or Netlify access rule for ${url.pathname}.`
+      `Production health endpoint rejected the publication check with HTTP ${response.status} from ${server}${mitigated ? ` (cf-mitigated: ${mitigated})` : ""}. Check the Cloudflare or Netlify access rule for ${url.pathname}.`
     );
   }
 

@@ -1,17 +1,11 @@
 {
   "symbol": "RACE",
-  "lastUpdated": "2026-09-15T01:03:45.681080+00:00",
+  "lastUpdated": "2026-09-29T07:04:00.244178+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-09-15T01:03:45.681080+00:00",
+    "snapshotBuiltAt": "2026-09-29T07:04:00.244178+00:00",
     "sections": {
-      "price": "2026-09-11"
-    },
-    "retainedSections": [
-      "fundamentals",
-      "wacc",
-      "beta",
-      "news"
-    ]
+      "price": "2026-09-28"
+    }
   },
   "source": "prefetched",
   "capabilities": {
@@ -46,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 10.7561,
-      "ttmPe": 38.47,
-      "marketCap": 72790729370,
-      "psRatio": 8.67,
-      "pbRatio": 17.43,
-      "pegRatio": 2.9
+      "ttmPe": 37,
+      "marketCap": 70014767000,
+      "psRatio": 8.34,
+      "pbRatio": 16.77,
+      "pegRatio": 2.84
     },
     "profitability": {
       "roe": 12,
@@ -6047,105 +6041,17 @@
       ]
     },
     "wacc": {
-      "wacc": 11.459999999999999,
-      "costOfEquity": 12.030000000000001,
-      "costOfDebt": 0.33999999999999997,
+      "wacc": 11.62,
+      "costOfEquity": 12.21,
+      "costOfDebt": 0.24,
       "taxRate": 23,
-      "beta": 0.8993,
-      "marketCap": 66424983680
+      "beta": 0.9137,
+      "marketCap": 70014767000
     },
     "beta": {
-      "beta5y": 0.8993
+      "beta5y": 0.9137
     },
     "price": [
-      {
-        "date": "2025-09-11",
-        "open": 475.71,
-        "high": 481.38,
-        "low": 475.07,
-        "close": 479.36,
-        "volume": 210200
-      },
-      {
-        "date": "2025-09-12",
-        "open": 476.56,
-        "high": 479.1,
-        "low": 476,
-        "close": 478,
-        "volume": 158700
-      },
-      {
-        "date": "2025-09-15",
-        "open": 478.27,
-        "high": 479.81,
-        "low": 475.11,
-        "close": 478.94,
-        "volume": 241500
-      },
-      {
-        "date": "2025-09-16",
-        "open": 488.58,
-        "high": 488.71,
-        "low": 480.14,
-        "close": 480.33,
-        "volume": 301400
-      },
-      {
-        "date": "2025-09-17",
-        "open": 470.33,
-        "high": 473.5,
-        "low": 467.47,
-        "close": 470.03,
-        "volume": 386200
-      },
-      {
-        "date": "2025-09-18",
-        "open": 476.17,
-        "high": 485.09,
-        "low": 475.6,
-        "close": 483.77,
-        "volume": 365500
-      },
-      {
-        "date": "2025-09-19",
-        "open": 482.23,
-        "high": 482.45,
-        "low": 475.01,
-        "close": 479.59,
-        "volume": 456600
-      },
-      {
-        "date": "2025-09-22",
-        "open": 474.3,
-        "high": 479.45,
-        "low": 473.7,
-        "close": 477.74,
-        "volume": 327300
-      },
-      {
-        "date": "2025-09-23",
-        "open": 487.49,
-        "high": 491.01,
-        "low": 484.87,
-        "close": 486.5,
-        "volume": 426300
-      },
-      {
-        "date": "2025-09-24",
-        "open": 479.53,
-        "high": 481.525,
-        "low": 477.94,
-        "close": 480.6,
-        "volume": 324900
-      },
-      {
-        "date": "2025-09-25",
-        "open": 474.7,
-        "high": 476.14,
-        "low": 468.827,
-        "close": 473.17,
-        "volume": 353600
-      },
       {
         "date": "2025-09-26",
         "open": 474.1,
@@ -8073,6 +7979,94 @@
         "low": 411.12,
         "close": 413.78,
         "volume": 257200
+      },
+      {
+        "date": "2026-09-14",
+        "open": 401.96,
+        "high": 410.51,
+        "low": 401.86,
+        "close": 409.08,
+        "volume": 320600
+      },
+      {
+        "date": "2026-09-15",
+        "open": 405.8,
+        "high": 408.13,
+        "low": 404.66,
+        "close": 406.92,
+        "volume": 208800
+      },
+      {
+        "date": "2026-09-16",
+        "open": 408.87,
+        "high": 415.42,
+        "low": 408.375,
+        "close": 412.34,
+        "volume": 467700
+      },
+      {
+        "date": "2026-09-17",
+        "open": 414.47,
+        "high": 416.58,
+        "low": 410.97,
+        "close": 414,
+        "volume": 343400
+      },
+      {
+        "date": "2026-09-18",
+        "open": 410,
+        "high": 410.94,
+        "low": 405.08,
+        "close": 406.69,
+        "volume": 576800
+      },
+      {
+        "date": "2026-09-21",
+        "open": 417.36,
+        "high": 418.8,
+        "low": 414.431,
+        "close": 416.13,
+        "volume": 319100
+      },
+      {
+        "date": "2026-09-22",
+        "open": 416.65,
+        "high": 419.8,
+        "low": 412.23,
+        "close": 413.32,
+        "volume": 248900
+      },
+      {
+        "date": "2026-09-23",
+        "open": 416.8,
+        "high": 417.03,
+        "low": 410.905,
+        "close": 413.05,
+        "volume": 505100
+      },
+      {
+        "date": "2026-09-24",
+        "open": 414.51,
+        "high": 418.71,
+        "low": 409.36,
+        "close": 411.82,
+        "volume": 372100
+      },
+      {
+        "date": "2026-09-25",
+        "open": 404.53,
+        "high": 411.87,
+        "low": 402.79,
+        "close": 411.33,
+        "volume": 479000
+      },
+      {
+        "date": "2026-09-28",
+        "open": 404.34,
+        "high": 407.515,
+        "low": 394.61,
+        "close": 398,
+        "volume": 691400
       }
     ],
     "news": [
@@ -8141,19 +8135,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "91855b6c-81ee-3f12-b7d7-e20a4bcd97c8",
-        "title": "Is Douglas Dynamics (PLOW) Outperforming Other Auto-Tires-Trucks Stocks This Year?",
+        "uuid": "1bd401d7-9a6f-3b96-9a23-0b650ba3477d",
+        "title": "Are Basic Materials Stocks Lagging  CF Industries (CF) This Year?",
         "publisher": "Zacks",
         "reportDate": "2025-06-24",
-        "link": "https://finance.yahoo.com/news/douglas-dynamics-plow-outperforming-other-134003262.html",
+        "link": "https://finance.yahoo.com/news/basic-materials-stocks-lagging-cf-134003198.html",
         "type": "STORY"
       },
       {
-        "uuid": "f68fd351-a8c1-3faa-a47e-d132f2b08f3f",
-        "title": "Is Axos Financial (AX) Stock Outpacing Its Finance Peers This Year?",
+        "uuid": "bad8b102-1dfc-3b76-9374-02a496d137e8",
+        "title": "Are Aerospace Stocks Lagging  CurtissWright (CW) This Year?",
         "publisher": "Zacks",
         "reportDate": "2025-06-24",
-        "link": "https://finance.yahoo.com/news/axos-financial-ax-stock-outpacing-134004384.html",
+        "link": "https://finance.yahoo.com/news/aerospace-stocks-lagging-curtisswright-cw-134004780.html",
         "type": "STORY"
       }
     ],
@@ -8169,7 +8163,7 @@
         "title": "CEO & Executive Director",
         "age": 56,
         "yearBorn": 1969,
-        "totalPay": 9216679
+        "totalPay": 9039114
       },
       {
         "name": "Mr. Carlo Daneo",
@@ -8188,7 +8182,7 @@
         "title": "Executive Chairman",
         "age": 49,
         "yearBorn": 1976,
-        "totalPay": 1749678
+        "totalPay": 1715969
       },
       {
         "name": "Mr. Marco Lovati",
@@ -8220,43 +8214,43 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 38.47,
-        "industryAvg": 83.09
+        "value": 37,
+        "industryAvg": 25.14
       },
       {
         "metric": "P/S Ratio",
-        "value": 8.67,
-        "industryAvg": 1.64
+        "value": 8.34,
+        "industryAvg": 1.18
       },
       {
         "metric": "P/B Ratio",
-        "value": 17.43,
-        "industryAvg": 2.01
+        "value": 16.77,
+        "industryAvg": 1.87
       },
       {
         "metric": "ROE",
         "value": 12,
-        "industryAvg": 1.8599999999999999
+        "industryAvg": 4.5600000000000005
       },
       {
         "metric": "ROA",
         "value": 4.52,
-        "industryAvg": 0.61
+        "industryAvg": 1.5
       },
       {
         "metric": "Gross Margin",
         "value": 52.59,
-        "industryAvg": 15.989999999999998
+        "industryAvg": 14.719999999999999
       },
       {
         "metric": "EBITDA Margin",
         "value": 39.18,
-        "industryAvg": 11.08
+        "industryAvg": 9.65
       },
       {
         "metric": "Net Margin",
         "value": 23.849999999999998,
-        "industryAvg": 4.12
+        "industryAvg": 2.4699999999999998
       }
     ]
   }

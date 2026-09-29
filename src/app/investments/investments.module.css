@@ -1411,6 +1411,8 @@
   border-bottom: 1px solid var(--c97-rule);
   background: var(--c97-surface);
   padding: 16px 20px;
+  /* The caption names the x axis, so a print keeps it on the chart's page. */
+  break-inside: avoid;
 }
 .terminalScope :global(.invest-retire-chart-cap) {
   display: flex;
@@ -1451,8 +1453,10 @@
   margin: 0 2px 0 8px;
 }
 
-/* Fan chart axis text, set in SVG user units against a fixed 760x340
-   viewBox. The chart's rendered width shrinks well below its natural size
+/* Fan chart axis text, set in SVG user units against a viewBox 760 wide.
+   RetirementProjectionChart reads this size and fits its margins to it, so
+   the viewBox is 340 tall at the first size and 392 at the second.
+   The chart's rendered width shrinks well below its natural size
    once it sits beside the 380px input column (and further still once that
    column stacks above it on a narrow viewport), so a size that reads fine at
    1:1 scale renders unreadably small once the viewBox is scaled down. These

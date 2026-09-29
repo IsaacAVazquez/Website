@@ -7,7 +7,7 @@ const elsewhere = [
     label: "LinkedIn",
     value: "isaac-vazquez",
     href: profile.sameAs.linkedin,
-    note: "Best for anything role-related or Haas-adjacent.",
+    note: "Best for anything about roles or Haas.",
   },
   {
     label: "GitHub",
@@ -46,7 +46,7 @@ export function Catalog97Contact() {
         style={{ paddingBottom: "var(--c97-sp-5)" }}
       >
         <div className="c97-shell">
-          <h1 className="c97-poster">If you have something worth building.</h1>
+          <h1 className="c97-poster">I&rsquo;d like to hear from you.</h1>
           <p
             className="c97-prose"
             style={{
@@ -54,8 +54,11 @@ export function Catalog97Contact() {
               maxWidth: "var(--c97-measure-body)",
             }}
           >
-            Product roles, a second opinion on an analytics problem, or anything
-            on this site that looks wrong to you.
+            I&rsquo;m looking for a full-time product management role that
+            starts after I graduate from Haas in May 2027, and I&rsquo;m always
+            glad to compare notes with people working on product, analytics, or
+            fintech. If something on this site looks wrong to you, I want to
+            hear about that too.
           </p>
         </div>
       </section>
@@ -131,8 +134,8 @@ export function Catalog97Contact() {
                 maxWidth: "var(--c97-measure-body)",
               }}
             >
-              Two working days, usually less. If it has been longer than that,
-              send it again rather than assuming a no.
+              I usually reply within two working days, so if it has been longer
+              than that, send it again.
             </p>
           </div>
 

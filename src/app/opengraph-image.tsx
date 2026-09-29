@@ -1,6 +1,6 @@
 import { createEditorialOgImage } from "@/lib/og";
 
-export const alt = "Isaac Vazquez, product manager and Berkeley Haas MBA '27";
+export const alt = "Isaac Vazquez, Berkeley Haas MBA candidate, Class of 2027";
 export const size = {
   width: 1200,
   height: 630,
@@ -11,8 +11,8 @@ export const contentType = "image/png";
 export default async function Image() {
   return createEditorialOgImage({
     eyebrow: "Product and analytics",
-    title: "I build test harnesses, and dashboards that run on public data.",
+    title: "I'm a second-year MBA at Berkeley Haas, moving into product.",
     description:
-      "Product manager and builder at Berkeley Haas, MBA '27, who came to product through quality engineering at Civitech.",
+      "Before Haas I spent six years in campaign data and QA, and in summer 2026 I was the MBA growth intern at Juno.",
   });
 }

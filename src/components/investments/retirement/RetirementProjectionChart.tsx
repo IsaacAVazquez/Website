@@ -10,8 +10,24 @@ interface Props {
 }
 
 const W = 760;
-const H = 340;
-const MARGIN = { top: 16, right: 18, bottom: 36 };
+const PLOT_H = 288;
+// The drawing's spacing as set for 20 unit type. investments.module.css doubles
+// the type under 640px, and every one of these grows with it, so a label keeps
+// the same room at either size.
+const TYPE = 20;
+const SPACE = {
+  top: 16,
+  right: 18,
+  bottom: 36,
+  // Baseline of the age ticks, measured down from the plot.
+  tickRow: 22,
+  // Baseline of the retirement label, measured down from the top of the plot.
+  markerRow: 12,
+  // Clear space beside a label.
+  pad: 4,
+  // Clear space between the balance labels and the drawing's left edge.
+  edge: 6,
+};
 const ACCENT = "var(--c97-accent)";
 // investments.module.css doubles the chart type at this width.
 const PHONE_TYPE = "(max-width: 639px)";
@@ -38,29 +54,60 @@ export function RetirementProjectionChart({ result }: Props) {
       const y = scaleLinear().domain([0, maxY * 1.05]).nice();
       const yTicks = y.ticks(5);
 
-      // The left margin fits the widest tick label at the type the stylesheet
-      // sets, so "$3.5M" keeps its "$" at desktop size and its digits at the
-      // doubled phone size. A fixed 60 clipped both.
-      const probe = svg.append("g");
-      const probeLabels = probe
-        .selectAll<SVGTextElement, number>("text")
-        .data(yTicks)
-        .join("text")
-        .attr("class", "invest-retire-chart-label")
-        .text((d) => formatCompactCurrency(d));
-      const labelWidth = Math.max(0, ...probeLabels.nodes().map((t) => t.getComputedTextLength?.() ?? 0));
+      const firstAge = bands[0].age;
+      const lastAge = bands[bands.length - 1].age;
+      const x = scaleLinear().domain([firstAge, lastAge]);
+
+      // Every margin is fitted to the labels at the type the stylesheet sets.
+      // Fixed margins clipped the labels at the edges of the plot once the type
+      // doubled, and a fixed 60 on the left clipped "$3.5M" at either size.
+      const probe = svg.append("text").attr("class", "invest-retire-chart-label");
+      const probeNode = probe.node();
+      const widthOf = (label: string) => {
+        probe.text(label);
+        return probeNode?.getComputedTextLength?.() ?? 0;
+      };
+      const type = probeNode ? parseFloat(getComputedStyle(probeNode).fontSize) : NaN;
+      const scale = type / TYPE || 1;
+      const pad = SPACE.pad * scale;
+      const balanceWidth = Math.max(0, ...yTicks.map((d) => widthOf(formatCompactCurrency(d))));
+
+      const fit = (count: number) => {
+        // Ages are whole numbers, and a plan under five years ticks on the half year.
+        const ticks = x.ticks(count).filter(Number.isInteger);
+        const widths = ticks.map((d) => widthOf(`${d}`));
+        const first = widths[0] ?? 0;
+        const last = widths[widths.length - 1] ?? 0;
+        // An age label is centred on its tick, so a tick on either edge of the
+        // plot puts half its label outside. The balance labels stand that far
+        // clear on the left, and the right margin holds it.
+        const gap = Math.ceil(first / 2 + pad);
+        const left = Math.ceil(balanceWidth) + gap + SPACE.edge * scale;
+        const right = Math.max(SPACE.right * scale, Math.ceil(last / 2 + pad));
+        const innerW = W - left - right;
+        // The last two labels are the widest pair, since ages only gain digits,
+        // and each of them keeps its pad.
+        const between = ((ticks[1] - ticks[0]) / (lastAge - firstAge)) * innerW;
+        const crowded = ticks.length > 1 && between < (last + widths[widths.length - 2]) / 2 + 2 * pad;
+        return { ticks, gap, left, innerW, crowded };
+      };
+      // A long plan at the doubled type has more ages than the row can hold, so
+      // the row thins until they stand clear of each other.
+      let count = 6;
+      let fitted = fit(count);
+      while (fitted.crowded && count > 1) fitted = fit(--count);
       probe.remove();
-      const left = Math.ceil(labelWidth) + 16;
 
-      const innerW = W - left - MARGIN.right;
-      const innerH = H - MARGIN.top - MARGIN.bottom;
+      const { ticks: xTicks, gap, left, innerW } = fitted;
+      const top = SPACE.top * scale;
+      const innerH = PLOT_H;
+      // The plot keeps its height, and the drawing grows to hold the margins.
+      svg.attr("viewBox", `0 0 ${W} ${top + innerH + SPACE.bottom * scale}`);
 
-      const x = scaleLinear()
-        .domain([bands[0].age, bands[bands.length - 1].age])
-        .range([0, innerW]);
+      x.range([0, innerW]);
       y.range([innerH, 0]);
 
-      const g = svg.append("g").attr("transform", `translate(${left},${MARGIN.top})`);
+      const g = svg.append("g").attr("transform", `translate(${left},${top})`);
 
       // Gridlines + y axis.
       g.selectAll("line.grid")
@@ -79,33 +126,24 @@ export function RetirementProjectionChart({ result }: Props) {
         .data(yTicks)
         .join("text")
         .attr("class", "invest-retire-chart-label")
-        .attr("x", -10)
+        .attr("x", -gap)
         .attr("y", (d) => y(d))
         .attr("dy", "0.32em")
         .attr("text-anchor", "end")
         .attr("fill", "var(--c97-ink-2)")
         .text((d) => formatCompactCurrency(d));
 
-      // X axis (age) ticks.
-      const xTicks = x.ticks(6);
+      // X axis (age) ticks. The caption names the axis, because a label on this
+      // baseline ran into whichever tick landed near the right edge.
       g.selectAll("text.invest-retire-chart-label.is-x")
         .data(xTicks)
         .join("text")
         .attr("class", "invest-retire-chart-label is-x")
         .attr("x", (d) => x(d))
-        .attr("y", innerH + 22)
+        .attr("y", innerH + SPACE.tickRow * scale)
         .attr("text-anchor", "middle")
         .attr("fill", "var(--c97-ink-2)")
         .text((d) => `${d}`);
-
-      g.append("text")
-        .attr("class", "invest-retire-chart-label")
-        .attr("x", innerW)
-        .attr("y", innerH + 22)
-        .attr("text-anchor", "end")
-        .attr("fill", "var(--c97-ink-2)")
-        .attr("opacity", 0.7)
-        .text("age →");
 
       // Outer band (p10–p90).
       const outerArea = area<(typeof bands)[number]>()
@@ -148,13 +186,20 @@ export function RetirementProjectionChart({ result }: Props) {
           .attr("stroke-width", 1)
           .attr("stroke-dasharray", "4 3")
           .attr("opacity", 0.5);
-        g.append("text")
+        const marker = g
+          .append("text")
           .attr("class", "invest-retire-chart-label is-marker")
-          .attr("x", x(retireAge) + 4)
-          .attr("y", 12)
+          .attr("y", SPACE.markerRow * scale)
           .attr("font-weight", "600")
           .attr("fill", "var(--c97-ink)")
           .text(`retire ${retireAge}`);
+        // The label reads to the right of the marker until a late retirement
+        // would run it past the plot, and then it reads to the left.
+        const markerWidth = marker.node()?.getComputedTextLength?.() ?? 0;
+        const fits = x(retireAge) + pad + markerWidth <= innerW;
+        marker
+          .attr("x", x(retireAge) + (fits ? pad : -pad))
+          .attr("text-anchor", fits ? "start" : "end");
       }
     };
 
@@ -169,7 +214,7 @@ export function RetirementProjectionChart({ result }: Props) {
   return (
     <figure className="invest-retire-chart" aria-label="Projected balance over time">
       <figcaption className="invest-retire-chart-cap">
-        Projected balance · today&apos;s dollars
+        Projected balance by age · today&apos;s dollars
         <span className="invest-retire-chart-legend">
           <span className="invest-retire-legend-band" /> 10–90th percentile
           <span className="invest-retire-legend-line" /> median
@@ -177,7 +222,7 @@ export function RetirementProjectionChart({ result }: Props) {
       </figcaption>
       <svg
         ref={ref}
-        viewBox={`0 0 ${W} ${H}`}
+        viewBox={`0 0 ${W} ${SPACE.top + PLOT_H + SPACE.bottom}`}
         preserveAspectRatio="xMidYMid meet"
         role="img"
         aria-label={summary}

@@ -278,8 +278,36 @@ describe("GET /api/search", () => {
       }
     });
 
+    it.each([
+      ["darkroom", "answer-darkroom", "/"],
+      ["Safelight", "answer-darkroom", "/"],
+      ["rubber stamp", "answer-stamp", "/"],
+      ["night shift", "answer-night-shift", "/"],
+      ["Contra", "answer-thirty-lives", "/arcade"],
+      ["30 lives", "answer-thirty-lives", "/arcade"],
+      ["teapot", "answer-teapot", "/teapot"],
+      ["418", "answer-teapot", "/teapot"],
+      ["I'm a teapot", "answer-teapot", "/teapot"],
+      ["humans.txt", "answer-colophon", "/humans.txt"],
+      ["colophon", "answer-colophon", "/humans.txt"],
+    ])("answers %s with the hint for that easter egg", async (q, id, url) => {
+      const response = await GET(makeRequest(`?q=${encodeURIComponent(q)}`));
+      const body = await response.json();
+
+      expect(body.results[0]).toMatchObject({ id, url, type: "page" });
+    });
+
     it("never shows for unrelated or partial queries, or filtered searches", async () => {
-      for (const qs of ["?q=monetize", "?q=monet%20water", "?q=easter", "?q=monet&type=post"]) {
+      for (const qs of [
+        "?q=monetize",
+        "?q=monet%20water",
+        "?q=easter",
+        "?q=monet&type=post",
+        "?q=teapots",
+        "?q=night",
+        "?q=stamped",
+        "?q=colophon&type=post",
+      ]) {
         const response = await GET(makeRequest(qs));
         const body = await response.json();
         expect(ids(body).some((id) => id.startsWith("answer-"))).toBe(false);

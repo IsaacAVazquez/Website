@@ -29,7 +29,7 @@ import {
   isPlayerValueAtPick,
   reconcileTeamRosters,
 } from "@/lib/draftAnalytics";
-import { getEarlySpecialistNote } from "@/lib/draftEarlySpecialistNote";
+import { getSpecialistNote } from "@/lib/draftEarlySpecialistNote";
 import { resolveDraftTelemetry } from "@/lib/draftTelemetry";
 import { calculateRedraftDraftValues } from "@/lib/fantasyTeamValue";
 import {
@@ -904,7 +904,7 @@ export function DraftTrackerClient() {
         recordedAt: new Date().toISOString(),
       });
     }
-    const note = getEarlySpecialistNote(
+    const note = getSpecialistNote(
       { round: draftState.currentRound, teamNumber: currentTeamNumber, player },
       draftState.settings.userTeam,
       draftState.picks,

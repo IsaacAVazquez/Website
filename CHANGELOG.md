@@ -11,6 +11,15 @@ All notable changes to this repository are documented here. Format: `YYYY-MM-DD`
 - Harden every data lane and open the blob stores at runtime ([#497](https://github.com/IsaacAVazquez/Website/pull/497)).
 - Settle the data audit's content follow-ups ([#502](https://github.com/IsaacAVazquez/Website/pull/502)).
 - Bump next, vite, plugin-react, netlify blobs, and dotenv ([#503](https://github.com/IsaacAVazquez/Website/pull/503)).
+- Anchor jest worktree ignore patterns to rootDir ([#504](https://github.com/IsaacAVazquez/Website/pull/504)).
+- Rewrite the about-me copy in Isaac's voice across the site ([#505](https://github.com/IsaacAVazquez/Website/pull/505)).
+- Print the retirement projection when the planner is out of view ([#506](https://github.com/IsaacAVazquez/Website/pull/506)).
+- Name the projection chart's age axis in the caption ([#507](https://github.com/IsaacAVazquez/Website/pull/507)).
+- Narrow the branch cleanup item to the one lane branch left ([#508](https://github.com/IsaacAVazquez/Website/pull/508)).
+- Read the publish ledger from the Netlify origin ([#509](https://github.com/IsaacAVazquez/Website/pull/509)).
+- Drop the product manager title examples and the lane branch TODO ([#513](https://github.com/IsaacAVazquez/Website/pull/513)).
+- Fit the projection chart's margins to its type ([#514](https://github.com/IsaacAVazquez/Website/pull/514)).
+- Add seven easter eggs ([#516](https://github.com/IsaacAVazquez/Website/pull/516)).
 
 ---
 

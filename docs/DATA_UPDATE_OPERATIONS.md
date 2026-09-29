@@ -72,6 +72,17 @@ price from the last seven days. The Python packages are pinned in
 `scripts/requirements-investments.txt`. The current source and licensing ledger
 is `INVESTMENTS_DATA_SOURCES.md`.
 
+Every section other than price comes from a rotation. A run has a 22 minute
+budget and fully fetches part of the list, oldest attempt first. It reached 31,
+35, and 62 of the 151 symbols in the three runs from 2026-09-15 to 2026-09-29,
+so those sections turn over about once a week when every run passes. The industry
+section runs last, because its aggregates read every ticker in the industry and
+the large industries can outlast the symbol timer. When it does, the symbol
+keeps the sections it already fetched and carries its prior industry section
+forward. The workflow counts the symbols more than 21 days past their last full
+fetch, commits the snapshots anyway, and then fails the run so the backlog opens
+an issue.
+
 News Pulse remains API-backed at request time and has no committed snapshot. Its
 last good per-feed data, and the MBA jobs route's last good result, are persisted
 in Netlify Blobs so cold starts do not erase their fallback.
@@ -149,6 +160,11 @@ new poll, so the age of the newest poll fails nothing and the page prints it.
 - `publish-data.yml` coalesces successful refresh workflows, builds the site in
   GitHub Actions, uploads it with `netlify deploy --prod --context production`, and verifies the
   complete `/api/data-revisions` ledger before it closes a publication incident.
+  The check reads the ledger from the Netlify origin, `isaacvazquez.netlify.app`,
+  because Cloudflare challenges runner traffic on the custom domain. On
+  2026-09-29 that challenge failed every publish from 02:16 UTC until the check
+  moved, while the deploys themselves were fine. It started when the workflow
+  moved from Node 20 to Node 22.
   Building in Actions is deliberate. The Netlify account is on the free tier with
   300 build minutes a month, it ran out on 2026-08-06, and every git-triggered
   build after that was skipped, so committed data stopped reaching production.

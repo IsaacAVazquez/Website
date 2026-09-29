@@ -9,6 +9,7 @@ import {
   fitSearchTitle,
   siteConfig,
 } from "@/lib/seo";
+import { profile } from "@/lib/profile";
 import { AIStructuredData } from "@/components/AIStructuredData";
 import {
   getBlogPostCollectionLabel,
@@ -116,7 +117,7 @@ export default async function BlogPostPage({ params }: PageProps) {
             description: articleDescription,
             author: {
               name: "Isaac Vazquez",
-              jobTitle: "Product Manager & UC Berkeley Haas MBA Candidate",
+              jobTitle: profile.fullTitle,
               url: `${siteConfig.url}/about`,
             },
             datePublished: post.publishedAt,

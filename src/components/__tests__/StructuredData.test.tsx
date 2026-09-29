@@ -101,14 +101,10 @@ describe("StructuredData", () => {
     expect(schema.alumniOf).toEqual([
       expect.objectContaining({ name: "Florida State University" }),
     ]);
-    expect(schema.hasOccupation).toEqual(
-      expect.arrayContaining([
-        expect.objectContaining({
-          "@type": "Occupation",
-          name: "Product Manager",
-        }),
-      ])
-    );
+    // Isaac is an MBA candidate moving into product, not a product manager
+    // (his correction on 2026-09-28), so the entity claims no occupation.
+    expect(schema.jobTitle).toBe("UC Berkeley Haas MBA Candidate");
+    expect(schema.hasOccupation).toBeUndefined();
     expect(JSON.stringify(schema)).not.toContain('"worksFor":{"@type":"Organization","name":"Civitech"');
   });
 

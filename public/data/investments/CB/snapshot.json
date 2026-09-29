@@ -1,18 +1,11 @@
 {
   "symbol": "CB",
-  "lastUpdated": "2026-09-15T01:03:45.681080+00:00",
+  "lastUpdated": "2026-09-29T07:04:00.244178+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-09-15T01:03:45.681080+00:00",
+    "snapshotBuiltAt": "2026-09-29T07:04:00.244178+00:00",
     "sections": {
-      "price": "2026-09-11"
-    },
-    "retainedSections": [
-      "fundamentals",
-      "wacc",
-      "industry",
-      "beta",
-      "news"
-    ]
+      "price": "2026-09-28"
+    }
   },
   "source": "prefetched",
   "capabilities": {
@@ -47,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 28.2571,
-      "ttmPe": 11.97,
-      "marketCap": 130440700500,
-      "psRatio": 2.09,
-      "pbRatio": 1.83,
-      "pegRatio": 0.16
+      "ttmPe": 11.73,
+      "marketCap": 127787538580,
+      "psRatio": 2.05,
+      "pbRatio": 1.7,
+      "pegRatio": 0.15
     },
     "profitability": {
       "roe": 3.83,
@@ -5557,105 +5550,17 @@
       ]
     },
     "wacc": {
-      "wacc": 7.1,
-      "costOfEquity": 7.9,
-      "costOfDebt": 1.13,
-      "taxRate": 22,
-      "beta": 0.4022,
-      "marketCap": 134909378583
+      "wacc": 7.12,
+      "costOfEquity": 8.01,
+      "costOfDebt": 1.0999999999999999,
+      "taxRate": 20,
+      "beta": 0.3629,
+      "marketCap": 127787538580
     },
     "beta": {
-      "beta5y": 0.4022
+      "beta5y": 0.3629
     },
     "price": [
-      {
-        "date": "2025-09-11",
-        "open": 277.41,
-        "high": 283.31,
-        "low": 276.73,
-        "close": 282.89,
-        "volume": 1657000
-      },
-      {
-        "date": "2025-09-12",
-        "open": 280.82,
-        "high": 282.51,
-        "low": 277.74,
-        "close": 278.11,
-        "volume": 2115200
-      },
-      {
-        "date": "2025-09-15",
-        "open": 277.45,
-        "high": 277.92,
-        "low": 273.56,
-        "close": 274.33,
-        "volume": 2418200
-      },
-      {
-        "date": "2025-09-16",
-        "open": 274.81,
-        "high": 275.48,
-        "low": 271.45,
-        "close": 272.02,
-        "volume": 2705600
-      },
-      {
-        "date": "2025-09-17",
-        "open": 272.79,
-        "high": 274.2,
-        "low": 271.99,
-        "close": 272.25,
-        "volume": 3390800
-      },
-      {
-        "date": "2025-09-18",
-        "open": 270.69,
-        "high": 275,
-        "low": 270.69,
-        "close": 274.28,
-        "volume": 2034900
-      },
-      {
-        "date": "2025-09-19",
-        "open": 274.46,
-        "high": 275.42,
-        "low": 273,
-        "close": 273.89,
-        "volume": 3627700
-      },
-      {
-        "date": "2025-09-22",
-        "open": 273.74,
-        "high": 275.25,
-        "low": 272.77,
-        "close": 273,
-        "volume": 1821000
-      },
-      {
-        "date": "2025-09-23",
-        "open": 272.83,
-        "high": 276.5,
-        "low": 271.83,
-        "close": 275.9,
-        "volume": 1441900
-      },
-      {
-        "date": "2025-09-24",
-        "open": 275.56,
-        "high": 279.59,
-        "low": 275.5,
-        "close": 278.26,
-        "volume": 1755300
-      },
-      {
-        "date": "2025-09-25",
-        "open": 279.76,
-        "high": 281.04,
-        "low": 277.28,
-        "close": 278.3,
-        "volume": 1312500
-      },
       {
         "date": "2025-09-26",
         "open": 280,
@@ -7583,17 +7488,97 @@
         "low": 335.67,
         "close": 338.25,
         "volume": 1151300
+      },
+      {
+        "date": "2026-09-14",
+        "open": 342.71,
+        "high": 343.97,
+        "low": 339.85,
+        "close": 341.85,
+        "volume": 924400
+      },
+      {
+        "date": "2026-09-15",
+        "open": 341.36,
+        "high": 342.72,
+        "low": 339.67,
+        "close": 341.86,
+        "volume": 1618500
+      },
+      {
+        "date": "2026-09-16",
+        "open": 340.25,
+        "high": 344.52,
+        "low": 339.7,
+        "close": 341.53,
+        "volume": 1537700
+      },
+      {
+        "date": "2026-09-17",
+        "open": 341.79,
+        "high": 342.65,
+        "low": 337.24,
+        "close": 341.9,
+        "volume": 1493900
+      },
+      {
+        "date": "2026-09-18",
+        "open": 339.41,
+        "high": 341.74,
+        "low": 338.29,
+        "close": 340.64,
+        "volume": 4324100
+      },
+      {
+        "date": "2026-09-21",
+        "open": 339.65,
+        "high": 341.34,
+        "low": 337.23,
+        "close": 337.26,
+        "volume": 934000
+      },
+      {
+        "date": "2026-09-22",
+        "open": 336.28,
+        "high": 337.64,
+        "low": 333.06,
+        "close": 335.77,
+        "volume": 1448300
+      },
+      {
+        "date": "2026-09-23",
+        "open": 336,
+        "high": 339.66,
+        "low": 334.25,
+        "close": 335.21,
+        "volume": 1820600
+      },
+      {
+        "date": "2026-09-24",
+        "open": 337.31,
+        "high": 339.06,
+        "low": 334.74,
+        "close": 334.84,
+        "volume": 1170800
+      },
+      {
+        "date": "2026-09-25",
+        "open": 335.24,
+        "high": 335.54,
+        "low": 332.78,
+        "close": 333.37,
+        "volume": 1522400
+      },
+      {
+        "date": "2026-09-28",
+        "open": 333.84,
+        "high": 334.25,
+        "low": 329.68,
+        "close": 331.37,
+        "volume": 2662700
       }
     ],
     "news": [
-      {
-        "uuid": "fd4f80af-5519-3ab3-90f3-9d5976e9486e",
-        "title": "The Zacks Analyst Blog Highlights Exxon Mobil, Bristol-Myers Squibb, Chubb and Hamilton Beach Brands",
-        "publisher": "Zacks",
-        "reportDate": "2025-04-03",
-        "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-exxon-145000755.html",
-        "type": "STORY"
-      },
       {
         "uuid": "05a0ef3f-3a4e-3300-ad29-88aba4207891",
         "title": "Top Research Reports for Exxon Mobil, Bristol-Myers Squibb & Chubb",
@@ -7603,11 +7588,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "f8a64642-b0de-3ae9-996c-8fa7c4dbc687",
-        "title": "Selective Insurance Q1 Earnings Miss Estimates on Higher Expenses",
+        "uuid": "fd4f80af-5519-3ab3-90f3-9d5976e9486e",
+        "title": "The Zacks Analyst Blog Highlights Exxon Mobil, Bristol-Myers Squibb, Chubb and Hamilton Beach Brands",
         "publisher": "Zacks",
-        "reportDate": "2025-04-24",
-        "link": "https://finance.yahoo.com/news/selective-insurance-q1-earnings-miss-132900509.html",
+        "reportDate": "2025-04-03",
+        "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-exxon-145000755.html",
         "type": "STORY"
       },
       {
@@ -7616,6 +7601,14 @@
         "publisher": "Zacks",
         "reportDate": "2025-04-24",
         "link": "https://finance.yahoo.com/news/first-american-q1-earnings-surpass-134200770.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "f8a64642-b0de-3ae9-996c-8fa7c4dbc687",
+        "title": "Selective Insurance Q1 Earnings Miss Estimates on Higher Expenses",
+        "publisher": "Zacks",
+        "reportDate": "2025-04-24",
+        "link": "https://finance.yahoo.com/news/selective-insurance-q1-earnings-miss-132900509.html",
         "type": "STORY"
       },
       {
@@ -7651,26 +7644,36 @@
         "type": "STORY"
       },
       {
-        "uuid": "e0386e5c-a689-3da9-ab64-e98e3b7d4b91",
-        "title": "Chubb Facing Slowing Growth, Peaking Margins, Deutsche Bank Says",
-        "publisher": "MT Newswires",
-        "reportDate": "2025-05-20",
-        "link": "https://finance.yahoo.com/news/chubb-facing-slowing-growth-peaking-142113074.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "23c03313-94ba-3621-96f0-9965660917fe",
         "title": "Chubb rejigs investment and asset management leadership",
         "publisher": "Life Insurance International",
         "reportDate": "2025-05-20",
         "link": "https://finance.yahoo.com/m/23c03313-94ba-3621-96f0-9965660917fe/chubb-rejigs-investment-and.html",
         "type": "STORY"
+      },
+      {
+        "uuid": "8e275efe-3b8c-3fc2-8c11-0992983bc8e1",
+        "title": "Deutsche Bank cuts Chubb rating on ’slowing growth and peaking margins’",
+        "publisher": "Investing.com",
+        "reportDate": "2025-05-20",
+        "link": "https://finance.yahoo.com/news/deutsche-bank-cuts-chubb-rating-140513816.html",
+        "type": "STORY"
       }
     ],
     "officers": [
       {
+        "name": "Mr. Andreas Lewin",
+        "title": "Managing Director of ACE Tempest Re Europe"
+      },
+      {
         "name": "Mr. Christopher J. Hogan CFA",
         "title": "Senior VP of Chubb Group & Chief Investment Officer"
+      },
+      {
+        "name": "Mr. David Michael Alan Furby",
+        "title": "Senior VP & Executive Chairman of EMEA",
+        "age": 63,
+        "yearBorn": 1962
       },
       {
         "name": "Mr. Evan G. Greenberg",
@@ -7695,12 +7698,6 @@
         "totalPay": 6082297
       },
       {
-        "name": "Mr. Joseph F. Wayland J.D.",
-        "title": "Executive VP, General Counsel & Secretary",
-        "age": 67,
-        "yearBorn": 1958
-      },
-      {
         "name": "Mr. Juan Luis Ortega Guarderas",
         "title": "Executive VP of Chubb Group & President of North America Insurance",
         "age": 50,
@@ -7715,54 +7712,50 @@
         "totalPay": 3432728
       },
       {
-        "name": "Ms. Amy Well",
-        "title": "Senior VP of Chubb Group & Chief Marketing and Communications Officer"
-      },
-      {
-        "name": "Ms. Susan P. Spivak Bernstein",
-        "title": "Senior Vice President of Investor Relations",
-        "age": 58,
-        "yearBorn": 1967
+        "name": "Ms. Judith Gonsalves",
+        "title": "VP of Chubb Group & Division President of Chubb Bermuda",
+        "age": 59,
+        "yearBorn": 1966
       }
     ],
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 11.97,
-        "industryAvg": 12.8
+        "value": 11.73,
+        "industryAvg": 8.91
       },
       {
         "metric": "P/S Ratio",
-        "value": 2.09,
-        "industryAvg": 1.23
+        "value": 2.05,
+        "industryAvg": 1.34
       },
       {
         "metric": "P/B Ratio",
-        "value": 1.83,
-        "industryAvg": 1.42
+        "value": 1.7,
+        "industryAvg": 1.68
       },
       {
         "metric": "ROE",
         "value": 3.83,
-        "industryAvg": 6.32
+        "industryAvg": 24.98
       },
       {
         "metric": "ROA",
         "value": 1.03,
-        "industryAvg": 1.5599999999999998
+        "industryAvg": 6.09
       },
       {
         "metric": "Gross Margin",
-        "industryAvg": 0.06999999999999999
+        "industryAvg": 29.24
       },
       {
         "metric": "EBITDA Margin",
-        "industryAvg": 0.01
+        "industryAvg": 5.88
       },
       {
         "metric": "Net Margin",
         "value": 17.88,
-        "industryAvg": 14.96
+        "industryAvg": 15.86
       }
     ]
   }

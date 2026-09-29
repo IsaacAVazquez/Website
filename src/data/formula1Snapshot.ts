@@ -13,7 +13,7 @@ export const formula1Snapshot: Formula1Snapshot = {
     "constructorStandings": "https://api.openf1.org/v1/championship_teams?session_key=11377"
   },
   "season": 2026,
-  "generatedAt": "2026-09-28T16:43:57.986Z",
+  "generatedAt": "2026-09-29T14:50:02.526Z",
   "defaultMeetingKey": "1308",
   "standingsMeetingKey": "1295",
   "meetings": [
@@ -1402,126 +1402,6 @@ export const formula1Snapshot: Formula1Snapshot = {
         }
       ],
       "resultPublished": true
-    },
-    {
-      "key": "1282",
-      "name": "Bahrain Grand Prix",
-      "officialName": "FORMULA 1 GULF AIR BAHRAIN GRAND PRIX 2026",
-      "location": "Sakhir",
-      "countryName": "Bahrain",
-      "countryCode": "BRN",
-      "countryFlag": "https://media.formula1.com/content/dam/fom-website/2018-redesign-assets/Flags%2016x9/bahrain-flag.png",
-      "circuitKey": "63",
-      "circuitShortName": "Sakhir",
-      "circuitType": "Permanent",
-      "circuitImage": "https://media.formula1.com/content/dam/fom-website/2018-redesign-assets/Track%20icons%204x3/Bahrain%20carbon.png",
-      "gmtOffset": "03:00:00",
-      "startAt": "2026-04-10T11:30:00+00:00",
-      "endAt": "2026-04-12T17:00:00+00:00",
-      "status": "completed",
-      "hasSprint": false,
-      "raceSessionKey": "11261",
-      "raceStartsAt": "2026-04-12T15:00:00+00:00",
-      "sessions": [
-        {
-          "key": "11254",
-          "name": "Practice 1",
-          "type": "Practice",
-          "startAt": "2026-04-10T11:30:00+00:00",
-          "endAt": "2026-04-10T12:30:00+00:00"
-        },
-        {
-          "key": "11255",
-          "name": "Practice 2",
-          "type": "Practice",
-          "startAt": "2026-04-10T15:00:00+00:00",
-          "endAt": "2026-04-10T16:00:00+00:00"
-        },
-        {
-          "key": "11256",
-          "name": "Practice 3",
-          "type": "Practice",
-          "startAt": "2026-04-11T12:30:00+00:00",
-          "endAt": "2026-04-11T13:30:00+00:00"
-        },
-        {
-          "key": "11257",
-          "name": "Qualifying",
-          "type": "Qualifying",
-          "startAt": "2026-04-11T16:00:00+00:00",
-          "endAt": "2026-04-11T17:00:00+00:00"
-        },
-        {
-          "key": "11261",
-          "name": "Race",
-          "type": "Race",
-          "startAt": "2026-04-12T15:00:00+00:00",
-          "endAt": "2026-04-12T17:00:00+00:00"
-        }
-      ],
-      "classification": [],
-      "podium": [],
-      "resultPublished": false
-    },
-    {
-      "key": "1283",
-      "name": "Saudi Arabian Grand Prix",
-      "officialName": "FORMULA 1 STC SAUDI ARABIAN GRAND PRIX 2026",
-      "location": "Jeddah",
-      "countryName": "Saudi Arabia",
-      "countryCode": "KSA",
-      "countryFlag": "https://media.formula1.com/content/dam/fom-website/2018-redesign-assets/Flags%2016x9/saudi-arabia-flag.png",
-      "circuitKey": "149",
-      "circuitShortName": "Jeddah",
-      "circuitType": "Temporary - Street",
-      "circuitImage": "https://media.formula1.com/content/dam/fom-website/2018-redesign-assets/Track%20icons%204x3/Saudi Arabia%20carbon.png",
-      "gmtOffset": "03:00:00",
-      "startAt": "2026-04-17T13:30:00+00:00",
-      "endAt": "2026-04-19T19:00:00+00:00",
-      "status": "completed",
-      "hasSprint": false,
-      "raceSessionKey": "11269",
-      "raceStartsAt": "2026-04-19T17:00:00+00:00",
-      "sessions": [
-        {
-          "key": "11262",
-          "name": "Practice 1",
-          "type": "Practice",
-          "startAt": "2026-04-17T13:30:00+00:00",
-          "endAt": "2026-04-17T14:30:00+00:00"
-        },
-        {
-          "key": "11263",
-          "name": "Practice 2",
-          "type": "Practice",
-          "startAt": "2026-04-17T17:00:00+00:00",
-          "endAt": "2026-04-17T18:00:00+00:00"
-        },
-        {
-          "key": "11264",
-          "name": "Practice 3",
-          "type": "Practice",
-          "startAt": "2026-04-18T13:30:00+00:00",
-          "endAt": "2026-04-18T14:30:00+00:00"
-        },
-        {
-          "key": "11265",
-          "name": "Qualifying",
-          "type": "Qualifying",
-          "startAt": "2026-04-18T17:00:00+00:00",
-          "endAt": "2026-04-18T18:00:00+00:00"
-        },
-        {
-          "key": "11269",
-          "name": "Race",
-          "type": "Race",
-          "startAt": "2026-04-19T17:00:00+00:00",
-          "endAt": "2026-04-19T19:00:00+00:00"
-        }
-      ],
-      "classification": [],
-      "podium": [],
-      "resultPublished": false
     },
     {
       "key": "1284",
@@ -5439,12 +5319,12 @@ export const formula1Snapshot: Formula1Snapshot = {
         {
           "position": 11,
           "driverNumber": 22,
-          "driverName": "Driver 22",
-          "broadcastName": null,
-          "acronym": null,
-          "teamName": null,
-          "teamColor": null,
-          "headshotUrl": null,
+          "driverName": "Yuki TSUNODA",
+          "broadcastName": "Y TSUNODA",
+          "acronym": "TSU",
+          "teamName": "Racing Bulls",
+          "teamColor": "#6C98FF",
+          "headshotUrl": "https://media.formula1.com/d_driver_fallback_image.png/content/dam/fom-website/drivers/Y/YUKTSU01_Yuki_Tsunoda/yuktsu01.png.transform/1col/image.png",
           "lapsCompleted": 71,
           "points": 0,
           "status": "classified",
@@ -5885,12 +5765,12 @@ export const formula1Snapshot: Formula1Snapshot = {
         {
           "position": 10,
           "driverNumber": 22,
-          "driverName": "Driver 22",
-          "broadcastName": null,
-          "acronym": null,
-          "teamName": null,
-          "teamColor": null,
-          "headshotUrl": null,
+          "driverName": "Yuki TSUNODA",
+          "broadcastName": "Y TSUNODA",
+          "acronym": "TSU",
+          "teamName": "Racing Bulls",
+          "teamColor": "#6C98FF",
+          "headshotUrl": "https://media.formula1.com/d_driver_fallback_image.png/content/dam/fom-website/drivers/Y/YUKTSU01_Yuki_Tsunoda/yuktsu01.png.transform/1col/image.png",
           "lapsCompleted": 53,
           "points": 1,
           "status": "classified",
@@ -6411,12 +6291,12 @@ export const formula1Snapshot: Formula1Snapshot = {
         {
           "position": 14,
           "driverNumber": 22,
-          "driverName": "Driver 22",
-          "broadcastName": null,
-          "acronym": null,
-          "teamName": null,
-          "teamColor": null,
-          "headshotUrl": null,
+          "driverName": "Yuki TSUNODA",
+          "broadcastName": "Y TSUNODA",
+          "acronym": "TSU",
+          "teamName": "Racing Bulls",
+          "teamColor": "#6C98FF",
+          "headshotUrl": "https://media.formula1.com/d_driver_fallback_image.png/content/dam/fom-website/drivers/Y/YUKTSU01_Yuki_Tsunoda/yuktsu01.png.transform/1col/image.png",
           "lapsCompleted": 56,
           "points": 0,
           "status": "classified",
@@ -7819,12 +7699,12 @@ export const formula1Snapshot: Formula1Snapshot = {
       "position": 20,
       "previousPosition": 20,
       "driverNumber": 22,
-      "driverName": "Driver 22",
-      "broadcastName": null,
-      "acronym": null,
-      "teamName": "Unknown team",
-      "teamColor": null,
-      "headshotUrl": null,
+      "driverName": "Yuki TSUNODA",
+      "broadcastName": "Y TSUNODA",
+      "acronym": "TSU",
+      "teamName": "Racing Bulls",
+      "teamColor": "#6C98FF",
+      "headshotUrl": "https://media.formula1.com/d_driver_fallback_image.png/content/dam/fom-website/drivers/Y/YUKTSU01_Yuki_Tsunoda/yuktsu01.png.transform/1col/image.png",
       "points": 1,
       "pointsBeforeRace": 1,
       "pointsDelta": 0
@@ -7975,8 +7855,8 @@ export const formula1Snapshot: Formula1Snapshot = {
   ],
   "seasonMetrics": {
     "season": 2026,
-    "totalRaces": 25,
-    "completedRaces": 17,
+    "totalRaces": 23,
+    "completedRaces": 15,
     "upcomingRaces": 8,
     "sprintWeekends": 6
   },

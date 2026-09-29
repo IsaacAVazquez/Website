@@ -73,7 +73,7 @@ interface AIStructuredDataProps {
  *     type: "Person",
  *     data: {
  *       name: "Isaac Vazquez",
- *       jobTitle: "Technical Product Manager",
+ *       jobTitle: profile.fullTitle,
  *       expertise: [...],
  *       awards: [...],
  *     }

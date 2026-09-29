@@ -4,6 +4,7 @@ import tempfile
 import unittest
 import sys
 import types
+from contextlib import ExitStack
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from unittest.mock import patch
@@ -39,6 +40,7 @@ class FetchInvestmentsDataTests(unittest.TestCase):
     def setUp(self):
         pipeline._symbol_timed_out = False
         getattr(pipeline, "_industry_cache", {}).clear()
+        getattr(pipeline, "_slow_industries", set()).clear()
 
     def test_a_timeout_the_library_rewraps_still_stops_the_symbol(self):
         with self.assertRaisesRegex(pipeline.SymbolTimeout, "time budget exhausted"):
@@ -186,6 +188,68 @@ class FetchInvestmentsDataTests(unittest.TestCase):
             pipeline.fetch_industry(FlakyTicker(), Path(tmp), "Banks")
 
         self.assertNotIn("Banks", pipeline._industry_cache)
+
+    def test_an_industry_timeout_keeps_the_symbol_and_skips_the_industry(self):
+        # The 2026-09-29 run: PNC and USB both timed out inside the industry
+        # section, and the timeout threw away every section they had fetched.
+        class SlowIndustryTicker:
+            def __init__(self, symbol=None):
+                pass
+
+            def __getattr__(self, name):
+                return rewrapped_like_the_library(alarm)
+
+        calls = []
+
+        class CountingTicker:
+            def __getattr__(self, name):
+                calls.append(name)
+                return lambda: []
+
+        other_sections = [
+            "fetch_officers",
+            "fetch_beta",
+            "fetch_fundamentals",
+            "fetch_profitability",
+            "fetch_margins",
+            "fetch_growth",
+            "fetch_statements",
+            "fetch_wacc",
+            "fetch_news",
+        ]
+        with tempfile.TemporaryDirectory() as tmp, ExitStack() as stack:
+            for name in other_sections:
+                stack.enter_context(patch.object(pipeline, name))
+            stack.enter_context(patch.object(pipeline, "Ticker", SlowIndustryTicker))
+            stack.enter_context(
+                patch.object(
+                    pipeline,
+                    "fetch_info",
+                    return_value=[{"symbol": "PNC", "industry": "Banks - Regional"}],
+                )
+            )
+            stack.enter_context(patch.object(pipeline, "fetch_price", return_value=[]))
+            stack.enter_context(
+                patch.object(
+                    pipeline, "validate_price_freshness", return_value="2026-09-28"
+                )
+            )
+            first, second = Path(tmp) / "PNC", Path(tmp) / "USB"
+
+            entry = pipeline.fetch_symbol("PNC", first)
+            written = json.loads((first / "industry.json").read_text())
+            pipeline.fetch_industry(CountingTicker(), second, "Banks - Regional")
+            skipped = json.loads((second / "industry.json").read_text())
+
+        self.assertEqual(entry["priceAsOf"], "2026-09-28")
+        self.assertFalse(pipeline._symbol_timed_out)
+        # Every field is present and empty, which is the shape the snapshot
+        # builder reads as "carry the prior industry section forward".
+        self.assertEqual(set(written), set(pipeline.INDUSTRY_FIELDS))
+        self.assertFalse(any(written.values()))
+        # The next symbol in the industry does not wait on it again.
+        self.assertEqual(calls, [])
+        self.assertEqual(skipped, written)
 
     def test_safe_call_does_not_swallow_symbol_timeout(self):
         def timeout():

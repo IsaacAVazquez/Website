@@ -1,4 +1,4 @@
-import { expect, test, type Page } from "@playwright/test";
+import { expect, test, type Locator, type Page } from "@playwright/test";
 
 async function expectInvestmentsShell(page: Page) {
   await expect(page.getByTestId("investments-shell")).toBeVisible();
@@ -457,5 +457,236 @@ test.describe("Investments", () => {
       "News Pulse Dashboard",
       "Interchange IQ",
     ]);
+  });
+});
+
+// The chart sets its type in SVG user units, 20 at desktop and 40 under 640px,
+// so both sizes are measured.
+const chartViewports = [
+  { name: "desktop type", width: 1280, height: 800 },
+  { name: "phone type", width: 390, height: 844 },
+];
+
+type ChartPlan = { name: string; stored: Record<string, number> | null };
+
+// Where the last tick lands depends on the plan's ages. These put it short of
+// the right edge, on the edge, at a three digit age, and on the edge of a plan
+// that runs two years.
+const chartPlans: ChartPlan[] = [
+  { name: "the sample plan, 35 to 95", stored: null },
+  { name: "a plan that ends on a tick, 35 to 90", stored: { currentAge: 35, retirementAge: 65, horizonAge: 90 } },
+  { name: "the longest plan, 18 to 110", stored: { currentAge: 18, retirementAge: 65, horizonAge: 110 } },
+  { name: "the shortest plan, 89 to 91", stored: { currentAge: 89, retirementAge: 90, horizonAge: 91 } },
+];
+
+// The labels at the edges of the plot depend on the ages as well. These put
+// the retirement marker near the right edge, a tick on both edges, a three
+// digit tick on the right edge, a tick just inside the left edge, and three
+// digit ticks side by side.
+const edgePlans: ChartPlan[] = [
+  { name: "the sample plan, 35 to 95", stored: null },
+  { name: "a late retirement, 70 on a plan from 35 to 75", stored: { currentAge: 35, retirementAge: 70, horizonAge: 75 } },
+  { name: "a plan with a tick on both edges, 40 to 100", stored: { currentAge: 40, retirementAge: 65, horizonAge: 100 } },
+  { name: "the longest plan, 18 to 110", stored: { currentAge: 18, retirementAge: 65, horizonAge: 110 } },
+  { name: "the shortest plan, 89 to 91", stored: { currentAge: 89, retirementAge: 90, horizonAge: 91 } },
+  { name: "a plan that ends past 100, 70 to 110", stored: { currentAge: 70, retirementAge: 75, horizonAge: 110 } },
+];
+
+async function openRetirementChart(
+  page: Page,
+  viewport: { width: number; height: number },
+  stored: ChartPlan["stored"],
+) {
+  await page.setViewportSize({ width: viewport.width, height: viewport.height });
+  if (stored) {
+    await page.addInitScript((plan) => {
+      window.localStorage.setItem("retirement_plan", JSON.stringify({ version: 1, plan }));
+    }, stored);
+  }
+  await routeInvestmentsFixtures(page);
+
+  await page.goto("/investments");
+  await expectInvestmentsShell(page);
+
+  // The planner holds its projection back until it is near the viewport.
+  await page.locator("#retirement").scrollIntoViewIfNeeded();
+  const chart = page.locator("#retirement .invest-retire-chart");
+  await expect(chart.locator("svg text.is-x").first()).toBeVisible();
+  await page.evaluate(async () => {
+    await document.fonts.ready;
+  });
+  return chart;
+}
+
+// Every label in the drawing with its box on screen, next to the drawing's own
+// box. The drawing clips at that box, so a label that crosses it loses ink.
+async function measureChartLabels(chart: Locator) {
+  return chart.evaluate((figure) => {
+    const drawing = figure.querySelector("svg");
+    if (!drawing) throw new Error("The chart has no drawing.");
+    const boxOf = (node: Element) => {
+      const { left, right, top, bottom } = node.getBoundingClientRect();
+      return { left, right, top, bottom };
+    };
+    return {
+      drawing: boxOf(drawing),
+      // The lowest gridline is the $0 line, which is the floor of the plot.
+      floor: Math.max(...[...drawing.querySelectorAll("line.grid")].map((line) => boxOf(line).bottom)),
+      labels: [...drawing.querySelectorAll("text")].map((node) => ({
+        text: (node.textContent ?? "").trim(),
+        axis: node.classList.contains("is-x")
+          ? ("age" as const)
+          : node.classList.contains("is-marker")
+            ? ("marker" as const)
+            : ("balance" as const),
+        ...boxOf(node),
+      })),
+    };
+  });
+}
+
+test.describe("Retirement projection chart", () => {
+  test.describe("label boxes", () => {
+    // Every engine reports the same length for a label, so the chart lays out
+    // the same in each. Firefox then reports a box for SVG text that is 3px
+    // wider than the text on each side and about 2px taller above and below,
+    // at any size, so a box there says nothing about the ink.
+    test.skip(({ browserName }) => browserName === "firefox", "Firefox pads the box it reports for SVG text");
+
+    for (const viewport of chartViewports) {
+      for (const plan of edgePlans) {
+        test(`keeps every label inside the drawing at ${viewport.name} for ${plan.name}`, async ({ page }) => {
+          const chart = await openRetirementChart(page, viewport, plan.stored);
+          const { drawing, labels } = await measureChartLabels(chart);
+
+          expect(labels.map((label) => label.axis)).toEqual(
+            expect.arrayContaining(["age", "balance", "marker"]),
+          );
+
+          const clipped = labels.flatMap((label) => {
+            const past = {
+              left: drawing.left - label.left,
+              right: label.right - drawing.right,
+              top: drawing.top - label.top,
+              bottom: label.bottom - drawing.bottom,
+            };
+            return Object.entries(past)
+              .filter(([, by]) => by > 0)
+              .map(([edge, by]) => `"${label.text}" runs ${by.toFixed(1)}px past the ${edge} edge`);
+          });
+          expect(clipped).toEqual([]);
+        });
+
+        test(`keeps the age ticks clear of the other labels at ${viewport.name} for ${plan.name}`, async ({ page }) => {
+          const chart = await openRetirementChart(page, viewport, plan.stored);
+          const { labels } = await measureChartLabels(chart);
+
+          const ages = labels.filter((label) => label.axis === "age");
+          const rest = labels.filter((label) => label.axis !== "age");
+          expect(ages.length).toBeGreaterThan(1);
+          expect(rest.map((label) => label.text)).toContain("$0");
+
+          const collisions: string[] = [];
+          ages.forEach((age, index) => {
+            // A tick is held against the ticks after it and against every other label.
+            for (const other of [...ages.slice(index + 1), ...rest]) {
+              const across = Math.min(age.right, other.right) - Math.max(age.left, other.left);
+              const down = Math.min(age.bottom, other.bottom) - Math.max(age.top, other.top);
+              if (across > 0 && down > 0) {
+                collisions.push(
+                  `"${age.text}" and "${other.text}" overlap by ${across.toFixed(1)}px across and ${down.toFixed(1)}px down`,
+                );
+              }
+            }
+          });
+          expect(collisions).toEqual([]);
+        });
+      }
+
+      test(`keeps the age ticks below the plot at ${viewport.name}`, async ({ page }) => {
+        const chart = await openRetirementChart(page, viewport, null);
+        const { floor, labels } = await measureChartLabels(chart);
+
+        const ages = labels.filter((label) => label.axis === "age");
+        expect(ages.length).toBeGreaterThan(1);
+
+        const raised = ages
+          .filter((age) => age.top < floor)
+          .map((age) => `"${age.text}" starts ${(floor - age.top).toFixed(1)}px above the floor of the plot`);
+        expect(raised).toEqual([]);
+      });
+    }
+  });
+
+  test("labels whole ages on a plan that runs two years", async ({ page }) => {
+    const chart = await openRetirementChart(page, chartViewports[0], {
+      currentAge: 89,
+      retirementAge: 90,
+      horizonAge: 91,
+    });
+    const { labels } = await measureChartLabels(chart);
+
+    const ages = labels.filter((label) => label.axis === "age").map((label) => label.text);
+    expect(ages.length).toBeGreaterThan(1);
+    expect(ages.filter((age) => !/^\d+$/.test(age))).toEqual([]);
+  });
+
+  for (const viewport of chartViewports) {
+    for (const plan of chartPlans) {
+      test(`keeps the age label clear of the age ticks at ${viewport.name} for ${plan.name}`, async ({ page }) => {
+        const chart = await openRetirementChart(page, viewport, plan.stored);
+
+        const { named, ticks } = await chart.evaluate((figure) => {
+          const measure = (node: Element) => {
+            const box = node.getBoundingClientRect();
+            return {
+              text: (node.textContent ?? "").trim(),
+              left: box.left,
+              right: box.right,
+              top: box.top,
+              bottom: box.bottom,
+            };
+          };
+          // The axis is named by whichever element holds the word itself,
+          // whether that sits in the drawing or in the caption above it.
+          const holdsTheWord = (node: Element) =>
+            [...node.childNodes].some(
+              (child) => child.nodeType === Node.TEXT_NODE && /\bage\b/i.test(child.textContent ?? ""),
+            );
+          return {
+            named: [...figure.querySelectorAll("*")].filter(holdsTheWord).map(measure),
+            ticks: [...figure.querySelectorAll("svg text.is-x")].map(measure),
+          };
+        });
+
+        expect(named.length, "the chart says its x axis is age").toBeGreaterThan(0);
+        expect(ticks.length).toBeGreaterThan(1);
+
+        const row = [...named, ...ticks];
+        const collisions: string[] = [];
+        row.forEach((a, index) => {
+          for (const b of row.slice(index + 1)) {
+            const across = Math.min(a.right, b.right) - Math.max(a.left, b.left);
+            const down = Math.min(a.bottom, b.bottom) - Math.max(a.top, b.top);
+            if (across > 0 && down > 0) {
+              collisions.push(`"${a.text}" and "${b.text}" overlap by ${across.toFixed(1)}px`);
+            }
+          }
+        });
+        expect(collisions).toEqual([]);
+      });
+    }
+  }
+
+  test("keeps the caption on the chart's page when the page prints", async ({ page }) => {
+    await routeInvestmentsFixtures(page);
+
+    await page.goto("/investments");
+    await expectInvestmentsShell(page);
+    await page.locator("#retirement").scrollIntoViewIfNeeded();
+
+    // The caption names the x axis. A drawing never splits across pages, so
+    // the one break this rule can stop is the one between the two.
+    await expect(page.locator("#retirement .invest-retire-chart")).toHaveCSS("break-inside", "avoid");
   });
 });

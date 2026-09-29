@@ -7,28 +7,28 @@ import { generateBreadcrumbStructuredData } from "@/lib/seo";
 // Hand-curated snapshot of what I'm focused on right now.
 // Refresh when anything here goes stale — this page is meant to feel
 // current, not archival.
-const NOW_UPDATED = "2026-06-10";
-const NOW_UPDATED_LABEL = "June 2026";
+const NOW_UPDATED = "2026-09-28";
+const NOW_UPDATED_LABEL = "September 2026";
 const NOW_LOCATION = "Berkeley, CA";
 
 const focus = [
   {
     kicker: "Primary focus",
-    title: "Haas MBA, between years",
+    title: "Second year at Haas",
     detail:
-      "First year is in the books. I'm spending the summer putting the coursework to work and keeping the MBA internship tracker sharp for the next recruiting cycle.",
+      "I'm in my second year of the MBA and looking for a full-time product management role that starts after I graduate in May 2027.",
+  },
+  {
+    kicker: "Finished in August",
+    title: "My summer at Juno",
+    detail:
+      "I spent May to August 2026 as the MBA growth intern at Juno, and in September I published write-ups of that summer and of my three and a half years at Civitech.",
   },
   {
     kicker: "Building",
-    title: "World Cup Pulse",
+    title: "One design for the whole site",
     detail:
-      "A tournament hub for the first 48-team World Cup, live for the June 11 kickoff. Group tables, the knockout bracket, and the third-place race, refreshed every six hours.",
-  },
-  {
-    kicker: "Writing",
-    title: "Two series at once",
-    detail:
-      "A daily countdown through the top ten World Cup contenders, alongside the ongoing agentic AI series on evals, costs, and what agents change about PM craft.",
+      "In September I finished moving every page on this site onto one design system, printed in riso colors, and gave each project its own signature visual.",
   },
 ];
 
@@ -52,19 +52,19 @@ const reading = [
 
 const building = [
   {
-    label: "World Cup 2026 hub",
-    href: "/world-cup-2026",
-    detail: "Groups, knockout rounds, and the third-place race for all 48 teams.",
+    label: "Job Search",
+    href: "/mba-internship-notifications",
+    detail: "Career page monitoring and an application pipeline for my full-time search.",
   },
   {
-    label: "MBA internship tracker",
-    href: "/mba-internship-notifications",
-    detail: "Role aggregation and notifications for my cohort.",
+    label: "Fantasy football weekly board",
+    href: "/fantasy-football/weekly",
+    detail: "In-season weekly rankings and waiver targets from the FantasyPros consensus.",
   },
   {
     label: "Investments research",
     href: "/investments",
-    detail: "Portfolio tracker with a researcher sidebar and a new retirement planner.",
+    detail: "Portfolio tracker with a researcher sidebar and a retirement planner.",
   },
   {
     label: "Bay Area Transit Pulse",
@@ -74,8 +74,7 @@ const building = [
 ];
 
 const notBuilding = [
-  "New side projects outside this site. The surface is wide enough already.",
-  "A paid product. This is a portfolio, not a business.",
+  "A paid product, since this site is a portfolio.",
   "Social media content. I write here and that's it.",
 ];
 
@@ -84,7 +83,7 @@ const TILE_SURFACES = ["ink-blue", "ink-saffron", "stone", "chocolate"] as const
 
 export const metadata: Metadata = constructMetadata({
   title: "What I'm Building Now | Isaac Vazquez",
-  description: `What Isaac Vazquez is focused on right now, including current work, reading, side projects, and location. Updated ${NOW_UPDATED_LABEL}.`,
+  description: `What I'm focused on as of ${NOW_UPDATED_LABEL}, from my second year at Haas and my full-time search to what I'm building and reading.`,
   canonicalUrl: "https://isaacvazquez.com/now",
   dateModified: NOW_UPDATED,
 });
@@ -126,9 +125,9 @@ export default function NowPage() {
               maxWidth: "var(--c97-measure-wide)",
             }}
           >
-            A living snapshot. Not a résumé, not a backlog. If you&apos;re
-            curious what I&apos;d talk about if we grabbed coffee today, this
-            is it. Inspired by Derek Sivers&apos;{" "}
+            This is what I&apos;m spending my time on as of{" "}
+            {NOW_UPDATED_LABEL}, which is roughly what I&apos;d talk about if
+            we grabbed coffee. The idea comes from Derek Sivers&apos;{" "}
             <a
               href="https://nownownow.com/about"
               target="_blank"
@@ -233,8 +232,10 @@ export default function NowPage() {
               color: "var(--c97-ink-2)",
             }}
           >
-            The projects I&apos;m actively touching. Everything else on this
-            site is on maintenance mode.
+            The projects I&apos;m spending the most time on. The rest of the
+            site keeps running, and most dashboards refresh on their own
+            schedules, while any that miss a refresh keep their last snapshot
+            and show its date.
           </p>
           <div className="c97-mosaic" style={{ marginTop: "var(--c97-sp-4)" }}>
             {building.map((item, index) => (

@@ -74,7 +74,7 @@ async function getAllSearchableContent(): Promise<SearchableContent[]> {
       id: 'page-home',
       title: 'Isaac Vazquez',
       excerpt:
-        'Portfolio site for Isaac Vazquez — product manager, builder, and analytics-focused operator.',
+        'My background, selected work, newest writing, and the dashboards I built.',
       content:
         'home portfolio Isaac Vazquez product manager analytics fintech builder Berkeley Bay Area',
       url: '/',
@@ -85,7 +85,7 @@ async function getAllSearchableContent(): Promise<SearchableContent[]> {
       id: 'page-about',
       title: 'About Isaac Vazquez',
       excerpt:
-        'Background, work history, and how I think about product management, analytics, and decision-support tooling.',
+        'How I got from campaign data and QA to Berkeley Haas, and the habits I work by.',
       content:
         'about Isaac Vazquez background bio product manager analytics civic tech fintech Berkeley',
       url: '/about',
@@ -107,7 +107,7 @@ async function getAllSearchableContent(): Promise<SearchableContent[]> {
       id: 'page-resume',
       title: 'Resume - Isaac Vazquez',
       excerpt:
-        'Resume for a product manager with 6+ years across QA, analytics, civic tech, and fintech-style product work.',
+        'My résumé, covering Open Progress, Civitech, my 2026 growth internship at Juno, and my Berkeley Haas MBA.',
       content:
         'Resume product manager QA analytics civic tech fintech product work Berkeley Bay Area',
       url: '/resume',
@@ -118,7 +118,7 @@ async function getAllSearchableContent(): Promise<SearchableContent[]> {
       id: 'page-contact',
       title: 'Contact Isaac Vazquez',
       excerpt:
-        'Get in touch about product roles, analytics work, AI workflows, or fintech-focused projects.',
+        'How to reach me about full-time product roles, Haas, or anything on this site.',
       content:
         'Contact product manager analytics AI workflows fintech product collaboration Berkeley Bay Area',
       url: '/contact',
@@ -607,7 +607,7 @@ async function getAllSearchableContent(): Promise<SearchableContent[]> {
       id: 'page-now',
       title: 'Now',
       excerpt:
-        'What I am focused on right now — current projects, reading, and priorities.',
+        'What I am focused on right now, from my second year at Haas to what I am building and reading.',
       content:
         'now page current focus projects priorities reading what I am working on status update',
       url: '/now',
@@ -749,7 +749,7 @@ const KONAMI_ANSWER: SearchableContent = {
   id: 'answer-konami',
   title: 'Konami code',
   excerpt:
-    'Press up up down down left right left right B A on any page except the arcade, and something happens that ends with a link to the arcade.',
+    'Press up up down down left right left right B A on any page and something happens. Outside the arcade it ends with a link to the arcade, and inside the arcade it is worth trying too.',
   content: '',
   url: '/arcade',
   type: 'page',
@@ -776,6 +776,69 @@ const EASTER_EGG_ANSWER: SearchableContent = {
   category: 'Site',
 };
 
+// The hints below each point at one easter egg without giving the trigger
+// away in full. docs/EASTER_EGGS.md has the whole list.
+const DARKROOM_ANSWER: SearchableContent = {
+  id: 'answer-darkroom',
+  title: 'Darkroom',
+  excerpt:
+    'The light switch in the header does more than change the theme if you flip it enough times in a row.',
+  content: '',
+  url: '/',
+  type: 'page',
+  category: 'Site',
+};
+const STAMP_ANSWER: SearchableContent = {
+  id: 'answer-stamp',
+  title: 'Rubber stamp',
+  excerpt:
+    'The wordmark in the footer works like a rubber stamp, and the press notices if you stamp it enough times in a row.',
+  content: '',
+  url: '/',
+  type: 'page',
+  category: 'Site',
+};
+const NIGHT_SHIFT_ANSWER: SearchableContent = {
+  id: 'answer-night-shift',
+  title: 'Night shift',
+  excerpt:
+    'The tab title changes when you switch away from the site, and it reads differently after midnight.',
+  content: '',
+  url: '/',
+  type: 'page',
+  category: 'Site',
+};
+const THIRTY_LIVES_ANSWER: SearchableContent = {
+  id: 'answer-thirty-lives',
+  title: '30 lives',
+  excerpt:
+    'The Konami code works in the arcade too, and it does there what it did in Contra.',
+  content: '',
+  url: '/arcade',
+  type: 'page',
+  category: 'Site',
+};
+const TEAPOT_ANSWER: SearchableContent = {
+  id: 'answer-teapot',
+  title: 'Teapot',
+  excerpt:
+    "There's a teapot at /teapot. It can't brew coffee, and it answers with the status code that says so.",
+  content: '',
+  url: '/teapot',
+  type: 'page',
+  category: 'Site',
+};
+const COLOPHON_ANSWER: SearchableContent = {
+  id: 'answer-colophon',
+  title: 'Colophon',
+  excerpt:
+    'The stack, the typefaces, and the inks behind the site are listed in a plain text file at /humans.txt.',
+  content: '',
+  url: '/humans.txt',
+  type: 'page',
+  category: 'Site',
+};
+
 const HIDDEN_ANSWERS: Record<string, SearchableContent> = {
   monet: MONET_ANSWER,
   konami: KONAMI_ANSWER,
@@ -786,6 +849,20 @@ const HIDDEN_ANSWERS: Record<string, SearchableContent> = {
   'hire isaac': HIRE_ANSWER,
   'easter egg': EASTER_EGG_ANSWER,
   'easter eggs': EASTER_EGG_ANSWER,
+  darkroom: DARKROOM_ANSWER,
+  safelight: DARKROOM_ANSWER,
+  stamp: STAMP_ANSWER,
+  'rubber stamp': STAMP_ANSWER,
+  'night shift': NIGHT_SHIFT_ANSWER,
+  contra: THIRTY_LIVES_ANSWER,
+  '30 lives': THIRTY_LIVES_ANSWER,
+  'thirty lives': THIRTY_LIVES_ANSWER,
+  teapot: TEAPOT_ANSWER,
+  '418': TEAPOT_ANSWER,
+  'i m a teapot': TEAPOT_ANSWER,
+  humans: COLOPHON_ANSWER,
+  'humans txt': COLOPHON_ANSWER,
+  colophon: COLOPHON_ANSWER,
 };
 
 function findHiddenAnswer(query: string): SearchableContent | undefined {

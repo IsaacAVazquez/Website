@@ -562,25 +562,43 @@ def industry_of(info_payload) -> str | None:
 # per industry serves every symbol in it for the rest of the run.
 _industry_cache: dict[str, dict] = {}
 
+# Output key to the library method that fills it.
+INDUSTRY_FIELDS = {
+    "ttm_pe": "industry_ttm_pe",
+    "ps_ratio": "industry_ps_ratio",
+    "pb_ratio": "industry_pb_ratio",
+    "roe": "industry_roe",
+    "roa": "industry_roa",
+    "equity_multiplier": "industry_equity_multiplier",
+    "gross_margin": "industry_quarterly_gross_margin",
+    "ebitda_margin": "industry_quarterly_ebitda_margin",
+    "net_margin": "industry_quarterly_net_margin",
+    "asset_turnover": "industry_asset_turnover",
+}
+
+# Industries whose aggregates timed out in this run. The snapshot builder
+# requires industry.json, and it carries the prior industry section forward
+# when every field in the file is empty.
+# ponytail: remembered for one run only, so every run pays one timeout per slow
+# industry it reaches. Persist the set in index.json if that cost ever matters.
+_slow_industries: set[str] = set()
+
+
+def write_empty_industry(out: Path) -> None:
+    write_json(out / "industry.json", {key: [] for key in INDUSTRY_FIELDS})
+
 
 def fetch_industry(t: Ticker, out: Path, industry: str | None = None) -> None:
+    if industry and industry in _slow_industries:
+        print("  industry... skipped, it timed out earlier in this run")
+        write_empty_industry(out)
+        return
     print("  industry...")
     data = _industry_cache.get(industry) if industry else None
     if data is None:
         data = {}
-        for key, fn in [
-            ("ttm_pe",            lambda: t.industry_ttm_pe()),
-            ("ps_ratio",          lambda: t.industry_ps_ratio()),
-            ("pb_ratio",          lambda: t.industry_pb_ratio()),
-            ("roe",               lambda: t.industry_roe()),
-            ("roa",               lambda: t.industry_roa()),
-            ("equity_multiplier", lambda: t.industry_equity_multiplier()),
-            ("gross_margin",      lambda: t.industry_quarterly_gross_margin()),
-            ("ebitda_margin",     lambda: t.industry_quarterly_ebitda_margin()),
-            ("net_margin",        lambda: t.industry_quarterly_net_margin()),
-            ("asset_turnover",    lambda: t.industry_asset_turnover()),
-        ]:
-            result = safe_call(fn)
+        for key, method in INDUSTRY_FIELDS.items():
+            result = safe_call(lambda method=method: getattr(t, method)())
             if isinstance(result, dict) and "error" in result:
                 data[key] = []  # skip broken fields; don't write error objects to disk
             else:
@@ -609,6 +627,7 @@ def fetch_news(t: Ticker, out: Path) -> None:
 # Main
 # ---------------------------------------------------------------------------
 def fetch_symbol(symbol: str, out_dir: Path) -> dict[str, str]:
+    global _symbol_timed_out
     t = Ticker(symbol)
     info_payload = fetch_info(t, out_dir)
     fetch_officers(t, out_dir)
@@ -621,8 +640,22 @@ def fetch_symbol(symbol: str, out_dir: Path) -> dict[str, str]:
     fetch_growth(t, out_dir)
     fetch_statements(t, out_dir)
     fetch_wacc(t, out_dir)
-    fetch_industry(t, out_dir, industry_of(info_payload))
     fetch_news(t, out_dir)
+    # Industry runs last, so a timeout inside it costs the industry section and
+    # nothing else. Across two runs on 2026-09-29 all six symbols that timed out
+    # (PNC, USB, VRTX, BSX, REGN, GE) were inside this section, and the timeout
+    # discarded every section they had already fetched. PNC and USB had gone
+    # without a full refresh since 2026-07-16. No query runs after this one, so
+    # the spent timer leaves nothing unbounded.
+    industry = industry_of(info_payload)
+    try:
+        fetch_industry(t, out_dir, industry)
+    except SymbolTimeout:
+        _symbol_timed_out = False
+        if industry:
+            _slow_industries.add(industry)
+        print("  industry timed out, keeping the symbol's other sections")
+        write_empty_industry(out_dir)
     entry = build_index_entry(symbol, info_payload)
     entry["priceAsOf"] = price_as_of
     return entry
@@ -737,9 +770,11 @@ def main() -> None:
 
     for symbol in symbols:
         elapsed = time.monotonic() - start
+        # An industry that timed out spent a whole symbol timer too, so it
+        # counts toward the same cap even though its symbol was kept.
         use_retry_timeout = (
             symbol in fetch_failures or
-            long_timeout_failures >= MAX_LONG_TIMEOUTS_PER_RUN
+            long_timeout_failures + len(_slow_industries) >= MAX_LONG_TIMEOUTS_PER_RUN
         )
         active_timeout = symbol_timeout_seconds(
             elapsed,
