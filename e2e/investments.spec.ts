@@ -417,3 +417,97 @@ test.describe("Investments", () => {
     ]);
   });
 });
+
+// The chart sets its type in SVG user units, 20 at desktop and 40 under 640px,
+// so both sizes are measured.
+const chartViewports = [
+  { name: "desktop type", width: 1280, height: 800 },
+  { name: "phone type", width: 390, height: 844 },
+];
+
+// Where the last tick lands depends on the plan's ages. These put it short of
+// the right edge, on the edge, at a three digit age, and on a half year.
+const chartPlans: { name: string; stored: Record<string, number> | null }[] = [
+  { name: "the sample plan, 35 to 95", stored: null },
+  { name: "a plan that ends on a tick, 35 to 90", stored: { currentAge: 35, retirementAge: 65, horizonAge: 90 } },
+  { name: "the longest plan, 18 to 110", stored: { currentAge: 18, retirementAge: 65, horizonAge: 110 } },
+  { name: "the shortest plan, 89 to 91", stored: { currentAge: 89, retirementAge: 90, horizonAge: 91 } },
+];
+
+test.describe("Retirement projection chart", () => {
+  for (const viewport of chartViewports) {
+    for (const plan of chartPlans) {
+      test(`keeps the age label clear of the age ticks at ${viewport.name} for ${plan.name}`, async ({ page }) => {
+        await page.setViewportSize({ width: viewport.width, height: viewport.height });
+        if (plan.stored) {
+          await page.addInitScript((stored) => {
+            window.localStorage.setItem("retirement_plan", JSON.stringify({ version: 1, plan: stored }));
+          }, plan.stored);
+        }
+        await routeInvestmentsFixtures(page);
+
+        await page.goto("/investments");
+        await expectInvestmentsShell(page);
+
+        // The planner holds its projection back until it is near the viewport.
+        await page.locator("#retirement").scrollIntoViewIfNeeded();
+        const chart = page.locator("#retirement .invest-retire-chart");
+        await expect(chart.locator("svg text.is-x").first()).toBeVisible();
+        await page.evaluate(async () => {
+          await document.fonts.ready;
+        });
+
+        const { named, ticks } = await chart.evaluate((figure) => {
+          const measure = (node: Element) => {
+            const box = node.getBoundingClientRect();
+            return {
+              text: (node.textContent ?? "").trim(),
+              left: box.left,
+              right: box.right,
+              top: box.top,
+              bottom: box.bottom,
+            };
+          };
+          // The axis is named by whichever element holds the word itself,
+          // whether that sits in the drawing or in the caption above it.
+          const holdsTheWord = (node: Element) =>
+            [...node.childNodes].some(
+              (child) => child.nodeType === Node.TEXT_NODE && /\bage\b/i.test(child.textContent ?? ""),
+            );
+          return {
+            named: [...figure.querySelectorAll("*")].filter(holdsTheWord).map(measure),
+            ticks: [...figure.querySelectorAll("svg text.is-x")].map(measure),
+          };
+        });
+
+        expect(named.length, "the chart says its x axis is age").toBeGreaterThan(0);
+        expect(ticks.length).toBeGreaterThan(1);
+
+        const row = [...named, ...ticks];
+        const collisions: string[] = [];
+        row.forEach((a, index) => {
+          for (const b of row.slice(index + 1)) {
+            const across = Math.min(a.right, b.right) - Math.max(a.left, b.left);
+            const down = Math.min(a.bottom, b.bottom) - Math.max(a.top, b.top);
+            if (across > 0 && down > 0) {
+              collisions.push(`"${a.text}" and "${b.text}" overlap by ${across.toFixed(1)}px`);
+            }
+          }
+        });
+        expect(collisions).toEqual([]);
+      });
+    }
+  }
+
+  test("keeps the caption on the chart's page when the page prints", async ({ page }) => {
+    await routeInvestmentsFixtures(page);
+
+    await page.goto("/investments");
+    await expectInvestmentsShell(page);
+    await page.locator("#retirement").scrollIntoViewIfNeeded();
+
+    // The caption names the x axis. A drawing never splits across pages, so
+    // the one break this rule can stop is the one between the two.
+    await expect(page.locator("#retirement .invest-retire-chart")).toHaveCSS("break-inside", "avoid");
+  });
+});

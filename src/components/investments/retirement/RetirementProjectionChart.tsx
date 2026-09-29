@@ -86,7 +86,8 @@ export function RetirementProjectionChart({ result }: Props) {
         .attr("fill", "var(--c97-ink-2)")
         .text((d) => formatCompactCurrency(d));
 
-      // X axis (age) ticks.
+      // X axis (age) ticks. The caption names the axis, because a label on this
+      // baseline ran into whichever tick landed near the right edge.
       const xTicks = x.ticks(6);
       g.selectAll("text.invest-retire-chart-label.is-x")
         .data(xTicks)
@@ -97,15 +98,6 @@ export function RetirementProjectionChart({ result }: Props) {
         .attr("text-anchor", "middle")
         .attr("fill", "var(--c97-ink-2)")
         .text((d) => `${d}`);
-
-      g.append("text")
-        .attr("class", "invest-retire-chart-label")
-        .attr("x", innerW)
-        .attr("y", innerH + 22)
-        .attr("text-anchor", "end")
-        .attr("fill", "var(--c97-ink-2)")
-        .attr("opacity", 0.7)
-        .text("age →");
 
       // Outer band (p10–p90).
       const outerArea = area<(typeof bands)[number]>()
@@ -169,7 +161,7 @@ export function RetirementProjectionChart({ result }: Props) {
   return (
     <figure className="invest-retire-chart" aria-label="Projected balance over time">
       <figcaption className="invest-retire-chart-cap">
-        Projected balance · today&apos;s dollars
+        Projected balance by age · today&apos;s dollars
         <span className="invest-retire-chart-legend">
           <span className="invest-retire-legend-band" /> 10–90th percentile
           <span className="invest-retire-legend-line" /> median

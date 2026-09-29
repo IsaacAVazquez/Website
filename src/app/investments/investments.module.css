@@ -1411,6 +1411,8 @@
   border-bottom: 1px solid var(--c97-rule);
   background: var(--c97-surface);
   padding: 16px 20px;
+  /* The caption names the x axis, so a print keeps it on the chart's page. */
+  break-inside: avoid;
 }
 .terminalScope :global(.invest-retire-chart-cap) {
   display: flex;
