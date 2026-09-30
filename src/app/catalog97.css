@@ -192,6 +192,16 @@
    */
   --c97-seam-torn: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 240 16' preserveAspectRatio='none'%3E%3Cpath d='M0 16 L0 9 L4.2 10.1 L9.4 10.4 L17.2 7.7 L23.5 2.4 L31.9 10.2 L37.1 2.7 L42.7 8.7 L50.6 4.4 L55.5 4.5 L60.9 3.9 L69.1 4.3 L75.4 2.7 L82.9 3.1 L86.2 7.3 L94.7 8.2 L102.2 6.5 L111.0 4.4 L114.1 7.8 L120.2 4.0 L123.7 7.9 L128.1 3.4 L137.0 11.8 L140.9 2.1 L148.4 6.7 L155.8 2.5 L164.4 9.4 L172.7 2.4 L178.9 10.4 L182.2 8.7 L188.4 7.6 L194.7 6.1 L202.3 6.4 L209.0 9.8 L215.7 4.8 L224.0 11.8 L228.4 3.9 L233.2 7.0 L239.2 11.9 L240 7.8 L240 16Z'/%3E%3C/svg%3E");
   --c97-seam-deckle: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 240 16' preserveAspectRatio='none'%3E%3Cpath d='M0 16 L0 8 Q6 8.0 12 7.9 Q18 9.9 24 10.3 Q30 11.0 36 8.3 Q42 3.2 48 5.1 Q54 6.6 60 6.8 Q66 6.9 72 5.2 Q78 10.2 84 8.2 Q90 9.8 96 10.5 Q102 8.9 108 10.1 Q114 7.5 120 5.2 Q126 8.3 132 10.2 Q138 9.1 144 6.6 Q150 12.9 156 10.5 Q162 4.2 168 7.2 Q174 7.9 180 9.4 Q186 6.2 192 8.1 Q198 4.5 204 6.0 Q210 8.7 216 8.0 Q222 11.8 228 10.2 Q234 7.4 240 7.6 L240 16Z'/%3E%3C/svg%3E");
+  /*
+   * The same two edges as clip paths, which is how the seams tear on paper.
+   * Each holds its mask's points three tiles across the sheet, in percentages,
+   * so a tile comes out between 227 and 272px on a letter page in portrait,
+   * beside the 240px it is on screen. The deckle's curves are sampled at their
+   * middle and their end. The print rule beside the header's seam has the
+   * reason.
+   */
+  --c97-seam-torn-clip: polygon(0% 100%, 0% 56.3%, 0.58% 63.1%, 1.31% 65%, 2.39% 48.1%, 3.26% 15%, 4.43% 63.7%, 5.15% 16.9%, 5.93% 54.4%, 7.03% 27.5%, 7.71% 28.1%, 8.46% 24.4%, 9.6% 26.9%, 10.47% 16.9%, 11.51% 19.4%, 11.97% 45.6%, 13.15% 51.2%, 14.19% 40.6%, 15.42% 27.5%, 15.85% 48.8%, 16.69% 25%, 17.18% 49.4%, 17.79% 21.3%, 19.03% 73.8%, 19.57% 13.1%, 20.61% 41.9%, 21.64% 15.6%, 22.83% 58.8%, 23.99% 15%, 24.85% 65%, 25.31% 54.4%, 26.17% 47.5%, 27.04% 38.1%, 28.1% 40%, 29.03% 61.3%, 29.96% 30%, 31.11% 73.8%, 31.72% 24.4%, 32.39% 43.8%, 33.22% 74.4%, 33.33% 48.8%, 33.92% 63.1%, 34.64% 65%, 35.72% 48.1%, 36.6% 15%, 37.76% 63.7%, 38.49% 16.9%, 39.26% 54.4%, 40.36% 27.5%, 41.04% 28.1%, 41.79% 24.4%, 42.93% 26.9%, 43.81% 16.9%, 44.85% 19.4%, 45.31% 45.6%, 46.49% 51.2%, 47.53% 40.6%, 48.75% 27.5%, 49.18% 48.8%, 50.03% 25%, 50.51% 49.4%, 51.13% 21.3%, 52.36% 73.8%, 52.9% 13.1%, 53.94% 41.9%, 54.97% 15.6%, 56.17% 58.8%, 57.32% 15%, 58.18% 65%, 58.64% 54.4%, 59.5% 47.5%, 60.38% 38.1%, 61.43% 40%, 62.36% 61.3%, 63.29% 30%, 64.44% 73.8%, 65.06% 24.4%, 65.72% 43.8%, 66.56% 74.4%, 66.67% 48.8%, 67.25% 63.1%, 67.97% 65%, 69.06% 48.1%, 69.93% 15%, 71.1% 63.7%, 71.82% 16.9%, 72.6% 54.4%, 73.69% 27.5%, 74.38% 28.1%, 75.13% 24.4%, 76.26% 26.9%, 77.14% 16.9%, 78.18% 19.4%, 78.64% 45.6%, 79.82% 51.2%, 80.86% 40.6%, 82.08% 27.5%, 82.51% 48.8%, 83.36% 25%, 83.85% 49.4%, 84.46% 21.3%, 85.69% 73.8%, 86.24% 13.1%, 87.28% 41.9%, 88.31% 15.6%, 89.5% 58.8%, 90.65% 15%, 91.51% 65%, 91.97% 54.4%, 92.83% 47.5%, 93.71% 38.1%, 94.76% 40%, 95.69% 61.3%, 96.63% 30%, 97.78% 73.8%, 98.39% 24.4%, 99.06% 43.8%, 99.89% 74.4%, 100% 48.8%, 100% 100%);
+  --c97-seam-deckle-clip: polygon(0% 100%, 0% 50%, 0.83% 49.8%, 1.67% 49.4%, 2.5% 59.4%, 3.33% 64.4%, 4.17% 63.4%, 5% 51.9%, 5.83% 30.9%, 6.67% 31.9%, 7.5% 39.2%, 8.33% 42.5%, 9.17% 40.3%, 10% 32.5%, 10.83% 52.8%, 11.67% 51.2%, 12.5% 59.8%, 13.33% 65.6%, 14.17% 60%, 15% 63.1%, 15.83% 47.3%, 16.67% 32.5%, 17.5% 50%, 18.33% 63.7%, 19.17% 54.7%, 20% 41.3%, 20.83% 67%, 21.67% 65.6%, 22.5% 40.8%, 23.33% 45%, 24.17% 50.6%, 25% 58.8%, 25.83% 46.7%, 26.67% 50.6%, 27.5% 36.1%, 28.33% 37.5%, 29.17% 49.1%, 30% 50%, 30.83% 65.3%, 31.67% 63.7%, 32.5% 50.9%, 33.33% 47.5%, 34.17% 49.8%, 35% 49.4%, 35.83% 59.4%, 36.67% 64.4%, 37.5% 63.4%, 38.33% 51.9%, 39.17% 30.9%, 40% 31.9%, 40.83% 39.2%, 41.67% 42.5%, 42.5% 40.3%, 43.33% 32.5%, 44.17% 52.8%, 45% 51.2%, 45.83% 59.8%, 46.67% 65.6%, 47.5% 60%, 48.33% 63.1%, 49.17% 47.3%, 50% 32.5%, 50.83% 50%, 51.67% 63.7%, 52.5% 54.7%, 53.33% 41.3%, 54.17% 67%, 55% 65.6%, 55.83% 40.8%, 56.67% 45%, 57.5% 50.6%, 58.33% 58.8%, 59.17% 46.7%, 60% 50.6%, 60.83% 36.1%, 61.67% 37.5%, 62.5% 49.1%, 63.33% 50%, 64.17% 65.3%, 65% 63.7%, 65.83% 50.9%, 66.67% 47.5%, 67.5% 49.8%, 68.33% 49.4%, 69.17% 59.4%, 70% 64.4%, 70.83% 63.4%, 71.67% 51.9%, 72.5% 30.9%, 73.33% 31.9%, 74.17% 39.2%, 75% 42.5%, 75.83% 40.3%, 76.67% 32.5%, 77.5% 52.8%, 78.33% 51.2%, 79.17% 59.8%, 80% 65.6%, 80.83% 60%, 81.67% 63.1%, 82.5% 47.3%, 83.33% 32.5%, 84.17% 50%, 85% 63.7%, 85.83% 54.7%, 86.67% 41.3%, 87.5% 67%, 88.33% 65.6%, 89.17% 40.8%, 90% 45%, 90.83% 50.6%, 91.67% 58.8%, 92.5% 46.7%, 93.33% 50.6%, 94.17% 36.1%, 95% 37.5%, 95.83% 49.1%, 96.67% 50%, 97.5% 65.3%, 98.33% 63.7%, 99.17% 50.9%, 100% 47.5%, 100% 100%);
   --c97-grain-soft: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .09 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
@@ -2328,6 +2338,19 @@ select.c97-field {
   }
 }
 
+/*
+ * The halftone comes off on paper, and the field behind it prints as flat
+ * ink. Its ramp is a mask, which Safari's engine paints as a dark block in a
+ * print and Firefox's engine does not print at all. A fade laid over the dots
+ * in the surface's colour, with no mask, printed right in Chrome's engine
+ * only. All of it was measured on 2026-09-29.
+ */
+@media print {
+  .c97-halftone {
+    display: none;
+  }
+}
+
 /* A printed plate or a button on its hard offset in the second ink. */
 .c97-offset {
   box-shadow: 8px 8px 0 var(--c97-overprint);
@@ -2390,6 +2413,27 @@ select.c97-field {
   -webkit-mask: var(--c97-seam-torn) repeat-x left bottom / 240px 100%;
   mask: var(--c97-seam-torn) repeat-x left bottom / 240px 100%;
   transform: scaleY(-1);
+}
+
+/*
+ * On paper the seams tear with a clip path. Safari's engine does not apply a
+ * mask in a print. It paints the mask's image over the element, so each seam
+ * printed as a strip of the sheet's colour with the mask's black shape on top
+ * of it, and a mask given a lime fill printed lime. Firefox's engine printed
+ * the same seams as straight strips. Both were measured on 2026-09-29, and a
+ * clip path printed the tear in all three engines.
+ */
+@media print {
+  .c97-sheet[data-seam]::before,
+  .c97-header::after {
+    -webkit-mask: none;
+    mask: none;
+    clip-path: var(--c97-seam-torn-clip);
+  }
+
+  .c97-sheet[data-seam="deckle"]::before {
+    clip-path: var(--c97-seam-deckle-clip);
+  }
 }
 
 /*

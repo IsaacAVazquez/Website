@@ -49,6 +49,30 @@ async function sharedGrids(page: Page) {
   });
 }
 
+// Safari's engine does not apply a mask on paper. It paints the mask's image
+// over the element, so the torn seams printed black and a gradient mask
+// printed as a solid bar, and Firefox's engine printed the masked seams as
+// straight strips. Both were measured on 2026-09-29. Anything that shows on
+// paper has to print without a mask.
+async function masksThatShow(page: Page) {
+  return page.evaluate(() => {
+    const found = new Set<string>();
+    for (const element of document.querySelectorAll("*")) {
+      if (element.getClientRects().length === 0) continue;
+      for (const pseudo of ["", "::before", "::after"]) {
+        const style = getComputedStyle(element, pseudo || null);
+        if (pseudo && /^(none|normal)$/.test(style.content)) continue;
+        if (style.display === "none" || style.visibility === "hidden") continue;
+        if (style.opacity === "0") continue;
+        if (!style.maskImage || style.maskImage === "none") continue;
+        const classes = element.getAttribute("class")?.trim().split(/\s+/).join(".");
+        found.add(`${element.tagName.toLowerCase()}${classes ? `.${classes}` : ""}${pseudo}`);
+      }
+    }
+    return [...found];
+  });
+}
+
 // A grid that stacks its children on paper keeps the gap it had as a grid,
 // its own `--c97-columns-gap` included, so the résumé's tighter bands do not
 // spread when they print. The gap is read off the grid's computed row-gap,
@@ -125,4 +149,43 @@ test.describe("Print", () => {
       await expect.poll(() => stackedGapsThatDrift(page)).toEqual([]);
     });
   }
+
+  for (const route of ["/", "/about", "/investments", "/writing"]) {
+    test(`shows nothing through a mask on ${route} on paper`, async ({ page }) => {
+      await page.goto(route);
+      await expect(page.locator("[data-c97-surface]").first()).toBeVisible();
+
+      await page.emulateMedia({ media: "print" });
+
+      expect(await masksThatShow(page)).toEqual([]);
+    });
+  }
+
+  test("tears the seams with a clip path on paper", async ({ page }) => {
+    await page.goto("/about");
+    await expect(page.locator(".c97-sheet[data-seam='deckle']")).toHaveCount(1);
+
+    await page.emulateMedia({ media: "print" });
+
+    const seams = await page.evaluate(() => {
+      const read = (element: Element | null, pseudo: string) => {
+        if (!element) return null;
+        const style = getComputedStyle(element, pseudo);
+        return { mask: style.maskImage, clip: style.clipPath };
+      };
+      return {
+        header: read(document.querySelector(".c97-header"), "::after"),
+        torn: read(document.querySelector(".c97-sheet[data-seam='torn']"), "::before"),
+        deckle: read(document.querySelector(".c97-sheet[data-seam='deckle']"), "::before"),
+      };
+    });
+
+    for (const seam of [seams.header, seams.torn, seams.deckle]) {
+      expect(seam?.mask).toBe("none");
+      expect(seam?.clip).toMatch(/^polygon\(/);
+    }
+    // The deckle is its own edge, so it cannot fall back to the torn one.
+    expect(seams.deckle?.clip).not.toBe(seams.torn?.clip);
+    expect(seams.header?.clip).toBe(seams.torn?.clip);
+  });
 });
