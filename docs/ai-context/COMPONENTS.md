@@ -2,7 +2,7 @@
 
 Current component ownership reference.
 
-**Last updated:** 2026-09-27
+**Last updated:** 2026-09-29
 
 ---
 
@@ -15,6 +15,7 @@ Current component ownership reference.
 | `Catalog97ToolShell` | `src/components/catalog97/Catalog97ToolShell.tsx` | `Catalog97Shell` plus an optional title band and the build-note aside from `projectBuildNoteLinks` |
 | `Catalog97Header` | `src/components/catalog97/Catalog97Header.tsx` | Global nav built from `catalog97NavLinks` |
 | `Providers` | `src/components/Providers.tsx` | Root provider wrapper |
+| `FragmentLinkNavigation` | `src/components/navigation/FragmentLinkNavigation.tsx` | Mounted once by `Providers`. Follows same-page `#` links from the current address, so Firefox does not load the page again after a route rewrote its URL |
 | `ThemeProvider` | `src/components/ThemeProvider.tsx` | Theme context |
 | `RouteErrorBoundary` | `src/components/RouteErrorBoundary.tsx` | Shared error fallback re-exported by per-route `error.tsx` files |
 
