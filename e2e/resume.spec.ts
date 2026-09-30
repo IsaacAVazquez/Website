@@ -18,4 +18,23 @@ test.describe("Resume", () => {
     expect(pdf.status()).toBe(200);
     expect(Number(pdf.headers()["content-length"] ?? "0")).toBeGreaterThan(0);
   });
+
+  test("starts the contact link on its column when the page prints", async ({ page }) => {
+    await page.goto("/resume");
+    const link = page.getByRole("main").getByRole("link", { name: /get in touch/i });
+    await expect(link).toBeVisible();
+
+    await page.emulateMedia({ media: "print" });
+
+    // A ghost link takes its side padding back with a negative start margin.
+    // The print sheet drops that padding, and while it kept the margin the
+    // label began left of the column, where the edge of the page cut the "G"
+    // off. The PDF's text layer still read "Get in touch", so this measures
+    // where the label starts against the line above it.
+    const [label, lineAbove] = await link.evaluate((a) => [
+      a.getClientRects()[0].left + parseFloat(getComputedStyle(a).paddingLeft),
+      a.previousElementSibling!.getBoundingClientRect().left,
+    ]);
+    expect(label).toBeCloseTo(lineAbove, 0);
+  });
 });
