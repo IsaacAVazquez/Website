@@ -71,6 +71,7 @@ describe("InvestmentsClient", () => {
     container = document.createElement("div");
     document.body.appendChild(container);
     root = createRoot(container);
+    window.history.replaceState(null, "", "/investments");
     currentSearchParams = new URLSearchParams();
     mockPush.mockReset();
     mockReplace.mockReset();
@@ -151,6 +152,52 @@ describe("InvestmentsClient", () => {
       { scroll: false }
     );
     expect(container.querySelector('[data-testid="research-props"]')?.textContent).toBe(":overview");
+  });
+
+  // The canonical href is built from the query alone. A link that names a
+  // section has to keep naming it after the rewrite.
+  it("carries the fragment through when it canonicalizes a legacy link", async () => {
+    window.history.replaceState(
+      null,
+      "",
+      "/investments?view=research&symbol=V&section=chart#research-section"
+    );
+    currentSearchParams = new URLSearchParams("view=research&symbol=V&section=chart");
+
+    await act(async () => {
+      root.render(<InvestmentsClient initialState={DEFAULT_INVESTMENTS_STATE} />);
+    });
+    await flushPromises();
+
+    expect(mockReplace).toHaveBeenCalledTimes(1);
+    expect(mockReplace).toHaveBeenCalledWith(
+      "/investments?symbol=V&section=chart#research-section",
+      { scroll: false }
+    );
+  });
+
+  // A tab or a symbol the visitor picks is a new place on the page, so the
+  // fragment they arrived with no longer describes it.
+  it("drops the fragment when the visitor picks another section", async () => {
+    window.history.replaceState(null, "", "/investments?symbol=V&section=overview#retirement");
+    currentSearchParams = new URLSearchParams("symbol=V&section=overview");
+
+    await act(async () => {
+      root.render(<InvestmentsClient initialState={DEFAULT_INVESTMENTS_STATE} />);
+    });
+    await flushPromises();
+
+    await act(async () => {
+      const button = Array.from(container.querySelectorAll("button")).find((tab) =>
+        tab.textContent?.includes("Chart section")
+      ) as HTMLButtonElement | undefined;
+      button?.click();
+    });
+
+    expect(mockPush).toHaveBeenCalledWith(
+      "/investments?symbol=V&section=chart",
+      { scroll: false }
+    );
   });
 
   it("keeps a clean /investments visit clean without rewriting the URL", async () => {

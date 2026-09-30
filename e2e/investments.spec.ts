@@ -538,6 +538,141 @@ test.describe("Investments", () => {
   });
 });
 
+// Where a link that names a section should leave the page. The section's top
+// sits at the top of the viewport, under its scroll margin, or the page is as
+// far down as it goes. Anything else is reported as the position it found.
+async function readLanding(page: Page, id: string) {
+  return page.evaluate((fragment) => {
+    const section = document.getElementById(fragment);
+    if (!section) return `#${fragment} is not on the page`;
+    const top = section.getBoundingClientRect().top;
+    const margin = parseFloat(getComputedStyle(section).scrollMarginTop) || 0;
+    const lowest = document.documentElement.scrollHeight - window.innerHeight;
+    const atTheTop = Math.abs(top - margin) <= 2;
+    const asFarAsItGoes = Math.abs(window.scrollY - lowest) <= 2 && top > margin;
+    return atTheTop || asFarAsItGoes
+      ? "landed"
+      : `#${fragment} is ${Math.round(top)}px down the viewport at scrollY ${Math.round(window.scrollY)}`;
+  }, id);
+}
+
+const savedHoldings = [
+  { symbol: "V", shares: 10, averageCost: 200 },
+  { symbol: "AAPL", shares: 5, averageCost: 150 },
+];
+
+test.describe("Investments links that name a section", () => {
+  // The targets the sidebar links to on an empty portfolio, plus the form the
+  // stats panel links to.
+  for (const id of ["hero", "performance", "portfolio-stats", "add-holding", "research-section", "retirement"]) {
+    test(`a fresh load of #${id} lands on it`, async ({ page }) => {
+      await routeInvestmentsFixtures(page);
+
+      await page.goto(`/investments?symbol=V&section=chart#${id}`);
+      await expectInvestmentsShell(page);
+
+      await expect.poll(() => readLanding(page, id)).toBe("landed");
+
+      // The research data and the planner's projection both arrive after the
+      // first landing and change the height of the page.
+      await expect(page.getByRole("heading", { name: /price history/i })).toBeVisible();
+      await expect.poll(() => readLanding(page, id)).toBe("landed");
+    });
+  }
+
+  // The holdings ledger and the allocation chart only render once the saved
+  // positions load, which is after the page has hydrated.
+  for (const id of ["holdings-list", "allocation"]) {
+    test(`a fresh load of #${id} lands on it once the saved holdings render`, async ({ page }) => {
+      await page.addInitScript((holdings) => {
+        window.localStorage.setItem("portfolio_holdings", JSON.stringify(holdings));
+      }, savedHoldings);
+      await routeInvestmentsFixtures(page);
+
+      await page.goto(`/investments#${id}`);
+      await expectInvestmentsShell(page);
+
+      await expect.poll(() => readLanding(page, id)).toBe("landed");
+    });
+  }
+
+  test("holds the section in place when saved holdings render above it", async ({ page }) => {
+    await page.addInitScript((holdings) => {
+      window.localStorage.setItem("portfolio_holdings", JSON.stringify(holdings));
+    }, savedHoldings);
+    await routeInvestmentsFixtures(page);
+
+    await page.goto("/investments?symbol=V&section=chart#research-section");
+    await expectInvestmentsShell(page);
+
+    // The ledger and the quotes render above the research section.
+    await expect(page.locator("#holdings-list")).toBeVisible();
+    await expect(page.getByText("$352.45").first()).toBeVisible();
+    await expect.poll(() => readLanding(page, "research-section")).toBe("landed");
+  });
+
+  test("keeps the fragment when it rewrites a legacy link", async ({ page }) => {
+    await routeInvestmentsFixtures(page);
+
+    await page.goto("/investments?view=research&symbol=V&section=chart#research-section");
+    await expectInvestmentsShell(page);
+
+    await expect(page).toHaveURL(/\/investments\?symbol=V&section=chart#research-section$/);
+    await expect.poll(() => readLanding(page, "research-section")).toBe("landed");
+  });
+
+  test("holds the section in place when the page grows above it", async ({ page }) => {
+    await routeInvestmentsFixtures(page);
+
+    await page.goto("/investments?symbol=V&section=chart#research-section");
+    await expectInvestmentsShell(page);
+    await expect.poll(() => readLanding(page, "research-section")).toBe("landed");
+
+    await growPageAheadOf(page, "#hero", 300);
+
+    await expect.poll(() => readLanding(page, "research-section")).toBe("landed");
+  });
+
+  test("leaves the page where the visitor put it", async ({ page }) => {
+    await routeInvestmentsFixtures(page);
+
+    await page.goto("/investments?symbol=V&section=chart#research-section");
+    await expectInvestmentsShell(page);
+    await expect.poll(() => readLanding(page, "research-section")).toBe("landed");
+
+    // A scroll by any means moves the page off the landing, so a scripted one
+    // stands in for the wheel, the keyboard, and the scrollbar. It comes a
+    // moment after the landing, as a visitor's would.
+    await page.waitForTimeout(400);
+    await page.evaluate(() => window.scrollTo({ top: 0, behavior: "instant" }));
+    const positions = await growPageAheadOf(page, "#hero", 300);
+
+    expect(positions).toEqual(positions.map(() => 0));
+  });
+});
+
+// Grows the page ahead of an element, the way late content does, and reads
+// where the page sits in each of the frames that follow.
+async function growPageAheadOf(page: Page, selector: string, pixels: number) {
+  return page.evaluate(
+    async ({ ahead, height }) => {
+      const spacer = document.createElement("div");
+      spacer.style.height = `${height}px`;
+      const element = document.querySelector(ahead);
+      if (!element) throw new Error(`Nothing on the page matches ${ahead}`);
+      element.before(spacer);
+
+      const positions: number[] = [];
+      for (let frame = 0; frame < 12; frame += 1) {
+        await new Promise((next) => requestAnimationFrame(next));
+        positions.push(Math.round(window.scrollY));
+      }
+      return positions;
+    },
+    { ahead: selector, height: pixels },
+  );
+}
+
 // The chart sets its type in SVG user units, 20 at desktop and 40 under 640px,
 // so both sizes are measured.
 const chartViewports = [
