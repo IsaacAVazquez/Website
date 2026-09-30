@@ -2341,9 +2341,9 @@ select.c97-field {
 /*
  * The halftone comes off on paper, and the field behind it prints as flat
  * ink. Its ramp is a mask, which Safari's engine paints as a dark block in a
- * print and Firefox's engine does not print at all. A fade laid over the dots
- * in the surface's colour, with no mask, printed right in Chrome's engine
- * only. All of it was measured on 2026-09-29.
+ * print, and Firefox's engine printed no halftone at all, with the mask or
+ * without it. A fade laid over the dots in the surface's colour, with no mask,
+ * printed right in Chrome's engine only. All of it was measured on 2026-09-29.
  */
 @media print {
   .c97-halftone {
