@@ -78,7 +78,10 @@ engine answers a width query with the window's width and that is the state its p
 They do not print anything. `page.pdf()` is Chromium only, so a real print through Firefox's
 or Safari's engine is a manual check. The prints of 2026-09-29 were scripted, through
 `browsingContext.print` over WebDriver BiDi in Playwright's Firefox build and through a
-`WKWebView` print operation for the system WebKit, and neither script lives in the repo.
+`WKWebView` print operation for the system WebKit, and neither script lives in the repo. The
+tests for filtered and blended elements run in the Firefox project alone, so they run with
+the full matrix, and the default Chromium run checks that the portrait keeps its treatment
+on paper there.
 
 ---
 

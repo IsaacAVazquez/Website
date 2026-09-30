@@ -125,8 +125,15 @@
     font-size: 8.5pt !important;
   }
 
-  .print img {
-    filter: grayscale(1);
+  /*
+   * Firefox's engine prints nothing for an element under a CSS filter, so there
+   * the logos keep their colour and reach the page. The @supports test is true
+   * in Firefox's engine alone.
+   */
+  @supports not (-moz-appearance: none) {
+    .print img {
+      filter: grayscale(1);
+    }
   }
 
   /* Keep each entry whole, and keep a heading with what follows it. */

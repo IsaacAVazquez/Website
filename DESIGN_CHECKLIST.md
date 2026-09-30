@@ -108,6 +108,10 @@ See "Printing on paper" in `STYLING.md` for the measurements behind these.
 
 - [ ] Nothing repeats an SVG as a background under print media. Firefox's engine prints the whole page
       with no text when it has to, and `e2e/print.spec.ts` checks `/`, `/about`, and `/investments`.
+- [ ] Nothing that has to reach paper sits under a CSS `filter` or a `mix-blend-mode` in Firefox's
+      engine, which prints nothing for such an element. The effect comes off under `@media print`
+      inside `@supports (-moz-appearance: none)`, as it does on `.c97-slot-img`, and
+      `e2e/print.spec.ts` checks `/about`, `/resume`, and an article in the Firefox project.
 - [ ] A layout that would not fit a page about 700px wide narrows under `print` as well as under its
       width query, as in `@media (max-width: 900px), print`, since Safari's engine answers a width
       query with the window's width.
