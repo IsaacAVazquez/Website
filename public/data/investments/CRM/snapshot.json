@@ -1,11 +1,14 @@
 {
   "symbol": "CRM",
-  "lastUpdated": "2026-09-29T06:39:51.976581+00:00",
+  "lastUpdated": "2026-09-30T15:30:08.171135+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-09-29T06:39:51.976581+00:00",
+    "snapshotBuiltAt": "2026-09-30T15:30:08.171135+00:00",
     "sections": {
-      "price": "2026-09-28"
-    }
+      "price": "2026-09-29"
+    },
+    "retainedSections": [
+      "industry"
+    ]
   },
   "source": "prefetched",
   "capabilities": {
@@ -40,10 +43,10 @@
     },
     "fundamentals": {
       "ttmEps": 10.9721,
-      "ttmPe": 20.71,
-      "marketCap": 187043210000,
-      "psRatio": 4.26,
-      "pbRatio": 4.87,
+      "ttmPe": 20.53,
+      "marketCap": 185430130000,
+      "psRatio": 4.22,
+      "pbRatio": 4.83,
       "pegRatio": 0.17
     },
     "profitability": {
@@ -5557,25 +5560,17 @@
       ]
     },
     "wacc": {
-      "wacc": 12.19,
-      "costOfEquity": 14.719999999999999,
+      "wacc": 12.1,
+      "costOfEquity": 14.63,
       "costOfDebt": 1.13,
       "taxRate": 23,
-      "beta": 1.2429,
-      "marketCap": 187043210000
+      "beta": 1.2313,
+      "marketCap": 185430130000
     },
     "beta": {
-      "beta5y": 1.2429
+      "beta5y": 1.2313
     },
     "price": [
-      {
-        "date": "2025-09-26",
-        "open": 240.69,
-        "high": 244.53,
-        "low": 240.35,
-        "close": 243.43,
-        "volume": 4974600
-      },
       {
         "date": "2025-09-29",
         "open": 244.72,
@@ -7582,7 +7577,15 @@
         "high": 230.57,
         "low": 221.18,
         "close": 227.27,
-        "volume": 10263200
+        "volume": 10327500
+      },
+      {
+        "date": "2026-09-29",
+        "open": 227.27,
+        "high": 228.98,
+        "low": 223.43,
+        "close": 225.31,
+        "volume": 13506300
       }
     ],
     "news": [
@@ -7619,19 +7622,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "ca06a274-32e3-3e67-865f-0b228b4d8f22",
-        "title": "White House calls out Boeing, GE Vernova exports in Saudi Arabia pact",
-        "publisher": "TipRanks",
-        "reportDate": "2025-05-14",
-        "link": "https://finance.yahoo.com/news/white-house-calls-boeing-ge-142742667.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "df3945aa-0fd1-34d9-8a4f-aa0c9a0cdb45",
         "title": "Trump and MBS Tout $1 Trillion Pledge as Details Remain Elusive",
         "publisher": "Bloomberg",
         "reportDate": "2025-05-14",
         "link": "https://finance.yahoo.com/news/trump-mbs-tout-1-trillion-174902305.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "ca06a274-32e3-3e67-865f-0b228b4d8f22",
+        "title": "White House calls out Boeing, GE Vernova exports in Saudi Arabia pact",
+        "publisher": "TipRanks",
+        "reportDate": "2025-05-14",
+        "link": "https://finance.yahoo.com/news/white-house-calls-boeing-ge-142742667.html",
         "type": "STORY"
       },
       {

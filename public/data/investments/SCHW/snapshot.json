@@ -1,10 +1,10 @@
 {
   "symbol": "SCHW",
-  "lastUpdated": "2026-09-29T06:12:23.168021+00:00",
+  "lastUpdated": "2026-09-30T15:30:08.171135+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-09-29T06:12:23.168021+00:00",
+    "snapshotBuiltAt": "2026-09-30T15:30:08.171135+00:00",
     "sections": {
-      "price": "2026-09-28"
+      "price": "2026-09-29"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 5.4992,
-      "ttmPe": 17.88,
-      "marketCap": 169874117360,
-      "psRatio": 6.53,
-      "pbRatio": 3.39,
-      "pegRatio": 0.42
+      "ttmPe": 18.02,
+      "marketCap": 171256612720,
+      "psRatio": 6.58,
+      "pbRatio": 3.42,
+      "pegRatio": 0.43
     },
     "profitability": {
       "roe": 5.4,
@@ -6045,25 +6045,17 @@
       ]
     },
     "wacc": {
-      "wacc": 9.45,
-      "costOfEquity": 11.18,
+      "wacc": 9.24,
+      "costOfEquity": 10.91,
       "costOfDebt": 2.11,
       "taxRate": 24,
-      "beta": 0.7784,
-      "marketCap": 169874117360
+      "beta": 0.7431,
+      "marketCap": 171256612720
     },
     "beta": {
-      "beta5y": 0.7784
+      "beta5y": 0.7431
     },
     "price": [
-      {
-        "date": "2025-09-26",
-        "open": 95.13,
-        "high": 95.98,
-        "low": 94.74,
-        "close": 95.46,
-        "volume": 5288300
-      },
       {
         "date": "2025-09-29",
         "open": 95.76,
@@ -8071,23 +8063,23 @@
         "low": 97.75,
         "close": 98.3,
         "volume": 6030600
+      },
+      {
+        "date": "2026-09-29",
+        "open": 98.07,
+        "high": 99.13,
+        "low": 97.4,
+        "close": 99.1,
+        "volume": 8084900
       }
     ],
     "news": [
       {
-        "uuid": "b3ca163e-a8e2-34ba-91b9-fe8f8ef39064",
-        "title": "Top Research Reports for AbbVie, TJX & Charles Schwab",
-        "publisher": "Zacks",
+        "uuid": "f279374e-b88f-36fd-804a-55cef6678dcd",
+        "title": "Tariffs, Trump, and Turmoil",
+        "publisher": "Motley Fool",
         "reportDate": "2025-04-16",
-        "link": "https://finance.yahoo.com/news/top-research-reports-abbvie-tjx-203000671.html",
-        "type": "STORY"
-      },
-      {
-        "uuid": "ac6e5de2-8b20-33f4-9118-155a4af9f80b",
-        "title": "The Zacks Analyst Blog AbbVie, The TJX, The Charles Schwab, Enzo Biochem and CVD Equipment",
-        "publisher": "Zacks",
-        "reportDate": "2025-04-16",
-        "link": "https://finance.yahoo.com/news/zacks-analyst-blog-abbvie-tjx-083300119.html",
+        "link": "https://finance.yahoo.com/m/f279374e-b88f-36fd-804a-55cef6678dcd/tariffs%2C-trump%2C-and-turmoil.html",
         "type": "STORY"
       },
       {
@@ -8099,11 +8091,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "f279374e-b88f-36fd-804a-55cef6678dcd",
-        "title": "Tariffs, Trump, and Turmoil",
-        "publisher": "Motley Fool",
+        "uuid": "ac6e5de2-8b20-33f4-9118-155a4af9f80b",
+        "title": "The Zacks Analyst Blog AbbVie, The TJX, The Charles Schwab, Enzo Biochem and CVD Equipment",
+        "publisher": "Zacks",
         "reportDate": "2025-04-16",
-        "link": "https://finance.yahoo.com/m/f279374e-b88f-36fd-804a-55cef6678dcd/tariffs%2C-trump%2C-and-turmoil.html",
+        "link": "https://finance.yahoo.com/news/zacks-analyst-blog-abbvie-tjx-083300119.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "b3ca163e-a8e2-34ba-91b9-fe8f8ef39064",
+        "title": "Top Research Reports for AbbVie, TJX & Charles Schwab",
+        "publisher": "Zacks",
+        "reportDate": "2025-04-16",
+        "link": "https://finance.yahoo.com/news/top-research-reports-abbvie-tjx-203000671.html",
         "type": "STORY"
       },
       {
@@ -8147,11 +8147,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "b7e7da70-9197-39d9-9e3e-55b23b78ca26",
-        "title": "TD Bank Up 0.3% in U.S. Premarket Following Q2 Adjusted Earnings Beat",
+        "uuid": "06d1444e-b766-3a02-a4ab-bbb55bbbc47c",
+        "title": "Update On TD Bank; Up 0.6% in U.S. Premarket Following Q2 Adjusted Earnings Beat",
         "publisher": "MT Newswires",
         "reportDate": "2025-05-22",
-        "link": "https://finance.yahoo.com/news/td-bank-0-3-u-102912943.html",
+        "link": "https://finance.yahoo.com/news/td-bank-0-6-u-121826487.html",
         "type": "STORY"
       }
     ],
@@ -8216,18 +8216,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 17.88,
-        "industryAvg": 16.39
+        "value": 18.02,
+        "industryAvg": 16.34
       },
       {
         "metric": "P/S Ratio",
-        "value": 6.53,
-        "industryAvg": 2.13
+        "value": 6.58,
+        "industryAvg": 2.12
       },
       {
         "metric": "P/B Ratio",
-        "value": 3.39,
-        "industryAvg": 2.66
+        "value": 3.42,
+        "industryAvg": 2.65
       },
       {
         "metric": "ROE",

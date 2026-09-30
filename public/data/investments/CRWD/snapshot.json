@@ -1,11 +1,14 @@
 {
   "symbol": "CRWD",
-  "lastUpdated": "2026-09-29T06:39:51.976581+00:00",
+  "lastUpdated": "2026-09-30T15:30:08.171135+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-09-29T06:39:51.976581+00:00",
+    "snapshotBuiltAt": "2026-09-30T15:30:08.171135+00:00",
     "sections": {
-      "price": "2026-09-28"
-    }
+      "price": "2026-09-29"
+    },
+    "retainedSections": [
+      "industry"
+    ]
   },
   "source": "prefetched",
   "capabilities": {
@@ -40,11 +43,11 @@
     },
     "fundamentals": {
       "ttmEps": 0.0357,
-      "ttmPe": 7261.9,
-      "marketCap": 265431816250,
-      "psRatio": 49.19,
-      "pbRatio": 52.03,
-      "pegRatio": 67.7
+      "ttmPe": 7359.66,
+      "marketCap": 269005035300,
+      "psRatio": 49.85,
+      "pbRatio": 52.73,
+      "pegRatio": 68.62
     },
     "profitability": {
       "roe": 0.11,
@@ -5980,25 +5983,17 @@
       ]
     },
     "wacc": {
-      "wacc": 14.249999999999998,
-      "costOfEquity": 14.29,
+      "wacc": 14.069999999999999,
+      "costOfEquity": 14.11,
       "costOfDebt": 0.74,
       "taxRate": 40,
-      "beta": 1.1864,
-      "marketCap": 265431816250
+      "beta": 1.1627,
+      "marketCap": 269005035300
     },
     "beta": {
-      "beta5y": 1.1864
+      "beta5y": 1.1627
     },
     "price": [
-      {
-        "date": "2025-09-26",
-        "open": 118.025,
-        "high": 120.925,
-        "low": 117.5725,
-        "close": 120.355,
-        "volume": 9438800
-      },
       {
         "date": "2025-09-29",
         "open": 121.605,
@@ -8005,7 +8000,15 @@
         "high": 260.685,
         "low": 246.51,
         "close": 259.25,
-        "volume": 8944100
+        "volume": 8962000
+      },
+      {
+        "date": "2026-09-29",
+        "open": 257.19,
+        "high": 267.69,
+        "low": 255.755,
+        "close": 262.74,
+        "volume": 7059400
       }
     ],
     "news": [
@@ -8066,19 +8069,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "ef528610-24d6-3366-b150-fe969e479439",
-        "title": "3 Top Cybersecurity Stocks to Buy in May",
-        "publisher": "Motley Fool",
-        "reportDate": "2025-05-26",
-        "link": "https://finance.yahoo.com/m/ef528610-24d6-3366-b150-fe969e479439/3-top-cybersecurity-stocks-to.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "afdc966c-3c94-3ea3-9b6e-e5fa8d70f65f",
         "title": "1 S&P 500 Stock on Our Buy List and 2 to Brush Off",
         "publisher": "StockStory",
         "reportDate": "2025-05-26",
         "link": "https://finance.yahoo.com/news/1-p-500-stock-buy-043515117.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "ef528610-24d6-3366-b150-fe969e479439",
+        "title": "3 Top Cybersecurity Stocks to Buy in May",
+        "publisher": "Motley Fool",
+        "reportDate": "2025-05-26",
+        "link": "https://finance.yahoo.com/m/ef528610-24d6-3366-b150-fe969e479439/3-top-cybersecurity-stocks-to.html",
         "type": "STORY"
       },
       {

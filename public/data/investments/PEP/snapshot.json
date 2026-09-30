@@ -1,10 +1,10 @@
 {
   "symbol": "PEP",
-  "lastUpdated": "2026-09-29T06:39:51.976581+00:00",
+  "lastUpdated": "2026-09-30T15:30:08.171135+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-09-29T06:39:51.976581+00:00",
+    "snapshotBuiltAt": "2026-09-30T15:30:08.171135+00:00",
     "sections": {
-      "price": "2026-09-28"
+      "price": "2026-09-29"
     },
     "retainedSections": [
       "fundamentals"
@@ -43,11 +43,11 @@
     },
     "fundamentals": {
       "ttmEps": 7.6247,
-      "ttmPe": 16.85,
+      "ttmPe": 16.88,
       "pegRatio": 0.12,
-      "marketCap": 175531000000,
+      "marketCap": 175790540000,
       "psRatio": 1.81,
-      "pbRatio": 7.94
+      "pbRatio": 7.96
     },
     "profitability": {
       "roe": 13.71,
@@ -5881,25 +5881,17 @@
       ]
     },
     "wacc": {
-      "wacc": 6.22,
-      "costOfEquity": 8.01,
+      "wacc": 6.08,
+      "costOfEquity": 7.82,
       "costOfDebt": 0.43,
       "taxRate": 22,
-      "beta": 0.3633,
-      "marketCap": 175531000000
+      "beta": 0.3367,
+      "marketCap": 175790540000
     },
     "beta": {
-      "beta5y": 0.3633
+      "beta5y": 0.3367
     },
     "price": [
-      {
-        "date": "2025-09-26",
-        "open": 139.94,
-        "high": 140.99,
-        "low": 139.85,
-        "close": 140.44,
-        "volume": 6224700
-      },
       {
         "date": "2025-09-29",
         "open": 140.44,
@@ -7906,7 +7898,15 @@
         "high": 128.75,
         "low": 126.72,
         "close": 128.5,
-        "volume": 7474700
+        "volume": 7512700
+      },
+      {
+        "date": "2026-09-29",
+        "open": 126.51,
+        "high": 128.94,
+        "low": 126.42,
+        "close": 128.69,
+        "volume": 8413900
       }
     ],
     "news": [
@@ -7943,19 +7943,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "fa4bc551-7638-3921-8570-d3b32d9ac253",
-        "title": "HHS, FDA to phase out petroleum-based synthetic dyes in foods",
-        "publisher": "TipRanks",
-        "reportDate": "2025-04-24",
-        "link": "https://finance.yahoo.com/m/fa4bc551-7638-3921-8570-d3b32d9ac253/hhs%2C-fda-to-phase-out.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "65b85794-20ef-394d-962f-903aa52a43b9",
         "title": "Got 10 Years and $1,000? 3 Dividend Stocks That Are High-Yield Bargains.",
         "publisher": "Motley Fool",
         "reportDate": "2025-04-24",
         "link": "https://finance.yahoo.com/m/65b85794-20ef-394d-962f-903aa52a43b9/got-10-years-and-%241%2C000%3F-3.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "fa4bc551-7638-3921-8570-d3b32d9ac253",
+        "title": "HHS, FDA to phase out petroleum-based synthetic dyes in foods",
+        "publisher": "TipRanks",
+        "reportDate": "2025-04-24",
+        "link": "https://finance.yahoo.com/m/fa4bc551-7638-3921-8570-d3b32d9ac253/hhs%2C-fda-to-phase-out.html",
         "type": "STORY"
       },
       {
@@ -8055,18 +8055,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 16.85,
-        "industryAvg": 22.56
+        "value": 16.88,
+        "industryAvg": 22.45
       },
       {
         "metric": "P/S Ratio",
         "value": 1.81,
-        "industryAvg": 3.04
+        "industryAvg": 2.88
       },
       {
         "metric": "P/B Ratio",
-        "value": 7.94,
-        "industryAvg": 5.82
+        "value": 7.96,
+        "industryAvg": 5.92
       },
       {
         "metric": "ROE",

@@ -1,11 +1,14 @@
 {
   "symbol": "PLTR",
-  "lastUpdated": "2026-09-29T06:39:51.976581+00:00",
+  "lastUpdated": "2026-09-30T15:30:08.171135+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-09-29T06:39:51.976581+00:00",
+    "snapshotBuiltAt": "2026-09-30T15:30:08.171135+00:00",
     "sections": {
-      "price": "2026-09-28"
-    }
+      "price": "2026-09-29"
+    },
+    "retainedSections": [
+      "industry"
+    ]
   },
   "source": "prefetched",
   "capabilities": {
@@ -40,10 +43,10 @@
     },
     "fundamentals": {
       "ttmEps": 1.1735,
-      "ttmPe": 159.76,
-      "marketCap": 450495129560,
-      "psRatio": 73.18,
-      "pbRatio": 46.09,
+      "ttmPe": 159.33,
+      "marketCap": 449269652090,
+      "psRatio": 72.98,
+      "pbRatio": 45.96,
       "pegRatio": 0.71
     },
     "profitability": {
@@ -5142,25 +5145,17 @@
       ]
     },
     "wacc": {
-      "wacc": 17.380000000000003,
-      "costOfEquity": 17.39,
+      "wacc": 17.66,
+      "costOfEquity": 17.669999999999998,
       "costOfDebt": 0.06,
       "taxRate": 9,
-      "beta": 1.5928,
-      "marketCap": 450495129560
+      "beta": 1.6305,
+      "marketCap": 449269652090
     },
     "beta": {
-      "beta5y": 1.5928
+      "beta5y": 1.6305
     },
     "price": [
-      {
-        "date": "2025-09-26",
-        "open": 179.05,
-        "high": 180.12,
-        "low": 174.91,
-        "close": 177.57,
-        "volume": 44275800
-      },
       {
         "date": "2025-09-29",
         "open": 179.64,
@@ -7167,18 +7162,18 @@
         "high": 190.25,
         "low": 185.62,
         "close": 187.48,
-        "volume": 17407900
+        "volume": 18464100
+      },
+      {
+        "date": "2026-09-29",
+        "open": 187.34,
+        "high": 188.63,
+        "low": 184.81,
+        "close": 186.97,
+        "volume": 14723400
       }
     ],
     "news": [
-      {
-        "uuid": "5af5f21a-c494-3b85-940a-105f80e91ef5",
-        "title": "AI is Taking Over Aviation--And These Two Companies Just Hit the Accelerator",
-        "publisher": "GuruFocus.com",
-        "reportDate": "2025-03-14",
-        "link": "https://finance.yahoo.com/news/ai-taking-over-aviation-two-164103071.html",
-        "type": "STORY"
-      },
       {
         "uuid": "ffe8bfcd-dec1-3b98-8125-d65c4ffa8e9b",
         "title": "Palantir Strikes AI Partnerships With Archer Aviation, Databricks",
@@ -7193,6 +7188,14 @@
         "publisher": "Insider Monkey",
         "reportDate": "2025-03-14",
         "link": "https://finance.yahoo.com/news/palantir-pltr-joins-forces-ondas-151809996.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "5af5f21a-c494-3b85-940a-105f80e91ef5",
+        "title": "AI is Taking Over Aviation--And These Two Companies Just Hit the Accelerator",
+        "publisher": "GuruFocus.com",
+        "reportDate": "2025-03-14",
+        "link": "https://finance.yahoo.com/news/ai-taking-over-aviation-two-164103071.html",
         "type": "STORY"
       },
       {
@@ -7236,20 +7239,20 @@
         "type": "STORY"
       },
       {
-        "uuid": "5f3936c2-86dc-3310-a7c4-553590e3dde3",
-        "title": "Palantir declines, Lemonade lifts guidance, Celsius Q1 miss",
-        "publisher": "Yahoo Finance Video",
-        "reportDate": "2025-05-06",
-        "link": "https://finance.yahoo.com/video/palantir-declines-lemonade-lifts-guidance-151158298.html",
-        "type": "VIDEO"
-      },
-      {
         "uuid": "da78ab04-9824-38ae-919d-0f45264f5e66",
         "title": "Nebius Group Stock Earns 84 RS Rating",
         "publisher": "Investor's Business Daily",
         "reportDate": "2025-05-06",
         "link": "https://finance.yahoo.com/m/da78ab04-9824-38ae-919d-0f45264f5e66/nebius-group-stock-earns-84.html",
         "type": "STORY"
+      },
+      {
+        "uuid": "5f3936c2-86dc-3310-a7c4-553590e3dde3",
+        "title": "Palantir declines, Lemonade lifts guidance, Celsius Q1 miss",
+        "publisher": "Yahoo Finance Video",
+        "reportDate": "2025-05-06",
+        "link": "https://finance.yahoo.com/video/palantir-declines-lemonade-lifts-guidance-151158298.html",
+        "type": "VIDEO"
       }
     ],
     "officers": [

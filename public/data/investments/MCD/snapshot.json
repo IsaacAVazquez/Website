@@ -1,10 +1,10 @@
 {
   "symbol": "MCD",
-  "lastUpdated": "2026-09-29T06:39:51.976581+00:00",
+  "lastUpdated": "2026-09-30T15:30:08.171135+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-09-29T06:39:51.976581+00:00",
+    "snapshotBuiltAt": "2026-09-30T15:30:08.171135+00:00",
     "sections": {
-      "price": "2026-09-28"
+      "price": "2026-09-29"
     },
     "retainedSections": [
       "fundamentals"
@@ -43,11 +43,11 @@
     },
     "fundamentals": {
       "ttmEps": 12.3129,
-      "ttmPe": 18.97,
-      "pegRatio": 3.27,
-      "marketCap": 165295360000,
-      "psRatio": 5.97,
-      "pbRatio": -161.74
+      "ttmPe": 19,
+      "pegRatio": 3.28,
+      "marketCap": 165564248000,
+      "psRatio": 5.98,
+      "pbRatio": -162
     },
     "profitability": {
       "roe": -204.76999999999998,
@@ -5534,25 +5534,17 @@
       ]
     },
     "wacc": {
-      "wacc": 6.61,
-      "costOfEquity": 8.59,
+      "wacc": 6.65,
+      "costOfEquity": 8.649999999999999,
       "costOfDebt": 0.75,
       "taxRate": 20,
-      "beta": 0.4396,
-      "marketCap": 165295360000
+      "beta": 0.4454,
+      "marketCap": 165564248000
     },
     "beta": {
-      "beta5y": 0.4396
+      "beta5y": 0.4454
     },
     "price": [
-      {
-        "date": "2025-09-26",
-        "open": 303.37,
-        "high": 305.78,
-        "low": 302.01,
-        "close": 305.24,
-        "volume": 2284700
-      },
       {
         "date": "2025-09-29",
         "open": 305.88,
@@ -7559,7 +7551,15 @@
         "high": 237.48,
         "low": 233.23,
         "close": 233.6,
-        "volume": 5330000
+        "volume": 5365000
+      },
+      {
+        "date": "2026-09-29",
+        "open": 232.2,
+        "high": 236.01,
+        "low": 232.06,
+        "close": 233.98,
+        "volume": 5239500
       }
     ],
     "news": [
@@ -7588,19 +7588,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "f5df691a-39e5-31d7-bcb8-7d2f48d17b70",
-        "title": "Wendy's (WEN) Upgraded on Rebound Potential Despite Industry Slump",
-        "publisher": "GuruFocus.com",
-        "reportDate": "2025-05-07",
-        "link": "https://finance.yahoo.com/news/wendys-wen-upgraded-rebound-potential-201625694.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "585d7010-b707-3a2f-a43a-bdd082df3457",
         "title": "Shopify initiated, Comcast downgraded: Wall Street’s top analyst calls",
         "publisher": "TipRanks",
         "reportDate": "2025-05-07",
         "link": "https://finance.yahoo.com/news/shopify-initiated-comcast-downgraded-wall-134119180.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "f5df691a-39e5-31d7-bcb8-7d2f48d17b70",
+        "title": "Wendy's (WEN) Upgraded on Rebound Potential Despite Industry Slump",
+        "publisher": "GuruFocus.com",
+        "reportDate": "2025-05-07",
+        "link": "https://finance.yahoo.com/news/wendys-wen-upgraded-rebound-potential-201625694.html",
         "type": "STORY"
       },
       {
@@ -7612,19 +7612,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "6f7dd108-9650-3481-a29d-b130526e037a",
-        "title": "JPMorgan downgrades Krispy Kreme on strategy reset, execution risk",
-        "publisher": "TipRanks",
-        "reportDate": "2025-05-15",
-        "link": "https://finance.yahoo.com/news/jpmorgan-downgrades-krispy-kreme-strategy-144608670.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "7246e8dc-19a9-38b1-8bc0-6386734eeff6",
         "title": "Starbucks Is Said to Start Process to Revamp Vast China Business",
         "publisher": "Bloomberg",
         "reportDate": "2025-05-15",
         "link": "https://finance.yahoo.com/news/starbucks-said-kick-off-process-020939123.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "6f7dd108-9650-3481-a29d-b130526e037a",
+        "title": "JPMorgan downgrades Krispy Kreme on strategy reset, execution risk",
+        "publisher": "TipRanks",
+        "reportDate": "2025-05-15",
+        "link": "https://finance.yahoo.com/news/jpmorgan-downgrades-krispy-kreme-strategy-144608670.html",
         "type": "STORY"
       },
       {
@@ -7714,17 +7714,17 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 18.97,
-        "industryAvg": 23.42
+        "value": 19,
+        "industryAvg": 23.46
       },
       {
         "metric": "P/S Ratio",
-        "value": 5.97,
+        "value": 5.98,
         "industryAvg": 2.71
       },
       {
         "metric": "P/B Ratio",
-        "value": -161.74,
+        "value": -162,
         "industryAvg": 5.55
       },
       {

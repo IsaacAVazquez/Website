@@ -1,11 +1,14 @@
 {
   "symbol": "PANW",
-  "lastUpdated": "2026-09-29T06:39:51.976581+00:00",
+  "lastUpdated": "2026-09-30T15:30:08.171135+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-09-29T06:39:51.976581+00:00",
+    "snapshotBuiltAt": "2026-09-30T15:30:08.171135+00:00",
     "sections": {
-      "price": "2026-09-28"
-    }
+      "price": "2026-09-29"
+    },
+    "retainedSections": [
+      "industry"
+    ]
   },
   "source": "prefetched",
   "capabilities": {
@@ -40,10 +43,10 @@
     },
     "fundamentals": {
       "ttmEps": 0.5125,
-      "ttmPe": 765.05,
-      "marketCap": 319553350000,
-      "psRatio": 27.84,
-      "pbRatio": 11.62,
+      "ttmPe": 757.87,
+      "marketCap": 316554150000,
+      "psRatio": 27.57,
+      "pbRatio": 11.51,
       "pegRatio": 1.64
     },
     "profitability": {
@@ -5904,25 +5907,17 @@
       ]
     },
     "wacc": {
-      "wacc": 12.24,
-      "costOfEquity": 12.34,
+      "wacc": 12.35,
+      "costOfEquity": 12.45,
       "costOfDebt": 0,
       "taxRate": 40,
-      "beta": 0.9303,
-      "marketCap": 319553350000
+      "beta": 0.9443,
+      "marketCap": 316554150000
     },
     "beta": {
-      "beta5y": 0.9303
+      "beta5y": 0.9443
     },
     "price": [
-      {
-        "date": "2025-09-26",
-        "open": 201.48,
-        "high": 203.55,
-        "low": 200.62,
-        "close": 202.37,
-        "volume": 5244300
-      },
       {
         "date": "2025-09-29",
         "open": 203,
@@ -7929,7 +7924,15 @@
         "high": 394.5,
         "low": 367.27,
         "close": 392.09,
-        "volume": 6008900
+        "volume": 6028100
+      },
+      {
+        "date": "2026-09-29",
+        "open": 390.1,
+        "high": 391.75,
+        "low": 377.8,
+        "close": 388.41,
+        "volume": 5101600
       }
     ],
     "news": [
@@ -7998,19 +8001,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "09a680da-9506-38ad-9747-6af408c93d73",
-        "title": "Zscaler (ZS) Reports Earnings Tomorrow: What To Expect",
-        "publisher": "StockStory",
-        "reportDate": "2025-05-28",
-        "link": "https://finance.yahoo.com/news/zscaler-zs-reports-earnings-tomorrow-070335179.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "992777e0-468b-3487-8ba6-3fdf32f0f4c1",
         "title": "Billionaire Stanley Druckenmiller Just Sold One of Wall Street's Hottest Stock-Split Stocks and Is Piling Into a Promising Drugmaker Instead",
         "publisher": "Motley Fool",
         "reportDate": "2025-05-28",
         "link": "https://finance.yahoo.com/m/992777e0-468b-3487-8ba6-3fdf32f0f4c1/billionaire-stanley.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "09a680da-9506-38ad-9747-6af408c93d73",
+        "title": "Zscaler (ZS) Reports Earnings Tomorrow: What To Expect",
+        "publisher": "StockStory",
+        "reportDate": "2025-05-28",
+        "link": "https://finance.yahoo.com/news/zscaler-zs-reports-earnings-tomorrow-070335179.html",
         "type": "STORY"
       }
     ],

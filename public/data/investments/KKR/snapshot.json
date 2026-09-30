@@ -1,10 +1,10 @@
 {
   "symbol": "KKR",
-  "lastUpdated": "2026-09-29T06:12:23.168021+00:00",
+  "lastUpdated": "2026-09-30T15:30:08.171135+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-09-29T06:12:23.168021+00:00",
+    "snapshotBuiltAt": "2026-09-30T15:30:08.171135+00:00",
     "sections": {
-      "price": "2026-09-28"
+      "price": "2026-09-29"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 3.1368,
-      "ttmPe": 29.72,
-      "marketCap": 83708690184,
+      "ttmPe": 29.71,
+      "marketCap": 83654823588,
       "psRatio": 3.97,
-      "pbRatio": 2.7,
-      "pegRatio": 0.73
+      "pbRatio": 2.69,
+      "pegRatio": 0.72
     },
     "profitability": {
       "roe": 2.1399999999999997,
@@ -5770,25 +5770,17 @@
       ]
     },
     "wacc": {
-      "wacc": 11.98,
-      "costOfEquity": 19.08,
+      "wacc": 11.53,
+      "costOfEquity": 18.35,
       "costOfDebt": 1.41,
       "taxRate": 18,
-      "beta": 1.8135,
-      "marketCap": 83708690184
+      "beta": 1.7202,
+      "marketCap": 83654823588
     },
     "beta": {
-      "beta5y": 1.8135
+      "beta5y": 1.7202
     },
     "price": [
-      {
-        "date": "2025-09-26",
-        "open": 136.57,
-        "high": 137.22,
-        "low": 133.82,
-        "close": 134.01,
-        "volume": 4592700
-      },
       {
         "date": "2025-09-29",
         "open": 136.07,
@@ -7796,6 +7788,14 @@
         "low": 92.7,
         "close": 93.24,
         "volume": 6004900
+      },
+      {
+        "date": "2026-09-29",
+        "open": 93.78,
+        "high": 94.1,
+        "low": 92.15,
+        "close": 93.18,
+        "volume": 3672100
       }
     ],
     "news": [
@@ -7943,7 +7943,7 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 29.72,
+        "value": 29.71,
         "industryAvg": 22.94
       },
       {
@@ -7953,13 +7953,13 @@
       },
       {
         "metric": "P/B Ratio",
-        "value": 2.7,
-        "industryAvg": 2.6
+        "value": 2.69,
+        "industryAvg": 2.59
       },
       {
         "metric": "ROE",
         "value": 2.1399999999999997,
-        "industryAvg": 7.42
+        "industryAvg": 7.39
       },
       {
         "metric": "ROA",
@@ -7974,12 +7974,12 @@
       {
         "metric": "EBITDA Margin",
         "value": 38.03,
-        "industryAvg": 41.24
+        "industryAvg": 41.22
       },
       {
         "metric": "Net Margin",
         "value": 11.67,
-        "industryAvg": 6.54
+        "industryAvg": 6.510000000000001
       }
     ]
   }

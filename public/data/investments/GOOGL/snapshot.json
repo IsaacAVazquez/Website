@@ -1,10 +1,10 @@
 {
   "symbol": "GOOGL",
-  "lastUpdated": "2026-09-29T06:39:51.976581+00:00",
+  "lastUpdated": "2026-09-30T15:30:08.171135+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-09-29T06:39:51.976581+00:00",
+    "snapshotBuiltAt": "2026-09-30T15:30:08.171135+00:00",
     "sections": {
-      "price": "2026-09-28"
+      "price": "2026-09-29"
     }
   },
   "source": "prefetched",
@@ -40,10 +40,10 @@
     },
     "fundamentals": {
       "ttmEps": 19.9052,
-      "ttmPe": 17.22,
-      "marketCap": 4191832500000,
-      "psRatio": 9.4,
-      "pbRatio": 6.54,
+      "ttmPe": 17.13,
+      "marketCap": 4169451600000,
+      "psRatio": 9.35,
+      "pbRatio": 6.51,
       "pegRatio": 0.06
     },
     "profitability": {
@@ -5800,25 +5800,17 @@
       ]
     },
     "wacc": {
-      "wacc": 14.06,
-      "costOfEquity": 14.41,
+      "wacc": 13.99,
+      "costOfEquity": 14.34,
       "costOfDebt": 1.13,
       "taxRate": 19,
-      "beta": 1.2012,
-      "marketCap": 4191832500000
+      "beta": 1.1931,
+      "marketCap": 4169451600000
     },
     "beta": {
-      "beta5y": 1.2012
+      "beta5y": 1.1931
     },
     "price": [
-      {
-        "date": "2025-09-26",
-        "open": 247.07,
-        "high": 249.42,
-        "low": 245.97,
-        "close": 246.54,
-        "volume": 18503200
-      },
       {
         "date": "2025-09-29",
         "open": 247.85,
@@ -7825,7 +7817,15 @@
         "high": 343.59,
         "low": 339.56,
         "close": 342.75,
-        "volume": 19299900
+        "volume": 19318300
+      },
+      {
+        "date": "2026-09-29",
+        "open": 341.95,
+        "high": 342.84,
+        "low": 338.02,
+        "close": 340.92,
+        "volume": 21010200
       }
     ],
     "news": [
@@ -7838,11 +7838,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "02c8aab7-95f3-3bc3-8d8f-fe9613fea494",
-        "title": "Zacks Investment Ideas feature highlights: Tesla, Li Auto, Nio, BYD and Alphabet",
-        "publisher": "Zacks",
+        "uuid": "1f65352e-e780-3b0a-9802-fdd0d6359ce8",
+        "title": "Streaming Surpasses Combined Cable, Broadcast Viewing for First Time in May, Nielsen Reports",
+        "publisher": "MT Newswires",
         "reportDate": "2025-06-17",
-        "link": "https://finance.yahoo.com/news/zacks-investment-ideas-feature-highlights-124900266.html",
+        "link": "https://finance.yahoo.com/news/streaming-surpasses-combined-cable-broadcast-140549520.html",
         "type": "STORY"
       },
       {
@@ -7854,11 +7854,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "0cd3518a-5a9f-38ba-bfd6-367caceadf00",
-        "title": "Top Research Reports for Alphabet, IBM & RTX",
+        "uuid": "02c8aab7-95f3-3bc3-8d8f-fe9613fea494",
+        "title": "Zacks Investment Ideas feature highlights: Tesla, Li Auto, Nio, BYD and Alphabet",
         "publisher": "Zacks",
         "reportDate": "2025-06-17",
-        "link": "https://finance.yahoo.com/news/top-research-reports-alphabet-ibm-202800489.html",
+        "link": "https://finance.yahoo.com/news/zacks-investment-ideas-feature-highlights-124900266.html",
         "type": "STORY"
       },
       {
@@ -7870,11 +7870,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "1f65352e-e780-3b0a-9802-fdd0d6359ce8",
-        "title": "Streaming Surpasses Combined Cable, Broadcast Viewing for First Time in May, Nielsen Reports",
-        "publisher": "MT Newswires",
+        "uuid": "0cd3518a-5a9f-38ba-bfd6-367caceadf00",
+        "title": "Top Research Reports for Alphabet, IBM & RTX",
+        "publisher": "Zacks",
         "reportDate": "2025-06-17",
-        "link": "https://finance.yahoo.com/news/streaming-surpasses-combined-cable-broadcast-140549520.html",
+        "link": "https://finance.yahoo.com/news/top-research-reports-alphabet-ibm-202800489.html",
         "type": "STORY"
       },
       {
@@ -7894,19 +7894,19 @@
         "type": "STORY"
       },
       {
+        "uuid": "4c10d800-1065-3e25-af9a-f43f0e8b2904",
+        "title": "Japan's TDK acquires US-based smart glasses company SoftEye",
+        "publisher": "Reuters",
+        "reportDate": "2025-06-19",
+        "link": "https://finance.yahoo.com/news/japans-tdk-acquires-us-based-063651794.html",
+        "type": "STORY"
+      },
+      {
         "uuid": "cf2e7065-0566-377e-aff0-cd1947c51405",
         "title": "Magnificent 7 May Need to Make Room for Broadcom",
         "publisher": "The Daily Upside",
         "reportDate": "2025-06-19",
         "link": "https://finance.yahoo.com/m/cf2e7065-0566-377e-aff0-cd1947c51405/magnificent-7-may-need-to.html",
-        "type": "STORY"
-      },
-      {
-        "uuid": "5aaffa19-4a82-37d7-9153-92797cff77b1",
-        "title": "Down 25%, Is Now the Time to Pounce on IonQ Stock for Just $40?",
-        "publisher": "Motley Fool",
-        "reportDate": "2025-06-19",
-        "link": "https://finance.yahoo.com/m/5aaffa19-4a82-37d7-9153-92797cff77b1/down-25%25%2C-is-now-the-time-to.html",
         "type": "STORY"
       }
     ],
@@ -7980,18 +7980,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 17.22,
-        "industryAvg": 18.4
+        "value": 17.13,
+        "industryAvg": 18.43
       },
       {
         "metric": "P/S Ratio",
-        "value": 9.4,
-        "industryAvg": 8.42
+        "value": 9.35,
+        "industryAvg": 8.44
       },
       {
         "metric": "P/B Ratio",
-        "value": 6.54,
-        "industryAvg": 6.13
+        "value": 6.51,
+        "industryAvg": 6.14
       },
       {
         "metric": "ROE",

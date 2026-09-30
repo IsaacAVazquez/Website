@@ -1,10 +1,10 @@
 {
   "symbol": "ELV",
-  "lastUpdated": "2026-09-29T06:39:51.976581+00:00",
+  "lastUpdated": "2026-09-30T15:30:08.171135+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-09-29T06:39:51.976581+00:00",
+    "snapshotBuiltAt": "2026-09-30T15:30:08.171135+00:00",
     "sections": {
-      "price": "2026-09-28"
+      "price": "2026-09-29"
     },
     "retainedSections": [
       "fundamentals"
@@ -43,11 +43,11 @@
     },
     "fundamentals": {
       "ttmEps": 22.4991,
-      "ttmPe": 17.54,
+      "ttmPe": 17.46,
       "pegRatio": 0.31,
-      "marketCap": 85563329649,
-      "psRatio": 0.43,
-      "pbRatio": 1.91
+      "marketCap": 85160005203,
+      "psRatio": 0.42,
+      "pbRatio": 1.9
     },
     "profitability": {
       "roe": 3.3000000000000003,
@@ -5053,25 +5053,17 @@
       ]
     },
     "wacc": {
-      "wacc": 8.02,
-      "costOfEquity": 10.61,
+      "wacc": 7.670000000000001,
+      "costOfEquity": 10.14,
       "costOfDebt": 1.17,
       "taxRate": 25,
-      "beta": 0.7032,
-      "marketCap": 85563329649
+      "beta": 0.6419,
+      "marketCap": 85160005203
     },
     "beta": {
-      "beta5y": 0.7032
+      "beta5y": 0.6419
     },
     "price": [
-      {
-        "date": "2025-09-26",
-        "open": 319.35,
-        "high": 320.17,
-        "low": 316.28,
-        "close": 318.61,
-        "volume": 1482000
-      },
       {
         "date": "2025-09-29",
         "open": 318.31,
@@ -7079,6 +7071,14 @@
         "low": 392.44,
         "close": 394.59,
         "volume": 1334200
+      },
+      {
+        "date": "2026-09-29",
+        "open": 391,
+        "high": 395.44,
+        "low": 390,
+        "close": 392.73,
+        "volume": 934800
       }
     ],
     "news": [
@@ -7091,20 +7091,20 @@
         "type": "STORY"
       },
       {
-        "uuid": "e6dff226-06cc-3c19-a10a-76e1c4162a66",
-        "title": "Justice Department Sues Big Medicare Insurers Alleging Kickbacks",
-        "publisher": "The Wall Street Journal",
-        "reportDate": "2025-05-02",
-        "link": "https://finance.yahoo.com/m/e6dff226-06cc-3c19-a10a-76e1c4162a66/justice-department-sues-big.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "bca8354d-1f90-383b-a5a6-f5382a1487ee",
         "title": "3 things we've learned from healthcare earnings",
         "publisher": "Yahoo Finance Video",
         "reportDate": "2025-05-02",
         "link": "https://finance.yahoo.com/video/3-things-weve-learned-healthcare-180401035.html",
         "type": "VIDEO"
+      },
+      {
+        "uuid": "e6dff226-06cc-3c19-a10a-76e1c4162a66",
+        "title": "Justice Department Sues Big Medicare Insurers Alleging Kickbacks",
+        "publisher": "The Wall Street Journal",
+        "reportDate": "2025-05-02",
+        "link": "https://finance.yahoo.com/m/e6dff226-06cc-3c19-a10a-76e1c4162a66/justice-department-sues-big.html",
+        "type": "STORY"
       },
       {
         "uuid": "695e3470-e670-3ba0-83e2-e8388efd09b2",
@@ -7227,18 +7227,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 17.54,
-        "industryAvg": 20.74
+        "value": 17.46,
+        "industryAvg": 20.64
       },
       {
         "metric": "P/S Ratio",
-        "value": 0.43,
+        "value": 0.42,
         "industryAvg": 0.4
       },
       {
         "metric": "P/B Ratio",
-        "value": 1.91,
-        "industryAvg": 2.27
+        "value": 1.9,
+        "industryAvg": 2.26
       },
       {
         "metric": "ROE",

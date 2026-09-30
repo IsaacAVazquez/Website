@@ -1,10 +1,10 @@
 {
   "symbol": "AMGN",
-  "lastUpdated": "2026-09-29T06:12:23.168021+00:00",
+  "lastUpdated": "2026-09-30T15:30:08.171135+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-09-29T06:12:23.168021+00:00",
+    "snapshotBuiltAt": "2026-09-30T15:30:08.171135+00:00",
     "sections": {
-      "price": "2026-09-28"
+      "price": "2026-09-29"
     },
     "retainedSections": [
       "fundamentals"
@@ -43,11 +43,11 @@
     },
     "fundamentals": {
       "ttmEps": 16.0981,
-      "ttmPe": 25.97,
-      "pegRatio": 0.4,
-      "marketCap": 226041078000,
-      "psRatio": 5.93,
-      "pbRatio": 19.34
+      "ttmPe": 26.32,
+      "pegRatio": 0.41,
+      "marketCap": 229019784000,
+      "psRatio": 6.01,
+      "pbRatio": 19.59
     },
     "profitability": {
       "roe": 22.75,
@@ -5336,25 +5336,17 @@
       ]
     },
     "wacc": {
-      "wacc": 6.88,
-      "costOfEquity": 8.37,
+      "wacc": 7.1,
+      "costOfEquity": 8.62,
       "costOfDebt": 1.17,
       "taxRate": 14.000000000000002,
-      "beta": 0.4096,
-      "marketCap": 226041078000
+      "beta": 0.4416,
+      "marketCap": 229019784000
     },
     "beta": {
-      "beta5y": 0.4096
+      "beta5y": 0.4416
     },
     "price": [
-      {
-        "date": "2025-09-26",
-        "open": 274.34,
-        "high": 275.5,
-        "low": 269.77,
-        "close": 272.98,
-        "volume": 1812200
-      },
       {
         "date": "2025-09-29",
         "open": 273.1,
@@ -7361,7 +7353,15 @@
         "high": 419.02,
         "low": 410.96,
         "close": 418.13,
-        "volume": 2761800
+        "volume": 2917900
+      },
+      {
+        "date": "2026-09-29",
+        "open": 414.37,
+        "high": 424.57,
+        "low": 414.11,
+        "close": 423.64,
+        "volume": 3737800
       }
     ],
     "news": [
@@ -7414,19 +7414,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "0db7d4cd-362a-3f6d-aec7-798765339965",
-        "title": "Better Weight Loss Stock: Amgen or Viking Therapeutics?",
-        "publisher": "Motley Fool",
-        "reportDate": "2025-05-22",
-        "link": "https://finance.yahoo.com/m/0db7d4cd-362a-3f6d-aec7-798765339965/better-weight-loss-stock%3A.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "0dc4812d-09f8-322e-b873-8f766a7f20f3",
         "title": "Sanofi Inks A $470 Million Alzheimer's Deal, Sending This Dollar Stock Flying",
         "publisher": "Investor's Business Daily",
         "reportDate": "2025-05-22",
         "link": "https://finance.yahoo.com/m/0dc4812d-09f8-322e-b873-8f766a7f20f3/sanofi-inks-a-%24470-million.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "0db7d4cd-362a-3f6d-aec7-798765339965",
+        "title": "Better Weight Loss Stock: Amgen or Viking Therapeutics?",
+        "publisher": "Motley Fool",
+        "reportDate": "2025-05-22",
+        "link": "https://finance.yahoo.com/m/0db7d4cd-362a-3f6d-aec7-798765339965/better-weight-loss-stock%3A.html",
         "type": "STORY"
       },
       {
@@ -7510,18 +7510,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 25.97,
-        "industryAvg": 26.68
+        "value": 26.32,
+        "industryAvg": 26.53
       },
       {
         "metric": "P/S Ratio",
-        "value": 5.93,
-        "industryAvg": 4.82
+        "value": 6.01,
+        "industryAvg": 4.79
       },
       {
         "metric": "P/B Ratio",
-        "value": 19.34,
-        "industryAvg": 5.95
+        "value": 19.59,
+        "industryAvg": 5.92
       },
       {
         "metric": "ROE",

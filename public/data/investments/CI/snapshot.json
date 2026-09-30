@@ -1,10 +1,10 @@
 {
   "symbol": "CI",
-  "lastUpdated": "2026-09-29T06:39:51.976581+00:00",
+  "lastUpdated": "2026-09-30T15:30:08.171135+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-09-29T06:39:51.976581+00:00",
+    "snapshotBuiltAt": "2026-09-30T15:30:08.171135+00:00",
     "sections": {
-      "price": "2026-09-28"
+      "price": "2026-09-29"
     },
     "retainedSections": [
       "fundamentals"
@@ -43,11 +43,11 @@
     },
     "fundamentals": {
       "ttmEps": 24.1804,
-      "ttmPe": 11.24,
-      "pegRatio": 1.12,
-      "marketCap": 71681571000,
-      "psRatio": 0.25,
-      "pbRatio": 1.68
+      "ttmPe": 11.38,
+      "pegRatio": 1.13,
+      "marketCap": 72586062000,
+      "psRatio": 0.26,
+      "pbRatio": 1.7
     },
     "profitability": {
       "roe": 3.91,
@@ -5901,25 +5901,17 @@
       ]
     },
     "wacc": {
-      "wacc": 5.45,
-      "costOfEquity": 7.46,
+      "wacc": 5.36,
+      "costOfEquity": 7.3,
       "costOfDebt": 1.1199999999999999,
       "taxRate": 17,
-      "beta": 0.2904,
-      "marketCap": 71681571000
+      "beta": 0.2681,
+      "marketCap": 72586062000
     },
     "beta": {
-      "beta5y": 0.2904
+      "beta5y": 0.2681
     },
     "price": [
-      {
-        "date": "2025-09-26",
-        "open": 285.27,
-        "high": 286.78,
-        "low": 284.66,
-        "close": 286.17,
-        "volume": 1468600
-      },
       {
         "date": "2025-09-29",
         "open": 285.1,
@@ -7926,7 +7918,15 @@
         "high": 272.49,
         "low": 269.05,
         "close": 271.83,
-        "volume": 1700600
+        "volume": 1752800
+      },
+      {
+        "date": "2026-09-29",
+        "open": 269.97,
+        "high": 276.61,
+        "low": 269.01,
+        "close": 275.26,
+        "volume": 1978700
       }
     ],
     "news": [
@@ -7963,19 +7963,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "72ae963e-6170-3791-9c2f-d77469c5531d",
-        "title": "CMS to recover ‘uncollected overpayments’ amid Medicare audits",
-        "publisher": "TipRanks",
-        "reportDate": "2025-05-23",
-        "link": "https://finance.yahoo.com/news/cms-recover-uncollected-overpayments-amid-205523484.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "57db747c-5305-374e-9a78-ade7bacdd84e",
         "title": "Cigna Announced a New Agreement for Copay Caps on Eli Lilly and Novo Nordisk Weight Loss Drugs",
         "publisher": "Insider Monkey",
         "reportDate": "2025-05-23",
         "link": "https://finance.yahoo.com/news/cigna-announced-agreement-copay-caps-021100886.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "72ae963e-6170-3791-9c2f-d77469c5531d",
+        "title": "CMS to recover ‘uncollected overpayments’ amid Medicare audits",
+        "publisher": "TipRanks",
+        "reportDate": "2025-05-23",
+        "link": "https://finance.yahoo.com/news/cms-recover-uncollected-overpayments-amid-205523484.html",
         "type": "STORY"
       },
       {
@@ -8073,18 +8073,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 11.24,
-        "industryAvg": 20.74
+        "value": 11.38,
+        "industryAvg": 20.64
       },
       {
         "metric": "P/S Ratio",
-        "value": 0.25,
+        "value": 0.26,
         "industryAvg": 0.4
       },
       {
         "metric": "P/B Ratio",
-        "value": 1.68,
-        "industryAvg": 2.27
+        "value": 1.7,
+        "industryAvg": 2.26
       },
       {
         "metric": "ROE",

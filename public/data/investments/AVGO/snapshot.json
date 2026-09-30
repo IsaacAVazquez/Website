@@ -1,10 +1,10 @@
 {
   "symbol": "AVGO",
-  "lastUpdated": "2026-09-29T06:39:51.976581+00:00",
+  "lastUpdated": "2026-09-30T15:30:08.171135+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-09-29T06:39:51.976581+00:00",
+    "snapshotBuiltAt": "2026-09-30T15:30:08.171135+00:00",
     "sections": {
-      "price": "2026-09-28"
+      "price": "2026-09-29"
     }
   },
   "source": "prefetched",
@@ -40,10 +40,10 @@
     },
     "fundamentals": {
       "ttmEps": 7.8333,
-      "ttmPe": 44.63,
-      "marketCap": 1668847180000,
-      "psRatio": 18.73,
-      "pbRatio": 16.74,
+      "ttmPe": 45.33,
+      "marketCap": 1695247400000,
+      "psRatio": 19.03,
+      "pbRatio": 17.01,
       "pegRatio": 0.21
     },
     "profitability": {
@@ -6215,25 +6215,17 @@
       ]
     },
     "wacc": {
-      "wacc": 15.770000000000001,
-      "costOfEquity": 16.29,
+      "wacc": 15.870000000000001,
+      "costOfEquity": 16.39,
       "costOfDebt": 1.31,
       "taxRate": 14.000000000000002,
-      "beta": 1.4483,
-      "marketCap": 1668847180000
+      "beta": 1.4627,
+      "marketCap": 1695247400000
     },
     "beta": {
-      "beta5y": 1.4483
+      "beta5y": 1.4627
     },
     "price": [
-      {
-        "date": "2025-09-26",
-        "open": 337.43,
-        "high": 339.08,
-        "low": 330.58,
-        "close": 334.53,
-        "volume": 15464700
-      },
       {
         "date": "2025-09-29",
         "open": 336,
@@ -8240,7 +8232,15 @@
         "high": 355.86,
         "low": 347.32,
         "close": 349.57,
-        "volume": 21413300
+        "volume": 21527900
+      },
+      {
+        "date": "2026-09-29",
+        "open": 357,
+        "high": 361.86,
+        "low": 354,
+        "close": 355.1,
+        "volume": 19144700
       }
     ],
     "news": [
@@ -8285,19 +8285,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "1a4ad937-a6fe-3efc-ad47-22885a44cffe",
-        "title": "The Zacks Analyst Blog Highlights Microsoft, Broadcom, McDonald's and Kingsway Financial Services",
-        "publisher": "Zacks",
-        "reportDate": "2025-04-29",
-        "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-microsoft-104100632.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "b5e9e2b7-0579-37ff-b792-e96b7564d257",
         "title": "Top Analyst Reports for Microsoft, Broadcom & McDonald's",
         "publisher": "Zacks",
         "reportDate": "2025-04-29",
         "link": "https://finance.yahoo.com/news/top-analyst-reports-microsoft-broadcom-222200614.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "1a4ad937-a6fe-3efc-ad47-22885a44cffe",
+        "title": "The Zacks Analyst Blog Highlights Microsoft, Broadcom, McDonald's and Kingsway Financial Services",
+        "publisher": "Zacks",
+        "reportDate": "2025-04-29",
+        "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-microsoft-104100632.html",
         "type": "STORY"
       },
       {
@@ -8384,18 +8384,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 44.63,
-        "industryAvg": 30.1
+        "value": 45.33,
+        "industryAvg": 30.27
       },
       {
         "metric": "P/S Ratio",
-        "value": 18.73,
-        "industryAvg": 14.37
+        "value": 19.03,
+        "industryAvg": 14.45
       },
       {
         "metric": "P/B Ratio",
-        "value": 16.74,
-        "industryAvg": 12.55
+        "value": 17.01,
+        "industryAvg": 12.63
       },
       {
         "metric": "ROE",

@@ -1,10 +1,10 @@
 {
   "symbol": "WFC",
-  "lastUpdated": "2026-09-29T06:12:23.168021+00:00",
+  "lastUpdated": "2026-09-30T15:30:08.171135+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-09-29T06:12:23.168021+00:00",
+    "snapshotBuiltAt": "2026-09-30T15:30:08.171135+00:00",
     "sections": {
-      "price": "2026-09-28"
+      "price": "2026-09-29"
     }
   },
   "source": "prefetched",
@@ -40,10 +40,10 @@
     },
     "fundamentals": {
       "ttmEps": 6.8831,
-      "ttmPe": 11.74,
-      "marketCap": 244734321393,
-      "psRatio": 2.82,
-      "pbRatio": 1.36,
+      "ttmPe": 11.69,
+      "marketCap": 243734911344,
+      "psRatio": 2.81,
+      "pbRatio": 1.35,
       "pegRatio": 0.46
     },
     "profitability": {
@@ -6476,25 +6476,17 @@
       ]
     },
     "wacc": {
-      "wacc": 8.790000000000001,
-      "costOfEquity": 12.509999999999998,
+      "wacc": 8.709999999999999,
+      "costOfEquity": 12.389999999999999,
       "costOfDebt": 5.29,
       "taxRate": 17,
-      "beta": 0.9525,
-      "marketCap": 244734321393
+      "beta": 0.9368,
+      "marketCap": 243734911344
     },
     "beta": {
-      "beta5y": 0.9525
+      "beta5y": 0.9368
     },
     "price": [
-      {
-        "date": "2025-09-26",
-        "open": 84.69,
-        "high": 85.64,
-        "low": 84.56,
-        "close": 85.01,
-        "volume": 8502600
-      },
       {
         "date": "2025-09-29",
         "open": 84.7,
@@ -8501,7 +8493,15 @@
         "high": 82.89,
         "low": 80.58,
         "close": 80.81,
-        "volume": 12968300
+        "volume": 13108800
+      },
+      {
+        "date": "2026-09-29",
+        "open": 80.62,
+        "high": 81.13,
+        "low": 80.12,
+        "close": 80.48,
+        "volume": 12884500
       }
     ],
     "news": [
@@ -8546,19 +8546,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "36289b94-02ed-32e4-9796-d2be8c79a593",
-        "title": "‘Sell America’ Is Back as Moody’s Pushes 30-Year Yield to 5%",
-        "publisher": "Bloomberg",
-        "reportDate": "2025-05-19",
-        "link": "https://finance.yahoo.com/news/sell-america-back-moody-pushes-063431943.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "89f7579a-37b1-3c61-9291-53bcc75da0db",
         "title": "Mini ‘Sell America’ Trade Revived After Moody’s Downgrades US",
         "publisher": "Bloomberg",
         "reportDate": "2025-05-19",
         "link": "https://finance.yahoo.com/news/investors-await-another-monday-jolt-145946996.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "36289b94-02ed-32e4-9796-d2be8c79a593",
+        "title": "‘Sell America’ Is Back as Moody’s Pushes 30-Year Yield to 5%",
+        "publisher": "Bloomberg",
+        "reportDate": "2025-05-19",
+        "link": "https://finance.yahoo.com/news/sell-america-back-moody-pushes-063431943.html",
         "type": "STORY"
       },
       {
@@ -8654,17 +8654,17 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 11.74,
+        "value": 11.69,
         "industryAvg": 13.67
       },
       {
         "metric": "P/S Ratio",
-        "value": 2.82,
+        "value": 2.81,
         "industryAvg": 3.77
       },
       {
         "metric": "P/B Ratio",
-        "value": 1.36,
+        "value": 1.35,
         "industryAvg": 1.7
       },
       {

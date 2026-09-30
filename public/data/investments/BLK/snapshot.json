@@ -1,10 +1,10 @@
 {
   "symbol": "BLK",
-  "lastUpdated": "2026-09-29T06:12:23.168021+00:00",
+  "lastUpdated": "2026-09-30T15:30:08.171135+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-09-29T06:12:23.168021+00:00",
+    "snapshotBuiltAt": "2026-09-30T15:30:08.171135+00:00",
     "sections": {
-      "price": "2026-09-28"
+      "price": "2026-09-29"
     }
   },
   "source": "prefetched",
@@ -27,9 +27,9 @@
   },
   "sections": {
     "info": {
-      "address": "33 Alfred Street, Level 12",
-      "city": "Sydney",
-      "country": "Australia",
+      "address": "50 Hudson Yards",
+      "city": "New York",
+      "country": "United States",
       "industry": "Asset Management",
       "sector": "Financial Services",
       "longBusinessSummary": "BlackRock, Inc. is a publicly owned investment manager. The firm primarily provides its services to institutional, intermediary, and individual investors including corporate, public, union, and industry pension plans, insurance companies, third-party mutual funds, endowments, public institutions, governments, foundations, charities, sovereign wealth funds, corporations, official institutions, and banks. It also provides global risk management and advisory services. The firm manages separate client-focused equity, fixed income, and balanced portfolios. It also launches and manages open-end and closed-end mutual funds, offshore funds, unit trusts, and alternative investment vehicles including structured funds. The firm launches equity, fixed income, balanced, and real estate mutual funds. It also launches equity, fixed income, balanced, currency, commodity, and multi-asset exchange traded funds. The firm also launches and manages hedge funds. It invests in the public equity, fixed income, real estate, currency, commodity, and alternative markets across the globe. The firm primarily invests in growth and value stocks of small-cap, mid-cap, SMID-cap, large-cap, and multi-cap companies. It also invests in dividend-paying equity securities. The firm invests in investment grade municipal securities, government securities including securities issued or guaranteed by a government or a government agency or instrumentality, corporate bonds, and asset-backed and mortgage-backed securities. It employs fundamental and quantitative analysis with a focus on bottom-up and top-down approach to make its investments. The firm employs liquidity, asset allocation, balanced, real estate, and alternative strategies to make its investments. In real estate sector, it seeks to invest in Poland and Germany. The firm benchmarks the performance of its portfolios against various S&P, Russell, Barclays, MSCI, Citigroup, and Merrill Lynch indices. BlackRock, Inc. was founded in 1988 and is based in New York, New York with additional offices in Atlanta, Georgia; Boston, Massachusetts; Chicago, Illinois; Dallas, Texas; Denver, Colorado; Greenwich, Connecticut; Houston, Texas; Miami, Florida; Newport Beach, California; Palo Alto, California; Philadelphia, Pennsylvania; Princeton, New Jersey; San Francisco, California; Santa Monica, California; Seattle, Washington; Washington, DC; West Palm Beach, Florida; Wilmington, Delaware; Mexico; Canada; South Africa; Netherlands; Greece; Serbia; Belgium; Hungary; Denmark; Ireland; Scotland; Germany; Switzerland; England; Luxembourg; Spain; Italy; France; Sweden; Austria; India; China; Australia; Hong Kong; South Korea; Singapore; Taiwan; Japan; Colombia; Argentina; Peru; Chile; Brazil; UAE; Saudi Arabia; Israel.",
@@ -40,10 +40,10 @@
     },
     "fundamentals": {
       "ttmEps": 40.1988,
-      "ttmPe": 26.65,
-      "marketCap": 174189213625,
-      "psRatio": 6.38,
-      "pbRatio": 3.02,
+      "ttmPe": 26.57,
+      "marketCap": 173650979117.63,
+      "psRatio": 6.36,
+      "pbRatio": 3.01,
       "pegRatio": 1.9
     },
     "profitability": {
@@ -5484,25 +5484,17 @@
       ]
     },
     "wacc": {
-      "wacc": 14.760000000000002,
-      "costOfEquity": 15.97,
+      "wacc": 14.64,
+      "costOfEquity": 15.840000000000002,
       "costOfDebt": 0.8999999999999999,
       "taxRate": 25,
-      "beta": 1.4068,
-      "marketCap": 174189213625
+      "beta": 1.3905,
+      "marketCap": 173650979117.63
     },
     "beta": {
-      "beta5y": 1.4068
+      "beta5y": 1.3905
     },
     "price": [
-      {
-        "date": "2025-09-26",
-        "open": 1152,
-        "high": 1159.48,
-        "low": 1150.78,
-        "close": 1156.45,
-        "volume": 435500
-      },
       {
         "date": "2025-09-29",
         "open": 1167.4,
@@ -7510,6 +7502,14 @@
         "low": 1063.2,
         "close": 1071.25,
         "volume": 517800
+      },
+      {
+        "date": "2026-09-29",
+        "open": 1069.33,
+        "high": 1075.88,
+        "low": 1061.72,
+        "close": 1067.9399,
+        "volume": 352200
       }
     ],
     "news": [
@@ -7530,19 +7530,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "38f2120e-db4d-3997-87f2-8c51f5e8ddb7",
-        "title": "A Public Company Boasting Trump's Sons on Advisory Board Is Buying BlackRock Bitcoin ETFs",
-        "publisher": "CoinDesk",
-        "reportDate": "2025-03-28",
-        "link": "https://finance.yahoo.com/m/38f2120e-db4d-3997-87f2-8c51f5e8ddb7/a-public-company-boasting.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "9d188eb0-9b83-38ac-80c0-8a4c35f543a8",
         "title": "A Public Company Boasting Trump's Sons on Advisory Board Is Buying BlackRock Bitcoin ETFs",
         "publisher": "CoinDesk",
         "reportDate": "2025-03-28",
         "link": "https://finance.yahoo.com/m/9d188eb0-9b83-38ac-80c0-8a4c35f543a8/a-public-company-boasting.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "38f2120e-db4d-3997-87f2-8c51f5e8ddb7",
+        "title": "A Public Company Boasting Trump's Sons on Advisory Board Is Buying BlackRock Bitcoin ETFs",
+        "publisher": "CoinDesk",
+        "reportDate": "2025-03-28",
+        "link": "https://finance.yahoo.com/m/38f2120e-db4d-3997-87f2-8c51f5e8ddb7/a-public-company-boasting.html",
         "type": "STORY"
       },
       {
@@ -7659,23 +7659,23 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 26.65,
+        "value": 26.57,
         "industryAvg": 22.94
       },
       {
         "metric": "P/S Ratio",
-        "value": 6.38,
+        "value": 6.36,
         "industryAvg": 3.15
       },
       {
         "metric": "P/B Ratio",
-        "value": 3.02,
-        "industryAvg": 2.6
+        "value": 3.01,
+        "industryAvg": 2.59
       },
       {
         "metric": "ROE",
         "value": 3.35,
-        "industryAvg": 7.42
+        "industryAvg": 7.39
       },
       {
         "metric": "ROA",
@@ -7690,12 +7690,12 @@
       {
         "metric": "EBITDA Margin",
         "value": 45.71,
-        "industryAvg": 41.24
+        "industryAvg": 41.22
       },
       {
         "metric": "Net Margin",
         "value": 27.02,
-        "industryAvg": 6.54
+        "industryAvg": 6.510000000000001
       }
     ]
   }

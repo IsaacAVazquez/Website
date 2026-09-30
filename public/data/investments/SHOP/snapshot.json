@@ -1,11 +1,14 @@
 {
   "symbol": "SHOP",
-  "lastUpdated": "2026-09-29T06:39:51.976581+00:00",
+  "lastUpdated": "2026-09-30T15:30:08.171135+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-09-29T06:39:51.976581+00:00",
+    "snapshotBuiltAt": "2026-09-30T15:30:08.171135+00:00",
     "sections": {
-      "price": "2026-09-28"
-    }
+      "price": "2026-09-29"
+    },
+    "retainedSections": [
+      "industry"
+    ]
   },
   "source": "prefetched",
   "capabilities": {
@@ -40,11 +43,11 @@
     },
     "fundamentals": {
       "ttmEps": 1.4823,
-      "ttmPe": 97.15,
-      "marketCap": 185658642466,
-      "psRatio": 13.99,
-      "pbRatio": 14.64,
-      "pegRatio": 1.45
+      "ttmPe": 100.02,
+      "marketCap": 191137770516,
+      "psRatio": 14.4,
+      "pbRatio": 15.07,
+      "pegRatio": 1.49
     },
     "profitability": {
       "roe": 11.93,
@@ -5803,25 +5806,17 @@
       ]
     },
     "wacc": {
-      "wacc": 24.97,
-      "costOfEquity": 25.130000000000003,
+      "wacc": 25.25,
+      "costOfEquity": 25.41,
       "costOfDebt": 0.02,
       "taxRate": 40,
-      "beta": 2.6064,
-      "marketCap": 185658642466
+      "beta": 2.6475,
+      "marketCap": 191137770516
     },
     "beta": {
-      "beta5y": 2.6064
+      "beta5y": 2.6475
     },
     "price": [
-      {
-        "date": "2025-09-26",
-        "open": 143.12,
-        "high": 144,
-        "low": 139.5,
-        "close": 140.25,
-        "volume": 7259500
-      },
       {
         "date": "2025-09-29",
         "open": 141.75,
@@ -7829,6 +7824,14 @@
         "low": 136.49,
         "close": 144.01,
         "volume": 8150500
+      },
+      {
+        "date": "2026-09-29",
+        "open": 143.91,
+        "high": 149.34,
+        "low": 142.43,
+        "close": 148.26,
+        "volume": 8709700
       }
     ],
     "news": [

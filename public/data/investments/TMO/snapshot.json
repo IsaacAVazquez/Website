@@ -1,10 +1,10 @@
 {
   "symbol": "TMO",
-  "lastUpdated": "2026-09-29T06:12:23.168021+00:00",
+  "lastUpdated": "2026-09-30T15:30:08.171135+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-09-29T06:12:23.168021+00:00",
+    "snapshotBuiltAt": "2026-09-30T15:30:08.171135+00:00",
     "sections": {
-      "price": "2026-09-28"
+      "price": "2026-09-29"
     },
     "retainedSections": [
       "fundamentals"
@@ -43,11 +43,11 @@
     },
     "fundamentals": {
       "ttmEps": 18.5902,
-      "ttmPe": 36.5,
-      "pegRatio": 3.89,
-      "marketCap": 250910517780,
+      "ttmPe": 36.56,
+      "pegRatio": 3.9,
+      "marketCap": 251283962553,
       "psRatio": 5.42,
-      "pbRatio": 4.76
+      "pbRatio": 4.77
     },
     "profitability": {
       "roe": 3.32,
@@ -5613,25 +5613,17 @@
       ]
     },
     "wacc": {
-      "wacc": 10.280000000000001,
-      "costOfEquity": 11.88,
+      "wacc": 10.100000000000001,
+      "costOfEquity": 11.67,
       "costOfDebt": 0.9400000000000001,
       "taxRate": 9,
-      "beta": 0.8705,
-      "marketCap": 250910517780
+      "beta": 0.8428,
+      "marketCap": 251283962553
     },
     "beta": {
-      "beta5y": 0.8705
+      "beta5y": 0.8428
     },
     "price": [
-      {
-        "date": "2025-09-26",
-        "open": 461.06,
-        "high": 465.74,
-        "low": 460.31,
-        "close": 464.24,
-        "volume": 1886400
-      },
       {
         "date": "2025-09-29",
         "open": 466.84,
@@ -7639,23 +7631,31 @@
         "low": 664.23,
         "close": 678.6,
         "volume": 1904500
+      },
+      {
+        "date": "2026-09-29",
+        "open": 676.42,
+        "high": 681.38,
+        "low": 670.9,
+        "close": 679.61,
+        "volume": 1850900
       }
     ],
     "news": [
-      {
-        "uuid": "06ab889d-697a-3f25-95b3-27373b43c63e",
-        "title": "Top Stock Reports for Visa, Johnson & Johnson & Thermo Fisher Scientific",
-        "publisher": "Zacks",
-        "reportDate": "2025-03-19",
-        "link": "https://finance.yahoo.com/news/top-stock-reports-visa-johnson-210100930.html",
-        "type": "STORY"
-      },
       {
         "uuid": "26c8f9f1-d78a-3b55-8cc9-df6c3c7da8b8",
         "title": "The Zacks Analyst Blog Highlights Visa, Johnson & Johnson, Thermo Fisher and AMREP",
         "publisher": "Zacks",
         "reportDate": "2025-03-19",
         "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-visa-090000990.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "06ab889d-697a-3f25-95b3-27373b43c63e",
+        "title": "Top Stock Reports for Visa, Johnson & Johnson & Thermo Fisher Scientific",
+        "publisher": "Zacks",
+        "reportDate": "2025-03-19",
+        "link": "https://finance.yahoo.com/news/top-stock-reports-visa-johnson-210100930.html",
         "type": "STORY"
       },
       {
@@ -7781,18 +7781,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 36.5,
-        "industryAvg": 37.8
+        "value": 36.56,
+        "industryAvg": 37.7
       },
       {
         "metric": "P/S Ratio",
         "value": 5.42,
-        "industryAvg": 5.28
+        "industryAvg": 5.3
       },
       {
         "metric": "P/B Ratio",
-        "value": 4.76,
-        "industryAvg": 4.66
+        "value": 4.77,
+        "industryAvg": 4.65
       },
       {
         "metric": "ROE",
