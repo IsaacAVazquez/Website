@@ -2,7 +2,7 @@
 
 Current styling and design-token reference for the live app.
 
-**Last updated:** 2026-09-27 · Catalog 97 is the only design language on the site. Every route renders inside `Catalog97Shell` or `Catalog97ToolShell`, and every colour, space, and type size comes from the `--c97-*` tokens in `src/app/catalog97.css`. The Working Instrument that came before it (the `--home-*` palette, its `.home-*`, `.section-*`, and `.tool-*` helpers, `HomeStatsPanel`, and the bridge block that aliased the old tokens onto Catalog 97 values) was deleted in the close-out of `docs/superpowers/specs/2026-09-16-catalog97-unification-design.md` on 2026-09-27, and `src/app/__tests__/catalog97-closeout.test.ts` fails if any file under `src` reads one of those tokens again. `/arcade` keeps its CRT palette as the one sanctioned palette exception, since each project keeps an identity that fits it, and Isaac confirmed it on 2026-09-27. Formula 1 used to be a second exception for a scoped F1 red, but `formula-1.module.css` has read only `--c97-*` tokens since the sports pass (#478), and team liveries arrive as data.
+**Last updated:** 2026-09-29 · Catalog 97 is the only design language on the site. Every route renders inside `Catalog97Shell` or `Catalog97ToolShell`, and every colour, space, and type size comes from the `--c97-*` tokens in `src/app/catalog97.css`. The Working Instrument that came before it (the `--home-*` palette, its `.home-*`, `.section-*`, and `.tool-*` helpers, `HomeStatsPanel`, and the bridge block that aliased the old tokens onto Catalog 97 values) was deleted in the close-out of `docs/superpowers/specs/2026-09-16-catalog97-unification-design.md` on 2026-09-27, and `src/app/__tests__/catalog97-closeout.test.ts` fails if any file under `src` reads one of those tokens again. `/arcade` keeps its CRT palette as the one sanctioned palette exception, since each project keeps an identity that fits it, and Isaac confirmed it on 2026-09-27. Formula 1 used to be a second exception for a scoped F1 red, but `formula-1.module.css` has read only `--c97-*` tokens since the sports pass (#478), and team liveries arrive as data. "Printing on paper" was added on 2026-09-29.
 
 ---
 
@@ -141,6 +141,18 @@ A theme change fades colour, background, and border over 150ms. That comes from 
 D3 and SVG fills can't read Tailwind classes, so charts resolve token colours at render time. Read them with `getComputedStyle(svgElement).getPropertyValue('--c97-accent')` from the chart's own element, since the tokens are scoped to the `[data-c97]` container and `document.documentElement` resolves none of them, and re-resolve on theme change (`useTheme().resolvedTheme` as an effect dependency). `var()` and `color-mix()` never resolve inside SVG presentation attributes, so pass resolved values to `.attr()` or use `.style()`. Never bake a token's hex into a constant.
 
 The light chart ramp has four steps that read apart (chart-1, 2, 3, and 6), so a chart with more categories pairs a step with a hollow mark. Espresso and chocolate sheets print the dark ramp in both themes. A categorical palette assigns colours by position in the full sorted set and passes that set to every consumer, so a filter or a sort never recolours a series. Marks inside `role="img"` are pointer-only, and the list or table beside the chart is the keyboard path.
+
+---
+
+## Printing on paper
+
+The print shop layout describes the screen. This section covers what happens when a browser prints a page, and both rules in it came out of prints measured on 2026-09-29.
+
+The grain comes off on paper. `--c97-grain-soft` is `none` under `@media print`, and every rule that paints the grain reads that token, so no surface or seam carries it in a print. Firefox's engine prints a page with no text at all when backgrounds are on and it has to repeat a vector image behind the page, and the grain was the one repeating vector image on the site. That was measured in Playwright's headless builds of Firefox 153 and 155 printing to PDF, and a release Firefox has not been checked. A repeating gradient prints, so the halftone is safe, and an SVG that is drawn once prints too. Nothing else may repeat an SVG as a background under print media, and `e2e/print.spec.ts` fails when something does.
+
+A layout that narrows with the window names print as well. Safari's engine answers a width query with the window's width while it lays the print out at the paper's, so from a desktop window a desktop arrangement prints squeezed onto a page about 700px wide. That was measured in the system WebKit on macOS 26.3 with a letter page, where the layout came out between 650 and 700px, and the Safari app has not been checked. Chrome's and Firefox's engines answer with the paper's width. On `/investments` every rule that narrows the layout reads `@media (max-width: …), print`, which gives paper the narrow layout in all three engines. The shared grids, meaning `.c97-columns`, `.c97-mosaic`, and the footer tiles, widen on `min-width` queries and do not do this yet, so from a desktop window Safari still prints those in their desktop arrangement.
+
+Both disclaimers and the assumptions on `/investments` have to reach the page, and `e2e/investments.spec.ts` checks that print media hides none of them.
 
 ---
 

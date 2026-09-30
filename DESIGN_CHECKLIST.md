@@ -4,7 +4,7 @@ The single pre-merge checklist for any new or edited page, component, or surface
 this repo, run through this before opening a PR. It distills the rules that were previously scattered
 across `STYLING.md`, `CLAUDE.md`, and `SNAPSHOT_DRIVEN_DASHBOARDS.md`.
 
-**Last updated:** 2026-09-27 · Rewritten for Catalog 97 as the only design language, after the close-out deleted the Working Instrument tokens and helpers. Derived from the 2026-06 site-wide design audit (`docs/DESIGN_AUDIT_2026-06.md`).
+**Last updated:** 2026-09-29 · The print section was added on 2026-09-29. Rewritten on 2026-09-27 for Catalog 97 as the only design language, after the close-out deleted the Working Instrument tokens and helpers. Derived from the 2026-06 site-wide design audit (`docs/DESIGN_AUDIT_2026-06.md`).
 
 > When in doubt, copy a reference implementation instead of inventing. Home (`Catalog97Home.tsx`) is
 > the print shop reference, `Catalog97ProjectHero` plus any project route shows the hero and signature
@@ -101,6 +101,17 @@ across `STYLING.md`, `CLAUDE.md`, and `SNAPSHOT_DRIVEN_DASHBOARDS.md`.
 - [ ] Run `node scripts/layoutSweep.mjs <baseUrl> <routes…>` against a production build and clear every fail at phone (320 to 430), tablet, laptop (1280 to 1512), and big-monitor (1920 and 2560) sizes.
 - [ ] In-page section nav has a mobile equivalent (don't `display:none` it away with no replacement).
 - [ ] Hero value-prop + primary CTA stay above the fold on mobile for portfolio/hero routes.
+
+## Print
+
+See "Printing on paper" in `STYLING.md` for the two measurements behind these.
+
+- [ ] Nothing repeats an SVG as a background under print media. Firefox's engine prints the whole page
+      with no text when it has to, and `e2e/print.spec.ts` checks `/`, `/about`, and `/investments`.
+- [ ] A layout that would not fit a page about 700px wide narrows under `print` as well as under its
+      width query, as in `@media (max-width: 900px), print`, since Safari's engine answers a width
+      query with the window's width.
+- [ ] A disclaimer or a disclosure is never hidden under print media.
 
 ## Snapshot-driven dashboards (data-fetching routes)
 

@@ -60,13 +60,22 @@
 @media (max-width: 1280px) {
   .terminalScope :global(.invest-shell) { grid-template-columns: 200px minmax(0, 1fr); }
 }
-@media (max-width: 900px) {
+/*
+ * On paper the page takes its narrow layout, whatever the window. Safari's
+ * engine answers a width query with the window's width while it lays the print
+ * out at the paper's, about 700px, so from a desktop window the desktop columns
+ * would print squeezed onto the page. Chrome's and Firefox's engines answer
+ * with the paper's width and took these rules already. The rule above needs no
+ * print of its own because this one replaces it, and the rules for windows
+ * narrower than the paper stay off it.
+ */
+@media (max-width: 900px), print {
   .terminalScope :global(.invest-shell) { grid-template-columns: 1fr; }
   .terminalScope :global(.invest-sidebar) { display: none !important; }
 }
 
 /* Drop sparkline column on narrower main columns to keep P/L + actions visible */
-@media (max-width: 1500px) {
+@media (max-width: 1500px), print {
   .terminalScope :global(.invest-holdings .col-trend) { display: none; }
 }
 
@@ -225,7 +234,7 @@
   grid-template-columns: minmax(0, 0.82fr) minmax(0, 1.18fr);
   align-items: stretch;
 }
-@media (max-width: 1100px) {
+@media (max-width: 1100px), print {
   .terminalScope :global(.invest-hero) { grid-template-columns: 1fr; }
 }
 .terminalScope :global(.invest-hero-left) {
@@ -386,7 +395,7 @@
   gap: 1px;
   background: var(--c97-rule);
 }
-@media (max-width: 900px) {
+@media (max-width: 900px), print {
   .statsGrid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 .statCell {
@@ -722,7 +731,7 @@
   background: var(--c97-rule);
   border: 1px solid var(--c97-rule);
 }
-@media (max-width: 900px) {
+@media (max-width: 900px), print {
   .terminalScope :global(.research-key-metrics) { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 .terminalScope :global(.research-key-metric) {
@@ -876,7 +885,7 @@
   display: flex; flex-direction: column;
   align-self: stretch;
 }
-@media (max-width: 1280px) {
+@media (max-width: 1280px), print {
   .terminalScope :global(.invest-rail) {
     grid-column: 1 / -1;
     border-left: 0;
@@ -986,7 +995,7 @@
   align-items: start;
   border: 1px solid var(--c97-rule);
 }
-@media (max-width: 1024px) {
+@media (max-width: 1024px), print {
   .terminalScope :global(.invest-retire-layout) {
     grid-template-columns: 1fr;
   }
@@ -1007,7 +1016,7 @@
   background: var(--c97-surface);
   padding: 16px;
 }
-@media (max-width: 1024px) {
+@media (max-width: 1024px), print {
   .terminalScope :global(.invest-retire-inputs) {
     border-right: 0;
     border-bottom: 1px solid var(--c97-rule);
@@ -1764,7 +1773,7 @@
    is the one place to change if the site header ever becomes sticky again. */
 .sectionRail { display: none; }
 
-@media (max-width: 900px) {
+@media (max-width: 900px), print {
   .sectionRail {
     --invest-rail-top: 0px;
     display: flex;

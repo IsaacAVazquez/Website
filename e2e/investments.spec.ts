@@ -438,6 +438,84 @@ test.describe("Investments", () => {
     expect(printed.text).toMatch(/educational purposes only/i);
   });
 
+  test("prints in its narrow layout from a desktop window", async ({ page }) => {
+    await routeInvestmentsFixtures(page);
+    await page.addInitScript(() => {
+      window.localStorage.setItem(
+        "portfolio_holdings",
+        JSON.stringify([{ symbol: "AAPL", shares: 2, averageCost: 150 }]),
+      );
+    });
+
+    // Wider than every breakpoint the page has, so nothing below can lean on a
+    // width query.
+    await page.setViewportSize({ width: 1600, height: 900 });
+    await page.goto("/investments?view=research&symbol=V&section=overview");
+    await expectInvestmentsShell(page);
+    await expect(page.locator(".invest-holdings th.col-trend")).toBeVisible();
+    await expect(page.locator(".research-key-metrics").first()).toBeVisible();
+
+    // Safari's engine answers a width query with the window's width while it
+    // lays the print out at the paper's, so print media at this viewport is
+    // the state its print is in.
+    await page.emulateMedia({ media: "print" });
+
+    const readLayout = () =>
+      page.evaluate(() => {
+        const style = (selector: string) => {
+          const node = document.querySelector(selector);
+          return node ? getComputedStyle(node) : null;
+        };
+        const columns = (selector: string) =>
+          style(selector)?.gridTemplateColumns.split(" ").length ?? null;
+        return {
+          shellColumns: columns(".invest-shell"),
+          sidebar: style(".invest-sidebar")?.display ?? null,
+          sectionRail: style("[class*='sectionRail']")?.display ?? null,
+          heroColumns: columns(".invest-hero"),
+          statColumns: columns("[class*='statsGrid']"),
+          trendColumn: style(".invest-holdings th.col-trend")?.display ?? null,
+          metricColumns: columns(".research-key-metrics"),
+          railStart: style(".invest-rail")?.gridColumnStart ?? null,
+          plannerColumns: columns("#retirement .invest-retire-layout"),
+        };
+      });
+
+    // The page draws the research view again while the route settles its URL,
+    // so the read repeats until every piece is on the page.
+    await expect.poll(readLayout).toEqual({
+      shellColumns: 1,
+      sidebar: "none",
+      sectionRail: "flex",
+      heroColumns: 1,
+      statColumns: 2,
+      trendColumn: "none",
+      metricColumns: 2,
+      railStart: "1",
+      plannerColumns: 1,
+    });
+  });
+
+  test("keeps the disclaimers and the assumptions on the printed page", async ({ page }) => {
+    await routeInvestmentsFixtures(page);
+
+    await page.goto("/investments");
+    await expectInvestmentsShell(page);
+
+    const planner = page.locator("#retirement");
+    await planner.scrollIntoViewIfNeeded();
+    await expect(planner.getByLabel("Assumptions used")).toBeVisible();
+
+    await page.emulateMedia({ media: "print" });
+
+    await expect(page.getByText(/general information\s+and education only/i)).toBeVisible();
+    await expect(planner.getByLabel("Assumptions used")).toBeVisible();
+    await expect(planner.getByLabel("Important disclaimer")).toContainText(
+      /educational purposes only/i,
+    );
+    await expect(planner.getByLabel("Important disclaimer")).toBeVisible();
+  });
+
   test("homepage prioritizes the fintech project in projects", async ({ page }) => {
     await page.goto("/");
     const section = page.locator("section").filter({
