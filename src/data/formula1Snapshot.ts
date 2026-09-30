@@ -13,7 +13,7 @@ export const formula1Snapshot: Formula1Snapshot = {
     "constructorStandings": "https://api.openf1.org/v1/championship_teams?session_key=11377"
   },
   "season": 2026,
-  "generatedAt": "2026-09-29T14:50:02.526Z",
+  "generatedAt": "2026-09-30T14:53:28.538Z",
   "defaultMeetingKey": "1308",
   "standingsMeetingKey": "1295",
   "meetings": [
@@ -6958,7 +6958,7 @@ export const formula1Snapshot: Formula1Snapshot = {
       "circuitKey": "12",
       "circuitShortName": "Kuala Lumpur",
       "circuitType": "Permanent",
-      "circuitImage": "https://media.formula1.com/content/dam/fom-website/2018-redesign-assets/Track%20icons%204x3/Bahrain%20carbon.png",
+      "circuitImage": "https://media.formula1.com/image/upload/c_fit,h_704/q_auto/v1740000001/common/f1/2026/track/2026trackkualalumpurdetailed.webp",
       "gmtOffset": "08:00:00",
       "startAt": "2026-10-02T04:30:00+00:00",
       "endAt": "2026-10-04T09:00:00+00:00",
@@ -7871,7 +7871,7 @@ export const formula1Snapshot: Formula1Snapshot = {
     "circuitKey": "12",
     "circuitShortName": "Kuala Lumpur",
     "circuitType": "Permanent",
-    "circuitImage": "https://media.formula1.com/content/dam/fom-website/2018-redesign-assets/Track%20icons%204x3/Bahrain%20carbon.png",
+    "circuitImage": "https://media.formula1.com/image/upload/c_fit,h_704/q_auto/v1740000001/common/f1/2026/track/2026trackkualalumpurdetailed.webp",
     "gmtOffset": "08:00:00",
     "startAt": "2026-10-02T04:30:00+00:00",
     "endAt": "2026-10-04T09:00:00+00:00",
