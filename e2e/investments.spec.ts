@@ -533,6 +533,16 @@ test.describe("Investments links that name a section", () => {
     await expect.poll(() => readLanding(page, "research-section")).toBe("landed");
   });
 
+  test("keeps the fragment when it rewrites a legacy link", async ({ page }) => {
+    await routeInvestmentsFixtures(page);
+
+    await page.goto("/investments?view=research&symbol=V&section=chart#research-section");
+    await expectInvestmentsShell(page);
+
+    await expect(page).toHaveURL(/\/investments\?symbol=V&section=chart#research-section$/);
+    await expect.poll(() => readLanding(page, "research-section")).toBe("landed");
+  });
+
   test("holds the section in place when the page grows above it", async ({ page }) => {
     await routeInvestmentsFixtures(page);
 

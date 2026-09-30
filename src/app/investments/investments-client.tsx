@@ -59,8 +59,10 @@ export function InvestmentsClient({
       return;
     }
 
+    // The canonical href is built from the query alone, so the fragment the
+    // link arrived with is put back on it.
     startTransition(() => {
-      router.replace(canonicalHref, { scroll: false });
+      router.replace(`${canonicalHref}${window.location.hash}`, { scroll: false });
     });
   }, [hasManagedParams, routeState, router, searchParams]);
 
