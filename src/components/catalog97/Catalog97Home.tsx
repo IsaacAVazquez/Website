@@ -10,6 +10,7 @@ import {
 } from "@/constants/caseStudies";
 import type { BlogPostPreview } from "@/lib/blog";
 import { formatPtTime, type SnapshotReadouts } from "@/lib/catalog97Readouts";
+import { sep } from "@/lib/date-formatters";
 
 export interface Catalog97HomeProps {
   featuredProjects: CaseStudyData[];
@@ -30,14 +31,14 @@ function formatPostDate(iso: string): string {
   const date = new Date(iso);
   return Number.isNaN(date.getTime())
     ? ""
-    : date
-        .toLocaleDateString("en-GB", {
+    : sep(
+        date.toLocaleDateString("en-GB", {
           day: "numeric",
           month: "short",
           year: "numeric",
           timeZone: "UTC",
-        })
-        .replace(/\bSept\b/, "Sep");
+        }),
+      );
 }
 
 export function Catalog97Home({

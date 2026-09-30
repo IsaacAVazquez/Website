@@ -6,6 +6,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import styles from "./Catalog97EasterEggs.module.css";
 import { isKonami, isTypingTarget, pushKonamiKey, shouldIgnoreKey } from "./konami";
+import { sep } from "@/lib/date-formatters";
 
 /**
  * Small things for people who poke at the site, rendered once from
@@ -396,11 +397,11 @@ export function Catalog97EasterEggs() {
               {
                 // tz-local: today's date on the visitor's device for a proof
                 // overlay that only exists post-interaction (never SSR).
-                new Date().toLocaleDateString("en-GB", {
+                sep(new Date().toLocaleDateString("en-GB", {
                   day: "numeric",
                   month: "short",
                   year: "numeric",
-                }).replace(/\bSept\b/, "Sep")
+                }))
               }
             </span>
           </div>,

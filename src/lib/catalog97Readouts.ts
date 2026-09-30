@@ -5,6 +5,7 @@ import { getLaLigaSummarySnapshot } from "@/lib/laLigaSnapshot";
 import { getTransitSummary } from "@/lib/bayAreaTransitSnapshot";
 import { getSpaceXSnapshot } from "@/lib/spacexSnapshot";
 import { getFormula1Summary } from "@/lib/formula1Snapshot";
+import { sep } from "@/lib/date-formatters";
 import type { InvestmentsIndex } from "@/types/investment";
 
 /*
@@ -15,9 +16,6 @@ import type { InvestmentsIndex } from "@/types/investment";
  */
 
 const PT = "America/Los_Angeles";
-
-// Newer ICU builds print September as "Sept" in en-GB; the design uses "Sep".
-const sep = (text: string) => text.replace(/\bSept\b/, "Sep");
 
 function validDate(iso: string | undefined | null): Date | null {
   if (!iso) return null;
