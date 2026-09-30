@@ -1,11 +1,14 @@
 {
   "symbol": "WDAY",
-  "lastUpdated": "2026-09-29T06:39:51.976581+00:00",
+  "lastUpdated": "2026-09-30T15:30:08.171135+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-09-29T06:39:51.976581+00:00",
+    "snapshotBuiltAt": "2026-09-30T15:30:08.171135+00:00",
     "sections": {
-      "price": "2026-09-28"
-    }
+      "price": "2026-09-29"
+    },
+    "retainedSections": [
+      "industry"
+    ]
   },
   "source": "prefetched",
   "capabilities": {
@@ -40,10 +43,10 @@
     },
     "fundamentals": {
       "ttmEps": 4.9274,
-      "ttmPe": 38.28,
-      "marketCap": 45452600000,
-      "psRatio": 4.48,
-      "pbRatio": 7.04,
+      "ttmPe": 38.39,
+      "marketCap": 45589970000,
+      "psRatio": 4.49,
+      "pbRatio": 7.06,
       "pegRatio": 0.19
     },
     "profitability": {
@@ -5792,25 +5795,17 @@
       ]
     },
     "wacc": {
-      "wacc": 12.389999999999999,
-      "costOfEquity": 13.38,
+      "wacc": 12.049999999999999,
+      "costOfEquity": 13.01,
       "costOfDebt": 0.74,
       "taxRate": 40,
-      "beta": 1.0673,
-      "marketCap": 45452600000
+      "beta": 1.0186,
+      "marketCap": 45589970000
     },
     "beta": {
-      "beta5y": 1.0673
+      "beta5y": 1.0186
     },
     "price": [
-      {
-        "date": "2025-09-26",
-        "open": 243,
-        "high": 249.05,
-        "low": 242.94,
-        "close": 246.67,
-        "volume": 3455800
-      },
       {
         "date": "2025-09-29",
         "open": 247.62,
@@ -7818,6 +7813,14 @@
         "low": 181.47,
         "close": 188.6,
         "volume": 2132500
+      },
+      {
+        "date": "2026-09-29",
+        "open": 187.1,
+        "high": 189.34,
+        "low": 185,
+        "close": 189.17,
+        "volume": 1806800
       }
     ],
     "news": [

@@ -1,10 +1,10 @@
 {
   "symbol": "AMZN",
-  "lastUpdated": "2026-09-29T06:39:51.976581+00:00",
+  "lastUpdated": "2026-09-30T15:30:08.171135+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-09-29T06:39:51.976581+00:00",
+    "snapshotBuiltAt": "2026-09-30T15:30:08.171135+00:00",
     "sections": {
-      "price": "2026-09-28"
+      "price": "2026-09-29"
     }
   },
   "source": "prefetched",
@@ -40,10 +40,10 @@
     },
     "fundamentals": {
       "ttmEps": 12.4325,
-      "ttmPe": 19.8,
-      "marketCap": 2654235450000,
-      "psRatio": 3.57,
-      "pbRatio": 6.01,
+      "ttmPe": 19.84,
+      "marketCap": 2659842610000,
+      "psRatio": 3.58,
+      "pbRatio": 6.02,
       "pegRatio": 0.08
     },
     "profitability": {
@@ -4937,25 +4937,17 @@
       ]
     },
     "wacc": {
-      "wacc": 15.1,
-      "costOfEquity": 16.27,
+      "wacc": 15.340000000000002,
+      "costOfEquity": 16.53,
       "costOfDebt": 0.38,
       "taxRate": 24,
-      "beta": 1.4451,
-      "marketCap": 2654235450000
+      "beta": 1.4813,
+      "marketCap": 2659842610000
     },
     "beta": {
-      "beta5y": 1.4451
+      "beta5y": 1.4813
     },
     "price": [
-      {
-        "date": "2025-09-26",
-        "open": 219.08,
-        "high": 221.05,
-        "low": 218.02,
-        "close": 219.78,
-        "volume": 41650100
-      },
       {
         "date": "2025-09-29",
         "open": 220.08,
@@ -6962,7 +6954,15 @@
         "high": 247.77,
         "low": 244.73,
         "close": 246.15,
-        "volume": 31955500
+        "volume": 32596700
+      },
+      {
+        "date": "2026-09-29",
+        "open": 246.71,
+        "high": 248.84,
+        "low": 245.14,
+        "close": 246.67,
+        "volume": 33643000
       }
     ],
     "news": [
@@ -6975,12 +6975,12 @@
         "type": "STORY"
       },
       {
-        "uuid": "ed50c2b8-db3e-337c-9a32-5264eaa77397",
-        "title": "iRobot stock dives on its 'substantial doubt' of surviving in 2025",
-        "publisher": "Yahoo Finance Video",
+        "uuid": "0ed5f0fd-d31a-398c-a525-af185fbf4ff7",
+        "title": "Nuclear Energy Stock Talen Soars Amid Bullish Initiation",
+        "publisher": "Investor's Business Daily",
         "reportDate": "2025-03-13",
-        "link": "https://finance.yahoo.com/video/irobot-stock-dives-substantial-doubt-192908228.html",
-        "type": "VIDEO"
+        "link": "https://finance.yahoo.com/m/0ed5f0fd-d31a-398c-a525-af185fbf4ff7/nuclear-energy-stock-talen.html",
+        "type": "STORY"
       },
       {
         "uuid": "94ecea1b-28cf-3159-aeeb-c2ed83b84ea4",
@@ -6991,12 +6991,12 @@
         "type": "STORY"
       },
       {
-        "uuid": "0ed5f0fd-d31a-398c-a525-af185fbf4ff7",
-        "title": "Nuclear Energy Stock Talen Soars Amid Bullish Initiation",
-        "publisher": "Investor's Business Daily",
+        "uuid": "ed50c2b8-db3e-337c-9a32-5264eaa77397",
+        "title": "iRobot stock dives on its 'substantial doubt' of surviving in 2025",
+        "publisher": "Yahoo Finance Video",
         "reportDate": "2025-03-13",
-        "link": "https://finance.yahoo.com/m/0ed5f0fd-d31a-398c-a525-af185fbf4ff7/nuclear-energy-stock-talen.html",
-        "type": "STORY"
+        "link": "https://finance.yahoo.com/video/irobot-stock-dives-substantial-doubt-192908228.html",
+        "type": "VIDEO"
       },
       {
         "uuid": "891b2f8b-8934-31f4-a960-9cf39bc9c7b0",
@@ -7113,18 +7113,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 19.8,
-        "industryAvg": 26.25
+        "value": 19.84,
+        "industryAvg": 26.15
       },
       {
         "metric": "P/S Ratio",
-        "value": 3.57,
-        "industryAvg": 2.19
+        "value": 3.58,
+        "industryAvg": 2.18
       },
       {
         "metric": "P/B Ratio",
-        "value": 6.01,
-        "industryAvg": 3.92
+        "value": 6.02,
+        "industryAvg": 3.91
       },
       {
         "metric": "ROE",

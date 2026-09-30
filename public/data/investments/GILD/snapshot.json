@@ -1,10 +1,10 @@
 {
   "symbol": "GILD",
-  "lastUpdated": "2026-09-29T06:12:23.168021+00:00",
+  "lastUpdated": "2026-09-30T15:30:08.171135+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-09-29T06:12:23.168021+00:00",
+    "snapshotBuiltAt": "2026-09-30T15:30:08.171135+00:00",
     "sections": {
-      "price": "2026-09-28"
+      "price": "2026-09-29"
     },
     "retainedSections": [
       "fundamentals"
@@ -45,9 +45,9 @@
       "ttmEps": -2.6565,
       "ttmPe": 17.19,
       "pegRatio": 0.32,
-      "marketCap": 188892610000,
-      "psRatio": 6.2,
-      "pbRatio": 15.97
+      "marketCap": 187738480000,
+      "psRatio": 6.16,
+      "pbRatio": 15.87
     },
     "profitability": {
       "roe": -59.4,
@@ -5789,25 +5789,17 @@
       ]
     },
     "wacc": {
-      "wacc": 6.9,
-      "costOfEquity": 7.779999999999999,
+      "wacc": 7.2700000000000005,
+      "costOfEquity": 8.21,
       "costOfDebt": 0.9400000000000001,
       "taxRate": 40,
-      "beta": 0.3331,
-      "marketCap": 188892610000
+      "beta": 0.3874,
+      "marketCap": 187738480000
     },
     "beta": {
-      "beta5y": 0.3331
+      "beta5y": 0.3874
     },
     "price": [
-      {
-        "date": "2025-09-26",
-        "open": 111.35,
-        "high": 112.24,
-        "low": 110.7,
-        "close": 112.1,
-        "volume": 5074200
-      },
       {
         "date": "2025-09-29",
         "open": 112.55,
@@ -7815,6 +7807,14 @@
         "low": 149.41,
         "close": 152.21,
         "volume": 5076500
+      },
+      {
+        "date": "2026-09-29",
+        "open": 150.18,
+        "high": 152.63,
+        "low": 148.79,
+        "close": 151.28,
+        "volume": 5322400
       }
     ],
     "news": [
@@ -7942,17 +7942,17 @@
         "title": "Senior Vice President of Treasury & Investor Relations"
       },
       {
+        "name": "Ms. Janet Dorling",
+        "title": "Senior Vice President of Intercontinental Region & Global Patient Solutions",
+        "age": 51,
+        "yearBorn": 1974
+      },
+      {
         "name": "Ms. Johanna Mercier",
         "title": "Chief Commercial & Corporate Affairs Officer",
         "age": 55,
         "yearBorn": 1970,
         "totalPay": 3436150
-      },
-      {
-        "name": "Ms. Jyoti K. Mehra",
-        "title": "Executive Vice President of Human Resources",
-        "age": 48,
-        "yearBorn": 1977
       },
       {
         "name": "Ms. Keeley M. Cain Wettan",
@@ -7965,17 +7965,17 @@
       {
         "metric": "P/E (TTM)",
         "value": 17.19,
-        "industryAvg": 26.68
+        "industryAvg": 26.53
       },
       {
         "metric": "P/S Ratio",
-        "value": 6.2,
-        "industryAvg": 4.82
+        "value": 6.16,
+        "industryAvg": 4.79
       },
       {
         "metric": "P/B Ratio",
-        "value": 15.97,
-        "industryAvg": 5.95
+        "value": 15.87,
+        "industryAvg": 5.92
       },
       {
         "metric": "ROE",

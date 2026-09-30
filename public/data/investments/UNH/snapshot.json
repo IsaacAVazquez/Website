@@ -1,10 +1,10 @@
 {
   "symbol": "UNH",
-  "lastUpdated": "2026-09-29T06:12:23.168021+00:00",
+  "lastUpdated": "2026-09-30T15:30:08.171135+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-09-29T06:12:23.168021+00:00",
+    "snapshotBuiltAt": "2026-09-30T15:30:08.171135+00:00",
     "sections": {
-      "price": "2026-09-28"
+      "price": "2026-09-29"
     },
     "retainedSections": [
       "fundamentals"
@@ -43,11 +43,11 @@
     },
     "fundamentals": {
       "ttmEps": 15.551,
-      "ttmPe": 24.3,
+      "ttmPe": 24.11,
       "pegRatio": 0.39,
-      "marketCap": 341936150000,
-      "psRatio": 0.76,
-      "pbRatio": 3.47
+      "marketCap": 339320700000,
+      "psRatio": 0.75,
+      "pbRatio": 3.45
     },
     "profitability": {
       "roe": 5.59,
@@ -5046,25 +5046,17 @@
       ]
     },
     "wacc": {
-      "wacc": 8.27,
-      "costOfEquity": 9.82,
+      "wacc": 7.84,
+      "costOfEquity": 9.3,
       "costOfDebt": 1.31,
       "taxRate": 19,
-      "beta": 0.5998,
-      "marketCap": 341936150000
+      "beta": 0.5305,
+      "marketCap": 339320700000
     },
     "beta": {
-      "beta5y": 0.5998
+      "beta5y": 0.5305
     },
     "price": [
-      {
-        "date": "2025-09-26",
-        "open": 347.93,
-        "high": 349.97,
-        "low": 341.3,
-        "close": 344.08,
-        "volume": 6774700
-      },
       {
         "date": "2025-09-29",
         "open": 343.98,
@@ -7071,7 +7063,15 @@
         "high": 380.98,
         "low": 374.56,
         "close": 377.83,
-        "volume": 4614700
+        "volume": 4677100
+      },
+      {
+        "date": "2026-09-29",
+        "open": 374.88,
+        "high": 376.59,
+        "low": 371.33,
+        "close": 374.94,
+        "volume": 3284700
       }
     ],
     "news": [
@@ -7116,19 +7116,19 @@
         "type": "VIDEO"
       },
       {
-        "uuid": "1ce151a6-8b4a-34e8-860a-e7e6ece6f141",
-        "title": "UnitedHealth, Amedisys reach new deal to sell home health and hospice locations if merger approved",
-        "publisher": "Healthcare Dive",
-        "reportDate": "2025-05-06",
-        "link": "https://finance.yahoo.com/m/1ce151a6-8b4a-34e8-860a-e7e6ece6f141/unitedhealth%2C-amedisys-reach.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "4baf6117-8def-30b6-8fd6-c5b66c69be8e",
         "title": "1 of Wall Street’s Favorite Stock That Stand Out and 2 to Steer Clear Of",
         "publisher": "StockStory",
         "reportDate": "2025-05-06",
         "link": "https://finance.yahoo.com/news/1-wall-street-favorite-stock-043449940.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "1ce151a6-8b4a-34e8-860a-e7e6ece6f141",
+        "title": "UnitedHealth, Amedisys reach new deal to sell home health and hospice locations if merger approved",
+        "publisher": "Healthcare Dive",
+        "reportDate": "2025-05-06",
+        "link": "https://finance.yahoo.com/m/1ce151a6-8b4a-34e8-860a-e7e6ece6f141/unitedhealth%2C-amedisys-reach.html",
         "type": "STORY"
       },
       {
@@ -7225,18 +7225,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 24.3,
-        "industryAvg": 20.74
+        "value": 24.11,
+        "industryAvg": 20.64
       },
       {
         "metric": "P/S Ratio",
-        "value": 0.76,
+        "value": 0.75,
         "industryAvg": 0.4
       },
       {
         "metric": "P/B Ratio",
-        "value": 3.47,
-        "industryAvg": 2.27
+        "value": 3.45,
+        "industryAvg": 2.26
       },
       {
         "metric": "ROE",

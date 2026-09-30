@@ -1,10 +1,10 @@
 {
   "symbol": "GS",
-  "lastUpdated": "2026-09-29T06:12:23.168021+00:00",
+  "lastUpdated": "2026-09-30T15:30:08.171135+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-09-29T06:12:23.168021+00:00",
+    "snapshotBuiltAt": "2026-09-30T15:30:08.171135+00:00",
     "sections": {
-      "price": "2026-09-28"
+      "price": "2026-09-29"
     }
   },
   "source": "prefetched",
@@ -41,7 +41,7 @@
     "fundamentals": {
       "ttmEps": 64.7942,
       "ttmPe": 14.14,
-      "marketCap": 267042842272,
+      "marketCap": 267031184576,
       "psRatio": 4.03,
       "pbRatio": 2.18,
       "pegRatio": 0.15
@@ -6284,21 +6284,13 @@
       "costOfEquity": 14.99,
       "costOfDebt": 3.81,
       "taxRate": 23,
-      "beta": 1.2772,
-      "marketCap": 267042842272
+      "beta": 1.2788,
+      "marketCap": 267031184576
     },
     "beta": {
-      "beta5y": 1.2772
+      "beta5y": 1.2788
     },
     "price": [
-      {
-        "date": "2025-09-26",
-        "open": 797.16,
-        "high": 809.5,
-        "low": 795.13,
-        "close": 802.51,
-        "volume": 1376200
-      },
       {
         "date": "2025-09-29",
         "open": 807.8,
@@ -8305,7 +8297,15 @@
         "high": 932,
         "low": 914.5,
         "close": 916.28,
-        "volume": 1796800
+        "volume": 1825500
+      },
+      {
+        "date": "2026-09-29",
+        "open": 918.25,
+        "high": 919.62,
+        "low": 903.85,
+        "close": 916.24,
+        "volume": 1856800
       }
     ],
     "news": [
@@ -8450,17 +8450,17 @@
       {
         "metric": "P/E (TTM)",
         "value": 14.14,
-        "industryAvg": 16.39
+        "industryAvg": 16.34
       },
       {
         "metric": "P/S Ratio",
         "value": 4.03,
-        "industryAvg": 2.13
+        "industryAvg": 2.12
       },
       {
         "metric": "P/B Ratio",
         "value": 2.18,
-        "industryAvg": 2.66
+        "industryAvg": 2.65
       },
       {
         "metric": "ROE",

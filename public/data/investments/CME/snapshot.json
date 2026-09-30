@@ -1,10 +1,10 @@
 {
   "symbol": "CME",
-  "lastUpdated": "2026-09-29T06:12:23.168021+00:00",
+  "lastUpdated": "2026-09-30T15:30:08.171135+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-09-29T06:12:23.168021+00:00",
+    "snapshotBuiltAt": "2026-09-30T15:30:08.171135+00:00",
     "sections": {
-      "price": "2026-09-28"
+      "price": "2026-09-29"
     }
   },
   "source": "prefetched",
@@ -41,7 +41,7 @@
     "fundamentals": {
       "ttmEps": 11.7917,
       "ttmPe": 22.32,
-      "marketCap": 94576367044,
+      "marketCap": 94569181482,
       "psRatio": 13.96,
       "pbRatio": 3.57,
       "pegRatio": 8.39
@@ -5438,25 +5438,17 @@
       ]
     },
     "wacc": {
-      "wacc": 7.12,
-      "costOfEquity": 7.340000000000001,
+      "wacc": 6.7,
+      "costOfEquity": 6.909999999999999,
       "costOfDebt": 1.27,
       "taxRate": 22,
-      "beta": 0.2749,
-      "marketCap": 94576367044
+      "beta": 0.2165,
+      "marketCap": 94569181482
     },
     "beta": {
-      "beta5y": 0.2749
+      "beta5y": 0.2165
     },
     "price": [
-      {
-        "date": "2025-09-26",
-        "open": 270.81,
-        "high": 271.35,
-        "low": 268.37,
-        "close": 270.28,
-        "volume": 1534800
-      },
       {
         "date": "2025-09-29",
         "open": 271.27,
@@ -7464,6 +7456,14 @@
         "low": 262.51,
         "close": 263.24,
         "volume": 1335700
+      },
+      {
+        "date": "2026-09-29",
+        "open": 263.52,
+        "high": 266.94,
+        "low": 262.78,
+        "close": 263.22,
+        "volume": 1433500
       }
     ],
     "news": [
@@ -7500,6 +7500,14 @@
         "type": "STORY"
       },
       {
+        "uuid": "6fb8f08d-bdea-3a06-84de-d9f87aeb542f",
+        "title": "Here's Why We Think CME Group (NASDAQ:CME) Might Deserve Your Attention Today",
+        "publisher": "Simply Wall St.",
+        "reportDate": "2025-05-22",
+        "link": "https://finance.yahoo.com/news/heres-why-think-cme-group-110053430.html",
+        "type": "STORY"
+      },
+      {
         "uuid": "46b7a220-ca41-30c8-bbc7-9560f27e7ff6",
         "title": "Market Chatter: CME Group in Talks to Add Hong Kong to Aluminum Delivery Network",
         "publisher": "MT Newswires",
@@ -7513,14 +7521,6 @@
         "publisher": "PR Newswire",
         "reportDate": "2025-05-22",
         "link": "https://finance.yahoo.com/news/fx-spot-trades-1-4-100000839.html",
-        "type": "STORY"
-      },
-      {
-        "uuid": "6fb8f08d-bdea-3a06-84de-d9f87aeb542f",
-        "title": "Here's Why We Think CME Group (NASDAQ:CME) Might Deserve Your Attention Today",
-        "publisher": "Simply Wall St.",
-        "reportDate": "2025-05-22",
-        "link": "https://finance.yahoo.com/news/heres-why-think-cme-group-110053430.html",
         "type": "STORY"
       },
       {
@@ -7613,17 +7613,17 @@
       {
         "metric": "P/E (TTM)",
         "value": 22.32,
-        "industryAvg": 23.37
+        "industryAvg": 23.24
       },
       {
         "metric": "P/S Ratio",
         "value": 13.96,
-        "industryAvg": 7.36
+        "industryAvg": 7.31
       },
       {
         "metric": "P/B Ratio",
         "value": 3.57,
-        "industryAvg": 3.85
+        "industryAvg": 3.82
       },
       {
         "metric": "ROE",

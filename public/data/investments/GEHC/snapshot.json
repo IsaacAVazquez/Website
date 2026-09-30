@@ -1,13 +1,14 @@
 {
   "symbol": "GEHC",
-  "lastUpdated": "2026-09-29T06:39:51.976581+00:00",
+  "lastUpdated": "2026-09-30T15:30:08.171135+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-09-29T06:39:51.976581+00:00",
+    "snapshotBuiltAt": "2026-09-30T15:30:08.171135+00:00",
     "sections": {
-      "price": "2026-09-28"
+      "price": "2026-09-29"
     },
     "retainedSections": [
-      "fundamentals"
+      "fundamentals",
+      "industry"
     ]
   },
   "source": "prefetched",
@@ -43,11 +44,11 @@
     },
     "fundamentals": {
       "ttmEps": 4.3516,
-      "ttmPe": 15.35,
+      "ttmPe": 15.27,
       "pegRatio": 0.93,
-      "marketCap": 30163544334,
-      "psRatio": 1.42,
-      "pbRatio": 2.75
+      "marketCap": 30019005038,
+      "psRatio": 1.41,
+      "pbRatio": 2.74
     },
     "profitability": {
       "roe": 5.18,
@@ -6205,25 +6206,17 @@
       ]
     },
     "wacc": {
-      "wacc": 8.75,
-      "costOfEquity": 11.5,
+      "wacc": 8.76,
+      "costOfEquity": 11.52,
       "costOfDebt": 1.08,
       "taxRate": 17,
-      "beta": 0.8201,
-      "marketCap": 30163544334
+      "beta": 0.8228,
+      "marketCap": 30019005038
     },
     "beta": {
-      "beta5y": 0.8201
+      "beta5y": 0.8228
     },
     "price": [
-      {
-        "date": "2025-09-26",
-        "open": 72.23,
-        "high": 72.99,
-        "low": 71.72,
-        "close": 72.46,
-        "volume": 2679100
-      },
       {
         "date": "2025-09-29",
         "open": 73,
@@ -8230,7 +8223,15 @@
         "high": 67.1,
         "low": 65.96,
         "close": 66.78,
-        "volume": 4080800
+        "volume": 4166200
+      },
+      {
+        "date": "2026-09-29",
+        "open": 66.32,
+        "high": 66.76,
+        "low": 65.61,
+        "close": 66.46,
+        "volume": 3311800
       }
     ],
     "news": [
@@ -8251,19 +8252,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "d868eb89-e2b7-3144-a275-167379eaed5b",
-        "title": "Etsy's tariff concerns, GE HealthCare earnings, Seagate Q3 results",
-        "publisher": "Yahoo Finance Video",
-        "reportDate": "2025-05-01",
-        "link": "https://finance.yahoo.com/video/etsys-tariff-concerns-ge-healthcare-195743035.html",
-        "type": "VIDEO"
-      },
-      {
         "uuid": "b4181dbd-1414-3f77-9e5b-744cddb5c6f9",
         "title": "Stellantis guidance, Seagate Q3 beat, GE Healthcare trims outlook",
         "publisher": "Yahoo Finance Video",
         "reportDate": "2025-05-01",
         "link": "https://finance.yahoo.com/video/stellantis-guidance-seagate-q3-beat-183539547.html",
+        "type": "VIDEO"
+      },
+      {
+        "uuid": "d868eb89-e2b7-3144-a275-167379eaed5b",
+        "title": "Etsy's tariff concerns, GE HealthCare earnings, Seagate Q3 results",
+        "publisher": "Yahoo Finance Video",
+        "reportDate": "2025-05-01",
+        "link": "https://finance.yahoo.com/video/etsys-tariff-concerns-ge-healthcare-195743035.html",
         "type": "VIDEO"
       },
       {
@@ -8275,19 +8276,19 @@
         "type": "VIDEO"
       },
       {
-        "uuid": "7032561a-b88b-36a7-9ea6-1f81fe0e3ea9",
-        "title": "ESTRO 2025 Congress: GE HealthCare to expand its radiation oncology portfolio and introduce new AI-enabled solutions",
-        "publisher": "Business Wire",
-        "reportDate": "2025-05-02",
-        "link": "https://finance.yahoo.com/news/estro-2025-congress-ge-healthcare-130000986.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "e549ad41-6909-3b6c-8007-0fe3b02c2395",
         "title": "GE HealthCare Technologies Inc. Just Beat Earnings Expectations: Here's What Analysts Think Will Happen Next",
         "publisher": "Simply Wall St.",
         "reportDate": "2025-05-02",
         "link": "https://finance.yahoo.com/news/ge-healthcare-technologies-inc-just-104314967.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "7032561a-b88b-36a7-9ea6-1f81fe0e3ea9",
+        "title": "ESTRO 2025 Congress: GE HealthCare to expand its radiation oncology portfolio and introduce new AI-enabled solutions",
+        "publisher": "Business Wire",
+        "reportDate": "2025-05-02",
+        "link": "https://finance.yahoo.com/news/estro-2025-congress-ge-healthcare-130000986.html",
         "type": "STORY"
       },
       {

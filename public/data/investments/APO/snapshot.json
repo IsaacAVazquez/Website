@@ -1,10 +1,10 @@
 {
   "symbol": "APO",
-  "lastUpdated": "2026-09-29T06:12:23.168021+00:00",
+  "lastUpdated": "2026-09-30T15:30:08.171135+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-09-29T06:12:23.168021+00:00",
+    "snapshotBuiltAt": "2026-09-30T15:30:08.171135+00:00",
     "sections": {
-      "price": "2026-09-28"
+      "price": "2026-09-29"
     },
     "retainedSections": [
       "fundamentals"
@@ -5647,25 +5647,17 @@
       ]
     },
     "wacc": {
-      "wacc": 14.510000000000002,
-      "costOfEquity": 17.23,
+      "wacc": 14.06,
+      "costOfEquity": 16.689999999999998,
       "costOfDebt": 1.1199999999999999,
       "taxRate": 16,
-      "beta": 1.5714,
+      "beta": 1.5023,
       "marketCap": 68540644200
     },
     "beta": {
-      "beta5y": 1.5714
+      "beta5y": 1.5023
     },
     "price": [
-      {
-        "date": "2025-09-26",
-        "open": 136.27,
-        "high": 139.41,
-        "low": 136.2,
-        "close": 137.63,
-        "volume": 2893300
-      },
       {
         "date": "2025-09-29",
         "open": 138.7,
@@ -7673,6 +7665,14 @@
         "low": 118.71,
         "close": 119,
         "volume": 3092600
+      },
+      {
+        "date": "2026-09-29",
+        "open": 119.4,
+        "high": 121.85,
+        "low": 118.34,
+        "close": 119,
+        "volume": 2505600
       }
     ],
     "news": [
@@ -7733,19 +7733,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "c87faa2e-0e70-3fdc-925c-d0f8aa00bd8d",
-        "title": "Apollo Global Management (NYSE:APO) Secures US$975 Million in New Debt Financing",
-        "publisher": "Simply Wall St.",
-        "reportDate": "2025-05-22",
-        "link": "https://finance.yahoo.com/news/apollo-global-management-nyse-apo-172307417.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "6bc6fa76-dff5-3f25-af7e-62b726704292",
         "title": "Private Credit Has a Problem: Too Much Money",
         "publisher": "The Wall Street Journal",
         "reportDate": "2025-05-22",
         "link": "https://finance.yahoo.com/m/6bc6fa76-dff5-3f25-af7e-62b726704292/private-credit-has-a-problem%3A.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "c87faa2e-0e70-3fdc-925c-d0f8aa00bd8d",
+        "title": "Apollo Global Management (NYSE:APO) Secures US$975 Million in New Debt Financing",
+        "publisher": "Simply Wall St.",
+        "reportDate": "2025-05-22",
+        "link": "https://finance.yahoo.com/news/apollo-global-management-nyse-apo-172307417.html",
         "type": "STORY"
       },
       {
@@ -7825,12 +7825,12 @@
       {
         "metric": "P/B Ratio",
         "value": 3.26,
-        "industryAvg": 2.6
+        "industryAvg": 2.59
       },
       {
         "metric": "ROE",
         "value": 4.71,
-        "industryAvg": 7.42
+        "industryAvg": 7.39
       },
       {
         "metric": "ROA",
@@ -7845,12 +7845,12 @@
       {
         "metric": "EBITDA Margin",
         "value": 27.37,
-        "industryAvg": 41.24
+        "industryAvg": 41.22
       },
       {
         "metric": "Net Margin",
         "value": 8.649999999999999,
-        "industryAvg": 6.54
+        "industryAvg": 6.510000000000001
       }
     ]
   }

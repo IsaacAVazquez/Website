@@ -1,10 +1,10 @@
 {
   "symbol": "MCO",
-  "lastUpdated": "2026-09-29T06:12:23.168021+00:00",
+  "lastUpdated": "2026-09-30T15:30:08.171135+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-09-29T06:12:23.168021+00:00",
+    "snapshotBuiltAt": "2026-09-30T15:30:08.171135+00:00",
     "sections": {
-      "price": "2026-09-28"
+      "price": "2026-09-29"
     }
   },
   "source": "prefetched",
@@ -40,10 +40,10 @@
     },
     "fundamentals": {
       "ttmEps": 15.77,
-      "ttmPe": 29.17,
-      "marketCap": 79677114480,
-      "psRatio": 9.76,
-      "pbRatio": 26.34,
+      "ttmPe": 28.84,
+      "marketCap": 78766182420,
+      "psRatio": 9.65,
+      "pbRatio": 26.04,
       "pegRatio": 0.51
     },
     "profitability": {
@@ -6394,25 +6394,17 @@
       ]
     },
     "wacc": {
-      "wacc": 14.14,
-      "costOfEquity": 15.409999999999998,
+      "wacc": 13.94,
+      "costOfEquity": 15.21,
       "costOfDebt": 0.89,
       "taxRate": 25,
-      "beta": 1.3324,
-      "marketCap": 79677114480
+      "beta": 1.3081,
+      "marketCap": 78766182420
     },
     "beta": {
-      "beta5y": 1.3324
+      "beta5y": 1.3081
     },
     "price": [
-      {
-        "date": "2025-09-26",
-        "open": 474.38,
-        "high": 479.1,
-        "low": 473.13,
-        "close": 476.74,
-        "volume": 520800
-      },
       {
         "date": "2025-09-29",
         "open": 479.84,
@@ -8420,6 +8412,14 @@
         "low": 457.98,
         "close": 460.08,
         "volume": 751900
+      },
+      {
+        "date": "2026-09-29",
+        "open": 456.35,
+        "high": 458.65,
+        "low": 450.53,
+        "close": 454.82,
+        "volume": 848700
       }
     ],
     "news": [
@@ -8432,14 +8432,6 @@
         "type": "STORY"
       },
       {
-        "uuid": "00602142-fc32-3e95-9724-d5ca577a597c",
-        "title": "US Loses Last Top Credit Rating With Downgrade From Moody’s",
-        "publisher": "Bloomberg",
-        "reportDate": "2025-05-17",
-        "link": "https://finance.yahoo.com/news/us-loses-last-top-credit-221054398.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "477e31f7-d5de-37f8-9f7b-c2a81e6cdca0",
         "title": "Wall Street Strategists React to Moody’s US Credit Rating Cut",
         "publisher": "Bloomberg",
@@ -8448,19 +8440,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "89f7579a-37b1-3c61-9291-53bcc75da0db",
-        "title": "Mini ‘Sell America’ Trade Revived After Moody’s Downgrades US",
+        "uuid": "00602142-fc32-3e95-9724-d5ca577a597c",
+        "title": "US Loses Last Top Credit Rating With Downgrade From Moody’s",
         "publisher": "Bloomberg",
-        "reportDate": "2025-05-19",
-        "link": "https://finance.yahoo.com/news/investors-await-another-monday-jolt-145946996.html",
-        "type": "STORY"
-      },
-      {
-        "uuid": "36289b94-02ed-32e4-9796-d2be8c79a593",
-        "title": "‘Sell America’ Is Back as Moody’s Pushes 30-Year Yield to 5%",
-        "publisher": "Bloomberg",
-        "reportDate": "2025-05-19",
-        "link": "https://finance.yahoo.com/news/sell-america-back-moody-pushes-063431943.html",
+        "reportDate": "2025-05-17",
+        "link": "https://finance.yahoo.com/news/us-loses-last-top-credit-221054398.html",
         "type": "STORY"
       },
       {
@@ -8472,19 +8456,27 @@
         "type": "STORY"
       },
       {
+        "uuid": "36289b94-02ed-32e4-9796-d2be8c79a593",
+        "title": "‘Sell America’ Is Back as Moody’s Pushes 30-Year Yield to 5%",
+        "publisher": "Bloomberg",
+        "reportDate": "2025-05-19",
+        "link": "https://finance.yahoo.com/news/sell-america-back-moody-pushes-063431943.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "89f7579a-37b1-3c61-9291-53bcc75da0db",
+        "title": "Mini ‘Sell America’ Trade Revived After Moody’s Downgrades US",
+        "publisher": "Bloomberg",
+        "reportDate": "2025-05-19",
+        "link": "https://finance.yahoo.com/news/investors-await-another-monday-jolt-145946996.html",
+        "type": "STORY"
+      },
+      {
         "uuid": "aab9c808-d77b-38ff-b78c-c75c081d23b2",
         "title": "Bond Investors Detect Trouble in US Debt Stripped of AAA Rating",
         "publisher": "Bloomberg",
         "reportDate": "2025-05-20",
         "link": "https://finance.yahoo.com/news/bond-investors-detect-trouble-us-083108491.html",
-        "type": "STORY"
-      },
-      {
-        "uuid": "39b810d6-2380-3bd5-af6e-82c1cf21f74f",
-        "title": "US Long-Term Borrowing Costs Surge Over Deficit Concerns",
-        "publisher": "Bloomberg",
-        "reportDate": "2025-05-23",
-        "link": "https://finance.yahoo.com/news/us-long-term-borrowing-costs-102812011.html",
         "type": "STORY"
       },
       {
@@ -8501,6 +8493,14 @@
         "publisher": "Bloomberg",
         "reportDate": "2025-05-23",
         "link": "https://finance.yahoo.com/news/gold-heads-weekly-surge-us-014259623.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "8f015350-0197-34fb-829a-a0deb68c4a2a",
+        "title": "BofA’s Hartnett Says Buy the Dip in Treasuries as Yields Top 5%",
+        "publisher": "Bloomberg",
+        "reportDate": "2025-05-23",
+        "link": "https://finance.yahoo.com/news/bofa-hartnett-says-buy-dip-094509231.html",
         "type": "STORY"
       }
     ],
@@ -8562,18 +8562,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 29.17,
-        "industryAvg": 23.37
+        "value": 28.84,
+        "industryAvg": 23.24
       },
       {
         "metric": "P/S Ratio",
-        "value": 9.76,
-        "industryAvg": 7.36
+        "value": 9.65,
+        "industryAvg": 7.31
       },
       {
         "metric": "P/B Ratio",
-        "value": 26.34,
-        "industryAvg": 3.85
+        "value": 26.04,
+        "industryAvg": 3.82
       },
       {
         "metric": "ROE",

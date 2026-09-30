@@ -1,10 +1,10 @@
 {
   "symbol": "IBM",
-  "lastUpdated": "2026-09-29T06:39:51.976581+00:00",
+  "lastUpdated": "2026-09-30T15:30:08.171135+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-09-29T06:39:51.976581+00:00",
+    "snapshotBuiltAt": "2026-09-30T15:30:08.171135+00:00",
     "sections": {
-      "price": "2026-09-28"
+      "price": "2026-09-29"
     }
   },
   "source": "prefetched",
@@ -40,10 +40,10 @@
     },
     "fundamentals": {
       "ttmEps": 11.266,
-      "ttmPe": 19.59,
-      "marketCap": 207871140000,
-      "psRatio": 3.01,
-      "pbRatio": 6.03,
+      "ttmPe": 19.53,
+      "marketCap": 207230580000,
+      "psRatio": 3,
+      "pbRatio": 6.02,
       "pegRatio": 1.7
     },
     "profitability": {
@@ -6562,25 +6562,17 @@
       ]
     },
     "wacc": {
-      "wacc": 8.21,
-      "costOfEquity": 10.58,
+      "wacc": 8.66,
+      "costOfEquity": 11.19,
       "costOfDebt": 0.74,
       "taxRate": 13,
-      "beta": 0.6999,
-      "marketCap": 207871140000
+      "beta": 0.7792,
+      "marketCap": 207230580000
     },
     "beta": {
-      "beta5y": 0.6999
+      "beta5y": 0.7792
     },
     "price": [
-      {
-        "date": "2025-09-26",
-        "open": 280.51,
-        "high": 288.85,
-        "low": 280.11,
-        "close": 284.31,
-        "volume": 9063900
-      },
       {
         "date": "2025-09-29",
         "open": 286,
@@ -8588,6 +8580,14 @@
         "low": 219.23,
         "close": 220.67,
         "volume": 5285800
+      },
+      {
+        "date": "2026-09-29",
+        "open": 220.87,
+        "high": 223.12,
+        "low": 219.91,
+        "close": 219.99,
+        "volume": 3762100
       }
     ],
     "news": [
@@ -8736,17 +8736,17 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 19.59,
+        "value": 19.53,
         "industryAvg": 14.53
       },
       {
         "metric": "P/S Ratio",
-        "value": 3.01,
+        "value": 3,
         "industryAvg": 1.37
       },
       {
         "metric": "P/B Ratio",
-        "value": 6.03,
+        "value": 6.02,
         "industryAvg": 3.17
       },
       {

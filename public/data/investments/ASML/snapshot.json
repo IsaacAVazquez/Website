@@ -1,10 +1,10 @@
 {
   "symbol": "ASML",
-  "lastUpdated": "2026-09-29T06:39:51.976581+00:00",
+  "lastUpdated": "2026-09-30T15:30:08.171135+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-09-29T06:39:51.976581+00:00",
+    "snapshotBuiltAt": "2026-09-30T15:30:08.171135+00:00",
     "sections": {
-      "price": "2026-09-28"
+      "price": "2026-09-29"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 32.121,
-      "ttmPe": 55.15,
-      "marketCap": 682732767957,
-      "psRatio": 16.93,
-      "pbRatio": 27.41,
-      "pegRatio": 1.74
+      "ttmPe": 57.11,
+      "marketCap": 707006374703,
+      "psRatio": 17.54,
+      "pbRatio": 28.38,
+      "pegRatio": 1.8
     },
     "profitability": {
       "roe": 13.68,
@@ -5853,25 +5853,17 @@
       ]
     },
     "wacc": {
-      "wacc": 18.44,
-      "costOfEquity": 18.56,
+      "wacc": 18.52,
+      "costOfEquity": 18.64,
       "costOfDebt": 0.25,
       "taxRate": 15,
-      "beta": 1.7457,
-      "marketCap": 682732767957
+      "beta": 1.758,
+      "marketCap": 707006374703
     },
     "beta": {
-      "beta5y": 1.7457
+      "beta5y": 1.758
     },
     "price": [
-      {
-        "date": "2025-09-26",
-        "open": 946.24,
-        "high": 955.22,
-        "low": 942.75,
-        "close": 951.52,
-        "volume": 955200
-      },
       {
         "date": "2025-09-29",
         "open": 963.73,
@@ -7879,6 +7871,14 @@
         "low": 1735.5,
         "close": 1771.41,
         "volume": 1368800
+      },
+      {
+        "date": "2026-09-29",
+        "open": 1811.51,
+        "high": 1841.77,
+        "low": 1800.4,
+        "close": 1834.39,
+        "volume": 1653900
       }
     ],
     "news": [
@@ -7977,21 +7977,21 @@
         "title": "President, CEO and Chair of the Board of Management",
         "age": 52,
         "yearBorn": 1973,
-        "totalPay": 4304108
+        "totalPay": 4301384
       },
       {
         "name": "Mr. Frederic J. M. Schneider-Maunoury",
         "title": "Executive VP, COO & Member of the Management Board",
         "age": 64,
         "yearBorn": 1961,
-        "totalPay": 2551973
+        "totalPay": 2550358
       },
       {
         "name": "Mr. James P. Koonmen",
         "title": "Executive VP, Chief Customer Officer & Member of Management Board",
         "age": 58,
         "yearBorn": 1967,
-        "totalPay": 2716947
+        "totalPay": 2715228
       },
       {
         "name": "Mr. Marco J. A. Pieters",
@@ -8002,7 +8002,7 @@
         "title": "Executive VP, CFO & Member of the Management Board",
         "age": 60,
         "yearBorn": 1965,
-        "totalPay": 2533769
+        "totalPay": 2532166
       },
       {
         "name": "Mr. Ron Kool",
@@ -8013,7 +8013,7 @@
         "title": "Executive VP, Chief Strategic Sourcing & Procurement Officer and Member of Management Board",
         "age": 58,
         "yearBorn": 1967,
-        "totalPay": 2662335
+        "totalPay": 2660650
       },
       {
         "name": "Ms. Cristina Monteiro",
@@ -8023,18 +8023,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 55.15,
-        "industryAvg": 52.41
+        "value": 57.11,
+        "industryAvg": 54.39
       },
       {
         "metric": "P/S Ratio",
-        "value": 16.93,
-        "industryAvg": 14.24
+        "value": 17.54,
+        "industryAvg": 14.78
       },
       {
         "metric": "P/B Ratio",
-        "value": 27.41,
-        "industryAvg": 19.96
+        "value": 28.38,
+        "industryAvg": 20.69
       },
       {
         "metric": "ROE",

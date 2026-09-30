@@ -1,10 +1,10 @@
 {
   "symbol": "AXP",
-  "lastUpdated": "2026-09-29T06:12:23.168021+00:00",
+  "lastUpdated": "2026-09-30T15:30:08.171135+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-09-29T06:12:23.168021+00:00",
+    "snapshotBuiltAt": "2026-09-30T15:30:08.171135+00:00",
     "sections": {
-      "price": "2026-09-28"
+      "price": "2026-09-29"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 16.482,
-      "ttmPe": 18.59,
-      "marketCap": 206772750000,
-      "psRatio": 2.72,
-      "pbRatio": 6.03,
-      "pegRatio": 1.69
+      "ttmPe": 18.53,
+      "marketCap": 206145000000,
+      "psRatio": 2.71,
+      "pbRatio": 6.01,
+      "pegRatio": 1.68
     },
     "profitability": {
       "roe": 9.01,
@@ -5795,25 +5795,17 @@
       ]
     },
     "wacc": {
-      "wacc": 11.020000000000001,
-      "costOfEquity": 13.450000000000001,
+      "wacc": 11.14,
+      "costOfEquity": 13.61,
       "costOfDebt": 3.32,
       "taxRate": 24,
-      "beta": 1.0762,
-      "marketCap": 206772750000
+      "beta": 1.0976,
+      "marketCap": 206145000000
     },
     "beta": {
-      "beta5y": 1.0762
+      "beta5y": 1.0976
     },
     "price": [
-      {
-        "date": "2025-09-26",
-        "open": 341.45,
-        "high": 343.33,
-        "low": 339.02,
-        "close": 341.68,
-        "volume": 1728600
-      },
       {
         "date": "2025-09-29",
         "open": 343.76,
@@ -7820,7 +7812,15 @@
         "high": 308.88,
         "low": 304.19,
         "close": 306.33,
-        "volume": 3354600
+        "volume": 3547100
+      },
+      {
+        "date": "2026-09-29",
+        "open": 307.08,
+        "high": 307.18,
+        "low": 303.97,
+        "close": 305.4,
+        "volume": 3111600
       }
     ],
     "news": [
@@ -7865,14 +7865,6 @@
         "type": "STORY"
       },
       {
-        "uuid": "5cb5d8a8-80a8-36da-b95e-575adcad8fb8",
-        "title": "Stock Market Turmoil: Buy These 3 Dividend Stocks for Less Than $1,000 Right Now",
-        "publisher": "Motley Fool",
-        "reportDate": "2025-04-24",
-        "link": "https://finance.yahoo.com/m/5cb5d8a8-80a8-36da-b95e-575adcad8fb8/stock-market-turmoil%3A-buy.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "0672dd26-9686-35f8-a29e-b98a620ba84b",
         "title": "West Japan Railway and a.k.a. Brands have been highlighted as Zacks Bull and Bear of the Day",
         "publisher": "Zacks",
@@ -7881,11 +7873,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "6aab8472-3560-3f6a-86f5-e5c442ddc1a3",
-        "title": "The Zacks Analyst Blog Highlights Costco, American Express, Goldman Sachs, Willis Lease Finance and CPS Technologies",
+        "uuid": "5cb5d8a8-80a8-36da-b95e-575adcad8fb8",
+        "title": "Stock Market Turmoil: Buy These 3 Dividend Stocks for Less Than $1,000 Right Now",
+        "publisher": "Motley Fool",
+        "reportDate": "2025-04-24",
+        "link": "https://finance.yahoo.com/m/5cb5d8a8-80a8-36da-b95e-575adcad8fb8/stock-market-turmoil%3A-buy.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "44514c3c-84c8-3953-8a64-73567cdf40b5",
+        "title": "Bread Financial Q1 Earnings, Revenues Top Estimates, Credit Sales Rise",
         "publisher": "Zacks",
         "reportDate": "2025-04-25",
-        "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-costco-084900829.html",
+        "link": "https://finance.yahoo.com/news/bread-financial-q1-earnings-revenues-153400903.html",
         "type": "STORY"
       },
       {
@@ -7897,11 +7897,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "44514c3c-84c8-3953-8a64-73567cdf40b5",
-        "title": "Bread Financial Q1 Earnings, Revenues Top Estimates, Credit Sales Rise",
+        "uuid": "6aab8472-3560-3f6a-86f5-e5c442ddc1a3",
+        "title": "The Zacks Analyst Blog Highlights Costco, American Express, Goldman Sachs, Willis Lease Finance and CPS Technologies",
         "publisher": "Zacks",
         "reportDate": "2025-04-25",
-        "link": "https://finance.yahoo.com/news/bread-financial-q1-earnings-revenues-153400903.html",
+        "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-costco-084900829.html",
         "type": "STORY"
       }
     ],
@@ -7974,18 +7974,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 18.59,
-        "industryAvg": 21.45
+        "value": 18.53,
+        "industryAvg": 21.34
       },
       {
         "metric": "P/S Ratio",
-        "value": 2.72,
-        "industryAvg": 5.02
+        "value": 2.71,
+        "industryAvg": 5
       },
       {
         "metric": "P/B Ratio",
-        "value": 6.03,
-        "industryAvg": 5.35
+        "value": 6.01,
+        "industryAvg": 5.33
       },
       {
         "metric": "ROE",

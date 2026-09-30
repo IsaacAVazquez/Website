@@ -1,11 +1,14 @@
 {
   "symbol": "SNPS",
-  "lastUpdated": "2026-09-29T06:39:51.976581+00:00",
+  "lastUpdated": "2026-09-30T15:30:08.171135+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-09-29T06:39:51.976581+00:00",
+    "snapshotBuiltAt": "2026-09-30T15:30:08.171135+00:00",
     "sections": {
-      "price": "2026-09-28"
-    }
+      "price": "2026-09-29"
+    },
+    "retainedSections": [
+      "industry"
+    ]
   },
   "source": "prefetched",
   "capabilities": {
@@ -40,11 +43,11 @@
     },
     "fundamentals": {
       "ttmEps": 5.6605,
-      "ttmPe": 73.78,
-      "marketCap": 80016164050,
-      "psRatio": 8.5,
-      "pbRatio": 2.57,
-      "pegRatio": 0.83
+      "ttmPe": 73.33,
+      "marketCap": 79533319450,
+      "psRatio": 8.45,
+      "pbRatio": 2.55,
+      "pegRatio": 0.82
     },
     "profitability": {
       "roe": 1.77,
@@ -6282,25 +6285,17 @@
       ]
     },
     "wacc": {
-      "wacc": 12.889999999999999,
-      "costOfEquity": 14.499999999999998,
+      "wacc": 12.78,
+      "costOfEquity": 14.39,
       "costOfDebt": 1.23,
       "taxRate": 20,
-      "beta": 1.2142,
-      "marketCap": 80016164050
+      "beta": 1.1999,
+      "marketCap": 79533319450
     },
     "beta": {
-      "beta5y": 1.2142
+      "beta5y": 1.1999
     },
     "price": [
-      {
-        "date": "2025-09-26",
-        "open": 477.14,
-        "high": 493,
-        "low": 477.14,
-        "close": 487.76,
-        "volume": 2532900
-      },
       {
         "date": "2025-09-29",
         "open": 488,
@@ -8308,6 +8303,14 @@
         "low": 417.11,
         "close": 417.61,
         "volume": 1546800
+      },
+      {
+        "date": "2026-09-29",
+        "open": 414.6,
+        "high": 418,
+        "low": 403.33,
+        "close": 415.09,
+        "volume": 1614900
       }
     ],
     "news": [
@@ -8336,11 +8339,43 @@
         "type": "VIDEO"
       },
       {
+        "uuid": "60b652b1-ba1a-3011-9e0c-1f92bb316553",
+        "title": "Cadence, Synopsys, Others Reportedly Ordered to Stop Shipments to China",
+        "publisher": "MT Newswires",
+        "reportDate": "2025-05-29",
+        "link": "https://finance.yahoo.com/news/cadence-synopsys-others-reportedly-ordered-110607594.html",
+        "type": "STORY"
+      },
+      {
         "uuid": "251263bb-88cb-3480-a6fc-57ee2d97294b",
         "title": "Trump orders U.S. firms to halt chip software sales to China, says FT",
         "publisher": "Investing.com",
         "reportDate": "2025-05-29",
         "link": "https://finance.yahoo.com/news/trump-orders-u-firms-halt-195726926.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "bb5b7531-d03b-3469-aae0-7b68b87bba87",
+        "title": "Synopsys gets conditional FTC approval for Ansys acquisition",
+        "publisher": "Verdict",
+        "reportDate": "2025-05-29",
+        "link": "https://finance.yahoo.com/m/bb5b7531-d03b-3469-aae0-7b68b87bba87/synopsys-gets-conditional-ftc.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "78ac3576-2d73-311d-b281-88d7c914a586",
+        "title": "Synopsys Says It Hasn’t Received Notice to Stop Exports to China, Pushing Back on Report",
+        "publisher": "Barrons.com",
+        "reportDate": "2025-05-29",
+        "link": "https://finance.yahoo.com/m/78ac3576-2d73-311d-b281-88d7c914a586/synopsys-says-it-hasn%E2%80%99t.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "8e48b696-e22a-3e7f-bdbd-a48a315aab69",
+        "title": "US Tightens China Chip Curbs by Targeting Design Software",
+        "publisher": "Bloomberg",
+        "reportDate": "2025-05-29",
+        "link": "https://finance.yahoo.com/news/us-tightens-china-chip-curbs-045811794.html",
         "type": "STORY"
       },
       {
@@ -8357,38 +8392,6 @@
         "publisher": "Insider Monkey",
         "reportDate": "2025-05-29",
         "link": "https://finance.yahoo.com/news/ftc-require-synopsys-ansys-divest-011750043.html",
-        "type": "STORY"
-      },
-      {
-        "uuid": "8e48b696-e22a-3e7f-bdbd-a48a315aab69",
-        "title": "US Tightens China Chip Curbs by Targeting Design Software",
-        "publisher": "Bloomberg",
-        "reportDate": "2025-05-29",
-        "link": "https://finance.yahoo.com/news/us-tightens-china-chip-curbs-045811794.html",
-        "type": "STORY"
-      },
-      {
-        "uuid": "60b652b1-ba1a-3011-9e0c-1f92bb316553",
-        "title": "Cadence, Synopsys, Others Reportedly Ordered to Stop Shipments to China",
-        "publisher": "MT Newswires",
-        "reportDate": "2025-05-29",
-        "link": "https://finance.yahoo.com/news/cadence-synopsys-others-reportedly-ordered-110607594.html",
-        "type": "STORY"
-      },
-      {
-        "uuid": "bb5b7531-d03b-3469-aae0-7b68b87bba87",
-        "title": "Synopsys gets conditional FTC approval for Ansys acquisition",
-        "publisher": "Verdict",
-        "reportDate": "2025-05-29",
-        "link": "https://finance.yahoo.com/m/bb5b7531-d03b-3469-aae0-7b68b87bba87/synopsys-gets-conditional-ftc.html",
-        "type": "STORY"
-      },
-      {
-        "uuid": "018e0c72-aa04-3842-9a45-03fbadc39148",
-        "title": "FTC to Require Synopsys, Ansys to Divest Assets to Resolve Merger Concerns",
-        "publisher": "MT Newswires",
-        "reportDate": "2025-05-29",
-        "link": "https://finance.yahoo.com/news/ftc-require-synopsys-ansys-divest-102101449.html",
         "type": "STORY"
       }
     ],

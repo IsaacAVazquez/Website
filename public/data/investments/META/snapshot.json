@@ -1,10 +1,10 @@
 {
   "symbol": "META",
-  "lastUpdated": "2026-09-29T06:39:51.976581+00:00",
+  "lastUpdated": "2026-09-30T15:30:08.171135+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-09-29T06:39:51.976581+00:00",
+    "snapshotBuiltAt": "2026-09-30T15:30:08.171135+00:00",
     "sections": {
-      "price": "2026-09-28"
+      "price": "2026-09-29"
     }
   },
   "source": "prefetched",
@@ -40,10 +40,10 @@
     },
     "fundamentals": {
       "ttmEps": 26.5478,
-      "ttmPe": 26.96,
-      "marketCap": 1823399760000,
-      "psRatio": 7.99,
-      "pbRatio": 6.98,
+      "ttmPe": 27.83,
+      "marketCap": 1882436920000,
+      "psRatio": 8.25,
+      "pbRatio": 7.21,
       "pegRatio": 0.33
     },
     "profitability": {
@@ -5567,25 +5567,17 @@
       ]
     },
     "wacc": {
-      "wacc": 13.4,
-      "costOfEquity": 14.19,
+      "wacc": 13.86,
+      "costOfEquity": 14.649999999999999,
       "costOfDebt": 0.7000000000000001,
       "taxRate": 16,
-      "beta": 1.1731,
-      "marketCap": 1823399760000
+      "beta": 1.2341,
+      "marketCap": 1882436920000
     },
     "beta": {
-      "beta5y": 1.1731
+      "beta5y": 1.2341
     },
     "price": [
-      {
-        "date": "2025-09-26",
-        "open": 750,
-        "high": 751.93,
-        "low": 737.35,
-        "close": 743.75,
-        "volume": 9696300
-      },
       {
         "date": "2025-09-29",
         "open": 748.72,
@@ -7592,7 +7584,15 @@
         "high": 750.58,
         "low": 713.19,
         "close": 715.62,
-        "volume": 27713500
+        "volume": 27943100
+      },
+      {
+        "date": "2026-09-29",
+        "open": 725,
+        "high": 740.45,
+        "low": 715.1,
+        "close": 738.79,
+        "volume": 23460100
       }
     ],
     "news": [
@@ -7613,14 +7613,6 @@
         "type": "STORY"
       },
       {
-        "uuid": "2cfa6437-c187-3ab8-9ea8-027695257bb0",
-        "title": "Top Research Reports for Apple, Meta Platforms & Chevron",
-        "publisher": "Zacks",
-        "reportDate": "2025-03-21",
-        "link": "https://finance.yahoo.com/news/top-research-reports-apple-meta-213400955.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "bbf455ff-77a4-32a7-81aa-06dd1d624504",
         "title": "The Zacks Analyst Blog Highlights Apple, Meta Platforms, Chevron, Taylor Devices and GSI Technology",
         "publisher": "Zacks",
@@ -7629,11 +7621,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "124a6d52-1c44-41a7-a9cd-0c3fa0be6445",
-        "title": "Delaware passes law designed to stop more Elon Musks from leaving state",
-        "publisher": "Yahoo Finance",
-        "reportDate": "2025-03-27",
-        "link": "https://finance.yahoo.com/news/delaware-passes-law-designed-to-stop-more-elon-musks-from-leaving-state-164403802.html",
+        "uuid": "2cfa6437-c187-3ab8-9ea8-027695257bb0",
+        "title": "Top Research Reports for Apple, Meta Platforms & Chevron",
+        "publisher": "Zacks",
+        "reportDate": "2025-03-21",
+        "link": "https://finance.yahoo.com/news/top-research-reports-apple-meta-213400955.html",
         "type": "STORY"
       },
       {
@@ -7642,6 +7634,14 @@
         "publisher": "TipRanks",
         "reportDate": "2025-03-27",
         "link": "https://finance.yahoo.com/news/closing-bell-movers-gamestop-gains-000022309.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "124a6d52-1c44-41a7-a9cd-0c3fa0be6445",
+        "title": "Delaware passes law designed to stop more Elon Musks from leaving state",
+        "publisher": "Yahoo Finance",
+        "reportDate": "2025-03-27",
+        "link": "https://finance.yahoo.com/news/delaware-passes-law-designed-to-stop-more-elon-musks-from-leaving-state-164403802.html",
         "type": "STORY"
       },
       {
@@ -7747,18 +7747,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 26.96,
-        "industryAvg": 18.4
+        "value": 27.83,
+        "industryAvg": 18.43
       },
       {
         "metric": "P/S Ratio",
-        "value": 7.99,
-        "industryAvg": 8.42
+        "value": 8.25,
+        "industryAvg": 8.44
       },
       {
         "metric": "P/B Ratio",
-        "value": 6.98,
-        "industryAvg": 6.13
+        "value": 7.21,
+        "industryAvg": 6.14
       },
       {
         "metric": "ROE",

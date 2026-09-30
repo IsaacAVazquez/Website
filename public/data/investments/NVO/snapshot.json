@@ -1,10 +1,10 @@
 {
   "symbol": "NVO",
-  "lastUpdated": "2026-09-29T06:39:51.976581+00:00",
+  "lastUpdated": "2026-09-30T15:30:08.171135+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-09-29T06:39:51.976581+00:00",
+    "snapshotBuiltAt": "2026-09-30T15:30:08.171135+00:00",
     "sections": {
-      "price": "2026-09-28"
+      "price": "2026-09-29"
     },
     "retainedSections": [
       "fundamentals"
@@ -43,11 +43,11 @@
     },
     "fundamentals": {
       "ttmEps": 4.0918,
-      "ttmPe": 9.46,
+      "ttmPe": 9.36,
       "pegRatio": 0.13,
-      "marketCap": 129518956735,
-      "psRatio": 2.57,
-      "pbRatio": 3.83
+      "marketCap": 128180605335,
+      "psRatio": 2.55,
+      "pbRatio": 3.79
     },
     "profitability": {
       "roe": 9.89,
@@ -6161,25 +6161,17 @@
       ]
     },
     "wacc": {
-      "wacc": 9.629999999999999,
-      "costOfEquity": 11.08,
+      "wacc": 9.31,
+      "costOfEquity": 10.73,
       "costOfDebt": 1.0699999999999998,
       "taxRate": 22,
-      "beta": 0.7659,
-      "marketCap": 129518956735
+      "beta": 0.7186,
+      "marketCap": 128180605335
     },
     "beta": {
-      "beta5y": 0.7659
+      "beta5y": 0.7186
     },
     "price": [
-      {
-        "date": "2025-09-26",
-        "open": 55.6,
-        "high": 56.02,
-        "low": 54.56,
-        "close": 55.61,
-        "volume": 17739800
-      },
       {
         "date": "2025-09-29",
         "open": 54.14,
@@ -8186,7 +8178,15 @@
         "high": 38.9,
         "low": 38.23,
         "close": 38.71,
-        "volume": 11313000
+        "volume": 11428800
+      },
+      {
+        "date": "2026-09-29",
+        "open": 38.21,
+        "high": 38.38,
+        "low": 38.05,
+        "close": 38.31,
+        "volume": 9388100
       }
     ],
     "news": [
@@ -8215,19 +8215,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "4d2bbcd6-b191-3dbc-8487-70b5b09eb0a4",
-        "title": "Lexicon Pharmaceuticals Enters License Agreement With Novo Nordisk for Obesity Drug; Shares Jump",
-        "publisher": "MT Newswires",
-        "reportDate": "2025-03-28",
-        "link": "https://finance.yahoo.com/news/lexicon-pharmaceuticals-enters-license-agreement-121107728.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "1ff404cb-1787-3b95-9a69-2a731fe8b761",
         "title": "Novo gains Lexicon obesity drug; CRISPR COO to step down",
         "publisher": "BioPharma Dive",
         "reportDate": "2025-03-28",
         "link": "https://finance.yahoo.com/m/1ff404cb-1787-3b95-9a69-2a731fe8b761/novo-gains-lexicon-obesity.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "4d2bbcd6-b191-3dbc-8487-70b5b09eb0a4",
+        "title": "Lexicon Pharmaceuticals Enters License Agreement With Novo Nordisk for Obesity Drug; Shares Jump",
+        "publisher": "MT Newswires",
+        "reportDate": "2025-03-28",
+        "link": "https://finance.yahoo.com/news/lexicon-pharmaceuticals-enters-license-agreement-121107728.html",
         "type": "STORY"
       },
       {
@@ -8277,7 +8277,7 @@
         "title": "EVP of R&D, Chief Scientific Officer and Member of the Management Board",
         "age": 55,
         "yearBorn": 1970,
-        "totalPay": 1856608
+        "totalPay": 1855486
       },
       {
         "name": "Mr. Emil Kongshoej Larsen",
@@ -8302,7 +8302,7 @@
         "title": "Executive VP, CFO & Member of the Management Board",
         "age": 54,
         "yearBorn": 1971,
-        "totalPay": 2617513
+        "totalPay": 2615931
       },
       {
         "name": "Mr. Maziar Mike Doustdar B.A.",
@@ -8338,18 +8338,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 9.46,
-        "industryAvg": 26.68
+        "value": 9.36,
+        "industryAvg": 26.53
       },
       {
         "metric": "P/S Ratio",
-        "value": 2.57,
-        "industryAvg": 4.82
+        "value": 2.55,
+        "industryAvg": 4.79
       },
       {
         "metric": "P/B Ratio",
-        "value": 3.83,
-        "industryAvg": 5.95
+        "value": 3.79,
+        "industryAvg": 5.92
       },
       {
         "metric": "ROE",

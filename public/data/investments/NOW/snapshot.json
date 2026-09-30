@@ -1,11 +1,14 @@
 {
   "symbol": "NOW",
-  "lastUpdated": "2026-09-29T06:39:51.976581+00:00",
+  "lastUpdated": "2026-09-30T15:30:08.171135+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-09-29T06:39:51.976581+00:00",
+    "snapshotBuiltAt": "2026-09-30T15:30:08.171135+00:00",
     "sections": {
-      "price": "2026-09-28"
-    }
+      "price": "2026-09-29"
+    },
+    "retainedSections": [
+      "industry"
+    ]
   },
   "source": "prefetched",
   "capabilities": {
@@ -40,10 +43,10 @@
     },
     "fundamentals": {
       "ttmEps": 1.6013,
-      "ttmPe": 82.09,
-      "marketCap": 135901159900,
-      "psRatio": 9.22,
-      "pbRatio": 10.86,
+      "ttmPe": 81.15,
+      "marketCap": 134340028280,
+      "psRatio": 9.12,
+      "pbRatio": 10.73,
       "pegRatio": 22.53
     },
     "profitability": {
@@ -5367,25 +5370,17 @@
       ]
     },
     "wacc": {
-      "wacc": 12.02,
-      "costOfEquity": 12.740000000000002,
+      "wacc": 11.84,
+      "costOfEquity": 12.55,
       "costOfDebt": 0.7799999999999999,
       "taxRate": 32,
-      "beta": 0.9832,
-      "marketCap": 135901159900
+      "beta": 0.9575,
+      "marketCap": 134340028280
     },
     "beta": {
-      "beta5y": 0.9832
+      "beta5y": 0.9575
     },
     "price": [
-      {
-        "date": "2025-09-26",
-        "open": 183.938,
-        "high": 187.628,
-        "low": 183.34,
-        "close": 187.2,
-        "volume": 4457000
-      },
       {
         "date": "2025-09-29",
         "open": 188.412,
@@ -7392,7 +7387,15 @@
         "high": 131.89,
         "low": 126.75,
         "close": 131.45,
-        "volume": 11754300
+        "volume": 11936000
+      },
+      {
+        "date": "2026-09-29",
+        "open": 130.83,
+        "high": 132.44,
+        "low": 128.12,
+        "close": 129.94,
+        "volume": 10053100
       }
     ],
     "news": [
@@ -7413,19 +7416,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "3d018e47-3ca3-3120-a73e-e863c577b5fe",
-        "title": "Top Research Reports for Visa, ServiceNow & Progressive",
-        "publisher": "Zacks",
-        "reportDate": "2025-04-22",
-        "link": "https://finance.yahoo.com/news/top-research-reports-visa-servicenow-204900265.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "e3daf31a-2695-3357-ba2d-3bfe949cf310",
         "title": "The Zacks Analyst Blog Highlights Visa, ServiceNow, The Progressive, The Monarch Cement and Precipio",
         "publisher": "Zacks",
         "reportDate": "2025-04-22",
         "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-visa-125900502.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "3d018e47-3ca3-3120-a73e-e863c577b5fe",
+        "title": "Top Research Reports for Visa, ServiceNow & Progressive",
+        "publisher": "Zacks",
+        "reportDate": "2025-04-22",
+        "link": "https://finance.yahoo.com/news/top-research-reports-visa-servicenow-204900265.html",
         "type": "STORY"
       },
       {
@@ -7461,19 +7464,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "994a5e6b-ad52-3bb3-b8a4-56347c6d7387",
-        "title": "High Growth Tech Stocks in the US To Watch This May 2025",
-        "publisher": "Simply Wall St.",
-        "reportDate": "2025-05-09",
-        "link": "https://finance.yahoo.com/news/high-growth-tech-stocks-us-113821187.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "6307e6d8-6f83-3de1-9858-027b24361de9",
         "title": "1 High-Flying Stock with Exciting Potential and 2 to Keep Off Your Radar",
         "publisher": "StockStory",
         "reportDate": "2025-05-09",
         "link": "https://finance.yahoo.com/news/1-high-flying-stock-exciting-043642353.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "994a5e6b-ad52-3bb3-b8a4-56347c6d7387",
+        "title": "High Growth Tech Stocks in the US To Watch This May 2025",
+        "publisher": "Simply Wall St.",
+        "reportDate": "2025-05-09",
+        "link": "https://finance.yahoo.com/news/high-growth-tech-stocks-us-113821187.html",
         "type": "STORY"
       }
     ],

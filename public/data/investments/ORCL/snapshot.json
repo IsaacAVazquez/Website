@@ -1,11 +1,14 @@
 {
   "symbol": "ORCL",
-  "lastUpdated": "2026-09-29T06:39:51.976581+00:00",
+  "lastUpdated": "2026-09-30T15:30:08.171135+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-09-29T06:39:51.976581+00:00",
+    "snapshotBuiltAt": "2026-09-30T15:30:08.171135+00:00",
     "sections": {
-      "price": "2026-09-28"
-    }
+      "price": "2026-09-29"
+    },
+    "retainedSections": [
+      "industry"
+    ]
   },
   "source": "prefetched",
   "capabilities": {
@@ -40,11 +43,11 @@
     },
     "fundamentals": {
       "ttmEps": 6.3783,
-      "ttmPe": 20.79,
-      "marketCap": 400982400000,
-      "psRatio": 5.59,
-      "pbRatio": 6.01,
-      "pegRatio": 0.38
+      "ttmPe": 21.6,
+      "marketCap": 416676960000,
+      "psRatio": 5.81,
+      "pbRatio": 6.24,
+      "pegRatio": 0.39
     },
     "profitability": {
       "roe": 8.559999999999999,
@@ -6182,25 +6185,17 @@
       ]
     },
     "wacc": {
-      "wacc": 13.58,
-      "costOfEquity": 18.56,
+      "wacc": 13.74,
+      "costOfEquity": 18.59,
       "costOfDebt": 0.9199999999999999,
       "taxRate": 15,
-      "beta": 1.7454,
-      "marketCap": 400982400000
+      "beta": 1.7521,
+      "marketCap": 416676960000
     },
     "beta": {
-      "beta5y": 1.7454
+      "beta5y": 1.7521
     },
     "price": [
-      {
-        "date": "2025-09-26",
-        "open": 293,
-        "high": 294,
-        "low": 283,
-        "close": 283.46,
-        "volume": 25990700
-      },
       {
         "date": "2025-09-29",
         "open": 284.6,
@@ -8207,7 +8202,15 @@
         "high": 135.69,
         "low": 131.58,
         "close": 132.6,
-        "volume": 35014000
+        "volume": 36060100
+      },
+      {
+        "date": "2026-09-29",
+        "open": 132.79,
+        "high": 143.67,
+        "low": 132.53,
+        "close": 137.79,
+        "volume": 45597900
       }
     ],
     "news": [
@@ -8260,14 +8263,6 @@
         "type": "STORY"
       },
       {
-        "uuid": "853459fc-a326-3b0c-b0f7-fc98e76b003b",
-        "title": "Why Oracle Stock Was on Fire Today",
-        "publisher": "Motley Fool",
-        "reportDate": "2025-05-02",
-        "link": "https://finance.yahoo.com/m/853459fc-a326-3b0c-b0f7-fc98e76b003b/why-oracle-stock-was-on-fire.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "2fa586c6-fea0-3ed3-9dbe-a55dc20b7137",
         "title": "Olo jumps after Bloomberg says company exploring possible sale",
         "publisher": "TipRanks",
@@ -8276,11 +8271,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "ca06a274-32e3-3e67-865f-0b228b4d8f22",
-        "title": "White House calls out Boeing, GE Vernova exports in Saudi Arabia pact",
-        "publisher": "TipRanks",
-        "reportDate": "2025-05-14",
-        "link": "https://finance.yahoo.com/news/white-house-calls-boeing-ge-142742667.html",
+        "uuid": "853459fc-a326-3b0c-b0f7-fc98e76b003b",
+        "title": "Why Oracle Stock Was on Fire Today",
+        "publisher": "Motley Fool",
+        "reportDate": "2025-05-02",
+        "link": "https://finance.yahoo.com/m/853459fc-a326-3b0c-b0f7-fc98e76b003b/why-oracle-stock-was-on-fire.html",
         "type": "STORY"
       },
       {
@@ -8289,6 +8284,14 @@
         "publisher": "Bloomberg",
         "reportDate": "2025-05-14",
         "link": "https://finance.yahoo.com/news/trump-mbs-tout-1-trillion-174902305.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "ca06a274-32e3-3e67-865f-0b228b4d8f22",
+        "title": "White House calls out Boeing, GE Vernova exports in Saudi Arabia pact",
+        "publisher": "TipRanks",
+        "reportDate": "2025-05-14",
+        "link": "https://finance.yahoo.com/news/white-house-calls-boeing-ge-142742667.html",
         "type": "STORY"
       }
     ],

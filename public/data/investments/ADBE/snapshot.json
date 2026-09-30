@@ -1,11 +1,14 @@
 {
   "symbol": "ADBE",
-  "lastUpdated": "2026-09-29T06:39:51.976581+00:00",
+  "lastUpdated": "2026-09-30T15:30:08.171135+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-09-29T06:39:51.976581+00:00",
+    "snapshotBuiltAt": "2026-09-30T15:30:08.171135+00:00",
     "sections": {
-      "price": "2026-09-28"
-    }
+      "price": "2026-09-29"
+    },
+    "retainedSections": [
+      "industry"
+    ]
   },
   "source": "prefetched",
   "capabilities": {
@@ -40,11 +43,11 @@
     },
     "fundamentals": {
       "ttmEps": 17.9251,
-      "ttmPe": 12.89,
-      "marketCap": 90324910000,
-      "psRatio": 3.48,
-      "pbRatio": 7.68,
-      "pegRatio": 1.22
+      "ttmPe": 13.01,
+      "marketCap": 91169470000,
+      "psRatio": 3.51,
+      "pbRatio": 7.75,
+      "pegRatio": 1.23
     },
     "profitability": {
       "roe": 15.690000000000001,
@@ -6060,25 +6063,17 @@
       ]
     },
     "wacc": {
-      "wacc": 14.93,
-      "costOfEquity": 15.989999999999998,
+      "wacc": 14.74,
+      "costOfEquity": 15.78,
       "costOfDebt": 0.98,
       "taxRate": 22,
-      "beta": 1.4087,
-      "marketCap": 90324910000
+      "beta": 1.3826,
+      "marketCap": 91169470000
     },
     "beta": {
-      "beta5y": 1.4087
+      "beta5y": 1.3826
     },
     "price": [
-      {
-        "date": "2025-09-26",
-        "open": 353.71,
-        "high": 360.72,
-        "low": 352.78,
-        "close": 360.37,
-        "volume": 3073000
-      },
       {
         "date": "2025-09-29",
         "open": 362.04,
@@ -8085,7 +8080,15 @@
         "high": 231.49,
         "low": 224.67,
         "close": 231.01,
-        "volume": 5208600
+        "volume": 5228700
+      },
+      {
+        "date": "2026-09-29",
+        "open": 230.99,
+        "high": 233.33,
+        "low": 228.68,
+        "close": 233.17,
+        "volume": 4103800
       }
     ],
     "news": [
@@ -8146,19 +8149,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "59b99a57-d7ad-34d0-856d-87429aba674f",
-        "title": "3 Tech Stocks You Can Buy and Hold for the Next Decade",
-        "publisher": "Motley Fool",
-        "reportDate": "2025-05-30",
-        "link": "https://finance.yahoo.com/m/59b99a57-d7ad-34d0-856d-87429aba674f/3-tech-stocks-you-can-buy-and.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "b77d1727-4d59-3130-983d-a06105fa7081",
         "title": "Should You Invest in Adobe (ADBE) Based on Bullish Wall Street Views?",
         "publisher": "Zacks",
         "reportDate": "2025-05-30",
         "link": "https://finance.yahoo.com/news/invest-adobe-adbe-based-bullish-133009472.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "59b99a57-d7ad-34d0-856d-87429aba674f",
+        "title": "3 Tech Stocks You Can Buy and Hold for the Next Decade",
+        "publisher": "Motley Fool",
+        "reportDate": "2025-05-30",
+        "link": "https://finance.yahoo.com/m/59b99a57-d7ad-34d0-856d-87429aba674f/3-tech-stocks-you-can-buy-and.html",
         "type": "STORY"
       },
       {
@@ -8179,11 +8182,8 @@
         "totalPay": 1889926
       },
       {
-        "name": "Mr. David Wadhwani",
-        "title": "President of Creativity & Productivity Business",
-        "age": 53,
-        "yearBorn": 1972,
-        "totalPay": 1885686
+        "name": "Mr. Abhigyan Modi",
+        "title": "Senior Vice President of Document Cloud"
       },
       {
         "name": "Mr. Douglas G. Clark C.F.A.",

@@ -1,10 +1,10 @@
 {
   "symbol": "NVDA",
-  "lastUpdated": "2026-09-29T06:39:51.976581+00:00",
+  "lastUpdated": "2026-09-30T15:30:08.171135+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-09-29T06:39:51.976581+00:00",
+    "snapshotBuiltAt": "2026-09-30T15:30:08.171135+00:00",
     "sections": {
-      "price": "2026-09-28"
+      "price": "2026-09-29"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 7.9107,
-      "ttmPe": 28.93,
-      "marketCap": 5526282420000,
-      "psRatio": 18.24,
-      "pbRatio": 24.13,
-      "pegRatio": 0.23
+      "ttmPe": 28.72,
+      "marketCap": 5486439870000,
+      "psRatio": 18.11,
+      "pbRatio": 23.96,
+      "pegRatio": 0.22
     },
     "profitability": {
       "roe": 28.12,
@@ -5893,25 +5893,17 @@
       ]
     },
     "wacc": {
-      "wacc": 21.94,
-      "costOfEquity": 22.09,
+      "wacc": 21.72,
+      "costOfEquity": 21.87,
       "costOfDebt": 0.59,
       "taxRate": 17,
-      "beta": 2.2083,
-      "marketCap": 5526282420000
+      "beta": 2.182,
+      "marketCap": 5486439870000
     },
     "beta": {
-      "beta5y": 2.2083
+      "beta5y": 2.182
     },
     "price": [
-      {
-        "date": "2025-09-26",
-        "open": 178.17,
-        "high": 179.77,
-        "low": 174.93,
-        "close": 178.19,
-        "volume": 148573700
-      },
       {
         "date": "2025-09-29",
         "open": 180.43,
@@ -7918,7 +7910,15 @@
         "high": 233.21,
         "low": 228.04,
         "close": 228.86,
-        "volume": 141544300
+        "volume": 142344300
+      },
+      {
+        "date": "2026-09-29",
+        "open": 230.97,
+        "high": 232.82,
+        "low": 227.03,
+        "close": 227.21,
+        "volume": 101203000
       }
     ],
     "news": [
@@ -8067,18 +8067,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 28.93,
-        "industryAvg": 30.1
+        "value": 28.72,
+        "industryAvg": 30.27
       },
       {
         "metric": "P/S Ratio",
-        "value": 18.24,
-        "industryAvg": 14.37
+        "value": 18.11,
+        "industryAvg": 14.45
       },
       {
         "metric": "P/B Ratio",
-        "value": 24.13,
-        "industryAvg": 12.55
+        "value": 23.96,
+        "industryAvg": 12.63
       },
       {
         "metric": "ROE",

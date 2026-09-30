@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import type { CSSProperties } from "react";
 import { Catalog97Shell } from "./Catalog97Shell";
 import { careerTimeline } from "@/constants/personal";
 import styles from "./Catalog97Resume.module.css";
@@ -343,10 +344,12 @@ export function Catalog97Resume() {
             <h2 className="c97-poster-sm">Capabilities</h2>
             <div
               className="c97-columns"
-              style={{
-                gap: "var(--c97-sp-4)",
-                marginTop: "var(--c97-sp-4)",
-              }}
+              style={
+                {
+                  "--c97-columns-gap": "var(--c97-sp-4)",
+                  marginTop: "var(--c97-sp-4)",
+                } as CSSProperties
+              }
             >
               {capabilities.map((group) => (
                 <div key={group.category}>
@@ -375,9 +378,7 @@ export function Catalog97Resume() {
         >
           <div
             className="c97-shell c97-columns"
-            style={{
-              gap: "var(--c97-sp-4)",
-            }}
+            style={{ "--c97-columns-gap": "var(--c97-sp-4)" } as CSSProperties}
           >
             <div>
               {/*

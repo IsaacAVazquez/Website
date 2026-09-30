@@ -1,10 +1,10 @@
 {
   "symbol": "ANET",
-  "lastUpdated": "2026-09-29T06:39:51.976581+00:00",
+  "lastUpdated": "2026-09-30T15:30:08.171135+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-09-29T06:39:51.976581+00:00",
+    "snapshotBuiltAt": "2026-09-30T15:30:08.171135+00:00",
     "sections": {
-      "price": "2026-09-28"
+      "price": "2026-09-29"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 3.1718,
-      "ttmPe": 64.61,
-      "marketCap": 258445104000,
-      "psRatio": 24.52,
-      "pbRatio": 17.47,
-      "pegRatio": 1.8
+      "ttmPe": 63.96,
+      "marketCap": 255847032000,
+      "psRatio": 24.27,
+      "pbRatio": 17.29,
+      "pegRatio": 1.78
     },
     "profitability": {
       "roe": 8.58,
@@ -5320,17 +5320,9 @@
     },
     "wacc": {},
     "beta": {
-      "beta5y": 1.5816
+      "beta5y": 1.555
     },
     "price": [
-      {
-        "date": "2025-09-26",
-        "open": 144.09,
-        "high": 144.4,
-        "low": 140.76,
-        "close": 142.5,
-        "volume": 4867700
-      },
       {
         "date": "2025-09-29",
         "open": 144.92,
@@ -7337,7 +7329,15 @@
         "high": 208.35,
         "low": 203.52,
         "close": 204.92,
-        "volume": 3467600
+        "volume": 3480800
+      },
+      {
+        "date": "2026-09-29",
+        "open": 207.1,
+        "high": 207.48,
+        "low": 201.35,
+        "close": 202.86,
+        "volume": 4551800
       }
     ],
     "news": [
@@ -7414,11 +7414,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "f090691f-d60d-31b4-8801-b74f7623f74f",
-        "title": "Buy 5 Internet-Centric AI Stocks on the Dip to Boost Portfolio Returns",
+        "uuid": "c5387320-7e0a-3c5c-98ce-eec930f7dbc2",
+        "title": "The New York Times Company Leverages Digital Subscriptions for Growth",
         "publisher": "Zacks",
         "reportDate": "2025-05-26",
-        "link": "https://finance.yahoo.com/news/buy-5-internet-centric-ai-120200754.html",
+        "link": "https://finance.yahoo.com/news/york-times-company-leverages-digital-144500877.html",
         "type": "STORY"
       }
     ],
@@ -7481,18 +7481,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 64.61,
-        "industryAvg": 29.76
+        "value": 63.96,
+        "industryAvg": 29.65
       },
       {
         "metric": "P/S Ratio",
-        "value": 24.52,
-        "industryAvg": 4.32
+        "value": 24.27,
+        "industryAvg": 4.31
       },
       {
         "metric": "P/B Ratio",
-        "value": 17.47,
-        "industryAvg": 9.09
+        "value": 17.29,
+        "industryAvg": 9.06
       },
       {
         "metric": "ROE",

@@ -1,11 +1,14 @@
 {
   "symbol": "CDNS",
-  "lastUpdated": "2026-09-29T06:39:51.976581+00:00",
+  "lastUpdated": "2026-09-30T15:30:08.171135+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-09-29T06:39:51.976581+00:00",
+    "snapshotBuiltAt": "2026-09-30T15:30:08.171135+00:00",
     "sections": {
-      "price": "2026-09-28"
-    }
+      "price": "2026-09-29"
+    },
+    "retainedSections": [
+      "industry"
+    ]
   },
   "source": "prefetched",
   "capabilities": {
@@ -40,10 +43,10 @@
     },
     "fundamentals": {
       "ttmEps": 5.0263,
-      "ttmPe": 65,
-      "marketCap": 89970893100,
-      "psRatio": 15.41,
-      "pbRatio": 13.12,
+      "ttmPe": 64.49,
+      "marketCap": 89274148810,
+      "psRatio": 15.29,
+      "pbRatio": 13.02,
       "pegRatio": 0.51
     },
     "profitability": {
@@ -5984,25 +5987,17 @@
       ]
     },
     "wacc": {
-      "wacc": 13.38,
-      "costOfEquity": 13.750000000000002,
+      "wacc": 13.16,
+      "costOfEquity": 13.52,
       "costOfDebt": 1.3299999999999998,
       "taxRate": 28.000000000000004,
-      "beta": 1.1148,
-      "marketCap": 89970893100
+      "beta": 1.0853,
+      "marketCap": 89274148810
     },
     "beta": {
-      "beta5y": 1.1148
+      "beta5y": 1.0853
     },
     "price": [
-      {
-        "date": "2025-09-26",
-        "open": 349.92,
-        "high": 351.09,
-        "low": 346.99,
-        "close": 350.11,
-        "volume": 1299300
-      },
       {
         "date": "2025-09-29",
         "open": 352.88,
@@ -8009,7 +8004,15 @@
         "high": 329.35,
         "low": 317.89,
         "close": 326.7,
-        "volume": 1983200
+        "volume": 1996000
+      },
+      {
+        "date": "2026-09-29",
+        "open": 321.2,
+        "high": 324.25,
+        "low": 314,
+        "close": 324.17,
+        "volume": 2632600
       }
     ],
     "news": [
@@ -8086,11 +8089,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "f8fe7d94-d06a-3bb5-8035-a550a0b80cc1",
-        "title": "Cadence Design Systems, Inc.'s (NASDAQ:CDNS) recent 9.1% pullback adds to one-year year losses, institutional owners may take drastic measures",
-        "publisher": "Simply Wall St.",
+        "uuid": "9bec91a8-bc34-344d-94c1-7eb44356d4ca",
+        "title": "Sector Update: Tech Stocks Advance Premarket Thursday",
+        "publisher": "MT Newswires",
         "reportDate": "2025-05-29",
-        "link": "https://finance.yahoo.com/news/cadence-design-systems-inc-nasdaq-130018859.html",
+        "link": "https://finance.yahoo.com/news/sector-tech-stocks-advance-premarket-131131117.html",
         "type": "STORY"
       }
     ],

@@ -1,10 +1,10 @@
 {
   "symbol": "CVS",
-  "lastUpdated": "2026-09-29T06:39:51.976581+00:00",
+  "lastUpdated": "2026-09-30T15:30:08.171135+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-09-29T06:39:51.976581+00:00",
+    "snapshotBuiltAt": "2026-09-30T15:30:08.171135+00:00",
     "sections": {
-      "price": "2026-09-28"
+      "price": "2026-09-29"
     },
     "retainedSections": [
       "fundamentals"
@@ -43,11 +43,11 @@
     },
     "fundamentals": {
       "ttmEps": 3.7879,
-      "ttmPe": 23.19,
+      "ttmPe": 22.99,
       "pegRatio": 0.12,
-      "marketCap": 112272300000,
+      "marketCap": 111313800000,
       "psRatio": 0.27,
-      "pbRatio": 1.41
+      "pbRatio": 1.4
     },
     "profitability": {
       "roe": 3.7900000000000005,
@@ -5618,25 +5618,17 @@
       ]
     },
     "wacc": {
-      "wacc": 6.04,
-      "costOfEquity": 9.64,
+      "wacc": 6,
+      "costOfEquity": 9.610000000000001,
       "costOfDebt": 0.9900000000000001,
       "taxRate": 25,
-      "beta": 0.5769,
-      "marketCap": 112272300000
+      "beta": 0.572,
+      "marketCap": 111313800000
     },
     "beta": {
-      "beta5y": 0.5769
+      "beta5y": 0.572
     },
     "price": [
-      {
-        "date": "2025-09-26",
-        "open": 74.94,
-        "high": 75.95,
-        "low": 74.53,
-        "close": 75.77,
-        "volume": 4900600
-      },
       {
         "date": "2025-09-29",
         "open": 75.69,
@@ -7644,9 +7636,25 @@
         "low": 87.83,
         "close": 87.85,
         "volume": 7900300
+      },
+      {
+        "date": "2026-09-29",
+        "open": 87.2,
+        "high": 87.56,
+        "low": 86.36,
+        "close": 87.1,
+        "volume": 7152300
       }
     ],
     "news": [
+      {
+        "uuid": "bca8354d-1f90-383b-a5a6-f5382a1487ee",
+        "title": "3 things we've learned from healthcare earnings",
+        "publisher": "Yahoo Finance Video",
+        "reportDate": "2025-05-02",
+        "link": "https://finance.yahoo.com/video/3-things-weve-learned-healthcare-180401035.html",
+        "type": "VIDEO"
+      },
       {
         "uuid": "e6dff226-06cc-3c19-a10a-76e1c4162a66",
         "title": "Justice Department Sues Big Medicare Insurers Alleging Kickbacks",
@@ -7662,14 +7670,6 @@
         "reportDate": "2025-05-02",
         "link": "https://finance.yahoo.com/m/51553283-f460-34be-9ced-b04dec0abc5b/why-eli-lilly%2C-viking.html",
         "type": "STORY"
-      },
-      {
-        "uuid": "bca8354d-1f90-383b-a5a6-f5382a1487ee",
-        "title": "3 things we've learned from healthcare earnings",
-        "publisher": "Yahoo Finance Video",
-        "reportDate": "2025-05-02",
-        "link": "https://finance.yahoo.com/video/3-things-weve-learned-healthcare-180401035.html",
-        "type": "VIDEO"
       },
       {
         "uuid": "8e2dfa82-1fa8-3fa9-b024-601515ee3e69",
@@ -7688,14 +7688,6 @@
         "type": "STORY"
       },
       {
-        "uuid": "85dc8dd6-94c5-3bdf-bfcc-5fc0c17ef9ac",
-        "title": "AVNS Stock Gains Post Q1 Earnings & Revenue Beat, Gross Margin Down",
-        "publisher": "Zacks",
-        "reportDate": "2025-05-08",
-        "link": "https://finance.yahoo.com/news/avns-stock-gains-post-q1-165000634.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "d683abdc-c490-3754-ab14-e0891e03c8e6",
         "title": "MASI Stock Slips Despite Q1 Earnings and Revenue Beat, Margins Expand",
         "publisher": "Zacks",
@@ -7704,11 +7696,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "2698cddb-15c9-48d9-bc0a-8ecf627a14ef",
-        "title": "Aetna ACA exit is bad for marketplace, good for Oscar: CEO Bertolini",
-        "publisher": "Yahoo Finance",
-        "reportDate": "2025-05-09",
-        "link": "https://finance.yahoo.com/news/aetna-aca-exit-is-bad-for-marketplace-good-for-oscar-ceo-bertolini-131538581.html",
+        "uuid": "85dc8dd6-94c5-3bdf-bfcc-5fc0c17ef9ac",
+        "title": "AVNS Stock Gains Post Q1 Earnings & Revenue Beat, Gross Margin Down",
+        "publisher": "Zacks",
+        "reportDate": "2025-05-08",
+        "link": "https://finance.yahoo.com/news/avns-stock-gains-post-q1-165000634.html",
         "type": "STORY"
       },
       {
@@ -7717,6 +7709,14 @@
         "publisher": "Zacks",
         "reportDate": "2025-05-09",
         "link": "https://finance.yahoo.com/news/ingn-stock-gains-following-q1-160600707.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "2698cddb-15c9-48d9-bc0a-8ecf627a14ef",
+        "title": "Aetna ACA exit is bad for marketplace, good for Oscar: CEO Bertolini",
+        "publisher": "Yahoo Finance",
+        "reportDate": "2025-05-09",
+        "link": "https://finance.yahoo.com/news/aetna-aca-exit-is-bad-for-marketplace-good-for-oscar-ceo-bertolini-131538581.html",
         "type": "STORY"
       },
       {
@@ -7798,8 +7798,8 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 23.19,
-        "industryAvg": 20.74
+        "value": 22.99,
+        "industryAvg": 20.64
       },
       {
         "metric": "P/S Ratio",
@@ -7808,8 +7808,8 @@
       },
       {
         "metric": "P/B Ratio",
-        "value": 1.41,
-        "industryAvg": 2.27
+        "value": 1.4,
+        "industryAvg": 2.26
       },
       {
         "metric": "ROE",

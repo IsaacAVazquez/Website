@@ -205,21 +205,21 @@ export function LaLigaClient({
   }
 
   function handleClubChange(clubId: string) {
-    // Always open the drawer on an explicit club selection, independent of
-    // `navigate`'s href diffing — `buildHref` strips the `club` query param
-    // entirely when it matches the default club on the default view, so
-    // drawer visibility can't be derived from the URL alone the way it can
-    // for Premier League (whose `team` param is never auto-stripped).
-    setIsDrawerOpen(true);
-    navigate({
-      view: routeState.view,
-      club: canonicalizeClubId(clubId, aliasMap) ?? defaultState.club,
-      detail: routeState.detail,
-    });
+    // The drawer is its own state, since `buildHref` strips the `club` param
+    // when it matches the default club on the default view and the URL alone
+    // cannot say whether a club was picked.
+    const club = canonicalizeClubId(clubId, aliasMap) ?? defaultState.club;
+    // The ladder shows every club while the table is filtered, so a club
+    // outside the focused view goes back to the full table to be selectable.
+    const view = visibleClubs.some((visible) => visible.id === club)
+      ? routeState.view
+      : defaultState.view;
+    setDrawerClubId(club);
+    navigate({ view, club, detail: routeState.detail });
   }
 
   function handleCloseDrawer() {
-    setIsDrawerOpen(false);
+    setDrawerClubId(null);
   }
 
   useEffect(() => {
@@ -273,12 +273,14 @@ export function LaLigaClient({
   }
   // Mirrors a genuinely resolvable explicit `?club=` on first render (an
   // unknown/unaliasable value shouldn't pop the overlay just because the
-  // query string carried something) — `handleClubChange` flips this on every
-  // subsequent selection regardless of URL-diffing quirks.
-  const [isDrawerOpen, setIsDrawerOpen] = useState(() => {
+  // query string carried something) — `handleClubChange` sets this on every
+  // subsequent selection. It holds the club that was asked for and waits for
+  // the route to reach that club, so the drawer never shows the last one.
+  const [drawerClubId, setDrawerClubId] = useState(() => {
     const explicitClubId = canonicalizeClubId(searchParams.get("club"), aliasMap);
-    return explicitClubId !== null && clubById.has(explicitClubId);
+    return explicitClubId !== null && clubById.has(explicitClubId) ? explicitClubId : null;
   });
+  const isDrawerOpen = drawerClubId !== null && drawerClubId === selectedClubId;
 
   const lead = PROJECT_PRESS[LA_LIGA_ROUTE].lead;
 
@@ -484,7 +486,10 @@ export function LaLigaClient({
             aria-labelledby={`la-liga-detail-tab-${activeDetailTab}`}
           >
             {activeDetailTab === "club" && (
-              <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+              <div
+                className="grid xl:grid-cols-[minmax(0,1.2fr)_minmax(0,1fr)]"
+                style={{ gap: "var(--c97-sp-4)" }}
+              >
                 <div className="space-y-5">
                   <div className="flex items-center justify-between gap-3">
                     <div className="flex min-w-0 items-center gap-3">
@@ -537,6 +542,12 @@ export function LaLigaClient({
                   <p className="c97-prose">{clubStoryline}</p>
                 </div>
 
+                {/* Fixtures sit side by side under the club on a tablet and
+                    stack beside it on a wide screen, so no card is left alone. */}
+                <div
+                  className="grid content-start md:grid-cols-2 xl:grid-cols-1"
+                  style={{ gap: "var(--c97-sp-3)" }}
+                >
                 {!teamSnapshot && (isTeamSnapshotLoading || teamSnapshotError) && (
                   <div
                     className="c97-panel"
@@ -582,6 +593,7 @@ export function LaLigaClient({
                     </div>
                   </div>
                 )}
+                </div>
               </div>
             )}
 
@@ -609,7 +621,7 @@ export function LaLigaClient({
             {activeDetailTab === "scorers" && (
               <div className="grid gap-6 md:grid-cols-2">
                 <div>
-                  <div className="flex items-start justify-between gap-3">
+                  <div className="flex min-h-[44px] items-start justify-between gap-3">
                     <p className="c97-kicker">Goals &amp; assists leaderboard</p>
                     <a
                       href="https://www.laliga.com/en-GB/stats/laliga-easports/scorers"
@@ -622,7 +634,7 @@ export function LaLigaClient({
                       <ExternalLink className="h-4 w-4" />
                     </a>
                   </div>
-                  <div className="mt-3">
+                  <div style={{ marginTop: "var(--c97-sp-2)" }}>
                     <LeaderLedger
                       title="Top scorers"
                       unit="G"
@@ -637,7 +649,10 @@ export function LaLigaClient({
                   </div>
                 </div>
                 <div>
-                  <div className="mt-3 md:mt-9">
+                  {/* Holds the height of the heading row beside it, so the
+                      two ledgers start on the same line. */}
+                  <div className="hidden min-h-[44px] md:block" aria-hidden="true" />
+                  <div style={{ marginTop: "var(--c97-sp-2)" }}>
                     <LeaderLedger
                       title="Most assists"
                       unit="A"
