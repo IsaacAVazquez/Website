@@ -10,6 +10,7 @@ All notable changes to this repository are documented here. Format: `YYYY-MM-DD`
 - Apply Isaac's answers to the bio follow-up questions ([#522](https://github.com/IsaacAVazquez/Website/pull/522)).
 - Keep the writing dateline from failing hydration in WebKit ([#529](https://github.com/IsaacAVazquez/Website/pull/529)).
 - Stop league page clicks opening the wrong club and tidy the layout ([#523](https://github.com/IsaacAVazquez/Website/pull/523)).
+- Land a fresh load on the section its fragment names ([#526](https://github.com/IsaacAVazquez/Website/pull/526)).
 
 ---
 
