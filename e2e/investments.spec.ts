@@ -460,23 +460,30 @@ test.describe("Investments", () => {
     // the state its print is in.
     await page.emulateMedia({ media: "print" });
 
-    const layout = await page.evaluate(() => {
-      const style = (selector: string) => getComputedStyle(document.querySelector(selector)!);
-      const columns = (selector: string) => style(selector).gridTemplateColumns.split(" ").length;
-      return {
-        shellColumns: columns(".invest-shell"),
-        sidebar: style(".invest-sidebar").display,
-        sectionRail: style("[class*='sectionRail']").display,
-        heroColumns: columns(".invest-hero"),
-        statColumns: columns("[class*='statsGrid']"),
-        trendColumn: style(".invest-holdings th.col-trend").display,
-        metricColumns: columns(".research-key-metrics"),
-        railStart: style(".invest-rail").gridColumnStart,
-        plannerColumns: columns("#retirement .invest-retire-layout"),
-      };
-    });
+    const readLayout = () =>
+      page.evaluate(() => {
+        const style = (selector: string) => {
+          const node = document.querySelector(selector);
+          return node ? getComputedStyle(node) : null;
+        };
+        const columns = (selector: string) =>
+          style(selector)?.gridTemplateColumns.split(" ").length ?? null;
+        return {
+          shellColumns: columns(".invest-shell"),
+          sidebar: style(".invest-sidebar")?.display ?? null,
+          sectionRail: style("[class*='sectionRail']")?.display ?? null,
+          heroColumns: columns(".invest-hero"),
+          statColumns: columns("[class*='statsGrid']"),
+          trendColumn: style(".invest-holdings th.col-trend")?.display ?? null,
+          metricColumns: columns(".research-key-metrics"),
+          railStart: style(".invest-rail")?.gridColumnStart ?? null,
+          plannerColumns: columns("#retirement .invest-retire-layout"),
+        };
+      });
 
-    expect(layout).toEqual({
+    // The page draws the research view again while the route settles its URL,
+    // so the read repeats until every piece is on the page.
+    await expect.poll(readLayout).toEqual({
       shellColumns: 1,
       sidebar: "none",
       sectionRail: "flex",
