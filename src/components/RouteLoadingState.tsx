@@ -1,3 +1,5 @@
+import type { CSSProperties } from "react";
+
 interface RouteLoadingStateProps {
   /** Surface label rendered in the heading ("the NFL dashboard", "investments", etc.). */
   surfaceName?: string;
@@ -61,7 +63,10 @@ export function RouteLoadingState({
         </div>
 
         {/* Panel grid */}
-        <div className="c97-columns" style={{ gap: "var(--c97-sp-3)" }}>
+        <div
+          className="c97-columns"
+          style={{ "--c97-columns-gap": "var(--c97-sp-3)" } as CSSProperties}
+        >
           {Array.from({ length: cardCount }, (_, i) => (
             <div
               key={i}

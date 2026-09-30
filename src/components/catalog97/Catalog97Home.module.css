@@ -29,7 +29,13 @@
  */
 .portrait { --c97-paint-pos: 50% 20%; }
 .portraitImage { object-fit: cover; object-position: var(--c97-paint-pos); }
-@media (max-width: 880px) {
+/*
+ * Paper takes this layout too, whatever the window. Safari's engine answers a
+ * width query with the window's width while it lays the print out at the
+ * paper's, about 700px, so from a desktop window the two columns printed
+ * squeezed. "Printing on paper" in STYLING.md has the measurements.
+ */
+@media (max-width: 880px), print {
   .heroGrid { grid-template-columns: minmax(0, 1fr); gap: var(--c97-sp-5); }
   .heroCopy { grid-template-areas: "h1" "actions" "lead"; }
   .portrait { width: min(72%, 300px); }
@@ -150,7 +156,8 @@
 .postCopy { display: grid; max-width: var(--c97-measure-wide); gap: 4px; }
 .post > :last-child { white-space: nowrap; }
 
-@media (max-width: 880px) {
+/* Paper takes the one column as well, for the reason given beside the hero. */
+@media (max-width: 880px), print {
   .workGrid { grid-template-columns: minmax(0, 1fr); }
 }
 
