@@ -7,7 +7,7 @@ import { generateBreadcrumbStructuredData } from "@/lib/seo";
 // Hand-curated snapshot of what I'm focused on right now.
 // Refresh when anything here goes stale — this page is meant to feel
 // current, not archival.
-const NOW_UPDATED = "2026-09-28";
+const NOW_UPDATED = "2026-09-29";
 const NOW_UPDATED_LABEL = "September 2026";
 const NOW_LOCATION = "Berkeley, CA";
 
@@ -29,24 +29,6 @@ const focus = [
     title: "One design for the whole site",
     detail:
       "In September I finished moving every page on this site onto one design system, printed in riso colors, and gave each project its own signature visual.",
-  },
-];
-
-const reading = [
-  {
-    title: "The Hard Thing About Hard Things",
-    author: "Ben Horowitz",
-    note: "Re-read while getting through an MBA group project that ran off the rails.",
-  },
-  {
-    title: "High Output Management",
-    author: "Andy Grove",
-    note: "Still the clearest lens I have for thinking about leverage.",
-  },
-  {
-    title: "The Age of AI",
-    author: "Henry Kissinger, Eric Schmidt, Daniel Huttenlocher",
-    note: "Keeps me honest about the bigger picture behind the tooling work.",
   },
 ];
 
@@ -83,7 +65,7 @@ const TILE_SURFACES = ["ink-blue", "ink-saffron", "stone", "chocolate"] as const
 
 export const metadata: Metadata = constructMetadata({
   title: "What I'm Building Now | Isaac Vazquez",
-  description: `What I'm focused on as of ${NOW_UPDATED_LABEL}, from my second year at Haas and my full-time search to what I'm building and reading.`,
+  description: `What I'm focused on as of ${NOW_UPDATED_LABEL}, from my second year at Haas and my full-time search to what I'm building.`,
   canonicalUrl: "https://isaacvazquez.com/now",
   dateModified: NOW_UPDATED,
 });
@@ -173,53 +155,8 @@ export default function NowPage() {
         </div>
       </section>
 
-      {/* Reading */}
-      <section className="c97-band" data-c97-surface="bone">
-        <div className="c97-shell">
-          <p className="c97-kicker">Now</p>
-          <h2 className="c97-serif c97-h2" style={{ marginTop: "var(--c97-sp-2)" }}>
-            Reading
-          </h2>
-          <ul
-            style={{
-              listStyle: "none",
-              margin: 0,
-              padding: 0,
-              marginTop: "var(--c97-sp-4)",
-            }}
-          >
-            {reading.map((book) => (
-              <li
-                key={book.title}
-                className="c97-row c97-row-stack-sm"
-                style={{
-                  borderTop: "1px solid var(--c97-rule)",
-                  paddingBlock: "var(--c97-sp-3)",
-                }}
-              >
-                <div>
-                  <h3 className="c97-serif c97-h3">{book.title}</h3>
-                  <p
-                    className="c97-prose"
-                    style={{
-                      marginTop: "var(--c97-sp-1)",
-                      color: "var(--c97-ink-2)",
-                    }}
-                  >
-                    {book.note}
-                  </p>
-                </div>
-                <p className="c97-meta">
-                  <span>{book.author}</span>
-                </p>
-              </li>
-            ))}
-          </ul>
-        </div>
-      </section>
-
       {/* Currently building */}
-      <section className="c97-band" data-c97-surface="paper">
+      <section className="c97-band" data-c97-surface="bone">
         <div className="c97-shell">
           <p className="c97-kicker">Now</p>
           <h2 className="c97-serif c97-h2" style={{ marginTop: "var(--c97-sp-2)" }}>
@@ -259,7 +196,7 @@ export default function NowPage() {
       </section>
 
       {/* What I'm not doing */}
-      <section className="c97-band" data-c97-surface="bone">
+      <section className="c97-band" data-c97-surface="paper">
         <div className="c97-shell">
           <p className="c97-kicker">Now</p>
           <h2 className="c97-serif c97-h2" style={{ marginTop: "var(--c97-sp-2)" }}>
@@ -284,7 +221,7 @@ export default function NowPage() {
       </section>
 
       {/* Keep up */}
-      <section className="c97-band" data-c97-surface="paper">
+      <section className="c97-band" data-c97-surface="bone">
         <div className="c97-shell">
           <p className="c97-kicker">Now</p>
           <h2 className="c97-serif c97-h2" style={{ marginTop: "var(--c97-sp-2)" }}>

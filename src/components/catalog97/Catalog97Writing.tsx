@@ -6,6 +6,7 @@ import { Catalog97Shell } from "./Catalog97Shell";
 import { Catalog97Slot } from "./Catalog97Primitives";
 import type { BlogPostPreview } from "@/lib/blog";
 import { BLOG_TOPIC_PAGES } from "@/lib/blog-config";
+import { sep } from "@/lib/date-formatters";
 
 interface SectionSummary {
   id: string;
@@ -57,12 +58,14 @@ function readingMinutes(readingTime: string): number {
 function dayMonthYear(iso: string): string {
   const date = new Date(iso);
   if (Number.isNaN(date.getTime())) return "";
-  return date.toLocaleDateString("en-GB", {
-    day: "numeric",
-    month: "short",
-    year: "numeric",
-    timeZone: "UTC",
-  });
+  return sep(
+    date.toLocaleDateString("en-GB", {
+      day: "numeric",
+      month: "short",
+      year: "numeric",
+      timeZone: "UTC",
+    }),
+  );
 }
 
 /**

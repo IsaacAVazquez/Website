@@ -5,6 +5,7 @@ import {
   formatUpdatedAt,
   isLocalDateKey,
   parseLocalDateKey,
+  sep,
   toLocalDateKey,
 } from "../date-formatters";
 
@@ -35,6 +36,14 @@ describe("date-formatters", () => {
     expect(formatShortDate(date)).toBe("Apr 25");
     expect(formatFullDate(date)).toBe("Apr 25, 2026");
     expect(formatUpdatedAt(date)).toBe("Apr 25, 5:15 PM PDT");
+  });
+
+  it("prints an en-GB September as Sep, whichever way the engine spelled it", () => {
+    // Node, Chrome, and Firefox hand back "Sept" and WebKit on macOS hands back "Sep".
+    expect(sep("25 Sept 2026")).toBe("25 Sep 2026");
+    expect(sep("22 Sept, 16:39")).toBe("22 Sep, 16:39");
+    expect(sep("25 Sep 2026")).toBe("25 Sep 2026");
+    expect(sep("25 September 2026")).toBe("25 September 2026");
   });
 
   it("creates calendar keys from local date fields rather than UTC", () => {

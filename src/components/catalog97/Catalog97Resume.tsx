@@ -65,27 +65,27 @@ interface Entry {
 
 /*
  * Roles, dates, and metrics match the PDF résumé except the Haas@Work title and
- * dates, which come from profile.ts, and the Juno internship, which postdates
- * the PDF. Some wording is plainer for the web. Date ranges are unhyphenated per
- * the site's writing voice ("Jan 2022 to Jan 2025").
+ * dates and the Juno internship, which postdates the PDF. Haas@Work ended in May
+ * 2026 (Isaac, 2026-09-29). Some wording is plainer for the web. Date ranges are
+ * unhyphenated per the site's writing voice ("Jan 2022 to Jan 2025").
  */
 const experience: Entry[] = [
-  {
-    role: "Innovation Consultant Team Lead",
-    company: "Haas@Work",
-    when: "Jan 2026 to now",
-    kind: "Part time",
-    description:
-      "Leads a student consulting team on an operations scaling project for a global rideshare technology company, running communication with the client and the team's day to day execution.",
-  },
   {
     role: "MBA Growth Intern",
     company: "Juno",
     when: "May to Aug 2026",
     kind: "Internship",
     description:
-      "Growth intern on the MBA team at a fintech marketplace that negotiates group student loan rates. Reverse-engineered the production dashboard's SQL until it matched to the dollar and automated it into an hourly-refreshing 33-tab dashboard and executive view, turned on the first GA4 conversion events and shipped four Google Tag Manager releases, and audited the Customer.io lifecycle program across 233 campaigns and 2,071 broadcasts, which led to running the SMS program as its product manager. Replaced a naive meeting-conversion lift with a matched-cohort estimate and designed a pre-registered experiment with a power analysis.",
+      "Growth intern on the MBA team at a fintech marketplace that negotiates group student loan rates. Reverse-engineered the production dashboard's SQL until it matched to the dollar and automated it into an hourly-refreshing 33-tab dashboard and executive view, turned on the first GA4 conversion events and shipped four Google Tag Manager releases, and audited the Customer.io lifecycle program across 233 campaigns and 2,071 broadcasts, which led to running the SMS program. Replaced a naive meeting-conversion lift with a matched-cohort estimate and designed a pre-registered experiment with a power analysis.",
     writeUp: "/writing/juno-mba-growth-internship",
+  },
+  {
+    role: "Innovation Consultant Team Lead",
+    company: "Haas@Work",
+    when: "Jan to May 2026",
+    kind: "Part time",
+    description:
+      "Led a student consulting team on an operations scaling project for a global rideshare technology company, running communication with the client and the team's day to day execution.",
   },
   {
     role: "Quality Assurance Engineer",

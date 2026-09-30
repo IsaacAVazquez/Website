@@ -153,11 +153,18 @@
     gap: 12pt !important;
   }
 
-  /* A link that stays in print shows where it goes. */
+  /*
+   * A link that stays in print shows where it goes. It prints as running text,
+   * so the padding that widens its hit area comes off, and the negative margin
+   * that takes that padding back on screen comes off with it. While the margin
+   * stayed, "Get in touch" began left of the column and the edge of the page
+   * cut off its "G".
+   */
   .print a[href^="/"]:not([download]) {
     display: inline;
     min-height: 0;
     padding: 0;
+    margin: 0;
     white-space: normal;
     text-transform: none;
     text-decoration: none;

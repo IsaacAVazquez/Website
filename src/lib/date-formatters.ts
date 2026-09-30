@@ -15,6 +15,14 @@ export const DISPLAY_TIME_ZONE = "America/Los_Angeles";
 /** Date-only values ("2026-09-15") parse as UTC midnight, so they format in UTC to keep their calendar day. */
 export const DATE_ONLY_TIME_ZONE = "UTC";
 
+/**
+ * Node, Chrome, and Firefox print an en-GB September as "Sept" and WebKit on
+ * macOS prints "Sep", which is what the design uses. Every en-GB short month
+ * goes through this, or a date rendered on the server and again in the
+ * browser breaks hydration in WebKit for as long as it falls in September.
+ */
+export const sep = (text: string) => text.replace(/\bSept\b/, "Sep");
+
 /** Short date: "Apr 25" */
 export const SHORT_DATE_FORMATTER = new Intl.DateTimeFormat("en-US", {
   month: "short",

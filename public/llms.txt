@@ -2,9 +2,9 @@
 
 > Second-year MBA candidate at UC Berkeley Haas, Class of 2027, moving into product management. He spent six years in campaign data at Open Progress and QA at Civitech, where the QA role grew into product work, then a summer 2026 growth internship at Juno.
 
-Isaac Vazquez is a second-year MBA candidate at UC Berkeley Haas, Class of 2027, looking for a full-time product management role that starts after he graduates in May 2027, ideally in fintech or AI. At Civitech, a campaign software company, his QA role grew into product work, and he owned the product vision for the TextOut texting platform, led a pricing initiative that generated $4M in additional revenue in 2024, and helped launch RunningMate. In summer 2026 he was the MBA growth intern at Juno, a fintech company that negotiates group rates on student loans. He is a Consortium Fellow and MLT Professional Development Fellow, and he builds and maintains the tools on this site.
+Isaac Vazquez is a second-year MBA candidate at UC Berkeley Haas, Class of 2027, looking for a full-time product management role that starts after he graduates in May 2027, and he is interested in consumer tech broadly. At Civitech, a campaign software company, his QA role grew into product work, and he owned the product vision for the TextOut texting platform, led a pricing initiative that generated $4M in additional revenue in 2024, and helped launch RunningMate. In summer 2026 he was the MBA growth intern at Juno, a fintech company that negotiates group rates on student loans. He is a Consortium Fellow and MLT Professional Development Fellow, and he builds and maintains the tools on this site.
 
-Last reviewed: 2026-09-28
+Last reviewed: 2026-09-29
 
 Legacy `/projects`, `/work`, and `/blog` URLs redirect permanently to their canonical routes. The on-site `/search` page is a lightweight navigation layer over a limited, mostly hand-maintained index. Most dashboards read a committed snapshot that a scheduled job refreshes, so each one shows where its numbers came from and when.
 
@@ -14,7 +14,7 @@ Legacy `/projects`, `/work`, and `/blog` URLs redirect permanently to their cano
 - [About](https://isaacvazquez.com/about): Background, MBA context, credentials, product philosophy, and expertise areas.
 - [Resume](https://isaacvazquez.com/resume): Role history, education, skills, and recruiting context.
 - [Contact](https://isaacvazquez.com/contact): Recruiting, collaboration, and direct contact. Email is IsaacVazquez@berkeley.edu.
-- [Now](https://isaacvazquez.com/now): What Isaac is focused on, reading, and building right now.
+- [Now](https://isaacvazquez.com/now): What Isaac is focused on and building right now.
 - [Changelog](https://isaacvazquez.com/changelog): Site updates, new tools, and shipped changes.
 - [LinkedIn](https://www.linkedin.com/in/isaac-vazquez/)
 - [GitHub](https://github.com/IsaacAVazquez)

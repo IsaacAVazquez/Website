@@ -10,6 +10,7 @@ import {
 } from "@/constants/caseStudies";
 import type { BlogPostPreview } from "@/lib/blog";
 import { formatPtTime, type SnapshotReadouts } from "@/lib/catalog97Readouts";
+import { sep } from "@/lib/date-formatters";
 
 export interface Catalog97HomeProps {
   featuredProjects: CaseStudyData[];
@@ -30,14 +31,14 @@ function formatPostDate(iso: string): string {
   const date = new Date(iso);
   return Number.isNaN(date.getTime())
     ? ""
-    : date
-        .toLocaleDateString("en-GB", {
+    : sep(
+        date.toLocaleDateString("en-GB", {
           day: "numeric",
           month: "short",
           year: "numeric",
           timeZone: "UTC",
-        })
-        .replace(/\bSept\b/, "Sep");
+        }),
+      );
 }
 
 export function Catalog97Home({
@@ -156,9 +157,9 @@ export function Catalog97Home({
               <p className={`c97-lead ${styles.lead}`}>
                 Before Haas I spent six years in campaign data and QA, mostly at
                 Civitech, where my QA job grew into product work, and in summer
-                2026 I was the MBA growth intern at Juno. I’m most interested in
-                fintech and AI, and I’m looking for a full-time product role
-                that starts after I graduate in May 2027.
+                2026 I was the MBA growth intern at Juno. I’m interested in
+                consumer tech broadly, and I’m looking for a full-time product
+                role that starts after I graduate in May 2027.
               </p>
 
             </div>
