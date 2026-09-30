@@ -150,6 +150,29 @@ test.describe("Print", () => {
     });
   }
 
+  test("prints Home in its narrow layout from a desktop window", async ({ page }) => {
+    await page.setViewportSize(DESKTOP);
+    await page.goto("/");
+    await expect(page.locator("[class*='heroGrid']")).toBeVisible();
+
+    await page.emulateMedia({ media: "print" });
+
+    const readLayout = () =>
+      page.evaluate(() => {
+        const columns = (selector: string) => {
+          const node = document.querySelector(selector);
+          return node ? getComputedStyle(node).gridTemplateColumns.split(" ").length : null;
+        };
+        return {
+          hero: columns("[class*='heroGrid']"),
+          collage: columns("[class*='Collage_collage']"),
+          work: columns("[class*='workGrid']"),
+        };
+      });
+
+    await expect.poll(readLayout).toEqual({ hero: 1, collage: 1, work: 1 });
+  });
+
   for (const route of ["/", "/about", "/investments", "/writing"]) {
     test(`shows nothing through a mask on ${route} on paper`, async ({ page }) => {
       await page.goto(route);
