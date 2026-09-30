@@ -44,7 +44,10 @@ const stubPost = {
   excerpt: "What post A is about.",
   readingTime: "5 min read",
   category: "Product",
-  publishedAt: "2026-06-01",
+  // The homepage lists clustered posts only, and September is the month
+  // engines abbreviate differently.
+  cluster: "PM Workflows",
+  publishedAt: "2026-09-25",
 };
 
 jest.mock("@/lib/blog", () => ({
@@ -89,6 +92,13 @@ describe("Portfolio shell page semantics", () => {
     render(await Home());
 
     expect(screen.getByRole("heading", { level: 3, name: "Project A" })).toBeInTheDocument();
+  });
+
+  // Node spells an en-GB September "Sept", and the design uses "Sep".
+  it("dates homepage posts with Sep, whichever way the engine spelled it", async () => {
+    render(await Home());
+
+    expect(screen.getByText("25 Sep 2026 · Product")).toBeInTheDocument();
   });
 
   it("links portfolio entries straight to the live tool", () => {
