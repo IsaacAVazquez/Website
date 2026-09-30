@@ -24,11 +24,6 @@ export const profile = {
     github: "https://github.com/IsaacAVazquez",
     linkedin: "https://www.linkedin.com/in/isaac-vazquez/",
   },
-  currentRole: {
-    title: "Innovation Consultant Team Lead",
-    organization: "Haas@Work",
-    startDate: "2026-01",
-  },
   formerEmployer: {
     name: "Civitech",
     url: "https://civitech.io",

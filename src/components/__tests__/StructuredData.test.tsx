@@ -63,7 +63,7 @@ describe("StructuredData", () => {
     });
   });
 
-  it("models Haas as current education and Haas@Work as the current role", () => {
+  it("models Haas as current education and names no current employer", () => {
     const schema = readSchema(
       renderToStaticMarkup(<StructuredData type="Person" />)
     );
@@ -89,9 +89,9 @@ describe("StructuredData", () => {
     expect(schema.disambiguatingDescription).toContain(
       "UC Berkeley Haas MBA candidate"
     );
-    expect(schema.worksFor).toEqual(
-      expect.objectContaining({ name: "Haas@Work" })
-    );
+    // Haas@Work ended in May 2026 (Isaac, 2026-09-29) and no job has followed,
+    // so the entity names no employer.
+    expect(schema.worksFor).toBeUndefined();
     expect(schema.affiliation).toEqual(
       expect.objectContaining({
         "@type": "CollegeOrUniversity",
@@ -105,7 +105,6 @@ describe("StructuredData", () => {
     // (his correction on 2026-09-28), so the entity claims no occupation.
     expect(schema.jobTitle).toBe("UC Berkeley Haas MBA Candidate");
     expect(schema.hasOccupation).toBeUndefined();
-    expect(JSON.stringify(schema)).not.toContain('"worksFor":{"@type":"Organization","name":"Civitech"');
   });
 
   it("emits only schema.org-valid fields on education entities", () => {
