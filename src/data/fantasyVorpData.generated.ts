@@ -9,7 +9,7 @@ import type {
 } from "@/lib/fantasyProsVorpSource";
 import type { ScoringFormat } from "@/types";
 
-export const fantasyVorpDataGeneratedAt = "2026-09-29T21:26:55.403Z";
+export const fantasyVorpDataGeneratedAt = "2026-09-30T21:27:13.868Z";
 
 export interface FantasyVorpDataset {
   season: number;
@@ -26,7 +26,7 @@ export const fantasyVorpData: Record<
     "10": {
       "season": 2026,
       "sourceUrl": "https://www.fantasypros.com/nfl/rankings/ppr-vorp.php?team_size=10",
-      "accessedAt": "2026-09-29T21:26:55.886Z",
+      "accessedAt": "2026-09-30T21:27:14.496Z",
       "players": [
         {
           "playerId": "fp-22968",
@@ -3415,7 +3415,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-23054",
           "name": "Audric Estime",
-          "team": "FA",
+          "team": "MIN",
           "position": "RB",
           "positionRank": 105,
           "rank": 377,
@@ -3847,7 +3847,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-22921",
           "name": "Jerome Ford",
-          "team": "MIN",
+          "team": "FA",
           "position": "RB",
           "positionRank": 129,
           "rank": 425,
@@ -5388,7 +5388,7 @@ export const fantasyVorpData: Record<
     "12": {
       "season": 2026,
       "sourceUrl": "https://www.fantasypros.com/nfl/rankings/ppr-vorp.php",
-      "accessedAt": "2026-09-29T21:26:56.581Z",
+      "accessedAt": "2026-09-30T21:27:15.457Z",
       "players": [
         {
           "playerId": "fp-22968",
@@ -8417,7 +8417,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-23054",
           "name": "Audric Estime",
-          "team": "FA",
+          "team": "MIN",
           "position": "RB",
           "positionRank": 105,
           "rank": 337,
@@ -8804,7 +8804,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-22921",
           "name": "Jerome Ford",
-          "team": "MIN",
+          "team": "FA",
           "position": "RB",
           "positionRank": 129,
           "rank": 380,
@@ -10750,7 +10750,7 @@ export const fantasyVorpData: Record<
     "14": {
       "season": 2026,
       "sourceUrl": "https://www.fantasypros.com/nfl/rankings/ppr-vorp.php?team_size=14",
-      "accessedAt": "2026-09-29T21:26:57.204Z",
+      "accessedAt": "2026-09-30T21:27:16.178Z",
       "players": [
         {
           "playerId": "fp-22968",
@@ -13599,7 +13599,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-23054",
           "name": "Audric Estime",
-          "team": "FA",
+          "team": "MIN",
           "position": "RB",
           "positionRank": 105,
           "rank": 317,
@@ -14058,7 +14058,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-22921",
           "name": "Jerome Ford",
-          "team": "MIN",
+          "team": "FA",
           "position": "RB",
           "positionRank": 129,
           "rank": 368,
@@ -16114,7 +16114,7 @@ export const fantasyVorpData: Record<
     "10": {
       "season": 2026,
       "sourceUrl": "https://www.fantasypros.com/nfl/rankings/half-ppr-vorp.php?team_size=10",
-      "accessedAt": "2026-09-29T21:26:58.052Z",
+      "accessedAt": "2026-09-30T21:27:17.272Z",
       "players": [
         {
           "playerId": "fp-22968",
@@ -19170,7 +19170,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-23054",
           "name": "Audric Estime",
-          "team": "FA",
+          "team": "MIN",
           "position": "RB",
           "positionRank": 106,
           "rank": 340,
@@ -19557,7 +19557,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-22921",
           "name": "Jerome Ford",
-          "team": "MIN",
+          "team": "FA",
           "position": "RB",
           "positionRank": 129,
           "rank": 383,
@@ -21476,7 +21476,7 @@ export const fantasyVorpData: Record<
     "12": {
       "season": 2026,
       "sourceUrl": "https://www.fantasypros.com/nfl/rankings/half-ppr-vorp.php",
-      "accessedAt": "2026-09-29T21:26:58.898Z",
+      "accessedAt": "2026-09-30T21:27:17.687Z",
       "players": [
         {
           "playerId": "fp-22968",
@@ -24676,7 +24676,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-23054",
           "name": "Audric Estime",
-          "team": "FA",
+          "team": "MIN",
           "position": "RB",
           "positionRank": 106,
           "rank": 356,
@@ -25054,7 +25054,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-22921",
           "name": "Jerome Ford",
-          "team": "MIN",
+          "team": "FA",
           "position": "RB",
           "positionRank": 129,
           "rank": 398,
@@ -26838,7 +26838,7 @@ export const fantasyVorpData: Record<
     "14": {
       "season": 2026,
       "sourceUrl": "https://www.fantasypros.com/nfl/rankings/half-ppr-vorp.php?team_size=14",
-      "accessedAt": "2026-09-29T21:26:59.539Z",
+      "accessedAt": "2026-09-30T21:27:18.468Z",
       "players": [
         {
           "playerId": "fp-22968",
@@ -29642,7 +29642,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-23054",
           "name": "Audric Estime",
-          "team": "FA",
+          "team": "MIN",
           "position": "RB",
           "positionRank": 106,
           "rank": 312,
@@ -30083,7 +30083,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-22921",
           "name": "Jerome Ford",
-          "team": "MIN",
+          "team": "FA",
           "position": "RB",
           "positionRank": 129,
           "rank": 361,
@@ -32202,7 +32202,7 @@ export const fantasyVorpData: Record<
     "10": {
       "season": 2026,
       "sourceUrl": "https://www.fantasypros.com/nfl/rankings/vorp.php?team_size=10",
-      "accessedAt": "2026-09-29T21:27:00.314Z",
+      "accessedAt": "2026-09-30T21:27:19.322Z",
       "players": [
         {
           "playerId": "fp-22968",
@@ -35429,7 +35429,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-23054",
           "name": "Audric Estime",
-          "team": "FA",
+          "team": "MIN",
           "position": "RB",
           "positionRank": 106,
           "rank": 359,
@@ -35924,7 +35924,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-22921",
           "name": "Jerome Ford",
-          "team": "MIN",
+          "team": "FA",
           "position": "RB",
           "positionRank": 129,
           "rank": 414,
@@ -37564,7 +37564,7 @@ export const fantasyVorpData: Record<
     "12": {
       "season": 2026,
       "sourceUrl": "https://www.fantasypros.com/nfl/rankings/vorp.php",
-      "accessedAt": "2026-09-29T21:27:00.745Z",
+      "accessedAt": "2026-09-30T21:27:20.202Z",
       "players": [
         {
           "playerId": "fp-22968",
@@ -40746,7 +40746,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-23054",
           "name": "Audric Estime",
-          "team": "FA",
+          "team": "MIN",
           "position": "RB",
           "positionRank": 106,
           "rank": 354,
@@ -41223,7 +41223,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-22921",
           "name": "Jerome Ford",
-          "team": "MIN",
+          "team": "FA",
           "position": "RB",
           "positionRank": 129,
           "rank": 407,
@@ -42926,7 +42926,7 @@ export const fantasyVorpData: Record<
     "14": {
       "season": 2026,
       "sourceUrl": "https://www.fantasypros.com/nfl/rankings/vorp.php?team_size=14",
-      "accessedAt": "2026-09-29T21:27:01.174Z",
+      "accessedAt": "2026-09-30T21:27:20.899Z",
       "players": [
         {
           "playerId": "fp-22968",
@@ -45910,7 +45910,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-23054",
           "name": "Audric Estime",
-          "team": "FA",
+          "team": "MIN",
           "position": "RB",
           "positionRank": 106,
           "rank": 332,
@@ -46324,7 +46324,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-22921",
           "name": "Jerome Ford",
-          "team": "MIN",
+          "team": "FA",
           "position": "RB",
           "positionRank": 129,
           "rank": 378,
