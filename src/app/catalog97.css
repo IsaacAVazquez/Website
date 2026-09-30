@@ -1980,7 +1980,8 @@ select.c97-field {
  * Like `.c97-columns`, a mosaic of three or four tiles never strands one on
  * the last row. /dashboards printed its four fintech tiles 3+1 from 1045px up.
  * Three go from one column to three at 881px, and four print two by two from
- * 700px, since four across would squeeze each tile's paragraph.
+ * 700px, since four across would squeeze each tile's paragraph. The three-up
+ * is held to `screen`, for the reason given under `.c97-columns`.
  */
 .c97-mosaic:has(> :nth-child(3):last-child) {
   grid-template-columns: minmax(0, 1fr);
@@ -1992,7 +1993,7 @@ select.c97-field {
   }
 }
 
-@media (min-width: 881px) {
+@media screen and (min-width: 881px) {
   .c97-mosaic:has(> :nth-child(3):last-child) {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
@@ -2053,7 +2054,12 @@ select.c97-field {
    * floor in this system carries the guard for that reason.
    */
   grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr));
-  gap: var(--c97-sp-5);
+  /*
+   * A tighter set sets `--c97-columns-gap` and never `gap` itself, because the
+   * paper arrangement below reads the same property when it stacks the
+   * children in block flow, and an inline `gap` would not reach it.
+   */
+  gap: var(--c97-columns-gap, var(--c97-sp-5));
 }
 
 /*
@@ -2073,15 +2079,46 @@ select.c97-field {
   }
 }
 
-@media (min-width: 881px) {
+@media screen and (min-width: 881px) {
   .c97-columns:has(> :nth-child(3):last-child) {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 }
 
-@media (min-width: 1200px) {
+@media screen and (min-width: 1200px) {
   .c97-columns:has(> :nth-child(4):last-child) {
     grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+/*
+ * On paper the columns, the mosaic, and the footer tiles take their narrow
+ * arrangement, whatever the window and whichever way the page is turned, so
+ * the rules that go three and four across are held to `screen`. Safari's
+ * engine answers a width query with the window's width while it lays the
+ * print out at the paper's, which measured 680 to 700px on a letter page on
+ * 2026-09-29, and from a desktop window it printed three and four across on a
+ * page that fits one or two. Chrome's and Firefox's engines answer with the
+ * paper's width, so they give up a three-up they had room for in landscape.
+ * STYLING.md records that choice under "Printing on paper".
+ *
+ * Three children print in block flow. Safari's engine left a blank line
+ * inside a paragraph of "How I work" on /about when the three printed as a
+ * grid of one column, and again as a flex column, and it printed the
+ * paragraph whole in block flow.
+ */
+@media print {
+  .c97-columns:has(> :nth-child(3):last-child),
+  .c97-mosaic:has(> :nth-child(3):last-child) {
+    display: block;
+  }
+
+  .c97-columns:has(> :nth-child(3):last-child) > * + * {
+    margin-top: var(--c97-columns-gap, var(--c97-sp-5));
+  }
+
+  .c97-mosaic:has(> :nth-child(3):last-child) > * + * {
+    margin-top: var(--c97-sp-1);
   }
 }
 
@@ -2093,7 +2130,8 @@ select.c97-field {
 /*
  * The link groups, each on its own ink sheet pasted onto the footer. Four
  * cells only ever go four, two, or one across. An auto-fit track put three on
- * a row at 768 and 1024 and left the Site tile alone underneath.
+ * a row at 768 and 1024 and left the Site tile alone underneath. Four across
+ * is held to `screen`, for the reason given under `.c97-columns`.
  */
 .c97-footer-tiles {
   display: grid;
@@ -2107,7 +2145,7 @@ select.c97-field {
   }
 }
 
-@media (min-width: 960px) {
+@media screen and (min-width: 960px) {
   .c97-footer-tiles {
     grid-template-columns: repeat(4, minmax(0, 1fr));
   }
