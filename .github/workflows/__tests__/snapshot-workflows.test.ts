@@ -236,21 +236,21 @@ describe("snapshot refresh workflow infrastructure", () => {
     expect(workflow).toContain('cron: "17 17 1-12 1 *"');
   });
 
-  it("puts a gated-out lane's files back before the next lane commits", () => {
+  it("puts rejected redraft files back before any lane commits", () => {
     const workflow = fs.readFileSync(
       path.join(workflowsDir, "update-fantasy.yml"),
       "utf8"
     );
     const discardStep = workflow.match(
-      /- name: Discard redraft artifacts that failed their gates[\s\S]*?(?=\n\s+# Best ball commits)/
+      /- name: Discard redraft artifacts that failed their gates[\s\S]*?(?=\n\s+# The weekly board commits)/
     )?.[0];
 
     expect(discardStep).toBeDefined();
-    expect(discardStep).toContain("if: steps.check_changes.outcome == 'skipped'");
+    expect(discardStep).toContain("if: steps.verify_freshness.outcome != 'success' || steps.verify_quality.outcome != 'success'");
     expect(discardStep).toContain("git checkout --");
     expect(discardStep).toContain("public/data/fantasy/ppr.json");
     expect(workflow.indexOf("- name: Discard redraft artifacts")).toBeLessThan(
-      workflow.indexOf("- name: Check for best ball snapshot changes")
+      workflow.indexOf("bash scripts/ci/commit-and-push-snapshot.sh")
     );
   });
 

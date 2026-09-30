@@ -242,15 +242,16 @@ export function useRetirementPlan(
   useEffect(() => {
     if (!ready) return;
     const handleBeforePrint = () => {
-      const printable = leversReady ? leverState : leversFor(debouncedPlan);
+      const printable = leverState.plan === plan ? leverState : leversFor(plan);
       flushSync(() => {
+        setDebouncedPlan(plan);
         setPrintRequested(true);
         setLeverState(printable);
       });
     };
     window.addEventListener("beforeprint", handleBeforePrint);
     return () => window.removeEventListener("beforeprint", handleBeforePrint);
-  }, [ready, debouncedPlan, leverState, leversReady]);
+  }, [ready, plan, leverState]);
 
   const result = useMemo<RetirementResult | null>(() => {
     if (!core) return null;

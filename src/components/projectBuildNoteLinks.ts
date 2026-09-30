@@ -2,6 +2,19 @@
 // lives in projectBuildNoteContent, loaded through the dynamic
 // ProjectBuildNote below so it stays out of the shared first-load bundle.
 export const projectBuildNoteLinks: Record<string, string> = {
+  "/travel-deals": "/writing/building-a-travel-deal-lab",
+  "/march-madness-2026": "/writing/building-a-march-madness-bracket-workspace",
+  "/agent-build-index": "/writing/building-an-agent-build-index",
+  "/arcade": "/writing/building-reactor-arcade",
+  "/fintech-tools/rent-vs-buy": "/writing/building-a-rent-vs-buy-calculator",
+  "/score-pools": "/writing/building-a-score-pools-engine",
+  "/score-pools/tracker": "/writing/building-a-score-pools-engine",
+  "/score-pools/settings": "/writing/building-a-score-pools-engine",
+  "/fantasy-football/best-ball": "/writing/building-a-best-ball-draft-room",
+  "/fantasy-football/best-ball/draft-tracker": "/writing/building-a-best-ball-draft-room",
+  "/fantasy-football/draft-tracker": "/writing/how-i-run-a-draft-with-my-own-tools",
+  "/fantasy-football/trade-calculator": "/writing/building-a-fantasy-trade-calculator",
+
   "/ai-dev-tools": "/writing/mapping-the-ai-dev-tool-ecosystem",
   "/bay-area-transit": "/writing/building-a-bart-transit-dashboard",
   "/decision-lab": "/writing/building-decision-lab",

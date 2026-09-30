@@ -1,0 +1,37 @@
+---
+title: "Building Reactor Arcade Around Timing and Feedback"
+excerpt: "I built a nine-cell reflex game to work through interaction timing, escalating difficulty, keyboard controls, and a visual style of its own."
+publishedAt: "2026-09-29"
+category: "Product Design"
+tags: ["Interaction Design", "React", "Browser Games"]
+featured: false
+archiveBucket: "Space & Experiments"
+author: "Isaac Vazquez"
+coverImage: "/writing/building-reactor-arcade/opengraph-image"
+cta:
+  eyebrow: "Related project"
+  title: "Open Reactor Arcade"
+  description: "Explore Reactor Arcade and the decisions described in this article."
+  href: "/arcade"
+  actionLabel: "Open the project"
+seo:
+  title: "Building Reactor Arcade Around Timing and Feedback"
+  description: "I built a nine-cell reflex game to work through interaction timing, escalating difficulty, keyboard controls, and a visual style of its own."
+  keywords: ["Interaction Design", "React", "Browser Games"]
+---
+
+# Building Reactor Arcade Around Timing and Feedback
+
+I built [Reactor Arcade](/arcade) as an interaction experiment. Most of the tools on this site ask someone to read, compare, or plan. A reflex game gives me a different design problem because the person playing needs to understand the target and act before it disappears. Timing and feedback have to carry much of the explanation.
+
+The game uses a grid of nine cells. A round places a live target in one cell and can add a dashed decoy in another. Clicking the target increases the score and the combo multiplier. Missing the deadline or hitting a decoy costs a life and resets the combo, while clicking an empty cell breaks the combo without taking a life. I wanted those consequences to be distinguishable because a mistaken click and a missed target do different things to the run.
+
+The difficulty comes from a short set of rules. The target window starts at 1,250 milliseconds, loses 26 milliseconds per round, and stops shrinking at 460 milliseconds. The chance of a decoy increases with the round count and is capped at 55 percent. There are three lives. Keeping those rules explicit makes it possible to change the pace without adding new mechanics every few rounds, although the chosen thresholds are design settings and do not establish that the game is equally playable for everyone.
+
+The implementation compares a deadline with the browser's high resolution clock and uses an animation frame loop to update the remaining-time bar. The game also keeps references to the active target, score, combo, and lives so that timer callbacks read the latest round state. Timers are cleared when a round ends and when the component leaves the page. Those details matter because a delayed callback from an earlier round could otherwise change the score or lives after the player has moved on.
+
+I included the number keys from one through nine as another way to select cells. The grid still accepts pointer input, so the same game can be played by clicking or tapping. Reduced motion settings skip the animated boot text and reduce the decorative motion in the styling. The reflex deadline remains part of the game, which is a separate constraint from the animation around it.
+
+The visual treatment has its own arcade palette, pixel type, and cabinet framing inside the site's shared shell. I think that separation fits the project because its identity depends on the feel of a game. The rest of the site still provides a familiar way to arrive and leave, while the board can use a different visual language to communicate targets, decoys, and feedback.
+
+The high score is saved in the browser. It gives the next attempt something to beat without introducing accounts or a public leaderboard, and it also means the record is specific to that browser. What I like about this project is how directly the implementation affects the experience. A target duration, a reset rule, or the timing of feedback changes the game immediately, and the small scope makes those decisions easy to inspect.
