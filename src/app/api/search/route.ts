@@ -927,8 +927,9 @@ function calculateRelevanceScore(content: SearchableContent, query: string): num
     }
   });
 
-  // Boost newer content slightly
-  if (content.publishedAt) {
+  // Boost newer content slightly. Gated on score > 0, like the project boost
+  // below, so a recent post that matches nothing never enters the results.
+  if (score > 0 && content.publishedAt) {
     const publishDate = new Date(content.publishedAt);
     const now = new Date();
     const daysSincePublish = (now.getTime() - publishDate.getTime()) / (1000 * 60 * 60 * 24);
