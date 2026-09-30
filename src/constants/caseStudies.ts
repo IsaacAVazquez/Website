@@ -1193,9 +1193,10 @@ function getStudiesByOrderedSlugs(slugs: readonly string[]): CaseStudyData[] {
   });
 }
 
-// The build note in content/blog for each project that has one, keyed by
-// project slug. March Madness and Travel Deal Lab have none.
+// The build article in content/blog for every built portfolio project, keyed by project slug.
 export const PROJECT_BUILD_NOTES: Readonly<Record<string, string>> = {
+  "march-madness-2026": "building-a-march-madness-bracket-workspace",
+  "travel-deal-lab": "building-a-travel-deal-lab",
   "investment-analytics-platform": "building-an-investment-research-platform",
   "fantasy-football-analytics": "building-a-fantasy-football-rankings-platform",
   "interchange-iq": "interchange-iq-payment-fee-analyzer",

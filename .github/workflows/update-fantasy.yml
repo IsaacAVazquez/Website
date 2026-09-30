@@ -478,6 +478,24 @@ jobs:
           }
           "
 
+      # A lane that fails its gates leaves rewritten files in the working tree,
+      # and the commit helper dates the sitemap from whatever is on disk. On
+      # 2026-09-26 that put a new date on six fantasy routes while the committed
+      # rankings were two weeks old. Put the files back before any lane commits.
+      - name: Discard redraft artifacts that failed their gates
+        if: steps.verify_freshness.outcome != 'success' || steps.verify_quality.outcome != 'success'
+        run: |
+          git checkout -- \
+            src/data/fantasyPositionData.generated.ts \
+            src/data/fantasyAdpData.generated.ts \
+            src/data/fantasyGameLogData.generated.ts \
+            src/data/fantasyVorpData.generated.ts \
+            src/data/fantasyRankHistory.generated.json \
+            src/data/fantasySnapshotRevision.generated.ts \
+            public/data/fantasy/ppr.json \
+            public/data/fantasy/half_ppr.json \
+            public/data/fantasy/standard.json
+
       # The weekly board commits first, as it builds first. `git status
       # --porcelain` rather than `git diff --quiet`: the weekly board does not
       # exist in the repo before Week 1, and `git diff` ignores untracked files,
@@ -528,24 +546,6 @@ jobs:
         run: |
           bash scripts/ci/commit-and-push-snapshot.sh \
             "chore: update fantasy football snapshots [automated] [skip ci]" \
-            src/data/fantasyPositionData.generated.ts \
-            src/data/fantasyAdpData.generated.ts \
-            src/data/fantasyGameLogData.generated.ts \
-            src/data/fantasyVorpData.generated.ts \
-            src/data/fantasyRankHistory.generated.json \
-            src/data/fantasySnapshotRevision.generated.ts \
-            public/data/fantasy/ppr.json \
-            public/data/fantasy/half_ppr.json \
-            public/data/fantasy/standard.json
-
-      # A lane that fails its gates leaves rewritten files in the working tree,
-      # and the commit helper dates the sitemap from whatever is on disk. On
-      # 2026-09-26 that put a new date on six fantasy routes while the committed
-      # rankings were two weeks old. Put the files back before the next lane.
-      - name: Discard redraft artifacts that failed their gates
-        if: steps.check_changes.outcome == 'skipped'
-        run: |
-          git checkout -- \
             src/data/fantasyPositionData.generated.ts \
             src/data/fantasyAdpData.generated.ts \
             src/data/fantasyGameLogData.generated.ts \

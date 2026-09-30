@@ -830,8 +830,8 @@ const jobsCache = new Map<string, JobsCacheEntry>();
 // Last good jobs per source, so a board that fails on every run cannot stop
 // the boards that answered from being saved.
 const lastGoodBySource = new Map<string, LastGoodSource>();
-// The most recent non-error result per key, degraded ones included. Only the
-// refresh deadline in waitForRefresh reads it.
+// The most recent non-error result per key, degraded ones included. Failed
+// refreshes and refresh deadlines both use it as a fallback.
 const lastServedJobs = new Map<string, MBAJobsDataResult>();
 const MAX_CACHE_KEYS = 100;
 const LAST_GOOD_MAX_AGE_MS = 24 * 60 * 60 * 1000;
@@ -1074,6 +1074,27 @@ function getOrFetchJobs(
     const settle = async (
       result: MBAJobsDataResult
     ): Promise<MBAJobsDataResult> => {
+      if (result.isError) {
+        const saved = getSavedJobs(cacheKey, targets);
+        if (saved) {
+          result = {
+            ...saved,
+            body: {
+              ...saved.body,
+              errors: result.body.errors,
+              sourceStatuses: result.body.sourceStatuses?.map((source) => ({
+                ...source,
+                jobCount: saved.body.jobs.filter(
+                  (job) => job.companyId === source.companyId
+                ).length,
+              })),
+            },
+            isError: false,
+            isDegraded: true,
+            isStale: true,
+          };
+        }
+      }
       const status: DataDeliveryStatus = result.isError
         ? "unavailable"
         : result.isStale
@@ -1161,6 +1182,19 @@ function filterDefaultServedJobs(
   };
 }
 
+function getSavedJobs(
+  cacheKey: string,
+  targets: PollableMBACompany[]
+): MBAJobsDataResult | undefined {
+  const saved = lastServedJobs.get(cacheKey) ?? filterDefaultServedJobs(targets);
+  if (!saved) return undefined;
+  const age = Date.now() - Date.parse(saved.body.fetchedAt);
+  // Check memory copies too, and never extend their life by serving them again.
+  return Number.isFinite(age) && age >= 0 && age <= SERVED_MAX_AGE_MS
+    ? saved
+    : undefined;
+}
+
 // A cold instance or an expired entry refreshes by fanning out to every board,
 // and in production requests waiting on that fan-out were cut off 18 to 27
 // seconds in, after the Job Search page's loading shell (what ended them was
@@ -1191,8 +1225,7 @@ async function waitForRefresh(
     // no function to keep alive.
   }
 
-  const served =
-    lastServedJobs.get(cacheKey) ?? filterDefaultServedJobs(targets);
+  const served = getSavedJobs(cacheKey, targets);
   if (served) return { ...served, isDegraded: true, isStale: true };
   return {
     body: {

@@ -1,0 +1,37 @@
+---
+title: "Building Travel Deal Lab Around the Trip in Front of Me"
+excerpt: "I built a travel planning calculator that compares a quoted fare, points, and a trip budget while keeping its estimated benchmarks visible."
+publishedAt: "2026-09-29"
+category: "Product Design"
+tags: ["Travel", "Product Design", "Personal Tools"]
+featured: false
+archiveBucket: "Space & Experiments"
+author: "Isaac Vazquez"
+coverImage: "/writing/building-a-travel-deal-lab/opengraph-image"
+cta:
+  eyebrow: "Related project"
+  title: "Open Travel Deal Lab"
+  description: "Explore Travel Deal Lab and the decisions described in this article."
+  href: "/travel-deals"
+  actionLabel: "Open the project"
+seo:
+  title: "Building Travel Deal Lab Around the Trip in Front of Me"
+  description: "I built a travel planning calculator that compares a quoted fare, points, and a trip budget while keeping its estimated benchmarks visible."
+  keywords: ["Travel", "Product Design", "Personal Tools"]
+---
+
+# Building Travel Deal Lab Around the Trip in Front of Me
+
+I think the useful unit for comparing travel costs is the whole trip. A lower airfare can leave less room for the hotel if it changes the length of the stay, and a points booking still has a cash cost when taxes and fees are due. I built [Travel Deal Lab](/travel-deals) to put those calculations beside each other, with the trip details carried through the same workspace.
+
+The page starts with a destination region, a departure date, and the number of travelers. From there it brings together booking timing, a quoted fare, the value of a points redemption, and a suggested budget split. I wanted to make it easier to check the relationship between those numbers before returning to a booking site. The calculator itself makes no requests for flight inventory.
+
+That decision puts a limit on what its fare assessment can mean. The destination regions have hand-authored typical fare ranges, and the page identifies those figures as unverified editorial estimates. The engine multiplies the per-person benchmark by the number of travelers before comparing it with the quoted total. That keeps the arithmetic consistent, but the result still depends on whether the regional estimate fits the actual route, dates, and ticket conditions. I think the estimate is useful as a prompt to investigate a price, and I would not treat its rating as proof that a ticket is the cheapest available.
+
+The booking window has the same constraint. It compares the departure date with the timing thresholds stored for the selected region. There is no prediction of tomorrow's fare behind the label. I kept the calculation separate from the interface so that the assumptions can be changed without rewriting the rest of the planner, and so the boundary between a date calculation and a travel judgment stays readable in the code.
+
+The points calculation is more direct. It subtracts the taxes and fees still payable in cash from the cash ticket price, divides the remainder by the points required, and expresses the result in cents per point. The rating then compares that number with a stored baseline. I find the underlying calculation more useful than the rating because a person's alternative use for those points can differ from the default assumption.
+
+The budget view distributes a total across flights, lodging, food, activities, and a buffer, then translates lodging into a nightly target and food into a daily amount per traveler. Those are starting allocations. They let someone see what a total budget would mean while shopping, but they do not establish what a particular destination will cost.
+
+Trip inputs are saved in the browser, which makes the page easy to reopen without an account and also means the saved plan belongs to that browser. The separate [Travel Planner](/travel) handles the itinerary, and its [build article](/writing/building-a-travel-planner) explains that part of the workflow. What I like about keeping these tools separate is that each has a clear job. Travel Deal Lab helps me inspect the cost assumptions before I turn a possible trip into a schedule.

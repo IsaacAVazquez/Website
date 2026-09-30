@@ -1,0 +1,37 @@
+---
+title: "Building a March Madness Workspace That Keeps the Original Picks"
+excerpt: "How I organized bracket picks, rankings, seed comparisons, injuries, and travel assumptions into a dated workspace that can be reviewed after the tournament."
+publishedAt: "2026-09-29"
+category: "Sports Analytics"
+tags: ["College Basketball", "Product Design", "Sports Analytics"]
+featured: false
+archiveBucket: "Sports & Fantasy"
+author: "Isaac Vazquez"
+coverImage: "/writing/building-a-march-madness-bracket-workspace/opengraph-image"
+cta:
+  eyebrow: "Related project"
+  title: "Open March Madness 2026"
+  description: "Explore March Madness 2026 and the decisions described in this article."
+  href: "/march-madness-2026"
+  actionLabel: "Open the project"
+seo:
+  title: "Building a March Madness Workspace That Keeps the Original Picks"
+  description: "How I organized bracket picks, rankings, seed comparisons, injuries, and travel assumptions into a dated workspace that can be reviewed after the tournament."
+  keywords: ["College Basketball", "Product Design", "Sports Analytics"]
+---
+
+# Building a March Madness Workspace That Keeps the Original Picks
+
+I think a bracket tool becomes more useful after the tournament if it preserves the reasoning that produced the picks. A result alone cannot tell me whether I overestimated a team, trusted an assumption too much, or made a reasonable choice that lost. I built the [March Madness workspace](/march-madness-2026) around a dated set of picks and the supporting analysis, and those original selections remain on the page.
+
+The interface has four views for the bracket, picks, analytics, and time zones. Each answers a different question. The bracket shows the path I selected through each region, while the picks view gives the reasoning behind individual choices. The analytics view brings rankings, seed comparisons, and injury notes together. The travel view makes the time zone assumptions available for inspection without forcing every reader through them before seeing the bracket.
+
+I put the selected view, region, and analytics panel in the URL. That makes a specific part of the argument shareable. A link can open the injury panel or a regional bracket directly, and an unsupported parameter falls back to the default view. This is a small implementation decision, but I think it matters for a product whose purpose includes discussing a disagreement about a pick.
+
+The data is stored with the project as a fixed analysis. The page records March 17, 2026 as the date of the original picks, and it has a separate result note and a link to the postmortem. Preserving those pieces separately gives the reader a way to distinguish what I thought before the tournament from what I wrote after it. Replacing the original bracket with the eventual winners would lose the part of the project I most want to examine.
+
+The travel model needs particular care in that review. The page assigns percentage penalties to time zone changes and uses those assumptions in its matchup explanations. I would read those percentages as inputs to my bracket argument. They are not calibrated win probabilities, and displaying them beside published rankings does not give them the same evidentiary basis. A precise number can make a judgment look more established than it is, so the article about the product needs to keep that distinction explicit.
+
+The seed comparison has a different purpose. It puts the assigned seed beside an expected seed and a written explanation of the difference. That makes it easier to see when my argument depends on a team being stronger or weaker than its tournament placement suggests. Rankings, injuries, and travel can then be read as separate reasons supporting a pick, with room to disagree about their importance.
+
+The [original bracket article](/writing/2026-march-madness-bracket-analysis) contains the tournament argument, and the [postmortem](/writing/2026-march-madness-postmortem) revisits it. This build is about keeping that reasoning accessible across both moments. I think a prediction workspace earns more trust when someone can return to the original claim and compare it with the later explanation.

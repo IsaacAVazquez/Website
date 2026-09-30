@@ -1,0 +1,37 @@
+---
+title: "Building an Agent Build Index From Measured GitHub Movement"
+excerpt: "I built a focused view of agent repositories using the same stored history as GitHub Trending Pulse, with measurement coverage beside the ranking."
+publishedAt: "2026-09-29"
+category: "Product Engineering"
+tags: ["GitHub", "Open Source", "Product Design"]
+featured: false
+archiveBucket: "Space & Experiments"
+author: "Isaac Vazquez"
+coverImage: "/writing/building-an-agent-build-index/opengraph-image"
+cta:
+  eyebrow: "Related project"
+  title: "Open Agent Build Index"
+  description: "Explore Agent Build Index and the decisions described in this article."
+  href: "/agent-build-index"
+  actionLabel: "Open the project"
+seo:
+  title: "Building an Agent Build Index From Measured GitHub Movement"
+  description: "I built a focused view of agent repositories using the same stored history as GitHub Trending Pulse, with measurement coverage beside the ranking."
+  keywords: ["GitHub", "Open Source", "Product Design"]
+---
+
+# Building an Agent Build Index From Measured GitHub Movement
+
+I want a repository ranking to help me decide what to read next. For [Agent Build Index](/agent-build-index), I chose changes in GitHub stars as the starting point because they give me a bounded way to look at attention within the projects being tracked. I still need to read the repository before forming an opinion about the software. The index makes that first selection easier.
+
+The project is a focused view of the data already used by [GitHub Trending Pulse](/github-trending-pulse). It selects the agent topic group, resolves that group's repository identifiers against the shared snapshot, and orders the resulting repositories by weekly star movement, with the existing trend score used to break ties. The page shows the first ten and links to the broader table when someone wants to explore further.
+
+Reusing the snapshot was an important decision. A separate collector would give two related pages their own refresh schedules and potentially different histories for the same repository. Here the source label, generation time, measurement window, and repository records all come from the same stored data. The narrower page changes the question being asked of that data without creating another collection process to maintain.
+
+The measurement status matters as much as the order. The underlying history distinguishes a measured window from a partial window and a new baseline. A repository added to the tracked set cannot immediately have a full week of observed movement. The interface keeps that status beside its number and shows how many tracked repositories have a measured window. I think that is necessary context for reading a ranking that includes projects with different amounts of history.
+
+The topic comparison puts the agent group beside adjacent groups from the same snapshot. That helps me see where attention sits within this particular collection. The tracked set is a selection of public repositories, so its totals cannot establish how the entire software market is changing. Stars also cannot tell me whether a project has active users, whether its maintainers can sustain it, or whether it would work in a production system. Those are separate questions that require separate evidence.
+
+The page renders on the server, and the repository history stays there. Reading a ranked list does not require sending that history to the browser or fetching GitHub again during the visit. Source links and the snapshot time stay visible so that a reader can inspect the repository and understand the age of the view.
+
+I wrote about the broader collection in [the GitHub Trending dashboard article](/writing/building-a-github-trending-dashboard). Agent Build Index adds a shorter path into one topic, with less filtering needed before reaching a useful shortlist. I think that is a good reason to build another page from an existing dataset, provided the new view keeps the measurement limits as visible as the ranking.

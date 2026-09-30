@@ -273,6 +273,38 @@ describe("getMBAJobsData", () => {
     await jest.advanceTimersByTimeAsync(8_000);
   });
 
+  it.each([undefined, ["stripe"]])("uses the saved board for prompt failures with filter %j", async (companies) => {
+    jest.useFakeTimers();
+    installBoards({
+      [`${GREENHOUSE}/stripe/`]: () =>
+        json({ jobs: [greenhouseJob(7001, "MBA Product Intern")], meta: { total: 1 } }),
+      [`${GREENHOUSE}/brex/`]: () =>
+        json({ jobs: [greenhouseJob(7002, "MBA Strategy Intern")], meta: { total: 1 } }),
+    });
+    const warm = await getMBAJobsData();
+    jest.advanceTimersByTime(5 * DAY_MS);
+    startColdInstance();
+    mockWrite.mockClear();
+    mockFetch.mockRejectedValue(new Error("provider unavailable"));
+
+    const cold = await getMBAJobsData(companies);
+    expect(cold.isError).toBe(false);
+    expect(cold.isStale).toBe(true);
+    expect(cold.isDegraded).toBe(true);
+    expect(cold.body.jobs).toEqual(warm.body.jobs.filter((job) => !companies || companies.includes(job.companyId)));
+    expect(cold.body.fetchedAt).toBe(warm.body.fetchedAt);
+    expect(cold.body.errors.length).toBeGreaterThan(0);
+    expect(cold.body.sourceStatuses?.find((source) => source.companyId === "stripe"))
+      .toMatchObject({ status: "failed", jobCount: 1 });
+    expect(jobBoardWrites()).toEqual([]);
+
+    // A warm instance must respect the same limit as a fresh durable read.
+    jest.advanceTimersByTime(3 * DAY_MS);
+    expect((await getMBAJobsData(companies)).isError).toBe(true);
+    startColdInstance();
+    expect((await getMBAJobsData(companies)).isError).toBe(true);
+  });
+
   it("answers a filtered request on a cold instance by filtering the saved default list", async () => {
     jest.useFakeTimers();
     installBoards({

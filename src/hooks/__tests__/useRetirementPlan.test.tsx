@@ -180,6 +180,28 @@ describe("useRetirementPlan", () => {
     expect(leverSearch).not.toHaveBeenCalled();
   }));
 
+  it.each([true, false])("prints pending edits when enabled is %s", (enabled) => tracked(async () => {
+    const { result } = renderHook(() => useRetirementPlan(undefined, enabled));
+    expect(result.current.ready).toBe(true);
+    await waitForDeferredWork();
+    leverSearch.mockClear();
+
+    act(() => result.current.updatePlan({ retirementAge: 55 }));
+    const atPrint: (RetirementResult | null)[] = [];
+    act(() => {
+      window.dispatchEvent(new Event("beforeprint"));
+      atPrint.push(result.current.result);
+    });
+
+    expect(atPrint[0]?.input.retirementAge).toBe(55);
+    expect(atPrint[0]?.levers.length).toBeGreaterThan(0);
+    expect(result.current.isComputing).toBe(false);
+    expect(leverSearch).toHaveBeenLastCalledWith(result.current.plan, expect.any(Number));
+    await waitForDeferredWork(DEBOUNCE_MS);
+    expect(leverSearch).toHaveBeenCalledTimes(1);
+    expect(result.current.result?.input.retirementAge).toBe(55);
+  })());
+
   it("seeds a fresh plan from a portfolio value into a taxable account", () => {
     const seed: RetirementSeed = {
       portfolioValue: 250000,
