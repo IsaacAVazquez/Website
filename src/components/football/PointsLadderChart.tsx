@@ -30,6 +30,7 @@ const AXIS_TOP = 44;
 const AXIS_BOTTOM_PAD = 36;
 const AXIS_X = 96;
 const LABEL_X = 118;
+const DOT_HIT_RADIUS = 10;
 
 const ZONE_TONE: Record<LeagueZone, string> = {
   champions: "var(--c97-accent)",
@@ -90,6 +91,14 @@ export function PointsLadder({ clubs, selectedId, onSelect, title }: PointsLadde
   const strongest = marks[0];
   const weakest = marks[marks.length - 1];
 
+  // A bunched table squeezes the labels closer than a row, so a label's click
+  // target is only as tall as the tightest gap, and two targets never overlap.
+  const labelYs = marks.map((mark) => toY(mark.labelY)).sort((a, b) => a - b);
+  const hitHeight = labelYs.reduce(
+    (min, y, i) => (i === 0 ? min : Math.min(min, y - labelYs[i - 1])),
+    ROW_HEIGHT
+  );
+
   const renderLadder = (variant: "wide" | "narrow") => {
     const W = variant === "wide" ? WIDE_W : NARROW_W;
     return (
@@ -118,7 +127,7 @@ export function PointsLadder({ clubs, selectedId, onSelect, title }: PointsLadde
             const y = toY(line.y);
             const labelY = toY(line.labelY);
             return (
-              <g key={line.afterPosition}>
+              <g key={line.afterPosition} pointerEvents="none">
                 <line
                   x1={AXIS_X - 14}
                   x2={W - 8}
@@ -146,11 +155,27 @@ export function PointsLadder({ clubs, selectedId, onSelect, title }: PointsLadde
 
             return (
               <g key={mark.id}>
+                {/* The label's target stops short of the axis, so a click on a
+                    dot lands on that dot's own target below. */}
                 <rect
-                  x={AXIS_X - 12}
-                  y={labelY - ROW_HEIGHT / 2}
-                  width={W - AXIS_X - 4}
-                  height={ROW_HEIGHT}
+                  data-ladder-hit="label"
+                  data-club-id={mark.id}
+                  x={LABEL_X - 6}
+                  y={labelY - hitHeight / 2}
+                  width={W - LABEL_X - 2}
+                  height={hitHeight}
+                  fill="transparent"
+                  onClick={() => onSelect(mark.id)}
+                  style={{ cursor: "pointer" }}
+                />
+                {/* Clubs level on points share a dot, so this picks one of
+                    them and the label stays the exact path. */}
+                <circle
+                  data-ladder-hit="dot"
+                  data-club-id={mark.id}
+                  cx={AXIS_X}
+                  cy={trueY}
+                  r={DOT_HIT_RADIUS}
                   fill="transparent"
                   onClick={() => onSelect(mark.id)}
                   style={{ cursor: "pointer" }}
@@ -163,6 +188,7 @@ export function PointsLadder({ clubs, selectedId, onSelect, title }: PointsLadde
                     y2={labelY}
                     stroke="var(--c97-rule)"
                     strokeWidth={1}
+                    pointerEvents="none"
                   />
                 ) : null}
                 {/* The edge keeps a navy or black club colour visible on the dark plate. */}

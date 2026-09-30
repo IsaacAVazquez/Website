@@ -4,9 +4,10 @@ export interface SegmentedTabItem {
 }
 
 /**
- * Mono fused segmented tab control, with an ink-fill active state, a field
- * hover on inactive tabs, and a 1px `--c97-rule` gap between tabs. Every tab
- * stays in the tab order, since there is no arrow-key handler. Renders the `role="tablist"`
+ * The detail tabs for both league pages, printed as the same underlined
+ * `.c97-segmented` control the view filters and the other sports pages use,
+ * so they wrap cleanly on a phone. Every tab stays in the tab order, since
+ * there is no arrow-key handler. Renders the `role="tablist"`
  * wrapper and `role="tab"` buttons; callers own the tab panel(s) and pass a
  * single `panelId` since both league pages use one panel container that
  * swaps content per active tab.
@@ -30,7 +31,9 @@ export function SegmentedTabs({
 }) {
   return (
     <div
-      className={`inline-flex flex-wrap gap-px overflow-hidden border border-[var(--c97-rule)] bg-[var(--c97-rule)] ${className}`.trim()}
+      className={`c97-segmented ${className}`.trim()}
+      // `.c97-segmented` zeroes its margin, which drops a parent's space-y gap.
+      style={{ marginBottom: "var(--c97-sp-3)" }}
       role="tablist"
       aria-label={ariaLabel}
     >
@@ -45,11 +48,7 @@ export function SegmentedTabs({
             aria-selected={isActive}
             aria-controls={panelId}
             onClick={() => onChange(tab.id)}
-            className={`inline-flex min-h-[44px] items-center whitespace-nowrap px-5 font-mono text-2xs uppercase tracking-[0.08em] transition-colors ${
-              isActive
-                ? "bg-[var(--c97-ink)] text-[var(--c97-surface)]"
-                : "bg-[var(--c97-surface)] text-[var(--c97-ink-2)] hover:bg-[var(--c97-field)] hover:text-[var(--c97-ink)]"
-            }`}
+            className="min-h-[44px] text-sm font-semibold"
           >
             {tab.label}
           </button>

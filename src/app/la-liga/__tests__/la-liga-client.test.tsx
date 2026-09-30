@@ -119,6 +119,71 @@ describe("LaLigaClient", () => {
     await waitFor(() => expect(screen.queryByRole("dialog")).not.toBeInTheDocument());
   });
 
+  describe("picking a club", () => {
+    const summary = {
+      season: laLigaSnapshot.season,
+      matchday: laLigaSnapshot.matchday,
+      generatedAt: laLigaSnapshot.generatedAt,
+      updatedAt: laLigaSnapshot.updatedAt,
+      sourceLabel: laLigaSnapshot.sourceLabel,
+      sourceUrls: laLigaSnapshot.sourceUrls,
+      clubs: laLigaSnapshot.clubs,
+      scorers: laLigaSnapshot.scorers,
+      assists: laLigaSnapshot.assists,
+      recentFixtures: laLigaSnapshot.recentFixtures.slice(0, 8),
+      upcomingFixtures: laLigaSnapshot.upcomingFixtures.slice(0, 8),
+      teams: laLigaSnapshot.teams,
+    };
+    const ui = () => (
+      <LaLigaClient initialState={DEFAULT_LA_LIGA_STATE} summary={summary} initialTeamSnapshot={null} />
+    );
+    const byPosition = [...laLigaSnapshot.clubs].sort((a, b) => a.position - b.position);
+
+    // The router is a mock, so a push has to be fed back in as the next
+    // search params for the page to see the URL it asked for.
+    function followPushes() {
+      mockPush.mockImplementation((href: string) => {
+        currentSearchParams = new URLSearchParams(href.split("?")[1] ?? "");
+      });
+    }
+
+    it("opens the drawer on the club that was picked and never on the last one", async () => {
+      const user = userEvent.setup();
+      // The route stays where it was until the rerender below, the way a
+      // real navigation lags the click.
+      let pushed = "";
+      mockPush.mockImplementation((href: string) => {
+        pushed = href;
+      });
+      const club = byPosition[6]!;
+      const view = render(ui());
+
+      await user.click(screen.getByRole("button", { name: `Show ${club.name} details` }));
+      expect(screen.queryByRole("dialog")).not.toBeInTheDocument();
+
+      currentSearchParams = new URLSearchParams(pushed.split("?")[1] ?? "");
+      view.rerender(ui());
+      expect(screen.getByRole("dialog", { name: `${club.name} detail` })).toBeInTheDocument();
+    });
+
+    it("leaves a focused view when the ladder club sits outside it", async () => {
+      const user = userEvent.setup();
+      followPushes();
+      const leader = byPosition[0]!;
+      currentSearchParams = new URLSearchParams("view=relegation");
+      const view = render(ui());
+
+      const dot = view.container.querySelector(
+        `svg[data-variant="wide"] [data-ladder-hit="dot"][data-club-id="${leader.id}"]`
+      )!;
+      await user.click(dot);
+      view.rerender(ui());
+
+      expect(currentSearchParams.get("view")).toBeNull();
+      expect(screen.getByRole("dialog", { name: `${leader.name} detail` })).toBeInTheDocument();
+    });
+  });
+
   it("canonicalizes hidden club selections for a focused view", async () => {
     const defaultRelegationClub = getDefaultClubForView("relegation");
     const defaultRelegationTeam =

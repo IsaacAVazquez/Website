@@ -32,6 +32,25 @@
   fill: var(--c97-ink-2);
 }
 
+/*
+ * Each ladder prints at the size it was drawn, 640 or 360 units wide, so the
+ * type stays at 14px and the plot stops growing with the page. The plate
+ * closes around it. The selectors carry the plate class to outrank the
+ * hero's rule that stretches every chart svg to the slot.
+ */
+.c97-points-ladder-plate {
+  max-width: calc(640px + 2 * var(--c97-sp-3));
+}
+
+.c97-points-ladder-plate svg.c97-points-ladder--wide {
+  max-width: 640px;
+}
+
+.c97-points-ladder-plate svg.c97-points-ladder--narrow {
+  max-width: 360px;
+  margin-inline: auto;
+}
+
 /* Only one ladder shows. The narrow one keeps the plot tall enough at phone
  * width that the club labels stay apart and the type stays above 11px. The
  * selectors carry the plate class because the hero's signature rule sets

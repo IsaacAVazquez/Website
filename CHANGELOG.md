@@ -7,6 +7,8 @@ All notable changes to this repository are documented here. Format: `YYYY-MM-DD`
 ## 2026-09-30
 
 - Make the retirement suites hold under CPU load ([#519](https://github.com/IsaacAVazquez/Website/pull/519)).
+- Apply Isaac's answers to the bio follow-up questions ([#522](https://github.com/IsaacAVazquez/Website/pull/522)).
+- Keep the writing dateline from failing hydration in WebKit ([#529](https://github.com/IsaacAVazquez/Website/pull/529)).
 
 ---
 

@@ -16,6 +16,7 @@ Current component ownership reference.
 | `Catalog97Header` | `src/components/catalog97/Catalog97Header.tsx` | Global nav built from `catalog97NavLinks` |
 | `Providers` | `src/components/Providers.tsx` | Root provider wrapper |
 | `FragmentLinkNavigation` | `src/components/navigation/FragmentLinkNavigation.tsx` | Mounted once by `Providers`. Follows same-page `#` links from the current address, so Firefox does not load the page again after a route rewrote its URL |
+| `FragmentScrollOnLoad` | `src/components/navigation/FragmentScrollOnLoad.tsx` | Mounted once by `Providers`. Lands a fresh load on the element its URL fragment names and holds it there while the page settles, since React reveals a streamed route after the browser has looked the fragment up |
 | `ThemeProvider` | `src/components/ThemeProvider.tsx` | Theme context |
 | `RouteErrorBoundary` | `src/components/RouteErrorBoundary.tsx` | Shared error fallback re-exported by per-route `error.tsx` files |
 
