@@ -1028,6 +1028,22 @@ body {
   filter: saturate(0.82) sepia(0.14) contrast(0.96) brightness(1.02);
 }
 
+/*
+ * On paper in Firefox's engine the treatment comes off. That engine prints
+ * nothing for an element under a CSS filter, so the photograph went missing and
+ * the field underneath printed as a flat block, measured on 2026-09-29 in
+ * Playwright's builds of Firefox 153 and 155. Chrome's and Safari's engines
+ * print a filtered photograph, so they keep the treatment, and the @supports
+ * test is true in Firefox's engine alone.
+ */
+@media print {
+  @supports (-moz-appearance: none) {
+    .c97-slot-img {
+      filter: none;
+    }
+  }
+}
+
 /* Tabular figures for every readout, per the design's data rules. */
 .c97-tabular {
   font-variant-numeric: tabular-nums;
