@@ -12,6 +12,7 @@ All notable changes to this repository are documented here. Format: `YYYY-MM-DD`
 - Stop league page clicks opening the wrong club and tidy the layout ([#523](https://github.com/IsaacAVazquez/Website/pull/523)).
 - Land a fresh load on the section its fragment names ([#526](https://github.com/IsaacAVazquez/Website/pull/526)).
 - Print the shared grids, the seams, and Home through Safari's engine ([#527](https://github.com/IsaacAVazquez/Website/pull/527)).
+- Add four project build notes and carry three small fixes ([#530](https://github.com/IsaacAVazquez/Website/pull/530)).
 
 ---
 
