@@ -210,6 +210,19 @@
   --c97-chart-6: #8a6642;
 }
 
+/*
+ * On paper the grain comes off. Firefox's engine prints a page with no text at
+ * all when backgrounds are on and it has to repeat a vector image behind the
+ * page, measured on 2026-09-29 in Playwright's headless builds of Firefox 153
+ * and 155. Every rule that paints the grain reads this token, so this is the
+ * one place it has to stop.
+ */
+@media print {
+  [data-c97] {
+    --c97-grain-soft: none;
+  }
+}
+
 /* Presentation. No token declarations below this line. */
 .c97-page {
   font-family: var(--c97-font-body);
