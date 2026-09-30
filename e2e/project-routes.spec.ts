@@ -1,5 +1,6 @@
 import { expect, test, type Page } from "@playwright/test";
 import { getAllCaseStudies } from "../src/constants/caseStudies";
+import { catalog97NavLinks } from "../src/constants/catalog97Nav";
 import { PROJECT_PRESS } from "../src/constants/projectPress";
 import { expectAlignedLayout } from "./layoutChecks";
 
@@ -24,6 +25,14 @@ function collectHydrationErrors(page: Page): string[] {
   return errors;
 }
 
+/** Hydration has reached the heading once React has attached a fiber to it. */
+function waitForHydration(page: Page) {
+  return page.waitForFunction(() => {
+    const heading = document.querySelector("h1");
+    return !!heading && Object.keys(heading).some((key) => key.startsWith("__reactFiber"));
+  });
+}
+
 for (const timezoneId of ["America/Los_Angeles", "Asia/Tokyo"]) {
   test.describe(`project routes in ${timezoneId}`, () => {
     test.use({ timezoneId, locale: "en-US" });
@@ -36,11 +45,7 @@ for (const timezoneId of ["America/Los_Angeles", "Asia/Tokyo"]) {
         const h1 = page.locator("h1");
         await expect(h1).toHaveCount(1);
         await expect(page.locator("main")).toHaveCount(1);
-        // Hydration has reached the heading once React has attached a fiber to it.
-        await page.waitForFunction(() => {
-          const heading = document.querySelector("h1");
-          return !!heading && Object.keys(heading).some((key) => key.startsWith("__reactFiber"));
-        });
+        await waitForHydration(page);
 
         const lead = PROJECT_PRESS[route]?.lead;
         expect(lead, `${route} has a press row`).toBeTruthy();
@@ -54,6 +59,25 @@ for (const timezoneId of ["America/Los_Angeles", "Asia/Tokyo"]) {
     }
   });
 }
+
+// The seven designed routes are not project routes, so they get the hydration
+// half of that check here. Text that one engine's locale data prints its own
+// way only fails in that engine (WebKit on macOS abbreviates an en-GB September
+// as "Sep" where Node says "Sept"), so this runs in every browser project.
+test.describe("designed routes", () => {
+  test.use({ timezoneId: "Asia/Tokyo", locale: "en-US" });
+
+  for (const { href } of catalog97NavLinks) {
+    test(`${href} hydrates cleanly`, async ({ page }) => {
+      const hydrationErrors = collectHydrationErrors(page);
+      await page.goto(href);
+      await waitForHydration(page);
+
+      await page.waitForTimeout(500);
+      expect(hydrationErrors).toEqual([]);
+    });
+  }
+});
 
 // Every project route (the fantasy sub-routes included), score pools, a topic,
 // and a post line up with the header at a phone, a laptop, and a big monitor.

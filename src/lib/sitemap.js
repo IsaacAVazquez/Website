@@ -12,15 +12,15 @@ const PUBLISHED_POSTS = getPublishedPosts();
 // undated route just gets the build date and a warning naming it. Keep the
 // hand dates in step with each page's own dateModified.
 const STATIC_ROUTE_LASTMOD = {
-  "/": "2026-09-28",
-  "/about": "2026-09-28",
+  "/": "2026-09-29",
+  "/about": "2026-09-29",
   "/accessibility": "2026-07-16",
   "/agent-build-index": readGitHubTrendingLastmod(),
   "/ai-dev-tools": "2026-04-28",
   "/arcade": "2026-07-16",
   "/contact": "2026-09-28",
   "/dashboards": "2026-09-14",
-  "/resume": "2026-09-28",
+  "/resume": "2026-09-29",
   "/portfolio": "2026-09-14",
   // The index changes whenever a post is published or edited.
   "/writing": latestIso("2026-09-28", newestPostLastmod()),
@@ -35,7 +35,7 @@ const STATIC_ROUTE_LASTMOD = {
   "/mlb": readMlbLastmod(),
   "/museum-log": "2026-04-04",
   "/nba": readNbaLastmod(),
-  "/now": "2026-09-28",
+  "/now": "2026-09-29",
   "/recipe-finder": "2026-04-04",
   "/wine-cellar": "2026-04-04",
   "/bay-area-transit": readBayAreaTransitLastmod(),

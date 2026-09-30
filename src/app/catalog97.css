@@ -210,6 +210,19 @@
   --c97-chart-6: #8a6642;
 }
 
+/*
+ * On paper the grain comes off. Firefox's engine prints a page with no text at
+ * all when backgrounds are on and it has to repeat a vector image behind the
+ * page, measured on 2026-09-29 in Playwright's headless builds of Firefox 153
+ * and 155. Every rule that paints the grain reads this token, so this is the
+ * one place it has to stop.
+ */
+@media print {
+  [data-c97] {
+    --c97-grain-soft: none;
+  }
+}
+
 /* Presentation. No token declarations below this line. */
 .c97-page {
   font-family: var(--c97-font-body);
@@ -1013,6 +1026,22 @@ body {
 .c97-slot-img {
   object-fit: cover;
   filter: saturate(0.82) sepia(0.14) contrast(0.96) brightness(1.02);
+}
+
+/*
+ * On paper in Firefox's engine the treatment comes off. That engine prints
+ * nothing for an element under a CSS filter, so the photograph went missing and
+ * the field underneath printed as a flat block, measured on 2026-09-29 in
+ * Playwright's builds of Firefox 153 and 155. Chrome's and Safari's engines
+ * print a filtered photograph, so they keep the treatment, and the @supports
+ * test is true in Firefox's engine alone.
+ */
+@media print {
+  @supports (-moz-appearance: none) {
+    .c97-slot-img {
+      filter: none;
+    }
+  }
 }
 
 /* Tabular figures for every readout, per the design's data rules. */

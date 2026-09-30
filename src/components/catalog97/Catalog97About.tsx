@@ -111,9 +111,7 @@ export function Catalog97About() {
               the MBA growth intern at Juno, a fintech company that negotiates
               group rates on student loans. Now I&rsquo;m looking for a
               full-time product management role that starts after I graduate in
-              May 2027, ideally in fintech or AI, and I&rsquo;m most interested
-              in products where people make decisions from data they need to be
-              able to trust.
+              May 2027, and I&rsquo;m interested in consumer tech broadly.
             </p>
             <p className="c97-prose" style={{ marginTop: "var(--c97-sp-2)" }}>
               I picked up the habit of checking a number before trusting it in

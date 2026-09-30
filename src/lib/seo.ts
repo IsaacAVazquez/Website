@@ -399,10 +399,6 @@ export function buildPersonEntity(): Record<string, unknown> {
         url: completedEducation.url,
       },
     ],
-    worksFor: {
-      "@type": "Organization",
-      name: profile.currentRole.organization,
-    },
     knowsAbout: profile.knowsAbout,
   };
 }

@@ -2,7 +2,7 @@
 
 Current testing setup for the repo.
 
-**Last updated:** 2026-09-21
+**Last updated:** 2026-09-29
 
 ---
 
@@ -69,7 +69,14 @@ as coverage improves, so read the config rather than trusting a restated number 
 Current e2e coverage includes navigation, homepage, portfolio shell, accessibility,
 writing, search, investments, fantasy football, March Madness, footer CTA, the résumé
 PDF download, product surfaces (football/F1/GitHub/polling/SpaceX/fintech/news-pulse
-dashboards), and personal-interest tool persistence (`persisted-tools.spec.ts`).
+dashboards), personal-interest tool persistence (`persisted-tools.spec.ts`), and print
+(`print.spec.ts`, plus the print tests in `investments.spec.ts`).
+
+The print tests read computed styles under print media, which is where the three print faults
+measured on 2026-09-29 start. They do not print anything. `page.pdf()` is Chromium only, so
+a real print through Firefox's or Safari's engine is a manual check. The tests for filtered
+and blended elements run in the Firefox project alone, so they run with the full matrix, and
+the default Chromium run checks that the portrait keeps its treatment on paper there.
 
 ---
 

@@ -607,9 +607,9 @@ async function getAllSearchableContent(): Promise<SearchableContent[]> {
       id: 'page-now',
       title: 'Now',
       excerpt:
-        'What I am focused on right now, from my second year at Haas to what I am building and reading.',
+        'What I am focused on right now, from my second year at Haas to what I am building.',
       content:
-        'now page current focus projects priorities reading what I am working on status update',
+        'now page current focus projects priorities what I am working on status update',
       url: '/now',
       type: 'page',
       category: 'Site',
@@ -927,8 +927,9 @@ function calculateRelevanceScore(content: SearchableContent, query: string): num
     }
   });
 
-  // Boost newer content slightly
-  if (content.publishedAt) {
+  // Boost newer content slightly. Gated on score > 0, like the project boost
+  // below, so a recent post that matches nothing never enters the results.
+  if (score > 0 && content.publishedAt) {
     const publishDate = new Date(content.publishedAt);
     const now = new Date();
     const daysSincePublish = (now.getTime() - publishDate.getTime()) / (1000 * 60 * 60 * 24);

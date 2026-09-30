@@ -243,6 +243,16 @@ describe("Catalog97EasterEggs", () => {
     expect(proof()).toBeNull();
   });
 
+  it("dates the proof slug with Sep, whichever way the engine spelled it", () => {
+    jest.setSystemTime(new Date(2026, 8, 25, 12, 0));
+    const { page } = renderOnPage();
+
+    act(() => {
+      fireEvent.keyDown(window, { key: "Alt", altKey: true });
+    });
+    expect(page.querySelector(".slug")).toHaveTextContent("Proof 1 · / · 25 Sep 2026");
+  });
+
   it("reads the night shift title from midnight until 5am", () => {
     renderOnPage();
     document.title = "About | Isaac Vazquez";

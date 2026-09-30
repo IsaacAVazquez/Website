@@ -27,6 +27,14 @@ const SAMPLE_PREVIEW = {
   publishedAt: "2026-06-01",
 } as unknown as ReturnType<typeof getAllBlogPostPreviews>[number];
 
+// A publishedAt in the content/blog frontmatter format, dated relative to the
+// run so the 30-day recency window never drifts away from the test.
+function publishedDaysAgo(days: number): string {
+  return new Date(Date.now() - days * 24 * 60 * 60 * 1000)
+    .toISOString()
+    .slice(0, 10);
+}
+
 describe("GET /api/search", () => {
   beforeEach(() => {
     jest.clearAllMocks();
@@ -96,8 +104,8 @@ describe("GET /api/search", () => {
   });
 
   it("returns an empty result set for a query that matches nothing", async () => {
-    // Use an old publish date so the recency boost (within 30 days) doesn't
-    // contribute a baseline score for an otherwise non-matching entry.
+    // An old publish date keeps this case clear of the recency bonus, which
+    // the next test covers.
     mockGetAllBlogPostPreviews.mockReturnValue([
       {
         ...SAMPLE_PREVIEW,
@@ -114,6 +122,54 @@ describe("GET /api/search", () => {
     expect(body.results).toEqual([]);
     expect(body.total).toBe(0);
     expect(body.query).toBe("zzqxnomatchtoken1234567890");
+  });
+
+  it("returns no results for a non-matching query when the corpus holds a recent post", async () => {
+    // A post published in the last 30 days must not score on its date alone.
+    mockGetAllBlogPostPreviews.mockReturnValue([
+      {
+        ...SAMPLE_PREVIEW,
+        publishedAt: publishedDaysAgo(3),
+      },
+    ]);
+
+    const response = await GET(makeRequest("?q=zzzzqq"));
+    const body = await response.json();
+
+    expect(response.status).toBe(200);
+    expect(body.results).toEqual([]);
+    expect(body.total).toBe(0);
+  });
+
+  it("ranks a recent post above an older post that matches equally", async () => {
+    // The titles are chosen so the alphabetical tiebreak would put the older
+    // post first, which leaves the recency bonus as the only reason the recent
+    // one leads.
+    mockGetAllBlogPostPreviews.mockReturnValue([
+      {
+        ...SAMPLE_PREVIEW,
+        slug: "quantum-notes-older",
+        title: "Quantum Notes A",
+        publishedAt: "2020-01-01",
+      },
+      {
+        ...SAMPLE_PREVIEW,
+        slug: "quantum-notes-recent",
+        title: "Quantum Notes B",
+        publishedAt: publishedDaysAgo(3),
+      },
+    ]);
+
+    const response = await GET(makeRequest("?q=quantum&type=post"));
+    const body = await response.json();
+
+    expect(response.status).toBe(200);
+    expect(body.results.map((r: { id: string }) => r.id)).toEqual([
+      "post-quantum-notes-recent",
+      "post-quantum-notes-older",
+    ]);
+    const [recent, older] = body.results;
+    expect(recent.relevanceScore).toBeGreaterThan(older.relevanceScore);
   });
 
   it("honors the type filter and reflects it in the response filters", async () => {

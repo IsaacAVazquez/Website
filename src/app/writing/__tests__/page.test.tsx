@@ -14,7 +14,8 @@ const mockPmWorkflowsPosts = [
     slug: "lead-workflow-essay",
     title: "Lead Workflow Essay",
     excerpt: "A PM workflow piece.",
-    publishedAt: "2026-04-10",
+    // A September date, since that is the month engines abbreviate differently.
+    publishedAt: "2026-09-25",
     category: "Product Management",
     tags: ["PM", "Workflow"],
     featured: false,
@@ -187,6 +188,16 @@ describe("WritingPage", () => {
     expect(
       filterButtons.slice(1).map((button) => button.getAttribute("aria-pressed")),
     ).toEqual(Array(filterButtons.length - 1).fill("false"));
+  });
+
+  // This component renders on the server and again in the browser. Node prints
+  // an en-GB September as "Sept" and WebKit on macOS prints "Sep", so a dateline
+  // that skips `sep` fails hydration there for as long as September is featured.
+  it("dates the featured pair with Sep, whichever way the engine spelled it", () => {
+    render(<WritingPage />);
+
+    expect(screen.getByText("Featured · 25 Sep 2026")).toBeInTheDocument();
+    expect(screen.getByText("Featured · 9 Apr 2026")).toBeInTheDocument();
   });
 
   it("keeps curated and archive-only posts separated by the active filter", () => {
