@@ -53,7 +53,7 @@ test.describe("Print", () => {
     });
   }
 
-  for (const route of ["/about", "/writing/2026-march-madness-bracket-analysis"]) {
+  for (const route of ["/about", "/resume", "/writing/2026-march-madness-bracket-analysis"]) {
     test(`filters and blends nothing on ${route} on paper in Firefox's engine`, async ({
       page,
       browserName,
