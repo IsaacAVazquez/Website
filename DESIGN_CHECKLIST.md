@@ -104,13 +104,22 @@ across `STYLING.md`, `CLAUDE.md`, and `SNAPSHOT_DRIVEN_DASHBOARDS.md`.
 
 ## Print
 
-See "Printing on paper" in `STYLING.md` for the two measurements behind these.
+See "Printing on paper" in `STYLING.md` for the measurements behind these.
 
 - [ ] Nothing repeats an SVG as a background under print media. Firefox's engine prints the whole page
       with no text when it has to, and `e2e/print.spec.ts` checks `/`, `/about`, and `/investments`.
 - [ ] A layout that would not fit a page about 700px wide narrows under `print` as well as under its
       width query, as in `@media (max-width: 900px), print`, since Safari's engine answers a width
       query with the window's width.
+- [ ] A layout that widens with the window holds its wide rule to the screen, as in
+      `@media screen and (min-width: 881px)`, so paper takes the narrow arrangement in every engine
+      and either orientation. Three stacked children go in block flow, since Safari's engine leaves a
+      blank line in a paragraph inside a grid of one column, and a `.c97-columns` with its own gap
+      sets `--c97-columns-gap`, which the paper margin reads.
+- [ ] Nothing that shows on paper carries a mask, since Safari's engine paints the mask's image over
+      the element and Firefox's engine printed the masked seams as straight strips. A shape that has
+      to tear on paper is a clip path, and a fade that needs a mask comes off under print media.
+      `e2e/print.spec.ts` checks `/`, `/about`, `/investments`, and `/writing`.
 - [ ] A disclaimer or a disclosure is never hidden under print media.
 
 ## Snapshot-driven dashboards (data-fetching routes)
