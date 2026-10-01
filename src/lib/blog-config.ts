@@ -166,10 +166,10 @@ export function getBlogTopicPageForPost(post?: {
   return BLOG_TOPIC_PAGES.find((topic) => topic.label === label);
 }
 
+// The two write-ups of Isaac's jobs that Home pins, in display order.
 export const HOMEPAGE_PROOF_OF_WORK_SLUGS = [
-  "ai-product-discovery-workflow",
-  "agentic-ai-explained-for-product-managers",
-  "building-an-investment-research-platform",
+  "juno-mba-growth-internship",
+  "civitech-quality-and-product-work",
 ] as const;
 
 export const LEAD_GEN_BLOG_SLUGS = [

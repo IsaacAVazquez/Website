@@ -133,12 +133,13 @@ describe("SEO page sitemap freshness", () => {
   // Each identity page carries the date of its last copy change, kept in step
   // with the page's own dateModified. The 2026-09-14 pass rewrote copy on all
   // of them, the 2026-09-28 bio pass rewrote home, about, contact, and the
-  // résumé again, and Isaac's answers on 2026-09-29 changed home, about, and
-  // the résumé once more.
+  // résumé again, Isaac's answers on 2026-09-29 changed home, about, and the
+  // résumé once more, and on 2026-10-01 home, about, and contact named the
+  // product roles he is looking for.
   it.each([
-    ["/", "2026-09-29T00:00:00.000Z"],
-    ["/about", "2026-09-29T00:00:00.000Z"],
-    ["/contact", "2026-09-28T00:00:00.000Z"],
+    ["/", "2026-10-01T00:00:00.000Z"],
+    ["/about", "2026-10-01T00:00:00.000Z"],
+    ["/contact", "2026-10-01T00:00:00.000Z"],
     ["/resume", "2026-09-29T00:00:00.000Z"],
     ["/portfolio", "2026-09-14T00:00:00.000Z"],
   ])("records the latest copy change for %s", (pathname, lastmod) => {

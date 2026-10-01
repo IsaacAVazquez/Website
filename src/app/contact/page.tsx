@@ -7,7 +7,7 @@ export const metadata = constructMetadata({
   description:
     "Email me about full-time product roles, Berkeley Haas, an analytics problem, or anything on this site that looks wrong to you.",
   canonicalUrl: "/contact",
-  dateModified: "2026-09-28",
+  dateModified: "2026-10-01",
 });
 
 export default function Contact() {
@@ -33,7 +33,7 @@ export default function Contact() {
         data={{
           name: "Contact Isaac Vazquez",
           description:
-            "How to reach Isaac Vazquez about product management roles, Berkeley Haas, or the work on this site.",
+            "How to reach Isaac Vazquez about product management, product marketing, and program management roles, Berkeley Haas, or the work on this site.",
           mainEntity: {
             "@type": "Person",
             "name": "Isaac Vazquez",

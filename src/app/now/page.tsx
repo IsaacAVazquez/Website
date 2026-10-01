@@ -7,8 +7,8 @@ import { generateBreadcrumbStructuredData } from "@/lib/seo";
 // Hand-curated snapshot of what I'm focused on right now.
 // Refresh when anything here goes stale — this page is meant to feel
 // current, not archival.
-const NOW_UPDATED = "2026-09-29";
-const NOW_UPDATED_LABEL = "September 2026";
+const NOW_UPDATED = "2026-10-01";
+const NOW_UPDATED_LABEL = "October 2026";
 const NOW_LOCATION = "Berkeley, CA";
 
 const focus = [
@@ -16,7 +16,7 @@ const focus = [
     kicker: "Primary focus",
     title: "Second year at Haas",
     detail:
-      "I'm in my second year of the MBA and looking for a full-time product management role that starts after I graduate in May 2027.",
+      "I'm in my second year of the MBA and looking for a full-time role in product management, product marketing, or program management that starts after I graduate in May 2027.",
   },
   {
     kicker: "Finished in August",

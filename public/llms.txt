@@ -1,10 +1,10 @@
 # Isaac Vazquez
 
-> Second-year MBA candidate at UC Berkeley Haas, Class of 2027, moving into product management. He spent six years in campaign data at Open Progress and QA at Civitech, where the QA role grew into product work, then a summer 2026 growth internship at Juno.
+> Second-year MBA candidate at UC Berkeley Haas, Class of 2027, moving into product. He spent six years in campaign data at Open Progress and QA at Civitech, where the QA role grew into product work, then a summer 2026 growth internship at Juno.
 
-Isaac Vazquez is a second-year MBA candidate at UC Berkeley Haas, Class of 2027, looking for a full-time product management role that starts after he graduates in May 2027, and he is interested in consumer tech broadly. At Civitech, a campaign software company, his QA role grew into product work, and he owned the product vision for the TextOut texting platform, led a pricing initiative that generated $4M in additional revenue in 2024, and helped launch RunningMate. In summer 2026 he was the MBA growth intern at Juno, a fintech company that negotiates group rates on student loans. He is a Consortium Fellow and MLT Professional Development Fellow, and he builds and maintains the tools on this site.
+Isaac Vazquez is a second-year MBA candidate at UC Berkeley Haas, Class of 2027, looking for a full-time role in product management, product marketing, or program management that starts after he graduates in May 2027, and he is interested in consumer tech broadly. At Civitech, a campaign software company, his QA role grew into product work, and he owned the product vision for the TextOut texting platform, led a pricing initiative that generated $4M in additional revenue in 2024, and helped launch RunningMate. In summer 2026 he was the MBA growth intern at Juno, a fintech company that negotiates group rates on student loans. He is a Consortium Fellow and MLT Professional Development Fellow, and he builds and maintains the tools on this site.
 
-Last reviewed: 2026-09-29
+Last reviewed: 2026-10-01
 
 Legacy `/projects`, `/work`, and `/blog` URLs redirect permanently to their canonical routes. The on-site `/search` page is a lightweight navigation layer over a limited, mostly hand-maintained index. Most dashboards read a committed snapshot that a scheduled job refreshes, so each one shows where its numbers came from and when.
 

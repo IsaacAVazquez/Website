@@ -5,7 +5,7 @@ test.describe("Footer CTA cleanup", () => {
     await page.goto("/");
 
     await expect(
-      page.getByText(/hiring for product or want to compare notes/i)
+      page.getByText(/hiring for a product role or want to compare notes/i)
     ).toBeVisible();
 
     const footer = page.getByRole("contentinfo", { name: "Site footer" });
