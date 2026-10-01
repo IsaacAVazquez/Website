@@ -1,3 +1,4 @@
+import { readBrowserStorageString, writeBrowserStorageString } from "@/lib/browserStorage";
 import type {
   MBAATSType,
   MBAApplicationPriority,
@@ -341,7 +342,7 @@ export function loadMBAApplications(storage?: Pick<Storage, "getItem">): MBATrac
     return parseMBAApplications(storage.getItem(MBA_APPLICATIONS_STORAGE_KEY));
   }
   if (typeof window === "undefined") return [];
-  return parseMBAApplications(window.localStorage.getItem(MBA_APPLICATIONS_STORAGE_KEY));
+  return parseMBAApplications(readBrowserStorageString(MBA_APPLICATIONS_STORAGE_KEY).value);
 }
 
 export function saveMBAApplications(
@@ -355,8 +356,7 @@ export function saveMBAApplications(
       return true;
     }
     if (typeof window === "undefined") return false;
-    window.localStorage.setItem(MBA_APPLICATIONS_STORAGE_KEY, payload);
-    return true;
+    return writeBrowserStorageString(MBA_APPLICATIONS_STORAGE_KEY, payload) === "persistent";
   } catch {
     return false;
   }

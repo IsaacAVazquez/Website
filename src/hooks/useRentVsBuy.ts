@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useMemo, useSyncExternalStore } from "react";
+import { useCallback, useMemo } from "react";
 import { calculateRentVsBuy } from "@/lib/rentVsBuy/engine";
 import {
   RENT_VS_BUY_STORAGE_KEY,
@@ -8,39 +8,9 @@ import {
   saveRentVsBuyInput,
 } from "@/lib/rentVsBuy/persistence";
 import { createDefaultInput } from "@/lib/rentVsBuy/defaults";
+import { useLocalStorageString } from "@/hooks/useLocalStorageString";
+import { readBrowserStorageString } from "@/lib/browserStorage";
 import type { RentVsBuyInput } from "@/lib/rentVsBuy/types";
-
-const listeners = new Set<() => void>();
-
-function emitChange() {
-  listeners.forEach((listener) => listener());
-}
-
-function subscribe(listener: () => void) {
-  listeners.add(listener);
-
-  function handleStorage(event: StorageEvent) {
-    if (event.key === null || event.key === RENT_VS_BUY_STORAGE_KEY) {
-      listener();
-    }
-  }
-
-  if (typeof window !== "undefined") {
-    window.addEventListener("storage", handleStorage);
-  }
-
-  return () => {
-    listeners.delete(listener);
-    if (typeof window !== "undefined") {
-      window.removeEventListener("storage", handleStorage);
-    }
-  };
-}
-
-function getSnapshot() {
-  if (typeof window === "undefined") return "";
-  return window.localStorage.getItem(RENT_VS_BUY_STORAGE_KEY) ?? "";
-}
 
 function parseSnapshot(raw: string): RentVsBuyInput {
   if (!raw) return createDefaultInput();
@@ -52,19 +22,18 @@ function parseSnapshot(raw: string): RentVsBuyInput {
 }
 
 export function useRentVsBuy() {
-  const raw = useSyncExternalStore(subscribe, getSnapshot, () => "");
+  const raw = useLocalStorageString(RENT_VS_BUY_STORAGE_KEY);
   const input = useMemo(() => parseSnapshot(raw), [raw]);
   const result = useMemo(() => calculateRentVsBuy(input), [input]);
 
   const setInput = useCallback((next: RentVsBuyInput) => {
     const clean = decodeRentVsBuyInput(next);
     saveRentVsBuyInput(clean);
-    emitChange();
   }, []);
 
   const setField = useCallback(
     <K extends keyof RentVsBuyInput>(key: K, value: RentVsBuyInput[K]) => {
-      const current = parseSnapshot(getSnapshot());
+      const current = parseSnapshot(readBrowserStorageString(RENT_VS_BUY_STORAGE_KEY).value ?? "");
       setInput({ ...current, [key]: value });
     },
     [setInput],
