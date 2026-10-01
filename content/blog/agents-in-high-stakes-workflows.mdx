@@ -28,9 +28,9 @@ The most useful way I have found to reason about this is to sort an agent's poss
 
 | Risk Tier | Example Tool Actions | Autonomy Policy | Required Guardrail Architecture |
 | :--- | :--- | :--- | :--- |
-| **Low / Reversible** | Read database, search documents, draft notes | Fully autonomous | Scoped read-only access, timeout ceilings |
-| **Medium / Staged** | Draft email, create pull request, queue ticket | Staged autonomy | Draft preview state, soft undo, operator notification |
-| **High / Irreversible** | Transfer funds, execute DB drop, trigger deployment | Synchronous human-in-the-loop | Least-privilege credentials, explicit MFA sign-off, immutable audit logs |
+| Low / Reversible | Read database, search documents, draft notes | Fully autonomous | Scoped read-only access, timeout ceilings |
+| Medium / Staged | Draft email, create pull request, queue ticket | Staged autonomy | Draft preview state, soft undo, operator notification |
+| High / Irreversible | Transfer funds, execute DB drop, trigger deployment | Synchronous human-in-the-loop | Least-privilege credentials, explicit MFA sign-off, immutable audit logs |
 
 ## Least privilege is the same discipline we already apply to every other system
 
@@ -46,4 +46,4 @@ The last piece is accepting that some bad action will get through eventually, an
 
 The pattern I would pull out of this is that high-stakes agent design is mostly not about the agent, it is about the small number of actions that carry real consequences and the structure you wrap around them. Sort actions by reversibility, scope permissions to the minimum, make approvals rare and meaningful, and keep an audit trail you can act on, and you can give an agent genuine responsibility without betting the business on it never making a mistake. Chasing maximum autonomy in these workflows gets the question backwards, because the goal was never to remove the human from the consequential decisions, it was to remove them from the trivial ones so their attention is available for the decisions that cannot be undone.
 
-To model high-stakes decision trees and evaluate tradeoffs quantitatively, explore the interactive frameworks in the [Decision Lab](/decision-lab). For related architectural guardrails on managing tool context and history without overwhelming model reasoning, see [Context Engineering Is What Prompt Engineering Wanted to Be](/writing/context-engineering-replacing-prompt-engineering) and [How I'd Evaluate an Agentic AI Product as a PM](/writing/evaluate-agentic-ai-product-pm-framework).
+My [Decision Lab](/decision-lab) scores product bets on reversibility along with impact, confidence, and effort, which is the same question this matrix asks about agent actions. For keeping tool output and history from crowding out the model's reasoning, see [Context Engineering Is What Prompt Engineering Wanted to Be](/writing/context-engineering-replacing-prompt-engineering), and for the broader evaluation framework, [How I'd Evaluate an Agentic AI Product as a PM](/writing/evaluate-agentic-ai-product-pm-framework).

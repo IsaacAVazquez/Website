@@ -2,18 +2,11 @@
 
 Audited and reconciled July 23, 2026. Re-audited July 30, 2026. Both passes predate the 2026-09-16 move to the Catalog 97 shell, so treat this as a point-in-time record (status note added 2026-09-21). The September 24 and September 30 reviews below check the live site and local metadata respectively.
 
-## October 1, 2026 audit and integrity pass
+## October 1, 2026 internal link pass
 
-I conducted an end-to-end AEO and SEO verification across the entire repository. This pass audited crawlability, sitemap integrity, LLM indexing (`llms.txt`), Schema.org structured data, metadata budgeting, heading hierarchies, image alt coverage, and internal link graph integrity.
+I added links between related articles, and from articles to the tools they discuss, across 53 articles. Each added sentence says plainly what the linked page is, and I left out any that would have described a tool as doing something it does not do. The Decision Lab scores product bets on impact, confidence, effort, and reversibility, so it is not described as an agent governance model, and the Frontier Models tracker lists context windows and pricing, so it is not credited with benchmarks or latency data. Dated recaps keep their as-of framing, which means a January piece does not report how the season ended. I removed two question-and-answer sections and a processor fee table whose rates had no source.
 
-Key findings and fixes applied during this pass:
-1. **Broken Internal Link Resolved:** In `content/blog/interchange-iq-payment-fee-analyzer.mdx`, an internal link pointed to `/writing/interchange-fee-analysis-product-pricing-strategy`, returning a 404. I updated the link to the canonical article `/writing/pricing-strategy-initiative` ("Treating Pricing as Product Work, Not a Finance-Only Exercise") and updated its `updatedAt` frontmatter to `2026-09-30`. I also added a permanent 301 redirect in `next.config.mjs` to protect incoming external links or old crawler caches.
-2. **LLM Index (`public/llms.txt`) Coverage:** Verified all 79 tool and index hubs against `PUBLIC_SITEMAP_ENTRIES`. Added the missing `/score-pools/tracker` entry, bringing `llms.txt` to 100% coverage of all public tool surfaces.
-3. **Sitemap Synchronization (`public/sitemap.xml`):** Rebuilt the XML sitemap via `scripts/generatePublicSitemap.mjs`, ensuring exact alignment across all 305 routes and freshness timestamps.
-4. **Heading & Semantic Hierarchy Audit:** Automated AST sweep confirmed 0 heading skips (h1 -> h2 -> h3) across all 244 published blog articles. Exactly one `h1` is rendered per page via the Catalog 97 shell.
-5. **Image Alt Attribute Audit:** Confirmed 0 missing `alt` attributes across all 244 blog articles and portfolio case studies.
-6. **Structured Data Completeness:** Verified 100% of public indexable routes carry valid JSON-LD (`Person`, `WebSite`, `Article`, `BreadcrumbList`, `ProfilePage`, `SoftwareApplication`). Safe serialization through `safeJsonLd` protects against breakout injections and line-terminator issues.
-7. **Automated Verification:** All 398 Jest test suites (3,273 tests) passed cleanly, along with zero TypeScript compiler errors and zero ESLint warnings.
+Every added link points at a live route or a published article, and the sitemap is regenerated. Articles whose body changed carry a September 30 update date, which is when the edits were made.
 
 ## September 30, 2026 local audit
 
