@@ -2,6 +2,7 @@ import {
   getBrowserStorageSnapshot,
   readBrowserStorageString,
   readValidatedBrowserStorage,
+  removeBrowserStorageString,
   resetBrowserStorageMemory,
   subscribeBrowserStorage,
   writeBrowserStorageString,
@@ -70,5 +71,28 @@ describe("browserStorage", () => {
 
     expect(result).toMatchObject({ value: [], source: "invalid" });
     expect(window.localStorage.getItem("example")).toBe("{not-json");
+  });
+
+  it("removes the durable value and notifies subscribers", () => {
+    writeBrowserStorageString("example", "saved");
+    const listener = jest.fn();
+    const unsubscribe = subscribeBrowserStorage("example", listener);
+
+    expect(removeBrowserStorageString("example")).toBe("persistent");
+    expect(window.localStorage.getItem("example")).toBeNull();
+    expect(getBrowserStorageSnapshot("example", "fallback")).toBe("fallback");
+    expect(listener).toHaveBeenCalledTimes(1);
+    unsubscribe();
+  });
+
+  it("retains a removal in memory when durable deletion fails", () => {
+    writeBrowserStorageString("example", "saved");
+    jest.spyOn(Storage.prototype, "removeItem").mockImplementation(() => {
+      throw new DOMException("blocked", "SecurityError");
+    });
+
+    expect(removeBrowserStorageString("example")).toBe("memory-only");
+    expect(readBrowserStorageString("example").value).toBeNull();
+    expect(window.localStorage.getItem("example")).toBe("saved");
   });
 });

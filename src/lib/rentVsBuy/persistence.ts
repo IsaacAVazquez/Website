@@ -1,3 +1,4 @@
+import { readBrowserStorageString, writeBrowserStorageJson } from "@/lib/browserStorage";
 import { createDefaultInput } from "./defaults";
 import type { FilingStatus, RentVsBuyInput } from "./types";
 
@@ -92,10 +93,10 @@ export function decodeRentVsBuyInput(value: unknown): RentVsBuyInput {
 }
 
 export function loadRentVsBuyInput(storage?: Pick<Storage, "getItem">): RentVsBuyInput {
-  const store = storage ?? (typeof window === "undefined" ? undefined : window.localStorage);
-  if (!store) return createDefaultInput();
   try {
-    const raw = store.getItem(RENT_VS_BUY_STORAGE_KEY);
+    const raw = storage
+      ? storage.getItem(RENT_VS_BUY_STORAGE_KEY)
+      : readBrowserStorageString(RENT_VS_BUY_STORAGE_KEY).value;
     if (!raw) return createDefaultInput();
     return decodeRentVsBuyInput(JSON.parse(raw) as unknown);
   } catch {
@@ -107,7 +108,9 @@ export function saveRentVsBuyInput(
   input: RentVsBuyInput,
   storage?: Pick<Storage, "setItem">,
 ): void {
-  const store = storage ?? (typeof window === "undefined" ? undefined : window.localStorage);
-  if (!store) return;
-  store.setItem(RENT_VS_BUY_STORAGE_KEY, JSON.stringify(input));
+  if (storage) {
+    storage.setItem(RENT_VS_BUY_STORAGE_KEY, JSON.stringify(input));
+    return;
+  }
+  writeBrowserStorageJson(RENT_VS_BUY_STORAGE_KEY, input);
 }

@@ -6,7 +6,6 @@ import {
   useMemo,
   useRef,
   useState,
-  useSyncExternalStore,
 } from "react";
 import type {
   MBAJob,
@@ -14,6 +13,8 @@ import type {
   MBAJobsFetchError,
   MBAJobsSourceStatus,
 } from "@/types/mba-jobs";
+import { useLocalStorageString } from "@/hooks/useLocalStorageString";
+import { readBrowserStorageString, writeBrowserStorageJson } from "@/lib/browserStorage";
 import { MBA_COMPANIES } from "@/constants/mba-companies";
 
 // ---------------------------------------------------------------------------
@@ -57,13 +58,12 @@ function safeParseStringArray(raw: string | null): string[] {
 function saveSeenIds(ids: Set<string>) {
   if (typeof window === "undefined") return;
   const compacted = Array.from(ids).slice(-MAX_SEEN_IDS);
-  localStorage.setItem(SEEN_IDS_KEY, JSON.stringify(compacted));
-  emitSeenChange();
+  writeBrowserStorageJson(SEEN_IDS_KEY, compacted);
 }
 
 function loadWatchedCompanies(): Set<string> {
   if (typeof window === "undefined") return new Set(DEFAULT_WATCHED_IDS);
-  const raw = localStorage.getItem(WATCHED_KEY);
+  const raw = readBrowserStorageString(WATCHED_KEY).value;
   if (!raw) return new Set(DEFAULT_WATCHED_IDS);
   const parsed = safeParseStringArray(raw);
   // Drop ids that no longer exist in MBA_COMPANIES: the API rejects unknown
@@ -74,7 +74,7 @@ function loadWatchedCompanies(): Set<string> {
 
 function saveWatchedCompanies(ids: Set<string>) {
   if (typeof window === "undefined") return;
-  localStorage.setItem(WATCHED_KEY, JSON.stringify(Array.from(ids)));
+  writeBrowserStorageJson(WATCHED_KEY, Array.from(ids));
 }
 
 // The API's 503 outage payload is a full MBAJobsApiResponse whose errors and
@@ -93,37 +93,6 @@ async function parseOutageBody(
     // Non-JSON body; fall through to the generic error path.
   }
   return null;
-}
-
-// ---------------------------------------------------------------------------
-// useSyncExternalStore for seen IDs (cross-tab sync)
-// ---------------------------------------------------------------------------
-
-const seenListeners = new Set<() => void>();
-
-function emitSeenChange() {
-  seenListeners.forEach((l) => l());
-}
-
-function subscribeSeenIds(listener: () => void) {
-  seenListeners.add(listener);
-  const handleStorage = (e: StorageEvent) => {
-    if (e.key === null || e.key === SEEN_IDS_KEY) listener();
-  };
-  if (typeof window !== "undefined") {
-    window.addEventListener("storage", handleStorage);
-  }
-  return () => {
-    seenListeners.delete(listener);
-    if (typeof window !== "undefined") {
-      window.removeEventListener("storage", handleStorage);
-    }
-  };
-}
-
-function getSeenSnapshot(): string {
-  if (typeof window === "undefined") return "[]";
-  return localStorage.getItem(SEEN_IDS_KEY) ?? "[]";
 }
 
 // ---------------------------------------------------------------------------
@@ -162,11 +131,7 @@ export function useMBAJobs(options: UseMBAJobsOptions = {}): UseMBAJobsResult {
   const externalLeadsEnabled = options.externalLeads === true;
   const initialData = options.initialData;
   // ── Seen IDs (external store for cross-tab sync) ───────────────────────
-  const rawSeenSnapshot = useSyncExternalStore(
-    subscribeSeenIds,
-    getSeenSnapshot,
-    () => "[]"
-  );
+  const rawSeenSnapshot = useLocalStorageString(SEEN_IDS_KEY, "[]");
   const seenIds = useMemo<Set<string>>(
     () => new Set(safeParseStringArray(rawSeenSnapshot)),
     [rawSeenSnapshot]

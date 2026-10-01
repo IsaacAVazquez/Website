@@ -18,6 +18,7 @@ import {
 import { decodeRetirementPlan } from "@/lib/retirement/persistence";
 import {
   readValidatedBrowserStorage,
+  removeBrowserStorageString,
   writeBrowserStorageJson,
   type PersistenceStatus,
 } from "@/lib/browserStorage";
@@ -342,6 +343,7 @@ export function useRetirementPlan(
 
   const reset = useCallback(() => {
     const fresh = seedFreshPlan(seedRef.current);
+    removeBrowserStorageString(STORAGE_KEY);
     setPlan(fresh);
     setDebouncedPlan(fresh);
     // Reset puts the seeded example back, so the verdict stops being theirs.
