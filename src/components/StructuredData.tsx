@@ -120,27 +120,35 @@ export function StructuredData({ type = "Person", data = {} }: StructuredDataPro
           "applicationCategory": data.applicationCategory || "WebApplication",
           "operatingSystem": data.operatingSystem || "Any",
           "url": data.url || siteConfig.url,
-          "offers": offers || {
-            "@type": "Offer",
-            "price": "0",
-            "priceCurrency": "USD",
-          },
+          ...(offers ? { offers } : {}),
         };
       }
 
-      case "BreadcrumbList":
+      case "BreadcrumbList": {
+        const { items, ...breadcrumbData } = data;
         return {
           ...baseData,
+          ...breadcrumbData,
           "@type": "BreadcrumbList",
-          "itemListElement": data.items || [],
-          ...data,
+          "itemListElement": items || [],
         };
+      }
 
       case "SportsApplication": {
         const {
           author,
           dateModified,
           offers,
+          applicationCategory,
+          about,
+          audience,
+          featureList,
+          name,
+          description,
+          url,
+          image,
+          screenshot,
+          operatingSystem,
           ...sportsApplicationData
         } = data;
 
@@ -148,45 +156,30 @@ export function StructuredData({ type = "Person", data = {} }: StructuredDataPro
           ...baseData,
           ...sportsApplicationData,
           "@type": "SoftwareApplication",
-          "name": data.name || "Fantasy Football Analytics Tools",
-          "description": data.description || "Snapshot-backed fantasy football rankings and a manual draft assistant sourced from FantasyPros consensus pages",
-          "applicationCategory": "SportsApplication",
-          "operatingSystem": "Any",
-          "url": data.url || siteConfig.url,
+          "name": name || "Sports Analytics Tool",
+          "description": description || "",
+          "applicationCategory": applicationCategory || "SportsApplication",
+          "operatingSystem": operatingSystem || "Any",
+          "url": url || siteConfig.url,
           "author": normalizePerson(author),
           ...(dateModified ? { dateModified } : {}),
-          "about": data.about || {
-            "@type": "Thing",
-            "name": "Fantasy Football",
-            "description": "Strategic game based on NFL player performance statistics"
-          },
-          "audience": data.audience || {
-            "@type": "Audience",
-            "audienceType": "Fantasy Football Players"
-          },
-          "featureList": data.featureList || [
-            "Overall and position-specific rankings",
-            "PPR, Half PPR, and Standard scoring",
-            "FantasyPros consensus tiers and expert ranges",
-            "Published snapshot freshness metadata",
-            "Manual draft assistant with local persistence"
-          ],
-          "screenshot": data.screenshot || data.image || `${siteConfig.url}${siteConfig.ogImage}`,
-          "offers": offers || {
-            "@type": "Offer",
-            "price": "0",
-            "priceCurrency": "USD"
-          },
+          ...(about ? { about } : {}),
+          ...(audience ? { audience } : {}),
+          ...(featureList ? { featureList } : {}),
+          "screenshot": screenshot || image || `${siteConfig.url}${siteConfig.ogImage}`,
+          ...(offers ? { offers } : {}),
         };
       }
 
-      case "FAQPage":
+      case "FAQPage": {
+        const { questions, ...faqData } = data;
         return {
           ...baseData,
+          ...faqData,
           "@type": "FAQPage",
-          "mainEntity": data.questions || [],
-          ...data,
+          "mainEntity": questions || [],
         };
+      }
 
       case "ContactPage": {
         const { mainEntity, ...contactPageData } = data;

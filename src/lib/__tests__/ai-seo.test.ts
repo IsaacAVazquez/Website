@@ -19,6 +19,18 @@ const stringAuthor = (name: string) => name as unknown as PersonSchemaData;
 const stringKeywords = (value: string) => value as unknown as string[];
 
 describe("AI SEO structured-data generators", () => {
+  it("links an article to its canonical page and the site identity", () => {
+    const url = "https://isaacvazquez.com/writing/test-post";
+    const schema = generateArticleSchema({ headline: "Test Post", url });
+
+    expect(schema.mainEntityOfPage).toEqual({ "@type": "WebPage", "@id": url });
+    expect(schema.isPartOf).toEqual({
+      "@type": "WebSite",
+      "@id": "https://isaacvazquez.com#website",
+    });
+    expect(generateArticleSchema({ headline: "Test Post" }).mainEntityOfPage).toBeUndefined();
+  });
+
   it("does not fabricate article freshness dates", () => {
     const schema = generateArticleSchema({
       headline: "How to evaluate agentic AI products",
@@ -204,6 +216,20 @@ describe("generateArticleSchema (rich fields)", () => {
     expect(Array.isArray(schema.author)).toBe(false);
     expect((schema.author as Record<string, unknown>).name).toBe("Solo Author");
     expect(schema.keywords).toBe("single-string");
+  });
+
+  it("defaults publisher to the canonical person entity when none is passed", () => {
+    const schema = generateArticleSchema({
+      headline: "Piece without publisher",
+      author: stringAuthor("Isaac Vazquez"),
+    }) as Record<string, unknown>;
+
+    expect(schema.publisher).toEqual({
+      "@type": "Person",
+      "@id": "https://isaacvazquez.com/about#person",
+      name: "Isaac Vazquez",
+      url: "https://isaacvazquez.com/about",
+    });
   });
 });
 

@@ -82,11 +82,10 @@ describe("useMBAApplications", () => {
         JSON.stringify([imported])
       );
       window.dispatchEvent(
-        new StorageEvent("storage", { key: MBA_APPLICATIONS_STORAGE_KEY })
+        new StorageEvent("storage", { key: MBA_APPLICATIONS_STORAGE_KEY, newValue: JSON.stringify([imported]) })
       );
     });
 
     await waitFor(() => expect(result.current.applications).toHaveLength(1));
   });
 });
-

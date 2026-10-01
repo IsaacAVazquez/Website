@@ -329,6 +329,21 @@ describe("useRetirementPlan", () => {
     expect(result.current.plan.accounts.some((a) => a.balance === 300000)).toBe(true);
   });
 
+  it("keeps the plan reset on the next visit", () => {
+    const first = renderHook(() => useRetirementPlan(undefined, false));
+    act(() => first.result.current.updatePlan({ desiredAnnualSpend: 111111 }));
+    expect(readStoredPlan().desiredAnnualSpend).toBe(111111);
+
+    act(() => first.result.current.reset());
+    expect(window.localStorage.getItem(STORAGE_KEY)).toBeNull();
+    first.unmount();
+    // A new page load also discards the helper's memory fallback.
+    resetBrowserStorageMemory();
+    const next = renderHook(() => useRetirementPlan(undefined, false));
+    expect(next.result.current.isSampleScenario).toBe(true);
+    expect(next.result.current.plan.desiredAnnualSpend).toBe(createDefaultPlan().desiredAnnualSpend);
+  });
+
   it("repairs malformed stored plan fields before running the engine", () => {
     window.localStorage.setItem(
       STORAGE_KEY,

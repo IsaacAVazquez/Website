@@ -6,7 +6,7 @@
  * and E-E-A-T (Experience, Expertise, Authoritativeness, Trustworthiness) signals.
  */
 
-import { buildPersonEntity, siteConfig } from "./seo";
+import { buildPersonEntity, personCanonicalUrl, personSchemaId, siteConfig } from "./seo";
 
 // ============================================================================
 // TYPES & INTERFACES
@@ -393,6 +393,13 @@ export function generateArticleSchema(data: ArticleSchemaData) {
     headline: data.headline,
     description: data.description,
     url: data.url || siteConfig.url,
+    ...(data.url && {
+      mainEntityOfPage: {
+        "@type": "WebPage",
+        "@id": data.url,
+      },
+      isPartOf: { "@type": "WebSite", "@id": `${siteConfig.url}#website` },
+    }),
     inLanguage: data.inLanguage || "en-US",
     isAccessibleForFree: data.isAccessibleForFree ?? true,
   };
@@ -423,14 +430,19 @@ export function generateArticleSchema(data: ArticleSchemaData) {
     }
   }
 
-  // Publisher
-  if (data.publisher) {
-    schema.publisher = {
-      "@type": "Organization",
-      name: data.publisher.name,
-      ...(data.publisher.url && { url: data.publisher.url }),
-    };
-  }
+  // Publisher - Google Search recommends publisher for Article schema
+  schema.publisher = data.publisher
+    ? {
+        "@type": "Organization",
+        name: data.publisher.name,
+        ...(data.publisher.url && { url: data.publisher.url }),
+      }
+    : {
+        "@type": "Person",
+        "@id": personSchemaId,
+        name: siteConfig.name,
+        url: personCanonicalUrl,
+      };
 
   // Article section/category
   if (data.articleSection) {

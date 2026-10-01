@@ -9,6 +9,7 @@ import {
 } from "@/app/fantasy-football/best-ball/draft-tracker/best-ball-draft-state";
 import { getMockDraftStorageKey } from "@/app/fantasy-football/mock-draft/hooks/useMockDraftState";
 import { getFantasyTradeStorageKey } from "@/lib/fantasyTradePersistence";
+import { DRAFT_PRESETS_STORAGE_KEY } from "@/lib/draftPresets";
 
 describe("localDataBackup", () => {
   beforeEach(() => localStorage.clear());
@@ -62,6 +63,21 @@ describe("localDataBackup", () => {
     );
     expect(backup.entries["score_pools_store_v1"]).toContain('"version":1');
     expect(backup.entries["next-auth.session-token"]).toBeUndefined();
+  });
+
+  it("preserves portfolio history and league presets through export and restore", () => {
+    const entries = {
+      portfolio_snapshots: JSON.stringify([{ date: "2026-09-30", totalValue: 1000, totalCost: 800, holdingCount: 1 }]),
+      [DRAFT_PRESETS_STORAGE_KEY]: JSON.stringify({ presets: [{ name: "Home league" }] }),
+    };
+    for (const [key, value] of Object.entries(entries)) localStorage.setItem(key, value);
+    const backup = createLocalDataBackup(localStorage);
+    localStorage.clear();
+    restoreLocalDataBackup(localStorage, backup);
+
+    for (const [key, value] of Object.entries(entries)) {
+      expect(localStorage.getItem(key)).toBe(value);
+    }
   });
 
   it("restores only allowlisted keys", () => {

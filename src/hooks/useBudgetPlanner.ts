@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useState, useSyncExternalStore } from "react";
+import { useEffect, useMemo, useState } from "react";
 import {
   BUDGET_PLANNER_STORAGE_KEY,
   calculateBudgetSummary,
@@ -13,6 +13,7 @@ import {
   parseBudgetMonths,
   saveBudgetMonths,
 } from "@/lib/budgetPlanner";
+import { useLocalStorageString } from "@/hooks/useLocalStorageString";
 import type { BudgetExpense, BudgetMonth, BudgetMonthMap } from "@/types/budget";
 
 interface ExpenseDraftInput {
@@ -27,48 +28,9 @@ function roundAmount(value: number) {
   return Math.max(0, Math.round(value * 100) / 100);
 }
 
-const budgetPlannerListeners = new Set<() => void>();
-
-function emitBudgetPlannerChange() {
-  budgetPlannerListeners.forEach((listener) => listener());
-}
-
-function subscribeBudgetPlannerChange(listener: () => void) {
-  budgetPlannerListeners.add(listener);
-
-  function handleStorage(event: StorageEvent) {
-    if (event.key === null) {
-      listener();
-      return;
-    }
-
-    listener();
-  }
-
-  if (typeof window !== "undefined") {
-    window.addEventListener("storage", handleStorage);
-  }
-
-  return () => {
-    budgetPlannerListeners.delete(listener);
-    if (typeof window !== "undefined") {
-      window.removeEventListener("storage", handleStorage);
-    }
-  };
-}
-
-function getBudgetPlannerSnapshot() {
-  if (typeof window === "undefined") return "{}";
-  return window.localStorage.getItem(BUDGET_PLANNER_STORAGE_KEY) ?? "{}";
-}
-
 export function useBudgetPlanner(initialMonthKey = getCurrentBudgetMonthKey()) {
   const [activeMonthKey, setActiveMonthKey] = useState(initialMonthKey);
-  const storedMonthsSnapshot = useSyncExternalStore(
-    subscribeBudgetPlannerChange,
-    getBudgetPlannerSnapshot,
-    () => "{}"
-  );
+  const storedMonthsSnapshot = useLocalStorageString(BUDGET_PLANNER_STORAGE_KEY, "{}");
   const months = useMemo(
     () => ensureBudgetMonth(parseBudgetMonths(storedMonthsSnapshot), activeMonthKey),
     [activeMonthKey, storedMonthsSnapshot]
@@ -80,7 +42,6 @@ export function useBudgetPlanner(initialMonthKey = getCurrentBudgetMonthKey()) {
 
     if (nextMonths !== storedMonths) {
       saveBudgetMonths(nextMonths);
-      emitBudgetPlannerChange();
     }
   }, [activeMonthKey]);
 
@@ -96,13 +57,11 @@ export function useBudgetPlanner(initialMonthKey = getCurrentBudgetMonthKey()) {
     };
 
     saveBudgetMonths(nextMonths);
-    emitBudgetPlannerChange();
   }
 
   function selectMonth(monthKey: string) {
     const nextMonths = ensureBudgetMonth(loadBudgetMonths(), monthKey);
     saveBudgetMonths(nextMonths);
-    emitBudgetPlannerChange();
     setActiveMonthKey(monthKey);
   }
 

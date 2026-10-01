@@ -1,3 +1,6 @@
+> [!IMPORTANT]
+> Historical reference only. This April 2026 design note describes the earlier spatial division before the site-wide Catalog 97 unification on 2026-09-27. Today, all tools and pages render inside `Catalog97ToolShell` / `Catalog97Shell` using `--c97-*` tokens, and the `--home-*` classes have been retired. Use `AGENTS.md`, `CLAUDE.md`, `STYLING.md`, and `COMPONENTS.md` for current UI rules.
+
 # Dashboard Spatial System
 
 **Last updated:** 2026-04-29

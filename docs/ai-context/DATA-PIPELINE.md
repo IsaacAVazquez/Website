@@ -2,7 +2,7 @@
 
 Current high-level data flow reference.
 
-**Last updated:** 2026-09-21
+**Last updated:** 2026-09-30
 
 ---
 
@@ -45,7 +45,7 @@ Main pieces:
 - API routes:
   - `/api/investments/quotes`
   - `/api/investments/data/[symbol]`
-  - `/api/stocks`
+  - `/api/stocks` (retired on 2026-07-06, returns 410 Gone)
 
 Update path:
 
