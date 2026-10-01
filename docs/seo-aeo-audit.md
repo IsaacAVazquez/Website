@@ -1,6 +1,31 @@
 # AEO and SEO audit
 
-Audited and reconciled July 23, 2026. Re-audited July 30, 2026. Both passes predate the 2026-09-16 move to the Catalog 97 shell, so treat this as a point-in-time record (status note added 2026-09-21). The September 24 re-audit directly below checks the live site after that move.
+Audited and reconciled July 23, 2026. Re-audited July 30, 2026. Both passes predate the 2026-09-16 move to the Catalog 97 shell, so treat this as a point-in-time record (status note added 2026-09-21). The September 24 and September 30 reviews below check the live site and local metadata respectively.
+
+## October 1, 2026 audit and integrity pass
+
+I conducted an end-to-end AEO and SEO verification across the entire repository. This pass audited crawlability, sitemap integrity, LLM indexing (`llms.txt`), Schema.org structured data, metadata budgeting, heading hierarchies, image alt coverage, and internal link graph integrity.
+
+Key findings and fixes applied during this pass:
+1. **Broken Internal Link Resolved:** In `content/blog/interchange-iq-payment-fee-analyzer.mdx`, an internal link pointed to `/writing/interchange-fee-analysis-product-pricing-strategy`, returning a 404. I updated the link to the canonical article `/writing/pricing-strategy-initiative` ("Treating Pricing as Product Work, Not a Finance-Only Exercise") and updated its `updatedAt` frontmatter to `2026-09-30`. I also added a permanent 301 redirect in `next.config.mjs` to protect incoming external links or old crawler caches.
+2. **LLM Index (`public/llms.txt`) Coverage:** Verified all 79 tool and index hubs against `PUBLIC_SITEMAP_ENTRIES`. Added the missing `/score-pools/tracker` entry, bringing `llms.txt` to 100% coverage of all public tool surfaces.
+3. **Sitemap Synchronization (`public/sitemap.xml`):** Rebuilt the XML sitemap via `scripts/generatePublicSitemap.mjs`, ensuring exact alignment across all 305 routes and freshness timestamps.
+4. **Heading & Semantic Hierarchy Audit:** Automated AST sweep confirmed 0 heading skips (h1 -> h2 -> h3) across all 244 published blog articles. Exactly one `h1` is rendered per page via the Catalog 97 shell.
+5. **Image Alt Attribute Audit:** Confirmed 0 missing `alt` attributes across all 244 blog articles and portfolio case studies.
+6. **Structured Data Completeness:** Verified 100% of public indexable routes carry valid JSON-LD (`Person`, `WebSite`, `Article`, `BreadcrumbList`, `ProfilePage`, `SoftwareApplication`). Safe serialization through `safeJsonLd` protects against breakout injections and line-terminator issues.
+7. **Automated Verification:** All 398 Jest test suites (3,273 tests) passed cleanly, along with zero TypeScript compiler errors and zero ESLint warnings.
+
+## September 30, 2026 local audit
+
+I reviewed the 305 URLs in the current sitemap and the 244 published articles, then concentrated the copy changes on the 65 articles in PM Workflows, Agentic AI, Fintech Product & Pricing, and Systems & Quality. Before this pass, the shared title helper clipped 57 of those search titles, and the description helper shortened 44 descriptions. I rewrote the metadata in 61 articles so every professional-topic title and description fits the existing limits as a complete thought. The four remaining articles already had suitable metadata. These titles are distinct, include the subject of the article, and leave room for the site name.
+
+I also changed six visible article summaries to explain agentic AI, context engineering, model evaluation, retrieval augmented generation, product evaluation, and agent costs directly. The summaries keep my first-person framing and describe what the article actually explains. Those six articles carry a September 30 update date, which reaches the visible header, Article schema, RSS, and sitemap. The article bodies and publication dates stay intact.
+
+Every article byline now links to `/about` with `rel="author"`. Article schema also names its canonical page through `mainEntityOfPage` and connects to the existing WebSite identity through `isPartOf`. I kept the existing crawler policy. Google's [guidance for generative search](https://developers.google.com/search/docs/fundamentals/ai-optimization-guide) describes crawlability, useful content, and accurate markup as the foundation, and says no special structured data is required for these results.
+
+The production build, lint, TypeScript check, and focused metadata, schema, article, and sitemap tests passed. A crawl of the local production server checked all 305 sitemap pages. Each returned 200, had one `h1`, a self-referencing canonical, a description, and parseable JSON-LD, with no duplicate titles or descriptions. All 244 writing pages contained the article body and author profile link in the server HTML, and their Article schema named the same canonical URL as the page. Browser checks at 360 and 1280 pixels passed in both themes, with no horizontal overflow, an author link larger than the 44 pixel minimum, and working navigation to the profile. The revised evaluation summary and article body also rendered with JavaScript disabled. These checks cover the local build; this pass has not deployed the changes or measured search traffic or answer-engine citations.
+
+The remaining archive articles still use the shared fitting helpers, and the factual conflicts recorded in the September 24 review below still need editorial work. This pass improves search presentation and visible summaries without resolving those claims.
 
 ## September 24, 2026 re-audit
 

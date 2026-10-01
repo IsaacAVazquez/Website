@@ -208,6 +208,11 @@ const nextConfig = {
         destination: '/writing/:slug',
         permanent: true,
       },
+      {
+        source: '/writing/interchange-fee-analysis-product-pricing-strategy',
+        destination: '/writing/pricing-strategy-initiative',
+        permanent: true,
+      },
 
       // Release history has one canonical home.
       {

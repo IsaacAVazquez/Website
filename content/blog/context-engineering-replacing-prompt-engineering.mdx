@@ -40,10 +40,33 @@ The third is freshness and authority. When two pieces of context conflict, which
 
 What is interesting here is how little of this resembles the prompt engineering era. Nobody is debating whether to say please. The work looks like information architecture, retrieval tuning, and pipeline design. It looks like engineering, because it is.
 
+### Prompt Engineering vs. Context Engineering
+
+| Architecture Dimension | Prompt Engineering (2023–2024) | Context Engineering (2025–2026) |
+| :--- | :--- | :--- |
+| **Primary Focus** | Phrasing, tone modifiers, few-shot prompt templates | Dynamic token pipelines, retrieval hygiene, context budget allocation |
+| **Core Mechanism** | In-context steering via prose formatting | Programmatic selection, history compaction, metadata re-ranking |
+| **Execution Horizon** | Single-turn request and response | Multi-turn agent trajectories across tools, memory, and environments |
+| **Primary Failure Mode** | Persona drift, ungrounded speculation | Context rot, distraction by verbose logs, stale document conflicts |
+| **Primary Tooling** | System prompt templates, prompt playground UI | Vector databases, graph RAG, compaction APIs, tool observation filters |
+
 ## Where I would push back on the hype
 
 Context engineering is now getting its own hype cycle, and the pattern from the prompt era is repeating, so it is worth being clear about limits. Better context does not fix a model that lacks the underlying capability for a task. It does not substitute for evals, and teams that tune context without a measurement loop are just generating vibes with extra steps. And there is a real ceiling on how much curation effort makes sense for low-stakes use cases. A casual chat interface does not need the context discipline of an agent that touches production systems.
 
 But for anything agentic, anything long-running, anything where the model acts rather than just answers, I would put context design at the center of the build. The prompt is one input among many, and usually not the one that decides whether the thing works. The window is the product. What you let into it is the job.
 
-If retrieval is the part you are trying to place inside that architecture, [Is RAG Dead?](/writing/is-rag-dead-2026) is my answer to what long context and agentic search actually changed. If the system is already running and the question is whether a context change helped, [Evals Are the New Test Suite](/writing/evals-are-the-new-test-suite) is the measurement layer I would add next.
+## Frequently Asked Questions About Context Engineering
+
+### What is the difference between prompt engineering and context engineering?
+Prompt engineering focuses on how a query or system prompt is phrased to steer a language model. Context engineering designs the dynamic runtime pipeline that filters, retrieves, compresses, and structures all information—system rules, user intent, tool outputs, session history, and external knowledge—placed inside the model's token window.
+
+### What is "context rot" in LLMs and AI agents?
+Context rot is the progressive degradation of model reasoning and instruction-following fidelity as noisy, redundant, or outdated tokens accumulate in a long context window. Irrelevant tokens compete for the model's scarce attention heads, often causing the agent to miss critical constraints or hallucinate.
+
+### How do production agents prevent context rot?
+1. **Dynamic Compaction**: Summarizing completed conversational turns into structured key-value state representations.
+2. **Observation Pruning**: Stripping verbose API outputs or HTML blobs immediately after the agent extracts the necessary data.
+3. **Strict Source Authority**: Prioritizing documents by timestamp and verified publisher hierarchy so contradictory facts resolve deterministically.
+
+If retrieval is the part you are trying to place inside that architecture, [Is RAG Dead?](/writing/is-rag-dead-2026) is my answer to what long context and agentic search actually changed. If the system is already running and the question is whether a context change helped, [Evals Are the New Test Suite](/writing/evals-are-the-new-test-suite) is the measurement layer I would add next. To benchmark how different frontier reasoning models behave under variable context loads, explore the [Frontier Models Directory](/frontier-models).
