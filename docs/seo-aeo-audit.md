@@ -6,7 +6,7 @@ Audited and reconciled July 23, 2026. Re-audited July 30, 2026. Both passes pred
 
 I added links between related articles, and from articles to the tools they discuss, across 53 articles. Each added sentence says plainly what the linked page is, and I left out any that would have described a tool as doing something it does not do. The Decision Lab scores product bets on impact, confidence, effort, and reversibility, so it is not described as an agent governance model, and the Frontier Models tracker lists context windows and pricing, so it is not credited with benchmarks or latency data. Dated recaps keep their as-of framing, which means a January piece does not report how the season ended. I removed two question-and-answer sections and a processor fee table whose rates had no source.
 
-Every added link points at a live route or a published article, and the sitemap is regenerated. Articles whose body changed carry a September 30 update date, which is when the edits were made.
+Every added link points at a live route or a published article, and the sitemap is regenerated. Every article whose body changed carries an October 1 update date, which is when this text was finalized.
 
 ## September 30, 2026 local audit
 
