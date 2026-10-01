@@ -2,7 +2,7 @@
 
 Current nav model, redirect table, and shell notes.
 
-**Last updated:** 2026-09-21
+**Last updated:** 2026-09-30
 
 ---
 
@@ -97,4 +97,4 @@ Old `/portfolio/<slug>` case-study URLs now redirect to their writing posts:
 - `/writing` is the canonical writing route
 - `Work` is the public-facing nav label even though the route stays `/portfolio`
 - `Writing` is again a promoted global-nav item
-- `/formula-1`, `/fantasy-formula-1`, `/premier-league`, `/la-liga`, `/mlb`, `/nba`, `/nfl`, `/golf`, `/world-cup-2026`, `/earthquake-pulse`, `/bay-area-transit`, `/tech-startup-tracker`, `/github-trending-pulse`, `/ai-dev-tools`, `/frontier-models`, `/decision-lab`, `/food-map`, `/recipe-finder`, `/wine-cellar`, `/travel`, `/news-pulse`, `/spacex-mission-control`, `/polling-aggregator`, `/mba-internship-notifications`, `/museum-log`, `/now`, `/changelog`, and `/fintech-tools/*` are live routes but not promoted in the global header
+- `/formula-1`, `/fantasy-formula-1`, `/premier-league`, `/la-liga`, `/mlb`, `/nba`, `/nfl`, `/golf`, `/world-cup-2026`, `/earthquake-pulse`, `/bay-area-transit`, `/tech-startup-tracker`, `/github-trending-pulse`, `/agent-build-index`, `/ai-dev-tools`, `/frontier-models`, `/decision-lab`, `/enablement-assistant`, `/food-map`, `/recipe-finder`, `/wine-cellar`, `/travel`, `/travel-deals`, `/score-pools`, `/arcade`, `/news-pulse`, `/spacex-mission-control`, `/polling-aggregator`, `/mba-internship-notifications`, `/museum-log`, `/now`, `/changelog`, and `/fintech-tools/*` are live routes but not promoted in the global header

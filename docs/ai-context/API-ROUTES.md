@@ -2,7 +2,7 @@
 
 Current API route map.
 
-**Last updated:** 2026-09-21
+**Last updated:** 2026-09-30
 
 ---
 
@@ -34,7 +34,7 @@ Current API route map.
 | `/api/spacex/launches` | GET | SpaceX launch list payload |
 | `/api/spacex/launches/[id]` | GET | SpaceX launch detail payload |
 | `/api/spacex/summary` | GET | SpaceX Mission Control summary payload |
-| `/api/stocks` | GET | Quote source for investments flows |
+| `/api/stocks` | GET | Retired on 2026-07-06 (returns 410 Gone; points callers to `/api/investments/quotes`) |
 | `/api/world-cup/teams/[teamId]` | GET | Snapshot-backed World Cup team drilldown payload |
 
 ---
@@ -70,7 +70,7 @@ Current investment routes:
 
 ### `/api/stocks`
 
-- provides quote data used by the investments experience
+- retired on 2026-07-06; returns 410 Gone with Deprecation/Sunset headers pointing callers to `/api/investments/quotes`
 
 ---
 

@@ -2,7 +2,7 @@
 
 Fast route reference for the current app.
 
-**Last updated:** 2026-09-21
+**Last updated:** 2026-09-30
 
 ---
 
@@ -61,8 +61,8 @@ Fast route reference for the current app.
 | `/enablement-assistant` | `src/app/enablement-assistant/page.tsx` | Server page -> `EnablementAssistantClient` |
 | `/design/catalog-pages` | `src/app/design/catalog-pages/page.tsx` | Server page -> `Catalog97LayoutsCanvas`, set to noindex |
 | `/fantasy-football` | `src/app/fantasy-football/page.tsx` | Server page -> fantasy client UI |
-| `/fantasy-football/tiers/[position]` | `src/app/fantasy-football/tiers/[position]/page.tsx` | Redirect page to the canonical fantasy board |
-| `/fantasy-football/rb-tiers` | `src/app/fantasy-football/rb-tiers/page.tsx` | Redirect page to the canonical RB board |
+| `/fantasy-football/tiers/[position]` | `next.config.mjs` | Permanent redirect to `/fantasy-football?position=:position&scoring=ppr` |
+| `/fantasy-football/rb-tiers` | `next.config.mjs` | Permanent redirect to `/fantasy-football?position=rb&scoring=ppr` |
 | `/fantasy-football/draft-tracker` | `src/app/fantasy-football/draft-tracker/page.tsx` | Server page |
 | `/fantasy-football/mock-draft` | `src/app/fantasy-football/mock-draft/page.tsx` | Server page -> `MockDraftClient` |
 | `/fantasy-football/trade-calculator` | `src/app/fantasy-football/trade-calculator/page.tsx` | Server page -> `TradeCalculatorClient` |

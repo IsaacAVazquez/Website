@@ -2,7 +2,7 @@
 
 Current hook inventory and state ownership.
 
-**Last updated:** 2026-06-19
+**Last updated:** 2026-09-30
 
 ---
 
@@ -10,21 +10,30 @@ Current hook inventory and state ownership.
 
 | Hook | File | Main Use |
 |------|------|----------|
+| `useBestBallSnapshot` | `src/hooks/useBestBallSnapshot.ts` | Published best ball snapshot loading from `public/data/fantasy/best-ball.json` |
 | `useBudgetPlanner` | `src/hooks/useBudgetPlanner.ts` | Budget planner state and calculations |
+| `useClientNow` | `src/hooks/useClientNow.ts` | Hydration-safe client-side timestamp state |
 | `useCompareTray` | `src/hooks/useCompareTray.ts` | Browser-local fantasy compare selection (up to 3 player ids), shared across the rankings board and draft assistant |
 | `useDebounce` | `src/hooks/useDebounce.ts` | Debounced inputs |
-| `useFantasySnapshot` | `src/hooks/useFantasySnapshot.ts` | Published fantasy snapshot loading |
+| `useFantasyMyTeam` | `src/hooks/useFantasyMyTeam.ts` | Browser-local roster tracker for draft board integration |
+| `useFantasySnapshot` | `src/hooks/useFantasySnapshot.ts` | Published redraft fantasy snapshot loading |
+| `useFantasyTradeCalculator` | `src/hooks/useFantasyTradeCalculator.ts` | Browser-local trade calculator player selections per format |
+| `useFantasyWeeklySnapshot` | `src/hooks/useFantasyWeeklySnapshot.ts` | In-season weekly fantasy snapshot loading from `public/data/fantasy/weekly.json` |
 | `useInvestments` | `src/hooks/useInvestments.ts` | Portfolio holdings + quote enrichment |
 | `useLiveQuote` | `src/hooks/useLiveQuote.ts` | Current quote fetch state |
 | `useLocalStorageString` | `src/hooks/useLocalStorageString.ts` | Low-level reactive single-key localStorage reader (`useSyncExternalStore`) shared by the fantasy queue/notes/compare hooks |
 | `useMBAApplications` | `src/hooks/useMBAApplications.ts` | Browser-local application tracking for the MBA role tracker |
 | `useMBAJobs` | `src/hooks/useMBAJobs.ts` | MBA job fetch state plus seen-job and watched-company persistence |
+| `useMountOnFirstOpen` | `src/hooks/useMountOnFirstOpen.ts` | Deferred mounting helper for modals and drawers |
 | `useMuseumLog` | `src/hooks/useMuseumLog.ts` | Browser-local museum visit state for `/museum-log` |
 | `usePlayerNotes` | `src/hooks/usePlayerNotes.ts` | Browser-local fantasy per-player private notes (max 280 chars), shared across the rankings board and draft assistant |
 | `usePlayerQueue` | `src/hooks/usePlayerQueue.ts` | Browser-local fantasy player queue / watchlist of player ids, shared across the rankings board and draft assistant |
+| `useRentVsBuy` | `src/hooks/useRentVsBuy.ts` | Rent vs. buy inputs and month-by-month net-worth comparison |
 | `useRetirementPlan` | `src/hooks/useRetirementPlan.ts` | Browser-local retirement plan inputs (localStorage key `retirement_plan`) |
+| `useScorePools` | `src/hooks/useScorePools.ts` | Score pools pick state and odds calculations |
 | `useStockData` | `src/hooks/useStockData.ts` | Per-symbol research section data |
 | `useTablistKeyboard` | `src/hooks/useTablistKeyboard.ts` | Roving keyboard navigation for horizontal tablists (WCAG 2.1) |
+| `useTrackedListingSearch` | `src/hooks/useTrackedListingSearch.ts` | Client-side tokenized search state for directories and listings |
 | `useTravelPlanner` | `src/hooks/useTravelPlanner.ts` | Browser-local trip, itinerary, and journal state for `/travel` |
 | `useWineCellar` | `src/hooks/useWineCellar.ts` | Browser-local wine cellar state for `/wine-cellar` |
 
