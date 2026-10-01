@@ -70,6 +70,15 @@ export default async function FantasyFootballPage({ searchParams }: FantasyFootb
             "Manual draft tracker with local persistence",
             "Room-relative draft value and expected return calculator",
           ],
+          about: {
+            "@type": "Thing",
+            name: "Fantasy Football",
+            description: "Strategic game based on NFL player performance statistics",
+          },
+          audience: {
+            "@type": "Audience",
+            audienceType: "Fantasy Football Players",
+          },
         }}
       />
       <StructuredData

@@ -43,7 +43,7 @@ export default async function PollingAggregatorPage({ searchParams }: PollingPag
         }}
       />
       <StructuredData
-        type="SportsApplication"
+        type="SoftwareApplication"
         data={{
           name: "Polling Aggregator",
           description:
