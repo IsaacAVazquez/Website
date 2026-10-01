@@ -1,10 +1,10 @@
 {
   "symbol": "AMAT",
-  "lastUpdated": "2026-09-29T07:04:00.244178+00:00",
+  "lastUpdated": "2026-10-01T15:57:42.767348+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-09-29T07:04:00.244178+00:00",
+    "snapshotBuiltAt": "2026-10-01T15:57:42.767348+00:00",
     "sections": {
-      "price": "2026-09-29"
+      "price": "2026-09-30"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 11.5973,
-      "ttmPe": 41.97,
-      "marketCap": 386291470424,
-      "psRatio": 12.53,
-      "pbRatio": 15.07,
-      "pegRatio": 0.98
+      "ttmPe": 44.09,
+      "marketCap": 405829838412,
+      "psRatio": 13.16,
+      "pbRatio": 15.84,
+      "pegRatio": 1.02
     },
     "profitability": {
       "roe": 10.25,
@@ -6309,25 +6309,17 @@
       ]
     },
     "wacc": {
-      "wacc": 16.91,
-      "costOfEquity": 17.19,
+      "wacc": 17.06,
+      "costOfEquity": 17.330000000000002,
       "costOfDebt": 2.29,
       "taxRate": 13,
-      "beta": 1.5658,
-      "marketCap": 386291470424
+      "beta": 1.5885,
+      "marketCap": 405829838412
     },
     "beta": {
-      "beta5y": 1.5658
+      "beta5y": 1.5885
     },
     "price": [
-      {
-        "date": "2025-09-29",
-        "open": 206.34,
-        "high": 210.5,
-        "low": 204.68,
-        "close": 204.95,
-        "volume": 9295400
-      },
       {
         "date": "2025-09-30",
         "open": 204.36,
@@ -8334,7 +8326,15 @@
         "high": 513.28,
         "low": 499.17,
         "close": 512.01,
-        "volume": 7150000
+        "volume": 7161200
+      },
+      {
+        "date": "2026-09-30",
+        "open": 513.82,
+        "high": 515.42,
+        "low": 506.78,
+        "close": 511.38,
+        "volume": 6255000
       }
     ],
     "news": [
@@ -8371,11 +8371,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "de8eda00-fb93-3a66-9ed6-a9623991b765",
-        "title": "Applied Materials, Inc. (AMAT) is Attracting Investor Attention: Here is What You Should Know",
-        "publisher": "Zacks",
+        "uuid": "95cba8df-03e1-3b99-afa3-2caa223b106b",
+        "title": "3 Cash-Heavy Stocks with Exciting Potential",
+        "publisher": "StockStory",
         "reportDate": "2025-05-19",
-        "link": "https://finance.yahoo.com/news/applied-materials-inc-amat-attracting-130014413.html",
+        "link": "https://finance.yahoo.com/news/3-cash-heavy-stocks-exciting-044323186.html",
         "type": "STORY"
       },
       {
@@ -8387,19 +8387,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "95cba8df-03e1-3b99-afa3-2caa223b106b",
-        "title": "3 Cash-Heavy Stocks with Exciting Potential",
-        "publisher": "StockStory",
-        "reportDate": "2025-05-19",
-        "link": "https://finance.yahoo.com/news/3-cash-heavy-stocks-exciting-044323186.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "aeb72ce4-73b5-3db8-bc2f-cd372814c483",
         "title": "Applied Materials (AMAT) Falls on Revenue Miss, China Sales Slump",
         "publisher": "GuruFocus.com",
         "reportDate": "2025-05-19",
         "link": "https://finance.yahoo.com/news/applied-materials-amat-falls-revenue-121217985.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "de8eda00-fb93-3a66-9ed6-a9623991b765",
+        "title": "Applied Materials, Inc. (AMAT) is Attracting Investor Attention: Here is What You Should Know",
+        "publisher": "Zacks",
+        "reportDate": "2025-05-19",
+        "link": "https://finance.yahoo.com/news/applied-materials-inc-amat-attracting-130014413.html",
         "type": "STORY"
       },
       {
@@ -8488,18 +8488,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 41.97,
-        "industryAvg": 52.41
+        "value": 44.09,
+        "industryAvg": 53.81
       },
       {
         "metric": "P/S Ratio",
-        "value": 12.53,
-        "industryAvg": 14.24
+        "value": 13.16,
+        "industryAvg": 14.62
       },
       {
         "metric": "P/B Ratio",
-        "value": 15.07,
-        "industryAvg": 19.96
+        "value": 15.84,
+        "industryAvg": 20.1
       },
       {
         "metric": "ROE",

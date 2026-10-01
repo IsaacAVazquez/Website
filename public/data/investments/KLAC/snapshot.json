@@ -1,10 +1,10 @@
 {
   "symbol": "KLAC",
-  "lastUpdated": "2026-09-29T07:04:00.244178+00:00",
+  "lastUpdated": "2026-10-01T15:57:42.767348+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-09-29T07:04:00.244178+00:00",
+    "snapshotBuiltAt": "2026-10-01T15:57:42.767348+00:00",
     "sections": {
-      "price": "2026-09-29"
+      "price": "2026-09-30"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 3.6677,
-      "ttmPe": 51.58,
-      "marketCap": 247241974110,
-      "psRatio": 18.21,
-      "pbRatio": 38.94,
-      "pegRatio": 3.58
+      "ttmPe": 53.15,
+      "marketCap": 254770196190,
+      "psRatio": 18.76,
+      "pbRatio": 40.12,
+      "pegRatio": 3.69
     },
     "profitability": {
       "roe": 22.38,
@@ -6266,25 +6266,17 @@
       ]
     },
     "wacc": {
-      "wacc": 15.709999999999999,
-      "costOfEquity": 16.08,
+      "wacc": 15.68,
+      "costOfEquity": 16.03,
       "costOfDebt": 1.1900000000000002,
       "taxRate": 12,
-      "beta": 1.4202,
-      "marketCap": 247241974110
+      "beta": 1.4171,
+      "marketCap": 254770196190
     },
     "beta": {
-      "beta5y": 1.4202
+      "beta5y": 1.4171
     },
     "price": [
-      {
-        "date": "2025-09-29",
-        "open": 107.718,
-        "high": 108.56,
-        "low": 106.318,
-        "close": 106.413,
-        "volume": 7697000
-      },
       {
         "date": "2025-09-30",
         "open": 106.38,
@@ -8292,23 +8284,31 @@
         "low": 192.57,
         "close": 196.53,
         "volume": 7773900
+      },
+      {
+        "date": "2026-09-30",
+        "open": 196.01,
+        "high": 197.6,
+        "low": 193.95,
+        "close": 194.93,
+        "volume": 6852100
       }
     ],
     "news": [
-      {
-        "uuid": "83f8d9f8-57f2-335d-9151-f1ea2ac9e406",
-        "title": "Is KLA Corp. (KLAC) the Best GARP Stock to Buy Now?",
-        "publisher": "Insider Monkey",
-        "reportDate": "2025-03-12",
-        "link": "https://finance.yahoo.com/news/kla-corp-klac-best-garp-142339226.html",
-        "type": "STORY"
-      },
       {
         "uuid": "aa125839-97db-3f4e-9c8d-45fe4d3f50e1",
         "title": "What Makes KLA Corporation (KLAC) a Good Long-Term Bet?",
         "publisher": "Insider Monkey",
         "reportDate": "2025-03-12",
         "link": "https://finance.yahoo.com/news/makes-kla-corporation-klac-good-134811807.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "83f8d9f8-57f2-335d-9151-f1ea2ac9e406",
+        "title": "Is KLA Corp. (KLAC) the Best GARP Stock to Buy Now?",
+        "publisher": "Insider Monkey",
+        "reportDate": "2025-03-12",
+        "link": "https://finance.yahoo.com/news/kla-corp-klac-best-garp-142339226.html",
         "type": "STORY"
       },
       {
@@ -8368,11 +8368,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "7b284d14-6b62-3ee7-a618-c21dd56b00bc",
-        "title": "KLA Corp (KLAC) Q3 2025 Earnings Call Highlights: Surpassing Revenue Expectations and Strategic ...",
-        "publisher": "GuruFocus.com",
+        "uuid": "7d244f54-1547-3e57-9402-fe0b6840571f",
+        "title": "KLA Corporation Reports Fiscal 2025 Third Quarter Results; Announces an Increase in the Dividend Level to $1.90 Per Share and a $5 billion Increase in Share Repurchase Authorization",
+        "publisher": "PR Newswire",
         "reportDate": "2025-05-01",
-        "link": "https://finance.yahoo.com/news/kla-corp-klac-q3-2025-071854024.html",
+        "link": "https://finance.yahoo.com/news/kla-corporation-reports-fiscal-2025-200500861.html",
         "type": "STORY"
       }
     ],
@@ -8442,18 +8442,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 51.58,
-        "industryAvg": 52.41
+        "value": 53.15,
+        "industryAvg": 53.81
       },
       {
         "metric": "P/S Ratio",
-        "value": 18.21,
-        "industryAvg": 14.24
+        "value": 18.76,
+        "industryAvg": 14.62
       },
       {
         "metric": "P/B Ratio",
-        "value": 38.94,
-        "industryAvg": 19.96
+        "value": 40.12,
+        "industryAvg": 20.1
       },
       {
         "metric": "ROE",

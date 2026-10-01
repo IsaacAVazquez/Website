@@ -1,10 +1,10 @@
 {
   "symbol": "MDLZ",
-  "lastUpdated": "2026-09-29T06:39:51.976581+00:00",
+  "lastUpdated": "2026-10-01T15:57:42.767348+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-09-29T06:39:51.976581+00:00",
+    "snapshotBuiltAt": "2026-10-01T15:57:42.767348+00:00",
     "sections": {
-      "price": "2026-09-29"
+      "price": "2026-09-30"
     }
   },
   "source": "prefetched",
@@ -40,10 +40,10 @@
     },
     "fundamentals": {
       "ttmEps": 2.7263,
-      "ttmPe": 22.07,
-      "marketCap": 77062734714,
-      "psRatio": 1.96,
-      "pbRatio": 2.99,
+      "ttmPe": 21.21,
+      "marketCap": 74040666686,
+      "psRatio": 1.88,
+      "pbRatio": 2.88,
       "pegRatio": 0.15
     },
     "profitability": {
@@ -5877,25 +5877,17 @@
       ]
     },
     "wacc": {
-      "wacc": 6.510000000000001,
+      "wacc": 6.460000000000001,
       "costOfEquity": 8.200000000000001,
       "costOfDebt": 0.6799999999999999,
       "taxRate": 28.999999999999996,
-      "beta": 0.3876,
-      "marketCap": 77062734714
+      "beta": 0.3836,
+      "marketCap": 74040666686
     },
     "beta": {
-      "beta5y": 0.3876
+      "beta5y": 0.3836
     },
     "price": [
-      {
-        "date": "2025-09-29",
-        "open": 63.43,
-        "high": 63.57,
-        "low": 61.22,
-        "close": 62.63,
-        "volume": 10956700
-      },
       {
         "date": "2025-09-30",
         "open": 62.45,
@@ -7903,6 +7895,14 @@
         "low": 58.79,
         "close": 59.32,
         "volume": 8402600
+      },
+      {
+        "date": "2026-09-30",
+        "open": 59.03,
+        "high": 59.14,
+        "low": 57.81,
+        "close": 57.82,
+        "volume": 10966300
       }
     ],
     "news": [
@@ -7939,19 +7939,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "ee5143bb-558c-3eac-a0e4-f5ff6a1f801c",
-        "title": "Closing Bell Movers: Snap falls 14% after Q1 results, no guidance",
-        "publisher": "TipRanks",
-        "reportDate": "2025-05-01",
-        "link": "https://finance.yahoo.com/news/closing-bell-movers-snap-falls-234039126.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "95ccc4a4-a3af-39b6-b1d1-1ef0134e0bf4",
         "title": "Mondelez Q1 Earnings Beat Estimates, Net Revenues Rise 0.2% Y/Y",
         "publisher": "Zacks",
         "reportDate": "2025-05-01",
         "link": "https://finance.yahoo.com/news/mondelez-q1-earnings-beat-estimates-162200745.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "ee5143bb-558c-3eac-a0e4-f5ff6a1f801c",
+        "title": "Closing Bell Movers: Snap falls 14% after Q1 results, no guidance",
+        "publisher": "TipRanks",
+        "reportDate": "2025-05-01",
+        "link": "https://finance.yahoo.com/news/closing-bell-movers-snap-falls-234039126.html",
         "type": "STORY"
       },
       {
@@ -8056,18 +8056,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 22.07,
-        "industryAvg": 27.01
+        "value": 21.21,
+        "industryAvg": 25.98
       },
       {
         "metric": "P/S Ratio",
-        "value": 1.96,
-        "industryAvg": 2.19
+        "value": 1.88,
+        "industryAvg": 2.11
       },
       {
         "metric": "P/B Ratio",
-        "value": 2.99,
-        "industryAvg": 3.63
+        "value": 2.88,
+        "industryAvg": 3.45
       },
       {
         "metric": "ROE",

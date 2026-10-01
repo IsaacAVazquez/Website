@@ -1,10 +1,10 @@
 {
   "symbol": "CCI",
-  "lastUpdated": "2026-09-29T07:04:00.244178+00:00",
+  "lastUpdated": "2026-10-01T15:57:42.767348+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-09-29T07:04:00.244178+00:00",
+    "snapshotBuiltAt": "2026-10-01T15:57:42.767348+00:00",
     "sections": {
-      "price": "2026-09-29"
+      "price": "2026-09-30"
     }
   },
   "source": "prefetched",
@@ -40,10 +40,10 @@
     },
     "fundamentals": {
       "ttmEps": 4.5368,
-      "ttmPe": 14.79,
-      "marketCap": 28584600000,
-      "psRatio": 6.87,
-      "pbRatio": -8.74,
+      "ttmPe": 14.69,
+      "marketCap": 28392900000,
+      "psRatio": 6.82,
+      "pbRatio": -8.68,
       "pegRatio": 0.45
     },
     "profitability": {
@@ -5683,24 +5683,16 @@
     },
     "wacc": {
       "wacc": 7.2700000000000005,
-      "costOfEquity": 12.520000000000001,
+      "costOfEquity": 12.559999999999999,
       "costOfDebt": 0.86,
       "taxRate": 1,
-      "beta": 0.9536,
-      "marketCap": 28584600000
+      "beta": 0.959,
+      "marketCap": 28392900000
     },
     "beta": {
-      "beta5y": 0.9536
+      "beta5y": 0.959
     },
     "price": [
-      {
-        "date": "2025-09-29",
-        "open": 95.54,
-        "high": 96.82,
-        "low": 94.85,
-        "close": 96.19,
-        "volume": 4540200
-      },
       {
         "date": "2025-09-30",
         "open": 96.44,
@@ -7708,6 +7700,14 @@
         "low": 66.35,
         "close": 67.07,
         "volume": 3631400
+      },
+      {
+        "date": "2026-09-30",
+        "open": 67.5,
+        "high": 68,
+        "low": 66.13,
+        "close": 66.65,
+        "volume": 3866400
       }
     ],
     "news": [
@@ -7728,11 +7728,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "f734f670-1f48-3b82-928d-dab535236e9b",
-        "title": "Citigroup Adjusts Crown Castle Price Target to $124 From $108",
+        "uuid": "9a376742-5bed-36c3-93c5-1c5c7bfa4241",
+        "title": "RBC Raises Price Target on Crown Castle to $112 From $107",
         "publisher": "MT Newswires",
         "reportDate": "2025-05-02",
-        "link": "https://finance.yahoo.com/news/citigroup-adjusts-crown-castle-price-130821194.html",
+        "link": "https://finance.yahoo.com/news/rbc-raises-price-target-crown-185752092.html",
         "type": "STORY"
       },
       {
@@ -7744,11 +7744,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "9a376742-5bed-36c3-93c5-1c5c7bfa4241",
-        "title": "RBC Raises Price Target on Crown Castle to $112 From $107",
+        "uuid": "f734f670-1f48-3b82-928d-dab535236e9b",
+        "title": "Citigroup Adjusts Crown Castle Price Target to $124 From $108",
         "publisher": "MT Newswires",
         "reportDate": "2025-05-02",
-        "link": "https://finance.yahoo.com/news/rbc-raises-price-target-crown-185752092.html",
+        "link": "https://finance.yahoo.com/news/citigroup-adjusts-crown-castle-price-130821194.html",
         "type": "STORY"
       },
       {
@@ -7760,11 +7760,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "d86f16e8-2322-30ca-a1f5-fb5ffaca9456",
-        "title": "Crown Castle Insider Sold Shares Worth $300,389, According to a Recent SEC Filing",
+        "uuid": "49ad0c7d-bb5f-372d-994b-ecb0ab10392a",
+        "title": "Crown Castle Insider Sold Shares Worth $384,192, According to a Recent SEC Filing",
         "publisher": "MT Newswires",
         "reportDate": "2025-05-07",
-        "link": "https://finance.yahoo.com/news/crown-castle-insider-sold-shares-213118856.html",
+        "link": "https://finance.yahoo.com/news/crown-castle-insider-sold-shares-212747939.html",
         "type": "STORY"
       },
       {
@@ -7776,11 +7776,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "49ad0c7d-bb5f-372d-994b-ecb0ab10392a",
-        "title": "Crown Castle Insider Sold Shares Worth $384,192, According to a Recent SEC Filing",
+        "uuid": "d86f16e8-2322-30ca-a1f5-fb5ffaca9456",
+        "title": "Crown Castle Insider Sold Shares Worth $300,389, According to a Recent SEC Filing",
         "publisher": "MT Newswires",
         "reportDate": "2025-05-07",
-        "link": "https://finance.yahoo.com/news/crown-castle-insider-sold-shares-212747939.html",
+        "link": "https://finance.yahoo.com/news/crown-castle-insider-sold-shares-213118856.html",
         "type": "STORY"
       },
       {
@@ -7846,18 +7846,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 14.79,
-        "industryAvg": 31.34
+        "value": 14.69,
+        "industryAvg": 31
       },
       {
         "metric": "P/S Ratio",
-        "value": 6.87,
-        "industryAvg": 6.41
+        "value": 6.82,
+        "industryAvg": 6.34
       },
       {
         "metric": "P/B Ratio",
-        "value": -8.74,
-        "industryAvg": 4.39
+        "value": -8.68,
+        "industryAvg": 4.34
       },
       {
         "metric": "ROE",

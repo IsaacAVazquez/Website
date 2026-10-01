@@ -1,10 +1,10 @@
 {
   "symbol": "T",
-  "lastUpdated": "2026-09-29T06:39:51.976581+00:00",
+  "lastUpdated": "2026-10-01T15:57:42.767348+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-09-29T06:39:51.976581+00:00",
+    "snapshotBuiltAt": "2026-10-01T15:57:42.767348+00:00",
     "sections": {
-      "price": "2026-09-29"
+      "price": "2026-09-30"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 3.0239,
-      "ttmPe": 8.23,
-      "marketCap": 171281382960,
-      "psRatio": 1.35,
-      "pbRatio": 1.55,
-      "pegRatio": 1.19
+      "ttmPe": 8.07,
+      "marketCap": 167841997760,
+      "psRatio": 1.32,
+      "pbRatio": 1.52,
+      "pegRatio": 1.17
     },
     "profitability": {
       "roe": 4.17,
@@ -6347,25 +6347,17 @@
       ]
     },
     "wacc": {
-      "wacc": 4.07,
-      "costOfEquity": 6.99,
+      "wacc": 4.24,
+      "costOfEquity": 7.380000000000001,
       "costOfDebt": 1.16,
       "taxRate": 14.000000000000002,
-      "beta": 0.2291,
-      "marketCap": 171281382960
+      "beta": 0.2759,
+      "marketCap": 167841997760
     },
     "beta": {
-      "beta5y": 0.2291
+      "beta5y": 0.2759
     },
     "price": [
-      {
-        "date": "2025-09-29",
-        "open": 28.25,
-        "high": 28.34,
-        "low": 27.88,
-        "close": 28.07,
-        "volume": 28739600
-      },
       {
         "date": "2025-09-30",
         "open": 28.14,
@@ -8372,7 +8364,15 @@
         "high": 25.03,
         "low": 24.46,
         "close": 24.48,
-        "volume": 33267500
+        "volume": 33282700
+      },
+      {
+        "date": "2026-09-30",
+        "open": 24.54,
+        "high": 24.68,
+        "low": 24.4,
+        "close": 24.4,
+        "volume": 39670100
       }
     ],
     "news": [
@@ -8441,19 +8441,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "62915b2d-3052-35f6-8dc8-9c24a69041f4",
-        "title": "Charter is in talks to combine with rival Cox Communications",
-        "publisher": "Bloomberg",
-        "reportDate": "2025-05-16",
-        "link": "https://finance.yahoo.com/news/charter-talks-combine-rival-cox-074559244.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "52572ff0-8db9-302d-b5b4-509603ed432f",
         "title": "Wireless, Cable and Satellite Stocks Q1 Earnings Review: Comcast (NASDAQ:CMCSA) Shines",
         "publisher": "StockStory",
         "reportDate": "2025-05-16",
         "link": "https://finance.yahoo.com/news/wireless-cable-satellite-stocks-q1-033338038.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "62915b2d-3052-35f6-8dc8-9c24a69041f4",
+        "title": "Charter is in talks to combine with rival Cox Communications",
+        "publisher": "Bloomberg",
+        "reportDate": "2025-05-16",
+        "link": "https://finance.yahoo.com/news/charter-talks-combine-rival-cox-074559244.html",
         "type": "STORY"
       }
     ],
@@ -8522,18 +8522,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 8.23,
-        "industryAvg": 11.08
+        "value": 8.07,
+        "industryAvg": 10.88
       },
       {
         "metric": "P/S Ratio",
-        "value": 1.35,
-        "industryAvg": 1.13
+        "value": 1.32,
+        "industryAvg": 1.11
       },
       {
         "metric": "P/B Ratio",
-        "value": 1.55,
-        "industryAvg": 1.66
+        "value": 1.52,
+        "industryAvg": 1.65
       },
       {
         "metric": "ROE",

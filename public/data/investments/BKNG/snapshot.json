@@ -1,10 +1,10 @@
 {
   "symbol": "BKNG",
-  "lastUpdated": "2026-09-29T06:39:51.976581+00:00",
+  "lastUpdated": "2026-10-01T15:57:42.767348+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-09-29T06:39:51.976581+00:00",
+    "snapshotBuiltAt": "2026-10-01T15:57:42.767348+00:00",
     "sections": {
-      "price": "2026-09-29"
+      "price": "2026-09-30"
     }
   },
   "source": "prefetched",
@@ -40,10 +40,10 @@
     },
     "fundamentals": {
       "ttmEps": 9.0414,
-      "ttmPe": 18.12,
-      "marketCap": 124213460000,
-      "psRatio": 4.4,
-      "pbRatio": -11.52,
+      "ttmPe": 18.02,
+      "marketCap": 123485780000,
+      "psRatio": 4.37,
+      "pbRatio": -11.45,
       "pegRatio": 0.14
     },
     "profitability": {
@@ -5570,25 +5570,17 @@
       ]
     },
     "wacc": {
-      "wacc": 11.91,
-      "costOfEquity": 13.71,
+      "wacc": 12.13,
+      "costOfEquity": 13.98,
       "costOfDebt": 1.4500000000000002,
       "taxRate": 24,
-      "beta": 1.1103,
-      "marketCap": 124213460000
+      "beta": 1.1462,
+      "marketCap": 123485780000
     },
     "beta": {
-      "beta5y": 1.1103
+      "beta5y": 1.1462
     },
     "price": [
-      {
-        "date": "2025-09-29",
-        "open": 222.8664,
-        "high": 223.442,
-        "low": 217.9212,
-        "close": 218.1924,
-        "volume": 5932500
-      },
       {
         "date": "2025-09-30",
         "open": 217.08,
@@ -7595,7 +7587,15 @@
         "high": 164.18,
         "low": 161,
         "close": 162.34,
-        "volume": 5895700
+        "volume": 5926900
+      },
+      {
+        "date": "2026-09-30",
+        "open": 162.65,
+        "high": 166.02,
+        "low": 160.98,
+        "close": 162.91,
+        "volume": 8378000
       }
     ],
     "news": [
@@ -7656,14 +7656,6 @@
         "type": "STORY"
       },
       {
-        "uuid": "f9d36917-6c20-368c-92bf-d17a00b1dd8c",
-        "title": "KAYAK and Affirm expand exclusive partnership into Canada",
-        "publisher": "Business Wire",
-        "reportDate": "2025-05-22",
-        "link": "https://finance.yahoo.com/news/kayak-affirm-expand-exclusive-partnership-130000960.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "7172e463-3278-3fa5-8bd0-83418a32168f",
         "title": "Why Booking Holdings (BKNG) is a Top Growth Stock for the Long-Term",
         "publisher": "Zacks",
@@ -7677,6 +7669,14 @@
         "publisher": "Investor's Business Daily",
         "reportDate": "2025-05-22",
         "link": "https://finance.yahoo.com/m/ff6c2457-0f15-3617-85ab-08dd2d4b0dcc/makemytrip-projected-to-have.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "f9d36917-6c20-368c-92bf-d17a00b1dd8c",
+        "title": "KAYAK and Affirm expand exclusive partnership into Canada",
+        "publisher": "Business Wire",
+        "reportDate": "2025-05-22",
+        "link": "https://finance.yahoo.com/news/kayak-affirm-expand-exclusive-partnership-130000960.html",
         "type": "STORY"
       }
     ],
@@ -7741,18 +7741,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 18.12,
-        "industryAvg": 20.02
+        "value": 18.02,
+        "industryAvg": 16.92
       },
       {
         "metric": "P/S Ratio",
-        "value": 4.4,
-        "industryAvg": 3.06
+        "value": 4.37,
+        "industryAvg": 3.17
       },
       {
         "metric": "P/B Ratio",
-        "value": -11.52,
-        "industryAvg": 4.7
+        "value": -11.45,
+        "industryAvg": 4.92
       },
       {
         "metric": "ROE",

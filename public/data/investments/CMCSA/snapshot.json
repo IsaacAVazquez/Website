@@ -1,10 +1,10 @@
 {
   "symbol": "CMCSA",
-  "lastUpdated": "2026-09-29T06:39:51.976581+00:00",
+  "lastUpdated": "2026-10-01T15:57:42.767348+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-09-29T06:39:51.976581+00:00",
+    "snapshotBuiltAt": "2026-10-01T15:57:42.767348+00:00",
     "sections": {
-      "price": "2026-09-29"
+      "price": "2026-09-30"
     }
   },
   "source": "prefetched",
@@ -40,8 +40,8 @@
     },
     "fundamentals": {
       "ttmEps": 3.0882,
-      "ttmPe": 7.06,
-      "marketCap": 77276140981,
+      "ttmPe": 7.05,
+      "marketCap": 77169748864,
       "psRatio": 0.62,
       "pbRatio": 0.86,
       "pegRatio": 0.02
@@ -5584,25 +5584,17 @@
       ]
     },
     "wacc": {
-      "wacc": 5.220000000000001,
-      "costOfEquity": 10.32,
+      "wacc": 5.4399999999999995,
+      "costOfEquity": 10.8,
       "costOfDebt": 1.16,
       "taxRate": 26,
-      "beta": 0.666,
-      "marketCap": 77276140981
+      "beta": 0.7264,
+      "marketCap": 77169748864
     },
     "beta": {
-      "beta5y": 0.666
+      "beta5y": 0.7264
     },
     "price": [
-      {
-        "date": "2025-09-29",
-        "open": 29.8313,
-        "high": 29.8688,
-        "low": 29.4377,
-        "close": 29.5127,
-        "volume": 23759956
-      },
       {
         "date": "2025-09-30",
         "open": 29.4752,
@@ -7610,23 +7602,31 @@
         "low": 21.46,
         "close": 21.6,
         "volume": 21436200
+      },
+      {
+        "date": "2026-09-30",
+        "open": 21.72,
+        "high": 22,
+        "low": 21.69,
+        "close": 21.76,
+        "volume": 34944400
       }
     ],
     "news": [
-      {
-        "uuid": "03806763-35db-3fdf-9e5a-7b5d25c48ca0",
-        "title": "The Zacks Analyst Blog Roche Holding, Comcast, Eaton Corp and National Presto Industries",
-        "publisher": "Zacks",
-        "reportDate": "2025-03-25",
-        "link": "https://finance.yahoo.com/news/zacks-analyst-blog-roche-holding-071600015.html",
-        "type": "STORY"
-      },
       {
         "uuid": "9b20d6b4-283b-3bb9-a8a2-f6cba8273f1a",
         "title": "Top Analyst Reports for Roche, Comcast & Eaton",
         "publisher": "Zacks",
         "reportDate": "2025-03-25",
         "link": "https://finance.yahoo.com/news/top-analyst-reports-roche-comcast-202300635.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "03806763-35db-3fdf-9e5a-7b5d25c48ca0",
+        "title": "The Zacks Analyst Blog Roche Holding, Comcast, Eaton Corp and National Presto Industries",
+        "publisher": "Zacks",
+        "reportDate": "2025-03-25",
+        "link": "https://finance.yahoo.com/news/zacks-analyst-blog-roche-holding-071600015.html",
         "type": "STORY"
       },
       {
@@ -7654,19 +7654,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "585d7010-b707-3a2f-a43a-bdd082df3457",
-        "title": "Shopify initiated, Comcast downgraded: Wall Street’s top analyst calls",
-        "publisher": "TipRanks",
-        "reportDate": "2025-05-07",
-        "link": "https://finance.yahoo.com/news/shopify-initiated-comcast-downgraded-wall-134119180.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "d567be28-893c-3fff-93de-afee0d415d42",
         "title": "Altice (ATUS) To Report Earnings Tomorrow: Here Is What To Expect",
         "publisher": "StockStory",
         "reportDate": "2025-05-07",
         "link": "https://finance.yahoo.com/news/altice-atus-report-earnings-tomorrow-070443772.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "585d7010-b707-3a2f-a43a-bdd082df3457",
+        "title": "Shopify initiated, Comcast downgraded: Wall Street’s top analyst calls",
+        "publisher": "TipRanks",
+        "reportDate": "2025-05-07",
+        "link": "https://finance.yahoo.com/news/shopify-initiated-comcast-downgraded-wall-134119180.html",
         "type": "STORY"
       },
       {
@@ -7761,18 +7761,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 7.06,
-        "industryAvg": 11.08
+        "value": 7.05,
+        "industryAvg": 10.88
       },
       {
         "metric": "P/S Ratio",
         "value": 0.62,
-        "industryAvg": 1.13
+        "industryAvg": 1.11
       },
       {
         "metric": "P/B Ratio",
         "value": 0.86,
-        "industryAvg": 1.66
+        "industryAvg": 1.65
       },
       {
         "metric": "ROE",

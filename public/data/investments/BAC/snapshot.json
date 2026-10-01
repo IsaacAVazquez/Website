@@ -1,11 +1,14 @@
 {
   "symbol": "BAC",
-  "lastUpdated": "2026-09-29T06:12:23.168021+00:00",
+  "lastUpdated": "2026-10-01T15:57:42.767348+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-09-29T06:12:23.168021+00:00",
+    "snapshotBuiltAt": "2026-10-01T15:57:42.767348+00:00",
     "sections": {
-      "price": "2026-09-29"
-    }
+      "price": "2026-09-30"
+    },
+    "retainedSections": [
+      "industry"
+    ]
   },
   "source": "prefetched",
   "capabilities": {
@@ -40,10 +43,10 @@
     },
     "fundamentals": {
       "ttmEps": 4.3453,
-      "ttmPe": 12.77,
-      "marketCap": 389286657225,
-      "psRatio": 3.33,
-      "pbRatio": 1.29,
+      "ttmPe": 12.53,
+      "marketCap": 381987971025,
+      "psRatio": 3.27,
+      "pbRatio": 1.27,
       "pegRatio": 0.37
     },
     "profitability": {
@@ -5571,25 +5574,17 @@
       ]
     },
     "wacc": {
-      "wacc": 9.180000000000001,
-      "costOfEquity": 14.469999999999999,
+      "wacc": 9.049999999999999,
+      "costOfEquity": 14.32,
       "costOfDebt": 4.590000000000001,
       "taxRate": 17,
-      "beta": 1.21,
-      "marketCap": 389286657225
+      "beta": 1.1912,
+      "marketCap": 381987971025
     },
     "beta": {
-      "beta5y": 1.21
+      "beta5y": 1.1912
     },
     "price": [
-      {
-        "date": "2025-09-29",
-        "open": 52.36,
-        "high": 52.55,
-        "low": 52.11,
-        "close": 52.42,
-        "volume": 23701000
-      },
       {
         "date": "2025-09-30",
         "open": 52.48,
@@ -7596,24 +7591,32 @@
         "high": 55.55,
         "low": 54.73,
         "close": 54.96,
-        "volume": 31641700
+        "volume": 31666600
+      },
+      {
+        "date": "2026-09-30",
+        "open": 54.92,
+        "high": 55.11,
+        "low": 54.39,
+        "close": 54.43,
+        "volume": 33995600
       }
     ],
     "news": [
-      {
-        "uuid": "31a140c6-af8e-370f-825b-ea2d2f3cb98b",
-        "title": "Big banks report Q1 beats, China stops taking Boeing deliveries: Morning Buzz",
-        "publisher": "TipRanks",
-        "reportDate": "2025-04-16",
-        "link": "https://finance.yahoo.com/news/big-banks-report-q1-beats-155936913.html",
-        "type": "STORY"
-      },
       {
         "uuid": "05dbfc24-c26d-3a9b-8683-7997581c6245",
         "title": "Stock Market Today: Dow Jones, S&P 500 Close Lower; But This Recent IPO Name Bolts Higher For 3rd Straight Day (Live Coverage)",
         "publisher": "Investor's Business Daily",
         "reportDate": "2025-04-16",
         "link": "https://finance.yahoo.com/m/05dbfc24-c26d-3a9b-8683-7997581c6245/stock-market-today%3A-dow.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "31a140c6-af8e-370f-825b-ea2d2f3cb98b",
+        "title": "Big banks report Q1 beats, China stops taking Boeing deliveries: Morning Buzz",
+        "publisher": "TipRanks",
+        "reportDate": "2025-04-16",
+        "link": "https://finance.yahoo.com/news/big-banks-report-q1-beats-155936913.html",
         "type": "STORY"
       },
       {

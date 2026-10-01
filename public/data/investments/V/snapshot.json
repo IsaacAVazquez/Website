@@ -1,10 +1,10 @@
 {
   "symbol": "V",
-  "lastUpdated": "2026-09-29T07:04:00.244178+00:00",
+  "lastUpdated": "2026-10-01T15:57:42.767348+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-09-29T07:04:00.244178+00:00",
+    "snapshotBuiltAt": "2026-10-01T15:57:42.767348+00:00",
     "sections": {
-      "price": "2026-09-29"
+      "price": "2026-09-30"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 11.6523,
-      "ttmPe": 31.56,
-      "marketCap": 687049487802,
-      "psRatio": 15.44,
-      "pbRatio": 19.53,
-      "pegRatio": 3.03
+      "ttmPe": 30.84,
+      "marketCap": 671337065459,
+      "psRatio": 15.09,
+      "pbRatio": 19.08,
+      "pegRatio": 2.96
     },
     "profitability": {
       "roe": 15.89,
@@ -5375,25 +5375,17 @@
       ]
     },
     "wacc": {
-      "wacc": 10.71,
-      "costOfEquity": 11.06,
+      "wacc": 11.129999999999999,
+      "costOfEquity": 11.5,
       "costOfDebt": 0.8099999999999999,
       "taxRate": 18,
-      "beta": 0.7625,
-      "marketCap": 687049487802
+      "beta": 0.8192,
+      "marketCap": 671337065459
     },
     "beta": {
-      "beta5y": 0.7625
+      "beta5y": 0.8192
     },
     "price": [
-      {
-        "date": "2025-09-29",
-        "open": 337.38,
-        "high": 340.64,
-        "low": 335.55,
-        "close": 340.16,
-        "volume": 7217800
-      },
       {
         "date": "2025-09-30",
         "open": 339.82,
@@ -7401,6 +7393,14 @@
         "low": 365,
         "close": 365.88,
         "volume": 5471000
+      },
+      {
+        "date": "2026-09-30",
+        "open": 364.5,
+        "high": 364.6,
+        "low": 359.33,
+        "close": 359.33,
+        "volume": 7414100
       }
     ],
     "news": [
@@ -7421,19 +7421,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "3d018e47-3ca3-3120-a73e-e863c577b5fe",
-        "title": "Top Research Reports for Visa, ServiceNow & Progressive",
-        "publisher": "Zacks",
-        "reportDate": "2025-04-22",
-        "link": "https://finance.yahoo.com/news/top-research-reports-visa-servicenow-204900265.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "e3daf31a-2695-3357-ba2d-3bfe949cf310",
         "title": "The Zacks Analyst Blog Highlights Visa, ServiceNow, The Progressive, The Monarch Cement and Precipio",
         "publisher": "Zacks",
         "reportDate": "2025-04-22",
         "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-visa-125900502.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "3d018e47-3ca3-3120-a73e-e863c577b5fe",
+        "title": "Top Research Reports for Visa, ServiceNow & Progressive",
+        "publisher": "Zacks",
+        "reportDate": "2025-04-22",
+        "link": "https://finance.yahoo.com/news/top-research-reports-visa-servicenow-204900265.html",
         "type": "STORY"
       },
       {
@@ -7477,11 +7477,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "cf658ae7-f28a-323b-b442-3e9242d8c9c9",
-        "title": "The Zacks Analyst Blog Highlights Alphabet, Berkshire Hathaway, Visa and bioAffinity Technologies",
+        "uuid": "fcc675df-ce20-34ed-8261-3770cb2bc99c",
+        "title": "Top Stock Reports for Alphabet, Berkshire Hathaway & Visa",
         "publisher": "Zacks",
         "reportDate": "2025-05-06",
-        "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-alphabet-130500593.html",
+        "link": "https://finance.yahoo.com/news/top-stock-reports-alphabet-berkshire-202300946.html",
         "type": "STORY"
       }
     ],
@@ -7553,18 +7553,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 31.56,
-        "industryAvg": 21.45
+        "value": 30.84,
+        "industryAvg": 20.98
       },
       {
         "metric": "P/S Ratio",
-        "value": 15.44,
-        "industryAvg": 5.02
+        "value": 15.09,
+        "industryAvg": 4.91
       },
       {
         "metric": "P/B Ratio",
-        "value": 19.53,
-        "industryAvg": 5.35
+        "value": 19.08,
+        "industryAvg": 5.24
       },
       {
         "metric": "ROE",

@@ -1,10 +1,10 @@
 {
   "symbol": "CARR",
-  "lastUpdated": "2026-09-29T07:04:00.244178+00:00",
+  "lastUpdated": "2026-10-01T15:57:42.767348+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-09-29T07:04:00.244178+00:00",
+    "snapshotBuiltAt": "2026-10-01T15:57:42.767348+00:00",
     "sections": {
-      "price": "2026-09-29"
+      "price": "2026-09-30"
     }
   },
   "source": "prefetched",
@@ -40,10 +40,10 @@
     },
     "fundamentals": {
       "ttmEps": 1.4191,
-      "ttmPe": 39.37,
-      "marketCap": 46094208207,
-      "psRatio": 2.08,
-      "pbRatio": 3.51,
+      "ttmPe": 38.66,
+      "marketCap": 45260931846,
+      "psRatio": 2.05,
+      "pbRatio": 3.44,
       "pegRatio": 1.14
     },
     "profitability": {
@@ -6016,25 +6016,17 @@
       ]
     },
     "wacc": {
-      "wacc": 11.899999999999999,
-      "costOfEquity": 14.899999999999999,
+      "wacc": 12.08,
+      "costOfEquity": 15.18,
       "costOfDebt": 1.02,
       "taxRate": 25,
-      "beta": 1.266,
-      "marketCap": 46094208207
+      "beta": 1.305,
+      "marketCap": 45260931846
     },
     "beta": {
-      "beta5y": 1.266
+      "beta5y": 1.305
     },
     "price": [
-      {
-        "date": "2025-09-29",
-        "open": 59.64,
-        "high": 59.64,
-        "low": 58.75,
-        "close": 59.13,
-        "volume": 4745100
-      },
       {
         "date": "2025-09-30",
         "open": 59,
@@ -8042,6 +8034,14 @@
         "low": 55.105,
         "close": 55.38,
         "volume": 6387000
+      },
+      {
+        "date": "2026-09-30",
+        "open": 55.55,
+        "high": 55.75,
+        "low": 54.75,
+        "close": 54.86,
+        "volume": 6443800
       }
     ],
     "news": [
@@ -8110,11 +8110,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "e1161bd2-7ca5-31b9-8518-8d1bbf011da7",
-        "title": "Stephens Adjusts Price Target on Carrier Global to $75 From $70, Maintains Equalweight Rating",
+        "uuid": "ce4bb8f1-5b90-36fe-99e1-fe15757eab25",
+        "title": "Mizuho Adjusts Price Target on Carrier Global to $88 From $80, Keeps Outperform Rating",
         "publisher": "MT Newswires",
         "reportDate": "2025-05-16",
-        "link": "https://finance.yahoo.com/news/stephens-adjusts-price-target-carrier-103713052.html",
+        "link": "https://finance.yahoo.com/news/mizuho-adjusts-price-target-carrier-103753974.html",
         "type": "STORY"
       },
       {
@@ -8195,18 +8195,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 39.37,
-        "industryAvg": 27.47
+        "value": 38.66,
+        "industryAvg": 27.22
       },
       {
         "metric": "P/S Ratio",
-        "value": 2.08,
-        "industryAvg": 2.44
+        "value": 2.05,
+        "industryAvg": 2.42
       },
       {
         "metric": "P/B Ratio",
-        "value": 3.51,
-        "industryAvg": 3.67
+        "value": 3.44,
+        "industryAvg": 3.68
       },
       {
         "metric": "ROE",

@@ -1,10 +1,10 @@
 {
   "symbol": "ABNB",
-  "lastUpdated": "2026-09-29T06:39:51.976581+00:00",
+  "lastUpdated": "2026-10-01T15:57:42.767348+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-09-29T06:39:51.976581+00:00",
+    "snapshotBuiltAt": "2026-10-01T15:57:42.767348+00:00",
     "sections": {
-      "price": "2026-09-29"
+      "price": "2026-09-30"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 4.3996,
-      "ttmPe": 35.48,
-      "marketCap": 92087200000,
-      "psRatio": 7,
-      "pbRatio": 11.81,
-      "pegRatio": 1.07
+      "ttmPe": 36.51,
+      "marketCap": 94783500000,
+      "psRatio": 7.2,
+      "pbRatio": 12.15,
+      "pegRatio": 1.1
     },
     "profitability": {
       "roe": 10.57,
@@ -5538,25 +5538,17 @@
       ]
     },
     "wacc": {
-      "wacc": 14.2,
-      "costOfEquity": 14.549999999999999,
+      "wacc": 14.430000000000001,
+      "costOfEquity": 14.78,
       "costOfDebt": 1.48,
       "taxRate": 9,
-      "beta": 1.2208,
-      "marketCap": 92087200000
+      "beta": 1.2519,
+      "marketCap": 94783500000
     },
     "beta": {
-      "beta5y": 1.2208
+      "beta5y": 1.2519
     },
     "price": [
-      {
-        "date": "2025-09-29",
-        "open": 124.44,
-        "high": 124.58,
-        "low": 122.83,
-        "close": 122.92,
-        "volume": 3874700
-      },
       {
         "date": "2025-09-30",
         "open": 122.9,
@@ -7564,6 +7556,14 @@
         "low": 153.7,
         "close": 156.96,
         "volume": 4391800
+      },
+      {
+        "date": "2026-09-30",
+        "open": 158.1,
+        "high": 162.46,
+        "low": 157,
+        "close": 160.65,
+        "volume": 4603600
       }
     ],
     "news": [
@@ -7632,20 +7632,20 @@
         "type": "STORY"
       },
       {
-        "uuid": "8889024b-212d-3bfa-9863-6cc7b5c693a6",
-        "title": "Airbnb vs. Spain, Victoria's Secret, Uber stock hits record high",
-        "publisher": "Yahoo Finance Video",
-        "reportDate": "2025-05-21",
-        "link": "https://finance.yahoo.com/video/airbnb-vs-spain-victorias-secret-181015112.html",
-        "type": "VIDEO"
-      },
-      {
         "uuid": "16c32cc9-5059-3e73-a151-ddeade7598cc",
         "title": "Equity Markets Drop as S&P 500 Snaps 6-Day Winning Streak",
         "publisher": "MT Newswires",
         "reportDate": "2025-05-21",
         "link": "https://finance.yahoo.com/news/equity-markets-drop-p-500-205908788.html",
         "type": "STORY"
+      },
+      {
+        "uuid": "8889024b-212d-3bfa-9863-6cc7b5c693a6",
+        "title": "Airbnb vs. Spain, Victoria's Secret, Uber stock hits record high",
+        "publisher": "Yahoo Finance Video",
+        "reportDate": "2025-05-21",
+        "link": "https://finance.yahoo.com/video/airbnb-vs-spain-victorias-secret-181015112.html",
+        "type": "VIDEO"
       }
     ],
     "officers": [
@@ -7707,18 +7707,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 35.48,
-        "industryAvg": 20.02
+        "value": 36.51,
+        "industryAvg": 16.92
       },
       {
         "metric": "P/S Ratio",
-        "value": 7,
-        "industryAvg": 3.06
+        "value": 7.2,
+        "industryAvg": 3.17
       },
       {
         "metric": "P/B Ratio",
-        "value": 11.81,
-        "industryAvg": 4.7
+        "value": 12.15,
+        "industryAvg": 4.92
       },
       {
         "metric": "ROE",

@@ -1,10 +1,10 @@
 {
   "symbol": "EMR",
-  "lastUpdated": "2026-09-29T07:04:00.244178+00:00",
+  "lastUpdated": "2026-10-01T15:57:42.767348+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-09-29T07:04:00.244178+00:00",
+    "snapshotBuiltAt": "2026-10-01T15:57:42.767348+00:00",
     "sections": {
-      "price": "2026-09-29"
+      "price": "2026-09-30"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 4.5762,
-      "ttmPe": 34.83,
-      "marketCap": 88907742000,
-      "psRatio": 4.77,
-      "pbRatio": 4.36,
-      "pegRatio": 1.49
+      "ttmPe": 33.89,
+      "marketCap": 86514780000,
+      "psRatio": 4.64,
+      "pbRatio": 4.25,
+      "pegRatio": 1.45
     },
     "profitability": {
       "roe": 3.53,
@@ -6095,25 +6095,17 @@
       ]
     },
     "wacc": {
-      "wacc": 12.540000000000001,
-      "costOfEquity": 14.31,
+      "wacc": 12.67,
+      "costOfEquity": 14.510000000000002,
       "costOfDebt": 0.83,
       "taxRate": 21,
-      "beta": 1.1884,
-      "marketCap": 88907742000
+      "beta": 1.2168,
+      "marketCap": 86514780000
     },
     "beta": {
-      "beta5y": 1.1884
+      "beta5y": 1.2168
     },
     "price": [
-      {
-        "date": "2025-09-29",
-        "open": 129.52,
-        "high": 130.12,
-        "low": 128.52,
-        "close": 129.25,
-        "volume": 3018200
-      },
       {
         "date": "2025-09-30",
         "open": 129.26,
@@ -8121,6 +8113,14 @@
         "low": 156.24,
         "close": 157.24,
         "volume": 2448000
+      },
+      {
+        "date": "2026-09-30",
+        "open": 158.25,
+        "high": 158.28,
+        "low": 154.96,
+        "close": 155.1,
+        "volume": 4629700
       }
     ],
     "news": [
@@ -8165,19 +8165,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "f44a5d74-eee0-35fb-91c8-4031e59968f9",
-        "title": "Mizuho Adjusts Price Target on Emerson Electric to $150 From $135, Maintains Outperform Rating",
-        "publisher": "MT Newswires",
-        "reportDate": "2025-05-16",
-        "link": "https://finance.yahoo.com/news/mizuho-adjusts-price-target-emerson-103840563.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "c836c773-8e11-3036-9ef2-ef666517922d",
         "title": "JPMorgan Adjusts Price Target on Emerson Electric to $133 From $113, Maintains Neutral Rating",
         "publisher": "MT Newswires",
         "reportDate": "2025-05-16",
         "link": "https://finance.yahoo.com/news/jpmorgan-adjusts-price-target-emerson-103847764.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "f44a5d74-eee0-35fb-91c8-4031e59968f9",
+        "title": "Mizuho Adjusts Price Target on Emerson Electric to $150 From $135, Maintains Outperform Rating",
+        "publisher": "MT Newswires",
+        "reportDate": "2025-05-16",
+        "link": "https://finance.yahoo.com/news/mizuho-adjusts-price-target-emerson-103840563.html",
         "type": "STORY"
       },
       {
@@ -8189,19 +8189,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "f6a1359b-cb8a-30d0-a8d1-682ec7309443",
-        "title": "Emerson's 'Project Beyond' to Modernize and Seamlessly Integrate the Industrial Automation Technology Stack",
-        "publisher": "PR Newswire",
-        "reportDate": "2025-05-20",
-        "link": "https://finance.yahoo.com/news/emersons-project-beyond-modernize-seamlessly-130000736.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "db47beb6-8992-35e3-8b08-5069a876a9cf",
         "title": "Q1 Earnings Outperformers: SmartRent (NYSE:SMRT) And The Rest Of The Internet of Things Stocks",
         "publisher": "StockStory",
         "reportDate": "2025-05-20",
         "link": "https://finance.yahoo.com/news/q1-earnings-outperformers-smartrent-nyse-033437919.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "56b05011-a182-3513-8c8f-bee1946466a1",
+        "title": "3 Large-Cap Stocks in Hot Water",
+        "publisher": "StockStory",
+        "reportDate": "2025-05-20",
+        "link": "https://finance.yahoo.com/news/3-large-cap-stocks-hot-043310857.html",
         "type": "STORY"
       }
     ],
@@ -8271,18 +8271,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 34.83,
-        "industryAvg": 31.32
+        "value": 33.89,
+        "industryAvg": 31.16
       },
       {
         "metric": "P/S Ratio",
-        "value": 4.77,
-        "industryAvg": 3.56
+        "value": 4.64,
+        "industryAvg": 3.54
       },
       {
         "metric": "P/B Ratio",
-        "value": 4.36,
-        "industryAvg": 6.36
+        "value": 4.25,
+        "industryAvg": 6.45
       },
       {
         "metric": "ROE",

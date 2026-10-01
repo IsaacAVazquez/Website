@@ -1,10 +1,10 @@
 {
   "symbol": "MA",
-  "lastUpdated": "2026-09-29T07:04:00.244178+00:00",
+  "lastUpdated": "2026-10-01T15:57:42.767348+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-09-29T07:04:00.244178+00:00",
+    "snapshotBuiltAt": "2026-10-01T15:57:42.767348+00:00",
     "sections": {
-      "price": "2026-09-29"
+      "price": "2026-09-30"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 18.1769,
-      "ttmPe": 31.26,
-      "marketCap": 498932280000,
-      "psRatio": 14.22,
-      "pbRatio": 88.92,
-      "pegRatio": 1.42
+      "ttmPe": 30.34,
+      "marketCap": 484190660000,
+      "psRatio": 13.8,
+      "pbRatio": 86.29,
+      "pegRatio": 1.38
     },
     "profitability": {
       "roe": 71.17999999999999,
@@ -5467,25 +5467,17 @@
       ]
     },
     "wacc": {
-      "wacc": 10.5,
-      "costOfEquity": 10.979999999999999,
+      "wacc": 10.85,
+      "costOfEquity": 11.37,
       "costOfDebt": 0.88,
       "taxRate": 20,
-      "beta": 0.7518,
-      "marketCap": 498932280000
+      "beta": 0.8019,
+      "marketCap": 484190660000
     },
     "beta": {
-      "beta5y": 0.7518
+      "beta5y": 0.8019
     },
     "price": [
-      {
-        "date": "2025-09-29",
-        "open": 566,
-        "high": 569.32,
-        "low": 562.51,
-        "close": 568.14,
-        "volume": 2615600
-      },
       {
         "date": "2025-09-30",
         "open": 565.81,
@@ -7493,6 +7485,14 @@
         "low": 561.3,
         "close": 563.58,
         "volume": 2901400
+      },
+      {
+        "date": "2026-09-30",
+        "open": 562.26,
+        "high": 563,
+        "low": 551.43,
+        "close": 551.47,
+        "volume": 5034600
       }
     ],
     "news": [
@@ -7561,19 +7561,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "b8242867-87a1-313d-87c5-e8303447ed88",
-        "title": "Market Chatter: EU Regulators Push for More Transparency in Visa, Mastercard Fees",
-        "publisher": "MT Newswires",
-        "reportDate": "2025-06-04",
-        "link": "https://finance.yahoo.com/news/market-chatter-eu-regulators-push-103559493.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "9b574bb4-a153-3a61-bcd1-b0fb20c1579b",
         "title": "Tokenization Up 33%, Click to Pay Doubled: Is Mastercard a Buy Now?",
         "publisher": "Zacks",
         "reportDate": "2025-06-04",
         "link": "https://finance.yahoo.com/news/tokenization-33-click-pay-doubled-132300458.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "b8242867-87a1-313d-87c5-e8303447ed88",
+        "title": "Market Chatter: EU Regulators Push for More Transparency in Visa, Mastercard Fees",
+        "publisher": "MT Newswires",
+        "reportDate": "2025-06-04",
+        "link": "https://finance.yahoo.com/news/market-chatter-eu-regulators-push-103559493.html",
         "type": "STORY"
       }
     ],
@@ -7646,18 +7646,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 31.26,
-        "industryAvg": 21.45
+        "value": 30.34,
+        "industryAvg": 20.98
       },
       {
         "metric": "P/S Ratio",
-        "value": 14.22,
-        "industryAvg": 5.02
+        "value": 13.8,
+        "industryAvg": 4.91
       },
       {
         "metric": "P/B Ratio",
-        "value": 88.92,
-        "industryAvg": 5.35
+        "value": 86.29,
+        "industryAvg": 5.24
       },
       {
         "metric": "ROE",

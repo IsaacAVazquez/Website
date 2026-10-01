@@ -1,10 +1,10 @@
 {
   "symbol": "SAP",
-  "lastUpdated": "2026-09-29T06:39:51.976581+00:00",
+  "lastUpdated": "2026-10-01T15:57:42.767348+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-09-29T06:39:51.976581+00:00",
+    "snapshotBuiltAt": "2026-10-01T15:57:42.767348+00:00",
     "sections": {
-      "price": "2026-09-29"
+      "price": "2026-09-30"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 7.9544,
-      "ttmPe": 26.31,
-      "marketCap": 241585602000,
-      "psRatio": 5.54,
-      "pbRatio": 4.73,
-      "pegRatio": 0.79
+      "ttmPe": 26.21,
+      "marketCap": 240627616000,
+      "psRatio": 5.52,
+      "pbRatio": 4.71,
+      "pegRatio": 0.78
     },
     "profitability": {
       "roe": 4.87,
@@ -6081,25 +6081,17 @@
       ]
     },
     "wacc": {
-      "wacc": 13.16,
-      "costOfEquity": 13.700000000000001,
+      "wacc": 13.18,
+      "costOfEquity": 13.73,
       "costOfDebt": 3.0700000000000003,
       "taxRate": 27,
-      "beta": 1.1088,
-      "marketCap": 241585602000
+      "beta": 1.1128,
+      "marketCap": 240627616000
     },
     "beta": {
-      "beta5y": 1.1088
+      "beta5y": 1.1128
     },
     "price": [
-      {
-        "date": "2025-09-29",
-        "open": 262.92,
-        "high": 265.65,
-        "low": 262.54,
-        "close": 263.82,
-        "volume": 1150800
-      },
       {
         "date": "2025-09-30",
         "open": 266.74,
@@ -8107,6 +8099,14 @@
         "low": 208.62,
         "close": 210.85,
         "volume": 2369900
+      },
+      {
+        "date": "2026-09-30",
+        "open": 209,
+        "high": 211.55,
+        "low": 208.25,
+        "close": 208.48,
+        "volume": 2439300
       }
     ],
     "news": [
@@ -8167,19 +8167,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "9bc7d1d4-d380-37d3-bcfd-7923984abb2c",
-        "title": "’Best of both worlds:’ Wells Fargo starts SAP coverage at Buy",
-        "publisher": "Investing.com",
-        "reportDate": "2025-05-20",
-        "link": "https://finance.yahoo.com/news/best-both-worlds-wells-fargo-130238554.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "9cb35d97-fe51-3712-8b96-bd733c33494f",
         "title": "SAP Reimagines How Enterprises Run With Business AI",
         "publisher": "PR Newswire",
         "reportDate": "2025-05-20",
         "link": "https://finance.yahoo.com/news/sap-reimagines-enterprises-run-business-131600231.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "9bc7d1d4-d380-37d3-bcfd-7923984abb2c",
+        "title": "’Best of both worlds:’ Wells Fargo starts SAP coverage at Buy",
+        "publisher": "Investing.com",
+        "reportDate": "2025-05-20",
+        "link": "https://finance.yahoo.com/news/best-both-worlds-wells-fargo-130238554.html",
         "type": "STORY"
       },
       {
@@ -8197,112 +8197,112 @@
         "title": "Demand Manager & Works Council Europe Representative Member of Supervisory Board",
         "age": 43,
         "yearBorn": 1982,
-        "totalPay": 267371
+        "totalPay": 266495
       },
       {
         "name": "Mr. Andreas Hahn",
         "title": "Chairperson of Works Council Europe & Works Council Europe Rep Member of Supervisory Board",
         "age": 54,
         "yearBorn": 1971,
-        "totalPay": 267371
+        "totalPay": 266495
       },
       {
         "name": "Mr. Christian Klein",
         "title": "CEO & Member of Executive Board",
         "age": 45,
         "yearBorn": 1980,
-        "totalPay": 5987978
+        "totalPay": 5968347
       },
       {
         "name": "Mr. Dominik Asam",
         "title": "CFO & Member of Executive Board",
         "age": 56,
         "yearBorn": 1969,
-        "totalPay": 2878508
+        "totalPay": 2869071
       },
       {
         "name": "Mr. Lars Lamade",
         "title": "Head of Global Sponsorships & Deputy Chairperson of the Supervisory Board",
         "age": 54,
         "yearBorn": 1971,
-        "totalPay": 329948
+        "totalPay": 328866
       },
       {
         "name": "Mr. Muhammad Alam",
         "title": "Lead Product Engineering & Member of Executive Board",
         "age": 47,
         "yearBorn": 1978,
-        "totalPay": 2554249
+        "totalPay": 2545875
       },
       {
         "name": "Mr. Pascal Demat",
         "title": "Solution Advisor HCM & Works Council Europe Representative Member of Supervisory Board",
         "age": 58,
         "yearBorn": 1967,
-        "totalPay": 267371
+        "totalPay": 266495
       },
       {
         "name": "Mr. Sebastian Steinhaeuser",
         "title": "Chief Strategy Officer & COO and Member of Executive Board",
         "age": 39,
         "yearBorn": 1986,
-        "totalPay": 2423408
+        "totalPay": 2415463
       },
       {
         "name": "Mr. Thomas Saueressig",
         "title": "Member of Executive Board",
         "age": 40,
         "yearBorn": 1985,
-        "totalPay": 2838686
+        "totalPay": 2829380
       },
       {
         "name": "Ms. Gina Vargiu-Breuer",
         "title": "Chief People Officer, Labor Director & Member of Executive Board",
         "age": 49,
         "yearBorn": 1976,
-        "totalPay": 2872819
+        "totalPay": 2863401
       }
     ],
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 26.31,
-        "industryAvg": 24.92
+        "value": 26.21,
+        "industryAvg": 25.11
       },
       {
         "metric": "P/S Ratio",
-        "value": 5.54,
-        "industryAvg": 4.75
+        "value": 5.52,
+        "industryAvg": 4.8
       },
       {
         "metric": "P/B Ratio",
-        "value": 4.73,
-        "industryAvg": 5.3
+        "value": 4.71,
+        "industryAvg": 5.36
       },
       {
         "metric": "ROE",
         "value": 4.87,
-        "industryAvg": -12.33
+        "industryAvg": -12.46
       },
       {
         "metric": "ROA",
         "value": 2.92,
-        "industryAvg": -6.800000000000001
+        "industryAvg": -6.890000000000001
       },
       {
         "metric": "Gross Margin",
         "value": 73.17,
-        "industryAvg": 63.42
+        "industryAvg": 63.370000000000005
       },
       {
         "metric": "EBITDA Margin",
         "value": 36.9,
-        "industryAvg": 1.5
+        "industryAvg": 1.2
       },
       {
         "metric": "Net Margin",
         "value": 22.07,
-        "industryAvg": -15.879999999999999
+        "industryAvg": -16.17
       }
     ]
   }

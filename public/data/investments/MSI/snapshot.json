@@ -1,10 +1,10 @@
 {
   "symbol": "MSI",
-  "lastUpdated": "2026-09-29T07:04:00.244178+00:00",
+  "lastUpdated": "2026-10-01T15:57:42.767348+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-09-29T07:04:00.244178+00:00",
+    "snapshotBuiltAt": "2026-10-01T15:57:42.767348+00:00",
     "sections": {
-      "price": "2026-09-29"
+      "price": "2026-09-30"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 12.6961,
-      "ttmPe": 35.61,
-      "marketCap": 74819240000,
-      "psRatio": 6.11,
-      "pbRatio": 28,
-      "pegRatio": 3.71
+      "ttmPe": 35.13,
+      "marketCap": 73808035000,
+      "psRatio": 6.03,
+      "pbRatio": 27.62,
+      "pegRatio": 3.66
     },
     "profitability": {
       "roe": 21.36,
@@ -6662,25 +6662,17 @@
       ]
     },
     "wacc": {
-      "wacc": 10.67,
-      "costOfEquity": 11.93,
+      "wacc": 10.66,
+      "costOfEquity": 11.940000000000001,
       "costOfDebt": 1.13,
       "taxRate": 25,
-      "beta": 0.8763,
-      "marketCap": 74819240000
+      "beta": 0.8776,
+      "marketCap": 73808035000
     },
     "beta": {
-      "beta5y": 0.8763
+      "beta5y": 0.8776
     },
     "price": [
-      {
-        "date": "2025-09-29",
-        "open": 458.75,
-        "high": 459.66,
-        "low": 452.92,
-        "close": 454.18,
-        "volume": 760400
-      },
       {
         "date": "2025-09-30",
         "open": 453.21,
@@ -8688,6 +8680,14 @@
         "low": 445.49,
         "close": 446.12,
         "volume": 894800
+      },
+      {
+        "date": "2026-09-30",
+        "open": 446.07,
+        "high": 450.59,
+        "low": 445.97,
+        "close": 445.97,
+        "volume": 794300
       }
     ],
     "news": [
@@ -8697,14 +8697,6 @@
         "publisher": "Zacks",
         "reportDate": "2025-04-11",
         "link": "https://finance.yahoo.com/news/motorola-launches-smart-radio-mission-130500875.html",
-        "type": "STORY"
-      },
-      {
-        "uuid": "646dee3d-cf1d-3f8c-8f86-1576c7dbca83",
-        "title": "Motorola Solutions Nears $4.5 Billion Deal for Radio Maker Silvus",
-        "publisher": "Bloomberg",
-        "reportDate": "2025-05-21",
-        "link": "https://finance.yahoo.com/news/motorola-solutions-nears-4-5-125240937.html",
         "type": "STORY"
       },
       {
@@ -8721,6 +8713,14 @@
         "publisher": "ACCESS Newswire",
         "reportDate": "2025-05-21",
         "link": "https://finance.yahoo.com/news/national-law-enforcement-community-engagement-163000839.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "646dee3d-cf1d-3f8c-8f86-1576c7dbca83",
+        "title": "Motorola Solutions Nears $4.5 Billion Deal for Radio Maker Silvus",
+        "publisher": "Bloomberg",
+        "reportDate": "2025-05-21",
+        "link": "https://finance.yahoo.com/news/motorola-solutions-nears-4-5-125240937.html",
         "type": "STORY"
       },
       {
@@ -8748,19 +8748,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "b15d38f3-ba55-3c73-bce1-bd783cb075a6",
-        "title": "Motorola Solutions to Acquire Silvus Technologies for $4.4 Billion",
-        "publisher": "MT Newswires",
+        "uuid": "6bb9845e-f29b-3d36-ab46-22c4f8fce1b7",
+        "title": "Motorola to acquire wireless-radio maker Silvus for $4.4bn",
+        "publisher": "Verdict",
         "reportDate": "2025-05-28",
-        "link": "https://finance.yahoo.com/news/motorola-solutions-acquire-silvus-technologies-204457398.html",
-        "type": "STORY"
-      },
-      {
-        "uuid": "045e1b84-6011-34e0-a154-c8369f769185",
-        "title": "Motorola Solutions to Acquire Silvus Technologies, a Global Leader in Mission-Critical Mobile Ad-hoc Networks",
-        "publisher": "Business Wire",
-        "reportDate": "2025-05-28",
-        "link": "https://finance.yahoo.com/news/motorola-solutions-acquire-silvus-technologies-201500262.html",
+        "link": "https://finance.yahoo.com/m/6bb9845e-f29b-3d36-ab46-22c4f8fce1b7/motorola-to-acquire.html",
         "type": "STORY"
       },
       {
@@ -8770,6 +8762,14 @@
         "reportDate": "2025-05-28",
         "link": "https://finance.yahoo.com/video/okta-sinks-box-jumps-earnings-212626670.html",
         "type": "VIDEO"
+      },
+      {
+        "uuid": "045e1b84-6011-34e0-a154-c8369f769185",
+        "title": "Motorola Solutions to Acquire Silvus Technologies, a Global Leader in Mission-Critical Mobile Ad-hoc Networks",
+        "publisher": "Business Wire",
+        "reportDate": "2025-05-28",
+        "link": "https://finance.yahoo.com/news/motorola-solutions-acquire-silvus-technologies-201500262.html",
+        "type": "STORY"
       }
     ],
     "officers": [
@@ -8840,18 +8840,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 35.61,
-        "industryAvg": 25.13
+        "value": 35.13,
+        "industryAvg": 25.19
       },
       {
         "metric": "P/S Ratio",
-        "value": 6.11,
-        "industryAvg": 4.08
+        "value": 6.03,
+        "industryAvg": 4.11
       },
       {
         "metric": "P/B Ratio",
-        "value": 28,
-        "industryAvg": 5.54
+        "value": 27.62,
+        "industryAvg": 5.58
       },
       {
         "metric": "ROE",

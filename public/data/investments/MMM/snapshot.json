@@ -1,10 +1,10 @@
 {
   "symbol": "MMM",
-  "lastUpdated": "2026-09-29T07:04:00.244178+00:00",
+  "lastUpdated": "2026-10-01T15:57:42.767348+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-09-29T07:04:00.244178+00:00",
+    "snapshotBuiltAt": "2026-10-01T15:57:42.767348+00:00",
     "sections": {
-      "price": "2026-09-29"
+      "price": "2026-09-30"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 5.632,
-      "ttmPe": 30.09,
-      "marketCap": 87404632352,
-      "psRatio": 3.47,
-      "pbRatio": 29.61,
-      "pegRatio": 0.9
+      "ttmPe": 29.15,
+      "marketCap": 84655831960,
+      "psRatio": 3.36,
+      "pbRatio": 28.68,
+      "pegRatio": 0.87
     },
     "profitability": {
       "roe": 30.020000000000003,
@@ -6285,25 +6285,17 @@
       ]
     },
     "wacc": {
-      "wacc": 11.21,
-      "costOfEquity": 12.629999999999999,
+      "wacc": 11.35,
+      "costOfEquity": 12.83,
       "costOfDebt": 1.6099999999999999,
       "taxRate": 16,
-      "beta": 0.9682,
-      "marketCap": 87404632352
+      "beta": 0.9947,
+      "marketCap": 84655831960
     },
     "beta": {
-      "beta5y": 0.9682
+      "beta5y": 0.9947
     },
     "price": [
-      {
-        "date": "2025-09-29",
-        "open": 153.5,
-        "high": 154.4,
-        "low": 152.54,
-        "close": 154.08,
-        "volume": 2043400
-      },
       {
         "date": "2025-09-30",
         "open": 153.85,
@@ -8311,6 +8303,14 @@
         "low": 167.25,
         "close": 168.49,
         "volume": 2901300
+      },
+      {
+        "date": "2026-09-30",
+        "open": 169.19,
+        "high": 169.5,
+        "low": 164.08,
+        "close": 164.15,
+        "volume": 3936100
       }
     ],
     "news": [
@@ -8323,19 +8323,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "6d9a7253-8ac5-33a7-9b81-df1ab5bd86af",
-        "title": "3M Co: A company with a sound balance sheet, and mixed shareholder distributions.",
-        "publisher": "GuruFocus.com",
-        "reportDate": "2025-05-13",
-        "link": "https://finance.yahoo.com/news/3m-co-company-sound-balance-114624844.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "0d0d4523-46ca-314f-bd26-a36814c66eee",
         "title": "Rogers, Enviri, 3M, Gates Industrial Corporation, and Helios Stocks Trade Up, What You Need To Know",
         "publisher": "StockStory",
         "reportDate": "2025-05-13",
         "link": "https://finance.yahoo.com/news/rogers-enviri-3m-gates-industrial-180105331.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "6d9a7253-8ac5-33a7-9b81-df1ab5bd86af",
+        "title": "3M Co: A company with a sound balance sheet, and mixed shareholder distributions.",
+        "publisher": "GuruFocus.com",
+        "reportDate": "2025-05-13",
+        "link": "https://finance.yahoo.com/news/3m-co-company-sound-balance-114624844.html",
         "type": "STORY"
       },
       {
@@ -8363,19 +8363,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "86e201ff-eb84-310e-bea6-450a153f97ef",
-        "title": "Mizuho Adjusts Price Target on 3M to $155 From $141, Maintains Neutral Rating",
-        "publisher": "MT Newswires",
-        "reportDate": "2025-05-16",
-        "link": "https://finance.yahoo.com/news/mizuho-adjusts-price-target-3m-112603613.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "67019b29-0da3-3a14-a7ab-72814c697cd4",
         "title": "JPMorgan Adjusts Price Target on 3M to $167 From $140, Maintains Overweight Rating",
         "publisher": "MT Newswires",
         "reportDate": "2025-05-16",
         "link": "https://finance.yahoo.com/news/jpmorgan-adjusts-price-target-3m-112605430.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "86e201ff-eb84-310e-bea6-450a153f97ef",
+        "title": "Mizuho Adjusts Price Target on 3M to $155 From $141, Maintains Neutral Rating",
+        "publisher": "MT Newswires",
+        "reportDate": "2025-05-16",
+        "link": "https://finance.yahoo.com/news/mizuho-adjusts-price-target-3m-112603613.html",
         "type": "STORY"
       },
       {
@@ -8459,18 +8459,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 30.09,
-        "industryAvg": 13.48
+        "value": 29.15,
+        "industryAvg": 13.26
       },
       {
         "metric": "P/S Ratio",
-        "value": 3.47,
-        "industryAvg": 1.58
+        "value": 3.36,
+        "industryAvg": 1.55
       },
       {
         "metric": "P/B Ratio",
-        "value": 29.61,
-        "industryAvg": 2.8
+        "value": 28.68,
+        "industryAvg": 2.92
       },
       {
         "metric": "ROE",

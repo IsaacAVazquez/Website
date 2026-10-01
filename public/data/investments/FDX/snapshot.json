@@ -1,10 +1,10 @@
 {
   "symbol": "FDX",
-  "lastUpdated": "2026-09-29T07:04:00.244178+00:00",
+  "lastUpdated": "2026-10-01T15:57:42.767348+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-09-29T07:04:00.244178+00:00",
+    "snapshotBuiltAt": "2026-10-01T15:57:42.767348+00:00",
     "sections": {
-      "price": "2026-09-29"
+      "price": "2026-09-30"
     },
     "retainedSections": [
       "info"
@@ -43,10 +43,10 @@
     },
     "fundamentals": {
       "ttmEps": 18.537,
-      "ttmPe": 15.63,
-      "marketCap": 69516000000,
-      "psRatio": 0.73,
-      "pbRatio": 2.2,
+      "ttmPe": 15.38,
+      "marketCap": 68421600000,
+      "psRatio": 0.72,
+      "pbRatio": 2.16,
       "pegRatio": 1.01
     },
     "profitability": {
@@ -5411,17 +5411,9 @@
     },
     "wacc": {},
     "beta": {
-      "beta5y": 1.2758
+      "beta5y": 1.288
     },
     "price": [
-      {
-        "date": "2025-09-29",
-        "open": 192.6189,
-        "high": 192.9251,
-        "low": 188.8396,
-        "close": 190.6366,
-        "volume": 1618885
-      },
       {
         "date": "2025-09-30",
         "open": 189.3876,
@@ -7429,6 +7421,14 @@
         "low": 285.23,
         "close": 287.47,
         "volume": 1180300
+      },
+      {
+        "date": "2026-09-30",
+        "open": 286.75,
+        "high": 288.87,
+        "low": 284.52,
+        "close": 285.09,
+        "volume": 1722800
       }
     ],
     "news": [
@@ -7581,18 +7581,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 15.63,
-        "industryAvg": 17.96
+        "value": 15.38,
+        "industryAvg": 17.76
       },
       {
         "metric": "P/S Ratio",
-        "value": 0.73,
-        "industryAvg": 0.92
+        "value": 0.72,
+        "industryAvg": 0.91
       },
       {
         "metric": "P/B Ratio",
-        "value": 2.2,
-        "industryAvg": 3.43
+        "value": 2.16,
+        "industryAvg": 3.39
       },
       {
         "metric": "ROE",

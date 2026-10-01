@@ -1,10 +1,10 @@
 {
   "symbol": "MRSH",
-  "lastUpdated": "2026-09-29T07:04:00.244178+00:00",
+  "lastUpdated": "2026-10-01T15:57:42.767348+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-09-29T07:04:00.244178+00:00",
+    "snapshotBuiltAt": "2026-10-01T15:57:42.767348+00:00",
     "sections": {
-      "price": "2026-09-29"
+      "price": "2026-09-30"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 8.1723,
-      "ttmPe": 20.68,
-      "marketCap": 80783240175,
-      "psRatio": 2.89,
-      "pbRatio": 5.32,
-      "pegRatio": 2.81
+      "ttmPe": 20.89,
+      "marketCap": 81595708425,
+      "psRatio": 2.92,
+      "pbRatio": 5.37,
+      "pegRatio": 2.84
     },
     "profitability": {
       "roe": 8.51,
@@ -3507,25 +3507,17 @@
       ]
     },
     "wacc": {
-      "wacc": 7.779999999999999,
-      "costOfEquity": 9.700000000000001,
+      "wacc": 7.630000000000001,
+      "costOfEquity": 9.49,
       "costOfDebt": 1.1199999999999999,
       "taxRate": 24,
-      "beta": 0.5839,
-      "marketCap": 80783240175
+      "beta": 0.5537,
+      "marketCap": 81595708425
     },
     "beta": {
-      "beta5y": 0.5839
+      "beta5y": 0.5537
     },
     "price": [
-      {
-        "date": "2025-09-29",
-        "open": 199.26,
-        "high": 200.28,
-        "low": 198.16,
-        "close": 200.23,
-        "volume": 2265300
-      },
       {
         "date": "2025-09-30",
         "open": 199.44,
@@ -5533,17 +5525,17 @@
         "low": 167.24,
         "close": 170.42,
         "volume": 3565400
+      },
+      {
+        "date": "2026-09-30",
+        "open": 170.01,
+        "high": 171.66,
+        "low": 169.28,
+        "close": 170.73,
+        "volume": 3087400
       }
     ],
     "news": [
-      {
-        "uuid": "cb38c028-4465-3a17-b3b6-be65defe0342",
-        "title": "2 Oversold Stocks Primed to Rebound and 1 Facing Challenges",
-        "publisher": "StockStory",
-        "reportDate": "2026-01-19",
-        "link": "https://finance.yahoo.com/news/2-oversold-stocks-primed-rebound-043639375.html",
-        "type": "STORY"
-      },
       {
         "uuid": "dbc13d65-21f1-3f0b-ad2a-366e91da0177",
         "title": "Marsh & McLennan Companies' (NYSE:MRSH) investors will be pleased with their decent 75% return over the last five years",
@@ -5553,12 +5545,12 @@
         "type": "STORY"
       },
       {
-        "uuid": "ef250809-3645-32b5-9e89-0b369b45f9f7",
-        "title": "Marsh CEO John Doyle Lays Out the Biggest Risks of 2026",
-        "publisher": "WSJ",
-        "reportDate": "2026-01-20",
-        "link": "https://finance.yahoo.com/video/marsh-mclennan-ceo-john-doyle-212200870.html",
-        "type": "VIDEO"
+        "uuid": "cb38c028-4465-3a17-b3b6-be65defe0342",
+        "title": "2 Oversold Stocks Primed to Rebound and 1 Facing Challenges",
+        "publisher": "StockStory",
+        "reportDate": "2026-01-19",
+        "link": "https://finance.yahoo.com/news/2-oversold-stocks-primed-rebound-043639375.html",
+        "type": "STORY"
       },
       {
         "uuid": "3addf1ab-93cb-3dcd-a5cf-4f1f33c2ad13",
@@ -5577,19 +5569,19 @@
         "type": "STORY"
       },
       {
+        "uuid": "ef250809-3645-32b5-9e89-0b369b45f9f7",
+        "title": "Marsh CEO John Doyle Lays Out the Biggest Risks of 2026",
+        "publisher": "WSJ",
+        "reportDate": "2026-01-20",
+        "link": "https://finance.yahoo.com/video/marsh-mclennan-ceo-john-doyle-212200870.html",
+        "type": "VIDEO"
+      },
+      {
         "uuid": "c53ddbb5-6bde-398e-ba74-f89c5872e72f",
         "title": "How Changing Price Targets Are Reshaping The Story For Marsh & McLennan (MRSH)",
         "publisher": "Simply Wall St.",
         "reportDate": "2026-01-21",
         "link": "https://finance.yahoo.com/news/changing-price-targets-reshaping-story-060821141.html",
-        "type": "STORY"
-      },
-      {
-        "uuid": "171d5505-dc56-3308-a908-b956a0833613",
-        "title": "Assessing Marsh & McLennan (MRSH) Valuation After Recent Share Price Weakness",
-        "publisher": "Simply Wall St.",
-        "reportDate": "2026-01-21",
-        "link": "https://finance.yahoo.com/news/assessing-marsh-mclennan-mrsh-valuation-011048950.html",
         "type": "STORY"
       },
       {
@@ -5601,11 +5593,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "04061779-be28-3eeb-b473-e9f9e6a93ba0",
-        "title": "Marsh (MRSH) Reports Next Week: Wall Street Expects Earnings Growth",
-        "publisher": "Zacks",
-        "reportDate": "2026-01-22",
-        "link": "https://finance.yahoo.com/news/marsh-mrsh-reports-next-week-150018511.html",
+        "uuid": "171d5505-dc56-3308-a908-b956a0833613",
+        "title": "Assessing Marsh & McLennan (MRSH) Valuation After Recent Share Price Weakness",
+        "publisher": "Simply Wall St.",
+        "reportDate": "2026-01-21",
+        "link": "https://finance.yahoo.com/news/assessing-marsh-mclennan-mrsh-valuation-011048950.html",
         "type": "STORY"
       },
       {
@@ -5614,6 +5606,14 @@
         "publisher": "Simply Wall St.",
         "reportDate": "2026-01-22",
         "link": "https://finance.yahoo.com/news/marsh-mclennan-mrsh-offering-value-221523006.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "04061779-be28-3eeb-b473-e9f9e6a93ba0",
+        "title": "Marsh (MRSH) Reports Next Week: Wall Street Expects Earnings Growth",
+        "publisher": "Zacks",
+        "reportDate": "2026-01-22",
+        "link": "https://finance.yahoo.com/news/marsh-mrsh-reports-next-week-150018511.html",
         "type": "STORY"
       }
     ],
@@ -5685,18 +5685,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 20.68,
-        "industryAvg": 20.21
+        "value": 20.89,
+        "industryAvg": 20.28
       },
       {
         "metric": "P/S Ratio",
-        "value": 2.89,
-        "industryAvg": 2.88
+        "value": 2.92,
+        "industryAvg": 2.89
       },
       {
         "metric": "P/B Ratio",
-        "value": 5.32,
-        "industryAvg": 3.61
+        "value": 5.37,
+        "industryAvg": 3.63
       },
       {
         "metric": "ROE",

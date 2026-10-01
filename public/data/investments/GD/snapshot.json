@@ -1,10 +1,10 @@
 {
   "symbol": "GD",
-  "lastUpdated": "2026-09-29T07:04:00.244178+00:00",
+  "lastUpdated": "2026-10-01T15:57:42.767348+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-09-29T07:04:00.244178+00:00",
+    "snapshotBuiltAt": "2026-10-01T15:57:42.767348+00:00",
     "sections": {
-      "price": "2026-09-29"
+      "price": "2026-09-30"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 16.4022,
-      "ttmPe": 20.37,
-      "marketCap": 90409393952,
-      "psRatio": 1.65,
-      "pbRatio": 3.37,
-      "pegRatio": 1.53
+      "ttmPe": 20.23,
+      "marketCap": 89778995676,
+      "psRatio": 1.64,
+      "pbRatio": 3.35,
+      "pegRatio": 1.52
     },
     "profitability": {
       "roe": 4.390000000000001,
@@ -5147,25 +5147,17 @@
       ]
     },
     "wacc": {
-      "wacc": 7.02,
-      "costOfEquity": 7.71,
+      "wacc": 7.049999999999999,
+      "costOfEquity": 7.75,
       "costOfDebt": 0.52,
       "taxRate": 18,
-      "beta": 0.3234,
-      "marketCap": 90409393952
+      "beta": 0.3251,
+      "marketCap": 89778995676
     },
     "beta": {
-      "beta5y": 0.3234
+      "beta5y": 0.3251
     },
     "price": [
-      {
-        "date": "2025-09-29",
-        "open": 335,
-        "high": 337.52,
-        "low": 331.33,
-        "close": 332.17,
-        "volume": 1693100
-      },
       {
         "date": "2025-09-30",
         "open": 332.13,
@@ -7173,6 +7165,14 @@
         "low": 330.36,
         "close": 332.34,
         "volume": 1702800
+      },
+      {
+        "date": "2026-09-30",
+        "open": 332.06,
+        "high": 334.72,
+        "low": 329.41,
+        "close": 331.83,
+        "volume": 1041100
       }
     ],
     "news": [
@@ -7249,11 +7249,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "6842be06-cb66-36b9-9b89-805d5cda23bc",
-        "title": "Northrop Grumman Rewards Shareholders With 12% Dividend Hike",
-        "publisher": "Zacks",
+        "uuid": "1d128de7-3263-3e78-b95b-a2df852a3d02",
+        "title": "Trump to make Golden Dome announcement Tuesday, Reuters reports",
+        "publisher": "TipRanks",
         "reportDate": "2025-05-21",
-        "link": "https://finance.yahoo.com/news/northrop-grumman-rewards-shareholders-12-152200138.html",
+        "link": "https://finance.yahoo.com/m/1d128de7-3263-3e78-b95b-a2df852a3d02/trump-to-make-golden-dome.html",
         "type": "STORY"
       }
     ],
@@ -7327,18 +7327,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 20.37,
-        "industryAvg": 32.24
+        "value": 20.23,
+        "industryAvg": 31.86
       },
       {
         "metric": "P/S Ratio",
-        "value": 1.65,
-        "industryAvg": 2.88
+        "value": 1.64,
+        "industryAvg": 2.85
       },
       {
         "metric": "P/B Ratio",
-        "value": 3.37,
-        "industryAvg": 8.46
+        "value": 3.35,
+        "industryAvg": 8.58
       },
       {
         "metric": "ROE",

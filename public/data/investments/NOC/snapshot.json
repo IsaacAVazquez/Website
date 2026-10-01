@@ -1,10 +1,10 @@
 {
   "symbol": "NOC",
-  "lastUpdated": "2026-09-29T07:04:00.244178+00:00",
+  "lastUpdated": "2026-10-01T15:57:42.767348+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-09-29T07:04:00.244178+00:00",
+    "snapshotBuiltAt": "2026-10-01T15:57:42.767348+00:00",
     "sections": {
-      "price": "2026-09-29"
+      "price": "2026-09-30"
     }
   },
   "source": "prefetched",
@@ -40,10 +40,10 @@
     },
     "fundamentals": {
       "ttmEps": 31.538,
-      "ttmPe": 16.04,
-      "marketCap": 71855313660,
-      "psRatio": 1.68,
-      "pbRatio": 4.02,
+      "ttmPe": 15.33,
+      "marketCap": 68684474196,
+      "psRatio": 1.6,
+      "pbRatio": 3.84,
       "pegRatio": 0.18
     },
     "profitability": {
@@ -5392,25 +5392,17 @@
       ]
     },
     "wacc": {
-      "wacc": 3.73,
-      "costOfEquity": 4.37,
+      "wacc": 3.83,
+      "costOfEquity": 4.52,
       "costOfDebt": 0.9900000000000001,
       "taxRate": 6,
-      "beta": -0.1146,
-      "marketCap": 71855313660
+      "beta": -0.102,
+      "marketCap": 68684474196
     },
     "beta": {
-      "beta5y": -0.1146
+      "beta5y": -0.102
     },
     "price": [
-      {
-        "date": "2025-09-29",
-        "open": 598.31,
-        "high": 604.13,
-        "low": 591.51,
-        "close": 593.99,
-        "volume": 777100
-      },
       {
         "date": "2025-09-30",
         "open": 593.1,
@@ -7417,7 +7409,15 @@
         "high": 508.75,
         "low": 502.1,
         "close": 504.61,
-        "volume": 682400
+        "volume": 694200
+      },
+      {
+        "date": "2026-09-30",
+        "open": 483,
+        "high": 488.46,
+        "low": 479.9,
+        "close": 483.48,
+        "volume": 1475500
       }
     ],
     "news": [
@@ -7454,19 +7454,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "2eb0ffd3-1e17-31a3-8eea-e9efed35334a",
-        "title": "Top Analyst Reports for Novo Nordisk, Honeywell & American Tower",
-        "publisher": "Zacks",
-        "reportDate": "2025-05-07",
-        "link": "https://finance.yahoo.com/news/top-analyst-reports-novo-nordisk-204700487.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "b0ec7ab8-76a5-3663-8030-1647a6673ace",
         "title": "Northrop's EW Suite Achieves New Milestone: Time to Buy the Stock?",
         "publisher": "Zacks",
         "reportDate": "2025-05-07",
         "link": "https://finance.yahoo.com/news/northrops-ew-suite-achieves-milestone-152100346.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "2eb0ffd3-1e17-31a3-8eea-e9efed35334a",
+        "title": "Top Analyst Reports for Novo Nordisk, Honeywell & American Tower",
+        "publisher": "Zacks",
+        "reportDate": "2025-05-07",
+        "link": "https://finance.yahoo.com/news/top-analyst-reports-novo-nordisk-204700487.html",
         "type": "STORY"
       },
       {
@@ -7478,19 +7478,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "c29f651c-1204-30d6-90fd-fdbab67e64a0",
-        "title": "Defense Contractors Stocks Q1 Highlights: Huntington Ingalls (NYSE:HII)",
-        "publisher": "StockStory",
-        "reportDate": "2025-05-14",
-        "link": "https://finance.yahoo.com/news/defense-contractors-stocks-q1-highlights-033617270.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "77bead5e-baed-3b2f-9e53-0088e8b46380",
         "title": "3 Profitable Stocks in Hot Water",
         "publisher": "StockStory",
         "reportDate": "2025-05-14",
         "link": "https://finance.yahoo.com/news/3-profitable-stocks-hot-water-043118929.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "c29f651c-1204-30d6-90fd-fdbab67e64a0",
+        "title": "Defense Contractors Stocks Q1 Highlights: Huntington Ingalls (NYSE:HII)",
+        "publisher": "StockStory",
+        "reportDate": "2025-05-14",
+        "link": "https://finance.yahoo.com/news/defense-contractors-stocks-q1-highlights-033617270.html",
         "type": "STORY"
       },
       {
@@ -7565,18 +7565,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 16.04,
-        "industryAvg": 32.24
+        "value": 15.33,
+        "industryAvg": 31.86
       },
       {
         "metric": "P/S Ratio",
-        "value": 1.68,
-        "industryAvg": 2.88
+        "value": 1.6,
+        "industryAvg": 2.85
       },
       {
         "metric": "P/B Ratio",
-        "value": 4.02,
-        "industryAvg": 8.46
+        "value": 3.84,
+        "industryAvg": 8.58
       },
       {
         "metric": "ROE",

@@ -1,10 +1,10 @@
 {
   "symbol": "CVX",
-  "lastUpdated": "2026-09-29T07:04:00.244178+00:00",
+  "lastUpdated": "2026-10-01T15:57:42.767348+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-09-29T07:04:00.244178+00:00",
+    "snapshotBuiltAt": "2026-10-01T15:57:42.767348+00:00",
     "sections": {
-      "price": "2026-09-29"
+      "price": "2026-09-30"
     }
   },
   "source": "prefetched",
@@ -40,10 +40,10 @@
     },
     "fundamentals": {
       "ttmEps": 10.4306,
-      "ttmPe": 19.79,
-      "marketCap": 407739923181,
-      "psRatio": 1.95,
-      "pbRatio": 2.15,
+      "ttmPe": 19.58,
+      "marketCap": 403472257173,
+      "psRatio": 1.93,
+      "pbRatio": 2.12,
       "pegRatio": 0.06
     },
     "profitability": {
@@ -5447,25 +5447,17 @@
       ]
     },
     "wacc": {
-      "wacc": 8.559999999999999,
-      "costOfEquity": 9.28,
+      "wacc": 8.290000000000001,
+      "costOfEquity": 8.99,
       "costOfDebt": 0.95,
       "taxRate": 27,
-      "beta": 0.529,
-      "marketCap": 407739923181
+      "beta": 0.4886,
+      "marketCap": 403472257173
     },
     "beta": {
-      "beta5y": 0.529
+      "beta5y": 0.4886
     },
     "price": [
-      {
-        "date": "2025-09-29",
-        "open": 159.13,
-        "high": 159.13,
-        "low": 155.56,
-        "close": 156.1,
-        "volume": 8315100
-      },
       {
         "date": "2025-09-30",
         "open": 154.89,
@@ -7473,6 +7465,14 @@
         "low": 202.7,
         "close": 204.38,
         "volume": 5917600
+      },
+      {
+        "date": "2026-09-30",
+        "open": 205.09,
+        "high": 206.83,
+        "low": 204.21,
+        "close": 204.21,
+        "volume": 6390200
       }
     ],
     "news": [
@@ -7525,19 +7525,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "37f5738b-07b3-30fa-a06f-536929356258",
-        "title": "Top Analyst Reports for Bank of America, Chevron & Stryker",
-        "publisher": "Zacks",
-        "reportDate": "2025-04-15",
-        "link": "https://finance.yahoo.com/news/top-analyst-reports-bank-america-211500618.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "574a9e10-3484-35e2-9479-29f89dd6d258",
         "title": "The Zacks Analyst Blog Bank of America, Chevron, Stryker, Value Line and Sypris",
         "publisher": "Zacks",
         "reportDate": "2025-04-15",
         "link": "https://finance.yahoo.com/news/zacks-analyst-blog-bank-america-104600485.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "37f5738b-07b3-30fa-a06f-536929356258",
+        "title": "Top Analyst Reports for Bank of America, Chevron & Stryker",
+        "publisher": "Zacks",
+        "reportDate": "2025-04-15",
+        "link": "https://finance.yahoo.com/news/top-analyst-reports-bank-america-211500618.html",
         "type": "STORY"
       },
       {
@@ -7627,18 +7627,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 19.79,
-        "industryAvg": 11.78
+        "value": 19.58,
+        "industryAvg": 11.67
       },
       {
         "metric": "P/S Ratio",
-        "value": 1.95,
-        "industryAvg": 1.01
+        "value": 1.93,
+        "industryAvg": 1
       },
       {
         "metric": "P/B Ratio",
-        "value": 2.15,
-        "industryAvg": 1.61
+        "value": 2.12,
+        "industryAvg": 1.59
       },
       {
         "metric": "ROE",

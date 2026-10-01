@@ -1,10 +1,10 @@
 {
   "symbol": "SLB",
-  "lastUpdated": "2026-09-29T07:04:00.244178+00:00",
+  "lastUpdated": "2026-10-01T15:57:42.767348+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-09-29T07:04:00.244178+00:00",
+    "snapshotBuiltAt": "2026-10-01T15:57:42.767348+00:00",
     "sections": {
-      "price": "2026-09-29"
+      "price": "2026-09-30"
     }
   },
   "source": "prefetched",
@@ -40,10 +40,10 @@
     },
     "fundamentals": {
       "ttmEps": 2.0602,
-      "ttmPe": 24.99,
-      "marketCap": 76418533368,
-      "psRatio": 2.1,
-      "pbRatio": 2.93,
+      "ttmPe": 23.65,
+      "marketCap": 72307456704,
+      "psRatio": 1.99,
+      "pbRatio": 2.77,
       "pegRatio": 74.83
     },
     "profitability": {
@@ -6018,25 +6018,17 @@
       ]
     },
     "wacc": {
-      "wacc": 10.05,
+      "wacc": 9.98,
       "costOfEquity": 11.600000000000001,
       "costOfDebt": 1,
       "taxRate": 20,
-      "beta": 0.8334,
-      "marketCap": 76418533368
+      "beta": 0.832,
+      "marketCap": 72307456704
     },
     "beta": {
-      "beta5y": 0.8334
+      "beta5y": 0.832
     },
     "price": [
-      {
-        "date": "2025-09-29",
-        "open": 35.33,
-        "high": 35.34,
-        "low": 34.68,
-        "close": 35.11,
-        "volume": 14983000
-      },
       {
         "date": "2025-09-30",
         "open": 34.71,
@@ -8044,6 +8036,14 @@
         "low": 49.35,
         "close": 49.87,
         "volume": 28574600
+      },
+      {
+        "date": "2026-09-30",
+        "open": 49.91,
+        "high": 49.91,
+        "low": 48.69,
+        "close": 48.72,
+        "volume": 13232200
       }
     ],
     "news": [
@@ -8064,19 +8064,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "5c32b6d6-4385-3f59-a62f-a5ea8f9b7abc",
-        "title": "Why Schlumberger Stock Slumped on Friday",
-        "publisher": "Motley Fool",
-        "reportDate": "2025-04-26",
-        "link": "https://finance.yahoo.com/m/5c32b6d6-4385-3f59-a62f-a5ea8f9b7abc/why-schlumberger-stock.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "d7aa2e46-6844-32d4-9e99-1b31a3887eed",
         "title": "Schlumberger Ltd (SLB) Q1 2025 Earnings Call Highlights: Navigating Challenges with Digital ...",
         "publisher": "GuruFocus.com",
         "reportDate": "2025-04-26",
         "link": "https://finance.yahoo.com/news/schlumberger-ltd-slb-q1-2025-070452790.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "5c32b6d6-4385-3f59-a62f-a5ea8f9b7abc",
+        "title": "Why Schlumberger Stock Slumped on Friday",
+        "publisher": "Motley Fool",
+        "reportDate": "2025-04-26",
+        "link": "https://finance.yahoo.com/m/5c32b6d6-4385-3f59-a62f-a5ea8f9b7abc/why-schlumberger-stock.html",
         "type": "STORY"
       },
       {
@@ -8104,14 +8104,6 @@
         "type": "STORY"
       },
       {
-        "uuid": "3f5455fd-c3ed-36f7-96d4-3d92d3a83551",
-        "title": "SLB OneSubsea and Subsea7 Awarded EPCI Contract for bp's Ginger Project",
-        "publisher": "Business Wire",
-        "reportDate": "2025-05-05",
-        "link": "https://finance.yahoo.com/news/slb-onesubsea-subsea7-awarded-epci-122700119.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "be800160-5d84-3d8c-b742-3828d7bd8bd7",
         "title": "Is Schlumberger Limited (SLB) the Best Falling Stock to Buy According to Analysts?",
         "publisher": "Insider Monkey",
@@ -8125,6 +8117,14 @@
         "publisher": "Insider Monkey",
         "reportDate": "2025-05-05",
         "link": "https://finance.yahoo.com/news/schlumberger-limited-slb-most-undervalued-151006323.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "3f5455fd-c3ed-36f7-96d4-3d92d3a83551",
+        "title": "SLB OneSubsea and Subsea7 Awarded EPCI Contract for bp's Ginger Project",
+        "publisher": "Business Wire",
+        "reportDate": "2025-05-05",
+        "link": "https://finance.yahoo.com/news/slb-onesubsea-subsea7-awarded-epci-122700119.html",
         "type": "STORY"
       }
     ],
@@ -8194,18 +8194,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 24.99,
-        "industryAvg": 21.2
+        "value": 23.65,
+        "industryAvg": 20.42
       },
       {
         "metric": "P/S Ratio",
-        "value": 2.1,
-        "industryAvg": 1.83
+        "value": 1.99,
+        "industryAvg": 1.76
       },
       {
         "metric": "P/B Ratio",
-        "value": 2.93,
-        "industryAvg": 2.6
+        "value": 2.77,
+        "industryAvg": 1.81
       },
       {
         "metric": "ROE",

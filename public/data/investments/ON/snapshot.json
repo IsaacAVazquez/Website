@@ -1,10 +1,10 @@
 {
   "symbol": "ON",
-  "lastUpdated": "2026-09-29T07:04:00.244178+00:00",
+  "lastUpdated": "2026-10-01T15:57:42.767348+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-09-29T07:04:00.244178+00:00",
+    "snapshotBuiltAt": "2026-10-01T15:57:42.767348+00:00",
     "sections": {
-      "price": "2026-09-29"
+      "price": "2026-09-30"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 1.5529,
-      "ttmPe": 48.72,
-      "marketCap": 29449864150,
-      "psRatio": 4.75,
-      "pbRatio": 4.08,
-      "pegRatio": 1.33
+      "ttmPe": 49.5,
+      "marketCap": 29924799170,
+      "psRatio": 4.83,
+      "pbRatio": 4.15,
+      "pegRatio": 1.36
     },
     "profitability": {
       "roe": 3.1199999999999997,
@@ -5897,25 +5897,17 @@
       ]
     },
     "wacc": {
-      "wacc": 18.14,
-      "costOfEquity": 20.86,
+      "wacc": 18.4,
+      "costOfEquity": 21.12,
       "costOfDebt": 0.31,
       "taxRate": 16,
-      "beta": 2.0466,
-      "marketCap": 29449864150
+      "beta": 2.0888,
+      "marketCap": 29924799170
     },
     "beta": {
-      "beta5y": 2.0466
+      "beta5y": 2.0888
     },
     "price": [
-      {
-        "date": "2025-09-29",
-        "open": 50.8,
-        "high": 50.9,
-        "low": 49.68,
-        "close": 49.76,
-        "volume": 5515100
-      },
       {
         "date": "2025-09-30",
         "open": 49.5,
@@ -7923,6 +7915,14 @@
         "low": 75.1,
         "close": 75.95,
         "volume": 9409300
+      },
+      {
+        "date": "2026-09-30",
+        "open": 76.5,
+        "high": 77.2,
+        "low": 75.37,
+        "close": 76.87,
+        "volume": 6864500
       }
     ],
     "news": [
@@ -7975,19 +7975,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "1a1a019c-c881-3f45-bbbe-b4ed15bfc895",
-        "title": "3 Stocks Estimated To Be Up To 48.5% Below Intrinsic Value",
-        "publisher": "Simply Wall St.",
-        "reportDate": "2025-05-13",
-        "link": "https://finance.yahoo.com/news/3-stocks-estimated-48-5-173805978.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "6a4304c0-964b-39df-a27a-11692823cdf3",
         "title": "Investing in ON Semiconductor Corp. (ON)? Don't Miss Assessing Its International Revenue Trends",
         "publisher": "Zacks",
         "reportDate": "2025-05-13",
         "link": "https://finance.yahoo.com/news/investing-semiconductor-corp-dont-miss-131633106.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "1a1a019c-c881-3f45-bbbe-b4ed15bfc895",
+        "title": "3 Stocks Estimated To Be Up To 48.5% Below Intrinsic Value",
+        "publisher": "Simply Wall St.",
+        "reportDate": "2025-05-13",
+        "link": "https://finance.yahoo.com/news/3-stocks-estimated-48-5-173805978.html",
         "type": "STORY"
       },
       {
@@ -8063,18 +8063,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 48.72,
-        "industryAvg": 30.1
+        "value": 49.5,
+        "industryAvg": 30.24
       },
       {
         "metric": "P/S Ratio",
-        "value": 4.75,
-        "industryAvg": 14.37
+        "value": 4.83,
+        "industryAvg": 14.45
       },
       {
         "metric": "P/B Ratio",
-        "value": 4.08,
-        "industryAvg": 12.55
+        "value": 4.15,
+        "industryAvg": 12.62
       },
       {
         "metric": "ROE",

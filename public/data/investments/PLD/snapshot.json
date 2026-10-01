@@ -1,10 +1,10 @@
 {
   "symbol": "PLD",
-  "lastUpdated": "2026-09-29T07:04:00.244178+00:00",
+  "lastUpdated": "2026-10-01T15:57:42.767348+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-09-29T07:04:00.244178+00:00",
+    "snapshotBuiltAt": "2026-10-01T15:57:42.767348+00:00",
     "sections": {
-      "price": "2026-09-29"
+      "price": "2026-09-30"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 4.491,
-      "ttmPe": 29.49,
-      "marketCap": 123567314640,
-      "psRatio": 13.45,
-      "pbRatio": 2.3,
-      "pegRatio": 0.35
+      "ttmPe": 28.91,
+      "marketCap": 121141499040,
+      "psRatio": 13.18,
+      "pbRatio": 2.25,
+      "pegRatio": 0.34
     },
     "profitability": {
       "roe": 1.9800000000000002,
@@ -5534,25 +5534,17 @@
       ]
     },
     "wacc": {
-      "wacc": 11.940000000000001,
-      "costOfEquity": 15.25,
+      "wacc": 11.67,
+      "costOfEquity": 14.97,
       "costOfDebt": 0.76,
       "taxRate": 9,
-      "beta": 1.3117,
-      "marketCap": 123567314640
+      "beta": 1.2777,
+      "marketCap": 121141499040
     },
     "beta": {
-      "beta5y": 1.3117
+      "beta5y": 1.2777
     },
     "price": [
-      {
-        "date": "2025-09-29",
-        "open": 114.6,
-        "high": 114.87,
-        "low": 113.62,
-        "close": 114.24,
-        "volume": 2470900
-      },
       {
         "date": "2025-09-30",
         "open": 114.22,
@@ -7560,6 +7552,14 @@
         "low": 130.71,
         "close": 132.61,
         "volume": 4146800
+      },
+      {
+        "date": "2026-09-30",
+        "open": 133.07,
+        "high": 133.14,
+        "low": 129.69,
+        "close": 129.84,
+        "volume": 6121200
       }
     ],
     "news": [
@@ -7628,19 +7628,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "f4e3bdb8-8e07-3cf2-9319-34a1a4543372",
-        "title": "Here Are My Top 3 Real Estate Dividend Stocks to Buy Now",
-        "publisher": "Motley Fool",
-        "reportDate": "2025-05-21",
-        "link": "https://finance.yahoo.com/m/f4e3bdb8-8e07-3cf2-9319-34a1a4543372/here-are-my-top-3-real-estate.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "13f07e88-8395-37fe-9770-159e3a7fa2a2",
         "title": "3 Brilliant REIT Stocks to Buy Now and Hold for the Long Term",
         "publisher": "Motley Fool",
         "reportDate": "2025-05-21",
         "link": "https://finance.yahoo.com/m/13f07e88-8395-37fe-9770-159e3a7fa2a2/3-brilliant-reit-stocks-to.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "f4e3bdb8-8e07-3cf2-9319-34a1a4543372",
+        "title": "Here Are My Top 3 Real Estate Dividend Stocks to Buy Now",
+        "publisher": "Motley Fool",
+        "reportDate": "2025-05-21",
+        "link": "https://finance.yahoo.com/m/f4e3bdb8-8e07-3cf2-9319-34a1a4543372/here-are-my-top-3-real-estate.html",
         "type": "STORY"
       }
     ],
@@ -7706,18 +7706,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 29.49,
-        "industryAvg": 27.92
+        "value": 28.91,
+        "industryAvg": 27.51
       },
       {
         "metric": "P/S Ratio",
-        "value": 13.45,
-        "industryAvg": 8.5
+        "value": 13.18,
+        "industryAvg": 8.36
       },
       {
         "metric": "P/B Ratio",
-        "value": 2.3,
-        "industryAvg": 2.28
+        "value": 2.25,
+        "industryAvg": 2.24
       },
       {
         "metric": "ROE",

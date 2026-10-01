@@ -1,10 +1,10 @@
 {
   "symbol": "RACE",
-  "lastUpdated": "2026-09-29T07:04:00.244178+00:00",
+  "lastUpdated": "2026-10-01T15:57:42.767348+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-09-29T07:04:00.244178+00:00",
+    "snapshotBuiltAt": "2026-10-01T15:57:42.767348+00:00",
     "sections": {
-      "price": "2026-09-29"
+      "price": "2026-09-30"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 10.7561,
-      "ttmPe": 37,
-      "marketCap": 70014767000,
-      "psRatio": 8.34,
-      "pbRatio": 16.77,
-      "pegRatio": 2.84
+      "ttmPe": 36.52,
+      "marketCap": 69108797025,
+      "psRatio": 8.23,
+      "pbRatio": 16.55,
+      "pegRatio": 2.8
     },
     "profitability": {
       "roe": 12,
@@ -6041,25 +6041,17 @@
       ]
     },
     "wacc": {
-      "wacc": 11.62,
-      "costOfEquity": 12.21,
+      "wacc": 11.4,
+      "costOfEquity": 11.99,
       "costOfDebt": 0.24,
       "taxRate": 23,
-      "beta": 0.9137,
-      "marketCap": 70014767000
+      "beta": 0.8834,
+      "marketCap": 69108797025
     },
     "beta": {
-      "beta5y": 0.9137
+      "beta5y": 0.8834
     },
     "price": [
-      {
-        "date": "2025-09-29",
-        "open": 481.63,
-        "high": 483.11,
-        "low": 480.11,
-        "close": 482.04,
-        "volume": 249000
-      },
       {
         "date": "2025-09-30",
         "open": 482.1,
@@ -8067,6 +8059,14 @@
         "low": 397.22,
         "close": 402.05,
         "volume": 298200
+      },
+      {
+        "date": "2026-09-30",
+        "open": 398.53,
+        "high": 398.64,
+        "low": 392.07,
+        "close": 392.85,
+        "volume": 735700
       }
     ],
     "news": [
@@ -8135,19 +8135,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "1bd401d7-9a6f-3b96-9a23-0b650ba3477d",
-        "title": "Are Basic Materials Stocks Lagging  CF Industries (CF) This Year?",
+        "uuid": "f68fd351-a8c1-3faa-a47e-d132f2b08f3f",
+        "title": "Is Axos Financial (AX) Stock Outpacing Its Finance Peers This Year?",
         "publisher": "Zacks",
         "reportDate": "2025-06-24",
-        "link": "https://finance.yahoo.com/news/basic-materials-stocks-lagging-cf-134003198.html",
+        "link": "https://finance.yahoo.com/news/axos-financial-ax-stock-outpacing-134004384.html",
         "type": "STORY"
       },
       {
-        "uuid": "bad8b102-1dfc-3b76-9374-02a496d137e8",
-        "title": "Are Aerospace Stocks Lagging  CurtissWright (CW) This Year?",
+        "uuid": "af5baeca-6bbc-32dc-b0d0-cfcdf1ea283f",
+        "title": "Is DXP Enterprises (DXPE) Outperforming Other Industrial Products Stocks This Year?",
         "publisher": "Zacks",
         "reportDate": "2025-06-24",
-        "link": "https://finance.yahoo.com/news/aerospace-stocks-lagging-curtisswright-cw-134004780.html",
+        "link": "https://finance.yahoo.com/news/dxp-enterprises-dxpe-outperforming-other-134003274.html",
         "type": "STORY"
       }
     ],
@@ -8163,7 +8163,7 @@
         "title": "CEO & Executive Director",
         "age": 56,
         "yearBorn": 1969,
-        "totalPay": 9039114
+        "totalPay": 9009480
       },
       {
         "name": "Mr. Carlo Daneo",
@@ -8182,7 +8182,7 @@
         "title": "Executive Chairman",
         "age": 49,
         "yearBorn": 1976,
-        "totalPay": 1715969
+        "totalPay": 1710344
       },
       {
         "name": "Mr. Marco Lovati",
@@ -8214,28 +8214,28 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 37,
-        "industryAvg": 25.14
+        "value": 36.52,
+        "industryAvg": 24.76
       },
       {
         "metric": "P/S Ratio",
-        "value": 8.34,
-        "industryAvg": 1.18
+        "value": 8.23,
+        "industryAvg": 1.15
       },
       {
         "metric": "P/B Ratio",
-        "value": 16.77,
-        "industryAvg": 1.87
+        "value": 16.55,
+        "industryAvg": 1.89
       },
       {
         "metric": "ROE",
         "value": 12,
-        "industryAvg": 4.5600000000000005
+        "industryAvg": 4.590000000000001
       },
       {
         "metric": "ROA",
         "value": 4.52,
-        "industryAvg": 1.5
+        "industryAvg": 1.51
       },
       {
         "metric": "Gross Margin",
@@ -8245,12 +8245,12 @@
       {
         "metric": "EBITDA Margin",
         "value": 39.18,
-        "industryAvg": 9.65
+        "industryAvg": 9.64
       },
       {
         "metric": "Net Margin",
         "value": 23.849999999999998,
-        "industryAvg": 2.4699999999999998
+        "industryAvg": 2.48
       }
     ]
   }

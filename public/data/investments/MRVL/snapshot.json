@@ -1,10 +1,10 @@
 {
   "symbol": "MRVL",
-  "lastUpdated": "2026-09-29T07:04:00.244178+00:00",
+  "lastUpdated": "2026-10-01T15:57:42.767348+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-09-29T07:04:00.244178+00:00",
+    "snapshotBuiltAt": "2026-10-01T15:57:42.767348+00:00",
     "sections": {
-      "price": "2026-09-29"
+      "price": "2026-09-30"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 3.0369,
-      "ttmPe": 82.95,
-      "marketCap": 220865920000,
-      "psRatio": 23.37,
-      "pbRatio": 11.92,
-      "pegRatio": 1.68
+      "ttmPe": 87,
+      "marketCap": 231659328000,
+      "psRatio": 24.51,
+      "pbRatio": 12.5,
+      "pegRatio": 1.76
     },
     "profitability": {
       "roe": 1.68,
@@ -5956,24 +5956,16 @@
     },
     "wacc": {
       "wacc": 21.8,
-      "costOfEquity": 22.29,
+      "costOfEquity": 22.27,
       "costOfDebt": 1.54,
       "taxRate": 19,
-      "beta": 2.2352,
-      "marketCap": 220865920000
+      "beta": 2.2401,
+      "marketCap": 231659328000
     },
     "beta": {
-      "beta5y": 2.2352
+      "beta5y": 2.2401
     },
     "price": [
-      {
-        "date": "2025-09-29",
-        "open": 83.69,
-        "high": 85.09,
-        "low": 82.32,
-        "close": 82.39,
-        "volume": 20468300
-      },
       {
         "date": "2025-09-30",
         "open": 81.7,
@@ -7980,7 +7972,15 @@
         "high": 264.4,
         "low": 256.88,
         "close": 263.27,
-        "volume": 17023500
+        "volume": 17098900
+      },
+      {
+        "date": "2026-09-30",
+        "open": 264.65,
+        "high": 265,
+        "low": 256.24,
+        "close": 264.21,
+        "volume": 11903700
       }
     ],
     "news": [
@@ -8025,19 +8025,19 @@
         "type": "VIDEO"
       },
       {
-        "uuid": "33cb8296-72d4-3a60-aafa-2f53b75daa2d",
-        "title": "MRVL to Post Q1 Earnings: Time to Buy, Sell or Hold the Stock?",
-        "publisher": "Zacks",
-        "reportDate": "2025-05-26",
-        "link": "https://finance.yahoo.com/news/mrvl-post-q1-earnings-time-135000425.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "64798836-3c8c-3721-802b-da343c7d8f1b",
         "title": "3 Hyped Up  Stocks with Mounting Challenges",
         "publisher": "StockStory",
         "reportDate": "2025-05-26",
         "link": "https://finance.yahoo.com/news/3-hyped-stocks-mounting-challenges-043358558.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "33cb8296-72d4-3a60-aafa-2f53b75daa2d",
+        "title": "MRVL to Post Q1 Earnings: Time to Buy, Sell or Hold the Stock?",
+        "publisher": "Zacks",
+        "reportDate": "2025-05-26",
+        "link": "https://finance.yahoo.com/news/mrvl-post-q1-earnings-time-135000425.html",
         "type": "STORY"
       },
       {
@@ -8049,11 +8049,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "0ec29ba7-0bf8-37f6-973f-9f96816a4ebd",
-        "title": "Microchip Technology, Marvell Technology, onsemi, Amplitude, and Genesco Shares Are Soaring, What You Need To Know",
-        "publisher": "StockStory",
+        "uuid": "d01b4011-8890-32da-be30-3bc4b30bc942",
+        "title": "Marvell Technology, Semtech, Ambarella Set to Report Results Amid Mixed AI Signals, Morgan Stanley Says",
+        "publisher": "MT Newswires",
         "reportDate": "2025-05-28",
-        "link": "https://finance.yahoo.com/news/microchip-technology-marvell-technology-onsemi-182802034.html",
+        "link": "https://finance.yahoo.com/news/marvell-technology-semtech-ambarella-set-160329608.html",
         "type": "STORY"
       },
       {
@@ -8124,18 +8124,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 82.95,
-        "industryAvg": 30.1
+        "value": 87,
+        "industryAvg": 30.24
       },
       {
         "metric": "P/S Ratio",
-        "value": 23.37,
-        "industryAvg": 14.37
+        "value": 24.51,
+        "industryAvg": 14.45
       },
       {
         "metric": "P/B Ratio",
-        "value": 11.92,
-        "industryAvg": 12.55
+        "value": 12.5,
+        "industryAvg": 12.62
       },
       {
         "metric": "ROE",

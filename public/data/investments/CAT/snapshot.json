@@ -1,10 +1,10 @@
 {
   "symbol": "CAT",
-  "lastUpdated": "2026-09-29T07:04:00.244178+00:00",
+  "lastUpdated": "2026-10-01T15:57:42.767348+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-09-29T07:04:00.244178+00:00",
+    "snapshotBuiltAt": "2026-10-01T15:57:42.767348+00:00",
     "sections": {
-      "price": "2026-09-29"
+      "price": "2026-09-30"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 23.2477,
-      "ttmPe": 35.27,
-      "marketCap": 376910434255,
-      "psRatio": 5.04,
-      "pbRatio": 19.43,
-      "pegRatio": 0.52
+      "ttmPe": 34.88,
+      "marketCap": 372699812171,
+      "psRatio": 4.99,
+      "pbRatio": 19.22,
+      "pegRatio": 0.51
     },
     "profitability": {
       "roe": 18.88,
@@ -5527,25 +5527,17 @@
       ]
     },
     "wacc": {
-      "wacc": 15.229999999999999,
-      "costOfEquity": 17.03,
+      "wacc": 15.4,
+      "costOfEquity": 17.24,
       "costOfDebt": 0.3,
       "taxRate": 23,
-      "beta": 1.5458,
-      "marketCap": 376910434255
+      "beta": 1.5762,
+      "marketCap": 372699812171
     },
     "beta": {
-      "beta5y": 1.5458
+      "beta5y": 1.5762
     },
     "price": [
-      {
-        "date": "2025-09-29",
-        "open": 468.08,
-        "high": 472.49,
-        "low": 467.46,
-        "close": 471.61,
-        "volume": 2892100
-      },
       {
         "date": "2025-09-30",
         "open": 471.62,
@@ -7553,6 +7545,14 @@
         "low": 815.5,
         "close": 826.64,
         "volume": 2313400
+      },
+      {
+        "date": "2026-09-30",
+        "open": 828.5,
+        "high": 831.95,
+        "low": 810.07,
+        "close": 810.79,
+        "volume": 1959800
       }
     ],
     "news": [
@@ -7629,11 +7629,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "31b6ac16-e96e-3659-b668-020b7272712b",
-        "title": "CAT Vs KMTUY: Which Heavy Equipment Stock is the Better Buy Now?",
-        "publisher": "Zacks",
+        "uuid": "c52b702e-e7f6-3501-b1fb-2f47570a6b3c",
+        "title": "Caterpillar Earnings Prospects Improve Following Trade War De-escalation, UBS Says in Upgrade",
+        "publisher": "MT Newswires",
         "reportDate": "2025-05-17",
-        "link": "https://finance.yahoo.com/news/cat-vs-kmtuy-heavy-equipment-180000856.html",
+        "link": "https://finance.yahoo.com/news/caterpillar-earnings-prospects-improve-following-200218943.html",
         "type": "STORY"
       }
     ],
@@ -7703,18 +7703,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 35.27,
-        "industryAvg": 32.83
+        "value": 34.88,
+        "industryAvg": 32.26
       },
       {
         "metric": "P/S Ratio",
-        "value": 5.04,
-        "industryAvg": 3.13
+        "value": 4.99,
+        "industryAvg": 3.08
       },
       {
         "metric": "P/B Ratio",
-        "value": 19.43,
-        "industryAvg": 6.89
+        "value": 19.22,
+        "industryAvg": 6.77
       },
       {
         "metric": "ROE",

@@ -1,10 +1,10 @@
 {
   "symbol": "VZ",
-  "lastUpdated": "2026-09-29T06:39:51.976581+00:00",
+  "lastUpdated": "2026-10-01T15:57:42.767348+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-09-29T06:39:51.976581+00:00",
+    "snapshotBuiltAt": "2026-10-01T15:57:42.767348+00:00",
     "sections": {
-      "price": "2026-09-29"
+      "price": "2026-09-30"
     }
   },
   "source": "prefetched",
@@ -40,10 +40,10 @@
     },
     "fundamentals": {
       "ttmEps": 3.84,
-      "ttmPe": 12.16,
-      "marketCap": 193944906336,
-      "psRatio": 1.4,
-      "pbRatio": 1.87,
+      "ttmPe": 11.95,
+      "marketCap": 190579538424,
+      "psRatio": 1.37,
+      "pbRatio": 1.83,
       "pegRatio": 2.84
     },
     "profitability": {
@@ -4263,25 +4263,17 @@
       ]
     },
     "wacc": {
-      "wacc": 4,
-      "costOfEquity": 7.13,
+      "wacc": 4.08,
+      "costOfEquity": 7.33,
       "costOfDebt": 1.05,
       "taxRate": 25,
-      "beta": 0.2479,
-      "marketCap": 193944906336
+      "beta": 0.2688,
+      "marketCap": 190579538424
     },
     "beta": {
-      "beta5y": 0.2479
+      "beta5y": 0.2688
     },
     "price": [
-      {
-        "date": "2025-09-29",
-        "open": 43.6,
-        "high": 43.65,
-        "low": 43.09,
-        "close": 43.25,
-        "volume": 15854500
-      },
       {
         "date": "2025-09-30",
         "open": 43.24,
@@ -6288,7 +6280,15 @@
         "high": 46.91,
         "low": 45.98,
         "close": 45.98,
-        "volume": 19101400
+        "volume": 19114200
+      },
+      {
+        "date": "2026-09-30",
+        "open": 46.09,
+        "high": 46.34,
+        "low": 45.73,
+        "close": 45.87,
+        "volume": 19960700
       }
     ],
     "news": [
@@ -6341,19 +6341,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "9c25d44b-7c94-3b1f-b560-33b3efaa33a6",
-        "title": "The Zacks Analyst Blog Highlights Verizon Communications, Bristol-Myers Squibb, Canadian  Pacific and Nova LifeStyle",
-        "publisher": "Zacks",
-        "reportDate": "2025-05-08",
-        "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-verizon-100400847.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "f504ceea-acf7-3c85-83cc-2630ece5b1e7",
         "title": "Assurant Inc (AIZ) Q1 2025 Earnings Call Highlights: Strong Growth in Adjusted EBITDA and ...",
         "publisher": "GuruFocus.com",
         "reportDate": "2025-05-08",
         "link": "https://finance.yahoo.com/news/assurant-inc-aiz-q1-2025-070737027.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "9c25d44b-7c94-3b1f-b560-33b3efaa33a6",
+        "title": "The Zacks Analyst Blog Highlights Verizon Communications, Bristol-Myers Squibb, Canadian  Pacific and Nova LifeStyle",
+        "publisher": "Zacks",
+        "reportDate": "2025-05-08",
+        "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-verizon-100400847.html",
         "type": "STORY"
       },
       {
@@ -6437,18 +6437,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 12.16,
-        "industryAvg": 11.08
+        "value": 11.95,
+        "industryAvg": 10.88
       },
       {
         "metric": "P/S Ratio",
-        "value": 1.4,
-        "industryAvg": 1.13
+        "value": 1.37,
+        "industryAvg": 1.11
       },
       {
         "metric": "P/B Ratio",
-        "value": 1.87,
-        "industryAvg": 1.66
+        "value": 1.83,
+        "industryAvg": 1.65
       },
       {
         "metric": "ROE",

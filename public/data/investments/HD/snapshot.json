@@ -1,10 +1,10 @@
 {
   "symbol": "HD",
-  "lastUpdated": "2026-09-29T06:39:51.976581+00:00",
+  "lastUpdated": "2026-10-01T15:57:42.767348+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-09-29T06:39:51.976581+00:00",
+    "snapshotBuiltAt": "2026-10-01T15:57:42.767348+00:00",
     "sections": {
-      "price": "2026-09-29"
+      "price": "2026-09-30"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 14.2903,
-      "ttmPe": 20.29,
-      "marketCap": 289310220000,
-      "psRatio": 1.71,
-      "pbRatio": 17.41,
-      "pegRatio": 4.5
+      "ttmPe": 19.91,
+      "marketCap": 283921020000,
+      "psRatio": 1.68,
+      "pbRatio": 17.09,
+      "pegRatio": 4.41
     },
     "profitability": {
       "roe": 31.259999999999998,
@@ -5426,25 +5426,17 @@
       ]
     },
     "wacc": {
-      "wacc": 10.57,
-      "costOfEquity": 12.709999999999999,
+      "wacc": 10.34,
+      "costOfEquity": 12.46,
       "costOfDebt": 0.9299999999999999,
       "taxRate": 25,
-      "beta": 0.9788,
-      "marketCap": 289310220000
+      "beta": 0.9463,
+      "marketCap": 283921020000
     },
     "beta": {
-      "beta5y": 0.9788
+      "beta5y": 0.9463
     },
     "price": [
-      {
-        "date": "2025-09-29",
-        "open": 410.05,
-        "high": 410.95,
-        "low": 403.85,
-        "close": 406.8,
-        "volume": 3008400
-      },
       {
         "date": "2025-09-30",
         "open": 406.63,
@@ -7452,6 +7444,14 @@
         "low": 287.34,
         "close": 288.04,
         "volume": 6009200
+      },
+      {
+        "date": "2026-09-30",
+        "open": 290.4,
+        "high": 290.54,
+        "low": 284.01,
+        "close": 284.49,
+        "volume": 5766600
       }
     ],
     "news": [
@@ -7512,19 +7512,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "6de80f5d-3e1e-354a-a33e-7414775e46a2",
-        "title": "Jefferies Adjusts Home Depot Price Target to $456 From $461",
-        "publisher": "MT Newswires",
+        "uuid": "3af9c020-af6f-39f0-bb96-5f4046687d0b",
+        "title": "Stock Market Today: Dow Jones Falls, S&P 500 Ends Win Streak; Coffee Kiosks Stock Sinks",
+        "publisher": "Investor's Business Daily",
         "reportDate": "2025-05-20",
-        "link": "https://finance.yahoo.com/news/jefferies-adjusts-home-depot-price-155048144.html",
-        "type": "STORY"
-      },
-      {
-        "uuid": "bc814b46-ca9a-30c1-b402-2c6c831412ea",
-        "title": "NYSE Content Advisory: Pre-Market update + Home Depot reaffirms full-year outlook",
-        "publisher": "CNW Group",
-        "reportDate": "2025-05-20",
-        "link": "https://finance.yahoo.com/news/nyse-content-advisory-pre-market-125500969.html",
+        "link": "https://finance.yahoo.com/m/3af9c020-af6f-39f0-bb96-5f4046687d0b/stock-market-today%3A-dow-jones.html",
         "type": "STORY"
       },
       {
@@ -7534,6 +7526,14 @@
         "reportDate": "2025-05-20",
         "link": "https://finance.yahoo.com/news/nyse-content-advisory-pre-market-125500728.html",
         "type": "STORY"
+      },
+      {
+        "uuid": "908df7b4-4364-3a10-95b0-0287015bc746",
+        "title": "Home Depot & Lowe's, Elon Musk, D-Wave unveils Advantage2",
+        "publisher": "Yahoo Finance Video",
+        "reportDate": "2025-05-20",
+        "link": "https://finance.yahoo.com/video/home-depot-lowes-elon-musk-151008131.html",
+        "type": "VIDEO"
       }
     ],
     "officers": [
@@ -7601,18 +7601,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 20.29,
-        "industryAvg": 18.95
+        "value": 19.91,
+        "industryAvg": 18.6
       },
       {
         "metric": "P/S Ratio",
-        "value": 1.71,
-        "industryAvg": 1.5
+        "value": 1.68,
+        "industryAvg": 1.47
       },
       {
         "metric": "P/B Ratio",
-        "value": 17.41,
-        "industryAvg": 14.85
+        "value": 17.09,
+        "industryAvg": 14.58
       },
       {
         "metric": "ROE",

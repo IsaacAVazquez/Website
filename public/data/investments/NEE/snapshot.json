@@ -1,10 +1,10 @@
 {
   "symbol": "NEE",
-  "lastUpdated": "2026-09-29T07:04:00.244178+00:00",
+  "lastUpdated": "2026-10-01T15:57:42.767348+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-09-29T07:04:00.244178+00:00",
+    "snapshotBuiltAt": "2026-10-01T15:57:42.767348+00:00",
     "sections": {
-      "price": "2026-09-29"
+      "price": "2026-09-30"
     }
   },
   "source": "prefetched",
@@ -40,10 +40,10 @@
     },
     "fundamentals": {
       "ttmEps": 4.4569,
-      "ttmPe": 16.94,
-      "marketCap": 157472140000,
-      "psRatio": 5.49,
-      "pbRatio": 2.76,
+      "ttmPe": 16.99,
+      "marketCap": 157993640000,
+      "psRatio": 5.5,
+      "pbRatio": 2.77,
       "pegRatio": 0.32
     },
     "profitability": {
@@ -5881,25 +5881,17 @@
       ]
     },
     "wacc": {
-      "wacc": 6.04,
-      "costOfEquity": 10.08,
+      "wacc": 5.96,
+      "costOfEquity": 9.93,
       "costOfDebt": 0.44,
       "taxRate": 40,
-      "beta": 0.6342,
-      "marketCap": 157472140000
+      "beta": 0.6121,
+      "marketCap": 157993640000
     },
     "beta": {
-      "beta5y": 0.6342
+      "beta5y": 0.6121
     },
     "price": [
-      {
-        "date": "2025-09-29",
-        "open": 75.68,
-        "high": 76.29,
-        "low": 75.27,
-        "close": 76.21,
-        "volume": 10366000
-      },
       {
         "date": "2025-09-30",
         "open": 76.46,
@@ -7907,17 +7899,17 @@
         "low": 74.78,
         "close": 75.89,
         "volume": 11346300
+      },
+      {
+        "date": "2026-09-30",
+        "open": 76.33,
+        "high": 76.5,
+        "low": 75.57,
+        "close": 75.74,
+        "volume": 13461500
       }
     ],
     "news": [
-      {
-        "uuid": "4150e7ba-4c41-3339-a01a-07b6567d5930",
-        "title": "Crippling Clean-Energy Tax Credits Won’t Fly, GOP Senators Say",
-        "publisher": "Bloomberg",
-        "reportDate": "2025-05-23",
-        "link": "https://finance.yahoo.com/news/crippling-clean-energy-tax-credits-192852454.html",
-        "type": "STORY"
-      },
       {
         "uuid": "03e55f62-1ff6-3798-8ef9-27158b99013d",
         "title": "SunRun and Other Solar Stocks Fall on Tax Bill",
@@ -7933,6 +7925,14 @@
         "reportDate": "2025-05-23",
         "link": "https://finance.yahoo.com/video/bitcoin-crypto-stocks-rally-solar-161156560.html",
         "type": "VIDEO"
+      },
+      {
+        "uuid": "4150e7ba-4c41-3339-a01a-07b6567d5930",
+        "title": "Crippling Clean-Energy Tax Credits Won’t Fly, GOP Senators Say",
+        "publisher": "Bloomberg",
+        "reportDate": "2025-05-23",
+        "link": "https://finance.yahoo.com/news/crippling-clean-energy-tax-credits-192852454.html",
+        "type": "STORY"
       },
       {
         "uuid": "bbf85e9c-6c76-348e-af03-add4ed60974d",
@@ -8056,18 +8056,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 16.94,
-        "industryAvg": 15.73
+        "value": 16.99,
+        "industryAvg": 15.99
       },
       {
         "metric": "P/S Ratio",
-        "value": 5.49,
-        "industryAvg": 2.18
+        "value": 5.5,
+        "industryAvg": 2.22
       },
       {
         "metric": "P/B Ratio",
-        "value": 2.76,
-        "industryAvg": 1.7
+        "value": 2.77,
+        "industryAvg": 1.72
       },
       {
         "metric": "ROE",

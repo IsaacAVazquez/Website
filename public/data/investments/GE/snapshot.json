@@ -1,17 +1,11 @@
 {
   "symbol": "GE",
-  "lastUpdated": "2026-08-18T23:06:20.443188+00:00",
+  "lastUpdated": "2026-10-01T15:57:42.767348+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-08-18T23:06:20.443188+00:00",
+    "snapshotBuiltAt": "2026-10-01T15:57:42.767348+00:00",
     "sections": {
-      "price": "2026-09-29"
-    },
-    "retainedSections": [
-      "fundamentals",
-      "wacc",
-      "beta",
-      "news"
-    ]
+      "price": "2026-09-30"
+    }
   },
   "source": "prefetched",
   "capabilities": {
@@ -46,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 8.4841,
-      "ttmPe": 43.42,
-      "marketCap": 382217273750,
-      "psRatio": 7.55,
-      "pbRatio": 21.67,
-      "pegRatio": 0.92
+      "ttmPe": 36.81,
+      "marketCap": 324020393125,
+      "psRatio": 6.4,
+      "pbRatio": 18.37,
+      "pegRatio": 1.88
     },
     "profitability": {
       "roe": 13.28,
@@ -6870,25 +6864,17 @@
       ]
     },
     "wacc": {
-      "wacc": 15.21,
-      "costOfEquity": 15.909999999999998,
-      "costOfDebt": 1.95,
-      "taxRate": 12,
-      "beta": 1.3625,
-      "marketCap": 393880659366.48
+      "wacc": 15.27,
+      "costOfEquity": 16.12,
+      "costOfDebt": 1.1199999999999999,
+      "taxRate": 15,
+      "beta": 1.4287,
+      "marketCap": 324020393125
     },
     "beta": {
-      "beta5y": 1.3625
+      "beta5y": 1.4287
     },
     "price": [
-      {
-        "date": "2025-09-29",
-        "open": 296.36,
-        "high": 297.93,
-        "low": 289.66,
-        "close": 293.63,
-        "volume": 3860800
-      },
       {
         "date": "2025-09-30",
         "open": 294.71,
@@ -8896,6 +8882,14 @@
         "low": 316.58,
         "close": 317.89,
         "volume": 3731400
+      },
+      {
+        "date": "2026-09-30",
+        "open": 317.89,
+        "high": 317.91,
+        "low": 312.25,
+        "close": 312.29,
+        "volume": 4186400
       }
     ],
     "news": [
@@ -8924,19 +8918,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "7cea8e87-7aed-3f2d-bbc4-b640c0bea25f",
-        "title": "Dow Jones Futures Rise As Trump Says 80% China Tariff 'Seems Right'; Robinhood Leads 6 New Buys",
-        "publisher": "Investor's Business Daily",
-        "reportDate": "2025-05-09",
-        "link": "https://finance.yahoo.com/m/7cea8e87-7aed-3f2d-bbc4-b640c0bea25f/dow-jones-futures-rise-as.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "60c8b30b-fb84-30f1-bb0d-808be867ee93",
         "title": "GE Vernova: What's Energizing This General Electric Spinoff? Eye-Popping Growth For Starters",
         "publisher": "Investor's Business Daily",
         "reportDate": "2025-05-09",
         "link": "https://finance.yahoo.com/m/60c8b30b-fb84-30f1-bb0d-808be867ee93/ge-vernova%3A-what%27s-energizing.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "7cea8e87-7aed-3f2d-bbc4-b640c0bea25f",
+        "title": "Dow Jones Futures Rise As Trump Says 80% China Tariff 'Seems Right'; Robinhood Leads 6 New Buys",
+        "publisher": "Investor's Business Daily",
+        "reportDate": "2025-05-09",
+        "link": "https://finance.yahoo.com/m/7cea8e87-7aed-3f2d-bbc4-b640c0bea25f/dow-jones-futures-rise-as.html",
         "type": "STORY"
       },
       {
@@ -9023,8 +9017,10 @@
         "totalPay": 3251678
       },
       {
-        "name": "Mr. Ramesh Singaram",
-        "title": "President & CEO of GE Gas Power's APAC"
+        "name": "Mr. Riccardo Procacci Ph.D.",
+        "title": "President and CEO of Propulsion & Additive Technologies",
+        "age": 57,
+        "yearBorn": 1968
       },
       {
         "name": "Mr. Robert M. Giglietti",
@@ -9044,43 +9040,43 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 43.42,
-        "industryAvg": 0.78
+        "value": 36.81,
+        "industryAvg": 31.86
       },
       {
         "metric": "P/S Ratio",
-        "value": 7.55,
-        "industryAvg": 0.05
+        "value": 6.4,
+        "industryAvg": 2.85
       },
       {
         "metric": "P/B Ratio",
-        "value": 21.67,
-        "industryAvg": 0.07
+        "value": 18.37,
+        "industryAvg": 8.58
       },
       {
         "metric": "ROE",
         "value": 13.28,
-        "industryAvg": 3.7199999999999998
+        "industryAvg": 17.330000000000002
       },
       {
         "metric": "ROA",
         "value": 1.8499999999999999,
-        "industryAvg": 1.08
+        "industryAvg": 4.51
       },
       {
         "metric": "Gross Margin",
         "value": 31.1,
-        "industryAvg": 21.41
+        "industryAvg": 18.759999999999998
       },
       {
         "metric": "EBITDA Margin",
         "value": 24.94,
-        "industryAvg": 15.02
+        "industryAvg": 14.35
       },
       {
         "metric": "Net Margin",
         "value": 17.76,
-        "industryAvg": 6.950000000000001
+        "industryAvg": 7.06
       }
     ]
   }

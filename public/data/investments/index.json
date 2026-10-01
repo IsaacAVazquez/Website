@@ -1,72 +1,5 @@
 {
   "symbols": [
-    "WFC",
-    "GS",
-    "MS",
-    "AXP",
-    "BLK",
-    "SCHW",
-    "CME",
-    "SPGI",
-    "MCO",
-    "PNC",
-    "USB",
-    "BX",
-    "KKR",
-    "APO",
-    "UNH",
-    "LLY",
-    "JNJ",
-    "ABBV",
-    "PFE",
-    "AMGN",
-    "ISRG",
-    "TMO",
-    "VRTX",
-    "BSX",
-    "GILD",
-    "REGN",
-    "ZTS",
-    "ELV",
-    "CVS",
-    "HCA",
-    "CI",
-    "MDT",
-    "GEHC",
-    "NVO",
-    "WMT",
-    "COST",
-    "KO",
-    "PG",
-    "PEP",
-    "MCD",
-    "CDNS",
-    "SNPS",
-    "NET",
-    "AAPL",
-    "MSFT",
-    "NVDA",
-    "GOOGL",
-    "AMZN",
-    "META",
-    "TSLA",
-    "AVGO",
-    "TSM",
-    "ASML",
-    "ORCL",
-    "CRM",
-    "ADBE",
-    "NOW",
-    "INTU",
-    "IBM",
-    "PLTR",
-    "WDAY",
-    "APP",
-    "SHOP",
-    "ANET",
-    "PANW",
-    "CRWD",
-    "PM",
     "MO",
     "SBUX",
     "MDLZ",
@@ -150,13 +83,80 @@
     "JPM",
     "V",
     "MA",
-    "BAC"
+    "BAC",
+    "WFC",
+    "GS",
+    "MS",
+    "AXP",
+    "BLK",
+    "SCHW",
+    "CME",
+    "SPGI",
+    "MCO",
+    "PNC",
+    "USB",
+    "BX",
+    "KKR",
+    "APO",
+    "UNH",
+    "LLY",
+    "JNJ",
+    "ABBV",
+    "PFE",
+    "AMGN",
+    "ISRG",
+    "TMO",
+    "VRTX",
+    "BSX",
+    "GILD",
+    "REGN",
+    "ZTS",
+    "ELV",
+    "CVS",
+    "HCA",
+    "CI",
+    "MDT",
+    "GEHC",
+    "NVO",
+    "WMT",
+    "COST",
+    "KO",
+    "PG",
+    "PEP",
+    "MCD",
+    "CDNS",
+    "SNPS",
+    "NET",
+    "AAPL",
+    "MSFT",
+    "NVDA",
+    "GOOGL",
+    "AMZN",
+    "META",
+    "TSLA",
+    "AVGO",
+    "TSM",
+    "ASML",
+    "ORCL",
+    "CRM",
+    "ADBE",
+    "NOW",
+    "INTU",
+    "IBM",
+    "PLTR",
+    "WDAY",
+    "APP",
+    "SHOP",
+    "ANET",
+    "PANW",
+    "CRWD",
+    "PM"
   ],
   "failed": [],
-  "lastUpdated": "2026-09-30T15:30:08.171135+00:00",
-  "refreshAttemptedAt": "2026-09-30T15:30:08.171135+00:00",
-  "freshCount": 66,
-  "staleCount": 85,
+  "lastUpdated": "2026-10-01T15:57:42.767348+00:00",
+  "refreshAttemptedAt": "2026-10-01T15:57:42.767348+00:00",
+  "freshCount": 84,
+  "staleCount": 67,
   "fetchAttempts": {
     "APO": "2026-09-30T15:13:40.001548+00:00",
     "UNH": "2026-09-30T15:13:43.005009+00:00",
@@ -212,90 +212,90 @@
     "PANW": "2026-09-30T15:30:00.757308+00:00",
     "CRWD": "2026-09-30T15:30:03.766915+00:00",
     "PM": "2026-09-30T15:30:06.490169+00:00",
-    "MO": "2026-09-29T06:33:54.249745+00:00",
-    "SBUX": "2026-09-29T06:33:57.636973+00:00",
-    "MDLZ": "2026-09-29T06:34:01.145897+00:00",
-    "TJX": "2026-09-29T06:34:13.959869+00:00",
-    "TGT": "2026-09-29T06:34:44.018171+00:00",
-    "LOW": "2026-09-29T06:34:47.598428+00:00",
-    "HD": "2026-09-29T06:35:03.042282+00:00",
-    "NKE": "2026-09-29T06:35:06.277079+00:00",
-    "ORLY": "2026-09-29T06:35:26.527512+00:00",
-    "BKNG": "2026-09-29T06:36:05.499954+00:00",
-    "ABNB": "2026-09-29T06:36:25.166368+00:00",
-    "PYPL": "2026-09-29T06:36:28.000715+00:00",
-    "UBER": "2026-09-29T06:36:59.654830+00:00",
-    "NFLX": "2026-09-29T06:37:02.990693+00:00",
-    "DIS": "2026-09-29T06:37:32.779690+00:00",
-    "TMUS": "2026-09-29T06:37:36.084837+00:00",
-    "VZ": "2026-09-29T06:38:41.602025+00:00",
-    "T": "2026-09-29T06:38:45.016970+00:00",
-    "CMCSA": "2026-09-29T06:38:50.084041+00:00",
-    "SPOT": "2026-09-29T06:38:53.208591+00:00",
-    "SAP": "2026-09-29T06:38:56.071700+00:00",
-    "GE": "2026-09-29T06:38:59.448154+00:00",
-    "CAT": "2026-09-29T06:42:22.172567+00:00",
-    "HON": "2026-09-29T06:42:58.992341+00:00",
-    "RTX": "2026-09-29T06:43:42.169518+00:00",
-    "BA": "2026-09-29T06:44:54.766406+00:00",
-    "LMT": "2026-09-29T06:44:57.643974+00:00",
-    "SPY": "2026-09-29T06:45:00.417444+00:00",
-    "UNP": "2026-09-29T06:45:02.795279+00:00",
-    "UPS": "2026-09-29T06:45:26.621305+00:00",
-    "SLB": "2026-09-29T06:45:50.380666+00:00",
-    "DE": "2026-09-29T06:46:20.614207+00:00",
-    "GD": "2026-09-29T06:46:23.568433+00:00",
-    "NOC": "2026-09-29T06:46:26.395570+00:00",
-    "ETN": "2026-09-29T06:46:29.414355+00:00",
-    "ITW": "2026-09-29T06:47:34.920864+00:00",
-    "EMR": "2026-09-29T06:47:38.086482+00:00",
-    "WM": "2026-09-29T06:47:41.056893+00:00",
-    "FDX": "2026-09-29T06:48:01.691445+00:00",
-    "CARR": "2026-09-29T06:48:04.292146+00:00",
-    "GWW": "2026-09-29T06:48:36.609638+00:00",
-    "TDG": "2026-09-29T06:49:05.566897+00:00",
-    "ROP": "2026-09-29T06:49:08.256413+00:00",
-    "MSI": "2026-09-29T06:50:42.329284+00:00",
-    "APH": "2026-09-29T06:51:20.051278+00:00",
-    "PH": "2026-09-29T06:52:05.747457+00:00",
-    "XOM": "2026-09-29T06:52:09.238689+00:00",
-    "CVX": "2026-09-29T06:52:46.169273+00:00",
-    "COP": "2026-09-29T06:52:49.094402+00:00",
-    "EOG": "2026-09-29T06:53:45.524646+00:00",
-    "NEE": "2026-09-29T06:53:48.414110+00:00",
-    "SO": "2026-09-29T06:54:38.311970+00:00",
-    "DUK": "2026-09-29T06:54:41.675744+00:00",
-    "AMT": "2026-09-29T06:54:44.724134+00:00",
-    "PLD": "2026-09-29T06:55:05.238609+00:00",
-    "WELL": "2026-09-29T06:55:22.685351+00:00",
-    "AMD": "2026-09-29T06:55:42.743940+00:00",
-    "INTC": "2026-09-29T06:56:31.043947+00:00",
-    "QCOM": "2026-09-29T06:56:34.770461+00:00",
-    "TXN": "2026-09-29T06:56:38.480718+00:00",
-    "AMAT": "2026-09-29T06:56:42.239981+00:00",
-    "MU": "2026-09-29T06:57:17.371151+00:00",
-    "LRCX": "2026-09-29T06:57:21.004413+00:00",
-    "PSA": "2026-09-29T06:57:24.657993+00:00",
-    "CCI": "2026-09-29T06:57:28.170722+00:00",
-    "ACN": "2026-09-29T06:57:31.632050+00:00",
-    "RACE": "2026-09-29T06:58:12.828274+00:00",
-    "GM": "2026-09-29T06:58:39.512790+00:00",
-    "MMM": "2026-09-29T06:58:42.414036+00:00",
-    "CB": "2026-09-29T06:58:45.306649+00:00",
-    "MRSH": "2026-09-29T06:59:24.870267+00:00",
-    "STZ": "2026-09-29T06:59:46.359327+00:00",
-    "FTNT": "2026-09-29T07:00:04.467010+00:00",
-    "ECL": "2026-09-29T07:01:05.269970+00:00",
-    "KLAC": "2026-09-29T07:02:02.674358+00:00",
-    "MRVL": "2026-09-29T07:02:05.559431+00:00",
-    "ADI": "2026-09-29T07:02:08.283075+00:00",
-    "NXPI": "2026-09-29T07:02:11.227863+00:00",
-    "ON": "2026-09-29T07:02:14.274766+00:00",
-    "BRK-B": "2026-09-29T07:02:17.114629+00:00",
-    "JPM": "2026-09-29T07:02:36.787755+00:00",
-    "V": "2026-09-29T07:03:13.802421+00:00",
-    "MA": "2026-09-29T07:03:47.103955+00:00",
-    "BAC": "2026-09-29T07:03:50.012084+00:00",
+    "MO": "2026-10-01T15:35:50.972134+00:00",
+    "SBUX": "2026-10-01T15:36:18.229235+00:00",
+    "MDLZ": "2026-10-01T15:36:54.204633+00:00",
+    "TJX": "2026-10-01T15:37:05.045925+00:00",
+    "TGT": "2026-10-01T15:37:29.306541+00:00",
+    "LOW": "2026-10-01T15:37:44.077877+00:00",
+    "HD": "2026-10-01T15:37:56.151136+00:00",
+    "NKE": "2026-10-01T15:37:58.490365+00:00",
+    "ORLY": "2026-10-01T15:38:15.584317+00:00",
+    "BKNG": "2026-10-01T15:38:47.838711+00:00",
+    "ABNB": "2026-10-01T15:39:03.762443+00:00",
+    "PYPL": "2026-10-01T15:39:05.798900+00:00",
+    "UBER": "2026-10-01T15:39:30.740534+00:00",
+    "NFLX": "2026-10-01T15:40:45.722892+00:00",
+    "DIS": "2026-10-01T15:41:08.926194+00:00",
+    "TMUS": "2026-10-01T15:41:11.331777+00:00",
+    "VZ": "2026-10-01T15:42:04.141068+00:00",
+    "T": "2026-10-01T15:42:06.627061+00:00",
+    "CMCSA": "2026-10-01T15:42:09.587824+00:00",
+    "SPOT": "2026-10-01T15:42:11.956203+00:00",
+    "SAP": "2026-10-01T15:42:42.022839+00:00",
+    "GE": "2026-10-01T15:42:44.431083+00:00",
+    "CAT": "2026-10-01T15:43:38.039531+00:00",
+    "HON": "2026-10-01T15:43:59.147786+00:00",
+    "RTX": "2026-10-01T15:44:29.264234+00:00",
+    "BA": "2026-10-01T15:44:31.766505+00:00",
+    "LMT": "2026-10-01T15:44:34.148156+00:00",
+    "SPY": "2026-10-01T15:44:36.480854+00:00",
+    "UNP": "2026-10-01T15:44:38.465598+00:00",
+    "UPS": "2026-10-01T15:44:57.584860+00:00",
+    "SLB": "2026-10-01T15:45:16.568902+00:00",
+    "DE": "2026-10-01T15:45:40.360470+00:00",
+    "GD": "2026-10-01T15:45:42.751597+00:00",
+    "NOC": "2026-10-01T15:45:44.692724+00:00",
+    "ETN": "2026-10-01T15:45:47.037087+00:00",
+    "ITW": "2026-10-01T15:46:37.478648+00:00",
+    "EMR": "2026-10-01T15:46:39.908678+00:00",
+    "WM": "2026-10-01T15:46:42.277890+00:00",
+    "FDX": "2026-10-01T15:46:57.118288+00:00",
+    "CARR": "2026-10-01T15:46:59.162595+00:00",
+    "GWW": "2026-10-01T15:47:23.452664+00:00",
+    "TDG": "2026-10-01T15:47:45.604787+00:00",
+    "ROP": "2026-10-01T15:47:47.434767+00:00",
+    "MSI": "2026-10-01T15:47:49.717217+00:00",
+    "APH": "2026-10-01T15:48:18.036913+00:00",
+    "PH": "2026-10-01T15:48:53.202856+00:00",
+    "XOM": "2026-10-01T15:48:55.655986+00:00",
+    "CVX": "2026-10-01T15:49:24.348205+00:00",
+    "COP": "2026-10-01T15:49:26.533878+00:00",
+    "EOG": "2026-10-01T15:50:09.755538+00:00",
+    "NEE": "2026-10-01T15:50:12.056001+00:00",
+    "SO": "2026-10-01T15:50:50.768509+00:00",
+    "DUK": "2026-10-01T15:50:53.081414+00:00",
+    "AMT": "2026-10-01T15:50:55.317013+00:00",
+    "PLD": "2026-10-01T15:51:11.269516+00:00",
+    "WELL": "2026-10-01T15:51:25.271131+00:00",
+    "AMD": "2026-10-01T15:51:40.483282+00:00",
+    "INTC": "2026-10-01T15:52:17.974547+00:00",
+    "QCOM": "2026-10-01T15:52:20.559213+00:00",
+    "TXN": "2026-10-01T15:52:22.892088+00:00",
+    "AMAT": "2026-10-01T15:52:24.799892+00:00",
+    "MU": "2026-10-01T15:52:51.718067+00:00",
+    "LRCX": "2026-10-01T15:52:53.918724+00:00",
+    "PSA": "2026-10-01T15:52:55.813201+00:00",
+    "CCI": "2026-10-01T15:52:57.999292+00:00",
+    "ACN": "2026-10-01T15:53:00.162768+00:00",
+    "RACE": "2026-10-01T15:53:33.618588+00:00",
+    "GM": "2026-10-01T15:53:54.396549+00:00",
+    "MMM": "2026-10-01T15:53:56.455960+00:00",
+    "CB": "2026-10-01T15:53:58.702382+00:00",
+    "MRSH": "2026-10-01T15:54:29.453974+00:00",
+    "STZ": "2026-10-01T15:54:45.781992+00:00",
+    "FTNT": "2026-10-01T15:55:00.151481+00:00",
+    "ECL": "2026-10-01T15:55:48.014109+00:00",
+    "KLAC": "2026-10-01T15:56:32.439876+00:00",
+    "MRVL": "2026-10-01T15:56:34.889393+00:00",
+    "ADI": "2026-10-01T15:56:37.115461+00:00",
+    "NXPI": "2026-10-01T15:56:39.443732+00:00",
+    "ON": "2026-10-01T15:56:41.599710+00:00",
+    "BRK-B": "2026-10-01T15:56:44.103966+00:00",
+    "JPM": "2026-10-01T15:56:59.717067+00:00",
+    "V": "2026-10-01T15:57:29.037749+00:00",
+    "MA": "2026-10-01T15:57:31.443149+00:00",
+    "BAC": "2026-10-01T15:57:33.466046+00:00",
     "WFC": "2026-09-30T15:08:23.777429+00:00",
     "GS": "2026-09-30T15:09:10.161199+00:00",
     "MS": "2026-09-30T15:09:59.193383+00:00",
@@ -311,14 +311,6 @@
     "KKR": "2026-09-30T15:13:36.998150+00:00"
   },
   "fetchFailures": {
-    "GE": {
-      "lastAttemptedAt": "2026-09-29T06:38:59.448154+00:00",
-      "consecutiveFailures": 1
-    },
-    "BAC": {
-      "lastAttemptedAt": "2026-09-29T07:03:50.012084+00:00",
-      "consecutiveFailures": 1
-    },
     "PM": {
       "lastAttemptedAt": "2026-09-30T15:30:06.490169+00:00",
       "consecutiveFailures": 1
@@ -326,645 +318,1377 @@
   },
   "entries": [
     {
+      "symbol": "MO",
+      "shortName": "Altria Group, Inc.",
+      "longName": "Altria Group, Inc.",
+      "searchText": "mo altria group, inc. altria group, inc.",
+      "priceAsOf": "2026-09-30"
+    },
+    {
+      "symbol": "SBUX",
+      "shortName": "Starbucks Corporation",
+      "longName": "Starbucks Corporation",
+      "searchText": "sbux starbucks corporation starbucks corporation",
+      "priceAsOf": "2026-09-30"
+    },
+    {
+      "symbol": "MDLZ",
+      "shortName": "Mondelez International, Inc.",
+      "longName": "Mondelez International, Inc.",
+      "searchText": "mdlz mondelez international, inc. mondelez international, inc.",
+      "priceAsOf": "2026-09-30"
+    },
+    {
+      "symbol": "TJX",
+      "shortName": "TJX Companies, Inc.",
+      "longName": "TJX Companies, Inc.",
+      "searchText": "tjx tjx companies, inc. tjx companies, inc.",
+      "priceAsOf": "2026-09-30"
+    },
+    {
+      "symbol": "TGT",
+      "shortName": "Target Corporation",
+      "longName": "Target Corporation",
+      "searchText": "tgt target corporation target corporation",
+      "priceAsOf": "2026-09-30"
+    },
+    {
+      "symbol": "LOW",
+      "shortName": "Lowe's Companies, Inc.",
+      "longName": "Lowe's Companies, Inc.",
+      "searchText": "low lowe's companies, inc. lowe's companies, inc.",
+      "priceAsOf": "2026-09-30"
+    },
+    {
+      "symbol": "HD",
+      "shortName": "Home Depot, Inc.",
+      "longName": "Home Depot, Inc.",
+      "searchText": "hd home depot, inc. home depot, inc.",
+      "priceAsOf": "2026-09-30"
+    },
+    {
+      "symbol": "NKE",
+      "shortName": "NIKE, Inc.",
+      "longName": "NIKE, Inc.",
+      "searchText": "nke nike, inc. nike, inc.",
+      "partial": true,
+      "retainedSections": [
+        "info"
+      ],
+      "priceAsOf": "2026-09-30"
+    },
+    {
+      "symbol": "ORLY",
+      "shortName": "O'Reilly Automotive, Inc.",
+      "longName": "O'Reilly Automotive, Inc.",
+      "searchText": "orly o'reilly automotive, inc. o'reilly automotive, inc.",
+      "priceAsOf": "2026-09-30"
+    },
+    {
+      "symbol": "BKNG",
+      "shortName": "Booking Holdings Inc.",
+      "longName": "Booking Holdings Inc.",
+      "searchText": "bkng booking holdings inc. booking holdings inc.",
+      "priceAsOf": "2026-09-30"
+    },
+    {
+      "symbol": "ABNB",
+      "shortName": "Airbnb, Inc.",
+      "longName": "Airbnb, Inc.",
+      "searchText": "abnb airbnb, inc. airbnb, inc.",
+      "priceAsOf": "2026-09-30"
+    },
+    {
+      "symbol": "PYPL",
+      "shortName": "PayPal Holdings, Inc.",
+      "longName": "PayPal Holdings, Inc.",
+      "searchText": "pypl paypal holdings, inc. paypal holdings, inc.",
+      "priceAsOf": "2026-09-30"
+    },
+    {
+      "symbol": "UBER",
+      "shortName": "Uber Technologies, Inc.",
+      "longName": "Uber Technologies, Inc.",
+      "searchText": "uber uber technologies, inc. uber technologies, inc.",
+      "priceAsOf": "2026-09-30"
+    },
+    {
+      "symbol": "NFLX",
+      "shortName": "Netflix, Inc.",
+      "longName": "Netflix, Inc.",
+      "searchText": "nflx netflix, inc. netflix, inc.",
+      "priceAsOf": "2026-09-30"
+    },
+    {
+      "symbol": "DIS",
+      "shortName": "Walt Disney Company",
+      "longName": "Walt Disney Company",
+      "searchText": "dis walt disney company walt disney company",
+      "priceAsOf": "2026-09-30"
+    },
+    {
+      "symbol": "TMUS",
+      "shortName": "T-Mobile US, Inc.",
+      "longName": "T-Mobile US, Inc.",
+      "searchText": "tmus t-mobile us, inc. t-mobile us, inc.",
+      "priceAsOf": "2026-09-30"
+    },
+    {
+      "symbol": "VZ",
+      "shortName": "Verizon Communications Inc.",
+      "longName": "Verizon Communications Inc.",
+      "searchText": "vz verizon communications inc. verizon communications inc.",
+      "priceAsOf": "2026-09-30"
+    },
+    {
+      "symbol": "T",
+      "shortName": "AT&T Inc.",
+      "longName": "AT&T Inc.",
+      "searchText": "t at&t inc. at&t inc.",
+      "priceAsOf": "2026-09-30"
+    },
+    {
+      "symbol": "CMCSA",
+      "shortName": "Comcast Corporation",
+      "longName": "Comcast Corporation",
+      "searchText": "cmcsa comcast corporation comcast corporation",
+      "priceAsOf": "2026-09-30"
+    },
+    {
+      "symbol": "SPOT",
+      "shortName": "Spotify Technology S.A.",
+      "longName": "Spotify Technology S.A.",
+      "searchText": "spot spotify technology s.a. spotify technology s.a.",
+      "priceAsOf": "2026-09-30"
+    },
+    {
+      "symbol": "SAP",
+      "shortName": "SAP SE",
+      "longName": "SAP SE",
+      "searchText": "sap sap se sap se",
+      "priceAsOf": "2026-09-30"
+    },
+    {
+      "symbol": "GE",
+      "shortName": "GE Aerospace",
+      "longName": "GE Aerospace",
+      "searchText": "ge ge aerospace ge aerospace",
+      "priceAsOf": "2026-09-30"
+    },
+    {
+      "symbol": "CAT",
+      "shortName": "Caterpillar Inc.",
+      "longName": "Caterpillar Inc.",
+      "searchText": "cat caterpillar inc. caterpillar inc.",
+      "priceAsOf": "2026-09-30"
+    },
+    {
+      "symbol": "HON",
+      "shortName": "Honeywell International Inc.",
+      "longName": "Honeywell International Inc.",
+      "searchText": "hon honeywell international inc. honeywell international inc.",
+      "priceAsOf": "2026-09-30"
+    },
+    {
+      "symbol": "RTX",
+      "shortName": "RTX Corporation",
+      "longName": "RTX Corporation",
+      "searchText": "rtx rtx corporation rtx corporation",
+      "priceAsOf": "2026-09-30"
+    },
+    {
+      "symbol": "BA",
+      "shortName": "Boeing Company",
+      "longName": "Boeing Company",
+      "searchText": "ba boeing company boeing company",
+      "priceAsOf": "2026-09-30"
+    },
+    {
+      "symbol": "LMT",
+      "shortName": "Lockheed Martin Corporation",
+      "longName": "Lockheed Martin Corporation",
+      "searchText": "lmt lockheed martin corporation lockheed martin corporation",
+      "priceAsOf": "2026-09-30"
+    },
+    {
+      "symbol": "SPY",
+      "shortName": "SPDR S&P 500 ETF Trust",
+      "longName": "SPDR S&P 500 ETF Trust",
+      "searchText": "spy spdr s&p 500 etf trust spdr s&p 500 etf trust",
+      "priceAsOf": "2026-09-30"
+    },
+    {
+      "symbol": "UNP",
+      "shortName": "Union Pacific Corporation",
+      "longName": "Union Pacific Corporation",
+      "searchText": "unp union pacific corporation union pacific corporation",
+      "priceAsOf": "2026-09-30"
+    },
+    {
+      "symbol": "UPS",
+      "shortName": "United Parcel Service, Inc.",
+      "longName": "United Parcel Service, Inc.",
+      "searchText": "ups united parcel service, inc. united parcel service, inc.",
+      "priceAsOf": "2026-09-30"
+    },
+    {
+      "symbol": "SLB",
+      "shortName": "SLB",
+      "longName": "SLB",
+      "searchText": "slb slb slb",
+      "priceAsOf": "2026-09-30"
+    },
+    {
+      "symbol": "DE",
+      "shortName": "Deere & Company",
+      "longName": "Deere & Company",
+      "searchText": "de deere & company deere & company",
+      "priceAsOf": "2026-09-30"
+    },
+    {
+      "symbol": "GD",
+      "shortName": "General Dynamics Corporation",
+      "longName": "General Dynamics Corporation",
+      "searchText": "gd general dynamics corporation general dynamics corporation",
+      "priceAsOf": "2026-09-30"
+    },
+    {
+      "symbol": "NOC",
+      "shortName": "Northrop Grumman Corporation",
+      "longName": "Northrop Grumman Corporation",
+      "searchText": "noc northrop grumman corporation northrop grumman corporation",
+      "priceAsOf": "2026-09-30"
+    },
+    {
+      "symbol": "ETN",
+      "shortName": "Eaton Corporation plc",
+      "longName": "Eaton Corporation plc",
+      "searchText": "etn eaton corporation plc eaton corporation plc",
+      "priceAsOf": "2026-09-30"
+    },
+    {
+      "symbol": "ITW",
+      "shortName": "Illinois Tool Works Inc.",
+      "longName": "Illinois Tool Works Inc.",
+      "searchText": "itw illinois tool works inc. illinois tool works inc.",
+      "priceAsOf": "2026-09-30"
+    },
+    {
+      "symbol": "EMR",
+      "shortName": "Emerson Electric Co.",
+      "longName": "Emerson Electric Co.",
+      "searchText": "emr emerson electric co. emerson electric co.",
+      "priceAsOf": "2026-09-30"
+    },
+    {
+      "symbol": "WM",
+      "shortName": "Waste Management, Inc.",
+      "longName": "Waste Management, Inc.",
+      "searchText": "wm waste management, inc. waste management, inc.",
+      "priceAsOf": "2026-09-30"
+    },
+    {
+      "symbol": "FDX",
+      "shortName": "FedEx Corporation",
+      "longName": "FedEx Corporation",
+      "searchText": "fdx fedex corporation fedex corporation",
+      "partial": true,
+      "retainedSections": [
+        "info"
+      ],
+      "priceAsOf": "2026-09-30"
+    },
+    {
+      "symbol": "CARR",
+      "shortName": "Carrier Global Corporation",
+      "longName": "Carrier Global Corporation",
+      "searchText": "carr carrier global corporation carrier global corporation",
+      "priceAsOf": "2026-09-30"
+    },
+    {
+      "symbol": "GWW",
+      "shortName": "W.W. Grainger, Inc.",
+      "longName": "W.W. Grainger, Inc.",
+      "searchText": "gww w.w. grainger, inc. w.w. grainger, inc.",
+      "priceAsOf": "2026-09-30"
+    },
+    {
+      "symbol": "TDG",
+      "shortName": "TransDigm Group Incorporated",
+      "longName": "TransDigm Group Incorporated",
+      "searchText": "tdg transdigm group incorporated transdigm group incorporated",
+      "priceAsOf": "2026-09-30"
+    },
+    {
+      "symbol": "ROP",
+      "shortName": "Roper Technologies, Inc.",
+      "longName": "Roper Technologies, Inc.",
+      "searchText": "rop roper technologies, inc. roper technologies, inc.",
+      "priceAsOf": "2026-09-30"
+    },
+    {
+      "symbol": "MSI",
+      "shortName": "Motorola Solutions, Inc.",
+      "longName": "Motorola Solutions, Inc.",
+      "searchText": "msi motorola solutions, inc. motorola solutions, inc.",
+      "priceAsOf": "2026-09-30"
+    },
+    {
+      "symbol": "APH",
+      "shortName": "Amphenol Corporation",
+      "longName": "Amphenol Corporation",
+      "searchText": "aph amphenol corporation amphenol corporation",
+      "priceAsOf": "2026-09-30"
+    },
+    {
+      "symbol": "PH",
+      "shortName": "Parker-Hannifin Corporation",
+      "longName": "Parker-Hannifin Corporation",
+      "searchText": "ph parker-hannifin corporation parker-hannifin corporation",
+      "priceAsOf": "2026-09-30"
+    },
+    {
+      "symbol": "XOM",
+      "shortName": "Exxon Mobil Corporation",
+      "longName": "Exxon Mobil Corporation",
+      "searchText": "xom exxon mobil corporation exxon mobil corporation",
+      "priceAsOf": "2026-09-30"
+    },
+    {
+      "symbol": "CVX",
+      "shortName": "Chevron Corporation",
+      "longName": "Chevron Corporation",
+      "searchText": "cvx chevron corporation chevron corporation",
+      "priceAsOf": "2026-09-30"
+    },
+    {
+      "symbol": "COP",
+      "shortName": "ConocoPhillips",
+      "longName": "ConocoPhillips",
+      "searchText": "cop conocophillips conocophillips",
+      "priceAsOf": "2026-09-30"
+    },
+    {
+      "symbol": "EOG",
+      "shortName": "EOG Resources, Inc.",
+      "longName": "EOG Resources, Inc.",
+      "searchText": "eog eog resources, inc. eog resources, inc.",
+      "priceAsOf": "2026-09-30"
+    },
+    {
+      "symbol": "NEE",
+      "shortName": "NextEra Energy, Inc.",
+      "longName": "NextEra Energy, Inc.",
+      "searchText": "nee nextera energy, inc. nextera energy, inc.",
+      "priceAsOf": "2026-09-30"
+    },
+    {
+      "symbol": "SO",
+      "shortName": "Southern Company",
+      "longName": "Southern Company",
+      "searchText": "so southern company southern company",
+      "priceAsOf": "2026-09-30"
+    },
+    {
+      "symbol": "DUK",
+      "shortName": "Duke Energy Corporation",
+      "longName": "Duke Energy Corporation",
+      "searchText": "duk duke energy corporation duke energy corporation",
+      "priceAsOf": "2026-09-30"
+    },
+    {
+      "symbol": "AMT",
+      "shortName": "American Tower Corporation",
+      "longName": "American Tower Corporation",
+      "searchText": "amt american tower corporation american tower corporation",
+      "priceAsOf": "2026-09-30"
+    },
+    {
+      "symbol": "PLD",
+      "shortName": "Prologis, Inc.",
+      "longName": "Prologis, Inc.",
+      "searchText": "pld prologis, inc. prologis, inc.",
+      "priceAsOf": "2026-09-30"
+    },
+    {
+      "symbol": "WELL",
+      "shortName": "Welltower Inc.",
+      "longName": "Welltower Inc.",
+      "searchText": "well welltower inc. welltower inc.",
+      "priceAsOf": "2026-09-30"
+    },
+    {
+      "symbol": "AMD",
+      "shortName": "Advanced Micro Devices, Inc.",
+      "longName": "Advanced Micro Devices, Inc.",
+      "searchText": "amd advanced micro devices, inc. advanced micro devices, inc.",
+      "priceAsOf": "2026-09-30"
+    },
+    {
+      "symbol": "INTC",
+      "shortName": "Intel Corporation",
+      "longName": "Intel Corporation",
+      "searchText": "intc intel corporation intel corporation",
+      "priceAsOf": "2026-09-30"
+    },
+    {
+      "symbol": "QCOM",
+      "shortName": "QUALCOMM Incorporated",
+      "longName": "QUALCOMM Incorporated",
+      "searchText": "qcom qualcomm incorporated qualcomm incorporated",
+      "priceAsOf": "2026-09-30"
+    },
+    {
+      "symbol": "TXN",
+      "shortName": "Texas Instruments Incorporated",
+      "longName": "Texas Instruments Incorporated",
+      "searchText": "txn texas instruments incorporated texas instruments incorporated",
+      "priceAsOf": "2026-09-30"
+    },
+    {
+      "symbol": "AMAT",
+      "shortName": "Applied Materials, Inc.",
+      "longName": "Applied Materials, Inc.",
+      "searchText": "amat applied materials, inc. applied materials, inc.",
+      "priceAsOf": "2026-09-30"
+    },
+    {
+      "symbol": "MU",
+      "shortName": "Micron Technology, Inc.",
+      "longName": "Micron Technology, Inc.",
+      "searchText": "mu micron technology, inc. micron technology, inc.",
+      "priceAsOf": "2026-09-30"
+    },
+    {
+      "symbol": "LRCX",
+      "shortName": "Lam Research Corporation",
+      "longName": "Lam Research Corporation",
+      "searchText": "lrcx lam research corporation lam research corporation",
+      "priceAsOf": "2026-09-30"
+    },
+    {
+      "symbol": "PSA",
+      "shortName": "Public Storage",
+      "longName": "Public Storage",
+      "searchText": "psa public storage public storage",
+      "priceAsOf": "2026-09-30"
+    },
+    {
+      "symbol": "CCI",
+      "shortName": "Crown Castle Inc.",
+      "longName": "Crown Castle Inc.",
+      "searchText": "cci crown castle inc. crown castle inc.",
+      "priceAsOf": "2026-09-30"
+    },
+    {
+      "symbol": "ACN",
+      "shortName": "Accenture plc",
+      "longName": "Accenture plc",
+      "searchText": "acn accenture plc accenture plc",
+      "priceAsOf": "2026-09-30"
+    },
+    {
+      "symbol": "RACE",
+      "shortName": "Ferrari N.V.",
+      "longName": "Ferrari N.V.",
+      "searchText": "race ferrari n.v. ferrari n.v.",
+      "priceAsOf": "2026-09-30"
+    },
+    {
+      "symbol": "GM",
+      "shortName": "General Motors Company",
+      "longName": "General Motors Company",
+      "searchText": "gm general motors company general motors company",
+      "priceAsOf": "2026-09-30"
+    },
+    {
+      "symbol": "MMM",
+      "shortName": "3M Company",
+      "longName": "3M Company",
+      "searchText": "mmm 3m company 3m company",
+      "priceAsOf": "2026-09-30"
+    },
+    {
+      "symbol": "CB",
+      "shortName": "Chubb Limited",
+      "longName": "Chubb Limited",
+      "searchText": "cb chubb limited chubb limited",
+      "priceAsOf": "2026-09-30"
+    },
+    {
+      "symbol": "MRSH",
+      "shortName": "Marsh & McLennan Companies, Inc.",
+      "longName": "Marsh & McLennan Companies, Inc.",
+      "searchText": "mrsh marsh & mclennan companies, inc. marsh & mclennan companies, inc.",
+      "priceAsOf": "2026-09-30"
+    },
+    {
+      "symbol": "STZ",
+      "shortName": "Constellation Brands, Inc.",
+      "longName": "Constellation Brands, Inc.",
+      "searchText": "stz constellation brands, inc. constellation brands, inc.",
+      "priceAsOf": "2026-09-30"
+    },
+    {
+      "symbol": "FTNT",
+      "shortName": "Fortinet, Inc.",
+      "longName": "Fortinet, Inc.",
+      "searchText": "ftnt fortinet, inc. fortinet, inc.",
+      "priceAsOf": "2026-09-30"
+    },
+    {
+      "symbol": "ECL",
+      "shortName": "Ecolab Inc.",
+      "longName": "Ecolab Inc.",
+      "searchText": "ecl ecolab inc. ecolab inc.",
+      "priceAsOf": "2026-09-30"
+    },
+    {
+      "symbol": "KLAC",
+      "shortName": "KLA Corporation",
+      "longName": "KLA Corporation",
+      "searchText": "klac kla corporation kla corporation",
+      "priceAsOf": "2026-09-30"
+    },
+    {
+      "symbol": "MRVL",
+      "shortName": "Marvell Technology, Inc.",
+      "longName": "Marvell Technology, Inc.",
+      "searchText": "mrvl marvell technology, inc. marvell technology, inc.",
+      "priceAsOf": "2026-09-30"
+    },
+    {
+      "symbol": "ADI",
+      "shortName": "Analog Devices, Inc.",
+      "longName": "Analog Devices, Inc.",
+      "searchText": "adi analog devices, inc. analog devices, inc.",
+      "priceAsOf": "2026-09-30"
+    },
+    {
+      "symbol": "NXPI",
+      "shortName": "NXP Semiconductors N.V.",
+      "longName": "NXP Semiconductors N.V.",
+      "searchText": "nxpi nxp semiconductors n.v. nxp semiconductors n.v.",
+      "priceAsOf": "2026-09-30"
+    },
+    {
+      "symbol": "ON",
+      "shortName": "ON Semiconductor Corporation",
+      "longName": "ON Semiconductor Corporation",
+      "searchText": "on on semiconductor corporation on semiconductor corporation",
+      "priceAsOf": "2026-09-30"
+    },
+    {
+      "symbol": "BRK-B",
+      "shortName": "Berkshire Hathaway Inc.",
+      "longName": "Berkshire Hathaway Inc.",
+      "searchText": "brk-b berkshire hathaway inc. berkshire hathaway inc.",
+      "priceAsOf": "2026-09-30"
+    },
+    {
+      "symbol": "JPM",
+      "shortName": "JPMorgan Chase & Co.",
+      "longName": "JPMorgan Chase & Co.",
+      "searchText": "jpm jpmorgan chase & co. jpmorgan chase & co.",
+      "priceAsOf": "2026-09-30"
+    },
+    {
+      "symbol": "V",
+      "shortName": "Visa Inc.",
+      "longName": "Visa Inc.",
+      "searchText": "v visa inc. visa inc.",
+      "priceAsOf": "2026-09-30"
+    },
+    {
+      "symbol": "MA",
+      "shortName": "Mastercard Incorporated",
+      "longName": "Mastercard Incorporated",
+      "searchText": "ma mastercard incorporated mastercard incorporated",
+      "priceAsOf": "2026-09-30"
+    },
+    {
+      "symbol": "BAC",
+      "shortName": "Bank of America Corporation",
+      "longName": "Bank of America Corporation",
+      "searchText": "bac bank of america corporation bank of america corporation",
+      "partial": true,
+      "retainedSections": [
+        "industry"
+      ],
+      "priceAsOf": "2026-09-30"
+    },
+    {
       "symbol": "WFC",
       "shortName": "Wells Fargo & Company",
       "longName": "Wells Fargo & Company",
       "searchText": "wfc wells fargo & company wells fargo & company",
-      "priceAsOf": "2026-09-29"
+      "stale": true,
+      "asOf": "2026-09-30T15:30:08.171135+00:00",
+      "priceAsOf": "2026-09-30"
     },
     {
       "symbol": "GS",
       "shortName": "Goldman Sachs Group, Inc.",
       "longName": "Goldman Sachs Group, Inc.",
       "searchText": "gs goldman sachs group, inc. goldman sachs group, inc.",
-      "priceAsOf": "2026-09-29"
+      "stale": true,
+      "asOf": "2026-09-30T15:30:08.171135+00:00",
+      "priceAsOf": "2026-09-30"
     },
     {
       "symbol": "MS",
       "shortName": "Morgan Stanley",
       "longName": "Morgan Stanley",
       "searchText": "ms morgan stanley morgan stanley",
-      "priceAsOf": "2026-09-29"
+      "stale": true,
+      "asOf": "2026-09-30T15:30:08.171135+00:00",
+      "priceAsOf": "2026-09-30"
     },
     {
       "symbol": "AXP",
       "shortName": "American Express Company",
       "longName": "American Express Company",
       "searchText": "axp american express company american express company",
-      "priceAsOf": "2026-09-29"
+      "stale": true,
+      "asOf": "2026-09-30T15:30:08.171135+00:00",
+      "priceAsOf": "2026-09-30"
     },
     {
       "symbol": "BLK",
       "shortName": "BlackRock, Inc.",
       "longName": "BlackRock, Inc.",
       "searchText": "blk blackrock, inc. blackrock, inc.",
-      "priceAsOf": "2026-09-29"
+      "stale": true,
+      "asOf": "2026-09-30T15:30:08.171135+00:00",
+      "priceAsOf": "2026-09-30"
     },
     {
       "symbol": "SCHW",
       "shortName": "Charles Schwab Corporation",
       "longName": "Charles Schwab Corporation",
       "searchText": "schw charles schwab corporation charles schwab corporation",
-      "priceAsOf": "2026-09-29"
+      "stale": true,
+      "asOf": "2026-09-30T15:30:08.171135+00:00",
+      "priceAsOf": "2026-09-30"
     },
     {
       "symbol": "CME",
       "shortName": "CME Group Inc.",
       "longName": "CME Group Inc.",
       "searchText": "cme cme group inc. cme group inc.",
-      "priceAsOf": "2026-09-29"
+      "stale": true,
+      "asOf": "2026-09-30T15:30:08.171135+00:00",
+      "priceAsOf": "2026-09-30"
     },
     {
       "symbol": "SPGI",
       "shortName": "S&P Global Inc.",
       "longName": "S&P Global Inc.",
       "searchText": "spgi s&p global inc. s&p global inc.",
-      "priceAsOf": "2026-09-29"
+      "stale": true,
+      "asOf": "2026-09-30T15:30:08.171135+00:00",
+      "priceAsOf": "2026-09-30"
     },
     {
       "symbol": "MCO",
       "shortName": "Moody's Corporation",
       "longName": "Moody's Corporation",
       "searchText": "mco moody's corporation moody's corporation",
-      "priceAsOf": "2026-09-29"
+      "stale": true,
+      "asOf": "2026-09-30T15:30:08.171135+00:00",
+      "priceAsOf": "2026-09-30"
     },
     {
       "symbol": "PNC",
       "shortName": "PNC Financial Services Group",
       "longName": "PNC Financial Services Group",
       "searchText": "pnc pnc financial services group pnc financial services group",
+      "stale": true,
       "partial": true,
       "retainedSections": [
         "industry"
       ],
-      "priceAsOf": "2026-09-29"
+      "asOf": "2026-09-30T15:30:08.171135+00:00",
+      "priceAsOf": "2026-09-30"
     },
     {
       "symbol": "USB",
       "shortName": "U.S. Bancorp",
       "longName": "U.S. Bancorp",
       "searchText": "usb u.s. bancorp u.s. bancorp",
+      "stale": true,
       "partial": true,
       "retainedSections": [
         "industry"
       ],
-      "priceAsOf": "2026-09-29"
+      "asOf": "2026-09-30T15:30:08.171135+00:00",
+      "priceAsOf": "2026-09-30"
     },
     {
       "symbol": "BX",
       "shortName": "Blackstone Inc.",
       "longName": "Blackstone Inc.",
       "searchText": "bx blackstone inc. blackstone inc.",
-      "priceAsOf": "2026-09-29"
+      "stale": true,
+      "asOf": "2026-09-30T15:30:08.171135+00:00",
+      "priceAsOf": "2026-09-30"
     },
     {
       "symbol": "KKR",
       "shortName": "KKR & Co. Inc.",
       "longName": "KKR & Co. Inc.",
       "searchText": "kkr kkr & co. inc. kkr & co. inc.",
-      "priceAsOf": "2026-09-29"
+      "stale": true,
+      "asOf": "2026-09-30T15:30:08.171135+00:00",
+      "priceAsOf": "2026-09-30"
     },
     {
       "symbol": "APO",
       "shortName": "Apollo Global Management, Inc.",
       "longName": "Apollo Global Management, Inc.",
       "searchText": "apo apollo global management, inc. apollo global management, inc.",
+      "stale": true,
       "partial": true,
       "retainedSections": [
         "fundamentals"
       ],
-      "priceAsOf": "2026-09-29"
+      "asOf": "2026-09-30T15:30:08.171135+00:00",
+      "priceAsOf": "2026-09-30"
     },
     {
       "symbol": "UNH",
       "shortName": "UnitedHealth Group Incorporated",
       "longName": "UnitedHealth Group Incorporated",
       "searchText": "unh unitedhealth group incorporated unitedhealth group incorporated",
+      "stale": true,
       "partial": true,
       "retainedSections": [
         "fundamentals"
       ],
-      "priceAsOf": "2026-09-29"
+      "asOf": "2026-09-30T15:30:08.171135+00:00",
+      "priceAsOf": "2026-09-30"
     },
     {
       "symbol": "LLY",
       "shortName": "Eli Lilly and Company",
       "longName": "Eli Lilly and Company",
       "searchText": "lly eli lilly and company eli lilly and company",
+      "stale": true,
       "partial": true,
       "retainedSections": [
         "fundamentals"
       ],
-      "priceAsOf": "2026-09-29"
+      "asOf": "2026-09-30T15:30:08.171135+00:00",
+      "priceAsOf": "2026-09-30"
     },
     {
       "symbol": "JNJ",
       "shortName": "Johnson & Johnson",
       "longName": "Johnson & Johnson",
       "searchText": "jnj johnson & johnson johnson & johnson",
+      "stale": true,
       "partial": true,
       "retainedSections": [
         "fundamentals"
       ],
-      "priceAsOf": "2026-09-29"
+      "asOf": "2026-09-30T15:30:08.171135+00:00",
+      "priceAsOf": "2026-09-30"
     },
     {
       "symbol": "ABBV",
       "shortName": "AbbVie Inc.",
       "longName": "AbbVie Inc.",
       "searchText": "abbv abbvie inc. abbvie inc.",
+      "stale": true,
       "partial": true,
       "retainedSections": [
         "fundamentals"
       ],
-      "priceAsOf": "2026-09-29"
+      "asOf": "2026-09-30T15:30:08.171135+00:00",
+      "priceAsOf": "2026-09-30"
     },
     {
       "symbol": "PFE",
       "shortName": "Pfizer Inc.",
       "longName": "Pfizer Inc.",
       "searchText": "pfe pfizer inc. pfizer inc.",
+      "stale": true,
       "partial": true,
       "retainedSections": [
         "fundamentals"
       ],
-      "priceAsOf": "2026-09-29"
+      "asOf": "2026-09-30T15:30:08.171135+00:00",
+      "priceAsOf": "2026-09-30"
     },
     {
       "symbol": "AMGN",
       "shortName": "Amgen Inc.",
       "longName": "Amgen Inc.",
       "searchText": "amgn amgen inc. amgen inc.",
+      "stale": true,
       "partial": true,
       "retainedSections": [
         "fundamentals"
       ],
-      "priceAsOf": "2026-09-29"
+      "asOf": "2026-09-30T15:30:08.171135+00:00",
+      "priceAsOf": "2026-09-30"
     },
     {
       "symbol": "ISRG",
       "shortName": "Intuitive Surgical, Inc.",
       "longName": "Intuitive Surgical, Inc.",
       "searchText": "isrg intuitive surgical, inc. intuitive surgical, inc.",
+      "stale": true,
       "partial": true,
       "retainedSections": [
         "fundamentals"
       ],
-      "priceAsOf": "2026-09-29"
+      "asOf": "2026-09-30T15:30:08.171135+00:00",
+      "priceAsOf": "2026-09-30"
     },
     {
       "symbol": "TMO",
       "shortName": "Thermo Fisher Scientific Inc.",
       "longName": "Thermo Fisher Scientific Inc.",
       "searchText": "tmo thermo fisher scientific inc. thermo fisher scientific inc.",
+      "stale": true,
       "partial": true,
       "retainedSections": [
         "fundamentals"
       ],
-      "priceAsOf": "2026-09-29"
+      "asOf": "2026-09-30T15:30:08.171135+00:00",
+      "priceAsOf": "2026-09-30"
     },
     {
       "symbol": "VRTX",
       "shortName": "Vertex Pharmaceuticals Incorporated",
       "longName": "Vertex Pharmaceuticals Incorporated",
       "searchText": "vrtx vertex pharmaceuticals incorporated vertex pharmaceuticals incorporated",
+      "stale": true,
       "partial": true,
       "retainedSections": [
         "fundamentals",
         "industry"
       ],
-      "priceAsOf": "2026-09-29"
+      "asOf": "2026-09-30T15:30:08.171135+00:00",
+      "priceAsOf": "2026-09-30"
     },
     {
       "symbol": "BSX",
       "shortName": "Boston Scientific Corporation",
       "longName": "Boston Scientific Corporation",
       "searchText": "bsx boston scientific corporation boston scientific corporation",
+      "stale": true,
       "partial": true,
       "retainedSections": [
         "fundamentals",
         "industry"
       ],
-      "priceAsOf": "2026-09-29"
+      "asOf": "2026-09-30T15:30:08.171135+00:00",
+      "priceAsOf": "2026-09-30"
     },
     {
       "symbol": "GILD",
       "shortName": "Gilead Sciences, Inc.",
       "longName": "Gilead Sciences, Inc.",
       "searchText": "gild gilead sciences, inc. gilead sciences, inc.",
+      "stale": true,
       "partial": true,
       "retainedSections": [
         "fundamentals"
       ],
-      "priceAsOf": "2026-09-29"
+      "asOf": "2026-09-30T15:30:08.171135+00:00",
+      "priceAsOf": "2026-09-30"
     },
     {
       "symbol": "REGN",
       "shortName": "Regeneron Pharmaceuticals, Inc.",
       "longName": "Regeneron Pharmaceuticals, Inc.",
       "searchText": "regn regeneron pharmaceuticals, inc. regeneron pharmaceuticals, inc.",
+      "stale": true,
       "partial": true,
       "retainedSections": [
         "fundamentals",
         "industry"
       ],
-      "priceAsOf": "2026-09-29"
+      "asOf": "2026-09-30T15:30:08.171135+00:00",
+      "priceAsOf": "2026-09-30"
     },
     {
       "symbol": "ZTS",
       "shortName": "Zoetis Inc.",
       "longName": "Zoetis Inc.",
       "searchText": "zts zoetis inc. zoetis inc.",
+      "stale": true,
       "partial": true,
       "retainedSections": [
         "fundamentals"
       ],
-      "priceAsOf": "2026-09-29"
+      "asOf": "2026-09-30T15:30:08.171135+00:00",
+      "priceAsOf": "2026-09-30"
     },
     {
       "symbol": "ELV",
       "shortName": "Elevance Health, Inc.",
       "longName": "Elevance Health, Inc.",
       "searchText": "elv elevance health, inc. elevance health, inc.",
+      "stale": true,
       "partial": true,
       "retainedSections": [
         "fundamentals"
       ],
-      "priceAsOf": "2026-09-29"
+      "asOf": "2026-09-30T15:30:08.171135+00:00",
+      "priceAsOf": "2026-09-30"
     },
     {
       "symbol": "CVS",
       "shortName": "CVS Health Corporation",
       "longName": "CVS Health Corporation",
       "searchText": "cvs cvs health corporation cvs health corporation",
+      "stale": true,
       "partial": true,
       "retainedSections": [
         "fundamentals"
       ],
-      "priceAsOf": "2026-09-29"
+      "asOf": "2026-09-30T15:30:08.171135+00:00",
+      "priceAsOf": "2026-09-30"
     },
     {
       "symbol": "HCA",
       "shortName": "HCA Healthcare, Inc.",
       "longName": "HCA Healthcare, Inc.",
       "searchText": "hca hca healthcare, inc. hca healthcare, inc.",
+      "stale": true,
       "partial": true,
       "retainedSections": [
         "fundamentals"
       ],
-      "priceAsOf": "2026-09-29"
+      "asOf": "2026-09-30T15:30:08.171135+00:00",
+      "priceAsOf": "2026-09-30"
     },
     {
       "symbol": "CI",
       "shortName": "Cigna Group",
       "longName": "Cigna Group",
       "searchText": "ci cigna group cigna group",
+      "stale": true,
       "partial": true,
       "retainedSections": [
         "fundamentals"
       ],
-      "priceAsOf": "2026-09-29"
+      "asOf": "2026-09-30T15:30:08.171135+00:00",
+      "priceAsOf": "2026-09-30"
     },
     {
       "symbol": "MDT",
       "shortName": "Medtronic plc",
       "longName": "Medtronic plc",
       "searchText": "mdt medtronic plc medtronic plc",
+      "stale": true,
       "partial": true,
       "retainedSections": [
         "fundamentals",
         "industry"
       ],
-      "priceAsOf": "2026-09-29"
+      "asOf": "2026-09-30T15:30:08.171135+00:00",
+      "priceAsOf": "2026-09-30"
     },
     {
       "symbol": "GEHC",
       "shortName": "GE HealthCare Technologies Inc.",
       "longName": "GE HealthCare Technologies Inc.",
       "searchText": "gehc ge healthcare technologies inc. ge healthcare technologies inc.",
+      "stale": true,
       "partial": true,
       "retainedSections": [
         "fundamentals",
         "industry"
       ],
-      "priceAsOf": "2026-09-29"
+      "asOf": "2026-09-30T15:30:08.171135+00:00",
+      "priceAsOf": "2026-09-30"
     },
     {
       "symbol": "NVO",
       "shortName": "Novo Nordisk A/S",
       "longName": "Novo Nordisk A/S",
       "searchText": "nvo novo nordisk a/s novo nordisk a/s",
+      "stale": true,
       "partial": true,
       "retainedSections": [
         "fundamentals"
       ],
-      "priceAsOf": "2026-09-29"
+      "asOf": "2026-09-30T15:30:08.171135+00:00",
+      "priceAsOf": "2026-09-30"
     },
     {
       "symbol": "WMT",
       "shortName": "Walmart Inc.",
       "longName": "Walmart Inc.",
       "searchText": "wmt walmart inc. walmart inc.",
+      "stale": true,
       "partial": true,
       "retainedSections": [
         "fundamentals"
       ],
-      "priceAsOf": "2026-09-29"
+      "asOf": "2026-09-30T15:30:08.171135+00:00",
+      "priceAsOf": "2026-09-30"
     },
     {
       "symbol": "COST",
       "shortName": "Costco Wholesale Corporation",
       "longName": "Costco Wholesale Corporation",
       "searchText": "cost costco wholesale corporation costco wholesale corporation",
+      "stale": true,
       "partial": true,
       "retainedSections": [
         "info",
         "fundamentals"
       ],
-      "priceAsOf": "2026-09-29"
+      "asOf": "2026-09-30T15:30:08.171135+00:00",
+      "priceAsOf": "2026-09-30"
     },
     {
       "symbol": "KO",
       "shortName": "Coca-Cola Company",
       "longName": "Coca-Cola Company",
       "searchText": "ko coca-cola company coca-cola company",
+      "stale": true,
       "partial": true,
       "retainedSections": [
         "fundamentals"
       ],
-      "priceAsOf": "2026-09-29"
+      "asOf": "2026-09-30T15:30:08.171135+00:00",
+      "priceAsOf": "2026-09-30"
     },
     {
       "symbol": "PG",
       "shortName": "Procter & Gamble Company",
       "longName": "Procter & Gamble Company",
       "searchText": "pg procter & gamble company procter & gamble company",
+      "stale": true,
       "partial": true,
       "retainedSections": [
         "fundamentals"
       ],
-      "priceAsOf": "2026-09-29"
+      "asOf": "2026-09-30T15:30:08.171135+00:00",
+      "priceAsOf": "2026-09-30"
     },
     {
       "symbol": "PEP",
       "shortName": "PepsiCo, Inc.",
       "longName": "PepsiCo, Inc.",
       "searchText": "pep pepsico, inc. pepsico, inc.",
+      "stale": true,
       "partial": true,
       "retainedSections": [
         "fundamentals"
       ],
-      "priceAsOf": "2026-09-29"
+      "asOf": "2026-09-30T15:30:08.171135+00:00",
+      "priceAsOf": "2026-09-30"
     },
     {
       "symbol": "MCD",
       "shortName": "McDonald's Corporation",
       "longName": "McDonald's Corporation",
       "searchText": "mcd mcdonald's corporation mcdonald's corporation",
+      "stale": true,
       "partial": true,
       "retainedSections": [
         "fundamentals"
       ],
-      "priceAsOf": "2026-09-29"
+      "asOf": "2026-09-30T15:30:08.171135+00:00",
+      "priceAsOf": "2026-09-30"
     },
     {
       "symbol": "CDNS",
       "shortName": "Cadence Design Systems, Inc.",
       "longName": "Cadence Design Systems, Inc.",
       "searchText": "cdns cadence design systems, inc. cadence design systems, inc.",
+      "stale": true,
       "partial": true,
       "retainedSections": [
         "industry"
       ],
-      "priceAsOf": "2026-09-29"
+      "asOf": "2026-09-30T15:30:08.171135+00:00",
+      "priceAsOf": "2026-09-30"
     },
     {
       "symbol": "SNPS",
       "shortName": "Synopsys, Inc.",
       "longName": "Synopsys, Inc.",
       "searchText": "snps synopsys, inc. synopsys, inc.",
+      "stale": true,
       "partial": true,
       "retainedSections": [
         "industry"
       ],
-      "priceAsOf": "2026-09-29"
+      "asOf": "2026-09-30T15:30:08.171135+00:00",
+      "priceAsOf": "2026-09-30"
     },
     {
       "symbol": "NET",
       "shortName": "Cloudflare, Inc.",
       "longName": "Cloudflare, Inc.",
       "searchText": "net cloudflare, inc. cloudflare, inc.",
+      "stale": true,
       "partial": true,
       "retainedSections": [
         "fundamentals",
         "industry"
       ],
-      "priceAsOf": "2026-09-29"
+      "asOf": "2026-09-30T15:30:08.171135+00:00",
+      "priceAsOf": "2026-09-30"
     },
     {
       "symbol": "AAPL",
       "shortName": "Apple Inc.",
       "longName": "Apple Inc.",
       "searchText": "aapl apple inc. apple inc.",
-      "priceAsOf": "2026-09-29"
+      "stale": true,
+      "asOf": "2026-09-30T15:30:08.171135+00:00",
+      "priceAsOf": "2026-09-30"
     },
     {
       "symbol": "MSFT",
       "shortName": "Microsoft Corporation",
       "longName": "Microsoft Corporation",
       "searchText": "msft microsoft corporation microsoft corporation",
+      "stale": true,
       "partial": true,
       "retainedSections": [
         "industry"
       ],
-      "priceAsOf": "2026-09-29"
+      "asOf": "2026-09-30T15:30:08.171135+00:00",
+      "priceAsOf": "2026-09-30"
     },
     {
       "symbol": "NVDA",
       "shortName": "NVIDIA Corporation",
       "longName": "NVIDIA Corporation",
       "searchText": "nvda nvidia corporation nvidia corporation",
-      "priceAsOf": "2026-09-29"
+      "stale": true,
+      "asOf": "2026-09-30T15:30:08.171135+00:00",
+      "priceAsOf": "2026-09-30"
     },
     {
       "symbol": "GOOGL",
       "shortName": "Alphabet Inc.",
       "longName": "Alphabet Inc.",
       "searchText": "googl alphabet inc. alphabet inc.",
-      "priceAsOf": "2026-09-29"
+      "stale": true,
+      "asOf": "2026-09-30T15:30:08.171135+00:00",
+      "priceAsOf": "2026-09-30"
     },
     {
       "symbol": "AMZN",
       "shortName": "Amazon.com, Inc.",
       "longName": "Amazon.com, Inc.",
       "searchText": "amzn amazon.com, inc. amazon.com, inc.",
-      "priceAsOf": "2026-09-29"
+      "stale": true,
+      "asOf": "2026-09-30T15:30:08.171135+00:00",
+      "priceAsOf": "2026-09-30"
     },
     {
       "symbol": "META",
       "shortName": "Meta Platforms, Inc.",
       "longName": "Meta Platforms, Inc.",
       "searchText": "meta meta platforms, inc. meta platforms, inc.",
-      "priceAsOf": "2026-09-29"
+      "stale": true,
+      "asOf": "2026-09-30T15:30:08.171135+00:00",
+      "priceAsOf": "2026-09-30"
     },
     {
       "symbol": "TSLA",
       "shortName": "Tesla, Inc.",
       "longName": "Tesla, Inc.",
       "searchText": "tsla tesla, inc. tesla, inc.",
-      "priceAsOf": "2026-09-29"
+      "stale": true,
+      "asOf": "2026-09-30T15:30:08.171135+00:00",
+      "priceAsOf": "2026-09-30"
     },
     {
       "symbol": "AVGO",
       "shortName": "Broadcom Inc.",
       "longName": "Broadcom Inc.",
       "searchText": "avgo broadcom inc. broadcom inc.",
-      "priceAsOf": "2026-09-29"
+      "stale": true,
+      "asOf": "2026-09-30T15:30:08.171135+00:00",
+      "priceAsOf": "2026-09-30"
     },
     {
       "symbol": "TSM",
       "shortName": "Taiwan Semiconductor Manufacturing",
       "longName": "Taiwan Semiconductor Manufacturing",
       "searchText": "tsm taiwan semiconductor manufacturing taiwan semiconductor manufacturing",
-      "priceAsOf": "2026-09-29"
+      "stale": true,
+      "asOf": "2026-09-30T15:30:08.171135+00:00",
+      "priceAsOf": "2026-09-30"
     },
     {
       "symbol": "ASML",
       "shortName": "ASML Holding N.V.",
       "longName": "ASML Holding N.V.",
       "searchText": "asml asml holding n.v. asml holding n.v.",
-      "priceAsOf": "2026-09-29"
+      "stale": true,
+      "asOf": "2026-09-30T15:30:08.171135+00:00",
+      "priceAsOf": "2026-09-30"
     },
     {
       "symbol": "ORCL",
       "shortName": "Oracle Corporation",
       "longName": "Oracle Corporation",
       "searchText": "orcl oracle corporation oracle corporation",
+      "stale": true,
       "partial": true,
       "retainedSections": [
         "industry"
       ],
-      "priceAsOf": "2026-09-29"
+      "asOf": "2026-09-30T15:30:08.171135+00:00",
+      "priceAsOf": "2026-09-30"
     },
     {
       "symbol": "CRM",
       "shortName": "Salesforce, Inc.",
       "longName": "Salesforce, Inc.",
       "searchText": "crm salesforce, inc. salesforce, inc.",
+      "stale": true,
       "partial": true,
       "retainedSections": [
         "industry"
       ],
-      "priceAsOf": "2026-09-29"
+      "asOf": "2026-09-30T15:30:08.171135+00:00",
+      "priceAsOf": "2026-09-30"
     },
     {
       "symbol": "ADBE",
       "shortName": "Adobe Inc.",
       "longName": "Adobe Inc.",
       "searchText": "adbe adobe inc. adobe inc.",
+      "stale": true,
       "partial": true,
       "retainedSections": [
         "industry"
       ],
-      "priceAsOf": "2026-09-29"
+      "asOf": "2026-09-30T15:30:08.171135+00:00",
+      "priceAsOf": "2026-09-30"
     },
     {
       "symbol": "NOW",
       "shortName": "ServiceNow, Inc.",
       "longName": "ServiceNow, Inc.",
       "searchText": "now servicenow, inc. servicenow, inc.",
+      "stale": true,
       "partial": true,
       "retainedSections": [
         "industry"
       ],
-      "priceAsOf": "2026-09-29"
+      "asOf": "2026-09-30T15:30:08.171135+00:00",
+      "priceAsOf": "2026-09-30"
     },
     {
       "symbol": "INTU",
       "shortName": "Intuit Inc.",
       "longName": "Intuit Inc.",
       "searchText": "intu intuit inc. intuit inc.",
+      "stale": true,
       "partial": true,
       "retainedSections": [
         "industry"
       ],
-      "priceAsOf": "2026-09-29"
+      "asOf": "2026-09-30T15:30:08.171135+00:00",
+      "priceAsOf": "2026-09-30"
     },
     {
       "symbol": "IBM",
       "shortName": "International Business Machines",
       "longName": "International Business Machines",
       "searchText": "ibm international business machines international business machines",
-      "priceAsOf": "2026-09-29"
+      "stale": true,
+      "asOf": "2026-09-30T15:30:08.171135+00:00",
+      "priceAsOf": "2026-09-30"
     },
     {
       "symbol": "PLTR",
       "shortName": "Palantir Technologies Inc.",
       "longName": "Palantir Technologies Inc.",
       "searchText": "pltr palantir technologies inc. palantir technologies inc.",
+      "stale": true,
       "partial": true,
       "retainedSections": [
         "industry"
       ],
-      "priceAsOf": "2026-09-29"
+      "asOf": "2026-09-30T15:30:08.171135+00:00",
+      "priceAsOf": "2026-09-30"
     },
     {
       "symbol": "WDAY",
       "shortName": "Workday, Inc.",
       "longName": "Workday, Inc.",
       "searchText": "wday workday, inc. workday, inc.",
+      "stale": true,
       "partial": true,
       "retainedSections": [
         "industry"
       ],
-      "priceAsOf": "2026-09-29"
+      "asOf": "2026-09-30T15:30:08.171135+00:00",
+      "priceAsOf": "2026-09-30"
     },
     {
       "symbol": "APP",
       "shortName": "AppLovin Corporation",
       "longName": "AppLovin Corporation",
       "searchText": "app applovin corporation applovin corporation",
-      "priceAsOf": "2026-09-29"
+      "stale": true,
+      "asOf": "2026-09-30T15:30:08.171135+00:00",
+      "priceAsOf": "2026-09-30"
     },
     {
       "symbol": "SHOP",
       "shortName": "Shopify Inc.",
       "longName": "Shopify Inc.",
       "searchText": "shop shopify inc. shopify inc.",
+      "stale": true,
       "partial": true,
       "retainedSections": [
         "industry"
       ],
-      "priceAsOf": "2026-09-29"
+      "asOf": "2026-09-30T15:30:08.171135+00:00",
+      "priceAsOf": "2026-09-30"
     },
     {
       "symbol": "ANET",
       "shortName": "Arista Networks, Inc.",
       "longName": "Arista Networks, Inc.",
       "searchText": "anet arista networks, inc. arista networks, inc.",
-      "priceAsOf": "2026-09-29"
+      "stale": true,
+      "asOf": "2026-09-30T15:30:08.171135+00:00",
+      "priceAsOf": "2026-09-30"
     },
     {
       "symbol": "PANW",
       "shortName": "Palo Alto Networks, Inc.",
       "longName": "Palo Alto Networks, Inc.",
       "searchText": "panw palo alto networks, inc. palo alto networks, inc.",
+      "stale": true,
       "partial": true,
       "retainedSections": [
         "industry"
       ],
-      "priceAsOf": "2026-09-29"
+      "asOf": "2026-09-30T15:30:08.171135+00:00",
+      "priceAsOf": "2026-09-30"
     },
     {
       "symbol": "CRWD",
       "shortName": "CrowdStrike Holdings, Inc.",
       "longName": "CrowdStrike Holdings, Inc.",
       "searchText": "crwd crowdstrike holdings, inc. crowdstrike holdings, inc.",
+      "stale": true,
       "partial": true,
       "retainedSections": [
         "industry"
       ],
-      "priceAsOf": "2026-09-29"
+      "asOf": "2026-09-30T15:30:08.171135+00:00",
+      "priceAsOf": "2026-09-30"
     },
     {
       "symbol": "PM",
@@ -973,789 +1697,18 @@
       "searchText": "pm philip morris international inc. philip morris international inc.",
       "stale": true,
       "asOf": "2026-09-29T06:39:51.976581+00:00",
-      "priceAsOf": "2026-09-29"
-    },
-    {
-      "symbol": "MO",
-      "shortName": "Altria Group, Inc.",
-      "longName": "Altria Group, Inc.",
-      "searchText": "mo altria group, inc. altria group, inc.",
-      "stale": true,
-      "asOf": "2026-09-29T06:39:51.976581+00:00",
-      "priceAsOf": "2026-09-29"
-    },
-    {
-      "symbol": "SBUX",
-      "shortName": "Starbucks Corporation",
-      "longName": "Starbucks Corporation",
-      "searchText": "sbux starbucks corporation starbucks corporation",
-      "stale": true,
-      "asOf": "2026-09-29T06:39:51.976581+00:00",
-      "priceAsOf": "2026-09-29"
-    },
-    {
-      "symbol": "MDLZ",
-      "shortName": "Mondelez International, Inc.",
-      "longName": "Mondelez International, Inc.",
-      "searchText": "mdlz mondelez international, inc. mondelez international, inc.",
-      "stale": true,
-      "asOf": "2026-09-29T06:39:51.976581+00:00",
-      "priceAsOf": "2026-09-29"
-    },
-    {
-      "symbol": "TJX",
-      "shortName": "TJX Companies, Inc.",
-      "longName": "TJX Companies, Inc.",
-      "searchText": "tjx tjx companies, inc. tjx companies, inc.",
-      "stale": true,
-      "asOf": "2026-09-29T06:39:51.976581+00:00",
-      "priceAsOf": "2026-09-29"
-    },
-    {
-      "symbol": "TGT",
-      "shortName": "Target Corporation",
-      "longName": "Target Corporation",
-      "searchText": "tgt target corporation target corporation",
-      "stale": true,
-      "asOf": "2026-09-29T06:39:51.976581+00:00",
-      "priceAsOf": "2026-09-29"
-    },
-    {
-      "symbol": "LOW",
-      "shortName": "Lowe's Companies, Inc.",
-      "longName": "Lowe's Companies, Inc.",
-      "searchText": "low lowe's companies, inc. lowe's companies, inc.",
-      "stale": true,
-      "asOf": "2026-09-29T06:39:51.976581+00:00",
-      "priceAsOf": "2026-09-29"
-    },
-    {
-      "symbol": "HD",
-      "shortName": "Home Depot, Inc.",
-      "longName": "Home Depot, Inc.",
-      "searchText": "hd home depot, inc. home depot, inc.",
-      "stale": true,
-      "asOf": "2026-09-29T06:39:51.976581+00:00",
-      "priceAsOf": "2026-09-29"
-    },
-    {
-      "symbol": "NKE",
-      "shortName": "NIKE, Inc.",
-      "longName": "NIKE, Inc.",
-      "searchText": "nke nike, inc. nike, inc.",
-      "stale": true,
-      "partial": true,
-      "retainedSections": [
-        "info"
-      ],
-      "asOf": "2026-09-29T06:39:51.976581+00:00",
-      "priceAsOf": "2026-09-29"
-    },
-    {
-      "symbol": "ORLY",
-      "shortName": "O'Reilly Automotive, Inc.",
-      "longName": "O'Reilly Automotive, Inc.",
-      "searchText": "orly o'reilly automotive, inc. o'reilly automotive, inc.",
-      "stale": true,
-      "asOf": "2026-09-29T06:39:51.976581+00:00",
-      "priceAsOf": "2026-09-29"
-    },
-    {
-      "symbol": "BKNG",
-      "shortName": "Booking Holdings Inc.",
-      "longName": "Booking Holdings Inc.",
-      "searchText": "bkng booking holdings inc. booking holdings inc.",
-      "stale": true,
-      "asOf": "2026-09-29T06:39:51.976581+00:00",
-      "priceAsOf": "2026-09-29"
-    },
-    {
-      "symbol": "ABNB",
-      "shortName": "Airbnb, Inc.",
-      "longName": "Airbnb, Inc.",
-      "searchText": "abnb airbnb, inc. airbnb, inc.",
-      "stale": true,
-      "asOf": "2026-09-29T06:39:51.976581+00:00",
-      "priceAsOf": "2026-09-29"
-    },
-    {
-      "symbol": "PYPL",
-      "shortName": "PayPal Holdings, Inc.",
-      "longName": "PayPal Holdings, Inc.",
-      "searchText": "pypl paypal holdings, inc. paypal holdings, inc.",
-      "stale": true,
-      "asOf": "2026-09-29T06:39:51.976581+00:00",
-      "priceAsOf": "2026-09-29"
-    },
-    {
-      "symbol": "UBER",
-      "shortName": "Uber Technologies, Inc.",
-      "longName": "Uber Technologies, Inc.",
-      "searchText": "uber uber technologies, inc. uber technologies, inc.",
-      "stale": true,
-      "asOf": "2026-09-29T06:39:51.976581+00:00",
-      "priceAsOf": "2026-09-29"
-    },
-    {
-      "symbol": "NFLX",
-      "shortName": "Netflix, Inc.",
-      "longName": "Netflix, Inc.",
-      "searchText": "nflx netflix, inc. netflix, inc.",
-      "stale": true,
-      "asOf": "2026-09-29T06:39:51.976581+00:00",
-      "priceAsOf": "2026-09-29"
-    },
-    {
-      "symbol": "DIS",
-      "shortName": "Walt Disney Company",
-      "longName": "Walt Disney Company",
-      "searchText": "dis walt disney company walt disney company",
-      "stale": true,
-      "asOf": "2026-09-29T06:39:51.976581+00:00",
-      "priceAsOf": "2026-09-29"
-    },
-    {
-      "symbol": "TMUS",
-      "shortName": "T-Mobile US, Inc.",
-      "longName": "T-Mobile US, Inc.",
-      "searchText": "tmus t-mobile us, inc. t-mobile us, inc.",
-      "stale": true,
-      "asOf": "2026-09-29T06:39:51.976581+00:00",
-      "priceAsOf": "2026-09-29"
-    },
-    {
-      "symbol": "VZ",
-      "shortName": "Verizon Communications Inc.",
-      "longName": "Verizon Communications Inc.",
-      "searchText": "vz verizon communications inc. verizon communications inc.",
-      "stale": true,
-      "asOf": "2026-09-29T06:39:51.976581+00:00",
-      "priceAsOf": "2026-09-29"
-    },
-    {
-      "symbol": "T",
-      "shortName": "AT&T Inc.",
-      "longName": "AT&T Inc.",
-      "searchText": "t at&t inc. at&t inc.",
-      "stale": true,
-      "asOf": "2026-09-29T06:39:51.976581+00:00",
-      "priceAsOf": "2026-09-29"
-    },
-    {
-      "symbol": "CMCSA",
-      "shortName": "Comcast Corporation",
-      "longName": "Comcast Corporation",
-      "searchText": "cmcsa comcast corporation comcast corporation",
-      "stale": true,
-      "asOf": "2026-09-29T06:39:51.976581+00:00",
-      "priceAsOf": "2026-09-29"
-    },
-    {
-      "symbol": "SPOT",
-      "shortName": "Spotify Technology S.A.",
-      "longName": "Spotify Technology S.A.",
-      "searchText": "spot spotify technology s.a. spotify technology s.a.",
-      "stale": true,
-      "asOf": "2026-09-29T06:39:51.976581+00:00",
-      "priceAsOf": "2026-09-29"
-    },
-    {
-      "symbol": "SAP",
-      "shortName": "SAP SE",
-      "longName": "SAP SE",
-      "searchText": "sap sap se sap se",
-      "stale": true,
-      "asOf": "2026-09-29T06:39:51.976581+00:00",
-      "priceAsOf": "2026-09-29"
-    },
-    {
-      "symbol": "GE",
-      "shortName": "GE Aerospace",
-      "longName": "GE Aerospace",
-      "searchText": "ge ge aerospace ge aerospace",
-      "stale": true,
-      "partial": true,
-      "retainedSections": [
-        "fundamentals",
-        "wacc",
-        "beta",
-        "news"
-      ],
-      "asOf": "2026-08-18T23:06:20.443188+00:00",
-      "priceAsOf": "2026-09-29"
-    },
-    {
-      "symbol": "CAT",
-      "shortName": "Caterpillar Inc.",
-      "longName": "Caterpillar Inc.",
-      "searchText": "cat caterpillar inc. caterpillar inc.",
-      "stale": true,
-      "asOf": "2026-09-29T07:04:00.244178+00:00",
-      "priceAsOf": "2026-09-29"
-    },
-    {
-      "symbol": "HON",
-      "shortName": "Honeywell International Inc.",
-      "longName": "Honeywell International Inc.",
-      "searchText": "hon honeywell international inc. honeywell international inc.",
-      "stale": true,
-      "asOf": "2026-09-29T07:04:00.244178+00:00",
-      "priceAsOf": "2026-09-29"
-    },
-    {
-      "symbol": "RTX",
-      "shortName": "RTX Corporation",
-      "longName": "RTX Corporation",
-      "searchText": "rtx rtx corporation rtx corporation",
-      "stale": true,
-      "asOf": "2026-09-29T07:04:00.244178+00:00",
-      "priceAsOf": "2026-09-29"
-    },
-    {
-      "symbol": "BA",
-      "shortName": "Boeing Company",
-      "longName": "Boeing Company",
-      "searchText": "ba boeing company boeing company",
-      "stale": true,
-      "asOf": "2026-09-29T07:04:00.244178+00:00",
-      "priceAsOf": "2026-09-29"
-    },
-    {
-      "symbol": "LMT",
-      "shortName": "Lockheed Martin Corporation",
-      "longName": "Lockheed Martin Corporation",
-      "searchText": "lmt lockheed martin corporation lockheed martin corporation",
-      "stale": true,
-      "asOf": "2026-09-29T07:04:00.244178+00:00",
-      "priceAsOf": "2026-09-29"
-    },
-    {
-      "symbol": "SPY",
-      "shortName": "SPDR S&P 500 ETF Trust",
-      "longName": "SPDR S&P 500 ETF Trust",
-      "searchText": "spy spdr s&p 500 etf trust spdr s&p 500 etf trust",
-      "stale": true,
-      "asOf": "2026-09-29T07:04:00.244178+00:00",
-      "priceAsOf": "2026-09-29"
-    },
-    {
-      "symbol": "UNP",
-      "shortName": "Union Pacific Corporation",
-      "longName": "Union Pacific Corporation",
-      "searchText": "unp union pacific corporation union pacific corporation",
-      "stale": true,
-      "asOf": "2026-09-29T07:04:00.244178+00:00",
-      "priceAsOf": "2026-09-29"
-    },
-    {
-      "symbol": "UPS",
-      "shortName": "United Parcel Service, Inc.",
-      "longName": "United Parcel Service, Inc.",
-      "searchText": "ups united parcel service, inc. united parcel service, inc.",
-      "stale": true,
-      "asOf": "2026-09-29T07:04:00.244178+00:00",
-      "priceAsOf": "2026-09-29"
-    },
-    {
-      "symbol": "SLB",
-      "shortName": "SLB",
-      "longName": "SLB",
-      "searchText": "slb slb slb",
-      "stale": true,
-      "asOf": "2026-09-29T07:04:00.244178+00:00",
-      "priceAsOf": "2026-09-29"
-    },
-    {
-      "symbol": "DE",
-      "shortName": "Deere & Company",
-      "longName": "Deere & Company",
-      "searchText": "de deere & company deere & company",
-      "stale": true,
-      "asOf": "2026-09-29T07:04:00.244178+00:00",
-      "priceAsOf": "2026-09-29"
-    },
-    {
-      "symbol": "GD",
-      "shortName": "General Dynamics Corporation",
-      "longName": "General Dynamics Corporation",
-      "searchText": "gd general dynamics corporation general dynamics corporation",
-      "stale": true,
-      "asOf": "2026-09-29T07:04:00.244178+00:00",
-      "priceAsOf": "2026-09-29"
-    },
-    {
-      "symbol": "NOC",
-      "shortName": "Northrop Grumman Corporation",
-      "longName": "Northrop Grumman Corporation",
-      "searchText": "noc northrop grumman corporation northrop grumman corporation",
-      "stale": true,
-      "asOf": "2026-09-29T07:04:00.244178+00:00",
-      "priceAsOf": "2026-09-29"
-    },
-    {
-      "symbol": "ETN",
-      "shortName": "Eaton Corporation plc",
-      "longName": "Eaton Corporation plc",
-      "searchText": "etn eaton corporation plc eaton corporation plc",
-      "stale": true,
-      "asOf": "2026-09-29T07:04:00.244178+00:00",
-      "priceAsOf": "2026-09-29"
-    },
-    {
-      "symbol": "ITW",
-      "shortName": "Illinois Tool Works Inc.",
-      "longName": "Illinois Tool Works Inc.",
-      "searchText": "itw illinois tool works inc. illinois tool works inc.",
-      "stale": true,
-      "asOf": "2026-09-29T07:04:00.244178+00:00",
-      "priceAsOf": "2026-09-29"
-    },
-    {
-      "symbol": "EMR",
-      "shortName": "Emerson Electric Co.",
-      "longName": "Emerson Electric Co.",
-      "searchText": "emr emerson electric co. emerson electric co.",
-      "stale": true,
-      "asOf": "2026-09-29T07:04:00.244178+00:00",
-      "priceAsOf": "2026-09-29"
-    },
-    {
-      "symbol": "WM",
-      "shortName": "Waste Management, Inc.",
-      "longName": "Waste Management, Inc.",
-      "searchText": "wm waste management, inc. waste management, inc.",
-      "stale": true,
-      "asOf": "2026-09-29T07:04:00.244178+00:00",
-      "priceAsOf": "2026-09-29"
-    },
-    {
-      "symbol": "FDX",
-      "shortName": "FedEx Corporation",
-      "longName": "FedEx Corporation",
-      "searchText": "fdx fedex corporation fedex corporation",
-      "stale": true,
-      "partial": true,
-      "retainedSections": [
-        "info"
-      ],
-      "asOf": "2026-09-29T07:04:00.244178+00:00",
-      "priceAsOf": "2026-09-29"
-    },
-    {
-      "symbol": "CARR",
-      "shortName": "Carrier Global Corporation",
-      "longName": "Carrier Global Corporation",
-      "searchText": "carr carrier global corporation carrier global corporation",
-      "stale": true,
-      "asOf": "2026-09-29T07:04:00.244178+00:00",
-      "priceAsOf": "2026-09-29"
-    },
-    {
-      "symbol": "GWW",
-      "shortName": "W.W. Grainger, Inc.",
-      "longName": "W.W. Grainger, Inc.",
-      "searchText": "gww w.w. grainger, inc. w.w. grainger, inc.",
-      "stale": true,
-      "asOf": "2026-09-29T07:04:00.244178+00:00",
-      "priceAsOf": "2026-09-29"
-    },
-    {
-      "symbol": "TDG",
-      "shortName": "TransDigm Group Incorporated",
-      "longName": "TransDigm Group Incorporated",
-      "searchText": "tdg transdigm group incorporated transdigm group incorporated",
-      "stale": true,
-      "asOf": "2026-09-29T07:04:00.244178+00:00",
-      "priceAsOf": "2026-09-29"
-    },
-    {
-      "symbol": "ROP",
-      "shortName": "Roper Technologies, Inc.",
-      "longName": "Roper Technologies, Inc.",
-      "searchText": "rop roper technologies, inc. roper technologies, inc.",
-      "stale": true,
-      "asOf": "2026-09-29T07:04:00.244178+00:00",
-      "priceAsOf": "2026-09-29"
-    },
-    {
-      "symbol": "MSI",
-      "shortName": "Motorola Solutions, Inc.",
-      "longName": "Motorola Solutions, Inc.",
-      "searchText": "msi motorola solutions, inc. motorola solutions, inc.",
-      "stale": true,
-      "asOf": "2026-09-29T07:04:00.244178+00:00",
-      "priceAsOf": "2026-09-29"
-    },
-    {
-      "symbol": "APH",
-      "shortName": "Amphenol Corporation",
-      "longName": "Amphenol Corporation",
-      "searchText": "aph amphenol corporation amphenol corporation",
-      "stale": true,
-      "asOf": "2026-09-29T07:04:00.244178+00:00",
-      "priceAsOf": "2026-09-29"
-    },
-    {
-      "symbol": "PH",
-      "shortName": "Parker-Hannifin Corporation",
-      "longName": "Parker-Hannifin Corporation",
-      "searchText": "ph parker-hannifin corporation parker-hannifin corporation",
-      "stale": true,
-      "asOf": "2026-09-29T07:04:00.244178+00:00",
-      "priceAsOf": "2026-09-29"
-    },
-    {
-      "symbol": "XOM",
-      "shortName": "Exxon Mobil Corporation",
-      "longName": "Exxon Mobil Corporation",
-      "searchText": "xom exxon mobil corporation exxon mobil corporation",
-      "stale": true,
-      "asOf": "2026-09-29T07:04:00.244178+00:00",
-      "priceAsOf": "2026-09-29"
-    },
-    {
-      "symbol": "CVX",
-      "shortName": "Chevron Corporation",
-      "longName": "Chevron Corporation",
-      "searchText": "cvx chevron corporation chevron corporation",
-      "stale": true,
-      "asOf": "2026-09-29T07:04:00.244178+00:00",
-      "priceAsOf": "2026-09-29"
-    },
-    {
-      "symbol": "COP",
-      "shortName": "ConocoPhillips",
-      "longName": "ConocoPhillips",
-      "searchText": "cop conocophillips conocophillips",
-      "stale": true,
-      "asOf": "2026-09-29T07:04:00.244178+00:00",
-      "priceAsOf": "2026-09-29"
-    },
-    {
-      "symbol": "EOG",
-      "shortName": "EOG Resources, Inc.",
-      "longName": "EOG Resources, Inc.",
-      "searchText": "eog eog resources, inc. eog resources, inc.",
-      "stale": true,
-      "asOf": "2026-09-29T07:04:00.244178+00:00",
-      "priceAsOf": "2026-09-29"
-    },
-    {
-      "symbol": "NEE",
-      "shortName": "NextEra Energy, Inc.",
-      "longName": "NextEra Energy, Inc.",
-      "searchText": "nee nextera energy, inc. nextera energy, inc.",
-      "stale": true,
-      "asOf": "2026-09-29T07:04:00.244178+00:00",
-      "priceAsOf": "2026-09-29"
-    },
-    {
-      "symbol": "SO",
-      "shortName": "Southern Company",
-      "longName": "Southern Company",
-      "searchText": "so southern company southern company",
-      "stale": true,
-      "asOf": "2026-09-29T07:04:00.244178+00:00",
-      "priceAsOf": "2026-09-29"
-    },
-    {
-      "symbol": "DUK",
-      "shortName": "Duke Energy Corporation",
-      "longName": "Duke Energy Corporation",
-      "searchText": "duk duke energy corporation duke energy corporation",
-      "stale": true,
-      "asOf": "2026-09-29T07:04:00.244178+00:00",
-      "priceAsOf": "2026-09-29"
-    },
-    {
-      "symbol": "AMT",
-      "shortName": "American Tower Corporation",
-      "longName": "American Tower Corporation",
-      "searchText": "amt american tower corporation american tower corporation",
-      "stale": true,
-      "asOf": "2026-09-29T07:04:00.244178+00:00",
-      "priceAsOf": "2026-09-29"
-    },
-    {
-      "symbol": "PLD",
-      "shortName": "Prologis, Inc.",
-      "longName": "Prologis, Inc.",
-      "searchText": "pld prologis, inc. prologis, inc.",
-      "stale": true,
-      "asOf": "2026-09-29T07:04:00.244178+00:00",
-      "priceAsOf": "2026-09-29"
-    },
-    {
-      "symbol": "WELL",
-      "shortName": "Welltower Inc.",
-      "longName": "Welltower Inc.",
-      "searchText": "well welltower inc. welltower inc.",
-      "stale": true,
-      "asOf": "2026-09-29T07:04:00.244178+00:00",
-      "priceAsOf": "2026-09-29"
-    },
-    {
-      "symbol": "AMD",
-      "shortName": "Advanced Micro Devices, Inc.",
-      "longName": "Advanced Micro Devices, Inc.",
-      "searchText": "amd advanced micro devices, inc. advanced micro devices, inc.",
-      "stale": true,
-      "asOf": "2026-09-29T07:04:00.244178+00:00",
-      "priceAsOf": "2026-09-29"
-    },
-    {
-      "symbol": "INTC",
-      "shortName": "Intel Corporation",
-      "longName": "Intel Corporation",
-      "searchText": "intc intel corporation intel corporation",
-      "stale": true,
-      "asOf": "2026-09-29T07:04:00.244178+00:00",
-      "priceAsOf": "2026-09-29"
-    },
-    {
-      "symbol": "QCOM",
-      "shortName": "QUALCOMM Incorporated",
-      "longName": "QUALCOMM Incorporated",
-      "searchText": "qcom qualcomm incorporated qualcomm incorporated",
-      "stale": true,
-      "asOf": "2026-09-29T07:04:00.244178+00:00",
-      "priceAsOf": "2026-09-29"
-    },
-    {
-      "symbol": "TXN",
-      "shortName": "Texas Instruments Incorporated",
-      "longName": "Texas Instruments Incorporated",
-      "searchText": "txn texas instruments incorporated texas instruments incorporated",
-      "stale": true,
-      "asOf": "2026-09-29T07:04:00.244178+00:00",
-      "priceAsOf": "2026-09-29"
-    },
-    {
-      "symbol": "AMAT",
-      "shortName": "Applied Materials, Inc.",
-      "longName": "Applied Materials, Inc.",
-      "searchText": "amat applied materials, inc. applied materials, inc.",
-      "stale": true,
-      "asOf": "2026-09-29T07:04:00.244178+00:00",
-      "priceAsOf": "2026-09-29"
-    },
-    {
-      "symbol": "MU",
-      "shortName": "Micron Technology, Inc.",
-      "longName": "Micron Technology, Inc.",
-      "searchText": "mu micron technology, inc. micron technology, inc.",
-      "stale": true,
-      "asOf": "2026-09-29T07:04:00.244178+00:00",
-      "priceAsOf": "2026-09-29"
-    },
-    {
-      "symbol": "LRCX",
-      "shortName": "Lam Research Corporation",
-      "longName": "Lam Research Corporation",
-      "searchText": "lrcx lam research corporation lam research corporation",
-      "stale": true,
-      "asOf": "2026-09-29T07:04:00.244178+00:00",
-      "priceAsOf": "2026-09-29"
-    },
-    {
-      "symbol": "PSA",
-      "shortName": "Public Storage",
-      "longName": "Public Storage",
-      "searchText": "psa public storage public storage",
-      "stale": true,
-      "asOf": "2026-09-29T07:04:00.244178+00:00",
-      "priceAsOf": "2026-09-29"
-    },
-    {
-      "symbol": "CCI",
-      "shortName": "Crown Castle Inc.",
-      "longName": "Crown Castle Inc.",
-      "searchText": "cci crown castle inc. crown castle inc.",
-      "stale": true,
-      "asOf": "2026-09-29T07:04:00.244178+00:00",
-      "priceAsOf": "2026-09-29"
-    },
-    {
-      "symbol": "ACN",
-      "shortName": "Accenture plc",
-      "longName": "Accenture plc",
-      "searchText": "acn accenture plc accenture plc",
-      "stale": true,
-      "asOf": "2026-09-29T07:04:00.244178+00:00",
-      "priceAsOf": "2026-09-29"
-    },
-    {
-      "symbol": "RACE",
-      "shortName": "Ferrari N.V.",
-      "longName": "Ferrari N.V.",
-      "searchText": "race ferrari n.v. ferrari n.v.",
-      "stale": true,
-      "asOf": "2026-09-29T07:04:00.244178+00:00",
-      "priceAsOf": "2026-09-29"
-    },
-    {
-      "symbol": "GM",
-      "shortName": "General Motors Company",
-      "longName": "General Motors Company",
-      "searchText": "gm general motors company general motors company",
-      "stale": true,
-      "asOf": "2026-09-29T07:04:00.244178+00:00",
-      "priceAsOf": "2026-09-29"
-    },
-    {
-      "symbol": "MMM",
-      "shortName": "3M Company",
-      "longName": "3M Company",
-      "searchText": "mmm 3m company 3m company",
-      "stale": true,
-      "asOf": "2026-09-29T07:04:00.244178+00:00",
-      "priceAsOf": "2026-09-29"
-    },
-    {
-      "symbol": "CB",
-      "shortName": "Chubb Limited",
-      "longName": "Chubb Limited",
-      "searchText": "cb chubb limited chubb limited",
-      "stale": true,
-      "asOf": "2026-09-29T07:04:00.244178+00:00",
-      "priceAsOf": "2026-09-29"
-    },
-    {
-      "symbol": "MRSH",
-      "shortName": "Marsh & McLennan Companies, Inc.",
-      "longName": "Marsh & McLennan Companies, Inc.",
-      "searchText": "mrsh marsh & mclennan companies, inc. marsh & mclennan companies, inc.",
-      "stale": true,
-      "asOf": "2026-09-29T07:04:00.244178+00:00",
-      "priceAsOf": "2026-09-29"
-    },
-    {
-      "symbol": "STZ",
-      "shortName": "Constellation Brands, Inc.",
-      "longName": "Constellation Brands, Inc.",
-      "searchText": "stz constellation brands, inc. constellation brands, inc.",
-      "stale": true,
-      "asOf": "2026-09-29T07:04:00.244178+00:00",
-      "priceAsOf": "2026-09-29"
-    },
-    {
-      "symbol": "FTNT",
-      "shortName": "Fortinet, Inc.",
-      "longName": "Fortinet, Inc.",
-      "searchText": "ftnt fortinet, inc. fortinet, inc.",
-      "stale": true,
-      "asOf": "2026-09-29T07:04:00.244178+00:00",
-      "priceAsOf": "2026-09-29"
-    },
-    {
-      "symbol": "ECL",
-      "shortName": "Ecolab Inc.",
-      "longName": "Ecolab Inc.",
-      "searchText": "ecl ecolab inc. ecolab inc.",
-      "stale": true,
-      "asOf": "2026-09-29T07:04:00.244178+00:00",
-      "priceAsOf": "2026-09-29"
-    },
-    {
-      "symbol": "KLAC",
-      "shortName": "KLA Corporation",
-      "longName": "KLA Corporation",
-      "searchText": "klac kla corporation kla corporation",
-      "stale": true,
-      "asOf": "2026-09-29T07:04:00.244178+00:00",
-      "priceAsOf": "2026-09-29"
-    },
-    {
-      "symbol": "MRVL",
-      "shortName": "Marvell Technology, Inc.",
-      "longName": "Marvell Technology, Inc.",
-      "searchText": "mrvl marvell technology, inc. marvell technology, inc.",
-      "stale": true,
-      "asOf": "2026-09-29T07:04:00.244178+00:00",
-      "priceAsOf": "2026-09-29"
-    },
-    {
-      "symbol": "ADI",
-      "shortName": "Analog Devices, Inc.",
-      "longName": "Analog Devices, Inc.",
-      "searchText": "adi analog devices, inc. analog devices, inc.",
-      "stale": true,
-      "asOf": "2026-09-29T07:04:00.244178+00:00",
-      "priceAsOf": "2026-09-29"
-    },
-    {
-      "symbol": "NXPI",
-      "shortName": "NXP Semiconductors N.V.",
-      "longName": "NXP Semiconductors N.V.",
-      "searchText": "nxpi nxp semiconductors n.v. nxp semiconductors n.v.",
-      "stale": true,
-      "asOf": "2026-09-29T07:04:00.244178+00:00",
-      "priceAsOf": "2026-09-29"
-    },
-    {
-      "symbol": "ON",
-      "shortName": "ON Semiconductor Corporation",
-      "longName": "ON Semiconductor Corporation",
-      "searchText": "on on semiconductor corporation on semiconductor corporation",
-      "stale": true,
-      "asOf": "2026-09-29T07:04:00.244178+00:00",
-      "priceAsOf": "2026-09-29"
-    },
-    {
-      "symbol": "BRK-B",
-      "shortName": "Berkshire Hathaway Inc.",
-      "longName": "Berkshire Hathaway Inc.",
-      "searchText": "brk-b berkshire hathaway inc. berkshire hathaway inc.",
-      "stale": true,
-      "asOf": "2026-09-29T07:04:00.244178+00:00",
-      "priceAsOf": "2026-09-29"
-    },
-    {
-      "symbol": "JPM",
-      "shortName": "JPMorgan Chase & Co.",
-      "longName": "JPMorgan Chase & Co.",
-      "searchText": "jpm jpmorgan chase & co. jpmorgan chase & co.",
-      "stale": true,
-      "asOf": "2026-09-29T07:04:00.244178+00:00",
-      "priceAsOf": "2026-09-29"
-    },
-    {
-      "symbol": "V",
-      "shortName": "Visa Inc.",
-      "longName": "Visa Inc.",
-      "searchText": "v visa inc. visa inc.",
-      "stale": true,
-      "asOf": "2026-09-29T07:04:00.244178+00:00",
-      "priceAsOf": "2026-09-29"
-    },
-    {
-      "symbol": "MA",
-      "shortName": "Mastercard Incorporated",
-      "longName": "Mastercard Incorporated",
-      "searchText": "ma mastercard incorporated mastercard incorporated",
-      "stale": true,
-      "asOf": "2026-09-29T07:04:00.244178+00:00",
-      "priceAsOf": "2026-09-29"
-    },
-    {
-      "symbol": "BAC",
-      "shortName": "Bank of America Corporation",
-      "longName": "Bank of America Corporation",
-      "searchText": "bac bank of america corporation bank of america corporation",
-      "stale": true,
-      "asOf": "2026-09-29T06:12:23.168021+00:00",
-      "priceAsOf": "2026-09-29"
+      "priceAsOf": "2026-09-30"
     }
   ],
   "partialCount": 46,
   "priceHealth": {
-    "assessedAt": "2026-09-30T15:30:08.171135+00:00",
+    "assessedAt": "2026-10-01T15:57:42.767348+00:00",
     "maxAgeDays": 7,
     "pricedCount": 151,
     "recentCount": 151,
     "delayedCount": 0,
     "missingCount": 0,
-    "oldestAsOf": "2026-09-29",
-    "latestAsOf": "2026-09-29"
+    "oldestAsOf": "2026-09-30",
+    "latestAsOf": "2026-09-30"
   }
 }

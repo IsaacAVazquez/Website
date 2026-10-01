@@ -1,10 +1,10 @@
 {
   "symbol": "WM",
-  "lastUpdated": "2026-09-29T07:04:00.244178+00:00",
+  "lastUpdated": "2026-10-01T15:57:42.767348+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-09-29T07:04:00.244178+00:00",
+    "snapshotBuiltAt": "2026-10-01T15:57:42.767348+00:00",
     "sections": {
-      "price": "2026-09-29"
+      "price": "2026-09-30"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 7.0645,
-      "ttmPe": 29.22,
-      "marketCap": 82569331988,
-      "psRatio": 3.22,
-      "pbRatio": 8.32,
-      "pegRatio": 3.38
+      "ttmPe": 28.87,
+      "marketCap": 81561413384,
+      "psRatio": 3.18,
+      "pbRatio": 8.22,
+      "pegRatio": 3.34
     },
     "profitability": {
       "roe": 7.870000000000001,
@@ -5504,25 +5504,17 @@
       ]
     },
     "wacc": {
-      "wacc": 6.76,
-      "costOfEquity": 8.450000000000001,
+      "wacc": 6.660000000000001,
+      "costOfEquity": 8.35,
       "costOfDebt": 1,
       "taxRate": 23,
-      "beta": 0.4213,
-      "marketCap": 82569331988
+      "beta": 0.4037,
+      "marketCap": 81561413384
     },
     "beta": {
-      "beta5y": 0.4213
+      "beta5y": 0.4037
     },
     "price": [
-      {
-        "date": "2025-09-29",
-        "open": 218.86,
-        "high": 219.81,
-        "low": 217.59,
-        "close": 219.43,
-        "volume": 1073300
-      },
       {
         "date": "2025-09-30",
         "open": 218.85,
@@ -7530,6 +7522,14 @@
         "low": 204.4,
         "close": 207.09,
         "volume": 1536600
+      },
+      {
+        "date": "2026-09-30",
+        "open": 207.1,
+        "high": 207.4,
+        "low": 203.55,
+        "close": 203.92,
+        "volume": 2337900
       }
     ],
     "news": [
@@ -7574,19 +7574,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "ed234077-1961-3f76-9ef4-41a280a24eea",
-        "title": "Why Waste Management Stock Is Sinking Today",
-        "publisher": "Motley Fool",
-        "reportDate": "2025-05-13",
-        "link": "https://finance.yahoo.com/m/ed234077-1961-3f76-9ef4-41a280a24eea/why-waste-management-stock-is.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "2c7a8e80-fcac-3d00-accf-d41a7dc503a8",
         "title": "WM Q1 Earnings Call: Margin Pressure Despite Revenue Growth and Sustainability Investments",
         "publisher": "StockStory",
         "reportDate": "2025-05-13",
         "link": "https://finance.yahoo.com/news/wm-q1-earnings-call-margin-182355199.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "ed234077-1961-3f76-9ef4-41a280a24eea",
+        "title": "Why Waste Management Stock Is Sinking Today",
+        "publisher": "Motley Fool",
+        "reportDate": "2025-05-13",
+        "link": "https://finance.yahoo.com/m/ed234077-1961-3f76-9ef4-41a280a24eea/why-waste-management-stock-is.html",
         "type": "STORY"
       },
       {
@@ -7680,18 +7680,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 29.22,
-        "industryAvg": 30.87
+        "value": 28.87,
+        "industryAvg": 30.47
       },
       {
         "metric": "P/S Ratio",
-        "value": 3.22,
-        "industryAvg": 3.31
+        "value": 3.18,
+        "industryAvg": 3.27
       },
       {
         "metric": "P/B Ratio",
-        "value": 8.32,
-        "industryAvg": 5.5
+        "value": 8.22,
+        "industryAvg": 5.44
       },
       {
         "metric": "ROE",

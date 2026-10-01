@@ -1,10 +1,10 @@
 {
   "symbol": "PH",
-  "lastUpdated": "2026-09-29T07:04:00.244178+00:00",
+  "lastUpdated": "2026-10-01T15:57:42.767348+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-09-29T07:04:00.244178+00:00",
+    "snapshotBuiltAt": "2026-10-01T15:57:42.767348+00:00",
     "sections": {
-      "price": "2026-09-29"
+      "price": "2026-09-30"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 28.4885,
-      "ttmPe": 34.03,
-      "marketCap": 122163300000,
-      "psRatio": 5.68,
-      "pbRatio": 7.93,
-      "pegRatio": 1.76
+      "ttmPe": 33.54,
+      "marketCap": 120382920000,
+      "psRatio": 5.6,
+      "pbRatio": 7.82,
+      "pegRatio": 1.74
     },
     "profitability": {
       "roe": 7.2700000000000005,
@@ -6311,25 +6311,17 @@
       ]
     },
     "wacc": {
-      "wacc": 12.85,
-      "costOfEquity": 13.68,
+      "wacc": 12.950000000000001,
+      "costOfEquity": 13.8,
       "costOfDebt": 1.1199999999999999,
       "taxRate": 19,
-      "beta": 1.1056,
-      "marketCap": 122163300000
+      "beta": 1.1223,
+      "marketCap": 120382920000
     },
     "beta": {
-      "beta5y": 1.1056
+      "beta5y": 1.1223
     },
     "price": [
-      {
-        "date": "2025-09-29",
-        "open": 756.05,
-        "high": 762.09,
-        "low": 749.71,
-        "close": 753.57,
-        "volume": 615700
-      },
       {
         "date": "2025-09-30",
         "open": 754.99,
@@ -8337,6 +8329,14 @@
         "low": 960.99,
         "close": 970.37,
         "volume": 390300
+      },
+      {
+        "date": "2026-09-30",
+        "open": 972.4,
+        "high": 972.4,
+        "low": 955.42,
+        "close": 955.42,
+        "volume": 675000
       }
     ],
     "news": [
@@ -8365,19 +8365,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "53e30e6f-eaff-39cd-a7de-14dbca17e0a3",
-        "title": "Argus Adjusts Price Target on Parker-Hannifin to $680 From $780",
-        "publisher": "MT Newswires",
-        "reportDate": "2025-05-06",
-        "link": "https://finance.yahoo.com/news/argus-adjusts-price-target-parker-120843597.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "b783bf9d-8274-3b27-be46-969837c2a60d",
         "title": "Parker-Hannifin Third Quarter 2025 Earnings: EPS Beats Expectations",
         "publisher": "Simply Wall St.",
         "reportDate": "2025-05-06",
         "link": "https://finance.yahoo.com/news/parker-hannifin-third-quarter-2025-110055439.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "53e30e6f-eaff-39cd-a7de-14dbca17e0a3",
+        "title": "Argus Adjusts Price Target on Parker-Hannifin to $680 From $780",
+        "publisher": "MT Newswires",
+        "reportDate": "2025-05-06",
+        "link": "https://finance.yahoo.com/news/argus-adjusts-price-target-parker-120843597.html",
         "type": "STORY"
       },
       {
@@ -8484,18 +8484,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 34.03,
-        "industryAvg": 31.32
+        "value": 33.54,
+        "industryAvg": 31.16
       },
       {
         "metric": "P/S Ratio",
-        "value": 5.68,
-        "industryAvg": 3.56
+        "value": 5.6,
+        "industryAvg": 3.54
       },
       {
         "metric": "P/B Ratio",
-        "value": 7.93,
-        "industryAvg": 6.36
+        "value": 7.82,
+        "industryAvg": 6.45
       },
       {
         "metric": "ROE",

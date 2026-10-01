@@ -1,10 +1,10 @@
 {
   "symbol": "ECL",
-  "lastUpdated": "2026-09-29T07:04:00.244178+00:00",
+  "lastUpdated": "2026-10-01T15:57:42.767348+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-09-29T07:04:00.244178+00:00",
+    "snapshotBuiltAt": "2026-10-01T15:57:42.767348+00:00",
     "sections": {
-      "price": "2026-09-29"
+      "price": "2026-09-30"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 7.4543,
-      "ttmPe": 37.59,
-      "marketCap": 78556483578,
-      "psRatio": 4.66,
-      "pbRatio": 7.81,
-      "pegRatio": 11.75
+      "ttmPe": 36.84,
+      "marketCap": 76972626988,
+      "psRatio": 4.57,
+      "pbRatio": 7.65,
+      "pegRatio": 11.51
     },
     "profitability": {
       "roe": 5.33,
@@ -6120,25 +6120,17 @@
       ]
     },
     "wacc": {
-      "wacc": 10.14,
+      "wacc": 10.11,
       "costOfEquity": 11.85,
       "costOfDebt": 0.64,
       "taxRate": 22,
-      "beta": 0.8664,
-      "marketCap": 78556483578
+      "beta": 0.8653,
+      "marketCap": 76972626988
     },
     "beta": {
-      "beta5y": 0.8664
+      "beta5y": 0.8653
     },
     "price": [
-      {
-        "date": "2025-09-29",
-        "open": 271.6,
-        "high": 273.42,
-        "low": 270.3,
-        "close": 272.91,
-        "volume": 1885800
-      },
       {
         "date": "2025-09-30",
         "open": 273.05,
@@ -8146,6 +8138,14 @@
         "low": 276.72,
         "close": 277.87,
         "volume": 1107400
+      },
+      {
+        "date": "2026-09-30",
+        "open": 278.13,
+        "high": 278.13,
+        "low": 274.58,
+        "close": 274.58,
+        "volume": 1509300
       }
     ],
     "news": [
@@ -8198,19 +8198,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "59e04692-25fd-3847-a5dc-dba994059c63",
-        "title": "Ecolab First Quarter 2025 Earnings: EPS Misses Expectations",
-        "publisher": "Simply Wall St.",
-        "reportDate": "2025-05-13",
-        "link": "https://finance.yahoo.com/news/ecolab-first-quarter-2025-earnings-120100154.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "d0bb90ea-ae2f-3fec-ae79-0157aaab119d",
         "title": "Ecolab Delivers Once Again on Its Growth and Impact Performance, New Report Shows",
         "publisher": "Business Wire",
         "reportDate": "2025-05-13",
         "link": "https://finance.yahoo.com/news/ecolab-delivers-once-again-growth-110000004.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "59e04692-25fd-3847-a5dc-dba994059c63",
+        "title": "Ecolab First Quarter 2025 Earnings: EPS Misses Expectations",
+        "publisher": "Simply Wall St.",
+        "reportDate": "2025-05-13",
+        "link": "https://finance.yahoo.com/news/ecolab-first-quarter-2025-earnings-120100154.html",
         "type": "STORY"
       },
       {
@@ -8296,18 +8296,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 37.59,
-        "industryAvg": 28.97
+        "value": 36.84,
+        "industryAvg": 28.7
       },
       {
         "metric": "P/S Ratio",
-        "value": 4.66,
-        "industryAvg": 2.51
+        "value": 4.57,
+        "industryAvg": 2.49
       },
       {
         "metric": "P/B Ratio",
-        "value": 7.81,
-        "industryAvg": 3.23
+        "value": 7.65,
+        "industryAvg": 3.09
       },
       {
         "metric": "ROE",
@@ -8327,7 +8327,7 @@
       {
         "metric": "EBITDA Margin",
         "value": 23.799999999999997,
-        "industryAvg": 17.14
+        "industryAvg": 17.130000000000003
       },
       {
         "metric": "Net Margin",

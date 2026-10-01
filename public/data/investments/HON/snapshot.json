@@ -1,10 +1,10 @@
 {
   "symbol": "HON",
-  "lastUpdated": "2026-09-29T07:04:00.244178+00:00",
+  "lastUpdated": "2026-10-01T15:57:42.767348+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-09-29T07:04:00.244178+00:00",
+    "snapshotBuiltAt": "2026-10-01T15:57:42.767348+00:00",
     "sections": {
-      "price": "2026-09-29"
+      "price": "2026-09-30"
     }
   },
   "source": "prefetched",
@@ -40,10 +40,10 @@
     },
     "fundamentals": {
       "ttmEps": 27.0441,
-      "ttmPe": 7.82,
-      "marketCap": 67039148800,
-      "psRatio": 1.86,
-      "pbRatio": 3.62,
+      "ttmPe": 7.8,
+      "marketCap": 66855323600,
+      "psRatio": 1.85,
+      "pbRatio": 3.61,
       "pegRatio": 0.1
     },
     "profitability": {
@@ -6494,25 +6494,17 @@
       ]
     },
     "wacc": {
-      "wacc": 7.870000000000001,
-      "costOfEquity": 11.43,
+      "wacc": 7.920000000000001,
+      "costOfEquity": 11.52,
       "costOfDebt": 1.0699999999999998,
       "taxRate": 21,
-      "beta": 0.8116,
-      "marketCap": 67039148800
+      "beta": 0.8221,
+      "marketCap": 66855323600
     },
     "beta": {
-      "beta5y": 0.8116
+      "beta5y": 0.8221
     },
     "price": [
-      {
-        "date": "2025-09-29",
-        "open": 207.4702,
-        "high": 207.7371,
-        "low": 202.0138,
-        "close": 206.8672,
-        "volume": 5703759
-      },
       {
         "date": "2025-09-30",
         "open": 206.541,
@@ -8520,6 +8512,14 @@
         "low": 209.02,
         "close": 210.13,
         "volume": 2026600
+      },
+      {
+        "date": "2026-09-30",
+        "open": 210.81,
+        "high": 211.92,
+        "low": 209.5,
+        "close": 210.94,
+        "volume": 1901000
       }
     ],
     "news": [
@@ -8548,19 +8548,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "fddfa91c-cd65-3c95-af50-ad968127c78c",
-        "title": "The Zacks Analyst Blog Highlights Meta Platforms, Honeywell International and Automatic Data Processing",
-        "publisher": "Zacks",
-        "reportDate": "2025-05-22",
-        "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-meta-134100075.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "9be5b1f5-c0a9-3093-aa30-e284c8d42a92",
         "title": "Top Stock Reports for Meta Platforms, Honeywell & Automatic Data Processing",
         "publisher": "Zacks",
         "reportDate": "2025-05-22",
         "link": "https://finance.yahoo.com/news/top-stock-reports-meta-platforms-203100625.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "fddfa91c-cd65-3c95-af50-ad968127c78c",
+        "title": "The Zacks Analyst Blog Highlights Meta Platforms, Honeywell International and Automatic Data Processing",
+        "publisher": "Zacks",
+        "reportDate": "2025-05-22",
+        "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-meta-134100075.html",
         "type": "STORY"
       },
       {
@@ -8572,20 +8572,20 @@
         "type": "STORY"
       },
       {
-        "uuid": "14e5df13-7da2-3ba7-b773-34b9cdc72082",
-        "title": "Honeywell, Joby, Fannie Mae & Freddie Mac: Trending Tickers",
-        "publisher": "Yahoo Finance Video",
-        "reportDate": "2025-05-28",
-        "link": "https://finance.yahoo.com/video/honeywell-joby-fannie-mae-freddie-142845093.html",
-        "type": "VIDEO"
-      },
-      {
         "uuid": "0a8a1097-9d77-37d4-8721-dafaf273b623",
         "title": "Honeywell Adds Elliott Executive to Its Board Ahead of Breakup",
         "publisher": "The Wall Street Journal",
         "reportDate": "2025-05-28",
         "link": "https://finance.yahoo.com/m/0a8a1097-9d77-37d4-8721-dafaf273b623/honeywell-adds-elliott.html",
         "type": "STORY"
+      },
+      {
+        "uuid": "14e5df13-7da2-3ba7-b773-34b9cdc72082",
+        "title": "Honeywell, Joby, Fannie Mae & Freddie Mac: Trending Tickers",
+        "publisher": "Yahoo Finance Video",
+        "reportDate": "2025-05-28",
+        "link": "https://finance.yahoo.com/video/honeywell-joby-fannie-mae-freddie-142845093.html",
+        "type": "VIDEO"
       },
       {
         "uuid": "eae5f931-de46-349a-97b9-b42260f80e74",
@@ -8596,11 +8596,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "75d38bd4-ebde-3496-88f8-9b8ccd44f07d",
-        "title": "Honeywell International (HON) Up 6.7% Since Last Earnings Report: Can It Continue?",
-        "publisher": "Zacks",
+        "uuid": "8f56767b-647b-39f8-bdb1-a18c334b5a17",
+        "title": "Honeywell Stock Is Rising. An Activist Is Joining the Board.",
+        "publisher": "Barrons.com",
         "reportDate": "2025-05-29",
-        "link": "https://finance.yahoo.com/news/honeywell-international-hon-6-7-153052103.html",
+        "link": "https://finance.yahoo.com/m/8f56767b-647b-39f8-bdb1-a18c334b5a17/honeywell-stock-is-rising.-an.html",
         "type": "STORY"
       }
     ],
@@ -8665,18 +8665,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 7.82,
-        "industryAvg": 13.48
+        "value": 7.8,
+        "industryAvg": 13.26
       },
       {
         "metric": "P/S Ratio",
-        "value": 1.86,
-        "industryAvg": 1.58
+        "value": 1.85,
+        "industryAvg": 1.55
       },
       {
         "metric": "P/B Ratio",
-        "value": 3.62,
-        "industryAvg": 2.8
+        "value": 3.61,
+        "industryAvg": 2.92
       },
       {
         "metric": "ROE",

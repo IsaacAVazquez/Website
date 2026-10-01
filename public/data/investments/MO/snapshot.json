@@ -1,10 +1,10 @@
 {
   "symbol": "MO",
-  "lastUpdated": "2026-09-29T06:39:51.976581+00:00",
+  "lastUpdated": "2026-10-01T15:57:42.767348+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-09-29T06:39:51.976581+00:00",
+    "snapshotBuiltAt": "2026-10-01T15:57:42.767348+00:00",
     "sections": {
-      "price": "2026-09-29"
+      "price": "2026-09-30"
     }
   },
   "source": "prefetched",
@@ -40,10 +40,10 @@
     },
     "fundamentals": {
       "ttmEps": 4.7487,
-      "ttmPe": 14.56,
-      "marketCap": 115429395807,
-      "psRatio": 5.65,
-      "pbRatio": -43.26,
+      "ttmPe": 14.18,
+      "marketCap": 112440554226,
+      "psRatio": 5.5,
+      "pbRatio": -42.14,
       "pegRatio": 0.15
     },
     "profitability": {
@@ -6013,25 +6013,17 @@
       ]
     },
     "wacc": {
-      "wacc": 7.42,
-      "costOfEquity": 8.799999999999999,
+      "wacc": 7.6499999999999995,
+      "costOfEquity": 9.120000000000001,
       "costOfDebt": 1.2,
       "taxRate": 22,
-      "beta": 0.4672,
-      "marketCap": 115429395807
+      "beta": 0.5048,
+      "marketCap": 112440554226
     },
     "beta": {
-      "beta5y": 0.4672
+      "beta5y": 0.5048
     },
     "price": [
-      {
-        "date": "2025-09-29",
-        "open": 65.5,
-        "high": 65.69,
-        "low": 65.06,
-        "close": 65.67,
-        "volume": 6867400
-      },
       {
         "date": "2025-09-30",
         "open": 65.69,
@@ -8039,6 +8031,14 @@
         "low": 67.97,
         "close": 68.72,
         "volume": 6862700
+      },
+      {
+        "date": "2026-09-30",
+        "open": 68.9,
+        "high": 69.08,
+        "low": 66.91,
+        "close": 67.34,
+        "volume": 7571200
       }
     ],
     "news": [
@@ -8091,19 +8091,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "ae2be766-8f7d-3119-85dd-05c4fbbb61cd",
-        "title": "Needham Initiates Altria Group at Hold",
-        "publisher": "MT Newswires",
-        "reportDate": "2025-05-22",
-        "link": "https://finance.yahoo.com/news/needham-initiates-altria-group-hold-105119077.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "4ec85c10-c040-3492-9049-95fefffdf461",
         "title": "An Intrinsic Calculation For Altria Group, Inc. (NYSE:MO) Suggests It's 50% Undervalued",
         "publisher": "Simply Wall St.",
         "reportDate": "2025-05-22",
         "link": "https://finance.yahoo.com/news/intrinsic-calculation-altria-group-inc-140011687.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "ae2be766-8f7d-3119-85dd-05c4fbbb61cd",
+        "title": "Needham Initiates Altria Group at Hold",
+        "publisher": "MT Newswires",
+        "reportDate": "2025-05-22",
+        "link": "https://finance.yahoo.com/news/needham-initiates-altria-group-hold-105119077.html",
         "type": "STORY"
       },
       {
@@ -8188,18 +8188,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 14.56,
-        "industryAvg": 22.14
+        "value": 14.18,
+        "industryAvg": 21.74
       },
       {
         "metric": "P/S Ratio",
-        "value": 5.65,
-        "industryAvg": 6.06
+        "value": 5.5,
+        "industryAvg": 5.95
       },
       {
         "metric": "P/B Ratio",
-        "value": -43.26,
-        "industryAvg": 1.85
+        "value": -42.14,
+        "industryAvg": 1.8
       },
       {
         "metric": "ROE",

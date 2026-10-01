@@ -1,10 +1,10 @@
 {
   "symbol": "XOM",
-  "lastUpdated": "2026-09-29T07:04:00.244178+00:00",
+  "lastUpdated": "2026-10-01T15:57:42.767348+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-09-29T07:04:00.244178+00:00",
+    "snapshotBuiltAt": "2026-10-01T15:57:42.767348+00:00",
     "sections": {
-      "price": "2026-09-29"
+      "price": "2026-09-30"
     }
   },
   "source": "prefetched",
@@ -40,8 +40,8 @@
     },
     "fundamentals": {
       "ttmEps": 7.7709,
-      "ttmPe": 20.91,
-      "marketCap": 668282240000,
+      "ttmPe": 20.94,
+      "marketCap": 669228000000,
       "psRatio": 1.85,
       "pbRatio": 2.58,
       "pegRatio": 0.19
@@ -5187,25 +5187,17 @@
       ]
     },
     "wacc": {
-      "wacc": 6.5,
-      "costOfEquity": 6.890000000000001,
+      "wacc": 6.3100000000000005,
+      "costOfEquity": 6.68,
       "costOfDebt": 0.54,
       "taxRate": 24,
-      "beta": 0.2159,
-      "marketCap": 668282240000
+      "beta": 0.1837,
+      "marketCap": 669228000000
     },
     "beta": {
-      "beta5y": 0.2159
+      "beta5y": 0.1837
     },
     "price": [
-      {
-        "date": "2025-09-29",
-        "open": 116.06,
-        "high": 116.5,
-        "low": 113.67,
-        "close": 114.22,
-        "volume": 19189300
-      },
       {
         "date": "2025-09-30",
         "open": 113.35,
@@ -7213,23 +7205,31 @@
         "low": 159.27,
         "close": 161.35,
         "volume": 9160000
+      },
+      {
+        "date": "2026-09-30",
+        "open": 162.23,
+        "high": 164.37,
+        "low": 161.8,
+        "close": 162.75,
+        "volume": 13088200
       }
     ],
     "news": [
-      {
-        "uuid": "32e2a5fe-6ef7-331b-afc2-15421e1baba5",
-        "title": "Top Analyst Reports for Exxon Mobil, Netflix & Alibaba",
-        "publisher": "Zacks",
-        "reportDate": "2025-03-12",
-        "link": "https://finance.yahoo.com/news/top-analyst-reports-exxon-mobil-201700695.html",
-        "type": "STORY"
-      },
       {
         "uuid": "112b9ed0-72fc-39b4-b756-ca1c14975bc9",
         "title": "The Zacks Analyst Blog Highlights Exxon Mobil, Netflix, Alibaba and CSP",
         "publisher": "Zacks",
         "reportDate": "2025-03-12",
         "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-exxon-133900108.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "32e2a5fe-6ef7-331b-afc2-15421e1baba5",
+        "title": "Top Analyst Reports for Exxon Mobil, Netflix & Alibaba",
+        "publisher": "Zacks",
+        "reportDate": "2025-03-12",
+        "link": "https://finance.yahoo.com/news/top-analyst-reports-exxon-mobil-201700695.html",
         "type": "STORY"
       },
       {
@@ -7249,19 +7249,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "05a0ef3f-3a4e-3300-ad29-88aba4207891",
-        "title": "Top Research Reports for Exxon Mobil, Bristol-Myers Squibb & Chubb",
-        "publisher": "Zacks",
-        "reportDate": "2025-04-03",
-        "link": "https://finance.yahoo.com/news/top-research-reports-exxon-mobil-202600539.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "fd4f80af-5519-3ab3-90f3-9d5976e9486e",
         "title": "The Zacks Analyst Blog Highlights Exxon Mobil, Bristol-Myers Squibb, Chubb and Hamilton Beach Brands",
         "publisher": "Zacks",
         "reportDate": "2025-04-03",
         "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-exxon-145000755.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "05a0ef3f-3a4e-3300-ad29-88aba4207891",
+        "title": "Top Research Reports for Exxon Mobil, Bristol-Myers Squibb & Chubb",
+        "publisher": "Zacks",
+        "reportDate": "2025-04-03",
+        "link": "https://finance.yahoo.com/news/top-research-reports-exxon-mobil-202600539.html",
         "type": "STORY"
       },
       {
@@ -7362,18 +7362,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 20.91,
-        "industryAvg": 11.78
+        "value": 20.94,
+        "industryAvg": 11.67
       },
       {
         "metric": "P/S Ratio",
         "value": 1.85,
-        "industryAvg": 1.01
+        "industryAvg": 1
       },
       {
         "metric": "P/B Ratio",
         "value": 2.58,
-        "industryAvg": 1.61
+        "industryAvg": 1.59
       },
       {
         "metric": "ROE",

@@ -1,10 +1,10 @@
 {
   "symbol": "UBER",
-  "lastUpdated": "2026-09-29T06:39:51.976581+00:00",
+  "lastUpdated": "2026-10-01T15:57:42.767348+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-09-29T06:39:51.976581+00:00",
+    "snapshotBuiltAt": "2026-10-01T15:57:42.767348+00:00",
     "sections": {
-      "price": "2026-09-29"
+      "price": "2026-09-30"
     }
   },
   "source": "prefetched",
@@ -40,10 +40,10 @@
     },
     "fundamentals": {
       "ttmEps": 4.5496,
-      "ttmPe": 14.98,
-      "marketCap": 139045991040,
-      "psRatio": 2.52,
-      "pbRatio": 5.09,
+      "ttmPe": 15.06,
+      "marketCap": 139759988940,
+      "psRatio": 2.53,
+      "pbRatio": 5.12,
       "pegRatio": 0.18
     },
     "profitability": {
@@ -6310,25 +6310,17 @@
       ]
     },
     "wacc": {
-      "wacc": 13.43,
-      "costOfEquity": 14.790000000000001,
+      "wacc": 13.819999999999999,
+      "costOfEquity": 15.21,
       "costOfDebt": 0.86,
       "taxRate": 26,
-      "beta": 1.2514,
-      "marketCap": 139045991040
+      "beta": 1.3091,
+      "marketCap": 139759988940
     },
     "beta": {
-      "beta5y": 1.2514
+      "beta5y": 1.3091
     },
     "price": [
-      {
-        "date": "2025-09-29",
-        "open": 99.32,
-        "high": 100.26,
-        "low": 98.585,
-        "close": 99.57,
-        "volume": 16320900
-      },
       {
         "date": "2025-09-30",
         "open": 99.59,
@@ -8335,24 +8327,32 @@
         "high": 69.89,
         "low": 68.4,
         "close": 69.36,
-        "volume": 14755000
+        "volume": 14777400
+      },
+      {
+        "date": "2026-09-30",
+        "open": 69.9,
+        "high": 69.97,
+        "low": 68.5,
+        "close": 68.51,
+        "volume": 15593100
       }
     ],
     "news": [
-      {
-        "uuid": "0def18d7-3d06-37f9-bff5-e0daf4d38d99",
-        "title": "Top Analyst Reports for Shell, Uber & TotalEnergies",
-        "publisher": "Zacks",
-        "reportDate": "2025-03-20",
-        "link": "https://finance.yahoo.com/news/top-analyst-reports-shell-uber-223100107.html",
-        "type": "STORY"
-      },
       {
         "uuid": "c2e34397-295e-3abc-9815-85c23901bc88",
         "title": "The Zacks Analyst Blog Highlights Shell, Uber, TotalEnergies, Geospace and Natural Health Trends",
         "publisher": "Zacks",
         "reportDate": "2025-03-20",
         "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-shell-090000565.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "0def18d7-3d06-37f9-bff5-e0daf4d38d99",
+        "title": "Top Analyst Reports for Shell, Uber & TotalEnergies",
+        "publisher": "Zacks",
+        "reportDate": "2025-03-20",
+        "link": "https://finance.yahoo.com/news/top-analyst-reports-shell-uber-223100107.html",
         "type": "STORY"
       },
       {
@@ -8364,19 +8364,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "0a54d078-790a-3283-8d0f-0649b721ad65",
-        "title": "Serve Robotics Launches Autonomous Deliveries in Dallas-Fort Worth Metro Area With Uber Eats",
-        "publisher": "MT Newswires",
-        "reportDate": "2025-04-03",
-        "link": "https://finance.yahoo.com/news/serve-robotics-launches-autonomous-deliveries-120046988.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "647a03ed-7d8c-3cc5-94cd-83f3d801bdd6",
         "title": "Serve Robotics Saddles Up for Autonomous Delivery in Dallas-Fort Worth Via Uber Eats",
         "publisher": "GlobeNewswire",
         "reportDate": "2025-04-03",
         "link": "https://finance.yahoo.com/news/serve-robotics-saddles-autonomous-delivery-113000233.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "0a54d078-790a-3283-8d0f-0649b721ad65",
+        "title": "Serve Robotics Launches Autonomous Deliveries in Dallas-Fort Worth Metro Area With Uber Eats",
+        "publisher": "MT Newswires",
+        "reportDate": "2025-04-03",
+        "link": "https://finance.yahoo.com/news/serve-robotics-launches-autonomous-deliveries-120046988.html",
         "type": "STORY"
       },
       {
@@ -8486,43 +8486,43 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 14.98,
-        "industryAvg": 24.92
+        "value": 15.06,
+        "industryAvg": 25.11
       },
       {
         "metric": "P/S Ratio",
-        "value": 2.52,
-        "industryAvg": 4.75
+        "value": 2.53,
+        "industryAvg": 4.8
       },
       {
         "metric": "P/B Ratio",
-        "value": 5.09,
-        "industryAvg": 5.3
+        "value": 5.12,
+        "industryAvg": 5.36
       },
       {
         "metric": "ROE",
         "value": 9.2,
-        "industryAvg": -12.33
+        "industryAvg": -12.46
       },
       {
         "metric": "ROA",
         "value": 3.81,
-        "industryAvg": -6.800000000000001
+        "industryAvg": -6.890000000000001
       },
       {
         "metric": "Gross Margin",
         "value": 44.93,
-        "industryAvg": 63.42
+        "industryAvg": 63.370000000000005
       },
       {
         "metric": "EBITDA Margin",
         "value": 25.36,
-        "industryAvg": 1.5
+        "industryAvg": 1.2
       },
       {
         "metric": "Net Margin",
         "value": 16.869999999999997,
-        "industryAvg": -15.879999999999999
+        "industryAvg": -16.17
       }
     ]
   }

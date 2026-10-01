@@ -1,10 +1,10 @@
 {
   "symbol": "FTNT",
-  "lastUpdated": "2026-09-29T07:04:00.244178+00:00",
+  "lastUpdated": "2026-10-01T15:57:42.767348+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-09-29T07:04:00.244178+00:00",
+    "snapshotBuiltAt": "2026-10-01T15:57:42.767348+00:00",
     "sections": {
-      "price": "2026-09-29"
+      "price": "2026-09-30"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 2.8381,
-      "ttmPe": 62.13,
-      "marketCap": 129355688000,
-      "psRatio": 17.18,
-      "pbRatio": 83.4,
-      "pegRatio": 1.42
+      "ttmPe": 62.99,
+      "marketCap": 131138336000,
+      "psRatio": 17.42,
+      "pbRatio": 84.55,
+      "pegRatio": 1.44
     },
     "profitability": {
       "roe": 47.73,
@@ -5721,25 +5721,17 @@
       ]
     },
     "wacc": {
-      "wacc": 12.97,
-      "costOfEquity": 13.020000000000001,
+      "wacc": 12.690000000000001,
+      "costOfEquity": 12.740000000000002,
       "costOfDebt": 0.64,
       "taxRate": 16,
-      "beta": 1.0196,
-      "marketCap": 129355688000
+      "beta": 0.9834,
+      "marketCap": 131138336000
     },
     "beta": {
-      "beta5y": 1.0196
+      "beta5y": 0.9834
     },
     "price": [
-      {
-        "date": "2025-09-29",
-        "open": 84.88,
-        "high": 85.16,
-        "low": 83.6,
-        "close": 84.65,
-        "volume": 4652000
-      },
       {
         "date": "2025-09-30",
         "open": 84.33,
@@ -7747,6 +7739,14 @@
         "low": 172.42,
         "close": 175.96,
         "volume": 2487500
+      },
+      {
+        "date": "2026-09-30",
+        "open": 175.67,
+        "high": 180.49,
+        "low": 174.74,
+        "close": 178.76,
+        "volume": 3112000
       }
     ],
     "news": [
@@ -7767,19 +7767,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "eed47d1e-34f8-3033-86b2-82909f127cad",
-        "title": "Dow Jones Futures Rise As Trump To Unveil 'Major Trade Deal' With U.K.; MercadoLibre, AppLovin Soar",
-        "publisher": "Investor's Business Daily",
-        "reportDate": "2025-05-08",
-        "link": "https://finance.yahoo.com/m/eed47d1e-34f8-3033-86b2-82909f127cad/dow-jones-futures-rise-as.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "4a311f79-4b04-3e67-9e21-fe4c2e7072d4",
         "title": "Fortinet Q1 Non-GAAP Earnings, Revenue Rise; Full-Year Non-GAAP Earnings Outlook Lifted",
         "publisher": "MT Newswires",
         "reportDate": "2025-05-08",
         "link": "https://finance.yahoo.com/news/fortinet-q1-non-gaap-earnings-202117731.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "eed47d1e-34f8-3033-86b2-82909f127cad",
+        "title": "Dow Jones Futures Rise As Trump To Unveil 'Major Trade Deal' With U.K.; MercadoLibre, AppLovin Soar",
+        "publisher": "Investor's Business Daily",
+        "reportDate": "2025-05-08",
+        "link": "https://finance.yahoo.com/m/eed47d1e-34f8-3033-86b2-82909f127cad/dow-jones-futures-rise-as.html",
         "type": "STORY"
       },
       {
@@ -7888,23 +7888,23 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 62.13,
-        "industryAvg": 33.11
+        "value": 62.99,
+        "industryAvg": 33.28
       },
       {
         "metric": "P/S Ratio",
-        "value": 17.18,
-        "industryAvg": 7.41
+        "value": 17.42,
+        "industryAvg": 7.65
       },
       {
         "metric": "P/B Ratio",
-        "value": 83.4,
-        "industryAvg": 8.24
+        "value": 84.55,
+        "industryAvg": 8.51
       },
       {
         "metric": "ROE",
         "value": 47.73,
-        "industryAvg": 25.89
+        "industryAvg": 25.900000000000002
       },
       {
         "metric": "ROA",
@@ -7924,7 +7924,7 @@
       {
         "metric": "Net Margin",
         "value": 29.609999999999996,
-        "industryAvg": 19.82
+        "industryAvg": 19.830000000000002
       }
     ]
   }

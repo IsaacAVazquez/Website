@@ -1,10 +1,10 @@
 {
   "symbol": "APH",
-  "lastUpdated": "2026-09-29T07:04:00.244178+00:00",
+  "lastUpdated": "2026-10-01T15:57:42.767348+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-09-29T07:04:00.244178+00:00",
+    "snapshotBuiltAt": "2026-10-01T15:57:42.767348+00:00",
     "sections": {
-      "price": "2026-09-29"
+      "price": "2026-09-30"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 1.9972,
-      "ttmPe": 42.37,
-      "marketCap": 208605224000,
-      "psRatio": 8.05,
-      "pbRatio": 14.93,
-      "pegRatio": 0.71
+      "ttmPe": 42.21,
+      "marketCap": 207816360000,
+      "psRatio": 8.02,
+      "pbRatio": 14.87,
+      "pegRatio": 0.7
     },
     "profitability": {
       "roe": 6.81,
@@ -5305,25 +5305,17 @@
       ]
     },
     "wacc": {
-      "wacc": 13.389999999999999,
-      "costOfEquity": 14.530000000000001,
+      "wacc": 13.55,
+      "costOfEquity": 14.71,
       "costOfDebt": 1.11,
       "taxRate": 40,
-      "beta": 1.2179,
-      "marketCap": 208605224000
+      "beta": 1.243,
+      "marketCap": 207816360000
     },
     "beta": {
-      "beta5y": 1.2179
+      "beta5y": 1.243
     },
     "price": [
-      {
-        "date": "2025-09-29",
-        "open": 61.915,
-        "high": 62.12,
-        "low": 60.135,
-        "close": 60.505,
-        "volume": 16226000
-      },
       {
         "date": "2025-09-30",
         "open": 60.7,
@@ -7331,6 +7323,14 @@
         "low": 83.71,
         "close": 84.34,
         "volume": 10621600
+      },
+      {
+        "date": "2026-09-30",
+        "open": 85.45,
+        "high": 85.81,
+        "low": 83.83,
+        "close": 84.3,
+        "volume": 15793900
       }
     ],
     "news": [
@@ -7383,19 +7383,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "2f61c670-2ce9-32fc-a789-4759f1d8fa9b",
-        "title": "5 Stocks With Recent Price Strength to Maximize Your Gains",
-        "publisher": "Zacks",
-        "reportDate": "2025-05-09",
-        "link": "https://finance.yahoo.com/news/5-stocks-recent-price-strength-102100070.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "77157e20-209b-33bc-b69e-3d9030d48cfc",
         "title": "The stock market’s bulls are charged up. But this S&P 500 target is the test.",
         "publisher": "MarketWatch",
         "reportDate": "2025-05-09",
         "link": "https://finance.yahoo.com/m/77157e20-209b-33bc-b69e-3d9030d48cfc/the-stock-market%E2%80%99s-bulls-are.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "2f61c670-2ce9-32fc-a789-4759f1d8fa9b",
+        "title": "5 Stocks With Recent Price Strength to Maximize Your Gains",
+        "publisher": "Zacks",
+        "reportDate": "2025-05-09",
+        "link": "https://finance.yahoo.com/news/5-stocks-recent-price-strength-102100070.html",
         "type": "STORY"
       },
       {
@@ -7482,43 +7482,43 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 42.37,
-        "industryAvg": 44.15
+        "value": 42.21,
+        "industryAvg": 43.94
       },
       {
         "metric": "P/S Ratio",
-        "value": 8.05,
-        "industryAvg": 3.76
+        "value": 8.02,
+        "industryAvg": 3.74
       },
       {
         "metric": "P/B Ratio",
-        "value": 14.93,
-        "industryAvg": 7.41
+        "value": 14.87,
+        "industryAvg": 7.08
       },
       {
         "metric": "ROE",
         "value": 6.81,
-        "industryAvg": 16.400000000000002
+        "industryAvg": 16.36
       },
       {
         "metric": "ROA",
         "value": 2.3800000000000003,
-        "industryAvg": 7.08
+        "industryAvg": 7.06
       },
       {
         "metric": "Gross Margin",
         "value": 36.75,
-        "industryAvg": 23
+        "industryAvg": 22.95
       },
       {
         "metric": "EBITDA Margin",
         "value": 30.7,
-        "industryAvg": 14.82
+        "industryAvg": 14.81
       },
       {
         "metric": "Net Margin",
         "value": 12.24,
-        "industryAvg": 7.53
+        "industryAvg": 7.51
       }
     ]
   }

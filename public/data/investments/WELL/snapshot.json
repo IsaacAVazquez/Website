@@ -1,10 +1,10 @@
 {
   "symbol": "WELL",
-  "lastUpdated": "2026-09-29T07:04:00.244178+00:00",
+  "lastUpdated": "2026-10-01T15:57:42.767348+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-09-29T07:04:00.244178+00:00",
+    "snapshotBuiltAt": "2026-10-01T15:57:42.767348+00:00",
     "sections": {
-      "price": "2026-09-29"
+      "price": "2026-09-30"
     }
   },
   "source": "prefetched",
@@ -41,9 +41,9 @@
     "fundamentals": {
       "ttmEps": -0.5498,
       "ttmPe": 141.68,
-      "marketCap": 167475409920,
-      "psRatio": 14.46,
-      "pbRatio": 3.82,
+      "marketCap": 165519996480,
+      "psRatio": 14.29,
+      "pbRatio": 3.78,
       "pegRatio": 3.5
     },
     "profitability": {
@@ -5381,25 +5381,17 @@
       ]
     },
     "wacc": {
-      "wacc": 9.85,
-      "costOfEquity": 10.91,
+      "wacc": 10.17,
+      "costOfEquity": 11.28,
       "costOfDebt": 0.96,
       "taxRate": 3,
-      "beta": 0.7432,
-      "marketCap": 167475409920
+      "beta": 0.7901,
+      "marketCap": 165519996480
     },
     "beta": {
-      "beta5y": 0.7432
+      "beta5y": 0.7901
     },
     "price": [
-      {
-        "date": "2025-09-29",
-        "open": 175,
-        "high": 177.23,
-        "low": 174.24,
-        "close": 176.2,
-        "volume": 3427100
-      },
       {
         "date": "2025-09-30",
         "open": 176.53,
@@ -7407,23 +7399,31 @@
         "low": 231.08,
         "close": 232.9,
         "volume": 1898500
+      },
+      {
+        "date": "2026-09-30",
+        "open": 233.2,
+        "high": 234.44,
+        "low": 230.24,
+        "close": 230.24,
+        "volume": 2995800
       }
     ],
     "news": [
-      {
-        "uuid": "1c9bfb27-ffbd-37ba-8fd3-1aa9f390df6b",
-        "title": "UMH Properties Provides Q1 Operating Update, Sees Occupancy Gains",
-        "publisher": "Zacks",
-        "reportDate": "2025-04-04",
-        "link": "https://finance.yahoo.com/news/umh-properties-provides-q1-operating-190000941.html",
-        "type": "STORY"
-      },
       {
         "uuid": "c37d1d5d-4baa-3a2d-b21e-cb420cfaee64",
         "title": "Alpine Income's Q1 Investments Total $79.2M, Dispositions Reach $11.7M",
         "publisher": "Zacks",
         "reportDate": "2025-04-04",
         "link": "https://finance.yahoo.com/news/alpine-incomes-q1-investments-total-150400608.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "1c9bfb27-ffbd-37ba-8fd3-1aa9f390df6b",
+        "title": "UMH Properties Provides Q1 Operating Update, Sees Occupancy Gains",
+        "publisher": "Zacks",
+        "reportDate": "2025-04-04",
+        "link": "https://finance.yahoo.com/news/umh-properties-provides-q1-operating-190000941.html",
         "type": "STORY"
       },
       {
@@ -7443,19 +7443,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "bc41e0cd-3b1b-3c8d-a2da-6519281550c3",
-        "title": "Terreno Realty Expands Portfolio With Property Buyout in Redmond",
-        "publisher": "Zacks",
-        "reportDate": "2025-04-11",
-        "link": "https://finance.yahoo.com/news/terreno-realty-expands-portfolio-property-152800503.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "d1906480-47aa-351e-b484-79678bc4e3bc",
         "title": "Why Camden Property Remains a Solid Hold in the Current Market",
         "publisher": "Zacks",
         "reportDate": "2025-04-11",
         "link": "https://finance.yahoo.com/news/why-camden-property-remains-solid-153900499.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "bc41e0cd-3b1b-3c8d-a2da-6519281550c3",
+        "title": "Terreno Realty Expands Portfolio With Property Buyout in Redmond",
+        "publisher": "Zacks",
+        "reportDate": "2025-04-11",
+        "link": "https://finance.yahoo.com/news/terreno-realty-expands-portfolio-property-152800503.html",
         "type": "STORY"
       },
       {
@@ -7554,17 +7554,17 @@
       {
         "metric": "P/E (TTM)",
         "value": 141.68,
-        "industryAvg": 73.42
+        "industryAvg": 72.44
       },
       {
         "metric": "P/S Ratio",
-        "value": 14.46,
-        "industryAvg": 9
+        "value": 14.29,
+        "industryAvg": 8.88
       },
       {
         "metric": "P/B Ratio",
-        "value": 3.82,
-        "industryAvg": 2.88
+        "value": 3.78,
+        "industryAvg": 2.84
       },
       {
         "metric": "ROE",
