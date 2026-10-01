@@ -2,7 +2,7 @@
 
 Day-to-day operational and hygiene notes for the live site. For the public vulnerability-disclosure policy, see the root [`SECURITY.md`](../SECURITY.md).
 
-**Last updated:** 2026-09-21
+**Last updated:** 2026-09-30
 
 ---
 
@@ -77,7 +77,6 @@ These power the live UI. They are cached, rate-limited where appropriate, and mu
 - `/api/search`
 - `/api/rss`
 - `/api/fantasy-data`
-- `/api/stocks`
 - `/api/data-revisions`
 - `/api/investments/data/[symbol]`
 - `/api/investments/quotes`

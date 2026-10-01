@@ -52,9 +52,7 @@ content/
 │   ├── spacex-mission-control.md
 │   └── wine-cellar.md
 │
-├── blog-new/
-│   ├── index.md                        # Blog landing page
-│   └── post-template.md                # Template for blog posts
+├── blog/                               # Canonical live MDX articles (content/blog/*.mdx)
 │
 ├── components/
 │   ├── hero.md                         # Historical hero section guide
@@ -213,31 +211,11 @@ These files mirror the current live routes and point back to the route files and
 
 ### Blog Structure
 
-#### `blog-new/index.md`
-Blog landing page featuring:
-- Introduction to writing topics
-- Category organization (Product Management, QA, Civic Tech, AI, MBA Journey)
-- Featured posts with descriptions
-- Recent posts list
-- Posts organized by category
-- Popular tags
-- Newsletter subscription CTA
-
-**Design:** Scannable, well-organized, encourages exploration
-
----
-
-#### `blog-new/post-template.md`
-Comprehensive blog post template including:
-- YAML front matter (title, excerpt, category, tags, SEO)
-- Article structure (hook, table of contents, main sections)
-- Content patterns (code examples, visual elements, data tables)
-- Real-world examples and case studies
-- Practical application sections
-- Key takeaways and recommendations
-- Discussion prompts and author bio
-
-**Use:** Copy for each new blog post to ensure consistency
+#### `content/blog/*.mdx`
+The live writing articles are maintained under `content/blog/` as MDX files with frontmatter parsed by `src/lib/blog.ts`. Each article contains:
+- YAML front matter (`title`, `publishedAt`, `excerpt`, `category`, `tags`, optional `coverImage`, `author`, `cluster`)
+- Full MDX body rendered by the Next.js writing page (`/writing/[slug]`)
+- Automated cover photo management via `scripts/data/articleCoverImages.ts` (`npm run update:article-images`) or fallback to the dynamic `/writing/[slug]/opengraph-image` card.
 
 ---
 
@@ -456,13 +434,12 @@ seo:
 7. Commit and deploy
 
 ### Creating a New Blog Post
-1. Copy `blog-new/post-template.md`
-2. Rename to `blog-new/[post-slug].md`
-3. Write content following template structure
-4. Add images to `/public/blog-images/`
-5. Update `blog-new/index.md` to feature post
-6. Test formatting and links
-7. Commit and deploy
+1. Create a new file in `content/blog/[slug].mdx`
+2. Include required YAML front matter (`title`, `publishedAt`, `excerpt`, `category`, `tags`)
+3. Write content in MDX
+4. Configure cover photo plan in `scripts/data/articleCoverImages.ts` (or let it fall back to `/writing/[slug]/opengraph-image`)
+5. Test formatting and links with `npm test`
+6. Commit and deploy
 
 ---
 

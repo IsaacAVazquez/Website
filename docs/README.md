@@ -2,9 +2,9 @@
 
 Current map of tracked Markdown documentation.
 
-**Last updated:** 2026-09-22
+**Last updated:** 2026-09-30
 
-Tracked Markdown audit scope: `git ls-files '*.md'` returned 308 tracked files on 2026-09-21, split across `.agents/` (104), `.impeccable/` (79), `docs/` (55), `content/` outside the blog (44), the repository root (23), and three elsewhere. `ds-bundle/` is gitignored and no longer tracked. Only the root and `docs/` files are website documentation, so the working set this index governs is about 78 files. Published articles are `.mdx` under `content/blog/` and are counted separately. Re-run the command rather than trusting these numbers.
+Tracked Markdown audit scope: `git ls-files -- '*.md' '*.mdx'` returned 621 tracked files on 2026-09-30, split across `content/blog/` (244 live articles), `.agents/` (104), `.impeccable/` (79), `docs/` (65), `content/changelog/` (59), `content/` historical snapshots (44), the repository root (23), and three elsewhere. `ds-bundle/` is gitignored and not tracked. Only the root and `docs/` files are website documentation, so the working set this index governs is about 88 files. Re-run the command rather than trusting these numbers.
 
 The 2026-05-03 project coverage pass adds markdown snapshots for the remaining live portfolio projects listed in `src/constants/caseStudies.ts`.
 

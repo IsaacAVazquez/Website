@@ -2,7 +2,7 @@
 
 Current metadata and structured-data reference.
 
-**Last updated:** 2026-09-21
+**Last updated:** 2026-09-30
 
 ---
 
