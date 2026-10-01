@@ -121,6 +121,28 @@ describe("World Cup blog content rules", () => {
 });
 
 describe("article search metadata rules", () => {
+  it("uses complete, distinct search snippets for professional writing topics", () => {
+    const files = fs.readdirSync(blogDirectory).filter((file) => /\.mdx?$/.test(file));
+    const titles = new Set<string>();
+
+    for (const file of files) {
+      const { data } = matter(fs.readFileSync(path.join(blogDirectory, file), "utf8"));
+      if (!data.cluster) continue;
+
+      // Check authored text before the fitting helpers can silently clip it.
+      const title = data.seo?.title;
+      const description = data.seo?.description;
+      expect(typeof title).toBe("string");
+      expect(typeof description).toBe("string");
+      expect(fitSearchTitle(title)).toBe(title);
+      expect(fitMetaDescription(description)).toBe(description);
+      expect(description).toMatch(/[.!?]$/);
+      expect(titles.has(title.toLowerCase())).toBe(false);
+      titles.add(title.toLowerCase());
+    }
+    expect(titles.size).toBeGreaterThan(0);
+  });
+
   it("fits every article title and description within the configured limits", () => {
     const files = fs
       .readdirSync(blogDirectory)
