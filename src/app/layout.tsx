@@ -1,3 +1,4 @@
+import type { Viewport } from "next";
 import "./globals.css";
 import {
   Anton,
@@ -84,6 +85,17 @@ const c97GreatVibes = Great_Vibes({
   preload: false,
 });
 
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  viewportFit: "cover",
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#f1ebdf" },
+    { media: "(prefers-color-scheme: dark)", color: "#14100c" },
+  ],
+  colorScheme: "light dark",
+};
+
 export const metadata = constructMetadata();
 
 export default function RootLayout({
@@ -98,10 +110,6 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <head>
-        <meta name="theme-color" media="(prefers-color-scheme: light)" content="#f1ebdf" />
-        <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#14100c" />
-        <meta name="color-scheme" content="light dark" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
         <meta name="mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="default" />
