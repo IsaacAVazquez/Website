@@ -2,6 +2,7 @@
 title: "MCP Is Becoming the Default Integration Layer. Here Is What That Actually Means for How You Build."
 excerpt: "Model Context Protocol is the closest thing the AI tooling space has to a de facto standard right now. Most product teams do not yet know what to do with that fact. Here is what it is, why it is winning, and what it changes for teams building AI-connected products."
 publishedAt: "2026-04-07"
+updatedAt: "2026-10-01"
 category: "Technology"
 tags: ["AI", "MCP", "Product Management", "Software Architecture", "Developer Tools"]
 featured: false
@@ -47,7 +48,7 @@ The practical implication for product teams is less about adopting MCP itself an
 
 If you are building a product that other teams or developers will connect AI agents to, having an MCP server is becoming a table-stakes integration path. The same way REST APIs became the expected way to expose data to external systems, MCP servers are becoming the expected way to expose functionality to AI systems. Teams that build this now are ahead of an expectation that will harden over the next 12 to 18 months.
 
-If you are building internal AI tooling, MCP changes the build-versus-buy calculation for integrations. The existence of an MCP ecosystem means there are existing servers for common tools, including GitHub, Slack, databases, file systems, and web browsing, that you can use rather than build. The time to a working agent with real tool access has compressed significantly because of this.
+If you are building internal AI tooling, MCP changes the build-versus-buy calculation for integrations. I get into that calculation in [Build vs Buy for Agentic AI: When Startups Should Roll Their Own](/writing/build-vs-buy-agentic-ai-platform). The existence of an MCP ecosystem means there are existing servers for common tools, including GitHub, Slack, databases, file systems, and web browsing, that you can use rather than build. The time to a working agent with real tool access has compressed significantly because of this.
 
 If you are evaluating AI platforms for your team, MCP compatibility is a meaningful differentiator. A platform that supports MCP clients lets you connect the tools you already have. One that does not means you are locked into whatever integrations that platform chooses to build.
 
@@ -60,3 +61,5 @@ For teams building internal tooling, I would look at the existing MCP server eco
 For everyone else, I think the most useful thing is just knowing that this is the direction the integration layer is going. The decisions you make about how your systems expose functionality in the next 12 months will be easier to maintain if they account for MCP than if they do not.
 
 The standard is not final. The specification will evolve. But the pattern it establishes, a common interface between AI models and external systems, is the right pattern, and the ecosystem that has formed around it has enough momentum that betting against it requires a specific thesis for why something better will displace it. I do not have that thesis.
+
+For how models, tools, and orchestrators fit together, see [Agentic AI in Plain English: What It Is and Why Product Managers Should Care](/writing/agentic-ai-explained-for-product-managers). My [Agent Build Index](/agent-build-index) ranks the public agent repositories gaining stars on GitHub each week, and my [AI dev tools directory](/ai-dev-tools) covers the coding and agent tools themselves.

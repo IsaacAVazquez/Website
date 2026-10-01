@@ -2,6 +2,7 @@
 title: "Interchange IQ: Building a Payment Fee Analyzer Around Real Processor Economics"
 excerpt: "I built Interchange IQ to make payment processor comparisons actually legible. It models flat-rate vs. interchange-plus pricing using published interchange data, card mix, and breakeven logic."
 publishedAt: "2026-04-02"
+updatedAt: "2026-10-01"
 category: "Payments"
 tags: ["Payments", "Interchange", "Fintech Product", "Pricing", "Processor Economics", "Product Strategy", "Next.js"]
 featured: false
@@ -48,7 +49,7 @@ Card mix is where processor comparisons start to become real. A business with a 
 
 I also wanted to compare flat-rate and interchange-plus on the same surface rather than implicitly arguing for one before showing the math. Interchange IQ places both options side by side so you can see when simplicity is worth paying for and when it becomes too expensive. A smaller operator may decide flat rate is still the right answer. A larger operator may realize the markup on interchange-plus becomes compelling once volume rises or average ticket size increases.
 
-The cheapest option at one ticket size is not necessarily the cheapest option at another, which is why the tool includes breakeven logic. A single "best processor" label is too shallow. The better question is at what point does the economic logic flip. Breakeven analysis teaches you how the market works, not just what the calculator currently outputs.
+The cheapest option at one ticket size is not necessarily the cheapest option at another, which is why the tool includes breakeven logic. A single "best processor" label is too shallow. The better question is at what point does the economic logic flip. Breakeven analysis teaches you how the market works, not just what the calculator currently outputs. For how I think about pricing as product work more broadly, see [Treating Pricing as Product Work, Not a Finance-Only Exercise](/writing/pricing-strategy-initiative).
 
 ## How The Experience Works
 

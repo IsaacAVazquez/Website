@@ -2,6 +2,7 @@
 title: "Vibe Coding Works Until It Doesn't, and I Can Tell You Where the Line Is"
 excerpt: "I vibe code parts of this site and I am glad I do. But after a year of watching AI-generated code succeed and fail in different settings, the boundary between where vibe coding is the right call and where it quietly builds a liability is clearer than the discourse suggests."
 publishedAt: "2026-03-20"
+updatedAt: "2026-10-01"
 category: "Software Development"
 tags: ["Vibe Coding", "AI Coding", "Software Engineering", "Code Quality", "AI Coding Tools", "Technical Debt", "Engineering Judgment"]
 featured: false
@@ -15,7 +16,7 @@ seo:
 
 # Vibe Coding Works Until It Doesn't, and I Can Tell You Where the Line Is
 
-I want to start with a confession that makes this article more credible, not less. Large parts of this website were vibe coded. I described what I wanted, an AI wrote most of the code, I looked at the result rather than the diff, and I shipped it. The Formula 1 dashboard, the transit board, several of the data pipelines behind the sports pages. If I had built all of that the traditional way, most of it would not exist, because the cost in evenings and weekends would have exceeded what a portfolio side project is worth.
+I want to start with a confession that makes this article more credible, not less. Large parts of this website were vibe coded. I described what I wanted, an AI wrote most of the code, I looked at the result rather than the diff, and I shipped it. The [Formula 1 dashboard](/formula-1), the [transit board](/bay-area-transit), several of the data pipelines behind the sports pages. If I had built all of that the traditional way, most of it would not exist, because the cost in evenings and weekends would have exceeded what a portfolio side project is worth.
 
 So I am not here to tell you vibe coding is irresponsible. I am here to tell you where it stops working, because after a year of building this way on my own projects while spending my career around production systems and QA discipline, I think the line is much more specific than either the boosters or the skeptics make it sound.
 
@@ -38,3 +39,5 @@ This sounds like a small shift and it is actually the whole difference. Reading 
 There is a QA instinct that transfers directly here. In testing, you allocate scrutiny by risk, not uniformly. Nobody manually retests the marketing page with the rigor they apply to the payment flow. Vibe coding deserves the same risk-tiered treatment. The question to ask before any piece of work is not whether AI should write the code. It is what happens if this code is wrong in a way I do not notice, and how long would it take me to find out. If the answers are nothing much and immediately, vibe away. If the answers are something serious and possibly never, slow down and read.
 
 I would also argue the line moves over time, in one direction. Models keep getting better at exactly the failure modes that used to require human review, and the tooling around generated code, the tests, the static analysis, the agent-driven verification, keeps tightening the loop. Things I would not have vibe coded a year ago, I vibe code now. But the structure of the argument does not change as the line moves. There will always be a region where failures are silent and expensive, and in that region, somebody still has to actually understand the code. For the foreseeable future, that somebody is you.
+
+For moving from a fast prototype to something that holds up, see [Building Reliable Software Systems: Architectural Principles for Scale](/writing/building-reliable-software-systems), and my [AI dev tools directory](/ai-dev-tools) lists the coding assistants I'm talking about here.
