@@ -7,6 +7,7 @@ All notable changes to this repository are documented here. Format: `YYYY-MM-DD`
 ## 2026-10-01
 
 - Route the remaining local tools through the shared storage helper ([#533](https://github.com/IsaacAVazquez/Website/pull/533)).
+- Add agent skills from addyosmani/agent-skills and taste-skill ([#541](https://github.com/IsaacAVazquez/Website/pull/541)).
 
 ---
 
