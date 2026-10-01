@@ -10,7 +10,7 @@ jest.mock("@/components/ui/AuthorBio", () => ({
 
 jest.mock("next/image", () => ({
   __esModule: true,
-  default: ({ alt }: { alt: string }) => <img alt={alt} />,
+  default: ({ alt, src }: { alt: string; src: string }) => <img src={src} alt={alt} />,
 }));
 
 jest.mock("@/lib/blog", () => ({
@@ -68,6 +68,8 @@ describe("Writing article page", () => {
 
     expect(screen.getAllByRole("link", { name: "PM Workflows" })).toHaveLength(2);
     expect(screen.getByRole("heading", { level: 1, name: "Test Post" })).toBeVisible();
+    expect(screen.getByRole("link", { name: "Isaac Vazquez" })).toHaveAttribute("href", "/about");
+    expect(screen.getByRole("link", { name: "Isaac Vazquez" })).toHaveAttribute("rel", "author");
     expect(screen.getByText("Apr 9, 2026")).toBeVisible();
     expect(screen.getByRole("img", { name: "Custom cover image alt" })).toBeVisible();
     expect(

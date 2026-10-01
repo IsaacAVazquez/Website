@@ -209,7 +209,9 @@ export default async function BlogPostPage({ params }: PageProps) {
               <h1 className="c97-display">{post.title}</h1>
 
               <p className="c97-meta">
-                <span>Isaac Vazquez</span>
+                <Link href="/about" rel="author" className="c97-microlink">
+                  Isaac Vazquez
+                </Link>
                 <time dateTime={post.publishedAt}>
                   {publishedDateFormatter.format(new Date(post.publishedAt))}
                 </time>

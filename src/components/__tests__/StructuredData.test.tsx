@@ -140,4 +140,68 @@ describe("StructuredData", () => {
     expect(schema.name).toBe("Accessibility Statement");
     expect(schema.title).toBeUndefined();
   });
+
+  it("does not leak the nonstandard items key on BreadcrumbList", () => {
+    const schema = readSchema(
+      renderToStaticMarkup(
+        <StructuredData
+          type="BreadcrumbList"
+          data={{
+            items: [
+              { "@type": "ListItem", position: 1, name: "Home", item: "https://isaacvazquez.com" },
+            ],
+          }}
+        />
+      )
+    );
+
+    expect(schema["@type"]).toBe("BreadcrumbList");
+    expect(schema.itemListElement).toBeDefined();
+    expect(schema.items).toBeUndefined();
+  });
+
+  it("does not leak the nonstandard questions key on FAQPage", () => {
+    const schema = readSchema(
+      renderToStaticMarkup(
+        <StructuredData
+          type="FAQPage"
+          data={{
+            questions: [
+              {
+                "@type": "Question",
+                name: "How often do rankings refresh?",
+                acceptedAnswer: { "@type": "Answer", text: "Daily." },
+              },
+            ],
+          }}
+        />
+      )
+    );
+
+    expect(schema["@type"]).toBe("FAQPage");
+    expect(schema.mainEntity).toBeDefined();
+    expect(schema.questions).toBeUndefined();
+  });
+
+  it("does not leak Fantasy Football defaults into SportsApplication without explicit inputs", () => {
+    const schema = readSchema(
+      renderToStaticMarkup(
+        <StructuredData
+          type="SportsApplication"
+          data={{
+            name: "PGA Tour Pulse",
+            description: "Golf leaderboard dashboard",
+            url: "https://isaacvazquez.com/golf",
+            applicationCategory: "SportsApplication",
+          }}
+        />
+      )
+    );
+
+    expect(schema.name).toBe("PGA Tour Pulse");
+    expect(schema.about).toBeUndefined();
+    expect(schema.audience).toBeUndefined();
+    expect(schema.featureList).toBeUndefined();
+    expect(schema.offers).toBeUndefined();
+  });
 });

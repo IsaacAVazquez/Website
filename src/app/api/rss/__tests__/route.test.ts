@@ -50,7 +50,7 @@ describe("GET /api/rss", () => {
     const body = await response.text();
 
     expect(response.status).toBe(200);
-    expect(response.headers.get("Content-Type")).toBe("application/xml");
+    expect(response.headers.get("Content-Type")).toBe("application/rss+xml; charset=utf-8");
     expect(body).toContain("<rss version=\"2.0\"");
     expect(body).toContain("<title>Alpha &amp; Beta</title>");
     expect(body).toContain("<description>Alpha &amp; Beta description</description>");
