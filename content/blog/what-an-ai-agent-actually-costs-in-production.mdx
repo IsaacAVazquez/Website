@@ -1,16 +1,16 @@
 ---
 title: "What an AI Agent Actually Costs in Production, From Someone Who Pays the Bills"
-excerpt: "Token prices keep falling and agent bills keep rising, and the gap between those two facts is where most cost models fall apart. A breakdown of where agent spend actually comes from, why per-token math misleads, and the levers that move the bill."
+excerpt: "An AI agent makes repeated model calls as it works through a task, so its cost depends on the number of steps, the context carried into each call, and retries. I look at those costs per completed task, along with caching and limits on how long a run can continue."
 publishedAt: "2026-05-14"
-updatedAt: "2026-06-22"
+updatedAt: "2026-09-30"
 category: "Agentic AI"
 tags: ["AI Agents", "AI Costs", "Model Economics", "Agentic AI", "Unit Economics", "Inference Costs", "AI Products", "Token Pricing"]
 featured: false
 author: "Isaac Vazquez"
 cluster: "Agentic AI"
 seo:
-  title: "AI Agent Production Costs: What Agents Really Cost to Run in 2026"
-  description: "Why AI agent costs keep surprising teams even as token prices fall. A practical breakdown of agent cost drivers, including iteration counts, context accumulation, retries, and caching, with the levers that actually reduce spend."
+  title: "What AI Agents Cost in Production"
+  description: "I explain how repeated model calls, growing context, retries, and caching shape AI agent costs, and the controls I use to keep spending predictable."
   keywords: ["AI agent costs", "AI inference costs", "agent unit economics", "token pricing 2026", "AI cost optimization", "prompt caching", "agentic AI production", "LLM cost management"]
 ---
 
