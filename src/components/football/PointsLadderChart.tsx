@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo } from "react";
+import { useMemo, type KeyboardEvent } from "react";
 import { LEAGUE_ZONE_LABEL, formatPointsGap, leagueZone, pointsLadder, type LeagueZone } from "./ladderGeometry";
 import "./points-ladder.css";
 
@@ -65,8 +65,8 @@ function zoneLineLabel(afterPosition: number, clubCount: number, short: boolean)
  * The page's signature, shared by Premier League Pulse and La Liga Pulse: a
  * vertical points axis with every club placed by its points total, so the
  * gaps to the title race, the European lines, and the drop read as real
- * distance. Marks respond to a pointer; the standings table below is the
- * keyboard path to the same selection.
+ * distance. Each mark supports pointer and keyboard selection, and the
+ * standings table below provides the same selection in a tabular view.
  */
 export function PointsLadder({ clubs, selectedId, onSelect, title }: PointsLadderProps) {
   const plotHeight = Math.max(360, clubs.length * ROW_HEIGHT);
@@ -99,16 +99,23 @@ export function PointsLadder({ clubs, selectedId, onSelect, title }: PointsLadde
     ROW_HEIGHT
   );
 
+  const handleMarkKeyDown = (event: KeyboardEvent<SVGGElement>, clubId: string) => {
+    if (event.key !== "Enter" && event.key !== " ") return;
+    event.preventDefault();
+    onSelect(clubId);
+  };
+
   const renderLadder = (variant: "wide" | "narrow") => {
     const W = variant === "wide" ? WIDE_W : NARROW_W;
     return (
-        <svg
-          viewBox={`0 0 ${W} ${height}`}
-          data-variant={variant}
-          role="img"
-          aria-labelledby={`ladder-title-${variant} ladder-desc-${variant}`}
-          className={`c97-points-ladder c97-points-ladder--${variant}`}
-        >
+      <svg
+        viewBox={`0 0 ${W} ${height}`}
+        data-variant={variant}
+        role="group"
+        aria-labelledby={`ladder-title-${variant}`}
+        aria-describedby={`ladder-desc-${variant}`}
+        className={`c97-points-ladder c97-points-ladder--${variant}`}
+      >
           <title id={`ladder-title-${variant}`}>{title}</title>
           <desc id={`ladder-desc-${variant}`}>
             {`${marks.length} clubs placed by points, from ${strongest.points} at the top to ${weakest.points} at the bottom.`}
@@ -154,10 +161,20 @@ export function PointsLadder({ clubs, selectedId, onSelect, title }: PointsLadde
             const tone = normalizeHex(club.accentColor) ?? ZONE_TONE[mark.zone];
 
             return (
-              <g key={mark.id}>
+              <g
+                key={mark.id}
+                className="c97-ladder-mark"
+                role="button"
+                tabIndex={0}
+                aria-label={`Show ${club.label} details`}
+                onClick={() => onSelect(mark.id)}
+                onKeyDown={(event) => handleMarkKeyDown(event, mark.id)}
+                style={{ cursor: "pointer" }}
+              >
                 {/* The label's target stops short of the axis, so a click on a
                     dot lands on that dot's own target below. */}
                 <rect
+                  className="c97-ladder-focus-label"
                   data-ladder-hit="label"
                   data-club-id={mark.id}
                   x={LABEL_X - 6}
@@ -165,8 +182,7 @@ export function PointsLadder({ clubs, selectedId, onSelect, title }: PointsLadde
                   width={W - LABEL_X - 2}
                   height={hitHeight}
                   fill="transparent"
-                  onClick={() => onSelect(mark.id)}
-                  style={{ cursor: "pointer" }}
+                  strokeWidth={2}
                 />
                 {/* Clubs level on points share a dot, so this picks one of
                     them and the label stays the exact path. */}
@@ -177,8 +193,6 @@ export function PointsLadder({ clubs, selectedId, onSelect, title }: PointsLadde
                   cy={trueY}
                   r={DOT_HIT_RADIUS}
                   fill="transparent"
-                  onClick={() => onSelect(mark.id)}
-                  style={{ cursor: "pointer" }}
                 />
                 {Math.abs(labelY - trueY) > 2 ? (
                   <line
@@ -214,6 +228,15 @@ export function PointsLadder({ clubs, selectedId, onSelect, title }: PointsLadde
                     pointerEvents="none"
                   />
                 ) : null}
+                <circle
+                  className="c97-ladder-focus-ring"
+                  cx={AXIS_X}
+                  cy={trueY}
+                  r={12.5}
+                  fill="none"
+                  strokeWidth={2}
+                  pointerEvents="none"
+                />
                 <text x={LABEL_X} y={labelY + 5} className="c97-ladder-mark-label" pointerEvents="none">
                   <tspan className="c97-ladder-mark-name">{club.label}</tspan>
                   <tspan className="c97-ladder-mark-points" dx={8}>
