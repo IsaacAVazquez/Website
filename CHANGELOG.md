@@ -13,6 +13,7 @@ All notable changes to this repository are documented here. Format: `YYYY-MM-DD`
 - Repair the 12 findings from the October 2 codebase audit ([#552](https://github.com/IsaacAVazquez/Website/pull/552)).
 - Second repo-wide over-engineering cut ([#551](https://github.com/IsaacAVazquez/Website/pull/551)).
 - Bump globals from 16.5.0 to 17.12.0 ([#546](https://github.com/IsaacAVazquez/Website/pull/546)).
+- Remove visible em and en dashes from site copy and changelog ([#553](https://github.com/IsaacAVazquez/Website/pull/553)).
 
 ---
 
