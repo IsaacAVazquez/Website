@@ -44,8 +44,8 @@ const stubPost = {
   excerpt: "What post A is about.",
   readingTime: "5 min read",
   category: "Product",
-  // The homepage lists clustered posts only, and September is the month
-  // engines abbreviate differently.
+  // The homepage pins its write-ups, and September is the month engines
+  // abbreviate differently.
   cluster: "PM Workflows",
   publishedAt: "2026-09-25",
 };

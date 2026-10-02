@@ -8,7 +8,7 @@ export const profile = {
   description:
     "Isaac Vazquez is a second-year Berkeley Haas MBA candidate moving into product, with six years in campaign data and QA and a 2026 growth internship at Juno.",
   disambiguatingDescription:
-    "UC Berkeley Haas MBA candidate based in Berkeley, California, moving into product management after six years across civic technology, QA, analytics, and SaaS.",
+    "UC Berkeley Haas MBA candidate based in Berkeley, California, moving into product roles after six years across civic technology, QA, analytics, and SaaS.",
   shortDescription:
     "UC Berkeley Haas MBA candidate with a background in QA, analytics, and product work across SaaS, civic tech, and fintech-style tools.",
   location: {
