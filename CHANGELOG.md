@@ -11,6 +11,7 @@ All notable changes to this repository are documented here. Format: `YYYY-MM-DD`
 - Bump tsx from 4.23.1 to 4.23.15 ([#544](https://github.com/IsaacAVazquez/Website/pull/544)).
 - Bump contourpy from 1.3.3 to 1.4.0 in /scripts ([#549](https://github.com/IsaacAVazquez/Website/pull/549)).
 - Repair the 12 findings from the October 2 codebase audit ([#552](https://github.com/IsaacAVazquez/Website/pull/552)).
+- Second repo-wide over-engineering cut ([#551](https://github.com/IsaacAVazquez/Website/pull/551)).
 
 ---
 
