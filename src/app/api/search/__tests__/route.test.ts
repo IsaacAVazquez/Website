@@ -232,7 +232,7 @@ describe("GET /api/search", () => {
     expect(body.total).toBeGreaterThanOrEqual(10);
   });
 
-  it("collapses a project indexed as both a live tool and a case study into one live-tool result", async () => {
+  it("indexes a case study with a live tool once, at the tool's URL", async () => {
     const response = await GET(
       makeRequest("?q=Fantasy%20Football%20Analytics%20Platform")
     );
@@ -242,11 +242,22 @@ describe("GET /api/search", () => {
     const matches = body.results.filter(
       (r: { title: string }) => r.title === "Fantasy Football Analytics Platform"
     );
-    // Was two (case study at /portfolio/... + live tool at /fantasy-football);
-    // dedupe collapses to a single entry, preferring the live tool.
     expect(matches).toHaveLength(1);
     expect(matches[0].url).toBe("/fantasy-football");
-    expect(matches[0].id).toBe("page-fantasy-football");
+    expect(matches[0].id).toBe("project-case-fantasy-football-analytics");
+  });
+
+  it("finds a dashboard by its case study title, categorized from toolCategories", async () => {
+    const response = await GET(makeRequest("?q=NFL%20Pulse"));
+    const body = await response.json();
+
+    expect(response.status).toBe(200);
+    expect(body.results[0]).toMatchObject({
+      title: "NFL Pulse",
+      url: "/nfl",
+      type: "project",
+      category: "Sports",
+    });
   });
 
   it("indexes the best ball rankings and draft assistant as a distinct page", async () => {
@@ -261,7 +272,7 @@ describe("GET /api/search", () => {
           title: "Best Ball Rankings and Draft Assistant",
           url: "/fantasy-football/best-ball",
           type: "project",
-          category: "Fantasy Football Analytics",
+          category: "Sports",
         }),
       ])
     );
@@ -281,7 +292,7 @@ describe("GET /api/search", () => {
           title: "Fantasy Football Mock Draft Simulator",
           url: "/fantasy-football/mock-draft",
           type: "project",
-          category: "Fantasy Football Analytics",
+          category: "Sports",
         }),
       ])
     );
@@ -301,7 +312,7 @@ describe("GET /api/search", () => {
           title: "Fantasy Football Trade Calculator",
           url: "/fantasy-football/trade-calculator",
           type: "project",
-          category: "Fantasy Football Analytics",
+          category: "Sports",
           excerpt:
             "A preseason one-QB redraft estimate using expert consensus, mock-draft ADP, and league settings.",
         }),

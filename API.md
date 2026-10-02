@@ -73,7 +73,7 @@ Current API route inventory for the app.
 
 ### Search limitations
 
-`/api/search` is currently a small, mostly hardcoded index. It should be documented honestly:
+`/api/search` indexes blog posts, the case studies in `src/constants/caseStudies.ts` (categorized through `toolCategories.ts`), and a short table of pages with no case study. It should be documented honestly:
 
 - useful for the existing UI
 - not comprehensive
