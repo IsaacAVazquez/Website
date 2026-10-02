@@ -1,4 +1,3 @@
-import type { HTMLAttributes } from "react";
 import { fireEvent, render, screen, within } from "@testing-library/react";
 import { MBAJobsClient } from "../mba-jobs-client";
 import { DEFAULT_MBA_JOBS_STATE } from "../mba-jobs-state";
@@ -127,15 +126,6 @@ jest.mock("next/navigation", () => ({
     replace: jest.fn(),
   }),
   useSearchParams: () => currentSearchParams,
-}));
-
-jest.mock("framer-motion", () => ({
-  motion: {
-    div: ({ children, ...props }: HTMLAttributes<HTMLDivElement>) => (
-      <div {...props}>{children}</div>
-    ),
-  },
-  useReducedMotion: () => true,
 }));
 
 jest.mock("@/hooks/useMBAJobs", () => ({

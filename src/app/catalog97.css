@@ -2692,6 +2692,42 @@ select.c97-field {
 }
 
 /*
+ * Overlay entrances. The drawers, the compare tray, the compare modal, and
+ * the research tab panel mount when they open and unmount when they close,
+ * so each transitions in from `@starting-style` and there is no exit
+ * animation. The reduced-motion block above holds these to 0.01ms.
+ */
+.c97-enter-fade,
+.c97-enter-slide-x,
+.c97-enter-slide-y,
+.c97-enter-pop {
+  transition:
+    opacity 0.24s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.24s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@starting-style {
+  .c97-enter-fade,
+  .c97-enter-slide-x,
+  .c97-enter-slide-y,
+  .c97-enter-pop {
+    opacity: 0;
+  }
+
+  .c97-enter-slide-x {
+    transform: translateX(28px);
+  }
+
+  .c97-enter-slide-y {
+    transform: translateY(24px);
+  }
+
+  .c97-enter-pop {
+    transform: translateY(18px) scale(0.98);
+  }
+}
+
+/*
  * Plate reveal. `Catalog97Reveal` arms each [data-reveal] element and releases
  * it on scroll, and it never arms anything under reduced motion.
  */

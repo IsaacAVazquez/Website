@@ -1,6 +1,5 @@
 "use client";
 
-import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { GitCompareArrows, Star, X } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 
@@ -108,7 +107,6 @@ export function PlayerDetailDrawer({ player, publishedRank, publishedRankLabel =
   compareAvailable = true,
   onLogPick,
 }: PlayerDetailDrawerProps) {
-  const reduceMotion = useReducedMotion();
   const panelRef = useRef<HTMLDivElement>(null);
   const isOpen = Boolean(player);
 
@@ -141,15 +139,9 @@ export function PlayerDetailDrawer({ player, publishedRank, publishedRankLabel =
   const compareDisabled = !inCompare && compare.isFull;
 
   return (
-    <AnimatePresence>
+    <>
       {isOpen && player && (
-        <motion.div
-          className="fixed inset-0 z-[60] flex items-end justify-center sm:items-stretch sm:justify-end"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: reduceMotion ? 0 : 0.18 }}
-        >
+        <div className="c97-enter-fade fixed inset-0 z-[60] flex items-end justify-center sm:items-stretch sm:justify-end">
           <button
             type="button"
             aria-label="Close player detail"
@@ -158,17 +150,13 @@ export function PlayerDetailDrawer({ player, publishedRank, publishedRankLabel =
             style={{ background: "color-mix(in srgb, var(--c97-ink) 38%, transparent)" }}
             tabIndex={-1}
           />
-          <motion.div
+          <div
             ref={panelRef}
             role="dialog"
             aria-modal="true"
             aria-label={`${player.name} detail`}
             tabIndex={-1}
-            initial={reduceMotion ? { opacity: 0 } : { opacity: 0, y: 24 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={reduceMotion ? { opacity: 0 } : { opacity: 0, y: 24 }}
-            transition={{ duration: reduceMotion ? 0 : 0.24, ease: [0.25, 0.46, 0.45, 0.94] }}
-            className="relative flex max-h-[88vh] w-full flex-col gap-4 overscroll-contain overflow-y-auto border p-5 sm:max-h-none sm:h-full sm:w-[26rem]"
+            className="c97-enter-slide-y relative flex max-h-[88vh] w-full flex-col gap-4 overscroll-contain overflow-y-auto border p-5 sm:max-h-none sm:h-full sm:w-[26rem]"
             style={{
               borderColor: "var(--c97-rule)",
               background: "var(--c97-surface)",
@@ -480,9 +468,9 @@ export function PlayerDetailDrawer({ player, publishedRank, publishedRankLabel =
               Ranks, tiers, and expert ranges come from the published FantasyPros consensus snapshot. Queue,
               notes, and compare stay on this device.
             </p>
-          </motion.div>
-        </motion.div>
+          </div>
+        </div>
       )}
-    </AnimatePresence>
+    </>
   );
 }

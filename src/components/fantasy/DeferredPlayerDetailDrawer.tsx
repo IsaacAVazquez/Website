@@ -17,8 +17,8 @@ const LazyPlayerDetailDrawer = dynamic(
 );
 
 /**
- * The player drawer, loaded the first time a player is opened. It carries
- * framer-motion, which no draft room needs before then.
+ * The player drawer, loaded the first time a player is opened, which no
+ * draft room needs before then.
  */
 export function DeferredPlayerDetailDrawer(props: ComponentProps<typeof PlayerDetailDrawer>) {
   const mounted = useMountOnFirstOpen(props.player !== null, preloadDrawer);

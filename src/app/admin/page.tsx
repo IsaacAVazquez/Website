@@ -1,7 +1,6 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
-import { motion, useReducedMotion } from 'framer-motion';
 import { useSession, signOut, signIn } from 'next-auth/react';
 import { Lock, LogOut } from "lucide-react";
 import { ModernButton } from '@/components/ui/ModernButton';
@@ -14,7 +13,6 @@ const FOOTBALL_WORKFLOW_URL =
 
 export default function AdminPage() {
   const { data: session, status } = useSession();
-  const reduceMotion = useReducedMotion();
   const [loginForm, setLoginForm] = useState({ username: '', password: '', error: '', isLoading: false });
 
   useEffect(() => {
@@ -151,10 +149,7 @@ export default function AdminPage() {
   return (
     <section className="c97-band" data-c97-surface="paper" aria-label="Admin dashboard">
       <div className="c97-shell">
-        <motion.div
-          initial={reduceMotion ? false : { opacity: 0, y: 12 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={reduceMotion ? { duration: 0 } : { duration: 0.4 }}
+        <div
           className="flex items-start justify-between gap-6"
           style={{ marginBottom: 'var(--c97-sp-5)' }}
         >
@@ -171,7 +166,7 @@ export default function AdminPage() {
             <LogOut className="w-4 h-4" />
             Sign Out
           </ModernButton>
-        </motion.div>
+        </div>
 
         <div className="grid gap-5 md:grid-cols-2">
           <article className="c97-panel">

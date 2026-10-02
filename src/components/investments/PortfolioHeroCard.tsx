@@ -14,7 +14,7 @@ import {
   format,
   timeFormat,
 } from "d3";
-import { useReducedMotion } from "framer-motion";
+import { useReducedMotion } from "@/hooks/useReducedMotion";
 import { parseLocalDateKey, toLocalDateKey } from "@/lib/date-formatters";
 import { useClientNow } from "@/hooks/useClientNow";
 import {

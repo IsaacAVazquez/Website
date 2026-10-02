@@ -20,7 +20,7 @@ const LazyCompareTray = dynamic(
 
 /**
  * The compare tray, kept out of first load. It shows nothing until a player is
- * pinned, and it carries framer-motion and the compare modal.
+ * pinned, and it carries the compare modal.
  *
  * It reads the pinned ids itself so the board around it takes no new
  * subscription. It counts raw ids, not resolved players, because the tray also

@@ -61,7 +61,7 @@ const packagesReachableFrom = (entry: string) => reachableFrom(entry).packages;
 describe("bundle guards", () => {
   it("follows imports the way the guards below rely on", () => {
     const reached = reachableFrom("src/components/football/ClubDrawer.tsx");
-    expect(reached.packages.get("framer-motion")).toBe("src/components/football/ClubDrawer.tsx");
+    expect(reached.packages.get("lucide-react")).toBe("src/components/football/ClubDrawer.tsx");
     expect(reached.files.has("src/components/football/CrestAvatar.tsx")).toBe(true);
     // Five source files quote their imports with single quotes, and this hook
     // is the one a guarded route reaches.
@@ -71,9 +71,9 @@ describe("bundle guards", () => {
 
   // Six route clients import this barrel and two of them render the drawer.
   // The repo declares no `sideEffects`, so webpack keeps every re-exported
-  // module, and a drawer in the barrel ships framer-motion to all six.
-  it("keeps framer-motion out of everything the football barrel re-exports", () => {
-    expect(packagesReachableFrom("src/components/football/index.ts").get("framer-motion")).toBeUndefined();
+  // module, and a drawer in the barrel ships to all six.
+  it("keeps the club drawer out of everything the football barrel re-exports", () => {
+    expect(reachableFrom("src/components/football/index.ts").files.has("src/components/football/ClubDrawer.tsx")).toBe(false);
   });
 
   // `cn` has its own module. While it sat in utils.ts, every route that
@@ -112,7 +112,7 @@ describe("bundle guards", () => {
   });
 
   // The overlays load the first time they open. A static import of one puts
-  // its code, and framer-motion with it, back in the route's first load.
+  // its code back in the route's first load.
   it.each([
     [
       "src/app/fantasy-football/best-ball/best-ball-client.tsx",

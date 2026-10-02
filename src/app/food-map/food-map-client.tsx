@@ -7,7 +7,7 @@ import {
   useMemo,
   useState,
 } from "react";
-import { useReducedMotion } from "framer-motion";
+import { useReducedMotion } from "@/hooks/useReducedMotion";
 import { useRouter, useSearchParams } from "next/navigation";
 import { PROJECT_PRESS } from "@/constants/projectPress";
 import {
@@ -629,7 +629,7 @@ export function FoodMapClient({ initialState }: FoodMapClientProps) {
   return (
     <FoodMapWorkbench
       routeState={routeState}
-      reduceMotion={Boolean(shouldReduceMotion)}
+      reduceMotion={shouldReduceMotion}
       onCommit={(next) => router.replace(buildFoodMapHref(next), { scroll: false })}
     />
   );

@@ -4,8 +4,8 @@ export const MODAL_FOCUSABLE =
   'a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), summary, [role="tab"], [tabindex]:not([tabindex="-1"])';
 
 /**
- * Modal behavior for a panel that stays a plain element so framer can animate
- * its exit, which a native `<dialog>` closes too early for. While `open`, focus
+ * Modal behavior for a panel that stays a plain element rather than a native
+ * `<dialog>`, so the caller controls mount, focus, and scroll. While `open`, focus
  * moves into the panel (or `initialFocusRef`), Tab and Shift+Tab wrap inside
  * it, Escape calls `onClose`, and the page behind stops scrolling unless
  * `lockScroll` is false. On close, focus goes back to whatever opened it, unless

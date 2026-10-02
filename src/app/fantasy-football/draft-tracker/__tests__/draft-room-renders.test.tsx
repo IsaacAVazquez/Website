@@ -93,14 +93,6 @@ const mockSnapshotResult = {
   retry: jest.fn(),
 };
 
-jest.mock("framer-motion", () => ({
-  motion: {
-    div: ({ children }: { children?: React.ReactNode }) => <div>{children}</div>,
-  },
-  AnimatePresence: ({ children }: { children?: React.ReactNode }) => <>{children}</>,
-  useReducedMotion: () => true,
-}));
-
 jest.mock("@/hooks/useFantasySnapshot", () => ({
   useFantasySnapshot: () => mockSnapshotResult,
 }));
