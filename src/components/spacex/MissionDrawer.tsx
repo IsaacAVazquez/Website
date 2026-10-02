@@ -184,7 +184,6 @@ export function MissionDrawer({
               isLoading={isLoading}
               error={error}
               onPanelChange={onPanelChange}
-              hideHeader
             />
 
             {detail ? (

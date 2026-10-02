@@ -3,8 +3,6 @@ import type { CSSProperties } from "react";
 interface RouteLoadingStateProps {
   /** Surface label rendered in the heading ("the NFL dashboard", "investments", etc.). */
   surfaceName?: string;
-  /** Number of placeholder panels to render in the grid. Defaults to 6. */
-  cardCount?: number;
 }
 
 /*
@@ -28,10 +26,7 @@ function Line({ height, width }: { height: string | number; width: string | numb
  * Pure markup with no client JS. The `.c97-skeleton` pulse is stilled for
  * `prefers-reduced-motion` by the motion rule at the end of `catalog97.css`.
  */
-export function RouteLoadingState({
-  surfaceName,
-  cardCount = 6,
-}: RouteLoadingStateProps) {
+export function RouteLoadingState({ surfaceName }: RouteLoadingStateProps) {
   return (
     <section
       className="c97-band"
@@ -67,7 +62,7 @@ export function RouteLoadingState({
           className="c97-columns"
           style={{ "--c97-columns-gap": "var(--c97-sp-3)" } as CSSProperties}
         >
-          {Array.from({ length: cardCount }, (_, i) => (
+          {Array.from({ length: 6 }, (_, i) => (
             <div
               key={i}
               className="c97-panel"

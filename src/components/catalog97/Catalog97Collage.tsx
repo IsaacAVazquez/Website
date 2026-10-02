@@ -23,9 +23,6 @@ export interface CollagePanel {
   sizes?: string;
   position?: string;
   caption?: ReactNode;
-  /** Plates only: dark captions on saffron and peach grounds, light ones on blue and vermilion. */
-  captionTone?: "dark" | "light";
-  captionAt?: "top-left" | "top-right";
   /** Makes the panel a link. */
   href?: string;
   /** The link's name when there is no card to name it. */
@@ -90,11 +87,7 @@ export function Catalog97Collage({ panels }: { panels: CollagePanel[] }) {
     <div className={styles.collage} aria-hidden={linked ? undefined : true}>
       <Catalog97Reveal />
       {panels.map((panel, index) => {
-        const captionClass = panel.src
-          ? panel.captionTone === "dark"
-            ? styles.captionDark
-            : styles.captionLight
-          : styles.captionInk;
+        const captionClass = panel.src ? styles.captionLight : styles.captionInk;
         const surface = panel.src ? undefined : (panel.surface ?? "ink-blue");
         const body = (
           <>
@@ -119,10 +112,7 @@ export function Catalog97Collage({ panels }: { panels: CollagePanel[] }) {
               </>
             )}
             {panel.caption ? (
-              <span
-                className={`${styles.caption} ${captionClass}`}
-                data-at={panel.captionAt ?? "top-left"}
-              >
+              <span className={`${styles.caption} ${captionClass}`}>
                 {panel.caption}
               </span>
             ) : null}

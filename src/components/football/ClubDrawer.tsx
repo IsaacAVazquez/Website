@@ -258,7 +258,7 @@ export function ClubDrawer({
               ) : null}
             </div>
 
-            <StatFascia items={metrics} dense className="border-x-0 border-t-0" />
+            <StatFascia items={metrics} className="border-x-0 border-t-0" />
 
             {isLoadingDetail || detailError ? (
               <p

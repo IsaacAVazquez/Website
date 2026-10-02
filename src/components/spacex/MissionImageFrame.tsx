@@ -10,9 +10,6 @@ interface MissionImageFrameProps {
   dataTestId?: string;
   alt: string;
   priority?: boolean;
-  imageFit?: "cover" | "contain";
-  imagePosition?: string;
-  imageInsetClassName?: string;
   /** Catalog 97 surface for the frame, when its overlay text needs a fixed ground. */
   surface?: "espresso" | "paper";
   /** The width of the frame on the page, as a `sizes` value. */
@@ -65,9 +62,6 @@ export function MissionImageFrame({
   dataTestId,
   alt,
   priority = false,
-  imageFit = "cover",
-  imagePosition = "center center",
-  imageInsetClassName = "",
   surface,
   sizes = "100vw",
   children,
@@ -97,7 +91,6 @@ export function MissionImageFrame({
       data-testid={dataTestId}
       data-image-src={activeImage ?? undefined}
       data-image-state={imageState}
-      data-image-fit={imageFit}
       data-c97-surface={surface}
       className={`relative overflow-hidden ${className}`}
       role={activeImage ? undefined : "img"}
@@ -107,7 +100,7 @@ export function MissionImageFrame({
 
       {activeImage ? (
         <>
-          <div className={`absolute inset-0 ${imageInsetClassName}`}>
+          <div className="absolute inset-0">
             <Image
               src={activeImage}
               alt={alt}
@@ -125,10 +118,7 @@ export function MissionImageFrame({
               fetchPriority={priority ? "high" : "auto"}
               decoding="async"
               draggable={false}
-              className={`transition-opacity duration-300 ${
-                imageFit === "contain" ? "object-contain" : "object-cover"
-              } ${isLoaded ? "opacity-100" : "opacity-0"}`}
-              style={{ objectPosition: imagePosition }}
+              className={`object-cover transition-opacity duration-300 ${isLoaded ? "opacity-100" : "opacity-0"}`}
               onLoad={() => setIsLoaded(true)}
               onError={() => {
                 setIsLoaded(false);

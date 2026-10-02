@@ -7,43 +7,26 @@ import styles from "./TerminalPanel.module.css";
 interface TerminalPanelProps {
   children: React.ReactNode;
   className?: string;
-  padding?: "none" | "sm" | "md" | "lg" | "xl";
+  padding: "none" | "sm";
   ariaLabel?: string;
-  ariaDescription?: string;
-  onClick?: (e: React.MouseEvent) => void;
 }
 
 /**
- * Drop-in replacement for `WarmCard` scoped to the investments "terminal"
- * surface: a fused hairline plate (a 1px `--c97-rule` border, square corners,
- * no shadow) instead of a floating rounded/shadowed card. Same prop shape as
- * WarmCard so it can be swapped in without touching call-site children — the
- * terminal identity forbids floating cards and shadows everywhere WarmCard
- * was previously used inside /investments.
+ * The investments "terminal" plate: a fused hairline panel (a 1px
+ * `--c97-rule` border, square corners, no shadow), since the terminal identity
+ * forbids floating cards and shadows inside /investments.
  */
 export const TerminalPanel = React.memo(function TerminalPanel({
   children,
   className,
-  padding = "md",
+  padding,
   ariaLabel,
-  ariaDescription,
-  onClick,
 }: TerminalPanelProps) {
-  const paddingClasses = {
-    none: "",
-    sm: "p-5 sm:p-6",
-    md: "p-6 sm:p-8",
-    lg: "p-8 sm:p-10 lg:p-12",
-    xl: "p-10 sm:p-12 lg:p-16",
-  };
-
   return (
     <div
-      className={cn(styles.panel, paddingClasses[padding], className)}
+      className={cn(styles.panel, padding === "sm" && "p-5 sm:p-6", className)}
       role="article"
       aria-label={ariaLabel}
-      {...(ariaDescription ? { title: ariaDescription } : {})}
-      onClick={onClick}
     >
       {children}
     </div>
