@@ -15,6 +15,7 @@ All notable changes to this repository are documented here. Format: `YYYY-MM-DD`
 - Bump globals from 16.5.0 to 17.12.0 ([#546](https://github.com/IsaacAVazquez/Website/pull/546)).
 - Remove visible em and en dashes from site copy and changelog ([#553](https://github.com/IsaacAVazquez/Website/pull/553)).
 - Synchronize documentation and clean up finnhub import after PR #551 ([#554](https://github.com/IsaacAVazquez/Website/pull/554)).
+- Redesign pass across every route ([#555](https://github.com/IsaacAVazquez/Website/pull/555)).
 
 ---
 
