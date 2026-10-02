@@ -25,10 +25,9 @@ Current component map for the live application.
 |----------|------|------|
 | `ConditionalLayout` | `src/components/ConditionalLayout.tsx` | Passes the seven designed routes through untouched and wraps every other route in `Catalog97ToolShell` |
 | `Catalog97ToolShell` | `src/components/catalog97/Catalog97ToolShell.tsx` | `Catalog97Shell` plus an optional title band and the build-note aside, used by every route outside the seven designed pages |
-| `Providers` | `src/components/Providers.tsx` | Theme provider wrapper |
+| `Providers` | `src/components/Providers.tsx` | Mounts the `next-themes` provider and the page-level listeners below |
 | `FragmentLinkNavigation` | `src/components/navigation/FragmentLinkNavigation.tsx` | Mounted once by `Providers` and renders nothing. Follows same-page links (`href="#section"`) from the page's current address, because Firefox can hold a link's address from before a page rewrote its own URL and then load the old URL as a new document |
 | `FragmentScrollOnLoad` | `src/components/navigation/FragmentScrollOnLoad.tsx` | Mounted once by `Providers` and renders nothing. Lands a fresh load on the element its URL fragment names and holds it there while the page settles, because a browser looks the fragment up once, as it finishes parsing, and React reveals a streamed route after that. It only scrolls a page that sits where a landing left it, so a page the visitor has scrolled stays put, and it leaves a reload or a trip through history to the browser |
-| `ThemeProvider` | `src/components/ThemeProvider.tsx` | `next-themes` wrapper |
 | `RouteErrorBoundary` | `src/components/RouteErrorBoundary.tsx` | Shared error fallback, one Catalog 97 paper band, re-exported by per-route `error.tsx` files |
 
 ### Homepage, work, writing, dashboards, about, résumé, contact

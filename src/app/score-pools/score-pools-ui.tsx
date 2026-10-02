@@ -27,19 +27,6 @@ export function formatKickoff(iso: string, timezone: string | null): string {
   }
 }
 
-export function formatTime(iso: string, timezone: string | null): string {
-  try {
-    // tz-local: see formatKickoff above; same per-pool, localStorage-only setting.
-    return new Intl.DateTimeFormat("en-US", {
-      hour: "numeric",
-      minute: "2-digit",
-      ...(timezone ? { timeZone: timezone } : {}),
-    }).format(new Date(iso));
-  } catch {
-    return iso;
-  }
-}
-
 /** "41m ago" / "6h ago" / "3d ago" for as-of stamps. */
 export function formatAge(iso: string, nowIso: string): string {
   const ms = new Date(nowIso).getTime() - new Date(iso).getTime();
