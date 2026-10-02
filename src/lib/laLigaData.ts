@@ -265,26 +265,6 @@ export function isValidLaLigaTeamId(teamId: string): boolean {
   return /^[1-9]\d*$/.test(teamId);
 }
 
-export function createEmptyLaLigaSnapshot(): LaLigaSnapshot {
-  const generatedAt = new Date().toISOString();
-  return {
-    season: "2025/26",
-    matchday: 0,
-    generatedAt,
-    updatedAt: generatedAt.slice(0, 10),
-    sourceLabel: "football-data.org",
-    sourceUrls: { standings: "", scorers: "", assists: "" },
-    clubs: [],
-    scorers: [],
-    assists: [],
-    goalsPerMatchday: [],
-    recentFixtures: [],
-    upcomingFixtures: [],
-    teams: [],
-    teamSnapshots: {},
-  };
-}
-
 export async function getLaLigaSummary(options?: { season?: number }): Promise<{
   season: string;
   matchday: number;

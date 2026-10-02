@@ -23,7 +23,6 @@ This section shows writing as proof of work rather than as a generic blog roll. 
 - Kicker: `Proof of work`
 - Heading focused on PM, AI workflows, and fintech tools
 - Supporting copy that frames the selected posts as the best first read
-- Cards generated from `getHomepageProofOfWorkBlogPostPreviews()`
 
 ## Card Requirements
 

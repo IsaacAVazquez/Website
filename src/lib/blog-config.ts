@@ -166,12 +166,6 @@ export function getBlogTopicPageForPost(post?: {
   return BLOG_TOPIC_PAGES.find((topic) => topic.label === label);
 }
 
-export const HOMEPAGE_PROOF_OF_WORK_SLUGS = [
-  "ai-product-discovery-workflow",
-  "agentic-ai-explained-for-product-managers",
-  "building-an-investment-research-platform",
-] as const;
-
 export const LEAD_GEN_BLOG_SLUGS = [
   "ai-prd-writing-prompts-structure",
   "ai-product-discovery-workflow",

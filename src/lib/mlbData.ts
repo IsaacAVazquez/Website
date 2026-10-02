@@ -430,28 +430,6 @@ export function isValidMlbTeamId(teamId: string): boolean {
   return /^[1-9]\d*$/.test(teamId);
 }
 
-export function createEmptyMlbSnapshot(): MlbSnapshot {
-  const generatedAt = new Date().toISOString();
-  return {
-    season: getCurrentSeason(),
-    generatedAt,
-    updatedAt: generatedAt.slice(0, 10),
-    sourceLabel: "MLB Stats API",
-    sourceUrls: {
-      standings: `${MLB_STATS_BASE_URL}/standings`,
-      schedule: `${MLB_STATS_BASE_URL}/schedule`,
-      leaders: `${MLB_STATS_BASE_URL}/stats/leaders`,
-    },
-    teams: [],
-    standings: [],
-    recentGames: [],
-    upcomingGames: [],
-    hittingLeaders: { homeRuns: [], runsBattedIn: [], battingAverage: [] },
-    pitchingLeaders: { earnedRunAverage: [], wins: [], strikeouts: [] },
-    teamSnapshots: {},
-  };
-}
-
 async function getTeams(season: string): Promise<MlbTeamOption[]> {
   const response = await fetchStatsApiJson<StatsApiTeamsResponse>(
     `/teams?${buildQueryString({ sportId: SPORT_ID, season, activeStatus: "Y", hydrate: "venue" })}`,

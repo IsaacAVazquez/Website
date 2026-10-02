@@ -1,5 +1,4 @@
 import {
-  assertBestBallAdpCoverage,
   evaluateBestBallAdpCoverage,
   assertBestBallRankingCoverage,
   assertBestBallSuperflexCoverage,
@@ -39,32 +38,6 @@ describe("assertBestBallRankingCoverage", () => {
         previousPlayers: 377,
         previousTopPlayers: 150,
         retainedTopPlayers: 140,
-      })
-    ).not.toThrow();
-  });
-});
-
-describe("assertBestBallAdpCoverage", () => {
-  it("rejects a fresh ADP join that falls materially below the prior snapshot", () => {
-    expect(() =>
-      assertBestBallAdpCoverage({
-        freshSourceReceived: true,
-        matches: 200,
-        previousMatches: 339,
-        previousTopPlayers: 140,
-        retainedTopPlayers: 100,
-      })
-    ).toThrow(/200 players versus 339 previously/);
-  });
-
-  it("allows a failed optional ADP refresh to retain the prior snapshot data", () => {
-    expect(() =>
-      assertBestBallAdpCoverage({
-        freshSourceReceived: false,
-        matches: 0,
-        previousMatches: 339,
-        previousTopPlayers: 140,
-        retainedTopPlayers: 0,
       })
     ).not.toThrow();
   });

@@ -8,10 +8,27 @@ import {
   isValidNbaTeamId,
   buildSeasonLabel,
   resolveNbaSeasonEndYear,
-  createEmptyNbaSnapshot,
   preservePriorFixtures,
 } from "../nbaData";
-import type { NbaFixture, NbaLeader, NbaTeam, NbaTeamSnapshot } from "../../types/nba";
+import type { NbaFixture, NbaLeader, NbaSnapshot, NbaTeam, NbaTeamSnapshot } from "../../types/nba";
+
+function createEmptyNbaSnapshot(): NbaSnapshot {
+  return {
+    season: "Current season",
+    generatedAt: "2026-01-01T00:00:00.000Z",
+    updatedAt: "2026-01-01",
+    sourceLabel: "ESPN",
+    sourceUrls: { standings: "", leaders: "", scoreboard: "" },
+    teamsByConference: { east: [], west: [] },
+    scorers: [],
+    rebounders: [],
+    assistLeaders: [],
+    recentFixtures: [],
+    upcomingFixtures: [],
+    teams: [],
+    teamSnapshots: {},
+  };
+}
 import {
   NBA_BYATHLETE_2026_POSTSEASON,
   NBA_BYATHLETE_2026_REGULAR_SEASON,

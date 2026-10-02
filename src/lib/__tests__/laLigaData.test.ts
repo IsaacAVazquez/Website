@@ -6,7 +6,6 @@ import {
   getLaLigaSummary,
   getLaLigaTeamSnapshot,
   isValidLaLigaTeamId,
-  createEmptyLaLigaSnapshot,
 } from "../laLigaData";
 import { resetFootballDataPacingForTests } from "../footballData";
 import type { LaLigaSnapshot, LaLigaTeamSnapshot } from "@/types/la-liga";
@@ -676,29 +675,6 @@ describe("isValidLaLigaTeamId", () => {
     expect(isValidLaLigaTeamId("abc")).toBe(false);
     expect(isValidLaLigaTeamId("-5")).toBe(false);
     expect(isValidLaLigaTeamId(" 81")).toBe(false); // leading space
-  });
-});
-
-describe("createEmptyLaLigaSnapshot", () => {
-  it("returns a fully-formed empty snapshot shell", () => {
-    const snap = createEmptyLaLigaSnapshot();
-    expect(snap).toMatchObject({
-      season: "2025/26",
-      matchday: 0,
-      sourceLabel: "football-data.org",
-      sourceUrls: { standings: "", scorers: "", assists: "" },
-      clubs: [],
-      scorers: [],
-      assists: [],
-      goalsPerMatchday: [],
-      recentFixtures: [],
-      upcomingFixtures: [],
-      teams: [],
-      teamSnapshots: {},
-    });
-    expect(snap.generatedAt).toMatch(/^\d{4}-\d{2}-\d{2}T/);
-    // updatedAt remains a display-friendly calendar date.
-    expect(snap.updatedAt).toMatch(/^\d{4}-\d{2}-\d{2}$/);
   });
 });
 

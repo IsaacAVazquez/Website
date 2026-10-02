@@ -16,10 +16,6 @@ import type { ScoringFormat } from "@/types";
 const WEEKLY_STATS_URL_TEMPLATE =
   "https://github.com/nflverse/nflverse-data/releases/download/stats_player/stats_player_week_{season}.csv";
 
-export const FANTASY_GAME_LOG_PROVIDER = "nflverse";
-export const FANTASY_GAME_LOG_PROVIDER_URL =
-  "https://github.com/nflverse/nflverse-data/releases/tag/stats_player";
-
 /**
  * Games a player needs before the panel will show a spread. Below this, low
  * and high are two readings of a nearly empty sample and the meter would draw

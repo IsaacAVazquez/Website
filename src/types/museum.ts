@@ -118,8 +118,6 @@ export interface MuseumRouteState {
 
 // ─── Personal user state (browser-local) ──────────────────────────────────────
 
-export type UserStatus = "visited" | "watchlist" | "liked";
-
 export interface UserVisit {
   museumId: string;
   date: string; // ISO date

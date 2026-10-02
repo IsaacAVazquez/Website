@@ -16,37 +16,6 @@ function createFormula1SnapshotError(
   return Object.assign(new Error(message), { status });
 }
 
-export function createEmptyFormula1Summary(): Formula1Summary {
-  return {
-    sourceLabel: "OpenF1 historical snapshot",
-    sourceUrls: {
-      docs: "https://openf1.org/docs/",
-      apiBase: "https://openf1.org/",
-      meetings: "https://api.openf1.org/v1/meetings",
-      sessions: "https://api.openf1.org/v1/sessions",
-      drivers: "https://api.openf1.org/v1/drivers",
-      driverStandings: "https://api.openf1.org/v1/championship_drivers",
-      constructorStandings: "https://api.openf1.org/v1/championship_teams",
-    },
-    season: new Date().getUTCFullYear(),
-    generatedAt: new Date().toISOString(),
-    defaultMeetingKey: null,
-    standingsMeetingKey: null,
-    meetings: [],
-    driverStandings: [],
-    constructorStandings: [],
-    seasonMetrics: {
-      season: new Date().getUTCFullYear(),
-      totalRaces: 0,
-      completedRaces: 0,
-      upcomingRaces: 0,
-      sprintWeekends: 0,
-    },
-    nextMeeting: null,
-    lastCompletedMeeting: null,
-  };
-}
-
 export function createEmptyFormula1Meeting(): Formula1MeetingSummary {
   return {
     key: "",

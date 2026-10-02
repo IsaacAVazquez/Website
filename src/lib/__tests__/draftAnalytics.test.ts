@@ -11,7 +11,6 @@ import {
   getPickDelta,
   getReachStealThreshold,
   getRosterNeeds,
-  getTeamValueTotal,
   isPlayerValueAtPick,
   reconcileTeamRosters,
   REACH_STEAL_MIN_THRESHOLD,
@@ -258,15 +257,6 @@ describe("computeDraftAnalytics", () => {
     );
 
     expect(analytics.teamStrengths[0].valueTotal).toBe(10);
-  });
-});
-
-describe("getTeamValueTotal", () => {
-  it("ignores picks without a baseline", () => {
-    const judged = pick({ pickNumber: 20, round: 2, player: player({ id: "a", adp: 10 }) });
-    const unjudged = pick({ pickNumber: 21, round: 2, player: player({ id: "b", averageRank: Number.NaN }) });
-
-    expect(getTeamValueTotal(roster(1, [judged, unjudged]))).toBe(10);
   });
 });
 

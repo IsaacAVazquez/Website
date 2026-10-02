@@ -610,29 +610,6 @@ export function preservePriorFixtures(
   };
 }
 
-export function createEmptyNbaSnapshot(): NbaSnapshot {
-  const generatedAt = new Date().toISOString();
-  return {
-    season: "Current season",
-    generatedAt,
-    updatedAt: generatedAt.slice(0, 10),
-    sourceLabel: "ESPN",
-    sourceUrls: {
-      standings: "https://www.espn.com/nba/standings",
-      leaders: "https://www.espn.com/nba/statistics",
-      scoreboard: "https://www.espn.com/nba/scoreboard",
-    },
-    teamsByConference: { east: [], west: [] },
-    scorers: [],
-    rebounders: [],
-    assistLeaders: [],
-    recentFixtures: [],
-    upcomingFixtures: [],
-    teams: [],
-    teamSnapshots: {},
-  };
-}
-
 interface NbaSeasonTables {
   seasonEndYear: number;
   teamsByConference: { east: NbaTeam[]; west: NbaTeam[] };

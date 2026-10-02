@@ -86,33 +86,6 @@ export type AddFantasyCompanionPickResult =
       reason: AddFantasyCompanionPickFailureReason;
     };
 
-export interface PlayerMatchInput {
-  id?: string;
-  name?: string;
-  team?: string;
-  position?: Player["position"];
-}
-
-export type PlayerMatchResult =
-  | {
-      status: "matched";
-      player: Player;
-      matchedBy:
-        | "id"
-        | "name"
-        | "name-position"
-        | "name-team"
-        | "name-team-position"
-        | "team-position";
-    }
-  | {
-      status: "ambiguous";
-      candidates: readonly Player[];
-    }
-  | {
-      status: "not-found";
-    };
-
 export interface RedraftRecommendation {
   player: Player;
   rank: number;

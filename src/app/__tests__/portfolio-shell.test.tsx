@@ -52,8 +52,6 @@ const stubPost = {
 
 jest.mock("@/lib/blog", () => ({
   getAllBlogPostPreviews: () => [stubPost],
-  getLatestBlogPostPreviews: () => [stubPost],
-  getHomepageProofOfWorkBlogPostPreviews: () => [stubPost],
 }));
 
 describe("Portfolio shell page semantics", () => {
