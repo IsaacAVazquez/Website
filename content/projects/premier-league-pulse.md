@@ -19,7 +19,7 @@ sourceOfTruth:
   - "src/constants/caseStudies.ts"
   - "src/app/premier-league/page.tsx"
   - "src/app/premier-league/premier-league-client.tsx"
-  - "src/data/premierLeagueSnapshot.ts"
+  - "src/data/premierLeagueSnapshot.json"
 ---
 
 > [!IMPORTANT]
@@ -49,4 +49,4 @@ League tables, schedules, and club form are usually split across different views
 
 ## Operational Notes
 
-The checked-in data source is `src/data/premierLeagueSnapshot.ts`. The full refresh path is `npm run update:premier-league`.
+The checked-in data source is `src/data/premierLeagueSnapshot.json`. The full refresh path is `npm run update:premier-league`.

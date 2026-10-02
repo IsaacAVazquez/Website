@@ -6,7 +6,6 @@ import {
   type DataSurfaceId,
 } from "../src/lib/dataFreshnessPolicy";
 import { DATA_REFRESH_ARTIFACTS } from "./dataRefreshRegistry";
-import { readGeneratedSnapshot } from "./snapshotFallback";
 
 export interface RefreshManifest {
   schemaVersion: 1;
@@ -48,13 +47,7 @@ export function findShortfalls(
   });
 }
 
-async function readArtifact(
-  artifactPath: string,
-  exportName?: string
-): Promise<unknown> {
-  if (exportName) {
-    return readGeneratedSnapshot<unknown>(artifactPath, exportName);
-  }
+async function readArtifact(artifactPath: string): Promise<unknown> {
   return JSON.parse(await fs.readFile(artifactPath, "utf8"));
 }
 
@@ -74,7 +67,7 @@ export async function buildRefreshManifest(
 ): Promise<RefreshManifest> {
   const artifact = getArtifact(surface);
   if (payload === undefined) {
-    payload = await readArtifact(artifact.artifactPath, artifact.exportName);
+    payload = await readArtifact(artifact.artifactPath);
   }
   const primarySourceAsOfValue = readPath(payload, artifact.sourceAsOfPath);
   const sourceAsOfValue =
@@ -127,7 +120,7 @@ async function main() {
   }
 
   const artifact = getArtifact(surface);
-  const payload = await readArtifact(artifact.artifactPath, artifact.exportName);
+  const payload = await readArtifact(artifact.artifactPath);
   const manifest = await buildRefreshManifest(surface, new Date(), payload);
   const manifestDir = process.env.RUNNER_TEMP ?? path.join(process.cwd(), ".tmp");
   await fs.mkdir(manifestDir, { recursive: true });

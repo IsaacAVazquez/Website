@@ -83,7 +83,7 @@ jobs:
         run: |
           bash scripts/ci/commit-and-push-snapshot.sh \
             "chore: refresh score pools snapshot [automated] [skip ci]" \
-            src/data/scorePoolsSnapshot.ts
+            src/data/scorePoolsSnapshot.json
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 

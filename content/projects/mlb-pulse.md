@@ -20,7 +20,7 @@ sourceOfTruth:
   - "src/app/mlb/page.tsx"
   - "src/app/mlb/mlb-client.tsx"
   - "src/app/mlb/mlb-state.core.ts"
-  - "src/data/mlbSnapshot.ts"
+  - "src/data/mlbSnapshot.json"
 ---
 
 > [!IMPORTANT]
@@ -50,4 +50,4 @@ League standings, wild card context, and stat leaders are usually split across s
 
 ## Operational Notes
 
-The checked-in data source is `src/data/mlbSnapshot.ts`. The refresh path is `npm run update:mlb`.
+The checked-in data source is `src/data/mlbSnapshot.json`. The refresh path is `npm run update:mlb`.

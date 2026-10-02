@@ -1,5 +1,3 @@
-import { readFileSync } from "node:fs";
-import { resolve } from "node:path";
 import type {
   NbaConference,
   NbaFixture,
@@ -13,6 +11,7 @@ import type {
   NbaTeamSnapshot,
 } from "@/types/nba";
 import { HttpStatusError } from "@/lib/utils";
+import { readExistingTeamSnapshots } from "@/lib/existingTeamSnapshots";
 import { retryLinear, hasClientErrorStatus, isTimeoutError } from "@/lib/fetchRetry";
 import { setTimeout as delay } from "node:timers/promises";
 
@@ -861,21 +860,7 @@ export async function getNbaTeamSnapshot(
 
 // ESPN's hidden API has no documented rate limit, but stay polite.
 const TEAM_FETCH_DELAY_MS = 1_500;
-const NBA_SNAPSHOT_PATH = "src/data/nbaSnapshot.ts";
-
-
-function readExistingTeamSnapshots(filePath: string): Record<string, NbaTeamSnapshot> {
-  try {
-    const fullPath = resolve(process.cwd(), filePath);
-    const content = readFileSync(fullPath, "utf8");
-    const match = content.match(/=\s*(\{[\s\S]*\})\s*;?\s*$/);
-    if (!match) return {};
-    const parsed = JSON.parse(match[1]);
-    return parsed.teamSnapshots ?? {};
-  } catch {
-    return {};
-  }
-}
+const NBA_SNAPSHOT_PATH = "src/data/nbaSnapshot.json";
 
 export async function buildNbaSnapshot(options?: { skipTeamSnapshots?: boolean }): Promise<NbaSnapshot> {
   const summary = await getNbaSummary();
@@ -883,7 +868,7 @@ export async function buildNbaSnapshot(options?: { skipTeamSnapshots?: boolean }
   let teamSnapshots: Record<string, NbaTeamSnapshot>;
 
   if (options?.skipTeamSnapshots) {
-    teamSnapshots = readExistingTeamSnapshots(NBA_SNAPSHOT_PATH);
+    teamSnapshots = readExistingTeamSnapshots<NbaTeamSnapshot>(NBA_SNAPSHOT_PATH);
     console.log(`  Preserved ${Object.keys(teamSnapshots).length} existing team snapshots.`);
   } else {
     const conferenceById = new Map<string, NbaConference>();
@@ -892,7 +877,7 @@ export async function buildNbaSnapshot(options?: { skipTeamSnapshots?: boolean }
     }
     // Start from the prior snapshots so a per-team failure preserves that
     // team's previous data instead of dropping it from the snapshot.
-    teamSnapshots = { ...readExistingTeamSnapshots(NBA_SNAPSHOT_PATH) };
+    teamSnapshots = { ...readExistingTeamSnapshots<NbaTeamSnapshot>(NBA_SNAPSHOT_PATH) };
     for (const team of summary.teams) {
       await delay(TEAM_FETCH_DELAY_MS);
       const conference = conferenceById.get(team.id) ?? "east";

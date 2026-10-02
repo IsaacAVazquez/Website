@@ -66,7 +66,7 @@ That is expected today. `/api/search` is still a small hardcoded index, not a fu
 The public fantasy surface is snapshot-backed:
 
 - `public/data/fantasy/{ppr,half_ppr,standard}.json` contains the published scoring-format snapshots
-- `src/data/fantasyPositionData.generated.ts` contains the generated TypeScript position source
+- `src/data/fantasyPositionData.generated.json` contains the generated TypeScript position source
 - `src/data/fantasySnapshotRevision.generated.ts` controls client cache busting
 - `/api/fantasy-data` reads the same public snapshot files through `src/lib/fantasySnapshotServer.ts`
 
@@ -74,7 +74,7 @@ Rebuild the generated artifacts with `npm run update:fantasy`. There are no live
 
 ### Premier League or La Liga data looks stale
 
-- The public dashboards read from `src/data/premierLeagueSnapshot.ts` and `src/data/laLigaSnapshot.ts`
+- The public dashboards read from `src/data/premierLeagueSnapshot.json` and `src/data/laLigaSnapshot.json`
 - Rebuild both with `npm run update:football`
 - Rebuild one league with `npm run update:premier-league` or `npm run update:la-liga`
 - These rebuild commands need `FOOTBALL_DATA_API_TOKEN`; runtime page loads do not

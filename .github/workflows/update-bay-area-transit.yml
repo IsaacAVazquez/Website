@@ -59,7 +59,7 @@ jobs:
         run: |
           bash scripts/ci/commit-and-push-snapshot.sh \
             "chore: refresh bay area transit snapshot [automated] [skip ci]" \
-            src/data/bayAreaTransitSnapshot.ts
+            src/data/bayAreaTransitSnapshot.json
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 

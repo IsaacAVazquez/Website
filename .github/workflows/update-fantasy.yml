@@ -486,10 +486,10 @@ jobs:
         if: steps.verify_freshness.outcome != 'success' || steps.verify_quality.outcome != 'success'
         run: |
           git checkout -- \
-            src/data/fantasyPositionData.generated.ts \
-            src/data/fantasyAdpData.generated.ts \
-            src/data/fantasyGameLogData.generated.ts \
-            src/data/fantasyVorpData.generated.ts \
+            src/data/fantasyPositionData.generated.json \
+            src/data/fantasyAdpData.generated.json \
+            src/data/fantasyGameLogData.generated.json \
+            src/data/fantasyVorpData.generated.json \
             src/data/fantasyRankHistory.generated.json \
             src/data/fantasySnapshotRevision.generated.ts \
             public/data/fantasy/ppr.json \
@@ -512,10 +512,10 @@ jobs:
         run: |
           bash scripts/ci/commit-and-push-snapshot.sh \
             "chore: update fantasy football snapshots [automated] [skip ci]" \
-            src/data/fantasyPositionData.generated.ts \
-            src/data/fantasyAdpData.generated.ts \
-            src/data/fantasyGameLogData.generated.ts \
-            src/data/fantasyVorpData.generated.ts \
+            src/data/fantasyPositionData.generated.json \
+            src/data/fantasyAdpData.generated.json \
+            src/data/fantasyGameLogData.generated.json \
+            src/data/fantasyVorpData.generated.json \
             src/data/fantasyRankHistory.generated.json \
             src/data/fantasySnapshotRevision.generated.ts \
             public/data/fantasy/ppr.json \

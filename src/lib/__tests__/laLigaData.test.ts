@@ -701,7 +701,7 @@ function storedTeamSnapshot(clubKey: string): LaLigaTeamSnapshot {
 }
 
 function storedSnapshotRoot(clubKeys: string[]): string {
-  return writeStoredSnapshot("laLigaSnapshot.ts", "laLigaSnapshot", {
+  return writeStoredSnapshot("laLigaSnapshot.json", {
     teamSnapshots: Object.fromEntries(clubKeys.map((key) => [key, storedTeamSnapshot(key)])),
   });
 }

@@ -18,7 +18,7 @@ route: "/polling-aggregator"
 sourceOfTruth:
   - "src/app/polling-aggregator/page.tsx"
   - "src/app/polling-aggregator/polling-aggregator-client.tsx"
-  - "src/data/pollingSnapshot.ts"
+  - "src/data/pollingSnapshot.json"
 ---
 
 > [!IMPORTANT]
@@ -44,7 +44,7 @@ Polling data is easy to find in pieces and harder to compare in one coherent sur
 - Snapshot-backed polling averages
 - View switching across approval, generic ballot, Senate, and governor races
 - Deep-linkable route state for specific race views
-- Public dashboard backed by `src/data/pollingSnapshot.ts`
+- Public dashboard backed by `src/data/pollingSnapshot.json`
 
 ## Operational Notes
 

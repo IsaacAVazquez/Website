@@ -1,5 +1,3 @@
-import { readFileSync } from "node:fs";
-import { resolve } from "node:path";
 import type {
   LaLigaClub,
   LaLigaFixture,
@@ -36,6 +34,7 @@ import {
   type FootballDataScorersResponse,
 } from "@/lib/footballData";
 import { HttpStatusError } from "@/lib/utils";
+import { readExistingTeamSnapshots } from "@/lib/existingTeamSnapshots";
 const LA_LIGA_CODE = "PD";
 function fetchFootballDataJson<T>(path: string, revalidateSeconds: number): Promise<T> {
   return fetchLeagueJson<T>("La Liga", path, revalidateSeconds);
@@ -504,20 +503,7 @@ export async function getLaLigaTeamSnapshot(teamId: string): Promise<LaLigaTeamS
   };
 }
 
-const LA_LIGA_SNAPSHOT_PATH = "src/data/laLigaSnapshot.ts";
-
-function readExistingTeamSnapshots(filePath: string): Record<string, LaLigaTeamSnapshot> {
-  try {
-    const fullPath = resolve(process.cwd(), filePath);
-    const content = readFileSync(fullPath, "utf8");
-    const match = content.match(/=\s*(\{[\s\S]*\})\s*;?\s*$/);
-    if (!match) return {};
-    const parsed = JSON.parse(match[1]);
-    return parsed.teamSnapshots ?? {};
-  } catch {
-    return {};
-  }
-}
+const LA_LIGA_SNAPSHOT_PATH = "src/data/laLigaSnapshot.json";
 
 export async function buildLaLigaSnapshot(options?: { skipTeamSnapshots?: boolean; season?: number }): Promise<LaLigaSnapshot> {
   const summary = await getLaLigaSummary(
@@ -527,12 +513,12 @@ export async function buildLaLigaSnapshot(options?: { skipTeamSnapshots?: boolea
   let teamSnapshots: Record<string, LaLigaTeamSnapshot>;
 
   if (options?.skipTeamSnapshots) {
-    teamSnapshots = readExistingTeamSnapshots(LA_LIGA_SNAPSHOT_PATH);
+    teamSnapshots = readExistingTeamSnapshots<LaLigaTeamSnapshot>(LA_LIGA_SNAPSHOT_PATH);
     console.log(`  Preserved ${Object.keys(teamSnapshots).length} existing team snapshots.`);
   } else {
     // Start from the prior snapshots so a per-team failure preserves that
     // team's previous data instead of dropping it from the snapshot.
-    teamSnapshots = { ...readExistingTeamSnapshots(LA_LIGA_SNAPSHOT_PATH) };
+    teamSnapshots = { ...readExistingTeamSnapshots<LaLigaTeamSnapshot>(LA_LIGA_SNAPSHOT_PATH) };
     for (const team of summary.teams) {
       const snapKey = team.tla?.toLowerCase() || team.id;
       try {

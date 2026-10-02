@@ -20,7 +20,7 @@ sourceOfTruth:
   - "src/app/nfl/page.tsx"
   - "src/app/nfl/nfl-client.tsx"
   - "src/app/nfl/nfl-state.core.ts"
-  - "src/data/nflSnapshot.ts"
+  - "src/data/nflSnapshot.json"
 ---
 
 > [!IMPORTANT]
@@ -50,4 +50,4 @@ NFL standings, playoff seeding, point differential, and player leaders usually l
 
 ## Operational Notes
 
-The checked-in data source is `src/data/nflSnapshot.ts`. The refresh path is `npm run update:nfl`.
+The checked-in data source is `src/data/nflSnapshot.json`. The refresh path is `npm run update:nfl`.

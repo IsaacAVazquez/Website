@@ -82,10 +82,10 @@ The command runs these steps in order. Steps 1 through 5 are `update:fantasy:red
 
 | Step | Builder | What it does | Artifact |
 | ---: | --- | --- | --- |
-| 1 | `scripts/buildFantasyPositionData.ts` | Fetches and validates scoring-specific FantasyPros consensus boards through the explicitly selected source; the scheduled job pins public consensus HTML, while a local run can select the official API; reuses the scoring-independent QB, K, and DST boards | `src/data/fantasyPositionData.generated.ts` |
-| 2 | `scripts/buildFantasyAdpData.ts` | Fetches Fantasy Football Calculator ADP by redraft scoring format and keeps the prior disclosed board when a fresh board fails or degrades | `src/data/fantasyAdpData.generated.ts` |
-| 3 | `scripts/buildFantasyGameLogData.ts` | Rebuilds the prior-season per-game scoring input from nflverse weekly player stats | `src/data/fantasyGameLogData.generated.ts` |
-| 4 | `scripts/buildFantasyVorpData.ts` | Rebuilds the VORP input from the FantasyPros projected VORP reports | `src/data/fantasyVorpData.generated.ts` |
+| 1 | `scripts/buildFantasyPositionData.ts` | Fetches and validates scoring-specific FantasyPros consensus boards through the explicitly selected source; the scheduled job pins public consensus HTML, while a local run can select the official API; reuses the scoring-independent QB, K, and DST boards | `src/data/fantasyPositionData.generated.json` |
+| 2 | `scripts/buildFantasyAdpData.ts` | Fetches Fantasy Football Calculator ADP by redraft scoring format and keeps the prior disclosed board when a fresh board fails or degrades | `src/data/fantasyAdpData.generated.json` |
+| 3 | `scripts/buildFantasyGameLogData.ts` | Rebuilds the prior-season per-game scoring input from nflverse weekly player stats | `src/data/fantasyGameLogData.generated.json` |
+| 4 | `scripts/buildFantasyVorpData.ts` | Rebuilds the VORP input from the FantasyPros projected VORP reports | `src/data/fantasyVorpData.generated.json` |
 | 5 | `scripts/buildFantasySnapshots.ts` | Joins consensus and ADP, derives FLEX, builds all three redraft formats in memory, stages them, publishes the three JSON files, and publishes the shared revision last | `public/data/fantasy/ppr.json`, `public/data/fantasy/half_ppr.json`, `public/data/fantasy/standard.json`, and `src/data/fantasySnapshotRevision.generated.ts` |
 | 6 | `scripts/buildBestBallSnapshot.ts` | Builds the best ball board from FantasyPros consensus and Superflex boards through the explicitly selected source, plus Underdog ADP, bye weeks, and the Week 17 schedule | `public/data/fantasy/best-ball.json` |
 | 7 | `scripts/buildFantasyWeeklySnapshot.ts` | Builds the in-season weekly board from the FantasyPros weekly FLEX and quarterback consensus pages, and writes nothing before Week 1 | `public/data/fantasy/weekly.json` |

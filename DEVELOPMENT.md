@@ -135,8 +135,8 @@ Do not assume old doc paths are current. Check the actual route tree first.
 
 Both dashboards read from committed TypeScript snapshot files — no live API calls at runtime:
 
-- `src/data/premierLeagueSnapshot.ts`
-- `src/data/laLigaSnapshot.ts`
+- `src/data/premierLeagueSnapshot.json`
+- `src/data/laLigaSnapshot.json`
 
 Updating snapshots:
 
@@ -149,7 +149,7 @@ npm run update:la-liga           # La Liga only, ~8 min
 After running, commit the changed snapshot files:
 
 ```bash
-git add src/data/premierLeagueSnapshot.ts src/data/laLigaSnapshot.ts
+git add src/data/premierLeagueSnapshot.json src/data/laLigaSnapshot.json
 git commit -m "data: refresh football snapshots"
 git push
 ```

@@ -10,13 +10,13 @@ jest.mock("../../../src/lib/pollingData", () => ({
   buildPollingSnapshotData: jest.fn(),
 }));
 
-jest.mock("../../../src/lib/snapshotBlobStore", () => ({
+jest.mock("../../../src/lib/netlifyBlobs", () => ({
   writeSnapshotBlob: jest.fn(),
 }));
 
 import { purgeCache } from "@netlify/functions";
 import { buildPollingSnapshotData } from "../../../src/lib/pollingData";
-import { writeSnapshotBlob } from "../../../src/lib/snapshotBlobStore";
+import { writeSnapshotBlob } from "../../../src/lib/netlifyBlobs";
 import handler, { config } from "../refresh-polling";
 
 const mockPurge = purgeCache as jest.Mock;

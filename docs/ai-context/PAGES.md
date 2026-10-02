@@ -164,13 +164,13 @@ Footer behavior:
 
 - `/news-pulse` is a live route backed by `/api/news-pulse`
 - `/spacex-mission-control` is a live route backed by `/api/spacex/*`
-- `/polling-aggregator` is a live route backed by `src/data/pollingSnapshot.ts`
+- `/polling-aggregator` is a live route backed by `src/data/pollingSnapshot.json`
 - `/mlb`, `/nba`, and `/nfl` are live sports dashboards backed by committed TypeScript snapshots and matching `/api/{league}/*` routes
-- `/golf` is a live sports dashboard backed by `src/data/golfSnapshot.ts`, rebuilt by `npm run update:golf`
-- `/world-cup-2026` is a live World Cup hub backed by `src/data/worldCupSnapshot.ts` and `/api/world-cup/*`
-- `/bay-area-transit` is a live BART dashboard backed by `src/data/bayAreaTransitSnapshot.ts` and `/api/bay-area-transit/*`
-- `/earthquake-pulse` is a live USGS earthquake monitor backed by `src/data/earthquakeSnapshot.ts` and `/api/earthquake-pulse/summary`
-- `/tech-startup-tracker` is a live curated startup funding tracker backed by `src/data/techStartupSnapshot.ts`
+- `/golf` is a live sports dashboard backed by `src/data/golfSnapshot.json`, rebuilt by `npm run update:golf`
+- `/world-cup-2026` is a live World Cup hub backed by `src/data/worldCupSnapshot.json` and `/api/world-cup/*`
+- `/bay-area-transit` is a live BART dashboard backed by `src/data/bayAreaTransitSnapshot.json` and `/api/bay-area-transit/*`
+- `/earthquake-pulse` is a live USGS earthquake monitor backed by `src/data/earthquakeSnapshot.json` and `/api/earthquake-pulse/summary`
+- `/tech-startup-tracker` is a live curated startup funding tracker backed by `src/data/techStartupSnapshot.json`
 - `/ai-dev-tools` and `/frontier-models` are live AI/knowledge surfaces
 - `/decision-lab`, `/food-map`, `/recipe-finder`, `/wine-cellar`, `/museum-log`, `/travel`, `/now`, and `/changelog` are live personal or utility surfaces
 - `/fintech-tools/budget-planner` and `/fintech-tools/interchange-iq` are live fintech tool routes

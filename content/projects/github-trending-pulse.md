@@ -20,7 +20,7 @@ sourceOfTruth:
   - "src/app/github-trending-pulse/page.tsx"
   - "src/app/github-trending-pulse/github-trending-client.tsx"
   - "src/app/github-trending-pulse/github-trending-state.ts"
-  - "src/data/githubTrendingSnapshot.ts"
+  - "src/data/githubTrendingSnapshot.json"
 ---
 
 > [!IMPORTANT]
@@ -50,4 +50,4 @@ GitHub discovery is noisy when popular projects, freshly active repositories, an
 
 ## Operational Notes
 
-The checked-in data source is `src/data/githubTrendingSnapshot.ts`. The refresh path is `npm run update:github-trending`.
+The checked-in data source is `src/data/githubTrendingSnapshot.json`. The refresh path is `npm run update:github-trending`.

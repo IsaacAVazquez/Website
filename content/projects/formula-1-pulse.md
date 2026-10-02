@@ -20,7 +20,7 @@ sourceOfTruth:
   - "src/app/formula-1/page.tsx"
   - "src/app/formula-1/formula-1-client.tsx"
   - "src/app/formula-1/formula-1-state.ts"
-  - "src/data/formula1Snapshot.ts"
+  - "src/data/formula1Snapshot.json"
 ---
 
 > [!IMPORTANT]
@@ -50,4 +50,4 @@ F1 standings, driver form, and race calendars are typically fragmented across se
 
 ## Operational Notes
 
-The checked-in data source is `src/data/formula1Snapshot.ts`. The refresh path is `npm run update:formula-1`.
+The checked-in data source is `src/data/formula1Snapshot.json`. The refresh path is `npm run update:formula-1`.

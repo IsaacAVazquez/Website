@@ -11,7 +11,7 @@ jest.mock("../../../src/lib/frontierModelsLive", () => ({
   applyLiveModelFacts: jest.fn(),
 }));
 
-jest.mock("../../../src/lib/snapshotBlobStore", () => ({
+jest.mock("../../../src/lib/netlifyBlobs", () => ({
   writeSnapshotBlob: jest.fn(),
 }));
 
@@ -20,7 +20,7 @@ import {
   applyLiveModelFacts,
   fetchLiveModelFacts,
 } from "../../../src/lib/frontierModelsLive";
-import { writeSnapshotBlob } from "../../../src/lib/snapshotBlobStore";
+import { writeSnapshotBlob } from "../../../src/lib/netlifyBlobs";
 import handler, { config } from "../refresh-frontier-models";
 
 const mockPurge = purgeCache as jest.Mock;

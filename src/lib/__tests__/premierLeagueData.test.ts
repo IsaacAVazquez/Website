@@ -715,7 +715,7 @@ function storedTeamSnapshot(clubId: number): PremierLeagueTeamSnapshot {
 }
 
 function storedSnapshotRoot(clubIds: number[]): string {
-  return writeStoredSnapshot("premierLeagueSnapshot.ts", "premierLeagueSnapshot", {
+  return writeStoredSnapshot("premierLeagueSnapshot.json", {
     teamSnapshots: Object.fromEntries(clubIds.map((id) => [String(id), storedTeamSnapshot(id)])),
   });
 }

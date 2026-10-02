@@ -20,7 +20,7 @@ sourceOfTruth:
   - "src/app/nba/page.tsx"
   - "src/app/nba/nba-client.tsx"
   - "src/app/nba/nba-state.core.ts"
-  - "src/data/nbaSnapshot.ts"
+  - "src/data/nbaSnapshot.json"
 ---
 
 > [!IMPORTANT]
@@ -50,4 +50,4 @@ Conference standings, playoff seeding, the play-in picture, and stat leaders rar
 
 ## Operational Notes
 
-The checked-in data source is `src/data/nbaSnapshot.ts`. The refresh path is `npm run update:nba`.
+The checked-in data source is `src/data/nbaSnapshot.json`. The refresh path is `npm run update:nba`.

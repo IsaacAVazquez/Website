@@ -219,25 +219,25 @@ function readInvestmentsLastmod() {
 
 function readPollingLastmod() {
   return toIsoString(
-    readFirstMatch("src/data/pollingSnapshot.ts", /"?generatedAt"?:\s*"([^"]+)"/)
+    readFirstMatch("src/data/pollingSnapshot.json", /"?generatedAt"?:\s*"([^"]+)"/)
   );
 }
 
 function readPremierLeagueLastmod() {
   return toIsoString(
-    readFirstMatch("src/data/premierLeagueSnapshot.ts", /"generatedAt":\s*"([^"]+)"/)
+    readFirstMatch("src/data/premierLeagueSnapshot.json", /"generatedAt":\s*"([^"]+)"/)
   );
 }
 
 function readLaLigaLastmod() {
   return toIsoString(
-    readFirstMatch("src/data/laLigaSnapshot.ts", /"generatedAt":\s*"([^"]+)"/)
+    readFirstMatch("src/data/laLigaSnapshot.json", /"generatedAt":\s*"([^"]+)"/)
   );
 }
 
 function readNflLastmod() {
   return toIsoString(
-    readFirstMatch("src/data/nflSnapshot.ts", /"updatedAt":\s*"([^"]+)"/)
+    readFirstMatch("src/data/nflSnapshot.json", /"updatedAt":\s*"([^"]+)"/)
   );
 }
 
@@ -245,31 +245,31 @@ function readWorldCupLastmod() {
   // The tournament block is first in the file, so the first generatedAt match is
   // the tournament-level timestamp (per-team snapshots also carry one).
   return toIsoString(
-    readFirstMatch("src/data/worldCupSnapshot.ts", /"generatedAt":\s*"([^"]+)"/)
+    readFirstMatch("src/data/worldCupSnapshot.json", /"generatedAt":\s*"([^"]+)"/)
   );
 }
 
 function readFormula1Lastmod() {
   return toIsoString(
-    readFirstMatch("src/data/formula1Snapshot.ts", /"generatedAt":\s*"([^"]+)"/)
+    readFirstMatch("src/data/formula1Snapshot.json", /"generatedAt":\s*"([^"]+)"/)
   );
 }
 
 function readGolfLastmod() {
   return toIsoString(
-    readFirstMatch("src/data/golfSnapshot.ts", /"generatedAt":\s*"([^"]+)"/)
+    readFirstMatch("src/data/golfSnapshot.json", /"generatedAt":\s*"([^"]+)"/)
   );
 }
 
 function readMlbLastmod() {
   return toIsoString(
-    readFirstMatch("src/data/mlbSnapshot.ts", /"generatedAt":\s*"([^"]+)"/)
+    readFirstMatch("src/data/mlbSnapshot.json", /"generatedAt":\s*"([^"]+)"/)
   );
 }
 
 function readNbaLastmod() {
   return toIsoString(
-    readFirstMatch("src/data/nbaSnapshot.ts", /"generatedAt":\s*"([^"]+)"/)
+    readFirstMatch("src/data/nbaSnapshot.json", /"generatedAt":\s*"([^"]+)"/)
   );
 }
 
@@ -280,7 +280,7 @@ function readSpaceXLastmod() {
 
 function readEarthquakeLastmod() {
   return toIsoString(
-    readFirstMatch("src/data/earthquakeSnapshot.ts", /"generatedAt":\s*"([^"]+)"/)
+    readFirstMatch("src/data/earthquakeSnapshot.json", /"generatedAt":\s*"([^"]+)"/)
   );
 }
 
@@ -296,25 +296,25 @@ function readBestBallLastmod() {
 
 function readGitHubTrendingLastmod() {
   return toIsoString(
-    readFirstMatch("src/data/githubTrendingSnapshot.ts", /"generatedAt":\s*"([^"]+)"/)
+    readFirstMatch("src/data/githubTrendingSnapshot.json", /"generatedAt":\s*"([^"]+)"/)
   );
 }
 
 function readTechStartupLastmod() {
   return toIsoString(
-    readFirstMatch("src/data/techStartupSnapshot.ts", /"generatedAt":\s*"([^"]+)"/)
+    readFirstMatch("src/data/techStartupSnapshot.json", /"generatedAt":\s*"([^"]+)"/)
   );
 }
 
 function readScorePoolsLastmod() {
   return toIsoString(
-    readFirstMatch("src/data/scorePoolsSnapshot.ts", /"generatedAt":\s*"([^"]+)"/)
+    readFirstMatch("src/data/scorePoolsSnapshot.json", /"generatedAt":\s*"([^"]+)"/)
   );
 }
 
 function readBayAreaTransitLastmod() {
   return toIsoString(
-    readFirstMatch("src/data/bayAreaTransitSnapshot.ts", /"generatedAt":\s*"([^"]+)"/)
+    readFirstMatch("src/data/bayAreaTransitSnapshot.json", /"generatedAt":\s*"([^"]+)"/)
   );
 }
 

@@ -81,12 +81,9 @@ export function assessScorePoolsSnapshotQuality(
 async function main() {
   const snapshotPath = path.join(
     process.cwd(),
-    "src/data/scorePoolsSnapshot.ts"
+    "src/data/scorePoolsSnapshot.json"
   );
-  const snapshot = readGeneratedSnapshot<ScorePoolsSnapshot>(
-    snapshotPath,
-    "scorePoolsSnapshot"
-  );
+  const snapshot = readGeneratedSnapshot<ScorePoolsSnapshot>(snapshotPath);
   if (!snapshot) throw new Error(`Could not parse ${snapshotPath}.`);
 
   const result = assessScorePoolsSnapshotQuality(snapshot);

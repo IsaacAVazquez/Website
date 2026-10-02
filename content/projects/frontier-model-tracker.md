@@ -20,7 +20,7 @@ sourceOfTruth:
   - "src/app/frontier-models/page.tsx"
   - "src/app/frontier-models/frontier-models-client.tsx"
   - "src/app/frontier-models/frontier-models-state.ts"
-  - "src/data/frontierModelsSnapshot.ts"
+  - "src/data/frontierModelsSnapshot.json"
 ---
 
 > [!IMPORTANT]
@@ -50,4 +50,4 @@ Provider docs read like marketing pages. Comparing several frontier models usual
 
 ## Operational Notes
 
-The checked-in data source is `src/data/frontierModelsSnapshot.ts`. The refresh path is `npm run update:frontier-models`.
+The checked-in data source is `src/data/frontierModelsSnapshot.json`. The refresh path is `npm run update:frontier-models`.

@@ -20,7 +20,7 @@ sourceOfTruth:
   - "src/app/golf/page.tsx"
   - "src/app/golf/golf-client.tsx"
   - "src/app/golf/golf-state.ts"
-  - "src/data/golfSnapshot.ts"
+  - "src/data/golfSnapshot.json"
 ---
 
 > [!IMPORTANT]
@@ -50,4 +50,4 @@ Most tour leaderboards make it hard to compare round-by-round movement, cut-line
 
 ## Operational Notes
 
-The checked-in data source is `src/data/golfSnapshot.ts`. The route also exposes summary and player API handlers for focused data reads.
+The checked-in data source is `src/data/golfSnapshot.json`. The route also exposes summary and player API handlers for focused data reads.

@@ -57,7 +57,7 @@ jobs:
         run: |
           bash scripts/ci/commit-and-push-snapshot.sh \
             "chore: refresh premier league snapshot [automated] [skip ci]" \
-            src/data/premierLeagueSnapshot.ts
+            src/data/premierLeagueSnapshot.json
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 

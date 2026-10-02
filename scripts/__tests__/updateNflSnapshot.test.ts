@@ -16,7 +16,7 @@ jest.mock("../../src/lib/nflData", () => ({
 }));
 
 const committed = { updatedAt: "2026-09-22", teams: [{ id: "kc" }] };
-const committedFile = `export const nflSnapshot: NFLSnapshot = ${JSON.stringify(committed)};\n`;
+const committedFile = `${JSON.stringify(committed)}\n`;
 
 // The script runs main() on import and exports nothing to await.
 async function runScript() {

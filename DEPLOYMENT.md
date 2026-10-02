@@ -114,7 +114,7 @@ See `docs/ENVIRONMENT_CONFIGURATION.md` for details.
 
 - `/premier-league` and `/la-liga` read committed TypeScript snapshots at runtime
 - `FOOTBALL_DATA_API_TOKEN` is needed only when rebuilding those snapshots
-- GitHub Actions refreshes, every four hours from August through May, can commit `src/data/premierLeagueSnapshot.ts` and `src/data/laLigaSnapshot.ts` when data changes
+- GitHub Actions refreshes, every four hours from August through May, can commit `src/data/premierLeagueSnapshot.json` and `src/data/laLigaSnapshot.json` when data changes
 
 ### Static caching
 

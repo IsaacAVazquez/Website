@@ -19,7 +19,7 @@ sourceOfTruth:
   - "src/constants/caseStudies.ts"
   - "src/app/la-liga/page.tsx"
   - "src/app/la-liga/la-liga-client.tsx"
-  - "src/data/laLigaSnapshot.ts"
+  - "src/data/laLigaSnapshot.json"
 ---
 
 > [!IMPORTANT]
@@ -49,4 +49,4 @@ League tables rarely combine season pressure, upcoming context, and leaderboard 
 
 ## Operational Notes
 
-The checked-in data source is `src/data/laLigaSnapshot.ts`. The full refresh path is `npm run update:la-liga`.
+The checked-in data source is `src/data/laLigaSnapshot.json`. The full refresh path is `npm run update:la-liga`.
