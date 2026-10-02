@@ -1,10 +1,10 @@
 {
   "symbol": "CME",
-  "lastUpdated": "2026-09-30T15:30:08.171135+00:00",
+  "lastUpdated": "2026-10-02T15:16:35.277063+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-09-30T15:30:08.171135+00:00",
+    "snapshotBuiltAt": "2026-10-02T15:16:35.277063+00:00",
     "sections": {
-      "price": "2026-09-30"
+      "price": "2026-10-01"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 11.7917,
-      "ttmPe": 22.32,
-      "marketCap": 94569181482,
-      "psRatio": 13.96,
-      "pbRatio": 3.57,
-      "pegRatio": 8.39
+      "ttmPe": 22.48,
+      "marketCap": 95244624310,
+      "psRatio": 14.06,
+      "pbRatio": 3.59,
+      "pegRatio": 8.45
     },
     "profitability": {
       "roe": 3.92,
@@ -5438,25 +5438,17 @@
       ]
     },
     "wacc": {
-      "wacc": 6.7,
-      "costOfEquity": 6.909999999999999,
+      "wacc": 6.69,
+      "costOfEquity": 6.9,
       "costOfDebt": 1.27,
       "taxRate": 22,
-      "beta": 0.2165,
-      "marketCap": 94569181482
+      "beta": 0.2178,
+      "marketCap": 95244624310
     },
     "beta": {
-      "beta5y": 0.2165
+      "beta5y": 0.2178
     },
     "price": [
-      {
-        "date": "2025-09-30",
-        "open": 272.84,
-        "high": 274.17,
-        "low": 269.5,
-        "close": 270.19,
-        "volume": 2893700
-      },
       {
         "date": "2025-10-01",
         "open": 270.19,
@@ -7464,6 +7456,14 @@
         "low": 260.49,
         "close": 261.98,
         "volume": 1903300
+      },
+      {
+        "date": "2026-10-01",
+        "open": 263.93,
+        "high": 267.82,
+        "low": 262.6,
+        "close": 265.1,
+        "volume": 2279200
       }
     ],
     "news": [
@@ -7500,11 +7500,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "6fb8f08d-bdea-3a06-84de-d9f87aeb542f",
-        "title": "Here's Why We Think CME Group (NASDAQ:CME) Might Deserve Your Attention Today",
-        "publisher": "Simply Wall St.",
+        "uuid": "c37c3b44-7721-379d-ac7f-db111170144a",
+        "title": "FX Spot+ Trades $1.4 Billion in a Single Day With Over 40 Clients Active in First Month",
+        "publisher": "PR Newswire",
         "reportDate": "2025-05-22",
-        "link": "https://finance.yahoo.com/news/heres-why-think-cme-group-110053430.html",
+        "link": "https://finance.yahoo.com/news/fx-spot-trades-1-4-100000839.html",
         "type": "STORY"
       },
       {
@@ -7516,19 +7516,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "c37c3b44-7721-379d-ac7f-db111170144a",
-        "title": "FX Spot+ Trades $1.4 Billion in a Single Day With Over 40 Clients Active in First Month",
-        "publisher": "PR Newswire",
+        "uuid": "6fb8f08d-bdea-3a06-84de-d9f87aeb542f",
+        "title": "Here's Why We Think CME Group (NASDAQ:CME) Might Deserve Your Attention Today",
+        "publisher": "Simply Wall St.",
         "reportDate": "2025-05-22",
-        "link": "https://finance.yahoo.com/news/fx-spot-trades-1-4-100000839.html",
-        "type": "STORY"
-      },
-      {
-        "uuid": "31cac532-4fb9-34d3-a594-e266bef346bf",
-        "title": "CME (CME) Up 7.1% Since Last Earnings Report: Can It Continue?",
-        "publisher": "Zacks",
-        "reportDate": "2025-05-23",
-        "link": "https://finance.yahoo.com/news/cme-cme-7-1-since-153050961.html",
+        "link": "https://finance.yahoo.com/news/heres-why-think-cme-group-110053430.html",
         "type": "STORY"
       },
       {
@@ -7537,6 +7529,14 @@
         "publisher": "Zacks",
         "reportDate": "2025-05-23",
         "link": "https://finance.yahoo.com/news/cme-group-vs-intercontinental-exchange-180600366.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "31cac532-4fb9-34d3-a594-e266bef346bf",
+        "title": "CME (CME) Up 7.1% Since Last Earnings Report: Can It Continue?",
+        "publisher": "Zacks",
+        "reportDate": "2025-05-23",
+        "link": "https://finance.yahoo.com/news/cme-cme-7-1-since-153050961.html",
         "type": "STORY"
       },
       {
@@ -7612,17 +7612,17 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 22.32,
+        "value": 22.48,
         "industryAvg": 23.24
       },
       {
         "metric": "P/S Ratio",
-        "value": 13.96,
+        "value": 14.06,
         "industryAvg": 7.31
       },
       {
         "metric": "P/B Ratio",
-        "value": 3.57,
+        "value": 3.59,
         "industryAvg": 3.82
       },
       {

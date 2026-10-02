@@ -13,8 +13,8 @@ export const formula1Snapshot: Formula1Snapshot = {
     "constructorStandings": "https://api.openf1.org/v1/championship_teams?session_key=11377"
   },
   "season": 2026,
-  "generatedAt": "2026-10-02T00:41:40.872Z",
-  "defaultMeetingKey": "1308",
+  "generatedAt": "2026-10-02T17:49:29.590Z",
+  "defaultMeetingKey": "1296",
   "standingsMeetingKey": "1295",
   "meetings": [
     {
@@ -6962,7 +6962,7 @@ export const formula1Snapshot: Formula1Snapshot = {
       "gmtOffset": "08:00:00",
       "startAt": "2026-10-02T04:30:00+00:00",
       "endAt": "2026-10-04T09:00:00+00:00",
-      "status": "upcoming",
+      "status": "live",
       "hasSprint": false,
       "raceSessionKey": "11731",
       "raceStartsAt": "2026-10-04T07:00:00+00:00",
@@ -7857,63 +7857,63 @@ export const formula1Snapshot: Formula1Snapshot = {
     "season": 2026,
     "totalRaces": 23,
     "completedRaces": 15,
-    "upcomingRaces": 8,
+    "upcomingRaces": 7,
     "sprintWeekends": 6
   },
   "nextMeeting": {
-    "key": "1308",
-    "name": "Bahrain Grand Prix",
-    "officialName": "FORMULA 1 GULF AIR BAHRAIN GRAND PRIX IN MALAYSIA 2026",
-    "location": "Kuala Lumpur",
-    "countryName": "Bahrain",
-    "countryCode": "BRN",
-    "countryFlag": "https://media.formula1.com/content/dam/fom-website/2018-redesign-assets/Flags%2016x9/bahrain-flag.png",
-    "circuitKey": "12",
-    "circuitShortName": "Kuala Lumpur",
-    "circuitType": "Permanent",
-    "circuitImage": "https://media.formula1.com/image/upload/c_fit,h_704/q_auto/v1740000001/common/f1/2026/track/2026trackkualalumpurdetailed.webp",
+    "key": "1296",
+    "name": "Singapore Grand Prix",
+    "officialName": "FORMULA 1 SINGAPORE AIRLINES SINGAPORE GRAND PRIX 2026",
+    "location": "Marina Bay",
+    "countryName": "Singapore",
+    "countryCode": "SGP",
+    "countryFlag": "https://media.formula1.com/content/dam/fom-website/2018-redesign-assets/Flags%2016x9/singapore-flag.png",
+    "circuitKey": "61",
+    "circuitShortName": "Singapore",
+    "circuitType": "Temporary - Street",
+    "circuitImage": "https://media.formula1.com/content/dam/fom-website/2018-redesign-assets/Track%20icons%204x3/Singapore%20carbon.png",
     "gmtOffset": "08:00:00",
-    "startAt": "2026-10-02T04:30:00+00:00",
-    "endAt": "2026-10-04T09:00:00+00:00",
+    "startAt": "2026-10-09T08:30:00+00:00",
+    "endAt": "2026-10-11T14:00:00+00:00",
     "status": "upcoming",
-    "hasSprint": false,
-    "raceSessionKey": "11731",
-    "raceStartsAt": "2026-10-04T07:00:00+00:00",
+    "hasSprint": true,
+    "raceSessionKey": "11388",
+    "raceStartsAt": "2026-10-11T12:00:00+00:00",
     "sessions": [
       {
-        "key": "11727",
+        "key": "11378",
         "name": "Practice 1",
         "type": "Practice",
-        "startAt": "2026-10-02T04:30:00+00:00",
-        "endAt": "2026-10-02T05:30:00+00:00"
+        "startAt": "2026-10-09T08:30:00+00:00",
+        "endAt": "2026-10-09T09:30:00+00:00"
       },
       {
-        "key": "11728",
-        "name": "Practice 2",
-        "type": "Practice",
-        "startAt": "2026-10-02T08:00:00+00:00",
-        "endAt": "2026-10-02T09:00:00+00:00"
+        "key": "11379",
+        "name": "Sprint Qualifying",
+        "type": "Qualifying",
+        "startAt": "2026-10-09T12:30:00+00:00",
+        "endAt": "2026-10-09T13:14:00+00:00"
       },
       {
-        "key": "11729",
-        "name": "Practice 3",
-        "type": "Practice",
-        "startAt": "2026-10-03T04:30:00+00:00",
-        "endAt": "2026-10-03T05:30:00+00:00"
+        "key": "11383",
+        "name": "Sprint",
+        "type": "Race",
+        "startAt": "2026-10-10T09:00:00+00:00",
+        "endAt": "2026-10-10T10:00:00+00:00"
       },
       {
-        "key": "11730",
+        "key": "11384",
         "name": "Qualifying",
         "type": "Qualifying",
-        "startAt": "2026-10-03T08:00:00+00:00",
-        "endAt": "2026-10-03T09:00:00+00:00"
+        "startAt": "2026-10-10T13:00:00+00:00",
+        "endAt": "2026-10-10T14:00:00+00:00"
       },
       {
-        "key": "11731",
+        "key": "11388",
         "name": "Race",
         "type": "Race",
-        "startAt": "2026-10-04T07:00:00+00:00",
-        "endAt": "2026-10-04T09:00:00+00:00"
+        "startAt": "2026-10-11T12:00:00+00:00",
+        "endAt": "2026-10-11T14:00:00+00:00"
       }
     ],
     "classification": [],

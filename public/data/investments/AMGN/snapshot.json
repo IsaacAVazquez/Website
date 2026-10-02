@@ -1,10 +1,10 @@
 {
   "symbol": "AMGN",
-  "lastUpdated": "2026-09-30T15:30:08.171135+00:00",
+  "lastUpdated": "2026-10-02T15:16:35.277063+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-09-30T15:30:08.171135+00:00",
+    "snapshotBuiltAt": "2026-10-02T15:16:35.277063+00:00",
     "sections": {
-      "price": "2026-09-30"
+      "price": "2026-10-01"
     },
     "retainedSections": [
       "fundamentals"
@@ -43,11 +43,11 @@
     },
     "fundamentals": {
       "ttmEps": 16.0981,
-      "ttmPe": 26.32,
-      "pegRatio": 0.41,
-      "marketCap": 229019784000,
-      "psRatio": 6.01,
-      "pbRatio": 19.59
+      "ttmPe": 25.3,
+      "pegRatio": 0.39,
+      "marketCap": 220170162000,
+      "psRatio": 5.78,
+      "pbRatio": 18.84
     },
     "profitability": {
       "roe": 22.75,
@@ -5336,25 +5336,17 @@
       ]
     },
     "wacc": {
-      "wacc": 7.1,
-      "costOfEquity": 8.62,
+      "wacc": 7.06,
+      "costOfEquity": 8.64,
       "costOfDebt": 1.17,
       "taxRate": 14.000000000000002,
-      "beta": 0.4416,
-      "marketCap": 229019784000
+      "beta": 0.4455,
+      "marketCap": 220170162000
     },
     "beta": {
-      "beta5y": 0.4416
+      "beta5y": 0.4455
     },
     "price": [
-      {
-        "date": "2025-09-30",
-        "open": 274.14,
-        "high": 284.82,
-        "low": 274.02,
-        "close": 282.2,
-        "volume": 3508700
-      },
       {
         "date": "2025-10-01",
         "open": 284.45,
@@ -7362,6 +7354,14 @@
         "low": 420.63,
         "close": 421.51,
         "volume": 3129500
+      },
+      {
+        "date": "2026-10-01",
+        "open": 421.72,
+        "high": 422.8,
+        "low": 407.13,
+        "close": 407.27,
+        "volume": 2500500
       }
     ],
     "news": [
@@ -7398,19 +7398,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "a0707555-af10-361d-be3c-77f32d3980d7",
-        "title": "Regeneron defeats Amgen in PCSK9 case; 2 cell therapy biotechs cut staff",
-        "publisher": "BioPharma Dive",
-        "reportDate": "2025-05-16",
-        "link": "https://finance.yahoo.com/m/a0707555-af10-361d-be3c-77f32d3980d7/regeneron-defeats-amgen-in.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "bbb82497-a426-3bce-81c3-efa6923f220d",
         "title": "Novo Nordisk Sheds 3% After Ousting CEO As Eli Lilly Rivalry Slams Stock Price",
         "publisher": "Investor's Business Daily",
         "reportDate": "2025-05-16",
         "link": "https://finance.yahoo.com/m/bbb82497-a426-3bce-81c3-efa6923f220d/novo-nordisk-sheds-3%25-after.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "a0707555-af10-361d-be3c-77f32d3980d7",
+        "title": "Regeneron defeats Amgen in PCSK9 case; 2 cell therapy biotechs cut staff",
+        "publisher": "BioPharma Dive",
+        "reportDate": "2025-05-16",
+        "link": "https://finance.yahoo.com/m/a0707555-af10-361d-be3c-77f32d3980d7/regeneron-defeats-amgen-in.html",
         "type": "STORY"
       },
       {
@@ -7510,18 +7510,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 26.32,
-        "industryAvg": 26.53
+        "value": 25.3,
+        "industryAvg": 25.78
       },
       {
         "metric": "P/S Ratio",
-        "value": 6.01,
-        "industryAvg": 4.79
+        "value": 5.78,
+        "industryAvg": 4.66
       },
       {
         "metric": "P/B Ratio",
-        "value": 19.59,
-        "industryAvg": 5.92
+        "value": 18.84,
+        "industryAvg": 5.75
       },
       {
         "metric": "ROE",

@@ -7,6 +7,7 @@ All notable changes to this repository are documented here. Format: `YYYY-MM-DD`
 ## 2026-10-02
 
 - Name the product roles and pin the job write-ups on Home ([#532](https://github.com/IsaacAVazquez/Website/pull/532)).
+- Cut about 39k lines of dead and duplicated code ([#543](https://github.com/IsaacAVazquez/Website/pull/543)).
 - Fix 12 correctness, security, persistence, and publication issues from the repository audit:
   - Sanitize restored investment symbols and render chart tooltips with text nodes to prevent XSS.
   - Bind draft companion away mode to provider room identity and verify candidate identity in confirmation dialogs.

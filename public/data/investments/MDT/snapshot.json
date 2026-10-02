@@ -1,14 +1,13 @@
 {
   "symbol": "MDT",
-  "lastUpdated": "2026-09-30T15:30:08.171135+00:00",
+  "lastUpdated": "2026-10-02T15:16:35.277063+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-09-30T15:30:08.171135+00:00",
+    "snapshotBuiltAt": "2026-10-02T15:16:35.277063+00:00",
     "sections": {
-      "price": "2026-09-30"
+      "price": "2026-10-01"
     },
     "retainedSections": [
-      "fundamentals",
-      "industry"
+      "fundamentals"
     ]
   },
   "source": "prefetched",
@@ -44,11 +43,11 @@
     },
     "fundamentals": {
       "ttmEps": 4.062,
-      "ttmPe": 21.44,
-      "pegRatio": 0.52,
-      "marketCap": 111479284521,
-      "psRatio": 2.97,
-      "pbRatio": 2.22
+      "ttmPe": 21.28,
+      "pegRatio": 0.51,
+      "marketCap": 110647254036,
+      "psRatio": 2.95,
+      "pbRatio": 2.2
     },
     "profitability": {
       "roe": 2.9499999999999997,
@@ -5947,25 +5946,17 @@
       ]
     },
     "wacc": {
-      "wacc": 7.9399999999999995,
+      "wacc": 7.920000000000001,
       "costOfEquity": 9.8,
       "costOfDebt": 0.66,
       "taxRate": 16,
-      "beta": 0.5968,
-      "marketCap": 111479284521
+      "beta": 0.5976,
+      "marketCap": 110647254036
     },
     "beta": {
-      "beta5y": 0.5968
+      "beta5y": 0.5976
     },
     "price": [
-      {
-        "date": "2025-09-30",
-        "open": 93.9,
-        "high": 95.39,
-        "low": 93.81,
-        "close": 95.24,
-        "volume": 7119000
-      },
       {
         "date": "2025-10-01",
         "open": 95.15,
@@ -7973,23 +7964,31 @@
         "low": 86.2,
         "close": 86.29,
         "volume": 26614100
+      },
+      {
+        "date": "2026-10-01",
+        "open": 85.85,
+        "high": 86.84,
+        "low": 85.22,
+        "close": 86.44,
+        "volume": 29277400
       }
     ],
     "news": [
-      {
-        "uuid": "6a6579ab-112a-39d2-a62e-9d440f5be43a",
-        "title": "Orchestra BioMed Receives FDA Breakthrough Device Designation for AVIM Therapy",
-        "publisher": "GlobeNewswire",
-        "reportDate": "2025-04-22",
-        "link": "https://finance.yahoo.com/news/orchestra-biomed-receives-fda-breakthrough-110000670.html",
-        "type": "STORY"
-      },
       {
         "uuid": "1ab73445-1823-36a0-89c1-819bd7177867",
         "title": "Orchestra BioMed Says AVIM Therapy Gets US FDA Breakthrough Device Designation",
         "publisher": "MT Newswires",
         "reportDate": "2025-04-22",
         "link": "https://finance.yahoo.com/news/orchestra-biomed-says-avim-therapy-143403689.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "6a6579ab-112a-39d2-a62e-9d440f5be43a",
+        "title": "Orchestra BioMed Receives FDA Breakthrough Device Designation for AVIM Therapy",
+        "publisher": "GlobeNewswire",
+        "reportDate": "2025-04-22",
+        "link": "https://finance.yahoo.com/news/orchestra-biomed-receives-fda-breakthrough-110000670.html",
         "type": "STORY"
       },
       {
@@ -8041,19 +8040,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "940e6104-e3f4-3bbe-9b75-88ea96d84d70",
-        "title": "Medtronic chairman and CEO Geoff Martha to speak at Bernstein's Strategic Decisions Conference",
-        "publisher": "PR Newswire",
-        "reportDate": "2025-05-24",
-        "link": "https://finance.yahoo.com/news/medtronic-chairman-ceo-geoff-martha-205900126.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "90506fc7-276f-37e8-8bab-5a0a1b6094f4",
         "title": "Medtronic's (NYSE:MDT) Upcoming Dividend Will Be Larger Than Last Year's",
         "publisher": "Simply Wall St.",
         "reportDate": "2025-05-24",
         "link": "https://finance.yahoo.com/news/medtronics-nyse-mdt-upcoming-dividend-132923227.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "940e6104-e3f4-3bbe-9b75-88ea96d84d70",
+        "title": "Medtronic chairman and CEO Geoff Martha to speak at Bernstein's Strategic Decisions Conference",
+        "publisher": "PR Newswire",
+        "reportDate": "2025-05-24",
+        "link": "https://finance.yahoo.com/news/medtronic-chairman-ceo-geoff-martha-205900126.html",
         "type": "STORY"
       }
     ],
@@ -8118,18 +8117,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 22.03,
-        "industryAvg": 24.8
+        "value": 21.28,
+        "industryAvg": 24.34
       },
       {
         "metric": "P/S Ratio",
-        "value": 3.05,
-        "industryAvg": 3.02
+        "value": 2.95,
+        "industryAvg": 2.94
       },
       {
         "metric": "P/B Ratio",
-        "value": 2.28,
-        "industryAvg": 2.96
+        "value": 2.2,
+        "industryAvg": 2.86
       },
       {
         "metric": "ROE",
