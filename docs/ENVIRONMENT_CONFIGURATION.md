@@ -24,12 +24,7 @@ Use the production hostname for both site URL variables.
 
 | Variable | Required | Purpose |
 | --- | --- | --- |
-| `NEXTAUTH_URL` | yes for deployed auth flows | Base URL for NextAuth callbacks |
-| `NEXTAUTH_SECRET` | yes for auth | Session signing secret |
-| `ADMIN_USERNAME` | yes for `/admin` | Credential login username |
-| `ADMIN_PASSWORD` | yes for `/admin` | Credential login password |
-
-The admin surface uses credential auth, not a multi-user identity provider.
+There is no authenticated surface. The `/admin` page and NextAuth were removed on 2026-10-02.
 
 ---
 
@@ -131,10 +126,6 @@ Useful local template for broader coverage:
 ```bash
 NEXT_PUBLIC_SITE_URL=http://localhost:3000
 SITE_URL=http://localhost:3000
-NEXTAUTH_URL=http://localhost:3000
-NEXTAUTH_SECRET=replace-me
-ADMIN_USERNAME=replace-me
-ADMIN_PASSWORD=replace-me
 MBA_DIGEST_SECRET=replace-me
 MBA_DIGEST_ALLOWED_RECIPIENTS=you@example.com,@example.edu
 ```

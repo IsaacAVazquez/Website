@@ -79,10 +79,6 @@ Core production variables:
 
 - `SITE_URL`
 - `NEXT_PUBLIC_SITE_URL`
-- `NEXTAUTH_URL`
-- `NEXTAUTH_SECRET`
-- `ADMIN_USERNAME`
-- `ADMIN_PASSWORD`
 
 Operational variables:
 
@@ -139,7 +135,6 @@ Spot-check:
 - one `/writing/[slug]` page
 - one fantasy route
 - `/search`
-- `/admin`
 
 Also verify:
 

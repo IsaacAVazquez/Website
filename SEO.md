@@ -317,7 +317,7 @@ Google uses `lastmod` only while it keeps matching real changes, which is why no
 
 ### Excluded paths
 
-`/api/*`, `/_next/*`, `/404`, `/admin`, `/admin/*`, `/search`, and `/score-pools/settings` never appear, since each is either off the route walk or marked `noIndex`.
+`/api/*`, `/_next/*`, `/404`, `/search`, and `/score-pools/settings` never appear, since each is either off the route walk or marked `noIndex`.
 
 ### Redirects and server-rendered HTML
 
@@ -360,7 +360,6 @@ Status of metadata and structured data for the routes listed below. The table do
 | `/investments` | `constructMetadata` | website | `/investments` | snapshot date | BreadcrumbList, SoftwareApplication | Yes | OK |
 | `/accessibility` | `constructMetadata` | website | full URL | 2026-07-16 | WebPage, BreadcrumbList | Yes | OK |
 | `/search` | `constructMetadata` | website | `/search` | 2025-02-05 | None | None | OK, `noIndex` |
-| `/admin` | layout metadata | N/A | N/A | N/A | None | None | OK, `noIndex` |
 | `/fantasy-football` | `constructMetadata` | website | relative | snapshot date | BreadcrumbList, SportsApp, FAQ | Yes | OK; the first page of rankings rows is server-rendered from the committed snapshot, so non-JS crawlers see real players |
 | `/fantasy-football/draft-tracker` | `constructMetadata` | website | relative | snapshot date | BreadcrumbList, SoftwareApplication | Yes | OK |
 | `/fantasy-football/rb-tiers` | 308 in `next.config.mjs` | n/a | n/a | n/a | n/a | n/a | OK; page file removed |
@@ -402,7 +401,7 @@ Status of metadata and structured data for the routes listed below. The table do
 - [ ] `<AIStructuredData type="Breadcrumb" />` in JSX
 
 ### Non-public pages
-- [ ] `noIndex: true` — applies to `/admin`, utility routes, draft pages
+- [ ] `noIndex: true` — applies to utility routes, draft pages
 
 ### Never do
 - Hardcode `https://isaacvazquez.com` in page files — use `siteConfig.url` or pass relative paths to `canonicalUrl`

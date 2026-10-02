@@ -11,7 +11,7 @@ Day-to-day operational and hygiene notes for the live site. For the public vulne
 This is a personal portfolio site, not a multi-tenant product:
 
 - there is no user registration, no PII storage, no payments, and no per-user data
-- the only authenticated surface is `/admin`, gated by a single shared credential pair through NextAuth
+- there is no authenticated surface; the `/admin` page and NextAuth were removed on 2026-10-02
 - most data is static and uses committed JSON or TypeScript snapshots, so the runtime attack surface is small
 - public API routes are read-only proxies over those snapshots and a handful of third-party services (Finnhub, football-data.org, Resend)
 
@@ -27,9 +27,6 @@ Active secrets used by the running app and update scripts:
 
 | Variable | Purpose |
 |---|---|
-| `NEXTAUTH_SECRET` | NextAuth JWT signing key. Generate fresh per environment with `openssl rand -base64 32`. |
-| `NEXTAUTH_URL` | Must match the live deployment hostname (or `http://localhost:3000` in dev). |
-| `ADMIN_USERNAME` / `ADMIN_PASSWORD` | Single credential pair for `/admin`. |
 | `FANTASYPROS_API_KEY` | Optional build-only key for authenticated local redraft and best ball snapshot refreshes. The scheduled job and deployed runtime do not use it. |
 | `FOOTBALL_DATA_API_TOKEN` | football-data.org token used by football snapshot scripts. |
 | `FINNHUB_API_KEY` | Quote endpoint behind `/api/investments/quotes`. |
@@ -42,24 +39,9 @@ Active secrets used by the running app and update scripts:
 
 Rotation guidance:
 
-- rotate `NEXTAUTH_SECRET`, `ADMIN_PASSWORD`, and `MBA_DIGEST_SECRET` after any suspected exposure or hand-off
+- rotate `MBA_DIGEST_SECRET` after any suspected exposure or hand-off
 - rotate third-party API keys (`FANTASYPROS_API_KEY`, `FOOTBALL_DATA_API_TOKEN`, `FINNHUB_API_KEY`, `RESEND_API_KEY`) immediately if a key appears in logs, screenshots, or a public commit
 - after rotation, verify the relevant secret store. Redeploy for runtime keys and rerun the affected GitHub Actions job for snapshot credentials
-
----
-
-## Admin Access (`/admin`)
-
-- implemented in `src/lib/auth.ts` using NextAuth's credentials provider
-- a single `(ADMIN_USERNAME, ADMIN_PASSWORD)` pair is checked against env vars; there is no user store, no password hashing, and no MFA
-- session strategy is JWT, 7-day max age
-- this is intentionally a lightweight gate, not a full RBAC system
-
-Hardening expectations:
-
-- use a long, random password (24+ chars, password manager generated)
-- never reuse this password elsewhere
-- if the admin surface ever stores sensitive operations, upgrade to hashed credentials or an OIDC provider before doing so
 
 ---
 
@@ -67,7 +49,6 @@ Hardening expectations:
 
 ### Operationally protected
 
-- `/api/auth/[...nextauth]` is the NextAuth handler for `/admin` sign-in
 - `/api/mba-jobs/email` requires the `x-mba-digest-secret` header to match `MBA_DIGEST_SECRET`, compared in constant time, and answers `503` while that variable is unset. The recipient allowlist still applies after the secret passes
 
 ### Public, read-only endpoints
@@ -121,7 +102,7 @@ There is no `/api/scheduled-update`, `/api/data-manager`, `/api/fantasy-pros-ses
 
 - run `npm audit` and review GitHub Dependabot alerts before each release window
 - prefer minor/patch upgrades over majors unless a CVE forces it
-- pin `next`, `react`, `next-auth`, and any auth-adjacent packages explicitly in `package.json`
+- pin `next` and `react` explicitly in `package.json`
 - when adding a new dependency, prefer well-maintained packages with TypeScript types and recent releases
 
 ---
@@ -137,12 +118,11 @@ There is no `/api/scheduled-update`, `/api/data-manager`, `/api/fantasy-pros-ses
 
 ## Incident Response
 
-If you suspect a leaked secret, defacement, or unauthorized admin access:
+If you suspect a leaked secret or defacement:
 
 1. rotate all related secrets in Netlify and trigger a fresh deploy
-2. invalidate active NextAuth sessions by rotating `NEXTAUTH_SECRET`
-3. review recent commits and Netlify deploy logs for unexpected changes
-4. if the issue was reported externally, follow the disclosure flow in the root [`SECURITY.md`](../SECURITY.md)
+2. review recent commits and Netlify deploy logs for unexpected changes
+3. if the issue was reported externally, follow the disclosure flow in the root [`SECURITY.md`](../SECURITY.md)
 
 ---
 

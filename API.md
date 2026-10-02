@@ -12,7 +12,6 @@ Current API route inventory for the app.
 
 | Route | Methods | Notes |
 |------|---------|-------|
-| `/api/auth/[...nextauth]` | GET, POST | NextAuth credential auth for `/admin` |
 | `/api/data-revisions` | GET | No-cache revision and freshness ledger used to verify production publication |
 
 ### Fantasy football
@@ -110,15 +109,6 @@ The live fantasy API surface is intentionally narrow:
 - `/api/fantasy-data` reads the generated static snapshots in `public/data/fantasy/`
 - scheduled fantasy refreshes happen through `.github/workflows/update-fantasy.yml`
 - there are no live `/api/fantasy-pros-*`, `/api/data-manager`, `/api/data-metadata`, `/api/sample-data`, or `/api/scheduled-update` routes in the current app tree
-
-### Admin auth
-
-Admin access is backed by NextAuth credentials configured in:
-
-- `src/lib/auth.ts`
-- `/api/auth/[...nextauth]`
-
----
 
 ## Common Response Shapes
 

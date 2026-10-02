@@ -71,11 +71,10 @@ Fast route reference for the current app.
 | `/fantasy-football/best-ball` | `src/app/fantasy-football/best-ball/page.tsx` | Async server page -> `BestBallClient` |
 | `/fantasy-football/best-ball/draft-tracker` | `src/app/fantasy-football/best-ball/draft-tracker/page.tsx` | Async server page -> `BestBallDraftTrackerClient` |
 | `/search` | `src/app/search/page.tsx` | Search UI page |
-| `/admin` | `src/app/admin/page.tsx` | Auth-aware admin page |
 | `/now` | `src/app/now/page.tsx` | Current focus / status page |
 | `/changelog` | `src/app/changelog/page.tsx` | Site changelog page |
 
-There is no live `/admin/analytics` route in the current app tree.
+There is no `/admin` route; it and NextAuth were removed on 2026-10-02.
 
 ---
 
@@ -84,7 +83,7 @@ There is no live `/admin/analytics` route in the current app tree.
 - `src/app/layout.tsx` renders fonts, providers, the skip link, and `ConditionalLayout`
 - `src/components/ConditionalLayout.tsx` has two branches
 - the seven designed Catalog 97 routes (`/`, `/portfolio`, `/writing`, `/dashboards`, `/about`, `/resume`, `/contact`, listed in `src/constants/catalog97Nav.ts`) pass through untouched because their page components render `Catalog97Shell` themselves
-- every other route, `/admin` included, is wrapped in `src/components/catalog97/Catalog97ToolShell.tsx`, which adds an optional title band and the build-note aside
+- every other route is wrapped in `src/components/catalog97/Catalog97ToolShell.tsx`, which adds an optional title band and the build-note aside
 
 Semantics:
 

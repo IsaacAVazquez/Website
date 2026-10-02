@@ -100,7 +100,7 @@ function withSecurityHeaders(response: NextResponse, request: NextRequest) {
   return response;
 }
 
-// Apply security headers to HTML routes. Admin auth is handled by NextAuth.
+// Apply security headers to HTML routes.
 // Redirects belong in next.config.mjs: on Netlify this proxy answers first, so
 // a redirect here would shadow the config's permanent rules.
 export function proxy(request: NextRequest) {

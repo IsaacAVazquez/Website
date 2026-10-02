@@ -18,7 +18,6 @@ const APP = path.join(ROOT, "src", "app");
 /** Page routes that are neither designed Catalog 97 routes nor project routes. */
 const UTILITY_ROUTES = new Set([
   "/accessibility",
-  "/admin",
   "/agent-build-index",
   "/analytics-reference",
   "/arcade",

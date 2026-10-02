@@ -74,7 +74,6 @@ After running, commit the regenerated `src/data/*.ts` or `public/data/**` files.
 | --- | --- |
 | `FOOTBALL_DATA_API_TOKEN` | `update:football`, `update:premier-league`, `update:la-liga` (free tier, 10 req/min). Set in `.env.local` and GitHub Actions secrets for the league workflows; Netlify builds do not need it. |
 | `GITHUB_TOKEN` or `GH_TOKEN` | Optional local higher-rate-limit token for `npm run update:github-trending`; GitHub Actions provides `GITHUB_TOKEN`. |
-| `NEXTAUTH_SECRET`, `NEXTAUTH_URL`, `ADMIN_USERNAME`, `ADMIN_PASSWORD` | `/admin` auth (NextAuth v4). Not used by scheduled refresh. |
 
 `CRON_SECRET` previously gated the retired Netlify scheduled-fantasy function and is no longer required for scheduled refresh. It may still be referenced by older docs; treat any such mention as historical.
 

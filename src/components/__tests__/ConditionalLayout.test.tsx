@@ -70,7 +70,7 @@ describe("ConditionalLayout", () => {
     },
   );
 
-  it.each(["/nba", "/fantasy-football/waivers", "/writing/some-post", "/portfolio/some-project", "/admin", "/now"])(
+  it.each(["/nba", "/fantasy-football/waivers", "/writing/some-post", "/portfolio/some-project", "/now"])(
     "wraps %s in the Catalog 97 tool shell",
     (pathname) => {
       renderAt(pathname);
