@@ -2,7 +2,7 @@
 
 Operational context for agents working in this repo. Start here, then read `CLAUDE.md` for deeper implementation context.
 
-**Last updated:** 2026-09-27
+**Last updated:** 2026-10-02
 
 ---
 
@@ -134,6 +134,8 @@ Footer:
 - Portfolio and writing cards should surface role, problem space, and impact in the default scan state.
 - The `/portfolio` index is rendered by `src/components/catalog97/Catalog97Portfolio.tsx`, which carries a client-side project search with tokenized AND matching over title, description, role, timeline, metrics, summary, category, and tools, plus curated, newest, alphabetical, and live-first sorting.
 - `/api/search` is still limited and mostly hardcoded. Do not describe it as comprehensive site search.
+- Validate all persisted and restored user strings (such as investment symbols with `isValidInvestmentSymbol` matching `^[A-Z0-9.\-]{1,10}$`) and construct chart tooltips using text nodes or `textContent` to prevent script execution.
+- In dictionary and keyword lookups (like `/api/search`), always use `Object.hasOwn()` or `Map` to prevent prototype property resolution for inherited keys like `constructor`.
 
 ---
 
@@ -246,7 +248,7 @@ Current generated outputs:
 
 The old RB tier route redirects to the canonical fantasy board.
 
-Operational note: `.github/workflows/update-fantasy.yml` commits the real fantasy snapshot artifacts above. There is no live Netlify scheduled fantasy updater; GitHub Actions is the public update path.
+Operational note: `.github/workflows/update-fantasy.yml` commits the real fantasy snapshot artifacts above. It runs with a 45-minute job timeout budget, builds and publishes the weekly board first before the draft lanes, and restores rejected best ball output before committing. There is no live Netlify scheduled fantasy updater; GitHub Actions is the public update path.
 
 ### Investments data workflow
 
@@ -319,7 +321,7 @@ The MLB, NBA, and NFL dashboards read committed TypeScript snapshots at runtime.
 - `npm run update:mlb` writes `src/data/mlbSnapshot.ts` from the public MLB Stats API.
 - `npm run update:nba` writes `src/data/nbaSnapshot.ts` from ESPN public NBA endpoints.
 - `npm run update:nfl` writes `src/data/nflSnapshot.ts` from NFLverse open data.
-- `npm run update:golf` writes `src/data/golfSnapshot.ts` from the public ESPN golf leaderboard endpoint; a failed fetch keeps the previous snapshot. Between tournaments ESPN lists only the next event with no field posted, and the builder then re-stamps the last final board's `generatedAt` instead of failing, so the freshness gate reads a checked source through the off week.
+- `npm run update:golf` writes `src/data/golfSnapshot.ts` from the public ESPN golf leaderboard endpoint; a failed fetch keeps the previous snapshot. Between tournaments ESPN lists only the next event with no field posted, and the builder restamps the last final board's `generatedAt` only when the tournament status is verified final and completed within 45 days; incomplete boards keep their original timestamp so freshness gates do not falsely mark in-progress results as current.
 - `npm run update:world-cup` writes `src/data/worldCupSnapshot.ts` from ESPN's public `soccer/fifa.world` endpoints; a failed or empty fetch keeps the previous snapshot.
 
 ### Other data refresh workflows

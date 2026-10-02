@@ -2,7 +2,7 @@
 
 Fast diagnostics for the current site, data workflows, and deployment path.
 
-**Last updated:** 2026-09-21
+**Last updated:** 2026-10-02
 
 ---
 
@@ -18,6 +18,7 @@ Fast diagnostics for the current site, data workflows, and deployment path.
 - Run `npm run lint` first
 - Check for App Router metadata or async `params` mistakes in page files
 - Confirm route-local imports are not pulling server-only code into client components
+- On repeated builds, if webpack fails inside cached symlink context hashing (`_resolveContextTsh` / `WasmHash`), ensure content hash checks are configured for production snapshots (`next.config.mjs`)
 
 ### `npm run dev` boots but pages crash
 

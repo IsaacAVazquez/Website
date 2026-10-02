@@ -175,6 +175,7 @@ describe("buildGolfSnapshotData", () => {
     expect(summary.tournament?.fieldSize).toBe(5);
     expect(summary.tournament?.cutLine).toBe(1);
     expect(summary.tournament?.roundLabel).toBe("Round 2");
+    expect(summary.tournament?.completed).toBe(false);
 
     // Leaderboard is sorted by finishing position; leader is Scheffler.
     expect(summary.leaderboard[0].playerName).toBe("Scottie Scheffler");
@@ -218,6 +219,21 @@ describe("buildGolfSnapshotData", () => {
       .mockResolvedValue(jsonResponse({ events: [] }));
 
     await expect(buildGolfSnapshotData()).rejects.toThrow(/no events/i);
+  });
+
+  it("records the provider's completed tournament flag", async () => {
+    const payload = makeLeaderboard(fiveCompetitors());
+    Object.assign(payload.events[0].competitions[0].status.type, {
+      state: "post",
+      completed: true,
+      detail: "Final",
+    });
+    jest.spyOn(global, "fetch").mockResolvedValue(jsonResponse(payload));
+
+    const { summary } = await buildGolfSnapshotData();
+
+    expect(summary.tournament?.completed).toBe(true);
+    expect(summary.tournament?.status).toBe("Final");
   });
 
   it("throws when the field is too thin to trust", async () => {

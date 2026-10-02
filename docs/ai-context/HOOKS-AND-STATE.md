@@ -2,7 +2,7 @@
 
 Current hook inventory and state ownership.
 
-**Last updated:** 2026-09-30
+**Last updated:** 2026-10-02
 
 ---
 
@@ -100,7 +100,7 @@ The rankings client also keeps a List-view Comfortable/Compact density preferenc
 
 ### Draft tracker state
 
-`useDraftState` (`src/app/fantasy-football/draft-tracker/hooks/useDraftState.ts`) owns the draft assistant state machine (room settings, exact starting lineup, picks, teams, undo/redo, team names, export). It persists per-season under `fantasy-draft-tracker-v3-<season>` (e.g. `fantasy-draft-tracker-v3-2026`). A current-season v2 draft is migrated with the default one-QB lineup, while the legacy unversioned key `fantasy-draft-tracker` is deleted on load.
+`useDraftState` (`src/app/fantasy-football/draft-tracker/hooks/useDraftState.ts`) owns the draft assistant state machine (room settings, exact starting lineup, picks, teams, undo/redo, team names, export). It persists per-season under `fantasy-draft-tracker-v3-<season>` (e.g. `fantasy-draft-tracker-v3-2026`). A current-season v2 draft is migrated with the default one-QB lineup, while the legacy unversioned key `fantasy-draft-tracker` is deleted on load. Both redraft (`useDraftState`) and best ball (`use-best-ball-draft.ts`) draft trackers save synchronously, subscribe to cross-tab storage changes, and use revision tracking to reject stale external overwrites while preserving unsaved picks with a warning.
 
 ### Trade calculator state
 
@@ -122,7 +122,7 @@ Owns browser-local application status tracking layered onto the same surface.
 
 ## Personal Surface State
 
-These hooks follow the same browser-local pattern (localStorage, no account):
+These hooks follow the same browser-local pattern (localStorage, no account) and subscribe to browser storage events to merge edits against the latest validated save, eliminating multi-tab data loss:
 
 - `useTravelPlanner` — trips, day-by-day itineraries, and journal entries for `/travel`
 - `useWineCellar` — bottle inventory state for `/wine-cellar`

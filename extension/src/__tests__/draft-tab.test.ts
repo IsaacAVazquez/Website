@@ -1,4 +1,4 @@
-import { acceptsDraftSync, createDraftCommandSession, draftRoomUrl } from "../draft-tab";
+import { acceptsDraftSync, autoDraftRoomIdentity, createDraftCommandSession, draftRoomUrl } from "../draft-tab";
 
 const roomA = "https://fantasy.espn.com/football/draft?leagueId=1&seasonId=2026";
 const roomB = "https://fantasy.espn.com/football/draft?leagueId=2&seasonId=2026";
@@ -10,12 +10,22 @@ describe("draft tab binding", () => {
     const tabs = { query, sendMessage } as unknown as Pick<typeof chrome.tabs, "query" | "sendMessage">;
     const session = createDraftCommandSession();
     await session.send({ type: "FANTASY_AUTODRAFT_ARM", provider: "espn" }, tabs);
+    expect(sendMessage).toHaveBeenCalledWith(1, {type: "FANTASY_AUTODRAFT_ARM", provider: "espn", roomUrl: roomA});
     query.mockResolvedValue([{ id: 2, url: roomB }]);
     sendMessage.mockResolvedValue({ armed: false });
     await session.send({ type: "FANTASY_AUTODRAFT_DISARM", provider: "espn" }, tabs);
     expect(query).toHaveBeenCalledTimes(1);
     expect(sendMessage).toHaveBeenLastCalledWith(1, { type: "FANTASY_AUTODRAFT_DISARM", provider: "espn" });
     expect(session.getTarget()).toBeNull();
+  });
+
+  it("identifies actual provider rooms and rejects league pages", () => {
+    expect(autoDraftRoomIdentity(roomA, "espn")).toBe("espn:2026:1");
+    expect(autoDraftRoomIdentity(roomB, "espn")).not.toBe(autoDraftRoomIdentity(roomA, "espn"));
+    expect(autoDraftRoomIdentity(roomA.replace("/draft", "/team"), "espn")).toBeNull();
+    expect(autoDraftRoomIdentity("https://sleeper.com/draft/nfl/111111111111", "sleeper")).toBe("sleeper:111111111111");
+    expect(autoDraftRoomIdentity("https://sleeper.com/leagues/111111111111", "sleeper")).toBeNull();
+    expect(autoDraftRoomIdentity("https://sleeper.com/draft/nfl/111111111111", "espn")).toBeNull();
   });
 
   it("retains the armed target after a lost response and refuses a second room", async () => {

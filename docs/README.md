@@ -80,6 +80,7 @@ Dated audits and research dossiers. Each one is a point-in-time snapshot rather 
 
 - `DESIGN_AUDIT_2026-06.md` (the audit `../DESIGN_CHECKLIST.md` is derived from)
 - `DESIGN_REVIEW_2026-07.md`
+- `codebase-audit-2026-10-02.md` (code correctness, security, persistence, and publication audit with verified repairs)
 - `dashboard-spatial-system.md`
 - `accessibility-audit-2026-06.md`
 - `SEO_CONTENT_MAP.md`
