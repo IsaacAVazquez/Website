@@ -1,11 +1,14 @@
 {
   "symbol": "AAPL",
-  "lastUpdated": "2026-09-30T15:30:08.171135+00:00",
+  "lastUpdated": "2026-10-02T15:16:35.277063+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-09-30T15:30:08.171135+00:00",
+    "snapshotBuiltAt": "2026-10-02T15:16:35.277063+00:00",
     "sections": {
-      "price": "2026-09-30"
-    }
+      "price": "2026-10-01"
+    },
+    "retainedSections": [
+      "industry"
+    ]
   },
   "source": "prefetched",
   "capabilities": {
@@ -40,10 +43,10 @@
     },
     "fundamentals": {
       "ttmEps": 8.7233,
-      "ttmPe": 37.76,
-      "marketCap": 4812192412200,
-      "psRatio": 10.31,
-      "pbRatio": 44.76,
+      "ttmPe": 37.87,
+      "marketCap": 4825632658160,
+      "psRatio": 10.34,
+      "pbRatio": 44.88,
       "pegRatio": 1.3
     },
     "profitability": {
@@ -5106,24 +5109,16 @@
     },
     "wacc": {
       "wacc": 13.139999999999999,
-      "costOfEquity": 13.43,
+      "costOfEquity": 13.420000000000002,
       "costOfDebt": 0.8999999999999999,
       "taxRate": 15,
-      "beta": 1.0737,
-      "marketCap": 4812192412200
+      "beta": 1.0723,
+      "marketCap": 4825632658160
     },
     "beta": {
-      "beta5y": 1.0737
+      "beta5y": 1.0723
     },
     "price": [
-      {
-        "date": "2025-09-30",
-        "open": 254.86,
-        "high": 255.92,
-        "low": 253.11,
-        "close": 254.63,
-        "volume": 37704300
-      },
       {
         "date": "2025-10-01",
         "open": 255.04,
@@ -7130,24 +7125,32 @@
         "high": 339.5,
         "low": 330.14,
         "close": 333.02,
-        "volume": 49931500
+        "volume": 49988600
+      },
+      {
+        "date": "2026-10-01",
+        "open": 330,
+        "high": 332.48,
+        "low": 325.81,
+        "close": 330.32,
+        "volume": 36243900
       }
     ],
     "news": [
-      {
-        "uuid": "2cfa6437-c187-3ab8-9ea8-027695257bb0",
-        "title": "Top Research Reports for Apple, Meta Platforms & Chevron",
-        "publisher": "Zacks",
-        "reportDate": "2025-03-21",
-        "link": "https://finance.yahoo.com/news/top-research-reports-apple-meta-213400955.html",
-        "type": "STORY"
-      },
       {
         "uuid": "08501801-66ee-3113-a401-9e991895ffc1",
         "title": "Autodesk in proxy fight, General Mills reports mixed Q3: Morning Buzz",
         "publisher": "TipRanks",
         "reportDate": "2025-03-21",
         "link": "https://finance.yahoo.com/news/autodesk-proxy-fight-general-mills-160527898.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "2cfa6437-c187-3ab8-9ea8-027695257bb0",
+        "title": "Top Research Reports for Apple, Meta Platforms & Chevron",
+        "publisher": "Zacks",
+        "reportDate": "2025-03-21",
+        "link": "https://finance.yahoo.com/news/top-research-reports-apple-meta-213400955.html",
         "type": "STORY"
       },
       {

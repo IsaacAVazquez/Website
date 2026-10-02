@@ -1,10 +1,10 @@
 {
   "symbol": "PG",
-  "lastUpdated": "2026-09-30T15:30:08.171135+00:00",
+  "lastUpdated": "2026-10-02T15:16:35.277063+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-09-30T15:30:08.171135+00:00",
+    "snapshotBuiltAt": "2026-10-02T15:16:35.277063+00:00",
     "sections": {
-      "price": "2026-09-30"
+      "price": "2026-10-01"
     },
     "retainedSections": [
       "fundamentals"
@@ -43,11 +43,11 @@
     },
     "fundamentals": {
       "ttmEps": 6.62,
-      "ttmPe": 22.4,
+      "ttmPe": 21.74,
       "pegRatio": 3.76,
-      "marketCap": 344666016000,
-      "psRatio": 3.96,
-      "pbRatio": 6.37
+      "marketCap": 334511010000,
+      "psRatio": 3.84,
+      "pbRatio": 6.19
     },
     "profitability": {
       "roe": 5.47,
@@ -5776,25 +5776,17 @@
       ]
     },
     "wacc": {
-      "wacc": 7.41,
+      "wacc": 7.39,
       "costOfEquity": 8.110000000000001,
       "costOfDebt": 0.67,
       "taxRate": 22,
-      "beta": 0.3741,
-      "marketCap": 344666016000
+      "beta": 0.3768,
+      "marketCap": 334511010000
     },
     "beta": {
-      "beta5y": 0.3741
+      "beta5y": 0.3768
     },
     "price": [
-      {
-        "date": "2025-09-30",
-        "open": 153.46,
-        "high": 154.38,
-        "low": 152.84,
-        "close": 153.65,
-        "volume": 7762600
-      },
       {
         "date": "2025-10-01",
         "open": 153.7,
@@ -7802,23 +7794,31 @@
         "low": 145.28,
         "close": 145.28,
         "volume": 8578400
+      },
+      {
+        "date": "2026-10-01",
+        "open": 144.55,
+        "high": 145,
+        "low": 143.4,
+        "close": 143.95,
+        "volume": 7321200
       }
     ],
     "news": [
-      {
-        "uuid": "230d8f44-bb97-3380-9102-9e5461a617f1",
-        "title": "The Zacks Analyst Blog Highlights Procter & Gamble, Novo Nordisk, PepsiCo, Genie Energy and Canterbury Park",
-        "publisher": "Zacks",
-        "reportDate": "2025-04-10",
-        "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-procter-090000606.html",
-        "type": "STORY"
-      },
       {
         "uuid": "ef3a2b57-ad61-3a74-86c1-ac21c5e68268",
         "title": "Top Analyst Reports for Procter & Gamble, Novo Nordisk & PepsiCo",
         "publisher": "Zacks",
         "reportDate": "2025-04-10",
         "link": "https://finance.yahoo.com/news/top-analyst-reports-procter-gamble-205100046.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "230d8f44-bb97-3380-9102-9e5461a617f1",
+        "title": "The Zacks Analyst Blog Highlights Procter & Gamble, Novo Nordisk, PepsiCo, Genie Energy and Canterbury Park",
+        "publisher": "Zacks",
+        "reportDate": "2025-04-10",
+        "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-procter-090000606.html",
         "type": "STORY"
       },
       {
@@ -7878,11 +7878,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "d648ba01-435f-3d01-ae5d-c4060f97a638",
-        "title": "How Trump Inspired One Law Firm to Blitz Brands With ‘Made in USA’ Challenges",
-        "publisher": "The Wall Street Journal",
+        "uuid": "648c87cc-233c-3f92-938d-b8793ce7d880",
+        "title": "Clorox (CLX) Down 3.7% Since Last Earnings Report: Can It Rebound?",
+        "publisher": "Zacks",
         "reportDate": "2025-06-04",
-        "link": "https://finance.yahoo.com/m/d648ba01-435f-3d01-ae5d-c4060f97a638/how-trump-inspired-one-law.html",
+        "link": "https://finance.yahoo.com/news/clorox-clx-down-3-7-153027205.html",
         "type": "STORY"
       }
     ],
@@ -7951,18 +7951,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 22.4,
-        "industryAvg": 24.11
+        "value": 21.74,
+        "industryAvg": 23.4
       },
       {
         "metric": "P/S Ratio",
-        "value": 3.96,
-        "industryAvg": 2.88
+        "value": 3.84,
+        "industryAvg": 2.79
       },
       {
         "metric": "P/B Ratio",
-        "value": 6.37,
-        "industryAvg": 6.27
+        "value": 6.19,
+        "industryAvg": 6.11
       },
       {
         "metric": "ROE",

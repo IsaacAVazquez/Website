@@ -1,10 +1,10 @@
 {
   "symbol": "PNC",
-  "lastUpdated": "2026-09-30T15:30:08.171135+00:00",
+  "lastUpdated": "2026-10-02T15:16:35.277063+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-09-30T15:30:08.171135+00:00",
+    "snapshotBuiltAt": "2026-10-02T15:16:35.277063+00:00",
     "sections": {
-      "price": "2026-09-30"
+      "price": "2026-10-01"
     },
     "retainedSections": [
       "industry"
@@ -43,9 +43,9 @@
     },
     "fundamentals": {
       "ttmEps": 18.1814,
-      "ttmPe": 12.19,
-      "marketCap": 88541572405,
-      "psRatio": 3.61,
+      "ttmPe": 12.14,
+      "marketCap": 88182053275,
+      "psRatio": 3.59,
       "pbRatio": 1.38,
       "pegRatio": 0.49
     },
@@ -5595,25 +5595,17 @@
       ]
     },
     "wacc": {
-      "wacc": 7.380000000000001,
-      "costOfEquity": 12.21,
+      "wacc": 7.37,
+      "costOfEquity": 12.22,
       "costOfDebt": 3.02,
       "taxRate": 21,
-      "beta": 0.9134,
-      "marketCap": 88541572405
+      "beta": 0.9142,
+      "marketCap": 88182053275
     },
     "beta": {
-      "beta5y": 0.9134
+      "beta5y": 0.9142
     },
     "price": [
-      {
-        "date": "2025-09-30",
-        "open": 202.19,
-        "high": 202.79,
-        "low": 197.4,
-        "close": 200.93,
-        "volume": 1516700
-      },
       {
         "date": "2025-10-01",
         "open": 199.62,
@@ -7621,6 +7613,14 @@
         "low": 221.1,
         "close": 222.26,
         "volume": 2242200
+      },
+      {
+        "date": "2026-10-01",
+        "open": 220.06,
+        "high": 221.72,
+        "low": 215.35,
+        "close": 220.75,
+        "volume": 2208800
       }
     ],
     "news": [
@@ -7641,19 +7641,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "31a140c6-af8e-370f-825b-ea2d2f3cb98b",
-        "title": "Big banks report Q1 beats, China stops taking Boeing deliveries: Morning Buzz",
-        "publisher": "TipRanks",
-        "reportDate": "2025-04-16",
-        "link": "https://finance.yahoo.com/news/big-banks-report-q1-beats-155936913.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "458f776f-5b18-3e37-9a8a-2eaf853cf0ed",
         "title": "Company News for Apr 16, 2025",
         "publisher": "Zacks",
         "reportDate": "2025-04-16",
         "link": "https://finance.yahoo.com/news/company-news-apr-16-2025-131000143.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "31a140c6-af8e-370f-825b-ea2d2f3cb98b",
+        "title": "Big banks report Q1 beats, China stops taking Boeing deliveries: Morning Buzz",
+        "publisher": "TipRanks",
+        "reportDate": "2025-04-16",
+        "link": "https://finance.yahoo.com/news/big-banks-report-q1-beats-155936913.html",
         "type": "STORY"
       },
       {

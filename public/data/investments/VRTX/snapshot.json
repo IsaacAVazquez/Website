@@ -1,14 +1,13 @@
 {
   "symbol": "VRTX",
-  "lastUpdated": "2026-09-30T15:30:08.171135+00:00",
+  "lastUpdated": "2026-10-02T15:16:35.277063+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-09-30T15:30:08.171135+00:00",
+    "snapshotBuiltAt": "2026-10-02T15:16:35.277063+00:00",
     "sections": {
-      "price": "2026-09-30"
+      "price": "2026-10-01"
     },
     "retainedSections": [
-      "fundamentals",
-      "industry"
+      "fundamentals"
     ]
   },
   "source": "prefetched",
@@ -44,11 +43,11 @@
     },
     "fundamentals": {
       "ttmEps": 17.1885,
-      "ttmPe": 30.64,
-      "pegRatio": 3.82,
-      "marketCap": 133445781348,
-      "psRatio": 10.6,
-      "pbRatio": 6.59
+      "ttmPe": 29.48,
+      "pegRatio": 3.68,
+      "marketCap": 128381362824,
+      "psRatio": 10.2,
+      "pbRatio": 6.34
     },
     "profitability": {
       "roe": 5.55,
@@ -5448,25 +5447,17 @@
       ]
     },
     "wacc": {
-      "wacc": 7.249999999999999,
-      "costOfEquity": 7.359999999999999,
+      "wacc": 7.2700000000000005,
+      "costOfEquity": 7.380000000000001,
       "costOfDebt": 0.16,
       "taxRate": 11,
-      "beta": 0.2755,
-      "marketCap": 133445781348
+      "beta": 0.2804,
+      "marketCap": 128381362824
     },
     "beta": {
-      "beta5y": 0.2755
+      "beta5y": 0.2804
     },
     "price": [
-      {
-        "date": "2025-09-30",
-        "open": 394.94,
-        "high": 397.65,
-        "low": 385.86,
-        "close": 391.64,
-        "volume": 2260400
-      },
       {
         "date": "2025-10-01",
         "open": 393.62,
@@ -7474,6 +7465,14 @@
         "low": 522.74,
         "close": 522.81,
         "volume": 1146000
+      },
+      {
+        "date": "2026-10-01",
+        "open": 522.39,
+        "high": 523.52,
+        "low": 505.27,
+        "close": 506.74,
+        "volume": 1194400
       }
     ],
     "news": [
@@ -7494,20 +7493,20 @@
         "type": "STORY"
       },
       {
-        "uuid": "bb8a4622-9ea5-346d-9b42-b1d653307b4a",
-        "title": "Stocks to Watch Recap: Palantir, Ford, Mattel, DoorDash",
-        "publisher": "The Wall Street Journal",
-        "reportDate": "2025-05-07",
-        "link": "https://finance.yahoo.com/m/bb8a4622-9ea5-346d-9b42-b1d653307b4a/stocks-to-watch-recap%3A.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "3b5511a3-7399-3671-8696-706a32743d36",
         "title": "Uber-Pony AI partnership, EVgo boost, Vertex earnings miss",
         "publisher": "Yahoo Finance Video",
         "reportDate": "2025-05-07",
         "link": "https://finance.yahoo.com/video/uber-pony-ai-partnership-evgo-180833725.html",
         "type": "VIDEO"
+      },
+      {
+        "uuid": "bb8a4622-9ea5-346d-9b42-b1d653307b4a",
+        "title": "Stocks to Watch Recap: Palantir, Ford, Mattel, DoorDash",
+        "publisher": "The Wall Street Journal",
+        "reportDate": "2025-05-07",
+        "link": "https://finance.yahoo.com/m/bb8a4622-9ea5-346d-9b42-b1d653307b4a/stocks-to-watch-recap%3A.html",
+        "type": "STORY"
       },
       {
         "uuid": "2a52960f-5f7d-319d-8850-8de18c4df34b",
@@ -7542,19 +7541,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "b88d9a71-83ce-358a-bdb1-e45f3812d482",
-        "title": "Q1 Therapeutics Earnings: United Therapeutics (NASDAQ:UTHR) Impresses",
-        "publisher": "StockStory",
-        "reportDate": "2025-05-14",
-        "link": "https://finance.yahoo.com/news/q1-therapeutics-earnings-united-therapeutics-033105869.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "7be64abc-d894-3368-9968-85cc2abfad1c",
         "title": "Are Investors Making a Big Mistake Dumping Shares of CRISPR Therapeutics?",
         "publisher": "Motley Fool",
         "reportDate": "2025-05-14",
         "link": "https://finance.yahoo.com/m/7be64abc-d894-3368-9968-85cc2abfad1c/are-investors-making-a-big.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "b88d9a71-83ce-358a-bdb1-e45f3812d482",
+        "title": "Q1 Therapeutics Earnings: United Therapeutics (NASDAQ:UTHR) Impresses",
+        "publisher": "StockStory",
+        "reportDate": "2025-05-14",
+        "link": "https://finance.yahoo.com/news/q1-therapeutics-earnings-united-therapeutics-033105869.html",
         "type": "STORY"
       }
     ],
@@ -7624,43 +7623,43 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 28.79,
-        "industryAvg": -34.4
+        "value": 29.48,
+        "industryAvg": 22.55
       },
       {
         "metric": "P/S Ratio",
-        "value": 10.09,
-        "industryAvg": 11.25
+        "value": 10.2,
+        "industryAvg": 11.02
       },
       {
         "metric": "P/B Ratio",
-        "value": 6.37,
-        "industryAvg": 4.44
+        "value": 6.34,
+        "industryAvg": 4.56
       },
       {
         "metric": "ROE",
-        "value": 5.42,
-        "industryAvg": -4.760000000000001
+        "value": 5.55,
+        "industryAvg": -18.3
       },
       {
         "metric": "ROA",
-        "value": 3.9600000000000004,
-        "industryAvg": -2.92
+        "value": 4.08,
+        "industryAvg": -11.23
       },
       {
         "metric": "Gross Margin",
-        "value": 86.85000000000001,
-        "industryAvg": 67.38
+        "value": 85.33,
+        "industryAvg": 81.91000000000001
       },
       {
         "metric": "EBITDA Margin",
-        "value": 40,
-        "industryAvg": -11.24
+        "value": 39.75,
+        "industryAvg": -27.54
       },
       {
         "metric": "Net Margin",
-        "value": 34.53,
-        "industryAvg": -17.549999999999997
+        "value": 32.99,
+        "industryAvg": -33.53
       }
     ]
   }
