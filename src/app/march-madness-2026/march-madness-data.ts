@@ -469,8 +469,6 @@ export const PICKS: PickEntry[] = [
   },
 ];
 
-export const HERO_TAGS = ["KenPom", "S-Curve", "Time Zones", "Injury Model"] as const;
-
 export const FINAL_FOUR_SUMMARY = [
   { label: "Semifinal 1", matchup: "Duke vs Arizona", winner: "Duke", note: "Arizona −9% PT→ET" },
   { label: "Semifinal 2", matchup: "Michigan vs Houston", winner: "Michigan", note: "Houston −3% CT→ET" },

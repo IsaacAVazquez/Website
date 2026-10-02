@@ -1,6 +1,7 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useRef } from "react";
+import { useModal } from "@/hooks/useModal";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { X } from "lucide-react";
 import type { MissionControlPanel, MissionLaunchDetail } from "@/types/spacex";
@@ -40,57 +41,8 @@ export function MissionDrawer({
 }: MissionDrawerProps) {
   const reduceMotion = useReducedMotion();
   const panelRef = useRef<HTMLDivElement>(null);
-  const restoreFocusRef = useRef<HTMLElement | null>(null);
   const isOpen = Boolean(launchId);
-
-  useEffect(() => {
-    if (!isOpen) {
-      return;
-    }
-
-    restoreFocusRef.current = document.activeElement as HTMLElement | null;
-    const panel = panelRef.current;
-    panel?.focus();
-    const previousOverflow = document.body.style.overflow;
-    document.body.style.overflow = "hidden";
-
-    function handleKeyDown(event: KeyboardEvent) {
-      if (event.key === "Escape") {
-        event.preventDefault();
-        onClose();
-        return;
-      }
-
-      if (event.key !== "Tab" || !panel) {
-        return;
-      }
-
-      const focusable = panel.querySelectorAll<HTMLElement>(
-        'a[href], button:not([disabled]), [role="tab"], textarea, input, [tabindex]:not([tabindex="-1"])'
-      );
-      if (focusable.length === 0) {
-        return;
-      }
-
-      const first = focusable[0];
-      const last = focusable[focusable.length - 1];
-
-      if (event.shiftKey && document.activeElement === first) {
-        event.preventDefault();
-        last.focus();
-      } else if (!event.shiftKey && document.activeElement === last) {
-        event.preventDefault();
-        first.focus();
-      }
-    }
-
-    document.addEventListener("keydown", handleKeyDown);
-    return () => {
-      document.removeEventListener("keydown", handleKeyDown);
-      document.body.style.overflow = previousOverflow;
-      restoreFocusRef.current?.focus?.();
-    };
-  }, [isOpen, launchId, onClose]);
+  useModal(panelRef, isOpen, onClose);
 
   const status = detail ? deriveMissionCardStatus(detail) : null;
   const accent = status ? MISSION_STATUS_ACCENT_VAR[status] : "var(--c97-accent)";
@@ -184,7 +136,6 @@ export function MissionDrawer({
               isLoading={isLoading}
               error={error}
               onPanelChange={onPanelChange}
-              hideHeader
             />
 
             {detail ? (

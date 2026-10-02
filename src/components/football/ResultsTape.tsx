@@ -1,5 +1,6 @@
 import type { ReactNode } from "react";
 import { InstrumentTape, type InstrumentTapeItem } from "@/components/editorial/InstrumentTape";
+import { formatKickoff } from "./fixtureFormat";
 
 /**
  * Minimal fixture shape ResultsTape needs — deliberately narrower than
@@ -17,22 +18,8 @@ export interface ResultsTapeFixture {
   score: { winner: "HOME_TEAM" | "AWAY_TEAM" | "DRAW" | null; home: number | null; away: number | null };
 }
 
-// Pinned to one named zone so the server and the browser print the same string.
-const KICKOFF_FORMATTER = new Intl.DateTimeFormat("en-US", {
-  weekday: "short",
-  hour: "numeric",
-  minute: "2-digit",
-  timeZone: "America/New_York",
-  timeZoneName: "short",
-});
-
 function teamLabel(team: { shortName: string; tla?: string | null }): string {
   return team.tla || team.shortName;
-}
-
-function formatKickoff(utcDate: string): string {
-  const date = new Date(utcDate);
-  return Number.isNaN(date.getTime()) ? "Time TBD" : KICKOFF_FORMATTER.format(date);
 }
 
 /**

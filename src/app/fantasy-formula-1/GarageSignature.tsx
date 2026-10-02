@@ -3,20 +3,12 @@
 import { useMemo } from "react";
 import { Lock } from "lucide-react";
 import type { FantasyFormula1Asset, FantasyFormula1LineupSummary } from "@/types/fantasyFormula1";
-import { garageSlots, normaliseTeamColor, type GarageSlot } from "./garage";
+import { formatMoney, garageSlots, normaliseTeamColor, type GarageSlot } from "./garage";
 
 interface GarageProps {
   summary: FantasyFormula1LineupSummary;
   budget: number;
   lockedIds: Set<string>;
-}
-
-function formatMoney(value: number): string {
-  return `${value < 0 ? "-" : ""}$${Math.abs(value).toFixed(1)}m`;
-}
-
-function formatPoints(value: number): string {
-  return `${value.toFixed(1)} pts`;
 }
 
 function GarageBox({ slot, locked }: { slot: GarageSlot; locked: boolean }) {
@@ -35,7 +27,7 @@ function GarageBox({ slot, locked }: { slot: GarageSlot; locked: boolean }) {
         <>
           <p className="c97-serif c97-ff1-box-name">{asset.name}</p>
           <p className="c97-mono c97-ff1-box-figures mb-0">
-            {formatMoney(asset.price)} &middot; {formatPoints(asset.projectedPoints)}
+            {formatMoney(asset.price)} &middot; {asset.projectedPoints.toFixed(1)} pts
           </p>
           {locked ? (
             <span className="c97-ff1-box-lock" title={`${asset.name} is locked`}>

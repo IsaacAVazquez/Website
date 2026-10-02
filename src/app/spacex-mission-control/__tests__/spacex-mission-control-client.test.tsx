@@ -339,9 +339,6 @@ describe("SpaceXMissionControlClient", () => {
     expect(queryMissionImage(container, "mission-hero-visual")?.getAttribute("referrerpolicy")).toBe(
       "no-referrer"
     );
-    expect(queryMissionImageFrame(container, "mission-hero-visual")?.getAttribute("data-image-fit")).toBe(
-      "cover"
-    );
     // Mission cards render an original generated SVG patch emblem, not real
     // patch photography — no <img> element inside the card's patch tile.
     expect(

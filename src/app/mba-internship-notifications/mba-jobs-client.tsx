@@ -58,7 +58,7 @@ import {
 import { useMBAApplications } from "@/hooks/useMBAApplications";
 import { useMBAJobs } from "@/hooks/useMBAJobs";
 import { useClientNow } from "@/hooks/useClientNow";
-import { DISPLAY_TIME_ZONE } from "@/lib/date-formatters";
+import { UPDATED_AT_FORMATTER } from "@/lib/date-formatters";
 import { MBA_COMPANIES, MBA_COMPANY_MAP } from "@/constants/mba-companies";
 import {
   MBA_ROLE_FAMILY_LABELS,
@@ -141,17 +141,6 @@ function timeAgo(iso: string, now: number | null): string {
   return RELATIVE_FORMATTER.format(Math.round(diff / 86_400_000), "day");
 }
 
-// An instant (the fetch time, and each job's `postedAt`) pinned to the
-// display zone so the server (UTC) and every visitor's browser print the
-// same clock time instead of disagreeing and breaking hydration.
-const DATE_FORMATTER = new Intl.DateTimeFormat("en-US", {
-  month: "short",
-  day: "numeric",
-  hour: "numeric",
-  minute: "2-digit",
-  timeZone: DISPLAY_TIME_ZONE,
-  timeZoneName: "short",
-});
 // tz-local: follow-up/deadline dates the visitor picked in <input type="date">
 // on their own tracked applications (client-only, localStorage-backed; never
 // renders with real data during SSR since `applications` starts empty).
@@ -162,7 +151,7 @@ const DATE_KEY_FORMATTER = new Intl.DateTimeFormat("en-US", {
 
 function formatFetchedAt(d: Date | null): string {
   if (!d) return "—";
-  return DATE_FORMATTER.format(d);
+  return UPDATED_AT_FORMATTER.format(d);
 }
 
 function getPostedAtTime(value: string): number {
@@ -726,7 +715,7 @@ function JobCard({
                 {job.location} ·{" "}
                 <time
                   dateTime={job.postedAt}
-                  title={`Posted ${DATE_FORMATTER.format(new Date(job.postedAt))}`}
+                  title={`Posted ${UPDATED_AT_FORMATTER.format(new Date(job.postedAt))}`}
                 >
                   {relativePostedAt}
                 </time>

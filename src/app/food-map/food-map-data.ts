@@ -829,10 +829,6 @@ export function getFoodMapCuisine(id: FoodMapCuisineId): FoodMapCuisine {
   return cuisineMap.get(id) ?? FOOD_MAP_CUISINES[0];
 }
 
-export function getFoodMapPlace(id: string): FoodMapPlace | undefined {
-  return placeMap.get(id);
-}
-
 /** First curator drives a place's pin + card accent color. */
 export function getPlaceAccent(place: FoodMapPlace): string {
   return getFoodMapCurator(place.curators[0]).accent;

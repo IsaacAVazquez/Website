@@ -1,6 +1,6 @@
 "use client";
 
-import { ThemeProvider } from "@/components/ThemeProvider";
+import { ThemeProvider } from "next-themes";
 import { GoogleAnalytics } from "@/components/analytics/GoogleAnalytics";
 import { ScrollDepthTracker } from "@/components/analytics/ScrollDepthTracker";
 import { FragmentLinkNavigation } from "@/components/navigation/FragmentLinkNavigation";

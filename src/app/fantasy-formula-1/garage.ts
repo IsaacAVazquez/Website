@@ -68,6 +68,11 @@ export function garageSlots(summary: FantasyFormula1LineupSummary, budget: numbe
   };
 }
 
+/** Prices in millions: "$12.5m", "-$0.4m". */
+export function formatMoney(value: number): string {
+  return `${value < 0 ? "-" : ""}$${Math.abs(value).toFixed(1)}m`;
+}
+
 /** Some snapshots store a team colour without its leading "#"; null means no colour. */
 export function normaliseTeamColor(color: string | null): string | null {
   if (!color) {

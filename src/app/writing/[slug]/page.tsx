@@ -399,7 +399,7 @@ export default async function BlogPostPage({ params }: PageProps) {
       {/* Author, the older and newer neighbours, and the way back. */}
       <section className="c97-band" data-c97-surface="paper">
         <div className="c97-shell" style={{ display: "grid", gap: "var(--c97-sp-5)" }}>
-          <AuthorBio variant="light" />
+          <AuthorBio />
 
           {olderPost || newerPost ? (
             // Side by side from 640px, where Next sets right; stacked on a phone, both set left.

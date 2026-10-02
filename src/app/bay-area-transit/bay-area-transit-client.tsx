@@ -7,6 +7,7 @@ import {
   type CSSProperties,
 } from "react";
 import { useSearchParams } from "next/navigation";
+import { formatUpdatedAt } from "@/lib/date-formatters";
 import { CircleAlert, Navigation, ShieldCheck, TriangleAlert } from "lucide-react";
 import type {
   TransitLine,
@@ -36,27 +37,9 @@ interface BayAreaTransitClientProps {
   initialStationBoard: TransitStationBoard | null;
 }
 
-// Pinned to Pacific time: BART timestamps belong to the Bay Area, and a fixed
-// zone keeps the server-rendered text identical to the client's (no hydration
-// mismatch from the server running in UTC).
-const LAST_UPDATED_FORMATTER = new Intl.DateTimeFormat("en-US", {
-  month: "short",
-  day: "numeric",
-  hour: "numeric",
-  minute: "2-digit",
-  timeZone: "America/Los_Angeles",
-  timeZoneName: "short",
-});
-
+// The shared formatter pins Pacific time, which is where BART timestamps belong.
 function formatGeneratedAt(value: string | null | undefined): string {
-  if (!value) {
-    return "Unavailable";
-  }
-
-  const date = new Date(value);
-  return Number.isNaN(date.getTime())
-    ? "Unavailable"
-    : LAST_UPDATED_FORMATTER.format(date);
+  return value ? formatUpdatedAt(value) : "Unavailable";
 }
 
 /** A readable swatch border that still shows bright BART colors on light paper. */

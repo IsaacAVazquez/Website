@@ -61,63 +61,11 @@ export function ExternalLink(props: IconProps) {
   );
 }
 
-export function Calendar(props: IconProps) {
-  return (
-    <svg {...svgProps(props)}>
-      <path d="M4 7a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12z" />
-      <path d="M16 3v4" />
-      <path d="M8 3v4" />
-      <path d="M4 11h16" />
-      <path d="M11 15h1" />
-      <path d="M12 15v3" />
-    </svg>
-  );
-}
-
-export function Clock(props: IconProps) {
-  return (
-    <svg {...svgProps(props)}>
-      <path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0" />
-      <path d="M12 7v5l3 3" />
-    </svg>
-  );
-}
-
-export function ChartBar(props: IconProps) {
-  return (
-    <svg {...svgProps(props)}>
-      <path d="M3 12m0 1a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v6a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1z" />
-      <path d="M9 8m0 1a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v10a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1z" />
-      <path d="M15 4m0 1a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v14a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1z" />
-    </svg>
-  );
-}
-
 export function Search(props: IconProps) {
   return (
     <svg {...svgProps(props)}>
       <path d="M3 10a7 7 0 1 0 14 0a7 7 0 1 0 -14 0" />
       <path d="M21 21l-6 -6" />
-    </svg>
-  );
-}
-
-export function Target(props: IconProps) {
-  return (
-    <svg {...svgProps(props)}>
-      <path d="M12 12m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" />
-      <path d="M7 12a5 5 0 1 0 10 0a5 5 0 1 0 -10 0" />
-      <path d="M3 12a9 9 0 1 0 18 0a9 9 0 1 0 -18 0" />
-    </svg>
-  );
-}
-
-export function Database(props: IconProps) {
-  return (
-    <svg {...svgProps(props)}>
-      <path d="M4 6a8 3 0 1 0 16 0a8 3 0 1 0 -16 0" />
-      <path d="M4 6v6a8 3 0 0 0 16 0v-6" />
-      <path d="M4 12v6a8 3 0 0 0 16 0v-6" />
     </svg>
   );
 }
@@ -130,86 +78,11 @@ export function BrandGithub(props: IconProps) {
   );
 }
 
-// --- Icons added for root layout dependency chain ---
-
-export function Home(props: IconProps) {
-  return (
-    <svg {...svgProps(props)}>
-      <path d="M5 12l-2 0l9 -9l9 9l-2 0" />
-      <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
-      <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
-    </svg>
-  );
-}
-
-export function User(props: IconProps) {
-  return (
-    <svg {...svgProps(props)}>
-      <path d="M8 7a4 4 0 1 0 8 0a4 4 0 0 0 -8 0" />
-      <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
-    </svg>
-  );
-}
-
-export function Briefcase(props: IconProps) {
-  return (
-    <svg {...svgProps(props)}>
-      <path d="M3 7m0 2a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v9a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2z" />
-      <path d="M8 7v-2a2 2 0 0 1 2 -2h4a2 2 0 0 1 2 2v2" />
-      <path d="M12 12l0 .01" />
-      <path d="M3 13a20 20 0 0 0 18 0" />
-    </svg>
-  );
-}
-
-export function FileText(props: IconProps) {
-  return (
-    <svg {...svgProps(props)}>
-      <path d="M14 3v4a1 1 0 0 0 1 1h4" />
-      <path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2z" />
-      <path d="M9 9l1 0" />
-      <path d="M9 13l6 0" />
-      <path d="M9 17l6 0" />
-    </svg>
-  );
-}
-
-export function Article(props: IconProps) {
-  return (
-    <svg {...svgProps(props)}>
-      <path d="M4 5a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v14a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2z" />
-      <path d="M8 9h8" />
-      <path d="M8 13h8" />
-      <path d="M8 17h5" />
-    </svg>
-  );
-}
-
 export function Mail(props: IconProps) {
   return (
     <svg {...svgProps(props)}>
       <path d="M3 7a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-10z" />
       <path d="M3 7l9 6l9 -6" />
-    </svg>
-  );
-}
-
-export function Download(props: IconProps) {
-  return (
-    <svg {...svgProps(props)}>
-      <path d="M12 15V3" />
-      <path d="M21 15v4a2 2 0 0 1 -2 2H5a2 2 0 0 1 -2 -2v-4" />
-      <path d="m7 10 5 5l5 -5" />
-    </svg>
-  );
-}
-
-export function Menu2(props: IconProps) {
-  return (
-    <svg {...svgProps(props)}>
-      <path d="M4 6l16 0" />
-      <path d="M4 12l16 0" />
-      <path d="M4 18l16 0" />
     </svg>
   );
 }
