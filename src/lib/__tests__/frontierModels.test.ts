@@ -6,7 +6,6 @@ import {
   filterFrontierModels,
   formatPriceUsd,
   formatTokenCount,
-  medianContextWindow,
   sortFrontierModels,
   type FrontierSourceModel,
 } from "../frontierModels";
@@ -175,11 +174,5 @@ describe("frontierModels", () => {
     expect(formatPriceUsd(0.25)).toBe("$0.25");
     expect(formatPriceUsd(2)).toBe("$2");
     expect(formatPriceUsd(2.5)).toBe("$2.50");
-
-    expect(medianContextWindow([])).toBe(0);
-    expect(medianContextWindow(snapshot.models)).toBe(200000);
-    expect(
-      medianContextWindow(snapshot.models.filter((model) => model.id !== "standard"))
-    ).toBe(164000);
   });
 });

@@ -1,6 +1,6 @@
 "use client";
 
-import { ExternalLink, FileText, Plus, RefreshCw } from "lucide-react";
+import { ExternalLink, FileText, RefreshCw } from "lucide-react";
 import React from "react";
 import { useLiveQuote } from "@/hooks/useLiveQuote";
 import { useStockData } from "@/hooks/useStockData";
@@ -25,7 +25,6 @@ interface Props {
   symbol: string;
   isInPortfolio?: boolean;
   portfolioShares?: number | null;
-  onAddToPortfolio?: () => void;
   portfolioSymbols?: readonly string[];
 }
 
@@ -177,7 +176,6 @@ export function ResearchAssetHeader({
   symbol,
   isInPortfolio = false,
   portfolioShares = null,
-  onAddToPortfolio,
   portfolioSymbols = [],
 }: Props) {
   const now = useClientNow();
@@ -416,16 +414,6 @@ export function ResearchAssetHeader({
       </div>
 
       <div className="research-asset-actions">
-        {!isInPortfolio && onAddToPortfolio ? (
-          <button
-            type="button"
-            className="invest-ghost is-primary"
-            onClick={onAddToPortfolio}
-          >
-            <Plus size={14} aria-hidden="true" />
-            Add to portfolio
-          </button>
-        ) : null}
         {info?.website ? (
           <a
             href={info.website}

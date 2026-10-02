@@ -8,7 +8,7 @@
 // Runs without keys too — provider leagues then carry a note and only
 // manual/CSV data. A failed refresh keeps the previous snapshot.
 
-import { readdirSync, readFileSync, renameSync, writeFileSync } from "node:fs";
+import { readdirSync, readFileSync } from "node:fs";
 import { resolve } from "node:path";
 import { buildScorePoolsSnapshotData } from "../src/lib/scorePoolsData";
 import {
@@ -16,15 +16,9 @@ import {
   type ManualFixtureInput,
 } from "../src/lib/scorePools/providers/manual";
 import type { ScorePoolsSnapshot } from "../src/types/scorePools";
-import { readGeneratedSnapshot } from "./snapshotFallback";
+import { readGeneratedSnapshot, writeFileAtomic } from "./snapshotFallback";
 import { MANUAL_SCORE_POOL_LEAGUES } from "./data/scorePools.manual";
 import { SCORE_POOL_LEAGUES } from "./data/scorePoolsConfig";
-
-function writeFileAtomic(path: string, content: string): void {
-  const tmp = `${path}.tmp`;
-  writeFileSync(tmp, content, "utf8");
-  renameSync(tmp, path);
-}
 
 function hasContents(snapshot: ScorePoolsSnapshot | null): snapshot is ScorePoolsSnapshot {
   return Boolean(snapshot && snapshot.leagues.length > 0);

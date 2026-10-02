@@ -1,4 +1,3 @@
-import type { ReadonlyURLSearchParams } from "next/navigation";
 import {
   aiDevTools,
   type AiDevToolCategory,
@@ -6,15 +5,9 @@ import {
   type AiDevToolPricingModel,
   type AiDevToolSourceStatus,
 } from "./ai-dev-tools-data";
+import { readParam, type SearchParamInput } from "@/lib/searchParams";
 
 export const AI_DEV_TOOLS_ROUTE = "/ai-dev-tools";
-
-type SearchParamInput =
-  | URLSearchParams
-  | ReadonlyURLSearchParams
-  | Record<string, string | string[] | undefined | null>;
-
-type SearchParamRecord = Record<string, string | string[] | undefined | null>;
 
 export interface AiDevToolsRouteState {
   category: AiDevToolCategory | "all";
@@ -47,19 +40,6 @@ const VALID_SOURCES = new Set<AiDevToolSourceStatus>(
   aiDevTools.map((tool) => tool.sourceStatus)
 );
 const VALID_TOOL_IDS = new Set(aiDevTools.map((tool) => tool.id));
-
-function readParam(input: SearchParamInput, key: string): string | null {
-  if ("get" in input && typeof input.get === "function") {
-    return (input as URLSearchParams).get(key);
-  }
-
-  const rawValue = (input as SearchParamRecord)[key];
-  if (Array.isArray(rawValue)) {
-    return rawValue[0] ?? null;
-  }
-
-  return rawValue ?? null;
-}
 
 function cleanQuery(value: string | null): string {
   if (!value) {

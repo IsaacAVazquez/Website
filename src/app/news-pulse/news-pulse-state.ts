@@ -3,6 +3,7 @@ import {
   SOURCE_META,
   type NewsFeedId,
 } from "@/lib/news-pulse-sources";
+import { readParam, type SearchParamInput } from "@/lib/searchParams";
 
 export const NEWS_PULSE_ROUTE = "/news-pulse";
 
@@ -36,18 +37,8 @@ export const SOURCE_LABELS: Record<NewsSource, string> = {
   ),
 } as Record<NewsSource, string>;
 
-type SearchParamInput =
-  | URLSearchParams
-  | Record<string, string | string[] | undefined>;
-
-function readParam(input: SearchParamInput, key: string): string | undefined {
-  if (input instanceof URLSearchParams) return input.get(key) ?? undefined;
-  const value = input[key];
-  return Array.isArray(value) ? value[0] : value;
-}
-
 function isValidOption<T extends string>(
-  value: string | undefined,
+  value: string | null,
   options: readonly T[],
 ): value is T {
   return !!value && options.includes(value as T);

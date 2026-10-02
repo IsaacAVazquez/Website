@@ -110,7 +110,6 @@ jest.mock("@/data/formula1Snapshot", () => ({
 
 import {
   createEmptyFormula1Meeting,
-  createEmptyFormula1Summary,
   getFormula1Meeting,
   getFormula1Summary,
   isFormula1MeetingKeyShape,
@@ -182,12 +181,6 @@ describe("formula1Snapshot accessors", () => {
   });
 
   it("provides stable empty payload factories", () => {
-    const summary = createEmptyFormula1Summary();
-    expect(summary.meetings).toEqual([]);
-    expect(summary.driverStandings).toEqual([]);
-    expect(summary.constructorStandings).toEqual([]);
-    expect(summary.nextMeeting).toBeNull();
-
     const meeting = createEmptyFormula1Meeting();
     expect(meeting.classification).toEqual([]);
     expect(meeting.podium).toEqual([]);

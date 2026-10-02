@@ -244,9 +244,7 @@ Current generated outputs:
 - `public/data/fantasy/best-ball.json`
 - `public/data/fantasy/weekly.json` when the in-season board is published
 
-Legacy RB tiers artifact still exists, and the old RB tier route redirects to the canonical fantasy board:
-
-- `public/fantasy/rb_current.json`
+The old RB tier route redirects to the canonical fantasy board.
 
 Operational note: `.github/workflows/update-fantasy.yml` commits the real fantasy snapshot artifacts above. There is no live Netlify scheduled fantasy updater; GitHub Actions is the public update path.
 
@@ -280,11 +278,7 @@ Prices refresh for every symbol on every run. The other sections rotate, 31 to 6
 
 The football dashboards read committed TypeScript snapshots at runtime. The token is only needed when rebuilding those snapshots.
 
-Full football refresh path:
-
-1. `tsx scripts/updateFootballSnapshots.ts`
-
-Use:
+To refresh both leagues, run the two league refreshes below one after the other:
 
 ```bash
 npm run update:football
@@ -322,9 +316,9 @@ Production builds consume the committed football snapshots without calling footb
 
 The MLB, NBA, and NFL dashboards read committed TypeScript snapshots at runtime. They refresh through dedicated GitHub Actions workflows and can also be refreshed manually.
 
-- `npm run update:mlb` writes `src/data/mlbSnapshot.ts` from the public MLB Stats API; pass `-- --league-only` to skip per-team snapshots.
-- `npm run update:nba` writes `src/data/nbaSnapshot.ts` from ESPN public NBA endpoints; pass `-- --league-only` to skip per-team snapshots.
-- `npm run update:nfl` writes `src/data/nflSnapshot.ts` from NFLverse open data; pass `-- --league-only` to skip per-team snapshots and player leaders.
+- `npm run update:mlb` writes `src/data/mlbSnapshot.ts` from the public MLB Stats API.
+- `npm run update:nba` writes `src/data/nbaSnapshot.ts` from ESPN public NBA endpoints.
+- `npm run update:nfl` writes `src/data/nflSnapshot.ts` from NFLverse open data.
 - `npm run update:golf` writes `src/data/golfSnapshot.ts` from the public ESPN golf leaderboard endpoint; a failed fetch keeps the previous snapshot. Between tournaments ESPN lists only the next event with no field posted, and the builder then re-stamps the last final board's `generatedAt` instead of failing, so the freshness gate reads a checked source through the off week.
 - `npm run update:world-cup` writes `src/data/worldCupSnapshot.ts` from ESPN's public `soccer/fifa.world` endpoints; a failed or empty fetch keeps the previous snapshot.
 
@@ -351,7 +345,6 @@ The MLB, NBA, and NFL dashboards read committed TypeScript snapshots at runtime.
 - `postbuild` runs `scripts/generatePublicSitemap.mjs` and `scripts/patch-nft-sharp.mjs`
 - `npm run analyze` enables bundle analysis and still runs the npm `postbuild` hook
 - `npm run build:analyze` runs `ANALYZE=true next build --webpack` directly and skips npm `postbuild`
-- `npm run generate:icons` rebuilds PWA icons
 
 ---
 
@@ -396,7 +389,6 @@ The MLB, NBA, and NFL dashboards read committed TypeScript snapshots at runtime.
 | `npm run update:spacex` | Rebuild the checked-in SpaceX Mission Control data snapshot |
 | `npm run update:spacex-images` | Rebuild cached SpaceX image snapshots and manifests |
 | `npm run update:article-images` | Fetch license-safe blog cover photos per `scripts/data/articleCoverImages.ts` |
-| `npm run generate:icons` | Regenerate PWA icons |
 
 ---
 

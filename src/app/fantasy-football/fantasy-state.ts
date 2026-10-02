@@ -9,6 +9,7 @@ import {
   isFantasyVorpTeamSize,
   type FantasyVorpTeamSize,
 } from "@/lib/fantasyVorp";
+import { readParam, type SearchParamInput } from "@/lib/searchParams";
 
 export type FantasyRankingMode = "consensus" | "vorp";
 
@@ -20,17 +21,6 @@ export interface FantasySearchState {
   query: string;
 }
 
-type SearchParamInput =
-  | URLSearchParams
-  | ReadonlyURLSearchParams
-  | Record<string, string | string[] | undefined | null>;
-type FantasySearchParamKey =
-  | "position"
-  | "scoring"
-  | "ranking"
-  | "teams"
-  | "q";
-
 export const DEFAULT_FANTASY_STATE: FantasySearchState = {
   position: "overall",
   scoring: "ppr",
@@ -38,19 +28,6 @@ export const DEFAULT_FANTASY_STATE: FantasySearchState = {
   teams: 12,
   query: "",
 };
-
-function readParam(input: SearchParamInput, key: FantasySearchParamKey): string | null {
-  if ("get" in input && typeof input.get === "function") {
-    return input.get(key);
-  }
-
-  const rawValue = (input as Record<string, string | string[] | undefined | null>)[key];
-  if (Array.isArray(rawValue)) {
-    return rawValue[0] ?? null;
-  }
-
-  return rawValue ?? null;
-}
 
 function normalizeFantasyQuery(value: string | null): string {
   return (value ?? "").replace(/\s+/g, " ").trim().slice(0, 80);

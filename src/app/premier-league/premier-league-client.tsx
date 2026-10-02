@@ -1,15 +1,12 @@
 "use client";
 
 import {
-  startTransition,
-  useEffect,
   useMemo,
   useState,
-  type CSSProperties,
 } from "react";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useSearchParams } from "next/navigation";
 import { ExternalLink } from "lucide-react";
-import { DISPLAY_TIME_ZONE } from "@/lib/date-formatters";
+import { formatUpdatedAt } from "@/lib/date-formatters";
 import {
   MetricCard,
   CrestAvatar,
@@ -29,7 +26,7 @@ import { DeferredClubDrawer } from "@/components/football/DeferredClubDrawer";
 import type { ClubDrawerClub, ClubDrawerScorer } from "@/components/football/ClubDrawer";
 import { PointsLadder } from "@/components/football/PointsLadderChart";
 import { LeagueProgrammeTable, type ProgrammeTableRow } from "@/components/football/LeagueProgrammeTable";
-import { LEAGUE_ZONE_LABEL, leagueZone, type LeagueZone, formatPointsGap } from "@/components/football/ladderGeometry";
+import { LEAGUE_ZONE_LABEL, leagueZone, type LeagueZone, formatPointsGap, zoneChipStyle } from "@/components/football/ladderGeometry";
 import { Catalog97ProjectHero } from "@/components/catalog97/Catalog97ProjectHero";
 import { PROJECT_PRESS } from "@/constants/projectPress";
 import type {
@@ -48,6 +45,10 @@ import {
   PREMIER_LEAGUE_VIEW_LABELS,
   PREMIER_LEAGUE_VIEW_OPTIONS,
 } from "./premier-league-state";
+import { useRouteSync } from "@/hooks/useRouteSync";
+import { useCachedSnapshot } from "@/hooks/useCachedSnapshot";
+import { formatFixed } from "@/components/football/fixtureFormat";
+import { ClubLeaderCard } from "@/components/football/ClubLeaderCard";
 
 interface PremierLeagueClientProps {
   initialState: PremierLeagueRouteState;
@@ -55,62 +56,12 @@ interface PremierLeagueClientProps {
   initialTeamSnapshot: PremierLeagueTeamSnapshot | null;
 }
 
-function formatFixed(value: number, decimals = 2): string {
-  return Number.isFinite(value) ? value.toFixed(decimals) : "—";
-}
-
-function zoneChipStyle(zone: LeagueZone): CSSProperties {
-  switch (zone) {
-    case "champions":
-      return { color: "var(--c97-accent)" };
-    case "europa":
-    case "conference":
-      return { color: "var(--c97-positive)" };
-    case "relegation":
-      return { color: "var(--c97-negative)" };
-    default:
-      return { color: "var(--c97-ink-2)" };
-  }
-}
-
-// Pinned to UTC, with the zone printed, so the server and the browser agree.
-const LAST_UPDATED_FORMATTER = new Intl.DateTimeFormat("en-US", {
-  month: "short",
-  day: "numeric",
-  hour: "numeric",
-  minute: "2-digit",
-  timeZone: DISPLAY_TIME_ZONE,
-  timeZoneName: "short",
-});
-
-function formatGeneratedAt(value: string): string {
-  const date = new Date(value);
-  return Number.isNaN(date.getTime()) ? "Unavailable" : LAST_UPDATED_FORMATTER.format(date);
-}
-
-async function fetchPremierLeagueTeamSnapshot(
-  teamId: string,
-  signal: AbortSignal
-): Promise<PremierLeagueTeamSnapshot> {
-  const response = await fetch(`/api/premier-league/teams/${teamId}`, { signal });
-  const payload = (await response.json()) as PremierLeagueTeamSnapshot & { error?: string };
-
-  if (!response.ok) {
-    throw new Error(payload.error || "Unable to load club snapshot.");
-  }
-
-  return payload;
-}
-
 export function PremierLeagueClient({
   initialState,
   summary,
   initialTeamSnapshot,
 }: PremierLeagueClientProps) {
-  const router = useRouter();
   const searchParams = useSearchParams();
-  const currentQuery = searchParams.toString();
-  const currentHref = `/premier-league${currentQuery ? `?${currentQuery}` : ""}`;
   const hasManagedParams =
     searchParams.get("view") !== null ||
     searchParams.get("team") !== null ||
@@ -126,15 +77,11 @@ export function PremierLeagueClient({
     searchParams
   );
 
-  useEffect(() => {
-    if (currentHref === desiredHref) return;
-    startTransition(() => { router.replace(desiredHref, { scroll: false }); });
-  }, [currentHref, desiredHref, router]);
+  const pushHref = useRouteSync("/premier-league", desiredHref);
 
   function navigate(nextState: PremierLeagueRouteState) {
     const href = buildPremierLeagueHref(nextState, searchParams);
-    if (href === currentHref) return;
-    startTransition(() => { router.push(href, { scroll: false }); });
+    pushHref(href);
   }
 
   function handleViewChange(view: PremierLeagueView) {
@@ -158,60 +105,16 @@ export function PremierLeagueClient({
   // Derived state
   const visibleStandings = filterStandingsForView(summary.standings, routeState.view);
   const selectedRow = summary.standings.find((r) => r.team.id === selectedTeamId) ?? summary.standings[0] ?? null;
-  const [teamSnapshots, setTeamSnapshots] = useState<Record<string, PremierLeagueTeamSnapshot>>(
-    () => (selectedTeamId && initialTeamSnapshot ? { [selectedTeamId]: initialTeamSnapshot } : {})
+  const {
+    snapshot: teamSnapshot,
+    isLoading: isTeamSnapshotLoading,
+    error: teamSnapshotError,
+  } = useCachedSnapshot<PremierLeagueTeamSnapshot>(
+    "/api/premier-league/teams",
+    selectedTeamId,
+    { id: selectedTeamId, snapshot: initialTeamSnapshot },
+    "Unable to load club snapshot."
   );
-  const [loadingTeamId, setLoadingTeamId] = useState<string | null>(null);
-  const [teamSnapshotError, setTeamSnapshotError] = useState<string | null>(null);
-  const teamSnapshot = selectedTeamId ? teamSnapshots[selectedTeamId] ?? null : null;
-  const isTeamSnapshotLoading = loadingTeamId === selectedTeamId;
-
-  useEffect(() => {
-    if (!selectedTeamId) {
-      // eslint-disable-next-line react-hooks/set-state-in-effect -- Reset loading/error flags when no team is selected
-      setLoadingTeamId(null);
-      setTeamSnapshotError(null);
-      return;
-    }
-
-    if (teamSnapshots[selectedTeamId]) {
-      setLoadingTeamId(null);
-      setTeamSnapshotError(null);
-      return;
-    }
-
-    const controller = new AbortController();
-    let cancelled = false;
-
-    setLoadingTeamId(selectedTeamId);
-    setTeamSnapshotError(null);
-
-    fetchPremierLeagueTeamSnapshot(selectedTeamId, controller.signal)
-      .then((snapshot) => {
-        if (cancelled) {
-          return;
-        }
-
-        setTeamSnapshots((current) => (
-          current[selectedTeamId] ? current : { ...current, [selectedTeamId]: snapshot }
-        ));
-      })
-      .catch((error: Error) => {
-        if (!cancelled && error.name !== "AbortError") {
-          setTeamSnapshotError(error.message || "Unable to load club snapshot.");
-        }
-      })
-      .finally(() => {
-        if (!cancelled) {
-          setLoadingTeamId((current) => (current === selectedTeamId ? null : current));
-        }
-      });
-
-    return () => {
-      cancelled = true;
-      controller.abort();
-    };
-  }, [selectedTeamId, teamSnapshots]);
 
   // Derived stats for sidebar
   const attackRankings = useMemo(() => {
@@ -247,7 +150,6 @@ export function PremierLeagueClient({
     appearances: s.appearances,
     perMatch: s.appearances ? s.goals / s.appearances : 0,
   }));
-  const scorersByClub = useMemo(() => groupLeadersByClub(scorerEntries), [scorerEntries]);
 
   // Assists board: football-data.org's scorer entries already carry an
   // `assists` count per player — this is a re-sort of already-fetched data,
@@ -295,11 +197,11 @@ export function PremierLeagueClient({
     })
     : [];
   const selectedClubTopScorer = selectedRow
-    ? scorersByClub.get(selectedRow.team.id)?.[0]
+    ? scorerEntries.find((entry) => entry.clubId === selectedRow.team.id)
     : undefined;
   const recentFixtures = (teamSnapshot?.recentFixtures ?? []).slice(0, 3);
   const upcomingFixtures = (teamSnapshot?.upcomingFixtures ?? []).slice(0, 3);
-  const lastUpdated = formatGeneratedAt(summary.generatedAt);
+  const lastUpdated = formatUpdatedAt(summary.generatedAt);
   const currentMatchday = summary.competition?.currentMatchday ?? null;
 
   // Club drawer — its own state, the way La Liga keeps it, because the tabs
@@ -681,46 +583,6 @@ export function PremierLeagueClient({
       />
     </>
   );
-}
-
-function ClubLeaderCard({
-  title,
-  leader,
-  statLabel,
-  emptyLabel,
-}: {
-  title: string;
-  leader?: LeaderEntry;
-  statLabel: string;
-  emptyLabel: string;
-}) {
-  return (
-    <div className="c97-panel">
-      <p className="c97-kicker">{title}</p>
-      {leader ? (
-        <>
-          <p className="text-lg font-bold c97-serif" style={{ marginTop: "var(--c97-sp-1)" }}>{leader.name}</p>
-          <p className="c97-prose" style={{ marginTop: "var(--c97-sp-1)" }}>
-            {leader.total} {statLabel.toLowerCase()} in {leader.appearances} matches
-          </p>
-          <p className="c97-kicker" style={{ marginTop: "var(--c97-sp-1)" }}>
-            {formatFixed(leader.perMatch)} per match
-          </p>
-        </>
-      ) : (
-        <p className="c97-prose" style={{ marginTop: "var(--c97-sp-1)" }}>{emptyLabel}</p>
-      )}
-    </div>
-  );
-}
-
-function groupLeadersByClub(leaders: LeaderEntry[]) {
-  return leaders.reduce((map, leaderEntry) => {
-    const existing = map.get(leaderEntry.clubId) ?? [];
-    existing.push(leaderEntry);
-    map.set(leaderEntry.clubId, existing);
-    return map;
-  }, new Map<string, LeaderEntry[]>());
 }
 
 function getClubStoryline(

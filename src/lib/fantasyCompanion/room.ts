@@ -12,6 +12,7 @@ import type {
   FantasyCompanionRoomConfig,
   RedraftCompanionRoomConfig,
 } from "./types";
+import { isRecord } from "@/lib/utils";
 
 const MINIMUM_SEASON = 2020;
 const MAXIMUM_SEASON = 2100;
@@ -27,10 +28,6 @@ const REDRAFT_SCORING_FORMATS: readonly ScoringFormat[] = [
 const DRAFT_ORDERS: readonly FantasyCompanionDraftOrder[] = ["snake", "linear"];
 
 type UnknownRecord = Record<string, unknown>;
-
-function isRecord(value: unknown): value is UnknownRecord {
-  return Boolean(value) && typeof value === "object" && !Array.isArray(value);
-}
 
 function isIntegerInRange(value: unknown, minimum: number, maximum: number): value is number {
   return Number.isInteger(value) && Number(value) >= minimum && Number(value) <= maximum;

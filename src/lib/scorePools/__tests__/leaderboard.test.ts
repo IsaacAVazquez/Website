@@ -1,19 +1,10 @@
-import {
-  buildComparisonDistribution,
-  buildFieldPicks,
-  calibrateDistribution,
-  deriveRiskProfile,
-  devigMoneyline,
-  devigTotals,
-  evaluateCandidates,
-  recommendPick,
-  DEFAULT_EXTRA_TIME,
-  DEFAULT_FIELD_CONFIG,
-  DEFAULT_RISK_PARAMS,
-  DEFAULT_SCORING_RULES,
-  type CalibrationConfig,
-  type StandingContext,
-} from "../index";
+import { buildComparisonDistribution, calibrateDistribution, type CalibrationConfig } from "../scorelineModel";
+import { buildFieldPicks } from "../field";
+import { deriveRiskProfile, recommendPick } from "../leaderboard";
+import { devigMoneyline, devigTotals } from "../odds";
+import { evaluateCandidates } from "../optimizer";
+import { DEFAULT_EXTRA_TIME, DEFAULT_FIELD_CONFIG, DEFAULT_RISK_PARAMS, DEFAULT_SCORING_RULES } from "../defaults";
+import { type StandingContext } from "../types";
 
 const RULES = DEFAULT_SCORING_RULES;
 const CONFIG: CalibrationConfig = {

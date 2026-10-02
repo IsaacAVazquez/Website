@@ -19,7 +19,7 @@ sourceOfTruth:
   - "src/constants/caseStudies.ts"
   - "src/app/nfl/page.tsx"
   - "src/app/nfl/nfl-client.tsx"
-  - "src/app/nfl/nfl-state.ts"
+  - "src/app/nfl/nfl-state.core.ts"
   - "src/data/nflSnapshot.ts"
 ---
 

@@ -70,7 +70,7 @@ Builders also **write atomically** (`writeFileAtomic`: write `.tmp`, then
 
 A builder that fans out across **many independent upstream calls** (e.g.
 `buildGitHubTrendingSnapshot.ts` hits the GitHub Search API once per tracked
-language/topic) wraps each call in `withRetry` (`scripts/fetchRetry.ts`) so a
+language/topic) wraps each call in `withRetry` (`src/lib/fetchRetry.ts`) so a
 transient blip on one segment doesn't discard the whole refresh. It tolerates a
 few segments failing outright — skipping them and writing the rest fresh — but
 aborts (keeping the previous snapshot) once `MAX_FAILED_SEGMENTS` is exceeded,
@@ -252,26 +252,17 @@ What the preview showed for a cached page is a copy kept for the six hours the h
 
 ---
 
-## Per-route error boundaries
+## Error and loading boundaries
 
-Every snapshot dashboard **must** ship a per-route `error.tsx` (re-exporting the shared
-`RouteErrorBoundary` with a bespoke `surfaceName`) **and** a `loading.tsx`
-(`RouteLoadingState`), so a render failure shows an editorial, route-specific fallback
-instead of the global catch-all, and the first paint isn't blank:
+The root `src/app/error.tsx` covers every dashboard. It renders the shared
+`RouteErrorBoundary` inside the tool shell the root layout already supplies, so a route
+needs no `error.tsx` of its own unless it has something specific to say. The 36
+per-route copies differed only in their `surfaceName`, and they were removed on 2026-10-01.
 
-```tsx
-// src/app/<x>/error.tsx
-"use client";
-import { RouteErrorBoundary } from "@/components/RouteErrorBoundary";
-export default function Error(props) {
-  return <RouteErrorBoundary {...props} surfaceName="Golf" />;
-}
-```
-
-> The 2026-06 design audit found 8 routes missing `error.tsx` (polling-aggregator,
-> github-trending-pulse, fantasy-football, fantasy-football/draft-tracker, frontier-models,
-> march-madness-2026, golf, mba-internship-notifications) — see `docs/DESIGN_AUDIT_2026-06.md`
-> P0-1. Treat this section as a hard requirement, not a nicety.
+Every snapshot dashboard still ships a `loading.tsx` (`RouteLoadingState`) so the first
+paint isn't blank. A single root `loading.tsx` would cover them too, but it would also
+wrap the Catalog 97 routes, and `/writing/[slug]` and `/portfolio/[slug]` would then
+stream before `notFound()` runs and answer 200 instead of 404.
 
 **Curated/unverified surfaces** must additionally carry `verified: false` + an `asOf` date in
 the snapshot type **and** render an on-page disclosure card (mirror `tech-startup-tracker`).
@@ -294,7 +285,7 @@ the snapshot type **and** render an on-page disclosure card (mirror `tech-startu
    `src/app/api/<x>/teams/[teamId]/route.ts` (return `400` for malformed ids,
    `404` for unknown). The page reads the summary through the accessor directly.
 8. **Route** — `src/app/<x>/page.tsx` server shell + client component with
-   deep-linkable state; add `src/app/<x>/error.tsx` **and** `src/app/<x>/loading.tsx`
+   deep-linkable state; add `src/app/<x>/loading.tsx`
    (curated/unverified data also needs `verified: false` + `asOf` + an on-page disclosure card).
 9. **Action** — `.github/workflows/update-<x>.yml` on a sensible cron + manual
    dispatch, committing the snapshot only when it changes via the shared

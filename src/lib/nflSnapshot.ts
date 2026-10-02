@@ -1,37 +1,9 @@
 import { nflSnapshot } from "@/data/nflSnapshot";
 import type { NFLSummarySnapshot, NFLTeamSnapshot } from "@/types/nfl";
+import { capFixtures, findTeamSnapshot } from "@/lib/teamSnapshots";
 
 const SUMMARY_FIXTURE_LIMIT = 8;
 const TEAM_FIXTURE_LIMIT = 5;
-
-interface NflSnapshotError extends Error {
-  status: number;
-}
-
-function createNflSnapshotError(message: string, status: number): NflSnapshotError {
-  return Object.assign(new Error(message), { status });
-}
-
-function limitFixtures<T>(fixtures: T[], limit: number): T[] {
-  return fixtures.slice(0, limit);
-}
-
-function clampNflSummarySnapshot(snapshot: typeof nflSnapshot): NFLSummarySnapshot {
-  const { teamSnapshots: _teamSnapshots, ...summarySnapshot } = snapshot;
-  return {
-    ...summarySnapshot,
-    recentFixtures: limitFixtures(summarySnapshot.recentFixtures, SUMMARY_FIXTURE_LIMIT),
-    upcomingFixtures: limitFixtures(summarySnapshot.upcomingFixtures, SUMMARY_FIXTURE_LIMIT),
-  };
-}
-
-function clampNflTeamSnapshot(snapshot: NFLTeamSnapshot): NFLTeamSnapshot {
-  return {
-    ...snapshot,
-    recentFixtures: limitFixtures(snapshot.recentFixtures, TEAM_FIXTURE_LIMIT),
-    upcomingFixtures: limitFixtures(snapshot.upcomingFixtures, TEAM_FIXTURE_LIMIT),
-  };
-}
 
 export function createEmptyNflTeamSnapshot(): NFLTeamSnapshot {
   return {
@@ -64,13 +36,10 @@ export function isValidNflTeamId(teamId: string): boolean {
 }
 
 export async function getNflSummarySnapshot(): Promise<NFLSummarySnapshot> {
-  return clampNflSummarySnapshot(nflSnapshot);
+  const { teamSnapshots: _teamSnapshots, ...summarySnapshot } = nflSnapshot;
+  return capFixtures(summarySnapshot, SUMMARY_FIXTURE_LIMIT);
 }
 
 export async function getNflTeamSnapshot(teamId: string): Promise<NFLTeamSnapshot> {
-  const snapshot = nflSnapshot.teamSnapshots[teamId];
-  if (!snapshot) {
-    throw createNflSnapshotError("NFL team snapshot was not found.", 404);
-  }
-  return clampNflTeamSnapshot(snapshot);
+  return capFixtures(findTeamSnapshot(nflSnapshot.teamSnapshots, teamId, "NFL"), TEAM_FIXTURE_LIMIT);
 }

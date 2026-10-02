@@ -2,7 +2,12 @@ import { render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { laLigaSnapshot } from "@/data/laLigaSnapshot";
 import { LaLigaClient } from "../la-liga-client";
-import { DEFAULT_LA_LIGA_STATE, getDefaultClubForView } from "../la-liga-state";
+import type { LaLigaView } from "@/types/la-liga";
+import { getDefaultClub, resolveDefaultState } from "../la-liga-state.core";
+
+const DEFAULT_LA_LIGA_STATE = resolveDefaultState(laLigaSnapshot.clubs);
+const getDefaultClubForView = (view: LaLigaView) =>
+  getDefaultClub(laLigaSnapshot.clubs, view, DEFAULT_LA_LIGA_STATE.club);
 
 const mockPush = jest.fn();
 const mockReplace = jest.fn();

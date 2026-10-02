@@ -9,6 +9,8 @@ import type {
   Formula1SessionSummary,
   Formula1Snapshot,
 } from "@/types/formula1";
+import { HttpStatusError } from "@/lib/utils";
+import { setTimeout as sleep } from "node:timers/promises";
 
 const OPEN_F1_API_BASE_URL = "https://api.openf1.org/v1";
 const OPEN_F1_DOCS_URL = "https://openf1.org/docs/";
@@ -97,10 +99,6 @@ interface DriverDirectoryEntry {
   headshotUrl: string | null;
 }
 
-interface Formula1DataError extends Error {
-  status: number;
-}
-
 interface BuildFormula1SnapshotDataOptions {
   fetchImpl?: typeof fetch;
   now?: Date;
@@ -108,13 +106,6 @@ interface BuildFormula1SnapshotDataOptions {
   minIntervalMs?: number;
 }
 
-function createFormula1DataError(message: string, status: number): Formula1DataError {
-  return Object.assign(new Error(message), { status });
-}
-
-function sleep(ms: number): Promise<void> {
-  return new Promise((resolve) => setTimeout(resolve, ms));
-}
 
 function isObject(value: unknown): value is Record<string, unknown> {
   return typeof value === "object" && value !== null;
@@ -438,7 +429,7 @@ function createOpenF1Requester(
         });
 
         if (!response.ok) {
-          const error = createFormula1DataError(
+          const error = new HttpStatusError(
             `Formula 1 data request failed with status ${response.status}.`,
             response.status
           );
@@ -458,7 +449,7 @@ function createOpenF1Requester(
       } catch (error) {
         const normalizedError =
           isObject(error) && error.name === "AbortError"
-            ? createFormula1DataError("Formula 1 data request timed out.", 504)
+            ? new HttpStatusError("Formula 1 data request timed out.", 504)
             : error;
         lastError = normalizedError;
         const status = isObject(normalizedError) ? normalizedError.status : undefined;
@@ -512,7 +503,7 @@ async function resolveSeasonMeetings(
     }
   }
 
-  throw createFormula1DataError("No Formula 1 season meetings were available to build a snapshot.", 502);
+  throw new HttpStatusError("No Formula 1 season meetings were available to build a snapshot.", 502);
 }
 
 function getDefaultMeetingKey(meetings: Formula1MeetingSummary[]): string | null {

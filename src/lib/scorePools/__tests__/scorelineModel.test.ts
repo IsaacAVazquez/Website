@@ -1,16 +1,6 @@
-import {
-  buildComparisonDistribution,
-  buildGrid,
-  calibrateDistribution,
-  devigMoneyline,
-  devigTotals,
-  expectedTotalOfGrid,
-  outcomeMasses,
-  pOverLine,
-  rhoBounds,
-  DEFAULT_EXTRA_TIME,
-  type CalibrationConfig,
-} from "../index";
+import { buildComparisonDistribution, buildGrid, calibrateDistribution, expectedTotalOfGrid, outcomeMasses, pOverLine, rhoBounds, type CalibrationConfig } from "../scorelineModel";
+import { devigMoneyline, devigTotals } from "../odds";
+import { DEFAULT_EXTRA_TIME } from "../defaults";
 import { poissonPmf } from "../poisson";
 
 const CONFIG: CalibrationConfig = {

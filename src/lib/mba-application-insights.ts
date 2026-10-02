@@ -28,18 +28,6 @@ const MBA_ATTENTION_WINDOW_DAYS = 7;
 
 // ── Date-key helpers ───────────────────────────────────────────────────────
 
-/**
- * Local-calendar day key (YYYY-MM-DD) for a date. Matches the format the
- * tracker stores follow-up dates and deadlines in and that `<input type="date">`
- * produces, so comparisons stay in the user's own calendar day.
- */
-export function toApplicationDateKey(date = new Date()): string {
-  const year = date.getFullYear();
-  const month = String(date.getMonth() + 1).padStart(2, "0");
-  const day = String(date.getDate()).padStart(2, "0");
-  return `${year}-${month}-${day}`;
-}
-
 function parseDateKey(key: string): number | null {
   if (!/^\d{4}-\d{2}-\d{2}$/.test(key)) return null;
   const ms = Date.parse(`${key}T00:00:00.000Z`);

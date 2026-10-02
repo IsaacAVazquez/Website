@@ -52,7 +52,6 @@ const stubPost = {
 
 jest.mock("@/lib/blog", () => ({
   getAllBlogPostPreviews: () => [stubPost],
-  getLatestBlogPostPreviews: () => [stubPost],
   getHomepageProofOfWorkBlogPostPreviews: () => [stubPost],
 }));
 

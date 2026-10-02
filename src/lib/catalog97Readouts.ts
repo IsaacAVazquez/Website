@@ -38,15 +38,6 @@ export function formatPtTime(iso: string): string {
   return `${sep(text)} PT`;
 }
 
-/** "22 Sep 2026" */
-export function formatPtDate(iso: string): string {
-  const date = validDate(iso);
-  if (!date) return "";
-  return sep(
-    date.toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric", timeZone: PT }),
-  );
-}
-
 /** "22 Sep" */
 export function formatPtDay(iso: string): string {
   const date = validDate(iso);

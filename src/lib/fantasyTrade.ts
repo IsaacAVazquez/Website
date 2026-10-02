@@ -18,7 +18,6 @@ import {
   blendFantasyReplacementValues as blendValues,
   buildFantasyReplacementCutoffs as buildSourceCutoffs,
   calculateFantasyReplacementSourceValue as calculateSourceValue,
-  calculateReplacementRelativeValue,
   getFantasyReplacementExpertRank as getExpertRank,
   getFantasyReplacementMarketReliability,
   hasReliableFantasyReplacementMarket as isReliableMarketPlayer,
@@ -160,18 +159,6 @@ function worseCoverage(
     insufficient: 2,
   };
   return severity[left] >= severity[right] ? left : right;
-}
-
-/**
- * Converts an ordinal rank into transparent value above a league-specific
- * replacement cutoff. The logarithmic shape creates an elite-player premium
- * without treating adjacent rank gaps as equal units of football production.
- */
-export function calculateReplacementRelativeTradeValue(
-  rank: number,
-  cutoff: number
-): number {
-  return calculateReplacementRelativeValue(rank, cutoff);
 }
 
 function expertSpread(player: Player, rank: number): number | null {

@@ -10,14 +10,6 @@ const SearchInterfaceNoSSR = dynamic<SearchInterfaceProps>(
 );
 
 function resolveInitialSearchState(searchParams: ReturnType<typeof useSearchParams>) {
-  if (!searchParams.toString()) {
-    return {
-      initialQuery: "",
-      initialType: "all",
-      initialCategory: "all",
-    };
-  }
-
   return {
     initialQuery: searchParams.get("q") ?? "",
     initialType: searchParams.get("type") ?? "all",

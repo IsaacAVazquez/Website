@@ -1,6 +1,6 @@
 "use client";
 
-import { startTransition, useEffect, type KeyboardEvent } from "react";
+import { type KeyboardEvent } from "react";
 import {
   Activity,
   ArrowDownUp,
@@ -10,7 +10,7 @@ import {
   Star,
   Tags,
 } from "lucide-react";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useSearchParams } from "next/navigation";
 import { EmptyPanel } from "@/components/football/EmptyPanel";
 import { Catalog97ProjectHero } from "@/components/catalog97/Catalog97ProjectHero";
 import { PROJECT_PRESS } from "@/constants/projectPress";
@@ -42,6 +42,7 @@ import { StarLogBoard } from "./StarLogBoard";
 import { languageShares } from "./star-log";
 import { SHORT_DATE_FORMATTER, DATE_ONLY_TIME_ZONE, formatDateTime } from "@/lib/date-formatters";
 import "./github-trending-pulse.css";
+import { useRouteSync } from "@/hooks/useRouteSync";
 
 interface GitHubTrendingClientProps {
   initialState: GitHubTrendingRouteState;
@@ -115,7 +116,6 @@ function handleRowKeyDown(event: KeyboardEvent<HTMLTableRowElement>, onToggle: (
 }
 
 export function GitHubTrendingClient({ initialState, snapshot }: GitHubTrendingClientProps) {
-  const router = useRouter();
   const searchParams = useSearchParams();
   const now = useClientNow();
   const hasManagedParams =
@@ -127,24 +127,14 @@ export function GitHubTrendingClient({ initialState, snapshot }: GitHubTrendingC
     ? normalizeGitHubTrendingState(searchParams)
     : initialState;
   const resolvedState = resolveGitHubTrendingState(routeState, snapshot);
-  const currentQuery = searchParams.toString();
-  const currentHref = `/github-trending-pulse${currentQuery ? `?${currentQuery}` : ""}`;
   const desiredHref = buildGitHubTrendingHref(resolvedState, searchParams);
 
-  useEffect(() => {
-    if (currentHref === desiredHref) return;
-    startTransition(() => {
-      router.replace(desiredHref, { scroll: false });
-    });
-  }, [currentHref, desiredHref, router]);
+  const pushHref = useRouteSync("/github-trending-pulse", desiredHref);
 
   function navigate(nextState: GitHubTrendingRouteState) {
     const resolvedNext = resolveGitHubTrendingState(nextState, snapshot);
     const href = buildGitHubTrendingHref(resolvedNext, searchParams);
-    if (href === currentHref) return;
-    startTransition(() => {
-      router.push(href, { scroll: false });
-    });
+    pushHref(href);
   }
 
   const segments = getSegments(snapshot, resolvedState.kind);

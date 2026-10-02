@@ -1,18 +1,6 @@
 import { Metadata } from "next";
 import { profile, profileSameAs } from "./profile";
 
-interface ProjectStructuredData {
-  name: string;
-  description: string;
-  image?: string;
-  dateCreated?: string;
-  dateModified?: string;
-  author: string;
-  keywords?: string[];
-  programmingLanguage?: string[];
-  applicationCategory?: string;
-}
-
 interface AIOptimizedMetadata {
   title: string;
   description: string;
@@ -271,34 +259,6 @@ export function constructMetadata({
   };
 }
 
-export function generateProjectStructuredData(project: ProjectStructuredData): object {
-  return {
-    "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    "name": project.name,
-    "description": project.description,
-    "image": project.image,
-    "dateCreated": project.dateCreated,
-    "dateModified": project.dateModified,
-    "author": {
-      "@type": "Person",
-      "@id": personSchemaId,
-      "name": project.author,
-      "url": personCanonicalUrl,
-    },
-    "keywords": project.keywords?.join(", "),
-    "programmingLanguage": project.programmingLanguage,
-    "applicationCategory": project.applicationCategory || "WebApplication",
-    "operatingSystem": "Any",
-    "url": siteConfig.url,
-    "offers": {
-      "@type": "Offer",
-      "price": "0",
-      "priceCurrency": "USD"
-    }
-  };
-}
-
 interface BreadcrumbStructuredData {
   "@context": string;
   "@type": "BreadcrumbList";
@@ -400,77 +360,6 @@ export function buildPersonEntity(): Record<string, unknown> {
       },
     ],
     knowsAbout: profile.knowsAbout,
-  };
-}
-
-/**
- * Generate Article structured data for blog posts and case studies
- */
-export function generateArticleStructuredData(article: {
-  title: string;
-  description: string;
-  author?: string;
-  datePublished: string;
-  dateModified?: string;
-  image?: string;
-  keywords?: string[];
-  url: string;
-}): object {
-  return {
-    "@context": "https://schema.org",
-    "@type": "Article",
-    "headline": article.title,
-    "description": article.description,
-    "image": article.image || `${siteConfig.url}${siteConfig.ogImage}`,
-    "datePublished": article.datePublished,
-    "dateModified": article.dateModified || article.datePublished,
-    "author": {
-      "@type": "Person",
-      "@id": personSchemaId,
-      "name": article.author || siteConfig.name,
-      "url": personCanonicalUrl,
-    },
-    "publisher": {
-      "@type": "Person",
-      "@id": personSchemaId,
-      "name": siteConfig.name,
-      "url": personCanonicalUrl,
-    },
-    "mainEntityOfPage": {
-      "@type": "WebPage",
-      "@id": article.url,
-    },
-    "keywords": article.keywords?.join(", "),
-    "inLanguage": "en-US",
-    "isAccessibleForFree": true,
-  };
-}
-
-/**
- * Generate Organization structured data
- */
-export function generateOrganizationStructuredData(org: {
-  name: string;
-  description: string;
-  url?: string;
-  logo?: string;
-  location?: string;
-  foundingDate?: string;
-}): object {
-  return {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": org.name,
-    "description": org.description,
-    "url": org.url,
-    "logo": org.logo,
-    "foundingDate": org.foundingDate,
-    ...(org.location && {
-      "location": {
-        "@type": "Place",
-        "name": org.location,
-      },
-    }),
   };
 }
 

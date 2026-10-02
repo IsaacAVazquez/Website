@@ -8,7 +8,8 @@ import type {
   GolfSummary,
   GolfTournament,
 } from "@/types/golf";
-import { slugify } from "@/lib/utils";
+import { slugify, toNumber } from "@/lib/utils";
+import { retryLinear, isTransientFetchError } from "@/lib/fetchRetry";
 
 /**
  * Builds the golf snapshot from ESPN's public golf leaderboard endpoint. ESPN's
@@ -178,13 +179,6 @@ function parseToPar(
   const trimmed = value.trim();
   if (trimmed === "" || /^e$/i.test(trimmed)) return 0;
   const parsed = Number(trimmed.replace("+", ""));
-  return Number.isFinite(parsed) ? parsed : 0;
-}
-
-function toNumber(value: number | string | null | undefined): number {
-  if (value == null) return 0;
-  if (typeof value === "number") return Number.isFinite(value) ? value : 0;
-  const parsed = Number(String(value).replace("+", ""));
   return Number.isFinite(parsed) ? parsed : 0;
 }
 
@@ -362,37 +356,21 @@ function pickEvent(events: EspnEvent[]): EspnEvent | null {
 }
 
 async function fetchGolfJson<T>(url: string): Promise<T> {
-  let lastError: unknown;
-  for (let attempt = 0; attempt < 3; attempt += 1) {
-    try {
-      const response = await fetch(url, {
-        signal: AbortSignal.timeout(REQUEST_TIMEOUT_MS),
-        headers: { Accept: "application/json" },
-      });
-      if (!response.ok) {
-        const error = new Error(
-          `ESPN golf request failed with status ${response.status}.`
-        );
-        // 4xx won't recover on retry; 5xx might.
-        (error as { retryable?: boolean }).retryable = response.status >= 500;
-        throw error;
-      }
-      return (await response.json()) as T;
-    } catch (error) {
-      lastError = error;
-      const isTimeout =
-        error instanceof Error &&
-        (error.name === "AbortError" || error.name === "TimeoutError");
-      const isNetwork = error instanceof TypeError;
-      const isRetryable = Boolean((error as { retryable?: boolean })?.retryable);
-      if (attempt < 2 && (isTimeout || isNetwork || isRetryable)) {
-        await new Promise((resolve) => setTimeout(resolve, 1000 * (attempt + 1)));
-        continue;
-      }
+  return retryLinear(3, async () => {
+    const response = await fetch(url, {
+      signal: AbortSignal.timeout(REQUEST_TIMEOUT_MS),
+      headers: { Accept: "application/json" },
+    });
+    if (!response.ok) {
+      const error = new Error(
+        `ESPN golf request failed with status ${response.status}.`
+      );
+      // 4xx won't recover on retry; 5xx might.
+      (error as { retryable?: boolean }).retryable = response.status >= 500;
       throw error;
     }
-  }
-  throw lastError;
+    return (await response.json()) as T;
+  }, isTransientFetchError);
 }
 
 // --- Builder -----------------------------------------------------------------

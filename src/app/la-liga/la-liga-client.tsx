@@ -1,13 +1,10 @@
 "use client";
 
 import {
-  startTransition,
-  useEffect,
   useMemo,
   useState,
-  type CSSProperties,
 } from "react";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useSearchParams } from "next/navigation";
 import { ExternalLink } from "lucide-react";
 import { DATE_ONLY_TIME_ZONE } from "@/lib/date-formatters";
 import {
@@ -28,7 +25,7 @@ import { DeferredClubDrawer } from "@/components/football/DeferredClubDrawer";
 import type { ClubDrawerClub, ClubDrawerScorer } from "@/components/football/ClubDrawer";
 import { PointsLadder } from "@/components/football/PointsLadderChart";
 import { LeagueProgrammeTable, type ProgrammeTableRow } from "@/components/football/LeagueProgrammeTable";
-import { LEAGUE_ZONE_LABEL, leagueZone, type LeagueZone, formatPointsGap } from "@/components/football/ladderGeometry";
+import { LEAGUE_ZONE_LABEL, leagueZone, type LeagueZone, formatPointsGap, zoneChipStyle } from "@/components/football/ladderGeometry";
 import { Catalog97ProjectHero } from "@/components/catalog97/Catalog97ProjectHero";
 import { PROJECT_PRESS } from "@/constants/projectPress";
 import type {
@@ -50,25 +47,15 @@ import {
   normalizeState,
   resolveDefaultState,
 } from "./la-liga-state.core";
+import { useRouteSync } from "@/hooks/useRouteSync";
+import { useCachedSnapshot } from "@/hooks/useCachedSnapshot";
+import { formatFixed } from "@/components/football/fixtureFormat";
+import { ClubLeaderCard } from "@/components/football/ClubLeaderCard";
 
 interface LaLigaClientProps {
   initialState: LaLigaRouteState;
   summary: LaLigaSummarySnapshot;
   initialTeamSnapshot: LaLigaTeamSnapshot | null;
-}
-
-async function fetchLaLigaTeamSnapshot(
-  clubId: string,
-  signal: AbortSignal
-): Promise<LaLigaTeamSnapshot> {
-  const response = await fetch(`/api/la-liga/teams/${clubId}`, { signal });
-  const payload = (await response.json()) as LaLigaTeamSnapshot & { error?: string };
-
-  if (!response.ok) {
-    throw new Error(payload.error || "Unable to load club snapshot.");
-  }
-
-  return payload;
 }
 
 const VIEW_OPTIONS: Array<{ id: LaLigaView; label: string }> = [
@@ -78,29 +65,12 @@ const VIEW_OPTIONS: Array<{ id: LaLigaView; label: string }> = [
   { id: "relegation", label: "Relegation fight" },
 ];
 
-function zoneChipStyle(zone: LeagueZone): CSSProperties {
-  switch (zone) {
-    case "champions":
-      return { color: "var(--c97-accent)" };
-    case "europa":
-    case "conference":
-      return { color: "var(--c97-positive)" };
-    case "relegation":
-      return { color: "var(--c97-negative)" };
-    default:
-      return { color: "var(--c97-ink-2)" };
-  }
-}
-
 export function LaLigaClient({
   initialState,
   summary,
   initialTeamSnapshot,
 }: LaLigaClientProps) {
-  const router = useRouter();
   const searchParams = useSearchParams();
-  const currentQuery = searchParams.toString();
-  const currentHref = `${LA_LIGA_ROUTE}${currentQuery ? `?${currentQuery}` : ""}`;
   const clubs = summary.clubs;
   const aliasMap = useMemo(() => buildClubAliasMap(summary.teams), [summary.teams]);
   const defaultState = useMemo(() => resolveDefaultState(summary.clubs), [summary.clubs]);
@@ -125,7 +95,6 @@ export function LaLigaClient({
         .map((club, index) => [club.id, index + 1] as const)
     )
   ), [clubs]);
-  const scorersByClub = useMemo(() => groupLeadersByClub(summary.scorers), [summary.scorers]);
   const crestByClubId = useMemo(() => (
     new Map(
       summary.teams.map((team) => [
@@ -156,13 +125,16 @@ export function LaLigaClient({
     ? routeState.club
     : getDefaultClub(summary.clubs, routeState.view, defaultState.club);
   const selectedClub = clubById.get(selectedClubId) ?? clubs[0];
-  const [teamSnapshots, setTeamSnapshots] = useState<Record<string, LaLigaTeamSnapshot>>(
-    () => (selectedClubId && initialTeamSnapshot ? { [selectedClubId]: initialTeamSnapshot } : {})
+  const {
+    snapshot: teamSnapshot,
+    isLoading: isTeamSnapshotLoading,
+    error: teamSnapshotError,
+  } = useCachedSnapshot<LaLigaTeamSnapshot>(
+    "/api/la-liga/teams",
+    selectedClub?.id ?? null,
+    { id: selectedClubId, snapshot: initialTeamSnapshot },
+    "Unable to load club snapshot."
   );
-  const [loadingClubId, setLoadingClubId] = useState<string | null>(null);
-  const [teamSnapshotError, setTeamSnapshotError] = useState<string | null>(null);
-  const teamSnapshot = selectedClub ? teamSnapshots[selectedClub.id] ?? null : null;
-  const isTeamSnapshotLoading = selectedClub ? loadingClubId === selectedClub.id : false;
   const desiredHref = buildHref(
     {
       view: routeState.view,
@@ -174,25 +146,11 @@ export function LaLigaClient({
     searchParams
   );
 
-  useEffect(() => {
-    if (currentHref === desiredHref) {
-      return;
-    }
-
-    startTransition(() => {
-      router.replace(desiredHref, { scroll: false });
-    });
-  }, [currentHref, desiredHref, router]);
+  const pushHref = useRouteSync(LA_LIGA_ROUTE, desiredHref);
 
   function navigate(nextState: LaLigaRouteState) {
     const href = buildHref(nextState, defaultState, aliasMap, searchParams);
-    if (href === currentHref) {
-      return;
-    }
-
-    startTransition(() => {
-      router.push(href, { scroll: false });
-    });
+    pushHref(href);
   }
 
   function handleViewChange(view: LaLigaView) {
@@ -221,51 +179,6 @@ export function LaLigaClient({
   function handleCloseDrawer() {
     setDrawerClubId(null);
   }
-
-  useEffect(() => {
-    if (!selectedClub) {
-      return;
-    }
-    const clubId = selectedClub.id;
-    if (teamSnapshots[clubId]) {
-      // eslint-disable-next-line react-hooks/set-state-in-effect -- Reset loading/error flags when cached snapshot exists for the selected club
-      setLoadingClubId(null);
-      setTeamSnapshotError(null);
-      return;
-    }
-
-    const controller = new AbortController();
-    let cancelled = false;
-
-    setLoadingClubId(clubId);
-    setTeamSnapshotError(null);
-
-    fetchLaLigaTeamSnapshot(clubId, controller.signal)
-      .then((snapshot) => {
-        if (cancelled) {
-          return;
-        }
-
-        setTeamSnapshots((current) => (
-          current[clubId] ? current : { ...current, [clubId]: snapshot }
-        ));
-      })
-      .catch((error: Error) => {
-        if (!cancelled && error.name !== "AbortError") {
-          setTeamSnapshotError(error.message || "Unable to load club snapshot.");
-        }
-      })
-      .finally(() => {
-        if (!cancelled) {
-          setLoadingClubId((current) => (current === clubId ? null : current));
-        }
-      });
-
-    return () => {
-      cancelled = true;
-      controller.abort();
-    };
-  }, [selectedClub, teamSnapshots]);
 
   const activeDetailTab = routeState.detail;
   function setActiveDetailTab(detail: LaLigaDetailTab) {
@@ -320,7 +233,7 @@ export function LaLigaClient({
     safetyLine,
     dropLine,
   });
-  const clubScorers = scorersByClub.get(selectedClub.id) ?? [];
+  const clubScorers = summary.scorers.filter((entry) => entry.clubId === selectedClub.id);
   const clubCount = clubs.length;
   const selectedZone: LeagueZone = leagueZone(selectedClub.position, clubCount);
   const formSequence = teamSnapshot?.form?.sequence ?? [];
@@ -696,46 +609,6 @@ export function LaLigaClient({
   );
 }
 
-function ClubLeaderCard({
-  title,
-  leader,
-  statLabel,
-  emptyLabel,
-}: {
-  title: string;
-  leader?: LaLigaLeader;
-  statLabel: string;
-  emptyLabel: string;
-}) {
-  return (
-    <div className="c97-panel">
-      <p className="c97-kicker">{title}</p>
-      {leader ? (
-        <>
-          <p className="text-lg font-bold c97-serif" style={{ marginTop: "var(--c97-sp-1)" }}>{leader.name}</p>
-          <p className="c97-prose" style={{ marginTop: "var(--c97-sp-1)" }}>
-            {leader.total} {statLabel.toLowerCase()} in {leader.appearances} matches
-          </p>
-          <p className="c97-kicker" style={{ marginTop: "var(--c97-sp-1)" }}>
-            {formatFixed(leader.perMatch)} per match
-          </p>
-        </>
-      ) : (
-        <p className="c97-prose" style={{ marginTop: "var(--c97-sp-1)" }}>{emptyLabel}</p>
-      )}
-    </div>
-  );
-}
-
-function groupLeadersByClub(leaders: LaLigaLeader[]) {
-  return leaders.reduce((map, leaderEntry) => {
-    const existing = map.get(leaderEntry.clubId) ?? [];
-    existing.push(leaderEntry);
-    map.set(leaderEntry.clubId, existing);
-    return map;
-  }, new Map<string, LaLigaLeader[]>());
-}
-
 /**
  * Builds a club's top-scorer list for the drawer by cross-referencing the
  * separate goals (`scorers`) and assists (`assists`) boards by player name —
@@ -861,6 +734,3 @@ function getClubPressurePoints(
   ];
 }
 
-function formatFixed(value: number) {
-  return Number.isFinite(value) ? value.toFixed(2) : "—";
-}

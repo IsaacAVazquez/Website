@@ -3,7 +3,7 @@ import { nflSnapshot } from "@/data/nflSnapshot";
 import { getNflSummarySnapshot, getNflTeamSnapshot } from "@/lib/nflSnapshot";
 import { constructMetadata, generateBreadcrumbStructuredData } from "@/lib/seo";
 import { NflClient } from "./nfl-client";
-import { normalizeNflState } from "./nfl-state";
+import { buildTeamAliasMap, normalizeState, resolveDefaultState } from "./nfl-state.core";
 
 export const metadata = constructMetadata({
   title: "NFL Pulse",
@@ -21,7 +21,11 @@ interface NflPageProps {
 }
 
 export default async function NflPage({ searchParams }: NflPageProps) {
-  const initialState = normalizeNflState(await searchParams);
+  const initialState = normalizeState(
+    await searchParams,
+    resolveDefaultState(nflSnapshot.teams),
+    buildTeamAliasMap(nflSnapshot.teams)
+  );
   const summary = await getNflSummarySnapshot();
   const initialTeamSnapshot = await getNflTeamSnapshot(initialState.team).catch(
     () => null

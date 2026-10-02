@@ -129,20 +129,3 @@ export function AIStructuredData({ schema }: AIStructuredDataProps) {
     />
   );
 }
-
-/**
- * Helper component to render multiple structured data schemas
- */
-export function AIStructuredDataCollection({
-  schemas,
-}: {
-  schemas: AIStructuredDataProps["schema"][];
-}) {
-  return (
-    <>
-      {schemas.map((schema, index) => (
-        <AIStructuredData key={index} schema={schema} />
-      ))}
-    </>
-  );
-}

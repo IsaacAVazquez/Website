@@ -1,9 +1,7 @@
-"use client";
 /* eslint-disable react-refresh/only-export-components -- co-located helper is intentional */
 
 import { ChevronRight, House } from "lucide-react";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
 
 interface BreadcrumbItem {
   label: string;
@@ -12,95 +10,11 @@ interface BreadcrumbItem {
 }
 
 interface BreadcrumbsProps {
-  customItems?: BreadcrumbItem[];
-  showHome?: boolean;
+  customItems: BreadcrumbItem[];
   className?: string;
 }
 
-export function Breadcrumbs({
-  customItems,
-  showHome = true,
-  className = ""
-}: BreadcrumbsProps) {
-  const pathname = usePathname();
-
-  const generateBreadcrumbs = (): BreadcrumbItem[] => {
-    if (customItems) {
-      return customItems;
-    }
-
-    const pathSegments = pathname.split('/').filter(Boolean);
-    const breadcrumbs: BreadcrumbItem[] = [];
-
-    if (showHome) {
-      breadcrumbs.push({
-        label: "Home",
-        href: "/",
-        isActive: pathname === "/"
-      });
-    }
-
-    let currentPath = "";
-    pathSegments.forEach((segment, index) => {
-      currentPath += `/${segment}`;
-      const isLast = index === pathSegments.length - 1;
-
-      const label = generateLabel(segment, currentPath);
-
-      breadcrumbs.push({
-        label,
-        href: currentPath,
-        isActive: isLast
-      });
-    });
-
-    return breadcrumbs;
-  };
-
-  const generateLabel = (segment: string, fullPath: string): string => {
-    const labelMap: Record<string, string> = {
-      'about': 'About',
-      'portfolio': 'Portfolio',
-      'writing': 'Writing',
-      'resume': 'Resume',
-      'contact': 'Contact',
-      'search': 'Search',
-      'fantasy-football': 'Fantasy Football'
-    };
-
-    if (labelMap[segment]) {
-      return labelMap[segment];
-    }
-
-    if (fullPath.includes('/blog/') && segment !== 'blog') {
-      const blogTitleMap: Record<string, string> = {
-        'complete-guide-qa-engineering': 'QA Engineering',
-        'mastering-fantasy-football-analytics': 'Mastering Fantasy Football Analytics',
-        'building-reliable-software-systems': 'Building Reliable Software Systems'
-      };
-
-      if (blogTitleMap[segment]) {
-        return blogTitleMap[segment];
-      }
-
-      return segment
-        .split('-')
-        .map(word => word.charAt(0).toUpperCase() + word.slice(1))
-        .join(' ');
-    }
-
-    return segment
-      .split('-')
-      .map(word => word.charAt(0).toUpperCase() + word.slice(1))
-      .join(' ');
-  };
-
-  const breadcrumbs = generateBreadcrumbs();
-
-  if (pathname === "/" && !customItems) {
-    return null;
-  }
-
+export function Breadcrumbs({ customItems: breadcrumbs, className = "" }: BreadcrumbsProps) {
   // The visible trail only. Each page emits its own BreadcrumbList JSON-LD from
   // page.tsx, so a copy here duplicated it and could disagree with it.
   return (
@@ -124,7 +38,7 @@ export function Breadcrumbs({
                 tint plus the weight mark the current page instead. */}
             {item.isActive ? (
               <span className="text-[var(--c97-ink)] font-semibold text-sm px-2 py-1 bg-[var(--c97-accent)]/10">
-                {item.label === "Home" && showHome ? (
+                {item.label === "Home" ? (
                   <span className="flex items-center gap-1.5">
                     <House className="w-4 h-4" />
                     <span>Home</span>
@@ -138,7 +52,7 @@ export function Breadcrumbs({
                 href={item.href}
                 className="inline-flex min-h-touch items-center text-[var(--c97-ink-2)] hover:text-[var(--c97-accent)] transition-[color,background-color] duration-200 text-sm px-2 py-1 hover:bg-[var(--c97-field)] font-medium"
               >
-                {item.label === "Home" && showHome ? (
+                {item.label === "Home" ? (
                   <span className="flex items-center gap-1.5">
                     <House className="w-4 h-4" />
                     <span>Home</span>

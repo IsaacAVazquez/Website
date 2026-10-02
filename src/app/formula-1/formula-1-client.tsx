@@ -1,7 +1,7 @@
 "use client";
 
-import { startTransition, useEffect, useMemo, useState } from "react";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useEffect, useMemo, useState } from "react";
+import { useSearchParams } from "next/navigation";
 import { ArrowDown, ArrowUp, CircleAlert, Clock, Flag, Minus } from "lucide-react";
 import type {
   Formula1ConstructorStanding,
@@ -30,8 +30,9 @@ import {
   DATE_TIME_FORMATTER,
   LONG_DATE_TIME_FORMATTER,
   SHORT_DATE_FORMATTER,
-  UPDATED_AT_FORMATTER,
+  formatUpdatedAt,
 } from "@/lib/date-formatters";
+import { useRouteSync } from "@/hooks/useRouteSync";
 
 interface Formula1ClientProps {
   initialState: Formula1RouteState;
@@ -52,11 +53,6 @@ function formatDateTimeLabel(value: string): string {
 function formatLongDateTimeLabel(value: string): string {
   const date = new Date(value);
   return Number.isNaN(date.getTime()) ? "TBD" : LONG_DATE_TIME_FORMATTER.format(date);
-}
-
-function formatUpdatedAt(value: string): string {
-  const date = new Date(value);
-  return Number.isNaN(date.getTime()) ? "Unavailable" : UPDATED_AT_FORMATTER.format(date);
 }
 
 function formatPoints(value: number): string {
@@ -890,10 +886,7 @@ function MeetingDetailFallback({
 }
 
 export function Formula1Client({ initialState, summary, initialMeeting }: Formula1ClientProps) {
-  const router = useRouter();
   const searchParams = useSearchParams();
-  const currentQuery = searchParams.toString();
-  const currentHref = `/formula-1${currentQuery ? `?${currentQuery}` : ""}`;
   const hasManagedParams =
     searchParams.get("view") !== null || searchParams.get("meeting") !== null;
   const routeState = hasManagedParams ? normalizeFormula1State(searchParams) : initialState;
@@ -920,15 +913,7 @@ export function Formula1Client({ initialState, summary, initialMeeting }: Formul
   );
   const [meetingDetailErrors, setMeetingDetailErrors] = useState<Record<string, string>>({});
 
-  useEffect(() => {
-    if (currentHref === desiredHref) {
-      return;
-    }
-
-    startTransition(() => {
-      router.replace(desiredHref, { scroll: false });
-    });
-  }, [currentHref, desiredHref, router]);
+  const pushHref = useRouteSync("/formula-1", desiredHref);
 
   function navigate(nextState: Formula1RouteState) {
     const resolvedNextState = resolveFormula1State(nextState, summary);
@@ -938,13 +923,7 @@ export function Formula1Client({ initialState, summary, initialMeeting }: Formul
       summary.defaultMeetingKey
     );
 
-    if (href === currentHref) {
-      return;
-    }
-
-    startTransition(() => {
-      router.push(href, { scroll: false });
-    });
+    pushHref(href);
   }
 
   const selectedMeetingMeta = useMemo(

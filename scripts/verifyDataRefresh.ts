@@ -29,6 +29,25 @@ function readPath(value: unknown, segments: readonly string[]): unknown {
   return current;
 }
 
+function count(value: unknown): number {
+  if (Array.isArray(value) || typeof value === "string") return value.length;
+  if (typeof value === "number") return Number.isFinite(value) ? value : 0;
+  return value && typeof value === "object" ? Object.keys(value).length : 0;
+}
+
+/** Each registered minimum the payload falls short of, as "path: count < minimum". */
+export function findShortfalls(
+  payload: unknown,
+  minimums: Readonly<Record<string, number>> = {}
+): string[] {
+  return Object.entries(minimums).flatMap(([key, minimum]) => {
+    const total = key
+      .split("+")
+      .reduce((sum, part) => sum + count(readPath(payload, part.split("."))), 0);
+    return total < minimum ? [`${key}: ${total} < ${minimum}`] : [];
+  });
+}
+
 async function readArtifact(
   artifactPath: string,
   exportName?: string
@@ -39,16 +58,24 @@ async function readArtifact(
   return JSON.parse(await fs.readFile(artifactPath, "utf8"));
 }
 
-export async function buildRefreshManifest(
-  surface: DataSurfaceId,
-  now = new Date()
-): Promise<RefreshManifest> {
+function getArtifact(surface: DataSurfaceId) {
   const artifact = DATA_REFRESH_ARTIFACTS[surface];
   if (!artifact) {
     throw new Error(`No refresh artifact is registered for ${surface}.`);
   }
+  return artifact;
+}
 
-  const payload = await readArtifact(artifact.artifactPath, artifact.exportName);
+/** `payload` lets a caller that already read the artifact skip a second read. */
+export async function buildRefreshManifest(
+  surface: DataSurfaceId,
+  now = new Date(),
+  payload?: unknown
+): Promise<RefreshManifest> {
+  const artifact = getArtifact(surface);
+  if (payload === undefined) {
+    payload = await readArtifact(artifact.artifactPath, artifact.exportName);
+  }
   const primarySourceAsOfValue = readPath(payload, artifact.sourceAsOfPath);
   const sourceAsOfValue =
     typeof primarySourceAsOfValue === "string" && primarySourceAsOfValue.trim()
@@ -99,7 +126,9 @@ async function main() {
     throw new Error("Usage: verifyDataRefresh.ts <surface>");
   }
 
-  const manifest = await buildRefreshManifest(surface);
+  const artifact = getArtifact(surface);
+  const payload = await readArtifact(artifact.artifactPath, artifact.exportName);
+  const manifest = await buildRefreshManifest(surface, new Date(), payload);
   const manifestDir = process.env.RUNNER_TEMP ?? path.join(process.cwd(), ".tmp");
   await fs.mkdir(manifestDir, { recursive: true });
   const manifestPath = path.join(manifestDir, `refresh-manifest-${surface}.json`);
@@ -117,6 +146,13 @@ async function main() {
   if (manifest.outcome !== "fresh") {
     throw new Error(
       `${surface} refresh preserved an unavailable or stale artifact (${manifest.sourceAsOf ?? "missing timestamp"}).`
+    );
+  }
+
+  const shortfalls = findShortfalls(payload, artifact.minimums);
+  if (shortfalls.length > 0) {
+    throw new Error(
+      `${surface} snapshot looks degraded, refusing to commit it: ${shortfalls.join(", ")}.`
     );
   }
 }

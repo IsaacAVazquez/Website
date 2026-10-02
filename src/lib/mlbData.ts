@@ -14,6 +14,9 @@ import type {
   MlbTeamProfile,
   MlbTeamSnapshot,
 } from "@/types/mlb";
+import { HttpStatusError } from "@/lib/utils";
+import { retryLinear, hasClientErrorStatus, isTimeoutError } from "@/lib/fetchRetry";
+import { setTimeout as delay } from "node:timers/promises";
 
 const MLB_STATS_BASE_URL = "https://statsapi.mlb.com/api/v1";
 const MLB_LOGO_BASE_URL = "https://www.mlbstatic.com/team-logos";
@@ -28,14 +31,6 @@ const UPCOMING_GAME_LIMIT = 10;
 const TEAM_GAME_LIMIT = 5;
 const RECENT_WINDOW_DAYS = 10;
 const UPCOMING_WINDOW_DAYS = 10;
-
-interface MlbDataError extends Error {
-  status: number;
-}
-
-function createMlbDataError(message: string, status: number): MlbDataError {
-  return Object.assign(new Error(message), { status });
-}
 
 interface StatsApiTeam {
   id?: number | null;
@@ -379,9 +374,9 @@ async function fetchStatsApiJsonOnce<T>(path: string, revalidateSeconds: number)
   });
   if (!response.ok) {
     if (response.status === 404) {
-      throw createMlbDataError("Requested MLB resource was not found.", 404);
+      throw new HttpStatusError("Requested MLB resource was not found.", 404);
     }
-    throw createMlbDataError(
+    throw new HttpStatusError(
       "Unable to load MLB data from the upstream provider.",
       response.status >= 500 ? 503 : 502
     );
@@ -395,27 +390,13 @@ async function fetchStatsApiJsonOnce<T>(path: string, revalidateSeconds: number)
  * Mirrors the pattern in src/lib/nflData.ts (`fetchTextOnce` + `fetchText`).
  */
 async function fetchStatsApiJson<T>(path: string, revalidateSeconds: number): Promise<T> {
-  let lastError: unknown;
-  for (let attempt = 0; attempt < 3; attempt += 1) {
-    try {
-      return await fetchStatsApiJsonOnce<T>(path, revalidateSeconds);
-    } catch (error) {
-      lastError = error;
-      if (error instanceof Error && (error.name === "AbortError" || error.name === "TimeoutError")) {
-        if (attempt < 2) {
-          await new Promise((resolve) => setTimeout(resolve, 1000 * (attempt + 1)));
-          continue;
-        }
-        throw createMlbDataError("MLB data provider timed out.", 504);
-      }
-      const status = (error as MlbDataError).status;
-      if (typeof status === "number" && status >= 400 && status < 500) throw error;
-      if (attempt < 2) {
-        await new Promise((resolve) => setTimeout(resolve, 1000 * (attempt + 1)));
-      }
-    }
-  }
-  throw lastError;
+  return retryLinear(
+    3,
+    () => fetchStatsApiJsonOnce<T>(path, revalidateSeconds),
+    (error) => !hasClientErrorStatus(error)
+  ).catch((error) => {
+    throw isTimeoutError(error) ? new HttpStatusError("MLB data provider timed out.", 504) : error;
+  });
 }
 
 function buildQueryString(params: Record<string, string | number>): string {
@@ -428,28 +409,6 @@ function buildQueryString(params: Record<string, string | number>): string {
 
 export function isValidMlbTeamId(teamId: string): boolean {
   return /^[1-9]\d*$/.test(teamId);
-}
-
-export function createEmptyMlbSnapshot(): MlbSnapshot {
-  const generatedAt = new Date().toISOString();
-  return {
-    season: getCurrentSeason(),
-    generatedAt,
-    updatedAt: generatedAt.slice(0, 10),
-    sourceLabel: "MLB Stats API",
-    sourceUrls: {
-      standings: `${MLB_STATS_BASE_URL}/standings`,
-      schedule: `${MLB_STATS_BASE_URL}/schedule`,
-      leaders: `${MLB_STATS_BASE_URL}/stats/leaders`,
-    },
-    teams: [],
-    standings: [],
-    recentGames: [],
-    upcomingGames: [],
-    hittingLeaders: { homeRuns: [], runsBattedIn: [], battingAverage: [] },
-    pitchingLeaders: { earnedRunAverage: [], wins: [], strikeouts: [] },
-    teamSnapshots: {},
-  };
 }
 
 async function getTeams(season: string): Promise<MlbTeamOption[]> {
@@ -617,7 +576,7 @@ export async function getMlbSummary(): Promise<{
 
 export async function getMlbTeamSnapshot(teamId: string, teamLookup?: Map<string, MlbTeamOption>): Promise<MlbTeamSnapshot> {
   if (!isValidMlbTeamId(teamId)) {
-    throw createMlbDataError("Invalid MLB team id.", 400);
+    throw new HttpStatusError("Invalid MLB team id.", 400);
   }
 
   const lookup = teamLookup ?? new Map((await getTeams(getCurrentSeason())).map((team) => [team.id, team]));
@@ -669,9 +628,6 @@ export async function getMlbTeamSnapshot(teamId: string, teamLookup?: Map<string
 const TEAM_FETCH_DELAY_MS = 750;
 const MLB_SNAPSHOT_PATH = "src/data/mlbSnapshot.ts";
 
-function delay(ms: number) {
-  return new Promise<void>((resolveFn) => setTimeout(resolveFn, ms));
-}
 
 function readExistingTeamSnapshots(filePath: string): Record<string, MlbTeamSnapshot> {
   try {

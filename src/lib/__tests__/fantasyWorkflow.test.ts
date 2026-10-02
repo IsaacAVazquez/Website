@@ -32,11 +32,14 @@ describe("fantasy workflow", () => {
 
     // The weekly board is untracked until the season's first build. `git diff
     // --quiet` exits 0 for an untracked file, so the 2026 Week 1 board built
-    // cleanly and was never committed. The change check has to see untracked
-    // files as changes.
-    expect(workflow).toContain(
-      'git status --porcelain -- public/data/fantasy/weekly.json'
-    );
+    // cleanly and was never committed. The commit helper's `git status
+    // --porcelain` check sees untracked files, so the weekly board has to go
+    // straight to it with no `git diff` gate in front.
+    const weeklyStep = workflow.match(
+      /- name: Commit and push weekly board[\s\S]*?(?=\n\s+- name:)/
+    )?.[0];
+    expect(weeklyStep).toContain("bash scripts/ci/commit-and-push-snapshot.sh");
+    expect(weeklyStep).toContain("public/data/fantasy/weekly.json");
     expect(workflow).not.toContain("git diff --quiet -- public/data/fantasy/weekly.json");
   });
 

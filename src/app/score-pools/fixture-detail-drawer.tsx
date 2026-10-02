@@ -4,7 +4,8 @@
 // calibrated scoreline distribution, the expected-points table, context
 // flags, hand-entered odds, and what to recheck before lock.
 
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useMemo, useRef, useState } from "react";
+import { useModal } from "@/hooks/useModal";
 import {
   summarizeLineMovement,
   type ContextFlagKey,
@@ -136,37 +137,7 @@ export function FixtureDetailDrawer({
   });
   const [manualError, setManualError] = useState<string | null>(null);
 
-  useEffect(() => {
-    // Remember what opened the drawer so closing it hands focus back there.
-    const opener = document.activeElement instanceof HTMLElement ? document.activeElement : null;
-    closeRef.current?.focus();
-    const onKey = (event: KeyboardEvent) => {
-      if (event.key === "Escape") {
-        onClose();
-        return;
-      }
-      if (event.key !== "Tab" || !dialogRef.current) return;
-      // aria-modal alone does not keep Tab inside the drawer, so wrap at the ends.
-      const focusable = dialogRef.current.querySelectorAll<HTMLElement>(
-        'a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), summary, [tabindex]:not([tabindex="-1"])',
-      );
-      const first = focusable[0];
-      const last = focusable[focusable.length - 1];
-      if (!first || !last) return;
-      if (event.shiftKey && document.activeElement === first) {
-        event.preventDefault();
-        last.focus();
-      } else if (!event.shiftKey && document.activeElement === last) {
-        event.preventDefault();
-        first.focus();
-      }
-    };
-    window.addEventListener("keydown", onKey);
-    return () => {
-      window.removeEventListener("keydown", onKey);
-      if (opener && opener !== document.body && document.contains(opener)) opener.focus();
-    };
-  }, [onClose]);
+  useModal(dialogRef, true, onClose, { initialFocusRef: closeRef, lockScroll: false });
 
   const movement = useMemo(() => {
     if (fixture.odds.length < 2) return null;

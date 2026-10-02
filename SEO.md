@@ -155,7 +155,7 @@ import { StructuredData } from "@/components/StructuredData";
 Data-driven schemas built from `src/lib/ai-seo.ts`. Pass your own data rather than relying on presets. Used for richer E-E-A-T signals and AI-comprehensible markup.
 
 ```tsx
-import { AIStructuredData, AIStructuredDataCollection } from "@/components/AIStructuredData";
+import { AIStructuredData } from "@/components/AIStructuredData";
 
 // Supported types:
 <AIStructuredData schema={{ type: "Person",              data: PersonSchemaData }} />
@@ -168,9 +168,6 @@ import { AIStructuredData, AIStructuredDataCollection } from "@/components/AIStr
 <AIStructuredData schema={{ type: "ItemList",            data: { name, items } }} />
 <AIStructuredData schema={{ type: "Navigation",          data: NavigationItem[] }} />
 <AIStructuredData schema={{ type: "Custom",              data: { schema: object } }} />
-
-// Render multiple schemas at once:
-<AIStructuredDataCollection schemas={[...]} />
 ```
 
 ### Generator Functions — `src/lib/ai-seo.ts`
@@ -188,7 +185,6 @@ These power `AIStructuredData` but can be called directly when you need the raw 
 | `generateBreadcrumbSchema(items)` | `BreadcrumbList` | Array of `{ name, url }` |
 | `generateItemListSchema(data)` | `ItemList` | For archives, project listings |
 | `generateNavigationSchema(items)` | `SiteNavigationElement` | Main nav |
-| `generatePageSummary(data)` | Plain object | Structured + natural language summary |
 
 ### Generator Functions — `src/lib/seo.ts`
 
@@ -197,10 +193,7 @@ Simpler alternatives for when the AI-optimized versions are overkill.
 | Function | Output |
 |---|---|
 | `generatePersonStructuredData(options?)` | `Person` with credentials, alumniOf, worksFor |
-| `generateArticleStructuredData(article)` | `Article` with publisher, mainEntityOfPage |
 | `generateBreadcrumbStructuredData(items)` | `BreadcrumbList` |
-| `generateProjectStructuredData(project)` | `SoftwareApplication` with offers |
-| `generateOrganizationStructuredData(org)` | `Organization` |
 
 ---
 

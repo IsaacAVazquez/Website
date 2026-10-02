@@ -12,6 +12,9 @@ import type {
   NbaTeamProfile,
   NbaTeamSnapshot,
 } from "@/types/nba";
+import { HttpStatusError } from "@/lib/utils";
+import { retryLinear, hasClientErrorStatus, isTimeoutError } from "@/lib/fetchRetry";
+import { setTimeout as delay } from "node:timers/promises";
 
 const ESPN_BASE_URL = "https://site.api.espn.com/apis/site/v2/sports/basketball/nba";
 const ESPN_STANDINGS_URL = "https://site.api.espn.com/apis/v2/sports/basketball/nba/standings";
@@ -150,14 +153,6 @@ interface EspnTeamScheduleResponse {
 
 interface EspnTeamDetailResponse {
   team?: EspnTeam & { groups?: { id?: string | null } | null } | null;
-}
-
-interface NbaDataError extends Error {
-  status: number;
-}
-
-function createNbaDataError(message: string, status: number): NbaDataError {
-  return Object.assign(new Error(message), { status });
 }
 
 function pickStat(stats: EspnStat[] | null | undefined, ...names: string[]): EspnStat | null {
@@ -332,9 +327,9 @@ async function fetchEspnJsonOnce<T>(url: string, revalidateSeconds: number): Pro
   });
   if (!response.ok) {
     if (response.status === 404) {
-      throw createNbaDataError("Requested NBA resource was not found.", 404);
+      throw new HttpStatusError("Requested NBA resource was not found.", 404);
     }
-    throw createNbaDataError(
+    throw new HttpStatusError(
       "Unable to load NBA data from the upstream provider.",
       response.status >= 500 ? 503 : 502
     );
@@ -348,27 +343,13 @@ async function fetchEspnJsonOnce<T>(url: string, revalidateSeconds: number): Pro
  * Mirrors the pattern in src/lib/nflData.ts (`fetchTextOnce` + `fetchText`).
  */
 async function fetchEspnJson<T>(url: string, revalidateSeconds: number): Promise<T> {
-  let lastError: unknown;
-  for (let attempt = 0; attempt < 3; attempt += 1) {
-    try {
-      return await fetchEspnJsonOnce<T>(url, revalidateSeconds);
-    } catch (error) {
-      lastError = error;
-      if (error instanceof Error && (error.name === "AbortError" || error.name === "TimeoutError")) {
-        if (attempt < 2) {
-          await new Promise((resolve) => setTimeout(resolve, 1000 * (attempt + 1)));
-          continue;
-        }
-        throw createNbaDataError("NBA data provider timed out.", 504);
-      }
-      const status = (error as NbaDataError).status;
-      if (typeof status === "number" && status >= 400 && status < 500) throw error;
-      if (attempt < 2) {
-        await new Promise((resolve) => setTimeout(resolve, 1000 * (attempt + 1)));
-      }
-    }
-  }
-  throw lastError;
+  return retryLinear(
+    3,
+    () => fetchEspnJsonOnce<T>(url, revalidateSeconds),
+    (error) => !hasClientErrorStatus(error)
+  ).catch((error) => {
+    throw isTimeoutError(error) ? new HttpStatusError("NBA data provider timed out.", 504) : error;
+  });
 }
 
 function inferConference(group: EspnStandingsGroup): NbaConference {
@@ -610,29 +591,6 @@ export function preservePriorFixtures(
   };
 }
 
-export function createEmptyNbaSnapshot(): NbaSnapshot {
-  const generatedAt = new Date().toISOString();
-  return {
-    season: "Current season",
-    generatedAt,
-    updatedAt: generatedAt.slice(0, 10),
-    sourceLabel: "ESPN",
-    sourceUrls: {
-      standings: "https://www.espn.com/nba/standings",
-      leaders: "https://www.espn.com/nba/statistics",
-      scoreboard: "https://www.espn.com/nba/scoreboard",
-    },
-    teamsByConference: { east: [], west: [] },
-    scorers: [],
-    rebounders: [],
-    assistLeaders: [],
-    recentFixtures: [],
-    upcomingFixtures: [],
-    teams: [],
-    teamSnapshots: {},
-  };
-}
-
 interface NbaSeasonTables {
   seasonEndYear: number;
   teamsByConference: { east: NbaTeam[]; west: NbaTeam[] };
@@ -853,7 +811,7 @@ export async function getNbaTeamSnapshot(
   seasonEndYear: number = resolveNbaSeasonEndYear()
 ): Promise<NbaTeamSnapshot> {
   if (!isValidNbaTeamId(teamId)) {
-    throw createNbaDataError("Invalid NBA team id.", 400);
+    throw new HttpStatusError("Invalid NBA team id.", 400);
   }
   // ESPN returns one season type per request, and with none named it serves
   // the current one, which is the preseason through most of October.
@@ -905,9 +863,6 @@ export async function getNbaTeamSnapshot(
 const TEAM_FETCH_DELAY_MS = 1_500;
 const NBA_SNAPSHOT_PATH = "src/data/nbaSnapshot.ts";
 
-function delay(ms: number) {
-  return new Promise<void>((resolve) => setTimeout(resolve, ms));
-}
 
 function readExistingTeamSnapshots(filePath: string): Record<string, NbaTeamSnapshot> {
   try {

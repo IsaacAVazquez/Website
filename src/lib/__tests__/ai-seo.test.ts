@@ -5,7 +5,6 @@ import {
   generateFAQSchema,
   generateItemListSchema,
   generateNavigationSchema,
-  generatePageSummary,
   generateProfessionalServiceSchema,
   generateProfilePageSchema,
   generateProjectSchema,
@@ -328,40 +327,5 @@ describe("generateNavigationSchema", () => {
     expect(parts[0]["@id"]).toBe("https://isaacvazquez.com/about#webpage");
     expect(parts[1]["@id"]).toBe("https://example.com/x#webpage");
     expect(parts[1].url).toBe("https://example.com/x");
-  });
-});
-
-describe("generatePageSummary", () => {
-  it("produces structured and natural-language summaries with optional fields", () => {
-    const summary = generatePageSummary({
-      title: "About",
-      purpose: "introduce Isaac",
-      mainTopics: ["product", "qa"],
-      targetAudience: "recruiters",
-      keyTakeaways: ["hire him"],
-      context: "portfolio site",
-    });
-
-    expect(summary.structured.title).toBe("About");
-    expect((summary.structured as Record<string, unknown>).targetAudience).toBe(
-      "recruiters"
-    );
-    expect(summary.text).toContain('titled "About"');
-    expect(summary.text).toContain("Key takeaways: hire him");
-    expect(summary.text).not.toMatch(/\s{2,}/);
-  });
-
-  it("omits optional clauses when not provided", () => {
-    const summary = generatePageSummary({
-      title: "Now",
-      purpose: "show current work",
-      mainTopics: ["projects"],
-    });
-
-    expect(
-      (summary.structured as Record<string, unknown>).targetAudience
-    ).toBeUndefined();
-    expect(summary.text).not.toContain("Target audience");
-    expect(summary.text).not.toContain("Key takeaways");
   });
 });

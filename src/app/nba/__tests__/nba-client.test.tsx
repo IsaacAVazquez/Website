@@ -1,11 +1,17 @@
 import { fireEvent, render, screen, within } from "@testing-library/react";
 import { getNbaSummarySnapshot, getNbaTeamSnapshot } from "@/lib/nbaSnapshot";
 import { NbaClient } from "../nba-client";
-import {
-  buildNbaHref,
-  DEFAULT_NBA_STATE,
-  getDefaultTeamForView,
-} from "../nba-state";
+import { nbaSnapshot } from "@/data/nbaSnapshot";
+import type { NbaRouteState, NbaView } from "@/types/nba";
+import * as core from "../nba-state.core";
+
+const { east, west } = nbaSnapshot.teamsByConference;
+const aliasMap = core.buildTeamAliasMap([...east, ...west]);
+const DEFAULT_NBA_STATE = core.resolveDefaultState(east, west);
+const getDefaultTeamForView = (view: NbaView) =>
+  core.getDefaultTeam(east, west, view, DEFAULT_NBA_STATE.team);
+const buildNbaHref = (state: NbaRouteState, base?: URLSearchParams) =>
+  core.buildHref(state, DEFAULT_NBA_STATE, aliasMap, base);
 
 const mockPush = jest.fn();
 const mockReplace = jest.fn();

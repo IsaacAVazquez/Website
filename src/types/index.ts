@@ -140,23 +140,6 @@ export interface TierGroup {
   label?: string; // Optional tier label
 }
 
-export interface ChartDimensions {
-  width: number;
-  height: number;
-  margin: {
-    top: number;
-    right: number;
-    bottom: number;
-    left: number;
-  };
-}
-
-export interface ClusteringOptions {
-  numberOfClusters?: number;
-  maxIterations?: number;
-  tolerance?: number;
-}
-
 // Draft Tracker Types
 export interface DraftSettings {
   totalTeams: number;

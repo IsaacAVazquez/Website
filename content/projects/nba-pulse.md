@@ -19,7 +19,7 @@ sourceOfTruth:
   - "src/constants/caseStudies.ts"
   - "src/app/nba/page.tsx"
   - "src/app/nba/nba-client.tsx"
-  - "src/app/nba/nba-state.ts"
+  - "src/app/nba/nba-state.core.ts"
   - "src/data/nbaSnapshot.ts"
 ---
 

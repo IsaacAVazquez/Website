@@ -5,9 +5,6 @@ import {
   fitMetaDescription,
   fitSearchTitle,
   generateAIOptimizedMetadata,
-  generateArticleStructuredData,
-  generateOrganizationStructuredData,
-  generateProjectStructuredData,
   safeJsonLd,
   siteConfig,
 } from "../seo";
@@ -176,94 +173,6 @@ describe("calculateReadingTime", () => {
     expect(calculateReadingTime("word ".repeat(200).trim())).toBe(1);
     expect(calculateReadingTime("word ".repeat(201).trim())).toBe(2);
     expect(calculateReadingTime("just a few words")).toBe(1);
-  });
-});
-
-describe("generateProjectStructuredData", () => {
-  it("builds a SoftwareApplication node with sensible defaults", () => {
-    const data = generateProjectStructuredData({
-      name: "QA Platform",
-      description: "A testing platform",
-      author: "Isaac Vazquez",
-    }) as Record<string, unknown>;
-
-    expect(data["@type"]).toBe("SoftwareApplication");
-    expect(data.name).toBe("QA Platform");
-    expect(data.applicationCategory).toBe("WebApplication");
-    expect((data.author as Record<string, unknown>).name).toBe("Isaac Vazquez");
-  });
-
-  it("honors provided category, keywords, and dateModified", () => {
-    const data = generateProjectStructuredData({
-      name: "N",
-      description: "D",
-      author: "A",
-      keywords: ["a", "b"],
-      applicationCategory: "DeveloperApplication",
-      dateModified: "2026-01-01T00:00:00.000Z",
-    }) as Record<string, unknown>;
-
-    expect(data.keywords).toBe("a, b");
-    expect(data.applicationCategory).toBe("DeveloperApplication");
-    expect(data.dateModified).toBe("2026-01-01T00:00:00.000Z");
-  });
-});
-
-describe("generateArticleStructuredData", () => {
-  it("falls back to defaults for author, image, and dateModified", () => {
-    const data = generateArticleStructuredData({
-      title: "Post",
-      description: "About the post",
-      datePublished: "2026-02-01",
-      url: "https://isaacvazquez.com/writing/post",
-    }) as Record<string, unknown>;
-
-    expect(data["@type"]).toBe("Article");
-    expect(data.headline).toBe("Post");
-    expect(data.dateModified).toBe("2026-02-01");
-    expect((data.author as Record<string, unknown>).name).toBe(siteConfig.name);
-    expect(data.image).toContain(siteConfig.url);
-  });
-
-  it("uses explicit author, image, keywords, and dateModified", () => {
-    const data = generateArticleStructuredData({
-      title: "Post",
-      description: "D",
-      author: "Guest",
-      datePublished: "2026-02-01",
-      dateModified: "2026-03-01",
-      image: "https://cdn.example/cover.png",
-      keywords: ["seo", "next"],
-      url: "https://isaacvazquez.com/writing/post",
-    }) as Record<string, unknown>;
-
-    expect((data.author as Record<string, unknown>).name).toBe("Guest");
-    expect(data.image).toBe("https://cdn.example/cover.png");
-    expect(data.dateModified).toBe("2026-03-01");
-    expect(data.keywords).toBe("seo, next");
-  });
-});
-
-describe("generateOrganizationStructuredData", () => {
-  it("omits the location node when no location is given", () => {
-    const data = generateOrganizationStructuredData({
-      name: "Civitech",
-      description: "Civic tech",
-    }) as Record<string, unknown>;
-    expect(data["@type"]).toBe("Organization");
-    expect(data.location).toBeUndefined();
-  });
-
-  it("adds a Place node when a location is given", () => {
-    const data = generateOrganizationStructuredData({
-      name: "Civitech",
-      description: "Civic tech",
-      location: "Austin, TX",
-      foundingDate: "2019",
-    }) as Record<string, unknown>;
-    expect((data.location as Record<string, unknown>)["@type"]).toBe("Place");
-    expect((data.location as Record<string, unknown>).name).toBe("Austin, TX");
-    expect(data.foundingDate).toBe("2019");
   });
 });
 

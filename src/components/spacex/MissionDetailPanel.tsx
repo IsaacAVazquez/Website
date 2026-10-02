@@ -1,7 +1,7 @@
 import { AlertTriangle, ExternalLink, MapPin, Orbit, Rocket, Users } from "lucide-react";
 import type { MissionLaunchDetail, MissionControlPanel } from "@/types/spacex";
 import { MissionVehiclePhoto } from "./MissionVehiclePhoto";
-import { formatCurrencyCompact, formatInteger, formatMissionMoment } from "./formatters";
+import { formatCurrencyCompact, formatInteger } from "./formatters";
 
 const PANEL_OPTIONS: Array<{ key: MissionControlPanel; label: string }> = [
   { key: "overview", label: "Overview" },
@@ -16,13 +16,6 @@ interface MissionDetailPanelProps {
   isLoading: boolean;
   error: string | null;
   onPanelChange: (panel: MissionControlPanel) => void;
-  /**
-   * Suppresses this panel's own outer `<aside>`/name/kicker header block and
-   * renders a bare `<div>` instead — used when `MissionDrawer` already shows
-   * that identity (patch, name, badge) in its own header and this component
-   * only needs to contribute the Overview/Vehicle/Payloads/Links tab body.
-   */
-  hideHeader?: boolean;
 }
 
 function ExternalGrid({
@@ -66,9 +59,7 @@ export function MissionDetailPanel({
   isLoading,
   error,
   onPanelChange,
-  hideHeader = false,
 }: MissionDetailPanelProps) {
-  const Wrapper = hideHeader ? "div" : "aside";
   const tabs = (
     <div
       className="inline-flex flex-wrap gap-2 border border-[var(--c97-rule)] bg-[var(--c97-surface)] p-2"
@@ -95,36 +86,8 @@ export function MissionDetailPanel({
   );
 
   return (
-    <Wrapper
-      data-testid={hideHeader ? undefined : "mission-detail-panel"}
-      aria-label={hideHeader ? undefined : "Mission detail panel"}
-      className={
-        hideHeader
-          ? "px-5 pb-5 pt-4"
-          : "border border-[var(--c97-rule)] bg-[var(--c97-field)]/92 p-4 sm:p-5"
-      }
-    >
-      {hideHeader ? (
-        <div className="pb-4">{tabs}</div>
-      ) : (
-        <div className="flex flex-col gap-4 border-b border-[var(--c97-rule)] pb-5">
-          <div>
-            <p className="font-mono text-2xs font-semibold uppercase tracking-[0.22em] text-[var(--c97-label)]">
-              Mission detail
-            </p>
-            <h2 className="mt-2 text-2xl font-bold tracking-[-0.04em] text-[var(--c97-ink)]">
-              {launch ? launch.name : "Select a mission"}
-            </h2>
-            <p className="mt-2 text-sm leading-6 text-[var(--c97-ink-2)]">
-              {launch
-                ? `${launch.rocketName ?? "Rocket TBD"} • ${formatMissionMoment(launch)}`
-                : "Open a mission from the board to inspect vehicles, payloads, crew, and reference links in context."}
-            </p>
-          </div>
-
-          {tabs}
-        </div>
-      )}
+    <div className="px-5 pb-5 pt-4">
+      <div className="pb-4">{tabs}</div>
 
       {isLoading ? (
         <div className="space-y-3 py-5">
@@ -498,6 +461,6 @@ export function MissionDetailPanel({
           </div>
         </div>
       ) : null}
-    </Wrapper>
+    </div>
   );
 }

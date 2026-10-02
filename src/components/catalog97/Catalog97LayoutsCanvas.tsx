@@ -81,19 +81,9 @@ const RULE_COLUMNS: { heading: string; rules: string[] }[] = [
   },
 ];
 
-interface Catalog97LayoutsCanvasProps {
-  /** The chocolate band naming each route. On by default, as in the design. */
-  showRouteLabels?: boolean;
-  /** The closing panel of layout rules. On by default, as in the design. */
-  showRules?: boolean;
-}
-
 type Catalog97RouteView = { caption: string; height: number };
 
-export function Catalog97LayoutsCanvas({
-  showRouteLabels = true,
-  showRules = true,
-}: Catalog97LayoutsCanvasProps) {
+export function Catalog97LayoutsCanvas() {
   const views = catalog97NavLinks
     .map((link) => ({ link, view: ROUTE_VIEWS[link.href] }))
     .filter(
@@ -146,31 +136,29 @@ export function Catalog97LayoutsCanvas({
 
       {views.map(({ link, view }) => (
         <div key={link.href}>
-          {showRouteLabels ? (
+          <div
+            style={{
+              background: "var(--c97-band-y)",
+              padding: "var(--c97-sp-2) var(--c97-gutter)",
+            }}
+          >
             <div
               style={{
-                background: "var(--c97-band-y)",
-                padding: "var(--c97-sp-2) var(--c97-gutter)",
+                maxWidth: "var(--c97-container)",
+                margin: "0 auto",
+                display: "flex",
+                justifyContent: "space-between",
+                gap: "var(--c97-sp-2)",
+                fontSize: "var(--c97-fs-label)",
+                letterSpacing: ".08em",
+                textTransform: "uppercase",
+                color: "var(--c97-paper-base)",
               }}
             >
-              <div
-                style={{
-                  maxWidth: "var(--c97-container)",
-                  margin: "0 auto",
-                  display: "flex",
-                  justifyContent: "space-between",
-                  gap: "var(--c97-sp-2)",
-                  fontSize: "var(--c97-fs-label)",
-                  letterSpacing: ".08em",
-                  textTransform: "uppercase",
-                  color: "var(--c97-paper-base)",
-                }}
-              >
-                <span>Route · {link.href}</span>
-                <span>{view.caption}</span>
-              </div>
+              <span>Route · {link.href}</span>
+              <span>{view.caption}</span>
             </div>
-          ) : null}
+          </div>
           {/*
             `loading="lazy"` matters more than usual here, because without it the
             canvas fetches and renders seven full routes on first paint. The
@@ -191,50 +179,48 @@ export function Catalog97LayoutsCanvas({
         </div>
       ))}
 
-      {showRules ? (
-        <section
-          data-c97-surface="bone"
-          style={{
-            background: "var(--c97-surface)",
-            padding: "var(--c97-sp-5) var(--c97-gutter)",
-          }}
-        >
-          <div style={{ maxWidth: "var(--c97-container)", margin: "0 auto" }}>
-            <h2 className="c97-kicker" style={{ margin: 0 }}>
-              Layout rules these pages hold
-            </h2>
-            <div
-              style={{
-                display: "grid",
-                gridTemplateColumns: "repeat(auto-fit,minmax(min(100%, 230px),1fr))",
-                gap: "var(--c97-sp-5)",
-                marginTop: "var(--c97-sp-3)",
-              }}
-            >
-              {RULE_COLUMNS.map((column) => (
-                <div key={column.heading}>
-                  <h3 className="c97-kicker" style={{ margin: 0 }}>
-                    {column.heading}
-                  </h3>
-                  <ul
-                    style={{
-                      margin: "var(--c97-sp-2) 0 0",
-                      paddingLeft: "var(--c97-sp-2)",
-                      fontSize: "var(--c97-fs-small)",
-                      lineHeight: "var(--c97-lh-loose)",
-                      color: "var(--c97-ink)",
-                    }}
-                  >
-                    {column.rules.map((rule) => (
-                      <li key={rule}>{rule}</li>
-                    ))}
-                  </ul>
-                </div>
-              ))}
-            </div>
+      <section
+        data-c97-surface="bone"
+        style={{
+          background: "var(--c97-surface)",
+          padding: "var(--c97-sp-5) var(--c97-gutter)",
+        }}
+      >
+        <div style={{ maxWidth: "var(--c97-container)", margin: "0 auto" }}>
+          <h2 className="c97-kicker" style={{ margin: 0 }}>
+            Layout rules these pages hold
+          </h2>
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "repeat(auto-fit,minmax(min(100%, 230px),1fr))",
+              gap: "var(--c97-sp-5)",
+              marginTop: "var(--c97-sp-3)",
+            }}
+          >
+            {RULE_COLUMNS.map((column) => (
+              <div key={column.heading}>
+                <h3 className="c97-kicker" style={{ margin: 0 }}>
+                  {column.heading}
+                </h3>
+                <ul
+                  style={{
+                    margin: "var(--c97-sp-2) 0 0",
+                    paddingLeft: "var(--c97-sp-2)",
+                    fontSize: "var(--c97-fs-small)",
+                    lineHeight: "var(--c97-lh-loose)",
+                    color: "var(--c97-ink)",
+                  }}
+                >
+                  {column.rules.map((rule) => (
+                    <li key={rule}>{rule}</li>
+                  ))}
+                </ul>
+              </div>
+            ))}
           </div>
-        </section>
-      ) : null}
+        </div>
+      </section>
     </div>
   );
 }

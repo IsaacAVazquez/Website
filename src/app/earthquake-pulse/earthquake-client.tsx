@@ -1,13 +1,12 @@
 "use client";
 
 import {
-  startTransition,
   useEffect,
   useMemo,
   useState,
   type CSSProperties,
 } from "react";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useSearchParams } from "next/navigation";
 import {
   Activity,
   AlertTriangle,
@@ -35,6 +34,7 @@ import { PROJECT_PRESS } from "@/constants/projectPress";
 import { EarthquakeSignature } from "./EarthquakeSignature";
 import { useClientNow } from "@/hooks/useClientNow";
 import "./earthquake-pulse.css";
+import { useRouteSync } from "@/hooks/useRouteSync";
 
 interface EarthquakeClientProps {
   initialState: EarthquakeRouteState;
@@ -476,12 +476,9 @@ export function EarthquakeClient({
   initialState,
   summary: initialSummary,
 }: EarthquakeClientProps) {
-  const router = useRouter();
   const searchParams = useSearchParams();
   const [summary, setSummary] = useState(initialSummary);
   const now = useClientNow();
-  const currentQuery = searchParams.toString();
-  const currentHref = `${EARTHQUAKE_ROUTE}${currentQuery ? `?${currentQuery}` : ""}`;
   const hasManagedParams =
     searchParams.get("view") !== null || searchParams.get("quake") !== null;
   const routeState = hasManagedParams
@@ -546,23 +543,11 @@ export function EarthquakeClient({
     };
   }, []);
 
-  useEffect(() => {
-    if (currentHref === desiredHref) {
-      return;
-    }
-    startTransition(() => {
-      router.replace(desiredHref, { scroll: false });
-    });
-  }, [currentHref, desiredHref, router]);
+  const pushHref = useRouteSync(EARTHQUAKE_ROUTE, desiredHref);
 
   function navigate(nextState: EarthquakeRouteState) {
     const href = buildEarthquakeHref(nextState, searchParams);
-    if (href === currentHref) {
-      return;
-    }
-    startTransition(() => {
-      router.push(href, { scroll: false });
-    });
+    pushHref(href);
   }
 
   function handleViewChange(view: EarthquakeView) {

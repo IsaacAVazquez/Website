@@ -4,6 +4,7 @@ import type {
   Formula1Summary,
   Formula1View,
 } from "@/types/formula1";
+import { readParam, type SearchParamInput } from "@/lib/searchParams";
 
 export const FORMULA1_ROUTE = "/formula-1";
 
@@ -15,13 +16,6 @@ export const FORMULA1_VIEW_OPTIONS = [
 ] as const;
 
 const VALID_VIEWS = new Set<Formula1View>(FORMULA1_VIEW_OPTIONS);
-
-type SearchParamInput =
-  | URLSearchParams
-  | ReadonlyURLSearchParams
-  | Record<string, string | string[] | undefined | null>;
-
-type SearchParamRecord = Record<string, string | string[] | undefined | null>;
 
 export const DEFAULT_FORMULA1_STATE: Formula1RouteState = {
   view: "overview",
@@ -41,19 +35,6 @@ export const FORMULA1_VIEW_DESCRIPTIONS: Record<Formula1View, string> = {
   constructors: "Full constructor table with last-race team movement.",
   calendar: "Season timeline with weekend schedules and race classifications.",
 };
-
-function readParam(input: SearchParamInput, key: string): string | null {
-  if ("get" in input && typeof input.get === "function") {
-    return (input as URLSearchParams).get(key);
-  }
-
-  const rawValue = (input as SearchParamRecord)[key];
-  if (Array.isArray(rawValue)) {
-    return rawValue[0] ?? null;
-  }
-
-  return rawValue ?? null;
-}
 
 function normalizeMeetingParam(meeting: string | null): string | null {
   if (!meeting) {

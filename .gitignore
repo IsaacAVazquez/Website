@@ -35,12 +35,6 @@ server.log
 /*.webp
 /debug-*.html
 
-# Azure Storage emulator (Azurite) local artifacts
-AzuriteConfig
-__azurite_db_table__.json
-__blobstorage__/
-__queuestorage__/
-
 # Stray local data artifacts (real data ships under public/data and src/data)
 /fantasy-data.db
 
@@ -55,9 +49,7 @@ __queuestorage__/
 *.sln
 *.sw?
 
-# Bolt specific
-.bolt/
-.next/
+# Next.js build output
 .next/
 
 # Data backups
@@ -115,15 +107,10 @@ deno.lock
 # Personal, machine-specific Claude Code memory (see CLAUDE.md)
 CLAUDE.local.md
 
-# design-sync (see .design-sync/NOTES.md)
+# Local leftovers from the retired design-sync tooling (removed 2026-10-01)
 .ds-sync/
 ds-bundle/
-.design-sync/.cache/
-.design-sync/learnings/
-.design-sync/node_modules
-
-# design-sync dts extraction (regenerated per sync)
-/dist/
+.design-sync/
 /index.d.ts
 
 # scratch files at the repo root (e.g. .tmp-fantasy-doublecheck.mjs)

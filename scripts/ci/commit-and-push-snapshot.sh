@@ -9,6 +9,16 @@ fi
 commit_message="$1"
 shift
 
+# Untracked files count as changes, since a brand-new artifact must commit too.
+# The sitemap is only regenerated once the snapshot itself has moved, so an
+# unchanged run never commits a sitemap-only diff. Steps that follow read
+# `changed` from this step's outputs, which is true only once a staged diff exists.
+if [[ -z "$(git status --porcelain -- "$@")" ]]; then
+  echo "No snapshot changes detected in: $*"
+  echo "changed=false" >> "${GITHUB_OUTPUT:-/dev/null}"
+  exit 0
+fi
+
 git config --local user.email "github-actions[bot]@users.noreply.github.com"
 git config --local user.name "github-actions[bot]"
 
@@ -26,8 +36,10 @@ fi
 
 if git diff --cached --quiet; then
   echo "No staged snapshot changes detected."
+  echo "changed=false" >> "${GITHUB_OUTPUT:-/dev/null}"
   exit 0
 fi
+echo "changed=true" >> "${GITHUB_OUTPUT:-/dev/null}"
 
 git commit -m "$commit_message"
 

@@ -6,8 +6,7 @@ import { MBA_COMPANIES } from "@/constants/mba-companies";
 import type { MBAJob, MBATrackedApplication } from "@/types/mba-jobs";
 import { useMBAJobs } from "@/hooks/useMBAJobs";
 import { useMBAApplications } from "@/hooks/useMBAApplications";
-import { toApplicationDateKey } from "@/lib/mba-application-insights";
-import { DISPLAY_TIME_ZONE } from "@/lib/date-formatters";
+import { DISPLAY_TIME_ZONE, toLocalDateKey } from "@/lib/date-formatters";
 
 // A YYYY-MM-DD key `days` from today, anchored at local noon so the calendar
 // day is stable regardless of the test machine's clock or DST.
@@ -15,7 +14,7 @@ function dayKeyOffset(days: number): string {
   const date = new Date();
   date.setHours(12, 0, 0, 0);
   date.setDate(date.getDate() + days);
-  return toApplicationDateKey(date);
+  return toLocalDateKey(date);
 }
 
 const mockPush = jest.fn();

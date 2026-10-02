@@ -1,6 +1,6 @@
 "use client";
 
-import { startTransition, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import {
   Activity,
   ArrowDownUp,
@@ -12,7 +12,7 @@ import {
   TrendingUp,
   Users,
 } from "lucide-react";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useSearchParams } from "next/navigation";
 import { EmptyPanel } from "@/components/football/EmptyPanel";
 import { Catalog97ProjectHero } from "@/components/catalog97/Catalog97ProjectHero";
 import { PROJECT_PRESS } from "@/constants/projectPress";
@@ -39,6 +39,7 @@ import {
 } from "./tech-startup-state";
 import { ValuationTreemap } from "./ValuationTreemap";
 import "./tech-startup-tracker.css";
+import { useRouteSync } from "@/hooks/useRouteSync";
 
 interface TechStartupClientProps {
   initialState: TechStartupRouteState;
@@ -85,7 +86,6 @@ function getStartupsForSegment(
 }
 
 export function TechStartupClient({ initialState, snapshot }: TechStartupClientProps) {
-  const router = useRouter();
   const searchParams = useSearchParams();
   const hasManagedParams =
     searchParams.get("view") !== null ||
@@ -96,16 +96,9 @@ export function TechStartupClient({ initialState, snapshot }: TechStartupClientP
     ? normalizeTechStartupState(searchParams)
     : initialState;
   const resolvedState = resolveTechStartupState(routeState, snapshot);
-  const currentQuery = searchParams.toString();
-  const currentHref = `${TECH_STARTUP_ROUTE}${currentQuery ? `?${currentQuery}` : ""}`;
   const desiredHref = buildTechStartupHref(resolvedState, searchParams);
 
-  useEffect(() => {
-    if (currentHref === desiredHref) return;
-    startTransition(() => {
-      router.replace(desiredHref, { scroll: false });
-    });
-  }, [currentHref, desiredHref, router]);
+  const pushHref = useRouteSync(TECH_STARTUP_ROUTE, desiredHref);
 
   // relativeAge() reads Date.now(), so the SSR markup and the first client
   // render can disagree by a minute. Compute it only after mount and render a
@@ -129,10 +122,7 @@ export function TechStartupClient({ initialState, snapshot }: TechStartupClientP
   function navigate(nextState: TechStartupRouteState) {
     const resolvedNext = resolveTechStartupState(nextState, snapshot);
     const href = buildTechStartupHref(resolvedNext, searchParams);
-    if (href === currentHref) return;
-    startTransition(() => {
-      router.push(href, { scroll: false });
-    });
+    pushHref(href);
   }
 
   const segments = getSegments(snapshot, resolvedState.kind);

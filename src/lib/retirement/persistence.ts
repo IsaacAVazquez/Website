@@ -11,22 +11,7 @@ import type {
   RetirementTaxRates,
   WithdrawalStrategy,
 } from "./types";
-
-function isRecord(value: unknown): value is Record<string, unknown> {
-  return value !== null && typeof value === "object" && !Array.isArray(value);
-}
-
-function boundedNumber(
-  value: unknown,
-  fallback: number,
-  min: number,
-  max: number,
-  integer = false,
-): number {
-  if (typeof value !== "number" || !Number.isFinite(value)) return fallback;
-  const bounded = Math.min(max, Math.max(min, value));
-  return integer ? Math.round(bounded) : bounded;
-}
+import { isRecord, boundedNumber } from "@/lib/utils";
 
 function enumValue<T extends string>(value: unknown, allowed: readonly T[], fallback: T): T {
   return typeof value === "string" && allowed.includes(value as T) ? (value as T) : fallback;

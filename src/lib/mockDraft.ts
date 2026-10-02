@@ -98,11 +98,6 @@ function boardValue(player: Player): number {
   return Number.MAX_SAFE_INTEGER;
 }
 
-/** Exposed for tests: the pick-scale value the engine sorts the board by. */
-export function getMockDraftBoardValue(player: Player): number {
-  return boardValue(player);
-}
-
 /**
  * Sample an index from the top of an ordered list with harmonic weights, so
  * the best remaining value is the most likely pick but never a lock.

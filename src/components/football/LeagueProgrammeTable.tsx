@@ -2,6 +2,7 @@
 
 import { CrestAvatar } from "./CrestAvatar";
 import { leagueZone, type LeagueZone } from "./ladderGeometry";
+import { formatFixed } from "./fixtureFormat";
 
 export interface ProgrammeTableRow {
   id: string;
@@ -40,10 +41,6 @@ const ZONE_TINT: Partial<Record<LeagueZone, string>> = {
   conference: "color-mix(in srgb, var(--c97-positive) 6%, var(--c97-surface))",
   relegation: "color-mix(in srgb, var(--c97-negative) 10%, var(--c97-surface))",
 };
-
-function formatFixed(value: number): string {
-  return Number.isFinite(value) ? value.toFixed(2) : "—";
-}
 
 /**
  * The standings set like a matchday programme: hairline `.c97-table` rows

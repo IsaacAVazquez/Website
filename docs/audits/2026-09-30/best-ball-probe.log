@@ -1,9 +1,0 @@
-
-> isaac-vazquez-portfolio@0.1.0 test
-> jest --runInBand src/hooks/__tests__/useBestBallSnapshot.test.tsx
-
-Test Suites: 1 passed, 1 total
-Tests:       2 passed, 2 total
-Snapshots:   0 total
-Time:        1.38 s
-Ran all test suites matching src/hooks/__tests__/useBestBallSnapshot.test.tsx.

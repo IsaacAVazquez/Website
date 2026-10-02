@@ -1,10 +1,10 @@
-import type { ReadonlyURLSearchParams } from "next/navigation";
 import {
   DEFAULT_DECISION_PRESET_ID,
   getDecisionPresetMetrics,
   isDecisionPresetId,
   type DecisionPresetId,
 } from "./decision-lab-data";
+import { readParam, type SearchParamInput } from "@/lib/searchParams";
 
 export interface DecisionLabState {
   preset: DecisionPresetId;
@@ -14,30 +14,12 @@ export interface DecisionLabState {
   reversibility: number;
 }
 
-type SearchParamInput =
-  | URLSearchParams
-  | ReadonlyURLSearchParams
-  | Record<string, string | string[] | undefined | null>;
-
 export const DECISION_LAB_ROUTE = "/decision-lab";
 
 export const DEFAULT_DECISION_LAB_STATE: DecisionLabState = {
   preset: DEFAULT_DECISION_PRESET_ID,
   ...getDecisionPresetMetrics(DEFAULT_DECISION_PRESET_ID),
 };
-
-function readParam(input: SearchParamInput, key: keyof DecisionLabState): string | null {
-  if ("get" in input && typeof input.get === "function") {
-    return input.get(key);
-  }
-
-  const rawValue = (input as Record<string, string | string[] | undefined | null>)[key];
-  if (Array.isArray(rawValue)) {
-    return rawValue[0] ?? null;
-  }
-
-  return rawValue ?? null;
-}
 
 function normalizeMetric(rawValue: string | null, fallback: number): number {
   if (rawValue === null) {

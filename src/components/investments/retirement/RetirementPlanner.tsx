@@ -13,12 +13,10 @@ import { RetirementDisclaimer } from "./RetirementDisclaimer";
 interface Props {
   /** Current portfolio value, offered as a one-click balance seed. */
   portfolioValue?: number;
-  /** Derived allocation from the portfolio, used to seed a fresh plan. */
-  seedAllocation?: RetirementSeed["allocation"];
 }
 
-export function RetirementPlanner({ portfolioValue, seedAllocation }: Props) {
-  const seed: RetirementSeed = { portfolioValue, allocation: seedAllocation };
+export function RetirementPlanner({ portfolioValue }: Props) {
+  const seed: RetirementSeed = { portfolioValue };
 
   // The planner is the last section on the page, so the projection waits until
   // the section is within 600px of the viewport, the margin the fantasy boards

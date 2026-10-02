@@ -18,8 +18,7 @@ This is the current operating map for the fantasy football pages, their supporte
 | `/fantasy-football/waivers` | In-season waiver targets where the weekly consensus rank runs ahead of the rostered rate | `public/data/fantasy/weekly.json` |
 | `/api/fantasy-data` | Rate-limited server fallback for redraft snapshots | The same committed PPR, Half PPR, and Standard JSON files |
 
-The legacy route `/fantasy-football/rb-tiers` redirects to `/fantasy-football?position=rb&scoring=ppr`. `/fantasy-football/tiers/[position]` redirects to the matching PPR board. `public/fantasy/rb_current.json` remains only as a legacy artifact and is not part of the current refresh pipeline.
-
+The legacy route `/fantasy-football/rb-tiers` redirects to `/fantasy-football?position=rb&scoring=ppr`. `/fantasy-football/tiers/[position]` redirects to the matching PPR board.
 There is no best ball API route. The best ball pages load the committed static JSON directly. There are also no live `/api/fantasy-pros-*`, `/api/data-manager`, `/api/data-metadata`, `/api/sample-data`, `/api/scheduled-update`, `/api/scrape`, or historical fantasy archive routes.
 
 ## Exact redraft support

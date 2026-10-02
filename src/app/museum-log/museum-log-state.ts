@@ -6,24 +6,11 @@ import type {
   MuseumTypeFilter,
   MuseumView,
 } from "@/types/museum";
+import { readParam, type SearchParamInput } from "@/lib/searchParams";
 
 export const MUSEUM_LOG_ROUTE = "/museum-log";
 
 export const MUSEUM_VIEW_OPTIONS = ["discover", "journal", "lists", "museum"] as const;
-
-export const MUSEUM_VIEW_LABELS: Record<MuseumView, string> = {
-  discover: "Discover",
-  journal: "Journal",
-  lists: "Lists",
-  museum: "Museum",
-};
-
-export const MUSEUM_VIEW_DESCRIPTIONS: Record<MuseumView, string> = {
-  discover: "Browse the curated catalog and filter by type and region.",
-  journal: "Curator's reviews and visit log timeline.",
-  lists: "Themed collections of museums grouped by trip, region, or vibe.",
-  museum: "Single museum detail with curator review, exhibits, and your visit toggles.",
-};
 
 const VALID_VIEWS = new Set<MuseumView>(MUSEUM_VIEW_OPTIONS);
 const VALID_SORTS = new Set<MuseumSort>(["rating", "popular", "recent", "alpha"]);
@@ -56,22 +43,6 @@ export const DEFAULT_MUSEUM_STATE: MuseumRouteState = {
   type: "all",
   region: "all",
 };
-
-type SearchParamInput =
-  | URLSearchParams
-  | ReadonlyURLSearchParams
-  | Record<string, string | string[] | undefined | null>;
-
-type SearchParamRecord = Record<string, string | string[] | undefined | null>;
-
-function readParam(input: SearchParamInput, key: string): string | null {
-  if ("get" in input && typeof input.get === "function") {
-    return (input as URLSearchParams).get(key);
-  }
-  const rawValue = (input as SearchParamRecord)[key];
-  if (Array.isArray(rawValue)) return rawValue[0] ?? null;
-  return rawValue ?? null;
-}
 
 function normalizeSlugParam(slug: string | null): string | null {
   if (!slug) return null;

@@ -8,6 +8,7 @@ import type {
   QuakeTier,
   RegionCount,
 } from "@/types/earthquake";
+import { retryLinear, isTransientFetchError } from "@/lib/fetchRetry";
 
 /**
  * Builds the earthquake snapshot from the USGS Earthquake Hazards Program GeoJSON
@@ -198,37 +199,21 @@ async function fetchFeed(
   url: string,
   { timeoutMs = REQUEST_TIMEOUT_MS, attempts = REQUEST_ATTEMPTS }: FetchBudget
 ): Promise<UsgsFeedResponse> {
-  let lastError: unknown;
-  for (let attempt = 0; attempt < attempts; attempt += 1) {
-    try {
-      const response = await fetch(url, {
-        signal: AbortSignal.timeout(timeoutMs),
-        headers: { Accept: "application/json" },
-      });
-      if (!response.ok) {
-        const error = new Error(
-          `USGS feed request failed with status ${response.status} (${url}).`
-        );
-        // 4xx won't recover on retry; 5xx might.
-        (error as { retryable?: boolean }).retryable = response.status >= 500;
-        throw error;
-      }
-      return (await response.json()) as UsgsFeedResponse;
-    } catch (error) {
-      lastError = error;
-      const isTimeout =
-        error instanceof Error &&
-        (error.name === "AbortError" || error.name === "TimeoutError");
-      const isNetwork = error instanceof TypeError;
-      const isRetryable = Boolean((error as { retryable?: boolean })?.retryable);
-      if (attempt < attempts - 1 && (isTimeout || isNetwork || isRetryable)) {
-        await new Promise((resolve) => setTimeout(resolve, 1000 * (attempt + 1)));
-        continue;
-      }
+  return retryLinear(attempts, async () => {
+    const response = await fetch(url, {
+      signal: AbortSignal.timeout(timeoutMs),
+      headers: { Accept: "application/json" },
+    });
+    if (!response.ok) {
+      const error = new Error(
+        `USGS feed request failed with status ${response.status} (${url}).`
+      );
+      // 4xx won't recover on retry; 5xx might.
+      (error as { retryable?: boolean }).retryable = response.status >= 500;
       throw error;
     }
-  }
-  throw lastError;
+    return (await response.json()) as UsgsFeedResponse;
+  }, isTransientFetchError);
 }
 
 // --- Aggregation -------------------------------------------------------------

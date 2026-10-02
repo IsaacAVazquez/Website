@@ -32,7 +32,7 @@ const FOOTER_YEAR_FORMATTER = new Intl.DateTimeFormat("en-US", {
  * `currentColor` resolves through `color: var(--c97-ink)` on `.c97-wordmark`,
  * so the mark takes the ink of whatever surface it sits on.
  */
-export function Catalog97Wordmark() {
+function Catalog97Wordmark() {
   return (
     /*
       aria-hidden: the name is already the header wordmark on every page that
@@ -111,7 +111,7 @@ const footerGroups = [
   { name: "Site", links: footerSite, surface: "bone" },
 ] as const;
 
-function Catalog97Footer({ wordmark }: { wordmark: boolean }) {
+function Catalog97Footer() {
   return (
     <footer
       role="contentinfo"
@@ -124,7 +124,7 @@ function Catalog97Footer({ wordmark }: { wordmark: boolean }) {
         {/* The colophon is the first cell of the tile row, so its edges line up with the tiles'. */}
         <div className="c97-footer-tiles">
           <div className="c97-footer-colophon">
-            {wordmark ? <Catalog97Wordmark /> : null}
+            <Catalog97Wordmark />
             <p className="c97-footer-copy">
               &copy; {FOOTER_YEAR_FORMATTER.format(new Date())} Isaac Vazquez
             </p>
@@ -162,16 +162,6 @@ function Catalog97Footer({ wordmark }: { wordmark: boolean }) {
 
 interface Catalog97ShellProps {
   children: React.ReactNode;
-  /**
-   * Set false to drop the script emblem from the footer's first column, which
-   * leaves the copyright line there on its own. Defaults to true, which is what
-   * every designed route does; no route passes this today.
-   *
-   * It used to gate a full-bleed pine band between the page and the footer, for
-   * routes that ended in their own band and did not want the mark repeated.
-   * That band is gone, so the flag now only governs the mark itself.
-   */
-  wordmark?: boolean;
   /** Widens every shell on the page, header and footer included (see `WIDE_TOOL_ROUTES`). */
   wide?: boolean;
 }
@@ -191,7 +181,6 @@ interface Catalog97ShellProps {
  */
 export function Catalog97Shell({
   children,
-  wordmark = true,
   wide = false,
 }: Catalog97ShellProps) {
   return (
@@ -200,7 +189,7 @@ export function Catalog97Shell({
       <main id="main-content" tabIndex={-1}>
         {children}
       </main>
-      <Catalog97Footer wordmark={wordmark} />
+      <Catalog97Footer />
     </div>
   );
 }

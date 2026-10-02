@@ -2557,8 +2557,9 @@ select.c97-field {
  * A portrait (`data-c97-paint="portrait"`) is the headshot painted in short
  * directional strokes with violet shadows and warm lights, and it shows while
  * anything in its `[data-c97-monet]` section is hovered. A plate
- * (`data-c97-paint="plate"`) is a collage photo painted by scripts/
- * paint_plates.py, supplied inline by Catalog97Collage, and it shows while
+ * (`data-c97-paint="plate"`) is a collage photo painted ahead of time (the
+ * renderer is in git history, see docs/EASTER_EGGS.md), supplied inline by
+ * Catalog97Collage, and it shows while
  * its parent panel is hovered. The layer never takes the pointer, so a
  * plate's link still gets the click, and the element is isolated so the
  * layer stays under anything pasted on top of it, like a panel's card. The

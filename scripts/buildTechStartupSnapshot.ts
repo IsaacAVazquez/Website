@@ -5,6 +5,7 @@ import {
   type TechStartupSeedEntry,
 } from "../src/lib/techStartups";
 import type { TechStartupSnapshot } from "../src/types/techStartup";
+import { writeFileAtomic } from "./snapshotFallback";
 
 /**
  * The Tech Startup Tracker is editorially curated rather than sourced from a live
@@ -688,9 +689,7 @@ export const techStartupSnapshot: TechStartupSnapshot = ${JSON.stringify(
   )};
 `;
 
-  const tmpPath = `${snapshotPath}.tmp`;
-  await fs.writeFile(tmpPath, fileContents, "utf8");
-  await fs.rename(tmpPath, snapshotPath);
+  writeFileAtomic(snapshotPath, fileContents);
 
   console.log(
     `Wrote ${snapshot.totals.startups} startups across ${snapshot.totals.sectors} sectors to ${snapshotPath}`

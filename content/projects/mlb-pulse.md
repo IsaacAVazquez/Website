@@ -19,7 +19,7 @@ sourceOfTruth:
   - "src/constants/caseStudies.ts"
   - "src/app/mlb/page.tsx"
   - "src/app/mlb/mlb-client.tsx"
-  - "src/app/mlb/mlb-state.ts"
+  - "src/app/mlb/mlb-state.core.ts"
   - "src/data/mlbSnapshot.ts"
 ---
 

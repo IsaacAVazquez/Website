@@ -1,17 +1,11 @@
 import type { ReadonlyURLSearchParams } from "next/navigation";
 import type { GolfRouteState, GolfView } from "@/types/golf";
+import { readParam, type SearchParamInput } from "@/lib/searchParams";
 
 export const GOLF_ROUTE = "/golf";
 export const GOLF_VIEW_OPTIONS = ["leaderboard", "players"] as const;
 
 const VALID_VIEWS = new Set<GolfView>(GOLF_VIEW_OPTIONS);
-
-type SearchParamInput =
-  | URLSearchParams
-  | ReadonlyURLSearchParams
-  | Record<string, string | string[] | undefined | null>;
-
-type SearchParamRecord = Record<string, string | string[] | undefined | null>;
 
 export const DEFAULT_GOLF_STATE: GolfRouteState = {
   view: "leaderboard",
@@ -22,20 +16,6 @@ export const GOLF_VIEW_LABELS: Record<GolfView, string> = {
   leaderboard: "Leaderboard",
   players: "Players",
 };
-
-function readParam(input: SearchParamInput, key: string): string | null {
-  if ("get" in input && typeof input.get === "function") {
-    return (input as URLSearchParams).get(key);
-  }
-
-  const rawValue = (input as SearchParamRecord)[key];
-
-  if (Array.isArray(rawValue)) {
-    return rawValue[0] ?? null;
-  }
-
-  return rawValue ?? null;
-}
 
 function normalizePlayerParam(player: string | null): string | null {
   if (!player) {

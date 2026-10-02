@@ -10,23 +10,11 @@
  * the failed attempt without replacing good data.
  */
 
-import { renameSync, writeFileSync } from "node:fs";
 import { resolve } from "node:path";
 
 import { buildEarthquakeSnapshotData } from "../src/lib/earthquakeData";
 import type { EarthquakeSnapshot } from "../src/types/earthquake";
-import { readGeneratedSnapshot } from "./snapshotFallback";
-
-/**
- * Atomic write: write to .tmp then rename. Renames are atomic on POSIX, so the
- * destination file is never observed in a half-written state if the process is
- * killed mid-write.
- */
-function writeFileAtomic(path: string, content: string): void {
-  const tmp = `${path}.tmp`;
-  writeFileSync(tmp, content, "utf8");
-  renameSync(tmp, path);
-}
+import { readGeneratedSnapshot, writeFileAtomic } from "./snapshotFallback";
 
 function hasContents(
   snapshot: EarthquakeSnapshot | null

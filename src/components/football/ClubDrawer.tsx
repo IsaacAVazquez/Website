@@ -2,11 +2,13 @@
 
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { X } from "lucide-react";
-import { useEffect, useRef } from "react";
+import { useRef } from "react";
+import { useModal } from "@/hooks/useModal";
 import { CrestAvatar } from "./CrestAvatar";
 import { TeamResultPill } from "./TeamResultPill";
 import { StatFascia, type StatFasciaItem } from "./StatFascia";
 import type { GenericFixture } from "./FixtureCard";
+import { formatFixed, formatKickoff } from "./fixtureFormat";
 
 export interface ClubDrawerScorer {
   name: string;
@@ -38,24 +40,6 @@ export interface ClubDrawerClub {
   goalDifference: number;
   manager?: string | null;
   venue?: string | null;
-}
-
-// Pinned to one named zone so the server and the browser print the same string.
-const KICKOFF_FORMATTER = new Intl.DateTimeFormat("en-US", {
-  weekday: "short",
-  hour: "numeric",
-  minute: "2-digit",
-  timeZone: "America/New_York",
-  timeZoneName: "short",
-});
-
-function formatKickoff(utcDate: string): string {
-  const date = new Date(utcDate);
-  return Number.isNaN(date.getTime()) ? "Time TBD" : KICKOFF_FORMATTER.format(date);
-}
-
-function formatFixed(value: number): string {
-  return Number.isFinite(value) ? value.toFixed(2) : "—";
 }
 
 function DrawerFixtureRow({ fixture, clubId }: { fixture: GenericFixture; clubId: string }) {
@@ -127,50 +111,8 @@ export function ClubDrawer({
 }) {
   const reduceMotion = useReducedMotion();
   const panelRef = useRef<HTMLDivElement>(null);
-  const restoreFocusRef = useRef<HTMLElement | null>(null);
   const isOpen = Boolean(club);
-
-  useEffect(() => {
-    if (!isOpen) return;
-    restoreFocusRef.current = document.activeElement as HTMLElement | null;
-    const panel = panelRef.current;
-    panel?.focus();
-
-    const previousOverflow = document.body.style.overflow;
-    document.body.style.overflow = "hidden";
-
-    function handleKeyDown(event: KeyboardEvent) {
-      if (event.key === "Escape") {
-        event.preventDefault();
-        onClose();
-        return;
-      }
-      if (event.key !== "Tab" || !panel) return;
-
-      const focusable = panel.querySelectorAll<HTMLElement>(
-        'a[href], button:not([disabled]), textarea, input, [tabindex]:not([tabindex="-1"])'
-      );
-      if (focusable.length === 0) return;
-      const first = focusable[0];
-      const last = focusable[focusable.length - 1];
-
-      if (event.shiftKey && document.activeElement === first) {
-        event.preventDefault();
-        last.focus();
-      } else if (!event.shiftKey && document.activeElement === last) {
-        event.preventDefault();
-        first.focus();
-      }
-    }
-
-    document.addEventListener("keydown", handleKeyDown);
-    return () => {
-      document.removeEventListener("keydown", handleKeyDown);
-      document.body.style.overflow = previousOverflow;
-      restoreFocusRef.current?.focus?.();
-    };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isOpen, club?.id]);
+  useModal(panelRef, isOpen, onClose, { resetKey: club?.id });
 
   if (!club) return null;
 
@@ -258,7 +200,7 @@ export function ClubDrawer({
               ) : null}
             </div>
 
-            <StatFascia items={metrics} dense className="border-x-0 border-t-0" />
+            <StatFascia items={metrics} className="border-x-0 border-t-0" />
 
             {isLoadingDetail || detailError ? (
               <p

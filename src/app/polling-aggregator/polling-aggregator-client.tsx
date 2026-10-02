@@ -1,7 +1,6 @@
 "use client";
 
-import { startTransition, useEffect } from "react";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useSearchParams } from "next/navigation";
 import { useClientNow } from "@/hooks/useClientNow";
 import { Catalog97ProjectHero } from "@/components/catalog97/Catalog97ProjectHero";
 import { PROJECT_PRESS } from "@/constants/projectPress";
@@ -30,6 +29,7 @@ import {
 } from "./polling-aggregator-helpers";
 import { StateTileGrid } from "./StateTileGrid";
 import "./polling-aggregator.css";
+import { useRouteSync } from "@/hooks/useRouteSync";
 
 interface Props {
   initialState: PollingRouteState;
@@ -642,10 +642,7 @@ function SeatCountRow({
 // ─── Main client component ─────────────────────────────────────────────────────
 
 export function PollingAggregatorClient({ initialState, snapshot, staleSourceNote }: Props) {
-  const router = useRouter();
   const searchParams = useSearchParams();
-  const currentQuery = searchParams.toString();
-  const currentHref = `/polling-aggregator${currentQuery ? `?${currentQuery}` : ""}`;
 
   const hasManagedParams = searchParams.get("view") !== null || searchParams.get("race") !== null;
   const routeState = hasManagedParams ? normalizePollingState(searchParams) : initialState;
@@ -655,15 +652,11 @@ export function PollingAggregatorClient({ initialState, snapshot, staleSourceNot
     searchParams
   );
 
-  useEffect(() => {
-    if (currentHref === desiredHref) return;
-    startTransition(() => { router.replace(desiredHref, { scroll: false }); });
-  }, [currentHref, desiredHref, router]);
+  const pushHref = useRouteSync("/polling-aggregator", desiredHref);
 
   function navigate(nextState: PollingRouteState) {
     const href = buildPollingHref(nextState, searchParams);
-    if (href === currentHref) return;
-    startTransition(() => { router.push(href, { scroll: false }); });
+    pushHref(href);
   }
 
   function handleViewChange(view: PollingView) {

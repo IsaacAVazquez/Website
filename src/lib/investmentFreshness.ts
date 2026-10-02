@@ -5,6 +5,7 @@ import type {
 } from "@/types/investment";
 import { buildInvestmentCapabilities } from "@/lib/investmentCapabilities";
 import { isStrictIsoCalendarDate } from "@/lib/investmentsPriceHealth";
+import { isRecord } from "@/lib/utils";
 
 type SnapshotLike = Pick<InvestmentSnapshot, "lastUpdated" | "sections" | "freshness">;
 
@@ -38,10 +39,6 @@ const FIELD_MERGE_SECTIONS = new Set<InvestmentSection>([
   "industry",
   "beta",
 ]);
-
-function isRecord(value: unknown): value is Record<string, unknown> {
-  return !!value && typeof value === "object" && !Array.isArray(value);
-}
 
 function mergeMissingValues(current: unknown, prior: unknown): unknown {
   if (current === undefined || current === null || current === "") return prior;

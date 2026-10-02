@@ -116,8 +116,6 @@ Four traps come with the vocabulary. The type classes and `.c97-panel` are unlay
 
 `tailwind.config.ts` is loaded through `@config` in `globals.css`, which is what makes class-based `dark:`, `min-h-touch`/`min-w-touch`, and the fluid `text-*` scale work. It also sets every step of the radius scale to `0` and every step of the shadow scale to `none`, so a `rounded-lg` or `shadow-sm` left in markup paints square and flat on every route, including anything outside the page root. Colour utilities are not mapped, so colour reaches Tailwind only as an arbitrary value that reads a token, as in `text-[var(--c97-ink-2)]`. Migrated routes prefer the `catalog97.css` classes over Tailwind for type, spacing, and colour.
 
-The typography plugin (`@tailwindcss/typography`) is still installed.
-
 ---
 
 ## Typography

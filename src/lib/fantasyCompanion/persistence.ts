@@ -14,12 +14,7 @@ import {
   type FantasyCompanionPick,
   type FantasyCompanionRoomConfig,
 } from "./types";
-
-type UnknownRecord = Record<string, unknown>;
-
-function isRecord(value: unknown): value is UnknownRecord {
-  return Boolean(value) && typeof value === "object" && !Array.isArray(value);
-}
+import { isRecord } from "@/lib/utils";
 
 function isCanonicalIsoDate(value: unknown): value is string {
   if (typeof value !== "string") return false;

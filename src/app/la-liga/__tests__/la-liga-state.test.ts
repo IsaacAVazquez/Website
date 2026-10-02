@@ -1,12 +1,18 @@
-import {
-  buildLaLigaHref,
-  canonicalizeLaLigaClubId,
-  DEFAULT_LA_LIGA_STATE,
-  filterClubsForView,
-  getDefaultClubForView,
-  normalizeLaLigaState,
-} from "../la-liga-state";
 import { laLigaSnapshot } from "@/data/laLigaSnapshot";
+import type { LaLigaRouteState, LaLigaView } from "@/types/la-liga";
+import * as core from "../la-liga-state.core";
+
+const { clubs } = laLigaSnapshot;
+const aliasMap = core.buildClubAliasMap(laLigaSnapshot.teams);
+const DEFAULT_LA_LIGA_STATE = core.resolveDefaultState(clubs);
+const canonicalizeLaLigaClubId = (id: string) => core.canonicalizeClubId(id, aliasMap);
+const filterClubsForView = (view: LaLigaView) => core.filterClubs(clubs, view);
+const getDefaultClubForView = (view: LaLigaView) =>
+  core.getDefaultClub(clubs, view, DEFAULT_LA_LIGA_STATE.club);
+const normalizeLaLigaState = (input: Record<string, string | string[]>) =>
+  core.normalizeState(input, DEFAULT_LA_LIGA_STATE, aliasMap);
+const buildLaLigaHref = (state: LaLigaRouteState, base?: URLSearchParams) =>
+  core.buildHref(state, DEFAULT_LA_LIGA_STATE, aliasMap, base);
 
 describe("la-liga-state", () => {
   it("normalizes invalid params back to the default route state", () => {

@@ -1,7 +1,7 @@
 "use client";
 
-import { startTransition, useEffect, useMemo, useState } from "react";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useMemo, useState } from "react";
+import { useSearchParams } from "next/navigation";
 import { ExternalLink, RotateCcw, Search } from "lucide-react";
 import { EmptyPanel } from "@/components/football/EmptyPanel";
 import { BrandGithub } from "@/components/ui/ServerIcons";
@@ -32,6 +32,7 @@ import {
   normalizeAiDevToolsState,
   type AiDevToolsRouteState,
 } from "./ai-dev-tools-state";
+import { useRouteSync } from "@/hooks/useRouteSync";
 
 interface AiDevToolsClientProps {
   initialState: AiDevToolsRouteState;
@@ -155,7 +156,6 @@ function releaseFreshness(tool: AiDevTool, nowMs: number | null): { dot: string;
 }
 
 export function AiDevToolsClient({ initialState }: AiDevToolsClientProps) {
-  const router = useRouter();
   const searchParams = useSearchParams();
   const hasManagedParams =
     searchParams.get("category") !== null ||
@@ -169,27 +169,13 @@ export function AiDevToolsClient({ initialState }: AiDevToolsClientProps) {
     ? normalizeAiDevToolsState(searchParams)
     : initialState;
 
-  const currentQuery = searchParams.toString();
-  const currentHref = `/ai-dev-tools${currentQuery ? `?${currentQuery}` : ""}`;
   const desiredHref = buildAiDevToolsHref(state);
 
-  useEffect(() => {
-    if (currentHref === desiredHref) {
-      return;
-    }
-    startTransition(() => {
-      router.replace(desiredHref, { scroll: false });
-    });
-  }, [currentHref, desiredHref, router]);
+  const pushHref = useRouteSync("/ai-dev-tools", desiredHref);
 
   function navigate(nextState: AiDevToolsRouteState) {
     const href = buildAiDevToolsHref(nextState);
-    if (href === currentHref) {
-      return;
-    }
-    startTransition(() => {
-      router.push(href, { scroll: false });
-    });
+    pushHref(href);
   }
 
   const [sort, setSort] = useState<SortKey>("curated");

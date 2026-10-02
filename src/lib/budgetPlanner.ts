@@ -9,6 +9,7 @@ import type {
 } from "@/types/budget";
 import { readBrowserStorageString, writeBrowserStorageJson } from "@/lib/browserStorage";
 import { DISPLAY_TIME_ZONE } from "@/lib/date-formatters";
+import { isRecord, prefixedId } from "@/lib/utils";
 
 export const BUDGET_PLANNER_STORAGE_KEY = "budget_planner_months_v1";
 
@@ -30,18 +31,6 @@ function roundCurrency(value: number) {
 function sanitizeNonNegativeAmount(value: unknown) {
   const numeric = typeof value === "number" ? value : Number(value);
   return Math.max(0, roundCurrency(numeric));
-}
-
-function createId(prefix: "cat" | "exp") {
-  if (typeof crypto !== "undefined" && typeof crypto.randomUUID === "function") {
-    return `${prefix}-${crypto.randomUUID()}`;
-  }
-
-  return `${prefix}-${Math.random().toString(36).slice(2, 10)}`;
-}
-
-function isRecord(value: unknown): value is Record<string, unknown> {
-  return !!value && typeof value === "object" && !Array.isArray(value);
 }
 
 export function isBudgetMonthKey(value: string) {
@@ -121,7 +110,7 @@ export function getDefaultExpenseDate(monthKey: string, now = new Date()) {
 
 export function createBudgetCategory(name: string, budgetedAmount = 0): BudgetCategory {
   return {
-    id: createId("cat"),
+    id: prefixedId("cat"),
     name,
     budgetedAmount: sanitizeNonNegativeAmount(budgetedAmount),
   };
@@ -129,7 +118,7 @@ export function createBudgetCategory(name: string, budgetedAmount = 0): BudgetCa
 
 export function createBudgetExpense(input: Omit<BudgetExpense, "id">): BudgetExpense {
   return {
-    id: createId("exp"),
+    id: prefixedId("exp"),
     categoryId: input.categoryId,
     amount: sanitizeNonNegativeAmount(input.amount),
     date: input.date,
@@ -157,7 +146,7 @@ function sanitizeBudgetCategory(input: unknown): BudgetCategory | null {
   const rawName = typeof input.name === "string" ? input.name.trim() : "";
 
   return {
-    id: typeof input.id === "string" && input.id ? input.id : createId("cat"),
+    id: typeof input.id === "string" && input.id ? input.id : prefixedId("cat"),
     name: rawName || "Untitled",
     budgetedAmount: sanitizeNonNegativeAmount(input.budgetedAmount),
   };
@@ -169,7 +158,7 @@ function sanitizeBudgetExpense(input: unknown): BudgetExpense | null {
   if (typeof input.date !== "string" || !/^\d{4}-\d{2}-\d{2}$/.test(input.date)) return null;
 
   return {
-    id: typeof input.id === "string" && input.id ? input.id : createId("exp"),
+    id: typeof input.id === "string" && input.id ? input.id : prefixedId("exp"),
     categoryId: input.categoryId,
     amount: sanitizeNonNegativeAmount(input.amount),
     date: input.date,

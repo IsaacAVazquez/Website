@@ -93,19 +93,12 @@ function componentLabel(
   return component.id === "market" && consensusOnly ? "Consensus rank" : component.label;
 }
 
+const ORDINAL_RULES = new Intl.PluralRules("en-US", { type: "ordinal" });
+const ORDINAL_SUFFIX: Partial<Record<Intl.LDMLPluralRule, string>> = { one: "st", two: "nd", few: "rd" };
+
 function ordinal(value: number): string {
   const whole = Math.round(value);
-  const mod100 = whole % 100;
-  const suffix = mod100 >= 11 && mod100 <= 13
-    ? "th"
-    : whole % 10 === 1
-      ? "st"
-      : whole % 10 === 2
-        ? "nd"
-        : whole % 10 === 3
-          ? "rd"
-          : "th";
-  return `${whole}${suffix}`;
+  return `${whole}${ORDINAL_SUFFIX[ORDINAL_RULES.select(whole)] ?? "th"}`;
 }
 
 function parseInput(value: string): number | null {

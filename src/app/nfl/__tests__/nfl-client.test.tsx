@@ -1,11 +1,16 @@
 import { fireEvent, render, screen, within } from "@testing-library/react";
 import { getNflSummarySnapshot, getNflTeamSnapshot } from "@/lib/nflSnapshot";
 import { NflClient } from "../nfl-client";
-import {
-  buildNflHref,
-  DEFAULT_NFL_STATE,
-  getDefaultTeamForView,
-} from "../nfl-state";
+import { nflSnapshot } from "@/data/nflSnapshot";
+import type { NFLRouteState, NFLView } from "@/types/nfl";
+import * as core from "../nfl-state.core";
+
+const aliasMap = core.buildTeamAliasMap(nflSnapshot.teams);
+const DEFAULT_NFL_STATE = core.resolveDefaultState(nflSnapshot.teams);
+const getDefaultTeamForView = (view: NFLView) =>
+  core.getDefaultTeam(nflSnapshot.teams, view, DEFAULT_NFL_STATE.team);
+const buildNflHref = (state: NFLRouteState, base?: URLSearchParams) =>
+  core.buildHref(state, DEFAULT_NFL_STATE, aliasMap, base);
 
 const mockPush = jest.fn();
 const mockReplace = jest.fn();

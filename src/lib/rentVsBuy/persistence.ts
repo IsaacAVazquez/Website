@@ -1,24 +1,9 @@
-import { readBrowserStorageString, writeBrowserStorageJson } from "@/lib/browserStorage";
+import { writeBrowserStorageJson } from "@/lib/browserStorage";
 import { createDefaultInput } from "./defaults";
 import type { FilingStatus, RentVsBuyInput } from "./types";
+import { isRecord, boundedNumber } from "@/lib/utils";
 
 export const RENT_VS_BUY_STORAGE_KEY = "rent_vs_buy_input_v1";
-
-function isRecord(value: unknown): value is Record<string, unknown> {
-  return value !== null && typeof value === "object" && !Array.isArray(value);
-}
-
-function boundedNumber(
-  value: unknown,
-  fallback: number,
-  min: number,
-  max: number,
-  integer = false,
-): number {
-  if (typeof value !== "number" || !Number.isFinite(value)) return fallback;
-  const bounded = Math.min(max, Math.max(min, value));
-  return integer ? Math.round(bounded) : bounded;
-}
 
 const FILING_STATUSES = ["single", "married"] as const satisfies readonly FilingStatus[];
 
@@ -90,18 +75,6 @@ export function decodeRentVsBuyInput(value: unknown): RentVsBuyInput {
     itemizes: typeof value.itemizes === "boolean" ? value.itemizes : fallback.itemizes,
     yearsStaying: boundedNumber(value.yearsStaying, fallback.yearsStaying, 1, 40, true),
   };
-}
-
-export function loadRentVsBuyInput(storage?: Pick<Storage, "getItem">): RentVsBuyInput {
-  try {
-    const raw = storage
-      ? storage.getItem(RENT_VS_BUY_STORAGE_KEY)
-      : readBrowserStorageString(RENT_VS_BUY_STORAGE_KEY).value;
-    if (!raw) return createDefaultInput();
-    return decodeRentVsBuyInput(JSON.parse(raw) as unknown);
-  } catch {
-    return createDefaultInput();
-  }
 }
 
 export function saveRentVsBuyInput(
