@@ -1,5 +1,5 @@
 import {
-  fetchFantasyProsPublicHtmlConsensusBoard,
+  fetchFantasyProsConsensusBoard,
   type FantasyProsPublicBoard,
 } from "@/lib/fantasyProsPublicSource";
 import type { ScoringFormat } from "@/types";
@@ -59,15 +59,10 @@ async function fetchWeeklyBoard(options: {
   minimumPlayers: number;
   rankingType: "weekly" | "ros";
 }): Promise<FantasyProsPublicBoard> {
-  // Pinned to the public HTML contract on purpose. The official API's
-  // in-season position vocabulary is unverified here, and quietly asking it
-  // for a board shape nobody has checked is worse than naming the source.
-  const board = await fetchFantasyProsPublicHtmlConsensusBoard({
+  const board = await fetchFantasyProsConsensusBoard({
     scoringFormat: options.scoringFormat,
     requestedPosition: options.requestedPosition,
     publicSourceUrl: options.sourceUrl,
-    // Unused on the public HTML path, but the shared options type requires it.
-    officialApiPosition: options.requestedPosition === "QB" ? "QB" : "ALL",
     expectedSeason: options.expectedSeason,
     expectedRankingType: options.rankingType,
     minimumExperts: WEEKLY_MIN_EXPERTS,

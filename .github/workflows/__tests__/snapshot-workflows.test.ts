@@ -299,9 +299,7 @@ describe("snapshot refresh workflow infrastructure", () => {
 
     expect(buildStep).toBeDefined();
     expect(buildStep).toContain("run: npm run update:fantasy");
-    expect(buildStep).toContain("FANTASYPROS_SOURCE: public-html");
-    expect(buildStep).not.toContain("FANTASYPROS_API_KEY");
-    expect(workflow).not.toContain("secrets.FANTASYPROS_API_KEY");
+    expect(workflow).not.toContain("FANTASYPROS");
   });
 
   it("does not close World Cup incidents on a dormant run", () => {

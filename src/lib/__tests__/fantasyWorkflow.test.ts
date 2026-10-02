@@ -21,8 +21,7 @@ describe("fantasy workflow", () => {
     expect(workflow).toContain("superflexMatches < 150");
     expect(workflow).toContain("scheduleTeams < 30");
     expect(workflow).toContain("generatedAgeDays > 10");
-    expect(workflow).toContain("FANTASYPROS_SOURCE: public-html");
-    expect(workflow).not.toContain("secrets.FANTASYPROS_API_KEY");
+    expect(workflow).not.toContain("FANTASYPROS");
     expect(workflow).not.toContain("public/fantasy/rb_current.json");
   });
 

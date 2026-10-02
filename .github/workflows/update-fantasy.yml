@@ -58,7 +58,6 @@ jobs:
         timeout-minutes: 10
         run: npm run update:fantasy:weekly
         env:
-          FANTASYPROS_SOURCE: public-html
           NODE_ENV: production
 
       # The redraft and best ball boards come from different upstream sources and
@@ -78,11 +77,6 @@ jobs:
         timeout-minutes: 15
         run: npm run update:fantasy:redraft
         env:
-          # The official endpoint began returning a declared full board with
-          # only the first ten rows. Pin the scheduled job to the separately
-          # labeled public-page adapter instead of changing sources after a
-          # validation failure. Local runs can still opt into official-api.
-          FANTASYPROS_SOURCE: public-html
           NODE_ENV: production
 
       - name: Build best ball snapshot
@@ -91,7 +85,6 @@ jobs:
         timeout-minutes: 10
         run: npm run update:fantasy:best-ball
         env:
-          FANTASYPROS_SOURCE: public-html
           NODE_ENV: production
 
       # Freshness verifies the redraft artifact (ppr.json) only, so it gates
