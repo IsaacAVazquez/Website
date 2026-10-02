@@ -69,7 +69,7 @@ describe("golf off-week verification", () => {
 
   it.each([
     { status: "Tournament ended", completed: true },
-    { status: "Final" },
+    { status: "Final", completed: undefined },
   ])("re-verifies a recent final board without changing its scores (%j)", async (overrides) => {
     const outPath = await writePriorBoard(overrides);
     const prior = readGeneratedSnapshot<GolfSnapshot>(outPath)!;
