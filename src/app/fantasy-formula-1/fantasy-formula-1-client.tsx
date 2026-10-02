@@ -5,7 +5,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { ArrowDownUp, Lock, Plus, RefreshCcw, Sparkles, Trash2, Unlock } from "lucide-react";
 import { Catalog97ProjectHero } from "@/components/catalog97/Catalog97ProjectHero";
 import { PROJECT_PRESS } from "@/constants/projectPress";
-import { DISPLAY_TIME_ZONE } from "@/lib/date-formatters";
+import { formatUpdatedAt } from "@/lib/date-formatters";
 import {
   buildFantasyFormula1Assets,
   EMPTY_FANTASY_FORMULA1_LINEUP,
@@ -25,7 +25,7 @@ import type {
   FantasyFormula1OptimizationCandidate,
 } from "@/types/fantasyFormula1";
 import { GarageSignature } from "./GarageSignature";
-import { normaliseTeamColor } from "./garage";
+import { formatMoney, normaliseTeamColor } from "./garage";
 import "./fantasy-formula-1.css";
 import {
   buildFantasyFormula1Href,
@@ -47,26 +47,8 @@ interface FantasyFormula1ClientProps {
   summary: Formula1Summary;
 }
 
-const UPDATED_AT_FORMATTER = new Intl.DateTimeFormat("en-US", {
-  month: "short",
-  day: "numeric",
-  hour: "numeric",
-  minute: "2-digit",
-  timeZone: DISPLAY_TIME_ZONE,
-  timeZoneName: "short",
-});
-
-function formatUpdatedAt(value: string | null | undefined): string {
-  if (!value) {
-    return "Unavailable";
-  }
-
-  const date = new Date(value);
-  return Number.isNaN(date.getTime()) ? "Unavailable" : UPDATED_AT_FORMATTER.format(date);
-}
-
-function formatMoney(value: number): string {
-  return `${value < 0 ? "-" : ""}$${Math.abs(value).toFixed(1)}m`;
+function formatStamp(value: string | null | undefined): string {
+  return value ? formatUpdatedAt(value) : "Unavailable";
 }
 
 function formatPoints(value: number): string {
@@ -730,9 +712,9 @@ export function FantasyFormula1Client({
 
   const nextRaceLabel = seasonSummary.nextMeeting?.name ?? null;
   const nextRaceMeta = seasonSummary.nextMeeting?.raceStartsAt
-    ? formatUpdatedAt(seasonSummary.nextMeeting.raceStartsAt)
+    ? formatStamp(seasonSummary.nextMeeting.raceStartsAt)
     : seasonSummary.nextMeeting?.startAt
-      ? formatUpdatedAt(seasonSummary.nextMeeting.startAt)
+      ? formatStamp(seasonSummary.nextMeeting.startAt)
       : null;
   const selectedAssetNames = summary.assets.map((asset) => asset.name).join(", ");
   const lead = PROJECT_PRESS[FANTASY_FORMULA1_ROUTE].lead;
@@ -743,7 +725,7 @@ export function FantasyFormula1Client({
         ink={lead}
         title="Fantasy Formula 1"
         standfirst="Build the team before the weekend gets noisy. I use the checked-in OpenF1 season snapshot, model prices, and official-style roster constraints so the tradeoffs are visible before you commit to a lineup."
-        meta={`${seasonSummary.season} season · ${seasonSummary.sourceLabel} · snapshot ${formatUpdatedAt(seasonSummary.generatedAt)}`}
+        meta={`${seasonSummary.season} season · ${seasonSummary.sourceLabel} · snapshot ${formatStamp(seasonSummary.generatedAt)}`}
         readouts={[
           {
             label: "Projected points",

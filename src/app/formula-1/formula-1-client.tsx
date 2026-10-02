@@ -30,7 +30,7 @@ import {
   DATE_TIME_FORMATTER,
   LONG_DATE_TIME_FORMATTER,
   SHORT_DATE_FORMATTER,
-  UPDATED_AT_FORMATTER,
+  formatUpdatedAt,
 } from "@/lib/date-formatters";
 
 interface Formula1ClientProps {
@@ -52,11 +52,6 @@ function formatDateTimeLabel(value: string): string {
 function formatLongDateTimeLabel(value: string): string {
   const date = new Date(value);
   return Number.isNaN(date.getTime()) ? "TBD" : LONG_DATE_TIME_FORMATTER.format(date);
-}
-
-function formatUpdatedAt(value: string): string {
-  const date = new Date(value);
-  return Number.isNaN(date.getTime()) ? "Unavailable" : UPDATED_AT_FORMATTER.format(date);
 }
 
 function formatPoints(value: number): string {

@@ -10,6 +10,14 @@ const DATE_TIME_FORMATTER = new Intl.DateTimeFormat("en-US", {
   timeZoneName: "short",
 });
 
+const KICKOFF_FORMATTER = new Intl.DateTimeFormat("en-US", {
+  weekday: "short",
+  hour: "numeric",
+  minute: "2-digit",
+  timeZone: "America/New_York",
+  timeZoneName: "short",
+});
+
 // A placeholder time carries the scheduled calendar day only in UTC.
 const DATE_ONLY_FORMATTER = new Intl.DateTimeFormat("en-US", {
   month: "short",
@@ -25,6 +33,15 @@ export function formatFixtureDateTime(fixture: GenericFixture): string {
   // MLB leaves the flag on the second game of a doubleheader after it is played.
   if (fixture.status === "FINISHED") return day;
   return fixture.ifNecessary ? `${day} · time TBD · if necessary` : `${day} · time TBD`;
+}
+
+export function formatKickoff(utcDate: string): string {
+  const date = new Date(utcDate);
+  return Number.isNaN(date.getTime()) ? "Time TBD" : KICKOFF_FORMATTER.format(date);
+}
+
+export function formatFixed(value: number): string {
+  return Number.isFinite(value) ? value.toFixed(2) : "—";
 }
 
 export function getResultForTeam(

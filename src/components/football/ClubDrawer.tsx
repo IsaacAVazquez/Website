@@ -7,6 +7,7 @@ import { CrestAvatar } from "./CrestAvatar";
 import { TeamResultPill } from "./TeamResultPill";
 import { StatFascia, type StatFasciaItem } from "./StatFascia";
 import type { GenericFixture } from "./FixtureCard";
+import { formatFixed, formatKickoff } from "./fixtureFormat";
 
 export interface ClubDrawerScorer {
   name: string;
@@ -38,24 +39,6 @@ export interface ClubDrawerClub {
   goalDifference: number;
   manager?: string | null;
   venue?: string | null;
-}
-
-// Pinned to one named zone so the server and the browser print the same string.
-const KICKOFF_FORMATTER = new Intl.DateTimeFormat("en-US", {
-  weekday: "short",
-  hour: "numeric",
-  minute: "2-digit",
-  timeZone: "America/New_York",
-  timeZoneName: "short",
-});
-
-function formatKickoff(utcDate: string): string {
-  const date = new Date(utcDate);
-  return Number.isNaN(date.getTime()) ? "Time TBD" : KICKOFF_FORMATTER.format(date);
-}
-
-function formatFixed(value: number): string {
-  return Number.isFinite(value) ? value.toFixed(2) : "—";
 }
 
 function DrawerFixtureRow({ fixture, clubId }: { fixture: GenericFixture; clubId: string }) {
