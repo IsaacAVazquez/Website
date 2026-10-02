@@ -16,6 +16,7 @@ import type {
 } from "@/types/mlb";
 import { HttpStatusError } from "@/lib/utils";
 import { retryLinear, hasClientErrorStatus, isTimeoutError } from "@/lib/fetchRetry";
+import { setTimeout as delay } from "node:timers/promises";
 
 const MLB_STATS_BASE_URL = "https://statsapi.mlb.com/api/v1";
 const MLB_LOGO_BASE_URL = "https://www.mlbstatic.com/team-logos";
@@ -627,9 +628,6 @@ export async function getMlbTeamSnapshot(teamId: string, teamLookup?: Map<string
 const TEAM_FETCH_DELAY_MS = 750;
 const MLB_SNAPSHOT_PATH = "src/data/mlbSnapshot.ts";
 
-function delay(ms: number) {
-  return new Promise<void>((resolveFn) => setTimeout(resolveFn, ms));
-}
 
 function readExistingTeamSnapshots(filePath: string): Record<string, MlbTeamSnapshot> {
   try {

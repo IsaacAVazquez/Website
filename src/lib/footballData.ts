@@ -1,5 +1,3 @@
-import { HttpStatusError } from "@/lib/utils";
-import { retryLinear, hasClientErrorStatus, isTimeoutError } from "@/lib/fetchRetry";
 /**
  * Shared football-data.org v4 wire types, request constants, and the paced
  * fetch both leagues use.
@@ -9,6 +7,9 @@ import { retryLinear, hasClientErrorStatus, isTimeoutError } from "@/lib/fetchRe
  * declared twice and drifting. Every field is optional because the provider
  * omits sections depending on plan tier and season phase.
  */
+
+import { HttpStatusError } from "@/lib/utils";
+import { retryLinear, hasClientErrorStatus, isTimeoutError } from "@/lib/fetchRetry";
 
 export const FOOTBALL_DATA_BASE_URL = "https://api.football-data.org/v4";
 export const REQUEST_TIMEOUT_MS = 10_000;

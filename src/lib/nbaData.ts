@@ -14,6 +14,7 @@ import type {
 } from "@/types/nba";
 import { HttpStatusError } from "@/lib/utils";
 import { retryLinear, hasClientErrorStatus, isTimeoutError } from "@/lib/fetchRetry";
+import { setTimeout as delay } from "node:timers/promises";
 
 const ESPN_BASE_URL = "https://site.api.espn.com/apis/site/v2/sports/basketball/nba";
 const ESPN_STANDINGS_URL = "https://site.api.espn.com/apis/v2/sports/basketball/nba/standings";
@@ -862,9 +863,6 @@ export async function getNbaTeamSnapshot(
 const TEAM_FETCH_DELAY_MS = 1_500;
 const NBA_SNAPSHOT_PATH = "src/data/nbaSnapshot.ts";
 
-function delay(ms: number) {
-  return new Promise<void>((resolve) => setTimeout(resolve, ms));
-}
 
 function readExistingTeamSnapshots(filePath: string): Record<string, NbaTeamSnapshot> {
   try {

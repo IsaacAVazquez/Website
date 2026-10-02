@@ -11,6 +11,7 @@ import type {
 } from "@/types/bayAreaTransit";
 import { slugify } from "@/lib/utils";
 import { retryLinear, isTransientFetchError } from "@/lib/fetchRetry";
+import { setTimeout as delay } from "node:timers/promises";
 
 /**
  * Builds the Bay Area Transit snapshot from BART's public legacy API. The key
@@ -176,9 +177,6 @@ async function fetchBartJson<T>(
   }, isTransientFetchError);
 }
 
-function delay(ms: number): Promise<void> {
-  return new Promise((resolve) => setTimeout(resolve, ms));
-}
 
 // --- Builder -----------------------------------------------------------------
 

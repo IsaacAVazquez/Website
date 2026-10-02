@@ -10,6 +10,7 @@ import type {
   Formula1Snapshot,
 } from "@/types/formula1";
 import { HttpStatusError } from "@/lib/utils";
+import { setTimeout as sleep } from "node:timers/promises";
 
 const OPEN_F1_API_BASE_URL = "https://api.openf1.org/v1";
 const OPEN_F1_DOCS_URL = "https://openf1.org/docs/";
@@ -105,9 +106,6 @@ interface BuildFormula1SnapshotDataOptions {
   minIntervalMs?: number;
 }
 
-function sleep(ms: number): Promise<void> {
-  return new Promise((resolve) => setTimeout(resolve, ms));
-}
 
 function isObject(value: unknown): value is Record<string, unknown> {
   return typeof value === "object" && value !== null;
