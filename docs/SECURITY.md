@@ -78,7 +78,6 @@ These power the live UI. They are cached, rate-limited where appropriate, and mu
 - `/api/rss`
 - `/api/fantasy-data`
 - `/api/data-revisions`
-- `/api/investments/data/[symbol]`
 - `/api/investments/quotes`
 - `/api/premier-league/teams/[teamId]`
 - `/api/la-liga/teams/[teamId]`

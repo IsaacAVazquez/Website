@@ -9,9 +9,7 @@
  *
  * Naming follows GA4 conventions: event and parameter names are lower
  * snake_case, event names are <= 40 chars, parameter names <= 40 chars, and
- * string values are clamped to <= 100 chars (`clampValue`). The canonical list
- * of events lives in `ANALYTICS_EVENTS` below and powers the human-readable
- * reference page at `/analytics-reference`.
+ * string values are clamped to <= 100 chars (`clampValue`).
  */
 
 export const GA_MEASUREMENT_ID =
@@ -133,102 +131,3 @@ export function trackNewsletterSubscribe(params: {
 }): void {
   trackEvent(GA_EVENT.newsletterSubscribe, params);
 }
-
-// ---------------------------------------------------------------------------
-// Reference catalogue — drives /analytics-reference
-// ---------------------------------------------------------------------------
-
-interface AnalyticsEventDoc {
-  name: string;
-  category:
-    | "Navigation"
-    | "Code samples"
-    | "Listings"
-    | "Engagement"
-    | "Audience";
-  description: string;
-  trigger: string;
-  parameters: { name: string; description: string; example: string }[];
-}
-
-export const ANALYTICS_EVENTS: AnalyticsEventDoc[] = [
-  {
-    name: GA_EVENT.navigationClick,
-    category: "Navigation",
-    description:
-      "Fires when a navigation element is clicked — primary header links, the brand wordmark, the mobile menu toggle and its links, and footer links.",
-    trigger: "Click on any link in the header, mobile menu, or footer.",
-    parameters: [
-      { name: "link_text", description: "Visible label of the element.", example: "Writing" },
-      { name: "link_url", description: "Destination href.", example: "/writing" },
-      {
-        name: "nav_location",
-        description:
-          "Where the element lives: header_primary, header_brand, header_mobile, header_mobile_toggle, footer_social, footer_links.",
-        example: "header_primary",
-      },
-    ],
-  },
-  {
-    name: GA_EVENT.codeCopy,
-    category: "Code samples",
-    description:
-      "Fires when a visitor copies a code sample to the clipboard, either from a CodeSample block or from a fenced code block inside a long-form article.",
-    trigger: "Click the copy button on a code sample.",
-    parameters: [
-      { name: "code_location", description: "Surface the sample lives on.", example: "analytics_reference" },
-      { name: "code_language", description: "Language hint when known.", example: "ts" },
-      { name: "snippet_id", description: "Stable id/label for the sample.", example: "track-nav-click" },
-      { name: "char_count", description: "Length of the copied text.", example: "184" },
-    ],
-  },
-  {
-    name: GA_EVENT.listingFilter,
-    category: "Listings",
-    description:
-      "Fires when a filter, category, or sort control changes on a component listing (search, writing archive, portfolio).",
-    trigger: "Select a filter chip, category, or sort option.",
-    parameters: [
-      { name: "listing_id", description: "Which listing.", example: "portfolio" },
-      { name: "filter_type", description: "Kind of control.", example: "category" },
-      { name: "filter_value", description: "Selected value.", example: "fintech" },
-    ],
-  },
-  {
-    name: GA_EVENT.listingSearch,
-    category: "Listings",
-    description:
-      "Fires when a search query is entered on a component listing. Debounced so it reports completed searches rather than individual keystrokes.",
-    trigger: "Type into a listing's search box (debounced).",
-    parameters: [
-      { name: "listing_id", description: "Which listing.", example: "writing_archive" },
-      { name: "search_term", description: "The query text.", example: "product strategy" },
-      { name: "results_count", description: "Matches for the query when available.", example: "7" },
-    ],
-  },
-  {
-    name: GA_EVENT.scrollDepth,
-    category: "Engagement",
-    description:
-      "Fires once per milestone as a visitor scrolls a long page. Short pages that do not scroll are excluded.",
-    trigger: "Reach 25%, 50%, 75%, or 100% scroll depth on a long page.",
-    parameters: [
-      { name: "percent_scrolled", description: "Milestone reached.", example: "50" },
-      { name: "page_path", description: "Path of the page.", example: "/writing/some-post" },
-    ],
-  },
-  {
-    name: GA_EVENT.newsletterSubscribe,
-    category: "Audience",
-    description:
-      "Fires after the newsletter API confirms a reader was added to the email list.",
-    trigger: "Submit a valid email through a newsletter signup form.",
-    parameters: [
-      {
-        name: "signup_location",
-        description: "Surface where the form was submitted.",
-        example: "agent_build_index",
-      },
-    ],
-  },
-];

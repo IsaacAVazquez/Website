@@ -162,7 +162,7 @@ These are committed TypeScript files rebuilt by `scripts/buildPremierLeagueSnaps
 ### Investments
 
 - curated snapshot assets and targeted research APIs
-- live quote enrichment through `/api/investments/quotes`; `/api/stocks` was retired on 2026-07-06 and returns 410 Gone
+- live quote enrichment through `/api/investments/quotes`
 
 ---
 
@@ -174,7 +174,7 @@ Important groups:
 
 - auth: `/api/auth/[...nextauth]`
 - fantasy football: `/api/fantasy-data`
-- investments: `/api/investments/quotes`, `/api/investments/data/[symbol]`, and the retired `/api/stocks` (410 Gone)
+- investments: `/api/investments/quotes`
 - football: `/api/premier-league/teams/[teamId]`, `/api/la-liga/teams/[teamId]`
 - US sports and golf: `/api/mlb/teams/[teamId]`, `/api/nba/teams/[teamId]`, `/api/nfl/teams/[teamId]`, `/api/golf/players/[playerId]`, `/api/formula-1/meetings/[meetingId]`
 - World Cup: `/api/world-cup/teams/[teamId]`

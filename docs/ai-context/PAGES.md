@@ -57,9 +57,7 @@ Fast route reference for the current app.
 | `/score-pools/settings` | `src/app/score-pools/settings/page.tsx` | Server page -> `SettingsClient` |
 | `/arcade` | `src/app/arcade/page.tsx` | Server page -> `ArcadeClient` |
 | `/agent-build-index` | `src/app/agent-build-index/page.tsx` | Server page |
-| `/analytics-reference` | `src/app/analytics-reference/page.tsx` | Server page documenting the analytics events |
 | `/enablement-assistant` | `src/app/enablement-assistant/page.tsx` | Server page -> `EnablementAssistantClient` |
-| `/design/catalog-pages` | `src/app/design/catalog-pages/page.tsx` | Server page -> `Catalog97LayoutsCanvas`, set to noindex |
 | `/fantasy-football` | `src/app/fantasy-football/page.tsx` | Server page -> fantasy client UI |
 | `/fantasy-football/tiers/[position]` | `next.config.mjs` | Permanent redirect to `/fantasy-football?position=:position&scoring=ppr` |
 | `/fantasy-football/rb-tiers` | `next.config.mjs` | Permanent redirect to `/fantasy-football?position=rb&scoring=ppr` |

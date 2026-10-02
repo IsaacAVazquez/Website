@@ -183,7 +183,7 @@ MBA_DIGEST_SECRET=...         # sent in the x-mba-digest-secret header to the di
 - `Writing` is live and intentionally promoted in the header
 - `/portfolio` is a server shell in `src/app/portfolio/page.tsx` that passes the project index to `Catalog97Portfolio`
 - `/api/search` is limited and mostly hardcoded; do not treat it as comprehensive site search
-- `/investments` uses `InvestmentsClient` plus targeted routes under `/api/investments/quotes` and `/api/investments/data/[symbol]`
+- `/investments` uses `InvestmentsClient` plus the `/api/investments/quotes` route
 - Sports dashboards read committed snapshots. Earthquake and BART add request-time upstream refreshes with their committed snapshots kept as fallbacks.
 
 ---

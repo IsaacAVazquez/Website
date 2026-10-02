@@ -44,8 +44,6 @@ Main pieces:
 - the index is read on the server by `src/app/investments/page.tsx` (`getInvestmentsIndex`, with `public/data/investments/index.json` as the fallback import); there is no `/api/investments/index` route
 - API routes:
   - `/api/investments/quotes`
-  - `/api/investments/data/[symbol]`
-  - `/api/stocks` (retired on 2026-07-06, returns 410 Gone)
 
 Update path:
 

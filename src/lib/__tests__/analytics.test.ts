@@ -1,11 +1,9 @@
 /**
  * Analytics is gated on NEXT_PUBLIC_GA_MEASUREMENT_ID, which is inlined at build
  * time. These tests exercise the always-on behaviour: with no id configured
- * every helper must be a safe no-op, and the event catalogue must stay valid.
+ * every helper must be a safe no-op.
  */
 import {
-  ANALYTICS_EVENTS,
-  GA_EVENT,
   isAnalyticsEnabled,
   trackEvent,
   trackNavigationClick,
@@ -32,20 +30,5 @@ describe("analytics core", () => {
     trackScrollDepth({ percent_scrolled: 50, page_path: "/" });
 
     expect(gtag).not.toHaveBeenCalled();
-  });
-
-  it("exposes a catalogue whose names match the GA_EVENT constants", () => {
-    const declared = new Set(Object.values(GA_EVENT));
-    for (const event of ANALYTICS_EVENTS) {
-      expect(declared.has(event.name as (typeof GA_EVENT)[keyof typeof GA_EVENT])).toBe(true);
-      // GA4 naming conventions: lower snake_case, <= 40 chars.
-      expect(event.name).toMatch(/^[a-z][a-z0-9_]*$/);
-      expect(event.name.length).toBeLessThanOrEqual(40);
-      expect(event.parameters.length).toBeGreaterThan(0);
-      for (const param of event.parameters) {
-        expect(param.name).toMatch(/^[a-z][a-z0-9_]*$/);
-        expect(param.name.length).toBeLessThanOrEqual(40);
-      }
-    }
   });
 });

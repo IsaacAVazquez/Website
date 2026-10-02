@@ -93,8 +93,6 @@ Current route inventory and page ownership for the live app.
 | `/admin` | `src/app/admin/page.tsx` | Credentials-based admin screen |
 | `/now` | `src/app/now/page.tsx` | Current focus / status page |
 | `/changelog` | `src/app/changelog/page.tsx` | Site changelog |
-| `/analytics-reference` | `src/app/analytics-reference/page.tsx` | Noindex internal reference for the GA4 events wired into the site, driven by `ANALYTICS_EVENTS` in `src/lib/analytics.ts` |
-| `/design/catalog-pages` | `src/app/design/catalog-pages/page.tsx` | Noindex QA sheet stacking every Catalog 97 route in one scroll with the layout rules the set holds |
 
 ---
 

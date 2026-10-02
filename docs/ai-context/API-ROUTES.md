@@ -34,7 +34,6 @@ Current API route map.
 | `/api/spacex/launches` | GET | SpaceX launch list payload |
 | `/api/spacex/launches/[id]` | GET | SpaceX launch detail payload |
 | `/api/spacex/summary` | GET | SpaceX Mission Control summary payload |
-| `/api/stocks` | GET | Retired on 2026-07-06 (returns 410 Gone; points callers to `/api/investments/quotes`) |
 | `/api/world-cup/teams/[teamId]` | GET | Snapshot-backed World Cup team drilldown payload |
 
 ---
@@ -62,15 +61,6 @@ Current investment routes:
 
 - batches symbol quote requests for the client portfolio experience
 - keeps the investments layer decoupled from direct stock-route usage in the UI
-
-### `/api/investments/data/[symbol]`
-
-- serves per-symbol research sections
-- supports the curated research UI
-
-### `/api/stocks`
-
-- retired on 2026-07-06; returns 410 Gone with Deprecation/Sunset headers pointing callers to `/api/investments/quotes`
 
 ---
 

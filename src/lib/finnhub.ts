@@ -50,8 +50,8 @@ export function isValidSymbol(symbol: string): boolean {
 // Allowlist of curated symbols
 // ---------------------------------------------------------------------------
 // The allowlist is the authoritative gate for the unauthenticated
-// /api/investments/quotes and /api/stocks proxies — only symbols Isaac has
-// chosen to research can hit the paid Finnhub key.
+// /api/investments/quotes proxy — only symbols Isaac has chosen to research
+// can hit the paid Finnhub key.
 //
 // It is sourced from public/data/investments/index.json. Netlify packages that
 // directory with the server handler through `functions.included_files`, which
@@ -159,17 +159,6 @@ export async function getAllowedSymbols(
     "finnhub: failed to resolve investments allowlist from disk or public asset"
   );
   throw new FinnhubAllowlistUnavailableError();
-}
-
-export async function isAllowedSymbol(
-  symbol: string,
-  options?: AssetOriginOptions
-): Promise<boolean> {
-  if (!isValidSymbol(symbol)) {
-    return false;
-  }
-  const allowlist = await getAllowedSymbols(options);
-  return allowlist.has(symbol.toUpperCase());
 }
 
 // Test-only: reset the cached allowlist so tests can force a re-resolve.
