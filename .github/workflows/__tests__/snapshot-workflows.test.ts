@@ -263,10 +263,10 @@ describe("snapshot refresh workflow infrastructure", () => {
       /- name: Verify fantasy snapshot quality[\s\S]*?(?=\n\s+- name:)/
     )?.[0];
 
-    // The change check, the commit, the discard step, and the job summary.
+    // The change check, the commit, and the discard step.
     expect(
       workflow.match(/src\/data\/fantasyVorpData\.generated\.ts/g)
-    ).toHaveLength(4);
+    ).toHaveLength(3);
     expect(qualityStep).toBeDefined();
     expect(qualityStep).toContain("const MIN_VORP = 300");
     expect(qualityStep).toContain(
@@ -316,6 +316,79 @@ describe("snapshot refresh workflow infrastructure", () => {
     // incidents on runs that refreshed nothing.
     expect(workflow).toContain(
       "if: success() && steps.window.outputs.active == 'true'"
+    );
+  });
+
+  it("routes failure issues through the shared helper", () => {
+    for (const workflowPath of updateWorkflowFiles) {
+      if (path.basename(workflowPath) === "update-article-images.yml") continue;
+      const workflow = fs.readFileSync(workflowPath, "utf8");
+      expect(workflow).toContain("require('./scripts/ci/failure-issue.cjs').open(");
+      expect(workflow).toContain("require('./scripts/ci/failure-issue.cjs').close(");
+      expect(workflow).not.toContain("issues.listForRepo");
+    }
+  });
+
+  it("opens one issue per label, comments on repeats, and closes on success", async () => {
+    // eslint-disable-next-line @typescript-eslint/no-require-imports
+    const failureIssue = require("../../../scripts/ci/failure-issue.cjs");
+    const open: { number: number }[] = [];
+    const calls: string[] = [];
+    const github = {
+      rest: {
+        issues: {
+          listForRepo: async ({ labels }: { labels: string }) => {
+            calls.push(`list ${labels}`);
+            return { data: [...open] };
+          },
+          create: async ({ title, labels }: { title: string; labels: string[] }) => {
+            calls.push(`create ${title.replace(/\d{4}-\d{2}-\d{2}$/, "DATE")} [${labels}]`);
+            open.push({ number: 7 });
+          },
+          createComment: async ({ issue_number }: { issue_number: number }) => {
+            calls.push(`comment ${issue_number}`);
+          },
+          update: async ({ issue_number, state }: { issue_number: number; state: string }) => {
+            calls.push(`update ${issue_number} ${state}`);
+          },
+        },
+      },
+    };
+    const context = {
+      repo: { owner: "o", repo: "r" },
+      serverUrl: "https://github.com",
+      runId: 1,
+      sha: "abc",
+      eventName: "schedule",
+      workflow: "Refresh NBA Snapshot",
+    };
+
+    await failureIssue.open({ github, context }, "nba-refresh-failure", "NBA refresh failed");
+    await failureIssue.open({ github, context }, "nba-refresh-failure", "NBA refresh failed");
+    await failureIssue.close({ github, context }, "nba-refresh-failure");
+
+    expect(calls).toEqual([
+      "list nba-refresh-failure",
+      "create NBA refresh failed DATE [nba-refresh-failure,automation]",
+      "list nba-refresh-failure",
+      "comment 7",
+      "list nba-refresh-failure",
+      "comment 7",
+      "update 7 closed",
+    ]);
+  });
+
+  it("lets the commit helper decide whether anything changed", () => {
+    const helper = fs.readFileSync(
+      path.join(process.cwd(), "scripts", "ci", "commit-and-push-snapshot.sh"),
+      "utf8"
+    );
+    // git status sees an untracked artifact, which git diff --quiet does not.
+    expect(helper).toContain('git status --porcelain -- "$@"');
+    expect(helper).toContain("changed=false");
+    expect(helper).toContain("changed=true");
+    expect(helper.indexOf("git status --porcelain")).toBeLessThan(
+      helper.indexOf("node scripts/generatePublicSitemap.mjs")
     );
   });
 

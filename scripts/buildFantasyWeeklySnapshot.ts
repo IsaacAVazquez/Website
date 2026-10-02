@@ -1,4 +1,4 @@
-import { mkdir, readFile, rename, writeFile } from "fs/promises";
+import { mkdir, readFile } from "fs/promises";
 import path from "path";
 import { fileURLToPath } from "url";
 import { FANTASY_SCORING_LABELS, routeScoringToScoringFormat, type FantasyRouteScoring } from "@/lib/fantasy";
@@ -20,6 +20,7 @@ import {
 } from "@/lib/fantasyWeeklySnapshot";
 import { getNflRegularSeasonWeek } from "@/lib/fantasyUtils";
 import { withRetry } from "./fetchRetry";
+import { writeFileAtomic } from "./snapshotFallback";
 
 const OUTPUT_PATH = path.join(process.cwd(), "public", "data", "fantasy", "weekly.json");
 
@@ -124,9 +125,7 @@ async function readPreviousSnapshot(outputPath: string): Promise<FantasyWeeklySn
 
 async function atomicWriteSnapshot(snapshot: FantasyWeeklySnapshot, outputPath: string) {
   await mkdir(path.dirname(outputPath), { recursive: true });
-  const tempPath = `${outputPath}.tmp`;
-  await writeFile(tempPath, `${JSON.stringify(snapshot)}\n`, "utf8");
-  await rename(tempPath, outputPath);
+  writeFileAtomic(outputPath, `${JSON.stringify(snapshot)}\n`);
 }
 
 export async function buildFantasyWeeklySnapshot(

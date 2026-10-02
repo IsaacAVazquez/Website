@@ -1,6 +1,7 @@
 import { promises as fs } from "node:fs";
 import path from "node:path";
 import { buildPollingSnapshotData } from "../src/lib/pollingData";
+import { writeFileAtomic } from "./snapshotFallback";
 
 // Seed builder for the committed polling snapshot. The fetch/transform lives
 // in src/lib/pollingData.ts, shared with the Netlify scheduled refresh
@@ -15,9 +16,7 @@ export { buildPollingSnapshotData as buildPollingSnapshot };
 async function main() {
   const snapshot = await buildPollingSnapshotData();
   const contents = `import type { PollingSnapshot } from "@/types/polling";\n\nexport const pollingSnapshot: PollingSnapshot = ${JSON.stringify(snapshot, null, 2)};\n`;
-  const temporaryPath = `${SNAPSHOT_PATH}.tmp-${process.pid}`;
-  await fs.writeFile(temporaryPath, contents, "utf8");
-  await fs.rename(temporaryPath, SNAPSHOT_PATH);
+  writeFileAtomic(SNAPSHOT_PATH, contents);
   console.log(
     `Polling snapshot written with ${snapshot.approvalPolls.length} approval and ${snapshot.genericBallotPolls.length} generic ballot polls.`
   );

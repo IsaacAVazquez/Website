@@ -10,6 +10,7 @@ config({
 });
 import { buildMissionControlSnapshot } from "../src/lib/spacexData";
 import type { MissionControlSnapshot } from "../src/types/spacex";
+import { writeFileAtomic } from "./snapshotFallback";
 
 export interface BuildSpaceXSnapshotOptions {
   projectRoot?: string;
@@ -93,12 +94,7 @@ export async function buildSpaceXSnapshot(
   }
 
   await fs.mkdir(path.dirname(snapshotPath), { recursive: true });
-  // Atomic write: write to a temp file first, then rename. This prevents
-  // readers from seeing a partial/truncated snapshot if the process is
-  // interrupted mid-write.
-  const tmpPath = `${snapshotPath}.tmp-${process.pid}-${Date.now()}`;
-  await fs.writeFile(tmpPath, `${JSON.stringify(snapshot, null, 2)}\n`, "utf8");
-  await fs.rename(tmpPath, snapshotPath);
+  writeFileAtomic(snapshotPath, `${JSON.stringify(snapshot, null, 2)}\n`);
 
   logger.log(
     `SpaceX snapshot written: ${snapshot.upcomingLaunches.length} upcoming, ${snapshot.pastLaunches.length} past, ${Object.keys(snapshot.launchDetails).length} details.`

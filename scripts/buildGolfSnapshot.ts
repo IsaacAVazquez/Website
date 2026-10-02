@@ -10,23 +10,11 @@
  * wiped — matching the Formula 1 pipeline.
  */
 
-import { renameSync, writeFileSync } from "node:fs";
 import { resolve } from "node:path";
 
 import { GolfNoLiveEventError, buildGolfSnapshotData } from "../src/lib/golfData";
 import type { GolfSnapshot } from "../src/types/golf";
-import { readGeneratedSnapshot } from "./snapshotFallback";
-
-/**
- * Atomic write: write to .tmp then rename. Renames are atomic on POSIX, so the
- * destination file is never observed in a half-written state if the process is
- * killed mid-write.
- */
-function writeFileAtomic(path: string, content: string): void {
-  const tmp = `${path}.tmp`;
-  writeFileSync(tmp, content, "utf8");
-  renameSync(tmp, path);
-}
+import { readGeneratedSnapshot, writeFileAtomic } from "./snapshotFallback";
 
 function hasContents(snapshot: GolfSnapshot | null): snapshot is GolfSnapshot {
   return Boolean(snapshot && snapshot.summary.leaderboard.length > 0);

@@ -10,6 +10,7 @@ import type {
   GitHubTrendingSnapshot,
 } from "../src/types/githubTrending";
 import { withRetry } from "./fetchRetry";
+import { readGeneratedSnapshot, writeFileAtomic } from "./snapshotFallback";
 
 interface BuildOptions {
   projectRoot?: string;
@@ -241,36 +242,6 @@ function restorePreviousSegment(
   };
 }
 
-async function readPreviousSnapshot(
-  snapshotPath: string,
-  logger: Pick<Console, "warn">
-): Promise<GitHubTrendingSnapshot | null> {
-  try {
-    const source = await fs.readFile(snapshotPath, "utf8");
-    const match = source.match(
-      /export const githubTrendingSnapshot: GitHubTrendingSnapshot = (\{[\s\S]*\});\s*$/
-    );
-    if (!match) {
-      logger.warn(
-        "Previous GitHub trending snapshot did not match expected export pattern. Continuing without diff base."
-      );
-      return null;
-    }
-    try {
-      return JSON.parse(match[1]) as GitHubTrendingSnapshot;
-    } catch (parseError) {
-      logger.warn(
-        `Failed to JSON.parse the previous GitHub trending snapshot body: ${String(parseError)}`
-      );
-      return null;
-    }
-  } catch (error) {
-    if ((error as NodeJS.ErrnoException).code !== "ENOENT") {
-      logger.warn(`Could not read previous GitHub trending snapshot: ${String(error)}`);
-    }
-    return null;
-  }
-}
 
 /**
  * A GitHub rate-limit response is a 403 with `x-ratelimit-remaining: 0` (primary
@@ -392,7 +363,10 @@ export async function buildGitHubTrendingSnapshot(
   const logger = options.logger ?? console;
   const generatedAt = options.generatedAt ?? new Date().toISOString();
   const snapshotPath = path.join(projectRoot, ...SNAPSHOT_PATH_SEGMENTS);
-  const previousSnapshot = await readPreviousSnapshot(snapshotPath, logger);
+  const previousSnapshot = readGeneratedSnapshot<GitHubTrendingSnapshot>(
+    snapshotPath,
+    "githubTrendingSnapshot"
+  );
   const fetchImpl = options.fetchImpl ?? fetch;
   const token = getGitHubToken();
   const delayMs = options.requestDelayMs ?? (token ? 250 : 6_500);
@@ -470,11 +444,7 @@ export const githubTrendingSnapshot: GitHubTrendingSnapshot = ${JSON.stringify(s
 `;
 
   await fs.mkdir(path.dirname(snapshotPath), { recursive: true });
-  // Atomic write: write to a temp file first, then rename. This prevents
-  // build/readers from seeing a partial snapshot if the process is interrupted.
-  const tmpPath = `${snapshotPath}.tmp-${process.pid}-${Date.now()}`;
-  await fs.writeFile(tmpPath, fileContents, "utf8");
-  await fs.rename(tmpPath, snapshotPath);
+  writeFileAtomic(snapshotPath, fileContents);
 
   logger.log(
     `GitHub trending snapshot written: ${snapshot.totals.repositories} repos, ${snapshot.totals.languages} languages, ${snapshot.totals.topics} topics.`

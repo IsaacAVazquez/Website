@@ -16,6 +16,7 @@ import type {
   InvestmentSnapshot,
   InvestmentsIndex,
 } from "../src/types/investment";
+import { writeFileAtomic } from "./snapshotFallback";
 
 type RawSectionName =
   | "info"
@@ -86,18 +87,6 @@ async function readJson<T>(filePath: string): Promise<T | undefined> {
   }
 }
 
-/**
- * Atomically write `content` to `filePath`. Writes to a temp file in the
- * same directory and then renames over the destination. This avoids
- * leaving truncated/half-written files if the process is interrupted
- * mid-write, which the prior direct write was vulnerable to.
- */
-async function writeJsonAtomic(filePath: string, content: string): Promise<void> {
-  const tmpPath = `${filePath}.tmp`;
-  await fs.writeFile(tmpPath, content, "utf8");
-  await fs.rename(tmpPath, filePath);
-}
-
 async function buildSymbolSnapshot(
   symbol: string,
   lastUpdated: string | null
@@ -147,7 +136,7 @@ async function buildSymbolSnapshot(
     : builtSnapshot;
   const publicSymbolDir = path.join(PUBLIC_DIR, symbol);
   await fs.mkdir(publicSymbolDir, { recursive: true });
-  await writeJsonAtomic(
+  writeFileAtomic(
     path.join(publicSymbolDir, "snapshot.json"),
     `${JSON.stringify(snapshot, null, 2)}\n`
   );
@@ -187,7 +176,7 @@ async function sanitizeExistingSnapshot(
   const normalized = hasRecentBulkPrice
     ? replaceSnapshotPrice(priorSnapshot, priced)
     : normalizeInvestmentSnapshot(priorSnapshot);
-  await writeJsonAtomic(snapshotPath, `${JSON.stringify(normalized, null, 2)}\n`);
+  writeFileAtomic(snapshotPath, `${JSON.stringify(normalized, null, 2)}\n`);
 }
 
 async function enrichIndexPriceHealth(
@@ -345,7 +334,7 @@ async function main() {
   }
 
   const enrichedIndex = await enrichIndexPriceHealth(index, assessedAt);
-  await writeJsonAtomic(
+  writeFileAtomic(
     path.join(PUBLIC_DIR, "index.json"),
     `${JSON.stringify(enrichedIndex, null, 2)}\n`
   );

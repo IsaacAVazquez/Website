@@ -3,18 +3,15 @@
  * Updates src/data/nbaSnapshot.ts with live data from ESPN's public NBA API.
  * No API key is required.
  *
- * Usage:
- *   npm run update:nba                # full refresh (standings + leaders + per-team schedules, ~1 min)
- *   npm run update:nba -- --league-only   # standings, leaders, scoreboard only (no per-team snapshots)
+ * Usage: npm run update:nba (standings, leaders, and per-team schedules, about a minute)
  */
 
 import { config } from "dotenv";
-import { renameSync, writeFileSync } from "node:fs";
 import { resolve } from "node:path";
 config({ path: resolve(__dirname, "../.env.local") });
 import { buildNbaSnapshot, preservePriorFixtures } from "../src/lib/nbaData";
 import type { NbaSnapshot } from "../src/types/nba";
-import { readGeneratedSnapshot } from "./snapshotFallback";
+import { buildOrKeepExisting, readGeneratedSnapshot, writeFileAtomic } from "./snapshotFallback";
 
 function hasNbaContents(snapshot: NbaSnapshot | null | undefined): boolean {
   return Boolean(
@@ -24,49 +21,20 @@ function hasNbaContents(snapshot: NbaSnapshot | null | undefined): boolean {
   );
 }
 
-/**
- * Atomic write: write to .tmp then rename. Renames are atomic on POSIX, so the
- * destination file is never observed in a half-written state if the process is
- * killed mid-write.
- */
-function writeFileAtomic(path: string, content: string): void {
-  const tmp = `${path}.tmp`;
-  writeFileSync(tmp, content, "utf8");
-  renameSync(tmp, path);
-}
-
 async function main() {
-  const leagueOnly = process.argv.includes("--league-only");
-  console.log(
-    leagueOnly
-      ? "🏀 Fetching NBA snapshot (league-only: standings + leaders + scoreboard)…"
-      : "🏀 Fetching NBA snapshot from ESPN…"
-  );
+  console.log("🏀 Fetching NBA snapshot from ESPN…");
   const outPath = resolve(__dirname, "../src/data/nbaSnapshot.ts");
 
-  let snapshot: NbaSnapshot;
-  try {
-    snapshot = await buildNbaSnapshot({ skipTeamSnapshots: leagueOnly });
-  } catch (error) {
-    const existing = readGeneratedSnapshot<NbaSnapshot>(outPath, "nbaSnapshot");
-    if (hasNbaContents(existing)) {
-      console.warn(
-        "🏀 NBA snapshot refresh failed; keeping the existing snapshot.",
-        error
-      );
-      return;
-    }
-    throw error;
-  }
-
-  // Guard against an ESPN 200-with-empty-arrays (off-season / schema drift)
-  // overwriting the good committed snapshot with nothing.
-  if (!hasNbaContents(snapshot)) {
-    console.warn(
-      "🏀 NBA snapshot build returned no standings; keeping the existing snapshot."
-    );
-    return;
-  }
+  let snapshot = await buildOrKeepExisting(
+    outPath,
+    "nbaSnapshot",
+    "NBA",
+    () => buildNbaSnapshot(),
+    hasNbaContents
+  );
+  // An ESPN 200 with empty arrays never overwrites the committed file, even
+  // when the committed one is empty too.
+  if (!snapshot || !hasNbaContents(snapshot)) return;
 
   // Off-season / transient-blip guard: ESPN's scoreboard window is empty all
   // summer while standings and leaders keep serving the completed season. Carry

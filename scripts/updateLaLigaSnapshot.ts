@@ -7,23 +7,11 @@
  */
 
 import { config } from "dotenv";
-import { renameSync, writeFileSync } from "node:fs";
 import { resolve } from "node:path";
 config({ path: resolve(__dirname, "../.env.local") });
 import { buildLaLigaSnapshot } from "../src/lib/laLigaData";
 import type { LaLigaSnapshot } from "../src/types/la-liga";
-import { readGeneratedSnapshot } from "./snapshotFallback";
-
-/**
- * Atomic write: write to .tmp then rename. Renames are atomic on POSIX, so the
- * destination file is never observed in a half-written state if the process is
- * killed mid-write.
- */
-function writeFileAtomic(path: string, content: string): void {
-  const tmp = `${path}.tmp`;
-  writeFileSync(tmp, content, "utf8");
-  renameSync(tmp, path);
-}
+import { buildOrKeepExisting, writeFileAtomic } from "./snapshotFallback";
 
 // A valid table has clubs AND at least one game played. A rolled-over season
 // keeps last season's table under a future-dated label or returns a zeroed
@@ -38,39 +26,14 @@ async function main() {
   console.log("Fetching La Liga snapshot from football-data.org…");
   const outPath = resolve(__dirname, "../src/data/laLigaSnapshot.ts");
 
-  let snapshot: LaLigaSnapshot;
-  try {
-    snapshot = await buildLaLigaSnapshot();
-  } catch (error) {
-    const existing = readGeneratedSnapshot<LaLigaSnapshot>(
-      outPath,
-      "laLigaSnapshot"
-    );
-    if (hasPlayedClubs(existing)) {
-      console.warn(
-        "La Liga snapshot refresh failed; keeping the existing snapshot.",
-        error
-      );
-      return;
-    }
-    throw error;
-  }
-
-  // A successful build with no played games (off-season rollover / schema
-  // drift) must not overwrite the good committed snapshot. Fall back to the
-  // existing data.
-  if (!hasPlayedClubs(snapshot)) {
-    const existing = readGeneratedSnapshot<LaLigaSnapshot>(
-      outPath,
-      "laLigaSnapshot"
-    );
-    if (hasPlayedClubs(existing)) {
-      console.warn(
-        "La Liga snapshot build returned no played games; keeping the existing snapshot."
-      );
-      return;
-    }
-  }
+  const snapshot = await buildOrKeepExisting(
+    outPath,
+    "laLigaSnapshot",
+    "La Liga",
+    () => buildLaLigaSnapshot(),
+    hasPlayedClubs
+  );
+  if (!snapshot) return;
 
   const output = `import type { LaLigaSnapshot } from "@/types/la-liga";
 

@@ -1,24 +1,12 @@
 import { config } from "dotenv";
-import { promises as fs } from "fs";
 import path from "path";
 config({ path: path.resolve(__dirname, "../.env.local") });
 import { buildPremierLeagueSnapshot, sumPlayedGames } from "../src/lib/premierLeagueData";
 import type { PremierLeagueSnapshot } from "../src/types/premier-league";
-import { readGeneratedSnapshot } from "./snapshotFallback";
+import { buildOrKeepExisting, writeFileAtomic } from "./snapshotFallback";
 
 const PROJECT_ROOT = process.cwd();
 const OUTPUT_FILE = path.join(PROJECT_ROOT, "src", "data", "premierLeagueSnapshot.ts");
-
-/**
- * Atomic write: write to .tmp then rename. Renames are atomic on POSIX, so the
- * destination file is never observed in a half-written state if the process is
- * killed mid-write.
- */
-async function writeFileAtomic(filePath: string, content: string): Promise<void> {
-  const tmp = `${filePath}.tmp`;
-  await fs.writeFile(tmp, content, "utf8");
-  await fs.rename(tmp, filePath);
-}
 
 // A valid table has rows AND at least one game played. A rolled-over season
 // returns a zeroed 20-row placeholder (rows present, 0 played); treating that
@@ -32,41 +20,14 @@ function hasStandings(snapshot: PremierLeagueSnapshot | null): boolean {
 async function main() {
   console.log("Fetching Premier League snapshot from football-data.org…");
 
-  let snapshot: PremierLeagueSnapshot;
-  try {
-    snapshot = await buildPremierLeagueSnapshot();
-  } catch (error) {
-    // A failed refresh (network/auth/rate-limit) must not wipe the committed
-    // snapshot. Fall back to the last good data instead of overwriting it.
-    const existing = readGeneratedSnapshot<PremierLeagueSnapshot>(
-      OUTPUT_FILE,
-      "premierLeagueSnapshot"
-    );
-    if (hasStandings(existing)) {
-      console.warn(
-        "Premier League snapshot refresh failed; keeping the existing snapshot.",
-        error
-      );
-      return;
-    }
-    throw error;
-  }
-
-  // A successful build with no standings (schema drift / a thin upstream
-  // response) must not overwrite the good committed snapshot either. This
-  // mirrors the La Liga refresher's guard.
-  if (!hasStandings(snapshot)) {
-    const existing = readGeneratedSnapshot<PremierLeagueSnapshot>(
-      OUTPUT_FILE,
-      "premierLeagueSnapshot"
-    );
-    if (hasStandings(existing)) {
-      console.warn(
-        "Premier League snapshot build returned no standings; keeping the existing snapshot."
-      );
-      return;
-    }
-  }
+  const snapshot = await buildOrKeepExisting(
+    OUTPUT_FILE,
+    "premierLeagueSnapshot",
+    "Premier League",
+    () => buildPremierLeagueSnapshot(),
+    hasStandings
+  );
+  if (!snapshot) return;
 
   const fileContents = `import type { PremierLeagueSnapshot } from "@/types/premier-league";
 
@@ -74,7 +35,7 @@ async function main() {
 export const premierLeagueSnapshot: PremierLeagueSnapshot = ${JSON.stringify(snapshot, null, 2)};
 `;
 
-  await writeFileAtomic(OUTPUT_FILE, fileContents);
+  writeFileAtomic(OUTPUT_FILE, fileContents);
   console.log(
     `Done. Wrote ${snapshot.summary.standings.length} standings rows, ${snapshot.summary.scorers.length} scorers, ${Object.keys(snapshot.teamSnapshots).length} team snapshots.`
   );

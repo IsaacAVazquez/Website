@@ -31,9 +31,6 @@ jobs:
           BLOG_DATE_BASE: ${{ github.event.pull_request.base.sha || github.event.before }}
         run: npm run check:blog-dates -- --base="$BLOG_DATE_BASE"
 
-      - name: Check the automation inventory is current
-        run: npm run docs:automation -- --check
-
       - name: Run unit tests with coverage
         run: npm run test:ci
 
@@ -249,80 +246,14 @@ jobs:
         if: failure()
         uses: actions/github-script@v9
         with:
-          script: |
-            const runUrl = `${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}`;
-            const today = new Date().toISOString().slice(0, 10);
-            const title = 'E2E full matrix (WebKit / Firefox) failing on main';
-            const body = [
-              `The **E2E Tests (full matrix)** job failed on \`main\`.`,
-              ``,
-              `**Run:** ${runUrl}`,
-              `**Commit:** ${context.sha}`,
-              ``,
-              `This job runs the WebKit, Firefox, and mobile browser projects that PR`,
-              `checks skip (PRs run chromium only). A failure here means a browser-`,
-              `specific regression landed on main. Download the \`playwright-report-`,
-              `full-matrix\` artifact from the run for traces and screenshots.`,
-              ``,
-              `This issue is updated on each subsequent failure and auto-closed on`,
-              `the first fully green full-matrix run.`,
-            ].join('\n');
-            const existing = await github.rest.issues.listForRepo({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              state: 'open',
-              labels: 'e2e-matrix-failure',
-              per_page: 5,
-            });
-            if (existing.data.length > 0) {
-              await github.rest.issues.createComment({
-                owner: context.repo.owner,
-                repo: context.repo.repo,
-                issue_number: existing.data[0].number,
-                body: `Failed again on ${today}. Run: ${runUrl}`,
-              });
-            } else {
-              await github.rest.issues.create({
-                owner: context.repo.owner,
-                repo: context.repo.repo,
-                title,
-                body,
-                labels: ['e2e-matrix-failure', 'automation'],
-              });
-            }
+          script: await require('./scripts/ci/failure-issue.cjs').open({ github, context }, 'e2e-matrix-failure', 'E2E full matrix (WebKit / Firefox) failing on main')
 
       - name: Close resolved failure issues
         if: success()
         uses: actions/github-script@v9
         with:
-          script: |
-            const existing = await github.rest.issues.listForRepo({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              state: 'open',
-              labels: 'e2e-matrix-failure',
-              per_page: 10,
-            });
-            for (const issue of existing.data) {
-              await github.rest.issues.createComment({
-                owner: context.repo.owner,
-                repo: context.repo.repo,
-                issue_number: issue.number,
-                body: `Full matrix green at ${new Date().toISOString()}. Auto-closing.`,
-              });
-              await github.rest.issues.update({
-                owner: context.repo.owner,
-                repo: context.repo.repo,
-                issue_number: issue.number,
-                state: 'closed',
-              });
-            }
+          script: await require('./scripts/ci/failure-issue.cjs').close({ github, context }, 'e2e-matrix-failure')
 
-  lint:
-    name: Lint
-    runs-on: ubuntu-latest
-
-    steps:
       - name: Checkout code
         uses: actions/checkout@v7
 

@@ -23,7 +23,7 @@ The retired `netlify/functions/scheduled-fantasy-update.ts` Netlify scheduled fu
 
 Each workflow lives in `.github/workflows/update-*.yml`. They all support `workflow_dispatch` for manual runs.
 
-This file does not keep its own cron table. The exact cron expression for every workflow is in the generated "Scheduled workflows" table in `AUTOMATION_SCRIPTS.md`, which CI checks against the workflow files on every pull request. The cadence, artifact, and upstream source for each surface are in the master table in `DATA_UPDATE_OPERATIONS.md`.
+This file does not keep its own cron table, since a copy would drift from the workflows. The exact cron expression for each workflow is in its own file under `.github/workflows/`. The cadence, artifact, and upstream source for each surface are in the master table in `DATA_UPDATE_OPERATIONS.md`.
 
 Workflows commit regenerated snapshots back to `main` using the default `GITHUB_TOKEN`. Look for commits authored by `github-actions[bot]`.
 
