@@ -9,7 +9,8 @@ import type {
   Formula1SessionSummary,
   Formula1Snapshot,
 } from "@/types/formula1";
-import { HttpStatusError } from "@/lib/utils";
+import { HttpStatusError, isRecord } from "@/lib/utils";
+import { isTimeoutError, withRetry } from "@/lib/fetchRetry";
 import { setTimeout as sleep } from "node:timers/promises";
 
 const OPEN_F1_API_BASE_URL = "https://api.openf1.org/v1";
@@ -104,11 +105,6 @@ interface BuildFormula1SnapshotDataOptions {
   now?: Date;
   seasonYear?: number;
   minIntervalMs?: number;
-}
-
-
-function isObject(value: unknown): value is Record<string, unknown> {
-  return typeof value === "object" && value !== null;
 }
 
 function normalizeColor(rawColor: string | null | undefined): string | null {
@@ -417,52 +413,37 @@ function createOpenF1Requester(
       url.searchParams.set(key, String(value));
     }
 
-    let lastError: unknown;
-    for (let attempt = 1; attempt <= REQUEST_ATTEMPTS; attempt += 1) {
-      const controller = new AbortController();
-      const timeout = setTimeout(() => controller.abort(), REQUEST_TIMEOUT_MS);
-
-      try {
-        const response = await fetchImpl(url.toString(), {
-          headers: { accept: "application/json" },
-          signal: controller.signal,
-        });
-
-        if (!response.ok) {
-          const error = new HttpStatusError(
-            `Formula 1 data request failed with status ${response.status}.`,
-            response.status
-          );
-          const retryable = response.status === 429 || response.status >= 500;
-          if (!retryable || attempt === REQUEST_ATTEMPTS) throw error;
-          lastError = error;
-          const retryAfter = Number(response.headers.get("retry-after"));
-          await sleep(
-            Number.isFinite(retryAfter) && retryAfter >= 0
-              ? retryAfter * 1_000
-              : 1_000 * 2 ** (attempt - 1)
-          );
-          continue;
+    // withRetry reads `status` and `headers` off the error to decide whether to
+    // retry (429 and 5xx) and to honor Retry-After.
+    return withRetry(
+      `OpenF1 ${normalizedPathname}`,
+      async () => {
+        let response: Response;
+        try {
+          response = await fetchImpl(url.toString(), {
+            headers: { accept: "application/json" },
+            signal: AbortSignal.timeout(REQUEST_TIMEOUT_MS),
+          });
+        } catch (error) {
+          if (isTimeoutError(error)) {
+            throw new HttpStatusError("Formula 1 data request timed out.", 504);
+          }
+          throw error;
         }
-
+        if (!response.ok) {
+          throw Object.assign(
+            new HttpStatusError(
+              `Formula 1 data request failed with status ${response.status}.`,
+              response.status
+            ),
+            { headers: response.headers }
+          );
+        }
         return (await response.json()) as T;
-      } catch (error) {
-        const normalizedError =
-          isObject(error) && error.name === "AbortError"
-            ? new HttpStatusError("Formula 1 data request timed out.", 504)
-            : error;
-        lastError = normalizedError;
-        const status = isObject(normalizedError) ? normalizedError.status : undefined;
-        const retryable =
-          typeof status !== "number" || status === 429 || status >= 500;
-        if (!retryable || attempt === REQUEST_ATTEMPTS) throw normalizedError;
-        await sleep(1_000 * 2 ** (attempt - 1));
-      } finally {
-        clearTimeout(timeout);
-      }
-    }
-
-    throw lastError;
+      },
+      REQUEST_ATTEMPTS,
+      1_000
+    );
   };
 }
 
@@ -478,7 +459,7 @@ async function requestCollection<T>(
     const payload = await request<unknown>(pathname, params);
     return Array.isArray(payload) ? (payload as T[]) : [];
   } catch (error) {
-    if (options.allow404 && isObject(error) && error.status === 404) {
+    if (options.allow404 && isRecord(error) && error.status === 404) {
       return [];
     }
 

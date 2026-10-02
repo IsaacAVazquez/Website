@@ -13,7 +13,7 @@ import type {
   NFLTeamStanding,
 } from "@/types/nfl";
 import { HttpStatusError } from "@/lib/utils";
-import { retryLinear } from "@/lib/fetchRetry";
+import { isTimeoutError, retryLinear } from "@/lib/fetchRetry";
 
 const STANDINGS_URL =
   "https://github.com/nflverse/nfldata/raw/master/data/standings.csv";
@@ -31,10 +31,8 @@ const LEADER_LIMIT = 10;
 const SNAPSHOT_GAME_TYPES = ["REG", "WC", "DIV", "CON", "SB"];
 
 async function fetchTextOnce(url: string): Promise<string> {
-  const controller = new AbortController();
-  const timeout = setTimeout(() => controller.abort(), REQUEST_TIMEOUT_MS);
   try {
-    const response = await fetch(url, { signal: controller.signal });
+    const response = await fetch(url, { signal: AbortSignal.timeout(REQUEST_TIMEOUT_MS) });
     if (!response.ok) {
       throw new HttpStatusError(
         `Unable to load NFL data from ${url} (HTTP ${response.status}).`,
@@ -43,12 +41,10 @@ async function fetchTextOnce(url: string): Promise<string> {
     }
     return await response.text();
   } catch (error) {
-    if (error instanceof Error && error.name === "AbortError") {
+    if (isTimeoutError(error)) {
       throw new HttpStatusError(`NFL data source timed out: ${url}`, 504);
     }
     throw error;
-  } finally {
-    clearTimeout(timeout);
   }
 }
 

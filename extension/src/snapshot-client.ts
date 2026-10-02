@@ -95,19 +95,13 @@ function parseSnapshot(value: unknown, filename: string): SnapshotCacheRecord {
 }
 
 async function requestSnapshot(url: string, filename: string): Promise<SnapshotCacheRecord> {
-  const controller = new AbortController();
-  const timeout = window.setTimeout(() => controller.abort(), 8_000);
-  try {
-    const response = await fetch(url, {
-      cache: "no-store",
-      headers: { Accept: "application/json" },
-      signal: controller.signal,
-    });
-    if (!response.ok) throw new Error(`Rankings request returned ${response.status}.`);
-    return parseSnapshot(await response.json(), filename);
-  } finally {
-    window.clearTimeout(timeout);
-  }
+  const response = await fetch(url, {
+    cache: "no-store",
+    headers: { Accept: "application/json" },
+    signal: AbortSignal.timeout(8_000),
+  });
+  if (!response.ok) throw new Error(`Rankings request returned ${response.status}.`);
+  return parseSnapshot(await response.json(), filename);
 }
 
 function parseSavedSnapshot(value: unknown, filename: string): SnapshotCacheRecord | null {
