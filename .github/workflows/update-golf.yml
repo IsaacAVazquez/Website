@@ -45,68 +45,8 @@ jobs:
         env:
           NODE_ENV: production
 
-      - name: Verify refresh freshness
+      - name: Verify refresh freshness and quality
         run: npx tsx scripts/verifyDataRefresh.ts golf
-
-      - name: Verify golf snapshot quality
-        id: verify_quality
-        run: |
-          node -e "
-          const fs = require('fs');
-
-          const SNAPSHOT_PATH = 'src/data/golfSnapshot.ts';
-          const MIN_PLAYERS = 5;
-
-          if (!fs.existsSync(SNAPSHOT_PATH)) {
-            console.error('::error::Snapshot file is missing at ' + SNAPSHOT_PATH);
-            process.exit(1);
-          }
-
-          const source = fs.readFileSync(SNAPSHOT_PATH, 'utf8');
-          const match = source.match(
-            /export const golfSnapshot: GolfSnapshot = (\{[\s\S]*\});\s*$/
-          );
-          if (!match) {
-            console.error('::error::Could not parse snapshot export from ' + SNAPSHOT_PATH);
-            process.exit(1);
-          }
-
-          let snapshot;
-          try {
-            snapshot = JSON.parse(match[1]);
-          } catch (err) {
-            console.error('::error::JSON.parse failed on golf snapshot body: ' + String(err));
-            process.exit(1);
-          }
-
-          const summary = snapshot.summary ?? {};
-          const tournament = summary.tournament ?? null;
-          const leaderboard = Array.isArray(summary.leaderboard) ? summary.leaderboard.length : 0;
-          const players = Array.isArray(summary.players) ? summary.players.length : 0;
-
-          console.log('Tournament:', tournament && tournament.name);
-          console.log('Leaderboard entries:', leaderboard);
-          console.log('Player options:', players);
-          console.log('Generated at:', tournament && tournament.generatedAt);
-
-          if (!tournament || !tournament.name) {
-            console.error('::error::Golf snapshot has no tournament.');
-            process.exit(1);
-          }
-
-          if (leaderboard < MIN_PLAYERS) {
-            console.error('::error::Refusing to commit a degraded golf snapshot. Expected at least ' + MIN_PLAYERS + ' players, got ' + leaderboard + '.');
-            process.exit(1);
-          }
-
-          fs.writeFileSync(
-            process.env.GITHUB_OUTPUT,
-            'tournament=' + ((tournament && tournament.name) || '') + '\n' +
-              'leaderboard=' + leaderboard + '\n' +
-              'players=' + players + '\n',
-            { flag: 'a' }
-          );
-          "
 
       - name: Check for snapshot changes
         id: check_changes

@@ -49,58 +49,8 @@ jobs:
           FOOTBALL_DATA_API_TOKEN: ${{ secrets.FOOTBALL_DATA_API_TOKEN }}
           NODE_ENV: production
 
-      - name: Verify refresh freshness
+      - name: Verify refresh freshness and quality
         run: npx tsx scripts/verifyDataRefresh.ts premier-league
-
-      # Quality gate: require ≥18 teams in standings before we'll commit.
-      # The PL is a 20-team league; <18 means the upstream returned a
-      # truncated/empty payload. Refusing to commit prevents pushing a
-      # degraded snapshot that the site would then display.
-      - name: Verify Premier League snapshot quality
-        id: verify_quality
-        run: |
-          node -e "
-          const fs = require('fs');
-          const path = require('path');
-
-          const SNAPSHOT_PATH = path.join('src', 'data', 'premierLeagueSnapshot.ts');
-          const raw = fs.readFileSync(SNAPSHOT_PATH, 'utf8');
-          // The snapshot is an exported object literal — extract the JSON-ish
-          // payload between the assignment '= {' and the trailing '};'.
-          // Anchoring on '= {' avoids matching the '{' inside the
-          // 'import type { … }' line at the top of the file.
-          const assign = raw.indexOf('= {');
-          const end = raw.lastIndexOf('};');
-          if (assign === -1 || end === -1 || end <= assign) {
-            console.error('::error::Could not locate snapshot object in premierLeagueSnapshot.ts');
-            process.exit(1);
-          }
-          const start = assign + 2;
-          let snapshot;
-          try {
-            snapshot = JSON.parse(raw.slice(start, end + 1));
-          } catch (err) {
-            console.error('::error::Failed to parse premierLeagueSnapshot.ts payload:', err.message);
-            process.exit(1);
-          }
-
-          const standingsCount = snapshot.summary && Array.isArray(snapshot.summary.standings)
-            ? snapshot.summary.standings.length
-            : 0;
-          const teamSnapshotCount = snapshot.teamSnapshots ? Object.keys(snapshot.teamSnapshots).length : 0;
-          console.log('Teams in standings:', standingsCount);
-          console.log('Team snapshots:', teamSnapshotCount);
-
-          // The Premier League has 20 clubs. Allow a small slack of 2
-          // (e.g. mid-season disruption) but anything below 18 is broken.
-          const MIN_TEAMS = 18;
-          if (standingsCount < MIN_TEAMS) {
-            console.error('::error::Standings has only ' + standingsCount + ' teams (expected ≥' + MIN_TEAMS + '). Refusing to commit a degraded snapshot.');
-            process.exit(1);
-          }
-
-          fs.writeFileSync(process.env.GITHUB_OUTPUT, 'standings_count=' + standingsCount + '\nteam_snapshots=' + teamSnapshotCount + '\n', { flag: 'a' });
-          "
 
       - name: Check for snapshot changes
         id: check_changes

@@ -84,67 +84,9 @@ jobs:
         env:
           NODE_ENV: production
 
-      - name: Verify refresh freshness
+      - name: Verify refresh freshness and quality
         if: steps.window.outputs.active == 'true'
         run: npx tsx scripts/verifyDataRefresh.ts world-cup
-
-      - name: Verify World Cup snapshot quality
-        id: verify_quality
-        if: steps.window.outputs.active == 'true'
-        run: |
-          node -e "
-          const fs = require('fs');
-
-          const SNAPSHOT_PATH = 'src/data/worldCupSnapshot.ts';
-
-          if (!fs.existsSync(SNAPSHOT_PATH)) {
-            console.error('::error::Snapshot file is missing at ' + SNAPSHOT_PATH);
-            process.exit(1);
-          }
-
-          const source = fs.readFileSync(SNAPSHOT_PATH, 'utf8');
-          const match = source.match(
-            /export const worldCupSnapshot: WorldCupSnapshot = (\{[\s\S]*\});\s*$/
-          );
-          if (!match) {
-            console.error('::error::Could not parse snapshot export from ' + SNAPSHOT_PATH);
-            process.exit(1);
-          }
-
-          let snapshot;
-          try {
-            snapshot = JSON.parse(match[1]);
-          } catch (err) {
-            console.error('::error::JSON.parse failed on World Cup snapshot body: ' + String(err));
-            process.exit(1);
-          }
-
-          const tournament = snapshot.tournament || null;
-          const groups = Array.isArray(snapshot.groups) ? snapshot.groups.length : 0;
-          const teams = Array.isArray(snapshot.teamOptions) ? snapshot.teamOptions.length : 0;
-          const upcoming = Array.isArray(snapshot.upcomingFixtures) ? snapshot.upcomingFixtures.length : 0;
-          const recent = Array.isArray(snapshot.recentFixtures) ? snapshot.recentFixtures.length : 0;
-
-          console.log('Tournament:', tournament && tournament.name);
-          console.log('Phase:', tournament && tournament.phase);
-          console.log('Groups:', groups, 'Teams:', teams, 'Upcoming:', upcoming, 'Recent:', recent);
-
-          // The tournament block must always survive. Empty groups/fixtures are
-          // legitimate before kickoff, so they are reported but never fail the run.
-          if (!tournament || !tournament.name) {
-            console.error('::error::World Cup snapshot has no tournament block.');
-            process.exit(1);
-          }
-
-          fs.writeFileSync(
-            process.env.GITHUB_OUTPUT,
-            'phase=' + ((tournament && tournament.phase) || '') + '\n' +
-              'groups=' + groups + '\n' +
-              'teams=' + teams + '\n' +
-              'fixtures=' + (upcoming + recent) + '\n',
-            { flag: 'a' }
-          );
-          "
 
       - name: Check for snapshot changes
         id: check_changes

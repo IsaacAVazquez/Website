@@ -29,6 +29,25 @@ function readPath(value: unknown, segments: readonly string[]): unknown {
   return current;
 }
 
+function count(value: unknown): number {
+  if (Array.isArray(value) || typeof value === "string") return value.length;
+  if (typeof value === "number") return Number.isFinite(value) ? value : 0;
+  return value && typeof value === "object" ? Object.keys(value).length : 0;
+}
+
+/** Each registered minimum the payload falls short of, as "path: count < minimum". */
+export function findShortfalls(
+  payload: unknown,
+  minimums: Readonly<Record<string, number>> = {}
+): string[] {
+  return Object.entries(minimums).flatMap(([key, minimum]) => {
+    const total = key
+      .split("+")
+      .reduce((sum, part) => sum + count(readPath(payload, part.split("."))), 0);
+    return total < minimum ? [`${key}: ${total} < ${minimum}`] : [];
+  });
+}
+
 async function readArtifact(
   artifactPath: string,
   exportName?: string
@@ -117,6 +136,17 @@ async function main() {
   if (manifest.outcome !== "fresh") {
     throw new Error(
       `${surface} refresh preserved an unavailable or stale artifact (${manifest.sourceAsOf ?? "missing timestamp"}).`
+    );
+  }
+
+  const artifact = DATA_REFRESH_ARTIFACTS[surface]!;
+  const shortfalls = findShortfalls(
+    await readArtifact(artifact.artifactPath, artifact.exportName),
+    artifact.minimums
+  );
+  if (shortfalls.length > 0) {
+    throw new Error(
+      `${surface} snapshot looks degraded, refusing to commit it: ${shortfalls.join(", ")}.`
     );
   }
 }

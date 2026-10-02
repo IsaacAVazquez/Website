@@ -42,59 +42,8 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NODE_ENV: production
 
-      - name: Verify refresh freshness
+      - name: Verify refresh freshness and quality
         run: npx tsx scripts/verifyDataRefresh.ts github-trending
-
-      - name: Verify snapshot quality
-        id: verify_quality
-        run: |
-          node -e "
-          const fs = require('fs');
-          const path = require('path');
-
-          const SNAPSHOT_PATH = 'src/data/githubTrendingSnapshot.ts';
-          const MIN_REPOS = 50; // 14 segments x ~10 repos = ~140; 50 is a safe floor.
-
-          if (!fs.existsSync(SNAPSHOT_PATH)) {
-            console.error('::error::Snapshot file is missing at ' + SNAPSHOT_PATH);
-            process.exit(1);
-          }
-
-          const source = fs.readFileSync(SNAPSHOT_PATH, 'utf8');
-          const match = source.match(
-            /export const githubTrendingSnapshot: GitHubTrendingSnapshot = (\{[\s\S]*\});\s*\$/
-          );
-          if (!match) {
-            console.error('::error::Could not parse snapshot export from ' + SNAPSHOT_PATH);
-            process.exit(1);
-          }
-
-          let snapshot;
-          try {
-            snapshot = JSON.parse(match[1]);
-          } catch (err) {
-            console.error('::error::JSON.parse failed on snapshot body: ' + String(err));
-            process.exit(1);
-          }
-
-          const repoCount = Number(snapshot && snapshot.totals && snapshot.totals.repositories);
-          const sourceStatus = snapshot?.sourceStatus?.status ?? 'unknown';
-          const failedSegments = snapshot?.sourceStatus?.failedSegments ?? [];
-          console.log('Snapshot repository count:', repoCount);
-          console.log('Source status:', sourceStatus);
-          console.log('Failed segments:', failedSegments.join(', ') || 'none');
-
-          if (!Number.isFinite(repoCount) || repoCount < MIN_REPOS) {
-            console.error('::error::Refusing to commit a degraded snapshot. Got ' + repoCount + ' repos; expected at least ' + MIN_REPOS + '.');
-            process.exit(1);
-          }
-
-          if (sourceStatus === 'degraded') {
-            console.warn('::warning::Snapshot is degraded; failed segments are explicitly recorded and prior segment data is reused when available.');
-          }
-
-          fs.writeFileSync(process.env.GITHUB_OUTPUT, 'repo_count=' + repoCount + '\n', { flag: 'a' });
-          "
 
       - name: Check for snapshot changes
         id: check_changes

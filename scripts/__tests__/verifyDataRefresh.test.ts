@@ -1,4 +1,6 @@
-import { buildRefreshManifest } from "../verifyDataRefresh";
+import { buildRefreshManifest, findShortfalls } from "../verifyDataRefresh";
+import { DATA_REFRESH_ARTIFACTS } from "../dataRefreshRegistry";
+import { readGeneratedSnapshot } from "../snapshotFallback";
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
 
@@ -59,5 +61,37 @@ describe("data refresh manifests", () => {
 
     expect(snapshot.upstreamUpdatedAt).not.toBe(snapshot.generatedAt);
     expect(manifest.sourceAsOf).toBe(snapshot.upstreamUpdatedAt);
+  });
+});
+
+describe("snapshot quality minimums", () => {
+  const gated = Object.values(DATA_REFRESH_ARTIFACTS).filter(
+    (artifact) => artifact?.minimums
+  );
+
+  it("gates the ten surfaces whose workflow checks were only counts", () => {
+    expect(gated.map((artifact) => artifact!.surface).sort()).toEqual(
+      ["bay-area-transit", "earthquake", "github-trending", "golf", "la-liga", "mlb", "nba", "nfl", "premier-league", "world-cup"]
+    );
+  });
+
+  // The committed snapshots shipped through the old inline gates, so each one
+  // has to clear the same minimums here. A misspelled path counts as zero and
+  // fails this.
+  it.each(gated.map((artifact) => [artifact!.surface, artifact!] as const))(
+    "passes the committed %s snapshot",
+    (_surface, artifact) => {
+      const payload = readGeneratedSnapshot(artifact.artifactPath, artifact.exportName!);
+      expect(findShortfalls(payload, artifact.minimums)).toEqual([]);
+    }
+  );
+
+  it("names each count under its minimum and sums joined paths", () => {
+    const payload = { a: [1], b: { c: "xy", d: { e: 1 } }, n: Number.NaN };
+    expect(findShortfalls(payload, { a: 1, "b.c": 3, "a+b.d": 2, n: 1, missing: 1 })).toEqual([
+      "b.c: 2 < 3",
+      "n: 0 < 1",
+      "missing: 0 < 1",
+    ]);
   });
 });

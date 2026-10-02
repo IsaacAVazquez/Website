@@ -47,71 +47,8 @@ jobs:
         env:
           NODE_ENV: production
 
-      - name: Verify refresh freshness
+      - name: Verify refresh freshness and quality
         run: npx tsx scripts/verifyDataRefresh.ts earthquake
-
-      - name: Verify earthquake snapshot quality
-        id: verify_quality
-        run: |
-          node -e "
-          const fs = require('fs');
-          const crypto = require('crypto');
-
-          const SNAPSHOT_PATH = 'src/data/earthquakeSnapshot.ts';
-
-          if (!fs.existsSync(SNAPSHOT_PATH)) {
-            console.error('::error::Snapshot file is missing at ' + SNAPSHOT_PATH);
-            process.exit(1);
-          }
-
-          const source = fs.readFileSync(SNAPSHOT_PATH, 'utf8');
-          const match = source.match(
-            /export const earthquakeSnapshot: EarthquakeSnapshot = (\{[\s\S]*\});\s*$/
-          );
-          if (!match) {
-            console.error('::error::Could not parse snapshot export from ' + SNAPSHOT_PATH);
-            process.exit(1);
-          }
-
-          let snapshot;
-          try {
-            snapshot = JSON.parse(match[1]);
-          } catch (err) {
-            console.error('::error::JSON.parse failed on earthquake snapshot body: ' + String(err));
-            process.exit(1);
-          }
-
-          const summary = snapshot.summary ?? {};
-          const recent = Array.isArray(summary.recent) ? summary.recent.length : 0;
-          const significant = Array.isArray(summary.significant) ? summary.significant.length : 0;
-          const regions = Array.isArray(summary.regions) ? summary.regions.length : 0;
-          const total7d = summary.heroStats ? summary.heroStats.total7d : 0;
-          const revision = crypto
-            .createHash('sha256')
-            .update(JSON.stringify(summary))
-            .digest('hex');
-
-          console.log('Recent (24h):', recent);
-          console.log('Significant (30d):', significant);
-          console.log('Regions:', regions);
-          console.log('Total 7d:', total7d);
-          console.log('Feed updated:', summary.feedUpdated);
-          console.log('Revision:', revision);
-
-          if (recent === 0 && significant === 0 && regions === 0) {
-            console.error('::error::Refusing to commit a degraded earthquake snapshot: every section is empty.');
-            process.exit(1);
-          }
-
-          fs.writeFileSync(
-            process.env.GITHUB_OUTPUT,
-            'recent=' + recent + '\n' +
-              'significant=' + significant + '\n' +
-              'total7d=' + total7d + '\n' +
-              'revision=' + revision + '\n',
-            { flag: 'a' }
-          );
-          "
 
       - name: Check for snapshot changes
         id: check_changes
