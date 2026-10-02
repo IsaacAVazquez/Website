@@ -9,17 +9,7 @@ All notable changes to this repository are documented here. Format: `YYYY-MM-DD`
 - Name the product roles and pin the job write-ups on Home ([#532](https://github.com/IsaacAVazquez/Website/pull/532)).
 - Cut about 39k lines of dead and duplicated code ([#543](https://github.com/IsaacAVazquez/Website/pull/543)).
 - Bump tsx from 4.23.1 to 4.23.15 ([#544](https://github.com/IsaacAVazquez/Website/pull/544)).
-- Fix 12 correctness, security, persistence, and publication issues from the repository audit:
-  - Sanitize restored investment symbols and render chart tooltips with text nodes to prevent XSS.
-  - Bind draft companion away mode to provider room identity and verify candidate identity in confirmation dialogs.
-  - Subscribe to storage changes and merge edits against the latest validated save in museum log, investments, retirement planner, and fantasy draft trackers.
-  - Guard hidden search answers against prototype property resolution and cancel superseded search requests.
-  - Restamp golf snapshots only for verified final tournaments completed within 45 days.
-  - Build and publish weekly fantasy snapshots first, clean up rejected best ball output before committing, and expand workflow timeout budget to 45 minutes.
-  - Validate newsletter JSON payload shape against null and non-object bodies.
-  - Derive weekly and waiver sitemap dates from the weekly snapshot.
-  - Update `brace-expansion` development dependency to 5.0.12 to resolve security advisories.
-  - Validate production webpack snapshot file and dependency contents with hashes to prevent cached symlink failures.
+- Bump contourpy from 1.3.3 to 1.4.0 in /scripts ([#549](https://github.com/IsaacAVazquez/Website/pull/549)).
 
 ---
 
