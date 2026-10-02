@@ -1,7 +1,7 @@
 "use client";
 
-import { startTransition, useEffect, useMemo, useState } from "react";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useEffect, useMemo, useState } from "react";
+import { useSearchParams } from "next/navigation";
 import { Catalog97ProjectHero } from "@/components/catalog97/Catalog97ProjectHero";
 import { PROJECT_PRESS } from "@/constants/projectPress";
 import { EmptyPanel } from "@/components/football/EmptyPanel";
@@ -29,6 +29,7 @@ import type {
   FrontierProviderFilter,
   FrontierTierFilter,
 } from "@/types/frontierModels";
+import { useRouteSync } from "@/hooks/useRouteSync";
 
 interface FrontierModelsClientProps {
   initialState: FrontierModelsRouteState;
@@ -64,7 +65,6 @@ export function FrontierModelsClient({
   initialState,
   snapshot,
 }: FrontierModelsClientProps) {
-  const router = useRouter();
   const searchParams = useSearchParams();
 
   const hasManagedParams =
@@ -79,28 +79,14 @@ export function FrontierModelsClient({
     : initialState;
   const resolvedState = resolveFrontierModelsState(routeState, snapshot);
 
-  const currentQuery = searchParams.toString();
-  const currentHref = `${FRONTIER_MODELS_ROUTE}${currentQuery ? `?${currentQuery}` : ""}`;
   const desiredHref = buildFrontierModelsHref(resolvedState, searchParams);
 
-  useEffect(() => {
-    if (currentHref === desiredHref) {
-      return;
-    }
-    startTransition(() => {
-      router.replace(desiredHref, { scroll: false });
-    });
-  }, [currentHref, desiredHref, router]);
+  const pushHref = useRouteSync(FRONTIER_MODELS_ROUTE, desiredHref);
 
   function navigate(nextState: FrontierModelsRouteState) {
     const resolvedNext = resolveFrontierModelsState(nextState, snapshot);
     const href = buildFrontierModelsHref(resolvedNext, searchParams);
-    if (href === currentHref) {
-      return;
-    }
-    startTransition(() => {
-      router.push(href, { scroll: false });
-    });
+    pushHref(href);
   }
 
   const filteredModels = useMemo(

@@ -1,7 +1,7 @@
 "use client";
 
-import { startTransition, useEffect, useMemo, useState } from "react";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useEffect, useMemo, useState } from "react";
+import { useSearchParams } from "next/navigation";
 import { CalendarDays, Clock, Flag, Medal, X } from "lucide-react";
 import {
   CrestAvatar,
@@ -38,6 +38,7 @@ import { bracketTree } from "./bracketTree";
 import { WorldCupBracket } from "./WorldCupBracket";
 import "./world-cup.css";
 import { DATE_ONLY_TIME_ZONE, DISPLAY_TIME_ZONE } from "@/lib/date-formatters";
+import { useRouteSync } from "@/hooks/useRouteSync";
 
 interface WorldCupClientProps {
   initialState: WorldCupRouteState;
@@ -146,10 +147,7 @@ export function WorldCupClient({
   summary,
   initialTeamSnapshot,
 }: WorldCupClientProps) {
-  const router = useRouter();
   const searchParams = useSearchParams();
-  const currentQuery = searchParams.toString();
-  const currentHref = `${WORLD_CUP_ROUTE}${currentQuery ? `?${currentQuery}` : ""}`;
 
   const { tournament, groups, knockout, scorers, teamOptions } = summary;
   const teamOptionById = useMemo(
@@ -190,12 +188,7 @@ export function WorldCupClient({
     searchParams
   );
 
-  useEffect(() => {
-    if (currentHref === desiredHref) return;
-    startTransition(() => {
-      router.replace(desiredHref, { scroll: false });
-    });
-  }, [currentHref, desiredHref, router]);
+  const pushHref = useRouteSync(WORLD_CUP_ROUTE, desiredHref);
 
   useEffect(() => {
     if (!selectedTeamId) {
@@ -242,10 +235,7 @@ export function WorldCupClient({
 
   function navigate(nextState: WorldCupRouteState) {
     const href = buildWorldCupHref(nextState, searchParams);
-    if (href === currentHref) return;
-    startTransition(() => {
-      router.push(href, { scroll: false });
-    });
+    pushHref(href);
   }
 
   function handleViewChange(view: WorldCupView) {

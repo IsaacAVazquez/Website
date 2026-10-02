@@ -1,13 +1,12 @@
 "use client";
 
 import {
-  startTransition,
   useEffect,
   useMemo,
   useState,
   type CSSProperties,
 } from "react";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useSearchParams } from "next/navigation";
 import { ExternalLink } from "lucide-react";
 import { DATE_ONLY_TIME_ZONE } from "@/lib/date-formatters";
 import {
@@ -42,6 +41,7 @@ import {
 import { divisionBoard } from "./scoreboard";
 import { MlbScoreboard } from "./MlbScoreboard";
 import "./mlb.css";
+import { useRouteSync } from "@/hooks/useRouteSync";
 
 interface MlbClientProps {
   initialState: MlbRouteState;
@@ -107,10 +107,7 @@ function leadersToEntries(
 }
 
 export function MlbClient({ initialState, summary, initialTeamSnapshot }: MlbClientProps) {
-  const router = useRouter();
   const searchParams = useSearchParams();
-  const currentQuery = searchParams.toString();
-  const currentHref = `${MLB_ROUTE}${currentQuery ? `?${currentQuery}` : ""}`;
 
   const standings = summary.standings;
   // Route-state helpers operate on the lean `summary` data the server already
@@ -206,12 +203,7 @@ export function MlbClient({ initialState, summary, initialTeamSnapshot }: MlbCli
     searchParams
   );
 
-  useEffect(() => {
-    if (currentHref === desiredHref) return;
-    startTransition(() => {
-      router.replace(desiredHref, { scroll: false });
-    });
-  }, [currentHref, desiredHref, router]);
+  const pushHref = useRouteSync(MLB_ROUTE, desiredHref);
 
   useEffect(() => {
     if (!selectedRow) return;
@@ -250,10 +242,7 @@ export function MlbClient({ initialState, summary, initialTeamSnapshot }: MlbCli
 
   function navigate(nextState: MlbRouteState) {
     const href = buildHref(nextState, defaultState, aliasMap, searchParams);
-    if (href === currentHref) return;
-    startTransition(() => {
-      router.push(href, { scroll: false });
-    });
+    pushHref(href);
   }
 
   function handleViewChange(view: MlbView) {

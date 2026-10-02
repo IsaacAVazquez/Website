@@ -1,13 +1,12 @@
 "use client";
 
 import {
-  startTransition,
   useEffect,
   useMemo,
   useState,
   type CSSProperties,
 } from "react";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useSearchParams } from "next/navigation";
 import { ExternalLink } from "lucide-react";
 import { DISPLAY_TIME_ZONE } from "@/lib/date-formatters";
 import {
@@ -48,6 +47,7 @@ import {
   PREMIER_LEAGUE_VIEW_LABELS,
   PREMIER_LEAGUE_VIEW_OPTIONS,
 } from "./premier-league-state";
+import { useRouteSync } from "@/hooks/useRouteSync";
 
 interface PremierLeagueClientProps {
   initialState: PremierLeagueRouteState;
@@ -107,10 +107,7 @@ export function PremierLeagueClient({
   summary,
   initialTeamSnapshot,
 }: PremierLeagueClientProps) {
-  const router = useRouter();
   const searchParams = useSearchParams();
-  const currentQuery = searchParams.toString();
-  const currentHref = `/premier-league${currentQuery ? `?${currentQuery}` : ""}`;
   const hasManagedParams =
     searchParams.get("view") !== null ||
     searchParams.get("team") !== null ||
@@ -126,15 +123,11 @@ export function PremierLeagueClient({
     searchParams
   );
 
-  useEffect(() => {
-    if (currentHref === desiredHref) return;
-    startTransition(() => { router.replace(desiredHref, { scroll: false }); });
-  }, [currentHref, desiredHref, router]);
+  const pushHref = useRouteSync("/premier-league", desiredHref);
 
   function navigate(nextState: PremierLeagueRouteState) {
     const href = buildPremierLeagueHref(nextState, searchParams);
-    if (href === currentHref) return;
-    startTransition(() => { router.push(href, { scroll: false }); });
+    pushHref(href);
   }
 
   function handleViewChange(view: PremierLeagueView) {

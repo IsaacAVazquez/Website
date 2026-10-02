@@ -1,13 +1,12 @@
 "use client";
 
 import {
-  startTransition,
   useEffect,
   useMemo,
   useState,
   type CSSProperties,
 } from "react";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useSearchParams } from "next/navigation";
 import { ExternalLink } from "lucide-react";
 import { DATE_ONLY_TIME_ZONE } from "@/lib/date-formatters";
 import {
@@ -50,6 +49,7 @@ import {
   normalizeState,
   resolveDefaultState,
 } from "./la-liga-state.core";
+import { useRouteSync } from "@/hooks/useRouteSync";
 
 interface LaLigaClientProps {
   initialState: LaLigaRouteState;
@@ -97,10 +97,7 @@ export function LaLigaClient({
   summary,
   initialTeamSnapshot,
 }: LaLigaClientProps) {
-  const router = useRouter();
   const searchParams = useSearchParams();
-  const currentQuery = searchParams.toString();
-  const currentHref = `${LA_LIGA_ROUTE}${currentQuery ? `?${currentQuery}` : ""}`;
   const clubs = summary.clubs;
   const aliasMap = useMemo(() => buildClubAliasMap(summary.teams), [summary.teams]);
   const defaultState = useMemo(() => resolveDefaultState(summary.clubs), [summary.clubs]);
@@ -174,25 +171,11 @@ export function LaLigaClient({
     searchParams
   );
 
-  useEffect(() => {
-    if (currentHref === desiredHref) {
-      return;
-    }
-
-    startTransition(() => {
-      router.replace(desiredHref, { scroll: false });
-    });
-  }, [currentHref, desiredHref, router]);
+  const pushHref = useRouteSync(LA_LIGA_ROUTE, desiredHref);
 
   function navigate(nextState: LaLigaRouteState) {
     const href = buildHref(nextState, defaultState, aliasMap, searchParams);
-    if (href === currentHref) {
-      return;
-    }
-
-    startTransition(() => {
-      router.push(href, { scroll: false });
-    });
+    pushHref(href);
   }
 
   function handleViewChange(view: LaLigaView) {

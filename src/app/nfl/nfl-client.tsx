@@ -1,7 +1,7 @@
 "use client";
 
-import { startTransition, useEffect, useMemo, useState } from "react";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useEffect, useMemo, useState } from "react";
+import { useSearchParams } from "next/navigation";
 import { CircleAlert, ExternalLink, Flag } from "lucide-react";
 import { DATE_ONLY_TIME_ZONE } from "@/lib/date-formatters";
 import { MetricCard, CrestAvatar, TeamResultPill, FixtureCard } from "@/components/football";
@@ -34,6 +34,7 @@ import {
   normalizeState,
   resolveDefaultState,
 } from "./nfl-state.core";
+import { useRouteSync } from "@/hooks/useRouteSync";
 
 interface NflClientProps {
   initialState: NFLRouteState;
@@ -142,10 +143,7 @@ function buildDivisionGroups(
 }
 
 export function NflClient({ initialState, summary, initialTeamSnapshot }: NflClientProps) {
-  const router = useRouter();
   const searchParams = useSearchParams();
-  const currentQuery = searchParams.toString();
-  const currentHref = `${NFL_ROUTE}${currentQuery ? `?${currentQuery}` : ""}`;
   const lead = PROJECT_PRESS[NFL_ROUTE].lead;
   const standfirst =
     "I wanted the playoff picture as it would stand if the season ended today. The snapshot carries no seeds, so I derive them from the standings, the four division leaders first and then the three best of the rest, and draw the line where the field ends.";
@@ -246,19 +244,11 @@ export function NflClient({ initialState, summary, initialTeamSnapshot }: NflCli
     searchParams
   );
 
-  useEffect(() => {
-    if (currentHref === desiredHref) return;
-    startTransition(() => {
-      router.replace(desiredHref, { scroll: false });
-    });
-  }, [currentHref, desiredHref, router]);
+  const pushHref = useRouteSync(NFL_ROUTE, desiredHref);
 
   function navigate(nextState: NFLRouteState) {
     const href = buildHref(nextState, defaultState, aliasMap, searchParams);
-    if (href === currentHref) return;
-    startTransition(() => {
-      router.push(href, { scroll: false });
-    });
+    pushHref(href);
   }
 
   function handleViewChange(view: NFLView) {

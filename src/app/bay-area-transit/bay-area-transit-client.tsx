@@ -1,13 +1,12 @@
 "use client";
 
 import {
-  startTransition,
   useEffect,
   useMemo,
   useState,
   type CSSProperties,
 } from "react";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useSearchParams } from "next/navigation";
 import { CircleAlert, Navigation, ShieldCheck, TriangleAlert } from "lucide-react";
 import type {
   TransitLine,
@@ -29,6 +28,7 @@ import { Catalog97ProjectHero } from "@/components/catalog97/Catalog97ProjectHer
 import { PROJECT_PRESS } from "@/constants/projectPress";
 import { TransitSignature } from "./TransitSignature";
 import "./bay-area-transit.css";
+import { useRouteSync } from "@/hooks/useRouteSync";
 
 interface BayAreaTransitClientProps {
   initialState: TransitRouteState;
@@ -182,11 +182,8 @@ export function BayAreaTransitClient({
   summary: initialSummary,
   initialStationBoard,
 }: BayAreaTransitClientProps) {
-  const router = useRouter();
   const searchParams = useSearchParams();
   const [summary, setSummary] = useState(initialSummary);
-  const currentQuery = searchParams.toString();
-  const currentHref = `${TRANSIT_ROUTE}${currentQuery ? `?${currentQuery}` : ""}`;
   const hasManagedParams =
     searchParams.get("view") !== null || searchParams.get("station") !== null;
   const routeState = hasManagedParams
@@ -281,15 +278,7 @@ export function BayAreaTransitClient({
     };
   }, []);
 
-  useEffect(() => {
-    if (currentHref === desiredHref) {
-      return;
-    }
-
-    startTransition(() => {
-      router.replace(desiredHref, { scroll: false });
-    });
-  }, [currentHref, desiredHref, router]);
+  const pushHref = useRouteSync(TRANSIT_ROUTE, desiredHref);
 
   useEffect(() => {
     if (!selectedStationId) {
@@ -369,13 +358,7 @@ export function BayAreaTransitClient({
 
   function navigate(nextState: TransitRouteState) {
     const href = buildTransitHref(nextState, searchParams);
-    if (href === currentHref) {
-      return;
-    }
-
-    startTransition(() => {
-      router.push(href, { scroll: false });
-    });
+    pushHref(href);
   }
 
   function handleViewChange(view: TransitView) {

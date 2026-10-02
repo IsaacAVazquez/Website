@@ -1,7 +1,7 @@
 "use client";
 
-import { startTransition, useEffect, useMemo, useState } from "react";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useEffect, useMemo, useState } from "react";
+import { useSearchParams } from "next/navigation";
 import { CircleAlert, ExternalLink } from "lucide-react";
 import { DATE_ONLY_TIME_ZONE } from "@/lib/date-formatters";
 import {
@@ -36,6 +36,7 @@ import {
   normalizeState,
   resolveDefaultState,
 } from "./nba-state.core";
+import { useRouteSync } from "@/hooks/useRouteSync";
 
 interface NbaClientProps {
   initialState: NbaRouteState;
@@ -85,10 +86,7 @@ function toLadderTeams(teams: NbaTeam[], teamColors: Record<string, string | nul
 }
 
 export function NbaClient({ initialState, summary, initialTeamSnapshot, teamColors }: NbaClientProps) {
-  const router = useRouter();
   const searchParams = useSearchParams();
-  const currentQuery = searchParams.toString();
-  const currentHref = `${NBA_ROUTE}${currentQuery ? `?${currentQuery}` : ""}`;
   const lead = PROJECT_PRESS[NBA_ROUTE].lead;
   const standfirst =
     "I wanted the playoff picture in one glance, from who leads each conference, to how many games separate the cutoff, to who's already out, so this sorts every team into a band, in, play-in, or out, with the gap at each line written right on it.";
@@ -190,19 +188,11 @@ export function NbaClient({ initialState, summary, initialTeamSnapshot, teamColo
     searchParams
   );
 
-  useEffect(() => {
-    if (currentHref === desiredHref) return;
-    startTransition(() => {
-      router.replace(desiredHref, { scroll: false });
-    });
-  }, [currentHref, desiredHref, router]);
+  const pushHref = useRouteSync(NBA_ROUTE, desiredHref);
 
   function navigate(nextState: NbaRouteState) {
     const href = buildHref(nextState, defaultState, aliasMap, searchParams);
-    if (href === currentHref) return;
-    startTransition(() => {
-      router.push(href, { scroll: false });
-    });
+    pushHref(href);
   }
 
   function handleViewChange(view: NbaView) {
