@@ -154,15 +154,9 @@ export function useStockData<T>(
   section: InvestmentSection | string
 ): UseStockDataReturn<T> {
   const [state, dispatch] = useReducer(stockDataReducer<T>, EMPTY_STATE as UseStockDataState<T>);
-  const isMounted = useRef(true);
   const latestRequestId = useRef(0);
   const previousResourceKey = useRef<string | null>(null);
   const [fetchKey, setFetchKey] = useState(0);
-
-  useEffect(() => {
-    isMounted.current = true;
-    return () => { isMounted.current = false; };
-  }, []);
 
   useEffect(() => {
     if (!symbol) {
@@ -183,11 +177,11 @@ export function useStockData<T>(
 
     fetchSection<T>(upperSymbol, section)
       .then((envelope) => {
-        if (cancelled || !isMounted.current || latestRequestId.current !== requestId) return;
+        if (cancelled || latestRequestId.current !== requestId) return;
         dispatch({ type: "success", envelope });
       })
       .catch((err: StockDataError) => {
-        if (cancelled || !isMounted.current || latestRequestId.current !== requestId) return;
+        if (cancelled || latestRequestId.current !== requestId) return;
         dispatch({ type: "error", error: err, preserveData });
       });
 

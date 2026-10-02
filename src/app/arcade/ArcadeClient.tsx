@@ -3,6 +3,7 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { isKonami, pushKonamiKey, shouldIgnoreKey } from "@/components/catalog97/konami";
+import { readBrowserStorageString, writeBrowserStorageString } from "@/lib/browserStorage";
 import styles from "./arcade.module.css";
 
 /*
@@ -41,8 +42,7 @@ type Feedback = { cell: number; type: "hit" | "miss" } | null;
 const COLORS = ["cyan", "magenta", "acid"] as const;
 
 function readHiScore(): number {
-  if (typeof window === "undefined") return 0;
-  const raw = window.localStorage.getItem(HISCORE_KEY);
+  const raw = readBrowserStorageString(HISCORE_KEY).value;
   const n = raw ? Number.parseInt(raw, 10) : 0;
   return Number.isFinite(n) && n > 0 ? n : 0;
 }
@@ -134,11 +134,7 @@ export default function ArcadeClient() {
         const finalScore = cheatRunRef.current ? 0 : scoreRef.current;
         const stored = readHiScore();
         if (finalScore > stored) {
-          try {
-            window.localStorage.setItem(HISCORE_KEY, String(finalScore));
-          } catch {
-            /* storage may be unavailable — score just won't persist */
-          }
+          writeBrowserStorageString(HISCORE_KEY, String(finalScore));
         }
         setHiScore(Math.max(stored, finalScore));
         statusRef.current = "over";

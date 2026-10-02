@@ -54,7 +54,8 @@ import {
 import { useMBAApplications } from "@/hooks/useMBAApplications";
 import { useMBAJobs } from "@/hooks/useMBAJobs";
 import { useClientNow } from "@/hooks/useClientNow";
-import { UPDATED_AT_FORMATTER } from "@/lib/date-formatters";
+import { UPDATED_AT_FORMATTER, toLocalDateKey as getTodayDateKey } from "@/lib/date-formatters";
+import { downloadFile as downloadTextFile } from "@/lib/downloadFile";
 import { MBA_COMPANIES, MBA_COMPANY_MAP } from "@/constants/mba-companies";
 import {
   MBA_ROLE_FAMILY_LABELS,
@@ -480,28 +481,11 @@ function hasActiveFilters(state: MBAJobsSearchState): boolean {
   );
 }
 
-function getTodayDateKey(now = new Date()): string {
-  const year = now.getFullYear();
-  const month = String(now.getMonth() + 1).padStart(2, "0");
-  const day = String(now.getDate()).padStart(2, "0");
-  return `${year}-${month}-${day}`;
-}
-
 function formatDateKey(value: string | null): string {
   if (!value) return "";
   const date = new Date(`${value}T00:00:00`);
   if (Number.isNaN(date.getTime())) return value;
   return DATE_KEY_FORMATTER.format(date);
-}
-
-function downloadTextFile(filename: string, content: string, type: string) {
-  const blob = new Blob([content], { type });
-  const url = URL.createObjectURL(blob);
-  const anchor = document.createElement("a");
-  anchor.href = url;
-  anchor.download = filename;
-  anchor.click();
-  URL.revokeObjectURL(url);
 }
 
 // ---------------------------------------------------------------------------
