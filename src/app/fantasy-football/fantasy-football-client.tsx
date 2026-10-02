@@ -2234,7 +2234,7 @@ export function FantasyFootballClient({ initialState, initialSnapshot = null }: 
                     <button
                       type="button"
                       onClick={() => updateRouteState({ position: "overall" })}
-                      className="inline-flex min-h-touch items-center border border-[var(--c97-rule)] bg-[var(--c97-surface)] px-4 font-mono text-2xs uppercase tracking-[0.06em] text-[var(--c97-ink)] hover:border-[var(--c97-ink)] hover:bg-[var(--c97-overlay)]"
+                      className="c97-btn c97-btn-outline"
                     >
                       Found on the overall board
                     </button>

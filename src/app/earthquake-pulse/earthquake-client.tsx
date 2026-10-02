@@ -288,7 +288,7 @@ function RegionList({
   onSelect: (id: string) => void;
 }) {
   if (summary.regions.length === 0) {
-    return <p className="c97-meta">No region logged a quake in the past seven days.</p>;
+    return <p className="c97-meta">No region logged a magnitude 2.5 or larger quake in the past seven days.</p>;
   }
   const maxCount = Math.max(1, ...summary.regions.map((r) => r.count));
   return (

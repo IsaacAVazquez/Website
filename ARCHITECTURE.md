@@ -39,7 +39,7 @@ src/app/layout.tsx
 
 - `Catalog97Shell` supplies the header, the only `main` landmark, and the espresso footer on every route, either directly or through `Catalog97ToolShell`
 - the seven designed routes are the ones in `src/constants/catalog97Nav.ts`
-- `Catalog97ToolShell` adds an optional title band and the build-note aside
+- `Catalog97ToolShell` adds the build-note aside
 - see `AGENTS.md` for the full shell description
 
 ---

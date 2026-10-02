@@ -148,7 +148,7 @@ export function MissionControlHero({
       <section
         data-testid="mission-hero"
         aria-label="Next launch hero"
-        className="border border-[var(--c97-rule)] bg-[var(--c97-field)]/90 p-6 sm:p-8"
+        className="c97-panel"
       >
         <div className="grid gap-6 lg:grid-cols-[minmax(0,1.25fr)_220px]">
           <div className="space-y-3">

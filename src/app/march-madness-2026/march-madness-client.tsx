@@ -114,7 +114,6 @@ function EditorialLinkCard({ card }: { card: EditorialCard }) {
         textDecoration: "none",
       }}
     >
-      <span className="c97-halftone c97-halftone-corner" aria-hidden="true" />
       <div style={{ marginBottom: "var(--c97-sp-3)" }}>
         <Tag color={EDITORIAL_TONE[card.color]}>{card.eyebrow}</Tag>
       </div>

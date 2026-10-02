@@ -47,8 +47,8 @@
   fill: var(--c97-ink);
 }
 
-/* The bracket's lines and boxes take their paint here, because var() does
- * not resolve inside an SVG presentation attribute. */
+/* The bracket's lines and boxes take their paint from these classes, so the
+ * SVG carries no colour of its own. */
 .mm-bracket-box,
 .mm-bracket-link {
   fill: none;

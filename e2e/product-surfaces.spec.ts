@@ -91,8 +91,8 @@ test.describe("Product surfaces", () => {
     );
     await expect(page.getByTestId("mission-hero")).toBeVisible();
     await expect(page.getByTestId("mission-board")).toBeVisible();
-    await expect(page.getByRole("tab", { name: /^Past$/i })).toHaveAttribute(
-      "aria-selected",
+    await expect(page.getByRole("button", { name: /^Past$/i })).toHaveAttribute(
+      "aria-pressed",
       "true"
     );
     await expectNoHorizontalOverflow(page);

@@ -91,6 +91,8 @@ Never create real pages at `/projects`, `/work`, or `/blog`.
 
 - Shared fallback: `src/components/RouteErrorBoundary.tsx` (one Catalog 97 paper band,
   calls `logger.error`, exposes `reset()` retry). Top-level catch-all: `src/app/error.tsx`.
+  A throw in the root layout itself (providers, `ConditionalLayout`, the header) lands in
+  `src/app/global-error.tsx`, which prints its own `html` and `body` without the shell.
   `src/components/RouteLoadingState.tsx` is the matching loading band.
 - The root boundary covers every dashboard, so a new route needs no `error.tsx` of its
   own. Add one only when the route has something specific to say, and give it a

@@ -431,7 +431,7 @@ export function SearchInterface({
         {searchState.isLoading
           ? "Searching…"
           : searchState.error
-            ? "Search didn't load. Check your connection and try again."
+            ? "Search isn't answering right now, so try again in a moment."
           : searchState.hasSearched
             ? searchState.totalResults === 0
               ? `No results found${searchState.query ? ` for ${searchState.query}` : ""}`
@@ -443,7 +443,7 @@ export function SearchInterface({
       <div id="search-results">
         {searchState.error && !searchState.isLoading ? (
           <div className="c97-panel" style={{ display: "grid", gap: "var(--c97-sp-2)", justifyItems: "start" }}>
-            <p className="c97-prose">Search didn&rsquo;t load. Check your connection and try again.</p>
+            <p className="c97-prose">Search isn&apos;t answering right now, so try again in a moment.</p>
             <button
               type="button"
               className="c97-btn-ghost"

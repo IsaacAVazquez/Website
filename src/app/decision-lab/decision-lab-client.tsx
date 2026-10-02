@@ -530,7 +530,6 @@ function DecisionLabWorkbench({
                 </button>
                 <p
                   className="c97-prose"
-                  role="status"
                   style={{ fontSize: "var(--c97-fs-small)", color: "var(--c97-ink-2)", marginTop: "var(--c97-sp-2)" }}
                 >
                   {copyStatus === "copied"
@@ -538,6 +537,9 @@ function DecisionLabWorkbench({
                     : copyStatus === "error"
                       ? "Copy failed"
                       : "Copy to share. Every slider change is encoded."}
+                </p>
+                <p className="sr-only" role="status">
+                  {copyStatus === "copied" ? "Link copied" : copyStatus === "error" ? "Copy failed" : ""}
                 </p>
               </div>
             </div>

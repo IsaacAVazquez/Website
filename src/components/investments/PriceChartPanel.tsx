@@ -525,7 +525,7 @@ export function PriceChartPanel({ symbol, costBasis = null }: Props) {
       )}
 
       {(isError || isEmpty) && !isLoading && (
-        <ErrorState message={error ?? "Price data unavailable"} isNotFetched={isNotFetched || isEmpty} onRetry={refetch} />
+        <ErrorState message={error ?? "Price data unavailable"} isNotFetched={isNotFetched || (isEmpty && !isError)} onRetry={refetch} />
       )}
 
       {!isLoading && slicedData.length > 0 && (

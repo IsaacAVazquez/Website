@@ -220,25 +220,31 @@ export function InvestmentsDashboard({
   );
 
   // Marks the section under the upper middle of the viewport as current in
-  // both navigations (aria-current). The hero card and the research branch
-  // swap their target elements once loading settles, so it re-observes then.
+  // both navigations (aria-current). The hero card swaps its target element
+  // once loading settles, so it re-observes then. Research is watched through
+  // its outer band, because the inner #research-section is replaced when the
+  // lazy workspace chunk resolves.
   const [activeSection, setActiveSection] = useState<string | null>(null);
   useEffect(() => {
     if (typeof IntersectionObserver === "undefined") return;
+    const researchBand = researchSectionRef.current;
     const targets = navItems
-      .map((item) => document.getElementById(item.href.slice(1)))
+      .map((item) =>
+        item.href === "#research-section" ? researchBand : document.getElementById(item.href.slice(1)),
+      )
       .filter((el): el is HTMLElement => el !== null);
     const observer = new IntersectionObserver(
       (entries) => {
         for (const entry of entries) {
-          if (entry.isIntersecting) setActiveSection(entry.target.id);
+          if (!entry.isIntersecting) continue;
+          setActiveSection(entry.target === researchBand ? "research-section" : entry.target.id);
         }
       },
       { rootMargin: "-35% 0px -60% 0px" },
     );
     targets.forEach((el) => observer.observe(el));
     return () => observer.disconnect();
-  }, [navItems, researchSymbol, isLoading]);
+  }, [navItems, isLoading]);
 
   function focusAddHolding() {
     if (addHoldingRef.current) {

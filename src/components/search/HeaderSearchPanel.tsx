@@ -258,7 +258,6 @@ export function HeaderSearchPanel({ onClose }: HeaderSearchPanelProps) {
                 id={listboxId}
                 role="listbox"
                 aria-label="Search results"
-                style={{ paddingBlock: "calc(var(--c97-sp-1) / 2)" }}
               >
                 {results.map((result, index) => (
                   <li

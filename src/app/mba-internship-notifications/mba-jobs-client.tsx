@@ -661,7 +661,9 @@ function JobCard({
         </div>
 
         <div className="space-y-3">
-          <h3 className="c97-serif c97-h3">{job.title}</h3>
+          <h3 className="c97-serif c97-h3" style={{ marginBottom: "var(--c97-sp-2)" }}>
+            {job.title}
+          </h3>
 
           {job.snippet && (
             <p className="c97-prose line-clamp-3 break-words">{job.snippet}</p>

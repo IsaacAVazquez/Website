@@ -7,69 +7,65 @@ export const RENT_VS_BUY_STORAGE_KEY = "rent_vs_buy_input_v1";
 
 const FILING_STATUSES = ["single", "married"] as const satisfies readonly FilingStatus[];
 
+type NumericField = {
+  [K in keyof RentVsBuyInput]: RentVsBuyInput[K] extends number ? K : never;
+}[keyof RentVsBuyInput];
+
+/**
+ * The range each numeric field is clamped to. The form reads the same table
+ * for its min and max, so its out-of-range warning matches the clamp.
+ */
+export const RENT_VS_BUY_BOUNDS: Record<NumericField, { min: number; max: number }> = {
+  homePrice: { min: 10_000, max: 100_000_000 },
+  downPaymentPercent: { min: 0, max: 100 },
+  mortgageRatePercent: { min: 0, max: 25 },
+  loanTermYears: { min: 1, max: 40 },
+  propertyTaxPercent: { min: 0, max: 10 },
+  homeInsuranceAnnual: { min: 0, max: 1_000_000 },
+  maintenancePercent: { min: 0, max: 10 },
+  hoaMonthly: { min: 0, max: 100_000 },
+  closingCostPercent: { min: 0, max: 15 },
+  sellingCostPercent: { min: 0, max: 15 },
+  homeAppreciationPercent: { min: -10, max: 20 },
+  monthlyRent: { min: 0, max: 1_000_000 },
+  rentGrowthPercent: { min: -10, max: 20 },
+  rentersInsuranceMonthly: { min: 0, max: 10_000 },
+  investmentReturnPercent: { min: -10, max: 20 },
+  generalInflationPercent: { min: 0, max: 20 },
+  marginalTaxRatePercent: { min: 0, max: 60 },
+  yearsStaying: { min: 1, max: 40 },
+};
+
 /** Repair a persisted input, accepting only known runtime-safe fields. */
 export function decodeRentVsBuyInput(value: unknown): RentVsBuyInput {
   const fallback = createDefaultInput();
   if (!isRecord(value)) return fallback;
+  const num = (key: NumericField, integer = false) =>
+    boundedNumber(value[key], fallback[key], RENT_VS_BUY_BOUNDS[key].min, RENT_VS_BUY_BOUNDS[key].max, integer);
 
   return {
-    homePrice: boundedNumber(value.homePrice, fallback.homePrice, 10_000, 100_000_000),
-    downPaymentPercent: boundedNumber(value.downPaymentPercent, fallback.downPaymentPercent, 0, 100),
-    mortgageRatePercent: boundedNumber(
-      value.mortgageRatePercent,
-      fallback.mortgageRatePercent,
-      0,
-      25,
-    ),
-    loanTermYears: boundedNumber(value.loanTermYears, fallback.loanTermYears, 1, 40, true),
-    propertyTaxPercent: boundedNumber(value.propertyTaxPercent, fallback.propertyTaxPercent, 0, 10),
-    homeInsuranceAnnual: boundedNumber(
-      value.homeInsuranceAnnual,
-      fallback.homeInsuranceAnnual,
-      0,
-      1_000_000,
-    ),
-    maintenancePercent: boundedNumber(value.maintenancePercent, fallback.maintenancePercent, 0, 10),
-    hoaMonthly: boundedNumber(value.hoaMonthly, fallback.hoaMonthly, 0, 100_000),
-    closingCostPercent: boundedNumber(value.closingCostPercent, fallback.closingCostPercent, 0, 15),
-    sellingCostPercent: boundedNumber(value.sellingCostPercent, fallback.sellingCostPercent, 0, 15),
-    homeAppreciationPercent: boundedNumber(
-      value.homeAppreciationPercent,
-      fallback.homeAppreciationPercent,
-      -10,
-      20,
-    ),
+    homePrice: num("homePrice"),
+    downPaymentPercent: num("downPaymentPercent"),
+    mortgageRatePercent: num("mortgageRatePercent"),
+    loanTermYears: num("loanTermYears", true),
+    propertyTaxPercent: num("propertyTaxPercent"),
+    homeInsuranceAnnual: num("homeInsuranceAnnual"),
+    maintenancePercent: num("maintenancePercent"),
+    hoaMonthly: num("hoaMonthly"),
+    closingCostPercent: num("closingCostPercent"),
+    sellingCostPercent: num("sellingCostPercent"),
+    homeAppreciationPercent: num("homeAppreciationPercent"),
 
-    monthlyRent: boundedNumber(value.monthlyRent, fallback.monthlyRent, 0, 1_000_000),
-    rentGrowthPercent: boundedNumber(value.rentGrowthPercent, fallback.rentGrowthPercent, -10, 20),
-    rentersInsuranceMonthly: boundedNumber(
-      value.rentersInsuranceMonthly,
-      fallback.rentersInsuranceMonthly,
-      0,
-      10_000,
-    ),
+    monthlyRent: num("monthlyRent"),
+    rentGrowthPercent: num("rentGrowthPercent"),
+    rentersInsuranceMonthly: num("rentersInsuranceMonthly"),
 
-    investmentReturnPercent: boundedNumber(
-      value.investmentReturnPercent,
-      fallback.investmentReturnPercent,
-      -10,
-      20,
-    ),
-    generalInflationPercent: boundedNumber(
-      value.generalInflationPercent,
-      fallback.generalInflationPercent,
-      0,
-      20,
-    ),
-    marginalTaxRatePercent: boundedNumber(
-      value.marginalTaxRatePercent,
-      fallback.marginalTaxRatePercent,
-      0,
-      60,
-    ),
+    investmentReturnPercent: num("investmentReturnPercent"),
+    generalInflationPercent: num("generalInflationPercent"),
+    marginalTaxRatePercent: num("marginalTaxRatePercent"),
     filingStatus: enumValue(value.filingStatus, FILING_STATUSES, fallback.filingStatus),
     itemizes: typeof value.itemizes === "boolean" ? value.itemizes : fallback.itemizes,
-    yearsStaying: boundedNumber(value.yearsStaying, fallback.yearsStaying, 1, 40, true),
+    yearsStaying: num("yearsStaying", true),
   };
 }
 

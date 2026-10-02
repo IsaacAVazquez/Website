@@ -107,7 +107,7 @@ Shell semantics:
 Catalog 97 routes:
 
 - `/`, `/portfolio`, `/writing`, `/dashboards`, `/about`, `/resume`, `/contact` render their own `Catalog97Shell` and pass through `ConditionalLayout` untouched, so `isCatalog97Route` (`src/constants/catalog97Nav.ts`) is what tells `ConditionalLayout` to stand down for them
-- every other route is wrapped in `Catalog97ToolShell`, which is `Catalog97Shell` plus an optional title band and the build-note aside, so it owns the same header, the same only `main`, and the same footer
+- every other route is wrapped in `Catalog97ToolShell`, which is `Catalog97Shell` plus the build-note aside, so it owns the same header, the same only `main`, and the same footer
 - tokens live in `src/app/catalog97.css`, scoped under `[data-c97]` and `[data-c97-surface]`, and every route is composed from Catalog 97 bands that read `--c97-*` directly
 - the Working Instrument `--home-*` tokens, its helpers, and the bridge that aliased them were deleted on 2026-09-27 when the unification closed, and `src/app/__tests__/catalog97-closeout.test.ts` keeps them from coming back
 

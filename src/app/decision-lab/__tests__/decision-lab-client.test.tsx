@@ -90,7 +90,7 @@ describe("DecisionLabClient", () => {
     expect(mockWriteText).toHaveBeenCalledWith(
       "http://localhost/decision-lab?preset=onboarding-refresh&confidence=52"
     );
-    expect(await screen.findByText("Link copied")).toBeVisible();
+    expect(await screen.findByText("Link copied", { selector: ":not(.sr-only)" })).toBeVisible();
 
     fireEvent.click(screen.getByRole("button", { name: /reset to defaults/i }));
 
