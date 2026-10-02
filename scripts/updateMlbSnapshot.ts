@@ -4,7 +4,6 @@
  * The MLB Stats API is publicly accessible and does not require an auth token.
  *
  * Usage: npx tsx scripts/updateMlbSnapshot.ts
- *        npx tsx scripts/updateMlbSnapshot.ts --league-only
  */
 
 import { renameSync, writeFileSync } from "node:fs";
@@ -25,15 +24,12 @@ function writeFileAtomic(path: string, content: string): void {
 }
 
 async function main() {
-  const skipTeamSnapshots = process.argv.includes("--league-only");
-  console.log(
-    `Fetching MLB snapshot from MLB Stats API${skipTeamSnapshots ? " (league only)" : ""}…`
-  );
+  console.log("Fetching MLB snapshot from MLB Stats API…");
   const outPath = resolve(__dirname, "../src/data/mlbSnapshot.ts");
 
   let snapshot: MlbSnapshot;
   try {
-    snapshot = await buildMlbSnapshot({ skipTeamSnapshots });
+    snapshot = await buildMlbSnapshot();
   } catch (error) {
     const existing = readGeneratedSnapshot<MlbSnapshot>(outPath, "mlbSnapshot");
     if (existing && existing.standings.length > 0) {

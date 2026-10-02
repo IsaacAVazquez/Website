@@ -7,7 +7,7 @@
   },
   "scripts": {
     "dev": "next dev --webpack",
-    "update:football": "tsx scripts/updateFootballSnapshots.ts",
+    "update:football": "npm run update:premier-league && npm run update:la-liga",
     "build": "next build --webpack",
     "build:fantasy-companion": "vite build --config extension/vite.config.ts && node scripts/buildFantasyCompanionExtension.mjs",
     "postbuild": "npm run generate:sitemap && node scripts/patch-nft-sharp.mjs",

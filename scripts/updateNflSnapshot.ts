@@ -28,22 +28,12 @@ function writeFileAtomic(path: string, content: string): void {
 }
 
 async function main() {
-  const leagueOnly = process.argv.includes("--league-only");
-  if (leagueOnly) {
-    console.log(
-      "🏈 Running in league-only mode (skip per-team snapshots and player leaders)."
-    );
-  }
-
   const outPath = resolve(__dirname, "../src/data/nflSnapshot.ts");
 
   console.log("🏈 Building NFL snapshot from NFLverse…");
   let snapshot: NFLSnapshot;
   try {
-    snapshot = await buildNflSnapshot({
-      skipPlayerLeaders: leagueOnly,
-      skipTeamSnapshots: leagueOnly,
-    });
+    snapshot = await buildNflSnapshot();
   } catch (error) {
     const existing = readGeneratedSnapshot<NFLSnapshot>(outPath, "nflSnapshot");
     if (existing && existing.teams.length > 0) {

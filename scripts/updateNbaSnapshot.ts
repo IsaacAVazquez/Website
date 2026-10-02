@@ -3,9 +3,7 @@
  * Updates src/data/nbaSnapshot.ts with live data from ESPN's public NBA API.
  * No API key is required.
  *
- * Usage:
- *   npm run update:nba                # full refresh (standings + leaders + per-team schedules, ~1 min)
- *   npm run update:nba -- --league-only   # standings, leaders, scoreboard only (no per-team snapshots)
+ * Usage: npm run update:nba (standings, leaders, and per-team schedules, about a minute)
  */
 
 import { config } from "dotenv";
@@ -36,17 +34,12 @@ function writeFileAtomic(path: string, content: string): void {
 }
 
 async function main() {
-  const leagueOnly = process.argv.includes("--league-only");
-  console.log(
-    leagueOnly
-      ? "🏀 Fetching NBA snapshot (league-only: standings + leaders + scoreboard)…"
-      : "🏀 Fetching NBA snapshot from ESPN…"
-  );
+  console.log("🏀 Fetching NBA snapshot from ESPN…");
   const outPath = resolve(__dirname, "../src/data/nbaSnapshot.ts");
 
   let snapshot: NbaSnapshot;
   try {
-    snapshot = await buildNbaSnapshot({ skipTeamSnapshots: leagueOnly });
+    snapshot = await buildNbaSnapshot();
   } catch (error) {
     const existing = readGeneratedSnapshot<NbaSnapshot>(outPath, "nbaSnapshot");
     if (hasNbaContents(existing)) {
