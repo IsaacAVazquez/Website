@@ -7,7 +7,7 @@ import { useStockData } from "@/hooks/useStockData";
 import { useClientNow } from "@/hooks/useClientNow";
 import { DataFreshnessIndicator } from "./DataFreshnessIndicator";
 import { formatHistoryAsOf } from "@/lib/investmentsHistory";
-import { formatMinutesAgo } from "@/lib/investmentFormatting";
+import { formatMinutesAgo, formatPercent } from "@/lib/investmentFormatting";
 import { DISPLAY_TIME_ZONE } from "@/lib/date-formatters";
 import type {
   BetaData,
@@ -47,12 +47,6 @@ function formatSignedCurrency(n: number | undefined): string {
   const sign = n > 0 ? "+" : n < 0 ? "−" : "";
   const abs = Math.abs(n);
   return `${sign}$${abs.toFixed(2)}`;
-}
-
-function formatPercent(n: number | undefined): string {
-  if (n === undefined || !Number.isFinite(n)) return "—";
-  const sign = n > 0 ? "+" : n < 0 ? "−" : "";
-  return `${sign}${Math.abs(n).toFixed(2)}%`;
 }
 
 // `now` is the caller's `useClientNow()` reading (null on the server and

@@ -6,6 +6,7 @@ import { getClientInvestmentsIndex } from "@/lib/investmentsClientData";
 import { ComparisonRadarChart, type RadarDimension } from "./ComparisonRadarChart";
 import { ComparisonMetricTable, type MetricRow } from "./ComparisonMetricTable";
 import { DISPLAY_TIME_ZONE } from "@/lib/date-formatters";
+import { mean } from "d3";
 import type {
   Fundamentals,
   Profitability,
@@ -98,7 +99,7 @@ function fmt(v: number | null | undefined, style: "decimal" | "percent" | "curre
 //   Growth         → percentage (20 = 20%)
 
 function avg(scores: number[]): number | null {
-  return scores.length === 0 ? null : scores.reduce((a, b) => a + b, 0) / scores.length;
+  return mean(scores) ?? null;
 }
 
 function scoreValuation(

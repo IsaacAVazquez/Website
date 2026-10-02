@@ -1,5 +1,5 @@
 import type { MlbRouteState, MlbStandingsRow, MlbView } from "@/types/mlb";
-import { createTeamRouteState } from "@/lib/searchParams";
+import { buildTeamAliasMap as buildAliasMap, createTeamRouteState } from "@/lib/searchParams";
 
 // Pure, snapshot-free route-state core for /mlb. Importing this module never
 // pulls the multi-thousand-line `mlbSnapshot` into the bundle, so the client
@@ -17,19 +17,8 @@ export const { normalizeState, buildHref } = createTeamRouteState<MlbView>(
   ["all", "al", "nl", "wildcard"]
 );
 
-type TeamAliasSource = { id: string; abbreviation: string };
-
-export function buildTeamAliasMap(teams: readonly TeamAliasSource[]): Map<string, string> {
-  return new Map(
-    teams.flatMap((team) => {
-      const canonical = team.id;
-      return [
-        [team.id.toLowerCase(), canonical],
-        [team.abbreviation.toLowerCase(), canonical],
-      ] as const;
-    })
-  );
-}
+export const buildTeamAliasMap = (teams: readonly { id: string; abbreviation: string }[]) =>
+  buildAliasMap(teams, (team) => team.abbreviation);
 
 function sortByDivisionRank(a: MlbStandingsRow, b: MlbStandingsRow): number {
   if (a.league !== b.league) return a.league.localeCompare(b.league);

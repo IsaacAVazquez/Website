@@ -97,3 +97,25 @@ export function parseLocalDateKey(value: string): Date | null {
 export function isLocalDateKey(value: unknown): value is string {
   return typeof value === "string" && parseLocalDateKey(value) !== null;
 }
+
+/** Long UTC date, "September 15, 2026", pinned so the server and the browser print the same day. */
+export function formatLongUtcDate(iso: string): string {
+  return new Date(iso).toLocaleDateString("en-US", {
+    month: "long",
+    day: "numeric",
+    year: "numeric",
+    timeZone: "UTC",
+  });
+}
+
+/**
+ * Whole days from `fromKey` to `toKey`; negative when `toKey` is in the past.
+ * Either key can be null (the caller's "today" not resolved yet on the
+ * client), which reads the same as an invalid key: null out.
+ */
+export function daysBetween(fromKey: string | null, toKey: string | null): number | null {
+  const from = fromKey === null ? null : parseLocalDateKey(fromKey);
+  const to = toKey === null ? null : parseLocalDateKey(toKey);
+  if (!from || !to) return null;
+  return Math.round((to.getTime() - from.getTime()) / 86_400_000);
+}

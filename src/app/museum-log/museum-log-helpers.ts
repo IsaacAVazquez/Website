@@ -8,6 +8,7 @@ import type {
   MuseumRegionFilter,
 } from "@/types/museum";
 import { DATE_ONLY_TIME_ZONE, DISPLAY_TIME_ZONE } from "@/lib/date-formatters";
+import { mean } from "d3";
 
 export interface AdmissionStubLines {
   name: string;
@@ -251,7 +252,5 @@ export function starFractions(rating: number): number[] {
 // ─── Stats ───────────────────────────────────────────────────────────────────
 
 export function averageRating(ratings: number[]): number {
-  if (ratings.length === 0) return 0;
-  const sum = ratings.reduce((a, b) => a + b, 0);
-  return sum / ratings.length;
+  return mean(ratings) ?? 0;
 }

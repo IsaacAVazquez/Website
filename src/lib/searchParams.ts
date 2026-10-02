@@ -81,3 +81,23 @@ export function createTeamRouteState<V extends string>(route: string, views: rea
 
   return { normalizeState, buildHref };
 }
+
+/**
+ * Lowercased id and abbreviation of every team mapped to its canonical id,
+ * the map `canonicalizeId` reads. `canonical` lets a dashboard lowercase its ids.
+ */
+export function buildTeamAliasMap<T extends { id: string }>(
+  teams: readonly T[],
+  abbreviation: (team: T) => string,
+  canonical: (team: T) => string = (team) => team.id
+): Map<string, string> {
+  return new Map(
+    teams.flatMap((team) => {
+      const id = canonical(team);
+      return [
+        [team.id.toLowerCase(), id],
+        [abbreviation(team).toLowerCase(), id],
+      ] as const;
+    })
+  );
+}
