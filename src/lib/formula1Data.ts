@@ -9,7 +9,7 @@ import type {
   Formula1SessionSummary,
   Formula1Snapshot,
 } from "@/types/formula1";
-import { HttpStatusError, isRecord } from "@/lib/utils";
+import { HttpStatusError } from "@/lib/utils";
 import { isTimeoutError, withRetry } from "@/lib/fetchRetry";
 import { setTimeout as sleep } from "node:timers/promises";
 
@@ -389,15 +389,22 @@ function buildTeamColorLookup(driverLookup: Map<number, DriverDirectoryEntry>): 
   return teamColorLookup;
 }
 
+type OpenF1Request = <T>(
+  pathname: string,
+  params?: Record<string, string | number>,
+  options?: { allow404?: boolean }
+) => Promise<T>;
+
 function createOpenF1Requester(
   fetchImpl: typeof fetch,
   minIntervalMs: number
-): <T>(pathname: string, params?: Record<string, string | number>) => Promise<T> {
+): OpenF1Request {
   let lastRequestStartedAt = 0;
 
   return async function request<T>(
     pathname: string,
-    params: Record<string, string | number> = {}
+    params: Record<string, string | number> = {},
+    options: { allow404?: boolean } = {}
   ): Promise<T> {
     const nowTimestamp = Date.now();
     const waitTime = Math.max(0, minIntervalMs - (nowTimestamp - lastRequestStartedAt));
@@ -431,6 +438,8 @@ function createOpenF1Requester(
           throw error;
         }
         if (!response.ok) {
+          // OpenF1 answers an empty collection with a 404.
+          if (options.allow404 && response.status === 404) return [] as unknown as T;
           throw Object.assign(
             new HttpStatusError(
               `Formula 1 data request failed with status ${response.status}.`,
@@ -448,27 +457,19 @@ function createOpenF1Requester(
 }
 
 async function requestCollection<T>(
-  request: <T>(pathname: string, params?: Record<string, string | number>) => Promise<T>,
+  request: OpenF1Request,
   pathname: string,
   params?: Record<string, string | number>,
   options: {
     allow404?: boolean;
   } = {}
 ): Promise<T[]> {
-  try {
-    const payload = await request<unknown>(pathname, params);
-    return Array.isArray(payload) ? (payload as T[]) : [];
-  } catch (error) {
-    if (options.allow404 && isRecord(error) && error.status === 404) {
-      return [];
-    }
-
-    throw error;
-  }
+  const payload = await request<unknown>(pathname, params, options);
+  return Array.isArray(payload) ? (payload as T[]) : [];
 }
 
 async function resolveSeasonMeetings(
-  request: <T>(pathname: string, params?: Record<string, string | number>) => Promise<T>,
+  request: OpenF1Request,
   preferredYear: number,
   now: Date
 ): Promise<{ seasonYear: number; meetings: OpenF1Meeting[] }> {

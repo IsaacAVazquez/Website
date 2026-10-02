@@ -1,4 +1,5 @@
 import { hierarchy, treemap, treemapSquarify } from "d3";
+import { groupBy } from "@/lib/utils";
 
 export interface TreemapStartup {
   id: string;
@@ -53,7 +54,7 @@ export function valuationTreemap(
   if (valid.length === 0) return [];
 
   type Node = { name: string; id?: string; valuation?: number; children?: Node[] };
-  const bySector = Map.groupBy(valid, (startup) => startup.sector);
+  const bySector = groupBy(valid, (startup) => startup.sector);
   const root = hierarchy<Node>({
     name: "all",
     children: [...bySector.entries()].map(([sector, startups]) => ({

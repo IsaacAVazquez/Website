@@ -2606,12 +2606,15 @@ export function MBAJobsClient({
           {!isLoading && !error && (
             <div className="flex justify-center pb-2">
               <div
-                className="px-4 py-2.5"
-                style={{ background: "var(--c97-panel)", border: "1px solid var(--c97-rule)" }}
+                style={{
+                  padding: "var(--c97-sp-1) var(--c97-sp-2)",
+                  background: "var(--c97-panel)",
+                  border: "1px solid var(--c97-rule)",
+                }}
               >
                 <p
-                  className="mb-0 text-sm leading-6"
-                  style={{ fontFamily: "var(--c97-font-body)", color: "var(--c97-ink-2)" }}
+                  className="text-sm leading-6"
+                  style={{ margin: 0, fontFamily: "var(--c97-font-body)", color: "var(--c97-ink-2)" }}
                 >
                   {visibleJobs.length} of {displayJobs.length} role{displayJobs.length !== 1 ? "s" : ""} shown ·{" "}
                   {formatFetchedAt(lastFetchedAt)} · Polls every 30 min

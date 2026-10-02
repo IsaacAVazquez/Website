@@ -3,7 +3,7 @@
 import { Check, Pencil, Search, Trash2, X } from "lucide-react";
 import React, { useEffect, useRef, useState } from "react";
 import { useStockData } from "@/hooks/useStockData";
-import { escapeCsvValue } from "@/lib/budgetPlanner";
+import { escapeCsvValue } from "@/lib/utils";
 import { downloadFile } from "@/lib/downloadFile";
 import {
   formatCurrency,

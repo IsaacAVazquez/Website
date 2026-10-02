@@ -1,4 +1,5 @@
 import type { WineEntry, WineType } from "@/types/wine";
+import { groupBy } from "@/lib/utils";
 
 export interface WineRackSlot {
   id: string;
@@ -33,7 +34,7 @@ function toSlot(entry: WineEntry): WineRackSlot {
  * still gets its own row rather than disappearing.
  */
 export function wineRack(entries: WineEntry[]): WineRackRow[] {
-  const groups = Map.groupBy(entries, (entry) => entry.region.trim() || UNKNOWN_REGION);
+  const groups = groupBy(entries, (entry) => entry.region.trim() || UNKNOWN_REGION);
   return Array.from(groups.entries())
     .map(([region, group]) => ({ region, slots: group.map(toSlot) }))
     .sort(

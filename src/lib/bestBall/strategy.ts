@@ -13,6 +13,7 @@ import type {
   BestBallTeamConcentration,
   BestBallWeek17Pair,
 } from "./types";
+import { groupBy } from "@/lib/utils";
 
 export const STANDARD_ROSTER_SEARCH_SPACE: Readonly<
   Record<BestBallPosition, Readonly<{ minimum: number; maximum: number }>>
@@ -255,7 +256,7 @@ function groupPlayersByTeam(picks: readonly BestBallDraftPick[]): Map<string, Pl
     const team = normalizedTeam(player.team);
     return team !== "" && team !== "FA";
   });
-  return Map.groupBy(onTeams, (player) => normalizedTeam(player.team));
+  return groupBy(onTeams, (player) => normalizedTeam(player.team));
 }
 
 export function findQbPassCatcherStacks(
@@ -295,7 +296,7 @@ export function findByeWeekConflicts(
   picks: readonly BestBallDraftPick[],
   minimumPlayers = 2
 ): BestBallByeConflict[] {
-  const byWeek = Map.groupBy(
+  const byWeek = groupBy(
     rosterPlayers(picks).filter(
       (player) => Number.isInteger(player.byeWeek) && (player.byeWeek ?? 0) >= 1
     ),

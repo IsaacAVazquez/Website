@@ -41,6 +41,7 @@ import {
 import { DATE_TIME_FORMATTER } from "@/lib/date-formatters";
 import { useClientNow } from "@/hooks/useClientNow";
 import "./news-pulse.css";
+import { groupBy } from "@/lib/utils";
 
 interface NewsPulseClientProps {
   initialFeed?: NewsPulseFeedResponse;
@@ -430,7 +431,7 @@ function ErrorState({ message, onRetry }: { message: string; onRetry: () => void
 const HEADLINES_PAGE_SIZE = 24;
 
 function groupByOutlet(articles: NewsArticle[]): { source: NewsFeedId; items: NewsArticle[] }[] {
-  const bySource = Map.groupBy(articles, (article) => article.source);
+  const bySource = groupBy(articles, (article) => article.source);
   return NEWS_SOURCE_IDS.filter((source) => bySource.has(source)).map((source) => ({
     source,
     items: bySource.get(source)!,

@@ -1,4 +1,5 @@
 import type { MlbStandingsRow } from "@/types/mlb";
+import { groupBy } from "@/lib/utils";
 
 /**
  * The out-of-town scoreboard signature. A manual board carries no primary
@@ -62,7 +63,7 @@ function formatGamesBack(row: MlbStandingsRow): string {
  * `division` doesn't match one of the six is skipped rather than crashing.
  */
 export function divisionBoard(standings: readonly MlbStandingsRow[]): ScoreboardDivision[] {
-  const byDivision = Map.groupBy(
+  const byDivision = groupBy(
     standings.filter((row) => row.division),
     (row) => row.division
   );

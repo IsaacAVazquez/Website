@@ -108,3 +108,35 @@ export function escapeHtml(value: string): string {
     .replace(/"/g, "&quot;")
     .replace(/'/g, "&#39;");
 }
+
+/**
+ * `Map.groupBy` in a form every browser Next still targets can run; Safari
+ * before 17.4 and Chrome before 117 have no `Map.groupBy`, and Next polyfills
+ * nothing for module-capable browsers.
+ */
+export function groupBy<T, K>(items: Iterable<T>, key: (item: T) => K): Map<K, T[]> {
+  const groups = new Map<K, T[]>();
+  for (const item of items) {
+    const k = key(item);
+    const group = groups.get(k);
+    if (group) group.push(item);
+    else groups.set(k, [item]);
+  }
+  return groups;
+}
+
+/** RFC 4180 quoting for a CSV field. */
+export function escapeCsvValue(value: string | number): string {
+  const raw = String(value);
+  return /[",\r\n]/.test(raw) ? `"${raw.replace(/"/g, '""')}"` : raw;
+}
+
+/** US dollars, with cents only when the value has them. */
+export function formatDollars(value: number): string {
+  return value.toLocaleString("en-US", {
+    style: "currency",
+    currency: "USD",
+    minimumFractionDigits: 0,
+    maximumFractionDigits: value % 1 === 0 ? 0 : 2,
+  });
+}

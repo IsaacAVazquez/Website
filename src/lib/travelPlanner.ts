@@ -12,7 +12,7 @@ import type {
   TripStatus,
   TripSummary,
 } from "@/types/travel";
-import { isRecord, prefixedId } from "@/lib/utils";
+import { groupBy, isRecord, prefixedId } from "@/lib/utils";
 import { daysBetween, toLocalDateKey, parseLocalDateKey } from "@/lib/date-formatters";
 
 export const TRAVEL_PLANNER_STORAGE_KEY = "travel_planner_trips_v1";
@@ -167,7 +167,7 @@ interface ActivityOverlaps {
 export function findActivityOverlaps(activities: TripActivity[]): ActivityOverlaps {
   const conflicts = new Set<string>();
   let pairCount = 0;
-  const byDay = Map.groupBy(activities, (activity) => activity.date);
+  const byDay = groupBy(activities, (activity) => activity.date);
 
   for (const dayActivities of byDay.values()) {
     const windows = dayActivities
@@ -414,7 +414,7 @@ export function calculateTripSummary(trip: Trip, today = getTodayKey()): TripSum
   const sortedActivities = sortActivities(trip.activities);
   const dayKeys = getDayKeysBetween(trip.startDate, trip.endDate);
 
-  const dayLookup = Map.groupBy(sortedActivities, (activity) => activity.date);
+  const dayLookup = groupBy(sortedActivities, (activity) => activity.date);
   for (const key of dayKeys) {
     if (!dayLookup.has(key)) dayLookup.set(key, []);
   }

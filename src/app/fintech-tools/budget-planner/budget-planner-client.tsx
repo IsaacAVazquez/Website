@@ -13,9 +13,10 @@ import {
 } from "@/lib/budgetPlanner";
 import { downloadFile } from "@/lib/downloadFile";
 import { useBudgetPlanner } from "@/hooks/useBudgetPlanner";
-import { checkRegister, formatCurrency } from "./envelopes";
+import { checkRegister } from "./envelopes";
 import { EnvelopesSignature } from "./EnvelopesSignature";
 import "./budget-planner.css";
+import { formatDollars } from "@/lib/utils";
 
 const ROUTE = "/fintech-tools/budget-planner";
 
@@ -27,9 +28,9 @@ interface ExpenseDraft {
 }
 
 function formatSignedCurrency(value: number) {
-  if (value > 0) return formatCurrency(value);
-  if (value < 0) return `-${formatCurrency(Math.abs(value))}`;
-  return formatCurrency(0);
+  if (value > 0) return formatDollars(value);
+  if (value < 0) return `-${formatDollars(Math.abs(value))}`;
+  return formatDollars(0);
 }
 
 // tz-local: `iso` is the visitor's own logged expense date, entered through
@@ -187,18 +188,18 @@ export function BudgetPlannerClient() {
         readouts={[
           {
             label: "Income",
-            value: formatCurrency(totalIncome),
-            detail: `Savings target ${formatCurrency(activeMonth.savingsTarget)}`,
+            value: formatDollars(totalIncome),
+            detail: `Savings target ${formatDollars(activeMonth.savingsTarget)}`,
           },
           {
             label: "Spent",
-            value: formatCurrency(totalExpenses),
+            value: formatDollars(totalExpenses),
             detail: percentSpent === null ? "No income set" : `${percentSpent}% of income`,
           },
           {
             label: "Left to spend",
             value: formatSignedCurrency(remaining),
-            detail: remaining >= 0 ? "After savings target" : `Over by ${formatCurrency(Math.abs(remaining))}`,
+            detail: remaining >= 0 ? "After savings target" : `Over by ${formatDollars(Math.abs(remaining))}`,
           },
         ]}
       >
@@ -209,7 +210,7 @@ export function BudgetPlannerClient() {
 
       <div data-testid="budget-planner-shell">
         <p role="status" aria-live="polite" className="sr-only">
-          {`${formatCurrency(totalExpenses)} spent, ${formatCurrency(remaining)} left to spend`}
+          {`${formatDollars(totalExpenses)} spent, ${formatDollars(remaining)} left to spend`}
         </p>
         <section className="c97-band c97-sheet" data-c97-surface="paper" data-seam="torn">
           <div className="c97-shell">
@@ -314,7 +315,7 @@ export function BudgetPlannerClient() {
           <div className="c97-shell">
             <div className="flex flex-wrap items-end justify-between gap-3">
               <h2 className="c97-poster-sm">Categories</h2>
-              <p className="c97-meta">Budgeted {formatCurrency(summary.budgetedTotal)}</p>
+              <p className="c97-meta">Budgeted {formatDollars(summary.budgetedTotal)}</p>
             </div>
 
             <div className="flex flex-col" style={{ marginTop: "var(--c97-sp-3)" }}>
@@ -377,7 +378,7 @@ export function BudgetPlannerClient() {
                       className="c97-meta"
                       id={hasLinkedExpenses ? `category-${category.id}-meta` : undefined}
                     >
-                      {formatCurrency(category.spent)} of {formatCurrency(category.budgetedAmount)} ·{" "}
+                      {formatDollars(category.spent)} of {formatDollars(category.budgetedAmount)} ·{" "}
                       {formatSignedCurrency(category.remaining)} left ·{" "}
                       {category.expenseCount} {category.expenseCount === 1 ? "entry" : "entries"}
                       {hasLinkedExpenses ? " · remove linked expenses before deleting" : ""}
@@ -523,7 +524,7 @@ export function BudgetPlannerClient() {
                         <td data-label="Note">{row.note || "—"}</td>
                         <td data-label="Category">{row.categoryName}</td>
                         <td data-label="Amount" data-align="end" className="c97-tabular">
-                          {formatCurrency(row.amount)}
+                          {formatDollars(row.amount)}
                         </td>
                         <td data-label="Balance" data-align="end" className="c97-tabular">
                           {formatSignedCurrency(row.balance)}

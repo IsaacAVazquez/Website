@@ -1,5 +1,6 @@
 import { SurfaceCard } from "./SurfaceCard";
 import { FixtureCard, type GenericFixture } from "./FixtureCard";
+import { groupBy } from "@/lib/utils";
 
 // The same zone FixtureCard prints kickoffs in, so a game sits under its own day.
 const DATE_FORMATTER = new Intl.DateTimeFormat("en-US", {
@@ -15,7 +16,7 @@ function formatFixtureDate(utcDate: string): string {
 }
 
 function groupFixturesByDay(fixtures: GenericFixture[]) {
-  const groups = Map.groupBy(fixtures, (fixture) => formatFixtureDate(fixture.utcDate));
+  const groups = groupBy(fixtures, (fixture) => formatFixtureDate(fixture.utcDate));
   return Array.from(groups.entries()).map(([label, items]) => ({ label, items }));
 }
 

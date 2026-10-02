@@ -42,6 +42,65 @@ const STATIC_PAGES: [string, string, string, string, 'project'?][] = [
   ['/fantasy-football/waivers', 'Fantasy Football Waiver Targets', 'In-season waiver adds where the weekly expert consensus rank runs ahead of how widely a player is rostered.', 'Sports', 'project'],
 ];
 
+// Search terms a title, excerpt, or case study does not carry (abbreviations,
+// model and provider names, what people actually type). Keyed by route and
+// appended to that route's indexed text.
+const SEARCH_KEYWORDS: Record<string, string> = {
+  '/': 'home portfolio Isaac Vazquez product manager analytics fintech builder Berkeley Bay Area',
+  '/about': 'about Isaac Vazquez background bio product manager analytics civic tech fintech Berkeley',
+  '/portfolio': 'Portfolio case studies product management fintech product analytics decision support AI workflows product tools projects',
+  '/resume': 'Resume product manager QA analytics civic tech fintech product work Berkeley Bay Area',
+  '/contact': 'Contact product manager analytics AI workflows fintech product collaboration Berkeley Bay Area',
+  '/writing': 'Writing blog articles product management agentic AI fintech product reliability systems design',
+  '/accessibility': 'accessibility WCAG conformance contrast keyboard screen reader inclusive design',
+  '/investments': 'Investment research platform fintech product valuation dashboard portfolio tracking equity analysis stocks Investments Fintech Product Portfolio Tracking Equity Analysis',
+  '/fantasy-football': 'Fantasy football rankings FantasyPros consensus tiers PPR half PPR standard scoring overall position QB RB WR TE draft assistant snake draft draft value expected return EV roster composition pick position waiver Fantasy Football Rankings Draft Tools Next.js TypeScript',
+  '/fantasy-football/trade-calculator': 'Fantasy football trade calculator preseason one QB redraft trade estimate expert consensus ECR mock draft ADP PPR half PPR standard league settings roster size lineup player value Fantasy Football Trade Calculator Redraft Rankings',
+  '/fantasy-football/mock-draft': 'Fantasy football mock draft simulator practice draft room simulated opponents snake draft one QB redraft consensus board ADP PPR half PPR standard draft slot strategy rehearsal Fantasy Football Mock Draft Draft Tools Rankings',
+  '/fantasy-football/best-ball': 'Best ball rankings draft assistant draft tracker Underdog Best Ball Mania BBM Puppy Eliminator Weekly Winners Superflex roster construction stacking correlation advance rate tournament strategy draft value expected return EV pick position NFL fantasy football Best Ball Underdog Rankings Draft Tools Fantasy Football',
+  '/news-pulse': 'News Pulse dashboard media analytics RSS aggregation sentiment analysis topic extraction Media Analytics Dashboard News Product Next.js',
+  '/github-trending-pulse': 'GitHub trending pulse open source repositories languages topics developer ecosystem snapshot GitHub Open Source Developer Tools Dashboard',
+  '/agent-build-index': 'AI agents agentic coding open source GitHub stars developer tools skills context MCP weekly trend index AI Agents GitHub Open Source Developer Tools',
+  '/spacex-mission-control': 'SpaceX mission control launches Starship Falcon rockets Dragon space exploration dashboard SpaceX Space Launches Dashboard',
+  '/march-madness-2026': 'March Madness 2026 NCAA tournament bracket basketball college seeds matchups analysis March Madness NCAA Basketball Tournament',
+  '/polling-aggregator': 'Polling aggregator politics elections survey methodology averages political data dashboard Polling Politics Elections Data',
+  '/museum-log': 'museum log art exhibitions visits cultural institutions personal log notes Museums Art Personal',
+  '/mba-internship-notifications': 'MBA internship full-time roles tracker greenhouse lever ashby career digest email recruiting MBA Internships Recruiting Career',
+  '/formula-1': 'Formula 1 F1 racing constructors drivers championship standings season results dashboard Formula 1 F1 Racing Sports Data Dashboard',
+  '/fantasy-formula-1': 'Fantasy Formula 1 F1 optimizer team builder drivers constructors budget model prices projections OpenF1 sports data Fantasy Formula 1 F1 Optimizer Sports Data Dashboard',
+  '/premier-league': 'Premier League soccer football EPL standings fixtures scorers form table England dashboard Premier League Soccer Sports Data Dashboard',
+  '/la-liga': 'La Liga soccer football Spain standings table top scorers assists Real Madrid Barcelona dashboard La Liga Soccer Sports Data Dashboard',
+  '/mlb': 'MLB baseball standings schedule scores divisions American League National League players dashboard MLB Baseball Sports Data Dashboard',
+  '/nba': 'NBA basketball standings scoreboard leaders conferences East West playoffs play-in teams dashboard NBA Basketball Sports Data Dashboard',
+  '/nfl': 'NFL football standings AFC NFC playoffs schedule stat leaders teams weekly dashboard NFL Football Sports Data Dashboard',
+  '/world-cup-2026': 'World Cup 2026 FIFA soccer football groups standings knockout bracket round of 32 schedule fixtures host cities venues United States Canada Mexico dashboard World Cup FIFA Soccer Football Sports Data Dashboard',
+  '/score-pools': 'score pools exact score prediction pick sheet Dixon-Coles scoreline distribution de-vig odds expected points optimizer leaderboard pool scoring predictions markets dashboard Score Pools Predictions Exact Score Dixon-Coles Expected Points Sports Data Dashboard',
+  '/bay-area-transit': 'Bay Area Transit Pulse BART trains lines stations departures advisories elevator outages San Francisco Oakland civic dashboard BART Transit Bay Area Civic Data Dashboard',
+  '/tech-startup-tracker': 'Tech startup tracker private companies valuations funding rounds momentum sectors stages venture capital market intelligence dashboard Startups Venture Capital Valuations Market Intelligence Dashboard',
+  '/fintech-tools/interchange-iq': 'Interchange IQ payments pricing interchange economics processor comparison fintech tool fees Payments Interchange Pricing Fintech Product',
+  '/fintech-tools/budget-planner': 'Budget planner monthly personal finance savings expenses categories income browser local storage Budget Personal Finance Fintech Product',
+  '/fintech-tools/rent-vs-buy': 'Rent vs buy calculator break-even year home affordability mortgage opportunity cost down payment net worth fintech tool personal finance Rent vs Buy Personal Finance Housing Fintech Product',
+  '/golf': 'PGA Tour golf dashboard leaderboard golfer drilldown cut line round movement sports data Next.js TypeScript Golf PGA Tour Sports Data Dashboard Next.js',
+  '/earthquake-pulse': 'earthquake pulse USGS seismic monitor magnitude depth tsunami significant quakes regions distribution global geojson dashboard Next.js TypeScript Earthquakes USGS Data Visualization Dashboard Next.js',
+  '/travel': 'Travel planner trip itinerary vacation planning trip tracker travel journal day-by-day activities browser local storage no account Next.js TypeScript Travel Itinerary Journal Personal Productivity Next.js',
+  '/travel-deals': 'Travel deal lab how to find travel deals cheap flights when to book flights hotel deals points miles award value cents per point trip budget fare price alert booking window optimizer Next.js TypeScript Travel Deals Flights Points & Miles Budgeting Next.js',
+  '/ai-dev-tools': 'AI dev tools coding agents Cursor Claude Code GitHub Copilot Devin Cline OpenCode Kilo Code pricing models GitHub stars release cadence developer tools directory AI Dev Tools Coding Agents Developer Tools Dashboard',
+  '/food-map': 'Food map restaurants curated city guide Austin San Francisco New York New Orleans Los Angeles Miami Atlanta Tokyo Copenhagen San Sebastian curator cuisine filters deep-linkable Austin Food Restaurants City Guide',
+  '/recipe-finder': 'Recipe finder cooking recipes cuisine diet meal ingredients kitchen pantry browser local storage personal Recipes Cooking Food Personal',
+  '/wine-cellar': 'Wine cellar bottles tracker regions varietals vintages tasting notes ratings personal collection browser local storage Wine Cellar Tasting Notes Personal',
+  '/frontier-models': 'Frontier models AI LLM tracker OpenAI Anthropic Google Meta context window pricing modality benchmarks providers release dates AI LLMs Frontier Models Dashboard',
+  '/decision-lab': 'Decision lab decision making weighted scoring criteria options tradeoffs analysis framework presets decision support tool Decision Support Analysis Frameworks Tool',
+  '/enablement-assistant': 'automation enablement assistant quality engineering test automation platform team tooling standards onboarding troubleshooting CI reporting documentation gaps Platform Enablement Quality Engineering Test Automation Tool',
+  '/now': 'now page current focus projects priorities what I am working on status update',
+  '/changelog': 'changelog updates releases new tools shipped changes history site log',
+  '/dashboards': 'dashboards live data tools index sports markets spaceflight civic trackers calculators snapshot refresh',
+  '/fantasy-football/weekly': 'Fantasy football weekly rankings in season consensus flex quarterback opponent expert range rostered start sit Fantasy Football Rankings Weekly',
+  '/fantasy-football/waivers': 'Fantasy football waiver wire targets adds in season consensus rank rostered percentage percentile pickup Fantasy Football Waivers Weekly',
+  '/fantasy-football/draft-tracker': 'Fantasy football draft assistant draft tracker snake order roster pressure Draft Outlook expected return redraft recommendations recap Fantasy Football Draft Tools Redraft',
+  '/fantasy-football/best-ball/draft-tracker': 'Best ball draft assistant draft tracker Underdog contest roster targets Draft Outlook Best Ball Mania expected return Fantasy Football Best Ball Draft Tools',
+  '/score-pools/tracker': 'Score pools tracker exact score prediction pool picks results scoring rules cumulative totals rivals leaderboard Score Pools Prediction Tracker',
+  '/arcade': 'arcade Reactor game synthwave neon reflex reaction combo browser style experiment play',
+};
 
 // Build the searchable corpus: blog posts + project case studies + the
 // remaining curated static page entries. The matcher below stays
@@ -112,6 +171,11 @@ async function getAllSearchableContent(): Promise<SearchableContent[]> {
       type,
       category,
     });
+  }
+
+  for (const item of content) {
+    const keywords = SEARCH_KEYWORDS[item.url];
+    if (keywords) item.content += ` ${keywords}`;
   }
 
   return content;

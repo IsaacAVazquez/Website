@@ -3,7 +3,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { emailDigestRateLimiter, getClientIp, rateLimitResponse } from "@/lib/rateLimit";
 import { logger } from "@/lib/logger";
 import { DISPLAY_TIME_ZONE } from "@/lib/date-formatters";
-import { escapeHtml } from "@/lib/utils";
+import { escapeHtml, groupBy } from "@/lib/utils";
 
 // ---------------------------------------------------------------------------
 // POST /api/mba-jobs/email — send an email digest of MBA job listings via Resend
@@ -192,7 +192,7 @@ function normalizeJobs(value: unknown): EmailDigestJob[] | null {
 }
 
 function buildEmailHtml(jobs: EmailDigestJob[], to: string): string {
-  const grouped = Map.groupBy(jobs, (job) => job.companyName);
+  const grouped = groupBy(jobs, (job) => job.companyName);
 
   const rows = Array.from(grouped.entries())
     .map(([company, companyJobs]) => {

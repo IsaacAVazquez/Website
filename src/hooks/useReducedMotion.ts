@@ -4,13 +4,15 @@ import { useSyncExternalStore } from "react";
 
 const QUERY = "(prefers-reduced-motion: reduce)";
 
+let media: MediaQueryList | undefined;
+const query = () => (media ??= window.matchMedia(QUERY));
+
 function subscribe(onChange: () => void): () => void {
-  const media = window.matchMedia(QUERY);
-  media.addEventListener("change", onChange);
-  return () => media.removeEventListener("change", onChange);
+  query().addEventListener("change", onChange);
+  return () => query().removeEventListener("change", onChange);
 }
 
-const getSnapshot = () => window.matchMedia(QUERY).matches;
+const getSnapshot = () => query().matches;
 const getServerSnapshot = () => false;
 
 /**

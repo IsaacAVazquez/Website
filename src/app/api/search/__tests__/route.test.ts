@@ -278,6 +278,18 @@ describe("GET /api/search", () => {
     );
   });
 
+  it.each([
+    ["Dixon-Coles", "/score-pools"],
+    ["BART", "/bay-area-transit"],
+    ["EPL", "/premier-league"],
+  ])("matches the curated keyword %s to %s", async (query, url) => {
+    const response = await GET(makeRequest(`?q=${encodeURIComponent(query)}`));
+    const body = await response.json();
+
+    expect(response.status).toBe(200);
+    expect(body.results.map((result: { url: string }) => result.url)).toContain(url);
+  });
+
   it("indexes the mock draft simulator as a distinct page", async () => {
     const response = await GET(
       makeRequest("?q=mock%20draft%20simulator&type=project")

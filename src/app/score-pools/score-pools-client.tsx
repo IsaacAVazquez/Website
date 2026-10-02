@@ -25,6 +25,7 @@ import {
   formatScoreline,
   leagueOptionLabel,
 } from "./score-pools-ui";
+import { groupBy } from "@/lib/utils";
 
 interface ScorePoolsClientProps {
   snapshot: ScorePoolsSnapshot;
@@ -39,7 +40,7 @@ interface RoundGroup {
 }
 
 function groupRounds(fixtures: SnapshotFixture[]): RoundGroup[] {
-  const groups = Map.groupBy(fixtures, (fixture) => fixture.stage ?? fixture.round ?? "Fixtures");
+  const groups = groupBy(fixtures, (fixture) => fixture.stage ?? fixture.round ?? "Fixtures");
   return Array.from(groups.entries())
     .map(([label, list]) => ({
       label,

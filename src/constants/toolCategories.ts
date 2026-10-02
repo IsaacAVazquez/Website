@@ -1,3 +1,4 @@
+import { groupBy } from "@/lib/utils";
 // Single source of truth for how portfolio projects are bucketed into
 // product categories. The /portfolio filter (Catalog97Portfolio), the
 // /dashboards mosaic (Catalog97Dashboards), and the homepage dashboards table
@@ -152,7 +153,7 @@ export function getLiveToolGroups(projects: ProjectLike[]): LiveToolGroup[] {
       },
     ];
   });
-  const byCategory = Map.groupBy(entries, (entry) => entry.categoryId);
+  const byCategory = groupBy(entries, (entry) => entry.categoryId);
 
   return TOOL_CATEGORY_DEFS.flatMap((def) => {
     const tools = byCategory.get(def.id);

@@ -5,7 +5,7 @@
  */
 
 import type { BudgetExpenseLine } from "@/types/budget";
-import { roundTo } from "@/lib/utils";
+import { formatDollars, roundTo } from "@/lib/utils";
 
 export interface Envelope {
   /** Spent against budgeted, clamped at one so an outlier never blows out the fill. */
@@ -16,15 +16,6 @@ export interface Envelope {
   overBy: number;
   spentLabel: string;
   budgetLabel: string;
-}
-
-export function formatCurrency(value: number): string {
-  return value.toLocaleString("en-US", {
-    style: "currency",
-    currency: "USD",
-    minimumFractionDigits: 0,
-    maximumFractionDigits: value % 1 === 0 ? 0 : 2,
-  });
 }
 
 /** A zero budget with any spend reads as torn, never as a division by zero. */
@@ -38,8 +29,8 @@ export function envelope(spent: number, budgeted: number): Envelope {
     fill,
     torn,
     overBy: torn ? roundTo(safeSpent - safeBudgeted, 2) : 0,
-    spentLabel: formatCurrency(safeSpent),
-    budgetLabel: formatCurrency(safeBudgeted),
+    spentLabel: formatDollars(safeSpent),
+    budgetLabel: formatDollars(safeBudgeted),
   };
 }
 

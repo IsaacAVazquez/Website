@@ -10,7 +10,7 @@ import {
 import { sortBestBallRankings } from "./rankings";
 import { getNextUserPick } from "./draft";
 import { getAdaptiveRosterTargets } from "./strategy";
-import { clamp, isFiniteNumber, roundTo } from "@/lib/utils";
+import { clamp, groupBy, isFiniteNumber, roundTo } from "@/lib/utils";
 import type {
   AdaptiveRosterTargets,
   BestBallContestPreset,
@@ -57,7 +57,7 @@ function countWeek17GameStacks(
   players: readonly Player[],
   week17Opponents: Readonly<Record<string, string>>
 ): number {
-  const byTeam = Map.groupBy(
+  const byTeam = groupBy(
     players.filter((player) => {
       const team = teamOf(player);
       return team !== "" && team !== "FA";
@@ -370,7 +370,7 @@ export function recommendBestBallPlayers({
   );
 
   // rankedPlayers is already board-sorted, so each position list stays in board order.
-  const availableByPosition = Map.groupBy(
+  const availableByPosition = groupBy(
     rankedPlayers.filter((ranked) => !draftedIds.has(ranked.id)),
     (ranked) => ranked.position as BestBallPosition
   );

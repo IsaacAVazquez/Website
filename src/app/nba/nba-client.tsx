@@ -38,6 +38,7 @@ import {
 } from "./nba-state.core";
 import { useRouteSync } from "@/hooks/useRouteSync";
 import { useCachedSnapshot } from "@/hooks/useCachedSnapshot";
+import { groupBy } from "@/lib/utils";
 
 interface NbaClientProps {
   initialState: NbaRouteState;
@@ -631,7 +632,7 @@ export function NbaClient({ initialState, summary, initialTeamSnapshot, teamColo
 }
 
 function groupLeadersByTeam(leaders: NbaLeader[]) {
-  return Map.groupBy(leaders, (entry) => entry.teamId);
+  return groupBy(leaders, (entry) => entry.teamId);
 }
 
 function toLeaderEntries(

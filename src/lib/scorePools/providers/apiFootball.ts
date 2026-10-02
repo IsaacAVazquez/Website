@@ -12,6 +12,7 @@ import type {
   SnapshotResult,
   SnapshotStandingsGroup,
 } from "@/types/scorePools";
+import { groupBy } from "@/lib/utils";
 
 export interface ProviderFixture {
   id: string;
@@ -185,7 +186,7 @@ export async function fetchApiFootballInjuries(
     fetchImpl,
   );
   return new Map(
-    [...Map.groupBy(raw, (injury) => injury.team.name)].map(([team, injuries]) => [
+    [...groupBy(raw, (injury) => injury.team.name)].map(([team, injuries]) => [
       team,
       injuries.slice(0, 5).map((injury) =>
         injury.player.reason

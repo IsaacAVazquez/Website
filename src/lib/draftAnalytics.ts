@@ -1,4 +1,4 @@
-import { isFiniteNumber } from "@/lib/utils";
+import { groupBy, isFiniteNumber } from "@/lib/utils";
 import {
   getAdpSignalThreshold,
   hasReliableAdpSample,
@@ -332,7 +332,7 @@ export function detectPositionRuns(
   const windowSize = options.windowSize ?? POSITION_RUN_WINDOW;
   const minCount = options.minCount ?? POSITION_RUN_MIN_COUNT;
 
-  const picksByPosition = Map.groupBy(
+  const picksByPosition = groupBy(
     [...picks].sort((left, right) => left.pickNumber - right.pickNumber),
     (pick) => pick.player.position
   );

@@ -16,8 +16,7 @@ import {
   getCurrentDraftSeason,
   getFantasyDraftStorageKey,
 } from '@/lib/fantasyUtils';
-import { clamp, isFiniteNumber, isRecord, prefixedId } from "@/lib/utils";
-import { escapeCsvValue } from "@/lib/budgetPlanner";
+import { clamp, escapeCsvValue, isFiniteNumber, isRecord, prefixedId } from "@/lib/utils";
 import { downloadFile } from "@/lib/downloadFile";
 
 // Defined in fantasyUtils so a caller that only needs the season or the key
