@@ -284,8 +284,9 @@ the snapshot type **and** render an on-page disclosure card (mirror `tech-startu
 6. **Accessors** — `src/lib/<x>Snapshot.ts` (`get<X>Summary()`, id validation,
    empty-state factory).
 7. **API** — only if the client fetches on selection, as a detail route such as
-   `src/app/api/<x>/teams/[teamId]/route.ts` (return `400` for malformed ids,
-   `404` for unknown). The page reads the summary through the accessor directly.
+   `src/app/api/<x>/teams/[teamId]/route.ts` built with `createTeamRouteHandler`
+   from `src/lib/teamRoute.ts` (`400` for malformed ids, `404` for unknown,
+   `no-store` on errors). The page reads the summary through the accessor directly.
 8. **Route** — `src/app/<x>/page.tsx` server shell + client component with
    deep-linkable state; add `src/app/<x>/loading.tsx`
    (curated/unverified data also needs `verified: false` + `asOf` + an on-page disclosure card).

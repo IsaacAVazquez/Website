@@ -64,7 +64,7 @@ Update paths:
 - `npm run update:la-liga` for La Liga only
 - production builds consume committed football snapshots without calling external providers
 
-The pages and the `/api/{premier-league,la-liga}/teams/[teamId]` routes read those committed snapshots instead of calling `football-data.org`. The league `/summary` routes were removed.
+The pages and the `/api/{premier-league,la-liga}/teams/[teamId]` routes read those committed snapshots instead of calling `football-data.org`. The league `/summary` routes were removed. Both league builders (`src/lib/premierLeagueData.ts`, `src/lib/laLigaData.ts`) are thin wrappers over the competition-parameterized `src/lib/footballLeagueData.ts`, which owns the fetch sequence, the season rollover re-pin, the normalizers, and the live single-flight cache.
 
 ---
 
