@@ -1,10 +1,10 @@
 {
   "symbol": "SCHW",
-  "lastUpdated": "2026-09-30T15:30:08.171135+00:00",
+  "lastUpdated": "2026-10-02T15:16:35.277063+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-09-30T15:30:08.171135+00:00",
+    "snapshotBuiltAt": "2026-10-02T15:16:35.277063+00:00",
     "sections": {
-      "price": "2026-09-30"
+      "price": "2026-10-01"
     }
   },
   "source": "prefetched",
@@ -40,10 +40,10 @@
     },
     "fundamentals": {
       "ttmEps": 5.4992,
-      "ttmPe": 18.02,
-      "marketCap": 171256612720,
-      "psRatio": 6.58,
-      "pbRatio": 3.42,
+      "ttmPe": 17.89,
+      "marketCap": 169995085704,
+      "psRatio": 6.53,
+      "pbRatio": 3.39,
       "pegRatio": 0.43
     },
     "profitability": {
@@ -6045,25 +6045,17 @@
       ]
     },
     "wacc": {
-      "wacc": 9.24,
-      "costOfEquity": 10.91,
+      "wacc": 9.25,
+      "costOfEquity": 10.93,
       "costOfDebt": 2.11,
       "taxRate": 24,
-      "beta": 0.7431,
-      "marketCap": 171256612720
+      "beta": 0.7458,
+      "marketCap": 169995085704
     },
     "beta": {
-      "beta5y": 0.7431
+      "beta5y": 0.7458
     },
     "price": [
-      {
-        "date": "2025-09-30",
-        "open": 96.85,
-        "high": 97.3,
-        "low": 94.46,
-        "close": 95.47,
-        "volume": 8609100
-      },
       {
         "date": "2025-10-01",
         "open": 94.6,
@@ -8070,7 +8062,15 @@
         "high": 99.02,
         "low": 97.68,
         "close": 97.74,
-        "volume": 10294600
+        "volume": 10334200
+      },
+      {
+        "date": "2026-10-01",
+        "open": 97.38,
+        "high": 98.5,
+        "low": 96.87,
+        "close": 98.37,
+        "volume": 6676200
       }
     ],
     "news": [
@@ -8115,19 +8115,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "d6874b40-31b1-30d0-83b4-14fbb580a284",
-        "title": "NYSE Content Advisory: Pre-Market update + Charles Schwab unveils National Investing Day",
-        "publisher": "CNW Group",
-        "reportDate": "2025-05-01",
-        "link": "https://finance.yahoo.com/news/nyse-content-advisory-pre-market-125500495.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "9733c73b-ff43-3220-a882-110813226f8a",
         "title": "NYSE Content Advisory: Pre-Market update + Charles Schwab unveils National Investing Day",
         "publisher": "PR Newswire",
         "reportDate": "2025-05-01",
         "link": "https://finance.yahoo.com/news/nyse-content-advisory-pre-market-125500394.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "d6874b40-31b1-30d0-83b4-14fbb580a284",
+        "title": "NYSE Content Advisory: Pre-Market update + Charles Schwab unveils National Investing Day",
+        "publisher": "CNW Group",
+        "reportDate": "2025-05-01",
+        "link": "https://finance.yahoo.com/news/nyse-content-advisory-pre-market-125500495.html",
         "type": "STORY"
       },
       {
@@ -8147,11 +8147,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "06d1444e-b766-3a02-a4ab-bbb55bbbc47c",
-        "title": "Update On TD Bank; Up 0.6% in U.S. Premarket Following Q2 Adjusted Earnings Beat",
+        "uuid": "b7e7da70-9197-39d9-9e3e-55b23b78ca26",
+        "title": "TD Bank Up 0.3% in U.S. Premarket Following Q2 Adjusted Earnings Beat",
         "publisher": "MT Newswires",
         "reportDate": "2025-05-22",
-        "link": "https://finance.yahoo.com/news/td-bank-0-6-u-121826487.html",
+        "link": "https://finance.yahoo.com/news/td-bank-0-3-u-102912943.html",
         "type": "STORY"
       }
     ],
@@ -8216,18 +8216,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 18.02,
-        "industryAvg": 16.34
+        "value": 17.89,
+        "industryAvg": 16.05
       },
       {
         "metric": "P/S Ratio",
-        "value": 6.58,
-        "industryAvg": 2.12
+        "value": 6.53,
+        "industryAvg": 2.09
       },
       {
         "metric": "P/B Ratio",
-        "value": 3.42,
-        "industryAvg": 2.65
+        "value": 3.39,
+        "industryAvg": 2.61
       },
       {
         "metric": "ROE",

@@ -1,10 +1,10 @@
 {
   "symbol": "CI",
-  "lastUpdated": "2026-09-30T15:30:08.171135+00:00",
+  "lastUpdated": "2026-10-02T15:16:35.277063+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-09-30T15:30:08.171135+00:00",
+    "snapshotBuiltAt": "2026-10-02T15:16:35.277063+00:00",
     "sections": {
-      "price": "2026-09-30"
+      "price": "2026-10-01"
     },
     "retainedSections": [
       "fundamentals"
@@ -43,11 +43,11 @@
     },
     "fundamentals": {
       "ttmEps": 24.1804,
-      "ttmPe": 11.38,
-      "pegRatio": 1.13,
-      "marketCap": 72586062000,
-      "psRatio": 0.26,
-      "pbRatio": 1.7
+      "ttmPe": 11.08,
+      "pegRatio": 1.1,
+      "marketCap": 70661052000,
+      "psRatio": 0.25,
+      "pbRatio": 1.66
     },
     "profitability": {
       "roe": 3.91,
@@ -5901,25 +5901,17 @@
       ]
     },
     "wacc": {
-      "wacc": 5.36,
-      "costOfEquity": 7.3,
+      "wacc": 5.33,
+      "costOfEquity": 7.31,
       "costOfDebt": 1.1199999999999999,
       "taxRate": 17,
-      "beta": 0.2681,
-      "marketCap": 72586062000
+      "beta": 0.2711,
+      "marketCap": 70661052000
     },
     "beta": {
-      "beta5y": 0.2681
+      "beta5y": 0.2711
     },
     "price": [
-      {
-        "date": "2025-09-30",
-        "open": 286.82,
-        "high": 292.45,
-        "low": 286.45,
-        "close": 288.25,
-        "volume": 1692600
-      },
       {
         "date": "2025-10-01",
         "open": 287.98,
@@ -7927,6 +7919,14 @@
         "low": 263.36,
         "close": 271.83,
         "volume": 3080100
+      },
+      {
+        "date": "2026-10-01",
+        "open": 275.97,
+        "high": 275.97,
+        "low": 262.85,
+        "close": 267.96,
+        "volume": 1981000
       }
     ],
     "news": [
@@ -7979,19 +7979,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "6d519243-cdb3-3011-b8a2-fbc3145f3e38",
-        "title": "CI's Unit Unveils Offering to Expand Access to GLP-1 Medications",
-        "publisher": "Zacks",
-        "reportDate": "2025-05-24",
-        "link": "https://finance.yahoo.com/news/cis-unit-unveils-offering-expand-191100569.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "b2b4bc27-e6fb-338f-8491-a2ea6ede6d69",
         "title": "Top Research Reports for Costco, Chubb & Cigna",
         "publisher": "Zacks",
         "reportDate": "2025-05-24",
         "link": "https://finance.yahoo.com/news/top-research-reports-costco-chubb-210000731.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "6d519243-cdb3-3011-b8a2-fbc3145f3e38",
+        "title": "CI's Unit Unveils Offering to Expand Access to GLP-1 Medications",
+        "publisher": "Zacks",
+        "reportDate": "2025-05-24",
+        "link": "https://finance.yahoo.com/news/cis-unit-unveils-offering-expand-191100569.html",
         "type": "STORY"
       },
       {
@@ -8073,18 +8073,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 11.38,
-        "industryAvg": 20.64
+        "value": 11.08,
+        "industryAvg": 20.13
       },
       {
         "metric": "P/S Ratio",
-        "value": 0.26,
-        "industryAvg": 0.4
+        "value": 0.25,
+        "industryAvg": 0.39
       },
       {
         "metric": "P/B Ratio",
-        "value": 1.7,
-        "industryAvg": 2.26
+        "value": 1.66,
+        "industryAvg": 2.2
       },
       {
         "metric": "ROE",

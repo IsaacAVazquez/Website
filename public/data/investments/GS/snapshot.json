@@ -1,10 +1,10 @@
 {
   "symbol": "GS",
-  "lastUpdated": "2026-09-30T15:30:08.171135+00:00",
+  "lastUpdated": "2026-10-02T15:16:35.277063+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-09-30T15:30:08.171135+00:00",
+    "snapshotBuiltAt": "2026-10-02T15:16:35.277063+00:00",
     "sections": {
-      "price": "2026-09-30"
+      "price": "2026-10-01"
     }
   },
   "source": "prefetched",
@@ -40,10 +40,10 @@
     },
     "fundamentals": {
       "ttmEps": 64.7942,
-      "ttmPe": 14.14,
-      "marketCap": 267031184576,
-      "psRatio": 4.03,
-      "pbRatio": 2.18,
+      "ttmPe": 13.84,
+      "marketCap": 261327656808,
+      "psRatio": 3.95,
+      "pbRatio": 2.13,
       "pegRatio": 0.15
     },
     "profitability": {
@@ -6280,25 +6280,17 @@
       ]
     },
     "wacc": {
-      "wacc": 7.2700000000000005,
-      "costOfEquity": 14.99,
+      "wacc": 7.23,
+      "costOfEquity": 15.03,
       "costOfDebt": 3.81,
       "taxRate": 23,
-      "beta": 1.2788,
-      "marketCap": 267031184576
+      "beta": 1.283,
+      "marketCap": 261327656808
     },
     "beta": {
-      "beta5y": 1.2788
+      "beta5y": 1.283
     },
     "price": [
-      {
-        "date": "2025-09-30",
-        "open": 805.5,
-        "high": 809.62,
-        "low": 786.45,
-        "close": 796.35,
-        "volume": 2463900
-      },
       {
         "date": "2025-10-01",
         "open": 793.62,
@@ -8306,6 +8298,14 @@
         "low": 900.36,
         "close": 900.36,
         "volume": 1823300
+      },
+      {
+        "date": "2026-10-01",
+        "open": 896.09,
+        "high": 901.63,
+        "low": 881,
+        "close": 896.67,
+        "volume": 2581800
       }
     ],
     "news": [
@@ -8334,19 +8334,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "5993ebe9-4760-34f1-805f-60ebd30f6f39",
-        "title": "Wall Street Sees Higher China Growth, Less Stimulus on US Truce",
-        "publisher": "Bloomberg",
-        "reportDate": "2025-05-14",
-        "link": "https://finance.yahoo.com/news/wall-street-sees-higher-china-032012202.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "f1e194fe-0d9c-3a7a-99fd-efdbbb87fce0",
         "title": "Princeton CorpGov Forum Featuring Alternative Investments with NYSE, Goldman Sachs, May 22",
         "publisher": "CorpGov.com",
         "reportDate": "2025-05-14",
         "link": "https://finance.yahoo.com/news/princeton-corpgov-forum-featuring-alternative-171528249.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "5993ebe9-4760-34f1-805f-60ebd30f6f39",
+        "title": "Wall Street Sees Higher China Growth, Less Stimulus on US Truce",
+        "publisher": "Bloomberg",
+        "reportDate": "2025-05-14",
+        "link": "https://finance.yahoo.com/news/wall-street-sees-higher-china-032012202.html",
         "type": "STORY"
       },
       {
@@ -8449,18 +8449,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 14.14,
-        "industryAvg": 16.34
+        "value": 13.84,
+        "industryAvg": 16.05
       },
       {
         "metric": "P/S Ratio",
-        "value": 4.03,
-        "industryAvg": 2.12
+        "value": 3.95,
+        "industryAvg": 2.09
       },
       {
         "metric": "P/B Ratio",
-        "value": 2.18,
-        "industryAvg": 2.65
+        "value": 2.13,
+        "industryAvg": 2.61
       },
       {
         "metric": "ROE",

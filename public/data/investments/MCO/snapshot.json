@@ -1,10 +1,10 @@
 {
   "symbol": "MCO",
-  "lastUpdated": "2026-09-30T15:30:08.171135+00:00",
+  "lastUpdated": "2026-10-02T15:16:35.277063+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-09-30T15:30:08.171135+00:00",
+    "snapshotBuiltAt": "2026-10-02T15:16:35.277063+00:00",
     "sections": {
-      "price": "2026-09-30"
+      "price": "2026-10-01"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 15.77,
-      "ttmPe": 28.84,
-      "marketCap": 78766182420,
-      "psRatio": 9.65,
-      "pbRatio": 26.04,
-      "pegRatio": 0.51
+      "ttmPe": 28.37,
+      "marketCap": 77474252160,
+      "psRatio": 9.49,
+      "pbRatio": 25.61,
+      "pegRatio": 0.5
     },
     "profitability": {
       "roe": 29.17,
@@ -6394,25 +6394,17 @@
       ]
     },
     "wacc": {
-      "wacc": 13.94,
-      "costOfEquity": 15.21,
+      "wacc": 13.950000000000001,
+      "costOfEquity": 15.24,
       "costOfDebt": 0.89,
       "taxRate": 25,
-      "beta": 1.3081,
-      "marketCap": 78766182420
+      "beta": 1.31,
+      "marketCap": 77474252160
     },
     "beta": {
-      "beta5y": 1.3081
+      "beta5y": 1.31
     },
     "price": [
-      {
-        "date": "2025-09-30",
-        "open": 479.81,
-        "high": 480.78,
-        "low": 473.85,
-        "close": 476.48,
-        "volume": 599000
-      },
       {
         "date": "2025-10-01",
         "open": 477.97,
@@ -8420,6 +8412,14 @@
         "low": 453.26,
         "close": 454.13,
         "volume": 1039800
+      },
+      {
+        "date": "2026-10-01",
+        "open": 455,
+        "high": 460,
+        "low": 441.59,
+        "close": 447.36,
+        "volume": 1586800
       }
     ],
     "news": [
@@ -8432,19 +8432,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "477e31f7-d5de-37f8-9f7b-c2a81e6cdca0",
-        "title": "Wall Street Strategists React to Moody’s US Credit Rating Cut",
-        "publisher": "Bloomberg",
-        "reportDate": "2025-05-17",
-        "link": "https://finance.yahoo.com/news/wall-street-strategists-react-moody-220113452.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "00602142-fc32-3e95-9724-d5ca577a597c",
         "title": "US Loses Last Top Credit Rating With Downgrade From Moody’s",
         "publisher": "Bloomberg",
         "reportDate": "2025-05-17",
         "link": "https://finance.yahoo.com/news/us-loses-last-top-credit-221054398.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "477e31f7-d5de-37f8-9f7b-c2a81e6cdca0",
+        "title": "Wall Street Strategists React to Moody’s US Credit Rating Cut",
+        "publisher": "Bloomberg",
+        "reportDate": "2025-05-17",
+        "link": "https://finance.yahoo.com/news/wall-street-strategists-react-moody-220113452.html",
         "type": "STORY"
       },
       {
@@ -8488,11 +8488,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "fb74ee6b-5a4b-331d-934e-c9aa57ec7c98",
-        "title": "Gold Climbs After Trump’s EU and Apple Threats Stoke Trade Fears",
+        "uuid": "39b810d6-2380-3bd5-af6e-82c1cf21f74f",
+        "title": "US Long-Term Borrowing Costs Surge Over Deficit Concerns",
         "publisher": "Bloomberg",
         "reportDate": "2025-05-23",
-        "link": "https://finance.yahoo.com/news/gold-heads-weekly-surge-us-014259623.html",
+        "link": "https://finance.yahoo.com/news/us-long-term-borrowing-costs-102812011.html",
         "type": "STORY"
       },
       {
@@ -8562,17 +8562,17 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 28.84,
+        "value": 28.37,
         "industryAvg": 23.24
       },
       {
         "metric": "P/S Ratio",
-        "value": 9.65,
+        "value": 9.49,
         "industryAvg": 7.31
       },
       {
         "metric": "P/B Ratio",
-        "value": 26.04,
+        "value": 25.61,
         "industryAvg": 3.82
       },
       {

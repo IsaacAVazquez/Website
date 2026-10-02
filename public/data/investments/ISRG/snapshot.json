@@ -1,10 +1,10 @@
 {
   "symbol": "ISRG",
-  "lastUpdated": "2026-09-30T15:30:08.171135+00:00",
+  "lastUpdated": "2026-10-02T15:16:35.277063+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-09-30T15:30:08.171135+00:00",
+    "snapshotBuiltAt": "2026-10-02T15:16:35.277063+00:00",
     "sections": {
-      "price": "2026-09-30"
+      "price": "2026-10-01"
     },
     "retainedSections": [
       "fundamentals"
@@ -43,11 +43,11 @@
     },
     "fundamentals": {
       "ttmEps": 8.7251,
-      "ttmPe": 47.24,
-      "pegRatio": 1.77,
-      "marketCap": 145870502000,
-      "psRatio": 13.22,
-      "pbRatio": 8.03
+      "ttmPe": 45.99,
+      "pegRatio": 1.73,
+      "marketCap": 141998836000,
+      "psRatio": 12.87,
+      "pbRatio": 7.82
     },
     "profitability": {
       "roe": 4.590000000000001,
@@ -4974,17 +4974,9 @@
     },
     "wacc": {},
     "beta": {
-      "beta5y": 1.4457
+      "beta5y": 1.446
     },
     "price": [
-      {
-        "date": "2025-09-30",
-        "open": 439,
-        "high": 448.19,
-        "low": 438,
-        "close": 447.23,
-        "volume": 2134200
-      },
       {
         "date": "2025-10-01",
         "open": 447,
@@ -6992,6 +6984,14 @@
         "low": 405.51,
         "close": 406.63,
         "volume": 1658500
+      },
+      {
+        "date": "2026-10-01",
+        "open": 409.05,
+        "high": 410.52,
+        "low": 399.25,
+        "close": 401.24,
+        "volume": 1511300
       }
     ],
     "news": [
@@ -7139,18 +7139,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 47.24,
-        "industryAvg": 37.71
+        "value": 45.99,
+        "industryAvg": 36.83
       },
       {
         "metric": "P/S Ratio",
-        "value": 13.22,
-        "industryAvg": 3.64
+        "value": 12.87,
+        "industryAvg": 3.56
       },
       {
         "metric": "P/B Ratio",
-        "value": 8.03,
-        "industryAvg": 3.13
+        "value": 7.82,
+        "industryAvg": 3.07
       },
       {
         "metric": "ROE",

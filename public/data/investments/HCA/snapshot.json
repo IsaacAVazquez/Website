@@ -1,10 +1,10 @@
 {
   "symbol": "HCA",
-  "lastUpdated": "2026-09-30T15:30:08.171135+00:00",
+  "lastUpdated": "2026-10-02T15:16:35.277063+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-09-30T15:30:08.171135+00:00",
+    "snapshotBuiltAt": "2026-10-02T15:16:35.277063+00:00",
     "sections": {
-      "price": "2026-09-30"
+      "price": "2026-10-01"
     },
     "retainedSections": [
       "fundamentals"
@@ -43,11 +43,11 @@
     },
     "fundamentals": {
       "ttmEps": 29.8688,
-      "ttmPe": 14.45,
-      "pegRatio": 1.25,
-      "marketCap": 94079499179,
-      "psRatio": 1.21,
-      "pbRatio": -14.16
+      "ttmPe": 14.17,
+      "pegRatio": 1.22,
+      "marketCap": 92283481587,
+      "psRatio": 1.18,
+      "pbRatio": -13.89
     },
     "profitability": {
       "roe": -26.25,
@@ -4951,25 +4951,17 @@
       ]
     },
     "wacc": {
-      "wacc": 9.21,
-      "costOfEquity": 13.76,
+      "wacc": 9.16,
+      "costOfEquity": 13.780000000000001,
       "costOfDebt": 1.16,
       "taxRate": 23,
-      "beta": 1.1175,
-      "marketCap": 94079499179
+      "beta": 1.1189,
+      "marketCap": 92283481587
     },
     "beta": {
-      "beta5y": 1.1175
+      "beta5y": 1.1189
     },
     "price": [
-      {
-        "date": "2025-09-30",
-        "open": 421.26,
-        "high": 429.44,
-        "low": 419.08,
-        "close": 426.2,
-        "volume": 1591800
-      },
       {
         "date": "2025-10-01",
         "open": 426.32,
@@ -6977,6 +6969,14 @@
         "low": 425.96,
         "close": 426.74,
         "volume": 1238100
+      },
+      {
+        "date": "2026-10-01",
+        "open": 427.25,
+        "high": 434.46,
+        "low": 422.45,
+        "close": 423.39,
+        "volume": 1098900
       }
     ],
     "news": [
@@ -7037,19 +7037,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "f094d677-ad3e-3647-b0c9-8ed468075ca2",
-        "title": "2 Safe-and-Steady Stocks for Long-Term Investors and 1 to Avoid",
-        "publisher": "StockStory",
-        "reportDate": "2025-05-13",
-        "link": "https://finance.yahoo.com/news/2-safe-steady-stocks-long-043946111.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "c8ca2118-b547-3e6f-b568-3d5b3ca77a34",
         "title": "Encompass Health to Expand Florida Presence With New 50-bed Facility",
         "publisher": "Zacks",
         "reportDate": "2025-05-13",
         "link": "https://finance.yahoo.com/news/encompass-health-expand-florida-presence-122800690.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "f094d677-ad3e-3647-b0c9-8ed468075ca2",
+        "title": "2 Safe-and-Steady Stocks for Long-Term Investors and 1 to Avoid",
+        "publisher": "StockStory",
+        "reportDate": "2025-05-13",
+        "link": "https://finance.yahoo.com/news/2-safe-steady-stocks-long-043946111.html",
         "type": "STORY"
       },
       {
@@ -7126,18 +7126,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 14.45,
-        "industryAvg": 14.78
+        "value": 14.17,
+        "industryAvg": 14.58
       },
       {
         "metric": "P/S Ratio",
-        "value": 1.21,
-        "industryAvg": 0.97
+        "value": 1.18,
+        "industryAvg": 0.95
       },
       {
         "metric": "P/B Ratio",
-        "value": -14.16,
-        "industryAvg": 1.81
+        "value": -13.89,
+        "industryAvg": 1.78
       },
       {
         "metric": "ROE",

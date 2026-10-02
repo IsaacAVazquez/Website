@@ -1,10 +1,10 @@
 {
   "symbol": "SPGI",
-  "lastUpdated": "2026-09-30T15:30:08.171135+00:00",
+  "lastUpdated": "2026-10-02T15:16:35.277063+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-09-30T15:30:08.171135+00:00",
+    "snapshotBuiltAt": "2026-10-02T15:16:35.277063+00:00",
     "sections": {
-      "price": "2026-09-30"
+      "price": "2026-10-01"
     }
   },
   "source": "prefetched",
@@ -40,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 16.4217,
-      "ttmPe": 23.9,
-      "marketCap": 115694260000,
-      "psRatio": 7.18,
-      "pbRatio": 3.67,
-      "pegRatio": 1.36
+      "ttmPe": 23.64,
+      "marketCap": 114429568000,
+      "psRatio": 7.1,
+      "pbRatio": 3.63,
+      "pegRatio": 1.34
     },
     "profitability": {
       "roe": 3.88,
@@ -5711,25 +5711,17 @@
       ]
     },
     "wacc": {
-      "wacc": 11.76,
-      "costOfEquity": 13.29,
+      "wacc": 11.75,
+      "costOfEquity": 13.3,
       "costOfDebt": 0.5599999999999999,
       "taxRate": 24,
-      "beta": 1.0557,
-      "marketCap": 115694260000
+      "beta": 1.0568,
+      "marketCap": 114429568000
     },
     "beta": {
-      "beta5y": 1.0557
+      "beta5y": 1.0568
     },
     "price": [
-      {
-        "date": "2025-09-30",
-        "open": 465.298,
-        "high": 465.298,
-        "low": 458.1078,
-        "close": 460.4636,
-        "volume": 1718893
-      },
       {
         "date": "2025-10-01",
         "open": 462.5355,
@@ -7736,7 +7728,15 @@
         "high": 399.23,
         "low": 393.32,
         "close": 394.47,
-        "volume": 3025000
+        "volume": 3081100
+      },
+      {
+        "date": "2026-10-01",
+        "open": 398.66,
+        "high": 400.8,
+        "low": 385.87,
+        "close": 388.16,
+        "volume": 2939800
       }
     ],
     "news": [
@@ -7886,17 +7886,17 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 23.9,
+        "value": 23.64,
         "industryAvg": 23.24
       },
       {
         "metric": "P/S Ratio",
-        "value": 7.18,
+        "value": 7.1,
         "industryAvg": 7.31
       },
       {
         "metric": "P/B Ratio",
-        "value": 3.67,
+        "value": 3.63,
         "industryAvg": 3.82
       },
       {

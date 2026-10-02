@@ -1,10 +1,10 @@
 {
   "symbol": "PEP",
-  "lastUpdated": "2026-09-30T15:30:08.171135+00:00",
+  "lastUpdated": "2026-10-02T15:16:35.277063+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-09-30T15:30:08.171135+00:00",
+    "snapshotBuiltAt": "2026-10-02T15:16:35.277063+00:00",
     "sections": {
-      "price": "2026-09-30"
+      "price": "2026-10-01"
     },
     "retainedSections": [
       "fundamentals"
@@ -43,11 +43,11 @@
     },
     "fundamentals": {
       "ttmEps": 7.6247,
-      "ttmPe": 16.88,
+      "ttmPe": 16.47,
       "pegRatio": 0.12,
-      "marketCap": 175790540000,
-      "psRatio": 1.81,
-      "pbRatio": 7.96
+      "marketCap": 171569600000,
+      "psRatio": 1.77,
+      "pbRatio": 7.76
     },
     "profitability": {
       "roe": 13.71,
@@ -5881,25 +5881,17 @@
       ]
     },
     "wacc": {
-      "wacc": 6.08,
-      "costOfEquity": 7.82,
+      "wacc": 6.0600000000000005,
+      "costOfEquity": 7.829999999999999,
       "costOfDebt": 0.43,
       "taxRate": 22,
-      "beta": 0.3367,
-      "marketCap": 175790540000
+      "beta": 0.3399,
+      "marketCap": 171569600000
     },
     "beta": {
-      "beta5y": 0.3367
+      "beta5y": 0.3399
     },
     "price": [
-      {
-        "date": "2025-09-30",
-        "open": 140.17,
-        "high": 141.03,
-        "low": 139.83,
-        "close": 140.44,
-        "volume": 7583400
-      },
       {
         "date": "2025-10-01",
         "open": 140.81,
@@ -7907,6 +7899,14 @@
         "low": 126.7,
         "close": 126.72,
         "volume": 9807500
+      },
+      {
+        "date": "2026-10-01",
+        "open": 126.94,
+        "high": 127.31,
+        "low": 125.53,
+        "close": 125.6,
+        "volume": 8538700
       }
     ],
     "news": [
@@ -7919,19 +7919,19 @@
         "type": "VIDEO"
       },
       {
-        "uuid": "ef3a2b57-ad61-3a74-86c1-ac21c5e68268",
-        "title": "Top Analyst Reports for Procter & Gamble, Novo Nordisk & PepsiCo",
-        "publisher": "Zacks",
-        "reportDate": "2025-04-10",
-        "link": "https://finance.yahoo.com/news/top-analyst-reports-procter-gamble-205100046.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "230d8f44-bb97-3380-9102-9e5461a617f1",
         "title": "The Zacks Analyst Blog Highlights Procter & Gamble, Novo Nordisk, PepsiCo, Genie Energy and Canterbury Park",
         "publisher": "Zacks",
         "reportDate": "2025-04-10",
         "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-procter-090000606.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "ef3a2b57-ad61-3a74-86c1-ac21c5e68268",
+        "title": "Top Analyst Reports for Procter & Gamble, Novo Nordisk & PepsiCo",
+        "publisher": "Zacks",
+        "reportDate": "2025-04-10",
+        "link": "https://finance.yahoo.com/news/top-analyst-reports-procter-gamble-205100046.html",
         "type": "STORY"
       },
       {
@@ -7943,19 +7943,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "65b85794-20ef-394d-962f-903aa52a43b9",
-        "title": "Got 10 Years and $1,000? 3 Dividend Stocks That Are High-Yield Bargains.",
-        "publisher": "Motley Fool",
-        "reportDate": "2025-04-24",
-        "link": "https://finance.yahoo.com/m/65b85794-20ef-394d-962f-903aa52a43b9/got-10-years-and-%241%2C000%3F-3.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "fa4bc551-7638-3921-8570-d3b32d9ac253",
         "title": "HHS, FDA to phase out petroleum-based synthetic dyes in foods",
         "publisher": "TipRanks",
         "reportDate": "2025-04-24",
         "link": "https://finance.yahoo.com/m/fa4bc551-7638-3921-8570-d3b32d9ac253/hhs%2C-fda-to-phase-out.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "65b85794-20ef-394d-962f-903aa52a43b9",
+        "title": "Got 10 Years and $1,000? 3 Dividend Stocks That Are High-Yield Bargains.",
+        "publisher": "Motley Fool",
+        "reportDate": "2025-04-24",
+        "link": "https://finance.yahoo.com/m/65b85794-20ef-394d-962f-903aa52a43b9/got-10-years-and-%241%2C000%3F-3.html",
         "type": "STORY"
       },
       {
@@ -8055,18 +8055,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 16.88,
-        "industryAvg": 22.45
+        "value": 16.47,
+        "industryAvg": 22.23
       },
       {
         "metric": "P/S Ratio",
-        "value": 1.81,
-        "industryAvg": 2.88
+        "value": 1.77,
+        "industryAvg": 3
       },
       {
         "metric": "P/B Ratio",
-        "value": 7.96,
-        "industryAvg": 5.92
+        "value": 7.76,
+        "industryAvg": 5.86
       },
       {
         "metric": "ROE",

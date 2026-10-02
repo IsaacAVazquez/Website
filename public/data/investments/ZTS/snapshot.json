@@ -1,10 +1,10 @@
 {
   "symbol": "ZTS",
-  "lastUpdated": "2026-09-30T15:30:08.171135+00:00",
+  "lastUpdated": "2026-10-02T15:16:35.277063+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-09-30T15:30:08.171135+00:00",
+    "snapshotBuiltAt": "2026-10-02T15:16:35.277063+00:00",
     "sections": {
-      "price": "2026-09-30"
+      "price": "2026-10-01"
     },
     "retainedSections": [
       "fundamentals"
@@ -43,11 +43,11 @@
     },
     "fundamentals": {
       "ttmEps": 6.0787,
-      "ttmPe": 11.56,
-      "pegRatio": 7.61,
-      "marketCap": 29115026200,
-      "psRatio": 3.06,
-      "pbRatio": 9.25
+      "ttmPe": 11.37,
+      "pegRatio": 7.48,
+      "marketCap": 28618041400,
+      "psRatio": 3.01,
+      "pbRatio": 9.09
     },
     "profitability": {
       "roe": 21.66,
@@ -6002,25 +6002,17 @@
       ]
     },
     "wacc": {
-      "wacc": 8.1,
-      "costOfEquity": 10.5,
+      "wacc": 8.07,
+      "costOfEquity": 10.51,
       "costOfDebt": 0.66,
       "taxRate": 20,
-      "beta": 0.6892,
-      "marketCap": 29115026200
+      "beta": 0.6902,
+      "marketCap": 28618041400
     },
     "beta": {
-      "beta5y": 0.6892
+      "beta5y": 0.6902
     },
     "price": [
-      {
-        "date": "2025-09-30",
-        "open": 142.89,
-        "high": 147,
-        "low": 142.4,
-        "close": 146.32,
-        "volume": 3736800
-      },
       {
         "date": "2025-10-01",
         "open": 146.32,
@@ -8028,6 +8020,14 @@
         "low": 69.52,
         "close": 69.83,
         "volume": 4444300
+      },
+      {
+        "date": "2026-10-01",
+        "open": 70,
+        "high": 70.9,
+        "low": 68.92,
+        "close": 69.1,
+        "volume": 5346600
       }
     ],
     "news": [
@@ -8056,6 +8056,14 @@
         "type": "STORY"
       },
       {
+        "uuid": "36214d65-734d-335e-9dbc-1287c5285ee5",
+        "title": "Jim Cramer on Zoetis (ZTS): “It Does Seem to Be Dead Money”",
+        "publisher": "Insider Monkey",
+        "reportDate": "2025-05-22",
+        "link": "https://finance.yahoo.com/news/jim-cramer-zoetis-zts-does-181438154.html",
+        "type": "STORY"
+      },
+      {
         "uuid": "90923f20-687b-33c9-b837-a458ae08ac4c",
         "title": "Zoetis (ZTS) Upgraded to Buy: Here's Why",
         "publisher": "Zacks",
@@ -8072,22 +8080,6 @@
         "type": "STORY"
       },
       {
-        "uuid": "36214d65-734d-335e-9dbc-1287c5285ee5",
-        "title": "Jim Cramer on Zoetis (ZTS): “It Does Seem to Be Dead Money”",
-        "publisher": "Insider Monkey",
-        "reportDate": "2025-05-22",
-        "link": "https://finance.yahoo.com/news/jim-cramer-zoetis-zts-does-181438154.html",
-        "type": "STORY"
-      },
-      {
-        "uuid": "431d6a12-91cb-376f-9c18-10c590035393",
-        "title": "2 Dividend Stocks to Buy With $500 and Hold Forever",
-        "publisher": "Motley Fool",
-        "reportDate": "2025-05-23",
-        "link": "https://finance.yahoo.com/m/431d6a12-91cb-376f-9c18-10c590035393/2-dividend-stocks-to-buy-with.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "88887a40-e847-3362-87f6-b87053fcada7",
         "title": "Dr. Mark Stetter Elected to Zoetis Board of Directors",
         "publisher": "Business Wire",
@@ -8101,6 +8093,14 @@
         "publisher": "Simply Wall St.",
         "reportDate": "2025-05-23",
         "link": "https://finance.yahoo.com/news/zoetis-nyse-zts-declares-us-174943464.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "431d6a12-91cb-376f-9c18-10c590035393",
+        "title": "2 Dividend Stocks to Buy With $500 and Hold Forever",
+        "publisher": "Motley Fool",
+        "reportDate": "2025-05-23",
+        "link": "https://finance.yahoo.com/m/431d6a12-91cb-376f-9c18-10c590035393/2-dividend-stocks-to-buy-with.html",
         "type": "STORY"
       },
       {
@@ -8180,18 +8180,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 11.56,
-        "industryAvg": 21.97
+        "value": 11.37,
+        "industryAvg": 21.6
       },
       {
         "metric": "P/S Ratio",
-        "value": 3.06,
-        "industryAvg": 2.27
+        "value": 3.01,
+        "industryAvg": 2.22
       },
       {
         "metric": "P/B Ratio",
-        "value": 9.25,
-        "industryAvg": 2.29
+        "value": 9.09,
+        "industryAvg": 2.26
       },
       {
         "metric": "ROE",

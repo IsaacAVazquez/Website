@@ -1,10 +1,10 @@
 {
   "symbol": "LLY",
-  "lastUpdated": "2026-09-30T15:30:08.171135+00:00",
+  "lastUpdated": "2026-10-02T15:16:35.277063+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-09-30T15:30:08.171135+00:00",
+    "snapshotBuiltAt": "2026-10-02T15:16:35.277063+00:00",
     "sections": {
-      "price": "2026-09-30"
+      "price": "2026-10-01"
     },
     "retainedSections": [
       "fundamentals"
@@ -43,11 +43,11 @@
     },
     "fundamentals": {
       "ttmEps": 29.4291,
-      "ttmPe": 40.25,
-      "pegRatio": 1.54,
-      "marketCap": 1115329145000,
-      "psRatio": 14,
-      "pbRatio": 32.92
+      "ttmPe": 39.07,
+      "pegRatio": 1.49,
+      "marketCap": 1082583775000,
+      "psRatio": 13.59,
+      "pbRatio": 31.95
     },
     "profitability": {
       "roe": 21.8,
@@ -6012,25 +6012,17 @@
       ]
     },
     "wacc": {
-      "wacc": 8.15,
-      "costOfEquity": 8.450000000000001,
+      "wacc": 8.17,
+      "costOfEquity": 8.48,
       "costOfDebt": 0.42,
       "taxRate": 23,
-      "beta": 0.4192,
-      "marketCap": 1115329145000
+      "beta": 0.4243,
+      "marketCap": 1082583775000
     },
     "beta": {
-      "beta5y": 0.4192
+      "beta5y": 0.4243
     },
     "price": [
-      {
-        "date": "2025-09-30",
-        "open": 726.96,
-        "high": 766.35,
-        "low": 725.31,
-        "close": 763,
-        "volume": 6234300
-      },
       {
         "date": "2025-10-01",
         "open": 763.3,
@@ -8038,6 +8030,14 @@
         "low": 1155.27,
         "close": 1157.08,
         "volume": 3407700
+      },
+      {
+        "date": "2026-10-01",
+        "open": 1155,
+        "high": 1158.72,
+        "low": 1139.85,
+        "close": 1149.85,
+        "volume": 2172500
       }
     ],
     "news": [
@@ -8066,19 +8066,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "3e5ef098-2460-375f-92ec-d76a42b3dce8",
-        "title": "Sector Update: Health Care Stocks Fall Pre-Bell Wednesday",
-        "publisher": "MT Newswires",
-        "reportDate": "2025-04-02",
-        "link": "https://finance.yahoo.com/news/sector-health-care-stocks-fall-131725544.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "877a443d-016e-3f73-9182-44a3661c599e",
         "title": "Hims Stock Jumps After Adding Eli Lilly's Obesity Drug To Its Platform",
         "publisher": "Investor's Business Daily",
         "reportDate": "2025-04-02",
         "link": "https://finance.yahoo.com/m/877a443d-016e-3f73-9182-44a3661c599e/hims-stock-jumps-after-adding.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "3e5ef098-2460-375f-92ec-d76a42b3dce8",
+        "title": "Sector Update: Health Care Stocks Fall Pre-Bell Wednesday",
+        "publisher": "MT Newswires",
+        "reportDate": "2025-04-02",
+        "link": "https://finance.yahoo.com/news/sector-health-care-stocks-fall-131725544.html",
         "type": "STORY"
       },
       {
@@ -8106,11 +8106,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "774a1898-ee7f-3b25-b70e-2c4a539fb1dd",
-        "title": "Select Medical, Phreesia, Eli Lilly, Pfizer, and Brink's Shares Are Falling, What You Need To Know",
-        "publisher": "StockStory",
+        "uuid": "4ac38fff-46ac-34a8-b27b-f8adbf604532",
+        "title": "The Zacks Analyst Blog Highlights Eli Lilly, American Express, Thermo Fisher, Steel Partners and Oil-Dri",
+        "publisher": "Zacks",
         "reportDate": "2025-04-11",
-        "link": "https://finance.yahoo.com/news/select-medical-phreesia-eli-lilly-171104703.html",
+        "link": "https://finance.yahoo.com/news/zacks-analyst-blog-highlights-eli-105300304.html",
         "type": "STORY"
       },
       {
@@ -8189,18 +8189,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 40.25,
-        "industryAvg": 26.53
+        "value": 39.07,
+        "industryAvg": 25.78
       },
       {
         "metric": "P/S Ratio",
-        "value": 14,
-        "industryAvg": 4.79
+        "value": 13.59,
+        "industryAvg": 4.66
       },
       {
         "metric": "P/B Ratio",
-        "value": 32.92,
-        "industryAvg": 5.92
+        "value": 31.95,
+        "industryAvg": 5.75
       },
       {
         "metric": "ROE",

@@ -1,10 +1,10 @@
 {
   "symbol": "CVS",
-  "lastUpdated": "2026-09-30T15:30:08.171135+00:00",
+  "lastUpdated": "2026-10-02T15:16:35.277063+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-09-30T15:30:08.171135+00:00",
+    "snapshotBuiltAt": "2026-10-02T15:16:35.277063+00:00",
     "sections": {
-      "price": "2026-09-30"
+      "price": "2026-10-01"
     },
     "retainedSections": [
       "fundamentals"
@@ -43,11 +43,11 @@
     },
     "fundamentals": {
       "ttmEps": 3.7879,
-      "ttmPe": 22.99,
+      "ttmPe": 22.49,
       "pegRatio": 0.12,
-      "marketCap": 111313800000,
-      "psRatio": 0.27,
-      "pbRatio": 1.4
+      "marketCap": 108885600000,
+      "psRatio": 0.26,
+      "pbRatio": 1.37
     },
     "profitability": {
       "roe": 3.7900000000000005,
@@ -5618,25 +5618,17 @@
       ]
     },
     "wacc": {
-      "wacc": 6,
-      "costOfEquity": 9.610000000000001,
+      "wacc": 5.970000000000001,
+      "costOfEquity": 9.629999999999999,
       "costOfDebt": 0.9900000000000001,
       "taxRate": 25,
-      "beta": 0.572,
-      "marketCap": 111313800000
+      "beta": 0.5752,
+      "marketCap": 108885600000
     },
     "beta": {
-      "beta5y": 0.572
+      "beta5y": 0.5752
     },
     "price": [
-      {
-        "date": "2025-09-30",
-        "open": 75.23,
-        "high": 75.83,
-        "low": 73.83,
-        "close": 75.39,
-        "volume": 7293900
-      },
       {
         "date": "2025-10-01",
         "open": 75.3,
@@ -7644,6 +7636,14 @@
         "low": 85.42,
         "close": 85.69,
         "volume": 8379100
+      },
+      {
+        "date": "2026-10-01",
+        "open": 85.48,
+        "high": 86.26,
+        "low": 84.23,
+        "close": 85.2,
+        "volume": 6560100
       }
     ],
     "news": [
@@ -7688,14 +7688,6 @@
         "type": "STORY"
       },
       {
-        "uuid": "d683abdc-c490-3754-ab14-e0891e03c8e6",
-        "title": "MASI Stock Slips Despite Q1 Earnings and Revenue Beat, Margins Expand",
-        "publisher": "Zacks",
-        "reportDate": "2025-05-08",
-        "link": "https://finance.yahoo.com/news/masi-stock-slips-despite-q1-162700258.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "85dc8dd6-94c5-3bdf-bfcc-5fc0c17ef9ac",
         "title": "AVNS Stock Gains Post Q1 Earnings & Revenue Beat, Gross Margin Down",
         "publisher": "Zacks",
@@ -7704,11 +7696,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "72fc7b97-1dc2-33b1-8fef-05e1bcd2ecb9",
-        "title": "INGN Stock Gains Following Q1 Earnings Beat, Revenues Up Y/Y",
+        "uuid": "d683abdc-c490-3754-ab14-e0891e03c8e6",
+        "title": "MASI Stock Slips Despite Q1 Earnings and Revenue Beat, Margins Expand",
         "publisher": "Zacks",
-        "reportDate": "2025-05-09",
-        "link": "https://finance.yahoo.com/news/ingn-stock-gains-following-q1-160600707.html",
+        "reportDate": "2025-05-08",
+        "link": "https://finance.yahoo.com/news/masi-stock-slips-despite-q1-162700258.html",
         "type": "STORY"
       },
       {
@@ -7720,11 +7712,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "05c0ea41-f713-3abc-bac5-4735abe28c53",
-        "title": "TMDX Stock Gains Post Q1 Earnings & Revenue Beat, Gross Margin Down",
+        "uuid": "72fc7b97-1dc2-33b1-8fef-05e1bcd2ecb9",
+        "title": "INGN Stock Gains Following Q1 Earnings Beat, Revenues Up Y/Y",
+        "publisher": "Zacks",
+        "reportDate": "2025-05-09",
+        "link": "https://finance.yahoo.com/news/ingn-stock-gains-following-q1-160600707.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "cf7dda7f-04f4-38a3-8e64-6923ae47ece8",
+        "title": "AMN Stock Gains Following Q1 Earnings & Revenue Beat, Margins Down",
         "publisher": "Zacks",
         "reportDate": "2025-05-10",
-        "link": "https://finance.yahoo.com/news/tmdx-stock-gains-post-q1-160300345.html",
+        "link": "https://finance.yahoo.com/news/amn-stock-gains-following-q1-160100419.html",
         "type": "STORY"
       }
     ],
@@ -7798,18 +7798,18 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 22.99,
-        "industryAvg": 20.64
+        "value": 22.49,
+        "industryAvg": 20.13
       },
       {
         "metric": "P/S Ratio",
-        "value": 0.27,
-        "industryAvg": 0.4
+        "value": 0.26,
+        "industryAvg": 0.39
       },
       {
         "metric": "P/B Ratio",
-        "value": 1.4,
-        "industryAvg": 2.26
+        "value": 1.37,
+        "industryAvg": 2.2
       },
       {
         "metric": "ROE",

@@ -1,14 +1,11 @@
 {
   "symbol": "SNPS",
-  "lastUpdated": "2026-09-30T15:30:08.171135+00:00",
+  "lastUpdated": "2026-10-02T15:16:35.277063+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-09-30T15:30:08.171135+00:00",
+    "snapshotBuiltAt": "2026-10-02T15:16:35.277063+00:00",
     "sections": {
-      "price": "2026-09-30"
-    },
-    "retainedSections": [
-      "industry"
-    ]
+      "price": "2026-10-01"
+    }
   },
   "source": "prefetched",
   "capabilities": {
@@ -35,7 +32,7 @@
       "country": "United States",
       "industry": "Software-Infrastructure",
       "sector": "Technology",
-      "longBusinessSummary": "Synopsys, Inc. provides design IP solutions in the semiconductor and electronics industries. It operates in two segments, Design Automation and Design IP. The company offers Digital and Custom IC Design solution that provides digital design implementation solutions; Verification solution that offers virtual prototyping, static and formal verification, simulation, emulation, field programmable gate array (FPGA)-based prototyping, and debug solutions; FPGA design products that are programmed to perform specific functions; synopsys technology computer-aided design (TCAD), mask synthesis, and manufacturing analytic solutions; and AI-driven EDA solutions. It also provides pre-verified and silicon-proven IP solutions, logic libraries and embedded memories, processor and security solutions, IP Offerings for the automotive market, SOC infrastructure IP, data path and building block IP, and mathematical and floating-point components. Synopsys, Inc. has a strategic collaboration with Arm Holdings plc for development of AGI CPU that provides solutions across its full-stack design portfolio including EDA, interface IP, and hardware-assisted verification (HAV). The company was incorporated in 1986 and is headquartered in Sunnyvale, California.",
+      "longBusinessSummary": "Synopsys, Inc. provides design IP solutions in the semiconductor and electronics industries. It operates in two segments, Design Automation and Design IP. The company offers Digital and Custom IC Design solution that provides digital design implementation solutions; Verification solution that offers virtual prototyping, static and formal verification, simulation, emulation, field programmable gate array (FPGA)-based prototyping, and debug solutions; FPGA design products that are programmed to perform specific functions; synopsys technology computer-aided design (TCAD), mask synthesis, and manufacturing analytic solutions; and AI-driven EDA solutions. It also provides pre-verified and silicon-proven IP solutions, logic libraries and embedded memories, processor and security solutions, IP Offerings for the automotive market, SOC infrastructure IP, data path and building block IP, and mathematical and floating-point components. Synopsys, Inc. has a strategic collaboration with Arm Holdings plc for development of AGI CPU that provides solutions across its full-stack design portfolio including EDA, interface IP, and hardware-assisted verification (HAV). It has a strategic partnership with OpenAI to revolutionize the design of semiconductors. Synopsys, Inc. has a strategic agreement with Amazon to accelerate Amazon's custom silicon innovation and advance the development of complex AI-powered products and cloud infrastructure. The company was incorporated in 1986 and is headquartered in Sunnyvale, California.",
       "fullTimeEmployees": 28000,
       "website": "https://www.synopsys.com",
       "shortName": "Synopsys, Inc.",
@@ -43,11 +40,11 @@
     },
     "fundamentals": {
       "ttmEps": 5.6605,
-      "ttmPe": 73.33,
-      "marketCap": 79533319450,
-      "psRatio": 8.45,
-      "pbRatio": 2.55,
-      "pegRatio": 0.82
+      "ttmPe": 86.66,
+      "marketCap": 93989916700,
+      "psRatio": 9.98,
+      "pbRatio": 3.02,
+      "pegRatio": 0.97
     },
     "profitability": {
       "roe": 1.77,
@@ -6285,25 +6282,17 @@
       ]
     },
     "wacc": {
-      "wacc": 12.78,
-      "costOfEquity": 14.39,
+      "wacc": 12.91,
+      "costOfEquity": 14.29,
       "costOfDebt": 1.23,
       "taxRate": 20,
-      "beta": 1.1999,
-      "marketCap": 79533319450
+      "beta": 1.1862,
+      "marketCap": 93989916700
     },
     "beta": {
-      "beta5y": 1.1999
+      "beta5y": 1.1862
     },
     "price": [
-      {
-        "date": "2025-09-30",
-        "open": 482.05,
-        "high": 495.21,
-        "low": 480.79,
-        "close": 493.39,
-        "volume": 2649400
-      },
       {
         "date": "2025-10-01",
         "open": 488.75,
@@ -8311,6 +8300,14 @@
         "low": 415.24,
         "close": 434.94,
         "volume": 4489200
+      },
+      {
+        "date": "2026-10-01",
+        "open": 467.85,
+        "high": 496.95,
+        "low": 462,
+        "close": 490.54,
+        "volume": 6662200
       }
     ],
     "news": [
@@ -8339,14 +8336,6 @@
         "type": "VIDEO"
       },
       {
-        "uuid": "60b652b1-ba1a-3011-9e0c-1f92bb316553",
-        "title": "Cadence, Synopsys, Others Reportedly Ordered to Stop Shipments to China",
-        "publisher": "MT Newswires",
-        "reportDate": "2025-05-29",
-        "link": "https://finance.yahoo.com/news/cadence-synopsys-others-reportedly-ordered-110607594.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "251263bb-88cb-3480-a6fc-57ee2d97294b",
         "title": "Trump orders U.S. firms to halt chip software sales to China, says FT",
         "publisher": "Investing.com",
@@ -8355,27 +8344,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "bb5b7531-d03b-3469-aae0-7b68b87bba87",
-        "title": "Synopsys gets conditional FTC approval for Ansys acquisition",
-        "publisher": "Verdict",
-        "reportDate": "2025-05-29",
-        "link": "https://finance.yahoo.com/m/bb5b7531-d03b-3469-aae0-7b68b87bba87/synopsys-gets-conditional-ftc.html",
-        "type": "STORY"
-      },
-      {
-        "uuid": "78ac3576-2d73-311d-b281-88d7c914a586",
-        "title": "Synopsys Says It Hasn’t Received Notice to Stop Exports to China, Pushing Back on Report",
-        "publisher": "Barrons.com",
-        "reportDate": "2025-05-29",
-        "link": "https://finance.yahoo.com/m/78ac3576-2d73-311d-b281-88d7c914a586/synopsys-says-it-hasn%E2%80%99t.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "8e48b696-e22a-3e7f-bdbd-a48a315aab69",
         "title": "US Tightens China Chip Curbs by Targeting Design Software",
         "publisher": "Bloomberg",
         "reportDate": "2025-05-29",
         "link": "https://finance.yahoo.com/news/us-tightens-china-chip-curbs-045811794.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "bb5b7531-d03b-3469-aae0-7b68b87bba87",
+        "title": "Synopsys gets conditional FTC approval for Ansys acquisition",
+        "publisher": "Verdict",
+        "reportDate": "2025-05-29",
+        "link": "https://finance.yahoo.com/m/bb5b7531-d03b-3469-aae0-7b68b87bba87/synopsys-gets-conditional-ftc.html",
         "type": "STORY"
       },
       {
@@ -8392,6 +8373,22 @@
         "publisher": "Insider Monkey",
         "reportDate": "2025-05-29",
         "link": "https://finance.yahoo.com/news/ftc-require-synopsys-ansys-divest-011750043.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "78ac3576-2d73-311d-b281-88d7c914a586",
+        "title": "Synopsys Says It Hasn’t Received Notice to Stop Exports to China, Pushing Back on Report",
+        "publisher": "Barrons.com",
+        "reportDate": "2025-05-29",
+        "link": "https://finance.yahoo.com/m/78ac3576-2d73-311d-b281-88d7c914a586/synopsys-says-it-hasn%E2%80%99t.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "018e0c72-aa04-3842-9a45-03fbadc39148",
+        "title": "FTC to Require Synopsys, Ansys to Divest Assets to Resolve Merger Concerns",
+        "publisher": "MT Newswires",
+        "reportDate": "2025-05-29",
+        "link": "https://finance.yahoo.com/news/ftc-require-synopsys-ansys-divest-102101449.html",
         "type": "STORY"
       }
     ],
@@ -8451,23 +8448,23 @@
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 73.78,
-        "industryAvg": 33.11
+        "value": 86.66,
+        "industryAvg": 33.43
       },
       {
         "metric": "P/S Ratio",
-        "value": 8.5,
-        "industryAvg": 7.41
+        "value": 9.98,
+        "industryAvg": 7.69
       },
       {
         "metric": "P/B Ratio",
-        "value": 2.57,
-        "industryAvg": 8.24
+        "value": 3.02,
+        "industryAvg": 8.55
       },
       {
         "metric": "ROE",
         "value": 1.77,
-        "industryAvg": 25.89
+        "industryAvg": 25.900000000000002
       },
       {
         "metric": "ROA",
@@ -8487,7 +8484,7 @@
       {
         "metric": "Net Margin",
         "value": 22.040000000000003,
-        "industryAvg": 19.82
+        "industryAvg": 19.830000000000002
       }
     ]
   }
