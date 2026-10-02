@@ -1,17 +1,15 @@
-import {
-  buildComparisonDistribution,
-  buildGrid,
-  calibrateDistribution,
-  devigMoneyline,
-  devigTotals,
-  expectedTotalOfGrid,
-  outcomeMasses,
-  pOverLine,
-  rhoBounds,
-  DEFAULT_EXTRA_TIME,
-  type CalibrationConfig,
-} from "../index";
-import { poissonPmf } from "../poisson";
+import { buildComparisonDistribution, buildGrid, calibrateDistribution, expectedTotalOfGrid, outcomeMasses, pOverLine, rhoBounds, type CalibrationConfig } from "../scorelineModel";
+import { devigMoneyline, devigTotals } from "../odds";
+import { DEFAULT_EXTRA_TIME } from "../defaults";
+
+// Reference pmf for the grid checks; the engine builds rows incrementally.
+function poissonPmf(k: number, lambda: number): number {
+  if (k < 0 || !Number.isInteger(k)) return 0;
+  if (lambda <= 0) return k === 0 ? 1 : 0;
+  let factorial = 1;
+  for (let i = 2; i <= k; i++) factorial *= i;
+  return (Math.exp(-lambda) * Math.pow(lambda, k)) / factorial;
+}
 
 const CONFIG: CalibrationConfig = {
   maxGoals: 7,

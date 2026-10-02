@@ -5,8 +5,8 @@ import { Suspense } from "react";
 import { ResearchLoading } from "./ResearchLoading";
 import type { ResearchSectionProps } from "./ResearchWorkspace";
 
-// Everything a picked symbol needs, which is nine panels, the research charts,
-// and framer-motion. The default is no symbol, so it loads when one is picked.
+// Everything a picked symbol needs, which is nine panels and the research
+// charts. The default is no symbol, so it loads when one is picked.
 // A link that names a symbol still renders it on the server. It takes no
 // `loading` option, so it suspends to the boundary below, whose fallback can
 // name the symbol.
@@ -29,8 +29,8 @@ export function ResearchSection(props: ResearchSectionProps) {
           Pick a holding to research
         </p>
         <p className="mx-auto mt-2 max-w-md text-sm text-[var(--c97-ink-2)]">
-          Click <strong className="text-[var(--c97-ink)]">Research</strong> on any holding above
-          to load the deep-dive view with fundamentals, valuation, growth, and a price chart.
+          Search for a company in the box above, or use Research on any holding in your
+          portfolio, to load fundamentals, valuation, growth, and a price chart.
         </p>
       </section>
     );

@@ -177,7 +177,7 @@ export function ResearchOverview({ symbol, showNews = true }: Props) {
           <p className="text-2xs font-semibold uppercase tracking-[0.18em] text-[var(--c97-label)]">
             About
           </p>
-          <p className="mt-3 text-sm leading-[1.7] text-[var(--c97-ink-2)] w-full max-w-full overflow-hidden text-ellipsis ">
+          <p className="mt-3 text-sm leading-[1.7] text-[var(--c97-ink-2)]">
             {info?.longBusinessSummary ??
               "A company summary is not available for this symbol, but the core valuation, quality, and operating metrics are still available from the research snapshot."}
           </p>

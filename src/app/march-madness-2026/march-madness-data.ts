@@ -469,8 +469,6 @@ export const PICKS: PickEntry[] = [
   },
 ];
 
-export const HERO_TAGS = ["KenPom", "S-Curve", "Time Zones", "Injury Model"] as const;
-
 export const FINAL_FOUR_SUMMARY = [
   { label: "Semifinal 1", matchup: "Duke vs Arizona", winner: "Duke", note: "Arizona −9% PT→ET" },
   { label: "Semifinal 2", matchup: "Michigan vs Houston", winner: "Michigan", note: "Houston −3% CT→ET" },
@@ -493,7 +491,7 @@ export const TOP_UPSET_PICKS: EditorialCard[] = [
     reason: "St. John's grades like a stronger team than a 5-seed, while Kansas is one of the biggest overseeded teams in the field.",
     note: "Underseeded +3 vs overseeded −5",
     href: "/march-madness-2026?view=picks#analysis-workspace",
-    cta: "See the analytics case",
+    cta: "Open the picks board",
     color: "amber",
   },
   {
@@ -502,7 +500,7 @@ export const TOP_UPSET_PICKS: EditorialCard[] = [
     reason: "The home regional and zero accumulated travel penalty make Houston the biggest structural upset call in the bracket.",
     note: "KP#5 vs KP#4 · Houston at 0%",
     href: "/march-madness-2026?view=picks#analysis-workspace",
-    cta: "Jump to Elite Eight call",
+    cta: "Open the picks board",
     color: "blue",
   },
 ];

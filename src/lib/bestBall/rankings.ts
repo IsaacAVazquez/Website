@@ -1,3 +1,4 @@
+import { isFiniteNumber } from "@/lib/utils";
 import { isUndraftedFloorAdp } from "@/lib/draftAnalytics";
 import type { Player } from "@/types";
 import {
@@ -16,10 +17,6 @@ import type {
   BestBallPosition,
   RankedBestBallPlayer,
 } from "./types";
-
-function isFiniteNumber(value: unknown): value is number {
-  return typeof value === "number" && Number.isFinite(value);
-}
 
 function getBestBallEcr(player: Player): number {
   if (isFiniteNumber(player.rankEcr)) return player.rankEcr;

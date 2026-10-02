@@ -1,5 +1,3 @@
-import { readFileSync } from "node:fs";
-import { resolve } from "node:path";
 import type {
   MlbGame,
   MlbGameTeam,
@@ -14,10 +12,14 @@ import type {
   MlbTeamProfile,
   MlbTeamSnapshot,
 } from "@/types/mlb";
+import { HttpStatusError, isFiniteNumber } from "@/lib/utils";
+import { readExistingTeamSnapshots } from "@/lib/existingTeamSnapshots";
+import { retryLinear, hasClientErrorStatus, isTimeoutError } from "@/lib/fetchRetry";
+import { setTimeout as delay } from "node:timers/promises";
 
 const MLB_STATS_BASE_URL = "https://statsapi.mlb.com/api/v1";
 const MLB_LOGO_BASE_URL = "https://www.mlbstatic.com/team-logos";
-const SPORT_ID = 1;
+const SPORT_ID = "1";
 const AL_LEAGUE_ID = 103;
 const NL_LEAGUE_ID = 104;
 const REQUEST_TIMEOUT_MS = 15_000;
@@ -28,14 +30,6 @@ const UPCOMING_GAME_LIMIT = 10;
 const TEAM_GAME_LIMIT = 5;
 const RECENT_WINDOW_DAYS = 10;
 const UPCOMING_WINDOW_DAYS = 10;
-
-interface MlbDataError extends Error {
-  status: number;
-}
-
-function createMlbDataError(message: string, status: number): MlbDataError {
-  return Object.assign(new Error(message), { status });
-}
 
 interface StatsApiTeam {
   id?: number | null;
@@ -173,7 +167,7 @@ function deriveTeamShortName(raw: StatsApiTeam): string {
 
 function normalizeTeamOption(raw: StatsApiTeam): MlbTeamOption | null {
   const id = raw.id;
-  if (typeof id !== "number" || !Number.isFinite(id)) return null;
+  if (!isFiniteNumber(id)) return null;
   const league = leagueFromId(raw.league?.id ?? null);
   if (!league) return null;
   return {
@@ -379,9 +373,9 @@ async function fetchStatsApiJsonOnce<T>(path: string, revalidateSeconds: number)
   });
   if (!response.ok) {
     if (response.status === 404) {
-      throw createMlbDataError("Requested MLB resource was not found.", 404);
+      throw new HttpStatusError("Requested MLB resource was not found.", 404);
     }
-    throw createMlbDataError(
+    throw new HttpStatusError(
       "Unable to load MLB data from the upstream provider.",
       response.status >= 500 ? 503 : 502
     );
@@ -395,66 +389,22 @@ async function fetchStatsApiJsonOnce<T>(path: string, revalidateSeconds: number)
  * Mirrors the pattern in src/lib/nflData.ts (`fetchTextOnce` + `fetchText`).
  */
 async function fetchStatsApiJson<T>(path: string, revalidateSeconds: number): Promise<T> {
-  let lastError: unknown;
-  for (let attempt = 0; attempt < 3; attempt += 1) {
-    try {
-      return await fetchStatsApiJsonOnce<T>(path, revalidateSeconds);
-    } catch (error) {
-      lastError = error;
-      if (error instanceof Error && (error.name === "AbortError" || error.name === "TimeoutError")) {
-        if (attempt < 2) {
-          await new Promise((resolve) => setTimeout(resolve, 1000 * (attempt + 1)));
-          continue;
-        }
-        throw createMlbDataError("MLB data provider timed out.", 504);
-      }
-      const status = (error as MlbDataError).status;
-      if (typeof status === "number" && status >= 400 && status < 500) throw error;
-      if (attempt < 2) {
-        await new Promise((resolve) => setTimeout(resolve, 1000 * (attempt + 1)));
-      }
-    }
-  }
-  throw lastError;
-}
-
-function buildQueryString(params: Record<string, string | number>): string {
-  const searchParams = new URLSearchParams();
-  for (const [key, value] of Object.entries(params)) {
-    searchParams.set(key, String(value));
-  }
-  return searchParams.toString();
+  return retryLinear(
+    3,
+    () => fetchStatsApiJsonOnce<T>(path, revalidateSeconds),
+    (error) => !hasClientErrorStatus(error)
+  ).catch((error) => {
+    throw isTimeoutError(error) ? new HttpStatusError("MLB data provider timed out.", 504) : error;
+  });
 }
 
 export function isValidMlbTeamId(teamId: string): boolean {
   return /^[1-9]\d*$/.test(teamId);
 }
 
-export function createEmptyMlbSnapshot(): MlbSnapshot {
-  const generatedAt = new Date().toISOString();
-  return {
-    season: getCurrentSeason(),
-    generatedAt,
-    updatedAt: generatedAt.slice(0, 10),
-    sourceLabel: "MLB Stats API",
-    sourceUrls: {
-      standings: `${MLB_STATS_BASE_URL}/standings`,
-      schedule: `${MLB_STATS_BASE_URL}/schedule`,
-      leaders: `${MLB_STATS_BASE_URL}/stats/leaders`,
-    },
-    teams: [],
-    standings: [],
-    recentGames: [],
-    upcomingGames: [],
-    hittingLeaders: { homeRuns: [], runsBattedIn: [], battingAverage: [] },
-    pitchingLeaders: { earnedRunAverage: [], wins: [], strikeouts: [] },
-    teamSnapshots: {},
-  };
-}
-
 async function getTeams(season: string): Promise<MlbTeamOption[]> {
   const response = await fetchStatsApiJson<StatsApiTeamsResponse>(
-    `/teams?${buildQueryString({ sportId: SPORT_ID, season, activeStatus: "Y", hydrate: "venue" })}`,
+    `/teams?${new URLSearchParams({ sportId: SPORT_ID, season, activeStatus: "Y", hydrate: "venue" })}`,
     SUMMARY_REVALIDATE_SECONDS
   );
   return (response.teams ?? [])
@@ -465,7 +415,7 @@ async function getTeams(season: string): Promise<MlbTeamOption[]> {
 
 async function getStandings(season: string, teamLookup: Map<string, MlbTeamOption>): Promise<MlbStandingsRow[]> {
   const response = await fetchStatsApiJson<StatsApiStandingsResponse>(
-    `/standings?${buildQueryString({
+    `/standings?${new URLSearchParams({
       leagueId: `${AL_LEAGUE_ID},${NL_LEAGUE_ID}`,
       season,
       standingsTypes: "regularSeason",
@@ -515,7 +465,7 @@ function collectScheduleGames(
 
 async function getRecentSchedule(teamLookup: Map<string, MlbTeamOption>): Promise<MlbGame[]> {
   const response = await fetchStatsApiJson<StatsApiScheduleResponse>(
-    `/schedule?${buildQueryString({
+    `/schedule?${new URLSearchParams({
       sportId: SPORT_ID,
       startDate: dateOffsetIso(-RECENT_WINDOW_DAYS),
       endDate: dateOffsetIso(0),
@@ -530,7 +480,7 @@ async function getRecentSchedule(teamLookup: Map<string, MlbTeamOption>): Promis
 
 async function getUpcomingSchedule(teamLookup: Map<string, MlbTeamOption>): Promise<MlbGame[]> {
   const response = await fetchStatsApiJson<StatsApiScheduleResponse>(
-    `/schedule?${buildQueryString({
+    `/schedule?${new URLSearchParams({
       sportId: SPORT_ID,
       startDate: dateOffsetIso(-1),
       endDate: dateOffsetIso(UPCOMING_WINDOW_DAYS),
@@ -550,12 +500,12 @@ async function getLeaders(
   teamLookup: Map<string, MlbTeamOption>
 ): Promise<MlbLeader[]> {
   const response = await fetchStatsApiJson<StatsApiLeadersResponse>(
-    `/stats/leaders?${buildQueryString({
+    `/stats/leaders?${new URLSearchParams({
       leaderCategories: category,
       season,
       sportId: SPORT_ID,
       statGroup,
-      limit: 10,
+      limit: "10",
       hydrate: `person(stats(group=[${statGroup}],type=[season],season=${season}))`,
     })}`,
     SUMMARY_REVALIDATE_SECONDS
@@ -617,18 +567,18 @@ export async function getMlbSummary(): Promise<{
 
 export async function getMlbTeamSnapshot(teamId: string, teamLookup?: Map<string, MlbTeamOption>): Promise<MlbTeamSnapshot> {
   if (!isValidMlbTeamId(teamId)) {
-    throw createMlbDataError("Invalid MLB team id.", 400);
+    throw new HttpStatusError("Invalid MLB team id.", 400);
   }
 
   const lookup = teamLookup ?? new Map((await getTeams(getCurrentSeason())).map((team) => [team.id, team]));
 
   const [profileResponse, recentResponse, upcomingResponse] = await Promise.all([
     fetchStatsApiJson<StatsApiTeamsResponse>(
-      `/teams/${teamId}?${buildQueryString({ hydrate: "venue" })}`,
+      `/teams/${teamId}?${new URLSearchParams({ hydrate: "venue" })}`,
       TEAM_REVALIDATE_SECONDS
     ),
     fetchStatsApiJson<StatsApiScheduleResponse>(
-      `/schedule?${buildQueryString({
+      `/schedule?${new URLSearchParams({
         sportId: SPORT_ID,
         teamId,
         startDate: dateOffsetIso(-RECENT_WINDOW_DAYS - 5),
@@ -637,7 +587,7 @@ export async function getMlbTeamSnapshot(teamId: string, teamLookup?: Map<string
       TEAM_REVALIDATE_SECONDS
     ),
     fetchStatsApiJson<StatsApiScheduleResponse>(
-      `/schedule?${buildQueryString({
+      `/schedule?${new URLSearchParams({
         sportId: SPORT_ID,
         teamId,
         startDate: dateOffsetIso(-1),
@@ -667,46 +617,22 @@ export async function getMlbTeamSnapshot(teamId: string, teamLookup?: Map<string
 }
 
 const TEAM_FETCH_DELAY_MS = 750;
-const MLB_SNAPSHOT_PATH = "src/data/mlbSnapshot.ts";
+const MLB_SNAPSHOT_PATH = "src/data/mlbSnapshot.json";
 
-function delay(ms: number) {
-  return new Promise<void>((resolveFn) => setTimeout(resolveFn, ms));
-}
-
-function readExistingTeamSnapshots(filePath: string): Record<string, MlbTeamSnapshot> {
-  try {
-    const fullPath = resolve(process.cwd(), filePath);
-    const content = readFileSync(fullPath, "utf8");
-    const match = content.match(/=\s*(\{[\s\S]*\})\s*;?\s*$/);
-    if (!match) return {};
-    const parsed = JSON.parse(match[1]);
-    return parsed.teamSnapshots ?? {};
-  } catch {
-    return {};
-  }
-}
-
-export async function buildMlbSnapshot(options?: { skipTeamSnapshots?: boolean }): Promise<MlbSnapshot> {
+export async function buildMlbSnapshot(): Promise<MlbSnapshot> {
   const summary = await getMlbSummary();
   const teamLookup = new Map(summary.teams.map((team) => [team.id, team]));
   const generatedAt = new Date().toISOString();
-  let teamSnapshots: Record<string, MlbTeamSnapshot>;
-
-  if (options?.skipTeamSnapshots) {
-    teamSnapshots = readExistingTeamSnapshots(MLB_SNAPSHOT_PATH);
-    console.log(`  Preserved ${Object.keys(teamSnapshots).length} existing team snapshots.`);
-  } else {
-    // Start from the prior snapshots so a per-team failure preserves that
-    // team's previous data instead of dropping it from the snapshot.
-    teamSnapshots = { ...readExistingTeamSnapshots(MLB_SNAPSHOT_PATH) };
-    for (const team of summary.teams) {
-      await delay(TEAM_FETCH_DELAY_MS);
-      try {
-        const snap = await getMlbTeamSnapshot(team.id, teamLookup);
-        teamSnapshots[team.id] = { ...snap, generatedAt };
-      } catch (err) {
-        console.warn(`  Skipping team ${team.id} (${team.shortName}): ${(err as Error).message} — keeping previous snapshot if any.`);
-      }
+  // Start from the prior snapshots so a per-team failure preserves that
+  // team's previous data instead of dropping it from the snapshot.
+  const teamSnapshots = { ...readExistingTeamSnapshots<MlbTeamSnapshot>(MLB_SNAPSHOT_PATH) };
+  for (const team of summary.teams) {
+    await delay(TEAM_FETCH_DELAY_MS);
+    try {
+      const snap = await getMlbTeamSnapshot(team.id, teamLookup);
+      teamSnapshots[team.id] = { ...snap, generatedAt };
+    } catch (err) {
+      console.warn(`  Skipping team ${team.id} (${team.shortName}): ${(err as Error).message} — keeping previous snapshot if any.`);
     }
   }
 

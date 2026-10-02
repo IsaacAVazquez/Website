@@ -1,11 +1,6 @@
-import {
-  analyzeFixture,
-  analyzeRound,
-  createDefaultPoolConfig,
-  summarizeLineMovement,
-  type FixtureInput,
-  type MarketInputs,
-} from "../index";
+import { analyzeFixture, summarizeLineMovement } from "../engine";
+import { createDefaultPoolConfig } from "../defaults";
+import { type FixtureInput, type MarketInputs } from "../types";
 
 const NOW = "2026-07-10T12:00:00.000Z";
 
@@ -126,21 +121,6 @@ describe("context flags", () => {
       base.distribution.expectedTotal * pool.model.context.deadRubberTotalFactor,
       1,
     );
-  });
-});
-
-describe("analyzeRound", () => {
-  it("sorts the round by kickoff", () => {
-    const pool = createDefaultPoolConfig();
-    const round = analyzeRound(
-      [
-        fixture({ id: "b", kickoff: "2026-07-11T19:00:00.000Z" }),
-        fixture({ id: "a", kickoff: "2026-07-11T15:00:00.000Z" }),
-      ],
-      pool,
-      { now: NOW },
-    );
-    expect(round.map((analysis) => analysis.fixtureId)).toEqual(["a", "b"]);
   });
 });
 

@@ -24,7 +24,7 @@ For a dashboard `x`:
 
 | Part | Path | Role |
 |------|------|------|
-| **Seed snapshot** | `src/data/<x>Snapshot.ts` | Committed `export const <x>Snapshot: <Type> = {…}`. Ships with a seed (empty or hand-authored) so the page works before the first refresh. |
+| **Seed snapshot** | `src/data/<x>Snapshot.json` + `src/data/<x>Snapshot.ts` | Committed JSON data plus a four-line typed re-export (`export const <x>Snapshot = raw as <Type>`). Ships with a seed (empty or hand-authored) so the page works before the first refresh. |
 | **Builder** | `scripts/build<X>Snapshot.ts` (often via a `src/lib/<x>Data.ts` fetch/transform) | Fetches the upstream source, shapes it, writes the snapshot file. Run by `npm run update:<x>`. |
 | **GitHub Action** | `.github/workflows/update-<x>.yml` | Runs the builder on a schedule (+ manual dispatch) and commits the snapshot only when it changes, via the shared `scripts/ci/commit-and-push-snapshot.sh`. |
 | **Accessors** | `src/lib/<x>Snapshot.ts` | Pure read helpers the app and API routes call (`get<X>Summary()`, per-entity getters, id validation, empty-state factories). |
@@ -42,13 +42,12 @@ A failed or empty refresh must **keep the previous snapshot**, never wipe it. Th
 shared helper is `scripts/snapshotFallback.ts`:
 
 ```ts
-export function readGeneratedSnapshot<T>(filePath: string, exportName: string): T | null
+export function readGeneratedSnapshot<T>(filePath: string): T | null
 ```
 
-It reads the already-generated `export const <name> = {…};` literal back out of
-the `.ts` file and `JSON.parse`s it. It returns `null` for a missing file or a
-hand-authored seed that isn't in generated shape, so the caller can surface the
-original fetch error instead of masking it behind data that may not exist.
+It `JSON.parse`s the committed `.json` file. It returns `null` for a missing or
+non-JSON file, so the caller can surface the original fetch error instead of
+masking it behind data that may not exist.
 
 Builders use it like this (from `scripts/buildGolfSnapshot.ts`):
 
@@ -56,7 +55,7 @@ Builders use it like this (from `scripts/buildGolfSnapshot.ts`):
 try {
   snapshot = await buildGolfSnapshotData();
 } catch (error) {
-  const existing = readGeneratedSnapshot<GolfSnapshot>(outPath, "golfSnapshot");
+  const existing = readGeneratedSnapshot<GolfSnapshot>(outPath);
   if (hasContents(existing)) {
     console.warn("Golf refresh failed; keeping the existing snapshot.", error);
     return;                       // keep last-good data
@@ -70,7 +69,7 @@ Builders also **write atomically** (`writeFileAtomic`: write `.tmp`, then
 
 A builder that fans out across **many independent upstream calls** (e.g.
 `buildGitHubTrendingSnapshot.ts` hits the GitHub Search API once per tracked
-language/topic) wraps each call in `withRetry` (`scripts/fetchRetry.ts`) so a
+language/topic) wraps each call in `withRetry` (`src/lib/fetchRetry.ts`) so a
 transient blip on one segment doesn't discard the whole refresh. It tolerates a
 few segments failing outright — skipping them and writing the rest fresh — but
 aborts (keeping the previous snapshot) once `MAX_FAILED_SEGMENTS` is exceeded,
@@ -83,15 +82,17 @@ response falls back to the committed snapshot.
 
 ## The shared commit/push step (every Action)
 
-All 17 `update-*.yml` workflows route their git commit + push through one shared
-helper, `scripts/ci/commit-and-push-snapshot.sh`, instead of inlining their own
+Ten of the `update-*.yml` workflows are short callers of the reusable
+`.github/workflows/refresh-snapshot.yml` (checkout, `npm ci`, refresh, verify, commit,
+failure issue), and every lane routes its git commit + push through one shared
+helper, `scripts/ci/commit-and-push-snapshot.sh`, instead of inlining its own
 git plumbing:
 
 ```yaml
 - run: |
     bash scripts/ci/commit-and-push-snapshot.sh \
       "chore: refresh golf snapshot [automated] [skip ci]" \
-      src/data/golfSnapshot.ts
+      src/data/golfSnapshot.json
 ```
 
 Usage is `commit-and-push-snapshot.sh <commit-message> <pathspec...>`. The script:
@@ -121,10 +122,10 @@ exhausting all attempts. Tests in
 1. **Source:** ESPN's public golf leaderboard endpoint, no token.
 2. **Builder:** `scripts/buildGolfSnapshot.ts` calls `buildGolfSnapshotData()`
    from `src/lib/golfData.ts`, JSON-stringifies the result into
-   `src/data/golfSnapshot.ts`, with the `readGeneratedSnapshot` fallback above.
+   `src/data/golfSnapshot.json`, with the `readGeneratedSnapshot` fallback above.
 3. **Action:** `.github/workflows/update-golf.yml` runs every three hours Thursday
    through Sunday and daily at 08:40 UTC Monday through Wednesday, and
-   commits `src/data/golfSnapshot.ts` when it changes, via
+   commits `src/data/golfSnapshot.json` when it changes, via
    `scripts/ci/commit-and-push-snapshot.sh`.
 4. **Accessors:** `src/lib/golfSnapshot.ts` exposes `getGolfSummary()`,
    `getGolfPlayerSnapshot(id)`, `createEmptyGolfSummary()`, and id validation.
@@ -154,21 +155,21 @@ by BART abbr, world-cup `/teams/[teamId]` by team slug.
 
 | Route(s) | Snapshot | Builder / `npm run` | Workflow | Upstream source | Cadence |
 |---|---|---|---|---|---|
-| `/premier-league` | `src/data/premierLeagueSnapshot.ts` | `buildPremierLeagueSnapshot.ts` · `update:premier-league` / `update:football` | `update-premier-league.yml` | football-data.org (token, build time only) | every 4h, Aug–May |
-| `/la-liga` | `src/data/laLigaSnapshot.ts` | `updateLaLigaSnapshot.ts` · `update:la-liga` / `update:football` | `update-la-liga.yml` | football-data.org (token, build time only) | every 4h, Aug–May |
-| `/nfl` | `src/data/nflSnapshot.ts` | `updateNflSnapshot.ts` · `update:nfl` | `update-nfl.yml` | NFLverse CSVs | daily 10:35 UTC, Sep–Feb |
-| `/mlb` | `src/data/mlbSnapshot.ts` | `updateMlbSnapshot.ts` · `update:mlb` | `update-mlb.yml` | MLB Stats API | every 4h, Mar 20–Nov 6 |
-| `/nba` | `src/data/nbaSnapshot.ts` | `updateNbaSnapshot.ts` · `update:nba` | `update-nba.yml` | ESPN NBA | every 4h, mid-Oct–Jun |
-| `/golf` | `src/data/golfSnapshot.ts` | `buildGolfSnapshot.ts` · `update:golf` | `update-golf.yml` | ESPN golf | every 3h Thu–Sun, daily 08:40 UTC Mon–Wed |
-| `/formula-1`, `/fantasy-formula-1` | `src/data/formula1Snapshot.ts` | `buildFormula1Snapshot.ts` · `update:formula-1` | `update-formula-1.yml` | OpenF1 | every 3h Thu–Sun, daily 08:10 UTC Mon–Wed |
-| `/world-cup-2026` | `src/data/worldCupSnapshot.ts` | `buildWorldCupSnapshot.ts` · `update:world-cup` | `update-world-cup.yml` | ESPN `soccer/fifa.world` | no schedule, manual dispatch only (the tournament ended) |
-| `/score-pools` (+ `/tracker`, `/settings`) | `src/data/scorePoolsSnapshot.ts` | `buildScorePoolsSnapshot.ts` · `update:score-pools` | `update-score-pools.yml` | The Odds API + API-Football + manual/CSV | every 6h, and the run skips the refresh with a notice until both provider keys are set |
-| `/bay-area-transit` | `src/data/bayAreaTransitSnapshot.ts` | `buildBayAreaTransitSnapshot.ts` · `update:bay-area-transit` | `update-bay-area-transit.yml` | BART public API (demo key) | every 6h, year-round |
-| `/earthquake-pulse` | `src/data/earthquakeSnapshot.ts` | `buildEarthquakeSnapshot.ts` · `update:earthquake` | `update-earthquake.yml` | USGS GeoJSON feeds | daily 06:20 UTC (fallback seed; the API serves live USGS at request time) |
-| `/github-trending-pulse` | `src/data/githubTrendingSnapshot.ts` | `buildGitHubTrendingSnapshot.ts` · `update:github-trending` | `update-github-trending.yml` | GitHub Search API | daily 07:45 UTC |
+| `/premier-league` | `src/data/premierLeagueSnapshot.json` | `buildPremierLeagueSnapshot.ts` · `update:premier-league` / `update:football` | `update-premier-league.yml` | football-data.org (token, build time only) | every 4h, Aug–May |
+| `/la-liga` | `src/data/laLigaSnapshot.json` | `updateLaLigaSnapshot.ts` · `update:la-liga` / `update:football` | `update-la-liga.yml` | football-data.org (token, build time only) | every 4h, Aug–May |
+| `/nfl` | `src/data/nflSnapshot.json` | `updateNflSnapshot.ts` · `update:nfl` | `update-nfl.yml` | NFLverse CSVs | daily 10:35 UTC, Sep–Feb |
+| `/mlb` | `src/data/mlbSnapshot.json` | `updateMlbSnapshot.ts` · `update:mlb` | `update-mlb.yml` | MLB Stats API | every 4h, Mar 20–Nov 6 |
+| `/nba` | `src/data/nbaSnapshot.json` | `updateNbaSnapshot.ts` · `update:nba` | `update-nba.yml` | ESPN NBA | every 4h, mid-Oct–Jun |
+| `/golf` | `src/data/golfSnapshot.json` | `buildGolfSnapshot.ts` · `update:golf` | `update-golf.yml` | ESPN golf | every 3h Thu–Sun, daily 08:40 UTC Mon–Wed |
+| `/formula-1`, `/fantasy-formula-1` | `src/data/formula1Snapshot.json` | `buildFormula1Snapshot.ts` · `update:formula-1` | `update-formula-1.yml` | OpenF1 | every 3h Thu–Sun, daily 08:10 UTC Mon–Wed |
+| `/world-cup-2026` | `src/data/worldCupSnapshot.json` | `buildWorldCupSnapshot.ts` · `update:world-cup` | `update-world-cup.yml` | ESPN `soccer/fifa.world` | no schedule, manual dispatch only (the tournament ended) |
+| `/score-pools` (+ `/tracker`, `/settings`) | `src/data/scorePoolsSnapshot.json` | `buildScorePoolsSnapshot.ts` · `update:score-pools` | `update-score-pools.yml` | The Odds API + API-Football + manual/CSV | every 6h, and the run skips the refresh with a notice until both provider keys are set |
+| `/bay-area-transit` | `src/data/bayAreaTransitSnapshot.json` | `buildBayAreaTransitSnapshot.ts` · `update:bay-area-transit` | `update-bay-area-transit.yml` | BART public API (demo key) | every 6h, year-round |
+| `/earthquake-pulse` | `src/data/earthquakeSnapshot.json` | `buildEarthquakeSnapshot.ts` · `update:earthquake` | `update-earthquake.yml` | USGS GeoJSON feeds | daily 06:20 UTC (fallback seed; the API serves live USGS at request time) |
+| `/github-trending-pulse` | `src/data/githubTrendingSnapshot.json` | `buildGitHubTrendingSnapshot.ts` · `update:github-trending` | `update-github-trending.yml` | GitHub Search API | daily 07:45 UTC |
 | `/spacex-mission-control` | `src/data/spacexSnapshot.generated.json` (+ image manifest) | `buildSpaceXSnapshot.ts` · `update:spacex` | `update-spacex.yml` | Launch Library / SpaceDevs | daily 09:25 + 21:25 UTC |
-| `/tech-startup-tracker` | `src/data/techStartupSnapshot.ts` | `buildTechStartupSnapshot.ts` · `update:tech-startups` | none (curated) | hand-maintained seed | manual |
-| `/frontier-models` | `src/data/frontierModelsSnapshot.ts` (seed) + `dashboard-snapshots` blob | `buildFrontierModelsSnapshot.ts` · `update:frontier-models` (seed) | `netlify/functions/refresh-frontier-models.ts` (scheduled function, not an Action) | curated seed + models.dev/OpenRouter fact check | seed manual; facts daily 07:30 UTC |
+| `/tech-startup-tracker` | `src/data/techStartupSnapshot.json` | `buildTechStartupSnapshot.ts` · `update:tech-startups` | none (curated) | hand-maintained seed | manual |
+| `/frontier-models` | `src/data/frontierModelsSnapshot.json` (seed) + `dashboard-snapshots` blob | `buildFrontierModelsSnapshot.ts` · `update:frontier-models` (seed) | `netlify/functions/refresh-frontier-models.ts` (scheduled function, not an Action) | curated seed + models.dev/OpenRouter fact check | seed manual; facts daily 07:30 UTC |
 
 **Curated surfaces** (`tech-startup-tracker`, `frontier-models`) have no Action
 because there's no live source to poll — figures are approximate, tagged with an
@@ -189,7 +190,7 @@ second lane that skips both:
 1. A **Netlify scheduled function** (`netlify/functions/refresh-frontier-models.ts`,
    in-code `config.schedule`, 30s execution cap) fetches the upstream sources.
 2. It writes the refreshed snapshot to the **`dashboard-snapshots` Netlify
-   Blobs store** via `src/lib/snapshotBlobStore.ts` (strong consistency,
+   Blobs store** via `src/lib/netlifyBlobs.ts` (strong consistency,
    `{ savedAt, value }` envelope). Reads are fail-soft and return `null`
    off-Netlify, on any store error, and after a 3 second timeout. **Writes
    throw**, so a broken refresh is a failed function run in the Netlify logs.
@@ -252,26 +253,17 @@ What the preview showed for a cached page is a copy kept for the six hours the h
 
 ---
 
-## Per-route error boundaries
+## Error and loading boundaries
 
-Every snapshot dashboard **must** ship a per-route `error.tsx` (re-exporting the shared
-`RouteErrorBoundary` with a bespoke `surfaceName`) **and** a `loading.tsx`
-(`RouteLoadingState`), so a render failure shows an editorial, route-specific fallback
-instead of the global catch-all, and the first paint isn't blank:
+The root `src/app/error.tsx` covers every dashboard. It renders the shared
+`RouteErrorBoundary` inside the tool shell the root layout already supplies, so a route
+needs no `error.tsx` of its own unless it has something specific to say. The 36
+per-route copies differed only in their `surfaceName`, and they were removed on 2026-10-01.
 
-```tsx
-// src/app/<x>/error.tsx
-"use client";
-import { RouteErrorBoundary } from "@/components/RouteErrorBoundary";
-export default function Error(props) {
-  return <RouteErrorBoundary {...props} surfaceName="Golf" />;
-}
-```
-
-> The 2026-06 design audit found 8 routes missing `error.tsx` (polling-aggregator,
-> github-trending-pulse, fantasy-football, fantasy-football/draft-tracker, frontier-models,
-> march-madness-2026, golf, mba-internship-notifications) — see `docs/DESIGN_AUDIT_2026-06.md`
-> P0-1. Treat this section as a hard requirement, not a nicety.
+Every snapshot dashboard still ships a `loading.tsx` (`RouteLoadingState`) so the first
+paint isn't blank. A single root `loading.tsx` would cover them too, but it would also
+wrap the Catalog 97 routes, and `/writing/[slug]` and `/portfolio/[slug]` would then
+stream before `notFound()` runs and answer 200 instead of 404.
 
 **Curated/unverified surfaces** must additionally carry `verified: false` + an `asOf` date in
 the snapshot type **and** render an on-page disclosure card (mirror `tech-startup-tracker`).
@@ -282,7 +274,8 @@ the snapshot type **and** render an on-page disclosure card (mirror `tech-startu
 ## Adding a new dashboard (checklist)
 
 1. **Types** — `src/types/<x>.ts` (snapshot + summary + detail shapes).
-2. **Seed** — `src/data/<x>Snapshot.ts` with an empty/seed `export const`.
+2. **Seed** — `src/data/<x>Snapshot.json` with empty/seed data, and
+   `src/data/<x>Snapshot.ts` re-exporting it as the snapshot type.
 3. **Fetch/transform** — `src/lib/<x>Data.ts` (`build<X>SnapshotData()`).
 4. **Builder** — `scripts/build<X>Snapshot.ts`: call the fetcher, write
    atomically, fall back via `readGeneratedSnapshot` on failure.
@@ -291,10 +284,11 @@ the snapshot type **and** render an on-page disclosure card (mirror `tech-startu
 6. **Accessors** — `src/lib/<x>Snapshot.ts` (`get<X>Summary()`, id validation,
    empty-state factory).
 7. **API** — only if the client fetches on selection, as a detail route such as
-   `src/app/api/<x>/teams/[teamId]/route.ts` (return `400` for malformed ids,
-   `404` for unknown). The page reads the summary through the accessor directly.
+   `src/app/api/<x>/teams/[teamId]/route.ts` built with `createTeamRouteHandler`
+   from `src/lib/teamRoute.ts` (`400` for malformed ids, `404` for unknown,
+   `no-store` on errors). The page reads the summary through the accessor directly.
 8. **Route** — `src/app/<x>/page.tsx` server shell + client component with
-   deep-linkable state; add `src/app/<x>/error.tsx` **and** `src/app/<x>/loading.tsx`
+   deep-linkable state; add `src/app/<x>/loading.tsx`
    (curated/unverified data also needs `verified: false` + `asOf` + an on-page disclosure card).
 9. **Action** — `.github/workflows/update-<x>.yml` on a sensible cron + manual
    dispatch, committing the snapshot only when it changes via the shared

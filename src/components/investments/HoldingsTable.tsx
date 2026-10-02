@@ -3,6 +3,8 @@
 import { Check, Pencil, Search, Trash2, X } from "lucide-react";
 import React, { useEffect, useRef, useState } from "react";
 import { useStockData } from "@/hooks/useStockData";
+import { escapeCsvValue } from "@/lib/utils";
+import { downloadFile } from "@/lib/downloadFile";
 import {
   formatCurrency,
   formatPercent,
@@ -116,7 +118,8 @@ function HoldingRow({ holding, color, onUpdate, onRemove, onResearch }: RowProps
                 onChange={(e) => setEditShares(e.target.value)}
                 onKeyDown={handleEditKeyDown}
                 autoFocus
-                className="ml-2 w-28 border-0 border-b border-[var(--c97-ink-2)] bg-[var(--c97-panel)] px-3 py-1.5 text-sm font-mono text-[var(--c97-ink)] focus:outline-none focus:border-[var(--c97-accent)]"
+                className="c97-field c97-mono"
+                style={{ width: "7rem", marginInlineStart: "var(--c97-sp-2)" }}
               />
             </label>
             <label className="text-2xs font-semibold uppercase tracking-[0.14em] text-[var(--c97-ink-2)]">
@@ -128,7 +131,8 @@ function HoldingRow({ holding, color, onUpdate, onRemove, onResearch }: RowProps
                 value={editCost}
                 onChange={(e) => setEditCost(e.target.value)}
                 onKeyDown={handleEditKeyDown}
-                className="ml-2 w-28 border-0 border-b border-[var(--c97-ink-2)] bg-[var(--c97-panel)] px-3 py-1.5 text-sm font-mono text-[var(--c97-ink)] focus:outline-none focus:border-[var(--c97-accent)]"
+                className="c97-field c97-mono"
+                style={{ width: "7rem", marginInlineStart: "var(--c97-sp-2)" }}
               />
             </label>
             <div className="invest-row-actions ml-auto">
@@ -295,11 +299,6 @@ function HoldingRow({ holding, color, onUpdate, onRemove, onResearch }: RowProps
   );
 }
 
-function escapeCsvValue(value: string | number): string {
-  const raw = String(value);
-  return /[",\r\n]/.test(raw) ? `"${raw.replace(/"/g, '""')}"` : raw;
-}
-
 function buildHoldingsCsv(holdings: EnhancedHolding[]): string {
   const header = [
     "symbol",
@@ -339,18 +338,12 @@ export function HoldingsTable({ holdings, onUpdate, onRemove, onResearch, portfo
   );
 
   function handleExportCsv() {
-    if (typeof window === "undefined" || holdings.length === 0) return;
-    const blob = new Blob([buildHoldingsCsv(sorted)], {
-      type: "text/csv;charset=utf-8",
-    });
-    const url = URL.createObjectURL(blob);
-    const anchor = document.createElement("a");
-    anchor.href = url;
-    anchor.download = `portfolio-holdings-${new Date().toISOString().slice(0, 10)}.csv`;
-    document.body.appendChild(anchor);
-    anchor.click();
-    anchor.remove();
-    URL.revokeObjectURL(url);
+    if (holdings.length === 0) return;
+    downloadFile(
+      `portfolio-holdings-${new Date().toISOString().slice(0, 10)}.csv`,
+      buildHoldingsCsv(sorted),
+      "text/csv;charset=utf-8",
+    );
   }
 
   return (
@@ -373,7 +366,7 @@ export function HoldingsTable({ holdings, onUpdate, onRemove, onResearch, portfo
           </button>
         ) : null}
       </div>
-      <div className="overflow-x-auto">
+      <div className="overflow-x-auto" role="region" tabIndex={0} aria-label="Holdings table">
         <table className="invest-holdings">
           <thead>
             <tr>
@@ -388,6 +381,17 @@ export function HoldingsTable({ holdings, onUpdate, onRemove, onResearch, portfo
             </tr>
           </thead>
           <tbody>
+            {sorted.length === 0 ? (
+              <tr>
+                <td
+                  colSpan={8}
+                  className="c97-meta"
+                  style={{ padding: "var(--c97-sp-4) var(--c97-sp-3)" }}
+                >
+                  No holdings match this filter. Clear the search box to see every position.
+                </td>
+              </tr>
+            ) : null}
             {sorted.map((h) => (
               <HoldingRow
                 key={h.symbol}

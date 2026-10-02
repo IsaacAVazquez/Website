@@ -189,7 +189,7 @@ export function computeLevers(input: RetirementPlanInput, referenceYear?: number
     build(
       "retire-later",
       "Retire later",
-      "Push the retirement age back — more saving, fewer years to fund.",
+      "Push the retirement age back, which means more saving and fewer years to fund.",
       `retire at ${Math.min(input.retirementAge + RETIRE_LATER_STEP, input.horizonAge - 1)}`,
       withRetirementAge(input, input.retirementAge + RETIRE_LATER_STEP),
       retireTarget,
@@ -205,7 +205,7 @@ export function computeLevers(input: RetirementPlanInput, referenceYear?: number
     build(
       "more-stocks",
       "Shift to stocks",
-      "Move 15 points from cash and bonds into equities — higher expected return, more volatility.",
+      "Move 15 points from cash and bonds into equities, for a higher expected return and more volatility.",
       "+15% stocks",
       withMoreStocks(input, 15),
       null,

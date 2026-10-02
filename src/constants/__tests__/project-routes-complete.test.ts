@@ -8,7 +8,7 @@
  */
 import fs from "node:fs";
 import path from "node:path";
-import { getAllCaseStudies } from "../caseStudies";
+import { caseStudiesData } from "../caseStudies";
 import { catalog97NavLinks, isCatalog97Route } from "../catalog97Nav";
 import { PROJECT_PRESS } from "../projectPress";
 
@@ -18,12 +18,9 @@ const APP = path.join(ROOT, "src", "app");
 /** Page routes that are neither designed Catalog 97 routes nor project routes. */
 const UTILITY_ROUTES = new Set([
   "/accessibility",
-  "/admin",
   "/agent-build-index",
-  "/analytics-reference",
   "/arcade",
   "/changelog",
-  "/design/catalog-pages",
   "/now",
   "/portfolio/[slug]",
   "/score-pools",
@@ -80,7 +77,7 @@ function routeSources(route: string): Map<string, string> {
   return seen;
 }
 
-const liveProjects = getAllCaseStudies().filter((study) => study.link?.startsWith("/"));
+const liveProjects = Object.values(caseStudiesData).filter((study) => study.link?.startsWith("/"));
 
 describe("project route inventory", () => {
   it("covers all 34 portfolio projects with a live route", () => {

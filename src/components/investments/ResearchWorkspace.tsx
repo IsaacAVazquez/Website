@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useEffect, useMemo } from "react";
-import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import { ResearchAssetHeader } from "./ResearchAssetHeader";
 import { ResearchLoading } from "./ResearchLoading";
 import { ResearchPosition } from "./ResearchPosition";
@@ -13,10 +12,7 @@ import { GrowthPanel } from "./GrowthPanel";
 import { IndustryPanel } from "./IndustryPanel";
 import { ComparisonTab } from "./ComparisonTab";
 import { PriceChartPanel } from "./PriceChartPanel";
-import {
-  fadeInVariants,
-  getReducedMotionVariants,
-} from "./animations";
+import { ErrorState } from "./ErrorState";
 import { useStockData } from "@/hooks/useStockData";
 import { useTablistKeyboard } from "@/hooks/useTablistKeyboard";
 import type {
@@ -78,16 +74,14 @@ export function ResearchWorkspace({
   portfolioSymbols = [],
   position = null,
 }: ResearchSectionProps) {
-  const shouldReduceMotion = useReducedMotion();
   const {
     error: symbolError,
     isLoading: symbolLoading,
     isNotFetched: symbolNotFetched,
     source,
     capabilities,
+    refetch: refetchSymbol,
   } = useStockData<CompanyInfo>(symbol || null, "info");
-
-  const v = shouldReduceMotion ? getReducedMotionVariants() : { fadeInVariants };
 
   const hasResearchContext = source !== null && !symbolError;
   const visibleTabs = useMemo(
@@ -133,14 +127,7 @@ export function ResearchWorkspace({
           </p>
         </div>
       ) : showResearchErrorState ? (
-        <div className="border border-[color-mix(in_srgb,var(--c97-negative)_35%,var(--c97-rule))] bg-[color-mix(in_srgb,var(--c97-negative)_8%,var(--c97-panel))] px-5 py-6 text-center ">
-          <p className="text-sm font-semibold text-[var(--c97-ink)]">
-            Research data is temporarily unavailable.
-          </p>
-          <p className="mt-2 text-sm text-[var(--c97-ink-2)]">
-            {getResearchErrorMessage(symbolError)}
-          </p>
-        </div>
+        <ErrorState message={getResearchErrorMessage(symbolError)} onRetry={refetchSymbol} />
       ) : (
         <>
           <ResearchAssetHeader
@@ -154,42 +141,38 @@ export function ResearchWorkspace({
 
           {visibleTabs.length > 0 ? (
             <div
-              className="flex gap-2 overflow-x-auto border border-[var(--c97-rule)] bg-[color-mix(in_srgb,var(--c97-surface)_92%,var(--c97-panel))] p-2 "
-              role="tablist"
-              aria-label="Research sections"
-            >
-              {visibleTabs.map(({ key, label }, index) => (
-                <button
-                  key={key}
-                  id={`research-tab-${key}`}
-                  role="tab"
-                  aria-selected={resolvedActiveTab === key}
-                  aria-controls={`research-panel-${key}`}
-                  tabIndex={resolvedActiveTab === key ? 0 : -1}
-                  onKeyDown={(e) => handleVisibleTabKeyDown(e, index)}
-                  onClick={() => onTabChange(key)}
-                  className={`min-h-touch whitespace-nowrap px-4 py-2 text-sm font-semibold transition ${
-                    resolvedActiveTab === key
-                      ? "bg-[var(--c97-ink)] text-[var(--c97-surface)]"
-                      : "text-[var(--c97-ink-2)] hover:bg-[var(--c97-panel)] hover:text-[var(--c97-ink)]"
-                  }`}
-                >
-                  {label}
-                </button>
-              ))}
-            </div>
+            className="flex gap-2 overflow-x-auto border border-[var(--c97-rule)] bg-[color-mix(in_srgb,var(--c97-surface)_92%,var(--c97-panel))] p-2 "
+            role="tablist"
+            aria-label="Research sections"
+          >
+            {visibleTabs.map(({ key, label }, index) => (
+              <button
+                key={key}
+                id={`research-tab-${key}`}
+                role="tab"
+                aria-selected={resolvedActiveTab === key}
+                aria-controls={`research-panel-${key}`}
+                tabIndex={resolvedActiveTab === key ? 0 : -1}
+                onKeyDown={(e) => handleVisibleTabKeyDown(e, index)}
+                onClick={() => onTabChange(key)}
+                className={`min-h-touch whitespace-nowrap px-4 py-2 text-sm font-semibold transition ${
+                  resolvedActiveTab === key
+                    ? "bg-[var(--c97-ink)] text-[var(--c97-surface)]"
+                    : "text-[var(--c97-ink-2)] hover:bg-[var(--c97-panel)] hover:text-[var(--c97-ink)]"
+                }`}
+              >
+                {label}
+              </button>
+            ))}
+          </div>
           ) : null}
 
-          <AnimatePresence mode="wait">
-            <motion.div
+          <div
               key={resolvedActiveTab}
               id={`research-panel-${resolvedActiveTab}`}
               role="tabpanel"
               aria-labelledby={`research-tab-${resolvedActiveTab}`}
-              variants={v.fadeInVariants}
-              initial="hidden"
-              animate="visible"
-              exit="hidden"
+              className="c97-enter-fade"
             >
               {resolvedActiveTab === "overview" && (
                 <ResearchOverview symbol={symbol} showNews={capabilities.news !== false} />
@@ -215,8 +198,7 @@ export function ResearchWorkspace({
                 />
               )}
               {resolvedActiveTab === "compare" && <ComparisonTab />}
-            </motion.div>
-          </AnimatePresence>
+            </div>
         </>
       )}
     </section>

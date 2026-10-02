@@ -1,8 +1,7 @@
-import { rename, writeFile } from "fs/promises";
 import path from "path";
 import { fileURLToPath } from "url";
-import { withRetry } from "./fetchRetry";
-import { readGeneratedSnapshot } from "./snapshotFallback";
+import { withRetry } from "@/lib/fetchRetry";
+import { readGeneratedSnapshot, writeFileAtomic } from "./snapshotFallback";
 import {
   fetchFantasyGameLogBoard,
   MIN_GAME_LOG_GAMES,
@@ -10,6 +9,7 @@ import {
 } from "@/lib/fantasyGameLogSource";
 import { getSnapshotSeason } from "@/lib/fantasySnapshotBuilder";
 import { ScoringFormat } from "@/types";
+import { setTimeout as sleep } from "node:timers/promises";
 
 /**
  * Fetches per-game fantasy scoring from nflverse for each scoring format and
@@ -20,7 +20,7 @@ import { ScoringFormat } from "@/types";
  * the drawer then ships without the points-per-game panel.
  */
 
-const OUTPUT_PATH = path.join(process.cwd(), "src", "data", "fantasyGameLogData.generated.ts");
+const OUTPUT_PATH = path.join(process.cwd(), "src", "data", "fantasyGameLogData.generated.json");
 
 interface FantasyGameLogDatasetRecord {
   entries: FantasyGameLogEntry[];
@@ -70,42 +70,6 @@ export function resolveGameLogFormat(
   return { record: null, source: "empty" };
 }
 
-function pause(ms: number) {
-  return new Promise((resolve) => setTimeout(resolve, ms));
-}
-
-async function atomicWriteFile(targetPath: string, contents: string) {
-  const tempPath = `${targetPath}.tmp`;
-  await writeFile(tempPath, contents, "utf8");
-  await rename(tempPath, targetPath);
-}
-
-function renderGeneratedModule(data: FantasyGameLogDataRecord, generatedAt: string): string {
-  const serialized = JSON.stringify(data, null, 2);
-
-  return `/**
- * Generated fantasy per-game scoring data.
- * Do not edit manually. Regenerate with \`npm run update:fantasy\`.
- */
-
-import type { FantasyGameLogEntry } from "@/lib/fantasyGameLogSource";
-import type { ScoringFormat } from "@/types";
-
-export const fantasyGameLogDataGeneratedAt: string | null = ${JSON.stringify(generatedAt)};
-
-export const fantasyGameLogData: Record<
-  ScoringFormat,
-  {
-    entries: FantasyGameLogEntry[];
-    season: number | null;
-    seasonType: string;
-    sourceUrl: string;
-    throughWeek: number | null;
-  }
-> = ${serialized};
-`;
-}
-
 /**
  * Seasons to try, newest first. During the offseason the current season's file
  * does not exist yet (or carries a stub), so the completed prior season is what
@@ -153,10 +117,8 @@ async function fetchFirstUsableSeason(
 async function main() {
   const generatedAt = new Date().toISOString();
   const seasons = candidateSeasons();
-  const previous = readGeneratedSnapshot<FantasyGameLogDataRecord>(
-    OUTPUT_PATH,
-    "fantasyGameLogData"
-  );
+  const previous =
+    readGeneratedSnapshot<{ data?: FantasyGameLogDataRecord }>(OUTPUT_PATH)?.data ?? null;
   const dataset = {} as FantasyGameLogDataRecord;
   const notes: string[] = [];
 
@@ -178,7 +140,7 @@ async function main() {
           dataset[scoringFormat].throughWeek ?? "?"
         })`
     );
-    await pause(250);
+    await sleep(250);
   }
 
   const totalEntries = SCORING_FORMATS.reduce(
@@ -193,7 +155,7 @@ async function main() {
     return;
   }
 
-  await atomicWriteFile(OUTPUT_PATH, renderGeneratedModule(dataset, generatedAt));
+  writeFileAtomic(OUTPUT_PATH, JSON.stringify({ generatedAt, data: dataset }, null, 2) + "\n");
 
   for (const note of notes) console.log(`[game-log] ${note}`);
   console.log(`Wrote fantasy game-log data: ${OUTPUT_PATH}`);

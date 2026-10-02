@@ -3,7 +3,7 @@ import { mlbSnapshot } from "@/data/mlbSnapshot";
 import { getMlbSummarySnapshot, getMlbTeamSnapshot } from "@/lib/mlbSnapshot";
 import { constructMetadata, generateBreadcrumbStructuredData } from "@/lib/seo";
 import { MlbClient } from "./mlb-client";
-import { normalizeMlbState } from "./mlb-state";
+import { buildTeamAliasMap, normalizeState, resolveDefaultState } from "./mlb-state.core";
 
 export const metadata = constructMetadata({
   title: "MLB Pulse",
@@ -21,7 +21,11 @@ interface MlbPageProps {
 }
 
 export default async function MlbPage({ searchParams }: MlbPageProps) {
-  const initialState = normalizeMlbState(await searchParams);
+  const initialState = normalizeState(
+    await searchParams,
+    resolveDefaultState(mlbSnapshot.standings, mlbSnapshot.teams),
+    buildTeamAliasMap(mlbSnapshot.teams)
+  );
   const summary = await getMlbSummarySnapshot();
   const initialTeamSnapshot = await getMlbTeamSnapshot(initialState.team).catch(() => null);
   const breadcrumbs = [

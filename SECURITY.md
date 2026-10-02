@@ -52,7 +52,6 @@ In scope:
 - the live deployment at `isaacvazquez.com` and `*.isaacvazquez.com`
 - code in this repository's `main` branch
 - API routes under `/api/*` and the Netlify functions in `netlify/functions/`
-- the `/admin` authentication surface
 
 Out of scope:
 

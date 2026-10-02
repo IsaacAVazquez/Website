@@ -233,10 +233,7 @@ export function Catalog97Home({
               >
                 <span className={`c97-offset ${styles.workPlate}`}>
                   <Image
-                    src={
-                      PROJECT_PLATES[project.slug] ??
-                      `/images/projects/${project.slug}.svg`
-                    }
+                    src={PROJECT_PLATES[project.slug]}
                     alt=""
                     fill
                     sizes="(max-width: 880px) 100vw, 33vw"
@@ -256,7 +253,7 @@ export function Catalog97Home({
         </div>
       </section>
 
-      {/* Recent writing */}
+      {/* Write-ups of the Juno and Civitech jobs, pinned in page.tsx */}
       {recentPosts.length > 0 ? (
         <section
           className="c97-band c97-band-tall c97-sheet"
@@ -265,7 +262,7 @@ export function Catalog97Home({
         >
           <div className="c97-shell">
             <div className={styles.sectionHead}>
-              <h2 className="c97-poster-sm">Recent writing</h2>
+              <h2 className="c97-poster-sm">What I built at Juno and Civitech</h2>
               <Link href="/writing" className="c97-sectionlink">
                 All writing
               </Link>
@@ -299,8 +296,8 @@ export function Catalog97Home({
       >
         <div className={`c97-shell ${styles.contactRow}`}>
           <p className={`c97-poster-sm ${styles.contactMessage}`}>
-            If you’re hiring for product or want to compare notes, I’d like to
-            hear from you.
+            If you’re hiring for a product role or want to compare notes, I’d
+            like to hear from you.
           </p>
           <Link className="c97-btn-outline c97-offset" href="/contact">
             Get in touch

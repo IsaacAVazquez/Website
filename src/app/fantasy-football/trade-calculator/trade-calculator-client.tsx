@@ -1,9 +1,10 @@
 "use client";
 
+import { useIsClient } from "@/hooks/useIsClient";
 import { ArrowLeftRight, RotateCcw, ShieldCheck } from "lucide-react";
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
-import { useEffect, useMemo, useState, useSyncExternalStore } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { SeasonalScopeNote } from "@/components/fantasy/SeasonalScopeNote";
 import { Breadcrumbs, createBreadcrumbItems } from "@/components/navigation/Breadcrumbs";
 import { PROJECT_PRESS } from "@/constants/projectPress";
@@ -69,10 +70,6 @@ function formatMarketDate(asOf: string | null | undefined): string | null {
 const SCOPE_LINK_CLASS =
   "inline-flex min-h-touch items-center -my-3 underline decoration-[var(--c97-accent)] underline-offset-4";
 
-const subscribeToHydration = () => () => undefined;
-const getHydratedSnapshot = () => true;
-const getServerHydratedSnapshot = () => false;
-
 function LeagueSelect({
   label,
   value,
@@ -92,7 +89,7 @@ function LeagueSelect({
       <select
         value={value}
         onChange={(event) => onChange(Number(event.target.value))}
-        className="mt-1.5 min-h-touch w-full border border-[var(--c97-rule)] bg-[var(--c97-surface)] px-3 text-sm text-[var(--c97-ink)] outline-none transition-[border-color,box-shadow] focus:border-[var(--c97-accent)] focus:ring-2 focus:ring-[color-mix(in_srgb,var(--c97-accent)_22%,transparent)]"
+        className="mt-1.5 min-h-touch w-full border border-[var(--c97-ink-2)] bg-[var(--c97-surface)] px-3 text-sm text-[var(--c97-ink)] transition-[border-color] focus:border-[var(--c97-accent)]"
       >
         {options.map((option) => (
           <option key={option} value={option}>
@@ -195,7 +192,7 @@ function LeagueSettings({
               lineup: event.target.value as TradeCalculatorSearchState["lineup"],
             })
           }
-          className="mt-1.5 min-h-touch w-full border border-[var(--c97-rule)] bg-[var(--c97-surface)] px-3 text-sm text-[var(--c97-ink)] outline-none transition-[border-color,box-shadow] focus:border-[var(--c97-accent)] focus:ring-2 focus:ring-[color-mix(in_srgb,var(--c97-accent)_22%,transparent)]"
+          className="mt-1.5 min-h-touch w-full border border-[var(--c97-ink-2)] bg-[var(--c97-surface)] px-3 text-sm text-[var(--c97-ink)] transition-[border-color] focus:border-[var(--c97-accent)]"
         >
           {REDRAFT_LINEUP_PRESETS.map((preset) => (
             <option key={preset.id} value={preset.id}>
@@ -219,25 +216,14 @@ function LeagueSettings({
 
 function LoadingCard({ className }: { className: string }) {
   return (
-    <div
-      aria-hidden="true"
-      className={`border motion-safe:animate-pulse ${className}`}
-      style={{
-        borderColor: "var(--c97-rule)",
-        background: "var(--c97-field)",
-      }}
-    />
+    <div aria-hidden="true" className={`c97-skeleton ${className}`} />
   );
 }
 
 export function TradeCalculatorClient() {
   const router = useRouter();
   const searchParams = useSearchParams();
-  const isHydrated = useSyncExternalStore(
-    subscribeToHydration,
-    getHydratedSnapshot,
-    getServerHydratedSnapshot
-  );
+  const isHydrated = useIsClient();
   const routeState = useMemo(
     () => normalizeTradeCalculatorState(searchParams),
     [searchParams]
@@ -388,7 +374,7 @@ export function TradeCalculatorClient() {
           <div className="flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
             <div className="max-w-3xl">
               <h1 className="c97-poster">Build a Trade Offer</h1>
-              <p className="c97-lead" style={{ marginTop: "1rem", maxInlineSize: "68ch" }}>
+              <p className="c97-lead" style={{ marginTop: "var(--c97-sp-3)", maxInlineSize: "68ch" }}>
                 Compare both sides of a one-QB redraft trade using expert consensus, mock-draft ADP, and your league’s scoring, size, and lineup. The result shows where the estimate is strong and where the data is thin.
               </p>
             </div>
@@ -426,7 +412,7 @@ export function TradeCalculatorClient() {
       </section>
 
       <section className="c97-sheet" data-c97-surface="paper" data-seam="torn">
-        <div className={`${SHELL_CLASS} space-y-5 py-[clamp(1.25rem,2vw,2rem)]`}>
+        <div className={`${SHELL_CLASS} space-y-5`} style={{ paddingBlock: "var(--c97-sp-3)" }}>
         {seasonWeek >= 1 && snapshot ? (
           <SeasonalScopeNote season={snapshot.season} week={seasonWeek}>
             {marketFreshness === "stale" ? (
@@ -489,7 +475,8 @@ export function TradeCalculatorClient() {
             <button
               type="button"
               onClick={retry}
-              className="mt-4 inline-flex min-h-touch items-center bg-[var(--c97-ink)] px-4 text-sm font-semibold text-[var(--c97-surface)]"
+              className="c97-btn c97-btn-invert"
+              style={{ marginTop: "var(--c97-sp-2)" }}
             >
               Retry rankings
             </button>

@@ -7,9 +7,37 @@ import {
   parseEspnPlayerIndex,
   parseSleeperDraftPicks,
   parseUnderdogDraftPickLabel,
+  startDraftPickSync,
 } from "../draft-pick-sync";
 
 describe("provider draft pick extraction", () => {
+  it.each([
+    {ok: false, json: async () => []},
+    {ok: true, json: async () => ({error: "unavailable"})},
+  ])("does not verify a failed or invalid Sleeper read", async response => {
+    const controller = startDraftPickSync("sleeper", () => {}, {
+      href: "https://sleeper.com/draft/nfl/111111111111",
+      fetcher: jest.fn().mockResolvedValue(response),
+    });
+    try {
+      expect(await controller.request()).toMatchObject({picks: [], readSucceeded: false});
+    } finally {
+      controller.stop();
+    }
+  });
+
+  it("verifies a successful empty Sleeper draft log", async () => {
+    const controller = startDraftPickSync("sleeper", () => {}, {
+      href: "https://sleeper.com/draft/nfl/111111111111",
+      fetcher: jest.fn().mockResolvedValue({ok: true, json: async () => []}),
+    });
+    try {
+      expect(await controller.request()).toMatchObject({picks: [], readSucceeded: true});
+    } finally {
+      controller.stop();
+    }
+  });
+
   afterEach(() => {
     document.body.innerHTML = "";
   });

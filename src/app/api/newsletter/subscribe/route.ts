@@ -1,11 +1,11 @@
 import { NextRequest, NextResponse } from "next/server";
-import { Resend } from "resend";
 import { logger } from "@/lib/logger";
 import {
   getClientIp,
   newsletterRateLimiter,
   rateLimitResponse,
 } from "@/lib/rateLimit";
+import { isRecord } from "@/lib/utils";
 import { normalizeSubscriberEmail } from "@/lib/newsletterSubscription";
 
 const ALLOWED_SOURCES = new Set(["writing", "agent_build_index"]);
@@ -36,7 +36,14 @@ export async function POST(request: NextRequest) {
 
   let payload: SubscribePayload;
   try {
-    payload = (await request.json()) as SubscribePayload;
+    const body: unknown = await request.json();
+    if (!isRecord(body)) {
+      return NextResponse.json(
+        { success: false, message: "Enter a valid email address." },
+        { status: 400 }
+      );
+    }
+    payload = body;
   } catch {
     return NextResponse.json(
       { success: false, message: "Enter a valid email address." },
@@ -76,14 +83,20 @@ export async function POST(request: NextRequest) {
   }
 
   const segmentId = process.env.RESEND_NEWSLETTER_SEGMENT_ID?.trim();
-  const resend = new Resend(apiKey);
-  let error: unknown;
+  let response: Response;
   try {
-    ({ error } = await resend.contacts.create({
-      email,
-      unsubscribed: false,
-      ...(segmentId ? { segments: [{ id: segmentId }] } : {}),
-    }));
+    response = await fetch("https://api.resend.com/contacts", {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${apiKey}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        email,
+        unsubscribed: false,
+        ...(segmentId ? { segments: [{ id: segmentId }] } : {}),
+      }),
+    });
   } catch {
     logger.error("Newsletter contact creation request failed", { source });
     return NextResponse.json(
@@ -95,23 +108,15 @@ export async function POST(request: NextRequest) {
     );
   }
 
-  if (error) {
-    const statusCode =
-      typeof error === "object" &&
-      error !== null &&
-      "statusCode" in error &&
-      typeof error.statusCode === "number"
-        ? error.statusCode
-        : null;
-
+  if (!response.ok) {
     // Repeated signup should remain idempotent from the reader's perspective.
-    if (statusCode === 409) {
+    if (response.status === 409) {
       return successResponse();
     }
 
     logger.error("Newsletter contact creation failed", {
       source,
-      statusCode,
+      statusCode: response.status,
     });
     return NextResponse.json(
       {

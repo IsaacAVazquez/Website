@@ -1,6 +1,6 @@
 # Easter eggs
 
-This is the running list of every hidden or playful thing on the site, meaning anything a visitor can stumble into that the page doesn't announce. Most of them live in two header components, but a few are spread across the dashboards, and without a list it's easy to break one in a redesign or forget it exists. When a change adds, alters, or removes an easter egg, it updates this file too. Last checked against the code on 2026-09-28.
+This is the running list of every hidden or playful thing on the site, meaning anything a visitor can stumble into that the page doesn't announce. Most of them live in two header components, but a few are spread across the dashboards, and without a list it's easy to break one in a redesign or forget it exists. When a change adds, alters, or removes an easter egg, it updates this file too. Last checked against the code on 2026-10-02.
 
 Most of them mount from the header, which is on every route. `src/components/catalog97/Catalog97Header.tsx` renders `Catalog97Monet` (the painted hovers) and `Catalog97EasterEggs` (the Konami code, the console note, the stamp and its knock, the proof marks, the safelight, and the tab title). The reduced-motion guard at the end of `src/app/catalog97.css` cuts every transition and animation inside `.c97-page` to 0.01ms, so each entry below says what's left when motion is reduced.
 
@@ -34,7 +34,7 @@ Most of them mount from the header, which is on every route. `src/components/cat
 
 Hovering anywhere in the portrait's section on the home page or /about shows a 150px circle of a painted version of the headshot that follows the pointer. Clicking the portrait hands it to the next painter, from Monet (the default), to Van Gogh, to Seurat, to Hopper, to Lichtenstein, and back to Monet. The choice lives on the element, so a reload or a navigation resets it to Monet, and each painting downloads the first time someone hovers it. It only runs where hover is real, since the CSS is gated on `(hover: hover)` and the script returns early without attaching the click either. With reduced motion the reveal still works and only the 0.3s fade goes instant.
 
-The paintings are rendered ahead of time from `public/images/headshot-home.webp` into `public/images/home/headshot-<painter>.webp`, Monet by `scripts/paint_impressionist.py` and the other four by `scripts/paint_headshot.py`. Adding a painter means a render, an entry in `PAINTERS` in `Catalog97Monet.tsx`, and a `[data-c97-painter]` rule in `catalog97.css`.
+The paintings are rendered ahead of time from `public/images/headshot-home.webp` into `public/images/home/headshot-<painter>.webp`, Monet by `scripts/paint_impressionist.py` and the other four by `scripts/paint_headshot.py`. Both renderers were removed on 2026-10-01 and can be restored from git history (commit fa4849574). Adding a painter means a render, an entry in `PAINTERS` in `Catalog97Monet.tsx`, and a `[data-c97-painter]` rule in `catalog97.css`.
 
 ## Monet name by time of day
 
@@ -42,7 +42,7 @@ Hovering or tabbing to "Isaac Vazquez" in the header turns the letters into a wi
 
 ## Painted collage plates
 
-The three dashboard plates in the home collage each reveal a painted version under a hover circle, with the launch pad (to /spacex-mission-control) in Van Gogh, the transit plate (to /bay-area-transit) in Seurat, and the matchday plate (to /premier-league) in Hopper. The painters are set in `Catalog97Home.tsx` and the images come from `scripts/paint_plates.py`. The plates are still links, since the painted layer never takes the pointer, and they don't cycle painters. Hover only.
+The three dashboard plates in the home collage each reveal a painted version under a hover circle, with the launch pad (to /spacex-mission-control) in Van Gogh, the transit plate (to /bay-area-transit) in Seurat, and the matchday plate (to /premier-league) in Hopper. The painters are set in `Catalog97Home.tsx` and the images came from `scripts/paint_plates.py`, which was removed on 2026-10-01 and is in git history (commit fa4849574). The plates are still links, since the painted layer never takes the pointer, and they don't cycle painters. Hover only.
 
 ## Konami code
 
@@ -80,7 +80,7 @@ From midnight until 4:59am on the visitor's own clock, the away title reads "Run
 
 ## Hidden search answers
 
-A few exact searches in the header search (`/` or Cmd or Ctrl+K) and on /search pin a written answer to the top of an unfiltered search. The match is on the whole query, lower-cased with punctuation turned into spaces, and the answers live in `HIDDEN_ANSWERS` in `src/app/api/search/route.ts`.
+A few exact searches in the header search (`/` or Cmd or Ctrl+K) and on /search pin a written answer to the top of an unfiltered search. The match is on the whole query, lower-cased with punctuation turned into spaces, using `Object.hasOwn` so inherited prototype properties like `constructor` never match. The answers live in `HIDDEN_ANSWERS` in `src/app/api/search/route.ts`.
 
 | Search | Answer | Links to |
 | --- | --- | --- |
@@ -135,4 +135,4 @@ Hovering a halftone field splits it into blue, vermilion, and saffron dots sligh
 
 ## Close calls that aren't on the list
 
-Text selection prints in the second ink (`catalog97.css`), which is ordinary styling. The 404 page is a themed misprint sheet with a one-time feed-in animation, but that's the page's normal design. `/design/catalog-pages`, `/analytics-reference`, `/admin`, and `/score-pools/settings` are unlinked and noindexed, but they're utility pages with nothing playful in them. There's nothing playful in robots.txt, llms.txt, or security.txt.
+Text selection prints in the second ink (`catalog97.css`), which is ordinary styling. The 404 page is a themed misprint sheet with a one-time feed-in animation, but that's the page's normal design. `/score-pools/settings` is unlinked and noindexed, but it's a utility page with nothing playful in it. There's nothing playful in robots.txt, llms.txt, or security.txt.

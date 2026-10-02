@@ -1,4 +1,5 @@
 import type { DraftPick, Player } from "@/types";
+import { isRecord, roundTo } from "@/lib/utils";
 
 /**
  * Per-turn recommendation telemetry for the redraft tracker. At every user
@@ -98,14 +99,6 @@ export interface DraftTelemetryRecap {
   averageRealizedDropPoints: number | null;
 }
 
-function isRecord(value: unknown): value is Record<string, unknown> {
-  return Boolean(value) && typeof value === "object" && !Array.isArray(value);
-}
-
-function roundOne(value: number): number {
-  return Math.round(value * 10) / 10;
-}
-
 function finiteOrNull(value: unknown): number | null {
   return typeof value === "number" && Number.isFinite(value) ? value : null;
 }
@@ -199,7 +192,7 @@ export function decodeDraftTurnRecords(value: unknown): DraftTurnRecord[] {
 
 function average(values: readonly number[]): number | null {
   if (values.length === 0) return null;
-  return roundOne(values.reduce((sum, value) => sum + value, 0) / values.length);
+  return roundTo(values.reduce((sum, value) => sum + value, 0) / values.length);
 }
 
 /**
@@ -269,14 +262,14 @@ export function resolveDraftTelemetry({
           realizedBestName = realizedBest.playerName;
         }
         if (baseline && realizedBest) {
-          realizedDropSpots = roundOne(
+          realizedDropSpots = roundTo(
             Math.max(0, realizedBest.rank - baseline.rank)
           );
           if (
             baseline.projectedPointsAboveReplacement !== null &&
             realizedBest.projectedPointsAboveReplacement !== null
           ) {
-            realizedDropPoints = roundOne(
+            realizedDropPoints = roundTo(
               Math.max(
                 0,
                 baseline.projectedPointsAboveReplacement -
@@ -320,7 +313,7 @@ export function resolveDraftTelemetry({
           : undefined;
         const baselineRank = baselinePlayer ? rankOf(baselinePlayer) : null;
         if (realizedBestRank !== null && baselineRank !== null) {
-          realizedDropSpots = roundOne(
+          realizedDropSpots = roundTo(
             Math.max(0, realizedBestRank - baselineRank)
           );
         }
@@ -329,7 +322,7 @@ export function resolveDraftTelemetry({
           : null;
         const realizedVorp = realizedBest ? vorpOf(realizedBest.id) : null;
         if (baselineVorp !== null && realizedVorp !== null) {
-          realizedDropPoints = roundOne(
+          realizedDropPoints = roundTo(
             Math.max(0, baselineVorp - realizedVorp)
           );
         }

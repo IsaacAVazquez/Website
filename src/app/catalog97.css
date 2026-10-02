@@ -1076,7 +1076,7 @@ body {
  * It also sits in @layer base. This file is imported unlayered, and unlayered
  * CSS beats Tailwind's @layer utilities regardless of specificity, so outside
  * a layer this reset overrode every text-[...] utility on a link, putting
- * espresso ink on an oxblood ModernButton rendered with href.
+ * espresso ink on an oxblood button-styled link.
  */
 @layer base {
   :where(.c97-page) a {
@@ -1123,6 +1123,23 @@ body {
 
 .c97-link:hover {
   color: var(--c97-accent);
+}
+
+/*
+ * A heading that is itself a link. It reads as a heading at rest and earns an
+ * underline on hover, because on saffron the accent is ink and a colour shift
+ * alone would show nothing.
+ */
+.c97-link-heading {
+  text-decoration: none;
+  transition: color 160ms ease;
+}
+
+.c97-link-heading:hover {
+  color: var(--c97-accent);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 4px;
 }
 
 /*
@@ -1214,7 +1231,8 @@ body {
   cursor: pointer;
   transition:
     background-color 160ms ease,
-    color 160ms ease;
+    color 160ms ease,
+    transform 120ms ease;
 }
 
 .c97-btn:hover {
@@ -1567,6 +1585,19 @@ select.c97-field {
   gap: var(--c97-sp-1);
   color: var(--c97-label);
   font: inherit;
+  transition: color 160ms ease;
+}
+
+/*
+ * The hover underlines as well as shifting to the action colour, because on
+ * the ink sheets label, ink, and action are one colour and a colour shift
+ * alone would show nothing. The selected button keeps its own look.
+ */
+.c97-segmented > button:not([aria-pressed="true"]):not([aria-selected="true"]):hover {
+  color: var(--c97-action);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 6px;
 }
 
 .c97-segmented > button[aria-pressed="true"],
@@ -2387,6 +2418,16 @@ select.c97-field {
 }
 
 /*
+ * A boxed button without an offset still answers a press. The offset pairings
+ * above outrank this on specificity and keep their 4px collapse.
+ */
+.c97-btn:where(:not(:disabled)):active,
+.c97-btn-invert:where(:not(:disabled)):active,
+.c97-btn-outline:where(:not(:disabled)):active {
+  transform: translateY(1px);
+}
+
+/*
  * A disabled control reads as unprinted, with no fill, a dashed edge, and no
  * offset. Its text keeps ink-2, so it stays legible, and nothing is dimmed
  * with opacity. Controls inside a disabled fieldset match :disabled too.
@@ -2557,8 +2598,9 @@ select.c97-field {
  * A portrait (`data-c97-paint="portrait"`) is the headshot painted in short
  * directional strokes with violet shadows and warm lights, and it shows while
  * anything in its `[data-c97-monet]` section is hovered. A plate
- * (`data-c97-paint="plate"`) is a collage photo painted by scripts/
- * paint_plates.py, supplied inline by Catalog97Collage, and it shows while
+ * (`data-c97-paint="plate"`) is a collage photo painted ahead of time (the
+ * renderer is in git history, see docs/EASTER_EGGS.md), supplied inline by
+ * Catalog97Collage, and it shows while
  * its parent panel is hovered. The layer never takes the pointer, so a
  * plate's link still gets the click, and the element is isolated so the
  * layer stays under anything pasted on top of it, like a panel's card. The
@@ -2651,11 +2693,20 @@ select.c97-field {
   color: var(--c97-ink-2);
 }
 
-.c97-header-link:hover {
-  color: var(--c97-ink);
+/*
+ * On ink-saffron the ink, ink-2, and action tokens are one colour, so a colour
+ * shift reads as nothing. The header hovers the way the footer links do, with
+ * an underline, and the icon-only theme toggle takes the overlay tint.
+ */
+.c97-header-link:not([aria-current]):hover,
+.c97-header-util:hover {
+  text-decoration: underline;
+  text-underline-offset: 5px;
+  text-decoration-thickness: 1px;
 }
 
-.c97-header-link[aria-current="page"] {
+/* "page" on the exact route, "true" on a page inside that section. */
+.c97-header-link[aria-current] {
   background: var(--c97-ink);
   color: var(--c97-surface);
 }
@@ -2667,6 +2718,10 @@ select.c97-field {
  */
 .c97-header-nav > :last-child {
   margin-inline-end: calc((20px - 44px) / 2);
+}
+
+.c97-header-nav > :last-child:hover {
+  background: var(--c97-overlay);
 }
 
 .c97-header-util {
@@ -2687,6 +2742,42 @@ select.c97-field {
     transition-duration: 0.01ms !important;
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
+  }
+}
+
+/*
+ * Overlay entrances. The drawers, the compare tray, the compare modal, and
+ * the research tab panel mount when they open and unmount when they close,
+ * so each transitions in from `@starting-style` and there is no exit
+ * animation. The reduced-motion block above holds these to 0.01ms.
+ */
+.c97-enter-fade,
+.c97-enter-slide-x,
+.c97-enter-slide-y,
+.c97-enter-pop {
+  transition:
+    opacity 0.24s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.24s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@starting-style {
+  .c97-enter-fade,
+  .c97-enter-slide-x,
+  .c97-enter-slide-y,
+  .c97-enter-pop {
+    opacity: 0;
+  }
+
+  .c97-enter-slide-x {
+    transform: translateX(28px);
+  }
+
+  .c97-enter-slide-y {
+    transform: translateY(24px);
+  }
+
+  .c97-enter-pop {
+    transform: translateY(18px) scale(0.98);
   }
 }
 
@@ -2748,12 +2839,7 @@ select.c97-field {
 /* A hero's as-of line is one run of text, so it flows as a block. */
 .c97-project-hero .c97-meta {
   display: block;
-  max-width: 60rem;
-}
-
-/* On a wide tool route the standfirst keeps the standard column's measure. */
-.c97-page[data-c97-wide] .c97-project-hero .c97-lead {
-  max-inline-size: var(--c97-container);
+  max-width: var(--c97-column);
 }
 
 /*

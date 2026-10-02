@@ -1,9 +1,8 @@
-import type { Config } from "@netlify/functions";
 import {
   buildPollingSnapshotData,
   POLLING_BLOB_KEY,
 } from "../../src/lib/pollingData";
-import { writeSnapshotBlob } from "../../src/lib/snapshotBlobStore";
+import { writeSnapshotBlob } from "../../src/lib/netlifyBlobs";
 
 // Six-hour VoteHub refresh through the blob lane (see the lane description in
 // SNAPSHOT_DRIVEN_DASHBOARDS.md). buildPollingSnapshotData throws on thin or
@@ -33,8 +32,8 @@ export default async () => {
   );
 };
 
-export const config: Config = {
+export const config = {
   // Every six hours, staggered off the frontier-models daily run (07:30) and
   // the GitHub Actions snapshot crons.
   schedule: "45 */6 * * *",
-};
+} satisfies { schedule: string };

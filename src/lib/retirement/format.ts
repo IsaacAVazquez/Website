@@ -14,8 +14,8 @@ const COMPACT_SUFFIXES = ["", "K", "M", "B", "T"];
 
 /**
  * "$950", "$100K", "$1.5M", "-$22.5K". Written out by hand because `Intl`
- * compact currency prints "$100.0K" on Node 20 and "$100K" in browsers, and
- * that difference breaks hydration wherever the server renders one.
+ * compact notation drops the decimal once a value has two digits ("$12K" where
+ * this prints "$12.3K"), so the two are not interchangeable.
  */
 export function formatCompactCurrency(value: number): string {
   const sign = value < 0 ? "-" : "";

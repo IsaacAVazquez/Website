@@ -34,7 +34,7 @@ describe("Catalog97ToolShell", () => {
     expect(screen.getByRole("main").querySelector('[data-c97-surface="paper"] h1')).not.toBeNull();
   });
 
-  it("renders no band and no build note by default", () => {
+  it("renders no build note by default", () => {
     render(
       <Catalog97ToolShell route="/now">
         <h1>Now</h1>
@@ -43,23 +43,6 @@ describe("Catalog97ToolShell", () => {
 
     expect(screen.queryByText("Build notes")).toBeNull();
     expect(screen.queryByText("Project context")).toBeNull();
-    expect(document.querySelector("[data-c97-band='title']")).toBeNull();
-  });
-
-  it("renders the title band as the only h1 when asked", () => {
-    render(
-      <Catalog97ToolShell
-        route="/golf"
-        band={{ kicker: "Sports", title: "PGA Tour", standfirst: "Leaderboards from a committed snapshot." }}
-      >
-        <p>Body</p>
-      </Catalog97ToolShell>,
-    );
-
-    const h1 = screen.getByRole("heading", { level: 1 });
-    expect(h1).toHaveTextContent("PGA Tour");
-    expect(screen.getByText("Sports")).toHaveClass("c97-kicker");
-    expect(screen.getByText("Leaderboards from a committed snapshot.")).toHaveClass("c97-lead");
   });
 
   it("appends the build note aside inside main when a link exists", () => {

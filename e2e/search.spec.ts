@@ -5,7 +5,7 @@ test.describe("Search", () => {
     page,
   }) => {
     await page.goto(
-      "/search?q=fantasy&type=project&category=Fantasy%20Football%20Analytics"
+      "/search?q=fantasy&type=project&category=Sports"
     );
 
     const input = page.getByRole("textbox", { name: /search content/i });
@@ -16,7 +16,7 @@ test.describe("Search", () => {
     ).toBeVisible();
     await expect(page.getByText("Fantasy Football Analytics Platform")).toBeVisible();
     await expect(page.getByText("Type: project")).toBeVisible();
-    await expect(page.getByText("Category: Fantasy Football Analytics")).toBeVisible();
+    await expect(page.getByText("Category: Sports")).toBeVisible();
 
     await page.getByRole("button", { name: /show filters|hide filters/i }).click();
     await expect(async () => {

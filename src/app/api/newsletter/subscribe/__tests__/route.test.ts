@@ -5,20 +5,21 @@ import { NextRequest } from "next/server";
 import { POST } from "../route";
 import { newsletterRateLimiter } from "@/lib/rateLimit";
 
-const createContact = jest.fn();
+const mockFetch = jest.fn();
+const originalFetch = global.fetch;
+global.fetch = mockFetch;
+
+function jsonResponse(body: unknown, status = 200) {
+  return new Response(JSON.stringify(body), {
+    status,
+    headers: { "content-type": "application/json" },
+  });
+}
 
 jest.mock("@/lib/logger", () => ({
   logger: {
     error: jest.fn(),
   },
-}));
-
-jest.mock("resend", () => ({
-  Resend: jest.fn().mockImplementation(() => ({
-    contacts: {
-      create: createContact,
-    },
-  })),
 }));
 
 function request(
@@ -41,10 +42,11 @@ describe("newsletter subscribe route", () => {
     newsletterRateLimiter.reset();
     process.env.RESEND_API_KEY = "re_test";
     process.env.RESEND_NEWSLETTER_SEGMENT_ID = "seg_test";
-    createContact.mockResolvedValue({
-      data: { id: "contact_1" },
-      error: null,
-    });
+    mockFetch.mockImplementation(() => Promise.resolve(jsonResponse({ id: "contact_1" })));
+  });
+
+  afterAll(() => {
+    global.fetch = originalFetch;
   });
 
   afterEach(() => {
@@ -61,7 +63,10 @@ describe("newsletter subscribe route", () => {
     );
 
     expect(response.status).toBe(200);
-    expect(createContact).toHaveBeenCalledWith({
+    const [url, init] = mockFetch.mock.calls[0];
+    expect(url).toBe("https://api.resend.com/contacts");
+    expect(init.headers.Authorization).toBe("Bearer re_test");
+    expect(JSON.parse(init.body)).toEqual({
       email: "reader@example.com",
       unsubscribed: false,
       segments: [{ id: "seg_test" }],
@@ -75,8 +80,18 @@ describe("newsletter subscribe route", () => {
     );
 
     expect(response.status).toBe(400);
-    expect(createContact).not.toHaveBeenCalled();
+    expect(mockFetch).not.toHaveBeenCalled();
   });
+
+  it.each([null, [], "reader@example.com", 12, true])(
+    "rejects non-object JSON body %p without calling Resend",
+    async (body) => {
+      const response = await POST(request(body));
+      expect(response.status).toBe(400);
+      await expect(response.json()).resolves.toMatchObject({ success: false });
+      expect(mockFetch).not.toHaveBeenCalled();
+    }
+  );
 
   it("treats the honeypot as a successful no-op", async () => {
     const response = await POST(
@@ -88,14 +103,15 @@ describe("newsletter subscribe route", () => {
     );
 
     expect(response.status).toBe(200);
-    expect(createContact).not.toHaveBeenCalled();
+    expect(mockFetch).not.toHaveBeenCalled();
   });
 
   it("is idempotent when the contact already exists", async () => {
-    createContact.mockResolvedValue({
-      data: null,
-      error: { statusCode: 409, message: "Contact already exists" },
-    });
+    mockFetch.mockImplementation(() =>
+      Promise.resolve(
+        jsonResponse({ statusCode: 409, message: "Contact already exists" }, 409)
+      )
+    );
 
     const response = await POST(
       request({ email: "reader@example.com", source: "writing" })
@@ -106,7 +122,7 @@ describe("newsletter subscribe route", () => {
   });
 
   it("returns a retryable response when Resend cannot be reached", async () => {
-    createContact.mockRejectedValue(new Error("network unavailable"));
+    mockFetch.mockRejectedValue(new Error("network unavailable"));
 
     const response = await POST(
       request({ email: "reader@example.com", source: "writing" })
@@ -135,7 +151,7 @@ describe("newsletter subscribe route", () => {
     await expect(response.json()).resolves.toMatchObject({
       message: "Too many attempts. Please try again later.",
     });
-    expect(createContact).toHaveBeenCalledTimes(5);
+    expect(mockFetch).toHaveBeenCalledTimes(5);
   });
 
   it("fails closed when Resend is not configured", async () => {
@@ -146,6 +162,6 @@ describe("newsletter subscribe route", () => {
     );
 
     expect(response.status).toBe(503);
-    expect(createContact).not.toHaveBeenCalled();
+    expect(mockFetch).not.toHaveBeenCalled();
   });
 });

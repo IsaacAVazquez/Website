@@ -7,12 +7,7 @@ import {
 } from "@/lib/fantasy";
 import fs from "fs";
 import fsPromises from "fs/promises";
-import {
-  loadFantasySnapshot,
-  loadFantasySnapshotSeed,
-  loadFantasyWeeklySeed,
-  resetFantasySnapshotCache,
-} from "@/lib/fantasySnapshotServer";
+import { loadFantasySnapshot, loadFantasySnapshotSeed } from "@/lib/fantasySnapshotServer";
 import { normalizeFantasyWeeklySnapshot } from "@/lib/fantasyWeeklySnapshot";
 import { buildFantasyVorpIndex, sortPlayersByVorpRank } from "@/lib/fantasyVorp";
 import type { Player } from "@/types";
@@ -21,7 +16,6 @@ const ids = (players: readonly Player[]) => players.map((player) => player.id);
 
 describe("fantasySnapshotServer", () => {
   it("serves the parsed snapshot from cache within the TTL", async () => {
-    resetFantasySnapshotCache();
     const first = await loadFantasySnapshot("ppr");
     const second = await loadFantasySnapshot("ppr");
     // A cache hit returns the same object; without the cache each call parses
@@ -118,13 +112,19 @@ describe("loadFantasySnapshotSeed", () => {
 // seed, so crawlers that do not run JavaScript see the board. One scoring
 // format rides in the page; the client fetches the other two.
 describe("loadFantasyWeeklySeed", () => {
+  // Each test loads a fresh module so the weekly cache starts empty.
+  let loadFantasyWeeklySeed: typeof import("@/lib/fantasySnapshotServer").loadFantasyWeeklySeed;
+
+  beforeEach(async () => {
+    jest.resetModules();
+    ({ loadFantasyWeeklySeed } = await import("@/lib/fantasySnapshotServer"));
+  });
+
   afterEach(() => {
     jest.restoreAllMocks();
-    resetFantasySnapshotCache();
   });
 
   it("seeds the complete boards for the requested scoring format and no other", async () => {
-    resetFantasySnapshotCache();
     const published = normalizeFantasyWeeklySnapshot(
       JSON.parse(fs.readFileSync("public/data/fantasy/weekly.json", "utf8"))
     );
@@ -138,7 +138,6 @@ describe("loadFantasyWeeklySeed", () => {
   });
 
   it("returns null before Week 1, when the builder has published no file", async () => {
-    resetFantasySnapshotCache();
     jest
       .spyOn(fsPromises, "readFile")
       .mockRejectedValueOnce(Object.assign(new Error("missing"), { code: "ENOENT" }));

@@ -10,15 +10,14 @@
  */
 jest.mock("fs", () => ({ readFileSync: jest.fn() }));
 
-import { readFileSync } from "fs";
-import {
-  FinnhubAllowlistUnavailableError,
-  getAllowedSymbols,
-  isAllowedSymbol,
-  __resetAllowlistCacheForTests,
-} from "@/lib/finnhub";
+import type { readFileSync } from "fs";
 
-const mockReadFileSync = readFileSync as jest.MockedFunction<typeof readFileSync>;
+type Finnhub = typeof import("@/lib/finnhub");
+
+// Each test loads a fresh module so the allowlist cache starts empty.
+let getAllowedSymbols: Finnhub["getAllowedSymbols"];
+let FinnhubAllowlistUnavailableError: Finnhub["FinnhubAllowlistUnavailableError"];
+let mockReadFileSync: jest.MockedFunction<typeof readFileSync>;
 const realFetch = global.fetch;
 
 function enoent(): NodeJS.ErrnoException {
@@ -35,9 +34,10 @@ function mockPublicAsset(symbols: string[]) {
 }
 
 describe("finnhub allowlist resolution", () => {
-  beforeEach(() => {
-    jest.clearAllMocks();
-    __resetAllowlistCacheForTests();
+  beforeEach(async () => {
+    jest.resetModules();
+    mockReadFileSync = (await import("fs")).readFileSync as typeof mockReadFileSync;
+    ({ getAllowedSymbols, FinnhubAllowlistUnavailableError } = await import("@/lib/finnhub"));
     delete process.env.URL;
   });
 
@@ -53,7 +53,7 @@ describe("finnhub allowlist resolution", () => {
     const allowlist = await getAllowedSymbols();
 
     expect(allowlist.has("AAPL")).toBe(true);
-    expect(await isAllowedSymbol("MSFT")).toBe(true);
+    expect(allowlist.has("MSFT")).toBe(true);
     expect(global.fetch).not.toHaveBeenCalled();
   });
 
@@ -68,19 +68,12 @@ describe("finnhub allowlist resolution", () => {
     const allowlist = await getAllowedSymbols();
 
     expect(allowlist.has("AAPL")).toBe(true);
-    expect(await isAllowedSymbol("MSFT")).toBe(true);
-    expect(await isAllowedSymbol("ZZZZZ")).toBe(false);
+    expect(allowlist.has("MSFT")).toBe(true);
+    expect(allowlist.has("ZZZZZ")).toBe(false);
     expect(global.fetch).toHaveBeenCalledWith(
       "https://isaacvazquez.com/data/investments/index.json",
       expect.objectContaining({ cache: "force-cache" })
     );
-  });
-
-  it("rejects malformed symbols even when they are not in the allowlist", async () => {
-    mockReadFileSync.mockReturnValue(JSON.stringify({ symbols: ["AAPL"] }));
-
-    expect(await isAllowedSymbol("BAD SYMBOL")).toBe(false);
-    expect(await isAllowedSymbol(".AAPL")).toBe(false);
   });
 
   it("reports a total miss as unavailable but does not cache the failure", async () => {

@@ -39,6 +39,7 @@ export interface SearchState {
   results: SearchResult[];
   isLoading: boolean;
   hasSearched: boolean;
+  error: boolean;
   totalResults: number;
   searchTime: number;
 }
@@ -69,6 +70,11 @@ export function SearchInterface({
   const router = useRouter();
   const pendingUrlSyncKeyRef = useRef<string | null>(null);
   const inputRef = useRef<HTMLInputElement>(null);
+  const searchControllerRef = useRef<AbortController | null>(null);
+  const cancelActiveSearch = useCallback(() => {
+    searchControllerRef.current?.abort();
+    searchControllerRef.current = null;
+  }, []);
   const seededState = readSeededSearchState({
     query: initialQuery,
     type: initialType,
@@ -82,6 +88,7 @@ export function SearchInterface({
     results: [],
     isLoading: false,
     hasSearched: false,
+    error: false,
     totalResults: 0,
     searchTime: 0
   }));
@@ -91,7 +98,7 @@ export function SearchInterface({
   const effectiveQuery = searchState.query === "" ? "" : debouncedQuery;
 
   // Report completed searches to GA4 (no-op unless analytics is enabled).
-  useTrackedListingSearch("site_search", searchState.query, searchState.totalResults);
+  useTrackedListingSearch(searchState.query, searchState.totalResults);
 
   useEffect(() => {
     const nextSeededState = readSeededSearchState({
@@ -119,6 +126,13 @@ export function SearchInterface({
     });
   }, [initialCategory, initialQuery, initialType]);
 
+  // Invalidate the previous request as soon as the input or filters change,
+  // including the debounce window, and prevent updates after unmount.
+  useEffect(() => {
+    cancelActiveSearch();
+    return cancelActiveSearch;
+  }, [searchState.query, searchState.type, searchState.category, cancelActiveSearch]);
+
   // Update URL when search parameters change
   const updateURL = useCallback((query: string, type: string, category: string) => {
     pendingUrlSyncKeyRef.current = getSearchStateKey(query, type, category);
@@ -135,17 +149,22 @@ export function SearchInterface({
 
   // Perform search
   const performSearch = useCallback(async (query: string, type: string, category: string) => {
+    cancelActiveSearch();
     if (!query.trim()) {
       setSearchState(prev => ({
         ...prev,
         results: [],
+        isLoading: false,
         hasSearched: false,
+        error: false,
         totalResults: 0,
         searchTime: 0
       }));
       return;
     }
 
+    const controller = new AbortController();
+    searchControllerRef.current = controller;
     setSearchState(prev => ({ ...prev, isLoading: true }));
 
     const startTime = Date.now();
@@ -155,34 +174,40 @@ export function SearchInterface({
         q: query,
         ...(type !== 'all' && { type }),
         ...(category !== 'all' && { category })
-      })}`);
+      })}`, { signal: controller.signal });
+      if (!response.ok) throw new Error(`Search failed (${response.status})`);
 
       const data: SearchApiResponse = await response.json();
       const searchTime = Date.now() - startTime;
+      if (controller.signal.aborted) return;
 
       setSearchState(prev => ({
         ...prev,
         results: data.results || [],
         isLoading: false,
         hasSearched: true,
+        error: false,
         totalResults: data.total || 0,
         searchTime
       }));
     } catch (error) {
+      if (controller.signal.aborted) return;
       logger.error('Search failed', error);
       setSearchState(prev => ({
         ...prev,
         results: [],
         isLoading: false,
         hasSearched: true,
+        error: true,
         totalResults: 0,
         searchTime: Date.now() - startTime
       }));
     }
-  }, []);
+  }, [cancelActiveSearch]);
 
   // Effect for debounced search
   useEffect(() => {
+    if (effectiveQuery !== searchState.query) return;
     if (
       effectiveQuery !== initialQuery ||
       searchState.type !== initialType ||
@@ -194,6 +219,7 @@ export function SearchInterface({
     }
   }, [
     effectiveQuery,
+    searchState.query,
     searchState.type,
     searchState.category,
     performSearch,
@@ -223,13 +249,19 @@ export function SearchInterface({
       results: [],
       isLoading: false,
       hasSearched: false,
+      error: false,
       totalResults: 0,
       searchTime: 0,
     }));
   }, [performSearch, initialCategory, initialQuery, initialType]);
 
   const handleQueryChange = (query: string) => {
-    setSearchState(prev => ({ ...prev, query }));
+    cancelActiveSearch();
+    setSearchState(prev => ({
+      ...prev,
+      query,
+      ...(!query.trim() ? { results: [], isLoading: false, hasSearched: false, error: false, totalResults: 0, searchTime: 0 } : {}),
+    }));
   };
 
   const handleTypeChange = (type: string) => {
@@ -243,13 +275,16 @@ export function SearchInterface({
   };
 
   const clearSearch = () => {
+    cancelActiveSearch();
     setSearchState(prev => ({
       ...prev,
       query: "",
       type: "all",
       category: "all",
       results: [],
+      isLoading: false,
       hasSearched: false,
+      error: false,
       totalResults: 0,
       searchTime: 0
     }));
@@ -395,6 +430,8 @@ export function SearchInterface({
       <div role="status" aria-live="polite" aria-atomic="true" className="sr-only">
         {searchState.isLoading
           ? "Searching…"
+          : searchState.error
+            ? "Search isn't answering right now, so try again in a moment."
           : searchState.hasSearched
             ? searchState.totalResults === 0
               ? `No results found${searchState.query ? ` for ${searchState.query}` : ""}`
@@ -404,14 +441,27 @@ export function SearchInterface({
 
       {/* Search Results */}
       <div id="search-results">
-        <SearchResults
-          query={searchState.query}
-          results={searchState.results}
-          isLoading={searchState.isLoading}
-          hasSearched={searchState.hasSearched}
-          totalResults={searchState.totalResults}
-          searchTime={searchState.searchTime}
-        />
+        {searchState.error && !searchState.isLoading ? (
+          <div className="c97-panel" style={{ display: "grid", gap: "var(--c97-sp-2)", justifyItems: "start" }}>
+            <p className="c97-prose">Search isn&apos;t answering right now, so try again in a moment.</p>
+            <button
+              type="button"
+              className="c97-btn-ghost"
+              onClick={() => performSearch(searchState.query, searchState.type, searchState.category)}
+            >
+              Try again
+            </button>
+          </div>
+        ) : (
+          <SearchResults
+            query={searchState.query}
+            results={searchState.results}
+            isLoading={searchState.isLoading}
+            hasSearched={searchState.hasSearched}
+            totalResults={searchState.totalResults}
+            searchTime={searchState.searchTime}
+          />
+        )}
       </div>
 
       {/* Search Tips */}

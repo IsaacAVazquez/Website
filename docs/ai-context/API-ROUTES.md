@@ -2,7 +2,7 @@
 
 Current API route map.
 
-**Last updated:** 2026-09-30
+**Last updated:** 2026-10-02
 
 ---
 
@@ -10,7 +10,6 @@ Current API route map.
 
 | Endpoint | Methods | Purpose |
 |---------|---------|---------|
-| `/api/auth/[...nextauth]` | GET, POST | Admin auth |
 | `/api/data-revisions` | GET | No-cache revision and freshness ledger used to verify production publication |
 | `/api/bay-area-transit/stations/[stationId]` | GET | BART per-station departure board, refreshed at request time with the committed snapshot as fallback |
 | `/api/bay-area-transit/summary` | GET | BART lines, advisories, and system status, refreshed at request time with the committed snapshot as fallback |
@@ -18,12 +17,11 @@ Current API route map.
 | `/api/fantasy-data` | GET | Snapshot-backed fantasy data route reading `public/data/fantasy/*.json` |
 | `/api/formula-1/meetings/[meetingId]` | GET | Snapshot-backed Formula 1 meeting detail payload |
 | `/api/golf/players/[playerId]` | GET | Snapshot-backed golf player detail payload |
-| `/api/investments/data/[symbol]` | GET | Section-based investment research payloads |
 | `/api/investments/quotes` | GET | Quote proxy for the investments UI |
 | `/api/la-liga/teams/[teamId]` | GET | Snapshot-backed team drilldown payload for `/la-liga` |
 | `/api/mba-jobs` | GET | Live MBA-role aggregator across Greenhouse/Lever/Ashby/direct-HTML boards for `/mba-internship-notifications` |
 | `/api/mba-jobs/email` | POST | Sends grouped digest of supplied jobs via Resend |
-| `/api/newsletter/subscribe` | POST | Creates an opted-in Resend contact from the public newsletter form |
+| `/api/newsletter/subscribe` | POST | Creates an opted-in Resend contact from the public newsletter form with JSON object shape validation |
 | `/api/mlb/teams/[teamId]` | GET | Snapshot-backed MLB team drilldown payload |
 | `/api/nba/teams/[teamId]` | GET | Snapshot-backed NBA team drilldown payload |
 | `/api/news-pulse` | GET | News Pulse article summaries |
@@ -34,7 +32,6 @@ Current API route map.
 | `/api/spacex/launches` | GET | SpaceX launch list payload |
 | `/api/spacex/launches/[id]` | GET | SpaceX launch detail payload |
 | `/api/spacex/summary` | GET | SpaceX Mission Control summary payload |
-| `/api/stocks` | GET | Retired on 2026-07-06 (returns 410 Gone; points callers to `/api/investments/quotes`) |
 | `/api/world-cup/teams/[teamId]` | GET | Snapshot-backed World Cup team drilldown payload |
 
 ---
@@ -50,7 +47,7 @@ Current API route map.
 - the league, golf, and World Cup `/summary` routes and `/api/investments/index` were removed; those pages read their summaries on the server, so only the drilldown routes remain
 - `/api/fantasy-data` reads generated static snapshots; there are no live `/api/fantasy-pros-*`, `/api/data-manager`, `/api/data-metadata`, `/api/sample-data`, or `/api/scheduled-update` routes
 - `/api/mba-jobs` fetches live from public job boards at request time with a 30-minute `s-maxage` and 8s per-target timeout; `/api/mba-jobs/email` requires `RESEND_API_KEY` and `MBA_DIGEST_ALLOWED_RECIPIENTS`
-- auth is still NextAuth credentials-based
+- there is no auth route; `/api/auth/[...nextauth]` was removed on 2026-10-02
 
 ---
 
@@ -63,15 +60,6 @@ Current investment routes:
 - batches symbol quote requests for the client portfolio experience
 - keeps the investments layer decoupled from direct stock-route usage in the UI
 
-### `/api/investments/data/[symbol]`
-
-- serves per-symbol research sections
-- supports the curated research UI
-
-### `/api/stocks`
-
-- retired on 2026-07-06; returns 410 Gone with Deprecation/Sunset headers pointing callers to `/api/investments/quotes`
-
 ---
 
 ## Search Detail
@@ -81,18 +69,9 @@ Current investment routes:
 That means:
 
 - good for simple UI demos and current navigation/search flows
+- guards against prototype property resolution (e.g. `constructor`) via `Object.hasOwn`
 - not comprehensive for all writing or project content
 - should be described as limited until the route is expanded
-
----
-
-## Auth Detail
-
-`/api/auth/[...nextauth]` is configured from `src/lib/auth.ts`.
-
-- credentials provider
-- admin login uses env vars
-- sign-in and error page both point at `/admin`
 
 ---
 

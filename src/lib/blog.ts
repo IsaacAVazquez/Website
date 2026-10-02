@@ -345,10 +345,6 @@ export async function getAllBlogPosts(): Promise<BlogPost[]> {
   return posts.sort(compareBlogEntriesByPublishedDateDesc);
 }
 
-export function getLatestBlogPostPreviews(limit = 3): BlogPostPreview[] {
-  return getAllBlogPostPreviews().slice(0, limit);
-}
-
 export function getHomepageProofOfWorkBlogPostPreviews(): BlogPostPreview[] {
   return HOMEPAGE_PROOF_OF_WORK_SLUGS.flatMap((slug) => {
     const preview = getBlogPostPreviewBySlug(slug);
@@ -399,25 +395,6 @@ export function getBlogPostPreviewsByTopicSlug(
       ? post.cluster === topic.label
       : post.archiveBucket === topic.label
   );
-}
-
-export async function getBlogPostsByCategory(category: string): Promise<BlogPost[]> {
-  const allPosts = await getAllBlogPosts();
-  return allPosts.filter(
-    (post) => post.category.toLowerCase() === category.toLowerCase()
-  );
-}
-
-export async function getBlogPostsByTag(tag: string): Promise<BlogPost[]> {
-  const allPosts = await getAllBlogPosts();
-  return allPosts.filter((post) =>
-    post.tags.some((postTag) => postTag.toLowerCase() === tag.toLowerCase())
-  );
-}
-
-export async function getFeaturedBlogPosts(): Promise<BlogPost[]> {
-  const allPosts = await getAllBlogPosts();
-  return allPosts.filter((post) => post.featured);
 }
 
 export async function getRelatedBlogPosts(
@@ -476,31 +453,4 @@ export async function getRelatedBlogPosts(
     .sort(compareBlogEntriesByPublishedDateDesc);
 
   return [...stronglyRelated, ...fallbackPosts].slice(0, limit);
-}
-
-export async function getAllCategories(): Promise<string[]> {
-  const allPosts = await getAllBlogPosts();
-  const categories = Array.from(new Set(allPosts.map((post) => post.category)));
-  return categories.sort();
-}
-
-export async function getAllTags(): Promise<string[]> {
-  const allPosts = await getAllBlogPosts();
-  const tags = Array.from(new Set(allPosts.flatMap((post) => post.tags)));
-  return tags.sort();
-}
-
-export async function searchBlogPosts(query: string): Promise<BlogPost[]> {
-  const allPosts = await getAllBlogPosts();
-  const searchTerm = query.toLowerCase();
-
-  return allPosts.filter((post) => {
-    return (
-      post.title.toLowerCase().includes(searchTerm) ||
-      post.excerpt.toLowerCase().includes(searchTerm) ||
-      post.content.toLowerCase().includes(searchTerm) ||
-      post.category.toLowerCase().includes(searchTerm) ||
-      post.tags.some((tag) => tag.toLowerCase().includes(searchTerm))
-    );
-  });
 }

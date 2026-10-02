@@ -5,13 +5,9 @@
 // browser-storage helpers. All mutation goes through commit() so every
 // caller reads the freshest stored value before writing.
 
-import { useCallback, useMemo, useSyncExternalStore } from "react";
-import {
-  getBrowserStorageSnapshot,
-  readValidatedBrowserStorage,
-  subscribeBrowserStorage,
-  writeBrowserStorageJson,
-} from "@/lib/browserStorage";
+import { useCallback, useMemo } from "react";
+import { readValidatedBrowserStorage, writeBrowserStorageJson } from "@/lib/browserStorage";
+import { useLocalStorageString } from "@/hooks/useLocalStorageString";
 import {
   createPool,
   createRival,
@@ -35,16 +31,8 @@ function loadStore(): ScorePoolsStore {
   ).value;
 }
 
-function subscribe(listener: () => void): () => void {
-  return subscribeBrowserStorage(SCORE_POOLS_STORAGE_KEY, listener);
-}
-
-function getSnapshot(): string {
-  return getBrowserStorageSnapshot(SCORE_POOLS_STORAGE_KEY, EMPTY_SNAPSHOT);
-}
-
 export function useScorePools() {
-  const rawSnapshot = useSyncExternalStore(subscribe, getSnapshot, () => EMPTY_SNAPSHOT);
+  const rawSnapshot = useLocalStorageString(SCORE_POOLS_STORAGE_KEY, EMPTY_SNAPSHOT);
 
   const store = useMemo(() => {
     if (rawSnapshot === EMPTY_SNAPSHOT) return emptyScorePoolsStore();

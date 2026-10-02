@@ -3,7 +3,7 @@
 Current route inventory and page ownership for the live app.
 
 **Framework:** Next.js 16 App Router
-**Last updated:** 2026-09-30
+**Last updated:** 2026-10-02
 
 ---
 
@@ -85,16 +85,13 @@ Current route inventory and page ownership for the live app.
 | `/fantasy-football/weekly` | `src/app/fantasy-football/weekly/page.tsx` | In-season weekly FLEX and QB consensus board; reports a not-published state until Week 1 |
 | `/fantasy-football/waivers` | `src/app/fantasy-football/waivers/page.tsx` | In-season waiver targets (rank percentile minus rostered percentage) read from the same weekly snapshot through the shared weekly client |
 
-### Utility/admin
+### Utility
 
 | Route | File | Notes |
 |------|------|-------|
 | `/search` | `src/app/search/page.tsx` | Search UI backed by limited `/api/search` |
-| `/admin` | `src/app/admin/page.tsx` | Credentials-based admin screen |
 | `/now` | `src/app/now/page.tsx` | Current focus / status page |
 | `/changelog` | `src/app/changelog/page.tsx` | Site changelog |
-| `/analytics-reference` | `src/app/analytics-reference/page.tsx` | Noindex internal reference for the GA4 events wired into the site, driven by `ANALYTICS_EVENTS` in `src/lib/analytics.ts` |
-| `/design/catalog-pages` | `src/app/design/catalog-pages/page.tsx` | Noindex QA sheet stacking every Catalog 97 route in one scroll with the layout rules the set holds |
 
 ---
 
@@ -121,7 +118,7 @@ Fantasy shortcut and typo redirects also live in `next.config.mjs`.
 ### Catalog 97 routes and the tool shell
 
 - `/`, `/portfolio`, `/writing`, `/dashboards`, `/about`, `/resume`, and `/contact` are the seven designed routes in `src/constants/catalog97Nav.ts`. Each page renders its own `Catalog97Shell`, and `ConditionalLayout` passes them through untouched
-- every other route, `/admin` included, is wrapped in `src/components/catalog97/Catalog97ToolShell.tsx`, which is `Catalog97Shell` plus an optional title band and the build-note aside
+- every other route is wrapped in `src/components/catalog97/Catalog97ToolShell.tsx`, which is `Catalog97Shell` plus the build-note aside
 - `Catalog97Shell` owns the header, the only page-level `main`, and the espresso footer, so there is one footer on every route. The old `Footer.tsx` and its variants were deleted on 2026-09-16
 - see `AGENTS.md` for the full shell description
 
@@ -138,7 +135,7 @@ Fantasy shortcut and typo redirects also live in `next.config.mjs`.
 - `/ai-dev-tools`, `/frontier-models`, `/decision-lab`, `/enablement-assistant`, `/news-pulse`, `/github-trending-pulse`, `/spacex-mission-control`, `/polling-aggregator`, `/mba-internship-notifications`, and `/fintech-tools/*` are live standalone tool surfaces even though they are not promoted in the global header
 - `/food-map`, `/recipe-finder`, `/wine-cellar`, `/museum-log`, `/travel`, `/now`, and `/changelog` are live personal or utility surfaces
 - `/search` exists, but its data quality is limited by the current hardcoded search API
-- there is no live `/admin/analytics` page in the current app tree
+- there is no `/admin` page; it and NextAuth were removed on 2026-10-02
 
 ---
 

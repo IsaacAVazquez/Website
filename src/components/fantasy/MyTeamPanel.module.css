@@ -18,7 +18,6 @@
   padding: 1rem 0;
 }
 
-.title { font-size: 1.5rem; font-weight: 600; line-height: 1.1; letter-spacing: -0.03em; }
 .description { max-width: 42ch; margin-top: 0.5rem; color: var(--team-muted); font-size: 0.9375rem; }
 .week { display: grid; grid-template-columns: auto auto; column-gap: 0.5rem; align-items: baseline; flex-shrink: 0; font-family: var(--c97-font-mono); font-size: 0.75rem; }
 .week > :nth-child(2) { font-variant-numeric: tabular-nums; }
@@ -38,7 +37,6 @@
 .button:hover, .selectedButton:hover { border-color: var(--c97-accent); }
 .primaryButton:hover { background: var(--c97-accent); border-color: var(--c97-accent); color: var(--c97-surface); }
 .button:focus-visible, .primaryButton:focus-visible, .selectedButton:focus-visible { outline: 2px solid var(--c97-accent); outline-offset: 3px; }
-.button:disabled, .primaryButton:disabled { opacity: 0.5; cursor: not-allowed; }
 .textButton { display: inline-flex; align-items: center; gap: 0.5rem; min-height: 44px; padding-block: 0.625rem; font-size: 0.875rem; text-decoration: underline; text-underline-offset: 4px; text-decoration-color: var(--team-rule); }
 .textButton:hover { text-decoration-color: var(--c97-accent); }
 .subheading { font-size: 1.0625rem; font-weight: 600; line-height: 1.25; letter-spacing: -0.02em; }

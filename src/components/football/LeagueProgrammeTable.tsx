@@ -2,6 +2,7 @@
 
 import { CrestAvatar } from "./CrestAvatar";
 import { leagueZone, type LeagueZone } from "./ladderGeometry";
+import { formatFixed } from "./fixtureFormat";
 
 export interface ProgrammeTableRow {
   id: string;
@@ -41,10 +42,6 @@ const ZONE_TINT: Partial<Record<LeagueZone, string>> = {
   relegation: "color-mix(in srgb, var(--c97-negative) 10%, var(--c97-surface))",
 };
 
-function formatFixed(value: number): string {
-  return Number.isFinite(value) ? value.toFixed(2) : "—";
-}
-
 /**
  * The standings set like a matchday programme: hairline `.c97-table` rows
  * with the qualification and relegation zones printed as tints behind them.
@@ -59,7 +56,7 @@ export function LeagueProgrammeTable({
   onSelect,
 }: LeagueProgrammeTableProps) {
   return (
-    <div className="overflow-x-auto">
+    <div className="overflow-x-auto" role="region" tabIndex={0} aria-label={`${ariaLabel} (scrollable)`}>
       <table className="c97-table" aria-label={ariaLabel}>
         <thead>
           <tr>

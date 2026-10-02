@@ -6,7 +6,6 @@ import {
   getMlbSummary,
   getMlbTeamSnapshot,
   isValidMlbTeamId,
-  createEmptyMlbSnapshot,
 } from "../mlbData";
 import {
   DODGERS_SCHEDULE_DATES,
@@ -689,36 +688,6 @@ describe("isValidMlbTeamId", () => {
     expect(isValidMlbTeamId("1.5")).toBe(false);
     expect(isValidMlbTeamId("abc")).toBe(false);
     expect(isValidMlbTeamId(" 147")).toBe(false);
-  });
-});
-
-describe("createEmptyMlbSnapshot", () => {
-  it("returns a fully-shaped empty snapshot", () => {
-    const snap = createEmptyMlbSnapshot();
-
-    expect(typeof snap.season).toBe("string");
-    expect(snap.generatedAt).toMatch(/^\d{4}-\d{2}-\d{2}T/);
-    expect(snap.updatedAt).toMatch(/^\d{4}-\d{2}-\d{2}$/);
-    expect(snap.sourceLabel).toBe("MLB Stats API");
-    expect(snap.sourceUrls.standings).toContain("statsapi.mlb.com/api/v1/standings");
-    expect(snap.sourceUrls.schedule).toContain("statsapi.mlb.com/api/v1/schedule");
-    expect(snap.sourceUrls.leaders).toContain("statsapi.mlb.com/api/v1/stats/leaders");
-
-    expect(snap.teams).toEqual([]);
-    expect(snap.standings).toEqual([]);
-    expect(snap.recentGames).toEqual([]);
-    expect(snap.upcomingGames).toEqual([]);
-    expect(snap.hittingLeaders).toEqual({
-      homeRuns: [],
-      runsBattedIn: [],
-      battingAverage: [],
-    });
-    expect(snap.pitchingLeaders).toEqual({
-      earnedRunAverage: [],
-      wins: [],
-      strikeouts: [],
-    });
-    expect(snap.teamSnapshots).toEqual({});
   });
 });
 

@@ -12,6 +12,8 @@ import type {
   NFLTeamSnapshot,
   NFLTeamStanding,
 } from "@/types/nfl";
+import { HttpStatusError } from "@/lib/utils";
+import { isTimeoutError, retryLinear } from "@/lib/fetchRetry";
 
 const STANDINGS_URL =
   "https://github.com/nflverse/nfldata/raw/master/data/standings.csv";
@@ -28,49 +30,26 @@ const LEADER_LIMIT = 10;
 // games.csv marks the postseason WC, DIV, CON, and SB, never POST.
 const SNAPSHOT_GAME_TYPES = ["REG", "WC", "DIV", "CON", "SB"];
 
-interface NFLDataError extends Error {
-  status: number;
-}
-
-function createNFLDataError(message: string, status: number): NFLDataError {
-  return Object.assign(new Error(message), { status });
-}
-
 async function fetchTextOnce(url: string): Promise<string> {
-  const controller = new AbortController();
-  const timeout = setTimeout(() => controller.abort(), REQUEST_TIMEOUT_MS);
   try {
-    const response = await fetch(url, { signal: controller.signal });
+    const response = await fetch(url, { signal: AbortSignal.timeout(REQUEST_TIMEOUT_MS) });
     if (!response.ok) {
-      throw createNFLDataError(
+      throw new HttpStatusError(
         `Unable to load NFL data from ${url} (HTTP ${response.status}).`,
         response.status >= 500 ? 503 : 502
       );
     }
     return await response.text();
   } catch (error) {
-    if (error instanceof Error && error.name === "AbortError") {
-      throw createNFLDataError(`NFL data source timed out: ${url}`, 504);
+    if (isTimeoutError(error)) {
+      throw new HttpStatusError(`NFL data source timed out: ${url}`, 504);
     }
     throw error;
-  } finally {
-    clearTimeout(timeout);
   }
 }
 
-async function fetchText(url: string): Promise<string> {
-  let lastError: unknown;
-  for (let attempt = 0; attempt < 3; attempt += 1) {
-    try {
-      return await fetchTextOnce(url);
-    } catch (error) {
-      lastError = error;
-      if (attempt < 2) {
-        await new Promise((resolve) => setTimeout(resolve, 1000 * (attempt + 1)));
-      }
-    }
-  }
-  throw lastError;
+function fetchText(url: string): Promise<string> {
+  return retryLinear(3, () => fetchTextOnce(url));
 }
 
 function parseCsvRow(line: string): string[] {
@@ -250,7 +229,7 @@ function selectLatestSeason(rows: Record<string, string>[]): {
     }
   });
   if (latest === 0) {
-    throw createNFLDataError(
+    throw new HttpStatusError(
       "No standings rows with games played found in NFLverse standings CSV.",
       502
     );

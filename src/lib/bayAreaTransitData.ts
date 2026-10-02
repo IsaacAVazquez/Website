@@ -10,6 +10,8 @@ import type {
   TransitSummary,
 } from "@/types/bayAreaTransit";
 import { slugify } from "@/lib/utils";
+import { retryLinear, isTransientFetchError } from "@/lib/fetchRetry";
+import { setTimeout as delay } from "node:timers/promises";
 
 /**
  * Builds the Bay Area Transit snapshot from BART's public legacy API. The key
@@ -148,55 +150,33 @@ async function fetchBartJson<T>(
 ): Promise<T> {
   const separator = path.includes("?") ? "&" : "?";
   const url = `${BART_API_BASE}/${path}${separator}key=${encodeURIComponent(bartApiKey())}&json=y`;
-  let lastError: unknown;
-  for (let attempt = 0; attempt < attempts; attempt += 1) {
-    try {
-      const response = await fetch(url, {
-        signal: AbortSignal.timeout(timeoutMs),
-        headers: { Accept: "application/json" },
-      });
-      if (!response.ok) {
-        const error = new Error(
-          `BART request failed with status ${response.status} for ${path}.`
-        );
-        (error as { retryable?: boolean }).retryable = response.status >= 500;
-        throw error;
-      }
-      const body = (await response.json()) as {
-        root?: { message?: { error?: { text?: string } } | string | null } | null;
-      };
-      // BART reports a bad key, station, or command inside the body. Without
-      // this an error that arrives with a 200 reads as a feed with nothing in it.
-      const message = body.root?.message;
-      if (message && typeof message === "object" && message.error) {
-        throw new Error(
-          `BART answered ${path} with an error: ${message.error.text ?? "no detail"}.`
-        );
-      }
-      return body as T;
-    } catch (error) {
-      lastError = error;
-      const isTimeout =
-        error instanceof Error &&
-        (error.name === "AbortError" || error.name === "TimeoutError");
-      const isNetwork = error instanceof TypeError;
-      const isRetryable = Boolean((error as { retryable?: boolean })?.retryable);
-      if (
-        attempt < attempts - 1 &&
-        (isTimeout || isNetwork || isRetryable)
-      ) {
-        await new Promise((resolve) => setTimeout(resolve, 1000 * (attempt + 1)));
-        continue;
-      }
+  return retryLinear(attempts, async () => {
+    const response = await fetch(url, {
+      signal: AbortSignal.timeout(timeoutMs),
+      headers: { Accept: "application/json" },
+    });
+    if (!response.ok) {
+      const error = new Error(
+        `BART request failed with status ${response.status} for ${path}.`
+      );
+      (error as { retryable?: boolean }).retryable = response.status >= 500;
       throw error;
     }
-  }
-  throw lastError;
+    const body = (await response.json()) as {
+      root?: { message?: { error?: { text?: string } } | string | null } | null;
+    };
+    // BART reports a bad key, station, or command inside the body. Without
+    // this an error that arrives with a 200 reads as a feed with nothing in it.
+    const message = body.root?.message;
+    if (message && typeof message === "object" && message.error) {
+      throw new Error(
+        `BART answered ${path} with an error: ${message.error.text ?? "no detail"}.`
+      );
+    }
+    return body as T;
+  }, isTransientFetchError);
 }
 
-function delay(ms: number): Promise<void> {
-  return new Promise((resolve) => setTimeout(resolve, ms));
-}
 
 // --- Builder -----------------------------------------------------------------
 

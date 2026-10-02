@@ -18,8 +18,7 @@ This is the current operating map for the fantasy football pages, their supporte
 | `/fantasy-football/waivers` | In-season waiver targets where the weekly consensus rank runs ahead of the rostered rate | `public/data/fantasy/weekly.json` |
 | `/api/fantasy-data` | Rate-limited server fallback for redraft snapshots | The same committed PPR, Half PPR, and Standard JSON files |
 
-The legacy route `/fantasy-football/rb-tiers` redirects to `/fantasy-football?position=rb&scoring=ppr`. `/fantasy-football/tiers/[position]` redirects to the matching PPR board. `public/fantasy/rb_current.json` remains only as a legacy artifact and is not part of the current refresh pipeline.
-
+The legacy route `/fantasy-football/rb-tiers` redirects to `/fantasy-football?position=rb&scoring=ppr`. `/fantasy-football/tiers/[position]` redirects to the matching PPR board.
 There is no best ball API route. The best ball pages load the committed static JSON directly. There are also no live `/api/fantasy-pros-*`, `/api/data-manager`, `/api/data-metadata`, `/api/sample-data`, `/api/scheduled-update`, `/api/scrape`, or historical fantasy archive routes.
 
 ## Exact redraft support
@@ -83,17 +82,17 @@ The command runs these steps in order. Steps 1 through 5 are `update:fantasy:red
 
 | Step | Builder | What it does | Artifact |
 | ---: | --- | --- | --- |
-| 1 | `scripts/buildFantasyPositionData.ts` | Fetches and validates scoring-specific FantasyPros consensus boards through the explicitly selected source; the scheduled job pins public consensus HTML, while a local run can select the official API; reuses the scoring-independent QB, K, and DST boards | `src/data/fantasyPositionData.generated.ts` |
-| 2 | `scripts/buildFantasyAdpData.ts` | Fetches Fantasy Football Calculator ADP by redraft scoring format and keeps the prior disclosed board when a fresh board fails or degrades | `src/data/fantasyAdpData.generated.ts` |
-| 3 | `scripts/buildFantasyGameLogData.ts` | Rebuilds the prior-season per-game scoring input from nflverse weekly player stats | `src/data/fantasyGameLogData.generated.ts` |
-| 4 | `scripts/buildFantasyVorpData.ts` | Rebuilds the VORP input from the FantasyPros projected VORP reports | `src/data/fantasyVorpData.generated.ts` |
+| 1 | `scripts/buildFantasyPositionData.ts` | Fetches and validates scoring-specific FantasyPros public consensus boards; reuses the scoring-independent QB, K, and DST boards | `src/data/fantasyPositionData.generated.json` |
+| 2 | `scripts/buildFantasyAdpData.ts` | Fetches Fantasy Football Calculator ADP by redraft scoring format and keeps the prior disclosed board when a fresh board fails or degrades | `src/data/fantasyAdpData.generated.json` |
+| 3 | `scripts/buildFantasyGameLogData.ts` | Rebuilds the prior-season per-game scoring input from nflverse weekly player stats | `src/data/fantasyGameLogData.generated.json` |
+| 4 | `scripts/buildFantasyVorpData.ts` | Rebuilds the VORP input from the FantasyPros projected VORP reports | `src/data/fantasyVorpData.generated.json` |
 | 5 | `scripts/buildFantasySnapshots.ts` | Joins consensus and ADP, derives FLEX, builds all three redraft formats in memory, stages them, publishes the three JSON files, and publishes the shared revision last | `public/data/fantasy/ppr.json`, `public/data/fantasy/half_ppr.json`, `public/data/fantasy/standard.json`, and `src/data/fantasySnapshotRevision.generated.ts` |
 | 6 | `scripts/buildBestBallSnapshot.ts` | Builds the best ball board from FantasyPros consensus and Superflex boards through the explicitly selected source, plus Underdog ADP, bye weeks, and the Week 17 schedule | `public/data/fantasy/best-ball.json` |
 | 7 | `scripts/buildFantasyWeeklySnapshot.ts` | Builds the in-season weekly board from the FantasyPros weekly FLEX and quarterback consensus pages, and writes nothing before Week 1 | `public/data/fantasy/weekly.json` |
 
 Step 5 does not touch an output until PPR, Half PPR, and Standard have all built and serialized successfully. It stages every redraft file, moves the three snapshots into place, moves the revision last, and removes its temporary files after an error. Importing the builder in a test does not run the command.
 
-The FantasyPros source client reads `FANTASYPROS_SOURCE` and `FANTASYPROS_API_KEY` only during the refresh. `public-html` selects the public consensus pages and ignores a configured key. `official-api` requires the key and sends it in the API request. `auto`, which is also the behavior when the source variable is absent, selects the API when a key exists and public HTML when it does not. Once selected, HTTP, parsing, and board validation failures stop the refresh without changing sources.
+The FantasyPros source client reads the public consensus pages during the refresh. HTTP, parsing, and board validation failures stop the refresh.
 
 The public app consumes these checked-in artifacts. It does not call FantasyPros, Fantasy Football Calculator, Underdog, or ESPN during a user request. The scheduled `.github/workflows/update-fantasy.yml` job runs daily at 17:00 UTC from July through December and weekly on Wednesday at 17:00 UTC from January through June. It runs the redraft, best ball, and weekly lanes as separate steps, verifies freshness and quality, and commits each lane's artifacts on its own only when they changed.
 
@@ -103,11 +102,11 @@ The public app consumes these checked-in artifacts. It does not call FantasyPros
 | --- | --- | --- |
 | Redraft | FantasyPros public consensus HTML in the scheduled job; the official FantasyPros API is an explicit local option. Overall, RB, WR, and TE are scoring-specific; QB, K, and DST are shared; FLEX is derived from the overall board. | Fantasy Football Calculator mock-draft ADP for the matching scoring format. The request uses its 12-team parameter, but the provider returned the same prices across tested room sizes, so the UI calls this a general market price. |
 | Standard best ball | Official FantasyPros API when configured; public PPR best ball consensus HTML when the key is absent | Standard-season Underdog ADP via Hayden Winks, redraft bye weeks, and ESPN's Week 17 schedule |
-| Superflex reference | FantasyPros public half PPR Superflex consensus HTML in the scheduled job; the official API remains an explicit local option | No matching Superflex ADP. Bye weeks and schedule remain supporting inputs. |
+| Superflex reference | FantasyPros public half PPR Superflex consensus HTML | No matching Superflex ADP. Bye weeks and schedule remain supporting inputs. |
 
 ## Secret and licensing boundary
 
-The scheduled refresh runs in GitHub Actions with `FANTASYPROS_SOURCE=public-html` and without `FANTASYPROS_API_KEY`. The explicit source setting prevents a retained or later-added key from moving the job back to the official endpoint, which returned a declared full board with only ten rows in the August 15 run. GitHub and Netlify may retain a key for other uses, but this workflow does not receive it. The deployed Netlify runtime does not need either variable because it serves the committed snapshots.
+The scheduled refresh runs in GitHub Actions and reads the public consensus pages. The deployed Netlify runtime needs no FantasyPros variable because it serves the committed snapshots.
 
 Official API access does not by itself grant permission to store and publicly redistribute the resulting rankings. Before publishing API-derived snapshots, the FantasyPros account and licensing tier must explicitly cover the checked-in artifacts and their public delivery through this site. The public HTML fallback carries the same redistribution question and should not be treated as a licensing substitute.
 
@@ -121,7 +120,7 @@ Exact best ball cards disappear when their required consensus or matching ADP is
 
 The source and publication gates are intentionally strict because one coherent but wrong board can look normal in the UI.
 
-The FantasyPros source adapters normalize the official JSON and public HTML responses into the same board contract. Validation verifies NFL, draft or best ball ranking type, current NFL season, requested scoring and position, declared row count, expert count, positive unique player IDs, nonempty names, positive position ranks, and valid tiers. Public HTML rank ranges are validated when present. A single-position board may carry a few rows tagged with another position, since FantasyPros lists an RB-tagged row around TE168 on every 2026 TE page; those rows are dropped and the board publishes without them, and a board where more than 5% of the rows are off-position is rejected as wrong or mixed. The official API contract does not promise expert minimum, maximum, average, or spread fields, so they remain absent and the UI labels that range unavailable. Redraft and Superflex boards require at least ten contributing experts. The standard best ball board has a separate five-expert floor because that source had six active contributors on August 9, and the actual count is stored in the snapshot and shown next to the source link. Each redraft format must contain at least 300 overall players, 48 quarterbacks, 100 running backs, 120 wide receivers, 48 tight ends, 32 kickers, and 32 defenses. A same-season refresh must also retain at least 80% of the prior rows and 80% of the prior top 150 identities.
+The FantasyPros source adapter normalizes the public HTML response into the board contract. Validation verifies NFL, draft or best ball ranking type, current NFL season, requested scoring and position, declared row count, expert count, positive unique player IDs, nonempty names, positive position ranks, and valid tiers. Rank ranges are validated on every row. A single-position board may carry a few rows tagged with another position, since FantasyPros lists an RB-tagged row around TE168 on every 2026 TE page; those rows are dropped and the board publishes without them, and a board where more than 5% of the rows are off-position is rejected as wrong or mixed. Redraft and Superflex boards require at least ten contributing experts. The standard best ball board has a separate five-expert floor because that source had six active contributors on August 9, and the actual count is stored in the snapshot and shown next to the source link. Each redraft format must contain at least 300 overall players, 48 quarterbacks, 100 running backs, 120 wide receivers, 48 tight ends, 32 kickers, and 32 defenses. A same-season refresh must also retain at least 80% of the prior rows and 80% of the prior top 150 identities.
 
 The redraft ADP parser verifies source status, scoring format, 12-team metadata, sample window, positive ADP, unique name and position pairs, ranges, deviation, and selection counts. A fresh input needs at least 50 rows and at least 80% of the prior same-season rows and top-board identities before replacing the generated input. When 50 or more source rows are present, the snapshot join must match at least 60% of them and cover at least 90% of the top 150 overall board.
 
@@ -146,7 +145,7 @@ npm install
 npm run dev
 ```
 
-The refresh rewrites committed artifacts. Set `FANTASYPROS_SOURCE=public-html` to exercise the same source as the scheduled job. To use the official API locally, set `FANTASYPROS_SOURCE=official-api` and export `FANTASYPROS_API_KEY` in the same shell.
+The refresh rewrites committed artifacts.
 
 ```bash
 npm run update:fantasy

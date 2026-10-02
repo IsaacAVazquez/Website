@@ -49,7 +49,7 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
           <h1 className="c97-display" style={{ marginTop: "var(--c97-sp-2)" }}>
             Search my portfolio, writing, and tools.
           </h1>
-          <p className="c97-lead" style={{ marginTop: "var(--c97-sp-3)" }}>
+          <p className="c97-lead" style={{ marginTop: "var(--c97-sp-3)", maxWidth: "var(--c97-measure-wide)" }}>
             This is a lightweight search layer for core case studies, writing, and tools. It is useful for navigation, not a full site index.
           </p>
           <div

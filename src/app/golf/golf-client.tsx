@@ -1,7 +1,7 @@
 "use client";
 
-import { startTransition, useEffect, useMemo, useState } from "react";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useEffect, useMemo, useState } from "react";
+import { useSearchParams } from "next/navigation";
 import { CircleAlert, Flag, Gauge, MapPin, Trophy, UserRound } from "lucide-react";
 import type {
   GolfLeaderboardEntry,
@@ -23,6 +23,7 @@ import { PROJECT_PRESS } from "@/constants/projectPress";
 import { GolfLeaderboard } from "./GolfLeaderboard";
 import { formatScoreToPar } from "./leaderboard";
 import "./golf.css";
+import { useRouteSync } from "@/hooks/useRouteSync";
 
 interface GolfClientProps {
   initialState: GolfRouteState;
@@ -136,20 +137,25 @@ function StatBlock({
   value,
   detail,
   valueColor,
+  phrasing = false,
 }: {
   label: string;
   value: string;
   detail?: string;
   valueColor?: string;
+  /** Render spans, for use inside a button, which allows phrasing content only. */
+  phrasing?: boolean;
 }) {
+  const Wrap = phrasing ? "span" : "div";
+  const Line = phrasing ? "span" : "p";
   return (
-    <div className="c97-stat">
-      <p className="c97-stat-label">{label}</p>
-      <p className="c97-stat-value" style={valueColor ? { color: valueColor } : undefined}>
+    <Wrap className="c97-stat">
+      <Line className="c97-stat-label">{label}</Line>
+      <Line className="c97-stat-value" style={valueColor ? { color: valueColor } : undefined}>
         {value}
-      </p>
-      {detail ? <p className="c97-stat-delta">{detail}</p> : null}
-    </div>
+      </Line>
+      {detail ? <Line className="c97-stat-delta">{detail}</Line> : null}
+    </Wrap>
   );
 }
 
@@ -251,27 +257,27 @@ function MobileLeaderboardCards({
             aria-current={isSelected ? "true" : undefined}
             className="c97-golf-card"
           >
-            <div className="flex items-start justify-between gap-4">
-              <div>
-                <p className="c97-kicker">{row.position}</p>
-                <h3 className="c97-serif c97-h3">{row.playerName}</h3>
-                <p className="c97-stat-delta">{row.country}</p>
-              </div>
-              <div className="text-right">
-                <p className="c97-mono" style={{ fontSize: "var(--c97-fs-h3)", color: scoreColor(row.totalToPar) }}>
+            <span className="flex items-start justify-between gap-4">
+              <span style={{ display: "block" }}>
+                <span className="c97-kicker" style={{ display: "block" }}>{row.position}</span>
+                <span className="c97-serif c97-h3" style={{ display: "block" }}>{row.playerName}</span>
+                <span className="c97-stat-delta" style={{ display: "block" }}>{row.country}</span>
+              </span>
+              <span className="text-right" style={{ display: "block" }}>
+                <span className="c97-mono" style={{ display: "block", fontSize: "var(--c97-fs-h3)", color: scoreColor(row.totalToPar) }}>
                   {formatScoreToPar(row.totalToPar)}
-                </p>
+                </span>
                 <MovementPill movement={row.movement} />
-              </div>
-            </div>
+              </span>
+            </span>
 
-            <div className="mt-4 grid grid-cols-3 gap-2">
-              <StatBlock label="Today" value={formatScoreToPar(row.today)} detail={row.status} valueColor={scoreColor(row.today)} />
+            <span className="mt-4 grid grid-cols-3 gap-2">
+              <StatBlock phrasing label="Today" value={formatScoreToPar(row.today)} detail={row.status} valueColor={scoreColor(row.today)} />
               {row.roundScores.slice(0, 4).map((score, i) => (
-                <StatBlock key={i} label={`R${i + 1}`} value={String(score)} detail={`Round ${i + 1}`} />
+                <StatBlock phrasing key={i} label={`R${i + 1}`} value={String(score)} detail={`Round ${i + 1}`} />
               ))}
-              <StatBlock label="Thru" value={row.thru} detail="Tournament status" />
-            </div>
+              <StatBlock phrasing label="Thru" value={row.thru} detail="Tournament status" />
+            </span>
           </button>
         );
       })}
@@ -303,34 +309,34 @@ function PlayerCards({
             aria-current={isSelected ? "true" : undefined}
             className="c97-golf-card"
           >
-            <div className="flex items-start justify-between gap-4">
-              <div>
-                <p className="c97-kicker">{row.position}</p>
-                <h3 className="c97-serif c97-h3">{row.playerName}</h3>
-                <p className="c97-stat-delta">{row.country}</p>
-              </div>
-              <div className="text-right">
-                <p className="c97-mono" style={{ fontSize: "var(--c97-fs-h2)", color: scoreColor(row.totalToPar) }}>
+            <span className="flex items-start justify-between gap-4">
+              <span style={{ display: "block" }}>
+                <span className="c97-kicker" style={{ display: "block" }}>{row.position}</span>
+                <span className="c97-serif c97-h3" style={{ display: "block" }}>{row.playerName}</span>
+                <span className="c97-stat-delta" style={{ display: "block" }}>{row.country}</span>
+              </span>
+              <span className="text-right" style={{ display: "block" }}>
+                <span className="c97-mono" style={{ display: "block", fontSize: "var(--c97-fs-h2)", color: scoreColor(row.totalToPar) }}>
                   {formatScoreToPar(row.totalToPar)}
-                </p>
-                <p className="c97-stat-delta">
+                </span>
+                <span className="c97-stat-delta" style={{ display: "block" }}>
                   Today <span style={{ color: scoreColor(row.today), fontWeight: 600 }}>{formatScoreToPar(row.today)}</span>
-                </p>
-              </div>
-            </div>
+                </span>
+              </span>
+            </span>
 
-            <div className="mt-4 flex flex-wrap gap-3">
+            <span className="mt-4 flex flex-wrap gap-3">
               {row.roundScores.map((score, index) => (
                 <span key={index} className="c97-mono" style={{ color: scoreColor(score - coursePar) }}>
                   {score}
                 </span>
               ))}
-            </div>
+            </span>
 
-            <div className="mt-4 flex items-center justify-between gap-3">
-              <p className="c97-stat-delta">{row.status}</p>
+            <span className="mt-4 flex items-center justify-between gap-3">
+              <span className="c97-stat-delta">{row.status}</span>
               <MovementPill movement={row.movement} />
-            </div>
+            </span>
           </button>
         );
       })}
@@ -339,10 +345,7 @@ function PlayerCards({
 }
 
 export function GolfClient({ initialState, summary, initialPlayerSnapshot }: GolfClientProps) {
-  const router = useRouter();
   const searchParams = useSearchParams();
-  const currentQuery = searchParams.toString();
-  const currentHref = `${GOLF_ROUTE}${currentQuery ? `?${currentQuery}` : ""}`;
   const hasManagedParams = searchParams.get("view") !== null || searchParams.get("player") !== null;
   const routeState = hasManagedParams ? normalizeGolfState(searchParams) : initialState;
   const validPlayerIds = useMemo(
@@ -368,12 +371,7 @@ export function GolfClient({ initialState, summary, initialPlayerSnapshot }: Gol
   const roundCount = Math.max(1, ...summary.leaderboard.map((row) => row.roundScores.length));
   const lead = PROJECT_PRESS[GOLF_ROUTE].lead;
 
-  useEffect(() => {
-    if (currentHref === desiredHref) return;
-    startTransition(() => {
-      router.replace(desiredHref, { scroll: false });
-    });
-  }, [currentHref, desiredHref, router]);
+  const pushHref = useRouteSync(GOLF_ROUTE, desiredHref);
 
   useEffect(() => {
     if (!selectedPlayerId) return;
@@ -412,10 +410,7 @@ export function GolfClient({ initialState, summary, initialPlayerSnapshot }: Gol
 
   function navigate(nextState: GolfRouteState) {
     const href = buildGolfHref(nextState, searchParams);
-    if (href === currentHref) return;
-    startTransition(() => {
-      router.push(href, { scroll: false });
-    });
+    pushHref(href);
   }
 
   function handleViewChange(view: GolfView) {

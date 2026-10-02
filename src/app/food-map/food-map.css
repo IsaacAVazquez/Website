@@ -156,11 +156,6 @@
   height: 7px;
   border-radius: 50%;
   background: var(--c97-accent);
-  animation: fm-pulse 2.4s ease-in-out infinite;
-}
-@keyframes fm-pulse {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.35; }
 }
 
 /* ==========================================================================
@@ -218,6 +213,10 @@
   font-family: var(--c97-font-display);
   font-size: var(--c97-fs-body);
   cursor: pointer;
+}
+.fm-tab:hover:not([aria-checked="true"]),
+.fm-stamp:hover:not([aria-pressed="true"]) {
+  border-color: var(--c97-ink-2);
 }
 .fm-tab[aria-checked="true"] {
   border-color: transparent;
@@ -488,6 +487,7 @@
   color: var(--c97-label);
 }
 .fm-ticket-cuisine {
+  display: block;
   margin: 0 0 var(--c97-sp-1);
   font-family: var(--c97-font-mono);
   font-size: var(--c97-fs-label);
@@ -496,6 +496,7 @@
   color: var(--c97-label);
 }
 .fm-ticket-name {
+  display: block;
   margin: 0;
   padding-right: 28px;
   font-size: var(--c97-fs-h3);
@@ -615,9 +616,5 @@
 
 @media (prefers-reduced-motion: reduce) {
   .fm-ticker-track { animation: none; transform: none; }
-  .fm-status-dot { animation: none; }
-  .fm-tab:hover,
-  .fm-stamp:hover,
-  .fm-pill:hover,
   .fm-ticket:hover { transform: none; }
 }

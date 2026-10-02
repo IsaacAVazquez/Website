@@ -5,12 +5,10 @@ import {
   formatMargin,
   formatNet,
   formatShortDate,
-  getActiveViewStyle,
   getRatingPillStyle,
   getRowStyle,
   newestPollDate,
   partyColor,
-  partyLabel,
 } from "../polling-aggregator-helpers";
 
 const DAY_MS = 24 * 60 * 60 * 1000;
@@ -76,12 +74,7 @@ describe("polling-aggregator-helpers", () => {
     });
   });
 
-  it("returns party labels and fallback colors", () => {
-    expect(partyLabel("D")).toBe("Dem.");
-    expect(partyLabel("R")).toBe("Rep.");
-    expect(partyLabel("I")).toBe("Ind.");
-    expect(partyLabel("L")).toBe("L");
-
+  it("returns fallback party colors", () => {
     expect(partyColor("D")).toBe("#2563EB");
     expect(partyColor("R")).toBe("#DC2626");
     expect(partyColor("I")).toBe("#64748B");
@@ -92,13 +85,6 @@ describe("polling-aggregator-helpers", () => {
       background: "#93C5FD",
       color: "#1e3a5f",
       borderColor: "#93C5FD",
-    });
-    expect(getActiveViewStyle(true)).toMatchObject({
-      background: "var(--c97-ink)",
-      color: "var(--c97-surface)",
-    });
-    expect(getActiveViewStyle(false)).toMatchObject({
-      color: "var(--c97-ink-2)",
     });
     expect(getRowStyle(true)).toMatchObject({
       borderColor: "color-mix(in srgb, var(--c97-accent) 35%, var(--c97-rule))",

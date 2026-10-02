@@ -1,12 +1,10 @@
 import {
-  getBrowserStorageSnapshot,
-  getBrowserStorageStatusSnapshot,
   readValidatedBrowserStorage,
-  subscribeBrowserStorage,
   writeBrowserStorageString,
   type PersistenceStatus,
 } from "@/lib/browserStorage";
 import type { FantasyRouteScoring } from "@/lib/fantasy";
+import { isRecord } from "@/lib/utils";
 
 export const FANTASY_TRADE_PERSISTENCE_VERSION = 1 as const;
 export const FANTASY_TRADE_MAX_PLAYERS_PER_SIDE = 6;
@@ -17,8 +15,6 @@ const FANTASY_TRADE_SCORING_VALUES = new Set<FantasyRouteScoring>([
   "half_ppr",
   "standard",
 ]);
-
-type UnknownRecord = Record<string, unknown>;
 
 export interface FantasyTradeStorageScope {
   season: number;
@@ -39,10 +35,6 @@ export interface FantasyTradePersistenceRead {
   state: FantasyTradePersistenceState;
   persistenceStatus: PersistenceStatus;
   source: "empty" | "valid" | "invalid";
-}
-
-function isRecord(value: unknown): value is UnknownRecord {
-  return Boolean(value) && typeof value === "object" && !Array.isArray(value);
 }
 
 /**
@@ -220,25 +212,4 @@ export function writeFantasyTradePersistence(
 ): PersistenceStatus {
   const key = getFantasyTradeStorageKey(state);
   return writeBrowserStorageString(key, serializeFantasyTradePersistenceState(state));
-}
-
-/** Subscribe to same-tab helper writes and cross-tab storage events for this scope. */
-export function subscribeFantasyTradePersistence(
-  scope: FantasyTradeStorageScope,
-  listener: () => void,
-): () => void {
-  return subscribeBrowserStorage(getFantasyTradeStorageKey(scope), listener);
-}
-
-/** Stable raw snapshot for useSyncExternalStore consumers. */
-export function getFantasyTradePersistenceSnapshot(
-  scope: FantasyTradeStorageScope,
-): string {
-  return getBrowserStorageSnapshot(getFantasyTradeStorageKey(scope), "");
-}
-
-export function getFantasyTradePersistenceStatus(
-  scope: FantasyTradeStorageScope,
-): PersistenceStatus {
-  return getBrowserStorageStatusSnapshot(getFantasyTradeStorageKey(scope));
 }

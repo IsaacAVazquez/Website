@@ -1,6 +1,6 @@
 "use client";
 
-import { InstrumentTape, type InstrumentTapeItem } from "@/components/editorial";
+import { InstrumentTape, type InstrumentTapeItem } from "@/components/editorial/InstrumentTape";
 import type { MissionLaunchCard } from "@/types/spacex";
 import { deriveVehicleFamily, VEHICLE_SHORT_CODE } from "@/lib/spacexVehicleFamily";
 import { DISPLAY_TIME_ZONE } from "@/lib/date-formatters";

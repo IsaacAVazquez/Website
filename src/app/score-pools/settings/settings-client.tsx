@@ -35,7 +35,7 @@ const TIMEZONES = [
   "UTC",
 ];
 
-const SECTION = "bg-[var(--c97-panel)] p-5";
+const SECTION = "c97-panel";
 const HINT_STYLE = {
   display: "block" as const,
   marginTop: "var(--c97-sp-1)",
@@ -62,6 +62,8 @@ function NumberSetting({
   step?: number;
   allowEmpty?: boolean;
 }) {
+  const outOfRange =
+    value !== null && ((min !== undefined && value < min) || (max !== undefined && value > max));
   return (
     <label className="block">
       <span className={FIELD_LABEL}>{label}</span>
@@ -81,12 +83,22 @@ function NumberSetting({
           const parsed = Number.parseFloat(raw);
           if (Number.isFinite(parsed)) onChange(parsed);
         }}
+        onBlur={() => {
+          if (outOfRange && value !== null) {
+            onChange(Math.min(max ?? value, Math.max(min ?? value, value)));
+          }
+        }}
         className={FIELD_INPUT}
         style={{ marginTop: "var(--c97-sp-1)" }}
       />
       {hint ? (
         <span className={FIELD_HINT} style={HINT_STYLE}>
           {hint}
+        </span>
+      ) : null}
+      {outOfRange ? (
+        <span className={FIELD_HINT} style={{ ...HINT_STYLE, color: "var(--c97-negative)" }}>
+          Use a value from {min ?? "any"} to {max ?? "any"}. It snaps into range when you leave the field.
         </span>
       ) : null}
     </label>
@@ -161,17 +173,17 @@ export function SettingsClient({ snapshot }: SettingsClientProps) {
       <div className="c97-shell space-y-6">
         <header>
           <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-1)" }}>Prediction Tools</p>
-          <h1 className="text-2xl font-bold tracking-tight text-[var(--c97-ink)] sm:text-3xl">
+          <h1 className="c97-display">
             Pool{" "}
             <em style={{ fontFamily: "var(--c97-font-display)", fontStyle: "italic", fontWeight: 400 }}>
               Settings
             </em>
           </h1>
-          <p className="mt-2 max-w-3xl text-sm leading-relaxed text-[var(--c97-ink-2)]">
+          <p className="mt-2 text-sm leading-relaxed text-[var(--c97-ink-2)]">
             The scoring rules drive the whole optimization, and the standing drives the risk
             posture, so this page is where the recommendations actually get their shape. Back to
             the{" "}
-            <Link className="underline decoration-[var(--c97-rule)] underline-offset-4 hover:decoration-[var(--c97-accent)]" href="/score-pools">
+            <Link className="c97-link" href="/score-pools">
               pick sheet
             </Link>
             .
@@ -181,7 +193,7 @@ export function SettingsClient({ snapshot }: SettingsClientProps) {
         <SampleDataNotice snapshot={snapshot} />
 
         <section className={SECTION} aria-label="Pools">
-          <h2 className="text-lg font-bold text-[var(--c97-ink)]">Pools</h2>
+          <h2 className="c97-serif c97-h2">Pools</h2>
           <div className="c97-segmented" style={{ marginTop: "var(--c97-sp-1)" }}>
             {pools.map((entry) => (
               <button
@@ -242,7 +254,7 @@ export function SettingsClient({ snapshot }: SettingsClientProps) {
         {pool ? (
           <>
             <section className={SECTION} aria-label="Pool basics">
-              <h2 className="text-lg font-bold text-[var(--c97-ink)]">
+              <h2 className="c97-serif c97-h2">
                 {pool.name}
               </h2>
               <div className="mt-3 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
@@ -304,9 +316,9 @@ export function SettingsClient({ snapshot }: SettingsClientProps) {
             </section>
 
             <section className={SECTION} aria-label="Scoring rules">
-              <h2 className="text-lg font-bold text-[var(--c97-ink)]">Scoring rules</h2>
-              <p className="mt-1 max-w-2xl text-2xs text-[var(--c97-ink-2)]">
-                The basis flag matters most in knockouts: under 90-minute scoring a game that
+              <h2 className="c97-serif c97-h2">Scoring rules</h2>
+              <p className="mt-1 text-2xs text-[var(--c97-ink-2)]">
+                The basis flag matters most in knockouts, since under 90-minute scoring a game that
                 finishes 1-1 and goes to penalties scores as a 1-1 draw, and under final-result
                 scoring your pick compares against the score after extra time.
               </p>
@@ -319,7 +331,7 @@ export function SettingsClient({ snapshot }: SettingsClientProps) {
                   onChange={(value) =>
                     patch((current) => ({
                       ...current,
-                      rules: { ...current.rules, exact: value ?? 0 },
+                      rules: { ...current.rules, exact: Math.max(0, Math.min(100, value ?? 0)) },
                     }))
                   }
                 />
@@ -331,7 +343,7 @@ export function SettingsClient({ snapshot }: SettingsClientProps) {
                   onChange={(value) =>
                     patch((current) => ({
                       ...current,
-                      rules: { ...current.rules, correctDifference: value ?? 0 },
+                      rules: { ...current.rules, correctDifference: Math.max(0, Math.min(100, value ?? 0)) },
                     }))
                   }
                 />
@@ -343,7 +355,7 @@ export function SettingsClient({ snapshot }: SettingsClientProps) {
                   onChange={(value) =>
                     patch((current) => ({
                       ...current,
-                      rules: { ...current.rules, correctOutcome: value ?? 0 },
+                      rules: { ...current.rules, correctOutcome: Math.max(0, Math.min(100, value ?? 0)) },
                     }))
                   }
                 />
@@ -368,7 +380,7 @@ export function SettingsClient({ snapshot }: SettingsClientProps) {
                         rules: { ...current.rules, penaltiesCountAsWin: event.target.checked },
                       }))
                     }
-                    className="h-4 w-4 accent-[var(--c97-accent)]"
+                    className="c97-check"
                   />
                   <span className="text-xs font-semibold text-[var(--c97-ink)]">
                     Shootout winner counts as the winner
@@ -378,8 +390,8 @@ export function SettingsClient({ snapshot }: SettingsClientProps) {
             </section>
 
             <section className={SECTION} aria-label="Standing and posture">
-              <h2 className="text-lg font-bold text-[var(--c97-ink)]">Standing and posture</h2>
-              <p className="mt-1 max-w-2xl text-2xs text-[var(--c97-ink-2)]">
+              <h2 className="c97-serif c97-h2">Standing and posture</h2>
+              <p className="mt-1 text-2xs text-[var(--c97-ink-2)]">
                 The gap to whoever sits nearest above and below, against the games remaining, sets
                 how much variance the recommendation courts. Auto derives it; protect and chase
                 force it.
@@ -464,10 +476,10 @@ export function SettingsClient({ snapshot }: SettingsClientProps) {
             </section>
 
             <section className={SECTION} aria-label="Field model">
-              <h2 className="text-lg font-bold text-[var(--c97-ink)]">Field model</h2>
-              <p className="mt-1 max-w-2xl text-2xs text-[var(--c97-ink-2)]">
-                A heuristic for what the rest of the pool submits: mostly the favorite with the
-                modal scoreline. Rival picks you enter in the tracker score the rival table only and
+              <h2 className="c97-serif c97-h2">Field model</h2>
+              <p className="mt-1 text-2xs text-[var(--c97-ink-2)]">
+                A heuristic for what the rest of the pool submits, which is mostly the favorite with
+                the modal scoreline. Rival picks you enter in the tracker score the rival table only and
                 do not change this model.
               </p>
               <div className="mt-3 grid gap-4 sm:grid-cols-2">
@@ -502,7 +514,7 @@ export function SettingsClient({ snapshot }: SettingsClientProps) {
             </section>
 
             <section className={SECTION} aria-label="Rivals">
-              <h2 className="text-lg font-bold text-[var(--c97-ink)]">Rivals</h2>
+              <h2 className="c97-serif c97-h2">Rivals</h2>
               <p className="mt-1 text-2xs text-[var(--c97-ink-2)]">
                 The people you&apos;re actually racing. Their picks go in on the tracker page; the
                 adjustment covers points they banked before you started tracking.
@@ -572,7 +584,7 @@ export function SettingsClient({ snapshot }: SettingsClientProps) {
             </section>
 
             <section className={SECTION} aria-label="Data status">
-              <h2 className="text-lg font-bold text-[var(--c97-ink)]">Data status</h2>
+              <h2 className="c97-serif c97-h2">Data status</h2>
               <div className="scroll-shadow-x mt-3 overflow-x-auto" role="region" aria-label="League data status (scrollable)" tabIndex={0}>
                 <table className="min-w-full border-separate border-spacing-y-2" aria-label="Snapshot status per league">
                   <thead>
@@ -614,7 +626,7 @@ export function SettingsClient({ snapshot }: SettingsClientProps) {
             </section>
 
             <section className={SECTION} aria-label="Delete pool">
-              <h2 className="text-base font-bold text-[var(--c97-ink)]">Delete this pool</h2>
+              <h2 className="c97-serif c97-h2">Delete this pool</h2>
               <p className="mt-1 text-2xs text-[var(--c97-ink-2)]">
                 Removes the pool, its picks, rivals, flags, and hand-entered odds from this
                 browser. There is no undo.

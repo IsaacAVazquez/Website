@@ -1,23 +1,20 @@
 import { StructuredData } from "@/components/StructuredData";
 import { Catalog97Home } from "@/components/catalog97/Catalog97Home";
 import { getHomepageFeaturedCaseStudies } from "@/constants/caseStudies";
-import { getAllBlogPostPreviews } from "@/lib/blog";
+import { getHomepageProofOfWorkBlogPostPreviews } from "@/lib/blog";
 import { getSnapshotReadouts } from "@/lib/catalog97Readouts";
 
 export { metadata } from "./metadata";
 
 export default async function Home() {
-  // Newest pieces from the product clusters. Taken straight by date, this band
-  // was two fantasy football posts and a Formula 1 recap every fall.
-  const recentPosts = getAllBlogPostPreviews()
-    .filter((post) => post.cluster)
-    .slice(0, 2);
-
   return (
     <>
       <Catalog97Home
         featuredProjects={getHomepageFeaturedCaseStudies()}
-        recentPosts={recentPosts}
+        // Pinned on purpose: the write-ups of the Juno and Civitech jobs are
+        // the real work behind the site, and picking the newest clustered
+        // posts would push one off with the next post published.
+        recentPosts={getHomepageProofOfWorkBlogPostPreviews()}
         readouts={await getSnapshotReadouts()}
       />
 

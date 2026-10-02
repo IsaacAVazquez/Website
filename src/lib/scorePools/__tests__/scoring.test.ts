@@ -1,4 +1,6 @@
-import { scorePick, DEFAULT_SCORING_RULES, type MatchResultInput, type ScoringRules } from "../index";
+import { scorePick } from "../scoring";
+import { DEFAULT_SCORING_RULES } from "../defaults";
+import { type MatchResultInput, type ScoringRules } from "../types";
 
 const rules90: ScoringRules = { ...DEFAULT_SCORING_RULES };
 const rulesFinal: ScoringRules = { ...DEFAULT_SCORING_RULES, basis: "finalResult" };

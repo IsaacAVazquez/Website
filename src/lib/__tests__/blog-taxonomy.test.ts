@@ -14,6 +14,7 @@ import {
   getArchiveBlogPostPreviews,
   getArchiveBlogPostPreviewsByBucket,
   getCuratedBlogPostPreviewsByCluster,
+  getHomepageProofOfWorkBlogPostPreviews,
   getRelatedBlogPosts,
 } from "../blog";
 import {
@@ -116,5 +117,13 @@ describe("blog taxonomy", () => {
         (post) => post.archiveBucket === "Signals & Commentary"
       )
     ).toBe(true);
+  });
+
+  // The helper silently drops a slug with no post, and Home hides the band
+  // when nothing comes back, so a renamed write-up would vanish quietly.
+  it("resolves both write-ups pinned on Home, in order", () => {
+    expect(
+      getHomepageProofOfWorkBlogPostPreviews().map((post) => post.slug)
+    ).toEqual(["juno-mba-growth-internship", "civitech-quality-and-product-work"]);
   });
 });

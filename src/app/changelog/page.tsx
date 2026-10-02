@@ -147,7 +147,7 @@ export default async function ChangelogPage() {
       </section>
 
       {/* Closing line */}
-      <section className="c97-band" data-c97-surface="bone">
+      <section className="c97-band c97-sheet" data-c97-surface="bone" data-seam="deckle">
         <div className="c97-shell">
           <p className="c97-meta">
             <span>

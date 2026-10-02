@@ -41,6 +41,7 @@ import {
 import { DATE_TIME_FORMATTER } from "@/lib/date-formatters";
 import { useClientNow } from "@/hooks/useClientNow";
 import "./news-pulse.css";
+import { groupBy } from "@/lib/utils";
 
 interface NewsPulseClientProps {
   initialFeed?: NewsPulseFeedResponse;
@@ -131,7 +132,7 @@ function SourceDropdown({
       <select
         value={value}
         onChange={(event) => onValueChange(event.target.value as NewsSource)}
-        className="cursor-pointer appearance-none border-none bg-transparent text-sm font-semibold text-inherit outline-none"
+        className="cursor-pointer appearance-none border-none bg-transparent text-sm font-semibold text-inherit"
         style={{ fontFamily: "var(--c97-font-body)" }}
       >
         {SOURCE_OPTIONS.map((source) => (
@@ -273,7 +274,7 @@ export function NewsPulseClient({
     "I built News Pulse to get a fast read on what major outlets are choosing to emphasize right now. It pulls six RSS feeds into one editorial desk, then layers on lightweight topic, tone, readability, and story-cluster signals so I can compare framing before I read deeply.";
 
   return (
-    <div data-testid="news-pulse-shell" aria-label="News Pulse Dashboard">
+    <div data-testid="news-pulse-shell">
       <Catalog97ProjectHero
         ink={lead}
         title="News Pulse"
@@ -341,15 +342,15 @@ export function NewsPulseClient({
             <div
               role="status"
               aria-live="polite"
-              className="mt-5 flex items-start gap-3 border px-5 py-4"
+              className="mt-5 flex items-start gap-3 px-5 py-4"
               style={{
-                borderColor: "color-mix(in srgb, var(--c97-accent) 30%, var(--c97-rule))",
-                background: "color-mix(in srgb, var(--c97-accent) 10%, var(--c97-field))",
+                border: "1px solid var(--c97-warning)",
+                background: "var(--c97-panel)",
               }}
             >
               <CircleAlert
                 className="mt-0.5 h-5 w-5 shrink-0"
-                style={{ color: "var(--c97-accent)" }}
+                style={{ color: "var(--c97-warning)" }}
                 aria-hidden="true"
               />
               <div>
@@ -430,12 +431,7 @@ function ErrorState({ message, onRetry }: { message: string; onRetry: () => void
 const HEADLINES_PAGE_SIZE = 24;
 
 function groupByOutlet(articles: NewsArticle[]): { source: NewsFeedId; items: NewsArticle[] }[] {
-  const bySource = new Map<NewsFeedId, NewsArticle[]>();
-  for (const article of articles) {
-    const list = bySource.get(article.source) ?? [];
-    list.push(article);
-    bySource.set(article.source, list);
-  }
+  const bySource = groupBy(articles, (article) => article.source);
   return NEWS_SOURCE_IDS.filter((source) => bySource.has(source)).map((source) => ({
     source,
     items: bySource.get(source)!,
@@ -507,14 +503,12 @@ function HeadlinesView({ articles }: { articles: NewsArticle[] }) {
                     href={article.link}
                     target="_blank"
                     rel="noopener noreferrer"
+                    className="c97-news-headline"
                     style={{ display: "block", textDecoration: "none" }}
                   >
-                    <h2
-                      className="c97-serif"
-                      style={{ fontSize: "var(--c97-fs-h3)", overflowWrap: "anywhere" }}
-                    >
+                    <h3 className="c97-serif c97-h3" style={{ overflowWrap: "anywhere" }}>
                       {article.title}
-                    </h2>
+                    </h3>
                     <p className="c97-meta" style={{ marginTop: "var(--c97-sp-1)" }}>
                       {now === null ? formatAbsolutePubDate(article.pubDate) : timeAgo(article.pubDate, now)}
                       {article.category && article.category !== "General" ? ` · ${article.category}` : ""}
@@ -711,10 +705,10 @@ function CoverageView({
                         href={cluster.representative.link}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-start gap-2"
+                        className="c97-news-headline inline-flex items-start gap-2"
                         style={{ textDecoration: "none" }}
                       >
-                        <span className="text-sm font-semibold" style={{ color: "var(--c97-ink)" }}>
+                        <span className="text-sm font-semibold">
                           {cluster.representative.title}
                         </span>
                         <ExternalLink
@@ -948,15 +942,21 @@ function AnalysisView({ articles }: { articles: NewsArticle[] }) {
                 style={{ borderColor: "var(--c97-rule)", background: "var(--c97-field)" }}
               >
                 <div className="flex items-center gap-4">
-                  <div
+                  {/* The outlet colour is data with no contrast promise, so it
+                      rides on a swatch by the name and the score stays in ink. */}
+                  <span
                     className="c97-mono flex h-12 w-12 items-center justify-center text-base font-semibold"
-                    style={{ color: "var(--c97-surface)", background: SOURCE_META[source].color }}
+                    style={{ color: "var(--c97-ink)" }}
                   >
                     {averageScore}
-                  </div>
+                  </span>
 
                   <div>
-                    <p className="mb-1 text-sm font-semibold" style={{ color: "var(--c97-ink)" }}>
+                    <p className="mb-1 inline-flex items-center gap-2 text-sm font-semibold" style={{ color: "var(--c97-ink)" }}>
+                      <span
+                        aria-hidden="true"
+                        style={{ width: 10, height: 10, background: SOURCE_META[source].color, display: "inline-block", flexShrink: 0 }}
+                      />
                       {SOURCE_META[source].name}
                     </p>
                     <p

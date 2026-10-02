@@ -1,7 +1,7 @@
 "use client";
 
-import { startTransition, useEffect, useMemo, useState } from "react";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useMemo, useState } from "react";
+import { useSearchParams } from "next/navigation";
 import { CircleAlert, ExternalLink, Flag } from "lucide-react";
 import { DATE_ONLY_TIME_ZONE } from "@/lib/date-formatters";
 import { MetricCard, CrestAvatar, TeamResultPill, FixtureCard } from "@/components/football";
@@ -34,6 +34,8 @@ import {
   normalizeState,
   resolveDefaultState,
 } from "./nfl-state.core";
+import { useRouteSync } from "@/hooks/useRouteSync";
+import { useCachedSnapshot } from "@/hooks/useCachedSnapshot";
 
 interface NflClientProps {
   initialState: NFLRouteState;
@@ -69,18 +71,6 @@ const LEADER_TABS: Array<{ id: LeaderCategory; label: string; unit: string; unit
   { id: "receiving", label: "Receiving yards", unit: "yds", unitLong: "receiving yards" },
   { id: "sacks", label: "Sacks", unit: "sk", unitLong: "sacks" },
 ];
-
-async function fetchNflTeamSnapshot(
-  teamId: string,
-  signal: AbortSignal
-): Promise<NFLTeamSnapshot> {
-  const response = await fetch(`/api/nfl/teams/${teamId}`, { signal });
-  const payload = (await response.json()) as NFLTeamSnapshot & { error?: string };
-  if (!response.ok) {
-    throw new Error(payload.error || "Unable to load team snapshot.");
-  }
-  return payload;
-}
 
 /**
  * The NFL only has a real seed for the top seven per conference; everyone
@@ -142,10 +132,7 @@ function buildDivisionGroups(
 }
 
 export function NflClient({ initialState, summary, initialTeamSnapshot }: NflClientProps) {
-  const router = useRouter();
   const searchParams = useSearchParams();
-  const currentQuery = searchParams.toString();
-  const currentHref = `${NFL_ROUTE}${currentQuery ? `?${currentQuery}` : ""}`;
   const lead = PROJECT_PRESS[NFL_ROUTE].lead;
   const standfirst =
     "I wanted the playoff picture as it would stand if the season ended today. The snapshot carries no seeds, so I derive them from the standings, the four division leaders first and then the three best of the rest, and draw the line where the field ends.";
@@ -229,16 +216,16 @@ export function NflClient({ initialState, summary, initialTeamSnapshot }: NflCli
     ? routeState.team
     : getDefaultTeam(summary.teams, routeState.view, defaultState.team);
   const selectedTeam = teamById.get(selectedTeamId) ?? teams[0];
-  const [teamSnapshots, setTeamSnapshots] = useState<Record<string, NFLTeamSnapshot>>(
-    () =>
-      selectedTeamId && initialTeamSnapshot
-        ? { [selectedTeamId]: initialTeamSnapshot }
-        : {}
+  const {
+    snapshot: teamSnapshot,
+    isLoading: isTeamSnapshotLoading,
+    error: teamSnapshotError,
+  } = useCachedSnapshot<NFLTeamSnapshot>(
+    "/api/nfl/teams",
+    selectedTeam?.id ?? null,
+    { id: selectedTeamId, snapshot: initialTeamSnapshot },
+    "Unable to load team snapshot."
   );
-  const [loadingTeamId, setLoadingTeamId] = useState<string | null>(null);
-  const [teamSnapshotError, setTeamSnapshotError] = useState<string | null>(null);
-  const teamSnapshot = selectedTeam ? teamSnapshots[selectedTeam.id] ?? null : null;
-  const isTeamSnapshotLoading = selectedTeam ? loadingTeamId === selectedTeam.id : false;
   const desiredHref = buildHref(
     { view: routeState.view, team: selectedTeamId },
     defaultState,
@@ -246,19 +233,11 @@ export function NflClient({ initialState, summary, initialTeamSnapshot }: NflCli
     searchParams
   );
 
-  useEffect(() => {
-    if (currentHref === desiredHref) return;
-    startTransition(() => {
-      router.replace(desiredHref, { scroll: false });
-    });
-  }, [currentHref, desiredHref, router]);
+  const pushHref = useRouteSync(NFL_ROUTE, desiredHref);
 
   function navigate(nextState: NFLRouteState) {
     const href = buildHref(nextState, defaultState, aliasMap, searchParams);
-    if (href === currentHref) return;
-    startTransition(() => {
-      router.push(href, { scroll: false });
-    });
+    pushHref(href);
   }
 
   function handleViewChange(view: NFLView) {
@@ -275,45 +254,6 @@ export function NflClient({ initialState, summary, initialTeamSnapshot }: NflCli
       team: canonicalizeTeamId(teamId, aliasMap) ?? defaultState.team,
     });
   }
-
-  useEffect(() => {
-    if (!selectedTeam) return;
-    if (teamSnapshots[selectedTeam.id]) {
-      // eslint-disable-next-line react-hooks/set-state-in-effect -- Reset loading/error flags when cached snapshot exists for the selected team
-      setLoadingTeamId(null);
-      setTeamSnapshotError(null);
-      return;
-    }
-    const controller = new AbortController();
-    let cancelled = false;
-    setLoadingTeamId(selectedTeam.id);
-    setTeamSnapshotError(null);
-    fetchNflTeamSnapshot(selectedTeam.id, controller.signal)
-      .then((snapshot) => {
-        if (cancelled) return;
-        setTeamSnapshots((current) =>
-          current[selectedTeam.id]
-            ? current
-            : { ...current, [selectedTeam.id]: snapshot }
-        );
-      })
-      .catch((error: Error) => {
-        if (!cancelled && error.name !== "AbortError") {
-          setTeamSnapshotError(error.message || "Unable to load team snapshot.");
-        }
-      })
-      .finally(() => {
-        if (!cancelled) {
-          setLoadingTeamId((current) =>
-            current === selectedTeam.id ? null : current
-          );
-        }
-      });
-    return () => {
-      cancelled = true;
-      controller.abort();
-    };
-  }, [selectedTeam, teamSnapshots]);
 
   const conferenceContext = useMemo(() => buildConferenceContext(teams, seeds), [teams, seeds]);
 
@@ -703,7 +643,7 @@ export function NflClient({ initialState, summary, initialTeamSnapshot }: NflCli
             {activeDetailTab === "leaders" && (
               <div className="space-y-5">
                 <div className="flex flex-wrap items-center justify-between gap-3">
-                  <div className="c97-segmented">
+                  <div className="c97-segmented" role="group" aria-label="Leader category">
                     {LEADER_TABS.map((tab) => {
                       const isActive = tab.id === activeLeaderTab;
                       return (
@@ -719,22 +659,24 @@ export function NflClient({ initialState, summary, initialTeamSnapshot }: NflCli
                       );
                     })}
                   </div>
-                  <a href={summary.sourceUrls.leaders} target="_blank" rel="noreferrer" className="c97-btn-outline">
+                  <a href={summary.sourceUrls.leaders} target="_blank" rel="noreferrer" className="c97-btn-ghost">
                     NFLverse source
                     <ExternalLink className="h-4 w-4" />
                   </a>
                 </div>
 
-                <div className="grid gap-6 md:grid-cols-2">
-                  <div>
-                    <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-1)" }}>Top {activeLeaderMeta.unitLong}</p>
-                    <NflLeaderList leaders={activeLeaders.slice(0, 5)} unit={activeLeaderMeta.unit} teamLookup={teamShortNameById} />
-                  </div>
-                  {activeLeaders.length > 5 && (
+                <div>
+                  <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-1)" }}>Top {activeLeaderMeta.unitLong}</p>
+                  <div className="grid gap-6 md:grid-cols-2">
                     <div>
-                      <NflLeaderList leaders={activeLeaders.slice(5, 10)} unit={activeLeaderMeta.unit} teamLookup={teamShortNameById} />
+                      <NflLeaderList leaders={activeLeaders.slice(0, 5)} unit={activeLeaderMeta.unit} teamLookup={teamShortNameById} />
                     </div>
-                  )}
+                    {activeLeaders.length > 5 && (
+                      <div>
+                        <NflLeaderList leaders={activeLeaders.slice(5, 10)} unit={activeLeaderMeta.unit} teamLookup={teamShortNameById} />
+                      </div>
+                    )}
+                  </div>
                 </div>
               </div>
             )}
@@ -819,7 +761,7 @@ function NflLeaderList({
               </div>
             </div>
             <div className="text-right">
-              <p style={{ fontWeight: 700, color: "var(--c97-ink)", margin: 0 }}>{formatLeaderTotal(leader)}</p>
+              <p className="c97-tabular" style={{ fontWeight: 700, color: "var(--c97-ink)", margin: 0 }}>{formatLeaderTotal(leader)}</p>
               <p className="c97-kicker">{unit}</p>
             </div>
           </li>
@@ -995,19 +937,11 @@ function getTeamPressurePoints(
   return points;
 }
 
+const ORDINAL_RULES = new Intl.PluralRules("en-US", { type: "ordinal" });
+const ORDINAL_SUFFIX: Partial<Record<Intl.LDMLPluralRule, string>> = { one: "st", two: "nd", few: "rd" };
+
 function ordinalSuffix(n: number): string {
-  const v = n % 100;
-  if (v >= 11 && v <= 13) return "th";
-  switch (n % 10) {
-    case 1:
-      return "st";
-    case 2:
-      return "nd";
-    case 3:
-      return "rd";
-    default:
-      return "th";
-  }
+  return ORDINAL_SUFFIX[ORDINAL_RULES.select(n)] ?? "th";
 }
 
 function formatRecord(team: NFLTeamStanding): string {

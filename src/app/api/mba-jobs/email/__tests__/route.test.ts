@@ -3,17 +3,22 @@
  */
 import { NextRequest } from "next/server";
 
-const mockSend = jest.fn();
-
-jest.mock("resend", () => ({
-  Resend: jest.fn().mockImplementation(() => ({
-    emails: {
-      send: mockSend,
-    },
-  })),
-}));
-
 import { POST } from "../route";
+
+const mockFetch = jest.fn();
+const originalFetch = global.fetch;
+
+function jsonResponse(body: unknown, status = 200) {
+  return new Response(JSON.stringify(body), {
+    status,
+    headers: { "content-type": "application/json" },
+  });
+}
+
+/** The JSON body the route posted to Resend on its first send. */
+function sentPayload() {
+  return JSON.parse(mockFetch.mock.calls[0][1].body as string);
+}
 
 // The route exposes its daily-counter reset on globalThis under a well-known
 // Symbol because Next.js route-type checking forbids extra route exports.
@@ -25,6 +30,7 @@ function resetMbaEmailDailyCounter(): void {
 }
 
 const originalEnv = { ...process.env };
+global.fetch = mockFetch;
 
 const validJob = {
   id: "job-1",
@@ -72,11 +78,12 @@ describe("POST /api/mba-jobs/email", () => {
     process.env.RESEND_API_KEY = "test-resend-key";
     process.env.MBA_DIGEST_ALLOWED_RECIPIENTS = "allowed@example.com,@haas.berkeley.edu";
     process.env.MBA_DIGEST_SECRET = TEST_DIGEST_SECRET;
-    mockSend.mockResolvedValue({ data: { id: "email-1" }, error: null });
+    mockFetch.mockImplementation(() => Promise.resolve(jsonResponse({ id: "email-1" })));
   });
 
   afterAll(() => {
     process.env = originalEnv;
+    global.fetch = originalFetch;
   });
 
   it("answers 503 when the digest secret is not configured", async () => {
@@ -88,7 +95,7 @@ describe("POST /api/mba-jobs/email", () => {
 
     expect(response.status).toBe(503);
     expect(response.headers.get("Cache-Control")).toBe("no-store");
-    expect(mockSend).not.toHaveBeenCalled();
+    expect(mockFetch).not.toHaveBeenCalled();
   });
 
   it("answers 401 when the secret header is missing or wrong", async () => {
@@ -109,7 +116,7 @@ describe("POST /api/mba-jobs/email", () => {
     expect(missing.status).toBe(401);
     expect(wrong.status).toBe(401);
     expect(longer.status).toBe(401);
-    expect(mockSend).not.toHaveBeenCalled();
+    expect(mockFetch).not.toHaveBeenCalled();
   });
 
   it("checks the secret before anything else runs", async () => {
@@ -130,7 +137,7 @@ describe("POST /api/mba-jobs/email", () => {
 
     const authorized = await POST(makeRequest(payload, client));
     expect(authorized.status).toBe(200);
-    expect(mockSend).toHaveBeenCalledTimes(1);
+    expect(mockFetch).toHaveBeenCalledTimes(1);
   });
 
   it("sends a sanitized digest to an allowed recipient", async () => {
@@ -149,7 +156,7 @@ describe("POST /api/mba-jobs/email", () => {
       })
     );
     const body = await response.json();
-    const emailPayload = mockSend.mock.calls[0][0];
+    const emailPayload = sentPayload();
 
     expect(response.status).toBe(200);
     expect(body.ok).toBe(true);
@@ -173,7 +180,7 @@ describe("POST /api/mba-jobs/email", () => {
 
     expect(response.status).toBe(403);
     expect(body.error).toMatch(/approved recipients/i);
-    expect(mockSend).not.toHaveBeenCalled();
+    expect(mockFetch).not.toHaveBeenCalled();
   });
 
   it("does not treat a '*' allowlist entry as an open relay", async () => {
@@ -191,7 +198,7 @@ describe("POST /api/mba-jobs/email", () => {
 
     expect(response.status).toBe(403);
     expect(body.error).toMatch(/approved recipients/i);
-    expect(mockSend).not.toHaveBeenCalled();
+    expect(mockFetch).not.toHaveBeenCalled();
   });
 
   it("caps an oversized digest to 25 jobs instead of rejecting it", async () => {
@@ -210,8 +217,8 @@ describe("POST /api/mba-jobs/email", () => {
 
     expect(response.status).toBe(200);
     expect(body.ok).toBe(true);
-    expect(mockSend).toHaveBeenCalledTimes(1);
-    const emailPayload = mockSend.mock.calls[0][0];
+    expect(mockFetch).toHaveBeenCalledTimes(1);
+    const emailPayload = sentPayload();
     // Capped to the first 25 entries: role 24 is kept, roles 25+ are dropped.
     expect(emailPayload.html).toContain("25 MBA role");
     expect(emailPayload.html).toContain("MBA Role 24");
@@ -257,8 +264,8 @@ describe("POST /api/mba-jobs/email", () => {
 
     expect(response.status).toBe(200);
     expect(body.ok).toBe(true);
-    expect(mockSend).toHaveBeenCalledTimes(1);
-    const emailPayload = mockSend.mock.calls[0][0];
+    expect(mockFetch).toHaveBeenCalledTimes(1);
+    const emailPayload = sentPayload();
     expect(emailPayload.html).toContain("Valid Role One");
     expect(emailPayload.html).toContain("Valid Role Two");
     expect(emailPayload.html).not.toContain("Undated Direct HTML Role");
@@ -283,7 +290,7 @@ describe("POST /api/mba-jobs/email", () => {
 
     expect(response.status).toBe(400);
     expect(body.error).toMatch(/valid jobs/i);
-    expect(mockSend).not.toHaveBeenCalled();
+    expect(mockFetch).not.toHaveBeenCalled();
   });
 
   it("rate limits repeated send attempts by client", async () => {
@@ -300,7 +307,7 @@ describe("POST /api/mba-jobs/email", () => {
 
     expect(limited.status).toBe(429);
     expect(body.error).toBe("Too many requests");
-    expect(mockSend).toHaveBeenCalledTimes(3);
+    expect(mockFetch).toHaveBeenCalledTimes(3);
   });
 
   it("rejects requests with more than 5 recipients in the to array", async () => {
@@ -323,7 +330,7 @@ describe("POST /api/mba-jobs/email", () => {
 
     expect(response.status).toBe(400);
     expect(body.error).toMatch(/at most 5 recipients/i);
-    expect(mockSend).not.toHaveBeenCalled();
+    expect(mockFetch).not.toHaveBeenCalled();
   });
 
   it("dedupes recipients before applying the per-request ceiling", async () => {
@@ -345,8 +352,8 @@ describe("POST /api/mba-jobs/email", () => {
     );
 
     expect(response.status).toBe(200);
-    expect(mockSend).toHaveBeenCalledTimes(1);
-    const emailPayload = mockSend.mock.calls[0][0];
+    expect(mockFetch).toHaveBeenCalledTimes(1);
+    const emailPayload = sentPayload();
     expect(emailPayload.to).toHaveLength(5);
   });
 
@@ -383,6 +390,6 @@ describe("POST /api/mba-jobs/email", () => {
 
     expect(overflow.status).toBe(429);
     expect(body.error).toMatch(/Daily email digest cap/i);
-    expect(mockSend).toHaveBeenCalledTimes(10);
+    expect(mockFetch).toHaveBeenCalledTimes(10);
   });
 });

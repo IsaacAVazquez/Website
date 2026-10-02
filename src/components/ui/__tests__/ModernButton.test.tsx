@@ -34,22 +34,13 @@ describe('ModernButton', () => {
     expect(button).toHaveClass('text-[var(--c97-ink-2)]')
   })
 
-  it('applies mono variant correctly', () => {
-    render(<ModernButton variant="mono">Button</ModernButton>)
-    const button = screen.getByText('Button')
-    expect(button).toHaveClass('font-mono')
-    expect(button).toHaveClass('uppercase')
-    expect(button).toHaveClass('hover:bg-[var(--c97-accent)]')
-  })
-
   it('never applies a radius or shadow utility, on any variant', () => {
-    const variants: Array<'primary' | 'secondary' | 'outline' | 'ghost' | 'accent' | 'mono'> = [
+    const variants: Array<'primary' | 'secondary' | 'outline' | 'ghost' | 'accent'> = [
       'primary',
       'secondary',
       'outline',
       'ghost',
       'accent',
-      'mono',
     ]
     variants.forEach((variant) => {
       const { container, unmount } = render(<ModernButton variant={variant}>Button</ModernButton>)

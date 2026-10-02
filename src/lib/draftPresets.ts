@@ -1,6 +1,7 @@
 import { FANTASY_SCORING_LABELS, scoringFormatToRouteScoring } from "@/lib/fantasy";
 import { normalizeRedraftLineup, redraftLineupSummary } from "@/lib/redraftLineup";
 import type { DraftSettings, ScoringFormat } from "@/types";
+import { isRecord } from "@/lib/utils";
 
 /**
  * Named league presets for the redraft tracker's setup screen: the whole room
@@ -24,10 +25,6 @@ const PRESET_TEAM_COUNTS = [8, 10, 12, 14, 16];
 const PRESET_ROUND_COUNTS = [13, 14, 15, 16, 17, 18];
 const PRESET_TIMER_SECONDS = [0, 45, 60, 90, 120, 180];
 const PRESET_SCORING: readonly ScoringFormat[] = ["PPR", "HALF_PPR", "STANDARD"];
-
-function isRecord(value: unknown): value is Record<string, unknown> {
-  return Boolean(value) && typeof value === "object" && !Array.isArray(value);
-}
 
 export function toDraftPresetSettings(settings: DraftSettings): DraftPresetSettings {
   return {

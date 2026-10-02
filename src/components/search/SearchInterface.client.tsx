@@ -6,35 +6,24 @@ import type { SearchInterfaceProps } from "./SearchInterface";
 
 const SearchInterfaceNoSSR = dynamic<SearchInterfaceProps>(
   () => import("./SearchInterface").then((mod) => mod.SearchInterface),
-  { ssr: false }
-);
-
-function resolveInitialSearchState(searchParams: ReturnType<typeof useSearchParams>) {
-  if (!searchParams.toString()) {
-    return {
-      initialQuery: "",
-      initialType: "all",
-      initialCategory: "all",
-    };
+  {
+    ssr: false,
+    // Holds the field's 48px while the chunk loads so the band does not jump in.
+    loading: () => (
+      <span className="c97-skeleton" aria-hidden="true" style={{ display: "block", height: 48, width: "100%" }} />
+    ),
   }
-
-  return {
-    initialQuery: searchParams.get("q") ?? "",
-    initialType: searchParams.get("type") ?? "all",
-    initialCategory: searchParams.get("category") ?? "all",
-  };
-}
+);
 
 export function SearchInterfaceClient(props: SearchInterfaceProps) {
   const searchParams = useSearchParams();
-  const initialState = resolveInitialSearchState(searchParams);
 
   return (
     <SearchInterfaceNoSSR
       {...props}
-      initialQuery={initialState.initialQuery}
-      initialType={initialState.initialType}
-      initialCategory={initialState.initialCategory}
+      initialQuery={searchParams.get("q") ?? ""}
+      initialType={searchParams.get("type") ?? "all"}
+      initialCategory={searchParams.get("category") ?? "all"}
     />
   );
 }

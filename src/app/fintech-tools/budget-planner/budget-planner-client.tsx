@@ -1,20 +1,24 @@
 "use client";
 
-import { type FormEvent, useMemo, useState } from "react";
+import { type FormEvent, useMemo, useRef, useState } from "react";
 import { ArrowLeft, ArrowRight, Download, Plus, RotateCcw, Trash2 } from "lucide-react";
 import { Catalog97ProjectHero } from "@/components/catalog97/Catalog97ProjectHero";
 import { PROJECT_PRESS } from "@/constants/projectPress";
 import {
+  BUDGET_PLANNER_STORAGE_KEY,
   buildBudgetCsv,
   formatBudgetMonthLabel,
   getAdjacentBudgetMonthKey,
   getDefaultExpenseDate,
   isBudgetMonthKey,
 } from "@/lib/budgetPlanner";
+import { downloadFile } from "@/lib/downloadFile";
 import { useBudgetPlanner } from "@/hooks/useBudgetPlanner";
-import { checkRegister, formatCurrency } from "./envelopes";
+import { useLocalStoragePersistenceStatus } from "@/hooks/useLocalStorageString";
+import { checkRegister } from "./envelopes";
 import { EnvelopesSignature } from "./EnvelopesSignature";
 import "./budget-planner.css";
+import { formatDollars } from "@/lib/utils";
 
 const ROUTE = "/fintech-tools/budget-planner";
 
@@ -26,9 +30,9 @@ interface ExpenseDraft {
 }
 
 function formatSignedCurrency(value: number) {
-  if (value > 0) return formatCurrency(value);
-  if (value < 0) return `-${formatCurrency(Math.abs(value))}`;
-  return formatCurrency(0);
+  if (value > 0) return formatDollars(value);
+  if (value < 0) return `-${formatDollars(Math.abs(value))}`;
+  return formatDollars(0);
 }
 
 // tz-local: `iso` is the visitor's own logged expense date, entered through
@@ -79,6 +83,8 @@ export function BudgetPlannerClient() {
     findExpense,
     clearMonth,
   } = useBudgetPlanner();
+  const persistenceStatus = useLocalStoragePersistenceStatus(BUDGET_PLANNER_STORAGE_KEY);
+  const amountInputRef = useRef<HTMLInputElement | null>(null);
   const [newCategoryName, setNewCategoryName] = useState("");
   const [confirmReset, setConfirmReset] = useState(false);
   const [editingExpenseId, setEditingExpenseId] = useState<string | null>(null);
@@ -115,18 +121,7 @@ export function BudgetPlannerClient() {
   }
 
   function handleExportCsv() {
-    if (typeof window === "undefined") return;
-    const blob = new Blob([buildBudgetCsv(activeMonth, summary)], {
-      type: "text/csv;charset=utf-8",
-    });
-    const url = URL.createObjectURL(blob);
-    const anchor = document.createElement("a");
-    anchor.href = url;
-    anchor.download = `budget-${activeMonthKey}.csv`;
-    document.body.appendChild(anchor);
-    anchor.click();
-    anchor.remove();
-    URL.revokeObjectURL(url);
+    downloadFile(`budget-${activeMonthKey}.csv`, buildBudgetCsv(activeMonth, summary), "text/csv;charset=utf-8");
   }
 
   function handleResetMonth() {
@@ -181,6 +176,8 @@ export function BudgetPlannerClient() {
       date: expense.date,
       note: expense.note,
     });
+    // On a phone the form sits screens above the ledger row, so move there.
+    amountInputRef.current?.focus();
   }
 
   const lead = PROJECT_PRESS[ROUTE].lead;
@@ -193,22 +190,26 @@ export function BudgetPlannerClient() {
         ink={lead}
         title="Budget Planner"
         standfirst={standfirst}
-        meta={`${monthLabel} · Saved in this browser, no account needed.`}
+        meta={
+          persistenceStatus === "memory-only"
+            ? `${monthLabel} · Browser storage is unavailable, so changes last only while this tab is open.`
+            : `${monthLabel} · Saved in this browser, no account needed.`
+        }
         readouts={[
           {
             label: "Income",
-            value: formatCurrency(totalIncome),
-            detail: `Savings target ${formatCurrency(activeMonth.savingsTarget)}`,
+            value: formatDollars(totalIncome),
+            detail: `Savings target ${formatDollars(activeMonth.savingsTarget)}`,
           },
           {
             label: "Spent",
-            value: formatCurrency(totalExpenses),
+            value: formatDollars(totalExpenses),
             detail: percentSpent === null ? "No income set" : `${percentSpent}% of income`,
           },
           {
             label: "Left to spend",
             value: formatSignedCurrency(remaining),
-            detail: remaining >= 0 ? "After savings target" : `Over by ${formatCurrency(Math.abs(remaining))}`,
+            detail: remaining >= 0 ? "After savings target" : `Over by ${formatDollars(Math.abs(remaining))}`,
           },
         ]}
       >
@@ -219,7 +220,7 @@ export function BudgetPlannerClient() {
 
       <div data-testid="budget-planner-shell">
         <p role="status" aria-live="polite" className="sr-only">
-          {`${formatCurrency(totalExpenses)} spent, ${formatCurrency(remaining)} left to spend`}
+          {`${formatDollars(totalExpenses)} spent, ${formatDollars(remaining)} left to spend`}
         </p>
         <section className="c97-band c97-sheet" data-c97-surface="paper" data-seam="torn">
           <div className="c97-shell">
@@ -324,7 +325,7 @@ export function BudgetPlannerClient() {
           <div className="c97-shell">
             <div className="flex flex-wrap items-end justify-between gap-3">
               <h2 className="c97-poster-sm">Categories</h2>
-              <p className="c97-meta">Budgeted {formatCurrency(summary.budgetedTotal)}</p>
+              <p className="c97-meta">Budgeted {formatDollars(summary.budgetedTotal)}</p>
             </div>
 
             <div className="flex flex-col" style={{ marginTop: "var(--c97-sp-3)" }}>
@@ -387,7 +388,7 @@ export function BudgetPlannerClient() {
                       className="c97-meta"
                       id={hasLinkedExpenses ? `category-${category.id}-meta` : undefined}
                     >
-                      {formatCurrency(category.spent)} of {formatCurrency(category.budgetedAmount)} ·{" "}
+                      {formatDollars(category.spent)} of {formatDollars(category.budgetedAmount)} ·{" "}
                       {formatSignedCurrency(category.remaining)} left ·{" "}
                       {category.expenseCount} {category.expenseCount === 1 ? "entry" : "entries"}
                       {hasLinkedExpenses ? " · remove linked expenses before deleting" : ""}
@@ -430,6 +431,11 @@ export function BudgetPlannerClient() {
               </p>
             </div>
 
+            {activeMonth.categories.length === 0 ? (
+              <p id="budget-expense-needs-category" className="c97-meta" style={{ marginTop: "var(--c97-sp-3)" }}>
+                Add a category above before logging expenses.
+              </p>
+            ) : null}
             <form
               onSubmit={handleExpenseSubmit}
               className="grid gap-3 sm:grid-cols-[minmax(0,1fr)_minmax(0,140px)_minmax(0,160px)_minmax(0,1fr)_auto]"
@@ -455,6 +461,7 @@ export function BudgetPlannerClient() {
               <label style={{ display: "block" }}>
                 <span className="c97-kicker">Amount</span>
                 <input
+                  ref={amountInputRef}
                   aria-label="Expense amount"
                   type="number"
                   min="0"
@@ -492,6 +499,9 @@ export function BudgetPlannerClient() {
                   type="submit"
                   disabled={!resolvedExpenseCategoryId || !expenseDraft.amount || !expenseDraft.date}
                   className="c97-btn c97-offset"
+                  aria-describedby={
+                    activeMonth.categories.length === 0 ? "budget-expense-needs-category" : undefined
+                  }
                 >
                   {editingExpenseId ? "Save expense" : "Add expense"}
                 </button>
@@ -508,7 +518,13 @@ export function BudgetPlannerClient() {
                 Ledger is empty. Add the first expense above.
               </p>
             ) : (
-              <div className="overflow-x-auto" style={{ marginTop: "var(--c97-sp-4)" }}>
+              <div
+                className="overflow-x-auto"
+                role="region"
+                tabIndex={0}
+                aria-label="Expense ledger"
+                style={{ marginTop: "var(--c97-sp-4)" }}
+              >
               <table className="c97-table c97-checkregister">
                 <thead>
                   <tr>
@@ -533,7 +549,7 @@ export function BudgetPlannerClient() {
                         <td data-label="Note">{row.note || "—"}</td>
                         <td data-label="Category">{row.categoryName}</td>
                         <td data-label="Amount" data-align="end" className="c97-tabular">
-                          {formatCurrency(row.amount)}
+                          {formatDollars(row.amount)}
                         </td>
                         <td data-label="Balance" data-align="end" className="c97-tabular">
                           {formatSignedCurrency(row.balance)}

@@ -1,5 +1,6 @@
 import type { ReadonlyURLSearchParams } from "next/navigation";
 import type { EarthquakeRouteState, EarthquakeView } from "@/types/earthquake";
+import { readParam, type SearchParamInput } from "@/lib/searchParams";
 
 export const EARTHQUAKE_ROUTE = "/earthquake-pulse";
 export const EARTHQUAKE_VIEW_OPTIONS = [
@@ -9,13 +10,6 @@ export const EARTHQUAKE_VIEW_OPTIONS = [
 ] as const;
 
 const VALID_VIEWS = new Set<EarthquakeView>(EARTHQUAKE_VIEW_OPTIONS);
-
-type SearchParamInput =
-  | URLSearchParams
-  | ReadonlyURLSearchParams
-  | Record<string, string | string[] | undefined | null>;
-
-type SearchParamRecord = Record<string, string | string[] | undefined | null>;
 
 export const DEFAULT_EARTHQUAKE_STATE: EarthquakeRouteState = {
   view: "recent",
@@ -27,20 +21,6 @@ export const EARTHQUAKE_VIEW_LABELS: Record<EarthquakeView, string> = {
   significant: "Significant",
   regions: "Regions",
 };
-
-function readParam(input: SearchParamInput, key: string): string | null {
-  if ("get" in input && typeof input.get === "function") {
-    return (input as URLSearchParams).get(key);
-  }
-
-  const rawValue = (input as SearchParamRecord)[key];
-
-  if (Array.isArray(rawValue)) {
-    return rawValue[0] ?? null;
-  }
-
-  return rawValue ?? null;
-}
 
 function normalizeQuakeParam(quake: string | null): string | null {
   if (!quake) {

@@ -85,6 +85,9 @@ export function PositionFilterBar<T extends string>({
         const isDisabled = disabled || isUnavailable;
 
         let style: CSSProperties;
+        // The inactive pill takes its resting colours from classes so a hover
+        // utility can win; the other two branches stay inline.
+        let stateClass = "";
         if (isActive) {
           style = {
             borderColor: "var(--c97-ink)",
@@ -98,10 +101,9 @@ export function PositionFilterBar<T extends string>({
             color: "var(--c97-ink-2)",
           };
         } else {
+          stateClass =
+            "border-[var(--c97-ink-2)] bg-[var(--c97-field)] text-[var(--c97-ink)] enabled:hover:border-[var(--c97-ink)] enabled:hover:text-[var(--c97-action)]";
           style = {
-            borderColor: "var(--c97-ink-2)",
-            background: "var(--c97-field)",
-            color: "var(--c97-ink)",
             // A faint position tint on the inactive pill ties the control to the board.
             boxShadow: option.position
               ? `inset 0 0 0 999px ${getPositionTone(option.position).background as string}`
@@ -128,7 +130,7 @@ export function PositionFilterBar<T extends string>({
             }}
             onClick={() => !isDisabled && onChange(option.value)}
             onKeyDown={(event) => handleRadioKeyDown(event, index)}
-            className="inline-flex min-h-touch min-w-touch shrink-0 items-center justify-center gap-1.5 border px-3.5 text-sm font-semibold transition-colors disabled:cursor-not-allowed"
+            className={`inline-flex min-h-touch min-w-touch shrink-0 items-center justify-center gap-1.5 border px-3.5 text-sm font-semibold transition-colors disabled:cursor-not-allowed ${stateClass}`}
             style={style}
           >
             <span>{option.label}</span>

@@ -1,7 +1,8 @@
 import { parseNewsFeed } from "@/lib/news-pulse-feed-parser";
 import { NEWS_FEEDS, type NewsFeedId } from "@/lib/news-pulse-sources";
 import type { NewsArticle } from "@/lib/news-pulse-utils";
-import { readDurableJson, writeDurableJson } from "@/lib/durableJsonCache";
+import { readDurableJson, writeDurableJson } from "@/lib/netlifyBlobs";
+import { isTimeoutError } from "@/lib/fetchRetry";
 import { recordRuntimeSurfaceHeartbeat } from "@/lib/runtimeSurfaceHeartbeat";
 
 const FETCH_TIMEOUT_MS = 8_000;
@@ -48,7 +49,7 @@ interface CacheEntry {
 // per-request inputs). Single-flight: if a request comes in while a fetch
 // is in-flight, we return the in-flight promise rather than starting a
 // fresh fan-out to all 6 feeds.
-const cache = new Map<string, CacheEntry>();
+let cached: CacheEntry | null = null;
 
 interface LastGoodFeed {
   articles: NewsArticle[];
@@ -89,14 +90,11 @@ function isFresh(entry: CacheEntry, now: number): boolean {
   return now - entry.completedAt < ttl;
 }
 
-// A timed-out fetch rejects with an AbortError once FETCH_TIMEOUT_MS elapses.
+// A timed-out fetch rejects with a TimeoutError once FETCH_TIMEOUT_MS elapses.
 // Surface that as a plain "timed out" note instead of the runtime's raw
-// "This operation was aborted" string, and pass other errors through as-is.
+// "The operation was aborted due to timeout" string, and pass other errors through as-is.
 function describeFeedError(reason: unknown): string {
-  if (
-    reason instanceof Error &&
-    (reason.name === "AbortError" || /abort/i.test(reason.message))
-  ) {
+  if (isTimeoutError(reason) || (reason instanceof Error && /abort/i.test(reason.message))) {
     return `timed out after ${FETCH_TIMEOUT_MS / 1000}s`;
   }
   if (reason instanceof Error && reason.message) {
@@ -122,43 +120,36 @@ async function fetchAllFeeds(): Promise<NewsPulseDataResult> {
 
   const results = await Promise.allSettled(
     NEWS_FEEDS.map(async (feed) => {
-      const controller = new AbortController();
-      const timeout = setTimeout(() => controller.abort(), FETCH_TIMEOUT_MS);
+      const response = await fetch(feed.url, {
+        signal: AbortSignal.timeout(FETCH_TIMEOUT_MS),
+        headers: { "User-Agent": "NewsPulseDashboard/1.0" },
+        next: { revalidate: 300 },
+      });
 
-      try {
-        const response = await fetch(feed.url, {
-          signal: controller.signal,
-          headers: { "User-Agent": "NewsPulseDashboard/1.0" },
-          next: { revalidate: 300 },
-        });
+      if (!response.ok) throw new Error(`HTTP ${response.status}`);
 
-        if (!response.ok) throw new Error(`HTTP ${response.status}`);
-
-        const xml = await response.text();
-        const articles = parseNewsFeed(xml, feed);
-        if (articles.length === 0) {
-          throw new Error("returned no usable entries");
-        }
-
-        // One outlet's feed can carry several times the items of the others
-        // and reach back years, so each feed is cut to its newest items. An
-        // undated item has no age to judge, so it stays and sorts last.
-        const oldestAllowed = Date.now() - MAX_ARTICLE_AGE_MS;
-        const recent = articles
-          .filter(
-            (article) =>
-              !article.pubDate || getPublishedTime(article) >= oldestAllowed
-          )
-          .sort(byNewest)
-          .slice(0, MAX_ARTICLES_PER_FEED);
-        if (recent.length === 0) {
-          throw new Error("returned nothing from the last 7 days");
-        }
-
-        return recent;
-      } finally {
-        clearTimeout(timeout);
+      const xml = await response.text();
+      const articles = parseNewsFeed(xml, feed);
+      if (articles.length === 0) {
+        throw new Error("returned no usable entries");
       }
+
+      // One outlet's feed can carry several times the items of the others
+      // and reach back years, so each feed is cut to its newest items. An
+      // undated item has no age to judge, so it stays and sorts last.
+      const oldestAllowed = Date.now() - MAX_ARTICLE_AGE_MS;
+      const recent = articles
+        .filter(
+          (article) =>
+            !article.pubDate || getPublishedTime(article) >= oldestAllowed
+        )
+        .sort(byNewest)
+        .slice(0, MAX_ARTICLES_PER_FEED);
+      if (recent.length === 0) {
+        throw new Error("returned nothing from the last 7 days");
+      }
+
+      return recent;
     }),
   );
 
@@ -251,12 +242,9 @@ async function fetchAllFeeds(): Promise<NewsPulseDataResult> {
   };
 }
 
-function getOrFetch(key: string): Promise<NewsPulseDataResult> {
-  const now = Date.now();
-  const existing = cache.get(key);
-
-  if (existing && isFresh(existing, now)) {
-    return existing.promise;
+export async function getNewsPulseData(): Promise<NewsPulseDataResult> {
+  if (cached && isFresh(cached, Date.now())) {
+    return cached.promise;
   }
 
   const entry: CacheEntry = {
@@ -309,12 +297,8 @@ function getOrFetch(key: string): Promise<NewsPulseDataResult> {
     }
   })();
 
-  cache.set(key, entry);
+  cached = entry;
   return entry.promise;
-}
-
-export async function getNewsPulseData(): Promise<NewsPulseDataResult> {
-  return getOrFetch("all");
 }
 
 // Test-only side channel. Next.js route-type checking forbids non-handler
@@ -324,7 +308,7 @@ export async function getNewsPulseData(): Promise<NewsPulseDataResult> {
 (globalThis as Record<symbol, unknown>)[
   Symbol.for("__newsPulseCacheResetForTesting")
 ] = (): void => {
-  cache.clear();
+  cached = null;
   lastGoodByFeed.clear();
   durableHydrationPromise = null;
 };

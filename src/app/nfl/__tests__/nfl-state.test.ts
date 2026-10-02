@@ -1,13 +1,19 @@
 import { nflSnapshot } from "@/data/nflSnapshot";
 import { nflSeeds } from "@/components/football/seedLadder";
-import {
-  buildNflHref,
-  canonicalizeNflTeamId,
-  DEFAULT_NFL_STATE,
-  filterTeamsForView,
-  getDefaultTeamForView,
-  normalizeNflState,
-} from "../nfl-state";
+import type { NFLRouteState, NFLView } from "@/types/nfl";
+import * as core from "../nfl-state.core";
+
+const teams = nflSnapshot.teams;
+const aliasMap = core.buildTeamAliasMap(teams);
+const DEFAULT_NFL_STATE = core.resolveDefaultState(teams);
+const canonicalizeNflTeamId = (id: string | undefined) => core.canonicalizeTeamId(id, aliasMap);
+const filterTeamsForView = (view: NFLView) => core.filterTeams(teams, view);
+const getDefaultTeamForView = (view: NFLView) =>
+  core.getDefaultTeam(teams, view, DEFAULT_NFL_STATE.team);
+const normalizeNflState = (input: Record<string, string | string[]>) =>
+  core.normalizeState(input, DEFAULT_NFL_STATE, aliasMap);
+const buildNflHref = (state: NFLRouteState, base?: URLSearchParams) =>
+  core.buildHref(state, DEFAULT_NFL_STATE, aliasMap, base);
 
 describe("nfl-state", () => {
   it("canonicalizes team ids and abbreviations", () => {

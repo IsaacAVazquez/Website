@@ -52,22 +52,7 @@ export const LONG_DATE_TIME_FORMATTER = new Intl.DateTimeFormat("en-US", {
 });
 
 /** "Updated at" timestamp: "Apr 25, 2:30 PM PDT" */
-export const UPDATED_AT_FORMATTER = new Intl.DateTimeFormat("en-US", {
-  month: "short",
-  day: "numeric",
-  hour: "numeric",
-  minute: "2-digit",
-  timeZone: DISPLAY_TIME_ZONE,
-  timeZoneName: "short",
-});
-
-/** Full calendar date: "Apr 25, 2026" */
-const FULL_DATE_FORMATTER = new Intl.DateTimeFormat("en-US", {
-  month: "short",
-  day: "numeric",
-  year: "numeric",
-  timeZone: DISPLAY_TIME_ZONE,
-});
+export const UPDATED_AT_FORMATTER = DATE_TIME_FORMATTER;
 
 export function formatShortDate(value: string | Date): string {
   const date = typeof value === "string" ? new Date(value) : value;
@@ -82,11 +67,6 @@ export function formatDateTime(value: string | Date): string {
 export function formatUpdatedAt(value: string | Date): string {
   const date = typeof value === "string" ? new Date(value) : value;
   return Number.isNaN(date.getTime()) ? "Unavailable" : UPDATED_AT_FORMATTER.format(date);
-}
-
-export function formatFullDate(value: string | Date): string {
-  const date = typeof value === "string" ? new Date(value) : value;
-  return Number.isNaN(date.getTime()) ? "Unavailable" : FULL_DATE_FORMATTER.format(date);
 }
 
 /**
@@ -116,4 +96,26 @@ export function parseLocalDateKey(value: string): Date | null {
 /** True for a real calendar date encoded as `YYYY-MM-DD`. */
 export function isLocalDateKey(value: unknown): value is string {
   return typeof value === "string" && parseLocalDateKey(value) !== null;
+}
+
+/** Long UTC date, "September 15, 2026", pinned so the server and the browser print the same day. */
+export function formatLongUtcDate(iso: string): string {
+  return new Date(iso).toLocaleDateString("en-US", {
+    month: "long",
+    day: "numeric",
+    year: "numeric",
+    timeZone: "UTC",
+  });
+}
+
+/**
+ * Whole days from `fromKey` to `toKey`; negative when `toKey` is in the past.
+ * Either key can be null (the caller's "today" not resolved yet on the
+ * client), which reads the same as an invalid key: null out.
+ */
+export function daysBetween(fromKey: string | null, toKey: string | null): number | null {
+  const from = fromKey === null ? null : parseLocalDateKey(fromKey);
+  const to = toKey === null ? null : parseLocalDateKey(toKey);
+  if (!from || !to) return null;
+  return Math.round((to.getTime() - from.getTime()) / 86_400_000);
 }

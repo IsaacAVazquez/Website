@@ -11,10 +11,12 @@
 import { readFileSync } from "fs";
 import path from "path";
 import type { StockQuote } from "@/types/investment";
+export { isValidSymbol } from "@/lib/investmentSymbol";
 import {
   getInvestmentsAssetOrigin,
   type AssetOriginOptions,
 } from "@/lib/investmentsAssetOrigin";
+import { isFiniteNumber } from "@/lib/utils";
 
 const FINNHUB_API_KEY = process.env.FINNHUB_API_KEY ?? "";
 const TIMEOUT_MS = 5_000;
@@ -33,25 +35,12 @@ let rateLimitedUntil = 0;
 const quoteCache = new Map<string, { quote: StockQuote; expiresAt: number }>();
 const quoteInflight = new Map<string, Promise<StockQuote>>();
 
-/**
- * Strict symbol shape. Forbids leading dots/dashes and consecutive
- * separators; requires at least one alphanumeric and capped at 10 chars.
- * Examples accepted: AAPL, BRK-B, BRK.B, BF.B
- * Examples rejected: .AAPL, -AAPL, AA..PL, AAPL., "AAPL "
- */
-export function isValidSymbol(symbol: string): boolean {
-  if (typeof symbol !== "string" || symbol.length === 0 || symbol.length > 10) {
-    return false;
-  }
-  return /^[A-Z][A-Z0-9]*([.-][A-Z0-9]+)*$/.test(symbol);
-}
-
 // ---------------------------------------------------------------------------
 // Allowlist of curated symbols
 // ---------------------------------------------------------------------------
 // The allowlist is the authoritative gate for the unauthenticated
-// /api/investments/quotes and /api/stocks proxies — only symbols Isaac has
-// chosen to research can hit the paid Finnhub key.
+// /api/investments/quotes proxy — only symbols Isaac has chosen to research
+// can hit the paid Finnhub key.
 //
 // It is sourced from public/data/investments/index.json. Netlify packages that
 // directory with the server handler through `functions.included_files`, which
@@ -101,12 +90,10 @@ async function fetchAllowlistFromPublicAsset(
   if (!origin) {
     return new Set<string>();
   }
-  const controller = new AbortController();
-  const timeoutId = setTimeout(() => controller.abort(), ALLOWLIST_TIMEOUT_MS);
   try {
     const response = await fetch(new URL(INDEX_RELATIVE_PATH, origin).toString(), {
       cache: "force-cache",
-      signal: controller.signal,
+      signal: AbortSignal.timeout(ALLOWLIST_TIMEOUT_MS),
     });
     if (!response.ok) {
       return new Set<string>();
@@ -114,8 +101,6 @@ async function fetchAllowlistFromPublicAsset(
     return toSymbolSet(await response.json());
   } catch {
     return new Set<string>();
-  } finally {
-    clearTimeout(timeoutId);
   }
 }
 
@@ -161,30 +146,6 @@ export async function getAllowedSymbols(
   throw new FinnhubAllowlistUnavailableError();
 }
 
-export async function isAllowedSymbol(
-  symbol: string,
-  options?: AssetOriginOptions
-): Promise<boolean> {
-  if (!isValidSymbol(symbol)) {
-    return false;
-  }
-  const allowlist = await getAllowedSymbols(options);
-  return allowlist.has(symbol.toUpperCase());
-}
-
-// Test-only: reset the cached allowlist so tests can force a re-resolve.
-// Not exported through the module's public consumers.
-export function __resetAllowlistCacheForTests(): void {
-  cachedAllowlist = null;
-  allowlistInflight = null;
-}
-
-function __resetQuoteStateForTests(): void {
-  rateLimitedUntil = 0;
-  quoteCache.clear();
-  quoteInflight.clear();
-}
-
 function errorQuote(symbol: string, message: string): StockQuote {
   return {
     symbol,
@@ -224,12 +185,10 @@ async function fetchFinnhubQuoteFromProvider(
     return errorQuote(symbol, RATE_LIMITED_ERROR);
   }
 
-  const controller = new AbortController();
   const boundedTimeoutMs =
     Number.isFinite(timeoutMs) && timeoutMs > 0
       ? Math.max(1, Math.min(TIMEOUT_MS, Math.floor(timeoutMs)))
       : TIMEOUT_MS;
-  const timeoutId = setTimeout(() => controller.abort(), boundedTimeoutMs);
 
   try {
     const providerSymbol = toFinnhubProviderSymbol(symbol);
@@ -241,7 +200,7 @@ async function fetchFinnhubQuoteFromProvider(
           "X-Finnhub-Token": FINNHUB_API_KEY,
         },
         cache: "no-store",
-        signal: controller.signal,
+        signal: AbortSignal.timeout(boundedTimeoutMs),
       }
     );
 
@@ -255,8 +214,7 @@ async function fetchFinnhubQuoteFromProvider(
     }
 
     const data = await res.json() as Record<string, unknown>;
-    const finiteNumber = (value: unknown): number | undefined =>
-      typeof value === "number" && Number.isFinite(value) ? value : undefined;
+    const finiteNumber = (value: unknown) => (isFiniteNumber(value) ? value : undefined);
     const price = finiteNumber(data.c);
     const providerTimestampSeconds = Number(data.t);
     const providerTimestampMs = providerTimestampSeconds * 1000;
@@ -324,8 +282,6 @@ async function fetchFinnhubQuoteFromProvider(
     };
   } catch {
     return errorQuote(symbol, TEMPORARY_ERROR);
-  } finally {
-    clearTimeout(timeoutId);
   }
 }
 

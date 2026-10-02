@@ -234,7 +234,7 @@ export function InterchangeIQClient() {
               onClick={handleReset}
               aria-label="Reset all inputs to defaults"
               className="c97-btn-ghost"
-              style={{ padding: 0, gap: "var(--c97-sp-1)" }}
+              style={{ gap: "var(--c97-sp-1)" }}
             >
               <RefreshCw size={14} aria-hidden="true" />
               Reset
@@ -323,7 +323,6 @@ export function InterchangeIQClient() {
                 {showInfo ? (
                   <p
                     id="card-mix-info"
-                    role="region"
                     className="c97-panel c97-prose"
                     style={{ fontSize: "var(--c97-fs-small)", marginTop: "var(--c97-sp-2)" }}
                   >
@@ -490,7 +489,7 @@ export function InterchangeIQClient() {
           <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-3)" }}>Reference</p>
           <h2 className="c97-poster-sm">How payment processing fees work</h2>
 
-          <div className="grid md:grid-cols-3 gap-4">
+          <div className="c97-columns">
             {REFERENCE_CARDS.map((card) => (
               <article key={card.title} className="c97-panel">
                 <h3 className="c97-serif c97-h3" style={{ marginBottom: "var(--c97-sp-2)" }}>

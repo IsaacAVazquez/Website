@@ -14,11 +14,49 @@ const updateWorkflowFiles = workflowFiles.filter((file) =>
   path.basename(file).startsWith("update-")
 );
 
-describe("snapshot refresh workflow infrastructure", () => {
-  it("routes automated snapshot commits through the shared helper", () => {
-    expect(updateWorkflowFiles.length).toBeGreaterThan(0);
+// Ten lanes share one body through refresh-snapshot.yml; the rest carry their own.
+const reusableWorkflow = path.join(workflowsDir, "refresh-snapshot.yml");
+const REUSABLE_USES = "uses: ./.github/workflows/refresh-snapshot.yml";
+const isCaller = (file: string) =>
+  fs.readFileSync(file, "utf8").includes(REUSABLE_USES);
+const callerFiles = updateWorkflowFiles.filter(isCaller);
+// Every file whose steps run a refresh body: the standalone lanes plus the shared one.
+const bodyFiles = [
+  ...updateWorkflowFiles.filter((file) => !isCaller(file)),
+  reusableWorkflow,
+];
+const bodyFor = (file: string) => (isCaller(file) ? reusableWorkflow : file);
 
-    for (const workflowPath of updateWorkflowFiles) {
+describe("snapshot refresh workflow infrastructure", () => {
+  it("passes every per-lane field into the shared refresh body", () => {
+    expect(callerFiles.length).toBe(10);
+    const reusable = fs.readFileSync(reusableWorkflow, "utf8");
+    expect(reusable).toContain("workflow_call:");
+    expect(reusable).toContain("run: npm run update:${{ inputs.id }}");
+    expect(reusable).toContain("npx tsx scripts/verifyDataRefresh.ts ${{ inputs.id }}");
+    expect(reusable).toContain('"chore: refresh ${LANE//-/ } snapshot [automated] [skip ci]"');
+    expect(reusable).toContain("'${{ inputs.label }}', '${{ inputs.title }}'");
+
+    for (const workflowPath of callerFiles) {
+      const workflow = fs.readFileSync(workflowPath, "utf8");
+      expect(workflow).toContain("schedule:");
+      expect(workflow).toContain("concurrency:");
+      // A called workflow can only narrow the token it is handed, so the push
+      // and the failure issue need the caller to grant both scopes.
+      expect(workflow).toContain("contents: write");
+      expect(workflow).toContain("issues: write");
+      expect(workflow).toContain("secrets: inherit");
+      expect(workflow).toMatch(/\n\s+id: [a-z-]+\n/);
+      expect(workflow).toMatch(/snapshot-path: src\/data\/\w+Snapshot\.json/);
+      expect(workflow).toMatch(/label: [a-z-]+-refresh-failure/);
+      expect(workflow).toMatch(/title: .+ refresh failed/);
+    }
+  });
+
+  it("routes automated snapshot commits through the shared helper", () => {
+    expect(bodyFiles.length).toBeGreaterThan(1);
+
+    for (const workflowPath of bodyFiles) {
       const workflow = fs.readFileSync(workflowPath, "utf8");
       expect(workflow).toContain("bash scripts/ci/commit-and-push-snapshot.sh");
       expect(workflow).not.toMatch(/git push origin HEAD:main/);
@@ -27,7 +65,7 @@ describe("snapshot refresh workflow infrastructure", () => {
   });
 
   it("checks out main before any refresh that can push to main", () => {
-    for (const workflowPath of updateWorkflowFiles) {
+    for (const workflowPath of bodyFiles) {
       const workflow = fs.readFileSync(workflowPath, "utf8");
       const checkoutBlock = workflow.match(
         /uses: actions\/checkout@v7[\s\S]*?(?=\n\s+- name:)/
@@ -69,7 +107,7 @@ describe("snapshot refresh workflow infrastructure", () => {
   });
 
   it("installs sitemap dependencies before snapshot commits", () => {
-    for (const workflowPath of updateWorkflowFiles) {
+    for (const workflowPath of bodyFiles) {
       const workflow = fs.readFileSync(workflowPath, "utf8");
       const helperIndex = workflow.indexOf(
         "bash scripts/ci/commit-and-push-snapshot.sh"
@@ -185,10 +223,15 @@ describe("snapshot refresh workflow infrastructure", () => {
     ];
 
     for (const workflowName of scheduledSnapshotWorkflows) {
-      const workflow = fs.readFileSync(path.join(workflowsDir, workflowName), "utf8");
+      const workflow = fs.readFileSync(bodyFor(path.join(workflowsDir, workflowName)), "utf8");
       expect(workflow).toContain("npx tsx scripts/verifyDataRefresh.ts");
+      // Weekly validation is inside its builder and publishes independently.
+      // The shared verifier gates the later redraft artifact in this workflow.
+      const commitIndex = workflowName === "update-fantasy.yml"
+        ? workflow.indexOf("- name: Commit and push snapshot updates")
+        : workflow.indexOf("bash scripts/ci/commit-and-push-snapshot.sh");
       expect(workflow.indexOf("npx tsx scripts/verifyDataRefresh.ts")).toBeLessThan(
-        workflow.indexOf("bash scripts/ci/commit-and-push-snapshot.sh")
+        commitIndex
       );
     }
   });
@@ -230,19 +273,19 @@ describe("snapshot refresh workflow infrastructure", () => {
       workflow.indexOf("- name: Build fantasy snapshots")
     );
     expect(workflow.indexOf("- name: Commit and push weekly board")).toBeLessThan(
-      workflow.indexOf("- name: Commit and push snapshot updates")
+      workflow.indexOf("- name: Build fantasy snapshots")
     );
     // Weeks 17 and 18 fall in January, after the daily lane used to stop.
     expect(workflow).toContain('cron: "17 17 1-12 1 *"');
   });
 
-  it("puts rejected redraft files back before any lane commits", () => {
+  it("puts rejected draft files back before either draft lane commits", () => {
     const workflow = fs.readFileSync(
       path.join(workflowsDir, "update-fantasy.yml"),
       "utf8"
     );
     const discardStep = workflow.match(
-      /- name: Discard redraft artifacts that failed their gates[\s\S]*?(?=\n\s+# The weekly board commits)/
+      /- name: Discard redraft artifacts that failed their gates[\s\S]*?(?=\n\s+- name:)/
     )?.[0];
 
     expect(discardStep).toBeDefined();
@@ -250,7 +293,18 @@ describe("snapshot refresh workflow infrastructure", () => {
     expect(discardStep).toContain("git checkout --");
     expect(discardStep).toContain("public/data/fantasy/ppr.json");
     expect(workflow.indexOf("- name: Discard redraft artifacts")).toBeLessThan(
-      workflow.indexOf("bash scripts/ci/commit-and-push-snapshot.sh")
+      workflow.indexOf("- name: Commit and push snapshot updates")
+    );
+    const discardBestBallStep = workflow.match(
+      /- name: Discard best ball artifacts that failed their gates[\s\S]*?(?=\n\s+- name:)/
+    )?.[0];
+    expect(discardBestBallStep).toContain("if: steps.verify_best_ball.outcome != 'success'");
+    expect(discardBestBallStep).toContain("git checkout -- public/data/fantasy/best-ball.json");
+    expect(workflow.indexOf("- name: Discard best ball artifacts")).toBeLessThan(
+      workflow.indexOf("- name: Commit and push snapshot updates")
+    );
+    expect(workflow.indexOf("- name: Discard best ball artifacts")).toBeLessThan(
+      workflow.indexOf("- name: Commit and push best ball snapshot")
     );
   });
 
@@ -263,10 +317,10 @@ describe("snapshot refresh workflow infrastructure", () => {
       /- name: Verify fantasy snapshot quality[\s\S]*?(?=\n\s+- name:)/
     )?.[0];
 
-    // The change check, the commit, the discard step, and the job summary.
+    // The commit and the discard step.
     expect(
-      workflow.match(/src\/data\/fantasyVorpData\.generated\.ts/g)
-    ).toHaveLength(4);
+      workflow.match(/src\/data\/fantasyVorpData\.generated\.json/g)
+    ).toHaveLength(2);
     expect(qualityStep).toBeDefined();
     expect(qualityStep).toContain("const MIN_VORP = 300");
     expect(qualityStep).toContain(
@@ -288,6 +342,21 @@ describe("snapshot refresh workflow infrastructure", () => {
     expect(workflow).toContain("steps.verify_quality.outputs.vorp_dark == 'true'");
   });
 
+  it("allows every fantasy build lane to finish before validation and publication", () => {
+    const workflow = fs.readFileSync(
+      path.join(workflowsDir, "update-fantasy.yml"),
+      "utf8"
+    );
+    const timeouts = [...workflow.matchAll(/timeout-minutes: (\d+)/g)].map(
+      (match) => Number(match[1])
+    );
+    const [jobBudget, ...buildBudgets] = timeouts;
+    expect(buildBudgets).toEqual([10, 15, 10]);
+    expect(jobBudget).toBeGreaterThanOrEqual(
+      buildBudgets.reduce((total, budget) => total + budget, 0) + 10
+    );
+  });
+
   it("pins the scheduled fantasy build to public HTML without passing an API key", () => {
     const workflow = fs.readFileSync(
       path.join(workflowsDir, "update-fantasy.yml"),
@@ -299,9 +368,7 @@ describe("snapshot refresh workflow infrastructure", () => {
 
     expect(buildStep).toBeDefined();
     expect(buildStep).toContain("run: npm run update:fantasy");
-    expect(buildStep).toContain("FANTASYPROS_SOURCE: public-html");
-    expect(buildStep).not.toContain("FANTASYPROS_API_KEY");
-    expect(workflow).not.toContain("secrets.FANTASYPROS_API_KEY");
+    expect(workflow).not.toContain("FANTASYPROS");
   });
 
   it("does not close World Cup incidents on a dormant run", () => {
@@ -316,6 +383,79 @@ describe("snapshot refresh workflow infrastructure", () => {
     // incidents on runs that refreshed nothing.
     expect(workflow).toContain(
       "if: success() && steps.window.outputs.active == 'true'"
+    );
+  });
+
+  it("routes failure issues through the shared helper", () => {
+    for (const workflowPath of bodyFiles) {
+      if (path.basename(workflowPath) === "update-article-images.yml") continue;
+      const workflow = fs.readFileSync(workflowPath, "utf8");
+      expect(workflow).toContain("require('./scripts/ci/failure-issue.cjs').open(");
+      expect(workflow).toContain("require('./scripts/ci/failure-issue.cjs').close(");
+      expect(workflow).not.toContain("issues.listForRepo");
+    }
+  });
+
+  it("opens one issue per label, comments on repeats, and closes on success", async () => {
+    // eslint-disable-next-line @typescript-eslint/no-require-imports
+    const failureIssue = require("../../../scripts/ci/failure-issue.cjs");
+    const open: { number: number }[] = [];
+    const calls: string[] = [];
+    const github = {
+      rest: {
+        issues: {
+          listForRepo: async ({ labels }: { labels: string }) => {
+            calls.push(`list ${labels}`);
+            return { data: [...open] };
+          },
+          create: async ({ title, labels }: { title: string; labels: string[] }) => {
+            calls.push(`create ${title.replace(/\d{4}-\d{2}-\d{2}$/, "DATE")} [${labels}]`);
+            open.push({ number: 7 });
+          },
+          createComment: async ({ issue_number }: { issue_number: number }) => {
+            calls.push(`comment ${issue_number}`);
+          },
+          update: async ({ issue_number, state }: { issue_number: number; state: string }) => {
+            calls.push(`update ${issue_number} ${state}`);
+          },
+        },
+      },
+    };
+    const context = {
+      repo: { owner: "o", repo: "r" },
+      serverUrl: "https://github.com",
+      runId: 1,
+      sha: "abc",
+      eventName: "schedule",
+      workflow: "Refresh NBA Snapshot",
+    };
+
+    await failureIssue.open({ github, context }, "nba-refresh-failure", "NBA refresh failed");
+    await failureIssue.open({ github, context }, "nba-refresh-failure", "NBA refresh failed");
+    await failureIssue.close({ github, context }, "nba-refresh-failure");
+
+    expect(calls).toEqual([
+      "list nba-refresh-failure",
+      "create NBA refresh failed DATE [nba-refresh-failure,automation]",
+      "list nba-refresh-failure",
+      "comment 7",
+      "list nba-refresh-failure",
+      "comment 7",
+      "update 7 closed",
+    ]);
+  });
+
+  it("lets the commit helper decide whether anything changed", () => {
+    const helper = fs.readFileSync(
+      path.join(process.cwd(), "scripts", "ci", "commit-and-push-snapshot.sh"),
+      "utf8"
+    );
+    // git status sees an untracked artifact, which git diff --quiet does not.
+    expect(helper).toContain('git status --porcelain -- "$@"');
+    expect(helper).toContain("changed=false");
+    expect(helper).toContain("changed=true");
+    expect(helper.indexOf("git status --porcelain")).toBeLessThan(
+      helper.indexOf("node scripts/generatePublicSitemap.mjs")
     );
   });
 

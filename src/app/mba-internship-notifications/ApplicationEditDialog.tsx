@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState, type ReactNode } from "react";
 import { X } from "lucide-react";
+import { useModal } from "@/hooks/useModal";
 import {
   MBA_APPLICATION_PRIORITIES,
   MBA_APPLICATION_PRIORITY_LABELS,
@@ -14,8 +15,6 @@ import type {
   MBATrackedApplication,
 } from "@/types/mba-jobs";
 import {
-  applicationInputClass,
-  applicationInputStyle,
   getApplicationFormState,
   type ApplicationFormState,
 } from "./application-form";
@@ -32,7 +31,7 @@ function FormField({
   children: ReactNode;
 }) {
   return (
-    <label className="block space-y-2">
+    <label className="grid" style={{ gap: "var(--c97-sp-1)" }}>
       <span className="c97-kicker">{label}</span>
       {children}
     </label>
@@ -54,6 +53,7 @@ export default function ApplicationEditDialog({
     getApplicationFormState(application)
   );
   const dialogRef = useRef<HTMLDivElement | null>(null);
+  const closeRef = useRef<HTMLButtonElement | null>(null);
 
   useEffect(() => {
     if (!isOpen) return;
@@ -61,21 +61,7 @@ export default function ApplicationEditDialog({
     setForm(getApplicationFormState(application));
   }, [application, isOpen]);
 
-  useEffect(() => {
-    if (!isOpen) return;
-    const dialog = dialogRef.current;
-    dialog?.querySelector<HTMLElement>("input, select, textarea, button")?.focus();
-
-    function handleKey(event: KeyboardEvent) {
-      if (event.key === "Escape") {
-        event.preventDefault();
-        onClose();
-      }
-    }
-
-    document.addEventListener("keydown", handleKey);
-    return () => document.removeEventListener("keydown", handleKey);
-  }, [isOpen, onClose]);
+  useModal(dialogRef, isOpen, onClose, { initialFocusRef: closeRef, lockScroll: false });
 
   if (!isOpen) return null;
 
@@ -95,23 +81,20 @@ export default function ApplicationEditDialog({
         role="dialog"
         aria-modal="true"
         aria-labelledby="application-dialog-title"
-        className="c97-panel c97-offset max-h-[90vh] w-full max-w-2xl overflow-y-auto"
-        style={{ background: "var(--c97-surface)" }}
+        className="c97-panel c97-offset w-full max-w-2xl overflow-y-auto"
+        style={{ background: "var(--c97-surface)", maxHeight: "90dvh" }}
       >
         <div className="flex items-start justify-between gap-4">
           <div>
             <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-2)" }}>
               Application tracker
             </p>
-            <h2
-              id="application-dialog-title"
-              className="mb-0 text-xl font-semibold"
-              style={{ fontFamily: "var(--c97-font-body)", color: "var(--c97-ink)" }}
-            >
+            <h2 id="application-dialog-title" className="c97-serif c97-h3">
               {application ? "Edit application" : "Add application"}
             </h2>
           </div>
           <button
+            ref={closeRef}
             type="button"
             onClick={onClose}
             className="inline-flex min-h-[44px] min-w-[44px] items-center justify-center"
@@ -129,8 +112,7 @@ export default function ApplicationEditDialog({
               onChange={(event) =>
                 setForm((current) => ({ ...current, companyName: event.target.value }))
               }
-              className={applicationInputClass}
-              style={applicationInputStyle}
+              className="c97-field"
             />
           </FormField>
           <FormField label="Role">
@@ -139,8 +121,7 @@ export default function ApplicationEditDialog({
               onChange={(event) =>
                 setForm((current) => ({ ...current, title: event.target.value }))
               }
-              className={applicationInputClass}
-              style={applicationInputStyle}
+              className="c97-field"
             />
           </FormField>
           <FormField label="Location">
@@ -149,8 +130,7 @@ export default function ApplicationEditDialog({
               onChange={(event) =>
                 setForm((current) => ({ ...current, location: event.target.value }))
               }
-              className={applicationInputClass}
-              style={applicationInputStyle}
+              className="c97-field"
             />
           </FormField>
           <FormField label="Department">
@@ -159,8 +139,7 @@ export default function ApplicationEditDialog({
               onChange={(event) =>
                 setForm((current) => ({ ...current, department: event.target.value }))
               }
-              className={applicationInputClass}
-              style={applicationInputStyle}
+              className="c97-field"
             />
           </FormField>
           <FormField label="Application URL">
@@ -169,8 +148,7 @@ export default function ApplicationEditDialog({
               onChange={(event) =>
                 setForm((current) => ({ ...current, applyUrl: event.target.value }))
               }
-              className={applicationInputClass}
-              style={applicationInputStyle}
+              className="c97-field"
               inputMode="url"
             />
           </FormField>
@@ -180,8 +158,7 @@ export default function ApplicationEditDialog({
               onChange={(event) =>
                 setForm((current) => ({ ...current, sourceUrl: event.target.value }))
               }
-              className={applicationInputClass}
-              style={applicationInputStyle}
+              className="c97-field"
               inputMode="url"
             />
           </FormField>
@@ -194,8 +171,7 @@ export default function ApplicationEditDialog({
                   status: event.target.value as MBAApplicationStatus,
                 }))
               }
-              className={applicationInputClass}
-              style={applicationInputStyle}
+              className="c97-field"
             >
               {MBA_APPLICATION_STATUSES.map((status) => (
                 <option key={status} value={status}>
@@ -213,8 +189,7 @@ export default function ApplicationEditDialog({
                   priority: event.target.value as MBAApplicationPriority,
                 }))
               }
-              className={applicationInputClass}
-              style={applicationInputStyle}
+              className="c97-field"
             >
               {MBA_APPLICATION_PRIORITIES.map((priority) => (
                 <option key={priority} value={priority}>
@@ -230,8 +205,7 @@ export default function ApplicationEditDialog({
               onChange={(event) =>
                 setForm((current) => ({ ...current, followUpDate: event.target.value }))
               }
-              className={applicationInputClass}
-              style={applicationInputStyle}
+              className="c97-field"
             />
           </FormField>
           <FormField label="Deadline">
@@ -241,8 +215,7 @@ export default function ApplicationEditDialog({
               onChange={(event) =>
                 setForm((current) => ({ ...current, deadline: event.target.value }))
               }
-              className={applicationInputClass}
-              style={applicationInputStyle}
+              className="c97-field"
             />
           </FormField>
           <FormField label="Contact">
@@ -251,8 +224,7 @@ export default function ApplicationEditDialog({
               onChange={(event) =>
                 setForm((current) => ({ ...current, contact: event.target.value }))
               }
-              className={applicationInputClass}
-              style={applicationInputStyle}
+              className="c97-field"
             />
           </FormField>
           <div className="sm:col-span-2">
@@ -262,8 +234,7 @@ export default function ApplicationEditDialog({
                 onChange={(event) =>
                   setForm((current) => ({ ...current, notes: event.target.value }))
                 }
-                className={`${applicationInputClass} min-h-28 resize-y`}
-                style={applicationInputStyle}
+                className="c97-field min-h-28 resize-y"
               />
             </FormField>
           </div>

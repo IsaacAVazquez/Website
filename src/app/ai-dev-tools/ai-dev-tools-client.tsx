@@ -1,13 +1,14 @@
 "use client";
 
-import { startTransition, useEffect, useMemo, useState } from "react";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useMemo, useState } from "react";
+import { useSearchParams } from "next/navigation";
 import { ExternalLink, RotateCcw, Search } from "lucide-react";
 import { EmptyPanel } from "@/components/football/EmptyPanel";
 import { BrandGithub } from "@/components/ui/ServerIcons";
 import { Catalog97ProjectHero } from "@/components/catalog97/Catalog97ProjectHero";
 import { PROJECT_PRESS } from "@/constants/projectPress";
 import { useClientNow } from "@/hooks/useClientNow";
+import { formatLongUtcDate } from "@/lib/date-formatters";
 import { SurfaceMap, ToolCategoryIcon } from "./SurfaceMap";
 import {
   AI_DEV_TOOL_CADENCE_LABELS,
@@ -32,6 +33,7 @@ import {
   normalizeAiDevToolsState,
   type AiDevToolsRouteState,
 } from "./ai-dev-tools-state";
+import { useRouteSync } from "@/hooks/useRouteSync";
 
 interface AiDevToolsClientProps {
   initialState: AiDevToolsRouteState;
@@ -74,23 +76,13 @@ const sourceOptions: FilterOption[] = [
   })),
 ];
 
-function formatGeneratedAt(iso: string): string {
-  // Pinned to UTC so the server and the browser print the same date.
-  return new Date(iso).toLocaleDateString("en-US", {
-    month: "long",
-    day: "numeric",
-    year: "numeric",
-    timeZone: "UTC",
-  });
-}
-
 type SortKey = "curated" | "stars" | "recent" | "name";
 
 const SORT_OPTIONS: FilterOption[] = [
   { id: "curated", label: "Curated order" },
   { id: "stars", label: "GitHub stars" },
   { id: "recent", label: "Recently shipped" },
-  { id: "name", label: "Name (A–Z)" },
+  { id: "name", label: "Name (A to Z)" },
 ];
 
 // Lifecycle signal surfaced as a small badge so a tool that's mid-pivot or
@@ -155,7 +147,6 @@ function releaseFreshness(tool: AiDevTool, nowMs: number | null): { dot: string;
 }
 
 export function AiDevToolsClient({ initialState }: AiDevToolsClientProps) {
-  const router = useRouter();
   const searchParams = useSearchParams();
   const hasManagedParams =
     searchParams.get("category") !== null ||
@@ -169,27 +160,13 @@ export function AiDevToolsClient({ initialState }: AiDevToolsClientProps) {
     ? normalizeAiDevToolsState(searchParams)
     : initialState;
 
-  const currentQuery = searchParams.toString();
-  const currentHref = `/ai-dev-tools${currentQuery ? `?${currentQuery}` : ""}`;
   const desiredHref = buildAiDevToolsHref(state);
 
-  useEffect(() => {
-    if (currentHref === desiredHref) {
-      return;
-    }
-    startTransition(() => {
-      router.replace(desiredHref, { scroll: false });
-    });
-  }, [currentHref, desiredHref, router]);
+  const pushHref = useRouteSync("/ai-dev-tools", desiredHref);
 
   function navigate(nextState: AiDevToolsRouteState) {
     const href = buildAiDevToolsHref(nextState);
-    if (href === currentHref) {
-      return;
-    }
-    startTransition(() => {
-      router.push(href, { scroll: false });
-    });
+    pushHref(href);
   }
 
   const [sort, setSort] = useState<SortKey>("curated");
@@ -242,7 +219,7 @@ export function AiDevToolsClient({ initialState }: AiDevToolsClientProps) {
     return `${days}d ago`;
   }, [mostRecentTool, now]);
 
-  const updatedAt = formatGeneratedAt(AI_DEV_TOOLS_GENERATED_AT);
+  const updatedAt = formatLongUtcDate(AI_DEV_TOOLS_GENERATED_AT);
 
   function updateFilter(partial: Partial<AiDevToolsRouteState>) {
     const clearsSelection =
@@ -316,7 +293,7 @@ export function AiDevToolsClient({ initialState }: AiDevToolsClientProps) {
                 value={state.query}
                 onChange={(event) => updateFilter({ query: event.target.value })}
                 placeholder="Search tools, models, surfaces"
-                className="min-h-[44px] w-full bg-transparent text-sm text-[var(--c97-ink)] placeholder:text-[var(--c97-ink-2)] focus:outline-none"
+                className="min-h-[44px] w-full bg-transparent text-sm text-[var(--c97-ink)] placeholder:text-[var(--c97-ink-2)]"
               />
             </label>
             <div className="flex flex-wrap items-center gap-2">
@@ -415,7 +392,7 @@ function FilterSelect({ label, value, options, onChange }: FilterSelectProps) {
       <select
         value={value}
         onChange={(event) => onChange(event.target.value)}
-        className="min-h-[44px] bg-transparent text-sm font-semibold text-[var(--c97-ink)] focus:outline-none"
+        className="min-h-[44px] bg-transparent text-sm font-semibold text-[var(--c97-ink)]"
       >
         {options.map((option) => (
           <option key={option.id} value={option.id}>
@@ -579,9 +556,7 @@ function ToolDetail({ tool }: { tool: AiDevTool | null }) {
             <p className="mb-1 text-2xs font-semibold uppercase tracking-[0.18em] text-[var(--c97-ink-2)]">
               {tool.company}
             </p>
-            <h2 className="mb-0 text-2xl font-semibold text-[var(--c97-ink)]">
-              {tool.name}
-            </h2>
+            <h2 className="c97-serif c97-h3">{tool.name}</h2>
           </div>
         </div>
         <a

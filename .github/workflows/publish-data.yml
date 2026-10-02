@@ -159,62 +159,14 @@ jobs:
           # egress to the site and can fail honestly.
           node scripts/ci/verify-deploy-assets.mjs
 
-
       - name: Open or update publication incident
         if: failure()
         uses: actions/github-script@v9
         with:
-          script: |
-            const runUrl = `${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}`;
-            const title = "Production data publication failed";
-            const body = `The refreshed data ledger did not reach production.\n\nRun: ${runUrl}\n\nCheck the build and deploy steps first, then NETLIFY_AUTH_TOKEN, the Netlify deploy log, and the access policy for /api/data-revisions.`;
-            const open = await github.rest.issues.listForRepo({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              state: "open",
-              labels: "data-publication-failure",
-              per_page: 5,
-            });
-            if (open.data.length) {
-              await github.rest.issues.createComment({
-                owner: context.repo.owner,
-                repo: context.repo.repo,
-                issue_number: open.data[0].number,
-                body,
-              });
-            } else {
-              await github.rest.issues.create({
-                owner: context.repo.owner,
-                repo: context.repo.repo,
-                title,
-                body,
-                labels: ["data-publication-failure", "automation"],
-              });
-            }
+          script: await require('./scripts/ci/failure-issue.cjs').open({ github, context }, 'data-publication-failure', 'Production data publication failed', 'The refreshed data ledger did not reach production. Check the build and deploy steps first, then NETLIFY_AUTH_TOKEN, the Netlify deploy log, and the access policy for /api/data-revisions.')
 
       - name: Close resolved publication incidents
         if: success()
         uses: actions/github-script@v9
         with:
-          script: |
-            const open = await github.rest.issues.listForRepo({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              state: "open",
-              labels: "data-publication-failure",
-              per_page: 20,
-            });
-            for (const issue of open.data) {
-              await github.rest.issues.createComment({
-                owner: context.repo.owner,
-                repo: context.repo.repo,
-                issue_number: issue.number,
-                body: "Production now serves the expected data ledger revision. Closing this incident.",
-              });
-              await github.rest.issues.update({
-                owner: context.repo.owner,
-                repo: context.repo.repo,
-                issue_number: issue.number,
-                state: "closed",
-              });
-            }
+          script: await require('./scripts/ci/failure-issue.cjs').close({ github, context }, 'data-publication-failure')

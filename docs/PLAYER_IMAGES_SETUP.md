@@ -24,7 +24,7 @@ The current app tree does not include the older player-image mapping system docu
 The live fantasy football surface is snapshot-backed:
 
 - `npm run update:fantasy`
-- `src/data/fantasyPositionData.generated.ts`
+- `src/data/fantasyPositionData.generated.json`
 - `src/data/fantasySnapshotRevision.generated.ts`
 - `public/data/fantasy/{ppr,half_ppr,standard}.json`
 - `/api/fantasy-data`
@@ -36,5 +36,4 @@ If player images are reintroduced, document the new source files, refresh workfl
 ## Related References
 
 - `docs/FANTASY_PLATFORM_SETUP.md`
-- `docs/AUTOMATION_SCRIPTS.md`
 - `COMPONENTS.md`

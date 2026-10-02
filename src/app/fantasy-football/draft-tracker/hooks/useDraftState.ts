@@ -1,7 +1,7 @@
 "use client";
 
 import { logger } from "@/lib/logger";
-import { useState, useEffect, useCallback, useMemo } from 'react';
+import { useState, useEffect, useCallback, useMemo, useRef } from 'react';
 import { DraftState, DraftSettings, DraftPick, Player, TeamRoster, ScoringFormat } from '@/types';
 import {
   classifyPickValue,
@@ -15,6 +15,9 @@ import {
   getCurrentDraftSeason,
   getFantasyDraftStorageKey,
 } from '@/lib/fantasyUtils';
+import { emitBrowserStorageChange, subscribeBrowserStorage } from "@/lib/browserStorage";
+import { clamp, escapeCsvValue, isFiniteNumber, isRecord, prefixedId } from "@/lib/utils";
+import { downloadFile } from "@/lib/downloadFile";
 
 // Defined in fantasyUtils so a caller that only needs the season or the key
 // does not bundle this hook. Re-exported for the mock draft and the tests.
@@ -127,14 +130,6 @@ const SUPPORTED_TIMER_SECONDS = [0, 45, 60, 90, 120, 180] as const;
 const DRAFT_ROSTER_POSITIONS = ['QB', 'RB', 'WR', 'TE', 'K', 'DST'] as const;
 type DraftRosterPosition = (typeof DRAFT_ROSTER_POSITIONS)[number];
 
-function isRecord(value: unknown): value is UnknownRecord {
-  return Boolean(value) && typeof value === 'object' && !Array.isArray(value);
-}
-
-function isFiniteNumber(value: unknown): value is number {
-  return typeof value === 'number' && Number.isFinite(value);
-}
-
 function isDraftRosterPosition(value: unknown): value is DraftRosterPosition {
   return DRAFT_ROSTER_POSITIONS.includes(value as DraftRosterPosition);
 }
@@ -152,8 +147,7 @@ function nearestSupportedInteger(
 }
 
 function clampInteger(value: unknown, minimum: number, maximum: number, fallback: number): number {
-  if (!isFiniteNumber(value)) return fallback;
-  return Math.min(maximum, Math.max(minimum, Math.round(value)));
+  return isFiniteNumber(value) ? clamp(Math.round(value), minimum, maximum) : fallback;
 }
 
 function decodeDate(value: unknown): Date | undefined {
@@ -421,7 +415,7 @@ function decodePersistedDraftState(value: unknown): DraftState {
   const draftId =
     typeof record.draftId === 'string' && record.draftId.trim()
       ? record.draftId.trim().slice(0, 100)
-      : generateDraftId();
+      : prefixedId("draft");
 
   return {
     settings,
@@ -439,20 +433,6 @@ function decodePersistedDraftState(value: unknown): DraftState {
   };
 }
 
-// Generate unique draft ID
-const generateDraftId = (): string => {
-  return `draft_${Date.now()}_${Math.random().toString(36).slice(2, 11)}`;
-};
-
-// Escape a single CSV field per RFC 4180: wrap in quotes and double any
-// embedded quotes when the value contains a comma, quote, or newline. NFL
-// player names are usually comma-free, but this keeps the export from breaking
-// on the occasional edge case.
-const escapeCsvValue = (value: string | number): string => {
-  const stringValue = String(value);
-  return /[",\n\r]/.test(stringValue) ? `"${stringValue.replace(/"/g, '""')}"` : stringValue;
-};
-
 export const useDraftState = () => {
   const [draftState, setDraftState] = useState<DraftState>(() => {
     // Initialize with default state
@@ -465,88 +445,127 @@ export const useDraftState = () => {
       isActive: false,
       undoHistory: [],
       teams: initializeTeams(settings.totalTeams),
-      draftId: generateDraftId(),
+      draftId: prefixedId("draft"),
     };
   });
 
   const [isLoaded, setIsLoaded] = useState(false);
   const [persistenceError, setPersistenceError] = useState<string | null>(null);
 
-  // Load from localStorage on mount
-  useEffect(() => {
-    if (typeof window !== 'undefined') {
-      // One-time cleanup: if the old unversioned key is still hanging around,
-      // drop it. We do not attempt to migrate the payload — the schema has
-      // shifted across versions and forcing a fresh start is safer than
-      // silently restoring a partially-compatible draft.
-      try {
-        if (localStorage.getItem(LEGACY_FANTASY_DRAFT_STORAGE_KEY) !== null) {
-          localStorage.removeItem(LEGACY_FANTASY_DRAFT_STORAGE_KEY);
-        }
-      } catch {
-        // Ignore — localStorage may be disabled or full; we'll just skip.
-      }
+  const stateRef = useRef(draftState);
+  const knownRawRef = useRef<string | null>(null);
+  const loadedRef = useRef(false);
+  const unsavedRef = useRef(false);
+  const conflictRef = useRef(false);
+  const conflictWarning = "This tab has unsaved draft changes, and another tab saved a different draft. I kept this tab's picks. Resetting the draft will clear them and resolve the conflict.";
 
-      let saved: string | null = null;
-      let loadedPreviousVersion = false;
-      try {
-        saved = localStorage.getItem(FANTASY_DRAFT_STORAGE_KEY);
-        if (!saved) {
-          saved = localStorage.getItem(PREVIOUS_FANTASY_DRAFT_STORAGE_KEY);
-          loadedPreviousVersion = saved !== null;
-        }
-      } catch {
-        // The tracker remains fully usable in memory when browser storage is
-        // blocked. Surface that limitation instead of letting the page crash.
-        // eslint-disable-next-line react-hooks/set-state-in-effect -- report an external storage failure detected during hydration
-        setPersistenceError("This draft is running in this tab, but your browser is blocking local saves.");
-      }
-      if (saved) {
-        try {
-          const decodedState = decodePersistedDraftState(JSON.parse(saved));
-          setDraftState(decodedState);
-          if (loadedPreviousVersion) {
-            try {
-              localStorage.setItem(FANTASY_DRAFT_STORAGE_KEY, JSON.stringify(decodedState));
-              localStorage.removeItem(PREVIOUS_FANTASY_DRAFT_STORAGE_KEY);
-            } catch {
-              // The migrated state still runs in memory if the write is blocked.
-            }
-          }
-        } catch (error) {
-          logger.error("Draft state failed to load from localStorage", error);
-          // Persisted blob is corrupt — drop it so we start clean on next save
-          // instead of looping through this catch on every mount.
-          try {
-            localStorage.removeItem(FANTASY_DRAFT_STORAGE_KEY);
-            if (loadedPreviousVersion) {
-              localStorage.removeItem(PREVIOUS_FANTASY_DRAFT_STORAGE_KEY);
-            }
-          } catch {
-            // Same as above — best-effort.
-          }
-        }
-      }
-      setIsLoaded(true);
+  const restoreRaw = useCallback((raw: string | null) => {
+    if (unsavedRef.current && raw !== knownRawRef.current) {
+      conflictRef.current = true;
+      setPersistenceError(conflictWarning);
+      return;
+    }
+    let next: DraftState;
+    try {
+      next = decodePersistedDraftState(raw === null ? {} : JSON.parse(raw));
+    } catch {
+      next = decodePersistedDraftState({});
+    }
+    knownRawRef.current = raw;
+    stateRef.current = next;
+    setDraftState(next);
+  }, []);
+
+  const persist = useCallback((next: DraftState) => {
+    try {
+      const raw = JSON.stringify(next);
+      localStorage.setItem(FANTASY_DRAFT_STORAGE_KEY, raw);
+      knownRawRef.current = raw;
+      unsavedRef.current = false;
+      emitBrowserStorageChange(FANTASY_DRAFT_STORAGE_KEY);
+      return true;
+    } catch {
+      unsavedRef.current = true;
+      setPersistenceError("This draft is running in this tab, but changes cannot be saved locally.");
+      return false;
     }
   }, []);
 
-  // Save to localStorage whenever state changes (after initial load)
+  // Read and write one initial state after hydration, including v2 migration.
   useEffect(() => {
-    if (isLoaded && typeof window !== 'undefined') {
-      const saveState = { ...draftState };
+    let saved: string | null = null;
+    let loadedPreviousVersion = false;
+    try { localStorage.removeItem(LEGACY_FANTASY_DRAFT_STORAGE_KEY); } catch { /* Legacy cleanup must not block restoring the current draft. */ }
+    try {
+      const currentRaw = localStorage.getItem(FANTASY_DRAFT_STORAGE_KEY);
+      knownRawRef.current = currentRaw;
+      saved = currentRaw;
+      if (!saved) {
+        saved = localStorage.getItem(PREVIOUS_FANTASY_DRAFT_STORAGE_KEY);
+        loadedPreviousVersion = saved !== null;
+      }
+    } catch {
+      // eslint-disable-next-line react-hooks/set-state-in-effect -- report browser storage access after hydration
+      setPersistenceError("This draft is running in this tab, but your browser is blocking local saves.");
+    }
+    if (saved) {
       try {
-        localStorage.setItem(FANTASY_DRAFT_STORAGE_KEY, JSON.stringify(saveState));
-      } catch {
-        // eslint-disable-next-line react-hooks/set-state-in-effect -- report an external storage failure detected while persisting
-        setPersistenceError("This draft is running in this tab, but changes cannot be saved locally.");
+        const next = decodePersistedDraftState(JSON.parse(saved));
+        stateRef.current = next;
+        setDraftState(next);
+      } catch (error) {
+        logger.error("Draft state failed to load from localStorage", error);
+        try {
+          localStorage.removeItem(FANTASY_DRAFT_STORAGE_KEY);
+          knownRawRef.current = null;
+          if (loadedPreviousVersion) localStorage.removeItem(PREVIOUS_FANTASY_DRAFT_STORAGE_KEY);
+        } catch { /* Corrupt saves are removed when browser storage permits it. */ }
       }
     }
-  }, [draftState, isLoaded]);
+    loadedRef.current = true;
+    if (persist(stateRef.current) && loadedPreviousVersion) {
+      try { localStorage.removeItem(PREVIOUS_FANTASY_DRAFT_STORAGE_KEY); } catch { /* Best effort migration cleanup. */ }
+    }
+    setIsLoaded(true);
+    return subscribeBrowserStorage(FANTASY_DRAFT_STORAGE_KEY, () => {
+      try {
+        const raw = localStorage.getItem(FANTASY_DRAFT_STORAGE_KEY);
+        // Own writes are already applied synchronously; decoding them would
+        // normalize settings again and can alter a caller's active room.
+        if (raw !== knownRawRef.current) restoreRaw(raw);
+      } catch { /* The current room stays usable when storage is blocked. */ }
+    });
+  }, [persist, restoreRaw]);
+
+  const commitDraftState = useCallback((update: (current: DraftState) => DraftState, discardUnsaved = false) => {
+    if (!loadedRef.current) return;
+    if (conflictRef.current && !discardUnsaved) {
+      setPersistenceError(conflictWarning);
+      return;
+    }
+    try {
+      const raw = localStorage.getItem(FANTASY_DRAFT_STORAGE_KEY);
+      if (discardUnsaved) {
+        knownRawRef.current = raw;
+      } else if (raw !== knownRawRef.current) {
+        restoreRaw(raw);
+        if (!conflictRef.current) setPersistenceError("This draft changed in another tab. I loaded the latest save. Try that action again.");
+        return;
+      }
+    } catch {
+      // Blocked storage does not prevent drafting in memory.
+    }
+    if (discardUnsaved) conflictRef.current = false;
+    const next = update(stateRef.current);
+    if (next === stateRef.current) return;
+    stateRef.current = next;
+    setDraftState(next);
+    if (persist(next)) setPersistenceError(null);
+  }, [persist, restoreRaw]);
 
   // Update draft settings
   const updateSettings = useCallback((newSettings: Partial<DraftSettings>) => {
-    setDraftState(prev => {
+    commitDraftState(prev => {
       const mergedSettings = { ...prev.settings, ...newSettings };
       const normalizedUserTeam = Math.min(mergedSettings.userTeam, mergedSettings.totalTeams);
 
@@ -564,19 +583,19 @@ export const useDraftState = () => {
             : prev.teams,
       };
     });
-  }, []);
+  }, [commitDraftState]);
 
   const startDraft = useCallback(() => {
-    setDraftState((prev) => ({
+    commitDraftState((prev) => ({
       ...prev,
       isActive: true,
       startTime: prev.startTime ?? new Date(),
     }));
-  }, []);
+  }, [commitDraftState]);
 
   // Draft a player
   const draftPlayer = useCallback((player: Player) => {
-    setDraftState(prev => {
+    commitDraftState(prev => {
       const totalPicks = prev.settings.totalTeams * prev.settings.rounds;
       if (
         prev.currentPick > totalPicks ||
@@ -637,11 +656,11 @@ export const useDraftState = () => {
         undoHistory: [],
       };
     });
-  }, []);
+  }, [commitDraftState]);
 
   // Undo last pick
   const undoLastPick = useCallback(() => {
-    setDraftState(prev => {
+    commitDraftState(prev => {
       if (prev.picks.length === 0) return prev;
       
       const lastPick = prev.picks[prev.picks.length - 1];
@@ -679,11 +698,11 @@ export const useDraftState = () => {
         endTime: undefined,
       };
     });
-  }, []);
+  }, [commitDraftState]);
 
   // Redo the most recently undone pick, replaying it at the current slot.
   const redoLastPick = useCallback(() => {
-    setDraftState(prev => {
+    commitDraftState(prev => {
       if (prev.undoHistory.length === 0) return prev;
       const totalPicks = prev.settings.totalTeams * prev.settings.rounds;
       if (prev.currentPick > totalPicks) return prev;
@@ -736,12 +755,12 @@ export const useDraftState = () => {
         undoHistory: prev.undoHistory.slice(0, -1),
       };
     });
-  }, []);
+  }, [commitDraftState]);
 
   // Undo every pick back to (and including) a target pick number, rebuilding the
   // affected rosters in one pass. Undone picks land on the redo stack newest-out.
   const undoToPick = useCallback((targetPickNumber: number) => {
-    setDraftState(prev => {
+    commitDraftState(prev => {
       const removed = prev.picks.filter(pick => pick.pickNumber >= targetPickNumber);
       if (removed.length === 0) return prev;
 
@@ -762,21 +781,21 @@ export const useDraftState = () => {
         endTime: undefined,
       };
     });
-  }, []);
+  }, [commitDraftState]);
 
   // Rename a team in the room (league-mate personalization).
   const setTeamName = useCallback((teamNumber: number, name: string) => {
-    setDraftState(prev => ({
+    commitDraftState(prev => ({
       ...prev,
       teams: prev.teams.map(team =>
         team.teamNumber === teamNumber ? { ...team, teamName: name.slice(0, 40) } : team
       ),
     }));
-  }, []);
+  }, [commitDraftState]);
 
   // Reset draft
   const resetDraft = useCallback(() => {
-    setDraftState(prev => ({
+    commitDraftState(prev => ({
       settings: prev.settings,
       picks: [],
       currentPick: 1,
@@ -784,9 +803,9 @@ export const useDraftState = () => {
       isActive: false,
       undoHistory: [],
       teams: rebuildTeams(prev.settings.totalTeams, [], prev.teams),
-      draftId: generateDraftId(),
-    }));
-  }, []);
+      draftId: prefixedId("draft"),
+    }), true);
+  }, [commitDraftState]);
 
   // Resolve a team's display name, falling back to "Team N".
   const resolveTeamName = useCallback(
@@ -796,16 +815,6 @@ export const useDraftState = () => {
     },
     [draftState.teams]
   );
-
-  function downloadBlob(parts: BlobPart[], type: string, filename: string) {
-    const blob = new Blob(parts, { type });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = filename;
-    a.click();
-    URL.revokeObjectURL(url);
-  }
 
   function toCsv(rows: (string | number)[][]): string {
     // CRLF row endings per RFC 4180.
@@ -859,10 +868,10 @@ export const useDraftState = () => {
         });
 
         // UTF-8 BOM so Excel on Windows doesn't garble accented player names.
-        downloadBlob(
-          ['\uFEFF', toCsv([headers, ...rows])],
-          'text/csv;charset=utf-8',
-          `draft-results-${draftState.draftId}.csv`
+        downloadFile(
+          `draft-results-${draftState.draftId}.csv`,
+          '\uFEFF' + toCsv([headers, ...rows]),
+          'text/csv;charset=utf-8'
         );
         return;
       }
@@ -894,10 +903,10 @@ export const useDraftState = () => {
             ];
           });
 
-        downloadBlob(
-          ['\uFEFF', toCsv([headers, ...rows])],
-          'text/csv;charset=utf-8',
-          `draft-recap-${draftState.draftId}.csv`
+        downloadFile(
+          `draft-recap-${draftState.draftId}.csv`,
+          '\uFEFF' + toCsv([headers, ...rows]),
+          'text/csv;charset=utf-8'
         );
         return;
       }
@@ -913,10 +922,10 @@ export const useDraftState = () => {
         draftId: draftState.draftId,
         exportDate: new Date().toISOString(),
       };
-      downloadBlob(
-        [JSON.stringify(exportData, null, 2)],
-        'application/json',
-        `draft-results-${draftState.draftId}.json`
+      downloadFile(
+        `draft-results-${draftState.draftId}.json`,
+        JSON.stringify(exportData, null, 2),
+        'application/json'
       );
     },
     [draftState, resolveTeamName]

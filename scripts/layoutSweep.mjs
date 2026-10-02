@@ -50,7 +50,6 @@ const DESIGNED = new Set(["/", "/portfolio", "/writing", "/dashboards", "/about"
 // Noindex pages the sitemap leaves out, three posts (long inline code and a
 // table, the longest post, a second table), one topic, and a 404.
 const EXTRA_ROUTES = [
-  "/analytics-reference",
   "/search",
   "/score-pools/settings",
   "/writing/complete-guide-qa-engineering",

@@ -18,14 +18,6 @@ jest.mock("next/navigation", () => ({
   useSearchParams: () => currentSearchParams,
 }));
 
-jest.mock("framer-motion", () => ({
-  AnimatePresence: ({ children }: { children: React.ReactNode }) => <>{children}</>,
-  motion: {
-    div: ({ children, ...props }: React.HTMLAttributes<HTMLDivElement>) => <div {...props}>{children}</div>,
-  },
-  useReducedMotion: () => true,
-}));
-
 jest.mock("@/hooks/useInvestments", () => ({
   useInvestments: () => mockUseInvestments(),
 }));

@@ -6,6 +6,7 @@ import type {
   TechStartupSnapshot,
   TechStartupSortKey,
 } from "@/types/techStartup";
+import { formatCompactCurrency } from "@/lib/retirement/format";
 
 /**
  * Curated seed entry. The build script hands these to {@link buildTechStartupSnapshot},
@@ -207,14 +208,5 @@ export function sortTechStartups(
 /** Compact USD formatter: `$300B`, `$13.8B`, `$600M`. */
 export function formatUsdCompact(value: number | null): string {
   if (value === null || Number.isNaN(value)) return "Undisclosed";
-  const format = (scaled: number, suffix: string) => {
-    const rounded = Math.round(scaled * 10) / 10;
-    const text = Number.isInteger(rounded) ? rounded.toString() : rounded.toFixed(1);
-    return `$${text}${suffix}`;
-  };
-  if (value >= 1e12) return format(value / 1e12, "T");
-  if (value >= 1e9) return format(value / 1e9, "B");
-  if (value >= 1e6) return format(value / 1e6, "M");
-  if (value >= 1e3) return format(value / 1e3, "K");
-  return `$${value}`;
+  return formatCompactCurrency(value);
 }

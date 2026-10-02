@@ -1,4 +1,4 @@
-import { mkdir, readFile, rename, writeFile } from "fs/promises";
+import { mkdir, readFile } from "fs/promises";
 import path from "path";
 import {
   fetchBestBallAdpBoard,
@@ -24,12 +24,10 @@ import {
   matchPlayerAdp,
   normalizeAdpTeam,
 } from "@/lib/fantasyAdpMatcher";
-import {
-  FANTASY_PROS_OFFICIAL_API_SOURCE,
-  FANTASY_PROS_PUBLIC_SOURCE,
-} from "@/lib/fantasyProsPublicSource";
+import { FANTASY_PROS_PUBLIC_SOURCE } from "@/lib/fantasyProsPublicSource";
 import type { FantasySnapshot } from "@/lib/fantasy";
 import type { Player } from "@/types";
+import { writeFileAtomic } from "./snapshotFallback";
 
 const OUTPUT_PATH = path.join(
   process.cwd(),
@@ -78,9 +76,6 @@ function normalizeScheduleTeams(opponents: Record<string, string>): Record<strin
 }
 
 function describeFantasyProsProvider(sourceLabel: string, boardLabel: string): string {
-  if (sourceLabel === FANTASY_PROS_OFFICIAL_API_SOURCE) {
-    return `FantasyPros official API ${boardLabel}`;
-  }
   if (sourceLabel === FANTASY_PROS_PUBLIC_SOURCE) {
     return `FantasyPros public ${boardLabel}`;
   }
@@ -90,9 +85,7 @@ function describeFantasyProsProvider(sourceLabel: string, boardLabel: string): s
 
 async function atomicWriteSnapshot(snapshot: BestBallSnapshot) {
   await mkdir(path.dirname(OUTPUT_PATH), { recursive: true });
-  const tempPath = `${OUTPUT_PATH}.tmp`;
-  await writeFile(tempPath, `${JSON.stringify(snapshot)}\n`, "utf8");
-  await rename(tempPath, OUTPUT_PATH);
+  writeFileAtomic(OUTPUT_PATH, `${JSON.stringify(snapshot)}\n`);
 }
 
 async function main() {

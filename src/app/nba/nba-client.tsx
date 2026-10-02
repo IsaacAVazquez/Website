@@ -1,7 +1,7 @@
 "use client";
 
-import { startTransition, useEffect, useMemo, useState } from "react";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useMemo, useState } from "react";
+import { useSearchParams } from "next/navigation";
 import { CircleAlert, ExternalLink } from "lucide-react";
 import { DATE_ONLY_TIME_ZONE } from "@/lib/date-formatters";
 import {
@@ -36,6 +36,9 @@ import {
   normalizeState,
   resolveDefaultState,
 } from "./nba-state.core";
+import { useRouteSync } from "@/hooks/useRouteSync";
+import { useCachedSnapshot } from "@/hooks/useCachedSnapshot";
+import { groupBy } from "@/lib/utils";
 
 interface NbaClientProps {
   initialState: NbaRouteState;
@@ -60,18 +63,6 @@ const viewOptions: Array<{ id: NbaView; label: string }> = [
   { id: "play-in", label: "Play-in race" },
 ];
 
-async function fetchNbaTeamSnapshot(
-  teamId: string,
-  signal: AbortSignal
-): Promise<NbaTeamSnapshot> {
-  const response = await fetch(`/api/nba/teams/${teamId}`, { signal });
-  const payload = (await response.json()) as NbaTeamSnapshot & { error?: string };
-  if (!response.ok) {
-    throw new Error(payload.error || "Unable to load team snapshot.");
-  }
-  return payload;
-}
-
 function toLadderTeams(teams: NbaTeam[], teamColors: Record<string, string | null>): LadderTeam[] {
   return teams.map((team) => ({
     id: team.id,
@@ -85,10 +76,7 @@ function toLadderTeams(teams: NbaTeam[], teamColors: Record<string, string | nul
 }
 
 export function NbaClient({ initialState, summary, initialTeamSnapshot, teamColors }: NbaClientProps) {
-  const router = useRouter();
   const searchParams = useSearchParams();
-  const currentQuery = searchParams.toString();
-  const currentHref = `${NBA_ROUTE}${currentQuery ? `?${currentQuery}` : ""}`;
   const lead = PROJECT_PRESS[NBA_ROUTE].lead;
   const standfirst =
     "I wanted the playoff picture in one glance, from who leads each conference, to how many games separate the cutoff, to who's already out, so this sorts every team into a band, in, play-in, or out, with the gap at each line written right on it.";
@@ -175,14 +163,17 @@ export function NbaClient({ initialState, summary, initialTeamSnapshot, teamColo
   const fallbackTeam = allTeams[0];
   const selectedTeam = teamById.get(selectedTeamId) ?? fallbackTeam;
 
-  const [teamSnapshots, setTeamSnapshots] = useState<Record<string, NbaTeamSnapshot>>(
-    () => (selectedTeamId && initialTeamSnapshot ? { [selectedTeamId]: initialTeamSnapshot } : {})
+  const {
+    snapshot: teamSnapshot,
+    isLoading: isTeamSnapshotLoading,
+    error: teamSnapshotError,
+  } = useCachedSnapshot<NbaTeamSnapshot>(
+    "/api/nba/teams",
+    selectedTeam?.id ?? null,
+    { id: selectedTeamId, snapshot: initialTeamSnapshot },
+    "Unable to load team snapshot."
   );
-  const [loadingTeamId, setLoadingTeamId] = useState<string | null>(null);
-  const [teamSnapshotError, setTeamSnapshotError] = useState<string | null>(null);
   const [activeDetailTab, setActiveDetailTab] = useState<"team" | "schedule" | "leaders">("team");
-  const teamSnapshot = selectedTeam ? teamSnapshots[selectedTeam.id] ?? null : null;
-  const isTeamSnapshotLoading = selectedTeam ? loadingTeamId === selectedTeam.id : false;
   const desiredHref = buildHref(
     { view: routeState.view, team: selectedTeamId },
     defaultState,
@@ -190,19 +181,11 @@ export function NbaClient({ initialState, summary, initialTeamSnapshot, teamColo
     searchParams
   );
 
-  useEffect(() => {
-    if (currentHref === desiredHref) return;
-    startTransition(() => {
-      router.replace(desiredHref, { scroll: false });
-    });
-  }, [currentHref, desiredHref, router]);
+  const pushHref = useRouteSync(NBA_ROUTE, desiredHref);
 
   function navigate(nextState: NbaRouteState) {
     const href = buildHref(nextState, defaultState, aliasMap, searchParams);
-    if (href === currentHref) return;
-    startTransition(() => {
-      router.push(href, { scroll: false });
-    });
+    pushHref(href);
   }
 
   function handleViewChange(view: NbaView) {
@@ -219,41 +202,6 @@ export function NbaClient({ initialState, summary, initialTeamSnapshot, teamColo
       team: canonicalizeTeamId(teamId, aliasMap) ?? defaultState.team,
     });
   }
-
-  useEffect(() => {
-    if (!selectedTeam) return;
-    if (teamSnapshots[selectedTeam.id]) {
-      // eslint-disable-next-line react-hooks/set-state-in-effect -- Reset loading/error flags when cached snapshot exists for the selected team
-      setLoadingTeamId(null);
-      setTeamSnapshotError(null);
-      return;
-    }
-    const controller = new AbortController();
-    let cancelled = false;
-    setLoadingTeamId(selectedTeam.id);
-    setTeamSnapshotError(null);
-    fetchNbaTeamSnapshot(selectedTeam.id, controller.signal)
-      .then((snapshot) => {
-        if (cancelled) return;
-        setTeamSnapshots((current) =>
-          current[selectedTeam.id] ? current : { ...current, [selectedTeam.id]: snapshot }
-        );
-      })
-      .catch((error: Error) => {
-        if (!cancelled && error.name !== "AbortError") {
-          setTeamSnapshotError(error.message || "Unable to load team snapshot.");
-        }
-      })
-      .finally(() => {
-        if (!cancelled) {
-          setLoadingTeamId((current) => (current === selectedTeam.id ? null : current));
-        }
-      });
-    return () => {
-      cancelled = true;
-      controller.abort();
-    };
-  }, [selectedTeam, teamSnapshots]);
 
   const eastTop = east[0];
   const westTop = west[0];
@@ -646,7 +594,7 @@ export function NbaClient({ initialState, summary, initialTeamSnapshot, teamColo
                 <div>
                   <div className="flex items-start justify-between gap-3">
                     <p className="c97-kicker">Top scorers</p>
-                    <a href={summary.sourceUrls.leaders} target="_blank" rel="noreferrer" className="c97-btn-outline">
+                    <a href={summary.sourceUrls.leaders} target="_blank" rel="noreferrer" className="c97-btn-ghost">
                       Official
                       <ExternalLink className="h-4 w-4" />
                     </a>
@@ -684,12 +632,7 @@ export function NbaClient({ initialState, summary, initialTeamSnapshot, teamColo
 }
 
 function groupLeadersByTeam(leaders: NbaLeader[]) {
-  return leaders.reduce((map, entry) => {
-    const existing = map.get(entry.teamId) ?? [];
-    existing.push(entry);
-    map.set(entry.teamId, existing);
-    return map;
-  }, new Map<string, NbaLeader[]>());
+  return groupBy(leaders, (entry) => entry.teamId);
 }
 
 function toLeaderEntries(

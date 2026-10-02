@@ -4,7 +4,6 @@
 import {
   FANTASY_TRADE_IN_SEASON_WARNING,
   FANTASY_TRADE_MODEL_VERSION,
-  calculateReplacementRelativeTradeValue,
   evaluateFantasyTrade,
   type FantasyTradeEvaluationInput,
   type FantasyTradeLeagueSettings,
@@ -156,18 +155,6 @@ function replaceOverallPlayer(
     ),
   };
 }
-
-describe("calculateReplacementRelativeTradeValue", () => {
-  it("is monotonic, bounded, and zero at replacement", () => {
-    expect(calculateReplacementRelativeTradeValue(1, 100)).toBe(100);
-    expect(calculateReplacementRelativeTradeValue(10, 100)).toBeGreaterThan(
-      calculateReplacementRelativeTradeValue(20, 100)
-    );
-    expect(calculateReplacementRelativeTradeValue(100, 100)).toBe(0);
-    expect(calculateReplacementRelativeTradeValue(120, 100)).toBe(0);
-    expect(calculateReplacementRelativeTradeValue(Number.NaN, 100)).toBe(0);
-  });
-});
 
 describe("evaluateFantasyTrade", () => {
   it("returns a balanced result for equal evidence and exposes the versioned contract", () => {

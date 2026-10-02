@@ -155,7 +155,7 @@ import { StructuredData } from "@/components/StructuredData";
 Data-driven schemas built from `src/lib/ai-seo.ts`. Pass your own data rather than relying on presets. Used for richer E-E-A-T signals and AI-comprehensible markup.
 
 ```tsx
-import { AIStructuredData, AIStructuredDataCollection } from "@/components/AIStructuredData";
+import { AIStructuredData } from "@/components/AIStructuredData";
 
 // Supported types:
 <AIStructuredData schema={{ type: "Person",              data: PersonSchemaData }} />
@@ -168,9 +168,6 @@ import { AIStructuredData, AIStructuredDataCollection } from "@/components/AIStr
 <AIStructuredData schema={{ type: "ItemList",            data: { name, items } }} />
 <AIStructuredData schema={{ type: "Navigation",          data: NavigationItem[] }} />
 <AIStructuredData schema={{ type: "Custom",              data: { schema: object } }} />
-
-// Render multiple schemas at once:
-<AIStructuredDataCollection schemas={[...]} />
 ```
 
 ### Generator Functions — `src/lib/ai-seo.ts`
@@ -188,7 +185,6 @@ These power `AIStructuredData` but can be called directly when you need the raw 
 | `generateBreadcrumbSchema(items)` | `BreadcrumbList` | Array of `{ name, url }` |
 | `generateItemListSchema(data)` | `ItemList` | For archives, project listings |
 | `generateNavigationSchema(items)` | `SiteNavigationElement` | Main nav |
-| `generatePageSummary(data)` | Plain object | Structured + natural language summary |
 
 ### Generator Functions — `src/lib/seo.ts`
 
@@ -197,10 +193,7 @@ Simpler alternatives for when the AI-optimized versions are overkill.
 | Function | Output |
 |---|---|
 | `generatePersonStructuredData(options?)` | `Person` with credentials, alumniOf, worksFor |
-| `generateArticleStructuredData(article)` | `Article` with publisher, mainEntityOfPage |
 | `generateBreadcrumbStructuredData(items)` | `BreadcrumbList` |
-| `generateProjectStructuredData(project)` | `SoftwareApplication` with offers |
-| `generateOrganizationStructuredData(org)` | `Organization` |
 
 ---
 
@@ -305,7 +298,7 @@ The root layout provides the baseline for every page:
 
 Runs automatically via the `postbuild` script (`npm run generate:sitemap && node scripts/patch-nft-sharp.mjs`). Generates `public/sitemap.xml`.
 
-`scripts/generatePublicSitemap.mjs` writes `PUBLIC_SITEMAP_ENTRIES` from `src/lib/sitemap.js`. That module walks every `page.tsx` under `src/app` and lists it unless the page opts out, either with `noIndex: true` (or `index: false`) in its metadata or by rendering nothing but a redirect. `UNLISTED_ROUTES` covers a page whose metadata cannot say so (`/admin`), and dynamic segments come from their own builders. Run `npm run generate:sitemap` after any change to post dates, because the consistency test compares the committed file.
+`scripts/generatePublicSitemap.mjs` writes `PUBLIC_SITEMAP_ENTRIES` from `src/lib/sitemap.js`. That module walks every `page.tsx` under `src/app` and lists it unless the page opts out, either with `noIndex: true` (or `index: false`) in its metadata or by rendering nothing but a redirect. `UNLISTED_ROUTES` covers pages whose metadata cannot say so, and dynamic segments come from their own builders. Run `npm run generate:sitemap` after any change to post dates, because the consistency test compares the committed file.
 
 ### Output fields
 
@@ -324,7 +317,7 @@ Google uses `lastmod` only while it keeps matching real changes, which is why no
 
 ### Excluded paths
 
-`/api/*`, `/_next/*`, `/404`, `/admin`, `/admin/*`, `/search`, and `/score-pools/settings` never appear, since each is either off the route walk or marked `noIndex`.
+`/api/*`, `/_next/*`, `/404`, `/search`, and `/score-pools/settings` never appear, since each is either off the route walk or marked `noIndex`.
 
 ### Redirects and server-rendered HTML
 
@@ -367,7 +360,6 @@ Status of metadata and structured data for the routes listed below. The table do
 | `/investments` | `constructMetadata` | website | `/investments` | snapshot date | BreadcrumbList, SoftwareApplication | Yes | OK |
 | `/accessibility` | `constructMetadata` | website | full URL | 2026-07-16 | WebPage, BreadcrumbList | Yes | OK |
 | `/search` | `constructMetadata` | website | `/search` | 2025-02-05 | None | None | OK, `noIndex` |
-| `/admin` | layout metadata | N/A | N/A | N/A | None | None | OK, `noIndex` |
 | `/fantasy-football` | `constructMetadata` | website | relative | snapshot date | BreadcrumbList, SportsApp, FAQ | Yes | OK; the first page of rankings rows is server-rendered from the committed snapshot, so non-JS crawlers see real players |
 | `/fantasy-football/draft-tracker` | `constructMetadata` | website | relative | snapshot date | BreadcrumbList, SoftwareApplication | Yes | OK |
 | `/fantasy-football/rb-tiers` | 308 in `next.config.mjs` | n/a | n/a | n/a | n/a | n/a | OK; page file removed |
@@ -409,7 +401,7 @@ Status of metadata and structured data for the routes listed below. The table do
 - [ ] `<AIStructuredData type="Breadcrumb" />` in JSX
 
 ### Non-public pages
-- [ ] `noIndex: true` — applies to `/admin`, utility routes, draft pages
+- [ ] `noIndex: true` — applies to utility routes, draft pages
 
 ### Never do
 - Hardcode `https://isaacvazquez.com` in page files — use `siteConfig.url` or pass relative paths to `canonicalUrl`

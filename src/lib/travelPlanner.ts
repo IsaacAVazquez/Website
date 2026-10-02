@@ -12,6 +12,8 @@ import type {
   TripStatus,
   TripSummary,
 } from "@/types/travel";
+import { groupBy, isRecord, prefixedId } from "@/lib/utils";
+import { daysBetween, toLocalDateKey, parseLocalDateKey } from "@/lib/date-formatters";
 
 export const TRAVEL_PLANNER_STORAGE_KEY = "travel_planner_trips_v1";
 
@@ -49,23 +51,12 @@ export const JOURNAL_MOOD_LABELS: Record<JournalMood, string> = {
   tired: "Tired",
 };
 
-function isRecord(value: unknown): value is Record<string, unknown> {
-  return !!value && typeof value === "object" && !Array.isArray(value);
-}
-
 export function isIsoDate(value: unknown): value is string {
   return typeof value === "string" && /^\d{4}-\d{2}-\d{2}$/.test(value);
 }
 
 function isHourMinute(value: unknown): value is string {
   return typeof value === "string" && /^\d{2}:\d{2}$/.test(value);
-}
-
-function createId(prefix: "trip" | "act" | "jrn") {
-  if (typeof crypto !== "undefined" && typeof crypto.randomUUID === "function") {
-    return `${prefix}-${crypto.randomUUID()}`;
-  }
-  return `${prefix}-${Math.random().toString(36).slice(2, 10)}`;
 }
 
 function clampString(value: unknown, max: number, fallback = ""): string {
@@ -80,18 +71,8 @@ function sanitizeNumber(value: unknown): number {
   return Math.round(numeric * 100) / 100;
 }
 
-export function getTodayKey(date = new Date()): string {
-  const year = date.getFullYear();
-  const month = String(date.getMonth() + 1).padStart(2, "0");
-  const day = String(date.getDate()).padStart(2, "0");
-  return `${year}-${month}-${day}`;
-}
-
-function parseDateKey(value: string): Date | null {
-  if (!isIsoDate(value)) return null;
-  const date = new Date(`${value}T00:00`);
-  return Number.isNaN(date.getTime()) ? null : date;
-}
+export const getTodayKey = toLocalDateKey;
+const parseDateKey = parseLocalDateKey;
 
 function diffDaysInclusive(startKey: string, endKey: string): number {
   const start = parseDateKey(startKey);
@@ -101,12 +82,7 @@ function diffDaysInclusive(startKey: string, endKey: string): number {
   return Math.max(1, Math.round(ms / 86400000) + 1);
 }
 
-function diffDaysSigned(fromKey: string, toKey: string): number {
-  const from = parseDateKey(fromKey);
-  const to = parseDateKey(toKey);
-  if (!from || !to) return 0;
-  return Math.round((to.getTime() - from.getTime()) / 86400000);
-}
+const diffDaysSigned = (fromKey: string, toKey: string): number => daysBetween(fromKey, toKey) ?? 0;
 
 // Trip, activity, and journal dates are calendar days the visitor picked in
 // an <input type="date">, stored and only ever read back in this browser.
@@ -191,12 +167,7 @@ interface ActivityOverlaps {
 export function findActivityOverlaps(activities: TripActivity[]): ActivityOverlaps {
   const conflicts = new Set<string>();
   let pairCount = 0;
-  const byDay = new Map<string, TripActivity[]>();
-  for (const activity of activities) {
-    const list = byDay.get(activity.date);
-    if (list) list.push(activity);
-    else byDay.set(activity.date, [activity]);
-  }
+  const byDay = groupBy(activities, (activity) => activity.date);
 
   for (const dayActivities of byDay.values()) {
     const windows = dayActivities
@@ -267,7 +238,7 @@ function sanitizeActivity(input: unknown): TripActivity | null {
   const endTime = time && endTimeRaw && endTimeRaw > time ? endTimeRaw : "";
 
   return {
-    id: typeof input.id === "string" && input.id ? input.id : createId("act"),
+    id: typeof input.id === "string" && input.id ? input.id : prefixedId("act"),
     // Repair rather than discard: a malformed stored date must never silently
     // delete a stop the user created.
     date: isIsoDate(input.date) ? input.date : getTodayKey(),
@@ -290,7 +261,7 @@ function sanitizeJournalEntry(input: unknown): JournalEntry | null {
       : "neutral";
 
   return {
-    id: typeof input.id === "string" && input.id ? input.id : createId("jrn"),
+    id: typeof input.id === "string" && input.id ? input.id : prefixedId("jrn"),
     // Repair rather than discard: journal text is irreplaceable, so a bad
     // date falls back to today instead of dropping the entry.
     date: isIsoDate(input.date) ? input.date : getTodayKey(),
@@ -323,7 +294,7 @@ function sanitizeTrip(input: unknown): Trip | null {
     : [];
 
   return {
-    id: typeof input.id === "string" && input.id ? input.id : createId("trip"),
+    id: typeof input.id === "string" && input.id ? input.id : prefixedId("trip"),
     name: clampString(input.name, 140, "Untitled trip"),
     destination: clampString(input.destination, 140),
     startDate,
@@ -380,7 +351,7 @@ export function createTrip(input: CreateTripInput): Trip {
   const endDate = rawEnd >= startDate ? rawEnd : startDate;
 
   return {
-    id: createId("trip"),
+    id: prefixedId("trip"),
     name: clampString(input.name, 140, "Untitled trip"),
     destination: clampString(input.destination, 140),
     startDate,
@@ -398,7 +369,7 @@ export function createActivity(input: Omit<TripActivity, "id" | "completed">): T
   const endTime = time && endTimeRaw && endTimeRaw > time ? endTimeRaw : "";
 
   return {
-    id: createId("act"),
+    id: prefixedId("act"),
     date: isIsoDate(input.date) ? input.date : getTodayKey(),
     time,
     endTime,
@@ -412,7 +383,7 @@ export function createActivity(input: Omit<TripActivity, "id" | "completed">): T
 
 export function createJournalEntry(input: Omit<JournalEntry, "id">): JournalEntry {
   return {
-    id: createId("jrn"),
+    id: prefixedId("jrn"),
     date: isIsoDate(input.date) ? input.date : getTodayKey(),
     title: clampString(input.title, 160, "Untitled entry"),
     body: clampString(input.body, 4000),
@@ -443,15 +414,9 @@ export function calculateTripSummary(trip: Trip, today = getTodayKey()): TripSum
   const sortedActivities = sortActivities(trip.activities);
   const dayKeys = getDayKeysBetween(trip.startDate, trip.endDate);
 
-  const dayLookup = new Map<string, TripActivity[]>();
-  for (const key of dayKeys) dayLookup.set(key, []);
-  for (const activity of sortedActivities) {
-    const list = dayLookup.get(activity.date);
-    if (list) {
-      list.push(activity);
-    } else {
-      dayLookup.set(activity.date, [activity]);
-    }
+  const dayLookup = groupBy(sortedActivities, (activity) => activity.date);
+  for (const key of dayKeys) {
+    if (!dayLookup.has(key)) dayLookup.set(key, []);
   }
 
   const overlaps = findActivityOverlaps(sortedActivities);

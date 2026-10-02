@@ -1,4 +1,3 @@
-import type { HTMLAttributes } from "react";
 import { fireEvent, render, screen, within } from "@testing-library/react";
 import { MBAJobsClient } from "../mba-jobs-client";
 import { DEFAULT_MBA_JOBS_STATE } from "../mba-jobs-state";
@@ -6,8 +5,7 @@ import { MBA_COMPANIES } from "@/constants/mba-companies";
 import type { MBAJob, MBATrackedApplication } from "@/types/mba-jobs";
 import { useMBAJobs } from "@/hooks/useMBAJobs";
 import { useMBAApplications } from "@/hooks/useMBAApplications";
-import { toApplicationDateKey } from "@/lib/mba-application-insights";
-import { DISPLAY_TIME_ZONE } from "@/lib/date-formatters";
+import { DISPLAY_TIME_ZONE, toLocalDateKey } from "@/lib/date-formatters";
 
 // A YYYY-MM-DD key `days` from today, anchored at local noon so the calendar
 // day is stable regardless of the test machine's clock or DST.
@@ -15,7 +13,7 @@ function dayKeyOffset(days: number): string {
   const date = new Date();
   date.setHours(12, 0, 0, 0);
   date.setDate(date.getDate() + days);
-  return toApplicationDateKey(date);
+  return toLocalDateKey(date);
 }
 
 const mockPush = jest.fn();
@@ -128,15 +126,6 @@ jest.mock("next/navigation", () => ({
     replace: jest.fn(),
   }),
   useSearchParams: () => currentSearchParams,
-}));
-
-jest.mock("framer-motion", () => ({
-  motion: {
-    div: ({ children, ...props }: HTMLAttributes<HTMLDivElement>) => (
-      <div {...props}>{children}</div>
-    ),
-  },
-  useReducedMotion: () => true,
 }));
 
 jest.mock("@/hooks/useMBAJobs", () => ({
@@ -344,14 +333,14 @@ describe("MBAJobsClient", () => {
 
     expect(screen.getByLabelText("Search roles")).toHaveValue("finance");
     expect(screen.getByLabelText("Filter by location")).toHaveValue("remote");
-    expect(screen.getByRole("tab", { name: "Remote · 1" })).toBeVisible();
-    expect(screen.getByRole("tab", { name: "New York · 1" })).toBeVisible();
+    expect(screen.getByRole("button", { name: "Remote · 1", pressed: true })).toBeVisible();
+    expect(screen.getByRole("button", { name: "New York · 1", pressed: false })).toBeVisible();
     expect(screen.getByRole("heading", { name: "Remote Finance Manager" })).toBeVisible();
     expect(
       screen.queryByRole("heading", { name: "New York Finance Manager" })
     ).not.toBeInTheDocument();
 
-    fireEvent.click(screen.getByRole("tab", { name: "New York · 1" }));
+    fireEvent.click(screen.getByRole("button", { name: "New York · 1" }));
 
     expect(mockPush).toHaveBeenLastCalledWith(
       "/mba-internship-notifications?q=finance&location=New+York",
@@ -449,7 +438,7 @@ describe("MBAJobsClient", () => {
       screen.getByRole("link", { name: "Search Google for the current role filters" })
     ).toHaveAttribute("href", expect.stringContaining("strategy"));
 
-    fireEvent.click(screen.getByRole("tab", { name: "Direct + external leads" }));
+    fireEvent.click(screen.getByRole("button", { name: "Direct + external leads" }));
 
     expect(mockPush).toHaveBeenLastCalledWith(
       "/mba-internship-notifications?external=on&q=strategy&location=remote",

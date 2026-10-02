@@ -19,6 +19,7 @@
 
 import { fieldExpectedPoints, fieldPointsByCell, fieldShareOf } from "./field";
 import { scorePickAgainstCell } from "./scoring";
+import { clamp } from "@/lib/utils";
 import type {
   CandidateEvaluation,
   ComparisonDistribution,
@@ -31,10 +32,6 @@ import type {
   ScoringRules,
   StandingContext,
 } from "./types";
-
-function clamp01(value: number): number {
-  return Math.min(1, Math.max(0, value));
-}
 
 /**
  * Turn the standing into a variance appetite `k`, used as
@@ -61,9 +58,9 @@ export function deriveRiskProfile(
       : null;
 
   // Chasing: urgency rises with the deficit relative to what's catchable.
-  const chaseNeed = gapAbove !== null ? clamp01(gapAbove / budget) : 0;
+  const chaseNeed = gapAbove !== null ? clamp(gapAbove / budget, 0, 1) : 0;
   // Protecting: urgency rises as the cushion shrinks relative to the same scale.
-  const protectUrgency = gapBelow !== null ? 1 - clamp01(gapBelow / budget) : 0;
+  const protectUrgency = gapBelow !== null ? 1 - clamp(gapBelow / budget, 0, 1) : 0;
 
   let k: number;
   switch (standing.posture) {
@@ -243,9 +240,9 @@ export function assessConfidence(
   );
   const epLead = recommended.expectedPoints - epField;
 
-  const oneSidedness = clamp01((outcomeConcentration - 0.34) / 0.4);
-  const modalStrength = clamp01((concentration - 0.09) / 0.09);
-  const leadStrength = clamp01(epLead / 0.5);
+  const oneSidedness = clamp((outcomeConcentration - 0.34) / 0.4, 0, 1);
+  const modalStrength = clamp((concentration - 0.09) / 0.09, 0, 1);
+  const leadStrength = clamp(epLead / 0.5, 0, 1);
   const score = 0.45 * oneSidedness + 0.3 * modalStrength + 0.25 * leadStrength;
 
   const level = score >= 0.6 ? "high" : score >= 0.3 ? "medium" : "low";

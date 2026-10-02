@@ -22,15 +22,8 @@ import rehypeStringify from 'rehype-stringify';
 import {
   getBlogPostSlugs,
   getBlogPostBySlug,
-  getLatestBlogPostPreviews,
   getAllBlogPosts,
   getAllBlogPostPreviews,
-  getBlogPostsByCategory,
-  getBlogPostsByTag,
-  getFeaturedBlogPosts,
-  getAllCategories,
-  getAllTags,
-  searchBlogPosts,
   getRelatedBlogPosts,
   getArchiveBlogPostPreviews,
   getCuratedBlogPostPreviewsByCluster,
@@ -194,36 +187,6 @@ describe('getBlogPostBySlug', () => {
   });
 });
 
-describe('getLatestBlogPostPreviews', () => {
-  beforeEach(() => {
-    mockFs.existsSync = jest.fn().mockReturnValue(true);
-    mockFs.mkdirSync = jest.fn();
-    (mockFs.readdirSync as jest.Mock).mockReturnValue([
-      'older-post.mdx',
-      'newer-post.mdx',
-    ]);
-    mockFs.readFileSync = jest.fn().mockReturnValue('body content');
-    mockMatter
-      .mockReturnValueOnce({
-        data: makeFrontmatter({ title: 'Older', publishedAt: '2024-01-01' }),
-        content: 'older content',
-      })
-      .mockReturnValueOnce({
-        data: makeFrontmatter({ title: 'Newer', publishedAt: '2024-02-01' }),
-        content: 'newer content',
-      });
-  });
-
-  it('returns sorted previews limited to the requested count', () => {
-    const previews = getLatestBlogPostPreviews(1);
-
-    expect(previews).toHaveLength(1);
-    expect(previews[0].title).toBe('Newer');
-    expect(previews[0].readingTime).toBe('1 min read');
-    expect(previews[0].coverImage).toBe('/writing/newer-post/opengraph-image');
-  });
-});
-
 // ─── Reading time calculation (tested indirectly) ──────────────────────────
 
 describe('reading time calculation (via getBlogPostBySlug)', () => {
@@ -302,55 +265,6 @@ describe('filtering helpers', () => {
   });
 
   // Direct unit tests for filter logic (these don't rely on getAllBlogPosts)
-
-  describe('searchBlogPosts logic', () => {
-    it('matches posts whose title contains the query (case-insensitive)', () => {
-      const allPosts = posts;
-      const filtered = allPosts.filter(p =>
-        p.title.toLowerCase().includes('default title')
-      );
-      expect(filtered.length).toBeGreaterThanOrEqual(0); // sanity
-    });
-  });
-
-  describe('getBlogPostsByCategory', () => {
-    it('filters posts by category case-insensitively', () => {
-      const tech = posts.filter(p => p.category.toLowerCase() === 'tech');
-      expect(tech.length).toBe(2);
-      expect(tech.every(p => p.category === 'Tech')).toBe(true);
-    });
-  });
-
-  describe('getBlogPostsByTag', () => {
-    it('filters posts that include the tag', () => {
-      const withJs = posts.filter(p =>
-        p.tags.some(t => t.toLowerCase() === 'js')
-      );
-      expect(withJs.length).toBe(2);
-    });
-  });
-
-  describe('getFeaturedBlogPosts', () => {
-    it('returns only featured posts', () => {
-      const featured = posts.filter(p => p.featured);
-      expect(featured.length).toBe(1);
-      expect(featured[0].slug).toBe('post-1');
-    });
-  });
-
-  describe('getAllCategories', () => {
-    it('returns unique categories sorted alphabetically', () => {
-      const cats = [...new Set(posts.map(p => p.category))].sort();
-      expect(cats).toEqual(['Product', 'Tech']);
-    });
-  });
-
-  describe('getAllTags', () => {
-    it('returns unique tags sorted alphabetically', () => {
-      const tags = [...new Set(posts.flatMap(p => p.tags))].sort();
-      expect(tags).toEqual(['js', 'node', 'pm', 'react', 'strategy']);
-    });
-  });
 
   describe('getRelatedBlogPosts scoring', () => {
     it('scores same-category posts higher than different-category', () => {
@@ -476,38 +390,6 @@ describe('aggregation helpers (real functions)', () => {
     const all = await getAllBlogPosts();
     expect(all.map((p) => p.slug)).toEqual(['tech-a', 'tech-b', 'product-c']);
     expect(all[0].content).toContain('Processed content');
-  });
-
-  it('getBlogPostsByCategory matches case-insensitively', async () => {
-    const tech = await getBlogPostsByCategory('tech');
-    expect(tech.map((p) => p.slug).sort()).toEqual(['tech-a', 'tech-b']);
-  });
-
-  it('getBlogPostsByTag matches case-insensitively', async () => {
-    const withReact = await getBlogPostsByTag('REACT');
-    expect(withReact.map((p) => p.slug)).toEqual(['tech-b']);
-  });
-
-  it('getFeaturedBlogPosts returns only featured posts', async () => {
-    const featured = await getFeaturedBlogPosts();
-    expect(featured.map((p) => p.slug)).toEqual(['tech-a']);
-  });
-
-  it('getAllCategories returns unique sorted categories', async () => {
-    expect(await getAllCategories()).toEqual(['Product', 'Tech']);
-  });
-
-  it('getAllTags returns unique sorted tags', async () => {
-    expect(await getAllTags()).toEqual(['js', 'node', 'pm', 'react', 'strategy']);
-  });
-
-  it('searchBlogPosts matches title and tags case-insensitively', async () => {
-    expect((await searchBlogPosts('react')).map((p) => p.slug)).toEqual([
-      'tech-b',
-    ]);
-    expect((await searchBlogPosts('roadmapping')).map((p) => p.slug)).toEqual([
-      'product-c',
-    ]);
   });
 
   it('getRelatedBlogPosts ranks same-category, shared-tag posts first', async () => {

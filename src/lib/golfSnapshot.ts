@@ -3,14 +3,7 @@ import type {
   GolfPlayerSnapshot,
   GolfSummary,
 } from "@/types/golf";
-
-interface GolfSnapshotError extends Error {
-  status: number;
-}
-
-function createGolfSnapshotError(message: string, status: number): GolfSnapshotError {
-  return Object.assign(new Error(message), { status });
-}
+import { HttpStatusError } from "@/lib/utils";
 
 export function createEmptyGolfPlayerSnapshot(): GolfPlayerSnapshot {
   return {
@@ -66,7 +59,7 @@ export async function getGolfPlayerSnapshot(playerId: string): Promise<GolfPlaye
     : undefined;
 
   if (!snapshot) {
-    throw createGolfSnapshotError("Golf player snapshot was not found.", 404);
+    throw new HttpStatusError("Golf player snapshot was not found.", 404);
   }
 
   return snapshot;

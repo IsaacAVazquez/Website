@@ -1,7 +1,6 @@
 import type { CSSProperties } from "react";
 
 import { DISPLAY_TIME_ZONE } from "@/lib/date-formatters";
-import type { FantasySnapshotSliceMetadata } from "@/lib/fantasy";
 import type { Player, RedraftLineupSettings } from "@/types";
 
 /**
@@ -446,61 +445,6 @@ export function getValueVsAdp(
   return { delta, signal };
 }
 
-export interface FantasyDraftMarketSignal {
-  player: Player;
-  delta: number;
-}
-
-export interface FantasyDraftMarketSignals {
-  values: FantasyDraftMarketSignal[];
-  reaches: FantasyDraftMarketSignal[];
-}
-
-/**
- * Pulls the largest expert-versus-drafter gaps from an overall board. This is
- * deliberately a current market read, not an ADP movement claim, because the
- * snapshot only publishes the latest ADP sample.
- */
-export function getFantasyDraftMarketSignals(
-  players: Player[],
-  limit = 4
-): FantasyDraftMarketSignals {
-  const values: FantasyDraftMarketSignal[] = [];
-  const reaches: FantasyDraftMarketSignal[] = [];
-
-  for (const player of players) {
-    const result = getValueVsAdp(player);
-    if (result?.signal === "value") {
-      values.push({ player, delta: result.delta });
-    } else if (result?.signal === "reach") {
-      reaches.push({ player, delta: result.delta });
-    }
-  }
-
-  const tieBreak = (
-    left: FantasyDraftMarketSignal,
-    right: FantasyDraftMarketSignal
-  ) =>
-    (left.player.rankEcr ?? left.player.averageRank ?? Number.MAX_SAFE_INTEGER) -
-      (right.player.rankEcr ??
-        right.player.averageRank ??
-        Number.MAX_SAFE_INTEGER) ||
-    left.player.name.localeCompare(right.player.name);
-
-  return {
-    values: values
-      .toSorted(
-        (left, right) => right.delta - left.delta || tieBreak(left, right)
-      )
-      .slice(0, Math.max(0, limit)),
-    reaches: reaches
-      .toSorted(
-        (left, right) => left.delta - right.delta || tieBreak(left, right)
-      )
-      .slice(0, Math.max(0, limit)),
-  };
-}
-
 /**
  * Signed pick gap at the one-decimal precision the ADP column already uses.
  * ADP is a fractional pick number while the consensus rank is a whole slot, so
@@ -574,9 +518,6 @@ export function getFantasyPointsPerGameTooltip(
         : `the ${season} regular season through week ${throughWeek}`;
   return `Fantasy points per game from ${scope}, scored in the format you have selected. It is what he did, not a projection of what he will do, and it appears only for players with at least four games that season.`;
 }
-
-/** Season-less fallback copy; prefer getFantasyPointsPerGameTooltip with the player's gameLog. */
-export const FANTASY_POINTS_PER_GAME_TOOLTIP = getFantasyPointsPerGameTooltip();
 
 export type FantasyAdpFreshness = "current" | "prior-season" | "stale";
 
@@ -726,15 +667,12 @@ export const HEADER_CHIP_CLASS =
 export const POSITION_CHIP_CLASS =
   "inline-flex flex-none items-center border px-1.5 py-0.5 font-mono text-2xs tracking-[0.06em]";
 
-/** Disabled prints unfilled with a dashed edge; an opacity fade dropped its label to 3.02:1. */
+/**
+ * Disabled prints unfilled with a dashed edge; an opacity fade dropped its label to 3.02:1.
+ * The resting colours live in the class rather than inline so the hover can apply.
+ */
 export const PILL_BUTTON_CLASS =
-  "inline-flex min-h-touch items-center justify-center border px-3 font-mono text-3xs uppercase tracking-[0.06em] disabled:cursor-not-allowed disabled:border-dashed";
-
-export const PILL_BUTTON_STYLE: CSSProperties = {
-  borderColor: "var(--c97-rule)",
-  background: "var(--c97-surface)",
-  color: "var(--c97-ink)",
-};
+  "inline-flex min-h-touch items-center justify-center border border-[var(--c97-rule)] bg-[var(--c97-surface)] px-3 font-mono text-3xs uppercase tracking-[0.06em] text-[var(--c97-ink)] enabled:hover:border-[var(--c97-ink)] disabled:cursor-not-allowed disabled:border-dashed";
 
 /** Sticky offset that clears the site header on the draft surfaces. */
 export const FASCIA_TOP_CLASS = "top-0";
@@ -781,23 +719,6 @@ export function getPositionTone(position: string): CSSProperties {
         background: "var(--c97-field)",
         borderColor: "var(--c97-rule)",
       };
-  }
-}
-
-export function getSourceKindLabel(
-  sourceKind: FantasySnapshotSliceMetadata["sourceKind"] | undefined,
-): string {
-  switch (sourceKind) {
-    case "overall_consensus":
-      return "Overall consensus";
-    case "position_consensus":
-      return "Position consensus";
-    case "shared_position_consensus":
-      return "Shared consensus";
-    case "derived_flex":
-      return "Derived flex board";
-    default:
-      return "Unavailable";
   }
 }
 

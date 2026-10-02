@@ -95,6 +95,11 @@
   fill: var(--c97-ink-2);
 }
 
+.c97-bracket-team:hover .c97-bracket-name {
+  fill: var(--c97-action);
+  text-decoration: underline;
+}
+
 .c97-bracket-score {
   font-family: var(--c97-font-mono);
   font-size: 12px;

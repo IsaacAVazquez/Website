@@ -1,7 +1,7 @@
 "use client";
 
-import { startTransition, useEffect, useMemo, useState } from "react";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useEffect, useId, useMemo, useState } from "react";
+import { useSearchParams } from "next/navigation";
 import { Catalog97ProjectHero } from "@/components/catalog97/Catalog97ProjectHero";
 import { PROJECT_PRESS } from "@/constants/projectPress";
 import { EmptyPanel } from "@/components/football/EmptyPanel";
@@ -29,6 +29,8 @@ import type {
   FrontierProviderFilter,
   FrontierTierFilter,
 } from "@/types/frontierModels";
+import { useRouteSync } from "@/hooks/useRouteSync";
+import { formatLongUtcDate } from "@/lib/date-formatters";
 
 interface FrontierModelsClientProps {
   initialState: FrontierModelsRouteState;
@@ -49,22 +51,10 @@ const TIER_FILTERS: FrontierTierFilter[] = [
   "premium",
 ];
 
-function formatGeneratedAt(iso: string): string {
-  const date = new Date(iso);
-  // Pinned to UTC so the server and the browser print the same date.
-  return date.toLocaleDateString("en-US", {
-    month: "long",
-    day: "numeric",
-    year: "numeric",
-    timeZone: "UTC",
-  });
-}
-
 export function FrontierModelsClient({
   initialState,
   snapshot,
 }: FrontierModelsClientProps) {
-  const router = useRouter();
   const searchParams = useSearchParams();
 
   const hasManagedParams =
@@ -79,28 +69,14 @@ export function FrontierModelsClient({
     : initialState;
   const resolvedState = resolveFrontierModelsState(routeState, snapshot);
 
-  const currentQuery = searchParams.toString();
-  const currentHref = `${FRONTIER_MODELS_ROUTE}${currentQuery ? `?${currentQuery}` : ""}`;
   const desiredHref = buildFrontierModelsHref(resolvedState, searchParams);
 
-  useEffect(() => {
-    if (currentHref === desiredHref) {
-      return;
-    }
-    startTransition(() => {
-      router.replace(desiredHref, { scroll: false });
-    });
-  }, [currentHref, desiredHref, router]);
+  const pushHref = useRouteSync(FRONTIER_MODELS_ROUTE, desiredHref);
 
   function navigate(nextState: FrontierModelsRouteState) {
     const resolvedNext = resolveFrontierModelsState(nextState, snapshot);
     const href = buildFrontierModelsHref(resolvedNext, searchParams);
-    if (href === currentHref) {
-      return;
-    }
-    startTransition(() => {
-      router.push(href, { scroll: false });
-    });
+    pushHref(href);
   }
 
   const filteredModels = useMemo(
@@ -120,7 +96,7 @@ export function FrontierModelsClient({
 
   const readouts = useMemo(() => frontierReadouts(snapshot.models), [snapshot.models]);
 
-  const updatedAt = formatGeneratedAt(snapshot.generatedAt);
+  const updatedAt = formatLongUtcDate(snapshot.generatedAt);
   const [reviewIsOverdue, setReviewIsOverdue] = useState(!snapshot.verified);
   useEffect(() => {
     const reviewAgeMs =
@@ -291,31 +267,24 @@ interface FilterGroupProps {
 }
 
 function FilterGroup({ label, options, value, onChange }: FilterGroupProps) {
+  const labelId = useId();
   return (
     <div className="flex flex-wrap items-center gap-2">
-      <span className="c97-kicker" style={{ minWidth: "88px" }}>
+      <span id={labelId} className="c97-kicker" style={{ minWidth: "88px" }}>
         {label}
       </span>
-      <div className="flex flex-wrap gap-1.5">
-        {options.map((option) => {
-          const isActive = option.id === value;
-          return (
-            <button
-              key={option.id}
-              type="button"
-              aria-pressed={isActive}
-              onClick={() => onChange(option.id)}
-              className="min-h-[44px] border px-4 text-sm font-medium"
-              style={
-                isActive
-                  ? { borderColor: "var(--c97-ink)", background: "var(--c97-ink)", color: "var(--c97-surface)" }
-                  : { borderColor: "var(--c97-rule)", background: "var(--c97-field)", color: "var(--c97-ink-2)" }
-              }
-            >
-              {option.label}
-            </button>
-          );
-        })}
+      <div role="group" aria-labelledby={labelId} className="c97-segmented">
+        {options.map((option) => (
+          <button
+            key={option.id}
+            type="button"
+            aria-pressed={option.id === value}
+            onClick={() => onChange(option.id)}
+            className="min-h-[44px]"
+          >
+            {option.label}
+          </button>
+        ))}
       </div>
     </div>
   );

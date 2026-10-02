@@ -1,29 +1,23 @@
 /**
  * @jest-environment node
  */
-jest.mock("@netlify/functions", () => ({
-  purgeCache: jest.fn(),
-}));
-
 jest.mock("../../../src/lib/frontierModelsLive", () => ({
   FRONTIER_MODELS_BLOB_KEY: "frontier-models",
   fetchLiveModelFacts: jest.fn(),
   applyLiveModelFacts: jest.fn(),
 }));
 
-jest.mock("../../../src/lib/snapshotBlobStore", () => ({
+jest.mock("../../../src/lib/netlifyBlobs", () => ({
   writeSnapshotBlob: jest.fn(),
 }));
 
-import { purgeCache } from "@netlify/functions";
 import {
   applyLiveModelFacts,
   fetchLiveModelFacts,
 } from "../../../src/lib/frontierModelsLive";
-import { writeSnapshotBlob } from "../../../src/lib/snapshotBlobStore";
+import { writeSnapshotBlob } from "../../../src/lib/netlifyBlobs";
 import handler, { config } from "../refresh-frontier-models";
 
-const mockPurge = purgeCache as jest.Mock;
 const mockFetchFacts = fetchLiveModelFacts as jest.Mock;
 const mockApply = applyLiveModelFacts as jest.Mock;
 const mockWrite = writeSnapshotBlob as jest.Mock;
@@ -61,12 +55,6 @@ describe("refresh-frontier-models scheduled function", () => {
     );
     expect(body.ok).toBe(true);
     expect(body.liveFacts.updated).toBe(1);
-  });
-
-  it("does not call the cache purge, since no response carries a cache tag", async () => {
-    await handler();
-
-    expect(mockPurge).not.toHaveBeenCalled();
   });
 
   it("does not write when the upstream fetch fails", async () => {

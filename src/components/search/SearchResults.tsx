@@ -2,7 +2,7 @@
 
 import { Briefcase, Clock, FileText, House, Search } from "lucide-react";
 import Link from "next/link";
-import { publishedDateFormatter } from "@/lib/utils";
+import { escapeHtml, publishedDateFormatter } from "@/lib/utils";
 import type { SearchResult } from "./SearchInterface";
 
 interface SearchResultsProps {
@@ -124,14 +124,6 @@ function SearchResultCard({ result, query }: SearchResultCardProps) {
         return <House className="h-4 w-4" aria-hidden="true" />;
     }
   };
-
-  const escapeHtml = (input: string): string =>
-    input
-      .replace(/&/g, "&amp;")
-      .replace(/</g, "&lt;")
-      .replace(/>/g, "&gt;")
-      .replace(/"/g, "&quot;")
-      .replace(/'/g, "&#39;");
 
   const highlightQuery = (text: string, q: string): string => {
     const safe = escapeHtml(text);

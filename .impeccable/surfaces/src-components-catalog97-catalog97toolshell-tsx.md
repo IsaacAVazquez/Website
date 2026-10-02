@@ -11,7 +11,7 @@ Updated on 2026-09-28 by the responsive pass. `ConditionalLayout` passes `wide` 
 
 # Catalog 97 tool shell surface brief
 
-**Scope.** `src/components/catalog97/Catalog97ToolShell.tsx`, rendered by `ConditionalLayout` around every route that is not one of the seven designed Catalog 97 pages, `/admin` included. It is `Catalog97Shell` plus an optional title band and the build-note aside, so an edit here changes 57 routes at once.
+**Scope.** `src/components/catalog97/Catalog97ToolShell.tsx`, rendered by `ConditionalLayout` around every route that is not one of the seven designed Catalog 97 pages, `/admin` included. It is `Catalog97Shell` plus the build-note aside, so an edit here changes 57 routes at once.
 
 **Visitor mode.** Operate. The shell is chrome around a working tool, so it should be quiet and let the dashboard or the calculator be the loudest thing on screen.
 

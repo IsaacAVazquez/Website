@@ -1,13 +1,13 @@
 "use client";
 
-import { ExternalLink, FileText, Plus, RefreshCw } from "lucide-react";
+import { ExternalLink, FileText, RefreshCw } from "lucide-react";
 import React from "react";
 import { useLiveQuote } from "@/hooks/useLiveQuote";
 import { useStockData } from "@/hooks/useStockData";
 import { useClientNow } from "@/hooks/useClientNow";
 import { DataFreshnessIndicator } from "./DataFreshnessIndicator";
 import { formatHistoryAsOf } from "@/lib/investmentsHistory";
-import { formatMinutesAgo } from "@/lib/investmentFormatting";
+import { formatMinutesAgo, formatPercent } from "@/lib/investmentFormatting";
 import { DISPLAY_TIME_ZONE } from "@/lib/date-formatters";
 import type {
   BetaData,
@@ -25,7 +25,6 @@ interface Props {
   symbol: string;
   isInPortfolio?: boolean;
   portfolioShares?: number | null;
-  onAddToPortfolio?: () => void;
   portfolioSymbols?: readonly string[];
 }
 
@@ -48,12 +47,6 @@ function formatSignedCurrency(n: number | undefined): string {
   const sign = n > 0 ? "+" : n < 0 ? "−" : "";
   const abs = Math.abs(n);
   return `${sign}$${abs.toFixed(2)}`;
-}
-
-function formatPercent(n: number | undefined): string {
-  if (n === undefined || !Number.isFinite(n)) return "—";
-  const sign = n > 0 ? "+" : n < 0 ? "−" : "";
-  return `${sign}${Math.abs(n).toFixed(2)}%`;
 }
 
 // `now` is the caller's `useClientNow()` reading (null on the server and
@@ -177,7 +170,6 @@ export function ResearchAssetHeader({
   symbol,
   isInPortfolio = false,
   portfolioShares = null,
-  onAddToPortfolio,
   portfolioSymbols = [],
 }: Props) {
   const now = useClientNow();
@@ -416,16 +408,6 @@ export function ResearchAssetHeader({
       </div>
 
       <div className="research-asset-actions">
-        {!isInPortfolio && onAddToPortfolio ? (
-          <button
-            type="button"
-            className="invest-ghost is-primary"
-            onClick={onAddToPortfolio}
-          >
-            <Plus size={14} aria-hidden="true" />
-            Add to portfolio
-          </button>
-        ) : null}
         {info?.website ? (
           <a
             href={info.website}
@@ -434,7 +416,7 @@ export function ResearchAssetHeader({
             className="invest-ghost"
           >
             <ExternalLink size={14} aria-hidden="true" />
-            Investor relations
+            Company website
           </a>
         ) : null}
         <a

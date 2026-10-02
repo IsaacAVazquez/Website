@@ -389,11 +389,25 @@ const nextConfig = {
     // d3 re-exports thirty subpackages and declares no sideEffects, so a named
     // import from "d3" pulled d3-transition and its dependencies into every
     // chart chunk. Nothing here calls .transition().
-    optimizePackageImports: ['lucide-react', 'framer-motion', 'd3'],
+    optimizePackageImports: ['lucide-react', 'd3'],
     scrollRestoration: true,
   },
   // Enhanced webpack configuration for performance
   webpack: (config, { dev, isServer }) => {
+    if (!dev) {
+      // Next's bundled webpack crashes on warm builds when a cached context
+      // has timestamps but no hash. Content-only snapshots avoid that mixed
+      // record path while retaining cache validation and filesystem caching.
+      config.snapshot = { ...config.snapshot };
+      for (const scope of ['module', 'resolve', 'buildDependencies', 'resolveBuildDependencies']) {
+        config.snapshot[scope] = {
+          ...config.snapshot[scope],
+          timestamp: false,
+          hash: true,
+        };
+      }
+    }
+
     // Exclude server-only packages from client bundle
     if (!isServer) {
       config.externals = config.externals || [];

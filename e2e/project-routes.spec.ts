@@ -1,5 +1,5 @@
 import { expect, test, type Page } from "@playwright/test";
-import { getAllCaseStudies } from "../src/constants/caseStudies";
+import { caseStudiesData } from "../src/constants/caseStudies";
 import { catalog97NavLinks } from "../src/constants/catalog97Nav";
 import { PROJECT_PRESS } from "../src/constants/projectPress";
 import { expectAlignedLayout } from "./layoutChecks";
@@ -8,7 +8,7 @@ import { expectAlignedLayout } from "./layoutChecks";
 // Every live portfolio project renders one h1 and one main, opens on its hero
 // sheet in its lead ink, and hydrates without a mismatch in a browser whose
 // zone is not the server's (the server renders in UTC).
-const PROJECT_ROUTES = getAllCaseStudies()
+const PROJECT_ROUTES = Object.values(caseStudiesData)
   .map((study) => study.link)
   .filter((link): link is string => typeof link === "string" && link.startsWith("/"));
 

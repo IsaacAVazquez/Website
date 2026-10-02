@@ -59,7 +59,7 @@ jobs:
           node -e "
           const fs = require('fs');
 
-          const SNAPSHOT_PATH = 'src/data/formula1Snapshot.ts';
+          const SNAPSHOT_PATH = 'src/data/formula1Snapshot.json';
           const MIN_RACES = 10;
           const MIN_DRIVERS_AFTER_RACE = 10;
           const MIN_CONSTRUCTORS_AFTER_RACE = 5;
@@ -69,18 +69,9 @@ jobs:
             process.exit(1);
           }
 
-          const source = fs.readFileSync(SNAPSHOT_PATH, 'utf8');
-          const match = source.match(
-            /export const formula1Snapshot: Formula1Snapshot = (\{[\s\S]*\});\s*$/
-          );
-          if (!match) {
-            console.error('::error::Could not parse snapshot export from ' + SNAPSHOT_PATH);
-            process.exit(1);
-          }
-
           let snapshot;
           try {
-            snapshot = JSON.parse(match[1]);
+            snapshot = JSON.parse(fs.readFileSync(SNAPSHOT_PATH, 'utf8'));
           } catch (err) {
             console.error('::error::JSON.parse failed on Formula 1 snapshot body: ' + String(err));
             process.exit(1);
@@ -133,119 +124,23 @@ jobs:
           );
           "
 
-      - name: Check for snapshot changes
-        id: check_changes
-        run: |
-          if [ -z "$(git status --porcelain -- src/data/formula1Snapshot.ts)" ]; then
-            echo "changed=false" >> "$GITHUB_OUTPUT"
-            echo "No changes detected in src/data/formula1Snapshot.ts"
-          else
-            echo "changed=true" >> "$GITHUB_OUTPUT"
-            echo "Changes detected in src/data/formula1Snapshot.ts"
-          fi
-
       - name: Commit and push refreshed snapshot
-        if: steps.check_changes.outputs.changed == 'true'
+        id: commit
         run: |
           bash scripts/ci/commit-and-push-snapshot.sh \
             "chore: refresh formula 1 snapshot [automated] [skip ci]" \
-            src/data/formula1Snapshot.ts
+            src/data/formula1Snapshot.json
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Create job summary
-        if: always()
-        run: |
-          echo "## Formula 1 Snapshot Refresh" >> "$GITHUB_STEP_SUMMARY"
-          echo "" >> "$GITHUB_STEP_SUMMARY"
-          echo "**Status:** ${{ job.status }}" >> "$GITHUB_STEP_SUMMARY"
-          echo "**Run Date:** $(date -u +'%Y-%m-%d %H:%M:%S UTC')" >> "$GITHUB_STEP_SUMMARY"
-          echo "**Schedule:** Every three hours Thursday through Sunday; daily otherwise" >> "$GITHUB_STEP_SUMMARY"
-          echo "" >> "$GITHUB_STEP_SUMMARY"
-          if [ -n "${{ steps.verify_quality.outputs.meetings }}" ]; then
-            echo "**Meetings:** ${{ steps.verify_quality.outputs.meetings }}" >> "$GITHUB_STEP_SUMMARY"
-            echo "**Completed races:** ${{ steps.verify_quality.outputs.completed_races }}" >> "$GITHUB_STEP_SUMMARY"
-            echo "**Upcoming races:** ${{ steps.verify_quality.outputs.upcoming_races }}" >> "$GITHUB_STEP_SUMMARY"
-            echo "**Driver standings:** ${{ steps.verify_quality.outputs.drivers }}" >> "$GITHUB_STEP_SUMMARY"
-            echo "**Constructor standings:** ${{ steps.verify_quality.outputs.constructors }}" >> "$GITHUB_STEP_SUMMARY"
-            echo "" >> "$GITHUB_STEP_SUMMARY"
-          fi
-          if [ "${{ steps.check_changes.outputs.changed }}" = "true" ]; then
-            echo "Formula 1 snapshot changed and was committed." >> "$GITHUB_STEP_SUMMARY"
-          else
-            echo "Formula 1 snapshot was already up to date." >> "$GITHUB_STEP_SUMMARY"
-          fi
 
       - name: Notify on failure via GitHub issue
         if: failure()
         uses: actions/github-script@v9
         with:
-          script: |
-            const today = new Date().toISOString().slice(0, 10);
-            const title = `Formula 1 refresh failed ${today}`;
-            const runUrl = `${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}`;
-            const body = [
-              `The **Refresh Formula 1 Snapshot** workflow failed on ${today}.`,
-              ``,
-              `**Run:** ${runUrl}`,
-              `**Commit:** ${context.sha}`,
-              `**Trigger:** ${context.eventName}`,
-              ``,
-              `Check the run logs to diagnose. Common causes:`,
-              `- OpenF1 API outage or timeout`,
-              `- Quality gate caught a degraded snapshot`,
-              `- Git push rejected after 8 attempts`,
-              ``,
-              `This issue will be updated if the next run also fails, and auto-closed on the first successful run.`
-            ].join('\n');
-            const existing = await github.rest.issues.listForRepo({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              state: 'open',
-              labels: 'formula-1-refresh-failure',
-              per_page: 5,
-            });
-            if (existing.data.length > 0) {
-              const issue = existing.data[0];
-              await github.rest.issues.createComment({
-                owner: context.repo.owner,
-                repo: context.repo.repo,
-                issue_number: issue.number,
-                body: `Failed again on ${today}. Run: ${runUrl}`,
-              });
-            } else {
-              await github.rest.issues.create({
-                owner: context.repo.owner,
-                repo: context.repo.repo,
-                title,
-                body,
-                labels: ['formula-1-refresh-failure', 'automation'],
-              });
-            }
+          script: await require('./scripts/ci/failure-issue.cjs').open({ github, context }, 'formula-1-refresh-failure', 'Formula 1 refresh failed')
 
       - name: Close resolved failure issues
         if: success()
         uses: actions/github-script@v9
         with:
-          script: |
-            const existing = await github.rest.issues.listForRepo({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              state: 'open',
-              labels: 'formula-1-refresh-failure',
-              per_page: 10,
-            });
-            for (const issue of existing.data) {
-              await github.rest.issues.createComment({
-                owner: context.repo.owner,
-                repo: context.repo.repo,
-                issue_number: issue.number,
-                body: `Refresh succeeded at ${new Date().toISOString()}. Auto-closing.`,
-              });
-              await github.rest.issues.update({
-                owner: context.repo.owner,
-                repo: context.repo.repo,
-                issue_number: issue.number,
-                state: 'closed',
-              });
-            }
+          script: await require('./scripts/ci/failure-issue.cjs').close({ github, context }, 'formula-1-refresh-failure')

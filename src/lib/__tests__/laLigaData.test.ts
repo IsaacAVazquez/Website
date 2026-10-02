@@ -6,7 +6,6 @@ import {
   getLaLigaSummary,
   getLaLigaTeamSnapshot,
   isValidLaLigaTeamId,
-  createEmptyLaLigaSnapshot,
 } from "../laLigaData";
 import { resetFootballDataPacingForTests } from "../footballData";
 import type { LaLigaSnapshot, LaLigaTeamSnapshot } from "@/types/la-liga";
@@ -679,29 +678,6 @@ describe("isValidLaLigaTeamId", () => {
   });
 });
 
-describe("createEmptyLaLigaSnapshot", () => {
-  it("returns a fully-formed empty snapshot shell", () => {
-    const snap = createEmptyLaLigaSnapshot();
-    expect(snap).toMatchObject({
-      season: "2025/26",
-      matchday: 0,
-      sourceLabel: "football-data.org",
-      sourceUrls: { standings: "", scorers: "", assists: "" },
-      clubs: [],
-      scorers: [],
-      assists: [],
-      goalsPerMatchday: [],
-      recentFixtures: [],
-      upcomingFixtures: [],
-      teams: [],
-      teamSnapshots: {},
-    });
-    expect(snap.generatedAt).toMatch(/^\d{4}-\d{2}-\d{2}T/);
-    // updatedAt remains a display-friendly calendar date.
-    expect(snap.updatedAt).toMatch(/^\d{4}-\d{2}-\d{2}$/);
-  });
-});
-
 function storedTeamSnapshot(clubKey: string): LaLigaTeamSnapshot {
   const club = { id: clubKey, name: `Club ${clubKey}`, shortName: `Club ${clubKey}`, tla: null, crest: null };
   return {
@@ -725,7 +701,7 @@ function storedTeamSnapshot(clubKey: string): LaLigaTeamSnapshot {
 }
 
 function storedSnapshotRoot(clubKeys: string[]): string {
-  return writeStoredSnapshot("laLigaSnapshot.ts", "laLigaSnapshot", {
+  return writeStoredSnapshot("laLigaSnapshot.json", {
     teamSnapshots: Object.fromEntries(clubKeys.map((key) => [key, storedTeamSnapshot(key)])),
   });
 }

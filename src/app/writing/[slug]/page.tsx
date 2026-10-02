@@ -371,6 +371,7 @@ export default async function BlogPostPage({ params }: PageProps) {
                     <h3 className="c97-serif c97-h3" style={{ marginTop: "var(--c97-sp-1)" }}>
                       <Link
                         href={`/writing/${relatedPost.slug}`}
+                        className="c97-link"
                         style={{ textDecoration: "none" }}
                       >
                         {relatedPost.title}
@@ -399,7 +400,7 @@ export default async function BlogPostPage({ params }: PageProps) {
       {/* Author, the older and newer neighbours, and the way back. */}
       <section className="c97-band" data-c97-surface="paper">
         <div className="c97-shell" style={{ display: "grid", gap: "var(--c97-sp-5)" }}>
-          <AuthorBio variant="light" />
+          <AuthorBio />
 
           {olderPost || newerPost ? (
             // Side by side from 640px, where Next sets right; stacked on a phone, both set left.
@@ -416,6 +417,7 @@ export default async function BlogPostPage({ params }: PageProps) {
                 <Link
                   href={`/writing/${olderPost.slug}`}
                   rel="prev"
+                  className="c97-link"
                   style={{
                     display: "grid",
                     gap: "var(--c97-sp-1)",
@@ -434,7 +436,7 @@ export default async function BlogPostPage({ params }: PageProps) {
                 <Link
                   href={`/writing/${newerPost.slug}`}
                   rel="next"
-                  className="sm:text-right"
+                  className="c97-link sm:text-right"
                   style={{
                     display: "grid",
                     gap: "var(--c97-sp-1)",

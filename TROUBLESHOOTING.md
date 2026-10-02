@@ -2,7 +2,7 @@
 
 Fast diagnostics for the current site, data workflows, and deployment path.
 
-**Last updated:** 2026-09-21
+**Last updated:** 2026-10-02
 
 ---
 
@@ -18,6 +18,7 @@ Fast diagnostics for the current site, data workflows, and deployment path.
 - Run `npm run lint` first
 - Check for App Router metadata or async `params` mistakes in page files
 - Confirm route-local imports are not pulling server-only code into client components
+- On repeated builds, if webpack fails inside cached symlink context hashing (`_resolveContextTsh` / `WasmHash`), ensure content hash checks are configured for production snapshots (`next.config.mjs`)
 
 ### `npm run dev` boots but pages crash
 
@@ -28,22 +29,11 @@ Fast diagnostics for the current site, data workflows, and deployment path.
 
 ## Environment And Auth
 
-### `/admin` does not work
-
-Confirm:
-
-- `NEXTAUTH_URL`
-- `NEXTAUTH_SECRET`
-- `ADMIN_USERNAME`
-- `ADMIN_PASSWORD`
-
-The admin flow uses credential auth in `src/lib/auth.ts`.
-
 ### The email digest route returns `503` or `401`
 
 - `503` means `MBA_DIGEST_SECRET` is not set in the Netlify environment
 - `401` means the request did not send that secret in the `x-mba-digest-secret` header
-- The public page no longer has a digest button, since a browser cannot hold the secret and every click got `401`. Call the route from `/admin` or a scheduled job that sends the header
+- The public page no longer has a digest button, since a browser cannot hold the secret and every click got `401`. Call the route from a scheduled job that sends the header
 
 The cache purge function and its `CRON_SECRET` were removed on 2026-09-28, since the function had no caller. There is no live `/api/scheduled-update` route in the current app tree; older references to that endpoint are historical.
 
@@ -55,7 +45,7 @@ The cache purge function and its `CRON_SECRET` were removed on 2026-09-28, since
 
 - The curated UI reads from `public/data/investments`
 - Rebuild snapshots with `npm run update:investments`
-- `/api/investments/data/[symbol]` serves curated snapshot data, not a full arbitrary-ticker backend. There is no `/api/investments/index` route; the index is the static file `public/data/investments/index.json`
+- Curated snapshot data is served directly from static files under `public/data/investments/{symbol}/snapshot.json`. There is no `/api/investments/index` or `/api/investments/data` route; the index is the static file `public/data/investments/index.json`
 
 ### Search results look incomplete
 
@@ -66,7 +56,7 @@ That is expected today. `/api/search` is still a small hardcoded index, not a fu
 The public fantasy surface is snapshot-backed:
 
 - `public/data/fantasy/{ppr,half_ppr,standard}.json` contains the published scoring-format snapshots
-- `src/data/fantasyPositionData.generated.ts` contains the generated TypeScript position source
+- `src/data/fantasyPositionData.generated.json` contains the generated TypeScript position source
 - `src/data/fantasySnapshotRevision.generated.ts` controls client cache busting
 - `/api/fantasy-data` reads the same public snapshot files through `src/lib/fantasySnapshotServer.ts`
 
@@ -74,7 +64,7 @@ Rebuild the generated artifacts with `npm run update:fantasy`. There are no live
 
 ### Premier League or La Liga data looks stale
 
-- The public dashboards read from `src/data/premierLeagueSnapshot.ts` and `src/data/laLigaSnapshot.ts`
+- The public dashboards read from `src/data/premierLeagueSnapshot.json` and `src/data/laLigaSnapshot.json`
 - Rebuild both with `npm run update:football`
 - Rebuild one league with `npm run update:premier-league` or `npm run update:la-liga`
 - These rebuild commands need `FOOTBALL_DATA_API_TOKEN`; runtime page loads do not

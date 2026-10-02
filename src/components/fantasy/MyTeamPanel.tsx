@@ -12,7 +12,7 @@ import {
 } from "@/lib/fantasyMyTeam";
 import type { FantasyWeeklyBoard, FantasyWeeklySnapshot } from "@/lib/fantasyWeeklySnapshot";
 import { getFantasyDraftStorageKey, getSnapshotStaleness } from "@/lib/fantasyUtils";
-import { REDRAFT_LINEUP_PRESETS } from "@/lib/redraftLineup";
+import { REDRAFT_LINEUP_PRESETS, sameRedraftLineup } from "@/lib/redraftLineup";
 
 const control = styles.control;
 const button = styles.button;
@@ -76,7 +76,7 @@ export function MyTeamPanel({ snapshot, board, scoring, onScoringChange }: {
     <section id="my-team" aria-labelledby="my-team-title" className={styles.workspace}>
       <header className={styles.header}>
         <div>
-          <h2 id="my-team-title" className={styles.title}>My team</h2>
+          <h2 id="my-team-title" className="c97-poster-sm">My team</h2>
           <p className={styles.description}>Your saved roster, weekly lineup, and waiver decisions.</p>
         </div>
         <div className={styles.week}><span>Week</span><span>{snapshot.week}</span><span>{snapshot.season}</span></div>
@@ -106,7 +106,7 @@ export function MyTeamPanel({ snapshot, board, scoring, onScoringChange }: {
             </select>
           </label>
           <label className="grid gap-1 text-sm">Lineup preset
-            <select className={control} value={REDRAFT_LINEUP_PRESETS.find(preset => JSON.stringify(preset.lineup) === JSON.stringify(team.lineup))?.id ?? "custom"}
+            <select className={control} value={REDRAFT_LINEUP_PRESETS.find(preset => sameRedraftLineup(preset.lineup, team.lineup))?.id ?? "custom"}
               onChange={event => { const preset = REDRAFT_LINEUP_PRESETS.find(item => item.id === event.target.value); if (preset) update(current => ({ ...current, lineup: { ...preset.lineup } })); }}>
               <option value="custom" disabled>Custom lineup</option>
               {REDRAFT_LINEUP_PRESETS.map(preset => <option key={preset.id} value={preset.id}>{preset.label}</option>)}

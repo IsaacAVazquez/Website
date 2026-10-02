@@ -1,37 +1,10 @@
 import { mlbSnapshot } from "@/data/mlbSnapshot";
 import type { MlbSummarySnapshot, MlbTeamSnapshot } from "@/types/mlb";
+import { capLists, findTeamSnapshot } from "@/lib/teamSnapshots";
 
 const SUMMARY_GAME_LIMIT = 10;
 const TEAM_GAME_LIMIT = 5;
-
-interface MlbSnapshotError extends Error {
-  status: number;
-}
-
-function createMlbSnapshotError(message: string, status: number): MlbSnapshotError {
-  return Object.assign(new Error(message), { status });
-}
-
-function limitItems<T>(items: T[], limit: number): T[] {
-  return items.slice(0, limit);
-}
-
-function clampMlbSummarySnapshot(snapshot: typeof mlbSnapshot): MlbSummarySnapshot {
-  const { teamSnapshots: _teamSnapshots, ...summarySnapshot } = snapshot;
-  return {
-    ...summarySnapshot,
-    recentGames: limitItems(summarySnapshot.recentGames, SUMMARY_GAME_LIMIT),
-    upcomingGames: limitItems(summarySnapshot.upcomingGames, SUMMARY_GAME_LIMIT),
-  };
-}
-
-function clampMlbTeamSnapshot(snapshot: MlbTeamSnapshot): MlbTeamSnapshot {
-  return {
-    ...snapshot,
-    recentGames: limitItems(snapshot.recentGames, TEAM_GAME_LIMIT),
-    upcomingGames: limitItems(snapshot.upcomingGames, TEAM_GAME_LIMIT),
-  };
-}
+const GAME_LISTS = ["recentGames", "upcomingGames"] as const;
 
 export function createEmptyMlbTeamSnapshot(): MlbTeamSnapshot {
   return {
@@ -63,13 +36,10 @@ export function isValidMlbTeamId(teamId: string): boolean {
 }
 
 export async function getMlbSummarySnapshot(): Promise<MlbSummarySnapshot> {
-  return clampMlbSummarySnapshot(mlbSnapshot);
+  const { teamSnapshots: _teamSnapshots, ...summarySnapshot } = mlbSnapshot;
+  return capLists(summarySnapshot, SUMMARY_GAME_LIMIT, GAME_LISTS);
 }
 
 export async function getMlbTeamSnapshot(teamId: string): Promise<MlbTeamSnapshot> {
-  const snapshot = mlbSnapshot.teamSnapshots[teamId];
-  if (!snapshot) {
-    throw createMlbSnapshotError("MLB team snapshot was not found.", 404);
-  }
-  return clampMlbTeamSnapshot(snapshot);
+  return capLists(findTeamSnapshot(mlbSnapshot.teamSnapshots, teamId, "MLB"), TEAM_GAME_LIMIT, GAME_LISTS);
 }

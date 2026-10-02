@@ -107,11 +107,12 @@ export function Catalog97About() {
             </p>
             <p className="c97-prose" style={{ marginTop: "var(--c97-sp-2)" }}>
               I left Civitech in August 2025 to start at Haas, because I wanted
-              to move fully into product management, and I spent summer 2026 as
-              the MBA growth intern at Juno, a fintech company that negotiates
-              group rates on student loans. Now I&rsquo;m looking for a
-              full-time product management role that starts after I graduate in
-              May 2027, and I&rsquo;m interested in consumer tech broadly.
+              to move fully into product work, and I spent summer 2026 as the
+              MBA growth intern at Juno, a fintech company that negotiates group
+              rates on student loans. Now I&rsquo;m looking for a full-time role
+              in product management, product marketing, or program management
+              that starts after I graduate in May 2027, and I&rsquo;m interested
+              in consumer tech broadly.
             </p>
             <p className="c97-prose" style={{ marginTop: "var(--c97-sp-2)" }}>
               I picked up the habit of checking a number before trusting it in
@@ -224,15 +225,18 @@ export function Catalog97About() {
         <div className="c97-shell">
           {/* Same 11px-above-26px inversion as "How I work" above. */}
           <h2 className="c97-poster-sm">The route here</h2>
-          <div
+          <ol
             style={{
+              listStyle: "none",
+              margin: 0,
+              padding: 0,
               display: "grid",
               gap: "var(--c97-sp-3)",
               marginTop: "var(--c97-sp-3)",
             }}
           >
             {timeline.map((entry) => (
-              <div
+              <li
                 key={`${entry.year}-${entry.role}`}
                 style={{
                   display: "grid",
@@ -269,9 +273,9 @@ export function Catalog97About() {
                     {entry.description}
                   </p>
                 </div>
-              </div>
+              </li>
             ))}
-          </div>
+          </ol>
 
           <div
             style={{

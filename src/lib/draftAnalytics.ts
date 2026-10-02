@@ -1,3 +1,4 @@
+import { groupBy, isFiniteNumber } from "@/lib/utils";
 import {
   getAdpSignalThreshold,
   hasReliableAdpSample,
@@ -212,10 +213,6 @@ export function getRosterNeeds(team: {
   return needs;
 }
 
-function isFiniteNumber(value: unknown): value is number {
-  return typeof value === "number" && Number.isFinite(value);
-}
-
 /**
  * Deepest consensus rank that still stands in for a pick number. ADP is a pick and
  * consensus rank is a board position, and the two only agree near the top. Measured
@@ -335,15 +332,10 @@ export function detectPositionRuns(
   const windowSize = options.windowSize ?? POSITION_RUN_WINDOW;
   const minCount = options.minCount ?? POSITION_RUN_MIN_COUNT;
 
-  const picksByPosition = new Map<Position, DraftPick[]>();
-  for (const pick of [...picks].sort((left, right) => left.pickNumber - right.pickNumber)) {
-    const existing = picksByPosition.get(pick.player.position);
-    if (existing) {
-      existing.push(pick);
-    } else {
-      picksByPosition.set(pick.player.position, [pick]);
-    }
-  }
+  const picksByPosition = groupBy(
+    [...picks].sort((left, right) => left.pickNumber - right.pickNumber),
+    (pick) => pick.player.position
+  );
 
   const runs: PositionRun[] = [];
 
@@ -375,14 +367,6 @@ export function detectPositionRuns(
   }
 
   return runs.sort((left, right) => left.startPick - right.startPick);
-}
-
-/**
- * Net draft value per team: the sum of every judgeable pick's delta. A team
- * that keeps landing players past their baseline accumulates positive value.
- */
-export function getTeamValueTotal(team: TeamRoster): number {
-  return team.picks.reduce((total, pick) => total + (getPickDelta(pick) ?? 0), 0);
 }
 
 function getTeamStrengthsAndWeaknesses(
@@ -486,12 +470,11 @@ interface EmergingRun {
  */
 export function getEmergingRun(
   picks: DraftPick[],
-  currentPick: number,
-  options: { windowSize?: number } = {}
+  currentPick: number
 ): EmergingRun | null {
-  const windowSize = options.windowSize ?? POSITION_RUN_WINDOW;
   const recent = picks.filter(
-    (pick) => pick.pickNumber < currentPick && pick.pickNumber > currentPick - 1 - windowSize
+    (pick) =>
+      pick.pickNumber < currentPick && pick.pickNumber > currentPick - 1 - POSITION_RUN_WINDOW
   );
 
   const counts = new Map<Position, { count: number; endPick: number }>();

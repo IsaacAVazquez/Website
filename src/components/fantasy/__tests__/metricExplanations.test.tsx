@@ -6,26 +6,6 @@ import type { Player } from "@/types";
 
 import { PlayerDetailDrawer } from "../PlayerDetailDrawer";
 
-jest.mock("framer-motion", () => ({
-  motion: {
-    div: ({
-      children,
-      initial: _initial,
-      animate: _animate,
-      exit: _exit,
-      transition: _transition,
-      ...props
-    }: React.HTMLAttributes<HTMLDivElement> & {
-      initial?: unknown;
-      animate?: unknown;
-      exit?: unknown;
-      transition?: unknown;
-    }) => <div {...props}>{children}</div>,
-  },
-  AnimatePresence: ({ children }: { children?: React.ReactNode }) => <>{children}</>,
-  useReducedMotion: () => true,
-}));
-
 // Ranked 1st, drafted around pick 40 on a deep mock sample, so the value gate
 // fires and the drawer has to explain both the ADP number and the chip.
 const valuePlayer: Player = {

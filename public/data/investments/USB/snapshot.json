@@ -1,10 +1,10 @@
 {
   "symbol": "USB",
-  "lastUpdated": "2026-09-30T15:30:08.171135+00:00",
+  "lastUpdated": "2026-10-02T15:16:35.277063+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-09-30T15:30:08.171135+00:00",
+    "snapshotBuiltAt": "2026-10-02T15:16:35.277063+00:00",
     "sections": {
-      "price": "2026-09-30"
+      "price": "2026-10-01"
     },
     "retainedSections": [
       "industry"
@@ -43,10 +43,10 @@
     },
     "fundamentals": {
       "ttmEps": 5.0117,
-      "ttmPe": 11.6,
-      "marketCap": 90571050144,
-      "psRatio": 3.06,
-      "pbRatio": 1.34,
+      "ttmPe": 11.45,
+      "marketCap": 89355958656,
+      "psRatio": 3.02,
+      "pbRatio": 1.33,
       "pegRatio": 0.54
     },
     "profitability": {
@@ -5652,25 +5652,17 @@
       ]
     },
     "wacc": {
-      "wacc": 7.779999999999999,
-      "costOfEquity": 13.18,
+      "wacc": 7.76,
+      "costOfEquity": 13.19,
       "costOfDebt": 3.37,
       "taxRate": 20,
-      "beta": 1.041,
-      "marketCap": 90571050144
+      "beta": 1.0424,
+      "marketCap": 89355958656
     },
     "beta": {
-      "beta5y": 1.041
+      "beta5y": 1.0424
     },
     "price": [
-      {
-        "date": "2025-09-30",
-        "open": 48.52,
-        "high": 48.72,
-        "low": 47.47,
-        "close": 48.33,
-        "volume": 10181200
-      },
       {
         "date": "2025-10-01",
         "open": 48.18,
@@ -7678,6 +7670,14 @@
         "low": 57.56,
         "close": 57.76,
         "volume": 9886700
+      },
+      {
+        "date": "2026-10-01",
+        "open": 57.31,
+        "high": 57.67,
+        "low": 56.04,
+        "close": 57.36,
+        "volume": 11173400
       }
     ],
     "news": [
@@ -7698,14 +7698,6 @@
         "type": "STORY"
       },
       {
-        "uuid": "3d119e81-aafb-368f-9975-7bef99a50a08",
-        "title": "Bank Honored for Financial Literacy, Support to High School for Teen Moms",
-        "publisher": "ACCESS Newswire",
-        "reportDate": "2025-05-05",
-        "link": "https://finance.yahoo.com/news/bank-honored-financial-literacy-support-140000123.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "a9b01abd-af73-3a12-8386-195b818437d4",
         "title": "U.S. Bank Avvance Added to Pure Finance Group’s Home Improvement Lending Platform",
         "publisher": "Business Wire",
@@ -7714,11 +7706,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "cc727297-8486-3bd9-9bf8-af6740bca428",
-        "title": "Elavon and Jscrambler Partner to Strengthen PCI DSS Compliance for Merchants",
-        "publisher": "PR Newswire",
-        "reportDate": "2025-05-07",
-        "link": "https://finance.yahoo.com/news/elavon-jscrambler-partner-strengthen-pci-080000015.html",
+        "uuid": "3d119e81-aafb-368f-9975-7bef99a50a08",
+        "title": "Bank Honored for Financial Literacy, Support to High School for Teen Moms",
+        "publisher": "ACCESS Newswire",
+        "reportDate": "2025-05-05",
+        "link": "https://finance.yahoo.com/news/bank-honored-financial-literacy-support-140000123.html",
         "type": "STORY"
       },
       {
@@ -7727,6 +7719,14 @@
         "publisher": "Business Wire",
         "reportDate": "2025-05-07",
         "link": "https://finance.yahoo.com/news/elavon-offers-innovative-one-stop-121500667.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "cc727297-8486-3bd9-9bf8-af6740bca428",
+        "title": "Elavon and Jscrambler Partner to Strengthen PCI DSS Compliance for Merchants",
+        "publisher": "PR Newswire",
+        "reportDate": "2025-05-07",
+        "link": "https://finance.yahoo.com/news/elavon-jscrambler-partner-strengthen-pci-080000015.html",
         "type": "STORY"
       },
       {
@@ -7746,19 +7746,19 @@
         "type": "STORY"
       },
       {
-        "uuid": "d31b2fb1-3c25-3cf4-ab04-90ffb7d23d8d",
-        "title": "TD Cowen Initiates U.S. Bancorp at Buy With $60 Price Target",
-        "publisher": "MT Newswires",
-        "reportDate": "2025-05-15",
-        "link": "https://finance.yahoo.com/news/td-cowen-initiates-u-bancorp-100544819.html",
-        "type": "STORY"
-      },
-      {
         "uuid": "1c4ace91-bde0-3d00-ad69-392883db971c",
         "title": "Oppenheimer Adjusts Price Target on U.S. Bancorp to $63 From $59, Maintains Outperform Rating",
         "publisher": "MT Newswires",
         "reportDate": "2025-05-15",
         "link": "https://finance.yahoo.com/news/oppenheimer-adjusts-price-target-u-104520418.html",
+        "type": "STORY"
+      },
+      {
+        "uuid": "d31b2fb1-3c25-3cf4-ab04-90ffb7d23d8d",
+        "title": "TD Cowen Initiates U.S. Bancorp at Buy With $60 Price Target",
+        "publisher": "MT Newswires",
+        "reportDate": "2025-05-15",
+        "link": "https://finance.yahoo.com/news/td-cowen-initiates-u-bancorp-100544819.html",
         "type": "STORY"
       }
     ],

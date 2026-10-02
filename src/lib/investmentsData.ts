@@ -1,12 +1,6 @@
 import { promises as fs } from "fs";
 import path from "path";
-import type {
-  InvestmentDataEnvelope,
-  InvestmentSection,
-  InvestmentsIndex,
-  InvestmentSnapshot,
-} from "@/types/investment";
-import { normalizeInvestmentSnapshot } from "@/lib/investmentFreshness";
+import type { InvestmentsIndex } from "@/types/investment";
 import { normalizeInvestmentsIndex } from "@/lib/investmentsIndex";
 import { getInvestmentsAssetOrigin } from "@/lib/investmentsAssetOrigin";
 
@@ -28,17 +22,8 @@ interface InvestmentsDataOptions {
   assetOrigin?: string | null;
 }
 
-interface InvestmentContext {
-  source: "prefetched";
-  capabilities: InvestmentSnapshot["capabilities"];
-  lastUpdated: string | null;
-  seeded: true;
-  snapshot: InvestmentSnapshot;
-}
-
 const DATA_DIR = path.join(process.cwd(), "public", "data", "investments");
 const INDEX_TTL_MS = 5 * 60 * 1000;
-const SNAPSHOT_TTL_MS = 5 * 60 * 1000;
 
 let indexCache:
   | {
@@ -47,31 +32,11 @@ let indexCache:
     }
   | null = null;
 
-const snapshotCache = new Map<
-  string,
-  {
-    snapshot: InvestmentSnapshot;
-    expiresAt: number;
-  }
->();
-
 function createCuratedDatasetUnavailableError() {
   return Object.assign(
     new Error("Curated investments dataset is temporarily unavailable."),
     {
       status: 503,
-      source: "prefetched" as const,
-      capabilities: {},
-      lastUpdated: null,
-    }
-  );
-}
-
-function createCuratedUniverseError(symbol: string) {
-  return Object.assign(
-    new Error(`${symbol} is not in the curated research universe.`),
-    {
-      status: 404,
       source: "prefetched" as const,
       capabilities: {},
       lastUpdated: null,
@@ -200,7 +165,7 @@ async function ensurePrefetchedJson<T>(
   throw createCuratedDatasetUnavailableError();
 }
 
-async function loadInvestmentsIndex(
+export async function getInvestmentsIndex(
   options: InvestmentsDataOptions = {}
 ): Promise<InvestmentsIndex> {
   if (indexCache && indexCache.expiresAt > Date.now()) {
@@ -215,79 +180,4 @@ async function loadInvestmentsIndex(
   };
 
   return data;
-}
-
-export async function getInvestmentsIndex(
-  options: InvestmentsDataOptions = {}
-): Promise<InvestmentsIndex> {
-  return loadInvestmentsIndex(options);
-}
-
-export async function getInvestmentContext(
-  symbol: string,
-  options: InvestmentsDataOptions = {}
-): Promise<InvestmentContext> {
-  const upperSymbol = symbol.toUpperCase();
-  const index = await loadInvestmentsIndex(options);
-  if (!index.symbols.includes(upperSymbol)) {
-    throw createCuratedUniverseError(upperSymbol);
-  }
-
-  const cached = snapshotCache.get(upperSymbol);
-  if (cached && cached.expiresAt > Date.now()) {
-    return {
-      source: "prefetched",
-      capabilities: cached.snapshot.capabilities,
-      lastUpdated: cached.snapshot.lastUpdated,
-      seeded: true,
-      snapshot: cached.snapshot,
-    };
-  }
-
-  const snapshot = normalizeInvestmentSnapshot(await ensurePrefetchedJson<InvestmentSnapshot>(
-    `${upperSymbol}/snapshot.json`,
-    options
-  ));
-  snapshotCache.set(upperSymbol, {
-    snapshot,
-    expiresAt: Date.now() + SNAPSHOT_TTL_MS,
-  });
-
-  return {
-    source: "prefetched",
-    capabilities: snapshot.capabilities,
-    lastUpdated: snapshot.lastUpdated,
-    seeded: true,
-    snapshot,
-  };
-}
-
-export async function getInvestmentDataEnvelope<T = unknown>(
-  symbol: string,
-  section: InvestmentSection | string,
-  context?: InvestmentContext,
-  options: InvestmentsDataOptions = {}
-): Promise<InvestmentDataEnvelope<T>> {
-  const resolvedContext = context ?? (await getInvestmentContext(symbol, options));
-  const data = resolvedContext.snapshot.sections[section as InvestmentSection];
-  if (data === undefined || data === null) {
-    throw Object.assign(
-      new Error(`Section "${section}" not available for ${symbol.toUpperCase()}`),
-      {
-        status: 404,
-        source: resolvedContext.source,
-        capabilities: resolvedContext.capabilities,
-        lastUpdated: resolvedContext.lastUpdated,
-        freshness: resolvedContext.snapshot.freshness ?? null,
-      }
-    );
-  }
-
-  return {
-    data: data as T,
-    source: resolvedContext.source,
-    capabilities: resolvedContext.capabilities,
-    lastUpdated: resolvedContext.lastUpdated,
-    freshness: resolvedContext.snapshot.freshness ?? null,
-  };
 }

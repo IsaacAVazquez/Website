@@ -11,6 +11,7 @@ import {
   type ToolchainCatalogEntry,
   type TroubleshootingArticle,
 } from "./enablement-data";
+import { clamp } from "@/lib/utils";
 
 export const RECOMMENDATION_CONFIDENCE_THRESHOLD = 56;
 export const TROUBLESHOOTING_CONFIDENCE_THRESHOLD = 0.55;
@@ -61,10 +62,6 @@ export interface ProgramMetrics {
   adoptionRate: number;
   driftTeams: number;
   topGapCount: number;
-}
-
-function clampScore(score: number): number {
-  return Math.max(0, Math.min(100, Math.round(score)));
 }
 
 function maturityComplexityTarget(maturity: AutomationMaturity): 1 | 2 | 3 {
@@ -169,7 +166,7 @@ export function scoreToolchain(
 
   return {
     toolchain,
-    score: clampScore(score),
+    score: clamp(Math.round(score), 0, 100),
     factors,
   };
 }

@@ -166,33 +166,11 @@ export function getBlogTopicPageForPost(post?: {
   return BLOG_TOPIC_PAGES.find((topic) => topic.label === label);
 }
 
+// The two write-ups of Isaac's jobs that Home pins, in display order.
 export const HOMEPAGE_PROOF_OF_WORK_SLUGS = [
-  "ai-product-discovery-workflow",
-  "agentic-ai-explained-for-product-managers",
-  "building-an-investment-research-platform",
+  "juno-mba-growth-internship",
+  "civitech-quality-and-product-work",
 ] as const;
-
-export const LEAD_GEN_BLOG_SLUGS = [
-  "ai-prd-writing-prompts-structure",
-  "ai-product-discovery-workflow",
-  "ai-roadmapping-from-feedback",
-  "ai-user-research-synthesis-workflow",
-  "ai-email-stakeholder-comms-pm",
-  "agentic-ai-explained-for-product-managers",
-  "build-vs-buy-agentic-ai-platform",
-  "ai-agents-customer-support-what-works",
-  "evaluate-agentic-ai-product-pm-framework",
-  "building-an-investment-research-platform",
-  "interchange-iq-payment-fee-analyzer",
-  "reasoning-model-economics-when-to-use-which",
-  "building-reliable-software-systems",
-  "complete-guide-qa-engineering",
-  "qa-engineer-guide-testing-ai-systems",
-] as const;
-
-export const LEAD_GEN_INTERNAL_LINK_RULES = {
-  minRelatedWritingLinks: 2,
-};
 
 export function getBlogCoverImageUrl(slug: string, coverImage?: string) {
   if (coverImage) {

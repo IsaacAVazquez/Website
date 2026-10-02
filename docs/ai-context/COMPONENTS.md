@@ -12,13 +12,12 @@ Current component ownership reference.
 |----------|------|------|
 | `ConditionalLayout` | `src/components/ConditionalLayout.tsx` | Picks the shell. The seven routes in `src/constants/catalog97Nav.ts` pass through and render `Catalog97Shell` themselves; every other route is wrapped in `Catalog97ToolShell` |
 | `Catalog97Shell` | `src/components/catalog97/Catalog97Shell.tsx` | Header, the only page-level `main`, and the espresso footer |
-| `Catalog97ToolShell` | `src/components/catalog97/Catalog97ToolShell.tsx` | `Catalog97Shell` plus an optional title band and the build-note aside from `projectBuildNoteLinks` |
+| `Catalog97ToolShell` | `src/components/catalog97/Catalog97ToolShell.tsx` | `Catalog97Shell` plus the build-note aside from `projectBuildNoteLinks` |
 | `Catalog97Header` | `src/components/catalog97/Catalog97Header.tsx` | Global nav built from `catalog97NavLinks` |
 | `Providers` | `src/components/Providers.tsx` | Root provider wrapper |
 | `FragmentLinkNavigation` | `src/components/navigation/FragmentLinkNavigation.tsx` | Mounted once by `Providers`. Follows same-page `#` links from the current address, so Firefox does not load the page again after a route rewrote its URL |
 | `FragmentScrollOnLoad` | `src/components/navigation/FragmentScrollOnLoad.tsx` | Mounted once by `Providers`. Lands a fresh load on the element its URL fragment names and holds it there while the page settles, since React reveals a streamed route after the browser has looked the fragment up |
-| `ThemeProvider` | `src/components/ThemeProvider.tsx` | Theme context |
-| `RouteErrorBoundary` | `src/components/RouteErrorBoundary.tsx` | Shared error fallback re-exported by per-route `error.tsx` files |
+| `RouteErrorBoundary` | `src/components/RouteErrorBoundary.tsx` | Shared error fallback rendered by the root `src/app/error.tsx` |
 
 ---
 
@@ -109,13 +108,13 @@ Page-level clients live at `src/app/premier-league/premier-league-client.tsx` an
 - `src/app/news-pulse/*` plus `src/lib/news-pulse-utils.ts`
 - `src/components/spacex/*` plus `src/app/spacex-mission-control/*`
 - `src/app/mlb/*`, `src/app/nba/*`, `src/app/nfl/*`, and `src/components/football/*`
-- `src/app/golf/*` plus `src/data/golfSnapshot.ts`
-- `src/app/world-cup-2026/*` plus `src/data/worldCupSnapshot.ts`
-- `src/app/bay-area-transit/*` plus `src/data/bayAreaTransitSnapshot.ts`
-- `src/app/earthquake-pulse/*` plus `src/data/earthquakeSnapshot.ts`
-- `src/app/tech-startup-tracker/*` plus `src/data/techStartupSnapshot.ts`
+- `src/app/golf/*` plus `src/data/golfSnapshot.json`
+- `src/app/world-cup-2026/*` plus `src/data/worldCupSnapshot.json`
+- `src/app/bay-area-transit/*` plus `src/data/bayAreaTransitSnapshot.json`
+- `src/app/earthquake-pulse/*` plus `src/data/earthquakeSnapshot.json`
+- `src/app/tech-startup-tracker/*` plus `src/data/techStartupSnapshot.json`
 - `src/app/travel/*` plus `src/hooks/useTravelPlanner.ts`
-- `src/app/polling-aggregator/*` plus `src/data/pollingSnapshot.ts`
+- `src/app/polling-aggregator/*` plus `src/data/pollingSnapshot.json`
 - `src/app/fintech-tools/budget-planner/*` plus `src/hooks/useBudgetPlanner.ts`
 - `src/app/fintech-tools/interchange-iq/*`
 

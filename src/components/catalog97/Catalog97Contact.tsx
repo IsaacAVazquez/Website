@@ -54,11 +54,12 @@ export function Catalog97Contact() {
               maxWidth: "var(--c97-measure-body)",
             }}
           >
-            I&rsquo;m looking for a full-time product management role that
-            starts after I graduate from Haas in May 2027, and I&rsquo;m always
-            glad to compare notes with people working on product, analytics, or
-            fintech. If something on this site looks wrong to you, I want to
-            hear about that too.
+            I&rsquo;m looking for a full-time role in product management,
+            product marketing, or program management that starts after I
+            graduate from Haas in May 2027, and I&rsquo;m always glad to
+            compare notes with people working on product, analytics, or fintech.
+            If something on this site looks wrong to you, I want to hear about
+            that too.
           </p>
         </div>
       </section>

@@ -74,9 +74,10 @@ export function ProfitabilityPanel({ symbol }: Props) {
       <h3 className="text-sm font-semibold text-[var(--c97-ink)] mb-3">Profitability & Margins</h3>
 
       {isLoading ? (
-        <div className="space-y-2">
+        <div className="space-y-2" role="status" aria-busy="true">
+          <span className="sr-only">Loading profitability</span>
           {Array.from({ length: 8 }).map((_, i) => (
-            <div key={i} className="h-8 bg-[var(--c97-rule)] animate-pulse" />
+            <span key={i} className="c97-skeleton" style={{ height: 32 }} />
           ))}
         </div>
       ) : (

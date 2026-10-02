@@ -12,13 +12,13 @@ const PUBLISHED_POSTS = getPublishedPosts();
 // undated route just gets the build date and a warning naming it. Keep the
 // hand dates in step with each page's own dateModified.
 const STATIC_ROUTE_LASTMOD = {
-  "/": "2026-09-29",
-  "/about": "2026-09-29",
+  "/": "2026-10-01",
+  "/about": "2026-10-01",
   "/accessibility": "2026-07-16",
   "/agent-build-index": readGitHubTrendingLastmod(),
   "/ai-dev-tools": "2026-04-28",
   "/arcade": "2026-07-16",
-  "/contact": "2026-09-28",
+  "/contact": "2026-10-01",
   "/dashboards": "2026-09-14",
   "/resume": "2026-09-29",
   "/portfolio": "2026-09-14",
@@ -35,7 +35,7 @@ const STATIC_ROUTE_LASTMOD = {
   "/mlb": readMlbLastmod(),
   "/museum-log": "2026-04-04",
   "/nba": readNbaLastmod(),
-  "/now": "2026-09-29",
+  "/now": "2026-10-01",
   "/recipe-finder": "2026-04-04",
   "/wine-cellar": "2026-04-04",
   "/bay-area-transit": readBayAreaTransitLastmod(),
@@ -61,8 +61,8 @@ const STATIC_ROUTE_LASTMOD = {
   "/fantasy-football/draft-tracker": readFantasyLastmod(),
   "/fantasy-football/mock-draft": readFantasyLastmod(),
   "/fantasy-football/trade-calculator": readFantasyLastmod(),
-  "/fantasy-football/weekly": readFantasyLastmod(),
-  "/fantasy-football/waivers": readFantasyLastmod(),
+  "/fantasy-football/weekly": readWeeklyFantasyLastmod(),
+  "/fantasy-football/waivers": readWeeklyFantasyLastmod(),
   "/fintech-tools/budget-planner": "2026-04-03",
   "/fintech-tools/interchange-iq": "2026-04-02",
   "/fintech-tools/rent-vs-buy": "2026-07-20",
@@ -221,25 +221,25 @@ function readInvestmentsLastmod() {
 
 function readPollingLastmod() {
   return toIsoString(
-    readFirstMatch("src/data/pollingSnapshot.ts", /"?generatedAt"?:\s*"([^"]+)"/)
+    readFirstMatch("src/data/pollingSnapshot.json", /"?generatedAt"?:\s*"([^"]+)"/)
   );
 }
 
 function readPremierLeagueLastmod() {
   return toIsoString(
-    readFirstMatch("src/data/premierLeagueSnapshot.ts", /"generatedAt":\s*"([^"]+)"/)
+    readFirstMatch("src/data/premierLeagueSnapshot.json", /"generatedAt":\s*"([^"]+)"/)
   );
 }
 
 function readLaLigaLastmod() {
   return toIsoString(
-    readFirstMatch("src/data/laLigaSnapshot.ts", /"generatedAt":\s*"([^"]+)"/)
+    readFirstMatch("src/data/laLigaSnapshot.json", /"generatedAt":\s*"([^"]+)"/)
   );
 }
 
 function readNflLastmod() {
   return toIsoString(
-    readFirstMatch("src/data/nflSnapshot.ts", /"updatedAt":\s*"([^"]+)"/)
+    readFirstMatch("src/data/nflSnapshot.json", /"updatedAt":\s*"([^"]+)"/)
   );
 }
 
@@ -247,31 +247,31 @@ function readWorldCupLastmod() {
   // The tournament block is first in the file, so the first generatedAt match is
   // the tournament-level timestamp (per-team snapshots also carry one).
   return toIsoString(
-    readFirstMatch("src/data/worldCupSnapshot.ts", /"generatedAt":\s*"([^"]+)"/)
+    readFirstMatch("src/data/worldCupSnapshot.json", /"generatedAt":\s*"([^"]+)"/)
   );
 }
 
 function readFormula1Lastmod() {
   return toIsoString(
-    readFirstMatch("src/data/formula1Snapshot.ts", /"generatedAt":\s*"([^"]+)"/)
+    readFirstMatch("src/data/formula1Snapshot.json", /"generatedAt":\s*"([^"]+)"/)
   );
 }
 
 function readGolfLastmod() {
   return toIsoString(
-    readFirstMatch("src/data/golfSnapshot.ts", /"generatedAt":\s*"([^"]+)"/)
+    readFirstMatch("src/data/golfSnapshot.json", /"generatedAt":\s*"([^"]+)"/)
   );
 }
 
 function readMlbLastmod() {
   return toIsoString(
-    readFirstMatch("src/data/mlbSnapshot.ts", /"generatedAt":\s*"([^"]+)"/)
+    readFirstMatch("src/data/mlbSnapshot.json", /"generatedAt":\s*"([^"]+)"/)
   );
 }
 
 function readNbaLastmod() {
   return toIsoString(
-    readFirstMatch("src/data/nbaSnapshot.ts", /"generatedAt":\s*"([^"]+)"/)
+    readFirstMatch("src/data/nbaSnapshot.json", /"generatedAt":\s*"([^"]+)"/)
   );
 }
 
@@ -282,7 +282,7 @@ function readSpaceXLastmod() {
 
 function readEarthquakeLastmod() {
   return toIsoString(
-    readFirstMatch("src/data/earthquakeSnapshot.ts", /"generatedAt":\s*"([^"]+)"/)
+    readFirstMatch("src/data/earthquakeSnapshot.json", /"generatedAt":\s*"([^"]+)"/)
   );
 }
 
@@ -296,36 +296,46 @@ function readBestBallLastmod() {
   return toIsoString(source.generatedAt);
 }
 
+function readWeeklyFantasyLastmod() {
+  try {
+    const source = JSON.parse(readFile("public/data/fantasy/weekly.json"));
+    return toIsoString(source.generatedAt);
+  } catch (error) {
+    // Before the first weekly board is published, these pages explain when
+    // the board opens and retain the existing fantasy date.
+    if (error.code === "ENOENT") return readFantasyLastmod();
+    throw error;
+  }
+}
+
 function readGitHubTrendingLastmod() {
   return toIsoString(
-    readFirstMatch("src/data/githubTrendingSnapshot.ts", /"generatedAt":\s*"([^"]+)"/)
+    readFirstMatch("src/data/githubTrendingSnapshot.json", /"generatedAt":\s*"([^"]+)"/)
   );
 }
 
 function readTechStartupLastmod() {
   return toIsoString(
-    readFirstMatch("src/data/techStartupSnapshot.ts", /"generatedAt":\s*"([^"]+)"/)
+    readFirstMatch("src/data/techStartupSnapshot.json", /"generatedAt":\s*"([^"]+)"/)
   );
 }
 
 function readScorePoolsLastmod() {
   return toIsoString(
-    readFirstMatch("src/data/scorePoolsSnapshot.ts", /"generatedAt":\s*"([^"]+)"/)
+    readFirstMatch("src/data/scorePoolsSnapshot.json", /"generatedAt":\s*"([^"]+)"/)
   );
 }
 
 function readBayAreaTransitLastmod() {
   return toIsoString(
-    readFirstMatch("src/data/bayAreaTransitSnapshot.ts", /"generatedAt":\s*"([^"]+)"/)
+    readFirstMatch("src/data/bayAreaTransitSnapshot.json", /"generatedAt":\s*"([^"]+)"/)
   );
 }
 
 // Routable pages that are deliberately unlisted. A page that opts out through
 // its own metadata does not need a row here; this is only for pages whose
 // metadata cannot say it.
-const UNLISTED_ROUTES = {
-  "/admin": "NextAuth-gated admin surface",
-};
+const UNLISTED_ROUTES = {};
 
 /**
  * Every `page.tsx` under `src/app`, as the URL path it serves. Route groups

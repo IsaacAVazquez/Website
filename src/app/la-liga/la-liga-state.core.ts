@@ -5,29 +5,25 @@ import type {
   LaLigaRouteState,
   LaLigaView,
 } from "@/types/la-liga";
+import {
+  canonicalizeId as canonicalizeClubId,
+  readParam,
+  type SearchParamInput,
+} from "@/lib/searchParams";
 
 // Pure, snapshot-free route-state core for /la-liga. Importing this module never
 // pulls the multi-thousand-line `laLigaSnapshot` into the bundle, so the client
 // can derive route state from the lean `summary` prop it already receives
-// instead of dragging the full snapshot into browser JS. The snapshot-bound
-// wrappers in `la-liga-state.ts` reuse these helpers for server + test code.
+// instead of dragging the full snapshot into browser JS.
 
 export const LA_LIGA_ROUTE = "/la-liga";
 
 /** Ultimate static fallback club id when no standings data exists. */
-export const LA_LIGA_FALLBACK_CLUB = "barcelona";
+const LA_LIGA_FALLBACK_CLUB = "barcelona";
 
 const VALID_VIEWS = new Set<LaLigaView>(["table", "title-race", "europe", "relegation"]);
 
-export const LA_LIGA_DETAIL_OPTIONS = ["club", "fixtures", "scorers"] as const;
-const VALID_DETAILS = new Set<LaLigaDetailTab>(LA_LIGA_DETAIL_OPTIONS);
-
-export type SearchParamInput =
-  | URLSearchParams
-  | ReadonlyURLSearchParams
-  | Record<string, string | string[] | undefined | null>;
-
-type SearchParamRecord = Record<string, string | string[] | undefined | null>;
+const VALID_DETAILS = new Set<LaLigaDetailTab>(["club", "fixtures", "scorers"]);
 
 type ClubAliasSource = { id: string; tla: string | null };
 
@@ -43,29 +39,7 @@ export function buildClubAliasMap(teams: readonly ClubAliasSource[]): Map<string
   );
 }
 
-export function canonicalizeClubId(
-  clubId: string | null | undefined,
-  aliasMap: Map<string, string>
-): string | null {
-  if (!clubId) {
-    return null;
-  }
-
-  return aliasMap.get(clubId.trim().toLowerCase()) ?? null;
-}
-
-export function readParam(input: SearchParamInput, key: string): string | null {
-  if ("get" in input && typeof input.get === "function") {
-    return input.get(key);
-  }
-
-  const rawValue = (input as SearchParamRecord)[key];
-  if (Array.isArray(rawValue)) {
-    return rawValue[0] ?? null;
-  }
-
-  return rawValue ?? null;
-}
+export { canonicalizeClubId };
 
 export function filterClubs(clubs: readonly LaLigaClub[], view: LaLigaView): LaLigaClub[] {
   switch (view) {

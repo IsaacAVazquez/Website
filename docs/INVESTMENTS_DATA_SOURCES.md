@@ -1,6 +1,6 @@
 # Investments Data Sources
 
-**Last updated:** 2026-09-21
+**Last updated:** 2026-10-02
 
 This is the source, provenance, and public-display ledger for `/investments`.
 Code licensing and market-data display rights are separate questions. A package
@@ -13,7 +13,7 @@ being open source does not grant redistribution rights for the data it fetches.
 | Company profiles, statements, ratios, history, beta, and news | `defeatbeta-api==0.0.61`; its published dataset card lists Yahoo Finance, Nasdaq, Treasury, YCharts, StockAnalysis, and other public endpoints | Snapshot build only | Compact snapshots are committed; raw responses are builder inputs | Not yet verified for every upstream source | Temporary. Reject delayed prices, preserve source dates, and replace fundamentals with SEC data plus a licensed market feed. |
 | Market quotes | Finnhub quote API | Request time through `/api/investments/quotes` | 30-second server cache and short browser cache | Written public-display approval has not been recorded | Temporary. Preserve provider trade time and do not describe API response time as market freshness. |
 | Filings | SEC EDGAR links only | User follows an external link | None | SEC public data, subject to fair-access policy | Expand into the primary statements and filing-provenance source. |
-| User holdings | Browser `localStorage` | Client only | User-controlled browser storage | Symbols are sent to the quote endpoint and Finnhub; shares, cost basis, notes, and portfolio history stay local | Keep portfolio details local unless a deliberate account/sync product decision changes the privacy model. |
+| User holdings | Browser `localStorage` | Client only | User-controlled browser storage | Symbols are validated (`isValidInvestmentSymbol`) and sent to the quote endpoint; shares, cost basis, notes, and portfolio history stay local; tooltips render via text nodes | Keep portfolio details local unless a deliberate account/sync product decision changes the privacy model. |
 
 **Release gate:** Finnhub's published self-serve market-data plans are labeled
 for personal use. Written permission for public quote display or redistribution

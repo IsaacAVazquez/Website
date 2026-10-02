@@ -5,6 +5,7 @@ import type {
   PremierLeagueStandingRow,
   PremierLeagueView,
 } from "@/types/premier-league";
+import { readParam, type SearchParamInput } from "@/lib/searchParams";
 
 export const PREMIER_LEAGUE_ROUTE = "/premier-league";
 
@@ -13,13 +14,6 @@ export const PREMIER_LEAGUE_DETAIL_OPTIONS = ["club", "fixtures", "scorers"] as 
 
 const VALID_VIEWS = new Set<PremierLeagueView>(PREMIER_LEAGUE_VIEW_OPTIONS);
 const VALID_DETAILS = new Set<PremierLeagueDetailTab>(PREMIER_LEAGUE_DETAIL_OPTIONS);
-
-type SearchParamInput =
-  | URLSearchParams
-  | ReadonlyURLSearchParams
-  | Record<string, string | string[] | undefined | null>;
-
-type SearchParamRecord = Record<string, string | string[] | undefined | null>;
 
 export const DEFAULT_PREMIER_LEAGUE_STATE: PremierLeagueRouteState = {
   view: "table",
@@ -33,26 +27,6 @@ export const PREMIER_LEAGUE_VIEW_LABELS: Record<PremierLeagueView, string> = {
   europe: "European places",
   relegation: "Relegation fight",
 };
-
-export const PREMIER_LEAGUE_VIEW_DESCRIPTIONS: Record<PremierLeagueView, string> = {
-  table: "All 20 clubs in the current standings order.",
-  "title-race": "The top four clubs competing for Champions League places.",
-  europe: "Clubs inside the Champions League, Europa League, and Conference League lines.",
-  relegation: "Bottom-five pressure view around the safety and drop lines.",
-};
-
-function readParam(input: SearchParamInput, key: string): string | null {
-  if ("get" in input && typeof input.get === "function") {
-    return (input as URLSearchParams).get(key);
-  }
-
-  const rawValue = (input as SearchParamRecord)[key];
-  if (Array.isArray(rawValue)) {
-    return rawValue[0] ?? null;
-  }
-
-  return rawValue ?? null;
-}
 
 function normalizeTeamParam(team: string | null): string | null {
   if (!team) return null;

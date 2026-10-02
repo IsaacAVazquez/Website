@@ -3,11 +3,8 @@ import type { ReactNode } from "react";
 interface StatusPanelProps {
   title: string;
   message: string;
-  tone?: "default" | "error" | "warning";
+  tone?: "default" | "error";
   icon?: ReactNode;
-  statusRole?: "status" | "alert";
-  /** Optional action rendered under the message (e.g. a retry button). */
-  action?: ReactNode;
 }
 
 /**
@@ -15,25 +12,10 @@ interface StatusPanelProps {
  * Tone puts its colour on the border rule and the icon swatch only; the
  * title and message stay in ink so the text always clears contrast.
  */
-export function StatusPanel({
-  title,
-  message,
-  tone = "default",
-  icon,
-  statusRole,
-  action,
-}: StatusPanelProps) {
-  // Auto-derive the ARIA role from tone (error → alert, otherwise status) so
-  // every instance gets a live region even if the caller doesn't pass one;
-  // an explicit `statusRole` still overrides.
-  const role = statusRole ?? (tone === "error" ? "alert" : "status");
-
-  const toneAccent =
-    tone === "error"
-      ? "var(--c97-negative)"
-      : tone === "warning"
-        ? "var(--c97-warning)"
-        : "var(--c97-accent)";
+export function StatusPanel({ title, message, tone = "default", icon }: StatusPanelProps) {
+  // error → alert, otherwise status, so every instance gets a live region.
+  const role = tone === "error" ? "alert" : "status";
+  const toneAccent = tone === "error" ? "var(--c97-negative)" : "var(--c97-accent)";
   const borderColor = tone === "default" ? "var(--c97-rule)" : toneAccent;
 
   return (
@@ -50,19 +32,18 @@ export function StatusPanel({
           {icon}
         </div>
       ) : null}
-      <h2
-        className="text-xl font-semibold"
-        style={{ fontFamily: "var(--c97-font-body)", color: "var(--c97-ink)" }}
-      >
-        {title}
-      </h2>
+      <h3 className="c97-serif c97-h3">{title}</h3>
       <p
-        className="mx-auto mt-3 mb-0 max-w-[36rem] text-sm leading-7"
-        style={{ fontFamily: "var(--c97-font-body)", color: "var(--c97-ink-2)" }}
+        className="c97-prose"
+        style={{
+          marginTop: "var(--c97-sp-2)",
+          marginInline: "auto",
+          fontSize: "var(--c97-fs-small)",
+          color: "var(--c97-ink-2)",
+        }}
       >
         {message}
       </p>
-      {action ? <div className="mt-6 flex justify-center">{action}</div> : null}
     </div>
   );
 }

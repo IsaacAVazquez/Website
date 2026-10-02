@@ -1,10 +1,10 @@
 {
   "symbol": "UNH",
-  "lastUpdated": "2026-09-30T15:30:08.171135+00:00",
+  "lastUpdated": "2026-10-02T15:16:35.277063+00:00",
   "freshness": {
-    "snapshotBuiltAt": "2026-09-30T15:30:08.171135+00:00",
+    "snapshotBuiltAt": "2026-10-02T15:16:35.277063+00:00",
     "sections": {
-      "price": "2026-09-30"
+      "price": "2026-10-01"
     },
     "retainedSections": [
       "fundamentals"
@@ -43,11 +43,11 @@
     },
     "fundamentals": {
       "ttmEps": 15.551,
-      "ttmPe": 24.11,
-      "pegRatio": 0.39,
-      "marketCap": 339320700000,
-      "psRatio": 0.75,
-      "pbRatio": 3.45
+      "ttmPe": 23.48,
+      "pegRatio": 0.38,
+      "marketCap": 330506000000,
+      "psRatio": 0.73,
+      "pbRatio": 3.36
     },
     "profitability": {
       "roe": 5.59,
@@ -5046,25 +5046,17 @@
       ]
     },
     "wacc": {
-      "wacc": 7.84,
-      "costOfEquity": 9.3,
+      "wacc": 7.8100000000000005,
+      "costOfEquity": 9.31,
       "costOfDebt": 1.31,
       "taxRate": 19,
-      "beta": 0.5305,
-      "marketCap": 339320700000
+      "beta": 0.5336,
+      "marketCap": 330506000000
     },
     "beta": {
-      "beta5y": 0.5305
+      "beta5y": 0.5336
     },
     "price": [
-      {
-        "date": "2025-09-30",
-        "open": 343.75,
-        "high": 349.32,
-        "low": 342.33,
-        "close": 345.3,
-        "volume": 7429700
-      },
       {
         "date": "2025-10-01",
         "open": 343.9,
@@ -7072,6 +7064,14 @@
         "low": 365.72,
         "close": 367.08,
         "volume": 4788300
+      },
+      {
+        "date": "2026-10-01",
+        "open": 367.99,
+        "high": 371.86,
+        "low": 362.6,
+        "close": 365.2,
+        "volume": 3940700
       }
     ],
     "news": [
@@ -7148,11 +7148,11 @@
         "type": "STORY"
       },
       {
-        "uuid": "6bd9f8f6-e32b-372a-95b2-aa59eacd547a",
-        "title": "Sector Update: Health Care Stocks Decline Tuesday Afternoon",
-        "publisher": "MT Newswires",
+        "uuid": "2078cfe5-f146-3ea9-8b1b-514c736c53fe",
+        "title": "Morning Movers: UnitedHealth sinks following CEO exit and outlook suspension",
+        "publisher": "TipRanks",
         "reportDate": "2025-05-14",
-        "link": "https://finance.yahoo.com/news/sector-health-care-stocks-decline-180552670.html",
+        "link": "https://finance.yahoo.com/news/morning-movers-unitedhealth-sinks-following-131835232.html",
         "type": "STORY"
       }
     ],
@@ -7163,12 +7163,6 @@
         "age": 50,
         "yearBorn": 1975,
         "totalPay": 2921605
-      },
-      {
-        "name": "Dr. Richard J. Migliori M.D.",
-        "title": "Executive Vice President & Senior Advisor",
-        "age": 68,
-        "yearBorn": 1957
       },
       {
         "name": "Mr. Christopher R. Zaetta",
@@ -7209,34 +7203,23 @@
         "age": 55,
         "yearBorn": 1970,
         "totalPay": 3082209
-      },
-      {
-        "name": "Mr. Zachary William Sopcak",
-        "title": "Senior Vice President of Capital Markets Communications & Investor Relations"
-      },
-      {
-        "name": "Ms. Erin L. McSweeney J.D.",
-        "title": "Executive VP & Chief People Officer",
-        "age": 60,
-        "yearBorn": 1965,
-        "totalPay": 1767835
       }
     ],
     "industry": [
       {
         "metric": "P/E (TTM)",
-        "value": 24.11,
-        "industryAvg": 20.64
+        "value": 23.48,
+        "industryAvg": 20.13
       },
       {
         "metric": "P/S Ratio",
-        "value": 0.75,
-        "industryAvg": 0.4
+        "value": 0.73,
+        "industryAvg": 0.39
       },
       {
         "metric": "P/B Ratio",
-        "value": 3.45,
-        "industryAvg": 2.26
+        "value": 3.36,
+        "industryAvg": 2.2
       },
       {
         "metric": "ROE",

@@ -1,13 +1,13 @@
 "use client";
 
 import {
-  startTransition,
   useEffect,
   useMemo,
   useState,
   type CSSProperties,
 } from "react";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useSearchParams } from "next/navigation";
+import { formatUpdatedAt } from "@/lib/date-formatters";
 import { CircleAlert, Navigation, ShieldCheck, TriangleAlert } from "lucide-react";
 import type {
   TransitLine,
@@ -29,6 +29,7 @@ import { Catalog97ProjectHero } from "@/components/catalog97/Catalog97ProjectHer
 import { PROJECT_PRESS } from "@/constants/projectPress";
 import { TransitSignature } from "./TransitSignature";
 import "./bay-area-transit.css";
+import { useRouteSync } from "@/hooks/useRouteSync";
 
 interface BayAreaTransitClientProps {
   initialState: TransitRouteState;
@@ -36,27 +37,9 @@ interface BayAreaTransitClientProps {
   initialStationBoard: TransitStationBoard | null;
 }
 
-// Pinned to Pacific time: BART timestamps belong to the Bay Area, and a fixed
-// zone keeps the server-rendered text identical to the client's (no hydration
-// mismatch from the server running in UTC).
-const LAST_UPDATED_FORMATTER = new Intl.DateTimeFormat("en-US", {
-  month: "short",
-  day: "numeric",
-  hour: "numeric",
-  minute: "2-digit",
-  timeZone: "America/Los_Angeles",
-  timeZoneName: "short",
-});
-
+// The shared formatter pins Pacific time, which is where BART timestamps belong.
 function formatGeneratedAt(value: string | null | undefined): string {
-  if (!value) {
-    return "Unavailable";
-  }
-
-  const date = new Date(value);
-  return Number.isNaN(date.getTime())
-    ? "Unavailable"
-    : LAST_UPDATED_FORMATTER.format(date);
+  return value ? formatUpdatedAt(value) : "Unavailable";
 }
 
 /** A readable swatch border that still shows bright BART colors on light paper. */
@@ -182,11 +165,8 @@ export function BayAreaTransitClient({
   summary: initialSummary,
   initialStationBoard,
 }: BayAreaTransitClientProps) {
-  const router = useRouter();
   const searchParams = useSearchParams();
   const [summary, setSummary] = useState(initialSummary);
-  const currentQuery = searchParams.toString();
-  const currentHref = `${TRANSIT_ROUTE}${currentQuery ? `?${currentQuery}` : ""}`;
   const hasManagedParams =
     searchParams.get("view") !== null || searchParams.get("station") !== null;
   const routeState = hasManagedParams
@@ -281,15 +261,7 @@ export function BayAreaTransitClient({
     };
   }, []);
 
-  useEffect(() => {
-    if (currentHref === desiredHref) {
-      return;
-    }
-
-    startTransition(() => {
-      router.replace(desiredHref, { scroll: false });
-    });
-  }, [currentHref, desiredHref, router]);
+  const pushHref = useRouteSync(TRANSIT_ROUTE, desiredHref);
 
   useEffect(() => {
     if (!selectedStationId) {
@@ -369,13 +341,7 @@ export function BayAreaTransitClient({
 
   function navigate(nextState: TransitRouteState) {
     const href = buildTransitHref(nextState, searchParams);
-    if (href === currentHref) {
-      return;
-    }
-
-    startTransition(() => {
-      router.push(href, { scroll: false });
-    });
+    pushHref(href);
   }
 
   function handleViewChange(view: TransitView) {

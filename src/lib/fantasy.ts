@@ -1,3 +1,4 @@
+import { isFiniteNumber } from "@/lib/utils";
 import { Player, Position, ScoringFormat } from "@/types";
 import { logger } from "@/lib/logger";
 import {
@@ -269,22 +270,6 @@ export function getCrossBoardFantasyPlayers(snapshot: FantasySnapshot): Player[]
   );
 }
 
-/**
- * Persisted player IDs can only be classified as stale when every published
- * slice loaded successfully. An unavailable position is an incomplete player
- * universe, not evidence that its previously pinned players no longer exist.
- */
-export function hasCompleteFantasyPlayerUniverse(
-  snapshot: FantasySnapshot | null | undefined
-): snapshot is FantasySnapshot {
-  return Boolean(
-    snapshot &&
-      FANTASY_ROUTE_POSITIONS.every(
-        (position) => snapshot.sliceMetadata[position]?.available === true
-      )
-  );
-}
-
 function snapshotPositionToRoutePosition(position: FantasySnapshotPosition): FantasyRoutePosition {
   switch (position) {
     case "QB":
@@ -302,10 +287,6 @@ function snapshotPositionToRoutePosition(position: FantasySnapshotPosition): Fan
     case "DST":
       return "dst";
   }
-}
-
-function isFiniteNumber(value: unknown): value is number {
-  return typeof value === "number" && Number.isFinite(value);
 }
 
 function assertCompatibleFantasySnapshot(

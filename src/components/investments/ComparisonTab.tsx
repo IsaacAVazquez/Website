@@ -5,7 +5,9 @@ import { useStockData } from "@/hooks/useStockData";
 import { getClientInvestmentsIndex } from "@/lib/investmentsClientData";
 import { ComparisonRadarChart, type RadarDimension } from "./ComparisonRadarChart";
 import { ComparisonMetricTable, type MetricRow } from "./ComparisonMetricTable";
+import { ErrorState } from "./ErrorState";
 import { DISPLAY_TIME_ZONE } from "@/lib/date-formatters";
+import { mean } from "d3";
 import type {
   Fundamentals,
   Profitability,
@@ -98,7 +100,7 @@ function fmt(v: number | null | undefined, style: "decimal" | "percent" | "curre
 //   Growth         → percentage (20 = 20%)
 
 function avg(scores: number[]): number | null {
-  return scores.length === 0 ? null : scores.reduce((a, b) => a + b, 0) / scores.length;
+  return mean(scores) ?? null;
 }
 
 function scoreValuation(
@@ -192,15 +194,16 @@ function findGrowthMetric(raw: unknown, keywords: string[]): number | null {
 
 function Skeleton() {
   return (
-    <div className="space-y-6 animate-pulse">
+    <div className="space-y-6" role="status" aria-busy="true">
+      <span className="sr-only">Loading comparison</span>
       <div className="flex justify-center">
-        <div className="w-[320px] h-[320px] bg-[var(--c97-rule)]" />
+        <span className="c97-skeleton" style={{ width: 320, height: 320, maxWidth: "100%" }} />
       </div>
-      {[1, 2, 3, 4].map((i) => (
+      {[1, 2, 3].map((i) => (
         <div key={i} className="border border-[var(--c97-rule)] p-5 space-y-3">
-          <div className="h-4 w-32 bg-[var(--c97-rule)]" />
+          <span className="c97-skeleton" style={{ width: 128, height: 16 }} />
           {[1, 2, 3, 4].map((j) => (
-            <div key={j} className="h-8 bg-[var(--c97-rule)]" />
+            <span key={j} className="c97-skeleton" style={{ height: 32 }} />
           ))}
         </div>
       ))}
@@ -216,19 +219,28 @@ export function ComparisonTab() {
   const [symbolB, setSymbolB] = React.useState("MSFT");
 
   // ── Fetch data for stock A ──────────────────────────────────────────────
-  const { data: fundA, isLoading: l1, lastUpdated: asOfA } = useStockData<Fundamentals>(symbolA, "fundamentals");
-  const { data: growthRawA, isLoading: l2 } = useStockData(symbolA, "growth");
-  const { data: profA, isLoading: l3 } = useStockData<Profitability>(symbolA, "profitability");
-  const { data: marginsRawA, isLoading: l4 } = useStockData<MarginsData>(symbolA, "margins");
-  const { data: betaA, isLoading: l5 } = useStockData<BetaData>(symbolA, "beta");
+  const { data: fundA, isLoading: l1, lastUpdated: asOfA, error: e1, isNotFetched: n1, refetch: r1 } = useStockData<Fundamentals>(symbolA, "fundamentals");
+  const { data: growthRawA, isLoading: l2, error: e2, isNotFetched: n2, refetch: r2 } = useStockData(symbolA, "growth");
+  const { data: profA, isLoading: l3, error: e3, isNotFetched: n3, refetch: r3 } = useStockData<Profitability>(symbolA, "profitability");
+  const { data: marginsRawA, isLoading: l4, error: e4, isNotFetched: n4, refetch: r4 } = useStockData<MarginsData>(symbolA, "margins");
+  const { data: betaA, isLoading: l5, error: e5, isNotFetched: n5, refetch: r5 } = useStockData<BetaData>(symbolA, "beta");
 
   // ── Fetch data for stock B ──────────────────────────────────────────────
-  const { data: fundB, isLoading: l7, lastUpdated: asOfB } = useStockData<Fundamentals>(symbolB, "fundamentals");
-  const { data: growthRawB, isLoading: l8 } = useStockData(symbolB, "growth");
-  const { data: profB, isLoading: l9 } = useStockData<Profitability>(symbolB, "profitability");
-  const { data: marginsRawB, isLoading: l10 } = useStockData<MarginsData>(symbolB, "margins");
-  const { data: betaB, isLoading: l11 } = useStockData<BetaData>(symbolB, "beta");
+  const { data: fundB, isLoading: l7, lastUpdated: asOfB, error: e7, isNotFetched: n7, refetch: r7 } = useStockData<Fundamentals>(symbolB, "fundamentals");
+  const { data: growthRawB, isLoading: l8, error: e8, isNotFetched: n8, refetch: r8 } = useStockData(symbolB, "growth");
+  const { data: profB, isLoading: l9, error: e9, isNotFetched: n9, refetch: r9 } = useStockData<Profitability>(symbolB, "profitability");
+  const { data: marginsRawB, isLoading: l10, error: e10, isNotFetched: n10, refetch: r10 } = useStockData<MarginsData>(symbolB, "margins");
+  const { data: betaB, isLoading: l11, error: e11, isNotFetched: n11, refetch: r11 } = useStockData<BetaData>(symbolB, "beta");
   const isLoading = l1 || l2 || l3 || l4 || l5 || l7 || l8 || l9 || l10 || l11;
+
+  // A section a snapshot simply lacks comes back as a 404 (isNotFetched) and
+  // stays a dash in the tables. Anything else is a load that failed.
+  const failedA = (!!e1 && !n1) || (!!e2 && !n2) || (!!e3 && !n3) || (!!e4 && !n4) || (!!e5 && !n5);
+  const failedB = (!!e7 && !n7) || (!!e8 && !n8) || (!!e9 && !n9) || (!!e10 && !n10) || (!!e11 && !n11);
+  const failedSymbol = failedA ? symbolA : failedB ? symbolB : null;
+  // Each refetch clears the shared snapshot cache, so retrying every section is
+  // one fresh snapshot read per symbol.
+  const retryAll = () => [r1, r2, r3, r4, r5, r7, r8, r9, r10, r11].forEach((refetch) => refetch());
 
   // ── Derived: latest margins ─────────────────────────────────────────────
   const marginsA = Array.isArray(marginsRawA) ? marginsRawA[marginsRawA.length - 1] : undefined;
@@ -367,6 +379,8 @@ export function ComparisonTab() {
 
       {isLoading ? (
         <Skeleton />
+      ) : failedSymbol ? (
+        <ErrorState message={`Comparison data for ${failedSymbol} did not load.`} onRetry={retryAll} />
       ) : (
         <>
           <div className="border border-[var(--c97-rule)] bg-[var(--c97-panel)] p-5  sm:p-6">
@@ -377,7 +391,7 @@ export function ComparisonTab() {
             />
           </div>
 
-          <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
+          <div className="c97-columns">
             <ComparisonMetricTable
               title="Valuation"
               rows={valuationRows}

@@ -26,10 +26,10 @@ import { builtinRules } from "eslint/use-at-your-own-risk";
  *    editing the table, not 500 lines of selector strings.
  *
  * Everything is `warn`, matching the published config. These are advisory: a
- * stale contract should not be able to break the build. If a warning looks
- * wrong, check whether the component's real props moved and
- * `.design-sync/gen-contracts.mjs` has not been re-run — `dtsPropsFor` going
- * stale is a known failure mode (see `.design-sync/NOTES.md`).
+ * stale contract should not be able to break the build. The `.design-sync/`
+ * bridge was removed on 2026-10-01 (it is in git history), so the table below
+ * is now edited by hand. If a warning looks wrong, check whether the
+ * component's real props moved.
  */
 
 /**
@@ -66,17 +66,11 @@ const SPREADS_DOM_PROPS = new Set(["ModernButton"]);
  */
 const COMPONENT_CONTRACTS = {
   // --- general ------------------------------------------------------------
-  AuthorBio: {
-    props: [
-      "name", "title", "image", "bio", "credentials", "expertise", "social",
-      "variant", "showImage", "showSocial", "className",
-    ],
-    enums: { variant: ["inline", "compact", "full", "light"] },
-  },
+  AuthorBio: { props: [], enums: {} },
   ModernButton: {
     props: [
       "href", "variant", "size", "children", "ariaLabel", "fullWidth",
-      "className", "style", "id",
+      "className", "disabled",
     ],
     enums: {
       variant: ["outline", "primary", "secondary", "ghost", "accent", "mono"],
@@ -141,7 +135,7 @@ const COMPONENT_CONTRACTS = {
     props: ["tabs", "activeId", "onChange", "ariaLabel", "idPrefix", "panelId", "className"],
     enums: {},
   },
-  StatFascia: { props: ["items", "dense", "className"], enums: {} },
+  StatFascia: { props: ["items", "className"], enums: {} },
   SurfaceCard: { props: ["children", "className"], enums: {} },
   TeamResultPill: { props: ["result"], enums: { result: ["W", "D", "L"] } },
 };

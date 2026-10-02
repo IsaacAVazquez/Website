@@ -1,13 +1,11 @@
 "use client";
 
 import {
-  startTransition,
-  useEffect,
   useMemo,
   useState,
   type CSSProperties,
 } from "react";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useSearchParams } from "next/navigation";
 import { ExternalLink } from "lucide-react";
 import { DATE_ONLY_TIME_ZONE } from "@/lib/date-formatters";
 import {
@@ -42,6 +40,10 @@ import {
 import { divisionBoard } from "./scoreboard";
 import { MlbScoreboard } from "./MlbScoreboard";
 import "./mlb.css";
+import { useRouteSync } from "@/hooks/useRouteSync";
+import { useCachedSnapshot } from "@/hooks/useCachedSnapshot";
+import { formatFixed } from "@/components/football/fixtureFormat";
+import { groupBy } from "@/lib/utils";
 
 interface MlbClientProps {
   initialState: MlbRouteState;
@@ -65,22 +67,6 @@ const postseasonRoundLabels: Record<string, string> = {
   L: "League Championship Series",
   W: "World Series",
 };
-
-async function fetchMlbTeamSnapshot(
-  teamId: string,
-  signal: AbortSignal
-): Promise<MlbTeamSnapshot> {
-  const response = await fetch(`/api/mlb/teams/${teamId}`, { signal });
-  const payload = (await response.json()) as MlbTeamSnapshot & { error?: string };
-  if (!response.ok) {
-    throw new Error(payload.error || "Unable to load team snapshot.");
-  }
-  return payload;
-}
-
-function formatFixed(value: number, digits = 2) {
-  return Number.isFinite(value) ? value.toFixed(digits) : "—";
-}
 
 function formatGamesBack(games: number) {
   if (!Number.isFinite(games) || games <= 0) return "—";
@@ -107,10 +93,7 @@ function leadersToEntries(
 }
 
 export function MlbClient({ initialState, summary, initialTeamSnapshot }: MlbClientProps) {
-  const router = useRouter();
   const searchParams = useSearchParams();
-  const currentQuery = searchParams.toString();
-  const currentHref = `${MLB_ROUTE}${currentQuery ? `?${currentQuery}` : ""}`;
 
   const standings = summary.standings;
   // Route-state helpers operate on the lean `summary` data the server already
@@ -188,16 +171,17 @@ export function MlbClient({ initialState, summary, initialTeamSnapshot }: MlbCli
   const selectedRow = standingsById.get(selectedTeamId) ?? standings[0];
   const selectedTeam = teamLookup.get(selectedRow?.id ?? "") ?? null;
 
-  const [teamSnapshots, setTeamSnapshots] = useState<Record<string, MlbTeamSnapshot>>(
-    () =>
-      selectedRow && initialTeamSnapshot ? { [selectedRow.id]: initialTeamSnapshot } : {}
+  const {
+    snapshot: teamSnapshot,
+    isLoading: isTeamSnapshotLoading,
+    error: teamSnapshotError,
+  } = useCachedSnapshot<MlbTeamSnapshot>(
+    "/api/mlb/teams",
+    selectedRow?.id ?? null,
+    { id: selectedRow?.id ?? null, snapshot: initialTeamSnapshot },
+    "Unable to load team snapshot."
   );
-  const [loadingTeamId, setLoadingTeamId] = useState<string | null>(null);
-  const [teamSnapshotError, setTeamSnapshotError] = useState<string | null>(null);
   const [activeDetailTab, setActiveDetailTab] = useState<DetailTab>("team");
-
-  const teamSnapshot = selectedRow ? teamSnapshots[selectedRow.id] ?? null : null;
-  const isTeamSnapshotLoading = selectedRow ? loadingTeamId === selectedRow.id : false;
 
   const desiredHref = buildHref(
     { view: routeState.view, team: selectedTeamId },
@@ -206,54 +190,11 @@ export function MlbClient({ initialState, summary, initialTeamSnapshot }: MlbCli
     searchParams
   );
 
-  useEffect(() => {
-    if (currentHref === desiredHref) return;
-    startTransition(() => {
-      router.replace(desiredHref, { scroll: false });
-    });
-  }, [currentHref, desiredHref, router]);
-
-  useEffect(() => {
-    if (!selectedRow) return;
-    if (teamSnapshots[selectedRow.id]) {
-      // eslint-disable-next-line react-hooks/set-state-in-effect -- Reset loading/error flags when cached snapshot exists for the selected team
-      setLoadingTeamId(null);
-      setTeamSnapshotError(null);
-      return;
-    }
-    const controller = new AbortController();
-    let cancelled = false;
-    setLoadingTeamId(selectedRow.id);
-    setTeamSnapshotError(null);
-    fetchMlbTeamSnapshot(selectedRow.id, controller.signal)
-      .then((snapshot) => {
-        if (cancelled) return;
-        setTeamSnapshots((current) =>
-          current[selectedRow.id] ? current : { ...current, [selectedRow.id]: snapshot }
-        );
-      })
-      .catch((error: Error) => {
-        if (!cancelled && error.name !== "AbortError") {
-          setTeamSnapshotError(error.message || "Unable to load team snapshot.");
-        }
-      })
-      .finally(() => {
-        if (!cancelled) {
-          setLoadingTeamId((current) => (current === selectedRow.id ? null : current));
-        }
-      });
-    return () => {
-      cancelled = true;
-      controller.abort();
-    };
-  }, [selectedRow, teamSnapshots]);
+  const pushHref = useRouteSync(MLB_ROUTE, desiredHref);
 
   function navigate(nextState: MlbRouteState) {
     const href = buildHref(nextState, defaultState, aliasMap, searchParams);
-    if (href === currentHref) return;
-    startTransition(() => {
-      router.push(href, { scroll: false });
-    });
+    pushHref(href);
   }
 
   function handleViewChange(view: MlbView) {
@@ -272,13 +213,9 @@ export function MlbClient({ initialState, summary, initialTeamSnapshot }: MlbCli
   }
 
   const groupedStandings = useMemo(() => {
-    const groups = new Map<string, MlbStandingsRow[]>();
-    for (const row of visibleStandings) {
-      const key = routeState.view === "wildcard" ? `${row.league} Wild Card` : row.division;
-      const list = groups.get(key) ?? [];
-      list.push(row);
-      groups.set(key, list);
-    }
+    const groups = groupBy(visibleStandings, (row) =>
+      routeState.view === "wildcard" ? `${row.league} Wild Card` : row.division
+    );
     return Array.from(groups.entries());
   }, [visibleStandings, routeState.view]);
 
@@ -354,13 +291,12 @@ export function MlbClient({ initialState, summary, initialTeamSnapshot }: MlbCli
         <div className="c97-shell">
           <h2 className="c97-poster-sm mb-5">Standings</h2>
 
-          <div className="c97-segmented" role="tablist" aria-label="Standings view">
+          <div className="c97-segmented" role="group" aria-label="Standings view">
             {viewOptions.map((option) => (
               <button
                 key={option.id}
                 type="button"
-                role="tab"
-                aria-selected={option.id === routeState.view}
+                aria-pressed={option.id === routeState.view}
                 onClick={() => handleViewChange(option.id)}
                 className="min-h-[44px] text-sm font-semibold"
               >
@@ -371,6 +307,19 @@ export function MlbClient({ initialState, summary, initialTeamSnapshot }: MlbCli
               </button>
             ))}
           </div>
+
+          <p className="c97-meta" style={{ marginTop: "var(--c97-sp-2)" }}>
+            {(["division", "wildcard", "out"] as const).map((zone) => (
+              <span key={zone} className="inline-flex items-center" style={{ gap: "var(--c97-sp-1)" }}>
+                <span
+                  className="c97-mlb-zone-dot"
+                  style={{ backgroundColor: getZoneDotColor(zone) }}
+                  aria-hidden="true"
+                />
+                {getZoneLabel(zone)}
+              </span>
+            ))}
+          </p>
 
           {!hasStandings && (
             <p className="c97-prose" style={{ marginTop: "var(--c97-sp-3)" }}>
@@ -395,10 +344,10 @@ export function MlbClient({ initialState, summary, initialTeamSnapshot }: MlbCli
                         <th scope="col">Pos</th>
                         <th scope="col">Team</th>
                         <th scope="col">W-L</th>
-                        <th scope="col" className="hidden sm:table-cell">PCT</th>
-                        <th scope="col" className="hidden md:table-cell">GB</th>
-                        <th scope="col" className="hidden lg:table-cell">RS</th>
-                        <th scope="col" className="hidden lg:table-cell">RA</th>
+                        <th scope="col" className="hidden sm:table-cell" data-align="end">PCT</th>
+                        <th scope="col" className="hidden md:table-cell" data-align="end">GB</th>
+                        <th scope="col" className="hidden lg:table-cell" data-align="end">RS</th>
+                        <th scope="col" className="hidden lg:table-cell" data-align="end">RA</th>
                         <th scope="col" className="hidden xl:table-cell">L10</th>
                       </tr>
                     </thead>
@@ -418,8 +367,10 @@ export function MlbClient({ initialState, summary, initialTeamSnapshot }: MlbCli
                                   className="c97-mlb-zone-dot"
                                   style={{ backgroundColor: getZoneDotColor(zone) }}
                                   title={getZoneLabel(zone)}
+                                  aria-hidden="true"
                                 />
                                 <span className="c97-mono">{positionLabel}</span>
+                                <span className="sr-only">{getZoneLabel(zone)}</span>
                               </div>
                             </td>
                             <td>
@@ -442,10 +393,10 @@ export function MlbClient({ initialState, summary, initialTeamSnapshot }: MlbCli
                               </button>
                             </td>
                             <td className="c97-mono">{formatRecord(row)}</td>
-                            <td className="c97-mono hidden sm:table-cell">{formatFixed(row.pct, 3)}</td>
-                            <td className="c97-mono hidden md:table-cell">{formatGamesBack(row.gamesBack)}</td>
-                            <td className="c97-mono hidden lg:table-cell">{row.runsScored}</td>
-                            <td className="c97-mono hidden lg:table-cell">{row.runsAllowed}</td>
+                            <td className="c97-mono hidden sm:table-cell" data-align="end">{formatFixed(row.pct, 3)}</td>
+                            <td className="c97-mono hidden md:table-cell" data-align="end">{formatGamesBack(row.gamesBack)}</td>
+                            <td className="c97-mono hidden lg:table-cell" data-align="end">{row.runsScored}</td>
+                            <td className="c97-mono hidden lg:table-cell" data-align="end">{row.runsAllowed}</td>
                             <td className="c97-mono hidden xl:table-cell">{row.last10}</td>
                           </tr>
                         );
@@ -668,7 +619,7 @@ export function MlbClient({ initialState, summary, initialTeamSnapshot }: MlbCli
                 )}
                 {summary.recentGames.length === 0 && summary.upcomingGames.length === 0 && (
                   <p className="c97-prose">
-                    No games are loaded yet. Run the snapshot script to populate the schedule.
+                    No games are on the schedule right now. Recent results and upcoming games will appear here once the next snapshot is published.
                   </p>
                 )}
               </div>
@@ -729,7 +680,7 @@ function LeagueLeaders({
     return (
       <div className="flex items-start justify-between gap-3">
         <p className="c97-prose">
-          League leader boards are not loaded yet. Run the snapshot script to populate hitting and pitching leaders.
+          League leaders will appear here once the next snapshot is published.
         </p>
         <a href={sourceUrl} target="_blank" rel="noreferrer" className="c97-btn-ghost">
           Source

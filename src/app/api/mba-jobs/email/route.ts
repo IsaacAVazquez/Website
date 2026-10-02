@@ -1,9 +1,9 @@
 import { createHash, timingSafeEqual } from "node:crypto";
 import { NextRequest, NextResponse } from "next/server";
-import { Resend } from "resend";
 import { emailDigestRateLimiter, getClientIp, rateLimitResponse } from "@/lib/rateLimit";
 import { logger } from "@/lib/logger";
 import { DISPLAY_TIME_ZONE } from "@/lib/date-formatters";
+import { escapeHtml, groupBy } from "@/lib/utils";
 
 // ---------------------------------------------------------------------------
 // POST /api/mba-jobs/email — send an email digest of MBA job listings via Resend
@@ -85,15 +85,6 @@ function json(body: Record<string, unknown>, init?: ResponseInit) {
       ...init?.headers,
     },
   });
-}
-
-function escapeHtml(value: string): string {
-  return value
-    .replace(/&/g, "&amp;")
-    .replace(/</g, "&lt;")
-    .replace(/>/g, "&gt;")
-    .replace(/"/g, "&quot;")
-    .replace(/'/g, "&#39;");
 }
 
 function normalizeText(value: unknown, fallback?: string): string | null {
@@ -201,12 +192,7 @@ function normalizeJobs(value: unknown): EmailDigestJob[] | null {
 }
 
 function buildEmailHtml(jobs: EmailDigestJob[], to: string): string {
-  const grouped = new Map<string, EmailDigestJob[]>();
-  for (const job of jobs) {
-    const existing = grouped.get(job.companyName) ?? [];
-    existing.push(job);
-    grouped.set(job.companyName, existing);
-  }
+  const grouped = groupBy(jobs, (job) => job.companyName);
 
   const rows = Array.from(grouped.entries())
     .map(([company, companyJobs]) => {
@@ -385,26 +371,36 @@ export async function POST(request: NextRequest) {
   // the response to mention that recipient, so keep `to` for downstream use.
   const to = recipients[0];
 
-  const resend = new Resend(apiKey);
   const subject =
     jobs.length === 1
       ? `1 new MBA role`
-      : `${jobs.length} MBA roles — digest`;
+      : `${jobs.length} new MBA roles`;
 
   try {
-    const result = await resend.emails.send({
-      from: "MBA Tracker <no-reply@isaacvazquez.com>",
-      to: recipients,
-      subject,
-      html: buildEmailHtml(jobs, to),
+    const response = await fetch("https://api.resend.com/emails", {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${apiKey}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        from: "MBA Tracker <no-reply@isaacvazquez.com>",
+        to: recipients,
+        subject,
+        html: buildEmailHtml(jobs, to),
+      }),
     });
+    const result = (await response.json().catch(() => ({}))) as {
+      id?: string;
+      message?: string;
+    };
 
-    if (result.error) {
-      logger.error("MBA jobs email provider error", result.error.message);
+    if (!response.ok) {
+      logger.error("MBA jobs email provider error", result.message);
       return json({ error: "Email provider failed to send digest." }, { status: 502 });
     }
 
-    return json({ ok: true, id: result.data?.id });
+    return json({ ok: true, id: result.id });
   } catch (err) {
     logger.error("MBA jobs email send failed", (err as Error)?.message ?? err);
     return json({ error: "Failed to send email digest." }, { status: 500 });

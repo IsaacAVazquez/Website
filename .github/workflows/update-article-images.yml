@@ -75,19 +75,8 @@ jobs:
           ONLY: ${{ github.event.inputs.only }}
           FORCE: ${{ github.event.inputs.force }}
 
-      - name: Check for changes
-        id: check_changes
-        run: |
-          if [ -z "$(git status --porcelain -- content/blog public/images/writing/covers)" ]; then
-            echo "changed=false" >> "$GITHUB_OUTPUT"
-            echo "No new cover images."
-          else
-            echo "changed=true" >> "$GITHUB_OUTPUT"
-            git status --porcelain -- content/blog public/images/writing/covers
-          fi
-
       - name: Commit and push cover images
-        if: steps.check_changes.outputs.changed == 'true'
+        id: commit
         run: |
           bash scripts/ci/commit-and-push-snapshot.sh \
             "chore: refresh article cover images [automated] [skip ci]" \
@@ -96,7 +85,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Trigger Netlify deploy
-        if: steps.check_changes.outputs.changed == 'true'
+        if: steps.commit.outputs.changed == 'true'
         env:
           NETLIFY_BUILD_HOOK: ${{ secrets.NETLIFY_BUILD_HOOK }}
         run: |
@@ -107,21 +96,6 @@ jobs:
           curl -fsS -X POST -d '{}' "$NETLIFY_BUILD_HOOK" \
             && echo "Netlify build hook triggered." \
             || echo "::warning::Netlify build hook request failed; the daily scheduled rebuild will pick up the change."
-
-      - name: Create job summary
-        if: always()
-        run: |
-          echo "## Article Cover Image Refresh" >> "$GITHUB_STEP_SUMMARY"
-          echo "" >> "$GITHUB_STEP_SUMMARY"
-          echo "**Status:** ${{ job.status }}" >> "$GITHUB_STEP_SUMMARY"
-          echo "**Run Date:** $(date -u +'%Y-%m-%d %H:%M:%S UTC')" >> "$GITHUB_STEP_SUMMARY"
-          if [ "${{ steps.check_changes.outputs.changed }}" = "true" ]; then
-            echo "**Result:** New cover images committed." >> "$GITHUB_STEP_SUMMARY"
-          elif [ "${{ steps.refresh.outcome }}" = "failure" ]; then
-            echo "**Result:** No cover landed, and one or more planned covers failed." >> "$GITHUB_STEP_SUMMARY"
-          else
-            echo "**Result:** All planned covers already present." >> "$GITHUB_STEP_SUMMARY"
-          fi
 
       - name: Fail the run when a planned cover failed
         if: steps.refresh.outcome == 'failure'

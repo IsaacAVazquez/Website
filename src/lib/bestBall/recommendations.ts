@@ -10,7 +10,7 @@ import {
 import { sortBestBallRankings } from "./rankings";
 import { getNextUserPick } from "./draft";
 import { getAdaptiveRosterTargets } from "./strategy";
-import { clamp } from "@/lib/utils";
+import { clamp, groupBy, isFiniteNumber, roundTo } from "@/lib/utils";
 import type {
   AdaptiveRosterTargets,
   BestBallContestPreset,
@@ -24,12 +24,8 @@ import type {
 } from "./types";
 
 function roundScore(value: number): number {
-  const rounded = Math.round(value * 100) / 100;
+  const rounded = roundTo(value, 2);
   return Object.is(rounded, -0) ? 0 : rounded;
-}
-
-function isFiniteNumber(value: unknown): value is number {
-  return typeof value === "number" && Number.isFinite(value);
 }
 
 function isPassCatcher(player: Player): boolean {
@@ -61,12 +57,13 @@ function countWeek17GameStacks(
   players: readonly Player[],
   week17Opponents: Readonly<Record<string, string>>
 ): number {
-  const byTeam = new Map<string, Player[]>();
-  for (const player of players) {
-    const team = teamOf(player);
-    if (!team || team === "FA") continue;
-    byTeam.set(team, [...(byTeam.get(team) ?? []), player]);
-  }
+  const byTeam = groupBy(
+    players.filter((player) => {
+      const team = teamOf(player);
+      return team !== "" && team !== "FA";
+    }),
+    teamOf
+  );
 
   let stacks = 0;
   for (const [team, teamPlayers] of byTeam) {
@@ -373,12 +370,10 @@ export function recommendBestBallPlayers({
   );
 
   // rankedPlayers is already board-sorted, so each position list stays in board order.
-  const availableByPosition = new Map<BestBallPosition, RankedBestBallPlayer[]>();
-  for (const ranked of rankedPlayers) {
-    if (draftedIds.has(ranked.id)) continue;
-    const position = ranked.position as BestBallPosition;
-    availableByPosition.set(position, [...(availableByPosition.get(position) ?? []), ranked]);
-  }
+  const availableByPosition = groupBy(
+    rankedPlayers.filter((ranked) => !draftedIds.has(ranked.id)),
+    (ranked) => ranked.position as BestBallPosition
+  );
 
   const useSuperflexBoard = preset.lineupVariant === "superflex";
   const boardRankOf = (player: RankedBestBallPlayer): number | undefined =>

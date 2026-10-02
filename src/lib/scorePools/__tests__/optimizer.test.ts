@@ -1,15 +1,8 @@
-import {
-  buildComparisonDistribution,
-  calibrateDistribution,
-  devigMoneyline,
-  devigTotals,
-  evaluateCandidate,
-  evaluateCandidates,
-  DEFAULT_EXTRA_TIME,
-  DEFAULT_SCORING_RULES,
-  type CalibrationConfig,
-  type ComparisonDistribution,
-} from "../index";
+import { buildComparisonDistribution, calibrateDistribution, type CalibrationConfig } from "../scorelineModel";
+import { devigMoneyline, devigTotals } from "../odds";
+import { evaluateCandidate, evaluateCandidates } from "../optimizer";
+import { DEFAULT_EXTRA_TIME, DEFAULT_SCORING_RULES } from "../defaults";
+import { type ComparisonDistribution } from "../types";
 
 const RULES = DEFAULT_SCORING_RULES;
 const CONFIG: CalibrationConfig = {

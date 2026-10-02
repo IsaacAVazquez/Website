@@ -16,21 +16,21 @@ import type {
 } from "@/types/spacex";
 import { resolveSpaceXImageUrl, resolveSpaceXImageUrls } from "@/lib/spacexImageManifest";
 import { aggregateLaunchCadence } from "@/lib/spacexCadence";
+import { HttpStatusError } from "@/lib/utils";
+import { isTimeoutError } from "@/lib/fetchRetry";
 import { deriveVehicleFamily } from "@/lib/spacexVehicleFamily";
 import {
-  getSpaceXSnapshotCadence,
   getSpaceXSnapshotLaunchDetail,
-  getSpaceXSnapshotLaunchDetails,
   getSpaceXSnapshotLaunches,
   getSpaceXSnapshotSummary,
   hasSpaceXSnapshotData,
 } from "@/lib/spacexSnapshot";
 
-const LAUNCH_LIBRARY_API_BASE = "https://ll.thespacedevs.com/2.2.0";
+export const LAUNCH_LIBRARY_API_BASE = "https://ll.thespacedevs.com/2.2.0";
 const SPACEX_AGENCY_ID = 121;
 const DEFAULT_BOARD_LIMIT = 12;
 const MAX_BOARD_LIMIT = 24;
-const REQUEST_TIMEOUT_MS = 12000;
+export const REQUEST_TIMEOUT_MS = 12000;
 const LAUNCH_ID_PATTERN =
   /^(?:[a-f0-9]{24}|[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12})$/i;
 const UPCOMING_STALE_GRACE_MS = 30 * 60 * 1000;
@@ -59,19 +59,14 @@ const LAUNCH_LIBRARY_PAGE_SIZE = 100;
 const CADENCE_MAX_PAGES = 3;
 const CADENCE_MONTHS_BACK = 12;
 
-type LaunchCollectionMode = "upcoming" | "previous";
-type MissionControlDataSource = "auto" | "live" | "snapshot";
-
-interface MissionControlDataOptions {
-  source?: MissionControlDataSource;
-}
+export type LaunchCollectionMode = "upcoming" | "previous";
 
 interface CachedValue<T> {
   value: T;
   storedAt: number;
 }
 
-interface RawLl2ListResponse<T> {
+export interface RawLl2ListResponse<T> {
   count: number;
   results: T[];
 }
@@ -300,7 +295,7 @@ interface RawLl2SpacecraftStage {
   spacecraft?: RawLl2Spacecraft | null;
 }
 
-interface RawLl2Launch {
+export interface RawLl2Launch {
   id: string;
   url?: string | null;
   name?: string | null;
@@ -347,10 +342,6 @@ const missionLaunchCardsInflight = new Map<string, Promise<MissionLaunchCard[]>>
 
 const missionLaunchDetailCache = new Map<string, CachedValue<MissionLaunchDetail>>();
 const missionLaunchDetailInflight = new Map<string, Promise<MissionLaunchDetail>>();
-
-function createSpaceXError(message: string, status = 500): Error & { status: number } {
-  return Object.assign(new Error(message), { status });
-}
 
 function getCachedValue<T>(
   entry: CachedValue<T> | null | undefined,
@@ -421,7 +412,7 @@ function clearLaunchLibraryRateLimit() {
 // (and shared CI IPs get 429'd almost immediately), so the refresh job should
 // run authenticated. thespacedevs uses DRF token auth: `Authorization: Token <key>`.
 // Read lazily so a dotenv-loaded value is picked up regardless of import order.
-function getLaunchLibraryAuthHeaders(): Record<string, string> {
+export function getLaunchLibraryAuthHeaders(): Record<string, string> {
   const token = process.env.SPACEDEVS_API_TOKEN?.trim();
   return token ? { Authorization: `Token ${token}` } : {};
 }
@@ -431,15 +422,12 @@ async function fetchLaunchLibraryJson<T>(
   revalidateSeconds = 120
 ): Promise<T> {
   if (Date.now() < launchLibraryRateLimitedUntil) {
-    throw createSpaceXError("Launch Library temporarily rate limited", 429);
+    throw new HttpStatusError("Launch Library temporarily rate limited", 429);
   }
-
-  const controller = new AbortController();
-  const timeout = setTimeout(() => controller.abort(), REQUEST_TIMEOUT_MS);
 
   try {
     const response = await fetch(`${LAUNCH_LIBRARY_API_BASE}${path}`, {
-      signal: controller.signal,
+      signal: AbortSignal.timeout(REQUEST_TIMEOUT_MS),
       headers: {
         Accept: "application/json",
         ...getLaunchLibraryAuthHeaders(),
@@ -451,11 +439,11 @@ async function fetchLaunchLibraryJson<T>(
 
     if (response.status === 429) {
       applyLaunchLibraryRateLimit(response.headers.get("retry-after"));
-      throw createSpaceXError("Launch Library temporarily rate limited", 429);
+      throw new HttpStatusError("Launch Library temporarily rate limited", 429);
     }
 
     if (!response.ok) {
-      throw createSpaceXError(
+      throw new HttpStatusError(
         `Launch Library request failed with status ${response.status}`,
         response.status
       );
@@ -464,21 +452,19 @@ async function fetchLaunchLibraryJson<T>(
     clearLaunchLibraryRateLimit();
     return (await response.json()) as T;
   } catch (error) {
-    if (error instanceof Error && error.name === "AbortError") {
-      throw createSpaceXError("Launch Library request timed out", 504);
+    if (isTimeoutError(error)) {
+      throw new HttpStatusError("Launch Library request timed out", 504);
     }
 
     if (error instanceof Error && "status" in error) {
       throw error;
     }
 
-    throw createSpaceXError("Unable to reach Launch Library", 502);
-  } finally {
-    clearTimeout(timeout);
+    throw new HttpStatusError("Unable to reach Launch Library", 502);
   }
 }
 
-function buildLaunchCollectionPath(
+export function buildLaunchCollectionPath(
   mode: LaunchCollectionMode,
   limit: number,
   ordering: string,
@@ -596,7 +582,7 @@ function normalizeSuccess(status?: RawLl2Status | null): boolean | null {
   return null;
 }
 
-function isPastDate(dateUtc?: string | null, graceMs = 0): boolean {
+export function isPastDate(dateUtc?: string | null, graceMs = 0): boolean {
   if (!dateUtc) {
     return false;
   }
@@ -609,7 +595,7 @@ function isPastDate(dateUtc?: string | null, graceMs = 0): boolean {
   return timestamp < Date.now() - graceMs;
 }
 
-function dedupeLaunches<T extends RawLl2LaunchDate>(launches: T[]): T[] {
+export function dedupeLaunches<T extends RawLl2LaunchDate>(launches: T[]): T[] {
   const seen = new Set<string>();
 
   return launches.filter((launch) => {
@@ -622,7 +608,7 @@ function dedupeLaunches<T extends RawLl2LaunchDate>(launches: T[]): T[] {
   });
 }
 
-function filterLaunchCollection<T extends RawLl2LaunchDate>(
+export function filterLaunchCollection<T extends RawLl2LaunchDate>(
   launches: T[],
   mode: LaunchCollectionMode
 ): T[] {
@@ -650,11 +636,11 @@ function clampBoardLimit(limit: number): number {
 
 function ensureValidStatus(status: MissionControlStatus): void {
   if (status !== "upcoming" && status !== "past") {
-    throw createSpaceXError("Invalid launch status", 400);
+    throw new HttpStatusError("Invalid launch status", 400);
   }
 }
 
-function sortByPriority<T extends { priority?: number | null }>(items: T[]): T[] {
+export function sortByPriority<T extends { priority?: number | null }>(items: T[]): T[] {
   return [...items].sort((left, right) => (right.priority ?? 0) - (left.priority ?? 0));
 }
 
@@ -1110,42 +1096,10 @@ export function isValidMissionLaunchId(value: string): boolean {
   return LAUNCH_ID_PATTERN.test(value);
 }
 
-// Vehicle catalog + recovery split are read directly from the committed
-// snapshot's hydrated launch details — they don't need live-fetch parity
-// (a handful of hydrated details only changes on each snapshot rebuild, not
-// minute to minute), so these are thin, synchronous pass-throughs rather
-// than fetch functions. Exposed from this module (not spacexSnapshot.ts
-// directly) so callers keep a single data-layer import boundary.
-export function getMissionControlCadence(): MissionControlCadence | null {
-  return getSpaceXSnapshotCadence();
-}
-
-export function getMissionControlVehicleCatalogData(): Record<string, MissionLaunchDetail> {
-  return getSpaceXSnapshotLaunchDetails();
-}
-
-function shouldReadFromSnapshot(source: MissionControlDataSource = "auto"): boolean {
-  return source !== "live";
-}
-
-function shouldAllowLiveFallback(source: MissionControlDataSource = "auto"): boolean {
-  return source !== "snapshot";
-}
-
-export async function getMissionControlSummary(
-  options: MissionControlDataOptions = {}
-): Promise<MissionControlSummary> {
-  const source = options.source ?? "auto";
-
-  if (shouldReadFromSnapshot(source)) {
-    const snapshotSummary = getSpaceXSnapshotSummary();
-    if (snapshotSummary) {
-      return snapshotSummary;
-    }
-
-    if (!shouldAllowLiveFallback(source)) {
-      throw createSpaceXError("SpaceX snapshot summary is unavailable", 503);
-    }
+export async function getMissionControlSummary(): Promise<MissionControlSummary> {
+  const snapshotSummary = getSpaceXSnapshotSummary();
+  if (snapshotSummary) {
+    return snapshotSummary;
   }
 
   const cachedSummary = getCachedValue(missionControlSummaryCache, SUMMARY_CACHE_TTL_MS);
@@ -1216,23 +1170,14 @@ export async function getMissionControlSummary(
 
 export async function getMissionLaunchCards(
   status: MissionControlStatus,
-  limit = DEFAULT_BOARD_LIMIT,
-  options: MissionControlDataOptions = {}
+  limit = DEFAULT_BOARD_LIMIT
 ): Promise<MissionLaunchCard[]> {
   ensureValidStatus(status);
 
   const clampedLimit = clampBoardLimit(limit);
-  const source = options.source ?? "auto";
-
-  if (shouldReadFromSnapshot(source)) {
-    const snapshotLaunches = getSpaceXSnapshotLaunches(status, clampedLimit);
-    if (snapshotLaunches.length > 0 || hasSpaceXSnapshotData()) {
-      return snapshotLaunches;
-    }
-
-    if (!shouldAllowLiveFallback(source)) {
-      throw createSpaceXError(`SpaceX snapshot launches are unavailable for ${status}`, 503);
-    }
+  const snapshotLaunches = getSpaceXSnapshotLaunches(status, clampedLimit);
+  if (snapshotLaunches.length > 0 || hasSpaceXSnapshotData()) {
+    return snapshotLaunches;
   }
 
   const cacheKey = `${status}:${clampedLimit}`;
@@ -1286,26 +1231,24 @@ export async function getMissionLaunchCards(
   return promise;
 }
 
+/** Reads the committed snapshot; `live` is the snapshot builder's path to Launch Library. */
 export async function getMissionLaunchDetail(
   id: string,
-  options: MissionControlDataOptions = {}
+  { live = false }: { live?: boolean } = {}
 ): Promise<MissionLaunchDetail> {
   if (!isValidMissionLaunchId(id)) {
-    throw createSpaceXError("Invalid launch id", 400);
+    throw new HttpStatusError("Invalid launch id", 400);
   }
 
-  const source = options.source ?? "auto";
-  if (shouldReadFromSnapshot(source)) {
+  if (!live) {
     const snapshotDetail = getSpaceXSnapshotLaunchDetail(id);
     if (snapshotDetail) {
       return snapshotDetail;
     }
 
-    if (!shouldAllowLiveFallback(source)) {
-      throw hasSpaceXSnapshotData()
-        ? createSpaceXError("Launch not found", 404)
-        : createSpaceXError("SpaceX snapshot launch detail is unavailable", 503);
-    }
+    throw hasSpaceXSnapshotData()
+      ? new HttpStatusError("Launch not found", 404)
+      : new HttpStatusError("SpaceX snapshot launch detail is unavailable", 503);
   }
 
   const cachedDetail = getCachedValue(missionLaunchDetailCache.get(id), LAUNCH_DETAIL_CACHE_TTL_MS);
@@ -1322,7 +1265,7 @@ export async function getMissionLaunchDetail(
     const launch = await fetchLaunchDetail(id, 300);
 
     if (launch.launch_service_provider?.id !== SPACEX_AGENCY_ID) {
-      throw createSpaceXError("Launch not found", 404);
+      throw new HttpStatusError("Launch not found", 404);
     }
 
     const detail = normalizeLaunchDetail(launch, !isPastDate(launch.net));
@@ -1428,7 +1371,7 @@ export async function buildMissionControlSnapshot(): Promise<MissionControlSnaps
 
   for (const id of detailIds) {
     try {
-      detailEntries.push([id, await getMissionLaunchDetail(id, { source: "live" })]);
+      detailEntries.push([id, await getMissionLaunchDetail(id, { live: true })]);
     } catch (error) {
       if (isSpaceXRateLimitError(error)) {
         break;

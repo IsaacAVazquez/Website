@@ -44,7 +44,7 @@ The type classes and `.c97-panel` are unlayered and set their own margin or padd
 ## Motion rules
 
 - global reduced-motion CSS exists
-- Framer Motion usage should also gate animations with `useReducedMotion`
+- entrances are CSS transitions; JS-driven motion reads `useReducedMotion()` from `src/hooks`
 - never fade a page or section in from opacity 0
 
 ---

@@ -237,7 +237,13 @@ export function Catalog97Dashboards({
                   display: "inline-flex",
                   alignItems: "baseline",
                   gap: "var(--c97-sp-1)",
-                  color: selected ? "var(--c97-ink)" : "var(--c97-label)",
+                  // Unselected buttons take the microlink's label colour and its hover.
+                  color: selected ? "var(--c97-ink)" : undefined,
+                  // Pressed is never colour alone; this is .c97-segmented's underline.
+                  textDecoration: selected ? "underline" : "none",
+                  textDecorationThickness: "2px",
+                  textUnderlineOffset: "6px",
+                  textDecorationColor: "var(--c97-accent)",
                 }}
               >
                 <span>{tab.label}</span>
@@ -298,30 +304,29 @@ export function Catalog97Dashboards({
                     TILE_SURFACES[(index + cycleOffset) % TILE_SURFACES.length];
                   const summary = summaries[tool.slug];
                   const readout = cardLines[tool.href];
+                  // The readout is the tile's second child, so the tile's
+                  // space-between pins it to the bottom edge across a row.
                   const body = (
-                    <div>
-                      <h3 className="c97-serif c97-h3">{tool.title}</h3>
-                      {summary ? (
-                        <p
-                          className="c97-prose"
-                          style={{
-                            marginTop: "var(--c97-sp-1)",
-                            color: "var(--c97-ink-2)",
-                            maxWidth: "var(--c97-measure-body)",
-                          }}
-                        >
-                          {summary}
-                        </p>
-                      ) : null}
+                    <>
+                      <div>
+                        <h3 className="c97-serif c97-h3">{tool.title}</h3>
+                        {summary ? (
+                          <p
+                            className="c97-prose"
+                            style={{
+                              marginTop: "var(--c97-sp-1)",
+                              color: "var(--c97-ink-2)",
+                              maxWidth: "var(--c97-measure-body)",
+                            }}
+                          >
+                            {summary}
+                          </p>
+                        ) : null}
+                      </div>
                       {readout ? (
-                        <p
-                          className="c97-meta c97-tabular"
-                          style={{ marginTop: "var(--c97-sp-2)" }}
-                        >
-                          {readout}
-                        </p>
+                        <p className="c97-meta c97-tabular">{readout}</p>
                       ) : null}
-                    </div>
+                    </>
                   );
 
                   return tool.isExternal ? (

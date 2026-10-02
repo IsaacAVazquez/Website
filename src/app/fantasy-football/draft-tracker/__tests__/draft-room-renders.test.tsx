@@ -1,7 +1,7 @@
 import React from "react";
 import { act, render, screen } from "@testing-library/react";
 import { DraftTrackerClient } from "../draft-tracker-client";
-import { emitLocalStoreChange } from "@/hooks/useLocalStorageString";
+import { emitBrowserStorageChange } from "@/lib/browserStorage";
 import { resetBrowserStorageMemory } from "@/lib/browserStorage";
 import { FANTASY_NOTES_STORAGE_KEY, saveNotes } from "@/lib/fantasyLocal";
 
@@ -93,14 +93,6 @@ const mockSnapshotResult = {
   retry: jest.fn(),
 };
 
-jest.mock("framer-motion", () => ({
-  motion: {
-    div: ({ children }: { children?: React.ReactNode }) => <div>{children}</div>,
-  },
-  AnimatePresence: ({ children }: { children?: React.ReactNode }) => <>{children}</>,
-  useReducedMotion: () => true,
-}));
-
 jest.mock("@/hooks/useFantasySnapshot", () => ({
   useFantasySnapshot: () => mockSnapshotResult,
 }));
@@ -136,7 +128,7 @@ describe("draft room renders", () => {
 
     act(() => {
       saveNotes({ "rb-1": "handcuff for Allgeier" });
-      emitLocalStoreChange(FANTASY_NOTES_STORAGE_KEY);
+      emitBrowserStorageChange(FANTASY_NOTES_STORAGE_KEY);
     });
 
     expect(mockBoardRenders.mock.calls.length).toBe(rendersBefore);

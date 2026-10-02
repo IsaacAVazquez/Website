@@ -10,8 +10,9 @@
 
 import type { DestinationRegion, RegionId } from "@/types/travelDeals";
 import { DESTINATION_REGIONS, POINTS_BASELINE_CENTS } from "@/data/travelDealsSnapshot";
+import { daysBetween, toLocalDateKey } from "@/lib/date-formatters";
 
-// --- Date helpers (self-contained so the engine has no cross-module deps) ---
+// --- Date helpers ---
 
 const ISO_DATE = /^\d{4}-\d{2}-\d{2}$/;
 
@@ -19,30 +20,9 @@ export function isIsoDate(value: unknown): value is string {
   return typeof value === "string" && ISO_DATE.test(value);
 }
 
-export function todayKey(date = new Date()): string {
-  const year = date.getFullYear();
-  const month = String(date.getMonth() + 1).padStart(2, "0");
-  const day = String(date.getDate()).padStart(2, "0");
-  return `${year}-${month}-${day}`;
-}
+export const todayKey = toLocalDateKey;
 
-function parseDateKey(value: unknown): Date | null {
-  if (!isIsoDate(value)) return null;
-  const date = new Date(`${value}T00:00`);
-  return Number.isNaN(date.getTime()) ? null : date;
-}
-
-/**
- * Whole days from `fromKey` to `toKey`; negative when `toKey` is in the past.
- * Either key can be null (the caller's "today" not resolved yet on the
- * client), which reads the same as an invalid key: null out.
- */
-export function daysBetween(fromKey: string | null, toKey: string | null): number | null {
-  const from = parseDateKey(fromKey);
-  const to = parseDateKey(toKey);
-  if (!from || !to) return null;
-  return Math.round((to.getTime() - from.getTime()) / 86_400_000);
-}
+export { daysBetween };
 
 // --- Region lookup ----------------------------------------------------------
 

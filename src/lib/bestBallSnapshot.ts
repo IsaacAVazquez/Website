@@ -1,3 +1,4 @@
+import { isFiniteNumber } from "@/lib/utils";
 import type { Player } from "@/types";
 import { normalizeAdpTeam } from "@/lib/fantasyAdpMatcher";
 
@@ -99,19 +100,6 @@ export function evaluateBestBallAdpCoverage({
   return { ok: true, message: "" };
 }
 
-export function assertBestBallAdpCoverage(input: {
-  freshSourceReceived: boolean;
-  matches: number;
-  previousMatches: number;
-  previousTopPlayers: number;
-  retainedTopPlayers: number;
-}): void {
-  const verdict = evaluateBestBallAdpCoverage(input);
-  if (!verdict.ok) {
-    throw new Error(verdict.message);
-  }
-}
-
 export function assertBestBallSuperflexCoverage({
   freshSourceReceived,
   totalPlayers,
@@ -195,10 +183,6 @@ export interface BestBallSnapshot {
   adpSource: BestBallSourceMetadata | null;
   scheduleSource: BestBallSourceMetadata | null;
   week17Opponents: Record<string, string>;
-}
-
-function isFiniteNumber(value: unknown): value is number {
-  return typeof value === "number" && Number.isFinite(value);
 }
 
 function normalizeSource(value: unknown): BestBallSourceMetadata | null {

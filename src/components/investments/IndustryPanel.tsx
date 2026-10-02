@@ -61,9 +61,10 @@ export function IndustryPanel({ symbol }: Props) {
       </h3>
 
       {isLoading && (
-        <div className="space-y-2">
+        <div className="space-y-2" role="status" aria-busy="true">
+          <span className="sr-only">Loading industry comparison</span>
           {Array.from({ length: 6 }).map((_, i) => (
-            <div key={i} className="h-10 bg-[var(--c97-rule)] animate-pulse" />
+            <span key={i} className="c97-skeleton" style={{ height: 40 }} />
           ))}
         </div>
       )}
@@ -73,7 +74,7 @@ export function IndustryPanel({ symbol }: Props) {
       )}
 
       {!isLoading && rows.length > 0 && (
-        <div className="overflow-x-auto">
+        <div className="overflow-x-auto" role="region" tabIndex={0} aria-label="Industry comparison">
           <table className="w-full text-sm min-w-[400px]" aria-label="Industry comparison table">
             <thead>
               <tr className="border-b border-[var(--c97-rule)]">

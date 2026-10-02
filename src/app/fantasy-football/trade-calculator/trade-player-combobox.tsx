@@ -161,7 +161,7 @@ export function TradePlayerCombobox({
               }
             }}
             placeholder={disabled ? "Six-player limit reached" : "Search name, team, or position"}
-            className="min-h-[48px] w-full border border-[var(--c97-rule)] bg-[var(--c97-field)] py-2 pl-10 pr-3 text-sm text-[var(--c97-ink)] outline-none transition-[border-color,box-shadow,background-color] placeholder:text-[var(--c97-ink-2)] hover:border-[color-mix(in_srgb,var(--c97-ink)_28%,var(--c97-rule))] focus:border-[var(--c97-accent)] focus:bg-[var(--c97-surface)] focus:ring-2 focus:ring-[color-mix(in_srgb,var(--c97-accent)_22%,transparent)] disabled:cursor-not-allowed disabled:border-dashed disabled:border-[var(--c97-ink-2)] disabled:bg-transparent disabled:text-[var(--c97-ink-2)]"
+            className="min-h-[48px] w-full border border-[var(--c97-ink-2)] bg-[var(--c97-field)] py-2 pl-10 pr-3 text-sm text-[var(--c97-ink)] transition-[border-color,background-color] placeholder:text-[var(--c97-ink-2)] hover:border-[var(--c97-ink)] focus:border-[var(--c97-accent)] focus:bg-[var(--c97-surface)] disabled:cursor-not-allowed disabled:border-dashed disabled:border-[var(--c97-ink-2)] disabled:bg-transparent disabled:text-[var(--c97-ink-2)]"
           />
         </span>
       </label>

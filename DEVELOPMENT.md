@@ -2,7 +2,7 @@
 
 Current development setup and workflow notes.
 
-**Last updated:** 2026-09-27
+**Last updated:** 2026-10-02
 
 ---
 
@@ -135,8 +135,8 @@ Do not assume old doc paths are current. Check the actual route tree first.
 
 Both dashboards read from committed TypeScript snapshot files — no live API calls at runtime:
 
-- `src/data/premierLeagueSnapshot.ts`
-- `src/data/laLigaSnapshot.ts`
+- `src/data/premierLeagueSnapshot.json`
+- `src/data/laLigaSnapshot.json`
 
 Updating snapshots:
 
@@ -149,7 +149,7 @@ npm run update:la-liga           # La Liga only, ~8 min
 After running, commit the changed snapshot files:
 
 ```bash
-git add src/data/premierLeagueSnapshot.ts src/data/laLigaSnapshot.ts
+git add src/data/premierLeagueSnapshot.json src/data/laLigaSnapshot.json
 git commit -m "data: refresh football snapshots"
 git push
 ```
@@ -174,17 +174,17 @@ These commands use public data sources and do not require auth tokens. Golf, For
 
 ## Auth And Admin
 
-- `/admin` uses credential auth from `src/lib/auth.ts`
-- env vars:
-  - `NEXTAUTH_SECRET`
-  - `ADMIN_USERNAME`
-  - `ADMIN_PASSWORD`
-
-There is no live `/admin/analytics` page in the current route tree.
+There is no authenticated surface. The `/admin` page and NextAuth were removed on 2026-10-02.
 
 ---
 
 ## Build And Deployment Notes
+
+Production webpack snapshots validate file and directory contents with hashes.
+I added this setting after repeated builds with Next.js 16.3.6 failed inside
+webpack's cached symlink context hashing. Development keeps its default
+settings, and production still uses filesystem caching. The configured snapshot
+categories and hash checks are described in [webpack's snapshot documentation](https://webpack.js.org/configuration/other-options/#snapshot).
 
 - deployment target is Netlify
 - builds consume committed snapshots and do not mutate data or call external providers

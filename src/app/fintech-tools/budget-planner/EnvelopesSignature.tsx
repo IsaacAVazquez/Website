@@ -1,5 +1,6 @@
 import type { BudgetCategorySummary } from "@/types/budget";
-import { envelope, formatCurrency } from "./envelopes";
+import { envelope } from "./envelopes";
+import { formatDollars } from "@/lib/utils";
 
 interface EnvelopesSignatureProps {
   categories: BudgetCategorySummary[];
@@ -48,7 +49,7 @@ export function EnvelopesSignature({ categories }: EnvelopesSignatureProps) {
                 {spentLabel} of {budgetLabel}
               </p>
               {torn ? (
-                <p className="c97-mono c97-envelope-over">Over by {formatCurrency(overBy)}</p>
+                <p className="c97-mono c97-envelope-over">Over by {formatDollars(overBy)}</p>
               ) : null}
             </div>
           </div>

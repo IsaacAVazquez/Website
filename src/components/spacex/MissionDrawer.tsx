@@ -1,7 +1,7 @@
 "use client";
 
-import { useEffect, useRef } from "react";
-import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
+import { useRef } from "react";
+import { useModal } from "@/hooks/useModal";
 import { X } from "lucide-react";
 import type { MissionControlPanel, MissionLaunchDetail } from "@/types/spacex";
 import { MissionDetailPanel } from "./MissionDetailPanel";
@@ -23,8 +23,7 @@ interface MissionDrawerProps {
 /**
  * The mission drill-down as a right-slide overlay drawer, converted from the
  * previous always-docked side panel. Follows the same shape as
- * `PlayerDetailDrawer`: Framer Motion entrance gated by `useReducedMotion`,
- * a focus trap, Escape/backdrop close, and body-scroll lock while open. Adds
+ * `PlayerDetailDrawer`: a CSS entrance from `@starting-style`, a focus trap, Escape/backdrop close, and body-scroll lock while open. Adds
  * the identity header (patch, name, badge) and the T-0 sequence timeline;
  * the Overview/Vehicle/Payloads/Links tab body is delegated to
  * `MissionDetailPanel` (unchanged) so its tested behavior carries over.
@@ -38,73 +37,17 @@ export function MissionDrawer({
   onPanelChange,
   onClose,
 }: MissionDrawerProps) {
-  const reduceMotion = useReducedMotion();
   const panelRef = useRef<HTMLDivElement>(null);
-  const restoreFocusRef = useRef<HTMLElement | null>(null);
   const isOpen = Boolean(launchId);
-
-  useEffect(() => {
-    if (!isOpen) {
-      return;
-    }
-
-    restoreFocusRef.current = document.activeElement as HTMLElement | null;
-    const panel = panelRef.current;
-    panel?.focus();
-    const previousOverflow = document.body.style.overflow;
-    document.body.style.overflow = "hidden";
-
-    function handleKeyDown(event: KeyboardEvent) {
-      if (event.key === "Escape") {
-        event.preventDefault();
-        onClose();
-        return;
-      }
-
-      if (event.key !== "Tab" || !panel) {
-        return;
-      }
-
-      const focusable = panel.querySelectorAll<HTMLElement>(
-        'a[href], button:not([disabled]), [role="tab"], textarea, input, [tabindex]:not([tabindex="-1"])'
-      );
-      if (focusable.length === 0) {
-        return;
-      }
-
-      const first = focusable[0];
-      const last = focusable[focusable.length - 1];
-
-      if (event.shiftKey && document.activeElement === first) {
-        event.preventDefault();
-        last.focus();
-      } else if (!event.shiftKey && document.activeElement === last) {
-        event.preventDefault();
-        first.focus();
-      }
-    }
-
-    document.addEventListener("keydown", handleKeyDown);
-    return () => {
-      document.removeEventListener("keydown", handleKeyDown);
-      document.body.style.overflow = previousOverflow;
-      restoreFocusRef.current?.focus?.();
-    };
-  }, [isOpen, launchId, onClose]);
+  useModal(panelRef, isOpen, onClose, { resetKey: launchId });
 
   const status = detail ? deriveMissionCardStatus(detail) : null;
   const accent = status ? MISSION_STATUS_ACCENT_VAR[status] : "var(--c97-accent)";
 
   return (
-    <AnimatePresence>
+    <>
       {isOpen ? (
-        <motion.div
-          className="fixed inset-0 z-[60] flex justify-end"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: reduceMotion ? 0 : 0.18 }}
-        >
+        <div className="c97-enter-fade fixed inset-0 z-[60] flex justify-end">
           <button
             type="button"
             aria-label="Close mission detail"
@@ -113,7 +56,7 @@ export function MissionDrawer({
             style={{ background: "color-mix(in srgb, var(--c97-ink) 34%, transparent)" }}
             tabIndex={-1}
           />
-          <motion.aside
+          <aside
             ref={panelRef}
             role="dialog"
             aria-modal="true"
@@ -121,11 +64,7 @@ export function MissionDrawer({
             tabIndex={-1}
             data-testid="mission-detail-panel"
             data-c97-surface="paper"
-            initial={reduceMotion ? { opacity: 0 } : { opacity: 0, x: 28 }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={reduceMotion ? { opacity: 0 } : { opacity: 0, x: 28 }}
-            transition={{ duration: reduceMotion ? 0 : 0.26, ease: [0.22, 1, 0.36, 1] }}
-            className="relative flex h-full w-full max-w-[30rem] flex-col overflow-y-auto border-l border-[var(--c97-rule)] bg-[var(--c97-surface)] outline-none"
+            className="c97-enter-slide-x relative flex h-full w-full max-w-[30rem] flex-col overflow-y-auto border-l border-[var(--c97-rule)] bg-[var(--c97-surface)] outline-none"
           >
             <div className="relative border-b border-[var(--c97-rule)] px-5 pb-4.5 pt-6">
               <span
@@ -146,10 +85,7 @@ export function MissionDrawer({
                 <div className="flex items-center gap-4 pr-10">
                   <div
                     className="h-[74px] w-[74px] shrink-0 overflow-hidden border border-[var(--c97-rule)]"
-                    style={{
-                      background:
-                        "radial-gradient(circle at 50% 42%, color-mix(in srgb, var(--c97-field) 70%, var(--c97-field)), var(--c97-field))",
-                    }}
+                    style={{ background: "var(--c97-field)" }}
                   >
                     <MissionPatchEmblem seed={detail.id} accent={accent} className="h-full w-full" />
                   </div>
@@ -157,7 +93,7 @@ export function MissionDrawer({
                     <p className="font-mono text-3xs uppercase tracking-[0.1em] text-[var(--c97-ink-2)]">
                       Flight #{detail.flightNumber} · {detail.launchpadName ?? "Pad TBD"}
                     </p>
-                    <h2 className="mt-1 truncate text-xl font-bold tracking-[-0.02em] text-[var(--c97-ink)]">
+                    <h2 className="c97-serif c97-h3 truncate" style={{ marginTop: "var(--c97-sp-1)" }}>
                       {detail.name}
                     </h2>
                     {status ? (
@@ -184,7 +120,6 @@ export function MissionDrawer({
               isLoading={isLoading}
               error={error}
               onPanelChange={onPanelChange}
-              hideHeader
             />
 
             {detail ? (
@@ -195,9 +130,9 @@ export function MissionDrawer({
                 <MissionSequenceTimeline rocketName={detail.rocketName} upcoming={detail.upcoming} />
               </div>
             ) : null}
-          </motion.aside>
-        </motion.div>
+          </aside>
+        </div>
       ) : null}
-    </AnimatePresence>
+    </>
   );
 }

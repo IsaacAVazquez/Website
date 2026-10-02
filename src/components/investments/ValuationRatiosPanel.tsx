@@ -185,9 +185,10 @@ export function ValuationRatiosPanel({
       </p>
 
       {isLoading && (
-        <div className="space-y-2">
+        <div className="space-y-2" role="status" aria-busy="true">
+          <span className="sr-only">Loading valuation ratios</span>
           {Array.from({ length: 5 }).map((_, i) => (
-            <div key={i} className="h-10 bg-[var(--c97-rule)] animate-pulse" />
+            <span key={i} className="c97-skeleton" style={{ height: 40 }} />
           ))}
         </div>
       )}

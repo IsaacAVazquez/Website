@@ -5,7 +5,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { ArrowDownUp, Lock, Plus, RefreshCcw, Sparkles, Trash2, Unlock } from "lucide-react";
 import { Catalog97ProjectHero } from "@/components/catalog97/Catalog97ProjectHero";
 import { PROJECT_PRESS } from "@/constants/projectPress";
-import { DISPLAY_TIME_ZONE } from "@/lib/date-formatters";
+import { formatUpdatedAt } from "@/lib/date-formatters";
 import {
   buildFantasyFormula1Assets,
   EMPTY_FANTASY_FORMULA1_LINEUP,
@@ -25,7 +25,7 @@ import type {
   FantasyFormula1OptimizationCandidate,
 } from "@/types/fantasyFormula1";
 import { GarageSignature } from "./GarageSignature";
-import { normaliseTeamColor } from "./garage";
+import { formatMoney, normaliseTeamColor } from "./garage";
 import "./fantasy-formula-1.css";
 import {
   buildFantasyFormula1Href,
@@ -47,26 +47,8 @@ interface FantasyFormula1ClientProps {
   summary: Formula1Summary;
 }
 
-const UPDATED_AT_FORMATTER = new Intl.DateTimeFormat("en-US", {
-  month: "short",
-  day: "numeric",
-  hour: "numeric",
-  minute: "2-digit",
-  timeZone: DISPLAY_TIME_ZONE,
-  timeZoneName: "short",
-});
-
-function formatUpdatedAt(value: string | null | undefined): string {
-  if (!value) {
-    return "Unavailable";
-  }
-
-  const date = new Date(value);
-  return Number.isNaN(date.getTime()) ? "Unavailable" : UPDATED_AT_FORMATTER.format(date);
-}
-
-function formatMoney(value: number): string {
-  return `${value < 0 ? "-" : ""}$${Math.abs(value).toFixed(1)}m`;
+function formatStamp(value: string | null | undefined): string {
+  return value ? formatUpdatedAt(value) : "Unavailable";
 }
 
 function formatPoints(value: number): string {
@@ -101,13 +83,12 @@ function ViewSwitcher({
   onSelect: (view: FantasyFormula1View) => void;
 }) {
   return (
-    <div className="c97-segmented" role="tablist" aria-label="Fantasy Formula 1 view switcher">
+    <div className="c97-segmented" role="group" aria-label="Fantasy Formula 1 view switcher">
       {FANTASY_FORMULA1_VIEW_OPTIONS.map((view) => (
         <button
           key={view}
           type="button"
-          role="tab"
-          aria-selected={view === activeView}
+          aria-pressed={view === activeView}
           className="min-h-[44px] text-sm font-semibold"
           onClick={() => onSelect(view)}
         >
@@ -323,10 +304,10 @@ function RecommendationCard({
         </div>
       </div>
       <div className="mt-4 space-y-2">
-        <p className="c97-serif text-sm font-semibold" style={{ marginBottom: "var(--c97-sp-1)" }}>
+        <p className="c97-serif" style={{ fontSize: "var(--c97-fs-small)", fontWeight: 600, marginBottom: "var(--c97-sp-1)" }}>
           {candidate.drivers.map((asset) => asset.shortName).join(" · ")}
         </p>
-        <p className="c97-prose text-sm" style={{ color: "var(--c97-ink-2)" }}>
+        <p className="c97-prose" style={{ fontSize: "var(--c97-fs-small)", color: "var(--c97-ink-2)" }}>
           {candidate.constructors.map((asset) => asset.name).join(" · ")}
         </p>
       </div>
@@ -359,7 +340,7 @@ function RecommendationsPanel({
       ) : (
         <article className="c97-panel">
           <p className="mb-0 font-semibold">No valid optimized lineup is available.</p>
-          <p className="c97-prose text-sm" style={{ marginTop: "var(--c97-sp-1)", color: "var(--c97-ink-2)" }}>
+          <p className="c97-prose" style={{ fontSize: "var(--c97-fs-small)", marginTop: "var(--c97-sp-1)", color: "var(--c97-ink-2)" }}>
             Unlock a few picks or reset the team. The optimizer only returns complete lineups
             inside the budget.
           </p>
@@ -422,7 +403,7 @@ function AssetsTable({
     return (
       <article className="c97-panel">
         <p className="mb-0 font-semibold">No Formula 1 fantasy assets are available.</p>
-        <p className="c97-prose text-sm" style={{ marginTop: "var(--c97-sp-1)", color: "var(--c97-ink-2)" }}>
+        <p className="c97-prose" style={{ fontSize: "var(--c97-fs-small)", marginTop: "var(--c97-sp-1)", color: "var(--c97-ink-2)" }}>
           The checked-in OpenF1 snapshot needs standings or a published race classification before
           this model can build a slate.
         </p>
@@ -437,13 +418,13 @@ function AssetsTable({
           <tr>
             <th scope="col">Asset</th>
             <th scope="col">Type</th>
-            <th scope="col">Price</th>
-            <th scope="col">Projection</th>
-            <th scope="col">Value</th>
-            <th scope="col">Form</th>
+            <th scope="col" data-align="end">Price</th>
+            <th scope="col" data-align="end">Projection</th>
+            <th scope="col" data-align="end">Value</th>
+            <th scope="col" data-align="end">Form</th>
             <th scope="col">Risk</th>
             <th scope="col" data-align="end">
-              Team
+              Lineup
             </th>
           </tr>
         </thead>
@@ -475,10 +456,10 @@ function AssetsTable({
                   </div>
                 </td>
                 <td className="capitalize">{asset.kind}</td>
-                <td>{formatMoney(asset.price)}</td>
-                <td>{formatPoints(asset.projectedPoints)}</td>
-                <td>{formatPoints(asset.valueRating)}</td>
-                <td>{formatPoints(asset.formScore)}</td>
+                <td data-align="end">{formatMoney(asset.price)}</td>
+                <td data-align="end">{formatPoints(asset.projectedPoints)}</td>
+                <td data-align="end">{formatPoints(asset.valueRating)}</td>
+                <td data-align="end">{formatPoints(asset.formScore)}</td>
                 <td>
                   <span className={`c97-chip ${riskChipClass} capitalize`} title={asset.riskReason}>
                     {asset.risk}
@@ -514,18 +495,16 @@ function RulesPanel() {
           value, form, and risk. The point is to make lineup tradeoffs legible before a race
           weekend, with a simplified scoring model.
         </p>
-        <div className="mt-4 grid gap-3 sm:grid-cols-2">
+        <ul className="c97-list" style={{ marginTop: "var(--c97-sp-2)" }}>
           {[
             "Five drivers and two constructors",
             "$100m model budget cap",
             "Locked picks are honored by the optimizer",
             "Sprint weekends get a small projection lift",
           ].map((item) => (
-            <div key={item} className="c97-panel text-sm font-semibold">
-              {item}
-            </div>
+            <li key={item}>{item}</li>
           ))}
-        </div>
+        </ul>
       </article>
 
       <article className="c97-panel">
@@ -730,9 +709,9 @@ export function FantasyFormula1Client({
 
   const nextRaceLabel = seasonSummary.nextMeeting?.name ?? null;
   const nextRaceMeta = seasonSummary.nextMeeting?.raceStartsAt
-    ? formatUpdatedAt(seasonSummary.nextMeeting.raceStartsAt)
+    ? formatStamp(seasonSummary.nextMeeting.raceStartsAt)
     : seasonSummary.nextMeeting?.startAt
-      ? formatUpdatedAt(seasonSummary.nextMeeting.startAt)
+      ? formatStamp(seasonSummary.nextMeeting.startAt)
       : null;
   const selectedAssetNames = summary.assets.map((asset) => asset.name).join(", ");
   const lead = PROJECT_PRESS[FANTASY_FORMULA1_ROUTE].lead;
@@ -743,7 +722,7 @@ export function FantasyFormula1Client({
         ink={lead}
         title="Fantasy Formula 1"
         standfirst="Build the team before the weekend gets noisy. I use the checked-in OpenF1 season snapshot, model prices, and official-style roster constraints so the tradeoffs are visible before you commit to a lineup."
-        meta={`${seasonSummary.season} season · ${seasonSummary.sourceLabel} · snapshot ${formatUpdatedAt(seasonSummary.generatedAt)}`}
+        meta={`${seasonSummary.season} season · ${seasonSummary.sourceLabel} · snapshot ${formatStamp(seasonSummary.generatedAt)}`}
         readouts={[
           {
             label: "Projected points",

@@ -105,7 +105,7 @@ describe("GitHubTrendingClient", () => {
     const filters = screen.getByRole("region", { name: "GitHub trending filters" });
 
     fireEvent.click(
-      within(filters).getByRole("tab", { name: "Topic" })
+      within(filters).getByRole("button", { name: "Topic" })
     );
     expect(mockPush).toHaveBeenLastCalledWith(
       "/github-trending-pulse?view=topic",

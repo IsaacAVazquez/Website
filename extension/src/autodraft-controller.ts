@@ -1,4 +1,6 @@
-import { detectFantasyDraftProvider } from "@/lib/fantasyCompanion";
+import { detectFantasyDraftProvider, getDraftTeamForPick, type FantasyCompanionDraftOrder } from "@/lib/fantasyCompanion";
+import { autoDraftRoomIdentity } from "./draft-tab";
+import type { DraftPickRead } from "./draft-pick-sync";
 
 export type AutoDraftProvider = "espn" | "sleeper";
 
@@ -22,10 +24,15 @@ export interface AutoDraftRoundRule {
 export interface AutoDraftCommand {
   type: "FANTASY_AUTODRAFT_ARM" | "FANTASY_AUTODRAFT_DISARM";
   provider: AutoDraftProvider;
+  /** Captured by the side panel before sending the arm command to this tab. */
+  roomUrl?: string;
   live?: boolean;
   pickDelayMs?: number;
   queue?: AutoDraftCandidate[];
   rounds?: number;
+  teams?: number;
+  userTeam?: number;
+  draftOrder?: FantasyCompanionDraftOrder;
   positionLimits?: AutoDraftPositionLimit[];
   roundRules?: AutoDraftRoundRule[];
 }
@@ -37,6 +44,7 @@ export type AutoDraftPhase =
   | "searching"
   | "dry-run"
   | "submitted"
+  | "confirmed"
   | "stopped"
   | "error";
 
@@ -53,10 +61,12 @@ export interface AutoDraftStatus {
 
 interface AutoDraftRuntime {
   provider: AutoDraftProvider;
+  roomIdentity: string | null;
   armed: boolean;
   live: boolean;
   queue: AutoDraftCandidate[];
   rounds: number;
+  slotContext: { teams: number; userTeam: number; draftOrder: FantasyCompanionDraftOrder } | null;
   positionLimits: AutoDraftPositionLimit[];
   roundRules: AutoDraftRoundRule[];
   drafted: AutoDraftCandidate[];
@@ -111,7 +121,7 @@ const ROW_SELECTORS = [
 /** A draft control is a real button whose label starts with the verb. */
 const ACTION_PATTERN = /^\s*(draft|select)\b/i;
 const NOT_ACTION_PATTERN = /\b(queue|watch|remove|undo|cancel)\b/i;
-const CONFIRM_PATTERN = /\b(confirm|draft|select player|make pick)\b/i;
+const CONFIRM_PATTERN = /^\s*(confirm|draft|select player|make pick)\b/i;
 const DEFENSE_TOKENS = ["dst", "d st", "def", "defense"];
 
 export function detectAutoDraftProvider(
@@ -304,27 +314,43 @@ function findDraftControl(
   return controls[0];
 }
 
-function findConfirmationButton(): HTMLElement | null {
+function findConfirmationButton(candidate: AutoDraftCandidate, queue: readonly AutoDraftCandidate[]): HTMLElement | null {
   const dialogs = Array.from(
     document.querySelectorAll("[role='dialog'], [aria-modal='true']")
   ).filter(isVisible);
 
+  if (dialogs.length === 0) return null;
+  const text = dialogs.length === 1 ? normalizeAutoDraftName(elementText(dialogs[0])) : "";
+  if (dialogs.length !== 1 || !rowMatchesCandidate(text, candidate) ||
+      queue.filter(entry => rowMatchesCandidate(text, entry)).length !== 1) {
+    throw new UncertainPlayerError("the confirmation dialog does not identify exactly one selected player");
+  }
   for (const scope of dialogs) {
     const buttons = Array.from(
       scope.querySelectorAll("button, [role='button']")
     ).filter(isEnabled);
-    const confirmation = buttons.find((button) =>
-      CONFIRM_PATTERN.test(labelParts(button).join(" "))
+    const confirmations = buttons.filter((button) =>
+      labelParts(button).some(part => CONFIRM_PATTERN.test(part)) &&
+      !labelParts(button).some(part => NOT_ACTION_PATTERN.test(part))
     );
-    if (confirmation) return confirmation;
+    if (confirmations.length !== 1) {
+      throw new UncertainPlayerError("the confirmation dialog has no unique draft action");
+    }
+    return confirmations[0];
   }
   return null;
 }
 
-function clickElement(element: HTMLElement): void {
+function clickElement(element: HTMLElement, ensureActive: () => void, ensureTarget: () => void): void {
+  ensureActive();
   if (typeof element.scrollIntoView === "function") {
     element.scrollIntoView({ block: "center", inline: "nearest" });
   }
+  ensureActive();
+  if (!element.isConnected || !isEnabled(element)) {
+    throw new UncertainPlayerError("the draft action changed before it could be clicked");
+  }
+  ensureTarget();
   element.click();
 }
 
@@ -335,7 +361,8 @@ function wait(milliseconds: number): Promise<void> {
 class UncertainPlayerError extends Error {}
 
 async function findAvailableCandidate(
-  queue: readonly AutoDraftCandidate[]
+  queue: readonly AutoDraftCandidate[],
+  ensureActive: () => void,
 ): Promise<{
   candidate: AutoDraftCandidate;
   row: HTMLElement;
@@ -343,19 +370,23 @@ async function findAvailableCandidate(
 } | null> {
   const search = findSearchInput();
   if (search) {
+    ensureActive();
     search.focus();
     setNativeInputValue(search, "");
     await wait(250);
+    ensureActive();
   }
 
   // Search each preferred player before considering a lower-ranked mounted row.
   // A virtualized or position-filtered list cannot prove that a player is gone.
   for (const candidate of queue) {
+    ensureActive();
     let control = findDraftControl(candidate, collectRows());
     if (!control && search) {
       search.focus();
       setNativeInputValue(search, candidate.name);
       await wait(200);
+      ensureActive();
       control = findDraftControl(candidate, collectRows());
     }
     if (control === "ambiguous") {
@@ -392,17 +423,23 @@ function createStatus(
 
 export function startAutoDraftController(
   provider: AutoDraftProvider,
-  publish: (status: AutoDraftStatus) => void
+  publish: (status: AutoDraftStatus) => void,
+  options: {
+    getHref?: () => string;
+    readPicks?: () => Promise<DraftPickRead>;
+  } = {},
 ): {
   handleCommand: (command: AutoDraftCommand) => Promise<AutoDraftStatus>;
   stop: () => void;
 } {
   const runtime: AutoDraftRuntime = {
     provider,
+    roomIdentity: null,
     armed: false,
     live: false,
     queue: [],
     rounds: Number.POSITIVE_INFINITY,
+    slotContext: null,
     positionLimits: [],
     roundRules: [],
     drafted: [],
@@ -415,6 +452,20 @@ export function startAutoDraftController(
   let intervalId: number | null = null;
   let lastPhase: AutoDraftPhase | null = null;
   let lastMessage = "";
+  const getHref = options.getHref ?? (() => window.location.href);
+  // A slow provider read must leave the controller able to submit safely.
+  // Its eventual result cannot become a baseline or confirmation afterward.
+  const readVerifiedPicks = async (): Promise<DraftPickRead | null> => {
+    if (!options.readPicks) return null;
+    const result = await Promise.race([
+      options.readPicks().catch(() => null),
+      wait(1500).then(() => null),
+    ]);
+    if (!result?.readSucceeded ||
+        autoDraftRoomIdentity(result.roomUrl, provider) !== runtime.roomIdentity) return null;
+    const sorted = [...result.picks].sort((left, right) => left.pickNumber - right.pickNumber);
+    return sorted.every((pick, index) => pick.pickNumber === index + 1) ? result : null;
+  };
 
   const emit = (
     phase: AutoDraftPhase,
@@ -431,7 +482,9 @@ export function startAutoDraftController(
   };
 
   const tick = async (): Promise<void> => {
-    if (!runtime.armed || runtime.working) return;
+    if (!runtime.armed) return;
+    if (!checkRoom()) return;
+    if (runtime.working) return;
     const pageText = visiblePageText();
 
     if (pageSaysDraftStopped(pageText)) {
@@ -460,7 +513,15 @@ export function startAutoDraftController(
     runtime.working = true;
     const generation = runtime.generation;
     const live = runtime.live;
-    // ponytail: drafted only counts this controller's own submissions, so
+    const ensureActive = () => {
+      if (runtime.generation !== generation || !runtime.armed || !checkRoom()) {
+        throw new UncertainPlayerError("the armed draft room changed");
+      }
+      if (!pageSaysUserIsOnClock() || pageSaysDraftStopped()) {
+        throw new UncertainPlayerError("the provider no longer says it is your turn");
+      }
+    };
+    // ponytail: drafted only counts this controller's confirmed picks, so
     // caps are loose when picks were made before arming; the page round
     // header covers the K and DST rounds in that case.
     const round = readCurrentRound(pageText, runtime.drafted.length + 1, runtime.rounds);
@@ -469,8 +530,8 @@ export function startAutoDraftController(
     );
     emit("searching", "Checking the ranked queue for an available player.");
     try {
-      const match = await findAvailableCandidate(eligible);
-      if (runtime.generation !== generation || !runtime.armed) return;
+      const match = await findAvailableCandidate(eligible, ensureActive);
+      ensureActive();
 
       if (!match) {
         runtime.actedThisTurn = true;
@@ -491,19 +552,69 @@ export function startAutoDraftController(
         return;
       }
 
-      if (!pageSaysUserIsOnClock() || pageSaysDraftStopped()) return;
-      clickElement(match.action);
+      ensureActive();
+      // A pre-existing dialog is uncertain; it may belong to a manual selection.
+      if (Array.from(document.querySelectorAll("[role='dialog'], [aria-modal='true']")).some(isVisible)) {
+        throw new UncertainPlayerError("a dialog is already open before selecting the player");
+      }
+      // Read immediately before the click. A cached/failed empty log cannot
+      // establish which pick belongs to this turn.
+      const observed = await readVerifiedPicks();
+      ensureActive();
+      if (observed?.picks.some(pick =>
+        rowMatchesCandidate(normalizeAutoDraftName(`${pick.name} ${pick.team ?? ""} ${pick.position ?? ""}`), match.candidate))) {
+        throw new UncertainPlayerError("the provider log already records the selected player");
+      }
+      const nextPick = observed ? observed.picks.length + 1 : null;
+      const slot = runtime.slotContext;
+      const ownPick = nextPick !== null && slot &&
+        getDraftTeamForPick(nextPick, slot.teams, slot.draftOrder) === slot.userTeam;
+      clickElement(match.action, ensureActive, () => {
+        // A manual dialog can open during the provider read or scrolling.
+        if (Array.from(document.querySelectorAll("[role='dialog'], [aria-modal='true']")).some(isVisible)) {
+          throw new UncertainPlayerError("a dialog opened before selecting the player");
+        }
+        const current = findDraftControl(match.candidate, collectRows());
+        if (!current || current === "ambiguous" || current.action !== match.action) {
+          throw new UncertainPlayerError("the selected player changed before it could be clicked");
+        }
+      });
       await wait(350);
-      if (runtime.generation !== generation || !runtime.armed) return;
-      const confirmation = findConfirmationButton();
-      if (confirmation && confirmation !== match.action) clickElement(confirmation);
+      if (runtime.generation !== generation || !runtime.armed || !checkRoom()) return;
+      const confirmation = findConfirmationButton(match.candidate, runtime.queue);
+      if (confirmation && confirmation !== match.action) {
+        ensureActive();
+        clickElement(confirmation, ensureActive, () => {
+          if (findConfirmationButton(match.candidate, runtime.queue) !== confirmation) {
+            throw new UncertainPlayerError("the confirmation changed before it could be clicked");
+          }
+        });
+      }
       runtime.actedThisTurn = true;
-      runtime.drafted.push(match.candidate);
       emit(
         "submitted",
-        `${match.candidate.name} was submitted.`,
+        `${match.candidate.name} was submitted. Waiting for the provider pick log.`,
         match.candidate
       );
+      // A button click is only a submission attempt. Count a pick once the
+      // existing read-only sync reports a new matching provider pick.
+      if (ownPick) {
+        for (let attempt = 0; attempt < 3; attempt += 1) {
+          const synced = await readVerifiedPicks();
+          if (runtime.generation !== generation || !runtime.armed || !checkRoom()) return;
+          const recorded = synced?.picks.filter(pick => pick.pickNumber === nextPick &&
+            rowMatchesCandidate(normalizeAutoDraftName(`${pick.name} ${pick.team ?? ""} ${pick.position ?? ""}`), match.candidate));
+          if (recorded?.length === 1) {
+            runtime.drafted.push(match.candidate);
+            emit("confirmed", `${match.candidate.name} was recorded in the provider pick log.`, match.candidate);
+            return;
+          }
+          if (attempt < 2) {
+            await wait(900);
+            if (runtime.generation !== generation || !runtime.armed || !checkRoom()) return;
+          }
+        }
+      }
     } catch (error) {
       if (runtime.generation !== generation || !runtime.armed) return;
       runtime.actedThisTurn = true;
@@ -518,6 +629,15 @@ export function startAutoDraftController(
     } finally {
       runtime.working = false;
     }
+  };
+
+  const checkRoom = (): boolean => {
+    if (runtime.roomIdentity && autoDraftRoomIdentity(getHref(), provider) === runtime.roomIdentity) return true;
+    runtime.armed = false;
+    runtime.live = false;
+    runtime.generation += 1;
+    emit("stopped", "The draft room changed, so the controller disarmed itself.");
+    return false;
   };
 
   const handleCommand = async (
@@ -542,12 +662,27 @@ export function startAutoDraftController(
       return emit("error", "The controller did not receive a ranked queue.");
     }
 
+    const identity = autoDraftRoomIdentity(command.roomUrl, provider);
+    if (!identity || identity !== autoDraftRoomIdentity(getHref(), provider)) {
+      runtime.armed = false;
+      runtime.live = false;
+      return emit("error", "Open the matching draft room before arming autodraft.");
+    }
+    if (runtime.roomIdentity !== identity) runtime.drafted = [];
+    runtime.roomIdentity = identity;
+
     runtime.armed = true;
     runtime.live = command.live === true;
     runtime.queue = queue;
     runtime.rounds = Number.isInteger(command.rounds) && Number(command.rounds) > 0
       ? Number(command.rounds)
       : Number.POSITIVE_INFINITY;
+    runtime.slotContext = Number.isInteger(command.teams) && Number(command.teams) >= 2 &&
+      Number.isInteger(command.userTeam) && Number(command.userTeam) >= 1 &&
+      Number(command.userTeam) <= Number(command.teams) &&
+      (command.draftOrder === "snake" || command.draftOrder === "linear")
+      ? { teams: Number(command.teams), userTeam: Number(command.userTeam), draftOrder: command.draftOrder }
+      : null;
     runtime.positionLimits = Array.isArray(command.positionLimits) ? command.positionLimits : [];
     runtime.roundRules = Array.isArray(command.roundRules) ? command.roundRules : [];
     runtime.pickDelayMs = Math.max(1000, Math.min(15000, command.pickDelayMs ?? 2500));
@@ -572,6 +707,7 @@ export function startAutoDraftController(
       if (intervalId !== null) window.clearInterval(intervalId);
       intervalId = null;
       runtime.armed = false;
+      runtime.generation += 1;
     },
   };
 }

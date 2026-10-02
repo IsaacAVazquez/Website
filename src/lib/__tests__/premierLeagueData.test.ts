@@ -5,9 +5,6 @@ import {
   buildPremierLeagueSnapshot,
   getPremierLeagueSummary,
   getPremierLeagueTeamSnapshot,
-  isValidPremierLeagueTeamId,
-  createEmptyPremierLeagueSummary,
-  createEmptyPremierLeagueTeamSnapshot,
   sumPlayedGames,
 } from "../premierLeagueData";
 import { resetFootballDataPacingForTests } from "../footballData";
@@ -457,63 +454,6 @@ describe("sumPlayedGames edge cases", () => {
   });
 });
 
-describe("isValidPremierLeagueTeamId", () => {
-  it("accepts positive integer id strings", () => {
-    expect(isValidPremierLeagueTeamId("57")).toBe(true);
-    expect(isValidPremierLeagueTeamId("1")).toBe(true);
-    expect(isValidPremierLeagueTeamId("64")).toBe(true);
-    expect(isValidPremierLeagueTeamId("1000")).toBe(true);
-  });
-
-  it("rejects zero, leading zeros, non-numeric, and empty ids", () => {
-    expect(isValidPremierLeagueTeamId("0")).toBe(false);
-    expect(isValidPremierLeagueTeamId("01")).toBe(false);
-    expect(isValidPremierLeagueTeamId("abc")).toBe(false);
-    expect(isValidPremierLeagueTeamId("")).toBe(false);
-    expect(isValidPremierLeagueTeamId("-5")).toBe(false);
-    expect(isValidPremierLeagueTeamId("1.5")).toBe(false);
-    expect(isValidPremierLeagueTeamId("57a")).toBe(false);
-    expect(isValidPremierLeagueTeamId(" 57")).toBe(false);
-  });
-});
-
-describe("createEmptyPremierLeagueSummary", () => {
-  it("returns an all-empty summary with a valid generatedAt timestamp", () => {
-    const summary = createEmptyPremierLeagueSummary();
-
-    expect(summary.competition).toBeNull();
-    expect(summary.standings).toEqual([]);
-    expect(summary.scorers).toEqual([]);
-    expect(summary.recentFixtures).toEqual([]);
-    expect(summary.upcomingFixtures).toEqual([]);
-    expect(summary.teams).toEqual([]);
-    expect(summary.goalsPerMatchday).toEqual([]);
-    expect(typeof summary.generatedAt).toBe("string");
-    expect(() => new Date(summary.generatedAt).toISOString()).not.toThrow();
-  });
-});
-
-describe("createEmptyPremierLeagueTeamSnapshot", () => {
-  it("returns a null-team snapshot with a zeroed default form", () => {
-    const snapshot = createEmptyPremierLeagueTeamSnapshot();
-
-    expect(snapshot.team).toBeNull();
-    expect(snapshot.recentFixtures).toEqual([]);
-    expect(snapshot.upcomingFixtures).toEqual([]);
-    expect(snapshot.form).toEqual({
-      sequence: [],
-      wins: 0,
-      draws: 0,
-      losses: 0,
-      points: 0,
-      goalsFor: 0,
-      goalsAgainst: 0,
-    });
-    expect(typeof snapshot.generatedAt).toBe("string");
-    expect(() => new Date(snapshot.generatedAt).toISOString()).not.toThrow();
-  });
-});
-
 // Team-detail endpoint returns the raw team object directly (not wrapped), and
 // carries the club-detail-only fields (founded, clubColors, website, address,
 // coach) that the summary team-list objects omit.
@@ -754,7 +694,7 @@ function storedTeamSnapshot(clubId: number): PremierLeagueTeamSnapshot {
 }
 
 function storedSnapshotRoot(clubIds: number[]): string {
-  return writeStoredSnapshot("premierLeagueSnapshot.ts", "premierLeagueSnapshot", {
+  return writeStoredSnapshot("premierLeagueSnapshot.json", {
     teamSnapshots: Object.fromEntries(clubIds.map((id) => [String(id), storedTeamSnapshot(id)])),
   });
 }

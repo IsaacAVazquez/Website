@@ -45,3 +45,15 @@
   font-size: var(--c97-fs-small);
   color: var(--c97-ink);
 }
+
+/* Headline and cluster links drop the underline at rest, so hover brings it
+ * back with the action colour as the only pointer cue besides the cursor.
+ * The cluster title's ink lives here rather than inline so hover can win. */
+.c97-news-headline > span {
+  color: var(--c97-ink);
+}
+
+.c97-news-headline:hover :is(h3, span) {
+  color: var(--c97-action);
+  text-decoration: underline;
+}

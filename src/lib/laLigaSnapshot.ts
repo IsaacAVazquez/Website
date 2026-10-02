@@ -1,21 +1,11 @@
 import { laLigaSnapshot } from "@/data/laLigaSnapshot";
 import { buildLaLigaLiveSummary } from "@/lib/laLigaData";
+import { createLiveSummary } from "@/lib/footballLeagueData";
 import type { LaLigaSummarySnapshot, LaLigaTeamSnapshot } from "@/types/la-liga";
+import { capFixtures, findTeamSnapshot } from "@/lib/teamSnapshots";
 
 const SUMMARY_FIXTURE_LIMIT = 8;
 const TEAM_FIXTURE_LIMIT = 5;
-
-interface LaLigaSnapshotError extends Error {
-  status: number;
-}
-
-function createLaLigaSnapshotError(message: string, status: number): LaLigaSnapshotError {
-  return Object.assign(new Error(message), { status });
-}
-
-function limitFixtures<T>(fixtures: T[], limit: number): T[] {
-  return fixtures.slice(0, limit);
-}
 
 function committedLaLigaSummarySnapshot(): LaLigaSummarySnapshot {
   const { teamSnapshots: _teamSnapshots, ...summarySnapshot } = laLigaSnapshot;
@@ -26,20 +16,10 @@ function clampLaLigaSummarySnapshot(
   summarySnapshot: LaLigaSummarySnapshot
 ): LaLigaSummarySnapshot {
   return {
-    ...summarySnapshot,
-    recentFixtures: limitFixtures(summarySnapshot.recentFixtures, SUMMARY_FIXTURE_LIMIT),
-    upcomingFixtures: limitFixtures(summarySnapshot.upcomingFixtures, SUMMARY_FIXTURE_LIMIT),
+    ...capFixtures(summarySnapshot, SUMMARY_FIXTURE_LIMIT),
     // Defaults for committed snapshots written before these fields existed.
     assists: summarySnapshot.assists ?? [],
     goalsPerMatchday: summarySnapshot.goalsPerMatchday ?? [],
-  };
-}
-
-function clampLaLigaTeamSnapshot(snapshot: LaLigaTeamSnapshot): LaLigaTeamSnapshot {
-  return {
-    ...snapshot,
-    recentFixtures: limitFixtures(snapshot.recentFixtures, TEAM_FIXTURE_LIMIT),
-    upcomingFixtures: limitFixtures(snapshot.upcomingFixtures, TEAM_FIXTURE_LIMIT),
   };
 }
 
@@ -79,68 +59,16 @@ interface LaLigaSummaryOptions {
   preferLive?: boolean;
 }
 
-// Request-time live refresh (football-data.org) is double-gated: the caller
-// must ask for it (`preferLive`) and FOOTBALL_DATA_API_TOKEN must be set in
-// the environment. The token is read per call, so an un-configured deploy
-// never fetches and keeps returning the committed snapshot unchanged. The
-// live path mirrors the bay-area-transit accessor: a 5-minute in-memory TTL
-// plus a single-flight guard, which bounds upstream traffic to roughly one
-// 3-request refresh per 5 minutes per instance, well inside the
-// football-data.org free tier of 10 requests per minute.
-const LIVE_SUMMARY_TTL_MS = 5 * 60 * 1000;
-let liveSummaryCache:
-  | { summary: LaLigaSummarySnapshot; expiresAt: number }
-  | null = null;
-let liveSummaryInflight: Promise<LaLigaSummarySnapshot> | null = null;
-
-export function resetLaLigaLiveSummaryCacheForTests(): void {
-  liveSummaryCache = null;
-  liveSummaryInflight = null;
-}
-
-function hasFootballDataToken(): boolean {
-  return Boolean(process.env.FOOTBALL_DATA_API_TOKEN?.trim());
-}
-
-async function getLaLigaSummarySource(
-  options: LaLigaSummaryOptions
-): Promise<LaLigaSummarySnapshot> {
-  if (!options.preferLive || !hasFootballDataToken()) {
-    return committedLaLigaSummarySnapshot();
-  }
-  if (liveSummaryCache && liveSummaryCache.expiresAt > Date.now()) {
-    return liveSummaryCache.summary;
-  }
-  if (liveSummaryInflight) return liveSummaryInflight;
-
-  liveSummaryInflight = buildLaLigaLiveSummary(committedLaLigaSummarySnapshot())
-    .then((summary) => {
-      liveSummaryCache = {
-        summary,
-        expiresAt: Date.now() + LIVE_SUMMARY_TTL_MS,
-      };
-      return summary;
-    })
-    // A failed refresh serves the committed snapshot and is NOT cached, so
-    // the next request retries the live path.
-    .catch(() => committedLaLigaSummarySnapshot())
-    .finally(() => {
-      liveSummaryInflight = null;
-    });
-
-  return liveSummaryInflight;
-}
+// Request-time live refresh (football-data.org), gated and cached as
+// `createLiveSummary` describes. No caller passes `preferLive` today.
+const liveSummary = createLiveSummary(committedLaLigaSummarySnapshot, buildLaLigaLiveSummary);
 
 export async function getLaLigaSummarySnapshot(
   options: LaLigaSummaryOptions = {}
 ): Promise<LaLigaSummarySnapshot> {
-  return clampLaLigaSummarySnapshot(await getLaLigaSummarySource(options));
+  return clampLaLigaSummarySnapshot(await liveSummary.get(options.preferLive));
 }
 
 export async function getLaLigaTeamSnapshot(teamId: string): Promise<LaLigaTeamSnapshot> {
-  const snapshot = laLigaSnapshot.teamSnapshots[teamId];
-  if (!snapshot) {
-    throw createLaLigaSnapshotError("La Liga team snapshot was not found.", 404);
-  }
-  return clampLaLigaTeamSnapshot(snapshot);
+  return capFixtures(findTeamSnapshot(laLigaSnapshot.teamSnapshots, teamId, "La Liga"), TEAM_FIXTURE_LIMIT);
 }

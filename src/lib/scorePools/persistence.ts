@@ -26,6 +26,7 @@ import type {
   ScoringRules,
   StandingContext,
 } from "./types";
+import { isRecord, boundedNumber, enumValue, prefixedId } from "@/lib/utils";
 
 export const SCORE_POOLS_STORAGE_KEY = "score_pools_store_v1";
 const SCORE_POOLS_STORAGE_VERSION = 1;
@@ -90,25 +91,6 @@ export interface ScorePoolsStore {
 
 // ─── Decoding helpers ────────────────────────────────────────────────────────
 
-function isRecord(value: unknown): value is Record<string, unknown> {
-  return typeof value === "object" && value !== null && !Array.isArray(value);
-}
-
-function boundedNumber(value: unknown, min: number, max: number, fallback: number): number {
-  const num = typeof value === "number" && Number.isFinite(value) ? value : fallback;
-  return Math.min(max, Math.max(min, num));
-}
-
-function boundedInt(value: unknown, min: number, max: number, fallback: number): number {
-  return Math.round(boundedNumber(value, min, max, fallback));
-}
-
-function enumValue<T extends string>(value: unknown, allowed: readonly T[], fallback: T): T {
-  return typeof value === "string" && (allowed as readonly string[]).includes(value)
-    ? (value as T)
-    : fallback;
-}
-
 function stringValue(value: unknown, fallback: string): string {
   return typeof value === "string" && value.length > 0 ? value : fallback;
 }
@@ -126,14 +108,14 @@ function decodeScoreline(value: unknown): Scoreline | undefined {
 function decodeRules(value: unknown): ScoringRules {
   const raw = isRecord(value) ? value : {};
   return {
-    exact: boundedNumber(raw.exact, 0, 100, DEFAULT_SCORING_RULES.exact),
+    exact: boundedNumber(raw.exact, DEFAULT_SCORING_RULES.exact, 0, 100),
     correctDifference: boundedNumber(
       raw.correctDifference,
+      DEFAULT_SCORING_RULES.correctDifference,
       0,
       100,
-      DEFAULT_SCORING_RULES.correctDifference,
     ),
-    correctOutcome: boundedNumber(raw.correctOutcome, 0, 100, DEFAULT_SCORING_RULES.correctOutcome),
+    correctOutcome: boundedNumber(raw.correctOutcome, DEFAULT_SCORING_RULES.correctOutcome, 0, 100),
     basis: enumValue<ScoringBasis>(
       raw.basis,
       ["ninetyMinutes", "finalResult"],
@@ -150,11 +132,11 @@ function decodeStanding(value: unknown): StandingContext {
       ? Math.min(100000, Math.max(-100000, input))
       : null;
   return {
-    myPoints: boundedNumber(raw.myPoints, -100000, 100000, DEFAULT_STANDING.myPoints),
+    myPoints: boundedNumber(raw.myPoints, DEFAULT_STANDING.myPoints, -100000, 100000),
     nearestAbovePoints: nullableNumber(raw.nearestAbovePoints),
     nearestBelowPoints: nullableNumber(raw.nearestBelowPoints),
-    poolSize: boundedInt(raw.poolSize, 2, 100000, DEFAULT_STANDING.poolSize),
-    gamesRemaining: boundedInt(raw.gamesRemaining, 0, 10000, DEFAULT_STANDING.gamesRemaining),
+    poolSize: boundedNumber(raw.poolSize, DEFAULT_STANDING.poolSize, 2, 100000, true),
+    gamesRemaining: boundedNumber(raw.gamesRemaining, DEFAULT_STANDING.gamesRemaining, 0, 10000, true),
     posture: enumValue<Posture>(
       raw.posture,
       ["auto", "protect", "chase", "neutral"],
@@ -195,7 +177,7 @@ function decodeRival(value: unknown): StoredRival | undefined {
   return {
     id,
     name: stringValue(value.name, "Rival"),
-    pointsAdjustment: boundedNumber(value.pointsAdjustment, -100000, 100000, 0),
+    pointsAdjustment: boundedNumber(value.pointsAdjustment, 0, -100000, 100000),
     picks,
   };
 }
@@ -283,19 +265,19 @@ function decodePool(value: unknown): StoredPool | undefined {
     field: {
       modalShare: boundedNumber(
         isRecord(value.field) ? value.field.modalShare : undefined,
+        DEFAULT_FIELD_CONFIG.modalShare,
         0.05,
         0.9,
-        DEFAULT_FIELD_CONFIG.modalShare,
       ),
       chalkShare: boundedNumber(
         isRecord(value.field) ? value.field.chalkShare : undefined,
+        DEFAULT_FIELD_CONFIG.chalkShare,
         0.1,
         0.95,
-        DEFAULT_FIELD_CONFIG.chalkShare,
       ),
     },
     devigMethod: enumValue<DevigMethod>(value.devigMethod, ["proportional", "power"], "proportional"),
-    lockOffsetMinutes: boundedInt(value.lockOffsetMinutes, 0, 24 * 60, 60),
+    lockOffsetMinutes: boundedNumber(value.lockOffsetMinutes, 60, 0, 24 * 60, true),
     timezone: typeof value.timezone === "string" && value.timezone.length > 0 ? value.timezone : null,
     flags,
     submissions,
@@ -322,16 +304,9 @@ export function decodeScorePoolsStore(value: unknown): ScorePoolsStore | undefin
 
 // ─── Factories and derived config ────────────────────────────────────────────
 
-function newId(prefix: string): string {
-  if (typeof crypto !== "undefined" && typeof crypto.randomUUID === "function") {
-    return `${prefix}-${crypto.randomUUID()}`;
-  }
-  return `${prefix}-${Math.random().toString(36).slice(2, 10)}`;
-}
-
 export function createPool(leagueKey: string, name: string): StoredPool {
   return {
-    id: newId("pool"),
+    id: prefixedId("pool"),
     name,
     leagueKey,
     rules: { ...DEFAULT_SCORING_RULES },
@@ -349,7 +324,7 @@ export function createPool(leagueKey: string, name: string): StoredPool {
 }
 
 export function createRival(name: string): StoredRival {
-  return { id: newId("rival"), name, pointsAdjustment: 0, picks: {} };
+  return { id: prefixedId("rival"), name, pointsAdjustment: 0, picks: {} };
 }
 
 export function emptyScorePoolsStore(): ScorePoolsStore {

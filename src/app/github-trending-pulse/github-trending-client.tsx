@@ -1,6 +1,5 @@
 "use client";
 
-import { startTransition, useEffect, type KeyboardEvent } from "react";
 import {
   Activity,
   ArrowDownUp,
@@ -10,7 +9,7 @@ import {
   Star,
   Tags,
 } from "lucide-react";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useSearchParams } from "next/navigation";
 import { EmptyPanel } from "@/components/football/EmptyPanel";
 import { Catalog97ProjectHero } from "@/components/catalog97/Catalog97ProjectHero";
 import { PROJECT_PRESS } from "@/constants/projectPress";
@@ -42,6 +41,7 @@ import { StarLogBoard } from "./StarLogBoard";
 import { languageShares } from "./star-log";
 import { SHORT_DATE_FORMATTER, DATE_ONLY_TIME_ZONE, formatDateTime } from "@/lib/date-formatters";
 import "./github-trending-pulse.css";
+import { useRouteSync } from "@/hooks/useRouteSync";
 
 interface GitHubTrendingClientProps {
   initialState: GitHubTrendingRouteState;
@@ -107,15 +107,7 @@ function getReposForSegment(
   return snapshot.repositories.filter((repo) => allowed.has(repo.id));
 }
 
-function handleRowKeyDown(event: KeyboardEvent<HTMLTableRowElement>, onToggle: () => void) {
-  if (event.key === "Enter" || event.key === " ") {
-    event.preventDefault();
-    onToggle();
-  }
-}
-
 export function GitHubTrendingClient({ initialState, snapshot }: GitHubTrendingClientProps) {
-  const router = useRouter();
   const searchParams = useSearchParams();
   const now = useClientNow();
   const hasManagedParams =
@@ -127,24 +119,14 @@ export function GitHubTrendingClient({ initialState, snapshot }: GitHubTrendingC
     ? normalizeGitHubTrendingState(searchParams)
     : initialState;
   const resolvedState = resolveGitHubTrendingState(routeState, snapshot);
-  const currentQuery = searchParams.toString();
-  const currentHref = `/github-trending-pulse${currentQuery ? `?${currentQuery}` : ""}`;
   const desiredHref = buildGitHubTrendingHref(resolvedState, searchParams);
 
-  useEffect(() => {
-    if (currentHref === desiredHref) return;
-    startTransition(() => {
-      router.replace(desiredHref, { scroll: false });
-    });
-  }, [currentHref, desiredHref, router]);
+  const pushHref = useRouteSync("/github-trending-pulse", desiredHref);
 
   function navigate(nextState: GitHubTrendingRouteState) {
     const resolvedNext = resolveGitHubTrendingState(nextState, snapshot);
     const href = buildGitHubTrendingHref(resolvedNext, searchParams);
-    if (href === currentHref) return;
-    startTransition(() => {
-      router.push(href, { scroll: false });
-    });
+    pushHref(href);
   }
 
   const segments = getSegments(snapshot, resolvedState.kind);
@@ -224,18 +206,6 @@ export function GitHubTrendingClient({ initialState, snapshot }: GitHubTrendingC
         <StarLogBoard repos={filteredRepos} windowDays={snapshot.windowDays} />
       </Catalog97ProjectHero>
 
-      {snapshot.sourceStatus?.status === "degraded" ? (
-        <div className="c97-band c97-sheet" data-c97-surface="paper" data-seam="torn">
-          <div className="c97-shell">
-            <p className="c97-meta" style={{ color: "var(--c97-warning)" }} role="status">
-              {snapshot.sourceStatus.reusedSegments.length > 0
-                ? `${snapshot.sourceStatus.reusedSegments.length} segments are using earlier data.`
-                : `${snapshot.sourceStatus.failedSegments.length} segments are unavailable right now.`}
-            </p>
-          </div>
-        </div>
-      ) : null}
-
       <section
         className="c97-band c97-sheet"
         data-c97-surface="paper"
@@ -243,9 +213,18 @@ export function GitHubTrendingClient({ initialState, snapshot }: GitHubTrendingC
         aria-label="GitHub trending filters"
       >
         <div className="c97-shell" style={{ display: "grid", gap: "var(--c97-sp-5)" }}>
+          {/* The degraded note sits inside this band rather than on a paper
+              band of its own, which tore a sheet over the same surface. */}
+          {snapshot.sourceStatus?.status === "degraded" ? (
+            <p className="c97-meta" style={{ color: "var(--c97-warning)" }} role="status">
+              {snapshot.sourceStatus.reusedSegments.length > 0
+                ? `${snapshot.sourceStatus.reusedSegments.length} segments are using earlier data.`
+                : `${snapshot.sourceStatus.failedSegments.length} segments are unavailable right now.`}
+            </p>
+          ) : null}
           <h2 className="c97-poster-sm">The board</h2>
           <div className="flex flex-wrap items-center justify-between gap-4">
-            <div role="tablist" aria-label="Trend segment type" className="c97-segmented">
+            <div role="group" aria-label="Trend segment type" className="c97-segmented">
               {GITHUB_TRENDING_KIND_OPTIONS.map((kind) => {
                 const isActive = resolvedState.kind === kind;
                 const Icon = kind === "language" ? Languages : Tags;
@@ -253,8 +232,7 @@ export function GitHubTrendingClient({ initialState, snapshot }: GitHubTrendingC
                   <button
                     key={kind}
                     type="button"
-                    role="tab"
-                    aria-selected={isActive}
+                    aria-pressed={isActive}
                     title={`Show ${GITHUB_TRENDING_KIND_LABELS[kind].toLowerCase()} segments`}
                     onClick={() => setKind(kind)}
                     className="min-h-[44px]"
@@ -417,15 +395,10 @@ function RepoRow({ repo, rank, isExpanded, matchedSegments, windowDays, onToggle
 
   return (
     <>
-      <tr
-        tabIndex={0}
-        role="button"
-        aria-expanded={isExpanded}
-        aria-controls={detailId}
-        onClick={onToggle}
-        onKeyDown={(event) => handleRowKeyDown(event, onToggle)}
-        style={{ cursor: "pointer" }}
-      >
+      {/* The row stays clickable for pointer users, but the keyboard control
+          is a real button on the name. role="button" on a <tr> broke table
+          semantics and nested the Repo link inside an interactive element. */}
+      <tr onClick={onToggle} style={{ cursor: "pointer" }}>
         <td>
           <div className="flex gap-3">
             <span
@@ -435,8 +408,20 @@ function RepoRow({ repo, rank, isExpanded, matchedSegments, windowDays, onToggle
               {rank}
             </span>
             <div className="min-w-0">
-              <p className="c97-serif" style={{ marginBottom: "var(--c97-sp-1)", fontWeight: 600, color: "var(--c97-ink)" }}>
-                {repo.fullName}
+              <p style={{ marginBottom: "var(--c97-sp-1)" }}>
+                <button
+                  type="button"
+                  aria-expanded={isExpanded}
+                  aria-controls={isExpanded ? detailId : undefined}
+                  onClick={(event) => {
+                    event.stopPropagation();
+                    onToggle();
+                  }}
+                  className="c97-serif text-left"
+                  style={{ fontWeight: 600, color: "var(--c97-ink)" }}
+                >
+                  {repo.fullName}
+                </button>
               </p>
               <p
                 className="mb-0 line-clamp-2"

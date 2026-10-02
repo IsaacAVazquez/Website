@@ -556,11 +556,13 @@ export function SpaceXMissionControlClient({
           {hasPartialDataIssue ? (
             <div
               role="status"
-              className="mt-4 flex items-start gap-3 border border-[color-mix(in_srgb,var(--c97-accent)_28%,var(--c97-rule))] bg-[color-mix(in_srgb,var(--c97-accent)_10%,var(--c97-surface))] px-4 py-3 text-sm leading-6 text-[var(--c97-ink-2)]"
+              className="mt-4 flex items-start gap-3 px-4 py-3 text-sm leading-6 text-[var(--c97-ink-2)]"
+              style={{ border: "1px solid var(--c97-warning)", background: "var(--c97-panel)" }}
             >
               <AlertTriangle
                 aria-hidden="true"
-                className="mt-0.5 h-5 w-5 shrink-0 text-[color-mix(in_srgb,var(--c97-accent)_55%,var(--c97-ink))]"
+                className="mt-0.5 h-5 w-5 shrink-0"
+                style={{ color: "var(--c97-warning)" }}
               />
               <p>
                 One or more requests degraded, but the workspace is still usable.
@@ -594,7 +596,9 @@ export function SpaceXMissionControlClient({
                   key={option.key}
                   type="button"
                   role="tab"
+                  id={`mission-section-tab-${option.key}`}
                   aria-selected={section === option.key}
+                  aria-controls="mission-section-panel"
                   onClick={() => setSection(option.key)}
                   className="min-h-[44px] text-sm font-semibold"
                 >
@@ -604,7 +608,12 @@ export function SpaceXMissionControlClient({
             </div>
           </div>
 
-          <div className="mt-5">
+          <div
+            className="mt-5"
+            role="tabpanel"
+            id="mission-section-panel"
+            aria-labelledby={`mission-section-tab-${section}`}
+          >
             {section === "manifest" ? (
               <MissionLaunchBoard
                 launches={launches}

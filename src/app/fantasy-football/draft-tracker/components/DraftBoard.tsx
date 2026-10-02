@@ -496,11 +496,13 @@ export function DraftBoard({
                       onClick={() => queue.toggle(player.id)}
                       aria-pressed={isQueued}
                       aria-label={isQueued ? `Remove ${player.name} from queue` : `Add ${player.name} to queue`}
-                      className="inline-flex h-11 w-11 items-center justify-center border"
+                      className={`inline-flex h-11 w-11 items-center justify-center border ${
+                        isQueued ? "" : "border-[var(--c97-rule)] hover:border-[var(--c97-ink)]"
+                      }`}
                       style={{
                         borderColor: isQueued
                           ? "color-mix(in srgb, var(--c97-accent) 55%, var(--c97-rule))"
-                          : "var(--c97-rule)",
+                          : undefined,
                         color: isQueued ? "var(--c97-accent)" : "var(--c97-ink-2)",
                       }}
                     >
@@ -510,8 +512,7 @@ export function DraftBoard({
                       type="button"
                       onClick={() => handleDraftPlayer(player)}
                       aria-label={`Log ${player.name}`}
-                      className="inline-flex min-h-touch items-center justify-center border px-3.5 font-mono text-3xs uppercase tracking-[0.06em]"
-                      style={{ borderColor: "var(--c97-ink)", background: "var(--c97-ink)", color: "var(--c97-surface)" }}
+                      className="inline-flex min-h-touch items-center justify-center border border-[var(--c97-ink)] bg-[var(--c97-ink)] text-[var(--c97-surface)] hover:bg-[var(--c97-ink-2)] px-3.5 font-mono text-3xs uppercase tracking-[0.06em]"
                     >
                       Log
                     </button>
@@ -544,8 +545,8 @@ export function DraftBoard({
               type="button"
               onClick={() => handleDraftPlayer(player)}
               title={`Log ${player.name}`}
-              className="inline-flex min-h-touch items-baseline gap-1.5 border px-2.5 font-mono text-2xs"
-              style={{ borderColor: "var(--c97-rule)", background: "var(--c97-surface)", color: "var(--c97-ink)" }}
+              className="inline-flex min-h-touch items-baseline gap-1.5 border border-[var(--c97-rule)] px-2.5 font-mono text-2xs hover:border-[var(--c97-ink)]"
+              style={{ background: "var(--c97-surface)", color: "var(--c97-ink)" }}
             >
               <span style={{ color: "var(--c97-ink-2)" }}>
                 #{formatRankValue(player.rankEcr ?? player.averageRank)}
@@ -560,7 +561,7 @@ export function DraftBoard({
 
       {vorpValues.size > 0 && vorpTeamSize ? (
         <p
-          className="mb-3 text-xs leading-5"
+          className="mb-3 max-w-[68ch] text-xs leading-5"
           style={{ color: "var(--c97-ink-2)" }}
         >
           VORP is FantasyPros&apos; projected season points above the same-position waiver replacement for a {vorpTeamSize}-team league. FantasyPros supplies the roster baseline, while your lineup settings drive the replacement index and scarcity panel below.
@@ -672,8 +673,7 @@ export function DraftBoard({
               setSearchQuery("");
               setSelectedPosition("ALL");
             }}
-            className="mt-3.5 inline-flex min-h-touch items-center justify-center border px-4 font-mono text-2xs uppercase tracking-[0.06em]"
-            style={{ borderColor: "var(--c97-ink)", background: "var(--c97-ink)", color: "var(--c97-surface)" }}
+            className="mt-3.5 inline-flex min-h-touch items-center justify-center border border-[var(--c97-ink)] bg-[var(--c97-ink)] text-[var(--c97-surface)] hover:bg-[var(--c97-ink-2)] px-4 font-mono text-2xs uppercase tracking-[0.06em]"
           >
             Clear search
           </button>

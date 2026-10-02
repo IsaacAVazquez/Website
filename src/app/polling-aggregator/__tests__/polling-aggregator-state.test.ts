@@ -3,7 +3,6 @@ import {
   buildPollingHref,
   countSeatsByParty,
   DEFAULT_POLLING_STATE,
-  getRacesByRating,
   normalizePollingState,
   ratingScore,
   sortRacesByCompetitiveness,
@@ -84,7 +83,6 @@ describe("polling-aggregator-state", () => {
     ];
 
     expect(ratingScore("Toss-up")).toBe(3);
-    expect(getRacesByRating(races, "Lean D").map((race) => race.id)).toEqual(["lean-d"]);
     expect(countSeatsByParty(races)).toEqual({
       demLeading: 2,
       repLeading: 2,

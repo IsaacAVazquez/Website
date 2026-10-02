@@ -754,6 +754,9 @@ function AwayDraftView({
           rank,
         })),
         rounds: setup.rounds,
+        teams: setup.teams,
+        userTeam: setup.userTeam,
+        draftOrder: setup.draftOrder,
         positionLimits: plan.positionLimits.map(({ position, maximum }) => ({ position, maximum })),
         roundRules: plan.roundRules,
       });

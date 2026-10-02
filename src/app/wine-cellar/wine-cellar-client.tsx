@@ -24,11 +24,13 @@ import {
   type WineSortKey,
 } from "@/lib/wineCellar";
 import { useWineCellar } from "@/hooks/useWineCellar";
+import { useReducedMotion } from "@/hooks/useReducedMotion";
 import { useLocalStoragePersistenceStatus } from "@/hooks/useLocalStorageString";
 import { DATE_ONLY_TIME_ZONE } from "@/lib/date-formatters";
 import type { WineEntry, WineType } from "@/types/wine";
 import { WINE_TYPE_MARK, wineRack, type WineRackRow } from "./wineRack";
 import "./wine-cellar.css";
+import { formatDollars } from "@/lib/utils";
 
 const WINE_ROUTE = "/wine-cellar";
 
@@ -97,15 +99,6 @@ function formDraftToWineDraft(draft: WineFormDraft): WineDraft {
     notes: draft.notes,
     tastedOn: draft.tastedOn,
   };
-}
-
-function formatCurrency(value: number) {
-  return value.toLocaleString("en-US", {
-    style: "currency",
-    currency: "USD",
-    minimumFractionDigits: 0,
-    maximumFractionDigits: value % 1 === 0 ? 0 : 2,
-  });
 }
 
 // tastedOn is a date-only string ("2026-06-15"), which parses as UTC midnight,
@@ -287,6 +280,7 @@ export function WineCellarClient() {
     removeEntry,
     findEntry,
   } = useWineCellar();
+  const reduceMotion = useReducedMotion();
   const persistenceStatus = useLocalStoragePersistenceStatus(WINE_CELLAR_STORAGE_KEY);
   const [editingId, setEditingId] = useState<string | null>(null);
   const [formDraft, setFormDraft] = useState<WineFormDraft>(() => createEmptyFormDraft(""));
@@ -321,7 +315,9 @@ export function WineCellarClient() {
     if (!entry) return;
     setEditingId(id);
     setFormDraft(entryToFormDraft(entry));
-    document.getElementById("add-tasting")?.scrollIntoView?.({ behavior: "smooth", block: "start" });
+    document
+      .getElementById("add-tasting")
+      ?.scrollIntoView?.({ behavior: reduceMotion ? "auto" : "smooth", block: "start" });
   }
 
   function handleDelete(id: string) {
@@ -439,7 +435,6 @@ export function WineCellarClient() {
                 <label className="block">
                   <span className="c97-kicker">Min rating</span>
                   <select
-                    aria-label="Minimum rating"
                     value={String(filters.minRating)}
                     onChange={(event) =>
                       updateFilters((current) => ({
@@ -458,11 +453,11 @@ export function WineCellarClient() {
                     <option value="5">5 stars only</option>
                   </select>
                 </label>
-                <label className="block">
-                  <span className="c97-kicker">Sort by</span>
+                <div className="block">
+                  <span id="wine-sort-label" className="c97-kicker">Sort by</span>
                   <div className="flex items-center gap-2" style={{ marginTop: "var(--c97-sp-1)" }}>
                     <select
-                      aria-label="Sort by"
+                      aria-labelledby="wine-sort-label"
                       value={filters.sort}
                       onChange={(event) =>
                         updateFilters((current) => ({
@@ -492,7 +487,7 @@ export function WineCellarClient() {
                       {filters.sortDirection === "asc" ? "↑" : "↓"}
                     </button>
                   </div>
-                </label>
+                </div>
               </div>
 
               {filtersAreActive ? (
@@ -540,7 +535,7 @@ export function WineCellarClient() {
                         {entry.notes ? <p className="c97-prose c97-wine-label-notes">{entry.notes}</p> : null}
                         <p className="c97-wine-label-foot">
                           <span title={entry.tastedOn}>{formatTastedDate(entry.tastedOn)}</span>
-                          {entry.price !== null ? <span>{formatCurrency(entry.price)}</span> : null}
+                          {entry.price !== null ? <span>{formatDollars(entry.price)}</span> : null}
                         </p>
                         <div className="c97-wine-log-actions">
                           <button
@@ -591,7 +586,6 @@ export function WineCellarClient() {
                   <label className="block">
                     <span className="c97-kicker">Wine name</span>
                     <input
-                      aria-label="Wine name"
                       required
                       type="text"
                       value={formDraft.name}
@@ -606,7 +600,6 @@ export function WineCellarClient() {
                   <label className="block">
                     <span className="c97-kicker">Producer</span>
                     <input
-                      aria-label="Producer"
                       type="text"
                       value={formDraft.producer}
                       onChange={(event) =>
@@ -621,7 +614,6 @@ export function WineCellarClient() {
                     <label className="block">
                       <span className="c97-kicker">Vintage</span>
                       <input
-                        aria-label="Vintage"
                         type="number"
                         min="1800"
                         max="2100"
@@ -660,7 +652,6 @@ export function WineCellarClient() {
                   <label className="block">
                     <span className="c97-kicker">Region</span>
                     <input
-                      aria-label="Region"
                       type="text"
                       value={formDraft.region}
                       onChange={(event) =>
@@ -674,7 +665,6 @@ export function WineCellarClient() {
                   <label className="block">
                     <span className="c97-kicker">Varietal / grape</span>
                     <input
-                      aria-label="Varietal"
                       type="text"
                       value={formDraft.varietal}
                       onChange={(event) =>
@@ -689,7 +679,6 @@ export function WineCellarClient() {
                     <label className="block">
                       <span className="c97-kicker">Price (USD)</span>
                       <input
-                        aria-label="Price"
                         type="number"
                         min="0"
                         step="0.01"
@@ -705,7 +694,6 @@ export function WineCellarClient() {
                     <label className="block">
                       <span className="c97-kicker">Tasted on</span>
                       <input
-                        aria-label="Tasted on"
                         type="date"
                         value={formDraft.tastedOn}
                         onChange={(event) =>
@@ -753,7 +741,6 @@ export function WineCellarClient() {
                   <label className="block">
                     <span className="c97-kicker">Tasting notes</span>
                     <textarea
-                      aria-label="Tasting notes"
                       rows={3}
                       maxLength={1000}
                       value={formDraft.notes}
@@ -824,7 +811,7 @@ export function WineCellarClient() {
                               {formatTastedDate(entry.tastedOn)}
                             </span>
                           </span>
-                          <span className="c97-mono" style={{ fontWeight: 600 }}>
+                          <span className="c97-mono" style={{ color: "var(--c97-ink)" }}>
                             {entry.rating.toFixed(1)}
                           </span>
                         </button>

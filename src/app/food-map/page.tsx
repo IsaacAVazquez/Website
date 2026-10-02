@@ -41,7 +41,7 @@ export default async function FoodMapPage({ searchParams }: FoodMapPageProps) {
         data={{
           name: "Food Map",
           description:
-            "Curator-driven restaurant map across Austin, San Francisco, New York, New Orleans, LA, and Tokyo with city, curator, and cuisine filters and a shareable URL state.",
+            "Curator-driven restaurant map across ten cities, from Austin and New York to Tokyo, Copenhagen, and San Sebastián, with city, curator, and cuisine filters and a shareable URL state.",
           url: "https://isaacvazquez.com/food-map",
           applicationCategory: "LifestyleApplication",
           programmingLanguage: ["TypeScript", "Next.js"],

@@ -2,7 +2,7 @@
 
 Operational context for agents working in this repo. Start here, then read `CLAUDE.md` for deeper implementation context.
 
-**Last updated:** 2026-09-27
+**Last updated:** 2026-10-02
 
 ---
 
@@ -67,9 +67,6 @@ Primary live routes:
 - `/now`
 - `/changelog`
 - `/search`
-- `/analytics-reference` (noindex internal GA4 event reference)
-- `/design/catalog-pages` (noindex Catalog 97 layout QA sheet)
-- `/admin`
 
 Canonical redirects:
 
@@ -100,7 +97,7 @@ Shared shell files:
 - `src/components/ConditionalLayout.tsx`
 - `src/components/catalog97/Catalog97ToolShell.tsx`
 
-Every route that is not one of the seven designed Catalog 97 pages, `/admin` included, renders inside `Catalog97ToolShell`.
+Every route that is not one of the seven designed Catalog 97 pages renders inside `Catalog97ToolShell`.
 
 Shell semantics:
 
@@ -111,7 +108,7 @@ Shell semantics:
 Catalog 97 routes:
 
 - `/`, `/portfolio`, `/writing`, `/dashboards`, `/about`, `/resume`, `/contact` render their own `Catalog97Shell` and pass through `ConditionalLayout` untouched, so `isCatalog97Route` (`src/constants/catalog97Nav.ts`) is what tells `ConditionalLayout` to stand down for them
-- every other route is wrapped in `Catalog97ToolShell`, which is `Catalog97Shell` plus an optional title band and the build-note aside, so it owns the same header, the same only `main`, and the same footer
+- every other route is wrapped in `Catalog97ToolShell`, which is `Catalog97Shell` plus the build-note aside, so it owns the same header, the same only `main`, and the same footer
 - tokens live in `src/app/catalog97.css`, scoped under `[data-c97]` and `[data-c97-surface]`, and every route is composed from Catalog 97 bands that read `--c97-*` directly
 - the Working Instrument `--home-*` tokens, its helpers, and the bridge that aliased them were deleted on 2026-09-27 when the unification closed, and `src/app/__tests__/catalog97-closeout.test.ts` keeps them from coming back
 
@@ -129,12 +126,14 @@ Footer:
 - Never import `better-sqlite3` into client code.
 - Never create real pages at `/projects`, `/work`, or `/blog`.
 - Keep 44px minimum touch targets for interactive elements.
-- Respect `prefers-reduced-motion` for Framer Motion usage.
+- Entrances are CSS transitions; JS-driven motion reads `useReducedMotion()` from `src/hooks`.
 - Shared portfolio-shell primitives must not use `transition-all`. Transition specific properties instead.
 - Portfolio-shell routes must keep the primary message and main CTA visible in the initial mobile viewport whenever the route has a hero.
 - Portfolio and writing cards should surface role, problem space, and impact in the default scan state.
 - The `/portfolio` index is rendered by `src/components/catalog97/Catalog97Portfolio.tsx`, which carries a client-side project search with tokenized AND matching over title, description, role, timeline, metrics, summary, category, and tools, plus curated, newest, alphabetical, and live-first sorting.
 - `/api/search` is still limited and mostly hardcoded. Do not describe it as comprehensive site search.
+- Validate all persisted and restored user strings (such as investment symbols with `isValidInvestmentSymbol` matching `^[A-Z0-9.\-]{1,10}$`) and construct chart tooltips using text nodes or `textContent` to prevent script execution.
+- In dictionary and keyword lookups (like `/api/search`), always use `Object.hasOwn()` or `Map` to prevent prototype property resolution for inherited keys like `constructor`.
 
 ---
 
@@ -142,14 +141,13 @@ Footer:
 
 Confirm live API routes from `src/app/api/**/route.ts`. Current routes:
 
-- `/api/auth/[...nextauth]`
 - `/api/data-revisions` (no-cache production snapshot revision and freshness ledger)
 - `/api/bay-area-transit/summary` and `/api/bay-area-transit/stations/[stationId]`
 - `/api/earthquake-pulse/summary`
 - `/api/fantasy-data`
 - `/api/formula-1/meetings/[meetingId]`
 - `/api/golf/players/[playerId]`
-- `/api/investments/quotes` and `/api/investments/data/[symbol]`
+- `/api/investments/quotes`
 - `/api/la-liga/teams/[teamId]`
 - `/api/mba-jobs` and `/api/mba-jobs/email`
 - `/api/mlb/teams/[teamId]`
@@ -161,7 +159,6 @@ Confirm live API routes from `src/app/api/**/route.ts`. Current routes:
 - `/api/rss`
 - `/api/search`
 - `/api/spacex/summary`, `/api/spacex/launches`, `/api/spacex/launches/[id]`
-- `/api/stocks` (retired on 2026-07-06, returns 410 Gone)
 - `/api/world-cup/teams/[teamId]`
 
 Most dashboard APIs read committed snapshot files at request time. The exceptions that call external services at request time are the earthquake-pulse, bay-area-transit, news-pulse, mba-jobs, and investments quotes routes; each keeps the committed snapshot (or cached data) as its fallback.
@@ -189,7 +186,7 @@ npm run dev
 - `npm run update:formula-1` reads historical OpenF1 endpoints and does not require an API key.
 - `npm run update:github-trending` reads the public GitHub Search API. GitHub Actions passes `GITHUB_TOKEN` for higher rate limits.
 - `npm run update:spacex` and `npm run update:spacex-images` read public Launch Library / SpaceDevs endpoints. An API key is not strictly required, but the anonymous tier is heavily rate limited (shared CI IPs get 429'd fast, which silently freezes the snapshot) — set the optional `SPACEDEVS_API_TOKEN` to authenticate and raise the limit. The `update-spacex.yml` workflow now also fails loudly if the snapshot goes stale (older than 4 days).
-- `npm run update:frontier-models` rebuilds `src/data/frontierModelsSnapshot.ts` from `scripts/data/frontierModels.source.ts`.
+- `npm run update:frontier-models` rebuilds `src/data/frontierModelsSnapshot.json` from `scripts/data/frontierModels.source.ts`.
 - If the investments fetch step fails on imports, install the pinned Python packages with `.venv/bin/pip install -r scripts/requirements-investments.txt`. That file is the one place the `defeatbeta-api` version is set.
 
 ### Day-to-day verification
@@ -234,10 +231,10 @@ is left out of the snapshot and the site hides the VORP toggle for that league s
 
 Current generated outputs:
 
-- `src/data/fantasyPositionData.generated.ts`
-- `src/data/fantasyAdpData.generated.ts`
-- `src/data/fantasyGameLogData.generated.ts`
-- `src/data/fantasyVorpData.generated.ts`
+- `src/data/fantasyPositionData.generated.json`
+- `src/data/fantasyAdpData.generated.json`
+- `src/data/fantasyGameLogData.generated.json`
+- `src/data/fantasyVorpData.generated.json`
 - `src/data/fantasySnapshotRevision.generated.ts`
 - `public/data/fantasy/ppr.json`
 - `public/data/fantasy/half_ppr.json`
@@ -245,11 +242,9 @@ Current generated outputs:
 - `public/data/fantasy/best-ball.json`
 - `public/data/fantasy/weekly.json` when the in-season board is published
 
-Legacy RB tiers artifact still exists, and the old RB tier route redirects to the canonical fantasy board:
+The old RB tier route redirects to the canonical fantasy board.
 
-- `public/fantasy/rb_current.json`
-
-Operational note: `.github/workflows/update-fantasy.yml` commits the real fantasy snapshot artifacts above. There is no live Netlify scheduled fantasy updater; GitHub Actions is the public update path.
+Operational note: `.github/workflows/update-fantasy.yml` commits the real fantasy snapshot artifacts above. It runs with a 45-minute job timeout budget, builds and publishes the weekly board first before the draft lanes, and restores rejected best ball output before committing. There is no live Netlify scheduled fantasy updater; GitHub Actions is the public update path.
 
 ### Investments data workflow
 
@@ -281,11 +276,7 @@ Prices refresh for every symbol on every run. The other sections rotate, 31 to 6
 
 The football dashboards read committed TypeScript snapshots at runtime. The token is only needed when rebuilding those snapshots.
 
-Full football refresh path:
-
-1. `tsx scripts/updateFootballSnapshots.ts`
-
-Use:
+To refresh both leagues, run the two league refreshes below one after the other:
 
 ```bash
 npm run update:football
@@ -314,8 +305,8 @@ npm run update:la-liga
 Inputs and outputs:
 
 - auth token: `FOOTBALL_DATA_API_TOKEN`
-- Premier League snapshot output: `src/data/premierLeagueSnapshot.ts`
-- La Liga snapshot output: `src/data/laLigaSnapshot.ts`
+- Premier League snapshot output: `src/data/premierLeagueSnapshot.json`
+- La Liga snapshot output: `src/data/laLigaSnapshot.json`
 
 Production builds consume the committed football snapshots without calling football-data.org. Refreshes run only through the explicit commands and scheduled workflows above.
 
@@ -323,20 +314,20 @@ Production builds consume the committed football snapshots without calling footb
 
 The MLB, NBA, and NFL dashboards read committed TypeScript snapshots at runtime. They refresh through dedicated GitHub Actions workflows and can also be refreshed manually.
 
-- `npm run update:mlb` writes `src/data/mlbSnapshot.ts` from the public MLB Stats API; pass `-- --league-only` to skip per-team snapshots.
-- `npm run update:nba` writes `src/data/nbaSnapshot.ts` from ESPN public NBA endpoints; pass `-- --league-only` to skip per-team snapshots.
-- `npm run update:nfl` writes `src/data/nflSnapshot.ts` from NFLverse open data; pass `-- --league-only` to skip per-team snapshots and player leaders.
-- `npm run update:golf` writes `src/data/golfSnapshot.ts` from the public ESPN golf leaderboard endpoint; a failed fetch keeps the previous snapshot. Between tournaments ESPN lists only the next event with no field posted, and the builder then re-stamps the last final board's `generatedAt` instead of failing, so the freshness gate reads a checked source through the off week.
-- `npm run update:world-cup` writes `src/data/worldCupSnapshot.ts` from ESPN's public `soccer/fifa.world` endpoints; a failed or empty fetch keeps the previous snapshot.
+- `npm run update:mlb` writes `src/data/mlbSnapshot.json` from the public MLB Stats API.
+- `npm run update:nba` writes `src/data/nbaSnapshot.json` from ESPN public NBA endpoints.
+- `npm run update:nfl` writes `src/data/nflSnapshot.json` from NFLverse open data.
+- `npm run update:golf` writes `src/data/golfSnapshot.json` from the public ESPN golf leaderboard endpoint; a failed fetch keeps the previous snapshot. Between tournaments ESPN lists only the next event with no field posted, and the builder restamps the last final board's `generatedAt` only when the tournament status is verified final and completed within 45 days; incomplete boards keep their original timestamp so freshness gates do not falsely mark in-progress results as current.
+- `npm run update:world-cup` writes `src/data/worldCupSnapshot.json` from ESPN's public `soccer/fifa.world` endpoints; a failed or empty fetch keeps the previous snapshot.
 
 ### Other data refresh workflows
 
-- `npm run update:formula-1` writes `src/data/formula1Snapshot.ts` from OpenF1 data and keeps the existing snapshot if refresh fails.
-- `npm run update:bay-area-transit` writes `src/data/bayAreaTransitSnapshot.ts` from BART's public API (stations, lines, advisories, elevator outages, real-time departures); a failed or thin fetch keeps the previous snapshot.
-- `npm run update:github-trending` writes `src/data/githubTrendingSnapshot.ts` from the GitHub Search API; use `GITHUB_TOKEN` or `GH_TOKEN` locally for higher rate limits.
-- `npm run update:tech-startups` writes `src/data/techStartupSnapshot.ts` from the hand-maintained seed in `scripts/buildTechStartupSnapshot.ts`. The dataset is editorially curated with an `asOf` date and `verified: false` flag; refresh it by editing the seed, not by polling an API.
-- `npm run update:frontier-models` writes `src/data/frontierModelsSnapshot.ts` from the curated source file in `scripts/data/`.
-- `npm run update:score-pools` writes `src/data/scorePoolsSnapshot.ts` from The Odds API (`THE_ODDS_API_KEY`) and API-Football (`API_FOOTBALL_KEY`), merged with manual entries in `scripts/data/scorePools.manual.ts` and CSV drops in `scripts/data/score-pools/`. Local manual runs can omit the tokens, but the scheduled workflow requires both and rejects sample-only output. Odds history is append-only and capped per fixture so line movement stays queryable. See `SCORE_POOLS_ENGINE.md`.
+- `npm run update:formula-1` writes `src/data/formula1Snapshot.json` from OpenF1 data and keeps the existing snapshot if refresh fails.
+- `npm run update:bay-area-transit` writes `src/data/bayAreaTransitSnapshot.json` from BART's public API (stations, lines, advisories, elevator outages, real-time departures); a failed or thin fetch keeps the previous snapshot.
+- `npm run update:github-trending` writes `src/data/githubTrendingSnapshot.json` from the GitHub Search API; use `GITHUB_TOKEN` or `GH_TOKEN` locally for higher rate limits.
+- `npm run update:tech-startups` writes `src/data/techStartupSnapshot.json` from the hand-maintained seed in `scripts/buildTechStartupSnapshot.ts`. The dataset is editorially curated with an `asOf` date and `verified: false` flag; refresh it by editing the seed, not by polling an API.
+- `npm run update:frontier-models` writes `src/data/frontierModelsSnapshot.json` from the curated source file in `scripts/data/`.
+- `npm run update:score-pools` writes `src/data/scorePoolsSnapshot.json` from The Odds API (`THE_ODDS_API_KEY`) and API-Football (`API_FOOTBALL_KEY`), merged with manual entries in `scripts/data/scorePools.manual.ts` and CSV drops in `scripts/data/score-pools/`. Local manual runs can omit the tokens, but the scheduled workflow requires both and rejects sample-only output. Odds history is append-only and capped per fixture so line movement stays queryable. See `SCORE_POOLS_ENGINE.md`.
 - `npm run update:spacex` writes `src/data/spacexSnapshot.generated.json`.
 - `npm run update:spacex-images` writes `src/data/spacexImageManifest.generated.json`, `public/data/spacex/image-reference-index.json`, and cached image files under `public/data/spacex/images/`.
 
@@ -352,7 +343,6 @@ The MLB, NBA, and NFL dashboards read committed TypeScript snapshots at runtime.
 - `postbuild` runs `scripts/generatePublicSitemap.mjs` and `scripts/patch-nft-sharp.mjs`
 - `npm run analyze` enables bundle analysis and still runs the npm `postbuild` hook
 - `npm run build:analyze` runs `ANALYZE=true next build --webpack` directly and skips npm `postbuild`
-- `npm run generate:icons` rebuilds PWA icons
 
 ---
 
@@ -397,7 +387,6 @@ The MLB, NBA, and NFL dashboards read committed TypeScript snapshots at runtime.
 | `npm run update:spacex` | Rebuild the checked-in SpaceX Mission Control data snapshot |
 | `npm run update:spacex-images` | Rebuild cached SpaceX image snapshots and manifests |
 | `npm run update:article-images` | Fetch license-safe blog cover photos per `scripts/data/articleCoverImages.ts` |
-| `npm run generate:icons` | Regenerate PWA icons |
 
 ---
 
@@ -434,22 +423,22 @@ Current behavior:
 - `update-investments.yml` runs on manual dispatch and Tuesday through Saturday at `08:30 UTC`, after the provider's dataset for the prior trading day lands (05:53 UTC on 2026-09-28), then commits refreshed compact snapshots under `public/data/investments`; raw provider responses are not committed. The run fails when fewer than 95% of symbols carry a recent price
 - `update-premier-league.yml` and `update-la-liga.yml` run every four hours during the season (August through May; skipped June and July). They share one concurrency group, since both spend the same football-data.org request budget
 - `update-fantasy.yml` runs daily at 17:17 UTC July through December and January 1 through 12, on Wednesdays January through June, and on Sundays at 11:47 UTC September through January so the weekly board is current before kickoff. It builds and commits the weekly board first, and it discards redraft files that failed their gates so a later lane never commits them
-- `update-github-trending.yml` runs on manual dispatch and daily at `07:45 UTC`, then commits `src/data/githubTrendingSnapshot.ts` when tracked repositories change
+- `update-github-trending.yml` runs on manual dispatch and daily at `07:45 UTC`, then commits `src/data/githubTrendingSnapshot.json` when tracked repositories change
 - `update-formula-1.yml` runs every three hours Thursday through Sunday and daily otherwise
 - `update-spacex.yml` runs on manual dispatch and daily at `09:25 UTC` and `21:25 UTC`, then commits SpaceX data, manifest, image reference, and cached image artifacts when they change
 - `update-mlb.yml` runs every four hours from March 20 through November 6
 - `update-nba.yml` runs every four hours from mid-October through June
-- `update-nfl.yml` runs on manual dispatch and daily September through February at `10:35 UTC`, then commits `src/data/nflSnapshot.ts` when it changes
+- `update-nfl.yml` runs on manual dispatch and daily September through February at `10:35 UTC`, then commits `src/data/nflSnapshot.json` when it changes
 - `update-golf.yml` runs every three hours Thursday through Sunday and daily otherwise
 - `update-world-cup.yml` has no schedule, since the tournament ended, and runs on manual dispatch only
 - `update-score-pools.yml` runs every six hours. Until both provider keys are set as repository secrets it skips the refresh and passes with a notice. With the keys set it rejects provider-empty or stale live-league output
-- `update-bay-area-transit.yml` runs on manual dispatch and every six hours year-round, then commits `src/data/bayAreaTransitSnapshot.ts` when it changes
-- `update-earthquake.yml` runs on manual dispatch and daily at 06:20 UTC, then commits `src/data/earthquakeSnapshot.ts` when it changes — a fallback-seed refresh only, since the summary API fetches USGS live at request time
+- `update-bay-area-transit.yml` runs on manual dispatch and every six hours year-round, then commits `src/data/bayAreaTransitSnapshot.json` when it changes
+- `update-earthquake.yml` runs on manual dispatch and daily at 06:20 UTC, then commits `src/data/earthquakeSnapshot.json` when it changes — a fallback-seed refresh only, since the summary API fetches USGS live at request time
 - `update-polling.yml` runs daily at 05:55 UTC as the fallback-seed refresh; day-to-day polling freshness comes from `netlify/functions/refresh-polling.ts`, a Netlify scheduled function that writes the VoteHub data to the `dashboard-snapshots` blob store every six hours
 - `audit-curated-data.yml` checks review dates and structural integrity every Monday across Frontier Models, Tech Startups, AI Dev Tools, Museum Log, Travel Deals, Food Map, the retirement planner's capital market assumptions, the rent versus buy tax constants, and the March Madness page. A dataset fails on age or structure, and the verified flag is a label that never fails it. A failing run writes its report into the body of the `curated-data-review` issue and ends red
 - `netlify/functions/refresh-frontier-models.ts` is a Netlify scheduled function (daily 07:30 UTC, no GitHub Action) that fact-checks the frontier-models seed against models.dev and OpenRouter, and writes the result to the `dashboard-snapshots` Netlify Blobs store; the committed seed stays the fallback. A fact listed in a model's `pinnedFacts` keeps its curated value, which is how a price read from the provider's own page survives a catalog that states it differently
 - The tech startup tracker has no workflow by design — its dataset is editorially curated, so refreshes happen by editing the seed and running `npm run update:tech-startups` locally
-- All 17 `update-*.yml` workflows commit and push through the shared `scripts/ci/commit-and-push-snapshot.sh` helper (usage: `commit-and-push-snapshot.sh <commit-message> <pathspec...>`). It regenerates and stages sitemap freshness metadata with the snapshot, sets the `github-actions[bot]` identity, exits cleanly on a no-op refresh, and pushes to `HEAD:main` with a fetch/`rebase --autostash` retry loop (default 8 attempts, `SNAPSHOT_PUSH_ATTEMPTS` override) plus capped exponential backoff to absorb concurrent snapshot-bot pushes. Behavior is asserted by `.github/workflows/__tests__/snapshot-workflows.test.ts` and `update-investments.test.ts`.
+- Ten `update-*.yml` lanes (bay-area-transit, earthquake, github-trending, golf, la-liga, mlb, nba, nfl, polling, premier-league) are callers of the reusable `refresh-snapshot.yml`, which carries the shared job body; the rest keep their own. All of them commit and push through the shared `scripts/ci/commit-and-push-snapshot.sh` helper (usage: `commit-and-push-snapshot.sh <commit-message> <pathspec...>`). It regenerates and stages sitemap freshness metadata with the snapshot, sets the `github-actions[bot]` identity, exits cleanly on a no-op refresh, and pushes to `HEAD:main` with a fetch/`rebase --autostash` retry loop (default 8 attempts, `SNAPSHOT_PUSH_ATTEMPTS` override) plus capped exponential backoff to absorb concurrent snapshot-bot pushes. Behavior is asserted by `.github/workflows/__tests__/snapshot-workflows.test.ts` and `update-investments.test.ts`.
 - `publish-data.yml` coalesces successful refreshes, builds the site in GitHub Actions, uploads it with `netlify deploy --prod --context production` (free Actions minutes on a public repo, and a build that never runs on Netlify's infrastructure does not spend its 300 monthly build minutes, which ran out on 2026-08-06), and verifies the full `/api/data-revisions` ledger before closing publication incidents. It reads the ledger from the Netlify origin, `isaacvazquez.netlify.app`, because Cloudflare challenges runner traffic on the custom domain. `scripts/ci/netlify-ignore.sh` keeps Netlify from building `main` or dependabot branches itself. Needs the `NETLIFY_AUTH_TOKEN` repository secret
 
 For public fantasy updates, GitHub Actions is the source of truth.

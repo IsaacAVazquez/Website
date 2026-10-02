@@ -1,6 +1,6 @@
 import type { CSSProperties } from "react";
 import type { RaceRating, Party } from "@/types/polling";
-import { DATE_ONLY_TIME_ZONE, DISPLAY_TIME_ZONE } from "@/lib/date-formatters";
+import { DATE_ONLY_TIME_ZONE, UPDATED_AT_FORMATTER } from "@/lib/date-formatters";
 
 // ─── Formatting ────────────────────────────────────────────────────────────────
 
@@ -16,16 +16,6 @@ const SHORT_DATE_FMT = new Intl.DateTimeFormat("en-US", {
   month: "short",
   day: "numeric",
   timeZone: DATE_ONLY_TIME_ZONE,
-});
-// generatedAt is an instant with a clock time, so it's pinned to the display
-// zone and names it, since nothing nearby states the zone.
-const UPDATED_FMT = new Intl.DateTimeFormat("en-US", {
-  month: "short",
-  day: "numeric",
-  hour: "numeric",
-  minute: "2-digit",
-  timeZone: DISPLAY_TIME_ZONE,
-  timeZoneName: "short",
 });
 // sourceAsOf, unlike generatedAt, is one of the poll endDate values (an ISO
 // date with no clock time), so it's pinned to UTC like formatDate/
@@ -84,7 +74,7 @@ export function formatUpdated(iso: string): string {
   if (Number.isNaN(d.getTime())) return "Unavailable";
   // A date-only "YYYY-MM-DD" string (sourceAsOf) is exactly 10 characters;
   // generatedAt is a full ISO instant and always longer.
-  return iso.length === 10 ? UPDATED_DATE_ONLY_FMT.format(d) : UPDATED_FMT.format(d);
+  return iso.length === 10 ? UPDATED_DATE_ONLY_FMT.format(d) : UPDATED_AT_FORMATTER.format(d);
 }
 
 export function formatMargin(margin: number): string {
@@ -108,13 +98,6 @@ export function partyColor(party: Party): string {
   if (party === "D") return DEM_COLOR;
   if (party === "R") return REP_COLOR;
   return "#64748B";
-}
-
-export function partyLabel(party: Party): string {
-  if (party === "D") return "Dem.";
-  if (party === "R") return "Rep.";
-  if (party === "I") return "Ind.";
-  return party;
 }
 
 // ─── Rating styles ─────────────────────────────────────────────────────────────
@@ -148,21 +131,6 @@ export function getRatingPillStyle(rating: RaceRating): CSSProperties {
     background: getRatingBg(rating),
     color: getRatingTextColor(rating),
     borderColor: getRatingBg(rating),
-  };
-}
-
-export function getActiveViewStyle(isActive: boolean): CSSProperties {
-  if (isActive) {
-    return {
-      background: "var(--c97-ink)",
-      color: "var(--c97-surface)",
-      borderColor: "var(--c97-ink)",
-    };
-  }
-  return {
-    borderColor: "var(--c97-rule)",
-    background: "var(--c97-field)",
-    color: "var(--c97-ink-2)",
   };
 }
 

@@ -4,6 +4,21 @@ All notable changes to this repository are documented here. Format: `YYYY-MM-DD`
 
 ---
 
+## 2026-10-02
+
+- Name the product roles and pin the job write-ups on Home ([#532](https://github.com/IsaacAVazquez/Website/pull/532)).
+- Cut about 39k lines of dead and duplicated code ([#543](https://github.com/IsaacAVazquez/Website/pull/543)).
+- Bump tsx from 4.23.1 to 4.23.15 ([#544](https://github.com/IsaacAVazquez/Website/pull/544)).
+- Bump contourpy from 1.3.3 to 1.4.0 in /scripts ([#549](https://github.com/IsaacAVazquez/Website/pull/549)).
+- Repair the 12 findings from the October 2 codebase audit ([#552](https://github.com/IsaacAVazquez/Website/pull/552)).
+- Second repo-wide over-engineering cut ([#551](https://github.com/IsaacAVazquez/Website/pull/551)).
+- Bump globals from 16.5.0 to 17.12.0 ([#546](https://github.com/IsaacAVazquez/Website/pull/546)).
+- Remove visible em and en dashes from site copy and changelog ([#553](https://github.com/IsaacAVazquez/Website/pull/553)).
+- Synchronize documentation and clean up finnhub import after PR #551 ([#554](https://github.com/IsaacAVazquez/Website/pull/554)).
+- Redesign pass across every route ([#555](https://github.com/IsaacAVazquez/Website/pull/555)).
+
+---
+
 ## 2026-10-01
 
 - Route the remaining local tools through the shared storage helper ([#533](https://github.com/IsaacAVazquez/Website/pull/533)).

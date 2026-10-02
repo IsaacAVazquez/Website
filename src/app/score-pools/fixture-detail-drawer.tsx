@@ -4,7 +4,8 @@
 // calibrated scoreline distribution, the expected-points table, context
 // flags, hand-entered odds, and what to recheck before lock.
 
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useMemo, useRef, useState } from "react";
+import { useModal } from "@/hooks/useModal";
 import {
   summarizeLineMovement,
   type ContextFlagKey,
@@ -52,8 +53,8 @@ const FLAG_LABELS: Array<{ key: ContextFlagKey; label: string; hint: string }> =
   { key: "rotationRiskAway", label: "Rotation risk (away)", hint: "Expect a weakened away eleven." },
 ];
 
-const SECTION = "bg-[var(--c97-panel)] p-4";
-const SECTION_TITLE = "text-sm font-bold text-[var(--c97-ink)]";
+const SECTION = "c97-panel";
+const SECTION_TITLE = "c97-serif c97-h3";
 
 function ScorelineHeatmap({ analysis }: { analysis: FixtureAnalysis }) {
   const grid = analysis.distribution.grid;
@@ -135,38 +136,9 @@ export function FixtureDetailDrawer({
     under: existingManual?.under !== null && existingManual ? String(existingManual.under) : "",
   });
   const [manualError, setManualError] = useState<string | null>(null);
+  const [pickError, setPickError] = useState<string | null>(null);
 
-  useEffect(() => {
-    // Remember what opened the drawer so closing it hands focus back there.
-    const opener = document.activeElement instanceof HTMLElement ? document.activeElement : null;
-    closeRef.current?.focus();
-    const onKey = (event: KeyboardEvent) => {
-      if (event.key === "Escape") {
-        onClose();
-        return;
-      }
-      if (event.key !== "Tab" || !dialogRef.current) return;
-      // aria-modal alone does not keep Tab inside the drawer, so wrap at the ends.
-      const focusable = dialogRef.current.querySelectorAll<HTMLElement>(
-        'a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), summary, [tabindex]:not([tabindex="-1"])',
-      );
-      const first = focusable[0];
-      const last = focusable[focusable.length - 1];
-      if (!first || !last) return;
-      if (event.shiftKey && document.activeElement === first) {
-        event.preventDefault();
-        last.focus();
-      } else if (!event.shiftKey && document.activeElement === last) {
-        event.preventDefault();
-        first.focus();
-      }
-    };
-    window.addEventListener("keydown", onKey);
-    return () => {
-      window.removeEventListener("keydown", onKey);
-      if (opener && opener !== document.body && document.contains(opener)) opener.focus();
-    };
-  }, [onClose]);
+  useModal(dialogRef, true, onClose, { initialFocusRef: closeRef, lockScroll: false });
 
   const movement = useMemo(() => {
     if (fixture.odds.length < 2) return null;
@@ -240,8 +212,10 @@ export function FixtureDetailDrawer({
     const home = Number.parseInt(pickHome, 10);
     const away = Number.parseInt(pickAway, 10);
     if (!Number.isInteger(home) || !Number.isInteger(away) || home < 0 || away < 0 || home > 15 || away > 15) {
+      setPickError("Both scores need whole numbers from 0 to 15.");
       return;
     }
+    setPickError(null);
     onSetPick(fixture.id, { home, away });
     setPickHome("");
     setPickAway("");
@@ -266,7 +240,7 @@ export function FixtureDetailDrawer({
         <header className="flex items-start justify-between gap-4 border-b border-[var(--c97-rule)] pb-4">
           <div>
             <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-1)" }}>{fixture.stage ?? fixture.round ?? "Fixture"}</p>
-            <h2 className="text-lg font-bold text-[var(--c97-ink)]">
+            <h2 className="c97-serif c97-h2">
               {fixture.homeTeam} vs {fixture.awayTeam}
             </h2>
             <p className="mt-1 text-xs text-[var(--c97-ink-2)]">
@@ -323,6 +297,11 @@ export function FixtureDetailDrawer({
                 </button>
               </div>
             </div>
+            {pickError ? (
+              <p role="alert" className="mt-1 text-2xs font-semibold" style={{ color: "var(--c97-negative)" }}>
+                {pickError}
+              </p>
+            ) : null}
           </section>
 
           {/* Recommendation */}
@@ -416,7 +395,10 @@ export function FixtureDetailDrawer({
             )}
 
             <details className="mt-3">
-              <summary className="cursor-pointer text-1xs font-semibold text-[var(--c97-ink)]">
+              <summary
+                className="min-h-touch cursor-pointer text-1xs font-semibold text-[var(--c97-ink)]"
+                style={{ paddingBlock: "var(--c97-sp-1)" }}
+              >
                 {existingManual ? "Edit hand-entered odds" : "Enter odds by hand"}
               </summary>
               <div className="mt-2 grid grid-cols-3 gap-2">
@@ -458,7 +440,7 @@ export function FixtureDetailDrawer({
                 two-way market.
               </span>
               {manualError ? (
-                <p className="mt-1 text-2xs font-semibold" style={{ color: "var(--c97-negative)" }}>
+                <p role="alert" className="mt-1 text-2xs font-semibold" style={{ color: "var(--c97-negative)" }}>
                   {manualError}
                 </p>
               ) : null}
@@ -557,7 +539,7 @@ export function FixtureDetailDrawer({
                     type="checkbox"
                     checked={flags[key] === true}
                     onChange={() => toggleFlag(key)}
-                    className="h-4 w-4 accent-[var(--c97-accent)]"
+                    className="c97-check"
                   />
                   <span className="text-xs font-semibold text-[var(--c97-ink)]">{label}</span>
                   <span className="sr-only">{hint}</span>

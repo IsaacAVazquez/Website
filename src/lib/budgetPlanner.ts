@@ -9,6 +9,7 @@ import type {
 } from "@/types/budget";
 import { readBrowserStorageString, writeBrowserStorageJson } from "@/lib/browserStorage";
 import { DISPLAY_TIME_ZONE } from "@/lib/date-formatters";
+import { escapeCsvValue, isRecord, prefixedId, roundTo } from "@/lib/utils";
 
 export const BUDGET_PLANNER_STORAGE_KEY = "budget_planner_months_v1";
 
@@ -23,25 +24,12 @@ const DEFAULT_BUDGET_CATEGORY_NAMES = [
 ];
 
 function roundCurrency(value: number) {
-  if (!Number.isFinite(value)) return 0;
-  return Math.round(value * 100) / 100;
+  return Number.isFinite(value) ? roundTo(value, 2) : 0;
 }
 
 function sanitizeNonNegativeAmount(value: unknown) {
   const numeric = typeof value === "number" ? value : Number(value);
   return Math.max(0, roundCurrency(numeric));
-}
-
-function createId(prefix: "cat" | "exp") {
-  if (typeof crypto !== "undefined" && typeof crypto.randomUUID === "function") {
-    return `${prefix}-${crypto.randomUUID()}`;
-  }
-
-  return `${prefix}-${Math.random().toString(36).slice(2, 10)}`;
-}
-
-function isRecord(value: unknown): value is Record<string, unknown> {
-  return !!value && typeof value === "object" && !Array.isArray(value);
 }
 
 export function isBudgetMonthKey(value: string) {
@@ -121,7 +109,7 @@ export function getDefaultExpenseDate(monthKey: string, now = new Date()) {
 
 export function createBudgetCategory(name: string, budgetedAmount = 0): BudgetCategory {
   return {
-    id: createId("cat"),
+    id: prefixedId("cat"),
     name,
     budgetedAmount: sanitizeNonNegativeAmount(budgetedAmount),
   };
@@ -129,7 +117,7 @@ export function createBudgetCategory(name: string, budgetedAmount = 0): BudgetCa
 
 export function createBudgetExpense(input: Omit<BudgetExpense, "id">): BudgetExpense {
   return {
-    id: createId("exp"),
+    id: prefixedId("exp"),
     categoryId: input.categoryId,
     amount: sanitizeNonNegativeAmount(input.amount),
     date: input.date,
@@ -157,7 +145,7 @@ function sanitizeBudgetCategory(input: unknown): BudgetCategory | null {
   const rawName = typeof input.name === "string" ? input.name.trim() : "";
 
   return {
-    id: typeof input.id === "string" && input.id ? input.id : createId("cat"),
+    id: typeof input.id === "string" && input.id ? input.id : prefixedId("cat"),
     name: rawName || "Untitled",
     budgetedAmount: sanitizeNonNegativeAmount(input.budgetedAmount),
   };
@@ -169,7 +157,7 @@ function sanitizeBudgetExpense(input: unknown): BudgetExpense | null {
   if (typeof input.date !== "string" || !/^\d{4}-\d{2}-\d{2}$/.test(input.date)) return null;
 
   return {
-    id: typeof input.id === "string" && input.id ? input.id : createId("exp"),
+    id: typeof input.id === "string" && input.id ? input.id : prefixedId("exp"),
     categoryId: input.categoryId,
     amount: sanitizeNonNegativeAmount(input.amount),
     date: input.date,
@@ -326,12 +314,6 @@ export function calculateBudgetSummary(month: BudgetMonth): BudgetSummary {
     expenseEntries,
     recentExpenses: expenseEntries.slice(0, 5),
   };
-}
-
-/** RFC 4180 quoting for a CSV field. */
-export function escapeCsvValue(value: string | number): string {
-  const raw = String(value);
-  return /[",\r\n]/.test(raw) ? `"${raw.replace(/"/g, '""')}"` : raw;
 }
 
 /**

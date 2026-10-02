@@ -1,5 +1,3 @@
-import { readFileSync } from "node:fs";
-import { resolve } from "node:path";
 import type {
   NbaConference,
   NbaFixture,
@@ -12,6 +10,10 @@ import type {
   NbaTeamProfile,
   NbaTeamSnapshot,
 } from "@/types/nba";
+import { HttpStatusError, isFiniteNumber } from "@/lib/utils";
+import { readExistingTeamSnapshots } from "@/lib/existingTeamSnapshots";
+import { retryLinear, hasClientErrorStatus, isTimeoutError } from "@/lib/fetchRetry";
+import { setTimeout as delay } from "node:timers/promises";
 
 const ESPN_BASE_URL = "https://site.api.espn.com/apis/site/v2/sports/basketball/nba";
 const ESPN_STANDINGS_URL = "https://site.api.espn.com/apis/v2/sports/basketball/nba/standings";
@@ -152,14 +154,6 @@ interface EspnTeamDetailResponse {
   team?: EspnTeam & { groups?: { id?: string | null } | null } | null;
 }
 
-interface NbaDataError extends Error {
-  status: number;
-}
-
-function createNbaDataError(message: string, status: number): NbaDataError {
-  return Object.assign(new Error(message), { status });
-}
-
 function pickStat(stats: EspnStat[] | null | undefined, ...names: string[]): EspnStat | null {
   if (!stats) return null;
   for (const name of names) {
@@ -175,7 +169,7 @@ function pickStat(stats: EspnStat[] | null | undefined, ...names: string[]): Esp
 
 function statNumber(stat: EspnStat | null, fallback = 0): number {
   if (!stat) return fallback;
-  if (typeof stat.value === "number" && Number.isFinite(stat.value)) return stat.value;
+  if (isFiniteNumber(stat.value)) return stat.value;
   if (typeof stat.value === "string" && stat.value.trim() !== "") {
     const parsed = Number(stat.value);
     if (Number.isFinite(parsed)) return parsed;
@@ -332,9 +326,9 @@ async function fetchEspnJsonOnce<T>(url: string, revalidateSeconds: number): Pro
   });
   if (!response.ok) {
     if (response.status === 404) {
-      throw createNbaDataError("Requested NBA resource was not found.", 404);
+      throw new HttpStatusError("Requested NBA resource was not found.", 404);
     }
-    throw createNbaDataError(
+    throw new HttpStatusError(
       "Unable to load NBA data from the upstream provider.",
       response.status >= 500 ? 503 : 502
     );
@@ -348,27 +342,13 @@ async function fetchEspnJsonOnce<T>(url: string, revalidateSeconds: number): Pro
  * Mirrors the pattern in src/lib/nflData.ts (`fetchTextOnce` + `fetchText`).
  */
 async function fetchEspnJson<T>(url: string, revalidateSeconds: number): Promise<T> {
-  let lastError: unknown;
-  for (let attempt = 0; attempt < 3; attempt += 1) {
-    try {
-      return await fetchEspnJsonOnce<T>(url, revalidateSeconds);
-    } catch (error) {
-      lastError = error;
-      if (error instanceof Error && (error.name === "AbortError" || error.name === "TimeoutError")) {
-        if (attempt < 2) {
-          await new Promise((resolve) => setTimeout(resolve, 1000 * (attempt + 1)));
-          continue;
-        }
-        throw createNbaDataError("NBA data provider timed out.", 504);
-      }
-      const status = (error as NbaDataError).status;
-      if (typeof status === "number" && status >= 400 && status < 500) throw error;
-      if (attempt < 2) {
-        await new Promise((resolve) => setTimeout(resolve, 1000 * (attempt + 1)));
-      }
-    }
-  }
-  throw lastError;
+  return retryLinear(
+    3,
+    () => fetchEspnJsonOnce<T>(url, revalidateSeconds),
+    (error) => !hasClientErrorStatus(error)
+  ).catch((error) => {
+    throw isTimeoutError(error) ? new HttpStatusError("NBA data provider timed out.", 504) : error;
+  });
 }
 
 function inferConference(group: EspnStandingsGroup): NbaConference {
@@ -489,7 +469,7 @@ function readByAthleteStat(
   if (columnIndex === undefined) return 0;
   const category = entry.categories?.find((c) => c.name === categoryName);
   const value = category?.values?.[columnIndex];
-  return typeof value === "number" && Number.isFinite(value) ? value : 0;
+  return isFiniteNumber(value) ? value : 0;
 }
 
 function topByAthletes(
@@ -607,29 +587,6 @@ export function preservePriorFixtures(
     recentFixtures: previous.recentFixtures,
     upcomingFixtures: previous.upcomingFixtures,
     teamSnapshots,
-  };
-}
-
-export function createEmptyNbaSnapshot(): NbaSnapshot {
-  const generatedAt = new Date().toISOString();
-  return {
-    season: "Current season",
-    generatedAt,
-    updatedAt: generatedAt.slice(0, 10),
-    sourceLabel: "ESPN",
-    sourceUrls: {
-      standings: "https://www.espn.com/nba/standings",
-      leaders: "https://www.espn.com/nba/statistics",
-      scoreboard: "https://www.espn.com/nba/scoreboard",
-    },
-    teamsByConference: { east: [], west: [] },
-    scorers: [],
-    rebounders: [],
-    assistLeaders: [],
-    recentFixtures: [],
-    upcomingFixtures: [],
-    teams: [],
-    teamSnapshots: {},
   };
 }
 
@@ -853,7 +810,7 @@ export async function getNbaTeamSnapshot(
   seasonEndYear: number = resolveNbaSeasonEndYear()
 ): Promise<NbaTeamSnapshot> {
   if (!isValidNbaTeamId(teamId)) {
-    throw createNbaDataError("Invalid NBA team id.", 400);
+    throw new HttpStatusError("Invalid NBA team id.", 400);
   }
   // ESPN returns one season type per request, and with none named it serves
   // the current one, which is the preseason through most of October.
@@ -903,50 +860,26 @@ export async function getNbaTeamSnapshot(
 
 // ESPN's hidden API has no documented rate limit, but stay polite.
 const TEAM_FETCH_DELAY_MS = 1_500;
-const NBA_SNAPSHOT_PATH = "src/data/nbaSnapshot.ts";
+const NBA_SNAPSHOT_PATH = "src/data/nbaSnapshot.json";
 
-function delay(ms: number) {
-  return new Promise<void>((resolve) => setTimeout(resolve, ms));
-}
-
-function readExistingTeamSnapshots(filePath: string): Record<string, NbaTeamSnapshot> {
-  try {
-    const fullPath = resolve(process.cwd(), filePath);
-    const content = readFileSync(fullPath, "utf8");
-    const match = content.match(/=\s*(\{[\s\S]*\})\s*;?\s*$/);
-    if (!match) return {};
-    const parsed = JSON.parse(match[1]);
-    return parsed.teamSnapshots ?? {};
-  } catch {
-    return {};
-  }
-}
-
-export async function buildNbaSnapshot(options?: { skipTeamSnapshots?: boolean }): Promise<NbaSnapshot> {
+export async function buildNbaSnapshot(): Promise<NbaSnapshot> {
   const summary = await getNbaSummary();
   const generatedAt = new Date().toISOString();
-  let teamSnapshots: Record<string, NbaTeamSnapshot>;
-
-  if (options?.skipTeamSnapshots) {
-    teamSnapshots = readExistingTeamSnapshots(NBA_SNAPSHOT_PATH);
-    console.log(`  Preserved ${Object.keys(teamSnapshots).length} existing team snapshots.`);
-  } else {
-    const conferenceById = new Map<string, NbaConference>();
-    for (const team of [...summary.teamsByConference.east, ...summary.teamsByConference.west]) {
-      conferenceById.set(team.id, team.conference);
-    }
-    // Start from the prior snapshots so a per-team failure preserves that
-    // team's previous data instead of dropping it from the snapshot.
-    teamSnapshots = { ...readExistingTeamSnapshots(NBA_SNAPSHOT_PATH) };
-    for (const team of summary.teams) {
-      await delay(TEAM_FETCH_DELAY_MS);
-      const conference = conferenceById.get(team.id) ?? "east";
-      try {
-        const snap = await getNbaTeamSnapshot(team.id, conference, summary.seasonEndYear);
-        teamSnapshots[team.id] = { ...snap, generatedAt };
-      } catch (err) {
-        console.warn(`  Skipping team ${team.id} (${team.shortName}): ${(err as Error).message} — keeping previous snapshot if any.`);
-      }
+  const conferenceById = new Map<string, NbaConference>();
+  for (const team of [...summary.teamsByConference.east, ...summary.teamsByConference.west]) {
+    conferenceById.set(team.id, team.conference);
+  }
+  // Start from the prior snapshots so a per-team failure preserves that
+  // team's previous data instead of dropping it from the snapshot.
+  const teamSnapshots = { ...readExistingTeamSnapshots<NbaTeamSnapshot>(NBA_SNAPSHOT_PATH) };
+  for (const team of summary.teams) {
+    await delay(TEAM_FETCH_DELAY_MS);
+    const conference = conferenceById.get(team.id) ?? "east";
+    try {
+      const snap = await getNbaTeamSnapshot(team.id, conference, summary.seasonEndYear);
+      teamSnapshots[team.id] = { ...snap, generatedAt };
+    } catch (err) {
+      console.warn(`  Skipping team ${team.id} (${team.shortName}): ${(err as Error).message} — keeping previous snapshot if any.`);
     }
   }
 

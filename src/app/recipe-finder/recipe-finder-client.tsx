@@ -11,6 +11,7 @@ import { ChefHat, Plus, Search, Sparkles, Trash2, X } from "lucide-react";
 import { Catalog97ProjectHero } from "@/components/catalog97/Catalog97ProjectHero";
 import { PROJECT_PRESS } from "@/constants/projectPress";
 import { RECIPES } from "@/data/recipesSnapshot";
+import { readValidatedBrowserStorage, writeBrowserStorageJson } from "@/lib/browserStorage";
 import {
   formatTotalTime,
   getIngredientCatalog,
@@ -82,24 +83,15 @@ const QUICK_PICKS = [
 ];
 
 function loadPantry(): string[] {
-  if (typeof window === "undefined") return [];
-  try {
-    const raw = window.localStorage.getItem(PANTRY_STORAGE_KEY);
-    if (!raw) return [];
-    const parsed = JSON.parse(raw);
-    return Array.isArray(parsed) ? parsed.filter((v): v is string => typeof v === "string") : [];
-  } catch {
-    return [];
-  }
+  return readValidatedBrowserStorage<string[]>(
+    PANTRY_STORAGE_KEY,
+    (parsed) => (Array.isArray(parsed) ? parsed.filter((v): v is string => typeof v === "string") : []),
+    () => [],
+  ).value;
 }
 
 function savePantry(items: string[]) {
-  if (typeof window === "undefined") return;
-  try {
-    window.localStorage.setItem(PANTRY_STORAGE_KEY, JSON.stringify(items));
-  } catch {
-    // Ignore quota errors. Local persistence is a nice-to-have, not a requirement.
-  }
+  writeBrowserStorageJson(PANTRY_STORAGE_KEY, items);
 }
 
 function totalMinutes(recipe: Recipe): number {
@@ -282,7 +274,7 @@ export function RecipeFinderClient() {
 
           <div
             className="c97-segmented"
-            role="tablist"
+            role="group"
             aria-label="Recipe views"
             style={{ marginTop: "var(--c97-sp-4)" }}
           >
@@ -293,9 +285,8 @@ export function RecipeFinderClient() {
                   key={id}
                   type="button"
                   onClick={() => selectView(id)}
-                  role="tab"
-                  aria-selected={isActive}
-                  className="min-h-[44px] text-sm font-semibold"
+                  aria-pressed={isActive}
+                  className="min-h-[44px]"
                 >
                   {id === "all" && <Search size={16} aria-hidden="true" />}
                   {id === "quick" && <Sparkles size={16} aria-hidden="true" />}
@@ -310,7 +301,7 @@ export function RecipeFinderClient() {
 
           <div
             className="c97-segmented"
-            role="tablist"
+            role="group"
             aria-label="Meal time"
             style={{ marginTop: "var(--c97-sp-3)" }}
           >
@@ -318,10 +309,9 @@ export function RecipeFinderClient() {
               <button
                 key={option.value}
                 type="button"
-                role="tab"
-                aria-selected={category === option.value}
+                aria-pressed={category === option.value}
                 onClick={() => setCategory(option.value)}
-                className="min-h-[44px] text-sm font-semibold"
+                className="min-h-[44px]"
               >
                 {option.label}
               </button>

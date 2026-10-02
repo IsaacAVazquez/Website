@@ -1,7 +1,7 @@
 "use client";
 
-import { startTransition, useEffect, useMemo, useState } from "react";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useEffect, useMemo, useState } from "react";
+import { useSearchParams } from "next/navigation";
 import { CalendarDays, Clock, Flag, Medal, X } from "lucide-react";
 import {
   CrestAvatar,
@@ -38,6 +38,9 @@ import { bracketTree } from "./bracketTree";
 import { WorldCupBracket } from "./WorldCupBracket";
 import "./world-cup.css";
 import { DATE_ONLY_TIME_ZONE, DISPLAY_TIME_ZONE } from "@/lib/date-formatters";
+import { useRouteSync } from "@/hooks/useRouteSync";
+import { useCachedSnapshot } from "@/hooks/useCachedSnapshot";
+import { groupBy } from "@/lib/utils";
 
 interface WorldCupClientProps {
   initialState: WorldCupRouteState;
@@ -127,29 +130,12 @@ function KickoffCountdown({ startDate }: { startDate: string }) {
   );
 }
 
-async function fetchWorldCupTeamSnapshot(
-  teamId: string,
-  signal: AbortSignal
-): Promise<WorldCupTeamSnapshot> {
-  const response = await fetch(`/api/world-cup/teams/${teamId}`, { signal });
-  const payload = (await response.json()) as WorldCupTeamSnapshot & {
-    error?: string;
-  };
-  if (!response.ok) {
-    throw new Error(payload.error || "Unable to load team snapshot.");
-  }
-  return payload;
-}
-
 export function WorldCupClient({
   initialState,
   summary,
   initialTeamSnapshot,
 }: WorldCupClientProps) {
-  const router = useRouter();
   const searchParams = useSearchParams();
-  const currentQuery = searchParams.toString();
-  const currentHref = `${WORLD_CUP_ROUTE}${currentQuery ? `?${currentQuery}` : ""}`;
 
   const { tournament, groups, knockout, scorers, teamOptions } = summary;
   const teamOptionById = useMemo(
@@ -171,81 +157,27 @@ export function WorldCupClient({
     ? teamOptionById.get(selectedTeamId) ?? null
     : null;
 
-  const [teamSnapshots, setTeamSnapshots] = useState<
-    Record<string, WorldCupTeamSnapshot>
-  >(() =>
-    selectedTeamId && initialTeamSnapshot
-      ? { [selectedTeamId]: initialTeamSnapshot }
-      : {}
+  const {
+    snapshot: teamSnapshot,
+    isLoading: isTeamSnapshotLoading,
+    error: teamSnapshotError,
+  } = useCachedSnapshot<WorldCupTeamSnapshot>(
+    "/api/world-cup/teams",
+    selectedTeamId,
+    { id: selectedTeamId, snapshot: initialTeamSnapshot },
+    "Unable to load team snapshot."
   );
-  const [loadingTeamId, setLoadingTeamId] = useState<string | null>(null);
-  const [teamSnapshotError, setTeamSnapshotError] = useState<string | null>(null);
-  const teamSnapshot = selectedTeamId
-    ? teamSnapshots[selectedTeamId] ?? null
-    : null;
-  const isTeamSnapshotLoading = loadingTeamId === selectedTeamId;
 
   const desiredHref = buildWorldCupHref(
     { view: routeState.view, team: selectedTeamId },
     searchParams
   );
 
-  useEffect(() => {
-    if (currentHref === desiredHref) return;
-    startTransition(() => {
-      router.replace(desiredHref, { scroll: false });
-    });
-  }, [currentHref, desiredHref, router]);
-
-  useEffect(() => {
-    if (!selectedTeamId) {
-      // eslint-disable-next-line react-hooks/set-state-in-effect -- Reset request flags when no team is selected or the snapshot is already cached
-      setLoadingTeamId(null);
-      setTeamSnapshotError(null);
-      return;
-    }
-    if (teamSnapshots[selectedTeamId]) {
-      setLoadingTeamId(null);
-      setTeamSnapshotError(null);
-      return;
-    }
-    const controller = new AbortController();
-    let cancelled = false;
-    setLoadingTeamId(selectedTeamId);
-    setTeamSnapshotError(null);
-    fetchWorldCupTeamSnapshot(selectedTeamId, controller.signal)
-      .then((snapshot) => {
-        if (cancelled) return;
-        setTeamSnapshots((current) =>
-          current[selectedTeamId]
-            ? current
-            : { ...current, [selectedTeamId]: snapshot }
-        );
-      })
-      .catch((error: Error) => {
-        if (!cancelled && error.name !== "AbortError") {
-          setTeamSnapshotError(error.message || "Unable to load team snapshot.");
-        }
-      })
-      .finally(() => {
-        if (!cancelled) {
-          setLoadingTeamId((current) =>
-            current === selectedTeamId ? null : current
-          );
-        }
-      });
-    return () => {
-      cancelled = true;
-      controller.abort();
-    };
-  }, [selectedTeamId, teamSnapshots]);
+  const pushHref = useRouteSync(WORLD_CUP_ROUTE, desiredHref);
 
   function navigate(nextState: WorldCupRouteState) {
     const href = buildWorldCupHref(nextState, searchParams);
-    if (href === currentHref) return;
-    startTransition(() => {
-      router.push(href, { scroll: false });
-    });
+    pushHref(href);
   }
 
   function handleViewChange(view: WorldCupView) {
@@ -276,13 +208,7 @@ export function WorldCupClient({
   );
 
   const venuesByCountry = useMemo(() => {
-    const map = new Map<string, typeof tournament.venues>();
-    for (const venue of tournament.venues) {
-      const list = map.get(venue.country);
-      if (list) list.push(venue);
-      else map.set(venue.country, [venue]);
-    }
-    return Array.from(map.entries());
+    return Array.from(groupBy(tournament.venues, (venue) => venue.country).entries());
   }, [tournament]);
 
   // The final fixture and the champion it settled, straight from the bracket
@@ -448,7 +374,7 @@ export function WorldCupClient({
 
       <section className="c97-band c97-sheet" data-c97-surface="paper" data-seam="torn">
         <div className="c97-shell">
-          <div className="flex items-center justify-between">
+          <div className="flex flex-wrap items-center justify-between" style={{ gap: "var(--c97-sp-2)" }}>
             <h2 className="c97-poster-sm">Host venues</h2>
             <span className="c97-meta">
               {tournament.venues.length} stadiums · {venuesByCountry.length} nations
@@ -760,7 +686,7 @@ function KnockoutView({
     return (
       <EmptyPanel
         title="The bracket builds after the group stage"
-        description="This World Cup's knockout stage opens with a Round of 32: the top two from every group plus the eight best third-placed teams. From there it runs through the Round of 16, quarterfinals, semifinals, and the final."
+        description="This World Cup's knockout stage opens with a Round of 32, made up of the top two from every group plus the eight best third-placed teams. From there it runs through the Round of 16, quarterfinals, semifinals, and the final."
       />
     );
   }
@@ -934,7 +860,7 @@ function TeamDetailCard({
             onClick={onClear}
             aria-label="Clear selected team"
             className="c97-btn-ghost"
-            style={{ flexShrink: 0, minHeight: 44, minWidth: 44, padding: 0 }}
+            style={{ flexShrink: 0, minHeight: 44, minWidth: 44, justifyContent: "center" }}
           >
             <X className="h-4 w-4" aria-hidden="true" />
           </button>
@@ -1038,8 +964,7 @@ function TeamDetailCard({
             className="c97-prose"
             style={{ marginTop: "var(--c97-sp-2)", borderTop: "1px solid var(--c97-rule)", paddingTop: "var(--c97-sp-3)" }}
           >
-            Standings and fixtures for {option.name} appear here once the tournament reached
-            that stage.
+            This snapshot has no standings or fixtures for {option.name}.
           </p>
         )}
       </div>

@@ -2,11 +2,11 @@
 
 Current component map for the live application.
 
-**Last updated:** 2026-09-29
+**Last updated:** 2026-10-02
 
 > Seven routes (`/`, `/portfolio`, `/writing`, `/dashboards`, `/about`, `/resume`,
 > `/contact`) render Catalog 97 composition roots from `src/components/catalog97/`.
-> Every other route, `/admin` included, renders inside `Catalog97ToolShell`, so the
+> Every other route renders inside `Catalog97ToolShell`, so the
 > whole site shares one header and one footer. The `*Instrument` composition
 > roots that used to own those seven were deleted when Catalog 97 replaced them, as
 > were the older single-purpose homepage components this doc once listed. The
@@ -24,12 +24,11 @@ Current component map for the live application.
 | Component | File | Role |
 |----------|------|------|
 | `ConditionalLayout` | `src/components/ConditionalLayout.tsx` | Passes the seven designed routes through untouched and wraps every other route in `Catalog97ToolShell` |
-| `Catalog97ToolShell` | `src/components/catalog97/Catalog97ToolShell.tsx` | `Catalog97Shell` plus an optional title band and the build-note aside, used by every route outside the seven designed pages |
-| `Providers` | `src/components/Providers.tsx` | Theme provider wrapper |
+| `Catalog97ToolShell` | `src/components/catalog97/Catalog97ToolShell.tsx` | `Catalog97Shell` plus the build-note aside, used by every route outside the seven designed pages |
+| `Providers` | `src/components/Providers.tsx` | Mounts the `next-themes` provider and the page-level listeners below |
 | `FragmentLinkNavigation` | `src/components/navigation/FragmentLinkNavigation.tsx` | Mounted once by `Providers` and renders nothing. Follows same-page links (`href="#section"`) from the page's current address, because Firefox can hold a link's address from before a page rewrote its own URL and then load the old URL as a new document |
 | `FragmentScrollOnLoad` | `src/components/navigation/FragmentScrollOnLoad.tsx` | Mounted once by `Providers` and renders nothing. Lands a fresh load on the element its URL fragment names and holds it there while the page settles, because a browser looks the fragment up once, as it finishes parsing, and React reveals a streamed route after that. It only scrolls a page that sits where a landing left it, so a page the visitor has scrolled stays put, and it leaves a reload or a trip through history to the browser |
-| `ThemeProvider` | `src/components/ThemeProvider.tsx` | `next-themes` wrapper |
-| `RouteErrorBoundary` | `src/components/RouteErrorBoundary.tsx` | Shared error fallback, one Catalog 97 paper band, re-exported by per-route `error.tsx` files |
+| `RouteErrorBoundary` | `src/components/RouteErrorBoundary.tsx` | Shared error fallback, one Catalog 97 paper band, rendered by the root `src/app/error.tsx` |
 
 ### Homepage, work, writing, dashboards, about, résumé, contact
 
@@ -64,6 +63,14 @@ page's only `<main>`, header, and footer.
 | `StructuredData` | `src/components/StructuredData.tsx` | JSON-LD injection |
 | `AIStructuredData` | `src/components/AIStructuredData.tsx` | AI-oriented structured data helper |
 | `AuthorBio` | `src/components/ui/AuthorBio.tsx` | Article author block in Catalog 97: square stone portrait, name at the h3 step, one paragraph, microlink contacts |
+
+### Site search
+
+| Component | File | Role |
+|----------|------|------|
+| `SearchInterface` | `src/components/search/SearchInterface.tsx` | Main search client page with debounced query input, abortable API requests, and results list |
+| `HeaderSearchPanel` | `src/components/search/HeaderSearchPanel.tsx` | Slide-out quick search modal launched from `Catalog97Header` |
+| `SearchResults` | `src/components/search/SearchResults.tsx` | Formatted search result list rendering title, category, and snippets |
 
 ### Fantasy football
 
@@ -144,15 +151,15 @@ Most of these are snapshot-driven dashboards that share one architecture
 |------|---------------|------|
 | News Pulse | `src/app/news-pulse/*`, `src/lib/news-pulse-utils.ts` | News dashboard route and API-backed article summaries |
 | SpaceX Mission Control | `src/components/spacex/*`, `src/app/spacex-mission-control/*` | SpaceX launch dashboard, mission cards, detail panels, patch and vehicle visuals |
-| Polling Aggregator | `src/app/polling-aggregator/*`, `src/data/pollingSnapshot.ts` | Snapshot-backed polling dashboard and deep-linkable route state |
+| Polling Aggregator | `src/app/polling-aggregator/*`, `src/data/pollingSnapshot.json` | Snapshot-backed polling dashboard and deep-linkable route state |
 | Budget Planner | `src/app/fintech-tools/budget-planner/*`, `src/hooks/useBudgetPlanner.ts` | Client-side budget planning tool |
 | Interchange IQ | `src/app/fintech-tools/interchange-iq/*` | Client-side interchange fee analyzer |
 | MBA Role Tracker | `src/app/mba-internship-notifications/*`, `src/constants/mba-companies.ts`, `src/lib/mba-job-matching.ts`, `src/types/mba-jobs.ts` | Client shell (`MBAJobsClient`) plus deep-link state helper (`mba-jobs-state.ts`) backed by `/api/mba-jobs`; uses `src/app/api/mba-jobs/email` for Resend digests |
-| World Cup Pulse | `src/app/world-cup-2026/*`, `src/data/worldCupSnapshot.ts`, `src/lib/worldCupSnapshot.ts` | Snapshot-backed 2026 FIFA World Cup hub reusing `src/components/football/*` |
-| Bay Area Transit Pulse | `src/app/bay-area-transit/*`, `src/data/bayAreaTransitSnapshot.ts`, `src/lib/bayAreaTransitSnapshot.ts` | Snapshot-backed BART dashboard with lines, station departure boards, and advisories |
-| Tech Startup Tracker | `src/app/tech-startup-tracker/*`, `src/data/techStartupSnapshot.ts`, `src/lib/techStartups.ts` | Editorially curated startup funding tracker with deep-linkable sector/stage state |
+| World Cup Pulse | `src/app/world-cup-2026/*`, `src/data/worldCupSnapshot.json`, `src/lib/worldCupSnapshot.ts` | Snapshot-backed 2026 FIFA World Cup hub reusing `src/components/football/*` |
+| Bay Area Transit Pulse | `src/app/bay-area-transit/*`, `src/data/bayAreaTransitSnapshot.json`, `src/lib/bayAreaTransitSnapshot.ts` | Snapshot-backed BART dashboard with lines, station departure boards, and advisories |
+| Tech Startup Tracker | `src/app/tech-startup-tracker/*`, `src/data/techStartupSnapshot.json`, `src/lib/techStartups.ts` | Editorially curated startup funding tracker with deep-linkable sector/stage state |
 | Travel Planner | `src/app/travel/*`, `src/hooks/useTravelPlanner.ts` | Browser-persisted trip planner client (`travel-planner-client.tsx`) for itineraries and journaling |
-| Golf | `src/app/golf/*`, `src/data/golfSnapshot.ts` | Snapshot-backed PGA Tour leaderboard dashboard |
+| Golf | `src/app/golf/*`, `src/data/golfSnapshot.json` | Snapshot-backed PGA Tour leaderboard dashboard |
 
 ---
 
@@ -162,7 +169,7 @@ Core UI primitives live under `src/components/ui/`.
 
 The ones still in use are `ModernButton` (admin and the investments forms), `ThemeToggle` and `DeferredThemeToggle` (the header), `AuthorBio` (articles), and `ServerIcons` (inline SVG icons for server components). Most UI is composed from the `catalog97.css` classes, so a new block usually wants a `.c97-panel`, `.c97-chip`, or `.c97-btn` before it wants a component.
 
-The editorial components under `src/components/editorial/` are `EditorialPillButton`, `StatusPanel`, and `UtilityStrip` (all used by Job Search) and `InstrumentTape` (Investments, the football results tape, and the SpaceX launch tape). Every component reads the `--c97-*` tokens, since the Working Instrument tokens were deleted on 2026-09-27.
+The editorial components under `src/components/editorial/` are `StatusPanel` (used by Job Search) and `InstrumentTape` (Investments, the football results tape, and the SpaceX launch tape). Every component reads the `--c97-*` tokens, since the Working Instrument tokens were deleted on 2026-09-27.
 
 Styling guidance for these lives in `STYLING.md`.
 
@@ -231,5 +238,6 @@ Current component-oriented tests include:
 - `src/components/catalog97/__tests__/Catalog97ToolShell.test.tsx`
 - tests under `src/components/ui/__tests__/`
 - investments component tests under `src/components/investments/__tests__/`
+- search component tests under `src/components/search/__tests__/`
 
 See `TESTING.md` for the broader strategy.

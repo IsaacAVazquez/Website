@@ -2,17 +2,16 @@
 
 Current API route inventory for the app.
 
-**Last updated:** 2026-09-30
+**Last updated:** 2026-10-02
 
 ---
 
 ## Route Inventory
 
-### Auth
+### System and freshness ledger
 
 | Route | Methods | Notes |
 |------|---------|-------|
-| `/api/auth/[...nextauth]` | GET, POST | NextAuth credential auth for `/admin` |
 | `/api/data-revisions` | GET | No-cache revision and freshness ledger used to verify production publication |
 
 ### Fantasy football
@@ -26,8 +25,6 @@ Current API route inventory for the app.
 | Route | Methods | Notes |
 |------|---------|-------|
 | `/api/investments/quotes` | GET | Quote proxy for investments UI |
-| `/api/investments/data/[symbol]` | GET | Section-based curated research payloads |
-| `/api/stocks` | GET | Retired on 2026-07-06. Returns 410 Gone and points callers to `/api/investments/quotes` |
 
 ### Sports dashboards
 
@@ -61,7 +58,7 @@ Current API route inventory for the app.
 
 | Route | Methods | Notes |
 |------|---------|-------|
-| `/api/newsletter/subscribe` | POST | Validates a public email signup and creates an opted-in Resend contact, optionally inside `RESEND_NEWSLETTER_SEGMENT_ID` |
+| `/api/newsletter/subscribe` | POST | Validates public email signup and JSON object shape, creating an opted-in Resend contact, optionally inside `RESEND_NEWSLETTER_SEGMENT_ID` |
 | `/api/news-pulse` | GET | News Pulse article summary data |
 | `/api/spacex/summary` | GET | SpaceX Mission Control summary payload |
 | `/api/spacex/launches` | GET | SpaceX launch list payload |
@@ -75,9 +72,10 @@ Current API route inventory for the app.
 
 ### Search limitations
 
-`/api/search` is currently a small, mostly hardcoded index. It should be documented honestly:
+`/api/search` indexes blog posts, the case studies in `src/constants/caseStudies.ts` (categorized through `toolCategories.ts`), and a short table of pages with no case study. It should be documented honestly:
 
 - useful for the existing UI
+- guards against prototype property resolution (e.g. `constructor` query returns no corrupted answer) via `Object.hasOwn`
 - not comprehensive
 - not a reliable source of truth for all writing or project content
 
@@ -88,7 +86,6 @@ The current investments implementation is **not** a single generic `/api/investm
 The live pattern is:
 
 - `/api/investments/quotes`
-- `/api/investments/data/[symbol]`
 
 Sports dashboard routes are separate from the investments surface:
 
@@ -111,15 +108,6 @@ The live fantasy API surface is intentionally narrow:
 - scheduled fantasy refreshes happen through `.github/workflows/update-fantasy.yml`
 - there are no live `/api/fantasy-pros-*`, `/api/data-manager`, `/api/data-metadata`, `/api/sample-data`, or `/api/scheduled-update` routes in the current app tree
 
-### Admin auth
-
-Admin access is backed by NextAuth credentials configured in:
-
-- `src/lib/auth.ts`
-- `/api/auth/[...nextauth]`
-
----
-
 ## Common Response Shapes
 
 There is no single strict global response contract across every route, but most handlers return JSON objects with some combination of:
@@ -141,11 +129,9 @@ Route-specific payloads vary and should be checked in the route file itself befo
 
 Use these as the actual source of truth:
 
-- `src/app/api/auth/[...nextauth]/route.ts`
 - `src/app/api/data-revisions/route.ts`
 - `src/app/api/fantasy-data/route.ts`
 - `src/app/api/investments/quotes/route.ts`
-- `src/app/api/investments/data/[symbol]/route.ts`
 - `src/app/api/golf/players/[playerId]/route.ts`
 - `src/app/api/formula-1/meetings/[meetingId]/route.ts`
 - `src/app/api/premier-league/teams/[teamId]/route.ts`
@@ -162,7 +148,6 @@ Use these as the actual source of truth:
 - `src/app/api/spacex/summary/route.ts`
 - `src/app/api/spacex/launches/route.ts`
 - `src/app/api/spacex/launches/[id]/route.ts`
-- `src/app/api/stocks/route.ts` (retired; returns 410 Gone)
 - `src/app/api/mba-jobs/route.ts`
 - `src/app/api/mba-jobs/email/route.ts`
 - `src/app/api/rss/route.ts`

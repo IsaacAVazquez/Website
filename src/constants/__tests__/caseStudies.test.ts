@@ -1,7 +1,6 @@
 import {
   getHomepageFeaturedCaseStudies,
   getPortfolioProjects,
-  getProjectCardOutcome,
 } from "../caseStudies";
 
 const expectedPortfolioSlugs = [
@@ -106,13 +105,4 @@ describe("caseStudies helpers", () => {
     ]);
   });
 
-  it("uses user-facing impact for portfolio card outcomes", () => {
-    const project = getPortfolioProjects().find(
-      (p) => p.slug === "investment-analytics-platform"
-    );
-
-    expect(project).toBeDefined();
-    // getProjectCardOutcome leads with the overview impact line.
-    expect(getProjectCardOutcome(project!)).toBe(project!.overview.impact);
-  });
 });

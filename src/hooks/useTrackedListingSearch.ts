@@ -11,12 +11,7 @@ import { trackListingSearch } from "@/lib/analytics";
  *
  * Drop-in: call it alongside the component's own search state.
  */
-export function useTrackedListingSearch(
-  listingId: string,
-  term: string,
-  resultsCount?: number,
-  delay = 700,
-) {
+export function useTrackedListingSearch(term: string, resultsCount?: number) {
   const lastReported = useRef<string>("");
   const resultsRef = useRef<number | undefined>(resultsCount);
 
@@ -36,12 +31,12 @@ export function useTrackedListingSearch(
       if (trimmed === lastReported.current) return;
       lastReported.current = trimmed;
       trackListingSearch({
-        listing_id: listingId,
+        listing_id: "site_search",
         search_term: trimmed,
         results_count: resultsRef.current,
       });
-    }, delay);
+    }, 700);
 
     return () => window.clearTimeout(handle);
-  }, [listingId, term, delay]);
+  }, [term]);
 }

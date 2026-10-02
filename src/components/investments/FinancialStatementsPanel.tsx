@@ -76,9 +76,10 @@ function StatementTable({
 
   if (isLoading) {
     return (
-      <div className="space-y-2 py-2">
+      <div className="space-y-2 py-2" role="status" aria-busy="true">
+        <span className="sr-only">Loading financial statement</span>
         {Array.from({ length: 6 }).map((_, i) => (
-          <div key={i} className="h-7 bg-[var(--c97-rule)] animate-pulse" />
+          <span key={i} className="c97-skeleton" style={{ height: 28 }} />
         ))}
       </div>
     );
@@ -98,7 +99,7 @@ function StatementTable({
   const periodCols = table.columns.slice(1, 9); // cap at 8 periods
 
   return (
-    <div className="overflow-x-auto -mx-1">
+    <div className="overflow-x-auto -mx-1" role="region" tabIndex={0} aria-label="Financial statement table">
       <table className="w-full text-xs min-w-[480px]" aria-label={`${section.replace("_", " ")} statement`}>
         <thead>
           <tr className="border-b border-[var(--c97-rule)]">
@@ -153,12 +154,12 @@ export function FinancialStatementsPanel({ symbol }: Props) {
     <TerminalPanel padding="sm">
       {/* Statement type tabs + period toggle */}
       <div className="flex items-center justify-between gap-2 mb-4 flex-wrap">
-        <div className="flex gap-1 overflow-x-auto pb-1" role="tablist" aria-label="Financial statements">
+        <div className="flex gap-1 overflow-x-auto pb-1" role="group" aria-label="Financial statement">
           {TABS.map(({ key, label }) => (
             <button
               key={key}
-              role="tab"
-              aria-selected={activeTab === key}
+              type="button"
+              aria-pressed={activeTab === key}
               onClick={() => setActiveTab(key)}
               className={`px-3 py-1.5 text-xs font-medium transition whitespace-nowrap min-h-touch ${
                 activeTab === key
@@ -176,6 +177,8 @@ export function FinancialStatementsPanel({ symbol }: Props) {
           {(["quarterly", "annual"] as Period[]).map((p) => (
             <button
               key={p}
+              type="button"
+              aria-pressed={period === p}
               onClick={() => setPeriod(p)}
               className={`px-3 py-1.5 text-xs font-medium transition capitalize min-h-touch ${
                 period === p
