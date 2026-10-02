@@ -8,7 +8,7 @@ Current API route inventory for the app.
 
 ## Route Inventory
 
-### Auth
+### System and freshness ledger
 
 | Route | Methods | Notes |
 |------|---------|-------|
@@ -129,7 +129,6 @@ Route-specific payloads vary and should be checked in the route file itself befo
 
 Use these as the actual source of truth:
 
-- `src/app/api/auth/[...nextauth]/route.ts`
 - `src/app/api/data-revisions/route.ts`
 - `src/app/api/fantasy-data/route.ts`
 - `src/app/api/investments/quotes/route.ts`

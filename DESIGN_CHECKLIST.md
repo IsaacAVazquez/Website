@@ -80,8 +80,8 @@ across `STYLING.md`, `CLAUDE.md`, and `SNAPSHOT_DRIVEN_DASHBOARDS.md`.
 
 ## Motion
 
-- [ ] Framer Motion entrances call `useReducedMotion()` (or wrap in `<MotionConfig reducedMotion="user">`).
-      The global CSS `prefers-reduced-motion` guard does not stop JS/rAF-driven Framer animation.
+- [ ] Entrances are CSS transitions; JS-driven motion reads `useReducedMotion()` from `src/hooks`.
+      The global CSS `prefers-reduced-motion` guard does not stop JS/rAF-driven animation.
       Shared primitives especially, since fixing one covers many routes.
 - [ ] CSS animations/transitions have a `prefers-reduced-motion` fallback (or use `motion-safe:`).
 - [ ] No `transition-all` in shared primitives. Transition only the properties that change
@@ -137,7 +137,7 @@ See "Printing on paper" in `STYLING.md` for the measurements behind these.
 ## Print shop layout
 
 See `STYLING.md` for the method. Before merging a change to one of the seven designed routes or a project
-route (the ones in `src/constants/projectPress.ts`); the utility pages, Score Pools, and `/admin` use the
+route (the ones in `src/constants/projectPress.ts`); the utility pages and Score Pools use the
 bands and vocabulary without the poster hero:
 
 - [ ] The page prints in two lead inks (blue, saffron, vermilion, green, teal, pink, with peach as a
@@ -162,5 +162,4 @@ bands and vocabulary without the poster hero:
 - [ ] Injected/`dangerouslySetInnerHTML` markup renders inside `.c97-article` (`catalog97.css`), which
       styles `a/ul/ol/code/pre/blockquote/table/img` in the palette. Don't leave links default-blue and
       don't hand-roll a second prose class.
-- [ ] `/arcade` keeps its deliberate retro CRT palette, and `/admin` is a plain Catalog 97 migration
-      with no print shop redesign, but the accessibility, responsive, and motion rules apply to both.
+- [ ] `/arcade` keeps its deliberate retro CRT palette, but the accessibility, responsive, and motion rules apply to it.

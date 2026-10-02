@@ -27,7 +27,7 @@ The site is portfolio-first. `Writing` is live and promoted in the global header
 | Layer | Technology |
 |-------|------------|
 | Framework | Next.js 16 App Router |
-| UI | React 19, Tailwind CSS v4, Framer Motion |
+| UI | React 19, Tailwind CSS v4 |
 | Charts | D3 |
 | Theme | `next-themes` |
 | Content | `gray-matter`, `remark`, `remark-gfm`, `remark-rehype`, `rehype-sanitize`, `rehype-stringify` |

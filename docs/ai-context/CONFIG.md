@@ -40,7 +40,7 @@ Important current behavior:
 - `serverExternalPackages = ['better-sqlite3', 'sharp']`
 - tracing excludes heavy image and investments data assets from server bundles
 - image remote patterns include Unsplash and Cloudinary; `dangerouslyAllowSVG` is on with an image-scoped CSP (`script-src 'none'; sandbox`) for remote crest/logo SVGs
-- `optimizePackageImports` includes `lucide-react` and `framer-motion`; `experimental.scrollRestoration` is enabled
+- `optimizePackageImports` includes `lucide-react` and `d3`; `experimental.scrollRestoration` is enabled
 
 If you update routes or package behavior, this file is one of the first places to check.
 

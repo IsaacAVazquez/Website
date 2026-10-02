@@ -190,7 +190,7 @@ second lane that skips both:
 1. A **Netlify scheduled function** (`netlify/functions/refresh-frontier-models.ts`,
    in-code `config.schedule`, 30s execution cap) fetches the upstream sources.
 2. It writes the refreshed snapshot to the **`dashboard-snapshots` Netlify
-   Blobs store** via `src/lib/snapshotBlobStore.ts` (strong consistency,
+   Blobs store** via `src/lib/netlifyBlobs.ts` (strong consistency,
    `{ savedAt, value }` envelope). Reads are fail-soft and return `null`
    off-Netlify, on any store error, and after a 3 second timeout. **Writes
    throw**, so a broken refresh is a failed function run in the Netlify logs.

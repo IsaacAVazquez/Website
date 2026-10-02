@@ -85,7 +85,7 @@ Current route inventory and page ownership for the live app.
 | `/fantasy-football/weekly` | `src/app/fantasy-football/weekly/page.tsx` | In-season weekly FLEX and QB consensus board; reports a not-published state until Week 1 |
 | `/fantasy-football/waivers` | `src/app/fantasy-football/waivers/page.tsx` | In-season waiver targets (rank percentile minus rostered percentage) read from the same weekly snapshot through the shared weekly client |
 
-### Utility/admin
+### Utility
 
 | Route | File | Notes |
 |------|------|-------|

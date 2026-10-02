@@ -45,7 +45,7 @@ The cache purge function and its `CRON_SECRET` were removed on 2026-09-28, since
 
 - The curated UI reads from `public/data/investments`
 - Rebuild snapshots with `npm run update:investments`
-- `/api/investments/data/[symbol]` serves curated snapshot data, not a full arbitrary-ticker backend. There is no `/api/investments/index` route; the index is the static file `public/data/investments/index.json`
+- Curated snapshot data is served directly from static files under `public/data/investments/{symbol}/snapshot.json`. There is no `/api/investments/index` or `/api/investments/data` route; the index is the static file `public/data/investments/index.json`
 
 ### Search results look incomplete
 

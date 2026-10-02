@@ -11,7 +11,6 @@
 import { readFileSync } from "fs";
 import path from "path";
 import type { StockQuote } from "@/types/investment";
-import { isValidSymbol } from "@/lib/investmentSymbol";
 export { isValidSymbol } from "@/lib/investmentSymbol";
 import {
   getInvestmentsAssetOrigin,
