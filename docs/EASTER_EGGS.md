@@ -34,7 +34,7 @@ Most of them mount from the header, which is on every route. `src/components/cat
 
 Hovering anywhere in the portrait's section on the home page or /about shows a 150px circle of a painted version of the headshot that follows the pointer. Clicking the portrait hands it to the next painter, from Monet (the default), to Van Gogh, to Seurat, to Hopper, to Lichtenstein, and back to Monet. The choice lives on the element, so a reload or a navigation resets it to Monet, and each painting downloads the first time someone hovers it. It only runs where hover is real, since the CSS is gated on `(hover: hover)` and the script returns early without attaching the click either. With reduced motion the reveal still works and only the 0.3s fade goes instant.
 
-The paintings are rendered ahead of time from `public/images/headshot-home.webp` into `public/images/home/headshot-<painter>.webp`, Monet by `scripts/paint_impressionist.py` and the other four by `scripts/paint_headshot.py`. Adding a painter means a render, an entry in `PAINTERS` in `Catalog97Monet.tsx`, and a `[data-c97-painter]` rule in `catalog97.css`.
+The paintings are rendered ahead of time from `public/images/headshot-home.webp` into `public/images/home/headshot-<painter>.webp`, Monet by `scripts/paint_impressionist.py` and the other four by `scripts/paint_headshot.py`. Both renderers were removed on 2026-10-01 and can be restored from git history (commit fa4849574). Adding a painter means a render, an entry in `PAINTERS` in `Catalog97Monet.tsx`, and a `[data-c97-painter]` rule in `catalog97.css`.
 
 ## Monet name by time of day
 
@@ -42,7 +42,7 @@ Hovering or tabbing to "Isaac Vazquez" in the header turns the letters into a wi
 
 ## Painted collage plates
 
-The three dashboard plates in the home collage each reveal a painted version under a hover circle, with the launch pad (to /spacex-mission-control) in Van Gogh, the transit plate (to /bay-area-transit) in Seurat, and the matchday plate (to /premier-league) in Hopper. The painters are set in `Catalog97Home.tsx` and the images come from `scripts/paint_plates.py`. The plates are still links, since the painted layer never takes the pointer, and they don't cycle painters. Hover only.
+The three dashboard plates in the home collage each reveal a painted version under a hover circle, with the launch pad (to /spacex-mission-control) in Van Gogh, the transit plate (to /bay-area-transit) in Seurat, and the matchday plate (to /premier-league) in Hopper. The painters are set in `Catalog97Home.tsx` and the images came from `scripts/paint_plates.py`, which was removed on 2026-10-01 and is in git history (commit fa4849574). The plates are still links, since the painted layer never takes the pointer, and they don't cycle painters. Hover only.
 
 ## Konami code
 
