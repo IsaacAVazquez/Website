@@ -181,5 +181,3 @@ export async function getInvestmentsIndex(
 
   return data;
 }
-
-}
