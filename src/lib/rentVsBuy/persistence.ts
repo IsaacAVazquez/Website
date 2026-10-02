@@ -1,15 +1,11 @@
 import { writeBrowserStorageJson } from "@/lib/browserStorage";
 import { createDefaultInput } from "./defaults";
 import type { FilingStatus, RentVsBuyInput } from "./types";
-import { isRecord, boundedNumber } from "@/lib/utils";
+import { isRecord, boundedNumber, enumValue } from "@/lib/utils";
 
 export const RENT_VS_BUY_STORAGE_KEY = "rent_vs_buy_input_v1";
 
 const FILING_STATUSES = ["single", "married"] as const satisfies readonly FilingStatus[];
-
-function enumValue<T extends string>(value: unknown, allowed: readonly T[], fallback: T): T {
-  return typeof value === "string" && allowed.includes(value as T) ? (value as T) : fallback;
-}
 
 /** Repair a persisted input, accepting only known runtime-safe fields. */
 export function decodeRentVsBuyInput(value: unknown): RentVsBuyInput {

@@ -15,7 +15,7 @@ import {
 } from "@/lib/browserStorage";
 import { isLocalDateKey } from "@/lib/date-formatters";
 import { useLocalStoragePersistenceStatus } from "@/hooks/useLocalStorageString";
-import { isRecord } from "@/lib/utils";
+import { isFiniteNumber, isRecord } from "@/lib/utils";
 
 const STORAGE_KEY = "portfolio_holdings";
 const SNAPSHOTS_KEY = "portfolio_snapshots";
@@ -57,10 +57,6 @@ function formatFallbackWarning(
 }
 
 // ─── localStorage helpers ────────────────────────────────────────────────────
-
-function isFiniteNumber(value: unknown): value is number {
-  return typeof value === "number" && Number.isFinite(value);
-}
 
 function decodeHolding(value: unknown): PortfolioHolding | undefined {
   if (!isRecord(value)) return undefined;
