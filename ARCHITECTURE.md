@@ -172,7 +172,7 @@ All API handlers live under `src/app/api/`.
 
 Important groups:
 
-- auth: `/api/auth/[...nextauth]`
+- system and freshness ledger: `/api/data-revisions`
 - fantasy football: `/api/fantasy-data`
 - investments: `/api/investments/quotes`
 - football: `/api/premier-league/teams/[teamId]`, `/api/la-liga/teams/[teamId]`

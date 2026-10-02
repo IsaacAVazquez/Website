@@ -298,7 +298,7 @@ The root layout provides the baseline for every page:
 
 Runs automatically via the `postbuild` script (`npm run generate:sitemap && node scripts/patch-nft-sharp.mjs`). Generates `public/sitemap.xml`.
 
-`scripts/generatePublicSitemap.mjs` writes `PUBLIC_SITEMAP_ENTRIES` from `src/lib/sitemap.js`. That module walks every `page.tsx` under `src/app` and lists it unless the page opts out, either with `noIndex: true` (or `index: false`) in its metadata or by rendering nothing but a redirect. `UNLISTED_ROUTES` covers a page whose metadata cannot say so (`/admin`), and dynamic segments come from their own builders. Run `npm run generate:sitemap` after any change to post dates, because the consistency test compares the committed file.
+`scripts/generatePublicSitemap.mjs` writes `PUBLIC_SITEMAP_ENTRIES` from `src/lib/sitemap.js`. That module walks every `page.tsx` under `src/app` and lists it unless the page opts out, either with `noIndex: true` (or `index: false`) in its metadata or by rendering nothing but a redirect. `UNLISTED_ROUTES` covers pages whose metadata cannot say so, and dynamic segments come from their own builders. Run `npm run generate:sitemap` after any change to post dates, because the consistency test compares the committed file.
 
 ### Output fields
 

@@ -69,7 +69,7 @@ Nothing may use a gap, margin, or band padding that is off the spacing ladder, a
 
 ## Print shop layout
 
-The seven designed routes and the 33 project routes are laid out as risograph print runs, the method the designed routes took on 2026-09-23 and the project routes took between 2026-09-25 and 2026-09-27. The utility pages, Score Pools, and `/admin` use the same bands and vocabulary without the poster hero. The primitives live at the end of `src/app/catalog97.css` under "Print shop layout", and Home (`Catalog97Home.tsx`) is the reference build.
+The seven designed routes and the 33 project routes are laid out as risograph print runs, the method the designed routes took on 2026-09-23 and the project routes took between 2026-09-25 and 2026-09-27. The utility pages and Score Pools use the same bands and vocabulary without the poster hero. The primitives live at the end of `src/app/catalog97.css` under "Print shop layout", and Home (`Catalog97Home.tsx`) is the reference build.
 
 A page is a print run. It picks two lead inks from blue, saffron, vermilion, green, teal, and pink, with peach counting as a vermilion tint, and everything else is paper, bone, chocolate, espresso, or black. Green, teal, and pink joined on 2026-09-25 so the project routes could each print their own pair, and their measured ratios sit beside each `ink-*` block in `catalog97.css`. The inks stay unlabelled, since a swatch legend naming them read as decoration talking about itself and was removed on 2026-09-23. The printed plates in `public/images/home` carry their own inks and don't count against the page's two.
 
@@ -168,7 +168,7 @@ Both disclaimers and the assumptions on `/investments` have to reach the page, a
 
 - The global `:focus-visible` ring takes the surface accent, and `catalog97.css` draws its own square ring on links, buttons, fields, and summaries.
 - Buttons and links keep a 44px minimum target.
-- Reduced motion is enforced in CSS, and Framer Motion components also call `useReducedMotion()`, since the CSS guard does not stop JS-driven animation. Never fade a page or section in from opacity 0.
+- Entrances are CSS transitions; JS-driven motion reads `useReducedMotion()` from `src/hooks`, since the CSS guard does not stop JS-driven animation. Never fade a page or section in from opacity 0.
 - `Catalog97Shell` owns the only `main` landmark, so routes never add their own, and every route exposes one page-level `h1`.
 - Party, line, and status colours used as small text fail 4.5:1, so the colour goes on a swatch and the text prints in ink.
 

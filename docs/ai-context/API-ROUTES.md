@@ -10,7 +10,6 @@ Current API route map.
 
 | Endpoint | Methods | Purpose |
 |---------|---------|---------|
-| `/api/auth/[...nextauth]` | GET, POST | Admin auth |
 | `/api/data-revisions` | GET | No-cache revision and freshness ledger used to verify production publication |
 | `/api/bay-area-transit/stations/[stationId]` | GET | BART per-station departure board, refreshed at request time with the committed snapshot as fallback |
 | `/api/bay-area-transit/summary` | GET | BART lines, advisories, and system status, refreshed at request time with the committed snapshot as fallback |
@@ -18,7 +17,6 @@ Current API route map.
 | `/api/fantasy-data` | GET | Snapshot-backed fantasy data route reading `public/data/fantasy/*.json` |
 | `/api/formula-1/meetings/[meetingId]` | GET | Snapshot-backed Formula 1 meeting detail payload |
 | `/api/golf/players/[playerId]` | GET | Snapshot-backed golf player detail payload |
-| `/api/investments/data/[symbol]` | GET | Section-based investment research payloads |
 | `/api/investments/quotes` | GET | Quote proxy for the investments UI |
 | `/api/la-liga/teams/[teamId]` | GET | Snapshot-backed team drilldown payload for `/la-liga` |
 | `/api/mba-jobs` | GET | Live MBA-role aggregator across Greenhouse/Lever/Ashby/direct-HTML boards for `/mba-internship-notifications` |

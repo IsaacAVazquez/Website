@@ -140,7 +140,6 @@ Footer:
 
 Confirm live API routes from `src/app/api/**/route.ts`. Current routes:
 
-- `/api/auth/[...nextauth]`
 - `/api/data-revisions` (no-cache production snapshot revision and freshness ledger)
 - `/api/bay-area-transit/summary` and `/api/bay-area-transit/stations/[stationId]`
 - `/api/earthquake-pulse/summary`
