@@ -321,9 +321,7 @@ function readBayAreaTransitLastmod() {
 // Routable pages that are deliberately unlisted. A page that opts out through
 // its own metadata does not need a row here; this is only for pages whose
 // metadata cannot say it.
-const UNLISTED_ROUTES = {
-  "/admin": "NextAuth-gated admin surface",
-};
+const UNLISTED_ROUTES = {};
 
 /**
  * Every `page.tsx` under `src/app`, as the URL path it serves. Route groups

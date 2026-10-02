@@ -6,7 +6,7 @@ Current component map for the live application.
 
 > Seven routes (`/`, `/portfolio`, `/writing`, `/dashboards`, `/about`, `/resume`,
 > `/contact`) render Catalog 97 composition roots from `src/components/catalog97/`.
-> Every other route, `/admin` included, renders inside `Catalog97ToolShell`, so the
+> Every other route renders inside `Catalog97ToolShell`, so the
 > whole site shares one header and one footer. The `*Instrument` composition
 > roots that used to own those seven were deleted when Catalog 97 replaced them, as
 > were the older single-purpose homepage components this doc once listed. The

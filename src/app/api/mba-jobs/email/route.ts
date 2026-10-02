@@ -1,6 +1,5 @@
 import { createHash, timingSafeEqual } from "node:crypto";
 import { NextRequest, NextResponse } from "next/server";
-import { Resend } from "resend";
 import { emailDigestRateLimiter, getClientIp, rateLimitResponse } from "@/lib/rateLimit";
 import { logger } from "@/lib/logger";
 import { DISPLAY_TIME_ZONE } from "@/lib/date-formatters";
@@ -385,26 +384,36 @@ export async function POST(request: NextRequest) {
   // the response to mention that recipient, so keep `to` for downstream use.
   const to = recipients[0];
 
-  const resend = new Resend(apiKey);
   const subject =
     jobs.length === 1
       ? `1 new MBA role`
       : `${jobs.length} MBA roles — digest`;
 
   try {
-    const result = await resend.emails.send({
-      from: "MBA Tracker <no-reply@isaacvazquez.com>",
-      to: recipients,
-      subject,
-      html: buildEmailHtml(jobs, to),
+    const response = await fetch("https://api.resend.com/emails", {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${apiKey}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        from: "MBA Tracker <no-reply@isaacvazquez.com>",
+        to: recipients,
+        subject,
+        html: buildEmailHtml(jobs, to),
+      }),
     });
+    const result = (await response.json().catch(() => ({}))) as {
+      id?: string;
+      message?: string;
+    };
 
-    if (result.error) {
-      logger.error("MBA jobs email provider error", result.error.message);
+    if (!response.ok) {
+      logger.error("MBA jobs email provider error", result.message);
       return json({ error: "Email provider failed to send digest." }, { status: 502 });
     }
 
-    return json({ ok: true, id: result.data?.id });
+    return json({ ok: true, id: result.id });
   } catch (err) {
     logger.error("MBA jobs email send failed", (err as Error)?.message ?? err);
     return json({ error: "Failed to send email digest." }, { status: 500 });

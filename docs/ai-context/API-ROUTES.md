@@ -49,7 +49,7 @@ Current API route map.
 - the league, golf, and World Cup `/summary` routes and `/api/investments/index` were removed; those pages read their summaries on the server, so only the drilldown routes remain
 - `/api/fantasy-data` reads generated static snapshots; there are no live `/api/fantasy-pros-*`, `/api/data-manager`, `/api/data-metadata`, `/api/sample-data`, or `/api/scheduled-update` routes
 - `/api/mba-jobs` fetches live from public job boards at request time with a 30-minute `s-maxage` and 8s per-target timeout; `/api/mba-jobs/email` requires `RESEND_API_KEY` and `MBA_DIGEST_ALLOWED_RECIPIENTS`
-- auth is still NextAuth credentials-based
+- there is no auth route; `/api/auth/[...nextauth]` was removed on 2026-10-02
 
 ---
 
@@ -73,16 +73,6 @@ That means:
 - good for simple UI demos and current navigation/search flows
 - not comprehensive for all writing or project content
 - should be described as limited until the route is expanded
-
----
-
-## Auth Detail
-
-`/api/auth/[...nextauth]` is configured from `src/lib/auth.ts`.
-
-- credentials provider
-- admin login uses env vars
-- sign-in and error page both point at `/admin`
 
 ---
 

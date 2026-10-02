@@ -135,4 +135,4 @@ Hovering a halftone field splits it into blue, vermilion, and saffron dots sligh
 
 ## Close calls that aren't on the list
 
-Text selection prints in the second ink (`catalog97.css`), which is ordinary styling. The 404 page is a themed misprint sheet with a one-time feed-in animation, but that's the page's normal design. `/admin` and `/score-pools/settings` are unlinked and noindexed, but they're utility pages with nothing playful in them. There's nothing playful in robots.txt, llms.txt, or security.txt.
+Text selection prints in the second ink (`catalog97.css`), which is ordinary styling. The 404 page is a themed misprint sheet with a one-time feed-in animation, but that's the page's normal design. `/score-pools/settings` is unlinked and noindexed, but it's a utility page with nothing playful in it. There's nothing playful in robots.txt, llms.txt, or security.txt.

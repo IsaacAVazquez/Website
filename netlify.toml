@@ -7,7 +7,7 @@
   
 [build.environment]
   SECRETS_SCAN_OMIT_PATHS = ".netlify/deploy/v1/blobs/**,.netlify/edge-functions/**,.netlify/functions-internal/**,.next/**"
-  SECRETS_SCAN_OMIT_KEYS = "ADMIN_USERNAME,ADMIN_PASSWORD,NEXTAUTH_SECRET,CRON_SECRET"
+  SECRETS_SCAN_OMIT_KEYS = "CRON_SECRET"
 
 [functions]
   directory = "netlify/functions"
@@ -20,10 +20,6 @@
   package = "@netlify/plugin-nextjs"
 
 # Environment variables - set these in Netlify dashboard:
-# NEXTAUTH_URL = "https://your-domain.com"
-# NEXTAUTH_SECRET = "your-nextauth-secret-here"
-# ADMIN_USERNAME = "your-admin-username"
-# ADMIN_PASSWORD = "your-admin-password"
 # Fantasy snapshot refreshes run in GitHub Actions from public rankings pages.
 # The deployed Netlify runtime does not need FANTASYPROS_API_KEY.
 # CRON_SECRET = "your-cron-secret-here"

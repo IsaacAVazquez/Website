@@ -174,13 +174,7 @@ These commands use public data sources and do not require auth tokens. Golf, For
 
 ## Auth And Admin
 
-- `/admin` uses credential auth from `src/lib/auth.ts`
-- env vars:
-  - `NEXTAUTH_SECRET`
-  - `ADMIN_USERNAME`
-  - `ADMIN_PASSWORD`
-
-There is no live `/admin/analytics` page in the current route tree.
+There is no authenticated surface. The `/admin` page and NextAuth were removed on 2026-10-02.
 
 ---
 

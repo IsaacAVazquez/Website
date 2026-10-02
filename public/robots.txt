@@ -5,7 +5,6 @@ User-agent: *
 Disallow: /api/
 # ...but the public RSS feed lives under /api and should stay crawlable
 Allow: /api/rss
-Disallow: /admin
 Disallow: /_next/
 # ...but rendering assets must stay fetchable or crawlers index unstyled,
 # unhydrated pages (longest-match Allow beats the /_next/ Disallow).
@@ -26,7 +25,6 @@ User-agent: PerplexityBot
 User-agent: Perplexity-User
 Disallow: /api/
 Allow: /api/rss
-Disallow: /admin
 Disallow: /_next/
 Allow: /_next/static/
 Allow: /_next/image
@@ -38,7 +36,6 @@ Allow: /
 User-agent: Google-Extended
 Disallow: /api/
 Allow: /api/rss
-Disallow: /admin
 Disallow: /_next/
 Allow: /_next/static/
 Allow: /_next/image
