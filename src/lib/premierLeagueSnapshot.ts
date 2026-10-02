@@ -4,20 +4,10 @@ import type {
   PremierLeagueSummary,
   PremierLeagueTeamSnapshot,
 } from "@/types/premier-league";
+import { HttpStatusError } from "@/lib/utils";
 
 const SUMMARY_FIXTURE_LIMIT = 8;
 const TEAM_FIXTURE_LIMIT = 5;
-
-interface PremierLeagueSnapshotError extends Error {
-  status: number;
-}
-
-function createPremierLeagueSnapshotError(
-  message: string,
-  status: number
-): PremierLeagueSnapshotError {
-  return Object.assign(new Error(message), { status });
-}
 
 function limitFixtures<T>(fixtures: T[], limit: number): T[] {
   return fixtures.slice(0, limit);
@@ -154,7 +144,7 @@ export async function getPremierLeagueTeamSnapshot(
 ): Promise<PremierLeagueTeamSnapshot> {
   const snapshot = premierLeagueSnapshot.teamSnapshots[teamId];
   if (!snapshot) {
-    throw createPremierLeagueSnapshotError("Premier League team snapshot was not found.", 404);
+    throw new HttpStatusError("Premier League team snapshot was not found.", 404);
   }
 
   return clampPremierLeagueTeamSnapshot(snapshot);

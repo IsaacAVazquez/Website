@@ -34,13 +34,9 @@ import {
   type FootballDataCompetitionTeamsResponse,
   type FootballDataScorerEntry,
   type FootballDataScorersResponse,
-  type FootballDataError,
 } from "@/lib/footballData";
+import { HttpStatusError } from "@/lib/utils";
 const PREMIER_LEAGUE_CODE = "PL";
-function createPremierLeagueDataError(message: string, status: number): FootballDataError {
-  return Object.assign(new Error(message), { status });
-}
-
 function fetchFootballDataJson<T>(path: string, revalidateSeconds: number): Promise<T> {
   return fetchLeagueJson<T>("Premier League", path, revalidateSeconds);
 }
@@ -532,7 +528,7 @@ export async function buildPremierLeagueLiveSummary(
   }
 
   if (refreshedSections === 0) {
-    throw createPremierLeagueDataError(
+    throw new HttpStatusError(
       "Premier League live refresh produced no usable sections.",
       503
     );
@@ -545,7 +541,7 @@ export async function getPremierLeagueTeamSnapshot(
   teamId: string
 ): Promise<PremierLeagueTeamSnapshot> {
   if (!isValidPremierLeagueTeamId(teamId)) {
-    throw createPremierLeagueDataError("Invalid Premier League team id.", 400);
+    throw new HttpStatusError("Invalid Premier League team id.", 400);
   }
 
   const teamResponse = await fetchFootballDataJson<FootballDataTeam>(

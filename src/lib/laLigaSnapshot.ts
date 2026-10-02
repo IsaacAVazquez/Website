@@ -1,17 +1,10 @@
 import { laLigaSnapshot } from "@/data/laLigaSnapshot";
 import { buildLaLigaLiveSummary } from "@/lib/laLigaData";
 import type { LaLigaSummarySnapshot, LaLigaTeamSnapshot } from "@/types/la-liga";
+import { HttpStatusError } from "@/lib/utils";
 
 const SUMMARY_FIXTURE_LIMIT = 8;
 const TEAM_FIXTURE_LIMIT = 5;
-
-interface LaLigaSnapshotError extends Error {
-  status: number;
-}
-
-function createLaLigaSnapshotError(message: string, status: number): LaLigaSnapshotError {
-  return Object.assign(new Error(message), { status });
-}
 
 function limitFixtures<T>(fixtures: T[], limit: number): T[] {
   return fixtures.slice(0, limit);
@@ -140,7 +133,7 @@ export async function getLaLigaSummarySnapshot(
 export async function getLaLigaTeamSnapshot(teamId: string): Promise<LaLigaTeamSnapshot> {
   const snapshot = laLigaSnapshot.teamSnapshots[teamId];
   if (!snapshot) {
-    throw createLaLigaSnapshotError("La Liga team snapshot was not found.", 404);
+    throw new HttpStatusError("La Liga team snapshot was not found.", 404);
   }
   return clampLaLigaTeamSnapshot(snapshot);
 }

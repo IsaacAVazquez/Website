@@ -1,3 +1,4 @@
+import { HttpStatusError } from "@/lib/utils";
 /**
  * Shared football-data.org v4 wire types, request constants, and the paced
  * fetch both leagues use.
@@ -122,10 +123,6 @@ export interface FootballDataScorersResponse {
   scorers?: FootballDataScorerEntry[] | null;
 }
 
-export interface FootballDataError extends Error {
-  status: number;
-}
-
 // Both leagues have 20 clubs. A shorter table is a partial response.
 const FULL_TABLE_SIZE = 20;
 
@@ -142,10 +139,6 @@ let blockedUntil = 0;
 export function resetFootballDataPacingForTests(): void {
   requestTimes = [];
   blockedUntil = 0;
-}
-
-function createFootballDataError(message: string, status: number): FootballDataError {
-  return Object.assign(new Error(message), { status });
 }
 
 function wait(ms: number) {
@@ -189,7 +182,7 @@ async function fetchFootballDataJsonOnce<T>(
 ): Promise<T> {
   const token = process.env.FOOTBALL_DATA_API_TOKEN?.trim();
   if (!token) {
-    throw createFootballDataError(`${league} data source is not configured.`, 503);
+    throw new HttpStatusError(`${league} data source is not configured.`, 503);
   }
 
   await waitForRequestSlot();
@@ -214,17 +207,17 @@ async function fetchFootballDataJsonOnce<T>(
 
   if (!response.ok) {
     if (response.status === 401 || response.status === 403) {
-      throw createFootballDataError(
+      throw new HttpStatusError(
         `${league} data provider rejected the configured API token.`,
         503
       );
     }
 
     if (response.status === 404) {
-      throw createFootballDataError(`Requested ${league} resource was not found.`, 404);
+      throw new HttpStatusError(`Requested ${league} resource was not found.`, 404);
     }
 
-    throw createFootballDataError(
+    throw new HttpStatusError(
       `Unable to load ${league} data from the upstream provider (HTTP ${response.status}).`,
       response.status >= 500 ? 503 : 502
     );
@@ -256,9 +249,9 @@ export async function fetchFootballDataJson<T>(
           await wait(1000 * (attempt + 1));
           continue;
         }
-        throw createFootballDataError(`${league} data provider timed out.`, 504);
+        throw new HttpStatusError(`${league} data provider timed out.`, 504);
       }
-      const status = (error as FootballDataError).status;
+      const status = (error as HttpStatusError).status;
       if (typeof status === "number" && status >= 400 && status < 500) throw error;
       if (attempt < 2) {
         await wait(1000 * (attempt + 1));

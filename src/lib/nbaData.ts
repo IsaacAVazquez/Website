@@ -12,6 +12,7 @@ import type {
   NbaTeamProfile,
   NbaTeamSnapshot,
 } from "@/types/nba";
+import { HttpStatusError } from "@/lib/utils";
 
 const ESPN_BASE_URL = "https://site.api.espn.com/apis/site/v2/sports/basketball/nba";
 const ESPN_STANDINGS_URL = "https://site.api.espn.com/apis/v2/sports/basketball/nba/standings";
@@ -150,14 +151,6 @@ interface EspnTeamScheduleResponse {
 
 interface EspnTeamDetailResponse {
   team?: EspnTeam & { groups?: { id?: string | null } | null } | null;
-}
-
-interface NbaDataError extends Error {
-  status: number;
-}
-
-function createNbaDataError(message: string, status: number): NbaDataError {
-  return Object.assign(new Error(message), { status });
 }
 
 function pickStat(stats: EspnStat[] | null | undefined, ...names: string[]): EspnStat | null {
@@ -332,9 +325,9 @@ async function fetchEspnJsonOnce<T>(url: string, revalidateSeconds: number): Pro
   });
   if (!response.ok) {
     if (response.status === 404) {
-      throw createNbaDataError("Requested NBA resource was not found.", 404);
+      throw new HttpStatusError("Requested NBA resource was not found.", 404);
     }
-    throw createNbaDataError(
+    throw new HttpStatusError(
       "Unable to load NBA data from the upstream provider.",
       response.status >= 500 ? 503 : 502
     );
@@ -359,9 +352,9 @@ async function fetchEspnJson<T>(url: string, revalidateSeconds: number): Promise
           await new Promise((resolve) => setTimeout(resolve, 1000 * (attempt + 1)));
           continue;
         }
-        throw createNbaDataError("NBA data provider timed out.", 504);
+        throw new HttpStatusError("NBA data provider timed out.", 504);
       }
-      const status = (error as NbaDataError).status;
+      const status = (error as HttpStatusError).status;
       if (typeof status === "number" && status >= 400 && status < 500) throw error;
       if (attempt < 2) {
         await new Promise((resolve) => setTimeout(resolve, 1000 * (attempt + 1)));
@@ -830,7 +823,7 @@ export async function getNbaTeamSnapshot(
   seasonEndYear: number = resolveNbaSeasonEndYear()
 ): Promise<NbaTeamSnapshot> {
   if (!isValidNbaTeamId(teamId)) {
-    throw createNbaDataError("Invalid NBA team id.", 400);
+    throw new HttpStatusError("Invalid NBA team id.", 400);
   }
   // ESPN returns one season type per request, and with none named it serves
   // the current one, which is the preseason through most of October.

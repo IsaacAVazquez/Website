@@ -4,17 +4,7 @@ import type {
   TransitStationBoard,
   TransitSummary,
 } from "@/types/bayAreaTransit";
-
-interface TransitSnapshotError extends Error {
-  status: number;
-}
-
-function createTransitSnapshotError(
-  message: string,
-  status: number
-): TransitSnapshotError {
-  return Object.assign(new Error(message), { status });
-}
+import { HttpStatusError } from "@/lib/utils";
 
 export function createEmptyTransitSummary(): TransitSummary {
   return {
@@ -142,7 +132,7 @@ export async function getTransitStationBoard(
   );
 
   if (!station) {
-    throw createTransitSnapshotError(
+    throw new HttpStatusError(
       "Transit station board was not found.",
       404
     );

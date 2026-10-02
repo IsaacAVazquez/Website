@@ -1,16 +1,9 @@
 import { nbaSnapshot } from "@/data/nbaSnapshot";
 import type { NbaSummarySnapshot, NbaTeamSnapshot } from "@/types/nba";
+import { HttpStatusError } from "@/lib/utils";
 
 const SUMMARY_FIXTURE_LIMIT = 10;
 const TEAM_FIXTURE_LIMIT = 5;
-
-interface NbaSnapshotError extends Error {
-  status: number;
-}
-
-function createNbaSnapshotError(message: string, status: number): NbaSnapshotError {
-  return Object.assign(new Error(message), { status });
-}
 
 function limitFixtures<T>(fixtures: T[], limit: number): T[] {
   return fixtures.slice(0, limit);
@@ -63,7 +56,7 @@ export async function getNbaSummarySnapshot(): Promise<NbaSummarySnapshot> {
 export async function getNbaTeamSnapshot(teamId: string): Promise<NbaTeamSnapshot> {
   const snapshot = nbaSnapshot.teamSnapshots[teamId];
   if (!snapshot) {
-    throw createNbaSnapshotError("NBA team snapshot was not found.", 404);
+    throw new HttpStatusError("NBA team snapshot was not found.", 404);
   }
   return clampNbaTeamSnapshot(snapshot);
 }

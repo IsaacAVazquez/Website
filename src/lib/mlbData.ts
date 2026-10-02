@@ -14,6 +14,7 @@ import type {
   MlbTeamProfile,
   MlbTeamSnapshot,
 } from "@/types/mlb";
+import { HttpStatusError } from "@/lib/utils";
 
 const MLB_STATS_BASE_URL = "https://statsapi.mlb.com/api/v1";
 const MLB_LOGO_BASE_URL = "https://www.mlbstatic.com/team-logos";
@@ -28,14 +29,6 @@ const UPCOMING_GAME_LIMIT = 10;
 const TEAM_GAME_LIMIT = 5;
 const RECENT_WINDOW_DAYS = 10;
 const UPCOMING_WINDOW_DAYS = 10;
-
-interface MlbDataError extends Error {
-  status: number;
-}
-
-function createMlbDataError(message: string, status: number): MlbDataError {
-  return Object.assign(new Error(message), { status });
-}
 
 interface StatsApiTeam {
   id?: number | null;
@@ -379,9 +372,9 @@ async function fetchStatsApiJsonOnce<T>(path: string, revalidateSeconds: number)
   });
   if (!response.ok) {
     if (response.status === 404) {
-      throw createMlbDataError("Requested MLB resource was not found.", 404);
+      throw new HttpStatusError("Requested MLB resource was not found.", 404);
     }
-    throw createMlbDataError(
+    throw new HttpStatusError(
       "Unable to load MLB data from the upstream provider.",
       response.status >= 500 ? 503 : 502
     );
@@ -406,9 +399,9 @@ async function fetchStatsApiJson<T>(path: string, revalidateSeconds: number): Pr
           await new Promise((resolve) => setTimeout(resolve, 1000 * (attempt + 1)));
           continue;
         }
-        throw createMlbDataError("MLB data provider timed out.", 504);
+        throw new HttpStatusError("MLB data provider timed out.", 504);
       }
-      const status = (error as MlbDataError).status;
+      const status = (error as HttpStatusError).status;
       if (typeof status === "number" && status >= 400 && status < 500) throw error;
       if (attempt < 2) {
         await new Promise((resolve) => setTimeout(resolve, 1000 * (attempt + 1)));
@@ -595,7 +588,7 @@ export async function getMlbSummary(): Promise<{
 
 export async function getMlbTeamSnapshot(teamId: string, teamLookup?: Map<string, MlbTeamOption>): Promise<MlbTeamSnapshot> {
   if (!isValidMlbTeamId(teamId)) {
-    throw createMlbDataError("Invalid MLB team id.", 400);
+    throw new HttpStatusError("Invalid MLB team id.", 400);
   }
 
   const lookup = teamLookup ?? new Map((await getTeams(getCurrentSeason())).map((team) => [team.id, team]));

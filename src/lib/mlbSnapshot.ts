@@ -1,16 +1,9 @@
 import { mlbSnapshot } from "@/data/mlbSnapshot";
 import type { MlbSummarySnapshot, MlbTeamSnapshot } from "@/types/mlb";
+import { HttpStatusError } from "@/lib/utils";
 
 const SUMMARY_GAME_LIMIT = 10;
 const TEAM_GAME_LIMIT = 5;
-
-interface MlbSnapshotError extends Error {
-  status: number;
-}
-
-function createMlbSnapshotError(message: string, status: number): MlbSnapshotError {
-  return Object.assign(new Error(message), { status });
-}
 
 function limitItems<T>(items: T[], limit: number): T[] {
   return items.slice(0, limit);
@@ -69,7 +62,7 @@ export async function getMlbSummarySnapshot(): Promise<MlbSummarySnapshot> {
 export async function getMlbTeamSnapshot(teamId: string): Promise<MlbTeamSnapshot> {
   const snapshot = mlbSnapshot.teamSnapshots[teamId];
   if (!snapshot) {
-    throw createMlbSnapshotError("MLB team snapshot was not found.", 404);
+    throw new HttpStatusError("MLB team snapshot was not found.", 404);
   }
   return clampMlbTeamSnapshot(snapshot);
 }

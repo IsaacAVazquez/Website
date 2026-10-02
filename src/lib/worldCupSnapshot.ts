@@ -3,20 +3,10 @@ import type {
   WorldCupSummarySnapshot,
   WorldCupTeamSnapshot,
 } from "@/types/worldCup";
+import { HttpStatusError } from "@/lib/utils";
 
 const SUMMARY_FIXTURE_LIMIT = 12;
 const TEAM_FIXTURE_LIMIT = 5;
-
-interface WorldCupSnapshotError extends Error {
-  status: number;
-}
-
-function createWorldCupSnapshotError(
-  message: string,
-  status: number
-): WorldCupSnapshotError {
-  return Object.assign(new Error(message), { status });
-}
 
 function limitFixtures<T>(fixtures: T[], limit: number): T[] {
   return fixtures.slice(0, limit);
@@ -92,7 +82,7 @@ export async function getWorldCupTeamSnapshot(
     ? worldCupSnapshot.teamSnapshots[teamId]
     : undefined;
   if (!snapshot) {
-    throw createWorldCupSnapshotError(
+    throw new HttpStatusError(
       "World Cup team snapshot was not found.",
       404
     );
