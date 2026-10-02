@@ -1,9 +1,10 @@
 import { mlbSnapshot } from "@/data/mlbSnapshot";
 import type { MlbSummarySnapshot, MlbTeamSnapshot } from "@/types/mlb";
-import { findTeamSnapshot } from "@/lib/teamSnapshots";
+import { capLists, findTeamSnapshot } from "@/lib/teamSnapshots";
 
 const SUMMARY_GAME_LIMIT = 10;
 const TEAM_GAME_LIMIT = 5;
+const GAME_LISTS = ["recentGames", "upcomingGames"] as const;
 
 export function createEmptyMlbTeamSnapshot(): MlbTeamSnapshot {
   return {
@@ -36,18 +37,9 @@ export function isValidMlbTeamId(teamId: string): boolean {
 
 export async function getMlbSummarySnapshot(): Promise<MlbSummarySnapshot> {
   const { teamSnapshots: _teamSnapshots, ...summarySnapshot } = mlbSnapshot;
-  return {
-    ...summarySnapshot,
-    recentGames: summarySnapshot.recentGames.slice(0, SUMMARY_GAME_LIMIT),
-    upcomingGames: summarySnapshot.upcomingGames.slice(0, SUMMARY_GAME_LIMIT),
-  };
+  return capLists(summarySnapshot, SUMMARY_GAME_LIMIT, GAME_LISTS);
 }
 
 export async function getMlbTeamSnapshot(teamId: string): Promise<MlbTeamSnapshot> {
-  const snapshot = findTeamSnapshot(mlbSnapshot.teamSnapshots, teamId, "MLB");
-  return {
-    ...snapshot,
-    recentGames: snapshot.recentGames.slice(0, TEAM_GAME_LIMIT),
-    upcomingGames: snapshot.upcomingGames.slice(0, TEAM_GAME_LIMIT),
-  };
+  return capLists(findTeamSnapshot(mlbSnapshot.teamSnapshots, teamId, "MLB"), TEAM_GAME_LIMIT, GAME_LISTS);
 }

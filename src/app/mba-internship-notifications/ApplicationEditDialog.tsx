@@ -63,7 +63,7 @@ export default function ApplicationEditDialog({
     setForm(getApplicationFormState(application));
   }, [application, isOpen]);
 
-  useModal(dialogRef, isOpen, onClose, { initialFocusRef: closeRef });
+  useModal(dialogRef, isOpen, onClose, { initialFocusRef: closeRef, lockScroll: false });
 
   if (!isOpen) return null;
 

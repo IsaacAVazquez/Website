@@ -73,7 +73,9 @@ export async function buildRefreshManifest(
   payload?: unknown
 ): Promise<RefreshManifest> {
   const artifact = getArtifact(surface);
-  payload ??= await readArtifact(artifact.artifactPath, artifact.exportName);
+  if (payload === undefined) {
+    payload = await readArtifact(artifact.artifactPath, artifact.exportName);
+  }
   const primarySourceAsOfValue = readPath(payload, artifact.sourceAsOfPath);
   const sourceAsOfValue =
     typeof primarySourceAsOfValue === "string" && primarySourceAsOfValue.trim()

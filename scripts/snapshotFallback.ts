@@ -33,7 +33,13 @@ export async function buildOrKeepExisting<T>(
   try {
     snapshot = await build();
   } catch (error) {
-    if (!existingIsUsable()) throw error;
+    let keepExisting = false;
+    try {
+      keepExisting = existingIsUsable();
+    } catch {
+      // A failed read of the committed file must not hide the build error.
+    }
+    if (!keepExisting) throw error;
     console.warn(`${label} snapshot refresh failed; keeping the existing snapshot.`, error);
     return null;
   }

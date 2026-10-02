@@ -15,6 +15,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { Search, Star, X } from "lucide-react";
 import { useClientNow } from "@/hooks/useClientNow";
 import { useDebounce } from "@/hooks/useDebounce";
+import { useModal } from "@/hooks/useModal";
 import { useFantasySnapshot } from "@/hooks/useFantasySnapshot";
 import { SeasonalScopeNote } from "@/components/fantasy/SeasonalScopeNote";
 import { usePlayerQueue } from "@/hooks/usePlayerQueue";
@@ -651,15 +652,11 @@ function DraftPlayerDrawer({
   onClose,
 }: DraftPlayerDrawerProps) {
   const panelRef = useRef<HTMLElement>(null);
-  const restoreFocusRef = useRef<HTMLElement | null>(null);
-  const onCloseRef = useRef(onClose);
   const queue = usePlayerQueue();
   const notes = usePlayerNotes();
   const [draftNote, setDraftNote] = useState(() => notes.getNote(player.id));
 
-  useEffect(() => {
-    onCloseRef.current = onClose;
-  }, [onClose]);
+  useModal(panelRef, true, onClose);
 
   // Reset the note draft whenever a different player opens the drawer.
   useEffect(() => {
@@ -667,54 +664,6 @@ function DraftPlayerDrawer({
     setDraftNote(notes.getNote(player.id));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [player.id]);
-
-  // Capture focus on open, trap Tab within the panel, and restore on close.
-  useEffect(() => {
-    restoreFocusRef.current = document.activeElement as HTMLElement | null;
-    const panel = panelRef.current;
-    panel?.focus();
-
-    function handleKeyDown(event: KeyboardEvent) {
-      if (event.key === "Escape") {
-        event.preventDefault();
-        onCloseRef.current();
-        return;
-      }
-      if (event.key !== "Tab" || !panel) return;
-
-      const focusable = panel.querySelectorAll<HTMLElement>(
-        'a[href], button:not([disabled]), textarea, input, [tabindex]:not([tabindex="-1"])',
-      );
-      if (focusable.length === 0) return;
-      const first = focusable[0];
-      const last = focusable[focusable.length - 1];
-      const activeElement = document.activeElement;
-      const focusIsInside = Boolean(activeElement && panel.contains(activeElement));
-
-      if (event.shiftKey && (activeElement === panel || activeElement === first || !focusIsInside)) {
-        event.preventDefault();
-        last.focus();
-      } else if (!event.shiftKey && (activeElement === panel || activeElement === last || !focusIsInside)) {
-        event.preventDefault();
-        first.focus();
-      }
-    }
-
-    document.addEventListener("keydown", handleKeyDown);
-    return () => {
-      document.removeEventListener("keydown", handleKeyDown);
-      restoreFocusRef.current?.focus?.();
-    };
-  }, []);
-
-  // Lock the page behind the dialog so closing lands where the user left off.
-  useEffect(() => {
-    const previous = document.body.style.overflow;
-    document.body.style.overflow = "hidden";
-    return () => {
-      document.body.style.overflow = previous;
-    };
-  }, []);
 
   const isQueued = queue.isQueued(player.id);
   const value = adpSignalsAvailable && vsAdpMeaningful ? getValueVsAdp(player) : null;
