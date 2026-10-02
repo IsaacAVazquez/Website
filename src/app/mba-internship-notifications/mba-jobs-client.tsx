@@ -29,12 +29,8 @@ import {
   Upload,
   X,
 } from "lucide-react";
-import {
-  EditorialPillButton,
-  StatusPanel,
-  UtilityStrip,
-  getPillStyle,
-} from "@/components/editorial";
+import { EditorialPillButton, getPillStyle } from "@/components/editorial/EditorialPillButton";
+import { StatusPanel } from "@/components/editorial/StatusPanel";
 import { ChevronDown } from "lucide-react";
 import { Catalog97ProjectHero } from "@/components/catalog97/Catalog97ProjectHero";
 import { PROJECT_PRESS } from "@/constants/projectPress";
@@ -2552,7 +2548,6 @@ export function MBAJobsClient({
                 message={error}
                 tone="error"
                 icon={<CircleAlert className="h-5 w-5" aria-hidden="true" />}
-                statusRole="alert"
               />
             ) : displayJobs.length === 0 ? (
               <StatusPanel
@@ -2626,10 +2621,18 @@ export function MBAJobsClient({
 
           {!isLoading && !error && (
             <div className="flex justify-center pb-2">
-              <UtilityStrip>
-                {visibleJobs.length} of {displayJobs.length} role{displayJobs.length !== 1 ? "s" : ""} shown ·{" "}
-                {formatFetchedAt(lastFetchedAt)} · Polls every 30 min
-              </UtilityStrip>
+              <div
+                className="px-4 py-2.5"
+                style={{ background: "var(--c97-panel)", border: "1px solid var(--c97-rule)" }}
+              >
+                <p
+                  className="mb-0 text-sm leading-6"
+                  style={{ fontFamily: "var(--c97-font-body)", color: "var(--c97-ink-2)" }}
+                >
+                  {visibleJobs.length} of {displayJobs.length} role{displayJobs.length !== 1 ? "s" : ""} shown ·{" "}
+                  {formatFetchedAt(lastFetchedAt)} · Polls every 30 min
+                </p>
+              </div>
             </div>
           )}
         </>

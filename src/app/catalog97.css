@@ -1076,7 +1076,7 @@ body {
  * It also sits in @layer base. This file is imported unlayered, and unlayered
  * CSS beats Tailwind's @layer utilities regardless of specificity, so outside
  * a layer this reset overrode every text-[...] utility on a link, putting
- * espresso ink on an oxblood ModernButton rendered with href.
+ * espresso ink on an oxblood button-styled link.
  */
 @layer base {
   :where(.c97-page) a {

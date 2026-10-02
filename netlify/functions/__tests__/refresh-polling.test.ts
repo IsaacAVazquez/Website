@@ -1,10 +1,6 @@
 /**
  * @jest-environment node
  */
-jest.mock("@netlify/functions", () => ({
-  purgeCache: jest.fn(),
-}));
-
 jest.mock("../../../src/lib/pollingData", () => ({
   POLLING_BLOB_KEY: "polling",
   buildPollingSnapshotData: jest.fn(),
@@ -14,12 +10,10 @@ jest.mock("../../../src/lib/snapshotBlobStore", () => ({
   writeSnapshotBlob: jest.fn(),
 }));
 
-import { purgeCache } from "@netlify/functions";
 import { buildPollingSnapshotData } from "../../../src/lib/pollingData";
 import { writeSnapshotBlob } from "../../../src/lib/snapshotBlobStore";
 import handler, { config } from "../refresh-polling";
 
-const mockPurge = purgeCache as jest.Mock;
 const mockBuild = buildPollingSnapshotData as jest.Mock;
 const mockWrite = writeSnapshotBlob as jest.Mock;
 
@@ -51,12 +45,6 @@ describe("refresh-polling scheduled function", () => {
       generatedAt: "2026-07-20T12:45:00.000Z",
       sourceAsOf: "2026-07-19",
     });
-  });
-
-  it("does not call the cache purge, since no response carries a cache tag", async () => {
-    await handler();
-
-    expect(mockPurge).not.toHaveBeenCalled();
   });
 
   it("does not write when the VoteHub fetch fails its quality gate", async () => {

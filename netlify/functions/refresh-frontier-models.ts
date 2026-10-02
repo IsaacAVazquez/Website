@@ -1,4 +1,3 @@
-import type { Config } from "@netlify/functions";
 import { frontierModelsSnapshot } from "../../src/data/frontierModelsSnapshot";
 import {
   applyLiveModelFacts,
@@ -33,7 +32,7 @@ export default async () => {
   });
 };
 
-export const config: Config = {
+export const config = {
   // Daily at 07:30 UTC, staggered off the GitHub Actions snapshot crons.
   schedule: "30 7 * * *",
-};
+} satisfies { schedule: string };

@@ -1,4 +1,3 @@
-import type { Config } from "@netlify/functions";
 import {
   buildPollingSnapshotData,
   POLLING_BLOB_KEY,
@@ -33,8 +32,8 @@ export default async () => {
   );
 };
 
-export const config: Config = {
+export const config = {
   // Every six hours, staggered off the frontier-models daily run (07:30) and
   // the GitHub Actions snapshot crons.
   schedule: "45 */6 * * *",
-};
+} satisfies { schedule: string };
