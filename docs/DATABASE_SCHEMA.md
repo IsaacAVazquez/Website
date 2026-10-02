@@ -15,7 +15,7 @@ Current fantasy data flow:
 - `npm run update:fantasy`
 - `scripts/buildFantasyPositionData.ts`
 - `scripts/buildFantasySnapshots.ts`
-- `src/data/fantasyPositionData.generated.ts`
+- `src/data/fantasyPositionData.generated.json`
 - `src/data/fantasySnapshotRevision.generated.ts`
 - `public/data/fantasy/{ppr,half_ppr,standard}.json`
 - `/api/fantasy-data`, which reads the generated public snapshots through `src/lib/fantasySnapshotServer.ts`

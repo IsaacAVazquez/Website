@@ -59,7 +59,7 @@ jobs:
           node -e "
           const fs = require('fs');
 
-          const SNAPSHOT_PATH = 'src/data/formula1Snapshot.ts';
+          const SNAPSHOT_PATH = 'src/data/formula1Snapshot.json';
           const MIN_RACES = 10;
           const MIN_DRIVERS_AFTER_RACE = 10;
           const MIN_CONSTRUCTORS_AFTER_RACE = 5;
@@ -69,18 +69,9 @@ jobs:
             process.exit(1);
           }
 
-          const source = fs.readFileSync(SNAPSHOT_PATH, 'utf8');
-          const match = source.match(
-            /export const formula1Snapshot: Formula1Snapshot = (\{[\s\S]*\});\s*$/
-          );
-          if (!match) {
-            console.error('::error::Could not parse snapshot export from ' + SNAPSHOT_PATH);
-            process.exit(1);
-          }
-
           let snapshot;
           try {
-            snapshot = JSON.parse(match[1]);
+            snapshot = JSON.parse(fs.readFileSync(SNAPSHOT_PATH, 'utf8'));
           } catch (err) {
             console.error('::error::JSON.parse failed on Formula 1 snapshot body: ' + String(err));
             process.exit(1);
@@ -138,7 +129,7 @@ jobs:
         run: |
           bash scripts/ci/commit-and-push-snapshot.sh \
             "chore: refresh formula 1 snapshot [automated] [skip ci]" \
-            src/data/formula1Snapshot.ts
+            src/data/formula1Snapshot.json
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 

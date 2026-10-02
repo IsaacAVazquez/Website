@@ -1,15 +1,8 @@
-import { config } from "dotenv";
 import crypto from "crypto";
 import { promises as fs } from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
 import { writeFileAtomic } from "./snapshotFallback";
-
-// Load SPACEDEVS_API_TOKEN from .env.local for local runs (read lazily at fetch
-// time). In CI the token is provided via the workflow env block instead.
-config({
-  path: path.resolve(path.dirname(fileURLToPath(import.meta.url)), "../.env.local"),
-});
 
 const LAUNCH_LIBRARY_API_BASE = "https://ll.thespacedevs.com/2.2.0";
 const SPACEX_AGENCY_ID = 121;

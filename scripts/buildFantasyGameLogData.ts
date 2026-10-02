@@ -19,7 +19,7 @@ import { ScoringFormat } from "@/types";
  * the drawer then ships without the points-per-game panel.
  */
 
-const OUTPUT_PATH = path.join(process.cwd(), "src", "data", "fantasyGameLogData.generated.ts");
+const OUTPUT_PATH = path.join(process.cwd(), "src", "data", "fantasyGameLogData.generated.json");
 
 interface FantasyGameLogDatasetRecord {
   entries: FantasyGameLogEntry[];
@@ -73,32 +73,6 @@ function pause(ms: number) {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
-function renderGeneratedModule(data: FantasyGameLogDataRecord, generatedAt: string): string {
-  const serialized = JSON.stringify(data, null, 2);
-
-  return `/**
- * Generated fantasy per-game scoring data.
- * Do not edit manually. Regenerate with \`npm run update:fantasy\`.
- */
-
-import type { FantasyGameLogEntry } from "@/lib/fantasyGameLogSource";
-import type { ScoringFormat } from "@/types";
-
-export const fantasyGameLogDataGeneratedAt: string | null = ${JSON.stringify(generatedAt)};
-
-export const fantasyGameLogData: Record<
-  ScoringFormat,
-  {
-    entries: FantasyGameLogEntry[];
-    season: number | null;
-    seasonType: string;
-    sourceUrl: string;
-    throughWeek: number | null;
-  }
-> = ${serialized};
-`;
-}
-
 /**
  * Seasons to try, newest first. During the offseason the current season's file
  * does not exist yet (or carries a stub), so the completed prior season is what
@@ -146,10 +120,8 @@ async function fetchFirstUsableSeason(
 async function main() {
   const generatedAt = new Date().toISOString();
   const seasons = candidateSeasons();
-  const previous = readGeneratedSnapshot<FantasyGameLogDataRecord>(
-    OUTPUT_PATH,
-    "fantasyGameLogData"
-  );
+  const previous =
+    readGeneratedSnapshot<{ data?: FantasyGameLogDataRecord }>(OUTPUT_PATH)?.data ?? null;
   const dataset = {} as FantasyGameLogDataRecord;
   const notes: string[] = [];
 
@@ -186,7 +158,7 @@ async function main() {
     return;
   }
 
-  writeFileAtomic(OUTPUT_PATH, renderGeneratedModule(dataset, generatedAt));
+  writeFileAtomic(OUTPUT_PATH, JSON.stringify({ generatedAt, data: dataset }, null, 2) + "\n");
 
   for (const note of notes) console.log(`[game-log] ${note}`);
   console.log(`Wrote fantasy game-log data: ${OUTPUT_PATH}`);

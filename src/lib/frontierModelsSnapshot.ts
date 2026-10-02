@@ -1,7 +1,7 @@
 import { frontierModelsSnapshot } from "@/data/frontierModelsSnapshot";
 import { FRONTIER_MODELS_BLOB_KEY } from "@/lib/frontierModelsLive";
 import { logger } from "@/lib/logger";
-import { readSnapshotBlob } from "@/lib/snapshotBlobStore";
+import { readSnapshotBlob } from "@/lib/netlifyBlobs";
 import type { FrontierModelsSnapshot } from "@/types/frontierModels";
 
 // Serve the blob written by the daily scheduled refresh for up to three

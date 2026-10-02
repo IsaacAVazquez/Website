@@ -10,7 +10,7 @@ import type {
 import { MBA_COMPANIES } from "@/constants/mba-companies";
 import { matchMBAJobRole } from "@/lib/mba-job-matching";
 import { mbaJobsRateLimiter } from "@/lib/rateLimit";
-import { readDurableJson, writeDurableJson } from "@/lib/durableJsonCache";
+import { readDurableJson, writeDurableJson } from "@/lib/netlifyBlobs";
 import type { DataDeliveryStatus } from "@/lib/dataRevision";
 import { recordRuntimeSurfaceHeartbeat } from "@/lib/runtimeSurfaceHeartbeat";
 

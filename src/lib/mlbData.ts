@@ -1,5 +1,3 @@
-import { readFileSync } from "node:fs";
-import { resolve } from "node:path";
 import type {
   MlbGame,
   MlbGameTeam,
@@ -15,6 +13,7 @@ import type {
   MlbTeamSnapshot,
 } from "@/types/mlb";
 import { HttpStatusError } from "@/lib/utils";
+import { readExistingTeamSnapshots } from "@/lib/existingTeamSnapshots";
 import { retryLinear, hasClientErrorStatus, isTimeoutError } from "@/lib/fetchRetry";
 import { setTimeout as delay } from "node:timers/promises";
 
@@ -626,21 +625,7 @@ export async function getMlbTeamSnapshot(teamId: string, teamLookup?: Map<string
 }
 
 const TEAM_FETCH_DELAY_MS = 750;
-const MLB_SNAPSHOT_PATH = "src/data/mlbSnapshot.ts";
-
-
-function readExistingTeamSnapshots(filePath: string): Record<string, MlbTeamSnapshot> {
-  try {
-    const fullPath = resolve(process.cwd(), filePath);
-    const content = readFileSync(fullPath, "utf8");
-    const match = content.match(/=\s*(\{[\s\S]*\})\s*;?\s*$/);
-    if (!match) return {};
-    const parsed = JSON.parse(match[1]);
-    return parsed.teamSnapshots ?? {};
-  } catch {
-    return {};
-  }
-}
+const MLB_SNAPSHOT_PATH = "src/data/mlbSnapshot.json";
 
 export async function buildMlbSnapshot(options?: { skipTeamSnapshots?: boolean }): Promise<MlbSnapshot> {
   const summary = await getMlbSummary();
@@ -649,12 +634,12 @@ export async function buildMlbSnapshot(options?: { skipTeamSnapshots?: boolean }
   let teamSnapshots: Record<string, MlbTeamSnapshot>;
 
   if (options?.skipTeamSnapshots) {
-    teamSnapshots = readExistingTeamSnapshots(MLB_SNAPSHOT_PATH);
+    teamSnapshots = readExistingTeamSnapshots<MlbTeamSnapshot>(MLB_SNAPSHOT_PATH);
     console.log(`  Preserved ${Object.keys(teamSnapshots).length} existing team snapshots.`);
   } else {
     // Start from the prior snapshots so a per-team failure preserves that
     // team's previous data instead of dropping it from the snapshot.
-    teamSnapshots = { ...readExistingTeamSnapshots(MLB_SNAPSHOT_PATH) };
+    teamSnapshots = { ...readExistingTeamSnapshots<MlbTeamSnapshot>(MLB_SNAPSHOT_PATH) };
     for (const team of summary.teams) {
       await delay(TEAM_FETCH_DELAY_MS);
       try {

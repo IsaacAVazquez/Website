@@ -4,7 +4,7 @@ import {
   fetchLiveModelFacts,
   FRONTIER_MODELS_BLOB_KEY,
 } from "../../src/lib/frontierModelsLive";
-import { writeSnapshotBlob } from "../../src/lib/snapshotBlobStore";
+import { writeSnapshotBlob } from "../../src/lib/netlifyBlobs";
 
 // Daily fact check for the frontier-models catalog — the pilot for the
 // blob-backed refresh lane. It fetches the keyless models.dev and OpenRouter

@@ -1,5 +1,3 @@
-import { readFileSync } from "node:fs";
-import { resolve } from "node:path";
 import type {
   PremierLeagueSnapshot,
   PremierLeagueCompetitionMeta,
@@ -36,6 +34,7 @@ import {
   type FootballDataScorersResponse,
 } from "@/lib/footballData";
 import { HttpStatusError } from "@/lib/utils";
+import { readExistingTeamSnapshots } from "@/lib/existingTeamSnapshots";
 const PREMIER_LEAGUE_CODE = "PL";
 function fetchFootballDataJson<T>(path: string, revalidateSeconds: number): Promise<T> {
   return fetchLeagueJson<T>("Premier League", path, revalidateSeconds);
@@ -563,20 +562,7 @@ export async function getPremierLeagueTeamSnapshot(
   };
 }
 
-const PL_SNAPSHOT_PATH = "src/data/premierLeagueSnapshot.ts";
-
-function readExistingPLTeamSnapshots(filePath: string): Record<string, PremierLeagueTeamSnapshot> {
-  try {
-    const fullPath = resolve(process.cwd(), filePath);
-    const content = readFileSync(fullPath, "utf8");
-    const match = content.match(/=\s*(\{[\s\S]*\})\s*;?\s*$/);
-    if (!match) return {};
-    const parsed = JSON.parse(match[1]);
-    return parsed.teamSnapshots ?? {};
-  } catch {
-    return {};
-  }
-}
+const PL_SNAPSHOT_PATH = "src/data/premierLeagueSnapshot.json";
 
 export async function buildPremierLeagueSnapshot(options?: { skipTeamSnapshots?: boolean; season?: number }): Promise<PremierLeagueSnapshot> {
   const summary = await getPremierLeagueSummary(
@@ -586,12 +572,12 @@ export async function buildPremierLeagueSnapshot(options?: { skipTeamSnapshots?:
   let teamSnapshots: Record<string, PremierLeagueTeamSnapshot>;
 
   if (options?.skipTeamSnapshots) {
-    teamSnapshots = readExistingPLTeamSnapshots(PL_SNAPSHOT_PATH);
+    teamSnapshots = readExistingTeamSnapshots<PremierLeagueTeamSnapshot>(PL_SNAPSHOT_PATH);
     console.log(`  Preserved ${Object.keys(teamSnapshots).length} existing team snapshots.`);
   } else {
     // Start from the prior snapshots so a per-team failure preserves that
     // team's previous data instead of dropping it from the snapshot.
-    teamSnapshots = { ...readExistingPLTeamSnapshots(PL_SNAPSHOT_PATH) };
+    teamSnapshots = { ...readExistingTeamSnapshots<PremierLeagueTeamSnapshot>(PL_SNAPSHOT_PATH) };
     for (const team of summary.teams) {
       try {
         const teamSnapshot = await getPremierLeagueTeamSnapshot(team.id);

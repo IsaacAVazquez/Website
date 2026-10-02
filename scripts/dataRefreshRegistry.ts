@@ -4,7 +4,6 @@ import type { DataSurfaceId } from "../src/lib/dataFreshnessPolicy";
 export interface RefreshArtifactDefinition {
   surface: DataSurfaceId;
   artifactPath: string;
-  exportName?: string;
   sourceAsOfPath: readonly string[];
   sourceAsOfFallbackPath?: readonly string[];
   revisionPayloadPath?: readonly string[];
@@ -23,7 +22,7 @@ const definition = (
   sourceAsOfPath: readonly string[],
   options: Pick<
     RefreshArtifactDefinition,
-    "exportName" | "revisionPayloadPath" | "sourceAsOfFallbackPath" | "minimums"
+    "revisionPayloadPath" | "sourceAsOfFallbackPath" | "minimums"
   > = {}
 ): RefreshArtifactDefinition => ({
   surface,
@@ -37,42 +36,38 @@ export const DATA_REFRESH_ARTIFACTS: Partial<
 > = {
   earthquake: definition(
     "earthquake",
-    "src/data/earthquakeSnapshot.ts",
+    "src/data/earthquakeSnapshot.json",
     ["summary", "generatedAt"],
     {
-      exportName: "earthquakeSnapshot",
       revisionPayloadPath: ["summary"],
       minimums: { "summary.recent+summary.significant+summary.regions": 1 },
     }
   ),
   "bay-area-transit": definition(
     "bay-area-transit",
-    "src/data/bayAreaTransitSnapshot.ts",
+    "src/data/bayAreaTransitSnapshot.json",
     ["summary", "system", "generatedAt"],
     {
-      exportName: "bayAreaTransitSnapshot",
       revisionPayloadPath: ["summary"],
       minimums: { "summary.lines": 3, "summary.stations": 10 },
     }
   ),
   "formula-1": definition(
     "formula-1",
-    "src/data/formula1Snapshot.ts",
-    ["generatedAt"],
-    { exportName: "formula1Snapshot" }
+    "src/data/formula1Snapshot.json",
+    ["generatedAt"]
   ),
   "github-trending": definition(
     "github-trending",
-    "src/data/githubTrendingSnapshot.ts",
+    "src/data/githubTrendingSnapshot.json",
     ["generatedAt"],
-    { exportName: "githubTrendingSnapshot", minimums: { "totals.repositories": 50 } }
+    { minimums: { "totals.repositories": 50 } }
   ),
   golf: definition(
     "golf",
-    "src/data/golfSnapshot.ts",
+    "src/data/golfSnapshot.json",
     ["summary", "tournament", "generatedAt"],
     {
-      exportName: "golfSnapshot",
       minimums: { "summary.tournament.name": 1, "summary.leaderboard": 5 },
     }
   ),
@@ -88,28 +83,26 @@ export const DATA_REFRESH_ARTIFACTS: Partial<
   ),
   "world-cup": definition(
     "world-cup",
-    "src/data/worldCupSnapshot.ts",
+    "src/data/worldCupSnapshot.json",
     ["tournament", "generatedAt"],
-    { exportName: "worldCupSnapshot", minimums: { "tournament.name": 1 } }
+    { minimums: { "tournament.name": 1 } }
   ),
   "premier-league": definition(
     "premier-league",
-    "src/data/premierLeagueSnapshot.ts",
+    "src/data/premierLeagueSnapshot.json",
     ["summary", "generatedAt"],
     {
-      exportName: "premierLeagueSnapshot",
       revisionPayloadPath: ["summary"],
       minimums: { "summary.standings": 18 },
     }
   ),
   "la-liga": definition(
     "la-liga",
-    "src/data/laLigaSnapshot.ts",
+    "src/data/laLigaSnapshot.json",
     ["generatedAt"],
-    { exportName: "laLigaSnapshot", minimums: { clubs: 18 } }
+    { minimums: { clubs: 18 } }
   ),
-  mlb: definition("mlb", "src/data/mlbSnapshot.ts", ["generatedAt"], {
-    exportName: "mlbSnapshot",
+  mlb: definition("mlb", "src/data/mlbSnapshot.json", ["generatedAt"], {
     minimums: {
       teams: 28,
       standings: 28,
@@ -118,8 +111,7 @@ export const DATA_REFRESH_ARTIFACTS: Partial<
       "pitchingLeaders.earnedRunAverage": 5,
     },
   }),
-  nba: definition("nba", "src/data/nbaSnapshot.ts", ["generatedAt"], {
-    exportName: "nbaSnapshot",
+  nba: definition("nba", "src/data/nbaSnapshot.json", ["generatedAt"], {
     minimums: {
       "teamsByConference.east": 14,
       "teamsByConference.west": 14,
@@ -132,8 +124,7 @@ export const DATA_REFRESH_ARTIFACTS: Partial<
   }),
   // updatedAt is a date with no time, which reads as midnight UTC. It stays as
   // the fallback until the first refresh writes generatedAt.
-  nfl: definition("nfl", "src/data/nflSnapshot.ts", ["generatedAt"], {
-    exportName: "nflSnapshot",
+  nfl: definition("nfl", "src/data/nflSnapshot.json", ["generatedAt"], {
     sourceAsOfFallbackPath: ["updatedAt"],
     minimums: {
       teams: 30,
@@ -152,14 +143,12 @@ export const DATA_REFRESH_ARTIFACTS: Partial<
   ),
   "score-pools": definition(
     "score-pools",
-    "src/data/scorePoolsSnapshot.ts",
-    ["generatedAt"],
-    { exportName: "scorePoolsSnapshot" }
+    "src/data/scorePoolsSnapshot.json",
+    ["generatedAt"]
   ),
   polling: definition(
     "polling",
-    "src/data/pollingSnapshot.ts",
-    ["generatedAt"],
-    { exportName: "pollingSnapshot" }
+    "src/data/pollingSnapshot.json",
+    ["generatedAt"]
   ),
 };

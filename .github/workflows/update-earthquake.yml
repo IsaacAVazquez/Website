@@ -55,7 +55,7 @@ jobs:
         run: |
           bash scripts/ci/commit-and-push-snapshot.sh \
             "chore: refresh earthquake snapshot [automated] [skip ci]" \
-            src/data/earthquakeSnapshot.ts
+            src/data/earthquakeSnapshot.json
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 

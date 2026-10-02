@@ -108,13 +108,13 @@ Page-level clients live at `src/app/premier-league/premier-league-client.tsx` an
 - `src/app/news-pulse/*` plus `src/lib/news-pulse-utils.ts`
 - `src/components/spacex/*` plus `src/app/spacex-mission-control/*`
 - `src/app/mlb/*`, `src/app/nba/*`, `src/app/nfl/*`, and `src/components/football/*`
-- `src/app/golf/*` plus `src/data/golfSnapshot.ts`
-- `src/app/world-cup-2026/*` plus `src/data/worldCupSnapshot.ts`
-- `src/app/bay-area-transit/*` plus `src/data/bayAreaTransitSnapshot.ts`
-- `src/app/earthquake-pulse/*` plus `src/data/earthquakeSnapshot.ts`
-- `src/app/tech-startup-tracker/*` plus `src/data/techStartupSnapshot.ts`
+- `src/app/golf/*` plus `src/data/golfSnapshot.json`
+- `src/app/world-cup-2026/*` plus `src/data/worldCupSnapshot.json`
+- `src/app/bay-area-transit/*` plus `src/data/bayAreaTransitSnapshot.json`
+- `src/app/earthquake-pulse/*` plus `src/data/earthquakeSnapshot.json`
+- `src/app/tech-startup-tracker/*` plus `src/data/techStartupSnapshot.json`
 - `src/app/travel/*` plus `src/hooks/useTravelPlanner.ts`
-- `src/app/polling-aggregator/*` plus `src/data/pollingSnapshot.ts`
+- `src/app/polling-aggregator/*` plus `src/data/pollingSnapshot.json`
 - `src/app/fintech-tools/budget-planner/*` plus `src/hooks/useBudgetPlanner.ts`
 - `src/app/fintech-tools/interchange-iq/*`
 

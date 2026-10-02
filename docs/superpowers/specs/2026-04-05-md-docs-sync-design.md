@@ -101,7 +101,7 @@ Three-phase approach:
 
 | Doc to update | Source files to read |
 |---|---|
-| `ARCHITECTURE.md` | `src/app/` route structure, `src/data/premierLeagueSnapshot.ts`, `src/data/laLigaSnapshot.ts`, `scripts/buildPremierLeagueSnapshot.ts`, `scripts/updateLaLigaSnapshot.ts` |
+| `ARCHITECTURE.md` | `src/app/` route structure, `src/data/premierLeagueSnapshot.json`, `src/data/laLigaSnapshot.json`, `scripts/buildPremierLeagueSnapshot.ts`, `scripts/updateLaLigaSnapshot.ts` |
 | `COMPONENTS.md` | `src/components/football/` directory, `src/components/` top-level listing |
 | `DEVELOPMENT.md` | `package.json` scripts section, `scripts/` directory |
 | `TESTING.md` | `src/app/fantasy-football/**/*.test.*`, recent test additions |

@@ -49,7 +49,7 @@ jobs:
         run: |
           bash scripts/ci/commit-and-push-snapshot.sh \
             "chore: refresh polling snapshot [automated] [skip ci]" \
-            src/data/pollingSnapshot.ts
+            src/data/pollingSnapshot.json
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 

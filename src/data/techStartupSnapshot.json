@@ -1,0 +1,972 @@
+{
+  "generatedAt": "2026-09-28T08:01:12.184Z",
+  "asOf": "2026-09-28",
+  "verified": false,
+  "sourceLabel": "Curated from company announcements",
+  "sourceUrl": "https://news.crunchbase.com",
+  "disclaimer": "Valuations and round details come from each company's own announcement where one exists, and each entry links to the page it was read from. Total raised is a floor, since it adds the rounds I could confirm to an earlier total and a round I did not find is missing from it. These are editorial figures for illustration and research, not verified financials or investment advice.",
+  "currency": "USD",
+  "startups": [
+    {
+      "id": "openai",
+      "name": "OpenAI",
+      "description": "Frontier AI lab behind ChatGPT and the GPT model family, spanning consumer assistants and enterprise APIs.",
+      "sector": "sector-ai",
+      "stage": "stage-late",
+      "headquarters": "San Francisco, CA",
+      "country": "United States",
+      "founded": 2015,
+      "website": "https://openai.com",
+      "totalRaised": 186000000000,
+      "valuation": 852000000000,
+      "employees": "1,001-5,000",
+      "lastRound": {
+        "stage": "Late-stage round",
+        "amount": 122000000000,
+        "date": "2026-03",
+        "leadInvestors": [
+          "SoftBank",
+          "Andreessen Horowitz",
+          "D. E. Shaw Ventures",
+          "MGX",
+          "TPG",
+          "T. Rowe Price"
+        ],
+        "sourceUrl": "https://openai.com/index/accelerating-the-next-phase-ai/"
+      },
+      "notableInvestors": [
+        "Microsoft",
+        "SoftBank",
+        "Thrive Capital"
+      ],
+      "tags": [
+        "foundation models",
+        "ChatGPT",
+        "generative AI"
+      ],
+      "momentumScore": 96.2
+    },
+    {
+      "id": "anthropic",
+      "name": "Anthropic",
+      "description": "AI safety company building the Claude family of models for assistants, coding, and enterprise workloads.",
+      "sector": "sector-ai",
+      "stage": "stage-late",
+      "headquarters": "San Francisco, CA",
+      "country": "United States",
+      "founded": 2021,
+      "website": "https://www.anthropic.com",
+      "totalRaised": 135000000000,
+      "valuation": 965000000000,
+      "employees": "501-1,000",
+      "lastRound": {
+        "stage": "Series H",
+        "amount": 65000000000,
+        "date": "2026-05",
+        "leadInvestors": [
+          "Altimeter Capital",
+          "Dragoneer",
+          "Greenoaks",
+          "Sequoia Capital"
+        ],
+        "sourceUrl": "https://www.anthropic.com/news/series-h"
+      },
+      "notableInvestors": [
+        "Google",
+        "Amazon",
+        "Lightspeed",
+        "Spark Capital"
+      ],
+      "tags": [
+        "foundation models",
+        "Claude",
+        "AI safety"
+      ],
+      "momentumScore": 100.4
+    },
+    {
+      "id": "mistral-ai",
+      "name": "Mistral AI",
+      "description": "European AI lab shipping open-weight and commercial models with a focus on efficiency and sovereignty.",
+      "sector": "sector-ai",
+      "stage": "stage-growth",
+      "headquarters": "Paris",
+      "country": "France",
+      "founded": 2023,
+      "website": "https://mistral.ai",
+      "totalRaised": 6580000000,
+      "valuation": 24389000000,
+      "employees": "51-200",
+      "lastRound": {
+        "stage": "Series D",
+        "amount": 3484000000,
+        "date": "2026-09",
+        "leadInvestors": [
+          "Samsung Electronics",
+          "Scaleup Europe Fund",
+          "PSG Equity"
+        ],
+        "sourceUrl": "https://mistral.ai/news/mistral-makes-sovereign-open-weight-ai-to-frontier/"
+      },
+      "notableInvestors": [
+        "General Catalyst",
+        "Andreessen Horowitz",
+        "Lightspeed"
+      ],
+      "tags": [
+        "open-weight models",
+        "European AI"
+      ],
+      "momentumScore": 104.2
+    },
+    {
+      "id": "perplexity",
+      "name": "Perplexity AI",
+      "description": "Conversational answer engine that pairs live web retrieval with large language models for cited responses.",
+      "sector": "sector-ai",
+      "stage": "stage-growth",
+      "headquarters": "San Francisco, CA",
+      "country": "United States",
+      "founded": 2022,
+      "website": "https://www.perplexity.ai",
+      "totalRaised": 1000000000,
+      "valuation": 9000000000,
+      "employees": "201-500",
+      "lastRound": {
+        "stage": "Growth round",
+        "amount": 500000000,
+        "date": "2024-12",
+        "leadInvestors": [
+          "Institutional Venture Partners"
+        ]
+      },
+      "notableInvestors": [
+        "IVP",
+        "NEA",
+        "Nvidia",
+        "Jeff Bezos"
+      ],
+      "tags": [
+        "answer engine",
+        "search",
+        "RAG"
+      ],
+      "momentumScore": 48.5
+    },
+    {
+      "id": "scale-ai",
+      "name": "Scale AI",
+      "description": "Data engine for AI — labeling, evaluation, and model-readiness infrastructure for enterprises and governments.",
+      "sector": "sector-ai",
+      "stage": "stage-late",
+      "headquarters": "San Francisco, CA",
+      "country": "United States",
+      "founded": 2016,
+      "website": "https://scale.com",
+      "totalRaised": 1600000000,
+      "valuation": 29000000000,
+      "employees": "501-1,000",
+      "lastRound": {
+        "stage": "Strategic investment",
+        "amount": null,
+        "date": "2025-06",
+        "leadInvestors": [
+          "Meta"
+        ],
+        "sourceUrl": "https://scale.com/blog/scale-ai-announces-next-phase-of-company-evolution"
+      },
+      "notableInvestors": [
+        "Accel",
+        "Index Ventures",
+        "Founders Fund"
+      ],
+      "tags": [
+        "data labeling",
+        "model evaluation"
+      ],
+      "momentumScore": 38.2
+    },
+    {
+      "id": "cohere",
+      "name": "Cohere",
+      "description": "Enterprise-focused LLM provider offering retrieval-augmented generation and private deployment options.",
+      "sector": "sector-ai",
+      "stage": "stage-growth",
+      "headquarters": "Toronto",
+      "country": "Canada",
+      "founded": 2019,
+      "website": "https://cohere.com",
+      "totalRaised": 1470000000,
+      "valuation": 6800000000,
+      "employees": "201-500",
+      "lastRound": {
+        "stage": "Growth round",
+        "amount": 500000000,
+        "date": "2025-08",
+        "leadInvestors": [
+          "Radical Ventures",
+          "Inovia Capital"
+        ],
+        "sourceUrl": "https://cohere.com/blog/august-2025-funding-round"
+      },
+      "notableInvestors": [
+        "Inovia Capital",
+        "Nvidia",
+        "Oracle"
+      ],
+      "tags": [
+        "enterprise LLMs",
+        "RAG"
+      ],
+      "momentumScore": 68.3
+    },
+    {
+      "id": "hugging-face",
+      "name": "Hugging Face",
+      "description": "Open-source machine-learning hub hosting models, datasets, and tooling used across the AI community. NVIDIA announced an agreement to acquire it on September 3, 2026.",
+      "sector": "sector-ai",
+      "stage": "stage-growth",
+      "headquarters": "New York, NY",
+      "country": "United States",
+      "founded": 2016,
+      "website": "https://huggingface.co",
+      "totalRaised": 395000000,
+      "valuation": 12930300000,
+      "employees": "201-500",
+      "lastRound": {
+        "stage": "Acquisition agreement",
+        "amount": 12930300000,
+        "date": "2026-09",
+        "leadInvestors": [
+          "NVIDIA"
+        ],
+        "sourceUrl": "https://blogs.nvidia.com/blog/nvidia-to-acquire-hugging-face/"
+      },
+      "notableInvestors": [
+        "Sequoia",
+        "Coatue",
+        "Nvidia",
+        "Google"
+      ],
+      "tags": [
+        "open-source ML",
+        "model hub"
+      ],
+      "momentumScore": 105.5
+    },
+    {
+      "id": "sierra",
+      "name": "Sierra",
+      "description": "Conversational AI agent platform for customer experience, founded by Bret Taylor and Clay Bavor.",
+      "sector": "sector-ai",
+      "stage": "stage-growth",
+      "headquarters": "San Francisco, CA",
+      "country": "United States",
+      "founded": 2023,
+      "website": "https://sierra.ai",
+      "totalRaised": 1235000000,
+      "valuation": 15000000000,
+      "employees": "51-200",
+      "lastRound": {
+        "stage": "Growth round",
+        "amount": 950000000,
+        "date": "2026-05",
+        "leadInvestors": [
+          "Tiger Global",
+          "GV"
+        ],
+        "sourceUrl": "https://sierra.ai/blog/better-customer-experiences-built-on-sierra"
+      },
+      "notableInvestors": [
+        "Sequoia",
+        "Benchmark",
+        "Thrive Capital"
+      ],
+      "tags": [
+        "AI agents",
+        "customer experience"
+      ],
+      "momentumScore": 92.2
+    },
+    {
+      "id": "skild-ai",
+      "name": "Skild AI",
+      "description": "Robotics startup training a general-purpose foundation model for embodied agents across hardware.",
+      "sector": "sector-ai",
+      "stage": "stage-growth",
+      "headquarters": "Pittsburgh, PA",
+      "country": "United States",
+      "founded": 2023,
+      "website": "https://www.skild.ai",
+      "totalRaised": 1700000000,
+      "valuation": 14000000000,
+      "employees": "11-50",
+      "lastRound": {
+        "stage": "Series C",
+        "amount": 1400000000,
+        "date": "2026-01",
+        "leadInvestors": [
+          "SoftBank"
+        ],
+        "sourceUrl": "https://www.skild.ai/blogs/series-c"
+      },
+      "notableInvestors": [
+        "Lightspeed",
+        "Coatue",
+        "SoftBank"
+      ],
+      "tags": [
+        "robotics",
+        "embodied AI"
+      ],
+      "momentumScore": 82.7
+    },
+    {
+      "id": "stripe",
+      "name": "Stripe",
+      "description": "Payments and financial infrastructure platform powering online businesses, marketplaces, and platforms.",
+      "sector": "sector-fintech",
+      "stage": "stage-late",
+      "headquarters": "San Francisco, CA",
+      "country": "United States",
+      "founded": 2010,
+      "website": "https://stripe.com",
+      "totalRaised": 9400000000,
+      "valuation": 159000000000,
+      "employees": "5,001-10,000",
+      "lastRound": {
+        "stage": "Tender offer",
+        "amount": null,
+        "date": "2026-02",
+        "leadInvestors": [
+          "Thrive Capital",
+          "Coatue",
+          "Andreessen Horowitz"
+        ],
+        "sourceUrl": "https://stripe.com/newsroom/news/stripe-2025-update"
+      },
+      "notableInvestors": [
+        "Sequoia",
+        "Andreessen Horowitz",
+        "Thrive Capital"
+      ],
+      "tags": [
+        "payments",
+        "financial infrastructure"
+      ],
+      "momentumScore": 59.3
+    },
+    {
+      "id": "revolut",
+      "name": "Revolut",
+      "description": "Global neobank offering banking, FX, investing, and crypto across consumer and business accounts.",
+      "sector": "sector-fintech",
+      "stage": "stage-late",
+      "headquarters": "London",
+      "country": "United Kingdom",
+      "founded": 2015,
+      "website": "https://www.revolut.com",
+      "totalRaised": 2000000000,
+      "valuation": 75000000000,
+      "employees": "5,001-10,000",
+      "lastRound": {
+        "stage": "Secondary share sale",
+        "amount": null,
+        "date": "2025-11",
+        "leadInvestors": [
+          "Coatue",
+          "Greenoaks",
+          "Dragoneer",
+          "Fidelity"
+        ],
+        "sourceUrl": "https://www.revolut.com/news/revolut_completes_fundraising_process_establishing_75_billion_valuation/"
+      },
+      "notableInvestors": [
+        "SoftBank",
+        "Tiger Global",
+        "Index Ventures"
+      ],
+      "tags": [
+        "neobank",
+        "consumer fintech"
+      ],
+      "momentumScore": 51.3
+    },
+    {
+      "id": "ramp",
+      "name": "Ramp",
+      "description": "Corporate card and spend-management platform that automates expenses, bill pay, and procurement.",
+      "sector": "sector-fintech",
+      "stage": "stage-late",
+      "headquarters": "New York, NY",
+      "country": "United States",
+      "founded": 2019,
+      "website": "https://ramp.com",
+      "totalRaised": 2750000000,
+      "valuation": 44000000000,
+      "employees": "501-1,000",
+      "lastRound": {
+        "stage": "Series F",
+        "amount": 750000000,
+        "date": "2026-06",
+        "leadInvestors": [
+          "ICONIQ",
+          "GIC",
+          "Ontario Teachers' Pension Plan"
+        ],
+        "sourceUrl": "https://www.prnewswire.com/news-releases/ramp-raises-series-f-at-44-billion-valuation-302791103.html"
+      },
+      "notableInvestors": [
+        "Founders Fund",
+        "Thrive Capital",
+        "Sequoia"
+      ],
+      "tags": [
+        "corporate cards",
+        "spend management"
+      ],
+      "momentumScore": 95.1
+    },
+    {
+      "id": "plaid",
+      "name": "Plaid",
+      "description": "Open-banking data network connecting consumer financial accounts to fintech apps and services.",
+      "sector": "sector-fintech",
+      "stage": "stage-growth",
+      "headquarters": "San Francisco, CA",
+      "country": "United States",
+      "founded": 2013,
+      "website": "https://plaid.com",
+      "totalRaised": 734000000,
+      "valuation": 8000000000,
+      "employees": "1,001-5,000",
+      "lastRound": {
+        "stage": "Funding round",
+        "amount": null,
+        "date": "2026-02",
+        "leadInvestors": [],
+        "sourceUrl": "https://plaid.com/press/"
+      },
+      "notableInvestors": [
+        "NEA",
+        "Andreessen Horowitz",
+        "Index Ventures"
+      ],
+      "tags": [
+        "open banking",
+        "data connectivity"
+      ],
+      "momentumScore": 57.4
+    },
+    {
+      "id": "databricks",
+      "name": "Databricks",
+      "description": "Data and AI lakehouse platform unifying analytics, ML, and governance on top of open formats.",
+      "sector": "sector-devtools",
+      "stage": "stage-late",
+      "headquarters": "San Francisco, CA",
+      "country": "United States",
+      "founded": 2013,
+      "website": "https://www.databricks.com",
+      "totalRaised": 14000000000,
+      "valuation": 188000000000,
+      "employees": "5,001-10,000",
+      "lastRound": {
+        "stage": "Strategic round",
+        "amount": null,
+        "date": "2026-07",
+        "leadInvestors": [
+          "Coatue"
+        ],
+        "sourceUrl": "https://www.databricks.com/company/newsroom/press-releases/databricks-raising-strategic-round-funding-188-billion-valuation"
+      },
+      "notableInvestors": [
+        "Andreessen Horowitz",
+        "Thrive Capital",
+        "DST Global"
+      ],
+      "tags": [
+        "data lakehouse",
+        "analytics"
+      ],
+      "momentumScore": 71.9
+    },
+    {
+      "id": "vercel",
+      "name": "Vercel",
+      "description": "Frontend cloud and deployment platform behind Next.js, focused on developer experience and edge delivery.",
+      "sector": "sector-devtools",
+      "stage": "stage-late",
+      "headquarters": "San Francisco, CA",
+      "country": "United States",
+      "founded": 2015,
+      "website": "https://vercel.com",
+      "totalRaised": 863000000,
+      "valuation": 9300000000,
+      "employees": "201-500",
+      "lastRound": {
+        "stage": "Series F",
+        "amount": 300000000,
+        "date": "2025-09",
+        "leadInvestors": [
+          "Accel",
+          "GIC"
+        ],
+        "sourceUrl": "https://vercel.com/blog/series-f"
+      },
+      "notableInvestors": [
+        "Accel",
+        "GV",
+        "Bedrock"
+      ],
+      "tags": [
+        "frontend cloud",
+        "Next.js"
+      ],
+      "momentumScore": 70.4
+    },
+    {
+      "id": "canva",
+      "name": "Canva",
+      "description": "Visual design platform spanning documents, presentations, and brand workflows for teams and creators.",
+      "sector": "sector-saas",
+      "stage": "stage-late",
+      "headquarters": "Sydney",
+      "country": "Australia",
+      "founded": 2013,
+      "website": "https://www.canva.com",
+      "totalRaised": 580000000,
+      "valuation": 32000000000,
+      "employees": "5,001-10,000",
+      "lastRound": {
+        "stage": "Tender offer",
+        "amount": 1500000000,
+        "date": "2024-08",
+        "leadInvestors": [
+          "ICONIQ Growth"
+        ]
+      },
+      "notableInvestors": [
+        "Sequoia",
+        "Blackbird Ventures",
+        "Bessemer"
+      ],
+      "tags": [
+        "design platform",
+        "creative SaaS"
+      ],
+      "momentumScore": 43.3
+    },
+    {
+      "id": "rippling",
+      "name": "Rippling",
+      "description": "Workforce platform unifying HR, IT, and finance — payroll, devices, and spend in one system of record.",
+      "sector": "sector-saas",
+      "stage": "stage-late",
+      "headquarters": "San Francisco, CA",
+      "country": "United States",
+      "founded": 2016,
+      "website": "https://www.rippling.com",
+      "totalRaised": 1700000000,
+      "valuation": 16800000000,
+      "employees": "1,001-5,000",
+      "lastRound": {
+        "stage": "Series G",
+        "amount": 450000000,
+        "date": "2025-05",
+        "leadInvestors": [],
+        "sourceUrl": "https://www.rippling.com/blog/series-g-fundraising-tender-offer"
+      },
+      "notableInvestors": [
+        "Kleiner Perkins",
+        "Founders Fund",
+        "Greenoaks"
+      ],
+      "tags": [
+        "HR & IT platform",
+        "workforce management"
+      ],
+      "momentumScore": 61.3
+    },
+    {
+      "id": "notion",
+      "name": "Notion",
+      "description": "Connected workspace combining docs, wikis, and project management with embedded AI assistance.",
+      "sector": "sector-saas",
+      "stage": "stage-growth",
+      "headquarters": "San Francisco, CA",
+      "country": "United States",
+      "founded": 2013,
+      "website": "https://www.notion.so",
+      "totalRaised": 343000000,
+      "valuation": 11000000000,
+      "employees": "501-1,000",
+      "lastRound": {
+        "stage": "Tender offer",
+        "amount": 270000000,
+        "date": "2026-01",
+        "leadInvestors": [
+          "GIC",
+          "Sequoia",
+          "Index Ventures"
+        ],
+        "sourceUrl": "https://www.notion.com/blog/gic-sequoia-index-purchase-notion-shares"
+      },
+      "notableInvestors": [
+        "Index Ventures",
+        "Coatue",
+        "Sequoia"
+      ],
+      "tags": [
+        "workspace",
+        "productivity"
+      ],
+      "momentumScore": 80.4
+    },
+    {
+      "id": "deel",
+      "name": "Deel",
+      "description": "Global payroll and employer-of-record platform handling hiring, compliance, and payments across borders.",
+      "sector": "sector-saas",
+      "stage": "stage-growth",
+      "headquarters": "San Francisco, CA",
+      "country": "United States",
+      "founded": 2019,
+      "website": "https://www.deel.com",
+      "totalRaised": 980000000,
+      "valuation": 17300000000,
+      "employees": "1,001-5,000",
+      "lastRound": {
+        "stage": "Series E",
+        "amount": 300000000,
+        "date": "2025-10",
+        "leadInvestors": [
+          "Ribbit Capital",
+          "Andreessen Horowitz",
+          "Coatue"
+        ],
+        "sourceUrl": "https://www.deel.com/blog/new-investment-valuation/"
+      },
+      "notableInvestors": [
+        "Andreessen Horowitz",
+        "Coatue",
+        "Spark Capital"
+      ],
+      "tags": [
+        "global payroll",
+        "employer of record"
+      ],
+      "momentumScore": 73.3
+    },
+    {
+      "id": "anduril",
+      "name": "Anduril Industries",
+      "description": "Defense technology company building autonomous systems and the Lattice software platform.",
+      "sector": "sector-defense",
+      "stage": "stage-late",
+      "headquarters": "Costa Mesa, CA",
+      "country": "United States",
+      "founded": 2017,
+      "website": "https://www.anduril.com",
+      "totalRaised": 8700000000,
+      "valuation": 61000000000,
+      "employees": "1,001-5,000",
+      "lastRound": {
+        "stage": "Series H",
+        "amount": 5000000000,
+        "date": "2026-05",
+        "leadInvestors": [
+          "Thrive Capital",
+          "Andreessen Horowitz"
+        ],
+        "sourceUrl": "https://www.anduril.com/news/anduril-announces-usd5b-series-h-raise"
+      },
+      "notableInvestors": [
+        "Founders Fund",
+        "Andreessen Horowitz",
+        "8VC"
+      ],
+      "tags": [
+        "defense tech",
+        "autonomy"
+      ],
+      "momentumScore": 95.3
+    },
+    {
+      "id": "helsing",
+      "name": "Helsing",
+      "description": "European defense AI company building software for real-time battlefield awareness and autonomy.",
+      "sector": "sector-defense",
+      "stage": "stage-growth",
+      "headquarters": "Munich",
+      "country": "Germany",
+      "founded": 2021,
+      "website": "https://helsing.ai",
+      "totalRaised": 2670000000,
+      "valuation": 18000000000,
+      "employees": "201-500",
+      "lastRound": {
+        "stage": "Series E",
+        "amount": 1800000000,
+        "date": "2026-07",
+        "leadInvestors": [],
+        "sourceUrl": "https://helsing.ai/newsroom/helsing-raises-1-8bn-in-series-e"
+      },
+      "notableInvestors": [
+        "General Catalyst",
+        "Accel",
+        "Lightspeed"
+      ],
+      "tags": [
+        "defense AI",
+        "European defense"
+      ],
+      "momentumScore": 98.1
+    },
+    {
+      "id": "commonwealth-fusion",
+      "name": "Commonwealth Fusion Systems",
+      "description": "MIT spinout building the SPARC tokamak to commercialize fusion energy with high-temperature superconductors.",
+      "sector": "sector-climate",
+      "stage": "stage-growth",
+      "headquarters": "Devens, MA",
+      "country": "United States",
+      "founded": 2018,
+      "website": "https://cfs.energy",
+      "totalRaised": 4000000000,
+      "valuation": null,
+      "employees": "501-1,000",
+      "lastRound": {
+        "stage": "Equity financing",
+        "amount": 1000000000,
+        "date": "2026-07",
+        "leadInvestors": [],
+        "sourceUrl": "https://cfs.energy/news-and-media/commonwealth-fusion-systems-raises-another-1-billion-bringing-total-capital-raised-to-4-billion/"
+      },
+      "notableInvestors": [
+        "Breakthrough Energy Ventures",
+        "Bill Gates",
+        "Google"
+      ],
+      "tags": [
+        "fusion energy",
+        "deep tech"
+      ],
+      "momentumScore": 96.4
+    },
+    {
+      "id": "helion-energy",
+      "name": "Helion Energy",
+      "description": "Fusion startup pursuing a pulsed, non-thermal approach to electricity generation with commercial timelines.",
+      "sector": "sector-climate",
+      "stage": "stage-late",
+      "headquarters": "Everett, WA",
+      "country": "United States",
+      "founded": 2013,
+      "website": "https://www.helionenergy.com",
+      "totalRaised": 1500000000,
+      "valuation": 15500000000,
+      "employees": "201-500",
+      "lastRound": {
+        "stage": "Series G",
+        "amount": 500000000,
+        "date": "2026-06",
+        "leadInvestors": [
+          "Thrive Capital"
+        ],
+        "sourceUrl": "https://www.helionenergy.com/newsroom/helion-raises-465-million-series-g-funding-round-to-meet-surging-global-demand-for-power"
+      },
+      "notableInvestors": [
+        "Sam Altman",
+        "Mithril Capital",
+        "Capricorn"
+      ],
+      "tags": [
+        "fusion energy",
+        "power"
+      ],
+      "momentumScore": 93.9
+    },
+    {
+      "id": "form-energy",
+      "name": "Form Energy",
+      "description": "Grid-storage company developing long-duration iron-air batteries for multi-day renewable backup.",
+      "sector": "sector-climate",
+      "stage": "stage-late",
+      "headquarters": "Somerville, MA",
+      "country": "United States",
+      "founded": 2017,
+      "website": "https://formenergy.com",
+      "totalRaised": 2000000000,
+      "valuation": null,
+      "employees": "501-1,000",
+      "lastRound": {
+        "stage": "Series G",
+        "amount": 750000000,
+        "date": "2026-08",
+        "leadInvestors": [
+          "T. Rowe Price"
+        ],
+        "sourceUrl": "https://formenergy.com/form-energy-secures-750m-in-series-g-financing/"
+      },
+      "notableInvestors": [
+        "Breakthrough Energy",
+        "ArcelorMittal",
+        "TPG Rise"
+      ],
+      "tags": [
+        "iron-air batteries",
+        "grid storage"
+      ],
+      "momentumScore": 98.1
+    }
+  ],
+  "sectors": [
+    {
+      "key": "sector-ai",
+      "label": "AI & ML",
+      "kind": "sector",
+      "startupIds": [
+        "openai",
+        "anthropic",
+        "mistral-ai",
+        "perplexity",
+        "scale-ai",
+        "cohere",
+        "hugging-face",
+        "sierra",
+        "skild-ai"
+      ],
+      "startupCount": 9,
+      "totalRaised": 334980000000,
+      "totalValuation": 1928119300000,
+      "topStartupId": "hugging-face"
+    },
+    {
+      "key": "sector-fintech",
+      "label": "Fintech",
+      "kind": "sector",
+      "startupIds": [
+        "stripe",
+        "revolut",
+        "ramp",
+        "plaid"
+      ],
+      "startupCount": 4,
+      "totalRaised": 14884000000,
+      "totalValuation": 286000000000,
+      "topStartupId": "ramp"
+    },
+    {
+      "key": "sector-devtools",
+      "label": "Dev Tools & Infra",
+      "kind": "sector",
+      "startupIds": [
+        "databricks",
+        "vercel"
+      ],
+      "startupCount": 2,
+      "totalRaised": 14863000000,
+      "totalValuation": 197300000000,
+      "topStartupId": "databricks"
+    },
+    {
+      "key": "sector-saas",
+      "label": "SaaS & Productivity",
+      "kind": "sector",
+      "startupIds": [
+        "canva",
+        "rippling",
+        "notion",
+        "deel"
+      ],
+      "startupCount": 4,
+      "totalRaised": 3603000000,
+      "totalValuation": 77100000000,
+      "topStartupId": "notion"
+    },
+    {
+      "key": "sector-defense",
+      "label": "Defense & Space",
+      "kind": "sector",
+      "startupIds": [
+        "anduril",
+        "helsing"
+      ],
+      "startupCount": 2,
+      "totalRaised": 11370000000,
+      "totalValuation": 79000000000,
+      "topStartupId": "helsing"
+    },
+    {
+      "key": "sector-climate",
+      "label": "Climate & Energy",
+      "kind": "sector",
+      "startupIds": [
+        "commonwealth-fusion",
+        "helion-energy",
+        "form-energy"
+      ],
+      "startupCount": 3,
+      "totalRaised": 7500000000,
+      "totalValuation": 15500000000,
+      "topStartupId": "form-energy"
+    }
+  ],
+  "stages": [
+    {
+      "key": "stage-late",
+      "label": "Late stage",
+      "kind": "stage",
+      "startupIds": [
+        "openai",
+        "anthropic",
+        "scale-ai",
+        "stripe",
+        "revolut",
+        "ramp",
+        "databricks",
+        "vercel",
+        "canva",
+        "rippling",
+        "anduril",
+        "helion-energy",
+        "form-energy"
+      ],
+      "startupCount": 13,
+      "totalRaised": 366093000000,
+      "totalValuation": 2446600000000,
+      "topStartupId": "anthropic"
+    },
+    {
+      "key": "stage-growth",
+      "label": "Growth (C–E)",
+      "kind": "stage",
+      "startupIds": [
+        "mistral-ai",
+        "perplexity",
+        "cohere",
+        "hugging-face",
+        "sierra",
+        "skild-ai",
+        "plaid",
+        "notion",
+        "deel",
+        "helsing",
+        "commonwealth-fusion"
+      ],
+      "startupCount": 11,
+      "totalRaised": 21107000000,
+      "totalValuation": 136419300000,
+      "topStartupId": "hugging-face"
+    }
+  ],
+  "totals": {
+    "startups": 24,
+    "sectors": 6,
+    "stages": 2,
+    "totalRaised": 387200000000,
+    "totalValuation": 2583019300000,
+    "unicornCount": 22
+  }
+}

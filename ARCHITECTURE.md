@@ -73,8 +73,8 @@ src/app/layout.tsx
 
 Both `/premier-league` and `/la-liga` are snapshot-driven. Data is fetched from `football-data.org` by local scripts and committed as TypeScript files to `src/data/`. The app reads those files at build time — no live third-party API calls at runtime.
 
-- `src/data/premierLeagueSnapshot.ts` — Premier League standings, fixtures, scorers
-- `src/data/laLigaSnapshot.ts` — La Liga standings, fixtures, scorers
+- `src/data/premierLeagueSnapshot.json` — Premier League standings, fixtures, scorers
+- `src/data/laLigaSnapshot.json` — La Liga standings, fixtures, scorers
 
 Shared UI components for both dashboards live in `src/components/football/`.
 
@@ -94,18 +94,18 @@ Update workflow:
 ### Other standalone tools
 
 - `/mlb`, `/nba`, and `/nfl` use committed TypeScript snapshots and matching `/api/{league}/*` routes
-- `/golf` uses `src/data/golfSnapshot.ts`, rebuilt by `npm run update:golf` from ESPN's public golf leaderboard endpoint
-- `/world-cup-2026` uses `src/data/worldCupSnapshot.ts` and `/api/world-cup/*`, rebuilt by `npm run update:world-cup` from ESPN's public World Cup endpoints
+- `/golf` uses `src/data/golfSnapshot.json`, rebuilt by `npm run update:golf` from ESPN's public golf leaderboard endpoint
+- `/world-cup-2026` uses `src/data/worldCupSnapshot.json` and `/api/world-cup/*`, rebuilt by `npm run update:world-cup` from ESPN's public World Cup endpoints
 - `/bay-area-transit` uses a committed route catalog and last-good snapshot, while `/api/bay-area-transit/*` refreshes departures and alerts from BART at request time
-- `/earthquake-pulse` uses `src/data/earthquakeSnapshot.ts` as fallback while `/api/earthquake-pulse/summary` refreshes from USGS at request time
-- `/tech-startup-tracker` uses the editorially curated `src/data/techStartupSnapshot.ts`, rebuilt by `npm run update:tech-startups` from a hand-maintained seed
+- `/earthquake-pulse` uses `src/data/earthquakeSnapshot.json` as fallback while `/api/earthquake-pulse/summary` refreshes from USGS at request time
+- `/tech-startup-tracker` uses the editorially curated `src/data/techStartupSnapshot.json`, rebuilt by `npm run update:tech-startups` from a hand-maintained seed
 - `/travel` is a browser-persisted travel planner backed by `src/hooks/useTravelPlanner.ts`
-- `/formula-1` and `/fantasy-formula-1` use `src/data/formula1Snapshot.ts`
+- `/formula-1` and `/fantasy-formula-1` use `src/data/formula1Snapshot.json`
 - `/ai-dev-tools` and `/frontier-models` are live AI/knowledge surfaces; frontier model data is generated from `scripts/data/frontierModels.source.ts`
-- `/github-trending-pulse` uses `src/data/githubTrendingSnapshot.ts`
+- `/github-trending-pulse` uses `src/data/githubTrendingSnapshot.json`
 - `/news-pulse` uses `/api/news-pulse` and `src/lib/news-pulse-utils.ts`
 - `/spacex-mission-control` uses `src/components/spacex/` and `/api/spacex/*`
-- `/polling-aggregator` uses a VoteHub-backed committed polling snapshot in `src/data/pollingSnapshot.ts`
+- `/polling-aggregator` uses a VoteHub-backed committed polling snapshot in `src/data/pollingSnapshot.json`
 - `/food-map`, `/recipe-finder`, `/wine-cellar`, `/museum-log`, `/travel`, `/now`, and `/changelog` are live personal or utility surfaces
 - `/fintech-tools/budget-planner` uses `src/hooks/useBudgetPlanner.ts`
 - `/fintech-tools/interchange-iq` is a client-side fee analyzer
@@ -122,25 +122,25 @@ Update workflow:
 
 ### Football snapshots
 
-- `src/data/premierLeagueSnapshot.ts`
-- `src/data/laLigaSnapshot.ts`
+- `src/data/premierLeagueSnapshot.json`
+- `src/data/laLigaSnapshot.json`
 
 These are committed TypeScript files rebuilt by `scripts/buildPremierLeagueSnapshot.ts` and `scripts/updateLaLigaSnapshot.ts`. The API routes for each dashboard read from these files, not from `football-data.org` at runtime.
 
 ### Other dashboard snapshots
 
-- `src/data/mlbSnapshot.ts`
-- `src/data/nbaSnapshot.ts`
-- `src/data/nflSnapshot.ts`
-- `src/data/golfSnapshot.ts`
-- `src/data/worldCupSnapshot.ts`
-- `src/data/earthquakeSnapshot.ts`
-- `src/data/bayAreaTransitSnapshot.ts`
-- `src/data/formula1Snapshot.ts`
-- `src/data/githubTrendingSnapshot.ts`
-- `src/data/frontierModelsSnapshot.ts`
-- `src/data/techStartupSnapshot.ts`
-- `src/data/pollingSnapshot.ts`
+- `src/data/mlbSnapshot.json`
+- `src/data/nbaSnapshot.json`
+- `src/data/nflSnapshot.json`
+- `src/data/golfSnapshot.json`
+- `src/data/worldCupSnapshot.json`
+- `src/data/earthquakeSnapshot.json`
+- `src/data/bayAreaTransitSnapshot.json`
+- `src/data/formula1Snapshot.json`
+- `src/data/githubTrendingSnapshot.json`
+- `src/data/frontierModelsSnapshot.json`
+- `src/data/techStartupSnapshot.json`
+- `src/data/pollingSnapshot.json`
 - `src/data/museumSnapshot.ts`
 - `src/data/recipesSnapshot.ts`
 - `src/data/spacexSnapshot.generated.json`
@@ -153,7 +153,7 @@ These are committed TypeScript files rebuilt by `scripts/buildPremierLeagueSnaps
 
 ### Fantasy football
 
-- generated TypeScript position data in `src/data/fantasyPositionData.generated.ts`
+- generated TypeScript position data in `src/data/fantasyPositionData.generated.json`
 - generated public JSON snapshots in `public/data/fantasy/`
 - snapshot reader in `src/lib/fantasySnapshotServer.ts`
 - public API fallback at `/api/fantasy-data`

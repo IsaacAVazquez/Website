@@ -1,10 +1,10 @@
-import { readDurableJson, writeDurableJson } from "@/lib/durableJsonCache";
+import { readDurableJson, writeDurableJson } from "@/lib/netlifyBlobs";
 import {
   readRuntimeSurfaceHeartbeat,
   recordRuntimeSurfaceHeartbeat,
 } from "@/lib/runtimeSurfaceHeartbeat";
 
-jest.mock("@/lib/durableJsonCache", () => ({
+jest.mock("@/lib/netlifyBlobs", () => ({
   readDurableJson: jest.fn(),
   writeDurableJson: jest.fn(),
 }));

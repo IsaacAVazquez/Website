@@ -54,7 +54,7 @@ jobs:
         run: |
           bash scripts/ci/commit-and-push-snapshot.sh \
             "chore: refresh nfl snapshot [automated] [skip ci]" \
-            src/data/nflSnapshot.ts
+            src/data/nflSnapshot.json
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 

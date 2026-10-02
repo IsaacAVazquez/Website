@@ -6,7 +6,6 @@ import os from "node:os";
 import path from "node:path";
 import {
   buildFantasyVorpData,
-  renderFantasyVorpDataModule,
   resolveVorpDataset,
   type FantasyVorpDataset,
 } from "../buildFantasyVorpData";
@@ -78,8 +77,12 @@ const tempDirs: string[] = [];
 async function seedModule(record: VorpRecord): Promise<string> {
   const dir = await fs.mkdtemp(path.join(os.tmpdir(), "fantasy-vorp-"));
   tempDirs.push(dir);
-  const target = path.join(dir, "fantasyVorpData.generated.ts");
-  await fs.writeFile(target, renderFantasyVorpDataModule(record, "2026-08-20T12:00:00.000Z"), "utf8");
+  const target = path.join(dir, "fantasyVorpData.generated.json");
+  await fs.writeFile(
+    target,
+    JSON.stringify({ generatedAt: "2026-08-20T12:00:00.000Z", data: record }, null, 2),
+    "utf8"
+  );
   return target;
 }
 
@@ -134,7 +137,7 @@ describe("buildFantasyVorpData", () => {
       log.mockRestore();
     }
 
-    const written = readGeneratedSnapshot<VorpRecord>(target, "fantasyVorpData");
+    const written = readGeneratedSnapshot<{ data: VorpRecord }>(target)?.data;
     expect(written?.PPR[10].players.map((player) => player.playerId)).toEqual(
       players("seed-PPR-10").map((player) => player.playerId)
     );

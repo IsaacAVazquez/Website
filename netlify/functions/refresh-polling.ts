@@ -2,7 +2,7 @@ import {
   buildPollingSnapshotData,
   POLLING_BLOB_KEY,
 } from "../../src/lib/pollingData";
-import { writeSnapshotBlob } from "../../src/lib/snapshotBlobStore";
+import { writeSnapshotBlob } from "../../src/lib/netlifyBlobs";
 
 // Six-hour VoteHub refresh through the blob lane (see the lane description in
 // SNAPSHOT_DRIVEN_DASHBOARDS.md). buildPollingSnapshotData throws on thin or

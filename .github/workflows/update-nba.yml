@@ -53,7 +53,7 @@ jobs:
         run: |
           bash scripts/ci/commit-and-push-snapshot.sh \
             "chore: refresh nba snapshot [automated] [skip ci]" \
-            src/data/nbaSnapshot.ts
+            src/data/nbaSnapshot.json
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
