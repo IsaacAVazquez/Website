@@ -60,10 +60,6 @@ const liveSummary = createLiveSummary(
   buildPremierLeagueLiveSummary
 );
 
-export function resetPremierLeagueLiveSummaryCacheForTests(): void {
-  liveSummary.reset();
-}
-
 export async function getPremierLeagueSummary(
   options: PremierLeagueSummaryOptions = {}
 ): Promise<PremierLeagueSummary> {

@@ -446,10 +446,6 @@ export function createLiveSummary<T>(committed: () => T, refresh: (base: T) => P
   let inflight: Promise<T> | null = null;
 
   return {
-    reset(): void {
-      cache = null;
-      inflight = null;
-    },
     get(preferLive?: boolean): Promise<T> {
       if (!preferLive || !process.env.FOOTBALL_DATA_API_TOKEN?.trim()) {
         return Promise.resolve(committed());

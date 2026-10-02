@@ -2,15 +2,14 @@
  * @jest-environment node
  */
 import { laLigaSnapshot } from "@/data/laLigaSnapshot";
-import {
-  getLaLigaSummarySnapshot,
-  resetLaLigaLiveSummaryCacheForTests,
-} from "../laLigaSnapshot";
-import { resetFootballDataPacingForTests } from "../footballData";
 
-// The request pacing is module state, so each test starts with a clear minute.
-beforeEach(() => {
-  resetFootballDataPacingForTests();
+// The live cache and the request pacing are module state, so each test loads
+// a fresh module.
+let getLaLigaSummarySnapshot: typeof import("../laLigaSnapshot").getLaLigaSummarySnapshot;
+
+beforeEach(async () => {
+  jest.resetModules();
+  ({ getLaLigaSummarySnapshot } = await import("../laLigaSnapshot"));
 });
 
 function jsonResponse(payload: unknown, status = 200): Response {
@@ -87,10 +86,6 @@ describe("getLaLigaSummarySnapshot accessor", () => {
 
   beforeAll(() => {
     previousToken = process.env.FOOTBALL_DATA_API_TOKEN;
-  });
-
-  beforeEach(() => {
-    resetLaLigaLiveSummaryCacheForTests();
   });
 
   afterEach(() => {

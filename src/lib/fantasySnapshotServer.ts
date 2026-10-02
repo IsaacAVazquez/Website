@@ -135,9 +135,3 @@ export async function loadFantasyWeeklySeed(
   const { boards, ...snapshot } = weeklyCache.data;
   return { ...snapshot, boards: { [scoring]: boards[scoring] } };
 }
-
-/** Test-only: clears the in-memory snapshot caches so cache behavior is testable. */
-export function resetFantasySnapshotCache(): void {
-  snapshotCache.clear();
-  weeklyCache = null;
-}

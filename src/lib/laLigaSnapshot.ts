@@ -63,10 +63,6 @@ interface LaLigaSummaryOptions {
 // `createLiveSummary` describes. No caller passes `preferLive` today.
 const liveSummary = createLiveSummary(committedLaLigaSummarySnapshot, buildLaLigaLiveSummary);
 
-export function resetLaLigaLiveSummaryCacheForTests(): void {
-  liveSummary.reset();
-}
-
 export async function getLaLigaSummarySnapshot(
   options: LaLigaSummaryOptions = {}
 ): Promise<LaLigaSummarySnapshot> {

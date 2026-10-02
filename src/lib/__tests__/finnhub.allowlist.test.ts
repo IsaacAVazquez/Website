@@ -10,14 +10,14 @@
  */
 jest.mock("fs", () => ({ readFileSync: jest.fn() }));
 
-import { readFileSync } from "fs";
-import {
-  FinnhubAllowlistUnavailableError,
-  getAllowedSymbols,
-  __resetAllowlistCacheForTests,
-} from "@/lib/finnhub";
+import type { readFileSync } from "fs";
 
-const mockReadFileSync = readFileSync as jest.MockedFunction<typeof readFileSync>;
+type Finnhub = typeof import("@/lib/finnhub");
+
+// Each test loads a fresh module so the allowlist cache starts empty.
+let getAllowedSymbols: Finnhub["getAllowedSymbols"];
+let FinnhubAllowlistUnavailableError: Finnhub["FinnhubAllowlistUnavailableError"];
+let mockReadFileSync: jest.MockedFunction<typeof readFileSync>;
 const realFetch = global.fetch;
 
 function enoent(): NodeJS.ErrnoException {
@@ -34,9 +34,10 @@ function mockPublicAsset(symbols: string[]) {
 }
 
 describe("finnhub allowlist resolution", () => {
-  beforeEach(() => {
-    jest.clearAllMocks();
-    __resetAllowlistCacheForTests();
+  beforeEach(async () => {
+    jest.resetModules();
+    mockReadFileSync = (await import("fs")).readFileSync as typeof mockReadFileSync;
+    ({ getAllowedSymbols, FinnhubAllowlistUnavailableError } = await import("@/lib/finnhub"));
     delete process.env.URL;
   });
 
