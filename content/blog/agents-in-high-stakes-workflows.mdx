@@ -2,15 +2,15 @@
 title: "When an Agent Touches Money, Autonomy Is the Wrong Default"
 excerpt: "The agent conversation has moved to let it act on its own, and for low-stakes work that is fine. The moment an agent can move money, change production, or take an action you cannot take back, the design question stops being how autonomous can we make it and becomes how do we keep the consequential actions inspectable and reversible."
 publishedAt: "2026-02-22"
-updatedAt: "2026-07-20"
+updatedAt: "2026-10-01"
 category: "Agentic AI"
 tags: ["Agentic AI", "AI Agents", "Product Management", "AI Safety", "Guardrails"]
 featured: false
 cluster: "Agentic AI"
 author: "Isaac Vazquez"
 seo:
-  title: "High-Stakes AI Agents: Why Autonomy Is the Wrong Default"
-  description: "How to design AI agents for high-stakes workflows where actions are irreversible. Why reversibility, least privilege, real approval steps, and audit trails matter more than raw autonomy."
+  title: "Designing AI Agents for High Stakes Work"
+  description: "I think agents handling irreversible actions need limited permissions, approval steps, and audit trails. Here is how I would design those controls."
   keywords: ["high-stakes AI agents", "agent guardrails", "AI agent approvals", "least privilege AI", "reversible actions agents", "agentic AI design"]
 ---
 
@@ -23,6 +23,14 @@ What I think this means is that the interesting engineering in high-stakes agent
 ## Reversibility is the axis that should decide how much autonomy an action gets
 
 The most useful way I have found to reason about this is to sort an agent's possible actions by whether they can be taken back, because reversibility, not difficulty, is what should govern how much freedom an action gets. Reading data, drafting a response, proposing a change, all of these are reversible in the sense that a wrong one costs nothing you cannot recover, and it is completely reasonable to let an agent do them freely. Moving money, deleting records, deploying to production, sending an irreversible message, these are the actions where a single confident mistake is expensive and permanent, and they deserve a different level of control regardless of how good the agent is. Designing an agent well starts with drawing that line explicitly, marking which actions are recoverable and which are not, because everything else follows from where that line sits.
+
+### Agent Action Reversibility Matrix
+
+| Risk Tier | Example Tool Actions | Autonomy Policy | Required Guardrail Architecture |
+| :--- | :--- | :--- | :--- |
+| Low / Reversible | Read database, search documents, draft notes | Fully autonomous | Scoped read-only access, timeout ceilings |
+| Medium / Staged | Draft email, create pull request, queue ticket | Staged autonomy | Draft preview state, soft undo, operator notification |
+| High / Irreversible | Transfer funds, execute DB drop, trigger deployment | Synchronous human-in-the-loop | Least-privilege credentials, explicit MFA sign-off, immutable audit logs |
 
 ## Least privilege is the same discipline we already apply to every other system
 
@@ -37,3 +45,5 @@ The obvious answer to irreversible actions is a human approval step, and I belie
 The last piece is accepting that some bad action will get through eventually, and building so that when it does you can see what happened and reverse it. An audit trail that logs every action an agent took, with enough detail to reconstruct why, is what turns an incident from a mystery into a cleanup, and the ability to undo, whether through soft deletes, staged changes, or transactions you can roll back, is what turns a permanent mistake into a temporary one. I think of these as the layer that assumes the earlier layers will sometimes fail, which they will, because no amount of scoping and approval catches everything. The teams that will be comfortable giving agents real responsibility are the ones that can answer two questions at any time, what did the agent do and can we take it back, and if the answer to either is no, the workflow was not ready for an agent.
 
 The pattern I would pull out of this is that high-stakes agent design is mostly not about the agent, it is about the small number of actions that carry real consequences and the structure you wrap around them. Sort actions by reversibility, scope permissions to the minimum, make approvals rare and meaningful, and keep an audit trail you can act on, and you can give an agent genuine responsibility without betting the business on it never making a mistake. Chasing maximum autonomy in these workflows gets the question backwards, because the goal was never to remove the human from the consequential decisions, it was to remove them from the trivial ones so their attention is available for the decisions that cannot be undone.
+
+My [Decision Lab](/decision-lab) scores product bets on reversibility along with impact, confidence, and effort, which is the same question this matrix asks about agent actions. For keeping tool output and history from crowding out the model's reasoning, see [Context Engineering Is What Prompt Engineering Wanted to Be](/writing/context-engineering-replacing-prompt-engineering), and for the broader evaluation framework, [How I'd Evaluate an Agentic AI Product as a PM](/writing/evaluate-agentic-ai-product-pm-framework).

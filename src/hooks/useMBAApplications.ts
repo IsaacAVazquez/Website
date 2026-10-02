@@ -1,6 +1,7 @@
 "use client";
 
-import { useCallback, useMemo, useSyncExternalStore } from "react";
+import { useCallback, useMemo } from "react";
+import { useLocalStorageString } from "@/hooks/useLocalStorageString";
 import {
   buildMBAApplicationsCsv,
   buildMBAApplicationsExport,
@@ -44,43 +45,10 @@ type MBAApplicationUpdate = Partial<
   >;
 };
 
-const applicationListeners = new Set<() => void>();
-
-function emitMBAApplicationsChange() {
-  applicationListeners.forEach((listener) => listener());
-}
-
-function subscribeMBAApplications(listener: () => void) {
-  applicationListeners.add(listener);
-
-  function handleStorage(event: StorageEvent) {
-    if (event.key === null || event.key === MBA_APPLICATIONS_STORAGE_KEY) {
-      listener();
-    }
-  }
-
-  if (typeof window !== "undefined") {
-    window.addEventListener("storage", handleStorage);
-  }
-
-  return () => {
-    applicationListeners.delete(listener);
-    if (typeof window !== "undefined") {
-      window.removeEventListener("storage", handleStorage);
-    }
-  };
-}
-
-function getMBAApplicationsSnapshot() {
-  if (typeof window === "undefined") return "[]";
-  return window.localStorage.getItem(MBA_APPLICATIONS_STORAGE_KEY) ?? "[]";
-}
-
 function commitApplications(updater: (current: MBATrackedApplication[]) => MBATrackedApplication[]) {
   const current = loadMBAApplications();
   const next = updater(current);
   saveMBAApplications(next);
-  emitMBAApplicationsChange();
   return next;
 }
 
@@ -104,11 +72,7 @@ function visibleApplication(application: MBATrackedApplication) {
 }
 
 export function useMBAApplications() {
-  const storedSnapshot = useSyncExternalStore(
-    subscribeMBAApplications,
-    getMBAApplicationsSnapshot,
-    () => "[]"
-  );
+  const storedSnapshot = useLocalStorageString(MBA_APPLICATIONS_STORAGE_KEY, "[]");
 
   const applications = useMemo(
     () => parseMBAApplications(storedSnapshot),

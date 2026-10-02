@@ -1,0 +1,167 @@
+[
+  {
+    "slug": "investment-analytics-platform",
+    "title": "Investment Analytics Platform",
+    "route": "/investments"
+  },
+  {
+    "slug": "fantasy-football-analytics",
+    "title": "Fantasy Football Analytics Platform",
+    "route": "/fantasy-football"
+  },
+  {
+    "slug": "interchange-iq",
+    "title": "Interchange IQ",
+    "route": "/fintech-tools/interchange-iq"
+  },
+  {
+    "slug": "budget-planner",
+    "title": "Budget Planner",
+    "route": "/fintech-tools/budget-planner"
+  },
+  {
+    "slug": "rent-vs-buy-calculator",
+    "title": "Rent vs. Buy Calculator",
+    "route": "/fintech-tools/rent-vs-buy"
+  },
+  {
+    "slug": "news-pulse-dashboard",
+    "title": "News Pulse Dashboard",
+    "route": "/news-pulse"
+  },
+  {
+    "slug": "decision-lab",
+    "title": "Decision Lab",
+    "route": "/decision-lab"
+  },
+  {
+    "slug": "automation-enablement-assistant",
+    "title": "Automation Enablement Assistant",
+    "route": "/enablement-assistant"
+  },
+  {
+    "slug": "food-map",
+    "title": "Food Map",
+    "route": "/food-map"
+  },
+  {
+    "slug": "march-madness-2026",
+    "title": "March Madness 2026 Bracket Analysis",
+    "route": "/march-madness-2026"
+  },
+  {
+    "slug": "la-liga-pulse",
+    "title": "La Liga Pulse",
+    "route": "/la-liga"
+  },
+  {
+    "slug": "mba-role-tracker",
+    "title": "Job Search",
+    "route": "/mba-internship-notifications"
+  },
+  {
+    "slug": "spacex-mission-control",
+    "title": "SpaceX Mission Control",
+    "route": "/spacex-mission-control"
+  },
+  {
+    "slug": "premier-league-pulse",
+    "title": "Premier League Pulse",
+    "route": "/premier-league"
+  },
+  {
+    "slug": "frontier-model-tracker",
+    "title": "Frontier Model Tracker",
+    "route": "/frontier-models"
+  },
+  {
+    "slug": "ai-dev-tool-ecosystem",
+    "title": "AI Dev Tool Ecosystem",
+    "route": "/ai-dev-tools"
+  },
+  {
+    "slug": "github-trending-pulse",
+    "title": "GitHub Trending Pulse",
+    "route": "/github-trending-pulse"
+  },
+  {
+    "slug": "tech-startup-tracker",
+    "title": "Tech Startup Tracker",
+    "route": "/tech-startup-tracker"
+  },
+  {
+    "slug": "formula-1-pulse",
+    "title": "Formula 1 Pulse",
+    "route": "/formula-1"
+  },
+  {
+    "slug": "fantasy-formula-1-optimizer",
+    "title": "Fantasy Formula 1 Optimizer",
+    "route": "/fantasy-formula-1"
+  },
+  {
+    "slug": "pga-tour-pulse",
+    "title": "PGA Tour Pulse",
+    "route": "/golf"
+  },
+  {
+    "slug": "earthquake-pulse",
+    "title": "Earthquake Pulse",
+    "route": "/earthquake-pulse"
+  },
+  {
+    "slug": "world-cup-pulse",
+    "title": "World Cup Pulse",
+    "route": "/world-cup-2026"
+  },
+  {
+    "slug": "bay-area-transit-pulse",
+    "title": "Bay Area Transit Pulse",
+    "route": "/bay-area-transit"
+  },
+  {
+    "slug": "mlb-pulse",
+    "title": "MLB Pulse",
+    "route": "/mlb"
+  },
+  {
+    "slug": "nba-pulse",
+    "title": "NBA Pulse",
+    "route": "/nba"
+  },
+  {
+    "slug": "nfl-pulse",
+    "title": "NFL Pulse",
+    "route": "/nfl"
+  },
+  {
+    "slug": "polling-aggregator",
+    "title": "Polling Aggregator",
+    "route": "/polling-aggregator"
+  },
+  {
+    "slug": "museum-log",
+    "title": "Museum Log",
+    "route": "/museum-log"
+  },
+  {
+    "slug": "wine-cellar",
+    "title": "Wine Cellar",
+    "route": "/wine-cellar"
+  },
+  {
+    "slug": "recipe-finder",
+    "title": "Recipe Finder",
+    "route": "/recipe-finder"
+  },
+  {
+    "slug": "travel-planner",
+    "title": "Travel Planner",
+    "route": "/travel"
+  },
+  {
+    "slug": "travel-deal-lab",
+    "title": "Travel Deal Lab",
+    "route": "/travel-deals"
+  }
+]

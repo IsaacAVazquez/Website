@@ -2,14 +2,15 @@
 title: "Building AI-Powered Analytics: Lessons from Fantasy Football to Enterprise"
 excerpt: "What I learned building a fantasy football analytics platform applies more broadly than I expected. Here's how the architecture decisions, data pipeline tradeoffs, and product constraints map onto enterprise analytics problems."
 publishedAt: "2025-01-24"
+updatedAt: "2026-10-01"
 category: "AI & Analytics"
 tags: ["AI", "Analytics", "Machine Learning", "Data Engineering", "Software Architecture", "Fantasy Football", "Enterprise Systems", "Data Pipeline", "Real-time Analytics", "Scalability"]
 featured: true
 cluster: "Systems & Quality"
 author: "Isaac Vazquez"
 seo:
-  title: "Building AI-Powered Analytics Systems - From Fantasy Football to Enterprise"
-  description: "What I learned building a fantasy football analytics platform mapped onto enterprise problems more directly than expected, from pipeline tradeoffs to architecture decisions."
+  title: "Building AI Analytics From Fantasy Data"
+  description: "I explain what building a fantasy football analytics platform taught me about data pipelines, architecture, and decisions in enterprise analytics."
   keywords: ["AI analytics", "machine learning systems", "data pipeline architecture", "AI implementation", "enterprise analytics", "real-time AI", "ML model deployment", "analytics scaling"]
 ---
 
@@ -86,3 +87,5 @@ I also underinvested in the observability layer early in the project. Adding mon
 Building this system reinforced something I believe about analytics products generally, which is that the engineering complexity is not in the models. It is in the data infrastructure, the feature pipelines, and the production monitoring that keeps the whole thing honest over time.
 
 Fantasy football gave me a fast feedback loop and a domain where the quality of the predictions was immediately apparent to users. That made it an unusually good testbed. The architecture decisions that held up under that pressure (event-driven data flow, rigorous validation at ingestion, careful feature design, graceful degradation in inference, and observability as a first-class concern) are the same ones I would reach for building analytics systems at enterprise scale.
+
+You can see the fantasy side of this on my [fantasy football board](/fantasy-football) and [draft tracker](/fantasy-football/draft-tracker). I wrote more about designing backend systems that hold up in [Building Reliable Software Systems: Architectural Principles for Scale](/writing/building-reliable-software-systems), and the rest of what I've built is on the [dashboards page](/dashboards).

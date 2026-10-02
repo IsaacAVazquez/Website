@@ -1,4 +1,4 @@
-import { fireEvent, render } from "@testing-library/react";
+import { fireEvent, render, screen } from "@testing-library/react";
 import { PointsLadder, type PointsLadderClub } from "../PointsLadderChart";
 
 // An early-season table: 20 clubs inside 13 points, which is what pushes the
@@ -41,6 +41,16 @@ describe("PointsLadder click targets", () => {
     const label = hits("label").find((el) => el.getAttribute("data-club-id") === "12")!;
 
     fireEvent.click(label);
+
+    expect(onSelect).toHaveBeenCalledWith("12");
+  });
+
+  it.each(["Enter", " "])("selects a focused club with %s", (key) => {
+    const { onSelect } = renderWide();
+    const mark = screen.getAllByRole("button", { name: "Show C12 details" })[0]!;
+
+    mark.focus();
+    fireEvent.keyDown(mark, { key });
 
     expect(onSelect).toHaveBeenCalledWith("12");
   });

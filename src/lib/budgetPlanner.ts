@@ -7,6 +7,7 @@ import type {
   BudgetMonthMap,
   BudgetSummary,
 } from "@/types/budget";
+import { readBrowserStorageString, writeBrowserStorageJson } from "@/lib/browserStorage";
 import { DISPLAY_TIME_ZONE } from "@/lib/date-formatters";
 
 export const BUDGET_PLANNER_STORAGE_KEY = "budget_planner_months_v1";
@@ -239,7 +240,7 @@ export function loadBudgetMonths(storage?: Pick<Storage, "getItem">) {
   }
 
   if (typeof window === "undefined") return {};
-  return parseBudgetMonths(window.localStorage.getItem(BUDGET_PLANNER_STORAGE_KEY));
+  return parseBudgetMonths(readBrowserStorageString(BUDGET_PLANNER_STORAGE_KEY).value);
 }
 
 export function saveBudgetMonths(
@@ -252,7 +253,7 @@ export function saveBudgetMonths(
   }
 
   if (typeof window === "undefined") return;
-  window.localStorage.setItem(BUDGET_PLANNER_STORAGE_KEY, JSON.stringify(months));
+  writeBrowserStorageJson(BUDGET_PLANNER_STORAGE_KEY, months);
 }
 
 export function calculateBudgetSummary(month: BudgetMonth): BudgetSummary {

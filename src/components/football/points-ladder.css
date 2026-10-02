@@ -32,6 +32,20 @@
   fill: var(--c97-ink-2);
 }
 
+.c97-ladder-mark:focus {
+  outline: none;
+}
+
+.c97-ladder-focus-ring,
+.c97-ladder-focus-label {
+  stroke: transparent;
+}
+
+.c97-ladder-mark:focus-visible .c97-ladder-focus-ring,
+.c97-ladder-mark:focus-visible .c97-ladder-focus-label {
+  stroke: var(--c97-ink);
+}
+
 /*
  * Each ladder prints at the size it was drawn, 640 or 360 units wide, so the
  * type stays at 14px and the plot stops growing with the page. The plate

@@ -9,7 +9,7 @@ import type {
 } from "@/lib/fantasyProsVorpSource";
 import type { ScoringFormat } from "@/types";
 
-export const fantasyVorpDataGeneratedAt = "2026-09-30T21:27:13.868Z";
+export const fantasyVorpDataGeneratedAt = "2026-10-01T21:51:42.037Z";
 
 export interface FantasyVorpDataset {
   season: number;
@@ -26,7 +26,7 @@ export const fantasyVorpData: Record<
     "10": {
       "season": 2026,
       "sourceUrl": "https://www.fantasypros.com/nfl/rankings/ppr-vorp.php?team_size=10",
-      "accessedAt": "2026-09-30T21:27:14.496Z",
+      "accessedAt": "2026-10-01T21:51:42.720Z",
       "players": [
         {
           "playerId": "fp-22968",
@@ -1948,7 +1948,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-25533",
           "name": "Blake Grupe",
-          "team": "FA",
+          "team": "NYJ",
           "position": "K",
           "positionRank": 27,
           "rank": 214,
@@ -4342,7 +4342,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-27621",
           "name": "Coleman Owen",
-          "team": "FA",
+          "team": "GB",
           "position": "WR",
           "positionRank": 169,
           "rank": 480,
@@ -4765,7 +4765,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-27724",
           "name": "Ke'Shawn Williams",
-          "team": "FA",
+          "team": "CIN",
           "position": "WR",
           "positionRank": 193,
           "rank": 527,
@@ -4801,7 +4801,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-18168",
           "name": "Malik Turner",
-          "team": "FA",
+          "team": "SF",
           "position": "WR",
           "positionRank": 194,
           "rank": 531,
@@ -5388,7 +5388,7 @@ export const fantasyVorpData: Record<
     "12": {
       "season": 2026,
       "sourceUrl": "https://www.fantasypros.com/nfl/rankings/ppr-vorp.php",
-      "accessedAt": "2026-09-30T21:27:15.457Z",
+      "accessedAt": "2026-10-01T21:51:43.495Z",
       "players": [
         {
           "playerId": "fp-22968",
@@ -7508,7 +7508,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-25533",
           "name": "Blake Grupe",
-          "team": "FA",
+          "team": "NYJ",
           "position": "K",
           "positionRank": 27,
           "rank": 236,
@@ -9416,7 +9416,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-27621",
           "name": "Coleman Owen",
-          "team": "FA",
+          "team": "GB",
           "position": "WR",
           "positionRank": 169,
           "rank": 448,
@@ -9812,7 +9812,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-27724",
           "name": "Ke'Shawn Williams",
-          "team": "FA",
+          "team": "CIN",
           "position": "WR",
           "positionRank": 193,
           "rank": 492,
@@ -9866,7 +9866,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-18168",
           "name": "Malik Turner",
-          "team": "FA",
+          "team": "SF",
           "position": "WR",
           "positionRank": 194,
           "rank": 498,
@@ -10750,7 +10750,7 @@ export const fantasyVorpData: Record<
     "14": {
       "season": 2026,
       "sourceUrl": "https://www.fantasypros.com/nfl/rankings/ppr-vorp.php?team_size=14",
-      "accessedAt": "2026-09-30T21:27:16.178Z",
+      "accessedAt": "2026-10-01T21:51:43.968Z",
       "players": [
         {
           "playerId": "fp-22968",
@@ -13212,7 +13212,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-25533",
           "name": "Blake Grupe",
-          "team": "FA",
+          "team": "NYJ",
           "position": "K",
           "positionRank": 27,
           "rank": 274,
@@ -14940,7 +14940,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-27621",
           "name": "Coleman Owen",
-          "team": "FA",
+          "team": "GB",
           "position": "WR",
           "positionRank": 169,
           "rank": 466,
@@ -15354,7 +15354,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-27724",
           "name": "Ke'Shawn Williams",
-          "team": "FA",
+          "team": "CIN",
           "position": "WR",
           "positionRank": 193,
           "rank": 512,
@@ -15399,7 +15399,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-18168",
           "name": "Malik Turner",
-          "team": "FA",
+          "team": "SF",
           "position": "WR",
           "positionRank": 194,
           "rank": 517,
@@ -16114,7 +16114,7 @@ export const fantasyVorpData: Record<
     "10": {
       "season": 2026,
       "sourceUrl": "https://www.fantasypros.com/nfl/rankings/half-ppr-vorp.php?team_size=10",
-      "accessedAt": "2026-09-30T21:27:17.272Z",
+      "accessedAt": "2026-10-01T21:51:44.720Z",
       "players": [
         {
           "playerId": "fp-22968",
@@ -18090,7 +18090,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-25533",
           "name": "Blake Grupe",
-          "team": "FA",
+          "team": "NYJ",
           "position": "K",
           "positionRank": 27,
           "rank": 220,
@@ -20655,7 +20655,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-27621",
           "name": "Coleman Owen",
-          "team": "FA",
+          "team": "GB",
           "position": "WR",
           "positionRank": 170,
           "rank": 505,
@@ -20970,7 +20970,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-27724",
           "name": "Ke'Shawn Williams",
-          "team": "FA",
+          "team": "CIN",
           "position": "WR",
           "positionRank": 192,
           "rank": 540,
@@ -20997,7 +20997,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-18168",
           "name": "Malik Turner",
-          "team": "FA",
+          "team": "SF",
           "position": "WR",
           "positionRank": 194,
           "rank": 543,
@@ -21476,7 +21476,7 @@ export const fantasyVorpData: Record<
     "12": {
       "season": 2026,
       "sourceUrl": "https://www.fantasypros.com/nfl/rankings/half-ppr-vorp.php",
-      "accessedAt": "2026-09-30T21:27:17.687Z",
+      "accessedAt": "2026-10-01T21:51:45.495Z",
       "players": [
         {
           "playerId": "fp-22968",
@@ -23641,7 +23641,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-25533",
           "name": "Blake Grupe",
-          "team": "FA",
+          "team": "NYJ",
           "position": "K",
           "positionRank": 27,
           "rank": 241,
@@ -25522,7 +25522,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-27621",
           "name": "Coleman Owen",
-          "team": "FA",
+          "team": "GB",
           "position": "WR",
           "positionRank": 170,
           "rank": 450,
@@ -25927,7 +25927,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-27724",
           "name": "Ke'Shawn Williams",
-          "team": "FA",
+          "team": "CIN",
           "position": "WR",
           "positionRank": 192,
           "rank": 495,
@@ -26008,7 +26008,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-18168",
           "name": "Malik Turner",
-          "team": "FA",
+          "team": "SF",
           "position": "WR",
           "positionRank": 194,
           "rank": 504,
@@ -26838,7 +26838,7 @@ export const fantasyVorpData: Record<
     "14": {
       "season": 2026,
       "sourceUrl": "https://www.fantasypros.com/nfl/rankings/half-ppr-vorp.php?team_size=14",
-      "accessedAt": "2026-09-30T21:27:18.468Z",
+      "accessedAt": "2026-10-01T21:51:46.225Z",
       "players": [
         {
           "playerId": "fp-22968",
@@ -29327,7 +29327,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-25533",
           "name": "Blake Grupe",
-          "team": "FA",
+          "team": "NYJ",
           "position": "K",
           "positionRank": 27,
           "rank": 277,
@@ -31010,7 +31010,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-27621",
           "name": "Coleman Owen",
-          "team": "FA",
+          "team": "GB",
           "position": "WR",
           "positionRank": 170,
           "rank": 464,
@@ -31397,7 +31397,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-27724",
           "name": "Ke'Shawn Williams",
-          "team": "FA",
+          "team": "CIN",
           "position": "WR",
           "positionRank": 192,
           "rank": 507,
@@ -31442,7 +31442,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-18168",
           "name": "Malik Turner",
-          "team": "FA",
+          "team": "SF",
           "position": "WR",
           "positionRank": 194,
           "rank": 512,
@@ -32202,7 +32202,7 @@ export const fantasyVorpData: Record<
     "10": {
       "season": 2026,
       "sourceUrl": "https://www.fantasypros.com/nfl/rankings/vorp.php?team_size=10",
-      "accessedAt": "2026-09-30T21:27:19.322Z",
+      "accessedAt": "2026-10-01T21:51:47.132Z",
       "players": [
         {
           "playerId": "fp-22968",
@@ -34259,7 +34259,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-25533",
           "name": "Blake Grupe",
-          "team": "FA",
+          "team": "NYJ",
           "position": "K",
           "positionRank": 27,
           "rank": 229,
@@ -36617,7 +36617,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-27621",
           "name": "Coleman Owen",
-          "team": "FA",
+          "team": "GB",
           "position": "WR",
           "positionRank": 171,
           "rank": 491,
@@ -36977,7 +36977,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-27724",
           "name": "Ke'Shawn Williams",
-          "team": "FA",
+          "team": "CIN",
           "position": "WR",
           "positionRank": 192,
           "rank": 531,
@@ -37076,7 +37076,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-18168",
           "name": "Malik Turner",
-          "team": "FA",
+          "team": "SF",
           "position": "WR",
           "positionRank": 195,
           "rank": 542,
@@ -37564,7 +37564,7 @@ export const fantasyVorpData: Record<
     "12": {
       "season": 2026,
       "sourceUrl": "https://www.fantasypros.com/nfl/rankings/vorp.php",
-      "accessedAt": "2026-09-30T21:27:20.202Z",
+      "accessedAt": "2026-10-01T21:51:47.606Z",
       "players": [
         {
           "playerId": "fp-22968",
@@ -39765,7 +39765,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-25533",
           "name": "Blake Grupe",
-          "team": "FA",
+          "team": "NYJ",
           "position": "K",
           "positionRank": 27,
           "rank": 245,
@@ -42042,7 +42042,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-27621",
           "name": "Coleman Owen",
-          "team": "FA",
+          "team": "GB",
           "position": "WR",
           "positionRank": 171,
           "rank": 498,
@@ -42384,7 +42384,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-27724",
           "name": "Ke'Shawn Williams",
-          "team": "FA",
+          "team": "CIN",
           "position": "WR",
           "positionRank": 192,
           "rank": 536,
@@ -42429,7 +42429,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-18168",
           "name": "Malik Turner",
-          "team": "FA",
+          "team": "SF",
           "position": "WR",
           "positionRank": 195,
           "rank": 541,
@@ -42926,7 +42926,7 @@ export const fantasyVorpData: Record<
     "14": {
       "season": 2026,
       "sourceUrl": "https://www.fantasypros.com/nfl/rankings/vorp.php?team_size=14",
-      "accessedAt": "2026-09-30T21:27:20.899Z",
+      "accessedAt": "2026-10-01T21:51:48.049Z",
       "players": [
         {
           "playerId": "fp-22968",
@@ -45676,7 +45676,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-25533",
           "name": "Blake Grupe",
-          "team": "FA",
+          "team": "NYJ",
           "position": "K",
           "positionRank": 27,
           "rank": 306,
@@ -47062,7 +47062,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-27621",
           "name": "Coleman Owen",
-          "team": "FA",
+          "team": "GB",
           "position": "WR",
           "positionRank": 171,
           "rank": 460,
@@ -47440,7 +47440,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-27724",
           "name": "Ke'Shawn Williams",
-          "team": "FA",
+          "team": "CIN",
           "position": "WR",
           "positionRank": 192,
           "rank": 502,
@@ -47521,7 +47521,7 @@ export const fantasyVorpData: Record<
         {
           "playerId": "fp-18168",
           "name": "Malik Turner",
-          "team": "FA",
+          "team": "SF",
           "position": "WR",
           "positionRank": 195,
           "rank": 511,

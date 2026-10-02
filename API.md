@@ -2,7 +2,7 @@
 
 Current API route inventory for the app.
 
-**Last updated:** 2026-09-21
+**Last updated:** 2026-09-30
 
 ---
 
@@ -162,7 +162,7 @@ Use these as the actual source of truth:
 - `src/app/api/spacex/summary/route.ts`
 - `src/app/api/spacex/launches/route.ts`
 - `src/app/api/spacex/launches/[id]/route.ts`
-- `src/app/api/stocks/route.ts`
+- `src/app/api/stocks/route.ts` (retired; returns 410 Gone)
 - `src/app/api/mba-jobs/route.ts`
 - `src/app/api/mba-jobs/email/route.ts`
 - `src/app/api/rss/route.ts`

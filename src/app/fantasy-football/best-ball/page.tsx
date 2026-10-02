@@ -58,6 +58,15 @@ export default async function BestBallPage({ searchParams }: BestBallPageProps) 
             "Linked manual draft assistant",
             "Room-relative Draft Outlook and expected return calculator",
           ],
+          about: {
+            "@type": "Thing",
+            name: "Fantasy Football",
+            description: "Strategic game based on NFL player performance statistics",
+          },
+          audience: {
+            "@type": "Audience",
+            audienceType: "Fantasy Football Players",
+          },
         }}
       />
       <BestBallClient initialState={initialState} />

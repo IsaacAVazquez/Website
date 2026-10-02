@@ -150,6 +150,26 @@ export function writeBrowserStorageString(
   return persistenceStatus;
 }
 
+/** Remove a saved value, retaining the removal in this tab if storage is blocked. */
+export function removeBrowserStorageString(key: string): PersistenceStatus {
+  if (typeof window === "undefined") return "memory-only";
+
+  memoryValues.delete(key);
+  cachedValues.set(key, null);
+  let persistenceStatus: PersistenceStatus;
+  try {
+    window.localStorage.removeItem(key);
+    memoryOnlyKeys.delete(key);
+    persistenceStatus = "persistent";
+  } catch {
+    memoryOnlyKeys.add(key);
+    persistenceStatus = "memory-only";
+  }
+  statuses.set(key, persistenceStatus);
+  notify(key);
+  return persistenceStatus;
+}
+
 /** Serialize JSON safely; state remains usable in the caller if serialization fails. */
 export function writeBrowserStorageJson(key: string, value: unknown): PersistenceStatus {
   try {

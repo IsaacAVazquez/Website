@@ -14,6 +14,7 @@ Legacy `/projects`, `/work`, and `/blog` URLs redirect permanently to their cano
 - [About](https://isaacvazquez.com/about): Background, MBA context, credentials, product philosophy, and expertise areas.
 - [Resume](https://isaacvazquez.com/resume): Role history, education, skills, and recruiting context.
 - [Contact](https://isaacvazquez.com/contact): Recruiting, collaboration, and direct contact. Email is IsaacVazquez@berkeley.edu.
+- [Accessibility](https://isaacvazquez.com/accessibility): Accessibility commitment, WCAG 2.1 AA target, and contact details.
 - [Now](https://isaacvazquez.com/now): What Isaac is focused on and building right now.
 - [Changelog](https://isaacvazquez.com/changelog): Site updates, new tools, and shipped changes.
 - [LinkedIn](https://www.linkedin.com/in/isaac-vazquez/)
@@ -57,6 +58,7 @@ Legacy `/projects`, `/work`, and `/blog` URLs redirect permanently to their cano
 - [News Pulse](https://isaacvazquez.com/news-pulse): RSS-backed media analytics for coverage patterns, topic frequency, and lightweight sentiment across major outlets.
 - [MBA Internship Notifications](https://isaacvazquez.com/mba-internship-notifications): Recruiting tracker for MBA internships and business roles across public company job boards.
 - [Score Pools](https://isaacvazquez.com/score-pools): Exact-score prediction engine for soccer fixtures, using odds de-vig and a market-calibrated Dixon-Coles scoreline model with an expected-points optimizer.
+- [Score Pools Tracker](https://isaacvazquez.com/score-pools/tracker): Live match tracker and score-pool entry management with points progression and leaderboard context.
 
 ## Sports and event dashboards
 
@@ -83,6 +85,7 @@ Legacy `/projects`, `/work`, and `/blog` URLs redirect permanently to their cano
 - [Travel Deals](https://isaacvazquez.com/travel-deals)
 - [Wine Cellar](https://isaacvazquez.com/wine-cellar)
 - [Museum Log](https://isaacvazquez.com/museum-log)
+- [Arcade](https://isaacvazquez.com/arcade): Retro web games built with React and HTML5 Canvas.
 
 ## Writing topics
 

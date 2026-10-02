@@ -4,6 +4,15 @@ All notable changes to this repository are documented here. Format: `YYYY-MM-DD`
 
 ---
 
+## 2026-10-01
+
+- Route the remaining local tools through the shared storage helper ([#533](https://github.com/IsaacAVazquez/Website/pull/533)).
+- Add agent skills from addyosmani/agent-skills and taste-skill ([#541](https://github.com/IsaacAVazquez/Website/pull/541)).
+- Sync route, API, and hook references with the code ([#539](https://github.com/IsaacAVazquez/Website/pull/539)).
+- Link related articles and tools across 53 articles ([#542](https://github.com/IsaacAVazquez/Website/pull/542)).
+
+---
+
 ## 2026-09-30
 
 - Make the retirement suites hold under CPU load ([#519](https://github.com/IsaacAVazquez/Website/pull/519)).

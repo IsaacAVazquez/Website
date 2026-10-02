@@ -1,3 +1,6 @@
+> [!NOTE]
+> Advisory research reference (June 2026). Mentions of `--home-*` tokens and `.home-kicker` reflect the earlier Working Instrument scale prior to the 2026-09-27 Catalog 97 unification. Use `STYLING.md` and `--c97-*` tokens for all current implementations.
+
 # Web Design Trends 2026 — Filtered for This Site
 
 **Last updated:** 2026-06-25
