@@ -631,12 +631,7 @@ export function NbaClient({ initialState, summary, initialTeamSnapshot, teamColo
 }
 
 function groupLeadersByTeam(leaders: NbaLeader[]) {
-  return leaders.reduce((map, entry) => {
-    const existing = map.get(entry.teamId) ?? [];
-    existing.push(entry);
-    map.set(entry.teamId, existing);
-    return map;
-  }, new Map<string, NbaLeader[]>());
+  return Map.groupBy(leaders, (entry) => entry.teamId);
 }
 
 function toLeaderEntries(

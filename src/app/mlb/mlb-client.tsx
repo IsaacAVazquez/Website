@@ -212,13 +212,9 @@ export function MlbClient({ initialState, summary, initialTeamSnapshot }: MlbCli
   }
 
   const groupedStandings = useMemo(() => {
-    const groups = new Map<string, MlbStandingsRow[]>();
-    for (const row of visibleStandings) {
-      const key = routeState.view === "wildcard" ? `${row.league} Wild Card` : row.division;
-      const list = groups.get(key) ?? [];
-      list.push(row);
-      groups.set(key, list);
-    }
+    const groups = Map.groupBy(visibleStandings, (row) =>
+      routeState.view === "wildcard" ? `${row.league} Wild Card` : row.division
+    );
     return Array.from(groups.entries());
   }, [visibleStandings, routeState.view]);
 

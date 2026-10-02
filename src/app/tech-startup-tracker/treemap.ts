@@ -53,15 +53,13 @@ export function valuationTreemap(
   if (valid.length === 0) return [];
 
   type Node = { name: string; id?: string; valuation?: number; children?: Node[] };
-  const bySector = new Map<string, Node[]>();
-  for (const startup of valid) {
-    const list = bySector.get(startup.sector) ?? [];
-    list.push({ name: startup.name, id: startup.id, valuation: startup.valuation });
-    bySector.set(startup.sector, list);
-  }
+  const bySector = Map.groupBy(valid, (startup) => startup.sector);
   const root = hierarchy<Node>({
     name: "all",
-    children: [...bySector.entries()].map(([sector, children]) => ({ name: sector, children })),
+    children: [...bySector.entries()].map(([sector, startups]) => ({
+      name: sector,
+      children: startups.map((startup) => ({ name: startup.name, id: startup.id, valuation: startup.valuation })),
+    })),
   })
     .sum((node) => node.valuation ?? 0)
     .sort((a, b) => (b.value ?? 0) - (a.value ?? 0));

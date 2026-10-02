@@ -39,13 +39,7 @@ interface RoundGroup {
 }
 
 function groupRounds(fixtures: SnapshotFixture[]): RoundGroup[] {
-  const groups = new Map<string, SnapshotFixture[]>();
-  for (const fixture of fixtures) {
-    const label = fixture.stage ?? fixture.round ?? "Fixtures";
-    const list = groups.get(label) ?? [];
-    list.push(fixture);
-    groups.set(label, list);
-  }
+  const groups = Map.groupBy(fixtures, (fixture) => fixture.stage ?? fixture.round ?? "Fixtures");
   return Array.from(groups.entries())
     .map(([label, list]) => ({
       label,

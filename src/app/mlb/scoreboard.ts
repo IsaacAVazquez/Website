@@ -62,16 +62,10 @@ function formatGamesBack(row: MlbStandingsRow): string {
  * `division` doesn't match one of the six is skipped rather than crashing.
  */
 export function divisionBoard(standings: readonly MlbStandingsRow[]): ScoreboardDivision[] {
-  const byDivision = new Map<string, MlbStandingsRow[]>();
-  for (const row of standings) {
-    if (!row.division) continue;
-    const list = byDivision.get(row.division);
-    if (list) {
-      list.push(row);
-    } else {
-      byDivision.set(row.division, [row]);
-    }
-  }
+  const byDivision = Map.groupBy(
+    standings.filter((row) => row.division),
+    (row) => row.division
+  );
 
   return DIVISION_ORDER.filter((name) => byDivision.has(name)).map((name) => ({
     name,

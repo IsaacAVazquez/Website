@@ -15,16 +15,7 @@ function formatFixtureDate(utcDate: string): string {
 }
 
 function groupFixturesByDay(fixtures: GenericFixture[]) {
-  const groups = new Map<string, GenericFixture[]>();
-  for (const fixture of fixtures) {
-    const label = formatFixtureDate(fixture.utcDate);
-    const existing = groups.get(label);
-    if (existing) {
-      existing.push(fixture);
-    } else {
-      groups.set(label, [fixture]);
-    }
-  }
+  const groups = Map.groupBy(fixtures, (fixture) => formatFixtureDate(fixture.utcDate));
   return Array.from(groups.entries()).map(([label, items]) => ({ label, items }));
 }
 

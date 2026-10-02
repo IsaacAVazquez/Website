@@ -152,12 +152,7 @@ function selectCurrent<T extends BasePoll>(polls: T[]): T[] {
 }
 
 function buildApprovalTrend(polls: ApprovalPoll[]): ApprovalDataPoint[] {
-  const byMonth = new Map<string, ApprovalPoll[]>();
-  for (const poll of polls) {
-    const month = poll.endDate.slice(0, 7);
-    if (!byMonth.has(month)) byMonth.set(month, []);
-    byMonth.get(month)!.push(poll);
-  }
+  const byMonth = Map.groupBy(polls, (poll) => poll.endDate.slice(0, 7));
   return Array.from(byMonth.entries())
     .sort(([left], [right]) => left.localeCompare(right))
     .slice(-12)

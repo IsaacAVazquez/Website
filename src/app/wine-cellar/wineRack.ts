@@ -33,13 +33,7 @@ function toSlot(entry: WineEntry): WineRackSlot {
  * still gets its own row rather than disappearing.
  */
 export function wineRack(entries: WineEntry[]): WineRackRow[] {
-  const groups = new Map<string, WineEntry[]>();
-  for (const entry of entries) {
-    const key = entry.region.trim() || UNKNOWN_REGION;
-    const bucket = groups.get(key);
-    if (bucket) bucket.push(entry);
-    else groups.set(key, [entry]);
-  }
+  const groups = Map.groupBy(entries, (entry) => entry.region.trim() || UNKNOWN_REGION);
   return Array.from(groups.entries())
     .map(([region, group]) => ({ region, slots: group.map(toSlot) }))
     .sort(

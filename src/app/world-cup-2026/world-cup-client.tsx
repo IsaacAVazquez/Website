@@ -207,13 +207,7 @@ export function WorldCupClient({
   );
 
   const venuesByCountry = useMemo(() => {
-    const map = new Map<string, typeof tournament.venues>();
-    for (const venue of tournament.venues) {
-      const list = map.get(venue.country);
-      if (list) list.push(venue);
-      else map.set(venue.country, [venue]);
-    }
-    return Array.from(map.entries());
+    return Array.from(Map.groupBy(tournament.venues, (venue) => venue.country).entries());
   }, [tournament]);
 
   // The final fixture and the champion it settled, straight from the bracket
