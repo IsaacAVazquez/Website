@@ -9,6 +9,7 @@ import {
 } from "./data/frontierModels.source";
 import { buildFrontierModelsSnapshot as buildSnapshotData } from "../src/lib/frontierModels";
 import type { FrontierModelsSnapshot } from "../src/types/frontierModels";
+import { writeFileAtomic } from "./snapshotFallback";
 
 interface BuildOptions {
   projectRoot?: string;
@@ -51,11 +52,7 @@ export const frontierModelsSnapshot: FrontierModelsSnapshot = ${JSON.stringify(s
 `;
 
   await fs.mkdir(path.dirname(snapshotPath), { recursive: true });
-  // Atomic write: write to a temp file first, then rename. This prevents
-  // build/readers from seeing a partial snapshot if the process is interrupted.
-  const tmpPath = `${snapshotPath}.tmp-${process.pid}-${Date.now()}`;
-  await fs.writeFile(tmpPath, fileContents, "utf8");
-  await fs.rename(tmpPath, snapshotPath);
+  writeFileAtomic(snapshotPath, fileContents);
 
   logger.log(
     `Frontier models snapshot written: ${snapshot.models.length} models across ${snapshot.providers.length} providers.`

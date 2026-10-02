@@ -1,6 +1,6 @@
-import { rename, writeFile } from "fs/promises";
 import path from "path";
 import { withRetry } from "./fetchRetry";
+import { writeFileAtomic } from "./snapshotFallback";
 import {
   FANTASY_PUBLIC_POSITIONS,
   assertFantasyProsRefreshCoverage,
@@ -11,12 +11,6 @@ import {
 import { fantasyPositionData } from "@/data/fantasyPositionData.generated";
 import { getSnapshotSeason } from "@/lib/fantasySnapshotBuilder";
 import { Player, ScoringFormat } from "@/types";
-
-async function atomicWriteFile(targetPath: string, contents: string) {
-  const tempPath = `${targetPath}.tmp`;
-  await writeFile(tempPath, contents, "utf8");
-  await rename(tempPath, targetPath);
-}
 
 const OUTPUT_PATH = path.join(
   process.cwd(),
@@ -155,7 +149,7 @@ async function main() {
     throw new Error("FantasyPros refresh completed without a source label.");
   }
 
-  await atomicWriteFile(
+  writeFileAtomic(
     OUTPUT_PATH,
     renderGeneratedModule(dataset, generatedAt, selectedSourceLabel)
   );

@@ -2,23 +2,21 @@
  * @jest-environment node
  */
 const mockBuildNflSnapshot = jest.fn();
-const mockReadGeneratedSnapshot = jest.fn();
+const mockReadFileSync = jest.fn();
 const mockWriteFileSync = jest.fn();
 const mockRenameSync = jest.fn();
 
 jest.mock("node:fs", () => ({
+  readFileSync: (...args: unknown[]) => mockReadFileSync(...args),
   writeFileSync: (...args: unknown[]) => mockWriteFileSync(...args),
   renameSync: (...args: unknown[]) => mockRenameSync(...args),
 }));
 jest.mock("../../src/lib/nflData", () => ({
   buildNflSnapshot: (...args: unknown[]) => mockBuildNflSnapshot(...args),
 }));
-jest.mock("../snapshotFallback", () => ({
-  readGeneratedSnapshot: (...args: unknown[]) =>
-    mockReadGeneratedSnapshot(...args),
-}));
 
 const committed = { updatedAt: "2026-09-22", teams: [{ id: "kc" }] };
+const committedFile = `export const nflSnapshot: NFLSnapshot = ${JSON.stringify(committed)};\n`;
 
 // The script runs main() on import and exports nothing to await.
 async function runScript() {
@@ -34,7 +32,7 @@ describe("updateNflSnapshot", () => {
     jest.clearAllMocks();
     jest.spyOn(console, "log").mockImplementation(() => undefined);
     jest.spyOn(console, "warn").mockImplementation(() => undefined);
-    mockReadGeneratedSnapshot.mockReturnValue(committed);
+    mockReadFileSync.mockReturnValue(committedFile);
   });
 
   afterEach(() => {

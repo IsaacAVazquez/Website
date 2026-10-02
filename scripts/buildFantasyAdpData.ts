@@ -1,8 +1,7 @@
-import { rename, writeFile } from "fs/promises";
 import path from "path";
 import { fileURLToPath } from "url";
 import { withRetry } from "./fetchRetry";
-import { readGeneratedSnapshot } from "./snapshotFallback";
+import { readGeneratedSnapshot, writeFileAtomic } from "./snapshotFallback";
 import { fetchFantasyAdpBoard, type FantasyAdpEntry } from "@/lib/fantasyAdpSource";
 import { getSnapshotSeason } from "@/lib/fantasySnapshotBuilder";
 import { ScoringFormat } from "@/types";
@@ -101,12 +100,6 @@ function pause(ms: number) {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
-async function atomicWriteFile(targetPath: string, contents: string) {
-  const tempPath = `${targetPath}.tmp`;
-  await writeFile(tempPath, contents, "utf8");
-  await rename(tempPath, targetPath);
-}
-
 function renderGeneratedModule(data: FantasyAdpDataRecord, generatedAt: string): string {
   const serialized = JSON.stringify(data, null, 2);
 
@@ -189,7 +182,7 @@ async function main() {
     return;
   }
 
-  await atomicWriteFile(OUTPUT_PATH, renderGeneratedModule(dataset, generatedAt));
+  writeFileAtomic(OUTPUT_PATH, renderGeneratedModule(dataset, generatedAt));
 
   for (const note of notes) console.log(`[adp] ${note}`);
   console.log(`Wrote fantasy ADP data: ${OUTPUT_PATH}`);

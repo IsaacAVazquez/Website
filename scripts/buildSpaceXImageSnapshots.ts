@@ -3,6 +3,7 @@ import crypto from "crypto";
 import { promises as fs } from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
+import { writeFileAtomic } from "./snapshotFallback";
 
 // Load SPACEDEVS_API_TOKEN from .env.local for local runs (read lazily at fetch
 // time). In CI the token is provided via the workflow env block instead.
@@ -382,12 +383,7 @@ async function readExistingManifest(
 
 async function writeJsonFile(filePath: string, data: unknown): Promise<void> {
   await fs.mkdir(path.dirname(filePath), { recursive: true });
-  // Atomic write: write to a temp file first, then rename. This prevents
-  // readers from seeing a partial/truncated JSON file if the process is
-  // interrupted mid-write.
-  const tmpPath = `${filePath}.tmp-${process.pid}-${Date.now()}`;
-  await fs.writeFile(tmpPath, `${JSON.stringify(data, null, 2)}\n`, "utf8");
-  await fs.rename(tmpPath, filePath);
+  writeFileAtomic(filePath, `${JSON.stringify(data, null, 2)}\n`);
 }
 
 function hashRemoteUrl(value: string): string {

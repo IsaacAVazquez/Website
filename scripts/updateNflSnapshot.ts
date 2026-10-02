@@ -9,57 +9,28 @@
  * targets the most recent NFL season present in the standings CSV.
  */
 
-import { renameSync, writeFileSync } from "node:fs";
 import { resolve } from "node:path";
 
 import { buildNflSnapshot } from "../src/lib/nflData";
 import type { NFLSnapshot } from "../src/types/nfl";
-import { readGeneratedSnapshot } from "./snapshotFallback";
-
-/**
- * Atomic write: write to .tmp then rename. Renames are atomic on POSIX, so the
- * destination file is never observed in a half-written state if the process is
- * killed mid-write.
- */
-function writeFileAtomic(path: string, content: string): void {
-  const tmp = `${path}.tmp`;
-  writeFileSync(tmp, content, "utf8");
-  renameSync(tmp, path);
-}
+import { buildOrKeepExisting, writeFileAtomic } from "./snapshotFallback";
 
 async function main() {
   const outPath = resolve(__dirname, "../src/data/nflSnapshot.ts");
 
   console.log("🏈 Building NFL snapshot from NFLverse…");
-  let snapshot: NFLSnapshot;
-  try {
-    snapshot = await buildNflSnapshot();
-  } catch (error) {
-    const existing = readGeneratedSnapshot<NFLSnapshot>(outPath, "nflSnapshot");
-    if (existing && existing.teams.length > 0) {
-      console.warn(
-        "🏈 NFL snapshot refresh failed; keeping the existing snapshot.",
-        error
-      );
-      // The kept snapshot can still pass the freshness check, so the exit code
-      // is what reports this run.
-      process.exitCode = 1;
-      return;
-    }
-    throw error;
-  }
-
-  // A successful build with no teams (off-season / schema drift) must not
-  // overwrite the good committed snapshot. Fall back to the existing data.
-  if (snapshot.teams.length === 0) {
-    const existing = readGeneratedSnapshot<NFLSnapshot>(outPath, "nflSnapshot");
-    if (existing && existing.teams.length > 0) {
-      console.warn(
-        "🏈 NFL snapshot build returned no teams; keeping the existing snapshot."
-      );
-      process.exitCode = 1;
-      return;
-    }
+  const snapshot = await buildOrKeepExisting(
+    outPath,
+    "nflSnapshot",
+    "NFL",
+    () => buildNflSnapshot(),
+    (built: NFLSnapshot) => built.teams.length > 0
+  );
+  if (!snapshot) {
+    // The kept snapshot can still pass the freshness check, so the exit code
+    // is what reports this run.
+    process.exitCode = 1;
+    return;
   }
 
   const output = `import type { NFLSnapshot } from "@/types/nfl";

@@ -1,7 +1,6 @@
-import { rename, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { withRetry } from "./fetchRetry";
-import { readGeneratedSnapshot } from "./snapshotFallback";
+import { readGeneratedSnapshot, writeFileAtomic } from "./snapshotFallback";
 import {
   FANTASY_VORP_TEAM_SIZES,
   fetchFantasyProsVorpBoard,
@@ -64,12 +63,6 @@ export function resolveVorpDataset(
   if (usable(fresh)) return { record: fresh, source: "fresh" };
   if (usable(previous)) return { record: previous, source: "previous" };
   return { record: null, source: "empty" };
-}
-
-async function atomicWriteFile(targetPath: string, contents: string) {
-  const tempPath = `${targetPath}.tmp`;
-  await writeFile(tempPath, contents, "utf8");
-  await rename(tempPath, targetPath);
 }
 
 function pause(ms: number) {
@@ -165,7 +158,7 @@ export async function buildFantasyVorpData(
     return;
   }
 
-  await atomicWriteFile(outputPath, renderFantasyVorpDataModule(data, generatedAt));
+  writeFileAtomic(outputPath, renderFantasyVorpDataModule(data, generatedAt));
   for (const note of notes) console.log(`[vorp] ${note}`);
   console.log(`Wrote fantasy VORP data: ${outputPath}`);
 }
