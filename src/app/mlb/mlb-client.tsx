@@ -42,6 +42,7 @@ import { MlbScoreboard } from "./MlbScoreboard";
 import "./mlb.css";
 import { useRouteSync } from "@/hooks/useRouteSync";
 import { useCachedSnapshot } from "@/hooks/useCachedSnapshot";
+import { formatFixed } from "@/components/football/fixtureFormat";
 
 interface MlbClientProps {
   initialState: MlbRouteState;
@@ -65,10 +66,6 @@ const postseasonRoundLabels: Record<string, string> = {
   L: "League Championship Series",
   W: "World Series",
 };
-
-function formatFixed(value: number, digits = 2) {
-  return Number.isFinite(value) ? value.toFixed(digits) : "—";
-}
 
 function formatGamesBack(games: number) {
   if (!Number.isFinite(games) || games <= 0) return "—";
@@ -184,7 +181,6 @@ export function MlbClient({ initialState, summary, initialTeamSnapshot }: MlbCli
     "Unable to load team snapshot."
   );
   const [activeDetailTab, setActiveDetailTab] = useState<DetailTab>("team");
-
 
   const desiredHref = buildHref(
     { view: routeState.view, team: selectedTeamId },

@@ -17,6 +17,11 @@ const DATE_ONLY_FORMATTER = new Intl.DateTimeFormat("en-US", {
   timeZone: "UTC",
 });
 
+/** A rate to fixed decimals, or an em dash when it divided by zero. */
+export function formatFixed(value: number, digits = 2): string {
+  return Number.isFinite(value) ? value.toFixed(digits) : "—";
+}
+
 export function formatFixtureDateTime(fixture: GenericFixture): string {
   const date = new Date(fixture.utcDate);
   if (Number.isNaN(date.getTime())) return "Time TBD";

@@ -3,7 +3,6 @@
 import {
   useMemo,
   useState,
-  type CSSProperties,
 } from "react";
 import { useSearchParams } from "next/navigation";
 import { ExternalLink } from "lucide-react";
@@ -26,7 +25,7 @@ import { DeferredClubDrawer } from "@/components/football/DeferredClubDrawer";
 import type { ClubDrawerClub, ClubDrawerScorer } from "@/components/football/ClubDrawer";
 import { PointsLadder } from "@/components/football/PointsLadderChart";
 import { LeagueProgrammeTable, type ProgrammeTableRow } from "@/components/football/LeagueProgrammeTable";
-import { LEAGUE_ZONE_LABEL, leagueZone, type LeagueZone, formatPointsGap } from "@/components/football/ladderGeometry";
+import { LEAGUE_ZONE_LABEL, leagueZone, type LeagueZone, formatPointsGap, zoneChipStyle } from "@/components/football/ladderGeometry";
 import { Catalog97ProjectHero } from "@/components/catalog97/Catalog97ProjectHero";
 import { PROJECT_PRESS } from "@/constants/projectPress";
 import type {
@@ -50,6 +49,8 @@ import {
 } from "./la-liga-state.core";
 import { useRouteSync } from "@/hooks/useRouteSync";
 import { useCachedSnapshot } from "@/hooks/useCachedSnapshot";
+import { formatFixed } from "@/components/football/fixtureFormat";
+import { ClubLeaderCard } from "@/components/football/ClubLeaderCard";
 
 interface LaLigaClientProps {
   initialState: LaLigaRouteState;
@@ -63,20 +64,6 @@ const VIEW_OPTIONS: Array<{ id: LaLigaView; label: string }> = [
   { id: "europe", label: "European places" },
   { id: "relegation", label: "Relegation fight" },
 ];
-
-function zoneChipStyle(zone: LeagueZone): CSSProperties {
-  switch (zone) {
-    case "champions":
-      return { color: "var(--c97-accent)" };
-    case "europa":
-    case "conference":
-      return { color: "var(--c97-positive)" };
-    case "relegation":
-      return { color: "var(--c97-negative)" };
-    default:
-      return { color: "var(--c97-ink-2)" };
-  }
-}
 
 export function LaLigaClient({
   initialState,
@@ -108,7 +95,6 @@ export function LaLigaClient({
         .map((club, index) => [club.id, index + 1] as const)
     )
   ), [clubs]);
-  const scorersByClub = useMemo(() => groupLeadersByClub(summary.scorers), [summary.scorers]);
   const crestByClubId = useMemo(() => (
     new Map(
       summary.teams.map((team) => [
@@ -247,7 +233,7 @@ export function LaLigaClient({
     safetyLine,
     dropLine,
   });
-  const clubScorers = scorersByClub.get(selectedClub.id) ?? [];
+  const clubScorers = summary.scorers.filter((entry) => entry.clubId === selectedClub.id);
   const clubCount = clubs.length;
   const selectedZone: LeagueZone = leagueZone(selectedClub.position, clubCount);
   const formSequence = teamSnapshot?.form?.sequence ?? [];
@@ -623,46 +609,6 @@ export function LaLigaClient({
   );
 }
 
-function ClubLeaderCard({
-  title,
-  leader,
-  statLabel,
-  emptyLabel,
-}: {
-  title: string;
-  leader?: LaLigaLeader;
-  statLabel: string;
-  emptyLabel: string;
-}) {
-  return (
-    <div className="c97-panel">
-      <p className="c97-kicker">{title}</p>
-      {leader ? (
-        <>
-          <p className="text-lg font-bold c97-serif" style={{ marginTop: "var(--c97-sp-1)" }}>{leader.name}</p>
-          <p className="c97-prose" style={{ marginTop: "var(--c97-sp-1)" }}>
-            {leader.total} {statLabel.toLowerCase()} in {leader.appearances} matches
-          </p>
-          <p className="c97-kicker" style={{ marginTop: "var(--c97-sp-1)" }}>
-            {formatFixed(leader.perMatch)} per match
-          </p>
-        </>
-      ) : (
-        <p className="c97-prose" style={{ marginTop: "var(--c97-sp-1)" }}>{emptyLabel}</p>
-      )}
-    </div>
-  );
-}
-
-function groupLeadersByClub(leaders: LaLigaLeader[]) {
-  return leaders.reduce((map, leaderEntry) => {
-    const existing = map.get(leaderEntry.clubId) ?? [];
-    existing.push(leaderEntry);
-    map.set(leaderEntry.clubId, existing);
-    return map;
-  }, new Map<string, LaLigaLeader[]>());
-}
-
 /**
  * Builds a club's top-scorer list for the drawer by cross-referencing the
  * separate goals (`scorers`) and assists (`assists`) boards by player name —
@@ -788,6 +734,3 @@ function getClubPressurePoints(
   ];
 }
 
-function formatFixed(value: number) {
-  return Number.isFinite(value) ? value.toFixed(2) : "—";
-}
