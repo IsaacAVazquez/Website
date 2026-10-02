@@ -1,11 +1,11 @@
 {
-  "generatedAt": "2026-10-01T21:51:42.037Z",
+  "generatedAt": "2026-10-02T21:21:23.770Z",
   "data": {
     "PPR": {
       "10": {
         "season": 2026,
         "sourceUrl": "https://www.fantasypros.com/nfl/rankings/ppr-vorp.php?team_size=10",
-        "accessedAt": "2026-10-01T21:51:42.720Z",
+        "accessedAt": "2026-10-02T21:21:24.624Z",
         "players": [
           {
             "playerId": "fp-22968",
@@ -3970,7 +3970,7 @@
           {
             "playerId": "fp-25627",
             "name": "Xavier Smith",
-            "team": "LAR",
+            "team": "FA",
             "position": "WR",
             "positionRank": 149,
             "rank": 441,
@@ -5367,7 +5367,7 @@
       "12": {
         "season": 2026,
         "sourceUrl": "https://www.fantasypros.com/nfl/rankings/ppr-vorp.php",
-        "accessedAt": "2026-10-01T21:51:43.495Z",
+        "accessedAt": "2026-10-02T21:21:25.262Z",
         "players": [
           {
             "playerId": "fp-22968",
@@ -9170,7 +9170,7 @@
           {
             "playerId": "fp-25627",
             "name": "Xavier Smith",
-            "team": "LAR",
+            "team": "FA",
             "position": "WR",
             "positionRank": 149,
             "rank": 423,
@@ -10729,7 +10729,7 @@
       "14": {
         "season": 2026,
         "sourceUrl": "https://www.fantasypros.com/nfl/rankings/ppr-vorp.php?team_size=14",
-        "accessedAt": "2026-10-01T21:51:43.968Z",
+        "accessedAt": "2026-10-02T21:21:25.763Z",
         "players": [
           {
             "playerId": "fp-22968",
@@ -14595,7 +14595,7 @@
           {
             "playerId": "fp-25627",
             "name": "Xavier Smith",
-            "team": "LAR",
+            "team": "FA",
             "position": "WR",
             "positionRank": 149,
             "rank": 430,
@@ -16093,7 +16093,7 @@
       "10": {
         "season": 2026,
         "sourceUrl": "https://www.fantasypros.com/nfl/rankings/half-ppr-vorp.php?team_size=10",
-        "accessedAt": "2026-10-01T21:51:44.720Z",
+        "accessedAt": "2026-10-02T21:21:26.395Z",
         "players": [
           {
             "playerId": "fp-22968",
@@ -20301,7 +20301,7 @@
           {
             "playerId": "fp-25627",
             "name": "Xavier Smith",
-            "team": "LAR",
+            "team": "FA",
             "position": "WR",
             "positionRank": 150,
             "rank": 468,
@@ -21455,7 +21455,7 @@
       "12": {
         "season": 2026,
         "sourceUrl": "https://www.fantasypros.com/nfl/rankings/half-ppr-vorp.php",
-        "accessedAt": "2026-10-01T21:51:45.495Z",
+        "accessedAt": "2026-10-02T21:21:26.797Z",
         "players": [
           {
             "playerId": "fp-22968",
@@ -25285,7 +25285,7 @@
           {
             "playerId": "fp-25627",
             "name": "Xavier Smith",
-            "team": "LAR",
+            "team": "FA",
             "position": "WR",
             "positionRank": 150,
             "rank": 426,
@@ -26817,7 +26817,7 @@
       "14": {
         "season": 2026,
         "sourceUrl": "https://www.fantasypros.com/nfl/rankings/half-ppr-vorp.php?team_size=14",
-        "accessedAt": "2026-10-01T21:51:46.225Z",
+        "accessedAt": "2026-10-02T21:21:27.435Z",
         "players": [
           {
             "playerId": "fp-22968",
@@ -30674,7 +30674,7 @@
           {
             "playerId": "fp-25627",
             "name": "Xavier Smith",
-            "team": "LAR",
+            "team": "FA",
             "position": "WR",
             "positionRank": 150,
             "rank": 429,
@@ -32181,7 +32181,7 @@
       "10": {
         "season": 2026,
         "sourceUrl": "https://www.fantasypros.com/nfl/rankings/vorp.php?team_size=10",
-        "accessedAt": "2026-10-01T21:51:47.132Z",
+        "accessedAt": "2026-10-02T21:21:28.043Z",
         "players": [
           {
             "playerId": "fp-22968",
@@ -36281,7 +36281,7 @@
           {
             "playerId": "fp-25627",
             "name": "Xavier Smith",
-            "team": "LAR",
+            "team": "FA",
             "position": "WR",
             "positionRank": 149,
             "rank": 456,
@@ -37543,7 +37543,7 @@
       "12": {
         "season": 2026,
         "sourceUrl": "https://www.fantasypros.com/nfl/rankings/vorp.php",
-        "accessedAt": "2026-10-01T21:51:47.606Z",
+        "accessedAt": "2026-10-02T21:21:28.449Z",
         "players": [
           {
             "playerId": "fp-22968",
@@ -41670,7 +41670,7 @@
           {
             "playerId": "fp-25627",
             "name": "Xavier Smith",
-            "team": "LAR",
+            "team": "FA",
             "position": "WR",
             "positionRank": 149,
             "rank": 459,
@@ -42905,7 +42905,7 @@
       "14": {
         "season": 2026,
         "sourceUrl": "https://www.fantasypros.com/nfl/rankings/vorp.php?team_size=14",
-        "accessedAt": "2026-10-01T21:51:48.049Z",
+        "accessedAt": "2026-10-02T21:21:28.848Z",
         "players": [
           {
             "playerId": "fp-22968",
@@ -46735,7 +46735,7 @@
           {
             "playerId": "fp-25627",
             "name": "Xavier Smith",
-            "team": "LAR",
+            "team": "FA",
             "position": "WR",
             "positionRank": 149,
             "rank": 426,
