@@ -60,7 +60,7 @@ test.describe('Homepage', () => {
     await expect(page.getByRole('link', { name: /see the work/i }).first()).toBeVisible()
     await expect(page.getByRole('link', { name: /start a conversation/i }).first()).toBeVisible()
     await expect(page.getByRole('heading', { name: /selected work/i })).toBeVisible()
-    await expect(page.getByRole('heading', { name: /recent writing/i })).toBeVisible()
+    await expect(page.getByRole('heading', { name: /what i built at juno and civitech/i })).toBeVisible()
     await expect(page.getByRole('button', { name: /search the site/i })).toBeVisible()
     await expect(page.getByRole('button', { name: /theme:/i })).toBeVisible()
   })
@@ -157,18 +157,20 @@ test.describe('Homepage', () => {
     const selectedWork = page.locator('section').filter({
       has: page.getByRole('heading', { name: /selected work/i }),
     })
-    const recentWriting = page.locator('section').filter({
-      has: page.getByRole('heading', { name: /recent writing/i }),
+    const workWriteUps = page.locator('section').filter({
+      has: page.getByRole('heading', { name: /what i built at juno and civitech/i }),
     })
 
     await expect(selectedWork).toBeVisible()
-    await expect(recentWriting).toBeVisible()
+    await expect(workWriteUps).toBeVisible()
     await expect(page.getByRole('heading', { name: /^dashboards$/i })).toBeVisible()
     // Every current case study became a live tool, so the cards link straight
     // to the tool instead of through the /portfolio/<slug> redirect.
     expect(await selectedWork.locator('a[href]').count()).toBeGreaterThan(0)
     expect(await selectedWork.locator('a[href^="/portfolio/"]').count()).toBe(0)
-    expect(await recentWriting.locator('a[href^="/writing/"]').count()).toBeGreaterThan(0)
+    // The band is pinned to the two job write-ups, not the newest posts.
+    await expect(workWriteUps.locator('a[href="/writing/juno-mba-growth-internship"]')).toHaveCount(1)
+    await expect(workWriteUps.locator('a[href="/writing/civitech-quality-and-product-work"]')).toHaveCount(1)
   })
 
   test('supports dark theme on the homepage', async ({ page }) => {
@@ -180,7 +182,7 @@ test.describe('Homepage', () => {
 
     await expect(page.locator('html')).toHaveClass(/dark/)
     await expect(page.locator('.c97-page')).toBeVisible()
-    await expect(page.getByRole('heading', { name: /recent writing/i })).toBeVisible()
+    await expect(page.getByRole('heading', { name: /what i built at juno and civitech/i })).toBeVisible()
   })
 
   test('keeps homepage content visible when reduced motion is requested', async ({ page }) => {

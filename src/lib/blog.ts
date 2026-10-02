@@ -5,6 +5,7 @@ import {
   BLOG_ARCHIVE_BUCKET_ORDER,
   BLOG_CLUSTER_ORDER,
   getBlogTopicPage,
+  HOMEPAGE_PROOF_OF_WORK_SLUGS,
   getBlogCoverImageUrl,
   type BlogArchiveBucket,
   type BlogCluster,
@@ -342,6 +343,13 @@ export async function getAllBlogPosts(): Promise<BlogPost[]> {
   }
 
   return posts.sort(compareBlogEntriesByPublishedDateDesc);
+}
+
+export function getHomepageProofOfWorkBlogPostPreviews(): BlogPostPreview[] {
+  return HOMEPAGE_PROOF_OF_WORK_SLUGS.flatMap((slug) => {
+    const preview = getBlogPostPreviewBySlug(slug);
+    return preview ? [preview] : [];
+  });
 }
 
 export function getCuratedBlogPostPreviewsByCluster(): Record<

@@ -107,11 +107,12 @@ export function Catalog97About() {
             </p>
             <p className="c97-prose" style={{ marginTop: "var(--c97-sp-2)" }}>
               I left Civitech in August 2025 to start at Haas, because I wanted
-              to move fully into product management, and I spent summer 2026 as
-              the MBA growth intern at Juno, a fintech company that negotiates
-              group rates on student loans. Now I&rsquo;m looking for a
-              full-time product management role that starts after I graduate in
-              May 2027, and I&rsquo;m interested in consumer tech broadly.
+              to move fully into product work, and I spent summer 2026 as the
+              MBA growth intern at Juno, a fintech company that negotiates group
+              rates on student loans. Now I&rsquo;m looking for a full-time role
+              in product management, product marketing, or program management
+              that starts after I graduate in May 2027, and I&rsquo;m interested
+              in consumer tech broadly.
             </p>
             <p className="c97-prose" style={{ marginTop: "var(--c97-sp-2)" }}>
               I picked up the habit of checking a number before trusting it in
