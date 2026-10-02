@@ -18,57 +18,17 @@ concurrency:
 jobs:
   refresh-la-liga:
     name: Refresh La Liga Snapshot
-    runs-on: ubuntu-latest
-    # Cap a hung football-data.org call so we don't burn 6 hours of runner.
-    timeout-minutes: 30
-
+    # FOOTBALL_DATA_API_TOKEN reaches the builder through the inherited secrets.
+    uses: ./.github/workflows/refresh-snapshot.yml
+    secrets: inherit
     permissions:
       contents: write
       issues: write
-
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v7
-        with:
-          ref: main
-          fetch-depth: 1
-
-      - name: Set up Node.js
-        uses: actions/setup-node@v7
-        with:
-          node-version-file: .nvmrc
-          cache: "npm"
-
-      - name: Install dependencies
-        run: npm ci --prefer-offline --no-audit --fund=false
-
-      - name: Refresh La Liga snapshot
-        timeout-minutes: 20
-        run: npm run update:la-liga
-        env:
-          FOOTBALL_DATA_API_TOKEN: ${{ secrets.FOOTBALL_DATA_API_TOKEN }}
-          NODE_ENV: production
-
-      - name: Verify refresh freshness and quality
-        run: npx tsx scripts/verifyDataRefresh.ts la-liga
-
-      - name: Commit and push refreshed snapshot
-        id: commit
-        run: |
-          bash scripts/ci/commit-and-push-snapshot.sh \
-            "chore: refresh la liga snapshot [automated] [skip ci]" \
-            src/data/laLigaSnapshot.json
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Notify on failure via GitHub issue
-        if: failure()
-        uses: actions/github-script@v9
-        with:
-          script: await require('./scripts/ci/failure-issue.cjs').open({ github, context }, 'la-liga-refresh-failure', 'La Liga refresh failed')
-
-      - name: Close resolved failure issues
-        if: success()
-        uses: actions/github-script@v9
-        with:
-          script: await require('./scripts/ci/failure-issue.cjs').close({ github, context }, 'la-liga-refresh-failure')
+    with:
+      id: la-liga
+      snapshot-path: src/data/laLigaSnapshot.json
+      label: la-liga-refresh-failure
+      title: La Liga refresh failed
+      # Cap a hung football-data.org call so we don't burn 6 hours of runner.
+      timeout-minutes: 30
+      refresh-timeout-minutes: 20

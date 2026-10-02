@@ -1,0 +1,98 @@
+name: Refresh Snapshot
+
+# The shared body of the snapshot refresh lanes. Each update-*.yml caller owns
+# its name, schedule, and concurrency group and passes the per-lane fields in.
+# The caller job has to grant `contents: write` and `issues: write`, since a
+# called workflow can only narrow the permissions it is handed.
+on:
+  workflow_call:
+    inputs:
+      id:
+        description: Lane id, shared by `npm run update:<id>` and `scripts/verifyDataRefresh.ts <id>`.
+        required: true
+        type: string
+      snapshot-path:
+        description: Committed artifact passed to commit-and-push-snapshot.sh.
+        required: true
+        type: string
+      label:
+        description: Failure-issue label.
+        required: true
+        type: string
+      title:
+        description: Failure-issue title; the helper appends the date.
+        required: true
+        type: string
+      timeout-minutes:
+        required: false
+        type: number
+        default: 20
+      refresh-timeout-minutes:
+        required: false
+        type: number
+        default: 12
+
+jobs:
+  refresh:
+    name: Refresh ${{ inputs.id }} snapshot
+    runs-on: ubuntu-latest
+    timeout-minutes: ${{ inputs.timeout-minutes }}
+
+    permissions:
+      contents: write
+      issues: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v7
+        with:
+          ref: main
+          fetch-depth: 1
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v7
+        with:
+          node-version-file: .nvmrc
+          cache: "npm"
+
+      - name: Install dependencies
+        run: npm ci --prefer-offline --no-audit --fund=false
+
+      - name: Refresh snapshot
+        timeout-minutes: ${{ inputs.refresh-timeout-minutes }}
+        run: npm run update:${{ inputs.id }}
+        env:
+          NODE_ENV: production
+          # Optional per-lane keys. Every builder trims the value and treats an
+          # empty one as unset, so lanes that need none are unaffected.
+          # BART_API_KEY is a personal key; the transit builder falls back to
+          # BART's published demo key when it is unset.
+          BART_API_KEY: ${{ secrets.BART_API_KEY }}
+          FOOTBALL_DATA_API_TOKEN: ${{ secrets.FOOTBALL_DATA_API_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Verify refresh freshness and quality
+        run: npx tsx scripts/verifyDataRefresh.ts ${{ inputs.id }}
+
+      - name: Commit and push refreshed snapshot
+        id: commit
+        run: |
+          bash scripts/ci/commit-and-push-snapshot.sh \
+            "chore: refresh ${LANE//-/ } snapshot [automated] [skip ci]" \
+            "$SNAPSHOT_PATH"
+        env:
+          LANE: ${{ inputs.id }}
+          SNAPSHOT_PATH: ${{ inputs.snapshot-path }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Notify on failure via GitHub issue
+        if: failure()
+        uses: actions/github-script@v9
+        with:
+          script: await require('./scripts/ci/failure-issue.cjs').open({ github, context }, '${{ inputs.label }}', '${{ inputs.title }}')
+
+      - name: Close resolved failure issues
+        if: success()
+        uses: actions/github-script@v9
+        with:
+          script: await require('./scripts/ci/failure-issue.cjs').close({ github, context }, '${{ inputs.label }}')

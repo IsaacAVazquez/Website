@@ -19,58 +19,16 @@ concurrency:
 jobs:
   refresh-bay-area-transit:
     name: Refresh Bay Area Transit Snapshot
-    runs-on: ubuntu-latest
-    timeout-minutes: 30
-
+    # BART_API_KEY reaches the builder through the inherited secrets; it is
+    # optional, and the builder falls back to BART's published demo key.
+    uses: ./.github/workflows/refresh-snapshot.yml
+    secrets: inherit
     permissions:
       contents: write
       issues: write
-
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v7
-        with:
-          ref: main
-          fetch-depth: 1
-
-      - name: Set up Node.js
-        uses: actions/setup-node@v7
-        with:
-          node-version-file: .nvmrc
-          cache: "npm"
-
-      - name: Install dependencies
-        run: npm ci --prefer-offline --no-audit --fund=false
-
-      - name: Refresh transit snapshot
-        timeout-minutes: 12
-        run: npm run update:bay-area-transit
-        env:
-          NODE_ENV: production
-          # Optional personal key; the builder falls back to BART's published
-          # demo key when the secret is unset.
-          BART_API_KEY: ${{ secrets.BART_API_KEY }}
-
-      - name: Verify refresh freshness and quality
-        run: npx tsx scripts/verifyDataRefresh.ts bay-area-transit
-
-      - name: Commit and push refreshed snapshot
-        id: commit
-        run: |
-          bash scripts/ci/commit-and-push-snapshot.sh \
-            "chore: refresh bay area transit snapshot [automated] [skip ci]" \
-            src/data/bayAreaTransitSnapshot.json
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Notify on failure via GitHub issue
-        if: failure()
-        uses: actions/github-script@v9
-        with:
-          script: await require('./scripts/ci/failure-issue.cjs').open({ github, context }, 'transit-refresh-failure', 'Bay Area transit refresh failed')
-
-      - name: Close resolved failure issues
-        if: success()
-        uses: actions/github-script@v9
-        with:
-          script: await require('./scripts/ci/failure-issue.cjs').close({ github, context }, 'transit-refresh-failure')
+    with:
+      id: bay-area-transit
+      snapshot-path: src/data/bayAreaTransitSnapshot.json
+      label: transit-refresh-failure
+      title: Bay Area transit refresh failed
+      timeout-minutes: 30
