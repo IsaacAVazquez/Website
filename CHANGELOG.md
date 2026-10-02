@@ -9,6 +9,7 @@ All notable changes to this repository are documented here. Format: `YYYY-MM-DD`
 - Name the product roles and pin the job write-ups on Home ([#532](https://github.com/IsaacAVazquez/Website/pull/532)).
 - Cut about 39k lines of dead and duplicated code ([#543](https://github.com/IsaacAVazquez/Website/pull/543)).
 - Bump tsx from 4.23.1 to 4.23.15 ([#544](https://github.com/IsaacAVazquez/Website/pull/544)).
+- Bump contourpy from 1.3.3 to 1.4.0 in /scripts ([#549](https://github.com/IsaacAVazquez/Website/pull/549)).
 
 ---
 
