@@ -514,7 +514,7 @@ function ExpertSpreadBar({ player, scale }: { player: Player; scale: number }) {
   return (
     <span
       className="relative h-3.5 w-[120px] shrink-0"
-      title="Expert low–high range; tick = consensus avg"
+      title="Expert low to high range; tick = consensus avg"
       aria-hidden="true"
     >
       <span

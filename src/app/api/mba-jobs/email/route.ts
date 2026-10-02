@@ -374,7 +374,7 @@ export async function POST(request: NextRequest) {
   const subject =
     jobs.length === 1
       ? `1 new MBA role`
-      : `${jobs.length} MBA roles — digest`;
+      : `${jobs.length} new MBA roles`;
 
   try {
     const response = await fetch("https://api.resend.com/emails", {

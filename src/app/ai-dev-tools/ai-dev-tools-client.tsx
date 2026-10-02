@@ -82,7 +82,7 @@ const SORT_OPTIONS: FilterOption[] = [
   { id: "curated", label: "Curated order" },
   { id: "stars", label: "GitHub stars" },
   { id: "recent", label: "Recently shipped" },
-  { id: "name", label: "Name (A–Z)" },
+  { id: "name", label: "Name (A to Z)" },
 ];
 
 // Lifecycle signal surfaced as a small badge so a tool that's mid-pivot or
