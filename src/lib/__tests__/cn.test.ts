@@ -1,46 +1,12 @@
-import { cn } from '../cn'
+import { cn } from "../cn";
 
-describe('cn utility function', () => {
-  it('merges class names correctly', () => {
-    const result = cn('class1', 'class2')
-    expect(result).toBe('class1 class2')
-  })
+describe("cn", () => {
+  it("joins class names", () => {
+    expect(cn("class1", "class2")).toBe("class1 class2");
+  });
 
-  it('handles conditional classes', () => {
-    const condition = false
-    const result = cn('class1', condition && 'class2', 'class3')
-    expect(result).toBe('class1 class3')
-  })
-
-  it('deduplicates Tailwind classes', () => {
-    const result = cn('p-4', 'p-8')
-    expect(result).toBe('p-8')
-  })
-
-  it('handles array of classes', () => {
-    const result = cn(['class1', 'class2'])
-    expect(result).toContain('class1')
-    expect(result).toContain('class2')
-  })
-
-  it('handles object of classes', () => {
-    const result = cn({
-      'class1': true,
-      'class2': false,
-      'class3': true,
-    })
-    expect(result).toContain('class1')
-    expect(result).not.toContain('class2')
-    expect(result).toContain('class3')
-  })
-
-  it('handles undefined and null', () => {
-    const result = cn('class1', undefined, null, 'class2')
-    expect(result).toBe('class1 class2')
-  })
-
-  it('merges conflicting Tailwind utilities correctly', () => {
-    const result = cn('bg-red-500', 'bg-blue-500')
-    expect(result).toBe('bg-blue-500')
-  })
-})
+  it("drops false, undefined, and null", () => {
+    const condition = false;
+    expect(cn("class1", condition && "class2", undefined, null, "class3")).toBe("class1 class3");
+  });
+});

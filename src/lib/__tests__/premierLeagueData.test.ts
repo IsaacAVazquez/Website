@@ -5,7 +5,6 @@ import {
   buildPremierLeagueSnapshot,
   getPremierLeagueSummary,
   getPremierLeagueTeamSnapshot,
-  isValidPremierLeagueTeamId,
   sumPlayedGames,
 } from "../premierLeagueData";
 import { resetFootballDataPacingForTests } from "../footballData";
@@ -452,26 +451,6 @@ describe("sumPlayedGames edge cases", () => {
     expect(
       sumPlayedGames([{ playedGames: null as unknown as number }])
     ).toBe(0);
-  });
-});
-
-describe("isValidPremierLeagueTeamId", () => {
-  it("accepts positive integer id strings", () => {
-    expect(isValidPremierLeagueTeamId("57")).toBe(true);
-    expect(isValidPremierLeagueTeamId("1")).toBe(true);
-    expect(isValidPremierLeagueTeamId("64")).toBe(true);
-    expect(isValidPremierLeagueTeamId("1000")).toBe(true);
-  });
-
-  it("rejects zero, leading zeros, non-numeric, and empty ids", () => {
-    expect(isValidPremierLeagueTeamId("0")).toBe(false);
-    expect(isValidPremierLeagueTeamId("01")).toBe(false);
-    expect(isValidPremierLeagueTeamId("abc")).toBe(false);
-    expect(isValidPremierLeagueTeamId("")).toBe(false);
-    expect(isValidPremierLeagueTeamId("-5")).toBe(false);
-    expect(isValidPremierLeagueTeamId("1.5")).toBe(false);
-    expect(isValidPremierLeagueTeamId("57a")).toBe(false);
-    expect(isValidPremierLeagueTeamId(" 57")).toBe(false);
   });
 });
 

@@ -85,7 +85,7 @@ Operational variables:
 - `MBA_DIGEST_SECRET`
 - `FOOTBALL_DATA_API_TOKEN`
 
-The fantasy snapshot builder can use `FANTASYPROS_API_KEY` as an optional build-only credential for local authenticated refreshes. The scheduled GitHub workflow uses the public rankings pages and does not receive this secret. The deployed runtime does not need it.
+The fantasy snapshot builder reads the public FantasyPros rankings pages and needs no credential. The deployed runtime does not fetch from FantasyPros.
 
 Platform-provided variables like `URL`, `DEPLOY_URL`, and `DEPLOY_PRIME_URL` are consumed when available and do not need to be set manually unless you are reproducing a deploy context.
 
@@ -104,7 +104,7 @@ See `docs/ENVIRONMENT_CONFIGURATION.md` for details.
 
 - The fantasy routes read checked-in JSON snapshots at runtime
 - GitHub Actions runs `npm run update:fantasy` and commits refreshed artifacts
-- The GitHub workflow uses the public page parser without `FANTASYPROS_API_KEY`; a local builder run can use the official API when a suitable key is present
+- The GitHub workflow and local builder runs both use the public page parser
 
 ### Football dashboards
 

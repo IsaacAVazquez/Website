@@ -165,7 +165,7 @@ async function ensurePrefetchedJson<T>(
   throw createCuratedDatasetUnavailableError();
 }
 
-async function loadInvestmentsIndex(
+export async function getInvestmentsIndex(
   options: InvestmentsDataOptions = {}
 ): Promise<InvestmentsIndex> {
   if (indexCache && indexCache.expiresAt > Date.now()) {
@@ -182,8 +182,4 @@ async function loadInvestmentsIndex(
   return data;
 }
 
-export async function getInvestmentsIndex(
-  options: InvestmentsDataOptions = {}
-): Promise<InvestmentsIndex> {
-  return loadInvestmentsIndex(options);
 }

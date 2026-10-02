@@ -48,7 +48,7 @@ interface CacheEntry {
 // per-request inputs). Single-flight: if a request comes in while a fetch
 // is in-flight, we return the in-flight promise rather than starting a
 // fresh fan-out to all 6 feeds.
-const cache = new Map<string, CacheEntry>();
+let cached: CacheEntry | null = null;
 
 interface LastGoodFeed {
   articles: NewsArticle[];
@@ -251,12 +251,9 @@ async function fetchAllFeeds(): Promise<NewsPulseDataResult> {
   };
 }
 
-function getOrFetch(key: string): Promise<NewsPulseDataResult> {
-  const now = Date.now();
-  const existing = cache.get(key);
-
-  if (existing && isFresh(existing, now)) {
-    return existing.promise;
+export async function getNewsPulseData(): Promise<NewsPulseDataResult> {
+  if (cached && isFresh(cached, Date.now())) {
+    return cached.promise;
   }
 
   const entry: CacheEntry = {
@@ -309,12 +306,8 @@ function getOrFetch(key: string): Promise<NewsPulseDataResult> {
     }
   })();
 
-  cache.set(key, entry);
+  cached = entry;
   return entry.promise;
-}
-
-export async function getNewsPulseData(): Promise<NewsPulseDataResult> {
-  return getOrFetch("all");
 }
 
 // Test-only side channel. Next.js route-type checking forbids non-handler
@@ -324,7 +317,7 @@ export async function getNewsPulseData(): Promise<NewsPulseDataResult> {
 (globalThis as Record<symbol, unknown>)[
   Symbol.for("__newsPulseCacheResetForTesting")
 ] = (): void => {
-  cache.clear();
+  cached = null;
   lastGoodByFeed.clear();
   durableHydrationPromise = null;
 };

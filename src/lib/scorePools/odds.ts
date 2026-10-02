@@ -49,10 +49,6 @@ export function toDecimal(value: number | string, format: OddsFormat): number {
   }
 }
 
-export function rawPriceToDecimal(price: RawPrice): number {
-  return toDecimal(price.value, price.format);
-}
-
 /** Raw implied probability of a decimal price, margin still included. */
 export function impliedProbability(decimal: number): number {
   if (!Number.isFinite(decimal) || decimal <= 1) {

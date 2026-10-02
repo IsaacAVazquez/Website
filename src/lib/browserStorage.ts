@@ -68,7 +68,8 @@ function ensureStorageListener(): void {
   window.addEventListener("storage", handleStorageEvent);
 }
 
-function readPersistentValue(key: string): BrowserStorageRead {
+/** Read a raw string, falling back to the latest in-memory value on failure. */
+export function readBrowserStorageString(key: string): BrowserStorageRead {
   if (typeof window === "undefined") {
     return { value: null, persistenceStatus: "memory-only" };
   }
@@ -91,11 +92,6 @@ function readPersistentValue(key: string): BrowserStorageRead {
     memoryOnlyKeys.add(key);
     return { value, persistenceStatus: "memory-only" };
   }
-}
-
-/** Read a raw string, falling back to the latest in-memory value on failure. */
-export function readBrowserStorageString(key: string): BrowserStorageRead {
-  return readPersistentValue(key);
 }
 
 /**
@@ -205,21 +201,21 @@ export function subscribeBrowserStorage(key: string, listener: Listener): () => 
  * notify subscribers. Kept for the existing fantasy stores.
  */
 export function emitBrowserStorageChange(key: string): void {
-  if (!memoryOnlyKeys.has(key)) readPersistentValue(key);
+  if (!memoryOnlyKeys.has(key)) readBrowserStorageString(key);
   notify(key);
 }
 
 /** Cached snapshot getter for useSyncExternalStore. */
 export function getBrowserStorageSnapshot(key: string, fallback: string): string {
   if (!cachedValues.has(key) || !listenersByKey.has(key)) {
-    readPersistentValue(key);
+    readBrowserStorageString(key);
   }
   return cachedValues.get(key) ?? fallback;
 }
 
 export function getBrowserStorageStatusSnapshot(key: string): PersistenceStatus {
   if (!statuses.has(key) || !listenersByKey.has(key)) {
-    readPersistentValue(key);
+    readBrowserStorageString(key);
   }
   return statuses.get(key) ?? "memory-only";
 }

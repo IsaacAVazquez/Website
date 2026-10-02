@@ -6,66 +6,9 @@ export const FANTASY_PROS_PUBLIC_USER_AGENT =
 export const FANTASY_PROS_PUBLIC_SOURCE =
   "FantasyPros public consensus cheatsheets. Overall boards come from the public overall consensus pages. QB, K, and DST boards are scoring-agnostic and reused across scoring formats. Flex is derived locally from the published overall board.";
 
-export const FANTASY_PROS_OFFICIAL_API_SOURCE =
-  "FantasyPros official API consensus rankings.";
-
-export const FANTASY_PROS_SOURCE_MODES = [
-  "auto",
-  "public-html",
-  "official-api",
-] as const;
-
-export type FantasyProsSourceMode = (typeof FANTASY_PROS_SOURCE_MODES)[number];
-
-interface FantasyProsSourceEnvironment {
-  FANTASYPROS_SOURCE?: string;
-  FANTASYPROS_API_KEY?: string;
-}
-
-export type FantasyProsSourceSelection =
-  | { kind: "public-html" }
-  | { kind: "official-api"; apiKey: string };
-
-export function resolveFantasyProsSourceSelection(
-  environment: FantasyProsSourceEnvironment = {
-    FANTASYPROS_SOURCE: process.env.FANTASYPROS_SOURCE,
-    FANTASYPROS_API_KEY: process.env.FANTASYPROS_API_KEY,
-  }
-): FantasyProsSourceSelection {
-  const configuredMode = environment.FANTASYPROS_SOURCE?.trim().toLowerCase();
-  const mode = configuredMode || "auto";
-  if (!FANTASY_PROS_SOURCE_MODES.includes(mode as FantasyProsSourceMode)) {
-    throw new Error(
-      `FANTASYPROS_SOURCE must be one of ${FANTASY_PROS_SOURCE_MODES.join(", ")}; received ${JSON.stringify(configuredMode)}.`
-    );
-  }
-
-  const apiKey = environment.FANTASYPROS_API_KEY?.trim();
-  if (mode === "public-html") {
-    return { kind: "public-html" };
-  }
-  if (mode === "official-api") {
-    if (!apiKey) {
-      throw new Error(
-        "FANTASYPROS_API_KEY is required when FANTASYPROS_SOURCE=official-api."
-      );
-    }
-    return { kind: "official-api", apiKey };
-  }
-
-  return apiKey
-    ? { kind: "official-api", apiKey }
-    : { kind: "public-html" };
-}
-
 export const FANTASY_PUBLIC_POSITIONS = ["OVERALL", "QB", "RB", "WR", "TE", "K", "DST"] as const;
 
 export type FantasyPublicPosition = (typeof FANTASY_PUBLIC_POSITIONS)[number];
-
-export type FantasyProsOfficialApiPosition =
-  | Exclude<FantasyPublicPosition, "OVERALL">
-  | "ALL"
-  | "OP";
 
 /**
  * FantasyPros publishes each board under a ranking_type_name. "draft" and
@@ -90,23 +33,9 @@ interface FantasyProsConsensusOptions {
   minimumExperts?: number;
 }
 
-interface FantasyProsOfficialApiConsensusOptions
-  extends FantasyProsConsensusOptions {
-  officialApiPosition: FantasyProsOfficialApiPosition;
-  sourceUrl: string;
-}
-
-type FantasyProsConsensusSourceContract =
-  | { kind: "public-html" }
-  | {
-      kind: "official-api";
-      officialApiPosition: FantasyProsOfficialApiPosition;
-    };
-
 export interface FetchFantasyProsConsensusBoardOptions
   extends FantasyProsConsensusOptions {
   expectedSeason: number;
-  officialApiPosition: FantasyProsOfficialApiPosition;
   publicSourceUrl: string;
 }
 
@@ -114,9 +43,6 @@ const FANTASY_PROS_MIN_EXPERTS = 10;
 const FANTASY_PROS_MIN_REFRESH_COVERAGE = 0.8;
 const FANTASY_PROS_REFRESH_TOP_BOARD_SIZE = 150;
 const FANTASY_PROS_MAX_OFF_BOARD_ROW_SHARE = 0.05;
-const FANTASY_PROS_OFFICIAL_API_BASE_URL =
-  "https://api.fantasypros.com/public/v2/json/nfl";
-const FANTASY_PROS_OFFICIAL_API_MAX_CLOCK_SKEW_MS = 5 * 60 * 1000;
 // A hung connection would otherwise hold the refresh job until its own cap,
 // and a job that times out is cancelled before it can report the failure.
 const FANTASY_PROS_FETCH_TIMEOUT_MS = 20_000;
@@ -245,33 +171,6 @@ const REQUIRED_PLAYER_KEYS = [
   "rank_ave",
   "rank_std",
   "pos_rank",
-] as const;
-
-const REQUIRED_OFFICIAL_API_PAGE_KEYS = [
-  "sport",
-  "ranking_type_name",
-  "year",
-  "week",
-  "position_id",
-  "scoring",
-  "count",
-  "total_experts",
-  "filters",
-  "last_updated",
-  "last_updated_ts",
-  "players",
-] as const;
-
-const REQUIRED_OFFICIAL_API_PLAYER_KEYS = [
-  "player_id",
-  "player_name",
-  "player_team_id",
-  "player_position_id",
-  "player_bye_week",
-  "player_owned_avg",
-  "rank_ecr",
-  "pos_rank",
-  "tier",
 ] as const;
 
 function asFiniteNumber(
@@ -423,8 +322,7 @@ function expectedSourceScoring(scoringFormat: ScoringFormat): readonly string[] 
 
 function validateConsensusPayload(
   payload: FantasyProsPublicConsensusPayload,
-  options: FantasyProsConsensusOptions,
-  sourceContract: FantasyProsConsensusSourceContract
+  options: FantasyProsConsensusOptions
 ): Set<number> {
   if (payload.sport.trim().toUpperCase() !== "NFL") {
     throw new Error(`FantasyPros public source returned sport "${payload.sport}" instead of NFL.`);
@@ -469,36 +367,6 @@ function validateConsensusPayload(
     throw new Error('FantasyPros public source is missing a valid "filters" value.');
   }
 
-  if (sourceContract.kind === "official-api") {
-    const sourcePosition = payload.position_id.trim().toUpperCase();
-    if (sourcePosition !== sourceContract.officialApiPosition) {
-      throw new Error(
-        `FantasyPros official API returned ${sourcePosition} for an exact ${sourceContract.officialApiPosition} request.`
-      );
-    }
-
-    const sourceScoring = payload.scoring.trim().toUpperCase();
-    const expectedScoring = getFantasyProsOfficialApiScoring(options.scoringFormat);
-    if (sourceScoring !== expectedScoring) {
-      throw new Error(
-        `FantasyPros official API returned scoring "${payload.scoring}" instead of ${expectedScoring}.`
-      );
-    }
-
-    const updatedAtSeconds = Number(payload.last_updated_ts);
-    const updatedAtMs = updatedAtSeconds * 1000;
-    const updatedAt = new Date(updatedAtMs);
-    if (
-      !Number.isInteger(updatedAtSeconds) ||
-      updatedAtSeconds <= 0 ||
-      updatedAtSeconds >= 10_000_000_000 ||
-      Number.isNaN(updatedAt.getTime()) ||
-      updatedAtMs > Date.now() + FANTASY_PROS_OFFICIAL_API_MAX_CLOCK_SKEW_MS
-    ) {
-      throw new Error("FantasyPros official API returned an invalid last_updated_ts timestamp.");
-    }
-  }
-
   const requestedPosition = normalizeSourcePosition(options.requestedPosition);
   const sourcePosition = normalizeSourcePosition(payload.position_id);
   if (sourcePosition !== requestedPosition) {
@@ -510,10 +378,7 @@ function validateConsensusPayload(
   // QB, K, and DST pages are shared across scoring formats. The other pages
   // must match the requested scoring format or the snapshot would silently mix
   // boards that answer different league rules.
-  if (
-    sourceContract.kind === "public-html" &&
-    !["QB", "K", "DST"].includes(requestedPosition)
-  ) {
+  if (!["QB", "K", "DST"].includes(requestedPosition)) {
     const sourceScoring = payload.scoring.trim().toUpperCase();
     if (!expectedSourceScoring(options.scoringFormat).includes(sourceScoring)) {
       throw new Error(
@@ -533,73 +398,12 @@ function validateConsensusPayload(
     if (typeof player.player_name !== "string" || player.player_name.trim().length === 0) {
       throw new Error(`FantasyPros public source player[${index}] has an empty player_name.`);
     }
-    if (sourceContract.kind === "official-api") {
-      if (
-        typeof player.player_team_id !== "string" ||
-        player.player_team_id.trim().length === 0
-      ) {
-        throw new Error(
-          `FantasyPros official API player[${index}] has an invalid player_team_id.`
-        );
-      }
-      const byeWeek = asOptionalValidatedFiniteNumber(
-        player.player_bye_week,
-        `player[${index}].player_bye_week`
-      );
-      if (
-        byeWeek === undefined ||
-        !Number.isInteger(byeWeek) ||
-        byeWeek < 1 ||
-        byeWeek > 18
-      ) {
-        throw new Error(
-          `FantasyPros official API player[${index}] has an invalid player_bye_week.`
-        );
-      }
-      const ownership = asOptionalValidatedFiniteNumber(
-        player.player_owned_avg,
-        `player[${index}].player_owned_avg`
-      );
-      if (
-        ownership === undefined ||
-        ownership < 0 ||
-        ownership > 100
-      ) {
-        throw new Error(
-          `FantasyPros official API player[${index}] has an invalid player_owned_avg.`
-        );
-      }
-    }
 
     const consensusRank = asFiniteNumber(player.rank_ecr, `player[${index}].rank_ecr`);
-    const averageRank =
-      sourceContract.kind === "public-html"
-        ? asFiniteNumber(player.rank_ave, `player[${index}].rank_ave`)
-        : asOptionalValidatedFiniteNumber(
-            player.rank_ave,
-            `player[${index}].rank_ave`
-          );
-    const minimumRank =
-      sourceContract.kind === "public-html"
-        ? asFiniteNumber(player.rank_min, `player[${index}].rank_min`)
-        : asOptionalValidatedFiniteNumber(
-            player.rank_min,
-            `player[${index}].rank_min`
-          );
-    const maximumRank =
-      sourceContract.kind === "public-html"
-        ? asFiniteNumber(player.rank_max, `player[${index}].rank_max`)
-        : asOptionalValidatedFiniteNumber(
-            player.rank_max,
-            `player[${index}].rank_max`
-          );
-    const rankDeviation =
-      sourceContract.kind === "public-html"
-        ? asFiniteNumber(player.rank_std, `player[${index}].rank_std`)
-        : asOptionalValidatedFiniteNumber(
-            player.rank_std,
-            `player[${index}].rank_std`
-          );
+    const averageRank = asFiniteNumber(player.rank_ave, `player[${index}].rank_ave`);
+    const minimumRank = asFiniteNumber(player.rank_min, `player[${index}].rank_min`);
+    const maximumRank = asFiniteNumber(player.rank_max, `player[${index}].rank_max`);
+    const rankDeviation = asFiniteNumber(player.rank_std, `player[${index}].rank_std`);
     if (
       consensusRank <= 0 ||
       (averageRank !== undefined && averageRank <= 0) ||
@@ -621,23 +425,13 @@ function validateConsensusPayload(
       );
     }
     const positionRank = parsePositionRank(player.pos_rank);
-    if (
-      (sourceContract.kind === "official-api" &&
-        (typeof player.pos_rank !== "string" || positionRank === undefined)) ||
-      (positionRank !== undefined && positionRank <= 0)
-    ) {
+    if (positionRank !== undefined && positionRank <= 0) {
       throw new Error(
         `FantasyPros public source player[${index}] has an invalid position rank.`
       );
     }
     const tier = asOptionalFiniteNumber(player.tier);
-    if (
-      (sourceContract.kind === "official-api" &&
-        (typeof player.tier !== "number" ||
-          !Number.isInteger(player.tier) ||
-          player.tier <= 0)) ||
-      (tier !== undefined && (!Number.isInteger(tier) || tier <= 0))
-    ) {
+    if (tier !== undefined && (!Number.isInteger(tier) || tier <= 0)) {
       throw new Error(`FantasyPros public source player[${index}] has an invalid tier.`);
     }
 
@@ -727,78 +521,15 @@ export function parseFantasyProsPublicConsensusPage(
   options: FantasyProsConsensusOptions & { sourceUrl: string }
 ): FantasyProsPublicBoard {
   const payload = extractConsensusPayload(html);
-  return buildFantasyProsConsensusBoard(
-    payload,
-    options,
-    FANTASY_PROS_PUBLIC_SOURCE,
-    { kind: "public-html" }
-  );
-}
-
-function normalizeFantasyProsOfficialApiPayload(
-  payload: unknown
-): FantasyProsPublicConsensusPayload {
-  if (!payload || typeof payload !== "object" || Array.isArray(payload)) {
-    throw new Error("FantasyPros official API did not return a consensus object.");
-  }
-
-  const record = payload as Record<string, unknown>;
-  assertRequiredKeys(record, REQUIRED_OFFICIAL_API_PAGE_KEYS, "API response");
-  if (record.filters !== null && typeof record.filters !== "string") {
-    throw new Error(
-      'FantasyPros official API returned an invalid "filters" value.'
-    );
-  }
-  const normalized = {
-    ...record,
-    // The official schema identifies the board through ranking_type_name. Its
-    // optional display `type` has historically used labels such as Preseason,
-    // so normalize from the contract field before using the shared validator.
-    type: String(record.ranking_type_name ?? ""),
-    // The official schema permits null when no expert allowlist was supplied.
-    // The shared validator represents that unfiltered request as an empty list.
-    filters:
-      typeof record.filters === "string" && record.filters.trim().length > 0
-        ? record.filters
-        : [],
-  } as unknown as FantasyProsPublicConsensusPayload;
-
-  if (!Array.isArray(normalized.players) || normalized.players.length === 0) {
-    throw new Error("FantasyPros official API returned no players.");
-  }
-  normalized.players.forEach((player, index) => {
-    assertRequiredKeys(
-      player,
-      REQUIRED_OFFICIAL_API_PLAYER_KEYS,
-      `API player[${index}]`
-    );
-  });
-
-  return normalized;
-}
-
-export function parseFantasyProsOfficialApiConsensusPayload(
-  payload: unknown,
-  options: FantasyProsOfficialApiConsensusOptions
-): FantasyProsPublicBoard {
-  return buildFantasyProsConsensusBoard(
-    normalizeFantasyProsOfficialApiPayload(payload),
-    options,
-    FANTASY_PROS_OFFICIAL_API_SOURCE,
-    {
-      kind: "official-api",
-      officialApiPosition: options.officialApiPosition,
-    }
-  );
+  return buildFantasyProsConsensusBoard(payload, options, FANTASY_PROS_PUBLIC_SOURCE);
 }
 
 function buildFantasyProsConsensusBoard(
   payload: FantasyProsPublicConsensusPayload,
   options: FantasyProsConsensusOptions & { sourceUrl: string },
-  sourceLabel: string,
-  sourceContract: FantasyProsConsensusSourceContract
+  sourceLabel: string
 ): FantasyProsPublicBoard {
-  const offBoardRows = validateConsensusPayload(payload, options, sourceContract);
+  const offBoardRows = validateConsensusPayload(payload, options);
   const upstreamUpdatedAt = buildUpstreamUpdatedAt(payload);
   const players = payload.players
     .filter((_, index) => !offBoardRows.has(index))
@@ -874,78 +605,7 @@ export class FantasyProsPublicFetchError extends Error {
   }
 }
 
-function getFantasyProsOfficialApiScoring(scoringFormat: ScoringFormat): string {
-  switch (scoringFormat) {
-    case "PPR":
-      return "PPR";
-    case "HALF_PPR":
-      return "HALF";
-    case "STANDARD":
-      return "STD";
-  }
-}
-
-function getFantasyProsOfficialApiUrl(
-  season: number,
-  position: FantasyProsOfficialApiPosition,
-  scoringFormat: ScoringFormat,
-  rankingType: FantasyProsRankingType
-): string {
-  const params = new URLSearchParams({
-    position,
-    scoring: getFantasyProsOfficialApiScoring(scoringFormat),
-    type: rankingType.toUpperCase(),
-    week: "0",
-  });
-  return `${FANTASY_PROS_OFFICIAL_API_BASE_URL}/${season}/consensus-rankings?${params}`;
-}
-
-async function fetchFantasyProsOfficialApiConsensusBoard(
-  apiKey: string,
-  options: FetchFantasyProsConsensusBoardOptions
-): Promise<FantasyProsPublicBoard> {
-  const rankingType = options.expectedRankingType ?? "draft";
-  const sourceUrl = getFantasyProsOfficialApiUrl(
-    options.expectedSeason,
-    options.officialApiPosition,
-    options.scoringFormat,
-    rankingType
-  );
-  const response = await fetch(sourceUrl, {
-    headers: {
-      Accept: "application/json",
-      "x-api-key": apiKey,
-    },
-    signal: AbortSignal.timeout(FANTASY_PROS_FETCH_TIMEOUT_MS),
-  });
-
-  if (!response.ok) {
-    throw new FantasyProsPublicFetchError(
-      `Failed to fetch FantasyPros official API ${options.requestedPosition} consensus board from ${sourceUrl}: ${response.status}`,
-      response.status,
-      response.headers,
-      sourceUrl
-    );
-  }
-
-  return parseFantasyProsOfficialApiConsensusPayload(await response.json(), {
-    scoringFormat: options.scoringFormat,
-    requestedPosition: options.requestedPosition,
-    sourceUrl,
-    officialApiPosition: options.officialApiPosition,
-    expectedSeason: options.expectedSeason,
-    expectedRankingType: options.expectedRankingType,
-    minimumExperts: options.minimumExperts,
-  });
-}
-
-/**
- * Exported so a caller can pin itself to the public HTML contract. The weekly
- * board does, because the official API's in-season position vocabulary is
- * unverified here and a silent official-API request for a board shape nobody
- * has checked is worse than declaring the source.
- */
-export async function fetchFantasyProsPublicHtmlConsensusBoard(
+export async function fetchFantasyProsConsensusBoard(
   options: FetchFantasyProsConsensusBoardOptions
 ): Promise<FantasyProsPublicBoard> {
   const sourceUrl = options.publicSourceUrl;
@@ -978,20 +638,6 @@ export async function fetchFantasyProsPublicHtmlConsensusBoard(
   });
 }
 
-export async function fetchFantasyProsConsensusBoard(
-  options: FetchFantasyProsConsensusBoardOptions
-): Promise<FantasyProsPublicBoard> {
-  const source = resolveFantasyProsSourceSelection();
-  if (source.kind === "official-api") {
-    // An official selection is a source contract. Authentication, transport,
-    // JSON, and validation failures must reach the caller instead of changing
-    // the source to public HTML without disclosure.
-    return fetchFantasyProsOfficialApiConsensusBoard(source.apiKey, options);
-  }
-
-  return fetchFantasyProsPublicHtmlConsensusBoard(options);
-}
-
 export async function fetchFantasyProsPublicConsensusBoard(
   scoringFormat: ScoringFormat,
   position: FantasyPublicPosition,
@@ -1001,7 +647,6 @@ export async function fetchFantasyProsPublicConsensusBoard(
     scoringFormat,
     requestedPosition: position,
     expectedSeason,
-    officialApiPosition: position === "OVERALL" ? "ALL" : position,
     publicSourceUrl: getFantasyProsPublicConsensusUrl(scoringFormat, position),
   });
 }

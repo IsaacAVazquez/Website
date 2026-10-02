@@ -1,6 +1,5 @@
 import { StructuredData } from "@/components/StructuredData";
 import { techStartupSnapshot } from "@/data/techStartupSnapshot";
-import { getTechStartupSnapshot } from "@/lib/techStartupSnapshot";
 import { constructMetadata, generateBreadcrumbStructuredData } from "@/lib/seo";
 import { TechStartupClient } from "./tech-startup-client";
 import { normalizeTechStartupState } from "./tech-startup-state";
@@ -26,7 +25,7 @@ export default async function TechStartupTrackerPage({
   searchParams,
 }: TechStartupPageProps) {
   const initialState = normalizeTechStartupState(await searchParams);
-  const snapshot = await getTechStartupSnapshot();
+  const snapshot = techStartupSnapshot;
   const breadcrumbs = [
     { name: "Home", url: "/" },
     { name: "Tech Startup Tracker", url: "/tech-startup-tracker" },

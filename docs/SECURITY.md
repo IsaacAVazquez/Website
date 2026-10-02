@@ -27,7 +27,6 @@ Active secrets used by the running app and update scripts:
 
 | Variable | Purpose |
 |---|---|
-| `FANTASYPROS_API_KEY` | Optional build-only key for authenticated local redraft and best ball snapshot refreshes. The scheduled job and deployed runtime do not use it. |
 | `FOOTBALL_DATA_API_TOKEN` | football-data.org token used by football snapshot scripts. |
 | `FINNHUB_API_KEY` | Quote endpoint behind `/api/investments/quotes`. |
 | `RESEND_API_KEY` | Transactional email for the MBA internship digest and contact creation for the public newsletter signup. |
@@ -40,7 +39,7 @@ Active secrets used by the running app and update scripts:
 Rotation guidance:
 
 - rotate `MBA_DIGEST_SECRET` after any suspected exposure or hand-off
-- rotate third-party API keys (`FANTASYPROS_API_KEY`, `FOOTBALL_DATA_API_TOKEN`, `FINNHUB_API_KEY`, `RESEND_API_KEY`) immediately if a key appears in logs, screenshots, or a public commit
+- rotate third-party API keys (`FOOTBALL_DATA_API_TOKEN`, `FINNHUB_API_KEY`, `RESEND_API_KEY`) immediately if a key appears in logs, screenshots, or a public commit
 - after rotation, verify the relevant secret store. Redeploy for runtime keys and rerun the affected GitHub Actions job for snapshot credentials
 
 ---

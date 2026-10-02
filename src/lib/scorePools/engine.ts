@@ -151,17 +151,6 @@ export function analyzeFixture(
   };
 }
 
-/** Analyze a set of fixtures (a round or matchday), sorted by kickoff. */
-export function analyzeRound(
-  fixtures: FixtureInput[],
-  pool: PoolAnalysisConfig,
-  options: AnalyzeOptions = {},
-): FixtureAnalysis[] {
-  return fixtures
-    .map((fixture) => analyzeFixture(fixture, pool, options))
-    .sort((a, b) => a.kickoff.localeCompare(b.kickoff));
-}
-
 // ─── Reasons and recheck lists ───────────────────────────────────────────────
 
 function formatScore(pick: RankedPick): string {

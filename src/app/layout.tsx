@@ -8,7 +8,7 @@ import {
   Instrument_Sans,
   Newsreader,
 } from "next/font/google";
-import { twMerge } from "tailwind-merge";
+import { cn } from "@/lib/cn";
 import { constructMetadata } from "@/lib/seo";
 import { ConditionalLayout } from "@/components/ConditionalLayout";
 import { Providers } from "@/components/Providers";
@@ -125,7 +125,7 @@ export default function RootLayout({
         <link rel="alternate" type="application/rss+xml" title="Isaac Vazquez - Writing & Insights" href="/api/rss" />
       </head>
       <body
-        className={twMerge(
+        className={cn(
           instrumentSans.variable,
           fragmentMono.variable,
           c97Newsreader.variable,

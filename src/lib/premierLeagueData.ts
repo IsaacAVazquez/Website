@@ -320,7 +320,7 @@ function buildQueryString(params: Record<string, string | number | undefined>): 
   return searchParams.toString();
 }
 
-export function isValidPremierLeagueTeamId(teamId: string): boolean {
+function isValidPremierLeagueTeamId(teamId: string): boolean {
   return isPositiveIntegerString(teamId);
 }
 

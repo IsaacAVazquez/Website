@@ -1,11 +1,10 @@
 import type { MissionControlInitialData, MissionControlSearchState } from "@/types/spacex";
 import {
-  getMissionControlCadence,
   getMissionControlSummary,
-  getMissionControlVehicleCatalogData,
   getMissionLaunchCards,
   getMissionLaunchDetail,
 } from "@/lib/spacexData";
+import { getSpaceXSnapshotCadence, getSpaceXSnapshotLaunchDetails } from "@/lib/spacexSnapshot";
 
 // Small, independent-of-status slices for the launch tape (recent outcomes +
 // upcoming windows shown together, regardless of which status tab the board
@@ -65,7 +64,7 @@ export async function loadMissionControlInitialData(
     detailError: detailResult.detailError,
     tapeRecentLaunches,
     tapeUpcomingLaunches,
-    launchDetails: getMissionControlVehicleCatalogData(),
-    cadence: getMissionControlCadence(),
+    launchDetails: getSpaceXSnapshotLaunchDetails(),
+    cadence: getSpaceXSnapshotCadence(),
   };
 }

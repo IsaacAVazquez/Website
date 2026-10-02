@@ -91,10 +91,6 @@ export function sortRacesByCompetitiveness(races: Race[]): Race[] {
   });
 }
 
-export function getRacesByRating(races: Race[], rating: RaceRating): Race[] {
-  return races.filter((r) => r.rating === rating);
-}
-
 export function countSeatsByParty(races: Race[]): { demLeading: number; repLeading: number; tossup: number } {
   let demLeading = 0;
   let repLeading = 0;
