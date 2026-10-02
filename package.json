@@ -55,14 +55,10 @@
   "dependencies": {
     "@netlify/blobs": "^11.1.1",
     "cheerio": "^1.2.0",
-    "clsx": "^2.1.1",
     "d3": "^7.9.0",
-    "dotenv": "^18.0.4",
-    "framer-motion": "^13.1.1",
     "gray-matter": "^4.0.3",
     "lucide-react": "^1.7.0",
     "next": "^16.3.6",
-    "next-auth": "^4.24.15",
     "next-themes": "^0.4.6",
     "react": "19.3.0",
     "react-dom": "19.3.0",
@@ -70,15 +66,12 @@
     "rehype-stringify": "^10.0.1",
     "remark": "^15.0.1",
     "remark-gfm": "^4.0.1",
-    "remark-rehype": "^11.1.2",
-    "resend": "^6.20.0",
-    "tailwind-merge": "^3.6.0"
+    "remark-rehype": "^11.1.2"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
     "@fontsource-variable/instrument-sans": "^5.3.0",
     "@fontsource/fragment-mono": "^5.3.0",
-    "@netlify/functions": "^6.0.0",
     "@netlify/plugin-nextjs": "^5.15.9",
     "@playwright/test": "^1.63.0",
     "@tailwindcss/postcss": "^4.3.3",
@@ -108,7 +101,6 @@
     "webpack-bundle-analyzer": "^5.3.3"
   },
   "overrides": {
-    "postcss": "$postcss",
-    "svix": "1.92.2"
+    "postcss": "$postcss"
   }
 }
