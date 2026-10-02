@@ -20,7 +20,7 @@ export function MissionSequenceTimeline({ rocketName, upcoming }: MissionSequenc
   return (
     <div>
       <p className="mb-3.5 text-xs leading-6 text-[var(--c97-ink-2)]">
-        Typical {family} flight profile — Launch Library doesn&apos;t publish a phase-by-phase
+        Typical {family} flight profile. Launch Library doesn&apos;t publish a phase-by-phase
         timeline, so this is an estimated reference sequence, not this mission&apos;s actual
         telemetry.
       </p>

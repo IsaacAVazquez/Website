@@ -244,10 +244,10 @@ export function RetirementInputs({ controller, result, portfolioValue }: Props) 
             suffix="%" min={1} max={10} step={0.1} asPercent
             onChange={(v) => updateAssumptions({ withdrawalRateOverride: v })} hint="Default 4%; edit to your safe rate" />
           <NumberField label="On-track threshold" value={plan.assumptions.successThreshold} suffix="%" min={50} max={99} step={1} asPercent
-            onChange={(v) => updateAssumptions({ successThreshold: v })} hint="85–90% is typical" />
-          <NumberField label="Tax — traditional withdrawals" value={plan.assumptions.taxRates.traditional} suffix="%" min={0} max={50} step={1} asPercent
+            onChange={(v) => updateAssumptions({ successThreshold: v })} hint="85 to 90% is typical" />
+          <NumberField label="Tax on traditional withdrawals" value={plan.assumptions.taxRates.traditional} suffix="%" min={0} max={50} step={1} asPercent
             onChange={(v) => updateAssumptions({ taxRates: { ...plan.assumptions.taxRates, traditional: v } })} />
-          <NumberField label="Tax — taxable withdrawals" value={plan.assumptions.taxRates.taxable} suffix="%" min={0} max={40} step={1} asPercent
+          <NumberField label="Tax on taxable withdrawals" value={plan.assumptions.taxRates.taxable} suffix="%" min={0} max={40} step={1} asPercent
             onChange={(v) => updateAssumptions({ taxRates: { ...plan.assumptions.taxRates, taxable: v } })} />
         </div>
       </Collapsible>

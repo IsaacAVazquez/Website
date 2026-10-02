@@ -34,7 +34,7 @@ export function MissionRecoveryPanel({ launchDetails }: MissionRecoveryPanelProp
           Launch Library&apos;s booster/landing records aren&apos;t populated for any mission this
           snapshot currently hydrates. The normalizer already maps that data whenever upstream
           provides it, so this panel will fill in on its own the next time a refresh picks up
-          populated core records — nothing here is fabricated in the meantime.
+          populated core records, and nothing here is fabricated in the meantime.
         </p>
       </div>
     );

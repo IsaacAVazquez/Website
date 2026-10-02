@@ -1,11 +1,11 @@
-// Food Map data — a curated, multi-city restaurant map.
+// Food Map data, a curated, multi-city restaurant map.
 //
 // Spots live in one of a handful of cities and are attributed to one or more
 // "curators" (a point of view: Anthony Bourdain's picks, Isaac's personal
 // go-tos, or simply what's top-rated on Google). The page (`food-map-client`)
 // and the Leaflet map (`food-map-leaflet`) read from this file.
 //
-// Coordinates are approximate — good enough to drop a pin on the right block.
+// Coordinates are approximate, good enough to drop a pin on the right block.
 // Detail links resolve to a Google Maps search so they stay valid if a venue
 // moves; always verify hours before making a trip.
 
@@ -81,13 +81,13 @@ export const FOOD_MAP_CURATORS: readonly FoodMapCurator[] = [
     id: "bourdain",
     name: "Anthony Bourdain",
     blurb:
-      "The late chef's no-reservations picks — dives, legends, and gut-truth cooking.",
+      "The late chef's no-reservations picks, meaning dives, legends, and gut-truth cooking.",
     accent: "var(--c97-chart-3)",
   },
   {
     id: "isaac",
     name: "Isaac's Picks",
-    blurb: "My personal go-tos — the places I actually send friends to.",
+    blurb: "My personal go-tos, the places I actually send friends to.",
     accent: "var(--c97-chart-2)",
   },
   {
@@ -183,7 +183,7 @@ export interface FoodMapPlace {
   curators: ReadonlyArray<FoodMapCuratorId>;
   cuisine: FoodMapCuisineId;
   coords: LatLng;
-  /** The signature order — what to actually get. */
+  /** The signature order, what to actually get. */
   order: string;
   /** Why it earns the spot. */
   why: string;
@@ -381,7 +381,7 @@ export const FOOD_MAP_PLACES: readonly FoodMapPlace[] = [
     curators: ["isaac"],
     cuisine: "pizza",
     coords: [37.8797, -122.269],
-    order: "Whatever's on the board — there's only one, and it's always good.",
+    order: "Whatever's on the board, since there's only one and it's always good.",
     why: "Worker-owned Berkeley co-op with one vegetarian pizza a day and a line out the door.",
   },
   {
@@ -404,7 +404,7 @@ export const FOOD_MAP_PLACES: readonly FoodMapPlace[] = [
     cuisine: "deli",
     coords: [40.7223, -73.9874],
     order: "Hand-cut pastrami on rye, mustard only.",
-    why: "Since 1888 — the platonic ideal of a New York deli, ticket system and all.",
+    why: "Open since 1888, and the platonic ideal of a New York deli, ticket system and all.",
   },
   {
     id: "russ-and-daughters",
@@ -424,7 +424,7 @@ export const FOOD_MAP_PLACES: readonly FoodMapPlace[] = [
     cuisine: "pizza",
     coords: [40.625, -73.9615],
     order: "Classic round pie with fresh basil snipped on top.",
-    why: "Dom DeMarco's Midwood shrine — every pie made by hand, no rushing.",
+    why: "Dom DeMarco's Midwood shrine, where every pie is made by hand with no rushing.",
   },
   {
     id: "peter-luger",
@@ -500,7 +500,7 @@ export const FOOD_MAP_PLACES: readonly FoodMapPlace[] = [
     curators: ["bourdain", "google"],
     cuisine: "deli",
     coords: [34.0577, -118.276],
-    order: "The #19 — pastrami, Swiss, slaw, and Russian on double-baked rye.",
+    order: "The #19, which is pastrami, Swiss, slaw, and Russian on double-baked rye.",
     why: "Bourdain swore the #19 was the best pastrami sandwich in America.",
   },
   {
@@ -520,7 +520,7 @@ export const FOOD_MAP_PLACES: readonly FoodMapPlace[] = [
     curators: ["google"],
     cuisine: "hot-chicken",
     coords: [34.0617, -118.2387],
-    order: "The sando at 'medium' — that's plenty hot.",
+    order: "The sando at 'medium', which is plenty hot.",
     why: "Chinatown Nashville hot chicken worth the famously long line.",
   },
   {
@@ -543,7 +543,7 @@ export const FOOD_MAP_PLACES: readonly FoodMapPlace[] = [
     cuisine: "sushi",
     coords: [35.672, 139.7636],
     order: "Whatever Jiro's counter serves, in the order it's served.",
-    why: "The Ginza basement omakase made famous worldwide — pure, exacting edomae sushi.",
+    why: "The Ginza basement omakase made famous worldwide, pure and exacting edomae sushi.",
   },
   {
     id: "rokurinsha",
@@ -552,7 +552,7 @@ export const FOOD_MAP_PLACES: readonly FoodMapPlace[] = [
     curators: ["isaac", "google"],
     cuisine: "ramen",
     coords: [35.6812, 139.7671],
-    order: "Tsukemen — thick noodles, dip in the rich pork-fish broth.",
+    order: "Tsukemen, thick noodles you dip in the rich pork and fish broth.",
     why: "Tokyo Station's Ramen Street legend that helped make tsukemen famous.",
   },
   {
@@ -585,7 +585,7 @@ export const FOOD_MAP_PLACES: readonly FoodMapPlace[] = [
     cuisine: "seafood",
     coords: [25.7689, -80.1347],
     order: "Stone crab claws with mustard sauce, hash browns, and key lime pie.",
-    why: "A Miami Beach institution since 1913 — stone crab season is the whole point.",
+    why: "A Miami Beach institution since 1913, and stone crab season is the whole point.",
   },
   {
     id: "versailles",
@@ -605,7 +605,7 @@ export const FOOD_MAP_PLACES: readonly FoodMapPlace[] = [
     cuisine: "cuban",
     coords: [25.7659, -80.2126],
     order: "Frita cubana piled with shoestring potatoes and a mamey batido.",
-    why: "The Cuban-style burger done the way it should be — messy and worth it.",
+    why: "The Cuban-style burger done the way it should be, messy and worth it.",
   },
   {
     id: "garcias-seafood",
@@ -615,7 +615,7 @@ export const FOOD_MAP_PLACES: readonly FoodMapPlace[] = [
     cuisine: "seafood",
     coords: [25.7773, -80.2103],
     order: "Stone crab and a grilled fish sandwich on the river deck.",
-    why: "A working fish house on the Miami River — the antidote to South Beach.",
+    why: "A working fish house on the Miami River, and the antidote to South Beach.",
   },
   {
     id: "enriquetas",
@@ -689,7 +689,7 @@ export const FOOD_MAP_PLACES: readonly FoodMapPlace[] = [
     curators: ["google", "isaac"],
     cuisine: "nordic",
     coords: [55.6837, 12.61],
-    order: "Whatever the season's menu is — book months ahead.",
+    order: "Whatever the season's menu is, and book months ahead.",
     why: "The restaurant that rewrote modern fine dining around New Nordic ideas.",
   },
   {
@@ -709,7 +709,7 @@ export const FOOD_MAP_PLACES: readonly FoodMapPlace[] = [
     curators: ["isaac"],
     cuisine: "nordic",
     coords: [55.6869, 12.5719],
-    order: "A board of smørrebrød — start with the pickled herring.",
+    order: "A board of smørrebrød, starting with the pickled herring.",
     why: "Smørrebrød taken seriously: house-cured fish on dense rye.",
   },
   {
@@ -730,7 +730,7 @@ export const FOOD_MAP_PLACES: readonly FoodMapPlace[] = [
     cuisine: "street-food",
     coords: [55.676, 12.571],
     order: "A ristet pølse, dragged through the garden.",
-    why: "The Danish hot dog done with real care — a true Copenhagen street snack.",
+    why: "The Danish hot dog done with real care, a true Copenhagen street snack.",
   },
 
   // ---- San Sebastián ----
@@ -751,7 +751,7 @@ export const FOOD_MAP_PLACES: readonly FoodMapPlace[] = [
     curators: ["bourdain", "isaac"],
     cuisine: "basque",
     coords: [43.3216, -1.987],
-    order: "The txuleta steak, tomato salad, and one of the day's tortillas — arrive early.",
+    order: "The txuleta steak, tomato salad, and one of the day's tortillas, and arrive early.",
     why: "A tiny Old Town bar with one daily tortilla and a legendary steak.",
   },
   {
@@ -771,7 +771,7 @@ export const FOOD_MAP_PLACES: readonly FoodMapPlace[] = [
     curators: ["bourdain", "google"],
     cuisine: "basque",
     coords: [43.3262, -1.9608],
-    order: "The tasting menu — three generations of Basque haute cuisine.",
+    order: "The tasting menu, three generations of Basque haute cuisine.",
     why: "Juan Mari and Elena Arzak's three-star, a cornerstone of New Basque Cuisine.",
   },
   {
@@ -782,7 +782,7 @@ export const FOOD_MAP_PLACES: readonly FoodMapPlace[] = [
     cuisine: "pintxos",
     coords: [43.324, -1.9852],
     order: "Braised carrillera (beef cheek) and the seared foie.",
-    why: "Hot, cooked-to-order pintxos off a chalkboard — no display case.",
+    why: "Hot, cooked-to-order pintxos off a chalkboard, with no display case.",
   },
 ] as const;
 
@@ -886,7 +886,7 @@ export function countPlacesByCity(
   return counts;
 }
 
-/** Cuisines actually present in a city, in canonical order — used to scope the
+/** Cuisines actually present in a city, in canonical order, used to scope the
  *  cuisine filter chips to the selected city. */
 export function getCuisinesForCity(
   cityId: FoodMapCityId
