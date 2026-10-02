@@ -168,7 +168,8 @@ function decodeStockQuote(value: unknown): StockQuote | undefined {
   };
 }
 
-function loadHoldings(): PortfolioHolding[] {
+/** The holdings /investments saved in this browser, validated. Browser-only. */
+export function loadHoldings(): PortfolioHolding[] {
   return readValidatedBrowserStorage(STORAGE_KEY, decodeHoldings, () => []).value;
 }
 

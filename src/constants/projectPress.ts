@@ -41,6 +41,7 @@ export const PROJECT_PRESS: Readonly<Record<string, ProjectPress>> = {
   "/fintech-tools/interchange-iq": { lead: "blue", second: "saffron" },
   "/fintech-tools/rent-vs-buy": { lead: "teal", second: "vermilion" },
   "/investments": { lead: "blue", second: "saffron" },
+  "/investments/before-you-buy": { lead: "blue", second: "saffron" },
   "/decision-lab": { lead: "pink", second: "blue" },
   "/enablement-assistant": { lead: "blue", second: "saffron" },
   "/mba-internship-notifications": { lead: "teal", second: "vermilion" },

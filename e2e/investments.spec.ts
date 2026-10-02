@@ -255,7 +255,7 @@ test.describe("Investments", () => {
     await page.goto("/investments?view=research&symbol=V&section=overview");
     await expectInvestmentsShell(page);
 
-    await expect(page.getByRole("textbox", { name: /search stock symbol/i })).toHaveValue("V");
+    await expect(page.getByRole("combobox", { name: /search stock symbol/i })).toHaveValue("V");
     await expect(page.getByText("Visa Inc.")).toBeVisible();
     await expect(page.getByText("$352.45")).toBeVisible();
     await expect(page.getByText(/market quote as of/i).first()).toBeVisible();
@@ -273,7 +273,7 @@ test.describe("Investments", () => {
     await expectInvestmentsShell(page);
     await indexLoaded;
 
-    const search = page.getByRole("textbox", { name: /search stock symbol/i });
+    const search = page.getByRole("combobox", { name: /search stock symbol/i });
     await search.fill("visa");
     await expect(page.getByRole("listbox", { name: /symbol suggestions/i })).toBeVisible();
     await expect(page.getByRole("option", { name: /^V\s+Visa Inc\.$/i })).toBeVisible();
@@ -312,7 +312,7 @@ test.describe("Investments", () => {
     await page.goto("/investments");
     await expectInvestmentsShell(page);
 
-    const search = page.getByRole("textbox", { name: /search stock symbol/i });
+    const search = page.getByRole("combobox", { name: /search stock symbol/i });
     await search.fill("SHOP");
     await page.waitForTimeout(300);
 
@@ -338,7 +338,7 @@ test.describe("Investments", () => {
     await page.goto("/investments?view=research&symbol=SHOP&section=overview");
     await expectInvestmentsShell(page);
 
-    await expect(page.getByRole("textbox", { name: /search stock symbol/i })).toHaveValue("SHOP");
+    await expect(page.getByRole("combobox", { name: /search stock symbol/i })).toHaveValue("SHOP");
     await expect(
       page.getByText("This symbol is not in the current research set.")
     ).toBeVisible();

@@ -43,6 +43,7 @@ const STATIC_ROUTE_LASTMOD = {
   "/github-trending-pulse": readGitHubTrendingLastmod(),
   "/tech-startup-tracker": readTechStartupLastmod(),
   "/investments": readInvestmentsLastmod(),
+  "/investments/before-you-buy": "2026-10-01",
   "/news-pulse": "2026-07-23",
   "/spacex-mission-control": readSpaceXLastmod(),
   "/polling-aggregator": readPollingLastmod(),
@@ -117,6 +118,7 @@ const CHANGEFREQ_BY_ROUTE = {
   "/fantasy-football/trade-calculator": "weekly",
   // Investments — committed snapshots refresh twice weekly
   "/investments": "weekly",
+  "/investments/before-you-buy": "monthly",
   // Knowledge / editorial surfaces — hand-maintained, refreshed occasionally
   "/ai-dev-tools": "monthly",
   "/decision-lab": "monthly",

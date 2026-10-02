@@ -9,6 +9,7 @@ import {
 describe("classifyToolSlug", () => {
   it("buckets known slugs into their declared category", () => {
     expect(classifyToolSlug("investment-analytics-platform")).toBe("fintech");
+    expect(classifyToolSlug("before-you-buy")).toBe("fintech");
     expect(classifyToolSlug("news-pulse-dashboard")).toBe("pulse");
     expect(classifyToolSlug("nba-pulse")).toBe("sports");
     expect(classifyToolSlug("frontier-model-tracker")).toBe("ai");

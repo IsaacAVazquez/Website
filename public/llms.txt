@@ -4,7 +4,7 @@
 
 Isaac Vazquez is a second-year MBA candidate at UC Berkeley Haas, Class of 2027, looking for a full-time product management role that starts after he graduates in May 2027, and he is interested in consumer tech broadly. At Civitech, a campaign software company, his QA role grew into product work, and he owned the product vision for the TextOut texting platform, led a pricing initiative that generated $4M in additional revenue in 2024, and helped launch RunningMate. In summer 2026 he was the MBA growth intern at Juno, a fintech company that negotiates group rates on student loans. He is a Consortium Fellow and MLT Professional Development Fellow, and he builds and maintains the tools on this site.
 
-Last reviewed: 2026-09-30
+Last reviewed: 2026-10-01
 
 Legacy `/projects`, `/work`, and `/blog` URLs redirect permanently to their canonical routes. The on-site `/search` page is a lightweight navigation layer over a limited, mostly hand-maintained index. Most dashboards read a committed snapshot that a scheduled job refreshes, so each one shows where its numbers came from and when.
 
@@ -31,6 +31,7 @@ Legacy `/projects`, `/work`, and `/blog` URLs redirect permanently to their cano
 ## Fintech and research tools
 
 - [Investment Research](https://isaacvazquez.com/investments): Public investment research platform with portfolio tracking, quote snapshots, stock comparisons, and retirement-planning experiments.
+- [Before You Buy](https://isaacvazquez.com/investments/before-you-buy): A product concept for Google Finance that shows what one stock would do to a portfolio before you buy it, from sector weights, to beta, to the market's five worst days of the past year. An independent concept, not affiliated with Google.
 - [Interchange IQ](https://isaacvazquez.com/fintech-tools/interchange-iq): Payment fee analyzer comparing flat-rate and interchange-plus processor economics with adjustable volume, ticket size, and card mix.
 - [Budget Planner](https://isaacvazquez.com/fintech-tools/budget-planner): Browser-persisted budgeting workspace for income, category planning, savings targets, and manual expense tracking.
 - [Rent vs. Buy Calculator](https://isaacvazquez.com/fintech-tools/rent-vs-buy): Month-by-month net-worth model that credits the renter the opportunity cost of the down payment and finds the year buying pulls ahead.

@@ -21,6 +21,7 @@ export interface ToolCategory {
 }
 
 const FINTECH = new Set([
+  "before-you-buy",
   "investment-analytics-platform",
   "interchange-iq",
   "budget-planner",
