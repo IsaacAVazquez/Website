@@ -155,7 +155,7 @@ import { StructuredData } from "@/components/StructuredData";
 Data-driven schemas built from `src/lib/ai-seo.ts`. Pass your own data rather than relying on presets. Used for richer E-E-A-T signals and AI-comprehensible markup.
 
 ```tsx
-import { AIStructuredData, AIStructuredDataCollection } from "@/components/AIStructuredData";
+import { AIStructuredData } from "@/components/AIStructuredData";
 
 // Supported types:
 <AIStructuredData schema={{ type: "Person",              data: PersonSchemaData }} />
@@ -168,9 +168,6 @@ import { AIStructuredData, AIStructuredDataCollection } from "@/components/AIStr
 <AIStructuredData schema={{ type: "ItemList",            data: { name, items } }} />
 <AIStructuredData schema={{ type: "Navigation",          data: NavigationItem[] }} />
 <AIStructuredData schema={{ type: "Custom",              data: { schema: object } }} />
-
-// Render multiple schemas at once:
-<AIStructuredDataCollection schemas={[...]} />
 ```
 
 ### Generator Functions — `src/lib/ai-seo.ts`
