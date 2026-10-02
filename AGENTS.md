@@ -244,9 +244,7 @@ Current generated outputs:
 - `public/data/fantasy/best-ball.json`
 - `public/data/fantasy/weekly.json` when the in-season board is published
 
-Legacy RB tiers artifact still exists, and the old RB tier route redirects to the canonical fantasy board:
-
-- `public/fantasy/rb_current.json`
+The old RB tier route redirects to the canonical fantasy board.
 
 Operational note: `.github/workflows/update-fantasy.yml` commits the real fantasy snapshot artifacts above. There is no live Netlify scheduled fantasy updater; GitHub Actions is the public update path.
 
@@ -351,7 +349,6 @@ The MLB, NBA, and NFL dashboards read committed TypeScript snapshots at runtime.
 - `postbuild` runs `scripts/generatePublicSitemap.mjs` and `scripts/patch-nft-sharp.mjs`
 - `npm run analyze` enables bundle analysis and still runs the npm `postbuild` hook
 - `npm run build:analyze` runs `ANALYZE=true next build --webpack` directly and skips npm `postbuild`
-- `npm run generate:icons` rebuilds PWA icons
 
 ---
 
@@ -396,7 +393,6 @@ The MLB, NBA, and NFL dashboards read committed TypeScript snapshots at runtime.
 | `npm run update:spacex` | Rebuild the checked-in SpaceX Mission Control data snapshot |
 | `npm run update:spacex-images` | Rebuild cached SpaceX image snapshots and manifests |
 | `npm run update:article-images` | Fetch license-safe blog cover photos per `scripts/data/articleCoverImages.ts` |
-| `npm run generate:icons` | Regenerate PWA icons |
 
 ---
 

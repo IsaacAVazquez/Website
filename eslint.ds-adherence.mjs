@@ -26,10 +26,10 @@ import { builtinRules } from "eslint/use-at-your-own-risk";
  *    editing the table, not 500 lines of selector strings.
  *
  * Everything is `warn`, matching the published config. These are advisory: a
- * stale contract should not be able to break the build. If a warning looks
- * wrong, check whether the component's real props moved and
- * `.design-sync/gen-contracts.mjs` has not been re-run — `dtsPropsFor` going
- * stale is a known failure mode (see `.design-sync/NOTES.md`).
+ * stale contract should not be able to break the build. The `.design-sync/`
+ * bridge was removed on 2026-10-01 (it is in git history), so the table below
+ * is now edited by hand. If a warning looks wrong, check whether the
+ * component's real props moved.
  */
 
 /**

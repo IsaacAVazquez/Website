@@ -5,7 +5,7 @@
 
 Last updated: 2026-03-05
 
-Prioritized list of improvements identified from the [codebase audit](./UNDERUTILIZED_FEATURES.md). Organized by priority tier — P0 items are high-impact quick wins, P3 items require a decision before work begins.
+Prioritized list of improvements identified from a codebase audit (`docs/UNDERUTILIZED_FEATURES.md`, removed 2026-10-01 and still in git history). Organized by priority tier — P0 items are high-impact quick wins, P3 items require a decision before work begins.
 
 For investments-specific enhancements, see [docs/FEATURE_ROADMAP.md](./FEATURE_ROADMAP.md).
 

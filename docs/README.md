@@ -72,31 +72,21 @@ Use these when the task is specifically about setup, deployment, data operations
 Historical release notes and changelogs:
 
 - `../CHANGELOG.md`
-- `RELEASE_NOTES_2026-03-16_FINTECH_INVESTMENTS.md`
 
 Planning and strategy references:
 
-- `SPRING_2026_ROADMAP.md` (cross-site feature/fix roadmap written 2026-06-23; a 2026-09-21 status check marks the items that shipped or no longer apply)
-- `2026-seo-opportunity-ai-tech-blogs.md`
 - `content-plan-ai-mba-pm-cluster.md`
-- `SPACEX_API_CODEBASE_README.md`
 
 Dated audits and research dossiers. Each one is a point-in-time snapshot rather than a live contract, so read the date in the title first and confirm anything still open against the code. Several carry fix backlogs that are partly worked through:
 
 - `DESIGN_AUDIT_2026-06.md` (the audit `../DESIGN_CHECKLIST.md` is derived from)
 - `DESIGN_REVIEW_2026-07.md`
-- `REDESIGN_BRIEF.md`
 - `dashboard-spatial-system.md`
-- `component-reusability-audit.md`
 - `accessibility-audit-2026-06.md`
-- `DATA_SOURCE_AUDIT_2026-07.md` (data source fix backlog)
-- `FANTASY_AUDIT_2026-08.md` (fantasy football audit and roadmap, 2026-08-20)
-- `seo-aeo-audit.md` (July 2026 AEO and SEO audit, pre Catalog 97)
-- `SEO_AUDIT_2026-09.md` (September 2026 SEO audit against a local production build and crawl, with the S1 to S26 fix backlog)
 - `SEO_CONTENT_MAP.md`
-- `website-improvement-suggestions.md`
 - `research/*` (World Cup 2026 contender dossier and rerank template)
-- `web-design-research/*` (portfolio and web design reference reading, with its own `README.md`)
+
+Older audits, roadmaps, and research reading were removed on 2026-10-01 and are still in git history.
 
 ---
 
@@ -108,7 +98,6 @@ These remain in the repo for context, but they should not be treated as live sou
 - `PLAYER_IMAGES_SETUP.md` (historical fantasy player-image workflow; referenced assets no longer exist)
 - `FEATURE_ROADMAP.md`
 - `PROJECTS.md`
-- `UNDERUTILIZED_FEATURES.md`
 - `superpowers/specs/*`
 - `../content/*`
 - `../public/project-screenshots/README.md`
