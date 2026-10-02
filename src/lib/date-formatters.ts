@@ -54,14 +54,6 @@ export const LONG_DATE_TIME_FORMATTER = new Intl.DateTimeFormat("en-US", {
 /** "Updated at" timestamp: "Apr 25, 2:30 PM PDT" */
 export const UPDATED_AT_FORMATTER = DATE_TIME_FORMATTER;
 
-/** Full calendar date: "Apr 25, 2026" */
-const FULL_DATE_FORMATTER = new Intl.DateTimeFormat("en-US", {
-  month: "short",
-  day: "numeric",
-  year: "numeric",
-  timeZone: DISPLAY_TIME_ZONE,
-});
-
 export function formatShortDate(value: string | Date): string {
   const date = typeof value === "string" ? new Date(value) : value;
   return Number.isNaN(date.getTime()) ? "TBD" : SHORT_DATE_FORMATTER.format(date);
@@ -75,11 +67,6 @@ export function formatDateTime(value: string | Date): string {
 export function formatUpdatedAt(value: string | Date): string {
   const date = typeof value === "string" ? new Date(value) : value;
   return Number.isNaN(date.getTime()) ? "Unavailable" : UPDATED_AT_FORMATTER.format(date);
-}
-
-export function formatFullDate(value: string | Date): string {
-  const date = typeof value === "string" ? new Date(value) : value;
-  return Number.isNaN(date.getTime()) ? "Unavailable" : FULL_DATE_FORMATTER.format(date);
 }
 
 /**

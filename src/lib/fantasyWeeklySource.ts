@@ -27,29 +27,11 @@ const WEEKLY_FLEX_URLS: Record<ScoringFormat, string> = {
 // pipeline shares its QB cheat sheet.
 const WEEKLY_QB_URL = "https://www.fantasypros.com/nfl/rankings/qb.php";
 
-/**
- * Rest-of-season boards. On 2026-09-27 all three served year 2026 with 396 to
- * 397 players from 6 experts, so they pass the season check. Nothing publishes
- * them yet, and the weekly builder does not request one, which keeps a request
- * off FantasyPros on every run until a board is built from them.
- */
-export const REST_OF_SEASON_URLS: Record<ScoringFormat, string> = {
-  PPR: "https://www.fantasypros.com/nfl/rankings/ros-ppr-overall.php",
-  HALF_PPR: "https://www.fantasypros.com/nfl/rankings/ros-half-point-ppr-overall.php",
-  STANDARD: "https://www.fantasypros.com/nfl/rankings/ros-overall.php",
-};
-
 /** Lowest contributing-expert count observed across the weekly boards was six. */
 const WEEKLY_MIN_EXPERTS = 5;
 
 const WEEKLY_MIN_FLEX_PLAYERS = 150;
 const WEEKLY_MIN_QUARTERBACKS = 24;
-const REST_OF_SEASON_MIN_PLAYERS = 250;
-
-export interface FantasyWeeklyBoardResult {
-  board: FantasyProsPublicBoard;
-  sourceUrl: string;
-}
 
 async function fetchWeeklyBoard(options: {
   sourceUrl: string;
@@ -57,7 +39,7 @@ async function fetchWeeklyBoard(options: {
   requestedPosition: "FLEX" | "QB" | "OVERALL";
   expectedSeason: number;
   minimumPlayers: number;
-  rankingType: "weekly" | "ros";
+  rankingType: "weekly";
 }): Promise<FantasyProsPublicBoard> {
   const board = await fetchFantasyProsConsensusBoard({
     scoringFormat: options.scoringFormat,
@@ -108,19 +90,5 @@ export function fetchWeeklyQuarterbackBoard(
     expectedSeason,
     minimumPlayers: WEEKLY_MIN_QUARTERBACKS,
     rankingType: "weekly",
-  });
-}
-
-export function fetchRestOfSeasonBoard(
-  scoringFormat: ScoringFormat,
-  expectedSeason: number
-): Promise<FantasyProsPublicBoard> {
-  return fetchWeeklyBoard({
-    sourceUrl: REST_OF_SEASON_URLS[scoringFormat],
-    scoringFormat,
-    requestedPosition: "OVERALL",
-    expectedSeason,
-    minimumPlayers: REST_OF_SEASON_MIN_PLAYERS,
-    rankingType: "ros",
   });
 }

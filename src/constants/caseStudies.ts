@@ -1249,8 +1249,3 @@ export function getPortfolioProjects(): CaseStudyData[] {
 
   return [...orderedProjects, ...unorderedProjects];
 }
-
-/** Get all case studies as an array */
-export function getAllCaseStudies(): CaseStudyData[] {
-  return Object.values(caseStudiesData);
-}

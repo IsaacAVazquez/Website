@@ -2,7 +2,6 @@
  * @jest-environment node
  */
 import {
-  fetchRestOfSeasonBoard,
   fetchWeeklyFlexBoard,
   fetchWeeklyQuarterbackBoard,
 } from "@/lib/fantasyWeeklySource";
@@ -54,19 +53,5 @@ describe("fantasyWeeklySource", () => {
     expect(fetchMock.mock.calls.map(([, init]) => init?.signal)).toEqual(
       timeout.mock.results.map((result) => result.value)
     );
-  });
-
-  // Through 2026-08-21 these pages still served the 2025 season and the season
-  // check turned them away. They rolled over once the season opened.
-  it("reads the rest-of-season page as the current season's board", async () => {
-    const board = await fetchRestOfSeasonBoard("PPR", 2026);
-
-    expect(board).toMatchObject({
-      requestedPosition: "OVERALL",
-      sourcePosition: "ALL",
-      season: 2026,
-      totalExperts: 6,
-    });
-    expect(board.players).toHaveLength(396);
   });
 });

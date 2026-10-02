@@ -10,7 +10,8 @@ import {
   saveIdList,
   toggleId,
 } from "@/lib/fantasyLocal";
-import { emitLocalStoreChange, useLocalStoragePersistenceStatus, useLocalStorageString } from "@/hooks/useLocalStorageString";
+import { useLocalStoragePersistenceStatus, useLocalStorageString } from "@/hooks/useLocalStorageString";
+import { emitBrowserStorageChange } from "@/lib/browserStorage";
 
 /**
  * A single browser-local watchlist of player ids, shared by the rankings board
@@ -26,7 +27,7 @@ export function usePlayerQueue() {
   const commit = useCallback((updater: (current: string[]) => string[]) => {
     const next = updater(loadIdList(FANTASY_QUEUE_STORAGE_KEY));
     saveIdList(FANTASY_QUEUE_STORAGE_KEY, next);
-    emitLocalStoreChange(FANTASY_QUEUE_STORAGE_KEY);
+    emitBrowserStorageChange(FANTASY_QUEUE_STORAGE_KEY);
   }, []);
 
   const isQueued = useCallback((id: string) => queuedSet.has(id), [queuedSet]);

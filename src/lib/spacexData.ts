@@ -19,9 +19,7 @@ import { aggregateLaunchCadence } from "@/lib/spacexCadence";
 import { HttpStatusError } from "@/lib/utils";
 import { deriveVehicleFamily } from "@/lib/spacexVehicleFamily";
 import {
-  getSpaceXSnapshotCadence,
   getSpaceXSnapshotLaunchDetail,
-  getSpaceXSnapshotLaunchDetails,
   getSpaceXSnapshotLaunches,
   getSpaceXSnapshotSummary,
   hasSpaceXSnapshotData,
@@ -1105,20 +1103,6 @@ async function getLaunchCardForSummary(
 
 export function isValidMissionLaunchId(value: string): boolean {
   return LAUNCH_ID_PATTERN.test(value);
-}
-
-// Vehicle catalog + recovery split are read directly from the committed
-// snapshot's hydrated launch details — they don't need live-fetch parity
-// (a handful of hydrated details only changes on each snapshot rebuild, not
-// minute to minute), so these are thin, synchronous pass-throughs rather
-// than fetch functions. Exposed from this module (not spacexSnapshot.ts
-// directly) so callers keep a single data-layer import boundary.
-export function getMissionControlCadence(): MissionControlCadence | null {
-  return getSpaceXSnapshotCadence();
-}
-
-export function getMissionControlVehicleCatalogData(): Record<string, MissionLaunchDetail> {
-  return getSpaceXSnapshotLaunchDetails();
 }
 
 function shouldReadFromSnapshot(source: MissionControlDataSource = "auto"): boolean {

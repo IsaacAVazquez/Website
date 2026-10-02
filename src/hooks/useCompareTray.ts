@@ -10,7 +10,8 @@ import {
   saveIdList,
   toggleIdCapped,
 } from "@/lib/fantasyLocal";
-import { emitLocalStoreChange, useLocalStoragePersistenceStatus, useLocalStorageString } from "@/hooks/useLocalStorageString";
+import { useLocalStoragePersistenceStatus, useLocalStorageString } from "@/hooks/useLocalStorageString";
+import { emitBrowserStorageChange } from "@/lib/browserStorage";
 
 /**
  * The compare tray: up to three player ids pinned for a side-by-side look.
@@ -25,7 +26,7 @@ export function useCompareTray() {
   const commit = useCallback((updater: (current: string[]) => string[]) => {
     const next = updater(loadIdList(FANTASY_COMPARE_STORAGE_KEY)).slice(0, FANTASY_COMPARE_LIMIT);
     saveIdList(FANTASY_COMPARE_STORAGE_KEY, next);
-    emitLocalStoreChange(FANTASY_COMPARE_STORAGE_KEY);
+    emitBrowserStorageChange(FANTASY_COMPARE_STORAGE_KEY);
   }, []);
 
   const inCompare = useCallback((id: string) => compareSet.has(id), [compareSet]);
