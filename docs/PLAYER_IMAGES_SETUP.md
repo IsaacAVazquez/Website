@@ -36,5 +36,4 @@ If player images are reintroduced, document the new source files, refresh workfl
 ## Related References
 
 - `docs/FANTASY_PLATFORM_SETUP.md`
-- `docs/AUTOMATION_SCRIPTS.md`
 - `COMPONENTS.md`

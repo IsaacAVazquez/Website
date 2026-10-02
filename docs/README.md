@@ -61,7 +61,6 @@ Use these when the task is specifically about setup, deployment, data operations
 
 - `../DEPLOYMENT.md`
 - `../TROUBLESHOOTING.md`
-- `AUTOMATION_SCRIPTS.md`
 - `CRON_SETUP.md`
 - `DATA_UPDATE_OPERATIONS.md` (consolidated command → artifact → schedule runbook)
 - `INVESTMENTS_DATA_SOURCES.md` (investments provider, licensing, provenance, and migration ledger)

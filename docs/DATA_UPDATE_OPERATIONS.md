@@ -6,8 +6,8 @@ architecture or the per-workflow prose:
 
 - Architecture (seed → builder → Action → accessors → API, the fallback
   contract): `../SNAPSHOT_DRIVEN_DASHBOARDS.md`
-- Per-script and per-workflow detail: `AUTOMATION_SCRIPTS.md`, `CRON_SETUP.md`,
-  and the **Automation Surfaces** section of `../AGENTS.md`
+- Per-workflow detail: `CRON_SETUP.md` and the **Automation Surfaces**
+  section of `../AGENTS.md`. Each script's header comment says what it does.
 
 **Last updated:** 2026-09-28
 
