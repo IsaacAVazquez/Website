@@ -123,7 +123,6 @@ const NARROW_GRIDS = [
       "c97-columns of 3, block, 1 across",
       "c97-footer-tiles of 4, grid, 2 across",
       "c97-mosaic of 3, block, 1 across",
-      "c97-mosaic of 4, grid, 2 across",
     ],
   },
   {

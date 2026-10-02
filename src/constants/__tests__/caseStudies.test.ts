@@ -4,6 +4,7 @@ import {
 } from "../caseStudies";
 
 const expectedPortfolioSlugs = [
+  "before-you-buy",
   "investment-analytics-platform",
   "interchange-iq",
   "news-pulse-dashboard",
@@ -57,6 +58,7 @@ describe("caseStudies helpers", () => {
     expect(projectLinks).toEqual(
       new Set([
         "/investments",
+        "/investments/before-you-buy",
         "/fintech-tools/interchange-iq",
         "/news-pulse",
         "/ai-dev-tools",

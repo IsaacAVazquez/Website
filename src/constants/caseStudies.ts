@@ -89,6 +89,39 @@ export const caseStudiesData: Record<string, CaseStudyData> = {
   },
 
 
+  "before-you-buy": {
+    slug: "before-you-buy",
+    title: "Before You Buy",
+    description:
+      "A product concept for Google Finance that shows what one stock would do to your portfolio before you buy it, comparing sector weights, beta, and the market's five worst days of the past year before and after the purchase.",
+    role: "Product Concept, Design & Build",
+    timeline: "2026",
+    tools: ["Next.js", "TypeScript", "React", "Portfolio Analytics"],
+    metrics: "Sector weights before and after · Beta and correlation · Five worst days replayed",
+    github: "https://github.com/IsaacAVazquez",
+    link: "/investments/before-you-buy",
+    featured: true,
+
+    overview: {
+      summary:
+        "An independent concept by Isaac Vazquez, not affiliated with or endorsed by Google. I built it for the moment right before a trade, when the question is what one more stock would do to the portfolio you already have.",
+      impact:
+        "Takes portfolio insights from describing what you hold to showing what a buy would change, in numbers you can check.",
+    },
+    problem: {
+      context:
+        "Portfolio tools describe what you already own, but the decision people actually face is whether the next purchase piles onto a sector or a kind of risk they already carry.",
+      painPoints: [],
+      stakes: "",
+    },
+    process: { approach: "", methodology: [], decisions: [] },
+    result: { outcomes: [], lessonsLearned: [] },
+    userSegments: [],
+    northStarMetric: "",
+    tradeoffs: [],
+    retrospective: "",
+  },
+
   "fantasy-football-analytics": {
     slug: "fantasy-football-analytics",
     title: "Fantasy Football Analytics Platform",
@@ -1151,6 +1184,7 @@ export const HOMEPAGE_FEATURED_SLUGS = [
 ] as const;
 
 const PORTFOLIO_PROJECT_ORDER = [
+  "before-you-buy",
   "investment-analytics-platform",
   "interchange-iq",
   "news-pulse-dashboard",

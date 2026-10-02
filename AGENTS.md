@@ -25,6 +25,7 @@ Primary live routes:
 - `/portfolio` and `/portfolio/[slug]`
 - `/dashboards`
 - `/investments`
+- `/investments/before-you-buy`
 - `/formula-1`
 - `/fantasy-formula-1`
 - `/github-trending-pulse`

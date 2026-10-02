@@ -254,6 +254,8 @@ export function StockSearch({ value, onChange }: Props) {
           autoComplete="off"
           spellCheck={false}
           className="box-border w-full border-0 border-b border-[var(--c97-ink-2)] bg-[var(--c97-panel)] py-3 pl-9 pr-4 text-sm text-[var(--c97-ink)] transition placeholder:text-[var(--c97-label)] focus:outline-none focus:border-[var(--c97-accent)]"
+          // aria-expanded and aria-activedescendant are only allowed on a combobox, not a plain textbox.
+          role="combobox"
           aria-label="Search stock symbol"
           aria-autocomplete="list"
           aria-controls="stock-search-listbox"
