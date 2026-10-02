@@ -2,7 +2,6 @@
 
 import { useRef } from "react";
 import { useModal } from "@/hooks/useModal";
-import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { X } from "lucide-react";
 import type { MissionControlPanel, MissionLaunchDetail } from "@/types/spacex";
 import { MissionDetailPanel } from "./MissionDetailPanel";
@@ -24,8 +23,7 @@ interface MissionDrawerProps {
 /**
  * The mission drill-down as a right-slide overlay drawer, converted from the
  * previous always-docked side panel. Follows the same shape as
- * `PlayerDetailDrawer`: Framer Motion entrance gated by `useReducedMotion`,
- * a focus trap, Escape/backdrop close, and body-scroll lock while open. Adds
+ * `PlayerDetailDrawer`: a CSS entrance from `@starting-style`, a focus trap, Escape/backdrop close, and body-scroll lock while open. Adds
  * the identity header (patch, name, badge) and the T-0 sequence timeline;
  * the Overview/Vehicle/Payloads/Links tab body is delegated to
  * `MissionDetailPanel` (unchanged) so its tested behavior carries over.
@@ -39,7 +37,6 @@ export function MissionDrawer({
   onPanelChange,
   onClose,
 }: MissionDrawerProps) {
-  const reduceMotion = useReducedMotion();
   const panelRef = useRef<HTMLDivElement>(null);
   const isOpen = Boolean(launchId);
   useModal(panelRef, isOpen, onClose, { resetKey: launchId });
@@ -48,15 +45,9 @@ export function MissionDrawer({
   const accent = status ? MISSION_STATUS_ACCENT_VAR[status] : "var(--c97-accent)";
 
   return (
-    <AnimatePresence>
+    <>
       {isOpen ? (
-        <motion.div
-          className="fixed inset-0 z-[60] flex justify-end"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: reduceMotion ? 0 : 0.18 }}
-        >
+        <div className="c97-enter-fade fixed inset-0 z-[60] flex justify-end">
           <button
             type="button"
             aria-label="Close mission detail"
@@ -65,7 +56,7 @@ export function MissionDrawer({
             style={{ background: "color-mix(in srgb, var(--c97-ink) 34%, transparent)" }}
             tabIndex={-1}
           />
-          <motion.aside
+          <aside
             ref={panelRef}
             role="dialog"
             aria-modal="true"
@@ -73,11 +64,7 @@ export function MissionDrawer({
             tabIndex={-1}
             data-testid="mission-detail-panel"
             data-c97-surface="paper"
-            initial={reduceMotion ? { opacity: 0 } : { opacity: 0, x: 28 }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={reduceMotion ? { opacity: 0 } : { opacity: 0, x: 28 }}
-            transition={{ duration: reduceMotion ? 0 : 0.26, ease: [0.22, 1, 0.36, 1] }}
-            className="relative flex h-full w-full max-w-[30rem] flex-col overflow-y-auto border-l border-[var(--c97-rule)] bg-[var(--c97-surface)] outline-none"
+            className="c97-enter-slide-x relative flex h-full w-full max-w-[30rem] flex-col overflow-y-auto border-l border-[var(--c97-rule)] bg-[var(--c97-surface)] outline-none"
           >
             <div className="relative border-b border-[var(--c97-rule)] px-5 pb-4.5 pt-6">
               <span
@@ -146,9 +133,9 @@ export function MissionDrawer({
                 <MissionSequenceTimeline rocketName={detail.rocketName} upcoming={detail.upcoming} />
               </div>
             ) : null}
-          </motion.aside>
-        </motion.div>
+          </aside>
+        </div>
       ) : null}
-    </AnimatePresence>
+    </>
   );
 }

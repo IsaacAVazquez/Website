@@ -1,16 +1,6 @@
-import type { HTMLAttributes } from "react";
 import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 import { RentVsBuyClient } from "../rent-vs-buy-client";
 import { RENT_VS_BUY_STORAGE_KEY } from "@/lib/rentVsBuy/persistence";
-
-jest.mock("framer-motion", () => ({
-  motion: {
-    div: ({ children, ...props }: HTMLAttributes<HTMLDivElement>) => (
-      <div {...props}>{children}</div>
-    ),
-  },
-  useReducedMotion: () => true,
-}));
 
 describe("RentVsBuyClient", () => {
   beforeEach(() => {

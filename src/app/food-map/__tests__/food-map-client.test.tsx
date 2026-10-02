@@ -1,4 +1,3 @@
-import type { HTMLAttributes } from "react";
 import { fireEvent, render, screen } from "@testing-library/react";
 import { FoodMapClient } from "../food-map-client";
 import { DEFAULT_FOOD_MAP_STATE } from "../food-map-state";
@@ -13,13 +12,6 @@ jest.mock("next/navigation", () => ({
     replace: mockReplace,
   }),
   useSearchParams: () => currentSearchParams,
-}));
-
-jest.mock("framer-motion", () => ({
-  motion: {
-    div: ({ children, ...props }: HTMLAttributes<HTMLDivElement>) => <div {...props}>{children}</div>,
-  },
-  useReducedMotion: () => true,
 }));
 
 // The Leaflet map loads from a CDN at runtime; mock it so tests stay

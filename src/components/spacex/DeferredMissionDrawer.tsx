@@ -18,7 +18,7 @@ const LazyMissionDrawer = dynamic(
 
 /**
  * The mission drawer, loaded the first time a launch is opened. It carries
- * framer-motion, the detail panel, and the sequence timeline. A link that
+ * the detail panel and the sequence timeline. A link that
  * names a launch opens it on the server as before, because the hook starts
  * from its first value.
  */

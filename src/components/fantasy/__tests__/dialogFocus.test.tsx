@@ -9,26 +9,6 @@ import type { Player } from "@/types";
 import { CompareModal } from "../CompareModal";
 import { PlayerDetailDrawer } from "../PlayerDetailDrawer";
 
-jest.mock("framer-motion", () => ({
-  motion: {
-    div: ({
-      children,
-      initial: _initial,
-      animate: _animate,
-      exit: _exit,
-      transition: _transition,
-      ...props
-    }: React.HTMLAttributes<HTMLDivElement> & {
-      initial?: unknown;
-      animate?: unknown;
-      exit?: unknown;
-      transition?: unknown;
-    }) => <div {...props}>{children}</div>,
-  },
-  AnimatePresence: ({ children }: { children?: React.ReactNode }) => <>{children}</>,
-  useReducedMotion: () => true,
-}));
-
 const players: Player[] = [
   {
     id: "rb-1",

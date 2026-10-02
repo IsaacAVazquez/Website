@@ -1,17 +1,7 @@
-import type { HTMLAttributes } from "react";
 import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { BudgetPlannerClient } from "../budget-planner-client";
 import { BUDGET_PLANNER_STORAGE_KEY } from "@/lib/budgetPlanner";
-
-jest.mock("framer-motion", () => ({
-  motion: {
-    div: ({ children, ...props }: HTMLAttributes<HTMLDivElement>) => (
-      <div {...props}>{children}</div>
-    ),
-  },
-  useReducedMotion: () => true,
-}));
 
 describe("BudgetPlannerClient", () => {
   beforeAll(() => {
