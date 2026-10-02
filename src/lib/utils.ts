@@ -81,3 +81,13 @@ export function relativeAge(iso: string, now: number): string {
   if (hours < 48) return `${hours}h ago`;
   return `${Math.floor(hours / 24)}d ago`;
 }
+
+export function isFiniteNumber(value: unknown): value is number {
+  return typeof value === "number" && Number.isFinite(value);
+}
+
+/** Rounds half away from zero to `digits` decimals, which is what every local copy did. */
+export function roundTo(value: number, digits = 1): number {
+  const factor = 10 ** digits;
+  return Math.round(value * factor) / factor;
+}
