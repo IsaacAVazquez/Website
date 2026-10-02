@@ -2,7 +2,8 @@
 
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { Check, X } from "lucide-react";
-import { useEffect, useRef } from "react";
+import { useRef } from "react";
+import { useModal } from "@/hooks/useModal";
 
 import {
   FANTASY_REACH_TOOLTIP,
@@ -66,60 +67,7 @@ export function CompareModal({
 }: CompareModalProps) {
   const reduceMotion = useReducedMotion();
   const panelRef = useRef<HTMLDivElement>(null);
-  const restoreFocusRef = useRef<HTMLElement | null>(null);
-  const onCloseRef = useRef(onClose);
-  useEffect(() => {
-    onCloseRef.current = onClose;
-  }, [onClose]);
-
-  // Capture focus on open, trap Tab within the panel, and restore on close.
-  useEffect(() => {
-    restoreFocusRef.current = document.activeElement as HTMLElement | null;
-
-    const panel = panelRef.current;
-    panel?.focus();
-
-    function handleKeyDown(event: KeyboardEvent) {
-      if (event.key === "Escape") {
-        event.preventDefault();
-        onCloseRef.current();
-        return;
-      }
-      if (event.key !== "Tab" || !panel) return;
-
-      const focusable = panel.querySelectorAll<HTMLElement>(
-        'a[href], button:not([disabled]), textarea, input, [tabindex]:not([tabindex="-1"])',
-      );
-      if (focusable.length === 0) return;
-      const first = focusable[0];
-      const last = focusable[focusable.length - 1];
-      const activeElement = document.activeElement;
-      const focusIsInside = Boolean(activeElement && panel.contains(activeElement));
-
-      if (
-        event.shiftKey &&
-        (activeElement === panel || activeElement === first || !focusIsInside)
-      ) {
-        event.preventDefault();
-        last.focus();
-      } else if (
-        !event.shiftKey &&
-        (activeElement === panel || activeElement === last || !focusIsInside)
-      ) {
-        event.preventDefault();
-        first.focus();
-      }
-    }
-
-    document.addEventListener("keydown", handleKeyDown);
-    return () => {
-      document.removeEventListener("keydown", handleKeyDown);
-      restoreFocusRef.current?.focus?.();
-    };
-    // Deliberately empty: CompareTray passes an inline arrow and subscribes to the
-    // compare store, so depending on onClose tore the trap down on every store
-    // write and threw focus back to the panel mid-interaction.
-  }, []);
+  useModal(panelRef, true, onClose);
 
   const scaleMin = Math.min(...players.map((p) => (Number.isFinite(p.minRank) ? (p.minRank as number) : Infinity)));
   const scaleMax = Math.max(...players.map((p) => (Number.isFinite(p.maxRank) ? (p.maxRank as number) : -Infinity)));

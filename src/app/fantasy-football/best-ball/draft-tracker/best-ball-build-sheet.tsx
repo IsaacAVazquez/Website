@@ -1,6 +1,7 @@
 "use client";
 
-import { useEffect, useRef, type ReactNode, type RefObject } from "react";
+import { useRef, type ReactNode, type RefObject } from "react";
+import { useModal } from "@/hooks/useModal";
 import { X } from "lucide-react";
 
 export function BestBallBuildSheet({
@@ -17,44 +18,13 @@ export function BestBallBuildSheet({
   const dialogRef = useRef<HTMLDivElement>(null);
   const closeRef = useRef<HTMLButtonElement>(null);
 
-  useEffect(() => {
-    if (!open) return;
-    const previousOverflow = document.body.style.overflow;
-    document.body.style.overflow = "hidden";
-    closeRef.current?.focus();
-
-    function handleKeyDown(event: KeyboardEvent) {
-      if (event.key === "Escape") {
-        event.preventDefault();
-        onClose();
-        returnFocusRef.current?.focus();
-        return;
-      }
-      if (event.key !== "Tab" || !dialogRef.current) return;
-
-      const focusable = Array.from(
-        dialogRef.current.querySelectorAll<HTMLElement>(
-          'a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), [tabindex]:not([tabindex="-1"])'
-        )
-      );
-      const first = focusable[0];
-      const last = focusable[focusable.length - 1];
-      if (!first || !last) return;
-      if (event.shiftKey && document.activeElement === first) {
-        event.preventDefault();
-        last.focus();
-      } else if (!event.shiftKey && document.activeElement === last) {
-        event.preventDefault();
-        first.focus();
-      }
-    }
-
-    window.addEventListener("keydown", handleKeyDown);
-    return () => {
-      document.body.style.overflow = previousOverflow;
-      window.removeEventListener("keydown", handleKeyDown);
-    };
-  }, [onClose, open, returnFocusRef]);
+  // A tap on iOS does not focus the trigger, so close hands focus back to it
+  // by name rather than relying on whatever was focused at open.
+  const close = () => {
+    onClose();
+    returnFocusRef.current?.focus();
+  };
+  useModal(dialogRef, open, close, closeRef);
 
   if (!open) return null;
 
@@ -64,10 +34,7 @@ export function BestBallBuildSheet({
         type="button"
         className="absolute inset-0 h-full w-full"
         style={{ background: "color-mix(in srgb, var(--c97-ink) 48%, transparent)" }}
-        onClick={() => {
-          onClose();
-          returnFocusRef.current?.focus();
-        }}
+        onClick={close}
         tabIndex={-1}
         aria-hidden="true"
       />
@@ -84,10 +51,7 @@ export function BestBallBuildSheet({
           <button
             ref={closeRef}
             type="button"
-            onClick={() => {
-              onClose();
-              returnFocusRef.current?.focus();
-            }}
+            onClick={close}
             className="inline-flex h-11 w-11 items-center justify-center border"
             style={{ borderColor: "var(--c97-rule)", color: "var(--c97-ink)" }}
             aria-label="Close my build"

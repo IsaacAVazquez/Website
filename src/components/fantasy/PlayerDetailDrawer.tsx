@@ -6,6 +6,7 @@ import { useEffect, useRef, useState } from "react";
 
 import { MetricTooltip } from "@/components/investments/MetricTooltip";
 import { useCompareTray } from "@/hooks/useCompareTray";
+import { useModal } from "@/hooks/useModal";
 import { usePlayerNotes } from "@/hooks/usePlayerNotes";
 import { usePlayerQueue } from "@/hooks/usePlayerQueue";
 import {
@@ -109,8 +110,6 @@ export function PlayerDetailDrawer({ player, publishedRank, publishedRankLabel =
 }: PlayerDetailDrawerProps) {
   const reduceMotion = useReducedMotion();
   const panelRef = useRef<HTMLDivElement>(null);
-  const restoreFocusRef = useRef<HTMLElement | null>(null);
-  const onCloseRef = useRef(onClose);
   const isOpen = Boolean(player);
 
   const queue = usePlayerQueue();
@@ -118,12 +117,6 @@ export function PlayerDetailDrawer({ player, publishedRank, publishedRankLabel =
   const notes = usePlayerNotes();
 
   const [draftNote, setDraftNote] = useState("");
-
-  // Keep Escape wired to the latest callback without restarting the focus
-  // trap when a parent creates a new callback during a store-driven render.
-  useEffect(() => {
-    onCloseRef.current = onClose;
-  }, [onClose]);
 
   // Reset the note draft whenever a different player opens the drawer.
   useEffect(() => {
@@ -134,52 +127,7 @@ export function PlayerDetailDrawer({ player, publishedRank, publishedRankLabel =
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [player?.id]);
 
-  // Capture focus on open, trap Tab within the panel, and restore on close.
-  useEffect(() => {
-    if (!isOpen) return;
-    restoreFocusRef.current = document.activeElement as HTMLElement | null;
-
-    const panel = panelRef.current;
-    panel?.focus();
-
-    function handleKeyDown(event: KeyboardEvent) {
-      if (event.key === "Escape") {
-        event.preventDefault();
-        onCloseRef.current();
-        return;
-      }
-      if (event.key !== "Tab" || !panel) return;
-
-      const focusable = panel.querySelectorAll<HTMLElement>(
-        'a[href], button:not([disabled]), textarea, input, [tabindex]:not([tabindex="-1"])',
-      );
-      if (focusable.length === 0) return;
-      const first = focusable[0];
-      const last = focusable[focusable.length - 1];
-      const activeElement = document.activeElement;
-      const focusIsInside = Boolean(activeElement && panel.contains(activeElement));
-
-      if (
-        event.shiftKey &&
-        (activeElement === panel || activeElement === first || !focusIsInside)
-      ) {
-        event.preventDefault();
-        last.focus();
-      } else if (
-        !event.shiftKey &&
-        (activeElement === panel || activeElement === last || !focusIsInside)
-      ) {
-        event.preventDefault();
-        first.focus();
-      }
-    }
-
-    document.addEventListener("keydown", handleKeyDown);
-    return () => {
-      document.removeEventListener("keydown", handleKeyDown);
-      restoreFocusRef.current?.focus?.();
-    };
-  }, [isOpen]);
+  useModal(panelRef, isOpen, onClose);
 
   const valueSignal =
     player && adpAvailable && valueSignalAvailable ? getValueVsAdp(player) : null;

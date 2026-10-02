@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState, type ReactNode } from "react";
 import { X } from "lucide-react";
+import { useModal } from "@/hooks/useModal";
 import {
   MBA_APPLICATION_PRIORITIES,
   MBA_APPLICATION_PRIORITY_LABELS,
@@ -54,6 +55,7 @@ export default function ApplicationEditDialog({
     getApplicationFormState(application)
   );
   const dialogRef = useRef<HTMLDivElement | null>(null);
+  const closeRef = useRef<HTMLButtonElement | null>(null);
 
   useEffect(() => {
     if (!isOpen) return;
@@ -61,21 +63,7 @@ export default function ApplicationEditDialog({
     setForm(getApplicationFormState(application));
   }, [application, isOpen]);
 
-  useEffect(() => {
-    if (!isOpen) return;
-    const dialog = dialogRef.current;
-    dialog?.querySelector<HTMLElement>("input, select, textarea, button")?.focus();
-
-    function handleKey(event: KeyboardEvent) {
-      if (event.key === "Escape") {
-        event.preventDefault();
-        onClose();
-      }
-    }
-
-    document.addEventListener("keydown", handleKey);
-    return () => document.removeEventListener("keydown", handleKey);
-  }, [isOpen, onClose]);
+  useModal(dialogRef, isOpen, onClose, closeRef);
 
   if (!isOpen) return null;
 
@@ -112,6 +100,7 @@ export default function ApplicationEditDialog({
             </h2>
           </div>
           <button
+            ref={closeRef}
             type="button"
             onClick={onClose}
             className="inline-flex min-h-[44px] min-w-[44px] items-center justify-center"
