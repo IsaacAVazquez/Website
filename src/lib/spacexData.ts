@@ -16,6 +16,7 @@ import type {
 } from "@/types/spacex";
 import { resolveSpaceXImageUrl, resolveSpaceXImageUrls } from "@/lib/spacexImageManifest";
 import { aggregateLaunchCadence } from "@/lib/spacexCadence";
+import { HttpStatusError } from "@/lib/utils";
 import { deriveVehicleFamily } from "@/lib/spacexVehicleFamily";
 import {
   getSpaceXSnapshotCadence,
@@ -348,10 +349,6 @@ const missionLaunchCardsInflight = new Map<string, Promise<MissionLaunchCard[]>>
 const missionLaunchDetailCache = new Map<string, CachedValue<MissionLaunchDetail>>();
 const missionLaunchDetailInflight = new Map<string, Promise<MissionLaunchDetail>>();
 
-function createSpaceXError(message: string, status = 500): Error & { status: number } {
-  return Object.assign(new Error(message), { status });
-}
-
 function getCachedValue<T>(
   entry: CachedValue<T> | null | undefined,
   maxAgeMs: number
@@ -431,7 +428,7 @@ async function fetchLaunchLibraryJson<T>(
   revalidateSeconds = 120
 ): Promise<T> {
   if (Date.now() < launchLibraryRateLimitedUntil) {
-    throw createSpaceXError("Launch Library temporarily rate limited", 429);
+    throw new HttpStatusError("Launch Library temporarily rate limited", 429);
   }
 
   const controller = new AbortController();
@@ -451,11 +448,11 @@ async function fetchLaunchLibraryJson<T>(
 
     if (response.status === 429) {
       applyLaunchLibraryRateLimit(response.headers.get("retry-after"));
-      throw createSpaceXError("Launch Library temporarily rate limited", 429);
+      throw new HttpStatusError("Launch Library temporarily rate limited", 429);
     }
 
     if (!response.ok) {
-      throw createSpaceXError(
+      throw new HttpStatusError(
         `Launch Library request failed with status ${response.status}`,
         response.status
       );
@@ -465,14 +462,14 @@ async function fetchLaunchLibraryJson<T>(
     return (await response.json()) as T;
   } catch (error) {
     if (error instanceof Error && error.name === "AbortError") {
-      throw createSpaceXError("Launch Library request timed out", 504);
+      throw new HttpStatusError("Launch Library request timed out", 504);
     }
 
     if (error instanceof Error && "status" in error) {
       throw error;
     }
 
-    throw createSpaceXError("Unable to reach Launch Library", 502);
+    throw new HttpStatusError("Unable to reach Launch Library", 502);
   } finally {
     clearTimeout(timeout);
   }
@@ -650,7 +647,7 @@ function clampBoardLimit(limit: number): number {
 
 function ensureValidStatus(status: MissionControlStatus): void {
   if (status !== "upcoming" && status !== "past") {
-    throw createSpaceXError("Invalid launch status", 400);
+    throw new HttpStatusError("Invalid launch status", 400);
   }
 }
 
@@ -1144,7 +1141,7 @@ export async function getMissionControlSummary(
     }
 
     if (!shouldAllowLiveFallback(source)) {
-      throw createSpaceXError("SpaceX snapshot summary is unavailable", 503);
+      throw new HttpStatusError("SpaceX snapshot summary is unavailable", 503);
     }
   }
 
@@ -1231,7 +1228,7 @@ export async function getMissionLaunchCards(
     }
 
     if (!shouldAllowLiveFallback(source)) {
-      throw createSpaceXError(`SpaceX snapshot launches are unavailable for ${status}`, 503);
+      throw new HttpStatusError(`SpaceX snapshot launches are unavailable for ${status}`, 503);
     }
   }
 
@@ -1291,7 +1288,7 @@ export async function getMissionLaunchDetail(
   options: MissionControlDataOptions = {}
 ): Promise<MissionLaunchDetail> {
   if (!isValidMissionLaunchId(id)) {
-    throw createSpaceXError("Invalid launch id", 400);
+    throw new HttpStatusError("Invalid launch id", 400);
   }
 
   const source = options.source ?? "auto";
@@ -1303,8 +1300,8 @@ export async function getMissionLaunchDetail(
 
     if (!shouldAllowLiveFallback(source)) {
       throw hasSpaceXSnapshotData()
-        ? createSpaceXError("Launch not found", 404)
-        : createSpaceXError("SpaceX snapshot launch detail is unavailable", 503);
+        ? new HttpStatusError("Launch not found", 404)
+        : new HttpStatusError("SpaceX snapshot launch detail is unavailable", 503);
     }
   }
 
@@ -1322,7 +1319,7 @@ export async function getMissionLaunchDetail(
     const launch = await fetchLaunchDetail(id, 300);
 
     if (launch.launch_service_provider?.id !== SPACEX_AGENCY_ID) {
-      throw createSpaceXError("Launch not found", 404);
+      throw new HttpStatusError("Launch not found", 404);
     }
 
     const detail = normalizeLaunchDetail(launch, !isPastDate(launch.net));

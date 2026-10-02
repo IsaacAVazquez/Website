@@ -1,5 +1,3 @@
-import type { Formula1Snapshot } from "@/types/formula1";
-
 export type FantasyFormula1AssetKind = "driver" | "constructor";
 export type FantasyFormula1Risk = "low" | "medium" | "high";
 
@@ -42,8 +40,4 @@ export interface FantasyFormula1LineupSummary {
 
 export interface FantasyFormula1OptimizationCandidate extends FantasyFormula1LineupSummary {
   rank: number;
-}
-
-export interface BuildFantasyFormula1AssetOptions {
-  snapshot: Formula1Snapshot;
 }

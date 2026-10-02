@@ -1,6 +1,6 @@
 import path from "path";
 import { fileURLToPath } from "url";
-import { withRetry } from "./fetchRetry";
+import { withRetry } from "@/lib/fetchRetry";
 import { readGeneratedSnapshot, writeFileAtomic } from "./snapshotFallback";
 import {
   fetchFantasyGameLogBoard,

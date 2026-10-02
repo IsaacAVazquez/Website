@@ -15,6 +15,7 @@ import {
 } from "@/lib/browserStorage";
 import { isLocalDateKey } from "@/lib/date-formatters";
 import { useLocalStoragePersistenceStatus } from "@/hooks/useLocalStorageString";
+import { isRecord } from "@/lib/utils";
 
 const STORAGE_KEY = "portfolio_holdings";
 const SNAPSHOTS_KEY = "portfolio_snapshots";
@@ -56,10 +57,6 @@ function formatFallbackWarning(
 }
 
 // ─── localStorage helpers ────────────────────────────────────────────────────
-
-function isRecord(value: unknown): value is Record<string, unknown> {
-  return value !== null && typeof value === "object" && !Array.isArray(value);
-}
 
 function isFiniteNumber(value: unknown): value is number {
   return typeof value === "number" && Number.isFinite(value);

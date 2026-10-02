@@ -1,7 +1,5 @@
 export type MlbView = "all" | "al" | "nl" | "wildcard";
 
-export type MlbDetailTab = "team" | "games" | "leaders";
-
 export type MlbLeague = "AL" | "NL";
 
 export interface MlbTeamOption {

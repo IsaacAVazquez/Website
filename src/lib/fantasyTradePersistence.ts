@@ -7,6 +7,7 @@ import {
   type PersistenceStatus,
 } from "@/lib/browserStorage";
 import type { FantasyRouteScoring } from "@/lib/fantasy";
+import { isRecord } from "@/lib/utils";
 
 export const FANTASY_TRADE_PERSISTENCE_VERSION = 1 as const;
 export const FANTASY_TRADE_MAX_PLAYERS_PER_SIDE = 6;
@@ -17,8 +18,6 @@ const FANTASY_TRADE_SCORING_VALUES = new Set<FantasyRouteScoring>([
   "half_ppr",
   "standard",
 ]);
-
-type UnknownRecord = Record<string, unknown>;
 
 export interface FantasyTradeStorageScope {
   season: number;
@@ -39,10 +38,6 @@ export interface FantasyTradePersistenceRead {
   state: FantasyTradePersistenceState;
   persistenceStatus: PersistenceStatus;
   source: "empty" | "valid" | "invalid";
-}
-
-function isRecord(value: unknown): value is UnknownRecord {
-  return Boolean(value) && typeof value === "object" && !Array.isArray(value);
 }
 
 /**

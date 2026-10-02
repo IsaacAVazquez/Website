@@ -34,13 +34,9 @@ import {
   type FootballDataCompetitionTeamsResponse,
   type FootballDataScorerEntry,
   type FootballDataScorersResponse,
-  type FootballDataError,
 } from "@/lib/footballData";
+import { HttpStatusError } from "@/lib/utils";
 const LA_LIGA_CODE = "PD";
-function createLaLigaDataError(message: string, status: number): FootballDataError {
-  return Object.assign(new Error(message), { status });
-}
-
 function fetchFootballDataJson<T>(path: string, revalidateSeconds: number): Promise<T> {
   return fetchLeagueJson<T>("La Liga", path, revalidateSeconds);
 }
@@ -265,26 +261,6 @@ export function isValidLaLigaTeamId(teamId: string): boolean {
   return /^[1-9]\d*$/.test(teamId);
 }
 
-export function createEmptyLaLigaSnapshot(): LaLigaSnapshot {
-  const generatedAt = new Date().toISOString();
-  return {
-    season: "2025/26",
-    matchday: 0,
-    generatedAt,
-    updatedAt: generatedAt.slice(0, 10),
-    sourceLabel: "football-data.org",
-    sourceUrls: { standings: "", scorers: "", assists: "" },
-    clubs: [],
-    scorers: [],
-    assists: [],
-    goalsPerMatchday: [],
-    recentFixtures: [],
-    upcomingFixtures: [],
-    teams: [],
-    teamSnapshots: {},
-  };
-}
-
 export async function getLaLigaSummary(options?: { season?: number }): Promise<{
   season: string;
   matchday: number;
@@ -481,7 +457,7 @@ export async function buildLaLigaLiveSummary(
   }
 
   if (refreshedSections === 0) {
-    throw createLaLigaDataError("La Liga live refresh produced no usable sections.", 503);
+    throw new HttpStatusError("La Liga live refresh produced no usable sections.", 503);
   }
 
   const generatedAt = new Date().toISOString();
@@ -494,7 +470,7 @@ export async function buildLaLigaLiveSummary(
 
 export async function getLaLigaTeamSnapshot(teamId: string): Promise<LaLigaTeamSnapshot> {
   if (!isValidLaLigaTeamId(teamId)) {
-    throw createLaLigaDataError("Invalid La Liga team id.", 400);
+    throw new HttpStatusError("Invalid La Liga team id.", 400);
   }
 
   const teamResponse = await fetchFootballDataJson<FootballDataTeam>(`/teams/${teamId}`, TEAM_REVALIDATE_SECONDS);

@@ -99,19 +99,6 @@ export function evaluateBestBallAdpCoverage({
   return { ok: true, message: "" };
 }
 
-export function assertBestBallAdpCoverage(input: {
-  freshSourceReceived: boolean;
-  matches: number;
-  previousMatches: number;
-  previousTopPlayers: number;
-  retainedTopPlayers: number;
-}): void {
-  const verdict = evaluateBestBallAdpCoverage(input);
-  if (!verdict.ok) {
-    throw new Error(verdict.message);
-  }
-}
-
 export function assertBestBallSuperflexCoverage({
   freshSourceReceived,
   totalPlayers,

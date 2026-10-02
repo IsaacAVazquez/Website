@@ -1,5 +1,5 @@
 import path from "path";
-import { withRetry } from "./fetchRetry";
+import { withRetry } from "@/lib/fetchRetry";
 import { writeFileAtomic } from "./snapshotFallback";
 import {
   FANTASY_PUBLIC_POSITIONS,

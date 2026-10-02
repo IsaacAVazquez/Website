@@ -188,7 +188,6 @@ These power `AIStructuredData` but can be called directly when you need the raw 
 | `generateBreadcrumbSchema(items)` | `BreadcrumbList` | Array of `{ name, url }` |
 | `generateItemListSchema(data)` | `ItemList` | For archives, project listings |
 | `generateNavigationSchema(items)` | `SiteNavigationElement` | Main nav |
-| `generatePageSummary(data)` | Plain object | Structured + natural language summary |
 
 ### Generator Functions — `src/lib/seo.ts`
 
@@ -197,10 +196,7 @@ Simpler alternatives for when the AI-optimized versions are overkill.
 | Function | Output |
 |---|---|
 | `generatePersonStructuredData(options?)` | `Person` with credentials, alumniOf, worksFor |
-| `generateArticleStructuredData(article)` | `Article` with publisher, mainEntityOfPage |
 | `generateBreadcrumbStructuredData(items)` | `BreadcrumbList` |
-| `generateProjectStructuredData(project)` | `SoftwareApplication` with offers |
-| `generateOrganizationStructuredData(org)` | `Organization` |
 
 ---
 

@@ -4,7 +4,6 @@ import {
   getApplicationAttentionItems,
   sortApplicationsForColumn,
   summarizeApplicationPipeline,
-  toApplicationDateKey,
 } from "../mba-application-insights";
 import type {
   MBAApplicationPriority,
@@ -64,10 +63,6 @@ function buildApplication(
 }
 
 describe("date-key helpers", () => {
-  it("formats a date in the local calendar day", () => {
-    expect(toApplicationDateKey(new Date(2026, 6, 5))).toBe("2026-07-05");
-  });
-
   it("counts whole days between keys and rejects malformed input", () => {
     expect(diffInDays(TODAY, "2026-07-23")).toBe(3);
     expect(diffInDays(TODAY, "2026-07-17")).toBe(-3);

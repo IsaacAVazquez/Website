@@ -1234,34 +1234,6 @@ export function getProjectCardSummary(study: CaseStudyData): string {
   return study.overview.summary.trim() || study.description;
 }
 
-export function getProjectCardProblem(study: CaseStudyData): string {
-  return (
-    study.problem.context.trim() ||
-    study.overview.impact.trim() ||
-    study.description
-  );
-}
-
-export function getProjectCardOutcome(study: CaseStudyData): string {
-  for (const value of [
-    study.overview.impact,
-    study.result.outcomes[0],
-    study.metrics,
-    study.description,
-  ]) {
-    if (value?.trim()) {
-      return value.trim();
-    }
-  }
-
-  return "";
-}
-
-/** Get featured case studies (for homepage) */
-export function getFeaturedCaseStudies(): CaseStudyData[] {
-  return getPortfolioProjects().filter((cs) => cs.featured);
-}
-
 export function getHomepageFeaturedCaseStudies(): CaseStudyData[] {
   return getStudiesByOrderedSlugs(HOMEPAGE_FEATURED_SLUGS);
 }

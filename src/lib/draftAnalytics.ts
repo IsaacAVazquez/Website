@@ -377,14 +377,6 @@ export function detectPositionRuns(
   return runs.sort((left, right) => left.startPick - right.startPick);
 }
 
-/**
- * Net draft value per team: the sum of every judgeable pick's delta. A team
- * that keeps landing players past their baseline accumulates positive value.
- */
-export function getTeamValueTotal(team: TeamRoster): number {
-  return team.picks.reduce((total, pick) => total + (getPickDelta(pick) ?? 0), 0);
-}
-
 function getTeamStrengthsAndWeaknesses(
   team: TeamRoster,
   lineup: RedraftLineupSettings,

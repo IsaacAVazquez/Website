@@ -1,11 +1,6 @@
-import {
-  analyzeFixture,
-  analyzeRound,
-  createDefaultPoolConfig,
-  summarizeLineMovement,
-  type FixtureInput,
-  type MarketInputs,
-} from "../index";
+import { analyzeFixture, analyzeRound, summarizeLineMovement } from "../engine";
+import { createDefaultPoolConfig } from "../defaults";
+import { type FixtureInput, type MarketInputs } from "../types";
 
 const NOW = "2026-07-10T12:00:00.000Z";
 

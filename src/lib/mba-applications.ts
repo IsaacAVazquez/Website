@@ -12,6 +12,7 @@ import type {
   MBATrackedApplication,
 } from "@/types/mba-jobs";
 import { MBA_ROLE_FAMILIES } from "@/constants/mba-role-taxonomy";
+import { isRecord, prefixedId } from "@/lib/utils";
 
 export const MBA_APPLICATIONS_STORAGE_KEY = "mba_applications_v1";
 const MBA_APPLICATION_EXPORT_SCHEMA = "mba-applications-export";
@@ -63,17 +64,6 @@ export interface MBAApplicationDraft {
   contact?: string;
   followUpDate?: string | null;
   deadline?: string | null;
-}
-
-function isRecord(value: unknown): value is Record<string, unknown> {
-  return !!value && typeof value === "object" && !Array.isArray(value);
-}
-
-function createId(prefix = "mba-app") {
-  if (typeof crypto !== "undefined" && typeof crypto.randomUUID === "function") {
-    return `${prefix}-${crypto.randomUUID()}`;
-  }
-  return `${prefix}-${Math.random().toString(36).slice(2, 10)}-${Date.now().toString(36)}`;
 }
 
 function cleanText(value: unknown, fallback = "", maxLength = MAX_TEXT_LENGTH): string {
@@ -199,7 +189,7 @@ export function createMBAApplicationFromJob(
 ): MBATrackedApplication {
   const timestamp = now.toISOString();
   return {
-    id: createId(),
+    id: prefixedId("mba-app"),
     jobId: job.id,
     jobSnapshot: buildMBAApplicationJobSnapshot(job, now),
     status,
@@ -228,10 +218,10 @@ export function createManualMBAApplication(
   const applyUrl = cleanUrl(draft.applyUrl);
   const status = draft.status ?? "saved";
   return {
-    id: createId(),
+    id: prefixedId("mba-app"),
     jobId: null,
     jobSnapshot: {
-      id: createId("manual-job"),
+      id: prefixedId("manual-job"),
       companyId: "manual",
       companyName,
       title,
@@ -269,7 +259,7 @@ function sanitizeJobSnapshot(value: unknown, fallbackTimestamp: string): MBAAppl
   if (!title || !companyName) return null;
 
   return {
-    id: cleanText(value.id, createId("snapshot")),
+    id: cleanText(value.id, prefixedId("snapshot")),
     companyId: cleanText(value.companyId, "manual"),
     companyName,
     title,
@@ -300,7 +290,7 @@ function sanitizeTrackedApplication(value: unknown): MBATrackedApplication | nul
   const updatedAt = cleanTimestamp(value.updatedAt, fallbackTimestamp);
 
   return {
-    id: cleanText(value.id, createId()),
+    id: cleanText(value.id, prefixedId("mba-app")),
     jobId: typeof value.jobId === "string" && value.jobId.trim() ? value.jobId.trim() : null,
     jobSnapshot,
     status,

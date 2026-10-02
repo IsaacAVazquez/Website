@@ -105,16 +105,6 @@ export interface GrowthMetric {
 /** Growth data is an array of growth records (or error) */
 export type GrowthData = GrowthMetric[] | Record<string, unknown> | { error: string };
 
-export interface FinancialStatementRow {
-  [column: string]: number | string | null;
-}
-
-export interface FinancialStatement {
-  columns: string[];
-  rows: FinancialStatementRow[];
-  error?: string;
-}
-
 export interface WaccData {
   wacc?: number;
   costOfEquity?: number;
@@ -191,17 +181,6 @@ export interface OfficerInfo {
 }
 
 export type OfficersData = OfficerInfo[] | { error: string };
-
-export interface RevenueSegment {
-  segment?: string;
-  geography?: string;
-  product?: string;
-  value?: number;
-  reportDate?: string;
-  [key: string]: unknown;
-}
-
-export type RevenueSegmentsData = RevenueSegment[] | Record<string, unknown> | { error: string };
 
 // ============================================================
 // Investments Index

@@ -8,6 +8,8 @@ import type {
   WineType,
   WineTypeBreakdown,
 } from "@/types/wine";
+import { isRecord, prefixedId } from "@/lib/utils";
+import { toLocalDateKey } from "@/lib/date-formatters";
 
 export const WINE_CELLAR_STORAGE_KEY = "wine_cellar_entries_v1";
 
@@ -35,19 +37,8 @@ const MIN_RATING = 0.5;
 const MAX_RATING = 5;
 const RATING_STEP = 0.5;
 
-function isRecord(value: unknown): value is Record<string, unknown> {
-  return !!value && typeof value === "object" && !Array.isArray(value);
-}
-
 function isWineType(value: unknown): value is WineType {
   return typeof value === "string" && (WINE_TYPES as string[]).includes(value);
-}
-
-function createId() {
-  if (typeof crypto !== "undefined" && typeof crypto.randomUUID === "function") {
-    return `wine-${crypto.randomUUID()}`;
-  }
-  return `wine-${Math.random().toString(36).slice(2, 10)}-${Date.now().toString(36)}`;
 }
 
 function roundTwo(value: number) {
@@ -89,12 +80,7 @@ function sanitizeTimestamp(value: unknown, fallback: string): string {
   return Number.isNaN(parsed.getTime()) ? fallback : parsed.toISOString();
 }
 
-export function getTodayIsoDate(now = new Date()) {
-  const year = now.getFullYear();
-  const month = String(now.getMonth() + 1).padStart(2, "0");
-  const day = String(now.getDate()).padStart(2, "0");
-  return `${year}-${month}-${day}`;
-}
+export const getTodayIsoDate = toLocalDateKey;
 
 export interface WineDraft {
   name: string;
@@ -111,7 +97,7 @@ export interface WineDraft {
 
 export function createWineEntry(draft: WineDraft, now = new Date()): WineEntry {
   return {
-    id: createId(),
+    id: prefixedId("wine"),
     name: draft.name.trim(),
     producer: draft.producer.trim(),
     vintage: sanitizeVintage(draft.vintage),
@@ -152,7 +138,7 @@ function sanitizeWineEntry(input: unknown): WineEntry | null {
   const fallbackDate = getTodayIsoDate();
 
   return {
-    id: typeof input.id === "string" && input.id ? input.id : createId(),
+    id: typeof input.id === "string" && input.id ? input.id : prefixedId("wine"),
     name,
     producer: typeof input.producer === "string" ? input.producer.trim() : "",
     vintage: sanitizeVintage(input.vintage),

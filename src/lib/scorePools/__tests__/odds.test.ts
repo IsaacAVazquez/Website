@@ -1,4 +1,4 @@
-import { devig, devigMoneyline, devigTotals, overround, toDecimal } from "../index";
+import { devig, devigMoneyline, devigTotals, overround, toDecimal } from "../odds";
 
 describe("odds format conversion", () => {
   it("passes decimal odds through", () => {

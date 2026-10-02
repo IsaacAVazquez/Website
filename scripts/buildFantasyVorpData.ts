@@ -1,5 +1,5 @@
 import path from "node:path";
-import { withRetry } from "./fetchRetry";
+import { withRetry } from "@/lib/fetchRetry";
 import { readGeneratedSnapshot, writeFileAtomic } from "./snapshotFallback";
 import {
   FANTASY_VORP_TEAM_SIZES,
