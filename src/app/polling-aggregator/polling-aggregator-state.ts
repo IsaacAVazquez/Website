@@ -18,13 +18,6 @@ export const POLLING_VIEW_LABELS: Record<PollingView, string> = {
   governors: "Governors",
 };
 
-export const POLLING_VIEW_DESCRIPTIONS: Record<PollingView, string> = {
-  overview: "Top-level summary of approval ratings, the generic ballot, and key race ratings.",
-  approval: "Presidential job approval polling trend and recent polls.",
-  senate: "Key competitive U.S. Senate races for the 2026 midterms.",
-  governors: "Key competitive governor races for the 2026 midterms.",
-};
-
 const VALID_VIEWS = new Set<PollingView>(POLLING_VIEW_OPTIONS);
 
 export const DEFAULT_POLLING_STATE: PollingRouteState = {

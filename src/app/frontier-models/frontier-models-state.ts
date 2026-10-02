@@ -34,16 +34,6 @@ export const DEFAULT_FRONTIER_MODELS_STATE: FrontierModelsRouteState = {
   selectedModelId: null,
 };
 
-export const FRONTIER_MODELS_VIEW_LABELS: Record<FrontierView, string> = {
-  list: "List",
-  chart: "Chart",
-};
-
-export const FRONTIER_MODELS_VIEW_DESCRIPTIONS: Record<FrontierView, string> = {
-  list: "Sortable, filterable table of every tracked model.",
-  chart: "Cost-versus-context scatter view across providers.",
-};
-
 export const FRONTIER_MODALITY_LABELS: Record<
   Exclude<FrontierModalityFilter, "all">,
   string

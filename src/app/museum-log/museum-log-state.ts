@@ -12,20 +12,6 @@ export const MUSEUM_LOG_ROUTE = "/museum-log";
 
 export const MUSEUM_VIEW_OPTIONS = ["discover", "journal", "lists", "museum"] as const;
 
-export const MUSEUM_VIEW_LABELS: Record<MuseumView, string> = {
-  discover: "Discover",
-  journal: "Journal",
-  lists: "Lists",
-  museum: "Museum",
-};
-
-export const MUSEUM_VIEW_DESCRIPTIONS: Record<MuseumView, string> = {
-  discover: "Browse the curated catalog and filter by type and region.",
-  journal: "Curator's reviews and visit log timeline.",
-  lists: "Themed collections of museums grouped by trip, region, or vibe.",
-  museum: "Single museum detail with curator review, exhibits, and your visit toggles.",
-};
-
 const VALID_VIEWS = new Set<MuseumView>(MUSEUM_VIEW_OPTIONS);
 const VALID_SORTS = new Set<MuseumSort>(["rating", "popular", "recent", "alpha"]);
 const VALID_TYPES = new Set<MuseumTypeFilter>([

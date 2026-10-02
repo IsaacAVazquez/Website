@@ -6,7 +6,7 @@ import {
 } from "react";
 import { useSearchParams } from "next/navigation";
 import { ExternalLink } from "lucide-react";
-import { DISPLAY_TIME_ZONE } from "@/lib/date-formatters";
+import { formatUpdatedAt } from "@/lib/date-formatters";
 import {
   MetricCard,
   CrestAvatar,
@@ -54,21 +54,6 @@ interface PremierLeagueClientProps {
   initialState: PremierLeagueRouteState;
   summary: PremierLeagueSummary;
   initialTeamSnapshot: PremierLeagueTeamSnapshot | null;
-}
-
-// Pinned to UTC, with the zone printed, so the server and the browser agree.
-const LAST_UPDATED_FORMATTER = new Intl.DateTimeFormat("en-US", {
-  month: "short",
-  day: "numeric",
-  hour: "numeric",
-  minute: "2-digit",
-  timeZone: DISPLAY_TIME_ZONE,
-  timeZoneName: "short",
-});
-
-function formatGeneratedAt(value: string): string {
-  const date = new Date(value);
-  return Number.isNaN(date.getTime()) ? "Unavailable" : LAST_UPDATED_FORMATTER.format(date);
 }
 
 export function PremierLeagueClient({
@@ -216,7 +201,7 @@ export function PremierLeagueClient({
     : undefined;
   const recentFixtures = (teamSnapshot?.recentFixtures ?? []).slice(0, 3);
   const upcomingFixtures = (teamSnapshot?.upcomingFixtures ?? []).slice(0, 3);
-  const lastUpdated = formatGeneratedAt(summary.generatedAt);
+  const lastUpdated = formatUpdatedAt(summary.generatedAt);
   const currentMatchday = summary.competition?.currentMatchday ?? null;
 
   // Club drawer — its own state, the way La Liga keeps it, because the tabs

@@ -10,12 +10,6 @@ export const WORLD_CUP_VIEW_OPTIONS = [
   "schedule",
 ] as const;
 
-export const WORLD_CUP_VIEW_LABELS: Record<WorldCupView, string> = {
-  groups: "Group stage",
-  knockout: "Knockout bracket",
-  schedule: "Match schedule",
-};
-
 export const DEFAULT_WORLD_CUP_STATE: WorldCupRouteState = {
   view: "groups",
   team: null,

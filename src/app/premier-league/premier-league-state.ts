@@ -28,13 +28,6 @@ export const PREMIER_LEAGUE_VIEW_LABELS: Record<PremierLeagueView, string> = {
   relegation: "Relegation fight",
 };
 
-export const PREMIER_LEAGUE_VIEW_DESCRIPTIONS: Record<PremierLeagueView, string> = {
-  table: "All 20 clubs in the current standings order.",
-  "title-race": "The top four clubs competing for Champions League places.",
-  europe: "Clubs inside the Champions League, Europa League, and Conference League lines.",
-  relegation: "Bottom-five pressure view around the safety and drop lines.",
-};
-
 function normalizeTeamParam(team: string | null): string | null {
   if (!team) return null;
   const trimmed = team.trim();

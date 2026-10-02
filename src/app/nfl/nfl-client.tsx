@@ -935,19 +935,11 @@ function getTeamPressurePoints(
   return points;
 }
 
+const ORDINAL_RULES = new Intl.PluralRules("en-US", { type: "ordinal" });
+const ORDINAL_SUFFIX: Partial<Record<Intl.LDMLPluralRule, string>> = { one: "st", two: "nd", few: "rd" };
+
 function ordinalSuffix(n: number): string {
-  const v = n % 100;
-  if (v >= 11 && v <= 13) return "th";
-  switch (n % 10) {
-    case 1:
-      return "st";
-    case 2:
-      return "nd";
-    case 3:
-      return "rd";
-    default:
-      return "th";
-  }
+  return ORDINAL_SUFFIX[ORDINAL_RULES.select(n)] ?? "th";
 }
 
 function formatRecord(team: NFLTeamStanding): string {
