@@ -112,7 +112,7 @@ export function ClubDrawer({
   const reduceMotion = useReducedMotion();
   const panelRef = useRef<HTMLDivElement>(null);
   const isOpen = Boolean(club);
-  useModal(panelRef, isOpen, onClose);
+  useModal(panelRef, isOpen, onClose, { resetKey: club?.id });
 
   if (!club) return null;
 

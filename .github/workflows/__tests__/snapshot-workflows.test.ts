@@ -263,10 +263,10 @@ describe("snapshot refresh workflow infrastructure", () => {
       /- name: Verify fantasy snapshot quality[\s\S]*?(?=\n\s+- name:)/
     )?.[0];
 
-    // The change check, the commit, and the discard step.
+    // The commit and the discard step.
     expect(
       workflow.match(/src\/data\/fantasyVorpData\.generated\.ts/g)
-    ).toHaveLength(3);
+    ).toHaveLength(2);
     expect(qualityStep).toBeDefined();
     expect(qualityStep).toContain("const MIN_VORP = 300");
     expect(qualityStep).toContain(

@@ -58,16 +58,22 @@ async function readArtifact(
   return JSON.parse(await fs.readFile(artifactPath, "utf8"));
 }
 
-export async function buildRefreshManifest(
-  surface: DataSurfaceId,
-  now = new Date()
-): Promise<RefreshManifest> {
+function getArtifact(surface: DataSurfaceId) {
   const artifact = DATA_REFRESH_ARTIFACTS[surface];
   if (!artifact) {
     throw new Error(`No refresh artifact is registered for ${surface}.`);
   }
+  return artifact;
+}
 
-  const payload = await readArtifact(artifact.artifactPath, artifact.exportName);
+/** `payload` lets a caller that already read the artifact skip a second read. */
+export async function buildRefreshManifest(
+  surface: DataSurfaceId,
+  now = new Date(),
+  payload?: unknown
+): Promise<RefreshManifest> {
+  const artifact = getArtifact(surface);
+  payload ??= await readArtifact(artifact.artifactPath, artifact.exportName);
   const primarySourceAsOfValue = readPath(payload, artifact.sourceAsOfPath);
   const sourceAsOfValue =
     typeof primarySourceAsOfValue === "string" && primarySourceAsOfValue.trim()
@@ -118,7 +124,9 @@ async function main() {
     throw new Error("Usage: verifyDataRefresh.ts <surface>");
   }
 
-  const manifest = await buildRefreshManifest(surface);
+  const artifact = getArtifact(surface);
+  const payload = await readArtifact(artifact.artifactPath, artifact.exportName);
+  const manifest = await buildRefreshManifest(surface, new Date(), payload);
   const manifestDir = process.env.RUNNER_TEMP ?? path.join(process.cwd(), ".tmp");
   await fs.mkdir(manifestDir, { recursive: true });
   const manifestPath = path.join(manifestDir, `refresh-manifest-${surface}.json`);
@@ -139,11 +147,7 @@ async function main() {
     );
   }
 
-  const artifact = DATA_REFRESH_ARTIFACTS[surface]!;
-  const shortfalls = findShortfalls(
-    await readArtifact(artifact.artifactPath, artifact.exportName),
-    artifact.minimums
-  );
+  const shortfalls = findShortfalls(payload, artifact.minimums);
   if (shortfalls.length > 0) {
     throw new Error(
       `${surface} snapshot looks degraded, refusing to commit it: ${shortfalls.join(", ")}.`

@@ -42,7 +42,7 @@ export function MissionDrawer({
   const reduceMotion = useReducedMotion();
   const panelRef = useRef<HTMLDivElement>(null);
   const isOpen = Boolean(launchId);
-  useModal(panelRef, isOpen, onClose);
+  useModal(panelRef, isOpen, onClose, { resetKey: launchId });
 
   const status = detail ? deriveMissionCardStatus(detail) : null;
   const accent = status ? MISSION_STATUS_ACCENT_VAR[status] : "var(--c97-accent)";

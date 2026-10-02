@@ -137,7 +137,7 @@ export function FixtureDetailDrawer({
   });
   const [manualError, setManualError] = useState<string | null>(null);
 
-  useModal(dialogRef, true, onClose, closeRef);
+  useModal(dialogRef, true, onClose, { initialFocusRef: closeRef });
 
   const movement = useMemo(() => {
     if (fixture.odds.length < 2) return null;

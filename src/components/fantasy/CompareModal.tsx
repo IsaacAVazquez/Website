@@ -67,7 +67,7 @@ export function CompareModal({
 }: CompareModalProps) {
   const reduceMotion = useReducedMotion();
   const panelRef = useRef<HTMLDivElement>(null);
-  useModal(panelRef, true, onClose);
+  useModal(panelRef, true, onClose, { lockScroll: false });
 
   const scaleMin = Math.min(...players.map((p) => (Number.isFinite(p.minRank) ? (p.minRank as number) : Infinity)));
   const scaleMax = Math.max(...players.map((p) => (Number.isFinite(p.maxRank) ? (p.maxRank as number) : -Infinity)));

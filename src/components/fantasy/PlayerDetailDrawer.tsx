@@ -127,7 +127,7 @@ export function PlayerDetailDrawer({ player, publishedRank, publishedRankLabel =
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [player?.id]);
 
-  useModal(panelRef, isOpen, onClose);
+  useModal(panelRef, isOpen, onClose, { lockScroll: false });
 
   const valueSignal =
     player && adpAvailable && valueSignalAvailable ? getValueVsAdp(player) : null;

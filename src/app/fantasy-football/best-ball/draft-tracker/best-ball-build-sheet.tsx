@@ -24,7 +24,7 @@ export function BestBallBuildSheet({
     onClose();
     returnFocusRef.current?.focus();
   };
-  useModal(dialogRef, open, close, closeRef);
+  useModal(dialogRef, open, close, { initialFocusRef: closeRef });
 
   if (!open) return null;
 
