@@ -1,7 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import { usePathname } from "next/navigation";
 import GlobalRouteError from "@/app/error";
-import DashboardsError from "@/app/dashboards/error";
 
 jest.mock("next/navigation", () => ({
   usePathname: jest.fn(),
@@ -42,22 +41,16 @@ describe("Catalog 97 error shells", () => {
     ).toBeVisible();
   });
 
-  it("keeps the Catalog shell in the dashboards route boundary", () => {
+  it("keeps the Catalog shell when /dashboards reaches the global boundary", () => {
     mockUsePathname.mockReturnValue("/dashboards");
 
     const { container } = render(
-      <DashboardsError error={error} reset={reset} />,
+      <GlobalRouteError error={error} reset={reset} />,
     );
 
     expect(container.querySelectorAll("header")).toHaveLength(1);
     expect(container.querySelectorAll("main#main-content")).toHaveLength(1);
     expect(container.querySelectorAll("footer")).toHaveLength(1);
-    expect(
-      screen.getByRole("heading", {
-        level: 1,
-        name: "Couldn't load the dashboard index.",
-      }),
-    ).toBeVisible();
   });
 
   it("leaves Working Instrument errors for the global layout to wrap", () => {

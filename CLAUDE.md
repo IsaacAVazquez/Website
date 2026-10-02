@@ -91,9 +91,9 @@ Never create real pages at `/projects`, `/work`, or `/blog`.
 - Shared fallback: `src/components/RouteErrorBoundary.tsx` (one Catalog 97 paper band,
   calls `logger.error`, exposes `reset()` retry). Top-level catch-all: `src/app/error.tsx`.
   `src/components/RouteLoadingState.tsx` is the matching loading band.
-- Snapshot-driven dashboards add a per-route `error.tsx` that re-exports
-  `RouteErrorBoundary` with a bespoke `surfaceName`. **When adding a new data-fetching
-  dashboard route, drop one in.**
+- The root boundary covers every dashboard, so a new route needs no `error.tsx` of its
+  own. Add one only when the route has something specific to say, and give it a
+  `surfaceName`. Data-fetching dashboards still add a `loading.tsx`.
 
 ---
 
@@ -388,7 +388,7 @@ you need them.
 - Confirm investments behavior from `src/app/investments/*`, `src/components/investments/*`,
   and the investments API routes.
 - When adding a new data dashboard, follow the snapshot-driven pattern end to end
-  (snapshot, builder, fail-soft fetch, accessors, API route, and an `error.tsx`).
+  (snapshot, builder, fail-soft fetch, accessors, API route, and a `loading.tsx`).
 - A dashboard page is cached at Netlify's CDN only if it is listed in `cdnCachedPages`
   in `next.config.mjs`. It belongs there when its server render reads no clock, random
   number, live data, or Blobs. `SNAPSHOT_DRIVEN_DASHBOARDS.md` has the rule.
