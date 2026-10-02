@@ -416,7 +416,7 @@ export function ResearchAssetHeader({
             className="invest-ghost"
           >
             <ExternalLink size={14} aria-hidden="true" />
-            Investor relations
+            Company website
           </a>
         ) : null}
         <a

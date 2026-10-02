@@ -28,7 +28,9 @@ export function CrestAvatar({
     return (
       <img
         src={crest}
-        alt={`${name} crest`}
+        // Decorative: every caller prints the team name beside the crest or
+        // names the control, and the initials fallback is aria-hidden too.
+        alt=""
         loading="lazy"
         decoding="async"
         className={cn(

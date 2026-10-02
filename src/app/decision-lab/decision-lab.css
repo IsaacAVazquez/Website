@@ -31,7 +31,7 @@
 .c97-decision-point-label {
   font-family: var(--c97-font-mono);
   font-size: 16px;
-  font-weight: 600;
+  font-weight: 400;
   letter-spacing: 0.06em;
   text-transform: uppercase;
   fill: var(--c97-ink);
@@ -112,4 +112,16 @@
 .c97-decision-preset-grid {
   display: grid;
   gap: var(--c97-sp-2);
+}
+
+.c97-decision-preset-grid > button {
+  border: 1px solid var(--c97-rule);
+}
+
+.c97-decision-preset-grid > button[aria-pressed="true"] {
+  border: 2px solid var(--c97-ink);
+}
+
+.c97-decision-preset-grid > button:not([aria-pressed="true"]):hover {
+  border-color: var(--c97-ink-2);
 }

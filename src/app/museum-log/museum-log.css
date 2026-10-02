@@ -87,6 +87,19 @@
   text-align: left;
 }
 
+.c97-stub-trigger:hover .c97-stub {
+  border-color: var(--c97-ink);
+}
+
+/* A curated-list card is a whole-card button; the border only shows on hover. */
+.c97-museum-list-card {
+  border: 1px solid transparent;
+}
+
+.c97-museum-list-card:hover {
+  border-color: var(--c97-ink);
+}
+
 /* A run of stubs across the hero, on their own paper plate per convention 2. */
 .c97-stub-run {
   display: grid;
@@ -121,7 +134,7 @@
 .c97-visit-stamp-day {
   font-size: var(--c97-fs-h2);
   line-height: var(--c97-lh-tight);
-  font-weight: 600;
+  font-weight: 400;
   color: var(--c97-ink);
 }
 
@@ -149,6 +162,10 @@
   font-family: inherit;
   font-size: var(--c97-fs-small);
   cursor: pointer;
+}
+
+.c97-museum-action:not([aria-pressed="true"]):hover {
+  border-color: var(--c97-ink);
 }
 
 .c97-museum-action[aria-pressed="true"] {

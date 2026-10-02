@@ -1,3 +1,4 @@
+import { useId } from "react";
 import { AlertTriangle, ExternalLink, MapPin, Orbit, Rocket, Users } from "lucide-react";
 import type { MissionLaunchDetail, MissionControlPanel } from "@/types/spacex";
 import { MissionVehiclePhoto } from "./MissionVehiclePhoto";
@@ -60,6 +61,9 @@ export function MissionDetailPanel({
   error,
   onPanelChange,
 }: MissionDetailPanelProps) {
+  const idBase = useId();
+  const tabId = (key: MissionControlPanel) => `${idBase}-tab-${key}`;
+  const panelId = `${idBase}-panel`;
   const tabs = (
     <div
       className="inline-flex flex-wrap gap-2 border border-[var(--c97-rule)] bg-[var(--c97-surface)] p-2"
@@ -71,7 +75,9 @@ export function MissionDetailPanel({
           key={option.key}
           type="button"
           role="tab"
+          id={tabId(option.key)}
           aria-selected={activePanel === option.key}
+          aria-controls={panelId}
           onClick={() => onPanelChange(option.key)}
           className={`tap-target px-4 py-3 text-sm font-semibold transition ${
             activePanel === option.key
@@ -89,11 +95,12 @@ export function MissionDetailPanel({
     <div className="px-5 pb-5 pt-4">
       <div className="pb-4">{tabs}</div>
 
+      <div role="tabpanel" id={panelId} aria-labelledby={tabId(activePanel)}>
       {isLoading ? (
         <div className="space-y-3 py-5">
-          <div className="h-5 w-2/3 animate-pulse bg-[var(--c97-field)]" />
-          <div className="h-5 w-full animate-pulse bg-[var(--c97-field)]" />
-          <div className="h-[220px] animate-pulse bg-[var(--c97-field)]" />
+          <span className="c97-skeleton" style={{ height: 20, width: "66%" }} />
+          <span className="c97-skeleton" style={{ height: 20 }} />
+          <span className="c97-skeleton" style={{ height: 220 }} />
         </div>
       ) : null}
 
@@ -116,7 +123,7 @@ export function MissionDetailPanel({
 
       {!isLoading && !error && !launch ? (
         <div className="mt-5 border border-dashed border-[var(--c97-rule)] bg-[var(--c97-surface)] px-5 py-10 text-center">
-          <div className="mx-auto flex h-14 w-14 items-center justify-center bg-[color-mix(in_srgb,var(--c97-accent)_10%,var(--c97-field))]">
+          <div className="mx-auto flex h-14 w-14 items-center justify-center bg-[var(--c97-field)]">
             <Rocket className="h-6 w-6 text-[var(--c97-accent)]" />
           </div>
           <p className="mt-4 text-lg font-semibold text-[var(--c97-ink)]">
@@ -233,7 +240,7 @@ export function MissionDetailPanel({
                   <div className="bg-[var(--c97-field)] p-3">
                     <p className="text-xs text-[var(--c97-label)]">Success rate</p>
                     <p className="mt-1 text-sm font-semibold text-[var(--c97-ink)]">
-                      {launch.rocket.successRatePct ?? "Unavailable"}%
+                      {launch.rocket.successRatePct !== null ? `${launch.rocket.successRatePct}%` : "Unavailable"}
                     </p>
                   </div>
                 </div>
@@ -461,6 +468,7 @@ export function MissionDetailPanel({
           </div>
         </div>
       ) : null}
+      </div>
     </div>
   );
 }

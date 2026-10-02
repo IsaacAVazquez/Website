@@ -173,6 +173,7 @@ export function PremierLeagueClient({
   const selectedZone: LeagueZone = selectedRow ? leagueZone(selectedRow.position, clubCount) : "midtable";
   const selectedClubStoryline = selectedRow
     ? getClubStoryline(selectedRow, {
+      attackRankings,
       leader,
       runnerUp,
       fifthPlace,
@@ -390,8 +391,7 @@ export function PremierLeagueClient({
                     <button
                       type="button"
                       onClick={() => handleTeamChange(selectedRow.team.id)}
-                      className="inline-flex min-h-[44px] flex-shrink-0 items-center gap-1.5 border px-3.5 text-sm font-medium"
-                      style={{ borderColor: "var(--c97-rule)", background: "var(--c97-field)", color: "var(--c97-ink-2)" }}
+                      className="c97-btn-ghost flex-shrink-0"
                     >
                       Open detail
                     </button>
@@ -411,7 +411,7 @@ export function PremierLeagueClient({
 
                   <div className="c97-panel">
                     <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-2)" }}>Pressure points</p>
-                    <ul className="space-y-2 pl-5 c97-prose">
+                    <ul className="c97-list">
                       {selectedClubPressurePoints.map((item) => (
                         <li key={item}>{item}</li>
                       ))}
@@ -515,8 +515,8 @@ export function PremierLeagueClient({
                       href="https://www.premierleague.com/en/stats/top/players/goals"
                       target="_blank"
                       rel="noreferrer"
-                      className="inline-flex min-h-[44px] items-center gap-2 border px-3 py-2 text-sm font-medium"
-                      style={{ borderColor: "var(--c97-rule)", background: "var(--c97-field)", color: "var(--c97-ink-2)" }}
+                      className="c97-btn-ghost"
+                      style={{ gap: "var(--c97-sp-1)" }}
                     >
                       Official
                       <ExternalLink className="h-4 w-4" />
@@ -587,6 +587,7 @@ export function PremierLeagueClient({
 function getClubStoryline(
   club: PremierLeagueStandingRow,
   context: {
+    attackRankings: Map<string, number>;
     leader: PremierLeagueStandingRow | null;
     runnerUp: PremierLeagueStandingRow | null;
     fifthPlace: PremierLeagueStandingRow | null;
@@ -596,10 +597,12 @@ function getClubStoryline(
     dropLine: PremierLeagueStandingRow | null;
   }
 ) {
-  const { leader, runnerUp, fifthPlace, seventhPlace, sixthPlace, safetyLine, dropLine } = context;
+  const { attackRankings, leader, runnerUp, fifthPlace, seventhPlace, sixthPlace, safetyLine, dropLine } = context;
 
   if (club.position === 1 && runnerUp) {
-    return `${club.team.shortName} lead the table, carry one of the league's sharpest attacks, and sit ${club.points - runnerUp.points} points clear of ${runnerUp.team.shortName}.`;
+    const attackRank = attackRankings.get(club.team.id);
+    const attackClause = attackRank !== undefined && attackRank <= 3 ? ", carry one of the league's sharpest attacks," : "";
+    return `${club.team.shortName} lead the table${attackClause} and sit ${club.points - runnerUp.points} points clear of ${runnerUp.team.shortName}.`;
   }
 
   if (club.position <= 4 && leader && fifthPlace) {
@@ -652,7 +655,7 @@ function getClubPressurePoints(
   if (club.position === 1 && runnerUp) {
     return [
       `${club.points - runnerUp.points} points separate ${club.team.shortName} from ${runnerUp.team.shortName}.`,
-      `${club.goalsFor} goals scored keeps them among the league's best attacks.`,
+      ...(attackRank <= 3 ? [`${club.goalsFor} goals scored keeps them among the league's best attacks.`] : []),
       `${38 - club.playedGames} matches remain in this snapshot.`,
       `Attack rank #${attackRank}; defense rank #${defenseRank}.`,
     ];

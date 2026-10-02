@@ -5,6 +5,8 @@ import { Building2, Home, Landmark, RotateCcw } from "lucide-react";
 import { Catalog97ProjectHero } from "@/components/catalog97/Catalog97ProjectHero";
 import { PROJECT_PRESS } from "@/constants/projectPress";
 import { useRentVsBuy } from "@/hooks/useRentVsBuy";
+import { useLocalStoragePersistenceStatus } from "@/hooks/useLocalStorageString";
+import { RENT_VS_BUY_STORAGE_KEY } from "@/lib/rentVsBuy/persistence";
 import type { RentVsBuyInput, RentVsBuyResult } from "@/lib/rentVsBuy/types";
 import { formatCompactCurrency } from "@/lib/retirement/format";
 import { fitLabel } from "@/app/travel-deals/fareGauge";
@@ -178,6 +180,7 @@ interface FieldProps {
   step?: number;
   onChange: (value: number) => void;
   disabled?: boolean;
+  hint?: string;
 }
 
 function NumberField({
@@ -190,11 +193,19 @@ function NumberField({
   step = 1,
   onChange,
   disabled = false,
+  hint,
 }: FieldProps) {
   const id = useId();
   // The typed text stays local until it parses, so clearing a field to retype it
   // no longer snaps to the stored minimum on the first keystroke.
   const [draft, setDraft] = useState<string | null>(null);
+  // The store clamps an out-of-range value, and the field snaps to it on blur,
+  // so say so while the typed value is still showing.
+  const typed = draft !== null && draft.trim() !== "" ? Number(draft) : NaN;
+  const outOfRange = Number.isFinite(typed) && (typed < min || (max !== undefined && typed > max));
+  const hintId = `${id}-hint`;
+  const rangeId = `${id}-range`;
+  const describedBy = [hint ? hintId : null, outOfRange ? rangeId : null].filter(Boolean).join(" ") || undefined;
   return (
     <label htmlFor={id} className="block">
       <span className="c97-kicker" style={{ display: "block", marginBottom: "var(--c97-sp-1)" }}>
@@ -224,6 +235,8 @@ function NumberField({
           step={step}
           value={draft ?? String(value)}
           disabled={disabled}
+          aria-invalid={outOfRange || undefined}
+          aria-describedby={describedBy}
           onChange={(event) => {
             const next = event.target.value;
             setDraft(next);
@@ -247,12 +260,23 @@ function NumberField({
           </span>
         ) : null}
       </span>
+      {hint ? (
+        <span id={hintId} className="c97-meta" style={{ display: "block", marginTop: "var(--c97-sp-1)" }}>
+          {hint}
+        </span>
+      ) : null}
+      {outOfRange ? (
+        <span id={rangeId} className="c97-meta" style={{ display: "block", marginTop: "var(--c97-sp-1)" }}>
+          {max !== undefined ? `Between ${min} and ${max}` : `At least ${min}`}
+        </span>
+      ) : null}
     </label>
   );
 }
 
 export function RentVsBuyClient() {
   const { input, result, setField, reset } = useRentVsBuy();
+  const persistenceStatus = useLocalStoragePersistenceStatus(RENT_VS_BUY_STORAGE_KEY);
   // Each NumberField keeps a local draft while typing, so Reset remounts the
   // fields to drop any draft still showing a value the store no longer holds.
   const [resetKey, setResetKey] = useState(0);
@@ -389,6 +413,7 @@ export function RentVsBuyClient() {
                   value={input.marginalTaxRatePercent}
                   onChange={num("marginalTaxRatePercent")}
                   disabled={!input.itemizes}
+                  hint="Used only when you itemize deductions."
                 />
                 <NumberField label="Years staying" suffix="yrs" step={1} min={1} max={40} value={input.yearsStaying} onChange={num("yearsStaying")} />
                 <label
@@ -412,9 +437,15 @@ export function RentVsBuyClient() {
             </div>
           </div>
 
-          <p className="c97-prose" style={{ fontSize: "var(--c97-fs-small)", color: "var(--c97-ink-2)", marginTop: "var(--c97-sp-4)" }}>
-            Saved in your browser. No account, no server.
-          </p>
+          {persistenceStatus === "memory-only" ? (
+            <p role="status" className="c97-panel c97-prose" style={{ fontSize: "var(--c97-fs-small)", color: "var(--c97-ink-2)", marginTop: "var(--c97-sp-4)" }}>
+              Browser storage is unavailable, so changes last only while this tab is open.
+            </p>
+          ) : (
+            <p className="c97-prose" style={{ fontSize: "var(--c97-fs-small)", color: "var(--c97-ink-2)", marginTop: "var(--c97-sp-4)" }}>
+              Saved in your browser. No account, no server.
+            </p>
+          )}
         </div>
       </section>
 

@@ -330,6 +330,16 @@ function DecisionLabWorkbench({
 }) {
   const [draftState, setDraftState] = useState(routeState);
   const [copyStatus, setCopyStatus] = useState<"idle" | "copied" | "error">("idle");
+  // Re-seed the draft only when the URL changes from outside (back/forward or
+  // a link). The draft's own commits land on an href it already matches.
+  const routeHref = buildDecisionLabHref(routeState);
+  const [lastRouteHref, setLastRouteHref] = useState(routeHref);
+  if (routeHref !== lastRouteHref) {
+    setLastRouteHref(routeHref);
+    if (routeHref !== buildDecisionLabHref(draftState)) {
+      setDraftState(routeState);
+    }
+  }
 
   const activePreset = getDecisionPreset(draftState.preset);
   const evaluation = evaluateDecision(draftState);
@@ -471,7 +481,6 @@ function DecisionLabWorkbench({
                         textAlign: "left",
                         minHeight: 44,
                         cursor: "pointer",
-                        border: isActive ? "2px solid var(--c97-ink)" : "1px solid var(--c97-rule)",
                       }}
                     >
                       <span className="c97-serif" style={{ display: "block" }}>
@@ -521,6 +530,7 @@ function DecisionLabWorkbench({
                 </button>
                 <p
                   className="c97-prose"
+                  role="status"
                   style={{ fontSize: "var(--c97-fs-small)", color: "var(--c97-ink-2)", marginTop: "var(--c97-sp-2)" }}
                 >
                   {copyStatus === "copied"
@@ -563,7 +573,6 @@ export function DecisionLabClient({ initialState }: DecisionLabClientProps) {
 
   return (
     <DecisionLabWorkbench
-      key={buildDecisionLabHref(routeState)}
       routeState={routeState}
       onCommit={(nextState) => router.replace(buildDecisionLabHref(nextState), { scroll: false })}
     />

@@ -526,7 +526,7 @@ export function WeeklyBoardClient({
                       className={`${TOGGLE_CLASS} ${
                         scoring === option
                           ? "border-[var(--c97-ink)] bg-[var(--c97-ink)] text-[var(--c97-surface)]"
-                          : "border-[var(--c97-rule)] bg-[var(--c97-surface)] text-[var(--c97-ink-2)]"
+                          : "border-[var(--c97-rule)] bg-[var(--c97-surface)] text-[var(--c97-ink-2)] hover:border-[var(--c97-ink-2)] hover:text-[var(--c97-ink)]"
                       }`}
                     >
                       {FANTASY_SCORING_LABELS[option]}
@@ -772,7 +772,7 @@ export function WeeklyBoardClient({
                         className={`${TOGGLE_CLASS} ${
                           board === value
                             ? "border-[var(--c97-ink)] bg-[var(--c97-ink)] text-[var(--c97-surface)]"
-                            : "border-[var(--c97-rule)] bg-[var(--c97-surface)] text-[var(--c97-ink-2)]"
+                            : "border-[var(--c97-rule)] bg-[var(--c97-surface)] text-[var(--c97-ink-2)] hover:border-[var(--c97-ink-2)] hover:text-[var(--c97-ink)]"
                         }`}
                       >
                         {label}
@@ -794,7 +794,7 @@ export function WeeklyBoardClient({
                       autoComplete="off"
                       onChange={(event) => setSearchQuery(event.target.value)}
                       placeholder="Search player or team"
-                      className="mt-2 min-h-touch w-[220px] max-w-full border border-[var(--c97-rule)] bg-[var(--c97-surface)] px-3 font-mono text-xs text-[var(--c97-ink)] placeholder:text-[var(--c97-ink-2)]"
+                      className="mt-2 min-h-touch w-[220px] max-w-full border border-[var(--c97-ink-2)] bg-[var(--c97-field)] px-3 font-mono text-xs text-[var(--c97-ink)] placeholder:text-[var(--c97-ink-2)]"
                     />
                   </div>
                   {board === "flex" ? (
@@ -810,7 +810,7 @@ export function WeeklyBoardClient({
                             className={`${TOGGLE_CLASS} ${
                               positionFilter === option
                                 ? "border-[var(--c97-ink)] bg-[var(--c97-ink)] text-[var(--c97-surface)]"
-                                : "border-[var(--c97-rule)] bg-[var(--c97-surface)] text-[var(--c97-ink-2)]"
+                                : "border-[var(--c97-rule)] bg-[var(--c97-surface)] text-[var(--c97-ink-2)] hover:border-[var(--c97-ink-2)] hover:text-[var(--c97-ink)]"
                             }`}
                           >
                             {option === "ALL" ? "All" : option}
@@ -1050,25 +1050,25 @@ export function WeeklyBoardClient({
           </span>
           <Link
             href={viewConfig.sibling.href}
-            className="inline-flex min-h-touch items-center text-sm font-semibold no-underline"
+            className="c97-link inline-flex min-h-touch items-center text-sm font-semibold"
           >
             {viewConfig.sibling.label} ↗
           </Link>
           <Link
             href="/fantasy-football"
-            className="inline-flex min-h-touch items-center text-sm font-semibold no-underline"
+            className="c97-link inline-flex min-h-touch items-center text-sm font-semibold"
           >
             Rankings board ↗
           </Link>
           <Link
             href="/fantasy-football/draft-tracker"
-            className="inline-flex min-h-touch items-center text-sm font-semibold no-underline"
+            className="c97-link inline-flex min-h-touch items-center text-sm font-semibold"
           >
             Draft tracker ↗
           </Link>
           <Link
             href="/fantasy-football/best-ball"
-            className="inline-flex min-h-touch items-center text-sm font-semibold no-underline"
+            className="c97-link inline-flex min-h-touch items-center text-sm font-semibold"
           >
             Best ball ↗
           </Link>

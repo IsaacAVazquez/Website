@@ -667,15 +667,12 @@ export const HEADER_CHIP_CLASS =
 export const POSITION_CHIP_CLASS =
   "inline-flex flex-none items-center border px-1.5 py-0.5 font-mono text-2xs tracking-[0.06em]";
 
-/** Disabled prints unfilled with a dashed edge; an opacity fade dropped its label to 3.02:1. */
+/**
+ * Disabled prints unfilled with a dashed edge; an opacity fade dropped its label to 3.02:1.
+ * The resting colours live in the class rather than inline so the hover can apply.
+ */
 export const PILL_BUTTON_CLASS =
-  "inline-flex min-h-touch items-center justify-center border px-3 font-mono text-3xs uppercase tracking-[0.06em] disabled:cursor-not-allowed disabled:border-dashed";
-
-export const PILL_BUTTON_STYLE: CSSProperties = {
-  borderColor: "var(--c97-rule)",
-  background: "var(--c97-surface)",
-  color: "var(--c97-ink)",
-};
+  "inline-flex min-h-touch items-center justify-center border border-[var(--c97-rule)] bg-[var(--c97-surface)] px-3 font-mono text-3xs uppercase tracking-[0.06em] text-[var(--c97-ink)] enabled:hover:border-[var(--c97-ink)] disabled:cursor-not-allowed disabled:border-dashed";
 
 /** Sticky offset that clears the site header on the draft surfaces. */
 export const FASCIA_TOP_CLASS = "top-0";

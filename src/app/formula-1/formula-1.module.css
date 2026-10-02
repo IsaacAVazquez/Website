@@ -169,6 +169,21 @@
   background: var(--c97-field);
 }
 
+.raceStripItem:hover {
+  border-color: var(--c97-ink-2);
+}
+
 .raceStripItem[aria-pressed="true"] {
   border-color: var(--c97-accent);
+}
+
+/* ---- Calendar timeline -------------------------------------------------- */
+
+.timelineRow {
+  background: transparent;
+}
+
+.timelineRow:hover,
+.timelineRow[aria-pressed="true"] {
+  background: var(--c97-field);
 }

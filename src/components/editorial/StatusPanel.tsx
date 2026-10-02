@@ -32,15 +32,15 @@ export function StatusPanel({ title, message, tone = "default", icon }: StatusPa
           {icon}
         </div>
       ) : null}
-      <h2
-        className="text-xl font-semibold"
-        style={{ fontFamily: "var(--c97-font-body)", color: "var(--c97-ink)" }}
-      >
-        {title}
-      </h2>
+      <h3 className="c97-serif c97-h3">{title}</h3>
       <p
-        className="mx-auto mt-3 mb-0 max-w-[36rem] text-sm leading-7"
-        style={{ fontFamily: "var(--c97-font-body)", color: "var(--c97-ink-2)" }}
+        className="c97-prose"
+        style={{
+          marginTop: "var(--c97-sp-2)",
+          marginInline: "auto",
+          fontSize: "var(--c97-fs-small)",
+          color: "var(--c97-ink-2)",
+        }}
       >
         {message}
       </p>

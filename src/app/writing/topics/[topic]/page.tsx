@@ -37,7 +37,11 @@ function renderTopicRow(post: BlogPostPreview) {
     >
       <div>
         <h2 className="c97-serif c97-h3">
-          <Link href={`/writing/${post.slug}`} style={{ textDecoration: "none" }}>
+          <Link
+            href={`/writing/${post.slug}`}
+            className="c97-link"
+            style={{ textDecoration: "none" }}
+          >
             {post.title}
           </Link>
         </h2>
@@ -182,10 +186,7 @@ export default async function WritingTopicPage({ params }: TopicPageProps) {
                 will do next; the summary's own text flips on open through the
                 two spans below.
               */}
-              <summary
-                className="c97-microlink"
-                style={{ color: "var(--c97-ink)" }}
-              >
+              <summary className="c97-microlink">
                 <span data-when="closed">
                   Show the other {remaining} articles
                 </span>
@@ -218,7 +219,12 @@ export default async function WritingTopicPage({ params }: TopicPageProps) {
           </h2>
           <ul
             className="c97-segmented"
-            style={{ listStyle: "none", marginTop: "var(--c97-sp-4)" }}
+            style={{
+              listStyle: "none",
+              marginTop: "var(--c97-sp-4)",
+              // sp-3 clamps to 22px on a phone, so wrapped 50px microlinks overlap.
+              rowGap: "var(--c97-sp-5)",
+            }}
           >
             {BLOG_TOPIC_PAGES.filter(
               (candidate) => candidate.slug !== topic.slug
@@ -227,7 +233,6 @@ export default async function WritingTopicPage({ params }: TopicPageProps) {
                 <Link
                   href={`/writing/topics/${candidate.slug}`}
                   className="c97-microlink"
-                  style={{ color: "var(--c97-ink)" }}
                 >
                   {candidate.label}
                 </Link>

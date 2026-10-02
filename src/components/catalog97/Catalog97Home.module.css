@@ -134,7 +134,7 @@
   transition: box-shadow 160ms ease, transform 160ms ease;
 }
 .workPlate img { object-fit: cover; }
-.workCard:hover .workPlate { transform: translate(-3px, -3px); box-shadow: 11px 11px 0 var(--c97-overprint); }
+.workCard:hover .workPlate, .workCard:focus-visible .workPlate { transform: translate(-3px, -3px); box-shadow: 11px 11px 0 var(--c97-overprint); }
 .workSummary { font-size: var(--c97-fs-small); line-height: var(--c97-lh-body); color: var(--c97-ink-2); text-wrap: pretty; }
 
 /* Recent writing */
@@ -149,7 +149,13 @@
   border-top: 1px solid var(--c97-rule);
   color: var(--c97-ink);
   text-decoration: none;
-  transition: background-color 160ms ease;
+}
+/* The halftone hover .c97-tile uses. */
+.post:hover, .post:focus-visible {
+  background-image:
+    radial-gradient(circle, color-mix(in srgb, var(--c97-ink) 24%, transparent) 28%, transparent 32%),
+    var(--c97-grain-soft);
+  background-size: 6px 6px, 180px 180px;
 }
 .post:last-child { border-bottom: 1px solid var(--c97-rule); }
 /* A grid, so the title and excerpt spans stack instead of running on inline. */
@@ -162,7 +168,7 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .post, .workPlate { transition: none; }
+  .workPlate { transition: none; }
 }
 
 /* Closing invitation */

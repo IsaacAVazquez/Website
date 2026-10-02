@@ -1,4 +1,3 @@
-import type { CSSProperties } from "react";
 import type {
   MBAApplicationPriority,
   MBAApplicationStatus,
@@ -6,11 +5,11 @@ import type {
 } from "@/types/mba-jobs";
 
 /**
- * Shared application-form types, defaults, and input styling for the MBA tracker.
+ * Shared application-form types and defaults for the MBA tracker.
  *
  * Extracted from `mba-jobs-client.tsx` so the code-split `ApplicationEditDialog`
- * and the main client (which seeds saves and reuses the input styling in the
- * pipeline/cards) can both import them without duplicating the definitions.
+ * and the main client (which seeds saves) can both import them without
+ * duplicating the definitions.
  */
 export interface ApplicationFormState {
   companyName: string;
@@ -61,9 +60,3 @@ export function getApplicationFormState(
     notes: application.notes,
   };
 }
-
-// The Catalog 97 field primitive already sets width, height, border, background,
-// colour, and font, so every caller can share one class with no per-site style.
-export const applicationInputClass = "c97-field";
-
-export const applicationInputStyle: CSSProperties = {};

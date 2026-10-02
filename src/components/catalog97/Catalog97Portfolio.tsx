@@ -170,16 +170,7 @@ export function Catalog97Portfolio({ projects }: Catalog97PortfolioProps) {
                 value={query}
                 onChange={(event) => setQuery(event.target.value)}
                 placeholder="Search projects"
-                style={{
-                  minHeight: 48,
-                  width: "100%",
-                  border: "1px solid var(--c97-rule)",
-                  borderRadius: 0,
-                  background: "var(--c97-surface)",
-                  color: "var(--c97-ink)",
-                  padding: "0 var(--c97-sp-2)",
-                  font: "inherit",
-                }}
+                className="c97-field"
               />
             </label>
             <label style={{ display: "grid", gap: "var(--c97-sp-1)" }}>
@@ -187,16 +178,7 @@ export function Catalog97Portfolio({ projects }: Catalog97PortfolioProps) {
               <select
                 value={sort}
                 onChange={(event) => setSort(event.target.value as SortMode)}
-                style={{
-                  minHeight: 48,
-                  width: "100%",
-                  border: "1px solid var(--c97-rule)",
-                  borderRadius: 0,
-                  background: "var(--c97-surface)",
-                  color: "var(--c97-ink)",
-                  padding: "0 var(--c97-sp-2)",
-                  font: "inherit",
-                }}
+                className="c97-field"
               >
                 <option value="curated">Featured first</option>
                 <option value="newest">Newest first</option>
@@ -238,7 +220,13 @@ export function Catalog97Portfolio({ projects }: Catalog97PortfolioProps) {
                     display: "inline-flex",
                     alignItems: "baseline",
                     gap: "var(--c97-sp-1)",
-                    color: selected ? "var(--c97-ink)" : "var(--c97-label)",
+                    // Unselected buttons take the microlink's label colour and its hover.
+                    color: selected ? "var(--c97-ink)" : undefined,
+                    // Pressed is never colour alone; this is .c97-segmented's underline.
+                    textDecoration: selected ? "underline" : "none",
+                    textDecorationThickness: "2px",
+                    textUnderlineOffset: "6px",
+                    textDecorationColor: "var(--c97-accent)",
                   }}
                 >
                   <span>{tab.label}</span>
@@ -260,6 +248,27 @@ export function Catalog97Portfolio({ projects }: Catalog97PortfolioProps) {
           className="c97-shell"
           style={{ display: "grid", gap: "var(--c97-sp-5)" }}
         >
+          {filtered.length === 0 ? (
+            <div
+              style={{
+                display: "grid",
+                justifyItems: "start",
+                gap: "var(--c97-sp-2)",
+              }}
+            >
+              <p className="c97-prose">No projects match that search.</p>
+              <button
+                type="button"
+                className="c97-btn-ghost"
+                onClick={() => {
+                  setQuery("");
+                  setActive(ALL);
+                }}
+              >
+                Clear search
+              </button>
+            </div>
+          ) : null}
           {lead.map((project) => (
             <article
               key={project.slug}
@@ -272,7 +281,7 @@ export function Catalog97Portfolio({ projects }: Catalog97PortfolioProps) {
                   <Link
                     // /portfolio/<slug> only redirects to the live tool now.
                     href={project.link ?? `/portfolio/${project.slug}`}
-                    style={{ textDecoration: "none" }}
+                    className="c97-link-heading"
                   >
                     {project.title}
                   </Link>
@@ -341,23 +350,24 @@ export function Catalog97Portfolio({ projects }: Catalog97PortfolioProps) {
         </div>
       </section>
 
-      {/* The rest of the index */}
-      <section
-        className="c97-band c97-band-tall c97-sheet"
-        data-c97-surface="ink-blue"
-        data-seam="torn"
-      >
-        <div className="c97-shell">
-          <div
-            style={{
-              display: "flex",
-              alignItems: "baseline",
-              justifyContent: "space-between",
-              gap: "var(--c97-sp-2)",
-              flexWrap: "wrap",
-            }}
-          >
-            {/*
+      {/* The rest of the index. With no matches the empty state above says so. */}
+      {filtered.length > 0 ? (
+        <section
+          className="c97-band c97-band-tall c97-sheet"
+          data-c97-surface="ink-blue"
+          data-seam="torn"
+        >
+          <div className="c97-shell">
+            <div
+              style={{
+                display: "flex",
+                alignItems: "baseline",
+                justifyContent: "space-between",
+                gap: "var(--c97-sp-2)",
+                flexWrap: "wrap",
+              }}
+            >
+              {/*
               This was `c97-kicker`, so an h2 rendered at 11px directly above
               22px children while its four sibling h2s in the saffron band ran at
               32px.
@@ -372,14 +382,14 @@ export function Catalog97Portfolio({ projects }: Catalog97PortfolioProps) {
               sibling h2s in the saffron band, so every h2 on the route now draws
               at one size.
             */}
-            <h2 className="c97-poster-sm">The rest of the index</h2>
-            <p className="c97-kicker c97-tabular">
-              {ledger.length} {ledger.length === 1 ? "project" : "projects"}
-            </p>
-          </div>
+              <h2 className="c97-poster-sm">The rest of the index</h2>
+              <p className="c97-kicker c97-tabular">
+                {ledger.length} {ledger.length === 1 ? "project" : "projects"}
+              </p>
+            </div>
 
-          {ledger.length > 0 ? (
-            /*
+            {ledger.length > 0 ? (
+              /*
               Two columns above roughly 780px, one below.
 
               As a single full-width column each row was a 1fr title track and
@@ -393,55 +403,54 @@ export function Catalog97Portfolio({ projects }: Catalog97PortfolioProps) {
               A hairline per row would also bridge the gap and the design owns
               that device, but proximity solves it without adding 29 rules.
             */
-            <div
-              style={{
-                display: "grid",
-                gridTemplateColumns:
-                  "repeat(auto-fit, minmax(min(100%, 320px), 1fr))",
-                columnGap: "var(--c97-sp-5)",
-                rowGap: "var(--c97-sp-3)",
-                marginTop: "var(--c97-sp-4)",
-              }}
-            >
-              {ledger.map((project) => (
-                <div key={project.slug} className="c97-row">
-                  {/*
+              <div
+                style={{
+                  display: "grid",
+                  gridTemplateColumns:
+                    "repeat(auto-fit, minmax(min(100%, 320px), 1fr))",
+                  columnGap: "var(--c97-sp-5)",
+                  rowGap: "var(--c97-sp-3)",
+                  marginTop: "var(--c97-sp-4)",
+                }}
+              >
+                {ledger.map((project) => (
+                  <div key={project.slug} className="c97-row">
+                    {/*
                     An h3 rather than a div. These 29 are the same kind of thing
                     as the four in the saffron band, which are h2, so as divs they
                     were 29 of the 33 projects unreachable by heading
                     navigation. The level mirrors the two-tier split the design
                     already makes visually, and `c97-lead` keeps the size.
                   */}
-                  <h3 className="c97-serif c97-lead">
-                    <Link
-                      href={project.link ?? `/portfolio/${project.slug}`}
-                      style={{ textDecoration: "none" }}
-                    >
-                      {project.title}
-                    </Link>
-                  </h3>
-                  <div className="c97-kicker c97-tabular">
-                    {project.timeline}
+                    <h3 className="c97-serif c97-lead">
+                      <Link
+                        href={project.link ?? `/portfolio/${project.slug}`}
+                        className="c97-link-heading"
+                      >
+                        {project.title}
+                      </Link>
+                    </h3>
+                    <div className="c97-kicker c97-tabular">
+                      {project.timeline}
+                    </div>
                   </div>
-                </div>
-              ))}
-            </div>
-          ) : (
-            <p
-              className="c97-prose"
-              style={{
-                marginTop: "var(--c97-sp-4)",
-                color: "var(--c97-ink-2)",
-                maxWidth: "var(--c97-measure-body)",
-              }}
-            >
-              {filtered.length === 0
-                ? "No projects match that search."
-                : "Everything under this filter is already above."}
-            </p>
-          )}
-        </div>
-      </section>
+                ))}
+              </div>
+            ) : (
+              <p
+                className="c97-prose"
+                style={{
+                  marginTop: "var(--c97-sp-4)",
+                  color: "var(--c97-ink-2)",
+                  maxWidth: "var(--c97-measure-body)",
+                }}
+              >
+                Everything under this filter is already above.
+              </p>
+            )}
+          </div>
+        </section>
+      ) : null}
 
       {/* CTA */}
       <section

@@ -39,7 +39,10 @@ export function Catalog97ProjectHero({
       <div className="c97-shell">
         <h1 className="c97-poster">{title}</h1>
         {standfirst ? (
-          <p className="c97-lead" style={{ marginTop: "var(--c97-sp-3)" }}>
+          <p
+            className="c97-lead"
+            style={{ marginTop: "var(--c97-sp-3)", maxWidth: "var(--c97-measure-wide)" }}
+          >
             {standfirst}
           </p>
         ) : null}

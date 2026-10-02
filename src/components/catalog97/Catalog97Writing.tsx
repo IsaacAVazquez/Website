@@ -227,16 +227,7 @@ export function Catalog97Writing({
                   setArchiveLimit(archivePageSize);
                 }}
                 placeholder="Search writing"
-                style={{
-                  minHeight: 48,
-                  width: "100%",
-                  border: "1px solid var(--c97-rule)",
-                  borderRadius: 0,
-                  background: "var(--c97-surface)",
-                  color: "var(--c97-ink)",
-                  padding: "0 var(--c97-sp-2)",
-                  font: "inherit",
-                }}
+                className="c97-field"
               />
             </label>
             <label style={{ display: "grid", gap: "var(--c97-sp-1)" }}>
@@ -247,16 +238,7 @@ export function Catalog97Writing({
                   setSort(event.target.value as SortMode);
                   setArchiveLimit(archivePageSize);
                 }}
-                style={{
-                  minHeight: 48,
-                  width: "100%",
-                  border: "1px solid var(--c97-rule)",
-                  borderRadius: 0,
-                  background: "var(--c97-surface)",
-                  color: "var(--c97-ink)",
-                  padding: "0 var(--c97-sp-2)",
-                  font: "inherit",
-                }}
+                className="c97-field"
               >
                 <option value="newest">Newest first</option>
                 <option value="shortest">Shortest first</option>
@@ -300,7 +282,14 @@ export function Catalog97Writing({
                     display: "inline-flex",
                     alignItems: "baseline",
                     gap: "var(--c97-sp-1)",
-                    color: selected ? "var(--c97-ink)" : "var(--c97-label)",
+                    // Unselected buttons take the microlink's label colour
+                    // and its hover.
+                    color: selected ? "var(--c97-ink)" : undefined,
+                    // Pressed is never colour alone; this is .c97-segmented's underline.
+                    textDecoration: selected ? "underline" : "none",
+                    textDecorationThickness: "2px",
+                    textUnderlineOffset: "6px",
+                    textDecorationColor: "var(--c97-accent)",
                   }}
                 >
                   <span>{tab.label}</span>
@@ -372,7 +361,7 @@ export function Catalog97Writing({
                 >
                   <Link
                     href={`/writing/${post.slug}`}
-                    style={{ textDecoration: "none" }}
+                    className="c97-link-heading"
                   >
                     {post.title}
                   </Link>
@@ -466,7 +455,7 @@ export function Catalog97Writing({
                     <h3 className="c97-serif c97-h3">
                       <Link
                         href={`/writing/${post.slug}`}
-                        style={{ textDecoration: "none" }}
+                        className="c97-link-heading"
                       >
                         {post.title}
                       </Link>
@@ -535,7 +524,6 @@ export function Catalog97Writing({
                 alignItems: "baseline",
                 gap: "var(--c97-sp-1)",
                 marginTop: "var(--c97-sp-5)",
-                color: "var(--c97-ink)",
               }}
             >
               <span>Show the rest of the archive</span>
@@ -577,7 +565,6 @@ export function Catalog97Writing({
                 key={topic.slug}
                 href={`/writing/topics/${topic.slug}`}
                 className="c97-row c97-microlink"
-                style={{ color: "var(--c97-ink)" }}
               >
                 <span>{topic.label}</span>
               </Link>

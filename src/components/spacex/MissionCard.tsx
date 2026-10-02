@@ -48,10 +48,7 @@ export function MissionCard({ launch, isSelected, isBusy, onSelect }: MissionCar
         <div
           data-testid={`mission-board-visual-${launch.id}`}
           className="grid h-[62px] w-[62px] shrink-0 place-items-center overflow-hidden border border-[var(--c97-rule)]"
-          style={{
-            background:
-              "radial-gradient(circle at 50% 42%, color-mix(in srgb, var(--c97-field) 70%, var(--c97-field)), var(--c97-field))",
-          }}
+          style={{ background: "var(--c97-field)" }}
         >
           <MissionPatchEmblem seed={launch.id} accent={accent} className="h-full w-full" />
         </div>

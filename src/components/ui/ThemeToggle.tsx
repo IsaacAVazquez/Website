@@ -37,7 +37,6 @@ export function ThemeToggle({ className }: ThemeToggleProps) {
           }`}
         />
       </span>
-      <span className="sr-only">Cycle theme preference</span>
     </button>
   )
 }

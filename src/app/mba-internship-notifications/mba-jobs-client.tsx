@@ -29,7 +29,6 @@ import {
   Upload,
   X,
 } from "lucide-react";
-import { EditorialPillButton, getPillStyle } from "@/components/editorial/EditorialPillButton";
 import { StatusPanel } from "@/components/editorial/StatusPanel";
 import { ChevronDown } from "lucide-react";
 import { Catalog97ProjectHero } from "@/components/catalog97/Catalog97ProjectHero";
@@ -95,8 +94,6 @@ import {
 } from "./mba-jobs-state";
 import dynamic from "next/dynamic";
 import {
-  applicationInputClass,
-  applicationInputStyle,
   type ApplicationFormState,
 } from "./application-form";
 import "./mba-jobs.css";
@@ -635,6 +632,7 @@ function JobCard({
     <article
       className="c97-panel flex h-full flex-col"
       onMouseEnter={onMarkSeen}
+      onFocus={onMarkSeen}
     >
       <div className="flex h-full flex-col gap-5">
         <div className="flex flex-wrap items-start justify-between gap-4">
@@ -663,15 +661,7 @@ function JobCard({
         </div>
 
         <div className="space-y-3">
-          <h3
-            className="text-lg font-semibold leading-[1.08] tracking-[-0.04em] sm:text-xl"
-            style={{
-              fontFamily: "var(--c97-font-body)",
-              color: "var(--c97-ink)",
-            }}
-          >
-            {job.title}
-          </h3>
+          <h3 className="c97-serif c97-h3">{job.title}</h3>
 
           {job.snippet && (
             <p className="c97-prose line-clamp-3 break-words">{job.snippet}</p>
@@ -872,37 +862,23 @@ function JobGridSkeleton() {
       aria-live="polite"
       aria-label="Loading jobs"
     >
-      {[0, 1, 2, 4, 5, 6].map((i) => (
+      {Array.from({ length: 6 }, (_, i) => (
         <div
           key={i}
-          className="c97-panel flex flex-col gap-4"
+          className="c97-panel"
+          style={{ display: "flex", flexDirection: "column", gap: "var(--c97-sp-3)" }}
           aria-hidden="true"
         >
-          <div className="flex items-center gap-3">
-            <div
-              className="h-9 w-9 animate-pulse"
-              style={{ background: "color-mix(in srgb, var(--c97-rule) 40%, var(--c97-surface))" }}
-            />
-            <div className="space-y-2">
-              <div
-                className="h-2.5 w-20 animate-pulse"
-                style={{ background: "color-mix(in srgb, var(--c97-rule) 40%, var(--c97-surface))" }}
-              />
-              <div
-                className="h-2 w-14 animate-pulse"
-                style={{ background: "color-mix(in srgb, var(--c97-rule) 30%, var(--c97-surface))" }}
-              />
+          <div style={{ display: "flex", alignItems: "center", gap: "var(--c97-sp-2)" }}>
+            <span className="c97-skeleton" style={{ height: 36, width: 36 }} />
+            <div style={{ display: "grid", gap: "var(--c97-sp-1)" }}>
+              <span className="c97-skeleton" style={{ height: 10, width: 80 }} />
+              <span className="c97-skeleton" style={{ height: 8, width: 56 }} />
             </div>
           </div>
-          <div className="space-y-2">
-            <div
-              className="h-4 w-3/4 animate-pulse"
-              style={{ background: "color-mix(in srgb, var(--c97-rule) 40%, var(--c97-surface))" }}
-            />
-            <div
-              className="h-3 w-1/2 animate-pulse"
-              style={{ background: "color-mix(in srgb, var(--c97-rule) 30%, var(--c97-surface))" }}
-            />
+          <div style={{ display: "grid", gap: "var(--c97-sp-1)" }}>
+            <span className="c97-skeleton" style={{ height: 16, width: "75%" }} />
+            <span className="c97-skeleton" style={{ height: 12, width: "50%" }} />
           </div>
         </div>
       ))}
@@ -919,24 +895,15 @@ function SortDropdown({
 }) {
   // Native <select>: this is a single-choice sort picker, so the platform
   // control gives keyboard support, type-ahead, and the OS picker on mobile
-  // for free. The wrapping <label> supplies the accessible name ("Sort") and
-  // keeps the surrounding pill treatment shared with the filter chips.
+  // for free. The wrapping <label> supplies the accessible name ("Sort").
   return (
-    <label
-      className="inline-flex min-h-[44px] cursor-pointer items-center gap-2 border px-4 py-2 text-sm font-semibold transition-[background-color,border-color,color,box-shadow] duration-200 ease focus-within:outline focus-within:outline-2 focus-within:outline-offset-2 focus-within:outline-[var(--c97-accent)]"
-      style={getPillStyle(false)}
-    >
-      <span
-        className="text-2xs font-semibold uppercase tracking-[0.12em]"
-        style={{ fontFamily: "var(--c97-font-body)" }}
-      >
-        Sort
-      </span>
+    <label style={{ display: "inline-flex", alignItems: "center", gap: "var(--c97-sp-1)" }}>
+      <span className="c97-kicker">Sort</span>
       <select
         value={value}
         onChange={(event) => onValueChange(event.target.value as MBASortOrder)}
-        className="cursor-pointer appearance-none border-none bg-transparent text-sm font-semibold text-inherit outline-none"
-        style={{ fontFamily: "var(--c97-font-body)" }}
+        className="c97-field"
+        style={{ width: "auto", cursor: "pointer" }}
       >
         {SORT_OPTIONS.map((opt) => (
           <option key={opt} value={opt}>
@@ -944,7 +911,6 @@ function SortDropdown({
           </option>
         ))}
       </select>
-      <ChevronDown className="h-4 w-4" aria-hidden="true" />
     </label>
   );
 }
@@ -1049,23 +1015,23 @@ function CompanyFilterStrip({
         aria-expanded={isExpanded}
         aria-controls="tracked-companies-controls"
       >
-        <div className="space-y-3">
-          <div>
-            <p className="c97-meta">Tracked company feeds</p>
-            <p
-              className="mt-2 text-sm"
+        <span className="block space-y-3">
+          <span className="block">
+            <span className="c97-meta" style={{ display: "block" }}>Tracked company feeds</span>
+            <span
+              className="mt-2 block text-sm"
               style={{ color: "var(--c97-ink-2)" }}
             >
               {watchedLiveCount} of {totalLiveCount} live boards are in your scan right now.
-            </p>
-          </div>
-          <div className="flex flex-wrap gap-2">
+            </span>
+          </span>
+          <span className="flex flex-wrap gap-2">
             <span className="c97-chip">{totalLiveCount} live feeds</span>
             <span className="c97-chip">{watchedLiveCount} watched now</span>
             <span className="c97-chip">{groups.length} company groups</span>
-          </div>
-        </div>
-        <div className="flex items-center gap-3">
+          </span>
+        </span>
+        <span className="flex items-center gap-3">
           <span
             className="hidden text-2xs font-semibold uppercase tracking-[0.12em] sm:inline"
             style={{ color: "var(--c97-ink-2)" }}
@@ -1087,27 +1053,18 @@ function CompanyFilterStrip({
               style={{ color: "var(--c97-ink-2)" }}
             />
           </span>
-        </div>
+        </span>
       </button>
 
       {isExpanded && (
         <div id="tracked-companies-controls" className="mt-6">
-          <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
-            <div className="flex flex-wrap gap-2">
-              <span className="c97-chip">{totalLiveCount} live feeds</span>
-              <span className="c97-chip">{watchedLiveCount} watched now</span>
-              <span className="c97-chip">{groups.length} company groups</span>
-            </div>
+          <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-end">
             <div className="flex flex-wrap items-center gap-2">
               <button
                 type="button"
                 onClick={onSelectAll}
                 disabled={allOn}
-                className="inline-flex min-h-[44px] items-center border px-4 py-2 text-2xs font-semibold uppercase tracking-[0.12em] transition-[background-color,border-color,color] duration-200 ease disabled:opacity-40"
-                style={{
-                  ...getPillStyle(false),
-                  color: "var(--c97-accent)",
-                }}
+                className="c97-btn-ghost"
               >
                 All on
               </button>
@@ -1115,8 +1072,7 @@ function CompanyFilterStrip({
                 type="button"
                 onClick={onClearAll}
                 disabled={allOff}
-                className="inline-flex min-h-[44px] items-center border px-4 py-2 text-2xs font-semibold uppercase tracking-[0.12em] transition-[background-color,border-color,color] duration-200 ease disabled:opacity-40"
-                style={getPillStyle(false)}
+                className="c97-btn-ghost"
               >
                 All off
               </button>
@@ -1150,15 +1106,15 @@ function CompanyFilterStrip({
                       }))
                     }
                   >
-                    <div className="min-w-0">
-                      <p className="c97-meta">{group.label}</p>
-                      <p
-                        className="mt-1 text-xs"
+                    <span className="block min-w-0">
+                      <span className="c97-meta" style={{ display: "block" }}>{group.label}</span>
+                      <span
+                        className="mt-1 block text-xs"
                         style={{ color: "var(--c97-ink-2)" }}
                       >
                         {watchedCount} / {group.companies.length} watched
-                      </p>
-                    </div>
+                      </span>
+                    </span>
                     <ChevronDown
                       className={`h-4 w-4 shrink-0 transition-transform duration-150 ease ${
                         isGroupExpanded ? "rotate-180" : ""
@@ -1430,10 +1386,7 @@ function ApplicationCard({
           <p className="c97-serif" style={{ fontSize: "var(--c97-fs-body)" }}>
             {application.jobSnapshot.companyName}
           </p>
-          <h3
-            className="mb-0 mt-2 text-base font-semibold leading-tight"
-            style={{ color: "var(--c97-ink)" }}
-          >
+          <h3 className="c97-serif c97-h3" style={{ marginTop: "var(--c97-sp-1)" }}>
             {application.jobSnapshot.title}
           </h3>
         </div>
@@ -1613,8 +1566,7 @@ function ApplicationPipeline({
               onChange={(event) =>
                 setStatusFilter(event.target.value as MBAApplicationStatus | "all")
               }
-              className={applicationInputClass}
-              style={applicationInputStyle}
+              className="c97-field"
               aria-label="Filter applications by status"
             >
               <option value="all">All active statuses</option>
@@ -2147,18 +2099,17 @@ export function MBAJobsClient({
             )}
           </div>
 
-          <div role="tablist" aria-label="Job tracker view" className="flex flex-wrap gap-2">
+          <div role="group" aria-label="Job tracker view" className="c97-segmented">
             {(["feed", "applications"] as const).map((view) => (
-              <EditorialPillButton
+              <button
+                type="button"
                 key={view}
-                active={uiState.view === view}
+                aria-pressed={uiState.view === view}
                 onClick={() => updateRouteState({ view })}
-                role="tab"
-                ariaSelected={uiState.view === view}
-                size="sm"
+                style={{ minHeight: 44 }}
               >
                 {VIEW_LABELS[view]}
-              </EditorialPillButton>
+              </button>
             ))}
           </div>
         </div>
@@ -2186,20 +2137,12 @@ export function MBAJobsClient({
             <div className="c97-shell space-y-4">
               {fetchErrors.length > 0 && !isLoading && (
                 <div
-                  className="flex items-start gap-3 px-5 py-4"
-                  style={{
-                    borderColor: "color-mix(in srgb, var(--c97-accent) 32%, var(--c97-rule))",
-                    background: "color-mix(in srgb, var(--c97-accent) 10%, var(--c97-surface))",
-                    border: "1px solid",
-                  }}
+                  className="c97-panel"
                   role="status"
+                  style={{ borderLeft: "2px solid var(--c97-warning)" }}
                 >
-                  <CircleAlert
-                    className="mt-0.5 h-4 w-4 shrink-0"
-                    style={{ color: "color-mix(in srgb, var(--c97-accent) 55%, var(--c97-ink))" }}
-                    aria-hidden="true"
-                  />
-                  <p className="mb-0 text-sm" style={{ color: "var(--c97-ink)" }}>
+                  <span className="c97-chip c97-chip-warning">Partial results</span>
+                  <p className="c97-prose" style={{ marginTop: "var(--c97-sp-2)", color: "var(--c97-ink)" }}>
                     Some companies could not be reached:{" "}
                     {fetchErrors.map((e) => e.companyName).join(", ")}. Results shown are partial.
                   </p>
@@ -2289,8 +2232,7 @@ export function MBAJobsClient({
                       <button
                         type="button"
                         onClick={() => updateRouteState(DEFAULT_MBA_JOBS_STATE)}
-                        className="inline-flex min-h-[44px] items-center border px-4 py-2 text-sm font-semibold transition-[background-color,border-color,color] duration-200 ease"
-                        style={getPillStyle(false)}
+                        className="c97-btn-ghost"
                       >
                         Clear filters
                       </button>
@@ -2316,30 +2258,29 @@ export function MBAJobsClient({
                       </p>
                     </div>
                     <div
-                      className="mt-3 flex flex-wrap gap-2"
-                      role="tablist"
+                      className="c97-segmented"
+                      role="group"
                       aria-label="Suggested locations"
+                      style={{ marginTop: "var(--c97-sp-2)" }}
                     >
-                      <EditorialPillButton
-                        active={uiState.location.trim().length === 0}
+                      <button
+                        type="button"
+                        aria-pressed={uiState.location.trim().length === 0}
                         onClick={() => updateRouteState({ location: "" })}
-                        role="tab"
-                        ariaSelected={uiState.location.trim().length === 0}
-                        size="sm"
+                        style={{ minHeight: 44 }}
                       >
                         All locations
-                      </EditorialPillButton>
+                      </button>
                       {locationOptions.map((option) => (
-                        <EditorialPillButton
+                        <button
+                          type="button"
                           key={option.normalizedValue}
-                          active={normalizedLocationFilter === option.normalizedValue}
+                          aria-pressed={normalizedLocationFilter === option.normalizedValue}
                           onClick={() => updateRouteState({ location: option.label })}
-                          role="tab"
-                          ariaSelected={normalizedLocationFilter === option.normalizedValue}
-                          size="sm"
+                          style={{ minHeight: 44 }}
                         >
                           {option.label} · {option.count}
-                        </EditorialPillButton>
+                        </button>
                       ))}
                     </div>
                   </div>
@@ -2348,20 +2289,19 @@ export function MBAJobsClient({
                 <div className="space-y-4 border-t border-[var(--c97-rule)] pt-6">
                   <div className="space-y-2">
                     <p className="c97-meta" style={{ marginBottom: "var(--c97-sp-1)" }}>Role type</p>
-                    <div className="flex flex-wrap gap-2" role="tablist" aria-label="Filter by role type">
+                    <div className="c97-segmented" role="group" aria-label="Filter by role type">
                       {ROLE_TYPE_OPTIONS.map((roleType) => (
-                        <EditorialPillButton
+                        <button
+                          type="button"
                           key={roleType}
-                          active={uiState.roleType === roleType}
+                          aria-pressed={uiState.roleType === roleType}
                           onClick={() =>
                             updateRouteState({ roleType: roleType as MBARoleTypeFilter })
                           }
-                          role="tab"
-                          ariaSelected={uiState.roleType === roleType}
-                          size="sm"
+                          style={{ minHeight: 44 }}
                         >
                           {ROLE_TYPE_LABELS[roleType as MBARoleTypeFilter]}
-                        </EditorialPillButton>
+                        </button>
                       ))}
                     </div>
                   </div>
@@ -2369,23 +2309,22 @@ export function MBAJobsClient({
                   <div className="space-y-2">
                     <p className="c97-meta" style={{ marginBottom: "var(--c97-sp-1)" }}>Role family</p>
                     <div
-                      className="flex flex-wrap gap-2"
-                      role="tablist"
+                      className="c97-segmented"
+                      role="group"
                       aria-label="Filter by role family"
                     >
                       {ROLE_FAMILY_OPTIONS.map((family) => (
-                        <EditorialPillButton
+                        <button
+                          type="button"
                           key={family}
-                          active={uiState.roleFamily === family}
+                          aria-pressed={uiState.roleFamily === family}
                           onClick={() =>
                             updateRouteState({ roleFamily: family as MBARoleFamilyFilter })
                           }
-                          role="tab"
-                          ariaSelected={uiState.roleFamily === family}
-                          size="sm"
+                          style={{ minHeight: 44 }}
                         >
                           {ROLE_FAMILY_LABELS[family as MBARoleFamilyFilter]}
-                        </EditorialPillButton>
+                        </button>
                       ))}
                     </div>
                   </div>
@@ -2393,41 +2332,39 @@ export function MBAJobsClient({
                   <div className="space-y-2">
                     <p className="c97-meta" style={{ marginBottom: "var(--c97-sp-1)" }}>Company category</p>
                     <div
-                      className="flex flex-wrap gap-2"
-                      role="tablist"
+                      className="c97-segmented"
+                      role="group"
                       aria-label="Filter by company category"
                     >
                       {CATEGORY_OPTIONS.map((category) => (
-                        <EditorialPillButton
+                        <button
+                          type="button"
                           key={category}
-                          active={uiState.category === category}
+                          aria-pressed={uiState.category === category}
                           onClick={() =>
                             updateRouteState({ category: category as MBACategoryFilter })
                           }
-                          role="tab"
-                          ariaSelected={uiState.category === category}
-                          size="sm"
+                          style={{ minHeight: 44 }}
                         >
                           {CATEGORY_LABELS[category as MBACategoryFilter]}
-                        </EditorialPillButton>
+                        </button>
                       ))}
                     </div>
                   </div>
 
                   <div className="space-y-2">
                     <p className="c97-meta" style={{ marginBottom: "var(--c97-sp-1)" }}>Sources</p>
-                    <div className="flex flex-wrap gap-2" role="tablist" aria-label="External lead sources">
+                    <div className="c97-segmented" role="group" aria-label="External lead sources">
                       {(["off", "on"] as const).map((external) => (
-                        <EditorialPillButton
+                        <button
+                          type="button"
                           key={external}
-                          active={uiState.external === external}
+                          aria-pressed={uiState.external === external}
                           onClick={() => updateRouteState({ external })}
-                          role="tab"
-                          ariaSelected={uiState.external === external}
-                          size="sm"
+                          style={{ minHeight: 44 }}
                         >
                           {EXTERNAL_LABELS[external]}
-                        </EditorialPillButton>
+                        </button>
                       ))}
                     </div>
                   </div>
@@ -2579,6 +2516,12 @@ export function MBAJobsClient({
                 )}
               </>
             )}
+            {!isLoading && !error && (
+              <p className="c97-meta" style={{ marginTop: "var(--c97-sp-3)" }}>
+                {visibleJobs.length} of {displayJobs.length} role{displayJobs.length !== 1 ? "s" : ""} shown ·{" "}
+                {formatFetchedAt(lastFetchedAt)} · Polls every 30 min
+              </p>
+            )}
             </div>
           </section>
 
@@ -2603,25 +2546,6 @@ export function MBAJobsClient({
             </section>
           )}
 
-          {!isLoading && !error && (
-            <div className="flex justify-center pb-2">
-              <div
-                style={{
-                  padding: "var(--c97-sp-1) var(--c97-sp-2)",
-                  background: "var(--c97-panel)",
-                  border: "1px solid var(--c97-rule)",
-                }}
-              >
-                <p
-                  className="text-sm leading-6"
-                  style={{ margin: 0, fontFamily: "var(--c97-font-body)", color: "var(--c97-ink-2)" }}
-                >
-                  {visibleJobs.length} of {displayJobs.length} role{displayJobs.length !== 1 ? "s" : ""} shown ·{" "}
-                  {formatFetchedAt(lastFetchedAt)} · Polls every 30 min
-                </p>
-              </div>
-            </div>
-          )}
         </>
       )}
     </>

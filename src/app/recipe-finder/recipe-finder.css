@@ -18,11 +18,6 @@
   gap: var(--c97-sp-4);
 }
 
-.c97-recipe-shelf-empty {
-  display: grid;
-  gap: var(--c97-sp-1);
-}
-
 .c97-recipe-shelf-tags {
   display: flex;
   flex-wrap: wrap;
@@ -226,12 +221,13 @@
 
 .c97-recipe-card-corner strong {
   color: var(--c97-ink);
-  font-weight: 600;
+  font-weight: 400;
 }
 
 /* Ruled paper for the ingredient ticks: a hairline every 28px in the sheet's
    rule colour, offset so the first rule lands under the first line. */
 .c97-recipe-ingredients {
+  flex: 1;
   margin: 0;
   padding: var(--c97-sp-1) 0 0;
   list-style: none;
@@ -289,7 +285,7 @@
 .c97-recipe-staple-mark {
   margin-left: var(--c97-sp-1);
   font-family: var(--c97-font-mono);
-  font-size: 10px;
+  font-size: var(--c97-fs-label);
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--c97-ink-2);
@@ -338,7 +334,7 @@
 .c97-recipe-card-steps li > span:first-child {
   flex-shrink: 0;
   font-family: var(--c97-font-mono);
-  font-weight: 600;
+  font-weight: 400;
   color: var(--c97-ink-2);
 }
 

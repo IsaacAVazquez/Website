@@ -11,6 +11,7 @@ import { ResearchSection } from "./ResearchSection";
 import { StockSearch } from "./StockSearch";
 import { RetirementPlanner } from "./retirement/RetirementPlanner";
 import { useInvestments } from "@/hooks/useInvestments";
+import { useReducedMotion } from "@/hooks/useReducedMotion";
 import type { ResearchTab } from "@/app/investments/investments-state";
 import { InstrumentTape, type InstrumentTapeItem } from "@/components/editorial/InstrumentTape";
 import { Catalog97ProjectHero } from "@/components/catalog97/Catalog97ProjectHero";
@@ -82,6 +83,8 @@ export function InvestmentsDashboard({
     removeHolding,
     refetch,
   } = useInvestments();
+  const reduceMotion = useReducedMotion();
+  const scrollBehavior: ScrollBehavior = reduceMotion ? "auto" : "smooth";
 
   const [searchQuery, setSearchQuery] = useState("");
   // The index's own priceHealth was counted when the snapshots were built, so
@@ -216,9 +219,30 @@ export function InvestmentsDashboard({
     [enhancedHoldings.length],
   );
 
+  // Marks the section under the upper middle of the viewport as current in
+  // both navigations (aria-current). The hero card and the research branch
+  // swap their target elements once loading settles, so it re-observes then.
+  const [activeSection, setActiveSection] = useState<string | null>(null);
+  useEffect(() => {
+    if (typeof IntersectionObserver === "undefined") return;
+    const targets = navItems
+      .map((item) => document.getElementById(item.href.slice(1)))
+      .filter((el): el is HTMLElement => el !== null);
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting) setActiveSection(entry.target.id);
+        }
+      },
+      { rootMargin: "-35% 0px -60% 0px" },
+    );
+    targets.forEach((el) => observer.observe(el));
+    return () => observer.disconnect();
+  }, [navItems, researchSymbol, isLoading]);
+
   function focusAddHolding() {
     if (addHoldingRef.current) {
-      addHoldingRef.current.scrollIntoView({ behavior: "smooth", block: "start" });
+      addHoldingRef.current.scrollIntoView({ behavior: scrollBehavior, block: "start" });
       // The form starts closed and only renders its inputs once opened, so open
       // it first when there is nothing to focus yet.
       if (!addHoldingRef.current.querySelector("input")) {
@@ -233,14 +257,14 @@ export function InvestmentsDashboard({
   function handleResearch(symbol: string) {
     onResearchSymbolChange(symbol);
     setTimeout(() => {
-      researchSectionRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+      researchSectionRef.current?.scrollIntoView({ behavior: scrollBehavior, block: "start" });
     }, 80);
   }
 
   function handleSymbolPick(symbol: string) {
     onResearchSymbolChange(symbol);
     setTimeout(() => {
-      researchSectionRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+      researchSectionRef.current?.scrollIntoView({ behavior: scrollBehavior, block: "start" });
     }, 80);
   }
 
@@ -295,7 +319,11 @@ export function InvestmentsDashboard({
           {navItems.map((item) => {
             const Icon = item.icon;
             return (
-              <a key={item.id} href={item.href}>
+              <a
+                key={item.id}
+                href={item.href}
+                aria-current={activeSection === item.href.slice(1) ? "true" : undefined}
+              >
                 <Icon size={15} aria-hidden="true" />
                 {item.label}
                 {item.pill ? (
@@ -361,13 +389,27 @@ export function InvestmentsDashboard({
         </div>
 
         {error ? (
-          <div className="mt-4 border border-[color-mix(in_srgb,var(--c97-warning)_35%,var(--c97-rule))] bg-[color-mix(in_srgb,var(--c97-warning)_10%,var(--c97-panel))] px-4 py-3 text-sm text-[var(--c97-ink-2)]">
+          <div
+            role="alert"
+            className="c97-panel text-sm"
+            style={{ marginTop: "var(--c97-sp-3)", color: "var(--c97-ink-2)" }}
+          >
+            <span className="c97-chip c97-chip-warning" style={{ marginInlineEnd: "var(--c97-sp-2)" }}>
+              Quotes
+            </span>
             {error}
           </div>
         ) : null}
 
         {persistenceStatus === "memory-only" ? (
-          <div className="mt-4 border border-[color-mix(in_srgb,var(--c97-warning)_35%,var(--c97-rule))] bg-[color-mix(in_srgb,var(--c97-warning)_10%,var(--c97-panel))] px-4 py-3 text-sm text-[var(--c97-ink-2)]" role="status">
+          <div
+            role="status"
+            className="c97-panel text-sm"
+            style={{ marginTop: "var(--c97-sp-3)", color: "var(--c97-ink-2)" }}
+          >
+            <span className="c97-chip c97-chip-warning" style={{ marginInlineEnd: "var(--c97-sp-2)" }}>
+              Storage
+            </span>
             Portfolio changes are available in this tab, but browser storage is
             unavailable, so they may not remain after you close it.
           </div>
@@ -379,7 +421,12 @@ export function InvestmentsDashboard({
               {navItems.map((item) => {
                 const Icon = item.icon;
                 return (
-                  <a key={item.id} href={item.href} className="invest-nav-link">
+                  <a
+                    key={item.id}
+                    href={item.href}
+                    className="invest-nav-link"
+                    aria-current={activeSection === item.href.slice(1) ? "true" : undefined}
+                  >
                     <Icon size={18} aria-hidden="true" />
                     {item.label}
                     {item.pill ? <span className="invest-nav-pill">{item.pill}</span> : null}
@@ -438,11 +485,20 @@ export function InvestmentsDashboard({
                   portfolioSymbols={portfolioSymbols}
                 />
               ) : (
-                <div className="border border-dashed border-[var(--c97-rule)] bg-[var(--c97-panel)] px-6 py-16 text-center ">
-                  <p className="mb-2 text-sm font-semibold text-[var(--c97-ink)]">
+                <div
+                  className="c97-panel"
+                  style={{ padding: "var(--c97-sp-6) var(--c97-sp-4)", textAlign: "center" }}
+                >
+                  <p
+                    className="text-sm font-semibold"
+                    style={{ margin: "0 0 var(--c97-sp-2)", color: "var(--c97-ink)" }}
+                  >
                     No positions yet
                   </p>
-                  <p className="mx-auto max-w-xs text-sm text-[var(--c97-label)]">
+                  <p
+                    className="text-sm"
+                    style={{ margin: "0 auto", maxInlineSize: "20rem", color: "var(--c97-label)" }}
+                  >
                     Add your first stock with the Add a holding form. Holdings are saved in your browser and persist across visits.
                   </p>
                 </div>

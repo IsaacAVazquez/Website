@@ -65,16 +65,16 @@ export function RetirementPlanner({ portfolioValue }: Props) {
       </div>
 
       <p className="invest-retire-intro">
-        Am I on track to retire, and what should I change? Start with five numbers for an instant
+        Am I on track to retire, and what should I change? Start with six numbers for an instant
         read, then open the advanced sections to refine accounts, allocation, income, and
         assumptions.
       </p>
 
       {persistenceStatus === "memory-only" ? (
-        <div className="invest-retire-loading" role="status">
+        <p role="status" className="c97-panel c97-meta" style={{ margin: 0 }}>
           Plan changes are available in this tab, but browser storage is
           unavailable, so they may not remain after you close it.
-        </div>
+        </p>
       ) : null}
 
       <div className="invest-retire-layout">

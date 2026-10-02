@@ -543,15 +543,14 @@ export function TravelDealLabClient() {
             </span>
           </div>
 
-          <div className="c97-segmented" style={{ marginBottom: "var(--c97-sp-3)" }} role="tablist" aria-label="Filter tactics and tools">
+          <div className="c97-segmented" style={{ marginBottom: "var(--c97-sp-3)" }} role="group" aria-label="Filter tactics and tools">
             {FILTER_OPTIONS.map((option) => (
               <button
                 key={option.value}
                 type="button"
-                role="tab"
-                aria-selected={filter === option.value}
+                aria-pressed={filter === option.value}
                 onClick={() => setFilter(option.value)}
-                className="min-h-[44px] text-sm font-semibold"
+                className="min-h-[44px]"
               >
                 {option.label}
               </button>
@@ -600,9 +599,9 @@ export function TravelDealLabClient() {
                       <span className="c97-meta" style={{ marginTop: "var(--c97-sp-1)" }}>
                         {tool.bestFor}
                       </span>
-                      <p className="c97-prose" style={{ fontSize: "var(--c97-fs-small)", marginTop: "var(--c97-sp-1)" }}>
+                      <span className="c97-prose" style={{ display: "block", fontSize: "var(--c97-fs-small)", marginTop: "var(--c97-sp-1)" }}>
                         {tool.note}
-                      </p>
+                      </span>
                     </span>
                     <ExternalLink size={16} aria-hidden="true" style={{ flexShrink: 0 }} />
                   </a>

@@ -62,7 +62,7 @@ export function BestBallRecommendations({
           beneath it. The old items-end pairing bottom-aligned the heading to
           an eleven-line column and left 209px of empty card above it. */}
       <div>
-        <p className="c97-kicker" style={{ marginBottom: "0.25rem" }}>Your next pick</p>
+        <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-1)" }}>Your next pick</p>
         <h2 id="best-ball-recommendations-heading" className="c97-serif c97-h3">
           {recommendationMode === "exact"
             ? "Best fits for your next pick"
@@ -71,7 +71,7 @@ export function BestBallRecommendations({
         {showScoreExplainer || recommendationMode === "reference" ? (
           <p
             data-testid="best-ball-score-explainer"
-            className="mt-2 max-w-[92ch] text-xs leading-5"
+            className="mt-2 max-w-[66ch] text-xs leading-5"
             style={{ color: "var(--c97-ink-2)" }}
           >
             {description}
@@ -131,7 +131,7 @@ export function BestBallRecommendations({
             return (
               <article
                 key={recommendation.player.id}
-                className="border p-4"
+                className="flex flex-col border p-4"
                 style={{
                   borderColor:
                     index === 0
@@ -205,19 +205,18 @@ export function BestBallRecommendations({
                   </ul>
                 </details>
 
+                {/* The top margin takes up the slack so all three buttons share the
+                    cards' bottom edge whatever each card's chip count. */}
                 {isUserPick ? (
-                  <button
-                    type="button"
-                    onClick={() => onDraftPlayer(recommendation.player)}
-                    className="mt-3 inline-flex min-h-[44px] w-full items-center justify-center border px-4 text-sm font-semibold transition-[background-color,border-color,color,box-shadow] duration-200"
-                    style={{
-                      borderColor: "var(--c97-ink)",
-                      background: "var(--c97-ink)",
-                      color: "var(--c97-surface)",
-                    }}
-                  >
-                    Log for my team
-                  </button>
+                  <div className="mt-auto" style={{ paddingTop: "var(--c97-sp-2)" }}>
+                    <button
+                      type="button"
+                      onClick={() => onDraftPlayer(recommendation.player)}
+                      className="inline-flex min-h-[44px] w-full items-center justify-center border border-[var(--c97-ink)] bg-[var(--c97-ink)] px-4 text-sm font-semibold text-[var(--c97-surface)] transition-[background-color,border-color,color,box-shadow] duration-200 hover:bg-[var(--c97-ink-2)]"
+                    >
+                      Log for my team
+                    </button>
+                  </div>
                 ) : null}
               </article>
             );

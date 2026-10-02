@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useRef, useState, type CSSProperties } from "react";
+import { useEffect, useId, useMemo, useRef, useState, type CSSProperties } from "react";
 import { SeasonalScopeNote } from "@/components/fantasy/SeasonalScopeNote";
 import { PROJECT_PRESS } from "@/constants/projectPress";
 import Link from "next/link";
@@ -13,7 +13,6 @@ import {
   HEADER_CHIP_CLASS,
   MONO_LABEL_CLASS,
   PILL_BUTTON_CLASS,
-  PILL_BUTTON_STYLE,
   SHELL_CLASS,
   WARNING_CARD_STYLE,
   assignLineupSlots,
@@ -45,31 +44,15 @@ import {
   useMockDraftState,
 } from "./hooks/useMockDraftState";
 
-/** Ink-filled action pill (the template's "Draft" / "Start mock" buttons). */
-const SOLID_BUTTON_CLASS =
-  "inline-flex min-h-touch items-center justify-center border px-4 font-mono text-2xs uppercase tracking-[0.08em] disabled:cursor-not-allowed";
-
-const SOLID_BUTTON_STYLE: CSSProperties = {
-  borderColor: "var(--c97-ink)",
-  background: "var(--c97-ink)",
-  color: "var(--c97-surface)",
-};
-
 /**
+ * Ink-filled action pill (the template's "Draft" / "Start mock" buttons). The
+ * fill lives in classes rather than an inline style so the hover can win.
  * The opacity fade `disabled:opacity-50` used to apply measured 4.38:1 light
  * and 3.42:1 dark once blended over the page, so disabled drops the fade and
  * prints as a dashed ink-2 outline instead of a faded ink fill.
  */
-const SOLID_BUTTON_DISABLED_STYLE: CSSProperties = {
-  borderColor: "var(--c97-ink-2)",
-  borderStyle: "dashed",
-  background: "transparent",
-  color: "var(--c97-ink-2)",
-};
-
-function solidButtonStyle(disabled: boolean): CSSProperties {
-  return disabled ? SOLID_BUTTON_DISABLED_STYLE : SOLID_BUTTON_STYLE;
-}
+const SOLID_BUTTON_CLASS =
+  "inline-flex min-h-touch items-center justify-center border border-[var(--c97-ink)] bg-[var(--c97-ink)] px-4 font-mono text-2xs uppercase tracking-[0.08em] text-[var(--c97-surface)] hover:bg-[var(--c97-ink-2)] disabled:cursor-not-allowed disabled:border-dashed disabled:border-[var(--c97-ink-2)] disabled:bg-transparent disabled:text-[var(--c97-ink-2)]";
 
 const WARNING_CHIP_TONE: CSSProperties = {
   background: "color-mix(in srgb, var(--c97-warning) 18%, var(--c97-surface))",
@@ -215,13 +198,18 @@ function SegmentedButtons<Value extends string>({
   options,
   value,
   onSelect,
+  labelledBy,
 }: {
   options: readonly { value: Value; label: string }[];
   value: Value;
   onSelect: (value: Value) => void;
+  /** Id of the visible label, so each segment is announced with its group. */
+  labelledBy: string;
 }) {
   return (
     <div
+      role="group"
+      aria-labelledby={labelledBy}
       className="inline-flex overflow-hidden border"
       style={{ borderColor: "var(--c97-rule)" }}
     >
@@ -233,11 +221,13 @@ function SegmentedButtons<Value extends string>({
             type="button"
             aria-pressed={active}
             onClick={() => onSelect(option.value)}
-            className="min-h-touch flex-1 px-2.5 font-mono text-2xs uppercase tracking-[0.06em]"
+            className={`min-h-touch flex-1 px-2.5 font-mono text-2xs uppercase tracking-[0.06em] ${
+              active ? "" : "hover:bg-[var(--c97-overlay)]"
+            }`}
             style={
               active
                 ? { background: "var(--c97-ink)", color: "var(--c97-surface)" }
-                : { background: "transparent", color: "var(--c97-ink)" }
+                : { color: "var(--c97-ink)" }
             }
           >
             {option.label}
@@ -269,6 +259,9 @@ export function MockDraftClient() {
   const [scoringSelection, setScoringSelection] = useState<ScoringFormat>(
     DEFAULT_MOCK_DRAFT_SETTINGS.scoringFormat
   );
+  const scoringLabelId = useId();
+  const orderLabelId = useId();
+  const temperLabelId = useId();
   const [setupForm, setSetupForm] = useState<SetupFormState>({
     totalTeams: DEFAULT_MOCK_DRAFT_SETTINGS.totalTeams,
     slot: DEFAULT_MOCK_DRAFT_SETTINGS.userTeam,
@@ -746,10 +739,10 @@ export function MockDraftClient() {
 
   const footerLinks = (
     <span className="inline-flex gap-4">
-      <Link href="/fantasy-football" className="inline-flex min-h-touch items-center text-sm font-semibold no-underline">
+      <Link href="/fantasy-football" className="c97-link inline-flex min-h-touch items-center text-sm font-semibold">
         Rankings board <span aria-hidden="true">↗</span>
       </Link>
-      <Link href="/fantasy-football/draft-tracker" className="inline-flex min-h-touch items-center text-sm font-semibold no-underline">
+      <Link href="/fantasy-football/draft-tracker" className="c97-link inline-flex min-h-touch items-center text-sm font-semibold">
         Draft tracker <span aria-hidden="true">↗</span>
       </Link>
     </span>
@@ -900,7 +893,7 @@ export function MockDraftClient() {
                 <p className={`m-0 ${MONO_LABEL_CLASS}`} style={{ color: "var(--c97-ink-2)" }}>
                   Room setup
                 </p>
-                <h2 className="c97-serif c97-h3" style={{ marginTop: "0.25rem" }}>
+                <h2 className="c97-serif c97-h3" style={{ marginTop: "var(--c97-sp-1)" }}>
                   Rep the rounds that decide leagues.
                 </h2>
               </div>
@@ -909,7 +902,6 @@ export function MockDraftClient() {
                   type="button"
                   onClick={() => setRoomSetupOpen(false)}
                   className={PILL_BUTTON_CLASS}
-                  style={PILL_BUTTON_STYLE}
                 >
                   Back to room <span aria-hidden="true">→</span>
                 </button>
@@ -1001,10 +993,11 @@ export function MockDraftClient() {
               </label>
 
               <div className="grid content-start gap-1.5">
-                <span className={MONO_LABEL_CLASS} style={{ color: "var(--c97-ink-2)" }}>
+                <span id={scoringLabelId} className={MONO_LABEL_CLASS} style={{ color: "var(--c97-ink-2)" }}>
                   Scoring
                 </span>
                 <SegmentedButtons
+                  labelledBy={scoringLabelId}
                   options={SCORING_OPTIONS.map((option) => ({
                     value: option.value,
                     label: option.label,
@@ -1015,10 +1008,11 @@ export function MockDraftClient() {
               </div>
 
               <div className="grid content-start gap-1.5">
-                <span className={MONO_LABEL_CLASS} style={{ color: "var(--c97-ink-2)" }}>
+                <span id={orderLabelId} className={MONO_LABEL_CLASS} style={{ color: "var(--c97-ink-2)" }}>
                   Draft order
                 </span>
                 <SegmentedButtons
+                  labelledBy={orderLabelId}
                   options={ORDER_OPTIONS}
                   value={setupForm.draftType}
                   onSelect={(draftType) => setSetupForm((form) => ({ ...form, draftType }))}
@@ -1026,10 +1020,11 @@ export function MockDraftClient() {
               </div>
 
               <div className="grid content-start gap-1.5">
-                <span className={MONO_LABEL_CLASS} style={{ color: "var(--c97-ink-2)" }}>
+                <span id={temperLabelId} className={MONO_LABEL_CLASS} style={{ color: "var(--c97-ink-2)" }}>
                   Room temper
                 </span>
                 <SegmentedButtons
+                  labelledBy={temperLabelId}
                   options={TEMPER_OPTIONS}
                   value={setupForm.temper}
                   onSelect={(temper) => setSetupForm((form) => ({ ...form, temper }))}
@@ -1058,7 +1053,9 @@ export function MockDraftClient() {
                       onClick={() =>
                         setSetupForm((form) => ({ ...form, lineup: { ...preset.lineup } }))
                       }
-                      className="min-h-[56px] border px-3 py-2 text-left"
+                      className={`min-h-[56px] border px-3 py-2 text-left ${
+                        active ? "" : "bg-[var(--c97-surface)] hover:bg-[var(--c97-overlay)]"
+                      }`}
                       style={
                         active
                           ? {
@@ -1068,7 +1065,6 @@ export function MockDraftClient() {
                             }
                           : {
                               borderColor: "var(--c97-rule)",
-                              background: "var(--c97-surface)",
                               color: "var(--c97-ink)",
                             }
                       }
@@ -1106,7 +1102,6 @@ export function MockDraftClient() {
                 onClick={startRoom}
                 disabled={!simulationAvailable}
                 className={SOLID_BUTTON_CLASS}
-                style={solidButtonStyle(!simulationAvailable)}
               >
                 Start mock
               </button>
@@ -1228,7 +1223,6 @@ export function MockDraftClient() {
                     disabled={!hasUserPick}
                     aria-label={hasUserPick ? "Take back your last pick" : "Take back (no picks yet)"}
                     className={PILL_BUTTON_CLASS}
-                    style={PILL_BUTTON_STYLE}
                   >
                     ↶ Take back
                   </button>
@@ -1244,7 +1238,7 @@ export function MockDraftClient() {
                     aria-label="Sim to end, which finishes the room with no take back"
                     title="The engine finishes every remaining pick, including yours, and the room goes straight to the recap. Nothing takes that back."
                     className={PILL_BUTTON_CLASS}
-                    style={{ ...PILL_BUTTON_STYLE, ...WARNING_CARD_STYLE }}
+                    style={WARNING_CARD_STYLE}
                   >
                     Sim to end <span aria-hidden="true">⇥</span>
                   </button>
@@ -1252,7 +1246,7 @@ export function MockDraftClient() {
                     type="button"
                     onClick={openSetup}
                     className={PILL_BUTTON_CLASS}
-                    style={{ ...PILL_BUTTON_STYLE, color: "var(--c97-ink-2)" }}
+                    style={{ color: "var(--c97-ink-2)" }}
                   >
                     New mock
                   </button>
@@ -1284,6 +1278,7 @@ export function MockDraftClient() {
 
           {tapePicks.length > 0 && (
             <div
+              role="group"
               aria-label="Room picks since your last turn"
               className={`${SHELL_CLASS} flex items-center gap-2 overflow-x-auto pt-2.5`}
             >
@@ -1402,9 +1397,8 @@ export function MockDraftClient() {
                     type="button"
                     onClick={() => draftPlayer(quick.player)}
                     title={quick.title}
-                    className="inline-flex min-h-touch items-center gap-2 border px-3.5 font-mono text-2xs"
+                    className="inline-flex min-h-touch items-center gap-2 border border-[var(--c97-rule)] px-3.5 font-mono text-2xs hover:border-[var(--c97-ink)]"
                     style={{
-                      borderColor: "var(--c97-rule)",
                       background: "var(--c97-surface)",
                       color: "var(--c97-ink)",
                     }}
@@ -1623,7 +1617,6 @@ export function MockDraftClient() {
                                 disabled={!simulationAvailable}
                                 aria-label={`Draft ${player.name}`}
                                 className={SOLID_BUTTON_CLASS}
-                                style={solidButtonStyle(!simulationAvailable)}
                               >
                                 Draft
                               </button>
@@ -1652,7 +1645,6 @@ export function MockDraftClient() {
                     setPositionFilter("ALL");
                   }}
                   className={SOLID_BUTTON_CLASS}
-                  style={SOLID_BUTTON_STYLE}
                 >
                   Clear search
                 </button>
@@ -1926,7 +1918,7 @@ export function MockDraftClient() {
             </div>
           </section>
 
-          <div className="mt-3.5 flex flex-wrap items-center gap-1.5" aria-label="Your haul">
+          <div role="group" className="mt-3.5 flex flex-wrap items-center gap-1.5" aria-label="Your haul">
             <span className={`${MONO_LABEL_CLASS} flex-none`} style={{ color: "var(--c97-ink-2)" }}>
               Your haul
             </span>
@@ -1993,7 +1985,6 @@ export function MockDraftClient() {
               disabled={!simulationAvailable}
               aria-describedby={simulationAvailable ? undefined : "mock-rerun-blocked"}
               className={SOLID_BUTTON_CLASS}
-              style={solidButtonStyle(!simulationAvailable)}
             >
               Run it back <span aria-hidden="true">→</span>
             </button>
@@ -2001,7 +1992,6 @@ export function MockDraftClient() {
               type="button"
               onClick={openSetup}
               className={PILL_BUTTON_CLASS}
-              style={PILL_BUTTON_STYLE}
             >
               Change setup
             </button>

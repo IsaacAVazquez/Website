@@ -47,6 +47,42 @@
   fill: var(--c97-ink);
 }
 
+/* The bracket's lines and boxes take their paint here, because var() does
+ * not resolve inside an SVG presentation attribute. */
+.mm-bracket-box,
+.mm-bracket-link {
+  fill: none;
+  stroke: var(--c97-rule);
+}
+
+.mm-bracket-champion-box {
+  fill: none;
+  stroke: var(--c97-ink);
+  stroke-width: 1.5;
+}
+
+.mm-bracket-upset-mark {
+  fill: var(--c97-ink);
+}
+
+/* A pick's header row: the disclosure button. The reason and body sit
+ * outside it, so the button's name stays the pick itself. */
+.mm-pick-toggle {
+  width: 100%;
+  min-height: 44px;
+  text-align: left;
+  font: inherit;
+  color: var(--c97-ink);
+  background: none;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+}
+
+.mm-pick-toggle:hover {
+  color: var(--c97-action);
+}
+
 /* The matchup list that stays the keyboard and screen-reader path to every
  * round, site, and tag the bracket signature draws. */
 .mm-matchup {

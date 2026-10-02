@@ -21,7 +21,7 @@
 .c97-fare-label {
   font-family: var(--c97-font-mono);
   font-size: 15px;
-  font-weight: 600;
+  font-weight: 400;
   fill: var(--c97-ink);
 }
 
@@ -37,6 +37,12 @@
 
 .c97-fare-row:last-child {
   border-bottom: 0;
+}
+
+a.c97-fare-row:hover .c97-serif {
+  color: var(--c97-action);
+  text-decoration: underline;
+  text-underline-offset: 4px;
 }
 
 /* At phone width the SVG scales to roughly a third, so its type is set

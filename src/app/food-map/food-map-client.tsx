@@ -215,12 +215,12 @@ function PlaceTicket({
       <span className="fm-ticket-index" aria-hidden="true">
         {String(index + 1).padStart(2, "0")}
       </span>
-      <p className="fm-ticket-cuisine">{cuisine.label}</p>
-      <p className="fm-ticket-name c97-serif">{place.name}</p>
-      <p className="fm-ticket-meta">
+      <span className="fm-ticket-cuisine">{cuisine.label}</span>
+      <span className="fm-ticket-name c97-serif">{place.name}</span>
+      <span className="fm-ticket-meta">
         <span>{locale}</span>
         {place.price ? <span className="c97-chip">{place.price}</span> : null}
-      </p>
+      </span>
     </button>
   );
 }

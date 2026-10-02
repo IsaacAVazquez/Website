@@ -594,7 +594,7 @@ export function NbaClient({ initialState, summary, initialTeamSnapshot, teamColo
                 <div>
                   <div className="flex items-start justify-between gap-3">
                     <p className="c97-kicker">Top scorers</p>
-                    <a href={summary.sourceUrls.leaders} target="_blank" rel="noreferrer" className="c97-btn-outline">
+                    <a href={summary.sourceUrls.leaders} target="_blank" rel="noreferrer" className="c97-btn-ghost">
                       Official
                       <ExternalLink className="h-4 w-4" />
                     </a>

@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useId, useMemo, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { Catalog97ProjectHero } from "@/components/catalog97/Catalog97ProjectHero";
 import { PROJECT_PRESS } from "@/constants/projectPress";
@@ -267,31 +267,24 @@ interface FilterGroupProps {
 }
 
 function FilterGroup({ label, options, value, onChange }: FilterGroupProps) {
+  const labelId = useId();
   return (
     <div className="flex flex-wrap items-center gap-2">
-      <span className="c97-kicker" style={{ minWidth: "88px" }}>
+      <span id={labelId} className="c97-kicker" style={{ minWidth: "88px" }}>
         {label}
       </span>
-      <div className="flex flex-wrap gap-1.5">
-        {options.map((option) => {
-          const isActive = option.id === value;
-          return (
-            <button
-              key={option.id}
-              type="button"
-              aria-pressed={isActive}
-              onClick={() => onChange(option.id)}
-              className="min-h-[44px] border px-4 text-sm font-medium"
-              style={
-                isActive
-                  ? { borderColor: "var(--c97-ink)", background: "var(--c97-ink)", color: "var(--c97-surface)" }
-                  : { borderColor: "var(--c97-rule)", background: "var(--c97-field)", color: "var(--c97-ink-2)" }
-              }
-            >
-              {option.label}
-            </button>
-          );
-        })}
+      <div role="group" aria-labelledby={labelId} className="c97-segmented">
+        {options.map((option) => (
+          <button
+            key={option.id}
+            type="button"
+            aria-pressed={option.id === value}
+            onClick={() => onChange(option.id)}
+            className="min-h-[44px]"
+          >
+            {option.label}
+          </button>
+        ))}
       </div>
     </div>
   );

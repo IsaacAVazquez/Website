@@ -22,7 +22,7 @@ export function GoalsPulseStrip({
 }) {
   if (data.length === 0) {
     return (
-      <div className={className} aria-label="Goals per matchday, season to date">
+      <div className={className}>
         <p className="font-mono text-3xs uppercase tracking-[0.1em] text-[var(--c97-ink-2)]">
           Goals / matchday
         </p>
@@ -36,7 +36,11 @@ export function GoalsPulseStrip({
   const max = Math.max(...data.map((entry) => entry.totalGoals), 1);
 
   return (
-    <div className={className} aria-label="Goals per matchday, season to date">
+    <div
+      className={className}
+      role="img"
+      aria-label={`Goals per matchday, season to date: ${data.length} matchdays, latest ${data[data.length - 1].totalGoals} goals`}
+    >
       <div className="flex h-11 items-end gap-[3px]">
         {data.map((entry, index) => (
           <span

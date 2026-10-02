@@ -63,10 +63,10 @@ test.describe("Product surfaces", () => {
 
     await expectHealthyRoute(page, "/github-trending-pulse", /GitHub Trending Pulse/i);
 
-    const topicTab = page.getByRole("tab", { name: /^Topic$/i });
+    const topicTab = page.getByRole("button", { name: /^Topic$/i });
     await topicTab.click();
     await expect(page).toHaveURL(/view=topic/);
-    await expect(topicTab).toHaveAttribute("aria-selected", "true");
+    await expect(topicTab).toHaveAttribute("aria-pressed", "true");
 
     const starsSort = page.getByRole("button", { name: /^Stars$/i });
     await starsSort.click();

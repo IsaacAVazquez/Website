@@ -10,7 +10,6 @@ const LINK_STYLE = {
   display: "inline-flex",
   alignItems: "center",
   gap: "var(--c97-sp-1)",
-  color: "var(--c97-ink)",
 } as const;
 
 /**

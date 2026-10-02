@@ -76,7 +76,7 @@ export function MyTeamPanel({ snapshot, board, scoring, onScoringChange }: {
     <section id="my-team" aria-labelledby="my-team-title" className={styles.workspace}>
       <header className={styles.header}>
         <div>
-          <h2 id="my-team-title" className={styles.title}>My team</h2>
+          <h2 id="my-team-title" className="c97-poster-sm">My team</h2>
           <p className={styles.description}>Your saved roster, weekly lineup, and waiver decisions.</p>
         </div>
         <div className={styles.week}><span>Week</span><span>{snapshot.week}</span><span>{snapshot.season}</span></div>

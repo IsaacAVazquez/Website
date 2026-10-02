@@ -517,14 +517,15 @@ export function PriceChartPanel({ symbol, costBasis = null }: Props) {
       </div>
 
       {isLoading && (
-        <div className="space-y-3">
-          <div className="h-[260px] bg-[var(--c97-rule)] animate-pulse" />
-          <div className="h-[80px] bg-[var(--c97-rule)] animate-pulse" />
+        <div className="space-y-3" role="status" aria-busy="true">
+          <span className="sr-only">Loading price history</span>
+          <span className="c97-skeleton" style={{ height: 260 }} />
+          <span className="c97-skeleton" style={{ height: 80 }} />
         </div>
       )}
 
       {(isError || isEmpty) && !isLoading && (
-        <ErrorState message={error ?? "Price data unavailable"} isNotFetched={isNotFetched} onRetry={refetch} />
+        <ErrorState message={error ?? "Price data unavailable"} isNotFetched={isNotFetched || isEmpty} onRetry={refetch} />
       )}
 
       {!isLoading && slicedData.length > 0 && (

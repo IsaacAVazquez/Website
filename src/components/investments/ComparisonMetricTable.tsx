@@ -42,7 +42,7 @@ export function ComparisonMetricTable({ title, rows, symbolA, symbolB }: Props) 
   return (
     <TerminalPanel padding="sm">
       <h3 className="mb-4 text-sm font-semibold text-[var(--c97-ink)]">{title}</h3>
-      <div className="overflow-x-auto">
+      <div className="overflow-x-auto" role="region" tabIndex={0} aria-label={`${title} comparison table`}>
         <table className="w-full text-sm" aria-label={`${title} comparison`}>
           <thead>
             <tr className="border-b border-[var(--c97-rule)]">

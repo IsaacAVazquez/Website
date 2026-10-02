@@ -54,9 +54,9 @@ function DrawerFixtureRow({ fixture, clubId }: { fixture: GenericFixture; clubId
     <div className="grid grid-cols-[24px_1fr_auto] items-center gap-3 border-b border-[color-mix(in_srgb,var(--c97-rule)_50%,transparent)] py-2.5 last:border-b-0">
       <span
         className="inline-flex h-[22px] w-[22px] items-center justify-center border border-[var(--c97-rule)] font-mono text-3xs text-[var(--c97-ink-2)]"
-        aria-label={isHome ? "Home fixture" : "Away fixture"}
       >
-        {isHome ? "H" : "A"}
+        <span aria-hidden="true">{isHome ? "H" : "A"}</span>
+        <span className="sr-only">{isHome ? "Home" : "Away"}</span>
       </span>
       <span className={`truncate text-sm font-semibold ${isFinal ? "text-[var(--c97-ink)]" : "text-[var(--c97-ink-2)]"}`}>
         {opponent.shortName}
@@ -144,7 +144,7 @@ export function ClubDrawer({
         aria-label={`${club.name} detail`}
         data-testid={testId}
         tabIndex={-1}
-        className="c97-enter-slide-x relative flex max-h-[88vh] w-full flex-col overflow-y-auto border outline-none sm:max-h-none sm:h-full sm:w-[27rem]"
+        className="c97-enter-slide-x relative flex max-h-[88dvh] w-full flex-col overflow-y-auto border outline-none sm:max-h-none sm:h-full sm:w-[27rem]"
         style={{ borderColor: "var(--c97-rule)", background: "var(--c97-surface)" }}
       >
         <span
@@ -158,8 +158,8 @@ export function ClubDrawer({
             type="button"
             onClick={onClose}
             aria-label="Close"
-            className="absolute right-2 top-2 inline-flex min-h-touch min-w-touch items-center justify-center border transition-colors"
-            style={{ borderColor: "var(--c97-rule)", background: "var(--c97-surface)", color: "var(--c97-ink-2)" }}
+            className="absolute right-2 top-2 inline-flex min-h-touch min-w-touch items-center justify-center border text-[var(--c97-ink-2)] transition-colors hover:text-[var(--c97-ink)]"
+            style={{ borderColor: "var(--c97-rule)", background: "var(--c97-surface)" }}
           >
             <X size={16} aria-hidden="true" />
           </button>

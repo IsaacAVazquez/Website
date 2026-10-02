@@ -264,7 +264,8 @@ describe("SearchInterface", () => {
     render(<SearchHarness />);
     await flushPromises();
     expect(json).not.toHaveBeenCalled();
-    expect(screen.getByText("No results found")).toBeVisible();
+    expect(screen.queryByText("No results found")).not.toBeInTheDocument();
+    expect(screen.getByRole("button", { name: "Try again" })).toBeVisible();
   });
 
   it("routes the Writing content-type filter to type=post (matching the API taxonomy)", async () => {

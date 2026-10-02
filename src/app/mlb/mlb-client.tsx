@@ -291,13 +291,12 @@ export function MlbClient({ initialState, summary, initialTeamSnapshot }: MlbCli
         <div className="c97-shell">
           <h2 className="c97-poster-sm mb-5">Standings</h2>
 
-          <div className="c97-segmented" role="tablist" aria-label="Standings view">
+          <div className="c97-segmented" role="group" aria-label="Standings view">
             {viewOptions.map((option) => (
               <button
                 key={option.id}
                 type="button"
-                role="tab"
-                aria-selected={option.id === routeState.view}
+                aria-pressed={option.id === routeState.view}
                 onClick={() => handleViewChange(option.id)}
                 className="min-h-[44px] text-sm font-semibold"
               >
@@ -308,6 +307,19 @@ export function MlbClient({ initialState, summary, initialTeamSnapshot }: MlbCli
               </button>
             ))}
           </div>
+
+          <p className="c97-meta" style={{ marginTop: "var(--c97-sp-2)" }}>
+            {(["division", "wildcard", "out"] as const).map((zone) => (
+              <span key={zone} className="inline-flex items-center" style={{ gap: "var(--c97-sp-1)" }}>
+                <span
+                  className="c97-mlb-zone-dot"
+                  style={{ backgroundColor: getZoneDotColor(zone) }}
+                  aria-hidden="true"
+                />
+                {getZoneLabel(zone)}
+              </span>
+            ))}
+          </p>
 
           {!hasStandings && (
             <p className="c97-prose" style={{ marginTop: "var(--c97-sp-3)" }}>
@@ -332,10 +344,10 @@ export function MlbClient({ initialState, summary, initialTeamSnapshot }: MlbCli
                         <th scope="col">Pos</th>
                         <th scope="col">Team</th>
                         <th scope="col">W-L</th>
-                        <th scope="col" className="hidden sm:table-cell">PCT</th>
-                        <th scope="col" className="hidden md:table-cell">GB</th>
-                        <th scope="col" className="hidden lg:table-cell">RS</th>
-                        <th scope="col" className="hidden lg:table-cell">RA</th>
+                        <th scope="col" className="hidden sm:table-cell" data-align="end">PCT</th>
+                        <th scope="col" className="hidden md:table-cell" data-align="end">GB</th>
+                        <th scope="col" className="hidden lg:table-cell" data-align="end">RS</th>
+                        <th scope="col" className="hidden lg:table-cell" data-align="end">RA</th>
                         <th scope="col" className="hidden xl:table-cell">L10</th>
                       </tr>
                     </thead>
@@ -355,8 +367,10 @@ export function MlbClient({ initialState, summary, initialTeamSnapshot }: MlbCli
                                   className="c97-mlb-zone-dot"
                                   style={{ backgroundColor: getZoneDotColor(zone) }}
                                   title={getZoneLabel(zone)}
+                                  aria-hidden="true"
                                 />
                                 <span className="c97-mono">{positionLabel}</span>
+                                <span className="sr-only">{getZoneLabel(zone)}</span>
                               </div>
                             </td>
                             <td>
@@ -379,10 +393,10 @@ export function MlbClient({ initialState, summary, initialTeamSnapshot }: MlbCli
                               </button>
                             </td>
                             <td className="c97-mono">{formatRecord(row)}</td>
-                            <td className="c97-mono hidden sm:table-cell">{formatFixed(row.pct, 3)}</td>
-                            <td className="c97-mono hidden md:table-cell">{formatGamesBack(row.gamesBack)}</td>
-                            <td className="c97-mono hidden lg:table-cell">{row.runsScored}</td>
-                            <td className="c97-mono hidden lg:table-cell">{row.runsAllowed}</td>
+                            <td className="c97-mono hidden sm:table-cell" data-align="end">{formatFixed(row.pct, 3)}</td>
+                            <td className="c97-mono hidden md:table-cell" data-align="end">{formatGamesBack(row.gamesBack)}</td>
+                            <td className="c97-mono hidden lg:table-cell" data-align="end">{row.runsScored}</td>
+                            <td className="c97-mono hidden lg:table-cell" data-align="end">{row.runsAllowed}</td>
                             <td className="c97-mono hidden xl:table-cell">{row.last10}</td>
                           </tr>
                         );
@@ -605,7 +619,7 @@ export function MlbClient({ initialState, summary, initialTeamSnapshot }: MlbCli
                 )}
                 {summary.recentGames.length === 0 && summary.upcomingGames.length === 0 && (
                   <p className="c97-prose">
-                    No games are loaded yet. Run the snapshot script to populate the schedule.
+                    No games are on the schedule right now. Recent results and upcoming games will appear here once the next snapshot is published.
                   </p>
                 )}
               </div>
@@ -666,7 +680,7 @@ function LeagueLeaders({
     return (
       <div className="flex items-start justify-between gap-3">
         <p className="c97-prose">
-          League leader boards are not loaded yet. Run the snapshot script to populate hitting and pitching leaders.
+          League leaders will appear here once the next snapshot is published.
         </p>
         <a href={sourceUrl} target="_blank" rel="noreferrer" className="c97-btn-ghost">
           Source

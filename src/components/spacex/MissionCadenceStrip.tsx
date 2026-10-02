@@ -21,7 +21,11 @@ export function MissionCadenceStrip({ cadence }: MissionCadenceStripProps) {
   const max = Math.max(1, ...cadence.points.map((point) => point.count));
 
   return (
-    <div className="hidden min-[761px]:block" aria-label="Launches per month">
+    <div
+      className="hidden min-[761px]:block"
+      role="img"
+      aria-label={`Launches per month, ${cadence.rangeLabel}`}
+    >
       <div className="flex h-11 items-end gap-[3px]">
         {cadence.points.map((point, index) => (
           <span

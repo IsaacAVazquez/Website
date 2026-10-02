@@ -29,8 +29,8 @@ export function ResearchSection(props: ResearchSectionProps) {
           Pick a holding to research
         </p>
         <p className="mx-auto mt-2 max-w-md text-sm text-[var(--c97-ink-2)]">
-          Click <strong className="text-[var(--c97-ink)]">Research</strong> on any holding above
-          to load the deep-dive view with fundamentals, valuation, growth, and a price chart.
+          Search for a company in the box above, or use Research on any holding in your
+          portfolio, to load fundamentals, valuation, growth, and a price chart.
         </p>
       </section>
     );

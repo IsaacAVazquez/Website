@@ -44,7 +44,7 @@ export function InstrumentTape({
   return (
     <div className={`${styles.band} ${className}`}>
       {label ? <span className={styles.tag}>{label}</span> : null}
-      <div className={styles.track} role="status" aria-label={ariaLabel}>
+      <div className={styles.track} role="region" tabIndex={0} aria-label={ariaLabel}>
         {items.map((item) => (
           <span key={item.key} className={styles.item}>
             {item.content}

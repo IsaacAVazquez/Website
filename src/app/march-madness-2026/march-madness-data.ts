@@ -491,7 +491,7 @@ export const TOP_UPSET_PICKS: EditorialCard[] = [
     reason: "St. John's grades like a stronger team than a 5-seed, while Kansas is one of the biggest overseeded teams in the field.",
     note: "Underseeded +3 vs overseeded −5",
     href: "/march-madness-2026?view=picks#analysis-workspace",
-    cta: "See the analytics case",
+    cta: "Open the picks board",
     color: "amber",
   },
   {
@@ -500,7 +500,7 @@ export const TOP_UPSET_PICKS: EditorialCard[] = [
     reason: "The home regional and zero accumulated travel penalty make Houston the biggest structural upset call in the bracket.",
     note: "KP#5 vs KP#4 · Houston at 0%",
     href: "/march-madness-2026?view=picks#analysis-workspace",
-    cta: "Jump to Elite Eight call",
+    cta: "Open the picks board",
     color: "blue",
   },
 ];

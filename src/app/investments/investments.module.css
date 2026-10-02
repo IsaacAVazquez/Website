@@ -470,24 +470,6 @@
   margin-top: 2px;
   letter-spacing: 0.02em;
 }
-.terminalScope :global(.invest-panel-tabs) {
-  display: inline-flex; gap: 1px;
-  background: var(--c97-rule);
-  border: 1px solid var(--c97-rule);
-  overflow: hidden;
-}
-.terminalScope :global(.invest-panel-tabs) button {
-  border: 0; background: var(--c97-surface);
-  padding: 0 14px; min-height: 32px;
-  font-family: var(--c97-font-mono);
-  font-size: var(--invest-fs-label); font-weight: 400;
-  color: var(--c97-ink-2); cursor: pointer;
-}
-.terminalScope :global(.invest-panel-tabs) button.is-on {
-  background: var(--c97-ink);
-  color: var(--c97-surface);
-}
-
 .terminalScope :global(.invest-holdings) {
   width: 100%;
   border-collapse: collapse;
@@ -1803,7 +1785,8 @@
     text-transform: uppercase;
     transition: color 140ms ease, background-color 140ms ease;
   }
-  .sectionRail a:hover { color: var(--c97-ink); background: var(--c97-panel); }
+  .sectionRail a:hover,
+  .sectionRail a[aria-current="true"] { color: var(--c97-ink); background: var(--c97-panel); }
   .sectionRail a svg { width: 15px; height: 15px; flex: 0 0 auto; }
   .sectionRailPill {
     font-family: var(--c97-font-mono);

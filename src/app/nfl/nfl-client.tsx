@@ -643,7 +643,7 @@ export function NflClient({ initialState, summary, initialTeamSnapshot }: NflCli
             {activeDetailTab === "leaders" && (
               <div className="space-y-5">
                 <div className="flex flex-wrap items-center justify-between gap-3">
-                  <div className="c97-segmented">
+                  <div className="c97-segmented" role="group" aria-label="Leader category">
                     {LEADER_TABS.map((tab) => {
                       const isActive = tab.id === activeLeaderTab;
                       return (
@@ -659,22 +659,24 @@ export function NflClient({ initialState, summary, initialTeamSnapshot }: NflCli
                       );
                     })}
                   </div>
-                  <a href={summary.sourceUrls.leaders} target="_blank" rel="noreferrer" className="c97-btn-outline">
+                  <a href={summary.sourceUrls.leaders} target="_blank" rel="noreferrer" className="c97-btn-ghost">
                     NFLverse source
                     <ExternalLink className="h-4 w-4" />
                   </a>
                 </div>
 
-                <div className="grid gap-6 md:grid-cols-2">
-                  <div>
-                    <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-1)" }}>Top {activeLeaderMeta.unitLong}</p>
-                    <NflLeaderList leaders={activeLeaders.slice(0, 5)} unit={activeLeaderMeta.unit} teamLookup={teamShortNameById} />
-                  </div>
-                  {activeLeaders.length > 5 && (
+                <div>
+                  <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-1)" }}>Top {activeLeaderMeta.unitLong}</p>
+                  <div className="grid gap-6 md:grid-cols-2">
                     <div>
-                      <NflLeaderList leaders={activeLeaders.slice(5, 10)} unit={activeLeaderMeta.unit} teamLookup={teamShortNameById} />
+                      <NflLeaderList leaders={activeLeaders.slice(0, 5)} unit={activeLeaderMeta.unit} teamLookup={teamShortNameById} />
                     </div>
-                  )}
+                    {activeLeaders.length > 5 && (
+                      <div>
+                        <NflLeaderList leaders={activeLeaders.slice(5, 10)} unit={activeLeaderMeta.unit} teamLookup={teamShortNameById} />
+                      </div>
+                    )}
+                  </div>
                 </div>
               </div>
             )}
@@ -759,7 +761,7 @@ function NflLeaderList({
               </div>
             </div>
             <div className="text-right">
-              <p style={{ fontWeight: 700, color: "var(--c97-ink)", margin: 0 }}>{formatLeaderTotal(leader)}</p>
+              <p className="c97-tabular" style={{ fontWeight: 700, color: "var(--c97-ink)", margin: 0 }}>{formatLeaderTotal(leader)}</p>
               <p className="c97-kicker">{unit}</p>
             </div>
           </li>

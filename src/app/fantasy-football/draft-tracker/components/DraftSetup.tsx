@@ -2,7 +2,7 @@
 
 import { readValidatedBrowserStorage, writeBrowserStorageJson } from "@/lib/browserStorage";
 import { prefixedId } from "@/lib/utils";
-import { useEffect, useState, type CSSProperties } from "react";
+import { useEffect, useId, useState, type CSSProperties } from "react";
 import type { DraftSettings, RedraftLineupSettings, ScoringFormat } from "@/types";
 import {
   DRAFT_PRESETS_STORAGE_KEY,
@@ -59,7 +59,7 @@ const FIELD_STYLE: CSSProperties = {
 };
 
 const PILL_BUTTON_CLASS =
-  "inline-flex min-h-touch items-center justify-center border px-3.5 font-mono text-2xs uppercase tracking-[0.06em]";
+  "inline-flex min-h-touch items-center justify-center border border-[var(--c97-rule)] bg-[var(--c97-surface)] px-3.5 font-mono text-2xs uppercase tracking-[0.06em] text-[var(--c97-ink)] hover:border-[var(--c97-ink)]";
 
 const SCORING_OPTIONS: { value: ScoringFormat; label: string }[] = [
   { value: "PPR", label: "PPR" },
@@ -97,13 +97,21 @@ function SegmentedButtons<Value extends string | number>({
   options,
   value,
   onSelect,
+  labelledBy,
 }: {
   options: readonly { value: Value; label: string }[];
   value: Value;
   onSelect: (value: Value) => void;
+  /** Id of the visible label, so each segment is announced with its group. */
+  labelledBy: string;
 }) {
   return (
-    <div className="inline-flex overflow-hidden border" style={{ borderColor: "var(--c97-rule)" }}>
+    <div
+      role="group"
+      aria-labelledby={labelledBy}
+      className="inline-flex overflow-hidden border"
+      style={{ borderColor: "var(--c97-rule)" }}
+    >
       {options.map((option) => {
         const active = option.value === value;
         return (
@@ -112,11 +120,13 @@ function SegmentedButtons<Value extends string | number>({
             type="button"
             aria-pressed={active}
             onClick={() => onSelect(option.value)}
-            className="min-h-touch flex-1 px-2.5 font-mono text-2xs uppercase tracking-[0.06em]"
+            className={`min-h-touch flex-1 px-2.5 font-mono text-2xs uppercase tracking-[0.06em] ${
+              active ? "" : "hover:bg-[var(--c97-overlay)]"
+            }`}
             style={
               active
                 ? { background: "var(--c97-ink)", color: "var(--c97-surface)" }
-                : { background: "transparent", color: "var(--c97-ink)" }
+                : { color: "var(--c97-ink)" }
             }
           >
             {option.label}
@@ -144,6 +154,9 @@ export function DraftSetup({
   const [startArmed, setStartArmed] = useState(false);
   const [presets, setPresets] = useState<DraftPreset[]>([]);
   const [presetName, setPresetName] = useState("");
+  const scoringLabelId = useId();
+  const orderLabelId = useId();
+  const clockLabelId = useId();
   const startingSlots = countRedraftStartingSlots(formState.lineup);
   const lineupTooLarge = startingSlots > formState.rounds;
   const rankingsReady = rankingsStatus === "ready";
@@ -275,16 +288,15 @@ export function DraftSetup({
           <p className={MONO_LABEL_CLASS} style={{ color: "var(--c97-ink-2)" }}>
             Room setup
           </p>
-          <h2 className="c97-poster-sm" style={{ marginTop: "0.25rem" }}>One screen, then draft.</h2>
+          <h2 className="c97-poster-sm" style={{ marginTop: "var(--c97-sp-1)" }}>One screen, then draft.</h2>
         </div>
         {canResume && onResume ? (
           <button
             type="button"
             onClick={onResume}
             className={PILL_BUTTON_CLASS}
-            style={{ borderColor: "var(--c97-rule)", background: "var(--c97-surface)", color: "var(--c97-ink)" }}
           >
-            Back to room →
+            Back to room <span aria-hidden="true">→</span>
           </button>
         ) : null}
       </div>
@@ -309,7 +321,7 @@ export function DraftSetup({
                   onClick={() => applyPreset(preset)}
                   title={describeDraftPreset(preset)}
                   aria-label={`Apply preset ${preset.name}`}
-                  className="inline-flex min-h-touch items-center px-3 font-mono text-2xs"
+                  className="inline-flex min-h-touch items-center px-3 font-mono text-2xs hover:bg-[var(--c97-overlay)]"
                   style={{ color: "var(--c97-ink)" }}
                 >
                   {preset.name}
@@ -318,7 +330,7 @@ export function DraftSetup({
                   type="button"
                   onClick={() => deletePreset(preset.id)}
                   aria-label={`Delete preset ${preset.name}`}
-                  className="inline-flex min-h-touch min-w-touch items-center justify-center border-l"
+                  className="inline-flex min-h-touch min-w-touch items-center justify-center border-l hover:bg-[var(--c97-overlay)]"
                   style={{ borderColor: "var(--c97-rule)", color: "var(--c97-ink-2)" }}
                 >
                   ×
@@ -346,7 +358,6 @@ export function DraftSetup({
             type="button"
             onClick={saveCurrentPreset}
             className={PILL_BUTTON_CLASS}
-            style={{ borderColor: "var(--c97-rule)", background: "var(--c97-surface)", color: "var(--c97-ink)" }}
           >
             Save current settings
           </button>
@@ -439,17 +450,23 @@ export function DraftSetup({
         </label>
 
         <div className="grid content-start gap-1.5 text-sm">
-          <span className={MONO_LABEL_CLASS} style={{ color: "var(--c97-ink-2)" }}>
+          <span id={scoringLabelId} className={MONO_LABEL_CLASS} style={{ color: "var(--c97-ink-2)" }}>
             Scoring
           </span>
-          <SegmentedButtons options={SCORING_OPTIONS} value={formState.scoringFormat} onSelect={updateScoringFormat} />
+          <SegmentedButtons
+            options={SCORING_OPTIONS}
+            value={formState.scoringFormat}
+            onSelect={updateScoringFormat}
+            labelledBy={scoringLabelId}
+          />
         </div>
 
         <div className="grid content-start gap-1.5 text-sm">
-          <span className={MONO_LABEL_CLASS} style={{ color: "var(--c97-ink-2)" }}>
+          <span id={orderLabelId} className={MONO_LABEL_CLASS} style={{ color: "var(--c97-ink-2)" }}>
             Draft order
           </span>
           <SegmentedButtons
+            labelledBy={orderLabelId}
             options={ORDER_OPTIONS}
             value={formState.draftType}
             onSelect={(draftType) => updateField("draftType", draftType)}
@@ -457,10 +474,11 @@ export function DraftSetup({
         </div>
 
         <div className="grid content-start gap-1.5 text-sm">
-          <span className={MONO_LABEL_CLASS} style={{ color: "var(--c97-ink-2)" }}>
+          <span id={clockLabelId} className={MONO_LABEL_CLASS} style={{ color: "var(--c97-ink-2)" }}>
             Pick clock · advisory
           </span>
           <SegmentedButtons
+            labelledBy={clockLabelId}
             options={CLOCK_OPTIONS}
             value={
               // A restored room can hold an off-menu duration (45s or 180s from
@@ -488,11 +506,13 @@ export function DraftSetup({
                 type="button"
                 aria-pressed={active}
                 onClick={() => updateField("lineup", { ...preset.lineup })}
-                className="min-h-[56px] border px-3 py-2 text-left"
+                className={`min-h-[56px] border px-3 py-2 text-left ${
+                  active ? "" : "bg-[var(--c97-surface)] hover:bg-[var(--c97-overlay)]"
+                }`}
                 style={
                   active
                     ? { borderColor: "var(--c97-ink)", background: "var(--c97-ink)", color: "var(--c97-surface)" }
-                    : { borderColor: "var(--c97-rule)", background: "var(--c97-surface)", color: "var(--c97-ink)" }
+                    : { borderColor: "var(--c97-rule)", color: "var(--c97-ink)" }
                 }
               >
                 <span className="block text-sm font-semibold tracking-[-0.01em]">{preset.label}</span>
@@ -569,7 +589,6 @@ export function DraftSetup({
                 type="button"
                 onClick={onRetryRankings}
                 className={PILL_BUTTON_CLASS}
-                style={{ borderColor: "var(--c97-rule)", background: "var(--c97-surface)", color: "var(--c97-ink)" }}
               >
                 Retry rankings
               </button>
@@ -603,22 +622,13 @@ export function DraftSetup({
                 ? "Start draft, which clears the parked room"
                 : undefined
           }
-          className={`inline-flex min-h-touch items-center justify-center border px-5 font-mono text-2xs uppercase tracking-[0.08em] disabled:cursor-not-allowed ${
-            startDisabled ? "" : "c97-offset"
-          }`}
+          // .c97-btn:disabled prints the unprinted state (no fill, dashed ink-2
+          // edge, ink-2 text, no offset), so only the armed fill stays inline.
+          className="c97-btn c97-btn-invert c97-offset justify-center"
           style={
-            // A disabled control reads as unprinted rather than faded: no fill,
-            // a dashed edge, ink-2 text. Opacity would dim the whole button
-            // uniformly and can still fail contrast against the page behind it.
-            startDisabled
-              ? { borderColor: "var(--c97-ink-2)", borderStyle: "dashed", background: "none", color: "var(--c97-ink-2)" }
-              : startArmed
-                ? {
-                    borderColor: "var(--c97-negative)",
-                    background: "var(--c97-negative)",
-                    color: "var(--c97-surface)",
-                  }
-                : { borderColor: "var(--c97-ink)", background: "var(--c97-ink)", color: "var(--c97-surface)" }
+            startArmed && !startDisabled
+              ? { background: "var(--c97-negative)", color: "var(--c97-surface)" }
+              : undefined
           }
         >
           {isStarting

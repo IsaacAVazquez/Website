@@ -152,12 +152,12 @@ export function MissionControlHero({
       >
         <div className="grid gap-6 lg:grid-cols-[minmax(0,1.25fr)_220px]">
           <div className="space-y-3">
-            <div className="h-4 w-32 animate-pulse bg-[var(--c97-field)]" />
-            <div className="h-12 w-full animate-pulse bg-[var(--c97-field)]" />
-            <div className="h-5 w-3/4 animate-pulse bg-[var(--c97-field)]" />
-            <div className="h-5 w-2/3 animate-pulse bg-[var(--c97-field)]" />
+            <span className="c97-skeleton" style={{ height: 16, width: 128 }} />
+            <span className="c97-skeleton" style={{ height: 48 }} />
+            <span className="c97-skeleton" style={{ height: 20, width: "75%" }} />
+            <span className="c97-skeleton" style={{ height: 20, width: "66%" }} />
           </div>
-          <div className="h-[220px] animate-pulse bg-[var(--c97-field)]" />
+          <span className="c97-skeleton" style={{ height: 220 }} />
         </div>
       </section>
     );
@@ -168,7 +168,7 @@ export function MissionControlHero({
       <section
         data-testid="mission-hero"
         aria-label="Next launch hero"
-        className="border border-[color-mix(in_srgb,var(--c97-accent)_30%,var(--c97-rule))] bg-[color-mix(in_srgb,var(--c97-accent)_6%,var(--c97-field))] p-6 sm:p-8"
+        className="c97-panel"
       >
         <div className="flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
           <div className="space-y-3">
@@ -205,12 +205,12 @@ export function MissionControlHero({
     <section
       data-testid="mission-hero"
       aria-label="Next launch hero"
-      className="overflow-hidden border border-[color-mix(in_srgb,var(--c97-accent)_16%,var(--c97-rule))] bg-[color-mix(in_srgb,var(--c97-accent)_6%,var(--c97-field))] p-5 sm:p-6"
+      className="c97-panel overflow-hidden"
     >
       <div className="grid gap-5 lg:grid-cols-[minmax(0,1.24fr)_220px]">
         <div className="min-w-0">
           <div className="flex flex-wrap items-center gap-3">
-            <span className="border border-[color-mix(in_srgb,var(--c97-accent)_25%,var(--c97-rule))] bg-[color-mix(in_srgb,var(--c97-surface)_78%,transparent)] px-3 py-1 font-mono text-2xs font-semibold uppercase tracking-[0.22em] text-[var(--c97-accent)]">
+            <span className="border border-[var(--c97-rule)] bg-[color-mix(in_srgb,var(--c97-surface)_78%,transparent)] px-3 py-1 font-mono text-2xs font-semibold uppercase tracking-[0.22em] text-[var(--c97-accent)]">
               {summary?.heroMode === "fallback" ? "Latest completed mission" : "Next mission"}
             </span>
             <span className="border border-[var(--c97-rule)] bg-[var(--c97-field)] px-3 py-1 text-xs font-medium text-[var(--c97-ink-2)]">
@@ -218,7 +218,7 @@ export function MissionControlHero({
             </span>
           </div>
 
-          <h2 className="mt-4 text-3xl font-bold tracking-[-0.05em] text-[var(--c97-ink)] sm:text-[2.8rem]">
+          <h2 className="c97-serif c97-h2" style={{ marginTop: "var(--c97-sp-2)" }}>
             {heroLaunch.name}
           </h2>
 
@@ -281,7 +281,8 @@ export function MissionControlHero({
             <button
               type="button"
               onClick={onInspect}
-              className="tap-target inline-flex items-center gap-2 bg-[var(--c97-accent)] px-5 py-3 text-sm font-semibold text-[var(--c97-surface)] transition hover:bg-[var(--c97-accent)]"
+              className="c97-btn"
+              style={{ gap: "var(--c97-sp-1)" }}
             >
               Inspect mission
               <Activity className="h-4 w-4" />

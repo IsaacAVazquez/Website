@@ -41,6 +41,15 @@
   stroke: transparent;
 }
 
+/* A pointer gets a cue on the club a click will open. Focus outranks it below. */
+.c97-ladder-mark:hover .c97-ladder-focus-label {
+  stroke: var(--c97-rule);
+}
+
+.c97-ladder-mark:hover .c97-ladder-mark-name {
+  fill: var(--c97-action);
+}
+
 .c97-ladder-mark:focus-visible .c97-ladder-focus-ring,
 .c97-ladder-mark:focus-visible .c97-ladder-focus-label {
   stroke: var(--c97-ink);
