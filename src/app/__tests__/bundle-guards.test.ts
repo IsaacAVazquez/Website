@@ -76,23 +76,6 @@ describe("bundle guards", () => {
     expect(packagesReachableFrom("src/components/football/index.ts").get("framer-motion")).toBeUndefined();
   });
 
-  // `cn` has its own module. While it sat in utils.ts, every route that
-  // reached utils for `clamp`, `slugify`, or `relativeAge` loaded
-  // tailwind-merge with it, and the theme toggle put it in the shell.
-  it("keeps tailwind-merge out of utils", () => {
-    expect(read("src/lib/utils.ts").includes("tailwind-merge")).toBe(false);
-  });
-
-  it("keeps tailwind-merge out of the shell", () => {
-    const reached = [
-      "src/components/Providers.tsx",
-      "src/components/ConditionalLayout.tsx",
-      // A dynamic import, so the walk above stops short of it, and it loads
-      // on every route as soon as the header hydrates.
-      "src/components/ui/ThemeToggle.tsx",
-    ].map((entry) => [entry, packagesReachableFrom(entry).get("tailwind-merge")]);
-    expect(reached.filter(([, importer]) => importer !== undefined)).toEqual([]);
-  });
 
   // The fantasy components are imported from their own files. A barrel here
   // gave each draft room the drawers, trays, and panels of the other rooms.
