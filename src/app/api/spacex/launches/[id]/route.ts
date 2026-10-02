@@ -19,7 +19,7 @@ export async function GET(
   }
 
   try {
-    const launch = await getMissionLaunchDetail(id, { source: "snapshot" });
+    const launch = await getMissionLaunchDetail(id);
     const snapshot = getSpaceXSnapshot();
 
     return NextResponse.json(launch, {

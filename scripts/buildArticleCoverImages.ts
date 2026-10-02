@@ -26,6 +26,7 @@
 import { promises as fs } from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
+import { load } from "cheerio";
 
 import {
   ARTICLE_COVER_IMAGES,
@@ -135,14 +136,7 @@ async function existingCoverPath(
 }
 
 function stripHtml(value: string): string {
-  return value
-    .replace(/<[^>]*>/g, "")
-    .replace(/&amp;/g, "&")
-    .replace(/&quot;/g, '"')
-    .replace(/&#0?39;/g, "'")
-    .replace(/&nbsp;/g, " ")
-    .replace(/\s+/g, " ")
-    .trim();
+  return load(value).text().replace(/\s+/g, " ").trim();
 }
 
 function extMetaValue(

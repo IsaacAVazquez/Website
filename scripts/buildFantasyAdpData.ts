@@ -5,6 +5,7 @@ import { readGeneratedSnapshot, writeFileAtomic } from "./snapshotFallback";
 import { fetchFantasyAdpBoard, type FantasyAdpEntry } from "@/lib/fantasyAdpSource";
 import { getSnapshotSeason } from "@/lib/fantasySnapshotBuilder";
 import { ScoringFormat } from "@/types";
+import { setTimeout as sleep } from "node:timers/promises";
 
 /**
  * Fetches mock-draft ADP for each scoring format and writes the generated ADP
@@ -96,10 +97,6 @@ export function resolveAdpFormat(
   return { record: null, source: "empty" };
 }
 
-function pause(ms: number) {
-  return new Promise((resolve) => setTimeout(resolve, ms));
-}
-
 async function main() {
   const generatedAt = new Date().toISOString();
   const season = getSnapshotSeason();
@@ -144,7 +141,7 @@ async function main() {
         dataset[scoringFormat].asOf ?? "unknown"
       }, ${dataset[scoringFormat].sampleSize ?? "?"} drafts)`
     );
-    await pause(250);
+    await sleep(250);
   }
 
   const totalEntries = SCORING_FORMATS.reduce(

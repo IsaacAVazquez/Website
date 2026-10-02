@@ -10,6 +10,7 @@ import type {
   GitHubTrendingSnapshot,
 } from "../src/types/githubTrending";
 import { withRetry } from "@/lib/fetchRetry";
+import { setTimeout as sleep } from "node:timers/promises";
 import { readGeneratedSnapshot, writeFileAtomic } from "./snapshotFallback";
 
 interface BuildOptions {
@@ -117,10 +118,6 @@ function dateDaysAgo(generatedAt: string, days: number): string {
   const date = new Date(generatedAt);
   date.setUTCDate(date.getUTCDate() - days);
   return date.toISOString().slice(0, 10);
-}
-
-function sleep(ms: number): Promise<void> {
-  return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
 function getGitHubToken(): string | undefined {

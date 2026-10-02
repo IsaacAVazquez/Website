@@ -2,23 +2,23 @@ import crypto from "crypto";
 import { promises as fs } from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
-import { writeFileAtomic } from "./snapshotFallback";
+import {
+  buildLaunchCollectionPath,
+  filterLaunchCollection,
+  getLaunchLibraryAuthHeaders,
+  LAUNCH_LIBRARY_API_BASE,
+  REQUEST_TIMEOUT_MS,
+  sortByPriority,
+  type LaunchCollectionMode,
+  type RawLl2Launch,
+  type RawLl2ListResponse,
+} from "../src/lib/spacexData";
+import { isTimeoutError } from "../src/lib/fetchRetry";
+import { HttpStatusError } from "../src/lib/utils";
+import { readJson, writeFileAtomic } from "./snapshotFallback";
 
-const LAUNCH_LIBRARY_API_BASE = "https://ll.thespacedevs.com/2.2.0";
-const SPACEX_AGENCY_ID = 121;
-
-// Optional Launch Library 2 API key. Anonymous requests (especially from shared
-// CI IPs) get throttled hard; authenticating with a token raises the limit.
-// thespacedevs uses DRF token auth: `Authorization: Token <key>`. Read lazily so
-// a dotenv-loaded value is picked up regardless of import order.
-function getLaunchLibraryAuthHeaders(): Record<string, string> {
-  const token = process.env.SPACEDEVS_API_TOKEN?.trim();
-  return token ? { Authorization: `Token ${token}` } : {};
-}
-const REQUEST_TIMEOUT_MS = 12000;
 const LIST_FETCH_LIMIT = 30;
 const ACTIVE_WINDOW_LIMIT = 24;
-const UPCOMING_STALE_GRACE_MS = 30 * 60 * 1000;
 const IMAGE_DIRECTORY_SEGMENTS = ["public", "data", "spacex", "images"] as const;
 const MANIFEST_PATH_SEGMENTS = ["src", "data", "spacexImageManifest.generated.json"] as const;
 const REFERENCE_INDEX_PATH_SEGMENTS = [
@@ -29,78 +29,8 @@ const REFERENCE_INDEX_PATH_SEGMENTS = [
 ] as const;
 const IMAGE_ROLES = ["launch", "patch", "rocket", "spacecraft", "pad", "crew"] as const;
 
-type LaunchCollectionMode = "upcoming" | "previous";
 type ImageRole = (typeof IMAGE_ROLES)[number];
 type SpaceXImageManifest = Record<string, string>;
-
-interface RawLl2ListResponse<T> {
-  results: T[];
-}
-
-interface RawLl2MissionPatch {
-  name?: string | null;
-  priority?: number | null;
-  image_url?: string | null;
-}
-
-interface RawLl2Program {
-  name?: string | null;
-  mission_patches?: RawLl2MissionPatch[] | null;
-}
-
-interface RawLl2LauncherConfiguration {
-  name?: string | null;
-  full_name?: string | null;
-  image_url?: string | null;
-}
-
-interface RawLl2Rocket {
-  configuration?: RawLl2LauncherConfiguration | null;
-}
-
-interface RawLl2Astronaut {
-  name?: string | null;
-  profile_image?: string | null;
-}
-
-interface RawLl2CrewAssignment {
-  astronaut?: RawLl2Astronaut | null;
-}
-
-interface RawLl2SpacecraftConfig {
-  name?: string | null;
-  image_url?: string | null;
-}
-
-interface RawLl2Spacecraft {
-  name?: string | null;
-  spacecraft_config?: RawLl2SpacecraftConfig | null;
-}
-
-interface RawLl2SpacecraftStage {
-  spacecraft?: RawLl2Spacecraft | null;
-  launch_crew?: RawLl2CrewAssignment[] | null;
-  onboard_crew?: RawLl2CrewAssignment[] | null;
-  landing_crew?: RawLl2CrewAssignment[] | null;
-}
-
-interface RawLl2Pad {
-  name?: string | null;
-  map_image?: string | null;
-}
-
-interface RawLl2Launch {
-  id?: string | null;
-  name?: string | null;
-  net?: string | null;
-  image?: string | null;
-  launch_service_provider?: { id?: number | null } | null;
-  mission_patches?: RawLl2MissionPatch[] | null;
-  program?: RawLl2Program[] | null;
-  rocket?: RawLl2Rocket | null;
-  spacecraft_stage?: RawLl2SpacecraftStage | null;
-  pad?: RawLl2Pad | null;
-}
 
 interface DraftReferenceEntry {
   label: string;
@@ -144,16 +74,6 @@ export interface SpaceXImageSnapshotResult {
   partial: boolean;
 }
 
-class SpaceXFetchError extends Error {
-  status: number;
-
-  constructor(message: string, status: number) {
-    super(message);
-    this.name = "SpaceXFetchError";
-    this.status = status;
-  }
-}
-
 function createEmptyRoleBuckets<T>(): Record<ImageRole, T[]> {
   return {
     launch: [],
@@ -163,10 +83,6 @@ function createEmptyRoleBuckets<T>(): Record<ImageRole, T[]> {
     pad: [],
     crew: [],
   };
-}
-
-function sortByPriority<T extends { priority?: number | null }>(items: T[]): T[] {
-  return [...items].sort((left, right) => (right.priority ?? 0) - (left.priority ?? 0));
 }
 
 function sortEntries<T extends { label: string; remoteUrl: string }>(entries: T[]): T[] {
@@ -217,72 +133,15 @@ function normalizeRemoteImageUrl(value: string | null | undefined): string | nul
   return trimmedValue;
 }
 
-function isPastDate(dateUtc?: string | null, graceMs = 0): boolean {
-  if (!dateUtc) {
-    return false;
-  }
-
-  const timestamp = Date.parse(dateUtc);
-  if (!Number.isFinite(timestamp)) {
-    return false;
-  }
-
-  return timestamp < Date.now() - graceMs;
-}
-
-function dedupeLaunches(launches: RawLl2Launch[]): RawLl2Launch[] {
-  const seen = new Set<string>();
-
-  return launches.filter((launch) => {
-    const id = launch.id?.trim();
-    if (!id || seen.has(id)) {
-      return false;
-    }
-
-    seen.add(id);
-    return true;
-  });
-}
-
-function filterLaunchCollection(
-  launches: RawLl2Launch[],
-  mode: LaunchCollectionMode
-): RawLl2Launch[] {
-  return dedupeLaunches(launches).filter((launch) => {
-    // `lsp__ids` filters on the server, so this only matters if that parameter
-    // is ever renamed or ignored.
-    const providerId = launch.launch_service_provider?.id ?? SPACEX_AGENCY_ID;
-    if (providerId !== SPACEX_AGENCY_ID) {
-      return false;
-    }
-
-    return mode === "upcoming"
-      ? !isPastDate(launch.net, UPCOMING_STALE_GRACE_MS)
-      : !launch.net || Date.parse(launch.net) <= Date.now();
-  });
-}
-
-function buildLaunchCollectionPath(mode: LaunchCollectionMode, limit: number): string {
-  const params = new URLSearchParams({
-    format: "json",
-    limit: `${limit}`,
-    ordering: mode === "upcoming" ? "net" : "-net",
-    lsp__ids: `${SPACEX_AGENCY_ID}`,
-  });
-
-  return `/launch/${mode}/?${params.toString()}`;
-}
-
+// The lib's fetchLaunchLibraryJson remembers a 429 for the server's next 60s
+// and ignores an injected fetch; this pass keeps hydrating after a window 429.
 async function fetchLaunchLibraryJson<T>(
   fetchImpl: typeof fetch,
   requestPath: string
 ): Promise<T> {
-  const controller = new AbortController();
-  const timeoutId = setTimeout(() => controller.abort(), REQUEST_TIMEOUT_MS);
-
   try {
     const response = await fetchImpl(`${LAUNCH_LIBRARY_API_BASE}${requestPath}`, {
-      signal: controller.signal,
+      signal: AbortSignal.timeout(REQUEST_TIMEOUT_MS),
       headers: {
         Accept: "application/json",
         ...getLaunchLibraryAuthHeaders(),
@@ -290,7 +149,7 @@ async function fetchLaunchLibraryJson<T>(
     });
 
     if (!response.ok) {
-      throw new SpaceXFetchError(
+      throw new HttpStatusError(
         `Launch Library request failed with status ${response.status}`,
         response.status
       );
@@ -298,37 +157,16 @@ async function fetchLaunchLibraryJson<T>(
 
     return (await response.json()) as T;
   } catch (error) {
-    if (error instanceof Error && error.name === "AbortError") {
-      throw new SpaceXFetchError("Launch Library request timed out", 504);
+    if (isTimeoutError(error)) {
+      throw new HttpStatusError("Launch Library request timed out", 504);
     }
 
-    if (error instanceof SpaceXFetchError) {
+    if (error instanceof HttpStatusError) {
       throw error;
     }
 
-    throw new SpaceXFetchError("Unable to reach Launch Library", 502);
-  } finally {
-    clearTimeout(timeoutId);
+    throw new HttpStatusError("Unable to reach Launch Library", 502);
   }
-}
-
-async function fetchLaunchCollection(
-  fetchImpl: typeof fetch,
-  mode: LaunchCollectionMode
-): Promise<RawLl2Launch[]> {
-  const response = await fetchLaunchLibraryJson<RawLl2ListResponse<RawLl2Launch>>(
-    fetchImpl,
-    buildLaunchCollectionPath(mode, LIST_FETCH_LIMIT)
-  );
-
-  return filterLaunchCollection(response.results ?? [], mode).slice(0, ACTIVE_WINDOW_LIMIT);
-}
-
-async function fetchLaunchDetail(
-  fetchImpl: typeof fetch,
-  launchId: string
-): Promise<RawLl2Launch> {
-  return fetchLaunchLibraryJson<RawLl2Launch>(fetchImpl, `/launch/${launchId}/?format=json`);
 }
 
 async function fileExists(filePath: string): Promise<boolean> {
@@ -340,25 +178,11 @@ async function fileExists(filePath: string): Promise<boolean> {
   }
 }
 
-async function readJsonFile<T>(filePath: string): Promise<T | null> {
-  try {
-    const rawValue = await fs.readFile(filePath, "utf8");
-    return JSON.parse(rawValue) as T;
-  } catch (error) {
-    const err = error as NodeJS.ErrnoException;
-    if (err.code === "ENOENT") {
-      return null;
-    }
-
-    throw error;
-  }
-}
-
 async function readExistingManifest(
   manifestPath: string,
   projectRoot: string
 ): Promise<SpaceXImageManifest> {
-  const manifest = (await readJsonFile<SpaceXImageManifest>(manifestPath)) ?? {};
+  const manifest = (await readJson<SpaceXImageManifest>(manifestPath)) ?? {};
   const entries: Array<readonly [string, string]> = [];
 
   for (const [remoteUrl, localPath] of Object.entries(manifest)) {
@@ -592,7 +416,7 @@ async function downloadImage(
   });
 
   if (!response.ok) {
-    throw new SpaceXFetchError(`Image download failed with status ${response.status}`, response.status);
+    throw new HttpStatusError(`Image download failed with status ${response.status}`, response.status);
   }
 
   const buffer = Buffer.from(await response.arrayBuffer());
@@ -617,7 +441,7 @@ export async function buildSpaceXImageSnapshots(
   const imageDirectory = path.join(projectRoot, ...IMAGE_DIRECTORY_SEGMENTS);
   const existingManifest = await readExistingManifest(manifestPath, projectRoot);
   const existingReferenceIndex =
-    (await readJsonFile<SpaceXImageReferenceIndex>(referenceIndexPath)) ?? {};
+    (await readJson<SpaceXImageReferenceIndex>(referenceIndexPath)) ?? {};
 
   await fs.mkdir(imageDirectory, { recursive: true });
 
@@ -627,7 +451,14 @@ export async function buildSpaceXImageSnapshots(
 
   for (const window of ["upcoming", "previous"] as const) {
     try {
-      const launches = await fetchLaunchCollection(fetchImpl, window);
+      const response = await fetchLaunchLibraryJson<RawLl2ListResponse<RawLl2Launch>>(
+        fetchImpl,
+        buildLaunchCollectionPath(window, LIST_FETCH_LIMIT, window === "upcoming" ? "net" : "-net")
+      );
+      const launches = filterLaunchCollection(response.results ?? [], window).slice(
+        0,
+        ACTIVE_WINDOW_LIMIT
+      );
       for (const launch of launches) {
         const launchId = launch.id?.trim();
         if (!launchId || launchesById.has(launchId)) {
@@ -697,7 +528,10 @@ export async function buildSpaceXImageSnapshots(
 
     if (!detailHydrationRateLimited) {
       try {
-        hydratedLaunch = await fetchLaunchDetail(fetchImpl, launchId);
+        hydratedLaunch = await fetchLaunchLibraryJson<RawLl2Launch>(
+          fetchImpl,
+          `/launch/${launchId}/?format=json`
+        );
       } catch (error) {
         partial = true;
         complete = false;
