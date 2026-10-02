@@ -1,5 +1,5 @@
 import { worldCupSnapshot } from "@/data/worldCupSnapshot";
-import { slugify } from "@/lib/utils";
+import { slugify, toNumber } from "@/lib/utils";
 import type {
   WorldCupFixture,
   WorldCupFixtureTeam,
@@ -116,13 +116,6 @@ interface EspnScoreboardResponse {
 }
 
 // --- Parsing helpers ---------------------------------------------------------
-
-function toNumber(value: number | string | null | undefined): number {
-  if (value == null) return 0;
-  if (typeof value === "number") return Number.isFinite(value) ? value : 0;
-  const parsed = Number(String(value).replace("+", ""));
-  return Number.isFinite(parsed) ? parsed : 0;
-}
 
 function teamLogo(team: EspnTeam | null | undefined): string | null {
   return team?.logos?.[0]?.href ?? team?.logo ?? null;

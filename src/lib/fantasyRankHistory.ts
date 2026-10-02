@@ -1,4 +1,5 @@
 import type { Player } from "@/types";
+import { isRecord } from "@/lib/utils";
 
 /**
  * A small rolling history of consensus rank and ADP per player, kept by the
@@ -46,10 +47,6 @@ export interface FantasyRankMovement {
 
 const DATE_PATTERN = /^\d{4}-\d{2}-\d{2}$/;
 const DAY_MS = 86_400_000;
-
-function isRecord(value: unknown): value is Record<string, unknown> {
-  return Boolean(value) && typeof value === "object" && !Array.isArray(value);
-}
 
 function isFiniteNumber(value: unknown): value is number {
   return typeof value === "number" && Number.isFinite(value);

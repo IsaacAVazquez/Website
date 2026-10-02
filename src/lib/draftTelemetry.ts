@@ -1,4 +1,5 @@
 import type { DraftPick, Player } from "@/types";
+import { isRecord } from "@/lib/utils";
 
 /**
  * Per-turn recommendation telemetry for the redraft tracker. At every user
@@ -96,10 +97,6 @@ export interface DraftTelemetryRecap {
   /** Predicted points cost on the same turns, so the realized figure has a column to calibrate against. */
   averagePredictedDropPoints: number | null;
   averageRealizedDropPoints: number | null;
-}
-
-function isRecord(value: unknown): value is Record<string, unknown> {
-  return Boolean(value) && typeof value === "object" && !Array.isArray(value);
 }
 
 function roundOne(value: number): number {

@@ -15,6 +15,7 @@ import {
   getCurrentDraftSeason,
   getFantasyDraftStorageKey,
 } from '@/lib/fantasyUtils';
+import { isRecord } from "@/lib/utils";
 
 // Defined in fantasyUtils so a caller that only needs the season or the key
 // does not bundle this hook. Re-exported for the mock draft and the tests.
@@ -126,10 +127,6 @@ const SUPPORTED_ROUND_COUNTS = [13, 14, 15, 16, 17, 18] as const;
 const SUPPORTED_TIMER_SECONDS = [0, 45, 60, 90, 120, 180] as const;
 const DRAFT_ROSTER_POSITIONS = ['QB', 'RB', 'WR', 'TE', 'K', 'DST'] as const;
 type DraftRosterPosition = (typeof DRAFT_ROSTER_POSITIONS)[number];
-
-function isRecord(value: unknown): value is UnknownRecord {
-  return Boolean(value) && typeof value === 'object' && !Array.isArray(value);
-}
 
 function isFiniteNumber(value: unknown): value is number {
   return typeof value === 'number' && Number.isFinite(value);

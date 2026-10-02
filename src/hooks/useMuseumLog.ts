@@ -8,6 +8,7 @@ import {
 } from "@/lib/browserStorage";
 import { isLocalDateKey } from "@/lib/date-formatters";
 import { useLocalStoragePersistenceStatus } from "@/hooks/useLocalStorageString";
+import { isRecord } from "@/lib/utils";
 
 const STORAGE_KEY = "museum_log_user_state_v1";
 
@@ -16,10 +17,6 @@ const EMPTY_STATE: UserMuseumState = {
   watchlist: [],
   liked: [],
 };
-
-function isRecord(value: unknown): value is Record<string, unknown> {
-  return value !== null && typeof value === "object" && !Array.isArray(value);
-}
 
 function decodeIdList(value: unknown): string[] {
   if (!Array.isArray(value)) return [];

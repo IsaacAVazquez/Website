@@ -8,7 +8,7 @@ import type {
   GolfSummary,
   GolfTournament,
 } from "@/types/golf";
-import { slugify } from "@/lib/utils";
+import { slugify, toNumber } from "@/lib/utils";
 
 /**
  * Builds the golf snapshot from ESPN's public golf leaderboard endpoint. ESPN's
@@ -178,13 +178,6 @@ function parseToPar(
   const trimmed = value.trim();
   if (trimmed === "" || /^e$/i.test(trimmed)) return 0;
   const parsed = Number(trimmed.replace("+", ""));
-  return Number.isFinite(parsed) ? parsed : 0;
-}
-
-function toNumber(value: number | string | null | undefined): number {
-  if (value == null) return 0;
-  if (typeof value === "number") return Number.isFinite(value) ? value : 0;
-  const parsed = Number(String(value).replace("+", ""));
   return Number.isFinite(parsed) ? parsed : 0;
 }
 
