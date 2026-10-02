@@ -21,7 +21,7 @@ The retired `netlify/functions/scheduled-fantasy-update.ts` Netlify scheduled fu
 
 ## GitHub Actions workflows
 
-Each workflow lives in `.github/workflows/update-*.yml`. They all support `workflow_dispatch` for manual runs.
+Each workflow lives in `.github/workflows/update-*.yml`. They all support `workflow_dispatch` for manual runs. The ten single-snapshot lanes are short callers of the reusable `.github/workflows/refresh-snapshot.yml`, so a change to the shared steps is made once there.
 
 This file does not keep its own cron table, since a copy would drift from the workflows. The exact cron expression for each workflow is in its own file under `.github/workflows/`. The cadence, artifact, and upstream source for each surface are in the master table in `DATA_UPDATE_OPERATIONS.md`.
 

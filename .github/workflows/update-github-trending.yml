@@ -12,56 +12,15 @@ concurrency:
 jobs:
   refresh-github-trending:
     name: Refresh GitHub Trending Snapshot
-    runs-on: ubuntu-latest
-    timeout-minutes: 20
-
+    # The builder reads GITHUB_TOKEN from the inherited secrets for a higher
+    # Search API rate limit.
+    uses: ./.github/workflows/refresh-snapshot.yml
+    secrets: inherit
     permissions:
       contents: write
       issues: write
-
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v7
-        with:
-          ref: main
-          fetch-depth: 1
-
-      - name: Set up Node.js
-        uses: actions/setup-node@v7
-        with:
-          node-version-file: .nvmrc
-          cache: "npm"
-
-      - name: Install dependencies
-        run: npm ci --prefer-offline --no-audit --fund=false
-
-      - name: Refresh GitHub trending snapshot
-        timeout-minutes: 12
-        run: npm run update:github-trending
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NODE_ENV: production
-
-      - name: Verify refresh freshness and quality
-        run: npx tsx scripts/verifyDataRefresh.ts github-trending
-
-      - name: Commit and push refreshed snapshot
-        id: commit
-        run: |
-          bash scripts/ci/commit-and-push-snapshot.sh \
-            "chore: refresh github trending snapshot [automated] [skip ci]" \
-            src/data/githubTrendingSnapshot.json
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Notify on failure via GitHub issue
-        if: failure()
-        uses: actions/github-script@v9
-        with:
-          script: await require('./scripts/ci/failure-issue.cjs').open({ github, context }, 'github-trending-refresh-failure', 'GitHub Trending refresh failed')
-
-      - name: Close resolved failure issues
-        if: success()
-        uses: actions/github-script@v9
-        with:
-          script: await require('./scripts/ci/failure-issue.cjs').close({ github, context }, 'github-trending-refresh-failure')
+    with:
+      id: github-trending
+      snapshot-path: src/data/githubTrendingSnapshot.json
+      label: github-trending-refresh-failure
+      title: GitHub Trending refresh failed
