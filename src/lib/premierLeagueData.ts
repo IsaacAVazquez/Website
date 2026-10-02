@@ -324,29 +324,6 @@ export function isValidPremierLeagueTeamId(teamId: string): boolean {
   return isPositiveIntegerString(teamId);
 }
 
-export function createEmptyPremierLeagueSummary(): PremierLeagueSummary {
-  return {
-    competition: null,
-    standings: [],
-    scorers: [],
-    recentFixtures: [],
-    upcomingFixtures: [],
-    teams: [],
-    goalsPerMatchday: [],
-    generatedAt: new Date().toISOString(),
-  };
-}
-
-export function createEmptyPremierLeagueTeamSnapshot(): PremierLeagueTeamSnapshot {
-  return {
-    team: null,
-    recentFixtures: [],
-    upcomingFixtures: [],
-    form: createDefaultFormSummary(),
-    generatedAt: new Date().toISOString(),
-  };
-}
-
 export async function getPremierLeagueSummary(
   options?: { season?: number }
 ): Promise<PremierLeagueSummary> {

@@ -3,36 +3,10 @@ import type {
   WorldCupSummarySnapshot,
   WorldCupTeamSnapshot,
 } from "@/types/worldCup";
-import { HttpStatusError } from "@/lib/utils";
+import { capFixtures, findTeamSnapshot } from "@/lib/teamSnapshots";
 
 const SUMMARY_FIXTURE_LIMIT = 12;
 const TEAM_FIXTURE_LIMIT = 5;
-
-function limitFixtures<T>(fixtures: T[], limit: number): T[] {
-  return fixtures.slice(0, limit);
-}
-
-function clampSummarySnapshot(
-  snapshot: typeof worldCupSnapshot
-): WorldCupSummarySnapshot {
-  const { teamSnapshots: _teamSnapshots, ...summarySnapshot } = snapshot;
-  return {
-    ...summarySnapshot,
-    recentFixtures: limitFixtures(summarySnapshot.recentFixtures, SUMMARY_FIXTURE_LIMIT),
-    upcomingFixtures: limitFixtures(
-      summarySnapshot.upcomingFixtures,
-      SUMMARY_FIXTURE_LIMIT
-    ),
-  };
-}
-
-function clampTeamSnapshot(snapshot: WorldCupTeamSnapshot): WorldCupTeamSnapshot {
-  return {
-    ...snapshot,
-    recentFixtures: limitFixtures(snapshot.recentFixtures, TEAM_FIXTURE_LIMIT),
-    upcomingFixtures: limitFixtures(snapshot.upcomingFixtures, TEAM_FIXTURE_LIMIT),
-  };
-}
 
 export function createEmptyWorldCupTeamSnapshot(): WorldCupTeamSnapshot {
   return {
@@ -72,20 +46,15 @@ export function isValidWorldCupTeamId(teamId: string): boolean {
 }
 
 export async function getWorldCupSummarySnapshot(): Promise<WorldCupSummarySnapshot> {
-  return clampSummarySnapshot(worldCupSnapshot);
+  const { teamSnapshots: _teamSnapshots, ...summarySnapshot } = worldCupSnapshot;
+  return capFixtures(summarySnapshot, SUMMARY_FIXTURE_LIMIT);
 }
 
 export async function getWorldCupTeamSnapshot(
   teamId: string
 ): Promise<WorldCupTeamSnapshot> {
-  const snapshot = Object.hasOwn(worldCupSnapshot.teamSnapshots, teamId)
-    ? worldCupSnapshot.teamSnapshots[teamId]
-    : undefined;
-  if (!snapshot) {
-    throw new HttpStatusError(
-      "World Cup team snapshot was not found.",
-      404
-    );
-  }
-  return clampTeamSnapshot(snapshot);
+  return capFixtures(
+    findTeamSnapshot(worldCupSnapshot.teamSnapshots, teamId, "World Cup"),
+    TEAM_FIXTURE_LIMIT
+  );
 }

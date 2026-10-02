@@ -1,30 +1,9 @@
 import { nbaSnapshot } from "@/data/nbaSnapshot";
 import type { NbaSummarySnapshot, NbaTeamSnapshot } from "@/types/nba";
-import { HttpStatusError } from "@/lib/utils";
+import { capFixtures, findTeamSnapshot } from "@/lib/teamSnapshots";
 
 const SUMMARY_FIXTURE_LIMIT = 10;
 const TEAM_FIXTURE_LIMIT = 5;
-
-function limitFixtures<T>(fixtures: T[], limit: number): T[] {
-  return fixtures.slice(0, limit);
-}
-
-function clampNbaSummarySnapshot(snapshot: typeof nbaSnapshot): NbaSummarySnapshot {
-  const { teamSnapshots: _teamSnapshots, ...summarySnapshot } = snapshot;
-  return {
-    ...summarySnapshot,
-    recentFixtures: limitFixtures(summarySnapshot.recentFixtures, SUMMARY_FIXTURE_LIMIT),
-    upcomingFixtures: limitFixtures(summarySnapshot.upcomingFixtures, SUMMARY_FIXTURE_LIMIT),
-  };
-}
-
-function clampNbaTeamSnapshot(snapshot: NbaTeamSnapshot): NbaTeamSnapshot {
-  return {
-    ...snapshot,
-    recentFixtures: limitFixtures(snapshot.recentFixtures, TEAM_FIXTURE_LIMIT),
-    upcomingFixtures: limitFixtures(snapshot.upcomingFixtures, TEAM_FIXTURE_LIMIT),
-  };
-}
 
 export function createEmptyNbaTeamSnapshot(): NbaTeamSnapshot {
   return {
@@ -50,13 +29,10 @@ export function isValidNbaTeamId(teamId: string): boolean {
 }
 
 export async function getNbaSummarySnapshot(): Promise<NbaSummarySnapshot> {
-  return clampNbaSummarySnapshot(nbaSnapshot);
+  const { teamSnapshots: _teamSnapshots, ...summarySnapshot } = nbaSnapshot;
+  return capFixtures(summarySnapshot, SUMMARY_FIXTURE_LIMIT);
 }
 
 export async function getNbaTeamSnapshot(teamId: string): Promise<NbaTeamSnapshot> {
-  const snapshot = nbaSnapshot.teamSnapshots[teamId];
-  if (!snapshot) {
-    throw new HttpStatusError("NBA team snapshot was not found.", 404);
-  }
-  return clampNbaTeamSnapshot(snapshot);
+  return capFixtures(findTeamSnapshot(nbaSnapshot.teamSnapshots, teamId, "NBA"), TEAM_FIXTURE_LIMIT);
 }

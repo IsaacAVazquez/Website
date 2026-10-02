@@ -1,30 +1,9 @@
 import { mlbSnapshot } from "@/data/mlbSnapshot";
 import type { MlbSummarySnapshot, MlbTeamSnapshot } from "@/types/mlb";
-import { HttpStatusError } from "@/lib/utils";
+import { findTeamSnapshot } from "@/lib/teamSnapshots";
 
 const SUMMARY_GAME_LIMIT = 10;
 const TEAM_GAME_LIMIT = 5;
-
-function limitItems<T>(items: T[], limit: number): T[] {
-  return items.slice(0, limit);
-}
-
-function clampMlbSummarySnapshot(snapshot: typeof mlbSnapshot): MlbSummarySnapshot {
-  const { teamSnapshots: _teamSnapshots, ...summarySnapshot } = snapshot;
-  return {
-    ...summarySnapshot,
-    recentGames: limitItems(summarySnapshot.recentGames, SUMMARY_GAME_LIMIT),
-    upcomingGames: limitItems(summarySnapshot.upcomingGames, SUMMARY_GAME_LIMIT),
-  };
-}
-
-function clampMlbTeamSnapshot(snapshot: MlbTeamSnapshot): MlbTeamSnapshot {
-  return {
-    ...snapshot,
-    recentGames: limitItems(snapshot.recentGames, TEAM_GAME_LIMIT),
-    upcomingGames: limitItems(snapshot.upcomingGames, TEAM_GAME_LIMIT),
-  };
-}
 
 export function createEmptyMlbTeamSnapshot(): MlbTeamSnapshot {
   return {
@@ -56,13 +35,19 @@ export function isValidMlbTeamId(teamId: string): boolean {
 }
 
 export async function getMlbSummarySnapshot(): Promise<MlbSummarySnapshot> {
-  return clampMlbSummarySnapshot(mlbSnapshot);
+  const { teamSnapshots: _teamSnapshots, ...summarySnapshot } = mlbSnapshot;
+  return {
+    ...summarySnapshot,
+    recentGames: summarySnapshot.recentGames.slice(0, SUMMARY_GAME_LIMIT),
+    upcomingGames: summarySnapshot.upcomingGames.slice(0, SUMMARY_GAME_LIMIT),
+  };
 }
 
 export async function getMlbTeamSnapshot(teamId: string): Promise<MlbTeamSnapshot> {
-  const snapshot = mlbSnapshot.teamSnapshots[teamId];
-  if (!snapshot) {
-    throw new HttpStatusError("MLB team snapshot was not found.", 404);
-  }
-  return clampMlbTeamSnapshot(snapshot);
+  const snapshot = findTeamSnapshot(mlbSnapshot.teamSnapshots, teamId, "MLB");
+  return {
+    ...snapshot,
+    recentGames: snapshot.recentGames.slice(0, TEAM_GAME_LIMIT),
+    upcomingGames: snapshot.upcomingGames.slice(0, TEAM_GAME_LIMIT),
+  };
 }

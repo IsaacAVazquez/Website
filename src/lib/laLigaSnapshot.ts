@@ -1,14 +1,10 @@
 import { laLigaSnapshot } from "@/data/laLigaSnapshot";
 import { buildLaLigaLiveSummary } from "@/lib/laLigaData";
 import type { LaLigaSummarySnapshot, LaLigaTeamSnapshot } from "@/types/la-liga";
-import { HttpStatusError } from "@/lib/utils";
+import { capFixtures, findTeamSnapshot } from "@/lib/teamSnapshots";
 
 const SUMMARY_FIXTURE_LIMIT = 8;
 const TEAM_FIXTURE_LIMIT = 5;
-
-function limitFixtures<T>(fixtures: T[], limit: number): T[] {
-  return fixtures.slice(0, limit);
-}
 
 function committedLaLigaSummarySnapshot(): LaLigaSummarySnapshot {
   const { teamSnapshots: _teamSnapshots, ...summarySnapshot } = laLigaSnapshot;
@@ -19,20 +15,10 @@ function clampLaLigaSummarySnapshot(
   summarySnapshot: LaLigaSummarySnapshot
 ): LaLigaSummarySnapshot {
   return {
-    ...summarySnapshot,
-    recentFixtures: limitFixtures(summarySnapshot.recentFixtures, SUMMARY_FIXTURE_LIMIT),
-    upcomingFixtures: limitFixtures(summarySnapshot.upcomingFixtures, SUMMARY_FIXTURE_LIMIT),
+    ...capFixtures(summarySnapshot, SUMMARY_FIXTURE_LIMIT),
     // Defaults for committed snapshots written before these fields existed.
     assists: summarySnapshot.assists ?? [],
     goalsPerMatchday: summarySnapshot.goalsPerMatchday ?? [],
-  };
-}
-
-function clampLaLigaTeamSnapshot(snapshot: LaLigaTeamSnapshot): LaLigaTeamSnapshot {
-  return {
-    ...snapshot,
-    recentFixtures: limitFixtures(snapshot.recentFixtures, TEAM_FIXTURE_LIMIT),
-    upcomingFixtures: limitFixtures(snapshot.upcomingFixtures, TEAM_FIXTURE_LIMIT),
   };
 }
 
@@ -131,9 +117,5 @@ export async function getLaLigaSummarySnapshot(
 }
 
 export async function getLaLigaTeamSnapshot(teamId: string): Promise<LaLigaTeamSnapshot> {
-  const snapshot = laLigaSnapshot.teamSnapshots[teamId];
-  if (!snapshot) {
-    throw new HttpStatusError("La Liga team snapshot was not found.", 404);
-  }
-  return clampLaLigaTeamSnapshot(snapshot);
+  return capFixtures(findTeamSnapshot(laLigaSnapshot.teamSnapshots, teamId, "La Liga"), TEAM_FIXTURE_LIMIT);
 }
