@@ -45,9 +45,9 @@ async function readProductionLedger() {
   // fired, so committed snapshots stayed unpublished for up to six hours while
   // the opened incident pointed on-call at the hook and the access policy. From
   // the poll loop the same rejection discarded the remaining attempts and filed a
-  // false alarm about a deploy that was succeeding. The sibling
-  // ensure-production-data-revision.sh deliberately swallows this same class of
-  // failure and states the policy; the .mjs rewrite dropped it for the read path.
+  // false alarm about a deploy that was succeeding. The retired
+  // ensure-production-data-revision.sh deliberately swallowed this same class of
+  // failure and stated the policy; the .mjs rewrite dropped it for the read path.
   let response;
   try {
     response = await fetch(url, {
