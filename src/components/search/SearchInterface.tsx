@@ -91,7 +91,7 @@ export function SearchInterface({
   const effectiveQuery = searchState.query === "" ? "" : debouncedQuery;
 
   // Report completed searches to GA4 (no-op unless analytics is enabled).
-  useTrackedListingSearch("site_search", searchState.query, searchState.totalResults);
+  useTrackedListingSearch(searchState.query, searchState.totalResults);
 
   useEffect(() => {
     const nextSeededState = readSeededSearchState({

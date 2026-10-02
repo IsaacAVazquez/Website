@@ -11,6 +11,7 @@ import {
 import { fantasyPositionData } from "@/data/fantasyPositionData.generated";
 import { getSnapshotSeason } from "@/lib/fantasySnapshotBuilder";
 import { Player, ScoringFormat } from "@/types";
+import { setTimeout as sleep } from "node:timers/promises";
 
 const OUTPUT_PATH = path.join(
   process.cwd(),
@@ -29,10 +30,6 @@ interface FantasyPositionDataset {
   overall: Player[];
   positions: Record<FantasyPositionDataPosition, Player[]>;
   upstreamUpdatedAt: string | null;
-}
-
-function pause(ms: number) {
-  return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
 export function recordSourceLabel(
@@ -69,7 +66,7 @@ async function main() {
       fantasyPositionData.STANDARD.season
     );
     sharedData[position] = board.players;
-    await pause(250);
+    await sleep(250);
   }
 
   const scoringFormats: ScoringFormat[] = ["PPR", "HALF_PPR", "STANDARD"];
@@ -85,7 +82,7 @@ async function main() {
       fantasyPositionData[scoringFormat].overall,
       fantasyPositionData[scoringFormat].season
     );
-    await pause(250);
+    await sleep(250);
 
     const positions = {} as Record<FantasyPositionDataPosition, Player[]>;
 
@@ -105,7 +102,7 @@ async function main() {
         fantasyPositionData[scoringFormat].season
       );
       positions[position] = board.players;
-      await pause(250);
+      await sleep(250);
     }
 
     dataset[scoringFormat] = {

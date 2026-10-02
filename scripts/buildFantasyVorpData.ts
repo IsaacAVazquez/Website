@@ -10,6 +10,7 @@ import {
 } from "@/lib/fantasyProsVorpSource";
 import { getSnapshotSeason } from "@/lib/fantasySnapshotBuilder";
 import type { ScoringFormat } from "@/types";
+import { setTimeout as sleep } from "node:timers/promises";
 
 /**
  * Fetches the nine published FantasyPros VORP reports (three scoring formats
@@ -65,10 +66,6 @@ export function resolveVorpDataset(
   return { record: null, source: "empty" };
 }
 
-function pause(ms: number) {
-  return new Promise((resolve) => setTimeout(resolve, ms));
-}
-
 export async function buildFantasyVorpData(
   fetchBoard: FetchVorpBoard = fetchFantasyProsVorpBoard,
   outputPath = OUTPUT_PATH
@@ -118,7 +115,7 @@ export async function buildFantasyVorpData(
       notes.push(
         `${scoringFormat} ${teamSize}-team: ${byTeamSize[teamSize].players.length} players (${resolution.source}, accessed ${byTeamSize[teamSize].accessedAt || "never"})`
       );
-      await pause(250);
+      await sleep(250);
     }
     data[scoringFormat] = byTeamSize;
   }

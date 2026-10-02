@@ -9,6 +9,7 @@ import {
 } from "@/lib/fantasyGameLogSource";
 import { getSnapshotSeason } from "@/lib/fantasySnapshotBuilder";
 import { ScoringFormat } from "@/types";
+import { setTimeout as sleep } from "node:timers/promises";
 
 /**
  * Fetches per-game fantasy scoring from nflverse for each scoring format and
@@ -67,10 +68,6 @@ export function resolveGameLogFormat(
     return { record: fresh, source: "thin-fresh" };
   }
   return { record: null, source: "empty" };
-}
-
-function pause(ms: number) {
-  return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
 /**
@@ -143,7 +140,7 @@ async function main() {
           dataset[scoringFormat].throughWeek ?? "?"
         })`
     );
-    await pause(250);
+    await sleep(250);
   }
 
   const totalEntries = SCORING_FORMATS.reduce(

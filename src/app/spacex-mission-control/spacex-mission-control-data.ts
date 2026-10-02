@@ -41,7 +41,7 @@ export async function loadMissionControlInitialData(
           launchesError: getSpaceXLoadErrorMessage(error, "Unable to load SpaceX launches"),
         })),
       routeState.launch
-        ? getMissionLaunchDetail(routeState.launch, { source: "snapshot" })
+        ? getMissionLaunchDetail(routeState.launch)
             .then((detail) => ({ detail, detailError: null }))
             .catch((error) => ({
               detail: null,

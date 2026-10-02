@@ -1,4 +1,5 @@
 import { readFileSync, renameSync, writeFileSync } from "node:fs";
+import { readFile } from "node:fs/promises";
 
 /**
  * Writes to a .tmp file and renames it over the target. A rename is atomic on
@@ -8,6 +9,16 @@ export function writeFileAtomic(filePath: string, content: string): void {
   const tmp = `${filePath}.tmp`;
   writeFileSync(tmp, content, "utf8");
   renameSync(tmp, filePath);
+}
+
+/** Parses a JSON file, or undefined when it does not exist. Unlike readGeneratedSnapshot, bad JSON throws. */
+export async function readJson<T>(filePath: string): Promise<T | undefined> {
+  try {
+    return JSON.parse(await readFile(filePath, "utf8")) as T;
+  } catch (error) {
+    if ((error as NodeJS.ErrnoException).code === "ENOENT") return undefined;
+    throw error;
+  }
 }
 
 /**
