@@ -1,3 +1,4 @@
+import { isFiniteNumber } from "@/lib/utils";
 import type { Player } from "@/types";
 import { normalizeAdpTeam } from "@/lib/fantasyAdpMatcher";
 
@@ -182,10 +183,6 @@ export interface BestBallSnapshot {
   adpSource: BestBallSourceMetadata | null;
   scheduleSource: BestBallSourceMetadata | null;
   week17Opponents: Record<string, string>;
-}
-
-function isFiniteNumber(value: unknown): value is number {
-  return typeof value === "number" && Number.isFinite(value);
 }
 
 function normalizeSource(value: unknown): BestBallSourceMetadata | null {

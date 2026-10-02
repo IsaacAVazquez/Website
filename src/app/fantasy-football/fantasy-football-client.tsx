@@ -1,12 +1,12 @@
 "use client";
 
+import { useIsClient } from "@/hooks/useIsClient";
 import {
   startTransition,
   useEffect,
   useMemo,
   useRef,
   useState,
-  useSyncExternalStore,
   type CSSProperties,
   type ReactNode,
 } from "react";
@@ -118,10 +118,6 @@ const FANTASY_TOOLS = [
   { href: "/fantasy-football/weekly#my-team", label: "My team" },
   { href: "/fantasy-football/waivers", label: "Waiver targets" },
 ];
-
-const subscribeToHydration = () => () => undefined;
-const getHydratedSnapshot = () => true;
-const getServerHydratedSnapshot = () => false;
 
 const STALENESS_TONE: Record<FantasySnapshotStaleness, CSSProperties> = {
   fresh: {
@@ -1111,11 +1107,7 @@ export function FantasyFootballClient({ initialState, initialSnapshot = null }: 
   const [detailPlayerId, setDetailPlayerId] = useState<string | null>(null);
   const [visibleCount, setVisibleCount] = useState(RANKINGS_PAGE_SIZE);
   const sentinelRef = useRef<HTMLDivElement | null>(null);
-  const isHydrated = useSyncExternalStore(
-    subscribeToHydration,
-    getHydratedSnapshot,
-    getServerHydratedSnapshot
-  );
+  const isHydrated = useIsClient();
 
   const queue = usePlayerQueue();
   // Only the status. The notes themselves belong to the drawer, and

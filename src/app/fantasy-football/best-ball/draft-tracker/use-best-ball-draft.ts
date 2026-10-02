@@ -1,6 +1,11 @@
 "use client";
 
 import { useCallback, useEffect, useMemo, useState } from "react";
+import {
+  readBrowserStorageString,
+  writeBrowserStorageJson,
+  writeBrowserStorageString,
+} from "@/lib/browserStorage";
 import type { Player } from "@/types";
 import {
   addBestBallDraftPick,
@@ -39,29 +44,21 @@ export function useBestBallDraft({
 
   useEffect(() => {
     let nextState = createBestBallDraftState(season, rules, initialSlot);
-    try {
-      const raw = window.localStorage.getItem(storageKey);
-      if (raw) {
-        const restored = parseBestBallDraftState(raw, season, rules);
-        if (restored) {
-          nextState = restored;
-        } else {
-          window.localStorage.setItem(
-            getBestBallDraftBackupKey(season, rules.contestId),
-            raw
-          );
-          // The backup is a second localStorage key and nothing in this
-          // interface opens it, so the notice says the save still exists and
-          // stops short of implying a way to get it back.
-          // eslint-disable-next-line react-hooks/set-state-in-effect -- localStorage is read only after hydration
-          setRestoreNotice(
-            "I started a new room because the saved draft did not match the current contest rules. I kept the prior save as a local backup in this browser, and there is no way to open it from this page."
-          );
-        }
-      }
-    } catch {
-      setPersistenceError(
-        "This room still works in this tab, but your browser is blocking local saves."
+    const saved = readBrowserStorageString(storageKey);
+    if (saved.persistenceStatus === "memory-only") {
+      // eslint-disable-next-line react-hooks/set-state-in-effect -- localStorage is read only after hydration
+      setPersistenceError("This room still works in this tab, but your browser is blocking local saves.");
+    }
+    const restored = saved.value ? parseBestBallDraftState(saved.value, season, rules) : null;
+    if (restored) {
+      nextState = restored;
+    } else if (saved.value) {
+      writeBrowserStorageString(getBestBallDraftBackupKey(season, rules.contestId), saved.value);
+      // The backup is a second localStorage key and nothing in this
+      // interface opens it, so the notice says the save still exists and
+      // stops short of implying a way to get it back.
+      setRestoreNotice(
+        "I started a new room because the saved draft did not match the current contest rules. I kept the prior save as a local backup in this browser, and there is no way to open it from this page."
       );
     }
     // The key identifies a different contest-specific room and should replace the prior room in memory.
@@ -71,9 +68,7 @@ export function useBestBallDraft({
 
   useEffect(() => {
     if (loadedKey !== storageKey) return;
-    try {
-      window.localStorage.setItem(storageKey, JSON.stringify(state));
-    } catch {
+    if (writeBrowserStorageJson(storageKey, state) === "memory-only") {
       // eslint-disable-next-line react-hooks/set-state-in-effect -- this reports an external storage failure
       setPersistenceError(
         "This room still works in this tab, but changes cannot be saved locally."

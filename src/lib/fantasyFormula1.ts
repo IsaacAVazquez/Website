@@ -10,7 +10,7 @@ import type {
   FantasyFormula1LineupSummary,
   FantasyFormula1OptimizationCandidate,
 } from "@/types/fantasyFormula1";
-import { clamp } from "@/lib/utils";
+import { clamp, roundTo } from "@/lib/utils";
 
 export const FANTASY_FORMULA1_BUDGET = 100;
 export const FANTASY_FORMULA1_DRIVER_SLOTS = 5;
@@ -42,10 +42,6 @@ type FantasyFormula1SnapshotInput = Pick<
   | "constructorStandings"
   | "lastCompletedMeeting"
 >;
-
-function roundToTenths(value: number): number {
-  return Math.round(value * 10) / 10;
-}
 
 function getCompletedRaceCount(snapshot: FantasyFormula1SnapshotInput): number {
   return Math.max(snapshot.seasonMetrics.completedRaces, 1);
@@ -179,11 +175,11 @@ function buildDriverAsset(
   const pointsPerRace = standing.points / completedRaces;
   const formScore = Math.max(standing.pointsDelta, 0) + pointsPerRace * 0.45;
   const sprintMultiplier = getSprintMultiplier(snapshot);
-  const projectedPoints = roundToTenths(
+  const projectedPoints = roundTo(
     (4 + rankStrength * 10 + pointsPerRace * 0.68 + Math.max(standing.pointsDelta, 0) * 0.22) *
       sprintMultiplier
   );
-  const price = roundToTenths(
+  const price = roundTo(
     clamp(
       6 + rankStrength * 17 + pointsPerRace * 0.12 + Math.max(standing.pointsDelta, 0) * 0.04,
       MIN_DRIVER_PRICE,
@@ -200,12 +196,12 @@ function buildDriverAsset(
     teamColor: standing.teamColor,
     headshotUrl: standing.headshotUrl,
     standingPosition: Number.isFinite(standing.position) ? standing.position : index + 1,
-    seasonPoints: roundToTenths(standing.points),
-    lastRacePoints: roundToTenths(standing.pointsDelta),
+    seasonPoints: roundTo(standing.points),
+    lastRacePoints: roundTo(standing.pointsDelta),
     price,
     projectedPoints,
-    valueRating: roundToTenths((projectedPoints / Math.max(price, 0.1)) * 10),
-    formScore: roundToTenths(formScore),
+    valueRating: roundTo((projectedPoints / Math.max(price, 0.1)) * 10),
+    formScore: roundTo(formScore),
     risk: getRisk("driver", standing.pointsDelta, standing.position, fieldSize),
     riskReason: formatRiskReason("driver", standing.pointsDelta, standing.position),
   };
@@ -222,11 +218,11 @@ function buildConstructorAsset(
   const pointsPerRace = standing.points / completedRaces;
   const formScore = Math.max(standing.pointsDelta, 0) + pointsPerRace * 0.28;
   const sprintMultiplier = getSprintMultiplier(snapshot);
-  const projectedPoints = roundToTenths(
+  const projectedPoints = roundTo(
     (6 + rankStrength * 12 + pointsPerRace * 0.42 + Math.max(standing.pointsDelta, 0) * 0.16) *
       sprintMultiplier
   );
-  const price = roundToTenths(
+  const price = roundTo(
     clamp(
       5.8 + rankStrength * 18 + pointsPerRace * 0.05 + Math.max(standing.pointsDelta, 0) * 0.025,
       MIN_CONSTRUCTOR_PRICE,
@@ -243,12 +239,12 @@ function buildConstructorAsset(
     teamColor: standing.teamColor,
     headshotUrl: null,
     standingPosition: Number.isFinite(standing.position) ? standing.position : index + 1,
-    seasonPoints: roundToTenths(standing.points),
-    lastRacePoints: roundToTenths(standing.pointsDelta),
+    seasonPoints: roundTo(standing.points),
+    lastRacePoints: roundTo(standing.pointsDelta),
     price,
     projectedPoints,
-    valueRating: roundToTenths((projectedPoints / Math.max(price, 0.1)) * 10),
-    formScore: roundToTenths(formScore),
+    valueRating: roundTo((projectedPoints / Math.max(price, 0.1)) * 10),
+    formScore: roundTo(formScore),
     risk: getRisk("constructor", standing.pointsDelta, standing.position, fieldSize),
     riskReason: formatRiskReason("constructor", standing.pointsDelta, standing.position),
   };
@@ -291,10 +287,10 @@ export function summarizeFantasyFormula1Lineup(
     .map((id) => assetMap.get(id))
     .filter((asset): asset is FantasyFormula1Asset => asset?.kind === "constructor");
   const selectedAssets = [...drivers, ...constructors];
-  const totalPrice = roundToTenths(
+  const totalPrice = roundTo(
     selectedAssets.reduce((total, asset) => total + asset.price, 0)
   );
-  const projectedPoints = roundToTenths(
+  const projectedPoints = roundTo(
     selectedAssets.reduce((total, asset) => total + asset.projectedPoints, 0)
   );
 
@@ -304,8 +300,8 @@ export function summarizeFantasyFormula1Lineup(
     assets: selectedAssets,
     totalPrice,
     projectedPoints,
-    valueRating: totalPrice > 0 ? roundToTenths((projectedPoints / totalPrice) * 10) : 0,
-    budgetRemaining: roundToTenths(FANTASY_FORMULA1_BUDGET - totalPrice),
+    valueRating: totalPrice > 0 ? roundTo((projectedPoints / totalPrice) * 10) : 0,
+    budgetRemaining: roundTo(FANTASY_FORMULA1_BUDGET - totalPrice),
     isComplete:
       drivers.length === FANTASY_FORMULA1_DRIVER_SLOTS &&
       constructors.length === FANTASY_FORMULA1_CONSTRUCTOR_SLOTS,
@@ -442,7 +438,7 @@ export function optimizeFantasyFormula1Lineups(
   for (const drivers of driverCombinations) {
     if (
       top.length === limit &&
-      roundToTenths(drivers.projectedPoints + bestConstructorPoints) <
+      roundTo(drivers.projectedPoints + bestConstructorPoints) <
         top[top.length - 1].projectedPoints
     ) {
       // Even the best constructor pairing can't beat the current kth-best
@@ -450,13 +446,13 @@ export function optimizeFantasyFormula1Lineups(
       break;
     }
     for (const constructors of constructorCombinations) {
-      const projectedPoints = roundToTenths(
+      const projectedPoints = roundTo(
         drivers.projectedPoints + constructors.projectedPoints
       );
       if (top.length === limit && projectedPoints < top[top.length - 1].projectedPoints) {
         break;
       }
-      const totalPrice = roundToTenths(drivers.price + constructors.price);
+      const totalPrice = roundTo(drivers.price + constructors.price);
       if (totalPrice > FANTASY_FORMULA1_BUDGET) {
         continue;
       }
@@ -469,8 +465,8 @@ export function optimizeFantasyFormula1Lineups(
           assets: [...drivers.assets, ...constructors.assets],
           totalPrice,
           projectedPoints,
-          valueRating: totalPrice > 0 ? roundToTenths((projectedPoints / totalPrice) * 10) : 0,
-          budgetRemaining: roundToTenths(FANTASY_FORMULA1_BUDGET - totalPrice),
+          valueRating: totalPrice > 0 ? roundTo((projectedPoints / totalPrice) * 10) : 0,
+          budgetRemaining: roundTo(FANTASY_FORMULA1_BUDGET - totalPrice),
           isComplete: true,
           isOverBudget: false,
           rank: 0,

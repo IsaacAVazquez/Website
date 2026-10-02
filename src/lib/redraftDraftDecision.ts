@@ -8,7 +8,7 @@ import {
   type FantasyReplacementCutoff,
 } from "@/lib/fantasyReplacement";
 import { getAdpSurvivalThreshold } from "@/lib/fantasyUtils";
-import { clamp } from "@/lib/utils";
+import { clamp, roundTo } from "@/lib/utils";
 import type {
   Player,
   RedraftLineupSettings,
@@ -136,10 +136,6 @@ function finitePositive(value: unknown): value is number {
   return typeof value === "number" && Number.isFinite(value) && value > 0;
 }
 
-function roundOne(value: number): number {
-  return Math.round(value * 10) / 10;
-}
-
 function positionBoardRank(player: Player): number | null {
   if (finitePositive(player.rankEcr)) return player.rankEcr;
   return finitePositive(player.averageRank) ? player.averageRank : null;
@@ -221,12 +217,12 @@ function replacementReading(
   return {
     player,
     expertRank,
-    value: roundOne(sourceValue.value),
+    value: roundTo(sourceValue.value),
     starterValue: finitePositive(cutoff.starter)
-      ? roundOne(calculateReplacementRelativeValue(expertRank, cutoff.starter))
+      ? roundTo(calculateReplacementRelativeValue(expertRank, cutoff.starter))
       : null,
     depthValue: finitePositive(cutoff.roster)
-      ? roundOne(calculateReplacementRelativeValue(expertRank, cutoff.roster))
+      ? roundTo(calculateReplacementRelativeValue(expertRank, cutoff.roster))
       : null,
     starterCutoff: cutoff.starter,
     rosterCutoff: cutoff.roster,
@@ -346,7 +342,7 @@ function tierReading({
         ? Math.min(...nextTierPositionRanks)
         : null,
     overallBoardGap,
-    signal: magnitude === null ? null : roundOne(urgency * magnitude),
+    signal: magnitude === null ? null : roundTo(urgency * magnitude),
     coverage:
       nextTier !== null && overallBoardGap !== null
         ? "supported"
@@ -369,14 +365,14 @@ function survivorReading(
   return {
     player,
     expertRank: reading.expertRank,
-    rankCost: roundOne(Math.max(0, reading.expertRank - best.expertRank)),
-    replacementDrop: roundOne(Math.max(0, best.value - reading.value)),
+    rankCost: roundTo(Math.max(0, reading.expertRank - best.expertRank)),
+    replacementDrop: roundTo(Math.max(0, best.value - reading.value)),
     pointsDrop:
       typeof bestVorp === "number" &&
       Number.isFinite(bestVorp) &&
       typeof survivorVorp === "number" &&
       Number.isFinite(survivorVorp)
-        ? roundOne(Math.max(0, bestVorp - survivorVorp))
+        ? roundTo(Math.max(0, bestVorp - survivorVorp))
         : null,
   };
 }

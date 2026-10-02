@@ -1,9 +1,10 @@
 "use client";
 
+import { useIsClient } from "@/hooks/useIsClient";
 import { ArrowLeftRight, RotateCcw, ShieldCheck } from "lucide-react";
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
-import { useEffect, useMemo, useState, useSyncExternalStore } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { SeasonalScopeNote } from "@/components/fantasy/SeasonalScopeNote";
 import { Breadcrumbs, createBreadcrumbItems } from "@/components/navigation/Breadcrumbs";
 import { PROJECT_PRESS } from "@/constants/projectPress";
@@ -68,10 +69,6 @@ function formatMarketDate(asOf: string | null | undefined): string | null {
 // that keep the line rhythm of the surrounding sentence.
 const SCOPE_LINK_CLASS =
   "inline-flex min-h-touch items-center -my-3 underline decoration-[var(--c97-accent)] underline-offset-4";
-
-const subscribeToHydration = () => () => undefined;
-const getHydratedSnapshot = () => true;
-const getServerHydratedSnapshot = () => false;
 
 function LeagueSelect({
   label,
@@ -233,11 +230,7 @@ function LoadingCard({ className }: { className: string }) {
 export function TradeCalculatorClient() {
   const router = useRouter();
   const searchParams = useSearchParams();
-  const isHydrated = useSyncExternalStore(
-    subscribeToHydration,
-    getHydratedSnapshot,
-    getServerHydratedSnapshot
-  );
+  const isHydrated = useIsClient();
   const routeState = useMemo(
     () => normalizeTradeCalculatorState(searchParams),
     [searchParams]

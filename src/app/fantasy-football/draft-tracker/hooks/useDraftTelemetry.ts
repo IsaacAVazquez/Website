@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useState } from "react";
+import { readValidatedBrowserStorage, writeBrowserStorageJson } from "@/lib/browserStorage";
 import {
   DRAFT_TELEMETRY_STORAGE_PREFIX,
   decodeDraftTurnRecords,
@@ -18,15 +19,13 @@ export function useDraftTelemetry(draftId: string | undefined) {
 
   useEffect(() => {
     if (!draftId || typeof window === "undefined") return;
-    let stored: DraftTurnRecord[];
-    try {
-      const raw = localStorage.getItem(getDraftTelemetryStorageKey(draftId));
-      stored = raw ? decodeDraftTurnRecords(JSON.parse(raw)) : [];
-    } catch {
-      stored = [];
-    }
+    const stored = readValidatedBrowserStorage(
+      getDraftTelemetryStorageKey(draftId),
+      decodeDraftTurnRecords,
+      () => []
+    );
     // eslint-disable-next-line react-hooks/set-state-in-effect -- hydrate once per room id
-    setRecords(stored);
+    setRecords(stored.value);
   }, [draftId]);
 
   const appendRecord = useCallback(
@@ -39,11 +38,8 @@ export function useDraftTelemetry(draftId: string | undefined) {
           ...previous.filter((entry) => entry.pick < turnRecord.pick),
           turnRecord,
         ];
+        writeBrowserStorageJson(getDraftTelemetryStorageKey(draftId), next);
         try {
-          localStorage.setItem(
-            getDraftTelemetryStorageKey(draftId),
-            JSON.stringify(next)
-          );
           // One active room per season is the tracker's model, so telemetry
           // left behind by any other room id is an orphan and gets swept.
           // Swept on write rather than on mount, because the draft id present

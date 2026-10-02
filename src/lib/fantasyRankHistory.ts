@@ -1,5 +1,5 @@
 import type { Player } from "@/types";
-import { isRecord } from "@/lib/utils";
+import { isFiniteNumber, isRecord, roundTo } from "@/lib/utils";
 
 /**
  * A small rolling history of consensus rank and ADP per player, kept by the
@@ -47,14 +47,6 @@ export interface FantasyRankMovement {
 
 const DATE_PATTERN = /^\d{4}-\d{2}-\d{2}$/;
 const DAY_MS = 86_400_000;
-
-function isFiniteNumber(value: unknown): value is number {
-  return typeof value === "number" && Number.isFinite(value);
-}
-
-function roundOne(value: number): number {
-  return Math.round(value * 10) / 10;
-}
 
 function dayValue(date: string): number {
   return Date.parse(`${date}T00:00:00Z`);
@@ -165,10 +157,10 @@ export function resolveFantasyRankMovement(
     const past = pastDay?.players[playerId];
     if (!past) continue;
     if (isFiniteNumber(past.ecr) && isFiniteNumber(current.ecr)) {
-      movement[window.rankKey] = roundOne(past.ecr - current.ecr);
+      movement[window.rankKey] = roundTo(past.ecr - current.ecr);
     }
     if (isFiniteNumber(past.adp) && isFiniteNumber(current.adp)) {
-      movement[window.adpKey] = roundOne(past.adp - current.adp);
+      movement[window.adpKey] = roundTo(past.adp - current.adp);
     }
   }
   return movement;

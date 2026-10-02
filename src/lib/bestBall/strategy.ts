@@ -249,15 +249,19 @@ function normalizedTeam(team: string): string {
   return team.trim().toUpperCase();
 }
 
+/** Rostered players grouped by team, free agents left out. */
+function groupPlayersByTeam(picks: readonly BestBallDraftPick[]): Map<string, Player[]> {
+  const onTeams = rosterPlayers(picks).filter((player) => {
+    const team = normalizedTeam(player.team);
+    return team !== "" && team !== "FA";
+  });
+  return Map.groupBy(onTeams, (player) => normalizedTeam(player.team));
+}
+
 export function findQbPassCatcherStacks(
   picks: readonly BestBallDraftPick[]
 ): BestBallStack[] {
-  const byTeam = new Map<string, Player[]>();
-  for (const player of rosterPlayers(picks)) {
-    const team = normalizedTeam(player.team);
-    if (!team || team === "FA") continue;
-    byTeam.set(team, [...(byTeam.get(team) ?? []), player]);
-  }
+  const byTeam = groupPlayersByTeam(picks);
 
   return [...byTeam.entries()]
     .map(([team, players]) => {
@@ -280,12 +284,7 @@ export function findSameTeamConcentrations(
   picks: readonly BestBallDraftPick[],
   minimumPlayers = 3
 ): BestBallTeamConcentration[] {
-  const byTeam = new Map<string, Player[]>();
-  for (const player of rosterPlayers(picks)) {
-    const team = normalizedTeam(player.team);
-    if (!team || team === "FA") continue;
-    byTeam.set(team, [...(byTeam.get(team) ?? []), player]);
-  }
+  const byTeam = groupPlayersByTeam(picks);
   return [...byTeam.entries()]
     .filter(([, players]) => players.length >= minimumPlayers)
     .map(([team, players]) => ({ team, count: players.length, players }))
@@ -296,12 +295,12 @@ export function findByeWeekConflicts(
   picks: readonly BestBallDraftPick[],
   minimumPlayers = 2
 ): BestBallByeConflict[] {
-  const byWeek = new Map<number, Player[]>();
-  for (const player of rosterPlayers(picks)) {
-    if (!Number.isInteger(player.byeWeek) || (player.byeWeek ?? 0) < 1) continue;
-    const week = player.byeWeek as number;
-    byWeek.set(week, [...(byWeek.get(week) ?? []), player]);
-  }
+  const byWeek = Map.groupBy(
+    rosterPlayers(picks).filter(
+      (player) => Number.isInteger(player.byeWeek) && (player.byeWeek ?? 0) >= 1
+    ),
+    (player) => player.byeWeek as number
+  );
   return [...byWeek.entries()]
     .filter(([, players]) => players.length >= minimumPlayers)
     .map(([byeWeek, players]) => {
@@ -320,12 +319,7 @@ export function findWeek17OpponentPairs(
   picks: readonly BestBallDraftPick[],
   week17Opponents: Readonly<Record<string, string>> = {}
 ): BestBallWeek17Pair[] {
-  const playersByTeam = new Map<string, Player[]>();
-  for (const player of rosterPlayers(picks)) {
-    const team = normalizedTeam(player.team);
-    if (!team || team === "FA") continue;
-    playersByTeam.set(team, [...(playersByTeam.get(team) ?? []), player]);
-  }
+  const playersByTeam = groupPlayersByTeam(picks);
 
   const seen = new Set<string>();
   const pairs: BestBallWeek17Pair[] = [];
