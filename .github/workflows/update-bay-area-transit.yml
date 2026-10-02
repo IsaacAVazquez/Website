@@ -54,46 +54,14 @@ jobs:
       - name: Verify refresh freshness and quality
         run: npx tsx scripts/verifyDataRefresh.ts bay-area-transit
 
-      - name: Check for snapshot changes
-        id: check_changes
-        run: |
-          if [ -z "$(git status --porcelain -- src/data/bayAreaTransitSnapshot.ts)" ]; then
-            echo "changed=false" >> "$GITHUB_OUTPUT"
-            echo "No changes detected in src/data/bayAreaTransitSnapshot.ts"
-          else
-            echo "changed=true" >> "$GITHUB_OUTPUT"
-            echo "Changes detected in src/data/bayAreaTransitSnapshot.ts"
-          fi
-
       - name: Commit and push refreshed snapshot
-        if: steps.check_changes.outputs.changed == 'true'
+        id: commit
         run: |
           bash scripts/ci/commit-and-push-snapshot.sh \
             "chore: refresh bay area transit snapshot [automated] [skip ci]" \
             src/data/bayAreaTransitSnapshot.ts
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Create job summary
-        if: always()
-        run: |
-          echo "## Bay Area Transit Snapshot Refresh" >> "$GITHUB_STEP_SUMMARY"
-          echo "" >> "$GITHUB_STEP_SUMMARY"
-          echo "**Status:** ${{ job.status }}" >> "$GITHUB_STEP_SUMMARY"
-          echo "**Run Date:** $(date -u +'%Y-%m-%d %H:%M:%S UTC')" >> "$GITHUB_STEP_SUMMARY"
-          echo "**Schedule:** Every 6 hours" >> "$GITHUB_STEP_SUMMARY"
-          echo "" >> "$GITHUB_STEP_SUMMARY"
-          if [ -n "${{ steps.verify_quality.outputs.stations }}" ]; then
-            echo "**Lines:** ${{ steps.verify_quality.outputs.lines }}" >> "$GITHUB_STEP_SUMMARY"
-            echo "**Stations:** ${{ steps.verify_quality.outputs.stations }}" >> "$GITHUB_STEP_SUMMARY"
-            echo "**Trains tracked:** ${{ steps.verify_quality.outputs.trains }}" >> "$GITHUB_STEP_SUMMARY"
-            echo "" >> "$GITHUB_STEP_SUMMARY"
-          fi
-          if [ "${{ steps.check_changes.outputs.changed }}" = "true" ]; then
-            echo "Transit snapshot changed and was committed." >> "$GITHUB_STEP_SUMMARY"
-          else
-            echo "Transit snapshot was already up to date." >> "$GITHUB_STEP_SUMMARY"
-          fi
 
       - name: Notify on failure via GitHub issue
         if: failure()

@@ -45,40 +45,14 @@ jobs:
       - name: Verify refresh freshness and quality
         run: npx tsx scripts/verifyDataRefresh.ts github-trending
 
-      - name: Check for snapshot changes
-        id: check_changes
-        run: |
-          if [ -z "$(git status --porcelain -- src/data/githubTrendingSnapshot.ts)" ]; then
-            echo "changed=false" >> "$GITHUB_OUTPUT"
-            echo "No changes detected in src/data/githubTrendingSnapshot.ts"
-          else
-            echo "changed=true" >> "$GITHUB_OUTPUT"
-            echo "Changes detected in src/data/githubTrendingSnapshot.ts"
-          fi
-
       - name: Commit and push refreshed snapshot
-        if: steps.check_changes.outputs.changed == 'true'
+        id: commit
         run: |
           bash scripts/ci/commit-and-push-snapshot.sh \
             "chore: refresh github trending snapshot [automated] [skip ci]" \
             src/data/githubTrendingSnapshot.ts
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Create job summary
-        if: always()
-        run: |
-          echo "## GitHub Trending Snapshot Refresh" >> "$GITHUB_STEP_SUMMARY"
-          echo "" >> "$GITHUB_STEP_SUMMARY"
-          echo "**Status:** ${{ job.status }}" >> "$GITHUB_STEP_SUMMARY"
-          echo "**Run Date:** $(date -u +'%Y-%m-%d %H:%M:%S UTC')" >> "$GITHUB_STEP_SUMMARY"
-          echo "**Schedule:** Daily at 07:45 UTC" >> "$GITHUB_STEP_SUMMARY"
-          echo "" >> "$GITHUB_STEP_SUMMARY"
-          if [ "${{ steps.check_changes.outputs.changed }}" = "true" ]; then
-            echo "GitHub trending snapshot changed and was committed." >> "$GITHUB_STEP_SUMMARY"
-          else
-            echo "GitHub trending snapshot was already up to date." >> "$GITHUB_STEP_SUMMARY"
-          fi
 
       - name: Notify on failure via GitHub issue
         if: failure()

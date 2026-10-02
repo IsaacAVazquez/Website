@@ -77,56 +77,15 @@ jobs:
         if: steps.config.outputs.configured == 'true'
         run: npx tsx scripts/verifyDataRefresh.ts score-pools
 
-      - name: Check for snapshot changes
-        id: check_changes
-        if: steps.config.outputs.configured == 'true'
-        run: |
-          if [ -z "$(git status --porcelain -- src/data/scorePoolsSnapshot.ts)" ]; then
-            echo "changed=false" >> "$GITHUB_OUTPUT"
-            echo "No changes detected in src/data/scorePoolsSnapshot.ts"
-          else
-            echo "changed=true" >> "$GITHUB_OUTPUT"
-            echo "Changes detected in src/data/scorePoolsSnapshot.ts"
-          fi
-
       - name: Commit and push refreshed snapshot
-        if: steps.check_changes.outputs.changed == 'true'
+        id: commit
+        if: steps.config.outputs.configured == 'true'
         run: |
           bash scripts/ci/commit-and-push-snapshot.sh \
             "chore: refresh score pools snapshot [automated] [skip ci]" \
             src/data/scorePoolsSnapshot.ts
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Create job summary
-        if: always()
-        env:
-          LEAGUES: ${{ steps.verify_quality.outputs.leagues }}
-          FIXTURES: ${{ steps.verify_quality.outputs.fixtures }}
-          ODDS: ${{ steps.verify_quality.outputs.odds }}
-        run: |
-          echo "## Score Pools Snapshot Refresh" >> "$GITHUB_STEP_SUMMARY"
-          echo "" >> "$GITHUB_STEP_SUMMARY"
-          echo "**Status:** ${{ job.status }}" >> "$GITHUB_STEP_SUMMARY"
-          echo "**Run Date:** $(date -u +'%Y-%m-%d %H:%M:%S UTC')" >> "$GITHUB_STEP_SUMMARY"
-          echo "**Schedule:** Every 6 hours" >> "$GITHUB_STEP_SUMMARY"
-          echo "" >> "$GITHUB_STEP_SUMMARY"
-          if [ -n "$LEAGUES" ]; then
-            echo "**Leagues:** $LEAGUES" >> "$GITHUB_STEP_SUMMARY"
-            echo "**Fixtures:** $FIXTURES" >> "$GITHUB_STEP_SUMMARY"
-            echo "**Odds snapshots:** $ODDS" >> "$GITHUB_STEP_SUMMARY"
-            echo "**Live leagues:** ${{ steps.verify_quality.outputs.live_leagues }}" >> "$GITHUB_STEP_SUMMARY"
-            echo "**Live fixtures:** ${{ steps.verify_quality.outputs.live_fixtures }}" >> "$GITHUB_STEP_SUMMARY"
-            echo "**Live odds snapshots:** ${{ steps.verify_quality.outputs.live_odds }}" >> "$GITHUB_STEP_SUMMARY"
-            echo "" >> "$GITHUB_STEP_SUMMARY"
-          fi
-          if [ "${{ steps.config.outputs.configured }}" != "true" ]; then
-            echo "Not configured. The provider keys are not set, so nothing was refreshed." >> "$GITHUB_STEP_SUMMARY"
-          elif [ "${{ steps.check_changes.outputs.changed }}" = "true" ]; then
-            echo "Score-pools snapshot changed and was committed." >> "$GITHUB_STEP_SUMMARY"
-          else
-            echo "Score-pools snapshot was already up to date." >> "$GITHUB_STEP_SUMMARY"
-          fi
 
       - name: Notify on failure via GitHub issue
         if: failure()

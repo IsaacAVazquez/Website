@@ -48,54 +48,14 @@ jobs:
       - name: Verify refresh freshness and quality
         run: npx tsx scripts/verifyDataRefresh.ts golf
 
-      - name: Check for snapshot changes
-        id: check_changes
-        run: |
-          if [ -z "$(git status --porcelain -- src/data/golfSnapshot.ts)" ]; then
-            echo "changed=false" >> "$GITHUB_OUTPUT"
-            echo "No changes detected in src/data/golfSnapshot.ts"
-          else
-            echo "changed=true" >> "$GITHUB_OUTPUT"
-            echo "Changes detected in src/data/golfSnapshot.ts"
-          fi
-
       - name: Commit and push refreshed snapshot
-        if: steps.check_changes.outputs.changed == 'true'
+        id: commit
         run: |
           bash scripts/ci/commit-and-push-snapshot.sh \
             "chore: refresh golf snapshot [automated] [skip ci]" \
             src/data/golfSnapshot.ts
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Create job summary
-        if: always()
-        # Pass step outputs through the environment rather than interpolating
-        # ${{ }} straight into the script. The tournament name comes from ESPN
-        # (untrusted), so direct interpolation under `contents: write` would be a
-        # shell-injection surface; as an env var the shell treats it as data.
-        env:
-          TOURNAMENT: ${{ steps.verify_quality.outputs.tournament }}
-          LEADERBOARD: ${{ steps.verify_quality.outputs.leaderboard }}
-          PLAYERS: ${{ steps.verify_quality.outputs.players }}
-        run: |
-          echo "## Golf Snapshot Refresh" >> "$GITHUB_STEP_SUMMARY"
-          echo "" >> "$GITHUB_STEP_SUMMARY"
-          echo "**Status:** ${{ job.status }}" >> "$GITHUB_STEP_SUMMARY"
-          echo "**Run Date:** $(date -u +'%Y-%m-%d %H:%M:%S UTC')" >> "$GITHUB_STEP_SUMMARY"
-          echo "**Schedule:** Every three hours Thursday through Sunday; daily otherwise" >> "$GITHUB_STEP_SUMMARY"
-          echo "" >> "$GITHUB_STEP_SUMMARY"
-          if [ -n "$LEADERBOARD" ]; then
-            echo "**Tournament:** $TOURNAMENT" >> "$GITHUB_STEP_SUMMARY"
-            echo "**Leaderboard entries:** $LEADERBOARD" >> "$GITHUB_STEP_SUMMARY"
-            echo "**Player options:** $PLAYERS" >> "$GITHUB_STEP_SUMMARY"
-            echo "" >> "$GITHUB_STEP_SUMMARY"
-          fi
-          if [ "${{ steps.check_changes.outputs.changed }}" = "true" ]; then
-            echo "Golf snapshot changed and was committed." >> "$GITHUB_STEP_SUMMARY"
-          else
-            echo "Golf snapshot was already up to date." >> "$GITHUB_STEP_SUMMARY"
-          fi
 
       - name: Notify on failure via GitHub issue
         if: failure()

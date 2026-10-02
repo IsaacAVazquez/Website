@@ -133,48 +133,14 @@ jobs:
           );
           "
 
-      - name: Check for snapshot changes
-        id: check_changes
-        run: |
-          if [ -z "$(git status --porcelain -- src/data/formula1Snapshot.ts)" ]; then
-            echo "changed=false" >> "$GITHUB_OUTPUT"
-            echo "No changes detected in src/data/formula1Snapshot.ts"
-          else
-            echo "changed=true" >> "$GITHUB_OUTPUT"
-            echo "Changes detected in src/data/formula1Snapshot.ts"
-          fi
-
       - name: Commit and push refreshed snapshot
-        if: steps.check_changes.outputs.changed == 'true'
+        id: commit
         run: |
           bash scripts/ci/commit-and-push-snapshot.sh \
             "chore: refresh formula 1 snapshot [automated] [skip ci]" \
             src/data/formula1Snapshot.ts
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Create job summary
-        if: always()
-        run: |
-          echo "## Formula 1 Snapshot Refresh" >> "$GITHUB_STEP_SUMMARY"
-          echo "" >> "$GITHUB_STEP_SUMMARY"
-          echo "**Status:** ${{ job.status }}" >> "$GITHUB_STEP_SUMMARY"
-          echo "**Run Date:** $(date -u +'%Y-%m-%d %H:%M:%S UTC')" >> "$GITHUB_STEP_SUMMARY"
-          echo "**Schedule:** Every three hours Thursday through Sunday; daily otherwise" >> "$GITHUB_STEP_SUMMARY"
-          echo "" >> "$GITHUB_STEP_SUMMARY"
-          if [ -n "${{ steps.verify_quality.outputs.meetings }}" ]; then
-            echo "**Meetings:** ${{ steps.verify_quality.outputs.meetings }}" >> "$GITHUB_STEP_SUMMARY"
-            echo "**Completed races:** ${{ steps.verify_quality.outputs.completed_races }}" >> "$GITHUB_STEP_SUMMARY"
-            echo "**Upcoming races:** ${{ steps.verify_quality.outputs.upcoming_races }}" >> "$GITHUB_STEP_SUMMARY"
-            echo "**Driver standings:** ${{ steps.verify_quality.outputs.drivers }}" >> "$GITHUB_STEP_SUMMARY"
-            echo "**Constructor standings:** ${{ steps.verify_quality.outputs.constructors }}" >> "$GITHUB_STEP_SUMMARY"
-            echo "" >> "$GITHUB_STEP_SUMMARY"
-          fi
-          if [ "${{ steps.check_changes.outputs.changed }}" = "true" ]; then
-            echo "Formula 1 snapshot changed and was committed." >> "$GITHUB_STEP_SUMMARY"
-          else
-            echo "Formula 1 snapshot was already up to date." >> "$GITHUB_STEP_SUMMARY"
-          fi
 
       - name: Notify on failure via GitHub issue
         if: failure()

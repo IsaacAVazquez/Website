@@ -307,19 +307,8 @@ jobs:
           fs.writeFileSync(process.env.GITHUB_OUTPUT, 'success_count=' + successCount + '\nfresh_count=' + freshCount + '\nstale_count=' + staleCount + '\nfailed_count=' + failedCount + '\nwith_price=' + withPrice + '\nrotation_overdue=' + overdue.length + '\n', { flag: 'a' });
           "
 
-      - name: Check for investments data changes
-        id: check_changes
-        run: |
-          if [ -z "$(git status --porcelain -- public/data/investments)" ]; then
-            echo "changed=false" >> "$GITHUB_OUTPUT"
-            echo "No changes detected in investments data"
-          else
-            echo "changed=true" >> "$GITHUB_OUTPUT"
-            echo "Changes detected in investments data"
-          fi
-
       - name: Commit and push refreshed investments data
-        if: steps.check_changes.outputs.changed == 'true'
+        id: commit
         run: |
           bash scripts/ci/commit-and-push-snapshot.sh \
             "chore: refresh investments snapshots [automated] [skip ci]" \
@@ -349,49 +338,3 @@ jobs:
         uses: actions/github-script@v9
         with:
           script: await require('./scripts/ci/failure-issue.cjs').close({ github, context }, 'investments-refresh-failure')
-
-      - name: Create job summary
-        if: always()
-        run: |
-          echo "## Investments Snapshot Refresh" >> "$GITHUB_STEP_SUMMARY"
-          echo "" >> "$GITHUB_STEP_SUMMARY"
-          echo "**Status:** ${{ job.status }}" >> "$GITHUB_STEP_SUMMARY"
-          echo "**Run Date:** $(date -u +'%Y-%m-%d %H:%M:%S UTC')" >> "$GITHUB_STEP_SUMMARY"
-          echo "**Schedule:** Tuesday through Saturday at 08:30 UTC" >> "$GITHUB_STEP_SUMMARY"
-          echo "" >> "$GITHUB_STEP_SUMMARY"
-          if [ -n "${{ steps.verify_freshness.outputs.success_count }}" ]; then
-            echo "**Symbols available:** ${{ steps.verify_freshness.outputs.success_count }}" >> "$GITHUB_STEP_SUMMARY"
-            echo "**Fresh this run:** ${{ steps.verify_freshness.outputs.fresh_count }}" >> "$GITHUB_STEP_SUMMARY"
-            echo "**Using earlier snapshots:** ${{ steps.verify_freshness.outputs.stale_count }}" >> "$GITHUB_STEP_SUMMARY"
-            echo "**Unavailable:** ${{ steps.verify_freshness.outputs.failed_count }}" >> "$GITHUB_STEP_SUMMARY"
-            if [ -n "${{ steps.verify_freshness.outputs.with_price }}" ]; then
-              echo "**With valid price history:** ${{ steps.verify_freshness.outputs.with_price }}" >> "$GITHUB_STEP_SUMMARY"
-            fi
-            echo "" >> "$GITHUB_STEP_SUMMARY"
-          fi
-          # Branch on job status FIRST. The previous version fell into the
-          # "already up to date" else whenever check_changes hadn't run (e.g.
-          # on cancellation or earlier-step failure), which made timed-out
-          # runs look like clean no-op runs.
-          case "${{ job.status }}" in
-            success)
-              if [ "${{ steps.check_changes.outputs.changed }}" = "true" ]; then
-                echo "✅ Investments snapshots changed and were committed." >> "$GITHUB_STEP_SUMMARY"
-              else
-                echo "ℹ️ Investments snapshots were already up to date." >> "$GITHUB_STEP_SUMMARY"
-              fi
-              ;;
-            cancelled)
-              echo "⚠️ Run was cancelled before completion (commonly the 25-minute job timeout). Snapshots were **not** verified or committed." >> "$GITHUB_STEP_SUMMARY"
-              ;;
-            failure)
-              if [ "${{ steps.rotation.outcome }}" = "failure" ]; then
-                echo "❌ The snapshots were committed, and ${{ steps.verify_freshness.outputs.rotation_overdue }} symbols are more than 21 days past their last full fetch. The verify step names them." >> "$GITHUB_STEP_SUMMARY"
-              else
-                echo "❌ Run failed before commit. Check the failed step for details." >> "$GITHUB_STEP_SUMMARY"
-              fi
-              ;;
-            *)
-              echo "ℹ️ Run ended with status \`${{ job.status }}\`." >> "$GITHUB_STEP_SUMMARY"
-              ;;
-          esac

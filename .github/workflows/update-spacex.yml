@@ -187,19 +187,8 @@ jobs:
           );
           "
 
-      - name: Check for SpaceX snapshot changes
-        id: check_changes
-        run: |
-          if [ -z "$(git status --porcelain -- src/data/spacexSnapshot.generated.json src/data/spacexImageManifest.generated.json public/data/spacex/image-reference-index.json public/data/spacex/images)" ]; then
-            echo "changed=false" >> "$GITHUB_OUTPUT"
-            echo "No changes detected in SpaceX snapshot artifacts."
-          else
-            echo "changed=true" >> "$GITHUB_OUTPUT"
-            echo "Changes detected in SpaceX snapshot artifacts."
-          fi
-
       - name: Commit and push refreshed snapshots
-        if: steps.check_changes.outputs.changed == 'true'
+        id: commit
         run: |
           bash scripts/ci/commit-and-push-snapshot.sh \
             "chore: refresh spacex snapshots [automated] [skip ci]" \
@@ -209,29 +198,6 @@ jobs:
             public/data/spacex/images
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Create job summary
-        if: always()
-        run: |
-          echo "## SpaceX Snapshot Refresh" >> "$GITHUB_STEP_SUMMARY"
-          echo "" >> "$GITHUB_STEP_SUMMARY"
-          echo "**Status:** ${{ job.status }}" >> "$GITHUB_STEP_SUMMARY"
-          echo "**Run Date:** $(date -u +'%Y-%m-%d %H:%M:%S UTC')" >> "$GITHUB_STEP_SUMMARY"
-          echo "**Schedule:** Daily at 09:25 and 21:25 UTC" >> "$GITHUB_STEP_SUMMARY"
-          echo "" >> "$GITHUB_STEP_SUMMARY"
-          if [ -n "${{ steps.verify_quality.outputs.upcoming }}" ]; then
-            echo "**Upcoming launches:** ${{ steps.verify_quality.outputs.upcoming }}" >> "$GITHUB_STEP_SUMMARY"
-            echo "**Past launches:** ${{ steps.verify_quality.outputs.past }}" >> "$GITHUB_STEP_SUMMARY"
-            echo "**Launch details:** ${{ steps.verify_quality.outputs.details }}" >> "$GITHUB_STEP_SUMMARY"
-            echo "**Manifest images:** ${{ steps.verify_quality.outputs.manifest_images }}" >> "$GITHUB_STEP_SUMMARY"
-            echo "**Reference launches:** ${{ steps.verify_quality.outputs.reference_launches }}" >> "$GITHUB_STEP_SUMMARY"
-            echo "" >> "$GITHUB_STEP_SUMMARY"
-          fi
-          if [ "${{ steps.check_changes.outputs.changed }}" = "true" ]; then
-            echo "SpaceX snapshot artifacts changed and were committed." >> "$GITHUB_STEP_SUMMARY"
-          else
-            echo "SpaceX snapshot artifacts were already up to date." >> "$GITHUB_STEP_SUMMARY"
-          fi
 
       - name: Notify on failure via GitHub issue
         if: failure()

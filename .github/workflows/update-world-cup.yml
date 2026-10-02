@@ -88,50 +88,15 @@ jobs:
         if: steps.window.outputs.active == 'true'
         run: npx tsx scripts/verifyDataRefresh.ts world-cup
 
-      - name: Check for snapshot changes
-        id: check_changes
-        if: steps.window.outputs.active == 'true'
-        run: |
-          if [ -z "$(git status --porcelain -- src/data/worldCupSnapshot.ts)" ]; then
-            echo "changed=false" >> "$GITHUB_OUTPUT"
-            echo "No changes detected in src/data/worldCupSnapshot.ts"
-          else
-            echo "changed=true" >> "$GITHUB_OUTPUT"
-            echo "Changes detected in src/data/worldCupSnapshot.ts"
-          fi
-
       - name: Commit and push refreshed snapshot
-        if: steps.check_changes.outputs.changed == 'true'
+        id: commit
+        if: steps.window.outputs.active == 'true'
         run: |
           bash scripts/ci/commit-and-push-snapshot.sh \
             "chore: refresh World Cup snapshot [automated] [skip ci]" \
             src/data/worldCupSnapshot.ts
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Create job summary
-        if: always()
-        run: |
-          echo "## World Cup Snapshot Refresh" >> "$GITHUB_STEP_SUMMARY"
-          echo "" >> "$GITHUB_STEP_SUMMARY"
-          echo "**Status:** ${{ job.status }}" >> "$GITHUB_STEP_SUMMARY"
-          echo "**Run Date:** $(date -u +'%Y-%m-%d %H:%M:%S UTC')" >> "$GITHUB_STEP_SUMMARY"
-          echo "" >> "$GITHUB_STEP_SUMMARY"
-          if [ "${{ steps.window.outputs.active }}" != "true" ]; then
-            echo "Outside the tournament window, so the refresh was skipped. The schedule re-arms when the committed snapshot's start and end dates move forward." >> "$GITHUB_STEP_SUMMARY"
-          fi
-          if [ -n "${{ steps.verify_quality.outputs.teams }}" ]; then
-            echo "**Phase:** ${{ steps.verify_quality.outputs.phase }}" >> "$GITHUB_STEP_SUMMARY"
-            echo "**Groups:** ${{ steps.verify_quality.outputs.groups }}" >> "$GITHUB_STEP_SUMMARY"
-            echo "**Teams:** ${{ steps.verify_quality.outputs.teams }}" >> "$GITHUB_STEP_SUMMARY"
-            echo "**Fixtures:** ${{ steps.verify_quality.outputs.fixtures }}" >> "$GITHUB_STEP_SUMMARY"
-            echo "" >> "$GITHUB_STEP_SUMMARY"
-          fi
-          if [ "${{ steps.check_changes.outputs.changed }}" = "true" ]; then
-            echo "World Cup snapshot changed and was committed." >> "$GITHUB_STEP_SUMMARY"
-          else
-            echo "World Cup snapshot was already up to date." >> "$GITHUB_STEP_SUMMARY"
-          fi
 
       - name: Notify on failure via GitHub issue
         if: failure()

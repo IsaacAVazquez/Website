@@ -603,37 +603,6 @@ jobs:
           echo "::error::A fantasy refresh gate failed. Each lane committed independently when its own gates passed; see the step outcomes above."
           exit 1
 
-      - name: Create job summary
-        if: always()
-        run: |
-          echo "## Fantasy Football Snapshot Update" >> "$GITHUB_STEP_SUMMARY"
-          echo "" >> "$GITHUB_STEP_SUMMARY"
-          echo "**Status:** ${{ job.status }}" >> "$GITHUB_STEP_SUMMARY"
-          echo "**Run Date:** $(date -u +'%Y-%m-%d %H:%M:%S UTC')" >> "$GITHUB_STEP_SUMMARY"
-          echo "FantasyPros sources: public consensus HTML and projected VORP HTML" >> "$GITHUB_STEP_SUMMARY"
-          echo "" >> "$GITHUB_STEP_SUMMARY"
-          if [ "${{ steps.check_changes.outputs.changed }}" == "true" ]; then
-            echo "✅ **Redraft:** rankings, VORP, and ADP artifacts were refreshed and committed." >> "$GITHUB_STEP_SUMMARY"
-          else
-            echo "ℹ️ **Redraft:** the published rankings artifacts were already current." >> "$GITHUB_STEP_SUMMARY"
-          fi
-          echo "**Redraft gates:** freshness ${{ steps.verify_freshness.outcome }} · quality ${{ steps.verify_quality.outcome }}" >> "$GITHUB_STEP_SUMMARY"
-          echo "**Best ball build:** ${{ steps.build_best_ball.outcome }} · **gate:** ${{ steps.verify_best_ball.outcome }} · **committed:** ${{ steps.check_best_ball_changes.outputs.changed }}" >> "$GITHUB_STEP_SUMMARY"
-          echo "**Redraft ADP past its age limit:** ${{ steps.adp_health.outputs.adp_dark }}" >> "$GITHUB_STEP_SUMMARY"
-          echo "**Redraft VORP board absent or stale:** ${{ steps.verify_quality.outputs.vorp_dark }}" >> "$GITHUB_STEP_SUMMARY"
-          echo "" >> "$GITHUB_STEP_SUMMARY"
-          echo "### Public artifacts" >> "$GITHUB_STEP_SUMMARY"
-          echo "- src/data/fantasyPositionData.generated.ts" >> "$GITHUB_STEP_SUMMARY"
-          echo "- src/data/fantasyAdpData.generated.ts" >> "$GITHUB_STEP_SUMMARY"
-          echo "- src/data/fantasyGameLogData.generated.ts" >> "$GITHUB_STEP_SUMMARY"
-          echo "- src/data/fantasyVorpData.generated.ts" >> "$GITHUB_STEP_SUMMARY"
-          echo "- src/data/fantasyRankHistory.generated.json" >> "$GITHUB_STEP_SUMMARY"
-          echo "- src/data/fantasySnapshotRevision.generated.ts" >> "$GITHUB_STEP_SUMMARY"
-          echo "- public/data/fantasy/ppr.json" >> "$GITHUB_STEP_SUMMARY"
-          echo "- public/data/fantasy/half_ppr.json" >> "$GITHUB_STEP_SUMMARY"
-          echo "- public/data/fantasy/standard.json" >> "$GITHUB_STEP_SUMMARY"
-          echo "- public/data/fantasy/best-ball.json" >> "$GITHUB_STEP_SUMMARY"
-
       - name: Notify on failure via GitHub issue
         if: failure()
         uses: actions/github-script@v9
