@@ -72,26 +72,11 @@ function cacheNormalizedFantasySnapshot(
 const STATIC_SNAPSHOT_TIMEOUT_MS = 8_000;
 const API_SNAPSHOT_TIMEOUT_MS = 12_000;
 
-async function fetchWithTimeout(
-  input: string,
-  init: RequestInit,
-  timeoutMs: number
-): Promise<Response> {
-  const controller = new AbortController();
-  const timer = setTimeout(() => controller.abort(), timeoutMs);
-  try {
-    return await fetch(input, { ...init, signal: controller.signal });
-  } finally {
-    clearTimeout(timer);
-  }
-}
-
 async function fetchStaticFantasySnapshot(scoring: FantasyRouteScoring): Promise<unknown> {
-  const response = await fetchWithTimeout(
-    `/data/fantasy/${scoring}.json?v=${fantasySnapshotRevision}`,
-    { cache: "force-cache" },
-    STATIC_SNAPSHOT_TIMEOUT_MS
-  );
+  const response = await fetch(`/data/fantasy/${scoring}.json?v=${fantasySnapshotRevision}`, {
+    cache: "force-cache",
+    signal: AbortSignal.timeout(STATIC_SNAPSHOT_TIMEOUT_MS),
+  });
 
   if (!response.ok) {
     throw new Error(`Static fantasy snapshot fetch failed (${response.status})`);
@@ -101,11 +86,10 @@ async function fetchStaticFantasySnapshot(scoring: FantasyRouteScoring): Promise
 }
 
 async function fetchApiFantasySnapshot(scoring: FantasyRouteScoring): Promise<unknown> {
-  const response = await fetchWithTimeout(
-    `/api/fantasy-data?scoring=${scoring}&all=true`,
-    { cache: "no-store" },
-    API_SNAPSHOT_TIMEOUT_MS
-  );
+  const response = await fetch(`/api/fantasy-data?scoring=${scoring}&all=true`, {
+    cache: "no-store",
+    signal: AbortSignal.timeout(API_SNAPSHOT_TIMEOUT_MS),
+  });
 
   if (!response.ok) {
     throw new Error(`API fantasy snapshot fetch failed (${response.status})`);

@@ -25,7 +25,7 @@ import {
   normalizeRedraftLineup,
   redraftLineupSummary,
 } from "@/lib/redraftLineup";
-import { clamp } from "@/lib/utils";
+import { clamp, isFiniteNumber } from "@/lib/utils";
 import type {
   DraftPick,
   DraftSettings,
@@ -158,10 +158,6 @@ const BEST_BALL_COMPONENT_WEIGHTS: Readonly<
   cumulative: { market: 0.55, roster: 0.3, correlation: 0.1, byes: 0.05 },
   superflex: { market: 0.55, roster: 0.3, correlation: 0.1, byes: 0.05 },
 });
-
-function isFiniteNumber(value: unknown): value is number {
-  return typeof value === "number" && Number.isFinite(value);
-}
 
 function roundedScore(value: number): number {
   return Math.round(clamp(value, 0, 100));

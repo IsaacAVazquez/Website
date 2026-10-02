@@ -1,3 +1,4 @@
+import { isFiniteNumber } from "@/lib/utils";
 import type {
   FantasyTradeEvaluation,
   FantasyTradePlayerEvaluation,
@@ -30,10 +31,6 @@ const METRIC_CELL_BORDERS = [
   "border-r",
   "",
 ] as const;
-
-function isFiniteNumber(value: number | null): value is number {
-  return typeof value === "number" && Number.isFinite(value);
-}
 
 function isStarterLevel(player: FantasyTradePlayerEvaluation): boolean {
   const expertStarter = player.replacementCutoffs.expertStarter;

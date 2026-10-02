@@ -1,11 +1,13 @@
 "use client";
 
+import { useIsClient } from "@/hooks/useIsClient";
+import { isFiniteNumber } from "@/lib/utils";
+
 import {
   useEffect,
   useMemo,
   useRef,
   useState,
-  useSyncExternalStore,
   type CSSProperties,
 } from "react";
 import { SeasonalScopeNote } from "@/components/fantasy/SeasonalScopeNote";
@@ -72,13 +74,6 @@ import { DraftValuePanel, type ExpectedReturnFormState } from "@/components/fant
 import { DeferredPlayerDetailDrawer } from "@/components/fantasy/DeferredPlayerDetailDrawer";
 import { RedraftDecisionPanel } from "@/components/fantasy/RedraftDecisionPanel";
 import type { Player, RedraftLineupSettings, ScoringFormat } from "@/types";
-
-const subscribeToHydration = () => () => undefined;
-const getHydratedSnapshot = () => true;
-const getServerHydratedSnapshot = () => false;
-
-const isFiniteNumber = (value: unknown): value is number =>
-  typeof value === "number" && Number.isFinite(value);
 
 function publishedDraftRank(player: Player): string {
   return formatRankValue(player.rankEcr ?? player.averageRank);
@@ -332,11 +327,7 @@ function StripPlayerCard({
 }
 
 export function DraftTrackerClient() {
-  const isHydrated = useSyncExternalStore(
-    subscribeToHydration,
-    getHydratedSnapshot,
-    getServerHydratedSnapshot
-  );
+  const isHydrated = useIsClient();
   const {
     draftState,
     updateSettings,

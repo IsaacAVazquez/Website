@@ -1,5 +1,7 @@
 "use client";
 
+import { readValidatedBrowserStorage, writeBrowserStorageJson } from "@/lib/browserStorage";
+import { prefixedId } from "@/lib/utils";
 import { useEffect, useState, type CSSProperties } from "react";
 import type { DraftSettings, RedraftLineupSettings, ScoringFormat } from "@/types";
 import {
@@ -15,6 +17,7 @@ import {
   countRedraftStartingSlots,
   normalizeRedraftLineup,
   redraftLineupSummary,
+  sameRedraftLineup,
 } from "@/lib/redraftLineup";
 import { MONO_LABEL_CLASS } from "@/lib/fantasyUtils";
 import { FANTASY_SCORING_LABELS, scoringFormatToRouteScoring } from "@/lib/fantasy";
@@ -89,12 +92,6 @@ const LINEUP_FIELDS: ReadonlyArray<{
   { key: "DST", label: "Defenses", values: [0, 1] },
 ];
 
-function sameLineup(left: RedraftLineupSettings, right: RedraftLineupSettings): boolean {
-  return (Object.keys(left) as (keyof RedraftLineupSettings)[]).every(
-    (position) => left[position] === right[position]
-  );
-}
-
 /** Fused segmented control: aria-pressed buttons inside one hairline frame. */
 function SegmentedButtons<Value extends string | number>({
   options,
@@ -165,15 +162,9 @@ export function DraftSetup({
   }, [settings]);
 
   useEffect(() => {
-    try {
-      const raw = localStorage.getItem(DRAFT_PRESETS_STORAGE_KEY);
-      if (raw) {
-        // eslint-disable-next-line react-hooks/set-state-in-effect -- hydrate saved presets once on mount
-        setPresets(decodeDraftPresets(JSON.parse(raw)));
-      }
-    } catch {
-      // Presets are a convenience; a blocked read just leaves the list empty.
-    }
+    const saved = readValidatedBrowserStorage(DRAFT_PRESETS_STORAGE_KEY, decodeDraftPresets, () => []);
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- hydrate saved presets once on mount
+    if (saved.source === "valid") setPresets(saved.value);
   }, []);
 
   function updateField<Key extends keyof DraftSettings>(field: Key, value: DraftSettings[Key]) {
@@ -207,11 +198,7 @@ export function DraftSetup({
 
   function persistPresets(next: DraftPreset[]) {
     setPresets(next);
-    try {
-      localStorage.setItem(DRAFT_PRESETS_STORAGE_KEY, JSON.stringify(next));
-    } catch {
-      // A blocked write only skips the save; the applied form is unaffected.
-    }
+    writeBrowserStorageJson(DRAFT_PRESETS_STORAGE_KEY, next);
   }
 
   function applyPreset(preset: DraftPreset) {
@@ -231,7 +218,7 @@ export function DraftSetup({
       `${formState.totalTeams}-team ${FANTASY_SCORING_LABELS[scoringFormatToRouteScoring(formState.scoringFormat)]}`;
     const name = (presetName.trim() || fallbackName).slice(0, 40);
     const preset: DraftPreset = {
-      id: `preset_${Date.now()}_${Math.random().toString(36).slice(2, 9)}`,
+      id: prefixedId("preset"),
       name,
       savedAt: new Date().toISOString(),
       settings: toDraftPresetSettings(formState),
@@ -494,7 +481,7 @@ export function DraftSetup({
         </legend>
         <div className="grid gap-2" style={{ gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 190px), 1fr))" }}>
           {REDRAFT_LINEUP_PRESETS.map((preset) => {
-            const active = sameLineup(formState.lineup, preset.lineup);
+            const active = sameRedraftLineup(formState.lineup, preset.lineup);
             return (
               <button
                 key={preset.id}

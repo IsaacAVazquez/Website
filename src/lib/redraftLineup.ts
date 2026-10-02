@@ -1,3 +1,4 @@
+import { clamp } from "@/lib/utils";
 import type { RedraftLineupSettings } from "@/types";
 
 export const DEFAULT_REDRAFT_LINEUP: RedraftLineupSettings = {
@@ -48,7 +49,7 @@ const LIMITS = {
 function clampInteger(value: unknown, minimum: number, maximum: number): number {
   const parsed = typeof value === "number" ? value : Number.parseInt(String(value ?? ""), 10);
   if (!Number.isFinite(parsed)) return minimum;
-  return Math.min(maximum, Math.max(minimum, Math.round(parsed)));
+  return clamp(Math.round(parsed), minimum, maximum);
 }
 
 export function normalizeRedraftLineup(
@@ -71,6 +72,15 @@ export function normalizeRedraftLineup(
       LIMITS.DST.max
     ),
   };
+}
+
+export function sameRedraftLineup(
+  left: RedraftLineupSettings,
+  right: RedraftLineupSettings
+): boolean {
+  return (Object.keys(left) as (keyof RedraftLineupSettings)[]).every(
+    (position) => left[position] === right[position]
+  );
 }
 
 export function countRedraftStartingSlots(lineup: RedraftLineupSettings): number {

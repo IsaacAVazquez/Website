@@ -14,14 +14,12 @@ async function loadBestBallSnapshot(): Promise<BestBallSnapshot> {
   if (inflightRequest) return inflightRequest;
 
   inflightRequest = (async () => {
-    const controller = new AbortController();
-    const timer = window.setTimeout(() => controller.abort(), 10_000);
     try {
       // No version parameter and no cache mode. The only revision the site
       // generates belongs to the redraft boards, and force-cache never asks
       // how old a stored copy is, so the response's cache headers decide.
       const response = await fetch("/data/fantasy/best-ball.json", {
-        signal: controller.signal,
+        signal: AbortSignal.timeout(10_000),
       });
       if (!response.ok) {
         throw new Error(`Best ball snapshot fetch failed (${response.status}).`);
@@ -29,7 +27,6 @@ async function loadBestBallSnapshot(): Promise<BestBallSnapshot> {
       cachedSnapshot = normalizeBestBallSnapshot(await response.json());
       return cachedSnapshot;
     } finally {
-      window.clearTimeout(timer);
       inflightRequest = null;
     }
   })();

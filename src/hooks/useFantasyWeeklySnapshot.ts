@@ -54,11 +54,9 @@ async function loadWeeklySnapshot(seed: FantasyWeeklySeed | null): Promise<Weekl
   // give it another full hour in the module cache.
   const revalidateHttpCache = cachedResult !== null;
   inflightRequest = (async () => {
-    const controller = new AbortController();
-    const timer = window.setTimeout(() => controller.abort(), 10_000);
     try {
       const response = await fetch(FANTASY_WEEKLY_SNAPSHOT_URL, {
-        signal: controller.signal,
+        signal: AbortSignal.timeout(10_000),
         ...(revalidateHttpCache ? { cache: "no-cache" as const } : {}),
       });
       if (response.status === 404) {
@@ -75,7 +73,6 @@ async function loadWeeklySnapshot(seed: FantasyWeeklySeed | null): Promise<Weekl
       cachedAt = Date.now();
       return cachedResult;
     } finally {
-      window.clearTimeout(timer);
       inflightRequest = null;
     }
   })();

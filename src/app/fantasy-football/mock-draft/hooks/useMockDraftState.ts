@@ -1,6 +1,11 @@
 "use client";
 
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import {
+  readBrowserStorageString,
+  removeBrowserStorageString,
+  writeBrowserStorageJson,
+} from "@/lib/browserStorage";
 import type {
   DraftPick,
   Player,
@@ -284,12 +289,9 @@ export function useMockDraftState(
   // hydrated session never gets overwritten.
   useEffect(() => {
     if (hydratedRef.current || board.length === 0) return;
-    let raw: string | null;
-    try {
-      raw = window.localStorage.getItem(getMockDraftStorageKey());
-    } catch {
-      return;
-    }
+    const saved = readBrowserStorageString(getMockDraftStorageKey());
+    if (saved.persistenceStatus === "memory-only") return;
+    const raw = saved.value;
     if (!raw) {
       hydratedRef.current = true;
       return;
@@ -328,11 +330,7 @@ export function useMockDraftState(
             decoded.settings.draftType
           ) === decoded.settings.userTeam));
     if (!decoded || status === null || !onClockBelongsToUser) {
-      try {
-        window.localStorage.removeItem(getMockDraftStorageKey());
-      } catch {
-        // Ignore: a failed cleanup only leaves a save that will be re-checked.
-      }
+      removeBrowserStorageString(getMockDraftStorageKey());
       return;
     }
     // eslint-disable-next-line react-hooks/set-state-in-effect -- one-shot resume of a persisted room after the board loads
@@ -348,7 +346,7 @@ export function useMockDraftState(
   // removes the key itself.
   useEffect(() => {
     if (state.status === "setup") return;
-    const payload = JSON.stringify({
+    writeBrowserStorageJson(getMockDraftStorageKey(), {
       version: STORAGE_VERSION,
       status: state.status,
       settings: state.settings,
@@ -359,11 +357,6 @@ export function useMockDraftState(
         playerId: pick.player.id,
       })),
     });
-    try {
-      window.localStorage.setItem(getMockDraftStorageKey(), payload);
-    } catch {
-      // Ignore: without storage the room simply will not survive a reload.
-    }
   }, [state]);
 
   const startDraft = useCallback(
@@ -459,11 +452,7 @@ export function useMockDraftState(
   }, [state]);
 
   const resetDraft = useCallback(() => {
-    try {
-      window.localStorage.removeItem(getMockDraftStorageKey());
-    } catch {
-      // Ignore: the in-memory reset still happens.
-    }
+    removeBrowserStorageString(getMockDraftStorageKey());
     setState(SETUP_STATE);
   }, []);
 

@@ -1,8 +1,5 @@
 import {
-  getBrowserStorageSnapshot,
-  getBrowserStorageStatusSnapshot,
   readValidatedBrowserStorage,
-  subscribeBrowserStorage,
   writeBrowserStorageString,
   type PersistenceStatus,
 } from "@/lib/browserStorage";
@@ -215,25 +212,4 @@ export function writeFantasyTradePersistence(
 ): PersistenceStatus {
   const key = getFantasyTradeStorageKey(state);
   return writeBrowserStorageString(key, serializeFantasyTradePersistenceState(state));
-}
-
-/** Subscribe to same-tab helper writes and cross-tab storage events for this scope. */
-export function subscribeFantasyTradePersistence(
-  scope: FantasyTradeStorageScope,
-  listener: () => void,
-): () => void {
-  return subscribeBrowserStorage(getFantasyTradeStorageKey(scope), listener);
-}
-
-/** Stable raw snapshot for useSyncExternalStore consumers. */
-export function getFantasyTradePersistenceSnapshot(
-  scope: FantasyTradeStorageScope,
-): string {
-  return getBrowserStorageSnapshot(getFantasyTradeStorageKey(scope), "");
-}
-
-export function getFantasyTradePersistenceStatus(
-  scope: FantasyTradeStorageScope,
-): PersistenceStatus {
-  return getBrowserStorageStatusSnapshot(getFantasyTradeStorageKey(scope));
 }
