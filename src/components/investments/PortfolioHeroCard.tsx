@@ -312,15 +312,15 @@ export function PortfolioHeroCard({
     return (
       <div id="performance" className="invest-hero scroll-mt-12 min-[901px]:scroll-mt-0">
         <div className="invest-hero-left">
-          <span className="invest-hero-eyebrow">
+          <span className="invest-hero-eyebrow" role="status">
             <span className="invest-hero-livedot" aria-hidden="true" />
             Fetching market quotes
           </span>
-          <div className="my-3 h-12 w-56 bg-[var(--c97-panel)] animate-pulse" />
-          <div className="h-5 w-44 bg-[var(--c97-panel)] animate-pulse" />
+          <span className="c97-skeleton" style={{ height: 48, width: 224, maxWidth: "100%", marginBlock: "var(--c97-sp-1)" }} />
+          <span className="c97-skeleton" style={{ height: 20, width: 176, maxWidth: "100%" }} />
         </div>
         <div className="invest-chart-wrap">
-          <div className="m-auto h-32 w-3/4 bg-[var(--c97-panel)] animate-pulse" />
+          <span className="c97-skeleton" style={{ height: 128, width: "75%", margin: "auto" }} />
         </div>
       </div>
     );

@@ -225,15 +225,18 @@ export function Catalog97About() {
         <div className="c97-shell">
           {/* Same 11px-above-26px inversion as "How I work" above. */}
           <h2 className="c97-poster-sm">The route here</h2>
-          <div
+          <ol
             style={{
+              listStyle: "none",
+              margin: 0,
+              padding: 0,
               display: "grid",
               gap: "var(--c97-sp-3)",
               marginTop: "var(--c97-sp-3)",
             }}
           >
             {timeline.map((entry) => (
-              <div
+              <li
                 key={`${entry.year}-${entry.role}`}
                 style={{
                   display: "grid",
@@ -270,9 +273,9 @@ export function Catalog97About() {
                     {entry.description}
                   </p>
                 </div>
-              </div>
+              </li>
             ))}
-          </div>
+          </ol>
 
           <div
             style={{

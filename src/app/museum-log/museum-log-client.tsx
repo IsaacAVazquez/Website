@@ -1,10 +1,13 @@
 "use client";
 
 import {
+  useEffect,
   useMemo,
+  useRef,
   useState,
   useSyncExternalStore,
   type ReactNode,
+  type RefObject,
 } from "react";
 import { useSearchParams } from "next/navigation";
 import {
@@ -63,6 +66,7 @@ import { PROJECT_PRESS } from "@/constants/projectPress";
 import { toLocalDateKey } from "@/lib/date-formatters";
 import "./museum-log.css";
 import { useRouteSync } from "@/hooks/useRouteSync";
+import { useReducedMotion } from "@/hooks/useReducedMotion";
 
 interface Props {
   initialState: MuseumRouteState;
@@ -72,6 +76,18 @@ interface Props {
 const subscribeToLocalDate = () => () => {};
 const getServerLocalDate = () => null;
 const PRESS = PROJECT_PRESS[MUSEUM_LOG_ROUTE];
+
+/** A museum name set as a serif heading that opens the museum, with a 44px hit box. */
+const nameLinkStyle: React.CSSProperties = {
+  background: "none",
+  border: 0,
+  padding: 0,
+  cursor: "pointer",
+  textAlign: "left",
+  minHeight: 44,
+  display: "inline-flex",
+  alignItems: "center",
+};
 
 // ─── Primitives ────────────────────────────────────────────────────────────────
 
@@ -314,16 +330,18 @@ function MuseumCard({
         {museum.blurb}
       </p>
 
-      <QuickActions
-        museum={museum}
-        visit={visit}
-        isWatchlisted={isWatchlisted}
-        isLiked={isLiked}
-        onToggleWatchlist={onToggleWatchlist}
-        onToggleLiked={onToggleLiked}
-        onLogQuickVisit={onLogQuickVisit}
-        onClearVisit={onClearVisit}
-      />
+      <div style={{ marginTop: "auto" }}>
+        <QuickActions
+          museum={museum}
+          visit={visit}
+          isWatchlisted={isWatchlisted}
+          isLiked={isLiked}
+          onToggleWatchlist={onToggleWatchlist}
+          onToggleLiked={onToggleLiked}
+          onLogQuickVisit={onLogQuickVisit}
+          onClearVisit={onClearVisit}
+        />
+      </div>
     </article>
   );
 }
@@ -578,8 +596,8 @@ function ReviewCard({
         <button
           type="button"
           onClick={onOpenMuseum}
-          className="c97-serif c97-h3"
-          style={{ background: "none", border: 0, padding: 0, cursor: "pointer", textAlign: "left" }}
+          className="c97-serif c97-h3 c97-link-heading"
+          style={nameLinkStyle}
         >
           {museum.name}
         </button>
@@ -652,8 +670,8 @@ function VisitStampCard({
         <button
           type="button"
           onClick={onOpenMuseum}
-          className="c97-serif"
-          style={{ fontSize: "var(--c97-fs-h3)", background: "none", border: 0, padding: 0, cursor: "pointer", textAlign: "left" }}
+          className="c97-serif c97-link-heading"
+          style={{ ...nameLinkStyle, fontSize: "var(--c97-fs-h3)" }}
         >
           {museum.name}
         </button>
@@ -785,29 +803,27 @@ function ListPreviewCard({
     <button
       type="button"
       onClick={onOpen}
-      className="c97-panel"
+      className="c97-panel c97-museum-list-card"
       style={{
         padding: "var(--c97-sp-4)",
         display: "flex",
         flexDirection: "column",
         gap: "var(--c97-sp-2)",
         textAlign: "left",
-        border: 0,
         cursor: "pointer",
         width: "100%",
       }}
-      aria-label={`Open list ${list.title}`}
     >
-      <p className="c97-kicker">
+      <span className="c97-kicker">
         Exhibition catalogue · {count} {count === 1 ? "museum" : "museums"}
-      </p>
-      <h3 className="c97-serif c97-h3">{list.title}</h3>
-      <p className="c97-prose" style={{ fontSize: "var(--c97-fs-small)" }}>
+      </span>
+      <span className="c97-serif c97-h3">{list.title}</span>
+      <span className="c97-prose" style={{ fontSize: "var(--c97-fs-small)" }}>
         {list.description}
-      </p>
-      <p className="c97-stub-meta" style={{ marginTop: "auto" }}>
+      </span>
+      <span className="c97-stub-meta" style={{ marginTop: "auto" }}>
         Curated by {list.curator} · Updated {formatShortDate(list.updatedAt)}
-      </p>
+      </span>
     </button>
   );
 }
@@ -843,8 +859,8 @@ function CatalogueEntry({
         <button
           type="button"
           onClick={onOpen}
-          className="c97-serif"
-          style={{ fontSize: "var(--c97-fs-h3)", background: "none", border: 0, padding: 0, cursor: "pointer", textAlign: "left" }}
+          className="c97-serif c97-link-heading"
+          style={{ ...nameLinkStyle, fontSize: "var(--c97-fs-h3)" }}
         >
           {stub.name}
         </button>
@@ -886,9 +902,11 @@ interface MuseumDetailViewProps {
   onLogVisit: (visit: UserVisit) => void;
   onClearVisit: () => void;
   onOpenList: (slug: string) => void;
+  headingRef: RefObject<HTMLHeadingElement | null>;
 }
 
 function MuseumDetailView({
+  headingRef,
   museum,
   snapshot,
   today,
@@ -921,7 +939,9 @@ function MuseumDetailView({
             <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-2)" }}>
               {TYPE_LABEL[museum.type]} · {REGION_LABEL[museum.region]}
             </p>
-            <h2 className="c97-display" style={{ marginBottom: "var(--c97-sp-2)" }}>{museum.name}</h2>
+            <h2 ref={headingRef} tabIndex={-1} className="c97-display" style={{ marginBottom: "var(--c97-sp-2)" }}>
+              {museum.name}
+            </h2>
             <p className="c97-stub-meta">
               {museum.country} · {formatRuntime(museum.visitMinutesAvg)} average visit
             </p>
@@ -970,9 +990,9 @@ function MuseumDetailView({
                 <span className="c97-stub-meta">Visited {formatDate(review.dateVisited)}</span>
                 {review.liked && <Heart size={14} fill="var(--c97-ink)" stroke="var(--c97-ink)" aria-label="Liked" />}
               </div>
-              <h4 className="c97-serif c97-h3" style={{ marginTop: "var(--c97-sp-2)" }}>
+              <h3 className="c97-serif c97-h3" style={{ marginTop: "var(--c97-sp-2)" }}>
                 {review.headline}
-              </h4>
+              </h3>
               <p className="c97-prose" style={{ marginTop: "var(--c97-sp-3)" }}>
                 {review.body}
               </p>
@@ -1202,7 +1222,15 @@ export function MuseumLogClient({ initialState, snapshot }: Props) {
     navigate({ ...routeState, view, museum: null, list: view === "lists" ? routeState.list : null });
   }
 
+  // Opening a museum or going back moves focus and the view to the new state,
+  // but only after a click, never on a cold load of ?view=museum.
+  const pendingFocus = useRef<"detail" | "catalog" | null>(null);
+  const detailHeadingRef = useRef<HTMLHeadingElement>(null);
+  const catalogHeadingRef = useRef<HTMLHeadingElement>(null);
+  const reduceMotion = useReducedMotion();
+
   function handleOpenMuseum(slug: string) {
+    pendingFocus.current = "detail";
     navigate({ ...routeState, view: "museum", museum: slug });
   }
 
@@ -1211,6 +1239,7 @@ export function MuseumLogClient({ initialState, snapshot }: Props) {
   }
 
   function handleBackFromMuseum() {
+    pendingFocus.current = "catalog";
     navigate({ ...routeState, view: "discover", museum: null });
   }
 
@@ -1346,6 +1375,16 @@ export function MuseumLogClient({ initialState, snapshot }: Props) {
       .slice(0, 5);
   }, [selectedMuseum, snapshot.museums]);
 
+  const selectedMuseumId = selectedMuseum?.id;
+  useEffect(() => {
+    const target = pendingFocus.current;
+    const heading = target === "detail" ? detailHeadingRef.current : target === "catalog" ? catalogHeadingRef.current : null;
+    if (!heading) return;
+    pendingFocus.current = null;
+    heading.focus({ preventScroll: true });
+    heading.scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth", block: "start" });
+  }, [selectedMuseumId, reduceMotion]);
+
   // Active tab, since the detail view treats Discover as active.
   const activeView: MuseumView = routeState.view === "museum" ? "discover" : routeState.view;
 
@@ -1388,7 +1427,12 @@ export function MuseumLogClient({ initialState, snapshot }: Props) {
 
       <section className="c97-band c97-sheet" data-c97-surface="paper" data-seam="torn">
         <div className="c97-shell">
-          <h2 className="c97-poster-sm" style={{ marginBottom: "var(--c97-sp-4)" }}>
+          <h2
+            ref={catalogHeadingRef}
+            tabIndex={-1}
+            className="c97-poster-sm"
+            style={{ marginBottom: "var(--c97-sp-4)" }}
+          >
             {navItems.find((item) => item.id === activeView)?.label}
           </h2>
           <div
@@ -1619,6 +1663,7 @@ export function MuseumLogClient({ initialState, snapshot }: Props) {
               onLogVisit={logVisit}
               onClearVisit={() => removeVisit(selectedMuseum.id)}
               onOpenList={handleOpenList}
+              headingRef={detailHeadingRef}
             />
           </div>
         </section>

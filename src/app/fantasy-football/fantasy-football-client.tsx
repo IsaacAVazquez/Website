@@ -290,12 +290,8 @@ function ScoringToggle({
             aria-pressed={active}
             aria-label={option.label}
             onClick={() => onChange(option.key)}
-            className="relative min-h-touch cursor-pointer px-3 font-mono text-3xs uppercase tracking-[0.08em] transition-colors duration-150 focus-visible:z-10"
-            style={
-              active
-                ? { background: "var(--c97-ink)", color: "var(--c97-surface)" }
-                : { background: "transparent", color: "var(--c97-ink)" }
-            }
+            className={`relative min-h-touch cursor-pointer px-3 font-mono text-3xs uppercase tracking-[0.08em] transition-colors duration-150 focus-visible:z-10${active ? "" : " bg-transparent text-[var(--c97-ink)] hover:bg-[var(--c97-overlay)]"}`}
+            style={active ? { background: "var(--c97-ink)", color: "var(--c97-surface)" } : undefined}
           >
             {compact === "below-xl" ? (
               <>
@@ -347,13 +343,13 @@ function RankingToggle({
             aria-pressed={active}
             disabled={disabled}
             onClick={() => onChange(option)}
-            className="relative min-h-touch cursor-pointer px-3 font-mono text-3xs uppercase tracking-[0.08em] transition-colors duration-150 focus-visible:z-10 disabled:cursor-not-allowed"
+            className={`relative min-h-touch cursor-pointer px-3 font-mono text-3xs uppercase tracking-[0.08em] transition-colors duration-150 focus-visible:z-10 disabled:cursor-not-allowed${active || disabled ? "" : " bg-transparent text-[var(--c97-ink)] hover:bg-[var(--c97-overlay)]"}`}
             style={
               active
                 ? { background: "var(--c97-ink)", color: "var(--c97-surface)" }
                 : disabled
                   ? { background: "transparent", color: "var(--c97-ink-2)" }
-                  : { background: "transparent", color: "var(--c97-ink)" }
+                  : undefined
             }
           >
             {option === "consensus" ? "Consensus" : "VORP"}
@@ -801,7 +797,7 @@ function DraftPlayerDrawer({
                 {consensusLine}
               </p>
             ) : null}
-            <h2 className="c97-serif c97-h3 truncate" style={{ marginTop: "0.375rem" }}>{player.name}</h2>
+            <h2 className="c97-serif c97-h3 truncate" style={{ marginTop: "var(--c97-sp-1)" }}>{player.name}</h2>
             <p className="mt-1 font-mono text-2xs uppercase tracking-[0.06em]" style={{ color: "var(--c97-ink-2)" }}>
               {player.position}
               {Number.isFinite(player.positionRank) ? player.positionRank : ""} · {player.team || "FA"}
@@ -997,12 +993,12 @@ function DraftPlayerDrawer({
                       type="button"
                       onClick={() => onSelectNeighbor(neighbor.id)}
                       aria-current={selected || undefined}
-                      className="flex min-h-11 w-full items-baseline gap-2.5 border-l-[3px] px-2.5 py-1.5 text-left"
+                      className="flex min-h-11 w-full items-baseline gap-2.5 border-l-[3px] px-2.5 py-1.5 text-left hover:bg-[var(--c97-overlay)]"
                       style={{
                         borderColor: selected ? "var(--c97-accent)" : "transparent",
                         background: selected
                           ? "color-mix(in srgb, var(--c97-accent) 8%, transparent)"
-                          : "transparent",
+                          : undefined,
                         color: "var(--c97-ink)",
                       }}
                     >
@@ -1034,7 +1030,7 @@ function DraftPlayerDrawer({
           type="button"
           onClick={() => queue.toggle(player.id)}
           aria-pressed={isQueued}
-          className="inline-flex min-h-touch items-center justify-center gap-2 border font-mono text-2xs uppercase tracking-[0.08em]"
+          className={`inline-flex min-h-touch items-center justify-center gap-2 border font-mono text-2xs uppercase tracking-[0.08em]${isQueued ? "" : " border-[var(--c97-rule)] bg-[var(--c97-surface)] text-[var(--c97-ink)] hover:border-[var(--c97-ink)] hover:bg-[var(--c97-overlay)]"}`}
           style={
             isQueued
               ? {
@@ -1042,7 +1038,7 @@ function DraftPlayerDrawer({
                   background: "color-mix(in srgb, var(--c97-accent) 26%, var(--c97-surface))",
                   color: "var(--c97-ink)",
                 }
-              : { borderColor: "var(--c97-rule)", background: "var(--c97-surface)", color: "var(--c97-ink)" }
+              : undefined
           }
         >
           <Star size={14} fill={isQueued ? "currentColor" : "none"} aria-hidden="true" />
@@ -1783,7 +1779,7 @@ export function FantasyFootballClient({ initialState, initialSnapshot = null }: 
       <section className="c97-sheet" data-c97-surface={`ink-${PROJECT_PRESS["/fantasy-football"].lead}`}>
         <div className={SHELL_CLASS} style={{ paddingBlock: "var(--c97-sp-5)" }}>
           <h1 className="c97-poster">Fantasy Football Rankings</h1>
-          <p className="c97-lead" style={{ marginTop: "var(--c97-sp-3)" }}>
+          <p className="c97-lead" style={{ marginTop: "var(--c97-sp-3)", maxInlineSize: "62ch" }}>
             {vorpMode
               ? `VORP ranks FantasyPros' projected season points above the same-position waiver replacement in a ${routeState.teams}-team league. FantasyPros supplies the roster baseline for this view.`
               : "The board pairs the expert consensus with market ADP, and the tier plates and cliff lines mark where the board actually drops off."}
@@ -2162,14 +2158,7 @@ export function FantasyFootballClient({ initialState, initialSnapshot = null }: 
           {isLoading ? (
             <div className="grid gap-2" aria-hidden="true">
               {Array.from({ length: 12 }).map((_, index) => (
-                <div
-                  key={`loading-${index}`}
-                  className="h-11 border motion-safe:animate-pulse"
-                  style={{
-                    borderColor: "var(--c97-rule)",
-                    background: "var(--c97-field)",
-                  }}
-                />
+                <div key={`loading-${index}`} className="c97-skeleton" style={{ height: 44 }} />
               ))}
             </div>
           ) : error ? (
@@ -2190,8 +2179,8 @@ export function FantasyFootballClient({ initialState, initialSnapshot = null }: 
               <button
                 type="button"
                 onClick={retry}
-                className="mt-4 inline-flex min-h-touch items-center border px-4 text-sm font-semibold"
-                style={{ borderColor: "var(--c97-ink)", background: "var(--c97-ink)", color: "var(--c97-surface)" }}
+                className="c97-btn c97-btn-invert"
+                style={{ marginTop: "var(--c97-sp-2)" }}
               >
                 Retry rankings
               </button>
@@ -2224,8 +2213,8 @@ export function FantasyFootballClient({ initialState, initialSnapshot = null }: 
                 <button
                   type="button"
                   onClick={() => setQueuedOnly(false)}
-                  className="mt-3.5 inline-flex min-h-touch items-center border px-4 font-mono text-2xs uppercase tracking-[0.06em]"
-                  style={{ borderColor: "var(--c97-ink)", background: "var(--c97-ink)", color: "var(--c97-surface)" }}
+                  className="c97-btn c97-btn-invert"
+                  style={{ marginTop: "var(--c97-sp-2)" }}
                 >
                   Show all players
                 </button>
@@ -2237,8 +2226,7 @@ export function FantasyFootballClient({ initialState, initialSnapshot = null }: 
                       setSearchQuery("");
                       updateRouteState({ query: "" });
                     }}
-                    className="inline-flex min-h-touch items-center border px-4 font-mono text-2xs uppercase tracking-[0.06em]"
-                    style={{ borderColor: "var(--c97-ink)", background: "var(--c97-ink)", color: "var(--c97-surface)" }}
+                    className="c97-btn c97-btn-invert"
                   >
                     Clear search
                   </button>
@@ -2246,8 +2234,7 @@ export function FantasyFootballClient({ initialState, initialSnapshot = null }: 
                     <button
                       type="button"
                       onClick={() => updateRouteState({ position: "overall" })}
-                      className="inline-flex min-h-touch items-center border px-4 font-mono text-2xs uppercase tracking-[0.06em]"
-                      style={{ borderColor: "var(--c97-rule)", background: "var(--c97-surface)", color: "var(--c97-ink)" }}
+                      className="c97-btn c97-btn-outline"
                     >
                       Found on the overall board
                     </button>
@@ -2265,8 +2252,7 @@ export function FantasyFootballClient({ initialState, initialSnapshot = null }: 
                     onClick={() =>
                       setVisibleCount((count) => Math.min(count + RANKINGS_PAGE_SIZE, filteredPlayers.length))
                     }
-                    className="inline-flex min-h-touch items-center gap-2 border px-5 text-sm font-semibold"
-                    style={{ borderColor: "var(--c97-rule)", background: "var(--c97-surface)" }}
+                    className="inline-flex min-h-touch items-center gap-2 border border-[var(--c97-rule)] bg-[var(--c97-surface)] px-5 text-sm font-semibold hover:border-[var(--c97-ink)] hover:bg-[var(--c97-overlay)]"
                   >
                     Load more ({filteredPlayers.length - windowedPlayers.length} left)
                   </button>
@@ -2301,8 +2287,7 @@ export function FantasyFootballClient({ initialState, initialSnapshot = null }: 
                 <Link
                   key={tool.href}
                   href={tool.href}
-                  className="inline-flex min-h-touch items-center text-sm font-semibold no-underline"
-                  style={{ color: "var(--c97-ink)" }}
+                  className="c97-link inline-flex min-h-touch items-center text-sm font-semibold"
                 >
                   {tool.label}
                   <span aria-hidden="true">&nbsp;↗</span>
@@ -2316,7 +2301,7 @@ export function FantasyFootballClient({ initialState, initialSnapshot = null }: 
       <section className="c97-sheet" data-c97-surface="bone" data-seam="torn" aria-labelledby="fantasy-rankings-questions">
         <div className={SHELL_CLASS} style={{ paddingBlock: "var(--c97-sp-5)" }}>
           <div className="max-w-3xl">
-            <p className="c97-kicker" style={{ marginBottom: "0.5rem" }}>How the board works</p>
+            <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-1)" }}>How the board works</p>
             <h2 id="fantasy-rankings-questions" className="c97-poster-sm">
               Fantasy rankings questions
             </h2>

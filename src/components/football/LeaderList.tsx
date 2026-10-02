@@ -41,7 +41,7 @@ export function LeaderList({
               </div>
             </div>
             <div className="text-right">
-              <p className="text-lg font-bold text-[var(--c97-ink)]">{leader.total}</p>
+              <p className="c97-tabular text-lg font-bold text-[var(--c97-ink)]">{leader.total}</p>
               <p className="text-xs uppercase tracking-[0.12em] text-[var(--c97-label)]">
                 {statLabel}
               </p>

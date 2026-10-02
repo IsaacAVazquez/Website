@@ -55,7 +55,6 @@ import {
   HEADER_CHIP_CLASS,
   MONO_LABEL_CLASS,
   PILL_BUTTON_CLASS,
-  PILL_BUTTON_STYLE,
   POSITION_CHIP_CLASS,
   SHELL_CLASS,
   WARNING_CARD_STYLE,
@@ -1043,7 +1042,7 @@ export function DraftTrackerClient() {
   // so measure it instead of assuming a height.
   const fasciaRef = useRef<HTMLElement | null>(null);
   const [fasciaHeight, setFasciaHeight] = useState(0);
-  const boardStickyTop = `calc(4.5rem + ${fasciaHeight}px)`;
+  const boardStickyTop = `${fasciaHeight}px`;
 
   useEffect(() => {
     const element = fasciaRef.current;
@@ -1187,7 +1186,7 @@ export function DraftTrackerClient() {
             {rankingsStale ? (
               <div
                 role="alert"
-                className="border px-3.5 py-2.5 text-sm leading-6"
+                className="max-w-[68ch] border px-3.5 py-2.5 text-sm leading-6"
                 style={WARNING_CARD_STYLE}
               >
                 The ranking source is stale, so Draft Outlook and calculated draft signals are paused.
@@ -1198,7 +1197,7 @@ export function DraftTrackerClient() {
             {!rankingsStale && adpSourceStale ? (
               <div
                 role="status"
-                className="border px-3.5 py-2.5 text-sm leading-6"
+                className="max-w-[68ch] border px-3.5 py-2.5 text-sm leading-6"
                 style={WARNING_CARD_STYLE}
               >
                 The mock-draft ADP source is stale, so market price signals are hidden. The room is
@@ -1309,7 +1308,6 @@ export function DraftTrackerClient() {
                       draftState.picks.length === 0 ? "Undo last pick (no picks yet)" : "Undo last pick"
                     }
                     className={PILL_BUTTON_CLASS}
-                    style={PILL_BUTTON_STYLE}
                   >
                     ↶ Undo pick
                   </button>
@@ -1317,7 +1315,7 @@ export function DraftTrackerClient() {
                     type="button"
                     onClick={handleNewRoom}
                     className={PILL_BUTTON_CLASS}
-                    style={{ ...PILL_BUTTON_STYLE, color: "var(--c97-ink-2)" }}
+                    style={{ color: "var(--c97-ink-2)" }}
                   >
                     New room
                   </button>
@@ -1462,7 +1460,7 @@ export function DraftTrackerClient() {
                     className="ml-auto inline-flex min-h-touch items-center gap-1 font-mono text-2xs uppercase tracking-[0.08em]"
                     style={{ color: "var(--c97-ink)" }}
                   >
-                    Why these picks {showDecisionDetail ? "▴" : "▾"}
+                    Why these picks <span aria-hidden="true">{showDecisionDetail ? "▴" : "▾"}</span>
                   </button>
                 </div>
                 {/* Opening "Why these picks" adds each card's reasoning line and the
@@ -1569,7 +1567,7 @@ export function DraftTrackerClient() {
                 className="inline-flex min-h-touch items-center gap-1 font-mono text-2xs uppercase tracking-[0.08em]"
                 style={{ color: "var(--c97-ink-2)" }}
               >
-                What changes if you wait {showDecisionDetail ? "▴" : "▾"}
+                What changes if you wait <span aria-hidden="true">{showDecisionDetail ? "▴" : "▾"}</span>
               </button>
             </div>
           ) : null}
@@ -1644,8 +1642,7 @@ export function DraftTrackerClient() {
                   <button
                     type="button"
                     onClick={retry}
-                    className="mt-4 inline-flex min-h-touch items-center justify-center border px-4 text-sm font-semibold"
-                    style={PILL_BUTTON_STYLE}
+                    className="mt-4 inline-flex min-h-touch items-center justify-center border border-[var(--c97-rule)] bg-[var(--c97-surface)] px-4 text-sm font-semibold text-[var(--c97-ink)] hover:border-[var(--c97-ink)]"
                   >
                     Retry rankings
                   </button>
@@ -1703,7 +1700,7 @@ export function DraftTrackerClient() {
                       style={{ color: "var(--c97-ink-2)" }}
                     >
                       Model recap so far · {draftRecap.totalTurns} recorded{" "}
-                      {draftRecap.totalTurns === 1 ? "turn" : "turns"} ▾
+                      {draftRecap.totalTurns === 1 ? "turn" : "turns"} <span aria-hidden="true">▾</span>
                     </summary>
                     <div className="mt-3">
                       <DraftRecapPanel recap={draftRecap} totalUserTurns={userTurnTotal} />
@@ -1711,7 +1708,7 @@ export function DraftTrackerClient() {
                   </details>
                 )}
                 <article className="c97-panel">
-                  <p className="c97-kicker" style={{ marginBottom: "0.25rem" }}>Room actions</p>
+                  <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-1)" }}>Room actions</p>
                   <div className="mt-3 flex flex-wrap gap-2">
                     <button
                       type="button"
@@ -1719,7 +1716,6 @@ export function DraftTrackerClient() {
                       disabled={!canRedo}
                       aria-label={canRedo ? "Redo the last undone pick" : "Redo (nothing to redo)"}
                       className={PILL_BUTTON_CLASS}
-                      style={PILL_BUTTON_STYLE}
                     >
                       ↷ Redo pick
                     </button>
@@ -1733,7 +1729,6 @@ export function DraftTrackerClient() {
                         type="button"
                         onClick={() => handleExport(option.format)}
                         className={PILL_BUTTON_CLASS}
-                        style={PILL_BUTTON_STYLE}
                       >
                         {option.label}
                       </button>
@@ -1743,9 +1738,8 @@ export function DraftTrackerClient() {
                       onClick={() => setShowTeamEditor((open) => !open)}
                       aria-expanded={showTeamEditor}
                       className={PILL_BUTTON_CLASS}
-                      style={PILL_BUTTON_STYLE}
                     >
-                      Name the teams {showTeamEditor ? "▴" : "▾"}
+                      Name the teams <span aria-hidden="true">{showTeamEditor ? "▴" : "▾"}</span>
                     </button>
                   </div>
                   {showTeamEditor && (
@@ -1775,7 +1769,7 @@ export function DraftTrackerClient() {
                       ))}
                     </div>
                   )}
-                  <p className="mt-3 text-xs leading-6" style={{ color: "var(--c97-ink-2)" }}>
+                  <p className="mt-3 max-w-[68ch] text-xs leading-6" style={{ color: "var(--c97-ink-2)" }}>
                     Change league settings by starting a new room. Active drafts keep one fixed room
                     configuration, and picks stay on this device.
                   </p>
@@ -1794,7 +1788,7 @@ export function DraftTrackerClient() {
                 href="/fantasy-football"
                 className="inline-flex min-h-touch items-center text-sm font-semibold no-underline"
               >
-                Open the rankings board ↗
+                Open the rankings board <span aria-hidden="true">↗</span>
               </Link>
             </div>
           </div>

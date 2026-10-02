@@ -6,7 +6,13 @@ import type { SearchInterfaceProps } from "./SearchInterface";
 
 const SearchInterfaceNoSSR = dynamic<SearchInterfaceProps>(
   () => import("./SearchInterface").then((mod) => mod.SearchInterface),
-  { ssr: false }
+  {
+    ssr: false,
+    // Holds the field's 48px while the chunk loads so the band does not jump in.
+    loading: () => (
+      <span className="c97-skeleton" aria-hidden="true" style={{ display: "block", height: 48, width: "100%" }} />
+    ),
+  }
 );
 
 export function SearchInterfaceClient(props: SearchInterfaceProps) {

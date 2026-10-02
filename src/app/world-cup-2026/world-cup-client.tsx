@@ -374,7 +374,7 @@ export function WorldCupClient({
 
       <section className="c97-band c97-sheet" data-c97-surface="paper" data-seam="torn">
         <div className="c97-shell">
-          <div className="flex items-center justify-between">
+          <div className="flex flex-wrap items-center justify-between" style={{ gap: "var(--c97-sp-2)" }}>
             <h2 className="c97-poster-sm">Host venues</h2>
             <span className="c97-meta">
               {tournament.venues.length} stadiums · {venuesByCountry.length} nations
@@ -686,7 +686,7 @@ function KnockoutView({
     return (
       <EmptyPanel
         title="The bracket builds after the group stage"
-        description="This World Cup's knockout stage opens with a Round of 32: the top two from every group plus the eight best third-placed teams. From there it runs through the Round of 16, quarterfinals, semifinals, and the final."
+        description="This World Cup's knockout stage opens with a Round of 32, made up of the top two from every group plus the eight best third-placed teams. From there it runs through the Round of 16, quarterfinals, semifinals, and the final."
       />
     );
   }
@@ -860,7 +860,7 @@ function TeamDetailCard({
             onClick={onClear}
             aria-label="Clear selected team"
             className="c97-btn-ghost"
-            style={{ flexShrink: 0, minHeight: 44, minWidth: 44, padding: 0 }}
+            style={{ flexShrink: 0, minHeight: 44, minWidth: 44, justifyContent: "center" }}
           >
             <X className="h-4 w-4" aria-hidden="true" />
           </button>
@@ -964,8 +964,7 @@ function TeamDetailCard({
             className="c97-prose"
             style={{ marginTop: "var(--c97-sp-2)", borderTop: "1px solid var(--c97-rule)", paddingTop: "var(--c97-sp-3)" }}
           >
-            Standings and fixtures for {option.name} appear here once the tournament reached
-            that stage.
+            This snapshot has no standings or fixtures for {option.name}.
           </p>
         )}
       </div>

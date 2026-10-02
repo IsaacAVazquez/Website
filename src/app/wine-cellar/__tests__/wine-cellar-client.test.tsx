@@ -22,10 +22,10 @@ describe("WineCellarClient", () => {
     fireEvent.change(screen.getByLabelText("Region"), {
       target: { value: "Piedmont" },
     });
-    fireEvent.change(screen.getByLabelText("Varietal"), {
+    fireEvent.change(screen.getByLabelText("Varietal / grape"), {
       target: { value: "Nebbiolo" },
     });
-    fireEvent.change(screen.getByLabelText("Price"), {
+    fireEvent.change(screen.getByLabelText("Price (USD)"), {
       target: { value: "70" },
     });
     fireEvent.change(screen.getByLabelText("Rating"), {

@@ -10,7 +10,7 @@ describe("RecipeFinderClient", () => {
     render(<RecipeFinderClient />);
 
     expect(screen.getByRole("heading", { level: 1, name: "Recipe Finder" })).toBeVisible();
-    expect(screen.getByRole("tab", { name: /all recipes/i, selected: true })).toBeVisible();
+    expect(screen.getByRole("button", { name: /all recipes/i, pressed: true })).toBeVisible();
     expect(screen.getByLabelText("Matching recipes")).toBeVisible();
     expect(screen.getByText(/ingredient[s]? in pantry/i)).toBeVisible();
   });
@@ -46,23 +46,23 @@ describe("RecipeFinderClient", () => {
     });
     expect(screen.getByLabelText("Matching recipes")).toHaveTextContent(/chicken/i);
 
-    fireEvent.click(screen.getByRole("tab", { name: /quick wins/i }));
-    expect(screen.getByRole("tab", { name: /quick wins/i, selected: true })).toBeVisible();
+    fireEvent.click(screen.getByRole("button", { name: /quick wins/i }));
+    expect(screen.getByRole("button", { name: /quick wins/i, pressed: true })).toBeVisible();
 
-    fireEvent.click(screen.getByRole("tab", { name: /dinner/i }));
-    expect(screen.getByRole("tab", { name: /dinner/i, selected: true })).toBeVisible();
+    fireEvent.click(screen.getByRole("button", { name: /dinner/i }));
+    expect(screen.getByRole("button", { name: /dinner/i, pressed: true })).toBeVisible();
 
     fireEvent.change(screen.getByLabelText("Filter by diet"), {
       target: { value: "high-protein" },
     });
 
-    fireEvent.click(screen.getByRole("tab", { name: /vegetarian/i }));
+    fireEvent.click(screen.getByRole("button", { name: /vegetarian/i }));
     expect(screen.getByLabelText("Filter by diet")).toBeDisabled();
     expect(
       screen.getByText(/Vegetarian view is active/i)
     ).toBeVisible();
 
-    fireEvent.click(screen.getByRole("tab", { name: /all recipes/i }));
+    fireEvent.click(screen.getByRole("button", { name: /all recipes/i }));
     const firstRecipeButton = within(screen.getByLabelText("Matching recipes")).getAllByRole(
       "button"
     )[0];

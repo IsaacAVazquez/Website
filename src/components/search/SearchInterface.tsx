@@ -39,6 +39,7 @@ export interface SearchState {
   results: SearchResult[];
   isLoading: boolean;
   hasSearched: boolean;
+  error: boolean;
   totalResults: number;
   searchTime: number;
 }
@@ -87,6 +88,7 @@ export function SearchInterface({
     results: [],
     isLoading: false,
     hasSearched: false,
+    error: false,
     totalResults: 0,
     searchTime: 0
   }));
@@ -154,6 +156,7 @@ export function SearchInterface({
         results: [],
         isLoading: false,
         hasSearched: false,
+        error: false,
         totalResults: 0,
         searchTime: 0
       }));
@@ -183,6 +186,7 @@ export function SearchInterface({
         results: data.results || [],
         isLoading: false,
         hasSearched: true,
+        error: false,
         totalResults: data.total || 0,
         searchTime
       }));
@@ -194,6 +198,7 @@ export function SearchInterface({
         results: [],
         isLoading: false,
         hasSearched: true,
+        error: true,
         totalResults: 0,
         searchTime: Date.now() - startTime
       }));
@@ -244,6 +249,7 @@ export function SearchInterface({
       results: [],
       isLoading: false,
       hasSearched: false,
+      error: false,
       totalResults: 0,
       searchTime: 0,
     }));
@@ -254,7 +260,7 @@ export function SearchInterface({
     setSearchState(prev => ({
       ...prev,
       query,
-      ...(!query.trim() ? { results: [], isLoading: false, hasSearched: false, totalResults: 0, searchTime: 0 } : {}),
+      ...(!query.trim() ? { results: [], isLoading: false, hasSearched: false, error: false, totalResults: 0, searchTime: 0 } : {}),
     }));
   };
 
@@ -278,6 +284,7 @@ export function SearchInterface({
       results: [],
       isLoading: false,
       hasSearched: false,
+      error: false,
       totalResults: 0,
       searchTime: 0
     }));
@@ -423,6 +430,8 @@ export function SearchInterface({
       <div role="status" aria-live="polite" aria-atomic="true" className="sr-only">
         {searchState.isLoading
           ? "Searching…"
+          : searchState.error
+            ? "Search isn't answering right now, so try again in a moment."
           : searchState.hasSearched
             ? searchState.totalResults === 0
               ? `No results found${searchState.query ? ` for ${searchState.query}` : ""}`
@@ -432,14 +441,27 @@ export function SearchInterface({
 
       {/* Search Results */}
       <div id="search-results">
-        <SearchResults
-          query={searchState.query}
-          results={searchState.results}
-          isLoading={searchState.isLoading}
-          hasSearched={searchState.hasSearched}
-          totalResults={searchState.totalResults}
-          searchTime={searchState.searchTime}
-        />
+        {searchState.error && !searchState.isLoading ? (
+          <div className="c97-panel" style={{ display: "grid", gap: "var(--c97-sp-2)", justifyItems: "start" }}>
+            <p className="c97-prose">Search isn&apos;t answering right now, so try again in a moment.</p>
+            <button
+              type="button"
+              className="c97-btn-ghost"
+              onClick={() => performSearch(searchState.query, searchState.type, searchState.category)}
+            >
+              Try again
+            </button>
+          </div>
+        ) : (
+          <SearchResults
+            query={searchState.query}
+            results={searchState.results}
+            isLoading={searchState.isLoading}
+            hasSearched={searchState.hasSearched}
+            totalResults={searchState.totalResults}
+            searchTime={searchState.searchTime}
+          />
+        )}
       </div>
 
       {/* Search Tips */}

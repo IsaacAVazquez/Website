@@ -354,7 +354,7 @@ export default function ArcadeClient() {
             </div>
           </div>
 
-          <div className={styles.board} role="grid" aria-label="Reactor grid">
+          <div className={styles.board} role="group" aria-label="Reactor grid">
             {Array.from({ length: GRID }, (_, i) => {
               const live = i === liveCell;
               const decoy = i === decoyCell;
@@ -375,6 +375,13 @@ export default function ArcadeClient() {
                   className={cls}
                   disabled={status !== "playing"}
                   onPointerDown={() => handleCellClick(i)}
+                  onKeyDown={(e) => {
+                    if (e.repeat) return;
+                    if (e.key === "Enter" || e.key === " ") {
+                      e.preventDefault();
+                      handleCellClick(i);
+                    }
+                  }}
                   aria-label={`Cell ${i + 1}${
                     live ? ", target live" : decoy ? ", decoy" : ""
                   }`}
@@ -440,7 +447,7 @@ export default function ArcadeClient() {
           <div className={styles.timerTrack} aria-hidden="true">
             <div
               className={styles.timerFill}
-              style={{ width: `${status === "playing" ? timerPct : 0}%` }}
+              style={{ transform: `scaleX(${status === "playing" ? timerPct / 100 : 0})` }}
             />
           </div>
         </section>

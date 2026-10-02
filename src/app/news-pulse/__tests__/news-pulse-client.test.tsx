@@ -106,7 +106,7 @@ describe("NewsPulseClient", () => {
 
     await waitFor(() =>
       expect(
-        screen.getByRole("heading", { level: 2, name: sampleArticles[0].title }),
+        screen.getByRole("heading", { level: 3, name: sampleArticles[0].title }),
       ).toBeVisible(),
     );
 
@@ -147,7 +147,7 @@ describe("NewsPulseClient", () => {
     );
 
     expect(
-      screen.getByRole("heading", { level: 2, name: sampleArticles[0].title }),
+      screen.getByRole("heading", { level: 3, name: sampleArticles[0].title }),
     ).toBeVisible();
     expect(screen.queryByText("Refreshing live feeds")).not.toBeInTheDocument();
 
@@ -163,7 +163,7 @@ describe("NewsPulseClient", () => {
 
     await waitFor(() =>
       expect(
-        screen.getByRole("heading", { level: 2, name: sampleArticles[1].title }),
+        screen.getByRole("heading", { level: 3, name: sampleArticles[1].title }),
       ).toBeVisible(),
     );
 
@@ -221,7 +221,7 @@ describe("NewsPulseClient", () => {
 
     await waitFor(() =>
       expect(
-        screen.getByRole("heading", { level: 2, name: sampleArticles[0].title }),
+        screen.getByRole("heading", { level: 3, name: sampleArticles[0].title }),
       ).toBeVisible(),
     );
 
@@ -266,7 +266,7 @@ describe("NewsPulseClient", () => {
 
     expect(screen.getByText("BBC: timeout")).toBeVisible();
     expect(
-      screen.getByRole("heading", { level: 2, name: sampleArticles[0].title }),
+      screen.getByRole("heading", { level: 3, name: sampleArticles[0].title }),
     ).toBeVisible();
   });
 

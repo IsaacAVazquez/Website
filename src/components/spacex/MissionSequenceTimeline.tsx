@@ -24,11 +24,14 @@ export function MissionSequenceTimeline({ rocketName, upcoming }: MissionSequenc
         timeline, so this is an estimated reference sequence, not this mission&apos;s actual
         telemetry.
       </p>
-      <ul className="relative m-0 list-none p-0">
+      {/* The rail sits in a wrapper beside the list, since a <ul> may only
+          hold <li> children. */}
+      <div className="relative">
         <span
           aria-hidden="true"
           className="absolute bottom-1.5 left-[5px] top-1.5 w-px bg-[var(--c97-rule)]"
         />
+      <ul className="relative m-0 list-none p-0">
         {steps.map((step, index) => {
           const state = upcoming ? (index === 0 ? "next" : "pending") : "reference";
           return (
@@ -46,10 +49,6 @@ export function MissionSequenceTimeline({ rocketName, upcoming }: MissionSequenc
                       : state === "reference"
                         ? "var(--c97-ink-2)"
                         : "var(--c97-rule)",
-                  boxShadow:
-                    state === "next"
-                      ? "0 0 0 4px color-mix(in srgb, var(--c97-accent) 18%, transparent)"
-                      : undefined,
                 }}
               />
               <span
@@ -69,6 +68,7 @@ export function MissionSequenceTimeline({ rocketName, upcoming }: MissionSequenc
           );
         })}
       </ul>
+      </div>
     </div>
   );
 }

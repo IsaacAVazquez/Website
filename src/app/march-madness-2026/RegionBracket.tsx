@@ -56,7 +56,7 @@ function TeamLabel({
       </text>
       {isWinner && isUpset ? (
         <g transform={`translate(${x + COL_W - 70}, ${y - 8})`}>
-          <path d="M0 8 L6 0 L12 8 Z" fill="var(--c97-ink)" />
+          <path d="M0 8 L6 0 L12 8 Z" className="mm-bracket-upset-mark" />
           <text x={16} y={9} className="mm-bracket-upset-label">
             Upset
           </text>
@@ -74,8 +74,8 @@ function GameBox({ game, roundIndex, rows }: { game: BracketGame; roundIndex: nu
 
   return (
     <g>
-      <rect x={x} y={top} width={COL_W} height={BOX_H} fill="none" stroke="var(--c97-rule)" />
-      <line x1={x} x2={x + COL_W} y1={top + rowH} y2={top + rowH} stroke="var(--c97-rule)" />
+      <rect x={x} y={top} width={COL_W} height={BOX_H} className="mm-bracket-box" />
+      <line x1={x} x2={x + COL_W} y1={top + rowH} y2={top + rowH} className="mm-bracket-link" />
       <TeamLabel
         x={x + 8}
         y={top + rowH / 2 + 4}
@@ -109,8 +109,7 @@ function Connector({ game, roundIndex, rows }: { game: BracketGame; roundIndex: 
   return (
     <path
       d={`M${prevRight} ${y0} H${midX} M${prevRight} ${y1} H${midX} M${midX} ${y0} V${y1} M${midX} ${yMid} H${thisLeft}`}
-      fill="none"
-      stroke="var(--c97-rule)"
+      className="mm-bracket-link"
     />
   );
 }
@@ -178,7 +177,7 @@ export function RegionBracket({ data }: RegionBracketProps) {
           x2={championX}
           y1={championY}
           y2={championY}
-          stroke="var(--c97-rule)"
+          className="mm-bracket-link"
         />
       ) : null}
 
@@ -195,9 +194,7 @@ export function RegionBracket({ data }: RegionBracketProps) {
             y={championY - BOX_H / 2}
             width={CHAMPION_W}
             height={BOX_H}
-            fill="none"
-            stroke="var(--c97-ink)"
-            strokeWidth={1.5}
+            className="mm-bracket-champion-box"
           />
           <text x={championX + 10} y={championY - 4} className="mm-bracket-seed">
             {championSeed ?? ""}

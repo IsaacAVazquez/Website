@@ -63,10 +63,10 @@ test.describe("Product surfaces", () => {
 
     await expectHealthyRoute(page, "/github-trending-pulse", /GitHub Trending Pulse/i);
 
-    const topicTab = page.getByRole("tab", { name: /^Topic$/i });
+    const topicTab = page.getByRole("button", { name: /^Topic$/i });
     await topicTab.click();
     await expect(page).toHaveURL(/view=topic/);
-    await expect(topicTab).toHaveAttribute("aria-selected", "true");
+    await expect(topicTab).toHaveAttribute("aria-pressed", "true");
 
     const starsSort = page.getByRole("button", { name: /^Stars$/i });
     await starsSort.click();
@@ -91,8 +91,8 @@ test.describe("Product surfaces", () => {
     );
     await expect(page.getByTestId("mission-hero")).toBeVisible();
     await expect(page.getByTestId("mission-board")).toBeVisible();
-    await expect(page.getByRole("tab", { name: /^Past$/i })).toHaveAttribute(
-      "aria-selected",
+    await expect(page.getByRole("button", { name: /^Past$/i })).toHaveAttribute(
+      "aria-pressed",
       "true"
     );
     await expectNoHorizontalOverflow(page);

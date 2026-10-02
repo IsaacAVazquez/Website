@@ -8,6 +8,7 @@ import {
   type ReactNode,
 } from "react";
 import { Catalog97ProjectHero } from "@/components/catalog97/Catalog97ProjectHero";
+import { useReducedMotion } from "@/hooks/useReducedMotion";
 import { PROJECT_PRESS } from "@/constants/projectPress";
 import {
   CI_OPTIONS,
@@ -134,10 +135,12 @@ const termStyle: CSSProperties = {
 };
 
 function SectionHeading({
+  id,
   kicker,
   title,
   children,
 }: {
+  id?: string;
   kicker: string;
   title: string;
   children?: ReactNode;
@@ -145,7 +148,7 @@ function SectionHeading({
   return (
     <div style={{ maxWidth: "var(--c97-column)" }}>
       <p className="c97-kicker">{kicker}</p>
-      <h2 className="c97-poster-sm" style={{ marginTop: "var(--c97-sp-2)" }}>
+      <h2 id={id} className="c97-poster-sm" style={{ marginTop: "var(--c97-sp-2)" }}>
         {title}
       </h2>
       {children ? (
@@ -206,23 +209,6 @@ function WorkspaceTabs({
             aria-selected={active}
             onClick={() => onChange(id)}
             className="c97-microlink"
-            /*
-             * The segmented group styles its pressed state off `aria-pressed`,
-             * which a `role="tab"` cannot carry, so the selected underline is
-             * drawn inline from the same values.
-             */
-            style={{
-              background: "none",
-              border: 0,
-              cursor: "pointer",
-              display: "inline-flex",
-              alignItems: "baseline",
-              color: active ? "var(--c97-ink)" : "var(--c97-label)",
-              textDecoration: active ? "underline" : "none",
-              textDecorationThickness: 2,
-              textUnderlineOffset: 6,
-              textDecorationColor: "var(--c97-accent)",
-            }}
           >
             {label}
           </button>
@@ -249,8 +235,12 @@ function ProgramDashboard({ onStart }: { onStart: () => void }) {
       >
         <div className="c97-shell">
           <div style={headerRowStyle}>
-            <SectionHeading kicker="Portfolio signal" title="See where the standard is holding">
-              <p id="program-metrics-heading">
+            <SectionHeading
+              id="program-metrics-heading"
+              kicker="Portfolio signal"
+              title="See where the standard is holding"
+            >
+              <p>
                 This simulated view covers twelve independent teams. I care about the resolution
                 rate, but the more useful output is the failure log because it tells the central
                 team where documentation and integrations still break down.
@@ -368,8 +358,12 @@ function ProgramDashboard({ onStart }: { onStart: () => void }) {
         data-seam="torn"
       >
         <div className="c97-shell">
-          <SectionHeading kicker="Team adoption" title="One standard, twelve local realities">
-            <p id="adoption-heading">
+          <SectionHeading
+            id="adoption-heading"
+            kicker="Team adoption"
+            title="One standard, twelve local realities"
+          >
+            <p>
               The useful comparison is visible by team, from the stack each team runs, to the
               questions it resolves, to the exact point where it has drifted.
             </p>
@@ -453,8 +447,12 @@ function ProgramDashboard({ onStart }: { onStart: () => void }) {
         data-seam="deckle"
       >
         <div className="c97-shell">
-          <SectionHeading kicker="Standards drift" title="Where teams are leaving the shared path">
-            <p id="drift-heading">
+          <SectionHeading
+            id="drift-heading"
+            kicker="Standards drift"
+            title="Where teams are leaving the shared path"
+          >
+            <p>
               Partial adoption matters because a team can use the recommended framework and still
               preserve the reporting and maintenance differences that made the portfolio hard to
               support.
@@ -941,7 +939,9 @@ function RecommendationSection({
   const [question, setQuestion] = useState("");
   const [attempted, setAttempted] = useState("");
   const [match, setMatch] = useState<TroubleshootingMatch | null>(null);
-  const [copied, setCopied] = useState<"none" | "plan" | "handoff">("none");
+  const [copied, setCopied] = useState<
+    "none" | "plan" | "handoff" | "plan-error" | "handoff-error"
+  >("none");
 
   function runTroubleshooting(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -959,9 +959,26 @@ function RecommendationSection({
   });
 
   async function copyText(value: string, target: "plan" | "handoff") {
-    await navigator.clipboard.writeText(value);
-    setCopied(target);
+    try {
+      await navigator.clipboard.writeText(value);
+      setCopied(target);
+    } catch {
+      setCopied(`${target}-error`);
+    }
   }
+
+  const planCopyLabel =
+    copied === "plan"
+      ? "Plan copied"
+      : copied === "plan-error"
+        ? "Copy failed, select the text below"
+        : "Copy full plan";
+  const handoffCopyLabel =
+    copied === "handoff"
+      ? "Support request copied"
+      : copied === "handoff-error"
+        ? "Copy failed, select the text below"
+        : "Copy support request";
 
   const planText = plan
     .map(
@@ -981,8 +998,12 @@ function RecommendationSection({
         style={{ scrollMarginTop: "var(--c97-sp-6)" }}
       >
         <div className="c97-shell">
-          <SectionHeading kicker="Scored recommendation" title="A recommendation you can inspect">
-            <p id="recommendation-heading">
+          <SectionHeading
+            id="recommendation-heading"
+            kicker="Scored recommendation"
+            title="A recommendation you can inspect"
+          >
+            <p>
               The score is a committed set of readable rules. Change one answer in the intake and
               the recommendation moves because the surface, language, coverage, CI fit, migration
               work, or ownership score moved with it.
@@ -1049,6 +1070,7 @@ function RecommendationSection({
           <div className="c97-shell">
             <div style={headerRowStyle}>
               <SectionHeading
+                id="plan-heading"
                 kicker="Onboarding plan"
                 title={
                   intake.maturity === "none" || intake.maturity === "manual"
@@ -1056,7 +1078,7 @@ function RecommendationSection({
                     : "Migrate the suite without dropping coverage"
                 }
               >
-                <p id="plan-heading">
+                <p>
                   The checklist changes with maturity. This team gets a{" "}
                   {intake.maturity === "none" || intake.maturity === "manual"
                     ? "first setup"
@@ -1070,8 +1092,11 @@ function RecommendationSection({
                 className="c97-btn-ghost"
                 onClick={() => copyText(planText, "plan")}
               >
-                {copied === "plan" ? "Plan copied" : "Copy full plan"}
+                {planCopyLabel}
               </button>
+              <p className="sr-only" role="status">
+                {copied === "plan" || copied === "plan-error" ? planCopyLabel : ""}
+              </p>
             </div>
 
             <ol
@@ -1164,8 +1189,12 @@ function RecommendationSection({
         style={{ scrollMarginTop: "var(--c97-sp-6)" }}
       >
         <div className="c97-shell">
-          <SectionHeading kicker="Troubleshooting desk" title="Ask a setup or integration question">
-            <p id="troubleshooting-heading">
+          <SectionHeading
+            id="troubleshooting-heading"
+            kicker="Troubleshooting desk"
+            title="Ask a setup or integration question"
+          >
+            <p>
               This search retrieves from a small committed knowledge base. It reports its
               confidence and gives up when the question does not match the material it has.
             </p>
@@ -1402,8 +1431,11 @@ function RecommendationSection({
                   style={fullWidthButtonStyle}
                   onClick={() => copyText(escalationDraft, "handoff")}
                 >
-                  {copied === "handoff" ? "Support request copied" : "Copy support request"}
+                  {handoffCopyLabel}
                 </button>
+                <p className="sr-only" role="status">
+                  {copied === "handoff" || copied === "handoff-error" ? handoffCopyLabel : ""}
+                </p>
               </div>
               <pre
                 className="c97-mono"
@@ -1430,6 +1462,7 @@ function TeamOnboarding() {
   });
   const [step, setStep] = useState<IntakeStep>(0);
   const [showResults, setShowResults] = useState(false);
+  const reduceMotion = useReducedMotion();
 
   const stepLabels = ["Team context", "Test layers", "Delivery reality"];
 
@@ -1440,7 +1473,9 @@ function TeamOnboarding() {
     }
     setShowResults(true);
     requestAnimationFrame(() =>
-      document.getElementById("recommendation")?.scrollIntoView({ behavior: "smooth" })
+      document
+        .getElementById("recommendation")
+        ?.scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth" })
     );
   }
 
@@ -1463,8 +1498,12 @@ function TeamOnboarding() {
       >
         <div className="c97-shell">
           <div style={headerRowStyle}>
-            <SectionHeading kicker="Guided intake" title="Start with the team that needs help">
-              <p id="intake-heading">
+            <SectionHeading
+              id="intake-heading"
+              kicker="Guided intake"
+              title="Start with the team that needs help"
+            >
+              <p>
                 The intake keeps the parts that change the recommendation separate. Move backward
                 and forward freely, and every answer stays in place.
               </p>
@@ -1572,11 +1611,14 @@ function TeamOnboarding() {
 
 export function EnablementAssistantClient() {
   const [view, setView] = useState<WorkspaceView>("program");
+  const reduceMotion = useReducedMotion();
 
   function changeView(nextView: WorkspaceView) {
     setView(nextView);
     requestAnimationFrame(() =>
-      document.getElementById("workspace")?.scrollIntoView({ behavior: "smooth" })
+      document
+        .getElementById("workspace")
+        ?.scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth" })
     );
   }
 

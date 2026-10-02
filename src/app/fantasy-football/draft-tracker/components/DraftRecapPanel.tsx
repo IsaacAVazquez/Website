@@ -118,7 +118,7 @@ export function DraftRecapPanel({
 
   return (
     <article className="c97-panel" aria-labelledby="draft-recap-heading">
-      <p className="c97-kicker" style={{ marginBottom: "0.25rem" }}>Model recap</p>
+      <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-1)" }}>Model recap</p>
       <h3 id="draft-recap-heading" className="c97-serif c97-h3">
         How the recommendations held up
       </h3>

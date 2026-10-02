@@ -86,7 +86,13 @@ export function ArticleCodeCopy({
             status.textContent = "";
           }, 1600);
         } catch {
-          // Ignore clipboard failures — still record the intent below.
+          // Clipboard refused (permissions, insecure context); say so, still record the intent below.
+          button.textContent = "Copy failed";
+          status.textContent = "Could not copy the code. Select it and copy it by hand.";
+          window.setTimeout(() => {
+            button.textContent = "Copy code";
+            status.textContent = "";
+          }, 1600);
         }
         trackCodeCopy({
           code_location: location,

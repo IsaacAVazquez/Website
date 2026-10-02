@@ -24,7 +24,7 @@ const accessibilityFeatures = [
   },
   {
     title: "High contrast",
-    detail: "Primary text exceeds WCAG AAA (7:1). Body type sits at 21:1 in light mode.",
+    detail: "Primary text exceeds WCAG AAA (7:1). Body text sits at about 13:1 on the paper background in light mode.",
   },
   {
     title: "44px touch targets",
@@ -59,7 +59,7 @@ const technicalSpecs = ["HTML5", "CSS3", "JavaScript (React / Next.js)", "ARIA (
 const assessmentApproach = [
   "Self-evaluation and code review",
   "Manual keyboard navigation testing",
-  "Contrast ratio analysis (21:1 for primary text)",
+  "Contrast ratio analysis (about 13:1 for body text on paper)",
   "Touch target measurement (44px minimum)",
   "Reduced motion preference testing",
   "Semantic HTML validation",
@@ -118,8 +118,8 @@ export default function AccessibilityPage() {
               maxWidth: "var(--c97-measure-wide)",
             }}
           >
-            I take accessibility seriously. I build and test this site against WCAG standards and keep
-            improving it so that everyone can use it, regardless of ability.
+            I build and test this site against WCAG 2.1 AA and keep improving it so that everyone can
+            use it, regardless of ability.
           </p>
         </div>
       </section>
@@ -146,7 +146,7 @@ export default function AccessibilityPage() {
       </section>
 
       {/* Accessibility features */}
-      <section className="c97-band" data-c97-surface="bone">
+      <section className="c97-band c97-sheet" data-c97-surface="bone" data-seam="deckle">
         <div className="c97-shell">
           <p className="c97-kicker">Accessibility</p>
           <h2 className="c97-serif c97-h2" style={{ marginTop: "var(--c97-sp-2)" }}>
@@ -172,7 +172,7 @@ export default function AccessibilityPage() {
       </section>
 
       {/* Keyboard shortcuts */}
-      <section className="c97-band" data-c97-surface="paper">
+      <section className="c97-band c97-sheet" data-c97-surface="paper" data-seam="deckle">
         <div className="c97-shell">
           <p className="c97-kicker">Accessibility</p>
           <h2 className="c97-serif c97-h2" style={{ marginTop: "var(--c97-sp-2)" }}>
@@ -207,7 +207,7 @@ export default function AccessibilityPage() {
       </section>
 
       {/* Feedback, specifications, approach, limitations */}
-      <section className="c97-band" data-c97-surface="bone">
+      <section className="c97-band c97-sheet" data-c97-surface="bone" data-seam="deckle">
         <div className="c97-shell">
           <div className="c97-columns">
             <div>
@@ -218,20 +218,17 @@ export default function AccessibilityPage() {
               <p className="c97-prose" style={secondaryProseStyle}>
                 I welcome feedback on accessibility. If you run into a barrier, please reach out.
               </p>
-              <ul className="c97-list" style={{ marginTop: "var(--c97-sp-2)" }}>
-                <li>
-                  <strong>Email:</strong>{" "}
-                  <a href="mailto:IsaacVazquez@berkeley.edu" className="c97-link">
-                    IsaacVazquez@berkeley.edu
-                  </a>
-                </li>
-                <li>
-                  <strong>Website:</strong>{" "}
-                  <Link href="/contact" className="c97-link">
-                    Contact page
-                  </Link>
-                </li>
-              </ul>
+              <p className="c97-prose" style={{ marginTop: "var(--c97-sp-2)" }}>
+                Email me at{" "}
+                <a href="mailto:IsaacVazquez@berkeley.edu" className="c97-link">
+                  IsaacVazquez@berkeley.edu
+                </a>{" "}
+                or use the{" "}
+                <Link href="/contact" className="c97-link">
+                  contact page
+                </Link>
+                .
+              </p>
               <p className="c97-prose" style={secondaryProseStyle}>
                 I aim to respond to accessibility feedback within two business days.
               </p>
@@ -289,7 +286,7 @@ export default function AccessibilityPage() {
       </section>
 
       {/* Closing note */}
-      <section className="c97-band" data-c97-surface="paper">
+      <section className="c97-band c97-sheet" data-c97-surface="paper" data-seam="deckle">
         <div className="c97-shell">
           <p className="c97-prose" style={{ color: "var(--c97-ink-2)" }}>
             This statement was written in November 2025 and I update it as the site changes. For more

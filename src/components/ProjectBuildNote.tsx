@@ -16,8 +16,9 @@ export function ProjectBuildNote({ href, route }: ProjectBuildNoteProps) {
   return (
     <aside
       aria-labelledby="project-build-note-title"
-      className="c97-band"
+      className="c97-band c97-sheet"
       data-c97-surface="bone"
+      data-seam="deckle"
     >
       <div
         className="c97-shell"

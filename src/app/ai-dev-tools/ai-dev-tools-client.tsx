@@ -293,7 +293,7 @@ export function AiDevToolsClient({ initialState }: AiDevToolsClientProps) {
                 value={state.query}
                 onChange={(event) => updateFilter({ query: event.target.value })}
                 placeholder="Search tools, models, surfaces"
-                className="min-h-[44px] w-full bg-transparent text-sm text-[var(--c97-ink)] placeholder:text-[var(--c97-ink-2)] focus:outline-none"
+                className="min-h-[44px] w-full bg-transparent text-sm text-[var(--c97-ink)] placeholder:text-[var(--c97-ink-2)]"
               />
             </label>
             <div className="flex flex-wrap items-center gap-2">
@@ -392,7 +392,7 @@ function FilterSelect({ label, value, options, onChange }: FilterSelectProps) {
       <select
         value={value}
         onChange={(event) => onChange(event.target.value)}
-        className="min-h-[44px] bg-transparent text-sm font-semibold text-[var(--c97-ink)] focus:outline-none"
+        className="min-h-[44px] bg-transparent text-sm font-semibold text-[var(--c97-ink)]"
       >
         {options.map((option) => (
           <option key={option.id} value={option.id}>
@@ -556,9 +556,7 @@ function ToolDetail({ tool }: { tool: AiDevTool | null }) {
             <p className="mb-1 text-2xs font-semibold uppercase tracking-[0.18em] text-[var(--c97-ink-2)]">
               {tool.company}
             </p>
-            <h2 className="mb-0 text-2xl font-semibold text-[var(--c97-ink)]">
-              {tool.name}
-            </h2>
+            <h2 className="c97-serif c97-h3">{tool.name}</h2>
           </div>
         </div>
         <a

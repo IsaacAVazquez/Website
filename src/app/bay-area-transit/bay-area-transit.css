@@ -91,6 +91,14 @@
   cursor: pointer;
 }
 
+.c97-transit-station-row:hover {
+  border-color: var(--c97-ink-2);
+}
+
+.c97-transit-station-row:hover .c97-serif {
+  color: var(--c97-action);
+}
+
 .c97-transit-station-row[aria-current="true"] {
   box-shadow: inset 4px 0 0 0 var(--c97-ink);
 }

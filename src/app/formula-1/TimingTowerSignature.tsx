@@ -19,11 +19,11 @@ function rowLabel(row: Standing): { name: string; code: string | null } {
   return { name: row.teamName, code: null };
 }
 
-function movementMark(movement: number | null): { glyph: string; text: string } {
-  if (movement === null) return { glyph: "•", text: "no prior round to compare" };
-  if (movement > 0) return { glyph: "▲", text: `up ${movement}` };
-  if (movement < 0) return { glyph: "▼", text: `down ${Math.abs(movement)}` };
-  return { glyph: "•", text: "held position" };
+function movementGlyph(movement: number | null): string {
+  if (movement === null) return "•";
+  if (movement > 0) return "▲";
+  if (movement < 0) return "▼";
+  return "•";
 }
 
 /**
@@ -50,7 +50,7 @@ export function TimingTowerSignature({ standings, kind }: TimingTowerSignaturePr
   return (
     <div
       data-c97-surface="paper"
-      className={`c97-offset ${styles.timingTower}`}
+      className="c97-offset"
       style={{ padding: "var(--c97-sp-3)" }}
     >
       <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-2)" }}>
@@ -66,7 +66,6 @@ export function TimingTowerSignature({ standings, kind }: TimingTowerSignaturePr
         </li>
         {rows.map((row) => {
           const { name, code } = rowLabel(row);
-          const mark = movementMark(row.movement);
           return (
             <li
               key={`${row.position}-${name}`}
@@ -86,7 +85,7 @@ export function TimingTowerSignature({ standings, kind }: TimingTowerSignaturePr
                 {row.intervalToAhead === null ? "—" : formatDeficit(row.intervalToAhead)}
               </span>
               <span className={styles.towerMovement} aria-hidden="true">
-                {mark.glyph}
+                {movementGlyph(row.movement)}
               </span>
             </li>
           );

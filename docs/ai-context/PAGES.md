@@ -81,7 +81,7 @@ There is no `/admin` route; it and NextAuth were removed on 2026-10-02.
 - `src/app/layout.tsx` renders fonts, providers, the skip link, and `ConditionalLayout`
 - `src/components/ConditionalLayout.tsx` has two branches
 - the seven designed Catalog 97 routes (`/`, `/portfolio`, `/writing`, `/dashboards`, `/about`, `/resume`, `/contact`, listed in `src/constants/catalog97Nav.ts`) pass through untouched because their page components render `Catalog97Shell` themselves
-- every other route is wrapped in `src/components/catalog97/Catalog97ToolShell.tsx`, which adds an optional title band and the build-note aside
+- every other route is wrapped in `src/components/catalog97/Catalog97ToolShell.tsx`, which adds the build-note aside
 
 Semantics:
 

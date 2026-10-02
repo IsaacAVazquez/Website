@@ -274,7 +274,7 @@ export function RecipeFinderClient() {
 
           <div
             className="c97-segmented"
-            role="tablist"
+            role="group"
             aria-label="Recipe views"
             style={{ marginTop: "var(--c97-sp-4)" }}
           >
@@ -285,9 +285,8 @@ export function RecipeFinderClient() {
                   key={id}
                   type="button"
                   onClick={() => selectView(id)}
-                  role="tab"
-                  aria-selected={isActive}
-                  className="min-h-[44px] text-sm font-semibold"
+                  aria-pressed={isActive}
+                  className="min-h-[44px]"
                 >
                   {id === "all" && <Search size={16} aria-hidden="true" />}
                   {id === "quick" && <Sparkles size={16} aria-hidden="true" />}
@@ -302,7 +301,7 @@ export function RecipeFinderClient() {
 
           <div
             className="c97-segmented"
-            role="tablist"
+            role="group"
             aria-label="Meal time"
             style={{ marginTop: "var(--c97-sp-3)" }}
           >
@@ -310,10 +309,9 @@ export function RecipeFinderClient() {
               <button
                 key={option.value}
                 type="button"
-                role="tab"
-                aria-selected={category === option.value}
+                aria-pressed={category === option.value}
                 onClick={() => setCategory(option.value)}
-                className="min-h-[44px] text-sm font-semibold"
+                className="min-h-[44px]"
               >
                 {option.label}
               </button>

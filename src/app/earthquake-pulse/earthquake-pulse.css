@@ -37,6 +37,18 @@
   cursor: pointer;
 }
 
+/* The row and region backgrounds are set inline, so hover cues on the name
+ * text instead of the fill. */
+.c97-quake-log-row:hover .c97-quake-log-name,
+.c97-quake-region:hover .c97-quake-region-name {
+  color: var(--c97-action);
+  text-decoration: underline;
+}
+
+.c97-quake-region-name {
+  color: var(--c97-ink);
+}
+
 .c97-quake-log-row[aria-current="true"] {
   box-shadow: inset 4px 0 0 0 var(--c97-ink);
 }

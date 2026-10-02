@@ -118,7 +118,8 @@ function HoldingRow({ holding, color, onUpdate, onRemove, onResearch }: RowProps
                 onChange={(e) => setEditShares(e.target.value)}
                 onKeyDown={handleEditKeyDown}
                 autoFocus
-                className="ml-2 w-28 border-0 border-b border-[var(--c97-ink-2)] bg-[var(--c97-panel)] px-3 py-1.5 text-sm font-mono text-[var(--c97-ink)] focus:outline-none focus:border-[var(--c97-accent)]"
+                className="c97-field c97-mono"
+                style={{ width: "7rem", marginInlineStart: "var(--c97-sp-2)" }}
               />
             </label>
             <label className="text-2xs font-semibold uppercase tracking-[0.14em] text-[var(--c97-ink-2)]">
@@ -130,7 +131,8 @@ function HoldingRow({ holding, color, onUpdate, onRemove, onResearch }: RowProps
                 value={editCost}
                 onChange={(e) => setEditCost(e.target.value)}
                 onKeyDown={handleEditKeyDown}
-                className="ml-2 w-28 border-0 border-b border-[var(--c97-ink-2)] bg-[var(--c97-panel)] px-3 py-1.5 text-sm font-mono text-[var(--c97-ink)] focus:outline-none focus:border-[var(--c97-accent)]"
+                className="c97-field c97-mono"
+                style={{ width: "7rem", marginInlineStart: "var(--c97-sp-2)" }}
               />
             </label>
             <div className="invest-row-actions ml-auto">
@@ -364,7 +366,7 @@ export function HoldingsTable({ holdings, onUpdate, onRemove, onResearch, portfo
           </button>
         ) : null}
       </div>
-      <div className="overflow-x-auto">
+      <div className="overflow-x-auto" role="region" tabIndex={0} aria-label="Holdings table">
         <table className="invest-holdings">
           <thead>
             <tr>
@@ -379,6 +381,17 @@ export function HoldingsTable({ holdings, onUpdate, onRemove, onResearch, portfo
             </tr>
           </thead>
           <tbody>
+            {sorted.length === 0 ? (
+              <tr>
+                <td
+                  colSpan={8}
+                  className="c97-meta"
+                  style={{ padding: "var(--c97-sp-4) var(--c97-sp-3)" }}
+                >
+                  No holdings match this filter. Clear the search box to see every position.
+                </td>
+              </tr>
+            ) : null}
             {sorted.map((h) => (
               <HoldingRow
                 key={h.symbol}

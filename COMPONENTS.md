@@ -24,7 +24,7 @@ Current component map for the live application.
 | Component | File | Role |
 |----------|------|------|
 | `ConditionalLayout` | `src/components/ConditionalLayout.tsx` | Passes the seven designed routes through untouched and wraps every other route in `Catalog97ToolShell` |
-| `Catalog97ToolShell` | `src/components/catalog97/Catalog97ToolShell.tsx` | `Catalog97Shell` plus an optional title band and the build-note aside, used by every route outside the seven designed pages |
+| `Catalog97ToolShell` | `src/components/catalog97/Catalog97ToolShell.tsx` | `Catalog97Shell` plus the build-note aside, used by every route outside the seven designed pages |
 | `Providers` | `src/components/Providers.tsx` | Mounts the `next-themes` provider and the page-level listeners below |
 | `FragmentLinkNavigation` | `src/components/navigation/FragmentLinkNavigation.tsx` | Mounted once by `Providers` and renders nothing. Follows same-page links (`href="#section"`) from the page's current address, because Firefox can hold a link's address from before a page rewrote its own URL and then load the old URL as a new document |
 | `FragmentScrollOnLoad` | `src/components/navigation/FragmentScrollOnLoad.tsx` | Mounted once by `Providers` and renders nothing. Lands a fresh load on the element its URL fragment names and holds it there while the page settles, because a browser looks the fragment up once, as it finishes parsing, and React reveals a streamed route after that. It only scrolls a page that sits where a landing left it, so a page the visitor has scrolled stays put, and it leaves a reload or a trip through history to the browser |
@@ -169,7 +169,7 @@ Core UI primitives live under `src/components/ui/`.
 
 The ones still in use are `ModernButton` (admin and the investments forms), `ThemeToggle` and `DeferredThemeToggle` (the header), `AuthorBio` (articles), and `ServerIcons` (inline SVG icons for server components). Most UI is composed from the `catalog97.css` classes, so a new block usually wants a `.c97-panel`, `.c97-chip`, or `.c97-btn` before it wants a component.
 
-The editorial components under `src/components/editorial/` are `EditorialPillButton`, `StatusPanel`, and `UtilityStrip` (all used by Job Search) and `InstrumentTape` (Investments, the football results tape, and the SpaceX launch tape). Every component reads the `--c97-*` tokens, since the Working Instrument tokens were deleted on 2026-09-27.
+The editorial components under `src/components/editorial/` are `StatusPanel` (used by Job Search) and `InstrumentTape` (Investments, the football results tape, and the SpaceX launch tape). Every component reads the `--c97-*` tokens, since the Working Instrument tokens were deleted on 2026-09-27.
 
 Styling guidance for these lives in `STYLING.md`.
 

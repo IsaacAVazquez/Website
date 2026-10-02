@@ -126,6 +126,7 @@ export function WorldCupBracket({ tree, onOpenTeam }: WorldCupBracketProps) {
                       ).map(([side, team, isWinner, textY]) => (
                         <g
                           key={side}
+                          className={onOpenTeam ? "c97-bracket-team" : undefined}
                           onClick={onOpenTeam ? () => onOpenTeam(team.id) : undefined}
                           style={onOpenTeam ? { cursor: "pointer" } : undefined}
                         >

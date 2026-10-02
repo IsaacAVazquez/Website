@@ -12,6 +12,7 @@ import { GrowthPanel } from "./GrowthPanel";
 import { IndustryPanel } from "./IndustryPanel";
 import { ComparisonTab } from "./ComparisonTab";
 import { PriceChartPanel } from "./PriceChartPanel";
+import { ErrorState } from "./ErrorState";
 import { useStockData } from "@/hooks/useStockData";
 import { useTablistKeyboard } from "@/hooks/useTablistKeyboard";
 import type {
@@ -79,6 +80,7 @@ export function ResearchWorkspace({
     isNotFetched: symbolNotFetched,
     source,
     capabilities,
+    refetch: refetchSymbol,
   } = useStockData<CompanyInfo>(symbol || null, "info");
 
   const hasResearchContext = source !== null && !symbolError;
@@ -125,14 +127,7 @@ export function ResearchWorkspace({
           </p>
         </div>
       ) : showResearchErrorState ? (
-        <div className="border border-[color-mix(in_srgb,var(--c97-negative)_35%,var(--c97-rule))] bg-[color-mix(in_srgb,var(--c97-negative)_8%,var(--c97-panel))] px-5 py-6 text-center ">
-          <p className="text-sm font-semibold text-[var(--c97-ink)]">
-            Research data is temporarily unavailable.
-          </p>
-          <p className="mt-2 text-sm text-[var(--c97-ink-2)]">
-            {getResearchErrorMessage(symbolError)}
-          </p>
-        </div>
+        <ErrorState message={getResearchErrorMessage(symbolError)} onRetry={refetchSymbol} />
       ) : (
         <>
           <ResearchAssetHeader

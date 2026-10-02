@@ -197,6 +197,12 @@
   white-space: pre-line;
 }
 
+/* Pins the date, price, and actions to the bottom so they line up across a
+ * row. Scoped under the row so it outranks the row's `p { margin: 0 }`. */
+.c97-wine-log-row .c97-wine-label-foot {
+  margin-top: auto;
+}
+
 .c97-wine-label-foot {
   display: flex;
   gap: var(--c97-sp-3);

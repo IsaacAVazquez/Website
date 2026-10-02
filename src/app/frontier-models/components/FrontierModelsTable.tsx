@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState, type KeyboardEvent } from "react";
+import { useMemo, useState } from "react";
 import { ExternalLink, Sparkles } from "lucide-react";
 import { InfoChip } from "@/components/football/InfoChip";
 import {
@@ -88,13 +88,6 @@ export function FrontierModelsTable({
     setSortDirection(column.defaultDirection);
   }
 
-  function handleRowKeyDown(event: KeyboardEvent<HTMLTableRowElement>, id: string) {
-    if (event.key === "Enter" || event.key === " ") {
-      event.preventDefault();
-      onSelectModel(selectedModelId === id ? null : id);
-    }
-  }
-
   return (
     <div className="overflow-x-auto">
       <table className="c97-table">
@@ -141,7 +134,6 @@ export function FrontierModelsTable({
                 onToggle={() =>
                   onSelectModel(isExpanded ? null : model.id)
                 }
-                onKeyDown={(event) => handleRowKeyDown(event, model.id)}
               />
             );
           })}
@@ -155,21 +147,16 @@ interface FrontierRowProps {
   model: FrontierModel;
   isExpanded: boolean;
   onToggle: () => void;
-  onKeyDown: (event: KeyboardEvent<HTMLTableRowElement>) => void;
 }
 
-function FrontierRow({ model, isExpanded, onToggle, onKeyDown }: FrontierRowProps) {
+function FrontierRow({ model, isExpanded, onToggle }: FrontierRowProps) {
   return (
     <>
-      <tr
-        tabIndex={0}
-        role="button"
-        aria-expanded={isExpanded}
-        aria-controls={`frontier-row-detail-${model.id}`}
-        onClick={onToggle}
-        onKeyDown={onKeyDown}
-        className="cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--c97-accent)] focus-visible:ring-offset-2"
-      >
+      {/* The row stays clickable for pointer users, but the keyboard control
+          is a real button on the name, which takes the system focus ring.
+          role="button" on a <tr> broke table semantics and nested the docs
+          link inside an interactive element. */}
+      <tr onClick={onToggle} className="cursor-pointer">
         <td>
           <div className="flex flex-col">
             <span
@@ -182,7 +169,19 @@ function FrontierRow({ model, isExpanded, onToggle, onKeyDown }: FrontierRowProp
               className="mt-1 flex items-center gap-2 text-base font-semibold"
               style={{ color: "var(--c97-ink)" }}
             >
-              {model.name}
+              <button
+                type="button"
+                aria-expanded={isExpanded}
+                aria-controls={isExpanded ? `frontier-row-detail-${model.id}` : undefined}
+                onClick={(event) => {
+                  event.stopPropagation();
+                  onToggle();
+                }}
+                className="text-left"
+                style={{ color: "var(--c97-ink)", fontWeight: 600 }}
+              >
+                {model.name}
+              </button>
               {model.reasoning ? (
                 <span
                   className="inline-flex items-center gap-1 border px-2 py-0.5 text-3xs font-semibold uppercase tracking-[0.14em]"

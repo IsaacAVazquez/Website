@@ -12,7 +12,7 @@ interface InstrumentTapeProps {
   /** Leading mono tag rendered before the scrolling track, e.g. "Latest · Flight 412". */
   label?: ReactNode;
   items: InstrumentTapeItem[];
-  /** Accessible label for the scrolling region (role="status"). */
+  /** Accessible label for the scrolling region (role="region"). */
   ariaLabel: string;
   className?: string;
   /** Rendered instead of the track when `items` is empty. Pass nothing to render nothing. */
@@ -44,7 +44,7 @@ export function InstrumentTape({
   return (
     <div className={`${styles.band} ${className}`}>
       {label ? <span className={styles.tag}>{label}</span> : null}
-      <div className={styles.track} role="status" aria-label={ariaLabel}>
+      <div className={styles.track} role="region" tabIndex={0} aria-label={ariaLabel}>
         {items.map((item) => (
           <span key={item.key} className={styles.item}>
             {item.content}

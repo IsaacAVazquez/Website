@@ -96,7 +96,7 @@ export function MissionImageFrame({
       role={activeImage ? undefined : "img"}
       aria-label={activeImage ? undefined : alt}
     >
-      <div className="absolute inset-0 bg-[color-mix(in_srgb,var(--c97-accent)_6%,var(--c97-field))]" />
+      <div className="absolute inset-0 bg-[var(--c97-field)]" />
 
       {activeImage ? (
         <>
@@ -131,7 +131,7 @@ export function MissionImageFrame({
           {!isLoaded ? (
             <div
               aria-hidden="true"
-              className="absolute inset-0 animate-pulse bg-[color-mix(in_srgb,var(--c97-field)_78%,var(--c97-field))]"
+              className="c97-skeleton absolute inset-0"
             />
           ) : null}
         </>

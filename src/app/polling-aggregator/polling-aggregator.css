@@ -70,3 +70,9 @@
     display: none;
   }
 }
+
+/* Both poll tables sit inside a .c97-panel, so the sticky header takes the
+ * panel's tint instead of the sheet's and no stripe shows above the rows. */
+.c97-panel .c97-polling-table th {
+  background: var(--c97-panel);
+}

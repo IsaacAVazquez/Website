@@ -117,7 +117,7 @@ export function FixtureCard({
                   </span>
                 </div>
               )}
-              <span className="shrink-0 whitespace-nowrap text-right text-sm font-semibold text-[var(--c97-ink)]">
+              <span className="c97-tabular shrink-0 whitespace-nowrap text-right text-sm font-semibold text-[var(--c97-ink)]">
                 {fixture.status === "FINISHED" && score !== null ? (
                   <>
                     {score}

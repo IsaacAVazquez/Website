@@ -36,7 +36,8 @@ const categories = [
  * The filters are pressed-button groups rather than selects because every
  * option is a single click and the tests and analytics key off the button
  * labels. `.c97-segmented` is the same control the /dashboards category filter
- * draws, and `.c97-microlink` buys each button its 44px target.
+ * draws, and `.c97-microlink` buys each button its 44px target. The sp-5 row
+ * gap keeps wrapped rows' hit boxes from overlapping at phone widths.
  */
 export function SearchFilters({
   type,
@@ -49,7 +50,7 @@ export function SearchFilters({
 
   return (
     <div className="c97-panel" style={{ display: "grid", gap: "var(--c97-sp-3)" }}>
-      <fieldset className="c97-segmented" style={{ minWidth: 0 }}>
+      <fieldset className="c97-segmented" style={{ minWidth: 0, rowGap: "var(--c97-sp-5)" }}>
         <legend className="c97-kicker" style={{ marginBottom: "var(--c97-sp-2)" }}>
           Content type
         </legend>
@@ -66,7 +67,7 @@ export function SearchFilters({
         ))}
       </fieldset>
 
-      <fieldset className="c97-segmented" style={{ minWidth: 0 }}>
+      <fieldset className="c97-segmented" style={{ minWidth: 0, rowGap: "var(--c97-sp-5)" }}>
         <legend className="c97-kicker" style={{ marginBottom: "var(--c97-sp-2)" }}>
           Category
         </legend>

@@ -71,7 +71,6 @@ function ManualResultForm({
     label: string,
   ) => (
     <span className="flex items-center gap-1.5">
-      <label className="sr-only">{`${label} home goals`}</label>
       <input
         type="number"
         min={0}
@@ -121,7 +120,7 @@ function ManualResultForm({
         Save result
       </button>
       {error ? (
-        <span className="font-semibold" style={{ color: "var(--c97-negative)" }}>
+        <span role="alert" className="font-semibold" style={{ color: "var(--c97-negative)" }}>
           {error}
         </span>
       ) : null}
@@ -133,6 +132,7 @@ export function TrackerClient({ snapshot }: TrackerClientProps) {
   const { pools, activePool, setActivePool, setManualResult, updateRival } = useScorePools();
   const [selectedRivalId, setSelectedRivalId] = useState<string | null>(null);
   const [rivalPickDrafts, setRivalPickDrafts] = useState<Record<string, { home: string; away: string }>>({});
+  const [rivalPickErrors, setRivalPickErrors] = useState<Record<string, string>>({});
   // One "now" per visit keeps render pure and the pending/played split stable.
   const [nowIso] = useState(() => new Date().toISOString());
 
@@ -187,20 +187,20 @@ export function TrackerClient({ snapshot }: TrackerClientProps) {
       <div className="c97-shell space-y-6">
         <header>
           <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-1)" }}>Prediction Tools</p>
-          <h1 className="text-2xl font-bold tracking-tight text-[var(--c97-ink)] sm:text-3xl">
+          <h1 className="c97-display">
             Score{" "}
             <em style={{ fontFamily: "var(--c97-font-display)", fontStyle: "italic", fontWeight: 400 }}>
               Tracker
             </em>
           </h1>
-          <p className="mt-2 max-w-3xl text-sm leading-relaxed text-[var(--c97-ink-2)]">
+          <p className="mt-2 text-sm leading-relaxed text-[var(--c97-ink-2)]">
             Submitted picks scored against results under your pool&apos;s rules as games finish,
             with a running total and rival comparisons where you know their picks. Back to the{" "}
-            <Link className="underline decoration-[var(--c97-rule)] underline-offset-4 hover:decoration-[var(--c97-accent)]" href="/score-pools">
+            <Link className="c97-link" href="/score-pools">
               pick sheet
             </Link>{" "}
             or the{" "}
-            <Link className="underline decoration-[var(--c97-rule)] underline-offset-4 hover:decoration-[var(--c97-accent)]" href="/score-pools/settings">
+            <Link className="c97-link" href="/score-pools/settings">
               settings
             </Link>
             .
@@ -212,7 +212,7 @@ export function TrackerClient({ snapshot }: TrackerClientProps) {
         {!activePool || !league ? (
           <p className="text-sm text-[var(--c97-ink-2)]">
             No pool yet. Create one on the{" "}
-            <Link className="underline" href="/score-pools">pick sheet</Link> first.
+            <Link className="c97-link" href="/score-pools">pick sheet</Link> first.
           </p>
         ) : (
           <>
@@ -259,7 +259,7 @@ export function TrackerClient({ snapshot }: TrackerClientProps) {
 
             {myScoring && myScoring.rows.length > 0 ? (
               <section aria-label="My scored picks">
-                <h2 className="text-lg font-bold text-[var(--c97-ink)]">My picks</h2>
+                <h2 className="c97-serif c97-h2">My picks</h2>
                 <div className="scroll-shadow-x mt-3 overflow-x-auto" role="region" aria-label="My scored picks (scrollable)" tabIndex={0}>
                   <table className="min-w-full border-separate border-spacing-y-2" aria-label="My picks scored against results">
                     <thead>
@@ -338,7 +338,7 @@ export function TrackerClient({ snapshot }: TrackerClientProps) {
 
             {needsResult.length > 0 ? (
               <section aria-label="Missing results">
-                <h2 className="text-base font-bold text-[var(--c97-ink)]">Missing results</h2>
+                <h2 className="c97-serif c97-h2">Missing results</h2>
                 <p className="mt-1 text-2xs text-[var(--c97-ink-2)]">
                   These games have picks but no result from the data feed. Enter the result by hand
                   and the scoring uses it until a feed result shows up.
@@ -360,11 +360,11 @@ export function TrackerClient({ snapshot }: TrackerClientProps) {
             ) : null}
 
             <section aria-label="Rivals">
-              <h2 className="text-lg font-bold text-[var(--c97-ink)]">Rivals</h2>
+              <h2 className="c97-serif c97-h2">Rivals</h2>
               {activePool.rivals.length === 0 ? (
                 <p className="mt-1 text-sm text-[var(--c97-ink-2)]">
                   Add rivals on the{" "}
-                  <Link className="underline" href="/score-pools/settings">settings page</Link>{" "}
+                  <Link className="c97-link" href="/score-pools/settings">settings page</Link>{" "}
                   and enter their picks here to see the gaps game by game.
                 </p>
               ) : (
@@ -403,7 +403,7 @@ export function TrackerClient({ snapshot }: TrackerClientProps) {
                   </div>
 
                   <div className="mt-4">
-                    <h3 className="text-sm font-bold text-[var(--c97-ink)]">Enter rival picks</h3>
+                    <h3 className="c97-serif c97-h3">Enter rival picks</h3>
                     <div className="c97-segmented" style={{ marginTop: "var(--c97-sp-1)" }}>
                       {activePool.rivals.map((rival) => (
                         <button
@@ -469,7 +469,14 @@ export function TrackerClient({ snapshot }: TrackerClientProps) {
                                   className={PILL_BUTTON}
                                   onClick={() => {
                                     const score = parseScoreInput(draft.home, draft.away);
-                                    if (!score) return;
+                                    if (!score) {
+                                      setRivalPickErrors((errors) => ({
+                                        ...errors,
+                                        [fixture.id]: "Both scores need whole numbers from 0 to 15.",
+                                      }));
+                                      return;
+                                    }
+                                    setRivalPickErrors((errors) => ({ ...errors, [fixture.id]: "" }));
                                     updateRival(activePool.id, selectedRival.id, (rival) => ({
                                       ...rival,
                                       picks: { ...rival.picks, [fixture.id]: score },
@@ -502,6 +509,11 @@ export function TrackerClient({ snapshot }: TrackerClientProps) {
                                   </button>
                                 ) : null}
                               </span>
+                              {rivalPickErrors[fixture.id] ? (
+                                <span role="alert" className="text-2xs font-semibold" style={{ color: "var(--c97-negative)" }}>
+                                  {rivalPickErrors[fixture.id]}
+                                </span>
+                              ) : null}
                             </li>
                           );
                         })}

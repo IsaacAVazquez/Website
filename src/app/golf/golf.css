@@ -45,6 +45,10 @@
   cursor: pointer;
 }
 
+.c97-golf-card:hover {
+  border-color: var(--c97-ink-2);
+}
+
 .c97-golf-card[aria-current="true"] {
   box-shadow: inset 4px 0 0 0 var(--c97-ink);
 }

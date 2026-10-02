@@ -56,7 +56,7 @@ export function LeagueProgrammeTable({
   onSelect,
 }: LeagueProgrammeTableProps) {
   return (
-    <div className="overflow-x-auto">
+    <div className="overflow-x-auto" role="region" tabIndex={0} aria-label={`${ariaLabel} (scrollable)`}>
       <table className="c97-table" aria-label={ariaLabel}>
         <thead>
           <tr>

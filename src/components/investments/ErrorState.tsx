@@ -11,7 +11,9 @@ interface ErrorStateProps {
 
 export function ErrorState({ message, isNotFetched, onRetry }: ErrorStateProps) {
   return (
-    <div className="flex flex-col items-center justify-center gap-3 py-8 text-center">
+    // Polite rather than an alert: several research panels can fail at once
+    // (offline, say), and a burst of assertive announcements helps no one.
+    <div role="status" className="flex flex-col items-center justify-center gap-3 py-8 text-center">
       {isNotFetched ? (
         <Info
           size={32}

@@ -118,7 +118,7 @@ Fantasy shortcut and typo redirects also live in `next.config.mjs`.
 ### Catalog 97 routes and the tool shell
 
 - `/`, `/portfolio`, `/writing`, `/dashboards`, `/about`, `/resume`, and `/contact` are the seven designed routes in `src/constants/catalog97Nav.ts`. Each page renders its own `Catalog97Shell`, and `ConditionalLayout` passes them through untouched
-- every other route is wrapped in `src/components/catalog97/Catalog97ToolShell.tsx`, which is `Catalog97Shell` plus an optional title band and the build-note aside
+- every other route is wrapped in `src/components/catalog97/Catalog97ToolShell.tsx`, which is `Catalog97Shell` plus the build-note aside
 - `Catalog97Shell` owns the header, the only page-level `main`, and the espresso footer, so there is one footer on every route. The old `Footer.tsx` and its variants were deleted on 2026-09-16
 - see `AGENTS.md` for the full shell description
 

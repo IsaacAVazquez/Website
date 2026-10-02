@@ -5,6 +5,8 @@ import { Building2, Home, Landmark, RotateCcw } from "lucide-react";
 import { Catalog97ProjectHero } from "@/components/catalog97/Catalog97ProjectHero";
 import { PROJECT_PRESS } from "@/constants/projectPress";
 import { useRentVsBuy } from "@/hooks/useRentVsBuy";
+import { useLocalStoragePersistenceStatus } from "@/hooks/useLocalStorageString";
+import { RENT_VS_BUY_BOUNDS, RENT_VS_BUY_STORAGE_KEY } from "@/lib/rentVsBuy/persistence";
 import type { RentVsBuyInput, RentVsBuyResult } from "@/lib/rentVsBuy/types";
 import { formatCompactCurrency } from "@/lib/retirement/format";
 import { fitLabel } from "@/app/travel-deals/fareGauge";
@@ -178,6 +180,7 @@ interface FieldProps {
   step?: number;
   onChange: (value: number) => void;
   disabled?: boolean;
+  hint?: string;
 }
 
 function NumberField({
@@ -190,11 +193,19 @@ function NumberField({
   step = 1,
   onChange,
   disabled = false,
+  hint,
 }: FieldProps) {
   const id = useId();
   // The typed text stays local until it parses, so clearing a field to retype it
   // no longer snaps to the stored minimum on the first keystroke.
   const [draft, setDraft] = useState<string | null>(null);
+  // The store clamps an out-of-range value, and the field snaps to it on blur,
+  // so say so while the typed value is still showing.
+  const typed = draft !== null && draft.trim() !== "" ? Number(draft) : NaN;
+  const outOfRange = Number.isFinite(typed) && (typed < min || (max !== undefined && typed > max));
+  const hintId = `${id}-hint`;
+  const rangeId = `${id}-range`;
+  const describedBy = [hint ? hintId : null, outOfRange ? rangeId : null].filter(Boolean).join(" ") || undefined;
   return (
     <label htmlFor={id} className="block">
       <span className="c97-kicker" style={{ display: "block", marginBottom: "var(--c97-sp-1)" }}>
@@ -224,6 +235,8 @@ function NumberField({
           step={step}
           value={draft ?? String(value)}
           disabled={disabled}
+          aria-invalid={outOfRange || undefined}
+          aria-describedby={describedBy}
           onChange={(event) => {
             const next = event.target.value;
             setDraft(next);
@@ -247,12 +260,25 @@ function NumberField({
           </span>
         ) : null}
       </span>
+      {hint ? (
+        <span id={hintId} className="c97-meta" style={{ display: "block", marginTop: "var(--c97-sp-1)" }}>
+          {hint}
+        </span>
+      ) : null}
+      {outOfRange ? (
+        <span id={rangeId} className="c97-meta" style={{ display: "block", marginTop: "var(--c97-sp-1)" }}>
+          {max !== undefined
+            ? `Between ${min.toLocaleString("en-US")} and ${max.toLocaleString("en-US")}`
+            : `At least ${min.toLocaleString("en-US")}`}
+        </span>
+      ) : null}
     </label>
   );
 }
 
 export function RentVsBuyClient() {
   const { input, result, setField, reset } = useRentVsBuy();
+  const persistenceStatus = useLocalStoragePersistenceStatus(RENT_VS_BUY_STORAGE_KEY);
   // Each NumberField keeps a local draft while typing, so Reset remounts the
   // fields to drop any draft still showing a value the store no longer holds.
   const [resetKey, setResetKey] = useState(0);
@@ -347,17 +373,17 @@ export function RentVsBuyClient() {
                 <h2 className="c97-poster-sm">The home you&apos;d buy</h2>
               </div>
               <div className="grid gap-3 sm:grid-cols-2" style={{ marginTop: "var(--c97-sp-3)" }}>
-                <NumberField label="Home price" prefix="$" step={5000} value={input.homePrice} onChange={num("homePrice")} />
-                <NumberField label="Down payment" suffix="%" step={1} max={100} value={input.downPaymentPercent} onChange={num("downPaymentPercent")} />
-                <NumberField label="Mortgage rate" suffix="%" step={0.05} value={input.mortgageRatePercent} onChange={num("mortgageRatePercent")} />
-                <NumberField label="Loan term" suffix="yrs" step={1} value={input.loanTermYears} onChange={num("loanTermYears")} />
-                <NumberField label="Property tax" suffix="%/yr" step={0.05} value={input.propertyTaxPercent} onChange={num("propertyTaxPercent")} />
-                <NumberField label="Home insurance" prefix="$" suffix="/yr" step={100} value={input.homeInsuranceAnnual} onChange={num("homeInsuranceAnnual")} />
-                <NumberField label="Maintenance" suffix="%/yr" step={0.1} value={input.maintenancePercent} onChange={num("maintenancePercent")} />
-                <NumberField label="HOA dues" prefix="$" suffix="/mo" step={25} value={input.hoaMonthly} onChange={num("hoaMonthly")} />
-                <NumberField label="Closing costs" suffix="%" step={0.5} value={input.closingCostPercent} onChange={num("closingCostPercent")} />
-                <NumberField label="Selling costs" suffix="%" step={0.5} value={input.sellingCostPercent} onChange={num("sellingCostPercent")} />
-                <NumberField label="Home appreciation" suffix="%/yr" step={0.25} min={-10} value={input.homeAppreciationPercent} onChange={num("homeAppreciationPercent")} />
+                <NumberField {...RENT_VS_BUY_BOUNDS.homePrice} label="Home price" prefix="$" step={5000} value={input.homePrice} onChange={num("homePrice")} />
+                <NumberField {...RENT_VS_BUY_BOUNDS.downPaymentPercent} label="Down payment" suffix="%" step={1} value={input.downPaymentPercent} onChange={num("downPaymentPercent")} />
+                <NumberField {...RENT_VS_BUY_BOUNDS.mortgageRatePercent} label="Mortgage rate" suffix="%" step={0.05} value={input.mortgageRatePercent} onChange={num("mortgageRatePercent")} />
+                <NumberField {...RENT_VS_BUY_BOUNDS.loanTermYears} label="Loan term" suffix="yrs" step={1} value={input.loanTermYears} onChange={num("loanTermYears")} />
+                <NumberField {...RENT_VS_BUY_BOUNDS.propertyTaxPercent} label="Property tax" suffix="%/yr" step={0.05} value={input.propertyTaxPercent} onChange={num("propertyTaxPercent")} />
+                <NumberField {...RENT_VS_BUY_BOUNDS.homeInsuranceAnnual} label="Home insurance" prefix="$" suffix="/yr" step={100} value={input.homeInsuranceAnnual} onChange={num("homeInsuranceAnnual")} />
+                <NumberField {...RENT_VS_BUY_BOUNDS.maintenancePercent} label="Maintenance" suffix="%/yr" step={0.1} value={input.maintenancePercent} onChange={num("maintenancePercent")} />
+                <NumberField {...RENT_VS_BUY_BOUNDS.hoaMonthly} label="HOA dues" prefix="$" suffix="/mo" step={25} value={input.hoaMonthly} onChange={num("hoaMonthly")} />
+                <NumberField {...RENT_VS_BUY_BOUNDS.closingCostPercent} label="Closing costs" suffix="%" step={0.5} value={input.closingCostPercent} onChange={num("closingCostPercent")} />
+                <NumberField {...RENT_VS_BUY_BOUNDS.sellingCostPercent} label="Selling costs" suffix="%" step={0.5} value={input.sellingCostPercent} onChange={num("sellingCostPercent")} />
+                <NumberField {...RENT_VS_BUY_BOUNDS.homeAppreciationPercent} label="Home appreciation" suffix="%/yr" step={0.25} value={input.homeAppreciationPercent} onChange={num("homeAppreciationPercent")} />
               </div>
             </div>
 
@@ -367,9 +393,9 @@ export function RentVsBuyClient() {
                 <h2 className="c97-poster-sm">The rent you&apos;d pay</h2>
               </div>
               <div className="grid gap-3 sm:grid-cols-2" style={{ marginTop: "var(--c97-sp-3)" }}>
-                <NumberField label="Monthly rent" prefix="$" step={50} value={input.monthlyRent} onChange={num("monthlyRent")} />
-                <NumberField label="Rent growth" suffix="%/yr" step={0.25} min={-10} value={input.rentGrowthPercent} onChange={num("rentGrowthPercent")} />
-                <NumberField label="Renter's insurance" prefix="$" suffix="/mo" step={5} value={input.rentersInsuranceMonthly} onChange={num("rentersInsuranceMonthly")} />
+                <NumberField {...RENT_VS_BUY_BOUNDS.monthlyRent} label="Monthly rent" prefix="$" step={50} value={input.monthlyRent} onChange={num("monthlyRent")} />
+                <NumberField {...RENT_VS_BUY_BOUNDS.rentGrowthPercent} label="Rent growth" suffix="%/yr" step={0.25} value={input.rentGrowthPercent} onChange={num("rentGrowthPercent")} />
+                <NumberField {...RENT_VS_BUY_BOUNDS.rentersInsuranceMonthly} label="Renter's insurance" prefix="$" suffix="/mo" step={5} value={input.rentersInsuranceMonthly} onChange={num("rentersInsuranceMonthly")} />
               </div>
             </div>
 
@@ -379,18 +405,19 @@ export function RentVsBuyClient() {
                 <h2 className="c97-poster-sm">Assumptions</h2>
               </div>
               <div className="grid gap-3 sm:grid-cols-2" style={{ marginTop: "var(--c97-sp-3)" }}>
-                <NumberField label="Investment return" suffix="%/yr" step={0.25} min={-10} value={input.investmentReturnPercent} onChange={num("investmentReturnPercent")} />
-                <NumberField label="Inflation" suffix="%/yr" step={0.25} value={input.generalInflationPercent} onChange={num("generalInflationPercent")} />
+                <NumberField {...RENT_VS_BUY_BOUNDS.investmentReturnPercent} label="Investment return" suffix="%/yr" step={0.25} value={input.investmentReturnPercent} onChange={num("investmentReturnPercent")} />
+                <NumberField {...RENT_VS_BUY_BOUNDS.generalInflationPercent} label="Inflation" suffix="%/yr" step={0.25} value={input.generalInflationPercent} onChange={num("generalInflationPercent")} />
                 <NumberField
+                  {...RENT_VS_BUY_BOUNDS.marginalTaxRatePercent}
                   label="Marginal tax rate"
                   suffix="%"
                   step={1}
-                  max={60}
                   value={input.marginalTaxRatePercent}
                   onChange={num("marginalTaxRatePercent")}
                   disabled={!input.itemizes}
+                  hint="Used only when you itemize deductions."
                 />
-                <NumberField label="Years staying" suffix="yrs" step={1} min={1} max={40} value={input.yearsStaying} onChange={num("yearsStaying")} />
+                <NumberField {...RENT_VS_BUY_BOUNDS.yearsStaying} label="Years staying" suffix="yrs" step={1} value={input.yearsStaying} onChange={num("yearsStaying")} />
                 <label
                   style={{
                     display: "flex",
@@ -412,9 +439,15 @@ export function RentVsBuyClient() {
             </div>
           </div>
 
-          <p className="c97-prose" style={{ fontSize: "var(--c97-fs-small)", color: "var(--c97-ink-2)", marginTop: "var(--c97-sp-4)" }}>
-            Saved in your browser. No account, no server.
-          </p>
+          {persistenceStatus === "memory-only" ? (
+            <p role="status" className="c97-panel c97-prose" style={{ fontSize: "var(--c97-fs-small)", color: "var(--c97-ink-2)", marginTop: "var(--c97-sp-4)" }}>
+              Browser storage is unavailable, so changes last only while this tab is open.
+            </p>
+          ) : (
+            <p className="c97-prose" style={{ fontSize: "var(--c97-fs-small)", color: "var(--c97-ink-2)", marginTop: "var(--c97-sp-4)" }}>
+              Saved in your browser. No account, no server.
+            </p>
+          )}
         </div>
       </section>
 

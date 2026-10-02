@@ -595,7 +595,7 @@ test.describe("Fantasy football best ball", () => {
     await page.goto("/fantasy-football/best-ball/draft-tracker?contest=bbm-vii");
 
     const shell = page.locator('[data-testid="best-ball-draft-tracker-shell"]');
-    const contestNav = shell.getByRole("navigation", { name: "Best ball contest" });
+    const contestNav = shell.getByRole("group", { name: "Best ball contest" });
     await expect(shell.getByRole("heading", { name: "Choose your draft slot" })).toBeVisible();
 
     for (const preset of BEST_BALL_PRESETS) {
@@ -677,7 +677,7 @@ test.describe("Fantasy football best ball", () => {
     await page.goto("/fantasy-football/best-ball/draft-tracker?contest=bbm-vii");
 
     const shell = page.locator('[data-testid="best-ball-draft-tracker-shell"]');
-    const contestNav = shell.getByRole("navigation", { name: "Best ball contest" });
+    const contestNav = shell.getByRole("group", { name: "Best ball contest" });
     await expect(shell.getByRole("heading", { name: "Choose your draft slot" })).toBeVisible();
 
     const scrollerSize = await contestNav.evaluate((element) => ({

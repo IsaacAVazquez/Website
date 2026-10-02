@@ -85,10 +85,7 @@ export function MissionDrawer({
                 <div className="flex items-center gap-4 pr-10">
                   <div
                     className="h-[74px] w-[74px] shrink-0 overflow-hidden border border-[var(--c97-rule)]"
-                    style={{
-                      background:
-                        "radial-gradient(circle at 50% 42%, color-mix(in srgb, var(--c97-field) 70%, var(--c97-field)), var(--c97-field))",
-                    }}
+                    style={{ background: "var(--c97-field)" }}
                   >
                     <MissionPatchEmblem seed={detail.id} accent={accent} className="h-full w-full" />
                   </div>
@@ -96,7 +93,7 @@ export function MissionDrawer({
                     <p className="font-mono text-3xs uppercase tracking-[0.1em] text-[var(--c97-ink-2)]">
                       Flight #{detail.flightNumber} · {detail.launchpadName ?? "Pad TBD"}
                     </p>
-                    <h2 className="mt-1 truncate text-xl font-bold tracking-[-0.02em] text-[var(--c97-ink)]">
+                    <h2 className="c97-serif c97-h3 truncate" style={{ marginTop: "var(--c97-sp-1)" }}>
                       {detail.name}
                     </h2>
                     {status ? (

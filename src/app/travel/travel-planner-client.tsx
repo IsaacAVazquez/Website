@@ -674,13 +674,13 @@ export function TravelPlannerClient() {
                 {trips.map((other) => (
                   <li key={other.id} className="c97-row" style={{ minHeight: "44px", borderBottom: "1px solid var(--c97-rule)", padding: "var(--c97-sp-1) 0" }}>
                     <button type="button" onClick={() => selectTrip(other.id)} className="text-left min-w-0">
-                      <p className="c97-serif" style={{ fontSize: "var(--c97-fs-body)" }}>
+                      <span className="c97-serif" style={{ display: "block", fontSize: "var(--c97-fs-body)" }}>
                         {other.name}
                         {other.id === activeTrip?.id ? " (active)" : ""}
-                      </p>
-                      <p className="c97-meta" style={{ marginTop: "2px" }}>
+                      </span>
+                      <span className="c97-meta" style={{ display: "block", marginTop: "2px" }}>
                         {other.destination || "No destination"} &middot; {formatTripDateRange(other.startDate, other.endDate)}
-                      </p>
+                      </span>
                     </button>
                     <button
                       type="button"

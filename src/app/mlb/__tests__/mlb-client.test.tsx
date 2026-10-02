@@ -51,7 +51,7 @@ describe("MlbClient", () => {
     expect(screen.getByRole("heading", { level: 1, name: /mlb pulse/i })).toBeVisible();
     expect(screen.getByRole("region", { name: /mlb standings/i })).toBeVisible();
 
-    fireEvent.click(screen.getByRole("tab", { name: /american league/i }));
+    fireEvent.click(screen.getByRole("button", { name: /american league/i }));
     expect(mockPush).toHaveBeenLastCalledWith(
       buildMlbHref({ view: "al", team: getDefaultTeamForView("al") }, currentSearchParams),
       { scroll: false }

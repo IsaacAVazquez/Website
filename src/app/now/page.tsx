@@ -156,7 +156,7 @@ export default function NowPage() {
       </section>
 
       {/* Currently building */}
-      <section className="c97-band" data-c97-surface="bone">
+      <section className="c97-band c97-sheet" data-c97-surface="bone" data-seam="deckle">
         <div className="c97-shell">
           <p className="c97-kicker">Now</p>
           <h2 className="c97-serif c97-h2" style={{ marginTop: "var(--c97-sp-2)" }}>
@@ -196,7 +196,7 @@ export default function NowPage() {
       </section>
 
       {/* What I'm not doing */}
-      <section className="c97-band" data-c97-surface="paper">
+      <section className="c97-band c97-sheet" data-c97-surface="paper" data-seam="deckle">
         <div className="c97-shell">
           <p className="c97-kicker">Now</p>
           <h2 className="c97-serif c97-h2" style={{ marginTop: "var(--c97-sp-2)" }}>
@@ -221,7 +221,7 @@ export default function NowPage() {
       </section>
 
       {/* Keep up */}
-      <section className="c97-band" data-c97-surface="bone">
+      <section className="c97-band c97-sheet" data-c97-surface="bone" data-seam="deckle">
         <div className="c97-shell">
           <p className="c97-kicker">Now</p>
           <h2 className="c97-serif c97-h2" style={{ marginTop: "var(--c97-sp-2)" }}>

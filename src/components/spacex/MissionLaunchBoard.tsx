@@ -65,7 +65,7 @@ export function MissionLaunchBoard({
           <p className="font-mono text-2xs font-semibold uppercase tracking-[0.22em] text-[var(--c97-label)]">
             Launch board
           </p>
-          <h2 className="mt-2 text-2xl font-bold tracking-[-0.04em] text-[var(--c97-ink)]">
+          <h2 className="c97-serif c97-h3" style={{ marginTop: "var(--c97-sp-1)" }}>
             Browse the SpaceX launch manifest.
           </h2>
           <p className="mt-2 text-sm leading-6 text-[var(--c97-ink-2)]">
@@ -76,15 +76,14 @@ export function MissionLaunchBoard({
 
         <div
           className="inline-flex flex-wrap gap-2 border border-[var(--c97-rule)] bg-[var(--c97-surface)] p-2"
-          role="tablist"
+          role="group"
           aria-label="Mission board status filters"
         >
           {STATUS_OPTIONS.map((option) => (
             <button
               key={option.key}
               type="button"
-              role="tab"
-              aria-selected={status === option.key}
+              aria-pressed={status === option.key}
               onClick={() => onStatusChange(option.key)}
               className={`tap-target px-4 py-3 text-sm font-semibold transition ${
                 status === option.key
@@ -113,7 +112,7 @@ export function MissionLaunchBoard({
               className={`tap-target inline-flex min-h-[44px] items-center border px-3.5 font-mono text-3xs uppercase tracking-[0.06em] transition ${
                 vehicleFilter === option
                   ? "border-[var(--c97-ink)] bg-[var(--c97-ink)] text-[var(--c97-surface)]"
-                  : "border-[var(--c97-rule)] bg-[color-mix(in_srgb,var(--c97-field)_84%,var(--c97-field))] text-[var(--c97-ink-2)] hover:text-[var(--c97-ink)]"
+                  : "border-[var(--c97-rule)] bg-[var(--c97-field)] text-[var(--c97-ink-2)] hover:text-[var(--c97-ink)]"
               }`}
             >
               {option}
@@ -141,17 +140,14 @@ export function MissionLaunchBoard({
       {isLoading && launches.length === 0 ? (
         <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
           {Array.from({ length: 6 }, (_, index) => (
-            <div
-              key={index}
-              className="h-[268px] animate-pulse border border-[var(--c97-rule)] bg-[var(--c97-surface)]"
-            />
+            <span key={index} className="c97-skeleton" style={{ height: 268 }} />
           ))}
         </div>
       ) : null}
 
-      {!isLoading && launches.length === 0 ? (
+      {!isLoading && !error && launches.length === 0 ? (
         <div className="border border-dashed border-[var(--c97-rule)] bg-[var(--c97-surface)] px-5 py-8 text-center">
-          <div className="mx-auto flex h-14 w-14 items-center justify-center bg-[color-mix(in_srgb,var(--c97-accent)_10%,var(--c97-field))]">
+          <div className="mx-auto flex h-14 w-14 items-center justify-center bg-[var(--c97-field)]">
             <Radar className="h-6 w-6 text-[var(--c97-accent)]" />
           </div>
           <p className="mt-4 text-lg font-semibold text-[var(--c97-ink)]">
@@ -162,7 +158,7 @@ export function MissionLaunchBoard({
           <p className="mt-2 text-sm leading-6 text-[var(--c97-ink-2)]">
             {status === "upcoming"
               ? "The live provider does not currently list a future SpaceX mission. The hero will fall back to the latest completed launch when possible."
-              : "The published archive came back empty. Retry the request to check for recovery."}
+              : "The published archive came back empty."}
           </p>
         </div>
       ) : null}

@@ -90,7 +90,7 @@ describe("DecisionLabClient", () => {
     expect(mockWriteText).toHaveBeenCalledWith(
       "http://localhost/decision-lab?preset=onboarding-refresh&confidence=52"
     );
-    expect(await screen.findByText("Link copied")).toBeVisible();
+    expect(await screen.findByText("Link copied", { selector: ":not(.sr-only)" })).toBeVisible();
 
     fireEvent.click(screen.getByRole("button", { name: /reset to defaults/i }));
 
@@ -99,5 +99,29 @@ describe("DecisionLabClient", () => {
     });
     expect((screen.getByLabelText("Confidence") as HTMLInputElement).value).toBe("73");
     expect(screen.getAllByText("Preset").length).toBeGreaterThan(0);
+  });
+
+  it("keeps the slider mounted on its own commits and re-seeds on back or forward", () => {
+    currentSearchParams = new URLSearchParams("preset=onboarding-refresh");
+    const { rerender } = render(<DecisionLabClient initialState={DEFAULT_DECISION_LAB_STATE} />);
+
+    const slider = screen.getByLabelText("Confidence") as HTMLInputElement;
+    slider.focus();
+    fireEvent.change(slider, { target: { value: "52" } });
+
+    // The router lands on the href the draft just committed.
+    currentSearchParams = new URLSearchParams("preset=onboarding-refresh&confidence=52");
+    rerender(<DecisionLabClient initialState={DEFAULT_DECISION_LAB_STATE} />);
+
+    expect(screen.getByLabelText("Confidence")).toBe(slider);
+    expect(document.activeElement).toBe(slider);
+    expect(slider.value).toBe("52");
+
+    // Back or forward moves the URL somewhere the draft never committed.
+    currentSearchParams = new URLSearchParams("preset=notification-rewrite");
+    rerender(<DecisionLabClient initialState={DEFAULT_DECISION_LAB_STATE} />);
+
+    expect((screen.getByLabelText("Impact") as HTMLInputElement).value).toBe("44");
+    expect(screen.getByText(/I would hold this for now\./i)).toBeVisible();
   });
 });

@@ -53,7 +53,7 @@ export function BestBallBuildPanel({
   return (
     <div className="grid gap-4">
       <div>
-        <p className="c97-kicker" style={{ marginBottom: "0.25rem" }}>My build</p>
+        <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-1)" }}>My build</p>
         <h2 id={headingId} className="c97-serif c97-h3">
           {userPicks.length} of {preset.rosterSize} players
         </h2>

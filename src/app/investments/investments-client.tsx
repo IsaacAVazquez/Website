@@ -91,7 +91,6 @@ export function InvestmentsClient({
   return (
     <div
       className={styles.terminalScope}
-      aria-label="Investments dashboard"
       data-testid="investments-shell"
     >
       <InvestmentsDashboard

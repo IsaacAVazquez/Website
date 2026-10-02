@@ -106,7 +106,13 @@ function EditorialLinkCard({ card }: { card: EditorialCard }) {
     <Link
       href={card.href}
       className="c97-panel"
-      style={{ display: "block", padding: "var(--c97-sp-4)", textDecoration: "none" }}
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        position: "relative",
+        padding: "var(--c97-sp-4)",
+        textDecoration: "none",
+      }}
     >
       <div style={{ marginBottom: "var(--c97-sp-3)" }}>
         <Tag color={EDITORIAL_TONE[card.color]}>{card.eyebrow}</Tag>
@@ -117,7 +123,7 @@ function EditorialLinkCard({ card }: { card: EditorialCard }) {
       <p className="c97-prose" style={{ fontSize: "var(--c97-fs-small)", marginBottom: "var(--c97-sp-3)" }}>
         {card.reason}
       </p>
-      <div className="flex flex-wrap items-center justify-between gap-3">
+      <div className="flex flex-wrap items-center justify-between gap-3" style={{ marginTop: "auto" }}>
         <p className="c97-kicker" style={{ margin: 0 }}>
           {card.note}
         </p>
@@ -669,20 +675,18 @@ function PicksSection() {
               const isOpen = expanded === id;
 
               return (
-                <button
+                <div
                   key={id}
-                  type="button"
-                  onClick={() => togglePick(id, isOpen)}
                   className="c97-panel"
-                  style={{
-                    display: "block",
-                    width: "100%",
-                    textAlign: "left",
-                    border: isOpen ? "1px solid var(--c97-ink-2)" : "1px solid transparent",
-                  }}
-                  aria-expanded={isOpen}
+                  style={{ border: isOpen ? "1px solid var(--c97-ink-2)" : "1px solid transparent" }}
                 >
-                  <div className="flex flex-wrap items-start gap-2">
+                  <button
+                    type="button"
+                    onClick={() => togglePick(id, isOpen)}
+                    className="mm-pick-toggle flex flex-wrap items-start gap-2"
+                    aria-expanded={isOpen}
+                    aria-controls={`pick-body-${id}`}
+                  >
                     <Tag color={BADGE_TONE[item.badge]}>{item.badge}</Tag>
                     <Tag>{item.round}</Tag>
                     <Tag>{item.region}</Tag>
@@ -690,7 +694,7 @@ function PicksSection() {
                     <span aria-hidden="true" style={{ color: "var(--c97-ink-2)" }}>
                       {isOpen ? "▾" : "▸"}
                     </span>
-                  </div>
+                  </button>
 
                   <p className="c97-prose" style={{ fontSize: "var(--c97-fs-small)", marginTop: "var(--c97-sp-2)" }}>
                     {item.reason}
@@ -698,6 +702,7 @@ function PicksSection() {
 
                   {isOpen ? (
                     <p
+                      id={`pick-body-${id}`}
                       className="c97-prose"
                       style={{
                         fontSize: "var(--c97-fs-small)",
@@ -709,7 +714,7 @@ function PicksSection() {
                       {item.body}
                     </p>
                   ) : null}
-                </button>
+                </div>
               );
             })}
           </div>
@@ -977,11 +982,15 @@ export function MarchMadnessClient({
               Copy current view link
             </button>
             <span className="c97-prose" style={{ fontSize: "var(--c97-fs-small)", wordBreak: "break-all" }}>
-              {copyStatus === "copied"
-                ? "Deep link copied."
-                : copyStatus === "error"
-                  ? "Clipboard blocked. Copy the URL from the address bar."
-                  : currentHref}
+              {copyStatus === "idle" ? currentHref : null}
+              {/* The live region holds only the copy result, so a view change never announces the URL. */}
+              <span role="status" aria-live="polite">
+                {copyStatus === "copied"
+                  ? "Deep link copied."
+                  : copyStatus === "error"
+                    ? "Clipboard blocked. Copy the URL from the address bar."
+                    : null}
+              </span>
             </span>
           </div>
         </div>
@@ -1065,7 +1074,7 @@ export function MarchMadnessClient({
 
       <section className="c97-band c97-sheet" data-c97-surface="paper" data-seam="torn">
         <div className="c97-shell space-y-6">
-          <div aria-labelledby="march-madness-questions">
+          <section aria-labelledby="march-madness-questions">
             <SectionIntro
               eyebrow="Method questions"
               title="March Madness bracket questions"
@@ -1084,7 +1093,7 @@ export function MarchMadnessClient({
                 </div>
               ))}
             </div>
-          </div>
+          </section>
 
           <div
             className="flex flex-wrap items-center justify-between gap-3"

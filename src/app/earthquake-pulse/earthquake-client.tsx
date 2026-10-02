@@ -256,7 +256,7 @@ function DistributionBars({ summary }: { summary: EarthquakeSummary }) {
             </span>
             <span
               className="relative h-7 flex-1 overflow-hidden"
-              style={{ background: "color-mix(in srgb, var(--c97-field) 70%, var(--c97-field))" }}
+              style={{ background: "var(--c97-field)" }}
             >
               <span
                 className="absolute inset-y-0 left-0"
@@ -287,6 +287,9 @@ function RegionList({
   summary: EarthquakeSummary;
   onSelect: (id: string) => void;
 }) {
+  if (summary.regions.length === 0) {
+    return <p className="c97-meta">No region logged a magnitude 2.5 or larger quake in the past seven days.</p>;
+  }
   const maxCount = Math.max(1, ...summary.regions.map((r) => r.count));
   return (
     <div className="space-y-2">
@@ -297,8 +300,8 @@ function RegionList({
           <>
             <span className="flex items-center justify-between gap-3">
               <span
-                className="truncate text-base font-semibold"
-                style={{ color: "var(--c97-ink)", fontFamily: "var(--c97-font-body)" }}
+                className="c97-quake-region-name truncate text-base font-semibold"
+                style={{ fontFamily: "var(--c97-font-body)" }}
               >
                 {region.region}
               </span>
@@ -312,7 +315,7 @@ function RegionList({
             <span className="mt-2 flex items-center gap-3">
               <span
                 className="relative h-2 flex-1 overflow-hidden"
-                style={{ background: "color-mix(in srgb, var(--c97-field) 70%, var(--c97-field))" }}
+                style={{ background: "var(--c97-field)" }}
               >
                 <span
                   className="absolute inset-y-0 left-0"
@@ -324,7 +327,7 @@ function RegionList({
                 />
               </span>
               <span
-                className="w-16 shrink-0 text-right text-sm"
+                className="c97-tabular w-16 shrink-0 text-right text-sm"
                 style={{ color: "var(--c97-ink-2)", fontFamily: "var(--c97-font-body)" }}
               >
                 {region.count} quake{region.count === 1 ? "" : "s"}
@@ -338,7 +341,7 @@ function RegionList({
             key={region.region}
             type="button"
             onClick={() => onSelect(region.strongestId!)}
-            className="block w-full border px-4 py-3 text-left"
+            className="c97-quake-region block w-full border px-4 py-3 text-left"
             style={{ borderColor: "var(--c97-rule)", background: "var(--c97-field)" }}
           >
             {content}
@@ -393,15 +396,7 @@ function QuakeDetailPanel({ quake, now }: { quake: QuakeEvent | null; now: numbe
     <>
       <div className="flex items-start justify-between gap-4">
         <div className="min-w-0">
-          <h2
-            className="mb-1 text-2xl"
-            style={{
-              fontFamily: "var(--c97-font-body)",
-              color: "var(--c97-ink)",
-              fontWeight: 700,
-              letterSpacing: "-0.04em",
-            }}
-          >
+          <h2 className="c97-serif c97-h3" style={{ marginBottom: "var(--c97-sp-1)" }}>
             {quake.place}
           </h2>
           <p
@@ -457,12 +452,8 @@ function QuakeDetailPanel({ quake, now }: { quake: QuakeEvent | null; now: numbe
           href={quake.url}
           target="_blank"
           rel="noopener noreferrer"
-          className="mt-5 inline-flex min-h-[44px] items-center gap-2 border px-4 py-2.5 text-sm font-semibold"
-          style={{
-            borderColor: "var(--c97-rule)",
-            background: "var(--c97-field)",
-            color: "var(--c97-ink)",
-          }}
+          className="c97-btn-ghost"
+          style={{ marginTop: "var(--c97-sp-3)", gap: "var(--c97-sp-1)" }}
         >
           View on USGS
           <ExternalLink className="h-4 w-4" aria-hidden="true" />
@@ -677,17 +668,25 @@ export function EarthquakeClient({
                     </div>
                   </div>
                 ) : (
-                  <div className="c97-quake-log">
-                    {listForView.map((quake) => (
-                      <QuakeRow
-                        key={quake.id}
-                        quake={quake}
-                        isSelected={quake.id === selectedQuakeId}
-                        onSelect={handleSelectQuake}
-                        now={now}
-                      />
-                    ))}
-                  </div>
+                  listForView.length === 0 ? (
+                    <p className="c97-meta">
+                      {routeState.view === "significant"
+                        ? "No significant quakes in the past 30 days."
+                        : "No quakes of magnitude 2.5 or more in the past 24 hours."}
+                    </p>
+                  ) : (
+                    <div className="c97-quake-log">
+                      {listForView.map((quake) => (
+                        <QuakeRow
+                          key={quake.id}
+                          quake={quake}
+                          isSelected={quake.id === selectedQuakeId}
+                          onSelect={handleSelectQuake}
+                          now={now}
+                        />
+                      ))}
+                    </div>
+                  )
                 )}
               </div>
             </div>

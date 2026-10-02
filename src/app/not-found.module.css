@@ -103,10 +103,8 @@
 @keyframes feed {
   from {
     transform: translateY(-24px) rotate(-5deg) skewX(-1deg);
-    opacity: 0;
   }
   to {
     transform: rotate(-1.4deg) skewX(-1deg);
-    opacity: 1;
   }
 }

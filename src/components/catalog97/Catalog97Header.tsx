@@ -72,12 +72,14 @@ export function Catalog97Header() {
         */}
         <nav aria-label="Main" className="c97-header-nav">
           {catalog97NavLinks.map((link) => {
-            const active = pathname === link.href;
+            const exact = pathname === link.href;
+            const inSection =
+              link.href !== "/" && pathname.startsWith(`${link.href}/`);
             return (
               <Link
                 key={link.href}
                 href={link.href}
-                aria-current={active ? "page" : undefined}
+                aria-current={exact ? "page" : inSection ? "true" : undefined}
                 className="c97-microlink c97-header-link"
                 onClick={() =>
                   trackNavigationClick({
@@ -101,7 +103,7 @@ export function Catalog97Header() {
           >
             Search
           </button>
-          <DeferredThemeToggle className="!rounded-none !text-[var(--c97-ink-2)] hover:!text-[var(--c97-ink)]" />
+          <DeferredThemeToggle />
         </nav>
       </div>
       {isSearchOpen ? (

@@ -750,12 +750,13 @@ export function BestBallClient({ initialState }: BestBallClientProps) {
                       type="button"
                       aria-pressed={active}
                       onClick={() => updateRouteState({ contest: contest.id })}
-                      className="min-h-touch cursor-pointer border px-3.5 font-mono text-2xs uppercase tracking-[0.05em] transition-colors duration-150"
+                      className={`min-h-touch cursor-pointer border px-3.5 font-mono text-2xs uppercase tracking-[0.05em] transition-colors duration-150 ${
+                        active ? "" : "border-[var(--c97-rule)] hover:border-[var(--c97-ink)]"
+                      }`}
                       style={
                         active
                           ? { borderColor: "var(--c97-ink)", background: "var(--c97-ink)", color: "var(--c97-surface)" }
                           : {
-                              borderColor: "var(--c97-rule)",
                               background: "var(--c97-field)",
                               color: "var(--c97-ink)",
                             }
@@ -852,8 +853,7 @@ export function BestBallClient({ initialState }: BestBallClientProps) {
             <span className="flex flex-wrap gap-2">
               <Link
                 href={trackerHref}
-                className={PILL_ACTION_CLASS}
-                style={{ borderColor: "var(--c97-ink)", background: "var(--c97-ink)", color: "var(--c97-surface)" }}
+                className={`${PILL_ACTION_CLASS} border-[var(--c97-ink)] bg-[var(--c97-ink)] text-[var(--c97-surface)] hover:bg-[var(--c97-ink-2)]`}
               >
                 Draft with this lens&nbsp;<span aria-hidden="true">↗</span>
               </Link>
@@ -861,8 +861,8 @@ export function BestBallClient({ initialState }: BestBallClientProps) {
                 href={activePreset.officialRulesUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className={PILL_ACTION_CLASS}
-                style={{ borderColor: "var(--c97-rule)", color: "var(--c97-ink)" }}
+                className={`${PILL_ACTION_CLASS} border-[var(--c97-rule)] hover:border-[var(--c97-ink)]`}
+                style={{ color: "var(--c97-ink)" }}
               >
                 Scoring rules&nbsp;<span aria-hidden="true">↗</span>
               </a>
@@ -875,7 +875,7 @@ export function BestBallClient({ initialState }: BestBallClientProps) {
         <div className={`${SHELL_CLASS} pt-3.5`}>
           <div
             role="status"
-            className="border px-4 py-3 text-sm leading-6"
+            className="max-w-[70ch] border px-4 py-3 text-sm leading-6"
             style={{
               borderColor: "color-mix(in srgb, var(--c97-warning) 48%, var(--c97-rule))",
               background: "color-mix(in srgb, var(--c97-warning) 10%, var(--c97-surface))",
@@ -894,7 +894,7 @@ export function BestBallClient({ initialState }: BestBallClientProps) {
           <div
             role="note"
             data-testid="best-ball-consensus-note"
-            className="border px-4 py-3 text-sm leading-6"
+            className="max-w-[70ch] border px-4 py-3 text-sm leading-6"
             style={{
               borderColor: "color-mix(in srgb, var(--c97-warning) 48%, var(--c97-rule))",
               background: "color-mix(in srgb, var(--c97-warning) 10%, var(--c97-surface))",
@@ -1023,8 +1023,7 @@ export function BestBallClient({ initialState }: BestBallClientProps) {
             <button
               type="button"
               onClick={retry}
-              className="mt-4 inline-flex min-h-touch items-center border px-4 text-sm font-semibold"
-              style={{ borderColor: "var(--c97-ink)", background: "var(--c97-ink)", color: "var(--c97-surface)" }}
+              className="mt-4 inline-flex min-h-touch items-center border border-[var(--c97-ink)] bg-[var(--c97-ink)] text-[var(--c97-surface)] hover:bg-[var(--c97-ink-2)] px-4 text-sm font-semibold"
             >
               Retry rankings
             </button>
@@ -1049,7 +1048,7 @@ export function BestBallClient({ initialState }: BestBallClientProps) {
               return (
                 <section
                   key={`round-${group.round}`}
-                  style={{ marginTop: index === 0 ? 0 : 14 }}
+                  style={{ marginTop: index === 0 ? 0 : "var(--c97-sp-2)" }}
                   aria-label={`Round ${group.round}`}
                 >
                   <div
@@ -1095,8 +1094,8 @@ export function BestBallClient({ initialState }: BestBallClientProps) {
               <button
                 type="button"
                 onClick={() => setVisibleCount((count) => count + PAGE_SIZE)}
-                className="mt-4 inline-flex min-h-touch w-full items-center justify-center border px-4 text-sm font-semibold transition-colors hover:border-[var(--c97-ink)]"
-                style={{ borderColor: "var(--c97-rule)", color: "var(--c97-ink)" }}
+                className="mt-4 inline-flex min-h-touch w-full items-center justify-center border border-[var(--c97-rule)] hover:border-[var(--c97-ink)] px-4 text-sm font-semibold transition-colors"
+                style={{ color: "var(--c97-ink)" }}
               >
                 Show the next {Math.min(PAGE_SIZE, filteredPlayers.length - visibleCount)} players
               </button>
@@ -1119,8 +1118,7 @@ export function BestBallClient({ initialState }: BestBallClientProps) {
                   setSearchQuery("");
                   updateRouteState({ query: "" });
                 }}
-                className="mt-3.5 inline-flex min-h-touch items-center border px-4 font-mono text-2xs uppercase tracking-[0.06em]"
-                style={{ borderColor: "var(--c97-ink)", background: "var(--c97-ink)", color: "var(--c97-surface)" }}
+                className="mt-3.5 inline-flex min-h-touch items-center border border-[var(--c97-ink)] bg-[var(--c97-ink)] text-[var(--c97-surface)] hover:bg-[var(--c97-ink-2)] px-4 font-mono text-2xs uppercase tracking-[0.06em]"
               >
                 Clear search
               </button>
@@ -1128,8 +1126,7 @@ export function BestBallClient({ initialState }: BestBallClientProps) {
               <button
                 type="button"
                 onClick={() => updateRouteState({ position: "all" })}
-                className="mt-3.5 inline-flex min-h-touch items-center border px-4 font-mono text-2xs uppercase tracking-[0.06em]"
-                style={{ borderColor: "var(--c97-ink)", background: "var(--c97-ink)", color: "var(--c97-surface)" }}
+                className="mt-3.5 inline-flex min-h-touch items-center border border-[var(--c97-ink)] bg-[var(--c97-ink)] text-[var(--c97-surface)] hover:bg-[var(--c97-ink-2)] px-4 font-mono text-2xs uppercase tracking-[0.06em]"
               >
                 Show all positions
               </button>
@@ -1138,7 +1135,7 @@ export function BestBallClient({ initialState }: BestBallClientProps) {
         )}
 
         <div
-          className="mt-3 font-mono text-2xs leading-relaxed"
+          className="mt-3 max-w-[70ch] font-mono text-2xs leading-relaxed"
           style={{ color: "var(--c97-ink-2)" }}
         >
           {adpAvailable && (
@@ -1317,8 +1314,8 @@ export function BestBallClient({ initialState }: BestBallClientProps) {
             href={RULES_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className={`${PILL_ACTION_CLASS} max-w-full`}
-            style={{ borderColor: "var(--c97-rule)", color: "var(--c97-ink)" }}
+            className={`${PILL_ACTION_CLASS} max-w-full border-[var(--c97-rule)] hover:border-[var(--c97-ink)]`}
+            style={{ color: "var(--c97-ink)" }}
           >
             Official scoring and lineup rules&nbsp;<span aria-hidden="true">↗</span>
           </a>
@@ -1334,13 +1331,13 @@ export function BestBallClient({ initialState }: BestBallClientProps) {
             Working ranges, not quotas, and nothing here guarantees a result
           </span>
           <span className="flex flex-wrap gap-x-4 gap-y-1">
-            <Link href="/fantasy-football" className="inline-flex min-h-touch items-center text-sm font-semibold no-underline">
+            <Link href="/fantasy-football" className="c97-link inline-flex min-h-touch items-center text-sm font-semibold">
               Rankings board&nbsp;<span aria-hidden="true">↗</span>
             </Link>
-            <Link href={trackerHref} className="inline-flex min-h-touch items-center text-sm font-semibold no-underline">
+            <Link href={trackerHref} className="c97-link inline-flex min-h-touch items-center text-sm font-semibold">
               Draft tracker&nbsp;<span aria-hidden="true">↗</span>
             </Link>
-            <Link href="/fantasy-football/mock-draft" className="inline-flex min-h-touch items-center text-sm font-semibold no-underline">
+            <Link href="/fantasy-football/mock-draft" className="c97-link inline-flex min-h-touch items-center text-sm font-semibold">
               Mock draft&nbsp;<span aria-hidden="true">↗</span>
             </Link>
           </span>

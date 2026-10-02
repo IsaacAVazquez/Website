@@ -587,7 +587,7 @@ describe("SpaceXMissionControlClient", () => {
     await flushPromises();
 
     await act(async () => {
-      const button = Array.from(container.querySelectorAll('button[role="tab"]')).find(
+      const button = Array.from(container.querySelectorAll("button[aria-pressed]")).find(
         (tab) => tab.textContent?.includes("Past")
       ) as HTMLButtonElement | undefined;
       button?.click();
@@ -644,7 +644,7 @@ describe("SpaceXMissionControlClient", () => {
     await flushPromises();
 
     await act(async () => {
-      const button = Array.from(container.querySelectorAll('button[role="tab"]')).find(
+      const button = Array.from(container.querySelectorAll("button[aria-pressed]")).find(
         (tab) => tab.textContent?.includes("Past")
       ) as HTMLButtonElement | undefined;
       button?.click();

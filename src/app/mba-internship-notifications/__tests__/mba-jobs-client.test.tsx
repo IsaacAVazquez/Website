@@ -333,14 +333,14 @@ describe("MBAJobsClient", () => {
 
     expect(screen.getByLabelText("Search roles")).toHaveValue("finance");
     expect(screen.getByLabelText("Filter by location")).toHaveValue("remote");
-    expect(screen.getByRole("tab", { name: "Remote · 1" })).toBeVisible();
-    expect(screen.getByRole("tab", { name: "New York · 1" })).toBeVisible();
+    expect(screen.getByRole("button", { name: "Remote · 1", pressed: true })).toBeVisible();
+    expect(screen.getByRole("button", { name: "New York · 1", pressed: false })).toBeVisible();
     expect(screen.getByRole("heading", { name: "Remote Finance Manager" })).toBeVisible();
     expect(
       screen.queryByRole("heading", { name: "New York Finance Manager" })
     ).not.toBeInTheDocument();
 
-    fireEvent.click(screen.getByRole("tab", { name: "New York · 1" }));
+    fireEvent.click(screen.getByRole("button", { name: "New York · 1" }));
 
     expect(mockPush).toHaveBeenLastCalledWith(
       "/mba-internship-notifications?q=finance&location=New+York",
@@ -438,7 +438,7 @@ describe("MBAJobsClient", () => {
       screen.getByRole("link", { name: "Search Google for the current role filters" })
     ).toHaveAttribute("href", expect.stringContaining("strategy"));
 
-    fireEvent.click(screen.getByRole("tab", { name: "Direct + external leads" }));
+    fireEvent.click(screen.getByRole("button", { name: "Direct + external leads" }));
 
     expect(mockPush).toHaveBeenLastCalledWith(
       "/mba-internship-notifications?external=on&q=strategy&location=remote",

@@ -30,6 +30,11 @@ const TYPE_LABELS: Record<HeaderSearchResult["type"], string> = {
 
 const RESULT_LIMIT = 6;
 
+const STATUS_STYLE = {
+  padding: "var(--c97-sp-3) var(--c97-sp-2)",
+  color: "var(--c97-ink-2)",
+} as const;
+
 /**
  * The in-header search dropdown. Typing runs a debounced query against
  * /api/search and shows the top results inline; Enter (or "View all results")
@@ -46,6 +51,7 @@ export function HeaderSearchPanel({ onClose }: HeaderSearchPanelProps) {
   const [results, setResults] = useState<HeaderSearchResult[]>([]);
   const [total, setTotal] = useState(0);
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(false);
   const [activeIndex, setActiveIndex] = useState(-1);
 
   const debouncedQuery = useDebounce(query.trim(), 220);
@@ -67,6 +73,7 @@ export function HeaderSearchPanel({ onClose }: HeaderSearchPanelProps) {
   // the data-fetch setState out of the effect body itself).
   const runSearch = useCallback(async (term: string, signal: AbortSignal) => {
     setLoading(true);
+    setError(false);
     try {
       const response = await fetch(
         `/api/search?q=${encodeURIComponent(term)}&limit=${RESULT_LIMIT}`,
@@ -82,6 +89,7 @@ export function HeaderSearchPanel({ onClose }: HeaderSearchPanelProps) {
       if (!signal.aborted && (error as { name?: string })?.name !== "AbortError") {
         setResults([]);
         setTotal(0);
+        setError(true);
       }
     } finally {
       if (!signal.aborted) setLoading(false);
@@ -132,6 +140,7 @@ export function HeaderSearchPanel({ onClose }: HeaderSearchPanelProps) {
     setResults([]);
     setTotal(0);
     setActiveIndex(-1);
+    setError(false);
     setLoading(Boolean(next.trim()));
   };
 
@@ -176,12 +185,19 @@ export function HeaderSearchPanel({ onClose }: HeaderSearchPanelProps) {
       <div className="c97-shell c97-frame">
         <div
           data-c97-surface="paper"
-          className="c97-offset mt-2 overflow-hidden border"
+          className="c97-offset overflow-hidden border"
           role="dialog"
           aria-label="Site search"
-          style={{ borderColor: "var(--c97-rule)" }}
+          style={{ borderColor: "var(--c97-rule)", marginTop: "var(--c97-sp-1)" }}
         >
-          <div className="flex items-center gap-2 border-b px-3" style={{ borderColor: "var(--c97-rule)" }}>
+          <div
+            className="flex items-center border-b"
+            style={{
+              borderColor: "var(--c97-rule)",
+              gap: "var(--c97-sp-1)",
+              paddingInline: "var(--c97-sp-2)",
+            }}
+          >
             <Search className="h-4 w-4 shrink-0 text-[var(--c97-ink-2)]" aria-hidden="true" />
             <input
               ref={inputRef}
@@ -198,8 +214,8 @@ export function HeaderSearchPanel({ onClose }: HeaderSearchPanelProps) {
                 activeIndex >= 0 ? `${listboxId}-option-${activeIndex}` : undefined
               }
               autoComplete="off"
-              className="min-h-[48px] w-full bg-transparent py-3 text-base outline-none placeholder:text-[var(--c97-ink-2)]"
-              style={{ color: "var(--c97-ink)" }}
+              className="min-h-[48px] w-full bg-transparent text-base outline-none placeholder:text-[var(--c97-ink-2)]"
+              style={{ color: "var(--c97-ink)", paddingBlock: "var(--c97-sp-2)" }}
             />
             <button
               type="button"
@@ -214,25 +230,35 @@ export function HeaderSearchPanel({ onClose }: HeaderSearchPanelProps) {
 
           <div className="max-h-[60vh] overflow-y-auto">
             {hasQuery && loading && results.length === 0 && (
-              <p className="px-4 py-6 text-sm" style={{ color: "var(--c97-ink-2)" }}>
+              <p className="text-sm" style={STATUS_STYLE}>
                 Searching…
               </p>
             )}
 
-            {hasQuery && !loading && results.length === 0 && (
-              <p className="px-4 py-6 text-sm" style={{ color: "var(--c97-ink-2)" }}>
+            {hasQuery && !loading && error && (
+              <p className="text-sm" style={STATUS_STYLE}>
+                Search isn&apos;t answering right now, so try again in a moment.
+              </p>
+            )}
+
+            {hasQuery && !loading && !error && results.length === 0 && (
+              <p className="text-sm" style={STATUS_STYLE}>
                 No results for “{debouncedQuery}”.
               </p>
             )}
 
             {!hasQuery && (
-              <p className="px-4 py-6 text-sm" style={{ color: "var(--c97-ink-2)" }}>
+              <p className="text-sm" style={STATUS_STYLE}>
                 Search projects, writing, and tools. Press Esc to close.
               </p>
             )}
 
             {results.length > 0 && (
-              <ul id={listboxId} role="listbox" aria-label="Search results" className="py-1">
+              <ul
+                id={listboxId}
+                role="listbox"
+                aria-label="Search results"
+              >
                 {results.map((result, index) => (
                   <li
                     key={result.id}
@@ -244,12 +270,12 @@ export function HeaderSearchPanel({ onClose }: HeaderSearchPanelProps) {
                       href={result.url}
                       onClick={() => goToResult(result)}
                       onMouseEnter={() => setActiveIndex(index)}
-                      className="flex items-center gap-3 px-4 py-2.5 transition-colors"
-                      style={
-                        index === activeIndex
-                          ? { background: "color-mix(in srgb, var(--c97-accent) 18%, var(--c97-surface))" }
-                          : undefined
-                      }
+                      className="flex items-center transition-colors"
+                      style={{
+                        gap: "var(--c97-sp-2)",
+                        padding: "var(--c97-sp-1) var(--c97-sp-2)",
+                        background: index === activeIndex ? "var(--c97-accent-soft)" : undefined,
+                      }}
                     >
                       <span className="c97-chip shrink-0">{TYPE_LABELS[result.type]}</span>
                       <span className="min-w-0 flex-1">
@@ -272,8 +298,8 @@ export function HeaderSearchPanel({ onClose }: HeaderSearchPanelProps) {
               <button
                 type="button"
                 onClick={goToAllResults}
-                className="flex w-full items-center justify-between border-t px-4 py-3 text-sm font-semibold transition-colors hover:bg-[var(--c97-field)]"
-                style={{ borderColor: "var(--c97-rule)", color: "var(--c97-ink)" }}
+                className="flex w-full items-center justify-between border-t text-sm font-semibold transition-colors hover:bg-[var(--c97-field)]"
+                style={{ borderColor: "var(--c97-rule)", color: "var(--c97-ink)", padding: "var(--c97-sp-2)" }}
               >
                 <span>View all results{total > results.length ? ` (${total})` : ""}</span>
                 <span aria-hidden="true">→</span>

@@ -12,7 +12,7 @@ Current component ownership reference.
 |----------|------|------|
 | `ConditionalLayout` | `src/components/ConditionalLayout.tsx` | Picks the shell. The seven routes in `src/constants/catalog97Nav.ts` pass through and render `Catalog97Shell` themselves; every other route is wrapped in `Catalog97ToolShell` |
 | `Catalog97Shell` | `src/components/catalog97/Catalog97Shell.tsx` | Header, the only page-level `main`, and the espresso footer |
-| `Catalog97ToolShell` | `src/components/catalog97/Catalog97ToolShell.tsx` | `Catalog97Shell` plus an optional title band and the build-note aside from `projectBuildNoteLinks` |
+| `Catalog97ToolShell` | `src/components/catalog97/Catalog97ToolShell.tsx` | `Catalog97Shell` plus the build-note aside from `projectBuildNoteLinks` |
 | `Catalog97Header` | `src/components/catalog97/Catalog97Header.tsx` | Global nav built from `catalog97NavLinks` |
 | `Providers` | `src/components/Providers.tsx` | Root provider wrapper |
 | `FragmentLinkNavigation` | `src/components/navigation/FragmentLinkNavigation.tsx` | Mounted once by `Providers`. Follows same-page `#` links from the current address, so Firefox does not load the page again after a route rewrote its URL |

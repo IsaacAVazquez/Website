@@ -142,10 +142,10 @@ function PositionChangeIndicator({
     <span
       className="inline-flex items-center gap-1 text-sm font-semibold"
       style={{ color: accent }}
-      aria-label={label}
     >
       <Icon size={14} aria-hidden="true" />
-      <span>{absoluteDelta}</span>
+      <span aria-hidden="true">{absoluteDelta}</span>
+      <span className="sr-only">{label}</span>
     </span>
   );
 }
@@ -211,7 +211,7 @@ function DriverHeadshot({
   return (
     <img
       src={url}
-      alt={name}
+      alt=""
       loading="lazy"
       decoding="async"
       className="flex-shrink-0 border object-cover object-top"
@@ -298,10 +298,10 @@ function useCountdown(targetIso: string | null): CountdownParts | null {
 function CountdownCell({ value, label }: { value: string; label: string }) {
   return (
     <div className="px-2 py-2.5 text-center" style={{ border: "1px solid var(--c97-rule)", background: "var(--c97-field)" }}>
-      <p className="c97-mono mb-0 text-[1.6rem] leading-none" style={{ color: "var(--c97-ink)" }}>
+      <p className="c97-mono mb-0 leading-none" style={{ fontSize: "var(--c97-fs-h2)", color: "var(--c97-ink)" }}>
         {value}
       </p>
-      <p className="mb-0 mt-1.5 text-3xs font-semibold uppercase" style={{ color: "var(--c97-ink-2)", letterSpacing: "0.16em" }}>
+      <p className="c97-stat-label" style={{ marginTop: "var(--c97-sp-1)" }}>
         {label}
       </p>
     </div>
@@ -335,7 +335,7 @@ function RaceCountdown({ targetIso }: { targetIso: string | null }) {
 
   return (
     <div>
-      <p className="mb-2 flex items-center gap-1.5 text-2xs font-semibold uppercase" style={{ color: "var(--c97-ink-2)", letterSpacing: "0.18em" }}>
+      <p className="c97-kicker flex items-center gap-1.5" style={{ marginBottom: "var(--c97-sp-1)" }}>
         <Clock size={13} aria-hidden="true" />
         Lights out in
       </p>
@@ -394,7 +394,7 @@ function LeaderboardRow({
             {row.primary}
           </p>
           {row.secondary || row.badge ? (
-            <p className="mb-0 truncate text-xs uppercase" style={{ color: "var(--c97-ink-2)", letterSpacing: "0.12em" }}>
+            <p className="c97-kicker truncate">
               {row.secondary ?? row.badge}
             </p>
           ) : null}
@@ -404,7 +404,7 @@ function LeaderboardRow({
           <p className="c97-mono mb-0 text-base" style={{ color: "var(--c97-ink)" }}>
             {formatPoints(row.points)}
           </p>
-          <p className="mb-0 text-3xs font-semibold uppercase" style={{ color: "var(--c97-ink-2)" }}>
+          <p className="c97-stat-label">
             pts
           </p>
         </div>
@@ -554,7 +554,7 @@ function ResultRow({ entry }: { entry: Formula1RaceResultEntry }) {
           <p className="c97-mono mb-0 font-semibold" style={{ color: "var(--c97-ink)" }}>
             {formatPoints(entry.points)}
           </p>
-          <p className="mb-0 mt-1 text-xs uppercase" style={{ color: "var(--c97-ink-2)" }}>
+          <p className="c97-kicker" style={{ marginTop: "var(--c97-sp-1)" }}>
             points
           </p>
         </div>
@@ -742,16 +742,16 @@ function MeetingStrip({
             className={styles.raceStripItem}
             aria-pressed={isSelected}
           >
-            <div className="flex items-center justify-between gap-2">
-              <p className="c97-kicker">{meeting.status}</p>
+            <span className="flex items-center justify-between gap-2">
+              <span className="c97-kicker">{meeting.status}</span>
               <CountryFlag flagUrl={meeting.countryFlag} countryName={meeting.countryName} />
-            </div>
-            <p className="c97-serif" style={{ marginTop: "var(--c97-sp-1)", fontSize: "var(--c97-fs-body)" }}>
+            </span>
+            <span className="c97-serif" style={{ display: "block", marginTop: "var(--c97-sp-1)", fontSize: "var(--c97-fs-body)" }}>
               {meeting.name}
-            </p>
-            <p className="mt-1 mb-0 text-sm" style={{ color: "var(--c97-ink-2)" }}>
+            </span>
+            <span className="mt-1 mb-0 text-sm" style={{ display: "block", color: "var(--c97-ink-2)" }}>
               {formatDateLabel(meeting.startAt)} · {meeting.circuitShortName}
-            </p>
+            </span>
           </button>
         );
       })}
@@ -779,30 +779,27 @@ function CalendarTimeline({
               type="button"
               onClick={() => onSelect(meeting.key)}
               aria-pressed={isSelected}
-              className="c97-row min-h-[44px] w-full px-4 py-3 text-left"
-              style={{
-                background: isSelected ? "var(--c97-field)" : "transparent",
-                borderBottom: "1px solid var(--c97-rule)",
-              }}
+              className={`c97-row ${styles.timelineRow} min-h-[44px] w-full px-4 py-3 text-left`}
+              style={{ borderBottom: "1px solid var(--c97-rule)" }}
             >
-              <div className="min-w-0">
-                <p className="mb-0 text-xs font-semibold uppercase" style={{ color: "var(--c97-ink-2)" }}>
+              <span className="min-w-0" style={{ display: "block" }}>
+                <span className="c97-kicker" style={{ display: "block" }}>
                   Round {index + 1}
-                </p>
-                <div className="mt-2 flex items-center gap-2">
+                </span>
+                <span className="mt-2 flex items-center gap-2">
                   <CountryFlag flagUrl={meeting.countryFlag} countryName={meeting.countryName} />
-                  <p className="c97-serif truncate" style={{ fontSize: "var(--c97-fs-body)" }}>
+                  <span className="c97-serif truncate" style={{ fontSize: "var(--c97-fs-body)" }}>
                     {meeting.name}
-                  </p>
-                </div>
-                <p className="mt-1 mb-0 text-sm leading-6" style={{ color: "var(--c97-ink-2)" }}>
+                  </span>
+                </span>
+                <span className="mt-1 mb-0 text-sm leading-6" style={{ display: "block", color: "var(--c97-ink-2)" }}>
                   {meeting.location}, {meeting.countryName}
-                </p>
-              </div>
-              <div className="text-right text-sm" style={{ color: "var(--c97-ink-2)" }}>
-                <p className="mb-0">{formatDateLabel(meeting.startAt)}</p>
-                <p className="mb-0 mt-1">{meeting.status}</p>
-              </div>
+                </span>
+              </span>
+              <span className="text-right text-sm" style={{ display: "block", color: "var(--c97-ink-2)" }}>
+                <span style={{ display: "block" }}>{formatDateLabel(meeting.startAt)}</span>
+                <span className="mt-1" style={{ display: "block" }}>{meeting.status}</span>
+              </span>
             </button>
           </li>
         );
@@ -1256,11 +1253,11 @@ export function Formula1Client({ initialState, summary, initialMeeting }: Formul
             <p className="c97-prose">
               OpenF1 is community-run and unofficial. This dashboard is not affiliated with Formula 1,
               the FIA, or Formula One Management. Read the{" "}
-              <a href={summary.sourceUrls.docs} style={{ color: "var(--c97-accent)" }}>
+              <a href={summary.sourceUrls.docs} className="c97-link">
                 docs
               </a>{" "}
               or the{" "}
-              <a href="https://openf1.org/" style={{ color: "var(--c97-accent)" }}>
+              <a href="https://openf1.org/" className="c97-link">
                 project FAQ
               </a>
               .
