@@ -14,6 +14,7 @@ import {
   saveBudgetMonths,
 } from "@/lib/budgetPlanner";
 import { useLocalStorageString } from "@/hooks/useLocalStorageString";
+import { roundTo } from "@/lib/utils";
 import type { BudgetExpense, BudgetMonth, BudgetMonthMap } from "@/types/budget";
 
 interface ExpenseDraftInput {
@@ -24,8 +25,7 @@ interface ExpenseDraftInput {
 }
 
 function roundAmount(value: number) {
-  if (!Number.isFinite(value)) return 0;
-  return Math.max(0, Math.round(value * 100) / 100);
+  return Number.isFinite(value) ? Math.max(0, roundTo(value, 2)) : 0;
 }
 
 export function useBudgetPlanner(initialMonthKey = getCurrentBudgetMonthKey()) {

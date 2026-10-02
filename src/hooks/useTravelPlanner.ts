@@ -1,10 +1,7 @@
 "use client";
 
-import { useMemo, useState, useSyncExternalStore } from "react";
-import {
-  getBrowserStorageSnapshot,
-  subscribeBrowserStorage,
-} from "@/lib/browserStorage";
+import { useMemo, useState } from "react";
+import { useLocalStorageString } from "@/hooks/useLocalStorageString";
 import {
   TRAVEL_PLANNER_STORAGE_KEY,
   calculateTripSummary,
@@ -43,11 +40,7 @@ export interface JournalDraft {
 }
 
 export function useTravelPlanner() {
-  const snapshot = useSyncExternalStore(
-    (listener) => subscribeBrowserStorage(TRAVEL_PLANNER_STORAGE_KEY, listener),
-    () => getBrowserStorageSnapshot(TRAVEL_PLANNER_STORAGE_KEY, "[]"),
-    () => "[]"
-  );
+  const snapshot = useLocalStorageString(TRAVEL_PLANNER_STORAGE_KEY, "[]");
   const trips = useMemo(() => parseTrips(snapshot), [snapshot]);
 
   const [requestedTripId, setRequestedTripId] = useState<string | null>(null);

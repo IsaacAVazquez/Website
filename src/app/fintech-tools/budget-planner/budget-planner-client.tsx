@@ -11,6 +11,7 @@ import {
   getDefaultExpenseDate,
   isBudgetMonthKey,
 } from "@/lib/budgetPlanner";
+import { downloadFile } from "@/lib/downloadFile";
 import { useBudgetPlanner } from "@/hooks/useBudgetPlanner";
 import { checkRegister, formatCurrency } from "./envelopes";
 import { EnvelopesSignature } from "./EnvelopesSignature";
@@ -115,18 +116,7 @@ export function BudgetPlannerClient() {
   }
 
   function handleExportCsv() {
-    if (typeof window === "undefined") return;
-    const blob = new Blob([buildBudgetCsv(activeMonth, summary)], {
-      type: "text/csv;charset=utf-8",
-    });
-    const url = URL.createObjectURL(blob);
-    const anchor = document.createElement("a");
-    anchor.href = url;
-    anchor.download = `budget-${activeMonthKey}.csv`;
-    document.body.appendChild(anchor);
-    anchor.click();
-    anchor.remove();
-    URL.revokeObjectURL(url);
+    downloadFile(`budget-${activeMonthKey}.csv`, buildBudgetCsv(activeMonth, summary), "text/csv;charset=utf-8");
   }
 
   function handleResetMonth() {

@@ -2,6 +2,7 @@ import { pollingSnapshot } from "@/data/pollingSnapshot";
 import { logger } from "@/lib/logger";
 import { POLLING_BLOB_KEY } from "@/lib/pollingData";
 import { readSnapshotBlob } from "@/lib/netlifyBlobs";
+import { isFiniteNumber as isNumber } from "@/lib/utils";
 import type { PollingSnapshot } from "@/types/polling";
 
 // Serve the blob written by the 6-hour scheduled refresh for up to 36 hours.
@@ -20,8 +21,6 @@ export function resetPollingCacheForTests(): void {
   inflight = null;
 }
 
-const isNumber = (value: unknown): value is number =>
-  typeof value === "number" && Number.isFinite(value);
 const isDate = (value: unknown): value is string =>
   typeof value === "string" && Number.isFinite(Date.parse(value));
 

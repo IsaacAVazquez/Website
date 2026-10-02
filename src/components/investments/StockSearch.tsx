@@ -8,10 +8,10 @@ import React, {
   useMemo,
   useRef,
   useCallback,
-  useSyncExternalStore,
 } from "react";
 import { createPortal } from "react-dom";
 import { useDebounce } from "@/hooks/useDebounce";
+import { useIsClient } from "@/hooks/useIsClient";
 import { getClientInvestmentsIndex } from "@/lib/investmentsClientData";
 import type { InvestmentIndexEntry, InvestmentsIndex } from "@/types/investment";
 
@@ -21,8 +21,6 @@ interface Props {
 }
 
 const VALID_SYMBOL_PATTERN = /^[A-Z0-9.-]{1,10}$/;
-
-const emptySubscribe = () => () => {};
 
 function normalizeQuery(value: string): string {
   return value
@@ -53,14 +51,10 @@ export function StockSearch({ value, onChange }: Props) {
   const [showDropdown, setShowDropdown] = useState(false);
   const [activeIndex, setActiveIndex] = useState(-1);
   const [dropdownStyle, setDropdownStyle] = useState<React.CSSProperties>({});
-  // Hydration flag via useSyncExternalStore: a one-shot setState inside the
-  // first passive effect gets dropped after hydration on this tree
-  // (React 19.2 + Next 16), which left the portal permanently unrendered.
-  const mounted = useSyncExternalStore(
-    emptySubscribe,
-    () => true,
-    () => false
-  );
+  // Hydration flag: a one-shot setState inside the first passive effect gets
+  // dropped after hydration on this tree (React 19.2 + Next 16), which left
+  // the portal permanently unrendered.
+  const mounted = useIsClient();
 
   const debouncedInput = useDebounce(input, 200);
 

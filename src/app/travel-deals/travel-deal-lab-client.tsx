@@ -40,6 +40,8 @@ import {
   type FareRating,
   type PointsRating,
 } from "@/lib/travelDeals";
+import { clamp } from "@/lib/utils";
+import { readValidatedBrowserStorage, writeBrowserStorageJson } from "@/lib/browserStorage";
 import { fareGauge } from "./fareGauge";
 import { FareGaugeSignature } from "./FareGaugeSignature";
 import "./travel-deals.css";
@@ -72,47 +74,38 @@ const DEFAULT_STATE: TripState = {
 };
 
 function clampNumber(value: unknown, min: number, max: number, fallback: number): number {
-  const numeric = typeof value === "number" ? value : Number(value);
-  if (!Number.isFinite(numeric)) return fallback;
-  return Math.min(max, Math.max(min, Math.round(numeric)));
+  const numeric = Number(value);
+  return Number.isFinite(numeric) ? clamp(Math.round(numeric), min, max) : fallback;
+}
+
+function decodeState(value: unknown): TripState {
+  const parsed = value as Record<string, unknown>;
+  const regionId =
+    typeof parsed.regionId === "string" && REGION_IDS.has(parsed.regionId)
+      ? (parsed.regionId as RegionId)
+      : DEFAULT_STATE.regionId;
+  const departureDate = isIsoDate(parsed.departureDate) ? parsed.departureDate : "";
+  const checkedTactics = Array.isArray(parsed.checkedTactics)
+    ? parsed.checkedTactics.filter(
+        (id): id is string => typeof id === "string" && TACTIC_IDS.has(id),
+      )
+    : [];
+  return {
+    regionId,
+    departureDate,
+    nights: clampNumber(parsed.nights, 1, 365, DEFAULT_STATE.nights),
+    travelers: clampNumber(parsed.travelers, 1, 12, DEFAULT_STATE.travelers),
+    budget: clampNumber(parsed.budget, 0, 1_000_000, DEFAULT_STATE.budget),
+    checkedTactics,
+  };
 }
 
 function loadState(): TripState {
-  if (typeof window === "undefined") return DEFAULT_STATE;
-  try {
-    const raw = window.localStorage.getItem(STORAGE_KEY);
-    if (!raw) return DEFAULT_STATE;
-    const parsed = JSON.parse(raw) as Record<string, unknown>;
-    const regionId =
-      typeof parsed.regionId === "string" && REGION_IDS.has(parsed.regionId)
-        ? (parsed.regionId as RegionId)
-        : DEFAULT_STATE.regionId;
-    const departureDate = isIsoDate(parsed.departureDate) ? parsed.departureDate : "";
-    const checkedTactics = Array.isArray(parsed.checkedTactics)
-      ? parsed.checkedTactics.filter(
-          (id): id is string => typeof id === "string" && TACTIC_IDS.has(id),
-        )
-      : [];
-    return {
-      regionId,
-      departureDate,
-      nights: clampNumber(parsed.nights, 1, 365, DEFAULT_STATE.nights),
-      travelers: clampNumber(parsed.travelers, 1, 12, DEFAULT_STATE.travelers),
-      budget: clampNumber(parsed.budget, 0, 1_000_000, DEFAULT_STATE.budget),
-      checkedTactics,
-    };
-  } catch {
-    return DEFAULT_STATE;
-  }
+  return readValidatedBrowserStorage(STORAGE_KEY, decodeState, () => DEFAULT_STATE).value;
 }
 
 function saveState(state: TripState) {
-  if (typeof window === "undefined") return;
-  try {
-    window.localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
-  } catch {
-    // Local persistence is a convenience, not a requirement, so ignore quota errors.
-  }
+  writeBrowserStorageJson(STORAGE_KEY, state);
 }
 
 const CATEGORY_LABELS: Record<TacticCategory, string> = {

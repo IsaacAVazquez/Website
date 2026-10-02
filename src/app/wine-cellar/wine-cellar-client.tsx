@@ -26,6 +26,7 @@ import {
 import { useWineCellar } from "@/hooks/useWineCellar";
 import { useLocalStoragePersistenceStatus } from "@/hooks/useLocalStorageString";
 import { DATE_ONLY_TIME_ZONE } from "@/lib/date-formatters";
+import { formatCurrency } from "@/app/fintech-tools/budget-planner/envelopes";
 import type { WineEntry, WineType } from "@/types/wine";
 import { WINE_TYPE_MARK, wineRack, type WineRackRow } from "./wineRack";
 import "./wine-cellar.css";
@@ -97,15 +98,6 @@ function formDraftToWineDraft(draft: WineFormDraft): WineDraft {
     notes: draft.notes,
     tastedOn: draft.tastedOn,
   };
-}
-
-function formatCurrency(value: number) {
-  return value.toLocaleString("en-US", {
-    style: "currency",
-    currency: "USD",
-    minimumFractionDigits: 0,
-    maximumFractionDigits: value % 1 === 0 ? 0 : 2,
-  });
 }
 
 // tastedOn is a date-only string ("2026-06-15"), which parses as UTC midnight,

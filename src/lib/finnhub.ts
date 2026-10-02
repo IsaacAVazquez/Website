@@ -15,6 +15,7 @@ import {
   getInvestmentsAssetOrigin,
   type AssetOriginOptions,
 } from "@/lib/investmentsAssetOrigin";
+import { isFiniteNumber } from "@/lib/utils";
 
 const FINNHUB_API_KEY = process.env.FINNHUB_API_KEY ?? "";
 const TIMEOUT_MS = 5_000;
@@ -101,12 +102,10 @@ async function fetchAllowlistFromPublicAsset(
   if (!origin) {
     return new Set<string>();
   }
-  const controller = new AbortController();
-  const timeoutId = setTimeout(() => controller.abort(), ALLOWLIST_TIMEOUT_MS);
   try {
     const response = await fetch(new URL(INDEX_RELATIVE_PATH, origin).toString(), {
       cache: "force-cache",
-      signal: controller.signal,
+      signal: AbortSignal.timeout(ALLOWLIST_TIMEOUT_MS),
     });
     if (!response.ok) {
       return new Set<string>();
@@ -114,8 +113,6 @@ async function fetchAllowlistFromPublicAsset(
     return toSymbolSet(await response.json());
   } catch {
     return new Set<string>();
-  } finally {
-    clearTimeout(timeoutId);
   }
 }
 
@@ -213,12 +210,10 @@ async function fetchFinnhubQuoteFromProvider(
     return errorQuote(symbol, RATE_LIMITED_ERROR);
   }
 
-  const controller = new AbortController();
   const boundedTimeoutMs =
     Number.isFinite(timeoutMs) && timeoutMs > 0
       ? Math.max(1, Math.min(TIMEOUT_MS, Math.floor(timeoutMs)))
       : TIMEOUT_MS;
-  const timeoutId = setTimeout(() => controller.abort(), boundedTimeoutMs);
 
   try {
     const providerSymbol = toFinnhubProviderSymbol(symbol);
@@ -230,7 +225,7 @@ async function fetchFinnhubQuoteFromProvider(
           "X-Finnhub-Token": FINNHUB_API_KEY,
         },
         cache: "no-store",
-        signal: controller.signal,
+        signal: AbortSignal.timeout(boundedTimeoutMs),
       }
     );
 
@@ -244,8 +239,7 @@ async function fetchFinnhubQuoteFromProvider(
     }
 
     const data = await res.json() as Record<string, unknown>;
-    const finiteNumber = (value: unknown): number | undefined =>
-      typeof value === "number" && Number.isFinite(value) ? value : undefined;
+    const finiteNumber = (value: unknown) => (isFiniteNumber(value) ? value : undefined);
     const price = finiteNumber(data.c);
     const providerTimestampSeconds = Number(data.t);
     const providerTimestampMs = providerTimestampSeconds * 1000;
@@ -313,8 +307,6 @@ async function fetchFinnhubQuoteFromProvider(
     };
   } catch {
     return errorQuote(symbol, TEMPORARY_ERROR);
-  } finally {
-    clearTimeout(timeoutId);
   }
 }
 

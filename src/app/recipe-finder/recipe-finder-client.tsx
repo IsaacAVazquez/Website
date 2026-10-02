@@ -11,6 +11,7 @@ import { ChefHat, Plus, Search, Sparkles, Trash2, X } from "lucide-react";
 import { Catalog97ProjectHero } from "@/components/catalog97/Catalog97ProjectHero";
 import { PROJECT_PRESS } from "@/constants/projectPress";
 import { RECIPES } from "@/data/recipesSnapshot";
+import { readValidatedBrowserStorage, writeBrowserStorageJson } from "@/lib/browserStorage";
 import {
   formatTotalTime,
   getIngredientCatalog,
@@ -82,24 +83,15 @@ const QUICK_PICKS = [
 ];
 
 function loadPantry(): string[] {
-  if (typeof window === "undefined") return [];
-  try {
-    const raw = window.localStorage.getItem(PANTRY_STORAGE_KEY);
-    if (!raw) return [];
-    const parsed = JSON.parse(raw);
-    return Array.isArray(parsed) ? parsed.filter((v): v is string => typeof v === "string") : [];
-  } catch {
-    return [];
-  }
+  return readValidatedBrowserStorage<string[]>(
+    PANTRY_STORAGE_KEY,
+    (parsed) => (Array.isArray(parsed) ? parsed.filter((v): v is string => typeof v === "string") : []),
+    () => [],
+  ).value;
 }
 
 function savePantry(items: string[]) {
-  if (typeof window === "undefined") return;
-  try {
-    window.localStorage.setItem(PANTRY_STORAGE_KEY, JSON.stringify(items));
-  } catch {
-    // Ignore quota errors. Local persistence is a nice-to-have, not a requirement.
-  }
+  writeBrowserStorageJson(PANTRY_STORAGE_KEY, items);
 }
 
 function totalMinutes(recipe: Recipe): number {

@@ -26,7 +26,7 @@ import type {
   ScoringRules,
   StandingContext,
 } from "./types";
-import { isRecord, boundedNumber, prefixedId } from "@/lib/utils";
+import { isRecord, boundedNumber, enumValue, prefixedId } from "@/lib/utils";
 
 export const SCORE_POOLS_STORAGE_KEY = "score_pools_store_v1";
 const SCORE_POOLS_STORAGE_VERSION = 1;
@@ -90,12 +90,6 @@ export interface ScorePoolsStore {
 }
 
 // ─── Decoding helpers ────────────────────────────────────────────────────────
-
-function enumValue<T extends string>(value: unknown, allowed: readonly T[], fallback: T): T {
-  return typeof value === "string" && (allowed as readonly string[]).includes(value)
-    ? (value as T)
-    : fallback;
-}
 
 function stringValue(value: unknown, fallback: string): string {
   return typeof value === "string" && value.length > 0 ? value : fallback;

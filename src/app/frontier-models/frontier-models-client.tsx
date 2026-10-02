@@ -30,6 +30,7 @@ import type {
   FrontierTierFilter,
 } from "@/types/frontierModels";
 import { useRouteSync } from "@/hooks/useRouteSync";
+import { formatLongUtcDate } from "@/lib/date-formatters";
 
 interface FrontierModelsClientProps {
   initialState: FrontierModelsRouteState;
@@ -49,17 +50,6 @@ const TIER_FILTERS: FrontierTierFilter[] = [
   "standard",
   "premium",
 ];
-
-function formatGeneratedAt(iso: string): string {
-  const date = new Date(iso);
-  // Pinned to UTC so the server and the browser print the same date.
-  return date.toLocaleDateString("en-US", {
-    month: "long",
-    day: "numeric",
-    year: "numeric",
-    timeZone: "UTC",
-  });
-}
 
 export function FrontierModelsClient({
   initialState,
@@ -106,7 +96,7 @@ export function FrontierModelsClient({
 
   const readouts = useMemo(() => frontierReadouts(snapshot.models), [snapshot.models]);
 
-  const updatedAt = formatGeneratedAt(snapshot.generatedAt);
+  const updatedAt = formatLongUtcDate(snapshot.generatedAt);
   const [reviewIsOverdue, setReviewIsOverdue] = useState(!snapshot.verified);
   useEffect(() => {
     const reviewAgeMs =

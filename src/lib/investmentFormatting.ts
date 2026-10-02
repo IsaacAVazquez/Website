@@ -9,6 +9,8 @@
  * em dash ("—") for non-finite percentages.
  */
 
+import { isFiniteNumber } from "@/lib/utils";
+
 /** `$1,234.56`. `fractionDigits` controls both min and max decimals. */
 export function formatCurrency(n: number, fractionDigits = 2): string {
   return new Intl.NumberFormat("en-US", {
@@ -26,8 +28,8 @@ export function formatSignedCurrency(n: number): string {
 }
 
 /** `+12.34%` / `−12.34%`, or `—` for non-finite input. */
-export function formatPercent(n: number): string {
-  if (!Number.isFinite(n)) return "—";
+export function formatPercent(n: number | undefined): string {
+  if (!isFiniteNumber(n)) return "—";
   const sign = n > 0 ? "+" : n < 0 ? "−" : "";
   return `${sign}${Math.abs(n).toFixed(2)}%`;
 }

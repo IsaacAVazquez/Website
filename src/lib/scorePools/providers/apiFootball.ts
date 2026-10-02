@@ -184,19 +184,16 @@ export async function fetchApiFootballInjuries(
     apiKey,
     fetchImpl,
   );
-  const byTeam = new Map<string, string[]>();
-  for (const injury of raw) {
-    const notes = byTeam.get(injury.team.name) ?? [];
-    if (notes.length < 5) {
-      notes.push(
+  return new Map(
+    [...Map.groupBy(raw, (injury) => injury.team.name)].map(([team, injuries]) => [
+      team,
+      injuries.slice(0, 5).map((injury) =>
         injury.player.reason
           ? `${injury.player.name} (${injury.player.reason})`
           : injury.player.name,
-      );
-    }
-    byTeam.set(injury.team.name, notes);
-  }
-  return byTeam;
+      ),
+    ]),
+  );
 }
 
 interface ApiFootballLineup {

@@ -3,6 +3,8 @@
 import { Check, Pencil, Search, Trash2, X } from "lucide-react";
 import React, { useEffect, useRef, useState } from "react";
 import { useStockData } from "@/hooks/useStockData";
+import { escapeCsvValue } from "@/lib/budgetPlanner";
+import { downloadFile } from "@/lib/downloadFile";
 import {
   formatCurrency,
   formatPercent,
@@ -295,11 +297,6 @@ function HoldingRow({ holding, color, onUpdate, onRemove, onResearch }: RowProps
   );
 }
 
-function escapeCsvValue(value: string | number): string {
-  const raw = String(value);
-  return /[",\r\n]/.test(raw) ? `"${raw.replace(/"/g, '""')}"` : raw;
-}
-
 function buildHoldingsCsv(holdings: EnhancedHolding[]): string {
   const header = [
     "symbol",
@@ -339,18 +336,12 @@ export function HoldingsTable({ holdings, onUpdate, onRemove, onResearch, portfo
   );
 
   function handleExportCsv() {
-    if (typeof window === "undefined" || holdings.length === 0) return;
-    const blob = new Blob([buildHoldingsCsv(sorted)], {
-      type: "text/csv;charset=utf-8",
-    });
-    const url = URL.createObjectURL(blob);
-    const anchor = document.createElement("a");
-    anchor.href = url;
-    anchor.download = `portfolio-holdings-${new Date().toISOString().slice(0, 10)}.csv`;
-    document.body.appendChild(anchor);
-    anchor.click();
-    anchor.remove();
-    URL.revokeObjectURL(url);
+    if (holdings.length === 0) return;
+    downloadFile(
+      `portfolio-holdings-${new Date().toISOString().slice(0, 10)}.csv`,
+      buildHoldingsCsv(sorted),
+      "text/csv;charset=utf-8",
+    );
   }
 
   return (

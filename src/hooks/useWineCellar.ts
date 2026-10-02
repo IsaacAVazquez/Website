@@ -1,10 +1,7 @@
 "use client";
 
-import { useMemo, useState, useSyncExternalStore } from "react";
-import {
-  getBrowserStorageSnapshot,
-  subscribeBrowserStorage,
-} from "@/lib/browserStorage";
+import { useMemo, useState } from "react";
+import { useLocalStorageString } from "@/hooks/useLocalStorageString";
 import {
   applyWineDraft,
   calculateWineSummary,
@@ -21,11 +18,7 @@ import {
 import type { WineEntry } from "@/types/wine";
 
 export function useWineCellar() {
-  const storedSnapshot = useSyncExternalStore(
-    (listener) => subscribeBrowserStorage(WINE_CELLAR_STORAGE_KEY, listener),
-    () => getBrowserStorageSnapshot(WINE_CELLAR_STORAGE_KEY, "[]"),
-    () => "[]"
-  );
+  const storedSnapshot = useLocalStorageString(WINE_CELLAR_STORAGE_KEY, "[]");
 
   const entries = useMemo(() => parseWineEntries(storedSnapshot), [storedSnapshot]);
   const [filters, setFilters] = useState<WineFilters>(DEFAULT_WINE_FILTERS);

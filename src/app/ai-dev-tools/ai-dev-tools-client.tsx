@@ -8,6 +8,7 @@ import { BrandGithub } from "@/components/ui/ServerIcons";
 import { Catalog97ProjectHero } from "@/components/catalog97/Catalog97ProjectHero";
 import { PROJECT_PRESS } from "@/constants/projectPress";
 import { useClientNow } from "@/hooks/useClientNow";
+import { formatLongUtcDate } from "@/lib/date-formatters";
 import { SurfaceMap, ToolCategoryIcon } from "./SurfaceMap";
 import {
   AI_DEV_TOOL_CADENCE_LABELS,
@@ -74,16 +75,6 @@ const sourceOptions: FilterOption[] = [
     label: AI_DEV_TOOL_SOURCE_LABELS[source],
   })),
 ];
-
-function formatGeneratedAt(iso: string): string {
-  // Pinned to UTC so the server and the browser print the same date.
-  return new Date(iso).toLocaleDateString("en-US", {
-    month: "long",
-    day: "numeric",
-    year: "numeric",
-    timeZone: "UTC",
-  });
-}
 
 type SortKey = "curated" | "stars" | "recent" | "name";
 
@@ -228,7 +219,7 @@ export function AiDevToolsClient({ initialState }: AiDevToolsClientProps) {
     return `${days}d ago`;
   }, [mostRecentTool, now]);
 
-  const updatedAt = formatGeneratedAt(AI_DEV_TOOLS_GENERATED_AT);
+  const updatedAt = formatLongUtcDate(AI_DEV_TOOLS_GENERATED_AT);
 
   function updateFilter(partial: Partial<AiDevToolsRouteState>) {
     const clearsSelection =

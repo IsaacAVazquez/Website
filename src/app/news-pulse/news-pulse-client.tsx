@@ -430,12 +430,7 @@ function ErrorState({ message, onRetry }: { message: string; onRetry: () => void
 const HEADLINES_PAGE_SIZE = 24;
 
 function groupByOutlet(articles: NewsArticle[]): { source: NewsFeedId; items: NewsArticle[] }[] {
-  const bySource = new Map<NewsFeedId, NewsArticle[]>();
-  for (const article of articles) {
-    const list = bySource.get(article.source) ?? [];
-    list.push(article);
-    bySource.set(article.source, list);
-  }
+  const bySource = Map.groupBy(articles, (article) => article.source);
   return NEWS_SOURCE_IDS.filter((source) => bySource.has(source)).map((source) => ({
     source,
     items: bySource.get(source)!,
