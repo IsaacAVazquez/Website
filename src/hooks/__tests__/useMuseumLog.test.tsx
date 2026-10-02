@@ -10,6 +10,19 @@ function readStored(): UserMuseumState {
 }
 
 describe("useMuseumLog", () => {
+  it("loads another tab's visit and preserves it when liking a museum", () => {
+    const { result } = renderHook(() => useMuseumLog());
+    const visit = { museumId: "met", date: "2026-10-01", rating: 5 };
+    const saved = JSON.stringify({ visited: [visit], watchlist: [], liked: [] });
+    act(() => {
+      localStorage.setItem(STORAGE_KEY, saved);
+      window.dispatchEvent(new StorageEvent("storage", { key: STORAGE_KEY, newValue: saved }));
+    });
+    expect(result.current.state.visited).toEqual([visit]);
+    act(() => result.current.toggleLiked("moma"));
+    expect(readStored()).toEqual({ visited: [visit], watchlist: [], liked: ["moma"] });
+  });
+
   beforeEach(() => {
     resetBrowserStorageMemory();
     window.localStorage.clear();

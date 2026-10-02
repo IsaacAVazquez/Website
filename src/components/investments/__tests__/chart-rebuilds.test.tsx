@@ -1,5 +1,5 @@
 import React from "react";
-import { render } from "@testing-library/react";
+import { fireEvent, render } from "@testing-library/react";
 import { AllocationChart } from "../AllocationChart";
 import { GrowthPanel } from "../GrowthPanel";
 import type { EnhancedHolding } from "@/types/investment";
@@ -42,6 +42,14 @@ function holding(symbol: string, allocationPercent: number): EnhancedHolding {
 // The effect was keyed on arrays built during render, so it ran on every
 // render of the dashboard, a keystroke in the holdings filter included.
 describe("investment charts", () => {
+  it("renders symbol markup as literal tooltip text", () => {
+    const symbol = '<img src="invalid">';
+    const { container } = render(<AllocationChart holdings={[holding(symbol, 100)]} />);
+    fireEvent.mouseEnter(container.querySelector("svg path")!);
+    expect(container.querySelector("strong")?.textContent).toBe(symbol);
+    expect(container.querySelector("img")).toBeNull();
+  });
+
   it("keeps the allocation donut when it renders again with the same holdings", () => {
     const holdings = [holding("AAPL", 60), holding("MSFT", 40)];
     const { container, rerender } = render(<AllocationChart holdings={holdings} />);

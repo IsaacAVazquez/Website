@@ -1,9 +1,10 @@
 "use client";
 
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import type { UserMuseumState, UserVisit } from "@/types/museum";
 import {
   readValidatedBrowserStorage,
+  subscribeBrowserStorage,
   writeBrowserStorageJson,
 } from "@/lib/browserStorage";
 import { isLocalDateKey } from "@/lib/date-formatters";
@@ -84,20 +85,18 @@ function safeWrite(state: UserMuseumState): void {
 export function useMuseumLog() {
   const persistenceStatus = useLocalStoragePersistenceStatus(STORAGE_KEY);
   const [state, setState] = useState<UserMuseumState>(EMPTY_STATE);
-  const stateRef = useRef<UserMuseumState>(EMPTY_STATE);
   const [hydrated, setHydrated] = useState(false);
 
   useEffect(() => {
     const stored = safeRead();
-    stateRef.current = stored;
     // eslint-disable-next-line react-hooks/set-state-in-effect
     setState(stored);
     setHydrated(true);
+    return subscribeBrowserStorage(STORAGE_KEY, () => setState(safeRead()));
   }, []);
 
   const update = useCallback((mutator: (prev: UserMuseumState) => UserMuseumState) => {
-    const next = mutator(stateRef.current);
-    stateRef.current = next;
+    const next = mutator(safeRead());
     safeWrite(next);
     setState(next);
   }, []);

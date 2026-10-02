@@ -24,6 +24,8 @@ export interface GolfTournament {
   endDate: string;
   roundLabel: string;
   status: string;
+  /** Published tournament completion; absent on older committed snapshots. */
+  completed?: boolean;
   fieldSize: number;
   cutLine: number | null;
   cutState: GolfCutState;

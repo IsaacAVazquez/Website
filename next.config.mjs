@@ -394,6 +394,20 @@ const nextConfig = {
   },
   // Enhanced webpack configuration for performance
   webpack: (config, { dev, isServer }) => {
+    if (!dev) {
+      // Next's bundled webpack crashes on warm builds when a cached context
+      // has timestamps but no hash. Content-only snapshots avoid that mixed
+      // record path while retaining cache validation and filesystem caching.
+      config.snapshot = { ...config.snapshot };
+      for (const scope of ['module', 'resolve', 'buildDependencies', 'resolveBuildDependencies']) {
+        config.snapshot[scope] = {
+          ...config.snapshot[scope],
+          timestamp: false,
+          hash: true,
+        };
+      }
+    }
+
     // Exclude server-only packages from client bundle
     if (!isServer) {
       config.externals = config.externals || [];

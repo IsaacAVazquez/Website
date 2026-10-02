@@ -489,3 +489,144 @@ describe("useDraftState persisted-state loading", () => {
     }
   });
 });
+
+
+describe("useDraftState save revisions", () => {
+  beforeEach(() => localStorage.clear());
+
+  it.each(["notification", "missed notification"])(
+    "preserves unsaved picks and protects an external revision after a %s",
+    (notification) => {
+      const { result } = renderHook(() => useDraftState());
+      const external = JSON.parse(localStorage.getItem(FANTASY_DRAFT_STORAGE_KEY)!);
+      const write = jest.spyOn(Storage.prototype, "setItem").mockImplementation(() => {
+        throw new Error("quota");
+      });
+      try {
+        act(() => {
+          result.current.draftPlayer(persistedPlayer("local-first"));
+          result.current.draftPlayer(persistedPlayer("local-second"));
+        });
+        expect(result.current.draftState.picks).toHaveLength(2);
+      } finally {
+        write.mockRestore();
+      }
+
+      external.picks = [persistedPick(1, "external")];
+      const raw = JSON.stringify(external);
+      localStorage.setItem(FANTASY_DRAFT_STORAGE_KEY, raw);
+      act(() => {
+        if (notification === "notification") {
+          window.dispatchEvent(new StorageEvent("storage", {
+            key: FANTASY_DRAFT_STORAGE_KEY, newValue: raw,
+          }));
+        }
+        result.current.draftPlayer(persistedPlayer("next-local"));
+      });
+
+      expect(result.current.draftState.picks.map((pick) => pick.player.id)).toEqual(
+        expect.arrayContaining(["local-first", "local-second"])
+      );
+      expect(result.current.draftState.picks.some((pick) => pick.player.id === "external")).toBe(false);
+      expect(result.current.persistenceError).toMatch(/another tab|conflict/i);
+      expect(localStorage.getItem(FANTASY_DRAFT_STORAGE_KEY)).toBe(raw);
+
+      act(() => result.current.resetDraft());
+      expect(result.current.draftState.picks).toEqual([]);
+      expect(result.current.persistenceError).toBeNull();
+      expect(JSON.parse(localStorage.getItem(FANTASY_DRAFT_STORAGE_KEY)!).picks).toEqual([]);
+    }
+  );
+
+  it("saves consecutive memory-only picks when writes recover and the durable revision is unchanged", () => {
+    const { result } = renderHook(() => useDraftState());
+    const write = jest.spyOn(Storage.prototype, "setItem").mockImplementation(() => {
+      throw new Error("quota");
+    });
+    try {
+      act(() => result.current.draftPlayer(persistedPlayer("memory-first")));
+      expect(result.current.persistenceError).toMatch(/cannot be saved/i);
+    } finally {
+      write.mockRestore();
+    }
+    act(() => result.current.draftPlayer(persistedPlayer("memory-second")));
+    expect(result.current.draftState.picks.map((pick) => pick.player.id)).toEqual(["memory-first", "memory-second"]);
+    expect(JSON.parse(localStorage.getItem(FANTASY_DRAFT_STORAGE_KEY)!).picks).toHaveLength(2);
+    expect(result.current.persistenceError).toBeNull();
+  });
+
+  it("synchronizes two mounted trackers and keeps consecutive batched picks", () => {
+    const first = renderHook(() => useDraftState());
+    const second = renderHook(() => useDraftState());
+    act(() => first.result.current.draftPlayer(persistedPlayer("first")));
+    expect(second.result.current.draftState.picks.map((pick) => pick.player.id)).toEqual(["first"]);
+    act(() => {
+      second.result.current.draftPlayer(persistedPlayer("second"));
+      second.result.current.draftPlayer(persistedPlayer("third"));
+    });
+    expect(first.result.current.draftState.picks.map((pick) => pick.player.id)).toEqual(["first", "second", "third"]);
+    act(() => first.result.current.undoLastPick());
+    expect(second.result.current.draftState.picks).toHaveLength(2);
+    act(() => second.result.current.redoLastPick());
+    expect(first.result.current.draftState.picks).toHaveLength(3);
+    expect(JSON.parse(localStorage.getItem(FANTASY_DRAFT_STORAGE_KEY)! ).picks).toHaveLength(3);
+  });
+
+  it("rejects an outdated pick after a missed event, then accepts an explicit retry", () => {
+    const { result } = renderHook(() => useDraftState());
+    const external = JSON.parse(localStorage.getItem(FANTASY_DRAFT_STORAGE_KEY)!);
+    external.picks = [{
+      ...persistedPick(1, "external"),
+      timestamp: new Date().toISOString(),
+    }];
+    const raw = JSON.stringify(external);
+    localStorage.setItem(FANTASY_DRAFT_STORAGE_KEY, raw);
+    act(() => result.current.draftPlayer(persistedPlayer("retry")));
+    expect(localStorage.getItem(FANTASY_DRAFT_STORAGE_KEY)).toBe(raw);
+    expect(result.current.draftState.picks.map((pick) => pick.player.id)).toEqual(["external"]);
+    expect(result.current.persistenceError).toMatch(/try that action again/i);
+    act(() => result.current.draftPlayer(persistedPlayer("retry")));
+    expect(result.current.draftState.picks.map((pick) => pick.player.id)).toEqual(["external", "retry"]);
+    expect(result.current.persistenceError).toBeNull();
+  });
+
+  it("reads a cross-tab notification without writing the loaded revision back", () => {
+    const { result } = renderHook(() => useDraftState());
+    const external = JSON.parse(localStorage.getItem(FANTASY_DRAFT_STORAGE_KEY)!);
+    external.picks = [persistedPick(1, "external")];
+    const raw = JSON.stringify(external);
+    localStorage.setItem(FANTASY_DRAFT_STORAGE_KEY, raw);
+    act(() => window.dispatchEvent(new StorageEvent("storage", { key: FANTASY_DRAFT_STORAGE_KEY, newValue: raw })));
+    expect(result.current.draftState.picks).toHaveLength(1);
+    expect(localStorage.getItem(FANTASY_DRAFT_STORAGE_KEY)).toBe(raw);
+  });
+});
+
+
+it("restores the current draft even when removing the old key is blocked", () => {
+  localStorage.setItem(FANTASY_DRAFT_STORAGE_KEY, JSON.stringify({ settings: VALID_SETTINGS, picks: [persistedPick(1)] }));
+  const remove = jest.spyOn(Storage.prototype, "removeItem").mockImplementation(() => { throw new Error("cleanup blocked"); });
+  try {
+    const { result } = renderHook(() => useDraftState());
+    expect(result.current.draftState.picks).toHaveLength(1);
+    expect(result.current.draftState.settings.leagueName).toBe("Saved League");
+  } finally {
+    remove.mockRestore();
+  }
+});
+
+it("keeps batched redraft picks in memory when writes are blocked", () => {
+  localStorage.clear();
+  const write = jest.spyOn(Storage.prototype, "setItem").mockImplementation(() => { throw new Error("quota"); });
+  try {
+    const { result } = renderHook(() => useDraftState());
+    act(() => {
+      result.current.draftPlayer(persistedPlayer("memory-first"));
+      result.current.draftPlayer(persistedPlayer("memory-second"));
+    });
+    expect(result.current.draftState.picks).toHaveLength(2);
+    expect(result.current.persistenceError).toMatch(/cannot be saved/i);
+  } finally {
+    write.mockRestore();
+  }
+});

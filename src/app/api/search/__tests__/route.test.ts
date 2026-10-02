@@ -446,3 +446,19 @@ describe("GET /api/search corpus", () => {
     }
   });
 });
+
+
+it("does not treat inherited object properties as hidden search answers", async () => {
+  const response = await GET(makeRequest("?q=constructor"));
+  const body = await response.json();
+  expect(response.status).toBe(200);
+  for (const result of body.results) {
+    expect(result).toMatchObject({
+      id: expect.any(String),
+      title: expect.any(String),
+      excerpt: expect.any(String),
+      url: expect.any(String),
+      type: expect.any(String),
+    });
+  }
+});

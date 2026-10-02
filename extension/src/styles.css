@@ -618,6 +618,7 @@ p {
 .controller-light--armed,
 .controller-light--waiting,
 .controller-light--searching,
+.controller-light--confirmed,
 .controller-light--submitted {
   border-color: var(--positive);
   background: var(--positive);

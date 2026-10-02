@@ -187,8 +187,13 @@ describe("snapshot refresh workflow infrastructure", () => {
     for (const workflowName of scheduledSnapshotWorkflows) {
       const workflow = fs.readFileSync(path.join(workflowsDir, workflowName), "utf8");
       expect(workflow).toContain("npx tsx scripts/verifyDataRefresh.ts");
+      // Weekly validation is inside its builder and publishes independently.
+      // The shared verifier gates the later redraft artifact in this workflow.
+      const commitIndex = workflowName === "update-fantasy.yml"
+        ? workflow.indexOf("- name: Commit and push snapshot updates")
+        : workflow.indexOf("bash scripts/ci/commit-and-push-snapshot.sh");
       expect(workflow.indexOf("npx tsx scripts/verifyDataRefresh.ts")).toBeLessThan(
-        workflow.indexOf("bash scripts/ci/commit-and-push-snapshot.sh")
+        commitIndex
       );
     }
   });
@@ -230,19 +235,19 @@ describe("snapshot refresh workflow infrastructure", () => {
       workflow.indexOf("- name: Build fantasy snapshots")
     );
     expect(workflow.indexOf("- name: Commit and push weekly board")).toBeLessThan(
-      workflow.indexOf("- name: Commit and push snapshot updates")
+      workflow.indexOf("- name: Build fantasy snapshots")
     );
     // Weeks 17 and 18 fall in January, after the daily lane used to stop.
     expect(workflow).toContain('cron: "17 17 1-12 1 *"');
   });
 
-  it("puts rejected redraft files back before any lane commits", () => {
+  it("puts rejected draft files back before either draft lane commits", () => {
     const workflow = fs.readFileSync(
       path.join(workflowsDir, "update-fantasy.yml"),
       "utf8"
     );
     const discardStep = workflow.match(
-      /- name: Discard redraft artifacts that failed their gates[\s\S]*?(?=\n\s+# The weekly board commits)/
+      /- name: Discard redraft artifacts that failed their gates[\s\S]*?(?=\n\s+- name:)/
     )?.[0];
 
     expect(discardStep).toBeDefined();
@@ -250,7 +255,18 @@ describe("snapshot refresh workflow infrastructure", () => {
     expect(discardStep).toContain("git checkout --");
     expect(discardStep).toContain("public/data/fantasy/ppr.json");
     expect(workflow.indexOf("- name: Discard redraft artifacts")).toBeLessThan(
-      workflow.indexOf("bash scripts/ci/commit-and-push-snapshot.sh")
+      workflow.indexOf("- name: Commit and push snapshot updates")
+    );
+    const discardBestBallStep = workflow.match(
+      /- name: Discard best ball artifacts that failed their gates[\s\S]*?(?=\n\s+- name:)/
+    )?.[0];
+    expect(discardBestBallStep).toContain("if: steps.verify_best_ball.outcome != 'success'");
+    expect(discardBestBallStep).toContain("git checkout -- public/data/fantasy/best-ball.json");
+    expect(workflow.indexOf("- name: Discard best ball artifacts")).toBeLessThan(
+      workflow.indexOf("- name: Commit and push snapshot updates")
+    );
+    expect(workflow.indexOf("- name: Discard best ball artifacts")).toBeLessThan(
+      workflow.indexOf("- name: Commit and push best ball snapshot")
     );
   });
 
@@ -286,6 +302,21 @@ describe("snapshot refresh workflow infrastructure", () => {
     expect(qualityStep).toContain("console.log('::warning::' + warning)");
     expect(qualityStep).toContain("vorp_dark=");
     expect(workflow).toContain("steps.verify_quality.outputs.vorp_dark == 'true'");
+  });
+
+  it("allows every fantasy build lane to finish before validation and publication", () => {
+    const workflow = fs.readFileSync(
+      path.join(workflowsDir, "update-fantasy.yml"),
+      "utf8"
+    );
+    const timeouts = [...workflow.matchAll(/timeout-minutes: (\d+)/g)].map(
+      (match) => Number(match[1])
+    );
+    const [jobBudget, ...buildBudgets] = timeouts;
+    expect(buildBudgets).toEqual([10, 15, 10]);
+    expect(jobBudget).toBeGreaterThanOrEqual(
+      buildBudgets.reduce((total, budget) => total + budget, 0) + 10
+    );
   });
 
   it("pins the scheduled fantasy build to public HTML without passing an API key", () => {

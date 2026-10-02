@@ -19,6 +19,7 @@ import { decodeRetirementPlan } from "@/lib/retirement/persistence";
 import {
   readValidatedBrowserStorage,
   removeBrowserStorageString,
+  subscribeBrowserStorage,
   writeBrowserStorageJson,
   type PersistenceStatus,
 } from "@/lib/browserStorage";
@@ -163,6 +164,7 @@ export function useRetirementPlan(
   const [ready, setReady] = useState(false);
   const [isSampleScenario, setIsSampleScenario] = useState(true);
   const seedRef = useRef(seed);
+  const planRef = useRef(plan);
 
   // Keep the latest seed in a ref for reset(), updated after render.
   useEffect(() => {
@@ -173,12 +175,20 @@ export function useRetirementPlan(
   useEffect(() => {
     const stored = loadPlan();
     const initial = stored ?? seedFreshPlan(seedRef.current);
+    planRef.current = initial;
     setPlan(initial);
     setDebouncedPlan(initial);
     // A stored plan means this visitor has used the planner before, so the
     // figures are theirs even though no edit has happened in this session.
     if (stored) setIsSampleScenario(false);
     setReady(true);
+    return subscribeBrowserStorage(STORAGE_KEY, () => {
+      const saved = loadPlan();
+      const next = saved ?? seedFreshPlan(seedRef.current);
+      planRef.current = next;
+      setPlan(next);
+      setIsSampleScenario(saved === null);
+    });
   }, []);
 
   // Every visitor-driven mutation goes through this rather than setPlan, so the
@@ -186,24 +196,22 @@ export function useRetirementPlan(
   // directly, so neither is mistaken for the visitor entering something.
   const editPlan = useCallback(
     (updater: React.SetStateAction<RetirementPlanInput>) => {
+      const current = loadPlan() ?? planRef.current;
+      const next = typeof updater === "function" ? updater(current) : updater;
+      safeWrite(next);
+      planRef.current = next;
       setIsSampleScenario(false);
-      setPlan(updater);
+      setPlan(next);
     },
     [],
   );
 
-  // Persist + debounce the projection so typing stays responsive.
+  // Debounce the projection; edits persist synchronously against the latest save.
   useEffect(() => {
     if (!ready) return;
-    // Never write the untouched example to storage. Writing it meant the next
-    // visit hydrated a stored plan, concluded the visitor had entered these
-    // figures, and went back to calling seeded defaults "Your numbers" — so
-    // the sample framing would have shown on the first page view and never
-    // again. The debounce below still runs, so the example still computes.
-    if (!isSampleScenario) safeWrite(plan);
     const handle = setTimeout(() => setDebouncedPlan(plan), RECOMPUTE_DEBOUNCE_MS);
     return () => clearTimeout(handle);
-  }, [plan, ready, isSampleScenario]);
+  }, [plan, ready]);
 
   // A print turns the projection on by itself and it stays on. The browser
   // lays the page out where it stands, so nothing scrolls the planner into
@@ -344,6 +352,7 @@ export function useRetirementPlan(
   const reset = useCallback(() => {
     const fresh = seedFreshPlan(seedRef.current);
     removeBrowserStorageString(STORAGE_KEY);
+    planRef.current = fresh;
     setPlan(fresh);
     setDebouncedPlan(fresh);
     // Reset puts the seeded example back, so the verdict stops being theirs.

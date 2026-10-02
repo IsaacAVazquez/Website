@@ -9,7 +9,7 @@ architecture or the per-workflow prose:
 - Per-workflow detail: `CRON_SETUP.md` and the **Automation Surfaces**
   section of `../AGENTS.md`. Each script's header comment says what it does.
 
-**Last updated:** 2026-09-28
+**Last updated:** 2026-10-02
 
 The `update:*` commands write committed TypeScript or JSON artifacts. A failed
 or empty fetch keeps the previous snapshot, and every scheduled job now checks
@@ -27,7 +27,7 @@ timeout, and a response served from the committed artifact carries the
 | Surface | `npm run` | Script(s) | Upstream source | Committed artifact | Workflow | Cadence |
 |---|---|---|---|---|---|---|
 | Fantasy football (redraft) | `update:fantasy:redraft` | `buildFantasyPositionData.ts` → `buildFantasyAdpData.ts` → `buildFantasyGameLogData.ts` → `buildFantasyVorpData.ts` → `buildFantasySnapshots.ts` | FantasyPros cheatsheets + FF Calculator ADP + nflverse weekly player stats | `public/data/fantasy/{ppr,half_ppr,standard}.json`, `src/data/fantasy*.generated.ts`, `src/data/fantasyRankHistory.generated.json` (rolling 17-day ECR/ADP history behind the 7 and 14-day movement stamps) | `update-fantasy.yml` | daily 17:17 UTC July through December and January 1 through 12; Wednesdays 17:17 UTC January through June; Sundays 11:47 UTC in January and September through December |
-| Fantasy football (best ball) | `update:fantasy:best-ball` | `buildBestBallSnapshot.ts` | FantasyPros best ball + Superflex consensus, Underdog ADP via Hayden Winks, ESPN schedule | `public/data/fantasy/best-ball.json` | `update-fantasy.yml` | same job, separate lane and commit |
+| Fantasy football (best ball) | `update:fantasy:best-ball` | `buildBestBallSnapshot.ts` | FantasyPros best ball + Superflex consensus, Underdog ADP via Hayden Winks, ESPN schedule | `public/data/fantasy/best-ball.json` | `update-fantasy.yml` | same job, separate lane and commit; rejected output is restored before either draft lane commits |
 | Fantasy football (weekly) | `update:fantasy:weekly` | `buildFantasyWeeklySnapshot.ts` | FantasyPros weekly FLEX and QB consensus | `public/data/fantasy/weekly.json` | `update-fantasy.yml` | same job, builds and commits first; the builder writes nothing before Week 1 or from seven days after Week 18 opens |
 | Investments | `update:investments` | `fetch_investments_data.py` (needs `.venv`) → `buildInvestmentsSnapshots.ts` | `defeatbeta-api` (Python) | `public/data/investments/index.json` + `{SYMBOL}/snapshot.json` | `update-investments.yml` | Tuesday through Saturday 08:30 UTC |
 | Football (both) | `update:football` | runs `update:premier-league`, waits 30 seconds for the rate-limit window, then runs `update:la-liga` | football-data.org *(token)* | `src/data/premierLeagueSnapshot.ts` + `laLigaSnapshot.ts` | none *(full run is manual ~weekly)* | manual |
@@ -36,7 +36,7 @@ timeout, and a response served from the committed artifact carries the
 | NFL | `update:nfl` | `updateNflSnapshot.ts` | NFLverse CSVs | `src/data/nflSnapshot.ts` | `update-nfl.yml` | daily 10:35 UTC, September through February |
 | MLB | `update:mlb` | `updateMlbSnapshot.ts` | MLB Stats API | `src/data/mlbSnapshot.ts` | `update-mlb.yml` | every 4h, March 20 through November 6 |
 | NBA | `update:nba` | `updateNbaSnapshot.ts` | ESPN NBA | `src/data/nbaSnapshot.ts` | `update-nba.yml` | every 4h, mid-October through June |
-| Golf | `update:golf` | `buildGolfSnapshot.ts` | ESPN golf | `src/data/golfSnapshot.ts` | `update-golf.yml` | every 3h Thursday through Sunday; daily otherwise |
+| Golf | `update:golf` | `buildGolfSnapshot.ts` | ESPN golf | `src/data/golfSnapshot.ts` | `update-golf.yml` | every 3h Thursday through Sunday; daily otherwise; restamping requires verified final tournament status within 45 days |
 | Formula 1 | `update:formula-1` | `buildFormula1Snapshot.ts` | OpenF1 | `src/data/formula1Snapshot.ts` | `update-formula-1.yml` | every 3h Thursday through Sunday; daily otherwise |
 | World Cup 2026 | `update:world-cup` | `buildWorldCupSnapshot.ts` | ESPN `soccer/fifa.world` | `src/data/worldCupSnapshot.ts` | `update-world-cup.yml` | no schedule; manual dispatch only |
 | Score pools | `update:score-pools` | `buildScorePoolsSnapshot.ts` | The Odds API + API-Football *(tokens required for live leagues)* + manual/CSV | `src/data/scorePoolsSnapshot.ts` | `update-score-pools.yml` | every 6h; the run skips the refresh and passes with a notice until both provider keys are set |

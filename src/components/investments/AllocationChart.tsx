@@ -83,7 +83,17 @@ export function AllocationChart({ holdings }: Props) {
         if (!tooltipRef.current) return;
         const tooltip = tooltipRef.current;
         tooltip.style.display = "block";
-        tooltip.innerHTML = `<strong>${d.data.symbol}</strong><br/>${(d.data.allocationPercent ?? 0).toFixed(1)}%<br/>${new Intl.NumberFormat("en-US", { style: "currency", currency: "USD", maximumFractionDigits: 0 }).format(d.data.currentValue)}`;
+        const symbol = document.createElement("strong");
+        symbol.textContent = d.data.symbol;
+        tooltip.replaceChildren(
+          symbol,
+          document.createElement("br"),
+          document.createTextNode(`${(d.data.allocationPercent ?? 0).toFixed(1)}%`),
+          document.createElement("br"),
+          document.createTextNode(new Intl.NumberFormat("en-US", {
+            style: "currency", currency: "USD", maximumFractionDigits: 0,
+          }).format(d.data.currentValue)),
+        );
       })
       .on("mousemove", function (event) {
         if (!tooltipRef.current) return;

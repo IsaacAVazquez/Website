@@ -2,7 +2,7 @@
 
 High-level system architecture for the current live application.
 
-**Last updated:** 2026-09-27
+**Last updated:** 2026-10-02
 
 ---
 
@@ -61,12 +61,12 @@ src/app/layout.tsx
 - weekly GitHub Actions refresh through `npm run update:fantasy`
 - a separate committed best ball snapshot at `public/data/fantasy/best-ball.json` combines FantasyPros best ball consensus, current Underdog ADP, bye weeks, and the Week 17 schedule; `src/lib/bestBall/` applies the selected contest rules without changing the redraft engine
 - `src/lib/fantasyTeamValue.ts` derives the shared room-relative Draft Outlook and exact expected return math used by both trackers. The structural model stays separate from payout probability because current snapshots do not contain populated weekly player projections or an outcome distribution
-- the rankings board (`/fantasy-football`) and draft assistant (`/fantasy-football/draft-tracker`) share three browser-local stores layered over `src/hooks/useLocalStorageString.ts`, with pure parse/serialize and key constants in `src/lib/fantasyLocal.ts`: a player watchlist (`usePlayerQueue`), per-player notes (`usePlayerNotes`), and the compare selection (`useCompareTray`); list density also persists locally. Shared presentation components live in `src/components/fantasy/`
+- the rankings board (`/fantasy-football`) and draft assistant (`/fantasy-football/draft-tracker`) share three browser-local stores layered over `src/hooks/useLocalStorageString.ts`, with pure parse/serialize and key constants in `src/lib/fantasyLocal.ts`: a player watchlist (`usePlayerQueue`), per-player notes (`usePlayerNotes`), and the compare selection (`useCompareTray`); list density also persists locally. Shared presentation components live in `src/components/fantasy/`. Both draft trackers save synchronously and track revisions to guard against multi-tab overwrite
 
 ### Investments
 
 - client shell under `src/app/investments/investments-client.tsx`
-- browser-local portfolio state
+- browser-local portfolio state, subscribing to storage events and validating symbols against XSS
 - curated research snapshots served through narrow API routes
 
 ### Football dashboards

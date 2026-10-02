@@ -11,6 +11,7 @@
  */
 
 import { resolve } from "node:path";
+import { fileURLToPath } from "node:url";
 
 import { GolfNoLiveEventError, buildGolfSnapshotData } from "../src/lib/golfData";
 import type { GolfSnapshot } from "../src/types/golf";
@@ -28,17 +29,24 @@ function hasContents(snapshot: GolfSnapshot | null): snapshot is GolfSnapshot {
  */
 const MAX_RESTAMP_DAYS = 45;
 
-function isRecentBoard(endDate: string | undefined): boolean {
-  const endedAt = Date.parse(endDate ?? "");
+function isRecentFinalBoard(snapshot: GolfSnapshot, now: Date): boolean {
+  const tournament = snapshot.summary.tournament;
+  if (!tournament) return false;
+  const completed = tournament.completed ?? /^(final|complete|completed)$/i.test(tournament.status.trim());
+  const endedAt = Date.parse(tournament.endDate);
+  const ageMs = now.getTime() - endedAt;
   return (
+    completed &&
     Number.isFinite(endedAt) &&
-    Date.now() - endedAt <= MAX_RESTAMP_DAYS * 24 * 60 * 60 * 1000
+    ageMs >= 0 &&
+    ageMs <= MAX_RESTAMP_DAYS * 24 * 60 * 60 * 1000
   );
 }
 
-async function main() {
-  const outPath = resolve(__dirname, "../src/data/golfSnapshot.ts");
-
+export async function buildGolfSnapshot(
+  outPath = resolve(__dirname, "../src/data/golfSnapshot.ts"),
+  now = new Date()
+): Promise<void> {
   let snapshot: GolfSnapshot;
   try {
     console.log("⛳ Building golf snapshot from ESPN…");
@@ -51,7 +59,7 @@ async function main() {
     if (
       !(error instanceof GolfNoLiveEventError) ||
       !existing.summary.tournament ||
-      !isRecentBoard(existing.summary.tournament.endDate)
+      !isRecentFinalBoard(existing, now)
     ) {
       console.warn(
         "⛳ Golf snapshot refresh failed; keeping the existing snapshot.",
@@ -63,7 +71,7 @@ async function main() {
     // field to score, so the last final board is still the freshest data that
     // exists. Re-stamp its verification time so the freshness gate reads a
     // checked source rather than a frozen one for the whole off week.
-    const generatedAt = new Date().toISOString();
+    const generatedAt = now.toISOString();
     snapshot = {
       ...existing,
       summary: {
@@ -94,7 +102,9 @@ export const golfSnapshot: GolfSnapshot = ${JSON.stringify(snapshot, null, 2)};
   );
 }
 
-main().catch((err) => {
-  console.error("Golf snapshot update failed:", err);
-  process.exit(1);
-});
+if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
+  buildGolfSnapshot().catch((err) => {
+    console.error("Golf snapshot update failed:", err);
+    process.exitCode = 1;
+  });
+}

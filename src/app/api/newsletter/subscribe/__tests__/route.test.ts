@@ -78,6 +78,16 @@ describe("newsletter subscribe route", () => {
     expect(createContact).not.toHaveBeenCalled();
   });
 
+  it.each([null, [], "reader@example.com", 12, true])(
+    "rejects non-object JSON body %p without calling Resend",
+    async (body) => {
+      const response = await POST(request(body));
+      expect(response.status).toBe(400);
+      await expect(response.json()).resolves.toMatchObject({ success: false });
+      expect(createContact).not.toHaveBeenCalled();
+    }
+  );
+
   it("treats the honeypot as a successful no-op", async () => {
     const response = await POST(
       request({

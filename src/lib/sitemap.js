@@ -60,8 +60,8 @@ const STATIC_ROUTE_LASTMOD = {
   "/fantasy-football/draft-tracker": readFantasyLastmod(),
   "/fantasy-football/mock-draft": readFantasyLastmod(),
   "/fantasy-football/trade-calculator": readFantasyLastmod(),
-  "/fantasy-football/weekly": readFantasyLastmod(),
-  "/fantasy-football/waivers": readFantasyLastmod(),
+  "/fantasy-football/weekly": readWeeklyFantasyLastmod(),
+  "/fantasy-football/waivers": readWeeklyFantasyLastmod(),
   "/fintech-tools/budget-planner": "2026-04-03",
   "/fintech-tools/interchange-iq": "2026-04-02",
   "/fintech-tools/rent-vs-buy": "2026-07-20",
@@ -292,6 +292,18 @@ function readFantasyLastmod() {
 function readBestBallLastmod() {
   const source = JSON.parse(readFile("public/data/fantasy/best-ball.json"));
   return toIsoString(source.generatedAt);
+}
+
+function readWeeklyFantasyLastmod() {
+  try {
+    const source = JSON.parse(readFile("public/data/fantasy/weekly.json"));
+    return toIsoString(source.generatedAt);
+  } catch (error) {
+    // Before the first weekly board is published, these pages explain when
+    // the board opens and retain the existing fantasy date.
+    if (error.code === "ENOENT") return readFantasyLastmod();
+    throw error;
+  }
 }
 
 function readGitHubTrendingLastmod() {
