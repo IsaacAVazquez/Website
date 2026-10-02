@@ -4,6 +4,12 @@ All notable changes to this repository are documented here. Format: `YYYY-MM-DD`
 
 ---
 
+## 2026-10-02
+
+- Name the product roles and pin the job write-ups on Home ([#532](https://github.com/IsaacAVazquez/Website/pull/532)).
+
+---
+
 ## 2026-10-01
 
 - Route the remaining local tools through the shared storage helper ([#533](https://github.com/IsaacAVazquez/Website/pull/533)).
