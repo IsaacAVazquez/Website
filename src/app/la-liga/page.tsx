@@ -6,7 +6,7 @@ import {
 } from "@/lib/laLigaSnapshot";
 import { constructMetadata, generateBreadcrumbStructuredData } from "@/lib/seo";
 import { LaLigaClient } from "./la-liga-client";
-import { normalizeLaLigaState } from "./la-liga-state";
+import { buildClubAliasMap, normalizeState, resolveDefaultState } from "./la-liga-state.core";
 
 export const metadata = constructMetadata({
   title: "La Liga Pulse",
@@ -25,7 +25,11 @@ interface LaLigaPageProps {
 }
 
 export default async function LaLigaPage({ searchParams }: LaLigaPageProps) {
-  const initialState = normalizeLaLigaState(await searchParams);
+  const initialState = normalizeState(
+    await searchParams,
+    resolveDefaultState(laLigaSnapshot.clubs),
+    buildClubAliasMap(laLigaSnapshot.teams)
+  );
   const summary = await getLaLigaSummarySnapshot();
   const initialTeamSnapshot = await getLaLigaTeamSnapshot(initialState.club).catch(() => null);
   const breadcrumbs = [

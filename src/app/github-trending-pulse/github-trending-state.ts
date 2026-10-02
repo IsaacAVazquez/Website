@@ -5,6 +5,7 @@ import type {
   GitHubTrendingClientSnapshot,
   GitHubTrendingSortKey,
 } from "@/types/githubTrending";
+import { readParam, type SearchParamInput } from "@/lib/searchParams";
 
 export const GITHUB_TRENDING_ROUTE = "/github-trending-pulse";
 
@@ -39,30 +40,12 @@ const VALID_SORTS = new Set<GitHubTrendingSortKey>(
   GITHUB_TRENDING_SORT_OPTIONS
 );
 
-type SearchParamInput =
-  | URLSearchParams
-  | ReadonlyURLSearchParams
-  | Record<string, string | string[] | undefined | null>;
-
-type SearchParamRecord = Record<string, string | string[] | undefined | null>;
-
 export const DEFAULT_GITHUB_TRENDING_STATE: GitHubTrendingRouteState = {
   kind: "language",
   segment: "all",
   sort: "momentum",
   selectedRepoId: null,
 };
-
-function readParam(input: SearchParamInput, key: string): string | null {
-  if ("get" in input && typeof input.get === "function") {
-    return (input as URLSearchParams).get(key);
-  }
-  const rawValue = (input as SearchParamRecord)[key];
-  if (Array.isArray(rawValue)) {
-    return rawValue[0] ?? null;
-  }
-  return rawValue ?? null;
-}
 
 export function normalizeGitHubTrendingState(
   input: SearchParamInput

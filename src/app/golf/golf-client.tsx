@@ -1,7 +1,7 @@
 "use client";
 
-import { startTransition, useEffect, useMemo, useState } from "react";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useEffect, useMemo, useState } from "react";
+import { useSearchParams } from "next/navigation";
 import { CircleAlert, Flag, Gauge, MapPin, Trophy, UserRound } from "lucide-react";
 import type {
   GolfLeaderboardEntry,
@@ -23,6 +23,7 @@ import { PROJECT_PRESS } from "@/constants/projectPress";
 import { GolfLeaderboard } from "./GolfLeaderboard";
 import { formatScoreToPar } from "./leaderboard";
 import "./golf.css";
+import { useRouteSync } from "@/hooks/useRouteSync";
 
 interface GolfClientProps {
   initialState: GolfRouteState;
@@ -339,10 +340,7 @@ function PlayerCards({
 }
 
 export function GolfClient({ initialState, summary, initialPlayerSnapshot }: GolfClientProps) {
-  const router = useRouter();
   const searchParams = useSearchParams();
-  const currentQuery = searchParams.toString();
-  const currentHref = `${GOLF_ROUTE}${currentQuery ? `?${currentQuery}` : ""}`;
   const hasManagedParams = searchParams.get("view") !== null || searchParams.get("player") !== null;
   const routeState = hasManagedParams ? normalizeGolfState(searchParams) : initialState;
   const validPlayerIds = useMemo(
@@ -368,12 +366,7 @@ export function GolfClient({ initialState, summary, initialPlayerSnapshot }: Gol
   const roundCount = Math.max(1, ...summary.leaderboard.map((row) => row.roundScores.length));
   const lead = PROJECT_PRESS[GOLF_ROUTE].lead;
 
-  useEffect(() => {
-    if (currentHref === desiredHref) return;
-    startTransition(() => {
-      router.replace(desiredHref, { scroll: false });
-    });
-  }, [currentHref, desiredHref, router]);
+  const pushHref = useRouteSync(GOLF_ROUTE, desiredHref);
 
   useEffect(() => {
     if (!selectedPlayerId) return;
@@ -412,10 +405,7 @@ export function GolfClient({ initialState, summary, initialPlayerSnapshot }: Gol
 
   function navigate(nextState: GolfRouteState) {
     const href = buildGolfHref(nextState, searchParams);
-    if (href === currentHref) return;
-    startTransition(() => {
-      router.push(href, { scroll: false });
-    });
+    pushHref(href);
   }
 
   function handleViewChange(view: GolfView) {

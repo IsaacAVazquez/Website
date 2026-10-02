@@ -1,4 +1,5 @@
 import type { ReadonlyURLSearchParams } from "next/navigation";
+import { readParam, type SearchParamInput } from "@/lib/searchParams";
 
 export type FantasyFormula1View = "builder" | "assets" | "rules";
 export type FantasyFormula1Sort = "value" | "projection" | "price" | "form";
@@ -9,13 +10,6 @@ export interface FantasyFormula1RouteState {
   sort: FantasyFormula1Sort;
   focus: FantasyFormula1Focus;
 }
-
-type SearchParamInput =
-  | URLSearchParams
-  | ReadonlyURLSearchParams
-  | Record<string, string | string[] | undefined | null>;
-
-type SearchParamRecord = Record<string, string | string[] | undefined | null>;
 
 export const FANTASY_FORMULA1_ROUTE = "/fantasy-formula-1";
 
@@ -47,19 +41,6 @@ export const FANTASY_FORMULA1_SORT_LABELS: Record<FantasyFormula1Sort, string> =
   price: "Price",
   form: "Form",
 };
-
-function readParam(input: SearchParamInput, key: keyof FantasyFormula1RouteState): string | null {
-  if ("get" in input && typeof input.get === "function") {
-    return input.get(key);
-  }
-
-  const rawValue = (input as SearchParamRecord)[key];
-  if (Array.isArray(rawValue)) {
-    return rawValue[0] ?? null;
-  }
-
-  return rawValue ?? null;
-}
 
 function normalizeView(value: string | null): FantasyFormula1View {
   return VALID_VIEWS.has((value ?? "") as FantasyFormula1View)

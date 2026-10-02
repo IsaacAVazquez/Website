@@ -1,26 +1,22 @@
-import type { ReadonlyURLSearchParams } from "next/navigation";
 import { nflSeeds } from "@/components/football/seedLadder";
 import type { NFLRouteState, NFLTeamStanding, NFLView } from "@/types/nfl";
+import { createTeamRouteState } from "@/lib/searchParams";
 
 // Pure, snapshot-free route-state core for /nfl. Importing this module never
 // pulls the multi-thousand-line `nflSnapshot` into the bundle, so the client
 // can derive route state from the lean `summary` prop it already receives
-// instead of dragging the full snapshot into browser JS. The snapshot-bound
-// wrappers in `nfl-state.ts` reuse these helpers for server + test code.
+// instead of dragging the full snapshot into browser JS.
 
 export const NFL_ROUTE = "/nfl";
 
 /** Ultimate static fallback team id (DEN) when no standings data exists. */
-export const NFL_FALLBACK_TEAM = "den";
+const NFL_FALLBACK_TEAM = "den";
 
-const VALID_VIEWS = new Set<NFLView>(["league", "afc", "nfc", "playoffs"]);
-
-export type SearchParamInput =
-  | URLSearchParams
-  | ReadonlyURLSearchParams
-  | Record<string, string | string[] | undefined | null>;
-
-type SearchParamRecord = Record<string, string | string[] | undefined | null>;
+export { canonicalizeId as canonicalizeTeamId } from "@/lib/searchParams";
+export const { normalizeState, buildHref } = createTeamRouteState<NFLView>(
+  NFL_ROUTE,
+  ["league", "afc", "nfc", "playoffs"]
+);
 
 type TeamAliasSource = { id: string; abbr: string };
 
@@ -34,25 +30,6 @@ export function buildTeamAliasMap(teams: readonly TeamAliasSource[]): Map<string
       ] as const;
     })
   );
-}
-
-export function canonicalizeTeamId(
-  teamId: string | null | undefined,
-  aliasMap: Map<string, string>
-): string | null {
-  if (!teamId) return null;
-  return aliasMap.get(teamId.trim().toLowerCase()) ?? null;
-}
-
-export function readParam(input: SearchParamInput, key: string): string | null {
-  if ("get" in input && typeof input.get === "function") {
-    return input.get(key);
-  }
-  const rawValue = (input as SearchParamRecord)[key];
-  if (Array.isArray(rawValue)) {
-    return rawValue[0] ?? null;
-  }
-  return rawValue ?? null;
 }
 
 export function filterTeams(
@@ -93,47 +70,4 @@ export function resolveDefaultState(teams: readonly NFLTeamStanding[]): NFLRoute
     view: "league",
     team: teams[0]?.id ?? NFL_FALLBACK_TEAM,
   };
-}
-
-export function normalizeState(
-  input: SearchParamInput,
-  defaultState: NFLRouteState,
-  aliasMap: Map<string, string>
-): NFLRouteState {
-  const view = readParam(input, "view");
-  const team = canonicalizeTeamId(readParam(input, "team"), aliasMap);
-
-  return {
-    view: VALID_VIEWS.has((view ?? "") as NFLView)
-      ? (view as NFLView)
-      : defaultState.view,
-    team: team ?? defaultState.team,
-  };
-}
-
-export function buildHref(
-  state: NFLRouteState,
-  defaultState: NFLRouteState,
-  aliasMap: Map<string, string>,
-  baseSearchParams?: URLSearchParams | ReadonlyURLSearchParams
-): string {
-  const params = new URLSearchParams(
-    baseSearchParams ? Array.from(baseSearchParams.entries()) : []
-  );
-  const canonicalTeamId = canonicalizeTeamId(state.team, aliasMap) ?? defaultState.team;
-
-  if (state.view === defaultState.view) {
-    params.delete("view");
-  } else {
-    params.set("view", state.view);
-  }
-
-  if (canonicalTeamId === defaultState.team && state.view === defaultState.view) {
-    params.delete("team");
-  } else {
-    params.set("team", canonicalTeamId);
-  }
-
-  const query = params.toString();
-  return `${NFL_ROUTE}${query ? `?${query}` : ""}`;
 }

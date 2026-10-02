@@ -1,13 +1,11 @@
 "use client";
 
 import {
-  startTransition,
-  useEffect,
   useMemo,
   useState,
   type CSSProperties,
 } from "react";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useSearchParams } from "next/navigation";
 import { ExternalLink } from "lucide-react";
 import { DATE_ONLY_TIME_ZONE } from "@/lib/date-formatters";
 import {
@@ -42,6 +40,9 @@ import {
 import { divisionBoard } from "./scoreboard";
 import { MlbScoreboard } from "./MlbScoreboard";
 import "./mlb.css";
+import { useRouteSync } from "@/hooks/useRouteSync";
+import { useCachedSnapshot } from "@/hooks/useCachedSnapshot";
+import { formatFixed } from "@/components/football/fixtureFormat";
 
 interface MlbClientProps {
   initialState: MlbRouteState;
@@ -65,22 +66,6 @@ const postseasonRoundLabels: Record<string, string> = {
   L: "League Championship Series",
   W: "World Series",
 };
-
-async function fetchMlbTeamSnapshot(
-  teamId: string,
-  signal: AbortSignal
-): Promise<MlbTeamSnapshot> {
-  const response = await fetch(`/api/mlb/teams/${teamId}`, { signal });
-  const payload = (await response.json()) as MlbTeamSnapshot & { error?: string };
-  if (!response.ok) {
-    throw new Error(payload.error || "Unable to load team snapshot.");
-  }
-  return payload;
-}
-
-function formatFixed(value: number, digits = 2) {
-  return Number.isFinite(value) ? value.toFixed(digits) : "—";
-}
 
 function formatGamesBack(games: number) {
   if (!Number.isFinite(games) || games <= 0) return "—";
@@ -107,10 +92,7 @@ function leadersToEntries(
 }
 
 export function MlbClient({ initialState, summary, initialTeamSnapshot }: MlbClientProps) {
-  const router = useRouter();
   const searchParams = useSearchParams();
-  const currentQuery = searchParams.toString();
-  const currentHref = `${MLB_ROUTE}${currentQuery ? `?${currentQuery}` : ""}`;
 
   const standings = summary.standings;
   // Route-state helpers operate on the lean `summary` data the server already
@@ -188,16 +170,17 @@ export function MlbClient({ initialState, summary, initialTeamSnapshot }: MlbCli
   const selectedRow = standingsById.get(selectedTeamId) ?? standings[0];
   const selectedTeam = teamLookup.get(selectedRow?.id ?? "") ?? null;
 
-  const [teamSnapshots, setTeamSnapshots] = useState<Record<string, MlbTeamSnapshot>>(
-    () =>
-      selectedRow && initialTeamSnapshot ? { [selectedRow.id]: initialTeamSnapshot } : {}
+  const {
+    snapshot: teamSnapshot,
+    isLoading: isTeamSnapshotLoading,
+    error: teamSnapshotError,
+  } = useCachedSnapshot<MlbTeamSnapshot>(
+    "/api/mlb/teams",
+    selectedRow?.id ?? null,
+    { id: selectedRow?.id ?? null, snapshot: initialTeamSnapshot },
+    "Unable to load team snapshot."
   );
-  const [loadingTeamId, setLoadingTeamId] = useState<string | null>(null);
-  const [teamSnapshotError, setTeamSnapshotError] = useState<string | null>(null);
   const [activeDetailTab, setActiveDetailTab] = useState<DetailTab>("team");
-
-  const teamSnapshot = selectedRow ? teamSnapshots[selectedRow.id] ?? null : null;
-  const isTeamSnapshotLoading = selectedRow ? loadingTeamId === selectedRow.id : false;
 
   const desiredHref = buildHref(
     { view: routeState.view, team: selectedTeamId },
@@ -206,54 +189,11 @@ export function MlbClient({ initialState, summary, initialTeamSnapshot }: MlbCli
     searchParams
   );
 
-  useEffect(() => {
-    if (currentHref === desiredHref) return;
-    startTransition(() => {
-      router.replace(desiredHref, { scroll: false });
-    });
-  }, [currentHref, desiredHref, router]);
-
-  useEffect(() => {
-    if (!selectedRow) return;
-    if (teamSnapshots[selectedRow.id]) {
-      // eslint-disable-next-line react-hooks/set-state-in-effect -- Reset loading/error flags when cached snapshot exists for the selected team
-      setLoadingTeamId(null);
-      setTeamSnapshotError(null);
-      return;
-    }
-    const controller = new AbortController();
-    let cancelled = false;
-    setLoadingTeamId(selectedRow.id);
-    setTeamSnapshotError(null);
-    fetchMlbTeamSnapshot(selectedRow.id, controller.signal)
-      .then((snapshot) => {
-        if (cancelled) return;
-        setTeamSnapshots((current) =>
-          current[selectedRow.id] ? current : { ...current, [selectedRow.id]: snapshot }
-        );
-      })
-      .catch((error: Error) => {
-        if (!cancelled && error.name !== "AbortError") {
-          setTeamSnapshotError(error.message || "Unable to load team snapshot.");
-        }
-      })
-      .finally(() => {
-        if (!cancelled) {
-          setLoadingTeamId((current) => (current === selectedRow.id ? null : current));
-        }
-      });
-    return () => {
-      cancelled = true;
-      controller.abort();
-    };
-  }, [selectedRow, teamSnapshots]);
+  const pushHref = useRouteSync(MLB_ROUTE, desiredHref);
 
   function navigate(nextState: MlbRouteState) {
     const href = buildHref(nextState, defaultState, aliasMap, searchParams);
-    if (href === currentHref) return;
-    startTransition(() => {
-      router.push(href, { scroll: false });
-    });
+    pushHref(href);
   }
 
   function handleViewChange(view: MlbView) {

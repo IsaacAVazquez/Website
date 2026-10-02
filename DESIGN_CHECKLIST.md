@@ -128,8 +128,8 @@ See "Printing on paper" in `STYLING.md` for the measurements behind these.
 
 ## Snapshot-driven dashboards (data-fetching routes)
 
-- [ ] Ships a per-route `error.tsx` (`'use client'`, re-exports `RouteErrorBoundary` with a bespoke
-      `surfaceName`) and a `loading.tsx` (`RouteLoadingState`). See `SNAPSHOT_DRIVEN_DASHBOARDS.md`.
+- [ ] Ships a `loading.tsx` (`RouteLoadingState`). The root `error.tsx` covers render failures.
+      See `SNAPSHOT_DRIVEN_DASHBOARDS.md`.
 - [ ] Curated/unverified datasets carry `verified: false` + `asOf` and disclose the unverified state
       on-page (mirror `tech-startup-tracker`).
 - [ ] Compliance disclaimers (retirement/investments) stay intact.

@@ -1,14 +1,12 @@
 "use client";
 
 import {
-  startTransition,
-  useEffect,
   useMemo,
   useState,
   useSyncExternalStore,
   type ReactNode,
 } from "react";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useSearchParams } from "next/navigation";
 import {
   Bookmark,
   BookmarkCheck,
@@ -64,6 +62,7 @@ import { Catalog97ProjectHero } from "@/components/catalog97/Catalog97ProjectHer
 import { PROJECT_PRESS } from "@/constants/projectPress";
 import { toLocalDateKey } from "@/lib/date-formatters";
 import "./museum-log.css";
+import { useRouteSync } from "@/hooks/useRouteSync";
 
 interface Props {
   initialState: MuseumRouteState;
@@ -1179,10 +1178,7 @@ function RateAndLogForm({
 // ─── Main client component ───────────────────────────────────────────────────
 
 export function MuseumLogClient({ initialState, snapshot }: Props) {
-  const router = useRouter();
   const searchParams = useSearchParams();
-  const currentQuery = searchParams.toString();
-  const currentHref = `/museum-log${currentQuery ? `?${currentQuery}` : ""}`;
 
   const hasManagedParams =
     searchParams.get("view") !== null ||
@@ -1195,19 +1191,11 @@ export function MuseumLogClient({ initialState, snapshot }: Props) {
 
   const desiredHref = buildMuseumHref(routeState, searchParams);
 
-  useEffect(() => {
-    if (currentHref === desiredHref) return;
-    startTransition(() => {
-      router.replace(desiredHref, { scroll: false });
-    });
-  }, [currentHref, desiredHref, router]);
+  const pushHref = useRouteSync("/museum-log", desiredHref);
 
   function navigate(nextState: MuseumRouteState) {
     const href = buildMuseumHref(nextState, searchParams);
-    if (href === currentHref) return;
-    startTransition(() => {
-      router.push(href, { scroll: false });
-    });
+    pushHref(href);
   }
 
   function handleViewChange(view: MuseumView) {
