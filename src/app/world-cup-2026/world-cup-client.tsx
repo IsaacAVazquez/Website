@@ -39,6 +39,7 @@ import { WorldCupBracket } from "./WorldCupBracket";
 import "./world-cup.css";
 import { DATE_ONLY_TIME_ZONE, DISPLAY_TIME_ZONE } from "@/lib/date-formatters";
 import { useRouteSync } from "@/hooks/useRouteSync";
+import { useCachedSnapshot } from "@/hooks/useCachedSnapshot";
 
 interface WorldCupClientProps {
   initialState: WorldCupRouteState;
@@ -128,20 +129,6 @@ function KickoffCountdown({ startDate }: { startDate: string }) {
   );
 }
 
-async function fetchWorldCupTeamSnapshot(
-  teamId: string,
-  signal: AbortSignal
-): Promise<WorldCupTeamSnapshot> {
-  const response = await fetch(`/api/world-cup/teams/${teamId}`, { signal });
-  const payload = (await response.json()) as WorldCupTeamSnapshot & {
-    error?: string;
-  };
-  if (!response.ok) {
-    throw new Error(payload.error || "Unable to load team snapshot.");
-  }
-  return payload;
-}
-
 export function WorldCupClient({
   initialState,
   summary,
@@ -169,19 +156,16 @@ export function WorldCupClient({
     ? teamOptionById.get(selectedTeamId) ?? null
     : null;
 
-  const [teamSnapshots, setTeamSnapshots] = useState<
-    Record<string, WorldCupTeamSnapshot>
-  >(() =>
-    selectedTeamId && initialTeamSnapshot
-      ? { [selectedTeamId]: initialTeamSnapshot }
-      : {}
+  const {
+    snapshot: teamSnapshot,
+    isLoading: isTeamSnapshotLoading,
+    error: teamSnapshotError,
+  } = useCachedSnapshot<WorldCupTeamSnapshot>(
+    "/api/world-cup/teams",
+    selectedTeamId,
+    { id: selectedTeamId, snapshot: initialTeamSnapshot },
+    "Unable to load team snapshot."
   );
-  const [loadingTeamId, setLoadingTeamId] = useState<string | null>(null);
-  const [teamSnapshotError, setTeamSnapshotError] = useState<string | null>(null);
-  const teamSnapshot = selectedTeamId
-    ? teamSnapshots[selectedTeamId] ?? null
-    : null;
-  const isTeamSnapshotLoading = loadingTeamId === selectedTeamId;
 
   const desiredHref = buildWorldCupHref(
     { view: routeState.view, team: selectedTeamId },
@@ -189,49 +173,6 @@ export function WorldCupClient({
   );
 
   const pushHref = useRouteSync(WORLD_CUP_ROUTE, desiredHref);
-
-  useEffect(() => {
-    if (!selectedTeamId) {
-      // eslint-disable-next-line react-hooks/set-state-in-effect -- Reset request flags when no team is selected or the snapshot is already cached
-      setLoadingTeamId(null);
-      setTeamSnapshotError(null);
-      return;
-    }
-    if (teamSnapshots[selectedTeamId]) {
-      setLoadingTeamId(null);
-      setTeamSnapshotError(null);
-      return;
-    }
-    const controller = new AbortController();
-    let cancelled = false;
-    setLoadingTeamId(selectedTeamId);
-    setTeamSnapshotError(null);
-    fetchWorldCupTeamSnapshot(selectedTeamId, controller.signal)
-      .then((snapshot) => {
-        if (cancelled) return;
-        setTeamSnapshots((current) =>
-          current[selectedTeamId]
-            ? current
-            : { ...current, [selectedTeamId]: snapshot }
-        );
-      })
-      .catch((error: Error) => {
-        if (!cancelled && error.name !== "AbortError") {
-          setTeamSnapshotError(error.message || "Unable to load team snapshot.");
-        }
-      })
-      .finally(() => {
-        if (!cancelled) {
-          setLoadingTeamId((current) =>
-            current === selectedTeamId ? null : current
-          );
-        }
-      });
-    return () => {
-      cancelled = true;
-      controller.abort();
-    };
-  }, [selectedTeamId, teamSnapshots]);
 
   function navigate(nextState: WorldCupRouteState) {
     const href = buildWorldCupHref(nextState, searchParams);

@@ -1,7 +1,6 @@
 "use client";
 
 import {
-  useEffect,
   useMemo,
   useState,
   type CSSProperties,
@@ -50,25 +49,12 @@ import {
   resolveDefaultState,
 } from "./la-liga-state.core";
 import { useRouteSync } from "@/hooks/useRouteSync";
+import { useCachedSnapshot } from "@/hooks/useCachedSnapshot";
 
 interface LaLigaClientProps {
   initialState: LaLigaRouteState;
   summary: LaLigaSummarySnapshot;
   initialTeamSnapshot: LaLigaTeamSnapshot | null;
-}
-
-async function fetchLaLigaTeamSnapshot(
-  clubId: string,
-  signal: AbortSignal
-): Promise<LaLigaTeamSnapshot> {
-  const response = await fetch(`/api/la-liga/teams/${clubId}`, { signal });
-  const payload = (await response.json()) as LaLigaTeamSnapshot & { error?: string };
-
-  if (!response.ok) {
-    throw new Error(payload.error || "Unable to load club snapshot.");
-  }
-
-  return payload;
 }
 
 const VIEW_OPTIONS: Array<{ id: LaLigaView; label: string }> = [
@@ -153,13 +139,16 @@ export function LaLigaClient({
     ? routeState.club
     : getDefaultClub(summary.clubs, routeState.view, defaultState.club);
   const selectedClub = clubById.get(selectedClubId) ?? clubs[0];
-  const [teamSnapshots, setTeamSnapshots] = useState<Record<string, LaLigaTeamSnapshot>>(
-    () => (selectedClubId && initialTeamSnapshot ? { [selectedClubId]: initialTeamSnapshot } : {})
+  const {
+    snapshot: teamSnapshot,
+    isLoading: isTeamSnapshotLoading,
+    error: teamSnapshotError,
+  } = useCachedSnapshot<LaLigaTeamSnapshot>(
+    "/api/la-liga/teams",
+    selectedClub?.id ?? null,
+    { id: selectedClubId, snapshot: initialTeamSnapshot },
+    "Unable to load club snapshot."
   );
-  const [loadingClubId, setLoadingClubId] = useState<string | null>(null);
-  const [teamSnapshotError, setTeamSnapshotError] = useState<string | null>(null);
-  const teamSnapshot = selectedClub ? teamSnapshots[selectedClub.id] ?? null : null;
-  const isTeamSnapshotLoading = selectedClub ? loadingClubId === selectedClub.id : false;
   const desiredHref = buildHref(
     {
       view: routeState.view,
@@ -204,51 +193,6 @@ export function LaLigaClient({
   function handleCloseDrawer() {
     setDrawerClubId(null);
   }
-
-  useEffect(() => {
-    if (!selectedClub) {
-      return;
-    }
-    const clubId = selectedClub.id;
-    if (teamSnapshots[clubId]) {
-      // eslint-disable-next-line react-hooks/set-state-in-effect -- Reset loading/error flags when cached snapshot exists for the selected club
-      setLoadingClubId(null);
-      setTeamSnapshotError(null);
-      return;
-    }
-
-    const controller = new AbortController();
-    let cancelled = false;
-
-    setLoadingClubId(clubId);
-    setTeamSnapshotError(null);
-
-    fetchLaLigaTeamSnapshot(clubId, controller.signal)
-      .then((snapshot) => {
-        if (cancelled) {
-          return;
-        }
-
-        setTeamSnapshots((current) => (
-          current[clubId] ? current : { ...current, [clubId]: snapshot }
-        ));
-      })
-      .catch((error: Error) => {
-        if (!cancelled && error.name !== "AbortError") {
-          setTeamSnapshotError(error.message || "Unable to load club snapshot.");
-        }
-      })
-      .finally(() => {
-        if (!cancelled) {
-          setLoadingClubId((current) => (current === clubId ? null : current));
-        }
-      });
-
-    return () => {
-      cancelled = true;
-      controller.abort();
-    };
-  }, [selectedClub, teamSnapshots]);
 
   const activeDetailTab = routeState.detail;
   function setActiveDetailTab(detail: LaLigaDetailTab) {

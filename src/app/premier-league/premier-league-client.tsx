@@ -1,7 +1,6 @@
 "use client";
 
 import {
-  useEffect,
   useMemo,
   useState,
   type CSSProperties,
@@ -48,6 +47,7 @@ import {
   PREMIER_LEAGUE_VIEW_OPTIONS,
 } from "./premier-league-state";
 import { useRouteSync } from "@/hooks/useRouteSync";
+import { useCachedSnapshot } from "@/hooks/useCachedSnapshot";
 
 interface PremierLeagueClientProps {
   initialState: PremierLeagueRouteState;
@@ -86,20 +86,6 @@ const LAST_UPDATED_FORMATTER = new Intl.DateTimeFormat("en-US", {
 function formatGeneratedAt(value: string): string {
   const date = new Date(value);
   return Number.isNaN(date.getTime()) ? "Unavailable" : LAST_UPDATED_FORMATTER.format(date);
-}
-
-async function fetchPremierLeagueTeamSnapshot(
-  teamId: string,
-  signal: AbortSignal
-): Promise<PremierLeagueTeamSnapshot> {
-  const response = await fetch(`/api/premier-league/teams/${teamId}`, { signal });
-  const payload = (await response.json()) as PremierLeagueTeamSnapshot & { error?: string };
-
-  if (!response.ok) {
-    throw new Error(payload.error || "Unable to load club snapshot.");
-  }
-
-  return payload;
 }
 
 export function PremierLeagueClient({
@@ -151,60 +137,16 @@ export function PremierLeagueClient({
   // Derived state
   const visibleStandings = filterStandingsForView(summary.standings, routeState.view);
   const selectedRow = summary.standings.find((r) => r.team.id === selectedTeamId) ?? summary.standings[0] ?? null;
-  const [teamSnapshots, setTeamSnapshots] = useState<Record<string, PremierLeagueTeamSnapshot>>(
-    () => (selectedTeamId && initialTeamSnapshot ? { [selectedTeamId]: initialTeamSnapshot } : {})
+  const {
+    snapshot: teamSnapshot,
+    isLoading: isTeamSnapshotLoading,
+    error: teamSnapshotError,
+  } = useCachedSnapshot<PremierLeagueTeamSnapshot>(
+    "/api/premier-league/teams",
+    selectedTeamId,
+    { id: selectedTeamId, snapshot: initialTeamSnapshot },
+    "Unable to load club snapshot."
   );
-  const [loadingTeamId, setLoadingTeamId] = useState<string | null>(null);
-  const [teamSnapshotError, setTeamSnapshotError] = useState<string | null>(null);
-  const teamSnapshot = selectedTeamId ? teamSnapshots[selectedTeamId] ?? null : null;
-  const isTeamSnapshotLoading = loadingTeamId === selectedTeamId;
-
-  useEffect(() => {
-    if (!selectedTeamId) {
-      // eslint-disable-next-line react-hooks/set-state-in-effect -- Reset loading/error flags when no team is selected
-      setLoadingTeamId(null);
-      setTeamSnapshotError(null);
-      return;
-    }
-
-    if (teamSnapshots[selectedTeamId]) {
-      setLoadingTeamId(null);
-      setTeamSnapshotError(null);
-      return;
-    }
-
-    const controller = new AbortController();
-    let cancelled = false;
-
-    setLoadingTeamId(selectedTeamId);
-    setTeamSnapshotError(null);
-
-    fetchPremierLeagueTeamSnapshot(selectedTeamId, controller.signal)
-      .then((snapshot) => {
-        if (cancelled) {
-          return;
-        }
-
-        setTeamSnapshots((current) => (
-          current[selectedTeamId] ? current : { ...current, [selectedTeamId]: snapshot }
-        ));
-      })
-      .catch((error: Error) => {
-        if (!cancelled && error.name !== "AbortError") {
-          setTeamSnapshotError(error.message || "Unable to load club snapshot.");
-        }
-      })
-      .finally(() => {
-        if (!cancelled) {
-          setLoadingTeamId((current) => (current === selectedTeamId ? null : current));
-        }
-      });
-
-    return () => {
-      cancelled = true;
-      controller.abort();
-    };
-  }, [selectedTeamId, teamSnapshots]);
 
   // Derived stats for sidebar
   const attackRankings = useMemo(() => {

@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { CircleAlert, ExternalLink, Flag } from "lucide-react";
 import { DATE_ONLY_TIME_ZONE } from "@/lib/date-formatters";
@@ -35,6 +35,7 @@ import {
   resolveDefaultState,
 } from "./nfl-state.core";
 import { useRouteSync } from "@/hooks/useRouteSync";
+import { useCachedSnapshot } from "@/hooks/useCachedSnapshot";
 
 interface NflClientProps {
   initialState: NFLRouteState;
@@ -70,18 +71,6 @@ const LEADER_TABS: Array<{ id: LeaderCategory; label: string; unit: string; unit
   { id: "receiving", label: "Receiving yards", unit: "yds", unitLong: "receiving yards" },
   { id: "sacks", label: "Sacks", unit: "sk", unitLong: "sacks" },
 ];
-
-async function fetchNflTeamSnapshot(
-  teamId: string,
-  signal: AbortSignal
-): Promise<NFLTeamSnapshot> {
-  const response = await fetch(`/api/nfl/teams/${teamId}`, { signal });
-  const payload = (await response.json()) as NFLTeamSnapshot & { error?: string };
-  if (!response.ok) {
-    throw new Error(payload.error || "Unable to load team snapshot.");
-  }
-  return payload;
-}
 
 /**
  * The NFL only has a real seed for the top seven per conference; everyone
@@ -227,16 +216,16 @@ export function NflClient({ initialState, summary, initialTeamSnapshot }: NflCli
     ? routeState.team
     : getDefaultTeam(summary.teams, routeState.view, defaultState.team);
   const selectedTeam = teamById.get(selectedTeamId) ?? teams[0];
-  const [teamSnapshots, setTeamSnapshots] = useState<Record<string, NFLTeamSnapshot>>(
-    () =>
-      selectedTeamId && initialTeamSnapshot
-        ? { [selectedTeamId]: initialTeamSnapshot }
-        : {}
+  const {
+    snapshot: teamSnapshot,
+    isLoading: isTeamSnapshotLoading,
+    error: teamSnapshotError,
+  } = useCachedSnapshot<NFLTeamSnapshot>(
+    "/api/nfl/teams",
+    selectedTeam?.id ?? null,
+    { id: selectedTeamId, snapshot: initialTeamSnapshot },
+    "Unable to load team snapshot."
   );
-  const [loadingTeamId, setLoadingTeamId] = useState<string | null>(null);
-  const [teamSnapshotError, setTeamSnapshotError] = useState<string | null>(null);
-  const teamSnapshot = selectedTeam ? teamSnapshots[selectedTeam.id] ?? null : null;
-  const isTeamSnapshotLoading = selectedTeam ? loadingTeamId === selectedTeam.id : false;
   const desiredHref = buildHref(
     { view: routeState.view, team: selectedTeamId },
     defaultState,
@@ -265,45 +254,6 @@ export function NflClient({ initialState, summary, initialTeamSnapshot }: NflCli
       team: canonicalizeTeamId(teamId, aliasMap) ?? defaultState.team,
     });
   }
-
-  useEffect(() => {
-    if (!selectedTeam) return;
-    if (teamSnapshots[selectedTeam.id]) {
-      // eslint-disable-next-line react-hooks/set-state-in-effect -- Reset loading/error flags when cached snapshot exists for the selected team
-      setLoadingTeamId(null);
-      setTeamSnapshotError(null);
-      return;
-    }
-    const controller = new AbortController();
-    let cancelled = false;
-    setLoadingTeamId(selectedTeam.id);
-    setTeamSnapshotError(null);
-    fetchNflTeamSnapshot(selectedTeam.id, controller.signal)
-      .then((snapshot) => {
-        if (cancelled) return;
-        setTeamSnapshots((current) =>
-          current[selectedTeam.id]
-            ? current
-            : { ...current, [selectedTeam.id]: snapshot }
-        );
-      })
-      .catch((error: Error) => {
-        if (!cancelled && error.name !== "AbortError") {
-          setTeamSnapshotError(error.message || "Unable to load team snapshot.");
-        }
-      })
-      .finally(() => {
-        if (!cancelled) {
-          setLoadingTeamId((current) =>
-            current === selectedTeam.id ? null : current
-          );
-        }
-      });
-    return () => {
-      cancelled = true;
-      controller.abort();
-    };
-  }, [selectedTeam, teamSnapshots]);
 
   const conferenceContext = useMemo(() => buildConferenceContext(teams, seeds), [teams, seeds]);
 
