@@ -82,8 +82,10 @@ response falls back to the committed snapshot.
 
 ## The shared commit/push step (every Action)
 
-All 17 `update-*.yml` workflows route their git commit + push through one shared
-helper, `scripts/ci/commit-and-push-snapshot.sh`, instead of inlining their own
+Ten of the `update-*.yml` workflows are short callers of the reusable
+`.github/workflows/refresh-snapshot.yml` (checkout, `npm ci`, refresh, verify, commit,
+failure issue), and every lane routes its git commit + push through one shared
+helper, `scripts/ci/commit-and-push-snapshot.sh`, instead of inlining its own
 git plumbing:
 
 ```yaml
