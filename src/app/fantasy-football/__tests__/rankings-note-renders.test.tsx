@@ -1,7 +1,7 @@
 import React from "react";
 import { act, render } from "@testing-library/react";
 import { FantasyFootballClient } from "../fantasy-football-client";
-import { emitLocalStoreChange } from "@/hooks/useLocalStorageString";
+import { emitBrowserStorageChange } from "@/lib/browserStorage";
 import { resetBrowserStorageMemory } from "@/lib/browserStorage";
 import { FANTASY_NOTES_STORAGE_KEY, saveNotes } from "@/lib/fantasyLocal";
 
@@ -94,7 +94,7 @@ describe("rankings board renders", () => {
 
     act(() => {
       saveNotes({ "rb-1": "handcuff for Allgeier" });
-      emitLocalStoreChange(FANTASY_NOTES_STORAGE_KEY);
+      emitBrowserStorageChange(FANTASY_NOTES_STORAGE_KEY);
     });
 
     expect(mockFilterBarRenders.mock.calls.length).toBe(rendersBefore);

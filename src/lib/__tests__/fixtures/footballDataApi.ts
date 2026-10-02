@@ -280,13 +280,9 @@ export async function runOnFakeClock<T>(task: Promise<T>): Promise<T | Error> {
 }
 
 /** Writes a stored snapshot in the generated file format and returns the directory to use as cwd. */
-export function writeStoredSnapshot(fileName: string, exportName: string, snapshot: unknown): string {
+export function writeStoredSnapshot(fileName: string, snapshot: unknown): string {
   const root = mkdtempSync(join(tmpdir(), "football-snapshot-"));
   mkdirSync(join(root, "src", "data"), { recursive: true });
-  writeFileSync(
-    join(root, "src", "data", fileName),
-    `// Generated fixture.\nexport const ${exportName} = ${JSON.stringify(snapshot, null, 2)};\n`,
-    "utf8"
-  );
+  writeFileSync(join(root, "src", "data", fileName), JSON.stringify(snapshot, null, 2) + "\n", "utf8");
   return root;
 }

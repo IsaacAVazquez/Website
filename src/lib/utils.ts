@@ -81,3 +81,62 @@ export function relativeAge(iso: string, now: number): string {
   if (hours < 48) return `${hours}h ago`;
   return `${Math.floor(hours / 24)}d ago`;
 }
+
+export function isFiniteNumber(value: unknown): value is number {
+  return typeof value === "number" && Number.isFinite(value);
+}
+
+/** Rounds half away from zero to `digits` decimals, which is what every local copy did. */
+export function roundTo(value: number, digits = 1): number {
+  const factor = 10 ** digits;
+  return Math.round(value * factor) / factor;
+}
+
+/** `value` when it is one of `allowed`, else the fallback. */
+export function enumValue<T extends string>(value: unknown, allowed: readonly T[], fallback: T): T {
+  return typeof value === "string" && (allowed as readonly string[]).includes(value)
+    ? (value as T)
+    : fallback;
+}
+
+/** Escapes the five HTML-significant characters for text or attribute values. */
+export function escapeHtml(value: string): string {
+  return value
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#39;");
+}
+
+/**
+ * `Map.groupBy` in a form every browser Next still targets can run; Safari
+ * before 17.4 and Chrome before 117 have no `Map.groupBy`, and Next polyfills
+ * nothing for module-capable browsers.
+ */
+export function groupBy<T, K>(items: Iterable<T>, key: (item: T) => K): Map<K, T[]> {
+  const groups = new Map<K, T[]>();
+  for (const item of items) {
+    const k = key(item);
+    const group = groups.get(k);
+    if (group) group.push(item);
+    else groups.set(k, [item]);
+  }
+  return groups;
+}
+
+/** RFC 4180 quoting for a CSV field. */
+export function escapeCsvValue(value: string | number): string {
+  const raw = String(value);
+  return /[",\r\n]/.test(raw) ? `"${raw.replace(/"/g, '""')}"` : raw;
+}
+
+/** US dollars, with cents only when the value has them. */
+export function formatDollars(value: number): string {
+  return value.toLocaleString("en-US", {
+    style: "currency",
+    currency: "USD",
+    minimumFractionDigits: 0,
+    maximumFractionDigits: value % 1 === 0 ? 0 : 2,
+  });
+}

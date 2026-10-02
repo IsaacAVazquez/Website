@@ -1,6 +1,7 @@
 "use client";
 
 import { MapPin } from "lucide-react";
+import { escapeHtml } from "@/lib/utils";
 import { useEffect, useRef, useState } from "react";
 import {
   loadLeaflet,
@@ -31,19 +32,6 @@ interface FoodMapLeafletProps {
   /** When true, jump instead of animating (honors prefers-reduced-motion). */
   reduceMotion?: boolean;
 }
-
-const escapeHtml = (value: string): string =>
-  value.replace(
-    /[&<>"']/g,
-    (c) =>
-      ({
-        "&": "&amp;",
-        "<": "&lt;",
-        ">": "&gt;",
-        '"': "&quot;",
-        "'": "&#39;",
-      })[c] as string
-  );
 
 // A plain circular ink dot rather than the old teardrop shape. The print
 // shop CSS system only allows a border-radius of 0 or 50%, and a teardrop

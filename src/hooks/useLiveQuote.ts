@@ -181,16 +181,8 @@ async function fetchQuote(symbol: string): Promise<CachedQuote> {
 export function useLiveQuote(symbol: string | null): UseLiveQuoteReturn {
   const [state, dispatch] = useReducer(liveQuoteReducer, EMPTY_STATE);
   const [fetchKey, setFetchKey] = useState(0);
-  const isMounted = useRef(true);
   const latestRequestId = useRef(0);
   const previousSymbol = useRef<string | null>(null);
-
-  useEffect(() => {
-    isMounted.current = true;
-    return () => {
-      isMounted.current = false;
-    };
-  }, []);
 
   useEffect(() => {
     if (!symbol) {
@@ -210,12 +202,12 @@ export function useLiveQuote(symbol: string | null): UseLiveQuoteReturn {
 
     fetchQuote(upperSymbol)
       .then((entry) => {
-        if (cancelled || !isMounted.current || latestRequestId.current !== requestId) return;
+        if (cancelled || latestRequestId.current !== requestId) return;
 
         dispatch({ type: "success", entry });
       })
       .catch((error) => {
-        if (cancelled || !isMounted.current || latestRequestId.current !== requestId) return;
+        if (cancelled || latestRequestId.current !== requestId) return;
 
         dispatch({
           type: "error",

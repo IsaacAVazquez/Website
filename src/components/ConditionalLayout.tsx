@@ -15,7 +15,7 @@ interface ConditionalLayoutProps {
  *
  * The seven designed Catalog 97 routes (`isCatalog97Route`) render their own
  * `Catalog97Shell` inside the page component, so they pass through untouched.
- * Every other route, `/admin` included, is wrapped in `Catalog97ToolShell`,
+ * Every other route is wrapped in `Catalog97ToolShell`,
  * which supplies the same header, the only `main` landmark, the espresso
  * footer, and the build-note aside for routes registered in
  * `projectBuildNoteLinks`. The Working Instrument shell that used to live here

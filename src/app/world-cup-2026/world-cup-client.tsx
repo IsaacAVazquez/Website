@@ -40,6 +40,7 @@ import "./world-cup.css";
 import { DATE_ONLY_TIME_ZONE, DISPLAY_TIME_ZONE } from "@/lib/date-formatters";
 import { useRouteSync } from "@/hooks/useRouteSync";
 import { useCachedSnapshot } from "@/hooks/useCachedSnapshot";
+import { groupBy } from "@/lib/utils";
 
 interface WorldCupClientProps {
   initialState: WorldCupRouteState;
@@ -207,13 +208,7 @@ export function WorldCupClient({
   );
 
   const venuesByCountry = useMemo(() => {
-    const map = new Map<string, typeof tournament.venues>();
-    for (const venue of tournament.venues) {
-      const list = map.get(venue.country);
-      if (list) list.push(venue);
-      else map.set(venue.country, [venue]);
-    }
-    return Array.from(map.entries());
+    return Array.from(groupBy(tournament.venues, (venue) => venue.country).entries());
   }, [tournament]);
 
   // The final fixture and the champion it settled, straight from the bracket

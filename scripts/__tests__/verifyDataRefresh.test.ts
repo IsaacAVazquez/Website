@@ -81,7 +81,7 @@ describe("snapshot quality minimums", () => {
   it.each(gated.map((artifact) => [artifact!.surface, artifact!] as const))(
     "passes the committed %s snapshot",
     (_surface, artifact) => {
-      const payload = readGeneratedSnapshot(artifact.artifactPath, artifact.exportName!);
+      const payload = readGeneratedSnapshot(artifact.artifactPath);
       expect(findShortfalls(payload, artifact.minimums)).toEqual([]);
     }
   );

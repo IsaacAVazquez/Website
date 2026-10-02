@@ -14,19 +14,12 @@ import type {
 } from "./types";
 import { makeNormalSampler, mulberry32 } from "./random";
 import { simulatePath } from "./projection";
+import { quantileSorted } from "d3";
 
 /** Lognormal draws stay above −100% by construction; this is just a tail floor. */
 const MIN_ANNUAL_RETURN = -0.95;
 
-function percentile(sorted: number[], p: number): number {
-  if (sorted.length === 0) return 0;
-  if (sorted.length === 1) return sorted[0];
-  const rank = p * (sorted.length - 1);
-  const low = Math.floor(rank);
-  const high = Math.ceil(rank);
-  if (low === high) return sorted[low];
-  return sorted[low] + (sorted[high] - sorted[low]) * (rank - low);
-}
+const percentile = (sorted: number[], p: number): number => quantileSorted(sorted, p) ?? 0;
 
 interface MonteCarloOptions {
   expectedReturn: number;

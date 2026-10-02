@@ -244,7 +244,7 @@ describe("spacexData image normalization", () => {
       json: async () => baseLaunch,
     });
 
-    const detail = await getMissionLaunchDetail("63aa7636-d2b7-457f-a3e6-27e564e42941");
+    const detail = await getMissionLaunchDetail("63aa7636-d2b7-457f-a3e6-27e564e42941", { live: true });
 
     expect(detail.vehicleImage).toBe("https://images.example.com/launch-photo.png");
     expect(detail.rocket?.image).toBe("https://images.example.com/rocket-config.png");
@@ -385,36 +385,12 @@ describe("spacexData image normalization", () => {
       cadence: null,
     });
 
-    const detail = await getMissionLaunchDetail(listedLaunch.id, {
-      source: "snapshot",
-    });
+    const detail = await getMissionLaunchDetail(listedLaunch.id);
 
     expect(detail.id).toBe(listedLaunch.id);
     expect(detail.rocket?.name).toBe("Falcon 9");
     expect(detail.launchpad?.name).toBe("SLC-40");
     expect(mockFetch).not.toHaveBeenCalled();
-  });
-
-  it("falls back to live detail fetches when a launch is outside the local snapshot window", async () => {
-    setSpaceXSnapshotForTests({
-      generatedAt: "2026-04-12T00:00:00.000Z",
-      sourceLabel: "test snapshot",
-      summary: null,
-      upcomingLaunches: [],
-      pastLaunches: [],
-      launchDetails: {},
-      cadence: null,
-    });
-
-    mockFetch.mockResolvedValue({
-      ok: true,
-      json: async () => baseLaunch,
-    });
-
-    const detail = await getMissionLaunchDetail("63aa7636-d2b7-457f-a3e6-27e564e42941");
-
-    expect(detail.id).toBe(baseLaunch.id);
-    expect(mockFetch).toHaveBeenCalledTimes(1);
   });
 
   it("rewrites mapped launch card image fields to local snapshot paths", async () => {
@@ -452,7 +428,7 @@ describe("spacexData image normalization", () => {
       json: async () => baseLaunch,
     });
 
-    const detail = await getMissionLaunchDetail("63aa7636-d2b7-457f-a3e6-27e564e42941");
+    const detail = await getMissionLaunchDetail("63aa7636-d2b7-457f-a3e6-27e564e42941", { live: true });
 
     expect(detail.vehicleImage).toBe("/data/spacex/images/launch-photo.png");
     expect(detail.rocket?.image).toBe("/data/spacex/images/rocket-config.png");
@@ -501,10 +477,10 @@ describe("spacexData image normalization", () => {
         },
       });
 
-    const firstDetail = await getMissionLaunchDetail("63aa7636-d2b7-457f-a3e6-27e564e42941");
+    const firstDetail = await getMissionLaunchDetail("63aa7636-d2b7-457f-a3e6-27e564e42941", { live: true });
     expect(firstDetail.id).toBe(baseLaunch.id);
 
-    const secondDetail = await getMissionLaunchDetail("63aa7636-d2b7-457f-a3e6-27e564e42941");
+    const secondDetail = await getMissionLaunchDetail("63aa7636-d2b7-457f-a3e6-27e564e42941", { live: true });
     expect(secondDetail.id).toBe(baseLaunch.id);
   });
 });
@@ -714,20 +690,20 @@ describe("spacexData snapshot launch lookup", () => {
     mockFetch.mockClear();
 
     await expect(
-      getMissionLaunchDetail(UNKNOWN_LAUNCH_ID, { source: "snapshot" })
+      getMissionLaunchDetail(UNKNOWN_LAUNCH_ID)
     ).rejects.toMatchObject({ status: 404 });
     expect(mockFetch).not.toHaveBeenCalled();
   });
 
   it("answers 503 when the snapshot holds no data at all", async () => {
     await expect(
-      getMissionLaunchDetail(UNKNOWN_LAUNCH_ID, { source: "snapshot" })
+      getMissionLaunchDetail(UNKNOWN_LAUNCH_ID)
     ).rejects.toMatchObject({ status: 503 });
   });
 
   it("answers 400 for a malformed id", async () => {
     await expect(
-      getMissionLaunchDetail("not-a-launch-id", { source: "snapshot" })
+      getMissionLaunchDetail("not-a-launch-id")
     ).rejects.toMatchObject({ status: 400 });
   });
 });

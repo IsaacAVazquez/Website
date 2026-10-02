@@ -1,6 +1,5 @@
 import {
   formatDateTime,
-  formatFullDate,
   formatShortDate,
   formatUpdatedAt,
   isLocalDateKey,
@@ -14,7 +13,6 @@ describe("date-formatters", () => {
     expect(formatShortDate("not-a-date")).toBe("TBD");
     expect(formatDateTime("not-a-date")).toBe("TBD");
     expect(formatUpdatedAt("not-a-date")).toBe("Unavailable");
-    expect(formatFullDate("not-a-date")).toBe("Unavailable");
   });
 
   it("formats date-like values with the shared dashboard formatters", () => {
@@ -22,7 +20,6 @@ describe("date-formatters", () => {
     const date = new Date("2026-04-25T21:30:00Z");
 
     expect(formatShortDate(date)).toBe("Apr 25");
-    expect(formatFullDate(date)).toBe("Apr 25, 2026");
     expect(formatUpdatedAt(date)).toContain("Apr 25");
     expect(formatUpdatedAt(date)).toContain("2:30");
     expect(formatDateTime(date)).toContain("Apr 25");
@@ -34,7 +31,6 @@ describe("date-formatters", () => {
     // Just after midnight UTC is still the previous evening in the Bay Area.
     const date = new Date("2026-04-26T00:15:00Z");
     expect(formatShortDate(date)).toBe("Apr 25");
-    expect(formatFullDate(date)).toBe("Apr 25, 2026");
     expect(formatUpdatedAt(date)).toBe("Apr 25, 5:15 PM PDT");
   });
 

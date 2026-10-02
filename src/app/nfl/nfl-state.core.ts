@@ -1,6 +1,6 @@
 import { nflSeeds } from "@/components/football/seedLadder";
 import type { NFLRouteState, NFLTeamStanding, NFLView } from "@/types/nfl";
-import { createTeamRouteState } from "@/lib/searchParams";
+import { buildTeamAliasMap as buildAliasMap, createTeamRouteState } from "@/lib/searchParams";
 
 // Pure, snapshot-free route-state core for /nfl. Importing this module never
 // pulls the multi-thousand-line `nflSnapshot` into the bundle, so the client
@@ -18,19 +18,8 @@ export const { normalizeState, buildHref } = createTeamRouteState<NFLView>(
   ["league", "afc", "nfc", "playoffs"]
 );
 
-type TeamAliasSource = { id: string; abbr: string };
-
-export function buildTeamAliasMap(teams: readonly TeamAliasSource[]): Map<string, string> {
-  return new Map(
-    teams.flatMap((team) => {
-      const canonical = team.id;
-      return [
-        [team.id.toLowerCase(), canonical],
-        [team.abbr.toLowerCase(), canonical],
-      ] as const;
-    })
-  );
-}
+export const buildTeamAliasMap = (teams: readonly { id: string; abbr: string }[]) =>
+  buildAliasMap(teams, (team) => team.abbr);
 
 export function filterTeams(
   teams: readonly NFLTeamStanding[],

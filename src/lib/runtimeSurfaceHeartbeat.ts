@@ -1,5 +1,5 @@
 import type { DataDeliveryStatus } from "@/lib/dataRevision";
-import { readDurableJson, writeDurableJson } from "@/lib/durableJsonCache";
+import { readDurableJson, writeDurableJson } from "@/lib/netlifyBlobs";
 
 // News Pulse and MBA jobs fetch at request time and keep their last-good data in
 // per-instance in-memory Maps backed by the durable Netlify Blobs cache. Those

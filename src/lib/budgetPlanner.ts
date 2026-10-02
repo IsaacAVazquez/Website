@@ -9,7 +9,7 @@ import type {
 } from "@/types/budget";
 import { readBrowserStorageString, writeBrowserStorageJson } from "@/lib/browserStorage";
 import { DISPLAY_TIME_ZONE } from "@/lib/date-formatters";
-import { isRecord, prefixedId } from "@/lib/utils";
+import { escapeCsvValue, isRecord, prefixedId, roundTo } from "@/lib/utils";
 
 export const BUDGET_PLANNER_STORAGE_KEY = "budget_planner_months_v1";
 
@@ -24,8 +24,7 @@ const DEFAULT_BUDGET_CATEGORY_NAMES = [
 ];
 
 function roundCurrency(value: number) {
-  if (!Number.isFinite(value)) return 0;
-  return Math.round(value * 100) / 100;
+  return Number.isFinite(value) ? roundTo(value, 2) : 0;
 }
 
 function sanitizeNonNegativeAmount(value: unknown) {
@@ -315,12 +314,6 @@ export function calculateBudgetSummary(month: BudgetMonth): BudgetSummary {
     expenseEntries,
     recentExpenses: expenseEntries.slice(0, 5),
   };
-}
-
-/** RFC 4180 quoting for a CSV field. */
-export function escapeCsvValue(value: string | number): string {
-  const raw = String(value);
-  return /[",\r\n]/.test(raw) ? `"${raw.replace(/"/g, '""')}"` : raw;
 }
 
 /**

@@ -8,7 +8,7 @@ import type {
   WineType,
   WineTypeBreakdown,
 } from "@/types/wine";
-import { isRecord, prefixedId } from "@/lib/utils";
+import { clamp, isRecord, prefixedId, roundTo } from "@/lib/utils";
 import { toLocalDateKey } from "@/lib/date-formatters";
 
 export const WINE_CELLAR_STORAGE_KEY = "wine_cellar_entries_v1";
@@ -42,15 +42,14 @@ function isWineType(value: unknown): value is WineType {
 }
 
 function roundTwo(value: number) {
-  if (!Number.isFinite(value)) return 0;
-  return Math.round(value * 100) / 100;
+  return Number.isFinite(value) ? roundTo(value, 2) : 0;
 }
 
 function clampRating(value: unknown) {
   const numeric = typeof value === "number" ? value : Number(value);
   if (!Number.isFinite(numeric)) return MIN_RATING;
   const stepped = Math.round(numeric / RATING_STEP) * RATING_STEP;
-  return Math.min(MAX_RATING, Math.max(MIN_RATING, roundTwo(stepped)));
+  return clamp(roundTwo(stepped), MIN_RATING, MAX_RATING);
 }
 
 function sanitizePrice(value: unknown): number | null {

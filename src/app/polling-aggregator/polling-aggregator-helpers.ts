@@ -100,13 +100,6 @@ export function partyColor(party: Party): string {
   return "#64748B";
 }
 
-export function partyLabel(party: Party): string {
-  if (party === "D") return "Dem.";
-  if (party === "R") return "Rep.";
-  if (party === "I") return "Ind.";
-  return party;
-}
-
 // ─── Rating styles ─────────────────────────────────────────────────────────────
 
 export function getRatingBg(rating: RaceRating): string {
@@ -138,21 +131,6 @@ export function getRatingPillStyle(rating: RaceRating): CSSProperties {
     background: getRatingBg(rating),
     color: getRatingTextColor(rating),
     borderColor: getRatingBg(rating),
-  };
-}
-
-export function getActiveViewStyle(isActive: boolean): CSSProperties {
-  if (isActive) {
-    return {
-      background: "var(--c97-ink)",
-      color: "var(--c97-surface)",
-      borderColor: "var(--c97-ink)",
-    };
-  }
-  return {
-    borderColor: "var(--c97-rule)",
-    background: "var(--c97-field)",
-    color: "var(--c97-ink-2)",
   };
 }
 

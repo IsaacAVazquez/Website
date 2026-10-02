@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { getAllBlogPostPreviews } from '@/lib/blog';
 import { caseStudiesData } from '@/constants/caseStudies';
 import { logger } from '@/lib/logger';
+import { classifyToolSlug, getToolCategoryLabel } from '@/constants/toolCategories';
 
 interface SearchableContent {
   id: string;
@@ -14,6 +15,92 @@ interface SearchableContent {
   tags?: string[];
   publishedAt?: string;
 }
+
+// url, title, excerpt, category, type (defaults to 'page'). One line per route;
+// tools that have a case study come from caseStudiesData instead.
+const STATIC_PAGES: [string, string, string, string, 'project'?][] = [
+  ['/', 'Isaac Vazquez', 'My background, selected work, newest writing, and the dashboards I built.', 'Site'],
+  ['/about', 'About Isaac Vazquez', 'How I got from campaign data and QA to Berkeley Haas, and the habits I work by.', 'Site'],
+  ['/portfolio', 'Portfolio & Case Studies', 'Portfolio of product case studies, fintech tools, analytics products, and decision-support interfaces.', 'Projects'],
+  ['/dashboards', 'Dashboards', 'The instruments I built and keep running, from football ledgers to markets and spaceflight.', 'Projects'],
+  ['/resume', 'Resume - Isaac Vazquez', 'My résumé, covering Open Progress, Civitech, my 2026 growth internship at Juno, and my Berkeley Haas MBA.', 'Professional'],
+  ['/contact', 'Contact Isaac Vazquez', 'How to reach me about full-time product roles, Haas, or anything on this site.', 'Contact'],
+  ['/writing', 'Writing', 'Writing on PM workflows, agentic AI, fintech product thinking, reliability, and systems design.', 'Writing'],
+  ['/accessibility', 'Accessibility', 'Accessibility commitments and conformance notes for this site, including WCAG references and how to report issues.', 'Site'],
+  ['/now', 'Now', 'What I am focused on right now, from my second year at Haas to what I am building.', 'Site'],
+  ['/changelog', 'Changelog', 'A running log of notable changes, new tools, and updates shipped across the site.', 'Site'],
+  ['/arcade', 'Reactor Arcade', 'Reactor is a neon synthwave reflex game built into the site, a deliberate style experiment where you light the live cell, dodge the decoys, and keep the combo alive.', 'Site'],
+  ['/agent-build-index', 'Agent Build Index', 'Weekly ranking of active public AI agent repositories by measured GitHub star movement.', 'AI & dev tools', 'project'],
+  ['/score-pools', 'Score Pools', 'Exact-score prediction engine for pool play, with market-calibrated scoreline distributions, expected-points pick rankings, and leaderboard-aware recommendations from a checked-in odds snapshot.', 'Sports', 'project'],
+  ['/score-pools/tracker', 'Score Pools Tracker', 'Running score tracker for exact-score prediction pools, with submitted picks scored against results, cumulative totals, and rival comparisons.', 'Sports', 'project'],
+  ['/fantasy-football/trade-calculator', 'Fantasy Football Trade Calculator', 'A preseason one-QB redraft estimate using expert consensus, mock-draft ADP, and league settings.', 'Sports', 'project'],
+  ['/fantasy-football/mock-draft', 'Fantasy Football Mock Draft Simulator', 'A practice draft room against simulated opponents built on the published consensus board and mock-draft ADP.', 'Sports', 'project'],
+  ['/fantasy-football/draft-tracker', 'Fantasy Football Draft Assistant', 'Manual fantasy football draft assistant with snake-order tracking, roster pressure, a room-relative Draft Outlook, and an expected return calculator.', 'Sports', 'project'],
+  ['/fantasy-football/best-ball', 'Best Ball Rankings and Draft Assistant', 'Best ball rankings, room-relative draft value, contest economics, and draft help for Best Ball Mania and other Underdog-style formats.', 'Sports', 'project'],
+  ['/fantasy-football/best-ball/draft-tracker', 'Best Ball Draft Assistant', 'A manual best ball draft tracker with contest specific roster targets, a room-relative Draft Outlook, Best Ball Mania field economics, and expected return math.', 'Sports', 'project'],
+  ['/fantasy-football/weekly', 'Fantasy Football Weekly Rankings', "In-season weekly consensus rankings for flex and quarterback, with each player's opponent, expert range, and how widely he is rostered.", 'Sports', 'project'],
+  ['/fantasy-football/waivers', 'Fantasy Football Waiver Targets', 'In-season waiver adds where the weekly expert consensus rank runs ahead of how widely a player is rostered.', 'Sports', 'project'],
+];
+
+// Search terms a title, excerpt, or case study does not carry (abbreviations,
+// model and provider names, what people actually type). Keyed by route and
+// appended to that route's indexed text.
+const SEARCH_KEYWORDS: Record<string, string> = {
+  '/': 'home portfolio Isaac Vazquez product manager analytics fintech builder Berkeley Bay Area',
+  '/about': 'about Isaac Vazquez background bio product manager analytics civic tech fintech Berkeley',
+  '/portfolio': 'Portfolio case studies product management fintech product analytics decision support AI workflows product tools projects',
+  '/resume': 'Resume product manager QA analytics civic tech fintech product work Berkeley Bay Area',
+  '/contact': 'Contact product manager analytics AI workflows fintech product collaboration Berkeley Bay Area',
+  '/writing': 'Writing blog articles product management agentic AI fintech product reliability systems design',
+  '/accessibility': 'accessibility WCAG conformance contrast keyboard screen reader inclusive design',
+  '/investments': 'Investment research platform fintech product valuation dashboard portfolio tracking equity analysis stocks Investments Fintech Product Portfolio Tracking Equity Analysis',
+  '/fantasy-football': 'Fantasy football rankings FantasyPros consensus tiers PPR half PPR standard scoring overall position QB RB WR TE draft assistant snake draft draft value expected return EV roster composition pick position waiver Fantasy Football Rankings Draft Tools Next.js TypeScript',
+  '/fantasy-football/trade-calculator': 'Fantasy football trade calculator preseason one QB redraft trade estimate expert consensus ECR mock draft ADP PPR half PPR standard league settings roster size lineup player value Fantasy Football Trade Calculator Redraft Rankings',
+  '/fantasy-football/mock-draft': 'Fantasy football mock draft simulator practice draft room simulated opponents snake draft one QB redraft consensus board ADP PPR half PPR standard draft slot strategy rehearsal Fantasy Football Mock Draft Draft Tools Rankings',
+  '/fantasy-football/best-ball': 'Best ball rankings draft assistant draft tracker Underdog Best Ball Mania BBM Puppy Eliminator Weekly Winners Superflex roster construction stacking correlation advance rate tournament strategy draft value expected return EV pick position NFL fantasy football Best Ball Underdog Rankings Draft Tools Fantasy Football',
+  '/news-pulse': 'News Pulse dashboard media analytics RSS aggregation sentiment analysis topic extraction Media Analytics Dashboard News Product Next.js',
+  '/github-trending-pulse': 'GitHub trending pulse open source repositories languages topics developer ecosystem snapshot GitHub Open Source Developer Tools Dashboard',
+  '/agent-build-index': 'AI agents agentic coding open source GitHub stars developer tools skills context MCP weekly trend index AI Agents GitHub Open Source Developer Tools',
+  '/spacex-mission-control': 'SpaceX mission control launches Starship Falcon rockets Dragon space exploration dashboard SpaceX Space Launches Dashboard',
+  '/march-madness-2026': 'March Madness 2026 NCAA tournament bracket basketball college seeds matchups analysis March Madness NCAA Basketball Tournament',
+  '/polling-aggregator': 'Polling aggregator politics elections survey methodology averages political data dashboard Polling Politics Elections Data',
+  '/museum-log': 'museum log art exhibitions visits cultural institutions personal log notes Museums Art Personal',
+  '/mba-internship-notifications': 'MBA internship full-time roles tracker greenhouse lever ashby career digest email recruiting MBA Internships Recruiting Career',
+  '/formula-1': 'Formula 1 F1 racing constructors drivers championship standings season results dashboard Formula 1 F1 Racing Sports Data Dashboard',
+  '/fantasy-formula-1': 'Fantasy Formula 1 F1 optimizer team builder drivers constructors budget model prices projections OpenF1 sports data Fantasy Formula 1 F1 Optimizer Sports Data Dashboard',
+  '/premier-league': 'Premier League soccer football EPL standings fixtures scorers form table England dashboard Premier League Soccer Sports Data Dashboard',
+  '/la-liga': 'La Liga soccer football Spain standings table top scorers assists Real Madrid Barcelona dashboard La Liga Soccer Sports Data Dashboard',
+  '/mlb': 'MLB baseball standings schedule scores divisions American League National League players dashboard MLB Baseball Sports Data Dashboard',
+  '/nba': 'NBA basketball standings scoreboard leaders conferences East West playoffs play-in teams dashboard NBA Basketball Sports Data Dashboard',
+  '/nfl': 'NFL football standings AFC NFC playoffs schedule stat leaders teams weekly dashboard NFL Football Sports Data Dashboard',
+  '/world-cup-2026': 'World Cup 2026 FIFA soccer football groups standings knockout bracket round of 32 schedule fixtures host cities venues United States Canada Mexico dashboard World Cup FIFA Soccer Football Sports Data Dashboard',
+  '/score-pools': 'score pools exact score prediction pick sheet Dixon-Coles scoreline distribution de-vig odds expected points optimizer leaderboard pool scoring predictions markets dashboard Score Pools Predictions Exact Score Dixon-Coles Expected Points Sports Data Dashboard',
+  '/bay-area-transit': 'Bay Area Transit Pulse BART trains lines stations departures advisories elevator outages San Francisco Oakland civic dashboard BART Transit Bay Area Civic Data Dashboard',
+  '/tech-startup-tracker': 'Tech startup tracker private companies valuations funding rounds momentum sectors stages venture capital market intelligence dashboard Startups Venture Capital Valuations Market Intelligence Dashboard',
+  '/fintech-tools/interchange-iq': 'Interchange IQ payments pricing interchange economics processor comparison fintech tool fees Payments Interchange Pricing Fintech Product',
+  '/fintech-tools/budget-planner': 'Budget planner monthly personal finance savings expenses categories income browser local storage Budget Personal Finance Fintech Product',
+  '/fintech-tools/rent-vs-buy': 'Rent vs buy calculator break-even year home affordability mortgage opportunity cost down payment net worth fintech tool personal finance Rent vs Buy Personal Finance Housing Fintech Product',
+  '/golf': 'PGA Tour golf dashboard leaderboard golfer drilldown cut line round movement sports data Next.js TypeScript Golf PGA Tour Sports Data Dashboard Next.js',
+  '/earthquake-pulse': 'earthquake pulse USGS seismic monitor magnitude depth tsunami significant quakes regions distribution global geojson dashboard Next.js TypeScript Earthquakes USGS Data Visualization Dashboard Next.js',
+  '/travel': 'Travel planner trip itinerary vacation planning trip tracker travel journal day-by-day activities browser local storage no account Next.js TypeScript Travel Itinerary Journal Personal Productivity Next.js',
+  '/travel-deals': 'Travel deal lab how to find travel deals cheap flights when to book flights hotel deals points miles award value cents per point trip budget fare price alert booking window optimizer Next.js TypeScript Travel Deals Flights Points & Miles Budgeting Next.js',
+  '/ai-dev-tools': 'AI dev tools coding agents Cursor Claude Code GitHub Copilot Devin Cline OpenCode Kilo Code pricing models GitHub stars release cadence developer tools directory AI Dev Tools Coding Agents Developer Tools Dashboard',
+  '/food-map': 'Food map restaurants curated city guide Austin San Francisco New York New Orleans Los Angeles Miami Atlanta Tokyo Copenhagen San Sebastian curator cuisine filters deep-linkable Austin Food Restaurants City Guide',
+  '/recipe-finder': 'Recipe finder cooking recipes cuisine diet meal ingredients kitchen pantry browser local storage personal Recipes Cooking Food Personal',
+  '/wine-cellar': 'Wine cellar bottles tracker regions varietals vintages tasting notes ratings personal collection browser local storage Wine Cellar Tasting Notes Personal',
+  '/frontier-models': 'Frontier models AI LLM tracker OpenAI Anthropic Google Meta context window pricing modality benchmarks providers release dates AI LLMs Frontier Models Dashboard',
+  '/decision-lab': 'Decision lab decision making weighted scoring criteria options tradeoffs analysis framework presets decision support tool Decision Support Analysis Frameworks Tool',
+  '/enablement-assistant': 'automation enablement assistant quality engineering test automation platform team tooling standards onboarding troubleshooting CI reporting documentation gaps Platform Enablement Quality Engineering Test Automation Tool',
+  '/now': 'now page current focus projects priorities what I am working on status update',
+  '/changelog': 'changelog updates releases new tools shipped changes history site log',
+  '/dashboards': 'dashboards live data tools index sports markets spaceflight civic trackers calculators snapshot refresh',
+  '/fantasy-football/weekly': 'Fantasy football weekly rankings in season consensus flex quarterback opponent expert range rostered start sit Fantasy Football Rankings Weekly',
+  '/fantasy-football/waivers': 'Fantasy football waiver wire targets adds in season consensus rank rostered percentage percentile pickup Fantasy Football Waivers Weekly',
+  '/fantasy-football/draft-tracker': 'Fantasy football draft assistant draft tracker snake order roster pressure Draft Outlook expected return redraft recommendations recap Fantasy Football Draft Tools Redraft',
+  '/fantasy-football/best-ball/draft-tracker': 'Best ball draft assistant draft tracker Underdog contest roster targets Draft Outlook Best Ball Mania expected return Fantasy Football Best Ball Draft Tools',
+  '/score-pools/tracker': 'Score pools tracker exact score prediction pool picks results scoring rules cumulative totals rivals leaderboard Score Pools Prediction Tracker',
+  '/arcade': 'arcade Reactor game synthwave neon reflex reaction combo browser style experiment play',
+};
 
 // Build the searchable corpus: blog posts + project case studies + the
 // remaining curated static page entries. The matcher below stays
@@ -47,6 +134,7 @@ async function getAllSearchableContent(): Promise<SearchableContent[]> {
   // A case study that names a live tool redirects there from
   // /portfolio/<slug>, so its entry points at the tool itself.
   for (const study of Object.values(caseStudiesData)) {
+    const category = getToolCategoryLabel(classifyToolSlug(study.slug));
     content.push({
       id: `project-case-${study.slug}`,
       title: study.title,
@@ -58,674 +146,36 @@ async function getAllSearchableContent(): Promise<SearchableContent[]> {
         study.tools.join(' '),
         study.metrics,
         study.overview?.summary ?? '',
+        category,
       ]
         .filter(Boolean)
         .join(' '),
       url: study.link?.startsWith('/') ? study.link : `/portfolio/${study.slug}`,
       type: 'project',
-      category: 'Portfolio',
+      category,
       tags: study.tools,
     });
   }
 
-  // ---- Curated static page entries --------------------------------------
-  const staticPages: SearchableContent[] = [
-    {
-      id: 'page-home',
-      title: 'Isaac Vazquez',
-      excerpt:
-        'My background, selected work, newest writing, and the dashboards I built.',
-      content:
-        'home portfolio Isaac Vazquez product manager analytics fintech builder Berkeley Bay Area',
-      url: '/',
-      type: 'page',
-      category: 'Site',
-    },
-    {
-      id: 'page-about',
-      title: 'About Isaac Vazquez',
-      excerpt:
-        'How I got from campaign data and QA to Berkeley Haas, and the habits I work by.',
-      content:
-        'about Isaac Vazquez background bio product manager analytics civic tech fintech Berkeley',
-      url: '/about',
-      type: 'page',
-      category: 'Site',
-    },
-    {
-      id: 'page-portfolio',
-      title: 'Portfolio & Case Studies',
-      excerpt:
-        'Portfolio of product case studies, fintech tools, analytics products, and decision-support interfaces.',
-      content:
-        'Portfolio case studies product management fintech product analytics decision support AI workflows product tools projects',
-      url: '/portfolio',
-      type: 'page',
-      category: 'Projects',
-    },
-    {
-      id: 'page-resume',
-      title: 'Resume - Isaac Vazquez',
-      excerpt:
-        'My résumé, covering Open Progress, Civitech, my 2026 growth internship at Juno, and my Berkeley Haas MBA.',
-      content:
-        'Resume product manager QA analytics civic tech fintech product work Berkeley Bay Area',
-      url: '/resume',
-      type: 'page',
-      category: 'Professional',
-    },
-    {
-      id: 'page-contact',
-      title: 'Contact Isaac Vazquez',
-      excerpt:
-        'How to reach me about full-time product roles, Haas, or anything on this site.',
-      content:
-        'Contact product manager analytics AI workflows fintech product collaboration Berkeley Bay Area',
-      url: '/contact',
-      type: 'page',
-      category: 'Contact',
-    },
-    {
-      id: 'page-writing',
-      title: 'Writing',
-      excerpt:
-        'Writing on PM workflows, agentic AI, fintech product thinking, reliability, and systems design.',
-      content:
-        'Writing blog articles product management agentic AI fintech product reliability systems design',
-      url: '/writing',
-      type: 'page',
-      category: 'Writing',
-    },
-    {
-      id: 'page-accessibility',
-      title: 'Accessibility',
-      excerpt:
-        'Accessibility commitments and conformance notes for this site, including WCAG references and how to report issues.',
-      content:
-        'accessibility WCAG conformance contrast keyboard screen reader inclusive design',
-      url: '/accessibility',
-      type: 'page',
-      category: 'Site',
-    },
-    {
-      id: 'page-investments',
-      title: 'Investment Research Platform',
-      excerpt:
-        'Snapshot-backed investment research workspace for valuation review, financial statements, and portfolio tracking.',
-      content:
-        'Investment research platform fintech product valuation dashboard portfolio tracking equity analysis stocks',
-      url: '/investments',
-      type: 'project',
-      category: 'Fintech Product',
-      tags: ['Investments', 'Fintech Product', 'Portfolio Tracking', 'Equity Analysis'],
-    },
-    {
-      id: 'page-fantasy-football',
-      title: 'Fantasy Football Analytics Platform',
-      excerpt:
-        'Snapshot-backed fantasy football rankings with consensus tiers, a room-relative Draft Outlook, and expected return math.',
-      content:
-        'Fantasy football rankings FantasyPros consensus tiers PPR half PPR standard scoring overall position QB RB WR TE draft assistant snake draft draft value expected return EV roster composition pick position waiver',
-      url: '/fantasy-football',
-      type: 'project',
-      category: 'Fantasy Football Analytics',
-      tags: ['Fantasy Football', 'Rankings', 'Draft Tools', 'Next.js', 'TypeScript'],
-    },
-    {
-      id: 'page-fantasy-football-trade-calculator',
-      title: 'Fantasy Football Trade Calculator',
-      excerpt:
-        'A preseason one-QB redraft estimate using expert consensus, mock-draft ADP, and league settings.',
-      content:
-        'Fantasy football trade calculator preseason one QB redraft trade estimate expert consensus ECR mock draft ADP PPR half PPR standard league settings roster size lineup player value',
-      url: '/fantasy-football/trade-calculator',
-      type: 'project',
-      category: 'Fantasy Football Analytics',
-      tags: ['Fantasy Football', 'Trade Calculator', 'Redraft', 'Rankings'],
-    },
-    {
-      id: 'page-fantasy-football-mock-draft',
-      title: 'Fantasy Football Mock Draft Simulator',
-      excerpt:
-        'A practice draft room against simulated opponents built on the published consensus board and mock-draft ADP.',
-      content:
-        'Fantasy football mock draft simulator practice draft room simulated opponents snake draft one QB redraft consensus board ADP PPR half PPR standard draft slot strategy rehearsal',
-      url: '/fantasy-football/mock-draft',
-      type: 'project',
-      category: 'Fantasy Football Analytics',
-      tags: ['Fantasy Football', 'Mock Draft', 'Draft Tools', 'Rankings'],
-    },
-    {
-      id: 'page-fantasy-football-best-ball',
-      title: 'Best Ball Rankings and Draft Assistant',
-      excerpt:
-        'Best ball rankings, room-relative draft value, contest economics, and draft help for Best Ball Mania and other Underdog-style formats.',
-      content:
-        'Best ball rankings draft assistant draft tracker Underdog Best Ball Mania BBM Puppy Eliminator Weekly Winners Superflex roster construction stacking correlation advance rate tournament strategy draft value expected return EV pick position NFL fantasy football',
-      url: '/fantasy-football/best-ball',
-      type: 'project',
-      category: 'Fantasy Football Analytics',
-      tags: ['Best Ball', 'Underdog', 'Rankings', 'Draft Tools', 'Fantasy Football'],
-    },
-    {
-      id: 'page-news-pulse',
-      title: 'News Pulse Dashboard',
-      excerpt:
-        'News media analytics dashboard for comparing cross-outlet framing, topics, and sentiment.',
-      content:
-        'News Pulse dashboard media analytics RSS aggregation sentiment analysis topic extraction',
-      url: '/news-pulse',
-      type: 'project',
-      category: 'Analytics Tools',
-      tags: ['Media Analytics', 'Dashboard', 'News Product', 'Next.js'],
-    },
-    {
-      id: 'page-github-trending',
-      title: 'GitHub Trending Pulse',
-      excerpt:
-        'Snapshot-driven view of trending GitHub repositories segmented by language and topic.',
-      content:
-        'GitHub trending pulse open source repositories languages topics developer ecosystem snapshot',
-      url: '/github-trending-pulse',
-      type: 'project',
-      category: 'Developer Tools',
-      tags: ['GitHub', 'Open Source', 'Developer Tools', 'Dashboard'],
-    },
-    {
-      id: 'page-agent-build-index',
-      title: 'Agent Build Index',
-      excerpt:
-        'Weekly ranking of active public AI agent repositories by measured GitHub star movement.',
-      content:
-        'AI agents agentic coding open source GitHub stars developer tools skills context MCP weekly trend index',
-      url: '/agent-build-index',
-      type: 'project',
-      category: 'Developer Tools',
-      tags: ['AI Agents', 'GitHub', 'Open Source', 'Developer Tools'],
-    },
-    {
-      id: 'page-spacex',
-      title: 'SpaceX Mission Control',
-      excerpt:
-        'Mission control dashboard tracking SpaceX upcoming launches, recent missions, and program metrics.',
-      content:
-        'SpaceX mission control launches Starship Falcon rockets Dragon space exploration dashboard',
-      url: '/spacex-mission-control',
-      type: 'project',
-      category: 'Space',
-      tags: ['SpaceX', 'Space', 'Launches', 'Dashboard'],
-    },
-    {
-      id: 'page-march-madness',
-      title: 'March Madness 2026 Bracket Analysis',
-      excerpt:
-        'Seasonal NCAA tournament workspace for bracket analysis, seed lines, and matchup context.',
-      content:
-        'March Madness 2026 NCAA tournament bracket basketball college seeds matchups analysis',
-      url: '/march-madness-2026',
-      type: 'project',
-      category: 'Sports Data Tools',
-      tags: ['March Madness', 'NCAA', 'Basketball', 'Tournament'],
-    },
-    {
-      id: 'page-polling-aggregator',
-      title: 'Polling Aggregator',
-      excerpt:
-        'Snapshot-driven aggregator for political polling — tracks averages and methodology context.',
-      content:
-        'Polling aggregator politics elections survey methodology averages political data dashboard',
-      url: '/polling-aggregator',
-      type: 'project',
-      category: 'Civic Tech',
-      tags: ['Polling', 'Politics', 'Elections', 'Data'],
-    },
-    {
-      id: 'page-museum-log',
-      title: 'Museum Log',
-      excerpt:
-        'Personal log of museums visited, with notes on exhibitions and lasting impressions.',
-      content:
-        'museum log art exhibitions visits cultural institutions personal log notes',
-      url: '/museum-log',
-      type: 'page',
-      category: 'Personal',
-      tags: ['Museums', 'Art', 'Personal'],
-    },
-    {
-      id: 'page-mba-internship-notifications',
-      title: 'MBA Internship Notifications',
-      excerpt:
-        'Live aggregator of MBA internship and full-time roles across major employers, with email digests.',
-      content:
-        'MBA internship full-time roles tracker greenhouse lever ashby career digest email recruiting',
-      url: '/mba-internship-notifications',
-      type: 'project',
-      category: 'Career Tools',
-      tags: ['MBA', 'Internships', 'Recruiting', 'Career'],
-    },
-    {
-      id: 'page-formula-1',
-      title: 'Formula 1 Pulse',
-      excerpt:
-        'Formula 1 dashboard with race results, championship standings, and constructor visualizations.',
-      content:
-        'Formula 1 F1 racing constructors drivers championship standings season results dashboard',
-      url: '/formula-1',
-      type: 'project',
-      category: 'Sports Data Tools',
-      tags: ['Formula 1', 'F1', 'Racing', 'Sports Data', 'Dashboard'],
-    },
-    {
-      id: 'page-fantasy-formula-1',
-      title: 'Fantasy Formula 1 Optimizer',
-      excerpt:
-        'Fantasy Formula 1 team optimizer with model prices, lineup constraints, locked picks, and local persistence.',
-      content:
-        'Fantasy Formula 1 F1 optimizer team builder drivers constructors budget model prices projections OpenF1 sports data',
-      url: '/fantasy-formula-1',
-      type: 'project',
-      category: 'Sports Data Tools',
-      tags: ['Fantasy Formula 1', 'F1', 'Optimizer', 'Sports Data', 'Dashboard'],
-    },
-    {
-      id: 'page-premier-league',
-      title: 'Premier League Pulse',
-      excerpt:
-        'Premier League dashboard with standings, fixtures, scorer leaderboards, and team form context.',
-      content:
-        'Premier League soccer football EPL standings fixtures scorers form table England dashboard',
-      url: '/premier-league',
-      type: 'project',
-      category: 'Sports Data Tools',
-      tags: ['Premier League', 'Soccer', 'Sports Data', 'Dashboard'],
-    },
-    {
-      id: 'page-la-liga',
-      title: 'La Liga Pulse',
-      excerpt:
-        'La Liga dashboard with standings, title-race context, qualification pressure, and player leaderboards.',
-      content:
-        'La Liga soccer football Spain standings table top scorers assists Real Madrid Barcelona dashboard',
-      url: '/la-liga',
-      type: 'project',
-      category: 'Sports Data Tools',
-      tags: ['La Liga', 'Soccer', 'Sports Data', 'Dashboard'],
-    },
-    {
-      id: 'page-mlb',
-      title: 'MLB Pulse',
-      excerpt:
-        'MLB dashboard with standings, schedule, and player leaderboards across the season.',
-      content:
-        'MLB baseball standings schedule scores divisions American League National League players dashboard',
-      url: '/mlb',
-      type: 'project',
-      category: 'Sports Data Tools',
-      tags: ['MLB', 'Baseball', 'Sports Data', 'Dashboard'],
-    },
-    {
-      id: 'page-nba',
-      title: 'NBA Pulse',
-      excerpt:
-        'NBA dashboard with conference standings, scoreboard, leaders, and per-team schedules.',
-      content:
-        'NBA basketball standings scoreboard leaders conferences East West playoffs play-in teams dashboard',
-      url: '/nba',
-      type: 'project',
-      category: 'Sports Data Tools',
-      tags: ['NBA', 'Basketball', 'Sports Data', 'Dashboard'],
-    },
-    {
-      id: 'page-nfl',
-      title: 'NFL Pulse',
-      excerpt:
-        'NFL dashboard with conference standings, weekly schedule, and stat leaders.',
-      content:
-        'NFL football standings AFC NFC playoffs schedule stat leaders teams weekly dashboard',
-      url: '/nfl',
-      type: 'project',
-      category: 'Sports Data Tools',
-      tags: ['NFL', 'Football', 'Sports Data', 'Dashboard'],
-    },
-    {
-      id: 'page-world-cup-2026',
-      title: 'World Cup Pulse',
-      excerpt:
-        '2026 FIFA World Cup dashboard with group standings, the 32-team knockout bracket, the full match schedule, and host venues across the United States, Canada, and Mexico.',
-      content:
-        'World Cup 2026 FIFA soccer football groups standings knockout bracket round of 32 schedule fixtures host cities venues United States Canada Mexico dashboard',
-      url: '/world-cup-2026',
-      type: 'project',
-      category: 'Sports Data Tools',
-      tags: ['World Cup', 'FIFA', 'Soccer', 'Football', 'Sports Data', 'Dashboard'],
-    },
-    {
-      id: 'page-score-pools',
-      title: 'Score Pools',
-      excerpt:
-        'Exact-score prediction engine for pool play, with market-calibrated scoreline distributions, expected-points pick rankings, and leaderboard-aware recommendations from a checked-in odds snapshot.',
-      content:
-        'score pools exact score prediction pick sheet Dixon-Coles scoreline distribution de-vig odds expected points optimizer leaderboard pool scoring predictions markets dashboard',
-      url: '/score-pools',
-      type: 'project',
-      category: 'Sports Data Tools',
-      tags: ['Score Pools', 'Predictions', 'Exact Score', 'Dixon-Coles', 'Expected Points', 'Sports Data', 'Dashboard'],
-    },
-    {
-      id: 'page-bay-area-transit',
-      title: 'Bay Area Transit Pulse',
-      excerpt:
-        'Snapshot-backed BART dashboard with every line, station-by-station departure boards, and live service advisories.',
-      content:
-        'Bay Area Transit Pulse BART trains lines stations departures advisories elevator outages San Francisco Oakland civic dashboard',
-      url: '/bay-area-transit',
-      type: 'project',
-      category: 'Civic Data Tools',
-      tags: ['BART', 'Transit', 'Bay Area', 'Civic Data', 'Dashboard'],
-    },
-    {
-      id: 'page-tech-startup-tracker',
-      title: 'Tech Startup Tracker',
-      excerpt:
-        'Curated tracker of notable private tech companies with valuations, funding rounds, momentum scores, and sector and stage segments.',
-      content:
-        'Tech startup tracker private companies valuations funding rounds momentum sectors stages venture capital market intelligence dashboard',
-      url: '/tech-startup-tracker',
-      type: 'project',
-      category: 'Market Intelligence Tools',
-      tags: ['Startups', 'Venture Capital', 'Valuations', 'Market Intelligence', 'Dashboard'],
-    },
-    {
-      id: 'page-interchange-iq',
-      title: 'Interchange IQ',
-      excerpt:
-        'Payments fee analyzer for comparing flat-rate and interchange-plus processor economics.',
-      content:
-        'Interchange IQ payments pricing interchange economics processor comparison fintech tool fees',
-      url: '/fintech-tools/interchange-iq',
-      type: 'project',
-      category: 'Fintech Product',
-      tags: ['Payments', 'Interchange', 'Pricing', 'Fintech Product'],
-    },
-    {
-      id: 'page-budget-planner',
-      title: 'Budget Planner',
-      excerpt:
-        'Browser-persisted monthly budget planner for income, savings goals, and expense categories.',
-      content:
-        'Budget planner monthly personal finance savings expenses categories income browser local storage',
-      url: '/fintech-tools/budget-planner',
-      type: 'project',
-      category: 'Fintech Product',
-      tags: ['Budget', 'Personal Finance', 'Fintech Product'],
-    },
-    {
-      id: 'page-rent-vs-buy',
-      title: 'Rent vs. Buy Calculator',
-      excerpt:
-        'Month-by-month rent-vs-buy net-worth model with opportunity-cost accounting and a break-even year.',
-      content:
-        'Rent vs buy calculator break-even year home affordability mortgage opportunity cost down payment net worth fintech tool personal finance',
-      url: '/fintech-tools/rent-vs-buy',
-      type: 'project',
-      category: 'Fintech Product',
-      tags: ['Rent vs Buy', 'Personal Finance', 'Housing', 'Fintech Product'],
-    },
-    {
-      id: 'page-pga-tour-pulse',
-      title: 'PGA Tour Pulse',
-      excerpt:
-        'Snapshot-backed golf tournament dashboard for leaderboard scanning and golfer drilldowns.',
-      content:
-        'PGA Tour golf dashboard leaderboard golfer drilldown cut line round movement sports data Next.js TypeScript',
-      url: '/golf',
-      type: 'project',
-      category: 'Sports Data Tools',
-      tags: ['Golf', 'PGA Tour', 'Sports Data', 'Dashboard', 'Next.js'],
-    },
-    {
-      id: 'page-earthquake-pulse',
-      title: 'Earthquake Pulse',
-      excerpt:
-        'Snapshot-backed global earthquake monitor for the past 24 hours of seismic activity, significant worldwide quakes, and regional breakdowns.',
-      content:
-        'earthquake pulse USGS seismic monitor magnitude depth tsunami significant quakes regions distribution global geojson dashboard Next.js TypeScript',
-      url: '/earthquake-pulse',
-      type: 'project',
-      category: 'Data Tools',
-      tags: ['Earthquakes', 'USGS', 'Data Visualization', 'Dashboard', 'Next.js'],
-    },
-    {
-      id: 'page-travel-planner',
-      title: 'Travel Planner',
-      excerpt:
-        'Browser-persisted travel planner for trip dates, day-by-day itineraries, stop check-off, and per-day journaling.',
-      content:
-        'Travel planner trip itinerary vacation planning trip tracker travel journal day-by-day activities browser local storage no account Next.js TypeScript',
-      url: '/travel',
-      type: 'project',
-      category: 'Personal Productivity Tools',
-      tags: ['Travel', 'Itinerary', 'Journal', 'Personal Productivity', 'Next.js'],
-    },
-    {
-      id: 'page-travel-deal-lab',
-      title: 'Travel Deal Lab',
-      excerpt:
-        'Travel cost optimizer: when to book, whether a fare or award is a deal, a budget split, and a curated playbook and toolkit for finding deals on flights and hotels.',
-      content:
-        'Travel deal lab how to find travel deals cheap flights when to book flights hotel deals points miles award value cents per point trip budget fare price alert booking window optimizer Next.js TypeScript',
-      url: '/travel-deals',
-      type: 'project',
-      category: 'Personal Productivity Tools',
-      tags: ['Travel', 'Deals', 'Flights', 'Points & Miles', 'Budgeting', 'Next.js'],
-    },
-    {
-      id: 'page-ai-dev-tools',
-      title: 'AI Dev Tool Ecosystem',
-      excerpt:
-        'Directory of AI coding and agent tools with pricing tiers, model support, GitHub stars, release cadence, and deep-linkable filters.',
-      content:
-        'AI dev tools coding agents Cursor Claude Code GitHub Copilot Devin Cline OpenCode Kilo Code pricing models GitHub stars release cadence developer tools directory',
-      url: '/ai-dev-tools',
-      type: 'project',
-      category: 'Developer Tools',
-      tags: ['AI Dev Tools', 'Coding Agents', 'Developer Tools', 'Dashboard'],
-    },
-    {
-      id: 'page-food-map',
-      title: 'Food Map',
-      excerpt:
-        'A curated, deep-linkable map of where to eat across ten cities, starting with the Austin restaurants I send people to first, filterable by city, curator, and cuisine.',
-      content:
-        'Food map restaurants curated city guide Austin San Francisco New York New Orleans Los Angeles Miami Atlanta Tokyo Copenhagen San Sebastian curator cuisine filters deep-linkable',
-      url: '/food-map',
-      type: 'project',
-      category: 'Personal',
-      tags: ['Austin', 'Food', 'Restaurants', 'City Guide'],
-    },
-    {
-      id: 'page-recipe-finder',
-      title: 'Recipe Finder',
-      excerpt:
-        'Browse a curated recipe collection filterable by cuisine, diet, meal, and the ingredients you already have on hand.',
-      content:
-        'Recipe finder cooking recipes cuisine diet meal ingredients kitchen pantry browser local storage personal',
-      url: '/recipe-finder',
-      type: 'project',
-      category: 'Personal',
-      tags: ['Recipes', 'Cooking', 'Food', 'Personal'],
-    },
-    {
-      id: 'page-wine-cellar',
-      title: 'Wine Cellar',
-      excerpt:
-        'Browser-persisted wine cellar log for tracking bottles, regions, vintages, and tasting notes.',
-      content:
-        'Wine cellar bottles tracker regions varietals vintages tasting notes ratings personal collection browser local storage',
-      url: '/wine-cellar',
-      type: 'project',
-      category: 'Personal',
-      tags: ['Wine', 'Cellar', 'Tasting Notes', 'Personal'],
-    },
-    {
-      id: 'page-frontier-models',
-      title: 'Frontier Models Tracker',
-      excerpt:
-        'Curated tracker of frontier AI models across providers — context windows, pricing, modalities, and release timing.',
-      content:
-        'Frontier models AI LLM tracker OpenAI Anthropic Google Meta context window pricing modality benchmarks providers release dates',
-      url: '/frontier-models',
-      type: 'project',
-      category: 'AI Tools',
-      tags: ['AI', 'LLMs', 'Frontier Models', 'Dashboard'],
-    },
-    {
-      id: 'page-decision-lab',
-      title: 'Decision Lab',
-      excerpt:
-        'Interactive decision-support workspace for weighing options against criteria with transparent, adjustable scoring.',
-      content:
-        'Decision lab decision making weighted scoring criteria options tradeoffs analysis framework presets decision support tool',
-      url: '/decision-lab',
-      type: 'project',
-      category: 'Decision Tools',
-      tags: ['Decision Support', 'Analysis', 'Frameworks', 'Tool'],
-    },
-    {
-      id: 'page-automation-enablement-assistant',
-      title: 'Automation Enablement Assistant',
-      excerpt:
-        'Interactive platform enablement tool for test stack recommendations, onboarding plans, troubleshooting, escalation handoffs, and documentation-gap reporting.',
-      content:
-        'automation enablement assistant quality engineering test automation platform team tooling standards onboarding troubleshooting CI reporting documentation gaps',
-      url: '/enablement-assistant',
-      type: 'project',
-      category: 'Decision Tools',
-      tags: ['Platform Enablement', 'Quality Engineering', 'Test Automation', 'Tool'],
-    },
-    {
-      id: 'page-now',
-      title: 'Now',
-      excerpt:
-        'What I am focused on right now, from my second year at Haas to what I am building.',
-      content:
-        'now page current focus projects priorities what I am working on status update',
-      url: '/now',
-      type: 'page',
-      category: 'Site',
-    },
-    {
-      id: 'page-changelog',
-      title: 'Changelog',
-      excerpt:
-        'A running log of notable changes, new tools, and updates shipped across the site.',
-      content:
-        'changelog updates releases new tools shipped changes history site log',
-      url: '/changelog',
-      type: 'page',
-      category: 'Site',
-    },
-    {
-      id: 'page-dashboards',
-      title: 'Dashboards',
-      excerpt:
-        'The instruments I built and keep running, from football ledgers to markets and spaceflight.',
-      content:
-        'dashboards live data tools index sports markets spaceflight civic trackers calculators snapshot refresh',
-      url: '/dashboards',
-      type: 'page',
-      category: 'Projects',
-    },
-    {
-      id: 'page-fantasy-football-weekly',
-      title: 'Fantasy Football Weekly Rankings',
-      excerpt:
-        "In-season weekly consensus rankings for flex and quarterback, with each player's opponent, expert range, and how widely he is rostered.",
-      content:
-        'Fantasy football weekly rankings in season consensus flex quarterback opponent expert range rostered start sit',
-      url: '/fantasy-football/weekly',
-      type: 'project',
-      category: 'Fantasy Football Analytics',
-      tags: ['Fantasy Football', 'Rankings', 'Weekly'],
-    },
-    {
-      id: 'page-fantasy-football-waivers',
-      title: 'Fantasy Football Waiver Targets',
-      excerpt:
-        'In-season waiver adds where the weekly expert consensus rank runs ahead of how widely a player is rostered.',
-      content:
-        'Fantasy football waiver wire targets adds in season consensus rank rostered percentage percentile pickup',
-      url: '/fantasy-football/waivers',
-      type: 'project',
-      category: 'Fantasy Football Analytics',
-      tags: ['Fantasy Football', 'Waivers', 'Weekly'],
-    },
-    {
-      id: 'page-fantasy-football-draft-tracker',
-      title: 'Fantasy Football Draft Assistant',
-      excerpt:
-        'Manual fantasy football draft assistant with snake-order tracking, roster pressure, a room-relative Draft Outlook, and an expected return calculator.',
-      content:
-        'Fantasy football draft assistant draft tracker snake order roster pressure Draft Outlook expected return redraft recommendations recap',
-      url: '/fantasy-football/draft-tracker',
-      type: 'project',
-      category: 'Fantasy Football Analytics',
-      tags: ['Fantasy Football', 'Draft Tools', 'Redraft'],
-    },
-    {
-      id: 'page-best-ball-draft-tracker',
-      title: 'Best Ball Draft Assistant',
-      excerpt:
-        'A manual best ball draft tracker with contest specific roster targets, a room-relative Draft Outlook, Best Ball Mania field economics, and expected return math.',
-      content:
-        'Best ball draft assistant draft tracker Underdog contest roster targets Draft Outlook Best Ball Mania expected return',
-      url: '/fantasy-football/best-ball/draft-tracker',
-      type: 'project',
-      category: 'Fantasy Football Analytics',
-      tags: ['Fantasy Football', 'Best Ball', 'Draft Tools'],
-    },
-    {
-      id: 'page-score-pools-tracker',
-      title: 'Score Pools Tracker',
-      excerpt:
-        'Running score tracker for exact-score prediction pools, with submitted picks scored against results, cumulative totals, and rival comparisons.',
-      content:
-        'Score pools tracker exact score prediction pool picks results scoring rules cumulative totals rivals leaderboard',
-      url: '/score-pools/tracker',
-      type: 'project',
-      category: 'Decision Tools',
-      tags: ['Score Pools', 'Prediction', 'Tracker'],
-    },
-    {
-      id: 'page-arcade',
-      title: 'Reactor Arcade',
-      excerpt:
-        'Reactor is a neon synthwave reflex game built into the site, a deliberate style experiment where you light the live cell, dodge the decoys, and keep the combo alive.',
-      content:
-        'arcade Reactor game synthwave neon reflex reaction combo browser style experiment play',
-      url: '/arcade',
-      type: 'page',
-      category: 'Site',
-    },
-  ];
+  // ---- Pages with no case study -----------------------------------------
+  // Tools with a case study are indexed above, so a URL already in the corpus
+  // is skipped here rather than listed twice.
+  for (const [url, title, excerpt, category, type = 'page'] of STATIC_PAGES) {
+    if (content.some((item) => item.url === url)) continue;
+    content.push({
+      id: `page-${url.slice(1).replace(/\//g, '-') || 'home'}`,
+      title,
+      excerpt,
+      content: `${title} ${excerpt} ${category}`,
+      url,
+      type,
+      category,
+    });
+  }
 
-  // De-duplicate. A tool can be indexed already as a case study, under the
-  // same URL or under the same title. The static entry carries the curated
-  // category and keywords, so it takes the case study's place, and the result
-  // list never shows a tool twice.
-  const norm = (s: string) => s.trim().toLowerCase().replace(/\s+/g, ' ');
-
-  for (const page of staticPages) {
-    const titleKey = norm(page.title);
-    const existingIndex = content.findIndex(
-      (item) => item.url === page.url || norm(item.title) === titleKey
-    );
-
-    if (existingIndex === -1) {
-      content.push(page);
-    } else if (content[existingIndex].id.startsWith('project-case-')) {
-      content[existingIndex] = page;
-    }
+  for (const item of content) {
+    const keywords = SEARCH_KEYWORDS[item.url];
+    if (keywords) item.content += ` ${keywords}`;
   }
 
   return content;

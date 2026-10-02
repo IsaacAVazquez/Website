@@ -2,15 +2,12 @@ import {
   FANTASY_TRADE_MAX_PLAYERS_PER_SIDE,
   FANTASY_TRADE_PERSISTENCE_VERSION,
   createFantasyTradePersistenceState,
-  getFantasyTradePersistenceSnapshot,
-  getFantasyTradePersistenceStatus,
   getFantasyTradeStorageKey,
   parseFantasyTradePersistenceState,
   readFantasyTradePersistence,
   repairFantasyTradePersistenceState,
   repairFantasyTradePlayerIds,
   serializeFantasyTradePersistenceState,
-  subscribeFantasyTradePersistence,
   writeFantasyTradePersistence,
 } from "@/lib/fantasyTradePersistence";
 import { resetBrowserStorageMemory } from "@/lib/browserStorage";
@@ -133,26 +130,18 @@ describe("fantasy trade persistence", () => {
     ).toThrow(TypeError);
   });
 
-  it("reads, writes, snapshots, and notifies same-tab subscribers", () => {
-    const listener = jest.fn();
-    const unsubscribe = subscribeFantasyTradePersistence(context, listener);
+  it("reads back a written state", () => {
     const state = createFantasyTradePersistenceState(context, {
       givePlayerIds: ["alpha"],
       getPlayerIds: ["bravo"],
     });
 
     expect(writeFantasyTradePersistence(state)).toBe("persistent");
-    expect(listener).toHaveBeenCalledTimes(1);
     expect(readFantasyTradePersistence(context)).toEqual({
       state,
       persistenceStatus: "persistent",
       source: "valid",
     });
-    expect(parseFantasyTradePersistenceState(getFantasyTradePersistenceSnapshot(context)))
-      .toEqual(state);
-    expect(getFantasyTradePersistenceStatus(context)).toBe("persistent");
-
-    unsubscribe();
   });
 
   it("returns a current-model empty fallback without overwriting invalid storage", () => {

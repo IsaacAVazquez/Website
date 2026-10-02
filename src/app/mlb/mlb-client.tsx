@@ -43,6 +43,7 @@ import "./mlb.css";
 import { useRouteSync } from "@/hooks/useRouteSync";
 import { useCachedSnapshot } from "@/hooks/useCachedSnapshot";
 import { formatFixed } from "@/components/football/fixtureFormat";
+import { groupBy } from "@/lib/utils";
 
 interface MlbClientProps {
   initialState: MlbRouteState;
@@ -212,13 +213,9 @@ export function MlbClient({ initialState, summary, initialTeamSnapshot }: MlbCli
   }
 
   const groupedStandings = useMemo(() => {
-    const groups = new Map<string, MlbStandingsRow[]>();
-    for (const row of visibleStandings) {
-      const key = routeState.view === "wildcard" ? `${row.league} Wild Card` : row.division;
-      const list = groups.get(key) ?? [];
-      list.push(row);
-      groups.set(key, list);
-    }
+    const groups = groupBy(visibleStandings, (row) =>
+      routeState.view === "wildcard" ? `${row.league} Wild Card` : row.division
+    );
     return Array.from(groups.entries());
   }, [visibleStandings, routeState.view]);
 

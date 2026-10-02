@@ -4,18 +4,13 @@
 import {
   assertBestBallSourceScoring,
   fetchBestBallRankingsBoard,
-  fetchBestBallSuperflexRankingsBoard,
   getBestBallRefreshFallback,
   getExpectedBestBallSeason,
   parseBestBallAdpPayload,
   parseBestBallSchedulePayload,
 } from "@/lib/bestBallSource";
-import { FANTASY_PROS_OFFICIAL_API_SOURCE } from "@/lib/fantasyProsPublicSource";
 
-const originalFantasyProsApiKey = process.env.FANTASYPROS_API_KEY;
-const originalFantasyProsSource = process.env.FANTASYPROS_SOURCE;
-
-function officialRankingsPayload(options: {
+function rankingsPayload(options: {
   position: "ALL" | "OP";
   scoring: "PPR" | "HALF";
   rankingType: "BEST" | "DRAFT";
@@ -50,12 +45,13 @@ function officialRankingsPayload(options: {
 
   return {
     sport: "NFL",
+    type: `Best Ball ${options.scoring}`,
     ranking_type_name: options.rankingType,
     year: "2026",
     week: "0",
     position_id: options.position,
     scoring: options.scoring,
-    filters: null,
+    filters: [],
     count: players.length,
     total_experts: options.rankingType === "BEST" ? 6 : 12,
     last_updated: "8/11",
@@ -64,35 +60,20 @@ function officialRankingsPayload(options: {
   };
 }
 
-function jsonResponse(body: unknown): Response {
+function htmlResponse(body: unknown): Response {
   return {
     ok: true,
     status: 200,
     statusText: "OK",
     headers: new Headers(),
-    json: async () => body,
+    text: async () => `<script>var ecrData = ${JSON.stringify(body)};</script>`,
   } as Response;
 }
 
 describe("best ball public sources", () => {
-  beforeEach(() => {
-    delete process.env.FANTASYPROS_API_KEY;
-    delete process.env.FANTASYPROS_SOURCE;
-  });
-
   afterEach(() => {
     jest.restoreAllMocks();
     jest.useRealTimers();
-    if (originalFantasyProsApiKey === undefined) {
-      delete process.env.FANTASYPROS_API_KEY;
-    } else {
-      process.env.FANTASYPROS_API_KEY = originalFantasyProsApiKey;
-    }
-    if (originalFantasyProsSource === undefined) {
-      delete process.env.FANTASYPROS_SOURCE;
-    } else {
-      process.env.FANTASYPROS_SOURCE = originalFantasyProsSource;
-    }
   });
 
   it("keeps January and February attached to the season that began the prior year", () => {
@@ -107,68 +88,6 @@ describe("best ball public sources", () => {
     expect(() => assertBestBallSourceScoring("HALF", "HALF")).not.toThrow();
   });
 
-  it("maps standard best ball to BEST/ALL and Superflex to DRAFT/OP on the official API", async () => {
-    jest.useFakeTimers();
-    jest.setSystemTime(new Date("2026-08-11T12:00:00.000Z"));
-    process.env.FANTASYPROS_SOURCE = "official-api";
-    process.env.FANTASYPROS_API_KEY = "best-ball-test-key";
-    const fetchMock = jest
-      .spyOn(global, "fetch")
-      .mockImplementation(async (input) => {
-        const url = new URL(String(input));
-        const position = url.searchParams.get("position");
-        const scoring = url.searchParams.get("scoring");
-        const rankingType = url.searchParams.get("type");
-        if (
-          (position !== "ALL" && position !== "OP") ||
-          (scoring !== "PPR" && scoring !== "HALF") ||
-          (rankingType !== "BEST" && rankingType !== "DRAFT")
-        ) {
-          throw new Error(`Unexpected FantasyPros request ${url}`);
-        }
-        return jsonResponse(
-          officialRankingsPayload({ position, scoring, rankingType })
-        );
-      });
-
-    const standard = await fetchBestBallRankingsBoard();
-    const superflex = await fetchBestBallSuperflexRankingsBoard();
-
-    expect(fetchMock).toHaveBeenCalledTimes(2);
-    const standardUrl = new URL(String(fetchMock.mock.calls[0][0]));
-    const superflexUrl = new URL(String(fetchMock.mock.calls[1][0]));
-    expect(Object.fromEntries(standardUrl.searchParams)).toEqual({
-      position: "ALL",
-      scoring: "PPR",
-      type: "BEST",
-      week: "0",
-    });
-    expect(Object.fromEntries(superflexUrl.searchParams)).toEqual({
-      position: "OP",
-      scoring: "HALF",
-      type: "DRAFT",
-      week: "0",
-    });
-    for (const [, init] of fetchMock.mock.calls) {
-      expect(init?.headers).toMatchObject({
-        Accept: "application/json",
-        "x-api-key": "best-ball-test-key",
-      });
-    }
-    expect(standard).toMatchObject({
-      season: 2026,
-      sourceLabel: FANTASY_PROS_OFFICIAL_API_SOURCE,
-      expertCount: 6,
-    });
-    expect(superflex).toMatchObject({
-      season: 2026,
-      sourceLabel: FANTASY_PROS_OFFICIAL_API_SOURCE,
-      expertCount: 12,
-    });
-    expect(standard.players).toHaveLength(250);
-    expect(superflex.players).toHaveLength(250);
-  });
-
   it.each([
     {
       label: "accepts a board whose consensus rank agrees with its own expert range",
@@ -181,9 +100,7 @@ describe("best ball public sources", () => {
   ])("$label", async ({ omitEveryThird }) => {
     jest.useFakeTimers();
     jest.setSystemTime(new Date("2026-09-07T12:00:00.000Z"));
-    process.env.FANTASYPROS_SOURCE = "official-api";
-    process.env.FANTASYPROS_API_KEY = "best-ball-test-key";
-    const payload = officialRankingsPayload({ position: "ALL", scoring: "PPR", rankingType: "BEST" });
+    const payload = rankingsPayload({ position: "ALL", scoring: "PPR", rankingType: "BEST" });
     payload.total_experts = 4;
     // The 2026-09-06 shape: three of four experts rank the player at the top
     // while the fourth omits him, so the published average and range stay at
@@ -201,7 +118,7 @@ describe("best ball public sources", () => {
         tier: omitted ? 7 : player.tier,
       };
     });
-    jest.spyOn(global, "fetch").mockImplementation(async () => jsonResponse(payload));
+    jest.spyOn(global, "fetch").mockImplementation(async () => htmlResponse(payload));
 
     if (omitEveryThird) {
       await expect(fetchBestBallRankingsBoard()).rejects.toThrow(

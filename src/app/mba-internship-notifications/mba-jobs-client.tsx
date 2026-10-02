@@ -29,12 +29,8 @@ import {
   Upload,
   X,
 } from "lucide-react";
-import {
-  EditorialPillButton,
-  StatusPanel,
-  UtilityStrip,
-  getPillStyle,
-} from "@/components/editorial";
+import { EditorialPillButton, getPillStyle } from "@/components/editorial/EditorialPillButton";
+import { StatusPanel } from "@/components/editorial/StatusPanel";
 import { ChevronDown } from "lucide-react";
 import { Catalog97ProjectHero } from "@/components/catalog97/Catalog97ProjectHero";
 import { PROJECT_PRESS } from "@/constants/projectPress";
@@ -58,7 +54,8 @@ import {
 import { useMBAApplications } from "@/hooks/useMBAApplications";
 import { useMBAJobs } from "@/hooks/useMBAJobs";
 import { useClientNow } from "@/hooks/useClientNow";
-import { UPDATED_AT_FORMATTER } from "@/lib/date-formatters";
+import { UPDATED_AT_FORMATTER, toLocalDateKey as getTodayDateKey } from "@/lib/date-formatters";
+import { downloadFile as downloadTextFile } from "@/lib/downloadFile";
 import { MBA_COMPANIES, MBA_COMPANY_MAP } from "@/constants/mba-companies";
 import {
   MBA_ROLE_FAMILY_LABELS,
@@ -484,28 +481,11 @@ function hasActiveFilters(state: MBAJobsSearchState): boolean {
   );
 }
 
-function getTodayDateKey(now = new Date()): string {
-  const year = now.getFullYear();
-  const month = String(now.getMonth() + 1).padStart(2, "0");
-  const day = String(now.getDate()).padStart(2, "0");
-  return `${year}-${month}-${day}`;
-}
-
 function formatDateKey(value: string | null): string {
   if (!value) return "";
   const date = new Date(`${value}T00:00:00`);
   if (Number.isNaN(date.getTime())) return value;
   return DATE_KEY_FORMATTER.format(date);
-}
-
-function downloadTextFile(filename: string, content: string, type: string) {
-  const blob = new Blob([content], { type });
-  const url = URL.createObjectURL(blob);
-  const anchor = document.createElement("a");
-  anchor.href = url;
-  anchor.download = filename;
-  anchor.click();
-  URL.revokeObjectURL(url);
 }
 
 // ---------------------------------------------------------------------------
@@ -2552,7 +2532,6 @@ export function MBAJobsClient({
                 message={error}
                 tone="error"
                 icon={<CircleAlert className="h-5 w-5" aria-hidden="true" />}
-                statusRole="alert"
               />
             ) : displayJobs.length === 0 ? (
               <StatusPanel
@@ -2626,10 +2605,21 @@ export function MBAJobsClient({
 
           {!isLoading && !error && (
             <div className="flex justify-center pb-2">
-              <UtilityStrip>
-                {visibleJobs.length} of {displayJobs.length} role{displayJobs.length !== 1 ? "s" : ""} shown ·{" "}
-                {formatFetchedAt(lastFetchedAt)} · Polls every 30 min
-              </UtilityStrip>
+              <div
+                style={{
+                  padding: "var(--c97-sp-1) var(--c97-sp-2)",
+                  background: "var(--c97-panel)",
+                  border: "1px solid var(--c97-rule)",
+                }}
+              >
+                <p
+                  className="text-sm leading-6"
+                  style={{ margin: 0, fontFamily: "var(--c97-font-body)", color: "var(--c97-ink-2)" }}
+                >
+                  {visibleJobs.length} of {displayJobs.length} role{displayJobs.length !== 1 ? "s" : ""} shown ·{" "}
+                  {formatFetchedAt(lastFetchedAt)} · Polls every 30 min
+                </p>
+              </div>
             </div>
           )}
         </>

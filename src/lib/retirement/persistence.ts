@@ -11,11 +11,7 @@ import type {
   RetirementTaxRates,
   WithdrawalStrategy,
 } from "./types";
-import { isRecord, boundedNumber } from "@/lib/utils";
-
-function enumValue<T extends string>(value: unknown, allowed: readonly T[], fallback: T): T {
-  return typeof value === "string" && allowed.includes(value as T) ? (value as T) : fallback;
-}
+import { isRecord, boundedNumber, enumValue } from "@/lib/utils";
 
 const FILING_STATUSES = ["single", "married"] as const satisfies readonly FilingStatus[];
 const ACCOUNT_TYPES = ["taxable", "traditional", "roth", "hsa"] as const satisfies readonly AccountType[];

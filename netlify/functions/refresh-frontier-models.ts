@@ -1,11 +1,10 @@
-import type { Config } from "@netlify/functions";
 import { frontierModelsSnapshot } from "../../src/data/frontierModelsSnapshot";
 import {
   applyLiveModelFacts,
   fetchLiveModelFacts,
   FRONTIER_MODELS_BLOB_KEY,
 } from "../../src/lib/frontierModelsLive";
-import { writeSnapshotBlob } from "../../src/lib/snapshotBlobStore";
+import { writeSnapshotBlob } from "../../src/lib/netlifyBlobs";
 
 // Daily fact check for the frontier-models catalog — the pilot for the
 // blob-backed refresh lane. It fetches the keyless models.dev and OpenRouter
@@ -33,7 +32,7 @@ export default async () => {
   });
 };
 
-export const config: Config = {
+export const config = {
   // Daily at 07:30 UTC, staggered off the GitHub Actions snapshot crons.
   schedule: "30 7 * * *",
-};
+} satisfies { schedule: string };

@@ -20,7 +20,7 @@ const directories: string[] = [];
 async function writePriorBoard(overrides: Partial<GolfTournament>): Promise<string> {
   const directory = await fs.mkdtemp(path.join(os.tmpdir(), "golf-snapshot-"));
   directories.push(directory);
-  const outPath = path.join(directory, "golfSnapshot.ts");
+  const outPath = path.join(directory, "golfSnapshot.json");
   const prior: GolfSnapshot = {
     ...golfSnapshot,
     summary: {
@@ -34,7 +34,7 @@ async function writePriorBoard(overrides: Partial<GolfTournament>): Promise<stri
       },
     },
   };
-  await fs.writeFile(outPath, `export const golfSnapshot: GolfSnapshot = ${JSON.stringify(prior)};\n`);
+  await fs.writeFile(outPath, JSON.stringify(prior, null, 2) + "\n");
   return outPath;
 }
 
@@ -72,11 +72,11 @@ describe("golf off-week verification", () => {
     { status: "Final" },
   ])("re-verifies a recent final board without changing its scores (%j)", async (overrides) => {
     const outPath = await writePriorBoard(overrides);
-    const prior = readGeneratedSnapshot<GolfSnapshot>(outPath, "golfSnapshot")!;
+    const prior = readGeneratedSnapshot<GolfSnapshot>(outPath)!;
 
     await buildGolfSnapshot(outPath, now);
 
-    const next = readGeneratedSnapshot<GolfSnapshot>(outPath, "golfSnapshot")!;
+    const next = readGeneratedSnapshot<GolfSnapshot>(outPath)!;
     expect(next.summary.tournament?.generatedAt).toBe(now.toISOString());
     expect(next.summary.leaderboard).toEqual(prior.summary.leaderboard);
     expect(next.playerSnapshots).toEqual(prior.playerSnapshots);

@@ -18,9 +18,8 @@ import {
   groupFixturesByMatchday,
   LeaderLedger,
 } from "@/components/football";
-// The drawer is the one football component that needs framer-motion, so it
-// stays out of the barrel, which four other routes share, and it loads the
-// first time a club is opened.
+// The drawer stays out of the barrel, which four other routes share, and
+// loads the first time a club is opened.
 import { DeferredClubDrawer } from "@/components/football/DeferredClubDrawer";
 import type { ClubDrawerClub, ClubDrawerScorer } from "@/components/football/ClubDrawer";
 import { PointsLadder } from "@/components/football/PointsLadderChart";

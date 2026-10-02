@@ -3,6 +3,7 @@
 import React from "react";
 import { TerminalPanel } from "./TerminalPanel";
 import type { EnhancedHolding } from "@/types/investment";
+import { formatPercent as signedPercent } from "@/lib/investmentFormatting";
 
 interface Props {
   position: EnhancedHolding;
@@ -21,12 +22,6 @@ function signedCurrency(n: number | undefined): string {
   if (n === undefined || !Number.isFinite(n)) return "—";
   const sign = n > 0 ? "+" : n < 0 ? "−" : "";
   return `${sign}${currency(Math.abs(n))}`;
-}
-
-function signedPercent(n: number | undefined): string {
-  if (n === undefined || !Number.isFinite(n)) return "—";
-  const sign = n > 0 ? "+" : n < 0 ? "−" : "";
-  return `${sign}${Math.abs(n).toFixed(2)}%`;
 }
 
 function shareLabel(n: number): string {

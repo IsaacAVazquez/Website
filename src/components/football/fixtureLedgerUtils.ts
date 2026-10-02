@@ -8,11 +8,11 @@ export interface FixtureLedgerGroup {
 
 /**
  * Groups fixtures by literal matchday number. Fixtures without a matchday
- * collect into a trailing fallback group rather than being dropped.
+ * collect into a trailing "Fixtures" group rather than being dropped.
  */
 export function groupFixturesByMatchday(
   fixtures: GenericFixture[],
-  options?: { fallbackLabel?: string; suffix?: string }
+  options?: { suffix?: string }
 ): FixtureLedgerGroup[] {
   const groups = new Map<string, GenericFixture[]>();
 
@@ -36,7 +36,7 @@ export function groupFixturesByMatchday(
       key,
       label:
         key === "unscheduled"
-          ? options?.fallbackLabel ?? "Fixtures"
+          ? "Fixtures"
           : `Matchday ${key}${options?.suffix ? ` · ${options.suffix}` : ""}`,
       fixtures: groupFixtures,
     }));

@@ -12,8 +12,8 @@ import { DEFAULT_FOOD_MAP_STATE } from "@/app/food-map/food-map-state";
 import { SpaceXMissionControlClient } from "@/app/spacex-mission-control/spacex-mission-control-client";
 import { DEFAULT_MISSION_CONTROL_STATE } from "@/app/spacex-mission-control/spacex-mission-control-state";
 
-// Real framer-motion on purpose. The route tests mock it, which is how a
-// page-wide fade that server-rendered every page at opacity 0 went unseen.
+// Guards against a page-wide entrance that server-renders the page at
+// opacity 0, which the route tests, with motion mocked away, once missed.
 jest.mock("next/navigation", () => ({
   useRouter: () => ({ push: jest.fn(), replace: jest.fn() }),
   useSearchParams: () => new URLSearchParams(),

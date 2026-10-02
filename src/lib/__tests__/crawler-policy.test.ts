@@ -84,15 +84,6 @@ describe("public crawler policy", () => {
     }
   );
 
-  it.each(["*", "OAI-SearchBot", "Google-Extended", "Googlebot"])(
-    "blocks the exact /admin route for %s",
-    (userAgent) => {
-      const rules = rulesFor(userAgent === "Googlebot" ? "*" : userAgent);
-
-      expect(rules).toContain("Disallow: /admin");
-    }
-  );
-
   it("keeps the retrieval group's rules in sync with the * group", () => {
     // A named group fully replaces * (RFC 9309), so any path blocked or
     // re-allowed for anonymous crawlers must be mirrored for retrieval bots.

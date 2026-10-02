@@ -6,6 +6,7 @@ import { PROJECT_PRESS } from "@/constants/projectPress";
 import Link from "next/link";
 import type { DraftPick, Player, RedraftLineupSettings, ScoringFormat } from "@/types";
 import { useFantasySnapshot } from "@/hooks/useFantasySnapshot";
+import { readValidatedBrowserStorage } from "@/lib/browserStorage";
 import { FANTASY_SCORING_LABELS, scoringFormatToRouteScoring } from "@/lib/fantasy";
 import {
   FASCIA_TOP_CLASS,
@@ -32,7 +33,7 @@ import {
   withoutPlayerAdp,
 } from "@/lib/fantasyUtils";
 import { classifyPickValue, getPickDelta, isPlayerValueAtPick } from "@/lib/draftAnalytics";
-import { REDRAFT_LINEUP_PRESETS } from "@/lib/redraftLineup";
+import { REDRAFT_LINEUP_PRESETS, sameRedraftLineup } from "@/lib/redraftLineup";
 import {
   PositionFilterBar,
   type PositionFilterOption,
@@ -178,12 +179,6 @@ function lineupShort(lineup: RedraftLineupSettings): string {
   return parts.join(" ");
 }
 
-function sameLineup(left: RedraftLineupSettings, right: RedraftLineupSettings): boolean {
-  return (Object.keys(left) as (keyof RedraftLineupSettings)[]).every(
-    (position) => left[position] === right[position]
-  );
-}
-
 /**
  * The signed gap between the current pick and a player's market ADP. Strictly
  * market-based: no reliable ADP sample means no reading, matching the live
@@ -301,18 +296,19 @@ export function MockDraftClient() {
   // Standard room resumes onto Standard ranks after a reload. The hook
   // itself refuses to hydrate until the matching board arrives.
   useEffect(() => {
-    try {
-      const raw = window.localStorage.getItem(getMockDraftStorageKey());
-      if (!raw) return;
-      const saved = (JSON.parse(raw) as { settings?: { scoringFormat?: unknown } })
-        ?.settings?.scoringFormat;
-      if (saved === "PPR" || saved === "HALF_PPR" || saved === "STANDARD") {
-        // eslint-disable-next-line react-hooks/set-state-in-effect -- one-shot post-mount read of the persisted room's scoring
-        setScoringSelection(saved);
-      }
-    } catch {
-      // Ignore: an unreadable save just means a fresh setup card.
-    }
+    const saved = readValidatedBrowserStorage<ScoringFormat | null>(
+      getMockDraftStorageKey(),
+      (value) => {
+        const scoring = (value as { settings?: { scoringFormat?: unknown } })?.settings
+          ?.scoringFormat;
+        return scoring === "PPR" || scoring === "HALF_PPR" || scoring === "STANDARD"
+          ? scoring
+          : undefined;
+      },
+      () => null
+    ).value;
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- one-shot post-mount read of the persisted room's scoring
+    if (saved) setScoringSelection(saved);
   }, []);
 
   const routeScoring = scoringFormatToRouteScoring(scoringSelection);
@@ -1053,7 +1049,7 @@ export function MockDraftClient() {
                 style={{ gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 190px), 1fr))" }}
               >
                 {REDRAFT_LINEUP_PRESETS.map((preset) => {
-                  const active = sameLineup(preset.lineup, setupForm.lineup);
+                  const active = sameRedraftLineup(preset.lineup, setupForm.lineup);
                   return (
                     <button
                       key={preset.id}

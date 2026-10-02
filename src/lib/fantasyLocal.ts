@@ -36,7 +36,7 @@ export function parseIdList(raw: string | null | undefined): string[] {
   try {
     const parsed = JSON.parse(raw);
     if (!isStringArray(parsed)) return [];
-    return dedupe(parsed);
+    return [...new Set(parsed)];
   } catch {
     return [];
   }
@@ -63,18 +63,6 @@ export function parseNotes(raw: string | null | undefined): Record<string, strin
   } catch {
     return {};
   }
-}
-
-function dedupe(ids: string[]): string[] {
-  const seen = new Set<string>();
-  const result: string[] = [];
-  for (const id of ids) {
-    if (!seen.has(id)) {
-      seen.add(id);
-      result.push(id);
-    }
-  }
-  return result;
 }
 
 /** Adds the id if absent, removes it if present. Returns a new array. */

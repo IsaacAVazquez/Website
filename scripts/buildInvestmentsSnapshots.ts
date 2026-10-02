@@ -16,7 +16,7 @@ import type {
   InvestmentSnapshot,
   InvestmentsIndex,
 } from "../src/types/investment";
-import { writeFileAtomic } from "./snapshotFallback";
+import { readJson, writeFileAtomic } from "./snapshotFallback";
 
 type RawSectionName =
   | "info"
@@ -73,19 +73,6 @@ const PRICE_HEALTH_MAX_AGE_DAYS = Number.parseInt(
   process.env.MAX_PRICE_AGE_DAYS ?? "7",
   10
 );
-
-async function readJson<T>(filePath: string): Promise<T | undefined> {
-  try {
-    const raw = await fs.readFile(filePath, "utf8");
-    return JSON.parse(raw) as T;
-  } catch (error) {
-    const err = error as NodeJS.ErrnoException;
-    if (err.code === "ENOENT") {
-      return undefined;
-    }
-    throw error;
-  }
-}
 
 async function buildSymbolSnapshot(
   symbol: string,

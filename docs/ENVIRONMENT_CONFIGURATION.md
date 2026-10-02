@@ -24,25 +24,18 @@ Use the production hostname for both site URL variables.
 
 | Variable | Required | Purpose |
 | --- | --- | --- |
-| `NEXTAUTH_URL` | yes for deployed auth flows | Base URL for NextAuth callbacks |
-| `NEXTAUTH_SECRET` | yes for auth | Session signing secret |
-| `ADMIN_USERNAME` | yes for `/admin` | Credential login username |
-| `ADMIN_PASSWORD` | yes for `/admin` | Credential login password |
-
-The admin surface uses credential auth, not a multi-user identity provider.
+There is no authenticated surface. The `/admin` page and NextAuth were removed on 2026-10-02.
 
 ---
 
 ## Fantasy Operations
 
-The fantasy surface reads checked-in snapshots at runtime. `npm run update:fantasy` regenerates those artifacts. `FANTASYPROS_SOURCE=public-html` selects the published-page parser even when an API key exists, while `FANTASYPROS_SOURCE=official-api` requires the key and selects the JSON API. If the source variable is absent or set to `auto`, the builder keeps the older local behavior, which selects the API when a key exists and otherwise uses public HTML. A selected source that fails its response or board checks stops the refresh without changing sources.
+The fantasy surface reads checked-in snapshots at runtime. `npm run update:fantasy` regenerates those artifacts from the public FantasyPros consensus pages. A source that fails its response or board checks stops the refresh.
 
 | Variable | Required | Purpose |
 | --- | --- | --- |
-| `FANTASYPROS_SOURCE` | optional for local refreshes, pinned to `public-html` in the scheduled workflow | Build-only choice among `public-html`, `official-api`, and `auto` |
-| `FANTASYPROS_API_KEY` | required only for `FANTASYPROS_SOURCE=official-api` | Build-only key sent in the `x-api-key` header for an authenticated refresh |
 
-The scheduled refresh pins `FANTASYPROS_SOURCE=public-html`, does not receive `FANTASYPROS_API_KEY`, and reads the public FantasyPros rankings pages. A copy of the key stored in GitHub or Netlify is not used by that job. The deployed application does not need either variable because it serves the generated JSON files.
+The scheduled refresh reads the public FantasyPros rankings pages. The deployed application needs no FantasyPros variable because it serves the generated JSON files.
 
 There are no live `/api/fantasy-pros-*`, `/api/data-manager`, or `/api/scheduled-update` routes in the current app tree.
 
@@ -131,15 +124,11 @@ Useful local template for broader coverage:
 ```bash
 NEXT_PUBLIC_SITE_URL=http://localhost:3000
 SITE_URL=http://localhost:3000
-NEXTAUTH_URL=http://localhost:3000
-NEXTAUTH_SECRET=replace-me
-ADMIN_USERNAME=replace-me
-ADMIN_PASSWORD=replace-me
 MBA_DIGEST_SECRET=replace-me
 MBA_DIGEST_ALLOWED_RECIPIENTS=you@example.com,@example.edu
 ```
 
-Add `RESEND_API_KEY` only if you are testing email delivery. Set `FANTASYPROS_SOURCE=official-api` and add `FANTASYPROS_API_KEY` for an authenticated `npm run update:fantasy` refresh. Add `FOOTBALL_DATA_API_TOKEN` only if you are testing `npm run update:football`, `npm run update:premier-league`, or `npm run update:la-liga`.
+Add `RESEND_API_KEY` only if you are testing email delivery. Add `FOOTBALL_DATA_API_TOKEN` only if you are testing `npm run update:football`, `npm run update:premier-league`, or `npm run update:la-liga`.
 
 ---
 

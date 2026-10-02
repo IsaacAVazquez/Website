@@ -33,7 +33,6 @@ The site is portfolio-first. `Writing` is live and promoted in the global header
 | Content | `gray-matter`, `remark`, `remark-gfm`, `remark-rehype`, `rehype-sanitize`, `rehype-stringify` |
 | Data | Version-controlled snapshots for repeatable builds, request-time USGS and BART overlays, and Netlify Blobs for runtime last-good caches. |
 | Email | Resend (MBA internship digest) |
-| Auth | NextAuth v4 (credentials provider) |
 | Tests | Jest, Playwright |
 | Deploy | Netlify + `@netlify/plugin-nextjs` |
 
@@ -93,7 +92,6 @@ The site is portfolio-first. `Writing` is live and promoted in the global header
 | `/contact` | Contact page |
 | `/accessibility` | Accessibility statement |
 | `/search` | Site search UI |
-| `/admin` | Protected admin surface |
 
 Redirects:
 
@@ -157,12 +155,6 @@ Copy `.env.example` to `.env.local` and fill in values. Never commit `.env.local
 SITE_URL=https://isaacvazquez.com
 GOOGLE_SITE_VERIFICATION=...
 
-# Auth (NextAuth + admin gate on /admin)
-NEXTAUTH_URL=http://localhost:3000
-NEXTAUTH_SECRET=...           # generate with: openssl rand -base64 32
-ADMIN_USERNAME=...
-ADMIN_PASSWORD=...
-
 # Data sources used by update scripts and a few server routes
 FOOTBALL_DATA_API_TOKEN=...   # football-data.org, free tier
 FINNHUB_API_KEY=...           # quote endpoint for /investments
@@ -183,7 +175,7 @@ MBA_DIGEST_SECRET=...         # sent in the x-mba-digest-secret header to the di
 - `Writing` is live and intentionally promoted in the header
 - `/portfolio` is a server shell in `src/app/portfolio/page.tsx` that passes the project index to `Catalog97Portfolio`
 - `/api/search` is limited and mostly hardcoded; do not treat it as comprehensive site search
-- `/investments` uses `InvestmentsClient` plus targeted routes under `/api/investments/quotes` and `/api/investments/data/[symbol]`
+- `/investments` uses `InvestmentsClient` plus the `/api/investments/quotes` route
 - Sports dashboards read committed snapshots. Earthquake and BART add request-time upstream refreshes with their committed snapshots kept as fallbacks.
 
 ---

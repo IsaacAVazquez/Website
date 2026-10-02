@@ -12,8 +12,8 @@ import type {
   TripStatus,
   TripSummary,
 } from "@/types/travel";
-import { isRecord, prefixedId } from "@/lib/utils";
-import { toLocalDateKey, parseLocalDateKey } from "@/lib/date-formatters";
+import { groupBy, isRecord, prefixedId } from "@/lib/utils";
+import { daysBetween, toLocalDateKey, parseLocalDateKey } from "@/lib/date-formatters";
 
 export const TRAVEL_PLANNER_STORAGE_KEY = "travel_planner_trips_v1";
 
@@ -82,12 +82,7 @@ function diffDaysInclusive(startKey: string, endKey: string): number {
   return Math.max(1, Math.round(ms / 86400000) + 1);
 }
 
-function diffDaysSigned(fromKey: string, toKey: string): number {
-  const from = parseDateKey(fromKey);
-  const to = parseDateKey(toKey);
-  if (!from || !to) return 0;
-  return Math.round((to.getTime() - from.getTime()) / 86400000);
-}
+const diffDaysSigned = (fromKey: string, toKey: string): number => daysBetween(fromKey, toKey) ?? 0;
 
 // Trip, activity, and journal dates are calendar days the visitor picked in
 // an <input type="date">, stored and only ever read back in this browser.
@@ -172,12 +167,7 @@ interface ActivityOverlaps {
 export function findActivityOverlaps(activities: TripActivity[]): ActivityOverlaps {
   const conflicts = new Set<string>();
   let pairCount = 0;
-  const byDay = new Map<string, TripActivity[]>();
-  for (const activity of activities) {
-    const list = byDay.get(activity.date);
-    if (list) list.push(activity);
-    else byDay.set(activity.date, [activity]);
-  }
+  const byDay = groupBy(activities, (activity) => activity.date);
 
   for (const dayActivities of byDay.values()) {
     const windows = dayActivities
@@ -424,15 +414,9 @@ export function calculateTripSummary(trip: Trip, today = getTodayKey()): TripSum
   const sortedActivities = sortActivities(trip.activities);
   const dayKeys = getDayKeysBetween(trip.startDate, trip.endDate);
 
-  const dayLookup = new Map<string, TripActivity[]>();
-  for (const key of dayKeys) dayLookup.set(key, []);
-  for (const activity of sortedActivities) {
-    const list = dayLookup.get(activity.date);
-    if (list) {
-      list.push(activity);
-    } else {
-      dayLookup.set(activity.date, [activity]);
-    }
+  const dayLookup = groupBy(sortedActivities, (activity) => activity.date);
+  for (const key of dayKeys) {
+    if (!dayLookup.has(key)) dayLookup.set(key, []);
   }
 
   const overlaps = findActivityOverlaps(sortedActivities);

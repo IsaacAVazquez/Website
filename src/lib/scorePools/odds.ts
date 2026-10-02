@@ -13,7 +13,6 @@ import type {
   MoneylineOdds,
   OddsFormat,
   OutcomeProbabilities,
-  RawPrice,
 } from "./types";
 
 /** Convert a price in any supported format to decimal odds. */
@@ -47,10 +46,6 @@ export function toDecimal(value: number | string, format: OddsFormat): number {
       return 1 + numerator / denominator;
     }
   }
-}
-
-export function rawPriceToDecimal(price: RawPrice): number {
-  return toDecimal(price.value, price.format);
 }
 
 /** Raw implied probability of a decimal price, margin still included. */

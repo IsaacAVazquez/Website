@@ -16,55 +16,13 @@ concurrency:
 jobs:
   refresh-golf:
     name: Refresh Golf Snapshot
-    runs-on: ubuntu-latest
-    timeout-minutes: 20
-
+    uses: ./.github/workflows/refresh-snapshot.yml
+    secrets: inherit
     permissions:
       contents: write
       issues: write
-
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v7
-        with:
-          ref: main
-          fetch-depth: 1
-
-      - name: Set up Node.js
-        uses: actions/setup-node@v7
-        with:
-          node-version-file: .nvmrc
-          cache: "npm"
-
-      - name: Install dependencies
-        run: npm ci --prefer-offline --no-audit --fund=false
-
-      - name: Refresh golf snapshot
-        timeout-minutes: 12
-        run: npm run update:golf
-        env:
-          NODE_ENV: production
-
-      - name: Verify refresh freshness and quality
-        run: npx tsx scripts/verifyDataRefresh.ts golf
-
-      - name: Commit and push refreshed snapshot
-        id: commit
-        run: |
-          bash scripts/ci/commit-and-push-snapshot.sh \
-            "chore: refresh golf snapshot [automated] [skip ci]" \
-            src/data/golfSnapshot.ts
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Notify on failure via GitHub issue
-        if: failure()
-        uses: actions/github-script@v9
-        with:
-          script: await require('./scripts/ci/failure-issue.cjs').open({ github, context }, 'golf-refresh-failure', 'Golf refresh failed')
-
-      - name: Close resolved failure issues
-        if: success()
-        uses: actions/github-script@v9
-        with:
-          script: await require('./scripts/ci/failure-issue.cjs').close({ github, context }, 'golf-refresh-failure')
+    with:
+      id: golf
+      snapshot-path: src/data/golfSnapshot.json
+      label: golf-refresh-failure
+      title: Golf refresh failed

@@ -1,4 +1,3 @@
-import type { HTMLAttributes } from "react";
 import { render, screen } from "@testing-library/react";
 import DecisionLabPage from "../page";
 
@@ -14,13 +13,6 @@ jest.mock("next/navigation", () => ({
     replace: jest.fn(),
   }),
   useSearchParams: () => currentSearchParams,
-}));
-
-jest.mock("framer-motion", () => ({
-  motion: {
-    div: ({ children, ...props }: HTMLAttributes<HTMLDivElement>) => <div {...props}>{children}</div>,
-  },
-  useReducedMotion: () => true,
 }));
 
 describe("DecisionLabPage", () => {

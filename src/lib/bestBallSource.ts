@@ -1,6 +1,5 @@
 import {
   fetchFantasyProsConsensusBoard,
-  type FantasyProsOfficialApiPosition,
 } from "@/lib/fantasyProsPublicSource";
 import { assertBestBallConsensusConsistency } from "@/lib/bestBall/sourceCapabilities";
 import {
@@ -266,7 +265,6 @@ async function fetchJson(url: string): Promise<unknown> {
 export async function fetchBestBallRankingsBoard(): Promise<BestBallRankingsBoard> {
   const board = await fetchEligibleRankingsBoard({
     publicSourceUrl: BEST_BALL_RANKINGS_URL,
-    officialApiPosition: "ALL",
     scoringFormat: "PPR",
     expectedSourceScoring: "PPR",
     expectedRankingType: "best",
@@ -283,7 +281,6 @@ export async function fetchBestBallRankingsBoard(): Promise<BestBallRankingsBoar
 
 async function fetchEligibleRankingsBoard(options: {
   publicSourceUrl: string;
-  officialApiPosition: FantasyProsOfficialApiPosition;
   scoringFormat: ScoringFormat;
   expectedSourceScoring: string;
   expectedRankingType?: "draft" | "best";
@@ -293,7 +290,6 @@ async function fetchEligibleRankingsBoard(options: {
     scoringFormat: options.scoringFormat,
     requestedPosition: "OVERALL",
     publicSourceUrl: options.publicSourceUrl,
-    officialApiPosition: options.officialApiPosition,
     expectedRankingType: options.expectedRankingType,
     expectedSeason: getExpectedBestBallSeason(),
     minimumExperts: options.minimumExperts,
@@ -321,7 +317,6 @@ async function fetchEligibleRankingsBoard(options: {
 export async function fetchBestBallSuperflexRankingsBoard(): Promise<BestBallRankingsBoard> {
   return fetchEligibleRankingsBoard({
     publicSourceUrl: BEST_BALL_SUPERFLEX_RANKINGS_URL,
-    officialApiPosition: "OP",
     scoringFormat: "HALF_PPR",
     expectedSourceScoring: "HALF",
     expectedRankingType: "draft",

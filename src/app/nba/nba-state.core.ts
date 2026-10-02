@@ -1,5 +1,5 @@
 import type { NbaRouteState, NbaTeam, NbaView } from "@/types/nba";
-import { createTeamRouteState } from "@/lib/searchParams";
+import { buildTeamAliasMap as buildAliasMap, createTeamRouteState } from "@/lib/searchParams";
 
 // Pure, snapshot-free route-state core for /nba. Importing this module never
 // pulls the multi-thousand-line `nbaSnapshot` into the bundle, so the client
@@ -19,19 +19,8 @@ export const { normalizeState, buildHref } = createTeamRouteState<NbaView>(NBA_R
   "play-in",
 ]);
 
-type TeamAliasSource = { id: string; abbreviation: string };
-
-export function buildTeamAliasMap(teams: readonly TeamAliasSource[]): Map<string, string> {
-  return new Map(
-    teams.flatMap((team) => {
-      const canonical = team.id.toLowerCase();
-      return [
-        [team.id.toLowerCase(), canonical],
-        [team.abbreviation.toLowerCase(), canonical],
-      ] as const;
-    })
-  );
-}
+export const buildTeamAliasMap = (teams: readonly { id: string; abbreviation: string }[]) =>
+  buildAliasMap(teams, (team) => team.abbreviation, (team) => team.id.toLowerCase());
 
 export function filterTeams(
   east: readonly NbaTeam[],

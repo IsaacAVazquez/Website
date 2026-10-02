@@ -1,3 +1,4 @@
+import { groupBy } from "@/lib/utils";
 // Single source of truth for how portfolio projects are bucketed into
 // product categories. The /portfolio filter (Catalog97Portfolio), the
 // /dashboards mosaic (Catalog97Dashboards), and the homepage dashboards table
@@ -136,29 +137,23 @@ function isExternalLink(link: string): boolean {
  * and projects keep their incoming order within each group.
  */
 export function getLiveToolGroups(projects: ProjectLike[]): LiveToolGroup[] {
-  const byCategory = new Map<ToolCategoryId, LiveToolEntry[]>();
-
-  for (const project of projects) {
+  const entries = projects.flatMap((project): LiveToolEntry[] => {
     const link = project.link?.trim();
-    if (!link) continue;
+    if (!link) return [];
 
     const categoryId = classifyToolSlug(project.slug);
-    const entry: LiveToolEntry = {
-      slug: project.slug,
-      title: project.title,
-      href: link,
-      isExternal: isExternalLink(link),
-      categoryId,
-      categoryLabel: getToolCategoryLabel(categoryId),
-    };
-
-    const bucket = byCategory.get(categoryId);
-    if (bucket) {
-      bucket.push(entry);
-    } else {
-      byCategory.set(categoryId, [entry]);
-    }
-  }
+    return [
+      {
+        slug: project.slug,
+        title: project.title,
+        href: link,
+        isExternal: isExternalLink(link),
+        categoryId,
+        categoryLabel: getToolCategoryLabel(categoryId),
+      },
+    ];
+  });
+  const byCategory = groupBy(entries, (entry) => entry.categoryId);
 
   return TOOL_CATEGORY_DEFS.flatMap((def) => {
     const tools = byCategory.get(def.id);

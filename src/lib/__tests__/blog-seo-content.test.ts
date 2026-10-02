@@ -4,11 +4,31 @@ import matter from "gray-matter";
 import {
   BLOG_CLUSTER_ORDER,
   BLOG_TOPIC_PAGES,
-  LEAD_GEN_BLOG_SLUGS,
-  LEAD_GEN_INTERNAL_LINK_RULES,
   getBlogTopicPageForPost,
 } from "../blog-config";
 import { fitMetaDescription, fitSearchTitle } from "../seo";
+
+const LEAD_GEN_BLOG_SLUGS = [
+  "ai-prd-writing-prompts-structure",
+  "ai-product-discovery-workflow",
+  "ai-roadmapping-from-feedback",
+  "ai-user-research-synthesis-workflow",
+  "ai-email-stakeholder-comms-pm",
+  "agentic-ai-explained-for-product-managers",
+  "build-vs-buy-agentic-ai-platform",
+  "ai-agents-customer-support-what-works",
+  "evaluate-agentic-ai-product-pm-framework",
+  "building-an-investment-research-platform",
+  "interchange-iq-payment-fee-analyzer",
+  "reasoning-model-economics-when-to-use-which",
+  "building-reliable-software-systems",
+  "complete-guide-qa-engineering",
+  "qa-engineer-guide-testing-ai-systems",
+] as const;
+
+const LEAD_GEN_INTERNAL_LINK_RULES = {
+  minRelatedWritingLinks: 2,
+};
 
 const blogDirectory = path.join(process.cwd(), "content/blog");
 

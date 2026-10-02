@@ -30,7 +30,7 @@ The same file exports `isCatalog97Route`, an exact-match test against those seve
 
 `src/components/catalog97/Catalog97Header.tsx` renders the header on every route. It maps `catalog97NavLinks`, marks a link active only when the pathname equals its href, opens site search on Cmd/Ctrl+K or `/`, and carries the theme toggle.
 
-`src/components/ConditionalLayout.tsx` has two branches. The seven routes above pass through untouched because their page components render `Catalog97Shell` themselves. Every other route, `/admin` included, is wrapped in `src/components/catalog97/Catalog97ToolShell.tsx`. Both paths get the same header, the only page-level `main`, and the espresso footer from `Catalog97Shell`.
+`src/components/ConditionalLayout.tsx` has two branches. The seven routes above pass through untouched because their page components render `Catalog97Shell` themselves. Every other route is wrapped in `src/components/catalog97/Catalog97ToolShell.tsx`. Both paths get the same header, the only page-level `main`, and the espresso footer from `Catalog97Shell`.
 
 The earlier `StaticHeader.tsx`, `Footer.tsx` (with its `full` and `compact` variants), and `src/constants/navlinks.tsx` were deleted on 2026-09-16. See the "Routes, Navigation, and Shell" section of the root `CLAUDE.md` and the route map in `AGENTS.md`.
 

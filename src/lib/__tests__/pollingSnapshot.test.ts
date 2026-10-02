@@ -1,7 +1,7 @@
 /**
  * @jest-environment node
  */
-jest.mock("@/lib/snapshotBlobStore", () => ({
+jest.mock("@/lib/netlifyBlobs", () => ({
   readSnapshotBlob: jest.fn(),
 }));
 
@@ -11,7 +11,7 @@ import {
   getPollingSnapshot,
   resetPollingCacheForTests,
 } from "@/lib/pollingSnapshot";
-import { readSnapshotBlob } from "@/lib/snapshotBlobStore";
+import { readSnapshotBlob } from "@/lib/netlifyBlobs";
 import type { PollingSnapshot } from "@/types/polling";
 import {
   votehubApprovalPolls,

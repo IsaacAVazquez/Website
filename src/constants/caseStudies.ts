@@ -1144,7 +1144,7 @@ export const caseStudiesData: Record<string, CaseStudyData> = {
   },
 };
 
-const HOMEPAGE_FEATURED_SLUGS = [
+export const HOMEPAGE_FEATURED_SLUGS = [
   "investment-analytics-platform",
   "news-pulse-dashboard",
   "interchange-iq",
@@ -1248,9 +1248,4 @@ export function getPortfolioProjects(): CaseStudyData[] {
   );
 
   return [...orderedProjects, ...unorderedProjects];
-}
-
-/** Get all case studies as an array */
-export function getAllCaseStudies(): CaseStudyData[] {
-  return Object.values(caseStudiesData);
 }

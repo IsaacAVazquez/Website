@@ -5,7 +5,6 @@ import {
   buildPremierLeagueSnapshot,
   getPremierLeagueSummary,
   getPremierLeagueTeamSnapshot,
-  isValidPremierLeagueTeamId,
   sumPlayedGames,
 } from "../premierLeagueData";
 import { resetFootballDataPacingForTests } from "../footballData";
@@ -455,26 +454,6 @@ describe("sumPlayedGames edge cases", () => {
   });
 });
 
-describe("isValidPremierLeagueTeamId", () => {
-  it("accepts positive integer id strings", () => {
-    expect(isValidPremierLeagueTeamId("57")).toBe(true);
-    expect(isValidPremierLeagueTeamId("1")).toBe(true);
-    expect(isValidPremierLeagueTeamId("64")).toBe(true);
-    expect(isValidPremierLeagueTeamId("1000")).toBe(true);
-  });
-
-  it("rejects zero, leading zeros, non-numeric, and empty ids", () => {
-    expect(isValidPremierLeagueTeamId("0")).toBe(false);
-    expect(isValidPremierLeagueTeamId("01")).toBe(false);
-    expect(isValidPremierLeagueTeamId("abc")).toBe(false);
-    expect(isValidPremierLeagueTeamId("")).toBe(false);
-    expect(isValidPremierLeagueTeamId("-5")).toBe(false);
-    expect(isValidPremierLeagueTeamId("1.5")).toBe(false);
-    expect(isValidPremierLeagueTeamId("57a")).toBe(false);
-    expect(isValidPremierLeagueTeamId(" 57")).toBe(false);
-  });
-});
-
 // Team-detail endpoint returns the raw team object directly (not wrapped), and
 // carries the club-detail-only fields (founded, clubColors, website, address,
 // coach) that the summary team-list objects omit.
@@ -715,7 +694,7 @@ function storedTeamSnapshot(clubId: number): PremierLeagueTeamSnapshot {
 }
 
 function storedSnapshotRoot(clubIds: number[]): string {
-  return writeStoredSnapshot("premierLeagueSnapshot.ts", "premierLeagueSnapshot", {
+  return writeStoredSnapshot("premierLeagueSnapshot.json", {
     teamSnapshots: Object.fromEntries(clubIds.map((id) => [String(id), storedTeamSnapshot(id)])),
   });
 }

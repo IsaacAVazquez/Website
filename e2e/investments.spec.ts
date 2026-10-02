@@ -301,10 +301,7 @@ test.describe("Investments", () => {
     await routeInvestmentsFixtures(page);
     page.on("request", (request) => {
       const url = request.url();
-      if (
-        url.includes("/data/investments/") ||
-        url.includes("/api/investments/data/")
-      ) {
+      if (url.includes("/data/investments/")) {
         requests.push(url);
       }
     });
@@ -319,7 +316,6 @@ test.describe("Investments", () => {
     await search.press("Enter");
 
     await expect(page).not.toHaveURL(/symbol=SHOP/);
-    expect(requests.filter((url) => url.includes("/api/investments/data/"))).toHaveLength(0);
     expect(requests.filter((url) => url.includes("/data/investments/index.json")).length).toBe(1);
     expect(requests.filter((url) => url.includes("/data/investments/SHOP/snapshot.json"))).toHaveLength(0);
   });

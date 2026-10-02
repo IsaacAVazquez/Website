@@ -10,7 +10,7 @@ import type {
 import { MBA_COMPANIES } from "@/constants/mba-companies";
 import { matchMBAJobRole } from "@/lib/mba-job-matching";
 import { mbaJobsRateLimiter } from "@/lib/rateLimit";
-import { readDurableJson, writeDurableJson } from "@/lib/durableJsonCache";
+import { readDurableJson, writeDurableJson } from "@/lib/netlifyBlobs";
 import type { DataDeliveryStatus } from "@/lib/dataRevision";
 import { recordRuntimeSurfaceHeartbeat } from "@/lib/runtimeSurfaceHeartbeat";
 
@@ -100,47 +100,33 @@ function getPostedAtTime(value: string): number {
 }
 
 async function fetchJson<T>(url: string): Promise<T> {
-  const controller = new AbortController();
-  const timer = setTimeout(() => controller.abort(), TIMEOUT_MS);
+  const res = await fetch(url, {
+    signal: AbortSignal.timeout(TIMEOUT_MS),
+    // Some ATS responses exceed Next's 2 MB fetch-cache limit. The route's
+    // normalized in-memory cache and response cache handle reuse instead.
+    cache: "no-store",
+  });
 
-  try {
-    const res = await fetch(url, {
-      signal: controller.signal,
-      // Some ATS responses exceed Next's 2 MB fetch-cache limit. The route's
-      // normalized in-memory cache and response cache handle reuse instead.
-      cache: "no-store",
-    });
-
-    if (!res.ok) {
-      throw new Error(`HTTP ${res.status}`);
-    }
-
-    return (await res.json()) as T;
-  } finally {
-    clearTimeout(timer);
+  if (!res.ok) {
+    throw new Error(`HTTP ${res.status}`);
   }
+
+  return (await res.json()) as T;
 }
 
 async function fetchText(url: string): Promise<string> {
-  const controller = new AbortController();
-  const timer = setTimeout(() => controller.abort(), TIMEOUT_MS);
+  const res = await fetch(url, {
+    signal: AbortSignal.timeout(TIMEOUT_MS),
+    // Some careers pages exceed Next's 2 MB fetch-cache limit. The route's
+    // normalized in-memory cache and response cache handle reuse instead.
+    cache: "no-store",
+  });
 
-  try {
-    const res = await fetch(url, {
-      signal: controller.signal,
-      // Some careers pages exceed Next's 2 MB fetch-cache limit. The route's
-      // normalized in-memory cache and response cache handle reuse instead.
-      cache: "no-store",
-    });
-
-    if (!res.ok) {
-      throw new Error(`HTTP ${res.status}`);
-    }
-
-    return await res.text();
-  } finally {
-    clearTimeout(timer);
+  if (!res.ok) {
+    throw new Error(`HTTP ${res.status}`);
   }
+
+  return await res.text();
 }
 
 async function mapWithConcurrency<T, R>(

@@ -1,70 +1,22 @@
+import type {
+  PremierLeagueFixture,
+  PremierLeagueFixtureTeam,
+  PremierLeagueFormSummary,
+  PremierLeagueMatchdayGoals,
+  PremierLeagueTeamOption,
+  PremierLeagueTeamProfile,
+} from "./premier-league";
+
 export type LaLigaView = "table" | "title-race" | "europe" | "relegation";
 
-export interface LaLigaTeamOption {
-  id: string;
-  name: string;
-  shortName: string;
-  tla: string | null;
-  crest: string | null;
-  venue: string | null;
-  /**
-   * Club brand accent hex, resolved from the `src/data/clubColors.ts` lookup
-   * (upstream never exposes a hex, only a free-text `clubColors` description).
-   * Optional so older committed snapshots (predating this field) still satisfy
-   * the type — treat a missing/`null` value as "fall back to a neutral token."
-   */
-  accentColor?: string | null;
-}
-
-export interface LaLigaTeamProfile extends LaLigaTeamOption {
-  founded: number | null;
-  clubColors: string | null;
-  /**
-   * Manager/head coach name, sourced from football-data.org's team-detail
-   * `coach.name` field when upstream provides one. Optional because older
-   * snapshots won't have it and some upstream responses omit `coach` entirely.
-   */
-  manager?: string | null;
-}
-
-export interface LaLigaFixtureTeam {
-  id: string;
-  name: string;
-  shortName: string;
-  tla: string | null;
-  crest: string | null;
-}
-
-export interface LaLigaFixture {
-  id: string;
-  utcDate: string;
-  status: string;
-  /**
-   * True while the provider has only a rough date for the match, which it
-   * reports as status SCHEDULED at midnight UTC. Absent once the kickoff is
-   * fixed (status TIMED), and absent on snapshots written before this field.
-   */
-  startTimeTbd?: boolean;
-  matchday: number | null;
-  stage: string | null;
-  homeTeam: LaLigaFixtureTeam;
-  awayTeam: LaLigaFixtureTeam;
-  score: {
-    winner: "HOME_TEAM" | "AWAY_TEAM" | "DRAW" | null;
-    home: number | null;
-    away: number | null;
-  };
-}
-
-export interface LaLigaFormSummary {
-  sequence: Array<"W" | "D" | "L">;
-  wins: number;
-  draws: number;
-  losses: number;
-  points: number;
-  goalsFor: number;
-  goalsAgainst: number;
-}
+// Both leagues come from the same football-data.org feed, so these shapes are
+// the Premier League ones. The La Liga profile never carried website/address.
+export type LaLigaTeamOption = PremierLeagueTeamOption;
+export type LaLigaTeamProfile = Omit<PremierLeagueTeamProfile, "website" | "address">;
+export type LaLigaFixtureTeam = PremierLeagueFixtureTeam;
+export type LaLigaFixture = PremierLeagueFixture;
+export type LaLigaFormSummary = PremierLeagueFormSummary;
+export type LaLigaMatchdayGoals = PremierLeagueMatchdayGoals;
 
 export interface LaLigaTeamSnapshot {
   team: LaLigaTeamProfile | null;
@@ -105,12 +57,6 @@ export interface LaLigaLeader {
   total: number;
   appearances: number;
   perMatch: number;
-}
-
-/** One entry of the season-long goals-per-matchday series (matchday → total league goals). */
-export interface LaLigaMatchdayGoals {
-  matchday: number;
-  totalGoals: number;
 }
 
 export interface LaLigaSnapshot {

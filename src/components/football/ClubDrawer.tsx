@@ -1,6 +1,5 @@
 "use client";
 
-import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { X } from "lucide-react";
 import { useRef } from "react";
 import { useModal } from "@/hooks/useModal";
@@ -81,11 +80,11 @@ function DrawerFixtureRow({ fixture, clubId }: { fixture: GenericFixture; clubId
 /**
  * Club detail drawer — the standings' drill-down, opened by selecting a
  * clickable club row. Built on the same pattern as
- * `src/components/fantasy/PlayerDetailDrawer.tsx` (Framer Motion,
- * `useReducedMotion`, manual focus trap, Escape + backdrop close,
+ * `src/components/fantasy/PlayerDetailDrawer.tsx` (CSS entrance from
+ * `@starting-style`, manual focus trap, Escape + backdrop close,
  * `role="dialog" aria-modal="true"`), with a body-scroll lock added to match
  * the design mirror's overlay behavior. `club` is `null` when nothing is
- * selected, which also fully unmounts the drawer via `AnimatePresence`.
+ * selected, which unmounts the drawer.
  */
 export function ClubDrawer({
   club,
@@ -109,7 +108,6 @@ export function ClubDrawer({
   /** Optional `data-testid` on the drawer panel, for e2e coverage. */
   testId?: string;
 }) {
-  const reduceMotion = useReducedMotion();
   const panelRef = useRef<HTMLDivElement>(null);
   const isOpen = Boolean(club);
   useModal(panelRef, isOpen, onClose, { resetKey: club?.id });
@@ -130,130 +128,116 @@ export function ClubDrawer({
   const metaLine = [club.manager, club.venue].filter(Boolean).join(" · ");
 
   return (
-    <AnimatePresence>
-      {isOpen && (
-        <motion.div
-          className="fixed inset-0 z-[60] flex items-end justify-center sm:items-stretch sm:justify-end"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: reduceMotion ? 0 : 0.18 }}
-        >
+    <div className="c97-enter-fade fixed inset-0 z-[60] flex items-end justify-center sm:items-stretch sm:justify-end">
+      <button
+        type="button"
+        aria-label="Close club detail"
+        onClick={onClose}
+        className="absolute inset-0 h-full w-full cursor-default"
+        style={{ background: "color-mix(in srgb, var(--c97-ink) 34%, transparent)" }}
+        tabIndex={-1}
+      />
+      <div
+        ref={panelRef}
+        role="dialog"
+        aria-modal="true"
+        aria-label={`${club.name} detail`}
+        data-testid={testId}
+        tabIndex={-1}
+        className="c97-enter-slide-x relative flex max-h-[88vh] w-full flex-col overflow-y-auto border outline-none sm:max-h-none sm:h-full sm:w-[27rem]"
+        style={{ borderColor: "var(--c97-rule)", background: "var(--c97-surface)" }}
+      >
+        <span
+          aria-hidden="true"
+          className="absolute inset-x-0 top-0 h-[3px]"
+          style={{ background: club.accentColor || "var(--c97-rule)" }}
+        />
+
+        <div className="relative border-b border-[var(--c97-rule)] px-5 pb-4.5 pt-6">
           <button
             type="button"
-            aria-label="Close club detail"
             onClick={onClose}
-            className="absolute inset-0 h-full w-full cursor-default"
-            style={{ background: "color-mix(in srgb, var(--c97-ink) 34%, transparent)" }}
-            tabIndex={-1}
-          />
-          <motion.div
-            ref={panelRef}
-            role="dialog"
-            aria-modal="true"
-            aria-label={`${club.name} detail`}
-            data-testid={testId}
-            tabIndex={-1}
-            initial={reduceMotion ? { opacity: 0 } : { opacity: 0, x: 28 }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={reduceMotion ? { opacity: 0 } : { opacity: 0, x: 28 }}
-            transition={{ duration: reduceMotion ? 0 : 0.26, ease: [0.22, 1, 0.36, 1] }}
-            className="relative flex max-h-[88vh] w-full flex-col overflow-y-auto border outline-none sm:max-h-none sm:h-full sm:w-[27rem] "
-            style={{ borderColor: "var(--c97-rule)", background: "var(--c97-surface)" }}
+            aria-label="Close"
+            className="absolute right-2 top-2 inline-flex min-h-touch min-w-touch items-center justify-center border transition-colors"
+            style={{ borderColor: "var(--c97-rule)", background: "var(--c97-surface)", color: "var(--c97-ink-2)" }}
           >
-            <span
-              aria-hidden="true"
-              className="absolute inset-x-0 top-0 h-[3px]"
-              style={{ background: club.accentColor || "var(--c97-rule)" }}
-            />
-
-            <div className="relative border-b border-[var(--c97-rule)] px-5 pb-4.5 pt-6">
-              <button
-                type="button"
-                onClick={onClose}
-                aria-label="Close"
-                className="absolute right-2 top-2 inline-flex min-h-touch min-w-touch items-center justify-center border transition-colors"
-                style={{ borderColor: "var(--c97-rule)", background: "var(--c97-surface)", color: "var(--c97-ink-2)" }}
-              >
-                <X size={16} aria-hidden="true" />
-              </button>
-              <div className="flex items-center gap-3.5">
-                <CrestAvatar crest={club.crest} name={club.name} size="lg" />
-                <div className="min-w-0 flex-1">
-                  <p className="font-mono text-3xs uppercase tracking-[0.1em] text-[var(--c97-ink-2)]">
-                    #{String(club.position).padStart(2, "0")} · {club.points} pts
-                  </p>
-                  <h2 className="mt-1 truncate text-xl font-bold tracking-tight text-[var(--c97-ink)]">{club.name}</h2>
-                  {formSequence.length > 0 ? (
-                    <div className="mt-2 flex gap-1.5">
-                      {formSequence.map((result, index) => (
-                        <TeamResultPill key={`${result}-${index}`} result={result} />
-                      ))}
-                    </div>
-                  ) : null}
+            <X size={16} aria-hidden="true" />
+          </button>
+          <div className="flex items-center gap-3.5">
+            <CrestAvatar crest={club.crest} name={club.name} size="lg" />
+            <div className="min-w-0 flex-1">
+              <p className="font-mono text-3xs uppercase tracking-[0.1em] text-[var(--c97-ink-2)]">
+                #{String(club.position).padStart(2, "0")} · {club.points} pts
+              </p>
+              <h2 className="mt-1 truncate text-xl font-bold tracking-tight text-[var(--c97-ink)]">{club.name}</h2>
+              {formSequence.length > 0 ? (
+                <div className="mt-2 flex gap-1.5">
+                  {formSequence.map((result, index) => (
+                    <TeamResultPill key={`${result}-${index}`} result={result} />
+                  ))}
                 </div>
-              </div>
-              {metaLine ? (
-                <p className="mt-3 font-mono text-3xs uppercase tracking-[0.05em] text-[var(--c97-ink-2)]">
-                  {metaLine}
-                </p>
               ) : null}
             </div>
+          </div>
+          {metaLine ? (
+            <p className="mt-3 font-mono text-3xs uppercase tracking-[0.05em] text-[var(--c97-ink-2)]">
+              {metaLine}
+            </p>
+          ) : null}
+        </div>
 
-            <StatFascia items={metrics} className="border-x-0 border-t-0" />
+        <StatFascia items={metrics} className="border-x-0 border-t-0" />
 
-            {isLoadingDetail || detailError ? (
-              <p
-                className="px-5 py-3 text-sm text-[var(--c97-ink-2)]"
-                role={detailError ? "alert" : "status"}
-                aria-live="polite"
-              >
-                {detailError || "Loading club fixtures…"}
-              </p>
-            ) : null}
+        {isLoadingDetail || detailError ? (
+          <p
+            className="px-5 py-3 text-sm text-[var(--c97-ink-2)]"
+            role={detailError ? "alert" : "status"}
+            aria-live="polite"
+          >
+            {detailError || "Loading club fixtures…"}
+          </p>
+        ) : null}
 
-            {topScorers.length > 0 && (
-              <div className="border-b border-[color-mix(in_srgb,var(--c97-rule)_55%,transparent)] px-5 py-4">
-                <h3 className="font-mono text-3xs font-normal uppercase tracking-[0.12em] text-[var(--c97-ink-2)]">
-                  Top scorers
-                </h3>
-                <div className="mt-3">
-                  {topScorers.map((player, index) => (
-                    <div
-                      key={`${player.name}-${index}`}
-                      className="flex items-center gap-3 border-b border-[color-mix(in_srgb,var(--c97-rule)_50%,transparent)] py-2.5 last:border-b-0"
-                    >
-                      <span className="w-5 flex-shrink-0 font-mono text-sm text-[var(--c97-ink-2)]">{index + 1}</span>
-                      <span className="min-w-0 flex-1 truncate text-sm font-semibold text-[var(--c97-ink)]">
-                        {player.name}
-                      </span>
-                      <span className="flex-shrink-0 font-mono text-sm text-[var(--c97-ink-2)] tabular-nums">
-                        <span className="text-[var(--c97-ink)]">{player.goals}</span> G · {player.assists} A
-                      </span>
-                    </div>
-                  ))}
+        {topScorers.length > 0 && (
+          <div className="border-b border-[color-mix(in_srgb,var(--c97-rule)_55%,transparent)] px-5 py-4">
+            <h3 className="font-mono text-3xs font-normal uppercase tracking-[0.12em] text-[var(--c97-ink-2)]">
+              Top scorers
+            </h3>
+            <div className="mt-3">
+              {topScorers.map((player, index) => (
+                <div
+                  key={`${player.name}-${index}`}
+                  className="flex items-center gap-3 border-b border-[color-mix(in_srgb,var(--c97-rule)_50%,transparent)] py-2.5 last:border-b-0"
+                >
+                  <span className="w-5 flex-shrink-0 font-mono text-sm text-[var(--c97-ink-2)]">{index + 1}</span>
+                  <span className="min-w-0 flex-1 truncate text-sm font-semibold text-[var(--c97-ink)]">
+                    {player.name}
+                  </span>
+                  <span className="flex-shrink-0 font-mono text-sm text-[var(--c97-ink-2)] tabular-nums">
+                    <span className="text-[var(--c97-ink)]">{player.goals}</span> G · {player.assists} A
+                  </span>
                 </div>
-              </div>
-            )}
+              ))}
+            </div>
+          </div>
+        )}
 
-            {(recentFixtures.length > 0 || upcomingFixtures.length > 0) && (
-              <div className="px-5 py-4">
-                <h3 className="font-mono text-3xs font-normal uppercase tracking-[0.12em] text-[var(--c97-ink-2)]">
-                  Fixtures
-                </h3>
-                <div className="mt-3">
-                  {recentFixtures.map((fixture) => (
-                    <DrawerFixtureRow key={fixture.id} fixture={fixture} clubId={club.id} />
-                  ))}
-                  {upcomingFixtures.map((fixture) => (
-                    <DrawerFixtureRow key={fixture.id} fixture={fixture} clubId={club.id} />
-                  ))}
-                </div>
-              </div>
-            )}
-          </motion.div>
-        </motion.div>
-      )}
-    </AnimatePresence>
+        {(recentFixtures.length > 0 || upcomingFixtures.length > 0) && (
+          <div className="px-5 py-4">
+            <h3 className="font-mono text-3xs font-normal uppercase tracking-[0.12em] text-[var(--c97-ink-2)]">
+              Fixtures
+            </h3>
+            <div className="mt-3">
+              {recentFixtures.map((fixture) => (
+                <DrawerFixtureRow key={fixture.id} fixture={fixture} clubId={club.id} />
+              ))}
+              {upcomingFixtures.map((fixture) => (
+                <DrawerFixtureRow key={fixture.id} fixture={fixture} clubId={club.id} />
+              ))}
+            </div>
+          </div>
+        )}
+      </div>
+    </div>
   );
 }

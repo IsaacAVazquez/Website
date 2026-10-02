@@ -10,7 +10,8 @@ import {
   saveNotes,
   setNoteEntry,
 } from "@/lib/fantasyLocal";
-import { emitLocalStoreChange, useLocalStoragePersistenceStatus, useLocalStorageString } from "@/hooks/useLocalStorageString";
+import { useLocalStoragePersistenceStatus, useLocalStorageString } from "@/hooks/useLocalStorageString";
+import { emitBrowserStorageChange } from "@/lib/browserStorage";
 
 /**
  * Short, browser-local notes keyed by player id ("handcuff for Hall", "avoid",
@@ -28,7 +29,7 @@ export function usePlayerNotes() {
   const setNote = useCallback((id: string, text: string) => {
     const next = setNoteEntry(loadNotes(), id, text);
     saveNotes(next);
-    emitLocalStoreChange(FANTASY_NOTES_STORAGE_KEY);
+    emitBrowserStorageChange(FANTASY_NOTES_STORAGE_KEY);
   }, []);
 
   return { notes, notedIds, getNote, hasNote, setNote, maxLength: FANTASY_NOTE_MAX_LENGTH, persistenceStatus };

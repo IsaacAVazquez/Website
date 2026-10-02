@@ -17,8 +17,8 @@ const LazyClubDrawer = dynamic(
 );
 
 /**
- * The club drawer, loaded the first time a club is opened. It is the one
- * football component that needs framer-motion. A link that names a club opens
+ * The club drawer, loaded the first time a club is opened, so the standings
+ * route does not carry it on first load. A link that names a club opens
  * it on the server as before, because the hook starts from its first value.
  */
 export function DeferredClubDrawer(props: ComponentProps<typeof ClubDrawer>) {

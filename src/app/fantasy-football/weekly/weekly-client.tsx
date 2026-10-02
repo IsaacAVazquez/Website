@@ -1,5 +1,6 @@
 "use client";
 
+import { useIsClient } from "@/hooks/useIsClient";
 import Link from "next/link";
 import { MyTeamPanel } from "@/components/fantasy/MyTeamPanel";
 import { useFantasyMyTeam } from "@/hooks/useFantasyMyTeam";
@@ -115,10 +116,6 @@ function useTableLayout(): boolean {
   );
 }
 
-const subscribeToHydration = () => () => undefined;
-const getHydratedSnapshot = () => true;
-const getServerHydratedSnapshot = () => false;
-
 // The server renders in UTC and cannot know the visitor's timezone, so the
 // server and hydration renders print the stamp in UTC and local time follows.
 const UTC_STAMP_FORMATTER = new Intl.DateTimeFormat("en-US", {
@@ -228,11 +225,7 @@ export function WeeklyBoardClient({
 }) {
   const { snapshot, notPublished, isLoading, error, retry } =
     useFantasyWeeklySnapshot(initialSnapshot);
-  const isHydrated = useSyncExternalStore(
-    subscribeToHydration,
-    getHydratedSnapshot,
-    getServerHydratedSnapshot,
-  );
+  const isHydrated = useIsClient();
   const viewConfig = VIEWS[view];
   const router = useRouter();
   const searchParams = useSearchParams();

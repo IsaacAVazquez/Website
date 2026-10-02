@@ -48,8 +48,7 @@ secondary authority-building content — not a generic blog template. The surfac
 ## Tech Stack
 
 - Next.js 16 App Router · React 19 · TypeScript · Tailwind CSS v4
-- Framer Motion · D3 (charting) · `next-themes` (dark mode)
-- NextAuth v4 for `/admin`
+- D3 (charting) · `next-themes` (dark mode)
 - Netlify deployment via `@netlify/plugin-nextjs`
 
 Build pipeline: `npm run build` consumes committed snapshots without mutating data;
@@ -71,7 +70,7 @@ The full route map and header links live in
   Catalog 97 routes (`/`, `/portfolio`, `/writing`, `/dashboards`, `/about`,
   `/resume`, `/contact`, listed in `src/constants/catalog97Nav.ts`) pass through
   untouched because their page components render `Catalog97Shell` themselves.
-  Every other route, `/admin` included, is wrapped in
+  Every other route is wrapped in
   `src/components/catalog97/Catalog97ToolShell.tsx`, which supplies the header,
   the only page-level `main`, the espresso footer, and the build-note aside.
   Leaf sections use `div`/`section`, never a nested `main`. Every route exposes
@@ -235,7 +234,7 @@ separate tabs do not overwrite unseen picks. Reference: `PERSONAL_INTEREST_TOOLS
   (`fantasy-draft-presets-v1`, `src/lib/draftPresets.ts`) on the setup screen.
 - `useFantasySnapshot` is the single client entry point.
 - Best ball ships separately at `public/data/fantasy/best-ball.json`, with consensus rankings, Underdog ADP, bye weeks, and Week 17 opponents. `useBestBallSnapshot` is its client entry point, and `src/lib/bestBall/` owns contest presets and draft recommendations (`contests.ts`, `draft.ts`, `rankings.ts`, `recommendations.ts`, `strategy.ts`). Keep best ball state and roster logic separate from the redraft tracker.
-- The in-season weekly board ships at `public/data/fantasy/weekly.json` (schema v1), built by `npm run update:fantasy:weekly` (`scripts/buildFantasyWeeklySnapshot.ts`) from the FantasyPros weekly FLEX and QB consensus pages through `src/lib/fantasyWeeklySource.ts`. FantasyPros publishes no single overall board in season, so FLEX stands in for the Overall tab, and flex and quarterback ranks stay in separate rank spaces because a flex rank of 12 and a quarterback rank of 12 are not comparable. `src/lib/fantasyWeeklySnapshot.ts` owns the schema, the reader's validator, and the waiver reading, which is a published rank percentile minus a published rostered percentage and models no bid, projection, or points total. The rest-of-season URLs in the source module served the 2026 season on 2026-09-28, so they pass the season check, but no board is built from them and the weekly builder does not request them. `/fantasy-football/weekly` renders the snapshot (`weekly-client.tsx`, via `useFantasyWeeklySnapshot`); when the file is missing, as it is before a season's first weekly board publishes, the hook maps that to a `notPublished` state and the route explains that the board opens with Week 1.
+- The in-season weekly board ships at `public/data/fantasy/weekly.json` (schema v1), built by `npm run update:fantasy:weekly` (`scripts/buildFantasyWeeklySnapshot.ts`) from the FantasyPros weekly FLEX and QB consensus pages through `src/lib/fantasyWeeklySource.ts`. FantasyPros publishes no single overall board in season, so FLEX stands in for the Overall tab, and flex and quarterback ranks stay in separate rank spaces because a flex rank of 12 and a quarterback rank of 12 are not comparable. `src/lib/fantasyWeeklySnapshot.ts` owns the schema, the reader's validator, and the waiver reading, which is a published rank percentile minus a published rostered percentage and models no bid, projection, or points total. `/fantasy-football/weekly` renders the snapshot (`weekly-client.tsx`, via `useFantasyWeeklySnapshot`); when the file is missing, as it is before a season's first weekly board publishes, the hook maps that to a `notPublished` state and the route explains that the board opens with Week 1.
 - `src/components/fantasy/DraftValuePanel.tsx` is the shared UI for Draft Outlook and expected return math. Best Ball Mania VII field economics are published inputs from the dated contest preset. Weekly Winners, Sit and Go, and other variable lobby cards must not receive invented static economics.
 - `/fantasy-football/trade-calculator` reads the same redraft snapshot through `src/lib/fantasyTrade.ts` and `src/hooks/useFantasyTradeCalculator.ts`. Selected player IDs persist under `fantasy-trade-calculator-v1-<season>-<scoring>` via `src/lib/fantasyTradePersistence.ts`; scoring, team count, roster size, and lineup preset stay in the URL. It never issues a verdict when the expert board is stale or when any selected player lacks a reliable current-market reading.
 - The **fantasy draft companion** is a private Chrome/Edge side panel, not a deployed surface. Its source is `extension/` (Vite, `service-worker.ts`, `sidepanel.html`, and `autodraft-content.ts`), its shared logic is `src/lib/fantasyCompanion/*`, and it builds with `npm run build:fantasy-companion` (`scripts/buildFantasyCompanionExtension.mjs`), which packages compact snapshot copies into `extension/dist`. At open it fetches the published snapshot from `isaacvazquez.com` and falls back to the packaged copy. Completed picks sync automatically from Underdog draft-room cells, ESPN's read-only league draft detail API (polled from the signed-in draft-room tab), or Sleeper's read-only draft picks API. The reconciliation path only appends a complete, uniquely matched provider sequence and pauses on gaps or conflicts. ESPN and Sleeper redraft rooms can also use the explicit away controller, which binds to that tab and the provider's room identity (disarming on room change or same-doc navigation), requires matching candidate confirmation dialogs, and verifies submitted picks against pre- and post-click provider pick logs. Underdog away mode prepares contest specific rankings and position limits for Underdog's native Autopilot. Runbook: `docs/FANTASY_DRAFT_COMPANION.md`.
@@ -248,7 +247,7 @@ separate tabs do not overwrite unseen picks. Reference: `PERSONAL_INTEREST_TOOLS
 Catalog 97 is the only design language on the site, apart from one sanctioned palette
 exception: `/arcade` keeps its CRT palette, because each project keeps an identity that fits
 it (see `STYLING.md`). Formula 1's old scoped red is gone, and its module reads `--c97-*`. Every
-route, `/admin` included, renders inside `Catalog97Shell` or `Catalog97ToolShell`, and its
+route renders inside `Catalog97Shell` or `Catalog97ToolShell`, and its
 tokens and classes live in
 `src/app/catalog97.css`. `STYLING.md` is the reference for it. `DESIGN.md` describes
 Catalog 97, and where it disagrees with `catalog97.css`, the CSS wins.
@@ -312,8 +311,9 @@ Catalog 97, and where it disagrees with `catalog97.css`, the CSS wins.
 - Keep light/dark mode support, 44px minimum touch targets, and `prefers-reduced-motion`
   for animated components. Shared portfolio-shell primitives must not use
   `transition-all` — transition specific properties.
-- Framer Motion entrances must honor `useReducedMotion()` — the global CSS guard does
-  **not** stop JS/rAF-driven Framer animation, and shared primitives are the usual offenders.
+- Entrances are CSS transitions (`.c97-enter-*` in `catalog97.css`), which the global
+  reduced-motion guard covers. JS-driven motion (D3 transitions, scroll behavior) reads
+  `useReducedMotion()` from `src/hooks/useReducedMotion.ts`.
 
 ---
 

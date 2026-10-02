@@ -118,3 +118,11 @@ ds-bundle/
 
 # Local refresh manifests written by scripts/verifyDataRefresh.ts (CI uses RUNNER_TEMP)
 .tmp/
+
+# Local agent tooling trees and Impeccable run output (kept on disk, not tracked)
+.agents/
+.cortex/
+.impeccable/live/
+.impeccable/critique/
+.impeccable/hook.cache.json
+.impeccable/audit-*.md

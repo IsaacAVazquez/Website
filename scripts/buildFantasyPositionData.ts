@@ -11,12 +11,13 @@ import {
 import { fantasyPositionData } from "@/data/fantasyPositionData.generated";
 import { getSnapshotSeason } from "@/lib/fantasySnapshotBuilder";
 import { Player, ScoringFormat } from "@/types";
+import { setTimeout as sleep } from "node:timers/promises";
 
 const OUTPUT_PATH = path.join(
   process.cwd(),
   "src",
   "data",
-  "fantasyPositionData.generated.ts"
+  "fantasyPositionData.generated.json"
 );
 
 const FANTASY_POSITION_DATA_POSITIONS = ["QB", "RB", "WR", "TE", "K", "DST"] as const;
@@ -29,39 +30,6 @@ interface FantasyPositionDataset {
   overall: Player[];
   positions: Record<FantasyPositionDataPosition, Player[]>;
   upstreamUpdatedAt: string | null;
-}
-
-function pause(ms: number) {
-  return new Promise((resolve) => setTimeout(resolve, ms));
-}
-
-export function renderGeneratedModule(
-  data: Record<ScoringFormat, FantasyPositionDataset>,
-  generatedAt: string,
-  sourceLabel: string
-): string {
-  const serialized = JSON.stringify(data, null, 2);
-
-  return `/**
- * Generated fantasy position data.
- * Do not edit manually. Regenerate with \`npm run update:fantasy\`.
- */
-
-import { Player, ScoringFormat } from "@/types";
-
-export const fantasyPositionDataGeneratedAt = ${JSON.stringify(generatedAt)};
-export const fantasyPositionDataSource = ${JSON.stringify(sourceLabel)};
-
-export const fantasyPositionData: Record<
-  ScoringFormat,
-  {
-    season?: number;
-    overall: Player[];
-    positions: Record<"QB" | "RB" | "WR" | "TE" | "K" | "DST", Player[]>;
-    upstreamUpdatedAt: string | null;
-  }
-> = ${serialized};
-`;
 }
 
 export function recordSourceLabel(
@@ -98,7 +66,7 @@ async function main() {
       fantasyPositionData.STANDARD.season
     );
     sharedData[position] = board.players;
-    await pause(250);
+    await sleep(250);
   }
 
   const scoringFormats: ScoringFormat[] = ["PPR", "HALF_PPR", "STANDARD"];
@@ -114,7 +82,7 @@ async function main() {
       fantasyPositionData[scoringFormat].overall,
       fantasyPositionData[scoringFormat].season
     );
-    await pause(250);
+    await sleep(250);
 
     const positions = {} as Record<FantasyPositionDataPosition, Player[]>;
 
@@ -134,7 +102,7 @@ async function main() {
         fantasyPositionData[scoringFormat].season
       );
       positions[position] = board.players;
-      await pause(250);
+      await sleep(250);
     }
 
     dataset[scoringFormat] = {
@@ -151,7 +119,7 @@ async function main() {
 
   writeFileAtomic(
     OUTPUT_PATH,
-    renderGeneratedModule(dataset, generatedAt, selectedSourceLabel)
+    JSON.stringify({ generatedAt, source: selectedSourceLabel, data: dataset }, null, 2) + "\n"
   );
 
   for (const scoringFormat of scoringFormats) {

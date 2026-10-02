@@ -10,7 +10,7 @@
 
 import type { DestinationRegion, RegionId } from "@/types/travelDeals";
 import { DESTINATION_REGIONS, POINTS_BASELINE_CENTS } from "@/data/travelDealsSnapshot";
-import { toLocalDateKey, parseLocalDateKey } from "@/lib/date-formatters";
+import { daysBetween, toLocalDateKey } from "@/lib/date-formatters";
 
 // --- Date helpers ---
 
@@ -22,21 +22,7 @@ export function isIsoDate(value: unknown): value is string {
 
 export const todayKey = toLocalDateKey;
 
-function parseDateKey(value: unknown): Date | null {
-  return typeof value === "string" ? parseLocalDateKey(value) : null;
-}
-
-/**
- * Whole days from `fromKey` to `toKey`; negative when `toKey` is in the past.
- * Either key can be null (the caller's "today" not resolved yet on the
- * client), which reads the same as an invalid key: null out.
- */
-export function daysBetween(fromKey: string | null, toKey: string | null): number | null {
-  const from = parseDateKey(fromKey);
-  const to = parseDateKey(toKey);
-  if (!from || !to) return null;
-  return Math.round((to.getTime() - from.getTime()) / 86_400_000);
-}
+export { daysBetween };
 
 // --- Region lookup ----------------------------------------------------------
 

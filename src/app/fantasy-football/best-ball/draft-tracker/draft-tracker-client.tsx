@@ -1,10 +1,11 @@
 "use client";
 
+import { useIsClient } from "@/hooks/useIsClient";
 import { SeasonalScopeNote } from "@/components/fantasy/SeasonalScopeNote";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useCallback, useEffect, useMemo, useRef, useState, useSyncExternalStore } from "react";
-import { useReducedMotion } from "framer-motion";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { useReducedMotion } from "@/hooks/useReducedMotion";
 import { Redo2, RotateCcw, Undo2 } from "lucide-react";
 import { Breadcrumbs } from "@/components/navigation/Breadcrumbs";
 import type { ExpectedReturnFormState } from "@/components/fantasy/DraftValuePanel";
@@ -48,10 +49,6 @@ import { useBestBallDraft } from "./use-best-ball-draft";
 
 // Mirrors the redraft tracker: CI webkit reloads the room slowly enough that a
 // click can land before hydration, so the shell says when it is interactive.
-const subscribeToHydration = () => () => undefined;
-const getHydratedSnapshot = () => true;
-const getServerHydratedSnapshot = () => false;
-
 const BREADCRUMBS = [
   { label: "Fantasy Football", href: "/fantasy-football" },
   { label: "Best Ball", href: "/fantasy-football/best-ball" },
@@ -145,11 +142,7 @@ export function BestBallDraftTrackerClient({
 }: {
   initialContest?: string;
 }) {
-  const isHydrated = useSyncExternalStore(
-    subscribeToHydration,
-    getHydratedSnapshot,
-    getServerHydratedSnapshot
-  );
+  const isHydrated = useIsClient();
   const router = useRouter();
   const [contestId, setContestId] = useState<BestBallContestId>(() =>
     normalizeContestId(initialContest)

@@ -1,16 +1,15 @@
 "use client";
 
-import { useCallback, useMemo, useSyncExternalStore } from "react";
+import { useCallback, useMemo } from "react";
+import { useLocalStoragePersistenceStatus, useLocalStorageString } from "@/hooks/useLocalStorageString";
 import type { PersistenceStatus } from "@/lib/browserStorage";
 import type { FantasyRouteScoring } from "@/lib/fantasy";
 import { FANTASY_TRADE_MODEL_VERSION } from "@/lib/fantasyTrade";
 import {
   createFantasyTradePersistenceState,
-  getFantasyTradePersistenceSnapshot,
-  getFantasyTradePersistenceStatus,
+  getFantasyTradeStorageKey,
   parseFantasyTradePersistenceState,
   readFantasyTradePersistence,
-  subscribeFantasyTradePersistence,
   writeFantasyTradePersistence,
   type FantasyTradePersistenceState,
 } from "@/lib/fantasyTradePersistence";
@@ -37,20 +36,9 @@ export function useFantasyTradeCalculator(
   );
   const scope = useMemo(() => ({ season, scoring }), [scoring, season]);
 
-  const subscribe = useCallback(
-    (listener: () => void) => subscribeFantasyTradePersistence(scope, listener),
-    [scope]
-  );
-  const rawState = useSyncExternalStore(
-    subscribe,
-    () => getFantasyTradePersistenceSnapshot(scope),
-    () => ""
-  );
-  const persistenceStatus = useSyncExternalStore(
-    subscribe,
-    () => getFantasyTradePersistenceStatus(scope),
-    (): PersistenceStatus => "persistent"
-  );
+  const storageKey = getFantasyTradeStorageKey(scope);
+  const rawState = useLocalStorageString(storageKey);
+  const persistenceStatus = useLocalStoragePersistenceStatus(storageKey);
 
   const state = useMemo(
     () =>

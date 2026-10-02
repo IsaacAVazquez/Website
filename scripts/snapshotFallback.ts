@@ -1,4 +1,5 @@
 import { readFileSync, renameSync, writeFileSync } from "node:fs";
+import { readFile } from "node:fs/promises";
 
 /**
  * Writes to a .tmp file and renames it over the target. A rename is atomic on
@@ -10,6 +11,16 @@ export function writeFileAtomic(filePath: string, content: string): void {
   renameSync(tmp, filePath);
 }
 
+/** Parses a JSON file, or undefined when it does not exist. Unlike readGeneratedSnapshot, bad JSON throws. */
+export async function readJson<T>(filePath: string): Promise<T | undefined> {
+  try {
+    return JSON.parse(await readFile(filePath, "utf8")) as T;
+  } catch (error) {
+    if ((error as NodeJS.ErrnoException).code === "ENOENT") return undefined;
+    throw error;
+  }
+}
+
 /**
  * Runs a snapshot build and returns the result, or returns null after keeping
  * the committed snapshot when the build throws or comes back unusable (an
@@ -19,13 +30,12 @@ export function writeFileAtomic(filePath: string, content: string): void {
  */
 export async function buildOrKeepExisting<T>(
   filePath: string,
-  exportName: string,
   label: string,
   build: () => Promise<T>,
   isUsable: (snapshot: T) => boolean
 ): Promise<T | null> {
   const existingIsUsable = () => {
-    const existing = readGeneratedSnapshot<T>(filePath, exportName);
+    const existing = readGeneratedSnapshot<T>(filePath);
     return existing !== null && isUsable(existing);
   };
 
@@ -52,20 +62,15 @@ export async function buildOrKeepExisting<T>(
 }
 
 /**
- * Reads an already-generated snapshot back out of its `src/data/*.ts` file so a
- * failed refresh can fall back to the last good data instead of overwriting it
- * with nothing. The generated files are plain `export const <name>: <Type> = {…};`
- * object literals (emitted via JSON.stringify), so we slice out the literal and
- * parse it.
+ * Reads an already-generated `src/data/*.json` snapshot back so a failed
+ * refresh can fall back to the last good data instead of overwriting it with
+ * nothing.
  *
- * Returns null when the file is missing or isn't in the generated shape yet
- * (e.g. a hand-authored seed). In that case the caller should surface the
- * original fetch error rather than mask it behind stale data that may not exist.
+ * Returns null when the file is missing or is not JSON. In that case the caller
+ * should surface the original fetch error rather than mask it behind stale data
+ * that may not exist.
  */
-export function readGeneratedSnapshot<T>(
-  filePath: string,
-  exportName: string
-): T | null {
+export function readGeneratedSnapshot<T>(filePath: string): T | null {
   let raw: string;
   try {
     raw = readFileSync(filePath, "utf8");
@@ -76,15 +81,8 @@ export function readGeneratedSnapshot<T>(
     throw error;
   }
 
-  const match = raw.match(
-    new RegExp(`export const ${exportName}[^=]*=\\s*(\\{[\\s\\S]*\\});\\s*$`)
-  );
-  if (!match) {
-    return null;
-  }
-
   try {
-    return JSON.parse(match[1]) as T;
+    return JSON.parse(raw) as T;
   } catch {
     return null;
   }

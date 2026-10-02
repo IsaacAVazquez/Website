@@ -18,55 +18,14 @@ concurrency:
 jobs:
   refresh-earthquake:
     name: Refresh Earthquake Snapshot
-    runs-on: ubuntu-latest
-    timeout-minutes: 30
-
+    uses: ./.github/workflows/refresh-snapshot.yml
+    secrets: inherit
     permissions:
       contents: write
       issues: write
-
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v7
-        with:
-          ref: main
-          fetch-depth: 1
-
-      - name: Set up Node.js
-        uses: actions/setup-node@v7
-        with:
-          node-version-file: .nvmrc
-          cache: "npm"
-
-      - name: Install dependencies
-        run: npm ci --prefer-offline --no-audit --fund=false
-
-      - name: Refresh earthquake snapshot
-        timeout-minutes: 12
-        run: npm run update:earthquake
-        env:
-          NODE_ENV: production
-
-      - name: Verify refresh freshness and quality
-        run: npx tsx scripts/verifyDataRefresh.ts earthquake
-
-      - name: Commit and push refreshed snapshot
-        id: commit
-        run: |
-          bash scripts/ci/commit-and-push-snapshot.sh \
-            "chore: refresh earthquake snapshot [automated] [skip ci]" \
-            src/data/earthquakeSnapshot.ts
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Notify on failure via GitHub issue
-        if: failure()
-        uses: actions/github-script@v9
-        with:
-          script: await require('./scripts/ci/failure-issue.cjs').open({ github, context }, 'earthquake-refresh-failure', 'Earthquake refresh failed')
-
-      - name: Close resolved failure issues
-        if: success()
-        uses: actions/github-script@v9
-        with:
-          script: await require('./scripts/ci/failure-issue.cjs').close({ github, context }, 'earthquake-refresh-failure')
+    with:
+      id: earthquake
+      snapshot-path: src/data/earthquakeSnapshot.json
+      label: earthquake-refresh-failure
+      title: Earthquake refresh failed
+      timeout-minutes: 30

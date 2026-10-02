@@ -57,9 +57,7 @@ Fast route reference for the current app.
 | `/score-pools/settings` | `src/app/score-pools/settings/page.tsx` | Server page -> `SettingsClient` |
 | `/arcade` | `src/app/arcade/page.tsx` | Server page -> `ArcadeClient` |
 | `/agent-build-index` | `src/app/agent-build-index/page.tsx` | Server page |
-| `/analytics-reference` | `src/app/analytics-reference/page.tsx` | Server page documenting the analytics events |
 | `/enablement-assistant` | `src/app/enablement-assistant/page.tsx` | Server page -> `EnablementAssistantClient` |
-| `/design/catalog-pages` | `src/app/design/catalog-pages/page.tsx` | Server page -> `Catalog97LayoutsCanvas`, set to noindex |
 | `/fantasy-football` | `src/app/fantasy-football/page.tsx` | Server page -> fantasy client UI |
 | `/fantasy-football/tiers/[position]` | `next.config.mjs` | Permanent redirect to `/fantasy-football?position=:position&scoring=ppr` |
 | `/fantasy-football/rb-tiers` | `next.config.mjs` | Permanent redirect to `/fantasy-football?position=rb&scoring=ppr` |
@@ -71,11 +69,10 @@ Fast route reference for the current app.
 | `/fantasy-football/best-ball` | `src/app/fantasy-football/best-ball/page.tsx` | Async server page -> `BestBallClient` |
 | `/fantasy-football/best-ball/draft-tracker` | `src/app/fantasy-football/best-ball/draft-tracker/page.tsx` | Async server page -> `BestBallDraftTrackerClient` |
 | `/search` | `src/app/search/page.tsx` | Search UI page |
-| `/admin` | `src/app/admin/page.tsx` | Auth-aware admin page |
 | `/now` | `src/app/now/page.tsx` | Current focus / status page |
 | `/changelog` | `src/app/changelog/page.tsx` | Site changelog page |
 
-There is no live `/admin/analytics` route in the current app tree.
+There is no `/admin` route; it and NextAuth were removed on 2026-10-02.
 
 ---
 
@@ -84,7 +81,7 @@ There is no live `/admin/analytics` route in the current app tree.
 - `src/app/layout.tsx` renders fonts, providers, the skip link, and `ConditionalLayout`
 - `src/components/ConditionalLayout.tsx` has two branches
 - the seven designed Catalog 97 routes (`/`, `/portfolio`, `/writing`, `/dashboards`, `/about`, `/resume`, `/contact`, listed in `src/constants/catalog97Nav.ts`) pass through untouched because their page components render `Catalog97Shell` themselves
-- every other route, `/admin` included, is wrapped in `src/components/catalog97/Catalog97ToolShell.tsx`, which adds an optional title band and the build-note aside
+- every other route is wrapped in `src/components/catalog97/Catalog97ToolShell.tsx`, which adds an optional title band and the build-note aside
 
 Semantics:
 
@@ -164,13 +161,13 @@ Footer behavior:
 
 - `/news-pulse` is a live route backed by `/api/news-pulse`
 - `/spacex-mission-control` is a live route backed by `/api/spacex/*`
-- `/polling-aggregator` is a live route backed by `src/data/pollingSnapshot.ts`
+- `/polling-aggregator` is a live route backed by `src/data/pollingSnapshot.json`
 - `/mlb`, `/nba`, and `/nfl` are live sports dashboards backed by committed TypeScript snapshots and matching `/api/{league}/*` routes
-- `/golf` is a live sports dashboard backed by `src/data/golfSnapshot.ts`, rebuilt by `npm run update:golf`
-- `/world-cup-2026` is a live World Cup hub backed by `src/data/worldCupSnapshot.ts` and `/api/world-cup/*`
-- `/bay-area-transit` is a live BART dashboard backed by `src/data/bayAreaTransitSnapshot.ts` and `/api/bay-area-transit/*`
-- `/earthquake-pulse` is a live USGS earthquake monitor backed by `src/data/earthquakeSnapshot.ts` and `/api/earthquake-pulse/summary`
-- `/tech-startup-tracker` is a live curated startup funding tracker backed by `src/data/techStartupSnapshot.ts`
+- `/golf` is a live sports dashboard backed by `src/data/golfSnapshot.json`, rebuilt by `npm run update:golf`
+- `/world-cup-2026` is a live World Cup hub backed by `src/data/worldCupSnapshot.json` and `/api/world-cup/*`
+- `/bay-area-transit` is a live BART dashboard backed by `src/data/bayAreaTransitSnapshot.json` and `/api/bay-area-transit/*`
+- `/earthquake-pulse` is a live USGS earthquake monitor backed by `src/data/earthquakeSnapshot.json` and `/api/earthquake-pulse/summary`
+- `/tech-startup-tracker` is a live curated startup funding tracker backed by `src/data/techStartupSnapshot.json`
 - `/ai-dev-tools` and `/frontier-models` are live AI/knowledge surfaces
 - `/decision-lab`, `/food-map`, `/recipe-finder`, `/wine-cellar`, `/museum-log`, `/travel`, `/now`, and `/changelog` are live personal or utility surfaces
 - `/fintech-tools/budget-planner` and `/fintech-tools/interchange-iq` are live fintech tool routes

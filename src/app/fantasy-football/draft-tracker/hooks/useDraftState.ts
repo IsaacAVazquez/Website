@@ -16,7 +16,8 @@ import {
   getFantasyDraftStorageKey,
 } from '@/lib/fantasyUtils';
 import { emitBrowserStorageChange, subscribeBrowserStorage } from "@/lib/browserStorage";
-import { isRecord } from "@/lib/utils";
+import { clamp, escapeCsvValue, isFiniteNumber, isRecord, prefixedId } from "@/lib/utils";
+import { downloadFile } from "@/lib/downloadFile";
 
 // Defined in fantasyUtils so a caller that only needs the season or the key
 // does not bundle this hook. Re-exported for the mock draft and the tests.
@@ -129,10 +130,6 @@ const SUPPORTED_TIMER_SECONDS = [0, 45, 60, 90, 120, 180] as const;
 const DRAFT_ROSTER_POSITIONS = ['QB', 'RB', 'WR', 'TE', 'K', 'DST'] as const;
 type DraftRosterPosition = (typeof DRAFT_ROSTER_POSITIONS)[number];
 
-function isFiniteNumber(value: unknown): value is number {
-  return typeof value === 'number' && Number.isFinite(value);
-}
-
 function isDraftRosterPosition(value: unknown): value is DraftRosterPosition {
   return DRAFT_ROSTER_POSITIONS.includes(value as DraftRosterPosition);
 }
@@ -150,8 +147,7 @@ function nearestSupportedInteger(
 }
 
 function clampInteger(value: unknown, minimum: number, maximum: number, fallback: number): number {
-  if (!isFiniteNumber(value)) return fallback;
-  return Math.min(maximum, Math.max(minimum, Math.round(value)));
+  return isFiniteNumber(value) ? clamp(Math.round(value), minimum, maximum) : fallback;
 }
 
 function decodeDate(value: unknown): Date | undefined {
@@ -419,7 +415,7 @@ function decodePersistedDraftState(value: unknown): DraftState {
   const draftId =
     typeof record.draftId === 'string' && record.draftId.trim()
       ? record.draftId.trim().slice(0, 100)
-      : generateDraftId();
+      : prefixedId("draft");
 
   return {
     settings,
@@ -437,20 +433,6 @@ function decodePersistedDraftState(value: unknown): DraftState {
   };
 }
 
-// Generate unique draft ID
-const generateDraftId = (): string => {
-  return `draft_${Date.now()}_${Math.random().toString(36).slice(2, 11)}`;
-};
-
-// Escape a single CSV field per RFC 4180: wrap in quotes and double any
-// embedded quotes when the value contains a comma, quote, or newline. NFL
-// player names are usually comma-free, but this keeps the export from breaking
-// on the occasional edge case.
-const escapeCsvValue = (value: string | number): string => {
-  const stringValue = String(value);
-  return /[",\n\r]/.test(stringValue) ? `"${stringValue.replace(/"/g, '""')}"` : stringValue;
-};
-
 export const useDraftState = () => {
   const [draftState, setDraftState] = useState<DraftState>(() => {
     // Initialize with default state
@@ -463,7 +445,7 @@ export const useDraftState = () => {
       isActive: false,
       undoHistory: [],
       teams: initializeTeams(settings.totalTeams),
-      draftId: generateDraftId(),
+      draftId: prefixedId("draft"),
     };
   });
 
@@ -821,7 +803,7 @@ export const useDraftState = () => {
       isActive: false,
       undoHistory: [],
       teams: rebuildTeams(prev.settings.totalTeams, [], prev.teams),
-      draftId: generateDraftId(),
+      draftId: prefixedId("draft"),
     }), true);
   }, [commitDraftState]);
 
@@ -833,16 +815,6 @@ export const useDraftState = () => {
     },
     [draftState.teams]
   );
-
-  function downloadBlob(parts: BlobPart[], type: string, filename: string) {
-    const blob = new Blob(parts, { type });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = filename;
-    a.click();
-    URL.revokeObjectURL(url);
-  }
 
   function toCsv(rows: (string | number)[][]): string {
     // CRLF row endings per RFC 4180.
@@ -896,10 +868,10 @@ export const useDraftState = () => {
         });
 
         // UTF-8 BOM so Excel on Windows doesn't garble accented player names.
-        downloadBlob(
-          ['\uFEFF', toCsv([headers, ...rows])],
-          'text/csv;charset=utf-8',
-          `draft-results-${draftState.draftId}.csv`
+        downloadFile(
+          `draft-results-${draftState.draftId}.csv`,
+          '\uFEFF' + toCsv([headers, ...rows]),
+          'text/csv;charset=utf-8'
         );
         return;
       }
@@ -931,10 +903,10 @@ export const useDraftState = () => {
             ];
           });
 
-        downloadBlob(
-          ['\uFEFF', toCsv([headers, ...rows])],
-          'text/csv;charset=utf-8',
-          `draft-recap-${draftState.draftId}.csv`
+        downloadFile(
+          `draft-recap-${draftState.draftId}.csv`,
+          '\uFEFF' + toCsv([headers, ...rows]),
+          'text/csv;charset=utf-8'
         );
         return;
       }
@@ -950,10 +922,10 @@ export const useDraftState = () => {
         draftId: draftState.draftId,
         exportDate: new Date().toISOString(),
       };
-      downloadBlob(
-        [JSON.stringify(exportData, null, 2)],
-        'application/json',
-        `draft-results-${draftState.draftId}.json`
+      downloadFile(
+        `draft-results-${draftState.draftId}.json`,
+        JSON.stringify(exportData, null, 2),
+        'application/json'
       );
     },
     [draftState, resolveTeamName]

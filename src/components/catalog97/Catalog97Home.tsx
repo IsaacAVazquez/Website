@@ -233,10 +233,7 @@ export function Catalog97Home({
               >
                 <span className={`c97-offset ${styles.workPlate}`}>
                   <Image
-                    src={
-                      PROJECT_PLATES[project.slug] ??
-                      `/images/projects/${project.slug}.svg`
-                    }
+                    src={PROJECT_PLATES[project.slug]}
                     alt=""
                     fill
                     sizes="(max-width: 880px) 100vw, 33vw"

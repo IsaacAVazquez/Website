@@ -44,8 +44,6 @@ Main pieces:
 - the index is read on the server by `src/app/investments/page.tsx` (`getInvestmentsIndex`, with `public/data/investments/index.json` as the fallback import); there is no `/api/investments/index` route
 - API routes:
   - `/api/investments/quotes`
-  - `/api/investments/data/[symbol]`
-  - `/api/stocks` (retired on 2026-07-06, returns 410 Gone)
 
 Update path:
 
@@ -56,8 +54,8 @@ Update path:
 
 Premier League and La Liga use committed TypeScript snapshots:
 
-- `src/data/premierLeagueSnapshot.ts`
-- `src/data/laLigaSnapshot.ts`
+- `src/data/premierLeagueSnapshot.json`
+- `src/data/laLigaSnapshot.json`
 
 Update paths:
 
@@ -66,7 +64,7 @@ Update paths:
 - `npm run update:la-liga` for La Liga only
 - production builds consume committed football snapshots without calling external providers
 
-The pages and the `/api/{premier-league,la-liga}/teams/[teamId]` routes read those committed snapshots instead of calling `football-data.org`. The league `/summary` routes were removed.
+The pages and the `/api/{premier-league,la-liga}/teams/[teamId]` routes read those committed snapshots instead of calling `football-data.org`. The league `/summary` routes were removed. Both league builders (`src/lib/premierLeagueData.ts`, `src/lib/laLigaData.ts`) are thin wrappers over the competition-parameterized `src/lib/footballLeagueData.ts`, which owns the fetch sequence, the season rollover re-pin, the normalizers, and the live single-flight cache.
 
 ---
 
@@ -74,9 +72,9 @@ The pages and the `/api/{premier-league,la-liga}/teams/[teamId]` routes read tho
 
 MLB, NBA, and NFL use committed TypeScript snapshots:
 
-- `src/data/mlbSnapshot.ts`
-- `src/data/nbaSnapshot.ts`
-- `src/data/nflSnapshot.ts`
+- `src/data/mlbSnapshot.json`
+- `src/data/nbaSnapshot.json`
+- `src/data/nflSnapshot.json`
 
 Update paths:
 
@@ -86,17 +84,17 @@ Update paths:
 
 The pages read the summaries on the server, and the team drilldown routes under `/api/mlb/*`, `/api/nba/*`, and `/api/nfl/*` read those snapshots. The matching GitHub Actions workflows refresh and commit snapshots on their seasonal schedules.
 
-Golf uses `src/data/golfSnapshot.ts`, rebuilt by `npm run update:golf` (`scripts/buildGolfSnapshot.ts`) from ESPN's public golf leaderboard endpoint; `.github/workflows/update-golf.yml` refreshes it every three hours Thursday through Sunday and once a day Monday through Wednesday. A failed fetch keeps the previous snapshot. Between tournaments, restamping requires verified final tournament completion (`status === 'final'`) and an end date within 45 days; in-progress boards retain their prior timestamp.
+Golf uses `src/data/golfSnapshot.json`, rebuilt by `npm run update:golf` (`scripts/buildGolfSnapshot.ts`) from ESPN's public golf leaderboard endpoint; `.github/workflows/update-golf.yml` refreshes it every three hours Thursday through Sunday and once a day Monday through Wednesday. A failed fetch keeps the previous snapshot. Between tournaments, restamping requires verified final tournament completion (`status === 'final'`) and an end date within 45 days; in-progress boards retain their prior timestamp.
 
-The 2026 World Cup hub uses `src/data/worldCupSnapshot.ts`, rebuilt by `npm run update:world-cup` from ESPN's public `soccer/fifa.world` endpoints; `.github/workflows/update-world-cup.yml` has no schedule now that the tournament is over and runs on manual dispatch only. Runtime routes under `/api/world-cup/*` read the committed snapshot.
+The 2026 World Cup hub uses `src/data/worldCupSnapshot.json`, rebuilt by `npm run update:world-cup` from ESPN's public `soccer/fifa.world` endpoints; `.github/workflows/update-world-cup.yml` has no schedule now that the tournament is over and runs on manual dispatch only. Runtime routes under `/api/world-cup/*` read the committed snapshot.
 
 ---
 
 ## Civic And Curated Tool Pipelines
 
-- `/bay-area-transit` uses `src/data/bayAreaTransitSnapshot.ts`, rebuilt by `npm run update:bay-area-transit` from BART's public legacy API; `.github/workflows/update-bay-area-transit.yml` refreshes it every six hours. Runtime routes under `/api/bay-area-transit/*` fetch BART at request time and fall back to the committed snapshot.
-- `/earthquake-pulse` uses `src/data/earthquakeSnapshot.ts`, rebuilt by `npm run update:earthquake` from public USGS GeoJSON feeds; `.github/workflows/update-earthquake.yml` refreshes it daily at 06:20 UTC. `/api/earthquake-pulse/summary` fetches USGS at request time and falls back to the committed snapshot, with event detail embedded in the summary payload.
-- `/tech-startup-tracker` uses the editorially curated `src/data/techStartupSnapshot.ts`, rebuilt by `npm run update:tech-startups` from a hand-maintained seed in `scripts/buildTechStartupSnapshot.ts`. There is no scheduled workflow because there is no live source to poll.
+- `/bay-area-transit` uses `src/data/bayAreaTransitSnapshot.json`, rebuilt by `npm run update:bay-area-transit` from BART's public legacy API; `.github/workflows/update-bay-area-transit.yml` refreshes it every six hours. Runtime routes under `/api/bay-area-transit/*` fetch BART at request time and fall back to the committed snapshot.
+- `/earthquake-pulse` uses `src/data/earthquakeSnapshot.json`, rebuilt by `npm run update:earthquake` from public USGS GeoJSON feeds; `.github/workflows/update-earthquake.yml` refreshes it daily at 06:20 UTC. `/api/earthquake-pulse/summary` fetches USGS at request time and falls back to the committed snapshot, with event detail embedded in the summary payload.
+- `/tech-startup-tracker` uses the editorially curated `src/data/techStartupSnapshot.json`, rebuilt by `npm run update:tech-startups` from a hand-maintained seed in `scripts/buildTechStartupSnapshot.ts`. There is no scheduled workflow because there is no live source to poll.
 
 ---
 
@@ -134,8 +132,8 @@ The fantasy stack is generated snapshot first:
 
 Public generated outputs include:
 
-- `src/data/fantasyPositionData.generated.ts`
-- `src/data/fantasyAdpData.generated.ts`
+- `src/data/fantasyPositionData.generated.json`
+- `src/data/fantasyAdpData.generated.json`
 - `src/data/fantasySnapshotRevision.generated.ts`
 - `public/data/fantasy/ppr.json`
 - `public/data/fantasy/half_ppr.json`
@@ -170,11 +168,11 @@ March Madness is split between:
 
 - `/news-pulse` reads data through `/api/news-pulse` and `src/lib/news-pulse-utils.ts`
 - `/spacex-mission-control` reads SpaceX payloads through `/api/spacex/*` and `src/lib/spacexData.ts`
-- `/formula-1` reads `src/data/formula1Snapshot.ts`, rebuilt by `npm run update:formula-1`
+- `/formula-1` reads `src/data/formula1Snapshot.json`, rebuilt by `npm run update:formula-1`
 - `/fantasy-formula-1` reads Formula 1 data and browser-local lineup state helpers in `src/lib/fantasyFormula1.ts`
-- `/github-trending-pulse` reads `src/data/githubTrendingSnapshot.ts`, rebuilt by `npm run update:github-trending`
-- `/frontier-models` reads `src/data/frontierModelsSnapshot.ts`, rebuilt from `scripts/data/frontierModels.source.ts`
-- `/polling-aggregator` reads `src/data/pollingSnapshot.ts`
+- `/github-trending-pulse` reads `src/data/githubTrendingSnapshot.json`, rebuilt by `npm run update:github-trending`
+- `/frontier-models` reads `src/data/frontierModelsSnapshot.json`, rebuilt from `scripts/data/frontierModels.source.ts`
+- `/polling-aggregator` reads `src/data/pollingSnapshot.json`
 - `/museum-log` reads `src/data/museumSnapshot.ts`, with personal visit state browser-local via `src/hooks/useMuseumLog.ts`
 - `/recipe-finder` reads `src/data/recipesSnapshot.ts` through `src/lib/recipes.ts`
 - `/travel` keeps all trip, itinerary, and journal state browser-local via `src/hooks/useTravelPlanner.ts`; there is no server data source

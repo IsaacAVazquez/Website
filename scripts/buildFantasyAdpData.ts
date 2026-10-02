@@ -5,6 +5,7 @@ import { readGeneratedSnapshot, writeFileAtomic } from "./snapshotFallback";
 import { fetchFantasyAdpBoard, type FantasyAdpEntry } from "@/lib/fantasyAdpSource";
 import { getSnapshotSeason } from "@/lib/fantasySnapshotBuilder";
 import { ScoringFormat } from "@/types";
+import { setTimeout as sleep } from "node:timers/promises";
 
 /**
  * Fetches mock-draft ADP for each scoring format and writes the generated ADP
@@ -15,7 +16,7 @@ import { ScoringFormat } from "@/types";
  * leaves the empty seed in place — the snapshots then simply ship without ADP.
  */
 
-const OUTPUT_PATH = path.join(process.cwd(), "src", "data", "fantasyAdpData.generated.ts");
+const OUTPUT_PATH = path.join(process.cwd(), "src", "data", "fantasyAdpData.generated.json");
 
 interface FantasyAdpDatasetRecord {
   entries: FantasyAdpEntry[];
@@ -96,40 +97,11 @@ export function resolveAdpFormat(
   return { record: null, source: "empty" };
 }
 
-function pause(ms: number) {
-  return new Promise((resolve) => setTimeout(resolve, ms));
-}
-
-function renderGeneratedModule(data: FantasyAdpDataRecord, generatedAt: string): string {
-  const serialized = JSON.stringify(data, null, 2);
-
-  return `/**
- * Generated fantasy ADP data.
- * Do not edit manually. Regenerate with \`npm run update:fantasy\`.
- */
-
-import type { FantasyAdpEntry } from "@/lib/fantasyAdpSource";
-import type { ScoringFormat } from "@/types";
-
-export const fantasyAdpDataGeneratedAt = ${JSON.stringify(generatedAt)};
-
-export const fantasyAdpData: Record<
-  ScoringFormat,
-  {
-    entries: FantasyAdpEntry[];
-    asOf: string | null;
-    sampleSize: number | null;
-    sourceUrl: string;
-    season?: number | null;
-  }
-> = ${serialized};
-`;
-}
-
 async function main() {
   const generatedAt = new Date().toISOString();
   const season = getSnapshotSeason();
-  const previous = readGeneratedSnapshot<FantasyAdpDataRecord>(OUTPUT_PATH, "fantasyAdpData");
+  const previous =
+    readGeneratedSnapshot<{ data?: FantasyAdpDataRecord }>(OUTPUT_PATH)?.data ?? null;
   const dataset = {} as FantasyAdpDataRecord;
   const notes: string[] = [];
 
@@ -169,7 +141,7 @@ async function main() {
         dataset[scoringFormat].asOf ?? "unknown"
       }, ${dataset[scoringFormat].sampleSize ?? "?"} drafts)`
     );
-    await pause(250);
+    await sleep(250);
   }
 
   const totalEntries = SCORING_FORMATS.reduce(
@@ -182,7 +154,7 @@ async function main() {
     return;
   }
 
-  writeFileAtomic(OUTPUT_PATH, renderGeneratedModule(dataset, generatedAt));
+  writeFileAtomic(OUTPUT_PATH, JSON.stringify({ generatedAt, data: dataset }, null, 2) + "\n");
 
   for (const note of notes) console.log(`[adp] ${note}`);
   console.log(`Wrote fantasy ADP data: ${OUTPUT_PATH}`);

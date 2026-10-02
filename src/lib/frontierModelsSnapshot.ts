@@ -1,7 +1,8 @@
 import { frontierModelsSnapshot } from "@/data/frontierModelsSnapshot";
 import { FRONTIER_MODELS_BLOB_KEY } from "@/lib/frontierModelsLive";
 import { logger } from "@/lib/logger";
-import { readSnapshotBlob } from "@/lib/snapshotBlobStore";
+import { readSnapshotBlob } from "@/lib/netlifyBlobs";
+import { isFiniteNumber as isNumber } from "@/lib/utils";
 import type { FrontierModelsSnapshot } from "@/types/frontierModels";
 
 // Serve the blob written by the daily scheduled refresh for up to three
@@ -21,8 +22,6 @@ export function resetFrontierModelsCacheForTests(): void {
   inflight = null;
 }
 
-const isNumber = (value: unknown): value is number =>
-  typeof value === "number" && Number.isFinite(value);
 const isDate = (value: unknown): value is string =>
   typeof value === "string" && Number.isFinite(Date.parse(value));
 // A price or an output limit the provider does not publish is stored as null.

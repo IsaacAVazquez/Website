@@ -79,17 +79,13 @@ Core production variables:
 
 - `SITE_URL`
 - `NEXT_PUBLIC_SITE_URL`
-- `NEXTAUTH_URL`
-- `NEXTAUTH_SECRET`
-- `ADMIN_USERNAME`
-- `ADMIN_PASSWORD`
 
 Operational variables:
 
 - `MBA_DIGEST_SECRET`
 - `FOOTBALL_DATA_API_TOKEN`
 
-The fantasy snapshot builder can use `FANTASYPROS_API_KEY` as an optional build-only credential for local authenticated refreshes. The scheduled GitHub workflow uses the public rankings pages and does not receive this secret. The deployed runtime does not need it.
+The fantasy snapshot builder reads the public FantasyPros rankings pages and needs no credential. The deployed runtime does not fetch from FantasyPros.
 
 Platform-provided variables like `URL`, `DEPLOY_URL`, and `DEPLOY_PRIME_URL` are consumed when available and do not need to be set manually unless you are reproducing a deploy context.
 
@@ -108,13 +104,13 @@ See `docs/ENVIRONMENT_CONFIGURATION.md` for details.
 
 - The fantasy routes read checked-in JSON snapshots at runtime
 - GitHub Actions runs `npm run update:fantasy` and commits refreshed artifacts
-- The GitHub workflow uses the public page parser without `FANTASYPROS_API_KEY`; a local builder run can use the official API when a suitable key is present
+- The GitHub workflow and local builder runs both use the public page parser
 
 ### Football dashboards
 
 - `/premier-league` and `/la-liga` read committed TypeScript snapshots at runtime
 - `FOOTBALL_DATA_API_TOKEN` is needed only when rebuilding those snapshots
-- GitHub Actions refreshes, every four hours from August through May, can commit `src/data/premierLeagueSnapshot.ts` and `src/data/laLigaSnapshot.ts` when data changes
+- GitHub Actions refreshes, every four hours from August through May, can commit `src/data/premierLeagueSnapshot.json` and `src/data/laLigaSnapshot.json` when data changes
 
 ### Static caching
 
@@ -139,7 +135,6 @@ Spot-check:
 - one `/writing/[slug]` page
 - one fantasy route
 - `/search`
-- `/admin`
 
 Also verify:
 

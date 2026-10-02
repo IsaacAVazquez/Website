@@ -5,8 +5,8 @@ import { Suspense } from "react";
 import { ResearchLoading } from "./ResearchLoading";
 import type { ResearchSectionProps } from "./ResearchWorkspace";
 
-// Everything a picked symbol needs, which is nine panels, the research charts,
-// and framer-motion. The default is no symbol, so it loads when one is picked.
+// Everything a picked symbol needs, which is nine panels and the research
+// charts. The default is no symbol, so it loads when one is picked.
 // A link that names a symbol still renders it on the server. It takes no
 // `loading` option, so it suspends to the boundary below, whose fallback can
 // name the symbol.

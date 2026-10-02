@@ -59,7 +59,6 @@ jobs:
         timeout-minutes: 10
         run: npm run update:fantasy:weekly
         env:
-          FANTASYPROS_SOURCE: public-html
           NODE_ENV: production
 
       # Publish the weekly board before the draft requests spend their budgets.
@@ -89,11 +88,6 @@ jobs:
         timeout-minutes: 15
         run: npm run update:fantasy:redraft
         env:
-          # The official endpoint began returning a declared full board with
-          # only the first ten rows. Pin the scheduled job to the separately
-          # labeled public-page adapter instead of changing sources after a
-          # validation failure. Local runs can still opt into official-api.
-          FANTASYPROS_SOURCE: public-html
           NODE_ENV: production
 
       - name: Build best ball snapshot
@@ -102,7 +96,6 @@ jobs:
         timeout-minutes: 10
         run: npm run update:fantasy:best-ball
         env:
-          FANTASYPROS_SOURCE: public-html
           NODE_ENV: production
 
       # Freshness verifies the redraft artifact (ppr.json) only, so it gates
@@ -497,10 +490,10 @@ jobs:
         if: steps.verify_freshness.outcome != 'success' || steps.verify_quality.outcome != 'success'
         run: |
           git checkout -- \
-            src/data/fantasyPositionData.generated.ts \
-            src/data/fantasyAdpData.generated.ts \
-            src/data/fantasyGameLogData.generated.ts \
-            src/data/fantasyVorpData.generated.ts \
+            src/data/fantasyPositionData.generated.json \
+            src/data/fantasyAdpData.generated.json \
+            src/data/fantasyGameLogData.generated.json \
+            src/data/fantasyVorpData.generated.json \
             src/data/fantasyRankHistory.generated.json \
             src/data/fantasySnapshotRevision.generated.ts \
             public/data/fantasy/ppr.json \
@@ -517,10 +510,10 @@ jobs:
         run: |
           bash scripts/ci/commit-and-push-snapshot.sh \
             "chore: update fantasy football snapshots [automated] [skip ci]" \
-            src/data/fantasyPositionData.generated.ts \
-            src/data/fantasyAdpData.generated.ts \
-            src/data/fantasyGameLogData.generated.ts \
-            src/data/fantasyVorpData.generated.ts \
+            src/data/fantasyPositionData.generated.json \
+            src/data/fantasyAdpData.generated.json \
+            src/data/fantasyGameLogData.generated.json \
+            src/data/fantasyVorpData.generated.json \
             src/data/fantasyRankHistory.generated.json \
             src/data/fantasySnapshotRevision.generated.ts \
             public/data/fantasy/ppr.json \

@@ -1,5 +1,3 @@
-import { readFileSync } from "node:fs";
-import { resolve } from "node:path";
 import type {
   NbaConference,
   NbaFixture,
@@ -12,7 +10,8 @@ import type {
   NbaTeamProfile,
   NbaTeamSnapshot,
 } from "@/types/nba";
-import { HttpStatusError } from "@/lib/utils";
+import { HttpStatusError, isFiniteNumber } from "@/lib/utils";
+import { readExistingTeamSnapshots } from "@/lib/existingTeamSnapshots";
 import { retryLinear, hasClientErrorStatus, isTimeoutError } from "@/lib/fetchRetry";
 import { setTimeout as delay } from "node:timers/promises";
 
@@ -170,7 +169,7 @@ function pickStat(stats: EspnStat[] | null | undefined, ...names: string[]): Esp
 
 function statNumber(stat: EspnStat | null, fallback = 0): number {
   if (!stat) return fallback;
-  if (typeof stat.value === "number" && Number.isFinite(stat.value)) return stat.value;
+  if (isFiniteNumber(stat.value)) return stat.value;
   if (typeof stat.value === "string" && stat.value.trim() !== "") {
     const parsed = Number(stat.value);
     if (Number.isFinite(parsed)) return parsed;
@@ -470,7 +469,7 @@ function readByAthleteStat(
   if (columnIndex === undefined) return 0;
   const category = entry.categories?.find((c) => c.name === categoryName);
   const value = category?.values?.[columnIndex];
-  return typeof value === "number" && Number.isFinite(value) ? value : 0;
+  return isFiniteNumber(value) ? value : 0;
 }
 
 function topByAthletes(
@@ -861,47 +860,26 @@ export async function getNbaTeamSnapshot(
 
 // ESPN's hidden API has no documented rate limit, but stay polite.
 const TEAM_FETCH_DELAY_MS = 1_500;
-const NBA_SNAPSHOT_PATH = "src/data/nbaSnapshot.ts";
+const NBA_SNAPSHOT_PATH = "src/data/nbaSnapshot.json";
 
-
-function readExistingTeamSnapshots(filePath: string): Record<string, NbaTeamSnapshot> {
-  try {
-    const fullPath = resolve(process.cwd(), filePath);
-    const content = readFileSync(fullPath, "utf8");
-    const match = content.match(/=\s*(\{[\s\S]*\})\s*;?\s*$/);
-    if (!match) return {};
-    const parsed = JSON.parse(match[1]);
-    return parsed.teamSnapshots ?? {};
-  } catch {
-    return {};
-  }
-}
-
-export async function buildNbaSnapshot(options?: { skipTeamSnapshots?: boolean }): Promise<NbaSnapshot> {
+export async function buildNbaSnapshot(): Promise<NbaSnapshot> {
   const summary = await getNbaSummary();
   const generatedAt = new Date().toISOString();
-  let teamSnapshots: Record<string, NbaTeamSnapshot>;
-
-  if (options?.skipTeamSnapshots) {
-    teamSnapshots = readExistingTeamSnapshots(NBA_SNAPSHOT_PATH);
-    console.log(`  Preserved ${Object.keys(teamSnapshots).length} existing team snapshots.`);
-  } else {
-    const conferenceById = new Map<string, NbaConference>();
-    for (const team of [...summary.teamsByConference.east, ...summary.teamsByConference.west]) {
-      conferenceById.set(team.id, team.conference);
-    }
-    // Start from the prior snapshots so a per-team failure preserves that
-    // team's previous data instead of dropping it from the snapshot.
-    teamSnapshots = { ...readExistingTeamSnapshots(NBA_SNAPSHOT_PATH) };
-    for (const team of summary.teams) {
-      await delay(TEAM_FETCH_DELAY_MS);
-      const conference = conferenceById.get(team.id) ?? "east";
-      try {
-        const snap = await getNbaTeamSnapshot(team.id, conference, summary.seasonEndYear);
-        teamSnapshots[team.id] = { ...snap, generatedAt };
-      } catch (err) {
-        console.warn(`  Skipping team ${team.id} (${team.shortName}): ${(err as Error).message} — keeping previous snapshot if any.`);
-      }
+  const conferenceById = new Map<string, NbaConference>();
+  for (const team of [...summary.teamsByConference.east, ...summary.teamsByConference.west]) {
+    conferenceById.set(team.id, team.conference);
+  }
+  // Start from the prior snapshots so a per-team failure preserves that
+  // team's previous data instead of dropping it from the snapshot.
+  const teamSnapshots = { ...readExistingTeamSnapshots<NbaTeamSnapshot>(NBA_SNAPSHOT_PATH) };
+  for (const team of summary.teams) {
+    await delay(TEAM_FETCH_DELAY_MS);
+    const conference = conferenceById.get(team.id) ?? "east";
+    try {
+      const snap = await getNbaTeamSnapshot(team.id, conference, summary.seasonEndYear);
+      teamSnapshots[team.id] = { ...snap, generatedAt };
+    } catch (err) {
+      console.warn(`  Skipping team ${team.id} (${team.shortName}): ${(err as Error).message} — keeping previous snapshot if any.`);
     }
   }
 

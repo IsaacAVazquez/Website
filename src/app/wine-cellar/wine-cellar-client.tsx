@@ -29,6 +29,7 @@ import { DATE_ONLY_TIME_ZONE } from "@/lib/date-formatters";
 import type { WineEntry, WineType } from "@/types/wine";
 import { WINE_TYPE_MARK, wineRack, type WineRackRow } from "./wineRack";
 import "./wine-cellar.css";
+import { formatDollars } from "@/lib/utils";
 
 const WINE_ROUTE = "/wine-cellar";
 
@@ -97,15 +98,6 @@ function formDraftToWineDraft(draft: WineFormDraft): WineDraft {
     notes: draft.notes,
     tastedOn: draft.tastedOn,
   };
-}
-
-function formatCurrency(value: number) {
-  return value.toLocaleString("en-US", {
-    style: "currency",
-    currency: "USD",
-    minimumFractionDigits: 0,
-    maximumFractionDigits: value % 1 === 0 ? 0 : 2,
-  });
 }
 
 // tastedOn is a date-only string ("2026-06-15"), which parses as UTC midnight,
@@ -540,7 +532,7 @@ export function WineCellarClient() {
                         {entry.notes ? <p className="c97-prose c97-wine-label-notes">{entry.notes}</p> : null}
                         <p className="c97-wine-label-foot">
                           <span title={entry.tastedOn}>{formatTastedDate(entry.tastedOn)}</span>
-                          {entry.price !== null ? <span>{formatCurrency(entry.price)}</span> : null}
+                          {entry.price !== null ? <span>{formatDollars(entry.price)}</span> : null}
                         </p>
                         <div className="c97-wine-log-actions">
                           <button

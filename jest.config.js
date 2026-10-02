@@ -29,7 +29,6 @@ const customJestConfig = {
     '!src/**/__tests__/**',
     '!src/app/layout.tsx',
     '!src/app/page.tsx',
-    '!src/data/backup/**',
   ],
 
   // Coverage thresholds — enforced in CI (npm run test:ci)
@@ -56,7 +55,6 @@ const customJestConfig = {
     '/__tests__/fixtures/',
     '/e2e/',
     '/.next/',
-    '/.open-next/',
     // Jest matches these patterns against absolute paths, and a worktree under
     // .claude/worktrees/ has /.claude/ in every path. Anchoring keeps nested
     // clones out of root discovery and lets a worktree run its own tests.
@@ -66,13 +64,11 @@ const customJestConfig = {
 
   // Keep local worktree clones out of root test discovery and coverage reports.
   modulePathIgnorePatterns: [
-    '<rootDir>/.open-next/',
     '<rootDir>/.worktrees/',
     '<rootDir>/.claude/',
   ],
 
   watchPathIgnorePatterns: [
-    '<rootDir>/.open-next/',
     '<rootDir>/.worktrees/',
     '<rootDir>/.claude/',
   ],

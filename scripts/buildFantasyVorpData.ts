@@ -10,10 +10,11 @@ import {
 } from "@/lib/fantasyProsVorpSource";
 import { getSnapshotSeason } from "@/lib/fantasySnapshotBuilder";
 import type { ScoringFormat } from "@/types";
+import { setTimeout as sleep } from "node:timers/promises";
 
 /**
  * Fetches the nine published FantasyPros VORP reports (three scoring formats
- * by 10, 12, and 14 teams) into `src/data/fantasyVorpData.generated.ts`.
+ * by 10, 12, and 14 teams) into `src/data/fantasyVorpData.generated.json`.
  *
  * VORP is a fail-soft overlay on the consensus board, like ADP: a report that
  * fails to fetch or parse keeps its previous same-season copy, a report with
@@ -24,7 +25,7 @@ const OUTPUT_PATH = path.join(
   process.cwd(),
   "src",
   "data",
-  "fantasyVorpData.generated.ts"
+  "fantasyVorpData.generated.json"
 );
 const SCORING_FORMATS: ScoringFormat[] = ["PPR", "HALF_PPR", "STANDARD"];
 
@@ -65,48 +66,14 @@ export function resolveVorpDataset(
   return { record: null, source: "empty" };
 }
 
-function pause(ms: number) {
-  return new Promise((resolve) => setTimeout(resolve, ms));
-}
-
-export function renderFantasyVorpDataModule(
-  data: FantasyVorpDataRecord,
-  generatedAt: string
-): string {
-  return `/**
- * Generated fantasy VORP data.
- * Do not edit manually. Regenerate with \`npm run update:fantasy\`.
- */
-
-import type {
-  FantasyProsVorpPlayer,
-  FantasyVorpTeamSize,
-} from "@/lib/fantasyProsVorpSource";
-import type { ScoringFormat } from "@/types";
-
-export const fantasyVorpDataGeneratedAt = ${JSON.stringify(generatedAt)};
-
-export interface FantasyVorpDataset {
-  season: number;
-  sourceUrl: string;
-  accessedAt: string;
-  players: FantasyProsVorpPlayer[];
-}
-
-export const fantasyVorpData: Record<
-  ScoringFormat,
-  Record<FantasyVorpTeamSize, FantasyVorpDataset>
-> = ${JSON.stringify(data, null, 2)};
-`;
-}
-
 export async function buildFantasyVorpData(
   fetchBoard: FetchVorpBoard = fetchFantasyProsVorpBoard,
   outputPath = OUTPUT_PATH
 ): Promise<void> {
   const generatedAt = new Date().toISOString();
   const expectedSeason = getSnapshotSeason();
-  const previous = readGeneratedSnapshot<FantasyVorpDataRecord>(outputPath, "fantasyVorpData");
+  const previous =
+    readGeneratedSnapshot<{ data?: FantasyVorpDataRecord }>(outputPath)?.data ?? null;
   const data = {} as FantasyVorpDataRecord;
   const notes: string[] = [];
   let totalPlayers = 0;
@@ -148,7 +115,7 @@ export async function buildFantasyVorpData(
       notes.push(
         `${scoringFormat} ${teamSize}-team: ${byTeamSize[teamSize].players.length} players (${resolution.source}, accessed ${byTeamSize[teamSize].accessedAt || "never"})`
       );
-      await pause(250);
+      await sleep(250);
     }
     data[scoringFormat] = byTeamSize;
   }
@@ -158,7 +125,7 @@ export async function buildFantasyVorpData(
     return;
   }
 
-  writeFileAtomic(outputPath, renderFantasyVorpDataModule(data, generatedAt));
+  writeFileAtomic(outputPath, JSON.stringify({ generatedAt, data }, null, 2) + "\n");
   for (const note of notes) console.log(`[vorp] ${note}`);
   console.log(`Wrote fantasy VORP data: ${outputPath}`);
 }

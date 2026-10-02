@@ -2,11 +2,11 @@
  * @jest-environment node
  */
 
-// Stands in for Netlify Blobs with the same read rule as durableJsonCache: a
+// Stands in for Netlify Blobs with the same read rule as netlifyBlobs: a
 // value older than the caller's max age reads as a miss.
 const mockDurableStore = new Map<string, { savedAt: number; value: unknown }>();
 
-jest.mock("@/lib/durableJsonCache", () => ({
+jest.mock("@/lib/netlifyBlobs", () => ({
   readDurableJson: jest.fn(async (key: string, maxAgeMs: number) => {
     const saved = mockDurableStore.get(key);
     if (!saved || Date.now() - saved.savedAt > maxAgeMs) return null;
@@ -21,7 +21,7 @@ jest.mock("@/lib/durableJsonCache", () => ({
 }));
 
 import { getMBAJobsData } from "../mbaJobsServer";
-import { writeDurableJson } from "@/lib/durableJsonCache";
+import { writeDurableJson } from "@/lib/netlifyBlobs";
 
 const DAY_MS = 24 * 60 * 60 * 1000;
 const GREENHOUSE = "https://boards-api.greenhouse.io/v1/boards";

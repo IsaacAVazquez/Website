@@ -1,4 +1,3 @@
-import type { HTMLAttributes } from "react";
 import { fireEvent, render, screen } from "@testing-library/react";
 import { DecisionLabClient } from "../decision-lab-client";
 import { DEFAULT_DECISION_LAB_STATE } from "../decision-lab-state";
@@ -14,13 +13,6 @@ jest.mock("next/navigation", () => ({
     replace: mockReplace,
   }),
   useSearchParams: () => currentSearchParams,
-}));
-
-jest.mock("framer-motion", () => ({
-  motion: {
-    div: ({ children, ...props }: HTMLAttributes<HTMLDivElement>) => <div {...props}>{children}</div>,
-  },
-  useReducedMotion: () => true,
 }));
 
 describe("DecisionLabClient", () => {

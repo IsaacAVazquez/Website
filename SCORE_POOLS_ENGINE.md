@@ -99,7 +99,7 @@ Snapshot-driven, per the site pattern (`SNAPSHOT_DRIVEN_DASHBOARDS.md`):
   `THE_ODDS_API_KEY`, both optional), merges typed manual entries
   (`scripts/data/scorePools.manual.ts`) and CSV drops
   (`scripts/data/score-pools/<league-key>.csv`), and writes
-  `src/data/scorePoolsSnapshot.ts`. Leagues are configured in
+  `src/data/scorePoolsSnapshot.json`. Leagues are configured in
   `scripts/data/scorePoolsConfig.ts`.
 - **Odds history is append-only and capped** (48 entries per fixture).
   Unchanged prices refresh the latest entry's timestamp; changed prices append.

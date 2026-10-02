@@ -18,57 +18,17 @@ concurrency:
 jobs:
   refresh-premier-league:
     name: Refresh Premier League Snapshot
-    runs-on: ubuntu-latest
-    # Cap a hung football-data.org call so we don't burn 6 hours of runner.
-    timeout-minutes: 30
-
+    # FOOTBALL_DATA_API_TOKEN reaches the builder through the inherited secrets.
+    uses: ./.github/workflows/refresh-snapshot.yml
+    secrets: inherit
     permissions:
       contents: write
       issues: write
-
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v7
-        with:
-          ref: main
-          fetch-depth: 1
-
-      - name: Set up Node.js
-        uses: actions/setup-node@v7
-        with:
-          node-version-file: .nvmrc
-          cache: "npm"
-
-      - name: Install dependencies
-        run: npm ci --prefer-offline --no-audit --fund=false
-
-      - name: Refresh Premier League snapshot
-        timeout-minutes: 20
-        run: npm run update:premier-league
-        env:
-          FOOTBALL_DATA_API_TOKEN: ${{ secrets.FOOTBALL_DATA_API_TOKEN }}
-          NODE_ENV: production
-
-      - name: Verify refresh freshness and quality
-        run: npx tsx scripts/verifyDataRefresh.ts premier-league
-
-      - name: Commit and push refreshed snapshot
-        id: commit
-        run: |
-          bash scripts/ci/commit-and-push-snapshot.sh \
-            "chore: refresh premier league snapshot [automated] [skip ci]" \
-            src/data/premierLeagueSnapshot.ts
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Notify on failure via GitHub issue
-        if: failure()
-        uses: actions/github-script@v9
-        with:
-          script: await require('./scripts/ci/failure-issue.cjs').open({ github, context }, 'premier-league-refresh-failure', 'Premier League refresh failed')
-
-      - name: Close resolved failure issues
-        if: success()
-        uses: actions/github-script@v9
-        with:
-          script: await require('./scripts/ci/failure-issue.cjs').close({ github, context }, 'premier-league-refresh-failure')
+    with:
+      id: premier-league
+      snapshot-path: src/data/premierLeagueSnapshot.json
+      label: premier-league-refresh-failure
+      title: Premier League refresh failed
+      # Cap a hung football-data.org call so we don't burn 6 hours of runner.
+      timeout-minutes: 30
+      refresh-timeout-minutes: 20

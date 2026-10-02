@@ -86,11 +86,6 @@ export const investmentsQuoteRateLimiter = new RateLimiter({
   uniqueTokenPerInterval: 7,
 });
 
-export const authRateLimiter = new RateLimiter({
-  interval: 15 * 60 * 1000, // 15 minutes
-  uniqueTokenPerInterval: 5 // 5 attempts per 15 minutes
-});
-
 export const fantasyRateLimiter = new RateLimiter({
   interval: 60 * 1000, // 1 minute
   uniqueTokenPerInterval: 10 // 10 requests per minute for fantasy data
@@ -145,22 +140,6 @@ function resolveClientIp(
 
 export function getClientIp(request: NextRequest): string {
   return resolveClientIp((name) => request.headers.get(name));
-}
-
-/**
- * Resolve the client IP from a plain headers object (lowercased keys), for
- * contexts that do not have a NextRequest — notably NextAuth's `authorize`
- * callback, whose `req.headers` is a plain object rather than a Headers
- * instance. Same header precedence as getClientIp; returns "unknown" (a single
- * shared bucket) when nothing is available.
- */
-export function getClientIpFromHeaders(
-  headers: Record<string, string | string[] | undefined> | undefined
-): string {
-  return resolveClientIp((name) => {
-    const value = headers?.[name];
-    return Array.isArray(value) ? value[0] : value;
-  });
 }
 
 // Helper function to get client identifier.

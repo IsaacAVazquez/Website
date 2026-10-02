@@ -1,3 +1,4 @@
+import { isFiniteNumber } from "@/lib/utils";
 import type { BestBallSnapshot, BestBallSourceMetadata } from "@/lib/bestBallSnapshot";
 import { getFantasySourceCapabilities, getNflRegularSeasonWeek } from "@/lib/fantasyUtils";
 import type { Player } from "@/types";
@@ -27,10 +28,6 @@ export interface BestBallConsensusConsistency {
   divergent: number;
   /** The worst offenders, for a log line or an error message. */
   examples: readonly string[];
-}
-
-function isFiniteNumber(value: unknown): value is number {
-  return typeof value === "number" && Number.isFinite(value);
 }
 
 /**

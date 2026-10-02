@@ -14,11 +14,49 @@ const updateWorkflowFiles = workflowFiles.filter((file) =>
   path.basename(file).startsWith("update-")
 );
 
-describe("snapshot refresh workflow infrastructure", () => {
-  it("routes automated snapshot commits through the shared helper", () => {
-    expect(updateWorkflowFiles.length).toBeGreaterThan(0);
+// Ten lanes share one body through refresh-snapshot.yml; the rest carry their own.
+const reusableWorkflow = path.join(workflowsDir, "refresh-snapshot.yml");
+const REUSABLE_USES = "uses: ./.github/workflows/refresh-snapshot.yml";
+const isCaller = (file: string) =>
+  fs.readFileSync(file, "utf8").includes(REUSABLE_USES);
+const callerFiles = updateWorkflowFiles.filter(isCaller);
+// Every file whose steps run a refresh body: the standalone lanes plus the shared one.
+const bodyFiles = [
+  ...updateWorkflowFiles.filter((file) => !isCaller(file)),
+  reusableWorkflow,
+];
+const bodyFor = (file: string) => (isCaller(file) ? reusableWorkflow : file);
 
-    for (const workflowPath of updateWorkflowFiles) {
+describe("snapshot refresh workflow infrastructure", () => {
+  it("passes every per-lane field into the shared refresh body", () => {
+    expect(callerFiles.length).toBe(10);
+    const reusable = fs.readFileSync(reusableWorkflow, "utf8");
+    expect(reusable).toContain("workflow_call:");
+    expect(reusable).toContain("run: npm run update:${{ inputs.id }}");
+    expect(reusable).toContain("npx tsx scripts/verifyDataRefresh.ts ${{ inputs.id }}");
+    expect(reusable).toContain('"chore: refresh ${LANE//-/ } snapshot [automated] [skip ci]"');
+    expect(reusable).toContain("'${{ inputs.label }}', '${{ inputs.title }}'");
+
+    for (const workflowPath of callerFiles) {
+      const workflow = fs.readFileSync(workflowPath, "utf8");
+      expect(workflow).toContain("schedule:");
+      expect(workflow).toContain("concurrency:");
+      // A called workflow can only narrow the token it is handed, so the push
+      // and the failure issue need the caller to grant both scopes.
+      expect(workflow).toContain("contents: write");
+      expect(workflow).toContain("issues: write");
+      expect(workflow).toContain("secrets: inherit");
+      expect(workflow).toMatch(/\n\s+id: [a-z-]+\n/);
+      expect(workflow).toMatch(/snapshot-path: src\/data\/\w+Snapshot\.json/);
+      expect(workflow).toMatch(/label: [a-z-]+-refresh-failure/);
+      expect(workflow).toMatch(/title: .+ refresh failed/);
+    }
+  });
+
+  it("routes automated snapshot commits through the shared helper", () => {
+    expect(bodyFiles.length).toBeGreaterThan(1);
+
+    for (const workflowPath of bodyFiles) {
       const workflow = fs.readFileSync(workflowPath, "utf8");
       expect(workflow).toContain("bash scripts/ci/commit-and-push-snapshot.sh");
       expect(workflow).not.toMatch(/git push origin HEAD:main/);
@@ -27,7 +65,7 @@ describe("snapshot refresh workflow infrastructure", () => {
   });
 
   it("checks out main before any refresh that can push to main", () => {
-    for (const workflowPath of updateWorkflowFiles) {
+    for (const workflowPath of bodyFiles) {
       const workflow = fs.readFileSync(workflowPath, "utf8");
       const checkoutBlock = workflow.match(
         /uses: actions\/checkout@v7[\s\S]*?(?=\n\s+- name:)/
@@ -69,7 +107,7 @@ describe("snapshot refresh workflow infrastructure", () => {
   });
 
   it("installs sitemap dependencies before snapshot commits", () => {
-    for (const workflowPath of updateWorkflowFiles) {
+    for (const workflowPath of bodyFiles) {
       const workflow = fs.readFileSync(workflowPath, "utf8");
       const helperIndex = workflow.indexOf(
         "bash scripts/ci/commit-and-push-snapshot.sh"
@@ -185,7 +223,7 @@ describe("snapshot refresh workflow infrastructure", () => {
     ];
 
     for (const workflowName of scheduledSnapshotWorkflows) {
-      const workflow = fs.readFileSync(path.join(workflowsDir, workflowName), "utf8");
+      const workflow = fs.readFileSync(bodyFor(path.join(workflowsDir, workflowName)), "utf8");
       expect(workflow).toContain("npx tsx scripts/verifyDataRefresh.ts");
       // Weekly validation is inside its builder and publishes independently.
       // The shared verifier gates the later redraft artifact in this workflow.
@@ -281,7 +319,7 @@ describe("snapshot refresh workflow infrastructure", () => {
 
     // The commit and the discard step.
     expect(
-      workflow.match(/src\/data\/fantasyVorpData\.generated\.ts/g)
+      workflow.match(/src\/data\/fantasyVorpData\.generated\.json/g)
     ).toHaveLength(2);
     expect(qualityStep).toBeDefined();
     expect(qualityStep).toContain("const MIN_VORP = 300");
@@ -330,9 +368,7 @@ describe("snapshot refresh workflow infrastructure", () => {
 
     expect(buildStep).toBeDefined();
     expect(buildStep).toContain("run: npm run update:fantasy");
-    expect(buildStep).toContain("FANTASYPROS_SOURCE: public-html");
-    expect(buildStep).not.toContain("FANTASYPROS_API_KEY");
-    expect(workflow).not.toContain("secrets.FANTASYPROS_API_KEY");
+    expect(workflow).not.toContain("FANTASYPROS");
   });
 
   it("does not close World Cup incidents on a dormant run", () => {
@@ -351,7 +387,7 @@ describe("snapshot refresh workflow infrastructure", () => {
   });
 
   it("routes failure issues through the shared helper", () => {
-    for (const workflowPath of updateWorkflowFiles) {
+    for (const workflowPath of bodyFiles) {
       if (path.basename(workflowPath) === "update-article-images.yml") continue;
       const workflow = fs.readFileSync(workflowPath, "utf8");
       expect(workflow).toContain("require('./scripts/ci/failure-issue.cjs').open(");

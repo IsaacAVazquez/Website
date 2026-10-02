@@ -1,3 +1,4 @@
+import { isFiniteNumber } from "@/lib/utils";
 import { Player, Position, ScoringFormat } from "@/types";
 import { logger } from "@/lib/logger";
 import {
@@ -286,10 +287,6 @@ function snapshotPositionToRoutePosition(position: FantasySnapshotPosition): Fan
     case "DST":
       return "dst";
   }
-}
-
-function isFiniteNumber(value: unknown): value is number {
-  return typeof value === "number" && Number.isFinite(value);
 }
 
 function assertCompatibleFantasySnapshot(

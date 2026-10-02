@@ -24,10 +24,7 @@ import {
   matchPlayerAdp,
   normalizeAdpTeam,
 } from "@/lib/fantasyAdpMatcher";
-import {
-  FANTASY_PROS_OFFICIAL_API_SOURCE,
-  FANTASY_PROS_PUBLIC_SOURCE,
-} from "@/lib/fantasyProsPublicSource";
+import { FANTASY_PROS_PUBLIC_SOURCE } from "@/lib/fantasyProsPublicSource";
 import type { FantasySnapshot } from "@/lib/fantasy";
 import type { Player } from "@/types";
 import { writeFileAtomic } from "./snapshotFallback";
@@ -79,9 +76,6 @@ function normalizeScheduleTeams(opponents: Record<string, string>): Record<strin
 }
 
 function describeFantasyProsProvider(sourceLabel: string, boardLabel: string): string {
-  if (sourceLabel === FANTASY_PROS_OFFICIAL_API_SOURCE) {
-    return `FantasyPros official API ${boardLabel}`;
-  }
   if (sourceLabel === FANTASY_PROS_PUBLIC_SOURCE) {
     return `FantasyPros public ${boardLabel}`;
   }

@@ -5,6 +5,7 @@
  */
 
 import type { BudgetExpenseLine } from "@/types/budget";
+import { formatDollars, roundTo } from "@/lib/utils";
 
 export interface Envelope {
   /** Spent against budgeted, clamped at one so an outlier never blows out the fill. */
@@ -17,19 +18,6 @@ export interface Envelope {
   budgetLabel: string;
 }
 
-export function formatCurrency(value: number): string {
-  return value.toLocaleString("en-US", {
-    style: "currency",
-    currency: "USD",
-    minimumFractionDigits: 0,
-    maximumFractionDigits: value % 1 === 0 ? 0 : 2,
-  });
-}
-
-function roundCents(value: number): number {
-  return Math.round(value * 100) / 100;
-}
-
 /** A zero budget with any spend reads as torn, never as a division by zero. */
 export function envelope(spent: number, budgeted: number): Envelope {
   const safeSpent = Number.isFinite(spent) ? Math.max(0, spent) : 0;
@@ -40,9 +28,9 @@ export function envelope(spent: number, budgeted: number): Envelope {
   return {
     fill,
     torn,
-    overBy: torn ? roundCents(safeSpent - safeBudgeted) : 0,
-    spentLabel: formatCurrency(safeSpent),
-    budgetLabel: formatCurrency(safeBudgeted),
+    overBy: torn ? roundTo(safeSpent - safeBudgeted, 2) : 0,
+    spentLabel: formatDollars(safeSpent),
+    budgetLabel: formatDollars(safeBudgeted),
   };
 }
 
@@ -57,7 +45,7 @@ export function checkRegister(startingBalance: number, expenseEntries: BudgetExp
   let balance = Number.isFinite(startingBalance) ? startingBalance : 0;
 
   return ordered.map((entry) => {
-    balance = roundCents(balance - entry.amount);
+    balance = roundTo(balance - entry.amount, 2);
     return { ...entry, balance };
   });
 }
