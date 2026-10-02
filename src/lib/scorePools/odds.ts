@@ -13,7 +13,6 @@ import type {
   MoneylineOdds,
   OddsFormat,
   OutcomeProbabilities,
-  RawPrice,
 } from "./types";
 
 /** Convert a price in any supported format to decimal odds. */

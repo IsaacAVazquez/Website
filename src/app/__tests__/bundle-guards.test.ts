@@ -56,8 +56,6 @@ function reachableFrom(entry: string): { files: Set<string>; packages: Map<strin
   return { files, packages };
 }
 
-const packagesReachableFrom = (entry: string) => reachableFrom(entry).packages;
-
 describe("bundle guards", () => {
   it("follows imports the way the guards below rely on", () => {
     const reached = reachableFrom("src/components/football/ClubDrawer.tsx");
