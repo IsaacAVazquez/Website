@@ -2,11 +2,16 @@ import { fireEvent, render, screen, within } from "@testing-library/react";
 import { getMlbSummarySnapshot, getMlbTeamSnapshot } from "@/lib/mlbSnapshot";
 import type { MlbGame } from "@/types/mlb";
 import { MlbClient } from "../mlb-client";
-import {
-  buildMlbHref,
-  DEFAULT_MLB_STATE,
-  getDefaultTeamForView,
-} from "../mlb-state";
+import { mlbSnapshot } from "@/data/mlbSnapshot";
+import type { MlbRouteState, MlbView } from "@/types/mlb";
+import * as core from "../mlb-state.core";
+
+const aliasMap = core.buildTeamAliasMap(mlbSnapshot.teams);
+const DEFAULT_MLB_STATE = core.resolveDefaultState(mlbSnapshot.standings, mlbSnapshot.teams);
+const getDefaultTeamForView = (view: MlbView) =>
+  core.getDefaultTeam(mlbSnapshot.standings, view, DEFAULT_MLB_STATE.team);
+const buildMlbHref = (state: MlbRouteState, base?: URLSearchParams) =>
+  core.buildHref(state, DEFAULT_MLB_STATE, aliasMap, base);
 
 const mockPush = jest.fn();
 const mockReplace = jest.fn();

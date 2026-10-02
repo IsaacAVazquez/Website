@@ -1,13 +1,18 @@
 import { nbaSnapshot } from "@/data/nbaSnapshot";
-import {
-  buildNbaHref,
-  canonicalizeNbaTeamId,
-  DEFAULT_NBA_STATE,
-  filterTeamsForView,
-  getConferenceForView,
-  getDefaultTeamForView,
-  normalizeNbaState,
-} from "../nba-state";
+import type { NbaRouteState, NbaView } from "@/types/nba";
+import * as core from "../nba-state.core";
+
+const { east, west } = nbaSnapshot.teamsByConference;
+const aliasMap = core.buildTeamAliasMap([...east, ...west]);
+const DEFAULT_NBA_STATE = core.resolveDefaultState(east, west);
+const canonicalizeNbaTeamId = (id: string) => core.canonicalizeTeamId(id, aliasMap);
+const filterTeamsForView = (view: NbaView) => core.filterTeams(east, west, view);
+const getDefaultTeamForView = (view: NbaView) =>
+  core.getDefaultTeam(east, west, view, DEFAULT_NBA_STATE.team);
+const normalizeNbaState = (input: Record<string, string | string[]>) =>
+  core.normalizeState(input, DEFAULT_NBA_STATE, aliasMap);
+const buildNbaHref = (state: NbaRouteState, base?: URLSearchParams) =>
+  core.buildHref(state, DEFAULT_NBA_STATE, aliasMap, base);
 
 describe("nba-state", () => {
   it("canonicalizes team ids and abbreviations", () => {
@@ -32,9 +37,6 @@ describe("nba-state", () => {
   });
 
   it("maps views to conference slices", () => {
-    expect(getConferenceForView("east")).toBe("east");
-    expect(getConferenceForView("west")).toBe("west");
-    expect(getConferenceForView("playoff")).toBe("both");
     expect(filterTeamsForView("east")).toEqual(nbaSnapshot.teamsByConference.east);
     expect(filterTeamsForView("west")).toEqual(nbaSnapshot.teamsByConference.west);
     expect(filterTeamsForView("playoff")).toHaveLength(12);

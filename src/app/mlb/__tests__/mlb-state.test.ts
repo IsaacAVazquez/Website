@@ -1,12 +1,18 @@
 import { mlbSnapshot } from "@/data/mlbSnapshot";
-import {
-  buildMlbHref,
-  canonicalizeMlbTeamId,
-  DEFAULT_MLB_STATE,
-  filterStandingsForView,
-  getDefaultTeamForView,
-  normalizeMlbState,
-} from "../mlb-state";
+import type { MlbRouteState, MlbView } from "@/types/mlb";
+import * as core from "../mlb-state.core";
+
+const { standings, teams } = mlbSnapshot;
+const aliasMap = core.buildTeamAliasMap(teams);
+const DEFAULT_MLB_STATE = core.resolveDefaultState(standings, teams);
+const canonicalizeMlbTeamId = (id: string) => core.canonicalizeTeamId(id, aliasMap);
+const filterStandingsForView = (view: MlbView) => core.filterStandings(standings, view);
+const getDefaultTeamForView = (view: MlbView) =>
+  core.getDefaultTeam(standings, view, DEFAULT_MLB_STATE.team);
+const normalizeMlbState = (input: Record<string, string | string[]>) =>
+  core.normalizeState(input, DEFAULT_MLB_STATE, aliasMap);
+const buildMlbHref = (state: MlbRouteState, base?: URLSearchParams) =>
+  core.buildHref(state, DEFAULT_MLB_STATE, aliasMap, base);
 
 describe("mlb-state", () => {
   it("canonicalizes team ids and abbreviations", () => {

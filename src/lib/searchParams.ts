@@ -19,3 +19,65 @@ export function readParam(input: SearchParamInput, key: string): string | null {
 
   return rawValue ?? null;
 }
+
+/** Resolves an id or alias (any case, padded) to its canonical id, or null. */
+export function canonicalizeId(
+  id: string | null | undefined,
+  aliasMap: Map<string, string>
+): string | null {
+  if (!id) return null;
+  return aliasMap.get(id.trim().toLowerCase()) ?? null;
+}
+
+type TeamRouteState<V extends string> = { view: V; team: string };
+
+/**
+ * `?view=&team=` state shared by the NBA, NFL, and MLB dashboards. Defaults
+ * stay out of the URL, and a team is written whenever the view is not default.
+ */
+export function createTeamRouteState<V extends string>(route: string, views: readonly V[]) {
+  const validViews = new Set<string>(views);
+
+  function normalizeState(
+    input: SearchParamInput,
+    defaultState: TeamRouteState<V>,
+    aliasMap: Map<string, string>
+  ): TeamRouteState<V> {
+    const view = readParam(input, "view");
+    const team = canonicalizeId(readParam(input, "team"), aliasMap);
+
+    return {
+      view: view && validViews.has(view) ? (view as V) : defaultState.view,
+      team: team ?? defaultState.team,
+    };
+  }
+
+  function buildHref(
+    state: TeamRouteState<V>,
+    defaultState: TeamRouteState<V>,
+    aliasMap: Map<string, string>,
+    baseSearchParams?: URLSearchParams | ReadonlyURLSearchParams
+  ): string {
+    const params = new URLSearchParams(
+      baseSearchParams ? Array.from(baseSearchParams.entries()) : []
+    );
+    const canonical = canonicalizeId(state.team, aliasMap) ?? defaultState.team;
+
+    if (state.view === defaultState.view) {
+      params.delete("view");
+    } else {
+      params.set("view", state.view);
+    }
+
+    if (canonical === defaultState.team && state.view === defaultState.view) {
+      params.delete("team");
+    } else {
+      params.set("team", canonical);
+    }
+
+    const query = params.toString();
+    return `${route}${query ? `?${query}` : ""}`;
+  }
+
+  return { normalizeState, buildHref };
+}
