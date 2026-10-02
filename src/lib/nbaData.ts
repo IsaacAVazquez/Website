@@ -13,6 +13,7 @@ import type {
   NbaTeamSnapshot,
 } from "@/types/nba";
 import { HttpStatusError } from "@/lib/utils";
+import { retryLinear, hasClientErrorStatus, isTimeoutError } from "@/lib/fetchRetry";
 
 const ESPN_BASE_URL = "https://site.api.espn.com/apis/site/v2/sports/basketball/nba";
 const ESPN_STANDINGS_URL = "https://site.api.espn.com/apis/v2/sports/basketball/nba/standings";
@@ -341,27 +342,13 @@ async function fetchEspnJsonOnce<T>(url: string, revalidateSeconds: number): Pro
  * Mirrors the pattern in src/lib/nflData.ts (`fetchTextOnce` + `fetchText`).
  */
 async function fetchEspnJson<T>(url: string, revalidateSeconds: number): Promise<T> {
-  let lastError: unknown;
-  for (let attempt = 0; attempt < 3; attempt += 1) {
-    try {
-      return await fetchEspnJsonOnce<T>(url, revalidateSeconds);
-    } catch (error) {
-      lastError = error;
-      if (error instanceof Error && (error.name === "AbortError" || error.name === "TimeoutError")) {
-        if (attempt < 2) {
-          await new Promise((resolve) => setTimeout(resolve, 1000 * (attempt + 1)));
-          continue;
-        }
-        throw new HttpStatusError("NBA data provider timed out.", 504);
-      }
-      const status = (error as HttpStatusError).status;
-      if (typeof status === "number" && status >= 400 && status < 500) throw error;
-      if (attempt < 2) {
-        await new Promise((resolve) => setTimeout(resolve, 1000 * (attempt + 1)));
-      }
-    }
-  }
-  throw lastError;
+  return retryLinear(
+    3,
+    () => fetchEspnJsonOnce<T>(url, revalidateSeconds),
+    (error) => !hasClientErrorStatus(error)
+  ).catch((error) => {
+    throw isTimeoutError(error) ? new HttpStatusError("NBA data provider timed out.", 504) : error;
+  });
 }
 
 function inferConference(group: EspnStandingsGroup): NbaConference {

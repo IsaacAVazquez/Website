@@ -1,7 +1,7 @@
 import { rename, writeFile } from "fs/promises";
 import path from "path";
 import { fileURLToPath } from "url";
-import { withRetry } from "./fetchRetry";
+import { withRetry } from "@/lib/fetchRetry";
 import { readGeneratedSnapshot } from "./snapshotFallback";
 import {
   fetchFantasyGameLogBoard,

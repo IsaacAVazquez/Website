@@ -12,6 +12,7 @@ import type {
   WorldCupTeamOption,
   WorldCupTeamSnapshot,
 } from "@/types/worldCup";
+import { retryLinear, isTransientFetchError } from "@/lib/fetchRetry";
 
 /**
  * Builds the World Cup snapshot from ESPN's public soccer/fifa.world endpoints.
@@ -285,36 +286,20 @@ function formatYyyymmdd(date: Date): string {
 }
 
 async function fetchJson<T>(url: string): Promise<T> {
-  let lastError: unknown;
-  for (let attempt = 0; attempt < 3; attempt += 1) {
-    try {
-      const response = await fetch(url, {
-        signal: AbortSignal.timeout(REQUEST_TIMEOUT_MS),
-        headers: { Accept: "application/json" },
-      });
-      if (!response.ok) {
-        const error = new Error(
-          `ESPN World Cup request failed with status ${response.status}.`
-        );
-        (error as { retryable?: boolean }).retryable = response.status >= 500;
-        throw error;
-      }
-      return (await response.json()) as T;
-    } catch (error) {
-      lastError = error;
-      const isTimeout =
-        error instanceof Error &&
-        (error.name === "AbortError" || error.name === "TimeoutError");
-      const isNetwork = error instanceof TypeError;
-      const isRetryable = Boolean((error as { retryable?: boolean })?.retryable);
-      if (attempt < 2 && (isTimeout || isNetwork || isRetryable)) {
-        await new Promise((resolve) => setTimeout(resolve, 1000 * (attempt + 1)));
-        continue;
-      }
+  return retryLinear(3, async () => {
+    const response = await fetch(url, {
+      signal: AbortSignal.timeout(REQUEST_TIMEOUT_MS),
+      headers: { Accept: "application/json" },
+    });
+    if (!response.ok) {
+      const error = new Error(
+        `ESPN World Cup request failed with status ${response.status}.`
+      );
+      (error as { retryable?: boolean }).retryable = response.status >= 500;
       throw error;
     }
-  }
-  throw lastError;
+    return (await response.json()) as T;
+  }, isTransientFetchError);
 }
 
 /** Pull every event across the tournament window in ~10-day scoreboard pages. */

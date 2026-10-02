@@ -19,7 +19,7 @@ import {
   type FantasyWeeklySnapshot,
 } from "@/lib/fantasyWeeklySnapshot";
 import { getNflRegularSeasonWeek } from "@/lib/fantasyUtils";
-import { withRetry } from "./fetchRetry";
+import { withRetry } from "@/lib/fetchRetry";
 
 const OUTPUT_PATH = path.join(process.cwd(), "public", "data", "fantasy", "weekly.json");
 

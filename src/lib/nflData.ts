@@ -13,6 +13,7 @@ import type {
   NFLTeamStanding,
 } from "@/types/nfl";
 import { HttpStatusError } from "@/lib/utils";
+import { retryLinear } from "@/lib/fetchRetry";
 
 const STANDINGS_URL =
   "https://github.com/nflverse/nfldata/raw/master/data/standings.csv";
@@ -51,19 +52,8 @@ async function fetchTextOnce(url: string): Promise<string> {
   }
 }
 
-async function fetchText(url: string): Promise<string> {
-  let lastError: unknown;
-  for (let attempt = 0; attempt < 3; attempt += 1) {
-    try {
-      return await fetchTextOnce(url);
-    } catch (error) {
-      lastError = error;
-      if (attempt < 2) {
-        await new Promise((resolve) => setTimeout(resolve, 1000 * (attempt + 1)));
-      }
-    }
-  }
-  throw lastError;
+function fetchText(url: string): Promise<string> {
+  return retryLinear(3, () => fetchTextOnce(url));
 }
 
 function parseCsvRow(line: string): string[] {

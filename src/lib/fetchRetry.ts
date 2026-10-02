@@ -1,5 +1,5 @@
 /**
- * Shared retry-with-backoff helper for snapshot fetch scripts. Works with any
+ * Shared retry-with-backoff helpers. `withRetry` is the snapshot scripts' policy and works with any
  * error that exposes an HTTP `status` and response `headers` (the shape of
  * `FantasyProsPublicFetchError` and `FantasyAdpFetchError`): 429/503 and 5xx
  * are retried with exponential backoff plus jitter, `Retry-After` is honored
@@ -116,4 +116,43 @@ export async function withRetry<T>(
   throw lastError instanceof Error
     ? lastError
     : new Error(`[retry] ${label} failed after ${attempts} attempts`);
+}
+
+/**
+ * The dashboard fetchers' quieter policy: up to `attempts` tries, waiting 1s,
+ * then 2s, and so on between them, rethrowing at once when `shouldRetry` says
+ * the error will not recover (a 4xx, say). Nothing is logged.
+ */
+export async function retryLinear<T>(
+  attempts: number,
+  fn: () => Promise<T>,
+  shouldRetry: (error: unknown) => boolean = () => true
+): Promise<T> {
+  for (let attempt = 0; ; attempt += 1) {
+    try {
+      return await fn();
+    } catch (error) {
+      if (attempt >= attempts - 1 || !shouldRetry(error)) throw error;
+      await pause(1000 * (attempt + 1));
+    }
+  }
+}
+
+export function isTimeoutError(error: unknown): boolean {
+  return error instanceof Error && (error.name === "AbortError" || error.name === "TimeoutError");
+}
+
+/** Timeouts, network failures, and errors flagged `retryable` (a 5xx) may recover on a retry. */
+export function isTransientFetchError(error: unknown): boolean {
+  return (
+    isTimeoutError(error) ||
+    error instanceof TypeError ||
+    Boolean((error as { retryable?: boolean } | null)?.retryable)
+  );
+}
+
+/** A 4xx `status` means the request itself is wrong, so retrying won't help. */
+export function hasClientErrorStatus(error: unknown): boolean {
+  const status = (error as { status?: unknown } | null)?.status;
+  return typeof status === "number" && status >= 400 && status < 500;
 }

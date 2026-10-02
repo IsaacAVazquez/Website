@@ -39,7 +39,7 @@ export interface FantasyGameLogEntry {
 }
 
 /**
- * Carries `status` and `headers` so `scripts/fetchRetry.ts` can tell a
+ * Carries `status` and `headers` so `src/lib/fetchRetry.ts` can tell a
  * transient 5xx from a 404. A 404 here is routine rather than broken: the
  * current season's file does not exist until that season kicks off.
  */

@@ -1,6 +1,6 @@
 import { rename, writeFile } from "fs/promises";
 import path from "path";
-import { withRetry } from "./fetchRetry";
+import { withRetry } from "@/lib/fetchRetry";
 import {
   FANTASY_PUBLIC_POSITIONS,
   assertFantasyProsRefreshCoverage,

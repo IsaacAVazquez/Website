@@ -1,6 +1,6 @@
 import { rename, writeFile } from "node:fs/promises";
 import path from "node:path";
-import { withRetry } from "./fetchRetry";
+import { withRetry } from "@/lib/fetchRetry";
 import { readGeneratedSnapshot } from "./snapshotFallback";
 import {
   FANTASY_VORP_TEAM_SIZES,

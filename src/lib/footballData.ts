@@ -1,4 +1,5 @@
 import { HttpStatusError } from "@/lib/utils";
+import { retryLinear, hasClientErrorStatus, isTimeoutError } from "@/lib/fetchRetry";
 /**
  * Shared football-data.org v4 wire types, request constants, and the paced
  * fetch both leagues use.
@@ -237,28 +238,13 @@ export async function fetchFootballDataJson<T>(
   path: string,
   revalidateSeconds: number
 ): Promise<T> {
-  let lastError: unknown;
-  for (let attempt = 0; attempt < 3; attempt += 1) {
-    try {
-      return await fetchFootballDataJsonOnce<T>(league, path, revalidateSeconds);
-    } catch (error) {
-      lastError = error;
-      // Treat AbortError / TimeoutError as a network failure for retry purposes.
-      if (error instanceof Error && (error.name === "AbortError" || error.name === "TimeoutError")) {
-        if (attempt < 2) {
-          await wait(1000 * (attempt + 1));
-          continue;
-        }
-        throw new HttpStatusError(`${league} data provider timed out.`, 504);
-      }
-      const status = (error as HttpStatusError).status;
-      if (typeof status === "number" && status >= 400 && status < 500) throw error;
-      if (attempt < 2) {
-        await wait(1000 * (attempt + 1));
-      }
-    }
-  }
-  throw lastError;
+  return retryLinear(
+    3,
+    () => fetchFootballDataJsonOnce<T>(league, path, revalidateSeconds),
+    (error) => !hasClientErrorStatus(error)
+  ).catch((error) => {
+    throw isTimeoutError(error) ? new HttpStatusError(`${league} data provider timed out.`, 504) : error;
+  });
 }
 
 /**

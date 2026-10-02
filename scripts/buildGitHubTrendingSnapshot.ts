@@ -9,7 +9,7 @@ import type {
   GitHubTrendingSegmentKind,
   GitHubTrendingSnapshot,
 } from "../src/types/githubTrending";
-import { withRetry } from "./fetchRetry";
+import { withRetry } from "@/lib/fetchRetry";
 
 interface BuildOptions {
   projectRoot?: string;
