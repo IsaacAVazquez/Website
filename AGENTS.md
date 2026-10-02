@@ -66,9 +66,6 @@ Primary live routes:
 - `/now`
 - `/changelog`
 - `/search`
-- `/analytics-reference` (noindex internal GA4 event reference)
-- `/design/catalog-pages` (noindex Catalog 97 layout QA sheet)
-- `/admin`
 
 Canonical redirects:
 
@@ -99,7 +96,7 @@ Shared shell files:
 - `src/components/ConditionalLayout.tsx`
 - `src/components/catalog97/Catalog97ToolShell.tsx`
 
-Every route that is not one of the seven designed Catalog 97 pages, `/admin` included, renders inside `Catalog97ToolShell`.
+Every route that is not one of the seven designed Catalog 97 pages renders inside `Catalog97ToolShell`.
 
 Shell semantics:
 
@@ -128,7 +125,7 @@ Footer:
 - Never import `better-sqlite3` into client code.
 - Never create real pages at `/projects`, `/work`, or `/blog`.
 - Keep 44px minimum touch targets for interactive elements.
-- Respect `prefers-reduced-motion` for Framer Motion usage.
+- Entrances are CSS transitions; JS-driven motion reads `useReducedMotion()` from `src/hooks`.
 - Shared portfolio-shell primitives must not use `transition-all`. Transition specific properties instead.
 - Portfolio-shell routes must keep the primary message and main CTA visible in the initial mobile viewport whenever the route has a hero.
 - Portfolio and writing cards should surface role, problem space, and impact in the default scan state.
@@ -148,7 +145,7 @@ Confirm live API routes from `src/app/api/**/route.ts`. Current routes:
 - `/api/fantasy-data`
 - `/api/formula-1/meetings/[meetingId]`
 - `/api/golf/players/[playerId]`
-- `/api/investments/quotes` and `/api/investments/data/[symbol]`
+- `/api/investments/quotes`
 - `/api/la-liga/teams/[teamId]`
 - `/api/mba-jobs` and `/api/mba-jobs/email`
 - `/api/mlb/teams/[teamId]`
@@ -160,7 +157,6 @@ Confirm live API routes from `src/app/api/**/route.ts`. Current routes:
 - `/api/rss`
 - `/api/search`
 - `/api/spacex/summary`, `/api/spacex/launches`, `/api/spacex/launches/[id]`
-- `/api/stocks` (retired on 2026-07-06, returns 410 Gone)
 - `/api/world-cup/teams/[teamId]`
 
 Most dashboard APIs read committed snapshot files at request time. The exceptions that call external services at request time are the earthquake-pulse, bay-area-transit, news-pulse, mba-jobs, and investments quotes routes; each keeps the committed snapshot (or cached data) as its fallback.
