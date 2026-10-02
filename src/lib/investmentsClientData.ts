@@ -160,5 +160,3 @@ export function clearClientInvestmentDataCaches() {
   indexInflight.clear();
   snapshotInflight.clear();
 }
-
-export const clearClientInvestmentDataCachesForTests = clearClientInvestmentDataCaches;

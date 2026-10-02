@@ -19,7 +19,6 @@ import { ResearchSection } from "../ResearchSection";
 import { AddStockForm } from "../AddStockForm";
 import { __testUtils as liveQuoteTestUtils } from "@/hooks/useLiveQuote";
 import { __testUtils as stockDataTestUtils } from "@/hooks/useStockData";
-import { clearClientInvestmentDataCachesForTests } from "@/lib/investmentsClientData";
 import { DISPLAY_TIME_ZONE } from "@/lib/date-formatters";
 
 (globalThis as Record<string, unknown>).IS_REACT_ACT_ENVIRONMENT = true;
@@ -198,7 +197,6 @@ describe("investments UI", () => {
     mockFetch.mockReset();
     stockDataTestUtils.clearCaches();
     liveQuoteTestUtils.clearQuoteCache();
-    clearClientInvestmentDataCachesForTests();
   });
 
   afterEach(() => {

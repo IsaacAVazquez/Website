@@ -158,19 +158,6 @@ export async function getAllowedSymbols(
   throw new FinnhubAllowlistUnavailableError();
 }
 
-// Test-only: reset the cached allowlist so tests can force a re-resolve.
-// Not exported through the module's public consumers.
-export function __resetAllowlistCacheForTests(): void {
-  cachedAllowlist = null;
-  allowlistInflight = null;
-}
-
-function __resetQuoteStateForTests(): void {
-  rateLimitedUntil = 0;
-  quoteCache.clear();
-  quoteInflight.clear();
-}
-
 function errorQuote(symbol: string, message: string): StockQuote {
   return {
     symbol,

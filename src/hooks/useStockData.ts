@@ -11,7 +11,6 @@ import type {
 } from "@/types/investment";
 import {
   clearClientInvestmentDataCaches,
-  clearClientInvestmentDataCachesForTests,
   getClientInvestmentSnapshot,
 } from "@/lib/investmentsClientData";
 
@@ -207,5 +206,5 @@ export function useStockData<T>(
 }
 
 export const __testUtils = {
-  clearCaches: clearClientInvestmentDataCachesForTests,
+  clearCaches: clearClientInvestmentDataCaches,
 };
