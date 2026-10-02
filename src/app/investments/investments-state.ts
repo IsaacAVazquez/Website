@@ -1,4 +1,5 @@
 import type { ReadonlyURLSearchParams } from "next/navigation";
+import { readParam, type SearchParamInput } from "@/lib/searchParams";
 
 export type InvestmentsView = "research" | "portfolio";
 export type ResearchTab =
@@ -15,11 +16,6 @@ export interface InvestmentsSearchState {
   symbol: string;
   section: ResearchTab;
 }
-
-type SearchParamInput =
-  | URLSearchParams
-  | ReadonlyURLSearchParams
-  | Record<string, string | string[] | undefined | null>;
 
 export const DEFAULT_INVESTMENTS_STATE: InvestmentsSearchState = {
   view: "portfolio",
@@ -38,19 +34,6 @@ const VALID_SECTIONS = new Set<ResearchTab>([
   "chart",
   "compare",
 ]);
-
-function readParam(input: SearchParamInput, key: keyof InvestmentsSearchState): string | null {
-  if ("get" in input && typeof input.get === "function") {
-    return input.get(key);
-  }
-
-  const rawValue = (input as Record<string, string | string[] | undefined | null>)[key];
-  if (Array.isArray(rawValue)) {
-    return rawValue[0] ?? null;
-  }
-
-  return rawValue ?? null;
-}
 
 function normalizeSymbol(rawSymbol: string | null): string {
   const upper = rawSymbol?.trim().toUpperCase() ?? "";

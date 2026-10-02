@@ -1,5 +1,6 @@
 import type { ReadonlyURLSearchParams } from "next/navigation";
 import type { NbaConference, NbaRouteState, NbaTeam, NbaView } from "@/types/nba";
+import { readParam, type SearchParamInput } from "@/lib/searchParams";
 
 // Pure, snapshot-free route-state core for /nba. Importing this module never
 // pulls the multi-thousand-line `nbaSnapshot` into the bundle, so the client
@@ -13,13 +14,6 @@ export const NBA_ROUTE = "/nba";
 export const NBA_FALLBACK_TEAM = "bos";
 
 const VALID_VIEWS = new Set<NbaView>(["east", "west", "playoff", "play-in"]);
-
-export type SearchParamInput =
-  | URLSearchParams
-  | ReadonlyURLSearchParams
-  | Record<string, string | string[] | undefined | null>;
-
-type SearchParamRecord = Record<string, string | string[] | undefined | null>;
 
 type TeamAliasSource = { id: string; abbreviation: string };
 
@@ -41,15 +35,6 @@ export function canonicalizeTeamId(
 ): string | null {
   if (!teamId) return null;
   return aliasMap.get(teamId.trim().toLowerCase()) ?? null;
-}
-
-export function readParam(input: SearchParamInput, key: string): string | null {
-  if ("get" in input && typeof input.get === "function") {
-    return input.get(key);
-  }
-  const rawValue = (input as SearchParamRecord)[key];
-  if (Array.isArray(rawValue)) return rawValue[0] ?? null;
-  return rawValue ?? null;
 }
 
 export function getConferenceForView(view: NbaView): NbaConference | "both" {

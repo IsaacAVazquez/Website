@@ -2,6 +2,7 @@ import type { ReadonlyURLSearchParams } from "next/navigation";
 import { nbaSnapshot } from "@/data/nbaSnapshot";
 import type { NbaConference, NbaRouteState, NbaTeam, NbaView } from "@/types/nba";
 import * as core from "./nba-state.core";
+import type { SearchParamInput } from "@/lib/searchParams";
 
 // Snapshot-bound wrappers. These keep the original public API used by the
 // server page and the unit tests, but the heavy `nbaSnapshot` import lives
@@ -33,7 +34,7 @@ export function getDefaultTeamForView(view: NbaView): string {
   return core.getDefaultTeam(east, west, view, DEFAULT_NBA_STATE.team);
 }
 
-export function normalizeNbaState(input: core.SearchParamInput): NbaRouteState {
+export function normalizeNbaState(input: SearchParamInput): NbaRouteState {
   return core.normalizeState(input, DEFAULT_NBA_STATE, ALIAS_MAP);
 }
 

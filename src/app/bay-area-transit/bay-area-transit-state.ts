@@ -1,5 +1,6 @@
 import type { ReadonlyURLSearchParams } from "next/navigation";
 import type { TransitRouteState, TransitView } from "@/types/bayAreaTransit";
+import { readParam, type SearchParamInput } from "@/lib/searchParams";
 
 export const TRANSIT_ROUTE = "/bay-area-transit";
 export const TRANSIT_VIEW_OPTIONS = [
@@ -9,13 +10,6 @@ export const TRANSIT_VIEW_OPTIONS = [
 ] as const;
 
 const VALID_VIEWS = new Set<TransitView>(TRANSIT_VIEW_OPTIONS);
-
-type SearchParamInput =
-  | URLSearchParams
-  | ReadonlyURLSearchParams
-  | Record<string, string | string[] | undefined | null>;
-
-type SearchParamRecord = Record<string, string | string[] | undefined | null>;
 
 export const DEFAULT_TRANSIT_STATE: TransitRouteState = {
   view: "lines",
@@ -27,20 +21,6 @@ export const TRANSIT_VIEW_LABELS: Record<TransitView, string> = {
   stations: "Departures",
   advisories: "Alerts",
 };
-
-function readParam(input: SearchParamInput, key: string): string | null {
-  if ("get" in input && typeof input.get === "function") {
-    return (input as URLSearchParams).get(key);
-  }
-
-  const rawValue = (input as SearchParamRecord)[key];
-
-  if (Array.isArray(rawValue)) {
-    return rawValue[0] ?? null;
-  }
-
-  return rawValue ?? null;
-}
 
 function normalizeStationParam(station: string | null): string | null {
   if (!station) {

@@ -1,6 +1,7 @@
 import type { ReadonlyURLSearchParams } from "next/navigation";
 import { nflSeeds } from "@/components/football/seedLadder";
 import type { NFLRouteState, NFLTeamStanding, NFLView } from "@/types/nfl";
+import { readParam, type SearchParamInput } from "@/lib/searchParams";
 
 // Pure, snapshot-free route-state core for /nfl. Importing this module never
 // pulls the multi-thousand-line `nflSnapshot` into the bundle, so the client
@@ -14,13 +15,6 @@ export const NFL_ROUTE = "/nfl";
 export const NFL_FALLBACK_TEAM = "den";
 
 const VALID_VIEWS = new Set<NFLView>(["league", "afc", "nfc", "playoffs"]);
-
-export type SearchParamInput =
-  | URLSearchParams
-  | ReadonlyURLSearchParams
-  | Record<string, string | string[] | undefined | null>;
-
-type SearchParamRecord = Record<string, string | string[] | undefined | null>;
 
 type TeamAliasSource = { id: string; abbr: string };
 
@@ -42,17 +36,6 @@ export function canonicalizeTeamId(
 ): string | null {
   if (!teamId) return null;
   return aliasMap.get(teamId.trim().toLowerCase()) ?? null;
-}
-
-export function readParam(input: SearchParamInput, key: string): string | null {
-  if ("get" in input && typeof input.get === "function") {
-    return input.get(key);
-  }
-  const rawValue = (input as SearchParamRecord)[key];
-  if (Array.isArray(rawValue)) {
-    return rawValue[0] ?? null;
-  }
-  return rawValue ?? null;
 }
 
 export function filterTeams(

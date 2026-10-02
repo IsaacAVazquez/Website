@@ -12,6 +12,7 @@ import type {
   MBARoleTypeFilter,
   MBASortOrder,
 } from "@/types/mba-jobs";
+import { readParam, type SearchParamInput } from "@/lib/searchParams";
 
 export const MBA_JOBS_ROUTE = "/mba-internship-notifications";
 
@@ -68,18 +69,8 @@ export const DEFAULT_MBA_JOBS_STATE: MBAJobsSearchState = {
 
 // ── Helpers ──────────────────────────────────────────────────────────────────
 
-type SearchParamInput =
-  | URLSearchParams
-  | Record<string, string | string[] | undefined | null>;
-
-function readParam(input: SearchParamInput, key: string): string | undefined {
-  if (input instanceof URLSearchParams) return input.get(key) ?? undefined;
-  const v = input[key];
-  return Array.isArray(v) ? v[0] : (v ?? undefined);
-}
-
 function isValidOption<T extends string>(
-  value: string | undefined,
+  value: string | null,
   options: readonly T[]
 ): value is T {
   return !!value && (options as readonly string[]).includes(value);

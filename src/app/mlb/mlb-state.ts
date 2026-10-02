@@ -2,6 +2,7 @@ import type { ReadonlyURLSearchParams } from "next/navigation";
 import { mlbSnapshot } from "@/data/mlbSnapshot";
 import type { MlbRouteState, MlbStandingsRow, MlbView } from "@/types/mlb";
 import * as core from "./mlb-state.core";
+import type { SearchParamInput } from "@/lib/searchParams";
 
 // Snapshot-bound wrappers. These keep the original public API used by the
 // server page and the unit tests, but the heavy `mlbSnapshot` import lives
@@ -29,7 +30,7 @@ export function getDefaultTeamForView(view: MlbView): string {
   return core.getDefaultTeam(mlbSnapshot.standings, view, DEFAULT_MLB_STATE.team);
 }
 
-export function normalizeMlbState(input: core.SearchParamInput): MlbRouteState {
+export function normalizeMlbState(input: SearchParamInput): MlbRouteState {
   return core.normalizeState(input, DEFAULT_MLB_STATE, ALIAS_MAP);
 }
 

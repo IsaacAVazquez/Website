@@ -1,6 +1,7 @@
 import type { ReadonlyURLSearchParams } from "next/navigation";
 
 import { normalizeContestId, type BestBallContestId } from "@/lib/bestBall";
+import { readParam, type SearchParamInput } from "@/lib/searchParams";
 
 export type BestBallPositionFilter = "all" | "QB" | "RB" | "WR" | "TE";
 
@@ -10,22 +11,7 @@ export interface BestBallSearchState {
   query: string;
 }
 
-type SearchParamInput =
-  | URLSearchParams
-  | ReadonlyURLSearchParams
-  | Record<string, string | string[] | undefined | null>;
-
 const POSITIONS = new Set<BestBallPositionFilter>(["all", "QB", "RB", "WR", "TE"]);
-
-function readParam(input: SearchParamInput, key: string): string | null {
-  if ("get" in input && typeof input.get === "function") {
-    return input.get(key);
-  }
-
-  const rawValue = (input as Record<string, string | string[] | undefined | null>)[key];
-  if (Array.isArray(rawValue)) return rawValue[0] ?? null;
-  return rawValue ?? null;
-}
 
 function normalizePosition(value: string | null): BestBallPositionFilter {
   if (!value) return "all";

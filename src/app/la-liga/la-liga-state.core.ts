@@ -5,6 +5,7 @@ import type {
   LaLigaRouteState,
   LaLigaView,
 } from "@/types/la-liga";
+import { readParam, type SearchParamInput } from "@/lib/searchParams";
 
 // Pure, snapshot-free route-state core for /la-liga. Importing this module never
 // pulls the multi-thousand-line `laLigaSnapshot` into the bundle, so the client
@@ -21,13 +22,6 @@ const VALID_VIEWS = new Set<LaLigaView>(["table", "title-race", "europe", "releg
 
 export const LA_LIGA_DETAIL_OPTIONS = ["club", "fixtures", "scorers"] as const;
 const VALID_DETAILS = new Set<LaLigaDetailTab>(LA_LIGA_DETAIL_OPTIONS);
-
-export type SearchParamInput =
-  | URLSearchParams
-  | ReadonlyURLSearchParams
-  | Record<string, string | string[] | undefined | null>;
-
-type SearchParamRecord = Record<string, string | string[] | undefined | null>;
 
 type ClubAliasSource = { id: string; tla: string | null };
 
@@ -52,19 +46,6 @@ export function canonicalizeClubId(
   }
 
   return aliasMap.get(clubId.trim().toLowerCase()) ?? null;
-}
-
-export function readParam(input: SearchParamInput, key: string): string | null {
-  if ("get" in input && typeof input.get === "function") {
-    return input.get(key);
-  }
-
-  const rawValue = (input as SearchParamRecord)[key];
-  if (Array.isArray(rawValue)) {
-    return rawValue[0] ?? null;
-  }
-
-  return rawValue ?? null;
 }
 
 export function filterClubs(clubs: readonly LaLigaClub[], view: LaLigaView): LaLigaClub[] {

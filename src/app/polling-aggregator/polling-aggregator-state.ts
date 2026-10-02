@@ -1,5 +1,6 @@
 import type { ReadonlyURLSearchParams } from "next/navigation";
 import type { PollingRouteState, PollingView, Race, RaceRating } from "@/types/polling";
+import { readParam, type SearchParamInput } from "@/lib/searchParams";
 
 export const POLLING_ROUTE = "/polling-aggregator";
 
@@ -30,22 +31,6 @@ export const DEFAULT_POLLING_STATE: PollingRouteState = {
   view: "overview",
   race: null,
 };
-
-type SearchParamInput =
-  | URLSearchParams
-  | ReadonlyURLSearchParams
-  | Record<string, string | string[] | undefined | null>;
-
-type SearchParamRecord = Record<string, string | string[] | undefined | null>;
-
-function readParam(input: SearchParamInput, key: string): string | null {
-  if ("get" in input && typeof input.get === "function") {
-    return (input as URLSearchParams).get(key);
-  }
-  const rawValue = (input as SearchParamRecord)[key];
-  if (Array.isArray(rawValue)) return rawValue[0] ?? null;
-  return rawValue ?? null;
-}
 
 function normalizeRaceParam(race: string | null): string | null {
   if (!race) return null;

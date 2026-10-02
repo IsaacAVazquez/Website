@@ -1,4 +1,3 @@
-import type { ReadonlyURLSearchParams } from "next/navigation";
 import {
   isFoodMapCityId,
   isFoodMapCuisineId,
@@ -8,11 +7,7 @@ import {
   type FoodMapCuisineId,
   type FoodMapCuratorId,
 } from "./food-map-data";
-
-type SearchParamInput =
-  | URLSearchParams
-  | ReadonlyURLSearchParams
-  | Record<string, string | string[] | undefined | null>;
+import { readParam, type SearchParamInput } from "@/lib/searchParams";
 
 export interface FoodMapState {
   city: FoodMapCityId;
@@ -31,18 +26,6 @@ export const DEFAULT_FOOD_MAP_STATE: FoodMapState = {
   cuisines: [],
   pick: null,
 };
-
-function readParam(input: SearchParamInput, key: string): string | null {
-  if ("get" in input && typeof input.get === "function") {
-    return (input as URLSearchParams).get(key);
-  }
-
-  const rawValue = (input as Record<string, string | string[] | undefined | null>)[key];
-  if (Array.isArray(rawValue)) {
-    return rawValue[0] ?? null;
-  }
-  return rawValue ?? null;
-}
 
 function parseList(raw: string | null): string[] {
   if (!raw) {

@@ -5,6 +5,7 @@ import type {
   TechStartupSnapshot,
   TechStartupSortKey,
 } from "@/types/techStartup";
+import { readParam, type SearchParamInput } from "@/lib/searchParams";
 
 export const TECH_STARTUP_ROUTE = "/tech-startup-tracker";
 
@@ -31,30 +32,12 @@ export const TECH_STARTUP_SORT_LABELS: Record<TechStartupSortKey, string> = {
 const VALID_KINDS = new Set<TechStartupSegmentKind>(TECH_STARTUP_KIND_OPTIONS);
 const VALID_SORTS = new Set<TechStartupSortKey>(TECH_STARTUP_SORT_OPTIONS);
 
-type SearchParamInput =
-  | URLSearchParams
-  | ReadonlyURLSearchParams
-  | Record<string, string | string[] | undefined | null>;
-
-type SearchParamRecord = Record<string, string | string[] | undefined | null>;
-
 export const DEFAULT_TECH_STARTUP_STATE: TechStartupRouteState = {
   kind: "sector",
   segment: "all",
   sort: "momentum",
   selectedStartupId: null,
 };
-
-function readParam(input: SearchParamInput, key: string): string | null {
-  if ("get" in input && typeof input.get === "function") {
-    return (input as URLSearchParams).get(key);
-  }
-  const rawValue = (input as SearchParamRecord)[key];
-  if (Array.isArray(rawValue)) {
-    return rawValue[0] ?? null;
-  }
-  return rawValue ?? null;
-}
 
 export function normalizeTechStartupState(
   input: SearchParamInput

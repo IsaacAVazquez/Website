@@ -1,5 +1,6 @@
 import type { ReadonlyURLSearchParams } from "next/navigation";
 import type { MlbRouteState, MlbStandingsRow, MlbView } from "@/types/mlb";
+import { readParam, type SearchParamInput } from "@/lib/searchParams";
 
 // Pure, snapshot-free route-state core for /mlb. Importing this module never
 // pulls the multi-thousand-line `mlbSnapshot` into the bundle, so the client
@@ -13,13 +14,6 @@ export const MLB_ROUTE = "/mlb";
 export const MLB_FALLBACK_TEAM = "147";
 
 const VALID_VIEWS = new Set<MlbView>(["all", "al", "nl", "wildcard"]);
-
-export type SearchParamInput =
-  | URLSearchParams
-  | ReadonlyURLSearchParams
-  | Record<string, string | string[] | undefined | null>;
-
-type SearchParamRecord = Record<string, string | string[] | undefined | null>;
 
 type TeamAliasSource = { id: string; abbreviation: string };
 
@@ -41,17 +35,6 @@ export function canonicalizeTeamId(
 ): string | null {
   if (!teamId) return null;
   return aliasMap.get(teamId.trim().toLowerCase()) ?? null;
-}
-
-export function readParam(input: SearchParamInput, key: string): string | null {
-  if ("get" in input && typeof input.get === "function") {
-    return input.get(key);
-  }
-  const rawValue = (input as SearchParamRecord)[key];
-  if (Array.isArray(rawValue)) {
-    return rawValue[0] ?? null;
-  }
-  return rawValue ?? null;
 }
 
 function sortByDivisionRank(a: MlbStandingsRow, b: MlbStandingsRow): number {

@@ -5,6 +5,7 @@ import {
   type FantasyRouteScoring,
 } from "@/lib/fantasy";
 import { repairFantasyTradePlayerIds } from "@/lib/fantasyTradePersistence";
+import { readParam, type SearchParamInput } from "@/lib/searchParams";
 
 export const TRADE_CALCULATOR_TEAM_COUNTS = [8, 10, 12, 14, 16] as const;
 export const TRADE_CALCULATOR_ROSTER_SIZES = [13, 14, 15, 16, 17, 18] as const;
@@ -26,33 +27,12 @@ export interface TradeCalculatorSearchState {
   lineup: TradeCalculatorLineupPreset;
 }
 
-type SearchParamInput =
-  | URLSearchParams
-  | ReadonlyURLSearchParams
-  | Record<string, string | string[] | undefined | null>;
-
 export const DEFAULT_TRADE_CALCULATOR_STATE: TradeCalculatorSearchState = {
   scoring: "ppr",
   teams: 12,
   rosterSize: 15,
   lineup: "traditional",
 };
-
-function readParam(
-  input: SearchParamInput,
-  key: keyof TradeCalculatorSearchState | "give" | "get",
-): string | null {
-  if ("get" in input && typeof input.get === "function") {
-    return input.get(key);
-  }
-
-  const rawValue = (input as Record<string, string | string[] | undefined | null>)[key];
-  if (Array.isArray(rawValue)) {
-    return rawValue[0] ?? null;
-  }
-
-  return rawValue ?? null;
-}
 
 function normalizeNumberOption<Option extends number>(
   value: string | null,

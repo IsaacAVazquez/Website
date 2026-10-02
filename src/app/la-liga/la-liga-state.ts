@@ -2,6 +2,7 @@ import type { ReadonlyURLSearchParams } from "next/navigation";
 import { laLigaSnapshot } from "@/data/laLigaSnapshot";
 import type { LaLigaClub, LaLigaRouteState, LaLigaView } from "@/types/la-liga";
 import * as core from "./la-liga-state.core";
+import type { SearchParamInput } from "@/lib/searchParams";
 
 // Snapshot-bound wrappers. These keep the original public API used by the
 // server page and the unit tests, but the heavy `laLigaSnapshot` import lives
@@ -28,7 +29,7 @@ export function getDefaultClubForView(view: LaLigaView): string {
   return core.getDefaultClub(laLigaSnapshot.clubs, view, DEFAULT_LA_LIGA_STATE.club);
 }
 
-export function normalizeLaLigaState(input: core.SearchParamInput): LaLigaRouteState {
+export function normalizeLaLigaState(input: SearchParamInput): LaLigaRouteState {
   return core.normalizeState(input, DEFAULT_LA_LIGA_STATE, ALIAS_MAP);
 }
 

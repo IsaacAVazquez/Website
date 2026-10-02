@@ -7,6 +7,7 @@ import type {
   FrontierTierFilter,
   FrontierView,
 } from "@/types/frontierModels";
+import { readParam, type SearchParamInput } from "@/lib/searchParams";
 
 export const FRONTIER_MODELS_ROUTE = "/frontier-models";
 
@@ -24,13 +25,6 @@ const VALID_PROVIDERS = new Set([
 ]);
 const VALID_MODALITIES = new Set(["text", "vision", "audio"]);
 const VALID_TIERS = new Set(["budget", "standard", "premium"]);
-
-type SearchParamInput =
-  | URLSearchParams
-  | ReadonlyURLSearchParams
-  | Record<string, string | string[] | undefined | null>;
-
-type SearchParamRecord = Record<string, string | string[] | undefined | null>;
 
 export const DEFAULT_FRONTIER_MODELS_STATE: FrontierModelsRouteState = {
   view: "list",
@@ -58,17 +52,6 @@ export const FRONTIER_MODALITY_LABELS: Record<
   vision: "Vision",
   audio: "Audio",
 };
-
-function readParam(input: SearchParamInput, key: string): string | null {
-  if ("get" in input && typeof input.get === "function") {
-    return (input as URLSearchParams).get(key);
-  }
-  const rawValue = (input as SearchParamRecord)[key];
-  if (Array.isArray(rawValue)) {
-    return rawValue[0] ?? null;
-  }
-  return rawValue ?? null;
-}
 
 export function normalizeFrontierModelsState(
   input: SearchParamInput
