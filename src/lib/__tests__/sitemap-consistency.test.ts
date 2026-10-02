@@ -53,6 +53,15 @@ describe("public sitemap", () => {
     ["/la-liga", laLigaSnapshot.generatedAt],
     ["/mlb", mlbSnapshot.generatedAt],
     ["/nba", nbaSnapshot.generatedAt],
+    ...["/fantasy-football/weekly", "/fantasy-football/waivers"].map((route) => [
+      route,
+      JSON.parse(fs.readFileSync(
+        fs.existsSync("public/data/fantasy/weekly.json")
+          ? "public/data/fantasy/weekly.json"
+          : "public/data/fantasy/ppr.json",
+        "utf8"
+      )).generatedAt,
+    ]),
     [
       "/spacex-mission-control",
       JSON.parse(fs.readFileSync("src/data/spacexSnapshot.generated.json", "utf8"))
@@ -61,6 +70,31 @@ describe("public sitemap", () => {
   ])("tracks the current snapshot timestamp for %s", (pathname, generatedAt) => {
     const entry = getPublicSitemapEntries().find(({ loc }) => loc === pathname);
     expect(entry?.lastmod).toBe(new Date(generatedAt as string).toISOString());
+  });
+
+  it("keeps the existing fantasy date before a weekly snapshot is published", () => {
+    const read = fs.readFileSync;
+    const spy = jest.spyOn(fs, "readFileSync").mockImplementation((file, options) => {
+      if (String(file).endsWith("public/data/fantasy/weekly.json")) {
+        throw Object.assign(new Error("Not published"), { code: "ENOENT" });
+      }
+      return read(file, options);
+    });
+    try {
+      jest.isolateModules(() => {
+        // eslint-disable-next-line @typescript-eslint/no-require-imports
+        const { getPublicSitemapEntries: readEntries } = require("../sitemap.js") as {
+          getPublicSitemapEntries: typeof getPublicSitemapEntries;
+        };
+        const entries = readEntries();
+        const draftDate = entries.find((entry) => entry.loc === "/fantasy-football")?.lastmod;
+        for (const route of ["/fantasy-football/weekly", "/fantasy-football/waivers"]) {
+          expect(entries.find((entry) => entry.loc === route)?.lastmod).toBe(draftDate);
+        }
+      });
+    } finally {
+      spy.mockRestore();
+    }
   });
 
   // Google only trusts lastmod when it tracks real changes, and a new post

@@ -11,6 +11,8 @@
 import { readFileSync } from "fs";
 import path from "path";
 import type { StockQuote } from "@/types/investment";
+import { isValidSymbol } from "@/lib/investmentSymbol";
+export { isValidSymbol } from "@/lib/investmentSymbol";
 import {
   getInvestmentsAssetOrigin,
   type AssetOriginOptions,
@@ -33,19 +35,6 @@ const NO_PRICE_ERROR = "Live price is unavailable for this symbol right now.";
 let rateLimitedUntil = 0;
 const quoteCache = new Map<string, { quote: StockQuote; expiresAt: number }>();
 const quoteInflight = new Map<string, Promise<StockQuote>>();
-
-/**
- * Strict symbol shape. Forbids leading dots/dashes and consecutive
- * separators; requires at least one alphanumeric and capped at 10 chars.
- * Examples accepted: AAPL, BRK-B, BRK.B, BF.B
- * Examples rejected: .AAPL, -AAPL, AA..PL, AAPL., "AAPL "
- */
-export function isValidSymbol(symbol: string): boolean {
-  if (typeof symbol !== "string" || symbol.length === 0 || symbol.length > 10) {
-    return false;
-  }
-  return /^[A-Z][A-Z0-9]*([.-][A-Z0-9]+)*$/.test(symbol);
-}
 
 // ---------------------------------------------------------------------------
 // Allowlist of curated symbols

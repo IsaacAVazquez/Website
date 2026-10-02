@@ -2,7 +2,7 @@
 
 Current API route inventory for the app.
 
-**Last updated:** 2026-09-30
+**Last updated:** 2026-10-02
 
 ---
 
@@ -58,7 +58,7 @@ Current API route inventory for the app.
 
 | Route | Methods | Notes |
 |------|---------|-------|
-| `/api/newsletter/subscribe` | POST | Validates a public email signup and creates an opted-in Resend contact, optionally inside `RESEND_NEWSLETTER_SEGMENT_ID` |
+| `/api/newsletter/subscribe` | POST | Validates public email signup and JSON object shape, creating an opted-in Resend contact, optionally inside `RESEND_NEWSLETTER_SEGMENT_ID` |
 | `/api/news-pulse` | GET | News Pulse article summary data |
 | `/api/spacex/summary` | GET | SpaceX Mission Control summary payload |
 | `/api/spacex/launches` | GET | SpaceX launch list payload |
@@ -75,6 +75,7 @@ Current API route inventory for the app.
 `/api/search` indexes blog posts, the case studies in `src/constants/caseStudies.ts` (categorized through `toolCategories.ts`), and a short table of pages with no case study. It should be documented honestly:
 
 - useful for the existing UI
+- guards against prototype property resolution (e.g. `constructor` query returns no corrupted answer) via `Object.hasOwn`
 - not comprehensive
 - not a reliable source of truth for all writing or project content
 

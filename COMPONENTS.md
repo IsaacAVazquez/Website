@@ -2,7 +2,7 @@
 
 Current component map for the live application.
 
-**Last updated:** 2026-09-29
+**Last updated:** 2026-10-02
 
 > Seven routes (`/`, `/portfolio`, `/writing`, `/dashboards`, `/about`, `/resume`,
 > `/contact`) render Catalog 97 composition roots from `src/components/catalog97/`.
@@ -63,6 +63,14 @@ page's only `<main>`, header, and footer.
 | `StructuredData` | `src/components/StructuredData.tsx` | JSON-LD injection |
 | `AIStructuredData` | `src/components/AIStructuredData.tsx` | AI-oriented structured data helper |
 | `AuthorBio` | `src/components/ui/AuthorBio.tsx` | Article author block in Catalog 97: square stone portrait, name at the h3 step, one paragraph, microlink contacts |
+
+### Site search
+
+| Component | File | Role |
+|----------|------|------|
+| `SearchInterface` | `src/components/search/SearchInterface.tsx` | Main search client page with debounced query input, abortable API requests, and results list |
+| `HeaderSearchPanel` | `src/components/search/HeaderSearchPanel.tsx` | Slide-out quick search modal launched from `Catalog97Header` |
+| `SearchResults` | `src/components/search/SearchResults.tsx` | Formatted search result list rendering title, category, and snippets |
 
 ### Fantasy football
 
@@ -230,5 +238,6 @@ Current component-oriented tests include:
 - `src/components/catalog97/__tests__/Catalog97ToolShell.test.tsx`
 - tests under `src/components/ui/__tests__/`
 - investments component tests under `src/components/investments/__tests__/`
+- search component tests under `src/components/search/__tests__/`
 
 See `TESTING.md` for the broader strategy.

@@ -10,12 +10,14 @@ import type {
 import type { PortfolioSnapshot } from "@/components/investments/PortfolioPerformanceChart";
 import {
   readValidatedBrowserStorage,
+  subscribeBrowserStorage,
   writeBrowserStorageJson,
   type PersistenceStatus,
 } from "@/lib/browserStorage";
 import { isLocalDateKey } from "@/lib/date-formatters";
 import { useLocalStoragePersistenceStatus } from "@/hooks/useLocalStorageString";
 import { isFiniteNumber, isRecord } from "@/lib/utils";
+import { isValidSymbol } from "@/lib/investmentSymbol";
 
 const STORAGE_KEY = "portfolio_holdings";
 const SNAPSHOTS_KEY = "portfolio_snapshots";
@@ -62,7 +64,7 @@ function decodeHolding(value: unknown): PortfolioHolding | undefined {
   if (!isRecord(value)) return undefined;
   if (
     typeof value.symbol !== "string" ||
-    value.symbol.trim().length === 0 ||
+    !isValidSymbol(value.symbol.trim().toUpperCase()) ||
     !isFiniteNumber(value.shares) ||
     value.shares <= 0 ||
     !isFiniteNumber(value.averageCost) ||
@@ -589,7 +591,24 @@ export function useInvestments(): UseInvestmentsReturn {
       // still starts a background refresh so a five-minute browser cache can
       // never suppress the first market request for this tab.
     }
-    return () => { isMounted.current = false; };
+    const unsubscribeHoldings = subscribeBrowserStorage(STORAGE_KEY, () => {
+      const next = loadHoldings();
+      if (JSON.stringify(next) === JSON.stringify(holdingsRef.current)) return;
+      if (symbolKey(next) !== symbolKey(holdingsRef.current)) {
+        latestQuoteRequestId.current += 1;
+        setIsLoading(false);
+      }
+      holdingsRef.current = next;
+      setHoldings(next);
+    });
+    const unsubscribeSnapshots = subscribeBrowserStorage(SNAPSHOTS_KEY, () => {
+      setSnapshots(loadSnapshots());
+    });
+    return () => {
+      isMounted.current = false;
+      unsubscribeHoldings();
+      unsubscribeSnapshots();
+    };
   }, []);
 
   const fetchAllQuotes = useCallback(async (currentHoldings: PortfolioHolding[]) => {
@@ -610,6 +629,9 @@ export function useInvestments(): UseInvestmentsReturn {
       const symbols = currentHoldings.map((h) => h.symbol);
       const { quotes: freshQuotes, warning } = await fetchQuotesWithStatus(symbols);
       if (isMounted.current && latestQuoteRequestId.current === requestId) {
+        // Share and cost edits keep this symbol request valid, but valuation
+        // must use the latest holdings rather than the pre-request quantities.
+        currentHoldings = holdingsRef.current;
         const previousQuotes = quotesRef.current;
         const nextQuotes = new Map<string, StockQuote>();
         for (const holding of currentHoldings) {
@@ -754,9 +776,9 @@ export function useInvestments(): UseInvestmentsReturn {
 
   const commitHoldings = useCallback(
     (updater: (current: PortfolioHolding[]) => PortfolioHolding[]) => {
-      const next = updater(holdingsRef.current);
-      holdingsRef.current = next;
+      const next = decodeHoldings(updater(loadHoldings())) ?? [];
       saveHoldings(next);
+      holdingsRef.current = next;
       setHoldings(next);
     },
     [],

@@ -49,13 +49,14 @@ Conventions that hold across the stores:
   (`typeof window === "undefined"`), so the hook returns an empty snapshot during
   server render and hydrates on the client.
 
-Two hook flavors are in use, both valid:
+Two hook patterns are in use. `useTravelPlanner` uses `useSyncExternalStore`, a
+module level listener set, and a `storage` event handler to keep multiple tabs
+consistent and give React a stable external store. I would use this pattern for
+new stores.
 
-- **`useSyncExternalStore` + cross-tab sync** (`useTravelPlanner`): a module-level
-  listener set plus a `storage` event handler keeps multiple tabs consistent and
-  gives React a stable external store. Prefer this for new stores.
-- **`useState` + `useEffect`** (`useMuseumLog`): simpler, single-tab; fine for
-  smaller surfaces.
+`useMuseumLog` uses `useState` and `useEffect`, subscribes to the shared browser
+storage helper, and applies each edit to the latest validated save. It also
+receives changes from other tabs and other hook instances in the same tab.
 
 ---
 

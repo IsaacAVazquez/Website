@@ -484,6 +484,7 @@ export async function buildGolfSnapshotData(): Promise<GolfSnapshot> {
         ? "Playoff"
         : `Round ${period}`,
     status: statusType?.detail ?? statusType?.description ?? "",
+    completed: statusType?.completed ?? statusType?.state === "post",
     fieldSize: competitors.length,
     cutLine: cut.cutLine,
     cutState: cut.cutState,

@@ -39,6 +39,7 @@ const RESULT_LIMIT = 6;
 export function HeaderSearchPanel({ onClose }: HeaderSearchPanelProps) {
   const router = useRouter();
   const inputRef = useRef<HTMLInputElement>(null);
+  const searchControllerRef = useRef<AbortController | null>(null);
   const listboxId = useId();
 
   const [query, setQuery] = useState("");
@@ -48,7 +49,7 @@ export function HeaderSearchPanel({ onClose }: HeaderSearchPanelProps) {
   const [activeIndex, setActiveIndex] = useState(-1);
 
   const debouncedQuery = useDebounce(query.trim(), 220);
-  const hasQuery = debouncedQuery.length > 0;
+  const hasQuery = query.trim().length > 0;
 
   // Focus the input once the panel mounts, and hand focus back to whatever
   // opened it when it closes, so Escape and the close button do not drop a
@@ -73,30 +74,32 @@ export function HeaderSearchPanel({ onClose }: HeaderSearchPanelProps) {
       );
       if (!response.ok) throw new Error(`search failed: ${response.status}`);
       const data: { results?: HeaderSearchResult[]; total?: number } = await response.json();
+      if (signal.aborted) return;
       setResults(Array.isArray(data.results) ? data.results : []);
       setTotal(typeof data.total === "number" ? data.total : 0);
       setActiveIndex(-1);
     } catch (error) {
-      if ((error as { name?: string })?.name !== "AbortError") {
+      if (!signal.aborted && (error as { name?: string })?.name !== "AbortError") {
         setResults([]);
         setTotal(0);
       }
     } finally {
-      setLoading(false);
+      if (!signal.aborted) setLoading(false);
     }
   }, []);
 
   useEffect(() => {
-    if (!hasQuery) return;
+    if (!hasQuery || debouncedQuery !== query.trim()) return;
     const controller = new AbortController();
+    searchControllerRef.current = controller;
     // eslint-disable-next-line react-hooks/set-state-in-effect -- Debounced search on query change; runSearch updates loading/results state internally
     runSearch(debouncedQuery, controller.signal);
     return () => controller.abort();
-  }, [hasQuery, debouncedQuery, runSearch]);
+  }, [hasQuery, debouncedQuery, query, runSearch]);
 
   const allResultsHref = useMemo(
-    () => (hasQuery ? `/search?q=${encodeURIComponent(debouncedQuery)}` : "/search"),
-    [hasQuery, debouncedQuery]
+    () => (hasQuery ? `/search?q=${encodeURIComponent(query.trim())}` : "/search"),
+    [hasQuery, query]
   );
 
   const goToAllResults = useCallback(() => {
@@ -124,12 +127,12 @@ export function HeaderSearchPanel({ onClose }: HeaderSearchPanelProps) {
 
   const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const next = event.target.value;
+    searchControllerRef.current?.abort();
     setQuery(next);
-    if (!next.trim()) {
-      setResults([]);
-      setTotal(0);
-      setActiveIndex(-1);
-    }
+    setResults([]);
+    setTotal(0);
+    setActiveIndex(-1);
+    setLoading(Boolean(next.trim()));
   };
 
   const onKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {

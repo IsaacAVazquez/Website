@@ -2,7 +2,7 @@
 
 Day-to-day operational and hygiene notes for the live site. For the public vulnerability-disclosure policy, see the root [`SECURITY.md`](../SECURITY.md).
 
-**Last updated:** 2026-09-30
+**Last updated:** 2026-10-02
 
 ---
 
@@ -79,11 +79,18 @@ These power the live UI. They are cached, rate-limited where appropriate, and mu
 ### Public, side-effect endpoints
 
 - `/api/mba-jobs/email` sends a Resend-backed digest. It validates and escapes request content, caps digest size, rate-limits by client, and only sends to `MBA_DIGEST_ALLOWED_RECIPIENTS`.
-- `/api/newsletter/subscribe` creates a Resend contact from the public newsletter form.
+- `/api/newsletter/subscribe` creates a Resend contact from the public newsletter form. It validates that the parsed JSON payload is a non-null object before inspecting fields, returning HTTP 400 for malformed input.
 
-`/api/search` is still a limited, mostly hardcoded index. Do not treat it as complete site search.
+`/api/search` is still a limited, mostly hardcoded index. It uses `Object.hasOwn` on dictionary lookups to prevent prototype pollution from inherited properties like `constructor`. Do not treat it as complete site search.
 
 There is no `/api/scheduled-update`, `/api/data-manager`, `/api/fantasy-pros-session`, `/api/fantasy-pros-free`, or `/api/scrape` route in the live app. Older docs that reference these are historical.
+
+---
+
+## Client-Side Input Validation And DOM Safety
+
+- validate user-controlled or restored storage data against strict patterns (for example, investment symbols via `isValidInvestmentSymbol` matching `^[A-Z0-9.\-]{1,10}$`) before persistence, quote requests, or rendering
+- build tooltips, dynamic labels, and chart annotations using safe DOM primitives (`document.createTextNode` or `element.textContent`), never direct `innerHTML` string interpolation with user data
 
 ---
 

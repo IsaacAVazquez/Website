@@ -2,7 +2,7 @@
 
 Current API route map.
 
-**Last updated:** 2026-09-30
+**Last updated:** 2026-10-02
 
 ---
 
@@ -23,7 +23,7 @@ Current API route map.
 | `/api/la-liga/teams/[teamId]` | GET | Snapshot-backed team drilldown payload for `/la-liga` |
 | `/api/mba-jobs` | GET | Live MBA-role aggregator across Greenhouse/Lever/Ashby/direct-HTML boards for `/mba-internship-notifications` |
 | `/api/mba-jobs/email` | POST | Sends grouped digest of supplied jobs via Resend |
-| `/api/newsletter/subscribe` | POST | Creates an opted-in Resend contact from the public newsletter form |
+| `/api/newsletter/subscribe` | POST | Creates an opted-in Resend contact from the public newsletter form with JSON object shape validation |
 | `/api/mlb/teams/[teamId]` | GET | Snapshot-backed MLB team drilldown payload |
 | `/api/nba/teams/[teamId]` | GET | Snapshot-backed NBA team drilldown payload |
 | `/api/news-pulse` | GET | News Pulse article summaries |
@@ -71,6 +71,7 @@ Current investment routes:
 That means:
 
 - good for simple UI demos and current navigation/search flows
+- guards against prototype property resolution (e.g. `constructor`) via `Object.hasOwn`
 - not comprehensive for all writing or project content
 - should be described as limited until the route is expanded
 

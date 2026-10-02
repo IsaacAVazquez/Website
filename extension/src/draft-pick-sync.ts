@@ -7,6 +7,11 @@ import {
 
 type PublishDraftSync = (message: FantasyDraftSyncMessage) => void;
 
+/** Extension-only read outcome; an unavailable provider log is never a verified empty log. */
+export interface DraftPickRead extends FantasyDraftSyncMessage {
+  readSucceeded: boolean;
+}
+
 interface SleeperPickPayload {
   pick_no?: unknown;
   metadata?: {
@@ -288,7 +293,7 @@ export function startDraftPickSync(
     fetcher?: typeof fetch;
   } = {}
 ): {
-  request: () => Promise<FantasyDraftSyncMessage>;
+  request: () => Promise<DraftPickRead>;
   stop: () => void;
 } {
   const fetcher = options.fetcher ?? window.fetch.bind(window);
@@ -306,15 +311,19 @@ export function startDraftPickSync(
       credentials: "include",
       headers: { Accept: "application/json", ...headers },
     });
-    return response.ok ? response.json() : null;
+    if (!response.ok) throw new Error("The provider draft log is unavailable.");
+    return response.json();
   };
 
   const readEspn = async (): Promise<FantasyDraftObservedPick[]> => {
     const context = extractEspnDraftContext(options.href ?? window.location.href);
-    if (!context) return [];
+    if (!context) throw new Error("No ESPN draft room was found.");
     const league = await getJson(
       `${ESPN_LEAGUE_API}/seasons/${context.season}/segments/0/leagues/${context.leagueId}?view=mDraftDetail`
     );
+    if (!Array.isArray((league as { draftDetail?: { picks?: unknown } })?.draftDetail?.picks)) {
+      throw new Error("The ESPN draft log is invalid.");
+    }
     const ids = espnPlayerIdsFromDraftDetail(league);
     if (ids.length === 0) return [];
     // The player list is one request for the whole season; fetch it once and
@@ -333,33 +342,34 @@ export function startDraftPickSync(
 
   const read = async (): Promise<FantasyDraftObservedPick[]> => {
     if (provider === "underdog") return extractUnderdogDraftPicks();
-    if (provider === "espn") {
-      try {
-        return await readEspn();
-      } catch {
-        return [];
-      }
-    }
+    if (provider === "espn") return readEspn();
     // Sleeper is a single-page app, so the href is re-read on every poll
     // instead of captured once at script load.
     const sleeperDraftId = extractSleeperDraftId(options.href ?? window.location.href);
-    if (!sleeperDraftId) return [];
-    try {
-      const response = await fetcher(
-        `https://api.sleeper.app/v1/draft/${sleeperDraftId}/picks`,
-        { cache: "no-store", headers: { Accept: "application/json" } }
-      );
-      if (!response.ok) return [];
-      return parseSleeperDraftPicks(await response.json());
-    } catch {
-      return [];
+    if (!sleeperDraftId) throw new Error("No Sleeper draft room was found.");
+    const response = await fetcher(`https://api.sleeper.app/v1/draft/${sleeperDraftId}/picks`, {
+      cache: "no-store", headers: { Accept: "application/json" },
+    });
+    if (!response.ok) throw new Error("The provider draft log is unavailable.");
+    const payload: unknown = await response.json();
+    const picks = parseSleeperDraftPicks(payload);
+    if (!Array.isArray(payload) || payload.length !== picks.length) {
+      throw new Error("The Sleeper draft log is invalid.");
     }
+    return picks;
   };
 
-  const request = async (): Promise<FantasyDraftSyncMessage> => {
+  const request = async (): Promise<DraftPickRead> => {
     const roomUrl = options.href ?? window.location.href;
-    const picks = await read();
-    const nextMessage = messageFor(provider, picks, roomUrl);
+    let picks: FantasyDraftObservedPick[] = [];
+    let readSucceeded = false;
+    try {
+      picks = await read();
+      readSucceeded = true;
+    } catch {
+      // Preserve the existing fail-soft sync while keeping verification explicit.
+    }
+    const nextMessage: DraftPickRead = { ...messageFor(provider, picks, roomUrl), readSucceeded };
     const nextSignature = `${roomUrl}|${signature(picks)}`;
     if (!stopped && picks.length > 0 && nextSignature !== lastSignature) {
       lastSignature = nextSignature;

@@ -5,6 +5,7 @@ import {
   newsletterRateLimiter,
   rateLimitResponse,
 } from "@/lib/rateLimit";
+import { isRecord } from "@/lib/utils";
 import { normalizeSubscriberEmail } from "@/lib/newsletterSubscription";
 
 const ALLOWED_SOURCES = new Set(["writing", "agent_build_index"]);
@@ -35,7 +36,14 @@ export async function POST(request: NextRequest) {
 
   let payload: SubscribePayload;
   try {
-    payload = (await request.json()) as SubscribePayload;
+    const body: unknown = await request.json();
+    if (!isRecord(body)) {
+      return NextResponse.json(
+        { success: false, message: "Enter a valid email address." },
+        { status: 400 }
+      );
+    }
+    payload = body;
   } catch {
     return NextResponse.json(
       { success: false, message: "Enter a valid email address." },

@@ -62,6 +62,85 @@ function readStoredQuotes(): StockQuote[] {
 }
 
 describe("useInvestments derived calculations", () => {
+  it.each(["same tab", "another tab"])(
+    "values updated shares after a pending quote completes following an edit in %s",
+    async (editSource) => {
+      localStorage.setItem("portfolio_holdings", JSON.stringify([
+        { symbol: "AAPL", shares: 1, averageCost: 90 },
+      ]));
+      const pending = createDeferred<Response>();
+      global.fetch = jest.fn().mockReturnValue(pending.promise);
+      const { result } = renderHook(() => useInvestments());
+      expect(global.fetch).toHaveBeenCalledTimes(1);
+      expect(result.current.isLoading).toBe(true);
+
+      act(() => {
+        if (editSource === "same tab") {
+          result.current.updateHolding("AAPL", { shares: 2, averageCost: 95 });
+        } else {
+          const saved = JSON.stringify([
+            { symbol: "AAPL", shares: 2, averageCost: 95 },
+          ]);
+          localStorage.setItem("portfolio_holdings", saved);
+          window.dispatchEvent(new StorageEvent("storage", {
+            key: "portfolio_holdings", newValue: saved,
+          }));
+        }
+      });
+
+      await act(async () => {
+        pending.resolve({
+          ok: true,
+          json: async () => ({ quotes: [validQuote("AAPL", 110)] }),
+        } as Response);
+        await pending.promise;
+      });
+
+      await waitFor(() => expect(result.current.isLoading).toBe(false));
+      expect(global.fetch).toHaveBeenCalledTimes(1);
+      expect(result.current.enhancedHoldings[0]).toMatchObject({
+        shares: 2, currentPrice: 110, currentValue: 220, totalCost: 190,
+      });
+      expect(JSON.parse(localStorage.getItem("portfolio_snapshots")!)).toEqual([
+        expect.objectContaining({ totalValue: 220, totalCost: 190, holdingCount: 1 }),
+      ]);
+    },
+  );
+
+  it("rejects restored symbol markup while preserving supported symbol shapes", async () => {
+    global.fetch = jest.fn().mockResolvedValue({ ok: true, json: async () => ({ quotes: [] }) });
+    localStorage.setItem("portfolio_holdings", JSON.stringify([
+      { symbol: "<b>example</b>", shares: 1, averageCost: 100 },
+      { symbol: " brk.b ", shares: 1, averageCost: 100 },
+    ]));
+    const { result } = renderHook(() => useInvestments());
+    expect(result.current.holdings.map((holding) => holding.symbol)).toEqual(["BRK.B"]);
+    await waitFor(() => expect(result.current.isLoading).toBe(false));
+  });
+
+  it("preserves another tab's holding when adding one, even before its event arrives", async () => {
+    global.fetch = jest.fn().mockResolvedValue({ ok: true, json: async () => ({ quotes: [] }) });
+    const { result } = renderHook(() => useInvestments());
+    const apple = { symbol: "AAPL", shares: 1, averageCost: 100 };
+    localStorage.setItem("portfolio_holdings", JSON.stringify([apple]));
+    act(() => result.current.addHolding({ symbol: "MSFT", shares: 1, averageCost: 100 }));
+    expect(result.current.holdings.map((holding) => holding.symbol)).toEqual(["AAPL", "MSFT"]);
+    expect(JSON.parse(localStorage.getItem("portfolio_holdings")!)).toHaveLength(2);
+    await waitFor(() => expect(result.current.isLoading).toBe(false));
+  });
+
+  it("updates the displayed holdings after a cross-tab save", async () => {
+    global.fetch = jest.fn().mockResolvedValue({ ok: true, json: async () => ({ quotes: [] }) });
+    const { result } = renderHook(() => useInvestments());
+    const saved = JSON.stringify([{ symbol: "AAPL", shares: 1, averageCost: 100 }]);
+    act(() => {
+      localStorage.setItem("portfolio_holdings", saved);
+      window.dispatchEvent(new StorageEvent("storage", { key: "portfolio_holdings", newValue: saved }));
+    });
+    expect(result.current.holdings.map((holding) => holding.symbol)).toEqual(["AAPL"]);
+    await waitFor(() => expect(result.current.isLoading).toBe(false));
+  });
+
   beforeEach(() => {
     resetBrowserStorageMemory();
     window.localStorage.clear();

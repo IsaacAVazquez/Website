@@ -72,6 +72,20 @@ function readStoredPlan(): RetirementPlanInput {
 }
 
 describe("useRetirementPlan", () => {
+  it("preserves another tab's age when changing spending", () => {
+    const { result } = renderHook(() => useRetirementPlan(undefined, false));
+    const savedPlan = { ...createDefaultPlan(), currentAge: 42 };
+    const saved = JSON.stringify({ version: STORAGE_VERSION, plan: savedPlan });
+    act(() => {
+      localStorage.setItem(STORAGE_KEY, saved);
+      window.dispatchEvent(new StorageEvent("storage", { key: STORAGE_KEY, newValue: saved }));
+    });
+    expect(result.current.plan.currentAge).toBe(42);
+    act(() => result.current.updatePlan({ desiredAnnualSpend: 80_000 }));
+    expect(readStoredPlan().currentAge).toBe(42);
+    expect(readStoredPlan().desiredAnnualSpend).toBe(80_000);
+  });
+
   beforeEach(() => {
     resetBrowserStorageMemory();
     window.localStorage.clear();

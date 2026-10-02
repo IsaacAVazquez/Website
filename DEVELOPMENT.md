@@ -2,7 +2,7 @@
 
 Current development setup and workflow notes.
 
-**Last updated:** 2026-09-27
+**Last updated:** 2026-10-02
 
 ---
 
@@ -179,6 +179,12 @@ There is no authenticated surface. The `/admin` page and NextAuth were removed o
 ---
 
 ## Build And Deployment Notes
+
+Production webpack snapshots validate file and directory contents with hashes.
+I added this setting after repeated builds with Next.js 16.3.6 failed inside
+webpack's cached symlink context hashing. Development keeps its default
+settings, and production still uses filesystem caching. The configured snapshot
+categories and hash checks are described in [webpack's snapshot documentation](https://webpack.js.org/configuration/other-options/#snapshot).
 
 - deployment target is Netlify
 - builds consume committed snapshots and do not mutate data or call external providers

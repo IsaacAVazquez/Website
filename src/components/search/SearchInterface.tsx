@@ -69,6 +69,11 @@ export function SearchInterface({
   const router = useRouter();
   const pendingUrlSyncKeyRef = useRef<string | null>(null);
   const inputRef = useRef<HTMLInputElement>(null);
+  const searchControllerRef = useRef<AbortController | null>(null);
+  const cancelActiveSearch = useCallback(() => {
+    searchControllerRef.current?.abort();
+    searchControllerRef.current = null;
+  }, []);
   const seededState = readSeededSearchState({
     query: initialQuery,
     type: initialType,
@@ -119,6 +124,13 @@ export function SearchInterface({
     });
   }, [initialCategory, initialQuery, initialType]);
 
+  // Invalidate the previous request as soon as the input or filters change,
+  // including the debounce window, and prevent updates after unmount.
+  useEffect(() => {
+    cancelActiveSearch();
+    return cancelActiveSearch;
+  }, [searchState.query, searchState.type, searchState.category, cancelActiveSearch]);
+
   // Update URL when search parameters change
   const updateURL = useCallback((query: string, type: string, category: string) => {
     pendingUrlSyncKeyRef.current = getSearchStateKey(query, type, category);
@@ -135,10 +147,12 @@ export function SearchInterface({
 
   // Perform search
   const performSearch = useCallback(async (query: string, type: string, category: string) => {
+    cancelActiveSearch();
     if (!query.trim()) {
       setSearchState(prev => ({
         ...prev,
         results: [],
+        isLoading: false,
         hasSearched: false,
         totalResults: 0,
         searchTime: 0
@@ -146,6 +160,8 @@ export function SearchInterface({
       return;
     }
 
+    const controller = new AbortController();
+    searchControllerRef.current = controller;
     setSearchState(prev => ({ ...prev, isLoading: true }));
 
     const startTime = Date.now();
@@ -155,10 +171,12 @@ export function SearchInterface({
         q: query,
         ...(type !== 'all' && { type }),
         ...(category !== 'all' && { category })
-      })}`);
+      })}`, { signal: controller.signal });
+      if (!response.ok) throw new Error(`Search failed (${response.status})`);
 
       const data: SearchApiResponse = await response.json();
       const searchTime = Date.now() - startTime;
+      if (controller.signal.aborted) return;
 
       setSearchState(prev => ({
         ...prev,
@@ -169,6 +187,7 @@ export function SearchInterface({
         searchTime
       }));
     } catch (error) {
+      if (controller.signal.aborted) return;
       logger.error('Search failed', error);
       setSearchState(prev => ({
         ...prev,
@@ -179,10 +198,11 @@ export function SearchInterface({
         searchTime: Date.now() - startTime
       }));
     }
-  }, []);
+  }, [cancelActiveSearch]);
 
   // Effect for debounced search
   useEffect(() => {
+    if (effectiveQuery !== searchState.query) return;
     if (
       effectiveQuery !== initialQuery ||
       searchState.type !== initialType ||
@@ -194,6 +214,7 @@ export function SearchInterface({
     }
   }, [
     effectiveQuery,
+    searchState.query,
     searchState.type,
     searchState.category,
     performSearch,
@@ -229,7 +250,12 @@ export function SearchInterface({
   }, [performSearch, initialCategory, initialQuery, initialType]);
 
   const handleQueryChange = (query: string) => {
-    setSearchState(prev => ({ ...prev, query }));
+    cancelActiveSearch();
+    setSearchState(prev => ({
+      ...prev,
+      query,
+      ...(!query.trim() ? { results: [], isLoading: false, hasSearched: false, totalResults: 0, searchTime: 0 } : {}),
+    }));
   };
 
   const handleTypeChange = (type: string) => {
@@ -243,12 +269,14 @@ export function SearchInterface({
   };
 
   const clearSearch = () => {
+    cancelActiveSearch();
     setSearchState(prev => ({
       ...prev,
       query: "",
       type: "all",
       category: "all",
       results: [],
+      isLoading: false,
       hasSearched: false,
       totalResults: 0,
       searchTime: 0

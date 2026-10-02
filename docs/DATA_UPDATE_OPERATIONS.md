@@ -9,7 +9,7 @@ architecture or the per-workflow prose:
 - Per-workflow detail: `CRON_SETUP.md` and the **Automation Surfaces**
   section of `../AGENTS.md`. Each script's header comment says what it does.
 
-**Last updated:** 2026-09-28
+**Last updated:** 2026-10-02
 
 The `update:*` commands write committed TypeScript or JSON artifacts. A failed
 or empty fetch keeps the previous snapshot, and every scheduled job now checks
@@ -27,22 +27,22 @@ timeout, and a response served from the committed artifact carries the
 | Surface | `npm run` | Script(s) | Upstream source | Committed artifact | Workflow | Cadence |
 |---|---|---|---|---|---|---|
 | Fantasy football (redraft) | `update:fantasy:redraft` | `buildFantasyPositionData.ts` → `buildFantasyAdpData.ts` → `buildFantasyGameLogData.ts` → `buildFantasyVorpData.ts` → `buildFantasySnapshots.ts` | FantasyPros cheatsheets + FF Calculator ADP + nflverse weekly player stats | `public/data/fantasy/{ppr,half_ppr,standard}.json`, `src/data/fantasy*.generated.ts`, `src/data/fantasyRankHistory.generated.json` (rolling 17-day ECR/ADP history behind the 7 and 14-day movement stamps) | `update-fantasy.yml` | daily 17:17 UTC July through December and January 1 through 12; Wednesdays 17:17 UTC January through June; Sundays 11:47 UTC in January and September through December |
-| Fantasy football (best ball) | `update:fantasy:best-ball` | `buildBestBallSnapshot.ts` | FantasyPros best ball + Superflex consensus, Underdog ADP via Hayden Winks, ESPN schedule | `public/data/fantasy/best-ball.json` | `update-fantasy.yml` | same job, separate lane and commit |
+| Fantasy football (best ball) | `update:fantasy:best-ball` | `buildBestBallSnapshot.ts` | FantasyPros best ball + Superflex consensus, Underdog ADP via Hayden Winks, ESPN schedule | `public/data/fantasy/best-ball.json` | `update-fantasy.yml` | same job, separate lane and commit; rejected output is restored before either draft lane commits |
 | Fantasy football (weekly) | `update:fantasy:weekly` | `buildFantasyWeeklySnapshot.ts` | FantasyPros weekly FLEX and QB consensus | `public/data/fantasy/weekly.json` | `update-fantasy.yml` | same job, builds and commits first; the builder writes nothing before Week 1 or from seven days after Week 18 opens |
 | Investments | `update:investments` | `fetch_investments_data.py` (needs `.venv`) → `buildInvestmentsSnapshots.ts` | `defeatbeta-api` (Python) | `public/data/investments/index.json` + `{SYMBOL}/snapshot.json` | `update-investments.yml` | Tuesday through Saturday 08:30 UTC |
 | Football (both) | `update:football` | runs `update:premier-league`, waits 30 seconds for the rate-limit window, then runs `update:la-liga` | football-data.org *(token)* | `src/data/premierLeagueSnapshot.json` + `laLigaSnapshot.json` | none *(full run is manual ~weekly)* | manual |
-| Premier League | `update:premier-league` | `buildPremierLeagueSnapshot.ts` | football-data.org *(token)* | `src/data/premierLeagueSnapshot.json` | `update-premier-league.yml` | every 4h, August through May |
-| La Liga | `update:la-liga` | `updateLaLigaSnapshot.ts` | football-data.org *(token)* | `src/data/laLigaSnapshot.json` | `update-la-liga.yml` | every 4h, August through May |
-| NFL | `update:nfl` | `updateNflSnapshot.ts` | NFLverse CSVs | `src/data/nflSnapshot.json` | `update-nfl.yml` | daily 10:35 UTC, September through February |
-| MLB | `update:mlb` | `updateMlbSnapshot.ts` | MLB Stats API | `src/data/mlbSnapshot.json` | `update-mlb.yml` | every 4h, March 20 through November 6 |
-| NBA | `update:nba` | `updateNbaSnapshot.ts` | ESPN NBA | `src/data/nbaSnapshot.json` | `update-nba.yml` | every 4h, mid-October through June |
-| Golf | `update:golf` | `buildGolfSnapshot.ts` | ESPN golf | `src/data/golfSnapshot.json` | `update-golf.yml` | every 3h Thursday through Sunday; daily otherwise |
-| Formula 1 | `update:formula-1` | `buildFormula1Snapshot.ts` | OpenF1 | `src/data/formula1Snapshot.json` | `update-formula-1.yml` | every 3h Thursday through Sunday; daily otherwise |
-| World Cup 2026 | `update:world-cup` | `buildWorldCupSnapshot.ts` | ESPN `soccer/fifa.world` | `src/data/worldCupSnapshot.json` | `update-world-cup.yml` | no schedule; manual dispatch only |
-| Score pools | `update:score-pools` | `buildScorePoolsSnapshot.ts` | The Odds API + API-Football *(tokens required for live leagues)* + manual/CSV | `src/data/scorePoolsSnapshot.json` | `update-score-pools.yml` | every 6h; the run skips the refresh and passes with a notice until both provider keys are set |
-| Bay Area Transit | `update:bay-area-transit` | `buildBayAreaTransitSnapshot.ts` | BART public API *(`BART_API_KEY` optional; demo-key fallback)* | `src/data/bayAreaTransitSnapshot.json` | `update-bay-area-transit.yml` | every 6h, year-round |
-| Earthquake Pulse | `update:earthquake` | `buildEarthquakeSnapshot.ts` | USGS GeoJSON feeds | `src/data/earthquakeSnapshot.json` | `update-earthquake.yml` | daily 06:20 UTC |
-| GitHub Trending | `update:github-trending` | `buildGitHubTrendingSnapshot.ts` | GitHub Search API *(`GITHUB_TOKEN` optional)* | `src/data/githubTrendingSnapshot.json` | `update-github-trending.yml` | daily 07:45 UTC |
+| Premier League | `update:premier-league` | `buildPremierLeagueSnapshot.json` | football-data.org *(token)* | `src/data/premierLeagueSnapshot.json` | `update-premier-league.yml` | every 4h, August through May |
+| La Liga | `update:la-liga` | `updateLaLigaSnapshot.json` | football-data.org *(token)* | `src/data/laLigaSnapshot.json` | `update-la-liga.yml` | every 4h, August through May |
+| NFL | `update:nfl` | `updateNflSnapshot.json` | NFLverse CSVs | `src/data/nflSnapshot.json` | `update-nfl.yml` | daily 10:35 UTC, September through February |
+| MLB | `update:mlb` | `updateMlbSnapshot.json` | MLB Stats API | `src/data/mlbSnapshot.json` | `update-mlb.yml` | every 4h, March 20 through November 6 |
+| NBA | `update:nba` | `updateNbaSnapshot.json` | ESPN NBA | `src/data/nbaSnapshot.json` | `update-nba.yml` | every 4h, mid-October through June |
+| Golf | `update:golf` | `buildGolfSnapshot.json` | ESPN golf | `src/data/golfSnapshot.json` | `update-golf.yml` | every 3h Thursday through Sunday; daily otherwise; restamping requires verified final tournament status within 45 days |
+| Formula 1 | `update:formula-1` | `buildFormula1Snapshot.json` | OpenF1 | `src/data/formula1Snapshot.json` | `update-formula-1.yml` | every 3h Thursday through Sunday; daily otherwise |
+| World Cup 2026 | `update:world-cup` | `buildWorldCupSnapshot.json` | ESPN `soccer/fifa.world` | `src/data/worldCupSnapshot.json` | `update-world-cup.yml` | no schedule; manual dispatch only |
+| Score pools | `update:score-pools` | `buildScorePoolsSnapshot.json` | The Odds API + API-Football *(tokens required for live leagues)* + manual/CSV | `src/data/scorePoolsSnapshot.json` | `update-score-pools.yml` | every 6h; the run skips the refresh and passes with a notice until both provider keys are set |
+| Bay Area Transit | `update:bay-area-transit` | `buildBayAreaTransitSnapshot.json` | BART public API *(`BART_API_KEY` optional; demo-key fallback)* | `src/data/bayAreaTransitSnapshot.json` | `update-bay-area-transit.yml` | every 6h, year-round |
+| Earthquake Pulse | `update:earthquake` | `buildEarthquakeSnapshot.json` | USGS GeoJSON feeds | `src/data/earthquakeSnapshot.json` | `update-earthquake.yml` | daily 06:20 UTC |
+| GitHub Trending | `update:github-trending` | `buildGitHubTrendingSnapshot.json` | GitHub Search API *(`GITHUB_TOKEN` optional)* | `src/data/githubTrendingSnapshot.json` | `update-github-trending.yml` | daily 07:45 UTC |
 | SpaceX data | `update:spacex` | `buildSpaceXSnapshot.ts` | Launch Library / SpaceDevs | `src/data/spacexSnapshot.generated.json` | `update-spacex.yml` | daily 09:25 + 21:25 UTC |
 | SpaceX images | `update:spacex-images` | `buildSpaceXImageSnapshots.ts` | launch image assets | `src/data/spacexImageManifest.generated.json`, `public/data/spacex/*` | `update-spacex.yml` | daily 09:25 + 21:25 UTC |
 | Tech startups | `update:tech-startups` | `buildTechStartupSnapshot.ts` | curated seed *(in script)* | `src/data/techStartupSnapshot.json` | none *(curated)* | manual |

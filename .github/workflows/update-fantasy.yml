@@ -26,8 +26,9 @@ jobs:
   update-fantasy-snapshots:
     name: Update Fantasy Football Snapshots
     runs-on: ubuntu-latest
-    # FantasyPros scrape with retries can run long; cap at 30 min.
-    timeout-minutes: 30
+    # The three build lanes can spend 35 minutes, with 10 more for setup,
+    # validation, and publication after the last lane finishes.
+    timeout-minutes: 45
     permissions:
       contents: write
       issues: write
@@ -59,6 +60,16 @@ jobs:
         run: npm run update:fantasy:weekly
         env:
           NODE_ENV: production
+
+      # Publish the weekly board before the draft requests spend their budgets.
+      # No draft files have been rewritten yet, so the sitemap reads only
+      # committed draft data and this validated weekly board.
+      - name: Commit and push weekly board
+        if: steps.build_weekly.outcome == 'success'
+        run: |
+          bash scripts/ci/commit-and-push-snapshot.sh \
+            "chore: update fantasy weekly board [automated] [skip ci]" \
+            public/data/fantasy/weekly.json
 
       # The redraft and best ball boards come from different upstream sources and
       # are now committed independently. They were one `npm run update:fantasy`
@@ -474,7 +485,7 @@ jobs:
       # A lane that fails its gates leaves rewritten files in the working tree,
       # and the commit helper dates the sitemap from whatever is on disk. On
       # 2026-09-26 that put a new date on six fantasy routes while the committed
-      # rankings were two weeks old. Put the files back before any lane commits.
+      # rankings were two weeks old. Restore rejected files before draft commits.
       - name: Discard redraft artifacts that failed their gates
         if: steps.verify_freshness.outcome != 'success' || steps.verify_quality.outcome != 'success'
         run: |
@@ -489,16 +500,10 @@ jobs:
             public/data/fantasy/half_ppr.json \
             public/data/fantasy/standard.json
 
-      # The weekly board commits first, as it builds first. The commit helper
-      # checks `git status --porcelain` itself, which counts untracked files, so
-      # the first board of a season (absent from the repo before Week 1) still
-      # commits. `git diff --quiet` missed it in 2026 Week 1.
-      - name: Commit and push weekly board
-        if: steps.build_weekly.outcome == 'success'
+      - name: Discard best ball artifacts that failed their gates
+        if: steps.verify_best_ball.outcome != 'success'
         run: |
-          bash scripts/ci/commit-and-push-snapshot.sh \
-            "chore: update fantasy weekly board [automated] [skip ci]" \
-            public/data/fantasy/weekly.json
+          git checkout -- public/data/fantasy/best-ball.json
 
       - name: Commit and push snapshot updates
         if: steps.verify_freshness.outcome == 'success' && steps.verify_quality.outcome == 'success'

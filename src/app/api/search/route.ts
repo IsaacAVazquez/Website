@@ -317,7 +317,7 @@ const HIDDEN_ANSWERS: Record<string, SearchableContent> = {
 
 function findHiddenAnswer(query: string): SearchableContent | undefined {
   const key = query.toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim();
-  return HIDDEN_ANSWERS[key];
+  return Object.hasOwn(HIDDEN_ANSWERS, key) ? HIDDEN_ANSWERS[key] : undefined;
 }
 
 function calculateRelevanceScore(content: SearchableContent, query: string): number {

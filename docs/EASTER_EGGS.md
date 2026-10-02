@@ -1,6 +1,6 @@
 # Easter eggs
 
-This is the running list of every hidden or playful thing on the site, meaning anything a visitor can stumble into that the page doesn't announce. Most of them live in two header components, but a few are spread across the dashboards, and without a list it's easy to break one in a redesign or forget it exists. When a change adds, alters, or removes an easter egg, it updates this file too. Last checked against the code on 2026-09-28.
+This is the running list of every hidden or playful thing on the site, meaning anything a visitor can stumble into that the page doesn't announce. Most of them live in two header components, but a few are spread across the dashboards, and without a list it's easy to break one in a redesign or forget it exists. When a change adds, alters, or removes an easter egg, it updates this file too. Last checked against the code on 2026-10-02.
 
 Most of them mount from the header, which is on every route. `src/components/catalog97/Catalog97Header.tsx` renders `Catalog97Monet` (the painted hovers) and `Catalog97EasterEggs` (the Konami code, the console note, the stamp and its knock, the proof marks, the safelight, and the tab title). The reduced-motion guard at the end of `src/app/catalog97.css` cuts every transition and animation inside `.c97-page` to 0.01ms, so each entry below says what's left when motion is reduced.
 
@@ -80,7 +80,7 @@ From midnight until 4:59am on the visitor's own clock, the away title reads "Run
 
 ## Hidden search answers
 
-A few exact searches in the header search (`/` or Cmd or Ctrl+K) and on /search pin a written answer to the top of an unfiltered search. The match is on the whole query, lower-cased with punctuation turned into spaces, and the answers live in `HIDDEN_ANSWERS` in `src/app/api/search/route.ts`.
+A few exact searches in the header search (`/` or Cmd or Ctrl+K) and on /search pin a written answer to the top of an unfiltered search. The match is on the whole query, lower-cased with punctuation turned into spaces, using `Object.hasOwn` so inherited prototype properties like `constructor` never match. The answers live in `HIDDEN_ANSWERS` in `src/app/api/search/route.ts`.
 
 | Search | Answer | Links to |
 | --- | --- | --- |

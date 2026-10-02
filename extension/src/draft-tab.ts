@@ -1,9 +1,30 @@
 import { detectFantasyDraftProvider, type FantasyDraftSyncMessage } from "@/lib/fantasyCompanion";
 import type { AutoDraftCommand } from "./autodraft-controller";
+import { extractEspnDraftContext, extractSleeperDraftId } from "./draft-pick-sync";
 
 export interface DraftTabTarget {
   tabId: number;
   roomUrl: string;
+}
+
+/** A provider room id survives harmless query/hash changes, but never another draft. */
+export function autoDraftRoomIdentity(raw: string | undefined, provider: AutoDraftCommand["provider"]): string | null {
+  if (!raw) return null;
+  try {
+    const url = new URL(raw);
+    if (url.protocol !== "https:" || detectFantasyDraftProvider(url.hostname) !== provider) return null;
+    if (provider === "sleeper") {
+      const id = extractSleeperDraftId(raw);
+      return id ? `sleeper:${id}` : null;
+    }
+    if (!/^\/football\/draft(?:\/|$)/.test(url.pathname)) return null;
+    const context = extractEspnDraftContext(raw);
+    return context && /^\d+$/.test(context.leagueId)
+      ? `espn:${context.season}:${context.leagueId}`
+      : null;
+  } catch {
+    return null;
+  }
 }
 
 export function draftRoomUrl(raw: string | undefined): string | null {
@@ -40,7 +61,7 @@ export function createDraftCommandSession() {
         const [tab] = await tabs.query({ active: true, currentWindow: true });
         const roomUrl = draftRoomUrl(tab?.url);
         if (tab?.id === undefined || !roomUrl ||
-            detectFantasyDraftProvider(new URL(roomUrl).hostname) !== command.provider) {
+            !autoDraftRoomIdentity(roomUrl, command.provider)) {
           throw new Error("Open the matching draft room before arming autodraft.");
         }
         if (target && (target.tabId !== tab.id || target.roomUrl !== roomUrl)) {
@@ -50,7 +71,8 @@ export function createDraftCommandSession() {
         target = { tabId: tab.id, roomUrl };
       }
       if (!target) throw new Error("No draft tab has been armed in this panel.");
-      const response: unknown = await tabs.sendMessage(target.tabId, command);
+      const response: unknown = await tabs.sendMessage(target.tabId,
+        command.type === "FANTASY_AUTODRAFT_ARM" ? { ...command, roomUrl: target.roomUrl } : command);
       if (command.type === "FANTASY_AUTODRAFT_DISARM" && response &&
           typeof response === "object" && "armed" in response && response.armed === false) {
         target = null;

@@ -2,7 +2,7 @@
 
 Current high-level data flow reference.
 
-**Last updated:** 2026-09-30
+**Last updated:** 2026-10-02
 
 ---
 
@@ -84,7 +84,7 @@ Update paths:
 
 The pages read the summaries on the server, and the team drilldown routes under `/api/mlb/*`, `/api/nba/*`, and `/api/nfl/*` read those snapshots. The matching GitHub Actions workflows refresh and commit snapshots on their seasonal schedules.
 
-Golf uses `src/data/golfSnapshot.json`, rebuilt by `npm run update:golf` (`scripts/buildGolfSnapshot.ts`) from ESPN's public golf leaderboard endpoint; `.github/workflows/update-golf.yml` refreshes it every three hours Thursday through Sunday and once a day Monday through Wednesday. A failed fetch keeps the previous snapshot.
+Golf uses `src/data/golfSnapshot.json`, rebuilt by `npm run update:golf` (`scripts/buildGolfSnapshot.ts`) from ESPN's public golf leaderboard endpoint; `.github/workflows/update-golf.yml` refreshes it every three hours Thursday through Sunday and once a day Monday through Wednesday. A failed fetch keeps the previous snapshot. Between tournaments, restamping requires verified final tournament completion (`status === 'final'`) and an end date within 45 days; in-progress boards retain their prior timestamp.
 
 The 2026 World Cup hub uses `src/data/worldCupSnapshot.json`, rebuilt by `npm run update:world-cup` from ESPN's public `soccer/fifa.world` endpoints; `.github/workflows/update-world-cup.yml` has no schedule now that the tournament is over and runs on manual dispatch only. Runtime routes under `/api/world-cup/*` read the committed snapshot.
 
@@ -141,7 +141,7 @@ Public generated outputs include:
 - `public/data/fantasy/best-ball.json`
 - `public/data/fantasy/weekly.json`
 
-The public app and `/api/fantasy-data` read those generated snapshot files. There are no live `/api/fantasy-pros-*`, `/api/data-manager`, `/api/data-metadata`, `/api/sample-data`, or `/api/scheduled-update` routes in the current app tree.
+The public app and `/api/fantasy-data` read those generated snapshot files. In CI, `.github/workflows/update-fantasy.yml` publishes the weekly board first, cleans up rejected best ball output before committing, and runs within a 45-minute timeout budget. There are no live `/api/fantasy-pros-*`, `/api/data-manager`, `/api/data-metadata`, `/api/sample-data`, or `/api/scheduled-update` routes in the current app tree.
 
 ---
 
