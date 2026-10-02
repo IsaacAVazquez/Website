@@ -13,6 +13,7 @@ import type {
   TripSummary,
 } from "@/types/travel";
 import { isRecord, prefixedId } from "@/lib/utils";
+import { toLocalDateKey, parseLocalDateKey } from "@/lib/date-formatters";
 
 export const TRAVEL_PLANNER_STORAGE_KEY = "travel_planner_trips_v1";
 
@@ -70,18 +71,8 @@ function sanitizeNumber(value: unknown): number {
   return Math.round(numeric * 100) / 100;
 }
 
-export function getTodayKey(date = new Date()): string {
-  const year = date.getFullYear();
-  const month = String(date.getMonth() + 1).padStart(2, "0");
-  const day = String(date.getDate()).padStart(2, "0");
-  return `${year}-${month}-${day}`;
-}
-
-function parseDateKey(value: string): Date | null {
-  if (!isIsoDate(value)) return null;
-  const date = new Date(`${value}T00:00`);
-  return Number.isNaN(date.getTime()) ? null : date;
-}
+export const getTodayKey = toLocalDateKey;
+const parseDateKey = parseLocalDateKey;
 
 function diffDaysInclusive(startKey: string, endKey: string): number {
   const start = parseDateKey(startKey);

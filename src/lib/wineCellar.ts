@@ -9,6 +9,7 @@ import type {
   WineTypeBreakdown,
 } from "@/types/wine";
 import { isRecord, prefixedId } from "@/lib/utils";
+import { toLocalDateKey } from "@/lib/date-formatters";
 
 export const WINE_CELLAR_STORAGE_KEY = "wine_cellar_entries_v1";
 
@@ -79,12 +80,7 @@ function sanitizeTimestamp(value: unknown, fallback: string): string {
   return Number.isNaN(parsed.getTime()) ? fallback : parsed.toISOString();
 }
 
-export function getTodayIsoDate(now = new Date()) {
-  const year = now.getFullYear();
-  const month = String(now.getMonth() + 1).padStart(2, "0");
-  const day = String(now.getDate()).padStart(2, "0");
-  return `${year}-${month}-${day}`;
-}
+export const getTodayIsoDate = toLocalDateKey;
 
 export interface WineDraft {
   name: string;

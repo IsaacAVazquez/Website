@@ -52,14 +52,7 @@ export const LONG_DATE_TIME_FORMATTER = new Intl.DateTimeFormat("en-US", {
 });
 
 /** "Updated at" timestamp: "Apr 25, 2:30 PM PDT" */
-export const UPDATED_AT_FORMATTER = new Intl.DateTimeFormat("en-US", {
-  month: "short",
-  day: "numeric",
-  hour: "numeric",
-  minute: "2-digit",
-  timeZone: DISPLAY_TIME_ZONE,
-  timeZoneName: "short",
-});
+export const UPDATED_AT_FORMATTER = DATE_TIME_FORMATTER;
 
 /** Full calendar date: "Apr 25, 2026" */
 const FULL_DATE_FORMATTER = new Intl.DateTimeFormat("en-US", {
