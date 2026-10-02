@@ -92,7 +92,7 @@ it("gives fields a printed edge in ink-2", () => {
 });
 
 it("marks disabled buttons and fields without dimming their text", () => {
-  const rule = css.match(/([^{}]*:disabled[^{}]*)\{([^}]*)\}/);
+  const rule = css.match(/([^{}]*\.c97-field:disabled[^{}]*)\{([^}]*)\}/);
   expect(rule).not.toBeNull();
   const [, selector, body] = rule!;
   expect(selector).toMatch(/\.c97-btn/);
