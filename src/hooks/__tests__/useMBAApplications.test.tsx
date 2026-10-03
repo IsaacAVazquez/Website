@@ -88,4 +88,204 @@ describe("useMBAApplications", () => {
 
     await waitFor(() => expect(result.current.applications).toHaveLength(1));
   });
+
+  const manualDraft = {
+    companyName: "Ramp",
+    title: "Strategy Intern",
+    location: "New York, NY",
+    department: "Strategy",
+    applyUrl: "https://example.com/ramp",
+    notes: "Referral from alum",
+  };
+
+  it("matches a job by id or by its normalized apply URL", () => {
+    const { result } = renderHook(() => useMBAApplications());
+
+    act(() => {
+      result.current.trackJob(job);
+      result.current.addManualApplication({ ...manualDraft, applyUrl: "https://example.com/ramp/role" });
+    });
+
+    expect(result.current.getApplicationForJob(job)?.jobId).toBe(job.id);
+    const byUrl = result.current.getApplicationForJob({
+      ...job,
+      id: "ramp-live",
+      applyUrl: "  HTTPS://EXAMPLE.COM/ramp/role/  ",
+    });
+    expect(byUrl?.jobSnapshot.companyName).toBe("Ramp");
+    expect(result.current.getApplicationForJob({ ...job, id: "other", applyUrl: "" })).toBeUndefined();
+
+    // Only feed-backed applications are indexed by job id.
+    expect([...result.current.applicationsByJobId.keys()]).toEqual([job.id]);
+  });
+
+  it("keeps an advanced status when the same job is saved again but refreshes its snapshot", () => {
+    const { result } = renderHook(() => useMBAApplications());
+
+    act(() => {
+      result.current.trackJob(job, "applied");
+    });
+    const appliedAt = result.current.applications[0].appliedAt;
+
+    let tracked: ReturnType<typeof result.current.trackJob> = null;
+    act(() => {
+      tracked = result.current.trackJob({ ...job, title: "MBA Product Intern (Payments)" });
+    });
+
+    expect(result.current.applications).toHaveLength(1);
+    expect(result.current.applications[0].status).toBe("applied");
+    expect(result.current.applications[0].appliedAt).toBe(appliedAt);
+    expect(result.current.applications[0].jobSnapshot.title).toBe("MBA Product Intern (Payments)");
+    expect(result.current.applications[0].jobSnapshot.source).toBe("live-feed");
+    expect(tracked).toMatchObject({ status: "applied" });
+  });
+
+  it("moves a tracked job to a new status and links a manual entry to the live job", () => {
+    const { result } = renderHook(() => useMBAApplications());
+
+    act(() => {
+      result.current.addManualApplication({ ...manualDraft, applyUrl: job.applyUrl });
+    });
+    expect(result.current.applications[0].jobId).toBeNull();
+
+    act(() => {
+      result.current.trackJob(job, "interviewing");
+    });
+
+    expect(result.current.applications).toHaveLength(1);
+    expect(result.current.applications[0]).toMatchObject({
+      jobId: job.id,
+      status: "interviewing",
+      notes: "Referral from alum",
+    });
+    expect(result.current.applications[0].jobSnapshot.companyName).toBe("Stripe");
+  });
+
+  it("adds valid manual applications and ignores drafts without a company or title", () => {
+    const { result } = renderHook(() => useMBAApplications());
+
+    let created: ReturnType<typeof result.current.addManualApplication> = null;
+    let rejected: ReturnType<typeof result.current.addManualApplication> = null;
+    act(() => {
+      created = result.current.addManualApplication(manualDraft);
+      rejected = result.current.addManualApplication({ ...manualDraft, companyName: "   " });
+    });
+
+    expect(created).toMatchObject({ jobId: null, status: "saved" });
+    expect(rejected).toBeNull();
+    expect(result.current.applications).toHaveLength(1);
+  });
+
+  it("updates fields, clears nullable dates, and merges snapshot edits on one application only", () => {
+    const { result } = renderHook(() => useMBAApplications());
+
+    act(() => {
+      result.current.trackJob(job);
+      result.current.addManualApplication({ ...manualDraft, followUpDate: "2026-11-01" });
+    });
+    const manual = result.current.applications.find((application) => application.jobId === null)!;
+    const tracked = result.current.applications.find((application) => application.jobId === job.id)!;
+
+    act(() => {
+      result.current.updateApplication(manual.id, {
+        notes: "Coffee chat booked",
+        contact: "jane@example.com",
+        sourceUrl: "https://example.com/source",
+        followUpDate: null,
+        deadline: "2026-12-01",
+        jobSnapshot: { location: "Remote" },
+      });
+      result.current.updatePriority(manual.id, "high");
+    });
+
+    const updated = result.current.applications.find((application) => application.id === manual.id)!;
+    expect(updated).toMatchObject({
+      notes: "Coffee chat booked",
+      contact: "jane@example.com",
+      sourceUrl: "https://example.com/source",
+      followUpDate: null,
+      deadline: "2026-12-01",
+      priority: "high",
+      status: "saved",
+    });
+    expect(updated.jobSnapshot.location).toBe("Remote");
+    expect(updated.jobSnapshot.title).toBe("Strategy Intern");
+
+    const untouched = result.current.applications.find((application) => application.id === tracked.id)!;
+    expect(untouched).toEqual(tracked);
+  });
+
+  it("archives out of the active list and removes applications entirely", () => {
+    const { result } = renderHook(() => useMBAApplications());
+
+    act(() => {
+      result.current.trackJob(job);
+      result.current.addManualApplication(manualDraft);
+    });
+    const manualId = result.current.applications.find((application) => application.jobId === null)!.id;
+    const trackedId = result.current.applications.find((application) => application.jobId === job.id)!.id;
+
+    act(() => {
+      result.current.archiveApplication(manualId);
+    });
+    expect(result.current.applications).toHaveLength(2);
+    expect(result.current.activeApplications.map((application) => application.id)).toEqual([trackedId]);
+    expect(
+      result.current.applications.find((application) => application.id === manualId)?.archivedAt
+    ).not.toBeNull();
+
+    act(() => {
+      result.current.removeApplication(trackedId);
+    });
+    expect(result.current.applications.map((application) => application.id)).toEqual([manualId]);
+  });
+
+  it("reports nothing imported for an empty or unreadable backup", () => {
+    const { result } = renderHook(() => useMBAApplications());
+    act(() => {
+      result.current.trackJob(job);
+    });
+
+    let summary: ReturnType<typeof result.current.importApplications> | null = null;
+    act(() => {
+      summary = result.current.importApplications("not json");
+    });
+    expect(summary).toEqual({ imported: 0, total: 1 });
+
+    act(() => {
+      summary = result.current.importApplications(
+        JSON.stringify(buildMBAApplicationsExport([createMBAApplicationFromJob({ ...job, id: "brex-2", applyUrl: "https://example.com/brex" })]))
+      );
+    });
+    expect(summary).toEqual({ imported: 1, total: 2 });
+  });
+
+  it("exports JSON and CSV built from the stored applications", () => {
+    const { result } = renderHook(() => useMBAApplications());
+    act(() => {
+      result.current.trackJob(job);
+    });
+
+    const exported = JSON.parse(result.current.exportJson());
+    expect(exported.schema).toBe("mba-applications-export");
+    expect(exported.applications).toHaveLength(1);
+
+    const csvLines = result.current.exportCsv().split("\n");
+    expect(csvLines[0].startsWith("Status,Priority,Company,Title")).toBe(true);
+    expect(csvLines[1]).toContain("Stripe");
+  });
+
+  it("searches active applications by any tracked text and accepts a custom source", () => {
+    const { result } = renderHook(() => useMBAApplications());
+    act(() => {
+      result.current.trackJob(job);
+      result.current.addManualApplication(manualDraft);
+    });
+
+    expect(result.current.searchApplications("   ")).toHaveLength(2);
+    expect(
+      result.current.searchApplications("REFERRAL").map((application) => application.jobSnapshot.companyName)
+    ).toEqual(["Ramp"]);
+    expect(result.current.searchApplications("stripe", [])).toEqual([]);
+  });
 });
