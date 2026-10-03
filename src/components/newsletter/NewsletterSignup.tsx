@@ -117,7 +117,7 @@ export function NewsletterSignup({ source }: NewsletterSignupProps) {
           }}
         >
           {state === "submitting" ? "Joining…" : "Join the list"}
-          <ArrowRight size={16} aria-hidden="true" />
+          <ArrowRight size={16} className="c97-arrow" aria-hidden="true" />
         </button>
       </div>
       <p className="c97-prose" style={{ fontSize: "var(--c97-fs-small)", color: "var(--c97-ink-2)" }}>

@@ -128,7 +128,7 @@ function EditorialLinkCard({ card }: { card: EditorialCard }) {
           {card.note}
         </p>
         <span className="c97-kicker" style={{ margin: 0, color: "var(--c97-ink)" }}>
-          {card.cta} &rarr;
+          {card.cta} <span className="c97-arrow" aria-hidden="true">&rarr;</span>
         </span>
       </div>
     </Link>

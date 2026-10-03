@@ -740,10 +740,10 @@ export function MockDraftClient() {
   const footerLinks = (
     <span className="inline-flex" style={{ gap: "var(--c97-sp-2)" }}>
       <Link href="/fantasy-football" className="c97-link inline-flex min-h-touch items-center text-sm font-semibold">
-        Rankings board <span aria-hidden="true">↗</span>
+        Rankings board <span className="c97-arrow-out" aria-hidden="true">↗</span>
       </Link>
       <Link href="/fantasy-football/draft-tracker" className="c97-link inline-flex min-h-touch items-center text-sm font-semibold">
-        Draft tracker <span aria-hidden="true">↗</span>
+        Draft tracker <span className="c97-arrow-out" aria-hidden="true">↗</span>
       </Link>
     </span>
   );
@@ -903,7 +903,7 @@ export function MockDraftClient() {
                   onClick={() => setRoomSetupOpen(false)}
                   className={PILL_BUTTON_CLASS}
                 >
-                  Back to room <span aria-hidden="true">→</span>
+                  Back to room <span className="c97-arrow" aria-hidden="true">→</span>
                 </button>
               )}
             </div>
@@ -2007,7 +2007,7 @@ export function MockDraftClient() {
               aria-describedby={simulationAvailable ? undefined : "mock-rerun-blocked"}
               className={SOLID_BUTTON_CLASS}
             >
-              Run it back <span aria-hidden="true">→</span>
+              Run it back <span className="c97-arrow" aria-hidden="true">→</span>
             </button>
             <button
               type="button"

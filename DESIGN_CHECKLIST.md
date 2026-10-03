@@ -98,6 +98,10 @@ across `STYLING.md`, `CLAUDE.md`, and `SNAPSHOT_DRIVEN_DASHBOARDS.md`.
 - [ ] A hover or state change that should animate declares its own transition. The default in
       `globals.css` covers colour, background, and border at 150ms, and it gives way to any
       transition the element declares.
+- [ ] Interface transitions use `var(--c97-ease)`, not the generic `ease`, `ease-in-out`, or `linear`
+      keywords. Looping keyframes and `/arcade` are the exceptions.
+- [ ] A trailing → or ↗ inside a link or button carries `.c97-arrow` or `.c97-arrow-out`.
+- [ ] No `backdrop-filter` on anything that scrolls, and full-height sections use `dvh`, not `vh`.
 
 ## Responsive
 

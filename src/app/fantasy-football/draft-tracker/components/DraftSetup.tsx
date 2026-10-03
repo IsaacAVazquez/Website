@@ -296,7 +296,7 @@ export function DraftSetup({
             onClick={onResume}
             className={PILL_BUTTON_CLASS}
           >
-            Back to room <span aria-hidden="true">→</span>
+            Back to room <span className="c97-arrow" aria-hidden="true">→</span>
           </button>
         ) : null}
       </div>

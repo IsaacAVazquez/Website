@@ -2295,7 +2295,7 @@ export function FantasyFootballClient({ initialState, initialSnapshot = null }: 
                   className="c97-link inline-flex min-h-touch items-center text-sm font-semibold"
                 >
                   {tool.label}
-                  <span aria-hidden="true">&nbsp;↗</span>
+                  <span className="c97-arrow-out" aria-hidden="true">&nbsp;↗</span>
                 </Link>
               ))}
             </nav>

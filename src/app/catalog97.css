@@ -61,6 +61,17 @@
   --c97-z-drawer: 60;
   --c97-z-modal: 70;
   --c97-z-sheet: 80;
+
+  /*
+   * Motion curves, on :root for the same portal reason. Every state change
+   * (hover, press, overlay entrance) decelerates on --c97-ease, so the site
+   * moves one way rather than mixing the browser's generic `ease` with custom
+   * curves. --c97-ease-slow is the plate reveal's longer settle. Looping
+   * keyframes (skeleton pulse, the Monet drift) keep ease-in-out, since a
+   * loop that alternates needs a symmetric curve.
+   */
+  --c97-ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --c97-ease-slow: cubic-bezier(0.19, 0.72, 0.16, 1);
 }
 
 [data-c97] {
@@ -1170,7 +1181,7 @@ body {
   text-decoration: underline;
   text-underline-offset: 3px;
   text-decoration-thickness: 1px;
-  transition: color 160ms ease;
+  transition: color 160ms var(--c97-ease);
 }
 
 .c97-link:hover {
@@ -1184,7 +1195,7 @@ body {
  */
 .c97-link-heading {
   text-decoration: none;
-  transition: color 160ms ease;
+  transition: color 160ms var(--c97-ease);
 }
 
 .c97-link-heading:hover {
@@ -1215,7 +1226,7 @@ body {
   padding: var(--c97-touch-y) var(--c97-touch-x);
   margin: calc(-1 * var(--c97-touch-y)) calc(-1 * var(--c97-touch-x));
   display: inline-block;
-  transition: color 160ms ease;
+  transition: color 160ms var(--c97-ease);
 }
 
 /*
@@ -1249,7 +1260,7 @@ body {
   text-decoration: underline;
   text-underline-offset: 4px;
   text-decoration-thickness: 1px;
-  transition: color 160ms ease;
+  transition: color 160ms var(--c97-ease);
 }
 
 .c97-sectionlink:hover {
@@ -1282,9 +1293,9 @@ body {
   white-space: nowrap;
   cursor: pointer;
   transition:
-    background-color 160ms ease,
-    color 160ms ease,
-    transform 120ms ease;
+    background-color 160ms var(--c97-ease),
+    color 160ms var(--c97-ease),
+    transform 120ms var(--c97-ease);
 }
 
 .c97-btn:hover {
@@ -1328,7 +1339,7 @@ body {
   text-decoration-thickness: 1px;
   white-space: nowrap;
   cursor: pointer;
-  transition: color 160ms ease;
+  transition: color 160ms var(--c97-ease);
 }
 
 .c97-btn-ghost:hover {
@@ -1366,8 +1377,8 @@ body {
   text-decoration: none;
   cursor: pointer;
   transition:
-    background-color 160ms ease,
-    color 160ms ease;
+    background-color 160ms var(--c97-ease),
+    color 160ms var(--c97-ease);
 }
 
 .c97-btn-outline:hover {
@@ -1431,7 +1442,7 @@ select.c97-field {
   height: 10px;
   background: var(--c97-accent);
   transform: scale(0);
-  transition: transform 120ms ease;
+  transition: transform 120ms var(--c97-ease);
 }
 
 .c97-check[type="radio"]::before {
@@ -1648,7 +1659,7 @@ select.c97-field {
   gap: var(--c97-sp-1);
   color: var(--c97-label);
   font: inherit;
-  transition: color 160ms ease;
+  transition: color 160ms var(--c97-ease);
 }
 
 /*
@@ -1792,7 +1803,7 @@ select.c97-field {
   text-decoration-color: var(--c97-accent);
   text-underline-offset: 3px;
   text-decoration-thickness: 1px;
-  transition: color 160ms ease;
+  transition: color 160ms var(--c97-ease);
 }
 
 .c97-article a:hover {
@@ -2127,7 +2138,7 @@ select.c97-field {
   justify-content: space-between;
   gap: var(--c97-sp-3);
   text-decoration: none;
-  transition: background-color 160ms ease;
+  transition: background-color 160ms var(--c97-ease);
 }
 
 /*
@@ -2435,7 +2446,7 @@ select.c97-field {
  */
 @media screen and (hover: hover) {
   .c97-halftone {
-    transition: opacity 0.3s ease;
+    transition: opacity 0.3s var(--c97-ease);
   }
 
   :hover > .c97-halftone {
@@ -2470,7 +2481,7 @@ select.c97-field {
 .c97-btn-invert.c97-offset,
 .c97-btn-outline.c97-offset {
   box-shadow: 4px 4px 0 var(--c97-overprint);
-  transition: box-shadow 120ms ease, transform 120ms ease;
+  transition: box-shadow 120ms var(--c97-ease), transform 120ms var(--c97-ease);
 }
 
 .c97-btn.c97-offset:active,
@@ -2488,6 +2499,32 @@ select.c97-field {
 .c97-btn-invert:where(:not(:disabled)):active,
 .c97-btn-outline:where(:not(:disabled)):active {
   transform: translateY(1px);
+}
+
+/*
+ * A trailing arrow in a link or button leans toward where it goes on hover and
+ * keyboard focus: .c97-arrow (→) slides right, .c97-arrow-out (↗) lifts up and
+ * right. Transform only, so nothing around it reflows.
+ */
+.c97-arrow,
+.c97-arrow-out {
+  display: inline-block;
+  transition: transform 160ms var(--c97-ease);
+}
+
+:is(a, button, summary):is(:hover, :focus-visible) .c97-arrow {
+  transform: translateX(3px);
+}
+
+:is(a, button, summary):is(:hover, :focus-visible) .c97-arrow-out {
+  transform: translate(2px, -2px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .c97-arrow,
+  .c97-arrow-out {
+    transition: none;
+  }
 }
 
 /*
@@ -2717,7 +2754,7 @@ select.c97-field {
    * `allow-discrete` is supported. Without it the image drops at once and
    * the circle vanishes instead of fading.
    */
-  transition: opacity 0.3s ease, background-image 0s linear 0.3s;
+  transition: opacity 0.3s var(--c97-ease), background-image 0s linear 0.3s;
   transition-behavior: normal, allow-discrete;
 }
 
@@ -2819,8 +2856,8 @@ select.c97-field {
 .c97-enter-slide-y,
 .c97-enter-pop {
   transition:
-    opacity 0.24s cubic-bezier(0.22, 1, 0.36, 1),
-    transform 0.24s cubic-bezier(0.22, 1, 0.36, 1);
+    opacity 0.24s var(--c97-ease),
+    transform 0.24s var(--c97-ease);
 }
 
 @starting-style {
@@ -2853,7 +2890,7 @@ select.c97-field {
 }
 
 .c97-page [data-reveal="shown"] {
-  transition: transform 900ms cubic-bezier(0.19, 0.72, 0.16, 1);
+  transition: transform 900ms var(--c97-ease-slow);
 }
 
 /* --------------------------------------------------------------------------

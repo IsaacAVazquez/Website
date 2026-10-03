@@ -175,7 +175,6 @@
     0 0 32px rgba(255, 46, 151, 0.18),
     inset 0 0 40px rgba(8, 2, 24, 0.6);
   padding: var(--c97-sp-3);
-  backdrop-filter: blur(2px);
 }
 
 .hud {

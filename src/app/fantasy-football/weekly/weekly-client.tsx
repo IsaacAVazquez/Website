@@ -1061,25 +1061,25 @@ export function WeeklyBoardClient({
             href={viewConfig.sibling.href}
             className="c97-link inline-flex min-h-touch items-center text-sm font-semibold"
           >
-            {viewConfig.sibling.label} ↗
+            {viewConfig.sibling.label} <span className="c97-arrow-out" aria-hidden="true">↗</span>
           </Link>
           <Link
             href="/fantasy-football"
             className="c97-link inline-flex min-h-touch items-center text-sm font-semibold"
           >
-            Rankings board ↗
+            Rankings board <span className="c97-arrow-out" aria-hidden="true">↗</span>
           </Link>
           <Link
             href="/fantasy-football/draft-tracker"
             className="c97-link inline-flex min-h-touch items-center text-sm font-semibold"
           >
-            Draft tracker ↗
+            Draft tracker <span className="c97-arrow-out" aria-hidden="true">↗</span>
           </Link>
           <Link
             href="/fantasy-football/best-ball"
             className="c97-link inline-flex min-h-touch items-center text-sm font-semibold"
           >
-            Best ball ↗
+            Best ball <span className="c97-arrow-out" aria-hidden="true">↗</span>
           </Link>
         </nav>
       </div>

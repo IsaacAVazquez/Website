@@ -129,8 +129,8 @@ export function MyTeamPanel({ snapshot, board, scoring, onScoringChange }: {
         <div className={styles.editorIntro}>
           <h3 className={styles.subheading}>{team.players.length ? "Manage your roster" : "Start with your roster"}</h3>
           <p className={styles.supporting}>Import picks from your draft tracker or search for players. Mark available players to compare a possible add and drop.</p>
-          <button type="button" className={styles.primaryButton} onClick={importDraft}>Import draft tracker roster <ArrowRight size={18} aria-hidden="true" /></button>
-          {team.players.length > 0 && <button type="button" className={styles.textButton} onClick={() => setSelectedView("lineup")}>View weekly lineup <ArrowRight size={18} aria-hidden="true" /></button>}
+          <button type="button" className={styles.primaryButton} onClick={importDraft}>Import draft tracker roster <ArrowRight size={18} className="c97-arrow" aria-hidden="true" /></button>
+          {team.players.length > 0 && <button type="button" className={styles.textButton} onClick={() => setSelectedView("lineup")}>View weekly lineup <ArrowRight size={18} className="c97-arrow" aria-hidden="true" /></button>}
           <p className={styles.localNote}>Your roster stays saved as you add players.</p>
         </div>
         <div className={styles.playerEditor}>
@@ -187,7 +187,7 @@ export function MyTeamPanel({ snapshot, board, scoring, onScoringChange }: {
       {activeView === "lineup" && (team.players.length === 0 ? <div className={styles.emptyLineup}>
         <h3 className={styles.subheading}>Add your players to see a weekly lineup</h3>
         <p className={styles.supporting}>The lineup uses your league settings and the weekly consensus board.</p>
-        <button type="button" className={styles.primaryButton} onClick={() => setSelectedView("roster")}>Build my roster <ArrowRight size={18} aria-hidden="true" /></button>
+        <button type="button" className={styles.primaryButton} onClick={() => setSelectedView("roster")}>Build my roster <ArrowRight size={18} className="c97-arrow" aria-hidden="true" /></button>
       </div> : <div className={styles.decisions}>
         <div className={styles.lineup}>
           <div className={styles.lineupHeading}>
@@ -220,7 +220,7 @@ export function MyTeamPanel({ snapshot, board, scoring, onScoringChange }: {
           <p className={styles.supporting}>See where an available player fits before changing your roster.</p>
           {available.length === 0 && <div className={styles.availabilityPrompt}>
             <p>No players marked available yet.</p>
-            <button type="button" className={styles.textButton} onClick={() => setSelectedView("roster")}>Find available players <ArrowRight size={18} aria-hidden="true" /></button>
+            <button type="button" className={styles.textButton} onClick={() => setSelectedView("roster")}>Find available players <ArrowRight size={18} className="c97-arrow" aria-hidden="true" /></button>
           </div>}
           <div className="grid" style={{ marginTop: "var(--c97-sp-2)", gap: "var(--c97-sp-1)" }}>
             <label className="grid text-sm" style={{ gap: "var(--c97-sp-0)" }}>Available player to add<select className={`${control} w-full min-w-0`} value={add?.id ?? ""} onChange={event => setAddId(event.target.value)}>

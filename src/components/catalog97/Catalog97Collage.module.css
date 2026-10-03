@@ -83,7 +83,7 @@
   width: min(calc(100% - 2 * var(--c97-sp-2) - 8px), 330px);
   padding: var(--c97-sp-2);
   color: var(--c97-ink);
-  transition: transform 160ms ease, box-shadow 160ms ease;
+  transition: transform 160ms var(--c97-ease), box-shadow 160ms var(--c97-ease);
 }
 
 .link:hover .card,

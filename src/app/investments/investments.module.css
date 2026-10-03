@@ -103,7 +103,7 @@
   text-decoration: none;
   font-size: var(--invest-fs-body); font-weight: 500;
   border-left: 3px solid transparent;
-  transition: background-color 140ms ease, color 140ms ease, border-color 140ms ease;
+  transition: background-color 140ms var(--c97-ease), color 140ms var(--c97-ease), border-color 140ms var(--c97-ease);
   background: transparent;
   cursor: pointer;
   width: 100%;
@@ -341,7 +341,7 @@
   font-family: var(--c97-font-mono);
   font-size: var(--invest-fs-label); font-weight: 400; letter-spacing: 0.04em; text-transform: uppercase;
   color: var(--c97-ink); cursor: pointer;
-  transition: border-color 140ms ease, background-color 140ms ease, color 140ms ease;
+  transition: border-color 140ms var(--c97-ease), background-color 140ms var(--c97-ease), color 140ms var(--c97-ease);
   display: inline-flex; align-items: center; gap: var(--c97-sp-1);
   text-decoration: none;
   min-height: 44px;
@@ -488,7 +488,7 @@
 .terminalScope :global(.invest-holdings) tbody td:last-child { padding-right: var(--c97-sp-2); }
 .terminalScope :global(.invest-holdings) tbody tr:last-child td { border-bottom: 0; }
 .terminalScope :global(.invest-holdings) tbody tr {
-  transition: background-color 120ms ease, box-shadow 120ms ease;
+  transition: background-color 120ms var(--c97-ease), box-shadow 120ms var(--c97-ease);
 }
 .terminalScope :global(.invest-holdings) tbody tr:hover,
 .terminalScope :global(.invest-holdings) tbody tr:focus-within {
@@ -536,7 +536,7 @@
 .terminalScope :global(.invest-row-actions) {
   display: inline-flex; gap: var(--c97-sp-0); align-items: center; justify-content: flex-end;
   opacity: 0;
-  transition: opacity 120ms ease;
+  transition: opacity 120ms var(--c97-ease);
 }
 .terminalScope :global(.invest-holdings) tbody tr:hover :global(.invest-row-actions),
 .terminalScope :global(.invest-holdings) tbody tr:focus-within :global(.invest-row-actions) {
@@ -895,7 +895,7 @@
   border-bottom: 1px solid color-mix(in srgb, var(--c97-rule) 55%, transparent);
   background: transparent;
   cursor: pointer;
-  transition: background-color 130ms ease, box-shadow 130ms ease;
+  transition: background-color 130ms var(--c97-ease), box-shadow 130ms var(--c97-ease);
   font: inherit;
   text-align: left;
   color: var(--c97-ink);
@@ -1065,7 +1065,7 @@
   border-bottom: 1px solid var(--c97-ink-2);
   background: var(--c97-panel);
   overflow: hidden;
-  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+  transition: border-color 0.15s var(--c97-ease), box-shadow 0.15s var(--c97-ease);
 }
 .terminalScope :global(.invest-retire-input-wrap):focus-within {
   border-color: var(--c97-accent);
@@ -1129,7 +1129,7 @@
   font-size: 16px;
   line-height: 1;
   color: var(--c97-ink-2);
-  transition: transform 0.18s ease;
+  transition: transform 0.18s var(--c97-ease);
 }
 .terminalScope :global(.invest-retire-disclose[open]) > summary :global(.invest-retire-disclose-chevron) {
   transform: rotate(45deg);
@@ -1763,7 +1763,7 @@
     font-size: var(--invest-fs-label);
     letter-spacing: 0.1em;
     text-transform: uppercase;
-    transition: color 140ms ease, background-color 140ms ease;
+    transition: color 140ms var(--c97-ease), background-color 140ms var(--c97-ease);
   }
   .sectionRail a:hover,
   .sectionRail a[aria-current="true"] { color: var(--c97-ink); background: var(--c97-panel); }

@@ -362,7 +362,7 @@ export function TradeCalculatorClient() {
       data-hydrated={isHydrated ? "true" : "false"}
     >
       <div className={SHELL_CLASS} style={{ paddingBlock: "var(--c97-sp-2)" }}>
-        <Breadcrumbs customItems={BREADCRUMBS} className="!py-0" />
+        <Breadcrumbs customItems={BREADCRUMBS} />
       </div>
 
       <section
