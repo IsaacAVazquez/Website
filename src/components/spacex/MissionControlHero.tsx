@@ -296,7 +296,7 @@ export function MissionControlHero({
                 className="tap-target inline-flex items-center border border-[var(--c97-rule)] bg-[var(--c97-field)] text-sm font-semibold text-[var(--c97-ink)] transition hover:border-[var(--c97-accent)] hover:text-[var(--c97-accent)]" style={{ paddingInline: "var(--c97-sp-2)", paddingBlock: "var(--c97-sp-1)", gap: "var(--c97-sp-1)" }}
               >
                 {link.label}
-                <ArrowUpRight className="h-4 w-4" />
+                <ArrowUpRight className="c97-arrow-out h-4 w-4" aria-hidden="true" />
               </a>
             ))}
           </div>

@@ -295,7 +295,7 @@ function PlaceDossier({
           className="c97-btn c97-offset"
           style={{ marginTop: "var(--c97-sp-3)" }}
         >
-          Open in Google Maps ↗
+          Open in Google Maps <span className="c97-arrow-out" aria-hidden="true">↗</span>
         </a>
       </div>
     </div>

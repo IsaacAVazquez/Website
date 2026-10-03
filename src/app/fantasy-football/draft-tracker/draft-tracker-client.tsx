@@ -1775,7 +1775,7 @@ export function DraftTrackerClient() {
                 href="/fantasy-football"
                 className="inline-flex min-h-touch items-center text-sm font-semibold no-underline"
               >
-                Open the rankings board <span aria-hidden="true">↗</span>
+                Open the rankings board <span className="c97-arrow-out" aria-hidden="true">↗</span>
               </Link>
             </div>
           </div>

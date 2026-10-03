@@ -133,7 +133,7 @@ export default function RootLayout({
           c97Archivo.variable,
           c97Anton.variable,
           c97GreatVibes.variable,
-          "font-sans min-h-screen antialiased"
+          "font-sans min-h-dvh antialiased"
         )}
       >
         <Providers>

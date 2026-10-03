@@ -463,7 +463,7 @@
   border-left: 4px solid var(--fm-accent);
   background: none;
   cursor: pointer;
-  transition: transform 160ms ease;
+  transition: transform 160ms var(--c97-ease);
 }
 .fm-ticket:hover,
 .fm-ticket:focus-visible { transform: translateY(-2px); }

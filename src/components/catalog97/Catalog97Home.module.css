@@ -131,7 +131,7 @@
   aspect-ratio: 3 / 2;
   overflow: hidden;
   margin-bottom: var(--c97-sp-2);
-  transition: box-shadow 160ms ease, transform 160ms ease;
+  transition: box-shadow 160ms var(--c97-ease), transform 160ms var(--c97-ease);
 }
 .workPlate img { object-fit: cover; }
 .workCard:hover .workPlate, .workCard:focus-visible .workPlate { transform: translate(-3px, -3px); box-shadow: 11px 11px 0 var(--c97-overprint); }

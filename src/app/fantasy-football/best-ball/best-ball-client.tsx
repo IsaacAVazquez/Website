@@ -855,7 +855,7 @@ export function BestBallClient({ initialState }: BestBallClientProps) {
                 href={trackerHref}
                 className={`${PILL_ACTION_CLASS} border-[var(--c97-ink)] bg-[var(--c97-ink)] text-[var(--c97-surface)] hover:bg-[var(--c97-ink-2)]`}
               >
-                Draft with this lens&nbsp;<span aria-hidden="true">↗</span>
+                Draft with this lens&nbsp;<span className="c97-arrow-out" aria-hidden="true">↗</span>
               </Link>
               <a
                 href={activePreset.officialRulesUrl}
@@ -864,7 +864,7 @@ export function BestBallClient({ initialState }: BestBallClientProps) {
                 className={`${PILL_ACTION_CLASS} border-[var(--c97-rule)] hover:border-[var(--c97-ink)]`}
                 style={{ color: "var(--c97-ink)" }}
               >
-                Scoring rules&nbsp;<span aria-hidden="true">↗</span>
+                Scoring rules&nbsp;<span className="c97-arrow-out" aria-hidden="true">↗</span>
               </a>
             </span>
           </div>
@@ -1254,7 +1254,7 @@ export function BestBallClient({ initialState }: BestBallClientProps) {
                   rel="noopener noreferrer"
                   className="inline-flex min-h-touch items-center font-mono text-2xs uppercase tracking-[0.06em] underline underline-offset-2" style={{ marginBottom: "calc(var(--c97-sp-1) * -1)" }}
                 >
-                  {finding.source}&nbsp;<span aria-hidden="true">↗</span>
+                  {finding.source}&nbsp;<span className="c97-arrow-out" aria-hidden="true">↗</span>
                 </a>
               </div>
             ))}
@@ -1284,7 +1284,7 @@ export function BestBallClient({ initialState }: BestBallClientProps) {
                       rel="noopener noreferrer"
                       className="inline-flex min-h-touch items-center font-mono text-2xs uppercase tracking-[0.06em] underline underline-offset-2" style={{ marginBottom: "calc(var(--c97-sp-1) * -1)" }}
                     >
-                      4for4 draft date study&nbsp;<span aria-hidden="true">↗</span>
+                      4for4 draft date study&nbsp;<span className="c97-arrow-out" aria-hidden="true">↗</span>
                     </a>
                   )}
                 </div>
@@ -1322,7 +1322,7 @@ export function BestBallClient({ initialState }: BestBallClientProps) {
             className={`${PILL_ACTION_CLASS} max-w-full border-[var(--c97-rule)] hover:border-[var(--c97-ink)]`}
             style={{ color: "var(--c97-ink)" }}
           >
-            Official scoring and lineup rules&nbsp;<span aria-hidden="true">↗</span>
+            Official scoring and lineup rules&nbsp;<span className="c97-arrow-out" aria-hidden="true">↗</span>
           </a>
         </div>
       </section>
@@ -1337,13 +1337,13 @@ export function BestBallClient({ initialState }: BestBallClientProps) {
           </span>
           <span className="flex flex-wrap" style={{ columnGap: "var(--c97-sp-2)", rowGap: "var(--c97-sp-0)" }}>
             <Link href="/fantasy-football" className="c97-link inline-flex min-h-touch items-center text-sm font-semibold">
-              Rankings board&nbsp;<span aria-hidden="true">↗</span>
+              Rankings board&nbsp;<span className="c97-arrow-out" aria-hidden="true">↗</span>
             </Link>
             <Link href={trackerHref} className="c97-link inline-flex min-h-touch items-center text-sm font-semibold">
-              Draft tracker&nbsp;<span aria-hidden="true">↗</span>
+              Draft tracker&nbsp;<span className="c97-arrow-out" aria-hidden="true">↗</span>
             </Link>
             <Link href="/fantasy-football/mock-draft" className="c97-link inline-flex min-h-touch items-center text-sm font-semibold">
-              Mock draft&nbsp;<span aria-hidden="true">↗</span>
+              Mock draft&nbsp;<span className="c97-arrow-out" aria-hidden="true">↗</span>
             </Link>
           </span>
         </div>
