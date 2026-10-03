@@ -1,6 +1,6 @@
 # Project browser audit
 
-I tested the website on October 3, 2026 and found bugs in Safari hydration, trade calculator control sizing, and Fantasy Formula 1 persistence. The fixes and new browser coverage are local.
+I tested the website on October 3, 2026 and found bugs in Safari hydration, trade calculator control sizing, and Fantasy Formula 1 persistence. The fixes and new browser coverage are in [pull request 559](https://github.com/IsaacAVazquez/Website/pull/559).
 
 ## Final results
 
@@ -49,7 +49,7 @@ I corrected the new tests to wait for the tool's form controls to hydrate after 
 
 ## Live availability and limits
 
-I checked the deployed [Netlify origin](https://isaacvazquez.netlify.app) separately on October 3, 2026 at 06:51 UTC. Chromium passed all 89 URL checks. WebKit passed 59 and failed 30, covering 16 tool routes and portfolio aliases with hydration errors. These fixes are local and have not been deployed.
+I checked the deployed [Netlify origin](https://isaacvazquez.netlify.app) separately on October 3, 2026 at 06:51 UTC, before publication of these fixes. Chromium passed all 89 URL checks. WebKit passed 59 and failed 30, covering 16 tool routes and portfolio aliases with hydration errors.
 
 I also crawled 56 local page paths and checked 136 unique internal link destinations, with no broken responses.
 
@@ -67,3 +67,19 @@ CI=1 E2E_PORT=3100 npm run test:e2e:full -- --workers=3 --reporter=list,html
 ```
 
 The new coverage is in [all-projects.spec.ts](../e2e/all-projects.spec.ts) and [project-workflows.spec.ts](../e2e/project-workflows.spec.ts). The local HTML results are in [playwright-report/index.html](../playwright-report/index.html).
+
+## Publication and operational follow-up
+
+I rebased the fixes onto the October 3 main branch before publication. That branch added the Before You Buy investment page and changed the decision lab reset label and enablement view controls. I updated the browser checks to use those controls, and all fifteen focused cases passed across the five browser profiles.
+
+The rebased production matrix finished on October 3 at 08:46:41 UTC with 1,849 passed, 171 browser-specific skips, zero failed, and zero flaky tests. It scheduled 404 cases across five browser profiles, for 2,020 cases, and discovered 91 page and portfolio URLs. Chromium and Mobile Chrome each passed 401 cases, Firefox passed 333, and WebKit and Mobile Safari each passed 357. The final controlled application storage check also passed once in each profile. The pull request's build, lint, full unit suite, and all three Chromium browser shards passed before I added these operational notes.
+
+The latest completed fantasy, investments, football, MLB, NFL, golf, transit, Formula 1, SpaceX, earthquake, polling, GitHub trending, and publication workflows were successful when I checked on October 3 at 08:35 UTC. A successful score pools run skips its refresh because the repository has neither `THE_ODDS_API_KEY` nor `API_FOOTBALL_KEY`. Live score pools data remains unavailable until both providers are configured.
+
+The production polling blob was saved on October 2 at 18:45:20 UTC, and the frontier models blob was saved on October 2 at 07:30:33 UTC. Both scheduled stores are populated. The investment index has recent prices for all 151 symbols, with an October 1 market date. The fantasy refresh log confirms that the preseason draft and best ball lanes are frozen after the season opens, while the weekly lane keeps refreshing. That policy leaves the September 10 board too old for the mock draft's stricter freshness gate. A normal refresh will not make that simulation usable without a newer supported draft source.
+
+I kept the four existing Formula 1 accent borders after reviewing their use for team liveries, session types, and error status. Their colors communicate data and status permitted by the design rules. The design detector exception is scoped to the `side-tab` rule in that file, and I added no rule-wide or file-wide suppression.
+
+The production MBA jobs API returned 1,945 jobs fetched on October 3 at 06:53:34 UTC, with all 28 requested sources reporting success. The same providers were unavailable from the first GitHub browser runner, which returned a 503. The manual application persistence test now uses a controlled empty jobs response because its saved applications live in browser storage. I checked provider availability separately against production.
+
+I attempted the single authorized delivery test. Resend rejected it with HTTP 403 because `isaacvazquez.com` is not verified, so no test email was delivered. Read-only API checks also returned HTTP 401 because the production key is restricted to sending emails, which blocks the newsletter route's contact creation. The protected MBA digest endpoint returns HTTP 503 because `MBA_DIGEST_SECRET` and `MBA_DIGEST_ALLOWED_RECIPIENTS` are absent. Domain verification, a contact-capable credential, and the digest's protected caller configuration remain account setup work.
