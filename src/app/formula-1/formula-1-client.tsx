@@ -28,6 +28,7 @@ import { TimingTowerSignature } from "./TimingTowerSignature";
 import styles from "./formula-1.module.css";
 import {
   DATE_TIME_FORMATTER,
+  formatStableDateTime,
   LONG_DATE_TIME_FORMATTER,
   SHORT_DATE_FORMATTER,
   formatUpdatedAt,
@@ -47,12 +48,12 @@ function formatDateLabel(value: string): string {
 
 function formatDateTimeLabel(value: string): string {
   const date = new Date(value);
-  return Number.isNaN(date.getTime()) ? "TBD" : DATE_TIME_FORMATTER.format(date);
+  return Number.isNaN(date.getTime()) ? "TBD" : formatStableDateTime(DATE_TIME_FORMATTER, date);
 }
 
 function formatLongDateTimeLabel(value: string): string {
   const date = new Date(value);
-  return Number.isNaN(date.getTime()) ? "TBD" : LONG_DATE_TIME_FORMATTER.format(date);
+  return Number.isNaN(date.getTime()) ? "TBD" : formatStableDateTime(LONG_DATE_TIME_FORMATTER, date);
 }
 
 function formatPoints(value: number): string {

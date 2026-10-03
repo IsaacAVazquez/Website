@@ -23,6 +23,15 @@ export const DATE_ONLY_TIME_ZONE = "UTC";
  */
 export const sep = (text: string) => text.replace(/\bSept\b/, "Sep");
 
+/**
+ * ICU versions disagree on the English date/time connector (", " or " at ")
+ * and on the space before AM/PM. Normalize those literals for SSR hydration.
+ * The caller's formatter still owns the calendar fields and named timezone.
+ */
+export function formatStableDateTime(formatter: Intl.DateTimeFormat, date: Date): string {
+  return formatter.format(date).replace(/\s+at\s+/g, ", ").replace(/[\u00a0\u202f]/g, " ");
+}
+
 /** Short date: "Apr 25" */
 export const SHORT_DATE_FORMATTER = new Intl.DateTimeFormat("en-US", {
   month: "short",
@@ -61,12 +70,12 @@ export function formatShortDate(value: string | Date): string {
 
 export function formatDateTime(value: string | Date): string {
   const date = typeof value === "string" ? new Date(value) : value;
-  return Number.isNaN(date.getTime()) ? "TBD" : DATE_TIME_FORMATTER.format(date);
+  return Number.isNaN(date.getTime()) ? "TBD" : formatStableDateTime(DATE_TIME_FORMATTER, date);
 }
 
 export function formatUpdatedAt(value: string | Date): string {
   const date = typeof value === "string" ? new Date(value) : value;
-  return Number.isNaN(date.getTime()) ? "Unavailable" : UPDATED_AT_FORMATTER.format(date);
+  return Number.isNaN(date.getTime()) ? "Unavailable" : formatStableDateTime(UPDATED_AT_FORMATTER, date);
 }
 
 /**

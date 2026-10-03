@@ -1,5 +1,5 @@
 import type { MissionLaunchCard } from "@/types/spacex";
-import { DISPLAY_TIME_ZONE } from "@/lib/date-formatters";
+import { DISPLAY_TIME_ZONE, formatStableDateTime } from "@/lib/date-formatters";
 
 // Every launch moment (dateUtc) is a real instant, so each formatter below
 // pins the display zone. The hour-precision one also names the zone since
@@ -53,7 +53,7 @@ export function formatMissionMoment(launch: Pick<MissionLaunchCard, "dateUtc" | 
 
   switch (launch.datePrecision) {
     case "hour":
-      return DATE_TIME_FORMATTER.format(date);
+      return formatStableDateTime(DATE_TIME_FORMATTER, date);
     case "day":
       return DATE_FORMATTER.format(date);
     case "month":

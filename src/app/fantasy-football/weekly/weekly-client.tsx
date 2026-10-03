@@ -39,6 +39,7 @@ import {
   getSnapshotStalenessLabel,
 } from "@/lib/fantasyUtils";
 import { PROJECT_PRESS } from "@/constants/projectPress";
+import { formatStableDateTime } from "@/lib/date-formatters";
 
 export type WeeklyView = "rankings" | "waivers";
 
@@ -129,7 +130,7 @@ function formatSourceStamp(asOf: string, hydrated: boolean): string {
   const date = new Date(asOf);
   return Number.isNaN(date.getTime())
     ? "Unavailable"
-    : `${UTC_STAMP_FORMATTER.format(date)} UTC`;
+    : `${formatStableDateTime(UTC_STAMP_FORMATTER, date)} UTC`;
 }
 
 export type WeeklyBoardKey = "flex" | "quarterbacks";

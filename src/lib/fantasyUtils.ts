@@ -1,6 +1,6 @@
 import type { CSSProperties } from "react";
 
-import { DISPLAY_TIME_ZONE } from "@/lib/date-formatters";
+import { DISPLAY_TIME_ZONE, formatStableDateTime } from "@/lib/date-formatters";
 import type { Player, RedraftLineupSettings } from "@/types";
 
 /**
@@ -27,7 +27,7 @@ export function formatUpdatedAt(timestamp: string | null | undefined): string {
     return "Unavailable";
   }
 
-  return new Intl.DateTimeFormat("en-US", {
+  const formatter = new Intl.DateTimeFormat("en-US", {
     year: "numeric",
     month: "short",
     day: "numeric",
@@ -35,7 +35,8 @@ export function formatUpdatedAt(timestamp: string | null | undefined): string {
     minute: "2-digit",
     timeZone: DISPLAY_TIME_ZONE,
     timeZoneName: "short",
-  }).format(new Date(timestamp));
+  });
+  return formatStableDateTime(formatter, new Date(timestamp));
 }
 
 export type FantasySnapshotStaleness = "fresh" | "aging" | "stale";

@@ -1,9 +1,10 @@
-import { render, screen, waitFor } from "@testing-library/react";
+import { act, render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import type { Formula1DriverStanding, Formula1Summary } from "@/types/formula1";
 import { getFantasyFormula1StorageKey } from "@/lib/fantasyFormula1";
 import { FantasyFormula1Client } from "../fantasy-formula-1-client";
 import { DEFAULT_FANTASY_FORMULA1_STATE } from "../fantasy-formula-1-state";
+import { resetBrowserStorageMemory } from "@/lib/browserStorage";
 
 const mockPush = jest.fn();
 const mockReplace = jest.fn();
@@ -139,6 +140,7 @@ describe("FantasyFormula1Client", () => {
     mockPush.mockClear();
     mockReplace.mockClear();
     window.localStorage.clear();
+    resetBrowserStorageMemory();
   });
 
   it("selects, removes, and persists lineup assets", async () => {
@@ -202,6 +204,38 @@ describe("FantasyFormula1Client", () => {
       expect(screen.getByTestId("fantasy-formula-1-lineup")).not.toHaveTextContent(
         "Valtteri Bottas"
       );
+    });
+  });
+
+  it("keeps team edits usable when durable storage is blocked", async () => {
+    const user = userEvent.setup();
+    render(<FantasyFormula1Client initialState={DEFAULT_FANTASY_FORMULA1_STATE} summary={createSummary()} />);
+    const write = jest.spyOn(Storage.prototype, "setItem").mockImplementation(() => {
+      throw new DOMException("Storage is full", "QuotaExceededError");
+    });
+    try {
+      await user.click(screen.getByLabelText("Add Valtteri Bottas"));
+      await user.click(screen.getByLabelText("Add Cadillac"));
+      expect(screen.getByTestId("fantasy-formula-1-lineup")).toHaveTextContent("Valtteri Bottas");
+      expect(screen.getByTestId("fantasy-formula-1-lineup")).toHaveTextContent("Cadillac");
+    } finally {
+      write.mockRestore();
+    }
+  });
+
+  it("receives another tab's edit and includes it in the next save", async () => {
+    const user = userEvent.setup();
+    render(<FantasyFormula1Client initialState={DEFAULT_FANTASY_FORMULA1_STATE} summary={createSummary()} />);
+    const key = getFantasyFormula1StorageKey(2026);
+    const value = JSON.stringify({ driverIds: ["driver-77"], constructorIds: [], lockedAssetIds: [] });
+    act(() => {
+      window.localStorage.setItem(key, value);
+      window.dispatchEvent(new StorageEvent("storage", { key, newValue: value }));
+    });
+    expect(screen.getByTestId("fantasy-formula-1-lineup")).toHaveTextContent("Valtteri Bottas");
+    await user.click(screen.getByLabelText("Add Cadillac"));
+    expect(JSON.parse(window.localStorage.getItem(key)!)).toMatchObject({
+      driverIds: ["driver-77"], constructorIds: ["constructor-cadillac"],
     });
   });
 

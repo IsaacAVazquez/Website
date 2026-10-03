@@ -1,0 +1,17 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "side-tab",
+        "value": "*",
+        "files": [
+          "src/app/formula-1/formula-1-client.tsx"
+        ],
+        "createdAt": "2026-10-03T07:33:48.477Z",
+        "reason": "Review decision: existing leaderboard and race-result borders encode team livery data, session borders encode session type, and the error border encodes negative status. DESIGN.md permits data and status colors on marks. These four borders predate the timestamp-only audit changes."
+      }
+    ]
+  }
+}

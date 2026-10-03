@@ -89,7 +89,7 @@ function LeagueSelect({
       <select
         value={value}
         onChange={(event) => onChange(Number(event.target.value))}
-        className="min-h-touch w-full border border-[var(--c97-ink-2)] bg-[var(--c97-surface)] text-sm text-[var(--c97-ink)] transition-[border-color] focus:border-[var(--c97-accent)]" style={{ paddingInline: "var(--c97-sp-1)", marginTop: "var(--c97-sp-0)" }}
+        className="c97-field transition-[border-color] focus:border-[var(--c97-accent)]" style={{ paddingInline: "var(--c97-sp-1)", marginTop: "var(--c97-sp-0)" }}
       >
         {options.map((option) => (
           <option key={option} value={option}>
@@ -192,7 +192,7 @@ function LeagueSettings({
               lineup: event.target.value as TradeCalculatorSearchState["lineup"],
             })
           }
-          className="min-h-touch w-full border border-[var(--c97-ink-2)] bg-[var(--c97-surface)] text-sm text-[var(--c97-ink)] transition-[border-color] focus:border-[var(--c97-accent)]" style={{ paddingInline: "var(--c97-sp-1)", marginTop: "var(--c97-sp-0)" }}
+        className="c97-field transition-[border-color] focus:border-[var(--c97-accent)]" style={{ paddingInline: "var(--c97-sp-1)", marginTop: "var(--c97-sp-0)" }}
         >
           {REDRAFT_LINEUP_PRESETS.map((preset) => (
             <option key={preset.id} value={preset.id}>

@@ -1,6 +1,6 @@
 import type { CSSProperties } from "react";
 import type { RaceRating, Party } from "@/types/polling";
-import { DATE_ONLY_TIME_ZONE, UPDATED_AT_FORMATTER } from "@/lib/date-formatters";
+import { DATE_ONLY_TIME_ZONE, UPDATED_AT_FORMATTER, formatStableDateTime } from "@/lib/date-formatters";
 
 // ─── Formatting ────────────────────────────────────────────────────────────────
 
@@ -74,7 +74,7 @@ export function formatUpdated(iso: string): string {
   if (Number.isNaN(d.getTime())) return "Unavailable";
   // A date-only "YYYY-MM-DD" string (sourceAsOf) is exactly 10 characters;
   // generatedAt is a full ISO instant and always longer.
-  return iso.length === 10 ? UPDATED_DATE_ONLY_FMT.format(d) : UPDATED_AT_FORMATTER.format(d);
+  return iso.length === 10 ? UPDATED_DATE_ONLY_FMT.format(d) : formatStableDateTime(UPDATED_AT_FORMATTER, d);
 }
 
 export function formatMargin(margin: number): string {

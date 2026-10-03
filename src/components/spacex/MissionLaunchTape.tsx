@@ -3,7 +3,7 @@
 import { InstrumentTape, type InstrumentTapeItem } from "@/components/editorial/InstrumentTape";
 import type { MissionLaunchCard } from "@/types/spacex";
 import { deriveVehicleFamily, VEHICLE_SHORT_CODE } from "@/lib/spacexVehicleFamily";
-import { DISPLAY_TIME_ZONE } from "@/lib/date-formatters";
+import { DISPLAY_TIME_ZONE, formatStableDateTime } from "@/lib/date-formatters";
 
 // launch.dateUtc is a real instant and this shows a clock time, so it's
 // pinned to the display zone and names it, since the compact tape entry
@@ -67,7 +67,7 @@ export function MissionLaunchTape({ recentLaunches, upcomingLaunches }: MissionL
             {shortCode(launch.rocketName)}
           </span>
           <span className="text-3xs text-[color-mix(in_srgb,var(--c97-ink-2)_72%,var(--c97-ink))]">
-            {launch.hasExactTime ? SCHEDULE_FORMATTER.format(new Date(launch.dateUtc)) : "TBD"}
+            {launch.hasExactTime ? formatStableDateTime(SCHEDULE_FORMATTER, new Date(launch.dateUtc)) : "TBD"}
           </span>
         </>
       ),
