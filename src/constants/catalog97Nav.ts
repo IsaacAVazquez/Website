@@ -100,6 +100,7 @@ export function isDashboardRoute(pathname: string): boolean {
  * tracker and settings stay on the standard column.
  */
 export const WIDE_TOOL_ROUTES: ReadonlySet<string> = new Set([
+  "/bay-area-transit",
   "/fantasy-football/trade-calculator",
   "/fantasy-football/best-ball/draft-tracker",
   "/investments",

@@ -358,50 +358,8 @@
   z-index: 600;
 }
 
-/* OSM tiles are loud by default, so the tile pane is washed toward the page:
-   warm paper by day, a dim field map at night. Pins sit in the marker pane and
-   keep their curator colours. Unchanged by the Catalog 97 migration, this is
-   what keeps the map's day/night look working. */
-.fm-map .leaflet-tile-pane {
-  filter: grayscale(0.8) sepia(0.25) contrast(0.92) brightness(1.03);
-}
-.dark .fm-map .leaflet-tile-pane {
-  filter: invert(1) hue-rotate(180deg) grayscale(0.85) brightness(0.82) contrast(0.95);
-}
-
-/*
- * Leaflet chrome, restyled to match. Leaflet's own stylesheet loads from a
- * CDN link injected into <head> at runtime (leaflet.ts) rather than being
- * bundled with the page, and its defaults (an opaque control background, a
- * translucent white attribution strip) sit at the same or higher specificity
- * than a plain descendant selector here. The `!important` is a deliberate,
- * narrow override of a third-party widget's own chrome, not a fight with
- * this file's own cascade.
- */
-.fm-map .leaflet-control-zoom a {
-  background: var(--c97-panel) !important;
-  color: var(--c97-ink) !important;
-  border-color: var(--c97-rule) !important;
-}
-.fm-map .leaflet-control-attribution {
-  background: color-mix(in srgb, var(--c97-panel) 92%, transparent) !important;
-  color: var(--c97-label) !important;
-}
-.fm-map .leaflet-control-attribution a { color: var(--c97-ink-2) !important; }
-.fm-map .leaflet-popup-content-wrapper {
-  background: var(--c97-panel) !important;
-  color: var(--c97-ink) !important;
-  border: 1px solid var(--c97-rule);
-  /* Leaflet's CDN sheet rounds and blurs the popup; the print shop allows neither. */
-  border-radius: 0 !important;
-  box-shadow: none !important;
-}
-.fm-map .leaflet-popup-tip {
-  background: var(--c97-panel) !important;
-  border: 1px solid var(--c97-rule);
-  box-shadow: none !important;
-}
-.fm-map .leaflet-popup-content { margin: var(--c97-sp-2) var(--c97-sp-2); font-family: var(--c97-font-body); }
+/* The tile wash and Leaflet chrome are shared with the transit map as
+   `.c97-basemap` in catalog97.css. */
 .fm-map .fm-popup-title {
   font-family: var(--c97-font-display);
   font-size: var(--c97-fs-body);
