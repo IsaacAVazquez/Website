@@ -238,7 +238,7 @@ function QuickActions({
 }: QuickActionsProps) {
   const isVisited = Boolean(visit);
   return (
-    <div className="flex flex-wrap items-center gap-2" aria-label={`Actions for ${museum.name}`}>
+    <div className="flex flex-wrap items-center" style={{ gap: "var(--c97-sp-1)" }} role="group" aria-label={`Actions for ${museum.name}`}>
       <button
         type="button"
         onClick={(e) => {
@@ -401,7 +401,7 @@ function DiscoverView({
   );
 
   return (
-    <div className="space-y-5">
+    <div style={{ display: "flex", flexDirection: "column", gap: "var(--c97-sp-3)" }}>
       <div
         className="c97-panel"
         style={{ padding: "var(--c97-sp-3)", display: "flex", flexWrap: "wrap", alignItems: "center", gap: "var(--c97-sp-3)" }}
@@ -437,7 +437,7 @@ function DiscoverView({
         </div>
       </div>
 
-      <p className="c97-prose" style={{ marginBottom: "var(--c97-sp-3)", fontSize: "var(--c97-fs-small)" }}>
+      <p className="c97-prose c97-tabular" style={{ fontSize: "var(--c97-fs-small)" }}>
         {sorted.length} {sorted.length === 1 ? "museum" : "museums"} in the catalog
         {state.type !== "all" && ` · ${TYPE_LABEL[state.type]}`}
         {state.region !== "all" && ` · ${REGION_LABEL[state.region]}`}
@@ -451,7 +451,7 @@ function DiscoverView({
           </p>
         </div>
       ) : (
-        <div className="grid gap-5 sm:grid-cols-2">
+        <div className="grid sm:grid-cols-2" style={{ gap: "var(--c97-sp-3)" }}>
           {sorted.map((museum) => {
             const visit = visitByMuseumId[museum.id];
             return (
@@ -489,7 +489,7 @@ function FilterSelect({
 }) {
   const id = `filter-${label.toLowerCase()}`;
   return (
-    <label htmlFor={id} className="inline-flex items-center gap-2">
+    <label htmlFor={id} className="inline-flex items-center" style={{ gap: "var(--c97-sp-1)" }}>
       <span className="c97-kicker">{label}</span>
       <select
         id={id}
@@ -529,7 +529,7 @@ function JournalView({
   );
 
   return (
-    <div className="grid gap-8 lg:grid-cols-[minmax(0,1.7fr)_minmax(280px,1fr)]">
+    <div className="grid lg:grid-cols-[minmax(0,1.7fr)_minmax(280px,1fr)]" style={{ gap: "var(--c97-sp-4)" }}>
       <section>
         <p className="c97-kicker">Reviews</p>
         <h3 className="c97-serif c97-h2" style={{ marginTop: "var(--c97-sp-1)" }}>
@@ -592,7 +592,7 @@ function ReviewCard({
 }) {
   return (
     <li style={{ borderTop: "1px solid var(--c97-rule)", paddingBlock: "var(--c97-sp-4)" }}>
-      <div className="flex flex-wrap items-baseline gap-2">
+      <div className="flex flex-wrap items-baseline" style={{ gap: "var(--c97-sp-1)" }}>
         <button
           type="button"
           onClick={onOpenMuseum}
@@ -606,7 +606,7 @@ function ReviewCard({
           {formatDate(review.dateVisited)}
         </span>
       </div>
-      <div className="flex flex-wrap items-center gap-2" style={{ marginTop: "var(--c97-sp-2)" }}>
+      <div className="flex flex-wrap items-center" style={{ gap: "var(--c97-sp-1)", marginTop: "var(--c97-sp-2)" }}>
         <StarRow rating={review.rating} size={16} />
         <span className="c97-mono" style={{ fontSize: "var(--c97-fs-small)" }}>
           {review.rating.toFixed(1)} / 5
@@ -630,7 +630,7 @@ function ReviewCard({
         </p>
       )}
       {review.tags.length > 0 && (
-        <div className="flex flex-wrap gap-1.5" style={{ marginTop: "var(--c97-sp-2)" }}>
+        <div className="flex flex-wrap" style={{ gap: "var(--c97-sp-1)", marginTop: "var(--c97-sp-2)" }}>
           {review.tags.map((tag) => (
             <TagChip key={tag}>{tag}</TagChip>
           ))}
@@ -675,7 +675,7 @@ function VisitStampCard({
         >
           {museum.name}
         </button>
-        <div className="flex flex-wrap items-center gap-2" style={{ marginTop: "var(--c97-sp-1)" }}>
+        <div className="flex flex-wrap items-center" style={{ gap: "var(--c97-sp-1)", marginTop: "var(--c97-sp-1)" }}>
           <StarRow rating={entry.rating} size={12} />
           <span className="c97-mono" style={{ fontSize: "var(--c97-fs-small)" }}>
             {entry.rating.toFixed(1)}
@@ -735,8 +735,8 @@ function ListsView({
       .map((id) => museumById[id])
       .filter((m): m is Museum => Boolean(m));
     return (
-      <div className="space-y-6">
-        <button type="button" onClick={() => onSelectList(null)} className="c97-btn-ghost">
+      <div style={{ display: "flex", flexDirection: "column", gap: "var(--c97-sp-3)" }}>
+        <button type="button" onClick={() => onSelectList(null)} className="c97-btn-ghost" style={{ alignSelf: "flex-start" }}>
           ← All catalogues
         </button>
         <header>
@@ -776,7 +776,7 @@ function ListsView({
   }
 
   return (
-    <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+    <div className="grid sm:grid-cols-2 lg:grid-cols-3" style={{ gap: "var(--c97-sp-3)" }}>
       {snapshot.lists.map((list) => (
         <ListPreviewCard
           key={list.id}
@@ -927,29 +927,29 @@ function MuseumDetailView({
     .sort((a, b) => b.date.localeCompare(a.date));
 
   return (
-    <div className="space-y-6">
-      <button type="button" onClick={onBack} className="c97-btn-ghost">
+    <div style={{ display: "flex", flexDirection: "column", gap: "var(--c97-sp-3)" }}>
+      <button type="button" onClick={onBack} className="c97-btn-ghost" style={{ alignSelf: "flex-start" }}>
         ← Back to catalog
       </button>
 
       <section className="c97-panel" style={{ padding: "var(--c97-sp-4)" }}>
-        <div className="grid gap-6 lg:grid-cols-[minmax(0,220px)_minmax(0,1fr)]">
+        <div className="grid lg:grid-cols-[minmax(0,220px)_minmax(0,1fr)]" style={{ gap: "var(--c97-sp-3)" }}>
           <AdmissionStub museum={museum} today={today} />
-          <div className="space-y-3">
-            <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-2)" }}>
+          <div style={{ display: "flex", flexDirection: "column", gap: "var(--c97-sp-2)" }}>
+            <p className="c97-kicker">
               {TYPE_LABEL[museum.type]} · {REGION_LABEL[museum.region]}
             </p>
-            <h2 ref={headingRef} tabIndex={-1} className="c97-display" style={{ marginBottom: "var(--c97-sp-2)" }}>
+            <h2 ref={headingRef} tabIndex={-1} className="c97-display">
               {museum.name}
             </h2>
             <p className="c97-stub-meta">
               {museum.country} · {formatRuntime(museum.visitMinutesAvg)} average visit
             </p>
-            <div className="flex flex-wrap items-center gap-2">
+            <div className="flex flex-wrap items-center" style={{ gap: "var(--c97-sp-1)" }}>
               <RatingPill rating={museum.curatorRating} label="curator" />
               {visit && <RatingPill rating={visit.rating} label="you" />}
             </div>
-            <p className="c97-prose" style={{ marginBottom: "var(--c97-sp-2)" }}>{museum.blurb}</p>
+            <p className="c97-prose">{museum.blurb}</p>
             <QuickActions
               museum={museum}
               visit={visit}
@@ -977,12 +977,12 @@ function MuseumDetailView({
         </div>
       </section>
 
-      <div className="grid gap-6 lg:grid-cols-[minmax(0,1.6fr)_minmax(280px,1fr)]">
-        <div className="space-y-6">
+      <div className="grid lg:grid-cols-[minmax(0,1.6fr)_minmax(280px,1fr)]" style={{ gap: "var(--c97-sp-3)" }}>
+        <div style={{ display: "flex", flexDirection: "column", gap: "var(--c97-sp-3)" }}>
           {review && (
             <section className="c97-panel" style={{ padding: "var(--c97-sp-4)" }}>
               <p className="c97-kicker">Curator review</p>
-              <div className="flex flex-wrap items-center gap-3" style={{ marginTop: "var(--c97-sp-2)" }}>
+              <div className="flex flex-wrap items-center" style={{ gap: "var(--c97-sp-2)", marginTop: "var(--c97-sp-2)" }}>
                 <StarRow rating={review.rating} size={18} />
                 <span className="c97-mono" style={{ fontSize: "var(--c97-fs-small)" }}>
                   {review.rating.toFixed(1)} / 5
@@ -1002,7 +1002,7 @@ function MuseumDetailView({
                 </p>
               )}
               {review.tags.length > 0 && (
-                <div className="flex flex-wrap gap-1.5" style={{ marginTop: "var(--c97-sp-3)" }}>
+                <div className="flex flex-wrap" style={{ gap: "var(--c97-sp-1)", marginTop: "var(--c97-sp-3)" }}>
                   {review.tags.map((tag) => (
                     <TagChip key={tag}>{tag}</TagChip>
                   ))}
@@ -1036,8 +1036,8 @@ function MuseumDetailView({
                     status === "current" ? " c97-chip-positive" : status === "upcoming" ? " c97-chip-warning" : "";
                   return (
                     <li key={ex.id} style={{ borderTop: "1px solid var(--c97-rule)", paddingBlock: "var(--c97-sp-3)" }}>
-                      <div className="flex flex-wrap items-baseline justify-between gap-2">
-                        <div className="flex flex-wrap items-center gap-2">
+                      <div className="flex flex-wrap items-baseline justify-between" style={{ gap: "var(--c97-sp-1)" }}>
+                        <div className="flex flex-wrap items-center" style={{ gap: "var(--c97-sp-1)" }}>
                           <p className="c97-serif" style={{ fontSize: "var(--c97-fs-h3)" }}>{ex.title}</p>
                           {status && <span className={`c97-chip${chipTone}`}>{status}</span>}
                         </div>
@@ -1061,28 +1061,28 @@ function MuseumDetailView({
           )}
         </div>
 
-        <aside className="space-y-6">
+        <aside style={{ display: "flex", flexDirection: "column", gap: "var(--c97-sp-3)" }}>
           <section className="c97-panel" style={{ padding: "var(--c97-sp-4)" }}>
             <p className="c97-kicker">Your activity</p>
-            <div className="space-y-3" style={{ marginTop: "var(--c97-sp-3)" }}>
+            <div style={{ display: "flex", flexDirection: "column", gap: "var(--c97-sp-2)", marginTop: "var(--c97-sp-3)" }}>
               {visit ? (
                 <>
-                  <p className="c97-prose" style={{ marginBottom: "var(--c97-sp-2)" }}>
+                  <p className="c97-prose">
                     Visited on {formatDate(visit.date)}
                   </p>
                   <RatingPill rating={visit.rating} />
                   {visit.note && (
-                    <p className="c97-prose" style={{ marginBottom: "var(--c97-sp-2)", fontSize: "var(--c97-fs-small)", fontStyle: "italic" }}>
+                    <p className="c97-prose" style={{ fontSize: "var(--c97-fs-small)", fontStyle: "italic" }}>
                       &ldquo;{visit.note}&rdquo;
                     </p>
                   )}
-                  <button type="button" onClick={onClearVisit} className="c97-museum-action">
+                  <button type="button" onClick={onClearVisit} className="c97-museum-action" style={{ alignSelf: "flex-start" }}>
                     <Trash2 size={12} aria-hidden="true" /> Remove visit
                   </button>
                 </>
               ) : (
                 <>
-                  <p className="c97-prose" style={{ marginBottom: "var(--c97-sp-2)", fontSize: "var(--c97-fs-small)" }}>
+                  <p className="c97-prose" style={{ fontSize: "var(--c97-fs-small)" }}>
                     No visit logged yet. Use the buttons above to mark this one done, save it for later, or like it.
                   </p>
                   <RateAndLogForm
@@ -1111,8 +1111,8 @@ function MuseumDetailView({
                 {visitLogEntries.map((entry) => (
                   <li
                     key={entry.id}
-                    className="flex flex-wrap items-baseline justify-between gap-2"
-                    style={{ borderTop: "1px solid var(--c97-rule)", paddingBlock: "var(--c97-sp-2)" }}
+                    className="flex flex-wrap items-baseline justify-between"
+                    style={{ gap: "var(--c97-sp-1)", borderTop: "1px solid var(--c97-rule)", paddingBlock: "var(--c97-sp-2)" }}
                   >
                     <span className="c97-stub-meta" style={{ display: "inline-flex", alignItems: "center", gap: "4px" }}>
                       <Calendar size={12} aria-hidden="true" /> {formatShortDate(entry.date)}
@@ -1162,7 +1162,7 @@ function RateAndLogForm({
       aria-label="Rate and log this museum visit"
       style={{ display: "flex", flexDirection: "column", gap: "var(--c97-sp-3)" }}
     >
-      <div className="flex items-center gap-2">
+      <div className="flex items-center" style={{ gap: "var(--c97-sp-1)" }}>
         <input
           type="range"
           min={0}
@@ -1185,6 +1185,7 @@ function RateAndLogForm({
         value={note}
         onChange={(e) => setNote(e.target.value)}
         placeholder="Optional note (private to your browser)"
+        aria-label="Visit note"
         rows={2}
         className="c97-field"
       />
@@ -1336,6 +1337,7 @@ export function MuseumLogClient({ initialState, snapshot }: Props) {
   }, [hydrated, userState.visited, museumById]);
 
   // ─── Rail data: recently visited + top liked ─────────────────────────────
+  // `recentFromCurator` and `likedFromCurator` flag the fallbacks so the rail says whose list it is.
   const recentlyVisited = useMemo(() => {
     const userVisits = [...userState.visited]
       .sort((a, b) => b.date.localeCompare(a.date))
@@ -1351,6 +1353,8 @@ export function MuseumLogClient({ initialState, snapshot }: Props) {
       .filter((row): row is { museum: Museum; date: string } => Boolean(row.museum));
   }, [userState.visited, snapshot.visitLog, museumById]);
 
+  const recentFromCurator = hydrated && !userState.visited.some((v) => museumById[v.museumId]);
+
   const topLiked = useMemo(() => {
     const liked = userState.liked
       .map((id) => museumById[id])
@@ -1365,6 +1369,7 @@ export function MuseumLogClient({ initialState, snapshot }: Props) {
       .map((r) => museumById[r.museumId])
       .filter((m): m is Museum => Boolean(m));
   }, [userState.liked, snapshot.reviews, museumById]);
+  const likedFromCurator = hydrated && !userState.liked.some((id) => museumById[id]);
 
   // For detail view: contextual rail (other museums in same region).
   const contextualMuseums = useMemo(() => {
@@ -1436,8 +1441,8 @@ export function MuseumLogClient({ initialState, snapshot }: Props) {
             {navItems.find((item) => item.id === activeView)?.label}
           </h2>
           <div
-            className="flex flex-wrap items-center gap-3"
-            style={{ justifyContent: "space-between" }}
+            className="flex flex-wrap items-center"
+            style={{ gap: "var(--c97-sp-2)", justifyContent: "space-between" }}
           >
             <nav aria-label="Section navigation">
               <div className="c97-segmented">
@@ -1450,7 +1455,7 @@ export function MuseumLogClient({ initialState, snapshot }: Props) {
                       type="button"
                       aria-pressed={isActive}
                       onClick={() => handleViewChange(item.id)}
-                      className="min-h-[44px] text-sm font-semibold"
+                      className="min-h-[44px]"
                     >
                       <Icon size={16} aria-hidden />
                       {item.label}
@@ -1484,7 +1489,7 @@ export function MuseumLogClient({ initialState, snapshot }: Props) {
             </p>
           ) : null}
 
-          <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,320px)]" style={{ marginTop: "var(--c97-sp-5)" }}>
+          <div className="grid lg:grid-cols-[minmax(0,1fr)_minmax(0,320px)]" style={{ gap: "var(--c97-sp-4)", marginTop: "var(--c97-sp-5)" }}>
             <div>
               {activeView === "discover" && (
                 <DiscoverView
@@ -1547,8 +1552,8 @@ export function MuseumLogClient({ initialState, snapshot }: Props) {
                           <button
                             type="button"
                             onClick={() => handleOpenMuseum(m.slug)}
-                            className="grid w-full items-baseline gap-2"
-                            style={{ gridTemplateColumns: "1fr auto", minHeight: "44px", background: "none", border: 0, padding: 0, cursor: "pointer", textAlign: "left" }}
+                            className="grid w-full items-baseline"
+                            style={{ gap: "var(--c97-sp-1)", gridTemplateColumns: "1fr auto", minHeight: "44px", background: "none", border: 0, padding: 0, cursor: "pointer", textAlign: "left" }}
                           >
                             <span style={{ minWidth: 0 }}>
                               <span className="block truncate c97-serif" style={{ fontSize: "var(--c97-fs-small)" }}>
@@ -1572,6 +1577,11 @@ export function MuseumLogClient({ initialState, snapshot }: Props) {
                     <p className="c97-kicker" style={{ display: "inline-flex", alignItems: "center", gap: "4px" }}>
                       <Clock size={12} aria-hidden="true" /> Recently visited
                     </p>
+                    {recentFromCurator && recentlyVisited.length > 0 ? (
+                      <p className="c97-stub-meta" style={{ marginTop: "var(--c97-sp-1)" }}>
+                        You haven&rsquo;t logged a visit yet, so these come from the curator&rsquo;s diary.
+                      </p>
+                    ) : null}
                     {recentlyVisited.length === 0 ? (
                       <p className="c97-prose" style={{ fontSize: "var(--c97-fs-small)", marginTop: "var(--c97-sp-2)" }}>
                         No visits logged yet. Log one from any museum card.
@@ -1583,8 +1593,8 @@ export function MuseumLogClient({ initialState, snapshot }: Props) {
                             <button
                               type="button"
                               onClick={() => handleOpenMuseum(row.museum.slug)}
-                              className="grid w-full items-baseline gap-2"
-                              style={{ gridTemplateColumns: "1fr auto", minHeight: "44px", background: "none", border: 0, padding: 0, cursor: "pointer", textAlign: "left" }}
+                              className="grid w-full items-baseline"
+                              style={{ gap: "var(--c97-sp-1)", gridTemplateColumns: "1fr auto", minHeight: "44px", background: "none", border: 0, padding: 0, cursor: "pointer", textAlign: "left" }}
                             >
                               <span style={{ minWidth: 0 }}>
                                 <span className="block truncate c97-serif" style={{ fontSize: "var(--c97-fs-small)" }}>
@@ -1604,6 +1614,11 @@ export function MuseumLogClient({ initialState, snapshot }: Props) {
                     <p className="c97-kicker" style={{ display: "inline-flex", alignItems: "center", gap: "4px" }}>
                       <Heart size={12} aria-hidden="true" /> Top liked
                     </p>
+                    {likedFromCurator && topLiked.length > 0 ? (
+                      <p className="c97-stub-meta" style={{ marginTop: "var(--c97-sp-1)" }}>
+                        You haven&rsquo;t liked a museum yet, so these are the curator&rsquo;s favorites.
+                      </p>
+                    ) : null}
                     {topLiked.length === 0 ? (
                       <p className="c97-prose" style={{ fontSize: "var(--c97-fs-small)", marginTop: "var(--c97-sp-2)" }}>
                         Heart a museum to surface it here.
@@ -1615,8 +1630,8 @@ export function MuseumLogClient({ initialState, snapshot }: Props) {
                             <button
                               type="button"
                               onClick={() => handleOpenMuseum(m.slug)}
-                              className="grid w-full items-baseline gap-2"
-                              style={{ gridTemplateColumns: "1fr auto", minHeight: "44px", background: "none", border: 0, padding: 0, cursor: "pointer", textAlign: "left" }}
+                              className="grid w-full items-baseline"
+                              style={{ gap: "var(--c97-sp-1)", gridTemplateColumns: "1fr auto", minHeight: "44px", background: "none", border: 0, padding: 0, cursor: "pointer", textAlign: "left" }}
                             >
                               <span style={{ minWidth: 0 }}>
                                 <span className="block truncate c97-serif" style={{ fontSize: "var(--c97-fs-small)" }}>

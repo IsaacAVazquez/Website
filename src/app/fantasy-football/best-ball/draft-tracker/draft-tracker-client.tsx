@@ -177,7 +177,7 @@ export function BestBallDraftTrackerClient({
 
   return (
     <section
-      className="c97-dash relative overflow-x-clip min-h-screen pb-24 lg:pb-0"
+      className="c97-dash relative overflow-x-clip min-h-dvh pb-24 lg:pb-0"
       aria-label="Best ball draft assistant"
       data-testid="best-ball-draft-tracker-shell"
       data-hydrated={isHydrated ? "true" : "false"}
@@ -320,9 +320,9 @@ export function BestBallDraftTrackerClient({
         ) : null}
 
         {isLoading && !snapshot ? (
-          <article className="c97-panel text-sm" style={{ color: "var(--c97-ink-2)" }}>
-            Loading best ball rankings and room rules...
-          </article>
+          <div role="status" className="c97-panel text-sm" style={{ color: "var(--c97-ink-2)" }}>
+            Loading best ball rankings and room rules.
+          </div>
         ) : null}
 
         {snapshot ? (
@@ -581,9 +581,9 @@ function BestBallDraftRoom({
 
   if (!draft.isLoaded) {
     return (
-      <article className="c97-panel text-sm" style={{ color: "var(--c97-ink-2)" }}>
-        Checking this browser for a saved {preset.shortName} room...
-      </article>
+      <div role="status" className="c97-panel text-sm" style={{ color: "var(--c97-ink-2)" }}>
+        Checking this browser for a saved {preset.shortName} room.
+      </div>
     );
   }
 
@@ -952,12 +952,7 @@ function BestBallDraftRoom({
                     draft.resetDraft();
                     setResetArmed(false);
                   }}
-                  className="min-h-[44px] border px-3 text-sm font-semibold"
-                  style={{
-                    borderColor: "var(--c97-negative)",
-                    background: "var(--c97-negative)",
-                    color: "var(--c97-surface)",
-                  }}
+                  className="min-h-[44px] border border-[var(--c97-negative)] bg-[var(--c97-negative)] px-3 text-sm font-semibold text-[var(--c97-surface)] hover:border-[color-mix(in_srgb,var(--c97-negative)_80%,var(--c97-ink))] hover:bg-[color-mix(in_srgb,var(--c97-negative)_80%,var(--c97-ink))]"
                 >
                   Confirm reset
                 </button>
@@ -1071,12 +1066,7 @@ function BestBallDraftRoom({
                   setResetArmed(false);
                   setBuildOpen(false);
                 }}
-                className="min-h-[44px] border px-3 text-sm font-semibold"
-                style={{
-                  borderColor: "var(--c97-negative)",
-                  background: "var(--c97-negative)",
-                  color: "var(--c97-surface)",
-                }}
+                className="min-h-[44px] border border-[var(--c97-negative)] bg-[var(--c97-negative)] px-3 text-sm font-semibold text-[var(--c97-surface)] hover:border-[color-mix(in_srgb,var(--c97-negative)_80%,var(--c97-ink))] hover:bg-[color-mix(in_srgb,var(--c97-negative)_80%,var(--c97-ink))]"
               >
                 Confirm reset
               </button>

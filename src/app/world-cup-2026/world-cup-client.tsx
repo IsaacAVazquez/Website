@@ -1,8 +1,8 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useMemo } from "react";
 import { useSearchParams } from "next/navigation";
-import { CalendarDays, Clock, Flag, Medal, X } from "lucide-react";
+import { CalendarDays, Flag, Medal, X } from "lucide-react";
 import {
   CrestAvatar,
   EmptyPanel,
@@ -93,41 +93,6 @@ function formatTournamentWindow(start: string, end: string): string {
     timeZone: DATE_ONLY_TIME_ZONE,
   }).format(startDate);
   return `${startLabel} to ${formatLongDate(end)}`;
-}
-
-const DAY_MS = 24 * 60 * 60 * 1000;
-
-/**
- * Whole days between now and kickoff, computed after mount so the count never
- * triggers a server/client hydration mismatch. Returns null until mounted and 0
- * once the tournament has started. The 2026 tournament finished on July 19, so
- * this stays null on this route and the countdown it feeds renders nothing.
- */
-function useDaysUntilKickoff(startDate: string): number | null {
-  const [days, setDays] = useState<number | null>(null);
-  useEffect(() => {
-    const start = new Date(`${startDate}T00:00:00.000Z`).getTime();
-    if (Number.isNaN(start)) return;
-    const update = () => {
-      const diff = start - Date.now();
-      setDays(diff > 0 ? Math.ceil(diff / DAY_MS) : 0);
-    };
-    update();
-    const timer = window.setInterval(update, 60 * 60 * 1000);
-    return () => window.clearInterval(timer);
-  }, [startDate]);
-  return days;
-}
-
-function KickoffCountdown({ startDate }: { startDate: string }) {
-  const days = useDaysUntilKickoff(startDate);
-  if (days === null || days <= 0) return null;
-  return (
-    <span className="c97-chip" style={{ gap: "var(--c97-sp-1)" }}>
-      <Clock className="h-3.5 w-3.5" aria-hidden="true" />
-      {days === 1 ? "Kicks off tomorrow" : `Kicks off in ${days} days`}
-    </span>
-  );
 }
 
 export function WorldCupClient({
@@ -268,10 +233,7 @@ export function WorldCupClient({
 
       <section className="c97-band c97-sheet" data-c97-surface="paper" data-seam="torn">
         <div className="c97-shell">
-          <div className="flex flex-wrap items-center justify-between gap-3">
-            <h2 className="c97-poster-sm">Explore the tournament</h2>
-            <KickoffCountdown startDate={tournament.startDate} />
-          </div>
+          <h2 className="c97-poster-sm">Explore the tournament</h2>
 
           <div className="c97-segmented" style={{ marginTop: "var(--c97-sp-2)" }} role="tablist" aria-label="World Cup view switcher">
             {VIEW_OPTIONS.map((option) => (
@@ -344,30 +306,32 @@ export function WorldCupClient({
         <section className="c97-band c97-sheet" data-c97-surface="bone" data-seam="deckle">
           <div className="c97-shell">
             <h2 className="c97-poster-sm mb-5">Golden boot race</h2>
-            <table className="c97-table c97-wc-table" aria-label="Top scorers">
-              <thead>
-                <tr>
-                  <th scope="col">#</th>
-                  <th scope="col">Player</th>
-                  <th scope="col">Team</th>
-                  <th scope="col" data-align="end">Goals</th>
-                  <th scope="col" data-align="end" className="hidden sm:table-cell">Assists</th>
-                </tr>
-              </thead>
-              <tbody>
-                {scorers.slice(0, 10).map((scorer) => (
-                  <tr key={`${scorer.rank}-${scorer.name}`}>
-                    <td className="c97-mono">{scorer.rank}</td>
-                    <td className="c97-serif">{scorer.name}</td>
-                    <td className="c97-mono">{scorer.teamCode}</td>
-                    <td className="c97-mono" data-align="end">{scorer.goals}</td>
-                    <td className="c97-mono hidden sm:table-cell" data-align="end">
-                      {scorer.assists}
-                    </td>
+            <div className="overflow-x-auto" role="region" aria-label="Top scorers (scrollable)" tabIndex={0}>
+              <table className="c97-table c97-wc-table" aria-label="Top scorers">
+                <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Player</th>
+                    <th scope="col">Team</th>
+                    <th scope="col" data-align="end">Goals</th>
+                    <th scope="col" data-align="end" className="hidden sm:table-cell">Assists</th>
                   </tr>
-                ))}
-              </tbody>
-            </table>
+                </thead>
+                <tbody>
+                  {scorers.slice(0, 10).map((scorer) => (
+                    <tr key={`${scorer.rank}-${scorer.name}`}>
+                      <td className="c97-mono">{scorer.rank}</td>
+                      <td className="c97-serif">{scorer.name}</td>
+                      <td className="c97-mono">{scorer.teamCode}</td>
+                      <td className="c97-mono" data-align="end">{scorer.goals}</td>
+                      <td className="c97-mono hidden sm:table-cell" data-align="end">
+                        {scorer.assists}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
           </div>
         </section>
       )}
@@ -531,8 +495,10 @@ function GroupTable({
                       className="c97-wc-zone-dot"
                       style={{ backgroundColor: zoneColor }}
                       title={zoneTitle}
+                      aria-hidden="true"
                     />
                     <span className="c97-mono">{row.rank}</span>
+                    {zoneTitle ? <span className="sr-only">{zoneTitle}</span> : null}
                   </span>
                 </td>
                 <td>
@@ -631,8 +597,10 @@ function ThirdPlaceRace({
                               : "var(--c97-rule)",
                           }}
                           title={row.qualifies ? "In a qualifying place" : "Outside the cut"}
+                          aria-hidden="true"
                         />
                         <span className="c97-mono">{row.rank}</span>
+                        <span className="sr-only">{row.qualifies ? "In a qualifying place" : "Outside the cut"}</span>
                       </span>
                     </td>
                     <td>

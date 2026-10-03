@@ -362,6 +362,7 @@
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--c97-label);
+  /* On Leaflet's own pane scale, level with the marker pane, so it covers the tiles while the map loads. */
   z-index: 600;
 }
 
@@ -472,7 +473,9 @@
   cursor: pointer;
   transition: transform 160ms ease;
 }
-.fm-ticket:hover { transform: translateY(-2px); }
+.fm-ticket:hover,
+.fm-ticket:focus-visible { transform: translateY(-2px); }
+.fm-ticket:active { transform: translateY(0); }
 .fm-ticket[aria-pressed="true"] {
   background: color-mix(in srgb, var(--fm-accent) 12%, var(--c97-surface));
   border-color: color-mix(in srgb, var(--fm-accent) 45%, var(--c97-rule));
@@ -616,5 +619,6 @@
 
 @media (prefers-reduced-motion: reduce) {
   .fm-ticker-track { animation: none; transform: none; }
-  .fm-ticket:hover { transform: none; }
+  .fm-ticket:hover,
+  .fm-ticket:focus-visible { transform: none; }
 }

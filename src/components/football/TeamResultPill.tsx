@@ -1,5 +1,7 @@
 import { cn } from "@/lib/cn";
 
+const RESULT_LABEL = { W: "Win", D: "Draw", L: "Loss" } as const;
+
 export function TeamResultPill({ result }: { result: "W" | "D" | "L" }) {
   const colorClass =
     result === "W"
@@ -15,7 +17,8 @@ export function TeamResultPill({ result }: { result: "W" | "D" | "L" }) {
         colorClass
       )}
     >
-      {result}
+      <span aria-hidden="true">{result}</span>
+      <span className="sr-only">{RESULT_LABEL[result]}</span>
     </span>
   );
 }

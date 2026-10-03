@@ -698,7 +698,7 @@ export function BestBallClient({ initialState }: BestBallClientProps) {
 
   return (
     <section
-      className="c97-dash relative overflow-x-clip min-h-screen"
+      className="c97-dash relative overflow-x-clip min-h-dvh"
       aria-label="Best ball rankings and strategy"
       data-testid="best-ball-shell"
     >
@@ -1029,16 +1029,11 @@ export function BestBallClient({ initialState }: BestBallClientProps) {
             </button>
           </div>
         ) : isLoading ? (
-          <div className="grid gap-2" aria-label="Loading rankings">
-            {Array.from({ length: 10 }).map((_, index) => (
-              <div
-                key={index}
-                className="h-11 border motion-safe:animate-pulse"
-                style={{
-                  borderColor: "var(--c97-rule)",
-                  background: "var(--c97-field)",
-                }}
-              />
+          // The count line in the sticky bar is the live region that says
+          // "Loading players", so the placeholder rows stay silent.
+          <div className="grid gap-2" aria-hidden="true">
+            {Array.from({ length: 10 }, (_, index) => (
+              <div key={`best-ball-loading-${index}`} className="c97-skeleton" style={{ height: 44 }} />
             ))}
           </div>
         ) : visiblePlayers.length > 0 ? (

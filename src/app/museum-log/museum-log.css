@@ -87,7 +87,8 @@
   text-align: left;
 }
 
-.c97-stub-trigger:hover .c97-stub {
+.c97-stub-trigger:hover .c97-stub,
+.c97-stub-trigger:focus-visible .c97-stub {
   border-color: var(--c97-ink);
 }
 
@@ -96,7 +97,8 @@
   border: 1px solid transparent;
 }
 
-.c97-museum-list-card:hover {
+.c97-museum-list-card:hover,
+.c97-museum-list-card:focus-visible {
   border-color: var(--c97-ink);
 }
 
@@ -166,6 +168,10 @@
 
 .c97-museum-action:not([aria-pressed="true"]):hover {
   border-color: var(--c97-ink);
+}
+
+.c97-museum-action:active {
+  transform: translateY(1px);
 }
 
 .c97-museum-action[aria-pressed="true"] {

@@ -189,8 +189,7 @@ export function PlayerDetailDrawer({ player, publishedRank, publishedRankLabel =
                 type="button"
                 onClick={onClose}
                 aria-label="Close"
-                className="inline-flex min-h-touch min-w-touch shrink-0 items-center justify-center border"
-                style={{ borderColor: "var(--c97-rule)", background: "var(--c97-surface)" }}
+                className="inline-flex min-h-touch min-w-touch shrink-0 items-center justify-center border border-[var(--c97-rule)] bg-[var(--c97-surface)] hover:border-[var(--c97-ink)]"
               >
                 <X size={18} aria-hidden="true" />
               </button>
@@ -202,12 +201,7 @@ export function PlayerDetailDrawer({ player, publishedRank, publishedRankLabel =
                 <button
                   type="button"
                   onClick={() => onLogPick(player)}
-                  className="inline-flex min-h-touch flex-1 items-center justify-center gap-2 border px-4 text-sm font-semibold"
-                  style={{
-                    borderColor: "var(--c97-ink)",
-                    background: "var(--c97-ink)",
-                    color: "var(--c97-surface)",
-                  }}
+                  className="inline-flex min-h-touch flex-1 items-center justify-center gap-2 border px-4 text-sm font-semibold border-[var(--c97-ink)] bg-[var(--c97-ink)] text-[var(--c97-surface)] hover:border-[var(--c97-ink-2)] hover:bg-[var(--c97-ink-2)]"
                 >
                   Log this pick
                 </button>
@@ -216,16 +210,11 @@ export function PlayerDetailDrawer({ player, publishedRank, publishedRankLabel =
                 type="button"
                 onClick={() => queue.toggle(player.id)}
                 aria-pressed={isQueued}
-                className="inline-flex min-h-touch flex-1 items-center justify-center gap-2 border px-4 text-sm font-semibold"
-                style={
+                className={`inline-flex min-h-touch flex-1 items-center justify-center gap-2 border px-4 text-sm font-semibold text-[var(--c97-ink)] ${
                   isQueued
-                    ? {
-                        borderColor: "color-mix(in srgb, var(--c97-accent) 60%, var(--c97-rule))",
-                        background: "color-mix(in srgb, var(--c97-accent) 30%, var(--c97-surface))",
-                        color: "var(--c97-ink)",
-                      }
-                    : { borderColor: "var(--c97-rule)", background: "var(--c97-surface)", color: "var(--c97-ink)" }
-                }
+                    ? "border-[color-mix(in_srgb,var(--c97-accent)_60%,var(--c97-rule))] bg-[color-mix(in_srgb,var(--c97-accent)_30%,var(--c97-surface))] hover:border-[var(--c97-accent)]"
+                    : "border-[var(--c97-rule)] bg-[var(--c97-surface)] hover:border-[var(--c97-ink)]"
+                }`}
               >
                 <Star size={16} fill={isQueued ? "currentColor" : "none"} aria-hidden="true" />
                 {isQueued ? "Queued" : "Add to queue"}
@@ -237,14 +226,13 @@ export function PlayerDetailDrawer({ player, publishedRank, publishedRankLabel =
                 aria-pressed={inCompare}
                 disabled={compareDisabled}
                 title={compareDisabled ? `Compare holds ${compare.limit} players` : undefined}
-                className="min-h-touch inline-flex flex-1 items-center justify-center gap-2 border px-4 text-sm font-semibold disabled:cursor-not-allowed disabled:border-dashed"
-                style={
+                className={`min-h-touch inline-flex flex-1 items-center justify-center gap-2 border px-4 text-sm font-semibold disabled:cursor-not-allowed disabled:border-dashed ${
                   compareDisabled
-                    ? { borderColor: "var(--c97-ink-2)", background: "none", color: "var(--c97-ink-2)" }
+                    ? "border-[var(--c97-ink-2)] bg-transparent text-[var(--c97-ink-2)]"
                     : inCompare
-                      ? { borderColor: "var(--c97-ink)", background: "var(--c97-ink)", color: "var(--c97-surface)" }
-                      : { borderColor: "var(--c97-rule)", background: "var(--c97-surface)", color: "var(--c97-ink)" }
-                }
+                      ? "border-[var(--c97-ink)] bg-[var(--c97-ink)] text-[var(--c97-surface)] hover:border-[var(--c97-ink-2)] hover:bg-[var(--c97-ink-2)]"
+                      : "border-[var(--c97-rule)] bg-[var(--c97-surface)] text-[var(--c97-ink)] hover:border-[var(--c97-ink)]"
+                }`}
               >
                 <GitCompareArrows size={16} aria-hidden="true" />
                 {inCompare ? "Comparing" : "Compare"}

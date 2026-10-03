@@ -98,7 +98,7 @@ function PlatformBoard({
           </p>
         ) : (
           <>
-            <h2 className="c97-poster-sm mb-2">{station.name}</h2>
+            <h2 className="c97-poster-sm" style={{ marginBottom: "var(--c97-sp-1)" }}>{station.name}</h2>
             {departuresStatus !== "fresh" ? (
               <p className="c97-transit-board-status" role="status">
                 {departuresStatus === "stale-fallback"
@@ -115,7 +115,7 @@ function PlatformBoard({
 
             {error ? (
               <div role="alert">
-                <p className="mb-2 text-sm leading-6" style={{ color: "var(--c97-negative)" }}>
+                <p className="text-sm leading-6" style={{ marginBottom: "var(--c97-sp-1)", color: "var(--c97-negative)" }}>
                   {error}
                 </p>
                 <button type="button" className="c97-btn-ghost" onClick={onRetry}>

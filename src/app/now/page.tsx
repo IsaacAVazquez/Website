@@ -117,6 +117,7 @@ export default function NowPage() {
               className="c97-link"
             >
               /now page movement
+              <span className="sr-only"> (opens in a new tab)</span>
             </a>
             .
           </p>

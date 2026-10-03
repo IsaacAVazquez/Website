@@ -223,7 +223,7 @@ export function GitHubTrendingClient({ initialState, snapshot }: GitHubTrendingC
             </p>
           ) : null}
           <h2 className="c97-poster-sm">The board</h2>
-          <div className="flex flex-wrap items-center justify-between gap-4">
+          <div className="flex flex-wrap items-center justify-between" style={{ gap: "var(--c97-sp-2)" }}>
             <div role="group" aria-label="Trend segment type" className="c97-segmented">
               {GITHUB_TRENDING_KIND_OPTIONS.map((kind) => {
                 const isActive = resolvedState.kind === kind;
@@ -244,12 +244,12 @@ export function GitHubTrendingClient({ initialState, snapshot }: GitHubTrendingC
               })}
             </div>
 
-            <div className="flex flex-wrap items-center gap-3">
+            <div className="flex flex-wrap items-center" style={{ gap: "var(--c97-sp-1)" }}>
               <span className="c97-kicker" style={{ marginBottom: 0 }}>
                 <ArrowDownUp aria-hidden="true" size={14} style={{ display: "inline", marginRight: "4px" }} />
                 Sort
               </span>
-              <div className="c97-segmented">
+              <div role="group" aria-label="Sort repositories" className="c97-segmented">
                 {GITHUB_TRENDING_SORT_OPTIONS.map((sort) => (
                   <button
                     key={sort}
@@ -265,7 +265,7 @@ export function GitHubTrendingClient({ initialState, snapshot }: GitHubTrendingC
             </div>
           </div>
 
-          <div className="c97-segmented">
+          <div role="group" aria-label="Filter by segment" className="c97-segmented">
             <button
               type="button"
               aria-pressed={resolvedState.segment === "all"}
@@ -291,7 +291,7 @@ export function GitHubTrendingClient({ initialState, snapshot }: GitHubTrendingC
 
       <section className="c97-band c97-sheet" data-c97-surface="bone" data-seam="deckle">
         <div className="c97-shell">
-          <div className="grid gap-6 xl:grid-cols-[minmax(0,1fr)_340px]">
+          <div className="grid xl:grid-cols-[minmax(0,1fr)_340px]" style={{ gap: "var(--c97-sp-3)" }}>
             {filteredRepos.length === 0 ? (
               <EmptyPanel
                 title="No repositories match this filter"
@@ -335,7 +335,7 @@ function RepositoryTable({
   onToggleRepo,
 }: RepositoryTableProps) {
   return (
-    <div className="overflow-x-auto">
+    <div className="overflow-x-auto" role="region" aria-label="Repository table (scrolls sideways)" tabIndex={0}>
       <table className="c97-table" style={{ minWidth: "820px" }}>
         <caption className="sr-only">
           The most starred active repositories I track, with each one&apos;s star gain over
@@ -400,7 +400,7 @@ function RepoRow({ repo, rank, isExpanded, matchedSegments, windowDays, onToggle
           semantics and nested the Repo link inside an interactive element. */}
       <tr onClick={onToggle} style={{ cursor: "pointer" }}>
         <td>
-          <div className="flex gap-3">
+          <div className="flex" style={{ gap: "var(--c97-sp-1)" }}>
             <span
               className="c97-mono"
               style={{ color: "var(--c97-ink-2)", fontSize: "var(--c97-fs-small)" }}
@@ -417,7 +417,7 @@ function RepoRow({ repo, rank, isExpanded, matchedSegments, windowDays, onToggle
                     event.stopPropagation();
                     onToggle();
                   }}
-                  className="c97-serif text-left"
+                  className="c97-serif inline-flex min-h-[44px] items-center text-left"
                   style={{ fontWeight: 600, color: "var(--c97-ink)" }}
                 >
                   {repo.fullName}
@@ -452,8 +452,8 @@ function RepoRow({ repo, rank, isExpanded, matchedSegments, windowDays, onToggle
             target="_blank"
             rel="noreferrer"
             onClick={(event) => event.stopPropagation()}
-            className="inline-flex min-h-[44px] items-center gap-2"
-            style={{ color: "var(--c97-ink)" }}
+            className="inline-flex min-h-[44px] items-center"
+            style={{ gap: "var(--c97-sp-1)", color: "var(--c97-ink)" }}
           >
             Repo
             <ExternalLink aria-hidden="true" size={14} />
@@ -463,16 +463,16 @@ function RepoRow({ repo, rank, isExpanded, matchedSegments, windowDays, onToggle
       {isExpanded ? (
         <tr id={detailId}>
           <td colSpan={6}>
-            <div className="grid gap-5 lg:grid-cols-[minmax(0,1.35fr)_minmax(260px,0.65fr)]" style={{ padding: "var(--c97-sp-3) 0" }}>
+            <div className="grid lg:grid-cols-[minmax(0,1.35fr)_minmax(260px,0.65fr)]" style={{ gap: "var(--c97-sp-2)", padding: "var(--c97-sp-3) 0" }}>
               <div className="space-y-3">
-                <div className="flex flex-wrap gap-2">
+                <div className="flex flex-wrap" style={{ gap: "var(--c97-sp-1)" }}>
                   {matchedSegments.map((segment) => (
                     <span key={segment.key} className="c97-chip">
                       {segment.label}
                     </span>
                   ))}
                 </div>
-                <div className="flex flex-wrap gap-2">
+                <div className="flex flex-wrap" style={{ gap: "var(--c97-sp-1)" }}>
                   {repo.topics.slice(0, 10).map((topic) => (
                     <span key={topic} className="c97-chip">
                       {topic}
@@ -480,7 +480,7 @@ function RepoRow({ repo, rank, isExpanded, matchedSegments, windowDays, onToggle
                   ))}
                 </div>
               </div>
-              <dl className="grid grid-cols-2 gap-x-5 gap-y-3">
+              <dl className="grid grid-cols-2" style={{ rowGap: "var(--c97-sp-1)", columnGap: "var(--c97-sp-2)" }}>
                 <div>
                   <dt className="c97-stat-label">Forks</dt>
                   <dd className="c97-mono inline-flex items-center gap-1" style={{ color: "var(--c97-ink)" }}>
@@ -527,7 +527,7 @@ function SegmentSummary({ segments, repositories, selectedSegment, onSelectSegme
 
   return (
     <aside className="c97-panel" aria-labelledby="github-segment-summary-heading">
-      <div className="mb-4 flex items-center justify-between gap-3">
+      <div className="flex items-center justify-between" style={{ marginBottom: "var(--c97-sp-2)", gap: "var(--c97-sp-1)" }}>
         <div>
           <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-1)" }}>Segments</p>
           <h2 id="github-segment-summary-heading" className="c97-serif" style={{ fontSize: "var(--c97-fs-h3)" }}>
@@ -546,15 +546,15 @@ function SegmentSummary({ segments, repositories, selectedSegment, onSelectSegme
               type="button"
               aria-pressed={isActive}
               onClick={() => onSelectSegment(segment.key)}
-              className={`block min-h-[64px] w-full text-left ${isActive ? "c97-offset" : ""}`}
+              className={`c97-segment-leader block min-h-[64px] w-full text-left ${isActive ? "c97-offset" : ""}`}
               style={{
                 background: "var(--c97-surface)",
                 padding: "var(--c97-sp-2) var(--c97-sp-3)",
                 border: `1px solid ${isActive ? "var(--c97-ink)" : "var(--c97-rule)"}`,
               }}
             >
-              <span className="flex items-center justify-between gap-3">
-                <span style={{ fontWeight: 600, color: "var(--c97-ink)" }}>{segment.label}</span>
+              <span className="flex items-center justify-between" style={{ gap: "var(--c97-sp-1)" }}>
+                <span className="c97-segment-leader-name" style={{ fontWeight: 600 }}>{segment.label}</span>
                 <span className="c97-mono" style={{ color: "var(--c97-ink)" }}>
                   +{formatGitHubCompactNumber(segment.weeklyStars)}
                 </span>

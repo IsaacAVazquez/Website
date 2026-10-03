@@ -44,7 +44,7 @@ export function MissionCard({ launch, isSelected, isBusy, onSelect }: MissionCar
           : "border-[var(--c97-rule)] hover:border-[color-mix(in_srgb,var(--c97-ink)_20%,var(--c97-rule))]"
       }`}
     >
-      <div className="flex items-start justify-between gap-2.5 px-4 pb-1 pt-4">
+      <div className="flex items-start justify-between pb-1" style={{ paddingInline: "var(--c97-sp-2)", paddingTop: "var(--c97-sp-2)", gap: "var(--c97-sp-1)" }}>
         <div
           data-testid={`mission-board-visual-${launch.id}`}
           className="grid h-[62px] w-[62px] shrink-0 place-items-center overflow-hidden border border-[var(--c97-rule)]"
@@ -61,7 +61,7 @@ export function MissionCard({ launch, isSelected, isBusy, onSelect }: MissionCar
         </span>
       </div>
 
-      <div className="flex flex-col gap-1 border-b border-[color-mix(in_srgb,var(--c97-rule)_55%,transparent)] px-4 pb-3.5 pt-2.5">
+      <div className="flex flex-col gap-1 border-b border-[color-mix(in_srgb,var(--c97-rule)_55%,transparent)]" style={{ paddingInline: "var(--c97-sp-2)", paddingTop: "var(--c97-sp-1)", paddingBottom: "var(--c97-sp-2)" }}>
         <span className="font-mono text-3xs uppercase tracking-[0.1em] text-[var(--c97-ink-2)]">
           Flight #{launch.flightNumber} · {launch.rocketName ?? "Rocket TBD"}
         </span>
@@ -72,7 +72,7 @@ export function MissionCard({ launch, isSelected, isBusy, onSelect }: MissionCar
 
       <div className="grid grid-cols-2 gap-px bg-[color-mix(in_srgb,var(--c97-rule)_55%,transparent)]">
         {metaCells.map((cell) => (
-          <div key={cell.key} className="min-w-0 bg-[var(--c97-surface)] px-4 py-2.5">
+          <div key={cell.key} className="min-w-0 bg-[var(--c97-surface)]" style={{ paddingInline: "var(--c97-sp-2)", paddingBlock: "var(--c97-sp-1)" }}>
             <div className="font-mono text-3xs uppercase tracking-[0.1em] text-[var(--c97-ink-2)]">
               {cell.key}
             </div>
@@ -83,7 +83,7 @@ export function MissionCard({ launch, isSelected, isBusy, onSelect }: MissionCar
         ))}
       </div>
 
-      <div className="mt-auto flex items-center justify-between gap-2 px-4 py-3 font-mono text-3xs text-[var(--c97-ink-2)]">
+      <div className="mt-auto flex items-center justify-between font-mono text-3xs text-[var(--c97-ink-2)]" style={{ paddingInline: "var(--c97-sp-2)", paddingBlock: "var(--c97-sp-1)", gap: "var(--c97-sp-1)" }}>
         <span className="truncate">{formatMissionScheduleLabel(launch)}</span>
         <span className="inline-flex shrink-0 items-center gap-1 text-[var(--c97-ink)]">
           {launch.upcoming ? "Preview" : "Debrief"}

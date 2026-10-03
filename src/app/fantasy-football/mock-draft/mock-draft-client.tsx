@@ -820,7 +820,7 @@ export function MockDraftClient() {
 
   return (
     <section
-      className="c97-dash relative overflow-x-clip min-h-screen"
+      className="c97-dash relative overflow-x-clip min-h-dvh"
       aria-label="Fantasy football mock draft"
       data-testid="fantasy-mock-draft-shell"
     >
@@ -1120,7 +1120,7 @@ export function MockDraftClient() {
                 <button
                   type="button"
                   onClick={retry}
-                  className="ml-2 inline-flex min-h-touch items-center font-semibold underline"
+                  className="ml-2 inline-flex min-h-touch items-center font-semibold underline underline-offset-4 hover:decoration-[var(--c97-accent)]"
                 >
                   Retry
                 </button>
@@ -1267,7 +1267,7 @@ export function MockDraftClient() {
                   <button
                     type="button"
                     onClick={retry}
-                    className="ml-2 inline-flex min-h-touch items-center font-semibold underline"
+                    className="ml-2 inline-flex min-h-touch items-center font-semibold underline underline-offset-4 hover:decoration-[var(--c97-accent)]"
                   >
                     Reload the board
                   </button>
@@ -1970,7 +1970,7 @@ export function MockDraftClient() {
                 <button
                   type="button"
                   onClick={retry}
-                  className="ml-2 inline-flex min-h-touch items-center font-semibold underline"
+                  className="ml-2 inline-flex min-h-touch items-center font-semibold underline underline-offset-4 hover:decoration-[var(--c97-accent)]"
                 >
                   Reload the board
                 </button>

@@ -356,9 +356,9 @@ export function PremierLeagueClient({
           <h2 className="c97-poster-sm">Detail</h2>
           <SegmentedTabs
             tabs={[
-              { id: "club", label: "Club Detail" },
+              { id: "club", label: "Club detail" },
               { id: "fixtures", label: "Fixtures" },
-              { id: "scorers", label: "Top Scorers" },
+              { id: "scorers", label: "Top scorers" },
             ]}
             activeId={activeDetailTab}
             onChange={(id) => setActiveDetailTab(id as typeof activeDetailTab)}
@@ -490,18 +490,26 @@ export function PremierLeagueClient({
                 <div>
                   <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-1)" }}>Recent slate</p>
                   <h3 className="c97-h3 c97-serif" style={{ marginBottom: "var(--c97-sp-2)" }}>Latest results</h3>
-                  <FixtureLedgerSection
-                    groups={groupFixturesByMatchday(summary.recentFixtures)}
-                    onOpenTeam={handleTeamChange}
-                  />
+                  {summary.recentFixtures.length > 0 ? (
+                    <FixtureLedgerSection
+                      groups={groupFixturesByMatchday(summary.recentFixtures)}
+                      onOpenTeam={handleTeamChange}
+                    />
+                  ) : (
+                    <p className="c97-prose">No results are in this snapshot yet.</p>
+                  )}
                 </div>
                 <div>
                   <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-1)" }}>Next up</p>
                   <h3 className="c97-h3 c97-serif" style={{ marginBottom: "var(--c97-sp-2)" }}>Upcoming fixtures</h3>
-                  <FixtureLedgerSection
-                    groups={groupFixturesByMatchday(summary.upcomingFixtures, { suffix: "upcoming" })}
-                    onOpenTeam={handleTeamChange}
-                  />
+                  {summary.upcomingFixtures.length > 0 ? (
+                    <FixtureLedgerSection
+                      groups={groupFixturesByMatchday(summary.upcomingFixtures, { suffix: "upcoming" })}
+                      onOpenTeam={handleTeamChange}
+                    />
+                  ) : (
+                    <p className="c97-prose">No upcoming fixtures are in this snapshot yet.</p>
+                  )}
                 </div>
               </div>
             )}
@@ -519,6 +527,7 @@ export function PremierLeagueClient({
                       style={{ gap: "var(--c97-sp-1)" }}
                     >
                       Official
+                      <span className="sr-only"> Premier League goals leaderboard (opens in a new tab)</span>
                       <ExternalLink className="h-4 w-4" />
                     </a>
                   </div>

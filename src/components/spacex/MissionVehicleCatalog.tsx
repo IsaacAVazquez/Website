@@ -70,11 +70,11 @@ export function MissionVehicleCatalog({ launchDetails }: MissionVehicleCatalogPr
 
   if (rockets.length === 0) {
     return (
-      <div className="border border-dashed border-[var(--c97-rule)] bg-[var(--c97-surface)] px-5 py-10 text-center">
+      <div className="border border-dashed border-[var(--c97-rule)] bg-[var(--c97-surface)] text-center" style={{ paddingInline: "var(--c97-sp-2)", paddingBlock: "var(--c97-sp-4)" }}>
         <p className="text-lg font-semibold text-[var(--c97-ink)]">
           No vehicle records are hydrated yet.
         </p>
-        <p className="mx-auto mt-2 max-w-[52ch] text-sm leading-6 text-[var(--c97-ink-2)]">
+        <p className="mx-auto max-w-[52ch] text-sm leading-6 text-[var(--c97-ink-2)]" style={{ marginTop: "var(--c97-sp-1)" }}>
           The snapshot only carries full rocket specs for the handful of missions it hydrates
           detail for on each refresh. Check back after the next refresh.
         </p>
@@ -95,15 +95,15 @@ export function MissionVehicleCatalog({ launchDetails }: MissionVehicleCatalogPr
   ];
 
   return (
-    <div className="grid gap-4 lg:grid-cols-[minmax(0,1fr)_260px] lg:items-start">
-      <div className="flex flex-col gap-4">
+    <div className="grid lg:grid-cols-[minmax(0,1fr)_260px] lg:items-start" style={{ gap: "var(--c97-sp-2)" }}>
+      <div className="flex flex-col" style={{ gap: "var(--c97-sp-2)" }}>
         {rockets.map((rocket) => (
           <article
             key={rocket.name}
             className="overflow-hidden border border-[var(--c97-rule)] bg-[var(--c97-surface)]"
           >
-            <div className="flex items-center gap-3.5 border-b border-[var(--c97-rule)] px-4 py-3.5 sm:px-5">
-              <span className="inline-flex h-10 min-w-[44px] shrink-0 items-center justify-center border border-[var(--c97-rule)] bg-[var(--c97-field)] px-2.5 font-mono text-sm text-[var(--c97-ink)]">
+            <div className="flex items-center border-b border-[var(--c97-rule)] px-4 py-3.5 sm:px-5" style={{ gap: "var(--c97-sp-2)" }}>
+              <span className="inline-flex h-10 min-w-[44px] shrink-0 items-center justify-center border border-[var(--c97-rule)] bg-[var(--c97-field)] font-mono text-sm text-[var(--c97-ink)]" style={{ paddingInline: "var(--c97-sp-1)" }}>
                 {rocket.type ?? "—"}
               </span>
               <div className="min-w-0">
@@ -127,7 +127,7 @@ export function MissionVehicleCatalog({ launchDetails }: MissionVehicleCatalogPr
 
             <div className="grid grid-cols-2 gap-px bg-[var(--c97-rule)] sm:grid-cols-3">
               {specRows(rocket).map(([key, value]) => (
-                <div key={key} className="min-w-0 bg-[var(--c97-surface)] px-3.5 py-3">
+                <div key={key} className="min-w-0 bg-[var(--c97-surface)]" style={{ paddingInline: "var(--c97-sp-2)", paddingBlock: "var(--c97-sp-1)" }}>
                   <div className="font-mono text-3xs uppercase tracking-[0.1em] text-[var(--c97-ink-2)]">
                     {key}
                   </div>
@@ -147,16 +147,16 @@ export function MissionVehicleCatalog({ launchDetails }: MissionVehicleCatalogPr
         ))}
       </div>
 
-      <div className="border border-[var(--c97-rule)] bg-[var(--c97-surface)] p-4 lg:sticky lg:top-6">
+      <div className="border border-[var(--c97-rule)] bg-[var(--c97-surface)] lg:sticky lg:top-6" style={{ padding: "var(--c97-sp-2)" }}>
         <h3 className="font-mono text-3xs font-semibold uppercase tracking-[0.12em] text-[var(--c97-ink-2)]">
           Scale · to height
         </h3>
-        <p className="mb-4 mt-1 text-xs leading-5 text-[var(--c97-ink-2)]">
+        <p className="mt-1 text-xs leading-5 text-[var(--c97-ink-2)]" style={{ marginBottom: "var(--c97-sp-2)" }}>
           Booster + upper stage, metres. Diameter scaled for silhouette width only.
         </p>
-        <div className="flex h-[220px] items-end justify-around gap-3 border-b border-[var(--c97-rule)] pb-0.5">
+        <div className="flex h-[220px] items-end justify-around border-b border-[var(--c97-rule)] pb-0.5" style={{ gap: "var(--c97-sp-1)" }}>
           {rockets.map((rocket) => (
-            <div key={rocket.name} className="flex h-full flex-col items-center justify-end gap-2">
+            <div key={rocket.name} className="flex h-full flex-col items-center justify-end" style={{ gap: "var(--c97-sp-1)" }}>
               <VehicleSilhouette rocket={rocket} maxHeight={maxHeight} maxDiameter={maxDiameter} />
               <span className="font-mono text-3xs text-[var(--c97-ink)]">
                 {rocket.type ?? rocket.name}

@@ -415,12 +415,11 @@ function QueuedFilterButton({
       aria-pressed={pressed}
       aria-label={`Show only queued players (${count} on this board)`}
       onClick={onToggle}
-      className={`${className} inline-flex min-h-touch min-w-touch shrink-0 cursor-pointer items-center justify-center border`}
-      style={
+      className={`${className} inline-flex min-h-touch min-w-touch shrink-0 cursor-pointer items-center justify-center border ${
         pressed
-          ? { borderColor: "var(--c97-ink)", background: "var(--c97-ink)", color: "var(--c97-surface)" }
-          : { borderColor: "var(--c97-ink-2)", background: "var(--c97-field)", color: "var(--c97-ink)" }
-      }
+          ? "border-[var(--c97-ink)] bg-[var(--c97-ink)] text-[var(--c97-surface)] hover:border-[var(--c97-ink-2)] hover:bg-[var(--c97-ink-2)]"
+          : "border-[var(--c97-ink-2)] bg-[var(--c97-field)] text-[var(--c97-ink)] hover:border-[var(--c97-ink)]"
+      }`}
     >
       <Star className="h-4 w-4" fill={pressed ? "currentColor" : "none"} aria-hidden="true" />
       {count > 0 && (
@@ -808,8 +807,7 @@ function DraftPlayerDrawer({
             type="button"
             onClick={onClose}
             aria-label="Close"
-            className="inline-flex h-11 w-11 shrink-0 items-center justify-center border"
-            style={{ borderColor: "var(--c97-rule)", background: "var(--c97-surface)", color: "var(--c97-ink)" }}
+            className="inline-flex h-11 w-11 shrink-0 items-center justify-center border border-[var(--c97-rule)] bg-[var(--c97-surface)] text-[var(--c97-ink)] hover:border-[var(--c97-ink)]"
           >
             <X size={16} aria-hidden="true" />
           </button>
@@ -1771,7 +1769,7 @@ export function FantasyFootballClient({ initialState, initialSnapshot = null }: 
 
   return (
     <section
-      className="c97-dash relative overflow-x-clip min-h-screen"
+      className="c97-dash relative overflow-x-clip min-h-dvh"
       aria-label="Fantasy football rankings"
       data-testid="fantasy-football-shell"
       data-hydrated={isHydrated ? "true" : "false"}
@@ -1922,12 +1920,7 @@ export function FantasyFootballClient({ initialState, initialSnapshot = null }: 
                       setSearchQuery("");
                       updateRouteState({ query: "" });
                     }}
-                    className="inline-flex min-h-touch min-w-touch shrink-0 items-center justify-center border"
-                    style={{
-                      borderColor: "var(--c97-ink-2)",
-                      background: "var(--c97-field)",
-                      color: "var(--c97-ink)",
-                    }}
+                    className="inline-flex min-h-touch min-w-touch shrink-0 items-center justify-center border border-[var(--c97-ink-2)] bg-[var(--c97-field)] text-[var(--c97-ink)] hover:border-[var(--c97-ink)]"
                   >
                     <X className="h-4 w-4" aria-hidden="true" />
                   </button>
@@ -1937,12 +1930,7 @@ export function FantasyFootballClient({ initialState, initialSnapshot = null }: 
                   aria-label="Done searching, keep the filter"
                   onMouseDown={(event) => event.preventDefault()}
                   onClick={() => setMobileSearchOpen(false)}
-                  className="inline-flex min-h-touch shrink-0 items-center border px-3 font-mono text-3xs uppercase tracking-[0.08em]"
-                  style={{
-                    borderColor: "var(--c97-ink-2)",
-                    background: "var(--c97-field)",
-                    color: "var(--c97-ink)",
-                  }}
+                  className="inline-flex min-h-touch shrink-0 items-center border border-[var(--c97-ink-2)] bg-[var(--c97-field)] px-3 font-mono text-3xs uppercase tracking-[0.08em] text-[var(--c97-ink)] hover:border-[var(--c97-ink)]"
                 >
                   Done
                 </button>
@@ -1993,16 +1981,15 @@ export function FantasyFootballClient({ initialState, initialSnapshot = null }: 
                   }
                   onClick={() => setMobileSearchOpen(true)}
                   disabled={currentSliceUnavailable}
-                  className="inline-flex min-h-touch min-w-touch shrink-0 items-center justify-center border disabled:cursor-not-allowed disabled:border-dashed"
-                  style={
+                  className={`inline-flex min-h-touch min-w-touch shrink-0 items-center justify-center border disabled:cursor-not-allowed disabled:border-dashed ${
                     /* A collapsed search still filters the board, so the control
                        carries the active state rather than hiding the filter. */
                     currentSliceUnavailable
-                      ? { borderColor: "var(--c97-ink-2)", background: "none", color: "var(--c97-ink-2)" }
+                      ? "border-[var(--c97-ink-2)] bg-transparent text-[var(--c97-ink-2)]"
                       : searchQuery
-                        ? { borderColor: "var(--c97-ink)", background: "var(--c97-ink)", color: "var(--c97-surface)" }
-                        : { borderColor: "var(--c97-ink-2)", background: "var(--c97-field)", color: "var(--c97-ink)" }
-                  }
+                        ? "border-[var(--c97-ink)] bg-[var(--c97-ink)] text-[var(--c97-surface)] hover:border-[var(--c97-ink-2)] hover:bg-[var(--c97-ink-2)]"
+                        : "border-[var(--c97-ink-2)] bg-[var(--c97-field)] text-[var(--c97-ink)] hover:border-[var(--c97-ink)]"
+                  }`}
                 >
                   <Search className="h-4 w-4" aria-hidden="true" />
                 </button>

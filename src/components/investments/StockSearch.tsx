@@ -143,7 +143,8 @@ export function StockSearch({ value, onChange }: Props) {
       top: Math.round(rect.bottom + 6),
       left: Math.round(rect.left),
       width: Math.round(rect.width),
-      zIndex: 9999,
+      // Above the terminal's sticky cells (z-index 4 at most), below the site overlays (55 and up).
+      zIndex: 10,
     });
   }, []);
 
@@ -276,15 +277,15 @@ export function StockSearch({ value, onChange }: Props) {
           // --c97-* tokens only resolve inside it. The contents-only wrapper
           // gives the list paper tokens without painting a box of its own.
           <div data-c97-surface="paper" style={{ display: "contents" }}>
-<ul
-  id="stock-search-listbox"
-  role="listbox"
-  aria-label="Symbol suggestions"
-  style={dropdownStyle}
-className="m-0 list-none p-0 box-border overflow-hidden border border-[var(--c97-rule)] bg-[var(--c97-panel)]"
->
+            <ul
+              id="stock-search-listbox"
+              role="listbox"
+              aria-label="Symbol suggestions"
+              style={dropdownStyle}
+              className="m-0 list-none p-0 box-border overflow-hidden border border-[var(--c97-rule)] bg-[var(--c97-panel)]"
+            >
             {suggestions.map((entry, indexPosition) => (
-              <li key={entry.symbol}>
+              <li key={entry.symbol} role="presentation">
                 <button
                   id={`stock-search-option-${entry.symbol}`}
                   role="option"
@@ -312,7 +313,7 @@ className="m-0 list-none p-0 box-border overflow-hidden border border-[var(--c97
         <p className="mt-1.5 flex items-center gap-1.5 text-xs text-[var(--c97-warning)]">
           <CircleAlert size={13} />
           <span>
-            This workspace currently supports the curated research set only. Pick a ticker from the suggestions.
+            My data covers a curated set of tickers only, so pick one from the suggestions.
           </span>
         </p>
       )}

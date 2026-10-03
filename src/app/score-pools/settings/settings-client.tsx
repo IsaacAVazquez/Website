@@ -169,7 +169,7 @@ export function SettingsClient({ snapshot }: SettingsClientProps) {
   };
 
   return (
-    <section className="c97-band min-h-screen" data-c97-surface="paper">
+    <section className="c97-band min-h-dvh" data-c97-surface="paper">
       <div className="c97-shell space-y-6">
         <header>
           <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-1)" }}>Prediction Tools</p>

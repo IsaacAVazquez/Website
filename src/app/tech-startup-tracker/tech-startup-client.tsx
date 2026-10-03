@@ -218,7 +218,7 @@ export function TechStartupClient({ initialState, snapshot }: TechStartupClientP
       >
         <div className="c97-shell" style={{ display: "grid", gap: "var(--c97-sp-5)" }}>
           <h2 className="c97-poster-sm">The list</h2>
-          <div className="flex flex-wrap items-center justify-between gap-4">
+          <div className="flex flex-wrap items-center justify-between" style={{ gap: "var(--c97-sp-2)" }}>
             <div role="group" aria-label="Group startups by" className="c97-segmented">
               {TECH_STARTUP_KIND_OPTIONS.map((kind) => {
                 const isActive = resolvedState.kind === kind;
@@ -239,12 +239,12 @@ export function TechStartupClient({ initialState, snapshot }: TechStartupClientP
               })}
             </div>
 
-            <div className="flex flex-wrap items-center gap-3">
+            <div className="flex flex-wrap items-center" style={{ gap: "var(--c97-sp-1)" }}>
               <span className="c97-kicker" style={{ marginBottom: 0 }}>
                 <ArrowDownUp aria-hidden="true" size={14} style={{ display: "inline", marginRight: "4px" }} />
                 Sort
               </span>
-              <div className="c97-segmented">
+              <div role="group" aria-label="Sort startups" className="c97-segmented">
                 {TECH_STARTUP_SORT_OPTIONS.map((sort) => (
                   <button
                     key={sort}
@@ -260,7 +260,7 @@ export function TechStartupClient({ initialState, snapshot }: TechStartupClientP
             </div>
           </div>
 
-          <div className="c97-segmented">
+          <div role="group" aria-label="Filter by segment" className="c97-segmented">
             <button
               type="button"
               aria-pressed={resolvedState.segment === "all"}
@@ -286,7 +286,7 @@ export function TechStartupClient({ initialState, snapshot }: TechStartupClientP
 
       <section className="c97-band c97-sheet" data-c97-surface="paper" data-seam="deckle">
         <div className="c97-shell">
-          <div className="grid gap-6 xl:grid-cols-[minmax(0,1fr)_340px]">
+          <div className="grid xl:grid-cols-[minmax(0,1fr)_340px]" style={{ gap: "var(--c97-sp-3)" }}>
             {filteredStartups.length === 0 ? (
               <EmptyPanel
                 title="No startups match this filter"
@@ -322,7 +322,7 @@ interface StartupTableProps {
 
 function StartupTable({ startups, selectedStartupId, segmentLookup, onToggleStartup }: StartupTableProps) {
   return (
-    <div className="overflow-x-auto">
+    <div className="overflow-x-auto" role="region" aria-label="Startup table (scrolls sideways)" tabIndex={0}>
       <table className="c97-table" style={{ minWidth: "820px" }}>
         <caption className="sr-only">
           Notable tech startups with valuation, total raised, latest funding round, and
@@ -386,7 +386,7 @@ function StartupRow({ startup, rank, isExpanded, sectorLabel, stageLabel, onTogg
           interactive element. */}
       <tr onClick={onToggle} style={{ cursor: "pointer" }}>
         <td>
-          <div className="flex gap-3">
+          <div className="flex" style={{ gap: "var(--c97-sp-1)" }}>
             <span
               className="c97-mono"
               style={{ color: "var(--c97-ink-2)", fontSize: "var(--c97-fs-small)" }}
@@ -403,7 +403,7 @@ function StartupRow({ startup, rank, isExpanded, sectorLabel, stageLabel, onTogg
                     event.stopPropagation();
                     onToggle();
                   }}
-                  className="c97-serif text-left"
+                  className="c97-serif inline-flex min-h-[44px] items-center text-left"
                   style={{ fontWeight: 600, color: "var(--c97-ink)" }}
                 >
                   {startup.name}
@@ -412,7 +412,7 @@ function StartupRow({ startup, rank, isExpanded, sectorLabel, stageLabel, onTogg
               <p className="mb-0 line-clamp-2" style={{ color: "var(--c97-ink-2)", maxWidth: "44rem" }}>
                 {startup.description}
               </p>
-              <div className="mt-2 flex flex-wrap gap-1.5">
+              <div className="flex flex-wrap gap-1.5" style={{ marginTop: "var(--c97-sp-1)" }}>
                 {sectorLabel ? <span className="c97-chip">{sectorLabel}</span> : null}
                 {stageLabel ? <span className="c97-chip">{stageLabel}</span> : null}
               </div>
@@ -443,8 +443,8 @@ function StartupRow({ startup, rank, isExpanded, sectorLabel, stageLabel, onTogg
             target="_blank"
             rel="noreferrer"
             onClick={(event) => event.stopPropagation()}
-            className="inline-flex min-h-[44px] items-center gap-2"
-            style={{ color: "var(--c97-ink)" }}
+            className="inline-flex min-h-[44px] items-center"
+            style={{ gap: "var(--c97-sp-1)", color: "var(--c97-ink)" }}
           >
             Visit
             <ExternalLink aria-hidden="true" size={14} />
@@ -455,11 +455,11 @@ function StartupRow({ startup, rank, isExpanded, sectorLabel, stageLabel, onTogg
         <tr id={detailId}>
           <td colSpan={5}>
             <div
-              className="grid gap-5 lg:grid-cols-[minmax(0,1.35fr)_minmax(260px,0.65fr)]"
-              style={{ padding: "var(--c97-sp-3) 0" }}
+              className="grid lg:grid-cols-[minmax(0,1.35fr)_minmax(260px,0.65fr)]"
+              style={{ gap: "var(--c97-sp-2)", padding: "var(--c97-sp-3) 0" }}
             >
               <div className="space-y-4">
-                <dl className="grid grid-cols-2 gap-x-5 gap-y-3 sm:grid-cols-3">
+                <dl className="grid grid-cols-2 sm:grid-cols-3" style={{ rowGap: "var(--c97-sp-1)", columnGap: "var(--c97-sp-2)" }}>
                   <div>
                     <dt className="c97-stat-label inline-flex items-center gap-1">
                       <MapPin aria-hidden="true" size={12} />
@@ -493,7 +493,7 @@ function StartupRow({ startup, rank, isExpanded, sectorLabel, stageLabel, onTogg
                     <Tags aria-hidden="true" size={12} />
                     Focus
                   </p>
-                  <div className="flex flex-wrap gap-2">
+                  <div className="flex flex-wrap" style={{ gap: "var(--c97-sp-1)" }}>
                     {startup.tags.map((tag) => (
                       <span key={tag} className="c97-chip">
                         {tag}
@@ -503,7 +503,7 @@ function StartupRow({ startup, rank, isExpanded, sectorLabel, stageLabel, onTogg
                 </div>
                 <div>
                   <p className="c97-stat-label" style={{ marginBottom: "var(--c97-sp-1)" }}>Notable investors</p>
-                  <div className="flex flex-wrap gap-2">
+                  <div className="flex flex-wrap" style={{ gap: "var(--c97-sp-1)" }}>
                     {startup.notableInvestors.map((investor) => (
                       <span key={investor} className="c97-chip">
                         {investor}
@@ -512,7 +512,7 @@ function StartupRow({ startup, rank, isExpanded, sectorLabel, stageLabel, onTogg
                   </div>
                 </div>
               </div>
-              <dl className="grid grid-cols-2 gap-x-5 gap-y-3">
+              <dl className="grid grid-cols-2" style={{ rowGap: "var(--c97-sp-1)", columnGap: "var(--c97-sp-2)" }}>
                 <div>
                   <dt className="c97-stat-label">Latest round</dt>
                   <dd className="m-0 mt-1" style={{ color: "var(--c97-ink)" }}>
@@ -551,7 +551,7 @@ function StartupRow({ startup, rank, isExpanded, sectorLabel, stageLabel, onTogg
                         href={startup.lastRound.sourceUrl}
                         target="_blank"
                         rel="noreferrer"
-                        className="c97-link inline-flex min-h-[44px] items-center gap-2"
+                        className="c97-link inline-flex min-h-[44px] items-center" style={{ gap: "var(--c97-sp-1)" }}
                       >
                         {new URL(startup.lastRound.sourceUrl).hostname.replace(/^www\./, "")}
                         <ExternalLink aria-hidden="true" size={14} />
@@ -580,7 +580,7 @@ function SegmentSummary({ segments, startups, selectedSegment, onSelectSegment }
 
   return (
     <aside className="c97-panel" aria-labelledby="tech-startup-segment-heading">
-      <div className="mb-4 flex items-center justify-between gap-3">
+      <div className="flex items-center justify-between" style={{ marginBottom: "var(--c97-sp-2)", gap: "var(--c97-sp-1)" }}>
         <div>
           <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-1)" }}>Segments</p>
           <h2
@@ -603,15 +603,15 @@ function SegmentSummary({ segments, startups, selectedSegment, onSelectSegment }
               type="button"
               aria-pressed={isActive}
               onClick={() => onSelectSegment(segment.key)}
-              className={`block min-h-[64px] w-full text-left ${isActive ? "c97-offset" : ""}`}
+              className={`c97-segment-leader block min-h-[64px] w-full text-left ${isActive ? "c97-offset" : ""}`}
               style={{
                 background: "var(--c97-surface)",
                 padding: "var(--c97-sp-2) var(--c97-sp-3)",
                 border: `1px solid ${isActive ? "var(--c97-ink)" : "var(--c97-rule)"}`,
               }}
             >
-              <span className="flex items-center justify-between gap-3">
-                <span style={{ fontWeight: 600, color: "var(--c97-ink)" }}>{segment.label}</span>
+              <span className="flex items-center justify-between" style={{ gap: "var(--c97-sp-1)" }}>
+                <span className="c97-segment-leader-name" style={{ fontWeight: 600 }}>{segment.label}</span>
                 <span className="c97-mono" style={{ color: "var(--c97-ink)" }}>
                   {formatUsdCompact(segment.totalValuation)}
                 </span>

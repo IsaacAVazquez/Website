@@ -127,20 +127,10 @@ export function Catalog97Portfolio({ projects }: Catalog97PortfolioProps) {
         data-c97-surface="paper"
         style={{ paddingBottom: "var(--c97-sp-4)" }}
       >
-        <div
-          className="c97-shell"
-          style={{
-            display: "grid",
-            gridTemplateColumns: "1fr auto",
-            gap: "var(--c97-sp-5)",
-            alignItems: "end",
-          }}
-        >
-          <div>
-            <h1 className="c97-poster">
-              Everything I&rsquo;ve shipped, and the decisions behind it.
-            </h1>
-          </div>
+        <div className="c97-shell">
+          <h1 className="c97-poster">
+            Everything I&rsquo;ve shipped, and the decisions behind it.
+          </h1>
         </div>
       </section>
 
@@ -235,6 +225,10 @@ export function Catalog97Portfolio({ projects }: Catalog97PortfolioProps) {
               );
             })}
           </div>
+          {/* Read out when a search or filter changes the list. */}
+          <p className="sr-only" role="status">
+            {filtered.length} of {projects.length} projects shown
+          </p>
         </div>
       </section>
 

@@ -212,8 +212,7 @@ export function CompareModal({
             type="button"
             onClick={onClose}
             aria-label="Close"
-            className="inline-flex min-h-touch min-w-touch items-center justify-center border"
-            style={{ borderColor: "var(--c97-rule)", background: "var(--c97-surface)" }}
+            className="inline-flex min-h-touch min-w-touch items-center justify-center border border-[var(--c97-rule)] bg-[var(--c97-surface)] hover:border-[var(--c97-ink)]"
           >
             <X size={18} aria-hidden="true" />
           </button>
@@ -290,8 +289,7 @@ export function CompareModal({
                           type="button"
                           onClick={() => onRemove(player.id)}
                           aria-label={`Remove ${player.name} from compare`}
-                          className="inline-flex min-h-touch min-w-touch items-center justify-center border"
-                          style={{ borderColor: "var(--c97-rule)" }}
+                          className="inline-flex min-h-touch min-w-touch items-center justify-center border border-[var(--c97-rule)] hover:border-[var(--c97-ink)]"
                         >
                           <X size={12} aria-hidden="true" />
                         </button>

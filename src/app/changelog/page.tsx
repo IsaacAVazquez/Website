@@ -58,9 +58,9 @@ export default async function ChangelogPage() {
               maxWidth: "var(--c97-measure-wide)",
             }}
           >
-            A running log of changes to this site. Features, fixes, writing,
-            and the occasional cleanup. Built in public on purpose. For the
-            current focus, see the{" "}
+            A running log of changes to this site, from features and fixes to
+            writing and the occasional cleanup, and I keep it in public on
+            purpose. For the current focus, see the{" "}
             <Link href="/now" className="c97-link">
               /now page
             </Link>

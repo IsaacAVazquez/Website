@@ -90,7 +90,7 @@ export function RedraftDecisionPanel({
                   <button
                     type="button"
                     onClick={() => onOpenPlayer(best.player)}
-                    className="-mx-1 mt-1.5 inline-flex min-h-touch max-w-full items-center gap-2 px-1 text-left"
+                    className="-mx-1 mt-1.5 inline-flex min-h-touch max-w-full items-center gap-2 px-1 text-left hover:underline hover:decoration-[var(--c97-accent)] hover:underline-offset-4"
                     aria-label={`Open ${best.player.name} detail`}
                   >
                     <span className="truncate text-sm font-semibold tracking-[-0.01em]">

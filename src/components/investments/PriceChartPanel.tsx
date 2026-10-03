@@ -421,7 +421,7 @@ export function PriceChartPanel({ symbol, costBasis = null }: Props) {
     <TerminalPanel padding="sm" ariaLabel="Price chart">
       <div className="mb-5 flex flex-wrap items-center justify-between gap-3">
         <div>
-          <h3 className="text-sm font-semibold text-[var(--c97-ink)]">Price History</h3>
+          <h3 className="text-sm font-semibold text-[var(--c97-ink)]">Price history</h3>
           <p className="mt-1 text-xs text-[var(--c97-label)]">
             Trend and volume from the curated research snapshot.
           </p>

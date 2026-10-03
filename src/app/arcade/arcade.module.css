@@ -254,6 +254,14 @@
 
 .cell:disabled { cursor: default; }
 
+/* The site's focus ring reads Catalog 97 tokens this cabinet does not set, so it draws its own. */
+.cell:focus-visible,
+.btn:focus-visible,
+.backNote a:focus-visible {
+  outline: 2px solid var(--ph-cyan);
+  outline-offset: 3px;
+}
+
 .cell .index {
   position: absolute;
   top: 4px;

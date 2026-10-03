@@ -412,7 +412,12 @@ function AssetsTable({
   }
 
   return (
-    <div className="c97-ff1-table-scroll">
+    <div
+      className="c97-ff1-table-scroll"
+      role="region"
+      aria-label="Formula 1 fantasy asset board"
+      tabIndex={0}
+    >
       <table className="c97-table" style={{ minWidth: "760px" }}>
         <thead>
           <tr>

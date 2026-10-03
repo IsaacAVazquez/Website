@@ -32,6 +32,7 @@ function GarageBox({ slot, locked }: { slot: GarageSlot; locked: boolean }) {
           {locked ? (
             <span className="c97-ff1-box-lock" title={`${asset.name} is locked`}>
               <Lock size={12} aria-hidden="true" />
+              <span className="sr-only">Locked</span>
             </span>
           ) : null}
         </>

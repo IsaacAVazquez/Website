@@ -932,6 +932,7 @@ body {
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--c97-label);
+  font-variant-numeric: tabular-nums;
   margin: 0;
 }
 
@@ -1281,6 +1282,12 @@ body {
 
 .c97-btn-ghost:hover {
   color: var(--c97-ink);
+}
+
+/* A ghost used as a toggle shows its pressed state in ink with a heavier rule. */
+.c97-btn-ghost[aria-pressed="true"] {
+  color: var(--c97-ink);
+  text-decoration-thickness: 2px;
 }
 
 .c97-btn:has(+ .c97-btn-ghost),

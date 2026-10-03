@@ -35,7 +35,7 @@ function TeamCell({
       <button
         type="button"
         onClick={() => onOpenTeam(team.id)}
-        className={`flex min-h-[44px] min-w-0 flex-1 items-center gap-2.5 ${justify} transition-colors hover:text-[var(--c97-accent)]`}
+        className={`flex min-h-[44px] min-w-0 flex-1 items-center gap-2.5 ${justify} transition-colors hover:text-[var(--c97-accent)] focus-visible:text-[var(--c97-accent)]`}
       >
         {content}
       </button>

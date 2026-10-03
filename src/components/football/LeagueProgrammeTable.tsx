@@ -1,7 +1,7 @@
 "use client";
 
 import { CrestAvatar } from "./CrestAvatar";
-import { leagueZone, type LeagueZone } from "./ladderGeometry";
+import { LEAGUE_ZONE_LABEL, leagueZone, type LeagueZone } from "./ladderGeometry";
 import { formatFixed } from "./fixtureFormat";
 
 export interface ProgrammeTableRow {
@@ -94,7 +94,10 @@ export function LeagueProgrammeTable({
                   boxShadow: isSelected ? "inset 4px 0 0 0 var(--c97-ink)" : undefined,
                 }}
               >
-                <td className="c97-mono">{row.position}</td>
+                <td className="c97-mono">
+                  {row.position}
+                  {zone !== "midtable" ? <span className="sr-only">, {LEAGUE_ZONE_LABEL[zone]}</span> : null}
+                </td>
                 <td>
                   <button
                     type="button"

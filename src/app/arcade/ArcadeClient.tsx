@@ -83,6 +83,8 @@ export default function ArcadeClient() {
   // Holds the latest spawnRound so endRound can schedule the next round
   // without creating a declaration cycle between the round-control callbacks.
   const spawnRoundRef = useRef<() => void>(() => {});
+  // The grid disables its cells when a run ends, which drops keyboard focus, so it moves to retry.
+  const retryRef = useRef<HTMLButtonElement | null>(null);
 
   const clearTimers = useCallback(() => {
     if (rafRef.current !== null) cancelAnimationFrame(rafRef.current);
@@ -119,6 +121,10 @@ export default function ArcadeClient() {
   }, []);
 
   useEffect(() => () => clearTimers(), [clearTimers]);
+
+  useEffect(() => {
+    if (status === "over") retryRef.current?.focus();
+  }, [status]);
 
   const endRound = useCallback(
     (next: "again" | "over") => {
@@ -420,7 +426,7 @@ export default function ArcadeClient() {
                     <p className={`${styles.overlayTitle} ${styles.over}`}>
                       GAME OVER
                     </p>
-                    <p className={styles.overlayText}>
+                    <p id="arcade-over-text" className={styles.overlayText}>
                       You scored{" "}
                       <strong style={{ color: "var(--ph-acid)" }}>
                         {score}
@@ -432,7 +438,9 @@ export default function ArcadeClient() {
                           : `. High score to beat: ${hiScore}.`}
                     </p>
                     <button
+                      ref={retryRef}
                       type="button"
+                      aria-describedby="arcade-over-text"
                       className={styles.btn}
                       onClick={startGame}
                     >

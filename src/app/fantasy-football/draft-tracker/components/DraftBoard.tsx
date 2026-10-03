@@ -422,7 +422,7 @@ export function DraftBoard({
                       type="button"
                       onClick={() => onOpenDetail(player)}
                       aria-label={`Open ${player.name} detail`}
-                      className="-my-2 inline-flex min-h-touch min-w-0 items-center truncate text-left text-sm font-semibold tracking-[-0.01em]"
+                      className="-my-2 inline-flex min-h-touch min-w-0 items-center truncate text-left text-sm font-semibold tracking-[-0.01em] hover:underline hover:decoration-[var(--c97-accent)] hover:underline-offset-4"
                     >
                       {player.name}
                     </button>

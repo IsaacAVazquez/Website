@@ -33,6 +33,7 @@ import { Catalog97ProjectHero } from "@/components/catalog97/Catalog97ProjectHer
 import { PROJECT_PRESS } from "@/constants/projectPress";
 import { EarthquakeSignature } from "./EarthquakeSignature";
 import { useClientNow } from "@/hooks/useClientNow";
+import { useTablistKeyboard } from "@/hooks/useTablistKeyboard";
 import "./earthquake-pulse.css";
 import { useRouteSync } from "@/hooks/useRouteSync";
 
@@ -147,14 +148,16 @@ function getRowStyle(isSelected: boolean, mag: number): CSSProperties {
 function MagnitudeBadge({ mag }: { mag: number }) {
   return (
     <span
-      className="inline-flex min-w-[58px] flex-col items-center justify-center border px-3 py-2"
+      className="inline-flex min-w-[58px] flex-col items-center justify-center border"
       style={{
+        paddingInline: "var(--c97-sp-1)",
+        paddingBlock: "var(--c97-sp-1)",
         borderColor: `color-mix(in srgb, ${magnitudeColor(mag)} 38%, var(--c97-rule))`,
         background: magnitudeTint(mag),
       }}
     >
       <span
-        className="text-xl leading-none"
+        className="text-xl leading-none tabular-nums"
         style={{
           fontFamily: "var(--c97-font-body)",
           fontWeight: 700,
@@ -241,7 +244,7 @@ function DistributionBars({ summary }: { summary: EarthquakeSummary }) {
             : Number(bucket.range.split("–")[0]);
         const widthPct = Math.round((bucket.count / maxCount) * 100);
         return (
-          <div key={bucket.tier} className="flex items-center gap-3">
+          <div key={bucket.tier} className="flex items-center" style={{ gap: "var(--c97-sp-1)" }}>
             <span
               className="w-24 shrink-0 text-sm"
               style={{ color: "var(--c97-ink)", fontFamily: "var(--c97-font-body)" }}
@@ -298,7 +301,7 @@ function RegionList({
         const clickable = Boolean(region.strongestId);
         const content = (
           <>
-            <span className="flex items-center justify-between gap-3">
+            <span className="flex items-center justify-between" style={{ gap: "var(--c97-sp-1)" }}>
               <span
                 className="c97-quake-region-name truncate text-base font-semibold"
                 style={{ fontFamily: "var(--c97-font-body)" }}
@@ -312,7 +315,7 @@ function RegionList({
                 peak {formatMagnitude(region.maxMagnitude)}
               </span>
             </span>
-            <span className="mt-2 flex items-center gap-3">
+            <span className="flex items-center" style={{ marginTop: "var(--c97-sp-1)", gap: "var(--c97-sp-1)" }}>
               <span
                 className="relative h-2 flex-1 overflow-hidden"
                 style={{ background: "var(--c97-field)" }}
@@ -341,16 +344,16 @@ function RegionList({
             key={region.region}
             type="button"
             onClick={() => onSelect(region.strongestId!)}
-            className="c97-quake-region block w-full border px-4 py-3 text-left"
-            style={{ borderColor: "var(--c97-rule)", background: "var(--c97-field)" }}
+            className="c97-quake-region block w-full border text-left"
+            style={{ paddingInline: "var(--c97-sp-2)", paddingBlock: "var(--c97-sp-1)", borderColor: "var(--c97-rule)", background: "var(--c97-field)" }}
           >
             {content}
           </button>
         ) : (
           <div
             key={region.region}
-            className=" border px-4 py-3"
-            style={{ borderColor: "var(--c97-rule)", background: "var(--c97-field)" }}
+            className="border"
+            style={{ paddingInline: "var(--c97-sp-2)", paddingBlock: "var(--c97-sp-1)", borderColor: "var(--c97-rule)", background: "var(--c97-field)" }}
           >
             {content}
           </div>
@@ -363,8 +366,10 @@ function RegionList({
 function DetailStat({ label, value }: { label: string; value: string }) {
   return (
     <div
-      className=" border px-4 py-3"
+      className="border"
       style={{
+        paddingInline: "var(--c97-sp-2)",
+        paddingBlock: "var(--c97-sp-1)",
         borderColor: "var(--c97-rule)",
         background: "color-mix(in srgb, var(--c97-surface) 92%, var(--c97-field))",
       }}
@@ -394,7 +399,7 @@ function QuakeDetailPanel({ quake, now }: { quake: QuakeEvent | null; now: numbe
 
   return (
     <>
-      <div className="flex items-start justify-between gap-4">
+      <div className="flex items-start justify-between" style={{ gap: "var(--c97-sp-2)" }}>
         <div className="min-w-0">
           <h2 className="c97-serif c97-h3" style={{ marginBottom: "var(--c97-sp-1)" }}>
             {quake.place}
@@ -422,8 +427,12 @@ function QuakeDetailPanel({ quake, now }: { quake: QuakeEvent | null; now: numbe
 
       {quake.tsunami ? (
         <div
-          className="mt-4 flex items-center gap-2 border px-4 py-3 text-sm font-semibold"
+          className="flex items-center border text-sm font-semibold"
           style={{
+            paddingInline: "var(--c97-sp-2)",
+            paddingBlock: "var(--c97-sp-1)",
+            marginTop: "var(--c97-sp-2)",
+            gap: "var(--c97-sp-1)",
             borderColor: "color-mix(in srgb, var(--c97-negative) 28%, var(--c97-rule))",
             background: "color-mix(in srgb, var(--c97-negative) 8%, var(--c97-field))",
             color: "var(--c97-negative)",
@@ -435,7 +444,7 @@ function QuakeDetailPanel({ quake, now }: { quake: QuakeEvent | null; now: numbe
         </div>
       ) : null}
 
-      <div className="mt-5 grid grid-cols-2 gap-3">
+      <div className="grid grid-cols-2" style={{ marginTop: "var(--c97-sp-2)", gap: "var(--c97-sp-1)" }}>
         <DetailStat label="Depth" value={`${formatDepth(quake.depthKm)} · ${depthLabel(quake.depthKm)}`} />
         <DetailStat label="Region" value={quake.region} />
         <DetailStat
@@ -515,10 +524,8 @@ export function EarthquakeClient({
         if (active && nextSummary.generatedAt) {
           setSummary(nextSummary);
         }
-      } catch (error) {
-        if (!(error instanceof DOMException && error.name === "AbortError")) {
-          // Keep the last good summary visible through transient network errors.
-        }
+      } catch {
+        // Keep the last good summary visible through transient network errors. An abort lands here too.
       }
     }
 
@@ -552,6 +559,7 @@ export function EarthquakeClient({
   const listForView =
     routeState.view === "significant" ? summary.significant : summary.recent;
   const feedTime = summary.feedUpdated ?? summary.generatedAt;
+  const onViewTabKey = useTablistKeyboard(EARTHQUAKE_VIEW_OPTIONS, handleViewChange);
   const lead = PROJECT_PRESS[EARTHQUAKE_ROUTE].lead;
   const standfirst =
     "I wanted the planet's last day of shaking on one calm screen, from what just moved, to what was big enough to matter, to where the ground is busiest. The browser checks USGS every five minutes and keeps the last good snapshot visible if the feed drops.";
@@ -610,18 +618,19 @@ export function EarthquakeClient({
 
       <section className="c97-band c97-sheet" data-c97-surface="paper" data-seam="torn">
         <div className="c97-shell">
-          <div className="grid gap-8 xl:grid-cols-[minmax(0,1.7fr)_minmax(320px,0.92fr)]">
+          <div className="grid xl:grid-cols-[minmax(0,1.7fr)_minmax(320px,0.92fr)]" style={{ gap: "var(--c97-sp-3)" }}>
             <div className="space-y-6">
               <h2 className="c97-poster-sm">The log</h2>
               <div className="c97-segmented" style={{ marginBottom: "var(--c97-sp-3)" }} role="tablist" aria-label="Earthquake view switcher">
-                {EARTHQUAKE_VIEW_OPTIONS.map((view) => (
+                {EARTHQUAKE_VIEW_OPTIONS.map((view, index) => (
                   <button
                     key={view}
                     type="button"
                     role="tab"
                     id={`earthquake-tab-${view}`}
-                    aria-controls={`earthquake-tabpanel-${view}`}
+                    aria-controls={routeState.view === view ? `earthquake-tabpanel-${view}` : undefined}
                     aria-selected={routeState.view === view}
+                    onKeyDown={(event) => onViewTabKey(event, index)}
                     onClick={() => handleViewChange(view)}
                     className="min-h-[44px] text-sm font-semibold"
                   >
@@ -656,7 +665,7 @@ export function EarthquakeClient({
                 {routeState.view === "regions" ? (
                   <div className="space-y-6">
                     <div className="c97-panel">
-                      <div className="mb-4 flex items-center gap-2">
+                      <div className="flex items-center" style={{ marginBottom: "var(--c97-sp-2)", gap: "var(--c97-sp-1)" }}>
                         <BarChart3 className="h-4 w-4" aria-hidden="true" style={{ color: "var(--c97-ink-2)" }} />
                         <p className="c97-kicker">Magnitude distribution · 7 days</p>
                       </div>
@@ -693,7 +702,7 @@ export function EarthquakeClient({
 
             <aside className="space-y-4">
               <div className="c97-panel xl:sticky xl:top-6">
-                <div className="mb-3 flex items-center gap-2">
+                <div className="flex items-center" style={{ marginBottom: "var(--c97-sp-1)", gap: "var(--c97-sp-1)" }}>
                   <Gauge className="h-4 w-4" aria-hidden="true" style={{ color: "var(--c97-ink-2)" }} />
                   <p className="c97-kicker">Selected quake</p>
                 </div>

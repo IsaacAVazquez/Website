@@ -128,7 +128,7 @@ export function GrowthPanel({ symbol }: Props) {
 
   return (
     <TerminalPanel padding="sm">
-      <h3 className="text-sm font-semibold text-[var(--c97-ink)] mb-3">YoY Growth</h3>
+      <h3 className="text-sm font-semibold text-[var(--c97-ink)] mb-3">YoY growth</h3>
 
       {isLoading && (
         <div role="status" aria-busy="true">

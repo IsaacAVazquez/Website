@@ -269,7 +269,7 @@ interface FilterGroupProps {
 function FilterGroup({ label, options, value, onChange }: FilterGroupProps) {
   const labelId = useId();
   return (
-    <div className="flex flex-wrap items-center gap-2">
+    <div className="flex flex-wrap items-center" style={{ gap: "var(--c97-sp-1)" }}>
       <span id={labelId} className="c97-kicker" style={{ minWidth: "88px" }}>
         {label}
       </span>

@@ -178,7 +178,17 @@ export default async function WritingTopicPage({ params }: TopicPageProps) {
       {/* The archive ledger */}
       <section className="c97-band c97-band-continues" data-c97-surface="paper">
         <div className="c97-shell">
-          <div>{posts.slice(0, TOPIC_PAGE_SIZE).map(renderTopicRow)}</div>
+          {posts.length === 0 ? (
+            <p className="c97-prose" style={{ color: "var(--c97-ink-2)" }}>
+              Nothing is filed under this topic yet, so the{" "}
+              <Link href="/writing" className="c97-link">
+                full archive
+              </Link>{" "}
+              is the place to look.
+            </p>
+          ) : (
+            <div>{posts.slice(0, TOPIC_PAGE_SIZE).map(renderTopicRow)}</div>
+          )}
           {remaining > 0 ? (
             <details className="c97-disclosure" style={{ marginTop: "var(--c97-sp-3)" }}>
               {/*
@@ -205,8 +215,9 @@ export default async function WritingTopicPage({ params }: TopicPageProps) {
       {/* The other topics, on bone. */}
       <section
         aria-labelledby="other-writing-topics"
-        className="c97-band"
+        className="c97-band c97-sheet"
         data-c97-surface="bone"
+        data-seam="deckle"
       >
         <div className="c97-shell">
           <p className="c97-kicker">Keep browsing</p>

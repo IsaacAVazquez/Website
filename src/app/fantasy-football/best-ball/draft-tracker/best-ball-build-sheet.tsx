@@ -52,8 +52,7 @@ export function BestBallBuildSheet({
             ref={closeRef}
             type="button"
             onClick={close}
-            className="inline-flex h-11 w-11 items-center justify-center border"
-            style={{ borderColor: "var(--c97-rule)", color: "var(--c97-ink)" }}
+            className="inline-flex h-11 w-11 items-center justify-center border border-[var(--c97-rule)] text-[var(--c97-ink)] hover:border-[var(--c97-ink)]"
             aria-label="Close my build"
           >
             <X className="h-5 w-5" aria-hidden="true" />

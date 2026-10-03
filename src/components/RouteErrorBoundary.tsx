@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useEffect } from "react";
 import { logger } from "@/lib/logger";
 
@@ -49,6 +50,9 @@ export function RouteErrorBoundary({ error, reset, surfaceName }: Props) {
             <button type="button" onClick={reset} className="c97-btn">
               Try again
             </button>
+            <Link href="/" className="c97-btn-ghost">
+              Back to the home page
+            </Link>
           </div>
         </div>
       </div>

@@ -357,7 +357,7 @@ export function WeeklyBoardClient({
 
   return (
     <section
-      className="c97-dash relative overflow-x-clip min-h-screen"
+      className="c97-dash relative overflow-x-clip min-h-dvh"
       aria-label={viewConfig.ariaLabel}
     >
       <section
@@ -460,6 +460,13 @@ export function WeeklyBoardClient({
           <p role="status" className="text-sm text-[var(--c97-ink-2)]">
             Loading the weekly board.
           </p>
+        ) : null}
+        {(isLoading || boardPending) && !activeBoard ? (
+          <div className="grid gap-2" aria-hidden="true">
+            {Array.from({ length: 8 }, (_, index) => (
+              <div key={`weekly-loading-${index}`} className="c97-skeleton" style={{ height: 44 }} />
+            ))}
+          </div>
         ) : null}
 
         {notPublished ? (

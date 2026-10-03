@@ -92,7 +92,7 @@ export function FixtureCard({
                 <button
                   type="button"
                   onClick={() => onOpenTeam(team.id)}
-                  className="flex min-h-[44px] min-w-0 flex-1 items-center gap-3 text-left transition-colors hover:text-[var(--c97-accent)]"
+                  className="flex min-h-[44px] min-w-0 flex-1 items-center gap-3 text-left transition-colors hover:text-[var(--c97-accent)] focus-visible:text-[var(--c97-accent)]"
                 >
                   <CrestAvatar crest={team.crest} name={team.shortName} size="sm" />
                   <span

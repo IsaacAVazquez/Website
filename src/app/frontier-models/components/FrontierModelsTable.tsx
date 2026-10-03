@@ -89,7 +89,7 @@ export function FrontierModelsTable({
   }
 
   return (
-    <div className="overflow-x-auto">
+    <div className="overflow-x-auto" role="region" aria-label="Model spec sheet (scrolls sideways)" tabIndex={0}>
       <table className="c97-table">
         <thead>
           <tr>
@@ -166,8 +166,8 @@ function FrontierRow({ model, isExpanded, onToggle }: FrontierRowProps) {
               {model.providerLabel}
             </span>
             <span
-              className="mt-1 flex items-center gap-2 text-base font-semibold"
-              style={{ color: "var(--c97-ink)" }}
+              className="mt-1 flex items-center text-base font-semibold"
+              style={{ gap: "var(--c97-sp-1)", color: "var(--c97-ink)" }}
             >
               <button
                 type="button"
@@ -177,15 +177,16 @@ function FrontierRow({ model, isExpanded, onToggle }: FrontierRowProps) {
                   event.stopPropagation();
                   onToggle();
                 }}
-                className="text-left"
+                className="inline-flex min-h-[44px] items-center text-left"
                 style={{ color: "var(--c97-ink)", fontWeight: 600 }}
               >
                 {model.name}
               </button>
               {model.reasoning ? (
                 <span
-                  className="inline-flex items-center gap-1 border px-2 py-0.5 text-3xs font-semibold uppercase tracking-[0.14em]"
+                  className="inline-flex items-center gap-1 border py-0.5 text-3xs font-semibold uppercase tracking-[0.14em]"
                   style={{
+                    paddingInline: "var(--c97-sp-1)",
                     borderColor: "var(--c97-rule)",
                     background: "var(--c97-field)",
                     color: "var(--c97-ink-2)",
@@ -216,8 +217,9 @@ function FrontierRow({ model, isExpanded, onToggle }: FrontierRowProps) {
             {model.modalities.map((modality) => (
               <span
                 key={modality}
-                className="inline-flex items-center border px-2 py-0.5 text-2xs font-medium"
+                className="inline-flex items-center border py-0.5 text-2xs font-medium"
                 style={{
+                  paddingInline: "var(--c97-sp-1)",
                   borderColor: "var(--c97-rule)",
                   background: "var(--c97-surface)",
                   color: "var(--c97-ink-2)",
@@ -231,14 +233,14 @@ function FrontierRow({ model, isExpanded, onToggle }: FrontierRowProps) {
       </tr>
       {isExpanded ? (
         <tr id={`frontier-row-detail-${model.id}`}>
-          <td colSpan={6} className="px-4 py-5">
-            <div className="grid gap-4 lg:grid-cols-[minmax(0,2fr)_minmax(0,1fr)]">
+          <td colSpan={6} style={{ paddingInline: "var(--c97-sp-2)", paddingBlock: "var(--c97-sp-2)" }}>
+            <div className="grid lg:grid-cols-[minmax(0,2fr)_minmax(0,1fr)]" style={{ gap: "var(--c97-sp-2)" }}>
               <p className="m-0 text-sm leading-7" style={{ color: "var(--c97-ink)" }}>
                 {model.editorialNote}
               </p>
               <dl
-                className="grid grid-cols-2 gap-x-4 gap-y-2 text-sm"
-                style={{ color: "var(--c97-ink-2)" }}
+                className="grid grid-cols-2 text-sm"
+                style={{ rowGap: "var(--c97-sp-1)", columnGap: "var(--c97-sp-2)", color: "var(--c97-ink-2)" }}
               >
                 <div>
                   <dt className="text-2xs font-semibold uppercase tracking-[0.14em]">

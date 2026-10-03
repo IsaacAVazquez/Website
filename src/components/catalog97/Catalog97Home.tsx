@@ -274,10 +274,11 @@ export function Catalog97Home({
                   href={`/writing/${post.slug}`}
                   className={styles.post}
                 >
-                  <span className={styles.postCopy}>
-                    <span className="c97-serif c97-h3">{post.title}</span>
+                  {/* A heading, like the work cards above, so screen readers can move between posts. */}
+                  <div className={styles.postCopy}>
+                    <h3 className="c97-serif c97-h3">{post.title}</h3>
                     <span className={styles.detail}>{post.excerpt}</span>
-                  </span>
+                  </div>
                   <span className="c97-kicker c97-tabular">
                     {formatPostDate(post.publishedAt)} · {post.category}
                   </span>

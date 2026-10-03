@@ -174,8 +174,9 @@ export default function AgentBuildIndexPage() {
 
       {/* Ranking */}
       <section
-        className="c97-band"
+        className="c97-band c97-sheet"
         data-c97-surface="bone"
+        data-seam="deckle"
         aria-labelledby="agent-index-ranking-heading"
       >
         <div className="c97-shell">
@@ -296,7 +297,7 @@ export default function AgentBuildIndexPage() {
       </section>
 
       {/* Snapshot context */}
-      <section className="c97-band" data-c97-surface="paper">
+      <section className="c97-band c97-sheet" data-c97-surface="paper" data-seam="deckle">
         <aside className="c97-shell c97-columns" aria-label="Snapshot context">
           <section aria-labelledby="topic-movement-heading">
             <p className="c97-kicker">Topic comparison</p>
@@ -406,8 +407,9 @@ export default function AgentBuildIndexPage() {
 
       {/* Newsletter */}
       <section
-        className="c97-band c97-band-tall"
+        className="c97-band c97-sheet c97-band-tall"
         data-c97-surface="ink-blue"
+        data-seam="torn"
         aria-label="Newsletter signup"
       >
         <div
@@ -434,7 +436,10 @@ export default function AgentBuildIndexPage() {
               movement points to something worth explaining.
             </p>
           </div>
-          <NewsletterSignup source="agent_build_index" />
+          {/* The field and the status lines need paper under them on the blue sheet. */}
+          <div data-c97-surface="paper" className="c97-offset" style={{ padding: "var(--c97-sp-4)" }}>
+            <NewsletterSignup source="agent_build_index" />
+          </div>
         </div>
       </section>
     </>

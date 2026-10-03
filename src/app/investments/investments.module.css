@@ -500,7 +500,8 @@
 .terminalScope :global(.invest-holdings) tbody tr {
   transition: background-color 120ms ease, box-shadow 120ms ease;
 }
-.terminalScope :global(.invest-holdings) tbody tr:hover {
+.terminalScope :global(.invest-holdings) tbody tr:hover,
+.terminalScope :global(.invest-holdings) tbody tr:focus-within {
   background: var(--c97-panel);
   box-shadow: inset 3px 0 0 var(--c97-accent);
 }
@@ -1730,7 +1731,8 @@
   .terminalScope :global(.invest-holdings) tbody td:last-child {
     background: var(--c97-surface);
   }
-  .terminalScope :global(.invest-holdings) tbody tr:hover td:last-child {
+  .terminalScope :global(.invest-holdings) tbody tr:hover td:last-child,
+  .terminalScope :global(.invest-holdings) tbody tr:focus-within td:last-child {
     background: var(--c97-panel);
   }
   .terminalScope :global(.invest-holdings) thead th:last-child {

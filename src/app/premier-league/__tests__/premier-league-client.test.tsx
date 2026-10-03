@@ -43,7 +43,7 @@ describe("PremierLeagueClient", () => {
     );
 
     // The club drawer only opens for an explicit ?team= selection — a bare
-    // visit renders the standings and Club Detail tab inline, no overlay.
+    // visit renders the standings and Club detail tab inline, no overlay.
     expect(screen.getByRole("heading", { name: "Standings" })).toBeInTheDocument();
     expect(screen.queryByRole("dialog")).not.toBeInTheDocument();
     await waitFor(() => expect(mockReplace).not.toHaveBeenCalled());
@@ -70,7 +70,7 @@ describe("PremierLeagueClient", () => {
     await user.keyboard("{Escape}");
 
     // Closing hides the overlay and leaves the selection in the URL, so the
-    // ladder, the table, and Club Detail stay on the club that was open.
+    // ladder, the table, and Club detail stay on the club that was open.
     expect(screen.queryByRole("dialog")).not.toBeInTheDocument();
     expect(mockPush).not.toHaveBeenCalled();
   });
@@ -93,7 +93,7 @@ describe("PremierLeagueClient", () => {
       return { settle: () => view.rerender(ui()) };
     }
 
-    it.each(["Fixtures", "Top Scorers"])("switching to the %s tab opens no drawer", async (name) => {
+    it.each(["Fixtures", "Top scorers"])("switching to the %s tab opens no drawer", async (name) => {
       const user = userEvent.setup();
       const { settle } = renderFollowingPushes();
 

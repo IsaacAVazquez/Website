@@ -80,4 +80,14 @@ describe("RecipeFinderClient", () => {
     const titles = [...container.querySelectorAll("article h3")].map((node) => node.textContent);
     expect(titles.filter((title, index) => titles.indexOf(title) !== index)).toEqual([]);
   });
+  it("prompts for pantry items when the pantry view has nothing to suggest", () => {
+    render(<RecipeFinderClient />);
+
+    fireEvent.click(screen.getByRole("button", { name: /suggested by pantry/i }));
+    expect(screen.getByText(/your pantry shelf is empty/i)).toBeVisible();
+
+    fireEvent.click(screen.getByRole("button", { name: "Show all recipes" }));
+    expect(screen.getByRole("button", { name: /all recipes/i, pressed: true })).toBeVisible();
+    expect(screen.getByLabelText("Matching recipes")).toBeVisible();
+  });
 });

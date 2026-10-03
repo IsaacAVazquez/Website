@@ -443,7 +443,7 @@ function FoodMapWorkbench({
 
         <section className="c97-band c97-sheet" data-c97-surface="paper" data-seam="torn">
           <div className="c97-shell">
-            <p className="fm-status" role="status" aria-live="polite">
+            <p className="fm-status c97-tabular" role="status" aria-live="polite">
               <span className="fm-status-dot" aria-hidden="true" />
               <span>
                 Showing {visiblePlaces.length} of {cityCount} in {activeCity.name} ·

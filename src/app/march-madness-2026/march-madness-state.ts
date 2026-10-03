@@ -24,7 +24,7 @@ export const VIEW_LABELS: Record<MarchMadnessView, string> = {
   bracket: "Bracket",
   picks: "Picks",
   analytics: "Analytics",
-  "time-zones": "Time Zones",
+  "time-zones": "Time zones",
 };
 
 export const REGION_LABELS: Record<MarchMadnessRegion, string> = {
@@ -36,7 +36,7 @@ export const REGION_LABELS: Record<MarchMadnessRegion, string> = {
 
 export const ANALYTICS_LABELS: Record<MarchMadnessAnalytics, string> = {
   rankings: "Rankings",
-  "s-curve": "S-Curve",
+  "s-curve": "S-curve",
   injuries: "Injuries",
 };
 

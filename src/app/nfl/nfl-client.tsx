@@ -517,9 +517,9 @@ export function NflClient({ initialState, summary, initialTeamSnapshot }: NflCli
           >
             {(
               [
-                { id: "team", label: "Team Detail" },
+                { id: "team", label: "Team detail" },
                 { id: "fixtures", label: "Schedule" },
-                { id: "leaders", label: "Stat Leaders" },
+                { id: "leaders", label: "Stat leaders" },
               ] as const
             ).map((tab) => {
               const isActive = activeDetailTab === tab.id;
@@ -627,15 +627,23 @@ export function NflClient({ initialState, summary, initialTeamSnapshot }: NflCli
                     </div>
                   </div>
                 ) : (
-                  <div className="c97-panel">
-                    <p className="flex items-center gap-2" style={{ fontWeight: 600, color: "var(--c97-ink)" }}>
-                      <Flag className="h-4 w-4" aria-hidden="true" />
-                      Offseason
+                  // An empty list mid-season is a snapshot gap, so only the last
+                  // regular-season week calls the season complete.
+                  summary.week >= totalRegSeasonWeeks ? (
+                    <div className="c97-panel">
+                      <p className="flex items-center gap-2" style={{ fontWeight: 600, color: "var(--c97-ink)" }}>
+                        <Flag className="h-4 w-4" aria-hidden="true" />
+                        Offseason
+                      </p>
+                      <p className="c97-prose" style={{ marginTop: "var(--c97-sp-1)" }}>
+                        The {summary.season} regular season is complete. New fixtures will appear when the next season&apos;s schedule is published.
+                      </p>
+                    </div>
+                  ) : (
+                    <p className="c97-prose">
+                      No upcoming games are in this snapshot. They will appear after the next scheduled refresh.
                     </p>
-                    <p className="c97-prose" style={{ marginTop: "var(--c97-sp-1)" }}>
-                      The {summary.season} regular season is complete. New fixtures will appear when the next season&apos;s schedule is published.
-                    </p>
-                  </div>
+                  )
                 )}
               </div>
             )}
@@ -661,6 +669,7 @@ export function NflClient({ initialState, summary, initialTeamSnapshot }: NflCli
                   </div>
                   <a href={summary.sourceUrls.leaders} target="_blank" rel="noreferrer" className="c97-btn-ghost">
                     NFLverse source
+                    <span className="sr-only"> (opens in a new tab)</span>
                     <ExternalLink className="h-4 w-4" />
                   </a>
                 </div>

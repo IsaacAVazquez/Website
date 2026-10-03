@@ -20,9 +20,9 @@ function Bar({ value, max = 100 }: { value: number | undefined; max?: number }) 
   return (
     <div className="h-1.5 bg-[var(--c97-rule)] overflow-hidden flex-1">
       <div
-        className="h-full transition-[width] duration-500"
+        className="h-full origin-left transition-transform duration-500"
         style={{
-          width: `${pct}%`,
+          transform: `scaleX(${pct / 100})`,
           backgroundColor: positive ? "var(--c97-positive)" : "var(--c97-negative)",
         }}
         aria-hidden="true"
@@ -71,7 +71,7 @@ export function ProfitabilityPanel({ symbol }: Props) {
 
   return (
     <TerminalPanel padding="sm">
-      <h3 className="text-sm font-semibold text-[var(--c97-ink)] mb-3">Profitability & Margins</h3>
+      <h3 className="text-sm font-semibold text-[var(--c97-ink)] mb-3">Profitability and margins</h3>
 
       {isLoading ? (
         <div className="space-y-2" role="status" aria-busy="true">

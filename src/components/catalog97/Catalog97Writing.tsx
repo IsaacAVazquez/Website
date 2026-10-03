@@ -298,6 +298,10 @@ export function Catalog97Writing({
               );
             })}
           </div>
+          {/* Read out when a search or filter changes the list. */}
+          <p className="sr-only" role="status">
+            {filtered.length} of {posts.length} pieces shown
+          </p>
         </div>
       </section>
 
@@ -407,7 +411,7 @@ export function Catalog97Writing({
 
       {/*
         Archive. Paper rather than Blue, because it is the one band on the site
-        holding an unbounded list — at ~200 rows it is over 90% of the route's
+        holding an unbounded list, and at ~200 rows it is over 90% of the route's
         height, so whatever field it takes becomes the route.
       */}
       <section
@@ -477,6 +481,36 @@ export function Catalog97Writing({
                 </article>
               ))}
             </div>
+          ) : filtered.length === 0 ? (
+            <div
+              style={{
+                display: "grid",
+                justifyItems: "start",
+                gap: "var(--c97-sp-2)",
+                marginTop: "var(--c97-sp-4)",
+              }}
+            >
+              <p
+                className="c97-prose"
+                style={{
+                  color: "var(--c97-ink-2)",
+                  maxWidth: "var(--c97-measure-body)",
+                }}
+              >
+                No writing matches that search.
+              </p>
+              <button
+                type="button"
+                className="c97-btn-ghost"
+                onClick={() => {
+                  setQuery("");
+                  setActive(ALL);
+                  setArchiveLimit(archivePageSize);
+                }}
+              >
+                Clear search
+              </button>
+            </div>
           ) : (
             <p
               className="c97-prose"
@@ -486,9 +520,7 @@ export function Catalog97Writing({
                 maxWidth: "var(--c97-measure-body)",
               }}
             >
-              {filtered.length === 0
-                ? "No writing matches that search."
-                : "Everything under this filter is already above."}
+              Everything under this filter is already above.
             </p>
           )}
 

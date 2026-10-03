@@ -158,11 +158,9 @@ export function BestBallDraftBoard({
               aria-expanded={searchOpen}
               aria-controls={searchId}
               aria-label={searchOpen ? "Close search" : "Search available players"}
-              className={`${ICON_BUTTON_CLASS} sm:hidden`}
-              style={{
-                borderColor: searchOpen ? "var(--c97-ink)" : "var(--c97-rule)",
-                color: "var(--c97-ink)",
-              }}
+              className={`${ICON_BUTTON_CLASS} sm:hidden text-[var(--c97-ink)] hover:border-[var(--c97-ink)] ${
+                searchOpen ? "border-[var(--c97-ink)]" : "border-[var(--c97-rule)]"
+              }`}
             >
               {searchOpen ? (
                 <X className="h-4 w-4" aria-hidden="true" />

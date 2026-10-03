@@ -17,6 +17,7 @@ import {
   AI_DEV_TOOL_PRICING_LABELS,
   AI_DEV_TOOL_SOURCE_LABELS,
   AI_DEV_TOOLS_GENERATED_AT,
+  AI_DEV_TOOLS_VERIFIED,
   aiDevTools,
   filterAiDevTools,
   formatGithubStars,
@@ -253,7 +254,7 @@ export function AiDevToolsClient({ initialState }: AiDevToolsClientProps) {
         ink={lead}
         title="AI Dev Tool Ecosystem"
         standfirst={standfirst}
-        meta={`Curated snapshot · updated ${updatedAt}`}
+        meta={`Curated snapshot · figures as of ${updatedAt}${AI_DEV_TOOLS_VERIFIED ? "" : " · not yet independently verified, so treat them as directional"}`}
         readouts={[
           {
             label: "Tools tracked",
@@ -285,8 +286,8 @@ export function AiDevToolsClient({ initialState }: AiDevToolsClientProps) {
         <div className="c97-shell space-y-6">
           <h2 className="c97-poster-sm">The directory</h2>
 
-          <div className="grid gap-4 lg:grid-cols-[minmax(16rem,0.9fr)_minmax(0,1.6fr)]">
-            <label className="flex min-h-[44px] items-center gap-3 border border-[var(--c97-rule)] bg-[var(--c97-surface)] px-3 text-sm text-[var(--c97-ink)]">
+          <div className="grid lg:grid-cols-[minmax(16rem,0.9fr)_minmax(0,1.6fr)]" style={{ gap: "var(--c97-sp-2)" }}>
+            <label className="flex min-h-[44px] items-center border border-[var(--c97-rule)] bg-[var(--c97-surface)] text-sm text-[var(--c97-ink)]" style={{ paddingInline: "var(--c97-sp-1)", gap: "var(--c97-sp-1)" }}>
               <Search aria-hidden="true" className="h-4 w-4 text-[var(--c97-ink-2)]" />
               <span className="sr-only">Search tools</span>
               <input
@@ -296,7 +297,7 @@ export function AiDevToolsClient({ initialState }: AiDevToolsClientProps) {
                 className="min-h-[44px] w-full bg-transparent text-sm text-[var(--c97-ink)] placeholder:text-[var(--c97-ink-2)]"
               />
             </label>
-            <div className="flex flex-wrap items-center gap-2">
+            <div className="flex flex-wrap items-center" style={{ gap: "var(--c97-sp-1)" }}>
               <FilterSelect
                 label="Category"
                 value={state.category}
@@ -332,7 +333,7 @@ export function AiDevToolsClient({ initialState }: AiDevToolsClientProps) {
               <button
                 type="button"
                 onClick={resetFilters}
-                className="inline-flex min-h-[44px] items-center gap-2 border border-[var(--c97-rule)] bg-[var(--c97-field)] px-3 text-sm font-semibold text-[var(--c97-ink-2)] transition-colors hover:text-[var(--c97-ink)]"
+                className="inline-flex min-h-[44px] items-center border border-[var(--c97-rule)] bg-[var(--c97-field)] text-sm font-semibold text-[var(--c97-ink-2)] transition-colors hover:text-[var(--c97-ink)]" style={{ paddingInline: "var(--c97-sp-1)", gap: "var(--c97-sp-1)" }}
               >
                 <RotateCcw aria-hidden="true" className="h-4 w-4" />
                 Reset
@@ -340,9 +341,9 @@ export function AiDevToolsClient({ initialState }: AiDevToolsClientProps) {
             </div>
           </div>
 
-          <div className="grid min-w-0 gap-5 xl:grid-cols-[minmax(0,1.45fr)_minmax(22rem,0.65fr)]">
+          <div className="grid min-w-0 xl:grid-cols-[minmax(0,1.45fr)_minmax(22rem,0.65fr)]" style={{ gap: "var(--c97-sp-2)" }}>
             <div className="min-w-0 space-y-4">
-              <div className="flex flex-wrap items-center justify-between gap-3">
+              <div className="flex flex-wrap items-center justify-between" style={{ gap: "var(--c97-sp-1)" }}>
                 <p className="mb-0 text-sm font-semibold text-[var(--c97-ink-2)]">
                   {filteredTools.length} of {aiDevTools.length} tools shown
                 </p>
@@ -387,7 +388,7 @@ interface FilterSelectProps {
 
 function FilterSelect({ label, value, options, onChange }: FilterSelectProps) {
   return (
-    <label className="inline-flex min-h-[44px] items-center gap-2 border border-[var(--c97-rule)] bg-[var(--c97-field)] px-3 text-sm font-semibold text-[var(--c97-ink-2)]">
+    <label className="inline-flex min-h-[44px] items-center border border-[var(--c97-rule)] bg-[var(--c97-field)] text-sm font-semibold text-[var(--c97-ink-2)]" style={{ paddingInline: "var(--c97-sp-1)", gap: "var(--c97-sp-1)" }}>
       <span className="text-2xs uppercase tracking-[0.16em]">{label}</span>
       <select
         value={value}
@@ -424,7 +425,7 @@ function ToolDirectoryList({
   onSelect,
 }: ToolDirectoryListProps) {
   return (
-    <ul className="grid min-w-0 gap-3">
+    <ul className="grid min-w-0" style={{ gap: "var(--c97-sp-1)" }}>
       {tools.map((tool) => {
         const isSelected = selectedToolId === tool.id;
         const badge = STATUS_BADGES[tool.status];
@@ -439,25 +440,26 @@ function ToolDirectoryList({
               type="button"
               onClick={() => onSelect(tool.id)}
               aria-pressed={isSelected}
-              className="w-full border bg-[var(--c97-surface)] p-4 text-left transition-colors hover:bg-[var(--c97-field)]"
+              className="w-full border bg-[var(--c97-surface)] text-left transition-colors hover:bg-[var(--c97-field)]"
               style={{
+                padding: "var(--c97-sp-2)",
                 borderColor: isSelected ? "var(--c97-ink)" : "var(--c97-rule)",
                 boxShadow: isSelected ? "inset 3px 0 0 0 var(--c97-accent)" : undefined,
               }}
             >
-              <div className="flex items-start justify-between gap-3">
-                <div className="flex min-w-0 items-start gap-3">
+              <div className="flex items-start justify-between" style={{ gap: "var(--c97-sp-1)" }}>
+                <div className="flex min-w-0 items-start" style={{ gap: "var(--c97-sp-1)" }}>
                   <span className="mt-0.5 inline-flex h-9 w-9 shrink-0 items-center justify-center border border-[var(--c97-rule)] bg-[var(--c97-field)] text-[var(--c97-ink-2)]">
                     <ToolCategoryIcon category={tool.category} />
                   </span>
                   <div className="min-w-0">
-                    <div className="flex flex-wrap items-center gap-2">
+                    <div className="flex flex-wrap items-center" style={{ gap: "var(--c97-sp-1)" }}>
                       <span className="text-base font-semibold text-[var(--c97-ink)]">
                         {tool.name}
                       </span>
                       <span
-                        className="inline-flex px-2 py-0.5 text-3xs font-semibold uppercase tracking-[0.12em]"
-                        style={{ background: badge.bg, color: badge.fg }}
+                        className="inline-flex py-0.5 text-3xs font-semibold uppercase tracking-[0.12em]"
+                        style={{ paddingInline: "var(--c97-sp-1)", background: badge.bg, color: badge.fg }}
                       >
                         {badge.label}
                       </span>
@@ -485,7 +487,7 @@ function ToolDirectoryList({
                 </div>
               </div>
 
-              <div className="mt-3 grid gap-3 border-t border-[var(--c97-rule)] pt-3 sm:grid-cols-3">
+              <div className="grid border-t border-[var(--c97-rule)] sm:grid-cols-3" style={{ paddingTop: "var(--c97-sp-1)", marginTop: "var(--c97-sp-1)", gap: "var(--c97-sp-1)" }}>
                 <div className="min-w-0">
                   <span className="block text-2xs font-semibold uppercase tracking-[0.16em] text-[var(--c97-ink-2)]">
                     Pricing
@@ -547,8 +549,8 @@ function ToolDetail({ tool }: { tool: AiDevTool | null }) {
 
   return (
     <aside className="c97-panel h-fit min-w-0 xl:sticky xl:top-6">
-      <div className="flex items-start justify-between gap-4">
-        <div className="flex items-start gap-3">
+      <div className="flex items-start justify-between" style={{ gap: "var(--c97-sp-2)" }}>
+        <div className="flex items-start" style={{ gap: "var(--c97-sp-1)" }}>
           <span className="inline-flex h-11 w-11 shrink-0 items-center justify-center border border-[var(--c97-rule)] bg-[var(--c97-field)] text-[var(--c97-ink)]">
             <ToolCategoryIcon category={tool.category} className="h-5 w-5" />
           </span>
@@ -570,11 +572,11 @@ function ToolDetail({ tool }: { tool: AiDevTool | null }) {
         </a>
       </div>
 
-      <p className="mt-4 mb-0 text-sm leading-6 text-[var(--c97-ink-2)]">
+      <p className="mb-0 text-sm leading-6 text-[var(--c97-ink-2)]" style={{ marginTop: "var(--c97-sp-2)" }}>
         {tool.tagline}
       </p>
 
-      <div className="mt-5 grid gap-3">
+      <div className="grid" style={{ marginTop: "var(--c97-sp-2)", gap: "var(--c97-sp-1)" }}>
         <DetailRow label="Pricing" value={tool.pricingSummary} />
         <DetailRow label="Models" value={tool.modelSummary} />
         <DetailRow label="Stars" value={formatGithubStars(tool.githubStars)} />
@@ -583,28 +585,28 @@ function ToolDetail({ tool }: { tool: AiDevTool | null }) {
         <DetailRow label="Watch" value={tool.watchOut} />
       </div>
 
-      <div className="mt-5 flex flex-wrap gap-2">
+      <div className="flex flex-wrap" style={{ marginTop: "var(--c97-sp-2)", gap: "var(--c97-sp-1)" }}>
         {tool.surfaces.map((surface) => (
           <span
             key={surface}
-            className="inline-flex border border-[var(--c97-rule)] bg-[var(--c97-field)] px-3 py-1 text-xs font-semibold text-[var(--c97-ink-2)]"
+            className="inline-flex border border-[var(--c97-rule)] bg-[var(--c97-field)] py-1 text-xs font-semibold text-[var(--c97-ink-2)]" style={{ paddingInline: "var(--c97-sp-1)" }}
           >
             {surface}
           </span>
         ))}
       </div>
 
-      <div className="mt-5 border-t border-[var(--c97-rule)] pt-4">
-        <p className="mb-2 text-2xs font-semibold uppercase tracking-[0.18em] text-[var(--c97-ink-2)]">
+      <div className="border-t border-[var(--c97-rule)]" style={{ paddingTop: "var(--c97-sp-2)", marginTop: "var(--c97-sp-2)" }}>
+        <p className="text-2xs font-semibold uppercase tracking-[0.18em] text-[var(--c97-ink-2)]" style={{ marginBottom: "var(--c97-sp-1)" }}>
           Sources
         </p>
-        <div className="flex flex-col gap-2">
+        <div className="flex flex-col" style={{ gap: "var(--c97-sp-1)" }}>
           {tool.githubRepo ? (
             <a
               href={tool.githubRepo}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex min-h-[44px] items-center gap-2 text-sm font-semibold text-[var(--c97-ink)] transition-colors hover:text-[var(--c97-accent)]"
+              className="inline-flex min-h-[44px] items-center text-sm font-semibold text-[var(--c97-ink)] transition-colors hover:text-[var(--c97-accent)]" style={{ gap: "var(--c97-sp-1)" }}
             >
               <BrandGithub aria-hidden="true" className="h-4 w-4" />
               GitHub repo
@@ -616,7 +618,7 @@ function ToolDetail({ tool }: { tool: AiDevTool | null }) {
               href={source.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex min-h-[44px] items-center gap-2 text-sm font-semibold text-[var(--c97-ink)] transition-colors hover:text-[var(--c97-accent)]"
+              className="inline-flex min-h-[44px] items-center text-sm font-semibold text-[var(--c97-ink)] transition-colors hover:text-[var(--c97-accent)]" style={{ gap: "var(--c97-sp-1)" }}
             >
               <ExternalLink aria-hidden="true" className="h-4 w-4" />
               {source.label}
@@ -630,7 +632,7 @@ function ToolDetail({ tool }: { tool: AiDevTool | null }) {
 
 function DetailRow({ label, value }: { label: string; value: string }) {
   return (
-    <div className="border border-[var(--c97-rule)] bg-[var(--c97-surface)] p-3">
+    <div className="border border-[var(--c97-rule)] bg-[var(--c97-surface)]" style={{ padding: "var(--c97-sp-1)" }}>
       <p className="mb-1 text-2xs font-semibold uppercase tracking-[0.16em] text-[var(--c97-ink-2)]">
         {label}
       </p>

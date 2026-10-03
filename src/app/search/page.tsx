@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import Link from "next/link";
 import { constructMetadata } from "@/lib/seo";
 import { SearchInterfaceClient } from "@/components/search/SearchInterface.client";
 
@@ -75,7 +76,12 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
             <p className="c97-kicker">Popular queries</p>
             <ul className="c97-list" style={{ marginTop: "var(--c97-sp-2)" }}>
               {popularQueries.map((query) => (
-                <li key={query}>{query}</li>
+                <li key={query}>
+                  {/* A prefetch of this dynamic page streams and never closes, so the page never went idle. */}
+                  <Link href={`/search?q=${encodeURIComponent(query)}`} prefetch={false} className="c97-link">
+                    {query}
+                  </Link>
+                </li>
               ))}
             </ul>
           </div>

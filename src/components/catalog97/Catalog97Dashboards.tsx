@@ -59,7 +59,7 @@ const CATEGORY_BANNERS: Record<ToolCategoryId, string> = {
 };
 
 /**
- * The dashboard index, in the Catalog 97 language. This route is new — the
+ * The dashboard index, in the Catalog 97 language. This route is new. The
  * design calls for it, and the repo previously surfaced its live tools only
  * from the homepage directory.
  *
@@ -309,7 +309,12 @@ export function Catalog97Dashboards({
                   const body = (
                     <>
                       <div>
-                        <h3 className="c97-serif c97-h3">{tool.title}</h3>
+                        <h3 className="c97-serif c97-h3">
+                          {tool.title}
+                          {tool.isExternal ? (
+                            <span className="sr-only"> (opens in a new tab)</span>
+                          ) : null}
+                        </h3>
                         {summary ? (
                           <p
                             className="c97-prose"

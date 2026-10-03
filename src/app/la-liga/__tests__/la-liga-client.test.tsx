@@ -75,7 +75,7 @@ describe("LaLigaClient", () => {
 
     // The pinned id is an explicit, resolvable ?club= selection, so it opens
     // the club drawer (the standings-row click target) rather than only
-    // updating the inline "Club Detail" tab as before.
+    // updating the inline "Club detail" tab as before.
     expect(
       screen.getByRole("dialog", { name: `${expectedClub.name} detail` })
     ).toBeInTheDocument();

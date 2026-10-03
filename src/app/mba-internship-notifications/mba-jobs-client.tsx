@@ -236,20 +236,10 @@ function getRoleFamilyAccent(family: MBAJobRoleFamily): string {
   return "var(--c97-ink-2)";
 }
 
+// The inactive look and the hover live on `.mba-toggle` in mba-jobs.css; only the
+// company's own colour has to come in inline.
 function getTrackedCompanyButtonStyle(company: MBACompany, active: boolean): CSSProperties {
-  if (active) {
-    return {
-      background: "var(--c97-field)",
-      borderColor: company.color,
-      color: "var(--c97-ink)",
-    };
-  }
-
-  return {
-    background: "var(--c97-field)",
-    borderColor: "var(--c97-rule)",
-    color: "var(--c97-ink-2)",
-  };
+  return active ? { borderColor: company.color, color: "var(--c97-ink)" } : {};
 }
 
 function normalizeSearchText(value: string): string {
@@ -634,13 +624,13 @@ function JobCard({
       onMouseEnter={onMarkSeen}
       onFocus={onMarkSeen}
     >
-      <div className="flex h-full flex-col gap-5">
-        <div className="flex flex-wrap items-start justify-between gap-4">
-          <div className="min-w-0 flex items-center gap-3">
+      <div className="flex h-full flex-col" style={{ gap: "var(--c97-sp-3)" }}>
+        <div className="flex flex-wrap items-start justify-between" style={{ gap: "var(--c97-sp-2)" }}>
+          <div className="min-w-0 flex items-center" style={{ gap: "var(--c97-sp-2)" }}>
             <CompanyAvatar company={company} />
             <div className="min-w-0">
               <p className="c97-serif" style={{ fontSize: "var(--c97-fs-body)" }}>{job.companyName}</p>
-              <p className="mb-0 mt-1 text-sm" style={{ color: "var(--c97-ink-2)" }}>
+              <p className="text-sm" style={{ margin: 0, marginTop: "var(--c97-sp-1)", color: "var(--c97-ink-2)" }}>
                 {job.department}
                 {job.sourceName ? ` · via ${job.sourceName}` : ""}
               </p>
@@ -648,7 +638,8 @@ function JobCard({
           </div>
           <div
             data-testid={`job-card-${job.id}-chips`}
-            className="flex max-w-full flex-wrap items-center gap-2 sm:justify-end"
+            className="flex max-w-full flex-wrap items-center sm:justify-end"
+            style={{ gap: "var(--c97-sp-1)" }}
           >
             {isNew && <NewBadge />}
             {application && <ApplicationStatusChip status={application.status} />}
@@ -660,8 +651,8 @@ function JobCard({
           </div>
         </div>
 
-        <div className="space-y-3">
-          <h3 className="c97-serif c97-h3" style={{ marginBottom: "var(--c97-sp-2)" }}>
+        <div style={{ display: "flex", flexDirection: "column", gap: "var(--c97-sp-2)" }}>
+          <h3 className="c97-serif c97-h3">
             {job.title}
           </h3>
 
@@ -671,7 +662,7 @@ function JobCard({
         </div>
 
         {job.roleFamilies.length > 0 && (
-          <div className="flex flex-wrap gap-2">
+          <div className="flex flex-wrap" style={{ gap: "var(--c97-sp-1)" }}>
             {job.roleFamilies.map((family) => (
               <RoleFamilyChip key={`${job.id}-${family}`} family={family} />
             ))}
@@ -679,7 +670,8 @@ function JobCard({
         )}
 
         <div
-          className="mt-auto border-t border-[var(--c97-rule)] pt-5"
+          className="mt-auto border-t border-[var(--c97-rule)]"
+          style={{ paddingTop: "var(--c97-sp-3)" }}
         >
           <p className="c97-meta">
             {relativePostedAt ? (
@@ -715,7 +707,7 @@ function JobCard({
               ) : null}
             </p>
           )}
-          <div className="mt-4 flex flex-wrap items-center gap-3">
+          <div className="flex flex-wrap items-center" style={{ marginTop: "var(--c97-sp-2)", gap: "var(--c97-sp-2)" }}>
             <button
               type="button"
               onClick={() => {
@@ -784,13 +776,13 @@ function ManualCompanyCard({
     <article
       className="c97-panel flex h-full flex-col"
     >
-      <div className="flex h-full flex-col gap-5">
-        <div className="flex items-start justify-between gap-4">
-          <div className="flex min-w-0 items-center gap-3">
+      <div className="flex h-full flex-col" style={{ gap: "var(--c97-sp-3)" }}>
+        <div className="flex items-start justify-between" style={{ gap: "var(--c97-sp-2)" }}>
+          <div className="flex min-w-0 items-center" style={{ gap: "var(--c97-sp-2)" }}>
             <CompanyAvatar company={company} />
             <div className="min-w-0">
               <p className="c97-serif" style={{ fontSize: "var(--c97-fs-body)" }}>{company.name}</p>
-              <p className="mb-0 mt-1 text-sm" style={{ color: "var(--c97-ink-2)" }}>
+              <p className="text-sm" style={{ margin: 0, marginTop: "var(--c97-sp-1)", color: "var(--c97-ink-2)" }}>
                 Manual fallback
               </p>
             </div>
@@ -804,9 +796,10 @@ function ManualCompanyCard({
         </p>
 
         <div
-          className="mt-auto border-t border-[var(--c97-rule)] pt-5"
+          className="mt-auto border-t border-[var(--c97-rule)]"
+          style={{ paddingTop: "var(--c97-sp-3)" }}
         >
-          <div className="flex flex-wrap items-center gap-3">
+          <div className="flex flex-wrap items-center" style={{ gap: "var(--c97-sp-2)" }}>
             <CardActionLink
               href={linkedinUrl}
               label="LinkedIn search"
@@ -831,7 +824,7 @@ function SearchElsewhereStrip({ currentState }: { currentState: MBAJobsSearchSta
 
   return (
     <section className="c97-band c97-sheet" data-c97-surface="bone" data-seam="deckle" aria-labelledby="mba-search-elsewhere-heading">
-      <div className="c97-shell space-y-4">
+      <div className="c97-shell" style={{ display: "flex", flexDirection: "column", gap: "var(--c97-sp-2)" }}>
       <SectionLead
         kicker="Search elsewhere"
         title="Open the same search on outside boards."
@@ -839,7 +832,7 @@ function SearchElsewhereStrip({ currentState }: { currentState: MBAJobsSearchSta
         id="mba-search-elsewhere-heading"
       />
       <div className="c97-panel">
-        <div className="flex flex-wrap gap-3">
+        <div className="flex flex-wrap" style={{ gap: "var(--c97-sp-2)" }}>
           {links.map((link) => (
             <CardActionLink
               key={link.label}
@@ -859,7 +852,8 @@ function SearchElsewhereStrip({ currentState }: { currentState: MBAJobsSearchSta
 function JobGridSkeleton() {
   return (
     <div
-      className="grid gap-6 md:grid-cols-2 xl:grid-cols-3"
+      className="grid md:grid-cols-2 xl:grid-cols-3"
+      style={{ gap: "var(--c97-sp-3)" }}
       role="status"
       aria-live="polite"
       aria-label="Loading jobs"
@@ -928,8 +922,10 @@ function NotificationBell({
   if (permission === "granted") {
     return (
       <div
-        className="inline-flex min-h-[48px] items-center gap-2 border px-4 py-2 text-sm font-semibold"
+        className="inline-flex min-h-[48px] items-center border text-sm font-semibold"
         style={{
+          gap: "var(--c97-sp-1)",
+          padding: "var(--c97-sp-1) var(--c97-sp-2)",
           color: "color-mix(in srgb, var(--c97-accent) 78%, var(--c97-ink))",
           borderColor: "color-mix(in srgb, var(--c97-accent) 40%, var(--c97-rule))",
           background: "color-mix(in srgb, var(--c97-accent) 18%, var(--c97-surface))",
@@ -943,8 +939,13 @@ function NotificationBell({
   if (permission === "denied") {
     return (
       <div
-        className="inline-flex min-h-[48px] items-center gap-2 border px-4 py-2 text-sm"
-        style={{ color: "var(--c97-ink-2)", borderColor: "var(--c97-rule)" }}
+        className="inline-flex min-h-[48px] items-center border text-sm"
+        style={{
+          gap: "var(--c97-sp-1)",
+          padding: "var(--c97-sp-1) var(--c97-sp-2)",
+          color: "var(--c97-ink-2)",
+          borderColor: "var(--c97-rule)",
+        }}
       >
         <BellOff className="h-4 w-4" aria-hidden="true" />
         Notifications blocked in browser
@@ -1009,31 +1010,28 @@ function CompanyFilterStrip({
       <button
         type="button"
         onClick={() => setIsExpanded((current) => !current)}
-        className="flex w-full items-start justify-between gap-4 border px-4 py-4 text-left transition-[border-color,background-color] duration-200 ease sm:items-center"
-        style={{
-          borderColor: "var(--c97-rule)",
-          background: "var(--c97-field)",
-        }}
+        className="mba-toggle flex w-full items-start justify-between border text-left transition-[border-color,color] duration-200 ease sm:items-center"
+        style={{ gap: "var(--c97-sp-2)", padding: "var(--c97-sp-2)" }}
         aria-expanded={isExpanded}
         aria-controls="tracked-companies-controls"
       >
-        <span className="block space-y-3">
+        <span style={{ display: "flex", flexDirection: "column", gap: "var(--c97-sp-2)" }}>
           <span className="block">
             <span className="c97-meta" style={{ display: "block" }}>Tracked company feeds</span>
             <span
-              className="mt-2 block text-sm"
-              style={{ color: "var(--c97-ink-2)" }}
+              className="block text-sm"
+              style={{ marginTop: "var(--c97-sp-1)", color: "var(--c97-ink-2)" }}
             >
               {watchedLiveCount} of {totalLiveCount} live boards are in your scan right now.
             </span>
           </span>
-          <span className="flex flex-wrap gap-2">
+          <span className="flex flex-wrap" style={{ gap: "var(--c97-sp-1)" }}>
             <span className="c97-chip">{totalLiveCount} live feeds</span>
             <span className="c97-chip">{watchedLiveCount} watched now</span>
             <span className="c97-chip">{groups.length} company groups</span>
           </span>
         </span>
-        <span className="flex items-center gap-3">
+        <span className="flex items-center" style={{ gap: "var(--c97-sp-2)" }}>
           <span
             className="hidden text-2xs font-semibold uppercase tracking-[0.12em] sm:inline"
             style={{ color: "var(--c97-ink-2)" }}
@@ -1059,9 +1057,9 @@ function CompanyFilterStrip({
       </button>
 
       {isExpanded && (
-        <div id="tracked-companies-controls" className="mt-6">
-          <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-end">
-            <div className="flex flex-wrap items-center gap-2">
+        <div id="tracked-companies-controls" style={{ marginTop: "var(--c97-sp-3)" }}>
+          <div className="flex flex-col lg:flex-row lg:items-center lg:justify-end" style={{ gap: "var(--c97-sp-2)" }}>
+            <div className="flex flex-wrap items-center" style={{ gap: "var(--c97-sp-1)" }}>
               <button
                 type="button"
                 onClick={onSelectAll}
@@ -1080,7 +1078,7 @@ function CompanyFilterStrip({
               </button>
             </div>
           </div>
-          <div className="mt-6 grid gap-4 xl:grid-cols-3">
+          <div className="grid xl:grid-cols-3" style={{ marginTop: "var(--c97-sp-3)", gap: "var(--c97-sp-2)" }}>
             {groups.map((group) => {
               const watchedCount = group.companies.filter((company) => watchedIds.has(company.id)).length;
               const isGroupExpanded = expandedGroups[group.category];
@@ -1097,8 +1095,8 @@ function CompanyFilterStrip({
                 >
                   <button
                     type="button"
-                    className="flex min-h-[44px] w-full items-center justify-between gap-3 px-2 py-1.5 text-left transition-[background-color] duration-150 ease"
-                    style={{ color: "var(--c97-ink)" }}
+                    className="mba-disclosure flex min-h-[44px] w-full items-center justify-between text-left"
+                    style={{ gap: "var(--c97-sp-2)", padding: "var(--c97-sp-1)", color: "var(--c97-ink)" }}
                     aria-expanded={isGroupExpanded}
                     aria-controls={`tracked-companies-panel-${group.category}`}
                     onClick={() =>
@@ -1111,8 +1109,8 @@ function CompanyFilterStrip({
                     <span className="block min-w-0">
                       <span className="c97-meta" style={{ display: "block" }}>{group.label}</span>
                       <span
-                        className="mt-1 block text-xs"
-                        style={{ color: "var(--c97-ink-2)" }}
+                        className="block text-xs"
+                        style={{ marginTop: "var(--c97-sp-1)", color: "var(--c97-ink-2)" }}
                       >
                         {watchedCount} / {group.companies.length} watched
                       </span>
@@ -1128,7 +1126,8 @@ function CompanyFilterStrip({
                   {isGroupExpanded && (
                     <div
                       id={`tracked-companies-panel-${group.category}`}
-                      className="mt-2 grid gap-2 sm:grid-cols-2 xl:grid-cols-2"
+                      className="grid sm:grid-cols-2"
+                      style={{ marginTop: "var(--c97-sp-1)", gap: "var(--c97-sp-1)" }}
                     >
                       {group.companies.map((company) => {
                         const active = watchedIds.has(company.id);
@@ -1137,8 +1136,8 @@ function CompanyFilterStrip({
                             key={company.id}
                             type="button"
                             onClick={() => onToggle(company.id)}
-                            className="inline-flex min-h-[44px] w-full items-center gap-2 border px-3 py-3 text-left text-xs font-semibold transition-[background-color,border-color,color,box-shadow] duration-150 ease"
-                            style={getTrackedCompanyButtonStyle(company, active)}
+                            className="mba-toggle inline-flex min-h-[44px] w-full items-center border text-left text-xs font-semibold transition-[border-color,color] duration-150 ease"
+                            style={{ ...getTrackedCompanyButtonStyle(company, active), gap: "var(--c97-sp-1)", padding: "var(--c97-sp-2)" }}
                             aria-pressed={active}
                           >
                             <span
@@ -1237,9 +1236,9 @@ function AttentionRow({
 
   return (
     <div
-      className="c97-panel flex flex-col gap-3"
+      className="c97-panel flex flex-col" style={{ gap: "var(--c97-sp-2)" }}
     >
-      <div className="flex min-w-0 items-start gap-3">
+      <div className="flex min-w-0 items-start" style={{ gap: "var(--c97-sp-2)" }}>
         {/* The colour is a swatch/mark only — every word beside it prints in ink. */}
         <span
           className="mt-0.5 inline-flex h-8 w-8 shrink-0 items-center justify-center"
@@ -1252,7 +1251,7 @@ function AttentionRow({
           <p className="c97-serif" style={{ fontSize: "var(--c97-fs-body)" }}>
             {application.jobSnapshot.companyName}
           </p>
-          <p className="mb-0 mt-1 text-sm font-semibold" style={{ color: "var(--c97-ink)" }}>
+          <p className="text-sm font-semibold" style={{ margin: 0, marginTop: "var(--c97-sp-1)", color: "var(--c97-ink)" }}>
             {application.jobSnapshot.title}
           </p>
           <p className="c97-meta" style={{ marginTop: "var(--c97-sp-1)" }}>
@@ -1260,7 +1259,7 @@ function AttentionRow({
           </p>
         </div>
       </div>
-      <div className="flex flex-wrap items-center gap-2">
+      <div className="flex flex-wrap items-center" style={{ gap: "var(--c97-sp-1)" }}>
         {isFollowUp ? (
           <button
             type="button"
@@ -1318,7 +1317,7 @@ function NeedsAttentionPanel({
   if (!hasApplications) return null;
 
   return (
-    <section className="space-y-4" aria-labelledby="mba-attention-heading">
+    <section aria-labelledby="mba-attention-heading" style={{ display: "flex", flexDirection: "column", gap: "var(--c97-sp-2)" }}>
       <SectionLead
         kicker="Needs attention"
         title="What to chase today."
@@ -1327,7 +1326,7 @@ function NeedsAttentionPanel({
       />
       <div>
         {items.length === 0 ? (
-          <div className="c97-panel flex items-center gap-3">
+          <div className="c97-panel flex items-center" style={{ gap: "var(--c97-sp-2)" }}>
             <span
               className="inline-flex h-9 w-9 shrink-0 items-center justify-center"
               style={{ background: "var(--c97-positive)", color: "var(--c97-surface)" }}
@@ -1336,7 +1335,7 @@ function NeedsAttentionPanel({
               <CheckCircle2 className="h-5 w-5" />
             </span>
             <div>
-              <p className="mb-0 text-sm font-semibold" style={{ color: "var(--c97-ink)" }}>
+              <p className="text-sm font-semibold" style={{ margin: 0, color: "var(--c97-ink)" }}>
                 You&rsquo;re all caught up.
               </p>
               <p className="c97-prose text-sm" style={{ marginTop: "var(--c97-sp-1)" }}>
@@ -1346,7 +1345,7 @@ function NeedsAttentionPanel({
             </div>
           </div>
         ) : (
-          <ul className="space-y-3" style={{ listStyle: "none", margin: 0, padding: 0 }}>
+          <ul style={{ listStyle: "none", margin: 0, padding: 0, display: "flex", flexDirection: "column", gap: "var(--c97-sp-2)" }}>
             {items.map((item) => (
               <li key={`${item.application.id}-${item.kind}`}>
                 <AttentionRow
@@ -1381,9 +1380,11 @@ function ApplicationCard({
 }) {
   const followUpIsDue =
     application.followUpDate !== null && application.followUpDate <= getTodayDateKey();
+  // Delete is permanent (localStorage, no undo), so it takes a second click.
+  const [confirmingDelete, setConfirmingDelete] = useState(false);
   return (
     <article className="c97-panel">
-      <div className="flex flex-wrap items-start justify-between gap-3">
+      <div className="flex flex-wrap items-start justify-between" style={{ gap: "var(--c97-sp-2)" }}>
         <div className="min-w-0">
           <p className="c97-serif" style={{ fontSize: "var(--c97-fs-body)" }}>
             {application.jobSnapshot.companyName}
@@ -1397,7 +1398,7 @@ function ApplicationCard({
       <p className="c97-prose text-sm" style={{ marginTop: "var(--c97-sp-2)" }}>
         {application.jobSnapshot.department} · {application.jobSnapshot.location}
       </p>
-      <div className="mt-4 flex flex-wrap gap-2">
+      <div className="flex flex-wrap" style={{ marginTop: "var(--c97-sp-2)", gap: "var(--c97-sp-1)" }}>
         <ApplicationStatusChip status={application.status} />
         {application.followUpDate && (
           <ColorTag
@@ -1412,7 +1413,8 @@ function ApplicationCard({
       {application.notes && (
         <p className="c97-prose line-clamp-3 text-sm" style={{ marginTop: "var(--c97-sp-2)" }}>{application.notes}</p>
       )}
-      <div className="mt-4 flex flex-wrap items-center gap-2 border-t border-[var(--c97-rule)] pt-4">
+      <div className="flex flex-wrap items-center border-t border-[var(--c97-rule)]"
+        style={{ marginTop: "var(--c97-sp-2)", gap: "var(--c97-sp-1)", paddingTop: "var(--c97-sp-2)" }}>
         <select
           value={application.status}
           onChange={(event) => onStatusChange(event.target.value as MBAApplicationStatus)}
@@ -1459,10 +1461,24 @@ function ApplicationCard({
             Archive
           </button>
         )}
-        <button type="button" onClick={onRemove} className="c97-btn-ghost mba-ghost">
+        <button
+          type="button"
+          onClick={() => (confirmingDelete ? onRemove() : setConfirmingDelete(true))}
+          className="c97-btn-ghost mba-ghost"
+          style={confirmingDelete ? { color: "var(--c97-negative)" } : undefined}
+        >
           <Trash2 className="h-3.5 w-3.5" aria-hidden="true" />
-          Delete
+          {confirmingDelete ? "Confirm delete" : "Delete"}
         </button>
+        {confirmingDelete && (
+          <button
+            type="button"
+            onClick={() => setConfirmingDelete(false)}
+            className="c97-btn-ghost"
+          >
+            Keep it
+          </button>
+        )}
       </div>
     </article>
   );
@@ -1538,16 +1554,16 @@ function ApplicationPipeline({
 
   return (
     <section className="c97-band c97-sheet" data-c97-surface="paper" data-seam="torn" aria-labelledby="mba-application-pipeline-heading">
-      <div className="c97-shell space-y-4">
+      <div className="c97-shell" style={{ display: "flex", flexDirection: "column", gap: "var(--c97-sp-2)" }}>
       <SectionLead
         kicker="Applications"
         title="Work the pipeline, not another spreadsheet."
         description="Track roles from the live feed, add manual opportunities, and keep follow-ups visible without sending personal application data to the server."
         id="mba-application-pipeline-heading"
       />
-      <div className="c97-panel space-y-6">
-        <div className="flex flex-col gap-3 xl:flex-row xl:items-center xl:justify-between">
-          <div className="grid gap-3 md:grid-cols-[minmax(0,1fr)_220px] xl:min-w-[34rem]">
+      <div className="c97-panel" style={{ display: "flex", flexDirection: "column", gap: "var(--c97-sp-3)" }}>
+        <div className="flex flex-col xl:flex-row xl:items-center xl:justify-between" style={{ gap: "var(--c97-sp-2)" }}>
+          <div className="grid md:grid-cols-[minmax(0,1fr)_220px] xl:min-w-[34rem]" style={{ gap: "var(--c97-sp-2)" }}>
             <div className="relative">
               <Search
                 className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2"
@@ -1557,7 +1573,7 @@ function ApplicationPipeline({
               <input
                 value={query}
                 onChange={(event) => setQuery(event.target.value)}
-                placeholder="Search company, role, notes, contact..."
+                placeholder="Search company, role, notes, contact…"
                 aria-label="Search applications"
                 className="c97-field"
                 style={{ paddingLeft: "2.5rem" }}
@@ -1580,7 +1596,7 @@ function ApplicationPipeline({
             </select>
           </div>
 
-          <div className="flex flex-wrap gap-2">
+          <div className="flex flex-wrap" style={{ gap: "var(--c97-sp-1)" }}>
             <button type="button" onClick={onCreate} className="c97-btn">
               Add application
             </button>
@@ -1630,7 +1646,7 @@ function ApplicationPipeline({
             icon={<Search className="h-5 w-5" aria-hidden="true" />}
           />
         ) : (
-          <div className="grid gap-4 xl:grid-cols-5">
+          <div className="grid xl:grid-cols-5" style={{ gap: "var(--c97-sp-2)" }}>
             {statusesToShow.map((status) => {
               const statusApplications = sortApplicationsForColumn(
                 filteredApplications.filter(
@@ -1638,15 +1654,16 @@ function ApplicationPipeline({
                 )
               );
               return (
-                <div key={status} className="space-y-3">
+                <div key={status} style={{ display: "flex", flexDirection: "column", gap: "var(--c97-sp-2)" }}>
                   <div className="c97-panel flex items-center justify-between">
                     <p className="c97-meta">{MBA_APPLICATION_STATUS_LABELS[status]}</p>
                     <span className="c97-chip">{statusApplications.length}</span>
                   </div>
                   {statusApplications.length === 0 ? (
                     <div
-                      className="border border-dashed p-4 text-sm"
+                      className="border border-dashed text-sm"
                       style={{
+                        padding: "var(--c97-sp-2)",
                         borderColor: "var(--c97-rule)",
                         color: "var(--c97-ink-2)",
                       }}
@@ -1699,7 +1716,7 @@ function SourceHealthPanel({
 
   return (
     <section className="c97-band c97-sheet" data-c97-surface="bone" data-seam="deckle" aria-labelledby="mba-source-health-heading">
-      <div className="c97-shell space-y-4">
+      <div className="c97-shell" style={{ display: "flex", flexDirection: "column", gap: "var(--c97-sp-2)" }}>
       <SectionLead
         kicker="Source health"
         title="Know which feeds answered."
@@ -1707,7 +1724,7 @@ function SourceHealthPanel({
         id="mba-source-health-heading"
       />
       <div className="c97-panel">
-        <div className="flex flex-wrap gap-2">
+        <div className="flex flex-wrap" style={{ gap: "var(--c97-sp-1)" }}>
           <span className="c97-chip">{okCount} healthy</span>
           <span className="c97-chip">{failedCount} failed</span>
           <span className="c97-chip">{skippedCount} manual-only</span>
@@ -1715,7 +1732,7 @@ function SourceHealthPanel({
             <span className="c97-chip">{externalDisabledCount} external disabled</span>
           )}
         </div>
-        <div className="mt-4 flex flex-wrap gap-2">
+        <div className="flex flex-wrap" style={{ marginTop: "var(--c97-sp-2)", gap: "var(--c97-sp-1)" }}>
           {sourceStatuses.map((source) => {
             const accent =
               source.status === "ok"
@@ -2070,7 +2087,7 @@ export function MBAJobsClient({
 
       <section className="c97-band c97-sheet" data-c97-surface="paper" data-seam="torn">
         <div className="c97-shell" style={{ display: "flex", flexDirection: "column", gap: "var(--c97-sp-4)" }}>
-          <div className="flex flex-wrap items-center gap-3">
+          <div className="flex flex-wrap items-center" style={{ gap: "var(--c97-sp-2)" }}>
             <button
               type="button"
               onClick={refresh}
@@ -2078,7 +2095,7 @@ export function MBAJobsClient({
               className="c97-btn-ghost mba-ghost disabled:opacity-50"
             >
               <RefreshCcw
-                className={`h-4 w-4 ${isLoading ? "animate-spin" : ""}`}
+                className={`h-4 w-4 ${isLoading ? "motion-safe:animate-spin" : ""}`}
                 aria-hidden="true"
               />
               {isLoading ? "Loading…" : "Refresh now"}
@@ -2136,7 +2153,7 @@ export function MBAJobsClient({
         <>
 
           <section className="c97-band c97-sheet" data-c97-surface="paper" data-seam="torn" aria-labelledby="mba-role-tracker-filters-heading">
-            <div className="c97-shell space-y-4">
+            <div className="c97-shell" style={{ display: "flex", flexDirection: "column", gap: "var(--c97-sp-2)" }}>
               {fetchErrors.length > 0 && !isLoading && (
                 <div
                   className="c97-panel"
@@ -2159,8 +2176,9 @@ export function MBAJobsClient({
             <div
               className="c97-panel"
             >
-              <div className="space-y-6">
-                <div className="grid gap-3 xl:grid-cols-[minmax(0,1.15fr)_minmax(240px,0.85fr)_auto] xl:items-center">
+              <div style={{ display: "flex", flexDirection: "column", gap: "var(--c97-sp-3)" }}>
+                <div className="grid xl:grid-cols-[minmax(0,1.15fr)_minmax(240px,0.85fr)_auto] xl:items-center"
+                  style={{ gap: "var(--c97-sp-2)" }}>
                   <div className="relative">
                     <Search
                       className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2"
@@ -2172,7 +2190,7 @@ export function MBAJobsClient({
                       type="text"
                       value={uiState.q}
                       onChange={(event) => updateRouteState({ q: event.target.value })}
-                      placeholder="Search PM, PMM, strategy, ops, growth, finance..."
+                      placeholder="Search PM, PMM, strategy, ops, growth, finance…"
                       aria-label="Search roles"
                       className="c97-field"
                       style={{ paddingLeft: "2.5rem", paddingRight: "2.5rem" }}
@@ -2204,7 +2222,7 @@ export function MBAJobsClient({
                       type="text"
                       value={uiState.location}
                       onChange={(event) => updateRouteState({ location: event.target.value })}
-                      placeholder="Remote, New York, San Francisco..."
+                      placeholder="Remote, New York, San Francisco…"
                       aria-label="Filter by location"
                       className="c97-field"
                       style={{ paddingLeft: "2.5rem", paddingRight: "2.5rem" }}
@@ -2225,7 +2243,7 @@ export function MBAJobsClient({
                     )}
                   </div>
 
-                  <div className="flex flex-wrap gap-2">
+                  <div className="flex flex-wrap" style={{ gap: "var(--c97-sp-1)" }}>
                     <SortDropdown
                       value={uiState.sort}
                       onValueChange={(sort) => updateRouteState({ sort })}
@@ -2244,17 +2262,18 @@ export function MBAJobsClient({
 
                 {locationOptions.length > 0 && (
                   <div
-                    className=" border px-4 py-4"
+                    className="border"
                     style={{
+                      padding: "var(--c97-sp-2)",
                       borderColor: "var(--c97-rule)",
                       background: "var(--c97-field)",
                     }}
                   >
-                    <div className="flex flex-wrap items-center justify-between gap-2">
+                    <div className="flex flex-wrap items-center justify-between" style={{ gap: "var(--c97-sp-1)" }}>
                       <p className="c97-meta">Popular locations</p>
                       <p
-                        className="mb-0 text-1xs"
-                        style={{ color: "var(--c97-ink-2)" }}
+                        className="text-1xs"
+                        style={{ margin: 0, color: "var(--c97-ink-2)" }}
                       >
                         {matchingRoleCount} roles before location filtering
                       </p>
@@ -2288,9 +2307,12 @@ export function MBAJobsClient({
                   </div>
                 )}
 
-                <div className="space-y-4 border-t border-[var(--c97-rule)] pt-6">
-                  <div className="space-y-2">
-                    <p className="c97-meta" style={{ marginBottom: "var(--c97-sp-1)" }}>Role type</p>
+                <div
+                  className="border-t border-[var(--c97-rule)]"
+                  style={{ display: "flex", flexDirection: "column", gap: "var(--c97-sp-2)", paddingTop: "var(--c97-sp-3)" }}
+                >
+                  <div style={{ display: "flex", flexDirection: "column", gap: "var(--c97-sp-1)" }}>
+                    <p className="c97-meta">Role type</p>
                     <div className="c97-segmented" role="group" aria-label="Filter by role type">
                       {ROLE_TYPE_OPTIONS.map((roleType) => (
                         <button
@@ -2308,8 +2330,8 @@ export function MBAJobsClient({
                     </div>
                   </div>
 
-                  <div className="space-y-2">
-                    <p className="c97-meta" style={{ marginBottom: "var(--c97-sp-1)" }}>Role family</p>
+                  <div style={{ display: "flex", flexDirection: "column", gap: "var(--c97-sp-1)" }}>
+                    <p className="c97-meta">Role family</p>
                     <div
                       className="c97-segmented"
                       role="group"
@@ -2331,8 +2353,8 @@ export function MBAJobsClient({
                     </div>
                   </div>
 
-                  <div className="space-y-2">
-                    <p className="c97-meta" style={{ marginBottom: "var(--c97-sp-1)" }}>Company category</p>
+                  <div style={{ display: "flex", flexDirection: "column", gap: "var(--c97-sp-1)" }}>
+                    <p className="c97-meta">Company category</p>
                     <div
                       className="c97-segmented"
                       role="group"
@@ -2354,8 +2376,8 @@ export function MBAJobsClient({
                     </div>
                   </div>
 
-                  <div className="space-y-2">
-                    <p className="c97-meta" style={{ marginBottom: "var(--c97-sp-1)" }}>Sources</p>
+                  <div style={{ display: "flex", flexDirection: "column", gap: "var(--c97-sp-1)" }}>
+                    <p className="c97-meta">Sources</p>
                     <div className="c97-segmented" role="group" aria-label="External lead sources">
                       {(["off", "on"] as const).map((external) => (
                         <button
@@ -2373,7 +2395,8 @@ export function MBAJobsClient({
                 </div>
 
                 {activeFilters && (
-                  <div className="flex flex-wrap items-center gap-2 border-t border-[var(--c97-rule)] pt-6">
+                  <div className="flex flex-wrap items-center border-t border-[var(--c97-rule)]"
+                    style={{ gap: "var(--c97-sp-1)", paddingTop: "var(--c97-sp-3)" }}>
                     {uiState.q.trim() && (
                       <ColorTag accent="var(--c97-ink)" label={`Search: ${uiState.q.trim()}`} />
                     )}
@@ -2417,7 +2440,7 @@ export function MBAJobsClient({
           <SearchElsewhereStrip currentState={uiState} />
 
           <section className="c97-band c97-sheet" data-c97-surface="paper" data-seam="torn" aria-labelledby="mba-role-tracker-companies-heading">
-            <div className="c97-shell space-y-4">
+            <div className="c97-shell" style={{ display: "flex", flexDirection: "column", gap: "var(--c97-sp-2)" }}>
             <SectionLead
               kicker="Tracked companies"
               title="Choose which live feeds stay in view."
@@ -2434,7 +2457,7 @@ export function MBAJobsClient({
           </section>
 
           <section className="c97-band c97-sheet" data-c97-surface="bone" data-seam="deckle" aria-labelledby="mba-role-tracker-roles-heading">
-            <div className="c97-shell space-y-4">
+            <div className="c97-shell" style={{ display: "flex", flexDirection: "column", gap: "var(--c97-sp-2)" }}>
             <SectionLead
               kicker="Live roles"
               title="Current openings across the tracked boards."
@@ -2443,7 +2466,7 @@ export function MBAJobsClient({
             />
             {!isLoading && (
               <div
-                className="flex flex-wrap gap-2"
+                className="flex flex-wrap" style={{ gap: "var(--c97-sp-1)" }}
                 role="status"
                 aria-live="polite"
                 aria-atomic="true"
@@ -2466,12 +2489,20 @@ export function MBAJobsClient({
             {isLoading ? (
               <JobGridSkeleton />
             ) : error ? (
-              <StatusPanel
-                title="Could not load jobs."
-                message={error}
-                tone="error"
-                icon={<CircleAlert className="h-5 w-5" aria-hidden="true" />}
-              />
+              <>
+                <StatusPanel
+                  title="Could not load jobs."
+                  message={error}
+                  tone="error"
+                  icon={<CircleAlert className="h-5 w-5" aria-hidden="true" />}
+                />
+                <div className="flex justify-center">
+                  <button type="button" onClick={refresh} className="c97-btn-ghost mba-ghost">
+                    <RefreshCcw className="h-4 w-4" aria-hidden="true" />
+                    Try again
+                  </button>
+                </div>
+              </>
             ) : displayJobs.length === 0 ? (
               <StatusPanel
                 title="No roles found right now."
@@ -2481,7 +2512,8 @@ export function MBAJobsClient({
             ) : (
               <>
                 <div
-                  className="grid gap-6 md:grid-cols-2 xl:grid-cols-3"
+                  className="grid md:grid-cols-2 xl:grid-cols-3"
+      style={{ gap: "var(--c97-sp-3)" }}
                   data-testid="live-jobs-grid"
                 >
                   {visibleJobs.map((job) => {
@@ -2529,7 +2561,7 @@ export function MBAJobsClient({
 
           {manualCompanies.length > 0 && (
             <section className="c97-band c97-sheet" data-c97-surface="paper" data-seam="torn" aria-labelledby="mba-role-tracker-manual-heading">
-              <div className="c97-shell space-y-4">
+              <div className="c97-shell" style={{ display: "flex", flexDirection: "column", gap: "var(--c97-sp-2)" }}>
               <SectionLead
                 kicker="Manual checks"
                 title="Fallback paths for companies without stable public feeds."
@@ -2537,7 +2569,8 @@ export function MBAJobsClient({
                 id="mba-role-tracker-manual-heading"
               />
               <div
-                className="grid gap-6 md:grid-cols-2 xl:grid-cols-3"
+                className="grid md:grid-cols-2 xl:grid-cols-3"
+      style={{ gap: "var(--c97-sp-3)" }}
                 data-testid="manual-checks-grid"
               >
                 {manualCompanies.map((c) => (

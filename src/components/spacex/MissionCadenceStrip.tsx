@@ -42,7 +42,7 @@ export function MissionCadenceStrip({ cadence }: MissionCadenceStripProps) {
           />
         ))}
       </div>
-      <div className="mt-2 flex items-center justify-between gap-3 font-mono text-3xs uppercase tracking-[0.1em] text-[var(--c97-ink-2)]">
+      <div className="flex items-center justify-between font-mono text-3xs uppercase tracking-[0.1em] text-[var(--c97-ink-2)]" style={{ marginTop: "var(--c97-sp-1)", gap: "var(--c97-sp-1)" }}>
         <span>Launches / month</span>
         <span>{cadence.rangeLabel}</span>
       </div>

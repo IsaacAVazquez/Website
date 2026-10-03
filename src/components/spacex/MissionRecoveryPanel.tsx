@@ -26,11 +26,11 @@ export function MissionRecoveryPanel({ launchDetails }: MissionRecoveryPanelProp
 
   if (!recovery) {
     return (
-      <div className="border border-dashed border-[var(--c97-rule)] bg-[var(--c97-surface)] px-5 py-10 text-center">
+      <div className="border border-dashed border-[var(--c97-rule)] bg-[var(--c97-surface)] text-center" style={{ paddingInline: "var(--c97-sp-2)", paddingBlock: "var(--c97-sp-4)" }}>
         <p className="text-lg font-semibold text-[var(--c97-ink)]">
           No recovery data in the current snapshot.
         </p>
-        <p className="mx-auto mt-2 max-w-[54ch] text-sm leading-6 text-[var(--c97-ink-2)]">
+        <p className="mx-auto max-w-[54ch] text-sm leading-6 text-[var(--c97-ink-2)]" style={{ marginTop: "var(--c97-sp-1)" }}>
           Launch Library&apos;s booster/landing records aren&apos;t populated for any mission this
           snapshot currently hydrates. The normalizer already maps that data whenever upstream
           provides it, so this panel will fill in on its own the next time a refresh picks up
@@ -41,7 +41,7 @@ export function MissionRecoveryPanel({ launchDetails }: MissionRecoveryPanelProp
   }
 
   return (
-    <div className="grid gap-4 lg:grid-cols-[320px_minmax(0,1fr)] lg:items-start">
+    <div className="grid lg:grid-cols-[320px_minmax(0,1fr)] lg:items-start" style={{ gap: "var(--c97-sp-2)" }}>
       <div className="border border-[var(--c97-rule)] bg-[var(--c97-surface)]">
         <h3 className="px-4 pt-4 text-base font-bold tracking-[-0.01em] text-[var(--c97-ink)] sm:px-5">
           Recovery split
@@ -51,7 +51,7 @@ export function MissionRecoveryPanel({ launchDetails }: MissionRecoveryPanelProp
         </p>
         <div className="space-y-2.5 px-4 py-4 sm:px-5">
           {recovery.split.map((bucket) => (
-            <div key={bucket.label} className="grid grid-cols-[88px_1fr_auto] items-center gap-3">
+            <div key={bucket.label} className="grid grid-cols-[88px_1fr_auto] items-center" style={{ gap: "var(--c97-sp-1)" }}>
               <span className="font-mono text-2xs uppercase tracking-[0.04em] text-[var(--c97-ink-2)]">
                 {bucket.label}
               </span>
@@ -83,7 +83,7 @@ export function MissionRecoveryPanel({ launchDetails }: MissionRecoveryPanelProp
           {recovery.fleetLeaders.map((leader, index) => (
             <div
               key={leader.serial}
-              className="grid grid-cols-[22px_minmax(0,1fr)_auto_auto] items-center gap-3 border-b border-[color-mix(in_srgb,var(--c97-rule)_50%,transparent)] py-3 last:border-b-0"
+              className="grid grid-cols-[22px_minmax(0,1fr)_auto_auto] items-center border-b border-[color-mix(in_srgb,var(--c97-rule)_50%,transparent)] last:border-b-0" style={{ paddingBlock: "var(--c97-sp-1)", gap: "var(--c97-sp-1)" }}
             >
               <span className="font-mono text-sm text-[var(--c97-ink-2)]">{index + 1}</span>
               <span className="truncate font-mono text-sm text-[var(--c97-ink)]">

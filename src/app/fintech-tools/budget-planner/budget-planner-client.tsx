@@ -97,6 +97,9 @@ export function BudgetPlannerClient() {
     ? expenseDraft.categoryId
     : activeMonth.categories[0]?.id ?? "";
 
+  // An amount that is typed but not above zero would log a $0 expense, so say so at the field.
+  const amountInvalid = expenseDraft.amount.trim() !== "" && !(Number(expenseDraft.amount) > 0);
+
   const monthLabel = formatBudgetMonthLabel(activeMonthKey);
   const totalIncome = activeMonth.income;
   const totalExpenses = summary.spentTotal;
@@ -147,7 +150,7 @@ export function BudgetPlannerClient() {
 
   function handleExpenseSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    if (!resolvedExpenseCategoryId) return;
+    if (!resolvedExpenseCategoryId || amountInvalid) return;
 
     const payload = {
       categoryId: resolvedExpenseCategoryId,
@@ -463,6 +466,8 @@ export function BudgetPlannerClient() {
                 <input
                   ref={amountInputRef}
                   aria-label="Expense amount"
+                  aria-invalid={amountInvalid || undefined}
+                  aria-describedby={amountInvalid ? "budget-expense-amount-error" : undefined}
                   type="number"
                   min="0"
                   step="0.01"
@@ -472,6 +477,11 @@ export function BudgetPlannerClient() {
                   }
                   className="c97-field c97-mono"
                 />
+                {amountInvalid ? (
+                  <span id="budget-expense-amount-error" className="c97-meta" style={{ display: "block", marginTop: "var(--c97-sp-1)" }}>
+                    Enter an amount above zero.
+                  </span>
+                ) : null}
               </label>
               <label style={{ display: "block" }}>
                 <span className="c97-kicker">Date</span>
@@ -497,7 +507,7 @@ export function BudgetPlannerClient() {
               <div className="flex" style={{ gap: "var(--c97-sp-2)" }}>
                 <button
                   type="submit"
-                  disabled={!resolvedExpenseCategoryId || !expenseDraft.amount || !expenseDraft.date}
+                  disabled={!resolvedExpenseCategoryId || !expenseDraft.amount || amountInvalid || !expenseDraft.date}
                   className="c97-btn c97-offset"
                   aria-describedby={
                     activeMonth.categories.length === 0 ? "budget-expense-needs-category" : undefined

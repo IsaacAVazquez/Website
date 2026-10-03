@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useId, useMemo, useState } from "react";
 import {
   BedDouble,
   Bus,
@@ -309,14 +309,14 @@ export function TravelDealLabClient() {
 
       <section className="c97-band c97-sheet" data-c97-surface="paper" data-seam="torn" data-testid="travel-deals-shell">
         <div className="c97-shell">
-          <div className="grid gap-8 lg:grid-cols-[minmax(0,360px)_minmax(0,1fr)]">
-            <div className="space-y-4">
+          <div className="grid lg:grid-cols-[minmax(0,360px)_minmax(0,1fr)]" style={{ gap: "var(--c97-sp-4)" }}>
+            <div style={{ display: "flex", flexDirection: "column", gap: "var(--c97-sp-2)" }}>
               <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-2)", display: "flex", alignItems: "center", gap: "var(--c97-sp-1)" }}>
                 <Compass size={14} aria-hidden="true" />
                 Your trip
               </p>
 
-              <label className="grid gap-1.5">
+              <label className="grid" style={{ gap: "var(--c97-sp-1)" }}>
                 <span className="c97-kicker">Destination region</span>
                 <select
                   value={state.regionId}
@@ -331,7 +331,7 @@ export function TravelDealLabClient() {
                 </select>
               </label>
 
-              <label className="grid gap-1.5">
+              <label className="grid" style={{ gap: "var(--c97-sp-1)" }}>
                 <span className="c97-kicker">Departure date</span>
                 <input
                   type="date"
@@ -341,23 +341,14 @@ export function TravelDealLabClient() {
                 />
               </label>
 
-              <label className="grid gap-1.5">
-                <span className="c97-kicker">Quoted fare, whole party (USD)</span>
-                <input
-                  type="number"
-                  inputMode="numeric"
-                  min={0}
-                  max={MAX_PARTY_FARE}
-                  step={25}
-                  value={quotedFare}
-                  onChange={(event) => {
-                    const next = Number(event.target.value);
-                    if (!Number.isFinite(next)) return;
-                    setQuotedFare(Math.min(MAX_PARTY_FARE, Math.max(0, next)));
-                  }}
-                  className="c97-field"
-                />
-              </label>
+              <NumberField
+                label="Quoted fare, whole party (USD)"
+                value={quotedFare}
+                min={0}
+                max={MAX_PARTY_FARE}
+                step={25}
+                onChange={setQuotedFare}
+              />
 
               <div className="grid grid-cols-2" style={{ gap: "var(--c97-sp-3)" }}>
                 <NumberField
@@ -391,7 +382,7 @@ export function TravelDealLabClient() {
               </p>
             </div>
 
-            <div className="space-y-6">
+            <div style={{ display: "flex", flexDirection: "column", gap: "var(--c97-sp-3)" }}>
               <div>
                 <h2 className="c97-serif c97-h3">{booking.headline}</h2>
                 <p className="c97-prose" style={{ marginTop: "var(--c97-sp-2)" }}>
@@ -456,7 +447,7 @@ export function TravelDealLabClient() {
                     </tr>
                   </tbody>
                 </table>
-                <p className="c97-meta" style={{ marginTop: "var(--c97-sp-2)" }}>
+                <p className="c97-meta c97-tabular" style={{ marginTop: "var(--c97-sp-2)" }}>
                   {budget.days} days · {budget.travelers} traveler{budget.travelers === 1 ? "" : "s"}
                 </p>
               </div>
@@ -467,8 +458,8 @@ export function TravelDealLabClient() {
 
       <section className="c97-band c97-sheet" data-c97-surface="bone" data-seam="deckle">
         <div className="c97-shell">
-          <div className="grid gap-8 lg:grid-cols-2">
-            <div className="space-y-4">
+          <div className="grid lg:grid-cols-2" style={{ gap: "var(--c97-sp-4)" }}>
+            <div style={{ display: "flex", flexDirection: "column", gap: "var(--c97-sp-2)" }}>
               <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-2)", display: "flex", alignItems: "center", gap: "var(--c97-sp-1)" }}>
                 <Coins size={14} aria-hidden="true" />
                 Cash or points
@@ -506,7 +497,7 @@ export function TravelDealLabClient() {
               />
             </div>
 
-            <div className="space-y-4">
+            <div style={{ display: "flex", flexDirection: "column", gap: "var(--c97-sp-2)" }}>
               {points && pointsUsed > 0 ? (
                 <>
                   <dl className="c97-stat">
@@ -532,13 +523,13 @@ export function TravelDealLabClient() {
       </section>
 
       <section className="c97-band c97-sheet" data-c97-surface="paper" data-seam="torn">
-        <div className="c97-shell space-y-6">
-          <div className="flex flex-wrap items-end justify-between gap-3">
+        <div className="c97-shell" style={{ display: "flex", flexDirection: "column", gap: "var(--c97-sp-3)" }}>
+          <div className="flex flex-wrap items-end justify-between" style={{ gap: "var(--c97-sp-2)" }}>
             <div>
               <p className="c97-kicker">The playbook</p>
               <h2 className="c97-poster-sm">How to actually find the deals</h2>
             </div>
-            <span className="c97-meta">
+            <span className="c97-meta c97-tabular">
               {appliedCount} of {DEAL_TACTICS.length} applied
             </span>
           </div>
@@ -572,7 +563,7 @@ export function TravelDealLabClient() {
       </section>
 
       <section className="c97-band c97-sheet" data-c97-surface="bone" data-seam="deckle">
-        <div className="c97-shell space-y-4">
+        <div className="c97-shell" style={{ display: "flex", flexDirection: "column", gap: "var(--c97-sp-2)" }}>
           <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-2)" }}>The toolkit</p>
           <h2 className="c97-poster-sm">Where I actually search</h2>
 
@@ -630,25 +621,56 @@ interface NumberFieldProps {
   onChange: (value: number) => void;
 }
 
+/**
+ * A number input that lets the field go blank while someone retypes it. The
+ * text they type stays as typed, the value it commits is clamped to the range,
+ * and a note under the field says when the clamp changed what they typed.
+ * Leaving the field puts the committed value back in it.
+ */
 function NumberField({ label, value, min, max, step = 1, onChange }: NumberFieldProps) {
+  const [draft, setDraft] = useState(String(value));
+  const [committed, setCommitted] = useState(value);
+  if (committed !== value) {
+    // The value changed from outside (a saved trip loading), so show it.
+    setCommitted(value);
+    setDraft(String(value));
+  }
+  const typed = draft.trim() === "" ? null : Number(draft);
+  const clamped = typed !== null && Number.isFinite(typed) && typed !== value;
+  const noteId = useId();
+
   return (
-    <label className="grid gap-1.5">
-      <span className="c97-kicker">{label}</span>
-      <input
-        type="number"
-        inputMode="numeric"
-        min={min}
-        max={max}
-        step={step}
-        value={value}
-        onChange={(event) => {
-          const next = Number(event.target.value);
-          if (!Number.isFinite(next)) return;
-          onChange(Math.min(max, Math.max(min, next)));
-        }}
-        className="c97-field c97-mono"
-      />
-    </label>
+    <div className="grid" style={{ gap: "var(--c97-sp-1)" }}>
+      <label className="grid" style={{ gap: "var(--c97-sp-1)" }}>
+        <span className="c97-kicker">{label}</span>
+        <input
+          type="number"
+          inputMode="numeric"
+          min={min}
+          max={max}
+          step={step}
+          value={draft}
+          aria-describedby={clamped ? noteId : undefined}
+          onChange={(event) => {
+            const raw = event.target.value;
+            setDraft(raw);
+            const next = Number(raw);
+            if (raw.trim() === "" || !Number.isFinite(next)) return;
+            const bounded = Math.min(max, Math.max(min, next));
+            setCommitted(bounded);
+            onChange(bounded);
+          }}
+          onBlur={() => setDraft(String(value))}
+          className="c97-field c97-mono"
+        />
+      </label>
+      {clamped ? (
+        <p id={noteId} className="c97-prose" style={{ fontSize: "var(--c97-fs-small)", color: "var(--c97-ink-2)" }}>
+          This runs from {min.toLocaleString("en-US")} to {max.toLocaleString("en-US")}, so I&rsquo;m using{" "}
+          {value.toLocaleString("en-US")}.
+        </p>
+      ) : null}
+    </div>
   );
 }
 
@@ -662,7 +684,7 @@ function TacticCard({ tactic, checked, onToggle }: TacticCardProps) {
   const Icon = CATEGORY_ICON[tactic.category];
   return (
     <article className="c97-panel" style={{ display: "flex", flexDirection: "column", gap: "var(--c97-sp-3)", height: "100%" }}>
-      <div className="flex items-center justify-between gap-2">
+      <div className="flex items-center justify-between" style={{ gap: "var(--c97-sp-1)" }}>
         <span className="c97-meta" style={{ display: "flex", alignItems: "center", gap: "var(--c97-sp-1)" }}>
           <Icon size={14} aria-hidden="true" />
           {CATEGORY_LABELS[tactic.category]}

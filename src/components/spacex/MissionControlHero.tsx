@@ -109,7 +109,7 @@ function MissionCountdown({
         <p
           data-testid="mission-liftoff-note"
           role="status"
-          className="inline-flex min-h-[44px] items-center gap-2 border border-[var(--c97-rule)] bg-[var(--c97-field)] px-4 py-2 text-sm font-semibold text-[var(--c97-ink)]"
+          className="inline-flex min-h-[44px] items-center border border-[var(--c97-rule)] bg-[var(--c97-field)] text-sm font-semibold text-[var(--c97-ink)]" style={{ paddingInline: "var(--c97-sp-2)", paddingBlock: "var(--c97-sp-1)", gap: "var(--c97-sp-1)" }}
         >
           <Rocket aria-hidden="true" className="h-4 w-4 text-[var(--c97-accent)]" />
           T-0 by the schedule. The snapshot can&apos;t tell me whether it flew.
@@ -124,7 +124,7 @@ function MissionCountdown({
       role="timer"
       aria-live="polite"
       aria-label={`Time to launch: ${countdown}`}
-      className="inline-flex min-h-[44px] items-center gap-2 border border-[color-mix(in_srgb,var(--c97-positive)_38%,var(--c97-rule))] bg-[color-mix(in_srgb,var(--c97-positive)_12%,var(--c97-field))] px-4 py-2 font-mono text-sm font-semibold tracking-[0.16em] text-[var(--c97-ink)]"
+      className="inline-flex min-h-[44px] items-center border border-[color-mix(in_srgb,var(--c97-positive)_38%,var(--c97-rule))] bg-[color-mix(in_srgb,var(--c97-positive)_12%,var(--c97-field))] font-mono text-sm font-semibold tracking-[0.16em] text-[var(--c97-ink)]" style={{ paddingInline: "var(--c97-sp-2)", paddingBlock: "var(--c97-sp-1)", gap: "var(--c97-sp-1)" }}
     >
       <Radar aria-hidden="true" className="h-4 w-4 text-[color-mix(in_srgb,var(--c97-positive)_60%,var(--c97-ink))]" />
       {countdown}
@@ -150,7 +150,7 @@ export function MissionControlHero({
         aria-label="Next launch hero"
         className="c97-panel"
       >
-        <div className="grid gap-6 lg:grid-cols-[minmax(0,1.25fr)_220px]">
+        <div className="grid lg:grid-cols-[minmax(0,1.25fr)_220px]" style={{ gap: "var(--c97-sp-3)" }}>
           <div className="space-y-3">
             <span className="c97-skeleton" style={{ height: 16, width: 128 }} />
             <span className="c97-skeleton" style={{ height: 48 }} />
@@ -170,7 +170,7 @@ export function MissionControlHero({
         aria-label="Next launch hero"
         className="c97-panel"
       >
-        <div className="flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
+        <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between" style={{ gap: "var(--c97-sp-2)" }}>
           <div className="space-y-3">
             <p className="font-mono text-2xs font-semibold uppercase tracking-[0.22em] text-[var(--c97-label)]">
               Mission control unavailable
@@ -186,7 +186,7 @@ export function MissionControlHero({
           <button
             type="button"
             onClick={onRetry}
-            className="tap-target inline-flex border border-[var(--c97-rule)] bg-[var(--c97-surface)] px-5 py-3 text-sm font-semibold text-[var(--c97-ink)] transition hover:border-[var(--c97-accent)] hover:text-[var(--c97-accent)]"
+            className="tap-target inline-flex border border-[var(--c97-rule)] bg-[var(--c97-surface)] text-sm font-semibold text-[var(--c97-ink)] transition hover:border-[var(--c97-accent)] hover:text-[var(--c97-accent)]" style={{ paddingInline: "var(--c97-sp-2)", paddingBlock: "var(--c97-sp-1)" }}
           >
             Retry live data
           </button>
@@ -207,13 +207,13 @@ export function MissionControlHero({
       aria-label="Next launch hero"
       className="c97-panel overflow-hidden"
     >
-      <div className="grid gap-5 lg:grid-cols-[minmax(0,1.24fr)_220px]">
+      <div className="grid lg:grid-cols-[minmax(0,1.24fr)_220px]" style={{ gap: "var(--c97-sp-2)" }}>
         <div className="min-w-0">
-          <div className="flex flex-wrap items-center gap-3">
-            <span className="border border-[var(--c97-rule)] bg-[color-mix(in_srgb,var(--c97-surface)_78%,transparent)] px-3 py-1 font-mono text-2xs font-semibold uppercase tracking-[0.22em] text-[var(--c97-accent)]">
+          <div className="flex flex-wrap items-center" style={{ gap: "var(--c97-sp-1)" }}>
+            <span className="border border-[var(--c97-rule)] bg-[color-mix(in_srgb,var(--c97-surface)_78%,transparent)] py-1 font-mono text-2xs font-semibold uppercase tracking-[0.22em] text-[var(--c97-accent)]" style={{ paddingInline: "var(--c97-sp-1)" }}>
               {summary?.heroMode === "fallback" ? "Latest completed mission" : "Next mission"}
             </span>
-            <span className="border border-[var(--c97-rule)] bg-[var(--c97-field)] px-3 py-1 text-xs font-medium text-[var(--c97-ink-2)]">
+            <span className="border border-[var(--c97-rule)] bg-[var(--c97-field)] py-1 text-xs font-medium text-[var(--c97-ink-2)]" style={{ paddingInline: "var(--c97-sp-1)" }}>
               Flight #{heroLaunch.flightNumber}
             </span>
           </div>
@@ -222,62 +222,62 @@ export function MissionControlHero({
             {heroLaunch.name}
           </h2>
 
-          <div className="mt-4 flex flex-wrap gap-3">
+          <div className="flex flex-wrap" style={{ marginTop: "var(--c97-sp-2)", gap: "var(--c97-sp-1)" }}>
             {heroLaunch.hasExactTime ? (
               <MissionCountdown
                 dateUtc={heroLaunch.dateUtc}
                 initialNow={renderTimestampMs}
               />
             ) : (
-              <div className="inline-flex min-h-[44px] items-center gap-2 border border-[var(--c97-rule)] bg-[var(--c97-field)] px-4 py-2 text-sm font-semibold text-[var(--c97-ink)]">
+              <div className="inline-flex min-h-[44px] items-center border border-[var(--c97-rule)] bg-[var(--c97-field)] text-sm font-semibold text-[var(--c97-ink)]" style={{ paddingInline: "var(--c97-sp-2)", paddingBlock: "var(--c97-sp-1)", gap: "var(--c97-sp-1)" }}>
                 <Clock3 className="h-4 w-4 text-[var(--c97-accent)]" />
                 {formatMissionScheduleLabel(heroLaunch)}
               </div>
             )}
           </div>
 
-          <div className="mt-5 grid gap-3 sm:grid-cols-2 xl:max-w-[700px] xl:grid-cols-4">
-            <div className="border border-[var(--c97-rule)] bg-[var(--c97-field)]/90 p-3.5">
+          <div className="grid sm:grid-cols-2 xl:max-w-[700px] xl:grid-cols-4" style={{ marginTop: "var(--c97-sp-2)", gap: "var(--c97-sp-1)" }}>
+            <div className="border border-[var(--c97-rule)] bg-[var(--c97-field)]/90" style={{ padding: "var(--c97-sp-2)" }}>
               <p className="font-mono text-3xs font-semibold uppercase tracking-[0.2em] text-[var(--c97-label)]">
                 Rocket
               </p>
-              <p className="mt-2 text-sm font-semibold text-[var(--c97-ink)]">
+              <p className="text-sm font-semibold text-[var(--c97-ink)]" style={{ marginTop: "var(--c97-sp-1)" }}>
                 {heroLaunch.rocketName ?? "Unspecified"}
               </p>
             </div>
-            <div className="border border-[var(--c97-rule)] bg-[var(--c97-field)]/90 p-3.5">
+            <div className="border border-[var(--c97-rule)] bg-[var(--c97-field)]/90" style={{ padding: "var(--c97-sp-2)" }}>
               <p className="font-mono text-3xs font-semibold uppercase tracking-[0.2em] text-[var(--c97-label)]">
                 Launchpad
               </p>
-              <p className="mt-2 text-sm font-semibold text-[var(--c97-ink)]">
+              <p className="text-sm font-semibold text-[var(--c97-ink)]" style={{ marginTop: "var(--c97-sp-1)" }}>
                 {heroLaunch.launchpadName ?? "Unspecified"}
               </p>
             </div>
-            <div className="border border-[var(--c97-rule)] bg-[var(--c97-field)]/90 p-3.5">
+            <div className="border border-[var(--c97-rule)] bg-[var(--c97-field)]/90" style={{ padding: "var(--c97-sp-2)" }}>
               <p className="font-mono text-3xs font-semibold uppercase tracking-[0.2em] text-[var(--c97-label)]">
                 Payloads
               </p>
-              <p className="mt-2 text-sm font-semibold text-[var(--c97-ink)]">
+              <p className="text-sm font-semibold text-[var(--c97-ink)]" style={{ marginTop: "var(--c97-sp-1)" }}>
                 {heroLaunch.payloadCount}
               </p>
             </div>
-            <div className="border border-[var(--c97-rule)] bg-[var(--c97-field)]/90 p-3.5">
+            <div className="border border-[var(--c97-rule)] bg-[var(--c97-field)]/90" style={{ padding: "var(--c97-sp-2)" }}>
               <p className="font-mono text-3xs font-semibold uppercase tracking-[0.2em] text-[var(--c97-label)]">
                 Location
               </p>
-              <p className="mt-2 text-sm font-semibold text-[var(--c97-ink)]">
+              <p className="text-sm font-semibold text-[var(--c97-ink)]" style={{ marginTop: "var(--c97-sp-1)" }}>
                 {heroLaunch.launchpadLocation ?? "Pending"}
               </p>
             </div>
           </div>
 
           {summary?.heroMessage && (
-            <div className="mt-5 border border-[color-mix(in_srgb,var(--c97-warning)_28%,var(--c97-rule))] bg-[color-mix(in_srgb,var(--c97-warning)_10%,var(--c97-surface))] px-4 py-3 text-sm leading-6 text-[var(--c97-ink-2)]">
+            <div className="border border-[color-mix(in_srgb,var(--c97-warning)_28%,var(--c97-rule))] bg-[color-mix(in_srgb,var(--c97-warning)_10%,var(--c97-surface))] text-sm leading-6 text-[var(--c97-ink-2)]" style={{ paddingInline: "var(--c97-sp-2)", paddingBlock: "var(--c97-sp-1)", marginTop: "var(--c97-sp-2)" }}>
               {summary.heroMessage}
             </div>
           )}
 
-          <div className="mt-6 flex flex-wrap gap-3">
+          <div className="flex flex-wrap" style={{ marginTop: "var(--c97-sp-3)", gap: "var(--c97-sp-1)" }}>
             <button
               type="button"
               onClick={onInspect}
@@ -285,7 +285,7 @@ export function MissionControlHero({
               style={{ gap: "var(--c97-sp-1)" }}
             >
               Inspect mission
-              <Activity className="h-4 w-4" />
+              <Activity aria-hidden="true" className="h-4 w-4" />
             </button>
             {primaryLinks.map((link) => (
               <a
@@ -293,7 +293,7 @@ export function MissionControlHero({
                 href={link.href}
                 target="_blank"
                 rel="noreferrer"
-                className="tap-target inline-flex items-center gap-2 border border-[var(--c97-rule)] bg-[var(--c97-field)] px-5 py-3 text-sm font-semibold text-[var(--c97-ink)] transition hover:border-[var(--c97-accent)] hover:text-[var(--c97-accent)]"
+                className="tap-target inline-flex items-center border border-[var(--c97-rule)] bg-[var(--c97-field)] text-sm font-semibold text-[var(--c97-ink)] transition hover:border-[var(--c97-accent)] hover:text-[var(--c97-accent)]" style={{ paddingInline: "var(--c97-sp-2)", paddingBlock: "var(--c97-sp-1)", gap: "var(--c97-sp-1)" }}
               >
                 {link.label}
                 <ArrowUpRight className="h-4 w-4" />
@@ -302,7 +302,7 @@ export function MissionControlHero({
           </div>
         </div>
 
-        <div className="grid gap-4">
+        <div className="grid" style={{ gap: "var(--c97-sp-2)" }}>
           <MissionVehiclePhoto
             name={heroLaunch.rocketName ?? heroLaunch.name}
             image={heroLaunch.vehicleImage}
@@ -314,18 +314,18 @@ export function MissionControlHero({
             // 277px on a 375px screen and 626px on a 768px one.
             sizes="(min-width: 1024px) 220px, 85vw"
           />
-          <div className="border border-[var(--c97-rule)] bg-[var(--c97-field)]/90 p-4 ">
-            <div className="flex items-center gap-2">
+          <div className="border border-[var(--c97-rule)] bg-[var(--c97-field)]/90" style={{ padding: "var(--c97-sp-2)" }}>
+            <div className="flex items-center" style={{ gap: "var(--c97-sp-1)" }}>
               <CalendarDays className="h-4 w-4 text-[var(--c97-accent)]" />
               <p className="font-mono text-3xs font-semibold uppercase tracking-[0.2em] text-[var(--c97-label)]">
                 Mission timing
               </p>
             </div>
-            <p className="mt-3 text-sm font-semibold text-[var(--c97-ink)]">
+            <p className="text-sm font-semibold text-[var(--c97-ink)]" style={{ marginTop: "var(--c97-sp-1)" }}>
               {formatMissionScheduleLabel(heroLaunch)}
             </p>
-            <div className="mt-4 flex items-center gap-2 text-sm text-[var(--c97-ink-2)]">
-              <Rocket className="h-4 w-4 text-[var(--c97-accent)]" />
+            <div className="flex items-center text-sm text-[var(--c97-ink-2)]" style={{ marginTop: "var(--c97-sp-2)", gap: "var(--c97-sp-1)" }}>
+              <Rocket aria-hidden="true" className="h-4 w-4 text-[var(--c97-accent)]" />
               {heroLaunch.rocketName ?? "Rocket TBD"}
             </div>
           </div>

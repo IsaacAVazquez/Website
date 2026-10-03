@@ -47,7 +47,7 @@ function CompareRow({ label, value, industryAvg }: { label: string; value: numbe
         </div>
         {hasComparison && (
           <span
-            className={`text-xs font-medium px-1.5 py-0.5 rounded ${
+            className={`text-xs font-medium px-1.5 py-0.5 ${
               favorable
                 ? "bg-[color-mix(in_srgb,var(--c97-positive)_12%,var(--c97-panel))] text-[color-mix(in_srgb,var(--c97-positive)_70%,var(--c97-ink))]"
                 : "bg-[color-mix(in_srgb,var(--c97-negative)_11%,var(--c97-panel))] text-[color-mix(in_srgb,var(--c97-negative)_70%,var(--c97-ink))]"
@@ -127,7 +127,7 @@ export function ValuationRatiosPanel({
     return (
       <TerminalPanel padding="sm">
         <h3 className="text-sm font-semibold text-[var(--c97-ink)] mb-1">
-          Valuation Snapshot
+          Valuation snapshot
         </h3>
         <p className="text-xs text-[var(--c97-label)] mb-4">
           Standalone valuation view when industry comparison data is unavailable
@@ -179,7 +179,7 @@ export function ValuationRatiosPanel({
 
   return (
     <TerminalPanel padding="sm">
-      <h3 className="text-sm font-semibold text-[var(--c97-ink)] mb-1">Valuation vs Industry</h3>
+      <h3 className="text-sm font-semibold text-[var(--c97-ink)] mb-1">Valuation vs industry</h3>
       <p className="text-xs text-[var(--c97-label)] mb-3">
         Comparing this stock&apos;s valuation ratios against its industry average.
       </p>

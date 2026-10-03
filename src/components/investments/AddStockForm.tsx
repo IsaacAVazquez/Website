@@ -133,7 +133,7 @@ export function AddStockForm({ onAdd }: Props) {
     <TerminalPanel padding="sm" ariaLabel="Add stock form">
       <div className="mb-5 flex items-center justify-between">
         <div>
-          <h3 className="text-sm font-semibold text-[var(--c97-ink)]">Add Position</h3>
+          <h3 className="text-sm font-semibold text-[var(--c97-ink)]">Add position</h3>
           <p className="mt-1 text-xs text-[var(--c97-label)]">
             Save a holding locally to include it in portfolio analytics.
           </p>
@@ -211,7 +211,7 @@ export function AddStockForm({ onAdd }: Props) {
 
         <div className="flex flex-wrap gap-2">
           <ModernButton type="submit" variant="accent" size="sm" ariaLabel="Add position">
-            <Plus size={14} /> Add Position
+            <Plus size={14} /> Add position
           </ModernButton>
           <ModernButton
             type="button"

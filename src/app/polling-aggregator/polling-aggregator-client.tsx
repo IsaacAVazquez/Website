@@ -40,9 +40,9 @@ interface Props {
 
 function PollingMetricCard({ label, value }: { label: string; value: string }) {
   return (
-    <div className="border border-[var(--c97-rule)] bg-[var(--c97-surface)] p-4">
+    <div className="border border-[var(--c97-rule)] bg-[var(--c97-surface)]" style={{ padding: "var(--c97-sp-2)" }}>
       <p className="c97-kicker">{label}</p>
-      <p className="c97-tabular mt-2 text-xl font-bold text-[var(--c97-ink)]">{value}</p>
+      <p className="c97-tabular text-xl font-bold text-[var(--c97-ink)]" style={{ marginTop: "var(--c97-sp-1)" }}>{value}</p>
     </div>
   );
 }
@@ -163,7 +163,7 @@ function TrendChart({ snapshot }: { snapshot: PollingSnapshot }) {
       </svg>
 
       {/* Legend */}
-      <div className="mt-2 flex items-center gap-6 text-xs text-[var(--c97-ink-2)]">
+      <div className="flex items-center text-xs text-[var(--c97-ink-2)]" style={{ marginTop: "var(--c97-sp-1)", gap: "var(--c97-sp-3)" }}>
         <span className="flex items-center gap-1.5">
           <span className="inline-block h-2 w-6" style={{ background: DEM_COLOR }} />
           Approve
@@ -253,7 +253,7 @@ function RaceRow({
       <td className="align-middle">
         <button
           type="button"
-          className="flex min-h-[44px] w-full items-center gap-2 text-left"
+          className="flex min-h-[44px] w-full items-center text-left" style={{ gap: "var(--c97-sp-1)" }}
           onClick={(e) => { e.stopPropagation(); onClick(); }}
           aria-label={`Show ${race.state} ${race.office} race`}
           aria-pressed={isSelected}
@@ -269,8 +269,8 @@ function RaceRow({
       </td>
       <td className="align-middle">
         <span
-          className="inline-flex items-center px-2.5 py-1 text-xs font-semibold"
-          style={getRatingPillStyle(race.rating)}
+          className="inline-flex items-center py-1 text-xs font-semibold"
+          style={{ paddingInline: "var(--c97-sp-1)", ...getRatingPillStyle(race.rating) }}
         >
           {race.rating}
         </span>
@@ -310,20 +310,20 @@ function RaceSidebar({ race }: { race: Race }) {
       <span className="sr-only" role="status" aria-live="polite" aria-atomic="true">
         {announcement}
       </span>
-      <div className="flex items-start justify-between gap-3">
+      <div className="flex items-start justify-between" style={{ gap: "var(--c97-sp-1)" }}>
         <div>
           <p className="c97-kicker">{race.office} race</p>
-          <h2 className="c97-serif c97-h3" style={{ marginTop: "var(--c97-sp-1)" }}>{race.state}</h2>
+          <h3 className="c97-serif c97-h3" style={{ marginTop: "var(--c97-sp-1)" }}>{race.state}</h3>
         </div>
         <span
-          className="inline-flex items-center px-3 py-1.5 text-xs font-semibold flex-shrink-0 mt-1"
-          style={getRatingPillStyle(race.rating)}
+          className="inline-flex items-center py-1.5 text-xs font-semibold flex-shrink-0 mt-1"
+          style={{ paddingInline: "var(--c97-sp-1)", ...getRatingPillStyle(race.rating) }}
         >
           {race.rating}
         </span>
       </div>
 
-      <div className="grid grid-cols-2 gap-3">
+      <div className="grid grid-cols-2" style={{ gap: "var(--c97-sp-1)" }}>
         <PollingMetricCard label="Dem. avg" value={`${race.demAvg.toFixed(1)}%`} />
         <PollingMetricCard label="Rep. avg" value={`${race.repAvg.toFixed(1)}%`} />
         <PollingMetricCard label="Margin" value={race.marginLabel} />
@@ -344,9 +344,9 @@ function RaceSidebar({ race }: { race: Race }) {
             return (
               <div
                 key={poll.id}
-                className="border border-[var(--c97-rule)] bg-[var(--c97-surface)] p-3 text-sm"
+                className="border border-[var(--c97-rule)] bg-[var(--c97-surface)] text-sm" style={{ padding: "var(--c97-sp-1)" }}
               >
-                <div className="flex items-start justify-between gap-2">
+                <div className="flex items-start justify-between" style={{ gap: "var(--c97-sp-1)" }}>
                   <p className="font-semibold text-[var(--c97-ink)] leading-tight">{poll.pollster}</p>
                   <span
                     className="c97-tabular inline-flex items-center gap-1 text-xs font-bold flex-shrink-0"
@@ -360,7 +360,7 @@ function RaceSidebar({ race }: { race: Race }) {
                   {formatDate(poll.endDate)} · {poll.sampleSize.toLocaleString("en-US")} {poll.sampleType}
                   {poll.moe === null ? "" : ` · ±${poll.moe}`}
                 </p>
-                <div className="mt-2 flex flex-wrap gap-2">
+                <div className="flex flex-wrap" style={{ marginTop: "var(--c97-sp-1)", gap: "var(--c97-sp-1)" }}>
                   {poll.candidates.map((c) => (
                     <span key={c.name} className="c97-chip c97-tabular">
                       <PartySwatch color={partyColor(c.party)} />
@@ -416,26 +416,26 @@ function PollsTable<T extends PollLike>({
     (a, b) => new Date(b.endDate).getTime() - new Date(a.endDate).getTime(),
   );
   return (
-    <div className="overflow-x-auto">
+    <div className="overflow-x-auto" role="region" aria-label={`${config.ariaLabel} (scrolls sideways)`} tabIndex={0}>
       <table className="c97-table c97-polling-table" aria-label={config.ariaLabel}>
         <thead>
           <tr>
-            <th>Pollster</th>
-            <th>Date</th>
-            <th className="hidden sm:table-cell">Sample</th>
-            <th data-align="end">
+            <th scope="col">Pollster</th>
+            <th scope="col">Date</th>
+            <th scope="col" className="hidden sm:table-cell">Sample</th>
+            <th scope="col" data-align="end">
               <span className="inline-flex items-center gap-1">
                 <PartySwatch color={DEM_COLOR} />
                 {config.leftHeading}
               </span>
             </th>
-            <th data-align="end">
+            <th scope="col" data-align="end">
               <span className="inline-flex items-center gap-1">
                 <PartySwatch color={REP_COLOR} />
                 {config.rightHeading}
               </span>
             </th>
-            <th data-align="end">{config.deltaHeading}</th>
+            <th scope="col" data-align="end">{config.deltaHeading}</th>
           </tr>
         </thead>
         <tbody>
@@ -536,14 +536,14 @@ function RacesPanel({
     <div className="space-y-6">
       <StateTileGrid races={races} />
 
-      <div className="grid gap-6 lg:grid-cols-[minmax(0,1.4fr)_minmax(280px,1fr)]">
+      <div className="grid lg:grid-cols-[minmax(0,1.4fr)_minmax(280px,1fr)]" style={{ gap: "var(--c97-sp-3)" }}>
       <section className="c97-panel" style={{ padding: "var(--c97-sp-2) var(--c97-sp-3)" }}>
-        <div className="flex items-center justify-between border-b border-[var(--c97-rule)] pb-4">
-          <h2 className="text-lg font-bold text-[var(--c97-ink)]">{label} Races</h2>
+        <div className="flex items-center justify-between border-b border-[var(--c97-rule)]" style={{ paddingBottom: "var(--c97-sp-2)" }}>
+          <h3 className="c97-serif c97-h3">{label} races</h3>
           <span className="text-sm text-[var(--c97-ink-2)]">{races.length} tracked</span>
         </div>
 
-        <div className="mt-4 flex flex-wrap gap-3 text-xs">
+        <div className="flex flex-wrap text-xs" style={{ marginTop: "var(--c97-sp-2)", gap: "var(--c97-sp-1)" }}>
           <span className="flex items-center gap-1.5 font-medium" style={{ color: "var(--c97-ink)" }}>
             <span className="inline-block h-2.5 w-2.5" style={{ background: DEM_COLOR }} />
             Dem. leading: {counts.demLeading}
@@ -558,15 +558,21 @@ function RacesPanel({
           </span>
         </div>
 
-        <div className="mt-6 overflow-x-auto">
+        <div
+          className="overflow-x-auto"
+          role="region"
+          aria-label={`${label} race ratings (scrolls sideways)`}
+          tabIndex={0}
+          style={{ marginTop: "var(--c97-sp-3)" }}
+          >
           <table className="c97-table c97-polling-table" aria-label={`${label} race ratings`}>
             <thead>
               <tr>
-                <th>State</th>
-                <th>Rating</th>
-                <th className="hidden sm:table-cell">Avg. lead</th>
-                <th data-align="end">Margin</th>
-                <th className="hidden md:table-cell">Last polled</th>
+                <th scope="col">State</th>
+                <th scope="col">Rating</th>
+                <th scope="col" className="hidden sm:table-cell">Avg. lead</th>
+                <th scope="col" data-align="end">Margin</th>
+                <th scope="col" className="hidden md:table-cell">Last polled</th>
               </tr>
             </thead>
             <tbody>
@@ -607,7 +613,7 @@ function OverviewPanel({ snapshot }: { snapshot: PollingSnapshot }) {
     <div className="c97-panel">
       <p className="c97-kicker">Where the midterms stand</p>
       {hasRaceData ? (
-        <div className="mt-4 grid gap-4 sm:grid-cols-2">
+        <div className="grid sm:grid-cols-2" style={{ marginTop: "var(--c97-sp-2)", gap: "var(--c97-sp-2)" }}>
           <SeatCountRow label="Senate" counts={senateCounts} />
           <SeatCountRow label="Governors" counts={govCounts} />
         </div>
@@ -632,8 +638,8 @@ function SeatCountRow({
 }) {
   return (
     <div>
-      <p className="mb-2 text-sm font-semibold text-[var(--c97-ink)]">{label}</p>
-      <div className="flex flex-wrap gap-4 text-sm">
+      <p className="text-sm font-semibold text-[var(--c97-ink)]" style={{ marginBottom: "var(--c97-sp-1)" }}>{label}</p>
+      <div className="flex flex-wrap text-sm" style={{ gap: "var(--c97-sp-2)" }}>
         <span className="c97-tabular inline-flex items-center gap-1" style={{ color: "var(--c97-ink)" }}>
           <PartySwatch color={DEM_COLOR} />D leading {counts.demLeading}
         </span>
@@ -745,8 +751,8 @@ export function PollingAggregatorClient({ initialState, snapshot, staleSourceNot
           {/* Source disclosure and attribution for the CC BY 4.0 polling feed. */}
           <div
             role="note"
-            className="p-4"
             style={{
+              padding: "var(--c97-sp-2)",
               border: "1px solid var(--c97-warning)",
               background: "color-mix(in srgb, var(--c97-warning) 8%, var(--c97-surface))",
             }}
@@ -790,27 +796,27 @@ export function PollingAggregatorClient({ initialState, snapshot, staleSourceNot
           {routeState.view === "overview" && <OverviewPanel snapshot={snapshot} />}
 
           {routeState.view === "approval" && (
-            <div className="grid gap-6 lg:grid-cols-[3fr_2fr]">
+            <div className="grid lg:grid-cols-[3fr_2fr]" style={{ gap: "var(--c97-sp-3)" }}>
               <div className="c97-panel" style={{ padding: "var(--c97-sp-2) var(--c97-sp-3)" }}>
-                <div className="border-b border-[var(--c97-rule)] pb-4">
+                <div className="border-b border-[var(--c97-rule)]" style={{ paddingBottom: "var(--c97-sp-2)" }}>
                   <p className="c97-kicker">Recent polls</p>
                   <h3 className="c97-serif c97-h3" style={{ marginTop: "var(--c97-sp-1)" }}>
                     Presidential approval · {snapshot.approvalAvg.approve.toFixed(1)}% avg
                   </h3>
                 </div>
-                <div className="mt-4">
+                <div style={{ marginTop: "var(--c97-sp-2)" }}>
                   <ApprovalPollsTable snapshot={snapshot} />
                 </div>
               </div>
 
               <div className="c97-panel" style={{ padding: "var(--c97-sp-2) var(--c97-sp-3)" }}>
-                <div className="border-b border-[var(--c97-rule)] pb-4">
+                <div className="border-b border-[var(--c97-rule)]" style={{ paddingBottom: "var(--c97-sp-2)" }}>
                   <p className="c97-kicker">Congressional preference</p>
                   <h3 className="c97-serif c97-h3" style={{ marginTop: "var(--c97-sp-1)" }}>
                     Generic ballot · {formatMargin(snapshot.genericBallotAvg.margin)}
                   </h3>
                 </div>
-                <div className="mt-4">
+                <div style={{ marginTop: "var(--c97-sp-2)" }}>
                   <GenericBallotPollsTable snapshot={snapshot} />
                 </div>
               </div>

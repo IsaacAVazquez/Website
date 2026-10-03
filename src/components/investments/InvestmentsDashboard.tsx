@@ -400,8 +400,11 @@ export function InvestmentsDashboard({
             className="c97-panel text-sm"
             style={{ marginTop: "var(--c97-sp-3)", color: "var(--c97-ink-2)" }}
           >
-            <span className="c97-chip c97-chip-warning" style={{ marginInlineEnd: "var(--c97-sp-2)" }}>
-              Quotes
+            {/* A paper plate: on light espresso the chip's pale field and the pale warning ink measure about 1.1:1. */}
+            <span data-c97-surface="paper" style={{ display: "contents" }}>
+              <span className="c97-chip c97-chip-warning" style={{ marginInlineEnd: "var(--c97-sp-2)" }}>
+                Quotes
+              </span>
             </span>
             {error}
           </div>
@@ -413,8 +416,11 @@ export function InvestmentsDashboard({
             className="c97-panel text-sm"
             style={{ marginTop: "var(--c97-sp-3)", color: "var(--c97-ink-2)" }}
           >
-            <span className="c97-chip c97-chip-warning" style={{ marginInlineEnd: "var(--c97-sp-2)" }}>
-              Storage
+            {/* A paper plate: on light espresso the chip's pale field and the pale warning ink measure about 1.1:1. */}
+            <span data-c97-surface="paper" style={{ display: "contents" }}>
+              <span className="c97-chip c97-chip-warning" style={{ marginInlineEnd: "var(--c97-sp-2)" }}>
+                Storage
+              </span>
             </span>
             Portfolio changes are available in this tab, but browser storage is
             unavailable, so they may not remain after you close it.
@@ -454,6 +460,7 @@ export function InvestmentsDashboard({
                 <input
                   ref={filterInputRef}
                   type="search"
+                  aria-label="Filter holdings"
                   placeholder="Filter holdings…"
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
@@ -495,12 +502,12 @@ export function InvestmentsDashboard({
                   className="c97-panel"
                   style={{ padding: "var(--c97-sp-6) var(--c97-sp-4)", textAlign: "center" }}
                 >
-                  <p
+                  <h2
                     className="text-sm font-semibold"
                     style={{ margin: "0 0 var(--c97-sp-2)", color: "var(--c97-ink)" }}
                   >
                     No positions yet
-                  </p>
+                  </h2>
                   <p
                     className="text-sm"
                     style={{ margin: "0 auto", maxInlineSize: "20rem", color: "var(--c97-label)" }}

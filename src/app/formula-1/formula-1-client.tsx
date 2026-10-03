@@ -421,6 +421,7 @@ function LeaderboardRow({
           >
             <ArrowUp size={11} aria-hidden="true" />
             {formatDelta(row.pointsDelta)}
+            <span className="sr-only"> points at the last race</span>
           </span>
         ) : null}
         <span className="w-[6.5ch] flex-shrink-0 text-right text-2xs font-semibold uppercase" style={{ color: "var(--c97-ink-2)" }}>
@@ -639,7 +640,7 @@ function MeetingDetailPanel({
           <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-2)" }}>Weekend schedule</p>
           <MeetingSchedule meeting={meeting} />
           <p className="mt-4 mb-0 text-xs leading-6" style={{ color: "var(--c97-ink-2)" }}>
-            Times render in your local timezone. The weekend offset chip shows the track timezone.
+            Times print in Pacific time. The UTC offset chip shows the track&apos;s own time zone.
           </p>
         </div>
 

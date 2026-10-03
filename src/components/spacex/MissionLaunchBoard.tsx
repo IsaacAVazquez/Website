@@ -60,7 +60,7 @@ export function MissionLaunchBoard({
       aria-label="Mission board"
       className="border border-[var(--c97-rule)] bg-[var(--c97-field)]/92 p-4 sm:p-5"
     >
-      <div className="mb-5 flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
+      <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between" style={{ marginBottom: "var(--c97-sp-2)", gap: "var(--c97-sp-2)" }}>
         <div>
           <p className="font-mono text-2xs font-semibold uppercase tracking-[0.22em] text-[var(--c97-label)]">
             Launch board
@@ -68,14 +68,14 @@ export function MissionLaunchBoard({
           <h2 className="c97-serif c97-h3" style={{ marginTop: "var(--c97-sp-1)" }}>
             Browse the SpaceX launch manifest.
           </h2>
-          <p className="mt-2 text-sm leading-6 text-[var(--c97-ink-2)]">
+          <p className="text-sm leading-6 text-[var(--c97-ink-2)]" style={{ marginTop: "var(--c97-sp-1)" }}>
             Filter by upcoming or past missions and by vehicle, then open a mission to inspect
             vehicles, payloads, and outbound references in context.
           </p>
         </div>
 
         <div
-          className="inline-flex flex-wrap gap-2 border border-[var(--c97-rule)] bg-[var(--c97-surface)] p-2"
+          className="inline-flex flex-wrap border border-[var(--c97-rule)] bg-[var(--c97-surface)]" style={{ padding: "var(--c97-sp-1)", gap: "var(--c97-sp-1)" }}
           role="group"
           aria-label="Mission board status filters"
         >
@@ -99,7 +99,7 @@ export function MissionLaunchBoard({
 
       {launches.length > 0 && availableFilters.length > 2 ? (
         <div
-          className="mb-4 inline-flex flex-wrap gap-2"
+          className="inline-flex flex-wrap" style={{ marginBottom: "var(--c97-sp-2)", gap: "var(--c97-sp-1)" }}
           role="group"
           aria-label="Filter by vehicle"
         >
@@ -122,15 +122,15 @@ export function MissionLaunchBoard({
       ) : null}
 
       {error && launches.length === 0 && !isLoading ? (
-        <div role="alert" className="border border-[color-mix(in_srgb,var(--c97-warning)_30%,var(--c97-rule))] bg-[color-mix(in_srgb,var(--c97-warning)_9%,var(--c97-surface))] p-4">
+        <div role="alert" className="border border-[color-mix(in_srgb,var(--c97-warning)_30%,var(--c97-rule))] bg-[color-mix(in_srgb,var(--c97-warning)_9%,var(--c97-surface))]" style={{ padding: "var(--c97-sp-2)" }}>
           <p className="text-sm font-semibold text-[var(--c97-ink)]">
             Mission board unavailable
           </p>
-          <p className="mt-2 text-sm leading-6 text-[var(--c97-ink-2)]">{error}</p>
+          <p className="text-sm leading-6 text-[var(--c97-ink-2)]" style={{ marginTop: "var(--c97-sp-1)" }}>{error}</p>
           <button
             type="button"
             onClick={onRetry}
-            className="tap-target mt-4 border border-[var(--c97-rule)] bg-[var(--c97-field)] px-4 py-3 text-sm font-semibold text-[var(--c97-ink)] transition hover:border-[var(--c97-accent)] hover:text-[var(--c97-accent)]"
+            className="tap-target border border-[var(--c97-rule)] bg-[var(--c97-field)] text-sm font-semibold text-[var(--c97-ink)] transition hover:border-[var(--c97-accent)] hover:text-[var(--c97-accent)]" style={{ paddingInline: "var(--c97-sp-2)", paddingBlock: "var(--c97-sp-1)", marginTop: "var(--c97-sp-2)" }}
           >
             Retry board
           </button>
@@ -138,7 +138,7 @@ export function MissionLaunchBoard({
       ) : null}
 
       {isLoading && launches.length === 0 ? (
-        <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
+        <div className="grid sm:grid-cols-2 xl:grid-cols-3" style={{ gap: "var(--c97-sp-2)" }}>
           {Array.from({ length: 6 }, (_, index) => (
             <span key={index} className="c97-skeleton" style={{ height: 268 }} />
           ))}
@@ -146,16 +146,16 @@ export function MissionLaunchBoard({
       ) : null}
 
       {!isLoading && !error && launches.length === 0 ? (
-        <div className="border border-dashed border-[var(--c97-rule)] bg-[var(--c97-surface)] px-5 py-8 text-center">
+        <div className="border border-dashed border-[var(--c97-rule)] bg-[var(--c97-surface)] text-center" style={{ paddingInline: "var(--c97-sp-2)", paddingBlock: "var(--c97-sp-3)" }}>
           <div className="mx-auto flex h-14 w-14 items-center justify-center bg-[var(--c97-field)]">
             <Radar className="h-6 w-6 text-[var(--c97-accent)]" />
           </div>
-          <p className="mt-4 text-lg font-semibold text-[var(--c97-ink)]">
+          <p className="text-lg font-semibold text-[var(--c97-ink)]" style={{ marginTop: "var(--c97-sp-2)" }}>
             {status === "upcoming"
               ? "No upcoming launches are currently available."
               : "No past launches are currently available."}
           </p>
-          <p className="mt-2 text-sm leading-6 text-[var(--c97-ink-2)]">
+          <p className="text-sm leading-6 text-[var(--c97-ink-2)]" style={{ marginTop: "var(--c97-sp-1)" }}>
             {status === "upcoming"
               ? "The live provider does not currently list a future SpaceX mission. The hero will fall back to the latest completed launch when possible."
               : "The published archive came back empty."}
@@ -164,14 +164,14 @@ export function MissionLaunchBoard({
       ) : null}
 
       {shownLaunches.length > 0 ? (
-        <p className="mb-3 font-mono text-3xs uppercase tracking-[0.1em] text-[var(--c97-ink-2)]">
+        <p className="font-mono text-3xs uppercase tracking-[0.1em] text-[var(--c97-ink-2)]" style={{ marginBottom: "var(--c97-sp-1)" }}>
           Select a mission for its debrief · {shownLaunches.length} shown
         </p>
       ) : null}
 
       {launches.length > 0 ? (
         shownLaunches.length > 0 ? (
-          <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
+          <div className="grid sm:grid-cols-2 xl:grid-cols-3" style={{ gap: "var(--c97-sp-2)" }}>
             {shownLaunches.map((launch) => (
               <MissionCard
                 key={launch.id}
@@ -183,7 +183,7 @@ export function MissionLaunchBoard({
             ))}
           </div>
         ) : (
-          <div className="border border-dashed border-[var(--c97-rule)] bg-[var(--c97-surface)] px-5 py-8 text-center">
+          <div className="border border-dashed border-[var(--c97-rule)] bg-[var(--c97-surface)] text-center" style={{ paddingInline: "var(--c97-sp-2)", paddingBlock: "var(--c97-sp-3)" }}>
             <p className="text-sm leading-6 text-[var(--c97-ink-2)]">
               No {vehicleFilter} missions on the {status} board right now.
             </p>

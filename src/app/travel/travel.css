@@ -232,3 +232,41 @@
     justify-self: start;
   }
 }
+
+/* The done toggle on a stop: a 44px hit box that darkens on hover and nudges on press. */
+.c97-travel-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 44px;
+  min-height: 44px;
+  border: 0;
+  background: none;
+  color: var(--c97-ink-2);
+  cursor: pointer;
+}
+
+.c97-travel-toggle:hover,
+.c97-travel-toggle:focus-visible {
+  color: var(--c97-ink);
+}
+
+.c97-travel-toggle:active {
+  transform: translateY(1px);
+}
+
+/* A trip in the All trips list: the name underlines on hover and focus, like a link. */
+.c97-travel-trip-pick {
+  border: 0;
+  background: none;
+  padding: 0;
+  cursor: pointer;
+  color: var(--c97-ink);
+}
+
+.c97-travel-trip-pick:hover .c97-serif,
+.c97-travel-trip-pick:focus-visible .c97-serif,
+.c97-travel-trip-pick[aria-current="true"] .c97-serif {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}

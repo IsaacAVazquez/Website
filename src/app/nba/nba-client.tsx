@@ -448,7 +448,7 @@ export function NbaClient({ initialState, summary, initialTeamSnapshot, teamColo
         <div className="c97-shell">
           <div role="tablist" aria-label="Team and league details" className="c97-segmented">
             {(["team", "schedule", "leaders"] as const).map((tab) => {
-              const labels = { team: "Team Detail", schedule: "Schedule", leaders: "Stat Leaders" } as const;
+              const labels = { team: "Team detail", schedule: "Schedule", leaders: "Stat leaders" } as const;
               return (
                 <button
                   key={tab}
@@ -494,7 +494,7 @@ export function NbaClient({ initialState, summary, initialTeamSnapshot, teamColo
                     </ul>
                   </div>
 
-                  <div className="grid gap-3 sm:grid-cols-3">
+                  <div className="grid gap-3 sm:grid-cols-3 md:grid-cols-1">
                     <TeamLeaderCard
                       title="Top scorer"
                       leader={teamScorers[0]}
@@ -592,21 +592,26 @@ export function NbaClient({ initialState, summary, initialTeamSnapshot, teamColo
             {activeDetailTab === "leaders" && (
               <div className="grid gap-6 md:grid-cols-3">
                 <div>
-                  <div className="flex items-start justify-between gap-3">
+                  <div className="flex min-h-[48px] items-start justify-between gap-3">
                     <p className="c97-kicker">Top scorers</p>
                     <a href={summary.sourceUrls.leaders} target="_blank" rel="noreferrer" className="c97-btn-ghost">
                       Official
+                      <span className="sr-only"> NBA stat leaders (opens in a new tab)</span>
                       <ExternalLink className="h-4 w-4" />
                     </a>
                   </div>
                   <LeaderList leaders={toLeaderEntries(summary.scorers.slice(0, 5))} statLabel="ppg" clubLookup={teamLookup} />
                 </div>
                 <div>
-                  <p className="c97-kicker">Top rebounders</p>
+                  <div className="min-h-[48px]">
+                    <p className="c97-kicker">Top rebounders</p>
+                  </div>
                   <LeaderList leaders={toLeaderEntries(summary.rebounders.slice(0, 5))} statLabel="rpg" clubLookup={teamLookup} />
                 </div>
                 <div>
-                  <p className="c97-kicker">Top playmakers</p>
+                  <div className="min-h-[48px]">
+                    <p className="c97-kicker">Top playmakers</p>
+                  </div>
                   <LeaderList leaders={toLeaderEntries(summary.assistLeaders.slice(0, 5))} statLabel="apg" clubLookup={teamLookup} />
                 </div>
               </div>

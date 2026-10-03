@@ -69,7 +69,11 @@ export function SearchResults({
           <li>Try broader or different keywords</li>
           <li>Check spelling and try again</li>
           <li>Remove filters to expand results</li>
-          <li>Browse categories directly</li>
+          <li>
+            Browse the <Link href="/writing" className="c97-link">writing</Link>,{" "}
+            <Link href="/portfolio" className="c97-link">portfolio</Link>, or{" "}
+            <Link href="/dashboards" className="c97-link">dashboards</Link> directly
+          </li>
         </ul>
       </div>
     );

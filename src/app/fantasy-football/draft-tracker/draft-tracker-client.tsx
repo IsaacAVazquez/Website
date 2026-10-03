@@ -289,7 +289,7 @@ function StripPlayerCard({
           type="button"
           onClick={onOpenDetail}
           aria-label={`Open ${player.name} detail`}
-          className="-my-1 min-h-touch min-w-0 truncate text-left text-base font-semibold tracking-[-0.02em]"
+          className="-my-1 min-h-touch min-w-0 truncate text-left text-base font-semibold tracking-[-0.02em] hover:underline hover:decoration-[var(--c97-accent)] hover:underline-offset-4"
         >
           {player.name}
         </button>
@@ -301,12 +301,7 @@ function StripPlayerCard({
             type="button"
             onClick={onLog}
             aria-label={logLabel}
-            className="ml-auto inline-flex min-h-touch flex-none items-center justify-center border px-3.5 font-mono text-3xs uppercase tracking-[0.06em]"
-            style={{
-              borderColor: "var(--c97-ink)",
-              background: "var(--c97-ink)",
-              color: "var(--c97-surface)",
-            }}
+            className="ml-auto inline-flex min-h-touch flex-none items-center justify-center border px-3.5 font-mono text-3xs uppercase tracking-[0.06em] border-[var(--c97-ink)] bg-[var(--c97-ink)] text-[var(--c97-surface)] hover:border-[var(--c97-ink-2)] hover:bg-[var(--c97-ink-2)]"
           >
             Log
           </button>
@@ -1123,7 +1118,7 @@ export function DraftTrackerClient() {
       isActive={draftState.isActive}
     >
     <section
-      className="c97-dash relative overflow-x-clip min-h-screen"
+      className="c97-dash relative overflow-x-clip min-h-dvh"
       aria-label="Fantasy football draft assistant"
       data-testid="fantasy-draft-tracker-shell"
       data-hydrated={isHydrated ? "true" : "false"}
@@ -1336,12 +1331,7 @@ export function DraftTrackerClient() {
                   onClick={() => undoToPick(pick.pickNumber)}
                   title="Undo back to this pick"
                   aria-label={`Undo back to pick ${pick.pickNumber} (${pick.player.name})`}
-                  className="inline-flex min-h-touch flex-none items-baseline gap-1.5 border px-2 font-mono text-2xs"
-                  style={{
-                    borderColor: "var(--c97-rule)",
-                    background: "var(--c97-field)",
-                    color: "var(--c97-ink)",
-                  }}
+                  className="inline-flex min-h-touch flex-none items-baseline gap-1.5 border border-[var(--c97-rule)] bg-[var(--c97-field)] px-2 font-mono text-2xs text-[var(--c97-ink)] hover:border-[var(--c97-ink)]"
                 >
                   <span style={{ color: "var(--c97-ink-2)" }}>#{pick.pickNumber}</span>
                   <span className="font-sans text-xs font-semibold tracking-[-0.01em]">
@@ -1368,8 +1358,7 @@ export function DraftTrackerClient() {
                   type="button"
                   onClick={() => setSpecialistNote(null)}
                   aria-label="Dismiss note"
-                  className="inline-flex min-h-touch min-w-touch flex-none items-center justify-center font-mono text-2xs"
-                  style={{ color: "var(--c97-ink-2)" }}
+                  className="inline-flex min-h-touch min-w-touch flex-none items-center justify-center font-mono text-2xs text-[var(--c97-ink-2)] hover:text-[var(--c97-ink)]"
                 >
                   ✕
                 </button>
@@ -1457,8 +1446,7 @@ export function DraftTrackerClient() {
                     onClick={() => setShowDecisionDetail((open) => !open)}
                     aria-expanded={showDecisionDetail}
                     aria-controls="draft-decision-strip draft-decision-detail"
-                    className="ml-auto inline-flex min-h-touch items-center gap-1 font-mono text-2xs uppercase tracking-[0.08em]"
-                    style={{ color: "var(--c97-ink)" }}
+                    className="ml-auto inline-flex min-h-touch items-center gap-1 font-mono text-2xs uppercase tracking-[0.08em] text-[var(--c97-ink)] hover:underline hover:underline-offset-4"
                   >
                     Why these picks <span aria-hidden="true">{showDecisionDetail ? "▴" : "▾"}</span>
                   </button>
@@ -1564,8 +1552,7 @@ export function DraftTrackerClient() {
                 onClick={() => setShowDecisionDetail((open) => !open)}
                 aria-expanded={showDecisionDetail}
                 aria-controls="draft-decision-detail"
-                className="inline-flex min-h-touch items-center gap-1 font-mono text-2xs uppercase tracking-[0.08em]"
-                style={{ color: "var(--c97-ink-2)" }}
+                className="inline-flex min-h-touch items-center gap-1 font-mono text-2xs uppercase tracking-[0.08em] text-[var(--c97-ink-2)] hover:text-[var(--c97-ink)] hover:underline hover:underline-offset-4"
               >
                 What changes if you wait <span aria-hidden="true">{showDecisionDetail ? "▴" : "▾"}</span>
               </button>
@@ -1598,8 +1585,7 @@ export function DraftTrackerClient() {
                 <button
                   type="button"
                   onClick={handleNewRoom}
-                  className="mt-3.5 inline-flex min-h-touch items-center justify-center border px-4 font-mono text-2xs uppercase tracking-[0.06em]"
-                  style={{ borderColor: "var(--c97-ink)", background: "var(--c97-ink)", color: "var(--c97-surface)" }}
+                  className="mt-3.5 inline-flex min-h-touch items-center justify-center border px-4 font-mono text-2xs uppercase tracking-[0.06em] border-[var(--c97-ink)] bg-[var(--c97-ink)] text-[var(--c97-surface)] hover:border-[var(--c97-ink-2)] hover:bg-[var(--c97-ink-2)]"
                 >
                   New room
                 </button>

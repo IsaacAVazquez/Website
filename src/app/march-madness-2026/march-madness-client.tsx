@@ -349,7 +349,7 @@ function RankingsSection() {
           <thead>
             <tr>
               {RANKINGS_COLUMNS.map((heading) => (
-                <th key={heading} data-align={heading === "Team" || heading === "Trapezoid" ? undefined : "end"}>
+                <th key={heading} scope="col" data-align={heading === "Team" || heading === "Trapezoid" ? undefined : "end"}>
                   {heading}
                 </th>
               ))}
@@ -616,12 +616,14 @@ function RegionBracketDetail({ data }: { data: RegionData }) {
   );
 }
 
-function PicksSection() {
+function PicksSection({ initialPick }: { initialPick: string | null }) {
   // Hydrate the open pick from `?pick=...` so a shared link lands with the
-  // referenced pick already expanded. We use replaceState below to keep the
-  // URL in sync without spamming history.
+  // referenced pick already expanded. The server reads the same param and
+  // passes it in, so the first paint matches what hydration reads from the
+  // URL. We use replaceState below to keep the URL in sync without spamming
+  // history.
   const [expanded, setExpanded] = useState<string | null>(() => {
-    if (typeof window === "undefined") return null;
+    if (typeof window === "undefined") return initialPick;
     return new URL(window.location.href).searchParams.get("pick");
   });
 
@@ -637,17 +639,17 @@ function PicksSection() {
 
   const groupMeta: Record<PickEntry["group"], { label: string; sublabel: string; tone: string }> = {
     tz: {
-      label: "Time Zone Upsets",
+      label: "Time zone upsets",
       sublabel: "Bracket reversals driven by travel penalty.",
       tone: "var(--c97-negative)",
     },
     analytics: {
-      label: "Analytics Upsets",
+      label: "Analytics upsets",
       sublabel: "KenPom, S-curve, and Trapezoid-driven calls.",
       tone: "var(--c97-ink)",
     },
     confirm: {
-      label: "Final Four Picks",
+      label: "Final Four picks",
       sublabel: "Chalk calls the model supports strongly.",
       tone: "var(--c97-positive)",
     },
@@ -762,8 +764,10 @@ const ANALYTICS_TAB_ITEMS: { value: MarchMadnessAnalytics; label: string }[] = [
 
 export function MarchMadnessClient({
   initialState,
+  initialPick = null,
 }: {
   initialState: MarchMadnessSearchState;
+  initialPick?: string | null;
 }) {
   const router = useRouter();
   const [view, setView] = useState(initialState.view);
@@ -801,6 +805,8 @@ export function MarchMadnessClient({
     if (nextState.analytics) {
       setAnalytics(nextState.analytics);
     }
+    // A copied link names the old view, so the status goes back to showing the new one.
+    setCopyStatus("idle");
 
     const href = buildMarchMadnessHref({
       ...mergedState,
@@ -879,8 +885,9 @@ export function MarchMadnessClient({
             National champion pick
           </p>
           <h2 className="c97-serif c97-h2" style={{ marginBottom: "var(--c97-sp-2)" }}>{championshipWinner ?? "TBD"}</h2>
-          <p className="c97-prose">{MARCH_MADNESS_RESULT_NOTE}</p>
-          <p className="c97-prose">
+          {/* .c97-prose zeroes its margin, which drops the space-y-4 gap, so the spacing is inline. */}
+          <p className="c97-prose" style={{ marginBottom: "var(--c97-sp-2)" }}>{MARCH_MADNESS_RESULT_NOTE}</p>
+          <p className="c97-prose" style={{ marginBottom: "var(--c97-sp-2)" }}>
             I thought {championshipWinner} was the cleanest title pick in the field. The team ranked
             first across the blended metric set on this page, and it carried zero total travel
             penalty through every round, the same edge the Final Four summary below tracks.
@@ -1046,7 +1053,7 @@ export function MarchMadnessClient({
 
           {view === "picks" ? (
             <div style={{ marginTop: "var(--c97-sp-4)" }}>
-              <PicksSection />
+              <PicksSection initialPick={initialPick} />
             </div>
           ) : null}
 

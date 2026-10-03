@@ -19,7 +19,7 @@ export function MissionSequenceTimeline({ rocketName, upcoming }: MissionSequenc
 
   return (
     <div>
-      <p className="mb-3.5 text-xs leading-6 text-[var(--c97-ink-2)]">
+      <p className="text-xs leading-6 text-[var(--c97-ink-2)]" style={{ marginBottom: "var(--c97-sp-2)" }}>
         Typical {family} flight profile. Launch Library doesn&apos;t publish a phase-by-phase
         timeline, so this is an estimated reference sequence, not this mission&apos;s actual
         telemetry.
@@ -37,7 +37,7 @@ export function MissionSequenceTimeline({ rocketName, upcoming }: MissionSequenc
           return (
             <li
               key={step.label}
-              className="relative grid grid-cols-[68px_1fr] items-baseline gap-3.5 py-0 pb-3.5 pl-5 last:pb-0"
+              className="relative grid grid-cols-[68px_1fr] items-baseline py-0 pb-3.5 pl-5 last:pb-0" style={{ gap: "var(--c97-sp-2)" }}
             >
               <span
                 aria-hidden="true"

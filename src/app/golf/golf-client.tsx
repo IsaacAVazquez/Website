@@ -175,7 +175,12 @@ function LeaderboardTable({
   const roundLabels = Array.from({ length: roundCount }, (_, i) => `R${i + 1}`);
 
   return (
-    <div className="hidden overflow-x-auto md:block">
+    <div
+      className="hidden overflow-x-auto md:block"
+      role="region"
+      aria-label="Full leaderboard (scrollable)"
+      tabIndex={0}
+    >
       <table className="c97-table c97-golf-full-table">
         <caption className="sr-only">
           PGA Tour Pulse leaderboard with position, total, today&apos;s score, holes played, round

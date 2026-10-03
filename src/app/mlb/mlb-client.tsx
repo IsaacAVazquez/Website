@@ -684,6 +684,7 @@ function LeagueLeaders({
         </p>
         <a href={sourceUrl} target="_blank" rel="noreferrer" className="c97-btn-ghost">
           Source
+          <span className="sr-only"> MLB league leaders (opens in a new tab)</span>
           <ExternalLink className="h-4 w-4" />
         </a>
       </div>
@@ -695,6 +696,7 @@ function LeagueLeaders({
       <div className="flex flex-wrap items-center justify-end gap-3">
         <a href={sourceUrl} target="_blank" rel="noreferrer" className="c97-btn-ghost">
           Official
+          <span className="sr-only"> MLB league leaders (opens in a new tab)</span>
           <ExternalLink className="h-4 w-4" />
         </a>
       </div>
@@ -752,13 +754,21 @@ function getZoneDotColor(zone: MlbZone): CSSProperties["backgroundColor"] {
   }
 }
 
+const ORDINAL_RULES = new Intl.PluralRules("en-US", { type: "ordinal" });
+const ORDINAL_SUFFIX: Partial<Record<Intl.LDMLPluralRule, string>> = { one: "st", two: "nd", few: "rd" };
+
+/** 2 → "2nd", so a standing reads as a place rather than a bare count. */
+function ordinal(n: number): string {
+  return `${n}${ORDINAL_SUFFIX[ORDINAL_RULES.select(n)] ?? "th"}`;
+}
+
 function getPressurePoints(row: MlbStandingsRow): string[] {
   const points: string[] = [];
   if (row.divisionRank === 1) {
     points.push(`Lead the ${row.division} with a ${formatRecord(row)} record.`);
   } else {
     points.push(
-      `${row.divisionRank} in the ${row.division || `${row.league}`}, ${
+      `${ordinal(row.divisionRank)} in the ${row.division || `${row.league}`}, ${
         row.gamesBack > 0 ? `${row.gamesBack.toFixed(1)} games back of the leader.` : "tied at the top of the division."
       }`
     );
@@ -767,7 +777,7 @@ function getPressurePoints(row: MlbStandingsRow): string[] {
     points.push(
       row.wildCardRank <= 3
         ? `Holding a ${row.league} wild card slot at #${row.wildCardRank}.`
-        : `${row.wildCardRank} in the ${row.league} wild card chase${
+        : `${ordinal(row.wildCardRank)} in the ${row.league} wild card chase${
             row.wildCardGamesBack && row.wildCardGamesBack > 0
               ? `, ${row.wildCardGamesBack.toFixed(1)} games out.`
               : "."

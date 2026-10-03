@@ -216,7 +216,7 @@ export function RetirementInputs({ controller, result, portfolioValue }: Props) 
                 onChange={(v) => updateLumpyExpense(expense.id, { amount: v })} />
               <NumberField label="At age" value={expense.age} min={plan.currentAge} max={plan.horizonAge}
                 onChange={(v) => updateLumpyExpense(expense.id, { age: Math.round(v) })} />
-              <button type="button" className="invest-retire-icon-btn" aria-label="Remove expense"
+              <button type="button" className="invest-retire-icon-btn" aria-label={`Remove ${expense.label || "this"} expense`}
                 onClick={() => removeLumpyExpense(expense.id)}>
                 <Trash2 size={15} aria-hidden="true" />
               </button>

@@ -27,7 +27,7 @@ export function LeaderList({
             className="flex items-center justify-between gap-4 border border-[var(--c97-rule)] bg-[var(--c97-field)] px-4 py-3"
           >
             <div className="flex min-w-0 items-center gap-3">
-              <div className="inline-flex h-10 w-10 flex-shrink-0 items-center justify-center bg-[var(--c97-surface)] text-sm font-bold text-[var(--c97-accent)] ">
+              <div className="inline-flex h-10 w-10 flex-shrink-0 items-center justify-center bg-[var(--c97-surface)] text-sm font-bold text-[var(--c97-accent)] c97-tabular">
                 {leader.rank}
               </div>
               <div className="min-w-0">

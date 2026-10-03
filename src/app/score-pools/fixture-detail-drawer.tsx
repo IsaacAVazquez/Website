@@ -317,10 +317,10 @@ export function FixtureDetailDrawer({
                   { label: "Higher floor", pick: rec.safest },
                   ...(rec.differentiator ? [{ label: "Differentiator", pick: rec.differentiator }] : []),
                 ].map(({ label, pick }) => (
-                  <div key={label} className="border border-[var(--c97-rule)] bg-[var(--c97-surface)] p-3">
+                  <div key={label} className="flex flex-col border border-[var(--c97-rule)] bg-[var(--c97-surface)] p-3">
                     <p className="text-3xs font-semibold uppercase tracking-[0.12em] text-[var(--c97-ink-2)]">{label}</p>
                     <p className="mt-1 font-mono text-xl font-bold text-[var(--c97-ink)]">{formatScoreline(pick.score)}</p>
-                    <p className="mt-1 text-2xs text-[var(--c97-ink-2)]">
+                    <p className="mt-1 text-2xs text-[var(--c97-ink-2)]" style={{ marginBottom: "var(--c97-sp-1)" }}>
                       {formatPoints(pick.expectedPoints)} exp pts · floor {formatPercent(pick.pAnyPoints)}
                     </p>
                     <button
@@ -328,8 +328,10 @@ export function FixtureDetailDrawer({
                       className={`${PILL_BUTTON} w-full justify-center`}
                       // .c97-btn is unlayered and sets nowrap and wide padding, so the
                       // three-up column needs its own inline spacing to fit the label.
+                      // The auto top margin pins it to the card's foot, so the three
+                      // buttons share one line when a stat line wraps in one card.
                       style={{
-                        marginTop: "var(--c97-sp-1)",
+                        marginTop: "auto",
                         paddingInline: "var(--c97-sp-1)",
                         whiteSpace: "normal",
                       }}

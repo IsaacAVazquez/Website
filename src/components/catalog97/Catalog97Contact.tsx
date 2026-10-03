@@ -31,7 +31,7 @@ const touchTarget = {
  *
  * The design draws a four-field form on the left of the blue band and a direct
  * email panel on the right. There is no form backend in this repo, so the form
- * is not implemented — shipping the markup would look right and silently drop
+ * is not implemented, since shipping the markup would look right and silently drop
  * every message sent through it. The design's own vermilion line above the band
  * says email is faster than the form and gets read first, so the direct panel
  * takes the full weight the form would have had, in the same two-column split.
@@ -164,7 +164,7 @@ export function Catalog97Contact() {
                       target="_blank"
                       rel="noopener noreferrer"
                       className="c97-link"
-                      aria-label={channel.label + ", " + channel.value}
+                      aria-label={`${channel.label}, ${channel.value}, opens in a new tab`}
                       style={touchTarget}
                     >
                       {channel.value}

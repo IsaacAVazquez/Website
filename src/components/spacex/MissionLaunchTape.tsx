@@ -83,14 +83,14 @@ export function MissionLaunchTape({ recentLaunches, upcomingLaunches }: MissionL
         className="px-3"
         ariaLabel="Recent launch outcomes and upcoming launch windows"
         label={
-          <span className="inline-flex items-center gap-2">
+          <span className="inline-flex items-center" style={{ gap: "var(--c97-sp-1)" }}>
             <span aria-hidden="true" className="h-1.5 w-1.5 bg-[var(--c97-accent)]" />
             {latestFlightNumber ? `Latest · Flight ${latestFlightNumber}` : "Launch tape"}
           </span>
         }
         items={items}
         emptyFallback={
-          <p className="px-4 py-3.5 text-sm text-[var(--c97-ink-2)]">
+          <p className="text-sm text-[var(--c97-ink-2)]" style={{ paddingInline: "var(--c97-sp-2)", paddingBlock: "var(--c97-sp-2)" }}>
             No recent outcomes or upcoming windows are available from the current snapshot.
           </p>
         }

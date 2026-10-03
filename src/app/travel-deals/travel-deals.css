@@ -39,7 +39,8 @@
   border-bottom: 0;
 }
 
-a.c97-fare-row:hover .c97-serif {
+a.c97-fare-row:hover .c97-serif,
+a.c97-fare-row:focus-visible .c97-serif {
   color: var(--c97-action);
   text-decoration: underline;
   text-underline-offset: 4px;

@@ -69,8 +69,8 @@ export default function ApplicationEditDialog({
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center overflow-y-auto p-4"
-      style={{ background: "color-mix(in srgb, var(--c97-print-black) 45%, transparent)" }}
+      className="fixed inset-0 z-50 flex items-center justify-center overflow-y-auto"
+      style={{ padding: "var(--c97-sp-2)", background: "color-mix(in srgb, var(--c97-print-black) 45%, transparent)" }}
       role="presentation"
       onClick={(event) => {
         if (event.target === event.currentTarget) onClose();
@@ -84,7 +84,7 @@ export default function ApplicationEditDialog({
         className="c97-panel c97-offset w-full max-w-2xl overflow-y-auto"
         style={{ background: "var(--c97-surface)", maxHeight: "90dvh" }}
       >
-        <div className="flex items-start justify-between gap-4">
+        <div className="flex items-start justify-between" style={{ gap: "var(--c97-sp-2)" }}>
           <div>
             <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-2)" }}>
               Application tracker
@@ -105,13 +105,14 @@ export default function ApplicationEditDialog({
           </button>
         </div>
 
-        <div className="mt-6 grid gap-4 sm:grid-cols-2">
+        <div className="grid sm:grid-cols-2" style={{ marginTop: "var(--c97-sp-3)", gap: "var(--c97-sp-2)" }}>
           <FormField label="Company">
             <input
               value={form.companyName}
               onChange={(event) =>
                 setForm((current) => ({ ...current, companyName: event.target.value }))
               }
+              required
               className="c97-field"
             />
           </FormField>
@@ -121,6 +122,7 @@ export default function ApplicationEditDialog({
               onChange={(event) =>
                 setForm((current) => ({ ...current, title: event.target.value }))
               }
+              required
               className="c97-field"
             />
           </FormField>
@@ -240,14 +242,20 @@ export default function ApplicationEditDialog({
           </div>
         </div>
 
-        <div className="mt-6 flex flex-wrap justify-end gap-3">
+        <div className="flex flex-wrap justify-end" style={{ marginTop: "var(--c97-sp-3)", gap: "var(--c97-sp-2)" }}>
           <button type="button" onClick={onClose} className="c97-btn-ghost">
             Cancel
           </button>
+          {!canSave && (
+            <p id="application-dialog-hint" className="c97-meta" style={{ alignSelf: "center" }}>
+              Add a company and a role to save
+            </p>
+          )}
           <button
             type="button"
             onClick={() => onSave(form, application)}
             disabled={!canSave}
+            aria-describedby={canSave ? undefined : "application-dialog-hint"}
             className="c97-btn disabled:opacity-50"
           >
             Save application

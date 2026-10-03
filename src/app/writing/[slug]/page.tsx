@@ -98,6 +98,7 @@ export default async function BlogPostPage({ params }: PageProps) {
     { name: post.title, url: `/writing/${slug}` },
   ];
 
+  const closingTears = Boolean(post.cta) || relatedPosts.length > 0;
   const articleDescription = post.seo?.description || post.excerpt || post.title;
   const articleKeywords = post.seo?.keywords || post.tags;
 
@@ -281,6 +282,7 @@ export default async function BlogPostPage({ params }: PageProps) {
                             rel="noreferrer"
                           >
                             {post.coverImageCredit}
+                            <span className="sr-only"> (opens in a new tab)</span>
                           </a>
                         ) : (
                           <span>{post.coverImageCredit}</span>
@@ -310,7 +312,11 @@ export default async function BlogPostPage({ params }: PageProps) {
 
       {/* The post's own call to action, on the saffron field. */}
       {post.cta ? (
-        <section className="c97-band" data-c97-surface="ink-saffron">
+        <section
+          className="c97-band c97-sheet"
+          data-c97-surface="ink-saffron"
+          data-seam="torn"
+        >
           <div
             className="c97-shell"
             style={{
@@ -341,8 +347,9 @@ export default async function BlogPostPage({ params }: PageProps) {
       {/* Related writing, as a ledger on bone. */}
       {relatedPosts.length > 0 ? (
         <section
-          className="c97-band"
+          className="c97-band c97-sheet"
           data-c97-surface="bone"
+          data-seam="deckle"
           aria-labelledby="related-writing-heading"
         >
           <div className="c97-shell">
@@ -397,8 +404,16 @@ export default async function BlogPostPage({ params }: PageProps) {
         </section>
       ) : null}
 
-      {/* Author, the older and newer neighbours, and the way back. */}
-      <section className="c97-band" data-c97-surface="paper">
+      {/*
+        Author, the older and newer neighbours, and the way back. It tears over
+        the band above only when that band is saffron or bone; straight after
+        the article it continues the same paper.
+      */}
+      <section
+        className={`c97-band${closingTears ? " c97-sheet" : ""}`}
+        data-c97-surface="paper"
+        data-seam={closingTears ? "torn" : undefined}
+      >
         <div className="c97-shell" style={{ display: "grid", gap: "var(--c97-sp-5)" }}>
           <AuthorBio />
 
