@@ -165,7 +165,7 @@ test("decision lab preserves keyboard slider changes in a shared URL", async ({ 
   await expect(page).toHaveURL(/impact=0/);
   await reloadTool(page);
   await expect(slider).toHaveValue("0");
-  await page.getByRole("button", { name: "Reset to defaults" }).click();
+  await page.getByRole("button", { name: "Reset to preset" }).click();
   await expect(slider).not.toHaveValue("0");
 });
 
@@ -178,7 +178,7 @@ test("developer tool search handles no results and resets", async ({ page }) => 
   await expect(page.getByText("No tools match those filters", { exact: true })).toHaveCount(0);
 });
 
-for (const route of ["/earthquake-pulse", "/bay-area-transit", "/enablement-assistant"]) {
+for (const route of ["/earthquake-pulse", "/bay-area-transit"]) {
   test(`${route} switches every operational tab`, async ({ page }) => {
     await openTool(page, route);
     const tabs = page.getByRole("tab");
@@ -190,6 +190,17 @@ for (const route of ["/earthquake-pulse", "/bay-area-transit", "/enablement-assi
     }
   });
 }
+
+test("enablement assistant switches between program and team views", async ({ page }) => {
+  await openTool(page, "/enablement-assistant");
+  const views = page.getByRole("group", { name: "Enablement workspace views" });
+  await views.getByRole("button", { name: "Onboard a team", exact: true }).click();
+  await expect(views.getByRole("button", { name: "Onboard a team", exact: true })).toHaveAttribute("aria-pressed", "true");
+  await expect(page.getByRole("heading", { name: "Start with the team that needs help" })).toBeVisible();
+  await views.getByRole("button", { name: "Program dashboard", exact: true }).click();
+  await expect(views.getByRole("button", { name: "Program dashboard", exact: true })).toHaveAttribute("aria-pressed", "true");
+  await expect(page.getByRole("heading", { name: "See where the standard is holding" })).toBeVisible();
+});
 
 test("arcade starts and accepts a keyboard hit on a live target", async ({ page }) => {
   await openTool(page, "/arcade");

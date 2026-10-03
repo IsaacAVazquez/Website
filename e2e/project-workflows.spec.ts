@@ -94,6 +94,12 @@ test("travel deals restores the trip inputs used by its calculations", async ({ 
 });
 
 test("MBA tracker saves and reloads a manual application", async ({ page }) => {
+  // Manual application storage is local. Keep this workflow independent of
+  // third-party hiring boards, whose availability is checked separately.
+  await page.route("**/api/mba-jobs?*", (route) => route.fulfill({ json: {
+    jobs: [], fetchedAt: new Date().toISOString(), errors: [],
+    companiesRequested: [], sourceStatuses: [],
+  } }));
   await open(page, "/mba-internship-notifications");
   await page.getByRole("button", { name: "Application pipeline", exact: true }).click();
   await page.getByRole("button", { name: "Add application", exact: true }).click();
@@ -139,7 +145,7 @@ test("waivers saves a player marked available in the league", async ({ page }) =
 
 test("enablement assistant completes intake and builds a recommendation", async ({ page }) => {
   await open(page, "/enablement-assistant");
-  await page.getByRole("tab", { name: "Onboard a team", exact: true }).click();
+  await page.getByRole("group", { name: "Enablement workspace views" }).getByRole("button", { name: "Onboard a team", exact: true }).click();
   await page.getByRole("button", { name: "Continue", exact: true }).click();
   await page.getByRole("button", { name: "Continue", exact: true }).click();
   await page.getByRole("button", { name: "Build recommendation", exact: true }).click();
