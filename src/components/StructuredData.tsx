@@ -1,5 +1,6 @@
 import {
   buildPersonEntity,
+  freeApplicationOffer,
   personCanonicalUrl,
   personSchemaId,
   safeJsonLd,
@@ -8,7 +9,7 @@ import {
 import { profile } from "@/lib/profile";
 
 interface StructuredDataProps {
-  type?: "Person" | "WebSite" | "WebPage" | "SoftwareApplication" | "BreadcrumbList" | "SportsApplication" | "FAQPage" | "ContactPage" | "Article" | "BlogPosting";
+  type?: "Person" | "WebSite" | "WebPage" | "SoftwareApplication" | "BreadcrumbList" | "SportsApplication" | "FAQPage" | "ContactPage" | "Article" | "BlogPosting" | "Dataset";
   data?: Record<string, string | number | boolean | object>;
 }
 
@@ -120,7 +121,7 @@ export function StructuredData({ type = "Person", data = {} }: StructuredDataPro
           "applicationCategory": data.applicationCategory || "WebApplication",
           "operatingSystem": data.operatingSystem || "Any",
           "url": data.url || siteConfig.url,
-          ...(offers ? { offers } : {}),
+          "offers": offers ?? freeApplicationOffer,
         };
       }
 
@@ -233,6 +234,30 @@ export function StructuredData({ type = "Person", data = {} }: StructuredDataPro
           "articleSection": data.articleSection,
           "wordCount": data.wordCount,
           "inLanguage": "en-US",
+        };
+      }
+
+      case "Dataset": {
+        const {
+          creator,
+          datePublished,
+          dateModified,
+          ...datasetData
+        } = data;
+
+        return {
+          ...baseData,
+          ...datasetData,
+          "@type": "Dataset",
+          "name": data.name || "Dataset",
+          "description": data.description || "",
+          "url": data.url || siteConfig.url,
+          "creator": normalizePerson(creator),
+          "isAccessibleForFree": data.isAccessibleForFree ?? true,
+          ...(datePublished ? { datePublished } : {}),
+          ...(dateModified ? { dateModified } : {}),
+          "keywords": data.keywords,
+          "license": data.license || "https://creativecommons.org/publicdomain/zero/1.0/",
         };
       }
 

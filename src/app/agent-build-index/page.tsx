@@ -92,6 +92,31 @@ export default function AgentBuildIndexPage() {
           dateModified: index.generatedAt,
         }}
       />
+      <StructuredData
+        type="Dataset"
+        data={{
+          name: "Open-Source AI Agent Repository and Velocity Index",
+          description:
+            "A weekly index of public open-source AI agent repositories on GitHub, tracking star growth, baseline architectures, and developer momentum.",
+          url: `${siteConfig.url}${PATH}`,
+          keywords: [
+            "AI agents",
+            "autonomous agents",
+            "GitHub stars",
+            "developer tools",
+            "agent architecture",
+            "open source AI",
+          ],
+          variableMeasured: [
+            "Repository Name",
+            "Star Count",
+            "Weekly Star Movement",
+            "Topic Segments",
+          ],
+          dateModified: index.generatedAt,
+          license: "https://creativecommons.org/publicdomain/zero/1.0/",
+        }}
+      />
 
       {/* Hero */}
       <section className="c97-band" data-c97-surface="paper">

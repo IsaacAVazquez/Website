@@ -80,10 +80,12 @@ export async function generateMetadata({
     return { title: "Writing topic not found", robots: { index: false, follow: true } };
   }
 
+  const posts = getBlogPostPreviewsByTopicSlug(topic.slug);
   return constructMetadata({
     title: topic.seoTitle,
     description: topic.metaDescription,
     canonicalUrl: `/writing/topics/${topic.slug}`,
+    dateModified: posts[0]?.publishedAt,
   });
 }
 

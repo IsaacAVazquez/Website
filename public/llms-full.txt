@@ -1,0 +1,761 @@
+# Isaac Vazquez — Complete Corpus (llms-full.txt)
+
+> Second-year MBA candidate at UC Berkeley Haas, Class of 2027, moving into product. Six years across campaign data at Open Progress and QA at Civitech, where the QA role grew into product work, then a summer 2026 growth internship at Juno.
+
+- Canonical website: https://isaacvazquez.com
+- Index summary: https://isaacvazquez.com/llms.txt
+- Full sitemap: https://isaacvazquez.com/sitemap.xml
+- RSS feed: https://isaacvazquez.com/api/rss
+- Contact email: IsaacVazquez@berkeley.edu
+- LinkedIn: https://www.linkedin.com/in/isaac-vazquez/
+- GitHub: https://github.com/IsaacAVazquez
+
+---
+
+## Biography & Recruiting Context
+
+Isaac Vazquez is a second-year MBA candidate at UC Berkeley Haas, Class of 2027, looking for a full-time role in product management, product marketing, or program management that starts after he graduates in May 2027, and he is interested in consumer tech broadly.
+
+At Civitech, a campaign software company, his QA role grew into product work. He owned the product vision for the TextOut texting platform, led a pricing initiative that generated $4M in additional revenue in 2024, and helped launch RunningMate. In summer 2026 he was the MBA growth intern at Juno, a fintech company that negotiates group rates on student loans, focusing on funnel conversion analysis and member activation. He is a Consortium Fellow and MLT Professional Development Fellow, and he builds and maintains the tools on this site.
+
+---
+
+## Working Principles & Philosophy
+
+### 1. Check what produces the number
+Before acting on a metric, understand the query or event instrumentation behind it. At Juno, correcting one click event moved the funnel's biggest drop off a step earlier, to members who had an approved rate and never clicked through to a lender.
+
+### 2. Watch customers use the real thing
+Alpha demos work best when customers work through their actual workflows in new builds. At Civitech, alpha demo observation revealed the messaging window was cutting off message content, leading directly to a user story, business case, and a production fix within one week.
+
+### 3. Put the limits next to the number
+A simple comparison can easily mislead. At Juno, advising meetings superficially appeared to multiply conversion, but most occurred after the conversion they were credited with. Building a matched estimate showed the true causal lift was a fraction of the headline number.
+
+---
+
+## Live Product Tools & Dashboards
+
+- [Investment Research Platform](https://isaacvazquez.com/investments): Public investment research platform with portfolio tracking, quote snapshots, stock comparisons, and retirement-planning experiments.
+- [Before You Buy](https://isaacvazquez.com/investments/before-you-buy): Concept for Google Finance showing portfolio impact (sector shift, beta, historical worst-day stress tests) before buying a stock.
+- [Interchange IQ](https://isaacvazquez.com/fintech-tools/interchange-iq): Payment fee analyzer comparing flat-rate and interchange-plus processor economics with adjustable volume, ticket size, and card mix.
+- [Budget Planner](https://isaacvazquez.com/fintech-tools/budget-planner): Browser-persisted budgeting workspace for income, category planning, savings targets, and manual expense tracking.
+- [Rent vs. Buy Calculator](https://isaacvazquez.com/fintech-tools/rent-vs-buy): Net-worth model that credits the renter the opportunity cost of the down payment and determines crossover timing.
+- [Fantasy Football Suite](https://isaacvazquez.com/fantasy-football): Snapshot-backed rankings, weekly board, waiver target analyzer, trade calculator, and best ball draft assistants with Underdog ADP.
+- [Frontier Model Tracker](https://isaacvazquez.com/frontier-models): Comparison of leading foundation models across pricing, context windows, modalities, and reasoning capabilities.
+- [AI Dev Tools Directory](https://isaacvazquez.com/ai-dev-tools): Curated catalog of developer AI tooling, pricing, and agent integrations.
+- [Agent Build Index](https://isaacvazquez.com/agent-build-index): Weekly tracking of public GitHub agent repositories and star momentum.
+- [Decision Lab](https://isaacvazquez.com/decision-lab): Product-bet triage framework scoring impact, confidence, effort, and reversibility.
+- [Automation Enablement Assistant](https://isaacvazquez.com/enablement-assistant): Recommends standard test stacks, builds onboarding plans, and diagnoses automation gaps.
+- [News Pulse](https://isaacvazquez.com/news-pulse): RSS-backed media analytics comparing story frequency, topic coverage, and editorial tone.
+- [SpaceX Mission Control](https://isaacvazquez.com/spacex-mission-control): Real-time launch schedules, booster tracking, and launch economics from public space APIs.
+- [Bay Area Transit Pulse](https://isaacvazquez.com/bay-area-transit): Live BART departures, elevator alerts, and line status for the San Francisco Bay Area.
+- [Sports Pulse Family](https://isaacvazquez.com/dashboards): Dedicated daily-updated data dashboards for Premier League, La Liga, MLB, NBA, NFL, Formula 1, Golf, and World Cup 2026.
+
+---
+
+## Representative Articles & In-Depth Writing (Full Text)
+
+
+### Agentic AI in Plain English: What It Is and Why Product Managers Should Care
+
+- URL: https://isaacvazquez.com/writing/agentic-ai-explained-for-product-managers
+- Published: 2026-04-08
+- Topic: Agentic AI
+- Excerpt: I use agentic AI to mean systems that take a goal, plan intermediate steps, use tools, and continue until a task is done. Those abilities change how I think about permissions, failure handling, and product evaluation.
+
+The word agent has gotten stretched far enough that it now means almost nothing on its own. I hear people use it for chatbots, copilots, workflow tools, and fully automated systems that can go take actions across several applications. That is too much ground for one word to cover. If I am being precise, I use agentic AI for systems that can take a goal, decide on intermediate steps, use tools to execute those steps, and keep going long enough to finish meaningful work without a human having to drive every turn.
+
+That last part matters more than the branding language around it. A chatbot can sound smart and still be non-agentic in any useful sense. If I have to keep choosing the next step, pasting in the missing context, and telling it which tab to open or which source to check, I am still doing the workflow myself. The model is just helping me talk through it. An agentic system earns the name when it can hold onto the objective, move through a sequence of actions, and return with something closer to completed work than a single answer.
+
+When I explain the distinction to PMs, I usually start with the job rather than the model. If the job is "answer my question," a chatbot may be enough. If the job is "research three competitors, compare pricing changes, pull examples, and draft a brief I can react to," then the question becomes whether the system can plan, call the right tools, recover when one of them fails, and show me what it did. That is the practical difference. I do not think it helps to turn this into abstract taxonomy when the product consequences are concrete.
+
+### Key takeaways
+
+- **Agentic AI definition**: Systems that receive a high-level goal, plan intermediate steps, operate external tools (APIs, code, search), and iterate until the task is complete without human micro-steering.
+- **The four production pillars**: Autonomous path planning, external tool execution, multi-turn state preservation, and inspectable audit trails.
+- **The product manager's focus**: The core design challenge shifts from response quality to permissions, execution boundaries, failure recovery, and safe human-in-the-loop escalation.
+- **Common failure mode**: Products that market general autonomy while silently degrading or getting trapped in loops on non-ideal tool responses.
+
+## What makes an agentic system feel real
+
+The systems that feel meaningfully agentic to me usually have four things working together. They can decide on an execution path instead of just continuing the conversation. They can use external tools that matter, whether that is search, code execution, a database, or an internal API. They keep enough state to avoid starting over every few minutes. And they expose the work in a way that a human can audit when something looks off.
+
+I think PMs often focus on the first part and underweight the other three. Planning is the flashy part in demos. Tool use, state management, and recovery are where production products either become trustworthy or fall apart. A system that can make a plan but cannot reliably operate the tools it needs is just a confident narrator. A system that can use tools but cannot preserve context across a longer workflow becomes exhausting to supervise. A system that can do both but hides its actions behind a polished chat bubble will eventually create a trust problem of its own.
+
+That is why I do not find "it feels like ChatGPT but for workflows" to be a useful product description. Once a system can act, the interface and control model matter much more than they do in a pure Q and A product. The product is no longer just about quality of generated language. It is about visibility, reversibility, permissions, escalation, and the point at which the user is supposed to step back in.
+
+## Why PMs should care about the distinction
+
+PMs need to understand this because the design questions change the minute a system is allowed to do more than answer. The important questions are no longer just "Was the response good?" and "Did the user get value?" They become "What was the system allowed to do?" "How did the user know what was happening?" "What happened when the agent got something wrong?" and "Could the user stop it before a small error became a real one?"
+
+I think this is where a lot of AI product thinking still feels shallow. Teams treat an agent like a stronger assistant and then act surprised when users ask for an audit trail, a confirmation step, or a cleaner handoff to a human. Of course they do. Once the system can act on their behalf, the emotional contract is different. People do not calibrate trust in agents the same way they calibrate trust in autocomplete. If the product does not make that legible, the user either overtrusts it or never trusts it enough to use the feature seriously.
+
+The PM who understands planning, tool use, memory, and interface design at a practical level has a much easier time pushing the right conversations forward. You do not need to be the person implementing orchestration logic. You do need enough depth to ask whether the workflow actually needs autonomy, whether the tool definitions are solid, whether the review points are in the right places, and whether the user can recover cleanly when the system does something dumb. Those are product questions, not just engineering questions.
+
+## What I think the current products get wrong
+
+Most agentic products are still better in a narrow lane than they are across a wide one. That is not a criticism so much as a design constraint. The systems I trust most are the ones that do less, more clearly. They are explicit about their tools, explicit about their limits, and explicit about where a human should step in. The ones I trust least are the ones that advertise general autonomy while quietly depending on ideal inputs, ideal data, and ideal tool responses.
+
+So where does that leave PMs? In my mind, the practical takeaway is simple. Do not ask first whether a product has an agent. Ask what work it can finish without supervision, what systems it can touch, how it handles failure, and what the user sees while it is doing the job. If the answers to those questions are weak, the product is probably less agentic than the marketing suggests. If the answers are strong, you are looking at a genuinely different product surface, and it deserves to be designed that way.
+
+If you want the adjacent pieces, [Build vs Buy for Agentic AI: When Startups Should Roll Their Own](/writing/build-vs-buy-agentic-ai-platform) is where I think through the platform decision, and [How I'd Evaluate an Agentic AI Product as a PM (Interview-Ready Framework)](/writing/evaluate-agentic-ai-product-pm-framework) is the cleaner framing for assessing whether an agentic product is actually designed well.
+
+---
+
+
+### How I'd Evaluate an Agentic AI Product as a PM (Interview-Ready Framework)
+
+- URL: https://isaacvazquez.com/writing/evaluate-agentic-ai-product-pm-framework
+- Published: 2026-04-10
+- Topic: Agentic AI
+- Excerpt: I evaluate an AI agent product by whether the task fits, what actions the system can take, how failures reach a human, and whether the result can be measured. In a PM interview, those are the questions I would work through first.
+
+When a PM interview turns to agentic AI, the candidates who struggle usually make the same mistake. They reach for a general product framework and start talking about growth, retention, engagement, and competitive landscape as if the product were just another SaaS surface with a language model inside it. None of those things are irrelevant. They just are not the first things I care about.
+
+If I am evaluating a candidate on an agentic AI question, I want to know whether they understand what is uniquely fragile about products that can act, not just talk. I want to hear whether they question the task fit, whether they understand trust as a design problem, and whether they know how to talk about failure without getting vague. Those are the signals that tell me the person has actually thought about this category and is not just swapping AI terminology into a standard PM answer.
+
+## The first questions I would ask
+
+The first question is whether the task even deserves an agentic product shape. That is the simplest test and the one people skip most often. Does the job require multiple steps, tool use, longer-running execution, or action on the user's behalf. Or is it really just a conversational assistance problem wearing more ambitious language. Candidates who ask that question early usually understand scope better than candidates who take the agentic premise as given.
+
+The second question is what the user is being asked to trust. I think this is the center of the evaluation. If the system can act, then predictability, transparency, and control matter immediately. Can the user tell what the system is doing. Can they stop it. Can they understand why a result happened. Can they recover when the agent took the wrong branch. If a candidate cannot talk concretely about that, the rest of the analysis usually sounds polished but hollow.
+
+The third question is how the product fails. I care a lot less about whether someone can recite a metrics stack than whether they understand the difference between an obvious failure and a silent one. An agent that visibly fails is annoying. An agent that quietly makes the wrong move and leaves the user thinking it succeeded is much more dangerous. When a candidate starts talking about loops, bad actions, weak escalations, invisible errors, and audit trails, I pay attention. That person is closer to the actual problem.
+
+## What I would listen for in a strong answer
+
+A strong answer usually gets more specific as it goes. On metrics, for example, I would want to hear something beyond standard retention language. I want to hear task completion quality, escalation timing, override rate, and where human correction is showing up. I want to hear that the candidate knows a zero escalation rate is not automatically good and that a high completion rate may hide low-quality completions. Those are category-specific instincts, and they matter.
+
+I also want to hear a view on differentiation that is more durable than "the model is strong." That answer was weak a year ago and it is weaker now. What matters more is workflow context, proprietary data, tool access, integration depth, and whether the product is learning from repeated use in a way a generic agent cannot. Candidates who say that plainly usually understand that the product moat is not the same thing as the model vendor's moat.
+
+The interview-ready version of all of this is not a memorized checklist. It is a way of showing how you think. Start by questioning task fit. Move quickly into trust and failure design. Use metrics that actually reflect agent behavior. End with what the product owns that is hard to copy. If I heard that shape from a candidate, I would take it seriously, because it tells me they know where these products succeed and where they get exposed.
+
+### 4-Pillar Agentic Evaluation Rubric
+
+| Evaluation Pillar | Core PM Evaluation Question | Green Flags (Ready to Scale) | Red Flags (High Risk of Failure) |
+| :--- | :--- | :--- | :--- |
+| 1. Task Boundedness | Does the workflow require autonomous tool use, intermediate verification, and bounded state changes? | Closed-loop state space, deterministic check steps, scoped API permissions | Open-ended creative tasks with unbounded search spaces |
+| 2. Trust & Control Surface | Can the operator inspect the thought-trace, interrupt execution, and undo mutations? | Explicit preview states, granular approval gates, continuous audit trail | Black-box execution, silent irreversible writes, all-or-nothing autonomy |
+| 3. Failure & Recovery | What happens when an external tool fails or the agent branches off course? | Fast escalation timeouts, explicit fallback modes, deterministic schema guards | Silent hall-of-mirrors hallucination, runaway loop spend, unmonitored completions |
+| 4. Defensibility & Moat | Where does long-term competitive advantage accrue as foundation models improve? | Proprietary context stores, domain-specific evaluation testbeds, low-latency tooling | Pure wrapper over public LLM APIs without unique state or feedback |
+
+That is also more or less how I evaluate real agentic products. The interview framing is different, but the substance is the same. I am not looking for a clever framework name. I am looking for evidence that the person understands the product surface, the failure surface, and the human trust problem well enough to make good decisions once the product leaves the demo. For scoring product bets on impact, confidence, effort, and reversibility, I built the [Decision Lab](/decision-lab).
+
+
+If you want the pieces that sit around this framework, [Agentic AI in Plain English: What It Is and Why Product Managers Should Care](/writing/agentic-ai-explained-for-product-managers) is the cleaner category primer, [What an AI Agent Actually Costs in Production](/writing/what-an-ai-agent-actually-costs-in-production) breaks down the unit economics, and [AI Agents for Customer Support: What Actually Works in 2026](/writing/ai-agents-customer-support-what-works) is a concrete example of how the trust and failure questions change once the workflow gets real.
+
+---
+
+
+### What an AI Agent Actually Costs in Production, From Someone Who Pays the Bills
+
+- URL: https://isaacvazquez.com/writing/what-an-ai-agent-actually-costs-in-production
+- Published: 2026-05-14
+- Topic: Agentic AI
+- Excerpt: An AI agent makes repeated model calls as it works through a task, so its cost depends on the number of steps, the context carried into each call, and retries. I look at those costs per completed task, along with caching and limits on how long a run can continue.
+
+There is a conversation happening on a loop right now between finance teams and product teams, and it goes like this. Finance says token prices have fallen something like ninety percent in two years, so why did our AI spend triple? Product says usage grew. Both are telling the truth and neither has actually explained the bill. I run agents at small scale for my own projects and have watched the same dynamics at much larger scale, and I want to lay out where agent costs actually come from, because the mental model most teams carry, price per token times tokens per request, is the wrong one, and it produces forecasts that miss by multiples.
+
+The core issue is that an agent is not a request. A chat completion is one model call with a bounded input and output, and per-token math describes it fine. An agent is a loop. It reads context, calls a tool, reads the result, decides, calls another tool, and iterates until done, and every iteration re-sends an expanding context window. Two things about that loop break naive cost models. The iteration count is variable and unbounded by anything except your configuration, and the context grows as the loop runs, which means cost per step rises through the task. A task that takes three steps and a task that takes thirty are the same product feature with an order of magnitude between their costs, and you mostly do not control which one a given user request turns out to be.
+
+What I found instrumenting my own workflows is that the distribution of cost across tasks is brutally skewed. The median agent run is cheap and getting cheaper, exactly as the falling token prices promise. The tail is where the money goes. The run that hits a confusing error and retries its way through forty steps, the research task that pulls in ten large documents and then carries them through every subsequent call, the loop that gets stuck and burns its entire step budget before failing. A small fraction of runs routinely accounts for the majority of spend, which means your average cost per task is nearly useless for forecasting and your tail behavior is everything. Budgeting agents on average cost is like budgeting a hospital on the average patient.
+
+### Key takeaways
+
+- **Loops vs. requests**: Chatbots are single requests with bounded token cost; agents are iterative loops where expanding context increases the cost per step.
+- **Tail-skewed economics**: Average cost per task is misleading because median runs are inexpensive, while long, retrying, or stuck loops in the tail drive the majority of the monthly bill.
+- **The four cost levers**:
+  1. *Prompt caching*: Massive savings on repeated system prompts, tool definitions, and conversation histories.
+  2. *Model routing*: Frontier reasoning models for planning and recovery; efficient models for mechanical data formatting.
+  3. *Context compaction*: Aggressively summarizing tool returns to prevent quadratic token growth.
+  4. *Step budgets*: Strict, non-negotiable iteration ceilings to eliminate infinite runaway loops.
+
+## The levers that actually move the bill
+
+So what moves the number? In rough order of how much they have mattered in practice, for me and for the production deployments I have seen up close.
+
+Caching is first and it is not close. Agent loops re-send the same system prompt, tool definitions, and accumulated history on every iteration, which makes them close to the ideal case for prompt caching. Both [OpenAI](https://developers.openai.com/api/docs/guides/prompt-caching) and [Anthropic](https://platform.claude.com/docs/en/build-with-claude/prompt-caching) document prompt caching as a direct way to reduce repeated-input cost and latency. An agent that structures its stable context to maximize cache hits can cut spend without changing the product behavior at all. This is the single most boring and most effective line item in agent economics, and teams skip it because it is plumbing rather than strategy.
+
+Model routing is second. The instinct to run the whole agent on the frontier model is understandable, because the frontier model fails least, and a failed run is wasted spend plus a retry. But most agent loops contain a lot of low-judgment steps, formatting results, extracting fields, deciding whether a tool result is an error, and routing those to a model that costs a twentieth as much is nearly free quality-wise. The pattern that has settled in is a strong model for planning and recovery, a cheap model for mechanical steps. Where I would push back on the cost-cutting instinct is downgrading the planner, because a worse planner produces longer loops, and longer loops eat the savings. Cheaper steps, yes. Cheaper judgment, usually a false economy.
+
+Context discipline is third, and it compounds with both of the above. Every tool result you let into the window gets paid for on every subsequent step, so verbose tool output is not a one-time cost, it is a subscription. Summarizing or truncating results before they enter the loop, and compacting history as tasks run long, attacks the quadratic-ish growth that makes long runs disproportionately expensive. This is the same context engineering work that improves output quality, which is a happy alignment. The cheap agent and the good agent are substantially the same agent.
+
+And then there are step budgets, which are less a cost optimization than a survival requirement. Every production agent needs a hard ceiling on iterations and spend per task, because the failure mode of an agent without one is not a bad answer, it is an unbounded bill attached to a stuck loop. Set the ceiling, log what hits it, and treat every budget-exhausted run as a defect to investigate, because the tail of your cost distribution is made entirely of these.
+
+Where does this leave the unit economics question? In a much better place than the panicked version of the conversation suggests, honestly. Falling token prices are real, caching is real, routing is real, and an agent feature that was uneconomic eighteen months ago is frequently viable now with the same architecture and a quarter of the cost. What has not arrived, and what I would stop waiting for, is the version where costs are low enough that you can stop thinking about them. Agents convert money into iteration, and products built on them need someone who understands the loop well enough to know which iterations are worth buying. That is not a finance question. That is the product job now.
+
+For the model-selection side of that decision, [Reasoning Model Economics](/writing/reasoning-model-economics-when-to-use-which) is the more tactical comparison. [The New Model Economics](/writing/new-model-economics-tier-collapse-2026) covers why the architecture now matters more than a simple price-per-token table.
+
+---
+
+
+### Context Engineering Is What Prompt Engineering Wanted to Be
+
+- URL: https://isaacvazquez.com/writing/context-engineering-replacing-prompt-engineering
+- Published: 2026-03-12
+- Topic: Agentic AI
+- Excerpt: Context engineering is deciding what information a model sees when it answers, from retrieved documents to tool results and task history. I think selection, compression, freshness, and source authority matter more than most prompt wording changes.
+
+Two years ago, prompt engineering was being sold as a career. There were courses, certifications, job listings with the phrase in the title, and a small cottage industry of people sharing magic incantations that supposedly made models behave. I was skeptical of most of it at the time, and I think that skepticism has aged well. The wording of an individual prompt matters far less than people claimed, and it matters less every time models get better at understanding intent.
+
+But something real was hiding inside that hype, and it has a better name now. Context engineering is the discipline of deciding what information a model has access to at the moment it produces an answer. Not how you phrase the request. What the model can actually see. After a year of building agent workflows for my own projects and watching teams ship them at work, I would argue this is the single highest-leverage skill in AI product development right now, and it is almost entirely unrelated to the prompt-wording tricks that used to dominate the conversation.
+
+### Key takeaways
+
+- **Context vs. prompt phrasing**: Prompt wording matters less as models improve; context engineering—controlling the exact data, tools, and history a model sees—dictates production output quality.
+- **Context rot**: Irrelevant context is never neutral; it actively degrades model attention and reasoning quality over extended workflows.
+- **Four core context operations**: Selection (tight retrieval filters), compression (compacting histories), freshness (stamping and aging documents), and source hierarchy (resolving contradictory data).
+- **Production reality**: In multi-step loops, step fifteen is dominated by accumulated tool returns; engineering that history is where reliability is won or lost.
+
+## Why the framing shifted
+
+The shift happened because the systems changed. When the interface was a single question and a single answer, the prompt was the whole input, so obsessing over its wording made a kind of sense. Agent systems broke that model. An agent running a twenty-step task is accumulating context the entire way. Tool results, file contents, earlier reasoning, error messages, retrieved documents. By step fifteen, the original instruction is a small fraction of what the model is looking at, and the quality of the output depends on the quality of everything else in the window.
+
+What I found building my own agent workflows is that almost every failure I initially blamed on the model was actually a context failure. The agent that confidently used a stale API signature had a six-month-old document in its retrieval set. The agent that lost track of the task halfway through had a context window full of verbose tool output burying the instruction. The agent that contradicted itself was carrying two conflicting versions of the same fact from different sources, with no signal about which one to trust. None of these get fixed by rewording the prompt. All of them get fixed by changing what the model sees.
+
+There is a name floating around for the degradation that happens when context windows fill up with low-quality material, and I think context rot is the right one. Models do not weigh every token in the window equally, and they do not gracefully ignore irrelevant material. Irrelevant context is not neutral. It actively competes with the relevant context for the model's attention, and past a certain point, more information makes answers worse. The teams that internalize this build very different systems from the teams that assume a bigger window means you can stop curating.
+
+## What the work actually looks like
+
+So what does context engineering involve in practice? In my experience it comes down to a handful of decisions that most teams make implicitly and badly, and that good teams make explicitly.
+
+The first is selection. Of everything you could put in front of the model, what earns a place? The instinct is to include everything that might be relevant, because leaving something out feels like the bigger risk. I think that instinct is wrong most of the time. A retrieval system that returns the three most relevant documents will usually beat one that returns fifteen, even though the fifteen contain more total information, because the model's effective attention is a scarce resource and you are spending it either way.
+
+The second is compression. Long-running agents have to summarize their own history or they drown in it. The [OpenAI compaction guidance](https://developers.openai.com/api/docs/guides/compaction) treats compaction as a first-class way to reduce context size while preserving the state needed for later turns. The interesting design question is what survives the summary. A good compression step preserves decisions, constraints, and open questions while discarding the play-by-play. A bad one preserves the play-by-play and loses the constraint that actually mattered, which is how you get an agent that re-litigates a decision it already made an hour ago.
+
+The third is freshness and authority. When two pieces of context conflict, which one wins? Most systems have no answer to this, so the model improvises, and it improvises inconsistently. The fix is structural. Date your documents, rank your sources, and make the hierarchy explicit in how context gets assembled. This is boring data plumbing, and it moves output quality more than any prompt revision I have ever made.
+
+What is interesting here is how little of this resembles the prompt engineering era. Nobody is debating whether to say please. The work looks like information architecture, retrieval tuning, and pipeline design. It looks like engineering, because it is.
+
+### Prompt Engineering vs. Context Engineering
+
+| Architecture Dimension | Prompt Engineering (2023–2024) | Context Engineering (2025–2026) |
+| :--- | :--- | :--- |
+| Primary Focus | Phrasing, tone modifiers, few-shot prompt templates | Dynamic token pipelines, retrieval hygiene, context budget allocation |
+| Core Mechanism | In-context steering via prose formatting | Programmatic selection, history compaction, metadata re-ranking |
+| Execution Horizon | Single-turn request and response | Multi-turn agent trajectories across tools, memory, and environments |
+| Primary Failure Mode | Persona drift, ungrounded speculation | Context rot, distraction by verbose logs, stale document conflicts |
+| Primary Tooling | System prompt templates, prompt playground UI | Vector databases, graph RAG, compaction APIs, tool observation filters |
+
+## Where I would push back on the hype
+
+Context engineering is now getting its own hype cycle, and the pattern from the prompt era is repeating, so it is worth being clear about limits. Better context does not fix a model that lacks the underlying capability for a task. It does not substitute for evals, and teams that tune context without a measurement loop are just generating vibes with extra steps. And there is a real ceiling on how much curation effort makes sense for low-stakes use cases. A casual chat interface does not need the context discipline of an agent that touches production systems.
+
+But for anything agentic, anything long-running, anything where the model acts rather than just answers, I would put context design at the center of the build. The prompt is one input among many, and usually not the one that decides whether the thing works. The window is the product. What you let into it is the job.
+
+
+If retrieval is the part you are trying to place inside that architecture, [Is RAG Dead?](/writing/is-rag-dead-2026) is my answer to what long context and agentic search actually changed. If the system is already running and the question is whether a context change helped, [Evals Are the New Test Suite](/writing/evals-are-the-new-test-suite) is the measurement layer I would add next. My [Frontier Models](/frontier-models) tracker lists the context window and price for each current model.
+
+---
+
+
+### Moving to Biweekly Releases by Treating QA as a Reusable System
+
+- URL: https://isaacvazquez.com/writing/qa-automation-daily-deploys
+- Published: 2026-04-29
+- Topic: Quality Engineering
+- Excerpt: I designed an automation framework and release workflow that turned manual validation work into reusable infrastructure. The lesson was that stable narrow coverage beats broad flaky coverage almost every time.
+
+Most teams who say they want to ship more often are really saying they want the confidence to ship more often. The deploy pipeline is rarely the thing that breaks. The thing that breaks is the validation work in front of it, which gets slower as the product gets larger until "ship" becomes a multi-day decision instead of a single push.
+
+That was the situation when I started this work. Manual testing across multiple tech stacks was slowing releases and letting defects reach production after long, repetitive validation cycles. The team did not need a faster pipeline. They needed a way to trust the pipeline they already had.
+
+## The Real Problem Was Trust, Not Coverage
+
+Three pain points kept showing up. Release validation took too long and blocked deployment momentum. Coverage gaps made recurring production defects difficult to prevent. And QA work was too dependent on manual repetition instead of reusable test assets, which meant every cycle started over from scratch.
+
+Slow validation was costing the team speed. Escaped defects were eroding confidence in each release. The combination is a particularly painful kind of operational debt because it makes everyone look like they are working hard while the product still feels brittle. The fix had to make validation faster and the underlying product more trustworthy at the same time.
+
+## What The Framework Actually Did
+
+The instinct most teams reach for first is to add more tests. That is the wrong instinct. Brittle test inventory does not build confidence. It builds backlog.
+
+The framework I built focused on stable critical-path automation before anything else. I identified high-value regression paths, implemented reusable test components and page objects so the suite could be maintained, and integrated the automation into CI so failures surfaced before release handoff instead of during it.
+
+Two principles ended up shaping the rest of the work. Reliability and maintainability mattered more than chasing the largest possible test count. And reporting needed to group failures by likely cause instead of raw failure volume, because a wall of red is operationally identical to no signal at all.
+
+The suite ran on Cypress for end-to-end tests, Postman for API tests, and JMeter for load tests, and it grew to more than 400 manual and automated tests across two products.
+
+## What Changed
+
+Releases moved from monthly to biweekly, and release validation time dropped 30%. Alongside the new deployment rules I set with engineering and DevOps, critical defects dropped 90%.
+
+The harder-to-measure outcome was that QA work stopped being the bottleneck conversation. The team could plan releases around real signal instead of around how nervous someone was about a particular release. That kind of confidence does not show up in a single metric, but it changes how the team operates day to day.
+
+## What I Would Bring Forward
+
+Stable tests beat broad flaky coverage every time. Anyone who has had to triage a flaky suite during a release weekend already knows this, but it is worth saying out loud because the temptation in test strategy is always to add more, and the better move is usually to remove the unstable parts and double down on the reliable ones.
+
+Automation adoption depends as much on documentation and training as on the framework itself. A great suite that nobody understands is a single-owner suite, and single-owner systems do not survive turnover.
+
+If you want the broader frame on quality work in production, [Building Reliable Software Systems](/writing/building-reliable-software-systems) is the long-form thesis, and [Launching RunningMate by Treating Quality as Product Definition](/writing/runningmate-platform-launch) is where the same instincts run inside a launch instead of a release loop.
+
+---
+
+
+### Preventing Outages by Tying Performance Monitoring to User Workflows
+
+- URL: https://isaacvazquez.com/writing/proactive-performance-intelligence
+- Published: 2026-04-29
+- Topic: Reliability
+- Excerpt: I built a performance intelligence workflow that connected monitoring, load testing, and incident review into a single loop. The shift was framing performance work around user impact instead of raw infrastructure metrics.
+
+The problem with most performance dashboards is that they are tuned for the wrong audience. They are built for the people who set them up, not the people who have to act on them. So infrastructure metrics scroll past, alerts fire on noise, and the only signal anyone actually trusts is a customer ticket. By that point, the team is in incident response mode, and incident response is a worse place to do reliability work than planning is.
+
+That was the starting state when I took on this work. The team was reacting to performance issues after user impact, and the existing monitoring did not connect technical signals to product risk clearly enough. Alerts were either too noisy or too late to guide action. Performance regressions were difficult to connect to specific releases. And stakeholders lacked a clear view of which reliability issues mattered most, which made it hard to prioritize work outside of an outage.
+
+Every preventable outage or slow workflow was weakening user trust and pulling the team away from planned product work. Reliability had become an interrupt loop instead of a planning input.
+
+## The Reframe
+
+The shift was to treat performance as something measured in user workflows, not in infrastructure metrics in isolation. A CPU spike does not matter on its own. A CPU spike that correlates with a slow voter outreach workflow during peak traffic absolutely matters. The same is true in reverse. A long tail latency in an unused endpoint can sit on a dashboard for months without doing harm.
+
+I connected monitoring, load testing, and incident review into a single workflow. Performance thresholds got defined around user-facing workflows so the alerting was telling the team something about the customer experience, not about the back end. Dashboards separated actionable signals from background noise, which sounds simple and is operationally hard. Load testing and incident review loops caught recurring bottlenecks before they became outages.
+
+The principles ended up being clear. Set alert thresholds around user impact instead of raw infrastructure noise. Track regressions by product workflow so fixes can be prioritized against the parts of the product that matter most. Use incident reviews to update monitoring coverage instead of just documenting failures. The last one was the most important. An incident that does not improve the monitoring system is a missed opportunity, even if the immediate fix lands.
+
+## What Changed
+
+Uptime reached 99.999%, and more issues were caught before users felt them. Performance reporting became part of regular product review instead of an artifact of incident response.
+
+The cultural change was the harder thing to measure. Performance tradeoffs started showing up in planning conversations. Engineers could point at a workflow and say "this is going to start hurting at scale" with evidence behind the claim. Stakeholders could see which reliability investments would pay off in customer experience. The team stopped arguing about whether to do the work and started arguing about which slice of the work was worth doing first.
+
+## What I Would Bring Forward
+
+Monitoring is only useful when it changes what the team does next. A dashboard nobody acts on is a screensaver. Performance work lands better when it is framed around user workflows, not isolated infrastructure metrics, because that framing is the one that makes tradeoffs legible to non-engineers.
+
+The other thing I would change next time is pairing the dashboards with runbooks earlier. Each alert needed a clearer owner and a clearer first-response path, and that part of the system would have made the early days of the rollout less ambiguous than it ended up being.
+
+If you want the broader thesis, [Building Reliable Software Systems](/writing/building-reliable-software-systems) is the long-form companion, and [Keeping a Civic Engagement Platform Reliable While It Reached 60M+ Voters](/writing/scaling-civic-engagement-platform) is the same set of instincts applied to scale instead of to monitoring directly.
+
+---
+
+
+### Keeping a Civic Engagement Platform Reliable While It Reached 60M+ Voters
+
+- URL: https://isaacvazquez.com/writing/scaling-civic-engagement-platform
+- Published: 2026-04-29
+- Topic: Reliability
+- Excerpt: I led quality and reliability work for a civic engagement platform that campaigns used to reach more than 60 million unique voters in 2024. The constraint that shaped everything was that election deadlines do not move, so the work had to hold up without giving back release speed.
+
+Election software has fixed deadlines and uneven traffic. Most product reliability stories let you choose between scaling carefully and shipping quickly. In civic tech, the calendar takes that choice off the table. The platform has to grow, the new features have to land, and the cycle still ends on a specific Tuesday in November regardless of what shape the product is in.
+
+I led quality and reliability work for a civic engagement platform through the 2024 election cycle, when campaigns used it to reach more than 60 million unique voters. The job was to keep the team's confidence in releases high enough that the size of that audience never felt like a reason to slow down.
+
+## What Was Really At Stake
+
+Reliability issues during election periods do something specific. They damage client trust at the same moment voter outreach is supposed to be working. A platform that fails on the last Saturday before an election does not get a chance to apologize.
+
+The pressure on the team showed up in three places. Manual test coverage could not keep up with rapid feature development. Critical user paths needed stronger protection before election-day traffic. And release cycles had to get faster without lowering confidence, because slowing down would have meant fewer of the customer-facing improvements campaign teams were depending on.
+
+## How The Strategy Got Built
+
+The first move was to map the highest-risk voter outreach workflows and platform edge cases honestly. Not the full surface, just the parts where a failure during peak traffic would actually break a customer's day. That mapping shaped where automation went first and where manual review was still worth the time.
+
+I then expanded automated coverage across those critical product paths and created release reporting that made readiness and risk easier for stakeholders to inspect. The goal of the reporting was not status updates. It was making a release decision easier to make. If a stakeholder could not look at the dashboard and understand whether to ship, the dashboard was not doing its job.
+
+Two principles ended up guiding the rest of the work. First, prioritize critical election-day flows before lower-risk coverage expansion. Broad shallow coverage feels like progress, but it does not protect the workflows that actually matter when the cycle peaks. Second, focus reporting on signals that could change a release decision. Anything else is decoration.
+
+## What Changed
+
+Campaigns used the platform to reach more than 60 million unique voters in 2024. Over my three years as the team's QA analyst, across the two products I covered, uptime held at 99.999%, critical defects dropped 90%, and release efficiency improved 50%, which came from new deployment rules and more than 400 manual and automated tests.
+
+The deeper change was operational. The team stopped arguing about whether a release was safe and started arguing about which of the remaining tradeoffs was worth making. That is a much healthier place for a release conversation to live, and it is the version of the team that survived peak election traffic without a major incident.
+
+## What I Would Bring Forward
+
+High-scale reliability work has to start with the workflows users cannot afford to lose. There is always a temptation to chase coverage breadth or vanity metrics, especially under pressure, because it feels productive. The teams that hold up under real load are the ones who knew, ahead of time, which two or three workflows were the entire game.
+
+A faster release process only works when confidence signals are visible and trusted. If the team has to debate the meaning of every metric, the metrics are not the bottleneck. The visibility is.
+
+If you want the broader thesis on reliability across systems work, [Building Reliable Software Systems](/writing/building-reliable-software-systems) goes deeper, and [Preventing Outages by Tying Performance Monitoring to User Workflows](/writing/proactive-performance-intelligence) is the companion case study on the monitoring side.
+
+---
+
+
+### Owning a Peer-to-Peer Texting Platform When Campaign Calendars Don't Move
+
+- URL: https://isaacvazquez.com/writing/textout-platform
+- Published: 2026-04-29
+- Topic: Product Strategy
+- Excerpt: I owned product vision for a peer-to-peer texting platform built for campaigns. Here's what I learned about treating onboarding speed and dashboard clarity as the product, not the surrounding work.
+
+Most campaign software gets judged on one question. Can a team go from a signed contract to active outreach before the calendar runs out? That sounds obvious, but it changes how you have to think about a peer-to-peer texting product. The deadline is fixed by an election, not by a roadmap. If onboarding takes a week, that is one less week of voter contact, and a campaign manager will remember that long after the cycle ends.
+
+I owned product vision for a peer-to-peer texting platform built for that environment. The job was to connect what campaign managers actually needed during launch with the engineering work that would make the product easier to adopt under pressure.
+
+## The Problem Was Not Features, It Was Time-To-Useful
+
+Campaign teams already understood texting. They did not need to be sold on the channel. What they needed was a platform that did not punish them for being new to it. The pain showed up in three places. Onboarding required manual configuration and repeated technical handoffs. Campaign managers had limited visibility into message performance and volunteer activity once they were live. And training new users was too slow for teams operating against fixed election timelines.
+
+In campaign software, slow onboarding and unclear performance data are not rough edges. They cost teams the days when voter contact matters most. That framing mattered because it pushed the team to treat setup and reporting as core product, not as wraparound services.
+
+## Where I Pointed The Roadmap
+
+I started with research instead of feature requests. Interviews with campaign managers and active users showed that the friction was concentrated in the first few sessions and in the recurring reporting loop. Once a user was past launch and had a working dashboard, the workflow was fine. The product was losing trust at the front door.
+
+That changed prioritization. Dashboard clarity and onboarding speed moved ahead of newer feature ideas, even when those features were louder in stakeholder conversations. I translated research findings into user stories with acceptance criteria so the engineering work tracked back to specific moments where users had been struggling.
+
+The other shift was treating automation as a product feature, not as an internal optimization. The GCP-backed setup work that reduced manual configuration was visible to the customer because it changed the calendar. A faster path from contract to first usable workflow was, by itself, a product value proposition.
+
+## What Changed
+
+Engagement lifted by 35%, and dashboard improvements gave campaign managers clearer visibility into message delivery, volunteer activity, and outreach performance, which made it easier for them to act on the data instead of asking us for it.
+
+The numbers mattered, but the underlying shift mattered more. The product stopped feeling like infrastructure that needed a specialist and started feeling like a tool a campaign manager could pick up and run.
+
+## What I Would Bring Forward
+
+The strongest lesson from this work was that automation creates more product value when it removes visible user friction, not just internal effort. Internal automation that no customer ever sees is fine, but it does not change the product story. Automation that turns "we need to set this up for you" into "you can do this yourself this afternoon" changes the conversation about what the product is.
+
+The other lesson was about deadlines as a design constraint. Campaign software has to respect calendar pressure because users do not get to move the deadline. That constraint forced sharper prioritization than most B2B SaaS contexts allow, and the parts of that discipline I would carry into any product where the customer is racing the clock. If a feature does not help in the first week, it usually should not be the next thing built.
+
+If you want the longer view of how I think about reliability and quality in product work, [Building Reliable Software Systems](/writing/building-reliable-software-systems) is the closest companion piece, and [Launching RunningMate by Treating Quality as Product Definition](/writing/runningmate-platform-launch) is the next case study where the same prioritization instincts had to scale across more functions.
+
+---
+
+
+### Interchange IQ: Building a Payment Fee Analyzer Around Real Processor Economics
+
+- URL: https://isaacvazquez.com/writing/interchange-iq-payment-fee-analyzer
+- Published: 2026-04-02
+- Topic: Payments
+- Excerpt: I built Interchange IQ to make payment processor comparisons actually legible. It models flat-rate vs. interchange-plus pricing using published interchange data, card mix, and breakeven logic.
+
+If you want to use the tool first, open [Interchange IQ](/fintech-tools/interchange-iq).
+
+Most merchants know they are paying for card processing. Far fewer know what they are actually paying for.
+
+That confusion is not accidental. Processor pricing is full of blended rates, flat-rate convenience, card-mix variation, scheme complexity, and enterprise plans that only become legible once a business is already large enough to negotiate. For operators trying to make a clean decision, the market often feels deliberately hard to compare.
+
+I built Interchange IQ to make that comparison more concrete. The product is designed to answer a practical question. Given your monthly volume, average ticket size, and card mix, how different do processor economics actually look?
+
+## The Problem
+
+For many businesses, processor choice is treated as a branding or convenience decision when it is really a margin decision. The challenge is that the headline price rarely tells the whole story. Flat-rate pricing is easy to understand but can hide meaningful overpayment at scale. Interchange-plus pricing can be cheaper, but it is harder to reason about without the underlying rate structure. Ticket size changes the impact of fixed per-transaction fees, and a debit-heavy business does not behave the same way economically as an Amex-heavy one.
+
+A merchant does not need a theory lecture on payments. They need a model they can manipulate.
+
+## Why The Tool Starts With Published Interchange Data
+
+The core product decision was to make the calculator legible from first principles. Interchange IQ uses representative published interchange values and public processor pricing assumptions to show where the costs actually come from. That matters because a comparison tool is much more useful when you can see the difference between network economics, processor markup, volume sensitivity, and ticket-size sensitivity in the same view.
+
+This keeps the product grounded in real payments structure instead of turning it into a black-box recommendation engine. It does not try to predict every custom contract. It gives you a way to understand the shape of the decision and the conditions that change it.
+
+## The Key Product Decisions
+
+Card mix is where processor comparisons start to become real. A business with a heavy debit profile behaves very differently from one with a premium credit and Amex-heavy mix. Showing only a headline rate would flatten that difference and make the tool less honest. That is why Interchange IQ lets you adjust monthly processing volume, average transaction size, credit-card share, and Amex share within the credit mix. Those inputs turn the product from a static comparison table into a working model.
+
+I also wanted to compare flat-rate and interchange-plus on the same surface rather than implicitly arguing for one before showing the math. Interchange IQ places both options side by side so you can see when simplicity is worth paying for and when it becomes too expensive. A smaller operator may decide flat rate is still the right answer. A larger operator may realize the markup on interchange-plus becomes compelling once volume rises or average ticket size increases.
+
+The cheapest option at one ticket size is not necessarily the cheapest option at another, which is why the tool includes breakeven logic. A single "best processor" label is too shallow. The better question is at what point does the economic logic flip. Breakeven analysis teaches you how the market works, not just what the calculator currently outputs. For how I think about pricing as product work more broadly, see [Treating Pricing as Product Work, Not a Finance-Only Exercise](/writing/pricing-strategy-initiative).
+
+## How The Experience Works
+
+The interface is intentionally direct. Inputs define the business profile. Summary stats show the cheapest current option and monthly fee impact. A ranked comparison table surfaces effective rates and fee outcomes. And explanatory copy clarifies what card mix and pricing models actually mean, because payments products can become abstract very quickly. The structure keeps you oriented around real operating questions. What happens if my volume doubles, what happens if my average ticket falls, how much is flat-rate convenience costing me, when does interchange-plus start to win.
+
+## Tradeoffs I Chose On Purpose
+
+I made a deliberate call to cover major processors and representative rate assumptions rather than model every private contract or every network nuance. That keeps the experience readable and useful for decision framing without trying to be exhaustive. I also chose to show the math drivers instead of dressing them up as a mysterious score, because in payments a product builds more trust when users can understand the model underneath it. And I included explanations for why debit, credit, and Amex matter differently, because a calculator without explanation only helps people who already know the answer.
+
+## What This Project Taught Me
+
+Payments is a strong product-design domain because so much of the value comes from making complexity legible. The most important lesson here was that comparison products work best when they help users build intuition, not just produce outputs. The breakeven model, the card-mix controls, and the flat-rate versus interchange-plus framing all push in that direction.
+
+I came away with a more durable belief about fintech products: users do not always need every edge case modeled. They need enough structure to see how the economics behave and enough clarity to make a better decision than they would have made with marketing pages alone.
+
+## Try The Live Product
+
+You can run your own scenarios in [Interchange IQ](/fintech-tools/interchange-iq). The fastest way to understand the product is to keep volume constant, then move average ticket size and card mix around. That exposes how quickly processor economics change once you stop treating the headline rate as the whole story.
+
+If you want the adjacent reads, [Building an Investment Research Platform That Prefers Clarity Over Spreadsheet Sprawl](/writing/building-an-investment-research-platform) is the other product essay where I am trying to make a financial workflow easier to inspect, and [Reasoning Model Economics: When Opus Is Worth It and When Sonnet Does the Job](/writing/reasoning-model-economics-when-to-use-which) is the same basic argument about clearer tradeoffs, just applied to model cost instead of processor pricing.
+
+---
+
+
+### Building an Investment Research Platform That Prefers Clarity Over Spreadsheet Sprawl
+
+- URL: https://isaacvazquez.com/writing/building-an-investment-research-platform
+- Published: 2026-04-02
+- Topic: Fintech Product
+- Excerpt: I built an investment research workspace because my own research workflow was scattered across too many tabs. Here's what I decided to include, what I left out, and why.
+
+If you want to see the product before reading the breakdown, open the [Investment Research Platform](/investments).
+
+Most personal investing workflows break down in the same place, which is that the analysis is scattered. Price charts live in one tab, financial statements in another, notes in a spreadsheet, and portfolio tracking in a tool that has no idea why you bought the stock in the first place. I built this project because I wanted a research workflow that felt more like a decision workspace than a collection of disconnected utilities. The goal was not to recreate a full institutional terminal. The goal was to make the most important parts of equity research easier to review, compare, and revisit without adding more friction.
+
+## The Problem This Product Tries To Solve
+
+Retail research tools often force a tradeoff between breadth and clarity. Broad platforms surface a huge number of metrics, but they bury the signal under dense tables and too many navigation layers. Simpler trackers make portfolio monitoring easy, but they stop short of helping you understand the business behind the position. Spreadsheet-based workflows are flexible, but they are tedious to maintain and hard to keep consistent over time.
+
+That combination creates a quiet failure mode, which is that you can gather plenty of information without actually improving the decision. I wanted a workspace that answered three practical questions quickly. What does this company look like right now, how does the valuation compare with the operating profile, and what does this mean for the positions I already hold?
+
+## Why The Product Uses Curated Snapshots
+
+One of the earliest product decisions was to avoid pretending this needed to be a tick-by-tick trading terminal. The platform is built around curated company snapshots, valuation panels, price history, and financial statement views. That structure matters because the highest-value research questions usually do not require every possible data point in real time. They require trustworthy context with clear fallbacks.
+
+That is why the product leans on a curated symbol set and snapshot-backed research rather than an unlimited search surface. It narrows the scope enough to keep the experience reliable while still giving the user a strong research loop. The research experience is more stable because every symbol can be shaped into the same interface, the UI can emphasize interpretation instead of raw data dumping, and the system can degrade more gracefully when a data source is incomplete. In other words, curation is not a limitation here. It is part of the product strategy.
+
+## The Core Product Decisions
+
+The route is organized around two tabs: research and portfolio. That sounds simple, but it changes the product meaningfully. Instead of treating research as a separate activity from portfolio management, the platform lets both workflows share the same mental model. You can move from a holding to a deeper review of the underlying company without changing tools or losing context. That matters because investing decisions are rarely isolated. The useful question is not just "Is this stock interesting?" It is "Is this stock interesting relative to what I already own?"
+
+I chose browser-local persistence for portfolio tracking instead of building a full account system. For this project, that was the right call. The value of the portfolio tab is fast iteration, not multi-user infrastructure. Local persistence keeps the workflow immediate and private, removes sign-in friction, and lets the product behave more like a personal research notebook than a brokerage dashboard. Adding authentication would have made the product feel more complete on paper, but it would not have made the core research loop materially better.
+
+A ratio by itself rarely helps. A low multiple can signal value, but it can also reflect deteriorating fundamentals. A premium multiple may be justified if growth, margins, and balance-sheet quality support it. That is why the experience is organized around adjacent panels instead of isolated numbers. The user can move across valuation, growth, profitability, financial statements, industry context, and price history without reorienting every time. If a metric invites interpretation, the supporting context should be close by.
+
+## Tradeoffs I Would Make Again
+
+A smaller but cleaner research universe is better than a giant index with uneven quality. The product is intentionally framed as a workspace, not a brokerage clone, and that keeps the experience centered on research and portfolio understanding instead of trying to imitate execution platforms. There are plenty of finance products that use metric density as a stand-in for usefulness. I would rather show fewer things, arranged with more intent, than turn the page into a wall of numbers that looks impressive but slows down judgment.
+
+Building finance products is often an exercise in restraint. The temptation is to add more coverage, more models, more feeds, and more technical sophistication. But most of the user value comes from making it easier to move from raw information to a coherent point of view. This project reinforced a product lesson I trust across domains, which is that good tools reduce decision fatigue before they add decision power.
+
+## Try The Live Product
+
+You can explore the full product at [Investment Research Platform](/investments). The quickest way to understand the experience is to move between the research and portfolio views and notice how the product keeps analysis and position management in the same frame. That integration is the point of the project.
+
+If you want the adjacent reads, [Interchange IQ: Building a Payment Fee Analyzer Around Real Processor Economics](/writing/interchange-iq-payment-fee-analyzer) is the other product breakdown where I am trying to make dense financial logic legible, and [Reasoning Model Economics: When Opus Is Worth It and When Sonnet Does the Job](/writing/reasoning-model-economics-when-to-use-which) gets at the same idea from the AI-tooling side of decision support.
+
+---
+
+
+### Treating Pricing as Product Work, Not a Finance-Only Exercise
+
+- URL: https://isaacvazquez.com/writing/pricing-strategy-initiative
+- Published: 2026-04-29
+- Topic: Pricing Strategy
+- Excerpt: I led a cross-functional pricing initiative that connected market analysis, product value, and financial modeling into a clearer pricing strategy. The shift was treating pricing as a product decision, not a spreadsheet exercise.
+
+Most pricing decisions get made on the wrong side of the building. Finance owns the model, sales owns the negotiation, and product gets pulled in at the end to validate that the packaging story is coherent. By that point the structure is already locked, and product's role becomes either rubber-stamping a deck or arguing for changes that finance has to redo from scratch.
+
+That model produces pricing that captures a fraction of the product's actual value. The right framing is the opposite. Pricing is a product decision that carries financial implications, not a financial decision that carries product implications. When I led this initiative, that was the real shift. Everything else followed from it.
+
+## What The Org Was Actually Stuck On
+
+The organization needed a pricing strategy that reflected product value, market position, and customer willingness to pay rather than inherited assumptions from earlier in the company's life. Three frictions kept showing up. Pricing conversations were split across sales, finance, product, and engineering, with no shared model anyone could reason from. Decision-makers lacked a shared view of product value and market comparison, which meant every meeting started over from first principles. And packaging decisions needed clearer revenue and customer-impact tradeoffs before they could be made with confidence.
+
+Weak pricing strategy leaves revenue on the table while making future packaging changes harder to explain to customers. The cost is not just immediate. It compounds, because each pricing change you cannot defend cleanly trains the customer base to negotiate harder on the next one.
+
+## How The Work Got Structured
+
+The first task was to build the analytical and stakeholder alignment layer that would let pricing become a product decision instead of a finance-only exercise. That meant researching market benchmarks and competitor packaging seriously, not just collecting screenshots of pricing pages. It meant modeling pricing scenarios against revenue, adoption, and operational constraints with enough rigor that the model could survive cross-functional pressure. And it meant creating executive-facing materials that made tradeoffs explicit, not buried inside a recommended option.
+
+The principles that ended up driving the strategy were direct. Center the work on product value and customer segment fit, not on what the existing price card happened to say. Separate near-term revenue opportunities from longer-term packaging bets so each was being argued on the right time horizon. And make the underlying model reusable so the work could guide future product lines without being recreated each time.
+
+The cross-functional alignment was the part that moved the recommendation from a recommendation into an actual decision. Engineering, sales, finance, and leadership all had to be able to see their own assumptions inside the model. That is what turned individual objections into shared questions about which scenario to pick.
+
+## What Changed
+
+The initiative generated $4M in additional revenue in 2024. The market analysis framework got adopted for future pricing work, which is a more durable outcome than the immediate revenue lift. Executive buy-in came through clear scenario modeling rather than through a single recommended price, which made the resulting decision much easier to defend internally and externally.
+
+## What I Would Bring Forward
+
+Pricing work is product work when it changes packaging, value communication, and roadmap tradeoffs. Treating it as anything else leaves money on the table and creates packaging decisions that the product team has to live with for years.
+
+Stakeholder alignment improves when every group can see its own assumptions reflected in the model. The temptation in pricing work is to hide the assumptions inside a confident recommendation, because it feels cleaner. The cleaner version is also the version that falls apart the first time a single assumption gets challenged. Showing the model openly is the shorter path to a real decision.
+
+The thing I would do differently next time is add customer validation earlier, so willingness-to-pay evidence sits beside the market and financial analysis from the start instead of arriving late as a sanity check.
+
+For more on building products around financial decisions specifically, [Building an Investment Research Platform That Prefers Clarity Over Spreadsheet Sprawl](/writing/building-an-investment-research-platform) is the closest companion piece, and [Interchange IQ: Building a Payment Fee Analyzer Around Real Processor Economics](/writing/interchange-iq-payment-fee-analyzer) is the version where pricing logic is the product itself.
+
+---
+
+
+### Building the Pulse Dashboards as One Product System, Not Nine Pages
+
+- URL: https://isaacvazquez.com/writing/building-the-pulse-dashboard-family
+- Published: 2026-06-16
+- Topic: Product Design
+- Excerpt: I built the Pulse dashboards as a single product family with a shared interaction model and domain-specific framing, so each new surface is faster to ship and easier to learn.
+
+If you want to see the family before reading the breakdown, the [portfolio](/portfolio) lists the full set of live dashboards.
+
+At some point I stopped building individual dashboards and started building a system that happens to render as many dashboards. The Pulse family spans sports, media, developer trends, and politics, and from the outside each surface looks bespoke to its domain. The [NFL](/nfl) page knows about weeks and conferences, the [earthquake](/earthquake-pulse) page knows about magnitude and regions, the [Bay Area transit](/bay-area-transit) page knows about lines and departure boards. Underneath, though, they are the same product. I made that choice early, and it is the reason a new dashboard now takes days instead of weeks, and the reason someone who has used one of them already knows how to use the next.
+
+## One Interaction Model, Many Domains
+
+The shared spine is an interaction model, not a template. Every Pulse dashboard opens on a compact first screen that surfaces pressure and movement before anything else, so the first thing you see is what changed and what is under tension rather than a wall of tables. Every one uses the same deep-linkable URL state, so a view and a selected entity live in the address bar and a link drops someone exactly where you were. They share snapshot handling and a common card and component layer, which is why the [MLB](/mlb), [NBA](/nba), and [Premier League](/premier-league) surfaces feel like cousins even though their data could not be more different. The bet I was making is that a learnable family beats a collection of clever one-offs. Once you understand how to read movement on the [La Liga](/la-liga) page, you understand the [World Cup](/world-cup-2026) page and the [polling aggregator](/polling-aggregator) without relearning anything, and that transfer is worth more than the novelty of designing each from scratch. Designing every dashboard fresh would have produced more variety and a slower, more confusing product. The shared model keeps the family coherent while the domain framing preserves what is genuinely unique to each subject.
+
+## The Architecture Underneath
+
+The reason the interaction model holds across so many surfaces is that the data architecture is one repeated pattern. Each dashboard starts from a committed snapshot, which a builder script regenerates, which a scheduled GitHub Action runs on a cadence that fits the domain, which accessors read, which a thin read API exposes to the page. That pattern now backs more than fifteen dashboards, and its uniformity is the point. When the shape of the data pipeline is identical from [Formula 1](/formula-1) to [golf](/golf) to [GitHub trending](/github-trending-pulse), adding a new surface is mostly a question of writing the builder and the domain framing, because everything downstream already exists. The sameness is not laziness. It is leverage, and it is the difference between a system and a pile of pages.
+
+## The Tradeoffs I Made on Purpose
+
+Two tradeoffs defined the family, and I would make both again. The first is snapshot-backed data over fully live runtime dependencies. These products are read far more than they are transacted on, so second-by-second freshness matters less than predictable performance and operational durability. A snapshot that refreshes on a sensible schedule will never melt down because an upstream API rate-limited me mid-render, and that reliability is worth more to a reader checking the [news pulse](/news-pulse) than a live feed that occasionally fails in their face. The second tradeoff is editorial framing over raw data density. It is tempting to dump every available table and call it thorough, but a good dashboard leads with pressure, movement, and the question the reader is most likely to ask first, and lets the depth sit one layer down for the people who want it. Density feels impressive and reads exhausting. Choosing what to surface first is the actual design work, and it is what separates a dashboard you understand in seconds from one you have to excavate.
+
+## The North Star and the Honest Gap
+
+The metric I kept returning to is time to useful context, the gap between landing on a dashboard and understanding what changed and why it matters. Every decision in the family bends toward shrinking that gap, from the compact first screen to the shared interaction grammar that means you are never learning a new product from zero. That is the thing I am proudest of, and it is also where I want to be honest about what is still missing. The common product logic is strong, but the family is still discovered route by route. There is no shared landing hub that presents the Pulse dashboards as the single system they actually are, so someone who finds the transit page has no obvious path to the rest of them. The product system is real on the inside and invisible on the outside, and closing that gap with a proper hub is the work I have not finished. A system the user cannot see as a system is only doing half its job.
+
+The fastest way to understand the family right now is to open two siblings back to back, say the [NFL](/nfl) dashboard and the [earthquake pulse](/earthquake-pulse), and notice how quickly the second one feels familiar even though the subject is completely different. That recognition is the whole product. If you want the deeper builds, [Building News Pulse to Compare How Major Outlets Cover the Same Story](/writing/building-news-pulse-dashboard) and [Building a World Cup Dashboard](/writing/building-a-world-cup-dashboard) each go one level into a single member of the family.
+
+---
+
+
+### Building News Pulse to Compare How Major Outlets Cover the Same Story
+
+- URL: https://isaacvazquez.com/writing/building-news-pulse-dashboard
+- Published: 2026-04-02
+- Topic: Media Analytics
+- Excerpt: I built News Pulse because it's surprisingly tedious to compare coverage across outlets in a structured way. Here's the product thinking behind the RSS foundation, the analysis layer, and the deliberate tradeoffs.
+
+If you want to explore the product before reading the breakdown, open [News Pulse Dashboard](/news-pulse).
+
+Reading one publication tells you what happened. Reading several publications tells you how the story is being framed. The gap between those two things is where News Pulse lives.
+
+I built this project because it is surprisingly tedious to compare coverage across outlets in a structured way. Opening a half-dozen homepages gives you raw exposure, but not much synthesis. You can feel the differences in framing, frequency, and tone, but it takes effort to turn that into something legible. The goal of News Pulse was to make that comparison easier without overengineering the stack.
+
+## The Problem Behind The Product
+
+People who follow the news closely often want to answer questions that consumer news products are not really designed to answer. They want to know which outlets are covering a story heavily right now, whether the headlines are converging on the same terms or splitting into different frames, whether the tone is mostly urgent or negative or neutral, and how fast a theme spreads across sources. Most consumer news products are designed to deliver articles, not help people analyze editorial patterns. Enterprise media intelligence tools exist, but they are often heavier and more specialized than what this use case needs. That left a good product gap, a lightweight dashboard for comparing how several major outlets are talking about the same news cycle.
+
+## Why RSS Was The Right Foundation
+
+The product starts with RSS because RSS is still one of the cleanest ways to capture headline-level editorial output across publishers. That choice shaped the entire build. It kept the data model focused on headlines and feed metadata, avoided a much more fragile scraping workflow, and made update timing easier to reason about. It also allowed the product to stay legible as a portfolio project instead of turning into an infrastructure project. RSS is not glamorous, but it is reliable enough for this problem. That is often the right product decision.
+
+## The Core Decisions And Tradeoffs
+
+News Pulse is not trying to be another article reader. It is organized around three higher-level views (headlines, coverage, and analysis) because the value of the product is comparative, not archival. The user should feel like they are seeing patterns across sources rather than just skimming a merged list of links.
+
+One of the most deliberate choices in the product was to keep the analysis layer lightweight. The dashboard extracts topics, summarizes source behavior, and performs headline-level sentiment without introducing a large external dependency chain. Headlines are short and structured enough for lightweight heuristics to be useful, the goal is directional media intelligence rather than perfect semantic classification, and keeping the stack lighter makes the product easier to maintain and reason about. This is a case where "good enough and understandable" is better than "technically impressive but hard to trust."
+
+Live feeds are messy. Publishers change formats, feeds fail, and partial outages happen. The product handles that reality by surfacing feed errors without collapsing the whole experience. If one source is unavailable, the dashboard should still tell the truth about what it can show rather than fail silently or imply complete coverage. That is a small but important product choice.
+
+## Why A Dependency-Light Stack Was Worth Protecting
+
+There is always pressure to make media-analysis products feel more "AI-native" than they need to be. This project pushed me in the opposite direction. I wanted the product to feel sharp, timely, and interpretable without becoming dependent on a chain of external services that would add cost, complexity, and brittleness. For this use case, a lighter stack offered real advantages: faster iteration, clearer system behavior, easier debugging, and a tighter connection between the visible output and the underlying logic. That tradeoff made the project more useful as a product surface and more durable as a codebase.
+
+## What This Project Taught Me
+
+News products become more interesting when they move one step up the abstraction ladder. A feed is useful. A comparative view of editorial patterns is often more useful. This project reinforced a product principle I keep coming back to, which is that if users are already doing synthesis manually, there is probably room to build a better intermediate layer. In this case, that layer is not a full newsroom platform. It is a clean dashboard that makes coverage differences easier to spot. It also reminded me that "lightweight" is not the same as "thin." A product can do meaningful analytical work without pretending every problem requires a giant model stack.
+
+## Try The Live Product
+
+You can explore the full experience at [News Pulse Dashboard](/news-pulse). The easiest way to understand the product is to start on headlines, pick a source, then switch back to the all-sources coverage and analysis views. That transition shows the core point of the project, which is turning separate feeds into a clearer picture of the news cycle.
+
+---
+
+
+### Building a GitHub Trending Dashboard That Is Not Just a Leaderboard
+
+- URL: https://isaacvazquez.com/writing/building-a-github-trending-dashboard
+- Published: 2026-06-11
+- Topic: Developer Tools
+- Excerpt: I built GitHub Trending Pulse to turn GitHub Search data into a daily snapshot across languages, topics, and weekly star movement, instead of treating trending as a static list.
+
+If you want to see the product before reading the breakdown, open [GitHub Trending Pulse](/github-trending-pulse).
+
+Everyone who writes code keeps a loose mental list of what is happening in open source, and almost nobody has a good way to maintain it. GitHub itself has a trending page, but it is a single ranked list that resets every day, and a list is a strange way to understand momentum. What I actually want to know is not which repository has the most stars, because the answer to that has been the same set of giant projects for years. I want to know what is moving, in which language, around which topic, and whether it is accelerating or already cooling off. So I built GitHub Trending Pulse to treat trending as a shape rather than a leaderboard.
+
+## Discovery on GitHub is noisier than it should be
+
+The frustrating thing about finding interesting projects on GitHub is that the relevant signals all live in different places. The genuinely popular projects sit at the top of any all-time star search and rarely move, the freshly active repositories are buried under that weight, and topic-specific momentum, the stuff happening right now in one niche, requires a search query you have to construct by hand. None of those three views talk to each other, so building an accurate picture of what is happening means running several searches and holding the results in your head. That is a lot of effort to answer a question I ask almost every week.
+
+So the dashboard does the organizing instead of the reader. It pulls from the public GitHub Search API and arranges the results into fourteen segments split across languages and topics, so the page is not one list but a set of focused windows into different corners of the ecosystem. Looking at what is active in a specific language is a different question from looking at what is active around a specific topic, and the segmented layout lets you ask either one without writing a query. The value is in the curation of those windows, not in reprinting a single ranking that anyone could already find.
+
+## Why it shows movement, not totals
+
+This is the decision that makes the product different from the official trending page, and it is the one I care most about. A single daily list can only ever show you a state, which is who is on top today. It cannot show you change, because it has no memory of yesterday. GitHub Trending Pulse carries weekly star deltas forward across days, so each repository shows how its stars have moved over the trailing week, not just its all-time count. That difference sounds small and is actually the whole thesis. An all-time star count tells you what was popular at some point in history. A weekly delta tells you what is gaining attention right now, and a delta tracked across several days tells you whether that attention is accelerating or fading.
+
+Acceleration is the signal that genuinely useful discovery is built on, and it is exactly the thing a snapshot with no history cannot give you. A project that added a few thousand stars this week is a different story from one that has been quietly adding the same number every week for a year, and you can only tell those apart if the data remembers. By carrying the deltas forward, the dashboard turns a flat ranking into something closer to a velocity reading, which is what I actually wanted from a trending tool in the first place.
+
+## The snapshot that makes the memory possible
+
+The dashboard reads from a snapshot committed to the repository as a plain TypeScript file, generated by a build script that queries the GitHub Search API, shapes the fourteen segments, and writes the file. A scheduled job refreshes it daily, and the running site never calls GitHub at request time. The snapshot pattern is not just about reliability here, although it gives me that too, with instant page loads and no risk of hitting an API rate limit while someone is reading. It is what makes the weekly movement possible at all. Because each refresh commits a dated snapshot, the data has a history, and that history is precisely what lets the dashboard show deltas instead of a stateless ranking. A live API call at request time would only ever know about right now. A committed daily snapshot knows about the trend.
+
+The refresh follows the same conservative rule as the rest of the family, so a failed or empty fetch keeps the previous snapshot rather than wiping good data, which means a bad GitHub response cannot blank the board. For a developer who pops in once a week to see what is new, the worst outcome would be an empty page, so the pipeline always prefers the last good snapshot over nothing.
+
+## What I took away from it
+
+The thing this project clarified for me is that a leaderboard and a trend are different products that happen to look similar. A leaderboard answers "what is biggest," which is a question with a stable and slightly boring answer. A trend answers "what is moving," which is the question developers actually care about, and answering it well requires memory that a single live list does not have. Once I framed the build around movement instead of totals, the snapshot stopped being a convenience and became the core mechanism, because owning the data over time is the only way to show change over time. That reframing is the whole reason the dashboard is worth opening instead of just visiting GitHub's own trending page.
+
+You can explore the full thing at [GitHub Trending Pulse](/github-trending-pulse). The quickest way to understand it is to scan a couple of language segments, then a topic segment, and pay attention to the weekly movement next to each repository rather than its raw star count, because that movement is the entire point of the project.
+
+---
+
+
+### Building a BART Dashboard That Answers One Question: Is a Train Coming
+
+- URL: https://isaacvazquez.com/writing/building-a-bart-transit-dashboard
+- Published: 2026-06-15
+- Topic: Civic Data
+- Excerpt: I built Bay Area Transit Pulse to put the line map, per-station departures, and service alerts on one screen instead of three separate apps. Here is the build.
+
+If you want to see the product before reading the breakdown, open [Bay Area Transit Pulse](/bay-area-transit).
+
+When you are standing on a platform or deciding whether to leave the house, you are really only asking one thing, which is whether a train is coming and when. It sounds trivial, and yet getting that answer reliably usually means bouncing between three different surfaces. You check a route map to remember which line you need, you open a station page to see the next departures, and you go hunting in a separate alerts feed to find out whether anything is broken today. None of those three share a view, and none of them tell you the whole story on their own. I built Bay Area Transit Pulse to collapse that bouncing into a single screen.
+
+## The question is simple, the answer is scattered
+
+BART, like most transit systems, publishes plenty of data. The problem has never been availability. The problem is that the data lives in pieces that were designed to be consumed separately. The line map answers "which train," the departure board answers "when," and the advisories answer "is anything wrong," but a rider in a hurry needs all three at once and gets them one tab at a time. That fragmentation is annoying on a normal day and genuinely costly on a bad one, because the moment service is disrupted is exactly the moment you most need the map, the departures, and the alert in the same glance, and that is the moment the scattered design fails you hardest.
+
+So the dashboard puts them together. It is organized around three views, a lines view that shows the system and how stations connect to the routes that serve them, a stations view that is a real departure board for any station you pick, and an advisories view that surfaces active service alerts and elevator outages in one place. The route state is deep-linkable, so the view you are on and the station you have selected live in the URL. A link to "Embarcadero departures" is just a link with the station abbreviation in it, like embr, which means you can bookmark your home station and land on its board directly. For a tool you use on a phone while walking, that kind of direct linking is not a nicety, it is the whole point.
+
+## Pulling the whole system in one pass
+
+BART exposes a public legacy API that does not even require you to register, because the agency publishes a working demo key, and I baked that key straight into the builder. The builder does a fair amount of stitching to produce a coherent snapshot. It pulls the full station list, then the routes and per-route info, which it uses to derive a station-to-lines mapping so the lines view actually knows which trains serve which stops. It pulls service advisories and elevator outages so the alerts view has something to show, and then it grabs real-time departures for every station in the system in a single call by asking for all origins at once. That last detail matters more than it sounds. Fetching departures station by station would mean dozens of requests and a slow, fragile build, whereas one call for the whole system keeps the pipeline fast and clean.
+
+## The snapshot, plus a seed so it is never blank
+
+The dashboard reads from a committed snapshot rather than calling BART at request time, which is the same pattern I use across this family of tools. A scheduled job refreshes it every six hours, regenerates the file, and commits it, and the running site only ever reads what has been committed. The refresh is conservative on purpose, so if a fetch fails or comes back thin, the script keeps the previous snapshot instead of replacing a good board with a broken one. Departure times are obviously the most perishable part of this data, which is the honest tradeoff of the snapshot approach, but the structure of the system, the stations, the lines, and the connections barely changes, and a steady, correct view of the network beats a live view that occasionally collapses.
+
+The one thing I did differently here is that the snapshot ships with a hand-authored seed flagged as such, so the page is useful from the very first deploy, before any live refresh has run. An empty seed would have meant a blank dashboard until the first scheduled job fired, and for a transit tool that felt wrong. The seed gets replaced wholesale on the first real refresh, but it means the product is never showing nothing.
+
+## What building it reinforced
+
+Civic data is one of my favorite spaces to build in precisely because the agencies have already done the hard part of making the data public. What is so often missing is the small, opinionated layer on top that turns three feeds into one answer. Bay Area Transit Pulse does not generate any new information about BART. It just refuses to make the rider assemble the picture themselves. I think that is where a lot of the value in civic tech actually sits, not in novel data but in respecting the user's time enough to put the map, the departures, and the alerts where a person can read them together. The question was always simple. The work was making the answer simple too.
+
+You can explore the full thing at [Bay Area Transit Pulse](/bay-area-transit). The quickest way to understand it is to open the lines view, pick a station to pull up its departure board, then check advisories to see whether anything is disrupted, all without leaving the page or losing your selection.
+
+---
+
+
+### Building SpaceX Mission Control to Turn Public Launch Data Into a Mission Board
+
+- URL: https://isaacvazquez.com/writing/building-spacex-mission-control
+- Published: 2026-04-02
+- Topic: Product Design
+- Excerpt: I built SpaceX Mission Control because most public API demos stop at retrieval. Here's what it took to turn flat launch data into a navigable, relationship-aware mission board.
+
+If you want to try the product before reading the breakdown, open [SpaceX Mission Control](/spacex-mission-control).
+
+Public APIs make it easy to access data. They do not automatically make that data feel usable. That gap is what this project explores. I wanted to turn public SpaceX launch data into something that felt closer to an operational board than a generic API demo. The result is a mission-control-style product with a clear next-launch focus, a browsable launch board, and deep-linked detail panels that stay aware of the relationships between launches, rockets, payloads, capsules, crew, and launch pads.
+
+## The Problem With Most Public-Data Demos
+
+A lot of public API projects stop at retrieval. Fetch a list, render a few cards, add filters, call it done. That proves the integration works, but it does not prove the product works.
+
+For a subject like spaceflight, the data is inherently relational. A launch means more when you can connect it to the rocket, the orbit, the payloads, the pad, the crew, and the status of the mission itself. A flat list hides most of that richness. So the real product question became how you make public launch data feel navigable, operational, and worth exploring.
+
+## Why The Experience Starts With The Next Launch
+
+The first major decision was to center the interface on the next launch rather than treat all launches as equal. That mirrors how people naturally approach this category. Most users do not arrive asking for an abstract database browse. They want to know what is happening next, when it happens, and why it matters.
+
+By giving the next launch a dedicated hero treatment, the product establishes a useful hierarchy, putting immediate mission awareness first, broader board browsing next, and deep detail exploration after that. This is a product-design decision, not just a layout decision. It tells the user where to start.
+
+## The Core Product Decisions
+
+The launch board is designed to feel like a working surface, not a passive archive. Upcoming and past launches can be filtered, scanned, and compared in a format that emphasizes operational status rather than generic content cards. That choice matters because launch data is inherently event-driven. A board structure makes the timeline and the state changes easier to grasp than a standard blog-style list.
+
+One of the most important interaction decisions in the project is that mission detail is deep-linkable through route state. That means a specific launch and panel can be shared or revisited directly instead of existing only as transient UI state. It makes the experience more useful for exploration because the user can hold onto a meaningful point inside the product. Deep linking is often undervalued in dashboard-style projects. Here it matters because the detail panel is where the relationships between entities become legible.
+
+The most important technical choice underneath the product is relationship-aware normalization. The UI should not make users think in raw API fragments. It should present a mission as a connected object, showing what rocket is involved, which payloads are attached, whether crew or capsules matter, where the mission launches, and how it fits into a larger launch story. That translation layer is what turns "API integration" into product behavior.
+
+## Why This Needed To Feel Like A Product, Not A Showcase
+
+Space-themed UI can become gimmicky very fast. I wanted this project to avoid that trap. The goal was not to make something that simply looked cinematic. The goal was to create a productized data experience where the interface hierarchy, the route state, and the data normalization all support a clearer understanding of the missions.
+
+That required restraint, using visual atmosphere without sacrificing legibility, letting the mission data drive the interaction model, and keeping the detail layer useful rather than decorative. The style is part of the experience, but it is not the product by itself.
+
+## What This Project Taught Me
+
+Data products get stronger when they acknowledge the shape of the domain instead of forcing the domain into generic UI patterns. Spaceflight is event-driven, relationship-heavy, and status-sensitive. Once I treated those qualities as design inputs, the product got better quickly. The next-launch hero, the mission board, and the deep-linked detail panel all came out of respecting that structure.
+
+This project also reinforced something I care about in dashboard design, which is that route state is part of usability. A view you can return to and share is more valuable than one that only exists in the current browser moment.
+
+## Try The Live Product
+
+You can explore the full experience at [SpaceX Mission Control](/spacex-mission-control). The best way to understand the product is to start with the next-launch hero, switch between upcoming and past launches, and then open a mission detail panel to see how the product turns separate API entities into one coherent mission view.
+
+---

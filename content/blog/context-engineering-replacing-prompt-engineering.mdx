@@ -20,6 +20,13 @@ Two years ago, prompt engineering was being sold as a career. There were courses
 
 But something real was hiding inside that hype, and it has a better name now. Context engineering is the discipline of deciding what information a model has access to at the moment it produces an answer. Not how you phrase the request. What the model can actually see. After a year of building agent workflows for my own projects and watching teams ship them at work, I would argue this is the single highest-leverage skill in AI product development right now, and it is almost entirely unrelated to the prompt-wording tricks that used to dominate the conversation.
 
+### Key takeaways
+
+- **Context vs. prompt phrasing**: Prompt wording matters less as models improve; context engineering—controlling the exact data, tools, and history a model sees—dictates production output quality.
+- **Context rot**: Irrelevant context is never neutral; it actively degrades model attention and reasoning quality over extended workflows.
+- **Four core context operations**: Selection (tight retrieval filters), compression (compacting histories), freshness (stamping and aging documents), and source hierarchy (resolving contradictory data).
+- **Production reality**: In multi-step loops, step fifteen is dominated by accumulated tool returns; engineering that history is where reliability is won or lost.
+
 ## Why the framing shifted
 
 The shift happened because the systems changed. When the interface was a single question and a single answer, the prompt was the whole input, so obsessing over its wording made a kind of sense. Agent systems broke that model. An agent running a twenty-step task is accumulating context the entire way. Tool results, file contents, earlier reasoning, error messages, retrieved documents. By step fifteen, the original instruction is a small fraction of what the model is looking at, and the quality of the output depends on the quality of everything else in the window.

@@ -1,7 +1,11 @@
 import { StructuredData } from "@/components/StructuredData";
 import { formula1Snapshot } from "@/data/formula1Snapshot";
 import { getFormula1Summary } from "@/lib/formula1Snapshot";
-import { constructMetadata, generateBreadcrumbStructuredData } from "@/lib/seo";
+import {
+  constructMetadata,
+  freeApplicationOffer,
+  generateBreadcrumbStructuredData,
+} from "@/lib/seo";
 import { FantasyFormula1Client } from "./fantasy-formula-1-client";
 import { normalizeFantasyFormula1State } from "./fantasy-formula-1-state";
 
@@ -41,7 +45,7 @@ export default async function FantasyFormula1Page({
         }}
       />
       <StructuredData
-        type="SoftwareApplication"
+        type="SportsApplication"
         data={{
           name: "Fantasy Formula 1 Optimizer",
           description:
@@ -57,6 +61,7 @@ export default async function FantasyFormula1Page({
             "Local browser persistence by season",
           ],
           dateModified: summary.generatedAt,
+          offers: freeApplicationOffer,
         }}
       />
       <FantasyFormula1Client initialState={initialState} summary={summary} />

@@ -204,4 +204,33 @@ describe("StructuredData", () => {
     expect(schema.featureList).toBeUndefined();
     expect(schema.offers).toBeUndefined();
   });
+
+  it("emits valid schema.org Dataset structure with default license and free access", () => {
+    const schema = readSchema(
+      renderToStaticMarkup(
+        <StructuredData
+          type="Dataset"
+          data={{
+            name: "Global Earthquake Activity Dataset",
+            description: "24-hour seismic events and magnitude distribution.",
+            url: "https://isaacvazquez.com/earthquake-pulse",
+            keywords: ["earthquakes", "seismic data"],
+            dateModified: "2026-10-02",
+          }}
+        />
+      )
+    );
+
+    expect(schema["@type"]).toBe("Dataset");
+    expect(schema.name).toBe("Global Earthquake Activity Dataset");
+    expect(schema.isAccessibleForFree).toBe(true);
+    expect(schema.license).toBe("https://creativecommons.org/publicdomain/zero/1.0/");
+    expect(schema.creator).toEqual({
+      "@type": "Person",
+      "@id": "https://isaacvazquez.com/about#person",
+      "name": "Isaac Vazquez",
+      "url": "https://isaacvazquez.com/about",
+    });
+    expect(schema.dateModified).toBe("2026-10-02");
+  });
 });

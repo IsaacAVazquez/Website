@@ -66,7 +66,7 @@ const TILE_SURFACES = ["ink-blue", "ink-saffron", "stone", "chocolate"] as const
 export const metadata: Metadata = constructMetadata({
   title: "What I'm Building Now | Isaac Vazquez",
   description: `What I'm focused on as of ${NOW_UPDATED_LABEL}, from my second year at Haas and my full-time search to what I'm building.`,
-  canonicalUrl: "https://isaacvazquez.com/now",
+  canonicalUrl: "/now",
   dateModified: NOW_UPDATED,
 });
 

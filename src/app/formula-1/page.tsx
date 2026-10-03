@@ -1,7 +1,7 @@
 import { StructuredData } from "@/components/StructuredData";
 import { formula1Snapshot } from "@/data/formula1Snapshot";
 import { getFormula1Meeting, getFormula1Summary } from "@/lib/formula1Snapshot";
-import { constructMetadata, generateBreadcrumbStructuredData } from "@/lib/seo";
+import { constructMetadata, freeApplicationOffer, generateBreadcrumbStructuredData } from "@/lib/seo";
 import { Formula1Client } from "./formula-1-client";
 import { normalizeFormula1State, resolveFormula1State } from "./formula-1-state";
 
@@ -44,7 +44,7 @@ export default async function Formula1Page({ searchParams }: Formula1PageProps) 
         }}
       />
       <StructuredData
-        type="SoftwareApplication"
+        type="SportsApplication"
         data={{
           name: "Formula 1 Pulse",
           description:
@@ -59,6 +59,7 @@ export default async function Formula1Page({ searchParams }: Formula1PageProps) 
             "Snapshot-driven route that avoids a live runtime dependency",
           ],
           dateModified: summary.generatedAt,
+          offers: freeApplicationOffer,
         }}
       />
       <Formula1Client

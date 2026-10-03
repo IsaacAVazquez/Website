@@ -63,6 +63,34 @@ export default async function FrontierModelsPage({
           dateModified: snapshot.generatedAt,
         }}
       />
+      <StructuredData
+        type="Dataset"
+        data={{
+          name: "Frontier AI Models Comparison and Pricing Dataset",
+          description:
+            "Curated, editorially maintained benchmark dataset tracking frontier large language models across pricing tiers, context window capacity, modality coverage, and reasoning support.",
+          url: "https://isaacvazquez.com/frontier-models",
+          keywords: [
+            "foundation models",
+            "frontier models",
+            "LLM pricing",
+            "context windows",
+            "multimodal AI",
+            "reasoning models",
+          ],
+          variableMeasured: [
+            "Model Name",
+            "Provider",
+            "Context Window",
+            "Input Pricing per MTok",
+            "Output Pricing per MTok",
+            "Modalities",
+            "Reasoning Capability",
+          ],
+          dateModified: snapshot.generatedAt,
+          license: "https://creativecommons.org/publicdomain/zero/1.0/",
+        }}
+      />
       <FrontierModelsClient initialState={initialState} snapshot={snapshot} />
     </>
   );

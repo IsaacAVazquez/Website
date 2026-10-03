@@ -29,6 +29,8 @@ async function writePriorBoard(overrides: Partial<GolfTournament>): Promise<stri
         ...golfSnapshot.summary.tournament!,
         endDate: "2026-09-28",
         status: "Final",
+        // Never inherit the committed snapshot's flag, which flips with every refresh.
+        completed: undefined,
         generatedAt: oldTimestamp,
         ...overrides,
       },

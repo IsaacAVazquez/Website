@@ -1,5 +1,9 @@
 import { StructuredData } from "@/components/StructuredData";
-import { constructMetadata, generateBreadcrumbStructuredData } from "@/lib/seo";
+import {
+  constructMetadata,
+  freeApplicationOffer,
+  generateBreadcrumbStructuredData,
+} from "@/lib/seo";
 import {
   MARCH_MADNESS_DESCRIPTION,
   MARCH_MADNESS_FAQ,
@@ -105,6 +109,7 @@ export default async function MarchMadnessPage({ searchParams }: MarchMadnessPag
             "@type": "Audience",
             audienceType: "College basketball fans and sports analytics readers",
           },
+          offers: freeApplicationOffer,
         }}
       />
 

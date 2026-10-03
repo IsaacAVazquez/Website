@@ -2,12 +2,13 @@ import { AIStructuredData } from "@/components/AIStructuredData";
 import { generateAIOptimizedMetadata } from "@/lib/seo";
 import { profile, profileSameAs } from "@/lib/profile";
 import { Catalog97About } from "@/components/catalog97/Catalog97About";
+import { ABOUT_FAQ } from "@/constants/aboutFaq";
 
 export const metadata = generateAIOptimizedMetadata({
   title: "About Isaac Vazquez | Berkeley Haas MBA Candidate",
   description:
     "I'm a second-year Berkeley Haas MBA moving into product, after six years in campaign data and QA and a summer on Juno's MBA growth team.",
-  canonicalUrl: "https://isaacvazquez.com/about",
+  canonicalUrl: "/about",
   dateModified: "2026-10-01",
 });
 
@@ -54,6 +55,19 @@ export default function AboutPage() {
               ],
               alumniOf: [profile.education[1]],
             },
+          },
+        }}
+      />
+
+      {/* FAQ Schema for recruiter, role, and background queries */}
+      <AIStructuredData
+        schema={{
+          type: "FAQ",
+          data: {
+            items: ABOUT_FAQ.map((faq) => ({
+              question: faq.question,
+              answer: faq.answer,
+            })),
           },
         }}
       />

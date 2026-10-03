@@ -9,7 +9,7 @@ const accessibilityDescription =
 export const metadata: Metadata = constructMetadata({
   title: "Accessibility Statement | Isaac Vazquez",
   description: accessibilityDescription,
-  canonicalUrl: "https://isaacvazquez.com/accessibility",
+  canonicalUrl: "/accessibility",
   dateModified: "2026-10-02",
 });
 
