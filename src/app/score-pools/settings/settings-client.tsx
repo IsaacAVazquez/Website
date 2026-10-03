@@ -62,31 +62,40 @@ function NumberSetting({
   step?: number;
   allowEmpty?: boolean;
 }) {
-  const outOfRange =
-    value !== null && ((min !== undefined && value < min) || (max !== undefined && value > max));
+  // While focused the field keeps exactly what was typed and only passes a value
+  // up once it is in range, because the callers and the store decoder clamp what
+  // they get, and clamping each keystroke turned "12" into "212" in a field with a
+  // minimum of 2. Leaving the field snaps the typed value into range.
+  const [draft, setDraft] = useState<string | null>(null);
+  const clamp = (n: number) => Math.min(max ?? Infinity, Math.max(min ?? -Infinity, n));
+  const typed = draft === null ? value : Number.parseFloat(draft);
+  const outOfRange = typed !== null && Number.isFinite(typed) && clamp(typed) !== typed;
   return (
     <label className="block">
       <span className={FIELD_LABEL}>{label}</span>
       <input
         type="number"
         inputMode="decimal"
-        value={value ?? ""}
+        value={draft ?? value ?? ""}
         min={min}
         max={max}
         step={step}
         onChange={(event) => {
           const raw = event.target.value;
+          setDraft(raw);
           if (raw === "") {
-            onChange(allowEmpty ? null : 0);
+            if (allowEmpty) onChange(null);
             return;
           }
           const parsed = Number.parseFloat(raw);
-          if (Number.isFinite(parsed)) onChange(parsed);
+          if (Number.isFinite(parsed) && clamp(parsed) === parsed) onChange(parsed);
         }}
         onBlur={() => {
-          if (outOfRange && value !== null) {
-            onChange(Math.min(max ?? value, Math.max(min ?? value, value)));
-          }
+          if (draft === null) return;
+          const parsed = Number.parseFloat(draft);
+          if (Number.isFinite(parsed)) onChange(clamp(parsed));
+          else if (!allowEmpty) onChange(clamp(0));
+          setDraft(null);
         }}
         className={FIELD_INPUT}
         style={{ marginTop: "var(--c97-sp-1)" }}

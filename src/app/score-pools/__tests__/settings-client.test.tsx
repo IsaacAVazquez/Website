@@ -111,6 +111,8 @@ describe("SettingsClient pool settings", () => {
     fireEvent.change(lock, { target: { value: "90" } });
     expect(stored().lockOffsetMinutes).toBe(90);
     fireEvent.change(lock, { target: { value: "5000" } });
+    expect(stored().lockOffsetMinutes).toBe(90);
+    fireEvent.blur(lock);
     expect(stored().lockOffsetMinutes).toBe(1440);
     expect(lock).toHaveValue(1440);
 
@@ -124,8 +126,13 @@ describe("SettingsClient pool settings", () => {
     const rules = screen.getByRole("region", { name: "Scoring rules" });
 
     fireEvent.change(within(rules).getByLabelText("Exact score points"), { target: { value: "8" } });
-    fireEvent.change(within(rules).getByLabelText("Winner and goal difference"), { target: { value: "250" } });
-    fireEvent.change(within(rules).getByLabelText("Correct outcome only"), { target: { value: "" } });
+    // An out-of-range value adds its hint to the label, so hold the elements.
+    const difference = within(rules).getByLabelText("Winner and goal difference");
+    fireEvent.change(difference, { target: { value: "250" } });
+    fireEvent.blur(difference);
+    const outcome = within(rules).getByLabelText("Correct outcome only");
+    fireEvent.change(outcome, { target: { value: "" } });
+    fireEvent.blur(outcome);
     await user.selectOptions(within(rules).getByLabelText("Scoring basis"), "finalResult");
     await user.click(within(rules).getByRole("checkbox", { name: "Shootout winner counts as the winner" }));
 
@@ -150,7 +157,9 @@ describe("SettingsClient pool settings", () => {
     fireEvent.change(above, { target: { value: "" } });
     fireEvent.change(within(standing).getByLabelText(/^Nearest below \(points\)/), { target: { value: "39" } });
     fireEvent.change(within(standing).getByLabelText("Pool size"), { target: { value: "12.4" } });
-    fireEvent.change(within(standing).getByLabelText("Games remaining"), { target: { value: "-3" } });
+    const games = within(standing).getByLabelText("Games remaining");
+    fireEvent.change(games, { target: { value: "-3" } });
+    fireEvent.blur(games);
     await user.selectOptions(within(standing).getByLabelText("Posture"), "chase");
 
     expect(stored().standing).toEqual({
@@ -163,8 +172,39 @@ describe("SettingsClient pool settings", () => {
     });
     expect(above).toHaveValue(null);
 
+    // A cleared field without an empty meaning holds its value until it is left.
     fireEvent.change(within(standing).getByLabelText("My points"), { target: { value: "" } });
+    expect(stored().standing.myPoints).toBe(41);
+    fireEvent.blur(within(standing).getByLabelText("My points"));
     expect(stored().standing.myPoints).toBe(0);
+  });
+
+  it("lets a bounded number be typed digit by digit and snaps it into range on leaving", async () => {
+    const user = userEvent.setup();
+    renderSettings();
+    const standing = screen.getByRole("region", { name: "Standing and posture" });
+    const size = within(standing).getByLabelText("Pool size");
+    await user.clear(size);
+    await user.type(size, "12");
+    expect(size).toHaveValue(12);
+    expect(stored().standing.poolSize).toBe(12);
+
+    const share = within(screen.getByRole("region", { name: "Field model" })).getByLabelText(
+      /^Share on the modal chalk pick/,
+    );
+    await user.clear(share);
+    await user.type(share, "0.4");
+    expect(share).toHaveValue(0.4);
+    expect(stored().field.modalShare).toBe(0.4);
+
+    await user.clear(size);
+    await user.type(size, "1");
+    expect(within(standing).getByText(/Use a value from 2 to any/)).toBeInTheDocument();
+    expect(stored().standing.poolSize).toBe(12);
+    await user.tab();
+    expect(stored().standing.poolSize).toBe(2);
+    expect(size).toHaveValue(2);
+    expect(within(standing).queryByText(/Use a value from 2/)).not.toBeInTheDocument();
   });
 
   it("persists the field model shares", () => {

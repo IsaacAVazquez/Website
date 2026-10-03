@@ -312,9 +312,58 @@ describe("FixtureDetailDrawer", () => {
     expect(props.onSaveManualOdds).toHaveBeenCalledWith("fx-1", null);
   });
 
+  it("locks a finished game even though it has no analysis", async () => {
+    const user = userEvent.setup();
+    const props = renderDrawer({
+      fixture: fixture({ kickoff: isoFromNow(-3 * HOUR), status: "finished" }),
+      analysis: null,
+    });
+    expect(screen.getByRole("button", { name: "Set" })).toBeDisabled();
+    expect(within(screen.getByRole("dialog")).getAllByText("Locked").length).toBeGreaterThan(0);
+    await user.type(screen.getByLabelText("Home goals"), "1");
+    await user.type(screen.getByLabelText("Away goals"), "0");
+    await user.click(screen.getByRole("button", { name: "Set" }));
+    expect(props.onSetPick).not.toHaveBeenCalled();
+  });
+
+  it("locks an in-play game whose kickoff time still reads as upcoming", () => {
+    renderDrawer({ fixture: fixture({ status: "in_play" }), analysis: null });
+    expect(screen.getByRole("button", { name: "Set" })).toBeDisabled();
+  });
+
+  it("keeps the recommendation and candidate buttons from changing a pick once the game locks", async () => {
+    const user = userEvent.setup();
+    // Kickoff in 20 minutes with the default 60-minute lock offset.
+    const props = renderDrawer({ fixture: fixture({ kickoff: isoFromNow(20 * 60 * 1000) }) });
+    const buttons = [
+      ...within(screen.getByRole("region", { name: "Recommendation" })).getAllByRole("button", { name: "Use as my pick" }),
+      ...within(screen.getByRole("table", { name: "Top candidate picks by expected points" })).getAllByRole("button", { name: "Use" }),
+    ];
+    expect(buttons.length).toBeGreaterThan(2);
+    for (const button of buttons) {
+      expect(button).toBeDisabled();
+      await user.click(button);
+    }
+    expect(props.onSetPick).not.toHaveBeenCalled();
+  });
+
+  it("shows a played game's prices without claiming an analysis ran", () => {
+    renderDrawer({
+      fixture: fixture({ kickoff: isoFromNow(-3 * HOUR), status: "finished" }),
+      analysis: null,
+    });
+    const market = screen.getByRole("region", { name: "Market" });
+    expect(within(market).getByText(/2\.10 \/ 3\.40 \/ 3\.60/)).toBeInTheDocument();
+    expect(within(market).getByText("pinnacle · 2h ago")).toBeInTheDocument();
+    expect(within(market).queryByText(/No odds yet/)).not.toBeInTheDocument();
+    expect(within(market).queryByText(/Fair probabilities/)).not.toBeInTheDocument();
+    expect(screen.queryByText(/Analysis as of/)).not.toBeInTheDocument();
+  });
+
   it("asks for odds when the game has none", () => {
     renderDrawer({ fixture: fixture({ odds: [] }), analysis: null });
     expect(screen.getByText(/No odds yet for this game\./)).toBeInTheDocument();
+    expect(screen.queryByText(/Analysis as of/)).not.toBeInTheDocument();
     expect(screen.queryByRole("region", { name: "Recommendation" })).not.toBeInTheDocument();
     expect(screen.queryByRole("region", { name: "Scoreline model" })).not.toBeInTheDocument();
   });
