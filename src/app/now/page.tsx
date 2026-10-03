@@ -5,7 +5,7 @@ import { StructuredData } from "@/components/StructuredData";
 import { generateBreadcrumbStructuredData } from "@/lib/seo";
 
 // Hand-curated snapshot of what I'm focused on right now.
-// Refresh when anything here goes stale — this page is meant to feel
+// Refresh when anything here goes stale, since this page is meant to feel
 // current, not archival.
 const NOW_UPDATED = "2026-10-01";
 const NOW_UPDATED_LABEL = "October 2026";
@@ -86,6 +86,15 @@ export default function NowPage() {
           }).itemListElement,
         }}
       />
+      <StructuredData
+        type="WebPage"
+        data={{
+          title: "What I'm Building Now",
+          description: `What Isaac Vazquez is focused on as of ${NOW_UPDATED_LABEL}, from second year at Haas to active projects.`,
+          url: "https://isaacvazquez.com/now",
+          dateModified: NOW_UPDATED,
+        }}
+      />
 
       {/* Hero */}
       <section
@@ -127,10 +136,7 @@ export default function NowPage() {
       {/* Focus */}
       <section className="c97-band c97-band-continues" data-c97-surface="paper">
         <div className="c97-shell">
-          <p className="c97-kicker">Now</p>
-          <h2 className="c97-serif c97-h2" style={{ marginTop: "var(--c97-sp-2)" }}>
-            Focus
-          </h2>
+          <h2 className="c97-serif c97-h2">Focus</h2>
           <div className="c97-columns" style={{ marginTop: "var(--c97-sp-4)" }}>
             {focus.map((item) => (
               <div key={item.title}>
@@ -159,10 +165,7 @@ export default function NowPage() {
       {/* Currently building */}
       <section className="c97-band c97-sheet" data-c97-surface="bone" data-seam="deckle">
         <div className="c97-shell">
-          <p className="c97-kicker">Now</p>
-          <h2 className="c97-serif c97-h2" style={{ marginTop: "var(--c97-sp-2)" }}>
-            Currently building
-          </h2>
+          <h2 className="c97-serif c97-h2">Currently building</h2>
           <p
             className="c97-prose"
             style={{
@@ -199,10 +202,7 @@ export default function NowPage() {
       {/* What I'm not doing */}
       <section className="c97-band c97-sheet" data-c97-surface="paper" data-seam="deckle">
         <div className="c97-shell">
-          <p className="c97-kicker">Now</p>
-          <h2 className="c97-serif c97-h2" style={{ marginTop: "var(--c97-sp-2)" }}>
-            What I&apos;m not doing
-          </h2>
+          <h2 className="c97-serif c97-h2">What I&apos;m not doing</h2>
           <p
             className="c97-prose"
             style={{
@@ -224,10 +224,7 @@ export default function NowPage() {
       {/* Keep up */}
       <section className="c97-band c97-sheet" data-c97-surface="bone" data-seam="deckle">
         <div className="c97-shell">
-          <p className="c97-kicker">Now</p>
-          <h2 className="c97-serif c97-h2" style={{ marginTop: "var(--c97-sp-2)" }}>
-            Keep up
-          </h2>
+          <h2 className="c97-serif c97-h2">Keep up</h2>
           <p className="c97-prose" style={{ marginTop: "var(--c97-sp-2)" }}>
             The{" "}
             <Link href="/changelog" className="c97-link">

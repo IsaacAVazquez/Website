@@ -163,8 +163,8 @@ function ExpectedReturnCalculator({
       className="group border"
       style={{ borderColor: "var(--c97-rule)" }}
     >
-      <summary className="flex min-h-[48px] cursor-pointer list-none items-center justify-between gap-3 px-4 py-3 text-sm font-semibold marker:hidden">
-        <span className="inline-flex items-center gap-2">
+      <summary className="flex min-h-[48px] cursor-pointer list-none items-center justify-between text-sm font-semibold marker:hidden" style={{ paddingInline: "var(--c97-sp-2)", paddingBlock: "var(--c97-sp-1)", gap: "var(--c97-sp-1)" }}>
+        <span className="inline-flex items-center" style={{ gap: "var(--c97-sp-1)" }}>
           <Calculator className="h-4 w-4" aria-hidden="true" />
           Expected return calculator
         </span>
@@ -174,14 +174,14 @@ function ExpectedReturnCalculator({
         />
       </summary>
 
-      <div className="border-t px-4 pb-4 pt-4" style={{ borderColor: "var(--c97-rule)" }}>
+      <div className="border-t" style={{ paddingInline: "var(--c97-sp-2)", paddingTop: "var(--c97-sp-2)", paddingBottom: "var(--c97-sp-2)", borderColor: "var(--c97-rule)" }}>
         <p className="text-xs leading-5" style={{ color: "var(--c97-ink-2)" }}>
           Enter your own payout assumptions. The Draft Outlook does not set these probabilities,
           and this arithmetic does not include taxes.
         </p>
 
-        <div className="mt-4 grid gap-3">
-          <label className="grid gap-1.5 text-xs" htmlFor={`${id}-entry-cost`}>
+        <div className="grid" style={{ marginTop: "var(--c97-sp-2)", gap: "var(--c97-sp-1)" }}>
+          <label className="grid text-xs" style={{ gap: "var(--c97-sp-0)" }} htmlFor={`${id}-entry-cost`}>
             <span className="font-semibold">Entry cost</span>
             <span className="relative">
               <span
@@ -200,14 +200,14 @@ function ExpectedReturnCalculator({
                 onChange={(event) => updateField("entryCost", event.target.value)}
                 aria-invalid={entryCostInvalid || undefined}
                 aria-describedby={`${id}-status`}
-                className="min-h-[44px] w-full border pl-7 pr-3 text-sm tabular-nums"
-                style={INPUT_STYLE}
+                className="min-h-[44px] w-full border text-sm tabular-nums"
+                style={{ paddingLeft: "var(--c97-sp-3)", paddingRight: "var(--c97-sp-1)", ...(INPUT_STYLE) }}
                 placeholder="100"
               />
             </span>
           </label>
 
-          <label className="grid gap-1.5 text-xs" htmlFor={`${id}-payout-chance`}>
+          <label className="grid text-xs" style={{ gap: "var(--c97-sp-0)" }} htmlFor={`${id}-payout-chance`}>
             <span className="font-semibold">Chance of any payout</span>
             <span className="relative">
               <input
@@ -221,8 +221,8 @@ function ExpectedReturnCalculator({
                 onChange={(event) => updateField("payoutProbability", event.target.value)}
                 aria-invalid={payoutProbabilityInvalid || undefined}
                 aria-describedby={`${id}-status`}
-                className="min-h-[44px] w-full border px-3 pr-8 text-sm tabular-nums"
-                style={INPUT_STYLE}
+                className="min-h-[44px] w-full border text-sm tabular-nums"
+                style={{ paddingInline: "var(--c97-sp-1)", paddingRight: "var(--c97-sp-3)", ...(INPUT_STYLE) }}
                 placeholder="20"
               />
               <span
@@ -234,7 +234,7 @@ function ExpectedReturnCalculator({
             </span>
           </label>
 
-          <label className="grid gap-1.5 text-xs" htmlFor={`${id}-average-payout`}>
+          <label className="grid text-xs" style={{ gap: "var(--c97-sp-0)" }} htmlFor={`${id}-average-payout`}>
             <span className="font-semibold">Average total payout if paid</span>
             <span className="relative">
               <span
@@ -253,8 +253,8 @@ function ExpectedReturnCalculator({
                 onChange={(event) => updateField("averagePayout", event.target.value)}
                 aria-invalid={averagePayoutInvalid || undefined}
                 aria-describedby={`${id}-status`}
-                className="min-h-[44px] w-full border pl-7 pr-3 text-sm tabular-nums"
-                style={INPUT_STYLE}
+                className="min-h-[44px] w-full border text-sm tabular-nums"
+                style={{ paddingLeft: "var(--c97-sp-3)", paddingRight: "var(--c97-sp-1)", ...(INPUT_STYLE) }}
                 placeholder="500"
               />
             </span>
@@ -265,8 +265,8 @@ function ExpectedReturnCalculator({
           id={`${id}-status`}
           role="status"
           aria-live="polite"
-          className="mt-3 min-h-5 text-xs leading-5"
-          style={{ color: validationMessage ? "var(--c97-negative)" : "var(--c97-ink-2)" }}
+          className="min-h-5 text-xs leading-5"
+          style={{ marginTop: "var(--c97-sp-1)", color: validationMessage ? "var(--c97-negative)" : "var(--c97-ink-2)" }}
         >
           {validationMessage ??
             (result
@@ -275,39 +275,39 @@ function ExpectedReturnCalculator({
         </p>
 
         {result ? (
-          <div className="mt-4 grid grid-cols-2 gap-2" aria-live="polite">
-            <div className="border p-3" style={TILE_STYLE}>
+          <div className="grid grid-cols-2" style={{ marginTop: "var(--c97-sp-2)", gap: "var(--c97-sp-1)" }} aria-live="polite">
+            <div className="border" style={{ padding: "var(--c97-sp-1)", ...(TILE_STYLE) }}>
               <p className="text-2xs font-semibold" style={{ color: "var(--c97-ink-2)" }}>
                 Gross return
               </p>
-              <p className="mt-1 text-lg font-semibold tabular-nums">
+              <p className="text-lg font-semibold tabular-nums" style={{ marginTop: "var(--c97-sp-0)" }}>
                 {CURRENCY.format(result.grossExpectedReturn)}
               </p>
             </div>
-            <div className="border p-3" style={TILE_STYLE}>
+            <div className="border" style={{ padding: "var(--c97-sp-1)", ...(TILE_STYLE) }}>
               <p className="text-2xs font-semibold" style={{ color: "var(--c97-ink-2)" }}>
                 Net EV
               </p>
               <p
-                className="mt-1 text-lg font-semibold tabular-nums"
-                style={{ color: signTone(result.netExpectedValue) }}
+                className="text-lg font-semibold tabular-nums"
+                style={{ marginTop: "var(--c97-sp-0)", color: signTone(result.netExpectedValue) }}
               >
                 {signedCurrency(result.netExpectedValue)}
               </p>
             </div>
-            <div className="border p-3" style={TILE_STYLE}>
+            <div className="border" style={{ padding: "var(--c97-sp-1)", ...(TILE_STYLE) }}>
               <p className="text-2xs font-semibold" style={{ color: "var(--c97-ink-2)" }}>
                 ROI
               </p>
-              <p className="mt-1 text-lg font-semibold tabular-nums">
+              <p className="text-lg font-semibold tabular-nums" style={{ marginTop: "var(--c97-sp-0)" }}>
                 {result.roi === null ? "No entry cost" : percent(result.roi)}
               </p>
             </div>
-            <div className="border p-3" style={TILE_STYLE}>
+            <div className="border" style={{ padding: "var(--c97-sp-1)", ...(TILE_STYLE) }}>
               <p className="text-2xs font-semibold" style={{ color: "var(--c97-ink-2)" }}>
                 Break-even payout chance
               </p>
-              <p className="mt-1 text-lg font-semibold tabular-nums">
+              <p className="text-lg font-semibold tabular-nums" style={{ marginTop: "var(--c97-sp-0)" }}>
                 {result.breakEvenPayoutProbability === null
                   ? "No payout"
                   : result.breakEvenPayoutProbability > 1
@@ -352,44 +352,44 @@ function ContestMath({
        rule-and-paper-alt treatment of the tiles above it rather than a
        signal wash; the signal stays on the top card and the progress bars. */
     <section
-      className="border p-4"
-      style={TILE_STYLE}
+      className="border"
+      style={{ padding: "var(--c97-sp-2)", ...(TILE_STYLE) }}
       aria-labelledby={headingId}
     >
       <p className="c97-kicker" style={{ marginBottom: "0.25rem" }}>Published contest math</p>
       <h4 id={headingId} className="text-sm font-semibold">
         {contestName ? `${contestName} field baseline` : "Published field baseline"}
       </h4>
-      <div className="mt-3 grid grid-cols-2 gap-2 text-xs">
+      <div className="grid grid-cols-2 text-xs" style={{ marginTop: "var(--c97-sp-1)", gap: "var(--c97-sp-1)" }}>
         <div>
           <p style={{ color: "var(--c97-ink-2)" }}>Field gross</p>
-          <p className="mt-1 text-base font-semibold tabular-nums">
+          <p className="text-base font-semibold tabular-nums" style={{ marginTop: "var(--c97-sp-0)" }}>
             {CURRENCY.format(result.grossExpectedReturn)}
           </p>
         </div>
         <div>
           <p style={{ color: "var(--c97-ink-2)" }}>Field net EV</p>
           <p
-            className="mt-1 text-base font-semibold tabular-nums"
-            style={{ color: signTone(result.netExpectedValue) }}
+            className="text-base font-semibold tabular-nums"
+            style={{ marginTop: "var(--c97-sp-0)", color: signTone(result.netExpectedValue) }}
           >
             {signedCurrency(result.netExpectedValue)}
           </p>
         </div>
         <div>
           <p style={{ color: "var(--c97-ink-2)" }}>First advance</p>
-          <p className="mt-1 text-base font-semibold tabular-nums">
+          <p className="text-base font-semibold tabular-nums" style={{ marginTop: "var(--c97-sp-0)" }}>
             {economics.firstAdvanceRate === undefined ? "Not set" : percent(economics.firstAdvanceRate)}
           </p>
         </div>
         <div>
           <p style={{ color: "var(--c97-ink-2)" }}>Break-even edge</p>
-          <p className="mt-1 text-base font-semibold tabular-nums">
+          <p className="text-base font-semibold tabular-nums" style={{ marginTop: "var(--c97-sp-0)" }}>
             {signedPercent(result.breakEvenEdge)}
           </p>
         </div>
       </div>
-      <p className="mt-3 text-2xs leading-5" style={{ color: "var(--c97-ink-2)" }}>
+      <p className="text-2xs leading-5" style={{ marginTop: "var(--c97-sp-1)", color: "var(--c97-ink-2)" }}>
         {asOf ? `Field figures as of ${asOf}. ` : ""}
         At a full field, {WHOLE_CURRENCY.format(result.prizePool)} across {NUMBER.format(result.fieldEntries)} entries
         gives an equal-entry return before taxes. This field math stays separate from Draft Outlook.
@@ -399,7 +399,7 @@ function ContestMath({
           href={sourceUrl}
           target="_blank"
           rel="noreferrer"
-          className="mt-2 inline-flex min-h-[44px] items-center text-xs font-semibold underline decoration-[var(--c97-rule)] underline-offset-4"
+          className="inline-flex min-h-[44px] items-center text-xs font-semibold underline decoration-[var(--c97-rule)] underline-offset-4" style={{ marginTop: "var(--c97-sp-1)" }}
         >
           Check the current rules
         </a>
@@ -458,20 +458,20 @@ export function DraftValuePanel({
     : "This scores your picks against the other teams in this same draft, on the price the market put on each player, the shape of your roster, and how well it fits the format. It reads draft process. Projected points, win probability, and roster-specific dollar EV require a separate simulation.";
 
   return (
-    <section className="grid gap-4" aria-labelledby={headingId}>
+    <section className="grid" style={{ gap: "var(--c97-sp-2)" }} aria-labelledby={headingId}>
       <div>
-        <div className="flex flex-wrap items-center justify-between gap-2">
+        <div className="flex flex-wrap items-center justify-between" style={{ gap: "var(--c97-sp-1)" }}>
           <p className="c97-kicker">Draft outlook</p>
           {report && !unavailableReason ? (
             <span
-              className="border px-2.5 py-1 text-2xs font-semibold"
-              style={{ borderColor: "var(--c97-rule)", color: "var(--c97-ink-2)" }}
+              className="border text-2xs font-semibold"
+              style={{ paddingInline: "var(--c97-sp-1)", paddingBlock: "var(--c97-sp-0)", borderColor: "var(--c97-rule)", color: "var(--c97-ink-2)" }}
             >
               {confidenceLabel(report.confidence)}
             </span>
           ) : null}
         </div>
-        <h3 id={headingId} className="mt-1 text-xl font-semibold">
+        <h3 id={headingId} className="text-xl font-semibold" style={{ marginTop: "var(--c97-sp-0)" }}>
           {unavailableReason
             ? "Draft Outlook paused"
             : report?.picksDrafted
@@ -479,7 +479,7 @@ export function DraftValuePanel({
               : "Waiting for your first pick"}
         </h3>
         {!unavailableReason ? (
-          <p className="mt-2 text-xs leading-5" style={{ color: "var(--c97-ink-2)" }}>
+          <p className="text-xs leading-5" style={{ marginTop: "var(--c97-sp-1)", color: "var(--c97-ink-2)" }}>
             {evidenceIntro}
           </p>
         ) : null}
@@ -488,8 +488,10 @@ export function DraftValuePanel({
       {unavailableReason ? (
         <p
           role="status"
-          className="border px-4 py-3 text-xs leading-5"
+          className="border text-xs leading-5"
           style={{
+            paddingInline: "var(--c97-sp-2)",
+            paddingBlock: "var(--c97-sp-1)",
             borderColor: "color-mix(in srgb, var(--c97-warning) 48%, var(--c97-rule))",
             background: "color-mix(in srgb, var(--c97-warning) 10%, var(--c97-surface))",
             color: "var(--c97-ink-2)",
@@ -499,24 +501,24 @@ export function DraftValuePanel({
         </p>
       ) : report?.picksDrafted ? (
         <>
-          <div className="grid grid-cols-2 gap-2">
-            <div className="border p-3" style={TILE_STYLE}>
+          <div className="grid grid-cols-2" style={{ gap: "var(--c97-sp-1)" }}>
+            <div className="border" style={{ padding: "var(--c97-sp-1)", ...(TILE_STYLE) }}>
               <p className="text-2xs font-semibold" style={{ color: "var(--c97-ink-2)" }}>
                 Your rank in this room, modeled
               </p>
-              <p className="mt-1 text-2xl font-semibold tabular-nums">{rankLabel}</p>
-              <p className="mt-1 text-2xs" style={{ color: "var(--c97-ink-2)" }}>
+              <p className="text-2xl font-semibold tabular-nums" style={{ marginTop: "var(--c97-sp-0)" }}>{rankLabel}</p>
+              <p className="text-2xs" style={{ marginTop: "var(--c97-sp-0)", color: "var(--c97-ink-2)" }}>
                 {rankCaption}
               </p>
             </div>
-            <div className="border p-3" style={TILE_STYLE}>
+            <div className="border" style={{ padding: "var(--c97-sp-1)", ...(TILE_STYLE) }}>
               <p className="text-2xs font-semibold" style={{ color: "var(--c97-ink-2)" }}>
                 {consensusOnly ? "Calculated consensus value" : "Calculated market value"}
               </p>
-              <p className="mt-1 text-2xl font-semibold tabular-nums">
+              <p className="text-2xl font-semibold tabular-nums" style={{ marginTop: "var(--c97-sp-0)" }}>
                 {averageDelta === null ? "Not set" : signedNumber(averageDelta)}
               </p>
-              <p className="mt-1 text-2xs" style={{ color: "var(--c97-ink-2)" }}>
+              <p className="text-2xs" style={{ marginTop: "var(--c97-sp-0)", color: "var(--c97-ink-2)" }}>
                 {consensusOnly
                   ? "Raw draft slots against published consensus rank per judged pick. This snapshot has no usable ADP evidence for these picks."
                   : "Raw draft slots per priced pick. The market component discounts thin or volatile ADP evidence."}
@@ -526,8 +528,8 @@ export function DraftValuePanel({
 
           {turnGap ? (
             <p
-              className="border px-3 py-3 text-xs leading-5"
-              style={TILE_STYLE}
+              className="border text-xs leading-5"
+              style={{ paddingInline: "var(--c97-sp-1)", paddingBlock: "var(--c97-sp-1)", ...(TILE_STYLE) }}
             >
               Slot {turnGap.slot} has {turnGap.minimumTurnGap === turnGap.maximumTurnGap
                 ? `a ${turnGap.maximumTurnGap} pick gap between turns`
@@ -538,10 +540,10 @@ export function DraftValuePanel({
             </p>
           ) : null}
 
-          <div className="grid gap-3">
+          <div className="grid" style={{ gap: "var(--c97-sp-1)" }}>
             {report.components.map((component) => (
               <div key={component.id}>
-                <div className="flex items-center justify-between gap-3 text-xs">
+                <div className="flex items-center justify-between text-xs" style={{ gap: "var(--c97-sp-1)" }}>
                   <span className="font-semibold">
                     {componentLabel(component, consensusOnly)}
                   </span>
@@ -550,8 +552,8 @@ export function DraftValuePanel({
                   </span>
                 </div>
                 <div
-                  className="mt-1.5 h-1.5 overflow-hidden"
-                  style={{ background: "var(--c97-rule)" }}
+                  className="h-1.5 overflow-hidden"
+                  style={{ marginTop: "var(--c97-sp-0)", background: "var(--c97-rule)" }}
                   role="progressbar"
                   aria-label={`${componentLabel(component, consensusOnly)} score`}
                   aria-valuemin={0}
@@ -563,19 +565,19 @@ export function DraftValuePanel({
                     style={{ width: `${component.score}%`, background: "var(--c97-accent)" }}
                   />
                 </div>
-                <p className="mt-1 text-2xs leading-5" style={{ color: "var(--c97-ink-2)" }}>
+                <p className="text-2xs leading-5" style={{ marginTop: "var(--c97-sp-0)", color: "var(--c97-ink-2)" }}>
                   {component.detail}
                 </p>
               </div>
             ))}
           </div>
 
-          <div className="flex flex-wrap gap-1.5 text-2xs">
+          <div className="flex flex-wrap text-2xs" style={{ gap: "var(--c97-sp-0)" }}>
             {["Published ranks", "Calculated signals", "Modeled room rank", report.modelVersion.replace("draft-outlook-", "Model ")].map((label) => (
               <span
                 key={label}
-                className="border px-2.5 py-1"
-                style={{ borderColor: "var(--c97-rule)", color: "var(--c97-ink-2)" }}
+                className="border"
+                style={{ paddingInline: "var(--c97-sp-1)", paddingBlock: "var(--c97-sp-0)", borderColor: "var(--c97-rule)", color: "var(--c97-ink-2)" }}
               >
                 {label}
               </span>

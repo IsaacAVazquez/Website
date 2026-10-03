@@ -292,3 +292,13 @@ export interface InvestmentSnapshot {
   capabilities: InvestmentCapabilities;
   sections: Partial<Record<InvestmentSection, unknown>>;
 }
+
+/** One saved session valuation of the browser portfolio. */
+export interface PortfolioSnapshot {
+  date: string; // "2026-03-05"
+  /** Latest provider timestamp represented by this session valuation. */
+  valuationAsOf?: string;
+  totalValue: number;
+  totalCost: number;
+  holdingCount: number;
+}

@@ -540,6 +540,7 @@ export function SpaceXMissionControlClient({
 
       <section className="c97-band c97-sheet" data-c97-surface="paper" data-seam="torn">
         <div className="c97-shell">
+          <h2 className="c97-poster-sm" style={{ marginBottom: "var(--c97-sp-2)" }}>The launch record</h2>
           <div className="flex flex-wrap items-center" style={{ gap: "var(--c97-sp-1)" }}>
             <button
               type="button"
@@ -582,7 +583,7 @@ export function SpaceXMissionControlClient({
             />
           </div>
 
-          <div className="space-y-4" style={{ marginTop: "var(--c97-sp-2)" }}>
+          <div className="flex flex-col" style={{ marginTop: "var(--c97-sp-2)", gap: "var(--c97-sp-2)" }}>
             <MissionStatFascia cells={statFasciaCells} />
             <MissionCadenceStrip cadence={cadence} />
           </div>
@@ -591,6 +592,7 @@ export function SpaceXMissionControlClient({
 
       <section className="c97-band c97-sheet" data-c97-surface="bone" data-seam="deckle">
         <div className="c97-shell">
+          <h2 className="c97-poster-sm" style={{ marginBottom: "var(--c97-sp-2)" }}>Manifest, vehicles, and recovery</h2>
           <div>
             <div role="tablist" aria-label="Mission control sections" className="c97-segmented">
               {SECTION_OPTIONS.map((option, index) => (
@@ -649,7 +651,7 @@ export function SpaceXMissionControlClient({
 
       <section className="c97-band c97-sheet" data-c97-surface="paper" data-seam="torn">
         <div className="c97-shell">
-          <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-1)" }}>Data source</p>
+          <h2 className="c97-poster-sm" style={{ marginBottom: "var(--c97-sp-2)" }}>Data source</h2>
           <p className="c97-prose">
             This dashboard runs on a checked-in snapshot of Launch Library 2
             data from The Space Devs, served through this site&apos;s own API

@@ -34,7 +34,7 @@ export function ComparisonRadarChart({ data, symbolA, symbolB }: Props) {
 
     // SVG presentation attributes can't substitute var(), so resolve the
     // tokens at render time (re-resolved when resolvedTheme flips) — same
-    // idiom as PortfolioPerformanceChart.
+    // idiom FrontierCostContextChart uses.
     // Read from the svg itself rather than document.documentElement. The
     // Catalog 97 tokens are scoped to the `[data-c97]` page root and its
     // surfaces, so the document root resolves none of them.
@@ -156,14 +156,14 @@ export function ComparisonRadarChart({ data, symbolA, symbolB }: Props) {
 
   if (data.length < 3) {
     return (
-      <p className="py-12 text-center text-sm text-[var(--c97-ink-2)]">
+      <p className="text-center text-sm text-[var(--c97-ink-2)]" style={{ paddingBlock: "var(--c97-sp-5)" }}>
         There are not enough shared, verified metrics to draw this comparison.
       </p>
     );
   }
 
   return (
-    <div className="flex flex-col items-center gap-3">
+    <div className="flex flex-col items-center" style={{ gap: "var(--c97-sp-1)" }}>
       <svg
         ref={svgRef}
         viewBox="0 0 320 320"
@@ -171,8 +171,8 @@ export function ComparisonRadarChart({ data, symbolA, symbolB }: Props) {
         aria-label={`Radar comparison chart: ${symbolA} vs ${symbolB}`}
       />
       {/* Legend (HTML context, so inline style can use the tokens directly) */}
-      <div className="flex items-center gap-6 text-sm">
-        <span className="flex items-center gap-1.5">
+      <div className="flex items-center text-sm" style={{ gap: "var(--c97-sp-3)" }}>
+        <span className="flex items-center" style={{ gap: "var(--c97-sp-0)" }}>
           <span
             className="inline-block h-3 w-3"
             style={{ backgroundColor: "var(--c97-accent)" }}
@@ -181,7 +181,7 @@ export function ComparisonRadarChart({ data, symbolA, symbolB }: Props) {
             {symbolA}
           </span>
         </span>
-        <span className="flex items-center gap-1.5">
+        <span className="flex items-center" style={{ gap: "var(--c97-sp-0)" }}>
           <span
             className="inline-block h-3 w-3"
             style={{ backgroundColor: "var(--c97-ink)" }}

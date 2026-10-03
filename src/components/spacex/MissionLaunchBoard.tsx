@@ -58,16 +58,16 @@ export function MissionLaunchBoard({
     <section
       data-testid="mission-board"
       aria-label="Mission board"
-      className="border border-[var(--c97-rule)] bg-[var(--c97-field)]/92 p-4 sm:p-5"
+      className="border border-[var(--c97-rule)] bg-[var(--c97-field)]/92" style={{ padding: "var(--c97-sp-2)" }}
     >
       <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between" style={{ marginBottom: "var(--c97-sp-2)", gap: "var(--c97-sp-2)" }}>
         <div>
           <p className="font-mono text-2xs font-semibold uppercase tracking-[0.22em] text-[var(--c97-label)]">
             Launch board
           </p>
-          <h2 className="c97-serif c97-h3" style={{ marginTop: "var(--c97-sp-1)" }}>
+          <h3 className="c97-serif c97-h3" style={{ marginTop: "var(--c97-sp-1)" }}>
             Browse the SpaceX launch manifest.
-          </h2>
+          </h3>
           <p className="text-sm leading-6 text-[var(--c97-ink-2)]" style={{ marginTop: "var(--c97-sp-1)" }}>
             Filter by upcoming or past missions and by vehicle, then open a mission to inspect
             vehicles, payloads, and outbound references in context.
@@ -85,7 +85,8 @@ export function MissionLaunchBoard({
               type="button"
               aria-pressed={status === option.key}
               onClick={() => onStatusChange(option.key)}
-              className={`tap-target px-4 py-3 text-sm font-semibold transition ${
+              style={{ paddingInline: "var(--c97-sp-2)", paddingBlock: "var(--c97-sp-1)" }}
+              className={`tap-target text-sm font-semibold transition ${
                 status === option.key
                   ? "bg-[var(--c97-accent)] text-[var(--c97-surface)]"
                   : "text-[var(--c97-ink-2)] hover:bg-[var(--c97-field)] hover:text-[var(--c97-ink)]"
@@ -109,7 +110,8 @@ export function MissionLaunchBoard({
               type="button"
               aria-pressed={vehicleFilter === option}
               onClick={() => setVehicleFilter(option)}
-              className={`tap-target inline-flex min-h-[44px] items-center border px-3.5 font-mono text-3xs uppercase tracking-[0.06em] transition ${
+              style={{ paddingInline: "var(--c97-sp-2)" }}
+              className={`tap-target inline-flex min-h-[44px] items-center border font-mono text-3xs uppercase tracking-[0.06em] transition ${
                 vehicleFilter === option
                   ? "border-[var(--c97-ink)] bg-[var(--c97-ink)] text-[var(--c97-surface)]"
                   : "border-[var(--c97-rule)] bg-[var(--c97-field)] text-[var(--c97-ink-2)] hover:text-[var(--c97-ink)]"

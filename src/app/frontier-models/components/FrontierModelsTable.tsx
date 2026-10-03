@@ -110,7 +110,7 @@ export function FrontierModelsTable({
                   <button
                     type="button"
                     onClick={() => toggleSort(column)}
-                    className="inline-flex min-h-[44px] items-center gap-1.5 hover:text-[var(--c97-ink)]"
+                    className="inline-flex min-h-[44px] items-center hover:text-[var(--c97-ink)]" style={{ gap: "var(--c97-sp-0)" }}
                   >
                     <span>{column.label}</span>
                     <span aria-hidden="true" className="text-3xs">
@@ -166,8 +166,8 @@ function FrontierRow({ model, isExpanded, onToggle }: FrontierRowProps) {
               {model.providerLabel}
             </span>
             <span
-              className="mt-1 flex items-center text-base font-semibold"
-              style={{ gap: "var(--c97-sp-1)", color: "var(--c97-ink)" }}
+              className="flex items-center text-base font-semibold"
+              style={{ gap: "var(--c97-sp-1)", color: "var(--c97-ink)", marginTop: "var(--c97-sp-0)" }}
             >
               <button
                 type="button"
@@ -184,13 +184,12 @@ function FrontierRow({ model, isExpanded, onToggle }: FrontierRowProps) {
               </button>
               {model.reasoning ? (
                 <span
-                  className="inline-flex items-center gap-1 border py-0.5 text-3xs font-semibold uppercase tracking-[0.14em]"
+                  className="inline-flex items-center border py-0.5 text-3xs font-semibold uppercase tracking-[0.14em]"
                   style={{
                     paddingInline: "var(--c97-sp-1)",
                     borderColor: "var(--c97-rule)",
                     background: "var(--c97-field)",
-                    color: "var(--c97-ink-2)",
-                  }}
+                    color: "var(--c97-ink-2)", gap: "var(--c97-sp-0)" }}
                   title="Supports extended-thinking / reasoning mode"
                 >
                   <Sparkles aria-hidden="true" size={11} />
@@ -213,7 +212,7 @@ function FrontierRow({ model, isExpanded, onToggle }: FrontierRowProps) {
           {formatPriceUsd(model.outputPricePerMTokens)}
         </td>
         <td>
-          <div className="flex flex-wrap gap-1.5">
+          <div className="flex flex-wrap" style={{ gap: "var(--c97-sp-0)" }}>
             {model.modalities.map((modality) => (
               <span
                 key={modality}
@@ -235,7 +234,7 @@ function FrontierRow({ model, isExpanded, onToggle }: FrontierRowProps) {
         <tr id={`frontier-row-detail-${model.id}`}>
           <td colSpan={6} style={{ paddingInline: "var(--c97-sp-2)", paddingBlock: "var(--c97-sp-2)" }}>
             <div className="grid lg:grid-cols-[minmax(0,2fr)_minmax(0,1fr)]" style={{ gap: "var(--c97-sp-2)" }}>
-              <p className="m-0 text-sm leading-7" style={{ color: "var(--c97-ink)" }}>
+              <p className="text-sm leading-7" style={{ color: "var(--c97-ink)", margin: "0" }}>
                 {model.editorialNote}
               </p>
               <dl
@@ -246,7 +245,7 @@ function FrontierRow({ model, isExpanded, onToggle }: FrontierRowProps) {
                   <dt className="text-2xs font-semibold uppercase tracking-[0.14em]">
                     Max output
                   </dt>
-                  <dd className="c97-mono m-0" style={{ color: "var(--c97-ink)" }}>
+                  <dd className="c97-mono" style={{ color: "var(--c97-ink)", margin: "0" }}>
                     {model.maxOutputTokens === null
                       ? "Not published"
                       : `${formatTokenCount(model.maxOutputTokens)} tokens`}
@@ -256,7 +255,7 @@ function FrontierRow({ model, isExpanded, onToggle }: FrontierRowProps) {
                   <dt className="text-2xs font-semibold uppercase tracking-[0.14em]">
                     Knowledge cutoff
                   </dt>
-                  <dd className="c97-mono m-0" style={{ color: "var(--c97-ink)" }}>
+                  <dd className="c97-mono" style={{ color: "var(--c97-ink)", margin: "0" }}>
                     {model.knowledgeCutoff ?? "—"}
                   </dd>
                 </div>
@@ -264,7 +263,7 @@ function FrontierRow({ model, isExpanded, onToggle }: FrontierRowProps) {
                   <dt className="text-2xs font-semibold uppercase tracking-[0.14em]">
                     Modalities
                   </dt>
-                  <dd className="m-0 mt-1 flex flex-wrap gap-1.5">
+                  <dd className="flex flex-wrap" style={{ margin: "0", marginTop: "var(--c97-sp-0)", gap: "var(--c97-sp-0)" }}>
                     {model.modalities.map((modality) => (
                       <InfoChip
                         key={modality}
@@ -279,8 +278,8 @@ function FrontierRow({ model, isExpanded, onToggle }: FrontierRowProps) {
                       href={model.docsUrl}
                       target="_blank"
                       rel="noreferrer"
-                      className="inline-flex min-h-[44px] items-center gap-1.5 text-sm font-semibold underline-offset-4 hover:underline"
-                      style={{ color: "var(--c97-ink)" }}
+                      className="inline-flex min-h-[44px] items-center text-sm font-semibold underline-offset-4 hover:underline"
+                      style={{ color: "var(--c97-ink)", gap: "var(--c97-sp-0)" }}
                     >
                       Provider docs
                       <ExternalLink aria-hidden="true" size={14} />

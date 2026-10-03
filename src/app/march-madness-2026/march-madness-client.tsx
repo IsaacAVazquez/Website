@@ -89,8 +89,8 @@ function SectionIntro({
   titleId?: string;
 }) {
   return (
-    <div className="space-y-3">
-      <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-2)" }}>
+    <div className="flex flex-col" style={{ rowGap: "var(--c97-sp-1)" }}>
+      <p className="c97-kicker">
         {eyebrow}
       </p>
       <h2 id={titleId} className="c97-poster-sm">
@@ -123,7 +123,7 @@ function EditorialLinkCard({ card }: { card: EditorialCard }) {
       <p className="c97-prose" style={{ fontSize: "var(--c97-fs-small)", marginBottom: "var(--c97-sp-3)" }}>
         {card.reason}
       </p>
-      <div className="flex flex-wrap items-center justify-between gap-3" style={{ marginTop: "auto" }}>
+      <div className="flex flex-wrap items-center justify-between" style={{ gap: "var(--c97-sp-1)", marginTop: "auto" }}>
         <p className="c97-kicker" style={{ margin: 0 }}>
           {card.note}
         </p>
@@ -277,8 +277,8 @@ function TabBar<T extends string>({
   };
 
   return (
-    // Every TabBar sits in a space-y-5 stack, whose gap .c97-segmented's margin: 0 would drop.
-    <div className="c97-segmented" role="tablist" aria-label={label} style={{ marginBottom: "var(--c97-sp-3)" }}>
+    // Every TabBar sits in a flex stack, which spaces it with its gap.
+    <div className="c97-segmented" role="tablist" aria-label={label}>
       {items.map((item, index) => (
         <button
           key={item.value}
@@ -339,8 +339,8 @@ const RANKINGS_COLUMNS = [
 
 function RankingsSection() {
   return (
-    <div className="space-y-4">
-      <p className="c97-prose" style={{ marginBottom: "var(--c97-sp-2)", fontSize: "var(--c97-fs-small)" }}>
+    <div className="flex flex-col" style={{ rowGap: "var(--c97-sp-2)" }}>
+      <p className="c97-prose" style={{ fontSize: "var(--c97-fs-small)" }}>
         Blended average across BPI, Evan Miya, KPI, NET, KenPom, SOR, T-Rank, and WAB, excluding the
         minimum and maximum system values.
       </p>
@@ -398,7 +398,7 @@ function RankingsSection() {
 
 function SCurveSection() {
   return (
-    <div className="grid gap-5 lg:grid-cols-2">
+    <div className="grid lg:grid-cols-2" style={{ gap: "var(--c97-sp-2)" }}>
       {[
         { label: "Underseeded teams", data: SCURVE.under, positive: true },
         { label: "Overseeded teams", data: SCURVE.over, positive: false },
@@ -410,9 +410,9 @@ function SCurveSection() {
           >
             {label}
           </p>
-          <div className="space-y-2">
+          <div className="flex flex-col" style={{ rowGap: "var(--c97-sp-1)" }}>
             {data.map((item) => (
-              <div key={item.team} className="flex flex-wrap items-baseline gap-3">
+              <div key={item.team} className="flex flex-wrap items-baseline" style={{ gap: "var(--c97-sp-1)" }}>
                 <span style={{ minWidth: "7rem", fontWeight: 600 }}>{item.team}</span>
                 <span className="c97-mono" style={{ fontSize: "var(--c97-fs-small)", color: "var(--c97-ink-2)" }}>
                   {item.seed}-seed &middot; {item.exp}&rarr;{item.act}
@@ -431,7 +431,7 @@ function SCurveSection() {
 
 function InjuriesSection() {
   return (
-    <div className="space-y-3">
+    <div className="flex flex-col" style={{ rowGap: "var(--c97-sp-1)" }}>
       {INJURIES.map((injury) => (
         <div key={injury.player} className="c97-panel" style={{ display: "flex", gap: "var(--c97-sp-3)" }}>
           <span className="c97-chip" style={{ minWidth: "2.5rem", justifyContent: "center" }}>
@@ -462,12 +462,12 @@ function TZSection() {
   const others = TZ_IMPACTS.filter((impact) => !impact.note.startsWith("FLIP"));
 
   return (
-    <div className="space-y-6">
+    <div className="flex flex-col" style={{ rowGap: "var(--c97-sp-3)" }}>
       <div>
         <p className="c97-kicker" style={{ color: "var(--c97-negative)", marginBottom: "var(--c97-sp-3)" }}>
           Bracket flips
         </p>
-        <div className="space-y-3">
+        <div className="flex flex-col" style={{ rowGap: "var(--c97-sp-1)" }}>
           {flips.map((impact) => (
             <div
               key={`${impact.team}-${impact.site}`}
@@ -492,10 +492,10 @@ function TZSection() {
         <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-3)" }}>
           Other impacts
         </p>
-        <div className="space-y-3">
+        <div className="flex flex-col" style={{ rowGap: "var(--c97-sp-1)" }}>
           {others.map((impact) => (
             <div key={`${impact.team}-${impact.site}`} className="c97-panel" style={{ display: "grid", gap: "var(--c97-sp-2)" }}>
-              <div className="flex flex-wrap items-baseline gap-3">
+              <div className="flex flex-wrap items-baseline" style={{ gap: "var(--c97-sp-1)" }}>
                 <span style={{ fontWeight: 600 }}>{impact.team}</span>
                 <span className="c97-mono" style={{ fontSize: "var(--c97-fs-small)", color: "var(--c97-ink-2)" }}>
                   {impact.home} to {impact.site.split(" ")[0]}
@@ -564,8 +564,8 @@ function RegionBracketDetail({ data }: { data: RegionData }) {
   const sites = SITE_MAP[data.region.toLowerCase()] ?? { r1a: "", r1b: "", r1c: "", r1d: "" };
 
   return (
-    <div className="space-y-5">
-      <div className="flex flex-wrap items-center gap-2" style={{ fontSize: "var(--c97-fs-small)", color: "var(--c97-ink-2)" }}>
+    <div className="flex flex-col" style={{ rowGap: "var(--c97-sp-2)" }}>
+      <div className="flex flex-wrap items-center" style={{ gap: "var(--c97-sp-1)", fontSize: "var(--c97-fs-small)", color: "var(--c97-ink-2)" }}>
         <Tag>{data.region}</Tag>
         <span>Regional site:</span>
         <span style={{ fontWeight: 600, color: "var(--c97-ink)" }}>{data.site}</span>
@@ -574,7 +574,7 @@ function RegionBracketDetail({ data }: { data: RegionData }) {
         <span style={{ fontWeight: 600, color: "var(--c97-positive)" }}>{data.winner}</span>
       </div>
 
-      <div className="grid gap-5 xl:grid-cols-[1.2fr_1fr_0.84fr]">
+      <div className="grid xl:grid-cols-[1.2fr_1fr_0.84fr]" style={{ gap: "var(--c97-sp-2)" }}>
         <div className="c97-panel">
           <RoundLabel>Round 1</RoundLabel>
           <SiteLabel>{sites.r1a}</SiteLabel>
@@ -656,13 +656,13 @@ function PicksSection({ initialPick }: { initialPick: string | null }) {
   };
 
   return (
-    <div className="space-y-8">
+    <div className="flex flex-col" style={{ rowGap: "var(--c97-sp-3)" }}>
       {(["tz", "analytics", "confirm"] as const).map((group) => {
         const meta = groupMeta[group];
         const items = PICKS.filter((pick) => pick.group === group);
 
         return (
-          <div key={group} className="space-y-3">
+          <div key={group} className="flex flex-col" style={{ rowGap: "var(--c97-sp-1)" }}>
             <div>
               <p className="c97-kicker" style={{ color: meta.tone }}>
                 {meta.label}
@@ -685,7 +685,7 @@ function PicksSection({ initialPick }: { initialPick: string | null }) {
                   <button
                     type="button"
                     onClick={() => togglePick(id, isOpen)}
-                    className="mm-pick-toggle flex flex-wrap items-start gap-2"
+                    className="mm-pick-toggle flex flex-wrap items-start" style={{ gap: "var(--c97-sp-1)" }}
                     aria-expanded={isOpen}
                     aria-controls={`pick-body-${id}`}
                   >
@@ -727,9 +727,9 @@ function PicksSection({ initialPick }: { initialPick: string | null }) {
         <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-3)" }}>
           Legend
         </p>
-        <div className="flex flex-wrap gap-4">
+        <div className="flex flex-wrap" style={{ gap: "var(--c97-sp-2)" }}>
           {(["FLIP", "UPGRADE", "DOWNGRADE", "WATCH", "LOCKED"] as const).map((badge) => (
-            <div key={badge} className="flex items-center gap-2">
+            <div key={badge} className="flex items-center" style={{ gap: "var(--c97-sp-1)" }}>
               <Tag color={BADGE_TONE[badge]}>{badge}</Tag>
               <span className="c97-prose" style={{ fontSize: "var(--c97-fs-small)" }}>
                 {LEGEND_COPY[badge]}
@@ -854,7 +854,7 @@ export function MarchMadnessClient({
           },
         ]}
       >
-        <div className="flex flex-wrap items-center gap-3" style={{ marginBottom: "var(--c97-sp-4)" }}>
+        <div className="flex flex-wrap items-center" style={{ gap: "var(--c97-sp-1)", marginBottom: "var(--c97-sp-4)" }}>
           <Link
             href={buildMarchMadnessHref({ view: "picks", region, analytics, hash: "analysis-workspace" })}
             className="c97-btn c97-offset"
@@ -880,14 +880,13 @@ export function MarchMadnessClient({
       </Catalog97ProjectHero>
 
       <section className="c97-band c97-sheet" data-c97-surface="paper" data-seam="torn">
-        <div className="c97-shell space-y-4">
-          <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-2)" }}>
+        <div className="flex flex-col c97-shell" style={{ rowGap: "var(--c97-sp-2)" }}>
+          <p className="c97-kicker">
             National champion pick
           </p>
-          <h2 className="c97-serif c97-h2" style={{ marginBottom: "var(--c97-sp-2)" }}>{championshipWinner ?? "TBD"}</h2>
-          {/* .c97-prose zeroes its margin, which drops the space-y-4 gap, so the spacing is inline. */}
-          <p className="c97-prose" style={{ marginBottom: "var(--c97-sp-2)" }}>{MARCH_MADNESS_RESULT_NOTE}</p>
-          <p className="c97-prose" style={{ marginBottom: "var(--c97-sp-2)" }}>
+          <h2 className="c97-serif c97-h2">{championshipWinner ?? "TBD"}</h2>
+          <p className="c97-prose">{MARCH_MADNESS_RESULT_NOTE}</p>
+          <p className="c97-prose">
             I thought {championshipWinner} was the cleanest title pick in the field. The team ranked
             first across the blended metric set on this page, and it carried zero total travel
             penalty through every round, the same edge the Final Four summary below tracks.
@@ -895,18 +894,18 @@ export function MarchMadnessClient({
               ? ` Its record sat at ${championRanking.record} going in, with the best adjusted defensive efficiency in the bracket at 90.8, and that is a big part of why the championship odds landed at ${championRanking.odds}.`
               : null}
           </p>
-          <Link href={`/writing/${MARCH_MADNESS_POSTMORTEM_SLUG}`} className="c97-btn-ghost">
+          <Link href={`/writing/${MARCH_MADNESS_POSTMORTEM_SLUG}`} className="c97-btn-ghost self-start">
             Read the postmortem
           </Link>
         </div>
       </section>
 
       <section className="c97-band c97-sheet" data-c97-surface="bone" data-seam="deckle">
-        <div className="c97-shell space-y-6">
+        <div className="flex flex-col c97-shell" style={{ rowGap: "var(--c97-sp-3)" }}>
           <SectionIntro
-            eyebrow="Searchable hooks"
+            eyebrow="Against the seed line"
             title="Top upset picks for the 2026 March Madness bracket"
-            description="These are the calls most likely to earn clicks and debate: one pure time-zone flip, one seed-line correction, and one late-bracket structural upset built on travel math."
+            description="These are the three upset calls I would point to first, from one pure time-zone flip, to one seed-line correction, to one late-bracket upset built on travel math."
           />
           <div className="c97-columns">
             {TOP_UPSET_PICKS.map((card) => (
@@ -922,13 +921,13 @@ export function MarchMadnessClient({
         data-c97-surface="paper"
         data-seam="torn"
       >
-        <div className="c97-shell space-y-6">
+        <div className="flex flex-col c97-shell" style={{ rowGap: "var(--c97-sp-3)" }}>
           <SectionIntro
             eyebrow="The method"
             title="Why this model is different"
             description="Most brackets stop at seed lines and generic power ratings. This one blends consensus analytics with committee errors, roster context, and travel penalties that change game-day output."
           />
-          <div className="grid gap-4 md:grid-cols-2">
+          <div className="grid md:grid-cols-2" style={{ gap: "var(--c97-sp-2)" }}>
             {MODEL_PILLARS.map((card) => (
               <EditorialLinkCard key={card.title} card={card} />
             ))}
@@ -937,14 +936,14 @@ export function MarchMadnessClient({
       </section>
 
       <section className="c97-band c97-sheet" data-c97-surface="bone" data-seam="deckle">
-        <div className="c97-shell space-y-5">
-          <div className="flex flex-wrap items-center justify-between gap-3">
+        <div className="flex flex-col c97-shell" style={{ rowGap: "var(--c97-sp-2)" }}>
+          <div className="flex flex-wrap items-center justify-between" style={{ gap: "var(--c97-sp-1)" }}>
             <div>
               <p className="c97-kicker" style={{ margin: 0 }}>
-                Share layer
+                The short version
               </p>
               <h2 className="c97-poster-sm" style={{ marginTop: "var(--c97-sp-2)" }}>
-                Give people something quotable to pass around
+                The bracket in two lines
               </h2>
             </div>
             <Link href={articleHref} className="c97-btn-ghost">
@@ -952,7 +951,7 @@ export function MarchMadnessClient({
             </Link>
           </div>
 
-          <div className="grid gap-4 lg:grid-cols-2">
+          <div className="grid lg:grid-cols-2" style={{ gap: "var(--c97-sp-2)" }}>
             <div className="c97-panel">
               <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-3)" }}>
                 Bracket thesis
@@ -965,7 +964,7 @@ export function MarchMadnessClient({
 
             <div className="c97-panel">
               <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-3)", color: "var(--c97-negative)" }}>
-                Best upset share card
+                Best upset
               </p>
               <p className="c97-serif c97-h3" style={{ marginBottom: "var(--c97-sp-3)" }}>
                 UCF over UCLA
@@ -982,8 +981,8 @@ export function MarchMadnessClient({
           </div>
 
           <div
-            className="flex flex-wrap items-center gap-3"
-            style={{ borderTop: "1px solid var(--c97-rule)", paddingTop: "var(--c97-sp-4)" }}
+            className="flex flex-wrap items-center"
+            style={{ gap: "var(--c97-sp-1)", borderTop: "1px solid var(--c97-rule)", paddingTop: "var(--c97-sp-4)" }}
           >
             <button type="button" onClick={handleCopyLink} className="c97-btn-ghost">
               Copy current view link
@@ -1004,8 +1003,8 @@ export function MarchMadnessClient({
       </section>
 
       <section className="c97-band c97-sheet" data-c97-surface="paper" data-seam="torn">
-        <div className="c97-shell space-y-5">
-          <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-3)" }}>
+        <div className="flex flex-col c97-shell" style={{ rowGap: "var(--c97-sp-3)" }}>
+          <p className="c97-kicker">
             Final Four &middot; Indianapolis, IN (ET)
           </p>
           <div className="c97-columns">
@@ -1035,12 +1034,12 @@ export function MarchMadnessClient({
         data-c97-surface="bone"
         data-seam="deckle"
       >
-        <div className="c97-shell space-y-5">
+        <div className="flex flex-col c97-shell" style={{ rowGap: "var(--c97-sp-3)" }}>
           <h2 className="c97-poster-sm">The analysis workspace</h2>
           <TabBar items={MAIN_TAB_ITEMS} active={view} onChange={(nextView) => updateRouteState({ view: nextView })} label="March Madness primary sections" />
 
           {view === "bracket" ? (
-            <div style={{ marginTop: "var(--c97-sp-4)" }} className="space-y-5">
+            <div className="flex flex-col" style={{ rowGap: "var(--c97-sp-3)" }}>
               <TabBar
                 items={REGION_TAB_ITEMS}
                 active={region}
@@ -1052,13 +1051,13 @@ export function MarchMadnessClient({
           ) : null}
 
           {view === "picks" ? (
-            <div style={{ marginTop: "var(--c97-sp-4)" }}>
+            <div>
               <PicksSection initialPick={initialPick} />
             </div>
           ) : null}
 
           {view === "analytics" ? (
-            <div style={{ marginTop: "var(--c97-sp-4)" }} className="space-y-5">
+            <div className="flex flex-col" style={{ rowGap: "var(--c97-sp-3)" }}>
               <TabBar
                 items={ANALYTICS_TAB_ITEMS}
                 active={analytics}
@@ -1072,7 +1071,7 @@ export function MarchMadnessClient({
           ) : null}
 
           {view === "time-zones" ? (
-            <div style={{ marginTop: "var(--c97-sp-4)" }}>
+            <div>
               <TZSection />
             </div>
           ) : null}
@@ -1080,7 +1079,7 @@ export function MarchMadnessClient({
       </section>
 
       <section className="c97-band c97-sheet" data-c97-surface="paper" data-seam="torn">
-        <div className="c97-shell space-y-6">
+        <div className="flex flex-col c97-shell" style={{ rowGap: "var(--c97-sp-3)" }}>
           <section aria-labelledby="march-madness-questions">
             <SectionIntro
               eyebrow="Method questions"
@@ -1088,7 +1087,7 @@ export function MarchMadnessClient({
               description="The short version of how the model reaches its picks and where it differs from a seed-only bracket."
               titleId="march-madness-questions"
             />
-            <div className="grid gap-4 md:grid-cols-2" style={{ marginTop: "var(--c97-sp-5)" }}>
+            <div className="grid md:grid-cols-2" style={{ gap: "var(--c97-sp-2)", marginTop: "var(--c97-sp-5)" }}>
               {MARCH_MADNESS_FAQ.map((item) => (
                 <div key={item.question} className="c97-panel">
                   <h3 className="c97-h3" style={{ fontWeight: 600, marginBottom: "var(--c97-sp-2)" }}>
@@ -1103,8 +1102,8 @@ export function MarchMadnessClient({
           </section>
 
           <div
-            className="flex flex-wrap items-center justify-between gap-3"
-            style={{ borderTop: "1px solid var(--c97-rule)", paddingTop: "var(--c97-sp-4)" }}
+            className="flex flex-wrap items-center justify-between"
+            style={{ gap: "var(--c97-sp-1)", borderTop: "1px solid var(--c97-rule)", paddingTop: "var(--c97-sp-4)" }}
           >
             <p className="c97-prose" style={{ fontSize: "var(--c97-fs-small)", margin: 0 }}>
               Sources: KenPom &middot; ESPN BPI &middot; T-Rank &middot; NCAA NET &middot; Evan Miya &middot; SOR

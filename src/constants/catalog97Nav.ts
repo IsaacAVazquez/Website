@@ -41,6 +41,57 @@ export function isCatalog97Route(pathname: string): boolean {
 }
 
 /**
+ * Every live tool that /dashboards lists, so the header can mark Dashboards as
+ * the section on those routes even though they do not sit under /dashboards.
+ * It mirrors the internal `link` of each case study, and
+ * `project-routes-complete.test.ts` fails when the two drift. A copy rather than
+ * an import because the header ships to the client and caseStudies is large.
+ */
+export const DASHBOARD_ROUTES: readonly string[] = [
+  "/ai-dev-tools",
+  "/bay-area-transit",
+  "/decision-lab",
+  "/earthquake-pulse",
+  "/enablement-assistant",
+  "/fantasy-football",
+  "/fantasy-formula-1",
+  "/fintech-tools/budget-planner",
+  "/fintech-tools/interchange-iq",
+  "/fintech-tools/rent-vs-buy",
+  "/food-map",
+  "/formula-1",
+  "/frontier-models",
+  "/github-trending-pulse",
+  "/golf",
+  "/investments",
+  "/investments/before-you-buy",
+  "/la-liga",
+  "/march-madness-2026",
+  "/mba-internship-notifications",
+  "/mlb",
+  "/museum-log",
+  "/nba",
+  "/news-pulse",
+  "/nfl",
+  "/polling-aggregator",
+  "/premier-league",
+  "/recipe-finder",
+  "/spacex-mission-control",
+  "/tech-startup-tracker",
+  "/travel",
+  "/travel-deals",
+  "/wine-cellar",
+  "/world-cup-2026",
+];
+
+/** True on a listed tool or any page below one (the fantasy boards, for instance). */
+export function isDashboardRoute(pathname: string): boolean {
+  return DASHBOARD_ROUTES.some(
+    (route) => pathname === route || pathname.startsWith(`${route}/`)
+  );
+}
+
+/**
  * The dense tools that print on the wide column (`--c97-container-wide`).
  * `ConditionalLayout` marks these pages, and every shell on them widens, the
  * header's and footer's included, so the title, the tool, and the wordmark

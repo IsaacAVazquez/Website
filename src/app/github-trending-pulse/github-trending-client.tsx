@@ -424,8 +424,8 @@ function RepoRow({ repo, rank, isExpanded, matchedSegments, windowDays, onToggle
                 </button>
               </p>
               <p
-                className="mb-0 line-clamp-2"
-                style={{ color: "var(--c97-ink-2)", maxWidth: "44rem" }}
+                className="line-clamp-2"
+                style={{ color: "var(--c97-ink-2)", maxWidth: "44rem", marginBottom: "0" }}
               >
                 {repo.description ?? "No repository description provided."}
               </p>
@@ -439,7 +439,7 @@ function RepoRow({ repo, rank, isExpanded, matchedSegments, windowDays, onToggle
           </span>
         </td>
         <td data-align="end">
-          <span className="c97-mono inline-flex items-center justify-end gap-1" style={{ fontWeight: 600 }}>
+          <span className="c97-mono inline-flex items-center justify-end" style={{ fontWeight: 600, gap: "var(--c97-sp-0)" }}>
             <Star aria-hidden="true" size={14} />
             {formatGitHubCompactNumber(repo.stars)}
           </span>
@@ -464,7 +464,7 @@ function RepoRow({ repo, rank, isExpanded, matchedSegments, windowDays, onToggle
         <tr id={detailId}>
           <td colSpan={6}>
             <div className="grid lg:grid-cols-[minmax(0,1.35fr)_minmax(260px,0.65fr)]" style={{ gap: "var(--c97-sp-2)", padding: "var(--c97-sp-3) 0" }}>
-              <div className="space-y-3">
+              <div className="flex flex-col" style={{ gap: "var(--c97-sp-1)" }}>
                 <div className="flex flex-wrap" style={{ gap: "var(--c97-sp-1)" }}>
                   {matchedSegments.map((segment) => (
                     <span key={segment.key} className="c97-chip">
@@ -483,7 +483,7 @@ function RepoRow({ repo, rank, isExpanded, matchedSegments, windowDays, onToggle
               <dl className="grid grid-cols-2" style={{ rowGap: "var(--c97-sp-1)", columnGap: "var(--c97-sp-2)" }}>
                 <div>
                   <dt className="c97-stat-label">Forks</dt>
-                  <dd className="c97-mono inline-flex items-center gap-1" style={{ color: "var(--c97-ink)" }}>
+                  <dd className="c97-mono inline-flex items-center" style={{ color: "var(--c97-ink)", gap: "var(--c97-sp-0)" }}>
                     <GitFork aria-hidden="true" size={14} />
                     {formatGitHubCompactNumber(repo.forks)}
                   </dd>
@@ -536,7 +536,7 @@ function SegmentSummary({ segments, repositories, selectedSegment, onSelectSegme
         </div>
         <Activity aria-hidden="true" style={{ color: "var(--c97-ink-2)" }} size={20} />
       </div>
-      <div className="space-y-2">
+      <div className="flex flex-col" style={{ gap: "var(--c97-sp-1)" }}>
         {segments.map((segment) => {
           const topRepo = segment.topRepoId ? repoById.get(segment.topRepoId) : null;
           const isActive = selectedSegment === segment.key;
@@ -559,7 +559,7 @@ function SegmentSummary({ segments, repositories, selectedSegment, onSelectSegme
                   +{formatGitHubCompactNumber(segment.weeklyStars)}
                 </span>
               </span>
-              <span className="mt-1 block" style={{ color: "var(--c97-ink-2)", fontSize: "var(--c97-fs-small)" }}>
+              <span className="block" style={{ color: "var(--c97-ink-2)", fontSize: "var(--c97-fs-small)", marginTop: "var(--c97-sp-0)" }}>
                 {segment.repoCount} repos
                 {topRepo ? ` · ${topRepo.fullName}` : ""}
               </span>

@@ -5,6 +5,7 @@ import { useSearchParams } from "next/navigation";
 import { CircleAlert, ExternalLink, Flag } from "lucide-react";
 import { DATE_ONLY_TIME_ZONE } from "@/lib/date-formatters";
 import { MetricCard, CrestAvatar, TeamResultPill, FixtureCard } from "@/components/football";
+import { formatRank } from "@/components/football/fixtureFormat";
 import {
   Catalog97ProjectHero,
   type Catalog97Readout,
@@ -328,7 +329,7 @@ export function NflClient({ initialState, summary, initialTeamSnapshot }: NflCli
           <p className="c97-prose" style={{ marginTop: "var(--c97-sp-1)", fontSize: "var(--c97-fs-small)" }}>
             Each team striped in its own colours, division leaders marked.
           </p>
-          <div className="mt-4">
+          <div style={{ marginTop: "var(--c97-sp-2)" }}>
             <NflDivisionGrid divisions={divisionGroups} />
           </div>
         </div>
@@ -336,7 +337,7 @@ export function NflClient({ initialState, summary, initialTeamSnapshot }: NflCli
 
       <section className="c97-band c97-sheet" data-c97-surface="paper" data-seam="torn">
         <div className="c97-shell">
-          <div className="flex flex-wrap items-end justify-between gap-3">
+          <div className="flex flex-wrap items-end justify-between" style={{ gap: "var(--c97-sp-1)" }}>
             <h2 className="c97-poster-sm">Standings</h2>
             <p className="c97-meta">{visibleTeams.length} teams</p>
           </div>
@@ -361,7 +362,7 @@ export function NflClient({ initialState, summary, initialTeamSnapshot }: NflCli
             })}
           </div>
 
-          <div className="mt-6 grid gap-8 xl:grid-cols-[minmax(0,1fr)_320px]">
+          <div className="grid xl:grid-cols-[minmax(0,1fr)_320px]" style={{ marginTop: "var(--c97-sp-3)", gap: "var(--c97-sp-3)" }}>
             <div
               role="region"
               aria-label="NFL standings (scrollable)"
@@ -391,7 +392,7 @@ export function NflClient({ initialState, summary, initialTeamSnapshot }: NflCli
                         style={isSelected ? { boxShadow: "inset 4px 0 0 0 var(--c97-ink)" } : undefined}
                       >
                         <td>
-                          <span className="inline-flex items-center gap-1.5">
+                          <span className="inline-flex items-center" style={{ gap: "var(--c97-sp-0)" }}>
                             <span
                               aria-hidden="true"
                               style={{
@@ -410,7 +411,7 @@ export function NflClient({ initialState, summary, initialTeamSnapshot }: NflCli
                             onClick={() => handleTeamChange(team.id)}
                             aria-pressed={isSelected}
                             aria-label={`Show ${team.name} details`}
-                            className="flex min-h-[44px] items-center gap-2 text-left"
+                            className="flex min-h-[44px] items-center text-left" style={{ gap: "var(--c97-sp-1)" }}
                           >
                             <CrestAvatar crest={logoByTeamId.get(team.id) ?? null} name={team.shortName} size="sm" />
                             <span style={{ fontWeight: 600, color: "var(--c97-ink)" }}>{team.shortName}</span>
@@ -431,7 +432,7 @@ export function NflClient({ initialState, summary, initialTeamSnapshot }: NflCli
 
             <aside>
               <section className="c97-panel" aria-live="polite" data-testid="nfl-selected-team">
-                <div className="flex items-start gap-3">
+                <div className="flex items-start" style={{ gap: "var(--c97-sp-1)" }}>
                   <CrestAvatar crest={logoByTeamId.get(selectedTeam.id) ?? null} name={selectedTeam.name} size="lg" />
                   <div className="min-w-0 flex-1">
                     <h2 className="c97-serif c97-h3">{selectedTeam.name}</h2>
@@ -447,13 +448,13 @@ export function NflClient({ initialState, summary, initialTeamSnapshot }: NflCli
                   </div>
                 </div>
 
-                <dl className="mt-4 grid grid-cols-2 gap-x-4 gap-y-2 border-t pt-4" style={{ borderColor: "var(--c97-rule)" }}>
+                <dl className="grid grid-cols-2 border-t" style={{ paddingTop: "var(--c97-sp-2)", marginTop: "var(--c97-sp-2)", columnGap: "var(--c97-sp-2)", rowGap: "var(--c97-sp-1)", borderColor: "var(--c97-rule)" }}>
                   {(
                     [
                       ["Win %", selectedTeam.winPct.toFixed(3).replace(/^0/, "")],
                       ["Record", formatRecord(selectedTeam)],
-                      ["Offense", `#${offenseRankByTeam.get(selectedTeam.id) ?? "-"}`],
-                      ["Defense", `#${defenseRankByTeam.get(selectedTeam.id) ?? "-"}`],
+                      ["Offense", formatRank(offenseRankByTeam.get(selectedTeam.id))],
+                      ["Defense", formatRank(defenseRankByTeam.get(selectedTeam.id))],
                       [
                         "PF / game",
                         formatPerGame(
@@ -470,7 +471,7 @@ export function NflClient({ initialState, summary, initialTeamSnapshot }: NflCli
                       ],
                     ] as const
                   ).map(([label, value]) => (
-                    <div key={label} className="flex items-baseline justify-between gap-2">
+                    <div key={label} className="flex items-baseline justify-between" style={{ gap: "var(--c97-sp-1)" }}>
                       <dt className="c97-kicker">{label}</dt>
                       <dd className="c97-mono" style={{ margin: 0, fontWeight: 600, color: "var(--c97-ink)" }}>{value}</dd>
                     </div>
@@ -478,9 +479,9 @@ export function NflClient({ initialState, summary, initialTeamSnapshot }: NflCli
                 </dl>
 
                 {formSequence.length > 0 && (
-                  <div className="mt-4 border-t pt-4" style={{ borderColor: "var(--c97-rule)" }}>
+                  <div className="border-t" style={{ paddingTop: "var(--c97-sp-2)", marginTop: "var(--c97-sp-2)", borderColor: "var(--c97-rule)" }}>
                     <p className="c97-kicker">Form (last 5)</p>
-                    <div className="mt-2 flex gap-1.5">
+                    <div className="flex" style={{ marginTop: "var(--c97-sp-1)", gap: "var(--c97-sp-0)" }}>
                       {formatTeamFormPills(formSequence.slice(-5)).map((result, i) => (
                         <TeamResultPill key={i} result={result} />
                       ))}
@@ -494,8 +495,8 @@ export function NflClient({ initialState, summary, initialTeamSnapshot }: NflCli
 
                 {!teamSnapshot && (isTeamSnapshotLoading || teamSnapshotError) ? (
                   <p
-                    className="c97-prose border-t pt-4"
-                    style={{ marginTop: "var(--c97-sp-2)", borderColor: "var(--c97-rule)", fontSize: "var(--c97-fs-small)" }}
+                    className="c97-prose border-t"
+                    style={{ paddingTop: "var(--c97-sp-2)", marginTop: "var(--c97-sp-2)", borderColor: "var(--c97-rule)", fontSize: "var(--c97-fs-small)" }}
                     role={teamSnapshotError ? "alert" : "status"}
                     aria-live="polite"
                   >
@@ -540,17 +541,17 @@ export function NflClient({ initialState, summary, initialTeamSnapshot }: NflCli
             })}
           </div>
 
-          <div id="nfl-detail-panel" role="tabpanel" aria-labelledby={`nfl-detail-tab-${activeDetailTab}`} className="mt-6">
+          <div id="nfl-detail-panel" role="tabpanel" aria-labelledby={`nfl-detail-tab-${activeDetailTab}`} style={{ marginTop: "var(--c97-sp-3)" }}>
             {activeDetailTab === "team" && (
-              <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
-                <div className="space-y-5">
+              <div className="grid md:grid-cols-2 xl:grid-cols-3" style={{ gap: "var(--c97-sp-3)" }}>
+                <div className="flex flex-col" style={{ rowGap: "var(--c97-sp-2)" }}>
                   <div>
                     <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-1)" }}>Performance</p>
-                    <div className="grid grid-cols-2 gap-3">
+                    <div className="grid grid-cols-2" style={{ gap: "var(--c97-sp-1)" }}>
                       <MetricCard label="Win %" value={selectedTeam.winPct.toFixed(3).replace(/^0/, "")} />
                       <MetricCard label="Record" value={formatRecord(selectedTeam)} />
-                      <MetricCard label="Offense rank" value={`#${offenseRankByTeam.get(selectedTeam.id) ?? "-"}`} />
-                      <MetricCard label="Defense rank" value={`#${defenseRankByTeam.get(selectedTeam.id) ?? "-"}`} />
+                      <MetricCard label="Offense rank" value={formatRank(offenseRankByTeam.get(selectedTeam.id))} />
+                      <MetricCard label="Defense rank" value={formatRank(defenseRankByTeam.get(selectedTeam.id))} />
                       <MetricCard label="Points for" value={`${selectedTeam.pointsFor}`} />
                       <MetricCard label="Points against" value={`${selectedTeam.pointsAgainst}`} />
                     </div>
@@ -565,7 +566,7 @@ export function NflClient({ initialState, summary, initialTeamSnapshot }: NflCli
                     </ul>
                   </div>
 
-                  <div className="grid gap-3 sm:grid-cols-2">
+                  <div className="grid sm:grid-cols-2" style={{ gap: "var(--c97-sp-1)" }}>
                     <TeamLeaderCard title="Top passer" leader={selectedTeamLeaders.passing} unitLong="passing yards" emptyLabel="No passer in the league top 10." />
                     <TeamLeaderCard title="Top rusher" leader={selectedTeamLeaders.rushing} unitLong="rushing yards" emptyLabel="No rusher in the league top 10." />
                     <TeamLeaderCard title="Top receiver" leader={selectedTeamLeaders.receiving} unitLong="receiving yards" emptyLabel="No receiver in the league top 10." />
@@ -584,7 +585,7 @@ export function NflClient({ initialState, summary, initialTeamSnapshot }: NflCli
                 {recentFixtures.length > 0 && (
                   <div>
                     <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-1)" }}>Recent results</p>
-                    <div className="space-y-2">
+                    <div className="flex flex-col" style={{ rowGap: "var(--c97-sp-1)" }}>
                       {recentFixtures.map((fixture) => (
                         <FixtureCard periodLabel="Week" key={fixture.id} fixture={fixture} contextTeamId={teamSnapshot?.team?.id ?? undefined} compact />
                       ))}
@@ -595,7 +596,7 @@ export function NflClient({ initialState, summary, initialTeamSnapshot }: NflCli
                 {upcomingFixtures.length > 0 && (
                   <div>
                     <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-1)" }}>Upcoming games</p>
-                    <div className="space-y-2">
+                    <div className="flex flex-col" style={{ rowGap: "var(--c97-sp-1)" }}>
                       {upcomingFixtures.map((fixture) => (
                         <FixtureCard periodLabel="Week" key={fixture.id} fixture={fixture} contextTeamId={teamSnapshot?.team?.id ?? undefined} compact />
                       ))}
@@ -606,11 +607,11 @@ export function NflClient({ initialState, summary, initialTeamSnapshot }: NflCli
             )}
 
             {activeDetailTab === "fixtures" && (
-              <div className="grid gap-6 md:grid-cols-2">
+              <div className="grid md:grid-cols-2" style={{ gap: "var(--c97-sp-3)" }}>
                 {summary.recentFixtures.length > 0 && (
                   <div>
                     <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-1)" }}>Latest results</p>
-                    <div className="space-y-3">
+                    <div className="flex flex-col" style={{ rowGap: "var(--c97-sp-1)" }}>
                       {summary.recentFixtures.map((fixture) => (
                         <FixtureCard periodLabel="Week" key={fixture.id} fixture={fixture} onOpenTeam={handleTeamChange} />
                       ))}
@@ -620,7 +621,7 @@ export function NflClient({ initialState, summary, initialTeamSnapshot }: NflCli
                 {summary.upcomingFixtures.length > 0 ? (
                   <div>
                     <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-1)" }}>Upcoming games</p>
-                    <div className="space-y-3">
+                    <div className="flex flex-col" style={{ rowGap: "var(--c97-sp-1)" }}>
                       {summary.upcomingFixtures.map((fixture) => (
                         <FixtureCard periodLabel="Week" key={fixture.id} fixture={fixture} onOpenTeam={handleTeamChange} />
                       ))}
@@ -631,7 +632,7 @@ export function NflClient({ initialState, summary, initialTeamSnapshot }: NflCli
                   // regular-season week calls the season complete.
                   summary.week >= totalRegSeasonWeeks ? (
                     <div className="c97-panel">
-                      <p className="flex items-center gap-2" style={{ fontWeight: 600, color: "var(--c97-ink)" }}>
+                      <p className="flex items-center" style={{ gap: "var(--c97-sp-1)", fontWeight: 600, color: "var(--c97-ink)" }}>
                         <Flag className="h-4 w-4" aria-hidden="true" />
                         Offseason
                       </p>
@@ -649,8 +650,8 @@ export function NflClient({ initialState, summary, initialTeamSnapshot }: NflCli
             )}
 
             {activeDetailTab === "leaders" && (
-              <div className="space-y-5">
-                <div className="flex flex-wrap items-center justify-between gap-3">
+              <div className="flex flex-col" style={{ rowGap: "var(--c97-sp-2)" }}>
+                <div className="flex flex-wrap items-center justify-between" style={{ gap: "var(--c97-sp-1)" }}>
                   <div className="c97-segmented" role="group" aria-label="Leader category">
                     {LEADER_TABS.map((tab) => {
                       const isActive = tab.id === activeLeaderTab;
@@ -676,7 +677,7 @@ export function NflClient({ initialState, summary, initialTeamSnapshot }: NflCli
 
                 <div>
                   <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-1)" }}>Top {activeLeaderMeta.unitLong}</p>
-                  <div className="grid gap-6 md:grid-cols-2">
+                  <div className="grid md:grid-cols-2" style={{ gap: "var(--c97-sp-3)" }}>
                     <div>
                       <NflLeaderList leaders={activeLeaders.slice(0, 5)} unit={activeLeaderMeta.unit} teamLookup={teamShortNameById} />
                     </div>
@@ -695,7 +696,7 @@ export function NflClient({ initialState, summary, initialTeamSnapshot }: NflCli
 
       <section className="c97-band c97-sheet" data-c97-surface="paper" data-seam="torn">
         <div className="c97-shell">
-          <div className="flex items-start gap-3">
+          <div className="flex items-start" style={{ gap: "var(--c97-sp-1)" }}>
             <CircleAlert className="mt-0.5 h-4 w-4 flex-shrink-0" style={{ color: "var(--c97-ink-2)" }} aria-hidden="true" />
             <p className="c97-prose" style={{ fontSize: "var(--c97-fs-small)" }}>
               This page is a curated NFLverse snapshot, refreshed on a schedule. Standings come
@@ -752,12 +753,12 @@ function NflLeaderList({
   teamLookup: Map<string, string>;
 }) {
   return (
-    <ol className="mt-3 space-y-2 pl-0">
+    <ol className="flex flex-col pl-0" style={{ marginTop: "var(--c97-sp-1)", rowGap: "var(--c97-sp-1)" }}>
       {leaders.map((leader) => {
         const teamName = teamLookup.get(leader.teamId) ?? leader.teamCode;
         return (
-          <li key={`${unit}-${leader.rank}-${leader.name}`} className="c97-panel flex items-center justify-between gap-4">
-            <div className="flex min-w-0 items-center gap-3">
+          <li key={`${unit}-${leader.rank}-${leader.name}`} className="c97-panel flex items-center justify-between" style={{ gap: "var(--c97-sp-2)" }}>
+            <div className="flex min-w-0 items-center" style={{ gap: "var(--c97-sp-1)" }}>
               <span className="c97-mono" style={{ color: "var(--c97-ink-2)" }}>{leader.rank}</span>
               <div className="min-w-0">
                 <p className="truncate" style={{ fontWeight: 600, color: "var(--c97-ink)" }}>

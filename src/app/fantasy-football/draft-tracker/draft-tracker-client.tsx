@@ -115,8 +115,8 @@ function FasciaTile({
     <div
       ref={tileRef}
       tabIndex={cell.focusTarget ? -1 : undefined}
-      className={`min-w-0 px-3 py-1.5 sm:py-2 ${cell.phoneHidden ? "hidden sm:block" : ""}`}
-      style={{ background: cell.background ?? "var(--c97-surface)" }}
+      className={`min-w-0 py-[var(--c97-sp-0)] sm:py-[var(--c97-sp-1)] ${cell.phoneHidden ? "hidden sm:block" : ""}`}
+      style={{ paddingInline: "var(--c97-sp-1)", background: cell.background ?? "var(--c97-surface)" }}
       {...(timerLabel !== undefined
         ? { role: "timer", "aria-live": "off" as const, "aria-label": timerLabel }
         : {})}
@@ -132,8 +132,8 @@ function FasciaTile({
         )}
       </p>
       <p
-        className="m-0 mt-1 overflow-hidden text-ellipsis whitespace-nowrap font-mono text-base leading-tight tabular-nums sm:text-lg"
-        style={{ color: cell.valueColor ?? "var(--c97-ink)" }}
+        className="m-0 overflow-hidden text-ellipsis whitespace-nowrap font-mono text-base leading-tight tabular-nums sm:text-lg"
+        style={{ marginTop: "var(--c97-sp-0)", color: cell.valueColor ?? "var(--c97-ink)" }}
       >
         {cell.valueCompact !== undefined && cell.valueCompact !== cell.value ? (
           <>
@@ -277,11 +277,11 @@ function StripPlayerCard({
   logLabel: string;
 }) {
   return (
-    <div className="flex min-w-0 flex-col gap-0.5 px-3.5 py-2" style={STRIP_CARD_STYLE}>
+    <div className="flex min-w-0 flex-col gap-0.5" style={{ paddingInline: "var(--c97-sp-2)", paddingBlock: "var(--c97-sp-1)", ...(STRIP_CARD_STYLE) }}>
       <span className={MONO_LABEL_CLASS} style={{ color: labelColor }}>
         {label}
       </span>
-      <div className="flex min-w-0 items-center gap-2">
+      <div className="flex min-w-0 items-center" style={{ gap: "var(--c97-sp-1)" }}>
         <span className="flex-none font-mono text-sm" style={{ color: "var(--c97-ink-2)" }}>
           #{publishedRank}
         </span>
@@ -289,7 +289,7 @@ function StripPlayerCard({
           type="button"
           onClick={onOpenDetail}
           aria-label={`Open ${player.name} detail`}
-          className="-my-1 min-h-touch min-w-0 truncate text-left text-base font-semibold tracking-[-0.02em] hover:underline hover:decoration-[var(--c97-accent)] hover:underline-offset-4"
+          className="min-h-touch min-w-0 truncate text-left text-base font-semibold tracking-[-0.02em] hover:underline hover:decoration-[var(--c97-accent)] hover:underline-offset-4" style={{ marginBlock: "calc(var(--c97-sp-0) * -1)" }}
         >
           {player.name}
         </button>
@@ -301,7 +301,7 @@ function StripPlayerCard({
             type="button"
             onClick={onLog}
             aria-label={logLabel}
-            className="ml-auto inline-flex min-h-touch flex-none items-center justify-center border px-3.5 font-mono text-3xs uppercase tracking-[0.06em] border-[var(--c97-ink)] bg-[var(--c97-ink)] text-[var(--c97-surface)] hover:border-[var(--c97-ink-2)] hover:bg-[var(--c97-ink-2)]"
+            className="ml-auto inline-flex min-h-touch flex-none items-center justify-center border font-mono text-3xs uppercase tracking-[0.06em] border-[var(--c97-ink)] bg-[var(--c97-ink)] text-[var(--c97-surface)] hover:border-[var(--c97-ink-2)] hover:bg-[var(--c97-ink-2)]" style={{ paddingInline: "var(--c97-sp-2)" }}
           >
             Log
           </button>
@@ -1125,12 +1125,12 @@ export function DraftTrackerClient() {
     >
       <div className="c97-sheet" data-c97-surface="paper">
         <header
-          className={`${SHELL_CLASS} flex flex-wrap items-baseline justify-between gap-x-6 gap-y-3 pb-3.5 pt-7`}
+          className={`${SHELL_CLASS} flex flex-wrap items-baseline justify-between`} style={{ paddingTop: "var(--c97-sp-3)", paddingBottom: "var(--c97-sp-2)", columnGap: "var(--c97-sp-3)", rowGap: "var(--c97-sp-1)" }}
         >
-          <div className={showSetup ? "flex flex-col items-start gap-y-2" : "flex flex-wrap items-baseline gap-x-4 gap-y-1.5"}>
+          <div className={showSetup ? "flex flex-col items-start gap-y-[var(--c97-sp-1)]" : "flex flex-wrap items-baseline gap-x-[var(--c97-sp-2)] gap-y-[var(--c97-sp-0)]"}>
             <span
-              className="inline-flex items-center gap-2 font-mono text-2xs uppercase tracking-[0.1em]"
-              style={{ color: "var(--c97-ink-2)" }}
+              className="inline-flex items-center font-mono text-2xs uppercase tracking-[0.1em]"
+              style={{ gap: "var(--c97-sp-1)", color: "var(--c97-ink-2)" }}
             >
               <span
                 className="h-2 w-2"
@@ -1141,7 +1141,7 @@ export function DraftTrackerClient() {
             </span>
             <h1 className={showSetup ? "c97-poster" : "c97-serif c97-h3"}>Draft Tracker</h1>
           </div>
-          <div className="flex flex-wrap gap-1.5">
+          <div className="flex flex-wrap" style={{ gap: "var(--c97-sp-0)" }}>
             {headerChips.map((chip) => (
               <span
                 key={chip.label}
@@ -1161,7 +1161,7 @@ export function DraftTrackerClient() {
         </header>
 
         {seasonalWeek >= 1 ? (
-          <div className={`${SHELL_CLASS} pb-4`}>
+          <div className={`${SHELL_CLASS}`} style={{ paddingBottom: "var(--c97-sp-2)" }}>
             <SeasonalScopeNote season={draftMetadata?.season ?? 0} week={seasonalWeek}>
               This room tracks a draft against the preseason consensus board, and that board stops refreshing once the season is under way, so it is here for next summer. This week&apos;s ranks are on the <Link href="/fantasy-football/weekly" className="underline decoration-[var(--c97-accent)] underline-offset-4">weekly board</Link>.
             </SeasonalScopeNote>
@@ -1169,11 +1169,11 @@ export function DraftTrackerClient() {
         ) : null}
 
         {(persistenceError || rankingsStale || (!rankingsStale && adpSourceStale)) && (
-          <div className={`${SHELL_CLASS} grid gap-2.5 pb-3`}>
+          <div className={`${SHELL_CLASS} grid`} style={{ paddingBottom: "var(--c97-sp-1)", gap: "var(--c97-sp-1)" }}>
             {persistenceError ? (
-              <div role="status" className="border px-3.5 py-2.5 text-sm" style={WARNING_CARD_STYLE}>
+              <div role="status" className="border text-sm" style={{ paddingInline: "var(--c97-sp-2)", paddingBlock: "var(--c97-sp-1)", ...(WARNING_CARD_STYLE) }}>
                 <p className="m-0 font-semibold">Local save is unavailable.</p>
-                <p className="m-0 mt-1" style={{ color: "var(--c97-ink-2)" }}>
+                <p className="m-0" style={{ marginTop: "var(--c97-sp-0)", color: "var(--c97-ink-2)" }}>
                   {persistenceError}
                 </p>
               </div>
@@ -1181,8 +1181,8 @@ export function DraftTrackerClient() {
             {rankingsStale ? (
               <div
                 role="alert"
-                className="max-w-[68ch] border px-3.5 py-2.5 text-sm leading-6"
-                style={WARNING_CARD_STYLE}
+                className="max-w-[68ch] border text-sm leading-6"
+                style={{ paddingInline: "var(--c97-sp-2)", paddingBlock: "var(--c97-sp-1)", ...(WARNING_CARD_STYLE) }}
               >
                 The ranking source is stale, so Draft Outlook and calculated draft signals are paused.
                 You can keep logging picks against the dated board, but check current player news and
@@ -1192,8 +1192,8 @@ export function DraftTrackerClient() {
             {!rankingsStale && adpSourceStale ? (
               <div
                 role="status"
-                className="max-w-[68ch] border px-3.5 py-2.5 text-sm leading-6"
-                style={WARNING_CARD_STYLE}
+                className="max-w-[68ch] border text-sm leading-6"
+                style={{ paddingInline: "var(--c97-sp-2)", paddingBlock: "var(--c97-sp-1)", ...(WARNING_CARD_STYLE) }}
               >
                 The mock-draft ADP source is stale, so market price signals are hidden. The room is
                 using the current consensus board for its remaining draft signals.
@@ -1205,7 +1205,7 @@ export function DraftTrackerClient() {
 
       <div className="c97-sheet" data-c97-surface="paper">
       {showSetup ? (
-        <div className="c97-shell c97-frame pb-12 pt-1" style={{ maxWidth: 740 }}>
+        <div className="c97-shell c97-frame" style={{ paddingTop: "var(--c97-sp-0)", paddingBottom: "var(--c97-sp-5)", maxWidth: 740 }}>
           <DraftSetup
             settings={draftState.settings}
             onSaveSettings={updateSettings}
@@ -1221,21 +1221,21 @@ export function DraftTrackerClient() {
             }}
             parkedPickCount={draftState.picks.length}
           />
-          <p className="mx-0.5 mt-3.5 font-mono text-2xs leading-relaxed" style={{ color: "var(--c97-ink-2)" }}>
+          <p className="mx-0.5 font-mono text-2xs leading-relaxed" style={{ marginTop: "var(--c97-sp-2)", color: "var(--c97-ink-2)" }}>
             Settings lock when the draft starts. The board logs every pick in the room, not just
             yours.
           </p>
         </div>
       ) : rankingsUnavailable ? (
-        <div className={`${SHELL_CLASS} pb-12 pt-1`}>
+        <div className={`${SHELL_CLASS}`} style={{ paddingTop: "var(--c97-sp-0)", paddingBottom: "var(--c97-sp-5)" }}>
           <div
-            className="border px-6 py-8 text-center"
-            style={{ borderColor: "var(--c97-warning)", background: "var(--c97-field)" }}
+            className="border text-center"
+            style={{ paddingInline: "var(--c97-sp-3)", paddingBlock: "var(--c97-sp-3)", borderColor: "var(--c97-warning)", background: "var(--c97-field)" }}
           >
             <p className="m-0 text-lg font-semibold">
               Draft assistant unavailable for this scoring format
             </p>
-            <p className="mx-auto mt-2.5 max-w-[52ch] text-sm leading-7" style={{ color: "var(--c97-ink-2)" }}>
+            <p className="mx-auto max-w-[52ch] text-sm leading-7" style={{ marginTop: "var(--c97-sp-1)", color: "var(--c97-ink-2)" }}>
               {overallSliceMetadata?.reason ??
                 "The draft assistant needs a published overall board. Switch scoring or wait for the next snapshot update."}
             </p>
@@ -1292,8 +1292,8 @@ export function DraftTrackerClient() {
                   )
                 )}
                 <div
-                  className={`flex min-w-0 flex-wrap content-center items-center gap-1.5 px-3 py-1.5 sm:col-span-1 sm:py-2 ${phoneActionsSpanClass}`}
-                  style={{ background: "var(--c97-surface)" }}
+                  className={`flex min-w-0 flex-wrap content-center items-center py-[var(--c97-sp-0)] sm:col-span-1 sm:py-[var(--c97-sp-1)] ${phoneActionsSpanClass}`}
+                  style={{ paddingInline: "var(--c97-sp-1)", gap: "var(--c97-sp-0)", background: "var(--c97-surface)" }}
                 >
                   <button
                     type="button"
@@ -1320,7 +1320,7 @@ export function DraftTrackerClient() {
           </section>
 
           {tapePicks.length > 0 && (
-            <div className={`${SHELL_CLASS} flex items-center gap-2 overflow-x-auto pt-2.5`}>
+            <div className={`${SHELL_CLASS} flex items-center overflow-x-auto`} style={{ paddingTop: "var(--c97-sp-1)", gap: "var(--c97-sp-1)" }}>
               <span className={`${MONO_LABEL_CLASS} flex-none`} style={{ color: "var(--c97-ink-2)" }}>
                 Last picks
               </span>
@@ -1331,7 +1331,7 @@ export function DraftTrackerClient() {
                   onClick={() => undoToPick(pick.pickNumber)}
                   title="Undo back to this pick"
                   aria-label={`Undo back to pick ${pick.pickNumber} (${pick.player.name})`}
-                  className="inline-flex min-h-touch flex-none items-baseline gap-1.5 border border-[var(--c97-rule)] bg-[var(--c97-field)] px-2 font-mono text-2xs text-[var(--c97-ink)] hover:border-[var(--c97-ink)]"
+                  className="inline-flex min-h-touch flex-none items-baseline border border-[var(--c97-rule)] bg-[var(--c97-field)] font-mono text-2xs text-[var(--c97-ink)] hover:border-[var(--c97-ink)]" style={{ paddingInline: "var(--c97-sp-1)", gap: "var(--c97-sp-0)" }}
                 >
                   <span style={{ color: "var(--c97-ink-2)" }}>#{pick.pickNumber}</span>
                   <span className="font-sans text-xs font-semibold tracking-[-0.01em]">
@@ -1350,10 +1350,10 @@ export function DraftTrackerClient() {
           <div role="status" aria-live="polite" className={SHELL_CLASS}>
             {specialistNote ? (
               <div
-                className="mt-2.5 flex items-start justify-between gap-3 border px-3.5 py-1 text-sm leading-6"
-                style={WARNING_CARD_STYLE}
+                className="flex items-start justify-between border text-sm leading-6"
+                style={{ paddingInline: "var(--c97-sp-2)", paddingBlock: "var(--c97-sp-0)", marginTop: "var(--c97-sp-1)", gap: "var(--c97-sp-1)", ...(WARNING_CARD_STYLE) }}
               >
-                <p className="m-0 py-1.5">{specialistNote}</p>
+                <p className="m-0" style={{ paddingBlock: "var(--c97-sp-0)" }}>{specialistNote}</p>
                 <button
                   type="button"
                   onClick={() => setSpecialistNote(null)}
@@ -1368,7 +1368,7 @@ export function DraftTrackerClient() {
 
           <section
             aria-label="Your roster"
-            className={`${SHELL_CLASS} flex flex-wrap items-center gap-1.5 pt-2.5`}
+            className={`${SHELL_CLASS} flex flex-wrap items-center`} style={{ paddingTop: "var(--c97-sp-1)", gap: "var(--c97-sp-0)" }}
           >
             <span className={`${MONO_LABEL_CLASS} flex-none`} style={{ color: "var(--c97-ink-2)" }}>
               Your roster
@@ -1376,9 +1376,9 @@ export function DraftTrackerClient() {
             {lineupAssignment.slots.map((slot, index) => (
               <span
                 key={`slot-${slot.slot}-${index}`}
-                className="inline-flex items-baseline gap-1.5 border px-1.5 py-0.5 font-mono text-3xs uppercase tracking-[0.06em]"
+                className="inline-flex items-baseline border py-0.5 font-mono text-3xs uppercase tracking-[0.06em]"
                 style={
-                  slot.player
+                  { paddingInline: "var(--c97-sp-0)", gap: "var(--c97-sp-0)", ...(slot.player
                     ? {
                         borderStyle: "solid",
                         borderColor: "var(--c97-rule)",
@@ -1390,7 +1390,7 @@ export function DraftTrackerClient() {
                         borderColor: "color-mix(in srgb, var(--c97-rule) 80%, transparent)",
                         background: "transparent",
                         color: "var(--c97-ink-2)",
-                      }
+                      }) }
                 }
               >
                 {slot.slot}
@@ -1410,7 +1410,7 @@ export function DraftTrackerClient() {
           </section>
 
           {stripVisible && bestAvailable && (
-            <section aria-label="Your pick recommendations" className={`${SHELL_CLASS} pt-3.5`}>
+            <section aria-label="Your pick recommendations" className={`${SHELL_CLASS}`} style={{ paddingTop: "var(--c97-sp-2)" }}>
               <div
                 className="overflow-hidden border"
                 style={{
@@ -1419,15 +1419,15 @@ export function DraftTrackerClient() {
                 }}
               >
                 <div
-                  className="flex flex-wrap items-center gap-x-3.5 gap-y-1 border-b px-3.5 py-1.5"
-                  style={{ borderColor: "color-mix(in srgb, var(--c97-accent) 28%, var(--c97-rule))" }}
+                  className="flex flex-wrap items-center border-b"
+                  style={{ paddingInline: "var(--c97-sp-2)", paddingBlock: "var(--c97-sp-0)", columnGap: "var(--c97-sp-2)", rowGap: "var(--c97-sp-0)", borderColor: "color-mix(in srgb, var(--c97-accent) 28%, var(--c97-rule))" }}
                 >
                   {/* 11px signal on the card's 7% signal wash measures 4.15:1. The dot
                       keeps the pure accent so the state still reads at a glance, and the
                       label takes the 72%-toward-ink mix so it clears AA. */}
                   <span
-                    className="inline-flex items-center gap-2 font-mono text-2xs uppercase tracking-[0.12em]"
-                    style={{ color: "color-mix(in srgb, var(--c97-accent) 72%, var(--c97-ink))" }}
+                    className="inline-flex items-center font-mono text-2xs uppercase tracking-[0.12em]"
+                    style={{ gap: "var(--c97-sp-1)", color: "color-mix(in srgb, var(--c97-accent) 72%, var(--c97-ink))" }}
                   >
                     <span
                       className="h-[7px] w-[7px]"
@@ -1446,7 +1446,7 @@ export function DraftTrackerClient() {
                     onClick={() => setShowDecisionDetail((open) => !open)}
                     aria-expanded={showDecisionDetail}
                     aria-controls="draft-decision-strip draft-decision-detail"
-                    className="ml-auto inline-flex min-h-touch items-center gap-1 font-mono text-2xs uppercase tracking-[0.08em] text-[var(--c97-ink)] hover:underline hover:underline-offset-4"
+                    className="ml-auto inline-flex min-h-touch items-center font-mono text-2xs uppercase tracking-[0.08em] text-[var(--c97-ink)] hover:underline hover:underline-offset-4" style={{ gap: "var(--c97-sp-0)" }}
                   >
                     Why these picks <span aria-hidden="true">{showDecisionDetail ? "▴" : "▾"}</span>
                   </button>
@@ -1498,7 +1498,7 @@ export function DraftTrackerClient() {
                       logLabel={`Log ${riskPlayer.name} as pick ${draftState.currentPick}`}
                     />
                   ) : (
-                    <div className="flex min-w-0 flex-col gap-0.5 px-3.5 py-2" style={STRIP_CARD_STYLE}>
+                    <div className="flex min-w-0 flex-col gap-0.5" style={{ paddingInline: "var(--c97-sp-2)", paddingBlock: "var(--c97-sp-1)", ...(STRIP_CARD_STYLE) }}>
                       <span className={MONO_LABEL_CLASS} style={{ color: "var(--c97-warning)" }}>
                         Most at risk
                       </span>
@@ -1509,8 +1509,8 @@ export function DraftTrackerClient() {
                   )}
 
                   <div
-                    className="flex min-w-0 flex-col gap-0.5 px-3.5 py-2"
-                    style={STRIP_CARD_STYLE}
+                    className="flex min-w-0 flex-col gap-0.5"
+                    style={{ paddingInline: "var(--c97-sp-2)", paddingBlock: "var(--c97-sp-1)", ...(STRIP_CARD_STYLE) }}
                     title={stripWait.title}
                   >
                     <span className={MONO_LABEL_CLASS} style={{ color: "var(--c97-ink-2)" }}>
@@ -1546,13 +1546,13 @@ export function DraftTrackerClient() {
           )}
 
           {!isDraftComplete && redraftDecision.guidanceAvailable && !stripVisible ? (
-            <div className={`${SHELL_CLASS} flex justify-end pt-3`}>
+            <div className={`${SHELL_CLASS} flex justify-end`} style={{ paddingTop: "var(--c97-sp-1)" }}>
               <button
                 type="button"
                 onClick={() => setShowDecisionDetail((open) => !open)}
                 aria-expanded={showDecisionDetail}
                 aria-controls="draft-decision-detail"
-                className="inline-flex min-h-touch items-center gap-1 font-mono text-2xs uppercase tracking-[0.08em] text-[var(--c97-ink-2)] hover:text-[var(--c97-ink)] hover:underline hover:underline-offset-4"
+                className="inline-flex min-h-touch items-center font-mono text-2xs uppercase tracking-[0.08em] text-[var(--c97-ink-2)] hover:text-[var(--c97-ink)] hover:underline hover:underline-offset-4" style={{ gap: "var(--c97-sp-0)" }}
               >
                 What changes if you wait <span aria-hidden="true">{showDecisionDetail ? "▴" : "▾"}</span>
               </button>
@@ -1560,7 +1560,7 @@ export function DraftTrackerClient() {
           ) : null}
 
           {!isDraftComplete && redraftDecision.guidanceAvailable && showDecisionDetail ? (
-            <div id="draft-decision-detail" className={`${SHELL_CLASS} grid gap-4 pt-3.5`}>
+            <div id="draft-decision-detail" className={`${SHELL_CLASS} grid`} style={{ paddingTop: "var(--c97-sp-2)", gap: "var(--c97-sp-2)" }}>
               <RedraftDecisionPanel
                 report={redraftDecision}
                 onOpenPlayer={setDetailPlayer}
@@ -1568,24 +1568,24 @@ export function DraftTrackerClient() {
             </div>
           ) : null}
 
-          <div className={`${SHELL_CLASS} pb-11 pt-4`}>
+          <div className={`${SHELL_CLASS}`} style={{ paddingTop: "var(--c97-sp-2)", paddingBottom: "var(--c97-sp-4)" }}>
             {/* The running page goes h1 to the Draft Outlook h3 with nothing
                 between, so name the room here the way the rankings board and the
                 mock draft both do. */}
             <h2 className="sr-only">Your draft room</h2>
             {isDraftComplete && (
               <div
-                className="mb-4 border border-dashed px-6 py-7 text-center"
-                style={{ borderColor: "var(--c97-rule)" }}
+                className="border border-dashed text-center"
+                style={{ paddingInline: "var(--c97-sp-3)", paddingBlock: "var(--c97-sp-3)", marginBottom: "var(--c97-sp-2)", borderColor: "var(--c97-rule)" }}
               >
                 <p className="m-0 text-lg font-semibold tracking-[-0.02em]">Draft complete.</p>
-                <p className="m-0 mt-2 font-mono text-2xs" style={{ color: "var(--c97-ink-2)" }}>
+                <p className="m-0 font-mono text-2xs" style={{ marginTop: "var(--c97-sp-1)", color: "var(--c97-ink-2)" }}>
                   Every pick is logged in this room. Start a new room to run it back.
                 </p>
                 <button
                   type="button"
                   onClick={handleNewRoom}
-                  className="mt-3.5 inline-flex min-h-touch items-center justify-center border px-4 font-mono text-2xs uppercase tracking-[0.06em] border-[var(--c97-ink)] bg-[var(--c97-ink)] text-[var(--c97-surface)] hover:border-[var(--c97-ink-2)] hover:bg-[var(--c97-ink-2)]"
+                  className="inline-flex min-h-touch items-center justify-center border font-mono text-2xs uppercase tracking-[0.06em] border-[var(--c97-ink)] bg-[var(--c97-ink)] text-[var(--c97-surface)] hover:border-[var(--c97-ink-2)] hover:bg-[var(--c97-ink-2)]" style={{ paddingInline: "var(--c97-sp-2)", marginTop: "var(--c97-sp-2)" }}
                 >
                   New room
                 </button>
@@ -1593,14 +1593,14 @@ export function DraftTrackerClient() {
             )}
 
             {isDraftComplete && draftRecap && draftRecap.totalTurns > 0 && (
-              <div className="mb-4">
+              <div style={{ marginBottom: "var(--c97-sp-2)" }}>
                 <DraftRecapPanel recap={draftRecap} totalUserTurns={userTurnTotal} />
               </div>
             )}
             {isDraftComplete && draftRecap && draftRecap.totalTurns === 0 && userTurnTotal > 0 && (
               <p
-                className="mb-4 mt-0 font-mono text-2xs leading-5"
-                style={{ color: "var(--c97-ink-2)" }}
+                className="mt-0 font-mono text-2xs leading-5"
+                style={{ marginBottom: "var(--c97-sp-2)", color: "var(--c97-ink-2)" }}
               >
                 No model recap. None of your turns carried a recorded recommendation, which
                 usually means draft guidance was unavailable while you picked, for example
@@ -1610,8 +1610,8 @@ export function DraftTrackerClient() {
 
             {!draftSnapshot ? (
               <div
-                className="border px-6 py-8 text-center"
-                style={{ borderColor: "var(--c97-rule)", background: "var(--c97-field)" }}
+                className="border text-center"
+                style={{ paddingInline: "var(--c97-sp-3)", paddingBlock: "var(--c97-sp-3)", borderColor: "var(--c97-rule)", background: "var(--c97-field)" }}
                 role="status"
               >
                 <p className="m-0 text-lg font-semibold">
@@ -1619,7 +1619,7 @@ export function DraftTrackerClient() {
                     ? "Draft board unavailable"
                     : `Loading the ${FANTASY_SCORING_LABELS[scoringKey]} board`}
                 </p>
-                <p className="mx-auto mt-2.5 max-w-[52ch] text-sm leading-7" style={{ color: "var(--c97-ink-2)" }}>
+                <p className="mx-auto max-w-[52ch] text-sm leading-7" style={{ marginTop: "var(--c97-sp-1)", color: "var(--c97-ink-2)" }}>
                   {error
                     ? "Your room and picks are still saved. Retry the published snapshot before logging another pick."
                     : "Your room is ready. Picks, the timer, and Draft Outlook will resume when the matching snapshot finishes loading."}
@@ -1628,7 +1628,7 @@ export function DraftTrackerClient() {
                   <button
                     type="button"
                     onClick={retry}
-                    className="mt-4 inline-flex min-h-touch items-center justify-center border border-[var(--c97-rule)] bg-[var(--c97-surface)] px-4 text-sm font-semibold text-[var(--c97-ink)] hover:border-[var(--c97-ink)]"
+                    className="inline-flex min-h-touch items-center justify-center border border-[var(--c97-rule)] bg-[var(--c97-surface)] text-sm font-semibold text-[var(--c97-ink)] hover:border-[var(--c97-ink)]" style={{ paddingInline: "var(--c97-sp-2)", marginTop: "var(--c97-sp-2)" }}
                   >
                     Retry rankings
                   </button>
@@ -1651,7 +1651,7 @@ export function DraftTrackerClient() {
             ) : null}
 
             {draftSnapshot && (
-              <div className="mt-6 grid gap-4">
+              <div className="grid" style={{ marginTop: "var(--c97-sp-3)", gap: "var(--c97-sp-2)" }}>
                 <article className="c97-panel">
                   <DraftValuePanel
                     report={userDraftValue}
@@ -1688,14 +1688,14 @@ export function DraftTrackerClient() {
                       Model recap so far · {draftRecap.totalTurns} recorded{" "}
                       {draftRecap.totalTurns === 1 ? "turn" : "turns"} <span aria-hidden="true">▾</span>
                     </summary>
-                    <div className="mt-3">
+                    <div style={{ marginTop: "var(--c97-sp-1)" }}>
                       <DraftRecapPanel recap={draftRecap} totalUserTurns={userTurnTotal} />
                     </div>
                   </details>
                 )}
                 <article className="c97-panel">
                   <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-1)" }}>Room actions</p>
-                  <div className="mt-3 flex flex-wrap gap-2">
+                  <div className="flex flex-wrap" style={{ marginTop: "var(--c97-sp-1)", gap: "var(--c97-sp-1)" }}>
                     <button
                       type="button"
                       onClick={redoLastPick}
@@ -1730,11 +1730,11 @@ export function DraftTrackerClient() {
                   </div>
                   {showTeamEditor && (
                     <div
-                      className="mt-4 grid gap-x-4 gap-y-2.5"
-                      style={{ gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 200px), 1fr))" }}
+                      className="grid"
+                      style={{ marginTop: "var(--c97-sp-2)", columnGap: "var(--c97-sp-2)", rowGap: "var(--c97-sp-1)", gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 200px), 1fr))" }}
                     >
                       {draftState.teams.map((team) => (
-                        <label key={team.teamNumber} className="grid gap-1 text-xs">
+                        <label key={team.teamNumber} className="grid text-xs" style={{ gap: "var(--c97-sp-0)" }}>
                           <span className={MONO_LABEL_CLASS} style={{ color: "var(--c97-ink-2)" }}>
                             Slot {team.teamNumber}
                             {team.teamNumber === draftState.settings.userTeam ? " (you)" : ""}
@@ -1744,8 +1744,9 @@ export function DraftTrackerClient() {
                             onChange={(event) => setTeamName(team.teamNumber, event.target.value)}
                             maxLength={40}
                             placeholder={`Team ${team.teamNumber}`}
-                            className="min-h-touch border px-3 font-mono text-xs"
+                            className="min-h-touch border font-mono text-xs"
                             style={{
+                              paddingInline: "var(--c97-sp-1)",
                               borderColor: "var(--c97-rule)",
                               background: "var(--c97-surface)",
                               color: "var(--c97-ink)",
@@ -1755,7 +1756,7 @@ export function DraftTrackerClient() {
                       ))}
                     </div>
                   )}
-                  <p className="mt-3 max-w-[68ch] text-xs leading-6" style={{ color: "var(--c97-ink-2)" }}>
+                  <p className="max-w-[68ch] text-xs leading-6" style={{ marginTop: "var(--c97-sp-1)", color: "var(--c97-ink-2)" }}>
                     Change league settings by starting a new room. Active drafts keep one fixed room
                     configuration, and picks stay on this device.
                   </p>
@@ -1764,8 +1765,8 @@ export function DraftTrackerClient() {
             )}
 
             <div
-              className="mt-6 flex flex-wrap items-baseline justify-between gap-x-5 gap-y-2 border-t pt-3.5"
-              style={{ borderColor: "var(--c97-rule)" }}
+              className="flex flex-wrap items-baseline justify-between border-t"
+              style={{ paddingTop: "var(--c97-sp-2)", marginTop: "var(--c97-sp-3)", columnGap: "var(--c97-sp-2)", rowGap: "var(--c97-sp-1)", borderColor: "var(--c97-rule)" }}
             >
               <span className="font-mono text-2xs" style={{ color: "var(--c97-ink-2)" }}>
                 Advisory clock only, nothing auto-picks at zero · picks stay on this device
@@ -1785,12 +1786,12 @@ export function DraftTrackerClient() {
       <div
         aria-live="polite"
         role="status"
-        className="pointer-events-none fixed bottom-6 left-1/2 z-[55] -translate-x-1/2"
+        className="pointer-events-none fixed bottom-6 left-1/2 z-[var(--c97-z-toast)] -translate-x-1/2"
       >
         {exportToast ? (
           <div
-            className="border px-4 py-2 text-sm font-semibold c97-offset"
-            style={{ borderColor: "var(--c97-rule)", background: "var(--c97-ink)", color: "var(--c97-surface)" }}
+            className="border text-sm font-semibold c97-offset"
+            style={{ paddingInline: "var(--c97-sp-2)", paddingBlock: "var(--c97-sp-1)", borderColor: "var(--c97-rule)", background: "var(--c97-ink)", color: "var(--c97-surface)" }}
           >
             {exportToast}
           </div>

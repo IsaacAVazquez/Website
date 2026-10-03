@@ -104,7 +104,7 @@ export function LeagueProgrammeTable({
                     onClick={() => onSelect(row.id)}
                     aria-pressed={isSelected}
                     aria-label={`Show ${row.name} details`}
-                    className="flex min-h-[44px] w-full items-center gap-2 text-left"
+                    className="flex min-h-[44px] w-full items-center text-left" style={{ gap: "var(--c97-sp-1)" }}
                   >
                     <CrestAvatar crest={row.crest} name={row.shortName} size="sm" />
                     <span className="font-semibold text-[var(--c97-ink)]">{row.shortName}</span>

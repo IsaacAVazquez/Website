@@ -24,7 +24,7 @@ export const TerminalPanel = React.memo(function TerminalPanel({
 }: TerminalPanelProps) {
   return (
     <div
-      className={cn(styles.panel, padding === "sm" && "p-5 sm:p-6", className)}
+      className={cn(styles.panel, padding === "sm" && "p-[var(--c97-sp-2)] sm:p-[var(--c97-sp-3)]", className)}
       role="article"
       aria-label={ariaLabel}
     >

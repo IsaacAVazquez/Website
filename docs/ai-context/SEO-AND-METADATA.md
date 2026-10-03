@@ -2,7 +2,7 @@
 
 Current metadata and structured-data reference.
 
-**Last updated:** 2026-09-30
+**Last updated:** 2026-10-02
 
 ---
 
@@ -52,7 +52,7 @@ Dynamic routes use `generateMetadata(...)` where needed.
 
 - writing index emits breadcrumb and per-post article structured data
 - article pages generate route-specific metadata from post frontmatter
-- portfolio index emits an ItemList; non-redirect case-study pages emit breadcrumb plus CreativeWork structured data
+- portfolio index emits an ItemList; `/portfolio/[slug]` is a redirect stub that permanent-redirects each case study to its live tool (404 otherwise), so no case study page renders metadata or structured data
 
 ---
 

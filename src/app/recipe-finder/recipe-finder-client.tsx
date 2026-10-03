@@ -268,10 +268,11 @@ export function RecipeFinderClient() {
         <div className="c97-shell">
           <div className="flex flex-wrap items-end justify-between" style={{ gap: "var(--c97-sp-2)" }}>
             <h2 className="c97-poster-sm">Find something to cook</h2>
-            <label className="c97-recipe-search" aria-label="Search recipes">
+            <label className="c97-recipe-search">
               <Search size={16} aria-hidden="true" />
               <input
                 type="search"
+                aria-label="Search recipes"
                 placeholder="Search by name or ingredient…"
                 value={query}
                 onChange={(event) => setQuery(event.target.value)}

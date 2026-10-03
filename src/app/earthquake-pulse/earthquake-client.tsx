@@ -168,8 +168,8 @@ function MagnitudeBadge({ mag }: { mag: number }) {
         {mag.toFixed(1)}
       </span>
       <span
-        className="mt-1 text-3xs uppercase tracking-[0.14em]"
-        style={{ color: "var(--c97-ink-2)", fontFamily: "var(--c97-font-body)" }}
+        className="text-3xs uppercase tracking-[0.14em]"
+        style={{ color: "var(--c97-ink-2)", fontFamily: "var(--c97-font-body)", marginTop: "var(--c97-sp-0)" }}
       >
         Mag
       </span>
@@ -208,13 +208,13 @@ function QuakeRow({
         {quake.tsunami || quake.felt ? (
           <span className="c97-quake-log-flags">
             {quake.tsunami ? (
-              <span className="inline-flex items-center gap-1" style={{ color: "var(--c97-negative)", fontWeight: 600 }}>
+              <span className="inline-flex items-center" style={{ color: "var(--c97-negative)", fontWeight: 600, gap: "var(--c97-sp-0)" }}>
                 <AlertTriangle className="h-3.5 w-3.5" aria-hidden="true" />
                 Tsunami
               </span>
             ) : null}
             {quake.felt ? (
-              <span className="inline-flex items-center gap-1">
+              <span className="inline-flex items-center" style={{ gap: "var(--c97-sp-0)" }}>
                 <Activity className="h-3.5 w-3.5" aria-hidden="true" />
                 {quake.felt.toLocaleString("en-US")} felt
               </span>
@@ -233,7 +233,7 @@ function QuakeRow({
 function DistributionBars({ summary }: { summary: EarthquakeSummary }) {
   const maxCount = Math.max(1, ...summary.magnitudeBuckets.map((b) => b.count));
   return (
-    <div className="space-y-3">
+    <div className="flex flex-col" style={{ gap: "var(--c97-sp-1)" }}>
       {summary.magnitudeBuckets.map((bucket) => {
         // Anchor the bar color to the middle of the band.
         const anchorMag =
@@ -251,8 +251,8 @@ function DistributionBars({ summary }: { summary: EarthquakeSummary }) {
             >
               {bucket.label}
               <span
-                className="ml-1 text-xs"
-                style={{ color: "var(--c97-ink-2)" }}
+                className="text-xs"
+                style={{ color: "var(--c97-ink-2)", marginLeft: "var(--c97-sp-0)" }}
               >
                 {bucket.range}
               </span>
@@ -295,7 +295,7 @@ function RegionList({
   }
   const maxCount = Math.max(1, ...summary.regions.map((r) => r.count));
   return (
-    <div className="space-y-2">
+    <div className="flex flex-col" style={{ gap: "var(--c97-sp-1)" }}>
       {summary.regions.map((region) => {
         const widthPct = Math.round((region.count / maxCount) * 100);
         const clickable = Boolean(region.strongestId);
@@ -376,8 +376,8 @@ function DetailStat({ label, value }: { label: string; value: string }) {
     >
       <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-1)" }}>{label}</p>
       <p
-        className="mb-0 text-base font-semibold"
-        style={{ color: "var(--c97-ink)", fontFamily: "var(--c97-font-body)" }}
+        className="text-base font-semibold"
+        style={{ color: "var(--c97-ink)", fontFamily: "var(--c97-font-body)", marginBottom: "0" }}
       >
         {value}
       </p>
@@ -389,8 +389,8 @@ function QuakeDetailPanel({ quake, now }: { quake: QuakeEvent | null; now: numbe
   if (!quake) {
     return (
       <p
-        className="mb-0 text-sm leading-6"
-        style={{ color: "var(--c97-ink-2)", fontFamily: "var(--c97-font-body)" }}
+        className="text-sm leading-6"
+        style={{ color: "var(--c97-ink-2)", fontFamily: "var(--c97-font-body)", marginBottom: "0" }}
       >
         Select a quake to see depth, felt reports, and coordinates.
       </p>
@@ -405,8 +405,8 @@ function QuakeDetailPanel({ quake, now }: { quake: QuakeEvent | null; now: numbe
             {quake.place}
           </h2>
           <p
-            className="mb-0 text-sm"
-            style={{ color: "var(--c97-ink-2)", fontFamily: "var(--c97-font-body)" }}
+            className="text-sm"
+            style={{ color: "var(--c97-ink-2)", fontFamily: "var(--c97-font-body)", marginBottom: "0" }}
           >
             {formatTimestamp(quake.time)}
             {now !== null ? <> · {formatTimeAgo(quake.time, now)}</> : null}
@@ -619,9 +619,9 @@ export function EarthquakeClient({
       <section className="c97-band c97-sheet" data-c97-surface="paper" data-seam="torn">
         <div className="c97-shell">
           <div className="grid xl:grid-cols-[minmax(0,1.7fr)_minmax(320px,0.92fr)]" style={{ gap: "var(--c97-sp-3)" }}>
-            <div className="space-y-6">
+            <div className="flex flex-col" style={{ gap: "var(--c97-sp-3)" }}>
               <h2 className="c97-poster-sm">The log</h2>
-              <div className="c97-segmented" style={{ marginBottom: "var(--c97-sp-3)" }} role="tablist" aria-label="Earthquake view switcher">
+              <div className="c97-segmented" role="tablist" aria-label="Earthquake view switcher">
                 {EARTHQUAKE_VIEW_OPTIONS.map((view, index) => (
                   <button
                     key={view}
@@ -640,13 +640,13 @@ export function EarthquakeClient({
               </div>
 
               <div
-                className="space-y-4"
+                className="flex flex-col" style={{ gap: "var(--c97-sp-2)" }}
                 role="tabpanel"
                 id={`earthquake-tabpanel-${routeState.view}`}
                 aria-labelledby={`earthquake-tab-${routeState.view}`}
               >
-                <div className="space-y-2">
-                  <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-1)" }}>
+                <div className="flex flex-col" style={{ gap: "var(--c97-sp-1)" }}>
+                  <p className="c97-kicker">
                     {routeState.view === "recent"
                       ? "Last 24 hours"
                       : routeState.view === "significant"
@@ -663,7 +663,7 @@ export function EarthquakeClient({
                 </div>
 
                 {routeState.view === "regions" ? (
-                  <div className="space-y-6">
+                  <div className="flex flex-col" style={{ gap: "var(--c97-sp-3)" }}>
                     <div className="c97-panel">
                       <div className="flex items-center" style={{ marginBottom: "var(--c97-sp-2)", gap: "var(--c97-sp-1)" }}>
                         <BarChart3 className="h-4 w-4" aria-hidden="true" style={{ color: "var(--c97-ink-2)" }} />
@@ -700,7 +700,7 @@ export function EarthquakeClient({
               </div>
             </div>
 
-            <aside className="space-y-4">
+            <aside className="flex flex-col" style={{ gap: "var(--c97-sp-2)" }}>
               <div className="c97-panel xl:sticky xl:top-6">
                 <div className="flex items-center" style={{ marginBottom: "var(--c97-sp-1)", gap: "var(--c97-sp-1)" }}>
                   <Gauge className="h-4 w-4" aria-hidden="true" style={{ color: "var(--c97-ink-2)" }} />

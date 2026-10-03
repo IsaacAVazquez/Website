@@ -429,7 +429,7 @@ export function InvestmentsDashboard({
 
         <div className="invest-shell" data-testid="invest-shell">
           <aside className="invest-sidebar" aria-label="Investments navigation">
-            <nav className="flex flex-col gap-1.5" aria-label="Section navigation">
+            <nav className="flex flex-col" style={{ gap: "var(--c97-sp-0)" }} aria-label="Section navigation">
               {navItems.map((item) => {
                 const Icon = item.icon;
                 return (
@@ -455,7 +455,7 @@ export function InvestmentsDashboard({
 
           <div className="invest-main">
             <div className="invest-topbar">
-              <label className="invest-search" aria-label="Filter holdings">
+              <label className="invest-search">
                 <Search size={14} aria-hidden="true" />
                 <input
                   ref={filterInputRef}
@@ -468,17 +468,14 @@ export function InvestmentsDashboard({
                 <span className="invest-search-kbd" aria-hidden="true">⌘K</span>
               </label>
 
-              <div className="flex items-center gap-2">
-                <DataFreshnessIndicator
-                  lastUpdated={lastUpdated}
-                  onRefresh={refetch}
-                  isRefreshing={isLoading}
-                />
-                <span className="invest-avatar" aria-hidden="true">IV</span>
-              </div>
+              <DataFreshnessIndicator
+                lastUpdated={lastUpdated}
+                onRefresh={refetch}
+                isRefreshing={isLoading}
+              />
             </div>
 
-            <div className="mt-5 space-y-5">
+            <div className="flex flex-col" style={{ rowGap: "var(--c97-sp-2)", marginTop: "var(--c97-sp-2)" }}>
               <PortfolioSummary
                 summary={summary}
                 holdings={enhancedHoldings}
@@ -527,7 +524,7 @@ export function InvestmentsDashboard({
               className="scroll-mt-12 min-[901px]:scroll-mt-0"
             >
               <p className="invest-rail-section-label">
-                <Wallet size={12} aria-hidden="true" className="mr-1.5 inline align-middle" />
+                <Wallet size={12} aria-hidden="true" className="inline align-middle" style={{ marginRight: "var(--c97-sp-0)" }} />
                 Add a holding
               </p>
               <AddStockForm onAdd={addHolding} />
@@ -584,7 +581,7 @@ export function InvestmentsDashboard({
               </section>
             ) : null}
 
-            <p className="mt-auto flex items-center gap-2 text-2xs text-[var(--c97-ink-2)]">
+            <p className="mt-auto flex items-center text-2xs text-[var(--c97-ink-2)]" style={{ gap: "var(--c97-sp-1)" }}>
               <CircleQuestionMark size={14} aria-hidden="true" />
               Holdings live only in your browser. No logins, no cloud sync.
             </p>
@@ -627,8 +624,8 @@ export function InvestmentsDashboard({
         <div className="c97-shell">
           <p
             role="note"
-            className="c97-prose flex items-start gap-2 text-2xs leading-6"
-            style={{ color: "var(--c97-ink-2)" }}
+            className="c97-prose flex items-start text-2xs leading-6"
+            style={{ gap: "var(--c97-sp-1)", color: "var(--c97-ink-2)" }}
           >
             <CircleQuestionMark size={14} className="mt-0.5 shrink-0" aria-hidden="true" />
             Research, valuations, and portfolio figures here are for general information

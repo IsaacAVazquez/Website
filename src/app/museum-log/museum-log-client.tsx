@@ -123,7 +123,7 @@ function StarRow({ rating, size = 14 }: { rating: number; size?: number }) {
 
 function RatingPill({ rating, label }: { rating: number; label?: string }) {
   return (
-    <span className="inline-flex items-center gap-1.5">
+    <span className="inline-flex items-center" style={{ gap: "var(--c97-sp-0)" }}>
       <StarRow rating={rating} size={14} />
       <span className="c97-mono" style={{ fontSize: "var(--c97-fs-small)" }}>
         {rating.toFixed(1)}
@@ -158,7 +158,7 @@ function AdmissionStub({ museum, today }: { museum: Museum; today: string | null
       </p>
       <div className="c97-stub-tear">
         <span className="c97-stub-price">{stub.admission}</span>
-        <span className="inline-flex items-center gap-1.5">
+        <span className="inline-flex items-center" style={{ gap: "var(--c97-sp-0)" }}>
           <StarRow rating={stub.curatorRating} size={14} />
           <span className="c97-mono" style={{ fontSize: "var(--c97-fs-small)" }}>
             {stub.curatorRating.toFixed(1)}
@@ -1174,7 +1174,7 @@ function RateAndLogForm({
           className="c97-range"
           style={{ flex: 1 }}
         />
-        <span className="inline-flex items-center gap-1.5">
+        <span className="inline-flex items-center" style={{ gap: "var(--c97-sp-0)" }}>
           <StarRow rating={rating} size={14} />
           <span className="c97-mono" style={{ fontSize: "var(--c97-fs-small)" }}>
             {rating.toFixed(1)}
@@ -1465,10 +1465,11 @@ export function MuseumLogClient({ initialState, snapshot }: Props) {
               </div>
             </nav>
 
-            <label className="c97-search-field" aria-label="Filter museums">
+            <label className="c97-search-field">
               <Search size={14} aria-hidden="true" />
               <input
                 type="search"
+                aria-label="Filter museums"
                 placeholder="Filter museums…"
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
@@ -1561,7 +1562,7 @@ export function MuseumLogClient({ initialState, snapshot }: Props) {
                               </span>
                               <span className="block truncate c97-stub-meta">{m.city} · {TYPE_LABEL[m.type]}</span>
                             </span>
-                            <span className="inline-flex items-center gap-1 c97-mono" style={{ fontSize: "var(--c97-fs-small)" }}>
+                            <span className="inline-flex items-center c97-mono" style={{ fontSize: "var(--c97-fs-small)", gap: "var(--c97-sp-0)" }}>
                               <Star size={10} fill="currentColor" strokeWidth={0} aria-hidden="true" />
                               {m.curatorRating.toFixed(1)}
                             </span>
@@ -1639,7 +1640,7 @@ export function MuseumLogClient({ initialState, snapshot }: Props) {
                                 </span>
                                 <span className="block truncate c97-stub-meta">{TYPE_LABEL[m.type]} · {m.city}</span>
                               </span>
-                              <span className="inline-flex items-center gap-1 c97-mono" style={{ fontSize: "var(--c97-fs-small)" }}>
+                              <span className="inline-flex items-center c97-mono" style={{ fontSize: "var(--c97-fs-small)", gap: "var(--c97-sp-0)" }}>
                                 <Star size={10} fill="currentColor" strokeWidth={0} aria-hidden="true" />
                                 {m.curatorRating.toFixed(1)}
                               </span>

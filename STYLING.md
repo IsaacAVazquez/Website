@@ -2,7 +2,7 @@
 
 Current styling and design-token reference for the live app.
 
-**Last updated:** 2026-09-29 · Catalog 97 is the only design language on the site. Every route renders inside `Catalog97Shell` or `Catalog97ToolShell`, and every colour, space, and type size comes from the `--c97-*` tokens in `src/app/catalog97.css`. The Working Instrument that came before it (the `--home-*` palette, its `.home-*`, `.section-*`, and `.tool-*` helpers, `HomeStatsPanel`, and the bridge block that aliased the old tokens onto Catalog 97 values) was deleted in the close-out of `docs/superpowers/specs/2026-09-16-catalog97-unification-design.md` on 2026-09-27, and `src/app/__tests__/catalog97-closeout.test.ts` fails if any file under `src` reads one of those tokens again. `/arcade` keeps its CRT palette as the one sanctioned palette exception, since each project keeps an identity that fits it, and Isaac confirmed it on 2026-09-27. Formula 1 used to be a second exception for a scoped F1 red, but `formula-1.module.css` has read only `--c97-*` tokens since the sports pass (#478), and team liveries arrive as data. "Printing on paper" was added on 2026-09-29 and took in the shared grids, the seams, and the halftone the same day.
+**Last updated:** 2026-10-02 · Catalog 97 is the only design language on the site. Every route renders inside `Catalog97Shell` or `Catalog97ToolShell`, and every colour, space, and type size comes from the `--c97-*` tokens in `src/app/catalog97.css`. The Working Instrument that came before it (the `--home-*` palette, its `.home-*`, `.section-*`, and `.tool-*` helpers, `HomeStatsPanel`, and the bridge block that aliased the old tokens onto Catalog 97 values) was deleted in the close-out of `docs/superpowers/specs/2026-09-16-catalog97-unification-design.md` on 2026-09-27, and `src/app/__tests__/catalog97-closeout.test.ts` fails if any file under `src` reads one of those tokens again. `/arcade` keeps its CRT palette as the one sanctioned palette exception, since each project keeps an identity that fits it, and Isaac confirmed it on 2026-09-27. Formula 1 used to be a second exception for a scoped F1 red, but `formula-1.module.css` has read only `--c97-*` tokens since the sports pass (#478), and team liveries arrive as data. "Printing on paper" was added on 2026-09-29 and took in the shared grids, the seams, and the halftone the same day. The hairline spacing step, the stacking tokens, and the party inks were added on 2026-10-02.
 
 ---
 
@@ -58,12 +58,26 @@ On the ink sheets where a status colour cannot clear 4.5:1, the status tokens fa
 
 | Scale | Tokens |
 |-------|--------|
-| Spacing | `--c97-sp-1` through `--c97-sp-7`, plus `--c97-gutter` and `--c97-band-y` |
+| Spacing | `--c97-sp-0` through `--c97-sp-7`, plus `--c97-gutter` and `--c97-band-y` |
 | Type | `--c97-fs-label` (the fixed 11px label), `-small`, `-body`, `-lead`, `-h3`, `-h2`, `-h1`, `-display`, `-plate`, and the print shop `-poster` and `-poster-sm` |
 | Line height | `--c97-lh-display`, `-tight`, `-body`, `-loose` |
 | Measure | `--c97-measure-tight`, `-body`, `-wide` |
 
-Nothing may use a gap, margin, or band padding that is off the spacing ladder, and nothing is added to the type ladder.
+Nothing may use a gap, margin, or band padding that is off the spacing ladder, and nothing is added to the type ladder. `--c97-sp-0` (`clamp(4px, 0.45vw, 5px)`) is the hairline step, for an icon beside its label and the padding inside a chip or a dense tool's cell, and only an optical nudge of 2px or less sits off the ladder.
+
+Spacing that changes at a breakpoint uses token utilities at every breakpoint, the base one included, as in `p-[var(--c97-sp-1)] sm:p-[var(--c97-sp-2)]`. An inline base beside responsive utilities never works, because an inline style beats every breakpoint. A vertical stack is a flex column with a token gap, and `space-y-*` is no longer used.
+
+### Stacking on the root
+
+Overlays read the stacking tokens, which are declared on `:root`, above `[data-c97]`, because the tooltip, the search listbox, and the easter egg layers portal to the body, outside the page root. Nothing sets an arbitrary z-index on an overlay.
+
+| Token | Value | Layer |
+|-------|-------|-------|
+| `--c97-z-tray` | 50 | trays such as the header search panel |
+| `--c97-z-toast` | 55 | toasts |
+| `--c97-z-drawer` | 60 | drawers |
+| `--c97-z-modal` | 70 | modals |
+| `--c97-z-sheet` | 80 | bottom sheets |
 
 ---
 
@@ -85,7 +99,7 @@ Printed things sit on an offset. Plates, thumbnails, and the primary buttons tak
 
 Heroes and images carry information. A collage of plates is only used where each plate is a link with something of its own on it, the way Home's dashboard doors each carry a live readout (`Catalog97Collage`). A collage that only repeats a list further down the page gets cut.
 
-Project routes print the same way. A route's ink pair lives in `src/constants/projectPress.ts`, and `ConditionalLayout` hands it to `Catalog97ToolShell`, which sets the second ink as the overprint on every sheet. The route opens on `Catalog97ProjectHero`, a lead-ink sheet with the poster h1, the as-of line, at most three readouts, and the route's signature visual as its child. Anything inside that hero that paints a field, such as an input, a chip, or a code block, or that draws data colours, gets its own `data-c97-surface`, usually a paper plate with `.c97-offset`. Data colours such as liveries, line colours, and party colours stay data and never become inks, and a page whose data already speaks in blue and red prints in neither. The spec is `docs/superpowers/specs/2026-09-25-project-specific-ui-design.md`.
+Project routes print the same way. A route's ink pair lives in `src/constants/projectPress.ts`, and `ConditionalLayout` hands it to `Catalog97ToolShell`, which sets the second ink as the overprint on every sheet. The route opens on `Catalog97ProjectHero`, a lead-ink sheet with the poster h1, the as-of line, at most three readouts, and the route's signature visual as its child. Anything inside that hero that paints a field, such as an input, a chip, or a code block, or that draws data colours, gets its own `data-c97-surface`, usually a paper plate with `.c97-offset`. Data colours such as liveries, line colours, and party colours stay data and never become a route's lead inks, and a page whose data already speaks in blue and red prints in neither. The polling aggregator's party colours are tokens on the page root, `--c97-party-d`, `--c97-party-r`, and `--c97-party-tossup`, drawn from the riso blue, vermilion, and saffron so the map and ratings print in the site's inks, but they are data colours and stay out of `projectPress.ts`, whose route prints in saffron and teal so neither reads as D or R. The full colours are the rating fills, and the ramp mixes each into `--c97-field`, with Safe at the full colour, Likely at 50%, and Lean at 25%, because at 70% Likely D cleared no text token at 4.5:1 in light mode. Those fills never change with the theme. Lines, swatches, bars, and coloured figures that sit straight on the sheet read the mark steps instead, `--c97-party-d-mark`, `--c97-party-r-mark`, and `--c97-party-tossup-mark`, which clear 4.5:1 against paper and bone in both themes and take lighter values under `.dark [data-c97]`. The measured ratios sit in the comment beside the tokens in `catalog97.css`, and `DEM_COLOR`, `REP_COLOR`, and `TUP_COLOR` in `polling-aggregator-helpers.ts` read the mark steps while `getRatingBg` reads the full colours. The spec is `docs/superpowers/specs/2026-09-25-project-specific-ui-design.md`.
 
 ---
 
@@ -99,16 +113,18 @@ A route is a sequence of `c97-band` sections, each with its own `data-c97-surfac
 | Poster type | `.c97-poster`, `.c97-poster-sm` |
 | Ledger rows and columns | `.c97-row` and its variants, `.c97-columns`, `.c97-mosaic`/`.c97-tile` |
 | Raised block | `.c97-panel` |
-| Readouts | `.c97-stat` with `.c97-stat-label`, `-value`, `-delta`; `.c97-mono` and `.c97-tabular` for numerals |
+| Readouts | `.c97-stat` with `.c97-stat-label`, `-value`, `-delta`; `.c97-mono` and `.c97-tabular` for numerals, and `.c97-meta` sets tabular figures too |
 | Tags and status | `.c97-chip` with `-positive`, `-negative`, `-warning` |
-| Tables | `.c97-table` (hairline rules, tabular numerals, sticky header) |
+| Tables | `.c97-table` (hairline rules, tabular numerals, sticky header, and inside a `.c97-panel` the header row paints the panel) |
 | Tab rows | `.c97-segmented` |
-| Buttons | `.c97-btn`, `.c97-btn-invert`, `.c97-btn-ghost`, `.c97-btn-outline` |
+| Buttons | `.c97-btn`, `.c97-btn-invert`, `.c97-btn-ghost` (with `aria-pressed="true"` it prints in ink with a 2px underline), `.c97-btn-outline` |
 | Form controls | `.c97-field`, `.c97-check`, `.c97-range` |
 | Page furniture | `.c97-article` for injected HTML, `.c97-list`, `.c97-breadcrumb`, `.c97-disclosure`, `.c97-kbd`, `.c97-skeleton`, `.c97-meter` |
 | Dense data surfaces | `.c97-dash`, which drops the paragraph and list margins |
 
-Four traps come with the vocabulary. The type classes and `.c97-panel` are unlayered and set their own margin or padding, so a Tailwind margin, padding, gap, or max-width utility on the same element silently loses, and that spacing belongs in an inline style. `src/app/__tests__/catalog97-closeout.test.ts` fails on any such pair. A `space-y-*` parent's gap never reaches a child whose class zeroes its margin either, so that child takes an inline `marginBottom` on the ladder, and a stack of inline children such as a label's span and input uses `grid gap-*` instead. `.c97-lead` sets `max-inline-size: none` and `.c97-prose` sets `margin: 0`, both unlayered. `.c97-disclosure` is a collapsible details widget, so a disclaimer never goes inside it. `sticky` only pins within its parent, so a sticky rail needs a parent as tall as the content it rides beside.
+A chip reads `--c97-chip-ink`, which the light chocolate and espresso sheets set to print black and every other surface resets, so a chip on those two sheets prints black and shows its tone through its text, while a chip on a paper plate inside them keeps that plate's tones.
+
+Four traps come with the vocabulary. The type classes and `.c97-panel` are unlayered and set their own margin or padding, so a Tailwind margin, padding, gap, or max-width utility on the same element silently loses, and that spacing belongs in an inline style. `src/app/__tests__/catalog97-closeout.test.ts` fails on any such pair. A stack is a flex column with a token gap, since a `space-y-*` parent's margin never reaches a child whose class zeroes its margin. `.c97-lead` sets `max-inline-size: none` and `.c97-prose` sets `margin: 0`, both unlayered. `.c97-disclosure` is a collapsible details widget, so a disclaimer never goes inside it. `sticky` only pins within its parent, so a sticky rail needs a parent as tall as the content it rides beside.
 
 ---
 
@@ -120,7 +136,7 @@ Four traps come with the vocabulary. The type classes and `.c97-panel` are unlay
 
 ## Typography
 
-Fonts load through `next/font` in `src/app/layout.tsx`. Newsreader, Archivo, Anton, and Great Vibes sit behind the `--c97-font-*` tokens, and Fragment Mono behind `--c97-font-mono`. Instrument Sans still loads, because Tailwind's `font-sans` names it and a few fantasy and Score Pools elements still set that utility.
+Fonts load through `next/font` in `src/app/layout.tsx`. Newsreader, Archivo, Anton, and Great Vibes sit behind the `--c97-font-*` tokens, and Fragment Mono behind `--c97-font-mono`. Instrument Sans still loads, because Tailwind's `font-sans` names it and a few fantasy draft room elements still set that utility.
 
 The fluid type tokens `--text-xs` through `--text-6xl` in `globals.css` back Tailwind's `text-*` utilities. The micro sizes `--text-3xs` (10px), `--text-2xs` (11px), and `--text-1xs` (a fixed 12px) are registered in the `@theme` block, and nothing ships an arbitrary `text-[Npx]` value. Use 10px as `text-3xs`, 11px as `text-2xs`, a fixed 12px as `text-1xs`, and a label that may scale between 12 and 14px as `text-xs`. On a migrated route the Catalog 97 type classes above come first.
 
@@ -158,7 +174,7 @@ Three children stack in block flow. A grid of one column is the obvious way to s
 
 Nothing prints through a mask. Safari's engine does not apply a CSS mask on paper. It paints the mask's image over the element instead, so the torn seams printed as strips with the mask's black shape on top, a mask given a lime fill printed lime, and a gradient mask printed as a solid black bar. Firefox's engine does print a masked element, as the paragraph on photographs says, but in Firefox 155 it printed the seams without the shape of their mask, as straight strips. Chrome's engine was the only one that printed a mask as drawn. So on paper the seams tear with a clip path, `--c97-seam-torn-clip` and `--c97-seam-deckle-clip`, which hold the masks' own points as polygons three tiles across the sheet and printed the tear in all three engines, and the halftone comes off, since its ramp is a mask and a fade built without one printed in Chrome's engine only. `e2e/print.spec.ts` fails when anything that shows on paper carries a mask on `/`, `/about`, `/investments`, or `/writing`.
 
-Three things Safari's engine does on paper are not corrected yet, and `docs/TODO.md` lists them with what was measured. It resolves `vw` against the window as well, so from a 1280px window the gutters and the type print at their desktop sizes on the narrow page. It prints an image that loads lazily as an empty frame when the page was never scrolled down to it. And it leaves a blank line inside a paragraph in grids and flex columns of more than one row that cross a page, which the archive on `/writing` and the capabilities on `/resume` show. The route stylesheets and the Tailwind breakpoint utilities also still switch on width queries that name neither `print` nor `screen`, and the masks outside `catalog97.css` are still there under print. The ones on the 404 page and the food map's ticker print as dark shapes in Safari's engine, and the arcade's could not be told apart from that page's own black.
+Three things Safari's engine does on paper are not corrected yet, and `docs/TODO.md` lists them with what was measured. It resolves `vw` against the window as well, so from a 1280px window the gutters and the type print at their desktop sizes on the narrow page. It prints an image that loads lazily as an empty frame when the page was never scrolled down to it. And it leaves a blank line inside a paragraph in grids and flex columns of more than one row that cross a page, which the archive on `/writing` and the capabilities on `/resume` show. The route stylesheets and the Tailwind breakpoint utilities also still switch on width queries that name neither `print` nor `screen`, and the masks outside `catalog97.css` are still there under print. The ones on the 404 page print as dark shapes in Safari's engine, and the arcade's could not be told apart from that page's own black.
 
 Both disclaimers and the assumptions on `/investments` have to reach the page, and `e2e/investments.spec.ts` checks that print media hides none of them.
 

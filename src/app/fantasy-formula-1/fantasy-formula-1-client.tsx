@@ -111,7 +111,7 @@ function SortAndFocusControls({
   onFocus: (focus: FantasyFormula1Focus) => void;
 }) {
   return (
-    <div className="flex flex-wrap gap-4">
+    <div className="flex flex-wrap" style={{ gap: "var(--c97-sp-2)" }}>
       <div className="c97-segmented" role="group" aria-label="Sort assets by">
         {FANTASY_FORMULA1_SORT_OPTIONS.map((sort) => (
           <button
@@ -159,8 +159,8 @@ function LineupAssetRow({
 }) {
   const LockIcon = locked ? Lock : Unlock;
   return (
-    <li className="c97-panel flex items-center justify-between gap-3" style={getTeamAccentStyle(asset.teamColor)}>
-      <div className="flex min-w-0 items-center gap-3">
+    <li className="c97-panel flex items-center justify-between" style={{ gap: "var(--c97-sp-1)", ...(getTeamAccentStyle(asset.teamColor)) }}>
+      <div className="flex min-w-0 items-center" style={{ gap: "var(--c97-sp-1)" }}>
         <AssetAvatar asset={asset} />
         <div className="min-w-0">
           <p className="c97-serif truncate">{asset.name}</p>
@@ -169,7 +169,7 @@ function LineupAssetRow({
           </p>
         </div>
       </div>
-      <div className="flex flex-shrink-0 items-center gap-2">
+      <div className="flex flex-shrink-0 items-center" style={{ gap: "var(--c97-sp-1)" }}>
         <button
           type="button"
           className="c97-ff1-icon-btn"
@@ -195,7 +195,7 @@ function LineupAssetRow({
 
 function EmptyLineupSlot({ label }: { label: string }) {
   return (
-    <li className="flex min-h-[68px] items-center border border-dashed px-4 py-3 text-sm font-medium" style={{ color: "var(--c97-ink-2)" }}>
+    <li className="flex min-h-[68px] items-center border border-dashed text-sm font-medium" style={{ paddingInline: "var(--c97-sp-2)", paddingBlock: "var(--c97-sp-1)", color: "var(--c97-ink-2)" }}>
       {label}
     </li>
   );
@@ -222,7 +222,7 @@ function LineupPanel({
 
   return (
     <article data-testid="fantasy-formula-1-lineup">
-      <div className="mb-4 flex flex-wrap items-start justify-between gap-4">
+      <div className="flex flex-wrap items-start justify-between" style={{ marginBottom: "var(--c97-sp-2)", gap: "var(--c97-sp-2)" }}>
         <h2 className="c97-poster-sm mb-0">Current team</h2>
         <button type="button" className="c97-ff1-btn" onClick={onReset}>
           <RefreshCcw size={16} aria-hidden="true" />
@@ -230,10 +230,10 @@ function LineupPanel({
         </button>
       </div>
 
-      <div className="grid gap-4 lg:grid-cols-2">
+      <div className="grid lg:grid-cols-2" style={{ gap: "var(--c97-sp-2)" }}>
         <div>
           <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-2)" }}>Drivers</p>
-          <ol className="space-y-2 pl-0">
+          <ol className="flex flex-col pl-0" style={{ gap: "var(--c97-sp-1)" }}>
             {summary.drivers.map((asset) => (
               <LineupAssetRow
                 key={asset.id}
@@ -250,7 +250,7 @@ function LineupPanel({
         </div>
         <div>
           <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-2)" }}>Constructors</p>
-          <ol className="space-y-2 pl-0">
+          <ol className="flex flex-col pl-0" style={{ gap: "var(--c97-sp-1)" }}>
             {summary.constructors.map((asset) => (
               <LineupAssetRow
                 key={asset.id}
@@ -279,7 +279,7 @@ function RecommendationCard({
 }) {
   return (
     <article className="c97-panel">
-      <div className="flex items-start justify-between gap-4">
+      <div className="flex items-start justify-between" style={{ gap: "var(--c97-sp-2)" }}>
         <div>
           <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-1)" }}>Option {candidate.rank}</p>
           <h3 className="c97-h3 mb-0">{formatPoints(candidate.projectedPoints)} projected</h3>
@@ -289,21 +289,21 @@ function RecommendationCard({
           Apply
         </button>
       </div>
-      <div className="mt-4 grid grid-cols-3 gap-2 text-sm">
-        <div className="flex min-w-0 flex-col gap-1 border px-2 py-2" style={{ borderColor: "var(--c97-rule)" }}>
+      <div className="grid grid-cols-3 text-sm" style={{ marginTop: "var(--c97-sp-2)", gap: "var(--c97-sp-1)" }}>
+        <div className="flex min-w-0 flex-col border" style={{ paddingInline: "var(--c97-sp-1)", paddingBlock: "var(--c97-sp-1)", gap: "var(--c97-sp-0)", borderColor: "var(--c97-rule)" }}>
           <span className="c97-kicker">Cost</span>
           <strong className="c97-mono">{formatMoney(candidate.totalPrice)}</strong>
         </div>
-        <div className="flex min-w-0 flex-col gap-1 border px-2 py-2" style={{ borderColor: "var(--c97-rule)" }}>
+        <div className="flex min-w-0 flex-col border" style={{ paddingInline: "var(--c97-sp-1)", paddingBlock: "var(--c97-sp-1)", gap: "var(--c97-sp-0)", borderColor: "var(--c97-rule)" }}>
           <span className="c97-kicker">Left</span>
           <strong className="c97-mono">{formatMoney(candidate.budgetRemaining)}</strong>
         </div>
-        <div className="flex min-w-0 flex-col gap-1 border px-2 py-2" style={{ borderColor: "var(--c97-rule)" }}>
+        <div className="flex min-w-0 flex-col border" style={{ paddingInline: "var(--c97-sp-1)", paddingBlock: "var(--c97-sp-1)", gap: "var(--c97-sp-0)", borderColor: "var(--c97-rule)" }}>
           <span className="c97-kicker">Value</span>
           <strong className="c97-mono">{formatPoints(candidate.valueRating)}</strong>
         </div>
       </div>
-      <div className="mt-4 space-y-2">
+      <div className="flex flex-col" style={{ marginTop: "var(--c97-sp-2)", gap: "var(--c97-sp-1)" }}>
         <p className="c97-serif" style={{ fontSize: "var(--c97-fs-small)", fontWeight: 600, marginBottom: "var(--c97-sp-1)" }}>
           {candidate.drivers.map((asset) => asset.shortName).join(" · ")}
         </p>
@@ -324,11 +324,11 @@ function RecommendationsPanel({
 }) {
   return (
     <section aria-labelledby="fantasy-formula-1-recommendations-heading">
-      <h2 id="fantasy-formula-1-recommendations-heading" className="c97-poster-sm mb-4">
+      <h2 id="fantasy-formula-1-recommendations-heading" className="c97-poster-sm" style={{ marginBottom: "var(--c97-sp-2)" }}>
         Best model lineups
       </h2>
       {candidates.length > 0 ? (
-        <div className="grid gap-4 lg:grid-cols-3">
+        <div className="grid lg:grid-cols-3" style={{ gap: "var(--c97-sp-2)" }}>
           {candidates.map((candidate) => (
             <RecommendationCard
               key={`${candidate.rank}-${candidate.assets.map((asset) => asset.id).join("-")}`}
@@ -450,7 +450,7 @@ function AssetsTable({
             return (
               <tr key={asset.id} style={getTeamAccentStyle(asset.teamColor)}>
                 <td>
-                  <div className="flex min-w-0 items-center gap-3">
+                  <div className="flex min-w-0 items-center" style={{ gap: "var(--c97-sp-1)" }}>
                     <AssetAvatar asset={asset} />
                     <div className="min-w-0">
                       <p className="c97-serif truncate">{asset.name}</p>
@@ -491,7 +491,7 @@ function AssetsTable({
 
 function RulesPanel() {
   return (
-    <section className="grid gap-5 lg:grid-cols-[minmax(0,1fr)_minmax(18rem,24rem)]">
+    <section className="grid lg:grid-cols-[minmax(0,1fr)_minmax(18rem,24rem)]" style={{ gap: "var(--c97-sp-2)" }}>
       <article className="c97-panel">
         <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-1)" }}>Model notes</p>
         <h2 className="c97-poster-sm mb-0">This is a planning model.</h2>
@@ -756,8 +756,8 @@ export function FantasyFormula1Client({
         aria-label="Fantasy Formula 1 optimizer"
         data-testid="fantasy-formula-1-shell"
       >
-        <div className="c97-shell space-y-6">
-          <div className="flex flex-wrap items-start justify-between gap-4">
+        <div className="c97-shell flex flex-col" style={{ gap: "var(--c97-sp-3)" }}>
+          <div className="flex flex-wrap items-start justify-between" style={{ gap: "var(--c97-sp-2)" }}>
             <p className="c97-prose">
               {selectedAssetNames
                 ? `This lineup has ${selectedAssetNames}.`
@@ -777,7 +777,7 @@ export function FantasyFormula1Client({
           </p>
 
           {routeState.view === "builder" ? (
-            <div className="space-y-6">
+            <div className="flex flex-col" style={{ gap: "var(--c97-sp-3)" }}>
               <LineupPanel
                 summary={summary}
                 lockedIds={lockedIds}
@@ -787,7 +787,7 @@ export function FantasyFormula1Client({
               />
               <RecommendationsPanel candidates={candidates} onApply={applyCandidate} />
               <article>
-                <div className="mb-4 flex flex-wrap items-center justify-between gap-3">
+                <div className="flex flex-wrap items-center justify-between" style={{ marginBottom: "var(--c97-sp-2)", gap: "var(--c97-sp-1)" }}>
                   <h2 className="c97-poster-sm mb-0">Add from the model slate</h2>
                   <button
                     type="button"
@@ -809,8 +809,8 @@ export function FantasyFormula1Client({
           ) : null}
 
           {routeState.view === "assets" ? (
-            <article className="space-y-4">
-              <div className="flex flex-wrap items-start justify-between gap-4">
+            <article className="flex flex-col" style={{ gap: "var(--c97-sp-2)" }}>
+              <div className="flex flex-wrap items-start justify-between" style={{ gap: "var(--c97-sp-2)" }}>
                 <h2 className="c97-poster-sm mb-0">Sort the slate by the signal you trust.</h2>
                 <SortAndFocusControls
                   activeSort={routeState.sort}

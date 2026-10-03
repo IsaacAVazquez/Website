@@ -372,7 +372,7 @@ export function RentVsBuyClient() {
                 <Home size={18} aria-hidden="true" />
                 <h2 className="c97-poster-sm">The home you&apos;d buy</h2>
               </div>
-              <div className="grid gap-3 sm:grid-cols-2" style={{ marginTop: "var(--c97-sp-3)" }}>
+              <div className="grid sm:grid-cols-2" style={{ gap: "var(--c97-sp-1)", marginTop: "var(--c97-sp-3)" }}>
                 <NumberField {...RENT_VS_BUY_BOUNDS.homePrice} label="Home price" prefix="$" step={5000} value={input.homePrice} onChange={num("homePrice")} />
                 <NumberField {...RENT_VS_BUY_BOUNDS.downPaymentPercent} label="Down payment" suffix="%" step={1} value={input.downPaymentPercent} onChange={num("downPaymentPercent")} />
                 <NumberField {...RENT_VS_BUY_BOUNDS.mortgageRatePercent} label="Mortgage rate" suffix="%" step={0.05} value={input.mortgageRatePercent} onChange={num("mortgageRatePercent")} />
@@ -392,7 +392,7 @@ export function RentVsBuyClient() {
                 <Building2 size={18} aria-hidden="true" />
                 <h2 className="c97-poster-sm">The rent you&apos;d pay</h2>
               </div>
-              <div className="grid gap-3 sm:grid-cols-2" style={{ marginTop: "var(--c97-sp-3)" }}>
+              <div className="grid sm:grid-cols-2" style={{ gap: "var(--c97-sp-1)", marginTop: "var(--c97-sp-3)" }}>
                 <NumberField {...RENT_VS_BUY_BOUNDS.monthlyRent} label="Monthly rent" prefix="$" step={50} value={input.monthlyRent} onChange={num("monthlyRent")} />
                 <NumberField {...RENT_VS_BUY_BOUNDS.rentGrowthPercent} label="Rent growth" suffix="%/yr" step={0.25} value={input.rentGrowthPercent} onChange={num("rentGrowthPercent")} />
                 <NumberField {...RENT_VS_BUY_BOUNDS.rentersInsuranceMonthly} label="Renter's insurance" prefix="$" suffix="/mo" step={5} value={input.rentersInsuranceMonthly} onChange={num("rentersInsuranceMonthly")} />
@@ -404,7 +404,7 @@ export function RentVsBuyClient() {
                 <Landmark size={18} aria-hidden="true" />
                 <h2 className="c97-poster-sm">Assumptions</h2>
               </div>
-              <div className="grid gap-3 sm:grid-cols-2" style={{ marginTop: "var(--c97-sp-3)" }}>
+              <div className="grid sm:grid-cols-2" style={{ gap: "var(--c97-sp-1)", marginTop: "var(--c97-sp-3)" }}>
                 <NumberField {...RENT_VS_BUY_BOUNDS.investmentReturnPercent} label="Investment return" suffix="%/yr" step={0.25} value={input.investmentReturnPercent} onChange={num("investmentReturnPercent")} />
                 <NumberField {...RENT_VS_BUY_BOUNDS.generalInflationPercent} label="Inflation" suffix="%/yr" step={0.25} value={input.generalInflationPercent} onChange={num("generalInflationPercent")} />
                 <NumberField

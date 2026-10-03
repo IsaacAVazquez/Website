@@ -50,7 +50,7 @@ interface DraftSetupProps {
 const START_ARM_TIMEOUT_MS = 5000;
 
 const FIELD_CLASS =
-  "min-h-touch w-full border px-3 font-mono text-xs transition-[background-color,border-color,box-shadow] duration-200";
+  "min-h-touch w-full border px-[var(--c97-sp-1)] font-mono text-xs transition-[background-color,border-color,box-shadow] duration-200";
 
 const FIELD_STYLE: CSSProperties = {
   borderColor: "var(--c97-rule)",
@@ -59,7 +59,7 @@ const FIELD_STYLE: CSSProperties = {
 };
 
 const PILL_BUTTON_CLASS =
-  "inline-flex min-h-touch items-center justify-center border border-[var(--c97-rule)] bg-[var(--c97-surface)] px-3.5 font-mono text-2xs uppercase tracking-[0.06em] text-[var(--c97-ink)] hover:border-[var(--c97-ink)]";
+  "inline-flex min-h-touch items-center justify-center border border-[var(--c97-rule)] bg-[var(--c97-surface)] px-[var(--c97-sp-2)] font-mono text-2xs uppercase tracking-[0.06em] text-[var(--c97-ink)] hover:border-[var(--c97-ink)]";
 
 const SCORING_OPTIONS: { value: ScoringFormat; label: string }[] = [
   { value: "PPR", label: "PPR" },
@@ -120,13 +120,13 @@ function SegmentedButtons<Value extends string | number>({
             type="button"
             aria-pressed={active}
             onClick={() => onSelect(option.value)}
-            className={`min-h-touch flex-1 px-2.5 font-mono text-2xs uppercase tracking-[0.06em] ${
+            className={`min-h-touch flex-1 font-mono text-2xs uppercase tracking-[0.06em] ${
               active ? "" : "hover:bg-[var(--c97-overlay)]"
             }`}
             style={
-              active
+              { paddingInline: "var(--c97-sp-1)", ...(active
                 ? { background: "var(--c97-ink)", color: "var(--c97-surface)" }
-                : { color: "var(--c97-ink)" }
+                : { color: "var(--c97-ink)" }) }
             }
           >
             {option.label}
@@ -281,8 +281,8 @@ export function DraftSetup({
       style={{ borderColor: "var(--c97-rule)", background: "var(--c97-field)" }}
     >
       <div
-        className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-2 border-b px-4 py-3.5 sm:px-5"
-        style={{ borderColor: "var(--c97-rule)" }}
+        className="flex flex-wrap items-baseline justify-between border-b"
+        style={{ paddingInline: "var(--c97-sp-2)", paddingBlock: "var(--c97-sp-2)", columnGap: "var(--c97-sp-2)", rowGap: "var(--c97-sp-1)", borderColor: "var(--c97-rule)" }}
       >
         <div className="min-w-0">
           <p className={MONO_LABEL_CLASS} style={{ color: "var(--c97-ink-2)" }}>
@@ -302,14 +302,14 @@ export function DraftSetup({
       </div>
 
       <div
-        className="grid gap-2.5 border-b px-4 py-3.5 sm:px-5"
-        style={{ borderColor: "var(--c97-rule)" }}
+        className="grid border-b"
+        style={{ paddingInline: "var(--c97-sp-2)", paddingBlock: "var(--c97-sp-2)", gap: "var(--c97-sp-1)", borderColor: "var(--c97-rule)" }}
       >
         <span className={MONO_LABEL_CLASS} style={{ color: "var(--c97-ink-2)" }}>
           League presets
         </span>
         {presets.length > 0 ? (
-          <div className="flex flex-wrap gap-1.5">
+          <div className="flex flex-wrap" style={{ gap: "var(--c97-sp-0)" }}>
             {presets.map((preset) => (
               <span
                 key={preset.id}
@@ -321,8 +321,8 @@ export function DraftSetup({
                   onClick={() => applyPreset(preset)}
                   title={describeDraftPreset(preset)}
                   aria-label={`Apply preset ${preset.name}`}
-                  className="inline-flex min-h-touch items-center px-3 font-mono text-2xs hover:bg-[var(--c97-overlay)]"
-                  style={{ color: "var(--c97-ink)" }}
+                  className="inline-flex min-h-touch items-center font-mono text-2xs hover:bg-[var(--c97-overlay)]"
+                  style={{ paddingInline: "var(--c97-sp-1)", color: "var(--c97-ink)" }}
                 >
                   {preset.name}
                 </button>
@@ -339,7 +339,7 @@ export function DraftSetup({
             ))}
           </div>
         ) : null}
-        <div className="flex flex-wrap items-center gap-2">
+        <div className="flex flex-wrap items-center" style={{ gap: "var(--c97-sp-1)" }}>
           <label htmlFor="draft-preset-name" className="sr-only">
             Preset name
           </label>
@@ -351,8 +351,8 @@ export function DraftSetup({
             maxLength={40}
             placeholder="Name these settings"
             autoComplete="off"
-            className="min-h-touch w-56 border px-3 font-mono text-xs"
-            style={FIELD_STYLE}
+            className="min-h-touch w-56 border font-mono text-xs"
+            style={{ paddingInline: "var(--c97-sp-1)", ...(FIELD_STYLE) }}
           />
           <button
             type="button"
@@ -369,10 +369,10 @@ export function DraftSetup({
       </div>
 
       <div
-        className="grid gap-x-4 gap-y-3.5 px-4 py-4 sm:px-5"
-        style={{ gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 210px), 1fr))" }}
+        className="grid"
+        style={{ paddingInline: "var(--c97-sp-2)", paddingBlock: "var(--c97-sp-2)", columnGap: "var(--c97-sp-2)", rowGap: "var(--c97-sp-2)", gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 210px), 1fr))" }}
       >
-        <label className="grid content-start gap-1.5 text-sm" htmlFor="draft-league-name">
+        <label className="grid content-start text-sm" style={{ gap: "var(--c97-sp-0)" }} htmlFor="draft-league-name">
           <span className={MONO_LABEL_CLASS} style={{ color: "var(--c97-ink-2)" }}>
             League name
           </span>
@@ -389,7 +389,7 @@ export function DraftSetup({
           />
         </label>
 
-        <label className="grid content-start gap-1.5 text-sm" htmlFor="draft-total-teams">
+        <label className="grid content-start text-sm" style={{ gap: "var(--c97-sp-0)" }} htmlFor="draft-total-teams">
           <span className={MONO_LABEL_CLASS} style={{ color: "var(--c97-ink-2)" }}>
             Teams
           </span>
@@ -409,7 +409,7 @@ export function DraftSetup({
           </select>
         </label>
 
-        <label className="grid content-start gap-1.5 text-sm" htmlFor="draft-user-team">
+        <label className="grid content-start text-sm" style={{ gap: "var(--c97-sp-0)" }} htmlFor="draft-user-team">
           <span className={MONO_LABEL_CLASS} style={{ color: "var(--c97-ink-2)" }}>
             Your draft slot
           </span>
@@ -429,7 +429,7 @@ export function DraftSetup({
           </select>
         </label>
 
-        <label className="grid content-start gap-1.5 text-sm" htmlFor="draft-rounds">
+        <label className="grid content-start text-sm" style={{ gap: "var(--c97-sp-0)" }} htmlFor="draft-rounds">
           <span className={MONO_LABEL_CLASS} style={{ color: "var(--c97-ink-2)" }}>
             Rounds
           </span>
@@ -449,7 +449,7 @@ export function DraftSetup({
           </select>
         </label>
 
-        <div className="grid content-start gap-1.5 text-sm">
+        <div className="grid content-start text-sm" style={{ gap: "var(--c97-sp-0)" }}>
           <span id={scoringLabelId} className={MONO_LABEL_CLASS} style={{ color: "var(--c97-ink-2)" }}>
             Scoring
           </span>
@@ -461,7 +461,7 @@ export function DraftSetup({
           />
         </div>
 
-        <div className="grid content-start gap-1.5 text-sm">
+        <div className="grid content-start text-sm" style={{ gap: "var(--c97-sp-0)" }}>
           <span id={orderLabelId} className={MONO_LABEL_CLASS} style={{ color: "var(--c97-ink-2)" }}>
             Draft order
           </span>
@@ -473,7 +473,7 @@ export function DraftSetup({
           />
         </div>
 
-        <div className="grid content-start gap-1.5 text-sm">
+        <div className="grid content-start text-sm" style={{ gap: "var(--c97-sp-0)" }}>
           <span id={clockLabelId} className={MONO_LABEL_CLASS} style={{ color: "var(--c97-ink-2)" }}>
             Pick clock · advisory
           </span>
@@ -493,11 +493,11 @@ export function DraftSetup({
         </div>
       </div>
 
-      <fieldset className="grid gap-2.5 px-4 pb-4 sm:px-5">
-        <legend className={`${MONO_LABEL_CLASS} mb-2`} style={{ color: "var(--c97-ink-2)" }}>
+      <fieldset className="grid" style={{ paddingInline: "var(--c97-sp-2)", paddingBottom: "var(--c97-sp-2)", gap: "var(--c97-sp-1)" }}>
+        <legend className={`${MONO_LABEL_CLASS}`} style={{ marginBottom: "var(--c97-sp-1)", color: "var(--c97-ink-2)" }}>
           Starting lineup
         </legend>
-        <div className="grid gap-2" style={{ gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 190px), 1fr))" }}>
+        <div className="grid" style={{ gap: "var(--c97-sp-1)", gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 190px), 1fr))" }}>
           {REDRAFT_LINEUP_PRESETS.map((preset) => {
             const active = sameRedraftLineup(formState.lineup, preset.lineup);
             return (
@@ -506,13 +506,13 @@ export function DraftSetup({
                 type="button"
                 aria-pressed={active}
                 onClick={() => updateField("lineup", { ...preset.lineup })}
-                className={`min-h-[56px] border px-3 py-2 text-left ${
+                className={`min-h-[56px] border text-left ${
                   active ? "" : "bg-[var(--c97-surface)] hover:bg-[var(--c97-overlay)]"
                 }`}
                 style={
-                  active
+                  { paddingInline: "var(--c97-sp-1)", paddingBlock: "var(--c97-sp-1)", ...(active
                     ? { borderColor: "var(--c97-ink)", background: "var(--c97-ink)", color: "var(--c97-surface)" }
-                    : { borderColor: "var(--c97-rule)", color: "var(--c97-ink)" }
+                    : { borderColor: "var(--c97-rule)", color: "var(--c97-ink)" }) }
                 }
               >
                 <span className="block text-sm font-semibold tracking-[-0.01em]">{preset.label}</span>
@@ -534,17 +534,17 @@ export function DraftSetup({
         {/* Presets cover the common rooms; these selects keep odd home-league
             lineups reachable. Flex accepts RB, WR, or TE, and the board scores
             one-QB rankings only, so Superflex rooms are not modeled here. */}
-        <div className="grid gap-x-4 gap-y-2.5" style={{ gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 150px), 1fr))" }}>
-          <div className="grid content-start gap-1.5 text-sm">
+        <div className="grid" style={{ columnGap: "var(--c97-sp-2)", rowGap: "var(--c97-sp-1)", gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 150px), 1fr))" }}>
+          <div className="grid content-start text-sm" style={{ gap: "var(--c97-sp-0)" }}>
             <span className={MONO_LABEL_CLASS} style={{ color: "var(--c97-ink-2)" }}>
               Quarterbacks
             </span>
-            <span className="py-2.5 font-mono text-xs">1</span>
+            <span className="font-mono text-xs" style={{ paddingBlock: "var(--c97-sp-1)" }}>1</span>
           </div>
           {LINEUP_FIELDS.map((field) => (
             <label
               key={field.key}
-              className="grid content-start gap-1.5 text-sm"
+              className="grid content-start text-sm" style={{ gap: "var(--c97-sp-0)" }}
               htmlFor={`lineup-${field.key.toLowerCase()}`}
             >
               <span className={MONO_LABEL_CLASS} style={{ color: "var(--c97-ink-2)" }}>
@@ -569,10 +569,10 @@ export function DraftSetup({
       </fieldset>
 
       <div
-        className="flex flex-wrap items-center justify-between gap-x-4 gap-y-2.5 border-t px-4 py-3.5 sm:px-5"
-        style={{ borderColor: "var(--c97-rule)", background: "var(--c97-surface)" }}
+        className="flex flex-wrap items-center justify-between border-t"
+        style={{ paddingInline: "var(--c97-sp-2)", paddingBlock: "var(--c97-sp-2)", columnGap: "var(--c97-sp-2)", rowGap: "var(--c97-sp-1)", borderColor: "var(--c97-rule)", background: "var(--c97-surface)" }}
       >
-        <div className="grid min-w-0 gap-1.5">
+        <div className="grid min-w-0" style={{ gap: "var(--c97-sp-0)" }}>
           <p className="m-0 font-mono text-2xs leading-relaxed" style={{ color: "var(--c97-ink-2)" }}>
             {summary}
           </p>
@@ -581,7 +581,7 @@ export function DraftSetup({
               Loading the published rankings. Start will unlock when the board is ready.
             </p>
           ) : rankingsStatus === "error" ? (
-            <div role="alert" className="flex flex-wrap items-center gap-2 text-sm">
+            <div role="alert" className="flex flex-wrap items-center text-sm" style={{ gap: "var(--c97-sp-1)" }}>
               <p className="m-0 font-semibold" style={{ color: "var(--c97-negative)" }}>
                 {rankingsError ?? "Fantasy rankings are unavailable right now."}
               </p>

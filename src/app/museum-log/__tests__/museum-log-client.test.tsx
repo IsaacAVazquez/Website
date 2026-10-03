@@ -1,4 +1,4 @@
-import { fireEvent, render, screen, within } from "@testing-library/react";
+import { fireEvent, render, screen } from "@testing-library/react";
 import { museumSnapshot } from "@/data/museumSnapshot";
 import { MuseumLogClient } from "../museum-log-client";
 import { DEFAULT_MUSEUM_STATE } from "../museum-log-state";
@@ -42,7 +42,7 @@ describe("MuseumLogClient", () => {
 
     expect(screen.getAllByText("0")[0]).toBeVisible();
 
-    const search = within(screen.getByLabelText("Filter museums")).getByRole("searchbox");
+    const search = screen.getByRole("searchbox", { name: "Filter museums" });
     fireEvent.change(search, { target: { value: "moma" } });
     expect(screen.getByText("Museum of Modern Art")).toBeVisible();
   });

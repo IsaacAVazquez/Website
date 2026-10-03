@@ -4,11 +4,11 @@ The single pre-merge checklist for any new or edited page, component, or surface
 this repo, run through this before opening a PR. It distills the rules that were previously scattered
 across `STYLING.md`, `CLAUDE.md`, and `SNAPSHOT_DRIVEN_DASHBOARDS.md`.
 
-**Last updated:** 2026-09-29 · The print section was added on 2026-09-29. Rewritten on 2026-09-27 for Catalog 97 as the only design language, after the close-out deleted the Working Instrument tokens and helpers. Derived from the 2026-06 site-wide design audit (`docs/DESIGN_AUDIT_2026-06.md`).
+**Last updated:** 2026-10-02 · The spacing and stacking lines were added on 2026-10-02. The print section was added on 2026-09-29. Rewritten on 2026-09-27 for Catalog 97 as the only design language, after the close-out deleted the Working Instrument tokens and helpers. Derived from the 2026-06 site-wide design audit (`docs/DESIGN_AUDIT_2026-06.md`).
 
 > When in doubt, copy a reference implementation instead of inventing. Home (`Catalog97Home.tsx`) is
 > the print shop reference, `Catalog97ProjectHero` plus any project route shows the hero and signature
-> pattern, `PortfolioPerformanceChart` shows themeable D3, and `tech-startup-tracker` shows the
+> pattern, `ComparisonRadarChart` shows themeable D3, and `tech-startup-tracker` shows the
 > error, loading, and verified disclosure with correct row semantics.
 
 ---
@@ -29,6 +29,9 @@ across `STYLING.md`, `CLAUDE.md`, and `SNAPSHOT_DRIVEN_DASHBOARDS.md`.
       chocolate, or lead-ink sheet sits on a paper plate.
 - [ ] CSS Modules alias the tokens (`--x-ink: var(--c97-ink)`) and never re-declare the palette as fresh
       hex with its own `.dark` mirror.
+- [ ] No arbitrary z-index on an overlay. A tray, toast, drawer, modal, or sheet reads its
+      `--c97-z-*` token (`z-[var(--c97-z-drawer)]`), declared on `:root` because some layers portal to
+      the body.
 - [ ] No raw Tailwind colour literals (`text-gray-500`, `bg-slate-100`), no radius, and no blurred shadow.
       The Tailwind radius and shadow scales compile to nothing, so a leftover `rounded-lg` or `shadow-sm`
       is dead markup to remove.
@@ -41,8 +44,8 @@ across `STYLING.md`, `CLAUDE.md`, and `SNAPSHOT_DRIVEN_DASHBOARDS.md`.
       because the document root resolves no Catalog 97 token, and re-resolved on theme change
       (`useTheme().resolvedTheme` as an effect dep). Never bake a token's hex into a constant,
       and never pass `var()`/`color-mix()` into SVG *presentation attributes* (they don't resolve
-      there, so use resolved values or `.style()`). References: `PortfolioPerformanceChart`,
-      `ComparisonRadarChart`, `FrontierCostContextChart`. Investments visuals share one categorical
+      there, so use resolved values or `.style()`). References: `ComparisonRadarChart` and
+      `FrontierCostContextChart`. Investments visuals share one categorical
       palette: `src/components/investments/holdingPalette.ts`.
 - [ ] Avoid ink-equivalent tones (`#12110F`) for logo/series tiles, since they vanish on dark paper.
 
@@ -54,6 +57,12 @@ across `STYLING.md`, `CLAUDE.md`, and `SNAPSHOT_DRIVEN_DASHBOARDS.md`.
       (`--c97-font-mono`, `.c97-mono`, 400 only) for readouts. See `STYLING.md`.
 - [ ] Spacing on a type class or `.c97-panel` goes in an inline style, since those classes are
       unlayered and a Tailwind margin or padding utility on the same element silently loses.
+- [ ] Every gap, margin, and padding is on the `--c97-sp-0` through `--c97-sp-7` ladder. `sp-0` is the
+      hairline step, for an icon beside its label and the padding in a chip or a dense cell, and only an
+      optical nudge of 2px or less sits off it. Spacing that changes at a breakpoint uses token utilities
+      at every breakpoint, the base one included (`p-[var(--c97-sp-1)] sm:p-[var(--c97-sp-2)]`), and never
+      an inline base beside responsive utilities, because the inline style beats every breakpoint. A
+      vertical stack is a flex column with a token gap, not `space-y-*`.
 - [ ] No arbitrary `text-[Npx]`. 10px → `text-3xs`, 11px → `text-2xs`, fixed 12px → `text-1xs`,
       12–14px that may scale → `text-xs` (fluid). Don't reintroduce px literals.
 - [ ] Fluid `--text-*` tokens for everything else; headings keep tight tracking + balanced wrapping.

@@ -69,7 +69,7 @@ export default function ApplicationEditDialog({
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center overflow-y-auto"
+      className="fixed inset-0 z-[var(--c97-z-modal)] flex items-center justify-center overflow-y-auto"
       style={{ padding: "var(--c97-sp-2)", background: "color-mix(in srgb, var(--c97-print-black) 45%, transparent)" }}
       role="presentation"
       onClick={(event) => {

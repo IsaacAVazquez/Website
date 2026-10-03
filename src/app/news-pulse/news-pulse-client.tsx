@@ -361,10 +361,10 @@ export function NewsPulseClient({
                 aria-hidden="true"
               />
               <div>
-                <p className="mb-1 text-sm font-semibold" style={{ color: "var(--c97-ink)" }}>
+                <p className="text-sm font-semibold" style={{ color: "var(--c97-ink)", marginBottom: "var(--c97-sp-0)" }}>
                   Some feeds did not come through on this refresh.
                 </p>
-                <p className="mb-0 text-sm leading-7" style={{ color: "var(--c97-ink-2)" }}>
+                <p className="text-sm leading-7" style={{ color: "var(--c97-ink-2)", marginBottom: "0" }}>
                   {feedErrors.join("; ")}
                 </p>
               </div>
@@ -622,11 +622,11 @@ function CoverageView({
                         {topic.count} headlines
                       </span>
                     </div>
-                    <span className="mt-1.5 block h-1.5 overflow-hidden" style={{ background: "var(--c97-rule)" }}>
+                    <span className="block h-1.5 overflow-hidden" style={{ background: "var(--c97-rule)", marginTop: "var(--c97-sp-0)" }}>
                       <span className="block h-full" style={{ width: `${pct}%`, background: "var(--c97-accent)" }} />
                     </span>
                   </div>
-                  <div className="flex flex-wrap items-center gap-1.5 sm:justify-end">
+                  <div className="flex flex-wrap items-center sm:justify-end" style={{ gap: "var(--c97-sp-0)" }}>
                     {coveringSources.map((source) => (
                       <span
                         key={source}
@@ -837,7 +837,7 @@ function AnalysisView({ articles }: { articles: NewsArticle[] }) {
           I read this as directional framing pressure, not article-level sentiment.
         </p>
 
-        <div className="space-y-5" style={{ marginTop: "var(--c97-sp-3)" }}>
+        <div className="flex flex-col" style={{ marginTop: "var(--c97-sp-3)", gap: "var(--c97-sp-2)" }}>
           {sourceIds.map((source) => {
             const sourceData = sentimentBySource[source];
             if (!sourceData) return null;
@@ -864,18 +864,18 @@ function AnalysisView({ articles }: { articles: NewsArticle[] }) {
                 </div>
 
                 <div
-                  className="flex flex-wrap gap-y-1 text-2xs font-semibold uppercase tracking-[0.12em]"
-                  style={{ marginTop: "var(--c97-sp-1)", columnGap: "var(--c97-sp-2)", color: "var(--c97-ink-2)" }}
+                  className="flex flex-wrap text-2xs font-semibold uppercase tracking-[0.12em]"
+                  style={{ marginTop: "var(--c97-sp-1)", rowGap: "var(--c97-sp-0)", columnGap: "var(--c97-sp-2)", color: "var(--c97-ink-2)" }}
                 >
-                  <span className="inline-flex items-center gap-1.5">
+                  <span className="inline-flex items-center" style={{ gap: "var(--c97-sp-0)" }}>
                     <span className="h-2.5 w-2.5" style={{ background: "var(--c97-positive)" }} aria-hidden="true" />
                     {positivePercent}% positive
                   </span>
-                  <span className="inline-flex items-center gap-1.5">
+                  <span className="inline-flex items-center" style={{ gap: "var(--c97-sp-0)" }}>
                     <span className="h-2.5 w-2.5" style={{ background: "var(--c97-rule)" }} aria-hidden="true" />
                     {neutralPercent}% neutral
                   </span>
-                  <span className="inline-flex items-center gap-1.5">
+                  <span className="inline-flex items-center" style={{ gap: "var(--c97-sp-0)" }}>
                     <span className="h-2.5 w-2.5" style={{ background: "var(--c97-negative)" }} aria-hidden="true" />
                     {negativePercent}% negative
                   </span>
@@ -895,7 +895,7 @@ function AnalysisView({ articles }: { articles: NewsArticle[] }) {
           Longer headlines usually signal more context, but sometimes they just mean more hedging.
         </p>
 
-        <div className="space-y-5" style={{ marginTop: "var(--c97-sp-3)" }}>
+        <div className="flex flex-col" style={{ marginTop: "var(--c97-sp-3)", gap: "var(--c97-sp-2)" }}>
           {sourceIds.map((source) => {
             const sourceData = headlineLengthBySource[source];
             if (!sourceData) return null;
@@ -959,7 +959,7 @@ function AnalysisView({ articles }: { articles: NewsArticle[] }) {
                   </span>
 
                   <div>
-                    <p className="mb-1 inline-flex items-center text-sm font-semibold" style={{ gap: "var(--c97-sp-1)", color: "var(--c97-ink)" }}>
+                    <p className="inline-flex items-center text-sm font-semibold" style={{ gap: "var(--c97-sp-1)", color: "var(--c97-ink)", marginBottom: "var(--c97-sp-0)" }}>
                       <span
                         aria-hidden="true"
                         style={{ width: 10, height: 10, background: SOURCE_META[source].color, display: "inline-block", flexShrink: 0 }}
@@ -967,8 +967,8 @@ function AnalysisView({ articles }: { articles: NewsArticle[] }) {
                       {SOURCE_META[source].name}
                     </p>
                     <p
-                      className="mb-0 text-2xs font-semibold uppercase tracking-[0.12em]"
-                      style={getReadabilityTone(averageScore)}
+                      className="text-2xs font-semibold uppercase tracking-[0.12em]"
+                      style={{ ...getReadabilityTone(averageScore), marginBottom: 0 }}
                     >
                       {readabilityLabel}
                     </p>

@@ -45,7 +45,7 @@ function Slider({ label, value, min, max, step, onChange, format, hint }: Slider
   const hintId = hint ? `${inputId}-hint` : undefined;
   return (
     <div style={{ display: "flex", flexDirection: "column", gap: "var(--c97-sp-1)" }}>
-      <div className="flex justify-between items-baseline gap-2">
+      <div className="flex justify-between items-baseline" style={{ gap: "var(--c97-sp-1)" }}>
         <label htmlFor={inputId} className="c97-kicker">
           {label}
         </label>
@@ -224,8 +224,8 @@ export function InterchangeIQClient() {
         data-seam="torn"
         data-testid="interchange-iq-shell"
       >
-        <div className="c97-shell space-y-6">
-          <div className="flex flex-wrap items-end justify-between gap-3">
+        <div className="flex flex-col c97-shell" style={{ rowGap: "var(--c97-sp-3)" }}>
+          <div className="flex flex-wrap items-end justify-between" style={{ gap: "var(--c97-sp-1)" }}>
             <p className="c97-kicker">
               Interchange IQ / <strong>{VIEW_LABELS[activeView]}</strong>
             </p>
@@ -257,8 +257,8 @@ export function InterchangeIQClient() {
             })}
           </nav>
 
-          <div className="grid gap-8 lg:grid-cols-[minmax(0,360px)_minmax(0,1fr)]">
-            <div className="space-y-4">
+          <div className="grid lg:grid-cols-[minmax(0,360px)_minmax(0,1fr)]" style={{ gap: "var(--c97-sp-3)" }}>
+            <div className="flex flex-col" style={{ rowGap: "var(--c97-sp-2)" }}>
               <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-2)" }}>Inputs</p>
 
               <Slider
@@ -331,10 +331,10 @@ export function InterchangeIQClient() {
                   </p>
                 ) : null}
 
-                <div className="space-y-2" style={{ marginTop: "var(--c97-sp-2)" }}>
+                <div className="flex flex-col" style={{ rowGap: "var(--c97-sp-1)", marginTop: "var(--c97-sp-2)" }}>
                   {cardMixRows.map((row) => (
                     <div key={row.label}>
-                      <div className="flex items-baseline justify-between gap-2">
+                      <div className="flex items-baseline justify-between" style={{ gap: "var(--c97-sp-1)" }}>
                         <span className="c97-prose" style={{ fontSize: "var(--c97-fs-small)", fontWeight: 600 }}>
                           {row.label}
                         </span>
@@ -392,7 +392,7 @@ export function InterchangeIQClient() {
       </section>
 
       <section className="c97-band c97-sheet" data-c97-surface="bone" data-seam="deckle" id="breakeven">
-        <div className="c97-shell space-y-4">
+        <div className="flex flex-col c97-shell" style={{ rowGap: "var(--c97-sp-2)" }}>
           <div>
             <p className="c97-kicker">Breakeven</p>
             <h2 className="c97-poster-sm">Stripe flat vs Stripe IC+</h2>
@@ -485,7 +485,7 @@ export function InterchangeIQClient() {
       </section>
 
       <section className="c97-band c97-sheet" data-c97-surface="paper" data-seam="torn" aria-label="How payment processing fees work">
-        <div className="c97-shell space-y-6">
+        <div className="flex flex-col c97-shell" style={{ rowGap: "var(--c97-sp-3)" }}>
           <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-3)" }}>Reference</p>
           <h2 className="c97-poster-sm">How payment processing fees work</h2>
 

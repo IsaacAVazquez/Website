@@ -94,7 +94,6 @@
   justify-content: center;
   overflow: hidden;
   border: 1px solid var(--c97-rule);
-  border-radius: 50%;
   background: var(--c97-field);
   font-size: var(--c97-fs-small);
   font-weight: 600;

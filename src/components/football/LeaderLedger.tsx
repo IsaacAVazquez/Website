@@ -25,17 +25,17 @@ export function LeaderLedger({
 }) {
   return (
     <div className="border border-[var(--c97-rule)] bg-[var(--c97-surface)]">
-      <h3 className="px-4 pt-4 text-base font-bold text-[var(--c97-ink)]">{title}</h3>
+      <h3 className="text-base font-bold text-[var(--c97-ink)]" style={{ paddingInline: "var(--c97-sp-2)", paddingTop: "var(--c97-sp-2)" }}>{title}</h3>
       {entries.length === 0 ? (
-        <p className="px-4 pb-4 pt-2 text-sm leading-relaxed text-[var(--c97-ink-2)]">
+        <p className="text-sm leading-relaxed text-[var(--c97-ink-2)]" style={{ paddingInline: "var(--c97-sp-2)", paddingTop: "var(--c97-sp-1)", paddingBottom: "var(--c97-sp-2)" }}>
           {emptyLabel ?? `No ${title.toLowerCase()} yet this season.`}
         </p>
       ) : (
-        <div className="px-4 pb-3.5">
+        <div style={{ paddingInline: "var(--c97-sp-2)", paddingBottom: "var(--c97-sp-2)" }}>
           {entries.map((entry) => (
             <div
               key={`${title}-${entry.rank}-${entry.name}`}
-              className="flex items-center gap-3 border-b border-[color-mix(in_srgb,var(--c97-rule)_50%,transparent)] py-2.5 last:border-b-0"
+              className="flex items-center border-b border-[color-mix(in_srgb,var(--c97-rule)_50%,transparent)] last:border-b-0" style={{ paddingBlock: "var(--c97-sp-1)", gap: "var(--c97-sp-1)" }}
             >
               <span className="w-5 flex-shrink-0 font-mono text-sm text-[var(--c97-ink-2)]">{entry.rank}</span>
               <span className="min-w-0 flex-1 truncate text-sm font-semibold text-[var(--c97-ink)]">{entry.name}</span>
@@ -44,7 +44,7 @@ export function LeaderLedger({
               </span>
               <span className="flex-shrink-0 font-mono text-base tabular-nums text-[var(--c97-ink)]">
                 {entry.value}
-                <span className="ml-1 text-2xs text-[var(--c97-ink-2)]">{unit}</span>
+                <span className="text-2xs text-[var(--c97-ink-2)]" style={{ marginLeft: "var(--c97-sp-0)" }}>{unit}</span>
               </span>
             </div>
           ))}

@@ -45,7 +45,7 @@ The site is portfolio-first. `Writing` is live and promoted in the global header
 | `/` | Homepage |
 | `/about` | Background and journey |
 | `/portfolio` | Projects index |
-| `/portfolio/[slug]` | Project detail |
+| `/portfolio/[slug]` | Permanent redirect from each case study slug to its live tool |
 | `/dashboards` | Index of the live dashboards, tools, and calculators |
 | `/investments` | Investment research platform |
 | `/premier-league` | Premier League dashboard |
@@ -91,6 +91,7 @@ The site is portfolio-first. `Writing` is live and promoted in the global header
 | `/resume` | Resume |
 | `/contact` | Contact page |
 | `/accessibility` | Accessibility statement |
+| `/privacy` | Privacy page |
 | `/search` | Site search UI |
 
 Redirects:

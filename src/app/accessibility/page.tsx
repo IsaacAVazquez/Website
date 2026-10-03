@@ -10,7 +10,7 @@ export const metadata: Metadata = constructMetadata({
   title: "Accessibility Statement | Isaac Vazquez",
   description: accessibilityDescription,
   canonicalUrl: "https://isaacvazquez.com/accessibility",
-  dateModified: "2026-07-16",
+  dateModified: "2026-10-02",
 });
 
 const accessibilityFeatures = [
@@ -85,7 +85,7 @@ export default function AccessibilityPage() {
           title: "Accessibility Statement",
           description: accessibilityDescription,
           url: "https://isaacvazquez.com/accessibility",
-          dateModified: "2026-07-16",
+          dateModified: "2026-10-02",
         }}
       />
       <StructuredData
@@ -107,7 +107,7 @@ export default function AccessibilityPage() {
         aria-label="Accessibility statement"
       >
         <div className="c97-shell">
-          <p className="c97-kicker">Accessibility · Updated April 2026</p>
+          <p className="c97-kicker">Accessibility statement · Reviewed October 2026</p>
           <h1 className="c97-display" style={{ marginTop: "var(--c97-sp-3)" }}>
             How I approach accessibility on this site.
           </h1>
@@ -127,7 +127,7 @@ export default function AccessibilityPage() {
       {/* Conformance status */}
       <section className="c97-band c97-band-continues" data-c97-surface="paper">
         <div className="c97-shell">
-          <p className="c97-kicker">Accessibility</p>
+          <p className="c97-kicker">WCAG 2.1 AA</p>
           <h2 className="c97-serif c97-h2" style={{ marginTop: "var(--c97-sp-2)" }}>
             Conformance status
           </h2>
@@ -148,10 +148,7 @@ export default function AccessibilityPage() {
       {/* Accessibility features */}
       <section className="c97-band c97-sheet" data-c97-surface="bone" data-seam="deckle">
         <div className="c97-shell">
-          <p className="c97-kicker">Accessibility</p>
-          <h2 className="c97-serif c97-h2" style={{ marginTop: "var(--c97-sp-2)" }}>
-            Accessibility features
-          </h2>
+          <h2 className="c97-serif c97-h2">Accessibility features</h2>
           <div className="c97-columns" style={{ marginTop: "var(--c97-sp-4)" }}>
             {accessibilityFeatures.map((feature) => (
               <div key={feature.title}>
@@ -174,10 +171,7 @@ export default function AccessibilityPage() {
       {/* Keyboard shortcuts */}
       <section className="c97-band c97-sheet" data-c97-surface="paper" data-seam="deckle">
         <div className="c97-shell">
-          <p className="c97-kicker">Accessibility</p>
-          <h2 className="c97-serif c97-h2" style={{ marginTop: "var(--c97-sp-2)" }}>
-            Keyboard shortcuts
-          </h2>
+          <h2 className="c97-serif c97-h2">Keyboard shortcuts</h2>
           <div
             role="region"
             aria-label="Keyboard shortcuts"
@@ -289,8 +283,8 @@ export default function AccessibilityPage() {
       <section className="c97-band c97-sheet" data-c97-surface="paper" data-seam="deckle">
         <div className="c97-shell">
           <p className="c97-prose" style={{ color: "var(--c97-ink-2)" }}>
-            This statement was written in November 2025 and I update it as the site changes. For more
-            on web accessibility, visit the{" "}
+            I first wrote this statement in November 2025, last reviewed it in October 2026, and update
+            it as the site changes. For more on web accessibility, visit the{" "}
             <a
               href="https://www.w3.org/WAI/"
               target="_blank"

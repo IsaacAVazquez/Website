@@ -37,7 +37,7 @@ export function MissionVehiclePhoto({
         className="absolute inset-0 bg-[linear-gradient(180deg,color-mix(in_srgb,var(--c97-surface)_10%,transparent)_0%,transparent_36%,color-mix(in_srgb,var(--c97-surface)_78%,transparent)_100%)]"
       />
       <div className="absolute inset-x-0 top-0 flex justify-between" style={{ padding: "var(--c97-sp-2)" }}>
-        <span className="border border-[color-mix(in_srgb,var(--c97-surface)_30%,var(--c97-rule))] bg-[color-mix(in_srgb,var(--c97-surface)_74%,transparent)] py-1 font-mono text-3xs font-semibold uppercase tracking-[0.22em] text-[var(--c97-ink)]" style={{ paddingInline: "var(--c97-sp-1)" }}>
+        <span className="border border-[color-mix(in_srgb,var(--c97-surface)_30%,var(--c97-rule))] bg-[color-mix(in_srgb,var(--c97-surface)_74%,transparent)] font-mono text-3xs font-semibold uppercase tracking-[0.22em] text-[var(--c97-ink)]" style={{ paddingInline: "var(--c97-sp-1)", paddingBlock: "var(--c97-sp-0)" }}>
           {label}
         </span>
       </div>

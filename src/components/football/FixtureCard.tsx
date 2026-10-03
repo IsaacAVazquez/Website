@@ -48,19 +48,16 @@ export function FixtureCard({
 
   return (
     <div
-      className={cn(
-        "border border-[var(--c97-rule)] bg-[var(--c97-field)]",
-        compact ? "px-3 py-2.5" : "px-4 py-4"
-      )}
-      style={style}
+      className="border border-[var(--c97-rule)] bg-[var(--c97-field)]"
+      style={{ padding: compact ? "var(--c97-sp-1)" : "var(--c97-sp-2)", ...style }}
     >
-      <div className="flex flex-wrap items-start justify-between gap-3">
+      <div className="flex flex-wrap items-start justify-between" style={{ gap: "var(--c97-sp-1)" }}>
         {!compact && (
           <div>
             <p className="text-xs font-semibold uppercase tracking-[0.14em] text-[var(--c97-label)]">
               {fixture.matchday ? `${periodLabel} ${fixture.matchday}` : fallbackLabel}
             </p>
-            <p className="mt-1 flex items-center gap-2 text-sm text-[var(--c97-ink-2)]">
+            <p className="flex items-center text-sm text-[var(--c97-ink-2)]" style={{ marginTop: "var(--c97-sp-0)", gap: "var(--c97-sp-1)" }}>
               <Clock3 className="h-4 w-4 text-[var(--c97-accent)]" />
               {fixture.status === "FINISHED"
                 ? `Final · ${formatFixtureDateTime(fixture)}`
@@ -69,7 +66,7 @@ export function FixtureCard({
           </div>
         )}
         {compact && (
-          <p className="flex items-center gap-1.5 text-xs text-[var(--c97-label)]">
+          <p className="flex items-center text-xs text-[var(--c97-label)]" style={{ gap: "var(--c97-sp-0)" }}>
             <Clock3 className="h-3 w-3" />
             {fixture.status === "FINISHED" ? "Final" : formatFixtureDateTime(fixture)}
           </p>
@@ -77,7 +74,13 @@ export function FixtureCard({
         {contextualResult ? <TeamResultPill result={contextualResult} /> : null}
       </div>
 
-      <div className={compact ? "mt-2 space-y-1.5" : "mt-4 space-y-3"}>
+      <div
+        className="flex flex-col"
+        style={{
+          marginTop: compact ? "var(--c97-sp-1)" : "var(--c97-sp-2)",
+          rowGap: compact ? "var(--c97-sp-0)" : "var(--c97-sp-1)",
+        }}
+      >
         {[fixture.homeTeam, fixture.awayTeam].map((team, index) => {
           const isHome = index === 0;
           const score = isHome ? fixture.score.home : fixture.score.away;
@@ -87,12 +90,12 @@ export function FixtureCard({
             (!isHome && fixture.score.winner === "AWAY_TEAM");
 
           return (
-            <div key={`${fixture.id}-${team.id}`} className="flex items-center justify-between gap-3">
+            <div key={`${fixture.id}-${team.id}`} className="flex items-center justify-between" style={{ gap: "var(--c97-sp-1)" }}>
               {onOpenTeam ? (
                 <button
                   type="button"
                   onClick={() => onOpenTeam(team.id)}
-                  className="flex min-h-[44px] min-w-0 flex-1 items-center gap-3 text-left transition-colors hover:text-[var(--c97-accent)] focus-visible:text-[var(--c97-accent)]"
+                  className="flex min-h-[44px] min-w-0 flex-1 items-center text-left transition-colors hover:text-[var(--c97-accent)] focus-visible:text-[var(--c97-accent)]" style={{ gap: "var(--c97-sp-1)" }}
                 >
                   <CrestAvatar crest={team.crest} name={team.shortName} size="sm" />
                   <span
@@ -105,7 +108,7 @@ export function FixtureCard({
                   </span>
                 </button>
               ) : (
-                <div className="flex min-w-0 flex-1 items-center gap-3">
+                <div className="flex min-w-0 flex-1 items-center" style={{ gap: "var(--c97-sp-1)" }}>
                   <CrestAvatar crest={team.crest} name={team.shortName} size="sm" />
                   <span
                     className={cn(
@@ -122,7 +125,7 @@ export function FixtureCard({
                   <>
                     {score}
                     {shootout != null ? (
-                      <span className="ml-1 text-xs font-medium text-[var(--c97-label)]">
+                      <span className="text-xs font-medium text-[var(--c97-label)]" style={{ marginLeft: "var(--c97-sp-0)" }}>
                         ({shootout})
                       </span>
                     ) : null}

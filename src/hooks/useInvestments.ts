@@ -5,9 +5,9 @@ import type {
   PortfolioHolding,
   EnhancedHolding,
   PortfolioSummary,
+  PortfolioSnapshot,
   StockQuote,
 } from "@/types/investment";
-import type { PortfolioSnapshot } from "@/components/investments/PortfolioPerformanceChart";
 import {
   readValidatedBrowserStorage,
   subscribeBrowserStorage,

@@ -47,7 +47,7 @@ export function MissionDrawer({
   return (
     <>
       {isOpen ? (
-        <div className="c97-enter-fade fixed inset-0 z-[60] flex justify-end">
+        <div className="c97-enter-fade fixed inset-0 z-[var(--c97-z-drawer)] flex justify-end">
           <button
             type="button"
             aria-label="Close mission detail"
@@ -98,8 +98,8 @@ export function MissionDrawer({
                     </h2>
                     {status ? (
                       <span
-                        className="mt-1.5 inline-flex items-center gap-1.5 font-mono text-3xs uppercase tracking-[0.08em]"
-                        style={{ color: accent }}
+                        className="inline-flex items-center font-mono text-3xs uppercase tracking-[0.08em]"
+                        style={{ color: accent, marginTop: "var(--c97-sp-0)", gap: "var(--c97-sp-0)" }}
                       >
                         <span aria-hidden="true" className="h-1.5 w-1.5 bg-current" />
                         {MISSION_STATUS_LABEL[status]}

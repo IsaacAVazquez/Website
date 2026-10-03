@@ -34,9 +34,9 @@ function CompareRow({ label, value, industryAvg }: { label: string; value: numbe
       : value >= industryAvg
     : null;
   return (
-    <div className="flex items-center gap-3 py-2.5 border-b border-[var(--c97-rule)] last:border-0">
+    <div className="flex items-center border-b border-[var(--c97-rule)] last:border-0" style={{ gap: "var(--c97-sp-1)", paddingBlock: "var(--c97-sp-1)" }}>
       <span className="text-sm text-[var(--c97-ink-2)] flex-1">{label}</span>
-      <div className="flex items-center gap-4 shrink-0">
+      <div className="flex items-center shrink-0" style={{ gap: "var(--c97-sp-2)" }}>
         <div className="text-right">
           <p className="text-xs text-[var(--c97-label)]">Stock</p>
           <p className="text-sm font-semibold text-[var(--c97-ink)]">{formatComparisonMetricValue(label, value)}</p>
@@ -47,7 +47,8 @@ function CompareRow({ label, value, industryAvg }: { label: string; value: numbe
         </div>
         {hasComparison && (
           <span
-            className={`text-xs font-medium px-1.5 py-0.5 ${
+            style={{ paddingInline: "var(--c97-sp-0)" }}
+            className={`text-xs font-medium py-0.5 ${
               favorable
                 ? "bg-[color-mix(in_srgb,var(--c97-positive)_12%,var(--c97-panel))] text-[color-mix(in_srgb,var(--c97-positive)_70%,var(--c97-ink))]"
                 : "bg-[color-mix(in_srgb,var(--c97-negative)_11%,var(--c97-panel))] text-[color-mix(in_srgb,var(--c97-negative)_70%,var(--c97-ink))]"
@@ -80,14 +81,14 @@ function StandaloneMetric({
   detail?: string;
 }) {
   return (
-    <div className="border border-[var(--c97-rule)] bg-[var(--c97-panel)] px-4 py-3">
-      <p className="flex items-center gap-1 text-2xs font-semibold uppercase tracking-[0.18em] text-[var(--c97-label)]">
+    <div className="border border-[var(--c97-rule)] bg-[var(--c97-panel)]" style={{ paddingInline: "var(--c97-sp-2)", paddingBlock: "var(--c97-sp-1)" }}>
+      <p className="flex items-center text-2xs font-semibold uppercase tracking-[0.18em] text-[var(--c97-label)]" style={{ gap: "var(--c97-sp-0)" }}>
         {label}
         <MetricTooltip term={label} />
       </p>
-      <p className="mt-2 text-lg font-semibold text-[var(--c97-ink)]">{value}</p>
+      <p className="text-lg font-semibold text-[var(--c97-ink)]" style={{ marginTop: "var(--c97-sp-1)" }}>{value}</p>
       {detail ? (
-        <p className="mt-1 text-xs text-[var(--c97-ink-2)]">{detail}</p>
+        <p className="text-xs text-[var(--c97-ink-2)]" style={{ marginTop: "var(--c97-sp-0)" }}>{detail}</p>
       ) : null}
     </div>
   );
@@ -126,29 +127,29 @@ export function ValuationRatiosPanel({
   if (!showIndustryComparison) {
     return (
       <TerminalPanel padding="sm">
-        <h3 className="text-sm font-semibold text-[var(--c97-ink)] mb-1">
+        <h3 className="text-sm font-semibold text-[var(--c97-ink)]" style={{ marginBottom: "var(--c97-sp-0)" }}>
           Valuation snapshot
         </h3>
-        <p className="text-xs text-[var(--c97-label)] mb-4">
+        <p className="text-xs text-[var(--c97-label)]" style={{ marginBottom: "var(--c97-sp-2)" }}>
           Standalone valuation view when industry comparison data is unavailable
           for this curated research symbol.
         </p>
 
-        <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 xl:grid-cols-3">
+        <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3" style={{ gap: "var(--c97-sp-1)" }}>
           <StandaloneMetric
             label="P/E (TTM)"
             value={formatValue(fundamentals?.ttmPe)}
           />
           <StandaloneMetric
-            label="P/S Ratio"
+            label="P/S ratio"
             value={formatValue(fundamentals?.psRatio)}
           />
           <StandaloneMetric
-            label="P/B Ratio"
+            label="P/B ratio"
             value={formatValue(fundamentals?.pbRatio)}
           />
           <StandaloneMetric
-            label="PEG Ratio"
+            label="PEG ratio"
             value={formatValue(fundamentals?.pegRatio)}
           />
           <StandaloneMetric
@@ -160,7 +161,7 @@ export function ValuationRatiosPanel({
             value={formatValue(wacc?.wacc, "percent")}
           />
           <StandaloneMetric
-            label="Market Cap"
+            label="Market cap"
             value={
               fundamentals?.marketCap !== undefined
                 ? new Intl.NumberFormat("en-US", {
@@ -179,13 +180,13 @@ export function ValuationRatiosPanel({
 
   return (
     <TerminalPanel padding="sm">
-      <h3 className="text-sm font-semibold text-[var(--c97-ink)] mb-1">Valuation vs industry</h3>
-      <p className="text-xs text-[var(--c97-label)] mb-3">
+      <h3 className="text-sm font-semibold text-[var(--c97-ink)]" style={{ marginBottom: "var(--c97-sp-0)" }}>Valuation vs industry</h3>
+      <p className="text-xs text-[var(--c97-label)]" style={{ marginBottom: "var(--c97-sp-1)" }}>
         Comparing this stock&apos;s valuation ratios against its industry average.
       </p>
 
       {isLoading && (
-        <div className="space-y-2" role="status" aria-busy="true">
+        <div className="flex flex-col" style={{ rowGap: "var(--c97-sp-1)" }} role="status" aria-busy="true">
           <span className="sr-only">Loading valuation ratios</span>
           {Array.from({ length: 5 }).map((_, i) => (
             <span key={i} className="c97-skeleton" style={{ height: 40 }} />

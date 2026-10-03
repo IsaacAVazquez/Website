@@ -105,10 +105,15 @@ export function Catalog97Dashboards({
       body: "football-data.org for both football leagues, Launch Library 2 for launches, and the BART public API for transit.",
     },
     {
+      // The page says the fail-soft rule here and nowhere else. The investments
+      // count, when there is one, follows it as the worked example.
       title: "Stale data is labeled",
-      body:
-        staleNote ??
-        "A panel that could not refresh keeps its last snapshot and prints that snapshot's date.",
+      body: [
+        "If a pull fails, the panel keeps its last snapshot and prints that snapshot's date.",
+        staleNote,
+      ]
+        .filter(Boolean)
+        .join(" "),
     },
   ];
   const toolCount = groups.reduce((sum, group) => sum + group.tools.length, 0);
@@ -389,20 +394,6 @@ export function Catalog97Dashboards({
           </div>
         </section>
       ) : null}
-
-      {/* The fail-soft line, in poster type on the page's saffron. */}
-      <section
-        className="c97-band c97-band-tall c97-sheet"
-        data-c97-surface="ink-saffron"
-        data-seam="torn"
-      >
-        <div className="c97-shell">
-          <p className="c97-poster-sm" style={{ maxWidth: "24ch" }}>
-            If a pull fails, the panel keeps the previous snapshot and shows its
-            date.
-          </p>
-        </div>
-      </section>
 
       {/* How the data works */}
       <section

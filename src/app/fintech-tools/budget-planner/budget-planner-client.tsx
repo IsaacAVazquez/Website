@@ -227,7 +227,7 @@ export function BudgetPlannerClient() {
         </p>
         <section className="c97-band c97-sheet" data-c97-surface="paper" data-seam="torn">
           <div className="c97-shell">
-            <div className="flex flex-wrap items-center justify-between gap-3">
+            <div className="flex flex-wrap items-center justify-between" style={{ gap: "var(--c97-sp-1)" }}>
               <div className="flex flex-wrap items-center" style={{ gap: "var(--c97-sp-2)" }}>
                 <button
                   type="button"
@@ -295,7 +295,7 @@ export function BudgetPlannerClient() {
         <section className="c97-band c97-sheet" data-c97-surface="bone" data-seam="deckle">
           <div className="c97-shell">
             <h2 className="c97-poster-sm">Income</h2>
-            <div className="grid gap-3 sm:grid-cols-2" style={{ marginTop: "var(--c97-sp-3)" }}>
+            <div className="grid sm:grid-cols-2" style={{ gap: "var(--c97-sp-1)", marginTop: "var(--c97-sp-3)" }}>
               <label style={{ display: "block" }}>
                 <span className="c97-kicker">Monthly income</span>
                 <input
@@ -326,7 +326,7 @@ export function BudgetPlannerClient() {
 
         <section className="c97-band c97-sheet" data-c97-surface="paper" data-seam="torn">
           <div className="c97-shell">
-            <div className="flex flex-wrap items-end justify-between gap-3">
+            <div className="flex flex-wrap items-end justify-between" style={{ gap: "var(--c97-sp-1)" }}>
               <h2 className="c97-poster-sm">Categories</h2>
               <p className="c97-meta">Budgeted {formatDollars(summary.budgetedTotal)}</p>
             </div>
@@ -339,13 +339,14 @@ export function BudgetPlannerClient() {
                 return (
                   <div
                     key={category.id}
-                    className="grid gap-2"
+                    className="grid"
                     style={{
+                      gap: "var(--c97-sp-1)",
                       padding: "var(--c97-sp-2) 0",
                       borderBottom: "1px solid var(--c97-rule)",
                     }}
                   >
-                    <div className="grid items-center gap-2 sm:grid-cols-[minmax(0,1fr)_120px_auto]">
+                    <div className="grid items-center sm:grid-cols-[minmax(0,1fr)_120px_auto]" style={{ gap: "var(--c97-sp-1)" }}>
                       <label className="min-w-0" style={{ display: "block" }}>
                         <span className="sr-only">Category name for {displayName}</span>
                         <input
@@ -403,8 +404,8 @@ export function BudgetPlannerClient() {
 
             <form
               onSubmit={handleAddCategory}
-              className="flex flex-col gap-2 sm:flex-row"
-              style={{ marginTop: "var(--c97-sp-3)" }}
+              className="flex flex-col sm:flex-row"
+              style={{ gap: "var(--c97-sp-1)", marginTop: "var(--c97-sp-3)" }}
             >
               <label className="flex-1">
                 <span className="sr-only">New category name</span>
@@ -427,7 +428,7 @@ export function BudgetPlannerClient() {
 
         <section className="c97-band c97-sheet" data-c97-surface="bone" data-seam="deckle">
           <div className="c97-shell">
-            <div className="flex flex-wrap items-end justify-between gap-3">
+            <div className="flex flex-wrap items-end justify-between" style={{ gap: "var(--c97-sp-1)" }}>
               <h2 className="c97-poster-sm">Expenses ledger</h2>
               <p className="c97-meta">
                 {summary.expenseEntries.length} {summary.expenseEntries.length === 1 ? "entry" : "entries"}
@@ -441,8 +442,8 @@ export function BudgetPlannerClient() {
             ) : null}
             <form
               onSubmit={handleExpenseSubmit}
-              className="grid gap-3 sm:grid-cols-[minmax(0,1fr)_minmax(0,140px)_minmax(0,160px)_minmax(0,1fr)_auto]"
-              style={{ marginTop: "var(--c97-sp-3)", alignItems: "end" }}
+              className="grid sm:grid-cols-[minmax(0,1fr)_minmax(0,140px)_minmax(0,160px)_minmax(0,1fr)_auto]"
+              style={{ gap: "var(--c97-sp-1)", marginTop: "var(--c97-sp-3)", alignItems: "end" }}
             >
               <label style={{ display: "block" }}>
                 <span className="c97-kicker">Category</span>

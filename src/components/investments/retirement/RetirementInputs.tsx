@@ -72,7 +72,7 @@ export function RetirementInputs({ controller, result, portfolioValue }: Props) 
             visitor edits something these are not their numbers and the caption
             must not claim they are. */}
         <p className="invest-rail-section-label">
-          <Wallet size={12} aria-hidden="true" className="mr-1.5 inline align-middle" />
+          <Wallet size={12} aria-hidden="true" className="inline align-middle" style={{ marginRight: "var(--c97-sp-0)" }} />
           {isSampleScenario ? "Example numbers" : "Your numbers"}
         </p>
         {confirmReset ? (

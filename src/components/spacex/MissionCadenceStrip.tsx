@@ -26,7 +26,7 @@ export function MissionCadenceStrip({ cadence }: MissionCadenceStripProps) {
       role="img"
       aria-label={`Launches per month, ${cadence.rangeLabel}`}
     >
-      <div className="flex h-11 items-end gap-[3px]">
+      <div className="flex h-11 items-end" style={{ gap: "var(--c97-sp-0)" }}>
         {cadence.points.map((point, index) => (
           <span
             key={point.monthKey}

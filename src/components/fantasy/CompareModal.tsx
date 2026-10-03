@@ -147,13 +147,14 @@ export function CompareModal({
         const signal =
           adpAvailable && valueSignalAvailable && !isWithheld(p) ? getValueVsAdp(p) : null;
         return (
-          <span className="inline-flex items-center gap-1.5">
+          <span className="inline-flex items-center" style={{ gap: "var(--c97-sp-0)" }}>
             {adpAvailable ? formatAdp(p.adp) : "Unavailable"}
             {signal?.signal && (
               <span
-                className="px-1.5 py-0.5 text-3xs font-semibold uppercase"
+                className="py-0.5 text-3xs font-semibold uppercase"
                 title={signal.signal === "value" ? FANTASY_VALUE_TOOLTIP : FANTASY_REACH_TOOLTIP}
                 style={{
+                  paddingInline: "var(--c97-sp-0)",
                   background:
                     signal.signal === "value"
                       ? "color-mix(in srgb, var(--c97-positive) 16%, var(--c97-surface))"
@@ -185,7 +186,7 @@ export function CompareModal({
   ];
 
   return (
-    <div className="c97-enter-fade fixed inset-0 z-[70] flex items-center justify-center p-4">
+    <div className="c97-enter-fade fixed inset-0 z-[var(--c97-z-modal)] flex items-center justify-center" style={{ padding: "var(--c97-sp-2)" }}>
       <button
         type="button"
         aria-label="Close compare"
@@ -200,10 +201,10 @@ export function CompareModal({
         aria-modal="true"
         aria-label="Compare players"
         tabIndex={-1}
-        className="c97-enter-pop relative max-h-[88vh] w-full max-w-2xl overscroll-contain overflow-auto border p-5"
-        style={{ borderColor: "var(--c97-rule)", background: "var(--c97-surface)" }}
+        className="c97-enter-pop relative max-h-[88vh] w-full max-w-2xl overscroll-contain overflow-auto border"
+        style={{ padding: "var(--c97-sp-2)", borderColor: "var(--c97-rule)", background: "var(--c97-surface)" }}
       >
-        <div className="mb-4 flex items-center justify-between">
+        <div className="flex items-center justify-between" style={{ marginBottom: "var(--c97-sp-2)" }}>
           <div>
             <p className="c97-kicker">Side by side</p>
             <h2 className="c97-serif c97-h3">Compare players</h2>
@@ -272,16 +273,16 @@ export function CompareModal({
                        height sitting on the same baseline. Aligned bottom,
                        "Trey McBride" rendered 20px lower and 20px shorter
                        than "Washington Commanders" beside it. */
-                    className="h-full p-0 pl-2 align-top font-normal"
+                    className="h-full p-0 align-top font-normal" style={{ paddingLeft: "var(--c97-sp-1)" }}
                   >
                     <div
-                      className="flex h-full flex-col items-start gap-1 border p-2.5"
-                      style={{ borderColor: "var(--c97-rule)", background: "color-mix(in srgb, var(--c97-surface) 88%, var(--c97-field))" }}
+                      className="flex h-full flex-col items-start border"
+                      style={{ padding: "var(--c97-sp-1)", gap: "var(--c97-sp-0)", borderColor: "var(--c97-rule)", background: "color-mix(in srgb, var(--c97-surface) 88%, var(--c97-field))" }}
                     >
-                      <div className="flex w-full items-start justify-between gap-1">
+                      <div className="flex w-full items-start justify-between" style={{ gap: "var(--c97-sp-0)" }}>
                         <span
-                          className="inline-flex items-center border px-2 py-0.5 text-3xs font-semibold uppercase tracking-[0.1em]"
-                          style={getPositionTone(player.position)}
+                          className="inline-flex items-center border py-0.5 text-3xs font-semibold uppercase tracking-[0.1em]"
+                          style={{ paddingInline: "var(--c97-sp-1)", ...(getPositionTone(player.position)) }}
                         >
                           {player.position}
                         </span>
@@ -316,16 +317,18 @@ export function CompareModal({
                   <tr key={row.key}>
                     <th
                       scope="row"
-                      className="sticky left-0 z-10 py-2 pr-2 text-2xs font-semibold uppercase tracking-[0.1em]"
-                      style={{ color: "var(--c97-ink-2)", background: "var(--c97-surface)" }}
+                      className="sticky left-0 z-10 text-2xs font-semibold uppercase tracking-[0.1em]"
+                      style={{ paddingBlock: "var(--c97-sp-1)", paddingRight: "var(--c97-sp-1)", color: "var(--c97-ink-2)", background: "var(--c97-surface)" }}
                     >
                       {row.label}
                     </th>
                     {players.map((player, index) => (
                       <td
                         key={player.id}
-                        className="border-t py-2 pl-2 text-sm font-semibold tabular-nums"
+                        className="border-t text-sm font-semibold tabular-nums"
                         style={{
+                          paddingBlock: "var(--c97-sp-1)",
+                          paddingLeft: "var(--c97-sp-1)",
                           borderColor: "var(--c97-rule)",
                           background:
                             winner === index
@@ -333,13 +336,13 @@ export function CompareModal({
                               : "transparent",
                         }}
                       >
-                        <span className="inline-flex flex-wrap items-center gap-x-2 gap-y-1">
+                        <span className="inline-flex flex-wrap items-center" style={{ columnGap: "var(--c97-sp-1)", rowGap: "var(--c97-sp-0)" }}>
                           {row.render(player)}
                           {/* The tint alone carried the whole meaning before,
                               so the win is a labeled token now and the wash
                               only reinforces it. */}
                           {winner === index && (
-                            <span className="inline-flex items-center gap-1 text-3xs font-semibold uppercase tracking-[0.1em]">
+                            <span className="inline-flex items-center text-3xs font-semibold uppercase tracking-[0.1em]" style={{ gap: "var(--c97-sp-0)" }}>
                               <Check size={12} aria-hidden="true" />
                               Best
                             </span>
@@ -356,13 +359,13 @@ export function CompareModal({
                 <tr>
                   <th
                     scope="row"
-                    className="sticky left-0 z-10 py-3 pr-2 align-top text-2xs font-semibold uppercase tracking-[0.1em]"
-                    style={{ color: "var(--c97-ink-2)", background: "var(--c97-surface)" }}
+                    className="sticky left-0 z-10 align-top text-2xs font-semibold uppercase tracking-[0.1em]"
+                    style={{ paddingBlock: "var(--c97-sp-1)", paddingRight: "var(--c97-sp-1)", color: "var(--c97-ink-2)", background: "var(--c97-surface)" }}
                   >
                     Range
                   </th>
                   {players.map((player) => (
-                    <td key={player.id} className="border-t py-3 pl-2" style={{ borderColor: "var(--c97-rule)" }}>
+                    <td key={player.id} className="border-t" style={{ paddingBlock: "var(--c97-sp-1)", paddingLeft: "var(--c97-sp-1)", borderColor: "var(--c97-rule)" }}>
                       <RankDistributionBar player={player} scaleMin={scaleMin} scaleMax={scaleMax} compact />
                     </td>
                   ))}
@@ -372,7 +375,7 @@ export function CompareModal({
           </table>
         </div>
 
-        <p className="mt-4 text-2xs" style={{ color: "var(--c97-ink-2)" }}>
+        <p className="text-2xs" style={{ marginTop: "var(--c97-sp-2)", color: "var(--c97-ink-2)" }}>
           Best marks the stronger value on a row, meaning a lower rank or ADP and a higher rostered percentage.
           Differences too small to act on stay unmarked, so a tier apart counts and a tenth of a point of rostered
           does not. Range bars share one scale, so a wider fill means more expert disagreement.

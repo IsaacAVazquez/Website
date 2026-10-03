@@ -34,9 +34,9 @@ export function CrestAvatar({
         loading="lazy"
         decoding="async"
         className={cn(
-          "border border-[var(--c97-rule)] bg-[var(--c97-print-bone)] object-contain p-1",
+          "border border-[var(--c97-rule)] bg-[var(--c97-print-bone)] object-contain",
           dimensionClass
-        )}
+        )} style={{ padding: "var(--c97-sp-0)" }}
       />
     );
   }

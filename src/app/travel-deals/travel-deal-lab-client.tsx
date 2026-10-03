@@ -411,42 +411,50 @@ export function TravelDealLabClient() {
 
               <div>
                 <h3 className="c97-serif c97-h3">The budget, split to spend</h3>
-                <table className="c97-table" style={{ marginTop: "var(--c97-sp-2)" }}>
-                  <thead>
-                    <tr>
-                      <th>Category</th>
-                      <th data-align="end">Amount</th>
-                      <th>Note</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>Flights</td>
-                      <td data-align="end">{formatUsd(budget.flights)}</td>
-                      <td>≈35% of budget</td>
-                    </tr>
-                    <tr>
-                      <td>Lodging</td>
-                      <td data-align="end">{formatUsd(budget.lodging)}</td>
-                      <td>{formatUsd(budget.lodgingPerNight)} a night</td>
-                    </tr>
-                    <tr>
-                      <td>Food</td>
-                      <td data-align="end">{formatUsd(budget.food)}</td>
-                      <td>{formatUsd(budget.foodPerDayPerPerson)} a day per traveler</td>
-                    </tr>
-                    <tr>
-                      <td>Activities</td>
-                      <td data-align="end">{formatUsd(budget.activities)}</td>
-                      <td>≈10% of budget</td>
-                    </tr>
-                    <tr>
-                      <td>Buffer</td>
-                      <td data-align="end">{formatUsd(budget.buffer)}</td>
-                      <td>Fees, tips, surprises</td>
-                    </tr>
-                  </tbody>
-                </table>
+                <div
+                  className="overflow-x-auto"
+                  role="region"
+                  aria-label="Budget split (scrolls sideways)"
+                  tabIndex={0}
+                  style={{ marginTop: "var(--c97-sp-2)" }}
+                >
+                  <table className="c97-table">
+                    <thead>
+                      <tr>
+                        <th>Category</th>
+                        <th data-align="end">Amount</th>
+                        <th>Note</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>Flights</td>
+                        <td data-align="end">{formatUsd(budget.flights)}</td>
+                        <td>≈35% of budget</td>
+                      </tr>
+                      <tr>
+                        <td>Lodging</td>
+                        <td data-align="end">{formatUsd(budget.lodging)}</td>
+                        <td>{formatUsd(budget.lodgingPerNight)} a night</td>
+                      </tr>
+                      <tr>
+                        <td>Food</td>
+                        <td data-align="end">{formatUsd(budget.food)}</td>
+                        <td>{formatUsd(budget.foodPerDayPerPerson)} a day per traveler</td>
+                      </tr>
+                      <tr>
+                        <td>Activities</td>
+                        <td data-align="end">{formatUsd(budget.activities)}</td>
+                        <td>≈10% of budget</td>
+                      </tr>
+                      <tr>
+                        <td>Buffer</td>
+                        <td data-align="end">{formatUsd(budget.buffer)}</td>
+                        <td>Fees, tips, surprises</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
                 <p className="c97-meta c97-tabular" style={{ marginTop: "var(--c97-sp-2)" }}>
                   {budget.days} days · {budget.travelers} traveler{budget.travelers === 1 ? "" : "s"}
                 </p>

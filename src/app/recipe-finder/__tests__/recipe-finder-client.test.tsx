@@ -41,7 +41,7 @@ describe("RecipeFinderClient", () => {
   it("filters by search, view, meal, diet, and opens recipe detail", () => {
     render(<RecipeFinderClient />);
 
-    fireEvent.change(within(screen.getByLabelText("Search recipes")).getByRole("searchbox"), {
+    fireEvent.change(screen.getByRole("searchbox", { name: "Search recipes" }), {
       target: { value: "chicken" },
     });
     expect(screen.getByLabelText("Matching recipes")).toHaveTextContent(/chicken/i);

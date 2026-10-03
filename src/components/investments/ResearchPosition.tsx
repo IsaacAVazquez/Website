@@ -82,10 +82,10 @@ export function ResearchPosition({ position }: Props) {
       ariaLabel="Your position"
      
     >
-      <div className="mb-4 flex items-center justify-between gap-3">
+      <div className="flex items-center justify-between" style={{ gap: "var(--c97-sp-1)", marginBottom: "var(--c97-sp-2)" }}>
         <div>
           <p className="invest-rail-section-label">Your position</p>
-          <p className="mt-1 text-xs text-[var(--c97-label)]">
+          <p className="text-xs text-[var(--c97-label)]" style={{ marginTop: "var(--c97-sp-0)" }}>
             From your local portfolio. Latest market quote when available, else last saved close.
           </p>
         </div>
@@ -106,8 +106,8 @@ export function ResearchPosition({ position }: Props) {
       </div>
 
       {alloc !== null ? (
-        <div className="mt-4">
-          <div className="mb-1.5 flex items-center justify-between text-xs text-[var(--c97-ink-2)]">
+        <div style={{ marginTop: "var(--c97-sp-2)" }}>
+          <div className="flex items-center justify-between text-xs text-[var(--c97-ink-2)]" style={{ marginBottom: "var(--c97-sp-0)" }}>
             <span>Allocation</span>
             <span className="font-semibold text-[var(--c97-ink)]">
               {alloc.toFixed(1)}%

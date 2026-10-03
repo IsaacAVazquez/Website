@@ -339,7 +339,7 @@ export function WineCellarClient() {
     filters.sort !== DEFAULT_WINE_FILTERS.sort ||
     filters.sortDirection !== DEFAULT_WINE_FILTERS.sortDirection;
 
-  const recentFiveStars = useMemo(
+  const recentTopRated = useMemo(
     () =>
       [...entries]
         .filter((entry) => entry.rating >= 4.5)
@@ -404,10 +404,11 @@ export function WineCellarClient() {
               </div>
 
               <div className="grid sm:grid-cols-2" style={{ gap: "var(--c97-sp-2)" }}>
-                <label className="c97-wine-search" aria-label="Search wines">
+                <label className="c97-wine-search">
                   <Search className="h-3.5 w-3.5" aria-hidden="true" style={{ color: "var(--c97-ink-2)" }} />
                   <input
                     type="search"
+                    aria-label="Search wines"
                     placeholder="Search by name, region, or notes…"
                     value={filters.search}
                     onChange={(event) =>
@@ -799,7 +800,7 @@ export function WineCellarClient() {
                 </form>
               </div>
 
-              {recentFiveStars.length > 0 ? (
+              {recentTopRated.length > 0 ? (
                 <div className="c97-panel">
                   <p
                     className="c97-kicker"
@@ -811,10 +812,10 @@ export function WineCellarClient() {
                     }}
                   >
                     <Star className="h-3 w-3" aria-hidden="true" />
-                    Recent five-stars
+                    Recent 4.5+ stars
                   </p>
                   <ul className="flex flex-col" style={{ gap: "var(--c97-sp-1)" }}>
-                    {recentFiveStars.map((entry) => (
+                    {recentTopRated.map((entry) => (
                       <li key={entry.id}>
                         <button
                           type="button"

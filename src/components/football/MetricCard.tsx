@@ -19,28 +19,28 @@ export function MetricCard({ label, value, detail, icon, className = "" }: Metri
   if (isExtended) {
     return (
       <article className={`c97-panel ${className}`.trim()}>
-        <div className="flex items-center justify-between gap-3">
+        <div className="flex items-center justify-between" style={{ gap: "var(--c97-sp-1)" }}>
           <p className="text-2xs font-semibold uppercase tracking-[0.18em] text-[var(--c97-ink-2)]">
             {label}
           </p>
           {icon ? <span className="text-[var(--c97-ink-2)]">{icon}</span> : null}
         </div>
-        <p className="mt-3 text-2xl font-semibold tracking-[-0.05em] tabular-nums text-[var(--c97-ink)]">
+        <p className="text-2xl font-semibold tracking-[-0.05em] tabular-nums text-[var(--c97-ink)]" style={{ marginTop: "var(--c97-sp-1)" }}>
           {value}
         </p>
         {detail ? (
-          <p className="mt-2 mb-0 text-sm leading-6 text-[var(--c97-ink-2)]">{detail}</p>
+          <p className="mb-0 text-sm leading-6 text-[var(--c97-ink-2)]" style={{ marginTop: "var(--c97-sp-1)" }}>{detail}</p>
         ) : null}
       </article>
     );
   }
 
   return (
-    <div className={`border border-[var(--c97-rule)] bg-[var(--c97-field)] p-4 ${className}`.trim()}>
+    <div className={`border border-[var(--c97-rule)] bg-[var(--c97-field)] ${className}`.trim()} style={{ padding: "var(--c97-sp-2)" }}>
       <p className="text-xs font-semibold uppercase tracking-[0.14em] text-[var(--c97-label)]">
         {label}
       </p>
-      <p className="mt-2 text-xl font-bold tabular-nums text-[var(--c97-ink)]">{value}</p>
+      <p className="text-xl font-bold tabular-nums text-[var(--c97-ink)]" style={{ marginTop: "var(--c97-sp-1)" }}>{value}</p>
     </div>
   );
 }

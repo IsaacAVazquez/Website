@@ -99,13 +99,13 @@ export function MyTeamPanel({ snapshot, board, scoring, onScoringChange }: {
           <p className={styles.supporting}>Set the starting positions used to build your weekly lineup.</p>
         </div>
         <div>
-        <div className="mt-3 flex flex-wrap gap-4">
-          <label className="grid gap-1 text-sm">League size
+        <div className="flex flex-wrap" style={{ marginTop: "var(--c97-sp-1)", gap: "var(--c97-sp-2)" }}>
+          <label className="grid text-sm" style={{ gap: "var(--c97-sp-0)" }}>League size
             <select className={control} value={team.leagueSize} onChange={event => update(current => ({ ...current, leagueSize: Number(event.target.value) }))}>
               {[8, 10, 12, 14, 16].map(size => <option key={size} value={size}>{size} teams</option>)}
             </select>
           </label>
-          <label className="grid gap-1 text-sm">Lineup preset
+          <label className="grid text-sm" style={{ gap: "var(--c97-sp-0)" }}>Lineup preset
             <select className={control} value={REDRAFT_LINEUP_PRESETS.find(preset => sameRedraftLineup(preset.lineup, team.lineup))?.id ?? "custom"}
               onChange={event => { const preset = REDRAFT_LINEUP_PRESETS.find(item => item.id === event.target.value); if (preset) update(current => ({ ...current, lineup: { ...preset.lineup } })); }}>
               <option value="custom" disabled>Custom lineup</option>
@@ -113,14 +113,14 @@ export function MyTeamPanel({ snapshot, board, scoring, onScoringChange }: {
             </select>
           </label>
         </div>
-        <div className="mt-4 flex flex-wrap gap-3">
-          {(["RB", "WR", "TE", "FLEX", "K", "DST"] as const).map(position => <label key={position} className="grid gap-1 text-sm">{position} starters
+        <div className="flex flex-wrap" style={{ marginTop: "var(--c97-sp-2)", gap: "var(--c97-sp-1)" }}>
+          {(["RB", "WR", "TE", "FLEX", "K", "DST"] as const).map(position => <label key={position} className="grid text-sm" style={{ gap: "var(--c97-sp-0)" }}>{position} starters
             <select className={control} value={team.lineup[position]} onChange={event => update(current => ({ ...current, lineup: { ...current.lineup, [position]: Number(event.target.value) } }))}>
               {(position === "RB" ? [1, 2, 3] : position === "WR" ? [1, 2, 3, 4] : position === "TE" ? [1, 2] : position === "FLEX" ? [0, 1, 2, 3] : [0, 1]).map(count => <option key={count}>{count}</option>)}
             </select>
           </label>)}
         </div>
-        <p className="mt-2 text-xs text-[var(--c97-ink-2)]">One starting QB. Flex accepts RB, WR, or TE. Weekly ranks cover QB, RB, WR, and TE.</p>
+        <p className="text-xs text-[var(--c97-ink-2)]" style={{ marginTop: "var(--c97-sp-1)" }}>One starting QB. Flex accepts RB, WR, or TE. Weekly ranks cover QB, RB, WR, and TE.</p>
 
         </div>
       </div>}
@@ -137,11 +137,11 @@ export function MyTeamPanel({ snapshot, board, scoring, onScoringChange }: {
         <label className={styles.searchLabel}>Find a player to roster or mark available
           <span className={styles.searchField}><Search size={20} aria-hidden="true" /><input type="search" className={`${control} w-full`} value={query} onChange={event => setQuery(event.target.value)} placeholder="Player, team, or position" /></span>
         </label>
-        {query.trim() && <p className="mt-2 text-xs text-[var(--c97-ink-2)]">{matches.length ? `Showing up to 12 matches from the weekly board.` : "No weekly match. Add an unranked player below."}</p>}
-        <ul className="mt-2 divide-y divide-[var(--c97-rule)]">
-          {matches.map(player => <li key={player.id} className="flex flex-wrap items-center justify-between gap-2 py-2">
+        {query.trim() && <p className="text-xs text-[var(--c97-ink-2)]" style={{ marginTop: "var(--c97-sp-1)" }}>{matches.length ? `Showing up to 12 matches from the weekly board.` : "No weekly match. Add an unranked player below."}</p>}
+        <ul className="divide-y divide-[var(--c97-rule)]" style={{ marginTop: "var(--c97-sp-1)" }}>
+          {matches.map(player => <li key={player.id} className="flex flex-wrap items-center justify-between" style={{ paddingBlock: "var(--c97-sp-1)", gap: "var(--c97-sp-1)" }}>
             <span className="text-sm">{player.name} · {player.position} {player.team}</span>
-            {team.players.some(p => p.id === player.id) ? <span className="text-xs">On your roster</span> : <div className="flex flex-wrap gap-2">
+            {team.players.some(p => p.id === player.id) ? <span className="text-xs">On your roster</span> : <div className="flex flex-wrap" style={{ gap: "var(--c97-sp-1)" }}>
               <button type="button" className={button} onClick={() => addToRoster(player)} aria-label={`Roster ${player.name}`}>Roster</button>
               <button type="button" className={team.availableIds.includes(player.id) ? styles.selectedButton : button} aria-pressed={team.availableIds.includes(player.id)} aria-label={`Available in my league: ${player.name}`}
                 onClick={() => update(current => ({ ...current, availableIds: current.availableIds.includes(player.id) ? current.availableIds.filter(id => id !== player.id) : [...current.availableIds, player.id] }))}>
@@ -150,9 +150,9 @@ export function MyTeamPanel({ snapshot, board, scoring, onScoringChange }: {
             </div>}
           </li>)}
         </ul>
-        <details className="mt-3">
-          <summary className="min-h-touch cursor-pointer py-3 text-sm">Add a player missing from the weekly board</summary>
-          <form className="mt-2 flex flex-wrap items-end gap-3" onSubmit={event => {
+        <details style={{ marginTop: "var(--c97-sp-1)" }}>
+          <summary className="min-h-touch cursor-pointer text-sm" style={{ paddingBlock: "var(--c97-sp-1)" }}>Add a player missing from the weekly board</summary>
+          <form className="flex flex-wrap items-end" style={{ marginTop: "var(--c97-sp-1)", gap: "var(--c97-sp-1)" }} onSubmit={event => {
             event.preventDefault();
             const name = manualName.trim();
             if (!name) return;
@@ -160,18 +160,18 @@ export function MyTeamPanel({ snapshot, board, scoring, onScoringChange }: {
             addToRoster(known ?? { id: `manual-${manualPosition}-${name.toLowerCase()}`.slice(0, 100), name, team: "", position: manualPosition });
             setManualName("");
           }}>
-            <label className="grid gap-1 text-sm">Player name<input required maxLength={80} className={`${control} w-full`} value={manualName} onChange={event => setManualName(event.target.value)} /></label>
-            <label className="grid gap-1 text-sm">Position<select className={control} value={manualPosition} onChange={event => setManualPosition(event.target.value as MyTeamPlayer["position"])}>
+            <label className="grid text-sm" style={{ gap: "var(--c97-sp-0)" }}>Player name<input required maxLength={80} className={`${control} w-full`} value={manualName} onChange={event => setManualName(event.target.value)} /></label>
+            <label className="grid text-sm" style={{ gap: "var(--c97-sp-0)" }}>Position<select className={control} value={manualPosition} onChange={event => setManualPosition(event.target.value as MyTeamPlayer["position"])}>
               {["QB", "RB", "WR", "TE", "K", "DST"].map(position => <option key={position}>{position}</option>)}
             </select></label>
             <button className={button} type="submit">Add unranked player</button>
           </form>
-          <p className="mt-2 text-xs text-[var(--c97-ink-2)]">Unranked players remain on your roster without a weekly recommendation. Replace a manual entry with its weekly search result when it appears.</p>
+          <p className="text-xs text-[var(--c97-ink-2)]" style={{ marginTop: "var(--c97-sp-1)" }}>Unranked players remain on your roster without a weekly recommendation. Replace a manual entry with its weekly search result when it appears.</p>
         </details>
 
         <h3 className={styles.subheading}>Saved roster</h3>
-        {team.players.length === 0 && <p className="mt-2 text-sm">Search above or import your redraft roster to get started.</p>}
-        <ul className="mt-2 divide-y divide-[var(--c97-rule)]">
+        {team.players.length === 0 && <p className="text-sm" style={{ marginTop: "var(--c97-sp-1)" }}>Search above or import your redraft roster to get started.</p>}
+        <ul className="divide-y divide-[var(--c97-rule)]" style={{ marginTop: "var(--c97-sp-1)" }}>
           {team.players.map(player => <li key={player.id} className={styles.rosterRow}>
             <span><span className={styles.playerName}>{player.name}</span><span className={styles.playerMeta}>{player.position} {player.team}{!weekly.has(player.id) ? " · No weekly rank" : ""}</span></span>
             <button className={styles.textButton} type="button" aria-label={`Remove ${player.name}`} onClick={() => {
@@ -222,22 +222,22 @@ export function MyTeamPanel({ snapshot, board, scoring, onScoringChange }: {
             <p>No players marked available yet.</p>
             <button type="button" className={styles.textButton} onClick={() => setSelectedView("roster")}>Find available players <ArrowRight size={18} aria-hidden="true" /></button>
           </div>}
-          <div className="mt-4 grid gap-3">
-            <label className="grid gap-1 text-sm">Available player to add<select className={`${control} w-full min-w-0`} value={add?.id ?? ""} onChange={event => setAddId(event.target.value)}>
+          <div className="grid" style={{ marginTop: "var(--c97-sp-2)", gap: "var(--c97-sp-1)" }}>
+            <label className="grid text-sm" style={{ gap: "var(--c97-sp-0)" }}>Available player to add<select className={`${control} w-full min-w-0`} value={add?.id ?? ""} onChange={event => setAddId(event.target.value)}>
               <option value="">Choose an available player</option>
               {available.map(player => <option key={player.id} value={player.id}>{player.name} ({player.position})</option>)}
             </select></label>
-            <label className="grid gap-1 text-sm">Roster player to drop<select className={`${control} w-full min-w-0`} value={drop?.id ?? ""} onChange={event => setDropId(event.target.value)}>
+            <label className="grid text-sm" style={{ gap: "var(--c97-sp-0)" }}>Roster player to drop<select className={`${control} w-full min-w-0`} value={drop?.id ?? ""} onChange={event => setDropId(event.target.value)}>
               <option value="">Choose a roster player</option>
               {team.players.map(player => <option key={player.id} value={player.id}>{player.name} ({player.position})</option>)}
             </select></label>
           </div>
           {comparison && add && drop && !stale && <div className={styles.comparisonResult} aria-live="polite">
             <p>{comparison.startingSlot ? `${add.name} enters the ranked lineup at ${comparison.startingSlot}.` : `${add.name} stays outside the ranked starting lineup.`}</p>
-            <p className="mt-2">{comparison.rankGain === null ? "A rank difference is unavailable across separate boards or when either player is unranked." : comparison.rankGain === 0 ? "Both players have the same weekly rank." : `${add.name} ranks ${Math.abs(comparison.rankGain)} places ${comparison.rankGain > 0 ? "ahead of" : "behind"} ${drop.name} on the ${add.position === "QB" ? "QB" : "flex"} board.`}</p>
-            {comparison.newGaps.length > 0 && <p className="mt-2">This move leaves no ranked player at {comparison.newGaps.map(slot => slot.slot).join(", ")}.</p>}
-            <p className="mt-2 text-[var(--c97-ink-2)]">This comparison covers Week {snapshot.week}. It does not estimate season-long value, points gained, or a waiver bid.</p>
-            <button className={`${styles.primaryButton} mt-3`} type="button" onClick={() => {
+            <p style={{ marginTop: "var(--c97-sp-1)" }}>{comparison.rankGain === null ? "A rank difference is unavailable across separate boards or when either player is unranked." : comparison.rankGain === 0 ? "Both players have the same weekly rank." : `${add.name} ranks ${Math.abs(comparison.rankGain)} places ${comparison.rankGain > 0 ? "ahead of" : "behind"} ${drop.name} on the ${add.position === "QB" ? "QB" : "flex"} board.`}</p>
+            {comparison.newGaps.length > 0 && <p style={{ marginTop: "var(--c97-sp-1)" }}>This move leaves no ranked player at {comparison.newGaps.map(slot => slot.slot).join(", ")}.</p>}
+            <p className="text-[var(--c97-ink-2)]" style={{ marginTop: "var(--c97-sp-1)" }}>This comparison covers Week {snapshot.week}. It does not estimate season-long value, points gained, or a waiver bid.</p>
+            <button className={`${styles.primaryButton}`} style={{ marginTop: "var(--c97-sp-1)" }} type="button" onClick={() => {
               update(current => ({ ...current, scoring, players: uniqueTeamPlayers([...current.players.filter(player => player.id !== drop.id), add]), availableIds: current.availableIds.filter(id => id !== add.id) }));
               setAddId(""); setDropId("");
               setNotice(`Saved roster updated. Added ${add.name} and removed ${drop.name}. Make the actual transaction in your league.`);

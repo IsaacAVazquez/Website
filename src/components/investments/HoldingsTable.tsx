@@ -100,7 +100,7 @@ function HoldingRow({ holding, color, onUpdate, onRemove, onResearch }: RowProps
     return (
       <tr>
         <td colSpan={8} className="!py-3">
-          <div className="flex flex-wrap items-center gap-3 px-1">
+          <div className="flex flex-wrap items-center" style={{ gap: "var(--c97-sp-1)", paddingInline: "var(--c97-sp-0)" }}>
             <div className={styles.tick}>
               <span className={styles.tickBar} style={{ background: color }} aria-hidden="true" />
               <div>

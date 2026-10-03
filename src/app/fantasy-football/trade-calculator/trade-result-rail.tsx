@@ -85,8 +85,11 @@ export function TradeVerdictStrip({
   return (
     <div
       data-testid="trade-verdict-strip"
-      className="sticky top-0 z-20 flex items-center justify-between gap-3 border px-3 py-1.5 lg:hidden"
+      className="sticky top-0 z-20 flex items-center justify-between border lg:hidden"
       style={{
+        paddingInline: "var(--c97-sp-1)",
+        paddingBlock: "var(--c97-sp-0)",
+        gap: "var(--c97-sp-1)",
         borderColor: "var(--c97-rule)",
         background: "var(--c97-field)",
       }}
@@ -101,7 +104,7 @@ export function TradeVerdictStrip({
       </div>
       <a
         href="#trade-evaluation"
-        className="inline-flex min-h-touch shrink-0 items-center border border-[var(--c97-rule)] bg-[var(--c97-surface)] px-3 text-xs font-semibold text-[var(--c97-ink)] transition-[border-color,background-color] hover:border-[var(--c97-accent)]"
+        className="inline-flex min-h-touch shrink-0 items-center border border-[var(--c97-rule)] bg-[var(--c97-surface)] text-xs font-semibold text-[var(--c97-ink)] transition-[border-color,background-color] hover:border-[var(--c97-accent)]" style={{ paddingInline: "var(--c97-sp-1)" }}
       >
         Evidence
       </a>
@@ -137,7 +140,7 @@ function coverageStyle(coverage: FantasyTradeCoverage | null) {
 }
 
 function formatIndex(value: number | null | undefined): string {
-  return typeof value === "number" && Number.isFinite(value) ? value.toFixed(1) : "--";
+  return typeof value === "number" && Number.isFinite(value) ? value.toFixed(1) : "—";
 }
 
 function ValueReadout({
@@ -154,8 +157,8 @@ function ValueReadout({
       <dt className="font-mono text-3xs uppercase tracking-[0.12em] text-[var(--c97-ink-2)]">
         {label}
       </dt>
-      <dd className="mt-1 font-mono text-xl tabular-nums text-[var(--c97-ink)]">
-        {valuesAvailable ? formatIndex(side?.value) : "--"}
+      <dd className="font-mono text-xl tabular-nums text-[var(--c97-ink)]" style={{ marginTop: "var(--c97-sp-0)" }}>
+        {valuesAvailable ? formatIndex(side?.value) : "—"}
       </dd>
       <dd className="mt-0.5 text-2xs text-[var(--c97-ink-2)]">
         {valuesAvailable && side
@@ -199,41 +202,41 @@ export function TradeResultRail({
     <aside
       id="trade-evaluation"
       aria-label="Trade evaluation"
-      className="border border-[var(--c97-rule)] bg-[var(--c97-field)] p-4 lg:sticky lg:top-0 lg:self-start"
+      className="border border-[var(--c97-rule)] bg-[var(--c97-field)] lg:sticky lg:top-0 lg:self-start" style={{ padding: "var(--c97-sp-2)" }}
     >
-      <div className="flex items-center justify-between gap-3 border-b border-[var(--c97-rule)] pb-3">
-        <span className="inline-flex items-center gap-2 font-mono text-2xs uppercase tracking-[0.12em] text-[var(--c97-ink-2)]">
+      <div className="flex items-center justify-between border-b border-[var(--c97-rule)]" style={{ paddingBottom: "var(--c97-sp-1)", gap: "var(--c97-sp-1)" }}>
+        <span className="inline-flex items-center font-mono text-2xs uppercase tracking-[0.12em] text-[var(--c97-ink-2)]" style={{ gap: "var(--c97-sp-1)" }}>
           <Scale className="h-4 w-4" aria-hidden="true" />
           Evaluation
         </span>
         <span
-          className="border px-2.5 py-1 font-mono text-3xs uppercase tracking-[0.1em] text-[var(--c97-ink)]"
-          style={coverageStyle(coverage)}
+          className="border font-mono text-3xs uppercase tracking-[0.1em] text-[var(--c97-ink)]"
+          style={{ paddingInline: "var(--c97-sp-1)", paddingBlock: "var(--c97-sp-0)", ...(coverageStyle(coverage)) }}
         >
           {coverage ? `${coverage} coverage` : "Waiting"}
         </span>
       </div>
 
-      <div className="pt-4" aria-live="polite">
+      <div style={{ paddingTop: "var(--c97-sp-2)" }} aria-live="polite">
         <p className="text-xl font-semibold tracking-[-0.03em]" style={{ color: copy.tone }}>
           {copy.title}
         </p>
-        <p className="mt-1 text-sm leading-6 text-[var(--c97-ink-2)]">{copy.body}</p>
+        <p className="text-sm leading-6 text-[var(--c97-ink-2)]" style={{ marginTop: "var(--c97-sp-0)" }}>{copy.body}</p>
       </div>
 
-      <div className="mt-4 border-y border-[var(--c97-rule)] py-3">
+      <div className="border-y border-[var(--c97-rule)]" style={{ paddingBlock: "var(--c97-sp-1)", marginTop: "var(--c97-sp-2)" }}>
         <TradeBalanceScale result={hasBothSides ? result : null} />
       </div>
 
-      <dl className="mt-4 grid grid-cols-2 gap-4">
+      <dl className="grid grid-cols-2" style={{ marginTop: "var(--c97-sp-2)", gap: "var(--c97-sp-2)" }}>
         <ValueReadout label="You give" side={result?.sideA ?? null} valuesAvailable={valuesAvailable} />
         <ValueReadout label="You get" side={result?.sideB ?? null} valuesAvailable={valuesAvailable} />
       </dl>
 
-      <div className="mt-5 border-t border-[var(--c97-rule)] pt-4">
+      <div className="border-t border-[var(--c97-rule)]" style={{ paddingTop: "var(--c97-sp-2)", marginTop: "var(--c97-sp-2)" }}>
         <h2 className="text-sm font-semibold text-[var(--c97-ink)]">Evidence mix</h2>
-        <dl className="mt-3 grid gap-3 text-sm">
-          <div className="flex items-start justify-between gap-3">
+        <dl className="grid text-sm" style={{ marginTop: "var(--c97-sp-1)", gap: "var(--c97-sp-1)" }}>
+          <div className="flex items-start justify-between" style={{ gap: "var(--c97-sp-1)" }}>
             <dt className="inline-flex items-center text-[var(--c97-ink-2)]">
               Expert consensus
               <MetricTooltip
@@ -248,7 +251,7 @@ export function TradeResultRail({
               </span>
             </dd>
           </div>
-          <div className="flex items-start justify-between gap-3">
+          <div className="flex items-start justify-between" style={{ gap: "var(--c97-sp-1)" }}>
             <dt className="inline-flex items-center text-[var(--c97-ink-2)]">
               Draft market
               <MetricTooltip
@@ -270,10 +273,10 @@ export function TradeResultRail({
               </span>
             </dd>
           </div>
-          <div className="flex items-start justify-between gap-3">
+          <div className="flex items-start justify-between" style={{ gap: "var(--c97-sp-1)" }}>
             <dt className="text-[var(--c97-ink-2)]">League fit</dt>
             <dd className="text-right font-mono text-2xs text-[var(--c97-ink)]">
-              {result ? `${result.league.teams} teams` : "--"}
+              {result ? `${result.league.teams} teams` : "—"}
               <span className="mt-0.5 block text-[var(--c97-ink-2)]">
                 {result ? `${result.league.rosterSize} roster spots` : "Set your league"}
               </span>
@@ -282,11 +285,11 @@ export function TradeResultRail({
         </dl>
       </div>
 
-      <div className="mt-4 border-t border-[var(--c97-rule)] pt-4">
+      <div className="border-t border-[var(--c97-rule)]" style={{ paddingTop: "var(--c97-sp-2)", marginTop: "var(--c97-sp-2)" }}>
         <p className="font-mono text-3xs uppercase tracking-[0.12em] text-[var(--c97-ink-2)]">
           Roster-slot effect
         </p>
-        <p className="mt-1 text-sm leading-6 text-[var(--c97-ink)]">
+        <p className="text-sm leading-6 text-[var(--c97-ink)]" style={{ marginTop: "var(--c97-sp-0)" }}>
           {rosterDelta > 0
             ? `Receiving ${rosterDelta} extra ${rosterDelta === 1 ? "player" : "players"} assumes the same number of replacement-level cuts.`
             : rosterDelta < 0
@@ -295,10 +298,10 @@ export function TradeResultRail({
         </p>
       </div>
 
-      <div className="mt-4 border-y border-[var(--c97-rule)]">
+      <div className="border-y border-[var(--c97-rule)]" style={{ marginTop: "var(--c97-sp-2)" }}>
         {warnings.length > 0 ? (
           <details>
-            <summary className="flex min-h-touch cursor-pointer list-none items-center gap-2 text-sm font-semibold text-[var(--c97-ink)] marker:content-none">
+            <summary className="flex min-h-touch cursor-pointer list-none items-center text-sm font-semibold text-[var(--c97-ink)] marker:content-none" style={{ gap: "var(--c97-sp-1)" }}>
               <AlertTriangle className="h-4 w-4 shrink-0 text-[var(--c97-warning)]" aria-hidden="true" />
               {/* The panel mixes top-level and per-player notes, so its title
                   must match the coverage chip above it instead of asserting
@@ -309,12 +312,13 @@ export function TradeResultRail({
                   ? "Why coverage is limited"
                   : "Notes on this result"}
             </summary>
-            <ul className="grid gap-2 pb-3 pl-1 text-xs leading-5 text-[var(--c97-ink-2)]">
+            <ul className="grid text-xs leading-5 text-[var(--c97-ink-2)]" style={{ paddingBottom: "var(--c97-sp-1)", paddingLeft: "var(--c97-sp-0)", gap: "var(--c97-sp-1)" }}>
               {warnings.map((warning) => (
-                <li key={warning} className="flex gap-2">
+                <li key={warning} className="flex" style={{ gap: "var(--c97-sp-1)" }}>
                   <span
                     aria-hidden="true"
-                    className="mt-[0.45rem] h-1 w-1 shrink-0 bg-[var(--c97-warning)]"
+                    className="h-1 w-1 shrink-0 bg-[var(--c97-warning)]"
+                    style={{ marginTop: "calc(0.5lh - 2px)" }}
                   />
                   <span>{warning}</span>
                 </li>
@@ -322,7 +326,7 @@ export function TradeResultRail({
             </ul>
           </details>
         ) : hasBothSides ? (
-          <p className="flex min-h-touch items-center gap-2 text-xs leading-5 text-[var(--c97-ink-2)]">
+          <p className="flex min-h-touch items-center text-xs leading-5 text-[var(--c97-ink-2)]" style={{ gap: "var(--c97-sp-1)" }}>
             <Check className="h-3.5 w-3.5 shrink-0 text-[var(--c97-positive)]" aria-hidden="true" />
             Both sources cover every selected player and the sensitivity range is available.
           </p>
@@ -331,17 +335,18 @@ export function TradeResultRail({
         <details
           className={warnings.length > 0 || hasBothSides ? "border-t border-[var(--c97-rule)]" : undefined}
         >
-          <summary className="flex min-h-touch cursor-pointer list-none items-center gap-2 text-sm font-semibold text-[var(--c97-ink)] marker:content-none">
+          <summary className="flex min-h-touch cursor-pointer list-none items-center text-sm font-semibold text-[var(--c97-ink)] marker:content-none" style={{ gap: "var(--c97-sp-1)" }}>
             <Info className="h-4 w-4 shrink-0 text-[var(--c97-ink-2)]" aria-hidden="true" />
             How the estimate works
           </summary>
-          <div className="pb-3 text-xs leading-5 text-[var(--c97-ink-2)]">
+          <div className="text-xs leading-5 text-[var(--c97-ink-2)]" style={{ paddingBottom: "var(--c97-sp-1)" }}>
             <p>
               Overall expert rank and reliable current ADP are converted into a replacement-relative index for this league size and lineup. Source spreads create the sensitivity range.
             </p>
             <p
-              className="mt-2 text-sm leading-6"
+              className="text-sm leading-6"
               style={{
+                marginTop: "var(--c97-sp-1)",
                 fontFamily: "var(--c97-font-display)",
                 fontStyle: "italic",
                 fontWeight: 400,

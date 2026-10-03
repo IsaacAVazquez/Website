@@ -58,13 +58,15 @@ The CTA reads "Most of these have a build note in the writing archive, and I am 
 
 Every record has a `link`, and `src/app/portfolio/[slug]/page.tsx` redirects to it, so a card click leaves Catalog 97. Sampled from the Investment Analytics Platform lead card at 1440, it lands on `/investments`, h1 "Investments", with the Working Instrument header ("Home, About, Projects, Writing, Investments, Fantasy, Resume, Contact"), no link back to Work, and the build note at 3,746px of a 4,380px page. It scored 19/40 (48%, Poor) before and after, with two P1s kept on purpose (the redirect in place of a case study, and no bridge or return path across the world change). The post-fix snapshot for `route:/portfolio/[slug]` carries both as its live backlog. Also still open there are [P2] link name versus landing h1, [P2] the unrendered template's empty sections, and [P2] the voice compressions in `src/components/projectBuildNoteContent.ts`, none of which was re-checked.
 
+As of 2026-10-02 the template is gone. `src/app/portfolio/[slug]/page.tsx` is a redirect stub that generates a static param per case study, permanent-redirects each to its live tool, and returns a 404 for any other slug, so the empty-sections P2 has nothing left to point at. The Working Instrument header was deleted on 2026-09-16, so every landing now prints inside the Catalog 97 shell, and the world-change P1 above describes the state on 2026-09-14.
+
 ### Decisions that apply to this surface
 
-Work cards keep opening the live tool, and only the four lead cards carry build-note links. /portfolio/[slug] still redirects into the Working Instrument world. "Featured first" and "Live first" stay in the sort select.
+Work cards keep opening the live tool, and only the four lead cards carry build-note links. /portfolio/[slug] only redirects, now to tools that all print in Catalog 97. "Featured first" and "Live first" stay in the sort select.
 
 ### False positives worth not re-deriving
 
-The in-page detector overlay is blocked by the enforcing CSP in `src/proxy.ts`, and `impeccable detect` returns `[]` on the Catalog 97 components. Its only findings are in `src/app/portfolio/[slug]/page.tsx` (a side-tab border and a font-size advisory), and neither renders, because the template is never reached. `critique-storage latest` on a `route:` target closes the snapshot it finds, because the helper fingerprints the route as a missing local file. That is how the pre-fix `route-portfolio-slug` snapshot was marked closed on 2026-09-14 with its P1s still open, so read snapshots with `trend` or by filename.
+The in-page detector overlay is blocked by the enforcing CSP in `src/proxy.ts`, and `impeccable detect` returns `[]` on the Catalog 97 components. Its only findings on 2026-09-14 were in the old case study template in `src/app/portfolio/[slug]/page.tsx` (a side-tab border and a font-size advisory), which never rendered and was deleted on 2026-10-02. `critique-storage latest` on a `route:` target closes the snapshot it finds, because the helper fingerprints the route as a missing local file. That is how the pre-fix `route-portfolio-slug` snapshot was marked closed on 2026-09-14 with its P1s still open, so read snapshots with `trend` or by filename.
 
 ### Still open
 

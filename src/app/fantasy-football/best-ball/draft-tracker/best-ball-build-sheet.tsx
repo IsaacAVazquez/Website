@@ -29,7 +29,7 @@ export function BestBallBuildSheet({
   if (!open) return null;
 
   return (
-    <div className="fixed inset-0 z-[80] lg:hidden">
+    <div className="fixed inset-0 z-[var(--c97-z-sheet)] lg:hidden">
       <button
         type="button"
         className="absolute inset-0 h-full w-full"
@@ -44,10 +44,10 @@ export function BestBallBuildSheet({
         role="dialog"
         aria-modal="true"
         aria-labelledby="best-ball-mobile-build-heading"
-        className="absolute inset-x-0 bottom-0 max-h-[88dvh] overflow-y-auto border border-b-0 px-5 pb-[max(1.5rem,env(safe-area-inset-bottom))] pt-4"
-        style={{ borderColor: "var(--c97-rule)", background: "var(--c97-surface)" }}
+        className="absolute inset-x-0 bottom-0 max-h-[88dvh] overflow-y-auto border border-b-0 pb-[max(var(--c97-sp-3),env(safe-area-inset-bottom))]"
+        style={{ paddingInline: "var(--c97-sp-2)", paddingTop: "var(--c97-sp-2)", borderColor: "var(--c97-rule)", background: "var(--c97-surface)" }}
       >
-        <div className="sticky top-0 z-10 mb-3 flex justify-end" style={{ background: "var(--c97-surface)" }}>
+        <div className="sticky top-0 z-10 flex justify-end" style={{ marginBottom: "var(--c97-sp-1)", background: "var(--c97-surface)" }}>
           <button
             ref={closeRef}
             type="button"

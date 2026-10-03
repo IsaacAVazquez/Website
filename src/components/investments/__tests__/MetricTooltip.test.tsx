@@ -38,6 +38,16 @@ describe("MetricTooltip", () => {
     expect(onRowClick).not.toHaveBeenCalled();
   });
 
+  it("finds the definition for a sentence-case label", async () => {
+    render(<MetricTooltip term="Gross margin" />);
+
+    fireEvent.focus(screen.getByRole("button", { name: "What is Gross margin?" }));
+
+    expect(await screen.findByRole("tooltip")).toHaveTextContent(
+      "Revenue minus cost of goods sold"
+    );
+  });
+
   it("renders nothing when a definition is unavailable", () => {
     const { container } = render(<MetricTooltip term="Unknown metric" />);
 

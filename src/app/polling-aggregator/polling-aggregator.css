@@ -1,7 +1,9 @@
 /* Polling Aggregator: the state tile cartogram and the approval/ballot hero
- * marks. Party blue and red stay the data colours (see DEM_COLOR/REP_COLOR
- * in polling-aggregator-helpers.ts); the route's own inks are saffron and
- * teal on purpose so neither ink can be mistaken for a party. */
+ * marks. The party inks (--c97-party-d, --c97-party-r, through DEM_COLOR and
+ * REP_COLOR in polling-aggregator-helpers.ts) are the data colours; the
+ * route's own inks are saffron and teal on purpose so neither can be mistaken
+ * for D or R. Saffron is also the toss-up ink (--c97-party-tossup), which
+ * leans to neither party. */
 
 /* The trend chart and ballot bar's own paper plate inset into the hero. */
 .c97-polling-hero-chart {

@@ -6,8 +6,7 @@ import {
   upsertSnapshots,
   useInvestments,
 } from "@/hooks/useInvestments";
-import type { PortfolioSnapshot } from "@/components/investments/PortfolioPerformanceChart";
-import type { PortfolioHolding, StockQuote } from "@/types/investment";
+import type { PortfolioHolding, PortfolioSnapshot, StockQuote } from "@/types/investment";
 import { resetBrowserStorageMemory } from "@/lib/browserStorage";
 
 const originalFetch = global.fetch;

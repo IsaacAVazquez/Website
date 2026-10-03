@@ -151,7 +151,7 @@ export function MissionControlHero({
         className="c97-panel"
       >
         <div className="grid lg:grid-cols-[minmax(0,1.25fr)_220px]" style={{ gap: "var(--c97-sp-3)" }}>
-          <div className="space-y-3">
+          <div className="flex flex-col" style={{ gap: "var(--c97-sp-1)" }}>
             <span className="c97-skeleton" style={{ height: 16, width: 128 }} />
             <span className="c97-skeleton" style={{ height: 48 }} />
             <span className="c97-skeleton" style={{ height: 20, width: "75%" }} />
@@ -171,14 +171,14 @@ export function MissionControlHero({
         className="c97-panel"
       >
         <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between" style={{ gap: "var(--c97-sp-2)" }}>
-          <div className="space-y-3">
-            <p className="font-mono text-2xs font-semibold uppercase tracking-[0.22em] text-[var(--c97-label)]">
+          <div className="flex flex-col" style={{ gap: "var(--c97-sp-1)" }}>
+            <p className="font-mono text-2xs font-semibold uppercase tracking-[0.22em] text-[var(--c97-label)]" style={{ marginBottom: 0 }}>
               Mission control unavailable
             </p>
-            <h2 className="text-3xl font-bold tracking-[-0.04em] text-[var(--c97-ink)] sm:text-4xl">
+            <h2 className="c97-serif c97-h2">
               Live launch data is temporarily unavailable.
             </h2>
-            <p className="max-w-[68ch] text-sm leading-7 text-[var(--c97-ink-2)]">
+            <p className="max-w-[68ch] text-sm leading-7 text-[var(--c97-ink-2)]" style={{ marginBottom: 0 }}>
               {error ??
                 "The local SpaceX API layer could not retrieve an upcoming mission summary. Retry to check whether the upstream feed has recovered."}
             </p>
@@ -210,10 +210,10 @@ export function MissionControlHero({
       <div className="grid lg:grid-cols-[minmax(0,1.24fr)_220px]" style={{ gap: "var(--c97-sp-2)" }}>
         <div className="min-w-0">
           <div className="flex flex-wrap items-center" style={{ gap: "var(--c97-sp-1)" }}>
-            <span className="border border-[var(--c97-rule)] bg-[color-mix(in_srgb,var(--c97-surface)_78%,transparent)] py-1 font-mono text-2xs font-semibold uppercase tracking-[0.22em] text-[var(--c97-accent)]" style={{ paddingInline: "var(--c97-sp-1)" }}>
+            <span className="border border-[var(--c97-rule)] bg-[color-mix(in_srgb,var(--c97-surface)_78%,transparent)] font-mono text-2xs font-semibold uppercase tracking-[0.22em] text-[var(--c97-accent)]" style={{ paddingInline: "var(--c97-sp-1)", paddingBlock: "var(--c97-sp-0)" }}>
               {summary?.heroMode === "fallback" ? "Latest completed mission" : "Next mission"}
             </span>
-            <span className="border border-[var(--c97-rule)] bg-[var(--c97-field)] py-1 text-xs font-medium text-[var(--c97-ink-2)]" style={{ paddingInline: "var(--c97-sp-1)" }}>
+            <span className="border border-[var(--c97-rule)] bg-[var(--c97-field)] text-xs font-medium text-[var(--c97-ink-2)]" style={{ paddingInline: "var(--c97-sp-1)", paddingBlock: "var(--c97-sp-0)" }}>
               Flight #{heroLaunch.flightNumber}
             </span>
           </div>

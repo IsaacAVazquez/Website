@@ -99,7 +99,7 @@ import {
 import "./mba-jobs.css";
 
 // Interaction-gated dialogs are code-split so their chunks load only when a
-// user opens them — keeping them out of this large client page's initial bundle.
+// user opens them, keeping them out of this large client page's initial bundle.
 // `loading` is what gives each dialog its own Suspense boundary. Without it the
 // first open suspends up to the route's loading.tsx and blanks the page.
 const ApplicationEditDialog = dynamic(() => import("./ApplicationEditDialog"), {
@@ -153,7 +153,7 @@ function getPostedAtTime(value: string): number {
   return Number.isFinite(timestamp) ? timestamp : 0;
 }
 
-// Category, role, status, and priority accents are swatch colours only now —
+// Category, role, status, and priority accents are swatch colours only, and
 // chip text always prints in ink, never in the accent, per the print shop
 // rule that party/status colour as small text fails 4.5:1.
 const CATEGORY_COLOR: Record<MBACategory | "all", string> = {
@@ -1087,7 +1087,7 @@ function CompanyFilterStrip({
                 <div
                   key={group.category}
                   data-testid={`tracked-companies-${group.category}`}
-                  className=" border p-3 sm:p-4"
+                  className="border p-[var(--c97-sp-1)] sm:p-[var(--c97-sp-2)]"
                   style={{
                     borderColor: "var(--c97-rule)",
                     background: "var(--c97-field)",
@@ -1239,7 +1239,7 @@ function AttentionRow({
       className="c97-panel flex flex-col" style={{ gap: "var(--c97-sp-2)" }}
     >
       <div className="flex min-w-0 items-start" style={{ gap: "var(--c97-sp-2)" }}>
-        {/* The colour is a swatch/mark only — every word beside it prints in ink. */}
+        {/* The colour is a swatch/mark only, and every word beside it prints in ink. */}
         <span
           className="mt-0.5 inline-flex h-8 w-8 shrink-0 items-center justify-center"
           style={{ background: accent, color: "var(--c97-surface)" }}

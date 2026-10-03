@@ -9,7 +9,7 @@ interface SearchFiltersProps {
 }
 
 // `id` is sent verbatim as the `type` query param. It must match a type the
-// API actually emits ('post' for writing, 'project', 'page') — see /api/search.
+// API actually emits ('post' for writing, 'project', 'page'). See /api/search.
 const contentTypes = [
   { id: 'all', label: 'All content' },
   { id: 'post', label: 'Writing' },

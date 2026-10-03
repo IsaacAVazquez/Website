@@ -31,13 +31,13 @@ export function MissionSequenceTimeline({ rocketName, upcoming }: MissionSequenc
           aria-hidden="true"
           className="absolute bottom-1.5 left-[5px] top-1.5 w-px bg-[var(--c97-rule)]"
         />
-      <ul className="relative m-0 list-none p-0">
+      <ul className="relative list-none" style={{ margin: "0", padding: "0" }}>
         {steps.map((step, index) => {
           const state = upcoming ? (index === 0 ? "next" : "pending") : "reference";
           return (
             <li
               key={step.label}
-              className="relative grid grid-cols-[68px_1fr] items-baseline py-0 pb-3.5 pl-5 last:pb-0" style={{ gap: "var(--c97-sp-2)" }}
+              className="relative grid grid-cols-[68px_1fr] items-baseline pb-[var(--c97-sp-2)] pl-[var(--c97-sp-2)] last:pb-0" style={{ gap: "var(--c97-sp-2)" }}
             >
               <span
                 aria-hidden="true"

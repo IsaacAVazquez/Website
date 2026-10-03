@@ -98,6 +98,7 @@ const footerSite = [
   { href: "/now", label: "Now" },
   { href: "/changelog", label: "Changelog" },
   { href: "/accessibility", label: "Accessibility" },
+  { href: "/privacy", label: "Privacy" },
 ];
 
 /*

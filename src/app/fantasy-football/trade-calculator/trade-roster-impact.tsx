@@ -79,7 +79,7 @@ function MetricCell({
     <div
       role="cell"
       aria-label={`${label}: ${value}`}
-      className={`min-w-0 border-[var(--c97-rule)] px-3 py-3 sm:px-4 md:flex md:min-h-20 md:items-center md:justify-center md:py-4 ${METRIC_CELL_BORDERS[index] ?? ""}`}
+      className={`min-w-0 border-[var(--c97-rule)] px-[var(--c97-sp-1)] py-[var(--c97-sp-1)] sm:px-[var(--c97-sp-2)] md:flex md:min-h-20 md:items-center md:justify-center md:py-[var(--c97-sp-2)] ${METRIC_CELL_BORDERS[index] ?? ""}`}
     >
       <span
         aria-hidden="true"
@@ -87,7 +87,7 @@ function MetricCell({
       >
         {label}
       </span>
-      <span className="mt-1 block font-mono text-base font-semibold tabular-nums text-[var(--c97-ink)] md:mt-0 md:text-center">
+      <span className="mt-[var(--c97-sp-0)] block font-mono text-base font-semibold tabular-nums text-[var(--c97-ink)] md:mt-0 md:text-center">
         {value}
       </span>
     </div>
@@ -129,7 +129,7 @@ export function TradeRosterImpact({
       className="min-w-0 border-y border-[var(--c97-rule)]"
       data-c97-surface="bone"
     >
-      <header className="border-b border-[var(--c97-rule)] px-4 py-4 sm:px-5">
+      <header className="border-b border-[var(--c97-rule)]" style={{ paddingInline: "var(--c97-sp-2)", paddingBlock: "var(--c97-sp-2)" }}>
         <h2 id="trade-roster-impact-title" className="c97-serif c97-h3">
           Package fit after the trade
         </h2>
@@ -140,7 +140,7 @@ export function TradeRosterImpact({
           role="row"
           className="hidden grid-cols-[minmax(8rem,1.15fr)_repeat(4,minmax(0,1fr))] border-b border-[var(--c97-rule)] md:grid"
         >
-          <span role="columnheader" className="px-4 py-2.5 font-mono text-3xs uppercase tracking-[0.1em] text-[var(--c97-ink-2)]">
+          <span role="columnheader" className="font-mono text-3xs uppercase tracking-[0.1em] text-[var(--c97-ink-2)]" style={{ paddingInline: "var(--c97-sp-2)", paddingBlock: "var(--c97-sp-1)" }}>
             Roster
           </span>
           {[
@@ -152,7 +152,7 @@ export function TradeRosterImpact({
             <span
               key={label}
               role="columnheader"
-              className="border-l border-[var(--c97-rule)] px-3 py-2.5 text-center font-mono text-3xs uppercase leading-4 tracking-[0.1em] text-[var(--c97-ink-2)]"
+              className="border-l border-[var(--c97-rule)] text-center font-mono text-3xs uppercase leading-4 tracking-[0.1em] text-[var(--c97-ink-2)]" style={{ paddingInline: "var(--c97-sp-1)", paddingBlock: "var(--c97-sp-1)" }}
             >
               {label}
             </span>
@@ -168,7 +168,7 @@ export function TradeRosterImpact({
             >
               <div
                 role="rowheader"
-                className="min-w-0 border-b border-[var(--c97-rule)] px-4 py-3 md:flex md:min-h-20 md:items-center md:border-b-0 md:border-r md:py-4"
+                className="min-w-0 border-b border-[var(--c97-rule)] py-[var(--c97-sp-1)] md:flex md:min-h-20 md:items-center md:border-b-0 md:border-r md:py-[var(--c97-sp-2)]" style={{ paddingInline: "var(--c97-sp-2)" }}
               >
                 <span className="text-sm font-semibold text-[var(--c97-ink)]">
                   {row.label}
@@ -193,7 +193,7 @@ export function TradeRosterImpact({
         </div>
       </div>
 
-      <p className="border-t border-[var(--c97-rule)] px-4 py-3 text-xs leading-5 text-[var(--c97-ink-2)] sm:px-5">
+      <p className="border-t border-[var(--c97-rule)] text-xs leading-5 text-[var(--c97-ink-2)]" style={{ paddingInline: "var(--c97-sp-2)", paddingBlock: "var(--c97-sp-1)" }}>
         This compares the assets in the offer against league-specific starter and roster lines. It does not project either full roster.
       </p>
     </section>

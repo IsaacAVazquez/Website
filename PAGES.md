@@ -16,11 +16,12 @@ Current route inventory and page ownership for the live app.
 | `/` | `src/app/page.tsx` | Server shell passing featured projects, recent posts, live tool groups, and the live feed to `Catalog97Home` |
 | `/about` | `src/app/about/page.tsx` | Renders `Catalog97About` |
 | `/portfolio` | `src/app/portfolio/page.tsx` | Server shell passing the project index to `Catalog97Portfolio`, which adds client-side search, sorting, and category filters over `classifyToolSlug` |
-| `/portfolio/[slug]` | `src/app/portfolio/[slug]/page.tsx` | Project detail page |
+| `/portfolio/[slug]` | `src/app/portfolio/[slug]/page.tsx` | Redirect stub. It generates a static param per case study and permanent-redirects each to its live tool, and any other slug is a 404. No case study template renders any more |
 | `/dashboards` | `src/app/dashboards/page.tsx` | Catalog 97 index of the live data dashboards, browser-persisted tools, and calculators, grouped by `getLiveToolGroups` |
 | `/resume` | `src/app/resume/page.tsx` | Renders `Catalog97Resume` |
 | `/contact` | `src/app/contact/page.tsx` | Renders `Catalog97Contact` |
 | `/accessibility` | `src/app/accessibility/page.tsx` | Accessibility statement |
+| `/privacy` | `src/app/privacy/page.tsx` | What the site collects and where it goes, linked from the footer's site group after Accessibility |
 
 ### Writing
 

@@ -22,8 +22,10 @@ export function SeasonalScopeNote({
   return (
     <div
       role="note"
-      className="border px-4 py-3 text-sm"
+      className="border text-sm"
       style={{
+        paddingInline: "var(--c97-sp-2)",
+        paddingBlock: "var(--c97-sp-1)",
         borderColor: "color-mix(in srgb, var(--c97-warning) 45%, var(--c97-rule))",
         background: "color-mix(in srgb, var(--c97-warning) 8%, var(--c97-surface))",
       }}

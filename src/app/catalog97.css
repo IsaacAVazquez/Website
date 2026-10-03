@@ -49,6 +49,20 @@
  * and the class sit on the same element; .c97-page keeps the presentation
  * below, and this rule keeps the values.
  */
+/*
+ * Stacking order for overlays. Declared on :root rather than [data-c97]
+ * because the tooltip, search listbox, and easter-egg layers portal to the
+ * body, outside the page root. The header sits at 2 inside the page, and
+ * Leaflet's map panes keep their own scale (food map).
+ */
+:root {
+  --c97-z-tray: 50;
+  --c97-z-toast: 55;
+  --c97-z-drawer: 60;
+  --c97-z-modal: 70;
+  --c97-z-sheet: 80;
+}
+
 [data-c97] {
   /*
    * Body face. The design specifies Helvetica Neue, which only exists on
@@ -111,10 +125,13 @@
   --c97-paper-base: #f1ebdf;
 
   /*
-   * Spacing. Seven steps, and nothing in a Catalog 97 route may use a gap,
+   * Spacing. Eight steps, and nothing in a Catalog 97 route may use a gap,
    * margin, or band padding that is not one of them. The design derives its
-   * whole vertical rhythm from this ladder.
+   * whole vertical rhythm from this ladder. sp-0 is the hairline step, for an
+   * icon beside its label and the padding inside a chip or a dense tool's
+   * cell; only an optical nudge of 2px or less sits off the ladder.
    */
+  --c97-sp-0: clamp(4px, 0.45vw, 5px);
   --c97-sp-1: clamp(8px, 0.9vw, 10px);
   --c97-sp-2: clamp(12px, 1.3vw, 17px);
   --c97-sp-3: clamp(22px, 2.6vw, 32px);
@@ -187,6 +204,25 @@
   --c97-print-bone: #e4dbc9;
 
   /*
+   * Party inks for the polling aggregator, drawn from the riso set so the
+   * map and ratings print in the same inks as the rest of the site. A rating
+   * ramp mixes the party ink toward the field: Safe is the ink, Likely is
+   * 50%, Lean is 25% (at 70%, Likely D cleared no text token at 4.5:1 in
+   * light mode). The fills never change with the theme.
+   *
+   * The -mark steps are for lines, swatches, bars, and coloured figures,
+   * which sit straight on the sheet and so have to clear 4.5:1 against paper
+   * and bone in each theme. Light: blue 7.75, vermilion 5.66, saffron 5.54 on
+   * paper. Dark (below): 5.95, 5.92, 10.28.
+   */
+  --c97-party-d: var(--c97-riso-blue);
+  --c97-party-r: var(--c97-riso-vermilion);
+  --c97-party-tossup: var(--c97-riso-saffron);
+  --c97-party-d-mark: var(--c97-riso-blue);
+  --c97-party-r-mark: #a8320c;
+  --c97-party-tossup-mark: #7a5700;
+
+  /*
    * The torn and deckled seams, drawn as masks so each takes the ink of the
    * sheet it sits on and tears that sheet's top edge over the sheet above.
    */
@@ -207,6 +243,9 @@
 
 .dark [data-c97] {
   --c97-paper-base: #14100c;
+  --c97-party-d-mark: #6d8de6;
+  --c97-party-r-mark: #e86a42;
+  --c97-party-tossup-mark: var(--c97-riso-saffron);
 
   /*
    * Dark ramp, measured against dark paper: 5.80, 6.90, 5.32, 7.15, 13.77,
@@ -297,6 +336,9 @@ body {
    * mixes it further toward the surface is fine. */
   --c97-accent-soft: color-mix(in srgb, var(--c97-accent) 16%, var(--c97-surface));
   --c97-overlay: color-mix(in srgb, var(--c97-ink) 8%, transparent);
+  /* Reset on every surface so a chip on a paper plate inside chocolate or
+   * espresso reads that plate's ink, not the dark sheet's override below. */
+  --c97-chip-ink: initial;
 }
 
 .c97-page [data-c97-surface="paper"] {
@@ -410,6 +452,9 @@ body {
   --c97-positive: #a8e0b4;
   --c97-negative: #fbcdc7;
   --c97-warning: #f5cf7a;
+  /* The field here is as pale as the ink, so a chip prints black on it and
+   * shows its tone through its text, as it does on stone. */
+  --c97-chip-ink: var(--c97-print-black);
 }
 
 .c97-page [data-c97-surface="ink-blue"] {
@@ -496,6 +541,9 @@ body {
   --c97-positive: #a8e0b4;
   --c97-negative: #fbcdc7;
   --c97-warning: #f5cf7a;
+  /* The field here is as pale as the ink, so a chip prints black on it and
+   * shows its tone through its text, as it does on stone. */
+  --c97-chip-ink: var(--c97-print-black);
 }
 
 /* Neutral block used for image slots that have no photograph yet. */
@@ -658,6 +706,7 @@ body {
 }
 
 .dark .c97-page [data-c97-surface="chocolate"] {
+  --c97-chip-ink: initial;
   --c97-surface: #3a2b1f;
   --c97-ink: #f1ebdf;
   --c97-ink-2: #dcd2bf;
@@ -734,6 +783,7 @@ body {
 }
 
 .dark .c97-page [data-c97-surface="espresso"] {
+  --c97-chip-ink: initial;
   --c97-surface: #0c0907;
   --c97-ink: #f1ebdf;
   --c97-ink-2: #dcd2bf;
@@ -800,6 +850,7 @@ body {
 .dark .c97-page [data-c97-surface="chocolate"],
 .dark .c97-page [data-c97-surface="ink-blue"],
 .dark .c97-page [data-c97-surface="espresso"] {
+  --c97-chip-ink: initial;
   --c97-plate: #d9b487;
 }
 
@@ -1471,6 +1522,11 @@ select.c97-field {
   color: var(--c97-label);
 }
 
+/* A sticky header row inside a raised block paints the block, not the sheet. */
+.c97-panel .c97-table th {
+  background: var(--c97-panel);
+}
+
 .c97-table [data-align="end"] {
   text-align: right;
 }
@@ -1535,7 +1591,7 @@ select.c97-field {
   min-height: 28px;
   padding: 0 var(--c97-sp-2);
   background: var(--c97-field);
-  color: var(--c97-ink);
+  color: var(--c97-chip-ink, var(--c97-ink));
   font-size: var(--c97-fs-label);
   font-weight: 400;
   letter-spacing: 0.08em;
@@ -1548,7 +1604,7 @@ select.c97-field {
 .c97-page [data-c97-surface="chocolate"] .c97-chip-positive,
 .c97-page [data-c97-surface="ink-blue"] .c97-chip-positive,
 .c97-page [data-c97-surface="espresso"] .c97-chip-positive {
-  color: var(--c97-positive);
+  color: var(--c97-chip-ink, var(--c97-positive));
 }
 
 .c97-page [data-c97-surface="paper"] .c97-chip-negative,
@@ -1556,7 +1612,7 @@ select.c97-field {
 .c97-page [data-c97-surface="chocolate"] .c97-chip-negative,
 .c97-page [data-c97-surface="ink-blue"] .c97-chip-negative,
 .c97-page [data-c97-surface="espresso"] .c97-chip-negative {
-  color: var(--c97-negative);
+  color: var(--c97-chip-ink, var(--c97-negative));
 }
 
 .c97-page [data-c97-surface="paper"] .c97-chip-warning,
@@ -1564,7 +1620,7 @@ select.c97-field {
 .c97-page [data-c97-surface="chocolate"] .c97-chip-warning,
 .c97-page [data-c97-surface="ink-blue"] .c97-chip-warning,
 .c97-page [data-c97-surface="espresso"] .c97-chip-warning {
-  color: var(--c97-warning);
+  color: var(--c97-chip-ink, var(--c97-warning));
 }
 
 /*

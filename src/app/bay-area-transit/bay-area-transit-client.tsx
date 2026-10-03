@@ -144,7 +144,7 @@ function StationRow({
           {station.city || "Bay Area"}
         </span>
       </span>
-      <span className="flex shrink-0 items-center gap-1.5">
+      <span className="flex shrink-0 items-center" style={{ gap: "var(--c97-sp-0)" }}>
         {station.lines.map((colorName) => (
           <span
             key={`${station.id}-${colorName}`}
@@ -465,15 +465,15 @@ export function BayAreaTransitClient({
           </div>
 
           <div
-            className="space-y-4" style={{ marginTop: "var(--c97-sp-3)" }}
+            className="flex flex-col" style={{ marginTop: "var(--c97-sp-3)", gap: "var(--c97-sp-2)" }}
             role="tabpanel"
             id={`transit-tabpanel-${routeState.view}`}
             aria-labelledby={`transit-tab-${routeState.view}`}
           >
             {routeState.view === "lines" ? (
               <>
-                <div className="space-y-2">
-                  <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-1)" }}>Lines</p>
+                <div className="flex flex-col" style={{ gap: "var(--c97-sp-1)" }}>
+                  <p className="c97-kicker">Lines</p>
                   <p className="c97-prose">
                     Every BART line with its official color and end-to-end
                     route. Switch to Departures to see the next trains at a
@@ -490,8 +490,8 @@ export function BayAreaTransitClient({
 
             {routeState.view === "stations" ? (
               <>
-                <div className="space-y-2">
-                  <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-1)" }}>Stations</p>
+                <div className="flex flex-col" style={{ gap: "var(--c97-sp-1)" }}>
+                  <p className="c97-kicker">Stations</p>
                   <p className="c97-prose">
                     Pick a station to load its departure board above. The
                     colored dots show which lines stop there.
@@ -513,8 +513,8 @@ export function BayAreaTransitClient({
 
             {routeState.view === "advisories" ? (
               <>
-                <div className="space-y-2">
-                  <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-1)" }}>Service alerts</p>
+                <div className="flex flex-col" style={{ gap: "var(--c97-sp-1)" }}>
+                  <p className="c97-kicker">Service alerts</p>
                   <p className="c97-prose">
                     Advisories and elevator outages posted by BART at the
                     last refresh.
@@ -542,14 +542,14 @@ export function BayAreaTransitClient({
                       style={{ color: "var(--c97-positive)" }}
                       aria-hidden="true"
                     />
-                    <p className="mb-0 text-sm leading-6" style={{ color: "var(--c97-ink)" }}>
+                    <p className="text-sm leading-6" style={{ color: "var(--c97-ink)", marginBottom: "0" }}>
                       No delays reported and all elevators in service at the
                       last refresh.
                     </p>
                   </div>
                 ) : summary.advisories.length > 0 ||
                   summary.elevator.length > 0 ? (
-                  <div className="space-y-3">
+                  <div className="flex flex-col" style={{ gap: "var(--c97-sp-1)" }}>
                     {summary.advisories.map((advisory) => (
                       <div key={advisory.id} className="c97-transit-advisory">
                         <div className="flex items-start" style={{ gap: "var(--c97-sp-1)" }}>
@@ -559,11 +559,11 @@ export function BayAreaTransitClient({
                             aria-hidden="true"
                           />
                           <div className="min-w-0">
-                            <p className="mb-1 text-sm font-semibold" style={{ color: "var(--c97-ink)" }}>
+                            <p className="text-sm font-semibold" style={{ color: "var(--c97-ink)", marginBottom: "var(--c97-sp-0)" }}>
                               {advisory.type || "Advisory"}
                               {advisory.station ? ` · ${advisory.station}` : ""}
                             </p>
-                            <p className="mb-0 text-sm leading-6" style={{ color: "var(--c97-ink-2)" }}>
+                            <p className="text-sm leading-6" style={{ color: "var(--c97-ink-2)", marginBottom: "0" }}>
                               {advisory.description}
                             </p>
                           </div>
@@ -579,7 +579,7 @@ export function BayAreaTransitClient({
                             style={{ color: "var(--c97-ink-2)" }}
                             aria-hidden="true"
                           />
-                          <p className="mb-0 text-sm leading-6" style={{ color: "var(--c97-ink-2)" }}>
+                          <p className="text-sm leading-6" style={{ color: "var(--c97-ink-2)", marginBottom: "0" }}>
                             {entry.description}
                           </p>
                         </div>

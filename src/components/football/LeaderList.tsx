@@ -18,15 +18,15 @@ export function LeaderList({
   clubLookup?: Map<string, string>;
 }) {
   return (
-    <ol className="mt-5 space-y-3 pl-0">
+    <ol className="flex flex-col pl-0" style={{ marginTop: "var(--c97-sp-2)", rowGap: "var(--c97-sp-1)" }}>
       {leaders.map((leader) => {
         const clubName = clubLookup?.get(leader.clubId) ?? leader.clubCode;
         return (
           <li
             key={`${statLabel}-${leader.rank}-${leader.name}`}
-            className="flex items-center justify-between gap-4 border border-[var(--c97-rule)] bg-[var(--c97-field)] px-4 py-3"
+            className="flex items-center justify-between border border-[var(--c97-rule)] bg-[var(--c97-field)]" style={{ paddingInline: "var(--c97-sp-2)", paddingBlock: "var(--c97-sp-1)", gap: "var(--c97-sp-2)" }}
           >
-            <div className="flex min-w-0 items-center gap-3">
+            <div className="flex min-w-0 items-center" style={{ gap: "var(--c97-sp-1)" }}>
               <div className="inline-flex h-10 w-10 flex-shrink-0 items-center justify-center bg-[var(--c97-surface)] text-sm font-bold text-[var(--c97-accent)] c97-tabular">
                 {leader.rank}
               </div>

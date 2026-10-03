@@ -8,9 +8,9 @@ export function EmptyPanel({
   description: string;
 }) {
   return (
-    <SurfaceCard className="p-6 text-center sm:p-8">
+    <SurfaceCard className="text-center" style={{ padding: "var(--c97-sp-3)" }}>
       <p className="text-lg font-semibold text-[var(--c97-ink)]">{title}</p>
-      <p className="mt-3 text-sm leading-7 text-[var(--c97-ink-2)]">{description}</p>
+      <p className="text-sm leading-7 text-[var(--c97-ink-2)]" style={{ marginTop: "var(--c97-sp-1)" }}>{description}</p>
     </SurfaceCard>
   );
 }

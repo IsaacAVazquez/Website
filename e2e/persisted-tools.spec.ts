@@ -14,9 +14,7 @@ test.describe("Personal-interest tools persist state", () => {
     ).toBeVisible();
 
     // Surface a known seeded museum through the filter, then log a visit.
-    const filter = page
-      .locator('label[aria-label="Filter museums"]')
-      .getByRole("searchbox");
+    const filter = page.getByRole("searchbox", { name: "Filter museums" });
     await filter.fill("Modern Art");
 
     const logVisit = page.getByRole("button", {
@@ -33,10 +31,7 @@ test.describe("Personal-interest tools persist state", () => {
 
     // Reload — the visit is persisted to localStorage and must survive.
     await page.reload();
-    await page
-      .locator('label[aria-label="Filter museums"]')
-      .getByRole("searchbox")
-      .fill("Modern Art");
+    await page.getByRole("searchbox", { name: "Filter museums" }).fill("Modern Art");
     await expect(
       page.getByRole("button", {
         name: /mark museum of modern art as not visited/i,

@@ -79,7 +79,7 @@
   bottom: var(--c97-sp-2);
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: var(--c97-sp-0);
   width: min(calc(100% - 2 * var(--c97-sp-2) - 8px), 330px);
   padding: var(--c97-sp-2);
   color: var(--c97-ink);

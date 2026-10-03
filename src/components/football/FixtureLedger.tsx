@@ -35,14 +35,14 @@ function TeamCell({
       <button
         type="button"
         onClick={() => onOpenTeam(team.id)}
-        className={`flex min-h-[44px] min-w-0 flex-1 items-center gap-2.5 ${justify} transition-colors hover:text-[var(--c97-accent)] focus-visible:text-[var(--c97-accent)]`}
+        className={`flex min-h-[44px] min-w-0 flex-1 items-center ${justify} transition-colors hover:text-[var(--c97-accent)] focus-visible:text-[var(--c97-accent)]`} style={{ gap: "var(--c97-sp-1)" }}
       >
         {content}
       </button>
     );
   }
 
-  return <div className={`flex min-w-0 flex-1 items-center gap-2.5 ${justify}`}>{content}</div>;
+  return <div className={`flex min-w-0 flex-1 items-center ${justify}`} style={{ gap: "var(--c97-sp-1)" }}>{content}</div>;
 }
 
 function FixtureLedgerRow({
@@ -55,7 +55,7 @@ function FixtureLedgerRow({
   const isFinal = fixture.status === "FINISHED";
 
   return (
-    <div className="grid grid-cols-[minmax(0,1fr)_minmax(76px,auto)_minmax(0,1fr)] items-center gap-3 border-b border-[var(--c97-rule)] px-4 py-3 transition-colors last:border-b-0 hover:bg-[var(--c97-field)] ">
+    <div className="grid grid-cols-[minmax(0,1fr)_minmax(76px,auto)_minmax(0,1fr)] items-center border-b border-[var(--c97-rule)] transition-colors last:border-b-0 hover:bg-[var(--c97-field)] " style={{ paddingInline: "var(--c97-sp-2)", paddingBlock: "var(--c97-sp-1)", gap: "var(--c97-sp-1)" }}>
       <TeamCell team={fixture.homeTeam} onOpenTeam={onOpenTeam} />
       {isFinal ? (
         <span className="text-center font-mono text-lg tabular-nums text-[var(--c97-ink)]">
@@ -81,20 +81,23 @@ function FixtureLedgerRow({
 export function FixtureLedgerSection({
   groups,
   onOpenTeam,
+  emptyLabel,
 }: {
   groups: FixtureLedgerGroup[];
   onOpenTeam?: (teamId: string) => void;
+  /** Shown in place of the ledger when there are no fixtures; nothing renders without it. */
+  emptyLabel?: string;
 }) {
-  if (groups.length === 0) return null;
+  if (groups.length === 0) return emptyLabel ? <p className="c97-prose">{emptyLabel}</p> : null;
 
   return (
-    <div className="space-y-4">
+    <div className="flex flex-col" style={{ rowGap: "var(--c97-sp-2)" }}>
       {groups.map((group) => (
         <div
           key={group.key}
           className="overflow-hidden border border-[var(--c97-rule)] bg-[var(--c97-surface)]"
         >
-          <div className="flex items-center justify-between gap-3 border-b border-[var(--c97-rule)] px-4 py-2.5 font-mono text-3xs uppercase tracking-[0.1em] text-[var(--c97-ink-2)]">
+          <div className="flex items-center justify-between border-b border-[var(--c97-rule)] font-mono text-3xs uppercase tracking-[0.1em] text-[var(--c97-ink-2)]" style={{ paddingInline: "var(--c97-sp-2)", paddingBlock: "var(--c97-sp-1)", gap: "var(--c97-sp-1)" }}>
             <span>{group.label}</span>
             <span>{group.fixtures.length} {group.fixtures.length === 1 ? "game" : "games"}</span>
           </div>

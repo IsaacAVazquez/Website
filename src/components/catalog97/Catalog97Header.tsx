@@ -5,7 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { HeaderSearchPanel } from "@/components/search/HeaderSearchPanel";
 import { DeferredThemeToggle } from "@/components/ui/DeferredThemeToggle";
-import { catalog97NavLinks } from "@/constants/catalog97Nav";
+import { catalog97NavLinks, isDashboardRoute } from "@/constants/catalog97Nav";
 import { Catalog97Monet } from "./Catalog97Monet";
 import { Catalog97EasterEggs } from "./Catalog97EasterEggs";
 import { trackNavigationClick } from "@/lib/analytics";
@@ -74,7 +74,8 @@ export function Catalog97Header() {
           {catalog97NavLinks.map((link) => {
             const exact = pathname === link.href;
             const inSection =
-              link.href !== "/" && pathname.startsWith(`${link.href}/`);
+              (link.href !== "/" && pathname.startsWith(`${link.href}/`)) ||
+              (link.href === "/dashboards" && isDashboardRoute(pathname));
             return (
               <Link
                 key={link.href}

@@ -429,10 +429,10 @@ describe("TradeCalculatorClient", () => {
     expect(within(evaluation).getByText("insufficient coverage")).toBeInTheDocument();
     expect(within(evaluation).getAllByText("Sensitivity unavailable")).toHaveLength(2);
     expect(
-      within(screen.getByRole("list", { name: "You give players" })).getByText("--"),
+      within(screen.getByRole("list", { name: "You give players" })).getByText("—"),
     ).toBeInTheDocument();
     expect(
-      within(screen.getByRole("list", { name: "You get players" })).getByText("--"),
+      within(screen.getByRole("list", { name: "You get players" })).getByText("—"),
     ).toBeInTheDocument();
   });
 

@@ -30,7 +30,6 @@ export default function Image() {
             position: "absolute",
             inset: 28,
             border: "1px solid rgba(255,255,255,0.12)",
-            borderRadius: 32,
             background: "linear-gradient(180deg, rgba(9,16,24,0.94), rgba(6,10,18,0.9))",
           }}
         />
@@ -99,7 +98,6 @@ export default function Image() {
                   display: "flex",
                   alignItems: "center",
                   padding: "10px 16px",
-                  borderRadius: 999,
                   border: "1px solid rgba(255,255,255,0.12)",
                   background:
                     index === 0

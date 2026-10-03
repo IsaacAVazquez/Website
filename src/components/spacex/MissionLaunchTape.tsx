@@ -49,8 +49,8 @@ export function MissionLaunchTape({ recentLaunches, upcomingLaunches }: MissionL
             {shortCode(launch.rocketName)}
           </span>
           <span
-            className="inline-flex items-center gap-1.5 text-3xs font-semibold uppercase tracking-[0.08em]"
-            style={{ color: launch.success ? "var(--c97-positive)" : "var(--c97-negative)" }}
+            className="inline-flex items-center text-3xs font-semibold uppercase tracking-[0.08em]"
+            style={{ color: launch.success ? "var(--c97-positive)" : "var(--c97-negative)", gap: "var(--c97-sp-0)" }}
           >
             <span aria-hidden="true" className="h-1.5 w-1.5 bg-current" />
             {launch.success ? "OK" : "Fail"}
@@ -78,9 +78,10 @@ export function MissionLaunchTape({ recentLaunches, upcomingLaunches }: MissionL
     <section
       aria-label="Launch tape"
       className="overflow-hidden border border-[var(--c97-rule)] bg-[color-mix(in_srgb,var(--c97-field)_62%,var(--c97-surface))]"
+      // InstrumentTape takes no style prop and its band has no padding or fill of its own, so the inset sits here.
+      style={{ paddingInline: "var(--c97-sp-1)" }}
     >
       <InstrumentTape
-        className="px-3"
         ariaLabel="Recent launch outcomes and upcoming launch windows"
         label={
           <span className="inline-flex items-center" style={{ gap: "var(--c97-sp-1)" }}>

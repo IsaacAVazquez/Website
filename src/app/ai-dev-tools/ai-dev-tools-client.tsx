@@ -283,7 +283,7 @@ export function AiDevToolsClient({ initialState }: AiDevToolsClientProps) {
       </Catalog97ProjectHero>
 
       <section className="c97-band c97-sheet" data-c97-surface="paper" data-seam="torn">
-        <div className="c97-shell space-y-6">
+        <div className="flex flex-col c97-shell" style={{ gap: "var(--c97-sp-3)" }}>
           <h2 className="c97-poster-sm">The directory</h2>
 
           <div className="grid lg:grid-cols-[minmax(16rem,0.9fr)_minmax(0,1.6fr)]" style={{ gap: "var(--c97-sp-2)" }}>
@@ -342,9 +342,9 @@ export function AiDevToolsClient({ initialState }: AiDevToolsClientProps) {
           </div>
 
           <div className="grid min-w-0 xl:grid-cols-[minmax(0,1.45fr)_minmax(22rem,0.65fr)]" style={{ gap: "var(--c97-sp-2)" }}>
-            <div className="min-w-0 space-y-4">
+            <div className="flex flex-col min-w-0" style={{ gap: "var(--c97-sp-2)" }}>
               <div className="flex flex-wrap items-center justify-between" style={{ gap: "var(--c97-sp-1)" }}>
-                <p className="mb-0 text-sm font-semibold text-[var(--c97-ink-2)]">
+                <p className="text-sm font-semibold text-[var(--c97-ink-2)]" style={{ marginBottom: "0" }}>
                   {filteredTools.length} of {aiDevTools.length} tools shown
                 </p>
                 <FilterSelect
@@ -477,7 +477,7 @@ function ToolDirectoryList({
                     GH stars
                   </span>
                   {starPct > 0 ? (
-                    <span className="mt-1 ml-auto block h-1 w-16 overflow-hidden bg-[var(--c97-rule)]">
+                    <span className="ml-auto block h-1 w-16 overflow-hidden bg-[var(--c97-rule)]" style={{ marginTop: "var(--c97-sp-0)" }}>
                       <span
                         className="block h-full"
                         style={{ width: `${starPct}%`, background: "var(--c97-accent)" }}
@@ -492,7 +492,7 @@ function ToolDirectoryList({
                   <span className="block text-2xs font-semibold uppercase tracking-[0.16em] text-[var(--c97-ink-2)]">
                     Pricing
                   </span>
-                  <span className="mt-1 block text-sm font-semibold text-[var(--c97-ink)]">
+                  <span className="block text-sm font-semibold text-[var(--c97-ink)]" style={{ marginTop: "var(--c97-sp-0)" }}>
                     {AI_DEV_TOOL_PRICING_LABELS[tool.pricingModel]}
                   </span>
                   <span className="mt-0.5 block line-clamp-2 text-xs leading-5 text-[var(--c97-ink-2)]">
@@ -503,7 +503,7 @@ function ToolDirectoryList({
                   <span className="block text-2xs font-semibold uppercase tracking-[0.16em] text-[var(--c97-ink-2)]">
                     Models
                   </span>
-                  <span className="mt-1 block text-sm font-semibold text-[var(--c97-ink)]">
+                  <span className="block text-sm font-semibold text-[var(--c97-ink)]" style={{ marginTop: "var(--c97-sp-0)" }}>
                     {AI_DEV_TOOL_MODEL_LABELS[tool.modelSupport]}
                   </span>
                   <span className="mt-0.5 block line-clamp-2 text-xs leading-5 text-[var(--c97-ink-2)]">
@@ -514,10 +514,10 @@ function ToolDirectoryList({
                   <span className="block text-2xs font-semibold uppercase tracking-[0.16em] text-[var(--c97-ink-2)]">
                     Release
                   </span>
-                  <span className="mt-1 block text-sm font-semibold text-[var(--c97-ink)]">
+                  <span className="block text-sm font-semibold text-[var(--c97-ink)]" style={{ marginTop: "var(--c97-sp-0)" }}>
                     {AI_DEV_TOOL_CADENCE_LABELS[tool.releaseCadence]}
                   </span>
-                  <span className="mt-0.5 flex items-center gap-1.5 text-xs text-[var(--c97-ink-2)]">
+                  <span className="mt-0.5 flex items-center text-xs text-[var(--c97-ink-2)]" style={{ gap: "var(--c97-sp-0)" }}>
                     <span
                       className="inline-block h-1.5 w-1.5 shrink-0"
                       style={{ background: freshness.dot }}
@@ -540,7 +540,7 @@ function ToolDetail({ tool }: { tool: AiDevTool | null }) {
   if (!tool) {
     return (
       <aside className="c97-panel min-w-0">
-        <p className="mb-0 text-sm text-[var(--c97-ink-2)]">
+        <p className="text-sm text-[var(--c97-ink-2)]" style={{ marginBottom: "0" }}>
           No tool is selected.
         </p>
       </aside>
@@ -555,7 +555,7 @@ function ToolDetail({ tool }: { tool: AiDevTool | null }) {
             <ToolCategoryIcon category={tool.category} className="h-5 w-5" />
           </span>
           <div>
-            <p className="mb-1 text-2xs font-semibold uppercase tracking-[0.18em] text-[var(--c97-ink-2)]">
+            <p className="text-2xs font-semibold uppercase tracking-[0.18em] text-[var(--c97-ink-2)]" style={{ marginBottom: "var(--c97-sp-0)" }}>
               {tool.company}
             </p>
             <h2 className="c97-serif c97-h3">{tool.name}</h2>
@@ -572,7 +572,7 @@ function ToolDetail({ tool }: { tool: AiDevTool | null }) {
         </a>
       </div>
 
-      <p className="mb-0 text-sm leading-6 text-[var(--c97-ink-2)]" style={{ marginTop: "var(--c97-sp-2)" }}>
+      <p className="text-sm leading-6 text-[var(--c97-ink-2)]" style={{ marginTop: "var(--c97-sp-2)", marginBottom: "0" }}>
         {tool.tagline}
       </p>
 
@@ -589,7 +589,7 @@ function ToolDetail({ tool }: { tool: AiDevTool | null }) {
         {tool.surfaces.map((surface) => (
           <span
             key={surface}
-            className="inline-flex border border-[var(--c97-rule)] bg-[var(--c97-field)] py-1 text-xs font-semibold text-[var(--c97-ink-2)]" style={{ paddingInline: "var(--c97-sp-1)" }}
+            className="inline-flex border border-[var(--c97-rule)] bg-[var(--c97-field)] text-xs font-semibold text-[var(--c97-ink-2)]" style={{ paddingInline: "var(--c97-sp-1)", paddingBlock: "var(--c97-sp-0)" }}
           >
             {surface}
           </span>
@@ -633,10 +633,10 @@ function ToolDetail({ tool }: { tool: AiDevTool | null }) {
 function DetailRow({ label, value }: { label: string; value: string }) {
   return (
     <div className="border border-[var(--c97-rule)] bg-[var(--c97-surface)]" style={{ padding: "var(--c97-sp-1)" }}>
-      <p className="mb-1 text-2xs font-semibold uppercase tracking-[0.16em] text-[var(--c97-ink-2)]">
+      <p className="text-2xs font-semibold uppercase tracking-[0.16em] text-[var(--c97-ink-2)]" style={{ marginBottom: "var(--c97-sp-0)" }}>
         {label}
       </p>
-      <p className="mb-0 text-sm leading-6 text-[var(--c97-ink)]">{value}</p>
+      <p className="text-sm leading-6 text-[var(--c97-ink)]" style={{ marginBottom: "0" }}>{value}</p>
     </div>
   );
 }

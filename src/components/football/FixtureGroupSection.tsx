@@ -39,24 +39,24 @@ export function FixtureGroupSection({
   const groups = groupFixturesByDay(fixtures);
 
   return (
-    <SurfaceCard className="p-5 sm:p-6">
-      <div className="flex flex-col gap-2 border-b border-[var(--c97-rule)] pb-5">
+    <SurfaceCard className="p-[var(--c97-sp-2)] sm:p-[var(--c97-sp-3)]">
+      <div className="flex flex-col border-b border-[var(--c97-rule)]" style={{ paddingBottom: "var(--c97-sp-2)", gap: "var(--c97-sp-1)" }}>
         <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[var(--c97-label)]">
           {title}
         </p>
         <h3 className="text-xl font-semibold text-[var(--c97-ink)]">{description}</h3>
       </div>
 
-      <div className="mt-5 space-y-6">
+      <div className="flex flex-col" style={{ marginTop: "var(--c97-sp-2)", rowGap: "var(--c97-sp-3)" }}>
         {groups.length === 0 ? (
           <p className="text-sm text-[var(--c97-ink-2)]">No matches available right now.</p>
         ) : (
           groups.map((group) => (
             <div key={group.label}>
-              <p className="mb-3 text-xs font-semibold uppercase tracking-[0.14em] text-[var(--c97-label)]">
+              <p className="text-xs font-semibold uppercase tracking-[0.14em] text-[var(--c97-label)]" style={{ marginBottom: "var(--c97-sp-1)" }}>
                 {group.label}
               </p>
-              <div className="space-y-3">
+              <div className="flex flex-col" style={{ rowGap: "var(--c97-sp-1)" }}>
                 {group.items.map((fixture) => (
                   <FixtureCard
                     key={fixture.id}

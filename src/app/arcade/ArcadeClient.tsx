@@ -3,19 +3,21 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { isKonami, pushKonamiKey, shouldIgnoreKey } from "@/components/catalog97/konami";
+import { useReducedMotion } from "@/hooks/useReducedMotion";
 import { readBrowserStorageString, writeBrowserStorageString } from "@/lib/browserStorage";
 import styles from "./arcade.module.css";
 
 /*
- * REACTOR — a self-contained reflex arcade game.
+ * REACTOR, a self-contained reflex arcade game.
  *
- * This component intentionally avoids the site's editorial primitives and
- * shared hooks. It is a standalone toy with its own state machine:
+ * This component intentionally avoids the site's editorial primitives. It is
+ * a standalone toy with its own state machine, and the only shared hook it
+ * reads is useReducedMotion, for the boot typewriter:
  *   boot -> playing -> over -> (retry) playing
  *
  * Timing runs off requestAnimationFrame against a deadline so the countdown
- * bar stays smooth and the difficulty can ramp every round. All visual motion
- * is handled in CSS and gated behind prefers-reduced-motion.
+ * bar stays smooth and the difficulty can ramp every round. All other visual
+ * motion is handled in CSS and gated behind prefers-reduced-motion.
  */
 
 const GRID = 9;
@@ -94,13 +96,11 @@ export default function ArcadeClient() {
   }, []);
 
   // ---- Boot typewriter ----
+  const reduceMotion = useReducedMotion();
   useEffect(() => {
-    const reduce =
-      typeof window !== "undefined" &&
-      window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
     const full = BOOT_LINES.join("\n");
 
-    if (reduce) {
+    if (reduceMotion) {
       const id = setTimeout(() => {
         setBootText(full);
         setBootDone(true);
@@ -118,7 +118,7 @@ export default function ArcadeClient() {
       }
     }, 18);
     return () => clearInterval(id);
-  }, []);
+  }, [reduceMotion]);
 
   useEffect(() => () => clearTimers(), [clearTimers]);
 
@@ -240,7 +240,7 @@ export default function ArcadeClient() {
       } else if (i === decoyCellRef.current) {
         handleMiss("decoy");
       } else {
-        // Misfire on an empty cell only breaks the combo — no life lost.
+        // Misfire on an empty cell only breaks the combo, and no life is lost.
         comboRef.current = 1;
         setCombo(1);
       }
@@ -312,7 +312,7 @@ export default function ArcadeClient() {
 
   return (
     <div className={styles.root}>
-      <div className={styles.shell}>
+      <div className={`c97-shell c97-frame ${styles.shell}`}>
         <div className={styles.topbar}>
           <p className={styles.kicker}>ISAAC VAZQUEZ // SIDE-QUEST #07</p>
           {/* Only the cheat note is live, so the coin line is never announced. */}

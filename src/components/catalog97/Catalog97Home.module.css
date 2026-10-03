@@ -96,7 +96,7 @@
   font-variant-numeric: tabular-nums;
 }
 .table th {
-  padding-bottom: 4px;
+  padding-bottom: var(--c97-sp-0);
   font-weight: 400;
   font-size: var(--c97-fs-label);
   letter-spacing: 0.08em;
@@ -105,7 +105,7 @@
   color: var(--c97-label);
 }
 .table th:first-child { text-align: left; }
-.table td { padding: 6px 0; border-top: 1px solid var(--c97-rule); }
+.table td { padding: var(--c97-sp-0) 0; border-top: 1px solid var(--c97-rule); }
 .table td:first-child { width: 2ch; }
 .table td:nth-child(n + 3) { text-align: right; }
 .muted { color: var(--c97-label); }
@@ -159,7 +159,7 @@
 }
 .post:last-child { border-bottom: 1px solid var(--c97-rule); }
 /* A grid, so the title and excerpt spans stack instead of running on inline. */
-.postCopy { display: grid; max-width: var(--c97-measure-wide); gap: 4px; }
+.postCopy { display: grid; max-width: var(--c97-measure-wide); gap: var(--c97-sp-0); }
 .post > :last-child { white-space: nowrap; }
 
 /* Paper takes the one column as well, for the reason given beside the hero. */

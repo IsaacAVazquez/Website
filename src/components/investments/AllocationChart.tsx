@@ -136,28 +136,28 @@ export function AllocationChart({ holdings }: Props) {
 
   return (
     <TerminalPanel padding="sm" ariaLabel="Portfolio allocation chart">
-      <div className="mb-4">
+      <div style={{ marginBottom: "var(--c97-sp-2)" }}>
         <h3 className="text-sm font-semibold text-[var(--c97-ink)]">Allocation</h3>
-        <p className="mt-1 text-xs text-[var(--c97-label)]">
+        <p className="text-xs text-[var(--c97-label)]" style={{ marginTop: "var(--c97-sp-0)" }}>
           Position weights based on current market value.
         </p>
       </div>
-      <div className="flex flex-col items-center gap-4 xl:flex-row xl:items-center xl:gap-6">
+      <div className="flex flex-col items-center gap-[var(--c97-sp-2)] xl:flex-row xl:items-center xl:gap-[var(--c97-sp-3)]">
         <div className="relative aspect-square w-[200px] shrink-0 sm:w-[220px]">
           <svg ref={svgRef} className="h-full w-full" />
           <div
             ref={tooltipRef}
-            style={{ display: "none", position: "absolute", pointerEvents: "none" }}
-            className="px-2 py-1.5 text-xs bg-[var(--c97-ink)] text-[var(--c97-surface)] whitespace-nowrap leading-relaxed"
+            style={{ paddingInline: "var(--c97-sp-1)", paddingBlock: "var(--c97-sp-0)", display: "none", position: "absolute", pointerEvents: "none" }}
+            className="text-xs bg-[var(--c97-ink)] text-[var(--c97-surface)] whitespace-nowrap leading-relaxed"
           />
         </div>
 
         <ol
-          className="space-y-1.5 text-sm w-full"
+          className="flex flex-col text-sm w-full" style={{ rowGap: "var(--c97-sp-0)" }}
           aria-label="Holdings legend with allocation percentages"
         >
           {data.map((h) => (
-            <li key={h.symbol} className="flex items-center gap-2 border border-[var(--c97-rule)] bg-[var(--c97-panel)] px-3 py-2.5">
+            <li key={h.symbol} className="flex items-center border border-[var(--c97-rule)] bg-[var(--c97-panel)]" style={{ gap: "var(--c97-sp-1)", paddingInline: "var(--c97-sp-1)", paddingBlock: "var(--c97-sp-1)" }}>
               <span
                 className="w-2.5 h-2.5 shrink-0"
                 style={{ backgroundColor: holdingColor(h.symbol, portfolio) }}

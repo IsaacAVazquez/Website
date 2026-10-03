@@ -31,9 +31,8 @@ export function SegmentedTabs({
 }) {
   return (
     <div
+      // Its callers stack it in a flex column, so the parent's gap spaces it.
       className={`c97-segmented ${className}`.trim()}
-      // `.c97-segmented` zeroes its margin, which drops a parent's space-y gap.
-      style={{ marginBottom: "var(--c97-sp-3)" }}
       role="tablist"
       aria-label={ariaLabel}
     >

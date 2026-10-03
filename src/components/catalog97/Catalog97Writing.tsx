@@ -623,7 +623,7 @@ export function Catalog97Writing({
           }}
         >
           <p className="c97-poster-sm" style={{ maxWidth: "22ch" }}>
-            Everything here is tagged by what it is about.
+            If one of these got you thinking, I would like to hear about it.
           </p>
           <Link className="c97-btn c97-offset" href="/contact">
             Get in touch

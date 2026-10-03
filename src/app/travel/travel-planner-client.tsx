@@ -130,6 +130,15 @@ export function TravelPlannerClient() {
   const tripNameInputRef = useRef<HTMLInputElement>(null);
   const [tripDraft, setTripDraft] = useState({ name: "", destination: "", startDate: today, endDate: today });
   const [showTripForm, setShowTripForm] = useState(false);
+  // Which delete button is armed, as "active:<id>" or "row:<id>". A second
+  // click deletes, "Keep it" disarms, and focus returns to a control that stays.
+  const [confirmingDelete, setConfirmingDelete] = useState<string | null>(null);
+  const newTripButtonRef = useRef<HTMLButtonElement>(null);
+  const confirmDeleteTrip = (id: string) => {
+    removeTrip(id);
+    setConfirmingDelete(null);
+    newTripButtonRef.current?.focus();
+  };
 
   function openTripForm() {
     setShowTripForm(true);
@@ -330,7 +339,7 @@ export function TravelPlannerClient() {
                 )}
               </div>
 
-              <aside className="mt-6 xl:mt-0">
+              <aside className="mt-[var(--c97-sp-3)] xl:mt-0">
                 <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-2)" }}>
                   {editingActivityId ? "Edit stop" : "Add stop"}
                 </p>
@@ -507,7 +516,7 @@ export function TravelPlannerClient() {
               )}
             </div>
 
-            <aside className="mt-6 xl:mt-0">
+            <aside className="mt-[var(--c97-sp-3)] xl:mt-0">
               <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-2)" }}>
                 {editingJournalId ? "Edit entry" : "Journal entry"}
               </p>
@@ -603,21 +612,35 @@ export function TravelPlannerClient() {
             </div>
             <div className="flex flex-wrap" style={{ gap: "var(--c97-sp-1)" }}>
               {activeTrip ? (
-                <button
-                  type="button"
-                  onClick={() => {
-                    if (typeof window !== "undefined" && !window.confirm(`Delete "${activeTrip.name}"? This can't be undone.`)) {
-                      return;
+                <>
+                  <button
+                    type="button"
+                    onClick={() =>
+                      confirmingDelete === `active:${activeTrip.id}`
+                        ? confirmDeleteTrip(activeTrip.id)
+                        : setConfirmingDelete(`active:${activeTrip.id}`)
                     }
-                    removeTrip(activeTrip.id);
-                  }}
-                  className="c97-btn-ghost"
-                >
-                  <Trash2 className="h-3.5 w-3.5" aria-hidden="true" />
-                  Delete trip
-                </button>
+                    className="c97-btn-ghost"
+                    style={confirmingDelete === `active:${activeTrip.id}` ? { color: "var(--c97-negative)" } : undefined}
+                  >
+                    <Trash2 className="h-3.5 w-3.5" aria-hidden="true" />
+                    {confirmingDelete === `active:${activeTrip.id}` ? "Confirm delete" : "Delete trip"}
+                  </button>
+                  {confirmingDelete === `active:${activeTrip.id}` ? (
+                    <button
+                      type="button"
+                      onClick={(event) => {
+                        setConfirmingDelete(null);
+                        (event.currentTarget.previousElementSibling as HTMLElement | null)?.focus();
+                      }}
+                      className="c97-btn-ghost"
+                    >
+                      Keep it
+                    </button>
+                  ) : null}
+                </>
               ) : null}
-              <button type="button" onClick={() => (showTripForm ? setShowTripForm(false) : openTripForm())} className="c97-btn" aria-expanded={showTripForm}>
+              <button ref={newTripButtonRef} type="button" onClick={() => (showTripForm ? setShowTripForm(false) : openTripForm())} className="c97-btn" aria-expanded={showTripForm}>
                 <Plus className="h-3.5 w-3.5" aria-hidden="true" />
                 New trip
               </button>
@@ -721,18 +744,42 @@ export function TravelPlannerClient() {
                         {other.destination || "No destination"} &middot; {formatTripDateRange(other.startDate, other.endDate)}
                       </span>
                     </button>
-                    <button
-                      type="button"
-                      onClick={() => {
-                        if (typeof window !== "undefined" && !window.confirm(`Delete "${other.name}"? This can't be undone.`)) return;
-                        removeTrip(other.id);
-                      }}
-                      aria-label={`Delete trip ${other.name}`}
-                      className="c97-btn-ghost"
-                      style={{ minWidth: 44, justifyContent: "center" }}
-                    >
-                      <Trash2 className="h-3.5 w-3.5" aria-hidden="true" />
-                    </button>
+                    <div className="flex flex-wrap justify-end" style={{ gap: "var(--c97-sp-1)" }}>
+                      <button
+                        type="button"
+                        onClick={() =>
+                          confirmingDelete === `row:${other.id}`
+                            ? confirmDeleteTrip(other.id)
+                            : setConfirmingDelete(`row:${other.id}`)
+                        }
+                        aria-label={
+                          confirmingDelete === `row:${other.id}`
+                            ? `Confirm delete trip ${other.name}`
+                            : `Delete trip ${other.name}`
+                        }
+                        className="c97-btn-ghost"
+                        style={{
+                          minWidth: 44,
+                          justifyContent: "center",
+                          ...(confirmingDelete === `row:${other.id}` ? { color: "var(--c97-negative)" } : {}),
+                        }}
+                      >
+                        <Trash2 className="h-3.5 w-3.5" aria-hidden="true" />
+                        {confirmingDelete === `row:${other.id}` ? "Confirm delete" : null}
+                      </button>
+                      {confirmingDelete === `row:${other.id}` ? (
+                        <button
+                          type="button"
+                          onClick={(event) => {
+                            setConfirmingDelete(null);
+                            (event.currentTarget.previousElementSibling as HTMLElement | null)?.focus();
+                          }}
+                          className="c97-btn-ghost"
+                        >
+                          Keep it
+                        </button>
+                      ) : null}
+                    </div>
                   </li>
                 ))}
               </ul>
@@ -930,9 +977,9 @@ function DayList({
                     <Circle className="h-5 w-5" />
                   )}
                 </button>
-                <Icon className="h-4 w-4 mt-1 shrink-0" aria-hidden="true" style={{ color: CATEGORY_CHART[activity.category] }} />
+                <Icon className="h-4 w-4 shrink-0" aria-hidden="true" style={{ color: CATEGORY_CHART[activity.category], marginTop: "var(--c97-sp-0)" }} />
                 <div className="min-w-0 flex-1">
-                  <div className="flex flex-wrap items-center gap-x-2 gap-y-1">
+                  <div className="flex flex-wrap items-center" style={{ columnGap: "var(--c97-sp-1)", rowGap: "var(--c97-sp-0)" }}>
                     <p
                       className="c97-serif"
                       style={{
@@ -961,7 +1008,7 @@ function DayList({
                     </p>
                   ) : null}
                 </div>
-                <div className="flex flex-col gap-1">
+                <div className="flex flex-col" style={{ gap: "var(--c97-sp-0)" }}>
                   <button type="button" onClick={() => onEdit(activity)} className="c97-btn-ghost">
                     Edit
                   </button>

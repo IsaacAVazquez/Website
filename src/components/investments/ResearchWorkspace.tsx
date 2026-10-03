@@ -113,16 +113,16 @@ export function ResearchWorkspace({
     <section
       id="research-section"
       aria-label={`Research · ${symbol.toUpperCase()}`}
-      className="scroll-mt-12 min-[901px]:scroll-mt-0 space-y-5"
+      className="flex flex-col scroll-mt-12 min-[901px]:scroll-mt-0" style={{ rowGap: "var(--c97-sp-2)" }}
     >
       {showLoadingState ? (
         <ResearchLoading symbol={symbol} />
       ) : showCuratedOnlyState ? (
-        <div className="border border-[color-mix(in_srgb,var(--c97-warning)_35%,var(--c97-rule))] bg-[color-mix(in_srgb,var(--c97-warning)_10%,var(--c97-panel))] px-5 py-6 text-center ">
+        <div className="border border-[color-mix(in_srgb,var(--c97-warning)_35%,var(--c97-rule))] bg-[color-mix(in_srgb,var(--c97-warning)_10%,var(--c97-panel))] text-center" style={{ paddingInline: "var(--c97-sp-2)", paddingBlock: "var(--c97-sp-3)" }}>
           <p className="text-sm font-semibold text-[var(--c97-ink)]">
             This symbol is not in the current research set.
           </p>
-          <p className="mt-2 text-sm text-[var(--c97-ink-2)]">
+          <p className="text-sm text-[var(--c97-ink-2)]" style={{ marginTop: "var(--c97-sp-1)" }}>
             {getCuratedOnlyMessage(symbol)}
           </p>
         </div>
@@ -141,7 +141,7 @@ export function ResearchWorkspace({
 
           {visibleTabs.length > 0 ? (
             <div
-            className="flex gap-2 overflow-x-auto border border-[var(--c97-rule)] bg-[color-mix(in_srgb,var(--c97-surface)_92%,var(--c97-panel))] p-2 "
+            className="flex overflow-x-auto border border-[var(--c97-rule)] bg-[color-mix(in_srgb,var(--c97-surface)_92%,var(--c97-panel))]" style={{ gap: "var(--c97-sp-1)", padding: "var(--c97-sp-1)" }}
             role="tablist"
             aria-label="Research sections"
           >
@@ -155,7 +155,8 @@ export function ResearchWorkspace({
                 tabIndex={resolvedActiveTab === key ? 0 : -1}
                 onKeyDown={(e) => handleVisibleTabKeyDown(e, index)}
                 onClick={() => onTabChange(key)}
-                className={`min-h-touch whitespace-nowrap px-4 py-2 text-sm font-semibold transition ${
+                style={{ paddingInline: "var(--c97-sp-2)", paddingBlock: "var(--c97-sp-1)" }}
+                className={`min-h-touch whitespace-nowrap text-sm font-semibold transition ${
                   resolvedActiveTab === key
                     ? "bg-[var(--c97-ink)] text-[var(--c97-surface)]"
                     : "text-[var(--c97-ink-2)] hover:bg-[var(--c97-panel)] hover:text-[var(--c97-ink)]"
@@ -179,7 +180,7 @@ export function ResearchWorkspace({
               )}
               {resolvedActiveTab === "financials" && <FinancialStatementsPanel symbol={symbol} />}
               {resolvedActiveTab === "growth" && (
-                <div className="grid grid-cols-1 gap-5 lg:grid-cols-2">
+                <div className="grid grid-cols-1 lg:grid-cols-2" style={{ gap: "var(--c97-sp-2)" }}>
                   <GrowthPanel symbol={symbol} />
                   <ProfitabilityPanel symbol={symbol} />
                 </div>

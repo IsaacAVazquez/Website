@@ -295,6 +295,7 @@ export function Catalog97Resume() {
                       >
                         <Link className="c97-microlink" href={entry.writeUp}>
                           Read the write-up
+                          <span className="sr-only"> on my {entry.company} work</span>
                         </Link>
                       </p>
                     ) : null}

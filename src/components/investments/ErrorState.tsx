@@ -13,7 +13,7 @@ export function ErrorState({ message, isNotFetched, onRetry }: ErrorStateProps) 
   return (
     // Polite rather than an alert: several research panels can fail at once
     // (offline, say), and a burst of assertive announcements helps no one.
-    <div role="status" className="flex flex-col items-center justify-center gap-3 py-8 text-center">
+    <div role="status" className="flex flex-col items-center justify-center text-center" style={{ gap: "var(--c97-sp-1)", paddingBlock: "var(--c97-sp-3)" }}>
       {isNotFetched ? (
         <Info
           size={32}

@@ -173,7 +173,7 @@ export function HeaderSearchPanel({ onClose }: HeaderSearchPanelProps) {
   };
 
   return (
-    <div className="absolute inset-x-0 top-full z-50">
+    <div className="absolute inset-x-0 top-full z-[var(--c97-z-tray)]">
       {/* Click-catcher closes the panel; the panel sits above it. */}
       <button
         type="button"

@@ -2,7 +2,7 @@
 
 Current nav model, redirect table, and shell notes.
 
-**Last updated:** 2026-09-30
+**Last updated:** 2026-10-02
 
 ---
 
@@ -63,9 +63,12 @@ Old `/portfolio/<slug>` case-study URLs now redirect to their writing posts:
 - `/portfolio/civic-engagement-platform-scale` -> `/writing/scaling-civic-engagement-platform`
 - `/portfolio/campaign-analytics-dashboard` -> `/writing/campaign-self-service-analytics`
 - `/portfolio/qa-automation-framework` -> `/writing/qa-automation-daily-deploys`
+- `/portfolio/pulse-dashboards` -> `/writing/building-the-pulse-dashboard-family`
 - `/portfolio/performance-intelligence` -> `/writing/proactive-performance-intelligence`
 - `/portfolio/pricing-strategy-initiative` -> `/writing/pricing-strategy-initiative`
 - `/portfolio/digital-acquisition-strategy` -> `/writing/digital-acquisition-strategy`
+
+These live in `retiredPortfolioDestinations` in `next.config.mjs`. Every other `/portfolio/<slug>` that names a case study reaches `src/app/portfolio/[slug]/page.tsx`, which is only a redirect stub. It permanent-redirects the slug to that case study's live tool and returns a 404 for any slug it does not know, and no case study template renders there any more.
 
 ### Contact and resume aliases
 

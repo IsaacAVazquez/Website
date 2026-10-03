@@ -194,13 +194,13 @@ function findGrowthMetric(raw: unknown, keywords: string[]): number | null {
 
 function Skeleton() {
   return (
-    <div className="space-y-6" role="status" aria-busy="true">
+    <div className="flex flex-col" style={{ rowGap: "var(--c97-sp-3)" }} role="status" aria-busy="true">
       <span className="sr-only">Loading comparison</span>
       <div className="flex justify-center">
         <span className="c97-skeleton" style={{ width: 320, height: 320, maxWidth: "100%" }} />
       </div>
       {[1, 2, 3].map((i) => (
-        <div key={i} className="border border-[var(--c97-rule)] p-5 space-y-3">
+        <div key={i} className="flex flex-col border border-[var(--c97-rule)]" style={{ padding: "var(--c97-sp-2)", rowGap: "var(--c97-sp-1)" }}>
           <span className="c97-skeleton" style={{ width: 128, height: 16 }} />
           {[1, 2, 3, 4].map((j) => (
             <span key={j} className="c97-skeleton" style={{ height: 32 }} />
@@ -279,9 +279,9 @@ export function ComparisonTab() {
   // ── Metric table rows ──────────────────────────────────────────────────
   const valuationRows: MetricRow[] = [
     { label: "P/E (TTM)",  valueA: fmt(fundA?.ttmPe),   valueB: fmt(fundB?.ttmPe),   higherIsBetter: false },
-    { label: "P/S Ratio",  valueA: fmt(fundA?.psRatio),  valueB: fmt(fundB?.psRatio),  higherIsBetter: false },
-    { label: "P/B Ratio",  valueA: fmt(fundA?.pbRatio),  valueB: fmt(fundB?.pbRatio),  higherIsBetter: false },
-    { label: "PEG Ratio",  valueA: fmt(fundA?.pegRatio), valueB: fmt(fundB?.pegRatio), higherIsBetter: false },
+    { label: "P/S ratio",  valueA: fmt(fundA?.psRatio),  valueB: fmt(fundB?.psRatio),  higherIsBetter: false },
+    { label: "P/B ratio",  valueA: fmt(fundA?.pbRatio),  valueB: fmt(fundB?.pbRatio),  higherIsBetter: false },
+    { label: "PEG ratio",  valueA: fmt(fundA?.pegRatio), valueB: fmt(fundB?.pegRatio), higherIsBetter: false },
   ];
 
   const growthRows: MetricRow[] = [
@@ -292,13 +292,13 @@ export function ComparisonTab() {
       higherIsBetter: true,
     },
     {
-      label: "Operating Income YoY",
+      label: "Operating income YoY",
       valueA: fmt(findGrowthMetric(growthRawA, ["operating income", "operating"]), "percent"),
       valueB: fmt(findGrowthMetric(growthRawB, ["operating income", "operating"]), "percent"),
       higherIsBetter: true,
     },
     {
-      label: "Net Income YoY",
+      label: "Net income YoY",
       valueA: fmt(findGrowthMetric(growthRawA, ["net income", "net"]), "percent"),
       valueB: fmt(findGrowthMetric(growthRawB, ["net income", "net"]), "percent"),
       higherIsBetter: true,
@@ -318,8 +318,8 @@ export function ComparisonTab() {
   ];
 
   const profitabilityRows: MetricRow[] = [
-    { label: "Gross Margin",  valueA: fmt(marginsA?.grossMargin, "percent"),  valueB: fmt(marginsB?.grossMargin, "percent"),  higherIsBetter: true },
-    { label: "Net Margin",    valueA: fmt(marginsA?.netMargin, "percent"),    valueB: fmt(marginsB?.netMargin, "percent"),    higherIsBetter: true },
+    { label: "Gross margin",  valueA: fmt(marginsA?.grossMargin, "percent"),  valueB: fmt(marginsB?.grossMargin, "percent"),  higherIsBetter: true },
+    { label: "Net margin",    valueA: fmt(marginsA?.netMargin, "percent"),    valueB: fmt(marginsB?.netMargin, "percent"),    higherIsBetter: true },
     { label: "ROE",           valueA: fmt(profA?.roe, "percent"),             valueB: fmt(profB?.roe, "percent"),             higherIsBetter: true },
     { label: "ROA",           valueA: fmt(profA?.roa, "percent"),             valueB: fmt(profB?.roa, "percent"),             higherIsBetter: true },
     { label: "ROIC",          valueA: fmt(profA?.roic, "percent"),            valueB: fmt(profB?.roic, "percent"),            higherIsBetter: true },
@@ -327,17 +327,17 @@ export function ComparisonTab() {
 
   // ── Render ─────────────────────────────────────────────────────────────
   return (
-    <div className="space-y-6">
-      <div className="border border-[var(--c97-rule)] bg-[var(--c97-panel)] p-4  sm:p-5">
-        <div className="grid gap-4 lg:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] lg:items-end">
-          <div className="flex flex-col gap-2">
+    <div className="flex flex-col" style={{ rowGap: "var(--c97-sp-3)" }}>
+      <div className="border border-[var(--c97-rule)] bg-[var(--c97-panel)] p-[var(--c97-sp-2)] sm:p-[var(--c97-sp-2)]">
+        <div className="grid lg:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] lg:items-end" style={{ gap: "var(--c97-sp-2)" }}>
+          <div className="flex flex-col" style={{ gap: "var(--c97-sp-1)" }}>
             <label className="text-2xs font-semibold uppercase tracking-[0.18em] text-[var(--c97-label)]">
               Stock A
             </label>
             <select
               value={symbolA}
               onChange={(e) => setSymbolA(e.target.value)}
-              className="min-h-[46px] border-0 border-b-2 border-[var(--c97-accent)] bg-[var(--c97-panel)] px-3 py-2 text-sm font-semibold text-[var(--c97-accent)] focus:outline-none"
+              className="min-h-[46px] border-0 border-b-2 border-[var(--c97-accent)] bg-[var(--c97-panel)] text-sm font-semibold text-[var(--c97-accent)]" style={{ paddingInline: "var(--c97-sp-1)", paddingBlock: "var(--c97-sp-1)" }}
               aria-label="Select first stock to compare"
             >
               {SYMBOLS.map((s) => (
@@ -349,18 +349,18 @@ export function ComparisonTab() {
             ) : null}
           </div>
 
-          <div className="flex min-h-[46px] items-center justify-center border border-[var(--c97-rule)] bg-[var(--c97-panel)] px-4 text-xs font-semibold uppercase tracking-[0.16em] text-[var(--c97-label)]">
+          <div className="flex min-h-[46px] items-center justify-center border border-[var(--c97-rule)] bg-[var(--c97-panel)] text-xs font-semibold uppercase tracking-[0.16em] text-[var(--c97-label)]" style={{ paddingInline: "var(--c97-sp-2)" }}>
             vs
           </div>
 
-          <div className="flex flex-col gap-2">
+          <div className="flex flex-col" style={{ gap: "var(--c97-sp-1)" }}>
             <label className="text-2xs font-semibold uppercase tracking-[0.18em] text-[var(--c97-label)]">
               Stock B
             </label>
             <select
               value={symbolB}
               onChange={(e) => setSymbolB(e.target.value)}
-              className="min-h-[46px] border-0 border-b-2 border-[var(--c97-ink-2)] bg-[var(--c97-panel)] px-3 py-2 text-sm font-semibold text-[var(--c97-ink)] focus:outline-none"
+              className="min-h-[46px] border-0 border-b-2 border-[var(--c97-ink-2)] bg-[var(--c97-panel)] text-sm font-semibold text-[var(--c97-ink)]" style={{ paddingInline: "var(--c97-sp-1)", paddingBlock: "var(--c97-sp-1)" }}
               aria-label="Select second stock to compare"
             >
               {SYMBOLS.map((s) => (
@@ -372,7 +372,7 @@ export function ComparisonTab() {
             ) : null}
           </div>
         </div>
-        <p className="mt-4 text-sm leading-6 text-[var(--c97-ink-2)]">
+        <p className="text-sm leading-6 text-[var(--c97-ink-2)]" style={{ marginTop: "var(--c97-sp-2)" }}>
           Compare valuation, growth, profitability, and price risk from each company&apos;s curated snapshot, dated under its name. Missing inputs stay out of the radar instead of being scored as average.
         </p>
       </div>
@@ -383,7 +383,7 @@ export function ComparisonTab() {
         <ErrorState message={`Comparison data for ${failedSymbol} did not load.`} onRetry={retryAll} />
       ) : (
         <>
-          <div className="border border-[var(--c97-rule)] bg-[var(--c97-panel)] p-5  sm:p-6">
+          <div className="border border-[var(--c97-rule)] bg-[var(--c97-panel)] p-[var(--c97-sp-2)] sm:p-[var(--c97-sp-3)]">
             <ComparisonRadarChart
               data={radarData}
               symbolA={symbolA}

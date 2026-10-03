@@ -79,7 +79,7 @@ describe("WineCellarClient", () => {
 
     render(<WineCellarClient />);
 
-    fireEvent.change(within(screen.getByLabelText("Search wines")).getByRole("searchbox"), {
+    fireEvent.change(screen.getByRole("searchbox", { name: "Search wines" }), {
       target: { value: "burgundy" },
     });
     const tastingLog = screen.getByRole("region", { name: "Tasting log" });

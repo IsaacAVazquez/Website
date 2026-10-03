@@ -250,7 +250,7 @@ function MobileLeaderboardCards({
   onSelectPlayer: (playerId: string) => void;
 }) {
   return (
-    <div className="grid gap-2 md:hidden">
+    <div className="grid md:hidden" style={{ gap: "var(--c97-sp-1)" }}>
       {rows.map((row) => {
         const isSelected = row.playerId === selectedPlayerId;
 
@@ -262,7 +262,7 @@ function MobileLeaderboardCards({
             aria-current={isSelected ? "true" : undefined}
             className="c97-golf-card"
           >
-            <span className="flex items-start justify-between gap-4">
+            <span className="flex items-start justify-between" style={{ gap: "var(--c97-sp-2)" }}>
               <span style={{ display: "block" }}>
                 <span className="c97-kicker" style={{ display: "block" }}>{row.position}</span>
                 <span className="c97-serif c97-h3" style={{ display: "block" }}>{row.playerName}</span>
@@ -276,7 +276,7 @@ function MobileLeaderboardCards({
               </span>
             </span>
 
-            <span className="mt-4 grid grid-cols-3 gap-2">
+            <span className="grid grid-cols-3" style={{ marginTop: "var(--c97-sp-2)", gap: "var(--c97-sp-1)" }}>
               <StatBlock phrasing label="Today" value={formatScoreToPar(row.today)} detail={row.status} valueColor={scoreColor(row.today)} />
               {row.roundScores.slice(0, 4).map((score, i) => (
                 <StatBlock phrasing key={i} label={`R${i + 1}`} value={String(score)} detail={`Round ${i + 1}`} />
@@ -302,7 +302,7 @@ function PlayerCards({
   coursePar: number;
 }) {
   return (
-    <div className="grid gap-4 sm:grid-cols-2">
+    <div className="grid sm:grid-cols-2" style={{ gap: "var(--c97-sp-2)" }}>
       {rows.map((row) => {
         const isSelected = row.playerId === selectedPlayerId;
 
@@ -314,7 +314,7 @@ function PlayerCards({
             aria-current={isSelected ? "true" : undefined}
             className="c97-golf-card"
           >
-            <span className="flex items-start justify-between gap-4">
+            <span className="flex items-start justify-between" style={{ gap: "var(--c97-sp-2)" }}>
               <span style={{ display: "block" }}>
                 <span className="c97-kicker" style={{ display: "block" }}>{row.position}</span>
                 <span className="c97-serif c97-h3" style={{ display: "block" }}>{row.playerName}</span>
@@ -330,7 +330,7 @@ function PlayerCards({
               </span>
             </span>
 
-            <span className="mt-4 flex flex-wrap gap-3">
+            <span className="flex flex-wrap" style={{ marginTop: "var(--c97-sp-2)", gap: "var(--c97-sp-1)" }}>
               {row.roundScores.map((score, index) => (
                 <span key={index} className="c97-mono" style={{ color: scoreColor(score - coursePar) }}>
                   {score}
@@ -338,7 +338,7 @@ function PlayerCards({
               ))}
             </span>
 
-            <span className="mt-4 flex items-center justify-between gap-3">
+            <span className="flex items-center justify-between" style={{ marginTop: "var(--c97-sp-2)", gap: "var(--c97-sp-1)" }}>
               <span className="c97-stat-delta">{row.status}</span>
               <MovementPill movement={row.movement} />
             </span>
@@ -481,7 +481,7 @@ export function GolfClient({ initialState, summary, initialPlayerSnapshot }: Gol
             {formatRoundStatus(tournament.roundLabel, tournament.status)}
           </p>
           <div className="c97-prose" style={{ fontSize: "var(--c97-fs-small)", color: "var(--c97-ink-2)" }}>
-            <p className="mb-1 flex items-start gap-2">
+            <p className="flex items-start" style={{ marginBottom: "var(--c97-sp-0)", gap: "var(--c97-sp-1)" }}>
               <MapPin className="mt-0.5 h-4 w-4 shrink-0" aria-hidden="true" />
               <span>
                 {tournament.course}
@@ -489,7 +489,7 @@ export function GolfClient({ initialState, summary, initialPlayerSnapshot }: Gol
                 {tournament.location}
               </span>
             </p>
-            <p className="mb-0 flex items-center gap-2">
+            <p className="mb-0 flex items-center" style={{ gap: "var(--c97-sp-1)" }}>
               <Flag className="h-4 w-4 shrink-0" aria-hidden="true" />
               <span>{formatDateRange(tournament.startDate, tournament.endDate)}</span>
             </p>
@@ -509,10 +509,10 @@ export function GolfClient({ initialState, summary, initialPlayerSnapshot }: Gol
 
       <section className="c97-band c97-sheet" data-c97-surface="paper" data-seam="torn">
         <div className="c97-shell">
-          <div className="grid gap-8 xl:grid-cols-[minmax(0,1.7fr)_minmax(320px,0.92fr)]">
-            <div className="space-y-6">
+          <div className="grid xl:grid-cols-[minmax(0,1.7fr)_minmax(320px,0.92fr)]" style={{ gap: "var(--c97-sp-3)" }}>
+            <div className="flex flex-col" style={{ rowGap: "var(--c97-sp-3)" }}>
               <h2 className="c97-poster-sm">The board</h2>
-              <div className="c97-segmented" style={{ marginBottom: "var(--c97-sp-3)" }} role="tablist" aria-label="Golf view switcher">
+              <div className="c97-segmented" role="tablist" aria-label="Golf view switcher">
                 {GOLF_VIEW_OPTIONS.map((view) => (
                   <button
                     key={view}
@@ -530,12 +530,12 @@ export function GolfClient({ initialState, summary, initialPlayerSnapshot }: Gol
               </div>
 
               <div
-                className="space-y-4"
+                className="flex flex-col" style={{ rowGap: "var(--c97-sp-2)" }}
                 role="tabpanel"
                 id={`golf-tabpanel-${routeState.view}`}
                 aria-labelledby={`golf-tab-${routeState.view}`}
               >
-                <p className="c97-prose" style={{ marginBottom: "var(--c97-sp-2)" }}>
+                <p className="c97-prose">
                   {routeState.view === "leaderboard"
                     ? "The table when you want the fastest read on score, round splits, and movement."
                     : "The player cards when you want a softer scan that still keeps score and momentum visible."}
@@ -565,13 +565,13 @@ export function GolfClient({ initialState, summary, initialPlayerSnapshot }: Gol
               </div>
             </div>
 
-            <aside className="space-y-4">
+            <aside className="flex flex-col" style={{ rowGap: "var(--c97-sp-2)" }}>
               <div className="c97-panel xl:sticky xl:top-6">
                 <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-1)" }}>Selected player</p>
 
                 {selectedRow ? (
                   <>
-                    <div className="flex items-start justify-between gap-4">
+                    <div className="flex items-start justify-between" style={{ gap: "var(--c97-sp-2)" }}>
                       <div>
                         <h2 className="c97-serif c97-h2">{selectedRow.playerName}</h2>
                         <p className="c97-stat-delta">{selectedRow.country}</p>
@@ -584,7 +584,7 @@ export function GolfClient({ initialState, summary, initialPlayerSnapshot }: Gol
                       </div>
                     </div>
 
-                    <div className="mt-5 grid grid-cols-2 gap-3">
+                    <div className="grid grid-cols-2" style={{ marginTop: "var(--c97-sp-2)", gap: "var(--c97-sp-1)" }}>
                       <StatBlock label="Position" value={selectedRow.position} detail={selectedRow.status} />
                       <StatBlock
                         label="Today"
@@ -601,8 +601,8 @@ export function GolfClient({ initialState, summary, initialPlayerSnapshot }: Gol
                     ) : null}
 
                     {playerSnapshotError ? (
-                      <div className="mt-5" role="alert">
-                        <div className="flex items-start gap-3">
+                      <div style={{ marginTop: "var(--c97-sp-2)" }} role="alert">
+                        <div className="flex items-start" style={{ gap: "var(--c97-sp-1)" }}>
                           <CircleAlert className="mt-0.5 h-4 w-4 shrink-0" style={{ color: "var(--c97-negative)" }} aria-hidden="true" />
                           <p className="c97-prose" style={{ fontSize: "var(--c97-fs-small)" }}>
                             {playerSnapshotError}
@@ -612,17 +612,17 @@ export function GolfClient({ initialState, summary, initialPlayerSnapshot }: Gol
                     ) : null}
 
                     {playerSnapshot?.player ? (
-                      <div className="mt-5 space-y-5">
-                        <div className="space-y-2" style={{ fontSize: "var(--c97-fs-small)" }}>
-                          <p className="flex items-center gap-2">
+                      <div className="flex flex-col" style={{ marginTop: "var(--c97-sp-2)", rowGap: "var(--c97-sp-2)" }}>
+                        <div className="flex flex-col" style={{ rowGap: "var(--c97-sp-1)", fontSize: "var(--c97-fs-small)" }}>
+                          <p className="flex items-center" style={{ gap: "var(--c97-sp-1)" }}>
                             <UserRound className="h-4 w-4 shrink-0" aria-hidden="true" />
                             <span>{playerSnapshot.player.country}</span>
                           </p>
-                          <p className="flex items-center gap-2">
+                          <p className="flex items-center" style={{ gap: "var(--c97-sp-1)" }}>
                             <Gauge className="h-4 w-4 shrink-0" aria-hidden="true" />
                             <span>Next round tee time {playerSnapshot.tournamentStatus.nextTeeTime ?? "TBD"}</span>
                           </p>
-                          <p className="mb-0 flex items-center gap-2">
+                          <p className="mb-0 flex items-center" style={{ gap: "var(--c97-sp-1)" }}>
                             <Trophy className="h-4 w-4 shrink-0" aria-hidden="true" />
                             <span>{playerSnapshot.tournamentStatus.status}</span>
                           </p>
@@ -661,7 +661,7 @@ export function GolfClient({ initialState, summary, initialPlayerSnapshot }: Gol
                             playerSnapshot.scoring.pars +
                             playerSnapshot.scoring.eagles >
                           0 ? (
-                            <div className="grid grid-cols-2 gap-3">
+                            <div className="grid grid-cols-2" style={{ gap: "var(--c97-sp-1)" }}>
                               <StatBlock label="Birdies" value={`${playerSnapshot.scoring.birdies}`} detail="Opportunities converted" />
                               <StatBlock label="Bogeys" value={`${playerSnapshot.scoring.bogeys}`} detail="Dropped shots" />
                               <StatBlock label="Pars" value={`${playerSnapshot.scoring.pars}`} detail="Steady holes" />
@@ -688,9 +688,9 @@ export function GolfClient({ initialState, summary, initialPlayerSnapshot }: Gol
       </section>
 
       <section className="c97-band c97-sheet" data-c97-surface="bone" data-seam="deckle">
-        <div className="c97-shell space-y-3">
-          <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-2)" }}>Snapshot note</p>
-          <p className="c97-prose" style={{ marginBottom: "var(--c97-sp-2)", fontSize: "var(--c97-fs-small)" }}>
+        <div className="flex flex-col c97-shell" style={{ rowGap: "var(--c97-sp-2)" }}>
+          <p className="c97-kicker">Snapshot note</p>
+          <p className="c97-prose" style={{ fontSize: "var(--c97-fs-small)" }}>
             This page is a checked-in tournament snapshot that refreshes on a schedule.
             Scores, movement, and player drilldowns reflect the local dataset shipped with the app.
           </p>

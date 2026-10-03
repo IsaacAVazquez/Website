@@ -32,7 +32,7 @@ export function MissionStatFascia({ cells }: MissionStatFasciaProps) {
           <p className="text-xl font-bold tracking-[-0.02em] tabular-nums text-[var(--c97-ink)] sm:text-2xl" style={{ marginTop: "var(--c97-sp-1)" }}>
             {cell.value}
           </p>
-          <p className="mt-1 text-xs leading-5 text-[var(--c97-ink-2)]">{cell.detail}</p>
+          <p className="text-xs leading-5 text-[var(--c97-ink-2)]" style={{ marginTop: "var(--c97-sp-0)" }}>{cell.detail}</p>
         </div>
       ))}
     </div>

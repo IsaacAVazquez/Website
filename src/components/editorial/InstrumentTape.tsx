@@ -20,13 +20,13 @@ interface InstrumentTapeProps {
 }
 
 /**
- * Shared horizontal mono readout strip — a "tape" — for live-instrument
+ * Shared horizontal mono readout strip (a "tape") for live-instrument
  * ticker devices (recent outcomes, quote lines, results feeds). A thin
  * layout shell only: callers supply fully rendered items, so the same
  * primitive can back the investments quote tape, dashboard results tapes,
  * and the SpaceX launch tape without duplicating the scroll/hairline chrome.
  *
- * Deliberately has NO auto-scrolling/marquee animation — the motion rules
+ * Deliberately has NO auto-scrolling/marquee animation, since the motion rules
  * forbid looping animation. Horizontal overflow is a plain scroll container
  * that clips gracefully instead of wrapping or truncating.
  */

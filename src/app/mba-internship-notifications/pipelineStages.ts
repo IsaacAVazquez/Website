@@ -1,5 +1,5 @@
 // ---------------------------------------------------------------------------
-// Pipeline stages — the four-column read of MBAApplicationInsights that backs
+// Pipeline stages, the four-column read of MBAApplicationInsights that backs
 // the job search signature. Each stage is a step in the funnel (applied,
 // responded, interview, offer) with the count that reached it and the
 // conversion rate from the stage immediately before it.

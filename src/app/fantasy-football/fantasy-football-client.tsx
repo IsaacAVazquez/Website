@@ -235,10 +235,10 @@ function ValueReachChip({ player }: { player: Player }) {
   const isValue = value.signal === "value";
   return (
     <span
-      className="inline-flex shrink-0 items-center border px-1.5 py-0.5 font-mono text-3xs uppercase tracking-[0.06em]"
+      className="inline-flex shrink-0 items-center border py-0.5 font-mono text-3xs uppercase tracking-[0.06em]"
       title={isValue ? FANTASY_VALUE_TOOLTIP : FANTASY_REACH_TOOLTIP}
       style={
-        isValue
+        { paddingInline: "var(--c97-sp-0)", ...(isValue
           ? {
               borderColor: "color-mix(in srgb, var(--c97-positive) 32%, var(--c97-rule))",
               background: "color-mix(in srgb, var(--c97-positive) 12%, var(--c97-surface))",
@@ -248,7 +248,7 @@ function ValueReachChip({ player }: { player: Player }) {
               borderColor: "color-mix(in srgb, var(--c97-negative) 32%, var(--c97-rule))",
               background: "color-mix(in srgb, var(--c97-negative) 12%, var(--c97-surface))",
               color: "var(--c97-ink)",
-            }
+            }) }
       }
     >
       {isValue ? "Value" : "Reach"}
@@ -290,8 +290,8 @@ function ScoringToggle({
             aria-pressed={active}
             aria-label={option.label}
             onClick={() => onChange(option.key)}
-            className={`relative min-h-touch cursor-pointer px-3 font-mono text-3xs uppercase tracking-[0.08em] transition-colors duration-150 focus-visible:z-10${active ? "" : " bg-transparent text-[var(--c97-ink)] hover:bg-[var(--c97-overlay)]"}`}
-            style={active ? { background: "var(--c97-ink)", color: "var(--c97-surface)" } : undefined}
+            className={`relative min-h-touch cursor-pointer font-mono text-3xs uppercase tracking-[0.08em] transition-colors duration-150 focus-visible:z-10${active ? "" : " bg-transparent text-[var(--c97-ink)] hover:bg-[var(--c97-overlay)]"}`}
+            style={{ paddingInline: "var(--c97-sp-1)", ...(active ? { background: "var(--c97-ink)", color: "var(--c97-surface)" } : undefined) }}
           >
             {compact === "below-xl" ? (
               <>
@@ -343,13 +343,13 @@ function RankingToggle({
             aria-pressed={active}
             disabled={disabled}
             onClick={() => onChange(option)}
-            className={`relative min-h-touch cursor-pointer px-3 font-mono text-3xs uppercase tracking-[0.08em] transition-colors duration-150 focus-visible:z-10 disabled:cursor-not-allowed${active || disabled ? "" : " bg-transparent text-[var(--c97-ink)] hover:bg-[var(--c97-overlay)]"}`}
+            className={`relative min-h-touch cursor-pointer font-mono text-3xs uppercase tracking-[0.08em] transition-colors duration-150 focus-visible:z-10 disabled:cursor-not-allowed${active || disabled ? "" : " bg-transparent text-[var(--c97-ink)] hover:bg-[var(--c97-overlay)]"}`}
             style={
-              active
+              { paddingInline: "var(--c97-sp-1)", ...(active
                 ? { background: "var(--c97-ink)", color: "var(--c97-surface)" }
                 : disabled
                   ? { background: "transparent", color: "var(--c97-ink-2)" }
-                  : undefined
+                  : undefined) }
             }
           >
             {option === "consensus" ? "Consensus" : "VORP"}
@@ -369,14 +369,15 @@ function VorpTeamSizeSelect({
   onChange: (value: FantasyVorpTeamSize) => void;
 }) {
   return (
-    <label className="inline-flex shrink-0 items-center gap-1.5">
+    <label className="inline-flex shrink-0 items-center" style={{ gap: "var(--c97-sp-0)" }}>
       <span className="sr-only">VORP league size</span>
       <select
         aria-label="VORP league size"
         value={value}
         onChange={(event) => onChange(Number(event.target.value) as FantasyVorpTeamSize)}
-        className="relative min-h-touch border-l px-2 font-mono text-3xs uppercase tracking-[0.06em] focus-visible:z-10"
+        className="relative min-h-touch border-l font-mono text-3xs uppercase tracking-[0.06em] focus-visible:z-10"
         style={{
+          paddingInline: "var(--c97-sp-1)",
           borderColor: "var(--c97-rule)",
           background: "var(--c97-field)",
           color: "var(--c97-ink)",
@@ -425,8 +426,8 @@ function QueuedFilterButton({
       {count > 0 && (
         <span
           aria-hidden="true"
-          className="absolute -right-1 -top-1 px-1 font-mono text-3xs tracking-normal tabular-nums"
-          style={{ background: "var(--c97-accent)", color: "var(--c97-surface)" }}
+          className="absolute -right-1 -top-1 font-mono text-3xs tracking-normal tabular-nums"
+          style={{ paddingInline: "var(--c97-sp-0)", background: "var(--c97-accent)", color: "var(--c97-surface)" }}
         >
           {count}
         </span>
@@ -470,8 +471,9 @@ function CompactRankingSelect({
           const size = Number(next.replace("vorp-", ""));
           if (isFantasyVorpTeamSize(size)) onChange({ ranking: "vorp", teams: size });
         }}
-        className="min-h-touch border px-2 font-mono text-2xs uppercase tracking-[0.06em]"
+        className="min-h-touch border font-mono text-2xs uppercase tracking-[0.06em]"
         style={{
+          paddingInline: "var(--c97-sp-1)",
           borderColor: "var(--c97-ink-2)",
           background: "var(--c97-field)",
           color: "var(--c97-ink)",
@@ -568,8 +570,8 @@ function DrawerStat({
     <div
       className={
         lead
-          ? "col-span-2 flex flex-wrap items-baseline justify-between gap-x-3 gap-y-0.5 border px-2.5 py-2"
-          : "border px-2.5 py-2"
+          ? "col-span-2 flex flex-wrap items-baseline justify-between gap-x-[var(--c97-sp-1)] gap-y-0.5 border px-[var(--c97-sp-1)] py-[var(--c97-sp-1)]"
+          : "border px-[var(--c97-sp-1)] py-[var(--c97-sp-1)]"
       }
       style={{ borderColor: "var(--c97-rule)", background: "var(--c97-field)" }}
     >
@@ -583,7 +585,7 @@ function DrawerStat({
         )}
       </p>
       <p
-        className={`${lead ? "" : "mt-1 "}font-mono text-base tabular-nums`}
+        className={`${lead ? "" : "mt-[var(--c97-sp-0)] "}font-mono text-base tabular-nums`}
         style={{ color: valueColor ?? "var(--c97-ink)" }}
       >
         {value}
@@ -762,7 +764,7 @@ function DraftPlayerDrawer({
   const leadSpans = statCards.length % 2 === 1;
 
   return (
-    <div className="fixed inset-0 z-[60] flex justify-end">
+    <div className="fixed inset-0 z-[var(--c97-z-drawer)] flex justify-end">
       <button
         type="button"
         onClick={onClose}
@@ -777,13 +779,15 @@ function DraftPlayerDrawer({
         aria-modal="true"
         aria-label={`${player.name} detail`}
         tabIndex={-1}
-        className="relative flex h-full w-[min(400px,94vw)] flex-col gap-4 overflow-y-auto overscroll-contain border-l p-5"
+        className="relative flex h-full w-[min(400px,94vw)] flex-col overflow-y-auto overscroll-contain border-l"
         style={{
+          padding: "var(--c97-sp-2)",
+          gap: "var(--c97-sp-2)",
           borderColor: "var(--c97-rule)",
           background: "var(--c97-surface)",
         }}
       >
-        <div className="flex items-start justify-between gap-3">
+        <div className="flex items-start justify-between" style={{ gap: "var(--c97-sp-1)" }}>
           <div className="min-w-0">
             {/* The kicker names whichever rank the board behind the drawer is
                 sorted by. In VORP mode the consensus rank stays on the next
@@ -792,12 +796,12 @@ function DraftPlayerDrawer({
               {vorpMode && vorp ? `VORP #${vorp.rank} · ${vorpTeams}-team` : consensusLine}
             </p>
             {vorpMode && vorp ? (
-              <p className={`${MONO_LABEL_CLASS} mt-1`} style={{ color: "var(--c97-ink-2)" }}>
+              <p className={`${MONO_LABEL_CLASS}`} style={{ marginTop: "var(--c97-sp-0)", color: "var(--c97-ink-2)" }}>
                 {consensusLine}
               </p>
             ) : null}
             <h2 className="c97-serif c97-h3 truncate" style={{ marginTop: "var(--c97-sp-1)" }}>{player.name}</h2>
-            <p className="mt-1 font-mono text-2xs uppercase tracking-[0.06em]" style={{ color: "var(--c97-ink-2)" }}>
+            <p className="font-mono text-2xs uppercase tracking-[0.06em]" style={{ marginTop: "var(--c97-sp-0)", color: "var(--c97-ink-2)" }}>
               {player.position}
               {Number.isFinite(player.positionRank) ? player.positionRank : ""} · {player.team || "FA"}
               {player.byeWeek ? ` · Bye ${player.byeWeek}` : ""}
@@ -813,7 +817,7 @@ function DraftPlayerDrawer({
           </button>
         </div>
 
-        <div className="grid grid-cols-2 gap-2">
+        <div className="grid grid-cols-2" style={{ gap: "var(--c97-sp-1)" }}>
           {statCards.map((card, index) => (
             <DrawerStat key={card.label} {...card} lead={leadSpans && index === 0} />
           ))}
@@ -821,13 +825,13 @@ function DraftPlayerDrawer({
 
         {verdict && (
           <p
-            className="border-l-[3px] px-3 py-2.5 text-sm leading-6"
-            style={{ borderColor: verdict.color, background: verdict.background, color: "var(--c97-ink)" }}
+            className="border-l-[3px] text-sm leading-6"
+            style={{ paddingInline: "var(--c97-sp-1)", paddingBlock: "var(--c97-sp-1)", borderColor: verdict.color, background: verdict.background, color: "var(--c97-ink)" }}
           >
             {/* The verdict compares ADP with the consensus rank, so under a
                 VORP kicker it says which rank it is reading against. */}
             {vorpMode ? (
-              <span className={`${MONO_LABEL_CLASS} mb-1 block`} style={{ color: "var(--c97-ink-2)" }}>
+              <span className={`${MONO_LABEL_CLASS} block`} style={{ marginBottom: "var(--c97-sp-0)", color: "var(--c97-ink-2)" }}>
                 Market read against the consensus rank
               </span>
             ) : null}
@@ -837,7 +841,7 @@ function DraftPlayerDrawer({
 
         {lo !== null && hi !== null && (
           <div>
-            <div className="flex items-baseline justify-between gap-2.5">
+            <div className="flex items-baseline justify-between" style={{ gap: "var(--c97-sp-1)" }}>
               <span
                 className={`${MONO_LABEL_CLASS} inline-flex items-center`}
                 style={{ color: "var(--c97-ink-2)" }}
@@ -852,8 +856,8 @@ function DraftPlayerDrawer({
               )}
             </div>
             <div
-              className="relative mt-2 h-2.5 overflow-hidden"
-              style={{ background: "color-mix(in srgb, var(--c97-ink) 8%, var(--c97-surface))" }}
+              className="relative h-2.5 overflow-hidden"
+              style={{ marginTop: "var(--c97-sp-1)", background: "color-mix(in srgb, var(--c97-ink) 8%, var(--c97-surface))" }}
             >
               <span className="absolute inset-0" style={{ background: spreadFill }} />
               {avgTickLeft !== null && (
@@ -864,8 +868,8 @@ function DraftPlayerDrawer({
               )}
             </div>
             <div
-              className="mt-1.5 flex justify-between font-mono text-3xs uppercase tracking-[0.08em]"
-              style={{ color: "var(--c97-ink-2)" }}
+              className="flex justify-between font-mono text-3xs uppercase tracking-[0.08em]"
+              style={{ marginTop: "var(--c97-sp-0)", color: "var(--c97-ink-2)" }}
             >
               <span>Best {lo}</span>
               {avg !== null && <span style={{ color: "var(--c97-ink)" }}>Avg {avg.toFixed(1)}</span>}
@@ -876,7 +880,7 @@ function DraftPlayerDrawer({
 
         {gameLog && (
           <div>
-            <div className="flex items-baseline justify-between gap-2.5">
+            <div className="flex items-baseline justify-between" style={{ gap: "var(--c97-sp-1)" }}>
               <span
                 className={`${MONO_LABEL_CLASS} inline-flex items-center`}
                 style={{ color: "var(--c97-ink-2)" }}
@@ -896,8 +900,8 @@ function DraftPlayerDrawer({
               </span>
             </div>
             <div
-              className="relative mt-2 h-2.5 overflow-hidden"
-              style={{ background: "color-mix(in srgb, var(--c97-rule) 70%, var(--c97-surface))" }}
+              className="relative h-2.5 overflow-hidden"
+              style={{ marginTop: "var(--c97-sp-1)", background: "color-mix(in srgb, var(--c97-rule) 70%, var(--c97-surface))" }}
             >
               <span
                 className="absolute bottom-0 top-0 w-0.5"
@@ -916,7 +920,7 @@ function DraftPlayerDrawer({
                 }}
               />
             </div>
-            <dl className="mt-2 grid grid-cols-4 gap-2">
+            <dl className="grid grid-cols-4" style={{ marginTop: "var(--c97-sp-1)", gap: "var(--c97-sp-1)" }}>
               <div>
                 <dt className={MONO_LABEL_CLASS} style={{ color: "var(--c97-ink-2)" }}>
                   Low
@@ -964,7 +968,7 @@ function DraftPlayerDrawer({
 
         {neighbors.length > 1 && (
           <div>
-            <div className="flex items-baseline justify-between gap-2.5">
+            <div className="flex items-baseline justify-between" style={{ gap: "var(--c97-sp-1)" }}>
               <span className={MONO_LABEL_CLASS} style={{ color: "var(--c97-ink-2)" }}>
                 Board neighborhood
               </span>
@@ -976,8 +980,8 @@ function DraftPlayerDrawer({
               </span>
             </div>
             <ul
-              className="mt-2 list-none overflow-hidden border"
-              style={{ borderColor: "var(--c97-rule)" }}
+              className="list-none overflow-hidden border"
+              style={{ marginTop: "var(--c97-sp-1)", borderColor: "var(--c97-rule)" }}
             >
               {neighbors.map((neighbor) => {
                 const selected = neighbor.id === player.id;
@@ -991,8 +995,11 @@ function DraftPlayerDrawer({
                       type="button"
                       onClick={() => onSelectNeighbor(neighbor.id)}
                       aria-current={selected || undefined}
-                      className="flex min-h-11 w-full items-baseline gap-2.5 border-l-[3px] px-2.5 py-1.5 text-left hover:bg-[var(--c97-overlay)]"
+                      className="flex min-h-11 w-full items-baseline border-l-[3px] text-left hover:bg-[var(--c97-overlay)]"
                       style={{
+                        paddingInline: "var(--c97-sp-1)",
+                        paddingBlock: "var(--c97-sp-0)",
+                        gap: "var(--c97-sp-1)",
                         borderColor: selected ? "var(--c97-accent)" : "transparent",
                         background: selected
                           ? "color-mix(in srgb, var(--c97-accent) 8%, transparent)"
@@ -1028,15 +1035,15 @@ function DraftPlayerDrawer({
           type="button"
           onClick={() => queue.toggle(player.id)}
           aria-pressed={isQueued}
-          className={`inline-flex min-h-touch items-center justify-center gap-2 border font-mono text-2xs uppercase tracking-[0.08em]${isQueued ? "" : " border-[var(--c97-rule)] bg-[var(--c97-surface)] text-[var(--c97-ink)] hover:border-[var(--c97-ink)] hover:bg-[var(--c97-overlay)]"}`}
+          className={`inline-flex min-h-touch items-center justify-center border font-mono text-2xs uppercase tracking-[0.08em]${isQueued ? "" : " border-[var(--c97-rule)] bg-[var(--c97-surface)] text-[var(--c97-ink)] hover:border-[var(--c97-ink)] hover:bg-[var(--c97-overlay)]"}`}
           style={
-            isQueued
+            { gap: "var(--c97-sp-1)", ...(isQueued
               ? {
                   borderColor: "color-mix(in srgb, var(--c97-accent) 60%, var(--c97-rule))",
                   background: "color-mix(in srgb, var(--c97-accent) 26%, var(--c97-surface))",
                   color: "var(--c97-ink)",
                 }
-              : undefined
+              : undefined) }
           }
         >
           <Star size={14} fill={isQueued ? "currentColor" : "none"} aria-hidden="true" />
@@ -1058,14 +1065,17 @@ function DraftPlayerDrawer({
               notes.setNote(player.id, event.target.value);
             }}
             placeholder="Handcuff for Hall… target round 6… avoid."
-            className="mt-2 block w-full resize-none border px-2.5 py-2 font-mono text-xs leading-normal"
+            className="block w-full resize-none border font-mono text-xs leading-normal"
             style={{
+              paddingInline: "var(--c97-sp-1)",
+              paddingBlock: "var(--c97-sp-1)",
+              marginTop: "var(--c97-sp-1)",
               borderColor: "var(--c97-rule)",
               background: "var(--c97-field)",
               color: "var(--c97-ink)",
             }}
           />
-          <p className="mt-1 text-right font-mono text-3xs" style={{ color: "var(--c97-ink-2)" }}>
+          <p className="text-right font-mono text-3xs" style={{ marginTop: "var(--c97-sp-0)", color: "var(--c97-ink-2)" }}>
             {draftNote.length}/{notes.maxLength} · saved on this device
           </p>
         </div>
@@ -1508,7 +1518,7 @@ export function FantasyFootballClient({ initialState, initialSnapshot = null }: 
         style={{ marginTop }}
       >
         {index > 0 && cliff > 0 && (
-          <div aria-hidden="true" className="flex items-center gap-3 px-0.5 pb-2.5">
+          <div aria-hidden="true" className="flex items-center px-0.5" style={{ paddingBottom: "var(--c97-sp-1)", gap: "var(--c97-sp-1)" }}>
             <span
               className="flex-1 border-t border-dashed"
               style={{ borderColor: "color-mix(in srgb, var(--c97-ink) 24%, transparent)" }}
@@ -1533,7 +1543,7 @@ export function FantasyFootballClient({ initialState, initialSnapshot = null }: 
             background: "var(--c97-field)",
           }}
         >
-          <div className="flex flex-wrap items-baseline gap-x-3.5 gap-y-1 px-3.5 pb-2 pt-2.5">
+          <div className="flex flex-wrap items-baseline" style={{ paddingInline: "var(--c97-sp-2)", paddingTop: "var(--c97-sp-1)", paddingBottom: "var(--c97-sp-1)", columnGap: "var(--c97-sp-2)", rowGap: "var(--c97-sp-0)" }}>
             <span className="text-2xl font-bold leading-none tracking-tight tabular-nums">
               {vorpMode
                 ? "VORP"
@@ -1587,8 +1597,8 @@ export function FantasyFootballClient({ initialState, initialSnapshot = null }: 
                     />
                   )}
                   <div
-                    className="relative z-[2] flex min-h-11 w-full cursor-pointer flex-wrap items-center gap-x-4 gap-y-1 py-1.5 pl-3.5 pr-15 text-left"
-                    style={{ color: "var(--c97-ink)" }}
+                    className="relative z-[2] flex min-h-11 w-full cursor-pointer flex-wrap items-center text-left"
+                    style={{ paddingBlock: "var(--c97-sp-0)", paddingLeft: "var(--c97-sp-2)", paddingRight: "calc(52px + var(--c97-sp-1))", columnGap: "var(--c97-sp-2)", rowGap: "var(--c97-sp-0)", color: "var(--c97-ink)" }}
                     onClick={() => {
                       if (window.getSelection()?.toString()) return;
                       setDetailPlayerId(player.id);
@@ -1619,12 +1629,12 @@ export function FantasyFootballClient({ initialState, initialSnapshot = null }: 
                           21.5rem the two share one line, and the spread bar yields
                           below xl so the cell clears the switch from 1024 up. The name
                           keeps a hard floor either way. */}
-                      <span className="flex flex-col gap-y-1 @min-[21.5rem]:flex-row @min-[21.5rem]:items-center @min-[21.5rem]:gap-x-2">
+                      <span className="flex flex-col @min-[21.5rem]:flex-row @min-[21.5rem]:items-center @min-[21.5rem]:gap-x-[var(--c97-sp-1)]" style={{ rowGap: "var(--c97-sp-0)" }}>
                         <span className="min-w-[7rem] truncate text-sm font-semibold tracking-tight">{player.name}</span>
-                        <span className="flex min-w-0 items-center gap-x-2 @min-[21.5rem]:shrink-0">
+                        <span className="flex min-w-0 items-center @min-[21.5rem]:shrink-0" style={{ columnGap: "var(--c97-sp-1)" }}>
                           <span
-                            className="inline-flex shrink-0 items-center border px-1.5 py-0.5 font-mono text-3xs tracking-[0.06em]"
-                            style={{ ...tone, color: "var(--c97-ink)" }}
+                            className="inline-flex shrink-0 items-center border py-0.5 font-mono text-3xs tracking-[0.06em]"
+                            style={{ paddingInline: "var(--c97-sp-0)", ...tone, color: "var(--c97-ink)" }}
                           >
                             {player.position}
                             {Number.isFinite(player.positionRank) ? player.positionRank : ""}
@@ -1640,7 +1650,7 @@ export function FantasyFootballClient({ initialState, initialSnapshot = null }: 
                         </span>
                       </span>
                     </span>
-                    <span className="grid w-full grid-cols-3 gap-x-3 gap-y-1 md:flex md:w-auto md:max-w-full md:flex-wrap md:items-center md:gap-x-4">
+                    <span className="grid w-full grid-cols-3 gap-x-[var(--c97-sp-1)] md:flex md:w-auto md:max-w-full md:flex-wrap md:items-center md:gap-x-[var(--c97-sp-2)]" style={{ rowGap: "var(--c97-sp-0)" }}>
                       {vorpAvailable && (
                         <>
                           <span className="sr-only">Value over replacement player</span>
@@ -1738,7 +1748,7 @@ export function FantasyFootballClient({ initialState, initialSnapshot = null }: 
                         placed in the wrapping flow, because in flow it wrapped
                         onto a line of its own at 390 and again at 768, where
                         it also pushed the metrics 59px right of their column
-                        labels. The row's pr-15 reserves its column, and the
+                        labels. The row's right padding reserves its column, and the
                         label row reserves the same for the queue filter. */}
                     <button
                       type="button"
@@ -1790,7 +1800,7 @@ export function FantasyFootballClient({ initialState, initialSnapshot = null }: 
             className="c97-offset"
             style={{ padding: "var(--c97-sp-3)", marginTop: "var(--c97-sp-4)" }}
           >
-            <div className="flex flex-wrap gap-1.5">
+            <div className="flex flex-wrap" style={{ gap: "var(--c97-sp-0)" }}>
               {headerChips.map((chip) => (
                 <span
                   key={chip.label}
@@ -1820,7 +1830,7 @@ export function FantasyFootballClient({ initialState, initialSnapshot = null }: 
 
       <section className="c97-sheet" data-c97-surface="paper" data-seam="torn">
         {seasonalWeek >= 1 ? (
-          <div className={`${SHELL_CLASS} pt-4 pb-4`}>
+          <div className={`${SHELL_CLASS}`} style={{ paddingTop: "var(--c97-sp-2)", paddingBottom: "var(--c97-sp-2)" }}>
             <SeasonalScopeNote season={metadata?.season ?? 0} week={seasonalWeek}>
               Every board on this page is the preseason draft consensus, kept as a
               reference once games begin rather than refreshed for weekly starts.
@@ -1851,7 +1861,7 @@ export function FantasyFootballClient({ initialState, initialSnapshot = null }: 
             background: "var(--c97-surface)",
           }}
         >
-          <div className={`${SHELL_CLASS} hidden flex-wrap items-center gap-x-3.5 gap-y-2 py-1 md:flex`}>
+          <div className={`${SHELL_CLASS} hidden flex-wrap items-center md:flex`} style={{ paddingBlock: "var(--c97-sp-0)", columnGap: "var(--c97-sp-2)", rowGap: "var(--c97-sp-1)" }}>
             <PositionFilterBar
               ariaLabel="Position board"
               options={positionOptions}
@@ -1878,7 +1888,7 @@ export function FantasyFootballClient({ initialState, initialSnapshot = null }: 
           </div>
           {/* Wraps instead of clipping, so at 320 wide or with enlarged text the search
               and queue filter drop to a second line and stay reachable. */}
-          <div className={`${SHELL_CLASS} flex flex-wrap items-center gap-2 py-2 md:hidden`}>
+          <div className={`${SHELL_CLASS} flex flex-wrap items-center md:hidden`} style={{ paddingBlock: "var(--c97-sp-1)", gap: "var(--c97-sp-1)" }}>
             {mobileSearchOpen ? (
               <>
                 <div className="relative min-w-0 flex-1">
@@ -1903,11 +1913,11 @@ export function FantasyFootballClient({ initialState, initialSnapshot = null }: 
                     disabled={currentSliceUnavailable}
                     autoComplete="off"
                     placeholder="Search player or team"
-                    className="min-h-touch w-full border pl-8 pr-2.5 font-mono text-xs placeholder:text-[var(--c97-ink-2)] disabled:cursor-not-allowed disabled:border-dashed"
+                    className="min-h-touch w-full border font-mono text-xs placeholder:text-[var(--c97-ink-2)] disabled:cursor-not-allowed disabled:border-dashed"
                     style={
-                      currentSliceUnavailable
+                      { paddingLeft: "calc(24px + var(--c97-sp-1))", paddingRight: "var(--c97-sp-1)", ...(currentSliceUnavailable
                         ? { borderColor: "var(--c97-ink-2)", background: "none", color: "var(--c97-ink-2)" }
-                        : { borderColor: "var(--c97-ink-2)", background: "var(--c97-field)", color: "var(--c97-ink)" }
+                        : { borderColor: "var(--c97-ink-2)", background: "var(--c97-field)", color: "var(--c97-ink)" }) }
                     }
                   />
                 </div>
@@ -1930,7 +1940,7 @@ export function FantasyFootballClient({ initialState, initialSnapshot = null }: 
                   aria-label="Done searching, keep the filter"
                   onMouseDown={(event) => event.preventDefault()}
                   onClick={() => setMobileSearchOpen(false)}
-                  className="inline-flex min-h-touch shrink-0 items-center border border-[var(--c97-ink-2)] bg-[var(--c97-field)] px-3 font-mono text-3xs uppercase tracking-[0.08em] text-[var(--c97-ink)] hover:border-[var(--c97-ink)]"
+                  className="inline-flex min-h-touch shrink-0 items-center border border-[var(--c97-ink-2)] bg-[var(--c97-field)] font-mono text-3xs uppercase tracking-[0.08em] text-[var(--c97-ink)] hover:border-[var(--c97-ink)]" style={{ paddingInline: "var(--c97-sp-1)" }}
                 >
                   Done
                 </button>
@@ -1944,8 +1954,9 @@ export function FantasyFootballClient({ initialState, initialSnapshot = null }: 
                   id="fantasy-position-select"
                   value={routeState.position}
                   onChange={(event) => updateRouteState({ position: event.target.value as FantasyRoutePosition })}
-                  className="min-h-touch shrink-0 border px-2 font-mono text-2xs uppercase tracking-[0.06em]"
+                  className="min-h-touch shrink-0 border font-mono text-2xs uppercase tracking-[0.06em]"
                   style={{
+                    paddingInline: "var(--c97-sp-1)",
                     borderColor: "var(--c97-ink-2)",
                     background: "var(--c97-field)",
                     color: "var(--c97-ink)",
@@ -2012,7 +2023,7 @@ export function FantasyFootballClient({ initialState, initialSnapshot = null }: 
               took a third row, and the bar pinned 225px of an 844px phone. It
               yields while the search is open, since the count is what a search
               needs to see. */}
-          <div className={`${SHELL_CLASS} flex items-center gap-2 pb-2 md:hidden`}>
+          <div className={`${SHELL_CLASS} flex items-center md:hidden`} style={{ paddingBottom: "var(--c97-sp-1)", gap: "var(--c97-sp-1)" }}>
             {!mobileSearchOpen ? (
               <CompactRankingSelect
                 ranking={routeState.ranking}
@@ -2034,7 +2045,7 @@ export function FantasyFootballClient({ initialState, initialSnapshot = null }: 
               search pushed the controls onto a second line at 1440; the column
               labels ride beside it so the numbers keep their names mid-scroll,
               and the queue filter heads the star column it filters, in the
-              space both rows reserve with pr-15. Phones get per-value
+              space both rows reserve with their right padding. Phones get per-value
               micro-labels and their own search instead. The search and the
               filter are always mounted here so an empty result can still be
               edited; only the labels wait for rows. */}
@@ -2044,11 +2055,11 @@ export function FantasyFootballClient({ initialState, initialSnapshot = null }: 
           >
             <div className={SHELL_CLASS}>
               <div
-                className="relative flex items-center gap-x-4 py-1 pl-3.5 pr-15 font-mono text-3xs uppercase tracking-[0.12em]"
-                style={{ color: "var(--c97-ink-2)" }}
+                className="relative flex items-center font-mono text-3xs uppercase tracking-[0.12em]"
+                style={{ paddingBlock: "var(--c97-sp-0)", paddingLeft: "var(--c97-sp-2)", paddingRight: "calc(52px + var(--c97-sp-1))", columnGap: "var(--c97-sp-2)", color: "var(--c97-ink-2)" }}
               >
                 <span className="w-[34px] shrink-0" />
-                <span className="flex min-w-0 flex-[1_1_12rem] items-center gap-x-3">
+                <span className="flex min-w-0 flex-[1_1_12rem] items-center" style={{ columnGap: "var(--c97-sp-1)" }}>
                   <span className="relative min-w-0 shrink">
                     <label htmlFor="fantasy-search" className="sr-only">
                       Search the current rankings board
@@ -2067,11 +2078,11 @@ export function FantasyFootballClient({ initialState, initialSnapshot = null }: 
                       disabled={currentSliceUnavailable}
                       autoComplete="off"
                       placeholder="Player or team"
-                      className="min-h-touch w-40 max-w-full border pl-8 pr-2.5 font-mono text-xs normal-case tracking-normal placeholder:text-[var(--c97-ink-2)] disabled:cursor-not-allowed disabled:border-dashed lg:w-[200px]"
+                      className="min-h-touch w-40 max-w-full border font-mono text-xs normal-case tracking-normal placeholder:text-[var(--c97-ink-2)] disabled:cursor-not-allowed disabled:border-dashed lg:w-[200px]"
                       style={
-                        currentSliceUnavailable
+                        { paddingLeft: "calc(24px + var(--c97-sp-1))", paddingRight: "var(--c97-sp-1)", ...(currentSliceUnavailable
                           ? { borderColor: "var(--c97-ink-2)", background: "none", color: "var(--c97-ink-2)" }
-                          : { borderColor: "var(--c97-ink-2)", background: "var(--c97-field)", color: "var(--c97-ink)" }
+                          : { borderColor: "var(--c97-ink-2)", background: "var(--c97-field)", color: "var(--c97-ink)" }) }
                       }
                     />
                   </span>
@@ -2084,7 +2095,7 @@ export function FantasyFootballClient({ initialState, initialSnapshot = null }: 
                   )}
                 </span>
                 {boardReady && (
-                  <span className="flex shrink-0 items-center gap-4">
+                  <span className="flex shrink-0 items-center" style={{ gap: "var(--c97-sp-2)" }}>
                     {metricColumns.map((column) => (
                       <span key={column.label} className={column.className}>
                         {column.title ? (
@@ -2109,14 +2120,14 @@ export function FantasyFootballClient({ initialState, initialSnapshot = null }: 
           </div>
         </div>
 
-        <div className={`${SHELL_CLASS} pb-10 pt-4`}>
+        <div className={`${SHELL_CLASS}`} style={{ paddingTop: "var(--c97-sp-2)", paddingBottom: "var(--c97-sp-4)" }}>
           <h2 className="sr-only">
             {vorpMode ? `${routeState.teams}-team VORP` : FANTASY_POSITION_LABELS[routeState.position]} rankings
           </h2>
           {/* The count left the sticky bar: with the search over the Player
               column the bar's first line holds every control at 1440, and the
               count would have been the one thing wrapping it to a second. */}
-          <div className="hidden justify-end pb-2 md:flex">
+          <div className="hidden justify-end md:flex" style={{ paddingBottom: "var(--c97-sp-1)" }}>
             <span
               aria-live={error ? undefined : "polite"}
               className="font-mono text-2xs"
@@ -2129,21 +2140,24 @@ export function FantasyFootballClient({ initialState, initialSnapshot = null }: 
           {localToolsMemoryOnly && (
             <div
               role="status"
-              className="mb-4 border px-4 py-3 text-sm"
+              className="border text-sm"
               style={{
+                paddingInline: "var(--c97-sp-2)",
+                paddingBlock: "var(--c97-sp-1)",
+                marginBottom: "var(--c97-sp-2)",
                 borderColor: "color-mix(in srgb, var(--c97-warning) 55%, var(--c97-rule))",
                 background: "color-mix(in srgb, var(--c97-warning) 10%, var(--c97-surface))",
               }}
             >
               <p className="font-semibold">Browser storage is unavailable.</p>
-              <p className="mt-1" style={{ color: "var(--c97-ink-2)" }}>
+              <p style={{ marginTop: "var(--c97-sp-0)", color: "var(--c97-ink-2)" }}>
                 Queue and notes still work in this tab, but they will not survive a reload.
               </p>
             </div>
           )}
 
           {isLoading ? (
-            <div className="grid gap-2" aria-hidden="true">
+            <div className="grid" style={{ gap: "var(--c97-sp-1)" }} aria-hidden="true">
               {Array.from({ length: 12 }).map((_, index) => (
                 <div key={`loading-${index}`} className="c97-skeleton" style={{ height: 44 }} />
               ))}
@@ -2151,8 +2165,10 @@ export function FantasyFootballClient({ initialState, initialSnapshot = null }: 
           ) : error ? (
             <div
               role="alert"
-              className="border px-5 py-8"
+              className="border"
               style={{
+                paddingInline: "var(--c97-sp-2)",
+                paddingBlock: "var(--c97-sp-3)",
                 borderColor: "var(--c97-negative)",
                 background: "color-mix(in srgb, var(--c97-negative) 8%, var(--c97-surface))",
               }}
@@ -2160,7 +2176,7 @@ export function FantasyFootballClient({ initialState, initialSnapshot = null }: 
               <p className="font-semibold" style={{ color: "var(--c97-negative)" }}>
                 {error}
               </p>
-              <p className="mt-2 text-sm" style={{ color: "var(--c97-ink-2)" }}>
+              <p className="text-sm" style={{ marginTop: "var(--c97-sp-1)", color: "var(--c97-ink-2)" }}>
                 Check your connection and try loading the published snapshot again.
               </p>
               <button
@@ -2174,8 +2190,10 @@ export function FantasyFootballClient({ initialState, initialSnapshot = null }: 
             </div>
           ) : currentSliceUnavailable ? (
             <div
-              className="border px-5 py-12 text-center"
+              className="border text-center"
               style={{
+                paddingInline: "var(--c97-sp-2)",
+                paddingBlock: "var(--c97-sp-5)",
                 borderColor: "color-mix(in srgb, var(--c97-warning) 32%, var(--c97-rule))",
                 background: "color-mix(in srgb, var(--c97-warning) 10%, var(--c97-surface))",
               }}
@@ -2183,15 +2201,15 @@ export function FantasyFootballClient({ initialState, initialSnapshot = null }: 
               <p className="text-lg font-semibold">
                 {selectedScoringLabel} {FANTASY_POSITION_LABELS[routeState.position]} rankings are unavailable.
               </p>
-              <p className="mt-2 text-sm" style={{ color: "var(--c97-ink-2)" }}>
+              <p className="text-sm" style={{ marginTop: "var(--c97-sp-1)", color: "var(--c97-ink-2)" }}>
                 {sliceMetadata?.reason ??
                   "This scoring-position combination is not published in the current snapshot."}
               </p>
             </div>
           ) : filteredPlayers.length === 0 ? (
             <div
-              className="border border-dashed px-5 py-9 text-center"
-              style={{ borderColor: "var(--c97-rule)" }}
+              className="border border-dashed text-center"
+              style={{ paddingInline: "var(--c97-sp-2)", paddingBlock: "var(--c97-sp-4)", borderColor: "var(--c97-rule)" }}
             >
               <p className="font-mono text-xs" style={{ color: "var(--c97-ink-2)" }}>
                 {queuedOnly ? "No queued players on this board." : "No players match on this board."}
@@ -2206,7 +2224,7 @@ export function FantasyFootballClient({ initialState, initialSnapshot = null }: 
                   Show all players
                 </button>
               ) : (
-                <div className="mt-3.5 flex flex-wrap items-center justify-center gap-2">
+                <div className="flex flex-wrap items-center justify-center" style={{ marginTop: "var(--c97-sp-2)", gap: "var(--c97-sp-1)" }}>
                   <button
                     type="button"
                     onClick={() => {
@@ -2233,13 +2251,13 @@ export function FantasyFootballClient({ initialState, initialSnapshot = null }: 
             <>
               <div>{tierGroups.map((group, index) => renderTierSection(group, index))}</div>
               {hasMore && (
-                <div ref={sentinelRef} className="mt-4 flex justify-center">
+                <div ref={sentinelRef} className="flex justify-center" style={{ marginTop: "var(--c97-sp-2)" }}>
                   <button
                     type="button"
                     onClick={() =>
                       setVisibleCount((count) => Math.min(count + RANKINGS_PAGE_SIZE, filteredPlayers.length))
                     }
-                    className="inline-flex min-h-touch items-center gap-2 border border-[var(--c97-rule)] bg-[var(--c97-surface)] px-5 text-sm font-semibold hover:border-[var(--c97-ink)] hover:bg-[var(--c97-overlay)]"
+                    className="inline-flex min-h-touch items-center border border-[var(--c97-rule)] bg-[var(--c97-surface)] text-sm font-semibold hover:border-[var(--c97-ink)] hover:bg-[var(--c97-overlay)]" style={{ paddingInline: "var(--c97-sp-2)", gap: "var(--c97-sp-1)" }}
                   >
                     Load more ({filteredPlayers.length - windowedPlayers.length} left)
                   </button>
@@ -2249,8 +2267,8 @@ export function FantasyFootballClient({ initialState, initialSnapshot = null }: 
           )}
 
           <div
-            className="mt-7 flex flex-wrap items-baseline justify-between gap-x-5 gap-y-2 border-t pt-3.5"
-            style={{ borderColor: "var(--c97-rule)" }}
+            className="flex flex-wrap items-baseline justify-between border-t"
+            style={{ paddingTop: "var(--c97-sp-2)", marginTop: "var(--c97-sp-3)", columnGap: "var(--c97-sp-2)", rowGap: "var(--c97-sp-1)", borderColor: "var(--c97-rule)" }}
           >
             <span
               className="font-mono text-2xs"
@@ -2269,7 +2287,7 @@ export function FantasyFootballClient({ initialState, initialSnapshot = null }: 
                     : `Refreshes daily July through December, weekly in the offseason${snapshotStamp ? ` · snapshot ${snapshotStamp}` : ""}`
                   : `${getSnapshotStalenessLabel(sourceStaleness)} board · source updated ${sourceStamp ?? "date unknown"}`}
             </span>
-            <nav aria-label="More fantasy tools" className="flex flex-wrap gap-x-5 gap-y-2">
+            <nav aria-label="More fantasy tools" className="flex flex-wrap" style={{ columnGap: "var(--c97-sp-2)", rowGap: "var(--c97-sp-1)" }}>
               {FANTASY_TOOLS.map((tool) => (
                 <Link
                   key={tool.href}
@@ -2293,11 +2311,11 @@ export function FantasyFootballClient({ initialState, initialSnapshot = null }: 
               Fantasy rankings questions
             </h2>
           </div>
-          <div className="mt-5 grid gap-4 lg:grid-cols-3">
+          <div className="grid lg:grid-cols-3" style={{ marginTop: "var(--c97-sp-2)", gap: "var(--c97-sp-2)" }}>
             {FANTASY_FOOTBALL_FAQ.map((item) => (
               <article key={item.question} className="c97-panel">
                 <h3 className="c97-serif c97-h3">{item.question}</h3>
-                <p className="mt-3 text-sm leading-7" style={{ color: "var(--c97-ink-2)" }}>
+                <p className="text-sm leading-7" style={{ marginTop: "var(--c97-sp-1)", color: "var(--c97-ink-2)" }}>
                   {item.answer}
                 </p>
               </article>

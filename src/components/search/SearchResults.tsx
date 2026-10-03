@@ -134,8 +134,8 @@ function SearchResultCard({ result, query }: SearchResultCardProps) {
     if (!q) return safe;
     // Highlight per word, mirroring the API matcher (which scores each
     // whitespace-separated word independently). A single contiguous-phrase
-    // regex left word-matched results — e.g. "fantasy football" against
-    // "Football rankings and fantasy tiers" — with no highlight at all.
+    // regex left word-matched results (e.g. "fantasy football" against
+    // "Football rankings and fantasy tiers") with no highlight at all.
     const words = q
       .split(/\s+/)
       .filter(Boolean)

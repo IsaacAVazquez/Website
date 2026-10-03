@@ -1,4 +1,4 @@
-import { STATE_TILES, raceTiles, tileTone } from "../state-tiles";
+import { STATE_TILES, raceTiles } from "../state-tiles";
 import type { Race } from "@/types/polling";
 
 const STATE_ABBRS = [
@@ -54,21 +54,5 @@ describe("raceTiles", () => {
 
   it("returns nothing for an empty snapshot", () => {
     expect(raceTiles([])).toEqual([]);
-  });
-});
-
-describe("tileTone", () => {
-  it("reads stronger for Safe than Lean, on the same party", () => {
-    expect(tileTone("Safe D").strength).toBeGreaterThan(tileTone("Lean D").strength);
-    expect(tileTone("Safe R").strength).toBeGreaterThan(tileTone("Lean R").strength);
-  });
-
-  it("has no party lean for a toss-up", () => {
-    expect(tileTone("Toss-up").party).toBeNull();
-  });
-
-  it("reads the party from the rating", () => {
-    expect(tileTone("Likely D").party).toBe("D");
-    expect(tileTone("Likely R").party).toBe("R");
   });
 });

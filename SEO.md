@@ -2,7 +2,7 @@
 
 Reference for the SEO architecture in this Next.js 16 App Router project.
 
-**Last updated:** 2026-09-24
+**Last updated:** 2026-10-02
 
 ---
 
@@ -86,7 +86,6 @@ export const metadata = constructMetadata({
 
 Set `ogType: "article"` for any content page that is authored and dated:
 - Blog posts → `src/app/writing/[slug]/page.tsx`
-- Case studies → `src/app/portfolio/[slug]/page.tsx`
 
 When set, the OpenGraph block outputs the correct `article:published_time`, `article:modified_time`, `article:author`, `article:section`, and `article:tag` fields. Do **not** use it for index/listing pages or tool pages.
 
@@ -244,23 +243,9 @@ export async function generateMetadata({ params }) {
 <AIStructuredData schema={{ type: "Article", data: { headline, author, wordCount, ... } }} />
 ```
 
-### Case Study (`/portfolio/[slug]`)
+### Case study slugs (`/portfolio/[slug]`)
 
-```tsx
-// src/app/portfolio/[slug]/page.tsx
-export async function generateMetadata({ params }) {
-  return constructMetadata({
-    title: caseStudy.title,
-    description: caseStudy.description,
-    ogType: "article",
-    articleAuthor: "https://isaacvazquez.com/about",
-    articleSection: "Product Management",
-    articleTags: ["Product Management", caseStudy.role, ...caseStudy.tools.slice(0, 3)],
-    canonicalUrl: `/portfolio/${params.slug}`,
-  });
-}
-// Gap: No structured data or breadcrumb component rendered in JSX. See compliance table below.
-```
+`src/app/portfolio/[slug]/page.tsx` is a redirect stub with no metadata of its own. It generates a static param per case study, permanent-redirects each slug to that case study's live tool, and returns a 404 for any slug it does not know. The case study template that used to render there was deleted on 2026-10-02, so there is no case study pattern to copy.
 
 ### Generic Static Page
 
@@ -354,11 +339,12 @@ Status of metadata and structured data for the routes listed below. The table do
 | `/contact` | `constructMetadata` | website | `/contact` | 2026-09-14 | BreadcrumbList, ContactPage | Yes | OK |
 | `/resume` | `constructMetadata` | website | `/resume` | 2026-09-14 | BreadcrumbList, Person, JobPosting | Yes | OK |
 | `/portfolio` | `constructMetadata` | website | `/portfolio` | 2026-09-14 | ItemList | No visible breadcrumb; structured index present | OK |
-| `/portfolio/[slug]` | `generateMetadata` | article | `/portfolio/{slug}` | 2026-04-04 | Breadcrumb, CreativeWork on non-redirect entries | Yes, when rendered | OK; every current slug answers 308 to its live tool, and the home and portfolio cards link to the tool directly |
+| `/portfolio/[slug]` | None | None | None | None | None | None | OK; a redirect stub since 2026-10-02, every case study slug answers 308 to its live tool and any other slug is a 404, and the home and portfolio cards link to the tool directly |
 | `/writing` | `constructMetadata` | website | `/writing` | 2026-09-14 | BreadcrumbList, ItemList | Yes | OK |
 | `/writing/[slug]` | `generateMetadata` | article | full URL | post dates | Breadcrumb, Article | Yes | OK |
 | `/investments` | `constructMetadata` | website | `/investments` | snapshot date | BreadcrumbList, SoftwareApplication | Yes | OK |
 | `/accessibility` | `constructMetadata` | website | full URL | 2026-07-16 | WebPage, BreadcrumbList | Yes | OK |
+| `/privacy` | `constructMetadata` | website | `/privacy` | 2026-10-02 | WebPage, BreadcrumbList | None | OK |
 | `/search` | `constructMetadata` | website | `/search` | 2025-02-05 | None | None | OK, `noIndex` |
 | `/fantasy-football` | `constructMetadata` | website | relative | snapshot date | BreadcrumbList, SportsApp, FAQ | Yes | OK; the first page of rankings rows is server-rendered from the committed snapshot, so non-JS crawlers see real players |
 | `/fantasy-football/draft-tracker` | `constructMetadata` | website | relative | snapshot date | BreadcrumbList, SoftwareApplication | Yes | OK |
@@ -537,7 +523,6 @@ const minutes = calculateReadingTime(post.content); // e.g. 4
 | `src/app/layout.tsx` | Global metadata, head tags |
 | `src/app/metadata.ts` | Homepage metadata config |
 | `src/app/writing/[slug]/page.tsx` | Article pattern reference |
-| `src/app/portfolio/[slug]/page.tsx` | Case study pattern reference |
 | `scripts/generatePublicSitemap.mjs` | Writes `public/sitemap.xml` from `src/lib/sitemap.js` |
 | `src/lib/sitemap.js` | Builds the allowlisted sitemap entries (`loc` + `lastmod`) |
 | `public/robots.txt` | Crawl directives (manually maintained) |

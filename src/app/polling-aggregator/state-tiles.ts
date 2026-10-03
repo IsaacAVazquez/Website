@@ -1,4 +1,4 @@
-import type { Party, Race, RaceRating } from "@/types/polling";
+import type { Race } from "@/types/polling";
 
 export interface StateTilePosition {
   col: number;
@@ -89,24 +89,4 @@ export function raceTiles(races: Race[]): RaceTile[] {
     tiles.push({ abbr: race.stateAbbr, col: position.col, row: position.row, race });
   }
   return tiles;
-}
-
-export interface TileTone {
-  /** null for a toss-up, which leans neither party. */
-  party: Party | null;
-  /** 0 to 1. How strongly the tile should read in its party's colour. */
-  strength: number;
-}
-
-const STRENGTH_BY_PREFIX: Record<string, number> = {
-  Safe: 0.9,
-  Likely: 0.65,
-  Lean: 0.4,
-};
-
-/** How strongly a rating leans, and toward which party, for the tile fill. */
-export function tileTone(rating: RaceRating): TileTone {
-  if (rating === "Toss-up") return { party: null, strength: 0.25 };
-  const [prefix, party] = rating.split(" ") as [string, Party];
-  return { party, strength: STRENGTH_BY_PREFIX[prefix] ?? 0.4 };
 }

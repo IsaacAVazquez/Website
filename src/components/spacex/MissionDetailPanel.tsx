@@ -79,7 +79,8 @@ export function MissionDetailPanel({
           aria-selected={activePanel === option.key}
           aria-controls={panelId}
           onClick={() => onPanelChange(option.key)}
-          className={`tap-target px-4 py-3 text-sm font-semibold transition ${
+          style={{ paddingInline: "var(--c97-sp-2)", paddingBlock: "var(--c97-sp-1)" }}
+          className={`tap-target text-sm font-semibold transition ${
             activePanel === option.key
               ? "bg-[var(--c97-accent)] text-[var(--c97-surface)]"
               : "text-[var(--c97-ink-2)] hover:bg-[var(--c97-field)] hover:text-[var(--c97-ink)]"
@@ -97,7 +98,7 @@ export function MissionDetailPanel({
 
       <div role="tabpanel" id={panelId} aria-labelledby={tabId(activePanel)}>
       {isLoading ? (
-        <div className="space-y-3" style={{ paddingBlock: "var(--c97-sp-2)" }}>
+        <div className="flex flex-col" style={{ paddingBlock: "var(--c97-sp-2)", gap: "var(--c97-sp-1)" }}>
           <span className="c97-skeleton" style={{ height: 20, width: "66%" }} />
           <span className="c97-skeleton" style={{ height: 20 }} />
           <span className="c97-skeleton" style={{ height: 220 }} />
@@ -115,7 +116,7 @@ export function MissionDetailPanel({
               <p className="text-sm font-semibold text-[var(--c97-ink)]">
                 Mission detail unavailable
               </p>
-              <p className="mt-1 text-sm leading-6 text-[var(--c97-ink-2)]">{error}</p>
+              <p className="text-sm leading-6 text-[var(--c97-ink-2)]" style={{ marginTop: "var(--c97-sp-0)" }}>{error}</p>
             </div>
           </div>
         </div>
@@ -137,7 +138,7 @@ export function MissionDetailPanel({
       ) : null}
 
       {!isLoading && !error && launch && activePanel === "overview" ? (
-        <div className="space-y-4" style={{ marginTop: "var(--c97-sp-2)" }}>
+        <div className="flex flex-col" style={{ marginTop: "var(--c97-sp-2)", gap: "var(--c97-sp-2)" }}>
           <div className="grid sm:grid-cols-2" style={{ gap: "var(--c97-sp-1)" }}>
             <div className="border border-[var(--c97-rule)] bg-[var(--c97-surface)]" style={{ padding: "var(--c97-sp-2)" }}>
               <p className="font-mono text-3xs font-semibold uppercase tracking-[0.2em] text-[var(--c97-label)]">
@@ -160,14 +161,14 @@ export function MissionDetailPanel({
               <p className="text-sm font-semibold text-[var(--c97-ink)]" style={{ marginTop: "var(--c97-sp-1)" }}>
                 {launch.launchpadName ?? "Unspecified"}
               </p>
-              <p className="mt-1 text-xs text-[var(--c97-ink-2)]">
+              <p className="text-xs text-[var(--c97-ink-2)]" style={{ marginTop: "var(--c97-sp-0)" }}>
                 {launch.launchpadLocation ?? "Location unavailable"}
               </p>
             </div>
           </div>
 
           <div className="border border-[var(--c97-rule)] bg-[var(--c97-surface)]" style={{ padding: "var(--c97-sp-2)" }}>
-            <h3 className="text-lg font-semibold text-[var(--c97-ink)]">
+            <h3 className="c97-serif c97-h3">
               Mission brief
             </h3>
             <p className="text-sm leading-7 text-[var(--c97-ink-2)]" style={{ marginTop: "var(--c97-sp-1)" }}>
@@ -177,10 +178,10 @@ export function MissionDetailPanel({
 
           {launch.failures.length > 0 ? (
             <div className="border border-[color-mix(in_srgb,var(--c97-warning)_28%,var(--c97-rule))] bg-[color-mix(in_srgb,var(--c97-warning)_9%,var(--c97-surface))]" style={{ padding: "var(--c97-sp-2)" }}>
-              <h3 className="text-lg font-semibold text-[var(--c97-ink)]">
+              <h3 className="c97-serif c97-h3">
                 Failure log
               </h3>
-              <div className="space-y-3" style={{ marginTop: "var(--c97-sp-2)" }}>
+              <div className="flex flex-col" style={{ marginTop: "var(--c97-sp-2)", gap: "var(--c97-sp-1)" }}>
                 {launch.failures.map((failure, index) => (
                   <div
                     key={`${failure.reason}-${index}`}
@@ -189,7 +190,7 @@ export function MissionDetailPanel({
                     <p className="text-sm font-semibold text-[var(--c97-ink)]">
                       {failure.reason ?? "Failure cause unavailable"}
                     </p>
-                    <p className="mt-1 text-xs text-[var(--c97-ink-2)]">
+                    <p className="text-xs text-[var(--c97-ink-2)]" style={{ marginTop: "var(--c97-sp-0)" }}>
                       T+{failure.time ?? "?"}s • Altitude {failure.altitude ?? "unknown"}
                     </p>
                   </div>
@@ -201,7 +202,7 @@ export function MissionDetailPanel({
       ) : null}
 
       {!isLoading && !error && launch && activePanel === "vehicle" ? (
-        <div className="space-y-4" style={{ marginTop: "var(--c97-sp-2)" }}>
+        <div className="flex flex-col" style={{ marginTop: "var(--c97-sp-2)", gap: "var(--c97-sp-2)" }}>
           <MissionVehiclePhoto
             name={launch.rocket?.name ?? launch.name}
             image={launch.vehicleImage ?? launch.rocket?.image ?? null}
@@ -216,7 +217,7 @@ export function MissionDetailPanel({
           <div className="border border-[var(--c97-rule)] bg-[var(--c97-surface)]" style={{ padding: "var(--c97-sp-2)" }}>
             <div className="flex items-center" style={{ gap: "var(--c97-sp-1)" }}>
               <Rocket aria-hidden="true" className="h-5 w-5 text-[var(--c97-accent)]" />
-              <h3 className="text-lg font-semibold text-[var(--c97-ink)]">
+              <h3 className="c97-serif c97-h3">
                 Rocket
               </h3>
             </div>
@@ -226,20 +227,20 @@ export function MissionDetailPanel({
                   <p className="text-sm font-semibold text-[var(--c97-ink)]">
                     {launch.rocket.name ?? "Unnamed rocket"}
                   </p>
-                  <p className="mt-1 text-sm leading-6 text-[var(--c97-ink-2)]">
+                  <p className="text-sm leading-6 text-[var(--c97-ink-2)]" style={{ marginTop: "var(--c97-sp-0)" }}>
                     {launch.rocket.description ?? "No rocket description is listed."}
                   </p>
                 </div>
                 <div className="grid" style={{ gap: "var(--c97-sp-1)" }}>
                   <div className="bg-[var(--c97-field)]" style={{ padding: "var(--c97-sp-1)" }}>
                     <p className="text-xs text-[var(--c97-label)]">Cost per launch</p>
-                    <p className="mt-1 text-sm font-semibold text-[var(--c97-ink)]">
+                    <p className="text-sm font-semibold text-[var(--c97-ink)]" style={{ marginTop: "var(--c97-sp-0)" }}>
                       {formatCurrencyCompact(launch.rocket.costPerLaunch)}
                     </p>
                   </div>
                   <div className="bg-[var(--c97-field)]" style={{ padding: "var(--c97-sp-1)" }}>
                     <p className="text-xs text-[var(--c97-label)]">Success rate</p>
-                    <p className="mt-1 text-sm font-semibold text-[var(--c97-ink)]">
+                    <p className="text-sm font-semibold text-[var(--c97-ink)]" style={{ marginTop: "var(--c97-sp-0)" }}>
                       {launch.rocket.successRatePct !== null ? `${launch.rocket.successRatePct}%` : "Unavailable"}
                     </p>
                   </div>
@@ -255,20 +256,20 @@ export function MissionDetailPanel({
           <div className="border border-[var(--c97-rule)] bg-[var(--c97-surface)]" style={{ padding: "var(--c97-sp-2)" }}>
             <div className="flex items-center" style={{ gap: "var(--c97-sp-1)" }}>
               <MapPin aria-hidden="true" className="h-5 w-5 text-[var(--c97-accent)]" />
-              <h3 className="text-lg font-semibold text-[var(--c97-ink)]">
+              <h3 className="c97-serif c97-h3">
                 Launchpad
               </h3>
             </div>
             {launch.launchpad ? (
-              <div className="space-y-2" style={{ marginTop: "var(--c97-sp-2)" }}>
-                <p className="text-sm font-semibold text-[var(--c97-ink)]">
+              <div className="flex flex-col" style={{ marginTop: "var(--c97-sp-2)", gap: "var(--c97-sp-1)" }}>
+                <p className="text-sm font-semibold text-[var(--c97-ink)]" style={{ marginBottom: 0 }}>
                   {launch.launchpad.fullName ?? launch.launchpad.name ?? "Unnamed launchpad"}
                 </p>
-                <p className="text-sm text-[var(--c97-ink-2)]">
+                <p className="text-sm text-[var(--c97-ink-2)]" style={{ marginBottom: 0 }}>
                   {launch.launchpad.locality ?? "Unknown locality"}
                   {launch.launchpad.region ? `, ${launch.launchpad.region}` : ""}
                 </p>
-                <p className="text-sm leading-6 text-[var(--c97-ink-2)]">
+                <p className="text-sm leading-6 text-[var(--c97-ink-2)]" style={{ marginBottom: 0 }}>
                   {launch.launchpad.details ?? "No launchpad detail is listed for this mission."}
                 </p>
               </div>
@@ -282,7 +283,7 @@ export function MissionDetailPanel({
           <div className="border border-[var(--c97-rule)] bg-[var(--c97-surface)]" style={{ padding: "var(--c97-sp-2)" }}>
             <div className="flex items-center" style={{ gap: "var(--c97-sp-1)" }}>
               <Users aria-hidden="true" className="h-5 w-5 text-[var(--c97-accent)]" />
-              <h3 className="text-lg font-semibold text-[var(--c97-ink)]">
+              <h3 className="c97-serif c97-h3">
                 Crew and cores
               </h3>
             </div>
@@ -292,7 +293,7 @@ export function MissionDetailPanel({
                   Crew manifest
                 </p>
                 {launch.crew.length > 0 ? (
-                  <div className="space-y-3" style={{ marginTop: "var(--c97-sp-1)" }}>
+                  <div className="flex flex-col" style={{ marginTop: "var(--c97-sp-1)", gap: "var(--c97-sp-1)" }}>
                     {launch.crew.map((member) => (
                       <div
                         key={member.id}
@@ -301,7 +302,7 @@ export function MissionDetailPanel({
                         <p className="text-sm font-semibold text-[var(--c97-ink)]">
                           {member.name}
                         </p>
-                        <p className="mt-1 text-xs text-[var(--c97-ink-2)]">
+                        <p className="text-xs text-[var(--c97-ink-2)]" style={{ marginTop: "var(--c97-sp-0)" }}>
                           {member.role ?? "Role unavailable"}
                           {member.agency ? ` • ${member.agency}` : ""}
                         </p>
@@ -320,7 +321,7 @@ export function MissionDetailPanel({
                   Core manifest
                 </p>
                 {launch.cores.length > 0 ? (
-                  <div className="space-y-3" style={{ marginTop: "var(--c97-sp-1)" }}>
+                  <div className="flex flex-col" style={{ marginTop: "var(--c97-sp-1)", gap: "var(--c97-sp-1)" }}>
                     {launch.cores.map((core, index) => (
                       <div
                         key={`${core.id ?? "core"}-${index}`}
@@ -329,7 +330,7 @@ export function MissionDetailPanel({
                         <p className="text-sm font-semibold text-[var(--c97-ink)]">
                           {core.serial ?? "Unnamed core"} • Flight {core.flight ?? "?"}
                         </p>
-                        <p className="mt-1 text-xs text-[var(--c97-ink-2)]">
+                        <p className="text-xs text-[var(--c97-ink-2)]" style={{ marginTop: "var(--c97-sp-0)" }}>
                           {core.landingType ?? "Landing type unavailable"}
                           {core.landpadName ? ` • ${core.landpadName}` : ""}
                         </p>
@@ -350,7 +351,7 @@ export function MissionDetailPanel({
       {!isLoading && !error && launch && activePanel === "payloads" ? (
         <div style={{ marginTop: "var(--c97-sp-2)" }}>
           {launch.payloads.length > 0 ? (
-            <div className="space-y-3">
+            <div className="flex flex-col" style={{ gap: "var(--c97-sp-1)" }}>
               {launch.payloads.map((payload) => (
                 <article
                   key={payload.id}
@@ -361,25 +362,25 @@ export function MissionDetailPanel({
                       <p className="text-lg font-semibold text-[var(--c97-ink)]">
                         {payload.name}
                       </p>
-                      <p className="mt-1 text-sm text-[var(--c97-ink-2)]">
+                      <p className="text-sm text-[var(--c97-ink-2)]" style={{ marginTop: "var(--c97-sp-0)" }}>
                         {payload.type ?? "Type unavailable"} • {payload.orbit ?? "Orbit unavailable"}
                       </p>
                     </div>
                     <span className="bg-[var(--c97-field)] text-xs font-medium text-[var(--c97-ink-2)]" style={{ paddingInline: "var(--c97-sp-1)", paddingBlock: "var(--c97-sp-1)" }}>
-                      <Orbit aria-hidden="true" className="mr-1 inline h-3.5 w-3.5" />
+                      <Orbit aria-hidden="true" className="inline h-3.5 w-3.5" style={{ marginRight: "var(--c97-sp-0)" }} />
                       {formatInteger(payload.massKg)} kg
                     </span>
                   </div>
                   <div className="grid sm:grid-cols-2" style={{ marginTop: "var(--c97-sp-2)", gap: "var(--c97-sp-1)" }}>
                     <div className="bg-[var(--c97-field)]" style={{ padding: "var(--c97-sp-1)" }}>
                       <p className="text-xs text-[var(--c97-label)]">Customers</p>
-                      <p className="mt-1 text-sm text-[var(--c97-ink)]">
+                      <p className="text-sm text-[var(--c97-ink)]" style={{ marginTop: "var(--c97-sp-0)" }}>
                         {payload.customers.length > 0 ? payload.customers.join(", ") : "None listed"}
                       </p>
                     </div>
                     <div className="bg-[var(--c97-field)]" style={{ padding: "var(--c97-sp-1)" }}>
                       <p className="text-xs text-[var(--c97-label)]">Manufacturers</p>
-                      <p className="mt-1 text-sm text-[var(--c97-ink)]">
+                      <p className="text-sm text-[var(--c97-ink)]" style={{ marginTop: "var(--c97-sp-0)" }}>
                         {payload.manufacturers.length > 0 ? payload.manufacturers.join(", ") : "None listed"}
                       </p>
                     </div>
@@ -399,11 +400,11 @@ export function MissionDetailPanel({
           )}
 
           <div className="border border-[var(--c97-rule)] bg-[var(--c97-surface)]" style={{ padding: "var(--c97-sp-2)", marginTop: "var(--c97-sp-2)" }}>
-            <h3 className="text-lg font-semibold text-[var(--c97-ink)]">
+            <h3 className="c97-serif c97-h3">
               Capsules
             </h3>
             {launch.capsules.length > 0 ? (
-              <div className="space-y-3" style={{ marginTop: "var(--c97-sp-2)" }}>
+              <div className="flex flex-col" style={{ marginTop: "var(--c97-sp-2)", gap: "var(--c97-sp-1)" }}>
                 {launch.capsules.map((capsule) => (
                   <div
                     key={capsule.id}
@@ -412,7 +413,7 @@ export function MissionDetailPanel({
                     <p className="text-sm font-semibold text-[var(--c97-ink)]">
                       {capsule.serial ?? "Unnamed capsule"}
                     </p>
-                    <p className="mt-1 text-xs text-[var(--c97-ink-2)]">
+                    <p className="text-xs text-[var(--c97-ink-2)]" style={{ marginTop: "var(--c97-sp-0)" }}>
                       {capsule.type ?? "Type unavailable"} • Reuse count {capsule.reuseCount ?? 0}
                     </p>
                   </div>
@@ -428,9 +429,9 @@ export function MissionDetailPanel({
       ) : null}
 
       {!isLoading && !error && launch && activePanel === "links" ? (
-        <div className="space-y-4" style={{ marginTop: "var(--c97-sp-2)" }}>
+        <div className="flex flex-col" style={{ marginTop: "var(--c97-sp-2)", gap: "var(--c97-sp-2)" }}>
           <div className="border border-[var(--c97-rule)] bg-[var(--c97-surface)]" style={{ padding: "var(--c97-sp-2)" }}>
-            <h3 className="text-lg font-semibold text-[var(--c97-ink)]">
+            <h3 className="c97-serif c97-h3">
               Mission references
             </h3>
             <div style={{ marginTop: "var(--c97-sp-2)" }}>
@@ -448,19 +449,19 @@ export function MissionDetailPanel({
           </div>
 
           <div className="border border-[var(--c97-rule)] bg-[var(--c97-surface)]" style={{ padding: "var(--c97-sp-2)" }}>
-            <h3 className="text-lg font-semibold text-[var(--c97-ink)]">
+            <h3 className="c97-serif c97-h3">
               Data completeness
             </h3>
             <div className="grid sm:grid-cols-2" style={{ marginTop: "var(--c97-sp-2)", gap: "var(--c97-sp-1)" }}>
               <div className="bg-[var(--c97-field)]" style={{ padding: "var(--c97-sp-1)" }}>
                 <p className="text-xs text-[var(--c97-label)]">Crew records</p>
-                <p className="mt-1 text-sm font-semibold text-[var(--c97-ink)]">
+                <p className="text-sm font-semibold text-[var(--c97-ink)]" style={{ marginTop: "var(--c97-sp-0)" }}>
                   {launch.crew.length > 0 ? `${launch.crew.length} populated` : "None listed"}
                 </p>
               </div>
               <div className="bg-[var(--c97-field)]" style={{ padding: "var(--c97-sp-1)" }}>
                 <p className="text-xs text-[var(--c97-label)]">Payload records</p>
-                <p className="mt-1 text-sm font-semibold text-[var(--c97-ink)]">
+                <p className="text-sm font-semibold text-[var(--c97-ink)]" style={{ marginTop: "var(--c97-sp-0)" }}>
                   {launch.payloads.length > 0 ? `${launch.payloads.length} populated` : "None listed"}
                 </p>
               </div>

@@ -464,42 +464,21 @@ export function SearchInterface({
         )}
       </div>
 
-      {/* Search Tips */}
+      {/* Search Tips. The topic chips above the field already run example
+          searches, so this lists coverage only. */}
       {!searchState.hasSearched && !searchState.query && (
         <div className="c97-panel">
           <p className="c97-kicker">Search tips</p>
-          <div className="c97-columns" style={{ marginTop: "var(--c97-sp-3)" }}>
-            <div>
-              <h2 className="c97-serif c97-h3">What you can search for</h2>
-              <ul className="c97-list" style={{ marginTop: "var(--c97-sp-2)" }}>
-                <li>Writing on product strategy and analytics</li>
-                <li>Case studies and project details</li>
-                <li>Fantasy football rankings and analysis</li>
-                <li>Investment and fintech tools</li>
-                <li>Sports dashboards</li>
-              </ul>
-            </div>
-            <div>
-              <h2 className="c97-serif c97-h3">Search examples</h2>
-              <ul
-                className="c97-list"
-                style={{ marginTop: "var(--c97-sp-2)", listStyle: "none", paddingLeft: 0 }}
-              >
-                {["product strategy", "fantasy football", "investment research"].map((example) => (
-                  <li key={example}>
-                    <button
-                      type="button"
-                      onClick={() => handleQueryChange(example)}
-                      className="c97-btn-ghost"
-                      style={{ textTransform: "none", letterSpacing: 0 }}
-                    >
-                      &ldquo;{example}&rdquo;
-                    </button>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
+          <h2 className="c97-serif c97-h3" style={{ marginTop: "var(--c97-sp-2)" }}>
+            What you can search for
+          </h2>
+          <ul className="c97-list" style={{ marginTop: "var(--c97-sp-2)" }}>
+            <li>Writing on product strategy and analytics</li>
+            <li>Case studies and project details</li>
+            <li>Fantasy football rankings and analysis</li>
+            <li>Investment and fintech tools</li>
+            <li>Sports dashboards</li>
+          </ul>
         </div>
       )}
     </div>

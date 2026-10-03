@@ -102,12 +102,12 @@ export function MissionVehicleCatalog({ launchDetails }: MissionVehicleCatalogPr
             key={rocket.name}
             className="overflow-hidden border border-[var(--c97-rule)] bg-[var(--c97-surface)]"
           >
-            <div className="flex items-center border-b border-[var(--c97-rule)] px-4 py-3.5 sm:px-5" style={{ gap: "var(--c97-sp-2)" }}>
+            <div className="flex items-center border-b border-[var(--c97-rule)]" style={{ gap: "var(--c97-sp-2)", paddingInline: "var(--c97-sp-2)", paddingBlock: "var(--c97-sp-2)" }}>
               <span className="inline-flex h-10 min-w-[44px] shrink-0 items-center justify-center border border-[var(--c97-rule)] bg-[var(--c97-field)] font-mono text-sm text-[var(--c97-ink)]" style={{ paddingInline: "var(--c97-sp-1)" }}>
                 {rocket.type ?? "—"}
               </span>
               <div className="min-w-0">
-                <h3 className="truncate text-lg font-bold tracking-[-0.02em] text-[var(--c97-ink)]">
+                <h3 className="c97-serif c97-h3 truncate">
                   {rocket.name}
                 </h3>
                 <p className="mt-0.5 font-mono text-3xs uppercase tracking-[0.08em] text-[var(--c97-ink-2)]">
@@ -116,8 +116,8 @@ export function MissionVehicleCatalog({ launchDetails }: MissionVehicleCatalogPr
               </div>
               {rocket.active !== null ? (
                 <span
-                  className="ml-auto inline-flex shrink-0 items-center gap-1.5 self-start font-mono text-3xs uppercase tracking-[0.08em]"
-                  style={{ color: rocket.active ? "var(--c97-positive)" : "var(--c97-ink-2)" }}
+                  className="ml-auto inline-flex shrink-0 items-center self-start font-mono text-3xs uppercase tracking-[0.08em]"
+                  style={{ color: rocket.active ? "var(--c97-positive)" : "var(--c97-ink-2)", gap: "var(--c97-sp-0)" }}
                 >
                   <span aria-hidden="true" className="h-1.5 w-1.5 bg-current" />
                   {rocket.active ? "Active" : "Retired"}
@@ -131,7 +131,7 @@ export function MissionVehicleCatalog({ launchDetails }: MissionVehicleCatalogPr
                   <div className="font-mono text-3xs uppercase tracking-[0.1em] text-[var(--c97-ink-2)]">
                     {key}
                   </div>
-                  <div className="mt-1.5 font-mono text-base tabular-nums text-[var(--c97-ink)]">
+                  <div className="font-mono text-base tabular-nums text-[var(--c97-ink)]" style={{ marginTop: "var(--c97-sp-0)" }}>
                     {value}
                   </div>
                 </div>
@@ -139,7 +139,7 @@ export function MissionVehicleCatalog({ launchDetails }: MissionVehicleCatalogPr
             </div>
 
             {rocket.description ? (
-              <p className="border-t border-[color-mix(in_srgb,var(--c97-rule)_55%,transparent)] px-4 py-3.5 text-sm leading-6 text-[var(--c97-ink-2)] sm:px-5">
+              <p className="border-t border-[color-mix(in_srgb,var(--c97-rule)_55%,transparent)] text-sm leading-6 text-[var(--c97-ink-2)]" style={{ paddingInline: "var(--c97-sp-2)", paddingBlock: "var(--c97-sp-2)" }}>
                 {rocket.description}
               </p>
             ) : null}
@@ -151,7 +151,7 @@ export function MissionVehicleCatalog({ launchDetails }: MissionVehicleCatalogPr
         <h3 className="font-mono text-3xs font-semibold uppercase tracking-[0.12em] text-[var(--c97-ink-2)]">
           Scale · to height
         </h3>
-        <p className="mt-1 text-xs leading-5 text-[var(--c97-ink-2)]" style={{ marginBottom: "var(--c97-sp-2)" }}>
+        <p className="text-xs leading-5 text-[var(--c97-ink-2)]" style={{ marginBottom: "var(--c97-sp-2)", marginTop: "var(--c97-sp-0)" }}>
           Booster + upper stage, metres. Diameter scaled for silhouette width only.
         </p>
         <div className="flex h-[220px] items-end justify-around border-b border-[var(--c97-rule)] pb-0.5" style={{ gap: "var(--c97-sp-1)" }}>

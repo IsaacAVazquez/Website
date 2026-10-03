@@ -12,9 +12,9 @@ type StatementType = "income_statement" | "balance_sheet" | "cash_flow";
 type Period = "quarterly" | "annual";
 
 const TABS: { key: StatementType; label: string }[] = [
-  { key: "income_statement", label: "Income Statement" },
-  { key: "balance_sheet",    label: "Balance Sheet" },
-  { key: "cash_flow",        label: "Cash Flow" },
+  { key: "income_statement", label: "Income statement" },
+  { key: "balance_sheet",    label: "Balance sheet" },
+  { key: "cash_flow",        label: "Cash flow" },
 ];
 
 function formatNum(val: unknown): string {
@@ -76,7 +76,7 @@ function StatementTable({
 
   if (isLoading) {
     return (
-      <div className="space-y-2 py-2" role="status" aria-busy="true">
+      <div className="flex flex-col" style={{ rowGap: "var(--c97-sp-1)", paddingBlock: "var(--c97-sp-1)" }} role="status" aria-busy="true">
         <span className="sr-only">Loading financial statement</span>
         {Array.from({ length: 6 }).map((_, i) => (
           <span key={i} className="c97-skeleton" style={{ height: 28 }} />
@@ -91,7 +91,7 @@ function StatementTable({
 
   const table = normalize(data, period);
   if (!table) {
-    return <p className="text-sm text-[var(--c97-label)] py-4">No data available.</p>;
+    return <p className="text-sm text-[var(--c97-label)]" style={{ paddingBlock: "var(--c97-sp-2)" }}>No data available.</p>;
   }
 
   // Identify the label column (first string column) vs numeric period columns
@@ -99,17 +99,17 @@ function StatementTable({
   const periodCols = table.columns.slice(1, 9); // cap at 8 periods
 
   return (
-    <div className="overflow-x-auto -mx-1" role="region" tabIndex={0} aria-label="Financial statement table">
+    <div className="overflow-x-auto" style={{ marginInline: "calc(-1 * var(--c97-sp-0))" }} role="region" tabIndex={0} aria-label="Financial statement table">
       <table className="w-full text-xs min-w-[480px]" aria-label={`${section.replace("_", " ")} statement`}>
         <thead>
           <tr className="border-b border-[var(--c97-rule)]">
-            <th className="text-left py-2 px-2 text-[var(--c97-label)] font-medium w-40 sticky left-0 bg-[var(--c97-panel)]">
+            <th className="text-left text-[var(--c97-label)] font-medium w-40 sticky left-0 bg-[var(--c97-panel)]" style={{ paddingBlock: "var(--c97-sp-1)", paddingInline: "var(--c97-sp-1)" }}>
               Metric
             </th>
             {periodCols.map((col) => (
               <th
                 key={col}
-                className="text-right py-2 px-2 text-[var(--c97-label)] font-medium whitespace-nowrap"
+                className="text-right text-[var(--c97-label)] font-medium whitespace-nowrap" style={{ paddingBlock: "var(--c97-sp-1)", paddingInline: "var(--c97-sp-1)" }}
               >
                 {String(col)}
               </th>
@@ -122,7 +122,7 @@ function StatementTable({
               key={i}
               className="border-b border-[var(--c97-rule)] last:border-0 hover:bg-[var(--c97-panel)] transition-colors"
             >
-              <td className="py-2 px-2 text-[var(--c97-ink-2)] font-medium sticky left-0 bg-[var(--c97-panel)] whitespace-nowrap">
+              <td className="text-[var(--c97-ink-2)] font-medium sticky left-0 bg-[var(--c97-panel)] whitespace-nowrap" style={{ paddingBlock: "var(--c97-sp-1)", paddingInline: "var(--c97-sp-1)" }}>
                 {String(row[labelCol] ?? "")}
               </td>
               {periodCols.map((col) => {
@@ -132,7 +132,8 @@ function StatementTable({
                 return (
                   <td
                     key={col}
-                    className={`py-2 px-2 text-right whitespace-nowrap ${isNeg ? "text-[var(--c97-negative)]" : "text-[var(--c97-ink)]"}`}
+                    style={{ padding: "var(--c97-sp-1)" }}
+                    className={`text-right whitespace-nowrap ${isNeg ? "text-[var(--c97-negative)]" : "text-[var(--c97-ink)]"}`}
                   >
                     {val !== undefined && val !== null && val !== "*" ? formatNum(val) : "—"}
                   </td>
@@ -153,15 +154,16 @@ export function FinancialStatementsPanel({ symbol }: Props) {
   return (
     <TerminalPanel padding="sm">
       {/* Statement type tabs + period toggle */}
-      <div className="flex items-center justify-between gap-2 mb-4 flex-wrap">
-        <div className="flex gap-1 overflow-x-auto pb-1" role="group" aria-label="Financial statement">
+      <div className="flex items-center justify-between flex-wrap" style={{ gap: "var(--c97-sp-1)", marginBottom: "var(--c97-sp-2)" }}>
+        <div className="flex overflow-x-auto" style={{ gap: "var(--c97-sp-0)", paddingBottom: "var(--c97-sp-0)" }} role="group" aria-label="Financial statement">
           {TABS.map(({ key, label }) => (
             <button
               key={key}
               type="button"
               aria-pressed={activeTab === key}
               onClick={() => setActiveTab(key)}
-              className={`px-3 py-1.5 text-xs font-medium transition whitespace-nowrap min-h-touch ${
+              style={{ paddingInline: "var(--c97-sp-1)", paddingBlock: "var(--c97-sp-0)" }}
+              className={`text-xs font-medium transition whitespace-nowrap min-h-touch ${
                 activeTab === key
                   ? "bg-[var(--c97-accent)] text-[var(--c97-surface)]"
                   : "text-[var(--c97-ink-2)] hover:bg-[var(--c97-panel)]"
@@ -173,14 +175,15 @@ export function FinancialStatementsPanel({ symbol }: Props) {
         </div>
 
         {/* Period toggle */}
-        <div className="flex gap-1 shrink-0" role="group" aria-label="Period">
+        <div className="flex shrink-0" style={{ gap: "var(--c97-sp-0)" }} role="group" aria-label="Period">
           {(["quarterly", "annual"] as Period[]).map((p) => (
             <button
               key={p}
               type="button"
               aria-pressed={period === p}
               onClick={() => setPeriod(p)}
-              className={`px-3 py-1.5 text-xs font-medium transition capitalize min-h-touch ${
+              style={{ paddingInline: "var(--c97-sp-1)", paddingBlock: "var(--c97-sp-0)" }}
+              className={`text-xs font-medium transition capitalize min-h-touch ${
                 period === p
                   ? "bg-[var(--c97-rule)] text-[var(--c97-ink)]"
                   : "text-[var(--c97-label)] hover:bg-[var(--c97-panel)]"

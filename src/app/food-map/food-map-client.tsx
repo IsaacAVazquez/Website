@@ -54,8 +54,8 @@ const FOOD_MAP_INK = PROJECT_PRESS[FOOD_MAP_ROUTE].lead;
 /* -------------------------------------------------------------------------- */
 
 function HeroTicker() {
-  // A printed marquee of the cities and a few flagship cuisines, doubled so the
-  // CSS translate loops seamlessly. Motion is paused under prefers-reduced-motion.
+  // A printed line of the cities and a few flagship cuisines. It sits still,
+  // since nothing on the site loops, and wraps onto a second line when narrow.
   const words = useMemo(() => {
     const cities = FOOD_MAP_CITIES.map((c) => c.name);
     const cuisines = [
@@ -71,19 +71,12 @@ function HeroTicker() {
     return [...cities, ...cuisines];
   }, []);
 
-  const line = (
-    <span aria-hidden="true">
-      {words.map((word) => (
-        <span key={word}>{word}</span>
-      ))}
-    </span>
-  );
-
   return (
     <div className="fm-ticker" aria-hidden="true">
       <div className="fm-ticker-track">
-        {line}
-        {line}
+        {words.map((word) => (
+          <span key={word}>{word}</span>
+        ))}
       </div>
     </div>
   );
@@ -468,7 +461,7 @@ function FoodMapWorkbench({
                     </span>
                   </div>
                   <FoodMapLeaflet
-                    spots={filteredPlaces}
+                    spots={visiblePlaces}
                     activeSpotId={routeState.pick}
                     onSelectSpot={handleSelectPlace}
                     center={activeCity.center}
@@ -527,10 +520,11 @@ function FoodMapWorkbench({
                 {/* Index */}
                 <div className="fm-index-head">
                   <h2 className="c97-poster-sm">The stops</h2>
-                  <label className="fm-search" aria-label="Filter by name or cuisine">
+                  <label className="fm-search">
                     <Search size={15} aria-hidden="true" />
                     <input
                       type="search"
+                      aria-label="Filter by name or cuisine"
                       placeholder="Filter by name or cuisine…"
                       value={searchQuery}
                       onChange={(e) => setSearchQuery(e.target.value)}

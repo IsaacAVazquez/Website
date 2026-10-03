@@ -16,7 +16,7 @@ export interface LeafletMap {
   flyTo(center: LatLng, zoom: number): LeafletMap;
   fitBounds(
     bounds: LatLng[],
-    options?: { padding?: [number, number]; maxZoom?: number }
+    options?: { padding?: [number, number]; maxZoom?: number; animate?: boolean }
   ): LeafletMap;
   invalidateSize(): void;
   remove(): void;

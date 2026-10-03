@@ -11,14 +11,38 @@
   overflow-x: clip;
 }
 
+/*
+ * The text block. It reaches out by its own inline padding on both sides, so
+ * the sheet bleeds into the gutter while the h1 starts on the header's content
+ * edge, which the layout sweep holds to a pixel. The block itself stays
+ * square: only the paper behind it skews, because a rotated h1 lands its box
+ * a pixel or two off that edge.
+ */
 .misprint {
+  position: relative;
   padding: var(--c97-sp-5) var(--c97-sp-4) var(--c97-sp-4);
+  margin-inline: calc(-1 * var(--c97-sp-4));
+}
+
+/* The block takes the ink-blue tokens but paints nothing; the paper does. */
+.band .misprint[data-c97-surface] {
+  background-color: transparent;
+  background-image: none;
+}
+
+/* The sheet itself, skewed off the press, with the shared torn top edge. */
+.misprint .paper {
+  position: absolute;
+  inset: 0;
+  background-color: var(--c97-surface);
+  background-image: var(--c97-grain-soft);
+  background-size: 180px 180px;
   transform: rotate(-1.4deg) skewX(-1deg);
   transform-origin: 30% 50%;
 }
 
 /* A torn bottom edge, the shared top tear flipped. */
-.misprint::after {
+.paper::after {
   content: "";
   position: absolute;
   inset-inline: 0;
@@ -95,7 +119,7 @@
 
 /* The sheet feeds off the press once, then settles at its skew. */
 @media (prefers-reduced-motion: no-preference) {
-  .misprint {
+  .paper {
     animation: feed 700ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
   }
 }
