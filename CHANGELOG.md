@@ -7,6 +7,7 @@ All notable changes to this repository are documented here. Format: `YYYY-MM-DD`
 ## 2026-10-03
 
 - Redesign passes 2 and 3 across every route ([#557](https://github.com/IsaacAVazquez/Website/pull/557)).
+- Fix Safari dashboard hydration and saved fantasy teams ([#559](https://github.com/IsaacAVazquez/Website/pull/559)).
 
 ---
 
