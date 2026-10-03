@@ -195,6 +195,13 @@ export function RecipeFinderClient() {
     }
   }
 
+  function resetFilters() {
+    setQuery("");
+    setCategory("all");
+    setDiet("all");
+    setView("all");
+  }
+
   function selectView(next: ViewId) {
     setView(next);
     // Reset an incompatible meal filter so the nav choice feels authoritative.
@@ -259,12 +266,13 @@ export function RecipeFinderClient() {
 
       <section className="c97-band c97-sheet" data-c97-surface="paper" data-seam="torn">
         <div className="c97-shell">
-          <div className="flex flex-wrap items-end justify-between gap-4">
+          <div className="flex flex-wrap items-end justify-between" style={{ gap: "var(--c97-sp-2)" }}>
             <h2 className="c97-poster-sm">Find something to cook</h2>
-            <label className="c97-recipe-search" aria-label="Search recipes">
+            <label className="c97-recipe-search">
               <Search size={16} aria-hidden="true" />
               <input
                 type="search"
+                aria-label="Search recipes"
                 placeholder="Search by name or ingredient…"
                 value={query}
                 onChange={(event) => setQuery(event.target.value)}
@@ -319,8 +327,8 @@ export function RecipeFinderClient() {
           </div>
 
           <div
-            className="flex flex-wrap items-center gap-2"
-            style={{ marginTop: "var(--c97-sp-3)" }}
+            className="flex flex-wrap items-center"
+            style={{ gap: "var(--c97-sp-1)", marginTop: "var(--c97-sp-3)" }}
           >
             <label htmlFor="recipe-diet-select" className="c97-kicker" style={{ margin: 0 }}>
               Diet
@@ -348,7 +356,7 @@ export function RecipeFinderClient() {
           </div>
 
           <p
-            className="c97-meta"
+            className="c97-meta c97-tabular"
             role="status"
             aria-live="polite"
             style={{ marginTop: "var(--c97-sp-3)" }}
@@ -365,6 +373,8 @@ export function RecipeFinderClient() {
           <ResultsGrid
             matches={visibleMatches}
             pantry={pantry}
+            pantryIsEmpty={hydrated && !hasPantry && view === "pantry"}
+            onReset={resetFilters}
             openRecipeId={openRecipeId}
             onToggleRecipe={(id) =>
               setOpenRecipeId((current) => (current === id ? null : id))
@@ -513,18 +523,35 @@ function PantryShelf({
 interface ResultsGridProps {
   matches: RecipeMatch[];
   pantry: string[];
+  /** The pantry view with nothing on the shelf, which needs a different prompt than a filter miss. */
+  pantryIsEmpty: boolean;
+  onReset: () => void;
   openRecipeId: string | null;
   onToggleRecipe: (id: string) => void;
 }
 
-function ResultsGrid({ matches, pantry, openRecipeId, onToggleRecipe }: ResultsGridProps) {
+function ResultsGrid({ matches, pantry, pantryIsEmpty, onReset, openRecipeId, onToggleRecipe }: ResultsGridProps) {
   if (matches.length === 0) {
     return (
       <div className="c97-prose" style={{ marginTop: "var(--c97-sp-5)" }}>
-        <p>No recipes match these filters.</p>
-        <p style={{ fontSize: "var(--c97-fs-small)" }}>
-          Try removing the meal type or adding more pantry items.
-        </p>
+        {pantryIsEmpty ? (
+          <>
+            <p>Your pantry shelf is empty, so there is nothing to suggest yet.</p>
+            <p style={{ fontSize: "var(--c97-fs-small)" }}>
+              Add a few ingredients on the shelf above and the recipes that use them show up here.
+            </p>
+          </>
+        ) : (
+          <>
+            <p>No recipes match these filters.</p>
+            <p style={{ fontSize: "var(--c97-fs-small)" }}>
+              Try removing the meal type or adding more pantry items.
+            </p>
+          </>
+        )}
+        <button type="button" onClick={onReset} className="c97-btn-ghost" style={{ marginTop: "var(--c97-sp-2)" }}>
+          {pantryIsEmpty ? "Show all recipes" : "Reset filters"}
+        </button>
       </div>
     );
   }

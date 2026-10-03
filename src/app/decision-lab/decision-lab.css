@@ -114,12 +114,14 @@
   gap: var(--c97-sp-2);
 }
 
+/* One 2px border in every state, so pressing a preset changes its colour and
+ * never its size. */
 .c97-decision-preset-grid > button {
-  border: 1px solid var(--c97-rule);
+  border: 2px solid var(--c97-rule);
 }
 
 .c97-decision-preset-grid > button[aria-pressed="true"] {
-  border: 2px solid var(--c97-ink);
+  border-color: var(--c97-ink);
 }
 
 .c97-decision-preset-grid > button:not([aria-pressed="true"]):hover {

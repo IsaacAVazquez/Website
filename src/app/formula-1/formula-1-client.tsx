@@ -124,7 +124,7 @@ function PositionChangeIndicator({
 }) {
   if (previousPosition === null || previousPosition === currentPosition) {
     return (
-      <span className="inline-flex items-center gap-1 text-sm" style={{ color: "var(--c97-ink-2)" }}>
+      <span className="inline-flex items-center text-sm" style={{ gap: "var(--c97-sp-0)", color: "var(--c97-ink-2)" }}>
         <Minus size={14} aria-hidden="true" />
         <span>Flat</span>
       </span>
@@ -140,8 +140,8 @@ function PositionChangeIndicator({
 
   return (
     <span
-      className="inline-flex items-center gap-1 text-sm font-semibold"
-      style={{ color: accent }}
+      className="inline-flex items-center text-sm font-semibold"
+      style={{ gap: "var(--c97-sp-0)", color: accent }}
     >
       <Icon size={14} aria-hidden="true" />
       <span aria-hidden="true">{absoluteDelta}</span>
@@ -183,7 +183,7 @@ function DriverHeadshot({
   teamColor: string | null;
   size?: number;
 }) {
-  const dimension = { width: size, height: size, borderRadius: "50%" };
+  const dimension = { width: size, height: size };
 
   if (!url) {
     return (
@@ -226,12 +226,11 @@ function TeamSwatch({ color }: { color: string | null }) {
       className="flex h-9 w-9 flex-shrink-0 items-center justify-center border"
       style={{
         borderColor: color ?? "var(--c97-ink-2)",
-        borderRadius: "50%",
         background: color ? `color-mix(in srgb, ${color} 18%, var(--c97-field))` : "var(--c97-field)",
       }}
       aria-hidden="true"
     >
-      <span style={{ height: "12px", width: "12px", borderRadius: "50%", background: color ?? "var(--c97-ink-2)" }} />
+      <span style={{ height: "12px", width: "12px", background: color ?? "var(--c97-ink-2)" }} />
     </span>
   );
 }
@@ -297,7 +296,7 @@ function useCountdown(targetIso: string | null): CountdownParts | null {
 
 function CountdownCell({ value, label }: { value: string; label: string }) {
   return (
-    <div className="px-2 py-2.5 text-center" style={{ border: "1px solid var(--c97-rule)", background: "var(--c97-field)" }}>
+    <div className="text-center" style={{ padding: "var(--c97-sp-1)", border: "1px solid var(--c97-rule)", background: "var(--c97-field)" }}>
       <p className="c97-mono mb-0 leading-none" style={{ fontSize: "var(--c97-fs-h2)", color: "var(--c97-ink)" }}>
         {value}
       </p>
@@ -313,10 +312,10 @@ function RaceCountdown({ targetIso }: { targetIso: string | null }) {
 
   if (parts?.isPast) {
     return (
-      <div className="flex items-center gap-2 px-4 py-3" style={{ border: "1px solid var(--c97-rule)", background: "var(--c97-field)" }}>
+      <div className="flex items-center" style={{ paddingInline: "var(--c97-sp-2)", paddingBlock: "var(--c97-sp-1)", gap: "var(--c97-sp-1)", border: "1px solid var(--c97-rule)", background: "var(--c97-field)" }}>
         <span
           className="h-2.5 w-2.5 flex-shrink-0"
-          style={{ borderRadius: "50%", background: "var(--c97-positive)" }}
+          style={{ background: "var(--c97-positive)" }}
           aria-hidden="true"
         />
         <p className="mb-0 text-sm font-semibold" style={{ color: "var(--c97-ink)" }}>
@@ -335,11 +334,11 @@ function RaceCountdown({ targetIso }: { targetIso: string | null }) {
 
   return (
     <div>
-      <p className="c97-kicker flex items-center gap-1.5" style={{ marginBottom: "var(--c97-sp-1)" }}>
+      <p className="c97-kicker flex items-center" style={{ gap: "var(--c97-sp-0)", marginBottom: "var(--c97-sp-1)" }}>
         <Clock size={13} aria-hidden="true" />
         Lights out in
       </p>
-      <div className="grid grid-cols-4 gap-2">
+      <div className="grid grid-cols-4" style={{ gap: "var(--c97-sp-1)" }}>
         {cells.map((cell) => (
           <CountdownCell key={cell.label} value={cell.value} label={cell.label} />
         ))}
@@ -377,10 +376,10 @@ function LeaderboardRow({
 
   return (
     <li
-      className="flex flex-col gap-2.5 px-3.5 py-3"
-      style={{ background: "var(--c97-field)", borderLeft: `3px solid ${accent}` }}
+      className="flex flex-col"
+      style={{ paddingInline: "var(--c97-sp-2)", paddingBlock: "var(--c97-sp-1)", gap: "var(--c97-sp-1)", background: "var(--c97-field)", borderLeft: `3px solid ${accent}` }}
     >
-      <div className="flex items-center gap-3">
+      <div className="flex items-center" style={{ gap: "var(--c97-sp-1)" }}>
         <span className="c97-mono w-6 flex-shrink-0 text-center text-sm" style={{ color: "var(--c97-ink)" }}>
           {row.position}
         </span>
@@ -409,7 +408,7 @@ function LeaderboardRow({
           </p>
         </div>
       </div>
-      <div className="flex items-center gap-3">
+      <div className="flex items-center" style={{ gap: "var(--c97-sp-1)" }}>
         <div className="relative h-1.5 flex-1" style={{ background: "var(--c97-rule)" }}>
           <span className="absolute inset-y-0 left-0" style={{ width: `${pct}%`, background: accent }} />
         </div>
@@ -421,6 +420,7 @@ function LeaderboardRow({
           >
             <ArrowUp size={11} aria-hidden="true" />
             {formatDelta(row.pointsDelta)}
+            <span className="sr-only"> points at the last race</span>
           </span>
         ) : null}
         <span className="w-[6.5ch] flex-shrink-0 text-right text-2xs font-semibold uppercase" style={{ color: "var(--c97-ink-2)" }}>
@@ -450,7 +450,7 @@ function DriverLeaderboard({
   }
 
   return (
-    <ol className="mt-0 space-y-2.5 pl-0">
+    <ol className="flex flex-col mt-0 pl-0" style={{ rowGap: "var(--c97-sp-1)" }}>
       {rows.map((standing) => (
         <LeaderboardRow
           key={`${standing.driverNumber}-${standing.position}`}
@@ -492,7 +492,7 @@ function ConstructorLeaderboard({
   }
 
   return (
-    <ol className="mt-0 space-y-2.5 pl-0">
+    <ol className="flex flex-col mt-0 pl-0" style={{ rowGap: "var(--c97-sp-1)" }}>
       {rows.map((standing) => (
         <LeaderboardRow
           key={`${standing.teamName}-${standing.position}`}
@@ -525,7 +525,7 @@ function SectionHeader({
   description: string;
 }) {
   return (
-    <div className="mb-4 flex flex-col gap-2 sm:flex-row sm:flex-wrap sm:items-baseline sm:justify-between sm:gap-3">
+    <div className="flex flex-col sm:flex-row sm:flex-wrap sm:items-baseline sm:justify-between" style={{ marginBottom: "var(--c97-sp-2)", gap: "var(--c97-sp-1)" }}>
       <div>
         <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-1)" }}>{kicker}</p>
         <h3 className="c97-serif c97-h3">{title}</h3>
@@ -540,13 +540,13 @@ function SectionHeader({
 function ResultRow({ entry }: { entry: Formula1RaceResultEntry }) {
   const accent = entry.teamColor ?? "var(--c97-ink-2)";
   return (
-    <li className="px-4 py-3" style={{ background: "var(--c97-field)", borderLeft: `3px solid ${accent}` }}>
-      <div className="flex items-start justify-between gap-4">
+    <li style={{ paddingInline: "var(--c97-sp-2)", paddingBlock: "var(--c97-sp-1)", background: "var(--c97-field)", borderLeft: `3px solid ${accent}` }}>
+      <div className="flex items-start justify-between" style={{ gap: "var(--c97-sp-2)" }}>
         <div className="min-w-0">
           <p className="mb-0 font-semibold" style={{ color: "var(--c97-ink)" }}>
             {entry.position ?? "NC"} · {entry.driverName}
           </p>
-          <p className="mb-0 mt-1 text-sm" style={{ color: "var(--c97-ink-2)" }}>
+          <p className="mb-0 text-sm" style={{ marginTop: "var(--c97-sp-0)", color: "var(--c97-ink-2)" }}>
             {entry.teamName ?? "Unknown team"} · {entry.statusLabel}
           </p>
         </div>
@@ -559,7 +559,7 @@ function ResultRow({ entry }: { entry: Formula1RaceResultEntry }) {
           </p>
         </div>
       </div>
-      <div className="mt-3 flex flex-wrap gap-2">
+      <div className="flex flex-wrap" style={{ marginTop: "var(--c97-sp-1)", gap: "var(--c97-sp-1)" }}>
         <span className="c97-chip">{entry.lapsCompleted} laps</span>
         {entry.gapToLeaderLabel ? <span className="c97-chip">{entry.gapToLeaderLabel}</span> : null}
         {entry.durationLabel ? <span className="c97-chip">{entry.durationLabel}</span> : null}
@@ -578,24 +578,24 @@ function MeetingSchedule({ meeting }: { meeting: Formula1MeetingSummary }) {
   }
 
   return (
-    <ol className="mt-0 space-y-3 pl-0">
+    <ol className="flex flex-col mt-0 pl-0" style={{ rowGap: "var(--c97-sp-1)" }}>
       {meeting.sessions.map((session) => {
         const accent = getSessionAccent(session.type);
         return (
           <li
             key={session.key}
-            className="min-h-[44px] px-4 py-3"
-            style={{ background: "var(--c97-field)", borderLeft: `3px solid ${accent}` }}
+            className="min-h-[44px]"
+            style={{ paddingInline: "var(--c97-sp-2)", paddingBlock: "var(--c97-sp-1)", background: "var(--c97-field)", borderLeft: `3px solid ${accent}` }}
           >
             <p className="mb-0 font-semibold" style={{ color: "var(--c97-ink)" }}>
               {session.name}
               {session.type !== session.name ? (
-                <span className="ml-2 font-normal" style={{ color: "var(--c97-ink-2)" }}>
+                <span className="font-normal" style={{ marginLeft: "var(--c97-sp-1)", color: "var(--c97-ink-2)" }}>
                   {session.type}
                 </span>
               ) : null}
             </p>
-            <p className="mb-0 mt-1 text-sm" style={{ color: "var(--c97-ink-2)" }}>
+            <p className="mb-0 text-sm" style={{ marginTop: "var(--c97-sp-0)", color: "var(--c97-ink-2)" }}>
               {formatLongDateTimeLabel(session.startAt)} to {formatLongDateTimeLabel(session.endAt)}
             </p>
           </li>
@@ -614,19 +614,19 @@ function MeetingDetailPanel({
 }) {
   return (
     <div className="c97-panel">
-      <div className="flex flex-wrap items-start justify-between gap-4">
+      <div className="flex flex-wrap items-start justify-between" style={{ gap: "var(--c97-sp-2)" }}>
         <div className="min-w-0">
-          <div className="flex items-center gap-2">
+          <div className="flex items-center" style={{ gap: "var(--c97-sp-1)" }}>
             <p className="c97-kicker">{getMeetingStatusCopy(meeting)}</p>
             <CountryFlag flagUrl={meeting.countryFlag} countryName={meeting.countryName} />
           </div>
           <h3 className="c97-serif c97-h3" style={{ marginTop: "var(--c97-sp-1)" }}>{meeting.name}</h3>
-          <p className="mt-2 mb-0 max-w-[48ch] text-sm leading-6" style={{ color: "var(--c97-ink-2)" }}>
+          <p className="mb-0 max-w-[48ch] text-sm leading-6" style={{ marginTop: "var(--c97-sp-1)", color: "var(--c97-ink-2)" }}>
             {meeting.circuitShortName} in {meeting.location}. I keep the schedule and the
             classification in one place so the weekend reads cleanly.
           </p>
         </div>
-        <div className="flex flex-wrap gap-2">
+        <div className="flex flex-wrap" style={{ gap: "var(--c97-sp-1)" }}>
           <span className="c97-chip">{formatDateLabel(meeting.startAt)}</span>
           {meeting.circuitType ? <span className="c97-chip">{meeting.circuitType}</span> : null}
           {meeting.hasSprint ? <span className="c97-chip c97-chip-warning">Sprint weekend</span> : null}
@@ -634,12 +634,12 @@ function MeetingDetailPanel({
         </div>
       </div>
 
-      <div className={`mt-6 grid grid-cols-1 gap-6 ${compact ? "lg:grid-cols-[1.1fr_0.9fr]" : "xl:grid-cols-[1.05fr_0.95fr]"}`}>
+      <div className={`grid grid-cols-1 ${compact ? "lg:grid-cols-[1.1fr_0.9fr]" : "xl:grid-cols-[1.05fr_0.95fr]"}`} style={{ marginTop: "var(--c97-sp-3)", gap: "var(--c97-sp-3)" }}>
         <div>
           <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-2)" }}>Weekend schedule</p>
           <MeetingSchedule meeting={meeting} />
-          <p className="mt-4 mb-0 text-xs leading-6" style={{ color: "var(--c97-ink-2)" }}>
-            Times render in your local timezone. The weekend offset chip shows the track timezone.
+          <p className="mb-0 text-xs leading-6" style={{ marginTop: "var(--c97-sp-2)", color: "var(--c97-ink-2)" }}>
+            Times print in Pacific time. The UTC offset chip shows the track&apos;s own time zone.
           </p>
         </div>
 
@@ -648,7 +648,7 @@ function MeetingDetailPanel({
             {meeting.resultPublished ? "Race classification" : "Result status"}
           </p>
           {meeting.resultPublished ? (
-            <ol className="mt-0 space-y-3 pl-0">
+            <ol className="flex flex-col mt-0 pl-0" style={{ rowGap: "var(--c97-sp-1)" }}>
               {meeting.classification.slice(0, compact ? 6 : meeting.classification.length).map((entry) => (
                 <ResultRow key={`${meeting.key}-${entry.driverNumber}`} entry={entry} />
               ))}
@@ -697,7 +697,7 @@ function PodiumDisplay({ meeting }: { meeting: Formula1MeetingSummary }) {
                   {formatPoints(entry.points)} pts
                 </span>
               </div>
-              <div className="mt-3 flex items-center gap-3">
+              <div className="flex items-center" style={{ marginTop: "var(--c97-sp-1)", gap: "var(--c97-sp-1)" }}>
                 <DriverHeadshot url={entry.headshotUrl} name={entry.driverName} teamColor={entry.teamColor} size={44} />
                 <div className="min-w-0">
                   <p className="mb-0 truncate font-semibold" style={{ color: "var(--c97-ink)" }}>
@@ -709,7 +709,7 @@ function PodiumDisplay({ meeting }: { meeting: Formula1MeetingSummary }) {
                 </div>
               </div>
               {entry.gapToLeaderLabel ? (
-                <p className="mt-3 mb-0 text-xs" style={{ color: "var(--c97-ink-2)" }}>
+                <p className="mb-0 text-xs" style={{ marginTop: "var(--c97-sp-1)", color: "var(--c97-ink-2)" }}>
                   {entry.gapToLeaderLabel}
                 </p>
               ) : null}
@@ -742,14 +742,14 @@ function MeetingStrip({
             className={styles.raceStripItem}
             aria-pressed={isSelected}
           >
-            <span className="flex items-center justify-between gap-2">
+            <span className="flex items-center justify-between" style={{ gap: "var(--c97-sp-1)" }}>
               <span className="c97-kicker">{meeting.status}</span>
               <CountryFlag flagUrl={meeting.countryFlag} countryName={meeting.countryName} />
             </span>
             <span className="c97-serif" style={{ display: "block", marginTop: "var(--c97-sp-1)", fontSize: "var(--c97-fs-body)" }}>
               {meeting.name}
             </span>
-            <span className="mt-1 mb-0 text-sm" style={{ display: "block", color: "var(--c97-ink-2)" }}>
+            <span className="mb-0 text-sm" style={{ marginTop: "var(--c97-sp-0)", display: "block", color: "var(--c97-ink-2)" }}>
               {formatDateLabel(meeting.startAt)} · {meeting.circuitShortName}
             </span>
           </button>
@@ -769,7 +769,7 @@ function CalendarTimeline({
   onSelect: (meetingKey: string) => void;
 }) {
   return (
-    <ol className="space-y-3 pl-0">
+    <ol className="flex flex-col pl-0" style={{ rowGap: "var(--c97-sp-1)" }}>
       {meetings.map((meeting, index) => {
         const isSelected = meeting.key === selectedMeetingKey;
 
@@ -779,26 +779,26 @@ function CalendarTimeline({
               type="button"
               onClick={() => onSelect(meeting.key)}
               aria-pressed={isSelected}
-              className={`c97-row ${styles.timelineRow} min-h-[44px] w-full px-4 py-3 text-left`}
-              style={{ borderBottom: "1px solid var(--c97-rule)" }}
+              className={`c97-row ${styles.timelineRow} min-h-[44px] w-full text-left`}
+              style={{ paddingInline: "var(--c97-sp-2)", paddingBlock: "var(--c97-sp-1)", borderBottom: "1px solid var(--c97-rule)" }}
             >
               <span className="min-w-0" style={{ display: "block" }}>
                 <span className="c97-kicker" style={{ display: "block" }}>
                   Round {index + 1}
                 </span>
-                <span className="mt-2 flex items-center gap-2">
+                <span className="flex items-center" style={{ marginTop: "var(--c97-sp-1)", gap: "var(--c97-sp-1)" }}>
                   <CountryFlag flagUrl={meeting.countryFlag} countryName={meeting.countryName} />
                   <span className="c97-serif truncate" style={{ fontSize: "var(--c97-fs-body)" }}>
                     {meeting.name}
                   </span>
                 </span>
-                <span className="mt-1 mb-0 text-sm leading-6" style={{ display: "block", color: "var(--c97-ink-2)" }}>
+                <span className="mb-0 text-sm leading-6" style={{ marginTop: "var(--c97-sp-0)", display: "block", color: "var(--c97-ink-2)" }}>
                   {meeting.location}, {meeting.countryName}
                 </span>
               </span>
               <span className="text-right text-sm" style={{ display: "block", color: "var(--c97-ink-2)" }}>
                 <span style={{ display: "block" }}>{formatDateLabel(meeting.startAt)}</span>
-                <span className="mt-1" style={{ display: "block" }}>{meeting.status}</span>
+                <span style={{ marginTop: "var(--c97-sp-0)", display: "block" }}>{meeting.status}</span>
               </span>
             </button>
           </li>
@@ -855,18 +855,17 @@ function MeetingDetailFallback({
 }) {
   return (
     <div className="c97-panel">
-      <div className="flex items-center gap-2">
+      <div className="flex items-center" style={{ gap: "var(--c97-sp-1)" }}>
         <p className="c97-kicker">{getMeetingStatusCopy(meeting)}</p>
         <CountryFlag flagUrl={meeting.countryFlag} countryName={meeting.countryName} />
       </div>
       <h3 className="c97-serif c97-h3" style={{ marginTop: "var(--c97-sp-1)" }}>{meeting.name}</h3>
       {error ? (
         <div
-          className="mt-4 px-4 py-4"
           role="alert"
-          style={{ background: "var(--c97-field)", borderLeft: "3px solid var(--c97-negative)" }}
+          style={{ padding: "var(--c97-sp-2)", marginTop: "var(--c97-sp-2)", background: "var(--c97-field)", borderLeft: "3px solid var(--c97-negative)" }}
         >
-          <div className="flex items-start gap-3">
+          <div className="flex items-start" style={{ gap: "var(--c97-sp-1)" }}>
             <CircleAlert className="mt-0.5 h-4 w-4 shrink-0" style={{ color: "var(--c97-negative)" }} aria-hidden="true" />
             <p className="mb-0 text-sm leading-6" style={{ color: "var(--c97-ink)" }}>
               {error}
@@ -874,7 +873,7 @@ function MeetingDetailFallback({
           </div>
         </div>
       ) : (
-        <p className="mb-0 mt-4 text-sm leading-6" role="status" style={{ color: "var(--c97-ink-2)" }}>
+        <p className="mb-0 text-sm leading-6" role="status" style={{ marginTop: "var(--c97-sp-2)", color: "var(--c97-ink-2)" }}>
           Loading race weekend detail…
         </p>
       )}
@@ -1062,14 +1061,14 @@ export function Formula1Client({ initialState, summary, initialMeeting }: Formul
 
           {highlightMeeting ? (
             <div className="c97-panel" style={{ marginTop: "var(--c97-sp-4)" }}>
-              <div className="flex flex-wrap items-start justify-between gap-4">
+              <div className="flex flex-wrap items-start justify-between" style={{ gap: "var(--c97-sp-2)" }}>
                 <div>
                   <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-1)" }}>{getMeetingStatusCopy(highlightMeeting)}</p>
-                  <h3 className="c97-serif c97-h3 flex items-center gap-2">
+                  <h3 className="c97-serif c97-h3 flex items-center" style={{ gap: "var(--c97-sp-1)" }}>
                     <CountryFlag flagUrl={highlightMeeting.countryFlag} countryName={highlightMeeting.countryName} />
                     {highlightMeeting.name}
                   </h3>
-                  <p className="mb-0 mt-1 text-sm leading-6" style={{ color: "var(--c97-ink-2)" }}>
+                  <p className="mb-0 text-sm leading-6" style={{ marginTop: "var(--c97-sp-0)", color: "var(--c97-ink-2)" }}>
                     {highlightMeeting.circuitShortName} in {highlightMeeting.location}
                   </p>
                 </div>
@@ -1086,7 +1085,7 @@ export function Formula1Client({ initialState, summary, initialMeeting }: Formul
                 </div>
               ) : null}
 
-              <div className="flex flex-wrap gap-2" style={{ marginTop: "var(--c97-sp-3)" }}>
+              <div className="flex flex-wrap" style={{ gap: "var(--c97-sp-1)", marginTop: "var(--c97-sp-3)" }}>
                 <span className="c97-chip">
                   {highlightMeeting.raceStartsAt
                     ? formatDateTimeLabel(highlightMeeting.raceStartsAt)
@@ -1133,7 +1132,7 @@ export function Formula1Client({ initialState, summary, initialMeeting }: Formul
           </p>
 
           {resolvedState.view === "overview" ? (
-            <div className="grid grid-cols-1 gap-6 xl:grid-cols-2" style={{ marginTop: "var(--c97-sp-5)" }}>
+            <div className="grid grid-cols-1 xl:grid-cols-2" style={{ gap: "var(--c97-sp-3)", marginTop: "var(--c97-sp-5)" }}>
               <div>
                 <SectionHeader
                   kicker="Title race"
@@ -1177,7 +1176,7 @@ export function Formula1Client({ initialState, summary, initialMeeting }: Formul
           ) : null}
 
           {resolvedState.view === "calendar" ? (
-            <div className="grid grid-cols-1 gap-6 xl:grid-cols-[0.88fr_1.12fr]" style={{ marginTop: "var(--c97-sp-5)" }}>
+            <div className="grid grid-cols-1 xl:grid-cols-[0.88fr_1.12fr]" style={{ gap: "var(--c97-sp-3)", marginTop: "var(--c97-sp-5)" }}>
               <div>
                 <h3 className="c97-serif c97-h3" style={{ marginBottom: "var(--c97-sp-2)" }}>Full season timeline</h3>
                 <CalendarTimeline
@@ -1238,7 +1237,7 @@ export function Formula1Client({ initialState, summary, initialMeeting }: Formul
       </section>
 
       <section className="c97-band c97-sheet" data-c97-surface="paper" data-seam="deckle">
-        <div className="c97-shell grid grid-cols-1 gap-6 lg:grid-cols-2">
+        <div className="c97-shell grid grid-cols-1 lg:grid-cols-2" style={{ gap: "var(--c97-sp-3)" }}>
           <div>
             <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-1)" }}>Data notes</p>
             <p className="c97-prose">

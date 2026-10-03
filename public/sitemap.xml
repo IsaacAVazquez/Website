@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:mobile="http://www.google.com/schemas/sitemap-mobile/1.0" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
 <url><loc>https://isaacvazquez.com</loc><lastmod>2026-10-01T00:00:00.000Z</lastmod><changefreq>weekly</changefreq><priority>1</priority></url>
 <url><loc>https://isaacvazquez.com/about</loc><lastmod>2026-10-01T00:00:00.000Z</lastmod><changefreq>monthly</changefreq><priority>1</priority></url>
-<url><loc>https://isaacvazquez.com/accessibility</loc><lastmod>2026-07-16T00:00:00.000Z</lastmod><changefreq>yearly</changefreq><priority>0.6</priority></url>
+<url><loc>https://isaacvazquez.com/accessibility</loc><lastmod>2026-10-02T00:00:00.000Z</lastmod><changefreq>yearly</changefreq><priority>0.6</priority></url>
 <url><loc>https://isaacvazquez.com/arcade</loc><lastmod>2026-07-16T00:00:00.000Z</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
 <url><loc>https://isaacvazquez.com/changelog</loc><lastmod>2026-07-23T00:00:00.000Z</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
 <url><loc>https://isaacvazquez.com/contact</loc><lastmod>2026-10-01T00:00:00.000Z</lastmod><changefreq>yearly</changefreq><priority>1</priority></url>
@@ -310,4 +310,5 @@
 <url><loc>https://isaacvazquez.com/writing/building-an-agent-build-index</loc><lastmod>2026-09-29T00:00:00.000Z</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
 <url><loc>https://isaacvazquez.com/writing/building-reactor-arcade</loc><lastmod>2026-09-29T00:00:00.000Z</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
 <url><loc>https://isaacvazquez.com/investments/before-you-buy</loc><lastmod>2026-10-01T00:00:00.000Z</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+<url><loc>https://isaacvazquez.com/privacy</loc><lastmod>2026-10-02T00:00:00.000Z</lastmod><changefreq>yearly</changefreq><priority>0.6</priority></url>
 </urlset>

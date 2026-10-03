@@ -1,5 +1,9 @@
 import { StructuredData } from "@/components/StructuredData";
-import { constructMetadata, generateBreadcrumbStructuredData } from "@/lib/seo";
+import {
+  constructMetadata,
+  freeApplicationOffer,
+  generateBreadcrumbStructuredData,
+} from "@/lib/seo";
 import {
   MARCH_MADNESS_DESCRIPTION,
   MARCH_MADNESS_FAQ,
@@ -23,6 +27,7 @@ interface MarchMadnessPageProps {
     view?: string;
     region?: string;
     analytics?: string;
+    pick?: string;
   }>;
 }
 
@@ -104,12 +109,14 @@ export default async function MarchMadnessPage({ searchParams }: MarchMadnessPag
             "@type": "Audience",
             audienceType: "College basketball fans and sports analytics readers",
           },
+          offers: freeApplicationOffer,
         }}
       />
 
       <MarchMadnessClient
         key={`${initialState.view}-${initialState.region}-${initialState.analytics}`}
         initialState={initialState}
+        initialPick={typeof resolvedSearchParams.pick === "string" ? resolvedSearchParams.pick : null}
       />
     </>
   );

@@ -143,7 +143,8 @@ export function StockSearch({ value, onChange }: Props) {
       top: Math.round(rect.bottom + 6),
       left: Math.round(rect.left),
       width: Math.round(rect.width),
-      zIndex: 9999,
+      // Above the terminal's sticky cells (z-index 4 at most), below the site overlays (55 and up).
+      zIndex: 10,
     });
   }, []);
 
@@ -253,7 +254,7 @@ export function StockSearch({ value, onChange }: Props) {
           placeholder="Search symbol or company…"
           autoComplete="off"
           spellCheck={false}
-          className="box-border w-full border-0 border-b border-[var(--c97-ink-2)] bg-[var(--c97-panel)] py-3 pl-9 pr-4 text-sm text-[var(--c97-ink)] transition placeholder:text-[var(--c97-label)] focus:outline-none focus:border-[var(--c97-accent)]"
+          className="box-border w-full border-0 border-b border-[var(--c97-ink-2)] bg-[var(--c97-panel)] text-sm text-[var(--c97-ink)] transition placeholder:text-[var(--c97-label)] focus:border-[var(--c97-accent)]" style={{ paddingBlock: "var(--c97-sp-1)", paddingLeft: "var(--c97-sp-4)", paddingRight: "var(--c97-sp-2)" }}
           // aria-expanded and aria-activedescendant are only allowed on a combobox, not a plain textbox.
           role="combobox"
           aria-label="Search stock symbol"
@@ -276,21 +277,22 @@ export function StockSearch({ value, onChange }: Props) {
           // --c97-* tokens only resolve inside it. The contents-only wrapper
           // gives the list paper tokens without painting a box of its own.
           <div data-c97-surface="paper" style={{ display: "contents" }}>
-<ul
-  id="stock-search-listbox"
-  role="listbox"
-  aria-label="Symbol suggestions"
-  style={dropdownStyle}
-className="m-0 list-none p-0 box-border overflow-hidden border border-[var(--c97-rule)] bg-[var(--c97-panel)]"
->
+            <ul
+              id="stock-search-listbox"
+              role="listbox"
+              aria-label="Symbol suggestions"
+              style={dropdownStyle}
+              className="m-0 list-none p-0 box-border overflow-hidden border border-[var(--c97-rule)] bg-[var(--c97-panel)]"
+            >
             {suggestions.map((entry, indexPosition) => (
-              <li key={entry.symbol}>
+              <li key={entry.symbol} role="presentation">
                 <button
                   id={`stock-search-option-${entry.symbol}`}
                   role="option"
                   aria-selected={indexPosition === activeIndex}
                   onMouseDown={() => selectEntry(entry)}
-                  className={`flex min-h-[52px] w-full flex-col items-start justify-center px-3 py-2 text-left text-sm transition ${
+                  style={{ paddingInline: "var(--c97-sp-1)", paddingBlock: "var(--c97-sp-1)" }}
+                  className={`flex min-h-[52px] w-full flex-col items-start justify-center text-left text-sm transition ${
                     indexPosition === activeIndex
                       ? "bg-[color-mix(in_srgb,var(--c97-accent)_14%,var(--c97-panel))] text-[var(--c97-ink)]"
                       : "text-[var(--c97-ink)] hover:bg-[color-mix(in_srgb,var(--c97-ink)_6%,var(--c97-panel))]"
@@ -309,10 +311,10 @@ className="m-0 list-none p-0 box-border overflow-hidden border border-[var(--c97
         )}
 
       {shouldShowCuratedOnlyHint && (
-        <p className="mt-1.5 flex items-center gap-1.5 text-xs text-[var(--c97-warning)]">
+        <p className="flex items-center text-xs text-[var(--c97-warning)]" style={{ gap: "var(--c97-sp-0)", marginTop: "var(--c97-sp-0)" }}>
           <CircleAlert size={13} />
           <span>
-            This workspace currently supports the curated research set only. Pick a ticker from the suggestions.
+            My data covers a curated set of tickers only, so pick one from the suggestions.
           </span>
         </p>
       )}

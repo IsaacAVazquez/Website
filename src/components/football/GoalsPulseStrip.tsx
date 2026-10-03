@@ -26,7 +26,7 @@ export function GoalsPulseStrip({
         <p className="font-mono text-3xs uppercase tracking-[0.1em] text-[var(--c97-ink-2)]">
           Goals / matchday
         </p>
-        <p className="mt-2 max-w-[22ch] text-xs leading-relaxed text-[var(--c97-ink-2)]">
+        <p className="max-w-[22ch] text-xs leading-relaxed text-[var(--c97-ink-2)]" style={{ marginTop: "var(--c97-sp-1)" }}>
           Pulse arrives with the first matchday of the season.
         </p>
       </div>
@@ -41,7 +41,7 @@ export function GoalsPulseStrip({
       role="img"
       aria-label={`Goals per matchday, season to date: ${data.length} matchdays, latest ${data[data.length - 1].totalGoals} goals`}
     >
-      <div className="flex h-11 items-end gap-[3px]">
+      <div className="flex h-11 items-end" style={{ gap: "var(--c97-sp-0)" }}>
         {data.map((entry, index) => (
           <span
             key={entry.matchday}
@@ -57,7 +57,7 @@ export function GoalsPulseStrip({
           />
         ))}
       </div>
-      <div className="mt-2 flex items-center justify-between gap-3 font-mono text-3xs uppercase tracking-[0.1em] text-[var(--c97-ink-2)]">
+      <div className="flex items-center justify-between font-mono text-3xs uppercase tracking-[0.1em] text-[var(--c97-ink-2)]" style={{ marginTop: "var(--c97-sp-1)", gap: "var(--c97-sp-1)" }}>
         <span>Goals / matchday</span>
         {capLabel ? <span>{capLabel}</span> : null}
       </div>

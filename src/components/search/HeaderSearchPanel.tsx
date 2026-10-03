@@ -173,7 +173,7 @@ export function HeaderSearchPanel({ onClose }: HeaderSearchPanelProps) {
   };
 
   return (
-    <div className="absolute inset-x-0 top-full z-50">
+    <div className="absolute inset-x-0 top-full z-[var(--c97-z-tray)]">
       {/* Click-catcher closes the panel; the panel sits above it. */}
       <button
         type="button"
@@ -302,7 +302,7 @@ export function HeaderSearchPanel({ onClose }: HeaderSearchPanelProps) {
                 style={{ borderColor: "var(--c97-rule)", color: "var(--c97-ink)", padding: "var(--c97-sp-2)" }}
               >
                 <span>View all results{total > results.length ? ` (${total})` : ""}</span>
-                <span aria-hidden="true">→</span>
+                <span className="c97-arrow" aria-hidden="true">→</span>
               </button>
             )}
           </div>

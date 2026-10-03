@@ -25,14 +25,14 @@ export function MissionStatFascia({ cells }: MissionStatFasciaProps) {
       className="grid grid-cols-2 gap-px border border-[var(--c97-rule)] bg-[var(--c97-rule)] sm:grid-cols-4"
     >
       {cells.map((cell) => (
-        <div key={cell.label} className="min-w-0 bg-[var(--c97-surface)] px-4 py-3.5">
+        <div key={cell.label} className="min-w-0 bg-[var(--c97-surface)]" style={{ paddingInline: "var(--c97-sp-2)", paddingBlock: "var(--c97-sp-2)" }}>
           <p className="font-mono text-3xs font-semibold uppercase tracking-[0.14em] text-[var(--c97-ink-2)]">
             {cell.label}
           </p>
-          <p className="mt-2 text-xl font-bold tracking-[-0.02em] tabular-nums text-[var(--c97-ink)] sm:text-2xl">
+          <p className="text-xl font-bold tracking-[-0.02em] tabular-nums text-[var(--c97-ink)] sm:text-2xl" style={{ marginTop: "var(--c97-sp-1)" }}>
             {cell.value}
           </p>
-          <p className="mt-1 text-xs leading-5 text-[var(--c97-ink-2)]">{cell.detail}</p>
+          <p className="text-xs leading-5 text-[var(--c97-ink-2)]" style={{ marginTop: "var(--c97-sp-0)" }}>{cell.detail}</p>
         </div>
       ))}
     </div>

@@ -46,7 +46,7 @@ import {
 } from "./premier-league-state";
 import { useRouteSync } from "@/hooks/useRouteSync";
 import { useCachedSnapshot } from "@/hooks/useCachedSnapshot";
-import { formatFixed } from "@/components/football/fixtureFormat";
+import { formatFixed, formatRank } from "@/components/football/fixtureFormat";
 import { ClubLeaderCard } from "@/components/football/ClubLeaderCard";
 
 interface PremierLeagueClientProps {
@@ -303,14 +303,14 @@ export function PremierLeagueClient({
       </Catalog97ProjectHero>
 
       <section className="c97-band c97-sheet" data-c97-surface="paper" data-seam="torn">
-        <div className="c97-shell space-y-6">
+        <div className="flex flex-col c97-shell" style={{ rowGap: "var(--c97-sp-3)" }}>
           <ResultsTape
             recentFixtures={summary.recentFixtures}
             upcomingFixtures={summary.upcomingFixtures}
             label={currentMatchday ? `Matchday ${currentMatchday} · latest` : "Latest results"}
           />
 
-          <div className="flex flex-wrap items-end justify-between gap-4">
+          <div className="flex flex-wrap items-end justify-between" style={{ gap: "var(--c97-sp-2)" }}>
             <h2 className="c97-poster-sm">Standings</h2>
             <GoalsPulseStrip
               data={summary.goalsPerMatchday ?? []}
@@ -323,7 +323,7 @@ export function PremierLeagueClient({
             />
           </div>
 
-          <div className="c97-segmented" style={{ marginBottom: "var(--c97-sp-3)" }}>
+          <div className="c97-segmented">
             {PREMIER_LEAGUE_VIEW_OPTIONS.map((key) => {
               const isActive = key === routeState.view;
               const count = filterStandingsForView(summary.standings, key).length;
@@ -352,13 +352,13 @@ export function PremierLeagueClient({
       </section>
 
       <section className="c97-band c97-sheet" data-c97-surface="bone" data-seam="deckle">
-        <div className="c97-shell space-y-6">
+        <div className="flex flex-col c97-shell" style={{ rowGap: "var(--c97-sp-3)" }}>
           <h2 className="c97-poster-sm">Detail</h2>
           <SegmentedTabs
             tabs={[
-              { id: "club", label: "Club Detail" },
+              { id: "club", label: "Club detail" },
               { id: "fixtures", label: "Fixtures" },
-              { id: "scorers", label: "Top Scorers" },
+              { id: "scorers", label: "Top scorers" },
             ]}
             activeId={activeDetailTab}
             onChange={(id) => setActiveDetailTab(id as typeof activeDetailTab)}
@@ -377,9 +377,9 @@ export function PremierLeagueClient({
                 className="grid xl:grid-cols-[minmax(0,1.2fr)_minmax(0,1fr)]"
                 style={{ gap: "var(--c97-sp-4)" }}
               >
-                <div className="space-y-5">
-                  <div className="flex items-center justify-between gap-3">
-                    <div className="flex min-w-0 items-center gap-3">
+                <div className="flex flex-col" style={{ rowGap: "var(--c97-sp-2)" }}>
+                  <div className="flex items-center justify-between" style={{ gap: "var(--c97-sp-1)" }}>
+                    <div className="flex min-w-0 items-center" style={{ gap: "var(--c97-sp-1)" }}>
                       <CrestAvatar crest={selectedRow.team.crest} name={selectedRow.team.shortName} size="md" />
                       <div className="min-w-0">
                         <h3 className="text-lg font-bold c97-serif">{selectedRow.team.name}</h3>
@@ -399,11 +399,11 @@ export function PremierLeagueClient({
 
                   <div>
                     <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-2)" }}>Performance</p>
-                    <div className="grid grid-cols-2 gap-3">
+                    <div className="grid grid-cols-2" style={{ gap: "var(--c97-sp-1)" }}>
                       <MetricCard label="PPG" value={formatFixed(selectedRow.points / selectedRow.playedGames)} />
                       <MetricCard label="Record" value={`${selectedRow.won}-${selectedRow.draw}-${selectedRow.lost}`} />
-                      <MetricCard label="Attack rank" value={`#${attackRankings.get(selectedRow.team.id) ?? "—"}`} />
-                      <MetricCard label="Defense rank" value={`#${defenseRankings.get(selectedRow.team.id) ?? "—"}`} />
+                      <MetricCard label="Attack rank" value={formatRank(attackRankings.get(selectedRow.team.id))} />
+                      <MetricCard label="Defense rank" value={formatRank(defenseRankings.get(selectedRow.team.id))} />
                       <MetricCard label="GF / match" value={formatFixed(selectedRow.goalsFor / selectedRow.playedGames)} />
                       <MetricCard label="GA / match" value={formatFixed(selectedRow.goalsAgainst / selectedRow.playedGames)} />
                     </div>
@@ -453,7 +453,7 @@ export function PremierLeagueClient({
                 {recentFixtures.length > 0 && (
                   <div>
                     <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-2)" }}>Recent results</p>
-                    <div className="space-y-2">
+                    <div className="flex flex-col" style={{ rowGap: "var(--c97-sp-1)" }}>
                       {recentFixtures.map((fixture) => (
                         <FixtureCard
                           key={fixture.id}
@@ -469,7 +469,7 @@ export function PremierLeagueClient({
                 {upcomingFixtures.length > 0 && (
                   <div>
                     <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-2)" }}>Upcoming fixtures</p>
-                    <div className="space-y-2">
+                    <div className="flex flex-col" style={{ rowGap: "var(--c97-sp-1)" }}>
                       {upcomingFixtures.map((fixture) => (
                         <FixtureCard
                           key={fixture.id}
@@ -486,13 +486,14 @@ export function PremierLeagueClient({
             )}
 
             {activeDetailTab === "fixtures" && (
-              <div className="grid gap-6 md:grid-cols-2">
+              <div className="grid md:grid-cols-2" style={{ gap: "var(--c97-sp-3)" }}>
                 <div>
                   <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-1)" }}>Recent slate</p>
                   <h3 className="c97-h3 c97-serif" style={{ marginBottom: "var(--c97-sp-2)" }}>Latest results</h3>
                   <FixtureLedgerSection
                     groups={groupFixturesByMatchday(summary.recentFixtures)}
                     onOpenTeam={handleTeamChange}
+                    emptyLabel="No results are in this snapshot yet."
                   />
                 </div>
                 <div>
@@ -501,15 +502,16 @@ export function PremierLeagueClient({
                   <FixtureLedgerSection
                     groups={groupFixturesByMatchday(summary.upcomingFixtures, { suffix: "upcoming" })}
                     onOpenTeam={handleTeamChange}
+                    emptyLabel="No upcoming fixtures are in this snapshot yet."
                   />
                 </div>
               </div>
             )}
 
             {activeDetailTab === "scorers" && (
-              <div className="grid gap-6 md:grid-cols-2">
+              <div className="grid md:grid-cols-2" style={{ gap: "var(--c97-sp-3)" }}>
                 <div>
-                  <div className="flex min-h-[44px] items-start justify-between gap-3">
+                  <div className="flex min-h-[44px] items-start justify-between" style={{ gap: "var(--c97-sp-1)" }}>
                     <p className="c97-kicker">Goals &amp; assists leaderboard</p>
                     <a
                       href="https://www.premierleague.com/en/stats/top/players/goals"
@@ -519,6 +521,7 @@ export function PremierLeagueClient({
                       style={{ gap: "var(--c97-sp-1)" }}
                     >
                       Official
+                      <span className="sr-only"> Premier League goals leaderboard (opens in a new tab)</span>
                       <ExternalLink className="h-4 w-4" />
                     </a>
                   </div>

@@ -121,7 +121,7 @@ const COMPONENT_CONTRACTS = {
     ],
     enums: {},
   },
-  FixtureLedgerSection: { props: ["groups", "onOpenTeam"], enums: {} },
+  FixtureLedgerSection: { props: ["groups", "onOpenTeam", "emptyLabel"], enums: {} },
   GoalsPulseStrip: { props: ["data", "capLabel", "className"], enums: {} },
   InfoChip: { props: ["label"], enums: {} },
   LeaderLedger: { props: ["title", "entries", "unit", "emptyLabel"], enums: {} },
@@ -136,7 +136,7 @@ const COMPONENT_CONTRACTS = {
     enums: {},
   },
   StatFascia: { props: ["items", "className"], enums: {} },
-  SurfaceCard: { props: ["children", "className"], enums: {} },
+  SurfaceCard: { props: ["children", "className", "style"], enums: {} },
   TeamResultPill: { props: ["result"], enums: { result: ["W", "D", "L"] } },
 };
 

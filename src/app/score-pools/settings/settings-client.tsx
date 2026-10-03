@@ -169,17 +169,17 @@ export function SettingsClient({ snapshot }: SettingsClientProps) {
   };
 
   return (
-    <section className="c97-band min-h-screen" data-c97-surface="paper">
-      <div className="c97-shell space-y-6">
+    <section className="c97-band min-h-dvh" data-c97-surface="paper">
+      <div className="flex flex-col c97-shell" style={{ rowGap: "var(--c97-sp-3)" }}>
         <header>
-          <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-1)" }}>Prediction Tools</p>
+          <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-1)" }}>Prediction tools</p>
           <h1 className="c97-display">
             Pool{" "}
             <em style={{ fontFamily: "var(--c97-font-display)", fontStyle: "italic", fontWeight: 400 }}>
               Settings
             </em>
           </h1>
-          <p className="mt-2 text-sm leading-relaxed text-[var(--c97-ink-2)]">
+          <p className="text-sm leading-relaxed text-[var(--c97-ink-2)]" style={{ marginTop: "var(--c97-sp-1)" }}>
             The scoring rules drive the whole optimization, and the standing drives the risk
             posture, so this page is where the recommendations actually get their shape. Back to
             the{" "}
@@ -210,7 +210,7 @@ export function SettingsClient({ snapshot }: SettingsClientProps) {
               </button>
             ))}
           </div>
-          <div className="mt-3 flex flex-wrap items-end gap-3">
+          <div className="flex flex-wrap items-end" style={{ gap: "var(--c97-sp-1)", marginTop: "var(--c97-sp-1)" }}>
             <label className="block">
               <span className={FIELD_LABEL}>League</span>
               <select
@@ -257,7 +257,7 @@ export function SettingsClient({ snapshot }: SettingsClientProps) {
               <h2 className="c97-serif c97-h2">
                 {pool.name}
               </h2>
-              <div className="mt-3 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              <div className="grid sm:grid-cols-2 lg:grid-cols-3" style={{ gap: "var(--c97-sp-2)", marginTop: "var(--c97-sp-1)" }}>
                 <label className="block">
                   <span className={FIELD_LABEL}>Pool name</span>
                   <input
@@ -317,12 +317,12 @@ export function SettingsClient({ snapshot }: SettingsClientProps) {
 
             <section className={SECTION} aria-label="Scoring rules">
               <h2 className="c97-serif c97-h2">Scoring rules</h2>
-              <p className="mt-1 text-2xs text-[var(--c97-ink-2)]">
+              <p className="text-2xs text-[var(--c97-ink-2)]" style={{ marginTop: "var(--c97-sp-0)" }}>
                 The basis flag matters most in knockouts, since under 90-minute scoring a game that
                 finishes 1-1 and goes to penalties scores as a 1-1 draw, and under final-result
                 scoring your pick compares against the score after extra time.
               </p>
-              <div className="mt-3 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              <div className="grid sm:grid-cols-2 lg:grid-cols-3" style={{ gap: "var(--c97-sp-2)", marginTop: "var(--c97-sp-1)" }}>
                 <NumberSetting
                   label="Exact score points"
                   value={pool.rules.exact}
@@ -370,7 +370,7 @@ export function SettingsClient({ snapshot }: SettingsClientProps) {
                     patch((current) => ({ ...current, rules: { ...current.rules, basis } }))
                   }
                 />
-                <label className="flex min-h-[44px] cursor-pointer items-center gap-2 self-end border border-[var(--c97-rule)] bg-[var(--c97-surface)] px-3 py-2">
+                <label className="flex min-h-[44px] cursor-pointer items-center self-end border border-[var(--c97-rule)] bg-[var(--c97-surface)]" style={{ gap: "var(--c97-sp-1)", paddingInline: "var(--c97-sp-1)", paddingBlock: "var(--c97-sp-1)" }}>
                   <input
                     type="checkbox"
                     checked={pool.rules.penaltiesCountAsWin}
@@ -391,12 +391,12 @@ export function SettingsClient({ snapshot }: SettingsClientProps) {
 
             <section className={SECTION} aria-label="Standing and posture">
               <h2 className="c97-serif c97-h2">Standing and posture</h2>
-              <p className="mt-1 text-2xs text-[var(--c97-ink-2)]">
+              <p className="text-2xs text-[var(--c97-ink-2)]" style={{ marginTop: "var(--c97-sp-0)" }}>
                 The gap to whoever sits nearest above and below, against the games remaining, sets
                 how much variance the recommendation courts. Auto derives it; protect and chase
                 force it.
               </p>
-              <div className="mt-3 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              <div className="grid sm:grid-cols-2 lg:grid-cols-3" style={{ gap: "var(--c97-sp-2)", marginTop: "var(--c97-sp-1)" }}>
                 <NumberSetting
                   label="My points"
                   value={pool.standing.myPoints}
@@ -477,12 +477,12 @@ export function SettingsClient({ snapshot }: SettingsClientProps) {
 
             <section className={SECTION} aria-label="Field model">
               <h2 className="c97-serif c97-h2">Field model</h2>
-              <p className="mt-1 text-2xs text-[var(--c97-ink-2)]">
+              <p className="text-2xs text-[var(--c97-ink-2)]" style={{ marginTop: "var(--c97-sp-0)" }}>
                 A heuristic for what the rest of the pool submits, which is mostly the favorite with
                 the modal scoreline. Rival picks you enter in the tracker score the rival table only and
                 do not change this model.
               </p>
-              <div className="mt-3 grid gap-4 sm:grid-cols-2">
+              <div className="grid sm:grid-cols-2" style={{ gap: "var(--c97-sp-2)", marginTop: "var(--c97-sp-1)" }}>
                 <NumberSetting
                   label="Share on the modal chalk pick"
                   value={pool.field.modalShare}
@@ -515,13 +515,13 @@ export function SettingsClient({ snapshot }: SettingsClientProps) {
 
             <section className={SECTION} aria-label="Rivals">
               <h2 className="c97-serif c97-h2">Rivals</h2>
-              <p className="mt-1 text-2xs text-[var(--c97-ink-2)]">
+              <p className="text-2xs text-[var(--c97-ink-2)]" style={{ marginTop: "var(--c97-sp-0)" }}>
                 The people you&apos;re actually racing. Their picks go in on the tracker page; the
                 adjustment covers points they banked before you started tracking.
               </p>
-              <ul className="mt-3 space-y-2">
+              <ul className="flex flex-col" style={{ rowGap: "var(--c97-sp-1)", marginTop: "var(--c97-sp-1)" }}>
                 {pool.rivals.map((rival) => (
-                  <li key={rival.id} className="flex flex-wrap items-end gap-3 border border-[var(--c97-rule)] bg-[var(--c97-surface)] px-4 py-3">
+                  <li key={rival.id} className="flex flex-wrap items-end border border-[var(--c97-rule)] bg-[var(--c97-surface)]" style={{ gap: "var(--c97-sp-1)", paddingInline: "var(--c97-sp-2)", paddingBlock: "var(--c97-sp-1)" }}>
                     <label className="block">
                       <span className={FIELD_LABEL}>Name</span>
                       <input
@@ -557,7 +557,7 @@ export function SettingsClient({ snapshot }: SettingsClientProps) {
                   </li>
                 ))}
               </ul>
-              <div className="mt-3 flex flex-wrap items-end gap-3">
+              <div className="flex flex-wrap items-end" style={{ gap: "var(--c97-sp-1)", marginTop: "var(--c97-sp-1)" }}>
                 <label className="block">
                   <span className={FIELD_LABEL}>New rival</span>
                   <input
@@ -585,32 +585,32 @@ export function SettingsClient({ snapshot }: SettingsClientProps) {
 
             <section className={SECTION} aria-label="Data status">
               <h2 className="c97-serif c97-h2">Data status</h2>
-              <div className="scroll-shadow-x mt-3 overflow-x-auto" role="region" aria-label="League data status (scrollable)" tabIndex={0}>
-                <table className="min-w-full border-separate border-spacing-y-2" aria-label="Snapshot status per league">
+              <div className="scroll-shadow-x overflow-x-auto" style={{ marginTop: "var(--c97-sp-1)" }} role="region" aria-label="League data status (scrollable)" tabIndex={0}>
+                <table className="c97-table" aria-label="Snapshot status per league">
                   <thead>
-                    <tr className="text-left text-xs uppercase tracking-[0.14em] text-[var(--c97-label)]">
-                      <th scope="col" className="px-3 py-2 font-semibold">League</th>
-                      <th scope="col" className="px-3 py-2 font-semibold">Refreshed</th>
-                      <th scope="col" className="px-3 py-2 font-semibold">Fixtures</th>
-                      <th scope="col" className="hidden px-3 py-2 font-semibold sm:table-cell">Sources</th>
+                    <tr>
+                      <th scope="col">League</th>
+                      <th scope="col">Refreshed</th>
+                      <th scope="col">Fixtures</th>
+                      <th scope="col" className="hidden sm:table-cell">Sources</th>
                     </tr>
                   </thead>
                   <tbody>
                     {snapshot.leagues.map((league) => (
-                      <tr key={league.key} className="bg-[var(--c97-surface)] text-sm text-[var(--c97-ink)]">
-                        <td className="border-y border-l border-[var(--c97-rule)] px-3 py-2.5 font-semibold">
+                      <tr key={league.key}>
+                        <td className="font-semibold">
                           {league.name}
                           {league.sample ? (
-                            <span className="ml-1.5 text-3xs uppercase text-[var(--c97-ink-2)]">sample</span>
+                            <span className="text-3xs uppercase text-[var(--c97-ink-2)]" style={{ marginLeft: "var(--c97-sp-0)" }}>sample</span>
                           ) : null}
                         </td>
-                        <td className="border-y border-[var(--c97-rule)] px-3 py-2.5 text-2xs text-[var(--c97-ink-2)]">
+                        <td className="text-2xs text-[var(--c97-ink-2)]">
                           {formatAge(league.generatedAt, nowIso)}
                         </td>
-                        <td className="border-y border-[var(--c97-rule)] px-3 py-2.5 font-mono tabular-nums">
+                        <td className="font-mono">
                           {league.fixtures.length}
                         </td>
-                        <td className="hidden border-y border-r border-[var(--c97-rule)] px-3 py-2.5 text-2xs text-[var(--c97-ink-2)] sm:table-cell">
+                        <td className="hidden text-2xs text-[var(--c97-ink-2)] sm:table-cell">
                           {league.sources.fixtures} / {league.sources.odds}
                         </td>
                       </tr>
@@ -618,20 +618,22 @@ export function SettingsClient({ snapshot }: SettingsClientProps) {
                   </tbody>
                 </table>
               </div>
-              <p className="mt-2 text-2xs text-[var(--c97-ink-2)]">
-                A scheduled job is set to refresh the snapshot every six hours, but it only runs when the data API keys are configured, so check the as-of dates above. You can also refresh it with{" "}
-                <code className="font-mono">npm run update:score-pools</code>. Odds history keeps
-                every price change per game, so line movement stays visible in the match detail.
+              <p className="text-2xs text-[var(--c97-ink-2)]" style={{ marginTop: "var(--c97-sp-1)" }}>
+                The fixtures and odds come from a snapshot I set up to refresh every six hours once
+                the live data feeds are connected, and until then it stays as it was built, so the
+                Refreshed column above is where to check how current each league is. Every price
+                change per game is kept, which is what lets the match detail show how the line
+                moved.
               </p>
             </section>
 
             <section className={SECTION} aria-label="Delete pool">
               <h2 className="c97-serif c97-h2">Delete this pool</h2>
-              <p className="mt-1 text-2xs text-[var(--c97-ink-2)]">
+              <p className="text-2xs text-[var(--c97-ink-2)]" style={{ marginTop: "var(--c97-sp-0)" }}>
                 Removes the pool, its picks, rivals, flags, and hand-entered odds from this
                 browser. There is no undo.
               </p>
-              <div className="mt-2 flex gap-2">
+              <div className="flex" style={{ gap: "var(--c97-sp-1)", marginTop: "var(--c97-sp-1)" }}>
                 {!confirmDelete ? (
                   <button type="button" className={PILL_BUTTON} onClick={() => setConfirmDelete(true)}>
                     Delete pool…

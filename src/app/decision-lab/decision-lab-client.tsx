@@ -303,7 +303,7 @@ function MetricSlider({
           </span>
         </div>
       </div>
-      <p className="c97-prose" style={{ margin: 0, fontSize: "var(--c97-fs-small)", color: "var(--c97-ink-2)" }}>
+      <p id={`${inputId}-helper`} className="c97-prose" style={{ margin: 0, fontSize: "var(--c97-fs-small)", color: "var(--c97-ink-2)" }}>
         {helper}
       </p>
       <input
@@ -314,7 +314,7 @@ function MetricSlider({
         step={1}
         value={value}
         onChange={(event) => onChange(Number.parseInt(event.target.value, 10))}
-        aria-label={label}
+        aria-describedby={`${inputId}-helper`}
         className="c97-range"
       />
     </div>
@@ -507,10 +507,10 @@ function DecisionLabWorkbench({
                 onClick={handleResetToPreset}
                 disabled={!hasPresetOverride}
                 className="c97-btn-ghost"
-                style={{ marginTop: "var(--c97-sp-3)" }}
+                style={{ marginTop: "var(--c97-sp-3)", gap: "var(--c97-sp-1)" }}
               >
-                <RefreshCw size={14} aria-hidden="true" style={{ marginRight: 6, verticalAlign: "middle" }} />
-                Reset to defaults
+                <RefreshCw size={14} aria-hidden="true" />
+                Reset to preset
               </button>
 
               <div style={{ marginTop: "var(--c97-sp-4)" }}>
@@ -535,11 +535,11 @@ function DecisionLabWorkbench({
                   {copyStatus === "copied"
                     ? "Link copied"
                     : copyStatus === "error"
-                      ? "Copy failed"
+                      ? "Copy failed, so copy the address bar instead"
                       : "Copy to share. Every slider change is encoded."}
                 </p>
                 <p className="sr-only" role="status">
-                  {copyStatus === "copied" ? "Link copied" : copyStatus === "error" ? "Copy failed" : ""}
+                  {copyStatus === "copied" ? "Link copied" : copyStatus === "error" ? "Copy failed, so copy the address bar instead" : ""}
                 </p>
               </div>
             </div>

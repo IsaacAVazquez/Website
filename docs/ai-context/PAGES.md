@@ -2,7 +2,7 @@
 
 Fast route reference for the current app.
 
-**Last updated:** 2026-09-30
+**Last updated:** 2026-10-02
 
 ---
 
@@ -13,11 +13,12 @@ Fast route reference for the current app.
 | `/` | `src/app/page.tsx` | Server page -> `Catalog97Home` |
 | `/about` | `src/app/about/page.tsx` | Server page -> `Catalog97About` |
 | `/portfolio` | `src/app/portfolio/page.tsx` | Server page -> `Catalog97Portfolio` client with project search, sorting, and category filters |
-| `/portfolio/[slug]` | `src/app/portfolio/[slug]/page.tsx` | Server detail page |
+| `/portfolio/[slug]` | `src/app/portfolio/[slug]/page.tsx` | Redirect stub, `permanentRedirect` to each case study's live tool, `notFound` otherwise |
 | `/resume` | `src/app/resume/page.tsx` | Server page -> `Catalog97Resume` |
 | `/contact` | `src/app/contact/page.tsx` | Server page -> `Catalog97Contact` |
 | `/dashboards` | `src/app/dashboards/page.tsx` | Server page -> `Catalog97Dashboards` |
 | `/accessibility` | `src/app/accessibility/page.tsx` | Server page |
+| `/privacy` | `src/app/privacy/page.tsx` | Server page |
 | `/writing` | `src/app/writing/page.tsx` | Async server page -> `Catalog97Writing` client with search, sorting, filters, and topic links |
 | `/writing/[slug]` | `src/app/writing/[slug]/page.tsx` | Async server page |
 | `/writing/topics/[topic]` | `src/app/writing/topics/[topic]/page.tsx` | Async server topic hub page |

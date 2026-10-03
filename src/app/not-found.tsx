@@ -38,11 +38,12 @@ export default function NotFound() {
   return (
     <section className={`c97-band ${styles.band}`} data-c97-surface="paper">
       <div className="c97-shell">
-        <div
-          className={`c97-sheet ${styles.misprint}`}
-          data-c97-surface="ink-blue"
-          data-seam="torn"
-        >
+        <div className={styles.misprint} data-c97-surface="ink-blue">
+          <span
+            aria-hidden="true"
+            className={`c97-sheet ${styles.paper}`}
+            data-seam="torn"
+          />
           <span aria-hidden="true" className="c97-halftone c97-halftone-corner" />
           <span aria-hidden="true" className={styles.smudge} />
           <h1 className={`c97-poster ${styles.headline}`}>

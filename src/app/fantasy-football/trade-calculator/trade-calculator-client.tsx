@@ -68,7 +68,7 @@ function formatMarketDate(asOf: string | null | undefined): string | null {
 // control, so the links carry the touch floor with negative vertical margins
 // that keep the line rhythm of the surrounding sentence.
 const SCOPE_LINK_CLASS =
-  "inline-flex min-h-touch items-center -my-3 underline decoration-[var(--c97-accent)] underline-offset-4";
+  "inline-flex min-h-touch items-center -my-[var(--c97-sp-1)] underline decoration-[var(--c97-accent)] underline-offset-4";
 
 function LeagueSelect({
   label,
@@ -89,7 +89,7 @@ function LeagueSelect({
       <select
         value={value}
         onChange={(event) => onChange(Number(event.target.value))}
-        className="mt-1.5 min-h-touch w-full border border-[var(--c97-ink-2)] bg-[var(--c97-surface)] px-3 text-sm text-[var(--c97-ink)] transition-[border-color] focus:border-[var(--c97-accent)]"
+        className="min-h-touch w-full border border-[var(--c97-ink-2)] bg-[var(--c97-surface)] text-sm text-[var(--c97-ink)] transition-[border-color] focus:border-[var(--c97-accent)]" style={{ paddingInline: "var(--c97-sp-1)", marginTop: "var(--c97-sp-0)" }}
       >
         {options.map((option) => (
           <option key={option} value={option}>
@@ -111,28 +111,28 @@ function LeagueSettings({
   return (
     <aside
       aria-label="League settings"
-      className="border border-[var(--c97-rule)] bg-[var(--c97-field)] p-4 lg:sticky lg:top-0 lg:self-start"
+      className="border border-[var(--c97-rule)] bg-[var(--c97-field)] lg:sticky lg:top-0 lg:self-start" style={{ padding: "var(--c97-sp-2)" }}
     >
-      <div className="border-b border-[var(--c97-rule)] pb-3">
+      <div className="border-b border-[var(--c97-rule)]" style={{ paddingBottom: "var(--c97-sp-1)" }}>
         <h2 className="c97-serif c97-h3">
           League settings
         </h2>
-        <p className="mt-1 text-xs leading-5 text-[var(--c97-ink-2)]">
+        <p className="text-xs leading-5 text-[var(--c97-ink-2)]" style={{ marginTop: "var(--c97-sp-0)" }}>
           These settings move the starter and bench replacement lines.
         </p>
       </div>
 
-      <fieldset className="mt-4">
+      <fieldset style={{ marginTop: "var(--c97-sp-2)" }}>
         <legend className="c97-kicker">
           Scoring
         </legend>
-        <div className="mt-2 grid gap-1.5">
+        <div className="grid" style={{ marginTop: "var(--c97-sp-1)", gap: "var(--c97-sp-0)" }}>
           {(["ppr", "half_ppr", "standard"] as const).map((scoring) => (
             <label
               key={scoring}
-              className="flex min-h-touch cursor-pointer items-center gap-2 border px-3 text-sm font-semibold transition-[border-color,background-color]"
+              className="flex min-h-touch cursor-pointer items-center border text-sm font-semibold transition-[border-color,background-color]"
               style={
-                state.scoring === scoring
+                { paddingInline: "var(--c97-sp-1)", gap: "var(--c97-sp-1)", ...(state.scoring === scoring
                   ? {
                       borderColor: "var(--c97-accent)",
                       background:
@@ -141,7 +141,7 @@ function LeagueSettings({
                   : {
                       borderColor: "var(--c97-rule)",
                       background: "var(--c97-surface)",
-                    }
+                    }) }
               }
             >
               <input
@@ -158,7 +158,7 @@ function LeagueSettings({
         </div>
       </fieldset>
 
-      <div className="mt-4 grid grid-cols-2 gap-3 lg:grid-cols-1">
+      <div className="grid grid-cols-2 lg:grid-cols-1" style={{ marginTop: "var(--c97-sp-2)", gap: "var(--c97-sp-1)" }}>
         <LeagueSelect
           label="Teams"
           value={state.teams}
@@ -180,7 +180,7 @@ function LeagueSettings({
         />
       </div>
 
-      <label className="mt-4 block">
+      <label className="block" style={{ marginTop: "var(--c97-sp-2)" }}>
         <span className="c97-kicker">
           Starting lineup
         </span>
@@ -192,7 +192,7 @@ function LeagueSettings({
               lineup: event.target.value as TradeCalculatorSearchState["lineup"],
             })
           }
-          className="mt-1.5 min-h-touch w-full border border-[var(--c97-ink-2)] bg-[var(--c97-surface)] px-3 text-sm text-[var(--c97-ink)] transition-[border-color] focus:border-[var(--c97-accent)]"
+          className="min-h-touch w-full border border-[var(--c97-ink-2)] bg-[var(--c97-surface)] text-sm text-[var(--c97-ink)] transition-[border-color] focus:border-[var(--c97-accent)]" style={{ paddingInline: "var(--c97-sp-1)", marginTop: "var(--c97-sp-0)" }}
         >
           {REDRAFT_LINEUP_PRESETS.map((preset) => (
             <option key={preset.id} value={preset.id}>
@@ -202,11 +202,11 @@ function LeagueSettings({
         </select>
       </label>
 
-      <div className="mt-4 border-t border-[var(--c97-rule)] pt-3">
+      <div className="border-t border-[var(--c97-rule)]" style={{ paddingTop: "var(--c97-sp-1)", marginTop: "var(--c97-sp-2)" }}>
         <p className="c97-kicker">
           Supported format
         </p>
-        <p className="mt-1 text-xs leading-5 text-[var(--c97-ink-2)]">
+        <p className="text-xs leading-5 text-[var(--c97-ink-2)]" style={{ marginTop: "var(--c97-sp-0)" }}>
           Preseason managed redraft with one starting QB. Dynasty, picks, keepers, IDP, Superflex, and tight end premium are not modeled.
         </p>
       </div>
@@ -356,13 +356,13 @@ export function TradeCalculatorClient() {
 
   return (
     <section
-      className="c97-dash relative overflow-x-clip min-h-screen"
+      className="c97-dash relative overflow-x-clip min-h-dvh"
       aria-label="Fantasy football trade calculator"
       data-testid="fantasy-trade-calculator-shell"
       data-hydrated={isHydrated ? "true" : "false"}
     >
       <div className={SHELL_CLASS} style={{ paddingBlock: "var(--c97-sp-2)" }}>
-        <Breadcrumbs customItems={BREADCRUMBS} className="!py-0" />
+        <Breadcrumbs customItems={BREADCRUMBS} />
       </div>
 
       <section
@@ -371,7 +371,7 @@ export function TradeCalculatorClient() {
         data-seam="torn"
       >
         <div className={SHELL_CLASS} style={{ paddingBlock: "var(--c97-sp-5)" }}>
-          <div className="flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
+          <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between" style={{ gap: "var(--c97-sp-2)" }}>
             <div className="max-w-3xl">
               <h1 className="c97-poster">Build a Trade Offer</h1>
               <p className="c97-lead" style={{ marginTop: "var(--c97-sp-3)", maxInlineSize: "68ch" }}>
@@ -394,14 +394,14 @@ export function TradeCalculatorClient() {
                   {sourceFreshness} sources
                 </span>
               </p>
-              <div className="flex flex-wrap items-center gap-2" style={{ marginTop: "var(--c97-sp-2)" }}>
-                <span className="inline-flex min-h-touch items-center gap-2 font-mono text-2xs uppercase tracking-[0.1em] text-[var(--c97-ink)]">
+              <div className="flex flex-wrap items-center" style={{ gap: "var(--c97-sp-1)", marginTop: "var(--c97-sp-2)" }}>
+                <span className="inline-flex min-h-touch items-center font-mono text-2xs uppercase tracking-[0.1em] text-[var(--c97-ink)]" style={{ gap: "var(--c97-sp-1)" }}>
                   <ShieldCheck className="h-4 w-4 text-[var(--c97-accent)]" aria-hidden="true" />
                   Preseason redraft · Model v1
                 </span>
                 <Link
                   href={`/fantasy-football?position=overall&scoring=${routeState.scoring}`}
-                  className="inline-flex min-h-touch items-center border border-[var(--c97-rule)] bg-[var(--c97-surface)] px-4 text-sm font-semibold text-[var(--c97-ink)] transition-[border-color,background-color] hover:border-[var(--c97-accent)] hover:bg-[var(--c97-field)]"
+                  className="inline-flex min-h-touch items-center border border-[var(--c97-rule)] bg-[var(--c97-surface)] px-[var(--c97-sp-2)] text-sm font-semibold text-[var(--c97-ink)] transition-[border-color,background-color] hover:border-[var(--c97-accent)] hover:bg-[var(--c97-field)]"
                 >
                   View rankings
                 </Link>
@@ -412,7 +412,7 @@ export function TradeCalculatorClient() {
       </section>
 
       <section className="c97-sheet" data-c97-surface="paper" data-seam="torn">
-        <div className={`${SHELL_CLASS} space-y-5`} style={{ paddingBlock: "var(--c97-sp-3)" }}>
+        <div className={`${SHELL_CLASS} flex flex-col`} style={{ paddingBlock: "var(--c97-sp-3)", gap: "var(--c97-sp-2)" }}>
         {seasonWeek >= 1 && snapshot ? (
           <SeasonalScopeNote season={snapshot.season} week={seasonWeek}>
             {marketFreshness === "stale" ? (
@@ -450,14 +450,16 @@ export function TradeCalculatorClient() {
         {trade.persistenceStatus === "memory-only" ? (
           <div
             role="status"
-            className="border px-4 py-3 text-sm"
+            className="border text-sm"
             style={{
+              paddingInline: "var(--c97-sp-2)",
+              paddingBlock: "var(--c97-sp-1)",
               borderColor: "color-mix(in srgb, var(--c97-warning) 45%, var(--c97-rule))",
               background: "color-mix(in srgb, var(--c97-warning) 8%, var(--c97-surface))",
             }}
           >
             <p className="font-semibold text-[var(--c97-ink)]">Browser storage is unavailable.</p>
-            <p className="mt-1 text-[var(--c97-ink-2)]">
+            <p className="text-[var(--c97-ink-2)]" style={{ marginTop: "var(--c97-sp-0)" }}>
               This trade will work in the current tab, but it will not survive a reload.
             </p>
           </div>
@@ -466,10 +468,10 @@ export function TradeCalculatorClient() {
         {error ? (
           <div
             role="alert"
-            className="border border-[var(--c97-negative)] bg-[var(--c97-surface)] p-5"
+            className="border border-[var(--c97-negative)] bg-[var(--c97-surface)]" style={{ padding: "var(--c97-sp-2)" }}
           >
             <p className="font-semibold text-[var(--c97-negative)]">{error}</p>
-            <p className="mt-1 text-sm text-[var(--c97-ink-2)]">
+            <p className="text-sm text-[var(--c97-ink-2)]" style={{ marginTop: "var(--c97-sp-0)" }}>
               Retry the snapshot before adding players to the deal.
             </p>
             <button
@@ -488,10 +490,10 @@ export function TradeCalculatorClient() {
           <div
             role="status"
             aria-label="Loading the overall board"
-            className="grid items-start gap-5 lg:grid-cols-[15rem_minmax(0,1fr)_20rem]"
+            className="grid items-start lg:grid-cols-[15rem_minmax(0,1fr)_20rem]" style={{ gap: "var(--c97-sp-2)" }}
           >
             <LoadingCard className="h-[30rem]" />
-            <div className="grid min-w-0 gap-4 xl:grid-cols-2">
+            <div className="grid min-w-0 xl:grid-cols-2" style={{ gap: "var(--c97-sp-2)" }}>
               <LoadingCard className="h-[24rem]" />
               <LoadingCard className="h-[24rem]" />
             </div>
@@ -506,25 +508,25 @@ export function TradeCalculatorClient() {
                 away from the field they are typing in. */}
             <TradeVerdictStrip result={result} hasBothSides={hasBothSides} />
 
-            <div className="grid items-start gap-5 lg:grid-cols-[15rem_minmax(0,1fr)_20rem]">
+            <div className="grid items-start lg:grid-cols-[15rem_minmax(0,1fr)_20rem]" style={{ gap: "var(--c97-sp-2)" }}>
               <LeagueSettings state={routeState} onChange={updateRouteState} />
 
               <section aria-labelledby="trade-ledger-title" className="min-w-0">
-                <div className="mb-3 flex flex-wrap items-center justify-between gap-3">
+                <div className="flex flex-wrap items-center justify-between" style={{ marginBottom: "var(--c97-sp-1)", gap: "var(--c97-sp-1)" }}>
                   <div>
                     <h2 id="trade-ledger-title" className="c97-serif c97-h3">
                       Trade ledger
                     </h2>
-                    <p className="mt-1 text-sm text-[var(--c97-ink-2)]">
+                    <p className="text-sm text-[var(--c97-ink-2)]" style={{ marginTop: "var(--c97-sp-0)" }}>
                       {`${players.length} players available in ${FANTASY_SCORING_LABELS[routeState.scoring]}.`}
                     </p>
                   </div>
-                  <div className="flex items-center gap-1.5">
+                  <div className="flex items-center" style={{ gap: "var(--c97-sp-0)" }}>
                     <button
                       type="button"
                       onClick={trade.swapSides}
                       disabled={!hasBothSides}
-                      className="inline-flex min-h-touch items-center gap-2 border border-[var(--c97-rule)] bg-[var(--c97-surface)] px-3 text-sm font-semibold text-[var(--c97-ink)] transition-[border-color,background-color,color] hover:border-[var(--c97-accent)] hover:bg-[var(--c97-field)] disabled:cursor-not-allowed disabled:border-dashed disabled:border-[var(--c97-ink-2)] disabled:bg-transparent disabled:text-[var(--c97-ink-2)] disabled:hover:border-[var(--c97-ink-2)] disabled:hover:bg-transparent"
+                      className="inline-flex min-h-touch items-center border border-[var(--c97-rule)] bg-[var(--c97-surface)] text-sm font-semibold text-[var(--c97-ink)] transition-[border-color,background-color,color] hover:border-[var(--c97-accent)] hover:bg-[var(--c97-field)] disabled:cursor-not-allowed disabled:border-dashed disabled:border-[var(--c97-ink-2)] disabled:bg-transparent disabled:text-[var(--c97-ink-2)] disabled:hover:border-[var(--c97-ink-2)] disabled:hover:bg-transparent" style={{ paddingInline: "var(--c97-sp-1)", gap: "var(--c97-sp-1)" }}
                     >
                       <ArrowLeftRight className="h-4 w-4" aria-hidden="true" />
                       Swap
@@ -541,8 +543,10 @@ export function TradeCalculatorClient() {
                       }}
                       disabled={clearDisabled}
                       aria-label={resetArmed ? "Confirm clear trade" : "Clear trade"}
-                      className="inline-flex min-h-touch items-center gap-2 border border-[var(--c97-rule)] bg-[var(--c97-surface)] px-3 text-sm font-semibold transition-[border-color,background-color,color] hover:bg-[var(--c97-field)] disabled:cursor-not-allowed disabled:border-dashed disabled:border-[var(--c97-ink-2)] disabled:bg-transparent disabled:hover:bg-transparent"
+                      className="inline-flex min-h-touch items-center border border-[var(--c97-rule)] bg-[var(--c97-surface)] text-sm font-semibold transition-[border-color,background-color,color] hover:bg-[var(--c97-field)] disabled:cursor-not-allowed disabled:border-dashed disabled:border-[var(--c97-ink-2)] disabled:bg-transparent disabled:hover:bg-transparent"
                       style={{
+                        paddingInline: "var(--c97-sp-1)",
+                        gap: "var(--c97-sp-1)",
                         color: clearDisabled
                           ? "var(--c97-ink-2)"
                           : resetArmed
@@ -556,7 +560,7 @@ export function TradeCalculatorClient() {
                   </div>
                 </div>
 
-                <div className="grid min-w-0 gap-4 xl:grid-cols-2">
+                <div className="grid min-w-0 xl:grid-cols-2" style={{ gap: "var(--c97-sp-2)" }}>
                   <TradePackageFieldset
                     legend="You give"
                     description="The players leaving your roster."
@@ -581,7 +585,7 @@ export function TradeCalculatorClient() {
                   />
                 </div>
 
-                <p className="mt-3 text-xs leading-5 text-[var(--c97-ink-2)]">
+                <p className="text-xs leading-5 text-[var(--c97-ink-2)]" style={{ marginTop: "var(--c97-sp-1)" }}>
                   Up to {FANTASY_TRADE_MAX_PLAYERS_PER_SIDE} players per side. Unequal offers assume each extra player displaces a replacement-level roster spot.
                 </p>
               </section>

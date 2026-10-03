@@ -24,6 +24,7 @@ import {
   FIELD_LABEL,
   LockBadge,
   PILL_BUTTON,
+  SCORE_FIELD_STYLE,
   formatAge,
   formatKickoff,
   formatPercent,
@@ -65,11 +66,11 @@ function ScorelineHeatmap({ analysis }: { analysis: FixtureAnalysis }) {
       <table className="border-separate border-spacing-0.5" aria-label="Scoreline probabilities: home goals by away goals">
         <thead>
           <tr>
-            <th scope="col" className="p-1 text-3xs font-semibold text-[var(--c97-ink-2)]">
+            <th scope="col" className="text-3xs font-semibold text-[var(--c97-ink-2)]" style={{ padding: "var(--c97-sp-0)" }}>
               H\A
             </th>
             {Array.from({ length: size }, (_, away) => (
-              <th key={away} scope="col" className="w-7 p-1 text-center text-3xs font-semibold text-[var(--c97-ink-2)]">
+              <th key={away} scope="col" className="w-7 text-center text-3xs font-semibold text-[var(--c97-ink-2)]" style={{ padding: "var(--c97-sp-0)" }}>
                 {away}
               </th>
             ))}
@@ -78,7 +79,7 @@ function ScorelineHeatmap({ analysis }: { analysis: FixtureAnalysis }) {
         <tbody>
           {Array.from({ length: size }, (_, home) => (
             <tr key={home}>
-              <th scope="row" className="p-1 text-3xs font-semibold text-[var(--c97-ink-2)]">
+              <th scope="row" className="text-3xs font-semibold text-[var(--c97-ink-2)]" style={{ padding: "var(--c97-sp-0)" }}>
                 {home}
               </th>
               {Array.from({ length: size }, (_, away) => {
@@ -103,7 +104,7 @@ function ScorelineHeatmap({ analysis }: { analysis: FixtureAnalysis }) {
           ))}
         </tbody>
       </table>
-      <p className="mt-1 text-3xs text-[var(--c97-ink-2)]">
+      <p className="text-3xs text-[var(--c97-ink-2)]" style={{ marginTop: "var(--c97-sp-0)" }}>
         Cell numbers are percentages; blanks sit under 2%.
       </p>
     </div>
@@ -225,7 +226,8 @@ export function FixtureDetailDrawer({
   const topEp = rec ? Math.max(...rec.candidates.map((c) => c.expectedPoints)) : 0;
 
   return (
-    <div ref={dialogRef} className="fixed inset-0 z-50" role="dialog" aria-modal="true" aria-label={`${fixture.homeTeam} vs ${fixture.awayTeam} detail`}>
+    <div ref={dialogRef} className="fixed inset-0"
+      style={{ zIndex: "var(--c97-z-drawer)" }} role="dialog" aria-modal="true" aria-label={`${fixture.homeTeam} vs ${fixture.awayTeam} detail`}>
       <button
         type="button"
         aria-label="Close match detail"
@@ -235,31 +237,31 @@ export function FixtureDetailDrawer({
       />
       <aside
         data-c97-surface="paper"
-        className="absolute inset-y-0 right-0 flex w-full max-w-2xl flex-col overflow-y-auto border-l border-[var(--c97-rule)] p-5"
+        className="absolute inset-y-0 right-0 flex w-full max-w-2xl flex-col overflow-y-auto border-l border-[var(--c97-rule)]" style={{ padding: "var(--c97-sp-2)" }}
       >
-        <header className="flex items-start justify-between gap-4 border-b border-[var(--c97-rule)] pb-4">
+        <header className="flex items-start justify-between border-b border-[var(--c97-rule)]" style={{ gap: "var(--c97-sp-2)", paddingBottom: "var(--c97-sp-2)" }}>
           <div>
             <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-1)" }}>{fixture.stage ?? fixture.round ?? "Fixture"}</p>
             <h2 className="c97-serif c97-h2">
               {fixture.homeTeam} vs {fixture.awayTeam}
             </h2>
-            <p className="mt-1 text-xs text-[var(--c97-ink-2)]">
+            <p className="text-xs text-[var(--c97-ink-2)]" style={{ marginTop: "var(--c97-sp-0)" }}>
               Kickoff {formatKickoff(fixture.kickoff, pool.timezone)}
               {analysis ? <> · locks {formatKickoff(analysis.locksAt, pool.timezone)}</> : null}
               {fixture.knockout ? " · knockout" : ""}
             </p>
-            <div className="mt-1"><LockBadge locked={locked} /></div>
+            <div style={{ marginTop: "var(--c97-sp-0)" }}><LockBadge locked={locked} /></div>
           </div>
           <button ref={closeRef} type="button" onClick={onClose} className={PILL_BUTTON} aria-label="Close">
             Close
           </button>
         </header>
 
-        <div className="mt-4 space-y-4">
+        <div className="flex flex-col" style={{ rowGap: "var(--c97-sp-2)", marginTop: "var(--c97-sp-2)" }}>
           {/* My pick */}
           <section className={SECTION} aria-label="My pick">
             <h3 className={SECTION_TITLE}>My pick</h3>
-            <div className="mt-2 flex flex-wrap items-center gap-3">
+            <div className="flex flex-wrap items-center" style={{ gap: "var(--c97-sp-1)", marginTop: "var(--c97-sp-1)" }}>
               <span className="font-mono text-lg font-bold text-[var(--c97-ink)]">
                 {myPick ? formatScoreline(myPick) : "not set"}
               </span>
@@ -268,7 +270,7 @@ export function FixtureDetailDrawer({
                   Clear
                 </button>
               ) : null}
-              <div className="flex items-center gap-2">
+              <div className="flex items-center" style={{ gap: "var(--c97-sp-1)" }}>
                 <label className="sr-only" htmlFor={`pick-home-${fixture.id}`}>Home goals</label>
                 <input
                   id={`pick-home-${fixture.id}`}
@@ -278,7 +280,8 @@ export function FixtureDetailDrawer({
                   inputMode="numeric"
                   value={pickHome}
                   onChange={(event) => setPickHome(event.target.value)}
-                  className="min-h-[44px] w-16 border border-[var(--c97-rule)] bg-[var(--c97-surface)] px-2 py-1 text-center text-sm text-[var(--c97-ink)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--c97-accent)]"
+                  className="c97-field"
+                  style={SCORE_FIELD_STYLE}
                 />
                 <span className="text-[var(--c97-ink-2)]">-</span>
                 <label className="sr-only" htmlFor={`pick-away-${fixture.id}`}>Away goals</label>
@@ -290,7 +293,8 @@ export function FixtureDetailDrawer({
                   inputMode="numeric"
                   value={pickAway}
                   onChange={(event) => setPickAway(event.target.value)}
-                  className="min-h-[44px] w-16 border border-[var(--c97-rule)] bg-[var(--c97-surface)] px-2 py-1 text-center text-sm text-[var(--c97-ink)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--c97-accent)]"
+                  className="c97-field"
+                  style={SCORE_FIELD_STYLE}
                 />
                 <button type="button" className={`${PILL_BUTTON} disabled:cursor-not-allowed disabled:opacity-50`} onClick={submitPick} disabled={locked}>
                   Set
@@ -298,7 +302,7 @@ export function FixtureDetailDrawer({
               </div>
             </div>
             {pickError ? (
-              <p role="alert" className="mt-1 text-2xs font-semibold" style={{ color: "var(--c97-negative)" }}>
+              <p role="alert" className="text-2xs font-semibold" style={{ marginTop: "var(--c97-sp-0)", color: "var(--c97-negative)" }}>
                 {pickError}
               </p>
             ) : null}
@@ -307,20 +311,20 @@ export function FixtureDetailDrawer({
           {/* Recommendation */}
           {rec && analysis ? (
             <section className={SECTION} aria-label="Recommendation">
-              <div className="flex items-center justify-between gap-3">
+              <div className="flex items-center justify-between" style={{ gap: "var(--c97-sp-1)" }}>
                 <h3 className={SECTION_TITLE}>Recommendation</h3>
                 <ConfidenceChip level={rec.confidence.level} />
               </div>
-              <div className="mt-3 grid gap-2 sm:grid-cols-3">
+              <div className="grid sm:grid-cols-3" style={{ gap: "var(--c97-sp-1)", marginTop: "var(--c97-sp-1)" }}>
                 {[
                   { label: "Recommended", pick: rec.recommended },
                   { label: "Higher floor", pick: rec.safest },
                   ...(rec.differentiator ? [{ label: "Differentiator", pick: rec.differentiator }] : []),
                 ].map(({ label, pick }) => (
-                  <div key={label} className="border border-[var(--c97-rule)] bg-[var(--c97-surface)] p-3">
+                  <div key={label} className="flex flex-col border border-[var(--c97-rule)] bg-[var(--c97-surface)]" style={{ padding: "var(--c97-sp-1)" }}>
                     <p className="text-3xs font-semibold uppercase tracking-[0.12em] text-[var(--c97-ink-2)]">{label}</p>
-                    <p className="mt-1 font-mono text-xl font-bold text-[var(--c97-ink)]">{formatScoreline(pick.score)}</p>
-                    <p className="mt-1 text-2xs text-[var(--c97-ink-2)]">
+                    <p className="font-mono text-xl font-bold text-[var(--c97-ink)]" style={{ marginTop: "var(--c97-sp-0)" }}>{formatScoreline(pick.score)}</p>
+                    <p className="text-2xs text-[var(--c97-ink-2)]" style={{ marginTop: "var(--c97-sp-0)", marginBottom: "var(--c97-sp-1)" }}>
                       {formatPoints(pick.expectedPoints)} exp pts · floor {formatPercent(pick.pAnyPoints)}
                     </p>
                     <button
@@ -328,8 +332,10 @@ export function FixtureDetailDrawer({
                       className={`${PILL_BUTTON} w-full justify-center`}
                       // .c97-btn is unlayered and sets nowrap and wide padding, so the
                       // three-up column needs its own inline spacing to fit the label.
+                      // The auto top margin pins it to the card's foot, so the three
+                      // buttons share one line when a stat line wraps in one card.
                       style={{
-                        marginTop: "var(--c97-sp-1)",
+                        marginTop: "auto",
                         paddingInline: "var(--c97-sp-1)",
                         whiteSpace: "normal",
                       }}
@@ -340,8 +346,8 @@ export function FixtureDetailDrawer({
                   </div>
                 ))}
               </div>
-              <p className="mt-3 text-sm leading-relaxed text-[var(--c97-ink)]">{rec.reason}</p>
-              <p className="mt-2 text-2xs text-[var(--c97-ink-2)]">{rec.risk.explanation}</p>
+              <p className="text-sm leading-relaxed text-[var(--c97-ink)]" style={{ marginTop: "var(--c97-sp-1)" }}>{rec.reason}</p>
+              <p className="text-2xs text-[var(--c97-ink-2)]" style={{ marginTop: "var(--c97-sp-1)" }}>{rec.risk.explanation}</p>
             </section>
           ) : null}
 
@@ -349,7 +355,7 @@ export function FixtureDetailDrawer({
           <section className={SECTION} aria-label="Market">
             <h3 className={SECTION_TITLE}>The market it used</h3>
             {analysis && shownOdds ? (
-              <div className="mt-2 space-y-2 text-sm text-[var(--c97-ink)]">
+              <div className="flex flex-col text-sm text-[var(--c97-ink)]" style={{ rowGap: "var(--c97-sp-1)", marginTop: "var(--c97-sp-1)" }}>
                 <p className="font-mono tabular-nums">
                   {shownOdds.moneyline.home.toFixed(2)}
                   {shownOdds.moneyline.draw !== null ? ` / ${shownOdds.moneyline.draw.toFixed(2)}` : ""}
@@ -389,19 +395,19 @@ export function FixtureDetailDrawer({
                 ) : null}
               </div>
             ) : (
-              <p className="mt-2 text-sm text-[var(--c97-ink-2)]">
+              <p className="text-sm text-[var(--c97-ink-2)]" style={{ marginTop: "var(--c97-sp-1)" }}>
                 No odds yet for this game. Enter a moneyline below and the engine can price it.
               </p>
             )}
 
-            <details className="mt-3">
+            <details style={{ marginTop: "var(--c97-sp-1)" }}>
               <summary
                 className="min-h-touch cursor-pointer text-1xs font-semibold text-[var(--c97-ink)]"
                 style={{ paddingBlock: "var(--c97-sp-1)" }}
               >
                 {existingManual ? "Edit hand-entered odds" : "Enter odds by hand"}
               </summary>
-              <div className="mt-2 grid grid-cols-3 gap-2">
+              <div className="grid grid-cols-3" style={{ gap: "var(--c97-sp-1)", marginTop: "var(--c97-sp-1)" }}>
                 {(
                   [
                     ["home", "Home"],
@@ -440,11 +446,11 @@ export function FixtureDetailDrawer({
                 two-way market.
               </span>
               {manualError ? (
-                <p role="alert" className="mt-1 text-2xs font-semibold" style={{ color: "var(--c97-negative)" }}>
+                <p role="alert" className="text-2xs font-semibold" style={{ marginTop: "var(--c97-sp-0)", color: "var(--c97-negative)" }}>
                   {manualError}
                 </p>
               ) : null}
-              <div className="mt-2 flex gap-2">
+              <div className="flex" style={{ gap: "var(--c97-sp-1)", marginTop: "var(--c97-sp-1)" }}>
                 <button type="button" className={PILL_BUTTON} onClick={saveManualOdds}>
                   Save odds
                 </button>
@@ -465,7 +471,7 @@ export function FixtureDetailDrawer({
           {analysis ? (
             <section className={SECTION} aria-label="Scoreline model">
               <h3 className={SECTION_TITLE}>The scoreline distribution</h3>
-              <p className="mt-1 text-2xs text-[var(--c97-ink-2)]">
+              <p className="text-2xs text-[var(--c97-ink-2)]" style={{ marginTop: "var(--c97-sp-0)" }}>
                 Expected goals {analysis.distribution.lambdaHome.toFixed(2)} vs{" "}
                 {analysis.distribution.lambdaAway.toFixed(2)}, total{" "}
                 {analysis.distribution.expectedTotal.toFixed(2)}, low-score correction{" "}
@@ -475,37 +481,37 @@ export function FixtureDetailDrawer({
                   : ""}
                 .
               </p>
-              <div className="mt-3">
+              <div style={{ marginTop: "var(--c97-sp-1)" }}>
                 <ScorelineHeatmap analysis={analysis} />
               </div>
 
-              <h4 className="mt-4 text-1xs font-bold text-[var(--c97-ink)]">
+              <h4 className="text-1xs font-bold text-[var(--c97-ink)]" style={{ marginTop: "var(--c97-sp-2)" }}>
                 Expected points by candidate
               </h4>
-              <div className="scroll-shadow-x mt-2 overflow-x-auto" role="region" aria-label="Candidate expected points (scrollable)" tabIndex={0}>
-                <table className="min-w-full border-separate border-spacing-y-1" aria-label="Top candidate picks by expected points">
+              <div className="scroll-shadow-x overflow-x-auto" style={{ marginTop: "var(--c97-sp-1)" }} role="region" aria-label="Candidate expected points (scrollable)" tabIndex={0}>
+                <table className="c97-table" aria-label="Top candidate picks by expected points">
                   <thead>
-                    <tr className="text-left text-3xs uppercase tracking-[0.14em] text-[var(--c97-label)]">
-                      <th scope="col" className="px-2 py-1 font-semibold">Pick</th>
-                      <th scope="col" className="px-2 py-1 font-semibold">Exp pts</th>
-                      <th scope="col" className="px-2 py-1 font-semibold">Exact</th>
-                      <th scope="col" className="px-2 py-1 font-semibold">Floor</th>
-                      <th scope="col" className="px-2 py-1 font-semibold">Field on it</th>
-                      <th scope="col" className="px-2 py-1 font-semibold"><span className="sr-only">Use</span></th>
+                    <tr>
+                      <th scope="col">Pick</th>
+                      <th scope="col">Exp pts</th>
+                      <th scope="col">Exact</th>
+                      <th scope="col">Floor</th>
+                      <th scope="col">Field on it</th>
+                      <th scope="col"><span className="sr-only">Use</span></th>
                     </tr>
                   </thead>
                   <tbody>
                     {rec?.candidates.slice(0, 10).map((candidate) => (
-                      <tr key={formatScoreline(candidate.score)} className="text-xs text-[var(--c97-ink)]">
-                        <td className="px-2 py-1 font-mono font-bold">{formatScoreline(candidate.score)}</td>
-                        <td className="px-2 py-1"><EpMeter value={candidate.expectedPoints} max={topEp} /></td>
-                        <td className="px-2 py-1 tabular-nums">{formatPercent(candidate.pExact, 1)}</td>
-                        <td className="px-2 py-1 tabular-nums">{formatPercent(candidate.pAnyPoints)}</td>
-                        <td className="px-2 py-1 tabular-nums">{formatPercent(candidate.fieldShare)}</td>
-                        <td className="px-2 py-1">
+                      <tr key={formatScoreline(candidate.score)}>
+                        <td className="font-mono font-bold">{formatScoreline(candidate.score)}</td>
+                        <td><EpMeter value={candidate.expectedPoints} max={topEp} /></td>
+                        <td>{formatPercent(candidate.pExact, 1)}</td>
+                        <td>{formatPercent(candidate.pAnyPoints)}</td>
+                        <td>{formatPercent(candidate.fieldShare)}</td>
+                        <td>
                           <button
                             type="button"
-                            className="inline-flex min-h-[44px] items-center px-3 text-2xs font-semibold text-[var(--c97-ink)] underline decoration-[var(--c97-rule)] underline-offset-4 hover:decoration-[var(--c97-accent)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--c97-accent)]"
+                            className="inline-flex min-h-[44px] items-center text-2xs font-semibold text-[var(--c97-ink)] underline decoration-[var(--c97-rule)] underline-offset-4 hover:decoration-[var(--c97-accent)]" style={{ paddingInline: "var(--c97-sp-1)" }}
                             onClick={() => onSetPick(fixture.id, candidate.score)}
                           >
                             Use
@@ -517,7 +523,7 @@ export function FixtureDetailDrawer({
                 </table>
               </div>
               {analysis.distribution.diagnostics.notes.length > 0 || analysis.contextAudit.length > 0 ? (
-                <div className="mt-3 space-y-1">
+                <div className="flex flex-col" style={{ rowGap: "var(--c97-sp-0)", marginTop: "var(--c97-sp-1)" }}>
                   {[...analysis.distribution.diagnostics.notes, ...analysis.contextAudit].map((note) => (
                     <p key={note} className="text-2xs text-[var(--c97-ink-2)]">{note}</p>
                   ))}
@@ -529,12 +535,12 @@ export function FixtureDetailDrawer({
           {/* Context flags */}
           <section className={SECTION} aria-label="Context flags">
             <h3 className={SECTION_TITLE}>Context flags</h3>
-            <p className="mt-1 text-2xs text-[var(--c97-ink-2)]">
+            <p className="text-2xs text-[var(--c97-ink-2)]" style={{ marginTop: "var(--c97-sp-0)" }}>
               Flags shade the calibration modestly; the market already prices most context.
             </p>
-            <div className="mt-2 grid gap-2 sm:grid-cols-2">
+            <div className="grid sm:grid-cols-2" style={{ gap: "var(--c97-sp-1)", marginTop: "var(--c97-sp-1)" }}>
               {FLAG_LABELS.map(({ key, label, hint }) => (
-                <label key={key} className="flex min-h-[44px] cursor-pointer items-center gap-2 border border-[var(--c97-rule)] bg-[var(--c97-surface)] px-3 py-2">
+                <label key={key} className="flex min-h-[44px] cursor-pointer items-center border border-[var(--c97-rule)] bg-[var(--c97-surface)]" style={{ gap: "var(--c97-sp-1)", paddingInline: "var(--c97-sp-1)", paddingBlock: "var(--c97-sp-1)" }}>
                   <input
                     type="checkbox"
                     checked={flags[key] === true}
@@ -547,9 +553,9 @@ export function FixtureDetailDrawer({
               ))}
             </div>
             {analysis && analysis.suggestedFlags.length > 0 ? (
-              <div className="mt-3 space-y-2">
+              <div className="flex flex-col" style={{ rowGap: "var(--c97-sp-1)", marginTop: "var(--c97-sp-1)" }}>
                 {analysis.suggestedFlags.map((suggestion) => (
-                  <div key={suggestion.flag} className="flex flex-wrap items-center justify-between gap-2 border border-[var(--c97-rule)] bg-[var(--c97-surface)] px-3 py-2">
+                  <div key={suggestion.flag} className="flex flex-wrap items-center justify-between border border-[var(--c97-rule)] bg-[var(--c97-surface)]" style={{ gap: "var(--c97-sp-1)", paddingInline: "var(--c97-sp-1)", paddingBlock: "var(--c97-sp-1)" }}>
                     <p className="text-2xs text-[var(--c97-ink-2)]">
                       <span className="font-semibold text-[var(--c97-ink)]">Suggested from standings:</span>{" "}
                       {suggestion.reason}
@@ -571,9 +577,9 @@ export function FixtureDetailDrawer({
           {analysis && analysis.recheck.length > 0 ? (
             <section className={SECTION} aria-label="Before it locks">
               <h3 className={SECTION_TITLE}>Recheck before it locks</h3>
-              <ul className="mt-2 space-y-1.5">
+              <ul className="flex flex-col" style={{ rowGap: "var(--c97-sp-0)", marginTop: "var(--c97-sp-1)" }}>
                 {analysis.recheck.map((item) => (
-                  <li key={item} className="flex gap-2 text-2xs text-[var(--c97-ink-2)]">
+                  <li key={item} className="flex text-2xs text-[var(--c97-ink-2)]" style={{ gap: "var(--c97-sp-1)" }}>
                     <span aria-hidden="true" style={{ color: "var(--c97-warning)" }}>▲</span>
                     {item}
                   </li>
@@ -585,7 +591,7 @@ export function FixtureDetailDrawer({
           {fixture.injuryNotes.length > 0 ? (
             <section className={SECTION} aria-label="Injury notes">
               <h3 className={SECTION_TITLE}>Injury notes</h3>
-              <ul className="mt-2 space-y-1">
+              <ul className="flex flex-col" style={{ rowGap: "var(--c97-sp-0)", marginTop: "var(--c97-sp-1)" }}>
                 {fixture.injuryNotes.map((note) => (
                   <li key={note} className="text-2xs text-[var(--c97-ink-2)]">{note}</li>
                 ))}
@@ -593,7 +599,7 @@ export function FixtureDetailDrawer({
             </section>
           ) : null}
 
-          <p className="pb-4 text-3xs text-[var(--c97-ink-2)]">
+          <p className="text-3xs text-[var(--c97-ink-2)]" style={{ paddingBottom: "var(--c97-sp-2)" }}>
             Analysis as of {formatAge(analysis?.asOf ?? now, now)} from odds{" "}
             {shownOdds ? formatAge(shownOdds.fetchedAt, now) : "entered by hand"}. The model is
             anchored to the market, and it carries the market's uncertainty; treat the expected

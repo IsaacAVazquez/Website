@@ -92,7 +92,7 @@ describe("DecisionLabClient", () => {
     );
     expect(await screen.findByText("Link copied", { selector: ":not(.sr-only)" })).toBeVisible();
 
-    fireEvent.click(screen.getByRole("button", { name: /reset to defaults/i }));
+    fireEvent.click(screen.getByRole("button", { name: /reset to preset/i }));
 
     expect(mockReplace).toHaveBeenLastCalledWith("/decision-lab?preset=onboarding-refresh", {
       scroll: false,

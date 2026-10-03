@@ -4,7 +4,11 @@ import {
   getPremierLeagueSummary,
   getPremierLeagueTeamSnapshot,
 } from "@/lib/premierLeagueSnapshot";
-import { constructMetadata, generateBreadcrumbStructuredData } from "@/lib/seo";
+import {
+  constructMetadata,
+  freeApplicationOffer,
+  generateBreadcrumbStructuredData,
+} from "@/lib/seo";
 import { PremierLeagueClient } from "./premier-league-client";
 import { normalizePremierLeagueState } from "./premier-league-state";
 
@@ -62,6 +66,7 @@ export default async function PremierLeaguePage({ searchParams }: PremierLeagueP
             "Recent and upcoming fixture tracking",
             "Club form summaries backed by a checked-in snapshot",
           ],
+          offers: freeApplicationOffer,
         }}
       />
       <PremierLeagueClient

@@ -118,6 +118,7 @@ function SectorBars({ result }: { result: BeforeYouBuyResult }) {
 
 export function BeforeYouBuyClient() {
   const amountId = useId();
+  const amountErrorId = `${amountId}-error`;
   const [saved, setSaved] = useState<PortfolioHolding[] | null>(null);
   const [source, setSource] = useState<"sample" | "saved" | null>(null);
   const [symbol, setSymbol] = useState("NVDA");
@@ -253,6 +254,8 @@ export function BeforeYouBuyClient() {
                 <input
                   id={amountId}
                   aria-label="Amount in dollars"
+                  aria-invalid={!amountValid || undefined}
+                  aria-describedby={amountValid ? undefined : amountErrorId}
                   type="number"
                   inputMode="decimal"
                   min={0}
@@ -272,6 +275,11 @@ export function BeforeYouBuyClient() {
                   }}
                 />
               </span>
+              {amountValid ? null : (
+                <span id={amountErrorId} className="c97-meta" style={{ display: "block", marginTop: "var(--c97-sp-1)" }}>
+                  Enter an amount above zero.
+                </span>
+              )}
             </label>
           </div>
           <div style={{ display: "flex", flexWrap: "wrap", alignItems: "center", gap: "var(--c97-sp-3)", marginTop: "var(--c97-sp-2)" }}>
@@ -285,6 +293,7 @@ export function BeforeYouBuyClient() {
                 className="c97-btn-ghost"
                 aria-pressed={symbol === example}
                 onClick={() => setSymbol(example)}
+                style={symbol === example ? { color: "var(--c97-ink)", textDecorationThickness: "2px" } : undefined}
               >
                 {example}
               </button>

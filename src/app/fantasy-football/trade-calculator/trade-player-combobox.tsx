@@ -161,7 +161,7 @@ export function TradePlayerCombobox({
               }
             }}
             placeholder={disabled ? "Six-player limit reached" : "Search name, team, or position"}
-            className="min-h-[48px] w-full border border-[var(--c97-ink-2)] bg-[var(--c97-field)] py-2 pl-10 pr-3 text-sm text-[var(--c97-ink)] transition-[border-color,background-color] placeholder:text-[var(--c97-ink-2)] hover:border-[var(--c97-ink)] focus:border-[var(--c97-accent)] focus:bg-[var(--c97-surface)] disabled:cursor-not-allowed disabled:border-dashed disabled:border-[var(--c97-ink-2)] disabled:bg-transparent disabled:text-[var(--c97-ink-2)]"
+            className="min-h-[48px] w-full border border-[var(--c97-ink-2)] bg-[var(--c97-field)] text-sm text-[var(--c97-ink)] transition-[border-color,background-color] placeholder:text-[var(--c97-ink-2)] hover:border-[var(--c97-ink)] focus:border-[var(--c97-accent)] focus:bg-[var(--c97-surface)] disabled:cursor-not-allowed disabled:border-dashed disabled:border-[var(--c97-ink-2)] disabled:bg-transparent disabled:text-[var(--c97-ink-2)]" style={{ paddingBlock: "var(--c97-sp-1)", paddingLeft: "calc(28px + var(--c97-sp-1))", paddingRight: "var(--c97-sp-1)" }}
           />
         </span>
       </label>
@@ -185,7 +185,7 @@ export function TradePlayerCombobox({
             id={listboxId}
             role="listbox"
             aria-label={`Players for ${sideLabel}`}
-            className={results.length > 0 ? "max-h-80 overflow-y-auto py-1" : undefined}
+            className={results.length > 0 ? "max-h-80 overflow-y-auto py-[var(--c97-sp-0)]" : undefined}
           >
             {results.map((player, index) => {
               const excluded = excludedPlayerIds.has(player.id);
@@ -203,14 +203,14 @@ export function TradePlayerCombobox({
                     onMouseEnter={() => !excluded && setActiveIndex(index)}
                     onMouseDown={(event) => event.preventDefault()}
                     onClick={() => addPlayer(player)}
-                    className="flex min-h-touch w-full items-center gap-2 px-3 py-2 text-left text-sm outline-none transition-colors disabled:cursor-not-allowed disabled:text-[var(--c97-ink-2)]"
+                    className="flex min-h-touch w-full items-center text-left text-sm outline-none transition-colors disabled:cursor-not-allowed disabled:text-[var(--c97-ink-2)]"
                     style={
-                      active
+                      { paddingInline: "var(--c97-sp-1)", paddingBlock: "var(--c97-sp-1)", gap: "var(--c97-sp-1)", ...(active
                         ? {
                             background:
                               "color-mix(in srgb, var(--c97-accent) 12%, var(--c97-surface))",
                           }
-                        : undefined
+                        : undefined) }
                     }
                   >
                     <span className={FANTASY_CHIP_CLASS} style={getPositionTone(player.position)}>
@@ -226,7 +226,7 @@ export function TradePlayerCombobox({
             })}
           </ul>
           {results.length === 0 ? (
-            <p className="px-4 py-5 text-sm text-[var(--c97-ink-2)]">{emptyMessage}</p>
+            <p className="text-sm text-[var(--c97-ink-2)]" style={{ paddingInline: "var(--c97-sp-2)", paddingBlock: "var(--c97-sp-2)" }}>{emptyMessage}</p>
           ) : null}
         </div>
       ) : null}

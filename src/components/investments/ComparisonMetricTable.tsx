@@ -41,18 +41,18 @@ function compareValues(
 export function ComparisonMetricTable({ title, rows, symbolA, symbolB }: Props) {
   return (
     <TerminalPanel padding="sm">
-      <h3 className="mb-4 text-sm font-semibold text-[var(--c97-ink)]">{title}</h3>
+      <h3 className="text-sm font-semibold text-[var(--c97-ink)]" style={{ marginBottom: "var(--c97-sp-2)" }}>{title}</h3>
       <div className="overflow-x-auto" role="region" tabIndex={0} aria-label={`${title} comparison table`}>
         <table className="w-full text-sm" aria-label={`${title} comparison`}>
           <thead>
             <tr className="border-b border-[var(--c97-rule)]">
-              <th className="text-left py-2 pr-4 text-xs font-medium text-[var(--c97-label)] w-1/2">
+              <th className="text-left text-xs font-medium text-[var(--c97-label)] w-1/2" style={{ paddingBlock: "var(--c97-sp-1)", paddingRight: "var(--c97-sp-2)" }}>
                 Metric
               </th>
-              <th className="text-right py-2 px-3 text-xs font-medium text-[var(--c97-accent)] whitespace-nowrap">
+              <th className="text-right text-xs font-medium text-[var(--c97-accent)] whitespace-nowrap" style={{ paddingBlock: "var(--c97-sp-1)", paddingInline: "var(--c97-sp-1)" }}>
                 {symbolA}
               </th>
-              <th className="text-right py-2 pl-3 text-xs font-medium text-[var(--c97-warning)] whitespace-nowrap">
+              <th className="text-right text-xs font-medium text-[var(--c97-warning)] whitespace-nowrap" style={{ paddingBlock: "var(--c97-sp-1)", paddingLeft: "var(--c97-sp-1)" }}>
                 {symbolB}
               </th>
             </tr>
@@ -62,10 +62,10 @@ export function ComparisonMetricTable({ title, rows, symbolA, symbolB }: Props) 
               const winner = compareValues(row.valueA, row.valueB, row.higherIsBetter);
               return (
                 <tr key={i} className="border-b border-[var(--c97-rule)] last:border-0">
-                  <td className="py-2 pr-4 text-[var(--c97-ink-2)]">{row.label}</td>
-                  <td className="py-2 px-3 text-right">
+                  <td className="text-[var(--c97-ink-2)]" style={{ paddingBlock: "var(--c97-sp-1)", paddingRight: "var(--c97-sp-2)" }}>{row.label}</td>
+                  <td className="text-right" style={{ paddingBlock: "var(--c97-sp-1)", paddingInline: "var(--c97-sp-1)" }}>
                     {winner === "a" ? (
-                      <span className="inline-flex items-center justify-end gap-1 font-semibold text-[var(--c97-positive)]">
+                      <span className="inline-flex items-center justify-end font-semibold text-[var(--c97-positive)]" style={{ gap: "var(--c97-sp-0)" }}>
                         {formatValue(row.valueA)}
                         <TrendingUp size={13} aria-hidden="true" />
                         <span className="sr-only">(better)</span>
@@ -74,9 +74,9 @@ export function ComparisonMetricTable({ title, rows, symbolA, symbolB }: Props) 
                       <span className="text-[var(--c97-ink-2)]">{formatValue(row.valueA)}</span>
                     )}
                   </td>
-                  <td className="py-2 pl-3 text-right">
+                  <td className="text-right" style={{ paddingBlock: "var(--c97-sp-1)", paddingLeft: "var(--c97-sp-1)" }}>
                     {winner === "b" ? (
-                      <span className="inline-flex items-center justify-end gap-1 font-semibold text-[var(--c97-positive)]">
+                      <span className="inline-flex items-center justify-end font-semibold text-[var(--c97-positive)]" style={{ gap: "var(--c97-sp-0)" }}>
                         {formatValue(row.valueB)}
                         <TrendingUp size={13} aria-hidden="true" />
                         <span className="sr-only">(better)</span>

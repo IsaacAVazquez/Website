@@ -3,9 +3,9 @@
 import React from "react";
 import type {
   EnhancedHolding,
+  PortfolioSnapshot,
   PortfolioSummary as PortfolioSummaryType,
 } from "@/types/investment";
-import type { PortfolioSnapshot } from "./PortfolioPerformanceChart";
 import { PortfolioHeroCard } from "./PortfolioHeroCard";
 import { PortfolioStatsGrid } from "./PortfolioStatsGrid";
 
@@ -46,7 +46,7 @@ export function PortfolioSummary({
               : "Cost basis";
 
   return (
-    <div className="space-y-5">
+    <div className="flex flex-col" style={{ rowGap: "var(--c97-sp-2)" }}>
       <PortfolioHeroCard
         summary={summary}
         snapshots={snapshots}

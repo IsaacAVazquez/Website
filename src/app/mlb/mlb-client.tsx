@@ -42,7 +42,7 @@ import { MlbScoreboard } from "./MlbScoreboard";
 import "./mlb.css";
 import { useRouteSync } from "@/hooks/useRouteSync";
 import { useCachedSnapshot } from "@/hooks/useCachedSnapshot";
-import { formatFixed } from "@/components/football/fixtureFormat";
+import { formatFixed, formatRank } from "@/components/football/fixtureFormat";
 import { groupBy } from "@/lib/utils";
 
 interface MlbClientProps {
@@ -289,7 +289,7 @@ export function MlbClient({ initialState, summary, initialTeamSnapshot }: MlbCli
 
       <section className="c97-band c97-sheet" data-c97-surface="paper" data-seam="torn">
         <div className="c97-shell">
-          <h2 className="c97-poster-sm mb-5">Standings</h2>
+          <h2 className="c97-poster-sm" style={{ marginBottom: "var(--c97-sp-2)" }}>Standings</h2>
 
           <div className="c97-segmented" role="group" aria-label="Standings view">
             {viewOptions.map((option) => (
@@ -328,9 +328,9 @@ export function MlbClient({ initialState, summary, initialTeamSnapshot }: MlbCli
             </p>
           )}
 
-          <div className="mt-6 grid gap-8 xl:grid-cols-[minmax(0,1.7fr)_minmax(300px,0.92fr)]">
+          <div className="grid xl:grid-cols-[minmax(0,1.7fr)_minmax(300px,0.92fr)]" style={{ marginTop: "var(--c97-sp-3)", gap: "var(--c97-sp-3)" }}>
             <div
-              className="space-y-6 overflow-x-auto"
+              className="flex flex-col overflow-x-auto" style={{ rowGap: "var(--c97-sp-3)" }}
               role="region"
               aria-label="MLB standings (scrollable)"
               tabIndex={0}
@@ -362,7 +362,7 @@ export function MlbClient({ initialState, summary, initialTeamSnapshot }: MlbCli
                         return (
                           <tr key={row.id} data-selected={isSelected || undefined}>
                             <td>
-                              <div className="flex items-center gap-2">
+                              <div className="flex items-center" style={{ gap: "var(--c97-sp-1)" }}>
                                 <span
                                   className="c97-mlb-zone-dot"
                                   style={{ backgroundColor: getZoneDotColor(zone) }}
@@ -379,8 +379,8 @@ export function MlbClient({ initialState, summary, initialTeamSnapshot }: MlbCli
                                 onClick={() => handleTeamChange(row.id)}
                                 aria-pressed={isSelected}
                                 aria-label={`Show ${row.name} details`}
-                                className="flex min-h-[44px] w-full items-center gap-2 text-left"
-                                style={{ background: "none", border: 0, padding: 0 }}
+                                className="flex min-h-[44px] w-full items-center text-left"
+                                style={{ gap: "var(--c97-sp-1)", background: "none", border: 0, padding: 0 }}
                               >
                                 <CrestAvatar
                                   crest={logoByTeamId.get(row.id) ?? null}
@@ -411,7 +411,7 @@ export function MlbClient({ initialState, summary, initialTeamSnapshot }: MlbCli
               <div className="c97-panel" aria-live="polite" data-testid="mlb-selected-team">
                 {selectedRow ? (
                   <>
-                    <div className="flex items-start gap-3">
+                    <div className="flex items-start" style={{ gap: "var(--c97-sp-1)" }}>
                       <CrestAvatar
                         crest={logoByTeamId.get(selectedRow.id) ?? null}
                         name={selectedRow.name}
@@ -421,7 +421,7 @@ export function MlbClient({ initialState, summary, initialTeamSnapshot }: MlbCli
                         <h3 className="c97-serif truncate" style={{ fontSize: "var(--c97-fs-h3)" }}>
                           {selectedRow.name}
                         </h3>
-                        <div className="mt-2 flex flex-wrap gap-2">
+                        <div className="flex flex-wrap" style={{ marginTop: "var(--c97-sp-1)", gap: "var(--c97-sp-1)" }}>
                           <span className="c97-chip">
                             {selectedRow.division || `${selectedRow.league} club`}
                           </span>
@@ -435,8 +435,8 @@ export function MlbClient({ initialState, summary, initialTeamSnapshot }: MlbCli
                     </div>
 
                     <dl
-                      className="mt-4 grid grid-cols-2 gap-x-4 gap-y-2"
-                      style={{ borderTop: "1px solid var(--c97-rule)", paddingTop: "var(--c97-sp-3)" }}
+                      className="grid grid-cols-2"
+                      style={{ marginTop: "var(--c97-sp-2)", columnGap: "var(--c97-sp-2)", rowGap: "var(--c97-sp-1)", borderTop: "1px solid var(--c97-rule)", paddingTop: "var(--c97-sp-3)" }}
                     >
                       {(
                         [
@@ -444,11 +444,11 @@ export function MlbClient({ initialState, summary, initialTeamSnapshot }: MlbCli
                           ["GB", formatGamesBack(selectedRow.gamesBack)],
                           ["Run diff", formatRunDiff(selectedRow.runDifferential)],
                           ["L10", selectedRow.last10],
-                          ["Offense", `#${offenseRankByTeam.get(selectedRow.id) ?? "-"}`],
-                          ["Defense", `#${defenseRankByTeam.get(selectedRow.id) ?? "-"}`],
+                          ["Offense", formatRank(offenseRankByTeam.get(selectedRow.id))],
+                          ["Defense", formatRank(defenseRankByTeam.get(selectedRow.id))],
                         ] as const
                       ).map(([label, value]) => (
-                        <div key={label} className="flex items-baseline justify-between gap-2">
+                        <div key={label} className="flex items-baseline justify-between" style={{ gap: "var(--c97-sp-1)" }}>
                           <dt className="c97-kicker">{label}</dt>
                           <dd className="c97-mono mb-0" style={{ fontWeight: 600 }}>{value}</dd>
                         </div>
@@ -456,9 +456,9 @@ export function MlbClient({ initialState, summary, initialTeamSnapshot }: MlbCli
                     </dl>
 
                     {(teamSnapshot?.form?.sequence?.length ?? 0) > 0 && (
-                      <div className="mt-4" style={{ borderTop: "1px solid var(--c97-rule)", paddingTop: "var(--c97-sp-3)" }}>
+                      <div style={{ marginTop: "var(--c97-sp-2)", borderTop: "1px solid var(--c97-rule)", paddingTop: "var(--c97-sp-3)" }}>
                         <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-1)" }}>Last 5</p>
-                        <div className="flex gap-1.5">
+                        <div className="flex" style={{ gap: "var(--c97-sp-0)" }}>
                           {(teamSnapshot?.form.sequence ?? []).slice(-5).map((result, idx) => (
                             <TeamResultPill key={idx} result={result} />
                           ))}
@@ -516,11 +516,11 @@ export function MlbClient({ initialState, summary, initialTeamSnapshot }: MlbCli
             id="mlb-detail-panel"
             role="tabpanel"
             aria-labelledby={`mlb-detail-tab-${activeDetailTab}`}
-            className="mt-6"
+            style={{ marginTop: "var(--c97-sp-3)" }}
           >
             {activeDetailTab === "team" && selectedRow && (
-              <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
-                <div className="space-y-5">
+              <div className="grid md:grid-cols-2 xl:grid-cols-3" style={{ gap: "var(--c97-sp-3)" }}>
+                <div className="flex flex-col" style={{ rowGap: "var(--c97-sp-2)" }}>
                   <div className="c97-panel">
                     <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-1)" }}>Pressure points</p>
                     <ul className="c97-list">
@@ -552,7 +552,7 @@ export function MlbClient({ initialState, summary, initialTeamSnapshot }: MlbCli
                 {(teamSnapshot?.recentGames.length ?? 0) > 0 && (
                   <div>
                     <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-2)" }}>Recent results</p>
-                    <div className="space-y-2">
+                    <div className="flex flex-col" style={{ rowGap: "var(--c97-sp-1)" }}>
                       {(teamSnapshot?.recentGames ?? []).slice(0, 3).map((game) => (
                         <FixtureCard
                           key={game.id}
@@ -568,7 +568,7 @@ export function MlbClient({ initialState, summary, initialTeamSnapshot }: MlbCli
                 {(teamSnapshot?.upcomingGames.length ?? 0) > 0 && (
                   <div>
                     <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-2)" }}>Upcoming games</p>
-                    <div className="space-y-2">
+                    <div className="flex flex-col" style={{ rowGap: "var(--c97-sp-1)" }}>
                       {(teamSnapshot?.upcomingGames ?? []).slice(0, 3).map((game) => (
                         <FixtureCard
                           key={game.id}
@@ -584,12 +584,12 @@ export function MlbClient({ initialState, summary, initialTeamSnapshot }: MlbCli
             )}
 
             {activeDetailTab === "games" && (
-              <div className="grid gap-6 md:grid-cols-2">
+              <div className="grid md:grid-cols-2" style={{ gap: "var(--c97-sp-3)" }}>
                 {summary.recentGames.length > 0 && (
                   <div>
                     <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-1)" }}>Recent slate</p>
                     <h3 className="c97-serif" style={{ marginBottom: "var(--c97-sp-1)", fontSize: "var(--c97-fs-h3)" }}>Latest results</h3>
-                    <div className="space-y-3">
+                    <div className="flex flex-col" style={{ rowGap: "var(--c97-sp-1)" }}>
                       {summary.recentGames.map((game) => (
                         <FixtureCard
                           key={game.id}
@@ -605,7 +605,7 @@ export function MlbClient({ initialState, summary, initialTeamSnapshot }: MlbCli
                   <div>
                     <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-1)" }}>Next up</p>
                     <h3 className="c97-serif" style={{ marginBottom: "var(--c97-sp-1)", fontSize: "var(--c97-fs-h3)" }}>Upcoming games</h3>
-                    <div className="space-y-3">
+                    <div className="flex flex-col" style={{ rowGap: "var(--c97-sp-1)" }}>
                       {summary.upcomingGames.map((game) => (
                         <FixtureCard
                           key={game.id}
@@ -662,28 +662,30 @@ function LeagueLeaders({
   sourceUrl: string;
 }) {
   const groups: Array<{
+    side: "Hitting" | "Pitching";
     title: string;
     statLabel: string;
     leaders: MlbLeader[];
   }> = [
-    { title: "Home runs", statLabel: "HR", leaders: hitting.homeRuns },
-    { title: "RBIs", statLabel: "RBI", leaders: hitting.runsBattedIn },
-    { title: "Batting average", statLabel: "AVG", leaders: hitting.battingAverage },
-    { title: "ERA", statLabel: "ERA", leaders: pitching.earnedRunAverage },
-    { title: "Wins", statLabel: "W", leaders: pitching.wins },
-    { title: "Strikeouts", statLabel: "K", leaders: pitching.strikeouts },
+    { side: "Hitting", title: "Home runs", statLabel: "HR", leaders: hitting.homeRuns },
+    { side: "Hitting", title: "RBIs", statLabel: "RBI", leaders: hitting.runsBattedIn },
+    { side: "Hitting", title: "Batting average", statLabel: "AVG", leaders: hitting.battingAverage },
+    { side: "Pitching", title: "ERA", statLabel: "ERA", leaders: pitching.earnedRunAverage },
+    { side: "Pitching", title: "Wins", statLabel: "W", leaders: pitching.wins },
+    { side: "Pitching", title: "Strikeouts", statLabel: "K", leaders: pitching.strikeouts },
   ];
 
   const populated = groups.filter((group) => group.leaders.length > 0);
 
   if (populated.length === 0) {
     return (
-      <div className="flex items-start justify-between gap-3">
+      <div className="flex items-start justify-between" style={{ gap: "var(--c97-sp-1)" }}>
         <p className="c97-prose">
           League leaders will appear here once the next snapshot is published.
         </p>
         <a href={sourceUrl} target="_blank" rel="noreferrer" className="c97-btn-ghost">
           Source
+          <span className="sr-only"> MLB league leaders (opens in a new tab)</span>
           <ExternalLink className="h-4 w-4" />
         </a>
       </div>
@@ -691,17 +693,18 @@ function LeagueLeaders({
   }
 
   return (
-    <div className="space-y-4">
-      <div className="flex flex-wrap items-center justify-end gap-3">
+    <div className="flex flex-col" style={{ rowGap: "var(--c97-sp-2)" }}>
+      <div className="flex flex-wrap items-center justify-end" style={{ gap: "var(--c97-sp-1)" }}>
         <a href={sourceUrl} target="_blank" rel="noreferrer" className="c97-btn-ghost">
           Official
+          <span className="sr-only"> MLB league leaders (opens in a new tab)</span>
           <ExternalLink className="h-4 w-4" />
         </a>
       </div>
-      <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+      <div className="grid md:grid-cols-2 xl:grid-cols-3" style={{ gap: "var(--c97-sp-3)" }}>
         {populated.map((group) => (
           <div key={group.title}>
-            <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-1)" }}>Leaderboard</p>
+            <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-1)" }}>{group.side}</p>
             <h3 className="c97-serif" style={{ marginBottom: "var(--c97-sp-2)", fontSize: "var(--c97-fs-h3)" }}>{group.title}</h3>
             <LeaderList
               leaders={leadersToEntries(group.leaders, group.statLabel === "AVG" || group.statLabel === "ERA" ? 3 : 0)}
@@ -752,13 +755,21 @@ function getZoneDotColor(zone: MlbZone): CSSProperties["backgroundColor"] {
   }
 }
 
+const ORDINAL_RULES = new Intl.PluralRules("en-US", { type: "ordinal" });
+const ORDINAL_SUFFIX: Partial<Record<Intl.LDMLPluralRule, string>> = { one: "st", two: "nd", few: "rd" };
+
+/** 2 → "2nd", so a standing reads as a place rather than a bare count. */
+function ordinal(n: number): string {
+  return `${n}${ORDINAL_SUFFIX[ORDINAL_RULES.select(n)] ?? "th"}`;
+}
+
 function getPressurePoints(row: MlbStandingsRow): string[] {
   const points: string[] = [];
   if (row.divisionRank === 1) {
     points.push(`Lead the ${row.division} with a ${formatRecord(row)} record.`);
   } else {
     points.push(
-      `${row.divisionRank} in the ${row.division || `${row.league}`}, ${
+      `${ordinal(row.divisionRank)} in the ${row.division || `${row.league}`}, ${
         row.gamesBack > 0 ? `${row.gamesBack.toFixed(1)} games back of the leader.` : "tied at the top of the division."
       }`
     );
@@ -767,7 +778,7 @@ function getPressurePoints(row: MlbStandingsRow): string[] {
     points.push(
       row.wildCardRank <= 3
         ? `Holding a ${row.league} wild card slot at #${row.wildCardRank}.`
-        : `${row.wildCardRank} in the ${row.league} wild card chase${
+        : `${ordinal(row.wildCardRank)} in the ${row.league} wild card chase${
             row.wildCardGamesBack && row.wildCardGamesBack > 0
               ? `, ${row.wildCardGamesBack.toFixed(1)} games out.`
               : "."

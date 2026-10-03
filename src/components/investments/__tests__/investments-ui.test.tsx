@@ -274,7 +274,7 @@ describe("investments UI", () => {
     });
 
     expect(onChange).not.toHaveBeenCalled();
-    expect(container.textContent).toContain("This workspace currently supports the curated research set only.");
+    expect(container.textContent).toContain("My data covers a curated set of tickers only");
   });
 
   it("blocks adding holdings that cannot receive market quotes", async () => {
@@ -311,7 +311,7 @@ describe("investments UI", () => {
 
     await act(async () => {
       const button = Array.from(container.querySelectorAll("button")).find((item) =>
-        item.textContent?.includes("Add Position")
+        item.textContent?.includes("Add position")
       ) as HTMLButtonElement | undefined;
       button?.click();
     });

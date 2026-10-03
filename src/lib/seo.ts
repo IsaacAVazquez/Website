@@ -61,6 +61,12 @@ export const absoluteUrl = (path?: string) => {
 export const personCanonicalUrl = absoluteUrl("/about");
 export const personSchemaId = `${personCanonicalUrl}#person`;
 
+export const freeApplicationOffer = {
+  "@type": "Offer" as const,
+  price: "0",
+  priceCurrency: "USD",
+};
+
 function truncateMetadataText(
   value: string,
   maxLength: number,

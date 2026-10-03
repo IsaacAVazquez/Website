@@ -1,7 +1,11 @@
 import { StructuredData } from "@/components/StructuredData";
 import { golfSnapshot } from "@/data/golfSnapshot";
 import { getGolfPlayerSnapshot, getGolfSummary } from "@/lib/golfSnapshot";
-import { constructMetadata, generateBreadcrumbStructuredData } from "@/lib/seo";
+import {
+  constructMetadata,
+  freeApplicationOffer,
+  generateBreadcrumbStructuredData,
+} from "@/lib/seo";
 import { GolfClient } from "./golf-client";
 import { normalizeGolfState } from "./golf-state";
 
@@ -61,6 +65,7 @@ export default async function GolfPage({ searchParams }: GolfPageProps) {
             "Tournament context for course, dates, field size, and cut line",
             "Local snapshot rendering without a live third-party runtime dependency",
           ],
+          offers: freeApplicationOffer,
           dateModified: golfSnapshot.summary.tournament?.generatedAt ?? "",
         }}
       />

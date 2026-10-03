@@ -52,7 +52,7 @@ import {
  * prints as a dashed ink-2 outline instead of a faded ink fill.
  */
 const SOLID_BUTTON_CLASS =
-  "inline-flex min-h-touch items-center justify-center border border-[var(--c97-ink)] bg-[var(--c97-ink)] px-4 font-mono text-2xs uppercase tracking-[0.08em] text-[var(--c97-surface)] hover:bg-[var(--c97-ink-2)] disabled:cursor-not-allowed disabled:border-dashed disabled:border-[var(--c97-ink-2)] disabled:bg-transparent disabled:text-[var(--c97-ink-2)]";
+  "inline-flex min-h-touch items-center justify-center border border-[var(--c97-ink)] bg-[var(--c97-ink)] px-[var(--c97-sp-2)] font-mono text-2xs uppercase tracking-[0.08em] text-[var(--c97-surface)] hover:bg-[var(--c97-ink-2)] disabled:cursor-not-allowed disabled:border-dashed disabled:border-[var(--c97-ink-2)] disabled:bg-transparent disabled:text-[var(--c97-ink-2)]";
 
 const WARNING_CHIP_TONE: CSSProperties = {
   background: "color-mix(in srgb, var(--c97-warning) 18%, var(--c97-surface))",
@@ -221,13 +221,13 @@ function SegmentedButtons<Value extends string>({
             type="button"
             aria-pressed={active}
             onClick={() => onSelect(option.value)}
-            className={`min-h-touch flex-1 px-2.5 font-mono text-2xs uppercase tracking-[0.06em] ${
+            className={`min-h-touch flex-1 font-mono text-2xs uppercase tracking-[0.06em] ${
               active ? "" : "hover:bg-[var(--c97-overlay)]"
             }`}
             style={
-              active
+              { paddingInline: "var(--c97-sp-1)", ...(active
                 ? { background: "var(--c97-ink)", color: "var(--c97-surface)" }
-                : { color: "var(--c97-ink)" }
+                : { color: "var(--c97-ink)" }) }
             }
           >
             {option.label}
@@ -738,12 +738,12 @@ export function MockDraftClient() {
   ]);
 
   const footerLinks = (
-    <span className="inline-flex gap-4">
+    <span className="inline-flex" style={{ gap: "var(--c97-sp-2)" }}>
       <Link href="/fantasy-football" className="c97-link inline-flex min-h-touch items-center text-sm font-semibold">
-        Rankings board <span aria-hidden="true">↗</span>
+        Rankings board <span className="c97-arrow-out" aria-hidden="true">↗</span>
       </Link>
       <Link href="/fantasy-football/draft-tracker" className="c97-link inline-flex min-h-touch items-center text-sm font-semibold">
-        Draft tracker <span aria-hidden="true">↗</span>
+        Draft tracker <span className="c97-arrow-out" aria-hidden="true">↗</span>
       </Link>
     </span>
   );
@@ -820,7 +820,7 @@ export function MockDraftClient() {
 
   return (
     <section
-      className="c97-dash relative overflow-x-clip min-h-screen"
+      className="c97-dash relative overflow-x-clip min-h-dvh"
       aria-label="Fantasy football mock draft"
       data-testid="fantasy-mock-draft-shell"
     >
@@ -833,8 +833,8 @@ export function MockDraftClient() {
           <p className="c97-meta" style={{ marginTop: "var(--c97-sp-2)" }}>{kicker}</p>
           <div
             data-c97-surface="paper"
-            className="c97-offset flex flex-wrap gap-1.5"
-            style={{ padding: "var(--c97-sp-3)", marginTop: "var(--c97-sp-4)" }}
+            className="c97-offset flex flex-wrap"
+            style={{ gap: "var(--c97-sp-0)", padding: "var(--c97-sp-3)", marginTop: "var(--c97-sp-4)" }}
           >
             {headerChips.map((chip) => (
               <span
@@ -861,14 +861,14 @@ export function MockDraftClient() {
 
       {showScopeNote ? (
         <div className="c97-sheet" data-c97-surface="paper" data-seam="torn">
-          <div className={`${SHELL_CLASS} pb-4 pt-4`}>
+          <div className={`${SHELL_CLASS}`} style={{ paddingTop: "var(--c97-sp-2)", paddingBottom: "var(--c97-sp-2)" }}>
             <SeasonalScopeNote season={metadata?.season ?? 0} week={seasonalWeek}>
               The room drafts off the published preseason consensus board and the mock-draft ADP
               that goes with it, so rehearsing a draft here in November rehearses August. I left it
               running because the practice is still practice, and the room pauses simulated picks
               if the published board goes stale. Ranks that still move are on the{" "}
               <Link href="/fantasy-football/weekly" className="underline decoration-[var(--c97-accent)] underline-offset-4">weekly board</Link>.
-              <span className="mt-1.5 block font-mono text-2xs uppercase tracking-[0.08em]">
+              <span className="block font-mono text-2xs uppercase tracking-[0.08em]" style={{ marginTop: "var(--c97-sp-0)" }}>
                 {boardReady
                   ? `Board dated ${formatStampDate(boardUpdatedAt)} · ${adpStampLabel}`
                   : "Board and ADP dates arrive with the board"}
@@ -880,14 +880,14 @@ export function MockDraftClient() {
 
       {showSetup && (
         <div className="c97-sheet" data-c97-surface="paper" data-seam={showScopeNote ? undefined : "torn"}>
-        <div className="c97-shell c97-frame pb-12 pt-1" style={{ maxWidth: 700 }}>
+        <div className="c97-shell c97-frame" style={{ paddingTop: "var(--c97-sp-0)", paddingBottom: "var(--c97-sp-5)", maxWidth: 700 }}>
           <div
             className="overflow-hidden border"
             style={{ borderColor: "var(--c97-rule)", background: "var(--c97-field)" }}
           >
             <div
-              className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-2 border-b px-4 py-3.5"
-              style={{ borderColor: "var(--c97-rule)" }}
+              className="flex flex-wrap items-baseline justify-between border-b"
+              style={{ paddingInline: "var(--c97-sp-2)", paddingBlock: "var(--c97-sp-2)", columnGap: "var(--c97-sp-2)", rowGap: "var(--c97-sp-1)", borderColor: "var(--c97-rule)" }}
             >
               <div className="min-w-0">
                 <p className={`m-0 ${MONO_LABEL_CLASS}`} style={{ color: "var(--c97-ink-2)" }}>
@@ -903,16 +903,16 @@ export function MockDraftClient() {
                   onClick={() => setRoomSetupOpen(false)}
                   className={PILL_BUTTON_CLASS}
                 >
-                  Back to room <span aria-hidden="true">→</span>
+                  Back to room <span className="c97-arrow" aria-hidden="true">→</span>
                 </button>
               )}
             </div>
 
             <div
-              className="grid gap-x-4 gap-y-3.5 px-4 py-4"
-              style={{ gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 210px), 1fr))" }}
+              className="grid"
+              style={{ paddingInline: "var(--c97-sp-2)", paddingBlock: "var(--c97-sp-2)", columnGap: "var(--c97-sp-2)", rowGap: "var(--c97-sp-2)", gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 210px), 1fr))" }}
             >
-              <label className="grid content-start gap-1.5">
+              <label className="grid content-start" style={{ gap: "var(--c97-sp-0)" }}>
                 <span className={MONO_LABEL_CLASS} style={{ color: "var(--c97-ink-2)" }}>
                   Teams
                 </span>
@@ -926,8 +926,9 @@ export function MockDraftClient() {
                       slot: form.slot === 0 ? 0 : Math.min(form.slot, totalTeams),
                     }));
                   }}
-                  className="min-h-touch border px-2.5 font-mono text-xs"
+                  className="min-h-touch border font-mono text-xs"
                   style={{
+                    paddingInline: "var(--c97-sp-1)",
                     borderColor: "var(--c97-rule)",
                     background: "var(--c97-surface)",
                     color: "var(--c97-ink)",
@@ -941,7 +942,7 @@ export function MockDraftClient() {
                 </select>
               </label>
 
-              <label className="grid content-start gap-1.5">
+              <label className="grid content-start" style={{ gap: "var(--c97-sp-0)" }}>
                 <span className={MONO_LABEL_CLASS} style={{ color: "var(--c97-ink-2)" }}>
                   Your slot
                 </span>
@@ -950,8 +951,9 @@ export function MockDraftClient() {
                   onChange={(event) =>
                     setSetupForm((form) => ({ ...form, slot: Number(event.target.value) }))
                   }
-                  className="min-h-touch border px-2.5 font-mono text-xs"
+                  className="min-h-touch border font-mono text-xs"
                   style={{
+                    paddingInline: "var(--c97-sp-1)",
                     borderColor: "var(--c97-rule)",
                     background: "var(--c97-surface)",
                     color: "var(--c97-ink)",
@@ -968,7 +970,7 @@ export function MockDraftClient() {
                 </select>
               </label>
 
-              <label className="grid content-start gap-1.5">
+              <label className="grid content-start" style={{ gap: "var(--c97-sp-0)" }}>
                 <span className={MONO_LABEL_CLASS} style={{ color: "var(--c97-ink-2)" }}>
                   Rounds · early rep
                 </span>
@@ -977,8 +979,9 @@ export function MockDraftClient() {
                   onChange={(event) =>
                     setSetupForm((form) => ({ ...form, rounds: Number(event.target.value) }))
                   }
-                  className="min-h-touch border px-2.5 font-mono text-xs"
+                  className="min-h-touch border font-mono text-xs"
                   style={{
+                    paddingInline: "var(--c97-sp-1)",
                     borderColor: "var(--c97-rule)",
                     background: "var(--c97-surface)",
                     color: "var(--c97-ink)",
@@ -992,7 +995,7 @@ export function MockDraftClient() {
                 </select>
               </label>
 
-              <div className="grid content-start gap-1.5">
+              <div className="grid content-start" style={{ gap: "var(--c97-sp-0)" }}>
                 <span id={scoringLabelId} className={MONO_LABEL_CLASS} style={{ color: "var(--c97-ink-2)" }}>
                   Scoring
                 </span>
@@ -1007,7 +1010,7 @@ export function MockDraftClient() {
                 />
               </div>
 
-              <div className="grid content-start gap-1.5">
+              <div className="grid content-start" style={{ gap: "var(--c97-sp-0)" }}>
                 <span id={orderLabelId} className={MONO_LABEL_CLASS} style={{ color: "var(--c97-ink-2)" }}>
                   Draft order
                 </span>
@@ -1019,7 +1022,7 @@ export function MockDraftClient() {
                 />
               </div>
 
-              <div className="grid content-start gap-1.5">
+              <div className="grid content-start" style={{ gap: "var(--c97-sp-0)" }}>
                 <span id={temperLabelId} className={MONO_LABEL_CLASS} style={{ color: "var(--c97-ink-2)" }}>
                   Room temper
                 </span>
@@ -1035,13 +1038,13 @@ export function MockDraftClient() {
               </div>
             </div>
 
-            <div className="px-4 pb-4">
-              <p className={`m-0 mb-2 ${MONO_LABEL_CLASS}`} style={{ color: "var(--c97-ink-2)" }}>
+            <div style={{ paddingInline: "var(--c97-sp-2)", paddingBottom: "var(--c97-sp-2)" }}>
+              <p className={`m-0 ${MONO_LABEL_CLASS}`} style={{ marginBottom: "var(--c97-sp-1)", color: "var(--c97-ink-2)" }}>
                 Starting lineup
               </p>
               <div
-                className="grid gap-2"
-                style={{ gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 190px), 1fr))" }}
+                className="grid"
+                style={{ gap: "var(--c97-sp-1)", gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 190px), 1fr))" }}
               >
                 {REDRAFT_LINEUP_PRESETS.map((preset) => {
                   const active = sameRedraftLineup(preset.lineup, setupForm.lineup);
@@ -1053,11 +1056,11 @@ export function MockDraftClient() {
                       onClick={() =>
                         setSetupForm((form) => ({ ...form, lineup: { ...preset.lineup } }))
                       }
-                      className={`min-h-[56px] border px-3 py-2 text-left ${
+                      className={`min-h-[56px] border text-left ${
                         active ? "" : "bg-[var(--c97-surface)] hover:bg-[var(--c97-overlay)]"
                       }`}
                       style={
-                        active
+                        { paddingInline: "var(--c97-sp-1)", paddingBlock: "var(--c97-sp-1)", ...(active
                           ? {
                               borderColor: "var(--c97-ink)",
                               background: "var(--c97-ink)",
@@ -1066,7 +1069,7 @@ export function MockDraftClient() {
                           : {
                               borderColor: "var(--c97-rule)",
                               color: "var(--c97-ink)",
-                            }
+                            }) }
                       }
                     >
                       <span className="block text-sm font-semibold tracking-[-0.01em]">
@@ -1089,8 +1092,8 @@ export function MockDraftClient() {
             </div>
 
             <div
-              className="flex flex-wrap items-center justify-between gap-x-4 gap-y-2.5 border-t px-4 py-3.5"
-              style={{ borderColor: "var(--c97-rule)", background: "var(--c97-surface)" }}
+              className="flex flex-wrap items-center justify-between border-t"
+              style={{ paddingInline: "var(--c97-sp-2)", paddingBlock: "var(--c97-sp-2)", columnGap: "var(--c97-sp-2)", rowGap: "var(--c97-sp-1)", borderColor: "var(--c97-rule)", background: "var(--c97-surface)" }}
             >
               <p className="m-0 font-mono text-2xs leading-relaxed" style={{ color: "var(--c97-ink-2)" }}>
                 {`${setupForm.totalTeams}-team ${setupForm.draftType} · ${
@@ -1112,22 +1115,22 @@ export function MockDraftClient() {
             <p
               role="status"
               aria-live="polite"
-              className="mx-0.5 mt-3.5 text-sm leading-6"
-              style={{ color: "var(--c97-ink-2)" }}
+              className="mx-0.5 text-sm leading-6"
+              style={{ marginTop: "var(--c97-sp-2)", color: "var(--c97-ink-2)" }}
             >
               {boardStatusLine}
               {error && (
                 <button
                   type="button"
                   onClick={retry}
-                  className="ml-2 inline-flex min-h-touch items-center font-semibold underline"
+                  className="inline-flex min-h-touch items-center font-semibold underline underline-offset-4 hover:decoration-[var(--c97-accent)]" style={{ marginLeft: "var(--c97-sp-1)" }}
                 >
                   Retry
                 </button>
               )}
             </p>
           )}
-          <p className="mx-0.5 mt-3.5 font-mono text-2xs leading-relaxed" style={{ color: "var(--c97-ink-2)" }}>
+          <p className="mx-0.5 font-mono text-2xs leading-relaxed" style={{ marginTop: "var(--c97-sp-2)", color: "var(--c97-ink-2)" }}>
             The room drafts around you, so you are on the clock every turn. Each run is a fresh
             seeded room with the same settings, and nothing here is a projection of season
             outcomes.
@@ -1169,8 +1172,10 @@ export function MockDraftClient() {
                   {fasciaCells.map((cell, index) => (
                     <div
                       key={cell.key}
-                      className={`min-w-0 px-3 py-2 ${index > 0 ? "border-l" : ""}`}
+                      className={`min-w-0 ${index > 0 ? "border-l" : ""}`}
                       style={{
+                        paddingInline: "var(--c97-sp-1)",
+                        paddingBlock: "var(--c97-sp-1)",
                         background: cell.background ?? "var(--c97-surface)",
                         borderColor: "var(--c97-rule)",
                       }}
@@ -1179,8 +1184,8 @@ export function MockDraftClient() {
                         {cell.label}
                       </dt>
                       <dd
-                        className="m-0 mt-1 font-mono text-lg leading-tight tabular-nums"
-                        style={{ color: cell.valueColor ?? "var(--c97-ink)" }}
+                        className="m-0 font-mono text-lg leading-tight tabular-nums"
+                        style={{ marginTop: "var(--c97-sp-0)", color: cell.valueColor ?? "var(--c97-ink)" }}
                       >
                         {cell.value}
                       </dd>
@@ -1194,8 +1199,8 @@ export function MockDraftClient() {
                   ))}
                 </dl>
                 <p
-                  className="m-0 flex flex-wrap items-baseline gap-x-2.5 gap-y-0.5 px-3 py-2 font-mono text-xs tabular-nums md:hidden"
-                  style={{ color: "var(--c97-ink)" }}
+                  className="m-0 flex flex-wrap items-baseline gap-y-0.5 font-mono text-xs tabular-nums md:hidden"
+                  style={{ paddingInline: "var(--c97-sp-1)", paddingBlock: "var(--c97-sp-1)", columnGap: "var(--c97-sp-1)", color: "var(--c97-ink)" }}
                 >
                   {fasciaCells.map((cell, index) => (
                     <span
@@ -1214,8 +1219,8 @@ export function MockDraftClient() {
                   ))}
                 </p>
                 <div
-                  className="flex flex-wrap items-center gap-1.5 border-t px-3 py-1.5 lg:flex-none lg:border-l lg:border-t-0"
-                  style={{ borderColor: "var(--c97-rule)" }}
+                  className="flex flex-wrap items-center border-t lg:flex-none lg:border-l lg:border-t-0"
+                  style={{ paddingInline: "var(--c97-sp-1)", paddingBlock: "var(--c97-sp-0)", gap: "var(--c97-sp-0)", borderColor: "var(--c97-rule)" }}
                 >
                   <button
                     type="button"
@@ -1256,18 +1261,18 @@ export function MockDraftClient() {
           </section>
 
           {!simulationAvailable && (
-            <div className={`${SHELL_CLASS} pt-2.5`}>
+            <div className={`${SHELL_CLASS}`} style={{ paddingTop: "var(--c97-sp-1)" }}>
               <div
                 role="alert"
-                className="border px-3.5 py-2.5 text-sm leading-6"
-                style={WARNING_CARD_STYLE}
+                className="border text-sm leading-6"
+                style={{ paddingInline: "var(--c97-sp-2)", paddingBlock: "var(--c97-sp-1)", ...(WARNING_CARD_STYLE) }}
               >
                 {boardStatusLine} {pauseRecovery}
                 {boardReloadable && (
                   <button
                     type="button"
                     onClick={retry}
-                    className="ml-2 inline-flex min-h-touch items-center font-semibold underline"
+                    className="inline-flex min-h-touch items-center font-semibold underline underline-offset-4 hover:decoration-[var(--c97-accent)]" style={{ marginLeft: "var(--c97-sp-1)" }}
                   >
                     Reload the board
                   </button>
@@ -1280,7 +1285,7 @@ export function MockDraftClient() {
             <div
               role="group"
               aria-label="Room picks since your last turn"
-              className={`${SHELL_CLASS} flex items-center gap-2 overflow-x-auto pt-2.5`}
+              className={`${SHELL_CLASS} flex items-center overflow-x-auto`} style={{ paddingTop: "var(--c97-sp-1)", gap: "var(--c97-sp-1)" }}
             >
               <span className={`${MONO_LABEL_CLASS} flex-none`} style={{ color: "var(--c97-ink-2)" }}>
                 Since your last pick
@@ -1288,8 +1293,10 @@ export function MockDraftClient() {
               {tapePicks.map((pick) => (
                 <span
                   key={`tape-${pick.pickNumber}`}
-                  className="inline-flex flex-none items-baseline gap-1.5 border px-2 py-0.5 font-mono text-2xs"
+                  className="inline-flex flex-none items-baseline border py-0.5 font-mono text-2xs"
                   style={{
+                    paddingInline: "var(--c97-sp-1)",
+                    gap: "var(--c97-sp-0)",
                     borderColor: "var(--c97-rule)",
                     background: "var(--c97-field)",
                     color: "var(--c97-ink)",
@@ -1309,7 +1316,7 @@ export function MockDraftClient() {
 
           <section
             aria-label="Your roster"
-            className={`${SHELL_CLASS} flex flex-wrap items-center gap-1.5 pt-2.5`}
+            className={`${SHELL_CLASS} flex flex-wrap items-center`} style={{ paddingTop: "var(--c97-sp-1)", gap: "var(--c97-sp-0)" }}
           >
             <span className={`${MONO_LABEL_CLASS} flex-none`} style={{ color: "var(--c97-ink-2)" }}>
               Your roster
@@ -1317,9 +1324,9 @@ export function MockDraftClient() {
             {lineupAssignment.slots.map((slot, index) => (
               <span
                 key={`slot-${slot.slot}-${index}`}
-                className="inline-flex items-baseline gap-1.5 border px-1.5 py-0.5 font-mono text-3xs uppercase tracking-[0.06em]"
+                className="inline-flex items-baseline border py-0.5 font-mono text-3xs uppercase tracking-[0.06em]"
                 style={
-                  slot.player
+                  { paddingInline: "var(--c97-sp-0)", gap: "var(--c97-sp-0)", ...(slot.player
                     ? {
                         borderStyle: "solid",
                         borderColor: "var(--c97-rule)",
@@ -1331,7 +1338,7 @@ export function MockDraftClient() {
                         borderColor: "color-mix(in srgb, var(--c97-rule) 80%, transparent)",
                         background: "transparent",
                         color: "var(--c97-ink-2)",
-                      }
+                      }) }
                 }
               >
                 {slot.slot}
@@ -1362,7 +1369,7 @@ export function MockDraftClient() {
             ref={onClockRef}
             tabIndex={-1}
             aria-label="You are on the clock"
-            className={`${SHELL_CLASS} mt-3.5 scroll-mt-60`}
+            className={`${SHELL_CLASS} scroll-mt-60`} style={{ marginTop: "var(--c97-sp-2)" }}
           >
             <div
               className="overflow-hidden border"
@@ -1372,12 +1379,12 @@ export function MockDraftClient() {
               }}
             >
               <div
-                className="flex flex-wrap items-baseline gap-x-3.5 gap-y-1.5 border-b px-3.5 py-2"
-                style={{ borderColor: "color-mix(in srgb, var(--c97-accent) 28%, var(--c97-rule))" }}
+                className="flex flex-wrap items-baseline border-b"
+                style={{ paddingInline: "var(--c97-sp-2)", paddingBlock: "var(--c97-sp-1)", columnGap: "var(--c97-sp-2)", rowGap: "var(--c97-sp-0)", borderColor: "color-mix(in srgb, var(--c97-accent) 28%, var(--c97-rule))" }}
               >
                 <span
-                  className="inline-flex items-center gap-2 font-mono text-2xs uppercase tracking-[0.12em]"
-                  style={{ color: "color-mix(in srgb, var(--c97-accent) 72%, var(--c97-ink))" }}
+                  className="inline-flex items-center font-mono text-2xs uppercase tracking-[0.12em]"
+                  style={{ gap: "var(--c97-sp-1)", color: "color-mix(in srgb, var(--c97-accent) 72%, var(--c97-ink))" }}
                 >
                   <span
                     className="h-[7px] w-[7px]"
@@ -1390,15 +1397,17 @@ export function MockDraftClient() {
                   {`Pick #${currentPick} · round ${currentRound} of ${settings.rounds} · the room resumes the moment you draft`}
                 </span>
               </div>
-              <div className="flex flex-wrap items-center gap-1.5 px-3.5 py-2.5">
+              <div className="flex flex-wrap items-center" style={{ paddingInline: "var(--c97-sp-2)", paddingBlock: "var(--c97-sp-1)", gap: "var(--c97-sp-0)" }}>
                 {quickPicks.map((quick) => (
                   <button
                     key={quick.key}
                     type="button"
                     onClick={() => draftPlayer(quick.player)}
                     title={quick.title}
-                    className="inline-flex min-h-touch items-center gap-2 border border-[var(--c97-rule)] px-3.5 font-mono text-2xs hover:border-[var(--c97-ink)]"
+                    className="inline-flex min-h-touch items-center border border-[var(--c97-rule)] font-mono text-2xs hover:border-[var(--c97-ink)]"
                     style={{
+                      paddingInline: "var(--c97-sp-2)",
+                      gap: "var(--c97-sp-1)",
                       background: "var(--c97-surface)",
                       color: "var(--c97-ink)",
                     }}
@@ -1422,9 +1431,9 @@ export function MockDraftClient() {
             </div>
           </section>
 
-          <div className={`${SHELL_CLASS} pb-11 pt-4`}>
+          <div className={`${SHELL_CLASS}`} style={{ paddingTop: "var(--c97-sp-2)", paddingBottom: "var(--c97-sp-4)" }}>
             <h2 className="sr-only">Available players</h2>
-            <div className="flex flex-wrap items-center gap-x-3.5 gap-y-2.5 pb-3">
+            <div className="flex flex-wrap items-center" style={{ paddingBottom: "var(--c97-sp-1)", columnGap: "var(--c97-sp-2)", rowGap: "var(--c97-sp-1)" }}>
               <PositionFilterBar
                 ariaLabel="Filter available players by position"
                 options={POSITION_FILTER_OPTIONS}
@@ -1442,8 +1451,9 @@ export function MockDraftClient() {
                 onChange={(event) => setSearchQuery(event.target.value)}
                 autoComplete="off"
                 placeholder="Search player or team"
-                className="min-h-touch w-[190px] border px-2.5 font-mono text-xs placeholder:text-[var(--c97-ink-2)]"
+                className="min-h-touch w-[190px] border font-mono text-xs placeholder:text-[var(--c97-ink-2)]"
                 style={{
+                  paddingInline: "var(--c97-sp-1)",
                   borderColor: "var(--c97-rule)",
                   background: "var(--c97-field)",
                   color: "var(--c97-ink)",
@@ -1465,8 +1475,8 @@ export function MockDraftClient() {
             {windowedPlayers.length > 0 && adpAvailable && (
               <div
                 aria-hidden="true"
-                className={`hidden items-center gap-x-3.5 px-3.5 pb-1.5 md:flex ${MONO_LABEL_CLASS}`}
-                style={{ color: "var(--c97-ink-2)" }}
+                className={`hidden items-center md:flex ${MONO_LABEL_CLASS}`}
+                style={{ paddingInline: "var(--c97-sp-2)", paddingBottom: "var(--c97-sp-0)", columnGap: "var(--c97-sp-2)", color: "var(--c97-ink-2)" }}
               >
                 <span className="w-[34px]" />
                 <span className="min-w-0 flex-1">Player</span>
@@ -1502,7 +1512,7 @@ export function MockDraftClient() {
                   style={{ marginTop }}
                 >
                   {index > 0 && cliff > 0 && (
-                    <div aria-hidden="true" className="flex items-center gap-3 px-0.5 pb-2">
+                    <div aria-hidden="true" className="flex items-center px-0.5" style={{ paddingBottom: "var(--c97-sp-1)", gap: "var(--c97-sp-1)" }}>
                       <span
                         className="flex-1 border-t border-dashed"
                         style={{ borderColor: "color-mix(in srgb, var(--c97-ink) 24%, transparent)" }}
@@ -1527,7 +1537,7 @@ export function MockDraftClient() {
                       background: "var(--c97-field)",
                     }}
                   >
-                    <div className="flex flex-wrap items-baseline gap-x-3.5 gap-y-1 px-3.5 pb-1.5 pt-2">
+                    <div className="flex flex-wrap items-baseline" style={{ paddingInline: "var(--c97-sp-2)", paddingTop: "var(--c97-sp-1)", paddingBottom: "var(--c97-sp-0)", columnGap: "var(--c97-sp-2)", rowGap: "var(--c97-sp-0)" }}>
                       <span className="text-2xl font-bold leading-none tracking-[-0.04em] tabular-nums">
                         {group.tier !== null ? String(group.tier).padStart(2, "0") : "—"}
                       </span>
@@ -1554,8 +1564,12 @@ export function MockDraftClient() {
                         return (
                           <li
                             key={player.id}
-                            className="flex flex-wrap items-center gap-x-3.5 gap-y-1 border-t px-3.5 py-1.5"
+                            className="flex flex-wrap items-center border-t"
                             style={{
+                              paddingInline: "var(--c97-sp-2)",
+                              paddingBlock: "var(--c97-sp-0)",
+                              columnGap: "var(--c97-sp-2)",
+                              rowGap: "var(--c97-sp-0)",
                               borderColor: "color-mix(in srgb, var(--c97-rule) 60%, transparent)",
                             }}
                           >
@@ -1565,13 +1579,13 @@ export function MockDraftClient() {
                             >
                               {formatRankValue(player.rankEcr ?? player.averageRank)}
                             </span>
-                            <div className="flex min-w-0 flex-1 basis-44 items-baseline gap-2">
+                            <div className="flex min-w-0 flex-1 basis-44 items-baseline" style={{ gap: "var(--c97-sp-1)" }}>
                               <span className="truncate text-sm font-semibold tracking-[-0.02em]">
                                 {player.name}
                               </span>
                               <span
-                                className="inline-flex shrink-0 items-center border px-1.5 py-0.5 font-mono text-3xs tracking-[0.06em]"
-                                style={positionTone}
+                                className="inline-flex shrink-0 items-center border py-0.5 font-mono text-3xs tracking-[0.06em]"
+                                style={{ paddingInline: "var(--c97-sp-0)", ...(positionTone) }}
                               >
                                 {player.position}
                                 {player.positionRank ?? ""}
@@ -1584,7 +1598,7 @@ export function MockDraftClient() {
                                 {player.byeWeek ? ` · Bye ${player.byeWeek}` : ""}
                               </span>
                             </div>
-                            <div className="flex flex-none items-center gap-x-3.5">
+                            <div className="flex flex-none items-center" style={{ columnGap: "var(--c97-sp-2)" }}>
                               {adpAvailable && (
                                 <>
                                   <span className="sr-only">ADP</span>
@@ -1632,10 +1646,10 @@ export function MockDraftClient() {
 
             {filteredAvailable.length === 0 && (
               <div
-                className="border border-dashed px-6 py-8 text-center"
-                style={{ borderColor: "var(--c97-rule)" }}
+                className="border border-dashed text-center"
+                style={{ paddingInline: "var(--c97-sp-3)", paddingBlock: "var(--c97-sp-3)", borderColor: "var(--c97-rule)" }}
               >
-                <p className="m-0 mb-3.5 font-mono text-xs" style={{ color: "var(--c97-ink-2)" }}>
+                <p className="m-0 font-mono text-xs" style={{ marginBottom: "var(--c97-sp-2)", color: "var(--c97-ink-2)" }}>
                   No available players match on this board.
                 </p>
                 <button
@@ -1651,15 +1665,15 @@ export function MockDraftClient() {
               </div>
             )}
             {filteredAvailable.length > VISIBLE_BOARD_ROWS && (
-              <p className="mt-3 font-mono text-3xs" style={{ color: "var(--c97-ink-2)" }}>
+              <p className="font-mono text-3xs" style={{ marginTop: "var(--c97-sp-1)", color: "var(--c97-ink-2)" }}>
                 Showing the top {VISIBLE_BOARD_ROWS} of {filteredAvailable.length} available
                 players. Search or filter to reach the rest.
               </p>
             )}
 
             <div
-              className="mt-6 flex flex-wrap items-baseline justify-between gap-x-5 gap-y-2 border-t pt-3.5"
-              style={{ borderColor: "var(--c97-rule)" }}
+              className="flex flex-wrap items-baseline justify-between border-t"
+              style={{ paddingTop: "var(--c97-sp-2)", marginTop: "var(--c97-sp-3)", columnGap: "var(--c97-sp-2)", rowGap: "var(--c97-sp-1)", borderColor: "var(--c97-rule)" }}
             >
               <span className="font-mono text-2xs" style={{ color: "var(--c97-ink-2)" }}>
                 Take a pick back and the same room replays · sim to end finishes the room and
@@ -1673,17 +1687,18 @@ export function MockDraftClient() {
 
       {isRecap && (
         <div className="c97-sheet" data-c97-surface="paper" data-seam={showScopeNote ? undefined : "torn"}>
-        <div className={`${SHELL_CLASS} pb-11 pt-1`}>
+        <div className={`${SHELL_CLASS}`} style={{ paddingTop: "var(--c97-sp-0)", paddingBottom: "var(--c97-sp-4)" }}>
           <section
             ref={valueReportRef}
             tabIndex={-1}
             aria-label="Value report"
-            className="mt-2.5 flex flex-wrap overflow-hidden border"
-            style={{ borderColor: "var(--c97-rule)", background: "var(--c97-field)" }}
+            className="flex flex-wrap overflow-hidden border"
+            style={{ marginTop: "var(--c97-sp-1)", borderColor: "var(--c97-rule)", background: "var(--c97-field)" }}
           >
             <div
-              className="w-full border-b p-4 sm:w-[200px] sm:border-b-0 sm:border-r"
+              className="w-full border-b sm:w-[200px] sm:border-b-0 sm:border-r"
               style={{
+                padding: "var(--c97-sp-2)",
                 borderColor: "var(--c97-rule)",
                 background: "color-mix(in srgb, var(--c97-accent) 6%, var(--c97-surface))",
               }}
@@ -1692,17 +1707,17 @@ export function MockDraftClient() {
                 Draft grade
               </p>
               <p
-                className="m-0 mt-1.5 text-5xl font-bold leading-none tracking-[-0.05em]"
-                style={{ color: "var(--c97-accent)" }}
+                className="m-0 text-5xl font-bold leading-none tracking-[-0.05em]"
+                style={{ marginTop: "var(--c97-sp-0)", color: "var(--c97-accent)" }}
               >
                 {recap.grade ?? "—"}
               </p>
-              <p className="m-0 mt-2 font-mono text-2xs" style={{ color: "var(--c97-ink)" }}>
+              <p className="m-0 font-mono text-2xs" style={{ marginTop: "var(--c97-sp-1)", color: "var(--c97-ink)" }}>
                 {recap.judged.length > 0
                   ? `${formatPickDelta(recap.total)} vs the draft baseline`
                   : "no judged picks"}
               </p>
-              <p className="m-0 mt-1 font-mono text-3xs leading-relaxed" style={{ color: "var(--c97-ink-2)" }}>
+              <p className="m-0 font-mono text-3xs leading-relaxed" style={{ marginTop: "var(--c97-sp-0)", color: "var(--c97-ink-2)" }}>
                 {recap.judged.length > 0
                   ? `summed pick delta vs the ADP-or-consensus baseline across ${recap.judged.length} of your ${userPicks.length} picks`
                   : "no pick had a market or consensus baseline to score against"}
@@ -1768,13 +1783,13 @@ export function MockDraftClient() {
               ].map((fact) => (
                 <div
                   key={fact.label}
-                  className="min-w-0 px-3.5 py-3"
-                  style={{ background: "var(--c97-field)" }}
+                  className="min-w-0"
+                  style={{ paddingInline: "var(--c97-sp-2)", paddingBlock: "var(--c97-sp-1)", background: "var(--c97-field)" }}
                 >
                   <p className={`m-0 ${MONO_LABEL_CLASS}`} style={{ color: "var(--c97-ink-2)" }}>
                     {fact.label}
                   </p>
-                  <p className="m-0 mt-1 overflow-hidden text-ellipsis whitespace-nowrap text-sm font-semibold tracking-[-0.02em]">
+                  <p className="m-0 overflow-hidden text-ellipsis whitespace-nowrap text-sm font-semibold tracking-[-0.02em]" style={{ marginTop: "var(--c97-sp-0)" }}>
                     {fact.value}
                   </p>
                   <p
@@ -1790,10 +1805,10 @@ export function MockDraftClient() {
 
           <section
             aria-label="Draft board grid"
-            className="mt-3.5 overflow-hidden border"
-            style={{ borderColor: "var(--c97-rule)", background: "var(--c97-field)" }}
+            className="overflow-hidden border"
+            style={{ marginTop: "var(--c97-sp-2)", borderColor: "var(--c97-rule)", background: "var(--c97-field)" }}
           >
-            <div className="flex flex-wrap items-baseline gap-x-3.5 gap-y-1 px-3.5 py-2.5">
+            <div className="flex flex-wrap items-baseline" style={{ paddingInline: "var(--c97-sp-2)", paddingBlock: "var(--c97-sp-1)", columnGap: "var(--c97-sp-2)", rowGap: "var(--c97-sp-0)" }}>
               <h2 className="c97-serif c97-h3">The board</h2>
               <span className="font-mono text-2xs" style={{ color: "var(--c97-ink-2)" }}>
                 {`room #${roomLabel(state.seed)} · ${settings.draftType} order · your column outlined`}
@@ -1846,8 +1861,10 @@ export function MockDraftClient() {
                           key={`hdr-${slot}`}
                           scope="col"
                           aria-label={isUser ? "Your slot" : `Slot ${slot}`}
-                          className="whitespace-nowrap border-l border-t px-2 py-1.5 text-center font-mono text-3xs font-normal uppercase tracking-[0.1em]"
+                          className="whitespace-nowrap border-l border-t text-center font-mono text-3xs font-normal uppercase tracking-[0.1em]"
                           style={{
+                            paddingInline: "var(--c97-sp-1)",
+                            paddingBlock: "var(--c97-sp-0)",
                             borderColor: "var(--c97-rule)",
                             background: isUser
                               ? "color-mix(in srgb, var(--c97-accent) 10%, var(--c97-surface))"
@@ -1881,8 +1898,10 @@ export function MockDraftClient() {
                       {row.cells.map((cell) => (
                         <td
                           key={`cell-${cell.pickNumber}`}
-                          className="min-w-0 border-l border-t px-2 py-1.5 align-top"
+                          className="min-w-0 border-l border-t align-top"
                           style={{
+                            paddingInline: "var(--c97-sp-1)",
+                            paddingBlock: "var(--c97-sp-0)",
                             borderColor: "var(--c97-rule)",
                             background: cell.pick
                               ? (getPositionTone(cell.pick.player.position).background as string)
@@ -1918,7 +1937,7 @@ export function MockDraftClient() {
             </div>
           </section>
 
-          <div role="group" className="mt-3.5 flex flex-wrap items-center gap-1.5" aria-label="Your haul">
+          <div role="group" className="flex flex-wrap items-center" style={{ marginTop: "var(--c97-sp-2)", gap: "var(--c97-sp-0)" }} aria-label="Your haul">
             <span className={`${MONO_LABEL_CLASS} flex-none`} style={{ color: "var(--c97-ink-2)" }}>
               Your haul
             </span>
@@ -1928,8 +1947,10 @@ export function MockDraftClient() {
               return (
                 <span
                   key={`haul-${pick.pickNumber}`}
-                  className="inline-flex items-baseline gap-1.5 border px-2 py-0.5 font-mono text-2xs"
+                  className="inline-flex items-baseline border py-0.5 font-mono text-2xs"
                   style={{
+                    paddingInline: "var(--c97-sp-1)",
+                    gap: "var(--c97-sp-0)",
                     borderColor: "var(--c97-rule)",
                     background: "var(--c97-field)",
                     color: "var(--c97-ink)",
@@ -1962,15 +1983,15 @@ export function MockDraftClient() {
             <p
               id="mock-rerun-blocked"
               role="status"
-              className="m-0 mt-4 border px-3.5 py-2.5 text-sm leading-6"
-              style={WARNING_CARD_STYLE}
+              className="m-0 border text-sm leading-6"
+              style={{ paddingInline: "var(--c97-sp-2)", paddingBlock: "var(--c97-sp-1)", marginTop: "var(--c97-sp-2)", ...(WARNING_CARD_STYLE) }}
             >
               {boardStatusLine} {rerunRecovery}
               {boardReloadable && (
                 <button
                   type="button"
                   onClick={retry}
-                  className="ml-2 inline-flex min-h-touch items-center font-semibold underline"
+                  className="inline-flex min-h-touch items-center font-semibold underline underline-offset-4 hover:decoration-[var(--c97-accent)]" style={{ marginLeft: "var(--c97-sp-1)" }}
                 >
                   Reload the board
                 </button>
@@ -1978,7 +1999,7 @@ export function MockDraftClient() {
             </p>
           )}
 
-          <div className="mt-4 flex flex-wrap items-center gap-2.5">
+          <div className="flex flex-wrap items-center" style={{ marginTop: "var(--c97-sp-2)", gap: "var(--c97-sp-1)" }}>
             <button
               type="button"
               onClick={rerunRoom}
@@ -1986,7 +2007,7 @@ export function MockDraftClient() {
               aria-describedby={simulationAvailable ? undefined : "mock-rerun-blocked"}
               className={SOLID_BUTTON_CLASS}
             >
-              Run it back <span aria-hidden="true">→</span>
+              Run it back <span className="c97-arrow" aria-hidden="true">→</span>
             </button>
             <button
               type="button"
@@ -2001,8 +2022,8 @@ export function MockDraftClient() {
           </div>
 
           <div
-            className="mt-6 flex flex-wrap items-baseline justify-between gap-x-5 gap-y-2 border-t pt-3.5"
-            style={{ borderColor: "var(--c97-rule)" }}
+            className="flex flex-wrap items-baseline justify-between border-t"
+            style={{ paddingTop: "var(--c97-sp-2)", marginTop: "var(--c97-sp-3)", columnGap: "var(--c97-sp-2)", rowGap: "var(--c97-sp-1)", borderColor: "var(--c97-rule)" }}
           >
             <span className="font-mono text-2xs" style={{ color: "var(--c97-ink-2)" }}>
               Practice reps only, with no prediction in them · rooms stay on this device

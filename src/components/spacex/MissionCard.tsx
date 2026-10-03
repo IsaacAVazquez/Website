@@ -44,7 +44,7 @@ export function MissionCard({ launch, isSelected, isBusy, onSelect }: MissionCar
           : "border-[var(--c97-rule)] hover:border-[color-mix(in_srgb,var(--c97-ink)_20%,var(--c97-rule))]"
       }`}
     >
-      <div className="flex items-start justify-between gap-2.5 px-4 pb-1 pt-4">
+      <div className="flex items-start justify-between" style={{ paddingInline: "var(--c97-sp-2)", paddingTop: "var(--c97-sp-2)", paddingBottom: "var(--c97-sp-0)", gap: "var(--c97-sp-1)" }}>
         <div
           data-testid={`mission-board-visual-${launch.id}`}
           className="grid h-[62px] w-[62px] shrink-0 place-items-center overflow-hidden border border-[var(--c97-rule)]"
@@ -53,39 +53,39 @@ export function MissionCard({ launch, isSelected, isBusy, onSelect }: MissionCar
           <MissionPatchEmblem seed={launch.id} accent={accent} className="h-full w-full" />
         </div>
         <span
-          className="inline-flex shrink-0 items-center gap-1.5 pt-1 font-mono text-3xs uppercase tracking-[0.08em]"
-          style={{ color: accent }}
+          className="inline-flex shrink-0 items-center font-mono text-3xs uppercase tracking-[0.08em]"
+          style={{ color: accent, gap: "var(--c97-sp-0)", paddingTop: "var(--c97-sp-0)" }}
         >
           <span aria-hidden="true" className="h-1.5 w-1.5 bg-current" />
           {MISSION_STATUS_LABEL[status]}
         </span>
       </div>
 
-      <div className="flex flex-col gap-1 border-b border-[color-mix(in_srgb,var(--c97-rule)_55%,transparent)] px-4 pb-3.5 pt-2.5">
+      <div className="flex flex-col border-b border-[color-mix(in_srgb,var(--c97-rule)_55%,transparent)]" style={{ paddingInline: "var(--c97-sp-2)", paddingTop: "var(--c97-sp-1)", paddingBottom: "var(--c97-sp-2)", gap: "var(--c97-sp-0)" }}>
         <span className="font-mono text-3xs uppercase tracking-[0.1em] text-[var(--c97-ink-2)]">
           Flight #{launch.flightNumber} · {launch.rocketName ?? "Rocket TBD"}
         </span>
-        <h3 className="text-lg font-bold leading-tight tracking-[-0.02em] text-[var(--c97-ink)]">
+        <h4 className="c97-serif c97-h3">
           {launch.name}
-        </h3>
+        </h4>
       </div>
 
       <div className="grid grid-cols-2 gap-px bg-[color-mix(in_srgb,var(--c97-rule)_55%,transparent)]">
         {metaCells.map((cell) => (
-          <div key={cell.key} className="min-w-0 bg-[var(--c97-surface)] px-4 py-2.5">
+          <div key={cell.key} className="min-w-0 bg-[var(--c97-surface)]" style={{ paddingInline: "var(--c97-sp-2)", paddingBlock: "var(--c97-sp-1)" }}>
             <div className="font-mono text-3xs uppercase tracking-[0.1em] text-[var(--c97-ink-2)]">
               {cell.key}
             </div>
-            <div className="mt-1 truncate text-sm font-semibold tabular-nums text-[var(--c97-ink)]">
+            <div className="truncate text-sm font-semibold tabular-nums text-[var(--c97-ink)]" style={{ marginTop: "var(--c97-sp-0)" }}>
               {cell.value}
             </div>
           </div>
         ))}
       </div>
 
-      <div className="mt-auto flex items-center justify-between gap-2 px-4 py-3 font-mono text-3xs text-[var(--c97-ink-2)]">
+      <div className="mt-auto flex items-center justify-between font-mono text-3xs text-[var(--c97-ink-2)]" style={{ paddingInline: "var(--c97-sp-2)", paddingBlock: "var(--c97-sp-1)", gap: "var(--c97-sp-1)" }}>
         <span className="truncate">{formatMissionScheduleLabel(launch)}</span>
-        <span className="inline-flex shrink-0 items-center gap-1 text-[var(--c97-ink)]">
+        <span className="inline-flex shrink-0 items-center text-[var(--c97-ink)]" style={{ gap: "var(--c97-sp-0)" }}>
           {launch.upcoming ? "Preview" : "Debrief"}
           {isBusy && isSelected ? (
             <LoaderCircle className="h-3.5 w-3.5 animate-spin" aria-hidden="true" />

@@ -191,7 +191,7 @@ function WorkspaceTabs({
   return (
     <div
       className="c97-segmented"
-      role="tablist"
+      role="group"
       aria-label="Enablement workspace views"
     >
       {(
@@ -205,8 +205,7 @@ function WorkspaceTabs({
           <button
             key={id}
             type="button"
-            role="tab"
-            aria-selected={active}
+            aria-pressed={active}
             onClick={() => onChange(id)}
             className="c97-microlink"
           >
@@ -226,7 +225,7 @@ function ProgramDashboard({ onStart }: { onStart: () => void }) {
   );
 
   return (
-    <div role="tabpanel" aria-label="Program dashboard">
+    <div>
       <section
         aria-labelledby="program-metrics-heading"
         className="c97-band c97-sheet"
@@ -378,11 +377,11 @@ function ProgramDashboard({ onStart }: { onStart: () => void }) {
             <table className="c97-table" style={{ minWidth: 760 }}>
               <thead>
                 <tr>
-                  <th>Team</th>
-                  <th>Surface</th>
-                  <th>Toolchain</th>
-                  <th>Adoption</th>
-                  <th data-align="end">Resolved</th>
+                  <th scope="col">Team</th>
+                  <th scope="col">Surface</th>
+                  <th scope="col">Toolchain</th>
+                  <th scope="col">Adoption</th>
+                  <th scope="col" data-align="end">Resolved</th>
                 </tr>
               </thead>
               <tbody>
@@ -400,6 +399,7 @@ function ProgramDashboard({ onStart }: { onStart: () => void }) {
                        * headings is undone here.
                        */}
                       <th
+                        scope="row"
                         style={{
                           position: "static",
                           fontSize: "var(--c97-fs-small)",
@@ -1489,7 +1489,7 @@ function TeamOnboarding() {
   const advanceDisabled = step === 1 && intake.layers.length === 0;
 
   return (
-    <div role="tabpanel" aria-label="Team onboarding">
+    <div>
       <section
         aria-labelledby="intake-heading"
         className="c97-band c97-sheet"

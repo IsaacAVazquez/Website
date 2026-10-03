@@ -4,7 +4,7 @@ import {
   getNbaSummarySnapshot,
   getNbaTeamSnapshot,
 } from "@/lib/nbaSnapshot";
-import { constructMetadata, generateBreadcrumbStructuredData } from "@/lib/seo";
+import { constructMetadata, freeApplicationOffer, generateBreadcrumbStructuredData } from "@/lib/seo";
 import { NbaClient } from "./nba-client";
 import { buildTeamAliasMap, normalizeState, resolveDefaultState } from "./nba-state.core";
 
@@ -55,7 +55,7 @@ export default async function NbaPage({ searchParams }: NbaPageProps) {
         }}
       />
       <StructuredData
-        type="SoftwareApplication"
+        type="SportsApplication"
         data={{
           name: "NBA Pulse",
           description:
@@ -70,6 +70,7 @@ export default async function NbaPage({ searchParams }: NbaPageProps) {
             "Fast local-first rendering without a live runtime dependency",
           ],
           dateModified: nbaSnapshot.updatedAt,
+          offers: freeApplicationOffer,
         }}
       />
       <NbaClient

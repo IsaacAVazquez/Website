@@ -46,7 +46,7 @@ function newsMonogram(item: NewsItem): string {
 
 function NewsCard({ item }: { item: NewsItem }) {
   return (
-    <div className="flex items-start gap-3 py-3 border-b border-[var(--c97-rule)] last:border-0">
+    <div className="flex items-start border-b border-[var(--c97-rule)] last:border-0" style={{ gap: "var(--c97-sp-1)", paddingBlock: "var(--c97-sp-1)" }}>
       <div
         aria-hidden="true"
         className="mt-0.5 grid h-10 w-10 shrink-0 place-items-center border border-[var(--c97-rule)] bg-[var(--c97-panel)] text-xs font-semibold tracking-[0.04em] text-[var(--c97-ink-2)]"
@@ -59,15 +59,15 @@ function NewsCard({ item }: { item: NewsItem }) {
             href={item.link}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-start gap-1 text-sm font-medium text-[var(--c97-ink)] hover:text-[var(--c97-accent)] transition line-clamp-2"
+            className="inline-flex items-start text-sm font-medium text-[var(--c97-ink)] hover:text-[var(--c97-accent)] transition line-clamp-2" style={{ gap: "var(--c97-sp-0)" }}
           >
             <span>{item.title}</span>
-            <ExternalLink size={12} className="mt-1 shrink-0 text-[var(--c97-label)]" />
+            <ExternalLink size={12} className="shrink-0 text-[var(--c97-label)]" style={{ marginTop: "var(--c97-sp-0)" }} />
           </a>
         ) : (
           <p className="text-sm font-medium leading-6 text-[var(--c97-ink)] line-clamp-2">{item.title}</p>
         )}
-        <div className="mt-1.5 flex items-center gap-2">
+        <div className="flex items-center" style={{ gap: "var(--c97-sp-1)", marginTop: "var(--c97-sp-0)" }}>
           {item.publisher ? (
             <span className="text-xs text-[var(--c97-ink-2)]">{item.publisher}</span>
           ) : null}
@@ -167,17 +167,17 @@ export function ResearchOverview({ symbol, showNews = true }: Props) {
   const signals = buildSignals({ profitability: profitability ?? undefined, margins, growth: growth ?? undefined });
 
   return (
-    <div className="space-y-5">
+    <div className="flex flex-col" style={{ rowGap: "var(--c97-sp-2)" }}>
       {/* Company bio */}
       <TerminalPanel
         padding="none"
         className="overflow-hidden border-[color-mix(in_srgb,var(--c97-accent)_16%,var(--c97-rule))] "
       >
-        <div className="p-5 sm:p-6">
+        <div className="p-[var(--c97-sp-2)] sm:p-[var(--c97-sp-3)]">
           <p className="text-2xs font-semibold uppercase tracking-[0.18em] text-[var(--c97-label)]">
             About
           </p>
-          <p className="mt-3 text-sm leading-[1.7] text-[var(--c97-ink-2)]">
+          <p className="text-sm leading-[1.7] text-[var(--c97-ink-2)]" style={{ marginTop: "var(--c97-sp-1)" }}>
             {info?.longBusinessSummary ??
               "A company summary is not available for this symbol, but the core valuation, quality, and operating metrics are still available from the research snapshot."}
           </p>
@@ -186,7 +186,7 @@ export function ResearchOverview({ symbol, showNews = true }: Props) {
               href={info.website}
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-4 inline-flex items-center gap-1 text-xs font-medium text-[var(--c97-accent)] hover:underline"
+              className="inline-flex items-center text-xs font-medium text-[var(--c97-accent)] hover:underline" style={{ gap: "var(--c97-sp-0)", marginTop: "var(--c97-sp-2)" }}
             >
               {info.website.replace(/^https?:\/\//, "")}
             </a>
@@ -200,15 +200,15 @@ export function ResearchOverview({ symbol, showNews = true }: Props) {
           padding="none"
          
         >
-          <div className="p-5 sm:p-6">
+          <div className="p-[var(--c97-sp-2)] sm:p-[var(--c97-sp-3)]">
             <p className="text-2xs font-semibold uppercase tracking-[0.18em] text-[var(--c97-label)]">
               Leadership
             </p>
-            <div className="mt-4 grid gap-3 sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4">
+            <div className="grid sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4" style={{ gap: "var(--c97-sp-1)", marginTop: "var(--c97-sp-2)" }}>
               {officers.map((officer, i) => (
                 <div
                   key={i}
-                  className="border border-[var(--c97-rule)] bg-[var(--c97-panel)] p-3"
+                  className="border border-[var(--c97-rule)] bg-[var(--c97-panel)]" style={{ padding: "var(--c97-sp-1)" }}
                 >
                   <p className="text-sm font-semibold leading-tight text-[var(--c97-ink)]">
                     {officer.name ?? "—"}
@@ -219,7 +219,7 @@ export function ResearchOverview({ symbol, showNews = true }: Props) {
                     </p>
                   ) : null}
                   {officer.totalPay ? (
-                    <p className="mt-1.5 text-2xs font-medium text-[var(--c97-accent)]">
+                    <p className="text-2xs font-medium text-[var(--c97-accent)]" style={{ marginTop: "var(--c97-sp-0)" }}>
                       {formatPay(officer.totalPay)}
                     </p>
                   ) : null}
@@ -231,7 +231,10 @@ export function ResearchOverview({ symbol, showNews = true }: Props) {
       ) : null}
 
       {/* Signals + News */}
-      <div className={`grid gap-5 ${newsItems.length > 0 ? "lg:grid-cols-2" : ""}`}>
+      <div
+        className={`grid ${newsItems.length > 0 ? "lg:grid-cols-2" : ""}`}
+        style={{ gap: "var(--c97-sp-2)" }}
+      >
         {/* Signals */}
         <TerminalPanel
           padding="sm"
@@ -240,19 +243,20 @@ export function ResearchOverview({ symbol, showNews = true }: Props) {
           <p className="text-2xs font-semibold uppercase tracking-[0.18em] text-[var(--c97-label)]">
             Signals
           </p>
-          <div className="mt-4 space-y-3">
+          <div className="flex flex-col" style={{ rowGap: "var(--c97-sp-1)", marginTop: "var(--c97-sp-2)" }}>
             {signals.length > 0 ? (
               signals.map((signal) => (
                 <div
                   key={signal.label}
-                  className={`border px-4 py-3 ${toneClasses(signal.tone)}`}
+                  style={{ padding: "var(--c97-sp-1) var(--c97-sp-2)" }}
+                  className={`border ${toneClasses(signal.tone)}`}
                 >
                   <p className="text-xs font-semibold uppercase tracking-[0.16em]">{signal.label}</p>
-                  <p className="mt-2 text-sm leading-6 text-[var(--c97-ink)]">{signal.body}</p>
+                  <p className="text-sm leading-6 text-[var(--c97-ink)]" style={{ marginTop: "var(--c97-sp-1)" }}>{signal.body}</p>
                 </div>
               ))
             ) : (
-              <div className="border border-[var(--c97-rule)] px-4 py-3 text-sm text-[var(--c97-ink-2)]">
+              <div className="border border-[var(--c97-rule)] text-sm text-[var(--c97-ink-2)]" style={{ paddingInline: "var(--c97-sp-2)", paddingBlock: "var(--c97-sp-1)" }}>
                 Signals will appear once valuation and operating data are available.
               </div>
             )}
@@ -263,9 +267,9 @@ export function ResearchOverview({ symbol, showNews = true }: Props) {
         {newsItems.length > 0 ? (
           <TerminalPanel padding="sm">
             <p className="text-2xs font-semibold uppercase tracking-[0.18em] text-[var(--c97-label)]">
-              Latest News
+              Latest news
             </p>
-            <div className="mt-3 max-h-[400px] overflow-y-auto pr-1">
+            <div className="max-h-[400px] overflow-y-auto" style={{ marginTop: "var(--c97-sp-1)", paddingRight: "var(--c97-sp-0)" }}>
               {newsItems.map((item, i) => (
                 <NewsCard key={item.uuid ?? i} item={item} />
               ))}
@@ -274,9 +278,9 @@ export function ResearchOverview({ symbol, showNews = true }: Props) {
         ) : !showNews ? (
           <TerminalPanel padding="sm">
             <p className="text-2xs font-semibold uppercase tracking-[0.18em] text-[var(--c97-label)]">
-              Snapshot Mode
+              Snapshot mode
             </p>
-            <p className="mt-3 text-sm leading-6 text-[var(--c97-ink-2)]">
+            <p className="text-sm leading-6 text-[var(--c97-ink-2)]" style={{ marginTop: "var(--c97-sp-1)" }}>
               Valuation, quality, and operating data are available while the curated headline feed is unavailable.
             </p>
           </TerminalPanel>

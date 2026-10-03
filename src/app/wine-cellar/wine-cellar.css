@@ -236,7 +236,8 @@
   cursor: pointer;
 }
 
-.c97-wine-recent-row:hover {
+.c97-wine-recent-row:hover,
+.c97-wine-recent-row:focus-visible {
   background: var(--c97-field);
 }
 
@@ -266,7 +267,13 @@
   cursor: pointer;
 }
 
-.c97-wine-icon-btn:hover {
+.c97-wine-icon-btn:hover,
+.c97-wine-icon-btn:focus-visible {
   background: var(--c97-ink);
   color: var(--c97-surface);
+}
+
+.c97-wine-icon-btn:active,
+.c97-wine-recent-row:active {
+  transform: translateY(1px);
 }

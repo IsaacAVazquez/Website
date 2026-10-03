@@ -71,7 +71,7 @@ export function GolfLeaderboard({
       <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-2)" }}>
         Top of the board
       </p>
-      <div className="overflow-x-auto">
+      <div className="overflow-x-auto" role="region" aria-label="Top of the board (scrollable)" tabIndex={0}>
         <table className="c97-table c97-golf-table" style={{ minWidth: "30rem" }}>
           <caption className="sr-only">
             Top of the PGA Tour Pulse leaderboard with position, player, round scores, and total.

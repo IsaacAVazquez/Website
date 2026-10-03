@@ -51,7 +51,7 @@ function DrawerFixtureRow({ fixture, clubId }: { fixture: GenericFixture; clubId
   const loss = isFinal && goalsFor !== null && goalsAgainst !== null && goalsAgainst > goalsFor;
 
   return (
-    <div className="grid grid-cols-[24px_1fr_auto] items-center gap-3 border-b border-[color-mix(in_srgb,var(--c97-rule)_50%,transparent)] py-2.5 last:border-b-0">
+    <div className="grid grid-cols-[24px_1fr_auto] items-center border-b border-[color-mix(in_srgb,var(--c97-rule)_50%,transparent)] last:border-b-0" style={{ paddingBlock: "var(--c97-sp-1)", gap: "var(--c97-sp-1)" }}>
       <span
         className="inline-flex h-[22px] w-[22px] items-center justify-center border border-[var(--c97-rule)] font-mono text-3xs text-[var(--c97-ink-2)]"
       >
@@ -128,7 +128,7 @@ export function ClubDrawer({
   const metaLine = [club.manager, club.venue].filter(Boolean).join(" · ");
 
   return (
-    <div className="c97-enter-fade fixed inset-0 z-[60] flex items-end justify-center sm:items-stretch sm:justify-end">
+    <div className="c97-enter-fade fixed inset-0 z-[var(--c97-z-drawer)] flex items-end justify-center sm:items-stretch sm:justify-end">
       <button
         type="button"
         aria-label="Close club detail"
@@ -153,7 +153,7 @@ export function ClubDrawer({
           style={{ background: club.accentColor || "var(--c97-rule)" }}
         />
 
-        <div className="relative border-b border-[var(--c97-rule)] px-5 pb-4.5 pt-6">
+        <div className="relative border-b border-[var(--c97-rule)]" style={{ paddingInline: "var(--c97-sp-2)", paddingTop: "var(--c97-sp-3)", paddingBottom: "var(--c97-sp-2)" }}>
           <button
             type="button"
             onClick={onClose}
@@ -163,15 +163,15 @@ export function ClubDrawer({
           >
             <X size={16} aria-hidden="true" />
           </button>
-          <div className="flex items-center gap-3.5">
+          <div className="flex items-center" style={{ gap: "var(--c97-sp-2)" }}>
             <CrestAvatar crest={club.crest} name={club.name} size="lg" />
             <div className="min-w-0 flex-1">
               <p className="font-mono text-3xs uppercase tracking-[0.1em] text-[var(--c97-ink-2)]">
                 #{String(club.position).padStart(2, "0")} · {club.points} pts
               </p>
-              <h2 className="mt-1 truncate text-xl font-bold tracking-tight text-[var(--c97-ink)]">{club.name}</h2>
+              <h2 className="truncate text-xl font-bold tracking-tight text-[var(--c97-ink)]" style={{ marginTop: "var(--c97-sp-0)" }}>{club.name}</h2>
               {formSequence.length > 0 ? (
-                <div className="mt-2 flex gap-1.5">
+                <div className="flex" style={{ marginTop: "var(--c97-sp-1)", gap: "var(--c97-sp-0)" }}>
                   {formSequence.map((result, index) => (
                     <TeamResultPill key={`${result}-${index}`} result={result} />
                   ))}
@@ -180,7 +180,7 @@ export function ClubDrawer({
             </div>
           </div>
           {metaLine ? (
-            <p className="mt-3 font-mono text-3xs uppercase tracking-[0.05em] text-[var(--c97-ink-2)]">
+            <p className="font-mono text-3xs uppercase tracking-[0.05em] text-[var(--c97-ink-2)]" style={{ marginTop: "var(--c97-sp-1)" }}>
               {metaLine}
             </p>
           ) : null}
@@ -190,7 +190,7 @@ export function ClubDrawer({
 
         {isLoadingDetail || detailError ? (
           <p
-            className="px-5 py-3 text-sm text-[var(--c97-ink-2)]"
+            className="text-sm text-[var(--c97-ink-2)]" style={{ paddingInline: "var(--c97-sp-2)", paddingBlock: "var(--c97-sp-1)" }}
             role={detailError ? "alert" : "status"}
             aria-live="polite"
           >
@@ -199,15 +199,15 @@ export function ClubDrawer({
         ) : null}
 
         {topScorers.length > 0 && (
-          <div className="border-b border-[color-mix(in_srgb,var(--c97-rule)_55%,transparent)] px-5 py-4">
+          <div className="border-b border-[color-mix(in_srgb,var(--c97-rule)_55%,transparent)]" style={{ padding: "var(--c97-sp-2)" }}>
             <h3 className="font-mono text-3xs font-normal uppercase tracking-[0.12em] text-[var(--c97-ink-2)]">
               Top scorers
             </h3>
-            <div className="mt-3">
+            <div style={{ marginTop: "var(--c97-sp-1)" }}>
               {topScorers.map((player, index) => (
                 <div
                   key={`${player.name}-${index}`}
-                  className="flex items-center gap-3 border-b border-[color-mix(in_srgb,var(--c97-rule)_50%,transparent)] py-2.5 last:border-b-0"
+                  className="flex items-center border-b border-[color-mix(in_srgb,var(--c97-rule)_50%,transparent)] last:border-b-0" style={{ paddingBlock: "var(--c97-sp-1)", gap: "var(--c97-sp-1)" }}
                 >
                   <span className="w-5 flex-shrink-0 font-mono text-sm text-[var(--c97-ink-2)]">{index + 1}</span>
                   <span className="min-w-0 flex-1 truncate text-sm font-semibold text-[var(--c97-ink)]">
@@ -223,11 +223,11 @@ export function ClubDrawer({
         )}
 
         {(recentFixtures.length > 0 || upcomingFixtures.length > 0) && (
-          <div className="px-5 py-4">
+          <div style={{ padding: "var(--c97-sp-2)" }}>
             <h3 className="font-mono text-3xs font-normal uppercase tracking-[0.12em] text-[var(--c97-ink-2)]">
               Fixtures
             </h3>
-            <div className="mt-3">
+            <div style={{ marginTop: "var(--c97-sp-1)" }}>
               {recentFixtures.map((fixture) => (
                 <DrawerFixtureRow key={fixture.id} fixture={fixture} clubId={club.id} />
               ))}

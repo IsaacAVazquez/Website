@@ -26,8 +26,13 @@ export function StatusPanel({ title, message, tone = "default", icon }: StatusPa
     >
       {icon ? (
         <div
-          className="mx-auto mb-4 flex h-11 w-11 items-center justify-center"
-          style={{ background: toneAccent, color: "var(--c97-surface)" }}
+          className="flex h-11 w-11 items-center justify-center"
+          style={{
+            marginInline: "auto",
+            marginBottom: "var(--c97-sp-2)",
+            background: toneAccent,
+            color: "var(--c97-surface)",
+          }}
         >
           {icon}
         </div>

@@ -1,7 +1,7 @@
 import { StructuredData } from "@/components/StructuredData";
 import { mlbSnapshot } from "@/data/mlbSnapshot";
 import { getMlbSummarySnapshot, getMlbTeamSnapshot } from "@/lib/mlbSnapshot";
-import { constructMetadata, generateBreadcrumbStructuredData } from "@/lib/seo";
+import { constructMetadata, freeApplicationOffer, generateBreadcrumbStructuredData } from "@/lib/seo";
 import { MlbClient } from "./mlb-client";
 import { buildTeamAliasMap, normalizeState, resolveDefaultState } from "./mlb-state.core";
 
@@ -43,7 +43,7 @@ export default async function MlbPage({ searchParams }: MlbPageProps) {
         }}
       />
       <StructuredData
-        type="SoftwareApplication"
+        type="SportsApplication"
         data={{
           name: "MLB Pulse",
           description:
@@ -58,6 +58,7 @@ export default async function MlbPage({ searchParams }: MlbPageProps) {
             "Fast local-first rendering without a live third-party runtime dependency",
           ],
           dateModified: mlbSnapshot.updatedAt,
+          offers: freeApplicationOffer,
         }}
       />
       <MlbClient

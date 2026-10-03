@@ -284,6 +284,7 @@ export function WineCellarClient() {
   const persistenceStatus = useLocalStoragePersistenceStatus(WINE_CELLAR_STORAGE_KEY);
   const [editingId, setEditingId] = useState<string | null>(null);
   const [formDraft, setFormDraft] = useState<WineFormDraft>(() => createEmptyFormDraft(""));
+  const [nameMissing, setNameMissing] = useState(false);
 
   // Fill "today" in after mount: the server's UTC calendar day and the
   // visitor's local one can disagree, so the initial render leaves the field
@@ -295,12 +296,16 @@ export function WineCellarClient() {
 
   function resetForm() {
     setEditingId(null);
+    setNameMissing(false);
     setFormDraft(createEmptyFormDraft());
   }
 
   function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    if (!formDraft.name.trim()) return;
+    if (!formDraft.name.trim()) {
+      setNameMissing(true);
+      return;
+    }
     const wineDraft = formDraftToWineDraft(formDraft);
     if (editingId) {
       updateEntry(editingId, wineDraft);
@@ -334,7 +339,7 @@ export function WineCellarClient() {
     filters.sort !== DEFAULT_WINE_FILTERS.sort ||
     filters.sortDirection !== DEFAULT_WINE_FILTERS.sortDirection;
 
-  const recentFiveStars = useMemo(
+  const recentTopRated = useMemo(
     () =>
       [...entries]
         .filter((entry) => entry.rating >= 4.5)
@@ -387,22 +392,23 @@ export function WineCellarClient() {
             </p>
           ) : null}
 
-          <div className="grid gap-8 xl:grid-cols-[minmax(0,1.7fr)_minmax(320px,0.92fr)]">
-            <div className="space-y-6">
-              <div className="flex flex-wrap items-end justify-between gap-3">
+          <div className="grid xl:grid-cols-[minmax(0,1.7fr)_minmax(320px,0.92fr)]" style={{ gap: "var(--c97-sp-4)" }}>
+            <div style={{ display: "flex", flexDirection: "column", gap: "var(--c97-sp-3)" }}>
+              <div className="flex flex-wrap items-end justify-between" style={{ gap: "var(--c97-sp-2)" }}>
                 <h2 className="c97-poster-sm">Tasting log</h2>
                 {hasEntries ? (
-                  <p className="c97-meta" style={{ margin: 0 }}>
+                  <p className="c97-meta c97-tabular" style={{ margin: 0 }}>
                     {visibleEntries.length} of {entries.length}
                   </p>
                 ) : null}
               </div>
 
-              <div className="grid gap-3 sm:grid-cols-2">
-                <label className="c97-wine-search" aria-label="Search wines">
+              <div className="grid sm:grid-cols-2" style={{ gap: "var(--c97-sp-2)" }}>
+                <label className="c97-wine-search">
                   <Search className="h-3.5 w-3.5" aria-hidden="true" style={{ color: "var(--c97-ink-2)" }} />
                   <input
                     type="search"
+                    aria-label="Search wines"
                     placeholder="Search by name, region, or notes…"
                     value={filters.search}
                     onChange={(event) =>
@@ -455,7 +461,7 @@ export function WineCellarClient() {
                 </label>
                 <div className="block">
                   <span id="wine-sort-label" className="c97-kicker">Sort by</span>
-                  <div className="flex items-center gap-2" style={{ marginTop: "var(--c97-sp-1)" }}>
+                  <div className="flex items-center" style={{ gap: "var(--c97-sp-1)", marginTop: "var(--c97-sp-1)" }}>
                     <select
                       aria-labelledby="wine-sort-label"
                       value={filters.sort}
@@ -495,7 +501,7 @@ export function WineCellarClient() {
                   type="button"
                   onClick={resetFilters}
                   className="c97-btn-ghost"
-                  style={{ gap: "var(--c97-sp-1)" }}
+                  style={{ gap: "var(--c97-sp-1)", alignSelf: "flex-start" }}
                 >
                   <Filter className="h-3 w-3" aria-hidden="true" />
                   Reset filters
@@ -566,8 +572,8 @@ export function WineCellarClient() {
 
             <aside
               aria-label="Wine cellar side panel"
-              className="space-y-6 xl:sticky xl:top-6"
-              style={{ alignSelf: "start" }}
+              className="xl:sticky xl:top-6"
+              style={{ alignSelf: "start", display: "flex", flexDirection: "column", gap: "var(--c97-sp-3)" }}
             >
               <div className="c97-panel" id="add-tasting">
                 <p
@@ -582,21 +588,39 @@ export function WineCellarClient() {
                   <Wine className="h-3 w-3" aria-hidden="true" />
                   {editingId ? "Edit bottle" : "Log a bottle"}
                 </p>
-                <form onSubmit={handleSubmit} className="grid gap-3">
+                <form onSubmit={handleSubmit} className="grid" style={{ gap: "var(--c97-sp-2)" }}>
                   <label className="block">
                     <span className="c97-kicker">Wine name</span>
                     <input
                       required
                       type="text"
                       value={formDraft.name}
-                      onChange={(event) =>
-                        setFormDraft((current) => ({ ...current, name: event.target.value }))
-                      }
+                      onChange={(event) => {
+                        setNameMissing(false);
+                        setFormDraft((current) => ({ ...current, name: event.target.value }));
+                      }}
+                      onInvalid={(event) => {
+                        // Swap the browser's bubble for the inline message below.
+                        event.preventDefault();
+                        setNameMissing(true);
+                      }}
+                      aria-invalid={nameMissing || undefined}
+                      aria-describedby={nameMissing ? "wine-name-error" : undefined}
                       placeholder="2018 Brunello di Montalcino"
                       className="c97-field"
                       style={{ marginTop: "var(--c97-sp-1)" }}
                     />
                   </label>
+                  {nameMissing ? (
+                    <p
+                      id="wine-name-error"
+                      role="alert"
+                      className="c97-prose"
+                      style={{ fontSize: "var(--c97-fs-small)", color: "var(--c97-negative)" }}
+                    >
+                      Give the bottle a name to log it.
+                    </p>
+                  ) : null}
                   <label className="block">
                     <span className="c97-kicker">Producer</span>
                     <input
@@ -610,7 +634,7 @@ export function WineCellarClient() {
                       style={{ marginTop: "var(--c97-sp-1)" }}
                     />
                   </label>
-                  <div className="grid gap-3 grid-cols-2">
+                  <div className="grid grid-cols-2" style={{ gap: "var(--c97-sp-2)" }}>
                     <label className="block">
                       <span className="c97-kicker">Vintage</span>
                       <input
@@ -675,7 +699,7 @@ export function WineCellarClient() {
                       style={{ marginTop: "var(--c97-sp-1)" }}
                     />
                   </label>
-                  <div className="grid gap-3 grid-cols-2">
+                  <div className="grid grid-cols-2" style={{ gap: "var(--c97-sp-2)" }}>
                     <label className="block">
                       <span className="c97-kicker">Price (USD)</span>
                       <input
@@ -752,10 +776,9 @@ export function WineCellarClient() {
                       style={{ marginTop: "var(--c97-sp-1)" }}
                     />
                   </label>
-                  <div className="flex flex-wrap items-center gap-2" style={{ paddingTop: "var(--c97-sp-1)" }}>
+                  <div className="flex flex-wrap items-center" style={{ gap: "var(--c97-sp-1)", paddingTop: "var(--c97-sp-1)" }}>
                     <button
                       type="submit"
-                      disabled={!formDraft.name.trim()}
                       className="c97-btn c97-offset flex-1"
                       style={{ justifyContent: "center", gap: "var(--c97-sp-1)" }}
                     >
@@ -777,7 +800,7 @@ export function WineCellarClient() {
                 </form>
               </div>
 
-              {recentFiveStars.length > 0 ? (
+              {recentTopRated.length > 0 ? (
                 <div className="c97-panel">
                   <p
                     className="c97-kicker"
@@ -789,10 +812,10 @@ export function WineCellarClient() {
                     }}
                   >
                     <Star className="h-3 w-3" aria-hidden="true" />
-                    Recent five-stars
+                    Recent 4.5+ stars
                   </p>
-                  <ul className="flex flex-col gap-2">
-                    {recentFiveStars.map((entry) => (
+                  <ul className="flex flex-col" style={{ gap: "var(--c97-sp-1)" }}>
+                    {recentTopRated.map((entry) => (
                       <li key={entry.id}>
                         <button
                           type="button"
@@ -843,18 +866,18 @@ export function WineCellarClient() {
           <div className="c97-shell">
             <h2 className="c97-poster-sm">What you&apos;ve been drinking</h2>
             <div className="c97-panel" style={{ marginTop: "var(--c97-sp-4)", maxWidth: "36rem" }}>
-              <div className="space-y-3">
+              <div style={{ display: "flex", flexDirection: "column", gap: "var(--c97-sp-2)" }}>
                 {summary.typeBreakdown.map((bucket) => {
                   const share =
                     summary.totalWines > 0 ? (bucket.count / summary.totalWines) * 100 : 0;
                   return (
                     <div key={bucket.type}>
-                      <div className="flex items-center justify-between gap-3">
+                      <div className="flex items-center justify-between" style={{ gap: "var(--c97-sp-2)" }}>
                         <span className="c97-wine-type">
                           <TypeSwatch type={bucket.type} />
                           {WINE_TYPE_LABELS[bucket.type]}
                         </span>
-                        <span className="c97-meta" style={{ margin: 0 }}>
+                        <span className="c97-meta c97-tabular" style={{ margin: 0 }}>
                           {bucket.count} · avg {bucket.averageRating.toFixed(1)}
                         </span>
                       </div>

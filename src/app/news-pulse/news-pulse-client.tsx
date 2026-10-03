@@ -40,6 +40,7 @@ import {
 } from "./news-pulse-state";
 import { DATE_TIME_FORMATTER } from "@/lib/date-formatters";
 import { useClientNow } from "@/hooks/useClientNow";
+import { useTablistKeyboard } from "@/hooks/useTablistKeyboard";
 import "./news-pulse.css";
 import { groupBy } from "@/lib/utils";
 
@@ -123,8 +124,8 @@ function SourceDropdown({
 }) {
   return (
     <label
-      className="inline-flex min-h-[44px] cursor-pointer items-center gap-2 border px-4 py-2 text-sm font-semibold focus-within:outline focus-within:outline-2 focus-within:outline-offset-2"
-      style={{ borderColor: "var(--c97-rule)", background: "var(--c97-field)", color: "var(--c97-ink)" }}
+      className="inline-flex min-h-[44px] cursor-pointer items-center border text-sm font-semibold focus-within:outline focus-within:outline-2 focus-within:outline-offset-2"
+      style={{ paddingInline: "var(--c97-sp-2)", paddingBlock: "var(--c97-sp-1)", gap: "var(--c97-sp-1)", borderColor: "var(--c97-rule)", background: "var(--c97-field)", color: "var(--c97-ink)" }}
     >
       <span className="c97-kicker" style={{ marginBottom: 0 }}>
         Source
@@ -269,6 +270,7 @@ export function NewsPulseClient({
   const topicClusters = useMemo(() => extractTopics(articles), [articles]);
   const sourceIds = useMemo(() => getOrderedSourcesForArticles(articles), [articles]);
 
+  const onViewTabKey = useTablistKeyboard(VIEW_OPTIONS, (view) => updateRouteState({ view }));
   const lead = PROJECT_PRESS[NEWS_PULSE_ROUTE].lead;
   const standfirst =
     "I built News Pulse to get a fast read on what major outlets are choosing to emphasize right now. It pulls six RSS feeds into one editorial desk, then layers on lightweight topic, tone, readability, and story-cluster signals so I can compare framing before I read deeply.";
@@ -312,16 +314,17 @@ export function NewsPulseClient({
         <div className="c97-shell">
           <h2 className="c97-poster-sm">The desk</h2>
 
-          <div className="mt-5 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between" style={{ marginTop: "var(--c97-sp-2)", gap: "var(--c97-sp-1)" }}>
             <div className="c97-segmented" role="tablist" aria-label="News Pulse tabs">
-              {VIEW_OPTIONS.map((view) => (
+              {VIEW_OPTIONS.map((view, index) => (
                 <button
                   key={view}
                   type="button"
                   role="tab"
                   id={`news-pulse-tab-${view}`}
-                  aria-controls={`news-pulse-tabpanel-${view}`}
+                  aria-controls={routeState.view === view ? `news-pulse-tabpanel-${view}` : undefined}
                   aria-selected={routeState.view === view}
+                  onKeyDown={(event) => onViewTabKey(event, index)}
                   onClick={() => updateRouteState({ view })}
                   className="min-h-[44px] text-sm font-semibold"
                 >
@@ -342,8 +345,12 @@ export function NewsPulseClient({
             <div
               role="status"
               aria-live="polite"
-              className="mt-5 flex items-start gap-3 px-5 py-4"
+              className="flex items-start"
               style={{
+                paddingInline: "var(--c97-sp-2)",
+                paddingBlock: "var(--c97-sp-2)",
+                marginTop: "var(--c97-sp-2)",
+                gap: "var(--c97-sp-1)",
                 border: "1px solid var(--c97-warning)",
                 background: "var(--c97-panel)",
               }}
@@ -354,10 +361,10 @@ export function NewsPulseClient({
                 aria-hidden="true"
               />
               <div>
-                <p className="mb-1 text-sm font-semibold" style={{ color: "var(--c97-ink)" }}>
+                <p className="text-sm font-semibold" style={{ color: "var(--c97-ink)", marginBottom: "var(--c97-sp-0)" }}>
                   Some feeds did not come through on this refresh.
                 </p>
-                <p className="mb-0 text-sm leading-7" style={{ color: "var(--c97-ink-2)" }}>
+                <p className="text-sm leading-7" style={{ color: "var(--c97-ink-2)", marginBottom: "0" }}>
                   {feedErrors.join("; ")}
                 </p>
               </div>
@@ -365,7 +372,7 @@ export function NewsPulseClient({
           ) : null}
 
           <div
-            className="mt-6"
+            style={{ marginTop: "var(--c97-sp-3)" }}
             role="tabpanel"
             id={`news-pulse-tabpanel-${routeState.view}`}
             aria-labelledby={`news-pulse-tab-${routeState.view}`}
@@ -600,14 +607,14 @@ function CoverageView({
               return (
                 <li
                   key={topic.topic}
-                  className="grid items-center gap-3 border p-3 sm:grid-cols-[1.75rem_minmax(0,1fr)_auto]"
-                  style={{ borderColor: "var(--c97-rule)", background: "var(--c97-field)" }}
+                  className="grid items-center border sm:grid-cols-[1.75rem_minmax(0,1fr)_auto]"
+                  style={{ padding: "var(--c97-sp-1)", gap: "var(--c97-sp-1)", borderColor: "var(--c97-rule)", background: "var(--c97-field)" }}
                 >
                   <span className="c97-mono text-sm font-semibold" style={{ color: "var(--c97-ink-2)" }}>
                     {String(index + 1).padStart(2, "0")}
                   </span>
                   <div className="min-w-0">
-                    <div className="flex items-baseline justify-between gap-3">
+                    <div className="flex items-baseline justify-between" style={{ gap: "var(--c97-sp-1)" }}>
                       <span className="truncate text-sm font-semibold capitalize" style={{ color: "var(--c97-ink)" }}>
                         {topic.topic}
                       </span>
@@ -615,11 +622,11 @@ function CoverageView({
                         {topic.count} headlines
                       </span>
                     </div>
-                    <span className="mt-1.5 block h-1.5 overflow-hidden" style={{ background: "var(--c97-rule)" }}>
+                    <span className="block h-1.5 overflow-hidden" style={{ background: "var(--c97-rule)", marginTop: "var(--c97-sp-0)" }}>
                       <span className="block h-full" style={{ width: `${pct}%`, background: "var(--c97-accent)" }} />
                     </span>
                   </div>
-                  <div className="flex flex-wrap items-center gap-1.5 sm:justify-end">
+                  <div className="flex flex-wrap items-center sm:justify-end" style={{ gap: "var(--c97-sp-0)" }}>
                     {coveringSources.map((source) => (
                       <span
                         key={source}
@@ -649,7 +656,7 @@ function CoverageView({
           </p>
 
           <div
-            className="mt-6 overflow-x-auto"
+            className="overflow-x-auto" style={{ marginTop: "var(--c97-sp-3)" }}
             role="region"
             aria-label="Story clusters by outlet (scrollable)"
             tabIndex={0}
@@ -705,8 +712,8 @@ function CoverageView({
                         href={cluster.representative.link}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="c97-news-headline inline-flex items-start gap-2"
-                        style={{ textDecoration: "none" }}
+                        className="c97-news-headline inline-flex items-start"
+                        style={{ gap: "var(--c97-sp-1)", textDecoration: "none" }}
                       >
                         <span className="text-sm font-semibold">
                           {cluster.representative.title}
@@ -820,7 +827,7 @@ function AnalysisView({ articles }: { articles: NewsArticle[] }) {
   }
 
   return (
-    <div className="grid gap-6 lg:grid-cols-2">
+    <div className="grid lg:grid-cols-2" style={{ gap: "var(--c97-sp-3)" }}>
       <div className="c97-panel" style={{ padding: "var(--c97-sp-5)" }}>
         <h2 className="c97-poster-sm">Tone distribution by outlet</h2>
         <p className="c97-kicker" style={{ marginTop: "var(--c97-sp-3)" }}>
@@ -830,7 +837,7 @@ function AnalysisView({ articles }: { articles: NewsArticle[] }) {
           I read this as directional framing pressure, not article-level sentiment.
         </p>
 
-        <div className="mt-6 space-y-5">
+        <div className="flex flex-col" style={{ marginTop: "var(--c97-sp-3)", gap: "var(--c97-sp-2)" }}>
           {sourceIds.map((source) => {
             const sourceData = sentimentBySource[source];
             if (!sourceData) return null;
@@ -841,7 +848,7 @@ function AnalysisView({ articles }: { articles: NewsArticle[] }) {
 
             return (
               <div key={source}>
-                <div className="mb-2 flex items-center justify-between gap-3">
+                <div className="flex items-center justify-between" style={{ marginBottom: "var(--c97-sp-1)", gap: "var(--c97-sp-1)" }}>
                   <span className="text-sm font-semibold" style={{ color: "var(--c97-ink)" }}>
                     {SOURCE_META[source].name}
                   </span>
@@ -857,18 +864,18 @@ function AnalysisView({ articles }: { articles: NewsArticle[] }) {
                 </div>
 
                 <div
-                  className="mt-2 flex flex-wrap gap-x-4 gap-y-1 text-2xs font-semibold uppercase tracking-[0.12em]"
-                  style={{ color: "var(--c97-ink-2)" }}
+                  className="flex flex-wrap text-2xs font-semibold uppercase tracking-[0.12em]"
+                  style={{ marginTop: "var(--c97-sp-1)", rowGap: "var(--c97-sp-0)", columnGap: "var(--c97-sp-2)", color: "var(--c97-ink-2)" }}
                 >
-                  <span className="inline-flex items-center gap-1.5">
+                  <span className="inline-flex items-center" style={{ gap: "var(--c97-sp-0)" }}>
                     <span className="h-2.5 w-2.5" style={{ background: "var(--c97-positive)" }} aria-hidden="true" />
                     {positivePercent}% positive
                   </span>
-                  <span className="inline-flex items-center gap-1.5">
+                  <span className="inline-flex items-center" style={{ gap: "var(--c97-sp-0)" }}>
                     <span className="h-2.5 w-2.5" style={{ background: "var(--c97-rule)" }} aria-hidden="true" />
                     {neutralPercent}% neutral
                   </span>
-                  <span className="inline-flex items-center gap-1.5">
+                  <span className="inline-flex items-center" style={{ gap: "var(--c97-sp-0)" }}>
                     <span className="h-2.5 w-2.5" style={{ background: "var(--c97-negative)" }} aria-hidden="true" />
                     {negativePercent}% negative
                   </span>
@@ -888,7 +895,7 @@ function AnalysisView({ articles }: { articles: NewsArticle[] }) {
           Longer headlines usually signal more context, but sometimes they just mean more hedging.
         </p>
 
-        <div className="mt-6 space-y-5">
+        <div className="flex flex-col" style={{ marginTop: "var(--c97-sp-3)", gap: "var(--c97-sp-2)" }}>
           {sourceIds.map((source) => {
             const sourceData = headlineLengthBySource[source];
             if (!sourceData) return null;
@@ -898,7 +905,7 @@ function AnalysisView({ articles }: { articles: NewsArticle[] }) {
 
             return (
               <div key={source}>
-                <div className="mb-2 flex items-center justify-between gap-3">
+                <div className="flex items-center justify-between" style={{ marginBottom: "var(--c97-sp-1)", gap: "var(--c97-sp-1)" }}>
                   <span className="text-sm font-semibold" style={{ color: "var(--c97-ink)" }}>
                     {SOURCE_META[source].name}
                   </span>
@@ -926,7 +933,7 @@ function AnalysisView({ articles }: { articles: NewsArticle[] }) {
           more clauses packed into the headline.
         </p>
 
-        <div className="mt-6 grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
+        <div className="grid sm:grid-cols-2 xl:grid-cols-3" style={{ marginTop: "var(--c97-sp-3)", gap: "var(--c97-sp-2)" }}>
           {sourceIds.map((source) => {
             const sourceData = readabilityBySource[source];
             if (!sourceData) return null;
@@ -938,10 +945,10 @@ function AnalysisView({ articles }: { articles: NewsArticle[] }) {
             return (
               <div
                 key={source}
-                className="border px-4 py-4"
-                style={{ borderColor: "var(--c97-rule)", background: "var(--c97-field)" }}
+                className="border"
+                style={{ paddingInline: "var(--c97-sp-2)", paddingBlock: "var(--c97-sp-2)", borderColor: "var(--c97-rule)", background: "var(--c97-field)" }}
               >
-                <div className="flex items-center gap-4">
+                <div className="flex items-center" style={{ gap: "var(--c97-sp-2)" }}>
                   {/* The outlet colour is data with no contrast promise, so it
                       rides on a swatch by the name and the score stays in ink. */}
                   <span
@@ -952,7 +959,7 @@ function AnalysisView({ articles }: { articles: NewsArticle[] }) {
                   </span>
 
                   <div>
-                    <p className="mb-1 inline-flex items-center gap-2 text-sm font-semibold" style={{ color: "var(--c97-ink)" }}>
+                    <p className="inline-flex items-center text-sm font-semibold" style={{ gap: "var(--c97-sp-1)", color: "var(--c97-ink)", marginBottom: "var(--c97-sp-0)" }}>
                       <span
                         aria-hidden="true"
                         style={{ width: 10, height: 10, background: SOURCE_META[source].color, display: "inline-block", flexShrink: 0 }}
@@ -960,8 +967,8 @@ function AnalysisView({ articles }: { articles: NewsArticle[] }) {
                       {SOURCE_META[source].name}
                     </p>
                     <p
-                      className="mb-0 text-2xs font-semibold uppercase tracking-[0.12em]"
-                      style={getReadabilityTone(averageScore)}
+                      className="text-2xs font-semibold uppercase tracking-[0.12em]"
+                      style={{ ...getReadabilityTone(averageScore), marginBottom: 0 }}
                     >
                       {readabilityLabel}
                     </p>

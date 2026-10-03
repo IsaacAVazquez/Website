@@ -1,7 +1,11 @@
 import { StructuredData } from "@/components/StructuredData";
 import { scorePoolsSnapshot } from "@/data/scorePoolsSnapshot";
 import { getScorePoolsSnapshotData } from "@/lib/scorePoolsSnapshot";
-import { constructMetadata, generateBreadcrumbStructuredData } from "@/lib/seo";
+import {
+  constructMetadata,
+  freeApplicationOffer,
+  generateBreadcrumbStructuredData,
+} from "@/lib/seo";
 import { ScorePoolsClient } from "./score-pools-client";
 import { getScorePoolsModifiedDate } from "./score-pools-metadata";
 
@@ -59,6 +63,7 @@ export default async function ScorePoolsPage({ searchParams }: ScorePoolsPagePro
             "Leaderboard-aware recommendations with protect and chase postures",
             "Timestamped odds history with line-movement summaries",
           ],
+          offers: freeApplicationOffer,
         }}
       />
       <ScorePoolsClient snapshot={snapshot} initialFixtureId={validFixture} />

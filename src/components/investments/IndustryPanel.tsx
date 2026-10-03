@@ -44,7 +44,10 @@ function Indicator({ metric, value, avg }: { metric: string; value: number | und
         : "bg-[color-mix(in_srgb,var(--c97-negative)_11%,var(--c97-panel))] text-[color-mix(in_srgb,var(--c97-negative)_70%,var(--c97-ink))]";
   const sign = pct > 0 ? "+" : pct < 0 ? "−" : "";
   return (
-    <span className={`ml-2 inline-flex items-center text-xs font-medium px-1.5 py-0.5 ${tone}`}>
+    <span
+      className={`inline-flex items-center text-xs font-medium py-0.5 ${tone}`}
+      style={{ marginLeft: "var(--c97-sp-1)", paddingInline: "var(--c97-sp-0)" }}
+    >
       {sign}{Math.abs(pct).toFixed(1)}% vs industry
     </span>
   );
@@ -56,12 +59,12 @@ export function IndustryPanel({ symbol }: Props) {
 
   return (
     <TerminalPanel padding="sm">
-      <h3 className="text-sm font-semibold text-[var(--c97-ink)] mb-3">
-        Industry Comparison
+      <h3 className="text-sm font-semibold text-[var(--c97-ink)]" style={{ marginBottom: "var(--c97-sp-1)" }}>
+        Industry comparison
       </h3>
 
       {isLoading && (
-        <div className="space-y-2" role="status" aria-busy="true">
+        <div className="flex flex-col" style={{ rowGap: "var(--c97-sp-1)" }} role="status" aria-busy="true">
           <span className="sr-only">Loading industry comparison</span>
           {Array.from({ length: 6 }).map((_, i) => (
             <span key={i} className="c97-skeleton" style={{ height: 40 }} />
@@ -78,23 +81,23 @@ export function IndustryPanel({ symbol }: Props) {
           <table className="w-full text-sm min-w-[400px]" aria-label="Industry comparison table">
             <thead>
               <tr className="border-b border-[var(--c97-rule)]">
-                <th className="text-left py-2 text-[var(--c97-label)] font-medium">Metric</th>
-                <th className="text-right py-2 text-[var(--c97-label)] font-medium">This Stock</th>
-                <th className="text-right py-2 text-[var(--c97-label)] font-medium">Industry Avg</th>
-                <th className="text-right py-2 text-[var(--c97-label)] font-medium">vs Avg</th>
+                <th className="text-left text-[var(--c97-label)] font-medium" style={{ paddingBlock: "var(--c97-sp-1)" }}>Metric</th>
+                <th className="text-right text-[var(--c97-label)] font-medium" style={{ paddingBlock: "var(--c97-sp-1)" }}>This stock</th>
+                <th className="text-right text-[var(--c97-label)] font-medium" style={{ paddingBlock: "var(--c97-sp-1)" }}>Industry avg</th>
+                <th className="text-right text-[var(--c97-label)] font-medium" style={{ paddingBlock: "var(--c97-sp-1)" }}>vs Avg</th>
               </tr>
             </thead>
             <tbody>
               {rows.map((row, i) => (
                 <tr key={i} className="border-b border-[var(--c97-rule)] last:border-0 hover:bg-[var(--c97-panel)] transition-colors">
-                  <td className="py-2.5 text-[var(--c97-ink-2)]">{row.metric}</td>
-                  <td className="py-2.5 text-right font-medium text-[var(--c97-ink)]">
+                  <td className="text-[var(--c97-ink-2)]" style={{ paddingBlock: "var(--c97-sp-1)" }}>{row.metric}</td>
+                  <td className="text-right font-medium text-[var(--c97-ink)]" style={{ paddingBlock: "var(--c97-sp-1)" }}>
                     {formatComparisonMetricValue(row.metric, row.value)}
                   </td>
-                  <td className="py-2.5 text-right text-[var(--c97-ink-2)]">
+                  <td className="text-right text-[var(--c97-ink-2)]" style={{ paddingBlock: "var(--c97-sp-1)" }}>
                     {formatComparisonMetricValue(row.metric, row.industryAvg)}
                   </td>
-                  <td className="py-2.5 text-right">
+                  <td className="text-right" style={{ paddingBlock: "var(--c97-sp-1)" }}>
                     <Indicator metric={row.metric} value={row.value} avg={row.industryAvg} />
                   </td>
                 </tr>

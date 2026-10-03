@@ -78,7 +78,7 @@ export function DataFreshnessIndicator({
 
   if (lastUpdated === null) {
     return (
-      <div className="inline-flex items-center gap-2">
+      <div className="inline-flex items-center" style={{ gap: "var(--c97-sp-1)" }}>
         <div
           className="w-2 h-2"
           style={{ backgroundColor: "var(--c97-negative)" }}
@@ -125,7 +125,7 @@ export function DataFreshnessIndicator({
   const color = relative?.color ?? "var(--c97-label)";
 
   return (
-    <div className="inline-flex items-center gap-2">
+    <div className="inline-flex items-center" style={{ gap: "var(--c97-sp-1)" }}>
       <div
         className="w-2 h-2"
         style={{ backgroundColor: color }}

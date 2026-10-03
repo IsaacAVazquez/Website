@@ -10,7 +10,7 @@
     "update:football": "npm run update:premier-league && sleep 30 && npm run update:la-liga",
     "build": "next build --webpack",
     "build:fantasy-companion": "vite build --config extension/vite.config.ts && node scripts/buildFantasyCompanionExtension.mjs",
-    "postbuild": "npm run generate:sitemap && node scripts/patch-nft-sharp.mjs",
+    "postbuild": "npm run generate:sitemap && npm run build:llms && node scripts/patch-nft-sharp.mjs",
     "start": "next start",
     "lint": "eslint src",
     "typecheck": "tsc --noEmit --pretty false",
@@ -50,6 +50,7 @@
     "update:article-images": "tsx scripts/buildArticleCoverImages.ts",
     "check:blog-dates": "tsx scripts/checkBlogDateReview.ts",
     "generate:sitemap": "node scripts/generatePublicSitemap.mjs",
+    "build:llms": "node scripts/buildLlmsFull.mjs",
     "submit:indexnow": "node scripts/submitIndexNow.mjs"
   },
   "dependencies": {

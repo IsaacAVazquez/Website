@@ -24,15 +24,15 @@ export function StatFascia({
       className={`grid grid-cols-2 gap-px border border-[var(--c97-rule)] bg-[var(--c97-rule)] sm:grid-cols-4 ${className}`.trim()}
     >
       {items.map((item) => (
-        <div key={item.eyebrow} className="min-w-0 bg-[var(--c97-surface)] px-3 py-2.5">
+        <div key={item.eyebrow} className="min-w-0 bg-[var(--c97-surface)]" style={{ padding: "var(--c97-sp-1)" }}>
           <p className="truncate font-mono text-3xs font-normal uppercase tracking-[0.12em] text-[var(--c97-ink-2)]">
             {item.eyebrow}
           </p>
-          <p className="mt-2 font-mono text-base tabular-nums text-[var(--c97-ink)]">
+          <p className="font-mono text-base tabular-nums text-[var(--c97-ink)]" style={{ marginTop: "var(--c97-sp-1)" }}>
             {item.metric}
           </p>
           {item.detail ? (
-            <p className="mt-1 truncate text-sm tabular-nums text-[var(--c97-ink-2)]">{item.detail}</p>
+            <p className="truncate text-sm tabular-nums text-[var(--c97-ink-2)]" style={{ marginTop: "var(--c97-sp-0)" }}>{item.detail}</p>
           ) : null}
         </div>
       ))}

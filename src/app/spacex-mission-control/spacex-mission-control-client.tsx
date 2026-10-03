@@ -13,6 +13,7 @@ import type {
 } from "@/types/spacex";
 import { Catalog97ProjectHero } from "@/components/catalog97/Catalog97ProjectHero";
 import { PROJECT_PRESS } from "@/constants/projectPress";
+import { useTablistKeyboard } from "@/hooks/useTablistKeyboard";
 import { MissionControlHero } from "@/components/spacex/MissionControlHero";
 import { MissionLaunchBoard } from "@/components/spacex/MissionLaunchBoard";
 import { MissionLaunchTape } from "@/components/spacex/MissionLaunchTape";
@@ -507,6 +508,7 @@ export function SpaceXMissionControlClient({
     updateRouteState({ launch: null, panel: DEFAULT_MISSION_CONTROL_STATE.panel });
   }
 
+  const onSectionTabKey = useTablistKeyboard(SECTION_OPTIONS, (option) => setSection(option.key));
   const lead = PROJECT_PRESS[MISSION_CONTROL_ROUTE].lead;
   const standfirst =
     "I built this launch board like an operations room, with the next mission, the launch queue, and a detail panel for rockets, crew, payloads, capsules, and pads. Everything stays connected so I don't lose the thread when I drill in.";
@@ -538,17 +540,18 @@ export function SpaceXMissionControlClient({
 
       <section className="c97-band c97-sheet" data-c97-surface="paper" data-seam="torn">
         <div className="c97-shell">
-          <div className="flex flex-wrap items-center gap-3">
+          <h2 className="c97-poster-sm" style={{ marginBottom: "var(--c97-sp-2)" }}>The launch record</h2>
+          <div className="flex flex-wrap items-center" style={{ gap: "var(--c97-sp-1)" }}>
             <button
               type="button"
               onClick={handleRetryAll}
-              className="tap-target inline-flex items-center gap-2 border border-[var(--c97-rule)] bg-[var(--c97-field)] px-4 py-3 text-sm font-semibold text-[var(--c97-ink)] transition hover:border-[var(--c97-accent)] hover:text-[var(--c97-accent)]"
+              className="tap-target inline-flex items-center border border-[var(--c97-rule)] bg-[var(--c97-field)] text-sm font-semibold text-[var(--c97-ink)] transition hover:border-[var(--c97-accent)] hover:text-[var(--c97-accent)]" style={{ paddingInline: "var(--c97-sp-2)", paddingBlock: "var(--c97-sp-1)", gap: "var(--c97-sp-1)" }}
             >
-              <RefreshCcw className="h-4 w-4" />
+              <RefreshCcw aria-hidden="true" className="h-4 w-4" />
               Refresh data
             </button>
-            <div className="inline-flex min-h-[44px] items-center gap-2 border border-[var(--c97-rule)] bg-[var(--c97-surface)] px-4 py-3 text-sm text-[var(--c97-ink-2)]">
-              <DatabaseZap className="h-4 w-4 text-[var(--c97-accent)]" />
+            <div className="inline-flex min-h-[44px] items-center border border-[var(--c97-rule)] bg-[var(--c97-surface)] text-sm text-[var(--c97-ink-2)]" style={{ paddingInline: "var(--c97-sp-2)", paddingBlock: "var(--c97-sp-1)", gap: "var(--c97-sp-1)" }}>
+              <DatabaseZap aria-hidden="true" className="h-4 w-4 text-[var(--c97-accent)]" />
               {liveStatusLabel}
             </div>
           </div>
@@ -556,8 +559,8 @@ export function SpaceXMissionControlClient({
           {hasPartialDataIssue ? (
             <div
               role="status"
-              className="mt-4 flex items-start gap-3 px-4 py-3 text-sm leading-6 text-[var(--c97-ink-2)]"
-              style={{ border: "1px solid var(--c97-warning)", background: "var(--c97-panel)" }}
+              className="flex items-start text-sm leading-6 text-[var(--c97-ink-2)]"
+              style={{ paddingInline: "var(--c97-sp-2)", paddingBlock: "var(--c97-sp-1)", marginTop: "var(--c97-sp-2)", gap: "var(--c97-sp-1)", border: "1px solid var(--c97-warning)", background: "var(--c97-panel)" }}
             >
               <AlertTriangle
                 aria-hidden="true"
@@ -573,14 +576,14 @@ export function SpaceXMissionControlClient({
             </div>
           ) : null}
 
-          <div className="mt-5">
+          <div style={{ marginTop: "var(--c97-sp-2)" }}>
             <MissionLaunchTape
               recentLaunches={tapeRecentLaunches}
               upcomingLaunches={tapeUpcomingLaunches}
             />
           </div>
 
-          <div className="mt-5 space-y-4">
+          <div className="flex flex-col" style={{ marginTop: "var(--c97-sp-2)", gap: "var(--c97-sp-2)" }}>
             <MissionStatFascia cells={statFasciaCells} />
             <MissionCadenceStrip cadence={cadence} />
           </div>
@@ -589,9 +592,10 @@ export function SpaceXMissionControlClient({
 
       <section className="c97-band c97-sheet" data-c97-surface="bone" data-seam="deckle">
         <div className="c97-shell">
+          <h2 className="c97-poster-sm" style={{ marginBottom: "var(--c97-sp-2)" }}>Manifest, vehicles, and recovery</h2>
           <div>
             <div role="tablist" aria-label="Mission control sections" className="c97-segmented">
-              {SECTION_OPTIONS.map((option) => (
+              {SECTION_OPTIONS.map((option, index) => (
                 <button
                   key={option.key}
                   type="button"
@@ -599,6 +603,7 @@ export function SpaceXMissionControlClient({
                   id={`mission-section-tab-${option.key}`}
                   aria-selected={section === option.key}
                   aria-controls="mission-section-panel"
+                  onKeyDown={(event) => onSectionTabKey(event, index)}
                   onClick={() => setSection(option.key)}
                   className="min-h-[44px] text-sm font-semibold"
                 >
@@ -609,7 +614,7 @@ export function SpaceXMissionControlClient({
           </div>
 
           <div
-            className="mt-5"
+            style={{ marginTop: "var(--c97-sp-2)" }}
             role="tabpanel"
             id="mission-section-panel"
             aria-labelledby={`mission-section-tab-${section}`}
@@ -646,7 +651,7 @@ export function SpaceXMissionControlClient({
 
       <section className="c97-band c97-sheet" data-c97-surface="paper" data-seam="torn">
         <div className="c97-shell">
-          <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-1)" }}>Data source</p>
+          <h2 className="c97-poster-sm" style={{ marginBottom: "var(--c97-sp-2)" }}>Data source</h2>
           <p className="c97-prose">
             This dashboard runs on a checked-in snapshot of Launch Library 2
             data from The Space Devs, served through this site&apos;s own API

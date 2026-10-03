@@ -15,7 +15,7 @@ export async function generateMetadata(): Promise<Metadata> {
     title: "Changelog",
     description:
       "A running log of what I've shipped on this site, including new features, fixes, essays, data updates, and the experiments I kept or retired.",
-    canonicalUrl: "https://isaacvazquez.com/changelog",
+    canonicalUrl: "/changelog",
     dateModified:
       latest && latest > interfaceUpdatedAt ? latest : interfaceUpdatedAt,
   });
@@ -23,6 +23,10 @@ export async function generateMetadata(): Promise<Metadata> {
 
 export default async function ChangelogPage() {
   const entries = await getAllChangelogEntries();
+  const latest = getLatestChangelogEntryDate();
+  const interfaceUpdatedAt = "2026-07-23";
+  const dateModified =
+    latest && latest > interfaceUpdatedAt ? latest : interfaceUpdatedAt;
 
   const breadcrumbs = [
     { name: "Home", url: "/" },
@@ -37,6 +41,16 @@ export default async function ChangelogPage() {
           items: (generateBreadcrumbStructuredData(breadcrumbs) as {
             itemListElement: object[];
           }).itemListElement,
+        }}
+      />
+      <StructuredData
+        type="WebPage"
+        data={{
+          title: "Changelog",
+          description:
+            "A running log of shipped features, fixes, essays, data updates, and experiments on isaacvazquez.com.",
+          url: "https://isaacvazquez.com/changelog",
+          dateModified,
         }}
       />
 
@@ -58,9 +72,9 @@ export default async function ChangelogPage() {
               maxWidth: "var(--c97-measure-wide)",
             }}
           >
-            A running log of changes to this site. Features, fixes, writing,
-            and the occasional cleanup. Built in public on purpose. For the
-            current focus, see the{" "}
+            A running log of changes to this site, from features and fixes to
+            writing and the occasional cleanup, and I keep it in public on
+            purpose. For the current focus, see the{" "}
             <Link href="/now" className="c97-link">
               /now page
             </Link>

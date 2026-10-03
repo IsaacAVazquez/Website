@@ -130,6 +130,15 @@ export function TravelPlannerClient() {
   const tripNameInputRef = useRef<HTMLInputElement>(null);
   const [tripDraft, setTripDraft] = useState({ name: "", destination: "", startDate: today, endDate: today });
   const [showTripForm, setShowTripForm] = useState(false);
+  // Which delete button is armed, as "active:<id>" or "row:<id>". A second
+  // click deletes, "Keep it" disarms, and focus returns to a control that stays.
+  const [confirmingDelete, setConfirmingDelete] = useState<string | null>(null);
+  const newTripButtonRef = useRef<HTMLButtonElement>(null);
+  const confirmDeleteTrip = (id: string) => {
+    removeTrip(id);
+    setConfirmingDelete(null);
+    newTripButtonRef.current?.focus();
+  };
 
   function openTripForm() {
     setShowTripForm(true);
@@ -143,9 +152,11 @@ export function TravelPlannerClient() {
 
   const [activityDraft, setActivityDraft] = useState<ActivityDraft>(() => emptyActivityDraft(defaultActivityDate));
   const [editingActivityId, setEditingActivityId] = useState<string | null>(null);
+  const [activityTitleMissing, setActivityTitleMissing] = useState(false);
 
   const [journalDraft, setJournalDraft] = useState<JournalDraft>(() => emptyJournalDraft(defaultActivityDate));
   const [editingJournalId, setEditingJournalId] = useState<string | null>(null);
+  const [journalEmpty, setJournalEmpty] = useState(false);
 
   const [lastTripContext, setLastTripContext] = useState({ tripId: activeTripId, date: defaultActivityDate });
   if (lastTripContext.tripId !== activeTripId || lastTripContext.date !== defaultActivityDate) {
@@ -160,11 +171,13 @@ export function TravelPlannerClient() {
 
   function resetActivityDraft() {
     setEditingActivityId(null);
+    setActivityTitleMissing(false);
     setActivityDraft(emptyActivityDraft(defaultActivityDate));
   }
 
   function resetJournalDraft() {
     setEditingJournalId(null);
+    setJournalEmpty(false);
     setJournalDraft(emptyJournalDraft(defaultActivityDate));
   }
 
@@ -206,7 +219,11 @@ export function TravelPlannerClient() {
   function handleSubmitActivity(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     if (!activeTrip) return;
-    if (!activityDraft.title.trim() || !activityDraft.date) return;
+    if (!activityDraft.title.trim()) {
+      setActivityTitleMissing(true);
+      return;
+    }
+    if (!activityDraft.date) return;
     if (endTimeInvalid) return;
     if (editingActivityId) {
       updateActivity(activeTrip.id, editingActivityId, activityDraft);
@@ -219,7 +236,10 @@ export function TravelPlannerClient() {
   function handleSubmitJournal(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     if (!activeTrip) return;
-    if (!journalDraft.title.trim() && !journalDraft.body.trim()) return;
+    if (!journalDraft.title.trim() && !journalDraft.body.trim()) {
+      setJournalEmpty(true);
+      return;
+    }
     if (editingJournalId) {
       updateJournal(activeTrip.id, editingJournalId, journalDraft);
     } else {
@@ -280,13 +300,13 @@ export function TravelPlannerClient() {
         aria-label="Day-by-day itinerary"
       >
         <div className="c97-shell">
-          <div className="flex flex-wrap items-end justify-between gap-3">
+          <div className="flex flex-wrap items-end justify-between" style={{ gap: "var(--c97-sp-2)" }}>
             <div>
               <p className="c97-kicker">Day by day</p>
               <h2 className="c97-poster-sm">Itinerary</h2>
             </div>
             {summary ? (
-              <p className="c97-meta">
+              <p className="c97-meta c97-tabular">
                 {summary.activitiesCompleted}/{summary.activitiesTotal} stops checked off
               </p>
             ) : null}
@@ -299,15 +319,15 @@ export function TravelPlannerClient() {
             </p>
           ) : null}
 
-          <div className="grid gap-8" style={{ marginTop: "var(--c97-sp-4)" }}>
-            <div className="xl:grid xl:grid-cols-[minmax(0,1.7fr)_minmax(300px,0.9fr)] gap-8">
+          <div className="grid" style={{ gap: "var(--c97-sp-4)", marginTop: "var(--c97-sp-4)" }}>
+            <div className="xl:grid xl:grid-cols-[minmax(0,1.7fr)_minmax(300px,0.9fr)]" style={{ gap: "var(--c97-sp-4)" }}>
               <div>
                 {!activeTrip ? (
                   <p className="c97-prose">Start a trip above to plan its first day.</p>
                 ) : summary && summary.activitiesTotal === 0 ? (
                   <p className="c97-prose">No stops yet. Add the first one with the Add stop form.</p>
                 ) : (
-                  <div className="flex flex-col gap-5">
+                  <div className="flex flex-col" style={{ gap: "var(--c97-sp-3)" }}>
                     {summary?.dayBuckets.map((bucket) => (
                       <DayList key={bucket.date} bucket={bucket} today={today} onToggle={(id) => activeTrip && toggleActivity(activeTrip.id, id)} onEdit={handleEditActivity} onRemove={(id) => {
                         if (!activeTrip) return;
@@ -319,7 +339,7 @@ export function TravelPlannerClient() {
                 )}
               </div>
 
-              <aside className="mt-6 xl:mt-0">
+              <aside className="mt-[var(--c97-sp-3)] xl:mt-0">
                 <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-2)" }}>
                   {editingActivityId ? "Edit stop" : "Add stop"}
                 </p>
@@ -330,12 +350,22 @@ export function TravelPlannerClient() {
                       <input
                         type="text"
                         value={activityDraft.title}
-                        onChange={(e) => setActivityDraft((d) => ({ ...d, title: e.target.value }))}
+                        onChange={(e) => {
+                          setActivityTitleMissing(false);
+                          setActivityDraft((d) => ({ ...d, title: e.target.value }));
+                        }}
+                        aria-invalid={activityTitleMissing || undefined}
+                        aria-describedby={activityTitleMissing ? "travel-stop-title-error" : undefined}
                         placeholder="Sunset at Miradouro"
                         className="c97-field"
                         style={{ marginTop: "var(--c97-sp-1)" }}
                       />
                     </label>
+                    {activityTitleMissing ? (
+                      <p id="travel-stop-title-error" role="alert" className="c97-prose" style={{ fontSize: "var(--c97-fs-small)", color: "var(--c97-negative)" }}>
+                        Give the stop a title to add it.
+                      </p>
+                    ) : null}
                     <label className="block">
                       <span className="c97-kicker">Date</span>
                       <input
@@ -348,7 +378,7 @@ export function TravelPlannerClient() {
                         style={{ marginTop: "var(--c97-sp-1)" }}
                       />
                     </label>
-                    <div className="grid grid-cols-2 gap-2">
+                    <div className="grid grid-cols-2" style={{ gap: "var(--c97-sp-1)" }}>
                       <label className="block">
                         <span className="c97-kicker">Starts</span>
                         <input
@@ -419,7 +449,7 @@ export function TravelPlannerClient() {
                         style={{ marginTop: "var(--c97-sp-1)", minHeight: "88px" }}
                       />
                     </label>
-                    <div className="flex flex-wrap gap-2">
+                    <div className="flex flex-wrap" style={{ gap: "var(--c97-sp-1)" }}>
                       <button type="submit" className="c97-btn">
                         <Plus className="h-3.5 w-3.5" aria-hidden="true" />
                         {editingActivityId ? "Save stop" : "Add stop"}
@@ -446,26 +476,26 @@ export function TravelPlannerClient() {
         aria-label="Trip journal"
       >
         <div className="c97-shell">
-          <div className="flex flex-wrap items-end justify-between gap-3">
+          <div className="flex flex-wrap items-end justify-between" style={{ gap: "var(--c97-sp-2)" }}>
             <div>
               <p className="c97-kicker">Reflection</p>
               <h2 className="c97-poster-sm">Journal</h2>
             </div>
             {activeTrip ? (
-              <p className="c97-meta">
+              <p className="c97-meta c97-tabular">
                 {activeTrip.journal.length} {activeTrip.journal.length === 1 ? "entry" : "entries"}
               </p>
             ) : null}
           </div>
 
-          <div className="xl:grid xl:grid-cols-[minmax(0,1.7fr)_minmax(300px,0.9fr)] gap-8" style={{ marginTop: "var(--c97-sp-4)" }}>
+          <div className="xl:grid xl:grid-cols-[minmax(0,1.7fr)_minmax(300px,0.9fr)]" style={{ gap: "var(--c97-sp-4)", marginTop: "var(--c97-sp-4)" }}>
             <div>
               {!activeTrip ? (
                 <p className="c97-prose">Start a trip above to keep a journal for it.</p>
               ) : activeTrip.journal.length === 0 ? (
                 <p className="c97-prose">Journal is empty. Capture a moment with the Journal entry form.</p>
               ) : (
-                <ul className="flex flex-col gap-4" style={{ listStyle: "none", padding: 0, margin: 0 }}>
+                <ul className="flex flex-col" style={{ gap: "var(--c97-sp-2)", listStyle: "none", padding: 0, margin: 0 }}>
                   {[...activeTrip.journal]
                     .sort((left, right) =>
                       left.date !== right.date ? right.date.localeCompare(left.date) : right.id.localeCompare(left.id)
@@ -486,13 +516,13 @@ export function TravelPlannerClient() {
               )}
             </div>
 
-            <aside className="mt-6 xl:mt-0">
+            <aside className="mt-[var(--c97-sp-3)] xl:mt-0">
               <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-2)" }}>
                 {editingJournalId ? "Edit entry" : "Journal entry"}
               </p>
               <form onSubmit={handleSubmitJournal} className="c97-panel" style={{ display: "grid", gap: "var(--c97-sp-2)" }}>
                 <fieldset disabled={!activeTrip} className="contents">
-                  <div className="grid grid-cols-2 gap-2">
+                  <div className="grid grid-cols-2" style={{ gap: "var(--c97-sp-1)" }}>
                     <label className="block">
                       <span className="c97-kicker">Date</span>
                       <input
@@ -526,7 +556,11 @@ export function TravelPlannerClient() {
                     <input
                       type="text"
                       value={journalDraft.title}
-                      onChange={(e) => setJournalDraft((d) => ({ ...d, title: e.target.value }))}
+                      onChange={(e) => {
+                        setJournalEmpty(false);
+                        setJournalDraft((d) => ({ ...d, title: e.target.value }));
+                      }}
+                      aria-describedby={journalEmpty ? "travel-journal-error" : undefined}
                       placeholder="A long walk in Alfama"
                       className="c97-field"
                       style={{ marginTop: "var(--c97-sp-1)" }}
@@ -536,13 +570,22 @@ export function TravelPlannerClient() {
                     <span className="c97-kicker">Notes</span>
                     <textarea
                       value={journalDraft.body}
-                      onChange={(e) => setJournalDraft((d) => ({ ...d, body: e.target.value }))}
+                      onChange={(e) => {
+                        setJournalEmpty(false);
+                        setJournalDraft((d) => ({ ...d, body: e.target.value }));
+                      }}
+                      aria-describedby={journalEmpty ? "travel-journal-error" : undefined}
                       placeholder="What stood out today"
                       className="c97-field"
                       style={{ marginTop: "var(--c97-sp-1)", minHeight: "88px" }}
                     />
                   </label>
-                  <div className="flex flex-wrap gap-2">
+                  {journalEmpty ? (
+                    <p id="travel-journal-error" role="alert" className="c97-prose" style={{ fontSize: "var(--c97-fs-small)", color: "var(--c97-negative)" }}>
+                      Add a title or a note to save the entry.
+                    </p>
+                  ) : null}
+                  <div className="flex flex-wrap" style={{ gap: "var(--c97-sp-1)" }}>
                     <button type="submit" className="c97-btn">
                       <Plus className="h-3.5 w-3.5" aria-hidden="true" />
                       {editingJournalId ? "Save entry" : "Add entry"}
@@ -562,28 +605,42 @@ export function TravelPlannerClient() {
 
       <section id="section-trip" className="c97-band c97-sheet" data-c97-surface="paper" data-seam="torn" aria-label="Trip management">
         <div className="c97-shell">
-          <div className="flex flex-wrap items-end justify-between gap-3">
+          <div className="flex flex-wrap items-end justify-between" style={{ gap: "var(--c97-sp-2)" }}>
             <div>
               <p className="c97-kicker">Manage</p>
               <h2 className="c97-poster-sm">Trip</h2>
             </div>
-            <div className="flex flex-wrap gap-2">
+            <div className="flex flex-wrap" style={{ gap: "var(--c97-sp-1)" }}>
               {activeTrip ? (
-                <button
-                  type="button"
-                  onClick={() => {
-                    if (typeof window !== "undefined" && !window.confirm(`Delete "${activeTrip.name}"? This can't be undone.`)) {
-                      return;
+                <>
+                  <button
+                    type="button"
+                    onClick={() =>
+                      confirmingDelete === `active:${activeTrip.id}`
+                        ? confirmDeleteTrip(activeTrip.id)
+                        : setConfirmingDelete(`active:${activeTrip.id}`)
                     }
-                    removeTrip(activeTrip.id);
-                  }}
-                  className="c97-btn-ghost"
-                >
-                  <Trash2 className="h-3.5 w-3.5" aria-hidden="true" />
-                  Delete trip
-                </button>
+                    className="c97-btn-ghost"
+                    style={confirmingDelete === `active:${activeTrip.id}` ? { color: "var(--c97-negative)" } : undefined}
+                  >
+                    <Trash2 className="h-3.5 w-3.5" aria-hidden="true" />
+                    {confirmingDelete === `active:${activeTrip.id}` ? "Confirm delete" : "Delete trip"}
+                  </button>
+                  {confirmingDelete === `active:${activeTrip.id}` ? (
+                    <button
+                      type="button"
+                      onClick={(event) => {
+                        setConfirmingDelete(null);
+                        (event.currentTarget.previousElementSibling as HTMLElement | null)?.focus();
+                      }}
+                      className="c97-btn-ghost"
+                    >
+                      Keep it
+                    </button>
+                  ) : null}
+                </>
               ) : null}
-              <button type="button" onClick={() => (showTripForm ? setShowTripForm(false) : openTripForm())} className="c97-btn" aria-expanded={showTripForm}>
+              <button ref={newTripButtonRef} type="button" onClick={() => (showTripForm ? setShowTripForm(false) : openTripForm())} className="c97-btn" aria-expanded={showTripForm}>
                 <Plus className="h-3.5 w-3.5" aria-hidden="true" />
                 New trip
               </button>
@@ -591,7 +648,7 @@ export function TravelPlannerClient() {
           </div>
 
           {showTripForm ? (
-            <form onSubmit={handleCreateTrip} className="c97-panel grid gap-3 sm:grid-cols-2" style={{ marginTop: "var(--c97-sp-3)" }} aria-label="Create a new trip">
+            <form onSubmit={handleCreateTrip} className="c97-panel grid sm:grid-cols-2" style={{ gap: "var(--c97-sp-2)", marginTop: "var(--c97-sp-3)" }} aria-label="Create a new trip">
               <label className="block sm:col-span-2">
                 <span className="c97-kicker">Trip name</span>
                 <input
@@ -645,7 +702,7 @@ export function TravelPlannerClient() {
                   required
                 />
               </label>
-              <div className="flex flex-wrap gap-2 sm:col-span-2">
+              <div className="flex flex-wrap sm:col-span-2" style={{ gap: "var(--c97-sp-1)" }}>
                 <button type="submit" className="c97-btn">
                   <Plus className="h-3.5 w-3.5" aria-hidden="true" />
                   Save trip
@@ -673,7 +730,12 @@ export function TravelPlannerClient() {
               <ul style={{ listStyle: "none", padding: 0, margin: 0 }}>
                 {trips.map((other) => (
                   <li key={other.id} className="c97-row" style={{ minHeight: "44px", borderBottom: "1px solid var(--c97-rule)", padding: "var(--c97-sp-1) 0" }}>
-                    <button type="button" onClick={() => selectTrip(other.id)} className="text-left min-w-0">
+                    <button
+                      type="button"
+                      onClick={() => selectTrip(other.id)}
+                      aria-current={other.id === activeTrip?.id ? "true" : undefined}
+                      className="c97-travel-trip-pick text-left min-w-0"
+                    >
                       <span className="c97-serif" style={{ display: "block", fontSize: "var(--c97-fs-body)" }}>
                         {other.name}
                         {other.id === activeTrip?.id ? " (active)" : ""}
@@ -682,18 +744,42 @@ export function TravelPlannerClient() {
                         {other.destination || "No destination"} &middot; {formatTripDateRange(other.startDate, other.endDate)}
                       </span>
                     </button>
-                    <button
-                      type="button"
-                      onClick={() => {
-                        if (typeof window !== "undefined" && !window.confirm(`Delete "${other.name}"? This can't be undone.`)) return;
-                        removeTrip(other.id);
-                      }}
-                      aria-label={`Delete trip ${other.name}`}
-                      className="c97-btn-ghost"
-                      style={{ minWidth: 44, justifyContent: "center" }}
-                    >
-                      <Trash2 className="h-3.5 w-3.5" aria-hidden="true" />
-                    </button>
+                    <div className="flex flex-wrap justify-end" style={{ gap: "var(--c97-sp-1)" }}>
+                      <button
+                        type="button"
+                        onClick={() =>
+                          confirmingDelete === `row:${other.id}`
+                            ? confirmDeleteTrip(other.id)
+                            : setConfirmingDelete(`row:${other.id}`)
+                        }
+                        aria-label={
+                          confirmingDelete === `row:${other.id}`
+                            ? `Confirm delete trip ${other.name}`
+                            : `Delete trip ${other.name}`
+                        }
+                        className="c97-btn-ghost"
+                        style={{
+                          minWidth: 44,
+                          justifyContent: "center",
+                          ...(confirmingDelete === `row:${other.id}` ? { color: "var(--c97-negative)" } : {}),
+                        }}
+                      >
+                        <Trash2 className="h-3.5 w-3.5" aria-hidden="true" />
+                        {confirmingDelete === `row:${other.id}` ? "Confirm delete" : null}
+                      </button>
+                      {confirmingDelete === `row:${other.id}` ? (
+                        <button
+                          type="button"
+                          onClick={(event) => {
+                            setConfirmingDelete(null);
+                            (event.currentTarget.previousElementSibling as HTMLElement | null)?.focus();
+                          }}
+                          className="c97-btn-ghost"
+                        >
+                          Keep it
+                        </button>
+                      ) : null}
+                    </div>
                   </li>
                 ))}
               </ul>
@@ -855,12 +941,12 @@ function DayList({
 }) {
   return (
     <div>
-      <div className="flex items-baseline justify-between gap-2">
+      <div className="flex items-baseline justify-between" style={{ gap: "var(--c97-sp-1)" }}>
         <h3 className="c97-kicker" style={{ margin: 0, color: bucket.date === today ? "var(--c97-ink)" : undefined }}>
           {formatDayHeading(bucket.date)}
           {bucket.date === today ? " · Today" : ""}
         </h3>
-        <span className="c97-meta">
+        <span className="c97-meta c97-tabular">
           {bucket.activities.length === 0 ? "0 stops" : `${bucket.completed}/${bucket.activities.length} done`}
         </span>
       </div>
@@ -876,14 +962,14 @@ function DayList({
             return (
               <li
                 key={activity.id}
-                className="flex items-start gap-3"
-                style={{ padding: "var(--c97-sp-2) 0", borderBottom: "1px solid var(--c97-rule)" }}
+                className="flex items-start"
+                style={{ gap: "var(--c97-sp-2)", padding: "var(--c97-sp-2) 0", borderBottom: "1px solid var(--c97-rule)" }}
               >
                 <button
                   type="button"
                   onClick={() => onToggle(activity.id)}
                   aria-label={activity.completed ? `Mark ${activity.title} as not done` : `Mark ${activity.title} as done`}
-                  style={{ minHeight: "44px", minWidth: "44px", display: "inline-flex", alignItems: "center", justifyContent: "center", background: "none", border: 0, cursor: "pointer", color: "var(--c97-ink-2)" }}
+                  className="c97-travel-toggle"
                 >
                   {activity.completed ? (
                     <CheckCircle2 className="h-5 w-5" style={{ color: "var(--c97-positive)" }} />
@@ -891,9 +977,9 @@ function DayList({
                     <Circle className="h-5 w-5" />
                   )}
                 </button>
-                <Icon className="h-4 w-4 mt-1 shrink-0" aria-hidden="true" style={{ color: CATEGORY_CHART[activity.category] }} />
+                <Icon className="h-4 w-4 shrink-0" aria-hidden="true" style={{ color: CATEGORY_CHART[activity.category], marginTop: "var(--c97-sp-0)" }} />
                 <div className="min-w-0 flex-1">
-                  <div className="flex flex-wrap items-center gap-x-2 gap-y-1">
+                  <div className="flex flex-wrap items-center" style={{ columnGap: "var(--c97-sp-1)", rowGap: "var(--c97-sp-0)" }}>
                     <p
                       className="c97-serif"
                       style={{
@@ -922,7 +1008,7 @@ function DayList({
                     </p>
                   ) : null}
                 </div>
-                <div className="flex flex-col gap-1">
+                <div className="flex flex-col" style={{ gap: "var(--c97-sp-0)" }}>
                   <button type="button" onClick={() => onEdit(activity)} className="c97-btn-ghost">
                     Edit
                   </button>
@@ -959,11 +1045,11 @@ function JournalPostcard({
   return (
     <li data-c97-surface="paper" className="c97-offset c97-postcard">
       <div className="min-w-0">
-        <div className="flex flex-wrap items-baseline justify-between gap-2">
+        <div className="flex flex-wrap items-baseline justify-between" style={{ gap: "var(--c97-sp-1)" }}>
           <p className="c97-serif" style={{ fontSize: "var(--c97-fs-body)" }}>
             {entry.title}
           </p>
-          <div className="flex gap-1.5">
+          <div className="flex" style={{ gap: "var(--c97-sp-1)" }}>
             <button type="button" onClick={() => onEdit(entry)} className="c97-btn-ghost">
               Edit
             </button>
@@ -1041,7 +1127,7 @@ function TripDetailsFields({ trip, onUpdateField }: TripDetailsFieldsProps) {
   }
 
   return (
-    <div className="c97-panel grid gap-3 sm:grid-cols-2">
+    <div className="c97-panel grid sm:grid-cols-2" style={{ gap: "var(--c97-sp-2)" }}>
       <label className="block">
         <span className="c97-kicker">Trip name</span>
         <input

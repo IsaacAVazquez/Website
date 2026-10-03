@@ -123,6 +123,7 @@ export default function RootLayout({
         <link rel="icon" type="image/png" sizes="96x96" href="/icons/icon-96x96.png" />
         <link rel="icon" type="image/png" sizes="72x72" href="/icons/icon-72x72.png" />
         <link rel="alternate" type="application/rss+xml" title="Isaac Vazquez - Writing & Insights" href="/api/rss" />
+        <link rel="alternate" type="text/markdown" title="LLM-friendly overview" href="/llms.txt" />
       </head>
       <body
         className={cn(
@@ -132,7 +133,7 @@ export default function RootLayout({
           c97Archivo.variable,
           c97Anton.variable,
           c97GreatVibes.variable,
-          "font-sans min-h-screen antialiased"
+          "font-sans min-h-dvh antialiased"
         )}
       >
         <Providers>

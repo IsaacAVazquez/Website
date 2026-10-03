@@ -350,7 +350,7 @@ export function DraftBoard({
         style={{ marginTop }}
       >
         {index > 0 && cliff > 0 && (
-          <div aria-hidden="true" className="flex items-center gap-3 px-0.5 pb-2.5">
+          <div aria-hidden="true" className="flex items-center px-0.5" style={{ paddingBottom: "var(--c97-sp-1)", gap: "var(--c97-sp-1)" }}>
             <span
               className="flex-1 border-t border-dashed"
               style={{ borderColor: "color-mix(in srgb, var(--c97-ink) 24%, transparent)" }}
@@ -375,7 +375,7 @@ export function DraftBoard({
             background: "var(--c97-field)",
           }}
         >
-          <div className="flex flex-wrap items-baseline gap-x-3.5 gap-y-1 px-3.5 pb-2 pt-2.5">
+          <div className="flex flex-wrap items-baseline" style={{ paddingInline: "var(--c97-sp-2)", paddingTop: "var(--c97-sp-1)", paddingBottom: "var(--c97-sp-1)", columnGap: "var(--c97-sp-2)", rowGap: "var(--c97-sp-0)" }}>
             <span className="text-2xl font-bold leading-none tracking-tight tabular-nums">
               {group.tier !== null ? String(group.tier).padStart(2, "0") : "—"}
             </span>
@@ -399,8 +399,13 @@ export function DraftBoard({
                 <li
                   key={player.id}
                   ref={isHighlighted ? scrollHighlightedRow : undefined}
-                  className="flex flex-wrap items-center gap-x-3.5 gap-y-1 border-t border-l-[3px] py-1 pl-2 pr-3 transition-colors duration-150 hover:bg-[color-mix(in_srgb,var(--c97-field)_55%,transparent)]"
+                  className="flex flex-wrap items-center border-t border-l-[3px] transition-colors duration-150 hover:bg-[color-mix(in_srgb,var(--c97-field)_55%,transparent)]"
                   style={{
+                    paddingBlock: "var(--c97-sp-0)",
+                    paddingLeft: "var(--c97-sp-1)",
+                    paddingRight: "var(--c97-sp-1)",
+                    columnGap: "var(--c97-sp-2)",
+                    rowGap: "var(--c97-sp-0)",
                     borderTopColor: "color-mix(in srgb, var(--c97-rule) 60%, transparent)",
                     borderLeftColor:
                       isHighlighted || isQueued ? "var(--c97-accent)" : "transparent",
@@ -415,14 +420,14 @@ export function DraftBoard({
                   >
                     {formatRankValue(player.rankEcr ?? player.averageRank)}
                   </span>
-                  <div className="flex min-w-0 flex-1 basis-44 items-baseline gap-2">
+                  <div className="flex min-w-0 flex-1 basis-44 items-baseline" style={{ gap: "var(--c97-sp-1)" }}>
                     {/* -my keeps the row dense while the button itself meets
                         the 44px touch floor. */}
                     <button
                       type="button"
                       onClick={() => onOpenDetail(player)}
                       aria-label={`Open ${player.name} detail`}
-                      className="-my-2 inline-flex min-h-touch min-w-0 items-center truncate text-left text-sm font-semibold tracking-[-0.01em]"
+                      className="inline-flex min-h-touch min-w-0 items-center truncate text-left text-sm font-semibold tracking-[-0.01em] hover:underline hover:decoration-[var(--c97-accent)] hover:underline-offset-4" style={{ marginBlock: "calc(var(--c97-sp-1) * -1)" }}
                     >
                       {player.name}
                     </button>
@@ -440,7 +445,7 @@ export function DraftBoard({
                         : ""}
                     </span>
                   </div>
-                  <div className="ml-auto flex flex-none items-center gap-2.5">
+                  <div className="ml-auto flex flex-none items-center" style={{ gap: "var(--c97-sp-1)" }}>
                     {vorp ? (
                       <>
                         <span className="sr-only">Value over replacement player</span>
@@ -512,7 +517,7 @@ export function DraftBoard({
                       type="button"
                       onClick={() => handleDraftPlayer(player)}
                       aria-label={`Log ${player.name}`}
-                      className="inline-flex min-h-touch items-center justify-center border border-[var(--c97-ink)] bg-[var(--c97-ink)] text-[var(--c97-surface)] hover:bg-[var(--c97-ink-2)] px-3.5 font-mono text-3xs uppercase tracking-[0.06em]"
+                      className="inline-flex min-h-touch items-center justify-center border border-[var(--c97-ink)] bg-[var(--c97-ink)] text-[var(--c97-surface)] hover:bg-[var(--c97-ink-2)] font-mono text-3xs uppercase tracking-[0.06em]" style={{ paddingInline: "var(--c97-sp-2)" }}
                     >
                       Log
                     </button>
@@ -530,8 +535,12 @@ export function DraftBoard({
     <section aria-label="Draft board">
       {queuedAvailable.length > 0 && (
         <div
-          className="mb-3 flex flex-wrap items-center gap-1.5 border px-2.5 py-1.5"
+          className="flex flex-wrap items-center border"
           style={{
+            paddingInline: "var(--c97-sp-1)",
+            paddingBlock: "var(--c97-sp-0)",
+            marginBottom: "var(--c97-sp-1)",
+            gap: "var(--c97-sp-0)",
             borderColor: "color-mix(in srgb, var(--c97-accent) 38%, var(--c97-rule))",
             background: "color-mix(in srgb, var(--c97-accent) 9%, var(--c97-surface))",
           }}
@@ -545,8 +554,8 @@ export function DraftBoard({
               type="button"
               onClick={() => handleDraftPlayer(player)}
               title={`Log ${player.name}`}
-              className="inline-flex min-h-touch items-baseline gap-1.5 border border-[var(--c97-rule)] px-2.5 font-mono text-2xs hover:border-[var(--c97-ink)]"
-              style={{ background: "var(--c97-surface)", color: "var(--c97-ink)" }}
+              className="inline-flex min-h-touch items-baseline border border-[var(--c97-rule)] font-mono text-2xs hover:border-[var(--c97-ink)]"
+              style={{ paddingInline: "var(--c97-sp-1)", gap: "var(--c97-sp-0)", background: "var(--c97-surface)", color: "var(--c97-ink)" }}
             >
               <span style={{ color: "var(--c97-ink-2)" }}>
                 #{formatRankValue(player.rankEcr ?? player.averageRank)}
@@ -561,8 +570,8 @@ export function DraftBoard({
 
       {vorpValues.size > 0 && vorpTeamSize ? (
         <p
-          className="mb-3 max-w-[68ch] text-xs leading-5"
-          style={{ color: "var(--c97-ink-2)" }}
+          className="max-w-[68ch] text-xs leading-5"
+          style={{ marginBottom: "var(--c97-sp-1)", color: "var(--c97-ink-2)" }}
         >
           VORP is FantasyPros&apos; projected season points above the same-position waiver replacement for a {vorpTeamSize}-team league. FantasyPros supplies the roster baseline, while your lineup settings drive the replacement index and scarcity panel below.
         </p>
@@ -577,7 +586,7 @@ export function DraftBoard({
         className="lg:sticky lg:z-20"
         style={{ top: stickyTop, background: "var(--c97-surface)" }}
       >
-        <div className="flex flex-wrap items-center gap-x-3.5 gap-y-2.5 pb-3">
+        <div className="flex flex-wrap items-center" style={{ paddingBottom: "var(--c97-sp-1)", columnGap: "var(--c97-sp-2)", rowGap: "var(--c97-sp-1)" }}>
           <PositionFilterBar
             ariaLabel="Position filter"
             options={POSITION_OPTIONS}
@@ -608,8 +617,9 @@ export function DraftBoard({
             aria-describedby="draft-board-search-keys"
             autoComplete="off"
             placeholder="Search player or team"
-            className="min-h-touch w-48 border px-3 font-mono text-xs"
+            className="min-h-touch w-48 border font-mono text-xs"
             style={{
+              paddingInline: "var(--c97-sp-1)",
               borderColor: "var(--c97-rule)",
               background: "var(--c97-field)",
               color: "var(--c97-ink)",
@@ -627,12 +637,12 @@ export function DraftBoard({
         {windowedPlayers.length > 0 ? (
           <div
             aria-hidden="true"
-            className="hidden items-center gap-x-3.5 px-3.5 pb-1.5 md:flex"
-            style={{ color: "var(--c97-ink-2)" }}
+            className="hidden items-center md:flex"
+            style={{ paddingInline: "var(--c97-sp-2)", paddingBottom: "var(--c97-sp-0)", columnGap: "var(--c97-sp-2)", color: "var(--c97-ink-2)" }}
           >
             <span className="w-8" />
             <span className={`${MONO_LABEL_CLASS} min-w-0 flex-1 basis-44`}>Player</span>
-            <span className="ml-auto flex flex-none items-center gap-2.5">
+            <span className="ml-auto flex flex-none items-center" style={{ gap: "var(--c97-sp-1)" }}>
               {vorpValues.size > 0 ? (
                 <span
                   className={`${MONO_LABEL_CLASS} w-12 text-right`}
@@ -661,8 +671,8 @@ export function DraftBoard({
         </>
       ) : (
         <div
-          className="border border-dashed px-6 py-9 text-center"
-          style={{ borderColor: "var(--c97-rule)" }}
+          className="border border-dashed text-center"
+          style={{ paddingInline: "var(--c97-sp-3)", paddingBlock: "var(--c97-sp-4)", borderColor: "var(--c97-rule)" }}
         >
           <p className="m-0 font-mono text-xs" style={{ color: "var(--c97-ink-2)" }}>
             No available players match on this board.
@@ -673,7 +683,7 @@ export function DraftBoard({
               setSearchQuery("");
               setSelectedPosition("ALL");
             }}
-            className="mt-3.5 inline-flex min-h-touch items-center justify-center border border-[var(--c97-ink)] bg-[var(--c97-ink)] text-[var(--c97-surface)] hover:bg-[var(--c97-ink-2)] px-4 font-mono text-2xs uppercase tracking-[0.06em]"
+            className="inline-flex min-h-touch items-center justify-center border border-[var(--c97-ink)] bg-[var(--c97-ink)] text-[var(--c97-surface)] hover:bg-[var(--c97-ink-2)] font-mono text-2xs uppercase tracking-[0.06em]" style={{ paddingInline: "var(--c97-sp-2)", marginTop: "var(--c97-sp-2)" }}
           >
             Clear search
           </button>

@@ -1,7 +1,7 @@
 import { StructuredData } from "@/components/StructuredData";
 import { nflSnapshot } from "@/data/nflSnapshot";
 import { getNflSummarySnapshot, getNflTeamSnapshot } from "@/lib/nflSnapshot";
-import { constructMetadata, generateBreadcrumbStructuredData } from "@/lib/seo";
+import { constructMetadata, freeApplicationOffer, generateBreadcrumbStructuredData } from "@/lib/seo";
 import { NflClient } from "./nfl-client";
 import { buildTeamAliasMap, normalizeState, resolveDefaultState } from "./nfl-state.core";
 
@@ -48,7 +48,7 @@ export default async function NflPage({ searchParams }: NflPageProps) {
         }}
       />
       <StructuredData
-        type="SoftwareApplication"
+        type="SportsApplication"
         data={{
           name: "NFL Pulse",
           description:
@@ -63,6 +63,7 @@ export default async function NflPage({ searchParams }: NflPageProps) {
             "Fast local-first rendering without a live third-party runtime dependency",
           ],
           dateModified: nflSnapshot.updatedAt,
+          offers: freeApplicationOffer,
         }}
       />
       <NflClient

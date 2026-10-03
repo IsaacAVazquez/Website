@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import Link from "next/link";
 import { constructMetadata } from "@/lib/seo";
 import { SearchInterfaceClient } from "@/components/search/SearchInterface.client";
 
@@ -18,24 +19,17 @@ interface SearchPageProps {
   }>;
 }
 
-const topicPills = [
+// Each chip runs that search. The popular queries that used to sit in their
+// own panel joined this row, and the coverage list lives once, in the search
+// tips under the field.
+const topicSearches = [
   "PM workflows",
   "Agentic AI",
   "Fintech tools",
   "Quality systems",
   "Career",
-];
-
-const popularQueries = [
-  "Agentic AI",
   "Fantasy football rankings",
   "Investment research",
-];
-
-const indexedContent = [
-  "Curated PM and AI writing",
-  "Fintech and analytics tools",
-  "Case studies, resume, and contact",
 ];
 
 export default async function SearchPage({ searchParams }: SearchPageProps) {
@@ -52,41 +46,34 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
           <p className="c97-lead" style={{ marginTop: "var(--c97-sp-3)", maxWidth: "var(--c97-measure-wide)" }}>
             This is a lightweight search layer for core case studies, writing, and tools. It is useful for navigation, not a full site index.
           </p>
-          <div
+          <p className="c97-kicker" id="search-topics-label" style={{ marginTop: "var(--c97-sp-3)" }}>
+            Try a topic
+          </p>
+          <ul
+            aria-labelledby="search-topics-label"
             style={{
               display: "flex",
               flexWrap: "wrap",
               gap: "var(--c97-sp-1)",
-              marginTop: "var(--c97-sp-3)",
+              marginTop: "var(--c97-sp-1)",
+              listStyle: "none",
+              padding: 0,
             }}
           >
-            {topicPills.map((topic) => (
-              <span key={topic} className="c97-chip">
-                {topic}
-              </span>
+            {topicSearches.map((topic) => (
+              <li key={topic}>
+                {/* A prefetch of this dynamic page streams and never closes, so the page never went idle. */}
+                <Link
+                  href={`/search?q=${encodeURIComponent(topic)}`}
+                  prefetch={false}
+                  className="c97-chip c97-link"
+                  style={{ minHeight: 44 }}
+                >
+                  {topic}
+                </Link>
+              </li>
             ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="c97-band c97-band-continues" data-c97-surface="paper">
-        <div className="c97-shell c97-columns">
-          <div className="c97-panel">
-            <p className="c97-kicker">Popular queries</p>
-            <ul className="c97-list" style={{ marginTop: "var(--c97-sp-2)" }}>
-              {popularQueries.map((query) => (
-                <li key={query}>{query}</li>
-              ))}
-            </ul>
-          </div>
-          <div className="c97-panel">
-            <p className="c97-kicker">Indexed content</p>
-            <ul className="c97-list" style={{ marginTop: "var(--c97-sp-2)" }}>
-              {indexedContent.map((item) => (
-                <li key={item}>{item}</li>
-              ))}
-            </ul>
-          </div>
+          </ul>
         </div>
       </section>
 

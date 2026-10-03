@@ -2,6 +2,7 @@ import Link from "next/link";
 import { Catalog97Shell } from "./Catalog97Shell";
 import { Catalog97Slot } from "./Catalog97Primitives";
 import { careerTimeline } from "@/constants/personal";
+import { ABOUT_FAQ } from "@/constants/aboutFaq";
 
 const principles = [
   {
@@ -291,6 +292,49 @@ export function Catalog97About() {
             <Link className="c97-btn-ghost" href="/portfolio">
               The work
             </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Frequently asked questions */}
+      <section
+        className="c97-band c97-sheet"
+        data-c97-surface="bone"
+        aria-label="Frequently asked questions"
+      >
+        <div className="c97-shell">
+          <p className="c97-kicker">Recruiting & background</p>
+          <h2 className="c97-poster-sm" style={{ marginTop: "var(--c97-sp-1)" }}>
+            Questions I get asked most.
+          </h2>
+          <div
+            style={{
+              display: "grid",
+              gap: "var(--c97-sp-4)",
+              marginTop: "var(--c97-sp-4)",
+            }}
+          >
+            {ABOUT_FAQ.map((faq) => (
+              <div
+                key={faq.question}
+                style={{
+                  borderTop: "1px solid var(--c97-rule)",
+                  paddingTop: "var(--c97-sp-3)",
+                }}
+              >
+                <h3 className="c97-serif c97-h3">{faq.question}</h3>
+                <p
+                  className="c97-prose"
+                  style={{
+                    marginTop: "var(--c97-sp-2)",
+                    color: "var(--c97-ink-2)",
+                    maxWidth: "var(--c97-measure-body)",
+                  }}
+                >
+                  {faq.answer}
+                </p>
+              </div>
+            ))}
           </div>
         </div>
       </section>

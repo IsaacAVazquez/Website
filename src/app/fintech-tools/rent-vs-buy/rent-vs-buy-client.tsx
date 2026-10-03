@@ -96,7 +96,7 @@ function NetWorthChartSignature({ result }: { result: RentVsBuyResult }) {
       >
         {chart.yTicks.map((tick) => (
           <g key={tick.value}>
-            <line x1={0} x2={chart.width} y1={tick.y} y2={tick.y} stroke="var(--c97-rule)" strokeWidth={1} />
+            <line x1={0} x2={chart.width} y1={tick.y} y2={tick.y} style={{ stroke: "var(--c97-rule)" }} strokeWidth={1} />
             <text x={4} y={tick.y - 4} className="c97-rvb-axis">
               {formatCompactCurrency(tick.value)}
             </text>
@@ -104,7 +104,7 @@ function NetWorthChartSignature({ result }: { result: RentVsBuyResult }) {
         ))}
 
         {chart.zeroY !== null ? (
-          <line x1={0} x2={chart.width} y1={chart.zeroY} y2={chart.zeroY} stroke="var(--c97-ink-2)" strokeWidth={1.5} />
+          <line x1={0} x2={chart.width} y1={chart.zeroY} y2={chart.zeroY} style={{ stroke: "var(--c97-ink-2)" }} strokeWidth={1.5} />
         ) : null}
 
         {chart.breakEvenX !== null ? (
@@ -114,7 +114,7 @@ function NetWorthChartSignature({ result }: { result: RentVsBuyResult }) {
               x2={chart.breakEvenX}
               y1={0}
               y2={chart.height - 20}
-              stroke="var(--c97-ink)"
+              style={{ stroke: "var(--c97-ink)" }}
               strokeWidth={1.5}
               strokeDasharray="4 4"
             />
@@ -130,12 +130,12 @@ function NetWorthChartSignature({ result }: { result: RentVsBuyResult }) {
         <polyline
           points={chart.renterLine}
           fill="none"
-          stroke="var(--c97-chart-3)"
+          style={{ stroke: "var(--c97-chart-3)" }}
           strokeWidth={2.5}
           strokeDasharray="7 5"
           strokeLinejoin="round"
         />
-        <polyline points={chart.buyerLine} fill="none" stroke="var(--c97-chart-1)" strokeWidth={2.5} strokeLinejoin="round" />
+        <polyline points={chart.buyerLine} fill="none" style={{ stroke: "var(--c97-chart-1)" }} strokeWidth={2.5} strokeLinejoin="round" />
 
         <text x={chart.buyerEndX - 20} y={buyerLabelY} textAnchor="end" className="c97-rvb-label c97-rvb-end">
           Buyer
@@ -372,7 +372,7 @@ export function RentVsBuyClient() {
                 <Home size={18} aria-hidden="true" />
                 <h2 className="c97-poster-sm">The home you&apos;d buy</h2>
               </div>
-              <div className="grid gap-3 sm:grid-cols-2" style={{ marginTop: "var(--c97-sp-3)" }}>
+              <div className="grid sm:grid-cols-2" style={{ gap: "var(--c97-sp-1)", marginTop: "var(--c97-sp-3)" }}>
                 <NumberField {...RENT_VS_BUY_BOUNDS.homePrice} label="Home price" prefix="$" step={5000} value={input.homePrice} onChange={num("homePrice")} />
                 <NumberField {...RENT_VS_BUY_BOUNDS.downPaymentPercent} label="Down payment" suffix="%" step={1} value={input.downPaymentPercent} onChange={num("downPaymentPercent")} />
                 <NumberField {...RENT_VS_BUY_BOUNDS.mortgageRatePercent} label="Mortgage rate" suffix="%" step={0.05} value={input.mortgageRatePercent} onChange={num("mortgageRatePercent")} />
@@ -392,7 +392,7 @@ export function RentVsBuyClient() {
                 <Building2 size={18} aria-hidden="true" />
                 <h2 className="c97-poster-sm">The rent you&apos;d pay</h2>
               </div>
-              <div className="grid gap-3 sm:grid-cols-2" style={{ marginTop: "var(--c97-sp-3)" }}>
+              <div className="grid sm:grid-cols-2" style={{ gap: "var(--c97-sp-1)", marginTop: "var(--c97-sp-3)" }}>
                 <NumberField {...RENT_VS_BUY_BOUNDS.monthlyRent} label="Monthly rent" prefix="$" step={50} value={input.monthlyRent} onChange={num("monthlyRent")} />
                 <NumberField {...RENT_VS_BUY_BOUNDS.rentGrowthPercent} label="Rent growth" suffix="%/yr" step={0.25} value={input.rentGrowthPercent} onChange={num("rentGrowthPercent")} />
                 <NumberField {...RENT_VS_BUY_BOUNDS.rentersInsuranceMonthly} label="Renter's insurance" prefix="$" suffix="/mo" step={5} value={input.rentersInsuranceMonthly} onChange={num("rentersInsuranceMonthly")} />
@@ -404,7 +404,7 @@ export function RentVsBuyClient() {
                 <Landmark size={18} aria-hidden="true" />
                 <h2 className="c97-poster-sm">Assumptions</h2>
               </div>
-              <div className="grid gap-3 sm:grid-cols-2" style={{ marginTop: "var(--c97-sp-3)" }}>
+              <div className="grid sm:grid-cols-2" style={{ gap: "var(--c97-sp-1)", marginTop: "var(--c97-sp-3)" }}>
                 <NumberField {...RENT_VS_BUY_BOUNDS.investmentReturnPercent} label="Investment return" suffix="%/yr" step={0.25} value={input.investmentReturnPercent} onChange={num("investmentReturnPercent")} />
                 <NumberField {...RENT_VS_BUY_BOUNDS.generalInflationPercent} label="Inflation" suffix="%/yr" step={0.25} value={input.generalInflationPercent} onChange={num("generalInflationPercent")} />
                 <NumberField

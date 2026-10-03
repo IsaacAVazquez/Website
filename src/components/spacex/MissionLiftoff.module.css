@@ -7,7 +7,8 @@
 
 .rocket {
   position: fixed;
-  z-index: 60;
+  /* A transient, non-interactive layer, so it sits with the toasts, under an open drawer. */
+  z-index: var(--c97-z-toast);
   right: clamp(24px, 12vw, 180px);
   top: 100%;
   width: 28px;

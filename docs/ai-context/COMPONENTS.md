@@ -2,7 +2,7 @@
 
 Current component ownership reference.
 
-**Last updated:** 2026-09-29
+**Last updated:** 2026-10-02
 
 ---
 
@@ -63,7 +63,6 @@ Primary investments components:
 - `StockSearch`
 - `AddStockForm`
 - `AllocationChart`
-- `PortfolioPerformanceChart`
 - `ResearchAssetHeader`
 - `ResearchOverview`
 - `ResearchPosition`

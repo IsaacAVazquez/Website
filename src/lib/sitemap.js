@@ -14,7 +14,8 @@ const PUBLISHED_POSTS = getPublishedPosts();
 const STATIC_ROUTE_LASTMOD = {
   "/": "2026-10-01",
   "/about": "2026-10-01",
-  "/accessibility": "2026-07-16",
+  "/accessibility": "2026-10-02",
+  "/privacy": "2026-10-02",
   "/agent-build-index": readGitHubTrendingLastmod(),
   "/ai-dev-tools": "2026-04-28",
   "/arcade": "2026-07-16",
@@ -103,6 +104,7 @@ const CHANGEFREQ_BY_ROUTE = {
   "/contact": "yearly",
   "/dashboards": "weekly",
   "/accessibility": "yearly",
+  "/privacy": "yearly",
   "/portfolio": "weekly",
   "/writing": "weekly",
   "/now": "monthly",

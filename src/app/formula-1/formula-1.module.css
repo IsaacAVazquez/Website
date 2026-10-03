@@ -8,19 +8,22 @@
 
 /* ---- Start-light gantry --------------------------------------------------
    Five lights arm left to right once on load and hold lit. Reduced motion
-   sees the same held-lit state with no animation. */
+   sees the same held-lit state with no animation. The lamps are square like
+   everything else on the site, so they read as lights from the housing: an
+   ink bar with each lamp set apart inside it, dark until it arms. */
 
 .gantry {
   display: inline-flex;
   align-items: center;
-  gap: var(--c97-sp-1);
+  gap: var(--c97-sp-0);
+  padding: var(--c97-sp-0);
+  background: var(--c97-ink);
 }
 
 .light {
   width: 11px;
   height: 11px;
-  border-radius: 50%;
-  background: color-mix(in srgb, var(--c97-ink) 60%, transparent);
+  background: color-mix(in srgb, var(--c97-field) 22%, var(--c97-ink));
   animation: f1-light-arm 1.4s linear 1 forwards;
 }
 
@@ -43,7 +46,7 @@
 @keyframes f1-light-arm {
   0%,
   70% {
-    background: color-mix(in srgb, var(--c97-ink) 60%, transparent);
+    background: color-mix(in srgb, var(--c97-field) 22%, var(--c97-ink));
   }
   85%,
   100% {

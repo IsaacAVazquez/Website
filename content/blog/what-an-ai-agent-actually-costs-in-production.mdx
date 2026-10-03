@@ -22,6 +22,16 @@ The core issue is that an agent is not a request. A chat completion is one model
 
 What I found instrumenting my own workflows is that the distribution of cost across tasks is brutally skewed. The median agent run is cheap and getting cheaper, exactly as the falling token prices promise. The tail is where the money goes. The run that hits a confusing error and retries its way through forty steps, the research task that pulls in ten large documents and then carries them through every subsequent call, the loop that gets stuck and burns its entire step budget before failing. A small fraction of runs routinely accounts for the majority of spend, which means your average cost per task is nearly useless for forecasting and your tail behavior is everything. Budgeting agents on average cost is like budgeting a hospital on the average patient.
 
+### Key takeaways
+
+- **Loops vs. requests**: Chatbots are single requests with bounded token cost; agents are iterative loops where expanding context increases the cost per step.
+- **Tail-skewed economics**: Average cost per task is misleading because median runs are inexpensive, while long, retrying, or stuck loops in the tail drive the majority of the monthly bill.
+- **The four cost levers**:
+  1. *Prompt caching*: Massive savings on repeated system prompts, tool definitions, and conversation histories.
+  2. *Model routing*: Frontier reasoning models for planning and recovery; efficient models for mechanical data formatting.
+  3. *Context compaction*: Aggressively summarizing tool returns to prevent quadratic token growth.
+  4. *Step budgets*: Strict, non-negotiable iteration ceilings to eliminate infinite runaway loops.
+
 ## The levers that actually move the bill
 
 So what moves the number? In rough order of how much they have mattered in practice, for me and for the production deployments I have seen up close.

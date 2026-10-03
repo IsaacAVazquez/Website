@@ -1,8 +1,8 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useMemo } from "react";
 import { useSearchParams } from "next/navigation";
-import { CalendarDays, Clock, Flag, Medal, X } from "lucide-react";
+import { CalendarDays, Flag, Medal, X } from "lucide-react";
 import {
   CrestAvatar,
   EmptyPanel,
@@ -93,41 +93,6 @@ function formatTournamentWindow(start: string, end: string): string {
     timeZone: DATE_ONLY_TIME_ZONE,
   }).format(startDate);
   return `${startLabel} to ${formatLongDate(end)}`;
-}
-
-const DAY_MS = 24 * 60 * 60 * 1000;
-
-/**
- * Whole days between now and kickoff, computed after mount so the count never
- * triggers a server/client hydration mismatch. Returns null until mounted and 0
- * once the tournament has started. The 2026 tournament finished on July 19, so
- * this stays null on this route and the countdown it feeds renders nothing.
- */
-function useDaysUntilKickoff(startDate: string): number | null {
-  const [days, setDays] = useState<number | null>(null);
-  useEffect(() => {
-    const start = new Date(`${startDate}T00:00:00.000Z`).getTime();
-    if (Number.isNaN(start)) return;
-    const update = () => {
-      const diff = start - Date.now();
-      setDays(diff > 0 ? Math.ceil(diff / DAY_MS) : 0);
-    };
-    update();
-    const timer = window.setInterval(update, 60 * 60 * 1000);
-    return () => window.clearInterval(timer);
-  }, [startDate]);
-  return days;
-}
-
-function KickoffCountdown({ startDate }: { startDate: string }) {
-  const days = useDaysUntilKickoff(startDate);
-  if (days === null || days <= 0) return null;
-  return (
-    <span className="c97-chip" style={{ gap: "var(--c97-sp-1)" }}>
-      <Clock className="h-3.5 w-3.5" aria-hidden="true" />
-      {days === 1 ? "Kicks off tomorrow" : `Kicks off in ${days} days`}
-    </span>
-  );
 }
 
 export function WorldCupClient({
@@ -268,10 +233,7 @@ export function WorldCupClient({
 
       <section className="c97-band c97-sheet" data-c97-surface="paper" data-seam="torn">
         <div className="c97-shell">
-          <div className="flex flex-wrap items-center justify-between gap-3">
-            <h2 className="c97-poster-sm">Explore the tournament</h2>
-            <KickoffCountdown startDate={tournament.startDate} />
-          </div>
+          <h2 className="c97-poster-sm">Explore the tournament</h2>
 
           <div className="c97-segmented" style={{ marginTop: "var(--c97-sp-2)" }} role="tablist" aria-label="World Cup view switcher">
             {VIEW_OPTIONS.map((option) => (
@@ -293,7 +255,7 @@ export function WorldCupClient({
             {VIEW_OPTIONS.find((option) => option.id === routeState.view)?.description}
           </p>
 
-          <div className="mt-6 grid gap-8 xl:grid-cols-[minmax(0,1.7fr)_minmax(300px,0.92fr)]">
+          <div className="grid xl:grid-cols-[minmax(0,1.7fr)_minmax(300px,0.92fr)]" style={{ marginTop: "var(--c97-sp-3)", gap: "var(--c97-sp-3)" }}>
             <div
               role="tabpanel"
               id={`world-cup-tabpanel-${routeState.view}`}
@@ -343,31 +305,33 @@ export function WorldCupClient({
       {scorers.length > 0 && (
         <section className="c97-band c97-sheet" data-c97-surface="bone" data-seam="deckle">
           <div className="c97-shell">
-            <h2 className="c97-poster-sm mb-5">Golden boot race</h2>
-            <table className="c97-table c97-wc-table" aria-label="Top scorers">
-              <thead>
-                <tr>
-                  <th scope="col">#</th>
-                  <th scope="col">Player</th>
-                  <th scope="col">Team</th>
-                  <th scope="col" data-align="end">Goals</th>
-                  <th scope="col" data-align="end" className="hidden sm:table-cell">Assists</th>
-                </tr>
-              </thead>
-              <tbody>
-                {scorers.slice(0, 10).map((scorer) => (
-                  <tr key={`${scorer.rank}-${scorer.name}`}>
-                    <td className="c97-mono">{scorer.rank}</td>
-                    <td className="c97-serif">{scorer.name}</td>
-                    <td className="c97-mono">{scorer.teamCode}</td>
-                    <td className="c97-mono" data-align="end">{scorer.goals}</td>
-                    <td className="c97-mono hidden sm:table-cell" data-align="end">
-                      {scorer.assists}
-                    </td>
+            <h2 className="c97-poster-sm" style={{ marginBottom: "var(--c97-sp-2)" }}>Golden boot race</h2>
+            <div className="overflow-x-auto" role="region" aria-label="Top scorers (scrollable)" tabIndex={0}>
+              <table className="c97-table c97-wc-table" aria-label="Top scorers">
+                <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Player</th>
+                    <th scope="col">Team</th>
+                    <th scope="col" data-align="end">Goals</th>
+                    <th scope="col" data-align="end" className="hidden sm:table-cell">Assists</th>
                   </tr>
-                ))}
-              </tbody>
-            </table>
+                </thead>
+                <tbody>
+                  {scorers.slice(0, 10).map((scorer) => (
+                    <tr key={`${scorer.rank}-${scorer.name}`}>
+                      <td className="c97-mono">{scorer.rank}</td>
+                      <td className="c97-serif">{scorer.name}</td>
+                      <td className="c97-mono">{scorer.teamCode}</td>
+                      <td className="c97-mono" data-align="end">{scorer.goals}</td>
+                      <td className="c97-mono hidden sm:table-cell" data-align="end">
+                        {scorer.assists}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
           </div>
         </section>
       )}
@@ -380,14 +344,14 @@ export function WorldCupClient({
               {tournament.venues.length} stadiums · {venuesByCountry.length} nations
             </span>
           </div>
-          <div className="mt-5 space-y-6">
+          <div className="flex flex-col" style={{ marginTop: "var(--c97-sp-2)", rowGap: "var(--c97-sp-3)" }}>
             {venuesByCountry.map(([country, venues]) => (
               <div key={country}>
-                <p className="c97-kicker flex items-center gap-2" style={{ marginBottom: "var(--c97-sp-2)" }}>
+                <p className="c97-kicker flex items-center" style={{ gap: "var(--c97-sp-1)", marginBottom: "var(--c97-sp-2)" }}>
                   <Flag className="h-3.5 w-3.5" aria-hidden="true" />
                   {country} · {venues.length}
                 </p>
-                <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+                <div className="grid sm:grid-cols-2 lg:grid-cols-3" style={{ gap: "var(--c97-sp-1)" }}>
                   {venues.map((venue) => (
                     <div key={`${venue.city}-${venue.stadium}`} className="c97-panel">
                       <p className="c97-serif" style={{ fontWeight: 600 }}>
@@ -441,9 +405,9 @@ function GroupsView({
   }
 
   return (
-    <div className="space-y-5">
+    <div className="flex flex-col" style={{ rowGap: "var(--c97-sp-2)" }}>
       <QualificationLegend />
-      <div className="grid gap-4 lg:grid-cols-2">
+      <div className="grid lg:grid-cols-2" style={{ gap: "var(--c97-sp-2)" }}>
         {groups.map((group) => (
           <GroupTable
             key={group.letter || group.name}
@@ -465,7 +429,7 @@ function GroupsView({
 
 function QualificationLegend() {
   return (
-    <div className="flex flex-wrap items-center gap-x-5 gap-y-2">
+    <div className="flex flex-wrap items-center" style={{ columnGap: "var(--c97-sp-2)", rowGap: "var(--c97-sp-1)" }}>
       <span className="flex items-center c97-meta">
         <span className="c97-wc-zone-dot" style={{ backgroundColor: "var(--c97-positive)" }} />
         Top two advance to the Round of 32
@@ -488,8 +452,8 @@ function GroupTable({
   onOpenTeam: (teamId: string) => void;
 }) {
   return (
-    <SurfaceCard className="@container p-4 sm:p-5">
-      <div className="flex items-center justify-between pb-2">
+    <SurfaceCard className="@container" style={{ padding: "var(--c97-sp-2)" }}>
+      <div className="flex items-center justify-between" style={{ paddingBottom: "var(--c97-sp-1)" }}>
         <h3 className="c97-serif" style={{ fontSize: "var(--c97-fs-h3)" }}>
           {group.name}
         </h3>
@@ -526,13 +490,15 @@ function GroupTable({
             return (
               <tr key={row.teamId} data-selected={isSelected || undefined}>
                 <td>
-                  <span className="flex items-center gap-1.5">
+                  <span className="flex items-center" style={{ gap: "var(--c97-sp-0)" }}>
                     <span
                       className="c97-wc-zone-dot"
                       style={{ backgroundColor: zoneColor }}
                       title={zoneTitle}
+                      aria-hidden="true"
                     />
                     <span className="c97-mono">{row.rank}</span>
+                    {zoneTitle ? <span className="sr-only">{zoneTitle}</span> : null}
                   </span>
                 </td>
                 <td>
@@ -541,8 +507,8 @@ function GroupTable({
                     onClick={() => onOpenTeam(row.teamId)}
                     aria-pressed={isSelected}
                     aria-label={`Show ${row.name} details`}
-                    className="flex min-h-[44px] w-full items-center gap-2 text-left"
-                    style={{ background: "none", border: 0, padding: 0 }}
+                    className="flex min-h-[44px] w-full items-center text-left"
+                    style={{ gap: "var(--c97-sp-1)", background: "none", border: 0, padding: 0 }}
                   >
                     <CrestAvatar crest={row.crest} name={row.name} size="sm" />
                     <span className="c97-serif" style={{ fontWeight: 600 }}>
@@ -584,9 +550,9 @@ function ThirdPlaceRace({
 
   return (
     // A container, like the group tables, so Played drops out where six columns won't fit a phone.
-    <SurfaceCard className="@container p-4 sm:p-6">
-      <div className="flex items-center justify-between pb-3">
-        <div className="flex items-center gap-2">
+    <SurfaceCard className="@container p-[var(--c97-sp-2)] sm:p-[var(--c97-sp-3)]">
+      <div className="flex items-center justify-between" style={{ paddingBottom: "var(--c97-sp-1)" }}>
+        <div className="flex items-center" style={{ gap: "var(--c97-sp-1)" }}>
           <Medal className="h-4 w-4" aria-hidden="true" style={{ color: "var(--c97-accent)" }} />
           <h3 className="c97-serif" style={{ fontSize: "var(--c97-fs-h3)" }}>
             Third-place race
@@ -622,7 +588,7 @@ function ThirdPlaceRace({
                 return (
                   <tr key={row.teamId} data-selected={isSelected || undefined}>
                     <td>
-                      <span className="flex items-center gap-1.5">
+                      <span className="flex items-center" style={{ gap: "var(--c97-sp-0)" }}>
                         <span
                           className="c97-wc-zone-dot"
                           style={{
@@ -631,8 +597,10 @@ function ThirdPlaceRace({
                               : "var(--c97-rule)",
                           }}
                           title={row.qualifies ? "In a qualifying place" : "Outside the cut"}
+                          aria-hidden="true"
                         />
                         <span className="c97-mono">{row.rank}</span>
+                        <span className="sr-only">{row.qualifies ? "In a qualifying place" : "Outside the cut"}</span>
                       </span>
                     </td>
                     <td>
@@ -641,8 +609,8 @@ function ThirdPlaceRace({
                         onClick={() => onOpenTeam(row.teamId)}
                         aria-pressed={isSelected}
                         aria-label={`Show ${row.name} details`}
-                        className="flex min-h-[44px] w-full items-center gap-2 text-left"
-                        style={{ background: "none", border: 0, padding: 0 }}
+                        className="flex min-h-[44px] w-full items-center text-left"
+                        style={{ gap: "var(--c97-sp-1)", background: "none", border: 0, padding: 0 }}
                       >
                         <CrestAvatar crest={row.crest} name={row.name} size="sm" />
                         <span className="c97-serif" style={{ fontWeight: 600 }}>
@@ -692,16 +660,16 @@ function KnockoutView({
   }
 
   return (
-    <div className="space-y-5">
+    <div className="flex flex-col" style={{ rowGap: "var(--c97-sp-2)" }}>
       {rounds.map((round) => (
-        <SurfaceCard key={round.id} className="p-5 sm:p-6">
-          <div className="flex items-center justify-between pb-4">
+        <SurfaceCard key={round.id} className="p-[var(--c97-sp-2)] sm:p-[var(--c97-sp-3)]">
+          <div className="flex items-center justify-between" style={{ paddingBottom: "var(--c97-sp-2)" }}>
             <h3 className="c97-serif" style={{ fontSize: "var(--c97-fs-h3)" }}>
               {round.name}
             </h3>
             <span className="c97-meta">{round.fixtures.length} ties</span>
           </div>
-          <div className="grid gap-3 sm:grid-cols-2">
+          <div className="grid sm:grid-cols-2" style={{ gap: "var(--c97-sp-1)" }}>
             {round.fixtures.map((fixture) => (
               <FixtureCard
                 key={fixture.id}
@@ -743,7 +711,7 @@ function ScheduleView({
   }
 
   return (
-    <div className="space-y-5">
+    <div className="flex flex-col" style={{ rowGap: "var(--c97-sp-2)" }}>
       {upcomingFixtures.length > 0 && (
         <FixtureGroupSection
           title="Next up"
@@ -772,15 +740,15 @@ function FormatCard({
   tournament: WorldCupSummarySnapshot["tournament"];
 }) {
   return (
-    <SurfaceCard className="p-5">
+    <SurfaceCard style={{ padding: "var(--c97-sp-2)" }}>
       <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-1)" }}>How 2026 worked</p>
       <h3 className="c97-serif" style={{ marginBottom: "var(--c97-sp-2)", fontSize: "var(--c97-fs-h3)" }}>
         A bigger, three-country World Cup
       </h3>
       <p className="c97-prose">{tournament.format}</p>
       <dl
-        className="mt-4 grid gap-y-2"
-        style={{ borderTop: "1px solid var(--c97-rule)", paddingTop: "var(--c97-sp-3)" }}
+        className="grid"
+        style={{ marginTop: "var(--c97-sp-2)", rowGap: "var(--c97-sp-1)", borderTop: "1px solid var(--c97-rule)", paddingTop: "var(--c97-sp-3)" }}
       >
         {(
           [
@@ -789,15 +757,15 @@ function FormatCard({
             ["Host cities", `${tournament.venues.length}`],
           ] as const
         ).map(([label, value]) => (
-          <div key={label} className="flex items-baseline justify-between gap-2">
+          <div key={label} className="flex items-baseline justify-between" style={{ gap: "var(--c97-sp-1)" }}>
             <dt className="c97-kicker">{label}</dt>
             <dd className="c97-mono mb-0" style={{ fontWeight: 700 }}>{value}</dd>
           </div>
         ))}
       </dl>
       <div
-        className="mt-4 flex flex-wrap gap-2"
-        style={{ borderTop: "1px solid var(--c97-rule)", paddingTop: "var(--c97-sp-3)" }}
+        className="flex flex-wrap"
+        style={{ marginTop: "var(--c97-sp-2)", gap: "var(--c97-sp-1)", borderTop: "1px solid var(--c97-rule)", paddingTop: "var(--c97-sp-3)" }}
       >
         <span className="c97-meta flex items-center">
           <CalendarDays className="h-3.5 w-3.5" aria-hidden="true" />
@@ -833,10 +801,10 @@ function TeamDetailCard({
   const upcoming = (snapshot?.upcomingFixtures ?? []).slice(0, 3);
 
   return (
-    <SurfaceCard className="p-5">
+    <SurfaceCard style={{ padding: "var(--c97-sp-2)" }}>
       {/*
         The live region and the test id sit on this wrapper rather than the
-        card itself. SurfaceCard takes only children and className and
+        card itself. SurfaceCard takes only children, className, and style, and
         spreads no rest props, so an aria-live (or a data-testid) set on it
         is silently dropped and the panel announced nothing when the
         selected team changed. TypeScript could not catch it: hyphenated JSX
@@ -844,13 +812,13 @@ function TeamDetailCard({
         type-checked against a props type that has no such prop.
       */}
       <div aria-live="polite" data-testid="world-cup-selected-team">
-        <div className="flex items-start gap-3">
+        <div className="flex items-start" style={{ gap: "var(--c97-sp-1)" }}>
           <CrestAvatar crest={option.crest} name={option.name} size="lg" />
           <div className="min-w-0 flex-1">
             <h3 className="c97-serif truncate" style={{ fontSize: "var(--c97-fs-h3)" }}>
               {option.name}
             </h3>
-            <div className="mt-1.5 flex flex-wrap gap-1.5">
+            <div className="flex flex-wrap" style={{ marginTop: "var(--c97-sp-0)", gap: "var(--c97-sp-0)" }}>
               {option.group && <InfoChip label={`Group ${option.group}`} />}
               {option.code && <InfoChip label={option.code} />}
             </div>
@@ -868,15 +836,14 @@ function TeamDetailCard({
 
         {standing && (
           <dl
-            className="mt-4 grid grid-cols-3 gap-x-3 gap-y-2"
-            style={{ borderTop: "1px solid var(--c97-rule)", paddingTop: "var(--c97-sp-3)" }}
+            className="grid grid-cols-3"
+            style={{ marginTop: "var(--c97-sp-2)", columnGap: "var(--c97-sp-1)", rowGap: "var(--c97-sp-1)", borderTop: "1px solid var(--c97-rule)", paddingTop: "var(--c97-sp-3)" }}
           >
             {(
               [
                 ["Pos", `${standing.rank}`],
                 ["Pld", `${standing.played}`],
                 ["Pts", `${standing.points}`],
-                ["W-D-L", `${standing.wins}-${standing.draws}-${standing.losses}`],
                 ["GF", `${standing.goalsFor}`],
                 ["GA", `${standing.goalsAgainst}`],
                 [
@@ -885,9 +852,11 @@ function TeamDetailCard({
                     ? `+${standing.goalDifference}`
                     : `${standing.goalDifference}`,
                 ],
+                ["W-D-L", `${standing.wins}-${standing.draws}-${standing.losses}`],
               ] as const
             ).map(([label, value]) => (
-              <div key={label}>
+              // Seven stats in three columns: the record takes the whole last row.
+              <div key={label} className={label === "W-D-L" ? "col-span-3" : undefined}>
                 <dt className="c97-kicker">{label}</dt>
                 <dd className="c97-mono mb-0" style={{ fontWeight: 700 }}>{value}</dd>
               </div>
@@ -897,11 +866,10 @@ function TeamDetailCard({
 
         {form.length > 0 && (
           <div
-            className="mt-4"
-            style={{ borderTop: "1px solid var(--c97-rule)", paddingTop: "var(--c97-sp-3)" }}
+            style={{ marginTop: "var(--c97-sp-2)", borderTop: "1px solid var(--c97-rule)", paddingTop: "var(--c97-sp-3)" }}
           >
             <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-1)" }}>Form (last 5)</p>
-            <div className="flex gap-1.5">
+            <div className="flex" style={{ gap: "var(--c97-sp-0)" }}>
               {form.map((result, index) => (
                 <TeamResultPill key={index} result={result} />
               ))}
@@ -911,11 +879,10 @@ function TeamDetailCard({
 
         {recent.length > 0 && (
           <div
-            className="mt-4"
-            style={{ borderTop: "1px solid var(--c97-rule)", paddingTop: "var(--c97-sp-3)" }}
+            style={{ marginTop: "var(--c97-sp-2)", borderTop: "1px solid var(--c97-rule)", paddingTop: "var(--c97-sp-3)" }}
           >
             <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-1)" }}>Recent results</p>
-            <div className="space-y-2">
+            <div className="flex flex-col" style={{ rowGap: "var(--c97-sp-1)" }}>
               {recent.map((fixture) => (
                 <FixtureCard
                   key={fixture.id}
@@ -931,11 +898,10 @@ function TeamDetailCard({
 
         {upcoming.length > 0 && (
           <div
-            className="mt-4"
-            style={{ borderTop: "1px solid var(--c97-rule)", paddingTop: "var(--c97-sp-3)" }}
+            style={{ marginTop: "var(--c97-sp-2)", borderTop: "1px solid var(--c97-rule)", paddingTop: "var(--c97-sp-3)" }}
           >
             <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-1)" }}>Upcoming</p>
-            <div className="space-y-2">
+            <div className="flex flex-col" style={{ rowGap: "var(--c97-sp-1)" }}>
               {upcoming.map((fixture) => (
                 <FixtureCard
                   key={fixture.id}

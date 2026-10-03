@@ -47,7 +47,7 @@ export function MissionDrawer({
   return (
     <>
       {isOpen ? (
-        <div className="c97-enter-fade fixed inset-0 z-[60] flex justify-end">
+        <div className="c97-enter-fade fixed inset-0 z-[var(--c97-z-drawer)] flex justify-end">
           <button
             type="button"
             aria-label="Close mission detail"
@@ -66,7 +66,7 @@ export function MissionDrawer({
             data-c97-surface="paper"
             className="c97-enter-slide-x relative flex h-full w-full max-w-[30rem] flex-col overflow-y-auto border-l border-[var(--c97-rule)] bg-[var(--c97-surface)] outline-none"
           >
-            <div className="relative border-b border-[var(--c97-rule)] px-5 pb-4.5 pt-6">
+            <div className="relative border-b border-[var(--c97-rule)]" style={{ paddingInline: "var(--c97-sp-2)", paddingTop: "var(--c97-sp-3)", paddingBottom: "var(--c97-sp-2)" }}>
               <span
                 aria-hidden="true"
                 className="absolute inset-x-0 top-0 h-[3px]"
@@ -82,7 +82,7 @@ export function MissionDrawer({
               </button>
 
               {detail ? (
-                <div className="flex items-center gap-4 pr-10">
+                <div className="flex items-center" style={{ paddingRight: "var(--c97-sp-4)", gap: "var(--c97-sp-2)" }}>
                   <div
                     className="h-[74px] w-[74px] shrink-0 overflow-hidden border border-[var(--c97-rule)]"
                     style={{ background: "var(--c97-field)" }}
@@ -98,8 +98,8 @@ export function MissionDrawer({
                     </h2>
                     {status ? (
                       <span
-                        className="mt-1.5 inline-flex items-center gap-1.5 font-mono text-3xs uppercase tracking-[0.08em]"
-                        style={{ color: accent }}
+                        className="inline-flex items-center font-mono text-3xs uppercase tracking-[0.08em]"
+                        style={{ color: accent, marginTop: "var(--c97-sp-0)", gap: "var(--c97-sp-0)" }}
                       >
                         <span aria-hidden="true" className="h-1.5 w-1.5 bg-current" />
                         {MISSION_STATUS_LABEL[status]}
@@ -108,7 +108,7 @@ export function MissionDrawer({
                   </div>
                 </div>
               ) : (
-                <p className="pr-10 text-sm text-[var(--c97-ink-2)]">
+                <p className="text-sm text-[var(--c97-ink-2)]" style={{ paddingRight: "var(--c97-sp-4)" }}>
                   {error ? "Mission detail unavailable." : "Loading mission detail…"}
                 </p>
               )}
@@ -123,8 +123,8 @@ export function MissionDrawer({
             />
 
             {detail ? (
-              <div className="border-t border-[color-mix(in_srgb,var(--c97-rule)_55%,transparent)] px-5 py-4">
-                <h3 className="mb-3.5 font-mono text-3xs font-semibold uppercase tracking-[0.12em] text-[var(--c97-ink-2)]">
+              <div className="border-t border-[color-mix(in_srgb,var(--c97-rule)_55%,transparent)]" style={{ paddingInline: "var(--c97-sp-2)", paddingBlock: "var(--c97-sp-2)" }}>
+                <h3 className="font-mono text-3xs font-semibold uppercase tracking-[0.12em] text-[var(--c97-ink-2)]" style={{ marginBottom: "var(--c97-sp-2)" }}>
                   T-0 sequence
                 </h3>
                 <MissionSequenceTimeline rocketName={detail.rocketName} upcoming={detail.upcoming} />

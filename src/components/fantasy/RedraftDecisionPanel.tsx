@@ -24,14 +24,14 @@ export function RedraftDecisionPanel({
 
   return (
     <section aria-labelledby="redraft-position-decision-heading">
-      <div className="mb-3 flex flex-wrap items-end justify-between gap-x-5 gap-y-2">
+      <div className="flex flex-wrap items-end justify-between" style={{ marginBottom: "var(--c97-sp-1)", columnGap: "var(--c97-sp-2)", rowGap: "var(--c97-sp-1)" }}>
         <div>
           <p className={MONO_LABEL_CLASS} style={{ color: "var(--c97-ink-2)" }}>
             Rank index and scarcity
           </p>
           <h2
             id="redraft-position-decision-heading"
-            className="mt-1 text-xl font-semibold tracking-[-0.03em]"
+            className="text-xl font-semibold tracking-[-0.03em]" style={{ marginTop: "var(--c97-sp-0)" }}
           >
             What changes if you wait
           </h2>
@@ -58,14 +58,16 @@ export function RedraftDecisionPanel({
           return (
             <article
               key={entry.position}
-              className="min-w-0 px-3.5 py-3"
+              className="min-w-0"
               style={{
+                paddingInline: "var(--c97-sp-2)",
+                paddingBlock: "var(--c97-sp-1)",
                 background: mostAtRisk
                   ? "color-mix(in srgb, var(--c97-warning) 8%, var(--c97-surface))"
                   : "var(--c97-surface)",
               }}
             >
-              <div className="flex min-h-6 items-center gap-2">
+              <div className="flex min-h-6 items-center" style={{ gap: "var(--c97-sp-1)" }}>
                 <span className={POSITION_CHIP_CLASS} style={getPositionTone(entry.position)}>
                   {entry.position}
                 </span>
@@ -90,7 +92,7 @@ export function RedraftDecisionPanel({
                   <button
                     type="button"
                     onClick={() => onOpenPlayer(best.player)}
-                    className="-mx-1 mt-1.5 inline-flex min-h-touch max-w-full items-center gap-2 px-1 text-left"
+                    className="inline-flex min-h-touch max-w-full items-center text-left hover:underline hover:decoration-[var(--c97-accent)] hover:underline-offset-4" style={{ paddingInline: "var(--c97-sp-0)", marginInline: "calc(var(--c97-sp-0) * -1)", marginTop: "var(--c97-sp-0)", gap: "var(--c97-sp-1)" }}
                     aria-label={`Open ${best.player.name} detail`}
                   >
                     <span className="truncate text-sm font-semibold tracking-[-0.01em]">
@@ -112,14 +114,16 @@ export function RedraftDecisionPanel({
                     Starter line {best.starterCutoff === null ? "unavailable" : `overall #${Math.round(best.starterCutoff)}`} · Roster line {best.rosterCutoff === null ? "unavailable" : `overall #${Math.round(best.rosterCutoff)}`}{best.coverage === "limited" ? " · Limited coverage" : ""}
                   </p>
                   <p
-                    className="m-0 mt-2 text-xs leading-5"
-                    style={{ color: "var(--c97-ink-2)" }}
+                    className="m-0 text-xs leading-5"
+                    style={{ marginTop: "var(--c97-sp-1)", color: "var(--c97-ink-2)" }}
                   >
                     {describeRedraftTier(entry)}
                   </p>
                   <p
-                    className="m-0 mt-2 border-t pt-2 text-xs leading-5"
+                    className="m-0 border-t text-xs leading-5"
                     style={{
+                      paddingTop: "var(--c97-sp-1)",
+                      marginTop: "var(--c97-sp-1)",
                       color: "var(--c97-ink)",
                       borderColor: "color-mix(in srgb, var(--c97-rule) 70%, transparent)",
                     }}
@@ -128,7 +132,7 @@ export function RedraftDecisionPanel({
                   </p>
                 </>
               ) : (
-                <p className="m-0 mt-3 text-xs" style={{ color: "var(--c97-ink-2)" }}>
+                <p className="m-0 text-xs" style={{ marginTop: "var(--c97-sp-1)", color: "var(--c97-ink-2)" }}>
                   No ranked player remains at this position.
                 </p>
               )}

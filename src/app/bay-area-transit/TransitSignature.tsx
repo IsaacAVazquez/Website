@@ -93,12 +93,12 @@ function PlatformBoard({
       <div className="c97-transit-board-inner">
         <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-1)" }}>Next trains</p>
         {!station ? (
-          <p className="mb-0 text-sm leading-6" style={{ color: "var(--c97-ink-2)" }}>
+          <p className="text-sm leading-6" style={{ color: "var(--c97-ink-2)", marginBottom: "0" }}>
             No station is available in the current snapshot.
           </p>
         ) : (
           <>
-            <h2 className="c97-poster-sm mb-2">{station.name}</h2>
+            <h2 className="c97-poster-sm" style={{ marginBottom: "var(--c97-sp-1)" }}>{station.name}</h2>
             {departuresStatus !== "fresh" ? (
               <p className="c97-transit-board-status" role="status">
                 {departuresStatus === "stale-fallback"
@@ -108,14 +108,14 @@ function PlatformBoard({
             ) : null}
 
             {isLoading ? (
-              <p className="mb-0 text-sm" role="status" style={{ color: "var(--c97-ink-2)" }}>
+              <p className="text-sm" role="status" style={{ color: "var(--c97-ink-2)", marginBottom: "0" }}>
                 Loading departures…
               </p>
             ) : null}
 
             {error ? (
               <div role="alert">
-                <p className="mb-2 text-sm leading-6" style={{ color: "var(--c97-negative)" }}>
+                <p className="text-sm leading-6" style={{ marginBottom: "var(--c97-sp-1)", color: "var(--c97-negative)" }}>
                   {error}
                 </p>
                 <button type="button" className="c97-btn-ghost" onClick={onRetry}>
@@ -152,7 +152,7 @@ function PlatformBoard({
                   ))}
                 </ul>
               ) : (
-                <p className="mb-0 text-sm leading-6" style={{ color: "var(--c97-ink-2)" }}>
+                <p className="text-sm leading-6" style={{ color: "var(--c97-ink-2)", marginBottom: "0" }}>
                   {departuresStatus === "fresh" && board.departures.length === 0
                     ? `No trains are scheduled at ${station.name} right now.`
                     : `No upcoming departures in this snapshot for ${station.name}.`}

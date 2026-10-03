@@ -140,8 +140,8 @@ export function MissionImageFrame({
           aria-hidden="true"
           className="absolute inset-0 flex items-center justify-center"
         >
-          <div className="flex flex-col items-center gap-3">
-            <Rocket className="h-7 w-7 text-[var(--c97-accent)]" />
+          <div className="flex flex-col items-center" style={{ gap: "var(--c97-sp-1)" }}>
+            <Rocket aria-hidden="true" className="h-7 w-7 text-[var(--c97-accent)]" />
             <span className="font-mono text-3xs font-semibold uppercase tracking-[0.28em] text-[var(--c97-label)]">
               {getInitials(name)}
             </span>

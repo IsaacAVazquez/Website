@@ -61,6 +61,24 @@ export default async function EarthquakePulsePage({
           dateModified: earthquakeSnapshot.summary.generatedAt ?? "",
         }}
       />
+      <StructuredData
+        type="Dataset"
+        data={{
+          name: "Global Earthquake Activity Dataset (24-Hour Pulse)",
+          description:
+            "Frequently refreshed feed of global seismic events, magnitude distributions, depth readings, and regional seismic activity based on USGS monitoring.",
+          url: "https://isaacvazquez.com/earthquake-pulse",
+          keywords: [
+            "earthquakes",
+            "seismic activity",
+            "USGS earthquake feed",
+            "earthquake magnitude",
+            "geophysics",
+          ],
+          dateModified: earthquakeSnapshot.summary.generatedAt ?? "",
+          license: "https://creativecommons.org/publicdomain/zero/1.0/",
+        }}
+      />
       <EarthquakeClient initialState={initialState} summary={summary} />
     </>
   );

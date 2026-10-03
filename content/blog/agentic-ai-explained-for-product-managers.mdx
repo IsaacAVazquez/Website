@@ -29,6 +29,13 @@ That last part matters more than the branding language around it. A chatbot can 
 
 When I explain the distinction to PMs, I usually start with the job rather than the model. If the job is "answer my question," a chatbot may be enough. If the job is "research three competitors, compare pricing changes, pull examples, and draft a brief I can react to," then the question becomes whether the system can plan, call the right tools, recover when one of them fails, and show me what it did. That is the practical difference. I do not think it helps to turn this into abstract taxonomy when the product consequences are concrete.
 
+### Key takeaways
+
+- **Agentic AI definition**: Systems that receive a high-level goal, plan intermediate steps, operate external tools (APIs, code, search), and iterate until the task is complete without human micro-steering.
+- **The four production pillars**: Autonomous path planning, external tool execution, multi-turn state preservation, and inspectable audit trails.
+- **The product manager's focus**: The core design challenge shifts from response quality to permissions, execution boundaries, failure recovery, and safe human-in-the-loop escalation.
+- **Common failure mode**: Products that market general autonomy while silently degrading or getting trapped in loops on non-ideal tool responses.
+
 ## What makes an agentic system feel real
 
 The systems that feel meaningfully agentic to me usually have four things working together. They can decide on an execution path instead of just continuing the conversation. They can use external tools that matter, whether that is search, code execution, a database, or an internal API. They keep enough state to avoid starting over every few minutes. And they expose the work in a way that a human can audit when something looks off.

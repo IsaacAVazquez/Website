@@ -234,7 +234,8 @@ describe("MBAJobsClient", () => {
     expect(
       within(startupGroup).queryByRole("button", { name: "OpenAI" })
     ).not.toBeInTheDocument();
-    expect(stripeButton).toHaveStyle("background: var(--c97-field)");
+    // The field tint and the hover come from .mba-toggle in mba-jobs.css.
+    expect(stripeButton).toHaveClass("mba-toggle");
     expect(stripeDot).not.toBeNull();
     // jsdom drops color-mix() values, so the active dot's category colour can't be
     // read back from its style. Check the colour it is given and that the active dot
@@ -570,6 +571,28 @@ describe("MBAJobsClient", () => {
     );
 
     expect(updateStatus).toHaveBeenCalledWith("app-1", "offer");
+  });
+
+  it("asks for a second click before deleting a tracked application", () => {
+    currentSearchParams = new URLSearchParams("view=applications");
+    const removeApplication = jest.fn();
+    const application = buildApplication({ status: "interviewing" });
+    mockUseMBAApplications.mockReturnValue(buildApplicationsHookValue({
+      applications: [application],
+      activeApplications: [application],
+      removeApplication,
+    }));
+
+    render(<MBAJobsClient initialState={DEFAULT_MBA_JOBS_STATE} />);
+
+    fireEvent.click(screen.getByRole("button", { name: "Delete" }));
+    expect(removeApplication).not.toHaveBeenCalled();
+    fireEvent.click(screen.getByRole("button", { name: "Keep it" }));
+    expect(screen.getByRole("button", { name: "Delete" })).toBeVisible();
+
+    fireEvent.click(screen.getByRole("button", { name: "Delete" }));
+    fireEvent.click(screen.getByRole("button", { name: "Confirm delete" }));
+    expect(removeApplication).toHaveBeenCalledWith("app-1");
   });
 
   it("summarizes the pipeline funnel and conversion rates in the applications view", () => {

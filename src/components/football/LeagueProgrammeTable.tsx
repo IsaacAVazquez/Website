@@ -1,7 +1,7 @@
 "use client";
 
 import { CrestAvatar } from "./CrestAvatar";
-import { leagueZone, type LeagueZone } from "./ladderGeometry";
+import { LEAGUE_ZONE_LABEL, leagueZone, type LeagueZone } from "./ladderGeometry";
 import { formatFixed } from "./fixtureFormat";
 
 export interface ProgrammeTableRow {
@@ -94,14 +94,17 @@ export function LeagueProgrammeTable({
                   boxShadow: isSelected ? "inset 4px 0 0 0 var(--c97-ink)" : undefined,
                 }}
               >
-                <td className="c97-mono">{row.position}</td>
+                <td className="c97-mono">
+                  {row.position}
+                  {zone !== "midtable" ? <span className="sr-only">, {LEAGUE_ZONE_LABEL[zone]}</span> : null}
+                </td>
                 <td>
                   <button
                     type="button"
                     onClick={() => onSelect(row.id)}
                     aria-pressed={isSelected}
                     aria-label={`Show ${row.name} details`}
-                    className="flex min-h-[44px] w-full items-center gap-2 text-left"
+                    className="flex min-h-[44px] w-full items-center text-left" style={{ gap: "var(--c97-sp-1)" }}
                   >
                     <CrestAvatar crest={row.crest} name={row.shortName} size="sm" />
                     <span className="font-semibold text-[var(--c97-ink)]">{row.shortName}</span>

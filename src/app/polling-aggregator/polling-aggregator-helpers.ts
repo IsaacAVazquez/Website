@@ -90,39 +90,56 @@ export function formatNet(net: number): string {
 
 // ─── Party colors ──────────────────────────────────────────────────────────────
 
-export const DEM_COLOR = "#2563EB";   // blue-600
-export const REP_COLOR = "#DC2626";   // red-600
-export const TUP_COLOR = "#D97706";   // amber-600 (toss-up)
+// CSS values, so they only work in `style` (never an SVG presentation
+// attribute, where var() does not resolve). These are the mark steps, for
+// lines, swatches, bars, and coloured figures on the sheet; the rating fills
+// below use the full inks.
+export const DEM_COLOR = "var(--c97-party-d-mark)";
+export const REP_COLOR = "var(--c97-party-r-mark)";
+export const TUP_COLOR = "var(--c97-party-tossup-mark)";
+
+const DEM_INK = "var(--c97-party-d)";
+const REP_INK = "var(--c97-party-r)";
+const TUP_INK = "var(--c97-party-tossup)";
 
 export function partyColor(party: Party): string {
   if (party === "D") return DEM_COLOR;
   if (party === "R") return REP_COLOR;
-  return "#64748B";
+  return "var(--c97-ink-2)";
 }
 
 // ─── Rating styles ─────────────────────────────────────────────────────────────
 
+const rampFill = (ink: string, pct: number) => `color-mix(in srgb, ${ink} ${pct}%, var(--c97-field))`;
+
+/*
+ * Safe is the party ink, Likely mixes it 50% into the field, Lean 25%. Likely
+ * sits at 50% rather than 70% because at 70% Likely D measured 3.16:1 against
+ * the paper sheet's ink and 4.19:1 against its paper in light mode, so no
+ * token cleared 4.5:1. The mixed steps take the sheet's ink, which clears
+ * 4.5:1 in both themes on the paper sheet (lowest is Likely D in light, 4.77).
+ * The full inks never change with the theme, so their text is a print ink
+ * that never does either: bone on blue (6.69), black on vermilion (4.62) and
+ * on saffron (10.15).
+ */
 export function getRatingBg(rating: RaceRating): string {
   switch (rating) {
-    case "Safe D":    return "#1D4ED8";
-    case "Likely D":  return "#3B82F6";
-    case "Lean D":    return "#93C5FD";
-    case "Toss-up":   return "#D97706";
-    case "Lean R":    return "#FCA5A5";
-    case "Likely R":  return "#EF4444";
-    case "Safe R":    return "#B91C1C";
+    case "Safe D":    return DEM_INK;
+    case "Likely D":  return rampFill(DEM_INK, 50);
+    case "Lean D":    return rampFill(DEM_INK, 25);
+    case "Toss-up":   return TUP_INK;
+    case "Lean R":    return rampFill(REP_INK, 25);
+    case "Likely R":  return rampFill(REP_INK, 50);
+    case "Safe R":    return REP_INK;
   }
 }
 
 export function getRatingTextColor(rating: RaceRating): string {
   switch (rating) {
-    case "Safe D":   return "#fff";
-    case "Likely D": return "#fff";
-    case "Lean D":   return "#1e3a5f";
-    case "Toss-up":  return "#fff";
-    case "Lean R":   return "#5c1a1a";
-    case "Likely R": return "#fff";
-    case "Safe R":   return "#fff";
+    case "Safe D":   return "var(--c97-print-bone)";
+    case "Toss-up":
+    case "Safe R":   return "var(--c97-print-black)";
+    default:         return "var(--c97-ink)";
   }
 }
 

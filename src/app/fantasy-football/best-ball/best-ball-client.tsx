@@ -236,7 +236,7 @@ const PAGE_SIZE = 80;
 // the room, so a 12-pick plate would put its players two rounds off their real one.
 
 const PILL_ACTION_CLASS =
-  "inline-flex min-h-touch items-center border px-4 font-mono text-2xs uppercase tracking-[0.06em] no-underline";
+  "inline-flex min-h-touch items-center border px-[var(--c97-sp-2)] font-mono text-2xs uppercase tracking-[0.06em] no-underline";
 
 /** Phone rows carry their own value labels, since the column-label row is md-and-up. */
 const ROW_MICRO_LABEL_CLASS = "text-3xs uppercase tracking-[0.06em] text-[var(--c97-ink-2)] md:hidden";
@@ -418,7 +418,7 @@ function BestBallPlayerRow({
         className="absolute inset-0 z-[1] cursor-pointer focus-visible:outline focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-[var(--c97-accent)]"
       />
       <div
-        className="relative z-[2] flex min-h-11 w-full cursor-pointer flex-wrap items-center gap-x-3.5 gap-y-1 px-3.5 py-1.5 text-left"
+        className="relative z-[2] flex min-h-11 w-full cursor-pointer flex-wrap items-center text-left" style={{ paddingInline: "var(--c97-sp-2)", paddingBlock: "var(--c97-sp-0)", columnGap: "var(--c97-sp-2)", rowGap: "var(--c97-sp-0)" }}
         onClick={() => {
           if (window.getSelection()?.toString()) return;
           onOpenDetail(player);
@@ -430,11 +430,11 @@ function BestBallPlayerRow({
         >
           {player.bestBallRank}
         </span>
-        <span className="flex min-w-0 flex-[1_1_180px] items-baseline gap-2">
+        <span className="flex min-w-0 flex-[1_1_180px] items-baseline" style={{ gap: "var(--c97-sp-1)" }}>
           <span className="truncate text-sm font-semibold tracking-tight">{player.name}</span>
           <span
-            className="inline-flex shrink-0 items-center border px-1.5 py-0.5 font-mono text-3xs tracking-[0.06em]"
-            style={{ ...tone, color: "var(--c97-ink)" }}
+            className="inline-flex shrink-0 items-center border py-0.5 font-mono text-3xs tracking-[0.06em]"
+            style={{ paddingInline: "var(--c97-sp-0)", ...tone, color: "var(--c97-ink)" }}
           >
             {player.position}
             {!withheld && Number.isFinite(player.positionRank) ? player.positionRank : ""}
@@ -446,7 +446,7 @@ function BestBallPlayerRow({
             {player.team || "FA"}
           </span>
         </span>
-        <span className="flex max-w-full flex-wrap items-center gap-x-3.5 gap-y-1">
+        <span className="flex max-w-full flex-wrap items-center" style={{ columnGap: "var(--c97-sp-2)", rowGap: "var(--c97-sp-0)" }}>
           <span className="sr-only">Underdog ADP</span>
           <span
             className={`w-auto font-mono md:w-14 md:text-right ${atUndraftedFloor ? "text-3xs uppercase" : "text-xs"}`}
@@ -698,7 +698,7 @@ export function BestBallClient({ initialState }: BestBallClientProps) {
 
   return (
     <section
-      className="c97-dash relative overflow-x-clip min-h-screen"
+      className="c97-dash relative overflow-x-clip min-h-dvh"
       aria-label="Best ball rankings and strategy"
       data-testid="best-ball-shell"
     >
@@ -721,7 +721,7 @@ export function BestBallClient({ initialState }: BestBallClientProps) {
             className="c97-offset"
             style={{ marginTop: "var(--c97-sp-4)", padding: "var(--c97-sp-3)" }}
           >
-            <div className="flex flex-wrap gap-1.5">
+            <div className="flex flex-wrap" style={{ gap: "var(--c97-sp-0)" }}>
               {headerChips.map((chip) => (
                 <span
                   key={chip}
@@ -737,11 +737,11 @@ export function BestBallClient({ initialState }: BestBallClientProps) {
               ))}
             </div>
 
-            <div className="mt-3 flex flex-wrap items-center gap-x-3 gap-y-2.5">
+            <div className="flex flex-wrap items-center" style={{ marginTop: "var(--c97-sp-1)", columnGap: "var(--c97-sp-1)", rowGap: "var(--c97-sp-1)" }}>
               <span className={`shrink-0 ${MONO_LABEL_CLASS}`} style={{ color: "var(--c97-ink-2)" }}>
                 Contest
               </span>
-              <div role="group" aria-label="Best ball contest" className="flex flex-wrap gap-1.5">
+              <div role="group" aria-label="Best ball contest" className="flex flex-wrap" style={{ gap: "var(--c97-sp-0)" }}>
                 {CONTESTS.map((contest) => {
                   const active = contest.id === routeState.contest;
                   return (
@@ -750,16 +750,16 @@ export function BestBallClient({ initialState }: BestBallClientProps) {
                       type="button"
                       aria-pressed={active}
                       onClick={() => updateRouteState({ contest: contest.id })}
-                      className={`min-h-touch cursor-pointer border px-3.5 font-mono text-2xs uppercase tracking-[0.05em] transition-colors duration-150 ${
+                      className={`min-h-touch cursor-pointer border font-mono text-2xs uppercase tracking-[0.05em] transition-colors duration-150 ${
                         active ? "" : "border-[var(--c97-rule)] hover:border-[var(--c97-ink)]"
                       }`}
                       style={
-                        active
+                        { paddingInline: "var(--c97-sp-2)", ...(active
                           ? { borderColor: "var(--c97-ink)", background: "var(--c97-ink)", color: "var(--c97-surface)" }
                           : {
                               background: "var(--c97-field)",
                               color: "var(--c97-ink)",
-                            }
+                            }) }
                       }
                     >
                       {contest.shortLabel}
@@ -787,7 +787,7 @@ export function BestBallClient({ initialState }: BestBallClientProps) {
         style={{ paddingBlock: "var(--c97-sp-5)" }}
       >
       {seasonalWeek >= 1 ? (
-        <div className={`${SHELL_CLASS} pb-3.5`}>
+        <div className={`${SHELL_CLASS}`} style={{ paddingBottom: "var(--c97-sp-2)" }}>
           <SeasonalScopeNote season={snapshot?.season ?? 0} week={seasonalWeek}>
             Best ball is drafted before the season and scored through it, so this board describes a
             market that closed at kickoff. Rankings and ADP here are the preseason readings your
@@ -797,16 +797,16 @@ export function BestBallClient({ initialState }: BestBallClientProps) {
         </div>
       ) : null}
 
-      <section aria-label="Selected format" className={`${SHELL_CLASS} pt-3.5`}>
+      <section aria-label="Selected format" className={`${SHELL_CLASS}`} style={{ paddingTop: "var(--c97-sp-2)" }}>
         <div
           className="overflow-hidden border"
           style={{ borderColor: "var(--c97-rule)", background: "var(--c97-field)" }}
         >
           <div
-            className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1.5 border-b px-4 py-3"
-            style={{ borderColor: "var(--c97-rule)" }}
+            className="flex flex-wrap items-baseline justify-between border-b"
+            style={{ paddingInline: "var(--c97-sp-2)", paddingBlock: "var(--c97-sp-1)", columnGap: "var(--c97-sp-2)", rowGap: "var(--c97-sp-0)", borderColor: "var(--c97-rule)" }}
           >
-            <div className="flex min-w-0 flex-wrap items-baseline gap-x-3 gap-y-1">
+            <div className="flex min-w-0 flex-wrap items-baseline" style={{ columnGap: "var(--c97-sp-1)", rowGap: "var(--c97-sp-0)" }}>
               <p className={`m-0 ${MONO_LABEL_CLASS}`} style={{ color: "var(--c97-ink-2)" }}>
                 Contest lens
               </p>
@@ -819,8 +819,8 @@ export function BestBallClient({ initialState }: BestBallClientProps) {
             </span>
           </div>
           <div
-            className="grid gap-x-4 gap-y-3.5 px-4 py-3.5"
-            style={{ gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 220px), 1fr))" }}
+            className="grid"
+            style={{ paddingInline: "var(--c97-sp-2)", paddingBlock: "var(--c97-sp-2)", columnGap: "var(--c97-sp-2)", rowGap: "var(--c97-sp-2)", gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 220px), 1fr))" }}
           >
             {[
               { label: "The room", body: activeContest.structure },
@@ -829,7 +829,7 @@ export function BestBallClient({ initialState }: BestBallClientProps) {
               { label: "What I would watch", body: activeContest.risk },
             ].map((cell) => (
               <div key={cell.label} className="min-w-0">
-                <p className={`mb-1.5 mt-0 ${MONO_LABEL_CLASS}`} style={{ color: "var(--c97-ink-2)" }}>
+                <p className={`mt-0 ${MONO_LABEL_CLASS}`} style={{ marginBottom: "var(--c97-sp-0)", color: "var(--c97-ink-2)" }}>
                   {cell.label}
                 </p>
                 <p className="m-0 text-sm leading-6">{cell.body}</p>
@@ -837,8 +837,8 @@ export function BestBallClient({ initialState }: BestBallClientProps) {
             ))}
           </div>
           <div
-            className="flex flex-wrap items-center justify-between gap-x-4 gap-y-2.5 border-t px-4 py-3"
-            style={{ borderColor: "var(--c97-rule)", background: "var(--c97-surface)" }}
+            className="flex flex-wrap items-center justify-between border-t"
+            style={{ paddingInline: "var(--c97-sp-2)", paddingBlock: "var(--c97-sp-1)", columnGap: "var(--c97-sp-2)", rowGap: "var(--c97-sp-1)", borderColor: "var(--c97-rule)", background: "var(--c97-surface)" }}
           >
             <p
               className="m-0 min-w-0 flex-[1_1_260px] font-mono text-2xs leading-relaxed"
@@ -850,12 +850,12 @@ export function BestBallClient({ initialState }: BestBallClientProps) {
                 width (352px) inside a 324px footer and the card's overflow
                 clipped the rules pill; letting it shrink lets its own wrap put
                 the second pill on a new line at 390. */}
-            <span className="flex flex-wrap gap-2">
+            <span className="flex flex-wrap" style={{ gap: "var(--c97-sp-1)" }}>
               <Link
                 href={trackerHref}
                 className={`${PILL_ACTION_CLASS} border-[var(--c97-ink)] bg-[var(--c97-ink)] text-[var(--c97-surface)] hover:bg-[var(--c97-ink-2)]`}
               >
-                Draft with this lens&nbsp;<span aria-hidden="true">↗</span>
+                Draft with this lens&nbsp;<span className="c97-arrow-out" aria-hidden="true">↗</span>
               </Link>
               <a
                 href={activePreset.officialRulesUrl}
@@ -864,7 +864,7 @@ export function BestBallClient({ initialState }: BestBallClientProps) {
                 className={`${PILL_ACTION_CLASS} border-[var(--c97-rule)] hover:border-[var(--c97-ink)]`}
                 style={{ color: "var(--c97-ink)" }}
               >
-                Scoring rules&nbsp;<span aria-hidden="true">↗</span>
+                Scoring rules&nbsp;<span className="c97-arrow-out" aria-hidden="true">↗</span>
               </a>
             </span>
           </div>
@@ -872,11 +872,13 @@ export function BestBallClient({ initialState }: BestBallClientProps) {
       </section>
 
       {freshnessWarning ? (
-        <div className={`${SHELL_CLASS} pt-3.5`}>
+        <div className={`${SHELL_CLASS}`} style={{ paddingTop: "var(--c97-sp-2)" }}>
           <div
             role="status"
-            className="max-w-[70ch] border px-4 py-3 text-sm leading-6"
+            className="max-w-[70ch] border text-sm leading-6"
             style={{
+              paddingInline: "var(--c97-sp-2)",
+              paddingBlock: "var(--c97-sp-1)",
               borderColor: "color-mix(in srgb, var(--c97-warning) 48%, var(--c97-rule))",
               background: "color-mix(in srgb, var(--c97-warning) 10%, var(--c97-surface))",
             }}
@@ -890,12 +892,14 @@ export function BestBallClient({ initialState }: BestBallClientProps) {
           carries the consensus date, and the rows it names print no ECR,
           value, tier, or position rank while the expert band stays. */}
       {consensusIssue ? (
-        <div className={`${SHELL_CLASS} pt-3.5`}>
+        <div className={`${SHELL_CLASS}`} style={{ paddingTop: "var(--c97-sp-2)" }}>
           <div
             role="note"
             data-testid="best-ball-consensus-note"
-            className="max-w-[70ch] border px-4 py-3 text-sm leading-6"
+            className="max-w-[70ch] border text-sm leading-6"
             style={{
+              paddingInline: "var(--c97-sp-2)",
+              paddingBlock: "var(--c97-sp-1)",
               borderColor: "color-mix(in srgb, var(--c97-warning) 48%, var(--c97-rule))",
               background: "color-mix(in srgb, var(--c97-warning) 10%, var(--c97-surface))",
             }}
@@ -905,7 +909,7 @@ export function BestBallClient({ initialState }: BestBallClientProps) {
               {consensusIssue.charAt(0).toUpperCase()}
               {consensusIssue.slice(1)}.
             </p>
-            <p className="m-0 mt-1" style={{ color: "var(--c97-ink-2)" }}>
+            <p className="m-0" style={{ marginTop: "var(--c97-sp-0)", color: "var(--c97-ink-2)" }}>
               {withheldCount} of {orderedPlayers.length} rows on this board print no ECR, value,
               tier, or position rank. Each one keeps its best, average, and worst expert rank, which
               agree with each other. Board order is unchanged.
@@ -914,7 +918,7 @@ export function BestBallClient({ initialState }: BestBallClientProps) {
         </div>
       ) : null}
 
-      <div className={`${SHELL_CLASS} pt-4`} data-testid="best-ball-board">
+      <div className={`${SHELL_CLASS}`} style={{ paddingTop: "var(--c97-sp-2)" }} data-testid="best-ball-board">
         <h2 className="sr-only">{activeContest.shortLabel} board</h2>
         {/* One pinned control line at every width. The board runs hundreds of
             rows, so position, search, and the count have to stay reachable
@@ -922,15 +926,16 @@ export function BestBallClient({ initialState }: BestBallClientProps) {
             the shell padding so rows pass under a full-width band. */}
         <div
           data-testid="best-ball-board-controls"
-          className="sticky top-0 z-30 mb-3 border-b"
+          className="sticky top-0 z-30 border-b"
           style={{
+            marginBottom: "var(--c97-sp-1)",
             marginInline: "calc(-1 * var(--c97-gutter))",
             paddingInline: "var(--c97-gutter)",
             borderColor: "var(--c97-rule)",
             background: "var(--c97-surface)",
           }}
         >
-          <div className="flex flex-wrap items-center gap-x-3.5 gap-y-2.5 py-2.5">
+          <div className="flex flex-wrap items-center" style={{ paddingBlock: "var(--c97-sp-1)", columnGap: "var(--c97-sp-2)", rowGap: "var(--c97-sp-1)" }}>
             <PositionFilterBar
               ariaLabel="Best ball position"
               options={POSITION_OPTIONS}
@@ -957,11 +962,11 @@ export function BestBallClient({ initialState }: BestBallClientProps) {
                 disabled={Boolean(error)}
                 autoComplete="off"
                 placeholder="Search player or team"
-                className="min-h-touch w-[200px] border pl-8 pr-2.5 font-mono text-xs placeholder:text-[var(--c97-ink-2)] disabled:cursor-not-allowed disabled:border-dashed"
+                className="min-h-touch w-[200px] border font-mono text-xs placeholder:text-[var(--c97-ink-2)] disabled:cursor-not-allowed disabled:border-dashed"
                 style={
-                  error
+                  { paddingLeft: "calc(24px + var(--c97-sp-1))", paddingRight: "var(--c97-sp-1)", ...(error
                     ? { borderColor: "var(--c97-ink-2)", background: "none", color: "var(--c97-ink-2)" }
-                    : { borderColor: "var(--c97-rule)", background: "var(--c97-field)", color: "var(--c97-ink)" }
+                    : { borderColor: "var(--c97-rule)", background: "var(--c97-field)", color: "var(--c97-ink)" }) }
                 }
               />
             </div>
@@ -984,15 +989,18 @@ export function BestBallClient({ initialState }: BestBallClientProps) {
           {boardReady && (
             <div
               aria-hidden="true"
-              className="hidden items-center gap-x-3.5 border-t px-3.5 py-1.5 font-mono text-3xs uppercase tracking-[0.12em] md:flex"
+              className="hidden items-center border-t font-mono text-3xs uppercase tracking-[0.12em] md:flex"
               style={{
+                paddingInline: "var(--c97-sp-2)",
+                paddingBlock: "var(--c97-sp-0)",
+                columnGap: "var(--c97-sp-2)",
                 color: "var(--c97-ink-2)",
                 borderColor: "color-mix(in srgb, var(--c97-rule) 60%, transparent)",
               }}
             >
               <span className="w-[34px] shrink-0" />
               <span className="min-w-0 flex-[1_1_180px]">Player</span>
-              <span className="flex shrink-0 items-center gap-x-3.5">
+              <span className="flex shrink-0 items-center" style={{ columnGap: "var(--c97-sp-2)" }}>
                 <span className="w-14 text-right">UD ADP</span>
                 <span className="w-14 text-right whitespace-nowrap">PPR ECR</span>
                 <span className="w-14 text-right" title="ADP minus PPR best ball ECR">
@@ -1008,8 +1016,10 @@ export function BestBallClient({ initialState }: BestBallClientProps) {
         {error ? (
           <div
             role="alert"
-            className="border px-5 py-8"
+            className="border"
             style={{
+              paddingInline: "var(--c97-sp-2)",
+              paddingBlock: "var(--c97-sp-3)",
               borderColor: "var(--c97-negative)",
               background: "color-mix(in srgb, var(--c97-negative) 8%, var(--c97-surface))",
             }}
@@ -1017,28 +1027,23 @@ export function BestBallClient({ initialState }: BestBallClientProps) {
             <p className="font-semibold" style={{ color: "var(--c97-negative)" }}>
               {error}
             </p>
-            <p className="mt-2 text-sm" style={{ color: "var(--c97-ink-2)" }}>
+            <p className="text-sm" style={{ marginTop: "var(--c97-sp-1)", color: "var(--c97-ink-2)" }}>
               The strategy notes are still available while the published board reloads.
             </p>
             <button
               type="button"
               onClick={retry}
-              className="mt-4 inline-flex min-h-touch items-center border border-[var(--c97-ink)] bg-[var(--c97-ink)] text-[var(--c97-surface)] hover:bg-[var(--c97-ink-2)] px-4 text-sm font-semibold"
+              className="inline-flex min-h-touch items-center border border-[var(--c97-ink)] bg-[var(--c97-ink)] text-[var(--c97-surface)] hover:bg-[var(--c97-ink-2)] text-sm font-semibold" style={{ paddingInline: "var(--c97-sp-2)", marginTop: "var(--c97-sp-2)" }}
             >
               Retry rankings
             </button>
           </div>
         ) : isLoading ? (
-          <div className="grid gap-2" aria-label="Loading rankings">
-            {Array.from({ length: 10 }).map((_, index) => (
-              <div
-                key={index}
-                className="h-11 border motion-safe:animate-pulse"
-                style={{
-                  borderColor: "var(--c97-rule)",
-                  background: "var(--c97-field)",
-                }}
-              />
+          // The count line in the sticky bar is the live region that says
+          // "Loading players", so the placeholder rows stay silent.
+          <div className="grid" style={{ gap: "var(--c97-sp-1)" }} aria-hidden="true">
+            {Array.from({ length: 10 }, (_, index) => (
+              <div key={`best-ball-loading-${index}`} className="c97-skeleton" style={{ height: 44 }} />
             ))}
           </div>
         ) : visiblePlayers.length > 0 ? (
@@ -1059,7 +1064,7 @@ export function BestBallClient({ initialState }: BestBallClientProps) {
                       background: "var(--c97-field)",
                     }}
                   >
-                    <div className="flex flex-wrap items-baseline gap-x-3.5 gap-y-1 px-3.5 pb-2 pt-2.5">
+                    <div className="flex flex-wrap items-baseline" style={{ paddingInline: "var(--c97-sp-2)", paddingTop: "var(--c97-sp-1)", paddingBottom: "var(--c97-sp-1)", columnGap: "var(--c97-sp-2)", rowGap: "var(--c97-sp-0)" }}>
                       <span className="text-2xl font-bold leading-none tracking-tight tabular-nums">
                         {String(group.round).padStart(2, "0")}
                       </span>
@@ -1094,8 +1099,8 @@ export function BestBallClient({ initialState }: BestBallClientProps) {
               <button
                 type="button"
                 onClick={() => setVisibleCount((count) => count + PAGE_SIZE)}
-                className="mt-4 inline-flex min-h-touch w-full items-center justify-center border border-[var(--c97-rule)] hover:border-[var(--c97-ink)] px-4 text-sm font-semibold transition-colors"
-                style={{ color: "var(--c97-ink)" }}
+                className="inline-flex min-h-touch w-full items-center justify-center border border-[var(--c97-rule)] hover:border-[var(--c97-ink)] text-sm font-semibold transition-colors"
+                style={{ paddingInline: "var(--c97-sp-2)", marginTop: "var(--c97-sp-2)", color: "var(--c97-ink)" }}
               >
                 Show the next {Math.min(PAGE_SIZE, filteredPlayers.length - visibleCount)} players
               </button>
@@ -1103,8 +1108,8 @@ export function BestBallClient({ initialState }: BestBallClientProps) {
           </>
         ) : (
           <div
-            className="border border-dashed px-5 py-9 text-center"
-            style={{ borderColor: "var(--c97-rule)" }}
+            className="border border-dashed text-center"
+            style={{ paddingInline: "var(--c97-sp-2)", paddingBlock: "var(--c97-sp-4)", borderColor: "var(--c97-rule)" }}
           >
             <p className="font-mono text-xs" style={{ color: "var(--c97-ink-2)" }}>
               No players match on this board.
@@ -1118,7 +1123,7 @@ export function BestBallClient({ initialState }: BestBallClientProps) {
                   setSearchQuery("");
                   updateRouteState({ query: "" });
                 }}
-                className="mt-3.5 inline-flex min-h-touch items-center border border-[var(--c97-ink)] bg-[var(--c97-ink)] text-[var(--c97-surface)] hover:bg-[var(--c97-ink-2)] px-4 font-mono text-2xs uppercase tracking-[0.06em]"
+                className="inline-flex min-h-touch items-center border border-[var(--c97-ink)] bg-[var(--c97-ink)] text-[var(--c97-surface)] hover:bg-[var(--c97-ink-2)] font-mono text-2xs uppercase tracking-[0.06em]" style={{ paddingInline: "var(--c97-sp-2)", marginTop: "var(--c97-sp-2)" }}
               >
                 Clear search
               </button>
@@ -1126,7 +1131,7 @@ export function BestBallClient({ initialState }: BestBallClientProps) {
               <button
                 type="button"
                 onClick={() => updateRouteState({ position: "all" })}
-                className="mt-3.5 inline-flex min-h-touch items-center border border-[var(--c97-ink)] bg-[var(--c97-ink)] text-[var(--c97-surface)] hover:bg-[var(--c97-ink-2)] px-4 font-mono text-2xs uppercase tracking-[0.06em]"
+                className="inline-flex min-h-touch items-center border border-[var(--c97-ink)] bg-[var(--c97-ink)] text-[var(--c97-surface)] hover:bg-[var(--c97-ink-2)] font-mono text-2xs uppercase tracking-[0.06em]" style={{ paddingInline: "var(--c97-sp-2)", marginTop: "var(--c97-sp-2)" }}
               >
                 Show all positions
               </button>
@@ -1135,8 +1140,8 @@ export function BestBallClient({ initialState }: BestBallClientProps) {
         )}
 
         <div
-          className="mt-3 max-w-[70ch] font-mono text-2xs leading-relaxed"
-          style={{ color: "var(--c97-ink-2)" }}
+          className="max-w-[70ch] font-mono text-2xs leading-relaxed"
+          style={{ marginTop: "var(--c97-sp-1)", color: "var(--c97-ink-2)" }}
         >
           {adpAvailable && (
             <p className="m-0">
@@ -1145,7 +1150,7 @@ export function BestBallClient({ initialState }: BestBallClientProps) {
             </p>
           )}
           {snapshot && (
-            <p className="m-0 mt-1.5">
+            <p className="m-0" style={{ marginTop: "var(--c97-sp-0)" }}>
               Snapshot built {formatDate(snapshot.generatedAt)} · rankings{" "}
               <a
                 className="underline underline-offset-2"
@@ -1220,23 +1225,23 @@ export function BestBallClient({ initialState }: BestBallClientProps) {
         <h2 id="field-notes-heading" className="c97-poster-sm" style={{ marginTop: "var(--c97-sp-1)" }}>
           What has worked, and how I would use it
         </h2>
-        <p className="mb-0 mt-2.5 max-w-[70ch] text-sm leading-6" style={{ color: "var(--c97-ink-2)" }}>
+        <p className="mb-0 max-w-[70ch] text-sm leading-6" style={{ marginTop: "var(--c97-sp-1)", color: "var(--c97-ink-2)" }}>
           The findings below describe past drafts and are not proof that one construction will win the
           next tournament. I use them to set boundaries, then let the current room and the selected
           contest decide the roster.
         </p>
         <div
-          className="mt-4 grid gap-x-9 gap-y-2"
-          style={{ gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 300px), 1fr))" }}
+          className="grid"
+          style={{ marginTop: "var(--c97-sp-2)", columnGap: "var(--c97-sp-4)", rowGap: "var(--c97-sp-1)", gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 300px), 1fr))" }}
         >
           <div className="min-w-0">
             <p className={`mb-0.5 mt-0 ${MONO_LABEL_CLASS}`} style={{ color: "var(--c97-ink-2)" }}>
               Observed in past drafts
             </p>
             {OBSERVED_FINDINGS.map((finding) => (
-              <div key={finding.title} className="border-t py-2.5" style={{ borderColor: "var(--c97-rule)" }}>
+              <div key={finding.title} className="border-t" style={{ paddingBlock: "var(--c97-sp-1)", borderColor: "var(--c97-rule)" }}>
                 <p className="m-0 text-sm font-semibold tracking-tight">{finding.title}</p>
-                <p className="m-0 mt-1 text-sm leading-6" style={{ color: "var(--c97-ink-2)" }}>
+                <p className="m-0 text-sm leading-6" style={{ marginTop: "var(--c97-sp-0)", color: "var(--c97-ink-2)" }}>
                   {finding.body}
                 </p>
                 {/* A standalone link line rather than a link inside a sentence,
@@ -1247,9 +1252,9 @@ export function BestBallClient({ initialState }: BestBallClientProps) {
                   href={finding.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="-mb-2.5 inline-flex min-h-touch items-center font-mono text-2xs uppercase tracking-[0.06em] underline underline-offset-2"
+                  className="inline-flex min-h-touch items-center font-mono text-2xs uppercase tracking-[0.06em] underline underline-offset-2" style={{ marginBottom: "calc(var(--c97-sp-1) * -1)" }}
                 >
-                  {finding.source}&nbsp;<span aria-hidden="true">↗</span>
+                  {finding.source}&nbsp;<span className="c97-arrow-out" aria-hidden="true">↗</span>
                 </a>
               </div>
             ))}
@@ -1261,15 +1266,15 @@ export function BestBallClient({ initialState }: BestBallClientProps) {
             {RECOMMENDATIONS.map((recommendation) => (
               <div
                 key={recommendation.number}
-                className="flex gap-3 border-t py-2.5"
-                style={{ borderColor: "var(--c97-rule)" }}
+                className="flex border-t"
+                style={{ paddingBlock: "var(--c97-sp-1)", gap: "var(--c97-sp-1)", borderColor: "var(--c97-rule)" }}
               >
                 <span className="w-6 shrink-0 font-mono text-xs" style={{ color: "var(--c97-ink-2)" }}>
                   {recommendation.number}
                 </span>
                 <div className="min-w-0">
                   <p className="m-0 text-sm font-semibold tracking-tight">{recommendation.title}</p>
-                  <p className="mb-0 mt-1 text-sm leading-6" style={{ color: "var(--c97-ink-2)" }}>
+                  <p className="mb-0 text-sm leading-6" style={{ marginTop: "var(--c97-sp-0)", color: "var(--c97-ink-2)" }}>
                     {recommendation.body}
                   </p>
                   {recommendation.href && (
@@ -1277,9 +1282,9 @@ export function BestBallClient({ initialState }: BestBallClientProps) {
                       href={recommendation.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="-mb-2.5 inline-flex min-h-touch items-center font-mono text-2xs uppercase tracking-[0.06em] underline underline-offset-2"
+                      className="inline-flex min-h-touch items-center font-mono text-2xs uppercase tracking-[0.06em] underline underline-offset-2" style={{ marginBottom: "calc(var(--c97-sp-1) * -1)" }}
                     >
-                      4for4 draft date study&nbsp;<span aria-hidden="true">↗</span>
+                      4for4 draft date study&nbsp;<span className="c97-arrow-out" aria-hidden="true">↗</span>
                     </a>
                   )}
                 </div>
@@ -1291,10 +1296,10 @@ export function BestBallClient({ initialState }: BestBallClientProps) {
       </section>
 
       <div className="c97-sheet" data-c97-surface="paper" data-seam="torn">
-      <section aria-label="Format reference" className={`${SHELL_CLASS} pt-5`}>
+      <section aria-label="Format reference" className={`${SHELL_CLASS}`} style={{ paddingTop: "var(--c97-sp-2)" }}>
         <div
-          className="flex flex-wrap items-start justify-between gap-x-6 gap-y-3.5 border px-4 py-4"
-          style={{ borderColor: "var(--c97-rule)", background: "var(--c97-field)" }}
+          className="flex flex-wrap items-start justify-between border"
+          style={{ paddingInline: "var(--c97-sp-2)", paddingBlock: "var(--c97-sp-2)", columnGap: "var(--c97-sp-3)", rowGap: "var(--c97-sp-2)", borderColor: "var(--c97-rule)", background: "var(--c97-field)" }}
         >
           <div className="min-w-0 max-w-[68ch] flex-[1_1_380px]">
             <p className={`m-0 ${MONO_LABEL_CLASS}`} style={{ color: "var(--c97-ink-2)" }}>
@@ -1303,7 +1308,7 @@ export function BestBallClient({ initialState }: BestBallClientProps) {
             <h3 className="c97-serif c97-h3" style={{ marginTop: "var(--c97-sp-2)" }}>
               The baseline Underdog roster
             </h3>
-            <p className="mb-0 mt-2 text-sm leading-6" style={{ color: "var(--c97-ink-2)" }}>
+            <p className="mb-0 text-sm leading-6" style={{ marginTop: "var(--c97-sp-1)", color: "var(--c97-ink-2)" }}>
               Standard NFL best ball drafts use 12 teams and 18 rounds with one quarterback, two
               running backs, three receivers, one tight end, one flex, and ten bench spots. The site
               sets the strongest lineup each week, and there are no waivers, trades, or manual lineup
@@ -1317,28 +1322,28 @@ export function BestBallClient({ initialState }: BestBallClientProps) {
             className={`${PILL_ACTION_CLASS} max-w-full border-[var(--c97-rule)] hover:border-[var(--c97-ink)]`}
             style={{ color: "var(--c97-ink)" }}
           >
-            Official scoring and lineup rules&nbsp;<span aria-hidden="true">↗</span>
+            Official scoring and lineup rules&nbsp;<span className="c97-arrow-out" aria-hidden="true">↗</span>
           </a>
         </div>
       </section>
 
-      <div className={`${SHELL_CLASS} pb-11 pt-5`}>
+      <div className={`${SHELL_CLASS}`} style={{ paddingTop: "var(--c97-sp-2)", paddingBottom: "var(--c97-sp-4)" }}>
         <div
-          className="flex flex-wrap items-baseline justify-between gap-x-5 gap-y-2 border-t pt-3.5"
-          style={{ borderColor: "var(--c97-rule)" }}
+          className="flex flex-wrap items-baseline justify-between border-t"
+          style={{ paddingTop: "var(--c97-sp-2)", columnGap: "var(--c97-sp-2)", rowGap: "var(--c97-sp-1)", borderColor: "var(--c97-rule)" }}
         >
           <span className="font-mono text-2xs" style={{ color: "var(--c97-ink-2)" }}>
             Working ranges, not quotas, and nothing here guarantees a result
           </span>
-          <span className="flex flex-wrap gap-x-4 gap-y-1">
+          <span className="flex flex-wrap" style={{ columnGap: "var(--c97-sp-2)", rowGap: "var(--c97-sp-0)" }}>
             <Link href="/fantasy-football" className="c97-link inline-flex min-h-touch items-center text-sm font-semibold">
-              Rankings board&nbsp;<span aria-hidden="true">↗</span>
+              Rankings board&nbsp;<span className="c97-arrow-out" aria-hidden="true">↗</span>
             </Link>
             <Link href={trackerHref} className="c97-link inline-flex min-h-touch items-center text-sm font-semibold">
-              Draft tracker&nbsp;<span aria-hidden="true">↗</span>
+              Draft tracker&nbsp;<span className="c97-arrow-out" aria-hidden="true">↗</span>
             </Link>
             <Link href="/fantasy-football/mock-draft" className="c97-link inline-flex min-h-touch items-center text-sm font-semibold">
-              Mock draft&nbsp;<span aria-hidden="true">↗</span>
+              Mock draft&nbsp;<span className="c97-arrow-out" aria-hidden="true">↗</span>
             </Link>
           </span>
         </div>

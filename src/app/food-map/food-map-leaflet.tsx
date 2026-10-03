@@ -144,7 +144,7 @@ export function FoodMapLeaflet({
       if (spots.length > 0) {
         map.fitBounds(
           spots.map((s) => s.coords),
-          { padding: [48, 48], maxZoom: 14 }
+          { padding: [48, 48], maxZoom: 14, animate: !reduceMotion }
         );
       } else {
         map.setView(center, zoom);

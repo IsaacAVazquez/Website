@@ -65,8 +65,8 @@ export function ConfidenceChip({ level }: { level: ConfidenceLevel }) {
   const glyph = level === "high" ? "●" : level === "medium" ? "◐" : "○";
   return (
     <span
-      className="inline-flex items-center gap-1.5 text-1xs font-semibold"
-      style={{ color: "var(--c97-ink)" }}
+      className="inline-flex items-center text-1xs font-semibold"
+      style={{ gap: "var(--c97-sp-0)", color: "var(--c97-ink)" }}
     >
       <span aria-hidden="true" style={{ color }}>
         {glyph}
@@ -85,7 +85,7 @@ export function LockBadge({ locked }: { locked: boolean }) {
 export function EpMeter({ value, max }: { value: number; max: number }) {
   const width = max > 0 ? Math.max(2, Math.round((value / max) * 100)) : 0;
   return (
-    <span className="flex items-center gap-2">
+    <span className="flex items-center" style={{ gap: "var(--c97-sp-1)" }}>
       <span className="tabular-nums font-mono text-xs text-[var(--c97-ink)]">
         {formatPoints(value)}
       </span>
@@ -99,7 +99,8 @@ export function EpMeter({ value, max }: { value: number; max: number }) {
 }
 
 export const SAMPLE_NOTICE =
-  "border border-[var(--c97-rule)] bg-[var(--c97-overlay)] px-4 py-3 text-2xs text-[var(--c97-ink-2)]";
+  "border border-[var(--c97-rule)] bg-[var(--c97-overlay)] text-2xs text-[var(--c97-ink-2)]";
+export const SAMPLE_NOTICE_STYLE = { padding: "var(--c97-sp-1) var(--c97-sp-2)" };
 
 // UTC, so the server render and the browser print the same day.
 const SNAPSHOT_DATE = new Intl.DateTimeFormat("en-US", { dateStyle: "long", timeZone: "UTC" });
@@ -114,7 +115,7 @@ export function SampleDataNotice({ snapshot }: { snapshot: ScorePoolsSnapshot })
     (league) => league.sample || league.fixtures.length === 0,
   );
   return (
-    <p className={SAMPLE_NOTICE}>
+    <p className={SAMPLE_NOTICE} style={SAMPLE_NOTICE_STYLE}>
       {sampleOnly
         ? `This page is showing sample data only. The sample was built on ${builtOn}, and no live odds feed is connected.`
         : `No live odds feed is connected. The odds on this page were entered by hand, and the snapshot was built on ${builtOn}.`}
@@ -133,3 +134,10 @@ export const PILL_BUTTON = "c97-btn";
 export const FIELD_LABEL = "c97-kicker";
 export const FIELD_INPUT = "c97-field";
 export const FIELD_HINT = "c97-prose";
+
+/** A one- or two-digit goal count on .c97-field, which otherwise fills its row. */
+export const SCORE_FIELD_STYLE = {
+  width: "3.5rem",
+  paddingInline: "var(--c97-sp-0)",
+  textAlign: "center" as const,
+};

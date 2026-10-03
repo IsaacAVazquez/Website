@@ -1,4 +1,4 @@
-/* Job Search — route-local rules the shared catalog97.css vocabulary doesn't
+/* Job Search: route-local rules the shared catalog97.css vocabulary doesn't
    already cover: the pipeline/attention signature grid and the stage-to-stage
    connector between pipeline columns. Everything else composes c97-* classes
    with inline --c97-sp-* spacing. */
@@ -44,4 +44,22 @@
 /* This page's ghost buttons carry a leading icon, so give it room from the label. */
 .mba-ghost {
   gap: var(--c97-sp-1);
+}
+
+/* The tracked-feed toggles: a field-tinted box whose rule darkens on hover. A
+   watched company's own colour arrives inline on the border. */
+.mba-toggle {
+  background: var(--c97-field);
+  border-color: var(--c97-rule);
+  color: var(--c97-ink-2);
+}
+
+.mba-toggle:hover {
+  border-color: var(--c97-ink-2);
+  color: var(--c97-ink);
+}
+
+.mba-disclosure:hover .c97-meta {
+  text-decoration: underline;
+  text-underline-offset: 4px;
 }

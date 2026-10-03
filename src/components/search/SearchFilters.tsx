@@ -9,9 +9,9 @@ interface SearchFiltersProps {
 }
 
 // `id` is sent verbatim as the `type` query param. It must match a type the
-// API actually emits ('post' for writing, 'project', 'page') — see /api/search.
+// API actually emits ('post' for writing, 'project', 'page'). See /api/search.
 const contentTypes = [
-  { id: 'all', label: 'All Content' },
+  { id: 'all', label: 'All content' },
   { id: 'post', label: 'Writing' },
   { id: 'project', label: 'Projects' },
   { id: 'page', label: 'Pages' },
@@ -22,7 +22,7 @@ const contentTypes = [
 // emitted by /api/search, or the filter silently returns nothing. Keep this list
 // in sync with the corpus categories rather than inventing display-friendly labels.
 const categories = [
-  { id: 'all', label: 'All Categories' },
+  { id: 'all', label: 'All categories' },
   { id: 'Agentic AI', label: 'Agentic AI' },
   { id: 'Product Management', label: 'Product Management' },
   { id: 'Fantasy Football Analytics', label: 'Fantasy Football' },

@@ -55,7 +55,7 @@ function UpcomingItem({ fixture }: { fixture: ResultsTapeFixture }) {
       <span
         style={{
           color: "color-mix(in srgb, var(--c97-ink-2) 78%, var(--c97-ink))",
-          fontSize: "0.64rem",
+          fontSize: "var(--text-3xs)",
           letterSpacing: "0.05em",
         }}
       >

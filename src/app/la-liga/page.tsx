@@ -4,7 +4,7 @@ import {
   getLaLigaSummarySnapshot,
   getLaLigaTeamSnapshot,
 } from "@/lib/laLigaSnapshot";
-import { constructMetadata, generateBreadcrumbStructuredData } from "@/lib/seo";
+import { constructMetadata, freeApplicationOffer, generateBreadcrumbStructuredData } from "@/lib/seo";
 import { LaLigaClient } from "./la-liga-client";
 import { buildClubAliasMap, normalizeState, resolveDefaultState } from "./la-liga-state.core";
 
@@ -47,7 +47,7 @@ export default async function LaLigaPage({ searchParams }: LaLigaPageProps) {
         }}
       />
       <StructuredData
-        type="SoftwareApplication"
+        type="SportsApplication"
         data={{
           name: "La Liga Pulse",
           description:
@@ -62,6 +62,7 @@ export default async function LaLigaPage({ searchParams }: LaLigaPageProps) {
             "Fast local-first rendering without a live third-party runtime dependency",
           ],
           dateModified: laLigaSnapshot.updatedAt,
+          offers: freeApplicationOffer,
         }}
       />
       <LaLigaClient

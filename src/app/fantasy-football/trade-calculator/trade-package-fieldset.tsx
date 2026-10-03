@@ -8,7 +8,7 @@ import type { Player } from "@/types";
 import { TradePlayerCombobox } from "./trade-player-combobox";
 
 function formatTradeValue(value: number | null | undefined): string {
-  return typeof value === "number" && Number.isFinite(value) ? value.toFixed(1) : "--";
+  return typeof value === "number" && Number.isFinite(value) ? value.toFixed(1) : "—";
 }
 
 interface TradePackageFieldsetProps {
@@ -39,13 +39,13 @@ export function TradePackageFieldset({
   const atLimit = playerIds.length >= FANTASY_TRADE_MAX_PLAYERS_PER_SIDE;
 
   return (
-    <fieldset className="min-w-0 border border-[var(--c97-rule)] bg-[var(--c97-surface)] px-4 pb-4 pt-2 sm:px-5 sm:pb-5">
-      <legend className="px-1">
+    <fieldset className="min-w-0 border border-[var(--c97-rule)] bg-[var(--c97-surface)]" style={{ paddingInline: "var(--c97-sp-2)", paddingTop: "var(--c97-sp-1)", paddingBottom: "var(--c97-sp-2)" }}>
+      <legend style={{ paddingInline: "var(--c97-sp-0)" }}>
         <span className="text-xl font-semibold tracking-[-0.03em] text-[var(--c97-ink)]">
           {legend}
         </span>
       </legend>
-      <div className="mt-1 flex items-start justify-between gap-3">
+      <div className="flex items-start justify-between" style={{ marginTop: "var(--c97-sp-0)", gap: "var(--c97-sp-1)" }}>
         <p className="max-w-[32ch] text-sm leading-6 text-[var(--c97-ink-2)]">{description}</p>
         <span
           className="shrink-0 font-mono text-2xs uppercase tracking-[0.12em] text-[var(--c97-ink-2)]"
@@ -55,7 +55,7 @@ export function TradePackageFieldset({
         </span>
       </div>
 
-      <div className="mt-4">
+      <div style={{ marginTop: "var(--c97-sp-2)" }}>
         <TradePlayerCombobox
           sideLabel={legend.toLowerCase()}
           players={players}
@@ -65,9 +65,9 @@ export function TradePackageFieldset({
         />
       </div>
 
-      <ul className="mt-4 grid gap-2" aria-label={`${legend} players`}>
+      <ul className="grid" style={{ marginTop: "var(--c97-sp-2)", gap: "var(--c97-sp-1)" }} aria-label={`${legend} players`}>
         {playerIds.length === 0 ? (
-          <li className="flex min-h-24 items-center justify-center border border-dashed border-[var(--c97-rule)] bg-[var(--c97-field)] px-4 text-center text-sm leading-6 text-[var(--c97-ink-2)]">
+          <li className="flex min-h-24 items-center justify-center border border-dashed border-[var(--c97-rule)] bg-[var(--c97-field)] text-center text-sm leading-6 text-[var(--c97-ink-2)]" style={{ paddingInline: "var(--c97-sp-2)" }}>
             Search the overall board and add the first player.
           </li>
         ) : (
@@ -80,7 +80,7 @@ export function TradePackageFieldset({
             return (
               <li
                 key={playerId}
-                className="flex min-h-[64px] items-center gap-3 border border-[var(--c97-rule)] bg-[var(--c97-field)] py-2 pl-3 pr-1"
+                className="flex min-h-[64px] items-center border border-[var(--c97-rule)] bg-[var(--c97-field)]" style={{ paddingBlock: "var(--c97-sp-1)", paddingLeft: "var(--c97-sp-1)", paddingRight: "var(--c97-sp-0)", gap: "var(--c97-sp-1)" }}
               >
                 {position ? (
                   <span className={FANTASY_CHIP_CLASS} style={getPositionTone(position)}>
@@ -100,7 +100,7 @@ export function TradePackageFieldset({
                 </span>
                 <span className="shrink-0 text-right">
                   <span className="block font-mono text-sm tabular-nums text-[var(--c97-ink)]">
-                    {exactValuesAvailable ? formatTradeValue(evaluated?.blendedValue) : "--"}
+                    {exactValuesAvailable ? formatTradeValue(evaluated?.blendedValue) : "—"}
                   </span>
                   <span className="block font-mono text-3xs uppercase tracking-[0.1em] text-[var(--c97-ink-2)]">
                     index

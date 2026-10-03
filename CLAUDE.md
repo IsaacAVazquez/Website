@@ -76,7 +76,11 @@ The full route map and header links live in
   Leaf sections use `div`/`section`, never a nested `main`. Every route exposes
   exactly one page-level `h1`.
 - Header links are the seven in `catalog97NavLinks`. The Working Instrument
-  header, footer, and `navlinks.tsx` were deleted on 2026-09-16.
+  header, footer, and `navlinks.tsx` were deleted on 2026-09-16. Dashboards reads as
+  the current section (`aria-current="true"`) on every live tool route and the pages
+  below it, through `isDashboardRoute` and `DASHBOARD_ROUTES` in the same file.
+  `src/constants/__tests__/project-routes-complete.test.ts` fails if that list drifts
+  from the case studies' links, so a new tool adds its route there.
 - `src/app/catalog97.css` holds every Catalog 97 token, scoped under
   `[data-c97]` and `[data-c97-surface]`, and every component class. The
   Working Instrument tokens, helpers, and the bridge that aliased them were
@@ -281,8 +285,13 @@ Catalog 97, and where it disagrees with `catalog97.css`, the CSS wins.
   `.c97-chip`, `.c97-table`, `.c97-segmented`, the buttons and fields, and the
   page-furniture block (`.c97-article` for injected HTML, `.c97-list`,
   `.c97-breadcrumb`, `.c97-disclosure`, `.c97-kbd`, `.c97-skeleton`, `.c97-meter`).
-  Spacing comes off `--c97-sp-1` through `--c97-sp-7` as inline `style`, never from
-  Tailwind spacing, colour, radius, or shadow utilities. The running-prose column is
+  Spacing comes off `--c97-sp-0` (the hairline step) through `--c97-sp-7`, as inline
+  `style` or as a token utility. Spacing that changes at a breakpoint uses token utilities
+  at every breakpoint, base included (`p-[var(--c97-sp-1)] sm:p-[var(--c97-sp-2)]`), never
+  an inline base beside responsive utilities, since inline style beats every breakpoint.
+  A stack is a flex column with a token gap, not `space-y-*`. Never use Tailwind's own
+  spacing scale or its colour, radius, or shadow utilities. Overlays read the `--c97-z-*`
+  stacking tokens on `:root`, never an arbitrary z-index. The running-prose column is
   `--c97-column`. The type classes and `.c97-panel` are unlayered and set their own
   margin or padding, so a Tailwind margin or padding utility on the same element silently
   loses; put that spacing in an inline style.
@@ -306,7 +315,7 @@ Catalog 97, and where it disagrees with `catalog97.css`, the CSS wins.
 - D3/SVG charts resolve token colors at render time via `getComputedStyle` and never bake
   a token's hex into a constant. Read from the chart's own element, since the tokens are
   scoped to the `[data-c97]` container and `document.documentElement` resolves none of
-  them. `PortfolioPerformanceChart` and `ComparisonRadarChart` are the references.
+  them. `ComparisonRadarChart` and `FrontierCostContextChart` are the references.
 - No arbitrary `text-[Npx]` micro-type — use `text-3xs`/`text-2xs` (see `STYLING.md`).
 - CSS-Module surfaces must alias the tokens (`--x-ink: var(--c97-ink)`), never
   re-declare the palette as fresh hex with its own `.dark` mirror.

@@ -74,7 +74,7 @@ export function CompareTray({
   return (
     <>
       {trayVisible && (
-        <div className="c97-enter-slide-y fixed inset-x-0 bottom-0 z-50 pb-[max(0.75rem,env(safe-area-inset-bottom))]">
+        <div className="c97-enter-slide-y fixed inset-x-0 bottom-0 z-[var(--c97-z-tray)] pb-[max(var(--c97-sp-1),env(safe-area-inset-bottom))]">
           {/*
             The bar aligns to the same content column as the page it floats
             over. It used to be a max-w-3xl box centred in the viewport, so at
@@ -88,11 +88,13 @@ export function CompareTray({
           <div className={`${SHELL_CLASS} flex justify-center`}>
           {showHiddenSelections ? (
             <div
-              className="flex w-full items-center gap-3 border px-4 py-3"
+              className="flex w-full items-center border"
               style={{
+                paddingInline: "var(--c97-sp-2)",
+                paddingBlock: "var(--c97-sp-1)",
+                gap: "var(--c97-sp-1)",
                 borderColor: "var(--c97-rule)",
                 background: "color-mix(in srgb, var(--c97-surface) 94%, var(--c97-field))",
-                backdropFilter: "blur(8px)",
               }}
             >
               <p role="status" className="flex-1 text-sm font-semibold">
@@ -101,8 +103,7 @@ export function CompareTray({
               <button
                 type="button"
                 onClick={() => compare.clear()}
-                className="inline-flex min-h-touch items-center border px-4 text-sm font-semibold"
-                style={{ borderColor: "var(--c97-rule)", color: "var(--c97-ink)" }}
+                className="inline-flex min-h-touch items-center border border-[var(--c97-rule)] text-sm font-semibold text-[var(--c97-ink)] hover:border-[var(--c97-ink)]" style={{ paddingInline: "var(--c97-sp-2)" }}
               >
                 Clear compare
               </button>
@@ -113,23 +114,21 @@ export function CompareTray({
               onClick={() => setCollapsed(false)}
               aria-expanded={false}
               aria-label={`Compare ${players.length}, show the tray`}
-              className="inline-flex min-h-touch items-center gap-2 border px-4 text-sm font-semibold"
-              style={{
-                borderColor: "var(--c97-rule)",
-                background: "color-mix(in srgb, var(--c97-surface) 94%, var(--c97-field))",
-                backdropFilter: "blur(8px)",
-              }}
+              className="inline-flex min-h-touch items-center border border-[var(--c97-rule)] text-sm font-semibold hover:border-[var(--c97-ink)]"
+              style={{ paddingInline: "var(--c97-sp-2)", gap: "var(--c97-sp-1)", background: "color-mix(in srgb, var(--c97-surface) 94%, var(--c97-field))" }}
             >
               <GitCompareArrows size={16} aria-hidden="true" />
               Compare {players.length}
             </button>
           ) : (
           <div
-            className="flex w-full flex-wrap items-center gap-2 border px-3 py-2.5"
+            className="flex w-full flex-wrap items-center border"
             style={{
+              paddingInline: "var(--c97-sp-1)",
+              paddingBlock: "var(--c97-sp-1)",
+              gap: "var(--c97-sp-1)",
               borderColor: "var(--c97-rule)",
               background: "color-mix(in srgb, var(--c97-surface) 94%, var(--c97-field))",
-              backdropFilter: "blur(8px)",
             }}
           >
             <span className="c97-kicker hidden sm:block">Compare</span>
@@ -157,7 +156,7 @@ export function CompareTray({
               destructive. Letting the min-content width hold means the outer
               flex-wrap does the work it was already there to do.
             */}
-            <div className="hidden flex-1 flex-wrap items-center gap-1.5 sm:flex">
+            <div className="hidden flex-1 flex-wrap items-center sm:flex" style={{ gap: "var(--c97-sp-0)" }}>
               {players.map((player) => (
                 <span
                   key={player.id}
@@ -170,8 +169,8 @@ export function CompareTray({
                     Compare buttons beside it also gives the whole band one
                     cadence instead of two.
                   */
-                  className="inline-flex items-center gap-1 border py-0 pl-3 pr-0 text-xs font-semibold"
-                  style={{ borderColor: "var(--c97-rule)", ...getPositionTone(player.position) }}
+                  className="inline-flex items-center border py-0 pr-0 text-xs font-semibold"
+                  style={{ paddingLeft: "var(--c97-sp-1)", gap: "var(--c97-sp-0)", borderColor: "var(--c97-rule)", ...getPositionTone(player.position) }}
                 >
                   {/* 8rem cut "Jaxon Smith-Njigba" and "Marvin Harrison Jr."
                       down to stubs that read almost the same. 12rem clears
@@ -184,15 +183,14 @@ export function CompareTray({
                     type="button"
                     onClick={() => compare.remove(player.id)}
                     aria-label={`Remove ${player.name} from compare`}
-                    className="inline-flex h-11 w-11 shrink-0 items-center justify-center"
-                    style={{ background: "color-mix(in srgb, var(--c97-ink) 8%, transparent)" }}
+                    className="inline-flex h-11 w-11 shrink-0 items-center justify-center bg-[var(--c97-overlay)] hover:bg-[color-mix(in_srgb,var(--c97-ink)_16%,transparent)]"
                   >
                     <X size={12} aria-hidden="true" />
                   </button>
                 </span>
               ))}
               {hiddenCount > 0 ? (
-                <span className="px-2 text-xs font-semibold" style={{ color: "var(--c97-ink-2)" }}>
+                <span className="text-xs font-semibold" style={{ paddingInline: "var(--c97-sp-1)", color: "var(--c97-ink-2)" }}>
                   {hiddenCount} pinned elsewhere
                 </span>
               ) : null}
@@ -200,8 +198,7 @@ export function CompareTray({
             <button
               type="button"
               onClick={() => compare.clear()}
-              className="inline-flex min-h-touch items-center px-3 text-xs font-semibold"
-              style={{ color: "var(--c97-ink-2)" }}
+              className="inline-flex min-h-touch items-center text-xs font-semibold text-[var(--c97-ink-2)] hover:text-[var(--c97-ink)] hover:underline hover:underline-offset-4" style={{ paddingInline: "var(--c97-sp-1)" }}
             >
               Clear
             </button>
@@ -209,12 +206,11 @@ export function CompareTray({
               type="button"
               onClick={() => setOpen(true)}
               disabled={!canCompare}
-              className="inline-flex min-h-touch items-center gap-2 border px-4 text-sm font-semibold disabled:cursor-not-allowed disabled:border-dashed"
-              style={
+              className={`inline-flex min-h-touch items-center border text-sm font-semibold disabled:cursor-not-allowed disabled:border-dashed ${
                 canCompare
-                  ? { borderColor: "var(--c97-ink)", background: "var(--c97-ink)", color: "var(--c97-surface)" }
-                  : { borderColor: "var(--c97-ink-2)", background: "none", color: "var(--c97-ink-2)" }
-              }
+                  ? "border-[var(--c97-ink)] bg-[var(--c97-ink)] text-[var(--c97-surface)] hover:border-[var(--c97-ink-2)] hover:bg-[var(--c97-ink-2)]"
+                  : "border-[var(--c97-ink-2)] bg-transparent text-[var(--c97-ink-2)]"
+              }`} style={{ paddingInline: "var(--c97-sp-2)", gap: "var(--c97-sp-1)" }}
               title={canCompare ? undefined : "Pin at least two players"}
             >
               <GitCompareArrows size={16} aria-hidden="true" />
@@ -225,8 +221,7 @@ export function CompareTray({
               onClick={() => setCollapsed(true)}
               aria-expanded
               aria-label="Minimize the compare tray"
-              className="inline-flex min-h-touch min-w-touch items-center justify-center border"
-              style={{ borderColor: "var(--c97-rule)", color: "var(--c97-ink-2)" }}
+              className="inline-flex min-h-touch min-w-touch items-center justify-center border border-[var(--c97-rule)] text-[var(--c97-ink-2)] hover:border-[var(--c97-ink)] hover:text-[var(--c97-ink)]"
             >
               <ChevronDown size={16} aria-hidden="true" />
             </button>

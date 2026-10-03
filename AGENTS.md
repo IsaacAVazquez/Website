@@ -22,7 +22,8 @@ Primary live routes:
 - `/`
 - `/about`
 - `/accessibility`
-- `/portfolio` and `/portfolio/[slug]`
+- `/privacy`
+- `/portfolio` (`/portfolio/[slug]` only permanent-redirects each case study to its live tool)
 - `/dashboards`
 - `/investments`
 - `/investments/before-you-buy`
@@ -90,6 +91,8 @@ Header items (from `catalog97NavLinks` in `src/constants/catalog97Nav.ts`), the 
 5. `About` (`/about`)
 6. `Résumé` (`/resume`)
 7. `Contact` (`/contact`)
+
+`Dashboards` also reads as the current section (`aria-current="true"`) on every live tool route and the pages below it, through `isDashboardRoute` and `DASHBOARD_ROUTES` in the same file. `src/constants/__tests__/project-routes-complete.test.ts` fails if that list drifts from the case studies' links.
 
 Shared shell files:
 

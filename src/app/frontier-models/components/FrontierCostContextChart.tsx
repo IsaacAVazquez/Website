@@ -113,10 +113,9 @@ export function FrontierCostContextChart({
     // document root would miss the repaint.
     const computedStyle = getComputedStyle(svg);
     const axisColor =
-      computedStyle.getPropertyValue("--c97-ink-2").trim() || "#68655A";
+      computedStyle.getPropertyValue("--c97-ink-2").trim() || "currentColor";
     const gridColor =
-      computedStyle.getPropertyValue("--c97-rule").trim() ||
-      "rgba(25,24,19,0.14)";
+      computedStyle.getPropertyValue("--c97-rule").trim() || "currentColor";
 
     // Log ticks label every mantissa step, which piles up. Keep 1, 2, and 5
     // per decade on context and 1 and 3 per decade on price.
@@ -267,11 +266,11 @@ export function FrontierCostContextChart({
         <svg ref={svgRef} className="w-full" />
       </div>
       <div
-        className="mt-4 flex flex-wrap items-center gap-x-4 gap-y-2 text-xs"
-        style={{ color: "var(--c97-ink-2)" }}
+        className="flex flex-wrap items-center text-xs"
+        style={{ marginTop: "var(--c97-sp-2)", rowGap: "var(--c97-sp-1)", columnGap: "var(--c97-sp-2)", color: "var(--c97-ink-2)" }}
       >
         {providersInChart.map(([provider, label]) => (
-          <span key={provider} className="inline-flex items-center gap-2">
+          <span key={provider} className="inline-flex items-center" style={{ gap: "var(--c97-sp-1)" }}>
             <span
               aria-hidden="true"
               className="inline-block h-2.5 w-2.5"

@@ -4,7 +4,7 @@ import {
   getWorldCupSummarySnapshot,
   getWorldCupTeamSnapshot,
 } from "@/lib/worldCupSnapshot";
-import { constructMetadata, generateBreadcrumbStructuredData } from "@/lib/seo";
+import { constructMetadata, freeApplicationOffer, generateBreadcrumbStructuredData } from "@/lib/seo";
 import { WorldCupClient } from "./world-cup-client";
 import { normalizeWorldCupState } from "./world-cup-state";
 
@@ -51,7 +51,7 @@ export default async function WorldCupPage({ searchParams }: WorldCupPageProps) 
         }}
       />
       <StructuredData
-        type="SoftwareApplication"
+        type="SportsApplication"
         data={{
           name: "World Cup Pulse",
           description:
@@ -70,6 +70,7 @@ export default async function WorldCupPage({ searchParams }: WorldCupPageProps) 
             worldCupSnapshot.tournament.generatedAt > "2026-07-23T00:00:00.000Z"
               ? worldCupSnapshot.tournament.generatedAt
               : "2026-07-23T00:00:00.000Z",
+          offers: freeApplicationOffer,
         }}
       />
       <WorldCupClient

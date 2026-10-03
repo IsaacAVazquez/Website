@@ -175,7 +175,7 @@ A six-step categorical chart ramp (`--c97-chart-1` through `--c97-chart-6`) live
 
 ## Typography
 
-Catalog 97 draws on four faces. Anton sets poster type, Newsreader sets every heading and named title, Archivo stands in for Helvetica Neue as the body face, and Fragment Mono carries readouts and micro-labels. Great Vibes, standing in for Snell Roundhand, is reserved for the single script wordmark in the footer. All five load through `next/font` in `src/app/layout.tsx`; Instrument Sans also still loads, held over from the Working Instrument, because Tailwind's `font-sans` utility names it and a few fantasy football and Score Pools elements still set that class.
+Catalog 97 draws on four faces. Anton sets poster type, Newsreader sets every heading and named title, Archivo stands in for Helvetica Neue as the body face, and Fragment Mono carries readouts and micro-labels. Great Vibes, standing in for Snell Roundhand, is reserved for the single script wordmark in the footer. All five load through `next/font` in `src/app/layout.tsx`; Instrument Sans also still loads, held over from the Working Instrument, because Tailwind's `font-sans` utility names it and a few fantasy football draft room elements still set that class.
 
 The scale is nine frozen steps, plus the two print shop sizes:
 
@@ -279,7 +279,7 @@ Outside `/arcade`, data colors, team liveries, BART line colors, and party color
 ### Do
 
 - Set `data-c97-surface` on the section and read `var(--c97-ink)`, `var(--c97-ink-2)`, `var(--c97-label)`, `var(--c97-action)`, `var(--c97-accent)`, and `var(--c97-rule)` inside it, and never set a color directly on a component.
-- Keep every gap, margin, and band padding on the `--c97-sp-1` through `--c97-sp-7` ladder.
+- Keep every gap, margin, and band padding on the `--c97-sp-0` through `--c97-sp-7` ladder, with `sp-0` as the hairline step and only an optical nudge of 2px or less off it.
 - Keep radii at zero everywhere outside `/arcade`, and let the one hard `.c97-offset` shadow stand in for every other shadow.
 - Keep Fragment Mono at weight 400 and set tabular numerals on anything measured or counted.
 - Keep Newsreader at weight 400, and reserve Anton poster type for h1s, section h2s, and closing statements.

@@ -128,3 +128,7 @@ Legacy `/projects`, `/work`, and `/blog` URLs redirect permanently to their cano
 - Fintech product development and pricing analysis
 - Quality engineering and test automation
 - SaaS and civic technology
+
+## Optional
+
+- [Full Content Corpus](https://isaacvazquez.com/llms-full.txt): Comprehensive plain-text corpus bundling complete biography, operating philosophy, live product directory, and 16 complete long-form essays.

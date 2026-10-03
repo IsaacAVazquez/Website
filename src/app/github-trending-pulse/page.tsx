@@ -64,6 +64,31 @@ export default async function GitHubTrendingPulsePage({
           dateModified: snapshot.generatedAt,
         }}
       />
+      <StructuredData
+        type="Dataset"
+        data={{
+          name: "GitHub Trending Repositories and Star Velocity Dataset",
+          description:
+            "Daily snapshot of trending open-source software repositories across programming languages and topics, tracking star gain, growth velocity, and community engagement.",
+          url: "https://isaacvazquez.com/github-trending-pulse",
+          keywords: [
+            "GitHub trending",
+            "open source software",
+            "developer tools",
+            "star velocity",
+            "software repositories",
+          ],
+          variableMeasured: [
+            "Stars",
+            "Forks",
+            "Weekly Star Velocity",
+            "Primary Language",
+            "Topics",
+          ],
+          dateModified: snapshot.generatedAt,
+          license: "https://creativecommons.org/publicdomain/zero/1.0/",
+        }}
+      />
       <GitHubTrendingClient initialState={initialState} snapshot={snapshot} />
     </>
   );

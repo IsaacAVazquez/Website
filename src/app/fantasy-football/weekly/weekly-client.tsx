@@ -57,13 +57,13 @@ const VIEWS = {
 } as const;
 
 const TOGGLE_CLASS =
-  "inline-flex min-h-touch items-center border px-3 text-sm font-semibold transition-[border-color,background-color]";
+  "inline-flex min-h-touch items-center border px-[var(--c97-sp-1)] text-sm font-semibold transition-[border-color,background-color]";
 
 const GROUP_LEGEND_CLASS =
   "font-mono text-3xs uppercase tracking-[0.12em] text-[var(--c97-ink-2)]";
 
 const STATUS_CLASS =
-  "mt-4 font-mono text-2xs uppercase tracking-[0.1em] text-[var(--c97-ink-2)]";
+  "mt-[var(--c97-sp-2)] font-mono text-2xs uppercase tracking-[0.1em] text-[var(--c97-ink-2)]";
 
 /**
  * The header cell of a long table, pinned to the top of the viewport while the
@@ -149,12 +149,12 @@ function normalizeWeeklyBoard(
 }
 
 function formatSpread(player: FantasyWeeklyPlayer): string {
-  if (player.minRank === undefined || player.maxRank === undefined) return "--";
+  if (player.minRank === undefined || player.maxRank === undefined) return "—";
   return `${player.minRank} to ${player.maxRank}`;
 }
 
 function formatOwnership(value: number | undefined): string {
-  return value === undefined ? "--" : `${value.toFixed(1)}%`;
+  return value === undefined ? "—" : `${value.toFixed(1)}%`;
 }
 
 /**
@@ -196,7 +196,7 @@ function SourceLink({ href, label }: { href: string; label: string }) {
 
 function ReadoutPair({ label, value, emphasis = false }: { label: string; value: string; emphasis?: boolean }) {
   return (
-    <div className="flex items-baseline gap-1.5">
+    <div className="flex items-baseline" style={{ gap: "var(--c97-sp-0)" }}>
       <dt className="text-3xs uppercase tracking-[0.1em] text-[var(--c97-ink-2)]">
         {label}
       </dt>
@@ -357,7 +357,7 @@ export function WeeklyBoardClient({
 
   return (
     <section
-      className="c97-dash relative overflow-x-clip min-h-screen"
+      className="c97-dash relative overflow-x-clip min-h-dvh"
       aria-label={viewConfig.ariaLabel}
     >
       <section
@@ -455,18 +455,27 @@ export function WeeklyBoardClient({
       </section>
 
       <section className="c97-sheet" data-c97-surface="paper" data-seam="torn">
-      <div className={`${SHELL_CLASS} space-y-5`} style={{ paddingBlock: "var(--c97-sp-5)" }}>
+      <div className={`${SHELL_CLASS} flex flex-col`} style={{ paddingBlock: "var(--c97-sp-5)", gap: "var(--c97-sp-2)" }}>
         {isLoading || boardPending ? (
           <p role="status" className="text-sm text-[var(--c97-ink-2)]">
             Loading the weekly board.
           </p>
         ) : null}
+        {(isLoading || boardPending) && !activeBoard ? (
+          <div className="grid" style={{ gap: "var(--c97-sp-1)" }} aria-hidden="true">
+            {Array.from({ length: 8 }, (_, index) => (
+              <div key={`weekly-loading-${index}`} className="c97-skeleton" style={{ height: 44 }} />
+            ))}
+          </div>
+        ) : null}
 
         {notPublished ? (
           <div
             role="note"
-            className="border px-4 py-3 text-sm"
+            className="border text-sm"
             style={{
+              paddingInline: "var(--c97-sp-2)",
+              paddingBlock: "var(--c97-sp-1)",
               borderColor:
                 "color-mix(in srgb, var(--c97-warning) 45%, var(--c97-rule))",
               background:
@@ -495,13 +504,13 @@ export function WeeklyBoardClient({
         {error && !activeBoard ? (
           <div
             role="alert"
-            className="border border-[var(--c97-negative)] bg-[var(--c97-surface)] p-5"
+            className="border border-[var(--c97-negative)] bg-[var(--c97-surface)]" style={{ padding: "var(--c97-sp-2)" }}
           >
             <p className="text-sm text-[var(--c97-ink)]">{error}</p>
             <button
               type="button"
               onClick={retry}
-              className={`${TOGGLE_CLASS} mt-3 border-[var(--c97-rule)] bg-[var(--c97-field)] text-[var(--c97-ink)] hover:border-[var(--c97-accent)]`}
+              className={`${TOGGLE_CLASS} border-[var(--c97-rule)] bg-[var(--c97-field)] text-[var(--c97-ink)] hover:border-[var(--c97-accent)]`} style={{ marginTop: "var(--c97-sp-1)" }}
             >
               Try again
             </button>
@@ -511,10 +520,10 @@ export function WeeklyBoardClient({
         {snapshot && activeBoard ? (
           <>
             {/* Scoring applies to the team workspace and the reference board. */}
-            <div className="flex flex-wrap gap-x-8 gap-y-4">
+            <div className="flex flex-wrap" style={{ columnGap: "var(--c97-sp-3)", rowGap: "var(--c97-sp-2)" }}>
               <fieldset>
                 <legend className={GROUP_LEGEND_CLASS}>Scoring</legend>
-                <div className="mt-2 flex flex-wrap items-center gap-2">
+                <div className="flex flex-wrap items-center" style={{ marginTop: "var(--c97-sp-1)", gap: "var(--c97-sp-1)" }}>
                   {(
                     Object.keys(FANTASY_SCORING_LABELS) as FantasyRouteScoring[]
                   ).map((option) => (
@@ -545,7 +554,7 @@ export function WeeklyBoardClient({
             {view === "waivers" ? (
               <section
                 aria-labelledby="weekly-waivers"
-                className="border-t border-[var(--c97-ink)] pt-5"
+                className="border-t border-[var(--c97-ink)]" style={{ paddingTop: "var(--c97-sp-2)" }}
               >
                 <h2
                   id="weekly-waivers"
@@ -553,7 +562,7 @@ export function WeeklyBoardClient({
                 >
                   This week&rsquo;s list
                 </h2>
-                <p className="mt-2 max-w-[68ch] text-sm leading-6 text-[var(--c97-ink-2)]">
+                <p className="max-w-[68ch] text-sm leading-6 text-[var(--c97-ink-2)]" style={{ marginTop: "var(--c97-sp-1)" }}>
                   Players the experts rank ahead of where the rostering rate
                   puts them. The gap is the player&rsquo;s percentile on this
                   board minus the percentage of leagues rostering him, so both
@@ -577,7 +586,7 @@ export function WeeklyBoardClient({
                 {waivers.length === 0 ? (
                   <p
                     role="status"
-                    className="mt-4 text-sm text-[var(--c97-ink-2)]"
+                    className="text-sm text-[var(--c97-ink-2)]" style={{ marginTop: "var(--c97-sp-2)" }}
                   >
                     No player clears the gap this week, which happens when the
                     widely rostered players are also the ones the experts like.
@@ -594,7 +603,7 @@ export function WeeklyBoardClient({
                     </p>
                     {tableLayout ? (
                       <div
-                        className="mt-3 overflow-x-auto"
+                        className="overflow-x-auto" style={{ marginTop: "var(--c97-sp-1)" }}
                         tabIndex={0}
                         role="region"
                         aria-label="Waiver targets table"
@@ -603,22 +612,22 @@ export function WeeklyBoardClient({
                           <caption className="sr-only">{waiversCaption}</caption>
                           <thead>
                             <tr className="border-b border-[var(--c97-rule)] text-left font-mono text-3xs uppercase tracking-[0.12em] text-[var(--c97-ink-2)]">
-                              <th scope="col" className="py-2 pr-3">
+                              <th scope="col" style={{ paddingBlock: "var(--c97-sp-1)", paddingRight: "var(--c97-sp-1)" }}>
                                 Player
                               </th>
-                              <th scope="col" className="py-2 pr-3 text-right">
+                              <th scope="col" className="text-right" style={{ paddingBlock: "var(--c97-sp-1)", paddingRight: "var(--c97-sp-1)" }}>
                                 Gap
                               </th>
-                              <th scope="col" className="py-2 pr-3 pl-3">
+                              <th scope="col" style={{ paddingBlock: "var(--c97-sp-1)", paddingLeft: "var(--c97-sp-1)", paddingRight: "var(--c97-sp-1)" }}>
                                 Board
                               </th>
-                              <th scope="col" className="py-2 pr-3 text-right">
+                              <th scope="col" className="text-right" style={{ paddingBlock: "var(--c97-sp-1)", paddingRight: "var(--c97-sp-1)" }}>
                                 Rank
                               </th>
-                              <th scope="col" className="py-2 pr-3 text-right">
+                              <th scope="col" className="text-right" style={{ paddingBlock: "var(--c97-sp-1)", paddingRight: "var(--c97-sp-1)" }}>
                                 Percentile
                               </th>
-                              <th scope="col" className="py-2 text-right">
+                              <th scope="col" className="text-right" style={{ paddingBlock: "var(--c97-sp-1)" }}>
                                 Rostered
                               </th>
                             </tr>
@@ -631,7 +640,7 @@ export function WeeklyBoardClient({
                               >
                                 <th
                                   scope="row"
-                                  className="py-2 pr-3 text-left font-normal"
+                                  className="text-left font-normal" style={{ paddingBlock: "var(--c97-sp-1)", paddingRight: "var(--c97-sp-1)" }}
                                 >
                                   <span className="font-semibold text-[var(--c97-ink)]">
                                     {candidate.player.name}
@@ -644,19 +653,19 @@ export function WeeklyBoardClient({
                                       : ""}
                                   </span>
                                 </th>
-                                <td className="py-2 pr-3 text-right font-mono tabular-nums font-semibold text-[var(--c97-ink)]">
+                                <td className="text-right font-mono tabular-nums font-semibold text-[var(--c97-ink)]" style={{ paddingBlock: "var(--c97-sp-1)", paddingRight: "var(--c97-sp-1)" }}>
                                   {candidate.gap.toFixed(1)}
                                 </td>
-                                <td className="py-2 pr-3 pl-3 text-[var(--c97-ink-2)]">
+                                <td className="text-[var(--c97-ink-2)]" style={{ paddingBlock: "var(--c97-sp-1)", paddingLeft: "var(--c97-sp-1)", paddingRight: "var(--c97-sp-1)" }}>
                                   {candidate.board === "flex" ? "Flex" : "QB"}
                                 </td>
-                                <td className="py-2 pr-3 text-right font-mono tabular-nums text-[var(--c97-ink)]">
+                                <td className="text-right font-mono tabular-nums text-[var(--c97-ink)]" style={{ paddingBlock: "var(--c97-sp-1)", paddingRight: "var(--c97-sp-1)" }}>
                                   {candidate.player.rank}
                                 </td>
-                                <td className="py-2 pr-3 text-right font-mono tabular-nums text-[var(--c97-ink-2)]">
+                                <td className="text-right font-mono tabular-nums text-[var(--c97-ink-2)]" style={{ paddingBlock: "var(--c97-sp-1)", paddingRight: "var(--c97-sp-1)" }}>
                                   {candidate.rankPercentile.toFixed(1)}
                                 </td>
-                                <td className="py-2 text-right font-mono tabular-nums text-[var(--c97-ink-2)]">
+                                <td className="text-right font-mono tabular-nums text-[var(--c97-ink-2)]" style={{ paddingBlock: "var(--c97-sp-1)" }}>
                                   {formatOwnership(candidate.ownership)}
                                 </td>
                               </tr>
@@ -668,12 +677,12 @@ export function WeeklyBoardClient({
                       <ol
                         role="list"
                         aria-label={waiversCaption}
-                        className="mt-3 list-none border-t border-[var(--c97-rule)] p-0"
+                        className="list-none border-t border-[var(--c97-rule)] p-0" style={{ marginTop: "var(--c97-sp-1)" }}
                       >
                         {waivers.map((candidate) => (
                           <li
                             key={`${candidate.board}-${candidate.player.id}`}
-                            className="border-b border-[var(--c97-rule)] py-2.5"
+                            className="border-b border-[var(--c97-rule)]" style={{ paddingBlock: "var(--c97-sp-1)" }}
                           >
                             <p className="text-sm">
                               <span className="font-semibold text-[var(--c97-ink)]">
@@ -687,7 +696,7 @@ export function WeeklyBoardClient({
                                   : ""}
                               </span>
                             </p>
-                            <dl className="mt-1 flex flex-wrap gap-x-4 gap-y-1 font-mono text-2xs">
+                            <dl className="flex flex-wrap font-mono text-2xs" style={{ marginTop: "var(--c97-sp-0)", columnGap: "var(--c97-sp-2)", rowGap: "var(--c97-sp-0)" }}>
                               <ReadoutPair
                                 label="Gap"
                                 value={candidate.gap.toFixed(1)}
@@ -716,7 +725,7 @@ export function WeeklyBoardClient({
                     )}
                   </>
                 )}
-                <p className="mt-4 text-2xs text-[var(--c97-ink-2)]">
+                <p className="text-2xs text-[var(--c97-ink-2)]" style={{ marginTop: "var(--c97-sp-2)" }}>
                   {activeBoard.flexSource.playerCount} players on the{" "}
                   {describeFantasyWeeklySource(activeBoard.flexSource, "flex")}{" "}
                   and {activeBoard.quarterbackSource.playerCount} on the{" "}
@@ -737,14 +746,14 @@ export function WeeklyBoardClient({
                 </p>
               </section>
             ) : (
-              <section aria-labelledby="weekly-board" className="border-t border-[var(--c97-ink)] pt-5">
+              <section aria-labelledby="weekly-board" className="border-t border-[var(--c97-ink)]" style={{ paddingTop: "var(--c97-sp-2)" }}>
                 <h2
                   id="weekly-board"
                   className="c97-poster-sm"
                 >
                   {board === "flex" ? "Flex rankings" : "Quarterback rankings"}
                 </h2>
-                <p className="mt-2 max-w-[68ch] text-sm leading-6 text-[var(--c97-ink-2)]">
+                <p className="max-w-[68ch] text-sm leading-6 text-[var(--c97-ink-2)]" style={{ marginTop: "var(--c97-sp-1)" }}>
                   Consensus rank within this board only. A flex rank and a
                   quarterback rank are not comparable, because FantasyPros
                   publishes no single in-season overall board and I would rather
@@ -754,10 +763,10 @@ export function WeeklyBoardClient({
                 {/* Search narrows by name or team, and the flex board adds a
                   position cut. The quarterback board is one position already,
                   so the pills only render for flex. */}
-                <div className="mt-4 flex flex-wrap gap-x-8 gap-y-4">
+                <div className="flex flex-wrap" style={{ marginTop: "var(--c97-sp-2)", columnGap: "var(--c97-sp-3)", rowGap: "var(--c97-sp-2)" }}>
                   <fieldset>
                   <legend className={GROUP_LEGEND_CLASS}>Board</legend>
-                  <div className="mt-2 flex flex-wrap items-center gap-2">
+                  <div className="flex flex-wrap items-center" style={{ marginTop: "var(--c97-sp-1)", gap: "var(--c97-sp-1)" }}>
                     {(
                       [
                         ["flex", "Flex (RB, WR, TE)"],
@@ -794,13 +803,13 @@ export function WeeklyBoardClient({
                       autoComplete="off"
                       onChange={(event) => setSearchQuery(event.target.value)}
                       placeholder="Search player or team"
-                      className="mt-2 min-h-touch w-[220px] max-w-full border border-[var(--c97-ink-2)] bg-[var(--c97-field)] px-3 font-mono text-xs text-[var(--c97-ink)] placeholder:text-[var(--c97-ink-2)]"
+                      className="min-h-touch w-[220px] max-w-full border border-[var(--c97-ink-2)] bg-[var(--c97-field)] font-mono text-xs text-[var(--c97-ink)] placeholder:text-[var(--c97-ink-2)]" style={{ paddingInline: "var(--c97-sp-1)", marginTop: "var(--c97-sp-1)" }}
                     />
                   </div>
                   {board === "flex" ? (
                     <fieldset>
                       <legend className={GROUP_LEGEND_CLASS}>Position</legend>
-                      <div className="mt-2 flex flex-wrap items-center gap-2">
+                      <div className="flex flex-wrap items-center" style={{ marginTop: "var(--c97-sp-1)", gap: "var(--c97-sp-1)" }}>
                         {(["ALL", "RB", "WR", "TE"] as const).map((option) => (
                           <button
                             key={option}
@@ -821,7 +830,7 @@ export function WeeklyBoardClient({
                   ) : null}
                 </div>
                 {players.length === 0 ? (
-                  <p className="mt-4 text-sm text-[var(--c97-ink-2)]">
+                  <p className="text-sm text-[var(--c97-ink-2)]" style={{ marginTop: "var(--c97-sp-2)" }}>
                     This board published with no rows, which usually means the
                     source page came back empty. Check back after the next
                     refresh, or use the other board until then.
@@ -849,7 +858,7 @@ export function WeeklyBoardClient({
                           setSearchQuery("");
                           setPositionFilter("ALL");
                         }}
-                        className={`${TOGGLE_CLASS} mt-3 border-[var(--c97-rule)] bg-[var(--c97-field)] text-[var(--c97-ink)] hover:border-[var(--c97-accent)]`}
+                        className={`${TOGGLE_CLASS} border-[var(--c97-rule)] bg-[var(--c97-field)] text-[var(--c97-ink)] hover:border-[var(--c97-accent)]`} style={{ marginTop: "var(--c97-sp-1)" }}
                       >
                         Show all players
                       </button>
@@ -858,42 +867,42 @@ export function WeeklyBoardClient({
                       // its own. It fits from md up, so nothing needs to scroll
                       // sideways, and page-level sticky keeps the column labels
                       // under the site header for as long as the board runs.
-                      <table className="mt-3 w-full border-collapse text-sm">
+                      <table className="w-full border-collapse text-sm" style={{ marginTop: "var(--c97-sp-1)" }}>
                         <caption className="sr-only">{rankingsCaption}</caption>
                         <thead>
                           <tr className="text-left font-mono text-3xs uppercase tracking-[0.12em] text-[var(--c97-ink-2)]">
                             <th
                               scope="col"
-                              className={`${STICKY_HEADER_CLASS} py-2 pr-3 text-right`}
-                              style={STICKY_HEADER_STYLE}
+                              className={`${STICKY_HEADER_CLASS} text-right`}
+                              style={{ paddingBlock: "var(--c97-sp-1)", paddingRight: "var(--c97-sp-1)", ...(STICKY_HEADER_STYLE) }}
                             >
                               #
                             </th>
                             <th
                               scope="col"
-                              className={`${STICKY_HEADER_CLASS} py-2 pr-3`}
-                              style={STICKY_HEADER_STYLE}
+                              className={`${STICKY_HEADER_CLASS}`}
+                              style={{ paddingBlock: "var(--c97-sp-1)", paddingRight: "var(--c97-sp-1)", ...(STICKY_HEADER_STYLE) }}
                             >
                               Player
                             </th>
                             <th
                               scope="col"
-                              className={`${STICKY_HEADER_CLASS} py-2 pr-3`}
-                              style={STICKY_HEADER_STYLE}
+                              className={`${STICKY_HEADER_CLASS}`}
+                              style={{ paddingBlock: "var(--c97-sp-1)", paddingRight: "var(--c97-sp-1)", ...(STICKY_HEADER_STYLE) }}
                             >
                               Opponent
                             </th>
                             <th
                               scope="col"
-                              className={`${STICKY_HEADER_CLASS} py-2 pr-3 text-right`}
-                              style={STICKY_HEADER_STYLE}
+                              className={`${STICKY_HEADER_CLASS} text-right`}
+                              style={{ paddingBlock: "var(--c97-sp-1)", paddingRight: "var(--c97-sp-1)", ...(STICKY_HEADER_STYLE) }}
                             >
                               Expert range
                             </th>
                             <th
                               scope="col"
-                              className={`${STICKY_HEADER_CLASS} py-2 text-right`}
-                              style={STICKY_HEADER_STYLE}
+                              className={`${STICKY_HEADER_CLASS} text-right`}
+                              style={{ paddingBlock: "var(--c97-sp-1)", ...(STICKY_HEADER_STYLE) }}
                             >
                               Rostered
                             </th>
@@ -905,12 +914,12 @@ export function WeeklyBoardClient({
                               key={player.id}
                               className="border-b border-[var(--c97-rule)]"
                             >
-                              <td className="py-2 pr-3 text-right font-mono tabular-nums text-[var(--c97-ink-2)]">
+                              <td className="text-right font-mono tabular-nums text-[var(--c97-ink-2)]" style={{ paddingBlock: "var(--c97-sp-1)", paddingRight: "var(--c97-sp-1)" }}>
                                 {player.rank}
                               </td>
                               <th
                                 scope="row"
-                                className="py-2 pr-3 text-left font-normal"
+                                className="text-left font-normal" style={{ paddingBlock: "var(--c97-sp-1)", paddingRight: "var(--c97-sp-1)" }}
                               >
                                 <span className="font-semibold text-[var(--c97-ink)]">
                                   {player.name}
@@ -923,13 +932,13 @@ export function WeeklyBoardClient({
                                   {player.team}
                                 </span>
                               </th>
-                              <td className="py-2 pr-3 text-[var(--c97-ink-2)]">
-                                {player.opponent ?? "--"}
+                              <td className="text-[var(--c97-ink-2)]" style={{ paddingBlock: "var(--c97-sp-1)", paddingRight: "var(--c97-sp-1)" }}>
+                                {player.opponent ?? "—"}
                               </td>
-                              <td className="py-2 pr-3 text-right font-mono tabular-nums text-[var(--c97-ink-2)]">
+                              <td className="text-right font-mono tabular-nums text-[var(--c97-ink-2)]" style={{ paddingBlock: "var(--c97-sp-1)", paddingRight: "var(--c97-sp-1)" }}>
                                 {formatSpread(player)}
                               </td>
-                              <td className="py-2 text-right font-mono tabular-nums text-[var(--c97-ink-2)]">
+                              <td className="text-right font-mono tabular-nums text-[var(--c97-ink-2)]" style={{ paddingBlock: "var(--c97-sp-1)" }}>
                                 {formatOwnership(player.ownership)}
                               </td>
                             </tr>
@@ -940,12 +949,12 @@ export function WeeklyBoardClient({
                       <ol
                         role="list"
                         aria-label={rankingsCaption}
-                        className="mt-3 list-none border-t border-[var(--c97-rule)] p-0"
+                        className="list-none border-t border-[var(--c97-rule)] p-0" style={{ marginTop: "var(--c97-sp-1)" }}
                       >
                         {visiblePlayers.map((player) => (
                           <li
                             key={player.id}
-                            className="flex items-start gap-3 border-b border-[var(--c97-rule)] py-2.5"
+                            className="flex items-start border-b border-[var(--c97-rule)]" style={{ paddingBlock: "var(--c97-sp-1)", gap: "var(--c97-sp-1)" }}
                           >
                             <span className="w-8 shrink-0 text-right font-mono text-sm tabular-nums text-[var(--c97-ink-2)]">
                               <span className="sr-only">Rank </span>
@@ -964,10 +973,10 @@ export function WeeklyBoardClient({
                                   {player.team}
                                 </span>
                               </p>
-                              <dl className="mt-1 flex flex-wrap gap-x-4 gap-y-1 font-mono text-2xs">
+                              <dl className="flex flex-wrap font-mono text-2xs" style={{ marginTop: "var(--c97-sp-0)", columnGap: "var(--c97-sp-2)", rowGap: "var(--c97-sp-0)" }}>
                                 <ReadoutPair
                                   label="Opponent"
-                                  value={player.opponent ?? "--"}
+                                  value={player.opponent ?? "—"}
                                 />
                                 <ReadoutPair
                                   label="Expert range"
@@ -984,7 +993,7 @@ export function WeeklyBoardClient({
                       </ol>
                     )}
                     {remainingCount > 0 ? (
-                      <div className="mt-4 flex flex-wrap items-center gap-2">
+                      <div className="flex flex-wrap items-center" style={{ marginTop: "var(--c97-sp-2)", gap: "var(--c97-sp-1)" }}>
                         <button
                           type="button"
                           onClick={() =>
@@ -1023,7 +1032,7 @@ export function WeeklyBoardClient({
                   </>
                 )}
                 {source ? (
-                  <p className="mt-4 text-2xs text-[var(--c97-ink-2)]">
+                  <p className="text-2xs text-[var(--c97-ink-2)]" style={{ marginTop: "var(--c97-sp-2)" }}>
                     {source.playerCount} players on the{" "}
                     {describeFantasyWeeklySource(
                       source,
@@ -1043,7 +1052,7 @@ export function WeeklyBoardClient({
             dead-ends away from the rest of the fantasy tools. */}
         <nav
           aria-label="More fantasy football tools"
-          className="flex flex-wrap items-baseline gap-x-5 gap-y-2 border-t border-[var(--c97-rule)] pt-3.5"
+          className="flex flex-wrap items-baseline border-t border-[var(--c97-rule)]" style={{ paddingTop: "var(--c97-sp-2)", columnGap: "var(--c97-sp-2)", rowGap: "var(--c97-sp-1)" }}
         >
           <span className="font-mono text-2xs text-[var(--c97-ink-2)]">
             More fantasy tools
@@ -1052,25 +1061,25 @@ export function WeeklyBoardClient({
             href={viewConfig.sibling.href}
             className="c97-link inline-flex min-h-touch items-center text-sm font-semibold"
           >
-            {viewConfig.sibling.label} ↗
+            {viewConfig.sibling.label} <span className="c97-arrow-out" aria-hidden="true">↗</span>
           </Link>
           <Link
             href="/fantasy-football"
             className="c97-link inline-flex min-h-touch items-center text-sm font-semibold"
           >
-            Rankings board ↗
+            Rankings board <span className="c97-arrow-out" aria-hidden="true">↗</span>
           </Link>
           <Link
             href="/fantasy-football/draft-tracker"
             className="c97-link inline-flex min-h-touch items-center text-sm font-semibold"
           >
-            Draft tracker ↗
+            Draft tracker <span className="c97-arrow-out" aria-hidden="true">↗</span>
           </Link>
           <Link
             href="/fantasy-football/best-ball"
             className="c97-link inline-flex min-h-touch items-center text-sm font-semibold"
           >
-            Best ball ↗
+            Best ball <span className="c97-arrow-out" aria-hidden="true">↗</span>
           </Link>
         </nav>
       </div>

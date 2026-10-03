@@ -568,7 +568,7 @@ export const MARCH_MADNESS_FAQ: FAQEntry[] = [
 ];
 
 export const BRACKET_THESIS_SHARE =
-  "Bracket thesis: the edge in this 2026 March Madness bracket is time zones plus seed errors, not just chalk.";
+  "That is the whole 2026 bracket in one line, and the written breakdown walks through the travel math and seed errors behind it.";
 
 export const BEST_UPSET_SHARE =
-  "Best upset: UCF over UCLA. UCLA loses 9% crossing three time zones east, and the line is only UCLA −2.5.";
+  "UCLA loses 9% crossing three time zones east, and the line is only UCLA −2.5.";

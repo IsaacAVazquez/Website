@@ -76,8 +76,8 @@ export function RankDistributionBar({ player, scaleMin, scaleMax, compact = fals
       </div>
       {!compact && (
         <div
-          className="mt-1 flex items-center justify-between text-2xs font-semibold uppercase tracking-[0.1em]"
-          style={{ color: "var(--c97-ink-2)" }}
+          className="flex items-center justify-between text-2xs font-semibold uppercase tracking-[0.1em]"
+          style={{ marginTop: "var(--c97-sp-0)", color: "var(--c97-ink-2)" }}
         >
           <span>Best {formatRankValue(min)}</span>
           {avg !== undefined && <span style={{ color: "var(--c97-ink)" }}>Avg {formatRankValue(avg)}</span>}

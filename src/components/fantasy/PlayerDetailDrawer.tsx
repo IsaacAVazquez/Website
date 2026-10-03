@@ -80,8 +80,10 @@ function formatBoardMove(value: number): string {
 function StatCell({ label, children }: { label: string; children: React.ReactNode }) {
   return (
     <div
-      className="border px-3 py-2.5"
+      className="border"
       style={{
+        paddingInline: "var(--c97-sp-1)",
+        paddingBlock: "var(--c97-sp-1)",
         borderColor: "var(--c97-rule)",
         background: "color-mix(in srgb, var(--c97-surface) 88%, var(--c97-field))",
       }}
@@ -141,7 +143,7 @@ export function PlayerDetailDrawer({ player, publishedRank, publishedRankLabel =
   return (
     <>
       {isOpen && player && (
-        <div className="c97-enter-fade fixed inset-0 z-[60] flex items-end justify-center sm:items-stretch sm:justify-end">
+        <div className="c97-enter-fade fixed inset-0 z-[var(--c97-z-drawer)] flex items-end justify-center sm:items-stretch sm:justify-end">
           <button
             type="button"
             aria-label="Close player detail"
@@ -156,19 +158,21 @@ export function PlayerDetailDrawer({ player, publishedRank, publishedRankLabel =
             aria-modal="true"
             aria-label={`${player.name} detail`}
             tabIndex={-1}
-            className="c97-enter-slide-y relative flex max-h-[88vh] w-full flex-col gap-4 overscroll-contain overflow-y-auto border p-5 sm:max-h-none sm:h-full sm:w-[26rem]"
+            className="c97-enter-slide-y relative flex max-h-[88vh] w-full flex-col overscroll-contain overflow-y-auto border sm:max-h-none sm:h-full sm:w-[26rem]"
             style={{
+              padding: "var(--c97-sp-2)",
+              gap: "var(--c97-sp-2)",
               borderColor: "var(--c97-rule)",
               background: "var(--c97-surface)",
             }}
           >
             {/* Header */}
-            <div className="flex items-start justify-between gap-3">
+            <div className="flex items-start justify-between" style={{ gap: "var(--c97-sp-1)" }}>
               <div className="min-w-0">
-                <div className="flex items-center gap-2">
+                <div className="flex items-center" style={{ gap: "var(--c97-sp-1)" }}>
                   <span
-                    className="inline-flex items-center border px-2.5 py-0.5 text-2xs font-semibold uppercase tracking-[0.12em]"
-                    style={getPositionTone(player.position)}
+                    className="inline-flex items-center border py-0.5 text-2xs font-semibold uppercase tracking-[0.12em]"
+                    style={{ paddingInline: "var(--c97-sp-1)", ...(getPositionTone(player.position)) }}
                   >
                     {player.position}
                     {Number.isFinite(player.positionRank) ? ` ${player.positionRank}` : ""}
@@ -189,25 +193,19 @@ export function PlayerDetailDrawer({ player, publishedRank, publishedRankLabel =
                 type="button"
                 onClick={onClose}
                 aria-label="Close"
-                className="inline-flex min-h-touch min-w-touch shrink-0 items-center justify-center border"
-                style={{ borderColor: "var(--c97-rule)", background: "var(--c97-surface)" }}
+                className="inline-flex min-h-touch min-w-touch shrink-0 items-center justify-center border border-[var(--c97-rule)] bg-[var(--c97-surface)] hover:border-[var(--c97-ink)]"
               >
                 <X size={18} aria-hidden="true" />
               </button>
             </div>
 
             {/* Quick actions */}
-            <div className="flex flex-wrap gap-2">
+            <div className="flex flex-wrap" style={{ gap: "var(--c97-sp-1)" }}>
               {onLogPick && (
                 <button
                   type="button"
                   onClick={() => onLogPick(player)}
-                  className="inline-flex min-h-touch flex-1 items-center justify-center gap-2 border px-4 text-sm font-semibold"
-                  style={{
-                    borderColor: "var(--c97-ink)",
-                    background: "var(--c97-ink)",
-                    color: "var(--c97-surface)",
-                  }}
+                  className="inline-flex min-h-touch flex-1 items-center justify-center border text-sm font-semibold border-[var(--c97-ink)] bg-[var(--c97-ink)] text-[var(--c97-surface)] hover:border-[var(--c97-ink-2)] hover:bg-[var(--c97-ink-2)]" style={{ paddingInline: "var(--c97-sp-2)", gap: "var(--c97-sp-1)" }}
                 >
                   Log this pick
                 </button>
@@ -216,16 +214,11 @@ export function PlayerDetailDrawer({ player, publishedRank, publishedRankLabel =
                 type="button"
                 onClick={() => queue.toggle(player.id)}
                 aria-pressed={isQueued}
-                className="inline-flex min-h-touch flex-1 items-center justify-center gap-2 border px-4 text-sm font-semibold"
-                style={
+                className={`inline-flex min-h-touch flex-1 items-center justify-center border text-sm font-semibold text-[var(--c97-ink)] ${
                   isQueued
-                    ? {
-                        borderColor: "color-mix(in srgb, var(--c97-accent) 60%, var(--c97-rule))",
-                        background: "color-mix(in srgb, var(--c97-accent) 30%, var(--c97-surface))",
-                        color: "var(--c97-ink)",
-                      }
-                    : { borderColor: "var(--c97-rule)", background: "var(--c97-surface)", color: "var(--c97-ink)" }
-                }
+                    ? "border-[color-mix(in_srgb,var(--c97-accent)_60%,var(--c97-rule))] bg-[color-mix(in_srgb,var(--c97-accent)_30%,var(--c97-surface))] hover:border-[var(--c97-accent)]"
+                    : "border-[var(--c97-rule)] bg-[var(--c97-surface)] hover:border-[var(--c97-ink)]"
+                }`} style={{ paddingInline: "var(--c97-sp-2)", gap: "var(--c97-sp-1)" }}
               >
                 <Star size={16} fill={isQueued ? "currentColor" : "none"} aria-hidden="true" />
                 {isQueued ? "Queued" : "Add to queue"}
@@ -237,14 +230,13 @@ export function PlayerDetailDrawer({ player, publishedRank, publishedRankLabel =
                 aria-pressed={inCompare}
                 disabled={compareDisabled}
                 title={compareDisabled ? `Compare holds ${compare.limit} players` : undefined}
-                className="min-h-touch inline-flex flex-1 items-center justify-center gap-2 border px-4 text-sm font-semibold disabled:cursor-not-allowed disabled:border-dashed"
-                style={
+                className={`min-h-touch inline-flex flex-1 items-center justify-center border text-sm font-semibold disabled:cursor-not-allowed disabled:border-dashed ${
                   compareDisabled
-                    ? { borderColor: "var(--c97-ink-2)", background: "none", color: "var(--c97-ink-2)" }
+                    ? "border-[var(--c97-ink-2)] bg-transparent text-[var(--c97-ink-2)]"
                     : inCompare
-                      ? { borderColor: "var(--c97-ink)", background: "var(--c97-ink)", color: "var(--c97-surface)" }
-                      : { borderColor: "var(--c97-rule)", background: "var(--c97-surface)", color: "var(--c97-ink)" }
-                }
+                      ? "border-[var(--c97-ink)] bg-[var(--c97-ink)] text-[var(--c97-surface)] hover:border-[var(--c97-ink-2)] hover:bg-[var(--c97-ink-2)]"
+                      : "border-[var(--c97-rule)] bg-[var(--c97-surface)] text-[var(--c97-ink)] hover:border-[var(--c97-ink)]"
+                }`} style={{ paddingInline: "var(--c97-sp-2)", gap: "var(--c97-sp-1)" }}
               >
                 <GitCompareArrows size={16} aria-hidden="true" />
                 {inCompare ? "Comparing" : "Compare"}
@@ -253,7 +245,7 @@ export function PlayerDetailDrawer({ player, publishedRank, publishedRankLabel =
             </div>
 
             {/* Stats grid */}
-            <div className="grid grid-cols-2 gap-2">
+            <div className="grid grid-cols-2" style={{ gap: "var(--c97-sp-1)" }}>
               <StatCell label="Position rank">
                 {player.position}
                 {Number.isFinite(player.positionRank) ? ` ${player.positionRank}` : " —"}
@@ -308,7 +300,7 @@ export function PlayerDetailDrawer({ player, publishedRank, publishedRankLabel =
                 figures without the tick bar. */}
             {player.gameLog && (
               <div>
-                <div className="flex flex-wrap items-baseline justify-between gap-x-2.5 gap-y-0.5">
+                <div className="flex flex-wrap items-baseline justify-between gap-y-0.5" style={{ columnGap: "var(--c97-sp-1)" }}>
                   <span
                     className="inline-flex items-center text-2xs font-semibold uppercase tracking-[0.12em]"
                     style={{ color: "var(--c97-ink-2)" }}
@@ -327,7 +319,7 @@ export function PlayerDetailDrawer({ player, publishedRank, publishedRankLabel =
                     {player.gameLog.games === 1 ? "game" : "games"}
                   </span>
                 </div>
-                <dl className="mt-1.5 grid grid-cols-4 gap-2">
+                <dl className="grid grid-cols-4" style={{ marginTop: "var(--c97-sp-0)", gap: "var(--c97-sp-1)" }}>
                   {(
                     [
                       { label: "Low", value: player.gameLog.low, muted: true },
@@ -358,8 +350,10 @@ export function PlayerDetailDrawer({ player, publishedRank, publishedRankLabel =
             {/* ADP + value signal */}
             {adpAvailable && Number.isFinite(player.adp) && (
               <div
-                className="flex items-center justify-between border px-3 py-2.5"
+                className="flex items-center justify-between border"
                 style={{
+                  paddingInline: "var(--c97-sp-1)",
+                  paddingBlock: "var(--c97-sp-1)",
                   borderColor: "var(--c97-rule)",
                   background: "color-mix(in srgb, var(--c97-surface) 88%, var(--c97-field))",
                 }}
@@ -419,7 +413,7 @@ export function PlayerDetailDrawer({ player, publishedRank, publishedRankLabel =
 
             {/* Expert consensus spread */}
             <div>
-              <div className="mb-2 flex items-center justify-between">
+              <div className="flex items-center justify-between" style={{ marginBottom: "var(--c97-sp-1)" }}>
                 <p className="c97-kicker inline-flex items-center">
                   Expert spread
                   <MetricTooltip term="Expert spread" definition={FANTASY_EXPERT_SPREAD_TOOLTIP} />
@@ -452,14 +446,16 @@ export function PlayerDetailDrawer({ player, publishedRank, publishedRankLabel =
                 }}
                 rows={2}
                 placeholder="Handcuff for Hall… target round 6… avoid."
-                className="w-full resize-none border px-3 py-2 text-sm focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--c97-accent)]"
+                className="w-full resize-none border text-sm focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--c97-accent)]"
                 style={{
+                  paddingInline: "var(--c97-sp-1)",
+                  paddingBlock: "var(--c97-sp-1)",
                   borderColor: "var(--c97-rule)",
                   background: "color-mix(in srgb, var(--c97-surface) 92%, var(--c97-field))",
                   color: "var(--c97-ink)",
                 }}
               />
-              <p className="mt-1 text-right text-2xs" style={{ color: "var(--c97-ink-2)" }}>
+              <p className="text-right text-2xs" style={{ marginTop: "var(--c97-sp-0)", color: "var(--c97-ink-2)" }}>
                 {draftNote.length}/{notes.maxLength} · saved to this browser
               </p>
             </div>

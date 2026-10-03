@@ -74,7 +74,7 @@ describe("Writing article page", () => {
     expect(screen.getByRole("img", { name: "Custom cover image alt" })).toBeVisible();
     expect(
       screen.getByRole("link", {
-        name: "Test Photographer, CC BY 4.0 via Wikimedia Commons",
+        name: "Test Photographer, CC BY 4.0 via Wikimedia Commons (opens in a new tab)",
       })
     ).toHaveAttribute("href", "https://commons.wikimedia.org/wiki/File:Test.jpg");
   });

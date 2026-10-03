@@ -18,6 +18,11 @@
   cursor: pointer;
 }
 
+.c97-golf-name-btn:hover .c97-serif {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
 .c97-golf-cutline td {
   border-top: 2px solid var(--c97-ink);
   padding-top: var(--c97-sp-2);

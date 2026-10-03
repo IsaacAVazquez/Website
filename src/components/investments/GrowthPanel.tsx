@@ -128,7 +128,7 @@ export function GrowthPanel({ symbol }: Props) {
 
   return (
     <TerminalPanel padding="sm">
-      <h3 className="text-sm font-semibold text-[var(--c97-ink)] mb-3">YoY Growth</h3>
+      <h3 className="text-sm font-semibold text-[var(--c97-ink)]" style={{ marginBottom: "var(--c97-sp-1)" }}>YoY growth</h3>
 
       {isLoading && (
         <div role="status" aria-busy="true">
@@ -144,7 +144,7 @@ export function GrowthPanel({ symbol }: Props) {
       {!isLoading && metrics.length > 0 && (
         <>
           <GrowthChart data={metrics} />
-          <div className="mt-3 grid grid-cols-2 sm:grid-cols-3 gap-2">
+          <div className="grid grid-cols-2 sm:grid-cols-3" style={{ gap: "var(--c97-sp-1)", marginTop: "var(--c97-sp-1)" }}>
             {metrics.map((m) => (
               <div key={m.label} className="text-center">
                 <p className="text-xs text-[var(--c97-label)] truncate">{m.label}</p>

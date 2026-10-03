@@ -120,8 +120,8 @@ export function BestBallDraftBoard({
 
   return (
     <section className="c97-panel min-w-0 overflow-clip" aria-labelledby="best-ball-player-board-heading">
-      <div className="border-b p-5 sm:p-6" style={{ borderColor: "var(--c97-rule)" }}>
-        <div className="flex flex-wrap items-end justify-between gap-3">
+      <div className="border-b p-[var(--c97-sp-2)] sm:p-[var(--c97-sp-3)]" style={{ borderColor: "var(--c97-rule)" }}>
+        <div className="flex flex-wrap items-end justify-between" style={{ gap: "var(--c97-sp-1)" }}>
           <div>
             <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-1)" }}>Room board</p>
             <h2 id="best-ball-player-board-heading" className="c97-serif c97-h3">
@@ -149,8 +149,8 @@ export function BestBallDraftBoard({
         className="sticky z-20"
         style={{ top: stickyTop, ...STICKY_BAND_STYLE }}
       >
-        <div className="border-b px-5 py-3 sm:px-6" style={{ borderColor: "var(--c97-rule)" }}>
-          <div className="flex items-center gap-2 sm:grid sm:grid-cols-[minmax(13rem,1fr)_auto] sm:gap-3">
+        <div className="border-b px-[var(--c97-sp-2)] sm:px-[var(--c97-sp-3)]" style={{ paddingBlock: "var(--c97-sp-1)", borderColor: "var(--c97-rule)" }}>
+          <div className="flex items-center sm:grid sm:grid-cols-[minmax(13rem,1fr)_auto]" style={{ gap: "var(--c97-sp-1)" }}>
             <button
               ref={searchToggleRef}
               type="button"
@@ -158,11 +158,9 @@ export function BestBallDraftBoard({
               aria-expanded={searchOpen}
               aria-controls={searchId}
               aria-label={searchOpen ? "Close search" : "Search available players"}
-              className={`${ICON_BUTTON_CLASS} sm:hidden`}
-              style={{
-                borderColor: searchOpen ? "var(--c97-ink)" : "var(--c97-rule)",
-                color: "var(--c97-ink)",
-              }}
+              className={`${ICON_BUTTON_CLASS} sm:hidden text-[var(--c97-ink)] hover:border-[var(--c97-ink)] ${
+                searchOpen ? "border-[var(--c97-ink)]" : "border-[var(--c97-rule)]"
+              }`}
             >
               {searchOpen ? (
                 <X className="h-4 w-4" aria-hidden="true" />
@@ -189,21 +187,22 @@ export function BestBallDraftBoard({
                   }
                 }}
                 placeholder="Search name or team"
-                className="min-h-[48px] w-full border bg-transparent pl-10 pr-4 text-sm outline-none focus-visible:ring-2 focus-visible:ring-[var(--c97-accent)]"
-                style={{ borderColor: "var(--c97-rule)", color: "var(--c97-ink)" }}
+                className="min-h-[48px] w-full border bg-transparent text-sm outline-none focus-visible:ring-2 focus-visible:ring-[var(--c97-accent)]"
+                style={{ paddingLeft: "calc(28px + var(--c97-sp-1))", paddingRight: "var(--c97-sp-2)", borderColor: "var(--c97-rule)", color: "var(--c97-ink)" }}
               />
             </label>
 
             <fieldset className={`min-w-0 ${searchOpen ? "hidden sm:block" : ""}`}>
               <legend className="sr-only">Filter by position</legend>
-              <div className="flex flex-wrap gap-1.5">
+              <div className="flex flex-wrap" style={{ gap: "var(--c97-sp-0)" }}>
                 {POSITION_FILTERS.map((filter) => (
                   <label
                     key={filter}
-                    className={`inline-flex min-h-[44px] cursor-pointer items-center justify-center border px-3 text-xs font-semibold focus-within:ring-2 focus-within:ring-[var(--c97-accent)] focus-within:ring-offset-2 focus-within:ring-offset-[var(--c97-surface)] ${
+                    className={`inline-flex min-h-[44px] cursor-pointer items-center justify-center border text-xs font-semibold focus-within:ring-2 focus-within:ring-[var(--c97-accent)] focus-within:ring-offset-2 focus-within:ring-offset-[var(--c97-surface)] ${
                       position === filter ? "border-[var(--c97-ink)]" : "border-[var(--c97-rule)] hover:border-[var(--c97-ink)]"
                     }`}
                     style={{
+                      paddingInline: "var(--c97-sp-1)",
                       background: position === filter ? "var(--c97-ink)" : "transparent",
                       color: position === filter ? "var(--c97-surface)" : "var(--c97-ink-2)",
                     }}
@@ -226,8 +225,8 @@ export function BestBallDraftBoard({
 
         <div
           data-testid="best-ball-board-column-labels"
-          className="hidden grid-cols-[3rem_minmax(0,1fr)_4rem_4rem_6.5rem_4rem_4.5rem] gap-3 border-b px-4 py-3 text-2xs font-semibold uppercase tracking-[0.08em] sm:grid"
-          style={{ borderColor: "var(--c97-rule)", color: "var(--c97-ink-2)" }}
+          className="hidden grid-cols-[3rem_minmax(0,1fr)_4rem_4rem_6.5rem_4rem_4.5rem] border-b text-2xs font-semibold uppercase tracking-[0.08em] sm:grid"
+          style={{ paddingInline: "var(--c97-sp-2)", paddingBlock: "var(--c97-sp-1)", gap: "var(--c97-sp-1)", borderColor: "var(--c97-rule)", color: "var(--c97-ink-2)" }}
         >
           <span>Board</span>
           <span>Player</span>
@@ -243,8 +242,8 @@ export function BestBallDraftBoard({
         {shownPlayers.map((player, index) => (
           <div
             key={player.id}
-            className={`grid min-h-[60px] min-w-0 grid-cols-[2.5rem_minmax(0,1fr)_auto_auto] items-center gap-3 border-b px-4 py-2 transition-[background-color] duration-150 sm:grid-cols-[3rem_minmax(0,1fr)_4rem_4rem_6.5rem_4rem_4.5rem] ${ROW_CLASS}`}
-            style={ROW_STYLE}
+            className={`grid min-h-[60px] min-w-0 grid-cols-[2.5rem_minmax(0,1fr)_auto_auto] items-center border-b transition-[background-color] duration-150 sm:grid-cols-[3rem_minmax(0,1fr)_4rem_4rem_6.5rem_4rem_4.5rem] ${ROW_CLASS}`}
+            style={{ paddingInline: "var(--c97-sp-2)", paddingBlock: "var(--c97-sp-1)", gap: "var(--c97-sp-1)", ...(ROW_STYLE) }}
           >
             <span className="text-sm font-semibold tabular-nums" style={{ color: "var(--c97-ink-2)" }}>
               <span className="sr-only">{"Board rank "}</span>
@@ -260,11 +259,11 @@ export function BestBallDraftBoard({
                 onClick={() => onOpenDetail(player)}
                 aria-label={`Open ${player.name} detail`}
                 data-testid="best-ball-board-player-name"
-                className="-my-2 inline-flex min-h-touch w-full min-w-0 items-center truncate text-left text-sm font-semibold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[var(--c97-accent)]"
+                className="inline-flex min-h-touch w-full min-w-0 items-center truncate text-left text-sm font-semibold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[var(--c97-accent)]" style={{ marginBlock: "calc(var(--c97-sp-1) * -1)" }}
               >
                 {player.name}
               </button>
-              <span className="mt-1 block truncate text-xs sm:hidden" style={{ color: "var(--c97-ink-2)" }}>
+              <span className="block truncate text-xs sm:hidden" style={{ marginTop: "var(--c97-sp-0)", color: "var(--c97-ink-2)" }}>
                 {player.team} · {adpAvailable ? "ADP" : "Source rank"}{" "}
                 {adpAvailable
                   ? formatBoardAdp(player, "not available")
@@ -284,8 +283,8 @@ export function BestBallDraftBoard({
                   carries the full sentence past the truncation.
                 */
                 <span
-                  className="mt-1 hidden min-w-0 items-center gap-1.5 text-2xs lg:flex"
-                  style={{ color: "var(--c97-ink-2)" }}
+                  className="hidden min-w-0 items-center text-2xs lg:flex"
+                  style={{ marginTop: "var(--c97-sp-0)", gap: "var(--c97-sp-0)", color: "var(--c97-ink-2)" }}
                   title={player.rankReason}
                   data-consensus-withheld={player.consensusWithheld ? "true" : undefined}
                 >
@@ -299,7 +298,7 @@ export function BestBallDraftBoard({
               ) : null}
             </span>
             <span
-              className="inline-flex min-h-[28px] min-w-[38px] items-center justify-center border px-2 text-xs font-semibold sm:min-h-0 sm:justify-start sm:border-0 sm:px-0"
+              className="inline-flex min-h-[28px] min-w-[38px] items-center justify-center border px-[var(--c97-sp-1)] text-xs font-semibold sm:min-h-0 sm:justify-start sm:border-0 sm:px-0"
               style={POSITION_CHIP_STYLE}
             >
               {player.position}
@@ -342,7 +341,7 @@ export function BestBallDraftBoard({
               // Disabled prints unfilled (no fill, dashed ink-2 edge, ink-2 text)
               // instead of fading the filled button with opacity, matching every
               // other disabled control in the system since PR #482.
-              className="inline-flex min-h-[44px] items-center justify-center border border-[var(--c97-ink)] bg-[var(--c97-ink)] px-3 text-xs font-semibold text-[var(--c97-surface)] transition-[background-color,color] duration-150 hover:bg-[var(--c97-ink-2)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--c97-accent)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--c97-surface)] disabled:cursor-not-allowed disabled:border-dashed disabled:border-[var(--c97-ink-2)] disabled:bg-transparent disabled:text-[var(--c97-ink-2)]"
+              className="inline-flex min-h-[44px] items-center justify-center border border-[var(--c97-ink)] bg-[var(--c97-ink)] text-xs font-semibold text-[var(--c97-surface)] transition-[background-color,color] duration-150 hover:bg-[var(--c97-ink-2)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--c97-accent)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--c97-surface)] disabled:cursor-not-allowed disabled:border-dashed disabled:border-[var(--c97-ink-2)] disabled:bg-transparent disabled:text-[var(--c97-ink-2)]" style={{ paddingInline: "var(--c97-sp-1)" }}
             >
               Draft
             </button>
@@ -351,7 +350,7 @@ export function BestBallDraftBoard({
       </div>
 
       {shownPlayers.length === 0 ? (
-        <div className="p-6">
+        <div style={{ padding: "var(--c97-sp-3)" }}>
           <p className="text-sm" style={{ color: "var(--c97-ink-2)" }}>
             No available player matches this search.
           </p>
@@ -362,7 +361,7 @@ export function BestBallDraftBoard({
                 setQuery("");
                 setPosition("ALL");
               }}
-              className="mt-3.5 inline-flex min-h-touch items-center justify-center border border-[var(--c97-ink)] bg-[var(--c97-ink)] px-4 font-mono text-2xs uppercase tracking-[0.06em] text-[var(--c97-surface)] hover:bg-[var(--c97-ink-2)]"
+              className="inline-flex min-h-touch items-center justify-center border border-[var(--c97-ink)] bg-[var(--c97-ink)] font-mono text-2xs uppercase tracking-[0.06em] text-[var(--c97-surface)] hover:bg-[var(--c97-ink-2)]" style={{ paddingInline: "var(--c97-sp-2)", marginTop: "var(--c97-sp-2)" }}
             >
               Clear search
             </button>
@@ -371,12 +370,12 @@ export function BestBallDraftBoard({
       ) : null}
 
       {shownPlayers.length < filteredPlayers.length ? (
-        <div className="p-4 text-center">
+        <div className="text-center" style={{ padding: "var(--c97-sp-2)" }}>
           <button
             type="button"
             onClick={() => setVisibleCount((count) => count + 100)}
-            className="min-h-[44px] border border-[var(--c97-rule)] px-5 text-sm font-semibold hover:border-[var(--c97-ink)]"
-            style={{ color: "var(--c97-ink)" }}
+            className="min-h-[44px] border border-[var(--c97-rule)] text-sm font-semibold hover:border-[var(--c97-ink)]"
+            style={{ paddingInline: "var(--c97-sp-2)", color: "var(--c97-ink)" }}
           >
             Show 100 more players
           </button>

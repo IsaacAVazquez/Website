@@ -1,5 +1,9 @@
 import { StructuredData } from "@/components/StructuredData";
-import { constructMetadata, generateBreadcrumbStructuredData } from "@/lib/seo";
+import {
+  constructMetadata,
+  freeApplicationOffer,
+  generateBreadcrumbStructuredData,
+} from "@/lib/seo";
 import { fantasySnapshotRevision } from "@/data/fantasySnapshotRevision.generated";
 
 import { BestBallClient } from "./best-ball-client";
@@ -67,6 +71,7 @@ export default async function BestBallPage({ searchParams }: BestBallPageProps) 
             "@type": "Audience",
             audienceType: "Fantasy Football Players",
           },
+          offers: freeApplicationOffer,
         }}
       />
       <BestBallClient initialState={initialState} />

@@ -45,3 +45,15 @@
     display: none;
   }
 }
+
+/* The segment leader buttons set their fill and border inline, so hover and
+ * keyboard focus cue on the name, as the earthquake log rows do. */
+.c97-segment-leader-name {
+  color: var(--c97-ink);
+}
+
+.c97-segment-leader:hover .c97-segment-leader-name,
+.c97-segment-leader:focus-visible .c97-segment-leader-name {
+  color: var(--c97-action);
+  text-decoration: underline;
+}

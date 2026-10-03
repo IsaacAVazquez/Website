@@ -11,7 +11,13 @@ import { useScorePools } from "@/hooks/useScorePools";
 import { effectiveResult, scoreParticipantPicks } from "@/lib/scorePools/poolAnalysis";
 import type { Scoreline } from "@/lib/scorePools";
 import type { ScorePoolsSnapshot, SnapshotFixture } from "@/types/scorePools";
-import { PILL_BUTTON, SampleDataNotice, formatKickoff, formatScoreline } from "../score-pools-ui";
+import {
+  PILL_BUTTON,
+  SCORE_FIELD_STYLE,
+  SampleDataNotice,
+  formatKickoff,
+  formatScoreline,
+} from "../score-pools-ui";
 
 interface TrackerClientProps {
   snapshot: ScorePoolsSnapshot;
@@ -70,7 +76,7 @@ function ManualResultForm({
     set: (next: { home: string; away: string }) => void,
     label: string,
   ) => (
-    <span className="flex items-center gap-1.5">
+    <span className="flex items-center" style={{ gap: "var(--c97-sp-0)" }}>
       <input
         type="number"
         min={0}
@@ -78,7 +84,8 @@ function ManualResultForm({
         inputMode="numeric"
         value={value.home}
         onChange={(event) => set({ ...value, home: event.target.value })}
-        className="min-h-[44px] w-14 border border-[var(--c97-rule)] bg-[var(--c97-surface)] px-2 py-1 text-center text-sm text-[var(--c97-ink)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--c97-accent)]"
+        className="c97-field"
+                  style={SCORE_FIELD_STYLE}
         aria-label={`${label} home goals`}
       />
       <span className="text-[var(--c97-ink-2)]">-</span>
@@ -89,25 +96,27 @@ function ManualResultForm({
         inputMode="numeric"
         value={value.away}
         onChange={(event) => set({ ...value, away: event.target.value })}
-        className="min-h-[44px] w-14 border border-[var(--c97-rule)] bg-[var(--c97-surface)] px-2 py-1 text-center text-sm text-[var(--c97-ink)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--c97-accent)]"
+        className="c97-field"
+                  style={SCORE_FIELD_STYLE}
         aria-label={`${label} away goals`}
       />
     </span>
   );
 
   return (
-    <div className="mt-2 flex flex-wrap items-center gap-3 text-2xs text-[var(--c97-ink-2)]">
+    <div className="flex flex-wrap items-center text-2xs text-[var(--c97-ink-2)]" style={{ gap: "var(--c97-sp-1)", marginTop: "var(--c97-sp-1)" }}>
       <span className="font-semibold text-[var(--c97-ink)]">Enter result:</span>
       90&apos; {scoreInput(ninety, setNinety, "Ninety minute")}
       {fixture.knockout ? (
         <>
           aet {scoreInput(et, setEt, "After extra time")}
-          <label className="flex items-center gap-1.5">
+          <label className="flex items-center" style={{ gap: "var(--c97-sp-0)" }}>
             pens
             <select
               value={pens}
               onChange={(event) => setPens(event.target.value as "" | "home" | "away")}
-              className="min-h-[44px] border border-[var(--c97-rule)] bg-[var(--c97-surface)] px-2 py-1 text-sm text-[var(--c97-ink)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--c97-accent)]"
+              className="c97-field"
+              style={{ width: "auto" }}
             >
               <option value="">none</option>
               <option value="home">{fixture.homeTeam}</option>
@@ -183,17 +192,17 @@ export function TrackerClient({ snapshot }: TrackerClientProps) {
   const selectedRival = activePool?.rivals.find((rival) => rival.id === selectedRivalId) ?? null;
 
   return (
-    <section className="c97-band min-h-screen" data-c97-surface="paper">
-      <div className="c97-shell space-y-6">
+    <section className="c97-band min-h-dvh" data-c97-surface="paper">
+      <div className="flex flex-col c97-shell" style={{ rowGap: "var(--c97-sp-3)" }}>
         <header>
-          <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-1)" }}>Prediction Tools</p>
+          <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-1)" }}>Prediction tools</p>
           <h1 className="c97-display">
             Score{" "}
             <em style={{ fontFamily: "var(--c97-font-display)", fontStyle: "italic", fontWeight: 400 }}>
               Tracker
             </em>
           </h1>
-          <p className="mt-2 text-sm leading-relaxed text-[var(--c97-ink-2)]">
+          <p className="text-sm leading-relaxed text-[var(--c97-ink-2)]" style={{ marginTop: "var(--c97-sp-1)" }}>
             Submitted picks scored against results under your pool&apos;s rules as games finish,
             with a running total and rival comparisons where you know their picks. Back to the{" "}
             <Link className="c97-link" href="/score-pools">
@@ -232,7 +241,7 @@ export function TrackerClient({ snapshot }: TrackerClientProps) {
               </nav>
             ) : null}
 
-            <section className="grid gap-3 sm:grid-cols-3" aria-label="Totals">
+            <section className="grid sm:grid-cols-3" style={{ gap: "var(--c97-sp-1)" }} aria-label="Totals">
               <div className="c97-stat" style={{ background: "var(--c97-panel)", padding: "var(--c97-sp-3)" }}>
                 <p className="c97-stat-label">Tracked points</p>
                 <p className="c97-stat-value c97-mono">{myScoring?.total ?? 0}</p>
@@ -260,23 +269,23 @@ export function TrackerClient({ snapshot }: TrackerClientProps) {
             {myScoring && myScoring.rows.length > 0 ? (
               <section aria-label="My scored picks">
                 <h2 className="c97-serif c97-h2">My picks</h2>
-                <div className="scroll-shadow-x mt-3 overflow-x-auto" role="region" aria-label="My scored picks (scrollable)" tabIndex={0}>
-                  <table className="min-w-full border-separate border-spacing-y-2" aria-label="My picks scored against results">
+                <div className="scroll-shadow-x overflow-x-auto" style={{ marginTop: "var(--c97-sp-1)" }} role="region" aria-label="My scored picks (scrollable)" tabIndex={0}>
+                  <table className="c97-table" aria-label="My picks scored against results">
                     <thead>
-                      <tr className="text-left text-xs uppercase tracking-[0.14em] text-[var(--c97-label)]">
-                        <th scope="col" className="px-3 py-2 font-semibold">Match</th>
-                        <th scope="col" className="px-3 py-2 font-semibold">My pick</th>
-                        <th scope="col" className="px-3 py-2 font-semibold">Result</th>
-                        <th scope="col" className="hidden px-3 py-2 font-semibold sm:table-cell">How it scored</th>
-                        <th scope="col" className="px-3 py-2 font-semibold">Pts</th>
-                        <th scope="col" className="hidden px-3 py-2 font-semibold sm:table-cell">Running</th>
+                      <tr>
+                        <th scope="col">Match</th>
+                        <th scope="col">My pick</th>
+                        <th scope="col">Result</th>
+                        <th scope="col" className="hidden sm:table-cell">How it scored</th>
+                        <th scope="col">Pts</th>
+                        <th scope="col" className="hidden sm:table-cell">Running</th>
                       </tr>
                     </thead>
                     <tbody>
                       {myScoring.rows.map((row) => {
                         return (
-                          <tr key={row.fixture.id} className="bg-[var(--c97-panel)] text-sm text-[var(--c97-ink)]">
-                            <td className="border-y border-l border-[var(--c97-rule)] px-3 py-2.5">
+                          <tr key={row.fixture.id}>
+                            <td>
                               <p className="font-semibold">
                                 {row.fixture.homeTeam} vs {row.fixture.awayTeam}
                               </p>
@@ -284,10 +293,10 @@ export function TrackerClient({ snapshot }: TrackerClientProps) {
                                 {formatKickoff(row.fixture.kickoff, activePool.timezone)}
                               </p>
                             </td>
-                            <td className="border-y border-[var(--c97-rule)] px-3 py-2.5 font-mono font-bold tabular-nums">
+                            <td className="font-mono font-bold tabular-nums">
                               {formatScoreline(row.pick)}
                             </td>
-                            <td className="border-y border-[var(--c97-rule)] px-3 py-2.5 font-mono tabular-nums">
+                            <td className="font-mono tabular-nums">
                               {row.result ? (
                                 <>
                                   {formatScoreline(row.result.ninetyMinutes)}
@@ -296,7 +305,7 @@ export function TrackerClient({ snapshot }: TrackerClientProps) {
                                     : ""}
                                   {row.result.penaltyWinner ? " p" : ""}
                                   {activePool.manualResults[row.fixture.id] && !row.fixture.result ? (
-                                    <span className="mt-1 flex items-center gap-2 font-sans">
+                                    <span className="flex items-center" style={{ gap: "var(--c97-sp-1)", marginTop: "var(--c97-sp-0)", fontFamily: "var(--c97-font-body)" }}>
                                       <span className="c97-chip">manual</span>
                                       <button
                                         type="button"
@@ -314,13 +323,13 @@ export function TrackerClient({ snapshot }: TrackerClientProps) {
                                 <span className="text-2xs text-[var(--c97-ink-2)]">pending</span>
                               )}
                             </td>
-                            <td className="hidden border-y border-[var(--c97-rule)] px-3 py-2.5 text-2xs text-[var(--c97-ink-2)] sm:table-cell">
+                            <td className="hidden text-2xs text-[var(--c97-ink-2)] sm:table-cell">
                               {row.score ? COMPONENT_LABELS[row.score.component] : "—"}
                             </td>
-                            <td className="border-y border-[var(--c97-rule)] px-3 py-2.5 font-mono font-bold tabular-nums">
+                            <td className="font-mono font-bold tabular-nums">
                               {row.score ? row.score.points : "—"}
                             </td>
-                            <td className="hidden border-y border-r border-[var(--c97-rule)] px-3 py-2.5 font-mono tabular-nums sm:table-cell">
+                            <td className="hidden font-mono tabular-nums sm:table-cell">
                               {row.running ?? ""}
                             </td>
                           </tr>
@@ -339,13 +348,13 @@ export function TrackerClient({ snapshot }: TrackerClientProps) {
             {needsResult.length > 0 ? (
               <section aria-label="Missing results">
                 <h2 className="c97-serif c97-h2">Missing results</h2>
-                <p className="mt-1 text-2xs text-[var(--c97-ink-2)]">
+                <p className="text-2xs text-[var(--c97-ink-2)]" style={{ marginTop: "var(--c97-sp-0)" }}>
                   These games have picks but no result from the data feed. Enter the result by hand
                   and the scoring uses it until a feed result shows up.
                 </p>
-                <ul className="mt-2 space-y-3">
+                <ul className="flex flex-col" style={{ rowGap: "var(--c97-sp-1)", marginTop: "var(--c97-sp-1)" }}>
                   {needsResult.map((fixture) => (
-                    <li key={fixture.id} className="border border-[var(--c97-rule)] bg-[var(--c97-panel)] px-4 py-3 text-sm text-[var(--c97-ink)]">
+                    <li key={fixture.id} className="border border-[var(--c97-rule)] bg-[var(--c97-panel)] text-sm text-[var(--c97-ink)]" style={{ paddingInline: "var(--c97-sp-2)", paddingBlock: "var(--c97-sp-1)" }}>
                       <p className="font-semibold">
                         {fixture.homeTeam} vs {fixture.awayTeam}
                       </p>
@@ -362,22 +371,22 @@ export function TrackerClient({ snapshot }: TrackerClientProps) {
             <section aria-label="Rivals">
               <h2 className="c97-serif c97-h2">Rivals</h2>
               {activePool.rivals.length === 0 ? (
-                <p className="mt-1 text-sm text-[var(--c97-ink-2)]">
+                <p className="text-sm text-[var(--c97-ink-2)]" style={{ marginTop: "var(--c97-sp-0)" }}>
                   Add rivals on the{" "}
                   <Link className="c97-link" href="/score-pools/settings">settings page</Link>{" "}
                   and enter their picks here to see the gaps game by game.
                 </p>
               ) : (
                 <>
-                  <div className="scroll-shadow-x mt-3 overflow-x-auto" role="region" aria-label="Rival totals (scrollable)" tabIndex={0}>
-                    <table className="min-w-full border-separate border-spacing-y-2" aria-label="Rival totals">
+                  <div className="scroll-shadow-x overflow-x-auto" style={{ marginTop: "var(--c97-sp-1)" }} role="region" aria-label="Rival totals (scrollable)" tabIndex={0}>
+                    <table className="c97-table" aria-label="Rival totals">
                       <thead>
-                        <tr className="text-left text-xs uppercase tracking-[0.14em] text-[var(--c97-label)]">
-                          <th scope="col" className="px-3 py-2 font-semibold">Rival</th>
-                          <th scope="col" className="px-3 py-2 font-semibold">Tracked</th>
-                          <th scope="col" className="px-3 py-2 font-semibold">Adjustment</th>
-                          <th scope="col" className="px-3 py-2 font-semibold">Total</th>
-                          <th scope="col" className="px-3 py-2 font-semibold">Gap to me</th>
+                        <tr>
+                          <th scope="col">Rival</th>
+                          <th scope="col">Tracked</th>
+                          <th scope="col">Adjustment</th>
+                          <th scope="col">Total</th>
+                          <th scope="col">Gap to me</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -387,12 +396,12 @@ export function TrackerClient({ snapshot }: TrackerClientProps) {
                           const myTotal = (myScoring?.total ?? 0) + activePool.standing.myPoints;
                           const gap = total - myTotal;
                           return (
-                            <tr key={rival.id} className="bg-[var(--c97-panel)] text-sm text-[var(--c97-ink)]">
-                              <td className="border-y border-l border-[var(--c97-rule)] px-3 py-2.5 font-semibold">{rival.name}</td>
-                              <td className="border-y border-[var(--c97-rule)] px-3 py-2.5 font-mono tabular-nums">{scoring.total}</td>
-                              <td className="border-y border-[var(--c97-rule)] px-3 py-2.5 font-mono tabular-nums">{rival.pointsAdjustment}</td>
-                              <td className="border-y border-[var(--c97-rule)] px-3 py-2.5 font-mono font-bold tabular-nums">{total}</td>
-                              <td className="border-y border-r border-[var(--c97-rule)] px-3 py-2.5 font-mono tabular-nums">
+                            <tr key={rival.id}>
+                              <td className="font-semibold">{rival.name}</td>
+                              <td className="font-mono tabular-nums">{scoring.total}</td>
+                              <td className="font-mono tabular-nums">{rival.pointsAdjustment}</td>
+                              <td className="font-mono font-bold tabular-nums">{total}</td>
+                              <td className="font-mono tabular-nums">
                                 {gap > 0 ? `+${gap} on me` : gap < 0 ? `${-gap} behind` : "level"}
                               </td>
                             </tr>
@@ -402,7 +411,7 @@ export function TrackerClient({ snapshot }: TrackerClientProps) {
                     </table>
                   </div>
 
-                  <div className="mt-4">
+                  <div style={{ marginTop: "var(--c97-sp-2)" }}>
                     <h3 className="c97-serif c97-h3">Enter rival picks</h3>
                     <div className="c97-segmented" style={{ marginTop: "var(--c97-sp-1)" }}>
                       {activePool.rivals.map((rival) => (
@@ -420,19 +429,19 @@ export function TrackerClient({ snapshot }: TrackerClientProps) {
                       ))}
                     </div>
                     {selectedRival ? (
-                      <ul className="mt-3 space-y-2">
+                      <ul className="flex flex-col" style={{ rowGap: "var(--c97-sp-1)", marginTop: "var(--c97-sp-1)" }}>
                         {league.fixtures.map((fixture) => {
                           const existing = selectedRival.picks[fixture.id];
                           const draft = rivalPickDrafts[fixture.id] ?? { home: "", away: "" };
                           return (
-                            <li key={fixture.id} className="flex flex-wrap items-center gap-3 border border-[var(--c97-rule)] bg-[var(--c97-panel)] px-4 py-2.5 text-sm text-[var(--c97-ink)]">
+                            <li key={fixture.id} className="flex flex-wrap items-center border border-[var(--c97-rule)] bg-[var(--c97-panel)] text-sm text-[var(--c97-ink)]" style={{ gap: "var(--c97-sp-1)", paddingInline: "var(--c97-sp-2)", paddingBlock: "var(--c97-sp-1)" }}>
                               <span className="min-w-48 font-semibold">
                                 {fixture.homeTeam} vs {fixture.awayTeam}
                               </span>
                               <span className="font-mono text-2xs text-[var(--c97-ink-2)]">
                                 {existing ? `saved ${formatScoreline(existing)}` : "no pick saved"}
                               </span>
-                              <span className="flex items-center gap-1.5">
+                              <span className="flex items-center" style={{ gap: "var(--c97-sp-0)" }}>
                                 <input
                                   type="number"
                                   min={0}
@@ -445,7 +454,8 @@ export function TrackerClient({ snapshot }: TrackerClientProps) {
                                       [fixture.id]: { ...draft, home: event.target.value },
                                     }))
                                   }
-                                  className="min-h-[44px] w-14 border border-[var(--c97-rule)] bg-[var(--c97-surface)] px-2 py-1 text-center text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--c97-accent)]"
+                                  className="c97-field"
+                  style={SCORE_FIELD_STYLE}
                                   aria-label={`${selectedRival.name} pick, ${fixture.homeTeam} goals`}
                                 />
                                 <span className="text-[var(--c97-ink-2)]">-</span>
@@ -461,7 +471,8 @@ export function TrackerClient({ snapshot }: TrackerClientProps) {
                                       [fixture.id]: { ...draft, away: event.target.value },
                                     }))
                                   }
-                                  className="min-h-[44px] w-14 border border-[var(--c97-rule)] bg-[var(--c97-surface)] px-2 py-1 text-center text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--c97-accent)]"
+                                  className="c97-field"
+                  style={SCORE_FIELD_STYLE}
                                   aria-label={`${selectedRival.name} pick, ${fixture.awayTeam} goals`}
                                 />
                                 <button

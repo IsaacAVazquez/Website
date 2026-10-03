@@ -153,16 +153,18 @@ describe("SEO page sitemap freshness", () => {
     );
   });
 
-  it.each(["/accessibility", "/arcade"])(
-    "keeps the prior SEO update for %s",
-    (pathname) => {
-      const entry = getPublicSitemapEntries().find(
-        ({ loc }: { loc: string }) => loc === pathname
-      );
+  // The accessibility statement's claims were last reviewed on 2026-10-02,
+  // when its contrast figures were corrected.
+  it.each([
+    ["/accessibility", "2026-10-02T00:00:00.000Z"],
+    ["/arcade", "2026-07-16T00:00:00.000Z"],
+  ])("keeps the latest content date for %s", (pathname, lastmod) => {
+    const entry = getPublicSitemapEntries().find(
+      ({ loc }: { loc: string }) => loc === pathname
+    );
 
-      expect(entry?.lastmod).toBe("2026-07-16T00:00:00.000Z");
-    }
-  );
+    expect(entry?.lastmod).toBe(lastmod);
+  });
 
   it("publishes the dashboards section hub with its latest copy change", () => {
     const entry = getPublicSitemapEntries().find(

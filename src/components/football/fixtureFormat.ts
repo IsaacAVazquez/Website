@@ -30,6 +30,11 @@ export function formatFixed(value: number, digits = 2): string {
   return Number.isFinite(value) ? value.toFixed(digits) : "—";
 }
 
+/** A rank as "#3", or the same em dash formatFixed uses when the rank is missing. */
+export function formatRank(rank: number | null | undefined): string {
+  return rank == null ? "—" : `#${rank}`;
+}
+
 export function formatFixtureDateTime(fixture: GenericFixture): string {
   const date = new Date(fixture.utcDate);
   if (Number.isNaN(date.getTime())) return "Time TBD";

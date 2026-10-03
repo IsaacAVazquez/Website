@@ -20,11 +20,11 @@ function Field({
 }: { label: string; id: string } & React.InputHTMLAttributes<HTMLInputElement>) {
   return (
     <label htmlFor={id} className="block">
-      <span className="block text-xs font-medium text-[var(--c97-ink-2)] mb-1">{label}</span>
+      <span className="block text-xs font-medium text-[var(--c97-ink-2)]" style={{ marginBottom: "var(--c97-sp-0)" }}>{label}</span>
       <input
         id={id}
         name={id}
-        className="min-h-[44px] w-full px-3 py-2 text-sm border-0 border-b border-[var(--c97-ink-2)] bg-[var(--c97-panel)] text-[var(--c97-ink)] placeholder:text-[var(--c97-label)] focus:outline-none focus:border-[var(--c97-accent)] transition"
+        className="min-h-[44px] w-full text-sm border-0 border-b border-[var(--c97-ink-2)] bg-[var(--c97-panel)] text-[var(--c97-ink)] placeholder:text-[var(--c97-label)] focus:border-[var(--c97-accent)] transition" style={{ paddingInline: "var(--c97-sp-1)", paddingBlock: "var(--c97-sp-1)" }}
         {...props}
       />
     </label>
@@ -131,10 +131,10 @@ export function AddStockForm({ onAdd }: Props) {
 
   return (
     <TerminalPanel padding="sm" ariaLabel="Add stock form">
-      <div className="mb-5 flex items-center justify-between">
+      <div className="flex items-center justify-between" style={{ marginBottom: "var(--c97-sp-2)" }}>
         <div>
-          <h3 className="text-sm font-semibold text-[var(--c97-ink)]">Add Position</h3>
-          <p className="mt-1 text-xs text-[var(--c97-label)]">
+          <h3 className="text-sm font-semibold text-[var(--c97-ink)]">Add position</h3>
+          <p className="text-xs text-[var(--c97-label)]" style={{ marginTop: "var(--c97-sp-0)" }}>
             Save a holding locally to include it in portfolio analytics.
           </p>
         </div>
@@ -148,7 +148,7 @@ export function AddStockForm({ onAdd }: Props) {
       </div>
 
       <form onSubmit={handleSubmit} noValidate>
-        <div className="mb-4 grid grid-cols-1 gap-3 sm:grid-cols-2">
+        <div className="grid grid-cols-1 sm:grid-cols-2" style={{ gap: "var(--c97-sp-1)", marginBottom: "var(--c97-sp-2)" }}>
           <Field
             label="Symbol"
             id="add-symbol"
@@ -183,7 +183,7 @@ export function AddStockForm({ onAdd }: Props) {
             aria-describedby={errorField === "shares" ? "add-form-error" : undefined}
           />
           <Field
-            label="Avg Cost ($)"
+            label="Avg cost ($)"
             id="add-cost"
             type="number"
             value={cost}
@@ -195,7 +195,7 @@ export function AddStockForm({ onAdd }: Props) {
             aria-describedby={errorField === "cost" ? "add-form-error" : undefined}
           />
           <Field
-            label="Purchase Date (optional)"
+            label="Purchase date (optional)"
             id="add-date"
             type="date"
             value={date}
@@ -204,14 +204,14 @@ export function AddStockForm({ onAdd }: Props) {
         </div>
 
         {error && (
-          <p id="add-form-error" role="alert" className="mb-4 text-xs text-[var(--c97-negative)]">
+          <p id="add-form-error" role="alert" className="text-xs text-[var(--c97-negative)]" style={{ marginBottom: "var(--c97-sp-2)" }}>
             {error}
           </p>
         )}
 
-        <div className="flex flex-wrap gap-2">
+        <div className="flex flex-wrap" style={{ gap: "var(--c97-sp-1)" }}>
           <ModernButton type="submit" variant="accent" size="sm" ariaLabel="Add position">
-            <Plus size={14} /> Add Position
+            <Plus size={14} /> Add position
           </ModernButton>
           <ModernButton
             type="button"

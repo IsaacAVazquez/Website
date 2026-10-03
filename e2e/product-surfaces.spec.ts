@@ -80,7 +80,7 @@ test.describe("Product surfaces", () => {
   }) => {
     await expectHealthyRoute(page, "/polling-aggregator?view=senate", /Polling Aggregator/i);
     await expect(page).toHaveURL(/view=senate/);
-    await expect(page.getByRole("heading", { level: 2, name: /Senate Races/i })).toBeVisible();
+    await expect(page.getByRole("heading", { level: 3, name: /Senate races/i })).toBeVisible();
     await expect(page.getByRole("table", { name: /Senate race ratings/i })).toBeVisible();
     await expectNoHorizontalOverflow(page);
 

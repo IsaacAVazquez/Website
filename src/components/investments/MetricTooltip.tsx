@@ -48,6 +48,12 @@ export const METRIC_DEFINITIONS: Record<string, string> = {
   "TTM": "Trailing Twelve Months. A rolling 12-month window of the most recent available data.",
 };
 
+// Lookup ignores case, so a label can print in sentence case ("Gross margin")
+// and still find its definition, and the display text never has to match a key.
+const DEFINITIONS_BY_KEY = new Map(
+  Object.entries(METRIC_DEFINITIONS).map(([key, text]) => [key.toLowerCase(), text]),
+);
+
 interface Props {
   term: string;
   definition?: string;
@@ -93,7 +99,7 @@ interface BubblePosition {
  * inside a transformed row.
  */
 export function MetricTooltip({ term, definition, children, focusable }: Props) {
-  const text = definition ?? METRIC_DEFINITIONS[term];
+  const text = definition ?? DEFINITIONS_BY_KEY.get(term.toLowerCase());
 
   const triggerRef = React.useRef<HTMLElement | null>(null);
   const bubbleRef = React.useRef<HTMLSpanElement>(null);
@@ -165,13 +171,16 @@ export function MetricTooltip({ term, definition, children, focusable }: Props) 
             role="tooltip"
             id={bubbleId}
             style={{
+              padding: "var(--c97-sp-1)",
               position: "fixed",
               left: pos ? pos.left : 0,
               top: pos ? pos.top : 0,
               width: `min(${BUBBLE_WIDTH}px, calc(100vw - ${VIEWPORT_PAD * 2}px))`,
               opacity: pos ? 1 : 0,
+              // Over every overlay, since fantasy opens this inside its drawers and sheets.
+              zIndex: "calc(var(--c97-z-sheet) + 1)",
             }}
-            className="pointer-events-none z-[100] bg-[var(--c97-ink)] px-3 py-2.5 text-2xs leading-snug text-[var(--c97-surface)] motion-safe:transition-opacity motion-safe:duration-150"
+            className="pointer-events-none bg-[var(--c97-ink)] text-2xs leading-snug text-[var(--c97-surface)] motion-safe:transition-opacity motion-safe:duration-150"
           >
             {text}
             {pos && (
@@ -224,7 +233,7 @@ export function MetricTooltip({ term, definition, children, focusable }: Props) 
                 triggerRef.current?.blur();
               }
             }}
-            className="relative m-0 cursor-help border-0 bg-transparent p-0 text-inherit underline decoration-dotted decoration-from-font underline-offset-[3px] outline-none focus-visible:ring-2 focus-visible:ring-[var(--c97-ink)] after:absolute after:-inset-x-1 after:-inset-y-3 after:content-['']"
+            className="relative m-0 cursor-help border-0 bg-transparent p-0 text-inherit underline decoration-dotted decoration-from-font underline-offset-[3px] after:absolute after:-inset-x-1 after:-inset-y-3 after:content-['']"
           >
             {children}
           </button>
@@ -278,9 +287,9 @@ export function MetricTooltip({ term, definition, children, focusable }: Props) 
             triggerRef.current?.blur();
           }
         }}
-        className="pointer-events-auto absolute left-1/2 top-1/2 flex min-h-touch min-w-touch -translate-x-1/2 -translate-y-1/2 cursor-help items-center justify-center outline-none focus-visible:ring-2 focus-visible:ring-[var(--c97-ink)]"
+        className="pointer-events-auto absolute left-1/2 top-1/2 flex min-h-touch min-w-touch -translate-x-1/2 -translate-y-1/2 cursor-help items-center justify-center"
       >
-        <span className="flex h-4 w-4 items-center justify-center bg-[var(--c97-panel)] text-3xs font-bold leading-none text-[var(--c97-ink-2)] ring-1 ring-[var(--c97-rule)]">
+        <span className="flex h-4 w-4 items-center justify-center bg-[var(--c97-panel)] text-3xs font-bold leading-none text-[var(--c97-ink-2)] border border-[var(--c97-rule)]">
           ?
         </span>
       </button>

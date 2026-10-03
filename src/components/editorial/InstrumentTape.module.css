@@ -15,9 +15,9 @@
 .tag {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  padding: 9px 18px 9px 0;
-  margin-right: 18px;
+  gap: var(--c97-sp-1);
+  padding: var(--c97-sp-1) var(--c97-sp-2) var(--c97-sp-1) 0;
+  margin-right: var(--c97-sp-2);
   border-right: 1px solid var(--c97-rule);
   font-family: var(--c97-font-mono);
   font-size: 0.62rem;
@@ -43,8 +43,8 @@
 .item {
   display: inline-flex;
   align-items: center;
-  gap: 9px;
-  padding: 9px 18px;
+  gap: var(--c97-sp-1);
+  padding: var(--c97-sp-1) var(--c97-sp-2);
   border-right: 1px solid color-mix(in srgb, var(--c97-rule) 55%, transparent);
   font-family: var(--c97-font-mono);
   font-size: 0.72rem;

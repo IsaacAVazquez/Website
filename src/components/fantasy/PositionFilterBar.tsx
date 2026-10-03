@@ -77,7 +77,7 @@ export function PositionFilterBar<T extends string>({
     <div
       role="radiogroup"
       aria-label={ariaLabel}
-      className="-mx-1 flex flex-wrap gap-2 px-1 pb-1 sm:mx-0 sm:px-0 sm:pb-0"
+      className="-mx-[var(--c97-sp-0)] flex flex-wrap px-[var(--c97-sp-0)] pb-[var(--c97-sp-0)] sm:mx-0 sm:px-0 sm:pb-0" style={{ gap: "var(--c97-sp-1)" }}
     >
       {options.map((option, index) => {
         const isActive = option.value === value;
@@ -130,8 +130,8 @@ export function PositionFilterBar<T extends string>({
             }}
             onClick={() => !isDisabled && onChange(option.value)}
             onKeyDown={(event) => handleRadioKeyDown(event, index)}
-            className={`inline-flex min-h-touch min-w-touch shrink-0 items-center justify-center gap-1.5 border px-3.5 text-sm font-semibold transition-colors disabled:cursor-not-allowed ${stateClass}`}
-            style={style}
+            className={`inline-flex min-h-touch min-w-touch shrink-0 items-center justify-center border text-sm font-semibold transition-colors disabled:cursor-not-allowed ${stateClass}`}
+            style={{ paddingInline: "var(--c97-sp-2)", gap: "var(--c97-sp-0)", ...(style) }}
           >
             <span>{option.label}</span>
             {isUnavailable && (

@@ -23,8 +23,7 @@ import {
   formatPercent,
   formatSignedCurrency,
 } from "@/lib/investmentFormatting";
-import type { PortfolioSummary as PortfolioSummaryType } from "@/types/investment";
-import type { PortfolioSnapshot } from "./PortfolioPerformanceChart";
+import type { PortfolioSnapshot, PortfolioSummary as PortfolioSummaryType } from "@/types/investment";
 
 interface Props {
   summary: PortfolioSummaryType;
@@ -362,7 +361,7 @@ export function PortfolioHeroCard({
           </span>
         </div>
 
-        <div className="mt-4">
+        <div style={{ marginTop: "var(--c97-sp-2)" }}>
           <div className="invest-timeframe" role="group" aria-label="Performance timeframe">
             {RANGES.map((r) => (
               <button

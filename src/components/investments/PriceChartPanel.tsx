@@ -419,35 +419,36 @@ export function PriceChartPanel({ symbol, costBasis = null }: Props) {
 
   return (
     <TerminalPanel padding="sm" ariaLabel="Price chart">
-      <div className="mb-5 flex flex-wrap items-center justify-between gap-3">
+      <div className="flex flex-wrap items-center justify-between" style={{ gap: "var(--c97-sp-1)", marginBottom: "var(--c97-sp-2)" }}>
         <div>
-          <h3 className="text-sm font-semibold text-[var(--c97-ink)]">Price History</h3>
-          <p className="mt-1 text-xs text-[var(--c97-label)]">
+          <h3 className="text-sm font-semibold text-[var(--c97-ink)]">Price history</h3>
+          <p className="text-xs text-[var(--c97-label)]" style={{ marginTop: "var(--c97-sp-0)" }}>
             Trend and volume from the curated research snapshot.
           </p>
-          <p className="mt-2 text-xs text-[var(--c97-ink-2)]">
+          <p className="text-xs text-[var(--c97-ink-2)]" style={{ marginTop: "var(--c97-sp-1)" }}>
             Historical series through {formatHistoryAsOf(latestHistoricalDate)}. The latest market quote, when available, appears in the research header.
           </p>
           {historyFreshness.isStale ? (
-            <p className="mt-1 text-xs font-medium text-[var(--c97-warning)]">
+            <p className="text-xs font-medium text-[var(--c97-warning)]" style={{ marginTop: "var(--c97-sp-0)" }}>
               Historical chart data ends {historyFreshness.lagDays} days before today.
             </p>
           ) : null}
           {spyUnavailable ? (
-            <p className="mt-1 text-xs text-[var(--c97-warning)]">
+            <p className="text-xs text-[var(--c97-warning)]" style={{ marginTop: "var(--c97-sp-0)" }}>
               SPY comparison data isn&apos;t in this data build yet, so the chart shows absolute price instead.
             </p>
           ) : null}
         </div>
-        <div className="flex flex-wrap items-center gap-2">
-          <div className="flex flex-wrap gap-2" role="group" aria-label="Chart overlays">
+        <div className="flex flex-wrap items-center" style={{ gap: "var(--c97-sp-1)" }}>
+          <div className="flex flex-wrap" style={{ gap: "var(--c97-sp-1)" }} role="group" aria-label="Chart overlays">
             {!vsSpy ? (
               <>
                 <button
                   type="button"
                   onClick={() => setShowMA((v) => !v)}
                   aria-pressed={showMA}
-                  className={`inline-flex min-h-[44px] items-center gap-2 px-3.5 py-2 text-xs font-semibold transition ${
+                  style={{ gap: "var(--c97-sp-1)", paddingInline: "var(--c97-sp-2)", paddingBlock: "var(--c97-sp-1)" }}
+                  className={`inline-flex min-h-[44px] items-center text-xs font-semibold transition ${
                     showMA
                       ? "border border-[var(--c97-ink-2)] bg-[var(--c97-panel)] text-[var(--c97-ink)]"
                       : "border border-[var(--c97-rule)] text-[var(--c97-label)] hover:bg-[var(--c97-panel)]"
@@ -465,7 +466,8 @@ export function PriceChartPanel({ symbol, costBasis = null }: Props) {
                     type="button"
                     onClick={() => setShowCostBasis((v) => !v)}
                     aria-pressed={showCostBasis}
-                    className={`inline-flex min-h-[44px] items-center gap-2 px-3.5 py-2 text-xs font-semibold transition ${
+                    style={{ gap: "var(--c97-sp-1)", paddingInline: "var(--c97-sp-2)", paddingBlock: "var(--c97-sp-1)" }}
+                    className={`inline-flex min-h-[44px] items-center text-xs font-semibold transition ${
                       showCostBasis
                         ? "border border-[color-mix(in_srgb,var(--c97-positive)_45%,var(--c97-rule))] bg-[color-mix(in_srgb,var(--c97-positive)_10%,var(--c97-panel))] text-[var(--c97-ink)]"
                         : "border border-[var(--c97-rule)] text-[var(--c97-label)] hover:bg-[var(--c97-panel)]"
@@ -486,7 +488,8 @@ export function PriceChartPanel({ symbol, costBasis = null }: Props) {
                 type="button"
                 onClick={() => setVsSpy((v) => !v)}
                 aria-pressed={vsSpy}
-                className={`inline-flex min-h-[44px] items-center gap-2 px-3.5 py-2 text-xs font-semibold transition ${
+                style={{ gap: "var(--c97-sp-1)", paddingInline: "var(--c97-sp-2)", paddingBlock: "var(--c97-sp-1)" }}
+                className={`inline-flex min-h-[44px] items-center text-xs font-semibold transition ${
                   vsSpy
                     ? "border border-[color-mix(in_srgb,var(--c97-accent)_55%,var(--c97-rule))] text-[var(--c97-accent)]"
                     : "border border-[var(--c97-rule)] text-[var(--c97-label)] hover:bg-[var(--c97-panel)]"
@@ -496,14 +499,15 @@ export function PriceChartPanel({ symbol, costBasis = null }: Props) {
               </button>
             ) : null}
           </div>
-          <div className="flex flex-wrap gap-2" role="group" aria-label="Date range">
+          <div className="flex flex-wrap" style={{ gap: "var(--c97-sp-1)" }} role="group" aria-label="Date range">
             {RANGES.map((r) => (
               <button
                 key={r}
                 type="button"
                 aria-pressed={range === r}
                 onClick={() => setRange(r)}
-                className={`min-h-[44px] min-w-[44px] px-3.5 py-2 text-xs font-semibold transition ${
+                style={{ paddingInline: "var(--c97-sp-2)", paddingBlock: "var(--c97-sp-1)" }}
+                className={`min-h-[44px] min-w-[44px] text-xs font-semibold transition ${
                   range === r
                     ? "bg-[var(--c97-accent)] text-[var(--c97-surface)] "
                     : "border border-[var(--c97-rule)] text-[var(--c97-ink-2)] hover:bg-[var(--c97-panel)] hover:text-[var(--c97-ink)]"
@@ -517,7 +521,7 @@ export function PriceChartPanel({ symbol, costBasis = null }: Props) {
       </div>
 
       {isLoading && (
-        <div className="space-y-3" role="status" aria-busy="true">
+        <div className="flex flex-col" style={{ rowGap: "var(--c97-sp-1)" }} role="status" aria-busy="true">
           <span className="sr-only">Loading price history</span>
           <span className="c97-skeleton" style={{ height: 260 }} />
           <span className="c97-skeleton" style={{ height: 80 }} />
@@ -531,10 +535,10 @@ export function PriceChartPanel({ symbol, costBasis = null }: Props) {
       {!isLoading && slicedData.length > 0 && (
         <div className="relative">
           <svg ref={priceRef} className="w-full" />
-          <svg ref={volumeRef} className="mt-2 w-full" />
+          <svg ref={volumeRef} className="w-full" style={{ marginTop: "var(--c97-sp-1)" }} />
           <div
             ref={tooltipRef}
-            className="absolute pointer-events-none hidden z-10 bg-[var(--c97-panel)] border border-[var(--c97-rule)] px-2 py-1 text-xs text-[var(--c97-ink)] whitespace-nowrap"
+            className="absolute pointer-events-none hidden z-10 bg-[var(--c97-panel)] border border-[var(--c97-rule)] text-xs text-[var(--c97-ink)] whitespace-nowrap" style={{ paddingInline: "var(--c97-sp-1)", paddingBlock: "var(--c97-sp-0)" }}
           />
         </div>
       )}

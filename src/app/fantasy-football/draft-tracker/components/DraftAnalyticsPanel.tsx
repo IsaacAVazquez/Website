@@ -70,8 +70,8 @@ function PickValueRow({
   const delta = getPickDelta(pick) ?? 0;
 
   return (
-    <div className="border px-4 py-3" style={PANEL_TILE_STYLE}>
-      <div className="flex flex-wrap items-center gap-2">
+    <div className="border" style={{ paddingInline: "var(--c97-sp-2)", paddingBlock: "var(--c97-sp-1)", ...(PANEL_TILE_STYLE) }}>
+      <div className="flex flex-wrap items-center" style={{ gap: "var(--c97-sp-1)" }}>
         <p className="text-sm font-semibold">{pick.player.name}</p>
         <span className={FANTASY_CHIP_CLASS} style={getPositionTone(pick.player.position)}>
           {pick.player.position}
@@ -83,7 +83,7 @@ function PickValueRow({
           {label} {formatDelta(delta)}
         </span>
       </div>
-      <p className="mt-1 text-xs" style={{ color: "var(--c97-ink-2)" }}>
+      <p className="text-xs" style={{ marginTop: "var(--c97-sp-0)", color: "var(--c97-ink-2)" }}>
         {teamName} • Pick {pick.pickNumber} • Round {pick.round}
       </p>
     </div>
@@ -115,7 +115,7 @@ export function DraftAnalyticsPanel({
     return (
       <article className="c97-panel">
         <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-1)" }}>Draft signals</p>
-        <div className="mt-3 grid gap-3">
+        <div className="grid" style={{ marginTop: "var(--c97-sp-1)", gap: "var(--c97-sp-1)" }}>
           {latestFlaggedPick === null && activeRun === null && !showEmerging ? (
             <p className="text-sm leading-6" style={{ color: "var(--c97-ink-2)" }}>
               Nothing unusual yet. Steals, reaches, and position runs show up here as picks come in.
@@ -130,11 +130,11 @@ export function DraftAnalyticsPanel({
                 />
               )}
               {activeRun && (
-                <div className="border px-4 py-3" style={PANEL_TILE_STYLE}>
+                <div className="border" style={{ paddingInline: "var(--c97-sp-2)", paddingBlock: "var(--c97-sp-1)", ...(PANEL_TILE_STYLE) }}>
                   <p className="text-sm font-semibold">
                     {activeRun.position} run in progress
                   </p>
-                  <p className="mt-1 text-xs" style={{ color: "var(--c97-ink-2)" }}>
+                  <p className="text-xs" style={{ marginTop: "var(--c97-sp-0)", color: "var(--c97-ink-2)" }}>
                     {activeRun.playersSelected} {activeRun.position}s gone since pick{" "}
                     {activeRun.startPick}. The run changes likely availability, but it does not make
                     a reach worthwhile on its own.
@@ -143,8 +143,8 @@ export function DraftAnalyticsPanel({
               )}
               {showEmerging && emergingRun && (
                 <div
-                  className="border border-l-[3px] px-4 py-3"
-                  style={{ ...PANEL_TILE_STYLE, borderLeftColor: "var(--c97-accent)" }}
+                  className="border border-l-[3px]"
+                  style={{ paddingInline: "var(--c97-sp-2)", paddingBlock: "var(--c97-sp-1)", ...PANEL_TILE_STYLE, borderLeftColor: "var(--c97-accent)" }}
                 >
                   {/* The accent wash this tile used to carry measured ink-2 at
                       4.25:1 on top of it. The stripe keeps the accent as a
@@ -152,7 +152,7 @@ export function DraftAnalyticsPanel({
                       prints in ink so it clears 4.5:1 without depending on the
                       tint's strength. */}
                   <p className="text-sm font-semibold">{emergingRun.position}s starting to go</p>
-                  <p className="mt-1 text-xs" style={{ color: "var(--c97-ink)" }}>
+                  <p className="text-xs" style={{ marginTop: "var(--c97-sp-0)", color: "var(--c97-ink)" }}>
                     {emergingRun.count} went in the last few picks. Compare the next options inside
                     their current tier before changing your plan.
                   </p>
@@ -161,7 +161,7 @@ export function DraftAnalyticsPanel({
             </>
           )}
         </div>
-        <p className="mt-3 max-w-[68ch] text-xs leading-5" style={{ color: "var(--c97-ink-2)" }}>
+        <p className="max-w-[68ch] text-xs leading-5" style={{ marginTop: "var(--c97-sp-1)", color: "var(--c97-ink-2)" }}>
           {describeBaseline(adpAvailable, adpUnavailableReason)}
         </p>
       </article>
@@ -180,15 +180,15 @@ export function DraftAnalyticsPanel({
     <article className="c97-panel">
       <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-1)" }}>Draft recap</p>
       <h2 className="c97-serif c97-h3">How the room drafted</h2>
-      <p className="mt-2 max-w-[68ch] text-sm leading-7" style={{ color: "var(--c97-ink-2)" }}>
+      <p className="max-w-[68ch] text-sm leading-7" style={{ marginTop: "var(--c97-sp-1)", color: "var(--c97-ink-2)" }}>
         {describeBaseline(adpAvailable, adpUnavailableReason)} A positive total means a team kept landing players past
         where the market expected them to go. None of it predicts the season. It only summarizes
         market-price discipline. Draft Outlook is the separate room ranking because it also includes
         roster and lineup structure.
       </p>
 
-      <div className="mt-5 grid gap-4 lg:grid-cols-2">
-        <div className="grid gap-3">
+      <div className="grid lg:grid-cols-2" style={{ marginTop: "var(--c97-sp-2)", gap: "var(--c97-sp-2)" }}>
+        <div className="grid" style={{ gap: "var(--c97-sp-1)" }}>
           <p className="c97-kicker">Biggest steal</p>
           {biggestSteal ? (
             <PickValueRow pick={biggestSteal} label="Steal" teamName={getTeamName(biggestSteal.teamNumber)} />
@@ -210,12 +210,12 @@ export function DraftAnalyticsPanel({
           {analytics.positionRunAnalysis.length > 0 && (
             <>
               <p className="c97-kicker" style={{ marginTop: "var(--c97-sp-1)" }}>Position runs</p>
-              <div className="grid gap-2">
+              <div className="grid" style={{ gap: "var(--c97-sp-1)" }}>
                 {analytics.positionRunAnalysis.map((run) => (
                   <div
                     key={`run-${run.position}-${run.startPick ?? run.startRound}`}
-                    className="border px-4 py-3 text-sm"
-                    style={PANEL_TILE_STYLE}
+                    className="border text-sm"
+                    style={{ paddingInline: "var(--c97-sp-2)", paddingBlock: "var(--c97-sp-1)", ...(PANEL_TILE_STYLE) }}
                   >
                     <span className="font-semibold">{run.position} run</span>
                     <span style={{ color: "var(--c97-ink-2)" }}>
@@ -232,14 +232,14 @@ export function DraftAnalyticsPanel({
           )}
         </div>
 
-        <div className="grid gap-3 content-start">
+        <div className="grid content-start" style={{ gap: "var(--c97-sp-1)" }}>
           <p className="c97-kicker">Market value by team</p>
-          <div className="grid gap-2">
+          <div className="grid" style={{ gap: "var(--c97-sp-1)" }}>
             {rankedTeams.map((team) => (
               <div
                 key={`team-value-${team.teamNumber}`}
-                className="flex items-center justify-between gap-3 border px-4 py-3"
-                style={PANEL_TILE_STYLE}
+                className="flex items-center justify-between border"
+                style={{ paddingInline: "var(--c97-sp-2)", paddingBlock: "var(--c97-sp-1)", gap: "var(--c97-sp-1)", ...(PANEL_TILE_STYLE) }}
               >
                 <div className="min-w-0">
                   <p className="text-sm font-semibold">
@@ -247,12 +247,12 @@ export function DraftAnalyticsPanel({
                     {team.teamNumber === userTeamNumber ? " (you)" : ""}
                   </p>
                   {team.weaknesses.length > 0 && (
-                    <p className="mt-1 truncate text-xs" style={{ color: "var(--c97-ink-2)" }}>
+                    <p className="truncate text-xs" style={{ marginTop: "var(--c97-sp-0)", color: "var(--c97-ink-2)" }}>
                       Open starting slots at {team.weaknesses.join(", ")}
                     </p>
                   )}
                 </div>
-                <div className="flex shrink-0 items-center gap-2">
+                <div className="flex shrink-0 items-center" style={{ gap: "var(--c97-sp-1)" }}>
                   <span
                     className={FANTASY_CHIP_CLASS}
                     style={(team.valueTotal ?? 0) >= 0 ? STEAL_CHIP_STYLE : REACH_CHIP_STYLE}

@@ -1,11 +1,14 @@
 /*
  * arcade.module.css
  *
- * A deliberately self-contained, synthwave CRT-arcade aesthetic — the polar
+ * A deliberately self-contained, synthwave CRT-arcade aesthetic, the polar
  * opposite of the site's refined light "editorial" system. Every token below
  * is locally scoped (no `--home-*` editorial tokens, no global hex leakage):
  * this surface is intentionally NOT part of the editorial design system, so it
- * defines and owns its own palette. Keep it that way.
+ * defines and owns its own palette. Keep it that way. Spacing is the one
+ * thing it shares: gaps and padding come off the --c97-sp ladder, and the
+ * shell sits on the site's column (`c97-shell c97-frame` in ArcadeClient) so
+ * the title starts on the header's edge.
  *
  * The look: deep-indigo void, neon magenta/cyan/acid accents, scanlines, a
  * faint CRT flicker, chunky brutalist borders, and pixel/terminal type. All
@@ -13,7 +16,7 @@
  */
 
 .root {
-  /* Scoped palette — never references editorial tokens on purpose. */
+  /* Scoped palette, which never references editorial tokens on purpose. */
   --ph-void: #06010f;
   --ph-void-2: #11052b;
   --ph-panel: rgba(20, 6, 48, 0.72);
@@ -38,7 +41,7 @@
   background:
     radial-gradient(120% 90% at 50% -10%, var(--ph-void-2) 0%, var(--ph-void) 58%),
     var(--ph-void);
-  padding: clamp(1.5rem, 4vw, 4rem) clamp(1rem, 4vw, 3rem) clamp(3rem, 6vw, 5rem);
+  padding: var(--c97-sp-5) 0 var(--c97-sp-6);
 }
 
 /* Neon perspective grid floor + a few drifting "sun" bands. */
@@ -87,11 +90,9 @@
 .shell {
   position: relative;
   z-index: 1;
-  max-width: 56rem;
-  margin: 0 auto;
   display: flex;
   flex-direction: column;
-  gap: clamp(1.5rem, 4vw, 2.75rem);
+  gap: var(--c97-sp-4);
 }
 
 /* ---- Header / marquee ---- */
@@ -101,9 +102,9 @@
   flex-wrap: wrap;
   align-items: baseline;
   justify-content: space-between;
-  gap: 0.75rem 1.5rem;
+  gap: var(--c97-sp-1) var(--c97-sp-3);
   border-bottom: 2px solid var(--ph-line);
-  padding-bottom: 0.85rem;
+  padding-bottom: var(--c97-sp-2);
 }
 
 .kicker {
@@ -146,7 +147,7 @@
 .titleWrap {
   display: flex;
   flex-direction: column;
-  gap: 0.75rem;
+  gap: var(--c97-sp-1);
 }
 
 .tagline {
@@ -173,21 +174,20 @@
     0 0 0 1px rgba(255, 46, 151, 0.35),
     0 0 32px rgba(255, 46, 151, 0.18),
     inset 0 0 40px rgba(8, 2, 24, 0.6);
-  padding: clamp(1rem, 3vw, 1.75rem);
-  backdrop-filter: blur(2px);
+  padding: var(--c97-sp-3);
 }
 
 .hud {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 0.75rem;
-  margin-bottom: 1.25rem;
+  gap: var(--c97-sp-1);
+  margin-bottom: var(--c97-sp-2);
 }
 
 .stat {
   border: 1px solid var(--ph-line);
   border-radius: 3px;
-  padding: 0.6rem 0.75rem;
+  padding: var(--c97-sp-1);
   background: rgba(6, 1, 15, 0.55);
   text-align: center;
 }
@@ -198,7 +198,7 @@
   font-size: clamp(0.42rem, 1.5vw, 0.58rem);
   letter-spacing: 0.14em;
   color: var(--ph-text-faint);
-  margin-bottom: 0.45rem;
+  margin-bottom: var(--c97-sp-0);
 }
 
 .statValue {
@@ -225,7 +225,7 @@
   position: relative;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: clamp(0.5rem, 2vw, 0.85rem);
+  gap: var(--c97-sp-2);
   aspect-ratio: 1 / 1;
   width: 100%;
   max-width: 30rem;
@@ -253,6 +253,14 @@
 }
 
 .cell:disabled { cursor: default; }
+
+/* The site's focus ring reads Catalog 97 tokens this cabinet does not set, so it draws its own. */
+.cell:focus-visible,
+.btn:focus-visible,
+.backNote a:focus-visible {
+  outline: 2px solid var(--ph-cyan);
+  outline-offset: 3px;
+}
 
 .cell .index {
   position: absolute;
@@ -287,7 +295,7 @@
   box-shadow: 0 0 24px rgba(214, 255, 63, 0.7), inset 0 0 12px rgba(255, 255, 255, 0.4);
 }
 
-/* A decoy — do NOT hit these. */
+/* A decoy. Do NOT hit these. */
 .cell.decoy {
   background: rgba(255, 46, 151, 0.04);
   border-color: rgba(255, 46, 151, 0.35);
@@ -327,7 +335,7 @@
   border-radius: 3px;
   overflow: hidden;
   background: rgba(6, 1, 15, 0.6);
-  margin-top: 1rem;
+  margin-top: var(--c97-sp-2);
 }
 
 .timerFill {
@@ -348,9 +356,9 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 1.1rem;
+  gap: var(--c97-sp-2);
   text-align: center;
-  padding: 1.5rem;
+  padding: var(--c97-sp-3);
   background:
     repeating-linear-gradient(to bottom, rgba(0,0,0,0) 0 2px, rgba(0,0,0,0.25) 3px, rgba(0,0,0,0) 4px),
     rgba(6, 1, 15, 0.92);
@@ -407,7 +415,7 @@
   background: var(--ph-acid);
   border: 2px solid var(--ph-acid);
   border-radius: 3px;
-  padding: 0.85rem 1.4rem;
+  padding: var(--c97-sp-2) var(--c97-sp-3);
   min-height: 44px;
   cursor: pointer;
   box-shadow: 4px 4px 0 rgba(255, 46, 151, 0.9);
@@ -429,15 +437,15 @@
 .legend {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr));
-  gap: 0.85rem;
-  margin-top: 0.5rem;
+  gap: var(--c97-sp-2);
+  margin-top: var(--c97-sp-1);
 }
 
 .legendItem {
   border: 1px solid var(--ph-line);
   border-left: 3px solid var(--ph-cyan);
   border-radius: 3px;
-  padding: 0.7rem 0.9rem;
+  padding: var(--c97-sp-1) var(--c97-sp-2);
   background: rgba(6, 1, 15, 0.45);
 }
 
@@ -451,7 +459,7 @@
   font-size: 0.6rem;
   letter-spacing: 0.1em;
   color: var(--ph-text);
-  margin-bottom: 0.35rem;
+  margin-bottom: var(--c97-sp-0);
 }
 
 .legendDesc {

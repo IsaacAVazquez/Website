@@ -1,6 +1,11 @@
 import ReactDOM from "react-dom";
 import { StructuredData } from "@/components/StructuredData";
-import { absoluteUrl, constructMetadata, generateBreadcrumbStructuredData } from "@/lib/seo";
+import {
+  absoluteUrl,
+  constructMetadata,
+  freeApplicationOffer,
+  generateBreadcrumbStructuredData,
+} from "@/lib/seo";
 import { fantasySnapshotRevision } from "@/data/fantasySnapshotRevision.generated";
 import { loadFantasySnapshotSeed } from "@/lib/fantasySnapshotServer";
 import { FANTASY_FOOTBALL_FAQ } from "./fantasy-faq";
@@ -79,6 +84,7 @@ export default async function FantasyFootballPage({ searchParams }: FantasyFootb
             "@type": "Audience",
             audienceType: "Fantasy Football Players",
           },
+          offers: freeApplicationOffer,
         }}
       />
       <StructuredData

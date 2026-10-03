@@ -277,7 +277,7 @@ export function NbaClient({ initialState, summary, initialTeamSnapshot, teamColo
 
       <section className="c97-band c97-sheet" data-c97-surface="paper" data-seam="torn">
         <div className="c97-shell">
-          <div className="flex flex-wrap items-end justify-between gap-3">
+          <div className="flex flex-wrap items-end justify-between" style={{ gap: "var(--c97-sp-1)" }}>
             <h2 className="c97-poster-sm">Standings</h2>
             <p className="c97-meta">{visibleTeams.length} teams</p>
           </div>
@@ -302,7 +302,7 @@ export function NbaClient({ initialState, summary, initialTeamSnapshot, teamColo
             })}
           </div>
 
-          <div className="mt-6 grid gap-8 xl:grid-cols-[minmax(0,1fr)_320px]">
+          <div className="grid xl:grid-cols-[minmax(0,1fr)_320px]" style={{ marginTop: "var(--c97-sp-3)", gap: "var(--c97-sp-3)" }}>
             <div
               role="region"
               aria-label="NBA standings (scrollable)"
@@ -332,7 +332,7 @@ export function NbaClient({ initialState, summary, initialTeamSnapshot, teamColo
                         style={isSelected ? { boxShadow: "inset 4px 0 0 0 var(--c97-ink)" } : undefined}
                       >
                         <td>
-                          <span className="inline-flex items-center gap-1.5">
+                          <span className="inline-flex items-center" style={{ gap: "var(--c97-sp-0)" }}>
                             <span
                               aria-hidden="true"
                               style={{
@@ -351,7 +351,7 @@ export function NbaClient({ initialState, summary, initialTeamSnapshot, teamColo
                             onClick={() => handleTeamChange(team.id)}
                             aria-pressed={isSelected}
                             aria-label={`Show ${team.name} details`}
-                            className="flex min-h-[44px] items-center gap-2 text-left"
+                            className="flex min-h-[44px] items-center text-left" style={{ gap: "var(--c97-sp-1)" }}
                           >
                             <CrestAvatar crest={logoByTeamId.get(team.id) ?? null} name={team.shortName} size="sm" />
                             <span style={{ fontWeight: 600, color: "var(--c97-ink)" }}>{team.shortName}</span>
@@ -377,7 +377,7 @@ export function NbaClient({ initialState, summary, initialTeamSnapshot, teamColo
 
             <aside>
               <section className="c97-panel" aria-live="polite" data-testid="nba-selected-team">
-                <div className="flex items-start gap-3">
+                <div className="flex items-start" style={{ gap: "var(--c97-sp-1)" }}>
                   <CrestAvatar crest={logoByTeamId.get(selectedTeam.id) ?? null} name={selectedTeam.name} size="lg" />
                   <div className="min-w-0 flex-1">
                     <h2 className="c97-serif c97-h3">{selectedTeam.name}</h2>
@@ -393,7 +393,7 @@ export function NbaClient({ initialState, summary, initialTeamSnapshot, teamColo
                   </div>
                 </div>
 
-                <dl className="mt-4 grid grid-cols-2 gap-x-4 gap-y-2 border-t pt-4" style={{ borderColor: "var(--c97-rule)" }}>
+                <dl className="grid grid-cols-2 border-t" style={{ paddingTop: "var(--c97-sp-2)", marginTop: "var(--c97-sp-2)", columnGap: "var(--c97-sp-2)", rowGap: "var(--c97-sp-1)", borderColor: "var(--c97-rule)" }}>
                   {(
                     [
                       ["Win %", Number.isFinite(selectedTeam.winPercent) ? selectedTeam.winPercent.toFixed(3).replace(/^0/, "") : "—"],
@@ -406,7 +406,7 @@ export function NbaClient({ initialState, summary, initialTeamSnapshot, teamColo
                       ["PA/g", selectedTeam.pointsAgainst.toFixed(1)],
                     ] as const
                   ).map(([label, value]) => (
-                    <div key={label} className="flex items-baseline justify-between gap-2">
+                    <div key={label} className="flex items-baseline justify-between" style={{ gap: "var(--c97-sp-1)" }}>
                       <dt className="c97-kicker">{label}</dt>
                       <dd className="c97-mono" style={{ margin: 0, fontWeight: 600, color: "var(--c97-ink)" }}>{value}</dd>
                     </div>
@@ -414,9 +414,9 @@ export function NbaClient({ initialState, summary, initialTeamSnapshot, teamColo
                 </dl>
 
                 {formSequence.length > 0 && (
-                  <div className="mt-4 border-t pt-4" style={{ borderColor: "var(--c97-rule)" }}>
+                  <div className="border-t" style={{ paddingTop: "var(--c97-sp-2)", marginTop: "var(--c97-sp-2)", borderColor: "var(--c97-rule)" }}>
                     <p className="c97-kicker">Form</p>
-                    <div className="mt-2 flex gap-1.5">
+                    <div className="flex" style={{ marginTop: "var(--c97-sp-1)", gap: "var(--c97-sp-0)" }}>
                       {formSequence.slice(-5).map((result, i) => (
                         <TeamResultPill key={i} result={result} />
                       ))}
@@ -430,8 +430,8 @@ export function NbaClient({ initialState, summary, initialTeamSnapshot, teamColo
 
                 {!teamSnapshot && (isTeamSnapshotLoading || teamSnapshotError) ? (
                   <p
-                    className="c97-prose border-t pt-4"
-                    style={{ marginTop: "var(--c97-sp-2)", borderColor: "var(--c97-rule)", fontSize: "var(--c97-fs-small)" }}
+                    className="c97-prose border-t"
+                    style={{ paddingTop: "var(--c97-sp-2)", marginTop: "var(--c97-sp-2)", borderColor: "var(--c97-rule)", fontSize: "var(--c97-fs-small)" }}
                     role={teamSnapshotError ? "alert" : "status"}
                     aria-live="polite"
                   >
@@ -448,7 +448,7 @@ export function NbaClient({ initialState, summary, initialTeamSnapshot, teamColo
         <div className="c97-shell">
           <div role="tablist" aria-label="Team and league details" className="c97-segmented">
             {(["team", "schedule", "leaders"] as const).map((tab) => {
-              const labels = { team: "Team Detail", schedule: "Schedule", leaders: "Stat Leaders" } as const;
+              const labels = { team: "Team detail", schedule: "Schedule", leaders: "Stat leaders" } as const;
               return (
                 <button
                   key={tab}
@@ -466,13 +466,13 @@ export function NbaClient({ initialState, summary, initialTeamSnapshot, teamColo
             })}
           </div>
 
-          <div id="nba-detail-panel" role="tabpanel" aria-labelledby={`nba-detail-tab-${activeDetailTab}`} className="mt-6">
+          <div id="nba-detail-panel" role="tabpanel" aria-labelledby={`nba-detail-tab-${activeDetailTab}`} style={{ marginTop: "var(--c97-sp-3)" }}>
             {activeDetailTab === "team" && (
-              <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
-                <div className="space-y-5">
+              <div className="grid md:grid-cols-2 xl:grid-cols-3" style={{ gap: "var(--c97-sp-3)" }}>
+                <div className="flex flex-col" style={{ rowGap: "var(--c97-sp-2)" }}>
                   <div>
                     <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-1)" }}>Performance</p>
-                    <div className="grid grid-cols-2 gap-3">
+                    <div className="grid grid-cols-2" style={{ gap: "var(--c97-sp-1)" }}>
                       <MetricCard
                         label="Win %"
                         value={Number.isFinite(selectedTeam.winPercent) ? selectedTeam.winPercent.toFixed(3).replace(/^0/, "") : "—"}
@@ -494,7 +494,7 @@ export function NbaClient({ initialState, summary, initialTeamSnapshot, teamColo
                     </ul>
                   </div>
 
-                  <div className="grid gap-3 sm:grid-cols-3">
+                  <div className="grid sm:grid-cols-3 md:grid-cols-1" style={{ gap: "var(--c97-sp-1)" }}>
                     <TeamLeaderCard
                       title="Top scorer"
                       leader={teamScorers[0]}
@@ -527,7 +527,7 @@ export function NbaClient({ initialState, summary, initialTeamSnapshot, teamColo
                 {recentFixtures.length > 0 && (
                   <div>
                     <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-1)" }}>Recent results</p>
-                    <div className="space-y-2">
+                    <div className="flex flex-col" style={{ rowGap: "var(--c97-sp-1)" }}>
                       {recentFixtures.map((fixture) => (
                         <FixtureCard
                           key={fixture.id}
@@ -543,7 +543,7 @@ export function NbaClient({ initialState, summary, initialTeamSnapshot, teamColo
                 {upcomingFixtures.length > 0 && (
                   <div>
                     <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-1)" }}>Upcoming games</p>
-                    <div className="space-y-2">
+                    <div className="flex flex-col" style={{ rowGap: "var(--c97-sp-1)" }}>
                       {upcomingFixtures.map((fixture) => (
                         <FixtureCard
                           key={fixture.id}
@@ -559,11 +559,11 @@ export function NbaClient({ initialState, summary, initialTeamSnapshot, teamColo
             )}
 
             {activeDetailTab === "schedule" && (
-              <div className="grid gap-6 md:grid-cols-2">
+              <div className="grid md:grid-cols-2" style={{ gap: "var(--c97-sp-3)" }}>
                 {summary.recentFixtures.length > 0 && (
                   <div>
                     <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-1)" }}>Latest results</p>
-                    <div className="space-y-3">
+                    <div className="flex flex-col" style={{ rowGap: "var(--c97-sp-1)" }}>
                       {summary.recentFixtures.map((f) => (
                         <FixtureCard key={f.id} fixture={f} onOpenTeam={handleTeamChange} />
                       ))}
@@ -573,7 +573,7 @@ export function NbaClient({ initialState, summary, initialTeamSnapshot, teamColo
                 {summary.upcomingFixtures.length > 0 && (
                   <div>
                     <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-1)" }}>Upcoming games</p>
-                    <div className="space-y-3">
+                    <div className="flex flex-col" style={{ rowGap: "var(--c97-sp-1)" }}>
                       {summary.upcomingFixtures.map((f) => (
                         <FixtureCard key={f.id} fixture={f} onOpenTeam={handleTeamChange} />
                       ))}
@@ -590,23 +590,28 @@ export function NbaClient({ initialState, summary, initialTeamSnapshot, teamColo
             )}
 
             {activeDetailTab === "leaders" && (
-              <div className="grid gap-6 md:grid-cols-3">
+              <div className="grid md:grid-cols-3" style={{ gap: "var(--c97-sp-3)" }}>
                 <div>
-                  <div className="flex items-start justify-between gap-3">
+                  <div className="flex min-h-[48px] items-start justify-between" style={{ gap: "var(--c97-sp-1)" }}>
                     <p className="c97-kicker">Top scorers</p>
                     <a href={summary.sourceUrls.leaders} target="_blank" rel="noreferrer" className="c97-btn-ghost">
                       Official
+                      <span className="sr-only"> NBA stat leaders (opens in a new tab)</span>
                       <ExternalLink className="h-4 w-4" />
                     </a>
                   </div>
                   <LeaderList leaders={toLeaderEntries(summary.scorers.slice(0, 5))} statLabel="ppg" clubLookup={teamLookup} />
                 </div>
                 <div>
-                  <p className="c97-kicker">Top rebounders</p>
+                  <div className="min-h-[48px]">
+                    <p className="c97-kicker">Top rebounders</p>
+                  </div>
                   <LeaderList leaders={toLeaderEntries(summary.rebounders.slice(0, 5))} statLabel="rpg" clubLookup={teamLookup} />
                 </div>
                 <div>
-                  <p className="c97-kicker">Top playmakers</p>
+                  <div className="min-h-[48px]">
+                    <p className="c97-kicker">Top playmakers</p>
+                  </div>
                   <LeaderList leaders={toLeaderEntries(summary.assistLeaders.slice(0, 5))} statLabel="apg" clubLookup={teamLookup} />
                 </div>
               </div>
@@ -617,7 +622,7 @@ export function NbaClient({ initialState, summary, initialTeamSnapshot, teamColo
 
       <section className="c97-band c97-sheet" data-c97-surface="paper" data-seam="torn">
         <div className="c97-shell">
-          <div className="flex items-start gap-3">
+          <div className="flex items-start" style={{ gap: "var(--c97-sp-1)" }}>
             <CircleAlert className="mt-0.5 h-4 w-4 flex-shrink-0" style={{ color: "var(--c97-ink-2)" }} aria-hidden="true" />
             <p className="c97-prose" style={{ fontSize: "var(--c97-fs-small)" }}>
               This page is a curated snapshot, refreshed on a schedule. Standings,

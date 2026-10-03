@@ -94,7 +94,6 @@
   justify-content: center;
   overflow: hidden;
   border: 1px solid var(--c97-rule);
-  border-radius: 50%;
   background: var(--c97-field);
   font-size: var(--c97-fs-small);
   font-weight: 600;
@@ -124,8 +123,23 @@
   cursor: pointer;
 }
 
-.c97-ff1-btn:hover {
+.c97-ff1-btn,
+.c97-ff1-icon-btn {
+  transition:
+    background-color 160ms ease,
+    border-color 150ms ease,
+    color 150ms ease,
+    transform 120ms ease;
+}
+
+.c97-ff1-btn:where(:not(:disabled)):hover {
   background: var(--c97-field);
+}
+
+/* A press answers the way the shared .c97-btn does. */
+.c97-ff1-btn:where(:not(:disabled)):active,
+.c97-ff1-icon-btn:active {
+  transform: translateY(1px);
 }
 
 .c97-ff1-btn:disabled {

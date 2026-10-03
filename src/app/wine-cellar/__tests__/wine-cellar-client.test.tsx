@@ -79,7 +79,7 @@ describe("WineCellarClient", () => {
 
     render(<WineCellarClient />);
 
-    fireEvent.change(within(screen.getByLabelText("Search wines")).getByRole("searchbox"), {
+    fireEvent.change(screen.getByRole("searchbox", { name: "Search wines" }), {
       target: { value: "burgundy" },
     });
     const tastingLog = screen.getByRole("region", { name: "Tasting log" });
@@ -100,5 +100,18 @@ describe("WineCellarClient", () => {
       within(tastingLog).getByRole("button", { name: "Delete Updated Barolo" })
     );
     expect(screen.queryByText("Updated Barolo")).not.toBeInTheDocument();
+  });
+  it("explains a missing name inline instead of disabling the button", () => {
+    render(<WineCellarClient />);
+
+    const name = screen.getByLabelText("Wine name");
+    fireEvent.change(name, { target: { value: "   " } });
+    fireEvent.click(screen.getByRole("button", { name: /add tasting/i }));
+
+    expect(screen.getByRole("alert")).toHaveTextContent("Give the bottle a name to log it.");
+    expect(name).toHaveAttribute("aria-invalid", "true");
+
+    fireEvent.change(name, { target: { value: "Chinon" } });
+    expect(screen.queryByRole("alert")).not.toBeInTheDocument();
   });
 });

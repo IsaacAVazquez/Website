@@ -76,6 +76,10 @@
   text-transform: uppercase;
 }
 
+.c97-iq-nav a:hover {
+  color: var(--c97-ink);
+}
+
 .c97-iq-nav a[aria-current="true"] {
   color: var(--c97-ink);
   text-decoration: underline;
