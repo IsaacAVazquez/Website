@@ -13,6 +13,7 @@ import {
   type FixtureAnalysis,
   type Scoreline,
 } from "@/lib/scorePools";
+import { lockTimeFor } from "@/lib/scorePools/engine";
 import type { StoredManualOdds, StoredPool } from "@/lib/scorePools/persistence";
 import { oddsEntryToMarkets } from "@/lib/scorePoolsSnapshot";
 import type { SnapshotFixture } from "@/types/scorePools";
@@ -147,7 +148,12 @@ export function FixtureDetailDrawer({
   }, [fixture.odds, pool.devigMethod]);
 
   const flags = pool.flags[fixture.id] ?? {};
-  const locked = analysis ? now >= analysis.locksAt : false;
+  // The lock comes from the kickoff, not the analysis, because a played game or
+  // one without odds has no analysis and must still refuse new picks.
+  const locked =
+    fixture.status === "in_play" ||
+    fixture.status === "finished" ||
+    now >= (analysis?.locksAt ?? lockTimeFor(fixture.kickoff, pool.lockOffsetMinutes));
   const latestOdds = fixture.odds[fixture.odds.length - 1] ?? null;
   // Hand-entered odds replace the snapshot price in the analysis, so the market
   // line shows them too instead of the older snapshot price above newer math.
@@ -207,8 +213,12 @@ export function FixtureDetailDrawer({
     });
   };
 
+  // A locked game keeps whatever was picked before it locked.
+  const choosePick = (score: Scoreline) => {
+    if (!locked) onSetPick(fixture.id, score);
+  };
+
   const submitPick = () => {
-    // A locked game keeps whatever was picked before it locked.
     if (locked) return;
     const home = Number.parseInt(pickHome, 10);
     const away = Number.parseInt(pickAway, 10);
@@ -329,7 +339,7 @@ export function FixtureDetailDrawer({
                     </p>
                     <button
                       type="button"
-                      className={`${PILL_BUTTON} w-full justify-center`}
+                      className={`${PILL_BUTTON} w-full justify-center disabled:cursor-not-allowed disabled:opacity-50`}
                       // .c97-btn is unlayered and sets nowrap and wide padding, so the
                       // three-up column needs its own inline spacing to fit the label.
                       // The auto top margin pins it to the card's foot, so the three
@@ -339,7 +349,8 @@ export function FixtureDetailDrawer({
                         paddingInline: "var(--c97-sp-1)",
                         whiteSpace: "normal",
                       }}
-                      onClick={() => onSetPick(fixture.id, pick.score)}
+                      onClick={() => choosePick(pick.score)}
+                      disabled={locked}
                     >
                       Use as my pick
                     </button>
@@ -354,7 +365,7 @@ export function FixtureDetailDrawer({
           {/* Market */}
           <section className={SECTION} aria-label="Market">
             <h3 className={SECTION_TITLE}>The market it used</h3>
-            {analysis && shownOdds ? (
+            {shownOdds ? (
               <div className="flex flex-col text-sm text-[var(--c97-ink)]" style={{ rowGap: "var(--c97-sp-1)", marginTop: "var(--c97-sp-1)" }}>
                 <p className="font-mono tabular-nums">
                   {shownOdds.moneyline.home.toFixed(2)}
@@ -370,15 +381,19 @@ export function FixtureDetailDrawer({
                 </p>
                 <p className="text-2xs text-[var(--c97-ink-2)]">
                   {shownOdds.manual ? "Hand-entered" : (shownOdds.bookmaker ?? "book")} ·{" "}
-                  {formatAge(shownOdds.fetchedAt, now)} · margin {formatPercent(analysis.market.overround, 1)}
+                  {formatAge(shownOdds.fetchedAt, now)}
+                  {analysis ? ` · margin ${formatPercent(analysis.market.overround, 1)}` : ""}
                 </p>
-                <p className="text-2xs text-[var(--c97-ink-2)]">
-                  Fair probabilities after the de-vig: home {formatPercent(analysis.market.probabilities.home, 1)}
-                  {analysis.market.probabilities.draw !== undefined
-                    ? `, draw ${formatPercent(analysis.market.probabilities.draw, 1)}`
-                    : ""}
-                  , away {formatPercent(analysis.market.probabilities.away, 1)}.
-                </p>
+                {/* A played game keeps its prices but has no analysis to de-vig them. */}
+                {analysis ? (
+                  <p className="text-2xs text-[var(--c97-ink-2)]">
+                    Fair probabilities after the de-vig: home {formatPercent(analysis.market.probabilities.home, 1)}
+                    {analysis.market.probabilities.draw !== undefined
+                      ? `, draw ${formatPercent(analysis.market.probabilities.draw, 1)}`
+                      : ""}
+                    , away {formatPercent(analysis.market.probabilities.away, 1)}.
+                  </p>
+                ) : null}
                 {movement ? (
                   <p className="text-2xs text-[var(--c97-ink-2)]">
                     Movement over {movement.snapshots} snapshots: home{" "}
@@ -511,8 +526,9 @@ export function FixtureDetailDrawer({
                         <td>
                           <button
                             type="button"
-                            className="inline-flex min-h-[44px] items-center text-2xs font-semibold text-[var(--c97-ink)] underline decoration-[var(--c97-rule)] underline-offset-4 hover:decoration-[var(--c97-accent)]" style={{ paddingInline: "var(--c97-sp-1)" }}
-                            onClick={() => onSetPick(fixture.id, candidate.score)}
+                            className="inline-flex min-h-[44px] items-center text-2xs font-semibold text-[var(--c97-ink)] underline decoration-[var(--c97-rule)] underline-offset-4 hover:decoration-[var(--c97-accent)] disabled:cursor-not-allowed disabled:opacity-50" style={{ paddingInline: "var(--c97-sp-1)" }}
+                            onClick={() => choosePick(candidate.score)}
+                            disabled={locked}
                           >
                             Use
                           </button>
@@ -599,12 +615,14 @@ export function FixtureDetailDrawer({
             </section>
           ) : null}
 
-          <p className="text-3xs text-[var(--c97-ink-2)]" style={{ paddingBottom: "var(--c97-sp-2)" }}>
-            Analysis as of {formatAge(analysis?.asOf ?? now, now)} from odds{" "}
-            {shownOdds ? formatAge(shownOdds.fetchedAt, now) : "entered by hand"}. The model is
-            anchored to the market, and it carries the market's uncertainty; treat the expected
-            points as a ranking, not a promise.
-          </p>
+          {analysis ? (
+            <p className="text-3xs text-[var(--c97-ink-2)]" style={{ paddingBottom: "var(--c97-sp-2)" }}>
+              Analysis as of {formatAge(analysis.asOf, now)} from odds{" "}
+              {shownOdds ? formatAge(shownOdds.fetchedAt, now) : "entered by hand"}. The model is
+              anchored to the market, and it carries the market's uncertainty; treat the expected
+              points as a ranking, not a promise.
+            </p>
+          ) : null}
         </div>
       </aside>
     </div>
