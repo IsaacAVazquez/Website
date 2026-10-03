@@ -24,6 +24,7 @@ import { GolfLeaderboard } from "./GolfLeaderboard";
 import { formatScoreToPar } from "./leaderboard";
 import "./golf.css";
 import { useRouteSync } from "@/hooks/useRouteSync";
+import { formatStableDateTime } from "@/lib/date-formatters";
 
 interface GolfClientProps {
   initialState: GolfRouteState;
@@ -89,7 +90,7 @@ function MovementPill({ movement }: { movement: number }) {
 function formatGeneratedAt(value: string | null | undefined): string {
   if (!value) return "Unavailable";
   const date = new Date(value);
-  return Number.isNaN(date.getTime()) ? "Unavailable" : LAST_UPDATED_FORMATTER.format(date);
+  return Number.isNaN(date.getTime()) ? "Unavailable" : formatStableDateTime(LAST_UPDATED_FORMATTER, date);
 }
 
 // A bare YYYY-MM-DD parses as UTC midnight, which DATE_RANGE_FORMATTER's

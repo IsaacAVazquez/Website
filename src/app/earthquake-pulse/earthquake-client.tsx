@@ -36,6 +36,7 @@ import { useClientNow } from "@/hooks/useClientNow";
 import { useTablistKeyboard } from "@/hooks/useTablistKeyboard";
 import "./earthquake-pulse.css";
 import { useRouteSync } from "@/hooks/useRouteSync";
+import { formatStableDateTime } from "@/lib/date-formatters";
 
 interface EarthquakeClientProps {
   initialState: EarthquakeRouteState;
@@ -96,7 +97,7 @@ function formatTimestamp(iso: string | null | undefined): string {
   const date = new Date(iso);
   return Number.isNaN(date.getTime())
     ? "Unavailable"
-    : `${TIME_FORMATTER.format(date)} UTC`;
+    : `${formatStableDateTime(TIME_FORMATTER, date)} UTC`;
 }
 
 function formatDepth(depthKm: number): string {

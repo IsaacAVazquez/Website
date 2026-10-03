@@ -1,6 +1,7 @@
 import {
   formatDateTime,
   formatShortDate,
+  formatStableDateTime,
   formatUpdatedAt,
   isLocalDateKey,
   parseLocalDateKey,
@@ -9,6 +10,15 @@ import {
 } from "../date-formatters";
 
 describe("date-formatters", () => {
+  it.each(["Oct 10 at 12:30\u202fPM EDT", "Oct 10, 12:30 PM EDT"])(
+    "keeps the same timestamp across ICU punctuation variants (%s)",
+    (formatted) => {
+      const formatter = new Intl.DateTimeFormat("en-US");
+      Object.defineProperty(formatter, "format", { value: () => formatted });
+      expect(formatStableDateTime(formatter, new Date("2026-10-10T16:30:00Z")))
+        .toBe("Oct 10, 12:30 PM EDT");
+    }
+  );
   it("returns fallback labels for invalid dates", () => {
     expect(formatShortDate("not-a-date")).toBe("TBD");
     expect(formatDateTime("not-a-date")).toBe("TBD");

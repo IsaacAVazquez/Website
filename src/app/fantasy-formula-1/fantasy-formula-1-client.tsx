@@ -1,11 +1,13 @@
 "use client";
 
-import { startTransition, useEffect, useMemo, useState, type CSSProperties } from "react";
+import { startTransition, useEffect, useMemo, type CSSProperties } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { ArrowDownUp, Lock, Plus, RefreshCcw, Sparkles, Trash2, Unlock } from "lucide-react";
 import { Catalog97ProjectHero } from "@/components/catalog97/Catalog97ProjectHero";
 import { PROJECT_PRESS } from "@/constants/projectPress";
 import { formatUpdatedAt } from "@/lib/date-formatters";
+import { useLocalStorageString } from "@/hooks/useLocalStorageString";
+import { readBrowserStorageString, writeBrowserStorageJson } from "@/lib/browserStorage";
 import {
   buildFantasyFormula1Assets,
   EMPTY_FANTASY_FORMULA1_LINEUP,
@@ -577,8 +579,13 @@ export function FantasyFormula1Client({
   );
   const assets = useMemo(() => buildFantasyFormula1Assets(seasonSummary), [seasonSummary]);
   const storageKey = getFantasyFormula1StorageKey(seasonSummary.season);
-  const [lineup, setLineup] = useState<FantasyFormula1Lineup>(EMPTY_FANTASY_FORMULA1_LINEUP);
-  const [isLoaded, setIsLoaded] = useState(false);
+  const storedLineup = useLocalStorageString(storageKey);
+  const lineup = useMemo(
+    () => sanitizeFantasyFormula1Lineup(
+      parsePersistedLineup(storedLineup) ?? EMPTY_FANTASY_FORMULA1_LINEUP, assets
+    ),
+    [storedLineup, assets]
+  );
 
   useEffect(() => {
     const currentQuery = searchParams.toString();
@@ -593,28 +600,6 @@ export function FantasyFormula1Client({
     });
   }, [routeState, router, searchParams]);
 
-  useEffect(() => {
-    if (typeof window === "undefined") {
-      return;
-    }
-
-    const storedLineup = parsePersistedLineup(window.localStorage.getItem(storageKey));
-    if (storedLineup) {
-      // Mount-time localStorage restore is intentionally separate from SSR.
-      // eslint-disable-next-line react-hooks/set-state-in-effect
-      setLineup(sanitizeFantasyFormula1Lineup(storedLineup, assets));
-    }
-    setIsLoaded(true);
-  }, [assets, storageKey]);
-
-  useEffect(() => {
-    if (!isLoaded || typeof window === "undefined") {
-      return;
-    }
-
-    window.localStorage.setItem(storageKey, JSON.stringify(lineup));
-  }, [isLoaded, lineup, storageKey]);
-
   function updateRouteState(nextState: Partial<FantasyFormula1RouteState>) {
     const nextRouteState = {
       ...routeState,
@@ -627,7 +612,13 @@ export function FantasyFormula1Client({
   }
 
   function updateLineup(updater: (current: FantasyFormula1Lineup) => FantasyFormula1Lineup) {
-    setLineup((current) => sanitizeFantasyFormula1Lineup(updater(current), assets));
+    // Commit before rendering so an immediate reload keeps the edit. Read the
+    // newest save first so a second tab's additions are included in this edit.
+    const current = sanitizeFantasyFormula1Lineup(
+      parsePersistedLineup(readBrowserStorageString(storageKey).value) ?? EMPTY_FANTASY_FORMULA1_LINEUP,
+      assets
+    );
+    writeBrowserStorageJson(storageKey, sanitizeFantasyFormula1Lineup(updater(current), assets));
   }
 
   function addAsset(asset: FantasyFormula1Asset) {
@@ -675,17 +666,17 @@ export function FantasyFormula1Client({
   }
 
   function applyCandidate(candidate: FantasyFormula1OptimizationCandidate) {
-    setLineup({
+    updateLineup(() => ({
       driverIds: candidate.drivers.map((asset) => asset.id),
       constructorIds: candidate.constructors.map((asset) => asset.id),
       lockedAssetIds: lineup.lockedAssetIds.filter((id) =>
         candidate.assets.some((asset) => asset.id === id)
       ),
-    });
+    }));
   }
 
   function resetLineup() {
-    setLineup(EMPTY_FANTASY_FORMULA1_LINEUP);
+    updateLineup(() => EMPTY_FANTASY_FORMULA1_LINEUP);
   }
 
   const summary = useMemo(

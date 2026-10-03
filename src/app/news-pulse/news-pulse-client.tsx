@@ -38,7 +38,7 @@ import {
   type NewsPulseSearchState,
   type NewsSource,
 } from "./news-pulse-state";
-import { DATE_TIME_FORMATTER } from "@/lib/date-formatters";
+import { DATE_TIME_FORMATTER, formatStableDateTime } from "@/lib/date-formatters";
 import { useClientNow } from "@/hooks/useClientNow";
 import { useTablistKeyboard } from "@/hooks/useTablistKeyboard";
 import "./news-pulse.css";
@@ -73,14 +73,14 @@ function timeAgo(dateStr: string, now: number): string {
  * and first hydration pass), so the pubDate always shows something true. */
 function formatAbsolutePubDate(dateStr: string): string {
   const date = new Date(dateStr);
-  return Number.isNaN(date.getTime()) ? "" : DATE_TIME_FORMATTER.format(date);
+  return Number.isNaN(date.getTime()) ? "" : formatStableDateTime(DATE_TIME_FORMATTER, date);
 }
 
 function formatFetchedAt(value: string): string {
   const date = new Date(value);
   return Number.isNaN(date.getTime())
     ? "Waiting on a refresh"
-    : DATE_TIME_FORMATTER.format(date);
+    : formatStableDateTime(DATE_TIME_FORMATTER, date);
 }
 
 function getSourceBadgeStyle(sourceColor: string): CSSProperties {

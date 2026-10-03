@@ -7,7 +7,7 @@ import type {
   MuseumTypeFilter,
   MuseumRegionFilter,
 } from "@/types/museum";
-import { DATE_ONLY_TIME_ZONE, DISPLAY_TIME_ZONE } from "@/lib/date-formatters";
+import { DATE_ONLY_TIME_ZONE, DISPLAY_TIME_ZONE, formatStableDateTime } from "@/lib/date-formatters";
 import { mean } from "d3";
 
 export interface AdmissionStubLines {
@@ -93,7 +93,7 @@ export function formatShortDate(iso: string): string {
 
 export function formatUpdated(iso: string): string {
   const d = new Date(iso);
-  return Number.isNaN(d.getTime()) ? "Unavailable" : UPDATED_FMT.format(d);
+  return Number.isNaN(d.getTime()) ? "Unavailable" : formatStableDateTime(UPDATED_FMT, d);
 }
 
 export function formatRuntime(minutes: number): string {

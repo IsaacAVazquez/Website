@@ -1,4 +1,5 @@
 import type { GenericFixture } from "./FixtureCard";
+import { formatStableDateTime } from "@/lib/date-formatters";
 
 // Pinned to one named zone so the server and the browser print the same string.
 const DATE_TIME_FORMATTER = new Intl.DateTimeFormat("en-US", {
@@ -38,7 +39,7 @@ export function formatRank(rank: number | null | undefined): string {
 export function formatFixtureDateTime(fixture: GenericFixture): string {
   const date = new Date(fixture.utcDate);
   if (Number.isNaN(date.getTime())) return "Time TBD";
-  if (!fixture.startTimeTbd) return DATE_TIME_FORMATTER.format(date);
+  if (!fixture.startTimeTbd) return formatStableDateTime(DATE_TIME_FORMATTER, date);
   const day = DATE_ONLY_FORMATTER.format(date);
   // MLB leaves the flag on the second game of a doubleheader after it is played.
   if (fixture.status === "FINISHED") return day;
@@ -47,7 +48,7 @@ export function formatFixtureDateTime(fixture: GenericFixture): string {
 
 export function formatKickoff(utcDate: string): string {
   const date = new Date(utcDate);
-  return Number.isNaN(date.getTime()) ? "Time TBD" : KICKOFF_FORMATTER.format(date);
+  return Number.isNaN(date.getTime()) ? "Time TBD" : formatStableDateTime(KICKOFF_FORMATTER, date);
 }
 
 export function getResultForTeam(
