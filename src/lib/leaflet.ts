@@ -5,7 +5,7 @@
 // API key). Consumers must handle the rejected promise and fall back to a
 // non-map view. Only the slice of the Leaflet API we actually use is typed.
 
-import type { LatLng } from "./food-map-data";
+export type LatLng = [number, number];
 
 const VERSION = "1.9.4";
 const CSS_URL = `https://unpkg.com/leaflet@${VERSION}/dist/leaflet.css`;
@@ -20,6 +20,32 @@ export interface LeafletMap {
   ): LeafletMap;
   invalidateSize(): void;
   remove(): void;
+  getZoom(): number;
+  on(event: string, handler: () => void): LeafletMap;
+  project(latlng: LatLng, zoom?: number): { x: number; y: number };
+  unproject(point: [number, number], zoom?: number): { lat: number; lng: number };
+}
+
+export interface LeafletPathStyle {
+  color?: string;
+  weight?: number;
+  opacity?: number;
+  fillColor?: string;
+  fillOpacity?: number;
+  radius?: number;
+  className?: string;
+  interactive?: boolean;
+}
+
+/** A vector layer: polyline or circle marker. */
+export interface LeafletPath {
+  addTo(target: LeafletMap | LeafletLayerGroup): LeafletPath;
+  setStyle(style: LeafletPathStyle): LeafletPath;
+  bringToFront(): LeafletPath;
+  on(event: string, handler: () => void): LeafletPath;
+  bindTooltip(content: string, options?: Record<string, unknown>): LeafletPath;
+  openTooltip(): LeafletPath;
+  closeTooltip(): LeafletPath;
 }
 
 export interface LeafletLayer {
@@ -51,6 +77,8 @@ export interface LeafletStatic {
     options?: { icon?: LeafletIcon } & Record<string, unknown>
   ): LeafletMarker;
   layerGroup(): LeafletLayerGroup;
+  polyline(latlngs: LatLng[], style?: LeafletPathStyle): LeafletPath;
+  circleMarker(latlng: LatLng, style?: LeafletPathStyle): LeafletPath;
   divIcon(options: Record<string, unknown>): LeafletIcon;
 }
 

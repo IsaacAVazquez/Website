@@ -99,6 +99,7 @@ function LineCard({ line }: { line: TransitLine }) {
           <h3
             className="c97-serif truncate"
             style={{ fontWeight: 600, fontSize: "var(--c97-fs-h3)" }}
+            title={line.name}
           >
             {line.name}
           </h3>
@@ -201,6 +202,10 @@ export function BayAreaTransitClient({
   const [stationBoardErrors, setStationBoardErrors] = useState<
     Record<string, string>
   >({});
+  // Each summary refresh bumps the tick. A board read on an older tick stays on
+  // screen while its replacement loads, instead of blanking to "Loading".
+  const [refreshTick, setRefreshTick] = useState(0);
+  const [boardTicks, setBoardTicks] = useState<Record<string, number>>({});
 
   const stationBoard = selectedStationId
     ? stationBoards[selectedStationId] ?? null
@@ -226,6 +231,15 @@ export function BayAreaTransitClient({
       ),
     [summary.lines]
   );
+  // BART scopes some advisories to one station; system-wide ones say "BART".
+  const advisoryStations = useMemo(() => {
+    const abbrs = new Set(summary.stations.map((station) => station.abbr));
+    return new Set(
+      summary.advisories
+        .map((advisory) => advisory.station?.trim().toUpperCase() ?? "")
+        .filter((abbr) => abbrs.has(abbr))
+    );
+  }, [summary.advisories, summary.stations]);
   const hexForLine = (colorName: string) =>
     lineHexByColor.get(colorName.trim().toLowerCase()) ?? "var(--c97-ink-2)";
 
@@ -240,7 +254,7 @@ export function BayAreaTransitClient({
         const nextSummary = await fetchTransitSummary(controller.signal);
         if (!active) return;
         setSummary(nextSummary);
-        setStationBoards({});
+        setRefreshTick((tick) => tick + 1);
         setStationBoardErrors({});
       } catch {
         // Keep the last good summary and station board on transient failures. An abort lands here too.
@@ -266,7 +280,10 @@ export function BayAreaTransitClient({
       return;
     }
 
-    if (stationBoards[selectedStationId]) {
+    if (
+      stationBoards[selectedStationId] &&
+      (boardTicks[selectedStationId] ?? 0) === refreshTick
+    ) {
       return;
     }
 
@@ -283,11 +300,8 @@ export function BayAreaTransitClient({
           return;
         }
 
-        setStationBoards((current) =>
-          current[selectedStationId]
-            ? current
-            : { ...current, [selectedStationId]: board }
-        );
+        setStationBoards((current) => ({ ...current, [selectedStationId]: board }));
+        setBoardTicks((current) => ({ ...current, [selectedStationId]: refreshTick }));
         setStationBoardErrors((current) => {
           if (!(selectedStationId in current)) {
             return current;
@@ -305,6 +319,7 @@ export function BayAreaTransitClient({
           // The station is real (it's in the directory) — the snapshot just
           // has no departures for it. Render the neutral empty state, not a
           // red error.
+          setBoardTicks((current) => ({ ...current, [selectedStationId]: refreshTick }));
           setStationBoards((current) =>
             current[selectedStationId]
               ? current
@@ -335,7 +350,7 @@ export function BayAreaTransitClient({
       cancelled = true;
       controller.abort();
     };
-  }, [stationBoardErrors, stationBoards, selectedStationId, summary]);
+  }, [stationBoardErrors, stationBoards, boardTicks, refreshTick, selectedStationId, summary]);
 
   function navigate(nextState: TransitRouteState) {
     const href = buildTransitHref(nextState, searchParams);
@@ -370,8 +385,11 @@ export function BayAreaTransitClient({
   }
 
   const lead = PROJECT_PRESS[TRANSIT_ROUTE].lead;
+  // The hero carries no readouts, so the map and board sit higher; the alert
+  // count, the one number a rider acts on, rides on the Alerts tab instead.
+  const alertCount = summary.advisories.length + summary.elevator.length;
   const standfirst =
-    "I wanted the BART map, the next trains, and any service alerts in one calm screen instead of three apps. The browser refreshes every minute, and each feed keeps its last good result when BART has a temporary outage.";
+    "I wanted a BART map I could actually read, with the next trains and any service alerts on the same screen instead of across three apps.";
 
   if (!system) {
     return (
@@ -384,12 +402,6 @@ export function BayAreaTransitClient({
     );
   }
 
-  const advisoryDetail =
-    staleSections.includes("advisories")
-      ? "Last known count"
-      : summary.heroStats.activeAdvisories === 0
-      ? "Normal service"
-      : undefined;
 
   return (
     <>
@@ -398,18 +410,10 @@ export function BayAreaTransitClient({
         title="Bay Area Transit Pulse"
         standfirst={standfirst}
         meta={`${system.source} · feed ${system.feedTime || "time unavailable"} · refreshed ${formatGeneratedAt(system.generatedAt)}${system.seed ? " · seed data" : ""}${staleSections.length > 0 ? ` · ${staleSections.join(", ")} from the last good snapshot` : ""}`}
-        readouts={[
-          { label: "Lines", value: `${summary.heroStats.lineCount}` },
-          { label: "Stations", value: `${summary.heroStats.stationCount}` },
-          {
-            label: "Active alerts",
-            value: `${summary.heroStats.activeAdvisories}`,
-            detail: advisoryDetail,
-          },
-        ]}
       >
         <TransitSignature
           departuresStatus={summary.sectionStatus?.departures}
+          advisoryStations={advisoryStations}
           stations={summary.stations}
           lines={summary.lines}
           selectedStation={selectedStation}
@@ -460,6 +464,7 @@ export function BayAreaTransitClient({
                 className="min-h-[44px]"
               >
                 {TRANSIT_VIEW_LABELS[view]}
+                {view === "advisories" && alertCount > 0 ? ` · ${alertCount}` : ""}
               </button>
             ))}
           </div>
@@ -476,8 +481,8 @@ export function BayAreaTransitClient({
                   <p className="c97-kicker">Lines</p>
                   <p className="c97-prose">
                     Every BART line with its official color and end-to-end
-                    route. Switch to Departures to see the next trains at a
-                    station.
+                    route. The line buttons on the map above show where each
+                    one runs.
                   </p>
                 </div>
                 <div className="grid sm:grid-cols-2" style={{ gap: "var(--c97-sp-2)" }}>
@@ -493,8 +498,9 @@ export function BayAreaTransitClient({
                 <div className="flex flex-col" style={{ gap: "var(--c97-sp-1)" }}>
                   <p className="c97-kicker">Stations</p>
                   <p className="c97-prose">
-                    Pick a station to load its departure board above. The
-                    colored dots show which lines stop there.
+                    Pick a station to center the map on it and load its
+                    departure board above. The colored squares show which
+                    lines stop there.
                   </p>
                 </div>
                 <div className="grid sm:grid-cols-2" style={{ gap: "var(--c97-sp-1)" }}>

@@ -220,3 +220,70 @@ describe("an empty platform board", () => {
     ).toBeInTheDocument();
   });
 });
+
+describe("the drawn map's lines", () => {
+  const sequenced = [
+    { id: "y", colorName: "Yellow", hexColor: "#ffe800", stationSequence: ["EMBR", "MONT"] },
+    { id: "r", colorName: "Red", hexColor: "#ff0000", stationSequence: ["MONT", "EMBR"] },
+  ] as never;
+  const stroke = (container: HTMLElement, hex: string) =>
+    container.querySelector(`svg[role="img"] line[stroke="${hex}"]`)!;
+
+  it("sets lines that share track side by side over one ink casing", () => {
+    const { container } = renderSignature({ lines: sequenced });
+    expect(container.querySelectorAll("line.c97-transit-casing")).toHaveLength(1);
+    const yellow = stroke(container, "#ffe800");
+    const red = stroke(container, "#ff0000");
+    expect(yellow).toBeInTheDocument();
+    expect(red).toBeInTheDocument();
+    expect(yellow.getAttribute("x1")).not.toBe(red.getAttribute("x1"));
+  });
+
+  it("dims the other lines when a line button is pressed, and undoes it on a second press", () => {
+    const { container } = renderSignature({ lines: sequenced });
+    const yellow = screen.getByRole("button", { name: "Yellow" });
+    fireEvent.click(yellow);
+    expect(yellow).toHaveAttribute("aria-pressed", "true");
+    expect(stroke(container, "#ff0000")).toHaveAttribute("opacity", "0.2");
+    expect(stroke(container, "#ffe800")).toHaveAttribute("opacity", "1");
+    fireEvent.click(yellow);
+    fireEvent.mouseLeave(yellow);
+    expect(stroke(container, "#ff0000")).toHaveAttribute("opacity", "1");
+  });
+
+  it("shows a departure's line from its row on the board", () => {
+    const { container } = renderSignature({ lines: sequenced });
+    fireEvent.click(screen.getByRole("button", { name: /antioch/i }));
+    expect(stroke(container, "#ff0000")).toHaveAttribute("opacity", "0.2");
+  });
+});
+
+describe("the board's rows", () => {
+  it("print the line, platform, and car count under the destination", () => {
+    renderSignature({ stationBoard: servedBoard([5], new Date().toISOString()) });
+    expect(screen.getByText("Yellow line · Platform 2 · 8 cars")).toBeInTheDocument();
+  });
+
+  it("read as one sentence to a screen reader, line and platform included", () => {
+    renderSignature({ stationBoard: servedBoard([5], new Date().toISOString()) });
+    expect(
+      screen.getByRole("button", {
+        name: "Yellow line to Antioch, in 5 min, platform 2, 8 cars. Show this line on the map.",
+      })
+    ).toBeInTheDocument();
+  });
+
+  it("say when BART's times were read", () => {
+    renderSignature({ stationBoard: servedBoard([5], "2026-10-03T21:18:00Z") });
+    expect(screen.getByText(/read from bart oct 3, 2:18/i)).toBeInTheDocument();
+  });
+});
+
+it("names a line button by its route as well as its colour", () => {
+  renderSignature({
+    lines: [{ id: "y", colorName: "Yellow", hexColor: "#ffe800", name: "Antioch to SFO/Millbrae" }] as never,
+  });
+  expect(
+    screen.getByRole("button", { name: "Yellow line, Antioch to SFO/Millbrae" })
+  ).toBeInTheDocument();
+});

@@ -580,6 +580,8 @@ describe("buildBayAreaTransitSnapshotData", () => {
     expect(yellow?.origin).toBe("ANTC");
     expect(yellow?.destination).toBe("MLBR");
     expect(yellow?.stationCount).toBe(3);
+    // The first direction's running order, kept as BART lists it.
+    expect(yellow?.stationSequence).toEqual(["EMBR", "MONT", "POWL"]);
     // Colors are title-cased and sorted.
     expect(summary.lines.map((l) => l.colorName)).toEqual(["Green", "Red", "Yellow"]);
 
