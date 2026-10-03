@@ -8,6 +8,7 @@ All notable changes to this repository are documented here. Format: `YYYY-MM-DD`
 
 - Redesign passes 2 and 3 across every route ([#557](https://github.com/IsaacAVazquez/Website/pull/557)).
 - Fix Safari dashboard hydration and saved fantasy teams ([#559](https://github.com/IsaacAVazquez/Website/pull/559)).
+- Coverage audit, plus score pools lock and settings fixes ([#560](https://github.com/IsaacAVazquez/Website/pull/560)).
 
 ---
 
