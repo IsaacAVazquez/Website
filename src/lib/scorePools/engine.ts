@@ -41,6 +41,11 @@ export interface AnalyzeOptions {
   standings?: StandingsTeam[];
 }
 
+/** When picks close: the kickoff less the pool's lock offset, as an ISO timestamp. */
+export function lockTimeFor(kickoff: string, lockOffsetMinutes: number): string {
+  return new Date(new Date(kickoff).getTime() - lockOffsetMinutes * 60_000).toISOString();
+}
+
 export function analyzeFixture(
   fixture: FixtureInput,
   pool: PoolAnalysisConfig,
@@ -120,9 +125,7 @@ export function analyzeFixture(
   );
   recommendation.reason = buildReason(fixture, pool, distribution, recommendation, context.applied);
 
-  const locksAt = new Date(
-    new Date(fixture.kickoff).getTime() - pool.lockOffsetMinutes * 60_000,
-  ).toISOString();
+  const locksAt = lockTimeFor(fixture.kickoff, pool.lockOffsetMinutes);
 
   return {
     fixtureId: fixture.id,
