@@ -4,20 +4,20 @@ I keep newsletter contact management and MBA digest sending on separate server c
 
 ## Production settings
 
-Set these in Netlify's production environment for builds and functions. Changes take effect on a new deployment. Keep credential values out of source files, public environment variables, and browser code.
+Set these in Netlify's production environment. Netlify's Free plan requires the default All scopes; limiting variables to Builds and Functions requires a paid plan. Approval for All scopes is pending. Changes take effect on a new deployment. Keep credential values out of source files, public environment variables, and browser code.
 
 | Setting | Purpose |
 | --- | --- |
 | `RESEND_API_KEY` | Sending-only key for the MBA digest. |
-| `RESEND_FROM_EMAIL` | Sender address on a domain verified in the same Resend account. Production uses `no-reply@isaacavazquez.com`. |
+| `RESEND_FROM_EMAIL` | Sender address on a domain verified in the same Resend account. `no-reply@isaacavazquez.com` is saved in Production with All scopes and verified by readback; the next deployment applies it. |
 | `RESEND_CONTACTS_API_KEY` | Separate key with contact management access. Resend requires Full access for this operation. |
 | `RESEND_NEWSLETTER_SEGMENT_ID` | Optional segment for newsletter contacts. |
 | `MBA_DIGEST_SECRET` | Random secret required in the `x-mba-digest-secret` request header. |
-| `MBA_DIGEST_ALLOWED_RECIPIENTS` | Comma-separated approved addresses. Production is restricted to the single approved test inbox. |
+| `MBA_DIGEST_ALLOWED_RECIPIENTS` | Comma-separated approved addresses. The proposed configuration contains only the single approved test inbox. |
 
 The newsletter route falls back to `RESEND_API_KEY` when the separate contact key is absent, for existing deployments. A sending-only key cannot create contacts. [Resend's API key documentation](https://resend.com/docs/dashboard/api-keys/introduction) describes the permissions.
 
-The verified sender domain has an extra `a` after `isaac`. The website's `isaacvazquez.com` domain is a different domain and has not been verified for email in this account.
+The verified sender domain has an extra `a` after `isaac`. The website's `isaacvazquez.com` domain is a different domain and has not been verified for email in this account. [Netlify's scope documentation](https://docs.netlify.com/build/environment-variables/overview/) explains the plan restriction.
 
 ## Protected digest caller
 
