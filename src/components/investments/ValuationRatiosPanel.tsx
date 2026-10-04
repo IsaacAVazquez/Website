@@ -168,6 +168,7 @@ export function ValuationRatiosPanel({
                     style: "currency",
                     currency: "USD",
                     notation: "compact",
+                    minimumFractionDigits: 0,
                     maximumFractionDigits: 2,
                   }).format(fundamentals.marketCap)
                 : "—"

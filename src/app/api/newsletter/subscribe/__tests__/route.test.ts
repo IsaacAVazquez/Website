@@ -51,7 +51,16 @@ describe("newsletter subscribe route", () => {
 
   afterEach(() => {
     delete process.env.RESEND_API_KEY;
+    delete process.env.RESEND_CONTACTS_API_KEY;
     delete process.env.RESEND_NEWSLETTER_SEGMENT_ID;
+  });
+
+  it("uses a separate contact key without needing the sending key", async () => {
+    process.env.RESEND_CONTACTS_API_KEY = "re_contacts";
+    delete process.env.RESEND_API_KEY;
+    const response = await POST(request({ email: "reader@example.com" }));
+    expect(response.status).toBe(200);
+    expect(mockFetch.mock.calls[0][1].headers.Authorization).toBe("Bearer re_contacts");
   });
 
   it("normalizes the email and adds the contact to the newsletter segment", async () => {
