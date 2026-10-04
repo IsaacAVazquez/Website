@@ -180,6 +180,36 @@ describe("MockDraftClient", () => {
         "Board dated Sep 10, 2026 · ADP dated Sep 10, 2026, past its window, so the room runs on consensus"
       );
     });
+
+    it("requires explicit dated practice consent and pauses again when consent is removed", () => {
+      jest.useFakeTimers().setSystemTime(new Date("2026-10-04T12:00:00.000Z"));
+      mockInSeasonSnapshot();
+      render(<MockDraftClient />);
+      const consent = screen.getByRole("checkbox", { name: "Practice with the dated preseason board" });
+      expect(consent).not.toBeChecked();
+      expect(screen.getByRole("button", { name: "Start mock" })).toBeDisabled();
+      fireEvent.click(consent);
+      expect(screen.getByRole("button", { name: "Start mock" })).toBeEnabled();
+      expect(screen.getByText("Dated preseason practice")).toBeVisible();
+      expect(screen.getByText("Board Stale · Sep 10, 2026")).toBeVisible();
+      expect(screen.getByText("ADP unavailable, consensus only")).toBeVisible();
+      fireEvent.click(consent);
+      expect(screen.getByRole("button", { name: "Start mock" })).toBeDisabled();
+    });
+
+    it("binds dated practice consent to the exact board and requires it again after a source change", () => {
+      jest.useFakeTimers().setSystemTime(new Date("2026-10-04T12:00:00.000Z"));
+      mockInSeasonSnapshot();
+      const { rerender } = render(<MockDraftClient />);
+      fireEvent.click(screen.getByRole("checkbox", { name: "Practice with the dated preseason board" }));
+      const result = mockUseFantasySnapshot();
+      mockUseFantasySnapshot.mockReturnValue({ ...result, snapshot: { ...result.snapshot,
+        sliceMetadata: { overall: { available: true, updatedAt: "2026-09-11T00:00:00.000Z" } },
+      } });
+      rerender(<MockDraftClient />);
+      expect(screen.getByRole("checkbox", { name: "Practice with the dated preseason board" })).not.toBeChecked();
+      expect(screen.getByRole("button", { name: "Start mock" })).toBeDisabled();
+    });
   });
 
   it("moves focus to the on-the-clock panel and announces the opening turn on start", () => {

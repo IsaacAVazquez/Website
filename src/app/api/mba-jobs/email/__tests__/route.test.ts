@@ -76,6 +76,7 @@ describe("POST /api/mba-jobs/email", () => {
     // per-day ceiling does not leak between cases.
     resetMbaEmailDailyCounter();
     process.env.RESEND_API_KEY = "test-resend-key";
+    delete process.env.RESEND_FROM_EMAIL;
     process.env.MBA_DIGEST_ALLOWED_RECIPIENTS = "allowed@example.com,@haas.berkeley.edu";
     process.env.MBA_DIGEST_SECRET = TEST_DIGEST_SECRET;
     mockFetch.mockImplementation(() => Promise.resolve(jsonResponse({ id: "email-1" })));
@@ -180,6 +181,20 @@ describe("POST /api/mba-jobs/email", () => {
 
     expect(response.status).toBe(403);
     expect(body.error).toMatch(/approved recipients/i);
+    expect(mockFetch).not.toHaveBeenCalled();
+  });
+
+  it("sends from the configured verified domain", async () => {
+    process.env.RESEND_FROM_EMAIL = "no-reply@isaacavazquez.com";
+    const response = await POST(makeRequest({ to: "allowed@example.com", jobs: [validJob] }));
+    expect(response.status).toBe(200);
+    expect(sentPayload().from).toBe("MBA Tracker <no-reply@isaacavazquez.com>");
+  });
+
+  it("does not send when the configured sender is invalid", async () => {
+    process.env.RESEND_FROM_EMAIL = "invalid sender";
+    const response = await POST(makeRequest({ to: "allowed@example.com", jobs: [validJob] }));
+    expect(response.status).toBe(503);
     expect(mockFetch).not.toHaveBeenCalled();
   });
 

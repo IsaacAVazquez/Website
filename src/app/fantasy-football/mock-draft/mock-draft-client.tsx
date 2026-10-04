@@ -16,6 +16,7 @@ import {
   SHELL_CLASS,
   WARNING_CARD_STYLE,
   assignLineupSlots,
+  canPracticeWithArchivedDraftBoard,
   formatAdp,
   formatPickDelta,
   formatRankValue,
@@ -271,6 +272,7 @@ export function MockDraftClient() {
     lineup: DEFAULT_MOCK_DRAFT_SETTINGS.lineup,
   });
   const [roomSetupOpen, setRoomSetupOpen] = useState(false);
+  const [archiveConsent, setArchiveConsent] = useState<string | null>(null);
   const [searchQuery, setSearchQuery] = useState("");
   const [positionFilter, setPositionFilter] = useState<BoardPositionFilter>("ALL");
   // Every pick unmounts the row or quick pick that took the click, so focus has
@@ -344,7 +346,11 @@ export function MockDraftClient() {
     [adpAvailable, boardReady, snapshot]
   );
 
-  const simulationAvailable = boardReady && boardStaleness !== "stale";
+  const archiveEligible = boardReady && boardStaleness === "stale"
+    && canPracticeWithArchivedDraftBoard(boardUpdatedAt, metadata?.season);
+  const archiveIdentity = `${scoringSelection}:${metadata?.season}:${boardUpdatedAt}`;
+  const archivedPractice = archiveEligible && archiveConsent === archiveIdentity;
+  const simulationAvailable = boardReady && (boardStaleness !== "stale" || archivedPractice);
   const room = useMockDraftState(board, scoringSelection, simulationAvailable);
   const { state, availablePlayers, currentPick } = room;
   const settings = state.settings;
@@ -655,6 +661,7 @@ export function MockDraftClient() {
       }
     : { teams: settings.totalTeams, draftType: settings.draftType, rounds: settings.rounds };
   const headerChips: { label: string; tone?: CSSProperties }[] = [
+    ...(archivedPractice ? [{ label: "Dated preseason practice", tone: WARNING_CHIP_TONE }] : []),
     ...(state.status !== "setup" ? [{ label: `Room #${roomLabel(state.seed)}` }] : []),
     { label: `${chipSettings.teams}-team ${chipSettings.draftType}` },
     { label: `${scoringLabel} scoring` },
@@ -687,18 +694,21 @@ export function MockDraftClient() {
   // Four different conditions gate simulationAvailable, so a paused room names
   // the one that actually applies (boardStatusLine above) and then the recovery
   // that is actually available. Refetching only helps when a request is not
-  // already in flight and the board itself is the problem. A stale board has
-  // no recovery this page can promise, since the refresh runs upstream on its
-  // own schedule, so the copy says what would resume the room and no more.
+  // already in flight and the board itself is the problem. Eligible opening
+  // boards can resume with explicit consent to dated preseason practice.
   const boardReloadable = !boardReady && (Boolean(error) || (!isLoading && snapshotMatches));
   const pauseRecovery = !boardReady
     ? boardReloadable
       ? "Your picks stay saved, and simulated picks resume once the board loads."
       : "Your picks stay saved, and simulated picks resume once the board arrives."
-    : "Your picks stay saved, and the room resumes only if a newer board publishes.";
+    : archiveEligible
+      ? "Your picks stay saved. Choose dated preseason practice above to resume with this board."
+      : "Your picks stay saved, and the room resumes only if a newer board publishes.";
   const rerunRecovery = !boardReady
     ? "Run it back turns back on once the published board loads, and this recap stays exactly as it is."
-    : "Run it back turns back on only if a newer board publishes, and this recap stays exactly as it is.";
+    : archiveEligible
+      ? "Choose dated preseason practice above to run it back. This recap stays saved."
+      : "Run it back turns back on only if a newer board publishes, and this recap stays exactly as it is.";
 
   // The pick loop re-renders the board and the quick picks with no other signal
   // that a pick landed, so a screen reader gets the outcome and the next turn.
@@ -863,16 +873,26 @@ export function MockDraftClient() {
         <div className="c97-sheet" data-c97-surface="paper" data-seam="torn">
           <div className={`${SHELL_CLASS}`} style={{ paddingTop: "var(--c97-sp-2)", paddingBottom: "var(--c97-sp-2)" }}>
             <SeasonalScopeNote season={metadata?.season ?? 0} week={seasonalWeek}>
-              The room drafts off the published preseason consensus board and the mock-draft ADP
-              that goes with it, so rehearsing a draft here in November rehearses August. I left it
-              running because the practice is still practice, and the room pauses simulated picks
-              if the published board goes stale. Ranks that still move are on the{" "}
+              This is a preseason draft practice room. I keep the source dates visible, and the room pauses simulated picks
+              if the published board goes stale. You can choose dated preseason practice to use the archived consensus board.
+              Current in-season ranks are on the{" "}
               <Link href="/fantasy-football/weekly" className="underline decoration-[var(--c97-accent)] underline-offset-4">weekly board</Link>.
               <span className="block font-mono text-2xs uppercase tracking-[0.08em]" style={{ marginTop: "var(--c97-sp-0)" }}>
                 {boardReady
                   ? `Board dated ${formatStampDate(boardUpdatedAt)} · ${adpStampLabel}`
                   : "Board and ADP dates arrive with the board"}
               </span>
+              {archiveEligible ? (
+                <label className="flex min-h-touch cursor-pointer items-center" style={{ gap: "var(--c97-sp-1)", marginTop: "var(--c97-sp-1)" }}>
+                  <input
+                    type="checkbox"
+                    checked={archivedPractice}
+                    onChange={(event) => setArchiveConsent(event.target.checked ? archiveIdentity : null)}
+                    className="h-5 w-5 accent-[var(--c97-accent)]"
+                  />
+                  <span>Practice with the dated preseason board</span>
+                </label>
+              ) : null}
             </SeasonalScopeNote>
           </div>
         </div>

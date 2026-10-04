@@ -69,10 +69,10 @@ export async function POST(request: NextRequest) {
     typeof payload.source === "string" && ALLOWED_SOURCES.has(payload.source)
       ? payload.source
       : "writing";
-  const apiKey = process.env.RESEND_API_KEY?.trim();
+  const apiKey = process.env.RESEND_CONTACTS_API_KEY?.trim() || process.env.RESEND_API_KEY?.trim();
   if (!apiKey) {
     // Without this line a missing key looked like a quiet day for signups.
-    logger.error("Newsletter signup is off because RESEND_API_KEY is not set", { source });
+    logger.error("Newsletter signup is off because no contact-capable Resend key is set", { source });
     return NextResponse.json(
       {
         success: false,

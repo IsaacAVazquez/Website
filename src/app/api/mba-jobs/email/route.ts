@@ -220,7 +220,7 @@ function buildEmailHtml(jobs: EmailDigestJob[], to: string): string {
   return `<!DOCTYPE html>
 <html lang="en">
 <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>Job Search Digest</title></head>
-<body style="margin:0;padding:0;background:#f3f4f6;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;">
+<body style="margin:0;padding:0;background:#f3f4f6;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;">
   <table width="100%" cellpadding="0" cellspacing="0" style="padding:32px 16px;">
     <tr>
       <td align="center">
@@ -293,7 +293,8 @@ export async function POST(request: NextRequest) {
   }
 
   const apiKey = process.env.RESEND_API_KEY;
-  if (!apiKey) {
+  const sender = normalizeEmail(process.env.RESEND_FROM_EMAIL ?? "no-reply@isaacvazquez.com");
+  if (!apiKey || !sender) {
     return json(
       { error: "Email delivery is not configured." },
       { status: 503 }
@@ -384,7 +385,7 @@ export async function POST(request: NextRequest) {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        from: "MBA Tracker <no-reply@isaacvazquez.com>",
+        from: `MBA Tracker <${sender}>`,
         to: recipients,
         subject,
         html: buildEmailHtml(jobs, to),

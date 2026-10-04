@@ -180,3 +180,30 @@ test("mock draft records a pick, takes it back, and completes a fresh room", asy
   await page.getByRole("button", { name: "Sim to end, which finishes the room with no take back", exact: true }).click();
   await expect(page.getByRole("group", { name: "Your haul", exact: true })).toBeVisible();
 });
+
+test("mock draft practices with a dated board only after consent and preserves its recap", async ({ page }) => {
+  await page.clock.setFixedTime(new Date("2026-10-04T12:00:00Z"));
+  // Use the committed board and its real source dates without restamping it.
+  await open(page, "/fantasy-football/mock-draft");
+  const consent = page.getByRole("checkbox", { name: "Practice with the dated preseason board", exact: true });
+  await expect(consent).not.toBeChecked();
+  await expect(page.getByRole("button", { name: "Start mock", exact: true })).toBeDisabled();
+  await consent.check();
+  await expect(page.locator("main")).toContainText("Dated preseason practice");
+  await page.getByRole("combobox", { name: "Your slot", exact: true }).selectOption("1");
+  await page.getByRole("combobox", { name: "Rounds · early rep", exact: true }).selectOption("3");
+  await page.getByRole("button", { name: "Start mock", exact: true }).click();
+  await page.getByRole("button", { name: /^Draft / }).first().click();
+  await consent.uncheck();
+  await expect(page.getByRole("button", { name: "Sim to end, which finishes the room with no take back", exact: true })).toBeDisabled();
+  await expect(page.locator("main")).toContainText("Choose dated preseason practice above to resume");
+  await consent.check();
+  await page.getByRole("button", { name: "Sim to end, which finishes the room with no take back", exact: true }).click();
+  await expect(page.getByRole("group", { name: "Your haul", exact: true })).toBeVisible();
+  await reloadTool(page);
+  await expect(consent).not.toBeChecked();
+  await expect(page.getByRole("group", { name: "Your haul", exact: true })).toBeVisible();
+  await expect(page.getByRole("button", { name: "Run it back", exact: true })).toBeDisabled();
+  await consent.check();
+  await expect(page.getByRole("button", { name: "Run it back", exact: true })).toBeEnabled();
+});

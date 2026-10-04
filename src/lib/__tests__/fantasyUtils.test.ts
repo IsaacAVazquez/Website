@@ -9,6 +9,7 @@ import {
   getFantasyAdpFreshness,
   getFantasySourceCapabilities,
   getSnapshotStaleness,
+  canPracticeWithArchivedDraftBoard,
   getSnapshotStalenessLabel,
   getTierRailIntensity,
   getValueVsAdp,
@@ -19,6 +20,22 @@ import {
 import type { Player } from "@/types";
 
 const MS_PER_DAY = 86_400_000;
+
+describe("dated draft practice eligibility", () => {
+  const now = new Date("2026-10-04T12:00:00Z");
+  it("allows the frozen season-opening board after draft season", () => {
+    expect(canPracticeWithArchivedDraftBoard("2026-09-10T00:00:00Z", 2026, now)).toBe(true);
+  });
+  it.each([null, "invalid", "2026-01-01", "2025-09-10", "2026-10-05"])(
+    "does not use missing, invalid, out-of-season, or future source dates (%s)", (stamp) => {
+      expect(canPracticeWithArchivedDraftBoard(stamp, 2026, now)).toBe(false);
+    }
+  );
+  it("does not offer archive consent before the season starts or after the archive ages out", () => {
+    expect(canPracticeWithArchivedDraftBoard("2026-08-20", 2026, new Date("2026-08-25"))).toBe(false);
+    expect(canPracticeWithArchivedDraftBoard("2026-09-10", 2026, new Date("2027-06-01"))).toBe(false);
+  });
+});
 
 /** Minimal Player factory — only the fields getValueVsAdp reads matter here. */
 const playerWith = (fields: Partial<Player>): Player => fields as Player;
