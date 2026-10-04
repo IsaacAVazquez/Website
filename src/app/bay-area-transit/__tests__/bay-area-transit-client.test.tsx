@@ -114,10 +114,6 @@ function renderClient(
   return { ...view, rerenderWith: (extra: typeof props = {}) => view.rerender(ui(extra)) };
 }
 
-function readout(label: string) {
-  return screen.getByText(label, { selector: "dt" }).parentElement as HTMLElement;
-}
-
 describe("BayAreaTransitClient", () => {
   const originalFetch = global.fetch;
 
@@ -145,9 +141,8 @@ describe("BayAreaTransitClient", () => {
     renderClient();
 
     expect(screen.getByRole("heading", { level: 1, name: "Bay Area Transit Pulse" })).toBeInTheDocument();
-    expect(readout("Lines")).toHaveTextContent("2");
-    expect(readout("Stations")).toHaveTextContent("3");
-    expect(readout("Active alerts")).toHaveTextContent("0Normal service");
+    // The hero carries no readouts; the alert count rides on the Alerts tab, bare at zero.
+    expect(screen.getByRole("tab", { name: "Alerts" })).toBeInTheDocument();
     expect(screen.getByText(/^BART API · feed 12:00:00 PM PDT · refreshed /)).toBeInTheDocument();
     expect(screen.queryByText(/seed data/)).toBeNull();
 
@@ -313,7 +308,7 @@ describe("BayAreaTransitClient", () => {
       },
     });
 
-    expect(readout("Active alerts")).toHaveTextContent(/^Active alerts2$/);
+    expect(screen.getByRole("tab", { name: "Alerts · 3" })).toBeInTheDocument();
     expect(screen.getByText("DELAY · EMBR")).toBeInTheDocument();
     expect(screen.getByText("Ten minute delay in the Transbay Tube.")).toBeInTheDocument();
     expect(screen.getByText("Advisory")).toBeInTheDocument();
@@ -334,7 +329,6 @@ describe("BayAreaTransitClient", () => {
     expect(
       screen.getByText(/feed time unavailable · refreshed .* · seed data · advisories, elevator from the last good snapshot$/)
     ).toBeInTheDocument();
-    expect(readout("Active alerts")).toHaveTextContent("Last known count");
     expect(screen.getByText(/did not return fresh advisories, elevator data/)).toBeInTheDocument();
     expect(screen.queryByText(/No delays reported/)).toBeNull();
     expect(screen.getByText(/This is a hand-authored seed shipped with the app/)).toBeInTheDocument();
@@ -348,7 +342,10 @@ describe("BayAreaTransitClient", () => {
 
   it("replaces the summary when the refresh answers, and refreshes again each minute while visible", async () => {
     const intervalSpy = jest.spyOn(window, "setInterval");
-    const fresh: TransitSummary = { ...SUMMARY, heroStats: { ...SUMMARY.heroStats, lineCount: 5 } };
+    const fresh: TransitSummary = {
+      ...SUMMARY,
+      advisories: [{ id: "a1", type: "DELAY", description: "Delay.", station: null, posted: "" }],
+    };
     const fetchMock = mockFetch((url) =>
       url.endsWith("/summary")
         ? jsonResponse(fresh)
@@ -356,7 +353,7 @@ describe("BayAreaTransitClient", () => {
     );
 
     renderClient();
-    await waitFor(() => expect(readout("Lines")).toHaveTextContent("5"));
+    expect(await screen.findByRole("tab", { name: "Alerts · 1" })).toBeInTheDocument();
     // The refresh clears the held boards, so the default station's board is fetched fresh.
     expect(await screen.findByText("Pittsburg/Bay Point")).toBeInTheDocument();
 
@@ -378,7 +375,7 @@ describe("BayAreaTransitClient", () => {
     renderClient();
     await waitFor(() => expect(fetchMock).toHaveBeenCalled());
     await act(async () => {});
-    expect(readout("Lines")).toHaveTextContent("2");
+    expect(screen.getByRole("tab", { name: "Alerts" })).toBeInTheDocument();
     expect(screen.getByText("Antioch")).toBeInTheDocument();
   });
 

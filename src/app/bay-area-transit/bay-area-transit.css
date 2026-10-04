@@ -1,10 +1,11 @@
-/* Bay Area Transit Pulse: the platform board, station map, and log rows. */
+/* Bay Area Transit Pulse: the street map, platform board, and log rows. */
 
+/* The map leads, so it comes first in the source and takes the wide column. */
 .c97-transit-signature {
   display: grid;
-  grid-template-columns: minmax(240px, 1fr) minmax(0, 1.6fr);
-  gap: var(--c97-sp-5);
-  align-items: start;
+  grid-template-columns: minmax(0, 2.2fr) minmax(300px, 1fr);
+  gap: var(--c97-sp-4);
+  align-items: stretch;
 }
 
 .c97-transit-board {
@@ -29,33 +30,172 @@
   list-style: none;
 }
 
+/* Each row is a button that shows its line on the map. */
+/* Destination and minutes share the first line; the detail and any late
+ * notice run under them across the row's full width, so they never wrap
+ * against the big minutes figure. */
 .c97-transit-departure-row {
   display: grid;
   grid-template-columns: 6px minmax(0, 1fr) auto;
+  grid-template-areas:
+    "bar dest min"
+    "bar detail detail"
+    "bar late late";
   align-items: center;
-  gap: var(--c97-sp-3);
+  column-gap: var(--c97-sp-3);
+  width: 100%;
   min-height: 44px;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.c97-transit-departure-row:hover .c97-transit-departure-dest,
+.c97-transit-departure-row[aria-pressed="true"] .c97-transit-departure-dest {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.c97-transit-departure-row[aria-pressed="true"] .c97-transit-departure-dest {
+  text-decoration-thickness: 2px;
 }
 
 .c97-transit-departure-bar {
+  grid-area: bar;
   align-self: stretch;
   width: 6px;
 }
 
 .c97-transit-departure-dest {
+  grid-area: dest;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
 
+.c97-transit-departure-detail {
+  grid-area: detail;
+  font-family: var(--c97-font-mono);
+  font-size: var(--c97-fs-label);
+  color: var(--c97-label);
+}
+
 .c97-transit-departure-min {
+  grid-area: min;
   font-size: var(--c97-fs-h2);
   white-space: nowrap;
 }
 
+/* The map plate: its own paper surface inside the teal hero. */
 .c97-transit-map {
+  display: flex;
+  flex-direction: column;
+  gap: var(--c97-sp-1);
+  min-width: 0;
+  padding: var(--c97-sp-2);
   color: var(--c97-ink);
-  padding: var(--c97-sp-3);
+}
+
+.c97-transit-map-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  column-gap: var(--c97-sp-3);
+}
+
+.c97-transit-line-toggles {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.c97-transit-locate-note {
+  margin: 0;
+}
+
+/* Grows to the board's height beside it, and never shorter than the clamp. */
+.c97-transit-map-frame {
+  position: relative;
+  flex: 1 1 auto;
+  min-height: clamp(360px, 64vh, 620px);
+  overflow: hidden;
+}
+
+/* The drawn map: the server render, the print copy, and the fallback. */
+.c97-transit-drawn-map {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.c97-transit-drawn-stop {
+  fill: var(--c97-print-bone);
+  stroke: var(--c97-print-black);
+}
+
+/* The street map sits over the drawn one and shows once Leaflet is ready.
+ * Two classes beat Leaflet's own grey `.leaflet-container`, whichever
+ * stylesheet lands last. */
+.c97-transit-map-frame .c97-transit-leaflet {
+  position: absolute;
+  inset: 0;
+  background: var(--c97-panel);
+  visibility: hidden;
+}
+
+.c97-transit-map-frame .c97-transit-leaflet[data-ready] {
+  visibility: visible;
+}
+
+/* Leaflet paints these as SVG attributes; CSS wins over those, and keeps
+ * the ink and bone on tokens instead of hex. */
+.c97-transit-casing {
+  stroke: var(--c97-print-black);
+}
+
+.c97-transit-stop {
+  fill: var(--c97-print-bone);
+  stroke: var(--c97-print-black);
+}
+
+.c97-transit-stop-alert {
+  stroke: var(--c97-warning);
+}
+
+.c97-transit-stop-selected {
+  fill: var(--c97-print-black);
+  stroke: var(--c97-print-bone);
+}
+
+.c97-transit-leaflet .leaflet-tooltip.c97-transit-tip {
+  padding: 2px var(--c97-sp-1);
+  border: 1px solid var(--c97-rule);
+  border-radius: 0;
+  background: var(--c97-panel);
+  box-shadow: none;
+  color: var(--c97-ink-2);
+  font-family: var(--c97-font-mono);
+  font-size: var(--c97-fs-label);
+}
+
+.c97-transit-leaflet .leaflet-tooltip.c97-transit-tip-selected {
+  color: var(--c97-ink);
+  font-weight: 600;
+}
+
+.c97-transit-leaflet .leaflet-tooltip-top.c97-transit-tip::before {
+  border-top-color: var(--c97-rule);
+}
+
+@media print {
+  .c97-transit-leaflet,
+  .c97-transit-map-head {
+    display: none;
+  }
 }
 
 .c97-transit-station-label {
@@ -115,24 +255,43 @@
   padding: var(--c97-sp-3);
 }
 
-/* Below 1050px the two-column grid squeezes the map's 640-unit viewBox down
- * far enough that its 15px station labels render under 11px, so the board
- * and map stack here instead and the SVG gets the full shell width. The type
- * still scales up further at phone width, where even a full-width column is
- * narrower still. */
+/* Below 1050px the map and board stack at full shell width, board first,
+ * since the next train is what a rider on a phone came for. */
 @media (max-width: 1049px) {
   .c97-transit-signature {
     grid-template-columns: minmax(0, 1fr);
   }
+
+  .c97-transit-board {
+    order: -1;
+  }
 }
 
+/* On a phone the map is a window rather than a page, so the page around it
+ * still scrolls, and Nearest station leads the controls. The drawn map's label
+ * scales up because the narrow column shrinks its 640-unit viewBox. */
 @media (max-width: 639px) {
+  .c97-transit-map-frame {
+    min-height: min(60vh, 440px);
+  }
+
+  .c97-transit-locate {
+    order: -1;
+  }
+
   .c97-transit-station-label {
     font-size: 25px;
   }
 }
 
+/* The street labels in OSM's tiles compete with the station names, so the
+ * tiles sit back further here than on the food map. */
+.c97-transit-leaflet .leaflet-tile-pane {
+  opacity: 0.72;
+}
+
 .c97-transit-departure-late {
+  grid-area: late;
   display: block;
   font-size: var(--c97-fs-small);
   color: var(--c97-warning);

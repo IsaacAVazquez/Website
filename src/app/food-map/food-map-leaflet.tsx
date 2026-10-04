@@ -11,7 +11,7 @@ import {
   type LeafletMap,
   type LeafletMarker,
   type LeafletStatic,
-} from "./leaflet";
+} from "@/lib/leaflet";
 import {
   getFoodMapCuisine,
   getPlaceAccent,
@@ -190,7 +190,7 @@ export function FoodMapLeaflet({
     <div style={{ position: "relative" }}>
       <div
         ref={containerRef}
-        className="fm-map"
+        className="fm-map c97-basemap"
         role="application"
         aria-label="Map of recommended food spots"
       />

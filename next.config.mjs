@@ -315,7 +315,7 @@ const nextConfig = {
   //   - all external data APIs run at build time, so browser connect is 'self'
   //   - next-themes + Next bootstrap + JSON-LD need inline <script>
   //   - Framer Motion + style attributes need inline styles
-  //   - Food Map loads pinned Leaflet assets from unpkg.com
+  //   - Food Map and Bay Area Transit load pinned Leaflet assets from unpkg.com
   //   - team crests/logos load from many remote CDNs via <img> (img-src https:)
   //
   // Once reports confirm no legitimate surface is flagged (and inline scripts
