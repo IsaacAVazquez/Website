@@ -1,11 +1,11 @@
 {
-  "generatedAt": "2026-10-03T19:58:19.869Z",
+  "generatedAt": "2026-10-04T16:00:04.809Z",
   "data": {
     "PPR": {
       "10": {
         "season": 2026,
         "sourceUrl": "https://www.fantasypros.com/nfl/rankings/ppr-vorp.php?team_size=10",
-        "accessedAt": "2026-10-03T19:58:20.440Z",
+        "accessedAt": "2026-10-04T16:00:05.489Z",
         "players": [
           {
             "playerId": "fp-22968",
@@ -2908,7 +2908,7 @@
           {
             "playerId": "fp-18590",
             "name": "Lil'Jordan Humphrey",
-            "team": "FA",
+            "team": "DEN",
             "position": "WR",
             "positionRank": 114,
             "rank": 323,
@@ -5367,7 +5367,7 @@
       "12": {
         "season": 2026,
         "sourceUrl": "https://www.fantasypros.com/nfl/rankings/ppr-vorp.php",
-        "accessedAt": "2026-10-03T19:58:21.829Z",
+        "accessedAt": "2026-10-04T16:00:06.248Z",
         "players": [
           {
             "playerId": "fp-22968",
@@ -8531,7 +8531,7 @@
           {
             "playerId": "fp-18590",
             "name": "Lil'Jordan Humphrey",
-            "team": "FA",
+            "team": "DEN",
             "position": "WR",
             "positionRank": 114,
             "rank": 352,
@@ -10729,7 +10729,7 @@
       "14": {
         "season": 2026,
         "sourceUrl": "https://www.fantasypros.com/nfl/rankings/ppr-vorp.php?team_size=14",
-        "accessedAt": "2026-10-03T19:58:22.504Z",
+        "accessedAt": "2026-10-04T16:00:06.847Z",
         "players": [
           {
             "playerId": "fp-22968",
@@ -14100,7 +14100,7 @@
           {
             "playerId": "fp-18590",
             "name": "Lil'Jordan Humphrey",
-            "team": "FA",
+            "team": "DEN",
             "position": "WR",
             "positionRank": 114,
             "rank": 375,
@@ -16093,7 +16093,7 @@
       "10": {
         "season": 2026,
         "sourceUrl": "https://www.fantasypros.com/nfl/rankings/half-ppr-vorp.php?team_size=10",
-        "accessedAt": "2026-10-03T19:58:23.286Z",
+        "accessedAt": "2026-10-04T16:00:07.819Z",
         "players": [
           {
             "playerId": "fp-22968",
@@ -19464,7 +19464,7 @@
           {
             "playerId": "fp-18590",
             "name": "Lil'Jordan Humphrey",
-            "team": "FA",
+            "team": "DEN",
             "position": "WR",
             "positionRank": 116,
             "rank": 375,
@@ -21455,7 +21455,7 @@
       "12": {
         "season": 2026,
         "sourceUrl": "https://www.fantasypros.com/nfl/rankings/half-ppr-vorp.php",
-        "accessedAt": "2026-10-03T19:58:23.959Z",
+        "accessedAt": "2026-10-04T16:00:09.814Z",
         "players": [
           {
             "playerId": "fp-22968",
@@ -24394,7 +24394,7 @@
           {
             "playerId": "fp-18590",
             "name": "Lil'Jordan Humphrey",
-            "team": "FA",
+            "team": "DEN",
             "position": "WR",
             "positionRank": 116,
             "rank": 327,
@@ -26817,7 +26817,7 @@
       "14": {
         "season": 2026,
         "sourceUrl": "https://www.fantasypros.com/nfl/rankings/half-ppr-vorp.php?team_size=14",
-        "accessedAt": "2026-10-03T19:58:24.691Z",
+        "accessedAt": "2026-10-04T16:00:10.526Z",
         "players": [
           {
             "playerId": "fp-22968",
@@ -30197,7 +30197,7 @@
           {
             "playerId": "fp-18590",
             "name": "Lil'Jordan Humphrey",
-            "team": "FA",
+            "team": "DEN",
             "position": "WR",
             "positionRank": 116,
             "rank": 376,
@@ -32181,7 +32181,7 @@
       "10": {
         "season": 2026,
         "sourceUrl": "https://www.fantasypros.com/nfl/rankings/vorp.php?team_size=10",
-        "accessedAt": "2026-10-03T19:58:25.362Z",
+        "accessedAt": "2026-10-04T16:00:11.670Z",
         "players": [
           {
             "playerId": "fp-22968",
@@ -35210,7 +35210,7 @@
           {
             "playerId": "fp-18590",
             "name": "Lil'Jordan Humphrey",
-            "team": "FA",
+            "team": "DEN",
             "position": "WR",
             "positionRank": 116,
             "rank": 337,
@@ -37543,7 +37543,7 @@
       "12": {
         "season": 2026,
         "sourceUrl": "https://www.fantasypros.com/nfl/rankings/vorp.php",
-        "accessedAt": "2026-10-03T19:58:26.095Z",
+        "accessedAt": "2026-10-04T16:00:12.589Z",
         "players": [
           {
             "playerId": "fp-22968",
@@ -40698,7 +40698,7 @@
           {
             "playerId": "fp-18590",
             "name": "Lil'Jordan Humphrey",
-            "team": "FA",
+            "team": "DEN",
             "position": "WR",
             "positionRank": 116,
             "rank": 351,
@@ -42905,7 +42905,7 @@
       "14": {
         "season": 2026,
         "sourceUrl": "https://www.fantasypros.com/nfl/rankings/vorp.php?team_size=14",
-        "accessedAt": "2026-10-03T19:58:26.835Z",
+        "accessedAt": "2026-10-04T16:00:13.310Z",
         "players": [
           {
             "playerId": "fp-22968",
@@ -46069,7 +46069,7 @@
           {
             "playerId": "fp-18590",
             "name": "Lil'Jordan Humphrey",
-            "team": "FA",
+            "team": "DEN",
             "position": "WR",
             "positionRank": 116,
             "rank": 352,
