@@ -160,9 +160,13 @@ GOOGLE_SITE_VERIFICATION=...
 FOOTBALL_DATA_API_TOKEN=...   # football-data.org, free tier
 FINNHUB_API_KEY=...           # quote endpoint for /investments
 RESEND_API_KEY=...            # MBA internship email digest
+RESEND_FROM_EMAIL=...         # sender on a verified Resend domain
+RESEND_CONTACTS_API_KEY=...   # separate server-only newsletter contact key
 MBA_DIGEST_ALLOWED_RECIPIENTS=... # comma-separated digest recipient emails/domains
 MBA_DIGEST_SECRET=...         # sent in the x-mba-digest-secret header to the digest route
 ```
+
+The sender, newsletter key, and protected digest caller are described in [`docs/EMAIL_DELIVERY.md`](docs/EMAIL_DELIVERY.md).
 
 - `update:investments` additionally expects the Python virtualenv described in `DEVELOPMENT.md`.
 - `update:football`, `update:premier-league`, and `update:la-liga` only need `FOOTBALL_DATA_API_TOKEN` when rebuilding checked-in football snapshots.

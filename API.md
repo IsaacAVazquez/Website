@@ -52,13 +52,13 @@ Current API route inventory for the app.
 | Route | Methods | Notes |
 |------|---------|-------|
 | `/api/mba-jobs` | GET | Aggregates MBA-relevant postings across Greenhouse, Lever, Ashby, SmartRecruiters, and direct-HTML job boards (plus optional Adzuna external leads). `src/constants/mba-companies.ts` tracks 39 companies, ~28 actively fetched (the `manual` entries are catalogued, not live-fetched); filters via `src/lib/mba-job-matching.ts`; accepts optional `?companies=` filter |
-| `/api/mba-jobs/email` | POST | Sends a grouped digest of supplied `{ jobs, to }` via Resend; requires `RESEND_API_KEY` and `MBA_DIGEST_ALLOWED_RECIPIENTS` |
+| `/api/mba-jobs/email` | POST | Sends a grouped digest of supplied `{ jobs, to }` via Resend; requires the `x-mba-digest-secret` header, `RESEND_API_KEY`, and `MBA_DIGEST_ALLOWED_RECIPIENTS`; `RESEND_FROM_EMAIL` selects a verified sender |
 
 ### Content and utilities
 
 | Route | Methods | Notes |
 |------|---------|-------|
-| `/api/newsletter/subscribe` | POST | Validates public email signup and JSON object shape, creating an opted-in Resend contact, optionally inside `RESEND_NEWSLETTER_SEGMENT_ID` |
+| `/api/newsletter/subscribe` | POST | Validates public email signup and JSON object shape, creating an opted-in Resend contact with `RESEND_CONTACTS_API_KEY` (legacy fallback to `RESEND_API_KEY`), optionally inside `RESEND_NEWSLETTER_SEGMENT_ID` |
 | `/api/news-pulse` | GET | News Pulse article summary data |
 | `/api/spacex/summary` | GET | SpaceX Mission Control summary payload |
 | `/api/spacex/launches` | GET | SpaceX launch list payload |

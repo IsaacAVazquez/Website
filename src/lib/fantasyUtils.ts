@@ -180,6 +180,23 @@ export function getSnapshotStaleness(
   return "stale";
 }
 
+/** A dated preseason board can support explicit practice after draft season. */
+export function canPracticeWithArchivedDraftBoard(
+  asOf: string | null | undefined,
+  season: number | null | undefined,
+  now: Date = new Date()
+): boolean {
+  if (!asOf || typeof season !== "number" || !Number.isInteger(season) || season < 1920) return false;
+  const stamp = Date.parse(asOf);
+  const kickoff = getNflWeek1Kickoff(season);
+  return Number.isFinite(stamp)
+    && now.getTime() >= kickoff
+    && stamp >= kickoff - 60 * MS_PER_DAY
+    && stamp <= kickoff + 7 * MS_PER_DAY
+    && stamp <= now.getTime() + FANTASY_FUTURE_SKEW_TOLERANCE_MS
+    && now.getTime() - stamp <= 200 * MS_PER_DAY;
+}
+
 /**
  * Short, human label for a staleness band. Kept beside getSnapshotStaleness so
  * the wording and the thresholds evolve together. Used by freshness chips that
