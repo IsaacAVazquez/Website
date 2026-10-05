@@ -10,13 +10,13 @@
       "startDate": "2026-10-01",
       "endDate": "2026-10-04",
       "roundLabel": "Round 4",
-      "status": "Round 4 - Play Complete",
+      "status": "Final",
       "completed": true,
       "fieldSize": 120,
       "cutLine": -6,
       "cutState": "made",
       "cutCount": 70,
-      "generatedAt": "2026-10-05T00:07:11.326Z"
+      "generatedAt": "2026-10-05T17:21:20.563Z"
     },
     "heroStats": {
       "leaderName": "Austin Smotherman",
@@ -2733,7 +2733,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-10-05T00:07:11.326Z"
+      "generatedAt": "2026-10-05T17:21:20.563Z"
     },
     "nick-hardy": {
       "player": {
@@ -2769,7 +2769,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-10-05T00:07:11.326Z"
+      "generatedAt": "2026-10-05T17:21:20.563Z"
     },
     "denny-mccarthy": {
       "player": {
@@ -2805,7 +2805,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-10-05T00:07:11.326Z"
+      "generatedAt": "2026-10-05T17:21:20.563Z"
     },
     "chad-ramey": {
       "player": {
@@ -2851,7 +2851,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-10-05T00:07:11.326Z"
+      "generatedAt": "2026-10-05T17:21:20.563Z"
     },
     "davis-riley": {
       "player": {
@@ -2897,7 +2897,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-10-05T00:07:11.326Z"
+      "generatedAt": "2026-10-05T17:21:20.563Z"
     },
     "adam-schenk": {
       "player": {
@@ -2933,7 +2933,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-10-05T00:07:11.326Z"
+      "generatedAt": "2026-10-05T17:21:20.563Z"
     },
     "eric-cole": {
       "player": {
@@ -2979,7 +2979,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-10-05T00:07:11.326Z"
+      "generatedAt": "2026-10-05T17:21:20.563Z"
     },
     "matt-wallace": {
       "player": {
@@ -3015,7 +3015,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-10-05T00:07:11.326Z"
+      "generatedAt": "2026-10-05T17:21:20.563Z"
     },
     "hayden-springer": {
       "player": {
@@ -3051,7 +3051,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-10-05T00:07:11.326Z"
+      "generatedAt": "2026-10-05T17:21:20.563Z"
     },
     "aaron-wise": {
       "player": {
@@ -3087,7 +3087,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-10-05T00:07:11.326Z"
+      "generatedAt": "2026-10-05T17:21:20.563Z"
     },
     "matthieu-pavon": {
       "player": {
@@ -3133,7 +3133,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-10-05T00:07:11.326Z"
+      "generatedAt": "2026-10-05T17:21:20.563Z"
     },
     "taylor-moore": {
       "player": {
@@ -3179,7 +3179,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-10-05T00:07:11.326Z"
+      "generatedAt": "2026-10-05T17:21:20.563Z"
     },
     "kevin-streelman": {
       "player": {
@@ -3225,7 +3225,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-10-05T00:07:11.326Z"
+      "generatedAt": "2026-10-05T17:21:20.563Z"
     },
     "cam-davis": {
       "player": {
@@ -3261,7 +3261,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-10-05T00:07:11.326Z"
+      "generatedAt": "2026-10-05T17:21:20.563Z"
     },
     "jimmy-stanger": {
       "player": {
@@ -3297,7 +3297,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-10-05T00:07:11.326Z"
+      "generatedAt": "2026-10-05T17:21:20.563Z"
     },
     "austin-smotherman": {
       "player": {
@@ -3343,7 +3343,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-10-05T00:07:11.326Z"
+      "generatedAt": "2026-10-05T17:21:20.563Z"
     },
     "max-greyserman": {
       "player": {
@@ -3379,7 +3379,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-10-05T00:07:11.326Z"
+      "generatedAt": "2026-10-05T17:21:20.563Z"
     },
     "trace-crowe": {
       "player": {
@@ -3425,7 +3425,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-10-05T00:07:11.326Z"
+      "generatedAt": "2026-10-05T17:21:20.563Z"
     },
     "rasmus-h-jgaard": {
       "player": {
@@ -3461,7 +3461,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-10-05T00:07:11.326Z"
+      "generatedAt": "2026-10-05T17:21:20.563Z"
     },
     "max-mcgreevy": {
       "player": {
@@ -3507,7 +3507,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-10-05T00:07:11.326Z"
+      "generatedAt": "2026-10-05T17:21:20.563Z"
     },
     "rico-hoey": {
       "player": {
@@ -3553,7 +3553,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-10-05T00:07:11.326Z"
+      "generatedAt": "2026-10-05T17:21:20.563Z"
     },
     "hank-lebioda": {
       "player": {
@@ -3589,7 +3589,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-10-05T00:07:11.326Z"
+      "generatedAt": "2026-10-05T17:21:20.563Z"
     },
     "garrick-higgo": {
       "player": {
@@ -3625,7 +3625,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-10-05T00:07:11.326Z"
+      "generatedAt": "2026-10-05T17:21:20.563Z"
     },
     "christo-lamprecht": {
       "player": {
@@ -3661,7 +3661,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-10-05T00:07:11.326Z"
+      "generatedAt": "2026-10-05T17:21:20.563Z"
     },
     "doug-ghim": {
       "player": {
@@ -3707,7 +3707,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-10-05T00:07:11.326Z"
+      "generatedAt": "2026-10-05T17:21:20.563Z"
     },
     "billy-horschel": {
       "player": {
@@ -3753,7 +3753,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-10-05T00:07:11.326Z"
+      "generatedAt": "2026-10-05T17:21:20.563Z"
     },
     "tony-finau": {
       "player": {
@@ -3789,7 +3789,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-10-05T00:07:11.326Z"
+      "generatedAt": "2026-10-05T17:21:20.563Z"
     },
     "brice-garnett": {
       "player": {
@@ -3835,7 +3835,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-10-05T00:07:11.326Z"
+      "generatedAt": "2026-10-05T17:21:20.563Z"
     },
     "david-skinns": {
       "player": {
@@ -3871,7 +3871,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-10-05T00:07:11.326Z"
+      "generatedAt": "2026-10-05T17:21:20.563Z"
     },
     "chris-kirk": {
       "player": {
@@ -3917,7 +3917,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-10-05T00:07:11.326Z"
+      "generatedAt": "2026-10-05T17:21:20.563Z"
     },
     "brendon-todd": {
       "player": {
@@ -3963,7 +3963,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-10-05T00:07:11.326Z"
+      "generatedAt": "2026-10-05T17:21:20.563Z"
     },
     "rafael-campos": {
       "player": {
@@ -3999,7 +3999,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-10-05T00:07:11.326Z"
+      "generatedAt": "2026-10-05T17:21:20.563Z"
     },
     "michael-thompson": {
       "player": {
@@ -4035,7 +4035,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-10-05T00:07:11.326Z"
+      "generatedAt": "2026-10-05T17:21:20.563Z"
     },
     "nick-taylor": {
       "player": {
@@ -4081,7 +4081,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-10-05T00:07:11.326Z"
+      "generatedAt": "2026-10-05T17:21:20.563Z"
     },
     "patton-kizzire": {
       "player": {
@@ -4127,7 +4127,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-10-05T00:07:11.326Z"
+      "generatedAt": "2026-10-05T17:21:20.563Z"
     },
     "rhett-rasmussen": {
       "player": {
@@ -4163,7 +4163,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-10-05T00:07:11.326Z"
+      "generatedAt": "2026-10-05T17:21:20.563Z"
     },
     "kevin-yu": {
       "player": {
@@ -4209,7 +4209,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-10-05T00:07:11.326Z"
+      "generatedAt": "2026-10-05T17:21:20.563Z"
     },
     "kristoffer-ventura": {
       "player": {
@@ -4255,7 +4255,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-10-05T00:07:11.326Z"
+      "generatedAt": "2026-10-05T17:21:20.563Z"
     },
     "alejandro-tosti": {
       "player": {
@@ -4301,7 +4301,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-10-05T00:07:11.326Z"
+      "generatedAt": "2026-10-05T17:21:20.563Z"
     },
     "patrick-fishburn": {
       "player": {
@@ -4347,7 +4347,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-10-05T00:07:11.326Z"
+      "generatedAt": "2026-10-05T17:21:20.563Z"
     },
     "john-vanderlaan": {
       "player": {
@@ -4393,7 +4393,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-10-05T00:07:11.326Z"
+      "generatedAt": "2026-10-05T17:21:20.563Z"
     },
     "pontus-nyholm": {
       "player": {
@@ -4429,7 +4429,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-10-05T00:07:11.326Z"
+      "generatedAt": "2026-10-05T17:21:20.563Z"
     },
     "lee-hodges": {
       "player": {
@@ -4475,7 +4475,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-10-05T00:07:11.326Z"
+      "generatedAt": "2026-10-05T17:21:20.563Z"
     },
     "vince-whaley": {
       "player": {
@@ -4506,7 +4506,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-10-05T00:07:11.326Z"
+      "generatedAt": "2026-10-05T17:21:20.563Z"
     },
     "jeffrey-kang": {
       "player": {
@@ -4542,7 +4542,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-10-05T00:07:11.326Z"
+      "generatedAt": "2026-10-05T17:21:20.563Z"
     },
     "danny-walker": {
       "player": {
@@ -4588,7 +4588,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-10-05T00:07:11.326Z"
+      "generatedAt": "2026-10-05T17:21:20.563Z"
     },
     "kevin-roy": {
       "player": {
@@ -4634,7 +4634,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-10-05T00:07:11.326Z"
+      "generatedAt": "2026-10-05T17:21:20.563Z"
     },
     "takumi-kanaya": {
       "player": {
@@ -4680,7 +4680,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-10-05T00:07:11.326Z"
+      "generatedAt": "2026-10-05T17:21:20.563Z"
     },
     "dylan-wu": {
       "player": {
@@ -4726,7 +4726,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-10-05T00:07:11.326Z"
+      "generatedAt": "2026-10-05T17:21:20.563Z"
     },
     "steven-fisk": {
       "player": {
@@ -4772,7 +4772,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-10-05T00:07:11.326Z"
+      "generatedAt": "2026-10-05T17:21:20.563Z"
     },
     "will-gordon": {
       "player": {
@@ -4808,7 +4808,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-10-05T00:07:11.326Z"
+      "generatedAt": "2026-10-05T17:21:20.563Z"
     },
     "marco-penge": {
       "player": {
@@ -4854,7 +4854,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-10-05T00:07:11.326Z"
+      "generatedAt": "2026-10-05T17:21:20.563Z"
     },
     "chandler-phillips": {
       "player": {
@@ -4890,7 +4890,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-10-05T00:07:11.326Z"
+      "generatedAt": "2026-10-05T17:21:20.563Z"
     },
     "isaiah-salinda": {
       "player": {
@@ -4926,7 +4926,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-10-05T00:07:11.326Z"
+      "generatedAt": "2026-10-05T17:21:20.563Z"
     },
     "harry-hall": {
       "player": {
@@ -4972,7 +4972,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-10-05T00:07:11.326Z"
+      "generatedAt": "2026-10-05T17:21:20.563Z"
     },
     "davis-thompson": {
       "player": {
@@ -5018,7 +5018,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-10-05T00:07:11.326Z"
+      "generatedAt": "2026-10-05T17:21:20.563Z"
     },
     "chandler-blanchet": {
       "player": {
@@ -5064,7 +5064,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-10-05T00:07:11.326Z"
+      "generatedAt": "2026-10-05T17:21:20.563Z"
     },
     "ben-martin": {
       "player": {
@@ -5100,7 +5100,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-10-05T00:07:11.326Z"
+      "generatedAt": "2026-10-05T17:21:20.563Z"
     },
     "john-parry": {
       "player": {
@@ -5146,7 +5146,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-10-05T00:07:11.326Z"
+      "generatedAt": "2026-10-05T17:21:20.563Z"
     },
     "jesper-svensson": {
       "player": {
@@ -5192,7 +5192,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-10-05T00:07:11.326Z"
+      "generatedAt": "2026-10-05T17:21:20.563Z"
     },
     "mac-meissner": {
       "player": {
@@ -5228,7 +5228,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-10-05T00:07:11.326Z"
+      "generatedAt": "2026-10-05T17:21:20.563Z"
     },
     "nick-dunlap": {
       "player": {
@@ -5274,7 +5274,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-10-05T00:07:11.326Z"
+      "generatedAt": "2026-10-05T17:21:20.563Z"
     },
     "pierceson-coody": {
       "player": {
@@ -5310,7 +5310,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-10-05T00:07:11.326Z"
+      "generatedAt": "2026-10-05T17:21:20.563Z"
     },
     "harry-higgs": {
       "player": {
@@ -5356,7 +5356,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-10-05T00:07:11.326Z"
+      "generatedAt": "2026-10-05T17:21:20.563Z"
     },
     "rasmus-neergaard-petersen": {
       "player": {
@@ -5381,7 +5381,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-10-05T00:07:11.326Z"
+      "generatedAt": "2026-10-05T17:21:20.563Z"
     },
     "joe-highsmith": {
       "player": {
@@ -5417,7 +5417,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-10-05T00:07:11.326Z"
+      "generatedAt": "2026-10-05T17:21:20.563Z"
     },
     "matt-mccarty": {
       "player": {
@@ -5463,7 +5463,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-10-05T00:07:11.326Z"
+      "generatedAt": "2026-10-05T17:21:20.563Z"
     },
     "michael-brennan": {
       "player": {
@@ -5509,7 +5509,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-10-05T00:07:11.326Z"
+      "generatedAt": "2026-10-05T17:21:20.563Z"
     },
     "jackson-suber": {
       "player": {
@@ -5555,7 +5555,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-10-05T00:07:11.326Z"
+      "generatedAt": "2026-10-05T17:21:20.563Z"
     },
     "kensei-hirata": {
       "player": {
@@ -5591,7 +5591,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-10-05T00:07:11.326Z"
+      "generatedAt": "2026-10-05T17:21:20.563Z"
     },
     "a-j-ewart": {
       "player": {
@@ -5637,7 +5637,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-10-05T00:07:11.326Z"
+      "generatedAt": "2026-10-05T17:21:20.563Z"
     },
     "adrien-dumont-de-chassart": {
       "player": {
@@ -5683,7 +5683,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-10-05T00:07:11.326Z"
+      "generatedAt": "2026-10-05T17:21:20.563Z"
     },
     "william-mouw": {
       "player": {
@@ -5729,7 +5729,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-10-05T00:07:11.326Z"
+      "generatedAt": "2026-10-05T17:21:20.563Z"
     },
     "ben-james": {
       "player": {
@@ -5775,7 +5775,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-10-05T00:07:11.326Z"
+      "generatedAt": "2026-10-05T17:21:20.563Z"
     },
     "aldrich-potgieter": {
       "player": {
@@ -5811,7 +5811,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-10-05T00:07:11.326Z"
+      "generatedAt": "2026-10-05T17:21:20.563Z"
     },
     "carson-lundell": {
       "player": {
@@ -5847,7 +5847,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-10-05T00:07:11.326Z"
+      "generatedAt": "2026-10-05T17:21:20.563Z"
     },
     "davis-chatfield": {
       "player": {
@@ -5883,7 +5883,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-10-05T00:07:11.326Z"
+      "generatedAt": "2026-10-05T17:21:20.563Z"
     },
     "gordon-sargent": {
       "player": {
@@ -5929,7 +5929,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-10-05T00:07:11.326Z"
+      "generatedAt": "2026-10-05T17:21:20.563Z"
     },
     "sudarshan-yellamaraju": {
       "player": {
@@ -5975,7 +5975,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-10-05T00:07:11.326Z"
+      "generatedAt": "2026-10-05T17:21:20.563Z"
     },
     "david-ford": {
       "player": {
@@ -6021,7 +6021,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-10-05T00:07:11.326Z"
+      "generatedAt": "2026-10-05T17:21:20.563Z"
     },
     "tyson-shelley": {
       "player": {
@@ -6057,7 +6057,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-10-05T00:07:11.326Z"
+      "generatedAt": "2026-10-05T17:21:20.563Z"
     },
     "neal-shipley": {
       "player": {
@@ -6103,7 +6103,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-10-05T00:07:11.326Z"
+      "generatedAt": "2026-10-05T17:21:20.563Z"
     },
     "jackson-koivun": {
       "player": {
@@ -6149,7 +6149,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-10-05T00:07:11.326Z"
+      "generatedAt": "2026-10-05T17:21:20.563Z"
     },
     "luke-clanton": {
       "player": {
@@ -6195,7 +6195,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-10-05T00:07:11.326Z"
+      "generatedAt": "2026-10-05T17:21:20.563Z"
     },
     "matt-snyder": {
       "player": {
@@ -6231,7 +6231,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-10-05T00:07:11.326Z"
+      "generatedAt": "2026-10-05T17:21:20.563Z"
     },
     "johnny-keefer": {
       "player": {
@@ -6277,7 +6277,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-10-05T00:07:11.326Z"
+      "generatedAt": "2026-10-05T17:21:20.563Z"
     },
     "kihei-akina": {
       "player": {
@@ -6323,7 +6323,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-10-05T00:07:11.326Z"
+      "generatedAt": "2026-10-05T17:21:20.563Z"
     },
     "bowen-mauss": {
       "player": {
@@ -6359,7 +6359,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-10-05T00:07:11.326Z"
+      "generatedAt": "2026-10-05T17:21:20.563Z"
     },
     "boston-bracken": {
       "player": {
@@ -6395,7 +6395,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-10-05T00:07:11.326Z"
+      "generatedAt": "2026-10-05T17:21:20.563Z"
     },
     "seonghyeon-an": {
       "player": {
@@ -6431,7 +6431,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-10-05T00:07:11.326Z"
+      "generatedAt": "2026-10-05T17:21:20.563Z"
     },
     "andrew-putnam": {
       "player": {
@@ -6467,7 +6467,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-10-05T00:07:11.326Z"
+      "generatedAt": "2026-10-05T17:21:20.563Z"
     },
     "david-lingmerth": {
       "player": {
@@ -6503,7 +6503,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-10-05T00:07:11.326Z"
+      "generatedAt": "2026-10-05T17:21:20.563Z"
     },
     "peter-malnati": {
       "player": {
@@ -6539,7 +6539,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-10-05T00:07:11.326Z"
+      "generatedAt": "2026-10-05T17:21:20.563Z"
     },
     "emiliano-grillo": {
       "player": {
@@ -6585,7 +6585,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-10-05T00:07:11.326Z"
+      "generatedAt": "2026-10-05T17:21:20.563Z"
     },
     "seamus-power": {
       "player": {
@@ -6631,7 +6631,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-10-05T00:07:11.326Z"
+      "generatedAt": "2026-10-05T17:21:20.563Z"
     },
     "beau-hossler": {
       "player": {
@@ -6677,7 +6677,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-10-05T00:07:11.326Z"
+      "generatedAt": "2026-10-05T17:21:20.563Z"
     },
     "tom-hoge": {
       "player": {
@@ -6713,7 +6713,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-10-05T00:07:11.326Z"
+      "generatedAt": "2026-10-05T17:21:20.563Z"
     },
     "joel-dahmen": {
       "player": {
@@ -6759,7 +6759,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-10-05T00:07:11.326Z"
+      "generatedAt": "2026-10-05T17:21:20.563Z"
     },
     "david-lipsky": {
       "player": {
@@ -6805,7 +6805,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-10-05T00:07:11.326Z"
+      "generatedAt": "2026-10-05T17:21:20.563Z"
     },
     "lucas-glover": {
       "player": {
@@ -6841,7 +6841,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-10-05T00:07:11.326Z"
+      "generatedAt": "2026-10-05T17:21:20.563Z"
     },
     "patrick-rodgers": {
       "player": {
@@ -6887,7 +6887,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-10-05T00:07:11.326Z"
+      "generatedAt": "2026-10-05T17:21:20.563Z"
     },
     "ben-kohles": {
       "player": {
@@ -6933,7 +6933,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-10-05T00:07:11.326Z"
+      "generatedAt": "2026-10-05T17:21:20.563Z"
     },
     "mackenzie-hughes": {
       "player": {
@@ -6969,7 +6969,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-10-05T00:07:11.326Z"
+      "generatedAt": "2026-10-05T17:21:20.563Z"
     },
     "stephan-jaeger": {
       "player": {
@@ -7015,7 +7015,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-10-05T00:07:11.326Z"
+      "generatedAt": "2026-10-05T17:21:20.563Z"
     },
     "marcelo-rozo": {
       "player": {
@@ -7051,7 +7051,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-10-05T00:07:11.326Z"
+      "generatedAt": "2026-10-05T17:21:20.563Z"
     },
     "zecheng-dou": {
       "player": {
@@ -7097,7 +7097,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-10-05T00:07:11.326Z"
+      "generatedAt": "2026-10-05T17:21:20.563Z"
     },
     "ben-silverman": {
       "player": {
@@ -7133,7 +7133,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-10-05T00:07:11.326Z"
+      "generatedAt": "2026-10-05T17:21:20.563Z"
     },
     "max-homa": {
       "player": {
@@ -7179,7 +7179,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-10-05T00:07:11.326Z"
+      "generatedAt": "2026-10-05T17:21:20.563Z"
     },
     "zac-blair": {
       "player": {
@@ -7225,7 +7225,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-10-05T00:07:11.326Z"
+      "generatedAt": "2026-10-05T17:21:20.563Z"
     },
     "zach-j-johnson": {
       "player": {
@@ -7261,7 +7261,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-10-05T00:07:11.326Z"
+      "generatedAt": "2026-10-05T17:21:20.563Z"
     },
     "adam-svensson": {
       "player": {
@@ -7307,7 +7307,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-10-05T00:07:11.326Z"
+      "generatedAt": "2026-10-05T17:21:20.563Z"
     },
     "mark-hubbard": {
       "player": {
@@ -7353,7 +7353,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-10-05T00:07:11.326Z"
+      "generatedAt": "2026-10-05T17:21:20.563Z"
     },
     "justin-lower": {
       "player": {
@@ -7399,7 +7399,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-10-05T00:07:11.326Z"
+      "generatedAt": "2026-10-05T17:21:20.563Z"
     },
     "haotong-li": {
       "player": {
@@ -7445,7 +7445,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-10-05T00:07:11.326Z"
+      "generatedAt": "2026-10-05T17:21:20.563Z"
     },
     "christiaan-bezuidenhout": {
       "player": {
@@ -7491,7 +7491,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-10-05T00:07:11.326Z"
+      "generatedAt": "2026-10-05T17:21:20.563Z"
     },
     "erik-van-rooyen": {
       "player": {
@@ -7537,7 +7537,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-10-05T00:07:11.326Z"
+      "generatedAt": "2026-10-05T17:21:20.563Z"
     },
     "jordan-smith": {
       "player": {
@@ -7583,7 +7583,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-10-05T00:07:11.326Z"
+      "generatedAt": "2026-10-05T17:21:20.563Z"
     },
     "maverick-mcnealy": {
       "player": {
@@ -7619,7 +7619,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-10-05T00:07:11.326Z"
+      "generatedAt": "2026-10-05T17:21:20.563Z"
     },
     "tyler-duncan": {
       "player": {
@@ -7655,7 +7655,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-10-05T00:07:11.326Z"
+      "generatedAt": "2026-10-05T17:21:20.563Z"
     },
     "paul-peterson": {
       "player": {
@@ -7691,7 +7691,7 @@
         "doubleBogeys": 0,
         "pars": 0
       },
-      "generatedAt": "2026-10-05T00:07:11.326Z"
+      "generatedAt": "2026-10-05T17:21:20.563Z"
     }
   }
 }
