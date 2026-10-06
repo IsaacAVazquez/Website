@@ -23,6 +23,11 @@ export interface TransitLine {
   destination: string;
   /** Number of stations the route serves end to end. */
   stationCount: number;
+  /**
+   * Uppercase station abbreviations in BART's route order, one direction.
+   * Optional because snapshots built before it existed carry none.
+   */
+  stationSequence?: string[];
 }
 
 export interface TransitStation {

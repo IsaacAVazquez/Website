@@ -118,7 +118,7 @@
   --c97-container: 1080px;
   /*
    * The dense tools' column (the trade calculator, the best ball draft room,
-   * Investments, and score pools). `WIDE_TOOL_ROUTES` in catalog97Nav.ts marks
+   * Investments, score pools, and the transit map). `WIDE_TOOL_ROUTES` in catalog97Nav.ts marks
    * those pages with data-c97-wide, and every shell on them takes this width,
    * header and footer included, so the page keeps one edge.
    */
@@ -2963,8 +2963,10 @@ select.c97-field {
   margin-top: var(--c97-sp-5);
 }
 
-/* The signature chart fills the slot; icons inside it keep their own size. */
-.c97-project-hero-signature svg:not(.lucide) {
+/* The signature chart fills the slot; icons inside it keep their own size, and
+ * so does a street map, whose vector layer and attribution flag Leaflet sizes
+ * itself. */
+.c97-project-hero-signature svg:not(.lucide):not(.leaflet-container svg) {
   display: block;
   width: 100%;
   height: auto;
@@ -2998,3 +3000,53 @@ select.c97-field {
     margin-bottom: 0;
   }
 }
+
+/* Leaflet basemap, shared by every street map on the site. */
+/* OSM tiles are loud by default, so the tile pane is washed toward the page:
+   warm paper by day, a dim field map at night. Pins and lines sit above
+   the tile pane and keep their own colours. Shared by /food-map and
+   /bay-area-transit. */
+.c97-basemap .leaflet-tile-pane {
+  filter: grayscale(0.8) sepia(0.25) contrast(0.92) brightness(1.03);
+}
+.dark .c97-basemap .leaflet-tile-pane {
+  filter: invert(1) hue-rotate(180deg) grayscale(0.85) brightness(0.82) contrast(0.95);
+}
+
+/*
+ * Leaflet chrome, restyled to match. Leaflet's own stylesheet loads from a
+ * CDN link injected into <head> at runtime (src/lib/leaflet.ts) rather than being
+ * bundled with the page, and its defaults (an opaque control background, a
+ * translucent white attribution strip) sit at the same or higher specificity
+ * than a plain descendant selector here. The `!important` is a deliberate,
+ * narrow override of a third-party widget's own chrome, not a fight with
+ * this file's own cascade.
+ */
+/* Leaflet's zoom buttons are 30px; the site's touch targets are 44. */
+.c97-basemap .leaflet-control-zoom a {
+  width: 44px !important;
+  height: 44px !important;
+  line-height: 44px !important;
+  background: var(--c97-panel) !important;
+  color: var(--c97-ink) !important;
+  border-color: var(--c97-rule) !important;
+}
+.c97-basemap .leaflet-control-attribution {
+  background: color-mix(in srgb, var(--c97-panel) 92%, transparent) !important;
+  color: var(--c97-label) !important;
+}
+.c97-basemap .leaflet-control-attribution a { color: var(--c97-ink-2) !important; }
+.c97-basemap .leaflet-popup-content-wrapper {
+  background: var(--c97-panel) !important;
+  color: var(--c97-ink) !important;
+  border: 1px solid var(--c97-rule);
+  /* Leaflet's CDN sheet rounds and blurs the popup; the print shop allows neither. */
+  border-radius: 0 !important;
+  box-shadow: none !important;
+}
+.c97-basemap .leaflet-popup-tip {
+  background: var(--c97-panel) !important;
+  border: 1px solid var(--c97-rule);
+  box-shadow: none !important;
+}
+.c97-basemap .leaflet-popup-content { margin: var(--c97-sp-2) var(--c97-sp-2); font-family: var(--c97-font-body); }

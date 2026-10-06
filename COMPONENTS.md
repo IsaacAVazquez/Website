@@ -156,7 +156,7 @@ Most of these are snapshot-driven dashboards that share one architecture
 | Interchange IQ | `src/app/fintech-tools/interchange-iq/*` | Client-side interchange fee analyzer |
 | MBA Role Tracker | `src/app/mba-internship-notifications/*`, `src/constants/mba-companies.ts`, `src/lib/mba-job-matching.ts`, `src/types/mba-jobs.ts` | Client shell (`MBAJobsClient`) plus deep-link state helper (`mba-jobs-state.ts`) backed by `/api/mba-jobs`; uses `src/app/api/mba-jobs/email` for Resend digests |
 | World Cup Pulse | `src/app/world-cup-2026/*`, `src/data/worldCupSnapshot.json`, `src/lib/worldCupSnapshot.ts` | Snapshot-backed 2026 FIFA World Cup hub reusing `src/components/football/*` |
-| Bay Area Transit Pulse | `src/app/bay-area-transit/*`, `src/data/bayAreaTransitSnapshot.json`, `src/lib/bayAreaTransitSnapshot.ts` | Snapshot-backed BART dashboard with lines, station departure boards, and advisories |
+| Bay Area Transit Pulse | `src/app/bay-area-transit/*`, `src/data/bayAreaTransitSnapshot.json`, `src/lib/bayAreaTransitSnapshot.ts` | Snapshot-backed BART dashboard with a Leaflet street map of every line (`TransitMap.tsx`), station departure boards, and advisories |
 | Tech Startup Tracker | `src/app/tech-startup-tracker/*`, `src/data/techStartupSnapshot.json`, `src/lib/techStartups.ts` | Editorially curated startup funding tracker with deep-linkable sector/stage state |
 | Travel Planner | `src/app/travel/*`, `src/hooks/useTravelPlanner.ts` | Browser-persisted trip planner client (`travel-planner-client.tsx`) for itineraries and journaling |
 | Golf | `src/app/golf/*`, `src/data/golfSnapshot.json` | Snapshot-backed PGA Tour leaderboard dashboard |

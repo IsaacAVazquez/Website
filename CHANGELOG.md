@@ -7,6 +7,7 @@ All notable changes to this repository are documented here. Format: `YYYY-MM-DD`
 ## 2026-10-04
 
 - Fix dated draft practice and verified email configuration ([#564](https://github.com/IsaacAVazquez/Website/pull/564)).
+- Feat/transit street map ([#563](https://github.com/IsaacAVazquez/Website/pull/563)).
 
 ---
 

@@ -273,6 +273,9 @@ export async function buildBayAreaTransitSnapshotData(
       origin: detail.origin ?? "",
       destination: detail.destination ?? "",
       stationCount: configStations.length || toNumber(detail.num_stns),
+      // routeinfo lists the stations in running order, which is what lets the
+      // map draw the line instead of only its stops.
+      stationSequence: configStations.map((abbr) => abbr.toUpperCase()),
     });
 
     await delay(ROUTE_REQUEST_SPACING_MS);

@@ -53,7 +53,7 @@ Current route inventory and page ownership for the live app.
 | `/world-cup-2026` | `src/app/world-cup-2026/page.tsx` | Snapshot-backed 2026 FIFA World Cup hub (groups, knockout bracket, schedule, venues) |
 | `/score-pools` (+ `/tracker`, `/settings`) | `src/app/score-pools/page.tsx` | Exact-score prediction pool engine: market-calibrated scoreline model, expected-points pick sheet, tracker, and settings (`npm run update:score-pools`, 6-hourly refresh) |
 | `/tech-startup-tracker` | `src/app/tech-startup-tracker/page.tsx` | Curated tech startup funding tracker (sector/stage, valuations, momentum) |
-| `/bay-area-transit` | `src/app/bay-area-transit/page.tsx` | Snapshot-backed BART dashboard (lines, station departures, advisories) |
+| `/bay-area-transit` | `src/app/bay-area-transit/page.tsx` | Snapshot-backed BART dashboard (street map of every line, station departures, advisories) |
 | `/news-pulse` | `src/app/news-pulse/page.tsx` | News Pulse dashboard |
 | `/spacex-mission-control` | `src/app/spacex-mission-control/page.tsx` | SpaceX Mission Control dashboard |
 | `/polling-aggregator` | `src/app/polling-aggregator/page.tsx` | Snapshot-backed political polling dashboard |

@@ -114,10 +114,6 @@ function renderClient(
   return { ...view, rerenderWith: (extra: typeof props = {}) => view.rerender(ui(extra)) };
 }
 
-function readout(label: string) {
-  return screen.getByText(label, { selector: "dt" }).parentElement as HTMLElement;
-}
-
 describe("BayAreaTransitClient", () => {
   const originalFetch = global.fetch;
 
@@ -145,9 +141,8 @@ describe("BayAreaTransitClient", () => {
     renderClient();
 
     expect(screen.getByRole("heading", { level: 1, name: "Bay Area Transit Pulse" })).toBeInTheDocument();
-    expect(readout("Lines")).toHaveTextContent("2");
-    expect(readout("Stations")).toHaveTextContent("3");
-    expect(readout("Active alerts")).toHaveTextContent("0Normal service");
+    // The hero carries no readouts; the alert count rides on the Alerts tab, bare at zero.
+    expect(screen.getByRole("tab", { name: "Alerts" })).toBeInTheDocument();
     expect(screen.getByText(/^BART API · feed 12:00:00 PM PDT · refreshed /)).toBeInTheDocument();
     expect(screen.queryByText(/seed data/)).toBeNull();
 
@@ -207,9 +202,10 @@ describe("BayAreaTransitClient", () => {
 
   it("lists every station on the board with its line dots, and closes the list on a pick", () => {
     renderClient();
+    const finder = within(document.querySelector(".c97-transit-finder") as HTMLElement);
 
     // The list starts closed, so the board sits right under the search field.
-    expect(screen.queryByRole("button", { name: /Richmond/ })).toBeNull();
+    expect(finder.queryByRole("button", { name: /Richmond/ })).toBeNull();
     const toggle = screen.getByRole("button", { name: "Show all 3 stations" });
     expect(toggle).toHaveAttribute("aria-expanded", "false");
     fireEvent.click(toggle);
@@ -231,7 +227,7 @@ describe("BayAreaTransitClient", () => {
     fireEvent.click(within(board).getByRole("button", { name: /Montgomery/ }));
     expect(mockPush).toHaveBeenLastCalledWith("/bay-area-transit?station=mont", { scroll: false });
     // The list closes and focus goes back to the control that opened it.
-    expect(screen.queryByRole("button", { name: /Richmond/ })).toBeNull();
+    expect(finder.queryByRole("button", { name: /Richmond/ })).toBeNull();
     expect(toggle).toHaveAttribute("aria-expanded", "false");
     expect(toggle).toHaveFocus();
   });
@@ -239,40 +235,42 @@ describe("BayAreaTransitClient", () => {
   it("searches stations by name or city and returns focus to the field on a keyboard pick", () => {
     renderClient();
     const search = screen.getByLabelText("Find a station");
+    const finder = within(search.closest(".c97-transit-finder") as HTMLElement);
 
     fireEvent.change(search, { target: { value: "zzz" } });
-    expect(screen.getByRole("status")).toHaveTextContent("No station matches that search.");
+    expect(finder.getByRole("status")).toHaveTextContent("No station matches that search.");
 
     fireEvent.change(search, { target: { value: "san fran" } });
-    expect(screen.getByRole("button", { name: /Embarcadero/ })).toBeInTheDocument();
-    expect(screen.getByRole("button", { name: /Montgomery/ })).toBeInTheDocument();
-    expect(screen.queryByRole("button", { name: /Richmond/ })).toBeNull();
+    expect(finder.getByRole("button", { name: /Embarcadero/ })).toBeInTheDocument();
+    expect(finder.getByRole("button", { name: /Montgomery/ })).toBeInTheDocument();
+    expect(finder.queryByRole("button", { name: /Richmond/ })).toBeNull();
     // The whole-list toggle steps aside while a search is typed.
     expect(screen.queryByRole("button", { name: /Show all/ })).toBeNull();
 
     fireEvent.change(search, { target: { value: " MONT " } });
-    expect(screen.queryByRole("button", { name: /Embarcadero/ })).toBeNull();
+    expect(finder.queryByRole("button", { name: /Embarcadero/ })).toBeNull();
     // fireEvent's click carries no click count, which is how a keyboard press arrives.
-    fireEvent.click(screen.getByRole("button", { name: /Montgomery/ }));
+    fireEvent.click(finder.getByRole("button", { name: /Montgomery/ }));
 
     expect(mockPush).toHaveBeenLastCalledWith("/bay-area-transit?station=mont", { scroll: false });
     expect(search).toHaveValue("");
     expect(search).toHaveFocus();
-    expect(screen.queryByRole("button", { name: /Montgomery/ })).toBeNull();
+    expect(finder.queryByRole("button", { name: /Montgomery/ })).toBeNull();
   });
 
   it("scrolls the finder to the top on a tap without focusing the field", () => {
     renderClient();
     const search = screen.getByLabelText("Find a station") as HTMLInputElement;
-    const finder = search.closest(".c97-transit-finder") as HTMLElement;
-    finder.scrollIntoView = jest.fn();
+    const finderEl = search.closest(".c97-transit-finder") as HTMLElement;
+    const finder = within(finderEl);
+    finderEl.scrollIntoView = jest.fn();
 
     fireEvent.change(search, { target: { value: "rich" } });
-    fireEvent.click(screen.getByRole("button", { name: /Richmond/ }), { detail: 1 });
+    fireEvent.click(finder.getByRole("button", { name: /Richmond/ }), { detail: 1 });
 
     expect(mockPush).toHaveBeenLastCalledWith("/bay-area-transit?station=rich", { scroll: false });
     // Top of the screen, so the board under the finder is in view wherever the field sat.
-    expect(finder.scrollIntoView).toHaveBeenCalledWith({ block: "start" });
+    expect(finderEl.scrollIntoView).toHaveBeenCalledWith({ block: "start" });
     expect(search).not.toHaveFocus();
   });
 
@@ -373,7 +371,7 @@ describe("BayAreaTransitClient", () => {
       },
     });
 
-    expect(readout("Active alerts")).toHaveTextContent(/^Active alerts2$/);
+    expect(screen.getByRole("tab", { name: "Alerts · 3" })).toBeInTheDocument();
     expect(screen.getByText("DELAY · EMBR")).toBeInTheDocument();
     expect(screen.getByText("Ten minute delay in the Transbay Tube.")).toBeInTheDocument();
     expect(screen.getByText("Advisory")).toBeInTheDocument();
@@ -394,7 +392,6 @@ describe("BayAreaTransitClient", () => {
     expect(
       screen.getByText(/feed time unavailable · refreshed .* · seed data · advisories, elevator from the last good snapshot$/)
     ).toBeInTheDocument();
-    expect(readout("Active alerts")).toHaveTextContent("Last known count");
     expect(screen.getByText(/did not return fresh advisories, elevator data/)).toBeInTheDocument();
     expect(screen.queryByText(/No delays reported/)).toBeNull();
     expect(screen.getByText(/This is a hand-authored seed shipped with the app/)).toBeInTheDocument();
@@ -408,7 +405,10 @@ describe("BayAreaTransitClient", () => {
 
   it("replaces the summary when the refresh answers, and refreshes again each minute while visible", async () => {
     const intervalSpy = jest.spyOn(window, "setInterval");
-    const fresh: TransitSummary = { ...SUMMARY, heroStats: { ...SUMMARY.heroStats, lineCount: 5 } };
+    const fresh: TransitSummary = {
+      ...SUMMARY,
+      advisories: [{ id: "a1", type: "DELAY", description: "Delay.", station: null, posted: "" }],
+    };
     const fetchMock = mockFetch((url) =>
       url.endsWith("/summary")
         ? jsonResponse(fresh)
@@ -416,7 +416,7 @@ describe("BayAreaTransitClient", () => {
     );
 
     renderClient();
-    await waitFor(() => expect(readout("Lines")).toHaveTextContent("5"));
+    expect(await screen.findByRole("tab", { name: "Alerts · 1" })).toBeInTheDocument();
     // The refresh clears the held boards, so the default station's board is fetched fresh.
     expect(await screen.findByText("Pittsburg/Bay Point")).toBeInTheDocument();
 
@@ -438,7 +438,7 @@ describe("BayAreaTransitClient", () => {
     renderClient();
     await waitFor(() => expect(fetchMock).toHaveBeenCalled());
     await act(async () => {});
-    expect(readout("Lines")).toHaveTextContent("2");
+    expect(screen.getByRole("tab", { name: "Alerts" })).toBeInTheDocument();
     expect(screen.getByText("Antioch")).toBeInTheDocument();
   });
 

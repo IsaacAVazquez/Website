@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-10-03T10:41:01.762Z",
-  "sourceAsOf": "2026-09-08",
+  "generatedAt": "2026-10-05T12:44:06.335Z",
+  "sourceAsOf": "2026-10-02",
   "sourceLabel": "VoteHub Polling API, CC BY 4.0",
   "approvalAvg": {
     "approve": 39.8,
@@ -10,8 +10,8 @@
   "approvalTrend": [
     {
       "date": "2025-09-15",
-      "approve": 43.8,
-      "disapprove": 52.4
+      "approve": 47.8,
+      "disapprove": 48.8
     },
     {
       "date": "2025-10-15",
@@ -476,11 +476,24 @@
     }
   ],
   "genericBallotAvg": {
-    "dem": 45.8,
-    "rep": 39.4,
-    "margin": 6.4
+    "dem": 49.7,
+    "rep": 41.7,
+    "margin": 8
   },
   "genericBallotPolls": [
+    {
+      "id": "gen202you9adbf42a",
+      "pollster": "YouGov - CBS News",
+      "startDate": "2026-09-30",
+      "endDate": "2026-10-02",
+      "sampleSize": 1572,
+      "sampleType": "LV",
+      "moe": null,
+      "methodology": "unknown",
+      "dem": 54,
+      "rep": 45,
+      "other": 1
+    },
     {
       "id": "gen202you883b1d2b",
       "pollster": "YouGov",
@@ -873,20 +886,6 @@
       "dem": 48,
       "rep": 45,
       "other": 7
-    },
-    {
-      "id": "gen202rmg8b19cf0c",
-      "pollster": "RMG Research",
-      "sponsor": "Napolitan Institute",
-      "startDate": "2026-06-01",
-      "endDate": "2026-06-04",
-      "sampleSize": 2000,
-      "sampleType": "RV",
-      "moe": null,
-      "methodology": "unknown",
-      "dem": 49,
-      "rep": 45,
-      "other": 6
     }
   ],
   "senateRaces": [],
