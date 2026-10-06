@@ -1,11 +1,11 @@
 {
-  "generatedAt": "2026-10-05T23:12:19.089Z",
+  "generatedAt": "2026-10-06T21:42:14.446Z",
   "data": {
     "PPR": {
       "10": {
         "season": 2026,
         "sourceUrl": "https://www.fantasypros.com/nfl/rankings/ppr-vorp.php?team_size=10",
-        "accessedAt": "2026-10-05T23:12:19.876Z",
+        "accessedAt": "2026-10-06T21:42:15.368Z",
         "players": [
           {
             "playerId": "fp-22968",
@@ -3682,7 +3682,7 @@
           {
             "playerId": "fp-23075",
             "name": "Eric Gray",
-            "team": "CLE",
+            "team": "FA",
             "position": "RB",
             "positionRank": 124,
             "rank": 409,
@@ -5367,7 +5367,7 @@
       "12": {
         "season": 2026,
         "sourceUrl": "https://www.fantasypros.com/nfl/rankings/ppr-vorp.php",
-        "accessedAt": "2026-10-05T23:12:20.752Z",
+        "accessedAt": "2026-10-06T21:42:15.862Z",
         "players": [
           {
             "playerId": "fp-22968",
@@ -8693,7 +8693,7 @@
           {
             "playerId": "fp-23075",
             "name": "Eric Gray",
-            "team": "CLE",
+            "team": "FA",
             "position": "RB",
             "positionRank": 124,
             "rank": 370,
@@ -10729,7 +10729,7 @@
       "14": {
         "season": 2026,
         "sourceUrl": "https://www.fantasypros.com/nfl/rankings/ppr-vorp.php?team_size=14",
-        "accessedAt": "2026-10-05T23:12:21.781Z",
+        "accessedAt": "2026-10-06T21:42:16.365Z",
         "players": [
           {
             "playerId": "fp-22968",
@@ -13902,7 +13902,7 @@
           {
             "playerId": "fp-23075",
             "name": "Eric Gray",
-            "team": "CLE",
+            "team": "FA",
             "position": "RB",
             "positionRank": 124,
             "rank": 353,
@@ -16093,7 +16093,7 @@
       "10": {
         "season": 2026,
         "sourceUrl": "https://www.fantasypros.com/nfl/rankings/half-ppr-vorp.php?team_size=10",
-        "accessedAt": "2026-10-05T23:12:22.441Z",
+        "accessedAt": "2026-10-06T21:42:17.245Z",
         "players": [
           {
             "playerId": "fp-22968",
@@ -19500,7 +19500,7 @@
           {
             "playerId": "fp-23075",
             "name": "Eric Gray",
-            "team": "CLE",
+            "team": "FA",
             "position": "RB",
             "positionRank": 127,
             "rank": 379,
@@ -21455,7 +21455,7 @@
       "12": {
         "season": 2026,
         "sourceUrl": "https://www.fantasypros.com/nfl/rankings/half-ppr-vorp.php",
-        "accessedAt": "2026-10-05T23:12:23.259Z",
+        "accessedAt": "2026-10-06T21:42:17.645Z",
         "players": [
           {
             "playerId": "fp-22968",
@@ -24997,7 +24997,7 @@
           {
             "playerId": "fp-23075",
             "name": "Eric Gray",
-            "team": "CLE",
+            "team": "FA",
             "position": "RB",
             "positionRank": 127,
             "rank": 394,
@@ -26817,7 +26817,7 @@
       "14": {
         "season": 2026,
         "sourceUrl": "https://www.fantasypros.com/nfl/rankings/half-ppr-vorp.php?team_size=14",
-        "accessedAt": "2026-10-05T23:12:24.088Z",
+        "accessedAt": "2026-10-06T21:42:18.083Z",
         "players": [
           {
             "playerId": "fp-22968",
@@ -29990,7 +29990,7 @@
           {
             "playerId": "fp-23075",
             "name": "Eric Gray",
-            "team": "CLE",
+            "team": "FA",
             "position": "RB",
             "positionRank": 127,
             "rank": 353,
@@ -32181,7 +32181,7 @@
       "10": {
         "season": 2026,
         "sourceUrl": "https://www.fantasypros.com/nfl/rankings/vorp.php?team_size=10",
-        "accessedAt": "2026-10-05T23:12:24.950Z",
+        "accessedAt": "2026-10-06T21:42:18.727Z",
         "players": [
           {
             "playerId": "fp-22968",
@@ -35867,7 +35867,7 @@
           {
             "playerId": "fp-23075",
             "name": "Eric Gray",
-            "team": "CLE",
+            "team": "FA",
             "position": "RB",
             "positionRank": 128,
             "rank": 410,
@@ -37543,7 +37543,7 @@
       "12": {
         "season": 2026,
         "sourceUrl": "https://www.fantasypros.com/nfl/rankings/vorp.php",
-        "accessedAt": "2026-10-05T23:12:25.387Z",
+        "accessedAt": "2026-10-06T21:42:19.168Z",
         "players": [
           {
             "playerId": "fp-22968",
@@ -41184,7 +41184,7 @@
           {
             "playerId": "fp-23075",
             "name": "Eric Gray",
-            "team": "CLE",
+            "team": "FA",
             "position": "RB",
             "positionRank": 128,
             "rank": 405,
@@ -42905,7 +42905,7 @@
       "14": {
         "season": 2026,
         "sourceUrl": "https://www.fantasypros.com/nfl/rankings/vorp.php?team_size=14",
-        "accessedAt": "2026-10-05T23:12:26.100Z",
+        "accessedAt": "2026-10-06T21:42:19.647Z",
         "players": [
           {
             "playerId": "fp-22968",
@@ -46285,7 +46285,7 @@
           {
             "playerId": "fp-23075",
             "name": "Eric Gray",
-            "team": "CLE",
+            "team": "FA",
             "position": "RB",
             "positionRank": 128,
             "rank": 376,
