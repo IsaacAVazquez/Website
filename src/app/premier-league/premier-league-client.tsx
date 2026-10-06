@@ -247,6 +247,15 @@ export function PremierLeagueClient({
     accentColor: row.team.accentColor ?? null,
   })), [summary.standings]);
 
+  const lookupClubs = useMemo(
+    () =>
+      summary.standings
+        .map((row) => ({ id: row.team.id, name: row.team.name }))
+        // The locale is named so the server and the browser sort alike.
+        .sort((a, b) => a.name.localeCompare(b.name, "en")),
+    [summary.standings]
+  );
+
   const programmeRows: ProgrammeTableRow[] = visibleStandings.map((row) => ({
     id: row.team.id,
     position: row.position,
@@ -274,6 +283,38 @@ export function PremierLeagueClient({
         title="Premier League Pulse"
         standfirst={standfirst}
         meta={`football-data.org · Matchday ${currentMatchday ?? "—"} of 38 · updated ${lastUpdated}`}
+        action={
+          <>
+        {/* The lookup sits right under the readouts, ahead of the ladder, so a
+            phone reaches a club without scrolling to the table. It opens on
+            the button and not on the select, because a keyboard walks a
+            closed select one club at a time. */}
+        <form
+          data-c97-surface="paper"
+          className="c97-offset flex flex-wrap items-end"
+          style={{ gap: "var(--c97-sp-2)", padding: "var(--c97-sp-2)", flex: "1 1 100%", maxWidth: "32rem" }}
+          onSubmit={(event) => {
+            event.preventDefault();
+            const teamId = new FormData(event.currentTarget).get("club");
+            if (typeof teamId === "string" && teamId) handleTeamChange(teamId);
+          }}
+        >
+          <label className="flex min-w-0 flex-1 flex-col" style={{ gap: "var(--c97-sp-1)" }}>
+            <span className="c97-kicker">Find a club</span>
+            <select name="club" className="c97-field" defaultValue={selectedTeamId ?? undefined}>
+              {lookupClubs.map((club) => (
+                <option key={club.id} value={club.id}>
+                  {club.name}
+                </option>
+              ))}
+            </select>
+          </label>
+          <button type="submit" className="c97-btn">
+            Open club
+          </button>
+        </form>
+          </>
+        }
         readouts={[
           {
             label: "Leader",

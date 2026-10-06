@@ -1166,13 +1166,7 @@ function CompanyFilterStrip({
  * each a big mono count with the conversion rate from the stage before it.
  * The first stage has nothing before it, so it carries no rate.
  */
-function PipelineSignature({
-  insights,
-  hasApplications,
-}: {
-  insights: MBAApplicationInsights;
-  hasApplications: boolean;
-}) {
+function PipelineSignature({ insights }: { insights: MBAApplicationInsights }) {
   const stages = pipelineStages(insights);
 
   return (
@@ -1209,11 +1203,6 @@ function PipelineSignature({
       <p className="c97-prose" style={{ marginTop: "var(--c97-sp-3)", color: "var(--c97-ink-2)" }}>
         {insights.funnel.rejected} rejected · {insights.archived} archived
       </p>
-      {!hasApplications && (
-        <p className="c97-prose" style={{ marginTop: "var(--c97-sp-2)" }}>
-          Track a role below to start filling this in.
-        </p>
-      )}
     </div>
   );
 }
@@ -1302,20 +1291,15 @@ function AttentionRow({
 
 function NeedsAttentionPanel({
   items,
-  hasApplications,
   onEdit,
   onMarkApplied,
   onClearFollowUp,
 }: {
   items: MBAAttentionItem[];
-  hasApplications: boolean;
   onEdit: (application: MBATrackedApplication) => void;
   onMarkApplied: (id: string) => void;
   onClearFollowUp: (id: string) => void;
 }) {
-  // Nothing to nudge about until the pipeline has at least one application.
-  if (!hasApplications) return null;
-
   return (
     <section aria-labelledby="mba-attention-heading" style={{ display: "flex", flexDirection: "column", gap: "var(--c97-sp-2)" }}>
       <SectionLead
@@ -1698,15 +1682,11 @@ function ApplicationPipeline({
   );
 }
 
-function SourceHealthPanel({
-  sourceStatuses,
-  isLoading,
-}: {
-  sourceStatuses: MBAJobsSourceStatus[];
-  isLoading: boolean;
-}) {
-  if (isLoading || sourceStatuses.length === 0) return null;
-
+/**
+ * Which feeds answered. The counts stay in view and the per-feed list, one tag
+ * for every board, opens on request. It prints inside a band its caller owns.
+ */
+function SourceHealthPanel({ sourceStatuses }: { sourceStatuses: MBAJobsSourceStatus[] }) {
   const okCount = sourceStatuses.filter((status) => status.status === "ok").length;
   const failedCount = sourceStatuses.filter((status) => status.status === "failed").length;
   const skippedCount = sourceStatuses.filter((status) => status.status === "skipped").length;
@@ -1715,8 +1695,7 @@ function SourceHealthPanel({
   ).length;
 
   return (
-    <section className="c97-band c97-sheet" data-c97-surface="bone" data-seam="deckle" aria-labelledby="mba-source-health-heading">
-      <div className="c97-shell" style={{ display: "flex", flexDirection: "column", gap: "var(--c97-sp-2)" }}>
+    <div style={{ display: "flex", flexDirection: "column", gap: "var(--c97-sp-2)" }}>
       <SectionLead
         kicker="Source health"
         title="Know which feeds answered."
@@ -1732,31 +1711,36 @@ function SourceHealthPanel({
             <span className="c97-chip">{externalDisabledCount} external disabled</span>
           )}
         </div>
-        <div className="flex flex-wrap" style={{ marginTop: "var(--c97-sp-2)", gap: "var(--c97-sp-1)" }}>
-          {sourceStatuses.map((source) => {
-            const accent =
-              source.status === "ok"
-                ? "var(--c97-positive)"
-                : source.status === "failed"
-                  ? "var(--c97-negative)"
-                  : source.status === "external-disabled"
-                    ? "var(--c97-warning)"
-                    : "var(--c97-ink-2)";
-            return (
-              <ColorTag
-                key={`${source.companyId}-${source.status}`}
-                accent={accent}
-                title={source.message}
-                label={`${source.companyName} · ${
-                  source.status === "ok" ? `${source.jobCount} roles` : source.status
-                }`}
-              />
-            );
-          })}
-        </div>
+        <details className="c97-disclosure" style={{ marginTop: "var(--c97-sp-1)" }}>
+          <summary className="c97-btn-ghost">
+            <span data-when="closed">Show all {sourceStatuses.length} sources</span>
+            <span data-when="open">Hide the source list</span>
+          </summary>
+          <div className="flex flex-wrap" style={{ marginTop: "var(--c97-sp-1)", gap: "var(--c97-sp-1)" }}>
+            {sourceStatuses.map((source) => {
+              const accent =
+                source.status === "ok"
+                  ? "var(--c97-positive)"
+                  : source.status === "failed"
+                    ? "var(--c97-negative)"
+                    : source.status === "external-disabled"
+                      ? "var(--c97-warning)"
+                      : "var(--c97-ink-2)";
+              return (
+                <ColorTag
+                  key={`${source.companyId}-${source.status}`}
+                  accent={accent}
+                  title={source.message}
+                  label={`${source.companyName} · ${
+                    source.status === "ok" ? `${source.jobCount} roles` : source.status
+                  }`}
+                />
+              );
+            })}
+          </div>
+        </details>
       </div>
-      </div>
-    </section>
+    </div>
   );
 }
 
@@ -1925,6 +1909,7 @@ export function MBAJobsClient({
   // the first page renders until "Show more" is clicked, and any filter
   // change starts back at the first page.
   const [visibleJobCount, setVisibleJobCount] = useState(JOB_PAGE_SIZE);
+  const [showRefinements, setShowRefinements] = useState(false);
   useEffect(() => {
     // eslint-disable-next-line react-hooks/set-state-in-effect -- resets pagination when the filters that produced `displayJobs` change, not on every render
     setVisibleJobCount(JOB_PAGE_SIZE);
@@ -1962,6 +1947,7 @@ export function MBAJobsClient({
 
 
   const hasApplications = applications.length > 0;
+  const showSourceHealth = !isLoading && sourceStatuses.length > 0;
 
   function openApplicationDialog(application: MBATrackedApplication | null) {
     setEditingApplication(application);
@@ -2065,27 +2051,52 @@ export function MBAJobsClient({
           </>
         }
         meta={refreshLabel}
-        readouts={[
-          { label: "Live roles tracked", value: isLoading ? "—" : jobs.length },
-          { label: "Active applications", value: activeApplications.length },
-          { label: "Needs attention", value: attentionItems.length },
-        ]}
+        // The hero fills a phone's first screen, so one link goes straight to the search.
+        action={
+          uiState.view === "applications" ? undefined : (
+            <a href="#mba-role-tracker-filters-heading" className="c97-btn-ghost">
+              Search roles
+            </a>
+          )
+        }
+        // The two pipeline figures and the funnel are all zeros until a role
+        // is tracked, and on a phone they stood between the visitor and the
+        // search. They print once there is something to count.
+        readouts={
+          hasApplications
+            ? [
+                { label: "Live roles tracked", value: isLoading ? "—" : jobs.length },
+                { label: "Active applications", value: activeApplications.length },
+                { label: "Needs attention", value: attentionItems.length },
+              ]
+            : [{ label: "Live roles tracked", value: isLoading ? "—" : jobs.length }]
+        }
       >
-        <div data-c97-surface="paper" className="c97-offset" style={{ padding: "var(--c97-sp-4)" }}>
-          <div className="mba-signature-grid">
-            <PipelineSignature insights={applicationInsights} hasApplications={hasApplications} />
-            <NeedsAttentionPanel
-              items={attentionItems}
-              hasApplications={hasApplications}
-              onEdit={openApplicationDialog}
-              onMarkApplied={(id) => updateStatus(id, "applied")}
-              onClearFollowUp={handleClearFollowUp}
-            />
+        {hasApplications ? (
+          <div data-c97-surface="paper" className="c97-offset" style={{ padding: "var(--c97-sp-4)" }}>
+            <div className="mba-signature-grid">
+              <PipelineSignature insights={applicationInsights} />
+              <NeedsAttentionPanel
+                items={attentionItems}
+                onEdit={openApplicationDialog}
+                onMarkApplied={(id) => updateStatus(id, "applied")}
+                onClearFollowUp={handleClearFollowUp}
+              />
+            </div>
           </div>
-        </div>
+        ) : (
+          <div data-c97-surface="paper" className="c97-offset" style={{ padding: "var(--c97-sp-3)" }}>
+            <p className="c97-kicker">Pipeline funnel</p>
+            <p className="c97-prose" style={{ marginTop: "var(--c97-sp-1)" }}>
+              Track a role below to start filling this in.
+            </p>
+          </div>
+        )}
       </Catalog97ProjectHero>
 
-      <section className="c97-band c97-sheet" data-c97-surface="paper" data-seam="torn">
+      {/* Bone, because the band under it is paper in both views now that
+          source health prints after the results. */}
+      <section className="c97-band c97-band-tight c97-sheet" data-c97-surface="bone" data-seam="deckle">
         <div className="c97-shell" style={{ display: "flex", flexDirection: "column", gap: "var(--c97-sp-4)" }}>
           <div className="flex flex-wrap items-center" style={{ gap: "var(--c97-sp-2)" }}>
             <button
@@ -2134,21 +2145,28 @@ export function MBAJobsClient({
         </div>
       </section>
 
-      <SourceHealthPanel sourceStatuses={sourceStatuses} isLoading={isLoading} />
-
       {uiState.view === "applications" ? (
-        <ApplicationPipeline
-          applications={applications}
-          onCreate={() => openApplicationDialog(null)}
-          onEdit={openApplicationDialog}
-          onStatusChange={updateStatus}
-          onPriorityChange={updatePriority}
-          onArchive={archiveApplication}
-          onRemove={removeApplication}
-          onExportJson={handleExportJson}
-          onExportCsv={handleExportCsv}
-          onImport={importApplications}
-        />
+        <>
+          <ApplicationPipeline
+            applications={applications}
+            onCreate={() => openApplicationDialog(null)}
+            onEdit={openApplicationDialog}
+            onStatusChange={updateStatus}
+            onPriorityChange={updatePriority}
+            onArchive={archiveApplication}
+            onRemove={removeApplication}
+            onExportJson={handleExportJson}
+            onExportCsv={handleExportCsv}
+            onImport={importApplications}
+          />
+          {showSourceHealth && (
+            <section className="c97-band c97-sheet" data-c97-surface="bone" data-seam="deckle" aria-labelledby="mba-source-health-heading">
+              <div className="c97-shell">
+                <SourceHealthPanel sourceStatuses={sourceStatuses} />
+              </div>
+            </section>
+          )}
+        </>
       ) : (
         <>
 
@@ -2260,136 +2278,163 @@ export function MBAJobsClient({
                   </div>
                 </div>
 
-                {locationOptions.length > 0 && (
-                  <div
-                    className="border"
-                    style={{
-                      padding: "var(--c97-sp-2)",
-                      borderColor: "var(--c97-rule)",
-                      background: "var(--c97-field)",
-                    }}
-                  >
-                    <div className="flex flex-wrap items-center justify-between" style={{ gap: "var(--c97-sp-1)" }}>
-                      <p className="c97-meta">Popular locations</p>
-                      <p
-                        className="text-1xs"
-                        style={{ margin: 0, color: "var(--c97-ink-2)" }}
-                      >
-                        {matchingRoleCount} roles before location filtering
-                      </p>
-                    </div>
-                    <div
-                      className="c97-segmented"
-                      role="group"
-                      aria-label="Suggested locations"
-                      style={{ marginTop: "var(--c97-sp-2)" }}
-                    >
-                      <button
-                        type="button"
-                        aria-pressed={uiState.location.trim().length === 0}
-                        onClick={() => updateRouteState({ location: "" })}
-                        style={{ minHeight: 44 }}
-                      >
-                        All locations
-                      </button>
-                      {locationOptions.map((option) => (
-                        <button
-                          type="button"
-                          key={option.normalizedValue}
-                          aria-pressed={normalizedLocationFilter === option.normalizedValue}
-                          onClick={() => updateRouteState({ location: option.label })}
-                          style={{ minHeight: 44 }}
-                        >
-                          {option.label} · {option.count}
-                        </button>
-                      ))}
-                    </div>
-                  </div>
-                )}
-
-                <div
-                  className="border-t border-[var(--c97-rule)]"
-                  style={{ display: "flex", flexDirection: "column", gap: "var(--c97-sp-2)", paddingTop: "var(--c97-sp-3)" }}
+                {/* On a phone these five groups stack between the search field
+                    and the first role. Below 768px they open on request, and
+                    from there up they always print. The tags under them still
+                    name every filter in force. */}
+                <button
+                  type="button"
+                  className="mba-disclosure flex min-h-[44px] w-full items-center justify-between text-left md:hidden"
+                  style={{ gap: "var(--c97-sp-2)", color: "var(--c97-ink)" }}
+                  aria-expanded={showRefinements}
+                  aria-controls="mba-role-refinements"
+                  onClick={() => setShowRefinements((open) => !open)}
                 >
-                  <div style={{ display: "flex", flexDirection: "column", gap: "var(--c97-sp-1)" }}>
-                    <p className="c97-meta">Role type</p>
-                    <div className="c97-segmented" role="group" aria-label="Filter by role type">
-                      {ROLE_TYPE_OPTIONS.map((roleType) => (
-                        <button
-                          type="button"
-                          key={roleType}
-                          aria-pressed={uiState.roleType === roleType}
-                          onClick={() =>
-                            updateRouteState({ roleType: roleType as MBARoleTypeFilter })
-                          }
-                          style={{ minHeight: 44 }}
-                        >
-                          {ROLE_TYPE_LABELS[roleType as MBARoleTypeFilter]}
-                        </button>
-                      ))}
-                    </div>
-                  </div>
-
-                  <div style={{ display: "flex", flexDirection: "column", gap: "var(--c97-sp-1)" }}>
-                    <p className="c97-meta">Role family</p>
+                  <span className="c97-meta" style={{ display: "block" }}>
+                    {`${showRefinements ? "Hide" : "Show"} location, role, company, and source filters`}
+                  </span>
+                  <ChevronDown
+                    className={`h-4 w-4 shrink-0 transition-transform duration-150 ease ${
+                      showRefinements ? "rotate-180" : ""
+                    }`}
+                    aria-hidden="true"
+                  />
+                </button>
+                <div
+                  id="mba-role-refinements"
+                  className={`flex-col gap-[var(--c97-sp-3)] md:flex ${showRefinements ? "flex" : "hidden"}`}
+                >
+                  {locationOptions.length > 0 && (
                     <div
-                      className="c97-segmented"
-                      role="group"
-                      aria-label="Filter by role family"
+                      className="border"
+                      style={{
+                        padding: "var(--c97-sp-2)",
+                        borderColor: "var(--c97-rule)",
+                        background: "var(--c97-field)",
+                      }}
                     >
-                      {ROLE_FAMILY_OPTIONS.map((family) => (
+                      <div className="flex flex-wrap items-center justify-between" style={{ gap: "var(--c97-sp-1)" }}>
+                        <p className="c97-meta">Popular locations</p>
+                        <p
+                          className="text-1xs"
+                          style={{ margin: 0, color: "var(--c97-ink-2)" }}
+                        >
+                          {matchingRoleCount} roles before location filtering
+                        </p>
+                      </div>
+                      <div
+                        className="c97-segmented"
+                        role="group"
+                        aria-label="Suggested locations"
+                        style={{ marginTop: "var(--c97-sp-2)" }}
+                      >
                         <button
                           type="button"
-                          key={family}
-                          aria-pressed={uiState.roleFamily === family}
-                          onClick={() =>
-                            updateRouteState({ roleFamily: family as MBARoleFamilyFilter })
-                          }
+                          aria-pressed={uiState.location.trim().length === 0}
+                          onClick={() => updateRouteState({ location: "" })}
                           style={{ minHeight: 44 }}
                         >
-                          {ROLE_FAMILY_LABELS[family as MBARoleFamilyFilter]}
+                          All locations
                         </button>
-                      ))}
+                        {locationOptions.map((option) => (
+                          <button
+                            type="button"
+                            key={option.normalizedValue}
+                            aria-pressed={normalizedLocationFilter === option.normalizedValue}
+                            onClick={() => updateRouteState({ location: option.label })}
+                            style={{ minHeight: 44 }}
+                          >
+                            {option.label} · {option.count}
+                          </button>
+                        ))}
+                      </div>
                     </div>
-                  </div>
+                  )}
 
-                  <div style={{ display: "flex", flexDirection: "column", gap: "var(--c97-sp-1)" }}>
-                    <p className="c97-meta">Company category</p>
-                    <div
-                      className="c97-segmented"
-                      role="group"
-                      aria-label="Filter by company category"
-                    >
-                      {CATEGORY_OPTIONS.map((category) => (
-                        <button
-                          type="button"
-                          key={category}
-                          aria-pressed={uiState.category === category}
-                          onClick={() =>
-                            updateRouteState({ category: category as MBACategoryFilter })
-                          }
-                          style={{ minHeight: 44 }}
-                        >
-                          {CATEGORY_LABELS[category as MBACategoryFilter]}
-                        </button>
-                      ))}
+                  <div
+                    className="border-t border-[var(--c97-rule)]"
+                    style={{ display: "flex", flexDirection: "column", gap: "var(--c97-sp-2)", paddingTop: "var(--c97-sp-3)" }}
+                  >
+                    <div style={{ display: "flex", flexDirection: "column", gap: "var(--c97-sp-1)" }}>
+                      <p className="c97-meta">Role type</p>
+                      <div className="c97-segmented" role="group" aria-label="Filter by role type">
+                        {ROLE_TYPE_OPTIONS.map((roleType) => (
+                          <button
+                            type="button"
+                            key={roleType}
+                            aria-pressed={uiState.roleType === roleType}
+                            onClick={() =>
+                              updateRouteState({ roleType: roleType as MBARoleTypeFilter })
+                            }
+                            style={{ minHeight: 44 }}
+                          >
+                            {ROLE_TYPE_LABELS[roleType as MBARoleTypeFilter]}
+                          </button>
+                        ))}
+                      </div>
                     </div>
-                  </div>
 
-                  <div style={{ display: "flex", flexDirection: "column", gap: "var(--c97-sp-1)" }}>
-                    <p className="c97-meta">Sources</p>
-                    <div className="c97-segmented" role="group" aria-label="External lead sources">
-                      {(["off", "on"] as const).map((external) => (
-                        <button
-                          type="button"
-                          key={external}
-                          aria-pressed={uiState.external === external}
-                          onClick={() => updateRouteState({ external })}
-                          style={{ minHeight: 44 }}
-                        >
-                          {EXTERNAL_LABELS[external]}
-                        </button>
-                      ))}
+                    <div style={{ display: "flex", flexDirection: "column", gap: "var(--c97-sp-1)" }}>
+                      <p className="c97-meta">Role family</p>
+                      <div
+                        className="c97-segmented"
+                        role="group"
+                        aria-label="Filter by role family"
+                      >
+                        {ROLE_FAMILY_OPTIONS.map((family) => (
+                          <button
+                            type="button"
+                            key={family}
+                            aria-pressed={uiState.roleFamily === family}
+                            onClick={() =>
+                              updateRouteState({ roleFamily: family as MBARoleFamilyFilter })
+                            }
+                            style={{ minHeight: 44 }}
+                          >
+                            {ROLE_FAMILY_LABELS[family as MBARoleFamilyFilter]}
+                          </button>
+                        ))}
+                      </div>
+                    </div>
+
+                    <div style={{ display: "flex", flexDirection: "column", gap: "var(--c97-sp-1)" }}>
+                      <p className="c97-meta">Company category</p>
+                      <div
+                        className="c97-segmented"
+                        role="group"
+                        aria-label="Filter by company category"
+                      >
+                        {CATEGORY_OPTIONS.map((category) => (
+                          <button
+                            type="button"
+                            key={category}
+                            aria-pressed={uiState.category === category}
+                            onClick={() =>
+                              updateRouteState({ category: category as MBACategoryFilter })
+                            }
+                            style={{ minHeight: 44 }}
+                          >
+                            {CATEGORY_LABELS[category as MBACategoryFilter]}
+                          </button>
+                        ))}
+                      </div>
+                    </div>
+
+                    <div style={{ display: "flex", flexDirection: "column", gap: "var(--c97-sp-1)" }}>
+                      <p className="c97-meta">Sources</p>
+                      <div className="c97-segmented" role="group" aria-label="External lead sources">
+                        {(["off", "on"] as const).map((external) => (
+                          <button
+                            type="button"
+                            key={external}
+                            aria-pressed={uiState.external === external}
+                            onClick={() => updateRouteState({ external })}
+                            style={{ minHeight: 44 }}
+                          >
+                            {EXTERNAL_LABELS[external]}
+                          </button>
+                        ))}
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -2434,25 +2479,6 @@ export function MBAJobsClient({
                 )}
               </div>
             </div>
-            </div>
-          </section>
-
-          <SearchElsewhereStrip currentState={uiState} />
-
-          <section className="c97-band c97-sheet" data-c97-surface="paper" data-seam="torn" aria-labelledby="mba-role-tracker-companies-heading">
-            <div className="c97-shell" style={{ display: "flex", flexDirection: "column", gap: "var(--c97-sp-2)" }}>
-            <SectionLead
-              kicker="Tracked companies"
-              title="Choose which live feeds stay in view."
-              description="Toggle the companies I can poll directly. Manual-only targets stay separate in Manual checks below."
-              id="mba-role-tracker-companies-heading"
-            />
-            <CompanyFilterStrip
-              watchedIds={watchedCompanyIds}
-              onToggle={toggleCompany}
-              onSelectAll={() => setAllCompanies(true)}
-              onClearAll={() => setAllCompanies(false)}
-            />
             </div>
           </section>
 
@@ -2554,10 +2580,39 @@ export function MBAJobsClient({
               <p className="c97-meta" style={{ marginTop: "var(--c97-sp-3)" }}>
                 {visibleJobs.length} of {displayJobs.length} role{displayJobs.length !== 1 ? "s" : ""} shown ·{" "}
                 {formatFetchedAt(lastFetchedAt)} · Polls every 30 min
+                {showSourceHealth && (
+                  <a href="#mba-source-health-heading" className="c97-link">
+                    Source health
+                  </a>
+                )}
               </p>
             )}
             </div>
           </section>
+
+          <section className="c97-band c97-sheet" data-c97-surface="paper" data-seam="torn" aria-labelledby="mba-role-tracker-companies-heading">
+            <div className="c97-shell" style={{ display: "flex", flexDirection: "column", gap: "var(--c97-sp-2)" }}>
+            <SectionLead
+              kicker="Tracked companies"
+              title="Choose which live feeds stay in view."
+              description="Toggle the companies I can poll directly. Manual-only targets stay separate in Manual checks below."
+              id="mba-role-tracker-companies-heading"
+            />
+            <CompanyFilterStrip
+              watchedIds={watchedCompanyIds}
+              onToggle={toggleCompany}
+              onSelectAll={() => setAllCompanies(true)}
+              onClearAll={() => setAllCompanies(false)}
+            />
+            {showSourceHealth && (
+              <div style={{ marginTop: "var(--c97-sp-4)" }}>
+                <SourceHealthPanel sourceStatuses={sourceStatuses} />
+              </div>
+            )}
+            </div>
+          </section>
+
+          <SearchElsewhereStrip currentState={uiState} />
 
           {manualCompanies.length > 0 && (
             <section className="c97-band c97-sheet" data-c97-surface="paper" data-seam="torn" aria-labelledby="mba-role-tracker-manual-heading">

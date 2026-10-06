@@ -1599,8 +1599,13 @@ export function FantasyFootballClient({ initialState, initialSnapshot = null }: 
                   <div
                     className="relative z-[2] flex min-h-11 w-full cursor-pointer flex-wrap items-center text-left"
                     style={{ paddingBlock: "var(--c97-sp-0)", paddingLeft: "var(--c97-sp-2)", paddingRight: "calc(52px + var(--c97-sp-1))", columnGap: "var(--c97-sp-2)", rowGap: "var(--c97-sp-0)", color: "var(--c97-ink)" }}
-                    onClick={() => {
+                    onClick={(event) => {
                       if (window.getSelection()?.toString()) return;
+                      // Pointer clicks land on the content above the row button.
+                      // Focus that opener so closing the drawer returns to this player.
+                      event.currentTarget.parentElement
+                        ?.querySelector<HTMLButtonElement>("button")
+                        ?.focus({ preventScroll: true });
                       setDetailPlayerId(player.id);
                     }}
                   >
@@ -1832,9 +1837,8 @@ export function FantasyFootballClient({ initialState, initialSnapshot = null }: 
         {seasonalWeek >= 1 ? (
           <div className={`${SHELL_CLASS}`} style={{ paddingTop: "var(--c97-sp-2)", paddingBottom: "var(--c97-sp-2)" }}>
             <SeasonalScopeNote season={metadata?.season ?? 0} week={seasonalWeek}>
-              Every board on this page is the preseason draft consensus, kept as a
-              reference once games begin rather than refreshed for weekly starts.
-              Ranks that still move are on the{" "}
+              Every board here is the preseason draft consensus, kept as a
+              reference once games begin. Ranks that still move are on the{" "}
               <Link
                 href="/fantasy-football/weekly"
                 className="underline decoration-[var(--c97-accent)] underline-offset-4"

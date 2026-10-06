@@ -99,6 +99,27 @@ describe("useMuseumLog", () => {
     expect(readStored().visited[0].museumId).toBe("met");
   });
 
+  it("keeps an unrated quick visit through a reload and drops one whose rating is invalid", async () => {
+    window.localStorage.setItem(
+      STORAGE_KEY,
+      JSON.stringify({
+        visited: [
+          { museumId: "met", date: "2026-06-01" },
+          { museumId: "moma", date: "2026-06-02", rating: null },
+          { museumId: "tate", date: "2026-06-03", rating: "5" },
+          { museumId: "prado", date: "2026-06-04", rating: 9 },
+        ],
+      }),
+    );
+    const { result } = renderHook(() => useMuseumLog());
+    await waitFor(() => expect(result.current.hydrated).toBe(true));
+
+    expect(result.current.state.visited).toEqual([
+      { museumId: "moma", date: "2026-06-02" },
+      { museumId: "met", date: "2026-06-01" },
+    ]);
+  });
+
   it("keeps visits sorted by date descending and de-duplicates by museum", async () => {
     const { result } = renderHook(() => useMuseumLog());
     await waitFor(() => expect(result.current.hydrated).toBe(true));

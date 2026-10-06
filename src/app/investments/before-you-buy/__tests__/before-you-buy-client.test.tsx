@@ -136,6 +136,17 @@ describe("BeforeYouBuyClient", () => {
     expect(screen.getByText(/Not investment advice\./)).toBeInTheDocument();
   });
 
+  // The 2026-10-05 audit measured the stock field at y1525 on a 390x844 phone, a band below the sentence it changes.
+  it("keeps the stock, the amount, and the portfolio choice on the plate with the summary", async () => {
+    useUniverse();
+    await renderPage();
+
+    const plate = within(summary().parentElement as HTMLElement);
+    expect(plate.getByLabelText("Search stock symbol")).toBeInTheDocument();
+    expect(plate.getByRole("spinbutton", { name: "Amount in dollars" })).toBeInTheDocument();
+    expect(within(plate.getByRole("group", { name: "Portfolio" })).getAllByRole("button")).toHaveLength(2);
+  });
+
   it("lists the sample holdings and the sector weights before and after", async () => {
     useUniverse();
     await renderPage();

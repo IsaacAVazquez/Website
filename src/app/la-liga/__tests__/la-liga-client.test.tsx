@@ -171,6 +171,21 @@ describe("LaLigaClient", () => {
       expect(screen.getByRole("dialog", { name: `${club.name} detail` })).toBeInTheDocument();
     });
 
+    it("opens a club from the lookup under the readouts", async () => {
+      const user = userEvent.setup();
+      followPushes();
+      const club = byPosition[9]!;
+      const view = render(ui());
+
+      await user.selectOptions(screen.getByRole("combobox", { name: "Find a club" }), club.id);
+      // Choosing alone opens nothing, so a keyboard can walk the list.
+      expect(mockPush).not.toHaveBeenCalled();
+      await user.click(screen.getByRole("button", { name: "Open club" }));
+      view.rerender(ui());
+
+      expect(screen.getByRole("dialog", { name: `${club.name} detail` })).toBeInTheDocument();
+    });
+
     it("leaves a focused view when the ladder club sits outside it", async () => {
       const user = userEvent.setup();
       followPushes();

@@ -5,7 +5,7 @@
 // comparisons when their picks are known, and manual result entry for
 // games no provider covers.
 
-import { useMemo, useState } from "react";
+import { useId, useMemo, useState } from "react";
 import Link from "next/link";
 import { useScorePools } from "@/hooks/useScorePools";
 import { effectiveResult, scoreParticipantPicks } from "@/lib/scorePools/poolAnalysis";
@@ -31,8 +31,9 @@ const COMPONENT_LABELS: Record<string, string> = {
 };
 
 function parseScoreInput(home: string, away: string): Scoreline | null {
-  const h = Number.parseInt(home, 10);
-  const a = Number.parseInt(away, 10);
+  if (!/^\d+$/.test(home.trim()) || !/^\d+$/.test(away.trim())) return null;
+  const h = Number(home);
+  const a = Number(away);
   if (!Number.isInteger(h) || !Number.isInteger(a) || h < 0 || a < 0 || h > 15 || a > 15) {
     return null;
   }
@@ -54,7 +55,7 @@ function ManualResultForm({
   const save = () => {
     const ninetyScore = parseScoreInput(ninety.home, ninety.away);
     if (!ninetyScore) {
-      setError("The 90-minute score needs two whole numbers.");
+      setError("The 90-minute score needs two whole numbers from 0 to 15.");
       return;
     }
     const etScore =
@@ -104,7 +105,13 @@ function ManualResultForm({
   );
 
   return (
-    <div className="flex flex-wrap items-center text-2xs text-[var(--c97-ink-2)]" style={{ gap: "var(--c97-sp-1)", marginTop: "var(--c97-sp-1)" }}>
+    <form
+      noValidate
+      aria-label={`Result for ${fixture.homeTeam} vs ${fixture.awayTeam}`}
+      onSubmit={(event) => { event.preventDefault(); save(); }}
+      className="flex flex-wrap items-center text-2xs text-[var(--c97-ink-2)]"
+      style={{ gap: "var(--c97-sp-1)", marginTop: "var(--c97-sp-1)" }}
+    >
       <span className="font-semibold text-[var(--c97-ink)]">Enter result:</span>
       90&apos; {scoreInput(ninety, setNinety, "Ninety minute")}
       {fixture.knockout ? (
@@ -125,7 +132,7 @@ function ManualResultForm({
           </label>
         </>
       ) : null}
-      <button type="button" className={PILL_BUTTON} onClick={save}>
+      <button type="submit" className={PILL_BUTTON}>
         Save result
       </button>
       {error ? (
@@ -133,7 +140,7 @@ function ManualResultForm({
           {error}
         </span>
       ) : null}
-    </div>
+    </form>
   );
 }
 
@@ -142,6 +149,8 @@ export function TrackerClient({ snapshot }: TrackerClientProps) {
   const [selectedRivalId, setSelectedRivalId] = useState<string | null>(null);
   const [rivalPickDrafts, setRivalPickDrafts] = useState<Record<string, { home: string; away: string }>>({});
   const [rivalPickErrors, setRivalPickErrors] = useState<Record<string, string>>({});
+  const [status, setStatus] = useState("");
+  const rivalErrorPrefix = useId();
   // One "now" per visit keeps render pure and the pending/played split stable.
   const [nowIso] = useState(() => new Date().toISOString());
 
@@ -217,6 +226,7 @@ export function TrackerClient({ snapshot }: TrackerClientProps) {
         </header>
 
         <SampleDataNotice snapshot={snapshot} />
+        <p role="status" aria-live="polite" className="text-sm text-[var(--c97-ink-2)]">{status}</p>
 
         {!activePool || !league ? (
           <p className="text-sm text-[var(--c97-ink-2)]">
@@ -246,13 +256,18 @@ export function TrackerClient({ snapshot }: TrackerClientProps) {
                 <p className="c97-stat-label">Tracked points</p>
                 <p className="c97-stat-value c97-mono">{myScoring?.total ?? 0}</p>
                 <p className="c97-stat-delta">
-                  from {myScoring?.rows.filter((row) => row.score).length ?? 0} scored picks
+                  computed here from {myScoring?.rows.filter((row) => row.score).length ?? 0} scored picks
                 </p>
               </div>
               <div className="c97-stat" style={{ background: "var(--c97-panel)", padding: "var(--c97-sp-3)" }}>
-                <p className="c97-stat-label">Standing (settings)</p>
+                <p className="c97-stat-label">Entered standing</p>
                 <p className="c97-stat-value c97-mono">{activePool.standing.myPoints}</p>
-                <p className="c97-stat-delta">what the leaderboard layer plans around</p>
+                <p className="c97-stat-delta">
+                  typed in{" "}
+                  <Link className="c97-link" href="/score-pools/settings">settings</Link>, and it
+                  stays as entered. The pick advice plans around it, and the rival gaps add it to
+                  the tracked points.
+                </p>
               </div>
               <div className="c97-stat" style={{ background: "var(--c97-panel)", padding: "var(--c97-sp-3)" }}>
                 <p className="c97-stat-label">Rules</p>
@@ -309,9 +324,10 @@ export function TrackerClient({ snapshot }: TrackerClientProps) {
                                       <span className="c97-chip">manual</span>
                                       <button
                                         type="button"
-                                        onClick={() =>
-                                          setManualResult(activePool.id, row.fixture.id, null)
-                                        }
+                                        onClick={() => {
+                                          setManualResult(activePool.id, row.fixture.id, null);
+                                          setStatus(`Cleared the manual result for ${row.fixture.homeTeam} vs ${row.fixture.awayTeam}.`);
+                                        }}
                                         className="inline-flex min-h-[44px] items-center text-2xs font-semibold text-[var(--c97-accent)] hover:underline"
                                       >
                                         Clear
@@ -359,8 +375,12 @@ export function TrackerClient({ snapshot }: TrackerClientProps) {
                         {fixture.homeTeam} vs {fixture.awayTeam}
                       </p>
                       <ManualResultForm
+                        key={JSON.stringify([activePool.id, fixture.id])}
                         fixture={fixture}
-                        onSave={(result) => setManualResult(activePool.id, fixture.id, result)}
+                        onSave={(result) => {
+                          setManualResult(activePool.id, fixture.id, result);
+                          setStatus(`Saved the result for ${fixture.homeTeam} vs ${fixture.awayTeam}. The points above have been updated.`);
+                        }}
                       />
                     </li>
                   ))}
@@ -432,7 +452,12 @@ export function TrackerClient({ snapshot }: TrackerClientProps) {
                       <ul className="flex flex-col" style={{ rowGap: "var(--c97-sp-1)", marginTop: "var(--c97-sp-1)" }}>
                         {league.fixtures.map((fixture) => {
                           const existing = selectedRival.picks[fixture.id];
-                          const draft = rivalPickDrafts[fixture.id] ?? { home: "", away: "" };
+                          const draftKey = JSON.stringify([activePool.id, selectedRival.id, fixture.id]);
+                          const errorId = `${rivalErrorPrefix}-${fixture.id}`;
+                          const draft = rivalPickDrafts[draftKey] ?? {
+                            home: existing ? String(existing.home) : "",
+                            away: existing ? String(existing.away) : "",
+                          };
                           return (
                             <li key={fixture.id} className="flex flex-wrap items-center border border-[var(--c97-rule)] bg-[var(--c97-panel)] text-sm text-[var(--c97-ink)]" style={{ gap: "var(--c97-sp-1)", paddingInline: "var(--c97-sp-2)", paddingBlock: "var(--c97-sp-1)" }}>
                               <span className="min-w-48 font-semibold">
@@ -441,7 +466,31 @@ export function TrackerClient({ snapshot }: TrackerClientProps) {
                               <span className="font-mono text-2xs text-[var(--c97-ink-2)]">
                                 {existing ? `saved ${formatScoreline(existing)}` : "no pick saved"}
                               </span>
-                              <span className="flex items-center" style={{ gap: "var(--c97-sp-0)" }}>
+                              <form
+                                noValidate
+                                aria-label={`${selectedRival.name} pick for ${fixture.homeTeam} vs ${fixture.awayTeam}`}
+                                className="flex flex-wrap items-center"
+                                style={{ gap: "var(--c97-sp-0)" }}
+                                onSubmit={(event) => {
+                                  event.preventDefault();
+                                  const score = parseScoreInput(draft.home, draft.away);
+                                  if (!score) {
+                                    setRivalPickErrors((errors) => ({ ...errors, [draftKey]: "Both scores need whole numbers from 0 to 15." }));
+                                    return;
+                                  }
+                                  setRivalPickErrors((errors) => ({ ...errors, [draftKey]: "" }));
+                                  updateRival(activePool.id, selectedRival.id, (rival) => ({
+                                    ...rival,
+                                    picks: { ...rival.picks, [fixture.id]: score },
+                                  }));
+                                  setRivalPickDrafts((drafts) => {
+                                    const next = { ...drafts };
+                                    delete next[draftKey];
+                                    return next;
+                                  });
+                                  setStatus(`Saved ${selectedRival.name}'s ${formatScoreline(score)} pick for ${fixture.homeTeam} vs ${fixture.awayTeam}.`);
+                                }}
+                              >
                                 <input
                                   type="number"
                                   min={0}
@@ -451,12 +500,14 @@ export function TrackerClient({ snapshot }: TrackerClientProps) {
                                   onChange={(event) =>
                                     setRivalPickDrafts((drafts) => ({
                                       ...drafts,
-                                      [fixture.id]: { ...draft, home: event.target.value },
+                                      [draftKey]: { ...draft, home: event.target.value },
                                     }))
                                   }
                                   className="c97-field"
                   style={SCORE_FIELD_STYLE}
                                   aria-label={`${selectedRival.name} pick, ${fixture.homeTeam} goals`}
+                                  aria-invalid={!!rivalPickErrors[draftKey] || undefined}
+                                  aria-describedby={rivalPickErrors[draftKey] ? errorId : undefined}
                                 />
                                 <span className="text-[var(--c97-ink-2)]">-</span>
                                 <input
@@ -468,35 +519,18 @@ export function TrackerClient({ snapshot }: TrackerClientProps) {
                                   onChange={(event) =>
                                     setRivalPickDrafts((drafts) => ({
                                       ...drafts,
-                                      [fixture.id]: { ...draft, away: event.target.value },
+                                      [draftKey]: { ...draft, away: event.target.value },
                                     }))
                                   }
                                   className="c97-field"
                   style={SCORE_FIELD_STYLE}
                                   aria-label={`${selectedRival.name} pick, ${fixture.awayTeam} goals`}
+                                  aria-invalid={!!rivalPickErrors[draftKey] || undefined}
+                                  aria-describedby={rivalPickErrors[draftKey] ? errorId : undefined}
                                 />
                                 <button
-                                  type="button"
+                                  type="submit"
                                   className={PILL_BUTTON}
-                                  onClick={() => {
-                                    const score = parseScoreInput(draft.home, draft.away);
-                                    if (!score) {
-                                      setRivalPickErrors((errors) => ({
-                                        ...errors,
-                                        [fixture.id]: "Both scores need whole numbers from 0 to 15.",
-                                      }));
-                                      return;
-                                    }
-                                    setRivalPickErrors((errors) => ({ ...errors, [fixture.id]: "" }));
-                                    updateRival(activePool.id, selectedRival.id, (rival) => ({
-                                      ...rival,
-                                      picks: { ...rival.picks, [fixture.id]: score },
-                                    }));
-                                    setRivalPickDrafts((drafts) => ({
-                                      ...drafts,
-                                      [fixture.id]: { home: "", away: "" },
-                                    }));
-                                  }}
                                 >
                                   Save
                                 </button>
@@ -504,7 +538,8 @@ export function TrackerClient({ snapshot }: TrackerClientProps) {
                                   <button
                                     type="button"
                                     className={PILL_BUTTON}
-                                    onClick={() => {
+                                    onClick={(event) => {
+                                      (event.currentTarget.previousElementSibling as HTMLButtonElement | null)?.focus();
                                       updateRival(activePool.id, selectedRival.id, (rival) => {
                                         const picks = { ...rival.picks };
                                         delete picks[fixture.id];
@@ -512,17 +547,19 @@ export function TrackerClient({ snapshot }: TrackerClientProps) {
                                       });
                                       setRivalPickDrafts((drafts) => ({
                                         ...drafts,
-                                        [fixture.id]: { home: "", away: "" },
+                                        [draftKey]: { home: "", away: "" },
                                       }));
+                                      setRivalPickErrors((errors) => ({ ...errors, [draftKey]: "" }));
+                                      setStatus(`Cleared ${selectedRival.name}'s pick for ${fixture.homeTeam} vs ${fixture.awayTeam}.`);
                                     }}
                                   >
                                     Clear
                                   </button>
                                 ) : null}
-                              </span>
-                              {rivalPickErrors[fixture.id] ? (
-                                <span role="alert" className="text-2xs font-semibold" style={{ color: "var(--c97-negative)" }}>
-                                  {rivalPickErrors[fixture.id]}
+                              </form>
+                              {rivalPickErrors[draftKey] ? (
+                                <span id={errorId} role="alert" className="text-2xs font-semibold" style={{ color: "var(--c97-negative)" }}>
+                                  {rivalPickErrors[draftKey]}
                                 </span>
                               ) : null}
                             </li>

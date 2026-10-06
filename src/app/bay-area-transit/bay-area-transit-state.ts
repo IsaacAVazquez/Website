@@ -3,11 +3,9 @@ import type { TransitRouteState, TransitView } from "@/types/bayAreaTransit";
 import { readParam, type SearchParamInput } from "@/lib/searchParams";
 
 export const TRANSIT_ROUTE = "/bay-area-transit";
-export const TRANSIT_VIEW_OPTIONS = [
-  "lines",
-  "stations",
-  "advisories",
-] as const;
+// "stations" was the Departures tab until station search moved onto the board.
+// An old ?view=stations link falls back to the default view and keeps its station.
+export const TRANSIT_VIEW_OPTIONS = ["lines", "advisories"] as const;
 
 const VALID_VIEWS = new Set<TransitView>(TRANSIT_VIEW_OPTIONS);
 

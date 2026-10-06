@@ -318,4 +318,62 @@ describe("NewsPulseClient", () => {
       within(clusterTable).getByRole("link", { name: clusteredArticles[0].title }),
     ).toBeVisible();
   });
+
+  it("prints each story cluster as a card with outlet counts and its headlines", async () => {
+    currentSearchParams = new URLSearchParams("view=coverage");
+    mockFetch.mockResolvedValue(
+      makeOkResponse({
+        articles: clusteredArticles,
+        fetchedAt: "2026-04-08T16:30:00.000Z",
+        errors: [],
+      }),
+    );
+
+    render(<NewsPulseClient initialState={DEFAULT_NEWS_PULSE_STATE} />);
+
+    const cards = await screen.findByRole("list", { name: "Story clusters" });
+    const card = within(cards).getAllByRole("listitem")[0];
+    expect(card).toHaveTextContent("3 headlines across 3 outlets.");
+    for (const article of clusteredArticles) {
+      expect(card).toHaveTextContent(`${article.sourceName} 1`);
+    }
+
+    const coverage = within(card).getByText("Show all 3 headlines").closest("details") as HTMLElement;
+    expect(coverage).not.toHaveAttribute("open");
+    for (const article of clusteredArticles) {
+      expect(
+        within(coverage).getByRole("link", { name: article.title, hidden: true }),
+      ).toHaveAttribute("href", article.link);
+    }
+  });
+
+  it("prints the front page as a story card with its coverage one action away", async () => {
+    mockFetch.mockResolvedValue(
+      makeOkResponse({
+        articles: clusteredArticles,
+        fetchedAt: "2026-04-08T16:30:00.000Z",
+        errors: [],
+      }),
+    );
+
+    render(<NewsPulseClient initialState={DEFAULT_NEWS_PULSE_STATE} />);
+
+    const summary = await screen.findByText("Show 3 headlines from 3 outlets");
+    const outlets = summary.closest("details") as HTMLElement;
+    expect(outlets).not.toHaveAttribute("open");
+    expect(
+      within(outlets).getByRole("link", { name: clusteredArticles[2].title, hidden: true }),
+    ).toHaveAttribute("href", clusteredArticles[2].link);
+
+    // The matrix's counts print as a list by topic where the table is hidden.
+    const topics = within(
+      screen.getByRole("list", { name: "Coverage by topic", hidden: true }),
+    ).getAllByRole("listitem", { hidden: true });
+    expect(topics.length).toBeGreaterThan(0);
+    expect(topics[0]).toHaveTextContent(/\w+ \d+/);
+
+    const link = screen.getByRole("link", { name: "Jump to the desk" });
+    const desk = document.getElementById((link.getAttribute("href") as string).slice(1));
+    expect(desk).toContainElement(screen.getByRole("tablist", { name: "News Pulse tabs" }));
+  });
 });

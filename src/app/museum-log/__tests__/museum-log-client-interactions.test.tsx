@@ -177,11 +177,11 @@ describe("MuseumLogClient interactions", () => {
   it("opens on a first visit with catalog totals and the curator's lists as fallbacks", () => {
     renderClient();
 
-    expect(readout("Museums visited")).toHaveTextContent("0of 3 catalogued");
+    expect(readout("Museums you've visited")).toHaveTextContent("0of 3 catalogued");
     expect(readout("Cities")).toHaveTextContent("3");
     expect(readout("Exhibits on now")).toHaveTextContent("1museum has one running");
     expect(screen.getByText("Log your first visit")).toBeInTheDocument();
-    expect(screen.getByText("3 museums catalogued, 3 curator reviews, 3 visits logged.", { exact: false })).toBeInTheDocument();
+    expect(screen.getByText("3 museums catalogued, 3 curator reviews, and 3 visits in the curator’s diary.", { exact: false })).toBeInTheDocument();
 
     const panel = sidePanel();
     expect(within(panel).getByText(/these come from the curator.s diary/)).toBeInTheDocument();
@@ -239,17 +239,18 @@ describe("MuseumLogClient interactions", () => {
     expect(stored().watchlist).toEqual(["atlas"]);
 
     fireEvent.click(within(actions()).getByRole("button", { name: "Log a visit to Atlas Art Museum" }));
-    expect(stored().visited).toEqual([{ museumId: "atlas", date: toLocalDateKey(), rating: 4.5 }]);
+    // A quick visit never borrows the curator's 4.5.
+    expect(stored().visited).toEqual([{ museumId: "atlas", date: toLocalDateKey() }]);
     expect(stored().watchlist).toEqual([]);
     expect(within(actions()).getByRole("button", { name: "Mark Atlas Art Museum as not visited" })).toHaveTextContent("Visited");
-    expect(screen.getByText(/^Your visit .* · 4\.5 stars$/)).toBeInTheDocument();
-    expect(readout("Museums visited")).toHaveTextContent("1of 3 catalogued");
+    expect(screen.getByText(/^Your visit .* · not rated$/)).toBeInTheDocument();
+    expect(readout("Museums you've visited")).toHaveTextContent("1of 3 catalogued");
     expect(screen.queryByText("Log your first visit")).toBeNull();
     expect(within(sidePanel()).queryByText(/curator.s diary/)).toBeNull();
 
     fireEvent.click(within(actions()).getByRole("button", { name: "Mark Atlas Art Museum as not visited" }));
     expect(stored().visited).toEqual([]);
-    expect(readout("Museums visited")).toHaveTextContent("0of 3 catalogued");
+    expect(readout("Museums you've visited")).toHaveTextContent("0of 3 catalogued");
   });
 
   it("puts liked museums in the side panel instead of the curator's picks", () => {
@@ -278,7 +279,7 @@ describe("MuseumLogClient interactions", () => {
     } as unknown as UserMuseumState);
     renderClient();
 
-    expect(readout("Museums visited")).toHaveTextContent("1of 3 catalogued");
+    expect(readout("Museums you've visited")).toHaveTextContent("1of 3 catalogued");
     expect(screen.getByRole("button", { name: "Mark Beacon Science Center as not visited" })).toBeInTheDocument();
     expect(screen.getByRole("button", { name: "Log a visit to Atlas Art Museum" })).toBeInTheDocument();
     expect(screen.getByRole("button", { name: "Remove Corvid History House from watchlist" })).toBeInTheDocument();
@@ -287,7 +288,7 @@ describe("MuseumLogClient interactions", () => {
   it("falls back to an empty log when the store is unreadable", () => {
     seed("{broken");
     renderClient();
-    expect(readout("Museums visited")).toHaveTextContent("0of 3 catalogued");
+    expect(readout("Museums you've visited")).toHaveTextContent("0of 3 catalogued");
     expect(screen.getByText("Log your first visit")).toBeInTheDocument();
   });
 
@@ -298,7 +299,7 @@ describe("MuseumLogClient interactions", () => {
     act(() => {
       window.dispatchEvent(new StorageEvent("storage", { key: STORAGE_KEY, newValue: payload }));
     });
-    expect(readout("Museums visited")).toHaveTextContent("1of 3 catalogued");
+    expect(readout("Museums you've visited")).toHaveTextContent("1of 3 catalogued");
     expect(screen.getByRole("button", { name: "Mark Corvid History House as not visited" })).toBeInTheDocument();
   });
 
@@ -310,7 +311,7 @@ describe("MuseumLogClient interactions", () => {
 
     fireEvent.click(screen.getByRole("button", { name: "Log a visit to Beacon Science Center" }));
     expect(screen.getByRole("status")).toHaveTextContent(/browser storage is unavailable/);
-    expect(readout("Museums visited")).toHaveTextContent("1of 3 catalogued");
+    expect(readout("Museums you've visited")).toHaveTextContent("1of 3 catalogued");
   });
 
   it("lists curator reviews and the stamped diary, newest first, skipping unknown museums", () => {
@@ -410,21 +411,51 @@ describe("MuseumLogClient interactions", () => {
     expect(within(detail).getByText(/^Visited on /)).toBeInTheDocument();
     expect(within(detail).getByText("“Kids loved it”")).toBeInTheDocument();
     expect(within(detail).getByText("· you")).toBeInTheDocument();
+    expect(within(detail).getByText("Your activity")).toHaveFocus();
 
     fireEvent.click(within(detail).getByRole("button", { name: "Remove visit" }));
     expect(stored().visited).toEqual([]);
     expect(within(detail).getByRole("form", { name: "Rate and log this museum visit" })).toBeInTheDocument();
+    expect(within(detail).getByText("Your activity")).toHaveFocus();
   });
 
-  it("logs a quick visit from the detail actions at the curator's rating", () => {
+  it.each(["journal", "lists"])("only shows museum search in Discover, not %s", (view) => {
+    currentSearchParams = new URLSearchParams(`view=${view}`);
+    renderClient();
+    expect(screen.queryByRole("searchbox", { name: "Filter museums" })).not.toBeInTheDocument();
+    expect(screen.getByRole("button", { name: view === "journal" ? "Journal" : "Lists", pressed: true })).toBeVisible();
+  });
+
+  it("logs a quick visit from the detail actions without a rating, then takes the reader's own", () => {
     currentSearchParams = new URLSearchParams("museum=corvid-history");
     renderClient();
     const detail = screen.getByRole("region", { name: "Corvid History House detail" });
     fireEvent.click(within(detail).getByRole("button", { name: "Log a visit to Corvid History House" }));
-    expect(stored().visited).toEqual([{ museumId: "corvid", date: toLocalDateKey(), rating: 3 }]);
+    expect(stored().visited).toEqual([{ museumId: "corvid", date: toLocalDateKey() }]);
+    expect(within(detail).queryByText("· you")).toBeNull();
+    expect(within(detail).getByText(/You have not rated this visit/)).toBeInTheDocument();
+
+    const form = within(detail).getByRole("form", { name: "Rate this museum visit" });
+    fireEvent.change(within(form).getByRole("slider", { name: "Your rating, 0 to 5 stars" }), { target: { value: "8" } });
+    fireEvent.click(within(form).getByRole("button", { name: "Save rating" }));
+    expect(stored().visited).toEqual([{ museumId: "corvid", date: toLocalDateKey(), rating: 4 }]);
+    expect(within(detail).getByText("· you")).toBeInTheDocument();
+    expect(within(detail).queryByRole("form")).toBeNull();
+
     fireEvent.click(within(detail).getByRole("button", { name: "Save Corvid History House to watchlist" }));
     fireEvent.click(within(detail).getByRole("button", { name: "Like" }));
     expect(stored()).toEqual(expect.objectContaining({ watchlist: ["corvid"], liked: ["corvid"] }));
+  });
+
+  it("restores a saved unrated visit on a return visit", () => {
+    window.localStorage.setItem(
+      STORAGE_KEY,
+      JSON.stringify({ visited: [{ museumId: "atlas", date: "2026-03-01" }], watchlist: [], liked: [] }),
+    );
+    renderClient();
+    expect(readout("Museums you've visited")).toHaveTextContent("1of 3 catalogued");
+    expect(screen.getByText(/^Your visit .* · not rated$/)).toBeInTheDocument();
+    expect(screen.queryByText(/NaN/)).toBeNull();
   });
 
   it("offers a way back when the museum in the URL does not exist", () => {

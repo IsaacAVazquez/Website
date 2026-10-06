@@ -55,4 +55,20 @@ describe("RentVsBuyClient", () => {
     fireEvent.click(screen.getByRole("button", { name: "Reset" }));
     await waitFor(() => expect(screen.getByLabelText("Home price")).toHaveValue(450000));
   });
+
+  it("puts the five main inputs ahead of the result and keeps the full disclosure one link away", () => {
+    render(<RentVsBuyClient />);
+    const verdict = screen.getByRole("status");
+    for (const label of ["Home price", "Monthly rent", "Years staying", "Down payment", "Mortgage rate"]) {
+      expect(screen.getByLabelText(label).compareDocumentPosition(verdict) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
+    }
+    expect(verdict.compareDocumentPosition(screen.getByLabelText("Loan term")) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
+
+    const link = screen.getByRole("link", { name: "Assumptions and limits" });
+    expect(link).toHaveAttribute("href", "#assumptions-and-limits");
+    const disclosure = document.getElementById("assumptions-and-limits");
+    expect(disclosure).toHaveTextContent("Educational only, not financial or tax advice.");
+    expect(disclosure).toHaveTextContent(/Tax figures are for tax year \d{4}/);
+    expect(disclosure).toHaveTextContent(/Freddie Mac 30 year fixed average as of/);
+  });
 });

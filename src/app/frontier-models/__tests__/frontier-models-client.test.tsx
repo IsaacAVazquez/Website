@@ -79,6 +79,45 @@ describe("FrontierModelsClient", () => {
     });
   });
 
+  it("keeps modality and price tier one action away until one of them is set", () => {
+    const { unmount } = render(
+      <FrontierModelsClient
+        initialState={DEFAULT_FRONTIER_MODELS_STATE}
+        snapshot={frontierModelsSnapshot}
+      />
+    );
+
+    // The provider filter stays out in the open.
+    expect(screen.getByRole("group", { name: "Provider" }).closest("details")).toBeNull();
+    const extra = screen.getByRole("group", { name: "Modality", hidden: true }).closest("details");
+    expect(extra).not.toBeNull();
+    expect(extra).not.toHaveAttribute("open");
+    expect(extra).toContainElement(screen.getByRole("group", { name: "Price tier", hidden: true }));
+    unmount();
+
+    currentSearchParams = new URLSearchParams("tier=budget");
+    render(
+      <FrontierModelsClient
+        initialState={DEFAULT_FRONTIER_MODELS_STATE}
+        snapshot={frontierModelsSnapshot}
+      />
+    );
+    expect(screen.getByRole("group", { name: "Price tier" }).closest("details")).toHaveAttribute("open");
+  });
+
+  it("links the hero to the spec sheet", () => {
+    render(
+      <FrontierModelsClient
+        initialState={DEFAULT_FRONTIER_MODELS_STATE}
+        snapshot={frontierModelsSnapshot}
+      />
+    );
+
+    const link = screen.getByRole("link", { name: "Jump to the spec sheet" });
+    const target = document.getElementById((link.getAttribute("href") as string).slice(1));
+    expect(target).toContainElement(screen.getByTestId("frontier-table"));
+  });
+
   it("states how many models the fact check changed, matched, and could not find", () => {
     render(
       <FrontierModelsClient

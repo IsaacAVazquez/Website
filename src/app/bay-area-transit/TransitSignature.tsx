@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState, type CSSProperties, type ReactNode } from "react";
 import type {
   TransitDeparture,
   TransitLine,
@@ -60,6 +60,138 @@ export function upcomingDepartures(
     }));
 }
 
+/** A readable swatch border that still shows bright BART colors on light paper. */
+export function swatchStyle(hexColor: string): CSSProperties {
+  return {
+    background: hexColor,
+    border: "1px solid color-mix(in srgb, var(--c97-ink) 16%, transparent)",
+  };
+}
+
+/**
+ * Station search and the full station list, printed on the board itself so a
+ * pick changes the departures right under it. The list closes on a pick, which
+ * is what keeps the board in view on a phone.
+ */
+function StationFinder({
+  stations,
+  lines,
+  selectedStationId,
+  onSelect,
+}: {
+  stations: TransitStation[];
+  lines: TransitLine[];
+  selectedStationId: string | null;
+  onSelect: (stationId: string) => void;
+}) {
+  const [query, setQuery] = useState("");
+  const [showAll, setShowAll] = useState(false);
+  const inputRef = useRef<HTMLInputElement>(null);
+  const toggleRef = useRef<HTMLButtonElement>(null);
+
+  const hexByColor = useMemo(
+    () => new Map(lines.map((line) => [line.colorName.trim().toLowerCase(), line.hexColor])),
+    [lines]
+  );
+  const needle = query.trim().toLowerCase();
+  const visible = needle
+    ? stations.filter(
+        (station) =>
+          station.name.toLowerCase().includes(needle) ||
+          (station.city ?? "").toLowerCase().includes(needle) ||
+          station.abbr.toLowerCase() === needle
+      )
+    : showAll
+    ? stations
+    : [];
+
+  function pick(stationId: string, byKeyboard: boolean) {
+    const opener = needle ? inputRef.current : toggleRef.current;
+    onSelect(stationId);
+    setQuery("");
+    setShowAll(false);
+    // The opener sits above the list, so bringing it back into view also brings
+    // the board under it into view. A tap only scrolls, since focusing the
+    // field would reopen the phone keyboard over the board, and it scrolls the
+    // finder to the top of the screen because a field that is already in view
+    // low on the screen leaves the board under the fold.
+    if (byKeyboard || opener !== inputRef.current) opener?.focus();
+    else opener?.closest(".c97-transit-finder")?.scrollIntoView?.({ block: "start" });
+  }
+
+  return (
+    <div className="c97-transit-finder" data-c97-surface="paper">
+      <label className="c97-kicker" htmlFor="transit-station-search">
+        Find a station
+      </label>
+      <input
+        ref={inputRef}
+        id="transit-station-search"
+        type="search"
+        className="c97-field"
+        autoComplete="off"
+        placeholder="Station or city"
+        value={query}
+        onChange={(event) => setQuery(event.target.value)}
+      />
+      {needle ? null : (
+        <button
+          ref={toggleRef}
+          type="button"
+          className="c97-btn-ghost"
+          style={{ justifySelf: "start" }}
+          aria-expanded={showAll}
+          onClick={() => setShowAll((open) => !open)}
+        >
+          {showAll ? "Hide the station list" : `Show all ${stations.length} stations`}
+        </button>
+      )}
+      {visible.length > 0 ? (
+        <ul className="c97-transit-station-list">
+          {visible.map((station) => (
+            <li key={station.id}>
+              <button
+                type="button"
+                // A click that came from the keyboard carries no click count.
+                onClick={(event) => pick(station.id, event.detail === 0)}
+                aria-current={station.id === selectedStationId ? "true" : undefined}
+                className="c97-transit-station-row"
+              >
+                <span className="min-w-0">
+                  <span className="block c97-serif truncate" style={{ fontWeight: 600 }}>
+                    {station.name}
+                  </span>
+                  <span className="block text-sm" style={{ color: "var(--c97-ink-2)" }}>
+                    {station.city || "Bay Area"}
+                  </span>
+                </span>
+                <span className="flex shrink-0 items-center" style={{ gap: "var(--c97-sp-0)" }}>
+                  {station.lines.map((colorName) => (
+                    <span
+                      key={`${station.id}-${colorName}`}
+                      className="c97-transit-swatch"
+                      style={swatchStyle(
+                        hexByColor.get(colorName.trim().toLowerCase()) ?? "var(--c97-ink-2)"
+                      )}
+                      title={`${colorName} line`}
+                      role="img"
+                      aria-label={`${colorName} line`}
+                    />
+                  ))}
+                </span>
+              </button>
+            </li>
+          ))}
+        </ul>
+      ) : needle ? (
+        <p className="c97-meta" role="status">
+          No station matches that search.
+        </p>
+      ) : null}
+    </div>
+  );
+}
+
 function PlatformBoard({
   station,
   board,
@@ -67,6 +199,7 @@ function PlatformBoard({
   error,
   onRetry,
   departuresStatus,
+  finder,
 }: {
   station: TransitStation | null;
   board: TransitStationBoard | null;
@@ -74,6 +207,7 @@ function PlatformBoard({
   error: string | null;
   onRetry: () => void;
   departuresStatus: TransitSectionStatus;
+  finder: ReactNode;
 }) {
   // Null on the server and on the first client render, so both print the board
   // as it was read and hydration matches. The viewer's clock takes over after.
@@ -89,6 +223,7 @@ function PlatformBoard({
 
   return (
     <div className="c97-transit-board" data-c97-surface="espresso">
+      {finder}
       {/* Padded only, so the espresso surface is the board itself. */}
       <div className="c97-transit-board-inner">
         <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-1)" }}>Next trains</p>
@@ -167,12 +302,12 @@ function PlatformBoard({
 }
 
 /**
- * The page's signature. A platform board for the selected station, set large
- * like the display over the platform, beside a station map with every
- * station ringed in the colours of the lines that serve it. The snapshot
- * carries no ordered station sequence per line, so the map draws dots and no
- * line paths. Dots respond to a pointer; the Departures list below is the
- * keyboard and screen-reader path to the same selection.
+ * The page's signature. Station search and a platform board for the selected
+ * station, set large like the display over the platform, beside a station map
+ * with every station ringed in the colours of the lines that serve it. The
+ * snapshot carries no ordered station sequence per line, so the map draws dots
+ * and no line paths. Dots respond to a pointer; the station search and list on
+ * the board are the keyboard and screen-reader path to the same selection.
  */
 export function TransitSignature({
   stations,
@@ -200,6 +335,14 @@ export function TransitSignature({
         isLoading={isLoading}
         error={error}
         onRetry={onRetry}
+        finder={
+          <StationFinder
+            stations={stations}
+            lines={lines}
+            selectedStationId={selectedStation?.id ?? null}
+            onSelect={onSelect}
+          />
+        }
       />
 
       {/*
@@ -224,7 +367,7 @@ export function TransitSignature({
               const isSelected = station?.id === selectedStation?.id;
               const r = isSelected ? SELECTED_R : DOT_R;
               return (
-                // Pointer only. The station list below is the keyboard path, and
+                // Pointer only. The station search on the board is the keyboard path, and
                 // role="img" makes these marks presentational anyway.
                 <g
                   key={point.abbr}

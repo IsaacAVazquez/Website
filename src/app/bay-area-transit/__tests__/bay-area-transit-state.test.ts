@@ -8,9 +8,12 @@ import {
 describe("bay-area-transit-state", () => {
   describe("normalizeTransitState", () => {
     it("keeps valid views and falls back to the default otherwise", () => {
-      expect(normalizeTransitState({ view: "stations" }).view).toBe("stations");
       expect(normalizeTransitState({ view: "advisories" }).view).toBe(
         "advisories"
+      );
+      // The Departures tab is gone, so its old links open the default view.
+      expect(normalizeTransitState({ view: "stations" }).view).toBe(
+        DEFAULT_TRANSIT_STATE.view
       );
       expect(normalizeTransitState({ view: "unknown" }).view).toBe(
         DEFAULT_TRANSIT_STATE.view
@@ -31,9 +34,9 @@ describe("bay-area-transit-state", () => {
     });
 
     it("reads from URLSearchParams instances", () => {
-      const params = new URLSearchParams("view=stations&station=embr");
+      const params = new URLSearchParams("view=advisories&station=embr");
       expect(normalizeTransitState(params)).toEqual({
-        view: "stations",
+        view: "advisories",
         station: "embr",
       });
     });
@@ -53,8 +56,8 @@ describe("bay-area-transit-state", () => {
     });
 
     it("encodes non-default view and station", () => {
-      expect(buildTransitHref({ view: "stations", station: "mont" })).toBe(
-        `${TRANSIT_ROUTE}?view=stations&station=mont`
+      expect(buildTransitHref({ view: "advisories", station: "mont" })).toBe(
+        `${TRANSIT_ROUTE}?view=advisories&station=mont`
       );
     });
 

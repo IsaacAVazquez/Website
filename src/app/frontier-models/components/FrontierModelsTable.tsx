@@ -14,6 +14,7 @@ import {
   FRONTIER_MODALITY_LABELS,
 } from "@/app/frontier-models/frontier-models-state";
 import type { FrontierModel } from "@/types/frontierModels";
+import "../frontier-models.css";
 
 interface FrontierModelsTableProps {
   models: FrontierModel[];
@@ -28,14 +29,21 @@ interface ColumnDef {
   defaultDirection: FrontierSortDirection;
 }
 
+// Under md the sheet prints the model, its context window, and both token
+// prices, which is what fits a phone column. The release date and modalities
+// move into the row's expansion.
+const WIDE_ONLY_CELL = "hidden md:table-cell";
+
+const RELEASE_COLUMN: ColumnDef = {
+  key: "releaseDate",
+  label: "Released",
+  align: "left",
+  defaultDirection: "desc",
+};
+
 const COLUMNS: ColumnDef[] = [
   { key: "name", label: "Model", align: "left", defaultDirection: "asc" },
-  {
-    key: "releaseDate",
-    label: "Released",
-    align: "left",
-    defaultDirection: "desc",
-  },
+  RELEASE_COLUMN,
   {
     key: "contextWindow",
     label: "Context",
@@ -88,9 +96,29 @@ export function FrontierModelsTable({
     setSortDirection(column.defaultDirection);
   }
 
+  const sortsByRelease = sortKey === RELEASE_COLUMN.key;
+
   return (
     <div className="overflow-x-auto" role="region" aria-label="Model spec sheet (scrolls sideways)" tabIndex={0}>
-      <table className="c97-table">
+      {/* The release column is hidden under md, so its sort gets a control of
+          its own there. The wrapper carries the breakpoint because the button
+          class sets its own display. */}
+      <div className="md:hidden">
+        <button
+          type="button"
+          aria-pressed={sortsByRelease}
+          onClick={() => toggleSort(RELEASE_COLUMN)}
+          className="c97-btn-ghost"
+        >
+          Sort by release date
+          {sortsByRelease ? (
+            <span aria-hidden="true" className="text-3xs" style={{ marginInlineStart: "var(--c97-sp-0)" }}>
+              {sortDirection === "asc" ? "▲" : "▼"}
+            </span>
+          ) : null}
+        </button>
+      </div>
+      <table className="c97-table c97-frontier-spec">
         <thead>
           <tr>
             {COLUMNS.map((column) => {
@@ -106,6 +134,7 @@ export function FrontierModelsTable({
                   scope="col"
                   aria-sort={ariaSort}
                   data-align={column.align === "right" ? "end" : undefined}
+                  className={column === RELEASE_COLUMN ? WIDE_ONLY_CELL : undefined}
                 >
                   <button
                     type="button"
@@ -120,7 +149,7 @@ export function FrontierModelsTable({
                 </th>
               );
             })}
-            <th scope="col">Modalities</th>
+            <th scope="col" className={WIDE_ONLY_CELL}>Modalities</th>
           </tr>
         </thead>
         <tbody>
@@ -150,6 +179,21 @@ interface FrontierRowProps {
 }
 
 function FrontierRow({ model, isExpanded, onToggle }: FrontierRowProps) {
+  const reasoningBadge = model.reasoning ? (
+    <span
+      className="inline-flex items-center border py-0.5 text-3xs font-semibold uppercase tracking-[0.14em]"
+      style={{
+        paddingInline: "var(--c97-sp-1)",
+        borderColor: "var(--c97-rule)",
+        background: "var(--c97-field)",
+        color: "var(--c97-ink-2)", gap: "var(--c97-sp-0)" }}
+      title="Supports extended-thinking / reasoning mode"
+    >
+      <Sparkles aria-hidden="true" size={11} />
+      Reasoning
+    </span>
+  ) : null;
+
   return (
     <>
       {/* The row stays clickable for pointer users, but the keyboard control
@@ -158,7 +202,7 @@ function FrontierRow({ model, isExpanded, onToggle }: FrontierRowProps) {
           link inside an interactive element. */}
       <tr onClick={onToggle} className="cursor-pointer">
         <td>
-          <div className="flex flex-col">
+          <div className="flex flex-col" style={{ overflowWrap: "anywhere" }}>
             <span
               className="text-2xs font-semibold uppercase tracking-[0.18em]"
               style={{ color: "var(--c97-ink-2)" }}
@@ -182,24 +226,11 @@ function FrontierRow({ model, isExpanded, onToggle }: FrontierRowProps) {
               >
                 {model.name}
               </button>
-              {model.reasoning ? (
-                <span
-                  className="inline-flex items-center border py-0.5 text-3xs font-semibold uppercase tracking-[0.14em]"
-                  style={{
-                    paddingInline: "var(--c97-sp-1)",
-                    borderColor: "var(--c97-rule)",
-                    background: "var(--c97-field)",
-                    color: "var(--c97-ink-2)", gap: "var(--c97-sp-0)" }}
-                  title="Supports extended-thinking / reasoning mode"
-                >
-                  <Sparkles aria-hidden="true" size={11} />
-                  Reasoning
-                </span>
-              ) : null}
+              {reasoningBadge ? <span className="hidden md:inline">{reasoningBadge}</span> : null}
             </span>
           </div>
         </td>
-        <td style={{ color: "var(--c97-ink-2)" }}>
+        <td style={{ color: "var(--c97-ink-2)" }} className={WIDE_ONLY_CELL}>
           {formatReleaseDate(model.releaseDate)}
         </td>
         <td data-align="end" className="c97-mono" style={{ color: "var(--c97-ink)" }}>
@@ -211,7 +242,7 @@ function FrontierRow({ model, isExpanded, onToggle }: FrontierRowProps) {
         <td data-align="end" className="c97-mono" style={{ color: "var(--c97-ink)" }}>
           {formatPriceUsd(model.outputPricePerMTokens)}
         </td>
-        <td>
+        <td className={WIDE_ONLY_CELL}>
           <div className="flex flex-wrap" style={{ gap: "var(--c97-sp-0)" }}>
             {model.modalities.map((modality) => (
               <span
@@ -233,6 +264,13 @@ function FrontierRow({ model, isExpanded, onToggle }: FrontierRowProps) {
       {isExpanded ? (
         <tr id={`frontier-row-detail-${model.id}`}>
           <td colSpan={6} style={{ paddingInline: "var(--c97-sp-2)", paddingBlock: "var(--c97-sp-2)" }}>
+            {/* The badge and the release date print here only under md, where
+                the row hides them. */}
+            {reasoningBadge ? (
+              <div className="md:hidden" style={{ marginBottom: "var(--c97-sp-1)" }}>
+                {reasoningBadge}
+              </div>
+            ) : null}
             <div className="grid lg:grid-cols-[minmax(0,2fr)_minmax(0,1fr)]" style={{ gap: "var(--c97-sp-2)" }}>
               <p className="text-sm leading-7" style={{ color: "var(--c97-ink)", margin: "0" }}>
                 {model.editorialNote}
@@ -241,6 +279,14 @@ function FrontierRow({ model, isExpanded, onToggle }: FrontierRowProps) {
                 className="grid grid-cols-2 text-sm"
                 style={{ rowGap: "var(--c97-sp-1)", columnGap: "var(--c97-sp-2)", color: "var(--c97-ink-2)" }}
               >
+                <div className="col-span-2 md:hidden">
+                  <dt className="text-2xs font-semibold uppercase tracking-[0.14em]">
+                    Released
+                  </dt>
+                  <dd className="c97-mono" style={{ color: "var(--c97-ink)", margin: "0" }}>
+                    {formatReleaseDate(model.releaseDate)}
+                  </dd>
+                </div>
                 <div>
                   <dt className="text-2xs font-semibold uppercase tracking-[0.14em]">
                     Max output

@@ -18,7 +18,9 @@ const control = styles.control;
 const button = styles.button;
 type TeamView = "lineup" | "roster" | "settings";
 
-export function MyTeamPanel({ snapshot, board, scoring, onScoringChange }: {
+export function MyTeamPanel({ snapshot, board, scoring, onScoringChange, lead = "lineup" }: {
+  /** Which block a saved team opens on: the lineup on weekly, the saved waiver targets on waivers. */
+  lead?: "lineup" | "waivers";
   snapshot: Pick<FantasyWeeklySnapshot, "season" | "week">;
   /** The weekly board for `scoring`. A server seed may carry no other format. */
   board: FantasyWeeklyBoard;
@@ -71,6 +73,42 @@ export function MyTeamPanel({ snapshot, board, scoring, onScoringChange }: {
     setSelectedView("lineup");
     setNotice(`Imported ${imported.players.length} players and league settings. Existing roster players were kept. Review any moves made since the draft.`);
   }
+
+  // The add and drop comparison works from the players marked available, which
+  // are the saved targets. Waivers leads the saved team with it and the weekly
+  // page leads with the lineup, so it is built once and placed by `lead`.
+  const comparisonBlock = (
+    <div className={styles.comparison}>
+      <h3 className={styles.subheading}>Compare an add and a drop</h3>
+      <p className={styles.supporting}>See where an available player fits before changing your roster.</p>
+      {available.length === 0 && <div className={styles.availabilityPrompt}>
+        <p>No players marked available yet.</p>
+        <button type="button" className={styles.textButton} onClick={() => setSelectedView("roster")}>Find available players <ArrowRight size={18} className="c97-arrow" aria-hidden="true" /></button>
+      </div>}
+      <div className="grid" style={{ marginTop: "var(--c97-sp-2)", gap: "var(--c97-sp-1)" }}>
+        <label className="grid text-sm" style={{ gap: "var(--c97-sp-0)" }}>Available player to add<select className={`${control} w-full min-w-0`} value={add?.id ?? ""} onChange={event => setAddId(event.target.value)}>
+          <option value="">Choose an available player</option>
+          {available.map(player => <option key={player.id} value={player.id}>{player.name} ({player.position})</option>)}
+        </select></label>
+        <label className="grid text-sm" style={{ gap: "var(--c97-sp-0)" }}>Roster player to drop<select className={`${control} w-full min-w-0`} value={drop?.id ?? ""} onChange={event => setDropId(event.target.value)}>
+          <option value="">Choose a roster player</option>
+          {team.players.map(player => <option key={player.id} value={player.id}>{player.name} ({player.position})</option>)}
+        </select></label>
+      </div>
+      {comparison && add && drop && !stale && <div className={styles.comparisonResult} aria-live="polite">
+        <p>{comparison.startingSlot ? `${add.name} enters the ranked lineup at ${comparison.startingSlot}.` : `${add.name} stays outside the ranked starting lineup.`}</p>
+        <p style={{ marginTop: "var(--c97-sp-1)" }}>{comparison.rankGain === null ? "A rank difference is unavailable across separate boards or when either player is unranked." : comparison.rankGain === 0 ? "Both players have the same weekly rank." : `${add.name} ranks ${Math.abs(comparison.rankGain)} places ${comparison.rankGain > 0 ? "ahead of" : "behind"} ${drop.name} on the ${add.position === "QB" ? "QB" : "flex"} board.`}</p>
+        {comparison.newGaps.length > 0 && <p style={{ marginTop: "var(--c97-sp-1)" }}>This move leaves no ranked player at {comparison.newGaps.map(slot => slot.slot).join(", ")}.</p>}
+        <p className="text-[var(--c97-ink-2)]" style={{ marginTop: "var(--c97-sp-1)" }}>This comparison covers Week {snapshot.week}. It does not estimate season-long value, points gained, or a waiver bid.</p>
+        <button className={`${styles.primaryButton}`} style={{ marginTop: "var(--c97-sp-1)" }} type="button" onClick={() => {
+          update(current => ({ ...current, scoring, players: uniqueTeamPlayers([...current.players.filter(player => player.id !== drop.id), add]), availableIds: current.availableIds.filter(id => id !== add.id) }));
+          setAddId(""); setDropId("");
+          setNotice(`Saved roster updated. Added ${add.name} and removed ${drop.name}. Make the actual transaction in your league.`);
+        }}>Save this move to my roster</button>
+      </div>}
+      <p className={styles.localNote}>Availability is entered by you and stays saved until you change it.</p>
+    </div>
+  );
 
   return (
     <section id="my-team" aria-labelledby="my-team-title" className={styles.workspace}>
@@ -188,7 +226,8 @@ export function MyTeamPanel({ snapshot, board, scoring, onScoringChange }: {
         <h3 className={styles.subheading}>Add your players to see a weekly lineup</h3>
         <p className={styles.supporting}>The lineup uses your league settings and the weekly consensus board.</p>
         <button type="button" className={styles.primaryButton} onClick={() => setSelectedView("roster")}>Build my roster <ArrowRight size={18} className="c97-arrow" aria-hidden="true" /></button>
-      </div> : <div className={styles.decisions}>
+      </div> : <div className={`${styles.decisions} ${lead === "waivers" ? styles.targetsFirst : ""}`}>
+        {lead === "waivers" && comparisonBlock}
         <div className={styles.lineup}>
           <div className={styles.lineupHeading}>
             <h3 className={styles.subheading}>Weekly lineup by consensus</h3>
@@ -215,36 +254,7 @@ export function MyTeamPanel({ snapshot, board, scoring, onScoringChange }: {
             <p className={styles.supporting}>Required positions fill first, followed by flex. QB and flex ranks use separate boards. League size is saved for context and does not change these ranks.</p>
           </details>
         </div>
-        <div className={styles.comparison}>
-          <h3 className={styles.subheading}>Compare an add and a drop</h3>
-          <p className={styles.supporting}>See where an available player fits before changing your roster.</p>
-          {available.length === 0 && <div className={styles.availabilityPrompt}>
-            <p>No players marked available yet.</p>
-            <button type="button" className={styles.textButton} onClick={() => setSelectedView("roster")}>Find available players <ArrowRight size={18} className="c97-arrow" aria-hidden="true" /></button>
-          </div>}
-          <div className="grid" style={{ marginTop: "var(--c97-sp-2)", gap: "var(--c97-sp-1)" }}>
-            <label className="grid text-sm" style={{ gap: "var(--c97-sp-0)" }}>Available player to add<select className={`${control} w-full min-w-0`} value={add?.id ?? ""} onChange={event => setAddId(event.target.value)}>
-              <option value="">Choose an available player</option>
-              {available.map(player => <option key={player.id} value={player.id}>{player.name} ({player.position})</option>)}
-            </select></label>
-            <label className="grid text-sm" style={{ gap: "var(--c97-sp-0)" }}>Roster player to drop<select className={`${control} w-full min-w-0`} value={drop?.id ?? ""} onChange={event => setDropId(event.target.value)}>
-              <option value="">Choose a roster player</option>
-              {team.players.map(player => <option key={player.id} value={player.id}>{player.name} ({player.position})</option>)}
-            </select></label>
-          </div>
-          {comparison && add && drop && !stale && <div className={styles.comparisonResult} aria-live="polite">
-            <p>{comparison.startingSlot ? `${add.name} enters the ranked lineup at ${comparison.startingSlot}.` : `${add.name} stays outside the ranked starting lineup.`}</p>
-            <p style={{ marginTop: "var(--c97-sp-1)" }}>{comparison.rankGain === null ? "A rank difference is unavailable across separate boards or when either player is unranked." : comparison.rankGain === 0 ? "Both players have the same weekly rank." : `${add.name} ranks ${Math.abs(comparison.rankGain)} places ${comparison.rankGain > 0 ? "ahead of" : "behind"} ${drop.name} on the ${add.position === "QB" ? "QB" : "flex"} board.`}</p>
-            {comparison.newGaps.length > 0 && <p style={{ marginTop: "var(--c97-sp-1)" }}>This move leaves no ranked player at {comparison.newGaps.map(slot => slot.slot).join(", ")}.</p>}
-            <p className="text-[var(--c97-ink-2)]" style={{ marginTop: "var(--c97-sp-1)" }}>This comparison covers Week {snapshot.week}. It does not estimate season-long value, points gained, or a waiver bid.</p>
-            <button className={`${styles.primaryButton}`} style={{ marginTop: "var(--c97-sp-1)" }} type="button" onClick={() => {
-              update(current => ({ ...current, scoring, players: uniqueTeamPlayers([...current.players.filter(player => player.id !== drop.id), add]), availableIds: current.availableIds.filter(id => id !== add.id) }));
-              setAddId(""); setDropId("");
-              setNotice(`Saved roster updated. Added ${add.name} and removed ${drop.name}. Make the actual transaction in your league.`);
-            }}>Save this move to my roster</button>
-          </div>}
-          <p className={styles.localNote}>Availability is entered by you and stays saved until you change it.</p>
-        </div>
+        {lead !== "waivers" && comparisonBlock}
       </div>)}
       <footer className={styles.footer}>{persistenceStatus === "memory-only" ? "Browser storage is unavailable. Changes last only in this tab." : "Saved in this browser. Your league roster changes only when you update it with your league provider."}</footer>
     </section>

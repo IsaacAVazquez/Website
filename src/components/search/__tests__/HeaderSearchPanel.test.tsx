@@ -1,7 +1,8 @@
 import { act, fireEvent, render, screen } from "@testing-library/react";
 import { HeaderSearchPanel } from "../HeaderSearchPanel";
 
-jest.mock("next/navigation", () => ({ useRouter: () => ({ push: jest.fn() }) }));
+const mockRouterPush = jest.fn();
+jest.mock("next/navigation", () => ({ useRouter: () => ({ push: mockRouterPush }) }));
 jest.mock("@/lib/analytics", () => ({ trackNavigationClick: jest.fn() }));
 
 const originalFetch = global.fetch;
@@ -26,6 +27,7 @@ describe("HeaderSearchPanel request lifecycle", () => {
   beforeEach(() => {
     jest.useFakeTimers();
     mockFetch.mockReset();
+    mockRouterPush.mockReset();
     global.fetch = mockFetch;
   });
 
@@ -87,5 +89,41 @@ describe("HeaderSearchPanel request lifecycle", () => {
     const signal = mockFetch.mock.calls[0][1].signal as AbortSignal;
     unmount();
     expect(signal.aborted).toBe(true);
+  });
+
+  it("keeps keyboard focus inside search and closes with Escape from the close button", () => {
+    const opener = document.createElement("button");
+    document.body.appendChild(opener);
+    opener.focus();
+    const onClose = jest.fn();
+    const { unmount } = render(<HeaderSearchPanel onClose={onClose} />);
+    const input = screen.getByRole("combobox");
+    const close = screen.getByRole("button", { name: "Close search" });
+
+    expect(input).toHaveFocus();
+    fireEvent.keyDown(input, { key: "Tab", shiftKey: true });
+    expect(close).toHaveFocus();
+    fireEvent.keyDown(close, { key: "Tab" });
+    expect(input).toHaveFocus();
+
+    close.focus();
+    fireEvent.keyDown(close, { key: "Escape" });
+    expect(onClose).toHaveBeenCalledTimes(1);
+    unmount();
+    expect(opener).toHaveFocus();
+    opener.remove();
+  });
+
+  it.each(["ctrlKey", "metaKey"])("preserves native result navigation with %s", async (modifier) => {
+    mockFetch.mockResolvedValue(response("New tab result"));
+    const onClose = jest.fn();
+    render(<HeaderSearchPanel onClose={onClose} />);
+    changeQuery("new tab");
+    await act(async () => { await Promise.resolve(); });
+
+    fireEvent.click(screen.getByRole("link", { name: /New tab result/ }), { [modifier]: true });
+
+    expect(mockRouterPush).not.toHaveBeenCalled();
+    expect(onClose).not.toHaveBeenCalled();
   });
 });

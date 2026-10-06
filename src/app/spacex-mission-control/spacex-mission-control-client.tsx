@@ -521,6 +521,24 @@ export function SpaceXMissionControlClient({
         standfirst={standfirst}
         meta={`Launch Library 2 data from The Space Devs · ${liveStatusLabel}`}
       >
+        {/*
+          The card's own Inspect button and the manifest both sit more than a
+          phone screen down, so the two actions repeat here above the card.
+        */}
+        <div
+          data-testid="mission-quick-actions"
+          className="flex flex-wrap items-center"
+          style={{ gap: "var(--c97-sp-1)", marginBottom: "var(--c97-sp-3)" }}
+        >
+          {summary?.heroLaunch ? (
+            <button type="button" className="c97-btn" onClick={handleHeroInspect}>
+              {summary.heroMode === "fallback" ? "Inspect the latest mission" : "Inspect the next mission"}
+            </button>
+          ) : null}
+          <a href="#mission-manifest" className="c97-btn-ghost" onClick={() => setSection("manifest")}>
+            Jump to the manifest
+          </a>
+        </div>
         {/* The card paints the field tint, which is pale on the blue sheet, so it prints on its own paper plate. */}
         <div data-c97-surface="paper" className="c97-offset">
           <MissionControlHero
@@ -590,7 +608,7 @@ export function SpaceXMissionControlClient({
         </div>
       </section>
 
-      <section className="c97-band c97-sheet" data-c97-surface="bone" data-seam="deckle">
+      <section id="mission-manifest" className="c97-band c97-sheet" data-c97-surface="bone" data-seam="deckle">
         <div className="c97-shell">
           <h2 className="c97-poster-sm" style={{ marginBottom: "var(--c97-sp-2)" }}>Manifest, vehicles, and recovery</h2>
           <div>

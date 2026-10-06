@@ -69,7 +69,7 @@ That last part matters more than the branding language around it. A chatbot can 
 
 When I explain the distinction to PMs, I usually start with the job rather than the model. If the job is "answer my question," a chatbot may be enough. If the job is "research three competitors, compare pricing changes, pull examples, and draft a brief I can react to," then the question becomes whether the system can plan, call the right tools, recover when one of them fails, and show me what it did. That is the practical difference. I do not think it helps to turn this into abstract taxonomy when the product consequences are concrete.
 
-### Key takeaways
+## Key takeaways
 
 - **Agentic AI definition**: Systems that receive a high-level goal, plan intermediate steps, operate external tools (APIs, code, search), and iterate until the task is complete without human micro-steering.
 - **The four production pillars**: Autonomous path planning, external tool execution, multi-turn state preservation, and inspectable audit trails.
@@ -160,7 +160,7 @@ The core issue is that an agent is not a request. A chat completion is one model
 
 What I found instrumenting my own workflows is that the distribution of cost across tasks is brutally skewed. The median agent run is cheap and getting cheaper, exactly as the falling token prices promise. The tail is where the money goes. The run that hits a confusing error and retries its way through forty steps, the research task that pulls in ten large documents and then carries them through every subsequent call, the loop that gets stuck and burns its entire step budget before failing. A small fraction of runs routinely accounts for the majority of spend, which means your average cost per task is nearly useless for forecasting and your tail behavior is everything. Budgeting agents on average cost is like budgeting a hospital on the average patient.
 
-### Key takeaways
+## Key takeaways
 
 - **Loops vs. requests**: Chatbots are single requests with bounded token cost; agents are iterative loops where expanding context increases the cost per step.
 - **Tail-skewed economics**: Average cost per task is misleading because median runs are inexpensive, while long, retrying, or stuck loops in the tail drive the majority of the monthly bill.
@@ -200,7 +200,7 @@ Two years ago, prompt engineering was being sold as a career. There were courses
 
 But something real was hiding inside that hype, and it has a better name now. Context engineering is the discipline of deciding what information a model has access to at the moment it produces an answer. Not how you phrase the request. What the model can actually see. After a year of building agent workflows for my own projects and watching teams ship them at work, I would argue this is the single highest-leverage skill in AI product development right now, and it is almost entirely unrelated to the prompt-wording tricks that used to dominate the conversation.
 
-### Key takeaways
+## Key takeaways
 
 - **Context vs. prompt phrasing**: Prompt wording matters less as models improve; context engineering—controlling the exact data, tools, and history a model sees—dictates production output quality.
 - **Context rot**: Irrelevant context is never neutral; it actively degrades model attention and reasoning quality over extended workflows.

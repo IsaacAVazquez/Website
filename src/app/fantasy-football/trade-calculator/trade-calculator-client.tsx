@@ -4,7 +4,7 @@ import { useIsClient } from "@/hooks/useIsClient";
 import { ArrowLeftRight, RotateCcw, ShieldCheck } from "lucide-react";
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useId, useMemo, useState } from "react";
 import { SeasonalScopeNote } from "@/components/fantasy/SeasonalScopeNote";
 import { Breadcrumbs, createBreadcrumbItems } from "@/components/navigation/Breadcrumbs";
 import { PROJECT_PRESS } from "@/constants/projectPress";
@@ -108,6 +108,13 @@ function LeagueSettings({
   state: TradeCalculatorSearchState;
   onChange: (state: TradeCalculatorSearchState) => void;
 }) {
+  // Below lg the settings stack above the ledger, so they open on request and a
+  // one-line summary stands in for them, which keeps both packages near the top.
+  // From lg up they sit in their own column and always show.
+  const [open, setOpen] = useState(false);
+  const fieldsId = useId();
+  const lineupLabel =
+    REDRAFT_LINEUP_PRESETS.find((preset) => preset.id === state.lineup)?.label ?? state.lineup;
   return (
     <aside
       aria-label="League settings"
@@ -120,8 +127,21 @@ function LeagueSettings({
         <p className="text-xs leading-5 text-[var(--c97-ink-2)]" style={{ marginTop: "var(--c97-sp-0)" }}>
           These settings move the starter and bench replacement lines.
         </p>
+        <p className="text-sm text-[var(--c97-ink)] lg:hidden" style={{ marginTop: "var(--c97-sp-1)" }}>
+          {FANTASY_SCORING_LABELS[state.scoring]}, {state.teams} teams, {state.rosterSize} roster spots, {lineupLabel}
+        </p>
+        <button
+          type="button"
+          className="c97-btn-ghost lg:hidden"
+          aria-expanded={open}
+          aria-controls={fieldsId}
+          onClick={() => setOpen((current) => !current)}
+        >
+          {open ? "Hide league settings" : "Change league settings"}
+        </button>
       </div>
 
+      <div id={fieldsId} className={`${open ? "" : "hidden "}lg:block`}>
       <fieldset style={{ marginTop: "var(--c97-sp-2)" }}>
         <legend className="c97-kicker">
           Scoring
@@ -201,6 +221,7 @@ function LeagueSettings({
           ))}
         </select>
       </label>
+      </div>
 
       <div className="border-t border-[var(--c97-rule)]" style={{ paddingTop: "var(--c97-sp-1)", marginTop: "var(--c97-sp-2)" }}>
         <p className="c97-kicker">

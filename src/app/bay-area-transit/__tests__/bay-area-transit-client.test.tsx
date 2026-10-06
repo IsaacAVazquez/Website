@@ -173,21 +173,27 @@ describe("BayAreaTransitClient", () => {
   it("switches views by click and by arrow, Home, and End keys", () => {
     renderClient();
 
-    fireEvent.click(screen.getByRole("tab", { name: "Departures" }));
-    expect(mockPush).toHaveBeenLastCalledWith("/bay-area-transit?view=stations", { scroll: false });
+    expect(screen.getAllByRole("tab").map((tab) => tab.textContent)).toEqual(["Lines", "Alerts"]);
+
+    fireEvent.click(screen.getByRole("tab", { name: "Alerts" }));
+    expect(mockPush).toHaveBeenLastCalledWith("/bay-area-transit?view=advisories", { scroll: false });
 
     const lines = screen.getByRole("tab", { name: "Lines" });
     expect(lines).toHaveAttribute("tabindex", "0");
     expect(screen.getByRole("tab", { name: "Alerts" })).toHaveAttribute("tabindex", "-1");
 
+    mockPush.mockClear();
     fireEvent.keyDown(lines, { key: "ArrowRight" });
-    expect(mockPush).toHaveBeenLastCalledWith("/bay-area-transit?view=stations", { scroll: false });
-    expect(screen.getByRole("tab", { name: "Departures" })).toHaveFocus();
+    expect(mockPush).toHaveBeenLastCalledWith("/bay-area-transit?view=advisories", { scroll: false });
+    expect(screen.getByRole("tab", { name: "Alerts" })).toHaveFocus();
 
+    lines.focus();
+    mockPush.mockClear();
     fireEvent.keyDown(lines, { key: "ArrowLeft" });
     expect(mockPush).toHaveBeenLastCalledWith("/bay-area-transit?view=advisories", { scroll: false });
     expect(screen.getByRole("tab", { name: "Alerts" })).toHaveFocus();
 
+    mockPush.mockClear();
     fireEvent.keyDown(lines, { key: "End" });
     expect(mockPush).toHaveBeenLastCalledWith("/bay-area-transit?view=advisories", { scroll: false });
 
@@ -199,23 +205,75 @@ describe("BayAreaTransitClient", () => {
     expect(mockPush).not.toHaveBeenCalled();
   });
 
-  it("lists stations with their line dots and moves the board to a picked station", () => {
-    currentSearchParams = new URLSearchParams("view=stations");
+  it("lists every station on the board with its line dots, and closes the list on a pick", () => {
     renderClient();
 
-    const panel = screen.getByRole("tabpanel");
-    const embr = within(panel).getByRole("button", { name: /Embarcadero/ });
+    // The list starts closed, so the board sits right under the search field.
+    expect(screen.queryByRole("button", { name: /Richmond/ })).toBeNull();
+    const toggle = screen.getByRole("button", { name: "Show all 3 stations" });
+    expect(toggle).toHaveAttribute("aria-expanded", "false");
+    fireEvent.click(toggle);
+    expect(toggle).toHaveAttribute("aria-expanded", "true");
+
+    const board = toggle.closest(".c97-transit-board") as HTMLElement;
+    expect(within(board).getByRole("heading", { level: 2, name: "Embarcadero" })).toBeInTheDocument();
+
+    const embr = within(board).getByRole("button", { name: /Embarcadero/ });
     expect(embr).toHaveAttribute("aria-current", "true");
     expect(within(embr).getByRole("img", { name: "Yellow line" })).toBeInTheDocument();
     expect(within(embr).getByRole("img", { name: "Orange line" })).toBeInTheDocument();
 
-    const rich = within(panel).getByRole("button", { name: /Richmond/ });
+    const rich = within(board).getByRole("button", { name: /Richmond/ });
     expect(rich).not.toHaveAttribute("aria-current");
     expect(within(rich).getByText("Bay Area")).toBeInTheDocument();
     expect(within(rich).getByRole("img", { name: "Purple line" })).toBeInTheDocument();
 
-    fireEvent.click(within(panel).getByRole("button", { name: /Montgomery/ }));
-    expect(mockPush).toHaveBeenLastCalledWith("/bay-area-transit?view=stations&station=mont", { scroll: false });
+    fireEvent.click(within(board).getByRole("button", { name: /Montgomery/ }));
+    expect(mockPush).toHaveBeenLastCalledWith("/bay-area-transit?station=mont", { scroll: false });
+    // The list closes and focus goes back to the control that opened it.
+    expect(screen.queryByRole("button", { name: /Richmond/ })).toBeNull();
+    expect(toggle).toHaveAttribute("aria-expanded", "false");
+    expect(toggle).toHaveFocus();
+  });
+
+  it("searches stations by name or city and returns focus to the field on a keyboard pick", () => {
+    renderClient();
+    const search = screen.getByLabelText("Find a station");
+
+    fireEvent.change(search, { target: { value: "zzz" } });
+    expect(screen.getByRole("status")).toHaveTextContent("No station matches that search.");
+
+    fireEvent.change(search, { target: { value: "san fran" } });
+    expect(screen.getByRole("button", { name: /Embarcadero/ })).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: /Montgomery/ })).toBeInTheDocument();
+    expect(screen.queryByRole("button", { name: /Richmond/ })).toBeNull();
+    // The whole-list toggle steps aside while a search is typed.
+    expect(screen.queryByRole("button", { name: /Show all/ })).toBeNull();
+
+    fireEvent.change(search, { target: { value: " MONT " } });
+    expect(screen.queryByRole("button", { name: /Embarcadero/ })).toBeNull();
+    // fireEvent's click carries no click count, which is how a keyboard press arrives.
+    fireEvent.click(screen.getByRole("button", { name: /Montgomery/ }));
+
+    expect(mockPush).toHaveBeenLastCalledWith("/bay-area-transit?station=mont", { scroll: false });
+    expect(search).toHaveValue("");
+    expect(search).toHaveFocus();
+    expect(screen.queryByRole("button", { name: /Montgomery/ })).toBeNull();
+  });
+
+  it("scrolls the finder to the top on a tap without focusing the field", () => {
+    renderClient();
+    const search = screen.getByLabelText("Find a station") as HTMLInputElement;
+    const finder = search.closest(".c97-transit-finder") as HTMLElement;
+    finder.scrollIntoView = jest.fn();
+
+    fireEvent.change(search, { target: { value: "rich" } });
+    fireEvent.click(screen.getByRole("button", { name: /Richmond/ }), { detail: 1 });
+
+    expect(mockPush).toHaveBeenLastCalledWith("/bay-area-transit?station=rich", { scroll: false });
+    // Top of the screen, so the board under the finder is in view wherever the field sat.
+    expect(finder.scrollIntoView).toHaveBeenCalledWith({ block: "start" });
+    expect(search).not.toHaveFocus();
   });
 
   it("loads the board for a deep-linked station", async () => {
@@ -240,6 +298,8 @@ describe("BayAreaTransitClient", () => {
     });
     expect(await screen.findByText("Daly City")).toBeInTheDocument();
     expect(screen.queryByText("Loading departures…")).toBeNull();
+    // The retired Departures view drops out of the URL and the station stays.
+    expect(mockReplace).toHaveBeenCalledWith("/bay-area-transit?station=mont", { scroll: false });
   });
 
   it("treats a 404 board as a station with no trains rather than an error", async () => {
@@ -282,13 +342,13 @@ describe("BayAreaTransitClient", () => {
     expect(await screen.findByRole("alert")).toHaveTextContent("Unable to load station board.");
   });
 
-  it("sends a station pick from the alerts view to departures", () => {
+  it("keeps the alerts view when a station is picked on the map", () => {
     currentSearchParams = new URLSearchParams("view=advisories");
     const { container } = renderClient();
 
     fireEvent.click(container.querySelectorAll('.c97-transit-map svg[role="img"] g')[1]);
     expect(mockPush).toHaveBeenLastCalledWith(
-      expect.stringMatching(/^\/bay-area-transit\?view=stations&station=[a-z]+$/),
+      expect.stringMatching(/^\/bay-area-transit\?view=advisories&station=[a-z]+$/),
       { scroll: false }
     );
   });
@@ -383,11 +443,11 @@ describe("BayAreaTransitClient", () => {
   });
 
   it("drops an unknown station from the URL and shows the default board", async () => {
-    currentSearchParams = new URLSearchParams("view=stations&station=zzzz");
+    currentSearchParams = new URLSearchParams("view=advisories&station=zzzz");
     renderClient();
 
     await waitFor(() =>
-      expect(mockReplace).toHaveBeenCalledWith("/bay-area-transit?view=stations", { scroll: false })
+      expect(mockReplace).toHaveBeenCalledWith("/bay-area-transit?view=advisories", { scroll: false })
     );
     expect(screen.getByRole("heading", { level: 2, name: "Embarcadero" })).toBeInTheDocument();
   });

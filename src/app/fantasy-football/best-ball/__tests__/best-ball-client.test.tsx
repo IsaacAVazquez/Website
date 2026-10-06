@@ -192,6 +192,23 @@ describe("BestBallClient", () => {
     );
   });
 
+  it("leads with the room summary and opens the build guidance on request below md", () => {
+    render(<BestBallClient initialState={{ contest: "bbm-vii", position: "all", query: "" }} />);
+    const format = screen.getByRole("region", { name: "Selected format" });
+    const cell = (label: string) => within(format).getByText(label).parentElement as HTMLElement;
+    expect(cell("The room")).not.toHaveClass("hidden");
+    for (const label of ["How I read it", "2026 build range", "What I would watch"]) {
+      expect(cell(label)).toHaveClass("hidden", "md:block");
+    }
+    const toggle = within(format).getByRole("button", { name: "Show build guidance" });
+    expect(toggle).toHaveAttribute("aria-expanded", "false");
+    fireEvent.click(toggle);
+    expect(within(format).getByRole("button", { name: "Hide build guidance" })).toHaveAttribute("aria-expanded", "true");
+    expect(cell("How I read it")).not.toHaveClass("hidden");
+    // All eight contest choices stay in the one group.
+    expect(within(screen.getByRole("group", { name: "Best ball contest" })).getAllByRole("button")).toHaveLength(8);
+  });
+
   it("keeps contest and filters in the URL", () => {
     render(<BestBallClient initialState={{ contest: "superflex", position: "all", query: "" }} />);
 

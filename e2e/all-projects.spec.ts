@@ -73,7 +73,7 @@ test("wine cellar adds, edits, reloads, and deletes a tasting", async ({ page })
 
 test("travel saves a trip, a completed stop, and a journal entry", async ({ page }) => {
   await openTool(page, "/travel");
-  await page.getByRole("button", { name: "New trip", exact: true }).click();
+  // On a first visit the form is already open under the pass.
   const form = page.getByRole("form", { name: "Create a new trip" });
   await form.getByLabel("Trip name").fill("Test trip");
   await form.getByLabel("Destination").fill("Lisbon");

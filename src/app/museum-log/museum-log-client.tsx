@@ -158,12 +158,8 @@ function AdmissionStub({ museum, today }: { museum: Museum; today: string | null
       </p>
       <div className="c97-stub-tear">
         <span className="c97-stub-price">{stub.admission}</span>
-        <span className="inline-flex items-center" style={{ gap: "var(--c97-sp-0)" }}>
-          <StarRow rating={stub.curatorRating} size={14} />
-          <span className="c97-mono" style={{ fontSize: "var(--c97-fs-small)" }}>
-            {stub.curatorRating.toFixed(1)}
-          </span>
-        </span>
+        {/* Labelled, since the hero prints this ticket for the reader's own visit and bare stars read as their rating. */}
+        <RatingPill rating={stub.curatorRating} label="curator" />
       </div>
       {stub.exhibitNow ? (
         <span className="c97-chip c97-chip-positive" style={{ alignSelf: "flex-start" }}>
@@ -322,7 +318,8 @@ function MuseumCard({
 
       {visit ? (
         <p className="c97-stub-meta">
-          Your visit {formatShortDate(visit.date)} · {visit.rating.toFixed(1)} stars
+          Your visit {formatShortDate(visit.date)} ·{" "}
+          {visit.rating === undefined ? "not rated" : `${visit.rating.toFixed(1)} stars`}
         </p>
       ) : null}
 
@@ -555,12 +552,13 @@ function JournalView({
       </section>
 
       <aside>
-        <p className="c97-kicker">Diary</p>
+        <p className="c97-kicker">Curator&rsquo;s diary</p>
         <h3 className="c97-serif c97-h2" style={{ marginTop: "var(--c97-sp-1)" }}>
           Stamped visits
         </h3>
         <p className="c97-prose" style={{ marginTop: "var(--c97-sp-1)", fontSize: "var(--c97-fs-small)" }}>
-          Every visit logged to the diary, dated when it happened.
+          Every visit {snapshot.curatorName} logged to the diary, dated when it happened. Your own visits show on
+          each museum&rsquo;s card in Discover.
         </p>
         <ol style={{ listStyle: "none", margin: 0, padding: 0, marginTop: "var(--c97-sp-3)" }}>
           {sortedLog.map((entry) => {
@@ -920,6 +918,13 @@ function MuseumDetailView({
   onClearVisit,
   onOpenList,
 }: MuseumDetailViewProps) {
+  const activityRef = useRef<HTMLParagraphElement>(null);
+  const pendingActivityFocus = useRef(false);
+  useEffect(() => {
+    if (!pendingActivityFocus.current) return;
+    pendingActivityFocus.current = false;
+    activityRef.current?.focus();
+  }, [visit]);
   const review = snapshot.reviews.find((r) => r.museumId === museum.id);
   const inLists = snapshot.lists.filter((l) => l.museumIds.includes(museum.id));
   const visitLogEntries = snapshot.visitLog
@@ -947,7 +952,7 @@ function MuseumDetailView({
             </p>
             <div className="flex flex-wrap items-center" style={{ gap: "var(--c97-sp-1)" }}>
               <RatingPill rating={museum.curatorRating} label="curator" />
-              {visit && <RatingPill rating={visit.rating} label="you" />}
+              {visit?.rating !== undefined && <RatingPill rating={visit.rating} label="you" />}
             </div>
             <p className="c97-prose">{museum.blurb}</p>
             <QuickActions
@@ -957,13 +962,7 @@ function MuseumDetailView({
               isLiked={isLiked}
               onToggleWatchlist={onToggleWatchlist}
               onToggleLiked={onToggleLiked}
-              onLogQuickVisit={() =>
-                onLogVisit({
-                  museumId: museum.id,
-                  date: toLocalDateKey(),
-                  rating: museum.curatorRating,
-                })
-              }
+              onLogQuickVisit={() => onLogVisit({ museumId: museum.id, date: toLocalDateKey() })}
               onClearVisit={onClearVisit}
             />
             {museum.websiteUrl && (
@@ -1063,38 +1062,57 @@ function MuseumDetailView({
 
         <aside style={{ display: "flex", flexDirection: "column", gap: "var(--c97-sp-3)" }}>
           <section className="c97-panel" style={{ padding: "var(--c97-sp-4)" }}>
-            <p className="c97-kicker">Your activity</p>
+            <p ref={activityRef} tabIndex={-1} className="c97-kicker">Your activity</p>
             <div style={{ display: "flex", flexDirection: "column", gap: "var(--c97-sp-2)", marginTop: "var(--c97-sp-3)" }}>
               {visit ? (
                 <>
                   <p className="c97-prose">
                     Visited on {formatDate(visit.date)}
                   </p>
-                  <RatingPill rating={visit.rating} />
+                  {visit.rating !== undefined && <RatingPill rating={visit.rating} />}
                   {visit.note && (
                     <p className="c97-prose" style={{ fontSize: "var(--c97-fs-small)", fontStyle: "italic" }}>
                       &ldquo;{visit.note}&rdquo;
                     </p>
                   )}
-                  <button type="button" onClick={onClearVisit} className="c97-museum-action" style={{ alignSelf: "flex-start" }}>
+                  {visit.rating === undefined && (
+                    <>
+                      <p className="c97-prose" style={{ fontSize: "var(--c97-fs-small)" }}>
+                        You have not rated this visit. The slider starts at the curator&rsquo;s rating, so move it to
+                        your own before saving.
+                      </p>
+                      <RateAndLogForm
+                        logged
+                        initialRating={museum.curatorRating}
+                        onSubmit={(rating, note) => {
+                          pendingActivityFocus.current = true;
+                          onLogVisit({ ...visit, rating, note: note || visit.note });
+                        }}
+                      />
+                    </>
+                  )}
+                  <button type="button" onClick={() => { pendingActivityFocus.current = true; onClearVisit(); }} className="c97-museum-action" style={{ alignSelf: "flex-start" }}>
                     <Trash2 size={12} aria-hidden="true" /> Remove visit
                   </button>
                 </>
               ) : (
                 <>
                   <p className="c97-prose" style={{ fontSize: "var(--c97-fs-small)" }}>
-                    No visit logged yet. Use the buttons above to mark this one done, save it for later, or like it.
+                    No visit logged yet. Use the buttons above to mark this one done without a rating, save it for
+                    later, or like it. To log it with a rating, use the slider here, which starts at the
+                    curator&rsquo;s rating.
                   </p>
                   <RateAndLogForm
                     initialRating={museum.curatorRating}
-                    onSubmit={(rating, note) =>
+                    onSubmit={(rating, note) => {
+                      pendingActivityFocus.current = true;
                       onLogVisit({
                         museumId: museum.id,
                         date: toLocalDateKey(),
                         rating,
                         note: note || undefined,
-                      })
-                    }
+                      });
+                    }}
                   />
                 </>
               )}
@@ -1146,9 +1164,12 @@ function MuseumDetailView({
 
 function RateAndLogForm({
   initialRating,
+  logged = false,
   onSubmit,
 }: {
   initialRating: number;
+  /** The visit already exists and only its rating is missing. */
+  logged?: boolean;
   onSubmit: (rating: number, note: string) => void;
 }) {
   const [rating, setRating] = useState(initialRating);
@@ -1159,7 +1180,7 @@ function RateAndLogForm({
         e.preventDefault();
         onSubmit(rating, note.trim());
       }}
-      aria-label="Rate and log this museum visit"
+      aria-label={logged ? "Rate this museum visit" : "Rate and log this museum visit"}
       style={{ display: "flex", flexDirection: "column", gap: "var(--c97-sp-3)" }}
     >
       <div className="flex items-center" style={{ gap: "var(--c97-sp-1)" }}>
@@ -1190,7 +1211,7 @@ function RateAndLogForm({
         className="c97-field"
       />
       <button type="submit" className="c97-btn" style={{ alignSelf: "flex-start" }}>
-        <Check size={16} aria-hidden="true" style={{ marginRight: 6, display: "inline" }} /> Log visit
+        <Check size={16} aria-hidden="true" style={{ marginRight: 6, display: "inline" }} /> {logged ? "Save rating" : "Log visit"}
       </button>
     </form>
   );
@@ -1312,12 +1333,9 @@ export function MuseumLogClient({ initialState, snapshot }: Props) {
     [snapshot.museums, today],
   );
 
+  // A quick visit records the date only. The reader's rating comes from the detail form.
   function logQuickVisit(museum: Museum) {
-    logVisit({
-      museumId: museum.id,
-      date: toLocalDateKey(),
-      rating: museum.curatorRating,
-    });
+    logVisit({ museumId: museum.id, date: toLocalDateKey() });
   }
 
   // ─── Filter (search) state, UI-only and not deep-linked ──────────────────
@@ -1411,7 +1429,7 @@ export function MuseumLogClient({ initialState, snapshot }: Props) {
         meta={`Curated by ${snapshot.curatorName} · updated ${lastUpdated}`}
         readouts={[
           {
-            label: "Museums visited",
+            label: "Museums you've visited",
             value: hydrated ? String(userState.visited.length) : "—",
             detail: `of ${snapshot.museums.length} catalogued`,
           },
@@ -1465,7 +1483,7 @@ export function MuseumLogClient({ initialState, snapshot }: Props) {
               </div>
             </nav>
 
-            <label className="c97-search-field">
+            {activeView === "discover" && <label className="c97-search-field">
               <Search size={14} aria-hidden="true" />
               <input
                 type="search"
@@ -1474,13 +1492,14 @@ export function MuseumLogClient({ initialState, snapshot }: Props) {
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
               />
-            </label>
+            </label>}
           </div>
 
           <p className="c97-prose" style={{ fontSize: "var(--c97-fs-small)", marginTop: "var(--c97-sp-3)" }}>
             {snapshot.museums.length} museums catalogued, {snapshot.reviews.length}{" "}
-            {snapshot.reviews.length === 1 ? "curator review" : "curator reviews"}, {snapshot.visitLog.length} visits
-            logged. I would verify admission and exhibitions before visiting.
+            {snapshot.reviews.length === 1 ? "curator review" : "curator reviews"}, and {snapshot.visitLog.length}{" "}
+            {snapshot.visitLog.length === 1 ? "visit" : "visits"} in the curator&rsquo;s diary. Your own visits are
+            counted at the top of the page. I would verify admission and exhibitions before visiting.
           </p>
 
           {persistenceStatus === "memory-only" ? (

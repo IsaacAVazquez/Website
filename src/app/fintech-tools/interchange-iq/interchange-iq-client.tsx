@@ -2,7 +2,7 @@
 
 import { Info, RefreshCw } from "lucide-react";
 import { useId, useMemo, useState } from "react";
-import { Catalog97ProjectHero } from "@/components/catalog97/Catalog97ProjectHero";
+import { Catalog97HeroReadouts, Catalog97ProjectHero } from "@/components/catalog97/Catalog97ProjectHero";
 import { PROJECT_PRESS } from "@/constants/projectPress";
 import {
   buildCardMix,
@@ -29,20 +29,33 @@ const fmtFull = (n: number) =>
 const fmtVolume = (n: number) =>
   n >= 1000 ? `$${(n / 1000).toFixed(n >= 10_000 ? 0 : 1)}k` : `$${n}`;
 
+/** A whole-dollar ticket prints as "$25" and a typed one with cents as "$12.50". */
+const fmtTicket = (n: number) => (Number.isInteger(n) ? `$${n}` : `$${n.toFixed(2)}`);
+
 interface SliderProps {
   label: string;
+  /** The typed field's own name. It must not contain `label`, which the e2e spec matches by substring. */
+  exactLabel: string;
   value: number;
   min: number;
   max: number;
   step: number;
+  /** Decimal places the typed field keeps. The range keeps its coarser `step`. */
+  decimals?: number;
   onChange: (v: number) => void;
   format: (v: number) => string;
-  hint?: string;
+  hint: string;
 }
 
-function Slider({ label, value, min, max, step, onChange, format, hint }: SliderProps) {
+/** A range for quick comparison, paired with a number field for an exact value. Both drive the same state. */
+function Slider({ label, exactLabel, value, min, max, step, decimals = 0, onChange, format, hint }: SliderProps) {
   const inputId = useId();
-  const hintId = hint ? `${inputId}-hint` : undefined;
+  const hintId = `${inputId}-hint`;
+  // The typed text stays local until it lands inside the range, so a value
+  // still being typed never drives the model, and the field snaps back on blur.
+  const [draft, setDraft] = useState<string | null>(null);
+  const typed = draft !== null && draft.trim() !== "" ? Number(draft) : NaN;
+  const outOfRange = Number.isFinite(typed) && (typed < min || typed > max);
   return (
     <div style={{ display: "flex", flexDirection: "column", gap: "var(--c97-sp-1)" }}>
       <div className="flex justify-between items-baseline" style={{ gap: "var(--c97-sp-1)" }}>
@@ -53,26 +66,47 @@ function Slider({ label, value, min, max, step, onChange, format, hint }: Slider
           {format(value)}
         </span>
       </div>
-      <input
-        id={inputId}
-        type="range"
-        min={min}
-        max={max}
-        step={step}
-        value={value}
-        aria-valuenow={value}
-        aria-valuemin={min}
-        aria-valuemax={max}
-        aria-valuetext={format(value)}
-        aria-describedby={hintId}
-        onChange={(e) => onChange(Number(e.target.value))}
-        className="c97-range"
-      />
-      {hint ? (
-        <p id={hintId} className="c97-prose" style={{ fontSize: "var(--c97-fs-small)", color: "var(--c97-ink-2)" }}>
-          {hint}
-        </p>
-      ) : null}
+      <div className="flex items-center" style={{ gap: "var(--c97-sp-2)" }}>
+        <input
+          id={inputId}
+          type="range"
+          min={min}
+          max={max}
+          step={step}
+          value={value}
+          aria-valuenow={value}
+          aria-valuemin={min}
+          aria-valuemax={max}
+          aria-valuetext={format(value)}
+          aria-describedby={hintId}
+          onChange={(e) => onChange(Number(e.target.value))}
+          className="c97-range"
+          style={{ flex: 1, minWidth: 0 }}
+        />
+        <input
+          type="number"
+          inputMode="decimal"
+          aria-label={exactLabel}
+          aria-invalid={outOfRange || undefined}
+          aria-describedby={hintId}
+          min={min}
+          max={max}
+          step={10 ** -decimals}
+          value={draft ?? String(value)}
+          onChange={(e) => {
+            const next = e.target.value;
+            setDraft(next);
+            const parsed = Number(next);
+            if (next.trim() !== "" && parsed >= min && parsed <= max) onChange(Number(parsed.toFixed(decimals)));
+          }}
+          onBlur={() => setDraft(null)}
+          className="c97-field c97-mono"
+          style={{ width: "7rem", flex: "none" }}
+        />
+      </div>
+      <p id={hintId} className="c97-prose" style={{ fontSize: "var(--c97-fs-small)", color: "var(--c97-ink-2)" }}>
+        {outOfRange ? `Enter a value between ${format(min)} and ${format(max)}.` : hint}
+      </p>
     </div>
   );
 }
@@ -196,24 +230,100 @@ export function InterchangeIQClient() {
         ink={lead}
         title="Interchange IQ"
         standfirst={standfirst}
-        readouts={[
-          {
-            label: "Cheapest monthly fee",
-            value: fmtFull(cheapest.monthlyFee),
-            detail: cheapestDetail,
-          },
-          {
-            label: "Savings vs priciest",
-            value: `${fmtFull(savingsVsWorst)}/mo`,
-            detail: `${fmtFull(annualSavings)} a year`,
-          },
-          {
-            label: "Cheapest effective rate",
-            value: `${(cheapest.effectiveRate * 100).toFixed(2)}%`,
-          },
-        ]}
       >
-        <div data-c97-surface="paper" className="c97-offset" style={{ padding: "var(--c97-sp-3)" }}>
+        {/* The four business inputs come first, so the figures and the fee comparison they drive sit right under them. */}
+        <div
+          data-c97-surface="paper"
+          className="c97-offset flex flex-col"
+          style={{ padding: "var(--c97-sp-3)", gap: "var(--c97-sp-2)" }}
+        >
+          <h2 className="sr-only">Inputs</h2>
+          <div className="grid sm:grid-cols-2" style={{ gap: "var(--c97-sp-3)" }}>
+            <Slider
+              label="Monthly volume"
+              exactLabel="Volume per month in dollars"
+              value={monthlyVolume}
+              min={1_000}
+              max={500_000}
+              step={1_000}
+              onChange={setMonthlyVolume}
+              format={fmtVolume}
+              hint="Total card revenue per month"
+            />
+
+            <Slider
+              label="Avg ticket"
+              exactLabel="Ticket size in dollars"
+              value={avgTicket}
+              min={5}
+              max={500}
+              step={5}
+              decimals={2}
+              onChange={setAvgTicket}
+              format={fmtTicket}
+              hint="Per-transaction fixed fees matter more at lower tickets"
+            />
+
+            <Slider
+              label="% Credit (Visa/MC)"
+              exactLabel="Credit share in percent"
+              value={creditPct}
+              min={0}
+              max={100}
+              step={5}
+              onChange={setCreditPct}
+              format={(v) => `${v}%`}
+              hint={`Debit: ${100 - creditPct}% of all transactions`}
+            />
+
+            <Slider
+              label="% of credit that's Amex"
+              exactLabel="Amex share of credit in percent"
+              value={amexOfCredit}
+              min={0}
+              max={50}
+              step={1}
+              onChange={setAmexOfCredit}
+              format={(v) => `${v}%`}
+              hint={`Amex = ${((creditPct / 100) * (amexOfCredit / 100) * 100).toFixed(1)}% of total`}
+            />
+          </div>
+          <button
+            type="button"
+            onClick={handleReset}
+            aria-label="Reset all inputs to defaults"
+            className="c97-btn-ghost"
+            style={{ gap: "var(--c97-sp-1)", alignSelf: "flex-start" }}
+          >
+            <RefreshCw size={14} aria-hidden="true" />
+            Reset
+          </button>
+        </div>
+
+        <Catalog97HeroReadouts
+          readouts={[
+            {
+              label: "Cheapest monthly fee",
+              value: fmtFull(cheapest.monthlyFee),
+              detail: cheapestDetail,
+            },
+            {
+              label: "Savings vs priciest",
+              value: `${fmtFull(savingsVsWorst)}/mo`,
+              detail: `${fmtFull(annualSavings)} a year`,
+            },
+            {
+              label: "Cheapest effective rate",
+              value: `${(cheapest.effectiveRate * 100).toFixed(2)}%`,
+            },
+          ]}
+        />
+
+        <div
+          data-c97-surface="paper"
+          className="c97-offset"
+          style={{ padding: "var(--c97-sp-3)", marginTop: "var(--c97-sp-5)" }}
+        >
           <FeeStatementSignature rows={statementRows} verdict={cheapestVerdict} />
         </div>
       </Catalog97ProjectHero>
@@ -225,21 +335,9 @@ export function InterchangeIQClient() {
         data-testid="interchange-iq-shell"
       >
         <div className="flex flex-col c97-shell" style={{ rowGap: "var(--c97-sp-3)" }}>
-          <div className="flex flex-wrap items-end justify-between" style={{ gap: "var(--c97-sp-1)" }}>
-            <p className="c97-kicker">
-              Interchange IQ / <strong>{VIEW_LABELS[activeView]}</strong>
-            </p>
-            <button
-              type="button"
-              onClick={handleReset}
-              aria-label="Reset all inputs to defaults"
-              className="c97-btn-ghost"
-              style={{ gap: "var(--c97-sp-1)" }}
-            >
-              <RefreshCw size={14} aria-hidden="true" />
-              Reset
-            </button>
-          </div>
+          <p className="c97-kicker">
+            Interchange IQ / <strong>{VIEW_LABELS[activeView]}</strong>
+          </p>
 
           <nav aria-label="In-page sections" className="c97-iq-nav">
             {NAV_ITEMS.map((item) => {
@@ -258,99 +356,51 @@ export function InterchangeIQClient() {
           </nav>
 
           <div className="grid lg:grid-cols-[minmax(0,360px)_minmax(0,1fr)]" style={{ gap: "var(--c97-sp-3)" }}>
-            <div className="flex flex-col" style={{ rowGap: "var(--c97-sp-2)" }}>
-              <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-2)" }}>Inputs</p>
+            <div>
+              <p className="c97-kicker" style={{ display: "flex", alignItems: "center", gap: "var(--c97-sp-1)" }}>
+                Card mix preview
+                <button
+                  type="button"
+                  onClick={() => setShowInfo(!showInfo)}
+                  aria-label="Learn about card mix"
+                  aria-expanded={showInfo}
+                  aria-controls="card-mix-info"
+                  style={{ color: "var(--c97-label)", display: "inline-flex", alignItems: "center", justifyContent: "center", minWidth: 44, minHeight: 44 }}
+                >
+                  <Info size={14} aria-hidden="true" />
+                </button>
+              </p>
 
-              <Slider
-                label="Monthly volume"
-                value={monthlyVolume}
-                min={1_000}
-                max={500_000}
-                step={1_000}
-                onChange={setMonthlyVolume}
-                format={fmtVolume}
-                hint="Total card revenue per month"
-              />
-
-              <Slider
-                label="Avg ticket"
-                value={avgTicket}
-                min={5}
-                max={500}
-                step={5}
-                onChange={setAvgTicket}
-                format={(v) => `$${v}`}
-                hint="Per-transaction fixed fees matter more at lower tickets"
-              />
-
-              <Slider
-                label="% Credit (Visa/MC)"
-                value={creditPct}
-                min={0}
-                max={100}
-                step={5}
-                onChange={setCreditPct}
-                format={(v) => `${v}%`}
-                hint={`Debit: ${100 - creditPct}% of all transactions`}
-              />
-
-              <Slider
-                label="% of credit that's Amex"
-                value={amexOfCredit}
-                min={0}
-                max={50}
-                step={1}
-                onChange={setAmexOfCredit}
-                format={(v) => `${v}%`}
-                hint={`Amex = ${((creditPct / 100) * (amexOfCredit / 100) * 100).toFixed(1)}% of total`}
-              />
-
-              <div style={{ marginTop: "var(--c97-sp-3)" }}>
-                <p className="c97-kicker" style={{ display: "flex", alignItems: "center", gap: "var(--c97-sp-1)" }}>
-                  Card mix preview
-                  <button
-                    type="button"
-                    onClick={() => setShowInfo(!showInfo)}
-                    aria-label="Learn about card mix"
-                    aria-expanded={showInfo}
-                    aria-controls="card-mix-info"
-                    style={{ color: "var(--c97-label)", display: "inline-flex", alignItems: "center", justifyContent: "center", minWidth: 44, minHeight: 44 }}
-                  >
-                    <Info size={14} aria-hidden="true" />
-                  </button>
+              {showInfo ? (
+                <p
+                  id="card-mix-info"
+                  className="c97-panel c97-prose"
+                  style={{ fontSize: "var(--c97-fs-small)", marginTop: "var(--c97-sp-2)" }}
+                >
+                  Different card types carry different interchange rates. Debit (Reg II) is much
+                  lower than consumer credit. Amex runs its own network and typically costs more.
                 </p>
+              ) : null}
 
-                {showInfo ? (
-                  <p
-                    id="card-mix-info"
-                    className="c97-panel c97-prose"
-                    style={{ fontSize: "var(--c97-fs-small)", marginTop: "var(--c97-sp-2)" }}
-                  >
-                    Different card types carry different interchange rates. Debit (Reg II) is much
-                    lower than consumer credit. Amex runs its own network and typically costs more.
-                  </p>
-                ) : null}
-
-                <div className="flex flex-col" style={{ rowGap: "var(--c97-sp-1)", marginTop: "var(--c97-sp-2)" }}>
-                  {cardMixRows.map((row) => (
-                    <div key={row.label}>
-                      <div className="flex items-baseline justify-between" style={{ gap: "var(--c97-sp-1)" }}>
-                        <span className="c97-prose" style={{ fontSize: "var(--c97-fs-small)", fontWeight: 600 }}>
-                          {row.label}
-                        </span>
-                        <span className="c97-mono" style={{ fontSize: "var(--c97-fs-small)" }}>
-                          {row.pct.toFixed(1)}%
-                        </span>
-                      </div>
-                      <span className="c97-meter" style={{ marginTop: "var(--c97-sp-1)" }}>
-                        <span style={{ width: `${Math.max(row.pct, 0.5)}%` }} />
+              <div className="flex flex-col" style={{ rowGap: "var(--c97-sp-1)", marginTop: "var(--c97-sp-2)" }}>
+                {cardMixRows.map((row) => (
+                  <div key={row.label}>
+                    <div className="flex items-baseline justify-between" style={{ gap: "var(--c97-sp-1)" }}>
+                      <span className="c97-prose" style={{ fontSize: "var(--c97-fs-small)", fontWeight: 600 }}>
+                        {row.label}
                       </span>
-                      <p className="c97-iq-tag" style={{ marginTop: "var(--c97-sp-1)" }}>
-                        {row.rate}
-                      </p>
+                      <span className="c97-mono" style={{ fontSize: "var(--c97-fs-small)" }}>
+                        {row.pct.toFixed(1)}%
+                      </span>
                     </div>
-                  ))}
-                </div>
+                    <span className="c97-meter" style={{ marginTop: "var(--c97-sp-1)" }}>
+                      <span style={{ width: `${Math.max(row.pct, 0.5)}%` }} />
+                    </span>
+                    <p className="c97-iq-tag" style={{ marginTop: "var(--c97-sp-1)" }}>
+                      {row.rate}
+                    </p>
+                  </div>
+                ))}
               </div>
             </div>
 
@@ -403,7 +453,7 @@ export function InterchangeIQClient() {
               <p className="c97-prose" style={{ marginBottom: "var(--c97-sp-2)" }}>
                 With your card mix, Stripe IC+ becomes cheaper than Stripe flat rate once the average
                 ticket passes <span className="c97-mono">${breakevenTicket.toFixed(2)}</span>. Your
-                current average ticket is <span className="c97-mono">${avgTicket}</span>, and{" "}
+                current average ticket is <span className="c97-mono">{fmtTicket(avgTicket)}</span>, and{" "}
                 {avgTicket >= breakevenTicket ? "IC+ wins on unit economics." : "flat rate wins per transaction."}
               </p>
 
@@ -435,7 +485,7 @@ export function InterchangeIQClient() {
                 >
                   <span>$5</span>
                   <span>
-                    Avg ticket ${avgTicket} · Breakeven ${breakevenTicket.toFixed(0)}
+                    Avg ticket {fmtTicket(avgTicket)} · Breakeven ${breakevenTicket.toFixed(0)}
                   </span>
                   <span>$500</span>
                 </figcaption>
@@ -475,7 +525,7 @@ export function InterchangeIQClient() {
                   }}
                 >
                   <span>$5</span>
-                  <span>Avg ticket ${avgTicket}</span>
+                  <span>Avg ticket {fmtTicket(avgTicket)}</span>
                   <span>$500</span>
                 </figcaption>
               </figure>

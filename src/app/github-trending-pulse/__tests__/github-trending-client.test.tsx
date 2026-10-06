@@ -112,7 +112,13 @@ describe("GitHubTrendingClient", () => {
       { scroll: false }
     );
 
-    fireEvent.click(within(filters).getByRole("button", { name: "Stars" }));
+    // Sort only reorders the table, so it sits with the table and not in the
+    // filters above the star log.
+    fireEvent.click(
+      within(screen.getByRole("group", { name: "Sort repositories" })).getByRole("button", {
+        name: "Stars",
+      })
+    );
     expect(mockPush).toHaveBeenLastCalledWith(
       "/github-trending-pulse?sort=stars",
       { scroll: false }
@@ -122,6 +128,44 @@ describe("GitHubTrendingClient", () => {
     expect(mockPush).toHaveBeenLastCalledWith(
       "/github-trending-pulse?segment=typescript",
       { scroll: false }
+    );
+  });
+
+  it("prints the filters ahead of the star log they redraw", () => {
+    render(
+      <GitHubTrendingClient
+        initialState={DEFAULT_GITHUB_TRENDING_STATE}
+        snapshot={snapshot}
+      />
+    );
+
+    const filters = screen.getByRole("region", { name: "GitHub trending filters" });
+    const starLog = screen.getByRole("list", { name: /weekly star movement/i });
+    expect(
+      filters.compareDocumentPosition(starLog) & Node.DOCUMENT_POSITION_FOLLOWING
+    ).toBeTruthy();
+  });
+
+  it("carries the columns a phone hides into the open row", () => {
+    currentSearchParams = new URLSearchParams("repo=42");
+    render(
+      <GitHubTrendingClient
+        initialState={DEFAULT_GITHUB_TRENDING_STATE}
+        snapshot={snapshot}
+      />
+    );
+
+    const toggle = screen.getByRole("button", { name: "openai/fixture" });
+    expect(toggle).toHaveAttribute("aria-expanded", "true");
+    const detail = document.getElementById(
+      toggle.getAttribute("aria-controls") as string
+    ) as HTMLElement;
+    expect(within(detail).getByText("Stars").nextElementSibling).toHaveTextContent("1K");
+    expect(within(detail).getByText("Language").nextElementSibling).toHaveTextContent("TypeScript");
+    expect(within(detail).getByText("Pushed")).toBeInTheDocument();
+    expect(within(detail).getByRole("link", { name: "Repo" })).toHaveAttribute(
+      "href",
+      "https://github.com/openai/fixture"
     );
   });
 

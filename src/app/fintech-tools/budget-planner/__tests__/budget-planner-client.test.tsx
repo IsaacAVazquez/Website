@@ -158,4 +158,35 @@ describe("BudgetPlannerClient", () => {
 
     expect(screen.queryAllByText("Groceries run")).toHaveLength(0);
   });
+
+  it("lets a category name stay blank while retyping and commits it on blur", async () => {
+    const user = userEvent.setup({ advanceTimers: jest.advanceTimersByTime });
+    render(<BudgetPlannerClient />);
+    const name = screen.getByLabelText("Category name for Housing");
+
+    await user.clear(name);
+    expect(name).toHaveValue("");
+    await user.type(name, "Home costs");
+    await user.tab();
+
+    expect(screen.getByLabelText("Category name for Home costs")).toHaveValue("Home costs");
+    const months = JSON.parse(localStorage.getItem(BUDGET_PLANNER_STORAGE_KEY) || "{}");
+    expect(months["2026-04"].categories[0].name).toBe("Home costs");
+
+    await user.clear(screen.getByLabelText("Category name for Home costs"));
+    await user.tab();
+    expect(screen.getByLabelText("Category name for Home costs")).toHaveValue("Home costs");
+  });
+
+  it("puts the month, income, and savings target ahead of the envelopes and the figures", () => {
+    const { container } = render(<BudgetPlannerClient />);
+    const savings = screen.getByLabelText("Savings target");
+    const follows = (node: Element | null) =>
+      Boolean(node && savings.compareDocumentPosition(node) & Node.DOCUMENT_POSITION_FOLLOWING);
+
+    expect(follows(screen.getByLabelText("Budget month"))).toBe(false);
+    expect(follows(screen.getByLabelText("Monthly income"))).toBe(false);
+    expect(follows(container.querySelector(".c97-stat-value"))).toBe(true);
+    expect(follows(container.querySelector(".c97-envelope-grid"))).toBe(true);
+  });
 });

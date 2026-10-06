@@ -21,6 +21,9 @@ jest.mock("../food-map-leaflet", () => ({
 }));
 
 describe("FoodMapClient", () => {
+  beforeAll(() => {
+    Element.prototype.scrollIntoView = jest.fn();
+  });
   beforeEach(() => {
     currentSearchParams = new URLSearchParams();
     mockReplace.mockReset();
@@ -50,6 +53,52 @@ describe("FoodMapClient", () => {
     expect(mockReplace).toHaveBeenCalledWith("/food-map?city=tokyo", {
       scroll: false,
     });
+  });
+
+  it("moves and selects city radios with arrow keys, including wrapping", () => {
+    const view = render(<FoodMapClient initialState={DEFAULT_FOOD_MAP_STATE} />);
+    const austin = screen.getByRole("radio", { name: /austin/i });
+    expect(austin).toHaveAttribute("tabindex", "0");
+    expect(screen.getByRole("radio", { name: /tokyo/i })).toHaveAttribute("tabindex", "-1");
+    austin.focus();
+    fireEvent.keyDown(austin, { key: "ArrowRight" });
+    expect(screen.getByRole("radio", { name: /san francisco/i })).toHaveFocus();
+    expect(mockReplace).toHaveBeenLastCalledWith("/food-map?city=sf", { scroll: false });
+
+    currentSearchParams = new URLSearchParams("city=sf");
+    view.rerender(<FoodMapClient initialState={DEFAULT_FOOD_MAP_STATE} />);
+    expect(screen.getByRole("radio", { name: /san francisco/i })).toHaveAttribute("tabindex", "0");
+    fireEvent.keyDown(austin, { key: "ArrowLeft" });
+    expect(screen.getByRole("radio", { name: /san sebastián/i })).toHaveFocus();
+    expect(mockReplace).toHaveBeenLastCalledWith("/food-map?city=san-sebastian", { scroll: false });
+  });
+
+  it("focuses the chosen stop and returns to the index when cleared", () => {
+    mockReplace.mockImplementation((href: string) => {
+      currentSearchParams = new URLSearchParams(href.split("?")[1] ?? "");
+    });
+    const ui = () => <FoodMapClient initialState={DEFAULT_FOOD_MAP_STATE} />;
+    const view = render(ui());
+    fireEvent.click(screen.getByRole("button", { name: /barbecue franklin barbecue/i }));
+    view.rerender(ui());
+    expect(screen.getByRole("heading", { name: "Franklin Barbecue" })).toHaveFocus();
+    expect(Element.prototype.scrollIntoView).toHaveBeenCalledWith({ behavior: "smooth", block: "start" });
+    fireEvent.click(screen.getByRole("button", { name: /clear pick/i }));
+    view.rerender(ui());
+    expect(screen.getByRole("heading", { name: "The stops" })).toHaveFocus();
+  });
+
+  it("puts the city choice ahead of the map and offers a direct path to the list", () => {
+    render(<FoodMapClient initialState={DEFAULT_FOOD_MAP_STATE} />);
+    const cities = screen.getByRole("radiogroup", { name: "Choose a city" });
+    const map = screen.getByTestId("food-map-leaflet");
+    expect(cities.compareDocumentPosition(map) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
+
+    fireEvent.click(screen.getByRole("button", { name: "Go to the list of stops" }));
+    expect(screen.getByRole("heading", { name: "The stops" })).toHaveFocus();
+    expect(Element.prototype.scrollIntoView).toHaveBeenLastCalledWith({ behavior: "smooth", block: "start" });
+    // Jumping to the list is a scroll, so the URL and the selection stay as they were.
+    expect(mockReplace).not.toHaveBeenCalled();
   });
 
   it("toggles a curator chip into the URL", () => {

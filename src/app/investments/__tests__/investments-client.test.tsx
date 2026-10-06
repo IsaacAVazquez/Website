@@ -192,6 +192,40 @@ describe("InvestmentsClient", () => {
     );
   });
 
+  it("reads the task from the URL and keeps the default task off it", async () => {
+    currentSearchParams = new URLSearchParams("task=retirement&section=overview");
+
+    await act(async () => {
+      root.render(<InvestmentsClient initialState={DEFAULT_INVESTMENTS_STATE} />);
+    });
+    await flushPromises();
+
+    expect(mockReplace).not.toHaveBeenCalled();
+    expect(mockDashboardProps.mock.lastCall?.[0].task).toBe("retirement");
+
+    await act(async () => {
+      mockDashboardProps.mock.lastCall?.[0].onTaskChange("research");
+    });
+    expect(mockPush).toHaveBeenLastCalledWith("/investments?task=research&section=overview", { scroll: false });
+
+    await act(async () => {
+      mockDashboardProps.mock.lastCall?.[0].onTaskChange("portfolio");
+    });
+    expect(mockPush).toHaveBeenLastCalledWith("/investments?section=overview", { scroll: false });
+  });
+
+  it("drops a task the page does not have", async () => {
+    currentSearchParams = new URLSearchParams("task=taxes&section=overview");
+
+    await act(async () => {
+      root.render(<InvestmentsClient initialState={DEFAULT_INVESTMENTS_STATE} />);
+    });
+    await flushPromises();
+
+    expect(mockReplace).toHaveBeenCalledWith("/investments?section=overview", { scroll: false });
+    expect(mockDashboardProps.mock.lastCall?.[0].task).toBe("portfolio");
+  });
+
   it("keeps a clean /investments visit clean without rewriting the URL", async () => {
     currentSearchParams = new URLSearchParams();
 

@@ -3,6 +3,7 @@
 .c97-ff1-garage {
   display: grid;
   gap: var(--c97-sp-4);
+  padding: var(--c97-sp-3);
 }
 
 .c97-ff1-garage-tier {
@@ -38,6 +39,11 @@
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+}
+
+/* The short form a phone's driver box prints. */
+.c97-ff1-box-code {
+  display: none;
 }
 
 .c97-ff1-box-figures {
@@ -176,10 +182,92 @@
   contain: layout;
 }
 
-/* At phone width the driver tier's five boxes get tight; drop to two columns
- * so the name and figures stay legible instead of shrinking to fit five. */
+/* The one suggested lineup, under the budget bar in the garage plate. */
+.c97-ff1-suggest {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--c97-sp-2);
+  border-top: 1px solid var(--c97-rule);
+  padding-top: var(--c97-sp-3);
+}
+
+.c97-ff1-suggest p {
+  margin: 0;
+}
+
+/* The asset board. From 640px it is the full eight-column table. */
+.c97-ff1-table {
+  min-width: 760px;
+}
+
+/*
+ * At phone width the garage is a strip: five driver codes across and the two
+ * constructors under them, with no price or points. Five full boxes two
+ * across ran about 560px and repeated the Current team list that follows the
+ * hero, which has every pick's figures and its controls.
+ */
 @media (max-width: 479px) {
+  .c97-ff1-garage {
+    gap: var(--c97-sp-2);
+    padding: var(--c97-sp-2);
+  }
+
   .c97-ff1-garage-tier {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: var(--c97-sp-1);
+  }
+
+  .c97-ff1-box {
+    min-height: 44px;
+    align-content: center;
+    padding: var(--c97-sp-1) var(--c97-sp-0) var(--c97-sp-1) var(--c97-sp-2);
+  }
+
+  .c97-ff1-box .c97-kicker,
+  .c97-ff1-box-figures,
+  .c97-ff1-box-full {
+    display: none;
+  }
+
+  .c97-ff1-box-code {
+    display: inline;
+  }
+
+  .c97-ff1-box-name {
+    font-size: var(--c97-fs-small);
+  }
+
+  .c97-ff1-box-lock {
+    top: 2px;
+    right: 2px;
+  }
+}
+
+/*
+ * Below 640px the board keeps two columns, the asset and its Add or Remove
+ * button, and every other column is hidden in the markup. The asset cell then
+ * carries the price and the projection, and the rest opens in place. The
+ * fixed layout is what holds the table to the column so nothing scrolls
+ * sideways.
+ */
+@media (max-width: 639px) {
+  .c97-ff1-table {
+    min-width: 0;
+    table-layout: fixed;
+  }
+
+  .c97-ff1-table th,
+  .c97-ff1-table td {
+    padding-inline: var(--c97-sp-1);
+  }
+
+  .c97-ff1-table .c97-ff1-col-action {
+    width: 8rem;
+  }
+
+  .c97-ff1-table .c97-ff1-btn {
+    padding-inline: var(--c97-sp-2);
   }
 }

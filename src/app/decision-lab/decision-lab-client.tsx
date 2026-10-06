@@ -1,6 +1,6 @@
 "use client";
 
-import { Link as LinkIcon, RefreshCw, Target, Zap } from "lucide-react";
+import { Link as LinkIcon, RefreshCw, Target } from "lucide-react";
 import { startTransition, useEffect, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { Catalog97ProjectHero } from "@/components/catalog97/Catalog97ProjectHero";
@@ -247,11 +247,7 @@ function WhyThisVerdict({
 
   return (
     <div>
-      <p className="c97-kicker" style={{ display: "flex", alignItems: "center", gap: "var(--c97-sp-1)" }}>
-        <Zap size={14} aria-hidden="true" />
-        Why this verdict
-      </p>
-      <div style={{ marginTop: "var(--c97-sp-2)" }}>
+      <div>
         {contributions.map((row) => (
           <ContributionRow key={row.axis} row={row} />
         ))}
@@ -303,9 +299,6 @@ function MetricSlider({
           </span>
         </div>
       </div>
-      <p id={`${inputId}-helper`} className="c97-prose" style={{ margin: 0, fontSize: "var(--c97-fs-small)", color: "var(--c97-ink-2)" }}>
-        {helper}
-      </p>
       <input
         id={inputId}
         type="range"
@@ -317,6 +310,9 @@ function MetricSlider({
         aria-describedby={`${inputId}-helper`}
         className="c97-range"
       />
+      <p id={`${inputId}-helper`} className="c97-prose" style={{ margin: 0, fontSize: "var(--c97-fs-small)", color: "var(--c97-ink-2)" }}>
+        {helper}
+      </p>
     </div>
   );
 }
@@ -424,32 +420,13 @@ function DecisionLabWorkbench({
         ]}
       >
         <div data-c97-surface="paper" className="c97-offset" style={{ padding: "var(--c97-sp-3)" }}>
+          {/* The verdict line and the four sliders come first, so on a phone the call changes right above the control that moved it. */}
           <div className="c97-decision-signature">
-            <figure style={{ margin: 0 }}>
-              <DecisionMatrix metrics={draftState} evaluation={evaluation} pointLabel={crumbLabel} />
+            <div style={{ display: "grid", gap: "var(--c97-sp-4)" }}>
+              <h2 className="sr-only">Score the tradeoff</h2>
               <p className="c97-decision-caption" role="status" aria-live="polite">
                 Score {evaluation.weightedScore} · {stamp.word}
               </p>
-            </figure>
-            <WhyThisVerdict metrics={draftState} evaluation={evaluation} />
-          </div>
-        </div>
-      </Catalog97ProjectHero>
-
-      <section
-        className="c97-band c97-sheet"
-        data-c97-surface="paper"
-        data-seam="torn"
-        data-testid="decision-lab-shell"
-      >
-        <div className="c97-shell">
-          <h2 className="c97-poster-sm">Score the tradeoff</h2>
-          <p className="c97-meta" style={{ marginTop: "var(--c97-sp-1)" }}>
-            Active: {activePreset.name}
-          </p>
-
-          <div className="c97-decision-body-grid" style={{ marginTop: "var(--c97-sp-4)" }}>
-            <div style={{ display: "grid", gap: "var(--c97-sp-4)" }}>
               {metricDefinitions.map((metric) => (
                 <MetricSlider
                   key={metric.key}
@@ -461,6 +438,25 @@ function DecisionLabWorkbench({
                 />
               ))}
             </div>
+            <DecisionMatrix metrics={draftState} evaluation={evaluation} pointLabel={crumbLabel} />
+          </div>
+        </div>
+      </Catalog97ProjectHero>
+
+      <section
+        className="c97-band c97-sheet"
+        data-c97-surface="paper"
+        data-seam="torn"
+        data-testid="decision-lab-shell"
+      >
+        <div className="c97-shell">
+          <h2 className="c97-poster-sm">Why this verdict</h2>
+          <p className="c97-meta" style={{ marginTop: "var(--c97-sp-1)" }}>
+            Active: {activePreset.name}
+          </p>
+
+          <div className="c97-decision-body-grid" style={{ marginTop: "var(--c97-sp-4)" }}>
+            <WhyThisVerdict metrics={draftState} evaluation={evaluation} />
 
             <div>
               <p className="c97-kicker" style={{ display: "flex", alignItems: "center", gap: "var(--c97-sp-1)" }}>

@@ -73,6 +73,15 @@
   .terminalScope :global(.invest-shell) { grid-template-columns: 1fr; }
   .terminalScope :global(.invest-sidebar) { display: none !important; }
 }
+/*
+ * An empty portfolio has one job, adding a holding, and on a phone the form sat
+ * under the empty total, the empty chart, and the empty stats. While nothing is
+ * held the rail carries only that form, so it prints first in the single
+ * column. Screen only, so a print keeps the order it had.
+ */
+@media screen and (max-width: 900px) {
+  .terminalScope :global(.invest-shell[data-empty] .invest-rail) { order: -1; }
+}
 
 /* Drop sparkline column on narrower main columns to keep P/L + actions visible */
 @media (max-width: 1500px), print {

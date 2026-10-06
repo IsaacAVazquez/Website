@@ -1147,6 +1147,10 @@ body {
   }
 }
 
+.c97-page button {
+  min-width: 44px;
+}
+
 .c97-page a:focus-visible,
 .c97-page button:focus-visible,
 .c97-page input:focus-visible,
@@ -1198,11 +1202,39 @@ body {
   transition: color 160ms var(--c97-ease);
 }
 
-.c97-link-heading:hover {
+a.c97-link-heading {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  max-width: 100%;
+}
+
+.c97-link-heading:hover,
+.c97-link-heading:focus-visible {
   color: var(--c97-accent);
   text-decoration: underline;
   text-decoration-thickness: 1px;
   text-underline-offset: 4px;
+}
+
+/* Keep category selection compact on phones without shrinking its target. */
+.c97-category-picker {
+  display: grid;
+  gap: var(--c97-sp-1);
+}
+
+.c97-category-links {
+  display: none;
+}
+
+@media (min-width: 700px) {
+  .c97-category-picker {
+    display: none;
+  }
+
+  .c97-category-links {
+    display: flex;
+  }
 }
 
 /*
@@ -2762,11 +2794,13 @@ select.c97-field {
  * Only for a real hover on screen. A tap leaves `:hover` stuck on touch
  * screens with the circle wherever the finger first moved, and a print
  * taken with the pointer over a photo would carry the circle onto paper.
+ * The circle follows the pointer, which is motion the reduced-motion guard's
+ * duration rule cannot stop, so with reduced motion the photo stays as it is.
  * The painted image is set only in the hover rule, so a layer's image
  * downloads the first time someone hovers its area, never on page load and
  * never on a touch screen.
  */
-@media screen and (hover: hover) {
+@media screen and (hover: hover) and (prefers-reduced-motion: no-preference) {
   [data-c97-monet]:hover [data-c97-paint="portrait"]::before,
   :hover > [data-c97-paint="plate"]::before {
     background-image: var(--c97-paint);

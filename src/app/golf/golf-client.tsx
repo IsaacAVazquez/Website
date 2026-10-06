@@ -25,6 +25,12 @@ import { formatScoreToPar } from "./leaderboard";
 import "./golf.css";
 import { useRouteSync } from "@/hooks/useRouteSync";
 import { formatStableDateTime } from "@/lib/date-formatters";
+// Imported by path. The football barrel ships whatever it re-exports to every
+// route that reads it, and this route takes nothing else from it.
+import { DetailDrawer } from "@/components/football/DetailDrawer";
+
+/** How many players the board prints before the reader asks for the whole field. */
+const BOARD_LIMIT = 20;
 
 interface GolfClientProps {
   initialState: GolfRouteState;
@@ -138,25 +144,20 @@ function StatBlock({
   value,
   detail,
   valueColor,
-  phrasing = false,
 }: {
   label: string;
   value: string;
   detail?: string;
   valueColor?: string;
-  /** Render spans, for use inside a button, which allows phrasing content only. */
-  phrasing?: boolean;
 }) {
-  const Wrap = phrasing ? "span" : "div";
-  const Line = phrasing ? "span" : "p";
   return (
-    <Wrap className="c97-stat">
-      <Line className="c97-stat-label">{label}</Line>
-      <Line className="c97-stat-value" style={valueColor ? { color: valueColor } : undefined}>
+    <div className="c97-stat">
+      <p className="c97-stat-label">{label}</p>
+      <p className="c97-stat-value" style={valueColor ? { color: valueColor } : undefined}>
         {value}
-      </Line>
-      {detail ? <Line className="c97-stat-delta">{detail}</Line> : null}
-    </Wrap>
+      </p>
+      {detail ? <p className="c97-stat-delta">{detail}</p> : null}
+    </div>
   );
 }
 
@@ -177,7 +178,7 @@ function LeaderboardTable({
 
   return (
     <div
-      className="hidden overflow-x-auto md:block"
+      className="overflow-x-auto"
       role="region"
       aria-label="Full leaderboard (scrollable)"
       tabIndex={0}
@@ -193,11 +194,11 @@ function LeaderboardTable({
             <th scope="col">Player</th>
             <th scope="col" data-align="end">Total</th>
             <th scope="col" data-align="end">Today</th>
-            <th scope="col">Thru</th>
+            <th scope="col" data-wide>Thru</th>
             {roundLabels.map((label) => (
-              <th key={label} scope="col" data-align="end">{label}</th>
+              <th key={label} scope="col" data-align="end" data-wide>{label}</th>
             ))}
-            <th scope="col">Move</th>
+            <th scope="col" data-wide>Move</th>
           </tr>
         </thead>
         <tbody>
@@ -211,10 +212,11 @@ function LeaderboardTable({
                   <button
                     type="button"
                     onClick={() => onSelectPlayer(row.playerId)}
+                    aria-haspopup="dialog"
                     className="c97-golf-name-btn"
                   >
                     <span className="c97-serif">{row.playerName}</span>
-                    <span className="c97-stat-delta" style={{ marginLeft: "var(--c97-sp-2)" }}>
+                    <span className="c97-stat-delta" data-wide style={{ marginLeft: "var(--c97-sp-2)" }}>
                       {row.country}
                     </span>
                   </button>
@@ -225,68 +227,18 @@ function LeaderboardTable({
                 <td className="c97-mono" data-align="end" style={{ color: scoreColor(row.today) }}>
                   {formatScoreToPar(row.today)}
                 </td>
-                <td className="c97-mono">{row.thru}</td>
+                <td className="c97-mono" data-wide>{row.thru}</td>
                 {roundLabels.map((label, i) => (
-                  <td key={label} className="c97-mono" data-align="end">
+                  <td key={label} className="c97-mono" data-align="end" data-wide>
                     {row.roundScores[i] != null ? String(row.roundScores[i]) : "—"}
                   </td>
                 ))}
-                <td><MovementPill movement={row.movement} /></td>
+                <td data-wide><MovementPill movement={row.movement} /></td>
               </tr>
             );
           })}
         </tbody>
       </table>
-    </div>
-  );
-}
-
-function MobileLeaderboardCards({
-  rows,
-  selectedPlayerId,
-  onSelectPlayer,
-}: {
-  rows: GolfLeaderboardEntry[];
-  selectedPlayerId: string | null;
-  onSelectPlayer: (playerId: string) => void;
-}) {
-  return (
-    <div className="grid md:hidden" style={{ gap: "var(--c97-sp-1)" }}>
-      {rows.map((row) => {
-        const isSelected = row.playerId === selectedPlayerId;
-
-        return (
-          <button
-            key={row.playerId}
-            type="button"
-            onClick={() => onSelectPlayer(row.playerId)}
-            aria-current={isSelected ? "true" : undefined}
-            className="c97-golf-card"
-          >
-            <span className="flex items-start justify-between" style={{ gap: "var(--c97-sp-2)" }}>
-              <span style={{ display: "block" }}>
-                <span className="c97-kicker" style={{ display: "block" }}>{row.position}</span>
-                <span className="c97-serif c97-h3" style={{ display: "block" }}>{row.playerName}</span>
-                <span className="c97-stat-delta" style={{ display: "block" }}>{row.country}</span>
-              </span>
-              <span className="text-right" style={{ display: "block" }}>
-                <span className="c97-mono" style={{ display: "block", fontSize: "var(--c97-fs-h3)", color: scoreColor(row.totalToPar) }}>
-                  {formatScoreToPar(row.totalToPar)}
-                </span>
-                <MovementPill movement={row.movement} />
-              </span>
-            </span>
-
-            <span className="grid grid-cols-3" style={{ marginTop: "var(--c97-sp-2)", gap: "var(--c97-sp-1)" }}>
-              <StatBlock phrasing label="Today" value={formatScoreToPar(row.today)} detail={row.status} valueColor={scoreColor(row.today)} />
-              {row.roundScores.slice(0, 4).map((score, i) => (
-                <StatBlock phrasing key={i} label={`R${i + 1}`} value={String(score)} detail={`Round ${i + 1}`} />
-              ))}
-              <StatBlock phrasing label="Thru" value={row.thru} detail="Tournament status" />
-            </span>
-          </button>
-        );
-      })}
     </div>
   );
 }
@@ -313,6 +265,7 @@ function PlayerCards({
             type="button"
             onClick={() => onSelectPlayer(row.playerId)}
             aria-current={isSelected ? "true" : undefined}
+            aria-haspopup="dialog"
             className="c97-golf-card"
           >
             <span className="flex items-start justify-between" style={{ gap: "var(--c97-sp-2)" }}>
@@ -378,6 +331,18 @@ export function GolfClient({ initialState, summary, initialPlayerSnapshot }: Gol
   const lead = PROJECT_PRESS[GOLF_ROUTE].lead;
 
   const pushHref = useRouteSync(GOLF_ROUTE, desiredHref);
+  // The player drawer starts open only for a link that names a player, and
+  // after that only `handlePlayerChange` opens it. It holds the player that
+  // was asked for and waits for the route to reach them, so it never shows
+  // the last one.
+  const [drawerPlayerId, setDrawerPlayerId] = useState<string | null>(canonicalPlayerParam);
+  const isDrawerOpen = drawerPlayerId !== null && drawerPlayerId === selectedPlayerId;
+  // The board prints its first BOARD_LIMIT players. A link to a player further
+  // down starts on the whole field, so their row is on the board.
+  const [showAllPlayers, setShowAllPlayers] = useState(
+    () => summary.leaderboard.findIndex((row) => row.playerId === selectedPlayerId) >= BOARD_LIMIT
+  );
+  const boardRows = showAllPlayers ? summary.leaderboard : summary.leaderboard.slice(0, BOARD_LIMIT);
 
   useEffect(() => {
     if (!selectedPlayerId) return;
@@ -424,6 +389,7 @@ export function GolfClient({ initialState, summary, initialPlayerSnapshot }: Gol
   }
 
   function handlePlayerChange(playerId: string) {
+    setDrawerPlayerId(playerId);
     navigate({ view: routeState.view, player: playerId });
   }
 
@@ -472,6 +438,9 @@ export function GolfClient({ initialState, summary, initialPlayerSnapshot }: Gol
         title="PGA Tour Pulse"
         standfirst="I wanted the leaderboard to read like a manual scoreboard, names on slats, rounds across, and red for anything under par. It reads from a checked-in snapshot of the PGA Tour leaderboard that refreshes on a schedule."
         meta={`${tournament.tour} · last checked ${formatGeneratedAt(tournament.generatedAt)}`}
+        // The hero fills a phone's first screen and the signature runs long
+        // under it, so one link goes straight to the board.
+        action={<a href="#golf-board" className="c97-btn-ghost">Jump to the full board</a>}
         readouts={heroReadouts}
       >
         <div className="c97-panel" style={{ marginBottom: "var(--c97-sp-4)" }}>
@@ -508,182 +477,74 @@ export function GolfClient({ initialState, summary, initialPlayerSnapshot }: Gol
         />
       </Catalog97ProjectHero>
 
-      <section className="c97-band c97-sheet" data-c97-surface="paper" data-seam="torn">
+      <section id="golf-board" className="c97-band c97-sheet" data-c97-surface="paper" data-seam="torn">
         <div className="c97-shell">
-          <div className="grid xl:grid-cols-[minmax(0,1.7fr)_minmax(320px,0.92fr)]" style={{ gap: "var(--c97-sp-3)" }}>
-            <div className="flex flex-col" style={{ rowGap: "var(--c97-sp-3)" }}>
-              <h2 className="c97-poster-sm">The board</h2>
-              <div className="c97-segmented" role="tablist" aria-label="Golf view switcher">
-                {GOLF_VIEW_OPTIONS.map((view) => (
-                  <button
-                    key={view}
-                    type="button"
-                    role="tab"
-                    id={`golf-tab-${view}`}
-                    aria-controls={`golf-tabpanel-${view}`}
-                    aria-selected={routeState.view === view}
-                    onClick={() => handleViewChange(view)}
-                    className="min-h-[44px] text-sm font-semibold"
-                  >
-                    {GOLF_VIEW_LABELS[view]}
-                  </button>
-                ))}
-              </div>
-
-              <div
-                className="flex flex-col" style={{ rowGap: "var(--c97-sp-2)" }}
-                role="tabpanel"
-                id={`golf-tabpanel-${routeState.view}`}
-                aria-labelledby={`golf-tab-${routeState.view}`}
-              >
-                <p className="c97-prose">
-                  {routeState.view === "leaderboard"
-                    ? "The table when you want the fastest read on score, round splits, and movement."
-                    : "The player cards when you want a softer scan that still keeps score and momentum visible."}
-                </p>
-
-                {routeState.view === "leaderboard" ? (
-                  <>
-                    <LeaderboardTable
-                      rows={summary.leaderboard}
-                      selectedPlayerId={selectedPlayerId}
-                      onSelectPlayer={handlePlayerChange}
-                    />
-                    <MobileLeaderboardCards
-                      rows={summary.leaderboard}
-                      selectedPlayerId={selectedPlayerId}
-                      onSelectPlayer={handlePlayerChange}
-                    />
-                  </>
-                ) : (
-                  <PlayerCards
-                    rows={summary.leaderboard}
-                    selectedPlayerId={selectedPlayerId}
-                    onSelectPlayer={handlePlayerChange}
-                    coursePar={tournament.coursePar}
-                  />
-                )}
-              </div>
+          <div className="flex flex-col" style={{ rowGap: "var(--c97-sp-3)" }}>
+            <h2 className="c97-poster-sm">The board</h2>
+            <div className="c97-segmented" role="tablist" aria-label="Golf view switcher">
+              {GOLF_VIEW_OPTIONS.map((view) => (
+                <button
+                  key={view}
+                  type="button"
+                  role="tab"
+                  id={`golf-tab-${view}`}
+                  aria-controls={`golf-tabpanel-${view}`}
+                  aria-selected={routeState.view === view}
+                  onClick={() => handleViewChange(view)}
+                  className="min-h-[44px] text-sm font-semibold"
+                >
+                  {GOLF_VIEW_LABELS[view]}
+                </button>
+              ))}
             </div>
 
-            <aside className="flex flex-col" style={{ rowGap: "var(--c97-sp-2)" }}>
-              <div className="c97-panel xl:sticky xl:top-6">
-                <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-1)" }}>Selected player</p>
+            <div
+              className="flex flex-col" style={{ rowGap: "var(--c97-sp-2)" }}
+              role="tabpanel"
+              id={`golf-tabpanel-${routeState.view}`}
+              aria-labelledby={`golf-tab-${routeState.view}`}
+            >
+              <p className="c97-prose">
+                {routeState.view === "leaderboard"
+                  ? "The table when you want the fastest read on score, round splits, and movement."
+                  : "The player cards when you want a softer scan that still keeps score and momentum visible."}
+              </p>
 
-                {selectedRow ? (
-                  <>
-                    <div className="flex items-start justify-between" style={{ gap: "var(--c97-sp-2)" }}>
-                      <div>
-                        <h2 className="c97-serif c97-h2">{selectedRow.playerName}</h2>
-                        <p className="c97-stat-delta">{selectedRow.country}</p>
-                      </div>
-                      <div className="text-right">
-                        <p className="c97-mono" style={{ fontSize: "var(--c97-fs-h1)", color: scoreColor(selectedRow.totalToPar) }}>
-                          {formatScoreToPar(selectedRow.totalToPar)}
-                        </p>
-                        <MovementPill movement={selectedRow.movement} />
-                      </div>
-                    </div>
+              {summary.leaderboard.length === 0 ? (
+                <p className="c97-prose" style={{ fontSize: "var(--c97-fs-small)" }}>
+                  No player is available in the current snapshot.
+                </p>
+              ) : null}
 
-                    <div className="grid grid-cols-2" style={{ marginTop: "var(--c97-sp-2)", gap: "var(--c97-sp-1)" }}>
-                      <StatBlock label="Position" value={selectedRow.position} detail={selectedRow.status} />
-                      <StatBlock
-                        label="Today"
-                        value={formatScoreToPar(selectedRow.today)}
-                        detail={`Thru ${selectedRow.thru}`}
-                        valueColor={scoreColor(selectedRow.today)}
-                      />
-                    </div>
+              {routeState.view === "leaderboard" ? (
+                <LeaderboardTable
+                  rows={boardRows}
+                  selectedPlayerId={selectedPlayerId}
+                  onSelectPlayer={handlePlayerChange}
+                />
+              ) : (
+                <PlayerCards
+                  rows={boardRows}
+                  selectedPlayerId={selectedPlayerId}
+                  onSelectPlayer={handlePlayerChange}
+                  coursePar={tournament.coursePar}
+                />
+              )}
 
-                    {isPlayerSnapshotLoading ? (
-                      <p className="c97-prose" role="status" style={{ marginTop: "var(--c97-sp-3)", fontSize: "var(--c97-fs-small)", color: "var(--c97-ink-2)" }}>
-                        Loading player detail…
-                      </p>
-                    ) : null}
-
-                    {playerSnapshotError ? (
-                      <div style={{ marginTop: "var(--c97-sp-2)" }} role="alert">
-                        <div className="flex items-start" style={{ gap: "var(--c97-sp-1)" }}>
-                          <CircleAlert className="mt-0.5 h-4 w-4 shrink-0" style={{ color: "var(--c97-negative)" }} aria-hidden="true" />
-                          <p className="c97-prose" style={{ fontSize: "var(--c97-fs-small)" }}>
-                            {playerSnapshotError}
-                          </p>
-                        </div>
-                      </div>
-                    ) : null}
-
-                    {playerSnapshot?.player ? (
-                      <div className="flex flex-col" style={{ marginTop: "var(--c97-sp-2)", rowGap: "var(--c97-sp-2)" }}>
-                        <div className="flex flex-col" style={{ rowGap: "var(--c97-sp-1)", fontSize: "var(--c97-fs-small)" }}>
-                          <p className="flex items-center" style={{ gap: "var(--c97-sp-1)" }}>
-                            <UserRound className="h-4 w-4 shrink-0" aria-hidden="true" />
-                            <span>{playerSnapshot.player.country}</span>
-                          </p>
-                          <p className="flex items-center" style={{ gap: "var(--c97-sp-1)" }}>
-                            <Gauge className="h-4 w-4 shrink-0" aria-hidden="true" />
-                            <span>Next round tee time {playerSnapshot.tournamentStatus.nextTeeTime ?? "TBD"}</span>
-                          </p>
-                          <p className="mb-0 flex items-center" style={{ gap: "var(--c97-sp-1)" }}>
-                            <Trophy className="h-4 w-4 shrink-0" aria-hidden="true" />
-                            <span>{playerSnapshot.tournamentStatus.status}</span>
-                          </p>
-                        </div>
-
-                        <div>
-                          <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-1)" }}>Round by round</p>
-                          <table className="c97-table">
-                            <caption className="sr-only">Round by round scoring for {selectedRow.playerName}</caption>
-                            <thead>
-                              <tr>
-                                <th scope="col">Round</th>
-                                <th scope="col" data-align="end">Score</th>
-                                <th scope="col" data-align="end">To par</th>
-                              </tr>
-                            </thead>
-                            <tbody>
-                              {playerSnapshot.roundByRound.map((round) => (
-                                <tr key={round.round}>
-                                  <td>{round.round}</td>
-                                  <td className="c97-mono" data-align="end">{round.score}</td>
-                                  <td className="c97-mono" data-align="end" style={{ color: scoreColor(round.relativeToPar) }}>
-                                    {formatScoreToPar(round.relativeToPar)}
-                                  </td>
-                                </tr>
-                              ))}
-                            </tbody>
-                          </table>
-                        </div>
-
-                        <div>
-                          <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-1)" }}>Scoring split</p>
-                          {/* The feed sends zeros when it has no hole data, and a winner with no birdies is not a real reading. */}
-                          {playerSnapshot.scoring.birdies +
-                            playerSnapshot.scoring.bogeys +
-                            playerSnapshot.scoring.pars +
-                            playerSnapshot.scoring.eagles >
-                          0 ? (
-                            <div className="grid grid-cols-2" style={{ gap: "var(--c97-sp-1)" }}>
-                              <StatBlock label="Birdies" value={`${playerSnapshot.scoring.birdies}`} detail="Opportunities converted" />
-                              <StatBlock label="Bogeys" value={`${playerSnapshot.scoring.bogeys}`} detail="Dropped shots" />
-                              <StatBlock label="Pars" value={`${playerSnapshot.scoring.pars}`} detail="Steady holes" />
-                              <StatBlock label="Eagles" value={`${playerSnapshot.scoring.eagles}`} detail="Round-changing swings" />
-                            </div>
-                          ) : (
-                            <p className="c97-prose" style={{ fontSize: "var(--c97-fs-small)" }}>
-                              The snapshot carries no birdie, par, or bogey counts for this event, so I only show the rounds.
-                            </p>
-                          )}
-                        </div>
-                      </div>
-                    ) : null}
-                  </>
-                ) : (
-                  <p className="c97-prose" style={{ fontSize: "var(--c97-fs-small)" }}>
-                    No player is available in the current snapshot.
-                  </p>
-                )}
-              </div>
-            </aside>
+              {summary.leaderboard.length > BOARD_LIMIT ? (
+                <button
+                  type="button"
+                  className="c97-btn-ghost"
+                  style={{ alignSelf: "flex-start" }}
+                  aria-expanded={showAllPlayers}
+                  onClick={() => setShowAllPlayers((current) => !current)}
+                >
+                  {showAllPlayers
+                    ? `Show the top ${BOARD_LIMIT}`
+                    : `Show all ${summary.leaderboard.length} players`}
+                </button>
+              ) : null}
+            </div>
           </div>
         </div>
       </section>
@@ -704,6 +565,118 @@ export function GolfClient({ initialState, summary, initialPlayerSnapshot }: Gol
           </p>
         </div>
       </section>
+
+      {selectedRow ? (
+        <DetailDrawer
+          open={isDrawerOpen}
+          title={selectedRow.playerName}
+          onClose={() => setDrawerPlayerId(null)}
+          resetKey={selectedRow.playerId}
+          testId="golf-selected-player"
+        >
+          <div className="flex items-end justify-between" style={{ marginTop: "var(--c97-sp-1)", gap: "var(--c97-sp-2)" }}>
+            <p className="c97-stat-delta" style={{ margin: 0 }}>{selectedRow.country}</p>
+            <div className="text-right">
+              <p className="c97-mono" style={{ margin: 0, fontSize: "var(--c97-fs-h1)", color: scoreColor(selectedRow.totalToPar) }}>
+                {formatScoreToPar(selectedRow.totalToPar)}
+              </p>
+              <MovementPill movement={selectedRow.movement} />
+            </div>
+          </div>
+
+          <div className="grid grid-cols-2" style={{ marginTop: "var(--c97-sp-2)", gap: "var(--c97-sp-1)" }}>
+            <StatBlock label="Position" value={selectedRow.position} detail={selectedRow.status} />
+            <StatBlock
+              label="Today"
+              value={formatScoreToPar(selectedRow.today)}
+              detail={`Thru ${selectedRow.thru}`}
+              valueColor={scoreColor(selectedRow.today)}
+            />
+          </div>
+
+          {isPlayerSnapshotLoading ? (
+            <p className="c97-prose" role="status" style={{ marginTop: "var(--c97-sp-3)", fontSize: "var(--c97-fs-small)", color: "var(--c97-ink-2)" }}>
+              Loading player detail…
+            </p>
+          ) : null}
+
+          {playerSnapshotError ? (
+            <div style={{ marginTop: "var(--c97-sp-2)" }} role="alert">
+              <div className="flex items-start" style={{ gap: "var(--c97-sp-1)" }}>
+                <CircleAlert className="mt-0.5 h-4 w-4 shrink-0" style={{ color: "var(--c97-negative)" }} aria-hidden="true" />
+                <p className="c97-prose" style={{ fontSize: "var(--c97-fs-small)" }}>
+                  {playerSnapshotError}
+                </p>
+              </div>
+            </div>
+          ) : null}
+
+          {playerSnapshot?.player ? (
+            <div className="flex flex-col" style={{ marginTop: "var(--c97-sp-2)", rowGap: "var(--c97-sp-2)" }}>
+              <div className="flex flex-col" style={{ rowGap: "var(--c97-sp-1)", fontSize: "var(--c97-fs-small)" }}>
+                <p className="flex items-center" style={{ gap: "var(--c97-sp-1)" }}>
+                  <UserRound className="h-4 w-4 shrink-0" aria-hidden="true" />
+                  <span>{playerSnapshot.player.country}</span>
+                </p>
+                <p className="flex items-center" style={{ gap: "var(--c97-sp-1)" }}>
+                  <Gauge className="h-4 w-4 shrink-0" aria-hidden="true" />
+                  <span>Next round tee time {playerSnapshot.tournamentStatus.nextTeeTime ?? "TBD"}</span>
+                </p>
+                <p className="mb-0 flex items-center" style={{ gap: "var(--c97-sp-1)" }}>
+                  <Trophy className="h-4 w-4 shrink-0" aria-hidden="true" />
+                  <span>{playerSnapshot.tournamentStatus.status}</span>
+                </p>
+              </div>
+
+              <div>
+                <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-1)" }}>Round by round</p>
+                <table className="c97-table">
+                  <caption className="sr-only">Round by round scoring for {selectedRow.playerName}</caption>
+                  <thead>
+                    <tr>
+                      <th scope="col">Round</th>
+                      <th scope="col" data-align="end">Score</th>
+                      <th scope="col" data-align="end">To par</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {playerSnapshot.roundByRound.map((round) => (
+                      <tr key={round.round}>
+                        <td>{round.round}</td>
+                        <td className="c97-mono" data-align="end">{round.score}</td>
+                        <td className="c97-mono" data-align="end" style={{ color: scoreColor(round.relativeToPar) }}>
+                          {formatScoreToPar(round.relativeToPar)}
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+
+              <div>
+                <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-1)" }}>Scoring split</p>
+                {/* The feed sends zeros when it has no hole data, and a winner with no birdies is not a real reading. */}
+                {playerSnapshot.scoring.birdies +
+                  playerSnapshot.scoring.bogeys +
+                  playerSnapshot.scoring.pars +
+                  playerSnapshot.scoring.eagles >
+                0 ? (
+                  <div className="grid grid-cols-2" style={{ gap: "var(--c97-sp-1)" }}>
+                    <StatBlock label="Birdies" value={`${playerSnapshot.scoring.birdies}`} detail="Opportunities converted" />
+                    <StatBlock label="Bogeys" value={`${playerSnapshot.scoring.bogeys}`} detail="Dropped shots" />
+                    <StatBlock label="Pars" value={`${playerSnapshot.scoring.pars}`} detail="Steady holes" />
+                    <StatBlock label="Eagles" value={`${playerSnapshot.scoring.eagles}`} detail="Round-changing swings" />
+                  </div>
+                ) : (
+                  <p className="c97-prose" style={{ fontSize: "var(--c97-fs-small)" }}>
+                    The snapshot carries no birdie, par, or bogey counts for this event, so I only show the rounds.
+                  </p>
+                )}
+              </div>
+            </div>
+          ) : null}
+        </DetailDrawer>
+      ) : null}
     </>
   );
 }

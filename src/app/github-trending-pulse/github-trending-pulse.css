@@ -120,12 +120,20 @@
 }
 
 .c97-star-log-name {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  min-width: 0;
+  min-height: 44px;
   color: var(--c97-ink);
   font-weight: 600;
   text-decoration: none;
+}
+
+.c97-star-log-name-text {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .c97-star-log-name:hover {
@@ -165,6 +173,13 @@
 
   .c97-star-log-total {
     grid-area: total;
+  }
+
+  /* The table under the board lists every repository with the same name and
+   * gain, so a phone prints the first five bars as opening context and the
+   * table carries the rest. */
+  .c97-star-log-row:nth-child(n + 6) {
+    display: none;
   }
 
   /* A narrow strip has no room for per-language labels without them

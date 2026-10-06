@@ -178,8 +178,6 @@ describe("WritingPage", () => {
       "Agentic AI1",
       "Fintech Product & Pricing1",
       "Systems & Quality1",
-      "Notes (short)5",
-      "Essays (long)2",
       "Sports & Fantasy1",
       "Signals & Commentary1",
       "Space & Experiments1",
@@ -234,6 +232,43 @@ describe("WritingPage", () => {
     expect(
       screen.queryByRole("heading", { level: 3, name: "Lead Workflow Essay" }),
     ).not.toBeInTheDocument();
+  });
+
+  // Length used to be two more buttons in the topic row, which mixed two axes.
+  it("filters by length from its own control, on top of the topic filter", () => {
+    render(<WritingPage />);
+    const length = screen.getByRole("combobox", { name: "Length" });
+
+    expect(
+      within(length).getAllByRole("option").map((option) => option.textContent),
+    ).toEqual([
+      "Any length",
+      "Notes, five minutes or under (5)",
+      "Essays, over five minutes (2)",
+    ]);
+
+    fireEvent.change(length, { target: { value: "essays" } });
+    const essays = screen.getAllByRole("heading", { level: 3 }).length;
+    fireEvent.change(length, { target: { value: "notes" } });
+    const notes = screen.getAllByRole("heading", { level: 3 }).length;
+
+    // The mocked index holds seven posts, and every one is a note or an essay.
+    expect(essays).toBeGreaterThan(0);
+    expect(notes).toBeGreaterThan(0);
+    expect(essays + notes).toBe(7);
+    // A length filter is not the default view, so the featured pair is gone.
+    expect(screen.queryByText(/^Featured · /)).not.toBeInTheDocument();
+  });
+
+  it("puts the featured pair ahead of the filters", () => {
+    render(<WritingPage />);
+
+    const featured = screen.getByText("Featured · 25 Sep 2026");
+    const search = screen.getByRole("searchbox", { name: "Search writing" });
+
+    expect(
+      featured.compareDocumentPosition(search) & Node.DOCUMENT_POSITION_FOLLOWING,
+    ).toBeTruthy();
   });
 
   it("searches and sorts the archive while keeping canonical topic links", () => {

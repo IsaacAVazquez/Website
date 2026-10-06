@@ -61,3 +61,27 @@ describe("DraftSetup start guard", () => {
     expect(onStartDraft).toHaveBeenCalledTimes(1);
   });
 });
+
+describe("DraftSetup order", () => {
+  it("starts with teams, slot, scoring, and a lineup preset, and folds the rest away", () => {
+    renderSetup(0);
+    const optional = screen.getByText("Show optional settings").closest("details") as HTMLDetailsElement;
+    expect(optional.open).toBe(false);
+
+    for (const label of ["Teams", "Your draft slot"]) {
+      expect(optional).not.toContainElement(screen.getByLabelText(label));
+    }
+    expect(optional).not.toContainElement(screen.getByRole("group", { name: "Scoring" }));
+    expect(optional).not.toContainElement(
+      screen.getByRole("button", { name: new RegExp(`^${REDRAFT_LINEUP_PRESETS[0].label.replace(/[+]/g, "\\+")}`), pressed: true })
+    );
+
+    for (const label of ["League name", "Rounds", "Preset name", "Running backs"]) {
+      expect(optional).toContainElement(screen.getByLabelText(label));
+    }
+    expect(optional).toContainElement(screen.getByRole("group", { name: "Pick clock · advisory" }));
+    expect(optional).toContainElement(screen.getByRole("group", { name: "Draft order" }));
+    // The summary beside Start names what the folded settings are set to.
+    expect(screen.getByText(/10-team snake · slot 1 · 15 rounds · PPR/)).toBeInTheDocument();
+  });
+});

@@ -1,6 +1,8 @@
 import React from "react";
 import { fireEvent, render, screen } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
 import { RetirementInputs } from "../RetirementInputs";
+import { NumberField } from "../RetirementFields";
 import { createDefaultPlan, type RetirementPlanInput, type RetirementResult } from "@/lib/retirement";
 import type { UseRetirementPlanReturn } from "@/hooks/useRetirementPlan";
 
@@ -41,10 +43,38 @@ function field(label: string, index = 0) {
 function type(label: string, value: string, index = 0) {
   const input = field(label, index);
   fireEvent.change(input, { target: { value } });
+  if (value !== "") fireEvent.blur(input);
   return input;
 }
 
 describe("RetirementInputs", () => {
+  it("keeps an age draft until the complete number is in range", async () => {
+    const user = userEvent.setup();
+    function AgeField() {
+      const [age, setAge] = React.useState(35);
+      return <><NumberField label="Current age" value={age} onChange={setAge} min={18} max={90} /><output>{age}</output></>;
+    }
+    render(<AgeField />);
+    const input = screen.getByRole("spinbutton", { name: "Current age" });
+    await user.clear(input);
+    await user.type(input, "4");
+    expect(input).toHaveValue(4);
+    expect(input).toHaveAttribute("aria-invalid", "true");
+    expect(screen.getByRole("status")).toHaveTextContent("35");
+    await user.type(input, "5");
+    expect(input).toHaveValue(45);
+    expect(input).not.toHaveAttribute("aria-invalid");
+    expect(screen.getByRole("status")).toHaveTextContent("45");
+    await user.tab();
+    expect(input).toHaveValue(45);
+    await user.clear(input);
+    await user.type(input, "10");
+    expect(screen.getByRole("status")).toHaveTextContent("45");
+    await user.tab();
+    expect(input).toHaveValue(18);
+    expect(screen.getByRole("status")).toHaveTextContent("18");
+  });
+
   it("captions a seeded plan as an example and an edited one as the visitor's", () => {
     const { rerender } = render(<RetirementInputs controller={controllerFor(undefined, true)} result={null} />);
     expect(screen.getByText("Example numbers")).toBeInTheDocument();

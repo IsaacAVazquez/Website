@@ -39,8 +39,7 @@ function renderTopicRow(post: BlogPostPreview) {
         <h2 className="c97-serif c97-h3">
           <Link
             href={`/writing/${post.slug}`}
-            className="c97-link"
-            style={{ textDecoration: "none" }}
+            className="c97-link-heading"
           >
             {post.title}
           </Link>

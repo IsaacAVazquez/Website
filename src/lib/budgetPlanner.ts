@@ -177,6 +177,7 @@ function sanitizeBudgetMonth(input: unknown, fallbackMonthKey?: string): BudgetM
         .map((category) => sanitizeBudgetCategory(category))
         .filter((category): category is BudgetCategory => category !== null)
     : [];
+  const hasEmptyCategories = Array.isArray(input.categories) && input.categories.length === 0;
 
   const expenses = Array.isArray(input.expenses)
     ? input.expenses
@@ -188,7 +189,7 @@ function sanitizeBudgetMonth(input: unknown, fallbackMonthKey?: string): BudgetM
     monthKey: monthKeySource,
     income: sanitizeNonNegativeAmount(input.income),
     savingsTarget: sanitizeNonNegativeAmount(input.savingsTarget),
-    categories: categories.length > 0 ? categories : getDefaultBudgetCategories(),
+    categories: categories.length > 0 || hasEmptyCategories ? categories : getDefaultBudgetCategories(),
     expenses,
   };
 }

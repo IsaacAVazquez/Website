@@ -177,7 +177,23 @@ export function Catalog97Portfolio({ projects }: Catalog97PortfolioProps) {
               </select>
             </label>
           </div>
+          <label className="c97-category-picker">
+            <span className="c97-kicker">Project category</span>
+            <select
+              name="category"
+              value={active}
+              onChange={(event) => setActive(event.target.value)}
+              className="c97-field"
+            >
+              {tabs.map((tab) => (
+                <option key={tab.id} value={tab.id}>
+                  {tab.label} ({tab.count})
+                </option>
+              ))}
+            </select>
+          </label>
           <div
+            className="c97-category-links"
             role="group"
             aria-label="Filter projects by category"
             /*
@@ -188,7 +204,6 @@ export function Catalog97Portfolio({ projects }: Catalog97PortfolioProps) {
               axes separate.
             */
             style={{
-              display: "flex",
               columnGap: "var(--c97-sp-3)",
               rowGap: "var(--c97-sp-5)",
               flexWrap: "wrap",
@@ -345,7 +360,7 @@ export function Catalog97Portfolio({ projects }: Catalog97PortfolioProps) {
       </section>
 
       {/* The rest of the index. With no matches the empty state above says so. */}
-      {filtered.length > 0 ? (
+      {ledger.length > 0 ? (
         <section
           className="c97-band c97-band-tall c97-sheet"
           data-c97-surface="ink-blue"
@@ -403,27 +418,55 @@ export function Catalog97Portfolio({ projects }: Catalog97PortfolioProps) {
                   gridTemplateColumns:
                     "repeat(auto-fit, minmax(min(100%, 320px), 1fr))",
                   columnGap: "var(--c97-sp-5)",
-                  rowGap: "var(--c97-sp-3)",
+                  rowGap: "var(--c97-sp-4)",
                   marginTop: "var(--c97-sp-4)",
                 }}
               >
                 {ledger.map((project) => (
-                  <div key={project.slug} className="c97-row">
-                    {/*
-                    An h3 rather than a div. These 29 are the same kind of thing
-                    as the four in the saffron band, which are h2, so as divs they
-                    were 29 of the 33 projects unreachable by heading
-                    navigation. The level mirrors the two-tier split the design
-                    already makes visually, and `c97-lead` keeps the size.
-                  */}
-                    <h3 className="c97-serif c97-lead">
-                      <Link
-                        href={project.link ?? `/portfolio/${project.slug}`}
-                        className="c97-link-heading"
+                  <div
+                    key={project.slug}
+                    className="c97-row"
+                    // Top-aligned, since the left cell now runs several lines.
+                    style={{ alignItems: "start" }}
+                  >
+                    <div>
+                      {/*
+                      An h3 rather than a div. These 29 are the same kind of thing
+                      as the four in the saffron band, which are h2, so as divs they
+                      were 29 of the 33 projects unreachable by heading
+                      navigation. The level mirrors the two-tier split the design
+                      already makes visually, and `c97-lead` keeps the size.
+                    */}
+                      <h3 className="c97-serif c97-lead">
+                        <Link
+                          href={project.link ?? `/portfolio/${project.slug}`}
+                          className="c97-link-heading"
+                        >
+                          {project.title}
+                        </Link>
+                      </h3>
+                      {/*
+                      The same scan context the four lead entries carry, what the
+                      project is for and my role on it, so a row can be read
+                      without opening the tool.
+                    */}
+                      <p className="c97-prose">{getProjectCardSummary(project)}</p>
+                      <p
+                        className="c97-meta"
+                        style={{ marginTop: "var(--c97-sp-1)" }}
                       >
-                        {project.title}
-                      </Link>
-                    </h3>
+                        <span>{project.role}</span>
+                      </p>
+                      {PROJECT_BUILD_NOTES[project.slug] ? (
+                        <Link
+                          href={`/writing/${PROJECT_BUILD_NOTES[project.slug]}`}
+                          className="c97-sectionlink"
+                          aria-label={`How I built it, ${project.title}`}
+                        >
+                          How I built it
+                        </Link>
+                      ) : null}
+                    </div>
                     <div className="c97-kicker c97-tabular">
                       {project.timeline}
                     </div>

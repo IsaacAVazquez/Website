@@ -57,3 +57,17 @@
 .c97-golf-card[aria-current="true"] {
   box-shadow: inset 4px 0 0 0 var(--c97-ink);
 }
+
+/* The same table on a phone. Below 640px it keeps the position, the player,
+ * the total, and today's score in tighter cells, and the columns it drops
+ * are in the player drawer. */
+@media (max-width: 639px) {
+  .c97-table.c97-golf-full-table th,
+  .c97-table.c97-golf-full-table td {
+    padding-inline: var(--c97-sp-1);
+  }
+
+  .c97-table.c97-golf-full-table [data-wide] {
+    display: none;
+  }
+}

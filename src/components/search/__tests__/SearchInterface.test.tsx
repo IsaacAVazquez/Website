@@ -133,6 +133,43 @@ describe("SearchInterface", () => {
     ).toBeVisible();
   });
 
+  it("loads an in-page topic URL without pushing the previous empty search over it", async () => {
+    const { rerender } = render(<SearchHarness />);
+    window.history.pushState({}, "", "/search?q=fantasy&type=post");
+    rerender(<SearchHarness />);
+
+    act(() => jest.advanceTimersByTime(400));
+    await flushPromises();
+
+    expect(screen.getByRole("textbox", { name: /search content/i })).toHaveValue("fantasy");
+    expect(screen.getByRole("link", { name: "fantasy result" })).toBeVisible();
+    expect(window.location.search).toBe("?q=fantasy&type=post");
+    expect(mockPush).not.toHaveBeenCalled();
+    expect(mockFetch).toHaveBeenCalledTimes(1);
+    expect(mockFetch.mock.calls[0][1].signal.aborted).toBe(false);
+  });
+
+  it("restores the prior query and results on history navigation without pushing the newer query again", async () => {
+    window.history.replaceState({}, "", "/search?q=older");
+    const { rerender } = render(<SearchHarness />);
+    await flushPromises();
+    fireEvent.change(screen.getByRole("textbox", { name: /search content/i }), { target: { value: "newer" } });
+    act(() => jest.advanceTimersByTime(300));
+    await flushPromises();
+    expect(screen.getByRole("link", { name: "newer result" })).toBeVisible();
+    const pushCount = mockPush.mock.calls.length;
+
+    window.history.replaceState({}, "", "/search?q=older");
+    rerender(<SearchHarness />);
+    act(() => jest.advanceTimersByTime(400));
+    await flushPromises();
+
+    expect(screen.getByRole("textbox", { name: /search content/i })).toHaveValue("older");
+    expect(screen.getByRole("link", { name: "older result" })).toBeVisible();
+    expect(window.location.search).toBe("?q=older");
+    expect(mockPush).toHaveBeenCalledTimes(pushCount);
+  });
+
   it("syncs debounced searches and filter changes into the URL, then clears back to /search", async () => {
     const user = userEvent.setup({
       advanceTimers: jest.advanceTimersByTime,
@@ -179,6 +216,7 @@ describe("SearchInterface", () => {
     );
 
     const fetchCallsBeforeClear = mockFetch.mock.calls.length;
+    expect(input).toHaveFocus();
 
     await user.click(screen.getByRole("button", { name: /clear search/i }));
 

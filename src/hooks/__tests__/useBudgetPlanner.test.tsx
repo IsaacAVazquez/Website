@@ -143,6 +143,25 @@ describe("useBudgetPlanner", () => {
     expect(readStoredMonths()[MONTH_KEY].expenses).toHaveLength(0);
   });
 
+  it("keeps the month empty after removing every category and reloading", () => {
+    const { result, unmount } = renderHook(() => useBudgetPlanner(MONTH_KEY));
+    const categoryIds = result.current.activeMonth.categories.map((category) => category.id);
+
+    for (const categoryId of categoryIds) {
+      act(() => result.current.removeCategory(categoryId));
+    }
+
+    expect(result.current.activeMonth.categories).toEqual([]);
+    expect(readStoredMonths()[MONTH_KEY].categories).toEqual([]);
+
+    unmount();
+    const reloaded = renderHook(() => useBudgetPlanner(MONTH_KEY));
+    expect(reloaded.result.current.activeMonth.categories).toEqual([]);
+
+    act(() => reloaded.result.current.addCategory("Travel"));
+    expect(reloaded.result.current.activeMonth.categories.map((category) => category.name)).toEqual(["Travel"]);
+  });
+
   it("isolates state per month when switching months", () => {
     const { result } = renderHook(() => useBudgetPlanner(MONTH_KEY));
 

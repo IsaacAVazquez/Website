@@ -28,14 +28,15 @@ function daypart(hour: number): "morning" | "midday" | "evening" {
  * relative to the element, into `--c97-mx` and `--c97-my`. The listeners sit
  * on the areas whose hover shows a layer, which is the `[data-c97-monet]`
  * section for a portrait and the parent panel for a plate, so nothing runs
- * while the pointer is anywhere else. A plate's panel sits inside the home
- * hero section, so a move there reaches both areas, as the hover does.
+ * while the pointer is anywhere else.
  *
  * Clicking a portrait hands it to the next painter in `PAINTERS` by setting
  * `data-c97-painter`, which catalog97.css maps to that painter's image.
  *
- * It only attaches where hover is real (the CSS shows the layers only under
- * `(hover: hover)`) and only when the page has a painted element. Moves are
+ * It only attaches where hover is real and motion is welcome (the CSS shows
+ * the layers only under `(hover: hover)` and `prefers-reduced-motion:
+ * no-preference`, since the circle follows the pointer) and only when the page
+ * has a painted element. Moves are
  * coalesced into one animation frame, which reads every box before writing
  * any style. The header survives client navigation between the tool routes,
  * so the scan reruns whenever the pathname changes.
@@ -48,7 +49,7 @@ export function Catalog97Monet() {
   }, []);
 
   useEffect(() => {
-    if (!window.matchMedia?.("(hover: hover)").matches) return;
+    if (!window.matchMedia?.("(hover: hover) and (prefers-reduced-motion: no-preference)").matches) return;
     const layersByArea = new Map<Element, HTMLElement[]>();
     document.querySelectorAll<HTMLElement>("[data-c97-paint]").forEach((layer) => {
       const area =

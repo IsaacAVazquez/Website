@@ -420,17 +420,19 @@ function AssetsTable({
       aria-label="Formula 1 fantasy asset board"
       tabIndex={0}
     >
-      <table className="c97-table" style={{ minWidth: "760px" }}>
+      {/* One table for both widths, so each Add button exists once. Below
+          640px the middle columns are hidden and the asset cell carries them. */}
+      <table className="c97-table c97-ff1-table">
         <thead>
           <tr>
             <th scope="col">Asset</th>
-            <th scope="col">Type</th>
-            <th scope="col" data-align="end">Price</th>
-            <th scope="col" data-align="end">Projection</th>
-            <th scope="col" data-align="end">Value</th>
-            <th scope="col" data-align="end">Form</th>
-            <th scope="col">Risk</th>
-            <th scope="col" data-align="end">
+            <th scope="col" className="hidden sm:table-cell">Type</th>
+            <th scope="col" data-align="end" className="hidden sm:table-cell">Price</th>
+            <th scope="col" data-align="end" className="hidden sm:table-cell">Projection</th>
+            <th scope="col" data-align="end" className="hidden sm:table-cell">Value</th>
+            <th scope="col" data-align="end" className="hidden sm:table-cell">Form</th>
+            <th scope="col" className="hidden sm:table-cell">Risk</th>
+            <th scope="col" data-align="end" className="c97-ff1-col-action">
               Lineup
             </th>
           </tr>
@@ -448,6 +450,7 @@ function AssetsTable({
                 : asset.risk === "medium"
                   ? "c97-chip-warning"
                   : "c97-chip-negative";
+            const standing = asset.standingPosition ? `P${asset.standingPosition}` : "Unranked";
 
             return (
               <tr key={asset.id} style={getTeamAccentStyle(asset.teamColor)}>
@@ -455,19 +458,60 @@ function AssetsTable({
                   <div className="flex min-w-0 items-center" style={{ gap: "var(--c97-sp-1)" }}>
                     <AssetAvatar asset={asset} />
                     <div className="min-w-0">
-                      <p className="c97-serif truncate">{asset.name}</p>
-                      <p className="c97-kicker" style={{ marginTop: "var(--c97-sp-1)" }}>
-                        {asset.standingPosition ? `P${asset.standingPosition}` : "Unranked"}
-                      </p>
+                      <p className="c97-serif sm:truncate">{asset.name}</p>
+                      <div className="hidden sm:block">
+                        <p className="c97-kicker" style={{ marginTop: "var(--c97-sp-1)" }}>
+                          {standing}
+                        </p>
+                      </div>
                     </div>
                   </div>
+                  {/* A phone's row. The line that is always there has the two
+                      numbers a pick turns on, and it opens the other columns. */}
+                  <details className="c97-disclosure sm:hidden">
+                    <summary
+                      className="flex min-h-[44px] items-center justify-between"
+                      style={{ gap: "var(--c97-sp-1)" }}
+                    >
+                      <span>
+                        <span className="sr-only">{asset.name}, </span>
+                        {formatMoney(asset.price)} &middot; {formatPoints(asset.projectedPoints)} projected
+                      </span>
+                      <span className="c97-kicker" style={{ textDecoration: "underline", textUnderlineOffset: "4px" }}>
+                        <span data-when="closed">More</span>
+                        <span data-when="open">Less</span>
+                      </span>
+                    </summary>
+                    <dl className="grid grid-cols-2" style={{ gap: "var(--c97-sp-1)", paddingBottom: "var(--c97-sp-1)" }}>
+                      {(
+                        [
+                          ["Type", <span key="type" className="capitalize">{asset.kind}</span>],
+                          ["Standing", standing],
+                          ["Value", formatPoints(asset.valueRating)],
+                          ["Form", formatPoints(asset.formScore)],
+                        ] as const
+                      ).map(([label, value]) => (
+                        <div key={label}>
+                          <dt className="c97-kicker">{label}</dt>
+                          <dd className="mb-0">{value}</dd>
+                        </div>
+                      ))}
+                      <div className="col-span-2">
+                        <dt className="c97-kicker">Risk</dt>
+                        <dd className="mb-0">
+                          <span className={`c97-chip ${riskChipClass} capitalize`}>{asset.risk}</span>{" "}
+                          {asset.riskReason}
+                        </dd>
+                      </div>
+                    </dl>
+                  </details>
                 </td>
-                <td className="capitalize">{asset.kind}</td>
-                <td data-align="end">{formatMoney(asset.price)}</td>
-                <td data-align="end">{formatPoints(asset.projectedPoints)}</td>
-                <td data-align="end">{formatPoints(asset.valueRating)}</td>
-                <td data-align="end">{formatPoints(asset.formScore)}</td>
-                <td>
+                <td className="hidden capitalize sm:table-cell">{asset.kind}</td>
+                <td data-align="end" className="hidden sm:table-cell">{formatMoney(asset.price)}</td>
+                <td data-align="end" className="hidden sm:table-cell">{formatPoints(asset.projectedPoints)}</td>
+                <td data-align="end" className="hidden sm:table-cell">{formatPoints(asset.valueRating)}</td>
+                <td data-align="end" className="hidden sm:table-cell">{formatPoints(asset.formScore)}</td>
+                <td className="hidden sm:table-cell">
                   <span className={`c97-chip ${riskChipClass} capitalize`} title={asset.riskReason}>
                     {asset.risk}
                     <span className="sr-only">. {asset.riskReason}</span>
@@ -692,6 +736,13 @@ export function FantasyFormula1Client({
     () => optimizeFantasyFormula1Lineups(assets, lockedIds, 3),
     [assets, lockedIds]
   );
+  // The optimizer's first answer, which the hero offers as the one suggested
+  // lineup. All three stay in the builder under the team's lock controls.
+  const suggestion = candidates[0] ?? null;
+  const suggestionIsCurrent =
+    suggestion !== null &&
+    selectedIds.size === suggestion.assets.length &&
+    suggestion.assets.every((asset) => selectedIds.has(asset.id));
   const sortedAssets = useMemo(() => {
     const focusedAssets =
       routeState.focus === "drivers"
@@ -723,7 +774,11 @@ export function FantasyFormula1Client({
           {
             label: "Projected points",
             value: formatPoints(summary.projectedPoints),
-            detail: summary.isComplete ? "Full lineup" : `${summary.assets.length}/7 picked`,
+            // The qualifier rides with the number, and the longer note and the
+            // Rules view under the hero say how the model gets there.
+            detail: `Unofficial model estimate · ${
+              summary.isComplete ? "full lineup" : `${summary.assets.length}/7 picked`
+            }`,
           },
           {
             label: "Budget left",
@@ -737,7 +792,35 @@ export function FantasyFormula1Client({
           },
         ]}
       >
-        <GarageSignature summary={summary} budget={FANTASY_FORMULA1_BUDGET} lockedIds={lockedIds} />
+        <GarageSignature summary={summary} budget={FANTASY_FORMULA1_BUDGET} lockedIds={lockedIds}>
+          {suggestion ? (
+            <div className="c97-ff1-suggest" data-testid="fantasy-formula-1-suggestion">
+              <div className="min-w-0">
+                <p className="c97-kicker">Suggested lineup &middot; unofficial model estimate</p>
+                <p className="c97-serif" style={{ marginTop: "var(--c97-sp-1)" }}>
+                  {suggestion.drivers.map((asset) => asset.shortName).join(" · ")}
+                </p>
+                <p style={{ fontSize: "var(--c97-fs-small)", color: "var(--c97-ink-2)" }}>
+                  {suggestion.constructors.map((asset) => asset.name).join(" · ")}
+                </p>
+                <p className="c97-mono" style={{ marginTop: "var(--c97-sp-1)", fontSize: "var(--c97-fs-small)" }}>
+                  {formatPoints(suggestion.projectedPoints)} projected &middot;{" "}
+                  {formatMoney(suggestion.totalPrice)} &middot; {formatMoney(suggestion.budgetRemaining)} left
+                </p>
+              </div>
+              {suggestionIsCurrent ? (
+                <p style={{ fontSize: "var(--c97-fs-small)", color: "var(--c97-ink-2)" }}>
+                  This is your current team.
+                </p>
+              ) : (
+                <button type="button" className="c97-ff1-btn" onClick={() => applyCandidate(suggestion)}>
+                  <Sparkles size={16} aria-hidden="true" />
+                  Use this lineup
+                </button>
+              )}
+            </div>
+          ) : null}
+        </GarageSignature>
       </Catalog97ProjectHero>
 
       <section

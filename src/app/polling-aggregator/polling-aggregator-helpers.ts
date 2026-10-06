@@ -45,6 +45,11 @@ export function newestPollDate(polls: { endDate: string }[]): string | null {
   return polls.map((poll) => poll.endDate).sort().at(-1) ?? null;
 }
 
+/** Whether a series' newest kept poll ended more than 14 days before `now`. */
+export function isStalePollDate(date: string | null, now = Date.now()): boolean {
+  return date !== null && now - Date.parse(date) > STALE_AFTER_MS;
+}
+
 /**
  * One sentence for the source note when a series has had no new poll for more
  * than 14 days. It speaks for the polls the page kept, because the builder
@@ -59,8 +64,7 @@ export function describeStaleSource(
     { series: "approval", date: approvalDate },
     { series: "generic ballot", date: genericBallotDate },
   ].filter(
-    (entry): entry is { series: string; date: string } =>
-      entry.date !== null && now - Date.parse(entry.date) > STALE_AFTER_MS
+    (entry): entry is { series: string; date: string } => isStalePollDate(entry.date, now)
   );
   if (!first) return null;
   const lead = `The newest ${first.series} poll I have from VoteHub ended ${formatDate(first.date)}`;

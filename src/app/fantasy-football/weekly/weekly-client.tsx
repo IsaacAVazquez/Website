@@ -550,7 +550,7 @@ export function WeeklyBoardClient({
               </a>
             </div>
 
-            <MyTeamPanel snapshot={snapshot} board={activeBoard} scoring={scoring} onScoringChange={value => updateRouteState({ scoring: value })} />
+            <MyTeamPanel snapshot={snapshot} board={activeBoard} scoring={scoring} onScoringChange={value => updateRouteState({ scoring: value })} lead={view === "waivers" ? "waivers" : "lineup"} />
 
             {view === "waivers" ? (
               <section

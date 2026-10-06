@@ -27,6 +27,7 @@ import {
   getOrderedSourcesForArticles,
 } from "@/lib/news-pulse-utils";
 import { NewsFrontPage } from "./NewsFrontPage";
+import type { StoryCluster } from "./front-page";
 import {
   buildNewsPulseHref,
   NEWS_PULSE_ROUTE,
@@ -282,6 +283,11 @@ export function NewsPulseClient({
         title="News Pulse"
         standfirst={standfirst}
         meta={updatedLabel}
+        action={
+          <a href={`#${DESK_ID}`} className="c97-btn-ghost">
+            Jump to the desk
+          </a>
+        }
         readouts={[
           {
             label: "Headlines in pull",
@@ -310,7 +316,7 @@ export function NewsPulseClient({
         />
       </Catalog97ProjectHero>
 
-      <section className="c97-band c97-sheet" data-c97-surface="paper" data-seam="torn">
+      <section id={DESK_ID} className="c97-band c97-sheet" data-c97-surface="paper" data-seam="torn">
         <div className="c97-shell">
           <h2 className="c97-poster-sm">The desk</h2>
 
@@ -435,6 +441,7 @@ function ErrorState({ message, onRetry }: { message: string; onRetry: () => void
   );
 }
 
+const DESK_ID = "news-desk";
 const HEADLINES_PAGE_SIZE = 24;
 
 function groupByOutlet(articles: NewsArticle[]): { source: NewsFeedId; items: NewsArticle[] }[] {
@@ -655,8 +662,56 @@ function CoverageView({
             repeated vocabulary.
           </p>
 
+          {/* Under lg each storyline prints as a card with its outlet counts,
+              and its headlines open in place. The comparison table is wider
+              than a phone column, so it prints from lg up. */}
+          <div className="lg:hidden" style={{ marginTop: "var(--c97-sp-3)" }}>
+            <ul
+              aria-label="Story clusters"
+              style={{ display: "grid", gap: "var(--c97-sp-2)", margin: 0, padding: 0, listStyle: "none" }}
+            >
+              {storyClusters.map((cluster) => (
+                <li key={cluster.id} className="c97-panel">
+                  <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-1)" }}>
+                    {cluster.label}
+                  </p>
+                  <ClusterHeadline cluster={cluster} now={now} />
+                  <p className="c97-prose" style={{ marginTop: "var(--c97-sp-2)", fontSize: "var(--c97-fs-small)" }}>
+                    {cluster.totalCount} headlines across {Object.keys(cluster.sources).length} outlets.{" "}
+                    {sourceIds
+                      .filter((source) => (cluster.sources[source] ?? 0) > 0)
+                      .map((source) => `${SOURCE_META[source].name} ${cluster.sources[source]}`)
+                      .join(" · ")}
+                  </p>
+                  <details className="c97-disclosure">
+                    <summary className="c97-btn-ghost">
+                      <span data-when="closed">Show all {cluster.totalCount} headlines</span>
+                      <span data-when="open">Hide the headlines</span>
+                    </summary>
+                    <ul style={{ display: "grid", gap: "var(--c97-sp-1)", margin: 0, padding: 0, listStyle: "none" }}>
+                      {cluster.articles.map((article) => (
+                        <li key={`${article.source}-${article.link}`}>
+                          <p className="c97-kicker">{article.sourceName}</p>
+                          <a
+                            href={article.link}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="c97-link inline-flex min-h-[44px] items-center"
+                            style={{ fontSize: "var(--c97-fs-small)", overflowWrap: "anywhere" }}
+                          >
+                            {article.title}
+                          </a>
+                        </li>
+                      ))}
+                    </ul>
+                  </details>
+                </li>
+              ))}
+            </ul>
+          </div>
+
           <div
-            className="overflow-x-auto" style={{ marginTop: "var(--c97-sp-3)" }}
+            className="hidden overflow-x-auto lg:block" style={{ marginTop: "var(--c97-sp-3)" }}
             role="region"
             aria-label="Story clusters by outlet (scrollable)"
             tabIndex={0}
@@ -708,32 +763,7 @@ function CoverageView({
                       {cluster.totalCount}
                     </td>
                     <td>
-                      <a
-                        href={cluster.representative.link}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="c97-news-headline inline-flex items-start"
-                        style={{ gap: "var(--c97-sp-1)", textDecoration: "none" }}
-                      >
-                        <span className="text-sm font-semibold">
-                          {cluster.representative.title}
-                        </span>
-                        <ExternalLink
-                          className="mt-0.5 h-3.5 w-3.5 shrink-0"
-                          style={{ color: "var(--c97-accent)" }}
-                          aria-hidden="true"
-                        />
-                      </a>
-                      <p className="c97-meta" style={{ marginTop: "var(--c97-sp-1)" }}>
-                        {cluster.representative.sourceName}
-                        {cluster.representative.pubDate
-                          ? ` · ${
-                              now === null
-                                ? formatAbsolutePubDate(cluster.representative.pubDate)
-                                : timeAgo(cluster.representative.pubDate, now)
-                            }`
-                          : ""}
-                      </p>
+                      <ClusterHeadline cluster={cluster} now={now} />
                     </td>
                   </tr>
                 ))}
@@ -743,6 +773,47 @@ function CoverageView({
         </div>
       ) : null}
     </div>
+  );
+}
+
+/** A storyline's representative headline with its outlet and age, shared by
+ * the comparison table and the phone story cards. */
+function ClusterHeadline({
+  cluster,
+  now,
+}: {
+  cluster: StoryCluster;
+  now: number | null;
+}) {
+  return (
+    <>
+      <a
+        href={cluster.representative.link}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="c97-news-headline inline-flex min-h-[44px] items-start"
+        style={{ gap: "var(--c97-sp-1)", textDecoration: "none" }}
+      >
+        <span className="text-sm font-semibold">
+          {cluster.representative.title}
+        </span>
+        <ExternalLink
+          className="mt-0.5 h-3.5 w-3.5 shrink-0"
+          style={{ color: "var(--c97-accent)" }}
+          aria-hidden="true"
+        />
+      </a>
+      <p className="c97-meta" style={{ marginTop: "var(--c97-sp-1)" }}>
+        {cluster.representative.sourceName}
+        {cluster.representative.pubDate
+          ? ` · ${
+              now === null
+                ? formatAbsolutePubDate(cluster.representative.pubDate)
+                : timeAgo(cluster.representative.pubDate, now)
+            }`
+          : ""}
+      </p>
+    </>
   );
 }
 

@@ -538,12 +538,79 @@ describe("MBAJobsClient", () => {
 
     render(<MBAJobsClient initialState={DEFAULT_MBA_JOBS_STATE} />);
 
-    expect(screen.getByText("Source health")).toBeVisible();
+    const heading = screen.getByRole("heading", { name: "Know which feeds answered." });
+    expect(heading).toBeVisible();
     expect(screen.getByText("1 healthy")).toBeVisible();
     expect(screen.getByText("1 manual-only")).toBeVisible();
     expect(screen.getByText("1 external disabled")).toBeVisible();
-    expect(screen.getByText(/Stripe · 1 roles/)).toBeVisible();
+
+    // The counts stay in view. The tag for each source opens on request.
+    const stripe = screen.getByText(/Stripe · 1 roles/);
+    expect(stripe).not.toBeVisible();
+    fireEvent.click(screen.getByText("Show all 3 sources"));
+    expect(stripe).toBeVisible();
     expect(screen.getByText(/Adzuna leads · external-disabled/)).toBeVisible();
+
+    // Source health prints after the roles, with a link to it beside them.
+    const roles = screen.getByRole("heading", { name: "Current openings across the tracked boards." });
+    expect(roles.compareDocumentPosition(heading) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
+    expect(screen.getByRole("link", { name: "Source health" })).toHaveAttribute(
+      "href",
+      "#mba-source-health-heading"
+    );
+  });
+
+  it("puts the search and the roles ahead of the company toggles and the outside boards", () => {
+    mockUseMBAJobs.mockReturnValue(buildHookValue({ jobs: [buildJob()] }));
+
+    render(<MBAJobsClient initialState={DEFAULT_MBA_JOBS_STATE} />);
+
+    const order = [
+      screen.getByRole("group", { name: "Job tracker view" }),
+      screen.getByRole("textbox", { name: "Search roles" }),
+      screen.getByTestId("live-jobs-grid"),
+      screen.getByRole("heading", { name: "Choose which live feeds stay in view." }),
+      screen.getByRole("heading", { name: "Open the same search on outside boards." }),
+    ];
+    order.slice(1).forEach((element, index) => {
+      expect(order[index].compareDocumentPosition(element) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
+    });
+  });
+
+  it("opens the location, role, company, and source filters on request on a phone", () => {
+    render(<MBAJobsClient initialState={DEFAULT_MBA_JOBS_STATE} />);
+
+    const toggle = screen.getByRole("button", { name: /location, role, company, and source filters/ });
+    const filters = document.getElementById("mba-role-refinements")!;
+    expect(toggle).toHaveAttribute("aria-expanded", "false");
+    expect(toggle).toHaveAttribute("aria-controls", "mba-role-refinements");
+    // Hidden below 768px only, so a wider window always prints them.
+    expect(filters).toHaveClass("hidden", "md:flex");
+    expect(within(filters).getByRole("group", { name: "Filter by role family" })).toBeInTheDocument();
+
+    fireEvent.click(toggle);
+    expect(toggle).toHaveAttribute("aria-expanded", "true");
+    expect(filters).not.toHaveClass("hidden");
+  });
+
+  it("holds the pipeline funnel back to a short prompt until a role is tracked", () => {
+    const { unmount } = render(<MBAJobsClient initialState={DEFAULT_MBA_JOBS_STATE} />);
+
+    expect(screen.getByText("Track a role below to start filling this in.")).toBeVisible();
+    expect(screen.queryByText("Response rate")).not.toBeInTheDocument();
+    expect(screen.getByText("Live roles tracked")).toBeVisible();
+    expect(screen.queryByText("Active applications")).not.toBeInTheDocument();
+    unmount();
+
+    const applications = [buildApplication({ id: "a1", jobId: "j1", status: "applied" })];
+    mockUseMBAApplications.mockReturnValue(
+      buildApplicationsHookValue({ applications, activeApplications: applications })
+    );
+    render(<MBAJobsClient initialState={DEFAULT_MBA_JOBS_STATE} />);
+
+    expect(screen.queryByText("Track a role below to start filling this in.")).not.toBeInTheDocument();
+    expect(screen.getByText("Response rate")).toBeVisible();
+    expect(screen.getByText("Active applications")).toBeVisible();
   });
 
   it("deep-links into the application pipeline and updates application status", () => {

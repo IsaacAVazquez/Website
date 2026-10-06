@@ -254,7 +254,7 @@ export function StockSearch({ value, onChange }: Props) {
           placeholder="Search symbol or company…"
           autoComplete="off"
           spellCheck={false}
-          className="box-border w-full border-0 border-b border-[var(--c97-ink-2)] bg-[var(--c97-panel)] text-sm text-[var(--c97-ink)] transition placeholder:text-[var(--c97-label)] focus:border-[var(--c97-accent)]" style={{ paddingBlock: "var(--c97-sp-1)", paddingLeft: "var(--c97-sp-4)", paddingRight: "var(--c97-sp-2)" }}
+          className="box-border w-full border-0 border-b border-[var(--c97-ink-2)] bg-[var(--c97-panel)] text-sm text-[var(--c97-ink)] transition placeholder:text-[var(--c97-label)] focus:border-[var(--c97-accent)]" style={{ minHeight: 44, paddingBlock: "var(--c97-sp-1)", paddingLeft: "var(--c97-sp-4)", paddingRight: "var(--c97-sp-2)" }}
           // aria-expanded and aria-activedescendant are only allowed on a combobox, not a plain textbox.
           role="combobox"
           aria-label="Search stock symbol"

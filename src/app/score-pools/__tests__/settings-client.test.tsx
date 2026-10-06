@@ -61,6 +61,23 @@ describe("SettingsClient pools", () => {
     expect(screen.getByRole("heading", { name: "Family pool" })).toBeInTheDocument();
   });
 
+  it("creates pools and rivals with Enter and reports the result", async () => {
+    const user = userEvent.setup();
+    renderSettings();
+    await user.type(within(screen.getByRole("region", { name: "Pools" })).getByLabelText("Name"), "Keyboard pool{Enter}");
+    expect(stored().name).toBe("Keyboard pool");
+    expect(screen.getByRole("status")).toHaveTextContent("Added Keyboard pool.");
+    const input = screen.getByLabelText("New rival");
+    await user.type(input, "  {Enter}");
+    expect(screen.getByRole("alert")).toHaveTextContent("Enter a name for the rival.");
+    expect(input).toHaveAttribute("aria-invalid", "true");
+    await user.clear(input);
+    await user.type(input, "Dana{Enter}");
+    expect(stored().rivals[0].name).toBe("Dana");
+    expect(screen.getByRole("status")).toHaveTextContent("Added Dana to Keyboard pool.");
+    expect(screen.queryByRole("alert")).not.toBeInTheDocument();
+  });
+
   it("asks before deleting a pool and can back out", async () => {
     const user = userEvent.setup();
     seedStore([pool(), pool({ id: "pool-2", name: "Family pool" })]);
@@ -88,7 +105,7 @@ describe("SettingsClient pools", () => {
 describe("SettingsClient pool settings", () => {
   beforeEach(() => seedStore([pool()]));
 
-  it("persists the basics: name, league, timezone, lock offset, de-vig", async () => {
+  it("persists the basics: name, league, timezone, lock offset", async () => {
     const user = userEvent.setup();
     renderSettings();
     const basics = screen.getByRole("region", { name: "Pool basics" });
@@ -115,8 +132,23 @@ describe("SettingsClient pool settings", () => {
     fireEvent.blur(lock);
     expect(stored().lockOffsetMinutes).toBe(1440);
     expect(lock).toHaveValue(1440);
+  });
 
-    await user.selectOptions(within(basics).getByLabelText(/^De-vig method/), "power");
+  it("puts scoring before the risk settings, which sit in a closed advanced section", async () => {
+    const user = userEvent.setup();
+    renderSettings();
+    const rules = screen.getByRole("region", { name: "Scoring rules" });
+    const advanced = screen.getByText("Hide advanced settings").closest("details") as HTMLDetailsElement;
+    expect(advanced.open).toBe(false);
+    expect(rules.compareDocumentPosition(advanced) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
+    // The pool identity and rivals stay outside it.
+    expect(advanced).not.toContainElement(screen.getByRole("region", { name: "Pool basics" }));
+    expect(advanced).not.toContainElement(screen.getByRole("region", { name: "Rivals" }));
+    for (const name of ["Standing and risk", "Rest of the pool", "Odds conversion"]) {
+      expect(advanced).toContainElement(screen.getByRole("region", { name }));
+    }
+
+    await user.selectOptions(within(advanced).getByLabelText(/^Bookmaker margin removal/), "power");
     expect(stored().devigMethod).toBe("power");
   });
 
@@ -148,7 +180,7 @@ describe("SettingsClient pool settings", () => {
   it("persists the standing, with empty gaps meaning none", async () => {
     const user = userEvent.setup();
     renderSettings();
-    const standing = screen.getByRole("region", { name: "Standing and posture" });
+    const standing = screen.getByRole("region", { name: "Standing and risk" });
 
     fireEvent.change(within(standing).getByLabelText("My points"), { target: { value: "41" } });
     const above = within(standing).getByLabelText(/^Nearest above \(points\)/);
@@ -160,7 +192,7 @@ describe("SettingsClient pool settings", () => {
     const games = within(standing).getByLabelText("Games remaining");
     fireEvent.change(games, { target: { value: "-3" } });
     fireEvent.blur(games);
-    await user.selectOptions(within(standing).getByLabelText("Posture"), "chase");
+    await user.selectOptions(within(standing).getByLabelText("Risk approach"), "chase");
 
     expect(stored().standing).toEqual({
       myPoints: 41,
@@ -182,15 +214,15 @@ describe("SettingsClient pool settings", () => {
   it("lets a bounded number be typed digit by digit and snaps it into range on leaving", async () => {
     const user = userEvent.setup();
     renderSettings();
-    const standing = screen.getByRole("region", { name: "Standing and posture" });
+    const standing = screen.getByRole("region", { name: "Standing and risk" });
     const size = within(standing).getByLabelText("Pool size");
     await user.clear(size);
     await user.type(size, "12");
     expect(size).toHaveValue(12);
     expect(stored().standing.poolSize).toBe(12);
 
-    const share = within(screen.getByRole("region", { name: "Field model" })).getByLabelText(
-      /^Share on the modal chalk pick/,
+    const share = within(screen.getByRole("region", { name: "Rest of the pool" })).getByLabelText(
+      /^Share on the single most likely score/,
     );
     await user.clear(share);
     await user.type(share, "0.4");
@@ -209,9 +241,9 @@ describe("SettingsClient pool settings", () => {
 
   it("persists the field model shares", () => {
     renderSettings();
-    const field = screen.getByRole("region", { name: "Field model" });
-    fireEvent.change(within(field).getByLabelText(/^Share on the modal chalk pick/), { target: { value: "0.4" } });
-    fireEvent.change(within(field).getByLabelText("Total share on chalk picks"), { target: { value: "0.7" } });
+    const field = screen.getByRole("region", { name: "Rest of the pool" });
+    fireEvent.change(within(field).getByLabelText(/^Share on the single most likely score/), { target: { value: "0.4" } });
+    fireEvent.change(within(field).getByLabelText(/^Total share on the few obvious scores/), { target: { value: "0.7" } });
     expect(stored().field).toEqual({ modalShare: 0.4, chalkShare: 0.7 });
   });
 
@@ -239,6 +271,8 @@ describe("SettingsClient pool settings", () => {
 
     await user.click(within(item).getByRole("button", { name: "Remove" }));
     expect(stored().rivals).toHaveLength(0);
+    expect(within(rivals).getByLabelText("New rival")).toHaveFocus();
+    expect(screen.getByRole("status")).toHaveTextContent("Removed Danae and their saved picks.");
   });
 
   it("reports each league's freshness, fixture count, sources, and sample status", () => {

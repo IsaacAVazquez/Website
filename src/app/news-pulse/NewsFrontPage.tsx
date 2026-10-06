@@ -14,10 +14,36 @@ interface NewsFrontPageProps {
  * own headline for it, and a coverage matrix of outlet against topic. When
  * the pull has no cross-outlet story yet, it says so instead of rendering an
  * empty front page.
+ *
+ * Under lg it prints as one story card, the lead headline with its outlet
+ * count, and the outlet headlines and the topic coverage each open in place.
+ * The matrix is wider than a phone column, so there the same counts print as
+ * a list by topic. From lg up the front page prints in full.
  */
 export function NewsFrontPage({ clusters, topics, outlets, dateline }: NewsFrontPageProps) {
   const lead = leadStory(clusters);
   const matrix = coverageMatrix(topics, outlets);
+
+  const leadOutlets = lead ? (
+    <ul className="c97-news-lead-outlets">
+      {lead.articles.map((article) => (
+        <li key={`${article.source}-${article.link}`}>
+          <span
+            className="c97-chip"
+            style={{
+              background: `color-mix(in srgb, ${article.sourceColor} 30%, var(--c97-surface))`,
+              color: "var(--c97-ink)",
+            }}
+          >
+            {article.sourceName}
+          </span>
+          <a href={article.link} target="_blank" rel="noopener noreferrer">
+            {article.title}
+          </a>
+        </li>
+      ))}
+    </ul>
+  ) : null;
 
   return (
     <div>
@@ -26,24 +52,18 @@ export function NewsFrontPage({ clusters, topics, outlets, dateline }: NewsFront
       {lead ? (
         <div style={{ marginTop: "var(--c97-sp-3)" }}>
           <h2 className="c97-serif c97-h2">{lead.representative.title}</h2>
-          <ul className="c97-news-lead-outlets">
-            {lead.articles.map((article) => (
-              <li key={`${article.source}-${article.link}`}>
-                <span
-                  className="c97-chip"
-                  style={{
-                    background: `color-mix(in srgb, ${article.sourceColor} 30%, var(--c97-surface))`,
-                    color: "var(--c97-ink)",
-                  }}
-                >
-                  {article.sourceName}
-                </span>
-                <a href={article.link} target="_blank" rel="noopener noreferrer">
-                  {article.title}
-                </a>
-              </li>
-            ))}
-          </ul>
+          <div className="hidden lg:block">{leadOutlets}</div>
+          <details className="c97-disclosure lg:hidden" style={{ marginTop: "var(--c97-sp-1)" }}>
+            {/* The label carries two counts, so it wraps on a narrow column
+                where the button class would hold it to one line. */}
+            <summary className="c97-btn-ghost" style={{ whiteSpace: "normal" }}>
+              <span data-when="closed">
+                Show {lead.articles.length} headlines from {Object.keys(lead.sources).length} outlets
+              </span>
+              <span data-when="open">Hide the outlet headlines</span>
+            </summary>
+            {leadOutlets}
+          </details>
         </div>
       ) : (
         <p className="c97-meta" style={{ marginTop: "var(--c97-sp-3)" }}>
@@ -52,8 +72,39 @@ export function NewsFrontPage({ clusters, topics, outlets, dateline }: NewsFront
       )}
 
       {matrix.topics.length > 0 ? (
+        <details className="c97-disclosure lg:hidden">
+          <summary className="c97-btn-ghost">
+            <span data-when="closed">Show coverage by topic</span>
+            <span data-when="open">Hide coverage by topic</span>
+          </summary>
+          <ul
+            aria-label="Coverage by topic"
+            style={{
+              display: "grid",
+              gap: "var(--c97-sp-2)",
+              margin: "var(--c97-sp-2) 0 0",
+              padding: 0,
+              listStyle: "none",
+            }}
+          >
+            {matrix.topics.map((topic, index) => (
+              <li key={topic}>
+                <p className="c97-kicker">{topic}</p>
+                <p className="c97-prose" style={{ fontSize: "var(--c97-fs-small)" }}>
+                  {matrix.rows
+                    .filter((row) => row.counts[index] > 0)
+                    .map((row) => `${SOURCE_META[row.outlet].name} ${row.counts[index]}`)
+                    .join(" · ")}
+                </p>
+              </li>
+            ))}
+          </ul>
+        </details>
+      ) : null}
+
+      {matrix.topics.length > 0 ? (
         <div
-          className="overflow-x-auto"
+          className="hidden overflow-x-auto lg:block"
           role="region"
           aria-label="Coverage by outlet and topic (scrollable)"
           tabIndex={0}

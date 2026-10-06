@@ -72,6 +72,9 @@
 .method { margin-top: var(--c97-sp-2); }
 .method summary { min-height: 44px; padding-block: var(--c97-sp-1); font-size: var(--c97-fs-small); cursor: pointer; }
 .comparison { min-width: 0; align-self: start; padding-block: var(--c97-sp-3); border-top: 1px solid var(--team-rule); }
+/* Waivers puts the comparison ahead of the lineup, so the rule moves with it. */
+.targetsFirst .comparison { border-top: 0; }
+.targetsFirst .lineup { border-top: 1px solid var(--team-rule); }
 .comparisonResult { margin-top: var(--c97-sp-3); border-top: 1px solid var(--team-ink); padding-top: var(--c97-sp-2); font-size: var(--c97-fs-small); }
 .comparisonResult > p:first-child { font-size: var(--c97-fs-lead); line-height: 1.5; font-weight: 500; }
 .availabilityPrompt { margin-top: var(--c97-sp-3); padding-block: var(--c97-sp-2); border-block: 1px solid var(--team-rule); font-size: var(--c97-fs-small); }
@@ -89,6 +92,9 @@
   .decisions { grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr); gap: var(--c97-sp-3); padding-block: var(--c97-sp-3); }
   .lineup { padding-block: 0; }
   .comparison { padding: 0 0 0 var(--c97-sp-3); border-top: 0; border-left: 1px solid var(--team-rule); }
+  .targetsFirst { grid-template-columns: minmax(0, 1fr) minmax(0, 1.35fr); }
+  .targetsFirst .comparison { padding: 0 var(--c97-sp-3) 0 0; border-left: 0; border-right: 1px solid var(--team-rule); }
+  .targetsFirst .lineup { border-top: 0; }
 }
 
 @media (max-width: 400px) {

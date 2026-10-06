@@ -83,6 +83,34 @@ describe("PollingAggregatorClient", () => {
     expect(screen.getByRole("note")).not.toHaveTextContent(/newest/i);
   });
 
+  it("prints each series' newest poll date beside its headline average, with the stale state", () => {
+    currentSearchParams = new URLSearchParams("view=approval");
+    render(
+      <PollingAggregatorClient
+        initialState={DEFAULT_POLLING_STATE}
+        snapshot={datedSnapshot}
+        staleSeries={{ approval: true, genericBallot: false }}
+      />
+    );
+
+    const readout = (label: string) =>
+      screen.getByText(label, { selector: "dt" }).parentElement as HTMLElement;
+    expect(readout("Approval net")).toHaveTextContent(
+      "Newest poll Aug 28, 2026, which is more than 14 days old"
+    );
+    expect(readout("Generic ballot margin")).toHaveTextContent(/Newest poll Sep 8, 2026$/);
+    // Days to election is a count, so it carries no poll date.
+    expect(readout("Days to election")).not.toHaveTextContent(/Newest poll/);
+
+    // The approval view's two averages carry the same line under their headings.
+    const underHeading = (name: RegExp) =>
+      screen.getByRole("heading", { level: 3, name }).nextElementSibling as HTMLElement;
+    expect(underHeading(/Presidential approval/)).toHaveTextContent(
+      "Newest poll Aug 28, 2026, which is more than 14 days old"
+    );
+    expect(underHeading(/Generic ballot/)).toHaveTextContent(/^Newest poll Sep 8, 2026$/);
+  });
+
   it("attributes the polling source and explains the race-data limit", () => {
     render(
       <PollingAggregatorClient

@@ -2,7 +2,7 @@
 
 import { type FormEvent, useMemo, useRef, useState } from "react";
 import { ArrowLeft, ArrowRight, Download, Plus, RotateCcw, Trash2 } from "lucide-react";
-import { Catalog97ProjectHero } from "@/components/catalog97/Catalog97ProjectHero";
+import { Catalog97HeroReadouts, Catalog97ProjectHero } from "@/components/catalog97/Catalog97ProjectHero";
 import { PROJECT_PRESS } from "@/constants/projectPress";
 import {
   BUDGET_PLANNER_STORAGE_KEY,
@@ -63,6 +63,44 @@ function parseAmountInput(value: string) {
   const parsed = Number(value);
   if (!Number.isFinite(parsed)) return 0;
   return Math.max(0, Math.round(parsed * 100) / 100);
+}
+
+function CategoryNameField({
+  id,
+  name,
+  onRename,
+}: {
+  id: string;
+  name: string;
+  onRename: (id: string, name: string) => void;
+}) {
+  const [draft, setDraft] = useState(name);
+  const [savedName, setSavedName] = useState(name);
+  if (savedName !== name) {
+    setSavedName(name);
+    setDraft(name);
+  }
+
+  return (
+    <label className="min-w-0" style={{ display: "block" }}>
+      <span className="sr-only">Category name for {name}</span>
+      <input
+        aria-label={`Category name for ${name}`}
+        type="text"
+        value={draft}
+        onChange={(event) => setDraft(event.target.value)}
+        onBlur={() => {
+          const trimmed = draft.trim();
+          if (trimmed) onRename(id, trimmed);
+          setDraft(trimmed || name);
+        }}
+        onKeyDown={(event) => {
+          if (event.key === "Enter") event.currentTarget.blur();
+        }}
+        className="c97-field"
+      />
+    </label>
+  );
 }
 
 export function BudgetPlannerClient() {
@@ -198,25 +236,128 @@ export function BudgetPlannerClient() {
             ? `${monthLabel} · Browser storage is unavailable, so changes last only while this tab is open.`
             : `${monthLabel} · Saved in this browser, no account needed.`
         }
-        readouts={[
-          {
-            label: "Income",
-            value: formatDollars(totalIncome),
-            detail: `Savings target ${formatDollars(activeMonth.savingsTarget)}`,
-          },
-          {
-            label: "Spent",
-            value: formatDollars(totalExpenses),
-            detail: percentSpent === null ? "No income set" : `${percentSpent}% of income`,
-          },
-          {
-            label: "Left to spend",
-            value: formatSignedCurrency(remaining),
-            detail: remaining >= 0 ? "After savings target" : `Over by ${formatDollars(Math.abs(remaining))}`,
-          },
-        ]}
       >
-        <div data-c97-surface="paper" className="c97-offset" style={{ padding: "var(--c97-sp-3)" }}>
+        {/* The plan comes first, so the month, income, and savings target sit above the figures and envelopes they drive. */}
+        <div
+          data-c97-surface="paper"
+          className="c97-offset flex flex-col"
+          style={{ padding: "var(--c97-sp-3)", gap: "var(--c97-sp-2)" }}
+        >
+          <h2 className="sr-only">Month and income</h2>
+          <div className="flex flex-wrap items-center" style={{ gap: "var(--c97-sp-2)" }}>
+            <button
+              type="button"
+              aria-label="Previous month"
+              onClick={() => handleMonthChange(getAdjacentBudgetMonthKey(activeMonthKey, -1))}
+              className="c97-btn-ghost"
+              style={{ minWidth: 44, justifyContent: "center" }}
+            >
+              <ArrowLeft size={16} aria-hidden="true" />
+            </button>
+            <label style={{ display: "flex", flexDirection: "column", gap: "var(--c97-sp-1)" }}>
+              <span className="c97-kicker">Budget month</span>
+              <input
+                aria-label="Budget month"
+                type="month"
+                value={activeMonthKey}
+                onChange={(event) => handleMonthChange(event.target.value)}
+                className="c97-field c97-mono"
+                style={{ width: "12rem", maxWidth: "100%" }}
+              />
+            </label>
+            <button
+              type="button"
+              aria-label="Next month"
+              onClick={() => handleMonthChange(getAdjacentBudgetMonthKey(activeMonthKey, 1))}
+              className="c97-btn-ghost"
+              style={{ minWidth: 44, justifyContent: "center" }}
+            >
+              <ArrowRight size={16} aria-hidden="true" />
+            </button>
+            <span className="c97-serif c97-h3">{monthLabel}</span>
+          </div>
+
+          <div className="grid grid-cols-2" style={{ gap: "var(--c97-sp-1)" }}>
+            <label style={{ display: "block" }}>
+              <span className="c97-kicker">Monthly income</span>
+              <input
+                aria-label="Monthly income"
+                type="number"
+                min="0"
+                step="50"
+                value={String(activeMonth.income)}
+                onChange={(event) => updateIncome(Number(event.target.value))}
+                className="c97-field c97-mono"
+              />
+            </label>
+            <label style={{ display: "block" }}>
+              <span className="c97-kicker">Savings target</span>
+              <input
+                aria-label="Savings target"
+                type="number"
+                min="0"
+                step="25"
+                value={String(activeMonth.savingsTarget)}
+                onChange={(event) => updateSavingsTarget(Number(event.target.value))}
+                className="c97-field c97-mono"
+              />
+            </label>
+          </div>
+
+          <div className="flex flex-wrap items-center" style={{ gap: "var(--c97-sp-2)" }}>
+            <button type="button" onClick={handleExportCsv} className="c97-btn-ghost">
+              <Download size={16} aria-hidden="true" style={{ marginRight: "var(--c97-sp-1)" }} />
+              Export CSV
+            </button>
+            {confirmReset ? (
+              <>
+                <button
+                  type="button"
+                  onClick={handleResetMonth}
+                  className="c97-btn-ghost"
+                  style={{ color: "var(--c97-negative)" }}
+                >
+                  <RotateCcw size={16} aria-hidden="true" style={{ marginRight: "var(--c97-sp-1)" }} />
+                  Reset month?
+                </button>
+                <button type="button" onClick={() => setConfirmReset(false)} className="c97-btn-ghost">
+                  Cancel
+                </button>
+              </>
+            ) : (
+              <button type="button" onClick={() => setConfirmReset(true)} className="c97-btn-ghost">
+                <RotateCcw size={16} aria-hidden="true" style={{ marginRight: "var(--c97-sp-1)" }} />
+                Reset month
+              </button>
+            )}
+          </div>
+        </div>
+
+        <Catalog97HeroReadouts
+          readouts={[
+            {
+              label: "Income",
+              value: formatDollars(totalIncome),
+              detail: `Savings target ${formatDollars(activeMonth.savingsTarget)}`,
+            },
+            {
+              label: "Spent",
+              value: formatDollars(totalExpenses),
+              detail: percentSpent === null ? "No income set" : `${percentSpent}% of income`,
+            },
+            {
+              label: "Left to spend",
+              value: formatSignedCurrency(remaining),
+              detail: remaining >= 0 ? "After savings target" : `Over by ${formatDollars(Math.abs(remaining))}`,
+            },
+          ]}
+        />
+
+        <div
+          data-c97-surface="paper"
+          className="c97-offset"
+          style={{ padding: "var(--c97-sp-3)", marginTop: "var(--c97-sp-5)" }}
+        >
           <EnvelopesSignature categories={summary.categorySummaries} />
         </div>
       </Catalog97ProjectHero>
@@ -225,105 +366,6 @@ export function BudgetPlannerClient() {
         <p role="status" aria-live="polite" className="sr-only">
           {`${formatDollars(totalExpenses)} spent, ${formatDollars(remaining)} left to spend`}
         </p>
-        <section className="c97-band c97-sheet" data-c97-surface="paper" data-seam="torn">
-          <div className="c97-shell">
-            <div className="flex flex-wrap items-center justify-between" style={{ gap: "var(--c97-sp-1)" }}>
-              <div className="flex flex-wrap items-center" style={{ gap: "var(--c97-sp-2)" }}>
-                <button
-                  type="button"
-                  aria-label="Previous month"
-                  onClick={() => handleMonthChange(getAdjacentBudgetMonthKey(activeMonthKey, -1))}
-                  className="c97-btn-ghost"
-                  style={{ minWidth: 44, justifyContent: "center" }}
-                >
-                  <ArrowLeft size={16} aria-hidden="true" />
-                </button>
-                <label style={{ display: "flex", flexDirection: "column", gap: "var(--c97-sp-1)" }}>
-                  <span className="c97-kicker">Budget month</span>
-                  <input
-                    aria-label="Budget month"
-                    type="month"
-                    value={activeMonthKey}
-                    onChange={(event) => handleMonthChange(event.target.value)}
-                    className="c97-field c97-mono"
-                    style={{ width: "12rem", maxWidth: "100%" }}
-                  />
-                </label>
-                <button
-                  type="button"
-                  aria-label="Next month"
-                  onClick={() => handleMonthChange(getAdjacentBudgetMonthKey(activeMonthKey, 1))}
-                  className="c97-btn-ghost"
-                  style={{ minWidth: 44, justifyContent: "center" }}
-                >
-                  <ArrowRight size={16} aria-hidden="true" />
-                </button>
-                <span className="c97-serif c97-h3">{monthLabel}</span>
-              </div>
-
-              <div className="flex flex-wrap items-center" style={{ gap: "var(--c97-sp-2)" }}>
-                <button type="button" onClick={handleExportCsv} className="c97-btn-ghost">
-                  <Download size={16} aria-hidden="true" style={{ marginRight: "var(--c97-sp-1)" }} />
-                  Export CSV
-                </button>
-                {confirmReset ? (
-                  <>
-                    <button
-                      type="button"
-                      onClick={handleResetMonth}
-                      className="c97-btn-ghost"
-                      style={{ color: "var(--c97-negative)" }}
-                    >
-                      <RotateCcw size={16} aria-hidden="true" style={{ marginRight: "var(--c97-sp-1)" }} />
-                      Reset month?
-                    </button>
-                    <button type="button" onClick={() => setConfirmReset(false)} className="c97-btn-ghost">
-                      Cancel
-                    </button>
-                  </>
-                ) : (
-                  <button type="button" onClick={() => setConfirmReset(true)} className="c97-btn-ghost">
-                    <RotateCcw size={16} aria-hidden="true" style={{ marginRight: "var(--c97-sp-1)" }} />
-                    Reset month
-                  </button>
-                )}
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section className="c97-band c97-sheet" data-c97-surface="bone" data-seam="deckle">
-          <div className="c97-shell">
-            <h2 className="c97-poster-sm">Income</h2>
-            <div className="grid sm:grid-cols-2" style={{ gap: "var(--c97-sp-1)", marginTop: "var(--c97-sp-3)" }}>
-              <label style={{ display: "block" }}>
-                <span className="c97-kicker">Monthly income</span>
-                <input
-                  aria-label="Monthly income"
-                  type="number"
-                  min="0"
-                  step="50"
-                  value={String(activeMonth.income)}
-                  onChange={(event) => updateIncome(Number(event.target.value))}
-                  className="c97-field c97-mono"
-                />
-              </label>
-              <label style={{ display: "block" }}>
-                <span className="c97-kicker">Savings target</span>
-                <input
-                  aria-label="Savings target"
-                  type="number"
-                  min="0"
-                  step="25"
-                  value={String(activeMonth.savingsTarget)}
-                  onChange={(event) => updateSavingsTarget(Number(event.target.value))}
-                  className="c97-field c97-mono"
-                />
-              </label>
-            </div>
-          </div>
-        </section>
-
         <section className="c97-band c97-sheet" data-c97-surface="paper" data-seam="torn">
           <div className="c97-shell">
             <div className="flex flex-wrap items-end justify-between" style={{ gap: "var(--c97-sp-1)" }}>
@@ -335,7 +377,6 @@ export function BudgetPlannerClient() {
               {summary.categorySummaries.map((category) => {
                 const displayName = category.name || "Untitled";
                 const hasLinkedExpenses = category.expenseCount > 0;
-                const empty = category.name.trim() === "";
                 return (
                   <div
                     key={category.id}
@@ -347,22 +388,7 @@ export function BudgetPlannerClient() {
                     }}
                   >
                     <div className="grid items-center sm:grid-cols-[minmax(0,1fr)_120px_auto]" style={{ gap: "var(--c97-sp-1)" }}>
-                      <label className="min-w-0" style={{ display: "block" }}>
-                        <span className="sr-only">Category name for {displayName}</span>
-                        <input
-                          aria-label={`Category name for ${displayName}`}
-                          aria-invalid={empty ? true : undefined}
-                          type="text"
-                          value={category.name}
-                          onChange={(event) => renameCategory(category.id, event.target.value)}
-                          onBlur={(event) => {
-                            if (!event.target.value.trim()) {
-                              renameCategory(category.id, "Untitled");
-                            }
-                          }}
-                          className="c97-field"
-                        />
-                      </label>
+                      <CategoryNameField id={category.id} name={displayName} onRename={renameCategory} />
                       <label style={{ display: "block" }}>
                         <span className="sr-only">Budget amount for {displayName}</span>
                         <input

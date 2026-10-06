@@ -51,3 +51,18 @@
   text-align: right;
   color: var(--c97-ink-2);
 }
+
+/* The standings table on a phone. The full table is 525px wide and a phone's
+ * column is 334px. Below 640px it keeps the seed, the team, the record, and
+ * the point differential in tighter cells, and the columns it drops are in
+ * the team drawer. */
+@media (max-width: 639px) {
+  .c97-table.c97-nfl-table th,
+  .c97-table.c97-nfl-table td {
+    padding-inline: var(--c97-sp-1);
+  }
+
+  .c97-table.c97-nfl-table [data-wide] {
+    display: none;
+  }
+}

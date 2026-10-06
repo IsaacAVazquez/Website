@@ -33,21 +33,21 @@ function decodeIdList(value: unknown): string[] {
 
 function decodeVisit(value: unknown): UserVisit | undefined {
   if (!isRecord(value)) return undefined;
+  // A quick visit carries no rating. A rating that is present has to be valid.
+  const rating = value.rating ?? undefined;
   if (
     typeof value.museumId !== "string" ||
     value.museumId.trim().length === 0 ||
     !isLocalDateKey(value.date) ||
-    typeof value.rating !== "number" ||
-    !Number.isFinite(value.rating) ||
-    value.rating < 0 ||
-    value.rating > 5
+    (rating !== undefined &&
+      (typeof rating !== "number" || !Number.isFinite(rating) || rating < 0 || rating > 5))
   ) {
     return undefined;
   }
   return {
     museumId: value.museumId.trim(),
     date: value.date,
-    rating: value.rating,
+    ...(typeof rating === "number" ? { rating } : {}),
     ...(typeof value.note === "string" && value.note.trim()
       ? { note: value.note.trim() }
       : {}),

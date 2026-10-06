@@ -33,7 +33,9 @@ export function useModal(
 
   useEffect(() => {
     if (!open) return;
-    const opener = document.activeElement instanceof HTMLElement ? document.activeElement : null;
+    // An SVG button (a ladder chart marker) is an SVGElement, and it has to get focus back too.
+    const active = document.activeElement;
+    const opener = active instanceof HTMLElement || active instanceof SVGElement ? active : null;
     const openedPanel = panelRef.current;
     (initialFocusRef?.current ?? openedPanel)?.focus();
     const previousOverflow = document.body.style.overflow;
@@ -69,8 +71,8 @@ export function useModal(
     return () => {
       window.removeEventListener("keydown", handleKeyDown);
       if (lockScroll) document.body.style.overflow = previousOverflow;
-      const active = document.activeElement;
-      const focusIsLoose = !active || active === document.body || Boolean(openedPanel?.contains(active));
+      const current = document.activeElement;
+      const focusIsLoose = !current || current === document.body || Boolean(openedPanel?.contains(current));
       if (focusIsLoose && opener && opener !== document.body && document.contains(opener)) opener.focus();
     };
   }, [open, panelRef, initialFocusRef, lockScroll, resetKey]);

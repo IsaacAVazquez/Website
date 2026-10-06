@@ -1,8 +1,8 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useMemo, useRef, useState } from "react";
 import { useSearchParams } from "next/navigation";
-import { ExternalLink, RotateCcw, Search } from "lucide-react";
+import { ExternalLink, RotateCcw, Search, X } from "lucide-react";
 import { EmptyPanel } from "@/components/football/EmptyPanel";
 import { BrandGithub } from "@/components/ui/ServerIcons";
 import { Catalog97ProjectHero } from "@/components/catalog97/Catalog97ProjectHero";
@@ -34,6 +34,7 @@ import {
   normalizeAiDevToolsState,
   type AiDevToolsRouteState,
 } from "./ai-dev-tools-state";
+import { useModal } from "@/hooks/useModal";
 import { useRouteSync } from "@/hooks/useRouteSync";
 
 interface AiDevToolsClientProps {
@@ -195,7 +196,6 @@ export function AiDevToolsClient({ initialState }: AiDevToolsClientProps) {
     () => aiDevTools.find((tool) => tool.id === state.selectedToolId) ?? null,
     [state.selectedToolId]
   );
-  const visibleDetailTool = selectedTool ?? sortedTools[0] ?? null;
   const openSourceCount = aiDevTools.filter((tool) => tool.sourceStatus === "open-source").length;
 
   const now = useClientNow();
@@ -247,6 +247,13 @@ export function AiDevToolsClient({ initialState }: AiDevToolsClientProps) {
   const standfirst =
     "I wanted a cleaner way to compare the coding-agent market, and the split I care about now runs along editor control, terminal control, cloud autonomy, and how directly each product exposes its own model economics. This directory tracks the tools people actually argue about, with pricing, model access, GitHub traction, and release velocity in one place. I keep the entries by hand, so every figure is as of the snapshot date and each entry links to the pages it came from.";
   const handleSelectTool = (toolId: string) => navigate({ ...state, selectedToolId: toolId });
+  const surfaceMapProps = {
+    tools: aiDevTools,
+    categories: categoryOptions.slice(1).map((option) => option.id),
+    pricing: pricingOptions.slice(1).map((option) => option.id),
+    selectedToolId: selectedTool?.id ?? null,
+    onSelect: handleSelectTool,
+  };
 
   return (
     <>
@@ -255,6 +262,8 @@ export function AiDevToolsClient({ initialState }: AiDevToolsClientProps) {
         title="AI Dev Tool Ecosystem"
         standfirst={standfirst}
         meta={`Curated snapshot · figures as of ${updatedAt}${AI_DEV_TOOLS_VERIFIED ? "" : " · not yet independently verified, so treat them as directional"}`}
+        // The standfirst and figures fill a phone's first screen, so one link goes straight to the directory.
+        action={<a href="#dev-tools-directory" className="c97-btn-ghost">Jump to the directory</a>}
         readouts={[
           {
             label: "Tools tracked",
@@ -273,18 +282,13 @@ export function AiDevToolsClient({ initialState }: AiDevToolsClientProps) {
           },
         ]}
       >
-        <SurfaceMap
-          tools={aiDevTools}
-          categories={categoryOptions.slice(1).map((option) => option.id)}
-          pricing={pricingOptions.slice(1).map((option) => option.id)}
-          selectedToolId={visibleDetailTool?.id ?? null}
-          onSelect={handleSelectTool}
-        />
+        {/* The two-axis grid. Below 960px the same map prints as a list after the directory. */}
+        <SurfaceMap layout="grid" {...surfaceMapProps} />
       </Catalog97ProjectHero>
 
       <section className="c97-band c97-sheet" data-c97-surface="paper" data-seam="torn">
         <div className="flex flex-col c97-shell" style={{ gap: "var(--c97-sp-3)" }}>
-          <h2 className="c97-poster-sm">The directory</h2>
+          <h2 id="dev-tools-directory" className="c97-poster-sm" style={{ scrollMarginTop: "var(--c97-sp-4)" }}>The directory</h2>
 
           <div className="grid lg:grid-cols-[minmax(16rem,0.9fr)_minmax(0,1.6fr)]" style={{ gap: "var(--c97-sp-2)" }}>
             <label className="flex min-h-[44px] items-center border border-[var(--c97-rule)] bg-[var(--c97-surface)] text-sm text-[var(--c97-ink)]" style={{ paddingInline: "var(--c97-sp-1)", gap: "var(--c97-sp-1)" }}>
@@ -341,40 +345,46 @@ export function AiDevToolsClient({ initialState }: AiDevToolsClientProps) {
             </div>
           </div>
 
-          <div className="grid min-w-0 xl:grid-cols-[minmax(0,1.45fr)_minmax(22rem,0.65fr)]" style={{ gap: "var(--c97-sp-2)" }}>
-            <div className="flex flex-col min-w-0" style={{ gap: "var(--c97-sp-2)" }}>
-              <div className="flex flex-wrap items-center justify-between" style={{ gap: "var(--c97-sp-1)" }}>
-                <p className="text-sm font-semibold text-[var(--c97-ink-2)]" style={{ marginBottom: "0" }}>
-                  {filteredTools.length} of {aiDevTools.length} tools shown
-                </p>
-                <FilterSelect
-                  label="Sort"
-                  value={sort}
-                  options={SORT_OPTIONS}
-                  onChange={(value) => setSort(value as SortKey)}
-                />
-              </div>
-
-              {sortedTools.length === 0 ? (
-                <EmptyPanel
-                  title="No tools match those filters"
-                  description="Try a wider category, pricing model, or search term."
-                />
-              ) : (
-                <ToolDirectoryList
-                  tools={sortedTools}
-                  maxStars={maxStars}
-                  nowMs={now}
-                  selectedToolId={visibleDetailTool?.id ?? null}
-                  onSelect={handleSelectTool}
-                />
-              )}
+          <div className="flex flex-col min-w-0" style={{ gap: "var(--c97-sp-2)" }}>
+            <div className="flex flex-wrap items-center justify-between" style={{ gap: "var(--c97-sp-1)" }}>
+              <p className="text-sm font-semibold text-[var(--c97-ink-2)]" style={{ marginBottom: "0" }}>
+                {filteredTools.length} of {aiDevTools.length} tools shown
+              </p>
+              <FilterSelect
+                label="Sort"
+                value={sort}
+                options={SORT_OPTIONS}
+                onChange={(value) => setSort(value as SortKey)}
+              />
             </div>
 
-            <ToolDetail tool={visibleDetailTool} />
+            {sortedTools.length === 0 ? (
+              <EmptyPanel
+                title="No tools match those filters"
+                description="Try a wider category, pricing model, or search term."
+              />
+            ) : (
+              <ToolDirectoryList
+                tools={sortedTools}
+                maxStars={maxStars}
+                nowMs={now}
+                selectedToolId={selectedTool?.id ?? null}
+                onSelect={handleSelectTool}
+              />
+            )}
+          </div>
+
+          <div className="c97-surface-map-narrow flex-col" style={{ gap: "var(--c97-sp-2)" }}>
+            <h2 className="c97-poster-sm">By category and pricing</h2>
+            <SurfaceMap layout="list" {...surfaceMapProps} />
           </div>
         </div>
       </section>
+
+      <ToolDrawer
+        tool={selectedTool}
+        onClose={() => navigate({ ...state, selectedToolId: null })}
+      />
     </>
   );
 }
@@ -536,97 +546,127 @@ function ToolDirectoryList({
   );
 }
 
-function ToolDetail({ tool }: { tool: AiDevTool | null }) {
-  if (!tool) {
-    return (
-      <aside className="c97-panel min-w-0">
-        <p className="text-sm text-[var(--c97-ink-2)]" style={{ marginBottom: "0" }}>
-          No tool is selected.
-        </p>
-      </aside>
-    );
-  }
+/**
+ * A tool's detail as a named drawer, opened from a directory row or a map
+ * plate so it prints over whichever one was pressed. It follows `ClubDrawer`:
+ * a sheet from the bottom on a phone and a rail on the right from 640px, with
+ * `useModal` holding focus and handing it back to the opener on close.
+ */
+function ToolDrawer({ tool, onClose }: { tool: AiDevTool | null; onClose: () => void }) {
+  const panelRef = useRef<HTMLDivElement>(null);
+  useModal(panelRef, Boolean(tool), onClose, { resetKey: tool?.id });
+
+  if (!tool) return null;
 
   return (
-    <aside className="c97-panel h-fit min-w-0 xl:sticky xl:top-6">
-      <div className="flex items-start justify-between" style={{ gap: "var(--c97-sp-2)" }}>
-        <div className="flex items-start" style={{ gap: "var(--c97-sp-1)" }}>
-          <span className="inline-flex h-11 w-11 shrink-0 items-center justify-center border border-[var(--c97-rule)] bg-[var(--c97-field)] text-[var(--c97-ink)]">
-            <ToolCategoryIcon category={tool.category} className="h-5 w-5" />
-          </span>
-          <div>
-            <p className="text-2xs font-semibold uppercase tracking-[0.18em] text-[var(--c97-ink-2)]" style={{ marginBottom: "var(--c97-sp-0)" }}>
-              {tool.company}
-            </p>
-            <h2 className="c97-serif c97-h3">{tool.name}</h2>
+    <div className="c97-enter-fade fixed inset-0 z-[var(--c97-z-drawer)] flex items-end justify-center sm:items-stretch sm:justify-end">
+      <button
+        type="button"
+        aria-label="Close tool detail"
+        onClick={onClose}
+        className="absolute inset-0 h-full w-full cursor-default"
+        style={{ background: "color-mix(in srgb, var(--c97-ink) 34%, transparent)" }}
+        tabIndex={-1}
+      />
+      <div
+        ref={panelRef}
+        role="dialog"
+        aria-modal="true"
+        aria-label={`${tool.name} detail`}
+        tabIndex={-1}
+        data-c97-surface="paper"
+        className="c97-enter-slide-x relative max-h-[88dvh] w-full overflow-y-auto border border-[var(--c97-rule)] outline-none sm:h-full sm:max-h-none sm:w-[27rem]"
+        style={{ padding: "var(--c97-sp-2)" }}
+      >
+        <div className="flex items-start justify-between" style={{ gap: "var(--c97-sp-2)" }}>
+          <div className="flex min-w-0 items-start" style={{ gap: "var(--c97-sp-1)" }}>
+            <span className="inline-flex h-11 w-11 shrink-0 items-center justify-center border border-[var(--c97-rule)] bg-[var(--c97-field)] text-[var(--c97-ink)]">
+              <ToolCategoryIcon category={tool.category} className="h-5 w-5" />
+            </span>
+            <div className="min-w-0">
+              <p className="text-2xs font-semibold uppercase tracking-[0.18em] text-[var(--c97-ink-2)]" style={{ marginBottom: "var(--c97-sp-0)" }}>
+                {tool.company}
+              </p>
+              <h2 className="c97-serif c97-h3">{tool.name}</h2>
+            </div>
           </div>
-        </div>
-        <a
-          href={tool.website}
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label={`Open ${tool.name}`}
-          className="inline-flex min-h-[44px] min-w-[44px] items-center justify-center border border-[var(--c97-rule)] bg-[var(--c97-field)] text-[var(--c97-ink-2)] transition-colors hover:text-[var(--c97-ink)]"
-        >
-          <ExternalLink aria-hidden="true" className="h-4 w-4" />
-        </a>
-      </div>
-
-      <p className="text-sm leading-6 text-[var(--c97-ink-2)]" style={{ marginTop: "var(--c97-sp-2)", marginBottom: "0" }}>
-        {tool.tagline}
-      </p>
-
-      <div className="grid" style={{ marginTop: "var(--c97-sp-2)", gap: "var(--c97-sp-1)" }}>
-        <DetailRow label="Pricing" value={tool.pricingSummary} />
-        <DetailRow label="Models" value={tool.modelSummary} />
-        <DetailRow label="Stars" value={formatGithubStars(tool.githubStars)} />
-        <DetailRow label="Release" value={tool.releaseSummary} />
-        <DetailRow label="Best for" value={tool.bestFor} />
-        <DetailRow label="Watch" value={tool.watchOut} />
-      </div>
-
-      <div className="flex flex-wrap" style={{ marginTop: "var(--c97-sp-2)", gap: "var(--c97-sp-1)" }}>
-        {tool.surfaces.map((surface) => (
-          <span
-            key={surface}
-            className="inline-flex border border-[var(--c97-rule)] bg-[var(--c97-field)] text-xs font-semibold text-[var(--c97-ink-2)]" style={{ paddingInline: "var(--c97-sp-1)", paddingBlock: "var(--c97-sp-0)" }}
-          >
-            {surface}
-          </span>
-        ))}
-      </div>
-
-      <div className="border-t border-[var(--c97-rule)]" style={{ paddingTop: "var(--c97-sp-2)", marginTop: "var(--c97-sp-2)" }}>
-        <p className="text-2xs font-semibold uppercase tracking-[0.18em] text-[var(--c97-ink-2)]" style={{ marginBottom: "var(--c97-sp-1)" }}>
-          Sources
-        </p>
-        <div className="flex flex-col" style={{ gap: "var(--c97-sp-1)" }}>
-          {tool.githubRepo ? (
+          <div className="flex shrink-0" style={{ gap: "var(--c97-sp-1)" }}>
             <a
-              href={tool.githubRepo}
+              href={tool.website}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex min-h-[44px] items-center text-sm font-semibold text-[var(--c97-ink)] transition-colors hover:text-[var(--c97-accent)]" style={{ gap: "var(--c97-sp-1)" }}
-            >
-              <BrandGithub aria-hidden="true" className="h-4 w-4" />
-              GitHub repo
-            </a>
-          ) : null}
-          {tool.sourceUrls.map((source) => (
-            <a
-              key={source.url}
-              href={source.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex min-h-[44px] items-center text-sm font-semibold text-[var(--c97-ink)] transition-colors hover:text-[var(--c97-accent)]" style={{ gap: "var(--c97-sp-1)" }}
+              aria-label={`Open ${tool.name}`}
+              className="inline-flex min-h-[44px] min-w-[44px] items-center justify-center border border-[var(--c97-rule)] bg-[var(--c97-field)] text-[var(--c97-ink-2)] transition-colors hover:text-[var(--c97-ink)]"
             >
               <ExternalLink aria-hidden="true" className="h-4 w-4" />
-              {source.label}
             </a>
+            <button
+              type="button"
+              onClick={onClose}
+              aria-label="Close"
+              className="inline-flex min-h-[44px] min-w-[44px] items-center justify-center border border-[var(--c97-rule)] bg-[var(--c97-surface)] text-[var(--c97-ink-2)] transition-colors hover:text-[var(--c97-ink)]"
+            >
+              <X aria-hidden="true" className="h-4 w-4" />
+            </button>
+          </div>
+        </div>
+
+        <p className="text-sm leading-6 text-[var(--c97-ink-2)]" style={{ marginTop: "var(--c97-sp-2)", marginBottom: "0" }}>
+          {tool.tagline}
+        </p>
+
+        <div className="grid" style={{ marginTop: "var(--c97-sp-2)", gap: "var(--c97-sp-1)" }}>
+          <DetailRow label="Pricing" value={tool.pricingSummary} />
+          <DetailRow label="Models" value={tool.modelSummary} />
+          <DetailRow label="Stars" value={formatGithubStars(tool.githubStars)} />
+          <DetailRow label="Release" value={tool.releaseSummary} />
+          <DetailRow label="Best for" value={tool.bestFor} />
+          <DetailRow label="Watch" value={tool.watchOut} />
+        </div>
+
+        <div className="flex flex-wrap" style={{ marginTop: "var(--c97-sp-2)", gap: "var(--c97-sp-1)" }}>
+          {tool.surfaces.map((surface) => (
+            <span
+              key={surface}
+              className="inline-flex border border-[var(--c97-rule)] bg-[var(--c97-field)] text-xs font-semibold text-[var(--c97-ink-2)]" style={{ paddingInline: "var(--c97-sp-1)", paddingBlock: "var(--c97-sp-0)" }}
+            >
+              {surface}
+            </span>
           ))}
         </div>
+
+        <div className="border-t border-[var(--c97-rule)]" style={{ paddingTop: "var(--c97-sp-2)", marginTop: "var(--c97-sp-2)" }}>
+          <p className="text-2xs font-semibold uppercase tracking-[0.18em] text-[var(--c97-ink-2)]" style={{ marginBottom: "var(--c97-sp-1)" }}>
+            Sources
+          </p>
+          <div className="flex flex-col" style={{ gap: "var(--c97-sp-1)" }}>
+            {tool.githubRepo ? (
+              <a
+                href={tool.githubRepo}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex min-h-[44px] items-center text-sm font-semibold text-[var(--c97-ink)] transition-colors hover:text-[var(--c97-accent)]" style={{ gap: "var(--c97-sp-1)" }}
+              >
+                <BrandGithub aria-hidden="true" className="h-4 w-4" />
+                GitHub repo
+              </a>
+            ) : null}
+            {tool.sourceUrls.map((source) => (
+              <a
+                key={source.url}
+                href={source.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex min-h-[44px] items-center text-sm font-semibold text-[var(--c97-ink)] transition-colors hover:text-[var(--c97-accent)]" style={{ gap: "var(--c97-sp-1)" }}
+              >
+                <ExternalLink aria-hidden="true" className="h-4 w-4" />
+                {source.label}
+              </a>
+            ))}
+          </div>
+        </div>
       </div>
-    </aside>
+    </div>
   );
 }
 

@@ -34,6 +34,19 @@ describe("MarchMadnessClient", () => {
     expect(screen.getAllByText("Duke").length).toBeGreaterThan(0);
   });
 
+  it("links straight into the workspace from the opening lines, on the view the reader is in", () => {
+    render(
+      <MarchMadnessClient
+        initialState={{ view: "analytics", region: "south", analytics: "s-curve" }}
+      />
+    );
+
+    expect(screen.getByRole("link", { name: "Open the analysis workspace" })).toHaveAttribute(
+      "href",
+      "/march-madness-2026?view=analytics&region=south&analytics=s-curve#analysis-workspace"
+    );
+  });
+
   it("updates route state when primary, region, and analytics tabs are selected", () => {
     render(<MarchMadnessClient initialState={DEFAULT_MARCH_MADNESS_STATE} />);
 

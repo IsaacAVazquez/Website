@@ -5,6 +5,9 @@ import { useSearchParams } from "next/navigation";
 import { CircleAlert, ExternalLink, Flag } from "lucide-react";
 import { DATE_ONLY_TIME_ZONE } from "@/lib/date-formatters";
 import { MetricCard, CrestAvatar, TeamResultPill, FixtureCard } from "@/components/football";
+// Imported by path. The football barrel ships whatever it re-exports to every
+// route that reads it, and the two league pages do not use this drawer.
+import { DetailDrawer } from "@/components/football/DetailDrawer";
 import { formatRank } from "@/components/football/fixtureFormat";
 import {
   Catalog97ProjectHero,
@@ -227,6 +230,18 @@ export function NflClient({ initialState, summary, initialTeamSnapshot }: NflCli
     { id: selectedTeamId, snapshot: initialTeamSnapshot },
     "Unable to load team snapshot."
   );
+  // The team drawer is its own state, because every view writes its first
+  // team into ?team= and the URL alone cannot say a team was opened. It starts
+  // open only for a link to a team other than the view's first, and after
+  // that only `handleTeamChange` opens it. It holds the team that was asked
+  // for and waits for the route to reach it, so it never shows the last one.
+  const [drawerTeamId, setDrawerTeamId] = useState<string | null>(() =>
+    searchParams.get("team") !== null &&
+    selectedTeamId !== getDefaultTeam(summary.teams, routeState.view, defaultState.team)
+      ? selectedTeamId
+      : null
+  );
+  const isDrawerOpen = drawerTeamId !== null && drawerTeamId === selectedTeamId;
   const desiredHref = buildHref(
     { view: routeState.view, team: selectedTeamId },
     defaultState,
@@ -250,10 +265,14 @@ export function NflClient({ initialState, summary, initialTeamSnapshot }: NflCli
   }
 
   function handleTeamChange(teamId: string) {
-    navigate({
-      view: routeState.view,
-      team: canonicalizeTeamId(teamId, aliasMap) ?? defaultState.team,
-    });
+    const team = canonicalizeTeamId(teamId, aliasMap) ?? defaultState.team;
+    // A schedule card can name a team the current view leaves out, so that
+    // team opens in the full league, where it can be selected.
+    const view = visibleTeams.some((visible) => visible.id === team)
+      ? routeState.view
+      : defaultState.view;
+    setDrawerTeamId(team);
+    navigate({ view, team });
   }
 
   const conferenceContext = useMemo(() => buildConferenceContext(teams, seeds), [teams, seeds]);
@@ -287,6 +306,9 @@ export function NflClient({ initialState, summary, initialTeamSnapshot }: NflCli
       note="These seeds come from each team's division rank and conference rank in the snapshot, so they read as the picture if the season ended today."
     />
   );
+  // The hero fills a phone's first screen and the signature runs long under
+  // it, so one link goes straight to the working table.
+  const heroAction = <a href="#nfl-standings" className="c97-btn-ghost">Jump to standings</a>;
 
   if (!selectedTeam) {
     return (
@@ -319,23 +341,12 @@ export function NflClient({ initialState, summary, initialTeamSnapshot }: NflCli
 
   return (
     <>
-      <Catalog97ProjectHero ink={lead} title="NFL Pulse" standfirst={standfirst} meta={heroMeta} readouts={heroReadouts}>
+      <Catalog97ProjectHero ink={lead} title="NFL Pulse" standfirst={standfirst} meta={heroMeta}
+        action={heroAction} readouts={heroReadouts}>
         {heroSignature}
       </Catalog97ProjectHero>
 
-      <section className="c97-band c97-sheet" data-c97-surface="bone" data-seam="torn">
-        <div className="c97-shell">
-          <h2 className="c97-poster-sm">Divisions</h2>
-          <p className="c97-prose" style={{ marginTop: "var(--c97-sp-1)", fontSize: "var(--c97-fs-small)" }}>
-            Each team striped in its own colours, division leaders marked.
-          </p>
-          <div style={{ marginTop: "var(--c97-sp-2)" }}>
-            <NflDivisionGrid divisions={divisionGroups} />
-          </div>
-        </div>
-      </section>
-
-      <section className="c97-band c97-sheet" data-c97-surface="paper" data-seam="torn">
+      <section id="nfl-standings" className="c97-band c97-sheet" data-c97-surface="bone" data-seam="torn">
         <div className="c97-shell">
           <div className="flex flex-wrap items-end justify-between" style={{ gap: "var(--c97-sp-1)" }}>
             <h2 className="c97-poster-sm">Standings</h2>
@@ -362,149 +373,84 @@ export function NflClient({ initialState, summary, initialTeamSnapshot }: NflCli
             })}
           </div>
 
-          <div className="grid xl:grid-cols-[minmax(0,1fr)_320px]" style={{ marginTop: "var(--c97-sp-3)", gap: "var(--c97-sp-3)" }}>
-            <div
-              role="region"
-              aria-label="NFL standings (scrollable)"
-              tabIndex={0}
-              style={{ overflowX: "auto" }}
-            >
-              <table className="c97-table" aria-label="NFL standings">
-                <thead>
-                  <tr>
-                    <th scope="col">Seed</th>
-                    <th scope="col">Team</th>
-                    <th scope="col">Record</th>
-                    <th scope="col" data-align="end">Pct</th>
-                    <th scope="col">Division</th>
-                    <th scope="col" data-align="end">PF</th>
-                    <th scope="col" data-align="end">PA</th>
-                    <th scope="col" data-align="end">Diff</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {visibleTeams.map((team) => {
-                    const isSelected = team.id === selectedTeam.id;
-                    const zone = getTeamZone(team, seeds);
-                    return (
-                      <tr
-                        key={team.id}
-                        style={isSelected ? { boxShadow: "inset 4px 0 0 0 var(--c97-ink)" } : undefined}
-                      >
-                        <td>
-                          <span className="inline-flex items-center" style={{ gap: "var(--c97-sp-0)" }}>
-                            <span
-                              aria-hidden="true"
-                              style={{
-                                width: 8,
-                                height: 8,
-                                display: "inline-block",
-                                background: zoneDotColor(zone),
-                              }}
-                            />
-                            {seeds.get(team.id) ?? "—"}
-                          </span>
-                        </td>
-                        <td>
-                          <button
-                            type="button"
-                            onClick={() => handleTeamChange(team.id)}
-                            aria-pressed={isSelected}
-                            aria-label={`Show ${team.name} details`}
-                            className="flex min-h-[44px] items-center text-left" style={{ gap: "var(--c97-sp-1)" }}
-                          >
-                            <CrestAvatar crest={logoByTeamId.get(team.id) ?? null} name={team.shortName} size="sm" />
-                            <span style={{ fontWeight: 600, color: "var(--c97-ink)" }}>{team.shortName}</span>
-                          </button>
-                        </td>
-                        <td>{formatRecord(team)}</td>
-                        <td data-align="end">{team.winPct.toFixed(3).replace(/^0/, "")}</td>
-                        <td>{team.division}</td>
-                        <td data-align="end">{team.pointsFor}</td>
-                        <td data-align="end">{team.pointsAgainst}</td>
-                        <td data-align="end">{formatDifferential(team.pointDifferential)}</td>
-                      </tr>
-                    );
-                  })}
-                </tbody>
-              </table>
-            </div>
+          <div
+            role="region"
+            aria-label="NFL standings (scrollable)"
+            tabIndex={0}
+            style={{ marginTop: "var(--c97-sp-3)", overflowX: "auto" }}
+          >
+            <table className="c97-table c97-nfl-table" aria-label="NFL standings">
+              <thead>
+                <tr>
+                  <th scope="col">Seed</th>
+                  <th scope="col">Team</th>
+                  <th scope="col">Record</th>
+                  <th scope="col" data-align="end" data-wide>Pct</th>
+                  <th scope="col" data-wide>Division</th>
+                  <th scope="col" data-align="end" data-wide>PF</th>
+                  <th scope="col" data-align="end" data-wide>PA</th>
+                  <th scope="col" data-align="end">Diff</th>
+                </tr>
+              </thead>
+              <tbody>
+                {visibleTeams.map((team) => {
+                  const isSelected = team.id === selectedTeam.id;
+                  const zone = getTeamZone(team, seeds);
+                  return (
+                    <tr
+                      key={team.id}
+                      style={isSelected ? { boxShadow: "inset 4px 0 0 0 var(--c97-ink)" } : undefined}
+                    >
+                      <td>
+                        <span className="inline-flex items-center" style={{ gap: "var(--c97-sp-0)" }}>
+                          <span
+                            aria-hidden="true"
+                            style={{
+                              width: 8,
+                              height: 8,
+                              display: "inline-block",
+                              background: zoneDotColor(zone),
+                            }}
+                          />
+                          {seeds.get(team.id) ?? "—"}
+                        </span>
+                      </td>
+                      <td>
+                        <button
+                          type="button"
+                          onClick={() => handleTeamChange(team.id)}
+                          aria-pressed={isSelected}
+                          aria-haspopup="dialog"
+                          aria-label={`Show ${team.name} details`}
+                          className="flex min-h-[44px] items-center text-left" style={{ gap: "var(--c97-sp-1)" }}
+                        >
+                          <CrestAvatar crest={logoByTeamId.get(team.id) ?? null} name={team.shortName} size="sm" />
+                          <span style={{ fontWeight: 600, color: "var(--c97-ink)" }}>{team.shortName}</span>
+                        </button>
+                      </td>
+                      <td>{formatRecord(team)}</td>
+                      <td data-align="end" data-wide>{team.winPct.toFixed(3).replace(/^0/, "")}</td>
+                      <td data-wide>{team.division}</td>
+                      <td data-align="end" data-wide>{team.pointsFor}</td>
+                      <td data-align="end" data-wide>{team.pointsAgainst}</td>
+                      <td data-align="end">{formatDifferential(team.pointDifferential)}</td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
 
-            <aside>
-              <section className="c97-panel" aria-live="polite" data-testid="nfl-selected-team">
-                <div className="flex items-start" style={{ gap: "var(--c97-sp-1)" }}>
-                  <CrestAvatar crest={logoByTeamId.get(selectedTeam.id) ?? null} name={selectedTeam.name} size="lg" />
-                  <div className="min-w-0 flex-1">
-                    <h2 className="c97-serif c97-h3">{selectedTeam.name}</h2>
-                    <div className="c97-meta" style={{ marginTop: "var(--c97-sp-1)", textTransform: "none" }}>
-                      <span className={zoneChipClass(selectedZone)}>{getZoneLabel(selectedZone)}</span>
-                      <span className="c97-chip">{formatRecord(selectedTeam)}</span>
-                      <span className="c97-chip">{selectedTeam.division}</span>
-                    </div>
-                  </div>
-                  <div className="c97-stat">
-                    <p className="c97-stat-label">Seed</p>
-                    <p className="c97-stat-value">{selectedSeed ?? "—"}</p>
-                  </div>
-                </div>
-
-                <dl className="grid grid-cols-2 border-t" style={{ paddingTop: "var(--c97-sp-2)", marginTop: "var(--c97-sp-2)", columnGap: "var(--c97-sp-2)", rowGap: "var(--c97-sp-1)", borderColor: "var(--c97-rule)" }}>
-                  {(
-                    [
-                      ["Win %", selectedTeam.winPct.toFixed(3).replace(/^0/, "")],
-                      ["Record", formatRecord(selectedTeam)],
-                      ["Offense", formatRank(offenseRankByTeam.get(selectedTeam.id))],
-                      ["Defense", formatRank(defenseRankByTeam.get(selectedTeam.id))],
-                      [
-                        "PF / game",
-                        formatPerGame(
-                          selectedTeam.pointsFor /
-                            Math.max(1, selectedTeam.wins + selectedTeam.losses + selectedTeam.ties)
-                        ),
-                      ],
-                      [
-                        "PA / game",
-                        formatPerGame(
-                          selectedTeam.pointsAgainst /
-                            Math.max(1, selectedTeam.wins + selectedTeam.losses + selectedTeam.ties)
-                        ),
-                      ],
-                    ] as const
-                  ).map(([label, value]) => (
-                    <div key={label} className="flex items-baseline justify-between" style={{ gap: "var(--c97-sp-1)" }}>
-                      <dt className="c97-kicker">{label}</dt>
-                      <dd className="c97-mono" style={{ margin: 0, fontWeight: 600, color: "var(--c97-ink)" }}>{value}</dd>
-                    </div>
-                  ))}
-                </dl>
-
-                {formSequence.length > 0 && (
-                  <div className="border-t" style={{ paddingTop: "var(--c97-sp-2)", marginTop: "var(--c97-sp-2)", borderColor: "var(--c97-rule)" }}>
-                    <p className="c97-kicker">Form (last 5)</p>
-                    <div className="flex" style={{ marginTop: "var(--c97-sp-1)", gap: "var(--c97-sp-0)" }}>
-                      {formatTeamFormPills(formSequence.slice(-5)).map((result, i) => (
-                        <TeamResultPill key={i} result={result} />
-                      ))}
-                    </div>
-                  </div>
-                )}
-
-                <p className="c97-prose line-clamp-2" style={{ marginTop: "var(--c97-sp-2)", fontSize: "var(--c97-fs-small)" }}>
-                  {teamStoryline}
-                </p>
-
-                {!teamSnapshot && (isTeamSnapshotLoading || teamSnapshotError) ? (
-                  <p
-                    className="c97-prose border-t"
-                    style={{ paddingTop: "var(--c97-sp-2)", marginTop: "var(--c97-sp-2)", borderColor: "var(--c97-rule)", fontSize: "var(--c97-fs-small)" }}
-                    role={teamSnapshotError ? "alert" : "status"}
-                    aria-live="polite"
-                  >
-                    {isTeamSnapshotLoading ? "Loading team snapshot…" : teamSnapshotError}
-                  </p>
-                ) : null}
-              </section>
-            </aside>
+      <section className="c97-band c97-sheet" data-c97-surface="paper" data-seam="torn">
+        <div className="c97-shell">
+          <h2 className="c97-poster-sm">Divisions</h2>
+          <p className="c97-prose" style={{ marginTop: "var(--c97-sp-1)", fontSize: "var(--c97-fs-small)" }}>
+            Each team striped in its own colours, division leaders marked.
+          </p>
+          <div style={{ marginTop: "var(--c97-sp-2)" }}>
+            <NflDivisionGrid divisions={divisionGroups} />
           </div>
         </div>
       </section>
@@ -707,6 +653,80 @@ export function NflClient({ initialState, summary, initialTeamSnapshot }: NflCli
           </div>
         </div>
       </section>
+
+      <DetailDrawer
+        open={isDrawerOpen}
+        title={selectedTeam.name}
+        lead={<CrestAvatar crest={logoByTeamId.get(selectedTeam.id) ?? null} name={selectedTeam.name} size="lg" />}
+        onClose={() => setDrawerTeamId(null)}
+        resetKey={selectedTeam.id}
+        testId="nfl-selected-team"
+      >
+        <div className="flex flex-wrap" style={{ marginTop: "var(--c97-sp-2)", gap: "var(--c97-sp-1)" }}>
+          <span className={zoneChipClass(selectedZone)}>{getZoneLabel(selectedZone)}</span>
+          <span className="c97-chip">Seed {selectedSeed ?? "—"}</span>
+          <span className="c97-chip">{formatRecord(selectedTeam)}</span>
+          <span className="c97-chip">{selectedTeam.division}</span>
+        </div>
+
+        <dl className="grid grid-cols-2 border-t" style={{ paddingTop: "var(--c97-sp-2)", marginTop: "var(--c97-sp-2)", columnGap: "var(--c97-sp-2)", rowGap: "var(--c97-sp-1)", borderColor: "var(--c97-rule)" }}>
+          {(
+            [
+              ["Win %", selectedTeam.winPct.toFixed(3).replace(/^0/, "")],
+              ["Diff", formatDifferential(selectedTeam.pointDifferential)],
+              ["Points for", `${selectedTeam.pointsFor}`],
+              ["Points against", `${selectedTeam.pointsAgainst}`],
+              ["Offense", formatRank(offenseRankByTeam.get(selectedTeam.id))],
+              ["Defense", formatRank(defenseRankByTeam.get(selectedTeam.id))],
+              [
+                "PF / game",
+                formatPerGame(
+                  selectedTeam.pointsFor /
+                    Math.max(1, selectedTeam.wins + selectedTeam.losses + selectedTeam.ties)
+                ),
+              ],
+              [
+                "PA / game",
+                formatPerGame(
+                  selectedTeam.pointsAgainst /
+                    Math.max(1, selectedTeam.wins + selectedTeam.losses + selectedTeam.ties)
+                ),
+              ],
+            ] as const
+          ).map(([label, value]) => (
+            <div key={label} className="flex items-baseline justify-between" style={{ gap: "var(--c97-sp-1)" }}>
+              <dt className="c97-kicker">{label}</dt>
+              <dd className="c97-mono" style={{ margin: 0, fontWeight: 600, color: "var(--c97-ink)" }}>{value}</dd>
+            </div>
+          ))}
+        </dl>
+
+        {formSequence.length > 0 && (
+          <div className="border-t" style={{ paddingTop: "var(--c97-sp-2)", marginTop: "var(--c97-sp-2)", borderColor: "var(--c97-rule)" }}>
+            <p className="c97-kicker">Form (last 5)</p>
+            <div className="flex" style={{ marginTop: "var(--c97-sp-1)", gap: "var(--c97-sp-0)" }}>
+              {formatTeamFormPills(formSequence.slice(-5)).map((result, i) => (
+                <TeamResultPill key={i} result={result} />
+              ))}
+            </div>
+          </div>
+        )}
+
+        <p className="c97-prose" style={{ marginTop: "var(--c97-sp-2)", fontSize: "var(--c97-fs-small)" }}>
+          {teamStoryline}
+        </p>
+
+        {!teamSnapshot && (isTeamSnapshotLoading || teamSnapshotError) ? (
+          <p
+            className="c97-prose border-t"
+            style={{ paddingTop: "var(--c97-sp-2)", marginTop: "var(--c97-sp-2)", borderColor: "var(--c97-rule)", fontSize: "var(--c97-fs-small)" }}
+            role={teamSnapshotError ? "alert" : "status"}
+            aria-live="polite"
+          >
+            {isTeamSnapshotLoading ? "Loading team snapshot…" : teamSnapshotError}
+          </p>
+        ) : null}
+      </DetailDrawer>
     </>
   );
 }

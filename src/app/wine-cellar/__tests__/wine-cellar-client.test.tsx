@@ -12,6 +12,10 @@ describe("WineCellarClient", () => {
 
     expect(screen.getByRole("heading", { level: 1, name: "Wine Cellar" })).toBeVisible();
     expect(screen.getByText("Log your first bottle")).toBeVisible();
+    // An empty cellar has nothing to search or sort, so the form leads and the filters wait.
+    expect(screen.queryByRole("searchbox", { name: "Search wines" })).not.toBeInTheDocument();
+    expect(screen.queryByLabelText("Filter by wine type")).not.toBeInTheDocument();
+    expect(screen.getByLabelText("Wine cellar side panel")).toHaveClass("order-first");
 
     fireEvent.change(screen.getByLabelText("Wine name"), {
       target: { value: "Barolo" },
@@ -39,6 +43,9 @@ describe("WineCellarClient", () => {
 
     expect(screen.getAllByText("Barolo")[0]).toBeVisible();
     expect(screen.getAllByText("Piedmont")[0]).toBeVisible();
+    // The first bottle brings the filters in and puts the log back ahead of the form.
+    expect(screen.getByRole("searchbox", { name: "Search wines" })).toBeVisible();
+    expect(screen.getByLabelText("Wine cellar side panel")).not.toHaveClass("order-first");
     expect(window.localStorage.getItem(WINE_CELLAR_STORAGE_KEY)).toContain("Barolo");
   });
 
@@ -79,6 +86,10 @@ describe("WineCellarClient", () => {
 
     render(<WineCellarClient />);
 
+    // A saved return visit opens on the log with its filters.
+    expect(screen.getByLabelText("Filter by wine type")).toBeVisible();
+    expect(screen.getByLabelText("Wine cellar side panel")).not.toHaveClass("order-first");
+
     fireEvent.change(screen.getByRole("searchbox", { name: "Search wines" }), {
       target: { value: "burgundy" },
     });
@@ -90,6 +101,7 @@ describe("WineCellarClient", () => {
     expect(within(tastingLog).getByText("Barolo")).toBeVisible();
 
     fireEvent.click(within(tastingLog).getByRole("button", { name: "Edit Barolo" }));
+    expect(screen.getByLabelText("Wine name")).toHaveFocus();
     fireEvent.change(screen.getByLabelText("Wine name"), {
       target: { value: "Updated Barolo" },
     });
@@ -105,11 +117,16 @@ describe("WineCellarClient", () => {
     render(<WineCellarClient />);
 
     const name = screen.getByLabelText("Wine name");
+    fireEvent.click(screen.getByRole("button", { name: /add tasting/i }));
+    expect(name).toHaveFocus();
+    expect(screen.getByRole("alert")).toHaveTextContent("Give the bottle a name to log it.");
+
     fireEvent.change(name, { target: { value: "   " } });
     fireEvent.click(screen.getByRole("button", { name: /add tasting/i }));
 
     expect(screen.getByRole("alert")).toHaveTextContent("Give the bottle a name to log it.");
     expect(name).toHaveAttribute("aria-invalid", "true");
+    expect(name).toHaveFocus();
 
     fireEvent.change(name, { target: { value: "Chinon" } });
     expect(screen.queryByRole("alert")).not.toBeInTheDocument();

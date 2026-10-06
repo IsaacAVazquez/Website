@@ -1,4 +1,5 @@
 import { fireEvent, render, screen, within } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
 import { getMlbSummarySnapshot, getMlbTeamSnapshot } from "@/lib/mlbSnapshot";
 import type { MlbGame } from "@/types/mlb";
 import { MlbClient } from "../mlb-client";
@@ -50,6 +51,8 @@ describe("MlbClient", () => {
 
     expect(screen.getByRole("heading", { level: 1, name: /mlb pulse/i })).toBeVisible();
     expect(screen.getByRole("region", { name: /mlb standings/i })).toBeVisible();
+    // A plain visit selects the first club without opening its drawer.
+    expect(screen.queryByRole("dialog")).not.toBeInTheDocument();
 
     fireEvent.click(screen.getByRole("button", { name: /american league/i }));
     expect(mockPush).toHaveBeenLastCalledWith(
@@ -133,5 +136,44 @@ describe("MlbClient", () => {
 
     expect(screen.getByText("Division Series")).toBeVisible();
     expect(screen.getByText("League fixture")).toBeVisible();
+  });
+
+  it("shows one division board at a time and opens the picked team in a drawer", async () => {
+    const user = userEvent.setup();
+    const summary = await getMlbSummarySnapshot();
+    const team = summary.standings.find((row) => row.division === "NL West" && row.divisionRank === 2)!;
+    global.fetch = jest.fn().mockResolvedValue({
+      ok: true,
+      json: async () => getMlbTeamSnapshot(team.id),
+    }) as unknown as typeof fetch;
+    // The router is a mock, so a push has to be fed back in as the next
+    // search params for the page to see the URL it asked for.
+    mockPush.mockImplementation((href: string) => {
+      currentSearchParams = new URLSearchParams(href.split("?")[1] ?? "");
+    });
+    const ui = () => (
+      <MlbClient initialState={DEFAULT_MLB_STATE} summary={summary} initialTeamSnapshot={null} />
+    );
+    const view = render(ui());
+
+    // The board starts on the selected club's division and prints no other.
+    expect(screen.getAllByRole("table")).toHaveLength(1);
+    expect(screen.queryByRole("button", { name: `Show ${team.name} details` })).not.toBeInTheDocument();
+
+    const divisions = screen.getByRole("group", { name: "Division" });
+    await user.click(within(divisions).getByRole("button", { name: "NL West" }));
+    expect(screen.getByRole("table", { name: "NL West standings" })).toBeInTheDocument();
+    expect(screen.getAllByRole("table")).toHaveLength(1);
+
+    const opener = screen.getByRole("button", { name: `Show ${team.name} details` });
+    await user.click(opener);
+    view.rerender(ui());
+
+    const drawer = await screen.findByRole("dialog", { name: `${team.name} detail` });
+    expect(within(drawer).getByText("Runs allowed")).toBeInTheDocument();
+
+    await user.keyboard("{Escape}");
+    expect(screen.queryByRole("dialog")).not.toBeInTheDocument();
+    expect(opener).toHaveFocus();
   });
 });

@@ -8,7 +8,7 @@ import {
   type InvestmentsSearchState,
   normalizeInvestmentsState,
 } from "./investments-state";
-import type { ResearchTab } from "./investments-state";
+import type { InvestmentsTask, ResearchTab } from "./investments-state";
 import type { InvestmentsPriceHealth } from "@/types/investment";
 import styles from "./investments.module.css";
 
@@ -36,7 +36,8 @@ export function InvestmentsClient({
 
   const hasManagedParams =
     searchParams.get("symbol") !== null ||
-    searchParams.get("section") !== null;
+    searchParams.get("section") !== null ||
+    searchParams.get("task") !== null;
   const routeState = useMemo(
     () => (hasManagedParams ? normalizeInvestmentsState(searchParams) : initialState),
     [hasManagedParams, initialState, searchParams]
@@ -88,12 +89,18 @@ export function InvestmentsClient({
     updateRouteState({ section });
   }
 
+  function handleTaskChange(task: InvestmentsTask) {
+    updateRouteState({ task });
+  }
+
   return (
     <div
       className={styles.terminalScope}
       data-testid="investments-shell"
     >
       <InvestmentsDashboard
+        task={routeState.task}
+        onTaskChange={handleTaskChange}
         researchSymbol={routeState.symbol}
         researchTab={routeState.section}
         onResearchSymbolChange={handleSymbolChange}

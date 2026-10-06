@@ -835,7 +835,22 @@ export function MarchMadnessClient({
         ink={lead}
         title="March Madness Bracket Analysis"
         standfirst="I built this bracket on the consensus ratings and then moved picks for the two things seed lines miss, the travel penalty a team pays when it plays across time zones and the seeds the committee got wrong."
-        meta={`2026 NCAA Tournament · ${MARCH_MADNESS_UPDATED_LABEL}`}
+        meta={
+          <>
+            {`2026 NCAA Tournament · ${MARCH_MADNESS_UPDATED_LABEL}`}
+            {/* A returning reader's way past the introduction. It sits in the
+                as-of line because that is the last slot above the readouts,
+                which is what keeps it in the first phone screen. */}
+            <span className="block">
+              <Link
+                href={buildMarchMadnessHref({ view, region, analytics, hash: "analysis-workspace" })}
+                className="c97-btn-ghost"
+              >
+                Open the analysis workspace
+              </Link>
+            </span>
+          </>
+        }
         readouts={[
           {
             label: "Champion pick",

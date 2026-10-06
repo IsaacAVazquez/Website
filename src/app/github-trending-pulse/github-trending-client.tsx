@@ -203,27 +203,15 @@ export function GitHubTrendingClient({ initialState, snapshot }: GitHubTrendingC
           },
         ]}
       >
-        <StarLogBoard repos={filteredRepos} windowDays={snapshot.windowDays} />
-      </Catalog97ProjectHero>
-
-      <section
-        className="c97-band c97-sheet"
-        data-c97-surface="paper"
-        data-seam="torn"
-        aria-label="GitHub trending filters"
-      >
-        <div className="c97-shell" style={{ display: "grid", gap: "var(--c97-sp-5)" }}>
-          {/* The degraded note sits inside this band rather than on a paper
-              band of its own, which tore a sheet over the same surface. */}
-          {snapshot.sourceStatus?.status === "degraded" ? (
-            <p className="c97-meta" style={{ color: "var(--c97-warning)" }} role="status">
-              {snapshot.sourceStatus.reusedSegments.length > 0
-                ? `${snapshot.sourceStatus.reusedSegments.length} segments are using earlier data.`
-                : `${snapshot.sourceStatus.failedSegments.length} segments are unavailable right now.`}
-            </p>
-          ) : null}
-          <h2 className="c97-poster-sm">The board</h2>
-          <div className="flex flex-wrap items-center justify-between" style={{ gap: "var(--c97-sp-2)" }}>
+        {/* The language and topic filters sit above the board they redraw, so a
+            choice shows its result in the same view. Sort only reorders the
+            table, so it stays with the table below. */}
+        <div className="flex flex-col" style={{ gap: "var(--c97-sp-4)" }}>
+          <section
+            aria-label="GitHub trending filters"
+            className="flex flex-col"
+            style={{ gap: "var(--c97-sp-3)" }}
+          >
             <div role="group" aria-label="Trend segment type" className="c97-segmented">
               {GITHUB_TRENDING_KIND_OPTIONS.map((kind) => {
                 const isActive = resolvedState.kind === kind;
@@ -244,6 +232,44 @@ export function GitHubTrendingClient({ initialState, snapshot }: GitHubTrendingC
               })}
             </div>
 
+            <div role="group" aria-label="Filter by segment" className="c97-segmented">
+              <button
+                type="button"
+                aria-pressed={resolvedState.segment === "all"}
+                onClick={() => setSegment("all")}
+                className="min-h-[44px]"
+              >
+                All {GITHUB_TRENDING_KIND_LABELS[resolvedState.kind].toLowerCase()}s
+              </button>
+              {segments.map((segment) => (
+                <button
+                  key={segment.key}
+                  type="button"
+                  aria-pressed={resolvedState.segment === segment.key}
+                  onClick={() => setSegment(segment.key)}
+                  className="min-h-[44px]"
+                >
+                  {segment.label}
+                </button>
+              ))}
+            </div>
+          </section>
+
+          <StarLogBoard repos={filteredRepos} windowDays={snapshot.windowDays} />
+        </div>
+      </Catalog97ProjectHero>
+
+      <section className="c97-band c97-sheet" data-c97-surface="paper" data-seam="torn">
+        <div className="c97-shell flex flex-col" style={{ gap: "var(--c97-sp-3)" }}>
+          {snapshot.sourceStatus?.status === "degraded" ? (
+            <p className="c97-meta" style={{ color: "var(--c97-warning)" }} role="status">
+              {snapshot.sourceStatus.reusedSegments.length > 0
+                ? `${snapshot.sourceStatus.reusedSegments.length} segments are using earlier data.`
+                : `${snapshot.sourceStatus.failedSegments.length} segments are unavailable right now.`}
+            </p>
+          ) : null}
+          <div className="flex flex-wrap items-center justify-between" style={{ gap: "var(--c97-sp-2)" }}>
+            <h2 className="c97-poster-sm">The board</h2>
             <div className="flex flex-wrap items-center" style={{ gap: "var(--c97-sp-1)" }}>
               <span className="c97-kicker" style={{ marginBottom: 0 }}>
                 <ArrowDownUp aria-hidden="true" size={14} style={{ display: "inline", marginRight: "4px" }} />
@@ -265,32 +291,6 @@ export function GitHubTrendingClient({ initialState, snapshot }: GitHubTrendingC
             </div>
           </div>
 
-          <div role="group" aria-label="Filter by segment" className="c97-segmented">
-            <button
-              type="button"
-              aria-pressed={resolvedState.segment === "all"}
-              onClick={() => setSegment("all")}
-              className="min-h-[44px]"
-            >
-              All {GITHUB_TRENDING_KIND_LABELS[resolvedState.kind].toLowerCase()}s
-            </button>
-            {segments.map((segment) => (
-              <button
-                key={segment.key}
-                type="button"
-                aria-pressed={resolvedState.segment === segment.key}
-                onClick={() => setSegment(segment.key)}
-                className="min-h-[44px]"
-              >
-                {segment.label}
-              </button>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="c97-band c97-sheet" data-c97-surface="bone" data-seam="deckle">
-        <div className="c97-shell">
           <div className="grid xl:grid-cols-[minmax(0,1fr)_340px]" style={{ gap: "var(--c97-sp-3)" }}>
             {filteredRepos.length === 0 ? (
               <EmptyPanel
@@ -336,7 +336,9 @@ function RepositoryTable({
 }: RepositoryTableProps) {
   return (
     <div className="overflow-x-auto" role="region" aria-label="Repository table (scrolls sideways)" tabIndex={0}>
-      <table className="c97-table" style={{ minWidth: "820px" }}>
+      {/* Below lg the table prints the repository and its seven-day gain, and
+          the other columns move into the row's expansion. */}
+      <table className="c97-table lg:min-w-[820px]">
         <caption className="sr-only">
           The most starred active repositories I track, with each one&apos;s star gain over
           the past week, total stars, primary language, and last pushed date.
@@ -347,12 +349,12 @@ function RepositoryTable({
             <th scope="col" data-align="end">
               +7d
             </th>
-            <th scope="col" data-align="end">
+            <th scope="col" data-align="end" className="hidden lg:table-cell">
               Stars
             </th>
-            <th scope="col">Language</th>
-            <th scope="col">Pushed</th>
-            <th scope="col" data-align="end">
+            <th scope="col" className="hidden lg:table-cell">Language</th>
+            <th scope="col" className="hidden lg:table-cell">Pushed</th>
+            <th scope="col" data-align="end" className="hidden lg:table-cell">
               Link
             </th>
           </tr>
@@ -418,13 +420,13 @@ function RepoRow({ repo, rank, isExpanded, matchedSegments, windowDays, onToggle
                     onToggle();
                   }}
                   className="c97-serif inline-flex min-h-[44px] items-center text-left"
-                  style={{ fontWeight: 600, color: "var(--c97-ink)" }}
+                  style={{ fontWeight: 600, color: "var(--c97-ink)", overflowWrap: "anywhere" }}
                 >
                   {repo.fullName}
                 </button>
               </p>
               <p
-                className="line-clamp-2"
+                className="line-clamp-1 lg:line-clamp-2"
                 style={{ color: "var(--c97-ink-2)", maxWidth: "44rem", marginBottom: "0" }}
               >
                 {repo.description ?? "No repository description provided."}
@@ -438,15 +440,15 @@ function RepoRow({ repo, rank, isExpanded, matchedSegments, windowDays, onToggle
             {statusLabel(repo, windowDays)}
           </span>
         </td>
-        <td data-align="end">
+        <td data-align="end" className="hidden lg:table-cell">
           <span className="c97-mono inline-flex items-center justify-end" style={{ fontWeight: 600, gap: "var(--c97-sp-0)" }}>
             <Star aria-hidden="true" size={14} />
             {formatGitHubCompactNumber(repo.stars)}
           </span>
         </td>
-        <td style={{ color: "var(--c97-ink-2)" }}>{repo.primaryLanguage ?? "Mixed"}</td>
-        <td style={{ color: "var(--c97-ink-2)" }}>{formatShortDate(repo.pushedAt)}</td>
-        <td data-align="end">
+        <td style={{ color: "var(--c97-ink-2)" }} className="hidden lg:table-cell">{repo.primaryLanguage ?? "Mixed"}</td>
+        <td style={{ color: "var(--c97-ink-2)" }} className="hidden lg:table-cell">{formatShortDate(repo.pushedAt)}</td>
+        <td data-align="end" className="hidden lg:table-cell">
           <a
             href={repo.url}
             target="_blank"
@@ -481,6 +483,23 @@ function RepoRow({ repo, rank, isExpanded, matchedSegments, windowDays, onToggle
                 </div>
               </div>
               <dl className="grid grid-cols-2" style={{ rowGap: "var(--c97-sp-1)", columnGap: "var(--c97-sp-2)" }}>
+                {/* The three facts and the link below print here only under
+                    lg, where their table columns are hidden. */}
+                <div className="lg:hidden">
+                  <dt className="c97-stat-label">Stars</dt>
+                  <dd className="c97-mono inline-flex items-center" style={{ color: "var(--c97-ink)", gap: "var(--c97-sp-0)" }}>
+                    <Star aria-hidden="true" size={14} />
+                    {formatGitHubCompactNumber(repo.stars)}
+                  </dd>
+                </div>
+                <div className="lg:hidden">
+                  <dt className="c97-stat-label">Language</dt>
+                  <dd style={{ color: "var(--c97-ink)" }}>{repo.primaryLanguage ?? "Mixed"}</dd>
+                </div>
+                <div className="lg:hidden">
+                  <dt className="c97-stat-label">Pushed</dt>
+                  <dd style={{ color: "var(--c97-ink)" }}>{formatShortDate(repo.pushedAt)}</dd>
+                </div>
                 <div>
                   <dt className="c97-stat-label">Forks</dt>
                   <dd className="c97-mono inline-flex items-center" style={{ color: "var(--c97-ink)", gap: "var(--c97-sp-0)" }}>
@@ -504,6 +523,21 @@ function RepoRow({ repo, rank, isExpanded, matchedSegments, windowDays, onToggle
                   <dt className="c97-stat-label">Score</dt>
                   <dd className="c97-mono" style={{ color: "var(--c97-ink)" }}>
                     {repo.trendScore.toFixed(1)}
+                  </dd>
+                </div>
+                <div className="col-span-2 lg:hidden">
+                  <dt className="c97-stat-label">Link</dt>
+                  <dd>
+                    <a
+                      href={repo.url}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="c97-link inline-flex min-h-[44px] items-center"
+                      style={{ gap: "var(--c97-sp-1)" }}
+                    >
+                      Repo
+                      <ExternalLink aria-hidden="true" size={14} />
+                    </a>
                   </dd>
                 </div>
               </dl>

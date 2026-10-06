@@ -335,6 +335,48 @@ describe("Formula1Client", () => {
     });
   });
 
+  it("links from the hero into each season view, keeping the selected race", async () => {
+    currentSearchParams = new URLSearchParams("meeting=1281");
+
+    render(
+      <Formula1Client
+        initialState={DEFAULT_FORMULA1_STATE}
+        summary={summaryFixture}
+        initialMeeting={defaultMeetingDetail}
+      />
+    );
+    // The deep-linked race loads its detail, so that settles first.
+    await screen.findByText(/1 · George RUSSELL/);
+
+    expect(screen.getByRole("link", { name: "Overview" })).toHaveAttribute("aria-current", "true");
+    expect(screen.getByRole("link", { name: "Drivers" })).toHaveAttribute(
+      "href",
+      "/formula-1?meeting=1281&view=drivers#season"
+    );
+    expect(screen.getByRole("link", { name: "Calendar" })).not.toHaveAttribute("aria-current");
+  });
+
+  it("opens a race from the hero lookup in the calendar, on its detail", async () => {
+    const user = userEvent.setup();
+
+    render(
+      <Formula1Client
+        initialState={DEFAULT_FORMULA1_STATE}
+        summary={summaryFixture}
+        initialMeeting={defaultMeetingDetail}
+      />
+    );
+
+    await user.selectOptions(screen.getByRole("combobox", { name: "Race weekend" }), "1281");
+    // Choosing alone goes nowhere, so a keyboard can walk the list.
+    expect(mockPush).not.toHaveBeenCalled();
+    await user.click(screen.getByRole("button", { name: "Open race" }));
+
+    expect(mockPush).toHaveBeenCalledWith(
+      "/formula-1?view=calendar&meeting=1281#race-weekend-detail"
+    );
+  });
+
   it("fetches a deep-linked meeting's detail on demand and renders its classification", async () => {
     currentSearchParams = new URLSearchParams("meeting=1281");
 

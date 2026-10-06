@@ -264,6 +264,20 @@ describe("FantasyFootballClient", () => {
     expect(within(dialog).queryByText("Market ADP")).not.toBeInTheDocument();
   });
 
+  it("restores focus to the player row after opening its content with a pointer", () => {
+    mockSnapshot({ players: [makePlayer({ id: "rb-1", name: "Christian McCaffrey" })] });
+    renderClient();
+    const opener = screen.getByRole("button", { name: "Open Christian McCaffrey detail" });
+    const row = opener.closest("li") as HTMLElement;
+
+    fireEvent.click(within(row).getByText("Christian McCaffrey"));
+    expect(screen.getByRole("dialog", { name: "Christian McCaffrey detail" })).toHaveFocus();
+    fireEvent.keyDown(window, { key: "Escape" });
+
+    expect(screen.queryByRole("dialog", { name: "Christian McCaffrey detail" })).not.toBeInTheDocument();
+    expect(opener).toHaveFocus();
+  });
+
   it("renders ADP columns and a gated value signal when the snapshot carries fresh ADP", () => {
     currentSearchParams = new URLSearchParams("position=overall&scoring=ppr");
     mockSnapshot({

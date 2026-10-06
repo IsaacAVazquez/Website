@@ -46,7 +46,23 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
           <p className="c97-lead" style={{ marginTop: "var(--c97-sp-3)", maxWidth: "var(--c97-measure-wide)" }}>
             This is a lightweight search layer for core case studies, writing, and tools. It is useful for navigation, not a full site index.
           </p>
-          <p className="c97-kicker" id="search-topics-label" style={{ marginTop: "var(--c97-sp-3)" }}>
+        </div>
+      </section>
+
+      <section className="c97-band c97-band-continues" data-c97-surface="paper">
+        <div className="c97-shell">
+          <SearchInterfaceClient
+            initialQuery={q}
+            initialType={type}
+            initialCategory={category}
+          />
+        </div>
+      </section>
+
+      {/* The suggested topics follow the field. Ahead of it they held the input at y855 on a phone. */}
+      <section className="c97-band c97-band-continues" data-c97-surface="paper">
+        <div className="c97-shell">
+          <p className="c97-kicker" id="search-topics-label" >
             Try a topic
           </p>
           <ul
@@ -74,16 +90,6 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
               </li>
             ))}
           </ul>
-        </div>
-      </section>
-
-      <section className="c97-band c97-band-continues" data-c97-surface="paper">
-        <div className="c97-shell">
-          <SearchInterfaceClient
-            initialQuery={q}
-            initialType={type}
-            initialCategory={category}
-          />
         </div>
       </section>
     </>

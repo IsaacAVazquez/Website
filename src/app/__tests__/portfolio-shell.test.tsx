@@ -1,5 +1,5 @@
-import { render, screen } from "@testing-library/react";
-import { getPortfolioProjects } from "@/constants/caseStudies";
+import { fireEvent, render, screen, within } from "@testing-library/react";
+import { getPortfolioProjects, getProjectCardSummary } from "@/constants/caseStudies";
 import Home from "../page";
 import PortfolioPage from "../portfolio/page";
 
@@ -112,6 +112,20 @@ describe("Portfolio shell page semantics", () => {
     }
   });
 
+  // The 2026-10-05 audit found the secondary rows carried a title and a year only.
+  it("gives every secondary project its summary and role in the default scan", () => {
+    render(<PortfolioPage />);
+    const projects = getPortfolioProjects();
+    const secondary = projects[projects.length - 1];
+    const row = screen
+      .getByRole("heading", { level: 3, name: secondary.title })
+      .closest(".c97-row") as HTMLElement;
+
+    expect(within(row).getByText(getProjectCardSummary(secondary))).toBeInTheDocument();
+    expect(within(row).getByText(secondary.role)).toBeInTheDocument();
+    expect(screen.getAllByRole("heading", { level: 3 }).length).toBeGreaterThan(20);
+  });
+
   it("gives the portfolio index exactly one main landmark and one h1", () => {
     const { container } = render(<PortfolioPage />);
 
@@ -123,5 +137,16 @@ describe("Portfolio shell page semantics", () => {
         name: /everything i.{0,3}ve shipped, and the decisions behind it/i,
       })
     ).toBeVisible();
+  });
+
+  it("filters from the compact category picker without showing an empty index section", () => {
+    render(<PortfolioPage />);
+    const picker = screen.getByRole("combobox", { name: "Project category" });
+
+    fireEvent.change(picker, { target: { value: "civic" } });
+
+    expect(screen.getByRole("heading", { level: 2, name: /polling/i })).toBeInTheDocument();
+    expect(screen.queryByRole("heading", { name: "The rest of the index" })).not.toBeInTheDocument();
+    expect(screen.queryByRole("heading", { name: "Investment Analytics Platform" })).not.toBeInTheDocument();
   });
 });

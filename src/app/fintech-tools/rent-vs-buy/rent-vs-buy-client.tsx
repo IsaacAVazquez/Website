@@ -2,7 +2,7 @@
 
 import { useId, useMemo, useState } from "react";
 import { Building2, Home, Landmark, RotateCcw } from "lucide-react";
-import { Catalog97ProjectHero } from "@/components/catalog97/Catalog97ProjectHero";
+import { Catalog97HeroReadouts, Catalog97ProjectHero } from "@/components/catalog97/Catalog97ProjectHero";
 import { PROJECT_PRESS } from "@/constants/projectPress";
 import { useRentVsBuy } from "@/hooks/useRentVsBuy";
 import { useLocalStoragePersistenceStatus } from "@/hooks/useLocalStorageString";
@@ -296,28 +296,64 @@ export function RentVsBuyClient() {
         ink={lead}
         title="Rent vs. Buy Calculator"
         standfirst={standfirst}
-        readouts={[
-          {
-            label: "Break-even",
-            value: formatBreakEvenShort(result),
-            detail:
-              result.breakEvenYears === null
-                ? undefined
-                : `Staying ${plural(result.horizonYears, "year")}`,
-          },
-          {
-            label: "Net worth gap",
-            value: formatSignedCurrency(result.netWorthDeltaAtHorizon),
-            detail: `Buyer minus renter at year ${result.horizonYears}`,
-          },
-          {
-            label: "Cash to buy",
-            value: formatCurrency(result.upfrontCash),
-            detail: "Down payment + closing costs",
-          },
-        ]}
       >
-        <div data-c97-surface="paper" className="c97-offset" style={{ padding: "var(--c97-sp-3)" }}>
+        {/* The five inputs that move the result most come first, so the figures and the chart they drive sit right under them. */}
+        <div
+          data-c97-surface="paper"
+          className="c97-offset flex flex-col"
+          style={{ padding: "var(--c97-sp-3)", gap: "var(--c97-sp-2)" }}
+        >
+          <h2 className="sr-only">Your numbers</h2>
+          {/* Keyed on the grid and not the plate, so Reset keeps keyboard focus when the fields remount. */}
+          <div key={resetKey} className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5" style={{ gap: "var(--c97-sp-1)" }}>
+            <NumberField {...RENT_VS_BUY_BOUNDS.homePrice} label="Home price" prefix="$" step={5000} value={input.homePrice} onChange={num("homePrice")} />
+            <NumberField {...RENT_VS_BUY_BOUNDS.monthlyRent} label="Monthly rent" prefix="$" step={50} value={input.monthlyRent} onChange={num("monthlyRent")} />
+            <NumberField {...RENT_VS_BUY_BOUNDS.yearsStaying} label="Years staying" suffix="yrs" step={1} value={input.yearsStaying} onChange={num("yearsStaying")} />
+            <NumberField {...RENT_VS_BUY_BOUNDS.downPaymentPercent} label="Down payment" suffix="%" step={1} value={input.downPaymentPercent} onChange={num("downPaymentPercent")} />
+            <NumberField {...RENT_VS_BUY_BOUNDS.mortgageRatePercent} label="Mortgage rate" suffix="%" step={0.05} value={input.mortgageRatePercent} onChange={num("mortgageRatePercent")} />
+          </div>
+          <button
+            type="button"
+            onClick={() => {
+              reset();
+              setResetKey((current) => current + 1);
+            }}
+            className="c97-btn-ghost"
+            style={{ alignSelf: "flex-start" }}
+          >
+            <RotateCcw size={14} aria-hidden="true" style={{ marginRight: "var(--c97-sp-1)" }} />
+            Reset
+          </button>
+        </div>
+
+        <Catalog97HeroReadouts
+          readouts={[
+            {
+              label: "Break-even",
+              value: formatBreakEvenShort(result),
+              detail:
+                result.breakEvenYears === null
+                  ? undefined
+                  : `Staying ${plural(result.horizonYears, "year")}`,
+            },
+            {
+              label: "Net worth gap",
+              value: formatSignedCurrency(result.netWorthDeltaAtHorizon),
+              detail: `Buyer minus renter at year ${result.horizonYears}`,
+            },
+            {
+              label: "Cash to buy",
+              value: formatCurrency(result.upfrontCash),
+              detail: "Down payment + closing costs",
+            },
+          ]}
+        />
+
+        <div
+          data-c97-surface="paper"
+          className="c97-offset"
+          style={{ padding: "var(--c97-sp-3)", marginTop: "var(--c97-sp-5)" }}
+        >
           <p role="status" aria-live="polite" className="c97-serif c97-h3" style={{ margin: 0 }}>
             <span>{VERDICT_TITLE[result.verdict]}</span>
             {". "}
@@ -333,38 +369,15 @@ export function RentVsBuyClient() {
           <p className="c97-prose" style={{ fontSize: "var(--c97-fs-small)", color: "var(--c97-ink-2)", marginTop: "var(--c97-sp-3)" }}>
             Educational only, not financial or tax advice.
           </p>
-          <p style={{ marginTop: "var(--c97-sp-2)" }}>
-            <span className="c97-kicker">Assumptions &amp; limits</span>
-            <span
-              className="c97-prose"
-              style={{ display: "block", fontSize: "var(--c97-fs-small)", color: "var(--c97-ink-2)", marginTop: "var(--c97-sp-1)" }}
-            >
-              Figures are nominal dollars. {result.assumptions.taxNote} Tax figures are for tax year{" "}
-              {result.assumptions.taxYear}, were read from the IRS and the text of the law on{" "}
-              {result.assumptions.asOf}, and have not had an independent review. The default mortgage rate of{" "}
-              {result.assumptions.defaultMortgageRatePercent}% is the Freddie Mac 30 year fixed average as of{" "}
-              {result.assumptions.mortgageRateAsOf}.
-            </span>
-          </p>
+          <a href="#assumptions-and-limits" className="c97-btn-ghost">
+            Assumptions and limits
+          </a>
         </div>
       </Catalog97ProjectHero>
 
       <section className="c97-band c97-sheet" data-c97-surface="paper" data-seam="torn">
         <div className="c97-shell">
-          <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: "var(--c97-sp-3)", flexWrap: "wrap" }}>
-            <p className="c97-kicker">Your numbers</p>
-            <button
-              type="button"
-              onClick={() => {
-                reset();
-                setResetKey((current) => current + 1);
-              }}
-              className="c97-btn-ghost"
-            >
-              <RotateCcw size={14} aria-hidden="true" style={{ marginRight: "var(--c97-sp-1)" }} />
-              Reset
-            </button>
-          </div>
+          <p className="c97-kicker">The rest of the model</p>
 
           <div key={resetKey} style={{ display: "flex", flexDirection: "column", gap: "var(--c97-sp-5)", marginTop: "var(--c97-sp-4)" }}>
             <div>
@@ -373,9 +386,6 @@ export function RentVsBuyClient() {
                 <h2 className="c97-poster-sm">The home you&apos;d buy</h2>
               </div>
               <div className="grid sm:grid-cols-2" style={{ gap: "var(--c97-sp-1)", marginTop: "var(--c97-sp-3)" }}>
-                <NumberField {...RENT_VS_BUY_BOUNDS.homePrice} label="Home price" prefix="$" step={5000} value={input.homePrice} onChange={num("homePrice")} />
-                <NumberField {...RENT_VS_BUY_BOUNDS.downPaymentPercent} label="Down payment" suffix="%" step={1} value={input.downPaymentPercent} onChange={num("downPaymentPercent")} />
-                <NumberField {...RENT_VS_BUY_BOUNDS.mortgageRatePercent} label="Mortgage rate" suffix="%" step={0.05} value={input.mortgageRatePercent} onChange={num("mortgageRatePercent")} />
                 <NumberField {...RENT_VS_BUY_BOUNDS.loanTermYears} label="Loan term" suffix="yrs" step={1} value={input.loanTermYears} onChange={num("loanTermYears")} />
                 <NumberField {...RENT_VS_BUY_BOUNDS.propertyTaxPercent} label="Property tax" suffix="%/yr" step={0.05} value={input.propertyTaxPercent} onChange={num("propertyTaxPercent")} />
                 <NumberField {...RENT_VS_BUY_BOUNDS.homeInsuranceAnnual} label="Home insurance" prefix="$" suffix="/yr" step={100} value={input.homeInsuranceAnnual} onChange={num("homeInsuranceAnnual")} />
@@ -393,7 +403,6 @@ export function RentVsBuyClient() {
                 <h2 className="c97-poster-sm">The rent you&apos;d pay</h2>
               </div>
               <div className="grid sm:grid-cols-2" style={{ gap: "var(--c97-sp-1)", marginTop: "var(--c97-sp-3)" }}>
-                <NumberField {...RENT_VS_BUY_BOUNDS.monthlyRent} label="Monthly rent" prefix="$" step={50} value={input.monthlyRent} onChange={num("monthlyRent")} />
                 <NumberField {...RENT_VS_BUY_BOUNDS.rentGrowthPercent} label="Rent growth" suffix="%/yr" step={0.25} value={input.rentGrowthPercent} onChange={num("rentGrowthPercent")} />
                 <NumberField {...RENT_VS_BUY_BOUNDS.rentersInsuranceMonthly} label="Renter's insurance" prefix="$" suffix="/mo" step={5} value={input.rentersInsuranceMonthly} onChange={num("rentersInsuranceMonthly")} />
               </div>
@@ -417,7 +426,6 @@ export function RentVsBuyClient() {
                   disabled={!input.itemizes}
                   hint="Used only when you itemize deductions."
                 />
-                <NumberField {...RENT_VS_BUY_BOUNDS.yearsStaying} label="Years staying" suffix="yrs" step={1} value={input.yearsStaying} onChange={num("yearsStaying")} />
                 <label
                   style={{
                     display: "flex",
@@ -438,6 +446,20 @@ export function RentVsBuyClient() {
               </div>
             </div>
           </div>
+
+          <p id="assumptions-and-limits" style={{ marginTop: "var(--c97-sp-4)", scrollMarginTop: "var(--c97-sp-6)" }}>
+            <span className="c97-kicker">Assumptions &amp; limits</span>
+            <span
+              className="c97-prose"
+              style={{ display: "block", fontSize: "var(--c97-fs-small)", color: "var(--c97-ink-2)", marginTop: "var(--c97-sp-1)" }}
+            >
+              Educational only, not financial or tax advice. Figures are nominal dollars. {result.assumptions.taxNote} Tax figures are for tax year{" "}
+              {result.assumptions.taxYear}, were read from the IRS and the text of the law on{" "}
+              {result.assumptions.asOf}, and have not had an independent review. The default mortgage rate of{" "}
+              {result.assumptions.defaultMortgageRatePercent}% is the Freddie Mac 30 year fixed average as of{" "}
+              {result.assumptions.mortgageRateAsOf}.
+            </span>
+          </p>
 
           {persistenceStatus === "memory-only" ? (
             <p role="status" className="c97-panel c97-prose" style={{ fontSize: "var(--c97-fs-small)", color: "var(--c97-ink-2)", marginTop: "var(--c97-sp-4)" }}>

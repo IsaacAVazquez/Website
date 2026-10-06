@@ -11,6 +11,9 @@ import {
   FixtureCard,
   LeaderList,
 } from "@/components/football";
+// Imported by path. The football barrel ships whatever it re-exports to every
+// route that reads it, and the two league pages do not use this drawer.
+import { DetailDrawer } from "@/components/football/DetailDrawer";
 import {
   Catalog97ProjectHero,
   type Catalog97Readout,
@@ -39,6 +42,7 @@ import {
 import { useRouteSync } from "@/hooks/useRouteSync";
 import { useCachedSnapshot } from "@/hooks/useCachedSnapshot";
 import { groupBy } from "@/lib/utils";
+import "./nba.css";
 
 interface NbaClientProps {
   initialState: NbaRouteState;
@@ -174,6 +178,18 @@ export function NbaClient({ initialState, summary, initialTeamSnapshot, teamColo
     "Unable to load team snapshot."
   );
   const [activeDetailTab, setActiveDetailTab] = useState<"team" | "schedule" | "leaders">("team");
+  // The team drawer is its own state, because every view writes its first
+  // team into ?team= and the URL alone cannot say a team was opened. It starts
+  // open only for a link to a team other than the view's first, and after
+  // that only `handleTeamChange` opens it. It holds the team that was asked
+  // for and waits for the route to reach it, so it never shows the last one.
+  const [drawerTeamId, setDrawerTeamId] = useState<string | null>(() =>
+    searchParams.get("team") !== null &&
+    selectedTeamId !== getDefaultTeam(east, west, routeState.view, defaultState.team)
+      ? selectedTeamId
+      : null
+  );
+  const isDrawerOpen = drawerTeamId !== null && drawerTeamId === selectedTeamId;
   const desiredHref = buildHref(
     { view: routeState.view, team: selectedTeamId },
     defaultState,
@@ -197,10 +213,14 @@ export function NbaClient({ initialState, summary, initialTeamSnapshot, teamColo
   }
 
   function handleTeamChange(teamId: string) {
-    navigate({
-      view: routeState.view,
-      team: canonicalizeTeamId(teamId, aliasMap) ?? defaultState.team,
-    });
+    const team = canonicalizeTeamId(teamId, aliasMap) ?? defaultState.team;
+    // A schedule card can name a team the current view leaves out, so that
+    // team opens in its own conference, where it can be selected.
+    const view = visibleTeams.some((visible) => visible.id === team)
+      ? routeState.view
+      : teamById.get(team)?.conference ?? routeState.view;
+    setDrawerTeamId(team);
+    navigate({ view, team });
   }
 
   const eastTop = east[0];
@@ -237,6 +257,9 @@ export function NbaClient({ initialState, summary, initialTeamSnapshot, teamColo
       ]}
     />
   );
+  // The hero fills a phone's first screen and the signature runs long under
+  // it, so one link goes straight to the working table.
+  const heroAction = <a href="#nba-standings" className="c97-btn-ghost">Jump to standings</a>;
 
   if (!selectedTeam) {
     return (
@@ -271,11 +294,12 @@ export function NbaClient({ initialState, summary, initialTeamSnapshot, teamColo
 
   return (
     <>
-      <Catalog97ProjectHero ink={lead} title="NBA Pulse" standfirst={standfirst} meta={heroMeta} readouts={heroReadouts}>
+      <Catalog97ProjectHero ink={lead} title="NBA Pulse" standfirst={standfirst} meta={heroMeta}
+        action={heroAction} readouts={heroReadouts}>
         {heroSignature}
       </Catalog97ProjectHero>
 
-      <section className="c97-band c97-sheet" data-c97-surface="paper" data-seam="torn">
+      <section id="nba-standings" className="c97-band c97-sheet" data-c97-surface="paper" data-seam="torn">
         <div className="c97-shell">
           <div className="flex flex-wrap items-end justify-between" style={{ gap: "var(--c97-sp-1)" }}>
             <h2 className="c97-poster-sm">Standings</h2>
@@ -302,144 +326,77 @@ export function NbaClient({ initialState, summary, initialTeamSnapshot, teamColo
             })}
           </div>
 
-          <div className="grid xl:grid-cols-[minmax(0,1fr)_320px]" style={{ marginTop: "var(--c97-sp-3)", gap: "var(--c97-sp-3)" }}>
-            <div
-              role="region"
-              aria-label="NBA standings (scrollable)"
-              tabIndex={0}
-              style={{ overflowX: "auto" }}
-            >
-              <table className="c97-table" aria-label="NBA standings">
-                <thead>
-                  <tr>
-                    <th scope="col">Seed</th>
-                    <th scope="col">Team</th>
-                    <th scope="col">Record</th>
-                    <th scope="col" data-align="end">W%</th>
-                    <th scope="col" data-align="end">GB</th>
-                    <th scope="col" data-align="end">PF</th>
-                    <th scope="col" data-align="end">PA</th>
-                    <th scope="col" data-align="end">Diff</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {visibleTeams.map((team) => {
-                    const isSelected = team.id === selectedTeam.id;
-                    const zone = getTeamZone(team.conferenceSeed);
-                    return (
-                      <tr
-                        key={`${team.conference}-${team.id}`}
-                        style={isSelected ? { boxShadow: "inset 4px 0 0 0 var(--c97-ink)" } : undefined}
-                      >
-                        <td>
-                          <span className="inline-flex items-center" style={{ gap: "var(--c97-sp-0)" }}>
-                            <span
-                              aria-hidden="true"
-                              style={{
-                                width: 8,
-                                height: 8,
-                                display: "inline-block",
-                                background: zoneDotColor(zone),
-                              }}
-                            />
-                            {team.conferenceSeed}
+          <div
+            role="region"
+            aria-label="NBA standings (scrollable)"
+            tabIndex={0}
+            style={{ marginTop: "var(--c97-sp-3)", overflowX: "auto" }}
+          >
+            <table className="c97-table c97-nba-table" aria-label="NBA standings">
+              <thead>
+                <tr>
+                  <th scope="col">Seed</th>
+                  <th scope="col">Team</th>
+                  <th scope="col">Record</th>
+                  <th scope="col" data-align="end" data-wide>W%</th>
+                  <th scope="col" data-align="end">GB</th>
+                  <th scope="col" data-align="end" data-wide>PF</th>
+                  <th scope="col" data-align="end" data-wide>PA</th>
+                  <th scope="col" data-align="end" data-wide>Diff</th>
+                </tr>
+              </thead>
+              <tbody>
+                {visibleTeams.map((team) => {
+                  const isSelected = team.id === selectedTeam.id;
+                  const zone = getTeamZone(team.conferenceSeed);
+                  return (
+                    <tr
+                      key={`${team.conference}-${team.id}`}
+                      style={isSelected ? { boxShadow: "inset 4px 0 0 0 var(--c97-ink)" } : undefined}
+                    >
+                      <td>
+                        <span className="inline-flex items-center" style={{ gap: "var(--c97-sp-0)" }}>
+                          <span
+                            aria-hidden="true"
+                            style={{
+                              width: 8,
+                              height: 8,
+                              display: "inline-block",
+                              background: zoneDotColor(zone),
+                            }}
+                          />
+                          {team.conferenceSeed}
+                        </span>
+                      </td>
+                      <td>
+                        <button
+                          type="button"
+                          onClick={() => handleTeamChange(team.id)}
+                          aria-pressed={isSelected}
+                          aria-haspopup="dialog"
+                          aria-label={`Show ${team.name} details`}
+                          className="flex min-h-[44px] items-center text-left" style={{ gap: "var(--c97-sp-1)" }}
+                        >
+                          <CrestAvatar crest={logoByTeamId.get(team.id) ?? null} name={team.shortName} size="sm" />
+                          <span style={{ fontWeight: 600, color: "var(--c97-ink)" }}>{team.shortName}</span>
+                          <span className="c97-mono" style={{ color: "var(--c97-ink-2)", fontSize: "var(--c97-fs-label)" }}>
+                            {team.conference === "east" ? "E" : "W"}
                           </span>
-                        </td>
-                        <td>
-                          <button
-                            type="button"
-                            onClick={() => handleTeamChange(team.id)}
-                            aria-pressed={isSelected}
-                            aria-label={`Show ${team.name} details`}
-                            className="flex min-h-[44px] items-center text-left" style={{ gap: "var(--c97-sp-1)" }}
-                          >
-                            <CrestAvatar crest={logoByTeamId.get(team.id) ?? null} name={team.shortName} size="sm" />
-                            <span style={{ fontWeight: 600, color: "var(--c97-ink)" }}>{team.shortName}</span>
-                            <span className="c97-mono" style={{ color: "var(--c97-ink-2)", fontSize: "var(--c97-fs-label)" }}>
-                              {team.conference === "east" ? "E" : "W"}
-                            </span>
-                          </button>
-                        </td>
-                        <td>{team.wins}-{team.losses}</td>
-                        <td data-align="end">
-                          {Number.isFinite(team.winPercent) ? team.winPercent.toFixed(3).replace(/^0/, "") : "—"}
-                        </td>
-                        <td data-align="end">{formatGamesBack(team.gamesBack)}</td>
-                        <td data-align="end">{team.pointsFor.toFixed(1)}</td>
-                        <td data-align="end">{team.pointsAgainst.toFixed(1)}</td>
-                        <td data-align="end">{formatPointDiff(perGameDifferential(team))}</td>
-                      </tr>
-                    );
-                  })}
-                </tbody>
-              </table>
-            </div>
-
-            <aside>
-              <section className="c97-panel" aria-live="polite" data-testid="nba-selected-team">
-                <div className="flex items-start" style={{ gap: "var(--c97-sp-1)" }}>
-                  <CrestAvatar crest={logoByTeamId.get(selectedTeam.id) ?? null} name={selectedTeam.name} size="lg" />
-                  <div className="min-w-0 flex-1">
-                    <h2 className="c97-serif c97-h3">{selectedTeam.name}</h2>
-                    <div className="c97-meta" style={{ marginTop: "var(--c97-sp-1)", textTransform: "none" }}>
-                      <span className={zoneChipClass(selectedZone)}>{getZoneLabel(selectedZone)}</span>
-                      <span className="c97-chip">{selectedTeam.wins}-{selectedTeam.losses}</span>
-                      <span className="c97-chip">{remainingGames} left</span>
-                    </div>
-                  </div>
-                  <div className="c97-stat">
-                    <p className="c97-stat-label">Seed</p>
-                    <p className="c97-stat-value">{selectedTeam.conferenceSeed}</p>
-                  </div>
-                </div>
-
-                <dl className="grid grid-cols-2 border-t" style={{ paddingTop: "var(--c97-sp-2)", marginTop: "var(--c97-sp-2)", columnGap: "var(--c97-sp-2)", rowGap: "var(--c97-sp-1)", borderColor: "var(--c97-rule)" }}>
-                  {(
-                    [
-                      ["Win %", Number.isFinite(selectedTeam.winPercent) ? selectedTeam.winPercent.toFixed(3).replace(/^0/, "") : "—"],
-                      ["GB", formatGamesBack(selectedTeam.gamesBack)],
-                      ["L10", selectedTeam.lastTen ?? "—"],
-                      ["Streak", selectedTeam.streak ?? "—"],
-                      ["Offense", `#${teamRanks.offense}`],
-                      ["Defense", `#${teamRanks.defense}`],
-                      ["PF/g", selectedTeam.pointsFor.toFixed(1)],
-                      ["PA/g", selectedTeam.pointsAgainst.toFixed(1)],
-                    ] as const
-                  ).map(([label, value]) => (
-                    <div key={label} className="flex items-baseline justify-between" style={{ gap: "var(--c97-sp-1)" }}>
-                      <dt className="c97-kicker">{label}</dt>
-                      <dd className="c97-mono" style={{ margin: 0, fontWeight: 600, color: "var(--c97-ink)" }}>{value}</dd>
-                    </div>
-                  ))}
-                </dl>
-
-                {formSequence.length > 0 && (
-                  <div className="border-t" style={{ paddingTop: "var(--c97-sp-2)", marginTop: "var(--c97-sp-2)", borderColor: "var(--c97-rule)" }}>
-                    <p className="c97-kicker">Form</p>
-                    <div className="flex" style={{ marginTop: "var(--c97-sp-1)", gap: "var(--c97-sp-0)" }}>
-                      {formSequence.slice(-5).map((result, i) => (
-                        <TeamResultPill key={i} result={result} />
-                      ))}
-                    </div>
-                  </div>
-                )}
-
-                <p className="c97-prose line-clamp-2" style={{ marginTop: "var(--c97-sp-2)", fontSize: "var(--c97-fs-small)" }}>
-                  {teamStoryline}
-                </p>
-
-                {!teamSnapshot && (isTeamSnapshotLoading || teamSnapshotError) ? (
-                  <p
-                    className="c97-prose border-t"
-                    style={{ paddingTop: "var(--c97-sp-2)", marginTop: "var(--c97-sp-2)", borderColor: "var(--c97-rule)", fontSize: "var(--c97-fs-small)" }}
-                    role={teamSnapshotError ? "alert" : "status"}
-                    aria-live="polite"
-                  >
-                    {isTeamSnapshotLoading ? "Loading team snapshot…" : teamSnapshotError}
-                  </p>
-                ) : null}
-              </section>
-            </aside>
+                        </button>
+                      </td>
+                      <td>{team.wins}-{team.losses}</td>
+                      <td data-align="end" data-wide>
+                        {Number.isFinite(team.winPercent) ? team.winPercent.toFixed(3).replace(/^0/, "") : "—"}
+                      </td>
+                      <td data-align="end">{formatGamesBack(team.gamesBack)}</td>
+                      <td data-align="end" data-wide>{team.pointsFor.toFixed(1)}</td>
+                      <td data-align="end" data-wide>{team.pointsAgainst.toFixed(1)}</td>
+                      <td data-align="end" data-wide>{formatPointDiff(perGameDifferential(team))}</td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
           </div>
         </div>
       </section>
@@ -632,6 +589,69 @@ export function NbaClient({ initialState, summary, initialTeamSnapshot, teamColo
           </div>
         </div>
       </section>
+
+      <DetailDrawer
+        open={isDrawerOpen}
+        title={selectedTeam.name}
+        lead={<CrestAvatar crest={logoByTeamId.get(selectedTeam.id) ?? null} name={selectedTeam.name} size="lg" />}
+        onClose={() => setDrawerTeamId(null)}
+        resetKey={selectedTeam.id}
+        testId="nba-selected-team"
+      >
+        <div className="flex flex-wrap" style={{ marginTop: "var(--c97-sp-2)", gap: "var(--c97-sp-1)" }}>
+          <span className={zoneChipClass(selectedZone)}>{getZoneLabel(selectedZone)}</span>
+          <span className="c97-chip">Seed {selectedTeam.conferenceSeed}</span>
+          <span className="c97-chip">{selectedTeam.wins}-{selectedTeam.losses}</span>
+          <span className="c97-chip">{remainingGames} left</span>
+        </div>
+
+        <dl className="grid grid-cols-2 border-t" style={{ paddingTop: "var(--c97-sp-2)", marginTop: "var(--c97-sp-2)", columnGap: "var(--c97-sp-2)", rowGap: "var(--c97-sp-1)", borderColor: "var(--c97-rule)" }}>
+          {(
+            [
+              ["Win %", Number.isFinite(selectedTeam.winPercent) ? selectedTeam.winPercent.toFixed(3).replace(/^0/, "") : "—"],
+              ["GB", formatGamesBack(selectedTeam.gamesBack)],
+              ["L10", selectedTeam.lastTen ?? "—"],
+              ["Streak", selectedTeam.streak ?? "—"],
+              ["Offense", `#${teamRanks.offense}`],
+              ["Defense", `#${teamRanks.defense}`],
+              ["PF/g", selectedTeam.pointsFor.toFixed(1)],
+              ["PA/g", selectedTeam.pointsAgainst.toFixed(1)],
+              ["Diff/g", formatPointDiff(perGameDifferential(selectedTeam))],
+            ] as const
+          ).map(([label, value]) => (
+            <div key={label} className="flex items-baseline justify-between" style={{ gap: "var(--c97-sp-1)" }}>
+              <dt className="c97-kicker">{label}</dt>
+              <dd className="c97-mono" style={{ margin: 0, fontWeight: 600, color: "var(--c97-ink)" }}>{value}</dd>
+            </div>
+          ))}
+        </dl>
+
+        {formSequence.length > 0 && (
+          <div className="border-t" style={{ paddingTop: "var(--c97-sp-2)", marginTop: "var(--c97-sp-2)", borderColor: "var(--c97-rule)" }}>
+            <p className="c97-kicker">Form</p>
+            <div className="flex" style={{ marginTop: "var(--c97-sp-1)", gap: "var(--c97-sp-0)" }}>
+              {formSequence.slice(-5).map((result, i) => (
+                <TeamResultPill key={i} result={result} />
+              ))}
+            </div>
+          </div>
+        )}
+
+        <p className="c97-prose" style={{ marginTop: "var(--c97-sp-2)", fontSize: "var(--c97-fs-small)" }}>
+          {teamStoryline}
+        </p>
+
+        {!teamSnapshot && (isTeamSnapshotLoading || teamSnapshotError) ? (
+          <p
+            className="c97-prose border-t"
+            style={{ paddingTop: "var(--c97-sp-2)", marginTop: "var(--c97-sp-2)", borderColor: "var(--c97-rule)", fontSize: "var(--c97-fs-small)" }}
+            role={teamSnapshotError ? "alert" : "status"}
+            aria-live="polite"
+          >
+            {isTeamSnapshotLoading ? "Loading team snapshot…" : teamSnapshotError}
+          </p>
+        ) : null}
+      </DetailDrawer>
     </>
   );
 }

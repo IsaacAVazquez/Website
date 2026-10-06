@@ -1630,27 +1630,8 @@ export function EnablementAssistantClient() {
         standfirst="I built this to help a small central tooling team support many independent product teams without repeating the same onboarding work one team at a time. It recommends a standard stack, writes the adoption plan, answers the common setup questions, and turns every failure into a clearer documentation backlog."
         meta="Internal platform enablement · deterministic demo"
       >
-        <div className="c97-panel">
-          <p className="c97-kicker">Model boundary</p>
-          <p
-            className="c97-prose"
-            style={{ marginTop: "var(--c97-sp-2)", color: "var(--c97-ink-2)" }}
-          >
-            No credentials, live model, or hidden service. The scoring, retrieval, plans,
-            and program data all run from committed TypeScript rules and invented seed data.
-          </p>
-        </div>
-      </Catalog97ProjectHero>
-
-      <section
-        id="workspace"
-        className="c97-band c97-sheet c97-band-tight"
-        data-c97-surface="paper"
-        data-seam="torn"
-        style={{ scrollMarginTop: "var(--c97-sp-6)" }}
-      >
+        {/* The two ways in sit right under the opening explanation, ahead of the model boundary note. */}
         <div
-          className="c97-shell"
           style={{
             display: "flex",
             flexWrap: "wrap",
@@ -1664,13 +1645,25 @@ export function EnablementAssistantClient() {
             {view === "program" ? "Portfolio view · 12 seeded teams" : "Team view · 3 intake steps"}
           </p>
         </div>
-      </section>
+        <div className="c97-panel" style={{ marginTop: "var(--c97-sp-3)" }}>
+          <p className="c97-kicker">Model boundary</p>
+          <p
+            className="c97-prose"
+            style={{ marginTop: "var(--c97-sp-2)", color: "var(--c97-ink-2)" }}
+          >
+            No credentials, live model, or hidden service. The scoring, retrieval, plans,
+            and program data all run from committed TypeScript rules and invented seed data.
+          </p>
+        </div>
+      </Catalog97ProjectHero>
 
-      {view === "program" ? (
-        <ProgramDashboard onStart={() => changeView("team")} />
-      ) : (
-        <TeamOnboarding />
-      )}
+      <div id="workspace" style={{ scrollMarginTop: "var(--c97-sp-6)" }}>
+        {view === "program" ? (
+          <ProgramDashboard onStart={() => changeView("team")} />
+        ) : (
+          <TeamOnboarding />
+        )}
+      </div>
     </div>
   );
 }

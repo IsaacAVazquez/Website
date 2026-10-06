@@ -1,7 +1,8 @@
 import type { ReadonlyURLSearchParams } from "next/navigation";
 import { readParam, type SearchParamInput } from "@/lib/searchParams";
 
-export type InvestmentsView = "research" | "portfolio";
+/** The workspace the page prints first. The other two follow it. */
+export type InvestmentsTask = "portfolio" | "research" | "retirement";
 export type ResearchTab =
   | "overview"
   | "financials"
@@ -12,19 +13,19 @@ export type ResearchTab =
   | "compare";
 
 export interface InvestmentsSearchState {
-  view: InvestmentsView;
+  task: InvestmentsTask;
   symbol: string;
   section: ResearchTab;
 }
 
 export const DEFAULT_INVESTMENTS_STATE: InvestmentsSearchState = {
-  view: "portfolio",
+  task: "portfolio",
   symbol: "",
   section: "overview",
 };
 
 const VALID_SYMBOL_PATTERN = /^[A-Z0-9.-]{1,10}$/;
-const VALID_VIEWS = new Set<InvestmentsView>(["research", "portfolio"]);
+const VALID_TASKS = new Set<InvestmentsTask>(["portfolio", "research", "retirement"]);
 const VALID_SECTIONS = new Set<ResearchTab>([
   "overview",
   "financials",
@@ -42,14 +43,14 @@ function normalizeSymbol(rawSymbol: string | null): string {
 }
 
 export function normalizeInvestmentsState(input: SearchParamInput): InvestmentsSearchState {
-  const view = readParam(input, "view");
+  const task = readParam(input, "task");
   const symbol = readParam(input, "symbol");
   const section = readParam(input, "section");
 
   return {
-    view: VALID_VIEWS.has((view ?? "") as InvestmentsView)
-      ? (view as InvestmentsView)
-      : DEFAULT_INVESTMENTS_STATE.view,
+    task: VALID_TASKS.has((task ?? "") as InvestmentsTask)
+      ? (task as InvestmentsTask)
+      : DEFAULT_INVESTMENTS_STATE.task,
     symbol: normalizeSymbol(symbol),
     section: VALID_SECTIONS.has((section ?? "") as ResearchTab)
       ? (section as ResearchTab)
@@ -62,8 +63,14 @@ export function buildInvestmentsHref(
   baseSearchParams?: URLSearchParams | ReadonlyURLSearchParams
 ): string {
   const params = new URLSearchParams(baseSearchParams ? Array.from(baseSearchParams.entries()) : []);
-  // The unified dashboard no longer uses ?view=, so strip any legacy values.
+  // ?view= is the retired two-view switch, so strip any legacy values. The
+  // task choice has its own param and stays off the URL while it is the default.
   params.delete("view");
+  if (state.task === DEFAULT_INVESTMENTS_STATE.task) {
+    params.delete("task");
+  } else {
+    params.set("task", state.task);
+  }
   if (state.symbol) {
     params.set("symbol", state.symbol);
   } else {

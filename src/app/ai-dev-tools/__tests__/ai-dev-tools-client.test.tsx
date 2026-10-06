@@ -1,4 +1,4 @@
-import { fireEvent, render, screen } from "@testing-library/react";
+import { fireEvent, render, screen, within } from "@testing-library/react";
 import { AiDevToolsClient } from "../ai-dev-tools-client";
 import { DEFAULT_AI_DEV_TOOLS_STATE } from "../ai-dev-tools-state";
 
@@ -61,5 +61,43 @@ describe("AiDevToolsClient", () => {
     expect(mockPush).toHaveBeenLastCalledWith("/ai-dev-tools", {
       scroll: false,
     });
+  });
+
+  it("prints search and the directory before the phone's category map", () => {
+    render(<AiDevToolsClient initialState={DEFAULT_AI_DEV_TOOLS_STATE} />);
+
+    const search = screen.getByLabelText("Search tools");
+    const phoneMap = screen.getByRole("heading", { level: 2, name: "By category and pricing" });
+    expect(search.compareDocumentPosition(phoneMap) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
+    // The hero keeps the wide grid, which the stylesheet hides below 960px.
+    expect(screen.getByRole("table", { name: /by category and pricing model/i })).toBeInTheDocument();
+  });
+
+  it("opens no drawer until a tool is picked, then names it in the URL", () => {
+    render(<AiDevToolsClient initialState={DEFAULT_AI_DEV_TOOLS_STATE} />);
+
+    expect(screen.queryByRole("dialog")).toBeNull();
+    // Each tool has a directory row and a plate on each map, and any of them opens it.
+    const cursorButtons = screen.getAllByRole("button", { name: /^Cursor/ });
+    expect(cursorButtons.length).toBeGreaterThan(1);
+    fireEvent.click(cursorButtons[0]);
+    expect(mockPush).toHaveBeenLastCalledWith("/ai-dev-tools?tool=cursor", { scroll: false });
+  });
+
+  it("shows a deep-linked tool in a named drawer and clears it from the URL on close", () => {
+    currentSearchParams = new URLSearchParams("q=Cursor&tool=cursor");
+    render(<AiDevToolsClient initialState={DEFAULT_AI_DEV_TOOLS_STATE} />);
+
+    const drawer = screen.getByRole("dialog", { name: "Cursor detail" });
+    expect(within(drawer).getByRole("heading", { level: 2, name: "Cursor" })).toBeInTheDocument();
+    expect(within(drawer).getByText("Sources")).toBeInTheDocument();
+    expect(drawer).toHaveFocus();
+
+    fireEvent.click(within(drawer).getByRole("button", { name: "Close" }));
+    expect(mockPush).toHaveBeenLastCalledWith("/ai-dev-tools?q=Cursor", { scroll: false });
+
+    mockPush.mockClear();
+    fireEvent.keyDown(window, { key: "Escape" });
+    expect(mockPush).toHaveBeenLastCalledWith("/ai-dev-tools?q=Cursor", { scroll: false });
   });
 });

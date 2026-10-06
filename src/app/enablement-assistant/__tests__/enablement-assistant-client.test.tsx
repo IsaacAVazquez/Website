@@ -287,4 +287,13 @@ describe("EnablementAssistantClient", () => {
     expect(screen.getByRole("radio", { name: "TypeScript or JavaScript" })).toBeChecked();
     expect(back()).toBeDisabled();
   });
+
+  it("puts the two workspace views under the opening explanation, ahead of the model boundary note", () => {
+    render(<EnablementAssistantClient />);
+    const tabs = screen.getByRole("group", { name: "Enablement workspace views" });
+    const opening = screen.getByRole("heading", { level: 1 });
+
+    expect(opening.closest("section")).toContainElement(tabs);
+    expect(tabs.compareDocumentPosition(screen.getByText("Model boundary")) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
+  });
 });

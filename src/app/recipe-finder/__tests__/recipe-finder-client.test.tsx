@@ -1,4 +1,5 @@
 import { fireEvent, render, screen, within } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
 import { RecipeFinderClient } from "../recipe-finder-client";
 
 describe("RecipeFinderClient", () => {
@@ -35,6 +36,26 @@ describe("RecipeFinderClient", () => {
     fireEvent.click(screen.getByRole("button", { name: /^\+ rice$/i }));
     expect(screen.getByLabelText("Pantry ingredients")).toBeVisible();
     fireEvent.click(screen.getByRole("button", { name: /clear/i }));
+    expect(screen.queryByLabelText("Pantry ingredients")).not.toBeInTheDocument();
+  });
+
+  it("splits pasted ingredient lists and keeps input focus after pantry actions", async () => {
+    const user = userEvent.setup();
+    render(<RecipeFinderClient />);
+    const input = screen.getByLabelText("Add an ingredient");
+    fireEvent.change(input, { target: { value: "Chicken, lemon, CHICKEN, , " } });
+    await user.click(screen.getByRole("button", { name: "Add ingredient" }));
+    expect(window.localStorage.getItem("recipe-finder:pantry:v1")).toBe(JSON.stringify(["chicken", "lemon"]));
+    expect(input).toHaveFocus();
+
+    fireEvent.change(input, { target: { value: "tom" } });
+    await user.click(screen.getByRole("button", { name: "tomato" }));
+    expect(screen.getByRole("button", { name: "Remove tomato" })).toBeVisible();
+    expect(input).toHaveFocus();
+    await user.click(screen.getByRole("button", { name: "Remove tomato" }));
+    expect(input).toHaveFocus();
+    await user.click(screen.getByRole("button", { name: "Clear" }));
+    expect(input).toHaveFocus();
     expect(screen.queryByLabelText("Pantry ingredients")).not.toBeInTheDocument();
   });
 
@@ -80,6 +101,42 @@ describe("RecipeFinderClient", () => {
     const titles = [...container.querySelectorAll("article h3")].map((node) => node.textContent);
     expect(titles.filter((title, index) => titles.indexOf(title) !== index)).toEqual([]);
   });
+
+  // The summary line's count has to agree with the lines the opened card ticks.
+  function expectFirstCardCountMatchesItsDetail() {
+    const list = screen.getByLabelText("Matching recipes");
+    // A compact match prints no ingredient list until it is selected.
+    expect(within(list).queryByRole("list")).not.toBeInTheDocument();
+
+    const card = within(list).getAllByRole("article")[0];
+    const title = within(card).getByRole("heading", { level: 3 }).textContent;
+    const summary = within(card).getByText(/^(Missing \d+ of \d+ ingredients|You have every ingredient)$/).textContent!;
+    const [need, total] = summary.startsWith("Missing") ? summary.match(/\d+/g)!.map(Number) : [0, null];
+
+    fireEvent.click(within(card).getByRole("button", { name: "Ingredients and steps" }));
+    const ingredients = within(card).getByLabelText(`Ingredients for ${title}`);
+    expect(ingredients.querySelectorAll('[data-have="false"]')).toHaveLength(need as number);
+    if (total !== null) expect(ingredients.querySelectorAll("li")).toHaveLength(total);
+    // Only the selected recipe prints its ingredients and its steps.
+    expect(within(list).getAllByRole("list")).toHaveLength(2);
+
+    fireEvent.click(within(card).getByRole("button", { name: "Hide ingredients and steps" }));
+    expect(within(list).queryByRole("list")).not.toBeInTheDocument();
+    return need as number;
+  }
+
+  it("lists compact matches on a first visit and opens the selected recipe in place", () => {
+    render(<RecipeFinderClient />);
+    expect(expectFirstCardCountMatchesItsDetail()).toBeGreaterThan(0);
+  });
+
+  it("counts missing ingredients against a saved pantry on a return visit", () => {
+    window.localStorage.setItem("recipe-finder:pantry:v1", JSON.stringify(["egg", "spinach", "tomato", "onion"]));
+    render(<RecipeFinderClient />);
+    expect(screen.getByRole("button", { name: "Remove spinach" })).toBeVisible();
+    expectFirstCardCountMatchesItsDetail();
+  });
+
   it("prompts for pantry items when the pantry view has nothing to suggest", () => {
     render(<RecipeFinderClient />);
 

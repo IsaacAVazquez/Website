@@ -5,10 +5,16 @@ import {
   type KeyboardEvent,
   useEffect,
   useMemo,
+  useRef,
   useState,
+  type RefObject,
 } from "react";
 import { ChefHat, Plus, Search, Sparkles, Trash2, X } from "lucide-react";
-import { Catalog97ProjectHero } from "@/components/catalog97/Catalog97ProjectHero";
+import {
+  Catalog97HeroReadouts,
+  Catalog97ProjectHero,
+  type Catalog97Readout,
+} from "@/components/catalog97/Catalog97ProjectHero";
 import { PROJECT_PRESS } from "@/constants/projectPress";
 import { RECIPES } from "@/data/recipesSnapshot";
 import { readValidatedBrowserStorage, writeBrowserStorageJson } from "@/lib/browserStorage";
@@ -107,6 +113,7 @@ export function RecipeFinderClient() {
   const [view, setView] = useState<ViewId>("all");
   const [diet, setDiet] = useState<DietTag | "all">("all");
   const [openRecipeId, setOpenRecipeId] = useState<string | null>(null);
+  const pantryInputRef = useRef<HTMLInputElement>(null);
 
   // Load the saved pantry after mount so the server and first client render
   // match (both start empty), then flip `hydrated` so the save effect can run.
@@ -166,18 +173,21 @@ export function RecipeFinderClient() {
   const totalRecipes = RECIPES.length;
 
   function addIngredient(rawValue: string) {
-    const value = rawValue.trim().toLowerCase();
-    if (!value) return;
-    setPantry((current) => (current.includes(value) ? current : [...current, value]));
+    const values = rawValue.split(",").map((value) => value.trim().toLowerCase()).filter(Boolean);
+    if (values.length === 0) return;
+    setPantry((current) => Array.from(new Set([...current, ...values])));
     setPantryDraft("");
+    pantryInputRef.current?.focus();
   }
 
   function removeIngredient(value: string) {
     setPantry((current) => current.filter((item) => item !== value));
+    pantryInputRef.current?.focus();
   }
 
   function clearPantry() {
     setPantry([]);
+    pantryInputRef.current?.focus();
   }
 
   function handlePantrySubmit(event: FormEvent<HTMLFormElement>) {
@@ -214,32 +224,35 @@ export function RecipeFinderClient() {
   const standfirst =
     "Add the ingredients you have on hand and the recipes below reorder by what you're missing, so the ones you can actually cook tonight come first. I assume a few staples like salt, pepper, and oil are already in every kitchen, so those tick on their own.";
 
+  // The figures print after the pantry shelf that drives them, which keeps the
+  // first field inside a phone's opening screen.
+  const heroReadouts: Catalog97Readout[] = [
+    {
+      label: "Pantry items",
+      value: hydrated ? pantry.length : "—",
+      detail: hasPantry ? "saved in your browser" : "add what's in your kitchen",
+    },
+    {
+      label: "Recipes you can make now",
+      value: hasPantry ? cookableNow : "—",
+      detail: hasPantry ? `of ${totalRecipes} in the corpus` : "add pantry items to rank",
+    },
+    {
+      label: "Closest match",
+      value: bestMatch ? bestMatch.recipe.title : "—",
+      detail:
+        bestMatch && bestMatchCard
+          ? `${bestMatchCard.lines.filter((line) => line.have).length} of ${bestMatchCard.lines.length} ingredients ticked, first in the list below`
+          : undefined,
+    },
+  ];
+
   return (
     <>
       <Catalog97ProjectHero
         ink={lead}
         title="Recipe Finder"
         standfirst={standfirst}
-        readouts={[
-          {
-            label: "Pantry items",
-            value: hydrated ? pantry.length : "—",
-            detail: hasPantry ? "saved in your browser" : "add what's in your kitchen",
-          },
-          {
-            label: "Recipes you can make now",
-            value: hasPantry ? cookableNow : "—",
-            detail: hasPantry ? `of ${totalRecipes} in the corpus` : "add pantry items to rank",
-          },
-          {
-            label: "Closest match",
-            value: bestMatch ? bestMatch.recipe.title : "—",
-            detail:
-              bestMatch && bestMatchCard
-                ? `${bestMatchCard.lines.filter((line) => line.have).length} of ${bestMatchCard.lines.length} ingredients ticked, first in the list below`
-                : undefined,
-          },
-        ]}
       >
         <div className="c97-recipe-hero-grid">
           <div data-c97-surface="paper" className="c97-offset c97-recipe-shelf-plate" style={{ padding: "var(--c97-sp-4)" }}>
@@ -255,6 +268,7 @@ export function RecipeFinderClient() {
               onClear={clearPantry}
               onSubmit={handlePantrySubmit}
               onKeyDown={handlePantryKeyDown}
+              inputRef={pantryInputRef}
             />
             <p className="c97-prose" style={{ margin: 0, fontSize: "var(--c97-fs-small)", color: "var(--c97-ink-2)" }}>
               I put the recipe corpus together by hand, and your pantry is saved in this browser only.
@@ -262,6 +276,7 @@ export function RecipeFinderClient() {
           </div>
 
         </div>
+        <Catalog97HeroReadouts readouts={heroReadouts} />
       </Catalog97ProjectHero>
 
       <section className="c97-band c97-sheet" data-c97-surface="paper" data-seam="torn">
@@ -400,6 +415,7 @@ export function RecipeFinderClient() {
 }
 
 interface PantryShelfProps {
+  inputRef: RefObject<HTMLInputElement | null>;
   pantry: string[];
   hydrated: boolean;
   pantryDraft: string;
@@ -413,6 +429,7 @@ interface PantryShelfProps {
 }
 
 function PantryShelf({
+  inputRef,
   pantry,
   hydrated,
   pantryDraft,
@@ -432,6 +449,7 @@ function PantryShelf({
         </label>
         <div className="c97-recipe-pantry-suggestions">
           <input
+            ref={inputRef}
             id="pantry-input"
             type="text"
             value={pantryDraft}
@@ -580,13 +598,14 @@ interface RecipeIndexCardProps {
 }
 
 /**
- * The signature: a ruled index card. The ingredient list ticks off what the
- * pantry already covers instead of reporting a percentage, so the match
- * reads directly off the card rather than off a score.
+ * The signature: a ruled index card. In the list it prints only the name, the
+ * time, and how many ingredients are still missing, so 26 recipes scan as a
+ * short list. Selecting one opens its ingredient list, which ticks off what
+ * the pantry already covers, and its steps on the same card.
  */
 function RecipeIndexCard({ recipe, pantry, isOpen, onToggleSteps }: RecipeIndexCardProps) {
   const card = useMemo(() => indexCardLines(recipe, pantry), [recipe, pantry]);
-  const stepsId = `recipe-steps-${recipe.id}`;
+  const detailId = `recipe-detail-${recipe.id}`;
 
   return (
     <article data-c97-surface="paper" className="c97-offset c97-recipe-card" style={{ padding: "var(--c97-sp-4)" }}>
@@ -605,55 +624,63 @@ function RecipeIndexCard({ recipe, pantry, isOpen, onToggleSteps }: RecipeIndexC
         </div>
       </header>
 
-      <ul className="c97-recipe-ingredients" aria-label={`Ingredients for ${recipe.title}`}>
-        {card.lines.map((line, index) => (
-          <li key={`${recipe.id}-${index}`} className="c97-recipe-line" data-have={line.have}>
-            <span className="c97-recipe-tick" aria-hidden="true">
-              <svg viewBox="0 0 14 14">
-                <rect x="1" y="1" width="12" height="12" className="c97-recipe-tick-box" />
-                {line.have ? (
-                  <path d="M3 7.5L6 10.5L11 4" className="c97-recipe-tick-check" />
-                ) : null}
-              </svg>
-            </span>
-            <span>
-              <span className="sr-only">{line.have ? "In your pantry: " : "Still need: "}</span>
-              {line.name}
-              {line.staple ? <span className="c97-recipe-staple-mark">staple</span> : null}
-            </span>
-          </li>
-        ))}
-      </ul>
+      <p className="c97-meta c97-tabular" style={{ margin: "var(--c97-sp-3) 0 0" }}>
+        {card.counts.need === 0
+          ? "You have every ingredient"
+          : `Missing ${card.counts.need} of ${card.lines.length} ingredients`}
+      </p>
 
       <button
         type="button"
         className="c97-recipe-card-steps-toggle"
         onClick={onToggleSteps}
         aria-expanded={isOpen}
-        aria-controls={stepsId}
+        aria-controls={detailId}
       >
-        {isOpen ? "Hide steps" : "Steps"}
+        {isOpen ? "Hide ingredients and steps" : "Ingredients and steps"}
       </button>
 
       {isOpen ? (
-        <div id={stepsId} className="c97-recipe-card-steps">
-          <ol>
-            {recipe.instructions.map((step, index) => (
-              <li key={index}>
-                <span>{String(index + 1).padStart(2, "0")}</span>
-                <span>{step}</span>
+        <div id={detailId} style={{ marginTop: "var(--c97-sp-3)" }}>
+          <ul className="c97-recipe-ingredients" aria-label={`Ingredients for ${recipe.title}`}>
+            {card.lines.map((line, index) => (
+              <li key={`${recipe.id}-${index}`} className="c97-recipe-line" data-have={line.have}>
+                <span className="c97-recipe-tick" aria-hidden="true">
+                  <svg viewBox="0 0 14 14">
+                    <rect x="1" y="1" width="12" height="12" className="c97-recipe-tick-box" />
+                    {line.have ? (
+                      <path d="M3 7.5L6 10.5L11 4" className="c97-recipe-tick-check" />
+                    ) : null}
+                  </svg>
+                </span>
+                <span>
+                  <span className="sr-only">{line.have ? "In your pantry: " : "Still need: "}</span>
+                  {line.name}
+                  {line.staple ? <span className="c97-recipe-staple-mark">staple</span> : null}
+                </span>
               </li>
             ))}
-          </ol>
-          {recipe.tags.length > 0 ? (
-            <div className="c97-recipe-card-tags">
-              {recipe.tags.map((tag) => (
-                <span key={tag} className="c97-chip">
-                  {tag}
-                </span>
+          </ul>
+
+          <div className="c97-recipe-card-steps">
+            <ol>
+              {recipe.instructions.map((step, index) => (
+                <li key={index}>
+                  <span>{String(index + 1).padStart(2, "0")}</span>
+                  <span>{step}</span>
+                </li>
               ))}
-            </div>
-          ) : null}
+            </ol>
+            {recipe.tags.length > 0 ? (
+              <div className="c97-recipe-card-tags">
+                {recipe.tags.map((tag) => (
+                  <span key={tag} className="c97-chip">
+                    {tag}
+                  </span>
+                ))}
+              </div>
+            ) : null}
+          </div>
         </div>
       ) : null}
     </article>

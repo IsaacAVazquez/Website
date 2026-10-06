@@ -1,7 +1,15 @@
-import { render, screen } from "@testing-library/react";
+import { fireEvent, render, screen, within } from "@testing-library/react";
 import type { EarthquakeSummary, QuakeEvent } from "@/types/earthquake";
 import { EarthquakeClient } from "../earthquake-client";
 import { DEFAULT_EARTHQUAKE_STATE } from "../earthquake-state";
+
+const mockPush = jest.fn();
+let currentSearchParams = new URLSearchParams();
+
+jest.mock("next/navigation", () => ({
+  useRouter: () => ({ push: mockPush, replace: jest.fn() }),
+  useSearchParams: () => currentSearchParams,
+}));
 
 const quake: QuakeEvent = {
   id: "hv75044217",
@@ -58,6 +66,8 @@ function renderClient() {
 describe("EarthquakeClient", () => {
   beforeEach(() => {
     respondWith(null);
+    currentSearchParams = new URLSearchParams();
+    mockPush.mockReset();
   });
 
   it("prints feed and quake times in UTC and says so", () => {
@@ -113,5 +123,56 @@ describe("EarthquakeClient", () => {
       screen.getByText(/falls back to a snapshot saved once a day/)
     ).toBeInTheDocument();
     expect(screen.queryByText(/refreshed on a schedule/)).not.toBeInTheDocument();
+  });
+
+  it("opens a picked quake's detail right under its log row and closes it on a second press", () => {
+    const { rerender } = renderClient();
+    const row = screen.getByRole("button", { name: /Fern Forest/ });
+
+    // Nothing is open until a quake is picked, so the log starts as a plain list.
+    expect(screen.queryByTestId("quake-inline-detail")).toBeNull();
+    fireEvent.click(row);
+    expect(mockPush).toHaveBeenLastCalledWith("/earthquake-pulse?quake=hv75044217", { scroll: false });
+
+    currentSearchParams = new URLSearchParams("quake=hv75044217");
+    rerender(<EarthquakeClient initialState={DEFAULT_EARTHQUAKE_STATE} summary={summary} />);
+
+    const detail = screen.getByTestId("quake-inline-detail");
+    expect(row.nextElementSibling).toBe(detail);
+    expect(
+      within(detail).getByRole("heading", { level: 3, name: "12 km SSE of Fern Forest, Hawaii" })
+    ).toBeInTheDocument();
+    expect(within(detail).getByText("Coordinates")).toBeInTheDocument();
+
+    fireEvent.click(row);
+    expect(mockPush).toHaveBeenLastCalledWith("/earthquake-pulse", { scroll: false });
+  });
+
+  it("keeps a picked quake's detail in the log panel when the open view does not list it", () => {
+    currentSearchParams = new URLSearchParams("view=significant&quake=hv75044217");
+    renderClient();
+
+    const detail = screen.getByTestId("quake-inline-detail");
+    expect(screen.getByRole("tabpanel")).toContainElement(detail);
+    expect(within(detail).getByRole("heading", { level: 3, name: /Fern Forest/ })).toBeInTheDocument();
+    expect(screen.getByText("No significant quakes in the past 30 days.")).toBeInTheDocument();
+  });
+
+  it("offers the log's views under the summary, and a jump lands on the matching tab", () => {
+    renderClient();
+
+    const jumps = screen.getByRole("group", { name: "Jump to a log view" });
+    expect(within(jumps).getAllByRole("button").map((button) => button.textContent)).toEqual([
+      "Recent",
+      "Significant",
+      "Regions",
+    ]);
+    // The jumps sit in the hero's action slot, so they print ahead of the figures and the seismogram.
+    const figures = document.querySelector(".c97-project-hero-readouts") as HTMLElement;
+    expect(jumps.compareDocumentPosition(figures) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
+
+    fireEvent.click(within(jumps).getByRole("button", { name: "Significant" }));
+    expect(mockPush).toHaveBeenLastCalledWith("/earthquake-pulse?view=significant", { scroll: false });
+    expect(screen.getByRole("tab", { name: "Significant" })).toHaveFocus();
   });
 });
