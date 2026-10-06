@@ -15,6 +15,9 @@ import {
   LeaderList,
   type LeaderEntry,
 } from "@/components/football";
+// Imported by path. The football barrel ships whatever it re-exports to every
+// route that reads it, and the two league pages do not use this drawer.
+import { DetailDrawer } from "@/components/football/DetailDrawer";
 import { Catalog97ProjectHero } from "@/components/catalog97/Catalog97ProjectHero";
 import { PROJECT_PRESS } from "@/constants/projectPress";
 import type {
@@ -71,6 +74,11 @@ const postseasonRoundLabels: Record<string, string> = {
 function formatGamesBack(games: number) {
   if (!Number.isFinite(games) || games <= 0) return "—";
   return `${games.toFixed(1)} GB`;
+}
+
+/** The board a club prints on, which is its league's race in the wild card view and its division otherwise. */
+function boardName(row: MlbStandingsRow, view: MlbView) {
+  return view === "wildcard" ? `${row.league} Wild Card` : row.division;
 }
 
 function formatRecord(row: MlbStandingsRow) {
@@ -182,6 +190,21 @@ export function MlbClient({ initialState, summary, initialTeamSnapshot }: MlbCli
     "Unable to load team snapshot."
   );
   const [activeDetailTab, setActiveDetailTab] = useState<DetailTab>("team");
+  // The team drawer is its own state, because every view writes its first
+  // team into ?team= and the URL alone cannot say a team was opened. It starts
+  // open only for a link to a team other than the view's first, and after
+  // that only `handleTeamChange` opens it. It holds the team that was asked
+  // for and waits for the route to reach it, so it never shows the last one.
+  const [drawerTeamId, setDrawerTeamId] = useState<string | null>(() =>
+    searchParams.get("team") !== null &&
+    selectedTeamId !== getDefaultTeam(standings, routeState.view, defaultState.team)
+      ? selectedTeamId
+      : null
+  );
+  const isDrawerOpen = drawerTeamId !== null && drawerTeamId === selectedTeamId;
+  // The board the reader picked, or the one they last opened a team on. Until
+  // then the board is the selected team's.
+  const [boardChoice, setBoardChoice] = useState<string | null>(null);
 
   const desiredHref = buildHref(
     { view: routeState.view, team: selectedTeamId },
@@ -206,18 +229,26 @@ export function MlbClient({ initialState, summary, initialTeamSnapshot }: MlbCli
   }
 
   function handleTeamChange(teamId: string) {
-    navigate({
-      view: routeState.view,
-      team: canonicalizeTeamId(teamId, aliasMap) ?? defaultState.team,
-    });
+    const team = canonicalizeTeamId(teamId, aliasMap) ?? defaultState.team;
+    // A game card can name a team the current view leaves out, so that team
+    // opens in the full league, where it can be selected.
+    const view = filterStandings(standings, routeState.view).some((row) => row.id === team)
+      ? routeState.view
+      : defaultState.view;
+    const row = standingsById.get(team);
+    setDrawerTeamId(team);
+    setBoardChoice(row ? boardName(row, view) : null);
+    navigate({ view, team });
   }
 
   const groupedStandings = useMemo(() => {
-    const groups = groupBy(visibleStandings, (row) =>
-      routeState.view === "wildcard" ? `${row.league} Wild Card` : row.division
-    );
+    const groups = groupBy(visibleStandings, (row) => boardName(row, routeState.view));
     return Array.from(groups.entries());
   }, [visibleStandings, routeState.view]);
+  const activeGroup =
+    groupedStandings.find(([groupName]) => groupName === boardChoice) ??
+    groupedStandings.find(([, rows]) => rows.some((row) => row.id === selectedRow?.id)) ??
+    groupedStandings[0];
 
   const leagueLeader = useMemo(
     () =>
@@ -264,6 +295,9 @@ export function MlbClient({ initialState, summary, initialTeamSnapshot }: MlbCli
             ? ` · updated ${snapshotDateLabel}`
             : ""
         }`}
+        // The hero fills a phone's first screen and the scoreboard runs long
+        // under it, so one link goes straight to the table.
+        action={<a href="#mlb-standings" className="c97-btn-ghost">Jump to standings</a>}
         readouts={[
           {
             label: "Best record",
@@ -287,7 +321,7 @@ export function MlbClient({ initialState, summary, initialTeamSnapshot }: MlbCli
         <MlbScoreboard divisions={scoreboard} />
       </Catalog97ProjectHero>
 
-      <section className="c97-band c97-sheet" data-c97-surface="paper" data-seam="torn">
+      <section id="mlb-standings" className="c97-band c97-sheet" data-c97-surface="paper" data-seam="torn">
         <div className="c97-shell">
           <h2 className="c97-poster-sm" style={{ marginBottom: "var(--c97-sp-2)" }}>Standings</h2>
 
@@ -323,166 +357,103 @@ export function MlbClient({ initialState, summary, initialTeamSnapshot }: MlbCli
 
           {!hasStandings && (
             <p className="c97-prose" style={{ marginTop: "var(--c97-sp-3)" }}>
-              The 30 clubs are listed below. Win and loss data will appear once the next
-              snapshot is published.
+              The clubs are listed below by division. Win and loss data will appear once the
+              next snapshot is published.
             </p>
           )}
 
-          <div className="grid xl:grid-cols-[minmax(0,1.7fr)_minmax(300px,0.92fr)]" style={{ marginTop: "var(--c97-sp-3)", gap: "var(--c97-sp-3)" }}>
+          {groupedStandings.length > 1 && activeGroup ? (
+            <div className="c97-segmented" role="group" aria-label={routeState.view === "wildcard" ? "League" : "Division"} style={{ marginTop: "var(--c97-sp-3)" }}>
+              {groupedStandings.map(([groupName]) => (
+                <button
+                  key={groupName}
+                  type="button"
+                  aria-pressed={groupName === activeGroup[0]}
+                  onClick={() => setBoardChoice(groupName)}
+                  className="min-h-[44px] text-sm font-semibold"
+                >
+                  {groupName}
+                </button>
+              ))}
+            </div>
+          ) : null}
+
+          {activeGroup ? (
             <div
-              className="flex flex-col overflow-x-auto" style={{ rowGap: "var(--c97-sp-3)" }}
+              className="overflow-x-auto"
+              style={{ marginTop: "var(--c97-sp-3)" }}
               role="region"
               aria-label="MLB standings (scrollable)"
               tabIndex={0}
             >
-              {groupedStandings.map(([groupName, rows]) => (
-                <div key={groupName}>
-                  <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-1)" }}>{groupName}</p>
-                  <table className="c97-table c97-mlb-table" aria-label={`${groupName} standings`}>
-                    <thead>
-                      <tr>
-                        <th scope="col">Pos</th>
-                        <th scope="col">Team</th>
-                        <th scope="col">W-L</th>
-                        <th scope="col" className="hidden sm:table-cell" data-align="end">PCT</th>
-                        <th scope="col" className="hidden md:table-cell" data-align="end">GB</th>
-                        <th scope="col" className="hidden lg:table-cell" data-align="end">RS</th>
-                        <th scope="col" className="hidden lg:table-cell" data-align="end">RA</th>
-                        <th scope="col" className="hidden xl:table-cell">L10</th>
+              <table className="c97-table c97-mlb-table" aria-label={`${activeGroup[0]} standings`}>
+                <thead>
+                  <tr>
+                    <th scope="col">Pos</th>
+                    <th scope="col">Team</th>
+                    <th scope="col">W-L</th>
+                    <th scope="col" className="hidden sm:table-cell" data-align="end">PCT</th>
+                    <th scope="col" className="hidden md:table-cell" data-align="end">GB</th>
+                    <th scope="col" className="hidden lg:table-cell" data-align="end">RS</th>
+                    <th scope="col" className="hidden lg:table-cell" data-align="end">RA</th>
+                    <th scope="col" className="hidden xl:table-cell">L10</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {activeGroup[1].map((row) => {
+                    const isSelected = row.id === selectedRow?.id;
+                    const positionLabel =
+                      routeState.view === "wildcard"
+                        ? row.wildCardRank ?? row.divisionRank
+                        : row.divisionRank;
+                    const zone = getTeamZone(row);
+                    return (
+                      <tr key={row.id} data-selected={isSelected || undefined}>
+                        <td>
+                          <div className="flex items-center" style={{ gap: "var(--c97-sp-1)" }}>
+                            <span
+                              className="c97-mlb-zone-dot"
+                              style={{ backgroundColor: getZoneDotColor(zone) }}
+                              title={getZoneLabel(zone)}
+                              aria-hidden="true"
+                            />
+                            <span className="c97-mono">{positionLabel}</span>
+                            <span className="sr-only">{getZoneLabel(zone)}</span>
+                          </div>
+                        </td>
+                        <td>
+                          <button
+                            type="button"
+                            onClick={() => handleTeamChange(row.id)}
+                            aria-pressed={isSelected}
+                            aria-haspopup="dialog"
+                            aria-label={`Show ${row.name} details`}
+                            className="flex min-h-[44px] w-full items-center text-left"
+                            style={{ gap: "var(--c97-sp-1)", background: "none", border: 0, padding: 0 }}
+                          >
+                            <CrestAvatar
+                              crest={logoByTeamId.get(row.id) ?? null}
+                              name={row.shortName}
+                              size="sm"
+                            />
+                            <span className="c97-serif" style={{ fontWeight: 600 }}>
+                              {row.shortName}
+                            </span>
+                          </button>
+                        </td>
+                        <td className="c97-mono">{formatRecord(row)}</td>
+                        <td className="c97-mono hidden sm:table-cell" data-align="end">{formatFixed(row.pct, 3)}</td>
+                        <td className="c97-mono hidden md:table-cell" data-align="end">{formatGamesBack(row.gamesBack)}</td>
+                        <td className="c97-mono hidden lg:table-cell" data-align="end">{row.runsScored}</td>
+                        <td className="c97-mono hidden lg:table-cell" data-align="end">{row.runsAllowed}</td>
+                        <td className="c97-mono hidden xl:table-cell">{row.last10}</td>
                       </tr>
-                    </thead>
-                    <tbody>
-                      {rows.map((row) => {
-                        const isSelected = row.id === selectedRow?.id;
-                        const positionLabel =
-                          routeState.view === "wildcard"
-                            ? row.wildCardRank ?? row.divisionRank
-                            : row.divisionRank;
-                        const zone = getTeamZone(row);
-                        return (
-                          <tr key={row.id} data-selected={isSelected || undefined}>
-                            <td>
-                              <div className="flex items-center" style={{ gap: "var(--c97-sp-1)" }}>
-                                <span
-                                  className="c97-mlb-zone-dot"
-                                  style={{ backgroundColor: getZoneDotColor(zone) }}
-                                  title={getZoneLabel(zone)}
-                                  aria-hidden="true"
-                                />
-                                <span className="c97-mono">{positionLabel}</span>
-                                <span className="sr-only">{getZoneLabel(zone)}</span>
-                              </div>
-                            </td>
-                            <td>
-                              <button
-                                type="button"
-                                onClick={() => handleTeamChange(row.id)}
-                                aria-pressed={isSelected}
-                                aria-label={`Show ${row.name} details`}
-                                className="flex min-h-[44px] w-full items-center text-left"
-                                style={{ gap: "var(--c97-sp-1)", background: "none", border: 0, padding: 0 }}
-                              >
-                                <CrestAvatar
-                                  crest={logoByTeamId.get(row.id) ?? null}
-                                  name={row.shortName}
-                                  size="sm"
-                                />
-                                <span className="c97-serif" style={{ fontWeight: 600 }}>
-                                  {row.shortName}
-                                </span>
-                              </button>
-                            </td>
-                            <td className="c97-mono">{formatRecord(row)}</td>
-                            <td className="c97-mono hidden sm:table-cell" data-align="end">{formatFixed(row.pct, 3)}</td>
-                            <td className="c97-mono hidden md:table-cell" data-align="end">{formatGamesBack(row.gamesBack)}</td>
-                            <td className="c97-mono hidden lg:table-cell" data-align="end">{row.runsScored}</td>
-                            <td className="c97-mono hidden lg:table-cell" data-align="end">{row.runsAllowed}</td>
-                            <td className="c97-mono hidden xl:table-cell">{row.last10}</td>
-                          </tr>
-                        );
-                      })}
-                    </tbody>
-                  </table>
-                </div>
-              ))}
+                    );
+                  })}
+                </tbody>
+              </table>
             </div>
-
-            <aside className="xl:sticky xl:top-6 xl:self-start">
-              <div className="c97-panel" aria-live="polite" data-testid="mlb-selected-team">
-                {selectedRow ? (
-                  <>
-                    <div className="flex items-start" style={{ gap: "var(--c97-sp-1)" }}>
-                      <CrestAvatar
-                        crest={logoByTeamId.get(selectedRow.id) ?? null}
-                        name={selectedRow.name}
-                        size="lg"
-                      />
-                      <div className="min-w-0 flex-1">
-                        <h3 className="c97-serif truncate" style={{ fontSize: "var(--c97-fs-h3)" }}>
-                          {selectedRow.name}
-                        </h3>
-                        <div className="flex flex-wrap" style={{ marginTop: "var(--c97-sp-1)", gap: "var(--c97-sp-1)" }}>
-                          <span className="c97-chip">
-                            {selectedRow.division || `${selectedRow.league} club`}
-                          </span>
-                          <span className="c97-chip">{formatRecord(selectedRow)}</span>
-                          {selectedRow.streak && <span className="c97-chip">{selectedRow.streak}</span>}
-                        </div>
-                      </div>
-                      <span className="c97-chip" style={{ flexShrink: 0 }}>
-                        Div {selectedRow.divisionRank || "—"}
-                      </span>
-                    </div>
-
-                    <dl
-                      className="grid grid-cols-2"
-                      style={{ marginTop: "var(--c97-sp-2)", columnGap: "var(--c97-sp-2)", rowGap: "var(--c97-sp-1)", borderTop: "1px solid var(--c97-rule)", paddingTop: "var(--c97-sp-3)" }}
-                    >
-                      {(
-                        [
-                          ["W%", formatFixed(selectedRow.pct, 3)],
-                          ["GB", formatGamesBack(selectedRow.gamesBack)],
-                          ["Run diff", formatRunDiff(selectedRow.runDifferential)],
-                          ["L10", selectedRow.last10],
-                          ["Offense", formatRank(offenseRankByTeam.get(selectedRow.id))],
-                          ["Defense", formatRank(defenseRankByTeam.get(selectedRow.id))],
-                        ] as const
-                      ).map(([label, value]) => (
-                        <div key={label} className="flex items-baseline justify-between" style={{ gap: "var(--c97-sp-1)" }}>
-                          <dt className="c97-kicker">{label}</dt>
-                          <dd className="c97-mono mb-0" style={{ fontWeight: 600 }}>{value}</dd>
-                        </div>
-                      ))}
-                    </dl>
-
-                    {(teamSnapshot?.form?.sequence?.length ?? 0) > 0 && (
-                      <div style={{ marginTop: "var(--c97-sp-2)", borderTop: "1px solid var(--c97-rule)", paddingTop: "var(--c97-sp-3)" }}>
-                        <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-1)" }}>Last 5</p>
-                        <div className="flex" style={{ gap: "var(--c97-sp-0)" }}>
-                          {(teamSnapshot?.form.sequence ?? []).slice(-5).map((result, idx) => (
-                            <TeamResultPill key={idx} result={result} />
-                          ))}
-                        </div>
-                      </div>
-                    )}
-
-                    {!teamSnapshot && (isTeamSnapshotLoading || teamSnapshotError) ? (
-                      <p
-                        className="c97-prose"
-                        style={{ marginTop: "var(--c97-sp-2)", borderTop: "1px solid var(--c97-rule)", paddingTop: "var(--c97-sp-3)" }}
-                        role={teamSnapshotError ? "alert" : "status"}
-                        aria-live="polite"
-                      >
-                        {isTeamSnapshotLoading ? "Loading team snapshot…" : teamSnapshotError}
-                      </p>
-                    ) : null}
-                  </>
-                ) : (
-                  <p className="c97-prose">Select a team to view detail.</p>
-                )}
-              </div>
-            </aside>
-          </div>
+          ) : null}
         </div>
       </section>
 
@@ -646,6 +617,71 @@ export function MlbClient({ initialState, summary, initialTeamSnapshot }: MlbCli
           </p>
         </div>
       </section>
+
+      {selectedRow ? (
+        <DetailDrawer
+          open={isDrawerOpen}
+          title={selectedRow.name}
+          lead={<CrestAvatar crest={logoByTeamId.get(selectedRow.id) ?? null} name={selectedRow.name} size="lg" />}
+          onClose={() => setDrawerTeamId(null)}
+          resetKey={selectedRow.id}
+          testId="mlb-selected-team"
+        >
+          <div className="flex flex-wrap" style={{ marginTop: "var(--c97-sp-2)", gap: "var(--c97-sp-1)" }}>
+            <span className="c97-chip">
+              {selectedRow.division || `${selectedRow.league} club`}
+            </span>
+            <span className="c97-chip">Div {selectedRow.divisionRank || "—"}</span>
+            <span className="c97-chip">{formatRecord(selectedRow)}</span>
+            {selectedRow.streak && <span className="c97-chip">{selectedRow.streak}</span>}
+          </div>
+
+          <dl
+            className="grid grid-cols-2"
+            style={{ marginTop: "var(--c97-sp-2)", columnGap: "var(--c97-sp-2)", rowGap: "var(--c97-sp-1)", borderTop: "1px solid var(--c97-rule)", paddingTop: "var(--c97-sp-3)" }}
+          >
+            {(
+              [
+                ["W%", formatFixed(selectedRow.pct, 3)],
+                ["GB", formatGamesBack(selectedRow.gamesBack)],
+                ["Runs scored", `${selectedRow.runsScored}`],
+                ["Runs allowed", `${selectedRow.runsAllowed}`],
+                ["Run diff", formatRunDiff(selectedRow.runDifferential)],
+                ["L10", selectedRow.last10],
+                ["Offense", formatRank(offenseRankByTeam.get(selectedRow.id))],
+                ["Defense", formatRank(defenseRankByTeam.get(selectedRow.id))],
+              ] as const
+            ).map(([label, value]) => (
+              <div key={label} className="flex items-baseline justify-between" style={{ gap: "var(--c97-sp-1)" }}>
+                <dt className="c97-kicker">{label}</dt>
+                <dd className="c97-mono mb-0" style={{ fontWeight: 600 }}>{value}</dd>
+              </div>
+            ))}
+          </dl>
+
+          {(teamSnapshot?.form?.sequence?.length ?? 0) > 0 && (
+            <div style={{ marginTop: "var(--c97-sp-2)", borderTop: "1px solid var(--c97-rule)", paddingTop: "var(--c97-sp-3)" }}>
+              <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-1)" }}>Last 5</p>
+              <div className="flex" style={{ gap: "var(--c97-sp-0)" }}>
+                {(teamSnapshot?.form.sequence ?? []).slice(-5).map((result, idx) => (
+                  <TeamResultPill key={idx} result={result} />
+                ))}
+              </div>
+            </div>
+          )}
+
+          {!teamSnapshot && (isTeamSnapshotLoading || teamSnapshotError) ? (
+            <p
+              className="c97-prose"
+              style={{ marginTop: "var(--c97-sp-2)", borderTop: "1px solid var(--c97-rule)", paddingTop: "var(--c97-sp-3)" }}
+              role={teamSnapshotError ? "alert" : "status"}
+              aria-live="polite"
+            >
+              {isTeamSnapshotLoading ? "Loading team snapshot…" : teamSnapshotError}
+            </p>
+          ) : null}
+        </DetailDrawer>
+      ) : null}
     </>
   );
 }

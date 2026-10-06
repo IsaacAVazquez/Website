@@ -521,6 +521,8 @@ test.describe("Fantasy football draft tracker", () => {
     await expect(page.getByText("PPR scoring", { exact: true })).toBeVisible();
 
     await page.getByRole("button", { name: "New room" }).click();
+    // League name and the preset form sit behind the optional settings disclosure.
+    await page.getByText("Show optional settings").click();
     await page.getByLabel("League name").fill("Saved standard league");
     await page.getByLabel("Teams").selectOption("10");
     await page.getByRole("button", { name: "Std", exact: true }).click();
@@ -550,6 +552,7 @@ test.describe("Fantasy football draft tracker", () => {
     ).toBeVisible();
 
     await page.getByRole("button", { name: "New room" }).click();
+    await page.getByText("Show optional settings").click();
     await expect(page.getByLabel("League name")).toHaveValue("My Fantasy League");
     await expect(page.getByLabel("Teams")).toHaveValue("12");
     await expect(page.getByRole("button", { name: "PPR", exact: true })).toHaveAttribute(

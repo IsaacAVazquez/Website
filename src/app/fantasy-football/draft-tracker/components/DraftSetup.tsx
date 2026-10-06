@@ -301,14 +301,17 @@ export function DraftSetup({
         ) : null}
       </div>
 
-      <div
-        className="grid border-b"
-        style={{ paddingInline: "var(--c97-sp-2)", paddingBlock: "var(--c97-sp-2)", gap: "var(--c97-sp-1)", borderColor: "var(--c97-rule)" }}
-      >
-        <span className={MONO_LABEL_CLASS} style={{ color: "var(--c97-ink-2)" }}>
-          League presets
-        </span>
-        {presets.length > 0 ? (
+      {/* Saved presets are the shortest path for a returning league, so they
+          lead. Saving one is an optional step and sits with the other optional
+          settings below. */}
+      {presets.length > 0 ? (
+        <div
+          className="grid border-b"
+          style={{ paddingInline: "var(--c97-sp-2)", paddingBlock: "var(--c97-sp-2)", gap: "var(--c97-sp-1)", borderColor: "var(--c97-rule)" }}
+        >
+          <span className={MONO_LABEL_CLASS} style={{ color: "var(--c97-ink-2)" }}>
+            League presets
+          </span>
           <div className="flex flex-wrap" style={{ gap: "var(--c97-sp-0)" }}>
             {presets.map((preset) => (
               <span
@@ -338,57 +341,13 @@ export function DraftSetup({
               </span>
             ))}
           </div>
-        ) : null}
-        <div className="flex flex-wrap items-center" style={{ gap: "var(--c97-sp-1)" }}>
-          <label htmlFor="draft-preset-name" className="sr-only">
-            Preset name
-          </label>
-          <input
-            id="draft-preset-name"
-            name="presetName"
-            value={presetName}
-            onChange={(event) => setPresetName(event.target.value.slice(0, 40))}
-            maxLength={40}
-            placeholder="Name these settings"
-            autoComplete="off"
-            className="min-h-touch w-56 border font-mono text-xs"
-            style={{ paddingInline: "var(--c97-sp-1)", ...(FIELD_STYLE) }}
-          />
-          <button
-            type="button"
-            onClick={saveCurrentPreset}
-            className={PILL_BUTTON_CLASS}
-          >
-            Save current settings
-          </button>
         </div>
-        <p className="m-0 font-mono text-3xs leading-relaxed" style={{ color: "var(--c97-ink-2)" }}>
-          A preset stores teams, slot, rounds, scoring, order, clock, lineup, and league name on
-          this device. Applying one fills the form and starts nothing.
-        </p>
-      </div>
+      ) : null}
 
       <div
         className="grid"
         style={{ paddingInline: "var(--c97-sp-2)", paddingBlock: "var(--c97-sp-2)", columnGap: "var(--c97-sp-2)", rowGap: "var(--c97-sp-2)", gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 210px), 1fr))" }}
       >
-        <label className="grid content-start text-sm" style={{ gap: "var(--c97-sp-0)" }} htmlFor="draft-league-name">
-          <span className={MONO_LABEL_CLASS} style={{ color: "var(--c97-ink-2)" }}>
-            League name
-          </span>
-          <input
-            id="draft-league-name"
-            name="leagueName"
-            value={formState.leagueName ?? ""}
-            onChange={(event) => updateField("leagueName", event.target.value.slice(0, 60))}
-            autoComplete="organization"
-            maxLength={60}
-            placeholder="Home league"
-            className={FIELD_CLASS}
-            style={FIELD_STYLE}
-          />
-        </label>
-
         <label className="grid content-start text-sm" style={{ gap: "var(--c97-sp-0)" }} htmlFor="draft-total-teams">
           <span className={MONO_LABEL_CLASS} style={{ color: "var(--c97-ink-2)" }}>
             Teams
@@ -429,26 +388,6 @@ export function DraftSetup({
           </select>
         </label>
 
-        <label className="grid content-start text-sm" style={{ gap: "var(--c97-sp-0)" }} htmlFor="draft-rounds">
-          <span className={MONO_LABEL_CLASS} style={{ color: "var(--c97-ink-2)" }}>
-            Rounds
-          </span>
-          <select
-            id="draft-rounds"
-            name="rounds"
-            value={formState.rounds}
-            onChange={(event) => updateField("rounds", Number(event.target.value))}
-            className={FIELD_CLASS}
-            style={FIELD_STYLE}
-          >
-            {[13, 14, 15, 16, 17, 18].map((roundCount) => (
-              <option key={roundCount} value={roundCount}>
-                {roundCount} rounds
-              </option>
-            ))}
-          </select>
-        </label>
-
         <div className="grid content-start text-sm" style={{ gap: "var(--c97-sp-0)" }}>
           <span id={scoringLabelId} className={MONO_LABEL_CLASS} style={{ color: "var(--c97-ink-2)" }}>
             Scoring
@@ -458,37 +397,6 @@ export function DraftSetup({
             value={formState.scoringFormat}
             onSelect={updateScoringFormat}
             labelledBy={scoringLabelId}
-          />
-        </div>
-
-        <div className="grid content-start text-sm" style={{ gap: "var(--c97-sp-0)" }}>
-          <span id={orderLabelId} className={MONO_LABEL_CLASS} style={{ color: "var(--c97-ink-2)" }}>
-            Draft order
-          </span>
-          <SegmentedButtons
-            labelledBy={orderLabelId}
-            options={ORDER_OPTIONS}
-            value={formState.draftType}
-            onSelect={(draftType) => updateField("draftType", draftType)}
-          />
-        </div>
-
-        <div className="grid content-start text-sm" style={{ gap: "var(--c97-sp-0)" }}>
-          <span id={clockLabelId} className={MONO_LABEL_CLASS} style={{ color: "var(--c97-ink-2)" }}>
-            Pick clock · advisory
-          </span>
-          <SegmentedButtons
-            labelledBy={clockLabelId}
-            options={CLOCK_OPTIONS}
-            value={
-              // A restored room can hold an off-menu duration (45s or 180s from
-              // the previous setup UI). It renders with no active segment until
-              // one is chosen, and the stored value keeps working.
-              CLOCK_OPTIONS.some((option) => option.value === (formState.timerSeconds ?? 0))
-                ? (formState.timerSeconds ?? 0)
-                : -1
-            }
-            onSelect={(timerSeconds) => updateField("timerSeconds", timerSeconds)}
           />
         </div>
       </div>
@@ -530,43 +438,166 @@ export function DraftSetup({
             );
           })}
         </div>
+      </fieldset>
 
-        {/* Presets cover the common rooms; these selects keep odd home-league
-            lineups reachable. Flex accepts RB, WR, or TE, and the board scores
-            one-QB rankings only, so Superflex rooms are not modeled here. */}
-        <div className="grid" style={{ columnGap: "var(--c97-sp-2)", rowGap: "var(--c97-sp-1)", gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 150px), 1fr))" }}>
-          <div className="grid content-start text-sm" style={{ gap: "var(--c97-sp-0)" }}>
-            <span className={MONO_LABEL_CLASS} style={{ color: "var(--c97-ink-2)" }}>
-              Quarterbacks
-            </span>
-            <span className="font-mono text-xs" style={{ paddingBlock: "var(--c97-sp-1)" }}>1</span>
-          </div>
-          {LINEUP_FIELDS.map((field) => (
-            <label
-              key={field.key}
-              className="grid content-start text-sm" style={{ gap: "var(--c97-sp-0)" }}
-              htmlFor={`lineup-${field.key.toLowerCase()}`}
-            >
+      {/* F12 of the 2026-10-05 audit: teams, slot, scoring, and a lineup preset
+          are enough to start, so everything else waits in a native disclosure.
+          The summary line beside Start still prints the order, rounds, and
+          lineup in force. */}
+      <details className="c97-disclosure" style={{ paddingInline: "var(--c97-sp-2)", paddingBottom: "var(--c97-sp-2)" }}>
+        <summary className="c97-btn-ghost">
+          <span data-when="closed">Show optional settings</span>
+          <span data-when="open">Hide optional settings</span>
+        </summary>
+        <div className="grid" style={{ gap: "var(--c97-sp-2)", marginTop: "var(--c97-sp-1)" }}>
+          <div
+            className="grid"
+            style={{ columnGap: "var(--c97-sp-2)", rowGap: "var(--c97-sp-2)", gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 210px), 1fr))" }}
+          >
+            <label className="grid content-start text-sm" style={{ gap: "var(--c97-sp-0)" }} htmlFor="draft-league-name">
               <span className={MONO_LABEL_CLASS} style={{ color: "var(--c97-ink-2)" }}>
-                {field.label}
+                League name
+              </span>
+              <input
+                id="draft-league-name"
+                name="leagueName"
+                value={formState.leagueName ?? ""}
+                onChange={(event) => updateField("leagueName", event.target.value.slice(0, 60))}
+                autoComplete="organization"
+                maxLength={60}
+                placeholder="Home league"
+                className={FIELD_CLASS}
+                style={FIELD_STYLE}
+              />
+            </label>
+
+            <label className="grid content-start text-sm" style={{ gap: "var(--c97-sp-0)" }} htmlFor="draft-rounds">
+              <span className={MONO_LABEL_CLASS} style={{ color: "var(--c97-ink-2)" }}>
+                Rounds
               </span>
               <select
-                id={`lineup-${field.key.toLowerCase()}`}
-                value={formState.lineup[field.key]}
-                onChange={(event) => updateLineupField(field.key, Number(event.target.value))}
+                id="draft-rounds"
+                name="rounds"
+                value={formState.rounds}
+                onChange={(event) => updateField("rounds", Number(event.target.value))}
                 className={FIELD_CLASS}
                 style={FIELD_STYLE}
               >
-                {field.values.map((value) => (
-                  <option key={value} value={value}>
-                    {value}
+                {[13, 14, 15, 16, 17, 18].map((roundCount) => (
+                  <option key={roundCount} value={roundCount}>
+                    {roundCount} rounds
                   </option>
                 ))}
               </select>
             </label>
-          ))}
+
+            <div className="grid content-start text-sm" style={{ gap: "var(--c97-sp-0)" }}>
+              <span id={orderLabelId} className={MONO_LABEL_CLASS} style={{ color: "var(--c97-ink-2)" }}>
+                Draft order
+              </span>
+              <SegmentedButtons
+                labelledBy={orderLabelId}
+                options={ORDER_OPTIONS}
+                value={formState.draftType}
+                onSelect={(draftType) => updateField("draftType", draftType)}
+              />
+            </div>
+
+            <div className="grid content-start text-sm" style={{ gap: "var(--c97-sp-0)" }}>
+              <span id={clockLabelId} className={MONO_LABEL_CLASS} style={{ color: "var(--c97-ink-2)" }}>
+                Pick clock · advisory
+              </span>
+              <SegmentedButtons
+                labelledBy={clockLabelId}
+                options={CLOCK_OPTIONS}
+                value={
+                  // A restored room can hold an off-menu duration (45s or 180s from
+                  // the previous setup UI). It renders with no active segment until
+                  // one is chosen, and the stored value keeps working.
+                  CLOCK_OPTIONS.some((option) => option.value === (formState.timerSeconds ?? 0))
+                    ? (formState.timerSeconds ?? 0)
+                    : -1
+                }
+                onSelect={(timerSeconds) => updateField("timerSeconds", timerSeconds)}
+              />
+            </div>
+          </div>
+
+          <div className="grid" style={{ gap: "var(--c97-sp-1)" }}>
+            <span className={MONO_LABEL_CLASS} style={{ color: "var(--c97-ink-2)" }}>
+              Custom lineup
+            </span>
+            {/* Presets cover the common rooms; these selects keep odd home-league
+                lineups reachable. Flex accepts RB, WR, or TE, and the board scores
+                one-QB rankings only, so Superflex rooms are not modeled here. */}
+            <div className="grid" style={{ columnGap: "var(--c97-sp-2)", rowGap: "var(--c97-sp-1)", gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 150px), 1fr))" }}>
+              <div className="grid content-start text-sm" style={{ gap: "var(--c97-sp-0)" }}>
+                <span className={MONO_LABEL_CLASS} style={{ color: "var(--c97-ink-2)" }}>
+                  Quarterbacks
+                </span>
+                <span className="font-mono text-xs" style={{ paddingBlock: "var(--c97-sp-1)" }}>1</span>
+              </div>
+              {LINEUP_FIELDS.map((field) => (
+                <label
+                  key={field.key}
+                  className="grid content-start text-sm" style={{ gap: "var(--c97-sp-0)" }}
+                  htmlFor={`lineup-${field.key.toLowerCase()}`}
+                >
+                  <span className={MONO_LABEL_CLASS} style={{ color: "var(--c97-ink-2)" }}>
+                    {field.label}
+                  </span>
+                  <select
+                    id={`lineup-${field.key.toLowerCase()}`}
+                    value={formState.lineup[field.key]}
+                    onChange={(event) => updateLineupField(field.key, Number(event.target.value))}
+                    className={FIELD_CLASS}
+                    style={FIELD_STYLE}
+                  >
+                    {field.values.map((value) => (
+                      <option key={value} value={value}>
+                        {value}
+                      </option>
+                    ))}
+                  </select>
+                </label>
+              ))}
+            </div>
+          </div>
+
+          <div className="grid" style={{ gap: "var(--c97-sp-1)" }}>
+            <span className={MONO_LABEL_CLASS} style={{ color: "var(--c97-ink-2)" }}>
+              Save as a league preset
+            </span>
+            <div className="flex flex-wrap items-center" style={{ gap: "var(--c97-sp-1)" }}>
+              <label htmlFor="draft-preset-name" className="sr-only">
+                Preset name
+              </label>
+              <input
+                id="draft-preset-name"
+                name="presetName"
+                value={presetName}
+                onChange={(event) => setPresetName(event.target.value.slice(0, 40))}
+                maxLength={40}
+                placeholder="Name these settings"
+                autoComplete="off"
+                className="min-h-touch w-56 border font-mono text-xs"
+                style={{ paddingInline: "var(--c97-sp-1)", ...(FIELD_STYLE) }}
+              />
+              <button
+                type="button"
+                onClick={saveCurrentPreset}
+                className={PILL_BUTTON_CLASS}
+              >
+                Save current settings
+              </button>
+            </div>
+            <p className="m-0 font-mono text-3xs leading-relaxed" style={{ color: "var(--c97-ink-2)" }}>
+              A preset stores teams, slot, rounds, scoring, order, clock, lineup, and league name on
+              this device. Applying one fills the form and starts nothing.
+            </p>
+          </div>
         </div>
-      </fieldset>
+      </details>
 
       <div
         className="flex flex-wrap items-center justify-between border-t"

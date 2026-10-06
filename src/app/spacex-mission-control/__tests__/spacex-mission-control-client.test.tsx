@@ -338,6 +338,45 @@ describe("SpaceXMissionControlClient", () => {
     ).not.toBeNull();
   });
 
+  it("repeats the mission action and a manifest jump above the hero card", async () => {
+    await act(async () => {
+      root.render(
+        <SpaceXMissionControlClient
+          initialState={DEFAULT_MISSION_CONTROL_STATE}
+          initialData={createInitialData()}
+        />
+      );
+    });
+    await flushPromises();
+
+    const actions = container.querySelector('[data-testid="mission-quick-actions"]') as HTMLElement;
+    // The actions print before the card, which is what puts them in a phone's first screen.
+    const card = container.querySelector('[data-testid="mission-hero"]') as HTMLElement;
+    expect(actions.compareDocumentPosition(card) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
+
+    const jump = actions.querySelector("a") as HTMLAnchorElement;
+    expect(jump.textContent).toBe("Jump to the manifest");
+    expect(jump.getAttribute("href")).toBe("#mission-manifest");
+    expect(container.querySelector("#mission-manifest [data-testid='mission-board']")).not.toBeNull();
+
+    // Vehicles is open, and the jump brings the manifest tab back.
+    const vehicles = Array.from(container.querySelectorAll('button[role="tab"]')).find((tab) =>
+      tab.textContent?.includes("Vehicles")
+    ) as HTMLButtonElement;
+    await act(async () => vehicles.click());
+    expect(container.querySelector('[data-testid="mission-board"]')).toBeNull();
+    await act(async () => jump.click());
+    expect(container.querySelector('[data-testid="mission-board"]')).not.toBeNull();
+
+    const inspect = actions.querySelector("button") as HTMLButtonElement;
+    expect(inspect.textContent).toBe("Inspect the next mission");
+    await act(async () => inspect.click());
+    expect(mockPush).toHaveBeenLastCalledWith(
+      `/spacex-mission-control?launch=${upcomingLaunch.id}`,
+      { scroll: false }
+    );
+  });
+
   it("renders server-hydrated summary, board, and detail data without mount-time browser fetches", async () => {
     jest.useFakeTimers();
     jest.setSystemTime(Date.parse("2026-04-30T12:00:00.000Z"));

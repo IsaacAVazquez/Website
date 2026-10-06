@@ -8,6 +8,99 @@ import {
 } from "@/lib/changelog";
 import { publishedDateFormatter } from "@/lib/utils";
 
+type ChangelogEntry = Awaited<ReturnType<typeof getAllChangelogEntries>>[number];
+
+/** How many of the newest entries print in full. The rest fold their body away. */
+const OPEN_ENTRY_COUNT = 8;
+
+const monthFormatter = new Intl.DateTimeFormat("en-US", {
+  month: "long",
+  year: "numeric",
+  timeZone: "UTC",
+});
+
+/**
+ * One dated entry. An older one keeps its title, summary, and anchor on the
+ * page and folds only the body, so a link to `#slug` still lands on it.
+ */
+function ChangelogRow({
+  entry,
+  collapsed,
+}: {
+  entry: ChangelogEntry;
+  collapsed: boolean;
+}) {
+  const body = (
+    <div
+      className="c97-article"
+      style={{
+        marginTop: "var(--c97-sp-2)",
+        color: "var(--c97-ink-2)",
+      }}
+      dangerouslySetInnerHTML={{ __html: entry.html }}
+    />
+  );
+
+  return (
+    <article
+      id={entry.slug}
+      className="c97-row c97-row-stack-sm"
+      style={{
+        scrollMarginTop: "var(--c97-sp-6)",
+        borderTop: "1px solid var(--c97-rule)",
+        paddingBlock: "var(--c97-sp-4)",
+      }}
+    >
+      <div>
+        <p className="c97-meta">
+          <span>{entry.category}</span>
+          {entry.tags.slice(0, 3).map((tag) => (
+            <span key={tag} className="c97-chip">
+              {tag}
+            </span>
+          ))}
+        </p>
+
+        <h2
+          className="c97-serif c97-h2"
+          style={{ marginTop: "var(--c97-sp-2)" }}
+        >
+          <Link
+            href={`/changelog#${entry.slug}`}
+            className="c97-link-heading"
+          >
+            {entry.title}
+          </Link>
+        </h2>
+
+        <p
+          className="c97-prose"
+          style={{ marginTop: "var(--c97-sp-2)" }}
+        >
+          {entry.summary}
+        </p>
+
+        {collapsed ? (
+          <details className="c97-disclosure">
+            <summary className="c97-sectionlink">
+              <span data-when="closed">Show the full entry</span>
+              <span data-when="open">Hide the full entry</span>
+            </summary>
+            {body}
+          </details>
+        ) : (
+          body
+        )}
+      </div>
+      <time dateTime={entry.publishedAt} className="c97-meta">
+        {publishedDateFormatter.format(
+          new Date(entry.publishedAt)
+        )}
+      </time>
+    </article>
+  );
+}
+
 export async function generateMetadata(): Promise<Metadata> {
   const latest = getLatestChangelogEntryDate();
   const interfaceUpdatedAt = "2026-07-23";
@@ -27,6 +120,16 @@ export default async function ChangelogPage() {
   const interfaceUpdatedAt = "2026-07-23";
   const dateModified =
     latest && latest > interfaceUpdatedAt ? latest : interfaceUpdatedAt;
+
+  const recent = entries.slice(0, OPEN_ENTRY_COUNT);
+  // Entries arrive newest first, so each month's run is already contiguous.
+  const olderByMonth: [string, ChangelogEntry[]][] = [];
+  for (const entry of entries.slice(OPEN_ENTRY_COUNT)) {
+    const month = monthFormatter.format(new Date(entry.publishedAt));
+    const last = olderByMonth[olderByMonth.length - 1];
+    if (last?.[0] === month) last[1].push(entry);
+    else olderByMonth.push([month, [entry]]);
+  }
 
   const breadcrumbs = [
     { name: "Home", url: "/" },
@@ -91,71 +194,47 @@ export default async function ChangelogPage() {
               No entries yet. Check back soon.
             </p>
           ) : (
-            <ol style={{ listStyle: "none", margin: 0, padding: 0 }}>
-              {entries.map((entry) => (
-                <li key={entry.slug}>
-                  <article
-                    id={entry.slug}
-                    className="c97-row c97-row-stack-sm"
+            <>
+              <ol style={{ listStyle: "none", margin: 0, padding: 0 }}>
+                {recent.map((entry) => (
+                  <li key={entry.slug}>
+                    <ChangelogRow entry={entry} collapsed={false} />
+                  </li>
+                ))}
+              </ol>
+              {/*
+                All 59 bodies open made a 53,307px phone page. Older entries
+                group under their month and keep the title and summary showing.
+              */}
+              {olderByMonth.map(([month, monthEntries]) => (
+                <div key={month}>
+                  <p
+                    className="c97-kicker c97-tabular"
                     style={{
-                      scrollMarginTop: "var(--c97-sp-6)",
                       borderTop: "1px solid var(--c97-rule)",
-                      paddingBlock: "var(--c97-sp-4)",
+                      paddingTop: "var(--c97-sp-4)",
                     }}
                   >
-                    <div>
-                      <p className="c97-meta">
-                        <span>{entry.category}</span>
-                        {entry.tags.slice(0, 3).map((tag) => (
-                          <span key={tag} className="c97-chip">
-                            {tag}
-                          </span>
-                        ))}
-                      </p>
-
-                      <h2
-                        className="c97-serif c97-h2"
-                        style={{ marginTop: "var(--c97-sp-2)" }}
-                      >
-                        {/*
-                          `.c97-link` for the hover shift to accent; the
-                          inline text-decoration takes its underline off, since
-                          a heading is not inline prose.
-                        */}
-                        <Link
-                          href={`/changelog#${entry.slug}`}
-                          className="c97-link"
-                          style={{ textDecoration: "none" }}
-                        >
-                          {entry.title}
-                        </Link>
-                      </h2>
-
-                      <p
-                        className="c97-prose"
-                        style={{ marginTop: "var(--c97-sp-2)" }}
-                      >
-                        {entry.summary}
-                      </p>
-
-                      <div
-                        className="c97-article"
-                        style={{
-                          marginTop: "var(--c97-sp-2)",
-                          color: "var(--c97-ink-2)",
-                        }}
-                        dangerouslySetInnerHTML={{ __html: entry.html }}
-                      />
-                    </div>
-                    <time dateTime={entry.publishedAt} className="c97-meta">
-                      {publishedDateFormatter.format(
-                        new Date(entry.publishedAt)
-                      )}
-                    </time>
-                  </article>
-                </li>
+                    {month} · {monthEntries.length}{" "}
+                    {monthEntries.length === 1 ? "entry" : "entries"}
+                  </p>
+                  <ol
+                    style={{
+                      listStyle: "none",
+                      margin: 0,
+                      padding: 0,
+                      marginTop: "var(--c97-sp-3)",
+                    }}
+                  >
+                    {monthEntries.map((entry) => (
+                      <li key={entry.slug}>
+                        <ChangelogRow entry={entry} collapsed />
+                      </li>
+                    ))}
+                  </ol>
+                </div>
               ))}
-            </ol>
+            </>
           )}
         </div>
       </section>

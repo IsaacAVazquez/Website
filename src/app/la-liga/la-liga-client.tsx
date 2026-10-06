@@ -277,6 +277,9 @@ export function LaLigaClient({
     accentColor: club.accentColor ?? null,
   }));
 
+  // The locale is named so the server and the browser sort alike.
+  const lookupClubs = clubs.toSorted((a, b) => a.name.localeCompare(b.name, "en"));
+
   const programmeRows: ProgrammeTableRow[] = visibleClubs.map((club) => ({
     id: club.id,
     position: club.position,
@@ -303,6 +306,38 @@ export function LaLigaClient({
         title="La Liga Pulse"
         standfirst={standfirst}
         meta={`${summary.sourceLabel} · Matchday ${summary.matchday} of 38 · updated ${snapshotDateLabel}`}
+        action={
+          <>
+        {/* The lookup sits right under the readouts, ahead of the ladder, so a
+            phone reaches a club without scrolling to the table. It opens on
+            the button and not on the select, because a keyboard walks a
+            closed select one club at a time. */}
+        <form
+          data-c97-surface="paper"
+          className="c97-offset flex flex-wrap items-end"
+          style={{ gap: "var(--c97-sp-2)", padding: "var(--c97-sp-2)", flex: "1 1 100%", maxWidth: "32rem" }}
+          onSubmit={(event) => {
+            event.preventDefault();
+            const clubId = new FormData(event.currentTarget).get("club");
+            if (typeof clubId === "string" && clubId) handleClubChange(clubId);
+          }}
+        >
+          <label className="flex min-w-0 flex-1 flex-col" style={{ gap: "var(--c97-sp-1)" }}>
+            <span className="c97-kicker">Find a club</span>
+            <select name="club" className="c97-field" defaultValue={selectedClub.id}>
+              {lookupClubs.map((club) => (
+                <option key={club.id} value={club.id}>
+                  {club.name}
+                </option>
+              ))}
+            </select>
+          </label>
+          <button type="submit" className="c97-btn">
+            Open club
+          </button>
+        </form>
+          </>
+        }
         readouts={[
           {
             label: "Leader",
@@ -321,6 +356,7 @@ export function LaLigaClient({
           },
         ]}
       >
+
         <PointsLadder
           clubs={ladderClubs}
           selectedId={selectedClub.id}

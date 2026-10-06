@@ -1,4 +1,5 @@
 import { fireEvent, render, screen, within } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
 import { getNflSummarySnapshot, getNflTeamSnapshot } from "@/lib/nflSnapshot";
 import { NflClient } from "../nfl-client";
 import { nflSnapshot } from "@/data/nflSnapshot";
@@ -89,6 +90,8 @@ describe("NflClient", () => {
 
     expect(screen.getByRole("heading", { level: 1, name: /nfl pulse/i })).toBeVisible();
     expect(screen.getByRole("region", { name: /nfl standings/i })).toBeVisible();
+    // A plain visit selects the first team without opening its drawer.
+    expect(screen.queryByRole("dialog")).not.toBeInTheDocument();
 
     fireEvent.click(screen.getByRole("button", { name: /^afc/i }));
     expect(mockPush).toHaveBeenLastCalledWith(
@@ -102,5 +105,40 @@ describe("NflClient", () => {
       "aria-selected",
       "true"
     );
+  });
+
+  it("opens the picked team in a drawer beside the table and returns focus on Escape", async () => {
+    const user = userEvent.setup();
+    const summary = await getNflSummarySnapshot();
+    const team = summary.teams[3]!;
+    global.fetch = jest.fn().mockResolvedValue({
+      ok: true,
+      json: async () => getNflTeamSnapshot(team.id),
+    }) as unknown as typeof fetch;
+    // The router is a mock, so a push has to be fed back in as the next
+    // search params for the page to see the URL it asked for.
+    mockPush.mockImplementation((href: string) => {
+      currentSearchParams = new URLSearchParams(href.split("?")[1] ?? "");
+    });
+    const ui = () => (
+      <NflClient initialState={DEFAULT_NFL_STATE} summary={summary} initialTeamSnapshot={null} />
+    );
+    const view = render(ui());
+
+    const opener = screen.getByRole("button", { name: `Show ${team.name} details` });
+    await user.click(opener);
+    view.rerender(ui());
+
+    expect(mockPush).toHaveBeenLastCalledWith(
+      buildNflHref({ view: "league", team: team.id }),
+      { scroll: false }
+    );
+    const drawer = await screen.findByRole("dialog", { name: `${team.name} detail` });
+    // The columns a phone drops from the table are in the drawer.
+    expect(within(drawer).getByText("Points against")).toBeInTheDocument();
+
+    await user.keyboard("{Escape}");
+    expect(screen.queryByRole("dialog")).not.toBeInTheDocument();
+    expect(opener).toHaveFocus();
   });
 });

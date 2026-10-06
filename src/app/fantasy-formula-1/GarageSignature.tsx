@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo } from "react";
+import { useMemo, type ReactNode } from "react";
 import { Lock } from "lucide-react";
 import type { FantasyFormula1Asset, FantasyFormula1LineupSummary } from "@/types/fantasyFormula1";
 import { formatMoney, garageSlots, normaliseTeamColor, type GarageSlot } from "./garage";
@@ -9,6 +9,8 @@ interface GarageProps {
   summary: FantasyFormula1LineupSummary;
   budget: number;
   lockedIds: Set<string>;
+  /** Printed under the budget bar, inside the plate. The page puts its one suggested lineup here. */
+  children?: ReactNode;
 }
 
 function GarageBox({ slot, locked }: { slot: GarageSlot; locked: boolean }) {
@@ -25,7 +27,11 @@ function GarageBox({ slot, locked }: { slot: GarageSlot; locked: boolean }) {
       <p className="c97-kicker">{slot.kind === "driver" ? "Driver" : "Constructor"}</p>
       {asset ? (
         <>
-          <p className="c97-serif c97-ff1-box-name">{asset.name}</p>
+          {/* On a phone a driver box prints the three-letter code, as the broadcast graphic does. */}
+          <p className="c97-serif c97-ff1-box-name">
+            <span className={slot.kind === "driver" ? "c97-ff1-box-full" : undefined}>{asset.name}</span>
+            {slot.kind === "driver" ? <span className="c97-ff1-box-code">{asset.shortName}</span> : null}
+          </p>
           <p className="c97-mono c97-ff1-box-figures mb-0">
             {formatMoney(asset.price)} &middot; {asset.projectedPoints.toFixed(1)} pts
           </p>
@@ -38,7 +44,14 @@ function GarageBox({ slot, locked }: { slot: GarageSlot; locked: boolean }) {
         </>
       ) : (
         <p className="c97-ff1-box-empty">
-          {slot.kind === "driver" ? "Open driver slot" : "Open constructor slot"}
+          {slot.kind === "driver" ? (
+            <>
+              <span className="c97-ff1-box-full">Open driver slot</span>
+              <span className="c97-ff1-box-code">Open</span>
+            </>
+          ) : (
+            "Open constructor slot"
+          )}
         </p>
       )}
     </div>
@@ -49,10 +62,12 @@ function GarageBox({ slot, locked }: { slot: GarageSlot; locked: boolean }) {
  * The page's signature: the garage, five driver boxes and two constructor
  * boxes in pick order, with the budget meter as a cost bar underneath. It
  * sits on its own paper plate because it draws data colours (team liveries)
- * on the saffron hero ink. Purely a display, since the lock toggle and the
- * remove control below are the keyboard path to the same picks.
+ * on the saffron hero ink. The boxes are a display, since the lock toggle and
+ * the remove control below are the keyboard path to the same picks. On a
+ * phone they shrink to a strip of codes, because the Current team list right
+ * under the hero carries each pick's price and points.
  */
-export function GarageSignature({ summary, budget, lockedIds }: GarageProps) {
+export function GarageSignature({ summary, budget, lockedIds, children }: GarageProps) {
   const layout = useMemo(() => garageSlots(summary, budget), [summary, budget]);
   const { spentWidth, overWidth, budgetLineAt, isOver } = layout.budget;
   const valueText = `${formatMoney(summary.totalPrice)} used of ${formatMoney(budget)}${
@@ -60,19 +75,19 @@ export function GarageSignature({ summary, budget, lockedIds }: GarageProps) {
   }`;
 
   return (
-    <div
-      data-c97-surface="paper"
-      className="c97-offset c97-ff1-garage"
-      style={{ padding: "var(--c97-sp-3)" }}
-    >
-      <div className="c97-ff1-garage-tier">
-        {layout.driverSlots.map((slot, index) => (
-          <GarageBox
-            key={`driver-${index}`}
-            slot={slot}
-            locked={slot.asset ? lockedIds.has(slot.asset.id) : false}
-          />
-        ))}
+    <div data-c97-surface="paper" className="c97-offset c97-ff1-garage">
+      {/* The label rides with the driver tier so the plate's wide gap does not open under it. */}
+      <div className="grid" style={{ gap: "var(--c97-sp-2)" }}>
+        <p className="c97-kicker">Current team</p>
+        <div className="c97-ff1-garage-tier">
+          {layout.driverSlots.map((slot, index) => (
+            <GarageBox
+              key={`driver-${index}`}
+              slot={slot}
+              locked={slot.asset ? lockedIds.has(slot.asset.id) : false}
+            />
+          ))}
+        </div>
       </div>
       <div className="c97-ff1-garage-tier" style={{ gridTemplateColumns: "repeat(2, minmax(0, 1fr))" }}>
         {layout.constructorSlots.map((slot, index) => (
@@ -109,6 +124,7 @@ export function GarageSignature({ summary, budget, lockedIds }: GarageProps) {
           {!isOver && summary.totalPrice < budget ? ` (${formatMoney(budget - summary.totalPrice)} left)` : ""}
         </p>
       </div>
+      {children}
     </div>
   );
 }

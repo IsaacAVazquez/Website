@@ -1,8 +1,10 @@
 "use client";
 
 import {
+  Fragment,
   useEffect,
   useMemo,
+  useRef,
   useState,
   type CSSProperties,
 } from "react";
@@ -287,9 +289,13 @@ function DistributionBars({ summary }: { summary: EarthquakeSummary }) {
 function RegionList({
   summary,
   onSelect,
+  openQuakeId,
+  now,
 }: {
   summary: EarthquakeSummary;
   onSelect: (id: string) => void;
+  openQuakeId: string | null;
+  now: number | null;
 }) {
   if (summary.regions.length === 0) {
     return <p className="c97-meta">No region logged a magnitude 2.5 or larger quake in the past seven days.</p>;
@@ -341,15 +347,20 @@ function RegionList({
         );
 
         return clickable ? (
-          <button
-            key={region.region}
-            type="button"
-            onClick={() => onSelect(region.strongestId!)}
-            className="c97-quake-region block w-full border text-left"
-            style={{ paddingInline: "var(--c97-sp-2)", paddingBlock: "var(--c97-sp-1)", borderColor: "var(--c97-rule)", background: "var(--c97-field)" }}
-          >
-            {content}
-          </button>
+          <Fragment key={region.region}>
+            <button
+              type="button"
+              onClick={() => onSelect(region.strongestId!)}
+              aria-current={region.strongestId === openQuakeId ? "true" : undefined}
+              className="c97-quake-region block w-full border text-left"
+              style={{ paddingInline: "var(--c97-sp-2)", paddingBlock: "var(--c97-sp-1)", borderColor: "var(--c97-rule)", background: "var(--c97-field)" }}
+            >
+              {content}
+            </button>
+            {region.strongestId === openQuakeId ? (
+              <InlineQuakeDetail quake={summary.quakeDetails[region.strongestId!] ?? null} now={now} />
+            ) : null}
+          </Fragment>
         ) : (
           <div
             key={region.region}
@@ -386,7 +397,17 @@ function DetailStat({ label, value }: { label: string; value: string }) {
   );
 }
 
-function QuakeDetailPanel({ quake, now }: { quake: QuakeEvent | null; now: number | null }) {
+function QuakeDetailPanel({
+  quake,
+  now,
+  inline = false,
+}: {
+  quake: QuakeEvent | null;
+  now: number | null;
+  /** Printed under a log row, where the place name sits below the log's own heading. */
+  inline?: boolean;
+}) {
+  const Heading = inline ? "h3" : "h2";
   if (!quake) {
     return (
       <p
@@ -402,9 +423,9 @@ function QuakeDetailPanel({ quake, now }: { quake: QuakeEvent | null; now: numbe
     <>
       <div className="flex items-start justify-between" style={{ gap: "var(--c97-sp-2)" }}>
         <div className="min-w-0">
-          <h2 className="c97-serif c97-h3" style={{ marginBottom: "var(--c97-sp-1)" }}>
+          <Heading className="c97-serif c97-h3" style={{ marginBottom: "var(--c97-sp-1)" }}>
             {quake.place}
-          </h2>
+          </Heading>
           <p
             className="text-sm"
             style={{ color: "var(--c97-ink-2)", fontFamily: "var(--c97-font-body)", marginBottom: "0" }}
@@ -470,6 +491,19 @@ function QuakeDetailPanel({ quake, now }: { quake: QuakeEvent | null; now: numbe
         </a>
       ) : null}
     </>
+  );
+}
+
+/**
+ * The picked quake's detail, printed right under the row or region that was
+ * pressed. From 1280px the sticky rail beside the log carries the same detail,
+ * so this copy stays off the page there.
+ */
+function InlineQuakeDetail({ quake, now }: { quake: QuakeEvent | null; now: number | null }) {
+  return (
+    <div className="c97-panel xl:hidden" data-testid="quake-inline-detail">
+      <QuakeDetailPanel quake={quake} now={now} inline />
+    </div>
   );
 }
 
@@ -554,11 +588,26 @@ export function EarthquakeClient({
   }
 
   function handleSelectQuake(id: string) {
-    navigate({ view: routeState.view, quake: id });
+    // Pressing the open quake again closes it.
+    navigate({ view: routeState.view, quake: id === canonicalQuakeParam ? null : id });
+  }
+
+  const logRef = useRef<HTMLHeadingElement>(null);
+
+  function jumpToLog(view: EarthquakeView) {
+    handleViewChange(view);
+    logRef.current?.scrollIntoView?.();
+    document.getElementById(`earthquake-tab-${view}`)?.focus({ preventScroll: true });
   }
 
   const listForView =
     routeState.view === "significant" ? summary.significant : summary.recent;
+  // A picked quake that the open view does not list, such as one picked on the
+  // seismogram or linked from another view, still needs its detail on a phone.
+  const openQuakeIsListed =
+    routeState.view === "regions"
+      ? summary.regions.some((region) => region.strongestId === canonicalQuakeParam)
+      : listForView.some((quake) => quake.id === canonicalQuakeParam);
   const feedTime = summary.feedUpdated ?? summary.generatedAt;
   const onViewTabKey = useTablistKeyboard(EARTHQUAKE_VIEW_OPTIONS, handleViewChange);
   const lead = PROJECT_PRESS[EARTHQUAKE_ROUTE].lead;
@@ -587,6 +636,23 @@ export function EarthquakeClient({
             ? " · USGS could not be reached, so this is the last saved snapshot"
             : ""
         }`}
+        // The log's three views, offered ahead of the figures. The seismogram is
+        // a full phone screen tall, so the tabs themselves sit below it.
+        action={
+          <div
+            role="group"
+            aria-label="Jump to a log view"
+            className="flex flex-wrap items-center"
+            style={{ gap: "var(--c97-sp-1)" }}
+          >
+            <span className="c97-kicker" style={{ marginInlineEnd: "var(--c97-sp-1)" }}>Jump to the log</span>
+            {EARTHQUAKE_VIEW_OPTIONS.map((view) => (
+              <button key={view} type="button" className="c97-btn-ghost" onClick={() => jumpToLog(view)}>
+                {EARTHQUAKE_VIEW_LABELS[view]}
+              </button>
+            ))}
+          </div>
+        }
         readouts={[
           {
             label: "Strongest in 24h",
@@ -621,7 +687,7 @@ export function EarthquakeClient({
         <div className="c97-shell">
           <div className="grid xl:grid-cols-[minmax(0,1.7fr)_minmax(320px,0.92fr)]" style={{ gap: "var(--c97-sp-3)" }}>
             <div className="flex flex-col" style={{ gap: "var(--c97-sp-3)" }}>
-              <h2 className="c97-poster-sm">The log</h2>
+              <h2 ref={logRef} className="c97-poster-sm">The log</h2>
               <div className="c97-segmented" role="tablist" aria-label="Earthquake view switcher">
                 {EARTHQUAKE_VIEW_OPTIONS.map((view, index) => (
                   <button
@@ -656,12 +722,16 @@ export function EarthquakeClient({
                   </p>
                   <p className="c97-prose">
                     {routeState.view === "recent"
-                      ? "The most recent notable quakes worldwide (M2.5 and up), newest first, logged by origin time. Tap one for depth, felt reports, and coordinates."
+                      ? "The most recent notable quakes worldwide (M2.5 and up), newest first, logged by origin time. Tap one for depth, felt reports, and coordinates, and tap it again to close the detail."
                       : routeState.view === "significant"
                       ? "USGS-flagged significant events from the past month, strongest first, which are the ones that actually made news."
                       : "Magnitude distribution and the busiest regions across the past seven days."}
                   </p>
                 </div>
+
+                {canonicalQuakeParam && !openQuakeIsListed ? (
+                  <InlineQuakeDetail quake={selectedQuake} now={now} />
+                ) : null}
 
                 {routeState.view === "regions" ? (
                   <div className="flex flex-col" style={{ gap: "var(--c97-sp-3)" }}>
@@ -674,7 +744,12 @@ export function EarthquakeClient({
                     </div>
                     <div>
                       <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-2)" }}>Busiest regions · 7 days</p>
-                      <RegionList summary={summary} onSelect={handleSelectQuake} />
+                      <RegionList
+                        summary={summary}
+                        onSelect={handleSelectQuake}
+                        openQuakeId={canonicalQuakeParam}
+                        now={now}
+                      />
                     </div>
                   </div>
                 ) : (
@@ -687,13 +762,17 @@ export function EarthquakeClient({
                   ) : (
                     <div className="c97-quake-log">
                       {listForView.map((quake) => (
-                        <QuakeRow
-                          key={quake.id}
-                          quake={quake}
-                          isSelected={quake.id === selectedQuakeId}
-                          onSelect={handleSelectQuake}
-                          now={now}
-                        />
+                        <Fragment key={quake.id}>
+                          <QuakeRow
+                            quake={quake}
+                            isSelected={quake.id === selectedQuakeId}
+                            onSelect={handleSelectQuake}
+                            now={now}
+                          />
+                          {quake.id === canonicalQuakeParam ? (
+                            <InlineQuakeDetail quake={quake} now={now} />
+                          ) : null}
+                        </Fragment>
                       ))}
                     </div>
                   )
@@ -701,7 +780,8 @@ export function EarthquakeClient({
               </div>
             </div>
 
-            <aside className="flex flex-col" style={{ gap: "var(--c97-sp-2)" }}>
+            {/* Below 1280px the detail prints under the picked row instead. */}
+            <aside className="hidden flex-col xl:flex" style={{ gap: "var(--c97-sp-2)" }}>
               <div className="c97-panel xl:sticky xl:top-6">
                 <div className="flex items-center" style={{ marginBottom: "var(--c97-sp-1)", gap: "var(--c97-sp-1)" }}>
                   <Gauge className="h-4 w-4" aria-hidden="true" style={{ color: "var(--c97-ink-2)" }} />

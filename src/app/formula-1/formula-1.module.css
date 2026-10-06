@@ -123,7 +123,28 @@
   color: var(--c97-label);
 }
 
+/* The line under a phone's shortened tower. It is hidden from 640px here and
+   not with a utility, since the hero's own rules outrank a display utility. */
+.towerMore {
+  display: none;
+}
+
 @media (max-width: 639px) {
+  /* A phone prints the top of the tower and links to the full table. */
+  .towerRowPastPhone {
+    display: none;
+  }
+
+  .towerMore {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--c97-sp-2);
+    margin: var(--c97-sp-1) 0 0;
+    font-size: var(--c97-fs-small);
+    color: var(--c97-ink-2);
+  }
+
   .towerNameFull {
     display: none;
   }

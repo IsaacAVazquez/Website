@@ -141,3 +141,69 @@ describe("investments date labels", () => {
     expectEveryDateInUtc();
   });
 });
+
+describe("investments task choice", () => {
+  let container: HTMLDivElement;
+  let root: Root;
+
+  beforeEach(() => {
+    container = document.createElement("div");
+    document.body.appendChild(container);
+    root = createRoot(container);
+    mockIndex.mockResolvedValue({ entries: [] });
+  });
+
+  afterEach(() => {
+    act(() => root.unmount());
+    container.remove();
+  });
+
+  const sheetOrder = () =>
+    Array.from(container.querySelectorAll("[data-task]")).map((sheet) => sheet.getAttribute("data-task"));
+
+  async function renderWith(task: "portfolio" | "research" | "retirement" | undefined, onTaskChange = jest.fn()) {
+    await act(async () => {
+      root.render(
+        <InvestmentsDashboard
+          task={task}
+          onTaskChange={onTaskChange}
+          researchSymbol=""
+          researchTab="overview"
+          onResearchSymbolChange={() => {}}
+          onResearchTabChange={() => {}}
+        />
+      );
+    });
+    return onTaskChange;
+  }
+
+  // Every workspace stays on the page, so section links and a print still
+  // reach all three. The choice only decides which one comes first.
+  it("prints the chosen workspace first and keeps the other two after it", async () => {
+    await renderWith(undefined);
+    expect(sheetOrder()).toEqual(["portfolio", "research", "retirement"]);
+
+    const portfolioSheet = container.querySelector('[data-task="portfolio"]');
+    await renderWith("retirement");
+    expect(sheetOrder()).toEqual(["retirement", "research", "portfolio"]);
+    // The same node moved, so what a visitor typed into a workspace survives the choice.
+    expect(container.querySelector('[data-task="portfolio"]')).toBe(portfolioSheet);
+
+    await renderWith("research");
+    expect(sheetOrder()).toEqual(["research", "portfolio", "retirement"]);
+  });
+
+  it("marks the chosen task and reports a new choice", async () => {
+    const onTaskChange = await renderWith("research");
+    const choice = (name: string) =>
+      Array.from(container.querySelectorAll<HTMLButtonElement>('[role="group"][aria-labelledby="invest-task-label"] button')).find(
+        (button) => button.textContent === name
+      )!;
+
+    expect(choice("Research").getAttribute("aria-pressed")).toBe("true");
+    expect(choice("Portfolio").getAttribute("aria-pressed")).toBe("false");
+
+    act(() => choice("Retirement").click());
+    expect(onTaskChange).toHaveBeenCalledWith("retirement");
+  });
+});

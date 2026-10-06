@@ -330,6 +330,25 @@ describe("TradeCalculatorClient", () => {
     expect(screen.queryByTestId("trade-verdict-strip")).not.toBeInTheDocument();
   });
 
+  it("summarises the league in one line and opens the settings on request", async () => {
+    useSnapshot(buildSnapshot());
+    render(<TradeCalculatorClient />);
+    const settings = screen.getByRole("complementary", { name: "League settings" });
+    expect(within(settings).getByText("PPR, 8 teams, 13 roster spots, 2 WR + flex")).toBeInTheDocument();
+    const toggle = within(settings).getByRole("button", { name: "Change league settings" });
+    expect(toggle).toHaveAttribute("aria-expanded", "false");
+    const fields = document.getElementById(toggle.getAttribute("aria-controls") as string) as HTMLElement;
+    // Closed below lg, always shown from lg up.
+    expect(fields).toHaveClass("hidden", "lg:block");
+    expect(fields).toContainElement(within(settings).getByLabelText("Teams"));
+    // The supported-format scope stays outside the collapsed fields.
+    expect(fields).not.toContainElement(within(settings).getByText(/Preseason managed redraft with one starting QB/));
+
+    fireEvent.click(toggle);
+    expect(within(settings).getByRole("button", { name: "Hide league settings" })).toHaveAttribute("aria-expanded", "true");
+    expect(fields).not.toHaveClass("hidden");
+  });
+
   it("keeps the season note and the verdict strip off the page before kickoff", async () => {
     useSnapshot(buildSnapshot());
     render(<TradeCalculatorClient />);

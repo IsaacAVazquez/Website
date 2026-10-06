@@ -1,6 +1,6 @@
 "use client";
 
-import { type CSSProperties, type FormEvent, useEffect, useMemo, useState } from "react";
+import { type CSSProperties, type FormEvent, useEffect, useMemo, useRef, useState } from "react";
 import {
   Bookmark,
   Filter,
@@ -285,6 +285,7 @@ export function WineCellarClient() {
   const [editingId, setEditingId] = useState<string | null>(null);
   const [formDraft, setFormDraft] = useState<WineFormDraft>(() => createEmptyFormDraft(""));
   const [nameMissing, setNameMissing] = useState(false);
+  const nameInputRef = useRef<HTMLInputElement>(null);
 
   // Fill "today" in after mount: the server's UTC calendar day and the
   // visitor's local one can disagree, so the initial render leaves the field
@@ -304,6 +305,7 @@ export function WineCellarClient() {
     event.preventDefault();
     if (!formDraft.name.trim()) {
       setNameMissing(true);
+      nameInputRef.current?.focus();
       return;
     }
     const wineDraft = formDraftToWineDraft(formDraft);
@@ -319,7 +321,9 @@ export function WineCellarClient() {
     const entry = findEntry(id);
     if (!entry) return;
     setEditingId(id);
+    setNameMissing(false);
     setFormDraft(entryToFormDraft(entry));
+    nameInputRef.current?.focus({ preventScroll: true });
     document
       .getElementById("add-tasting")
       ?.scrollIntoView?.({ behavior: reduceMotion ? "auto" : "smooth", block: "start" });
@@ -403,109 +407,114 @@ export function WineCellarClient() {
                 ) : null}
               </div>
 
-              <div className="grid sm:grid-cols-2" style={{ gap: "var(--c97-sp-2)" }}>
-                <label className="c97-wine-search">
-                  <Search className="h-3.5 w-3.5" aria-hidden="true" style={{ color: "var(--c97-ink-2)" }} />
-                  <input
-                    type="search"
-                    aria-label="Search wines"
-                    placeholder="Search by name, region, or notes…"
-                    value={filters.search}
-                    onChange={(event) =>
-                      updateFilters((current) => ({ ...current, search: event.target.value }))
-                    }
-                  />
-                </label>
-                <label className="block">
-                  <span className="c97-kicker">Type</span>
-                  <select
-                    aria-label="Filter by wine type"
-                    value={filters.type}
-                    onChange={(event) =>
-                      updateFilters((current) => ({
-                        ...current,
-                        type: event.target.value as typeof current.type,
-                      }))
-                    }
-                    className="c97-field"
-                    style={{ marginTop: "var(--c97-sp-1)" }}
-                  >
-                    <option value="all">All types</option>
-                    {WINE_TYPES.map((type) => (
-                      <option key={type} value={type}>
-                        {WINE_TYPE_LABELS[type]}
-                      </option>
-                    ))}
-                  </select>
-                </label>
-                <label className="block">
-                  <span className="c97-kicker">Min rating</span>
-                  <select
-                    value={String(filters.minRating)}
-                    onChange={(event) =>
-                      updateFilters((current) => ({
-                        ...current,
-                        minRating: Number(event.target.value),
-                      }))
-                    }
-                    className="c97-field"
-                    style={{ marginTop: "var(--c97-sp-1)" }}
-                  >
-                    <option value="0">Any</option>
-                    <option value="3">3+ stars</option>
-                    <option value="3.5">3.5+ stars</option>
-                    <option value="4">4+ stars</option>
-                    <option value="4.5">4.5+ stars</option>
-                    <option value="5">5 stars only</option>
-                  </select>
-                </label>
-                <div className="block">
-                  <span id="wine-sort-label" className="c97-kicker">Sort by</span>
-                  <div className="flex items-center" style={{ gap: "var(--c97-sp-1)", marginTop: "var(--c97-sp-1)" }}>
+              {/* Search, filters, and sorting arrive with the first bottle, when there is something to organize. */}
+              {hasEntries ? (
+                <>
+                <div className="grid sm:grid-cols-2" style={{ gap: "var(--c97-sp-2)" }}>
+                  <label className="c97-wine-search">
+                    <Search className="h-3.5 w-3.5" aria-hidden="true" style={{ color: "var(--c97-ink-2)" }} />
+                    <input
+                      type="search"
+                      aria-label="Search wines"
+                      placeholder="Search by name, region, or notes…"
+                      value={filters.search}
+                      onChange={(event) =>
+                        updateFilters((current) => ({ ...current, search: event.target.value }))
+                      }
+                    />
+                  </label>
+                  <label className="block">
+                    <span className="c97-kicker">Type</span>
                     <select
-                      aria-labelledby="wine-sort-label"
-                      value={filters.sort}
+                      aria-label="Filter by wine type"
+                      value={filters.type}
                       onChange={(event) =>
                         updateFilters((current) => ({
                           ...current,
-                          sort: event.target.value as WineSortKey,
+                          type: event.target.value as typeof current.type,
                         }))
                       }
                       className="c97-field"
+                      style={{ marginTop: "var(--c97-sp-1)" }}
                     >
-                      {SORT_OPTIONS.map((option) => (
-                        <option key={option.value} value={option.value}>
-                          {option.label}
+                      <option value="all">All types</option>
+                      {WINE_TYPES.map((type) => (
+                        <option key={type} value={type}>
+                          {WINE_TYPE_LABELS[type]}
                         </option>
                       ))}
                     </select>
-                    <button
-                      type="button"
-                      aria-label={`Sort ${filters.sortDirection === "asc" ? "ascending" : "descending"}`}
-                      onClick={() =>
+                  </label>
+                  <label className="block">
+                    <span className="c97-kicker">Min rating</span>
+                    <select
+                      value={String(filters.minRating)}
+                      onChange={(event) =>
                         updateFilters((current) => ({
                           ...current,
-                          sortDirection: current.sortDirection === "asc" ? "desc" : "asc",
+                          minRating: Number(event.target.value),
                         }))
                       }
-                      className="c97-wine-icon-btn"
+                      className="c97-field"
+                      style={{ marginTop: "var(--c97-sp-1)" }}
                     >
-                      {filters.sortDirection === "asc" ? "↑" : "↓"}
-                    </button>
+                      <option value="0">Any</option>
+                      <option value="3">3+ stars</option>
+                      <option value="3.5">3.5+ stars</option>
+                      <option value="4">4+ stars</option>
+                      <option value="4.5">4.5+ stars</option>
+                      <option value="5">5 stars only</option>
+                    </select>
+                  </label>
+                  <div className="block">
+                    <span id="wine-sort-label" className="c97-kicker">Sort by</span>
+                    <div className="flex items-center" style={{ gap: "var(--c97-sp-1)", marginTop: "var(--c97-sp-1)" }}>
+                      <select
+                        aria-labelledby="wine-sort-label"
+                        value={filters.sort}
+                        onChange={(event) =>
+                          updateFilters((current) => ({
+                            ...current,
+                            sort: event.target.value as WineSortKey,
+                          }))
+                        }
+                        className="c97-field"
+                      >
+                        {SORT_OPTIONS.map((option) => (
+                          <option key={option.value} value={option.value}>
+                            {option.label}
+                          </option>
+                        ))}
+                      </select>
+                      <button
+                        type="button"
+                        aria-label={`Sort ${filters.sortDirection === "asc" ? "ascending" : "descending"}`}
+                        onClick={() =>
+                          updateFilters((current) => ({
+                            ...current,
+                            sortDirection: current.sortDirection === "asc" ? "desc" : "asc",
+                          }))
+                        }
+                        className="c97-wine-icon-btn"
+                      >
+                        {filters.sortDirection === "asc" ? "↑" : "↓"}
+                      </button>
+                    </div>
                   </div>
                 </div>
-              </div>
 
-              {filtersAreActive ? (
-                <button
-                  type="button"
-                  onClick={resetFilters}
-                  className="c97-btn-ghost"
-                  style={{ gap: "var(--c97-sp-1)", alignSelf: "flex-start" }}
-                >
-                  <Filter className="h-3 w-3" aria-hidden="true" />
-                  Reset filters
-                </button>
+                {filtersAreActive ? (
+                  <button
+                    type="button"
+                    onClick={resetFilters}
+                    className="c97-btn-ghost"
+                    style={{ gap: "var(--c97-sp-1)", alignSelf: "flex-start" }}
+                  >
+                    <Filter className="h-3 w-3" aria-hidden="true" />
+                    Reset filters
+                  </button>
+                ) : null}
+                </>
               ) : null}
 
               <section aria-label="Tasting log">
@@ -572,7 +581,8 @@ export function WineCellarClient() {
 
             <aside
               aria-label="Wine cellar side panel"
-              className="xl:sticky xl:top-6"
+              // In an empty cellar the form is the first thing in the band on a phone.
+              className={`xl:sticky xl:top-6${hasEntries ? "" : " order-first xl:order-none"}`}
               style={{ alignSelf: "start", display: "flex", flexDirection: "column", gap: "var(--c97-sp-3)" }}
             >
               <div className="c97-panel" id="add-tasting">
@@ -592,6 +602,7 @@ export function WineCellarClient() {
                   <label className="block">
                     <span className="c97-kicker">Wine name</span>
                     <input
+                      ref={nameInputRef}
                       required
                       type="text"
                       value={formDraft.name}
@@ -603,6 +614,7 @@ export function WineCellarClient() {
                         // Swap the browser's bubble for the inline message below.
                         event.preventDefault();
                         setNameMissing(true);
+                        event.currentTarget.focus();
                       }}
                       aria-invalid={nameMissing || undefined}
                       aria-describedby={nameMissing ? "wine-name-error" : undefined}

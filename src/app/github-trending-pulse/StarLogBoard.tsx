@@ -6,8 +6,9 @@ import { languageShares, starBars, type StarLogRepo } from "./star-log";
 
 interface StarLogBoardProps {
   /** The current filter's repositories, sorted by weekly star delta and
-   * capped to the top 12 for the board. `RepositoryTable` below still lists
-   * every repository in the filter for sorting and searching. */
+   * capped to the top 12 for the board (the first five at phone width, in
+   * `github-trending-pulse.css`). `RepositoryTable` below still lists every
+   * repository in the filter for sorting and searching. */
   repos: GitHubTrendingClientRepository[];
   windowDays: number;
 }
@@ -101,7 +102,7 @@ export function StarLogBoard({ repos, windowDays }: StarLogBoardProps) {
                 rel="noreferrer"
                 className="c97-serif c97-star-log-name"
               >
-                {repo.fullName}
+                <span className="c97-star-log-name-text">{repo.fullName}</span>
               </a>
               <span className="c97-mono c97-star-log-total">
                 {formatGitHubCompactNumber(repo.stars)}

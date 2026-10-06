@@ -254,6 +254,71 @@ describe("WorldCupClient", () => {
     expect(mockPush).toHaveBeenLastCalledWith("/world-cup-2026", { scroll: false });
   });
 
+  it("pins and clears a team from the lookup above the views", () => {
+    renderClient();
+    const lookup = screen.getByRole("combobox", { name: "Find a team" });
+    expect(within(lookup).getAllByRole("option")).toHaveLength(SUMMARY.teamOptions.length + 1);
+
+    fireEvent.change(lookup, { target: { value: "mexico" } });
+    expect(mockPush).toHaveBeenLastCalledWith("/world-cup-2026?team=mexico", { scroll: false });
+
+    currentSearchParams = new URLSearchParams("team=mexico");
+    renderClient({ initialTeamSnapshot: MEXICO });
+    const pinned = screen
+      .getAllByRole("combobox", { name: "Find a team" })
+      .find((select) => (select as HTMLSelectElement).value === "mexico")!;
+    fireEvent.change(pinned, { target: { value: "" } });
+    expect(mockPush).toHaveBeenLastCalledWith("/world-cup-2026", { scroll: false });
+  });
+
+  it("holds the groups past the fourth behind a button on a phone, apart from the selected team's", () => {
+    const lateGroup = SUMMARY.groups[7];
+    currentSearchParams = new URLSearchParams(`team=${lateGroup.standings[0].teamId}`);
+    renderClient();
+    // The card around each table carries the phone-only hide.
+    const card = (group: { name: string }) =>
+      screen.getByRole("table", { name: `${group.name} standings` }).parentElement;
+
+    expect(card(SUMMARY.groups[3])).not.toHaveClass("hidden");
+    expect(card(SUMMARY.groups[4])).toHaveClass("hidden", "lg:block");
+    expect(card(lateGroup)).not.toHaveClass("hidden");
+
+    const toggle = screen.getByRole("button", { name: "Show all 12 groups" });
+    expect(toggle).toHaveAttribute("aria-expanded", "false");
+    fireEvent.click(toggle);
+
+    expect(card(SUMMARY.groups[4])).not.toHaveClass("hidden");
+    expect(screen.getByRole("button", { name: "Show the first 4 groups" })).toHaveAttribute(
+      "aria-expanded",
+      "true"
+    );
+  });
+
+  it("brings the team card into view when a pick is made away from it", () => {
+    const scrollIntoView = jest.fn();
+    const original = Element.prototype.scrollIntoView;
+    Element.prototype.scrollIntoView = scrollIntoView;
+    const rect = jest
+      .spyOn(Element.prototype, "getBoundingClientRect")
+      .mockReturnValue({ top: -900 } as DOMRect);
+    try {
+      renderClient();
+      fireEvent.click(screen.getByRole("button", { name: "Show Mexico details" }));
+      expect(scrollIntoView).toHaveBeenCalledWith({ block: "start" });
+
+      // In view, as the lookup and a desktop's pinned column are, nothing moves.
+      scrollIntoView.mockClear();
+      rect.mockReturnValue({ top: 24 } as DOMRect);
+      fireEvent.click(
+        screen.getByRole("button", { name: `Show ${SUMMARY.groups[0].standings[1].name} details` })
+      );
+      expect(scrollIntoView).not.toHaveBeenCalled();
+    } finally {
+      rect.mockRestore();
+      Element.prototype.scrollIntoView = original;
+    }
+  });
+
   it("lists a team's upcoming fixtures, three at most", () => {
     currentSearchParams = new URLSearchParams("team=mexico");
     const upcoming = MEXICO.recentFixtures.map((fixture, index) => ({

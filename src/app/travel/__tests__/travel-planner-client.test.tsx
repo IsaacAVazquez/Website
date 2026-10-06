@@ -84,19 +84,41 @@ describe("TravelPlannerClient", () => {
     jest.restoreAllMocks();
   });
 
-  it("starts empty, with the forms disabled until a trip exists", () => {
+  // On a first visit the only task is creating a trip, so its form sits open
+  // beside the boarding pass and nothing that needs a trip is on the page.
+  function expectFirstVisit() {
+    expect(screen.getByText("No trip yet")).toBeInTheDocument();
+    expect(screen.getByRole("form", { name: "Create a new trip" })).toBeInTheDocument();
+    expect(screen.queryByRole("region", { name: "Day-by-day itinerary" })).toBeNull();
+    expect(screen.queryByRole("region", { name: "Trip journal" })).toBeNull();
+    expect(screen.queryByRole("region", { name: "Trip management" })).toBeNull();
+  }
+
+  it("starts empty, with the trip form beside the pass and nothing else until a trip exists", () => {
     render(<TravelPlannerClient />);
 
     expect(screen.getByRole("heading", { level: 1, name: "Travel Planner" })).toBeInTheDocument();
-    expect(screen.getByText("No trip yet")).toBeInTheDocument();
     expect(screen.getByText("Nothing planned")).toBeInTheDocument();
-    expect(screen.getByText("Start a trip above to plan its first day.")).toBeInTheDocument();
-    expect(screen.getByText("Start a trip above to keep a journal for it.")).toBeInTheDocument();
-    expect(within(manage()).getByText("No trips saved yet.")).toBeInTheDocument();
-    expect(within(manage()).getByText("All trips (0)")).toBeInTheDocument();
-    expect(within(stopForm()).getByRole("textbox", { name: "Title" })).toBeDisabled();
-    expect(within(journalForm()).getByRole("textbox", { name: "Title" })).toBeDisabled();
+    expectFirstVisit();
+    const form = screen.getByRole("form", { name: "Create a new trip" });
+    expect(form.compareDocumentPosition(screen.getByText("No trip yet")) & Node.DOCUMENT_POSITION_PRECEDING).toBeTruthy();
+    expect(within(form).getByText("The day-by-day itinerary and the journal open once a trip is saved.")).toBeInTheDocument();
+    // There is nothing to cancel back to before the first trip.
+    expect(within(form).queryByRole("button", { name: "Cancel" })).toBeNull();
+    expect(screen.queryByRole("button", { name: "Add stop" })).toBeNull();
+    expect(screen.queryByRole("button", { name: "Add entry" })).toBeNull();
     expect(screen.queryByRole("button", { name: "Delete trip" })).toBeNull();
+  });
+
+  it("opens a saved return visit on the itinerary, the journal, and trip management", () => {
+    seed([PORTO]);
+    render(<TravelPlannerClient />);
+
+    expect(screen.queryByRole("form", { name: "Create a new trip" })).toBeNull();
+    expect(screen.queryByRole("button", { name: "Start a trip" })).toBeNull();
+    expect(within(stopForm()).getByRole("textbox", { name: "Title" })).toBeEnabled();
+    expect(within(journalForm()).getByRole("textbox", { name: "Title" })).toBeEnabled();
+    expect(within(manage()).getByText("All trips (1)")).toBeInTheDocument();
   });
 
   it.each([
@@ -105,7 +127,7 @@ describe("TravelPlannerClient", () => {
   ])("treats %s in storage as no trips", (_label, raw) => {
     seed(raw);
     render(<TravelPlannerClient />);
-    expect(within(manage()).getByText("No trips saved yet.")).toBeInTheDocument();
+    expectFirstVisit();
   });
 
   it("creates a trip from the start button and saves it to this browser", () => {
@@ -116,11 +138,11 @@ describe("TravelPlannerClient", () => {
     });
     render(<TravelPlannerClient />);
 
-    fireEvent.click(screen.getByRole("button", { name: "Start a trip" }));
+    // The form is already open beside the pass, so the start button only moves focus into it.
     const form = screen.getByRole("form", { name: "Create a new trip" });
+    fireEvent.click(screen.getByRole("button", { name: "Start a trip" }));
     act(() => frames.forEach((frame) => frame(0)));
     expect(within(form).getByRole("textbox", { name: "Trip name" })).toHaveFocus();
-    expect(within(manage()).getByRole("button", { name: "New trip" })).toHaveAttribute("aria-expanded", "true");
 
     change(within(form).getByRole("textbox", { name: "Trip name" }), "  Kyoto  ");
     change(within(form).getByRole("textbox", { name: "Destination" }), "Kyoto, Japan");
@@ -144,14 +166,18 @@ describe("TravelPlannerClient", () => {
   });
 
   it("toggles and cancels the new trip form without saving", () => {
+    seed([PORTO]);
     render(<TravelPlannerClient />);
     const newTrip = within(manage()).getByRole("button", { name: "New trip" });
+    expect(newTrip).toHaveAttribute("aria-expanded", "false");
 
     fireEvent.click(newTrip);
-    const form = screen.getByRole("form", { name: "Create a new trip" });
+    expect(newTrip).toHaveAttribute("aria-expanded", "true");
+    // After the first trip the form opens under its own button, in trip management.
+    const form = within(manage()).getByRole("form", { name: "Create a new trip" });
     // A blank name never saves.
     fireEvent.submit(form);
-    expect(stored()).toEqual([]);
+    expect(stored()).toHaveLength(1);
 
     fireEvent.click(within(form).getByRole("button", { name: "Cancel" }));
     expect(screen.queryByRole("form", { name: "Create a new trip" })).toBeNull();
@@ -249,6 +275,7 @@ describe("TravelPlannerClient", () => {
     expect(within(itinerary()).getByText("Edit stop")).toBeInTheDocument();
     const form = stopForm();
     expect(within(form).getByRole("textbox", { name: "Title" })).toHaveValue("Museum");
+    expect(within(form).getByRole("textbox", { name: "Title" })).toHaveFocus();
     expect(within(form).getByLabelText("Starts")).toHaveValue("09:00");
 
     change(within(form).getByRole("textbox", { name: "Title" }), "Gulbenkian Museum");
@@ -294,6 +321,7 @@ describe("TravelPlannerClient", () => {
     const form = journalForm();
     fireEvent.click(within(form).getByRole("button", { name: "Add entry" }));
     expect(within(form).getByRole("alert")).toHaveTextContent("Add a title or a note to save the entry.");
+    expect(within(form).getByRole("textbox", { name: "Title" })).toHaveFocus();
     change(within(form).getByRole("textbox", { name: "Notes" }), "Pasteis de nata.");
     expect(within(form).queryByRole("alert")).toBeNull();
     change(within(form).getByRole("combobox", { name: "Mood" }), "good");
@@ -305,6 +333,7 @@ describe("TravelPlannerClient", () => {
     const arrival = within(journal()).getByText("Arrival").closest("li") as HTMLElement;
     fireEvent.click(within(arrival).getByRole("button", { name: "Edit" }));
     expect(within(journal()).getByText("Edit entry")).toBeInTheDocument();
+    expect(within(journalForm()).getByRole("textbox", { name: "Title" })).toHaveFocus();
     change(within(journalForm()).getByRole("textbox", { name: "Title" }), "Arrival day");
     fireEvent.click(within(journalForm()).getByRole("button", { name: "Save entry" }));
     expect(stored()[0].journal.find((entry) => entry.id === "jrn-a")?.title).toBe("Arrival day");
@@ -361,6 +390,24 @@ describe("TravelPlannerClient", () => {
     expect(stored().map((trip) => trip.id)).toEqual(["trip-porto"]);
     expect(within(manage()).getByRole("button", { name: "New trip" })).toHaveFocus();
     expect(within(manage()).getByText("Porto (active)")).toBeInTheDocument();
+  });
+
+  it("returns to the first-visit form with focus in it when the last trip is deleted", () => {
+    const frames: FrameRequestCallback[] = [];
+    jest.spyOn(window, "requestAnimationFrame").mockImplementation((callback) => {
+      frames.push(callback);
+      return frames.length;
+    });
+    seed([PORTO]);
+    render(<TravelPlannerClient />);
+
+    fireEvent.click(within(manage()).getByRole("button", { name: "Delete trip" }));
+    fireEvent.click(within(manage()).getByRole("button", { name: "Confirm delete" }));
+    act(() => frames.forEach((frame) => frame(0)));
+
+    expect(stored()).toEqual([]);
+    expectFirstVisit();
+    expect(screen.getByRole("textbox", { name: "Trip name" })).toHaveFocus();
   });
 
   it("deletes a trip from its row after a confirm", () => {
@@ -427,7 +474,7 @@ describe("TravelPlannerClient", () => {
 
   it("picks up a trip saved in another tab", () => {
     render(<TravelPlannerClient />);
-    expect(within(manage()).getByText("No trips saved yet.")).toBeInTheDocument();
+    expectFirstVisit();
 
     const payload = JSON.stringify([PORTO]);
     window.localStorage.setItem(TRAVEL_PLANNER_STORAGE_KEY, payload);
@@ -443,7 +490,6 @@ describe("TravelPlannerClient", () => {
     });
     render(<TravelPlannerClient />);
 
-    fireEvent.click(within(manage()).getByRole("button", { name: "New trip" }));
     const form = screen.getByRole("form", { name: "Create a new trip" });
     change(within(form).getByRole("textbox", { name: "Trip name" }), "Offline trip");
     fireEvent.click(within(form).getByRole("button", { name: "Save trip" }));

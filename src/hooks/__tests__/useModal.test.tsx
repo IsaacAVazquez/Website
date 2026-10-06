@@ -35,4 +35,32 @@ describe("useModal", () => {
     rerender(<Panel open resetKey="chelsea" />);
     expect(document.activeElement).toBe(screen.getByTestId("panel"));
   });
+
+  // The ladder chart's markers are SVG buttons, which are not HTMLElements.
+  it("returns focus to an SVG opener on close", () => {
+    const { rerender } = render(
+      <>
+        <svg>
+          <g role="button" tabIndex={0} data-testid="marker" />
+        </svg>
+        <Panel open={false} />
+      </>,
+    );
+    const marker = screen.getByTestId("marker");
+    marker.focus();
+    expect(document.activeElement).toBe(marker);
+
+    const withPanel = (open: boolean) => (
+      <>
+        <svg>
+          <g role="button" tabIndex={0} data-testid="marker" />
+        </svg>
+        <Panel open={open} />
+      </>
+    );
+    rerender(withPanel(true));
+    expect(document.activeElement).toBe(screen.getByTestId("panel"));
+    rerender(withPanel(false));
+    expect(document.activeElement).toBe(marker);
+  });
 });

@@ -1,4 +1,4 @@
-import { act, render, screen, waitFor } from "@testing-library/react";
+import { act, render, screen, waitFor, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import type { Formula1DriverStanding, Formula1Summary } from "@/types/formula1";
 import { getFantasyFormula1StorageKey } from "@/lib/fantasyFormula1";
@@ -237,6 +237,57 @@ describe("FantasyFormula1Client", () => {
     expect(JSON.parse(window.localStorage.getItem(key)!)).toMatchObject({
       driverIds: ["driver-77"], constructorIds: ["constructor-cadillac"],
     });
+  });
+
+  it("prints the unofficial-model qualifier with the projected points", () => {
+    render(<FantasyFormula1Client initialState={DEFAULT_FANTASY_FORMULA1_STATE} summary={createSummary()} />);
+
+    const readout = screen.getByText("Projected points", { selector: "dt" }).parentElement as HTMLElement;
+    expect(within(readout).getByText("Unofficial model estimate · 0/7 picked")).toBeInTheDocument();
+    // The longer note stays under the hero.
+    expect(screen.getByText(/It is\s+not the official F1 Fantasy game\./)).toBeInTheDocument();
+  });
+
+  it("offers one suggested lineup in the hero and makes it the team", async () => {
+    const user = userEvent.setup();
+    // The optimizer returns no lineup for the base slate's six drivers, so
+    // this one adds three more for it to fill a team from.
+    const base = createSummary();
+    const deeperSlate = createSummary({
+      driverStandings: [
+        ...base.driverStandings,
+        driver(7, 11, "Sergio Perez", "PER", "Cadillac", 4, 1),
+        driver(8, 18, "Lance Stroll", "STR", "Aston Martin", 2, 0),
+        driver(9, 22, "Yuki Tsunoda", "TSU", "Red Bull Racing", 1, 0),
+      ],
+    });
+    render(<FantasyFormula1Client initialState={DEFAULT_FANTASY_FORMULA1_STATE} summary={deeperSlate} />);
+
+    const suggestion = screen.getByTestId("fantasy-formula-1-suggestion");
+    expect(within(suggestion).getByText(/unofficial model estimate/)).toBeInTheDocument();
+    await user.click(within(suggestion).getByRole("button", { name: "Use this lineup" }));
+
+    const lineup = screen.getByTestId("fantasy-formula-1-lineup");
+    expect(within(lineup).getAllByRole("button", { name: /^Remove / })).toHaveLength(7);
+    expect(within(suggestion).getByText("This is your current team.")).toBeInTheDocument();
+    expect(within(suggestion).queryByRole("button")).not.toBeInTheDocument();
+  });
+
+  it("keeps an asset's price and projection in its own cell for a phone, with the rest behind More", () => {
+    render(<FantasyFormula1Client initialState={DEFAULT_FANTASY_FORMULA1_STATE} summary={createSummary()} />);
+
+    const row = screen.getByLabelText("Add Valtteri Bottas").closest("tr") as HTMLElement;
+    const assetCell = within(row).getAllByRole("cell")[0];
+    const more = assetCell.querySelector("details") as HTMLDetailsElement;
+
+    // The stylesheet hides this below 640px only, so the class is what is checked.
+    expect(more).toHaveClass("sm:hidden");
+    expect(more.querySelector("summary")).toHaveTextContent(/^Valtteri Bottas, \$[\d.]+m · [\d.]+ projected/);
+    for (const label of ["Type", "Standing", "Value", "Form", "Risk"]) {
+      expect(within(more).getByText(label, { selector: "dt" })).toBeInTheDocument();
+    }
+    // One Add button per asset, whatever the width.
+    expect(within(row).getAllByRole("button", { name: /^Add / })).toHaveLength(1);
   });
 
   it("renders an empty-state when the snapshot has no usable assets", () => {

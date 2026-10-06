@@ -1,4 +1,4 @@
-import { render, screen, waitFor } from "@testing-library/react";
+import { render, screen, waitFor, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import type { GolfPlayerSnapshot, GolfSummary } from "@/types/golf";
 import { GolfClient } from "../golf-client";
@@ -158,12 +158,20 @@ describe("GolfClient", () => {
 
     expect(screen.getByRole("heading", { level: 1, name: "PGA Tour Pulse" })).toBeInTheDocument();
     expect(screen.getByRole("heading", { level: 2, name: "Harbour Town Classic" })).toBeInTheDocument();
-    expect(screen.getByRole("heading", { level: 2, name: "Scottie Scheffler" })).toBeInTheDocument();
+    // A plain visit marks the leader's row and opens no drawer.
+    const board = screen.getByRole("region", { name: /full leaderboard/i });
+    expect(within(board).getByRole("row", { name: /Scottie Scheffler/ })).toHaveAttribute(
+      "aria-current",
+      "true"
+    );
+    expect(screen.queryByRole("dialog")).not.toBeInTheDocument();
     expect(screen.getByText(/This page is a checked-in tournament snapshot/i)).toBeInTheDocument();
   });
 
   it("hides the scoring split when the feed sent no hole counts", () => {
     const scottie = getPlayerSnapshot("scottie-scheffler");
+    // The split is in the player drawer, which a link that names a player opens.
+    currentSearchParams = new URLSearchParams("player=scottie-scheffler");
     render(
       <GolfClient
         initialState={DEFAULT_GOLF_STATE}
@@ -266,5 +274,63 @@ describe("GolfClient", () => {
     await waitFor(() =>
       expect(screen.getByRole("alert")).toHaveTextContent("Unable to load golf player snapshot.")
     );
+  });
+
+  it("opens the picked player in a drawer and returns focus on Escape", async () => {
+    const user = userEvent.setup();
+    mockFetch.mockResolvedValue(makeOkResponse(getPlayerSnapshot("justin-thomas")));
+    // The router is a mock, so a push has to be fed back in as the next
+    // search params for the page to see the URL it asked for.
+    mockPush.mockImplementation((href: string) => {
+      currentSearchParams = new URLSearchParams(href.split("?")[1] ?? "");
+    });
+    const ui = () => (
+      <GolfClient
+        initialState={DEFAULT_GOLF_STATE}
+        summary={testSummary}
+        initialPlayerSnapshot={getPlayerSnapshot("scottie-scheffler")}
+      />
+    );
+    const view = render(ui());
+
+    const opener = screen.getByRole("button", { name: /Justin Thomas/i });
+    await user.click(opener);
+    view.rerender(ui());
+
+    const drawer = await screen.findByRole("dialog", { name: "Justin Thomas detail" });
+    await waitFor(() =>
+      expect(within(drawer).getByText(/Next round tee time 12:20 PM ET/i)).toBeInTheDocument()
+    );
+
+    await user.keyboard("{Escape}");
+    expect(screen.queryByRole("dialog")).not.toBeInTheDocument();
+    expect(opener).toHaveFocus();
+  });
+
+  it("prints the first 20 players and the whole field on request", async () => {
+    const user = userEvent.setup();
+    const field = Array.from({ length: 25 }, (_, index) => ({
+      ...testSummary.leaderboard[0]!,
+      playerId: `player-${index + 1}`,
+      playerName: `Player ${index + 1}`,
+      position: `${index + 1}`,
+    }));
+    const board = () => screen.getByRole("region", { name: /full leaderboard/i });
+
+    render(
+      <GolfClient
+        initialState={DEFAULT_GOLF_STATE}
+        summary={{ ...testSummary, leaderboard: field }}
+        initialPlayerSnapshot={null}
+      />
+    );
+
+    expect(within(board()).getAllByRole("button")).toHaveLength(20);
+
+    await user.click(screen.getByRole("button", { name: "Show all 25 players" }));
+    expect(within(board()).getAllByRole("button")).toHaveLength(25);
+
+    await user.click(screen.getByRole("button", { name: "Show the top 20" }));
+    expect(within(board()).getAllByRole("button")).toHaveLength(20);
   });
 });

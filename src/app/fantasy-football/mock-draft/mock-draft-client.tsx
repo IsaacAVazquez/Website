@@ -211,7 +211,7 @@ function SegmentedButtons<Value extends string>({
     <div
       role="group"
       aria-labelledby={labelledBy}
-      className="inline-flex overflow-hidden border"
+      className="flex flex-wrap border"
       style={{ borderColor: "var(--c97-rule)" }}
     >
       {options.map((option) => {
@@ -222,11 +222,11 @@ function SegmentedButtons<Value extends string>({
             type="button"
             aria-pressed={active}
             onClick={() => onSelect(option.value)}
-            className={`min-h-touch flex-1 font-mono text-2xs uppercase tracking-[0.06em] ${
+            className={`relative min-h-touch min-w-touch flex-1 font-mono text-2xs uppercase tracking-[0.06em] focus-visible:z-[var(--c97-z-tray)] ${
               active ? "" : "hover:bg-[var(--c97-overlay)]"
             }`}
             style={
-              { paddingInline: "var(--c97-sp-1)", ...(active
+              { paddingInline: "var(--c97-sp-0)", ...(active
                 ? { background: "var(--c97-ink)", color: "var(--c97-surface)" }
                 : { color: "var(--c97-ink)" }) }
             }
@@ -928,6 +928,50 @@ export function MockDraftClient() {
               )}
             </div>
 
+            {/* The room summary and Start sit directly under the heading, so
+                the default room starts without scrolling past its settings.
+                The summary reads the form, so it follows every change made in
+                the fields below it. */}
+            <div
+              className="flex flex-wrap items-center justify-between border-b"
+              style={{ paddingInline: "var(--c97-sp-2)", paddingBlock: "var(--c97-sp-2)", columnGap: "var(--c97-sp-2)", rowGap: "var(--c97-sp-1)", borderColor: "var(--c97-rule)", background: "var(--c97-surface)" }}
+            >
+              <p className="m-0 font-mono text-2xs leading-relaxed" style={{ color: "var(--c97-ink-2)" }}>
+                {`${setupForm.totalTeams}-team ${setupForm.draftType} · ${
+                  setupForm.slot === 0 ? "random slot" : `slot ${setupForm.slot}`
+                } · ${setupForm.rounds}-round rep · ${scoringLabel} · ${lineupShort(setupForm.lineup)}`}
+              </p>
+              <button
+                type="button"
+                onClick={startRoom}
+                disabled={!simulationAvailable}
+                className={SOLID_BUTTON_CLASS}
+              >
+                Start mock
+              </button>
+            </div>
+
+            {/* Why Start is paused, kept against the button it explains. */}
+            {boardStatusLine && (
+              <p
+                role="status"
+                aria-live="polite"
+                className="m-0 border-b text-sm leading-6"
+                style={{ paddingInline: "var(--c97-sp-2)", paddingBlock: "var(--c97-sp-1)", borderColor: "var(--c97-rule)", color: "var(--c97-ink-2)" }}
+              >
+                {boardStatusLine}
+                {error && (
+                  <button
+                    type="button"
+                    onClick={retry}
+                    className="inline-flex min-h-touch items-center font-semibold underline underline-offset-4 hover:decoration-[var(--c97-accent)]" style={{ marginLeft: "var(--c97-sp-1)" }}
+                  >
+                    Retry
+                  </button>
+                )}
+              </p>
+            )}
+
             <div
               className="grid"
               style={{ paddingInline: "var(--c97-sp-2)", paddingBlock: "var(--c97-sp-2)", columnGap: "var(--c97-sp-2)", rowGap: "var(--c97-sp-2)", gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 210px), 1fr))" }}
@@ -1111,45 +1155,8 @@ export function MockDraftClient() {
               </div>
             </div>
 
-            <div
-              className="flex flex-wrap items-center justify-between border-t"
-              style={{ paddingInline: "var(--c97-sp-2)", paddingBlock: "var(--c97-sp-2)", columnGap: "var(--c97-sp-2)", rowGap: "var(--c97-sp-1)", borderColor: "var(--c97-rule)", background: "var(--c97-surface)" }}
-            >
-              <p className="m-0 font-mono text-2xs leading-relaxed" style={{ color: "var(--c97-ink-2)" }}>
-                {`${setupForm.totalTeams}-team ${setupForm.draftType} · ${
-                  setupForm.slot === 0 ? "random slot" : `slot ${setupForm.slot}`
-                } · ${setupForm.rounds}-round rep · ${scoringLabel} · ${lineupShort(setupForm.lineup)}`}
-              </p>
-              <button
-                type="button"
-                onClick={startRoom}
-                disabled={!simulationAvailable}
-                className={SOLID_BUTTON_CLASS}
-              >
-                Start mock
-              </button>
-            </div>
           </div>
 
-          {boardStatusLine && (
-            <p
-              role="status"
-              aria-live="polite"
-              className="mx-0.5 text-sm leading-6"
-              style={{ marginTop: "var(--c97-sp-2)", color: "var(--c97-ink-2)" }}
-            >
-              {boardStatusLine}
-              {error && (
-                <button
-                  type="button"
-                  onClick={retry}
-                  className="inline-flex min-h-touch items-center font-semibold underline underline-offset-4 hover:decoration-[var(--c97-accent)]" style={{ marginLeft: "var(--c97-sp-1)" }}
-                >
-                  Retry
-                </button>
-              )}
-            </p>
-          )}
           <p className="mx-0.5 font-mono text-2xs leading-relaxed" style={{ marginTop: "var(--c97-sp-2)", color: "var(--c97-ink-2)" }}>
             The room drafts around you, so you are on the clock every turn. Each run is a fresh
             seeded room with the same settings, and nothing here is a projection of season

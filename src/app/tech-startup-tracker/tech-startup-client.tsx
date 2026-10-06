@@ -54,6 +54,8 @@ const ROUND_FORMATTER = new Intl.DateTimeFormat("en-US", {
   timeZone: DATE_ONLY_TIME_ZONE,
 });
 
+const DATA_NOTICE_ID = "startup-data-notice";
+
 function formatRoundDate(yearMonth: string): string {
   const date = new Date(`${yearMonth.slice(0, 7)}-01T00:00:00Z`);
   if (Number.isNaN(date.getTime())) return yearMonth;
@@ -184,41 +186,15 @@ export function TechStartupClient({ initialState, snapshot }: TechStartupClientP
           },
         ]}
       >
-        <ValuationTreemap
-          startups={filteredStartups}
-          selectedId={selectedStartup?.id ?? null}
-          onSelect={toggleStartup}
-          sectorLabels={Object.fromEntries([...segmentLookup].map(([id, segment]) => [id, segment.label]))}
-        />
-      </Catalog97ProjectHero>
-
-      <div className="c97-band c97-sheet" data-c97-surface="paper" data-seam="torn">
-        <div className="c97-shell" style={{ display: "grid", gap: "var(--c97-sp-2)" }}>
-          {sourceIsOverdue ? (
-            <p className="c97-prose" role="status" style={{ color: "var(--c97-warning)", fontSize: "var(--c97-fs-small)" }}>
-              These private-company figures are past the review window or still
-              unverified. I keep them visible as directional research, not current
-              financial facts.
-            </p>
-          ) : null}
-          <p className="c97-prose" style={{ fontSize: "var(--c97-fs-small)", color: "var(--c97-ink-2)" }}>
-            {snapshot.disclaimer}
-            {!snapshot.verified
-              ? " Figures have not been individually verified against a single dated source, so treat them as directional."
-              : ""}
-          </p>
-        </div>
-      </div>
-
-      <section
-        className="c97-band c97-sheet"
-        data-c97-surface="bone"
-        data-seam="torn"
-        aria-label="Startup filters"
-      >
-        <div className="c97-shell" style={{ display: "grid", gap: "var(--c97-sp-5)" }}>
-          <h2 className="c97-poster-sm">The list</h2>
-          <div className="flex flex-wrap items-center justify-between" style={{ gap: "var(--c97-sp-2)" }}>
+        {/* The sector and stage filters sit above the treemap they redraw, so
+            a choice shows its result in the same view. Sort only reorders the
+            table, so it stays with the table below. */}
+        <div className="flex flex-col" style={{ gap: "var(--c97-sp-4)" }}>
+          <section
+            aria-label="Startup filters"
+            className="flex flex-col"
+            style={{ gap: "var(--c97-sp-3)" }}
+          >
             <div role="group" aria-label="Group startups by" className="c97-segmented">
               {TECH_STARTUP_KIND_OPTIONS.map((kind) => {
                 const isActive = resolvedState.kind === kind;
@@ -239,6 +215,42 @@ export function TechStartupClient({ initialState, snapshot }: TechStartupClientP
               })}
             </div>
 
+            <div role="group" aria-label="Filter by segment" className="c97-segmented">
+              <button
+                type="button"
+                aria-pressed={resolvedState.segment === "all"}
+                onClick={() => setSegment("all")}
+                className="min-h-[44px]"
+              >
+                All {TECH_STARTUP_KIND_LABELS[resolvedState.kind].toLowerCase()}s
+              </button>
+              {segments.map((segment) => (
+                <button
+                  key={segment.key}
+                  type="button"
+                  aria-pressed={resolvedState.segment === segment.key}
+                  onClick={() => setSegment(segment.key)}
+                  className="min-h-[44px]"
+                >
+                  {segment.label}
+                </button>
+              ))}
+            </div>
+          </section>
+
+          <ValuationTreemap
+            startups={filteredStartups}
+            selectedId={selectedStartup?.id ?? null}
+            onSelect={toggleStartup}
+            sectorLabels={Object.fromEntries([...segmentLookup].map(([id, segment]) => [id, segment.label]))}
+          />
+        </div>
+      </Catalog97ProjectHero>
+
+      <section className="c97-band c97-sheet" data-c97-surface="paper" data-seam="torn">
+        <div className="c97-shell flex flex-col" style={{ gap: "var(--c97-sp-3)" }}>
+          <div className="flex flex-wrap items-center justify-between" style={{ gap: "var(--c97-sp-2)" }}>
+            <h2 className="c97-poster-sm">The list</h2>
             <div className="flex flex-wrap items-center" style={{ gap: "var(--c97-sp-1)" }}>
               <span className="c97-kicker" style={{ marginBottom: 0 }}>
                 <ArrowDownUp aria-hidden="true" size={14} style={{ display: "inline", marginRight: "4px" }} />
@@ -260,32 +272,28 @@ export function TechStartupClient({ initialState, snapshot }: TechStartupClientP
             </div>
           </div>
 
-          <div role="group" aria-label="Filter by segment" className="c97-segmented">
-            <button
-              type="button"
-              aria-pressed={resolvedState.segment === "all"}
-              onClick={() => setSegment("all")}
-              className="min-h-[44px]"
-            >
-              All {TECH_STARTUP_KIND_LABELS[resolvedState.kind].toLowerCase()}s
-            </button>
-            {segments.map((segment) => (
-              <button
-                key={segment.key}
-                type="button"
-                aria-pressed={resolvedState.segment === segment.key}
-                onClick={() => setSegment(segment.key)}
-                className="min-h-[44px]"
+          {/* The short form of the data notice sits beside the figures. The
+              full notice prints in the open under the list, since a
+              disclaimer never goes inside a collapsed block. */}
+          <div className="flex flex-wrap items-center" style={{ columnGap: "var(--c97-sp-2)" }}>
+            {sourceIsOverdue ? (
+              <p
+                className="c97-prose"
+                role="status"
+                style={{ color: "var(--c97-warning)", fontSize: "var(--c97-fs-small)" }}
               >
-                {segment.label}
-              </button>
-            ))}
+                These figures are past the review window or still unverified.
+              </p>
+            ) : (
+              <p className="c97-prose" style={{ fontSize: "var(--c97-fs-small)", color: "var(--c97-ink-2)" }}>
+                Curated figures as of {formatRoundDate(snapshot.asOf)}.
+              </p>
+            )}
+            <a href={`#${DATA_NOTICE_ID}`} className="c97-btn-ghost">
+              Read the full notice
+            </a>
           </div>
-        </div>
-      </section>
 
-      <section className="c97-band c97-sheet" data-c97-surface="paper" data-seam="deckle">
-        <div className="c97-shell">
           <div className="grid xl:grid-cols-[minmax(0,1fr)_340px]" style={{ gap: "var(--c97-sp-3)" }}>
             {filteredStartups.length === 0 ? (
               <EmptyPanel
@@ -307,6 +315,27 @@ export function TechStartupClient({ initialState, snapshot }: TechStartupClientP
               onSelectSegment={setSegment}
             />
           </div>
+
+          <div
+            id={DATA_NOTICE_ID}
+            className="flex flex-col"
+            style={{ gap: "var(--c97-sp-1)", scrollMarginTop: "var(--c97-sp-6)" }}
+          >
+            <h2 className="c97-serif c97-h3">About these figures</h2>
+            {sourceIsOverdue ? (
+              <p className="c97-prose" style={{ fontSize: "var(--c97-fs-small)", color: "var(--c97-ink-2)" }}>
+                These private-company figures are past the review window or still
+                unverified. I keep them visible as directional research, not current
+                financial facts.
+              </p>
+            ) : null}
+            <p className="c97-prose" style={{ fontSize: "var(--c97-fs-small)", color: "var(--c97-ink-2)" }}>
+              {snapshot.disclaimer}
+              {!snapshot.verified
+                ? " Figures have not been individually verified against a single dated source, so treat them as directional."
+                : ""}
+            </p>
+          </div>
         </div>
       </section>
     </>
@@ -323,7 +352,9 @@ interface StartupTableProps {
 function StartupTable({ startups, selectedStartupId, segmentLookup, onToggleStartup }: StartupTableProps) {
   return (
     <div className="overflow-x-auto" role="region" aria-label="Startup table (scrolls sideways)" tabIndex={0}>
-      <table className="c97-table" style={{ minWidth: "820px" }}>
+      {/* Below lg the table prints the company and its valuation, and the
+          other columns move into the row's expansion. */}
+      <table className="c97-table lg:min-w-[820px]">
         <caption className="sr-only">
           Notable tech startups with valuation, total raised, latest funding round, and
           momentum score.
@@ -334,11 +365,11 @@ function StartupTable({ startups, selectedStartupId, segmentLookup, onToggleStar
             <th scope="col" data-align="end">
               Valuation
             </th>
-            <th scope="col" data-align="end">
+            <th scope="col" data-align="end" className="hidden lg:table-cell">
               Raised
             </th>
-            <th scope="col">Latest round</th>
-            <th scope="col" data-align="end">
+            <th scope="col" className="hidden lg:table-cell">Latest round</th>
+            <th scope="col" data-align="end" className="hidden lg:table-cell">
               Site
             </th>
           </tr>
@@ -404,15 +435,15 @@ function StartupRow({ startup, rank, isExpanded, sectorLabel, stageLabel, onTogg
                     onToggle();
                   }}
                   className="c97-serif inline-flex min-h-[44px] items-center text-left"
-                  style={{ fontWeight: 600, color: "var(--c97-ink)" }}
+                  style={{ fontWeight: 600, color: "var(--c97-ink)", overflowWrap: "anywhere" }}
                 >
                   {startup.name}
                 </button>
               </p>
-              <p className="line-clamp-2" style={{ color: "var(--c97-ink-2)", maxWidth: "44rem", marginBottom: "0" }}>
+              <p className="line-clamp-1 lg:line-clamp-2" style={{ color: "var(--c97-ink-2)", maxWidth: "44rem", marginBottom: "0" }}>
                 {startup.description}
               </p>
-              <div className="flex flex-wrap" style={{ marginTop: "var(--c97-sp-1)", gap: "var(--c97-sp-0)" }}>
+              <div className="hidden flex-wrap lg:flex" style={{ marginTop: "var(--c97-sp-1)", gap: "var(--c97-sp-0)" }}>
                 {sectorLabel ? <span className="c97-chip">{sectorLabel}</span> : null}
                 {stageLabel ? <span className="c97-chip">{stageLabel}</span> : null}
               </div>
@@ -424,12 +455,12 @@ function StartupRow({ startup, rank, isExpanded, sectorLabel, stageLabel, onTogg
             {formatUsdCompact(startup.valuation)}
           </span>
         </td>
-        <td data-align="end">
+        <td data-align="end" className="hidden lg:table-cell">
           <span className="c97-mono" style={{ fontWeight: 600 }}>
             {formatUsdCompact(startup.totalRaised)}
           </span>
         </td>
-        <td style={{ color: "var(--c97-ink-2)" }}>
+        <td style={{ color: "var(--c97-ink-2)" }} className="hidden lg:table-cell">
           <span className="block" style={{ fontWeight: 600, color: "var(--c97-ink)" }}>
             {startup.lastRound.stage}
           </span>
@@ -437,7 +468,7 @@ function StartupRow({ startup, rank, isExpanded, sectorLabel, stageLabel, onTogg
             {formatUsdCompact(startup.lastRound.amount)} · {formatRoundDate(startup.lastRound.date)}
           </span>
         </td>
-        <td data-align="end">
+        <td data-align="end" className="hidden lg:table-cell">
           <a
             href={startup.website}
             target="_blank"
@@ -459,7 +490,19 @@ function StartupRow({ startup, rank, isExpanded, sectorLabel, stageLabel, onTogg
               style={{ gap: "var(--c97-sp-2)", padding: "var(--c97-sp-3) 0" }}
             >
               <div className="flex flex-col" style={{ gap: "var(--c97-sp-2)" }}>
+                {/* The sector and stage chips, the total raised, and the site
+                    link print here only under lg, where the row hides them. */}
+                <div className="flex flex-wrap lg:hidden" style={{ gap: "var(--c97-sp-0)" }}>
+                  {sectorLabel ? <span className="c97-chip">{sectorLabel}</span> : null}
+                  {stageLabel ? <span className="c97-chip">{stageLabel}</span> : null}
+                </div>
                 <dl className="grid grid-cols-2 sm:grid-cols-3" style={{ rowGap: "var(--c97-sp-1)", columnGap: "var(--c97-sp-2)" }}>
+                  <div className="lg:hidden">
+                    <dt className="c97-stat-label">Total raised</dt>
+                    <dd className="c97-mono" style={{ color: "var(--c97-ink)", margin: "0", marginTop: "var(--c97-sp-0)" }}>
+                      {formatUsdCompact(startup.totalRaised)}
+                    </dd>
+                  </div>
                   <div>
                     <dt className="c97-stat-label inline-flex items-center" style={{ gap: "var(--c97-sp-0)" }}>
                       <MapPin aria-hidden="true" size={12} />
@@ -559,6 +602,21 @@ function StartupRow({ startup, rank, isExpanded, sectorLabel, stageLabel, onTogg
                     </dd>
                   </div>
                 ) : null}
+                <div className="col-span-2 lg:hidden">
+                  <dt className="c97-stat-label">Site</dt>
+                  <dd style={{ margin: "0", marginTop: "var(--c97-sp-0)" }}>
+                    <a
+                      href={startup.website}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="c97-link inline-flex min-h-[44px] items-center"
+                      style={{ gap: "var(--c97-sp-1)" }}
+                    >
+                      Visit
+                      <ExternalLink aria-hidden="true" size={14} />
+                    </a>
+                  </dd>
+                </div>
               </dl>
             </div>
           </td>

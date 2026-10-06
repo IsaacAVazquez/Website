@@ -7,6 +7,7 @@ import {
   formatShortDate,
   getRatingPillStyle,
   getRowStyle,
+  isStalePollDate,
   newestPollDate,
   partyColor,
 } from "../polling-aggregator-helpers";
@@ -71,6 +72,14 @@ describe("polling-aggregator-helpers", () => {
         describeStaleSource("2026-09-08", "2026-09-08", newest + 14 * DAY_MS + 1)
       ).not.toBeNull();
       expect(describeStaleSource(null, null, now)).toBeNull();
+    });
+
+    it("flags one series by the same 14-day rule", () => {
+      const newest = Date.parse("2026-09-08");
+
+      expect(isStalePollDate("2026-09-08", newest + 14 * DAY_MS)).toBe(false);
+      expect(isStalePollDate("2026-09-08", newest + 14 * DAY_MS + 1)).toBe(true);
+      expect(isStalePollDate(null, now)).toBe(false);
     });
   });
 

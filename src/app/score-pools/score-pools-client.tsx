@@ -10,6 +10,7 @@ import Link from "next/link";
 import { useScorePools } from "@/hooks/useScorePools";
 import { analyzePoolFixtures, type PoolFixtureAnalysis } from "@/lib/scorePools/poolAnalysis";
 import type { Scoreline } from "@/lib/scorePools";
+import { DEFAULT_SCORING_RULES } from "@/lib/scorePools/defaults";
 import type { ScorePoolsSnapshot, SnapshotFixture } from "@/types/scorePools";
 import { FixtureDetailDrawer } from "./fixture-detail-drawer";
 import {
@@ -194,11 +195,11 @@ export function ScorePoolsClient({ snapshot, initialFixtureId }: ScorePoolsClien
             </em>
           </h1>
           <p className="text-sm leading-relaxed text-[var(--c97-ink-2)]" style={{ marginTop: "var(--c97-sp-1)" }}>
-            I run exact-score prediction pools, and this is the engine I used to work by hand. It
-            de-vigs the market, fits a scoreline distribution anchored to the moneyline and the
-            total, and ranks every pick by expected points under my pool&apos;s actual rules,
-            adjusted for where I sit on the leaderboard. It&apos;s a decision aid built on market
-            prices, so it carries the market&apos;s uncertainty rather than beating it.
+            I run exact-score prediction pools, and this does the work I used to do by hand. It
+            suggests the exact score that should earn the most points under my pool&apos;s own
+            rules and my place in the standings. It&apos;s a decision aid built on betting-market
+            prices, so it carries the market&apos;s uncertainty, and each match&apos;s Detail shows
+            the working.
           </p>
           <p className="text-2xs text-[var(--c97-ink-2)]" style={{ marginTop: "var(--c97-sp-1)" }}>
             Data as of {formatAge(snapshot.generatedAt, now)} · picks recompute whenever the
@@ -221,6 +222,12 @@ export function ScorePoolsClient({ snapshot, initialFixtureId }: ScorePoolsClien
             <p className="text-sm text-[var(--c97-ink-2)]" style={{ marginTop: "var(--c97-sp-0)" }}>
               A pool is a league plus your scoring rules and your standing. Everything stays in
               this browser; nothing gets an account.
+            </p>
+            <p className="text-sm text-[var(--c97-ink-2)]" style={{ marginTop: "var(--c97-sp-0)" }}>
+              A new pool starts at {DEFAULT_SCORING_RULES.exact} points for the exact score,{" "}
+              {DEFAULT_SCORING_RULES.correctDifference} for the right winner and goal difference, and{" "}
+              {DEFAULT_SCORING_RULES.correctOutcome} for the right winner or draw only, and you can
+              change those to match your pool in settings.
             </p>
             <div className="flex flex-wrap items-end" style={{ gap: "var(--c97-sp-1)", marginTop: "var(--c97-sp-1)" }}>
               <label className="block">
@@ -296,6 +303,14 @@ export function ScorePoolsClient({ snapshot, initialFixtureId }: ScorePoolsClien
                 </button>
               ))}
             </nav>
+
+            <p className="text-sm text-[var(--c97-ink-2)]">
+              {activePool.name} scores {activePool.rules.exact} points for the exact score,{" "}
+              {activePool.rules.correctDifference} for the right winner and goal difference, and{" "}
+              {activePool.rules.correctOutcome} for the right winner or draw only, counted on the{" "}
+              {activePool.rules.basis === "ninetyMinutes" ? "90-minute result" : "final result after extra time"}.{" "}
+              <Link className="c97-link" href="/score-pools/settings">Change the scoring</Link>
+            </p>
 
             {league?.sample ? (
               <p className={SAMPLE_NOTICE} style={SAMPLE_NOTICE_STYLE}>

@@ -118,6 +118,7 @@ export function Catalog97Dashboards({
   ];
   const toolCount = groups.reduce((sum, group) => sum + group.tools.length, 0);
   const [active, setActive] = useState<string>(ALL);
+  const [query, setQuery] = useState("");
 
   const tabs = useMemo(
     () => [
@@ -137,12 +138,29 @@ export function Catalog97Dashboards({
    * whether you are looking at all eight or at that one on its own. Filtering
    * should change what is on screen and nothing else.
    */
-  const visibleGroups = useMemo(
-    () =>
-      groups
-        .map((group, index) => ({ group, cycleOffset: index }))
-        .filter((entry) => active === ALL || entry.group.id === active),
-    [groups, active],
+  const visibleGroups = useMemo(() => {
+    // The name search narrows the tiles inside each run and drops a run it empties.
+    const tokens = query.trim().toLowerCase().split(/\s+/).filter(Boolean);
+    return groups
+      .map((group, index) => ({
+        group: {
+          ...group,
+          tools: group.tools.filter((tool) => {
+            const name = tool.title.toLowerCase();
+            return tokens.every((token) => name.includes(token));
+          }),
+        },
+        cycleOffset: index,
+      }))
+      .filter(
+        (entry) =>
+          (active === ALL || entry.group.id === active) &&
+          entry.group.tools.length > 0,
+      );
+  }, [groups, active, query]);
+  const shownCount = visibleGroups.reduce(
+    (sum, entry) => sum + entry.group.tools.length,
+    0,
   );
 
   return (
@@ -190,8 +208,46 @@ export function Catalog97Dashboards({
         data-c97-surface="paper"
         style={{ paddingBottom: "var(--c97-sp-3)" }}
       >
-        <div
+        {/* The directory holds more than thirty tools, so a name gets you to one directly. */}
+        <label
           className="c97-shell"
+          style={{
+            display: "grid",
+            gap: "var(--c97-sp-1)",
+            marginBottom: "var(--c97-sp-3)",
+          }}
+        >
+          <span className="c97-kicker">Find an instrument by name</span>
+          <input
+            type="search"
+            value={query}
+            onChange={(event) => setQuery(event.target.value)}
+            placeholder="Transit, Rent vs Buy, Premier League"
+            className="c97-field"
+            style={{ maxWidth: "var(--c97-measure-body)" }}
+          />
+        </label>
+        {/* Read out when a search or filter changes the directory. */}
+        <p className="sr-only" role="status">
+          {shownCount} of {toolCount} instruments shown
+        </p>
+        <label className="c97-shell c97-category-picker">
+          <span className="c97-kicker">Instrument category</span>
+          <select
+            name="category"
+            value={active}
+            onChange={(event) => setActive(event.target.value)}
+            className="c97-field"
+          >
+            {tabs.map((tab) => (
+              <option key={tab.id} value={tab.id}>
+                {tab.label} ({tab.count})
+              </option>
+            ))}
+          </select>
+        </label>
+        <div
+          className="c97-shell c97-category-links"
           role="group"
           aria-label="Filter instruments by category"
           /*
@@ -220,7 +276,6 @@ export function Catalog97Dashboards({
            * into one `gap`.
            */
           style={{
-            display: "flex",
             columnGap: "var(--c97-sp-3)",
             rowGap: "var(--c97-sp-5)",
             flexWrap: "wrap",
@@ -279,6 +334,27 @@ export function Catalog97Dashboards({
             gap: "var(--c97-sp-6)",
           }}
         >
+          {visibleGroups.length === 0 ? (
+            <div
+              style={{
+                display: "grid",
+                justifyItems: "start",
+                gap: "var(--c97-sp-2)",
+              }}
+            >
+              <p className="c97-prose">No instruments match that name.</p>
+              <button
+                type="button"
+                className="c97-btn-ghost"
+                onClick={() => {
+                  setQuery("");
+                  setActive(ALL);
+                }}
+              >
+                Clear search
+              </button>
+            </div>
+          ) : null}
           {visibleGroups.map(({ group, cycleOffset }) => (
             <div key={group.id}>
               <div

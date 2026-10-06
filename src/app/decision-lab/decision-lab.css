@@ -1,5 +1,5 @@
-/* Decision Lab: the confidence/impact matrix, its rubber-stamp verdict, and
- * the "why this verdict" contribution list beside it. */
+/* Decision Lab: the four sliders, and beside them the confidence/impact
+ * matrix with its rubber-stamp verdict. */
 
 .c97-decision-signature {
   display: grid;
@@ -77,7 +77,7 @@
 }
 
 .c97-decision-caption {
-  margin: var(--c97-sp-2) 0 0;
+  margin: 0;
   font-size: var(--c97-fs-small);
   letter-spacing: 0.06em;
   text-transform: uppercase;

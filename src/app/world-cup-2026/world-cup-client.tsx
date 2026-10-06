@@ -1,6 +1,7 @@
 "use client";
 
-import { useMemo } from "react";
+import { useMemo, useRef, useState } from "react";
+import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { CalendarDays, Flag, Medal, X } from "lucide-react";
 import {
@@ -47,6 +48,9 @@ interface WorldCupClientProps {
   summary: WorldCupSummarySnapshot;
   initialTeamSnapshot: WorldCupTeamSnapshot | null;
 }
+
+/** How many group tables a phone prints before the rest wait behind a button. */
+const PHONE_GROUP_LIMIT = 4;
 
 const VIEW_OPTIONS: Array<{
   id: WorldCupView;
@@ -108,6 +112,21 @@ export function WorldCupClient({
     [teamOptions]
   );
   const tree = useMemo(() => bracketTree(knockout), [knockout]);
+  // The lookup's options, by group letter and then by name. The locale is
+  // named so the server and the browser sort alike.
+  const teamsByGroup = useMemo(
+    () =>
+      Array.from(
+        groupBy(
+          teamOptions.toSorted(
+            (a, b) => a.group.localeCompare(b.group, "en") || a.name.localeCompare(b.name, "en")
+          ),
+          (team) => team.group
+        ).entries()
+      ),
+    [teamOptions]
+  );
+  const teamPanelRef = useRef<HTMLDivElement>(null);
 
   const hasManagedParams =
     searchParams.get("view") !== null || searchParams.get("team") !== null;
@@ -153,6 +172,14 @@ export function WorldCupClient({
     const normalized = normalizeTeamParam(teamId);
     if (!normalized || !teamOptionById.has(normalized)) return;
     navigate({ view: routeState.view, team: normalized });
+    // A pick in the hero bracket, or far down a phone's group list, changes a
+    // card that is off screen, so the page goes to the card. The lookup and a
+    // desktop's pinned column are already in view and stay where they are.
+    const panel = teamPanelRef.current;
+    if (panel) {
+      const { top } = panel.getBoundingClientRect();
+      if (top < 0 || top > window.innerHeight - 160) panel.scrollIntoView?.({ block: "start" });
+    }
   }
 
   function clearTeam() {
@@ -210,6 +237,15 @@ export function WorldCupClient({
         title="World Cup Pulse"
         standfirst={standfirst}
         meta={`${tournament.name} · ${tournament.phase} · Snapshot ${snapshotDateLabel}`}
+        action={
+          <>
+        <div>
+          <Link href={`${desiredHref}#world-cup-explore`} className="c97-btn-ghost">
+            Find a team
+          </Link>
+        </div>
+          </>
+        }
         readouts={[
           {
             label: "Champion",
@@ -231,7 +267,12 @@ export function WorldCupClient({
         <WorldCupBracket tree={tree} onOpenTeam={handleTeamChange} />
       </Catalog97ProjectHero>
 
-      <section className="c97-band c97-sheet" data-c97-surface="paper" data-seam="torn">
+      <section
+        id="world-cup-explore"
+        className="c97-band c97-sheet"
+        data-c97-surface="paper"
+        data-seam="torn"
+      >
         <div className="c97-shell">
           <h2 className="c97-poster-sm">Explore the tournament</h2>
 
@@ -256,10 +297,66 @@ export function WorldCupClient({
           </p>
 
           <div className="grid xl:grid-cols-[minmax(0,1.7fr)_minmax(300px,0.92fr)]" style={{ marginTop: "var(--c97-sp-3)", gap: "var(--c97-sp-3)" }}>
+            {/*
+              The lookup and the team it pins come first, so a phone shows the
+              pick right under the control that made it. Below xl the aside is
+              display: contents, which lets its two blocks sit in this grid on
+              either side of the view: the lookup and team card above it, the
+              format card after it. From xl it is the pinned right column.
+            */}
+            <aside
+              className="contents xl:sticky xl:top-6 xl:col-start-2 xl:row-start-1 xl:flex xl:flex-col xl:self-start"
+              style={{ gap: "var(--c97-sp-2)" }}
+            >
+              <div
+                ref={teamPanelRef}
+                className="flex flex-col"
+                style={{ gap: "var(--c97-sp-2)", scrollMarginTop: "var(--c97-sp-3)" }}
+              >
+                <label className="flex flex-col" style={{ gap: "var(--c97-sp-1)" }}>
+                  <span className="c97-kicker">Find a team</span>
+                  <select
+                    className="c97-field"
+                    value={selectedTeamId ?? ""}
+                    onChange={(event) =>
+                      event.target.value ? handleTeamChange(event.target.value) : clearTeam()
+                    }
+                  >
+                    <option value="">Choose a team</option>
+                    {teamsByGroup.map(([group, teams]) => (
+                      <optgroup key={group} label={group ? `Group ${group}` : "Teams"}>
+                        {teams.map((team) => (
+                          <option key={team.id} value={team.id}>
+                            {team.name}
+                          </option>
+                        ))}
+                      </optgroup>
+                    ))}
+                  </select>
+                </label>
+                {selectedTeamOption ? (
+                  <TeamDetailCard
+                    option={selectedTeamOption}
+                    snapshot={teamSnapshot}
+                    isLoading={isTeamSnapshotLoading}
+                    error={teamSnapshotError}
+                    onClear={clearTeam}
+                    onOpenTeam={handleTeamChange}
+                  />
+                ) : null}
+              </div>
+              {selectedTeamOption ? null : (
+                <div className="order-last xl:order-none">
+                  <FormatCard tournament={tournament} />
+                </div>
+              )}
+            </aside>
+
             <div
               role="tabpanel"
               id={`world-cup-tabpanel-${routeState.view}`}
               aria-labelledby={`world-cup-tab-${routeState.view}`}
+              className="xl:col-start-1 xl:row-start-1"
             >
               {routeState.view === "groups" && (
                 <GroupsView
@@ -283,21 +380,6 @@ export function WorldCupClient({
                 />
               )}
             </div>
-
-            <aside className="xl:sticky xl:top-6 xl:self-start">
-              {selectedTeamOption ? (
-                <TeamDetailCard
-                  option={selectedTeamOption}
-                  snapshot={teamSnapshot}
-                  isLoading={isTeamSnapshotLoading}
-                  error={teamSnapshotError}
-                  onClear={clearTeam}
-                  onOpenTeam={handleTeamChange}
-                />
-              ) : (
-                <FormatCard tournament={tournament} />
-              )}
-            </aside>
           </div>
         </div>
       </section>
@@ -394,6 +476,7 @@ function GroupsView({
 }) {
   const thirdPlaceRace = useMemo(() => getThirdPlaceRace(groups), [groups]);
   const raceStarted = hasThirdPlaceRaceStarted(thirdPlaceRace);
+  const [showAllGroups, setShowAllGroups] = useState(false);
 
   if (groups.length === 0) {
     return (
@@ -408,15 +491,37 @@ function GroupsView({
     <div className="flex flex-col" style={{ rowGap: "var(--c97-sp-2)" }}>
       <QualificationLegend />
       <div className="grid lg:grid-cols-2" style={{ gap: "var(--c97-sp-2)" }}>
-        {groups.map((group) => (
+        {groups.map((group, index) => (
           <GroupTable
             key={group.letter || group.name}
             group={group}
             selectedTeamId={selectedTeamId}
             onOpenTeam={onOpenTeam}
+            // Twelve tables run about seven phone screens, so below lg the
+            // list stops at four plus the selected team's group. From lg the
+            // two-column grid prints all of them.
+            heldOnPhone={
+              index >= PHONE_GROUP_LIMIT &&
+              !showAllGroups &&
+              !group.standings.some((row) => row.teamId === selectedTeamId)
+            }
           />
         ))}
       </div>
+      {groups.length > PHONE_GROUP_LIMIT ? (
+        // The hide is on a wrapper because .c97-btn-ghost sets its own
+        // display, which is unlayered and beats a display utility.
+        <div className="lg:hidden">
+          <button
+            type="button"
+            className="c97-btn-ghost"
+            aria-expanded={showAllGroups}
+            onClick={() => setShowAllGroups((shown) => !shown)}
+          >
+            {showAllGroups ? `Show the first ${PHONE_GROUP_LIMIT} groups` : `Show all ${groups.length} groups`}
+          </button>
+        </div>
+      ) : null}
       <ThirdPlaceRace
         rows={thirdPlaceRace}
         started={raceStarted}
@@ -446,13 +551,18 @@ function GroupTable({
   group,
   selectedTeamId,
   onOpenTeam,
+  heldOnPhone,
 }: {
   group: WorldCupGroup;
   selectedTeamId: string | null;
   onOpenTeam: (teamId: string) => void;
+  heldOnPhone: boolean;
 }) {
   return (
-    <SurfaceCard className="@container" style={{ padding: "var(--c97-sp-2)" }}>
+    <SurfaceCard
+      className={heldOnPhone ? "@container hidden lg:block" : "@container"}
+      style={{ padding: "var(--c97-sp-2)" }}
+    >
       <div className="flex items-center justify-between" style={{ paddingBottom: "var(--c97-sp-1)" }}>
         <h3 className="c97-serif" style={{ fontSize: "var(--c97-fs-h3)" }}>
           {group.name}
@@ -773,8 +883,8 @@ function FormatCard({
         </span>
       </div>
       <p className="c97-prose" style={{ marginTop: "var(--c97-sp-2)", fontSize: "var(--c97-fs-small)" }}>
-        Pick any team from the group tables or the bracket to pin its standing, form, and
-        fixtures here.
+        Pick any team from the lookup, the group tables, or the bracket to pin its standing,
+        form, and fixtures.
       </p>
     </SurfaceCard>
   );

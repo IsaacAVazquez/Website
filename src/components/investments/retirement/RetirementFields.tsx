@@ -44,6 +44,18 @@ export function NumberField({
   // Local text buffer so the field can be cleared/typed without snapping.
   const [text, setText] = useState(() => displayValue(value, asPercent));
   const [syncedValue, setSyncedValue] = useState(value);
+  const hintId = `${id}-hint`;
+  const errorId = `${id}-error`;
+  const parsedText = Number(text);
+  const clamp = (number: number) => Math.min(max ?? Infinity, Math.max(min ?? -Infinity, number));
+  const invalid = text.trim() === "" || !Number.isFinite(parsedText) || clamp(parsedText) !== parsedText;
+  const rangeMessage = min !== undefined && max !== undefined
+    ? `Enter a number from ${min} to ${max}.`
+    : min !== undefined
+      ? `Enter ${min} or more.`
+      : max !== undefined
+        ? `Enter ${max} or less.`
+        : "Enter a number.";
 
   // Reflect *external* value changes (reset, portfolio seed) during render
   // without clobbering in-progress typing such as a trailing decimal point.
@@ -59,40 +71,49 @@ export function NumberField({
     setText(raw);
     if (raw.trim() === "" || raw === "-") return;
     const parsed = Number(raw);
-    if (Number.isNaN(parsed)) return;
-    let next = asPercent ? parsed / 100 : parsed;
-    if (min !== undefined) next = Math.max(asPercent ? min / 100 : min, next);
-    if (max !== undefined) next = Math.min(asPercent ? max / 100 : max, next);
-    onChange(next);
+    // A first digit can be outside the range while the finished number is valid.
+    // Keep that draft until blur, without changing the saved plan mid-entry.
+    if (!Number.isFinite(parsed) || clamp(parsed) !== parsed) return;
+    onChange(asPercent ? parsed / 100 : parsed);
   }
 
   return (
     <label className="invest-retire-field" htmlFor={id}>
-      <span className="invest-retire-field-label">{label}</span>
+      <span id={`${id}-label`} className="invest-retire-field-label">{label}</span>
       <span className="invest-retire-input-wrap">
         {prefix ? <span className="invest-retire-affix">{prefix}</span> : null}
         <input
           id={id}
+          aria-labelledby={`${id}-label`}
           type="number"
           inputMode="decimal"
           value={text}
           min={min}
           max={max}
           step={step}
+          aria-invalid={invalid || undefined}
+          aria-describedby={[hint ? hintId : null, invalid ? errorId : null].filter(Boolean).join(" ") || undefined}
           onChange={(e) => commit(e.target.value)}
           onBlur={() => {
-            // Only canonicalize the buffer when it's empty, unparseable, or has
-            // drifted from the committed value — otherwise a valid in-progress
-            // entry like "5." (which already commits to 5) gets clobbered.
-            const parsed = asPercent ? Number(text) / 100 : Number(text);
-            if (text.trim() === "" || Number.isNaN(parsed) || Math.abs(parsed - value) > 1e-9) {
+            if (text.trim() === "" || !Number.isFinite(parsedText)) {
+              setText(displayValue(value, asPercent));
+            } else if (clamp(parsedText) !== parsedText) {
+              const next = asPercent ? clamp(parsedText) / 100 : clamp(parsedText);
+              onChange(next);
+              setText(displayValue(next, asPercent));
+            } else {
               setText(displayValue(value, asPercent));
             }
           }}
         />
         {suffix ? <span className="invest-retire-affix invest-retire-affix-suffix">{suffix}</span> : null}
       </span>
-      {hint ? <span className="invest-retire-field-hint">{hint}</span> : null}
+      {hint ? <span id={hintId} className="invest-retire-field-hint">{hint}</span> : null}
+      {invalid ? (
+        <span id={errorId} className="invest-retire-field-hint" style={{ color: "var(--c97-negative)" }}>
+          {text.trim() === "" ? "Enter a number, or leave the field to keep the saved value." : `${rangeMessage} It will adjust when you leave the field.`}
+        </span>
+      ) : null}
     </label>
   );
 }

@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useId, useMemo, useState } from "react";
+import { useId, useMemo, useState } from "react";
 import {
   BedDouble,
   Bus,
@@ -12,9 +12,14 @@ import {
   Plane,
   Sparkles,
 } from "lucide-react";
-import { Catalog97ProjectHero } from "@/components/catalog97/Catalog97ProjectHero";
+import {
+  Catalog97HeroReadouts,
+  Catalog97ProjectHero,
+  type Catalog97Readout,
+} from "@/components/catalog97/Catalog97ProjectHero";
 import { PROJECT_PRESS } from "@/constants/projectPress";
 import { useClientNow } from "@/hooks/useClientNow";
+import { useLocalStorageString } from "@/hooks/useLocalStorageString";
 import {
   DEAL_TACTICS,
   DESTINATION_REGIONS,
@@ -49,6 +54,9 @@ import "./travel-deals.css";
 /** The whole-party quote cap, as the fare checker had it, so a 12-seat long-haul quote still fits. */
 const MAX_PARTY_FARE = 100_000;
 
+/** The playbook opens on its first few tactics, and the rest are one press away. */
+const TACTIC_PREVIEW = 6;
+
 const STORAGE_KEY = "travel-deals:v1";
 const ROUTE = "/travel-deals";
 
@@ -61,6 +69,8 @@ interface TripState {
   nights: number;
   travelers: number;
   budget: number;
+  /** The quote for the whole party, in dollars. Zero means no fare entered yet. */
+  quotedFare: number;
   checkedTactics: string[];
 }
 
@@ -70,6 +80,7 @@ const DEFAULT_STATE: TripState = {
   nights: 5,
   travelers: 2,
   budget: 3000,
+  quotedFare: 0,
   checkedTactics: [],
 };
 
@@ -96,12 +107,22 @@ function decodeState(value: unknown): TripState {
     nights: clampNumber(parsed.nights, 1, 365, DEFAULT_STATE.nights),
     travelers: clampNumber(parsed.travelers, 1, 12, DEFAULT_STATE.travelers),
     budget: clampNumber(parsed.budget, 0, 1_000_000, DEFAULT_STATE.budget),
+    quotedFare: clampNumber(parsed.quotedFare, 0, MAX_PARTY_FARE, DEFAULT_STATE.quotedFare),
     checkedTactics,
   };
 }
 
 function loadState(): TripState {
   return readValidatedBrowserStorage(STORAGE_KEY, decodeState, () => DEFAULT_STATE).value;
+}
+
+function parseState(raw: string): TripState {
+  if (!raw) return DEFAULT_STATE;
+  try {
+    return decodeState(JSON.parse(raw));
+  } catch {
+    return DEFAULT_STATE;
+  }
 }
 
 function saveState(state: TripState) {
@@ -176,27 +197,18 @@ function RatingChip({ tone, label }: { tone: "positive" | "negative" | null; lab
 }
 
 export function TravelDealLabClient() {
-  const [state, setState] = useState<TripState>(DEFAULT_STATE);
-  const [hydrated, setHydrated] = useState(false);
+  const rawState = useLocalStorageString(STORAGE_KEY);
+  const state = useMemo(() => parseState(rawState), [rawState]);
   const [filter, setFilter] = useState<CategoryFilter>("all");
 
-  // Ephemeral calculator inputs, quick checks that don't belong in the saved trip.
-  const [quotedFare, setQuotedFare] = useState(0);
+  const [showAllTactics, setShowAllTactics] = useState(false);
+  const tripLabelId = useId();
+  const quotedFare = state.quotedFare;
+
+  // The points check is a quick calculation, so its inputs are not saved with the trip.
   const [cashPrice, setCashPrice] = useState(1200);
   const [taxesFees, setTaxesFees] = useState(80);
   const [pointsUsed, setPointsUsed] = useState(60000);
-
-  // Load the saved trip after mount so SSR and the first client render match.
-  useEffect(() => {
-    // eslint-disable-next-line react-hooks/set-state-in-effect -- One-time hydration from localStorage
-    setState(loadState());
-    setHydrated(true);
-  }, []);
-
-  useEffect(() => {
-    if (!hydrated) return;
-    saveState(state);
-  }, [state, hydrated]);
 
   const region = getRegion(state.regionId) ?? DESTINATION_REGIONS[0];
   // "Today" depends on the visitor's own clock and zone, so it can only be
@@ -242,25 +254,53 @@ export function TravelDealLabClient() {
   const appliedCount = state.checkedTactics.length;
 
   function updateTrip(patch: Partial<TripState>) {
-    setState((current) => ({ ...current, ...patch }));
+    saveState({ ...loadState(), ...patch });
   }
 
   function toggleTactic(id: string) {
-    setState((current) => {
-      const has = current.checkedTactics.includes(id);
-      return {
-        ...current,
-        checkedTactics: has
-          ? current.checkedTactics.filter((tacticId) => tacticId !== id)
-          : [...current.checkedTactics, id],
-      };
+    const current = loadState();
+    const has = current.checkedTactics.includes(id);
+    saveState({
+      ...current,
+      checkedTactics: has
+        ? current.checkedTactics.filter((tacticId) => tacticId !== id)
+        : [...current.checkedTactics, id],
     });
   }
 
   const lead = PROJECT_PRESS[ROUTE].lead;
   const standfirst =
-    "A working tool for spending less on a trip without spending days on it. Set the shape of your trip below and I will place your fare on the gauge, mark where you sit in the booking window, tell you whether an award beats paying cash, and hand you the playbook and tools I actually use to find the deals.";
+    "Enter a trip and the fare you were quoted, and I will place that fare on the gauge for the region and mark where you sit in the booking window.";
   const disclosure = `Fare bands and the points baseline are curated, unverified estimates as of ${TRAVEL_DEALS_AS_OF}, and none of them is a live quote, so I'd use them to judge a price you've already found.`;
+  const shownTactics = showAllTactics ? visibleTactics : visibleTactics.slice(0, TACTIC_PREVIEW);
+
+  // The figures print after the trip and fare fields that drive them, which
+  // keeps the first field inside a phone's opening screen.
+  const heroReadouts: Catalog97Readout[] = [
+    {
+      label: "Your fare per seat",
+      value: quotedFare > 0 ? formatUsd(Math.round(perTravelerFare)) : "—",
+      detail:
+        quotedFare > 0
+          ? `${FARE_RATING_LABEL[gauge.rating]} vs ${formatUsd(region.typicalFare)} typical`
+          : "Add a fare below",
+    },
+    {
+      label: "Booking window",
+      value:
+        booking.daysUntilDeparture === null
+          ? "—"
+          : booking.daysUntilDeparture < 0
+          ? "Past"
+          : `${booking.daysUntilDeparture}d out`,
+      detail: booking.headline,
+    },
+    {
+      label: "Points value",
+      value: points ? `${points.centsPerPoint.toFixed(2)}¢/pt` : `${POINTS_BASELINE_CENTS.toFixed(1)}¢ baseline`,
+      detail: points ? POINTS_RATING_LABEL[points.rating] : "Add points below",
+    },
+  ];
 
   return (
     <>
@@ -268,54 +308,19 @@ export function TravelDealLabClient() {
         ink={lead}
         title="Travel Deal Lab"
         standfirst={standfirst}
-        readouts={[
-          {
-            label: "Your fare per seat",
-            value: quotedFare > 0 ? formatUsd(Math.round(perTravelerFare)) : "—",
-            detail:
-              quotedFare > 0
-                ? `${FARE_RATING_LABEL[gauge.rating]} vs ${formatUsd(region.typicalFare)} typical`
-                : "Add a fare below",
-          },
-          {
-            label: "Booking window",
-            value:
-              booking.daysUntilDeparture === null
-                ? "—"
-                : booking.daysUntilDeparture < 0
-                ? "Past"
-                : `${booking.daysUntilDeparture}d out`,
-            detail: booking.headline,
-          },
-          {
-            label: "Points value",
-            value: points ? `${points.centsPerPoint.toFixed(2)}¢/pt` : `${POINTS_BASELINE_CENTS.toFixed(1)}¢ baseline`,
-            detail: points ? POINTS_RATING_LABEL[points.rating] : "Add points below",
-          },
-        ]}
       >
-        <div data-c97-surface="paper" className="c97-offset" style={{ padding: "var(--c97-sp-3)" }}>
-          <FareGaugeSignature
-            quoted={perTravelerFare}
-            region={region}
-            departureDate={state.departureDate}
-            today={today}
-          />
-          <p className="c97-prose" style={{ fontSize: "var(--c97-fs-small)", color: "var(--c97-ink-2)", marginTop: "var(--c97-sp-3)" }}>
-            {disclosure}
-          </p>
-        </div>
-      </Catalog97ProjectHero>
+        <div
+          data-c97-surface="paper"
+          className="c97-offset"
+          style={{ padding: "var(--c97-sp-3)", display: "flex", flexDirection: "column", gap: "var(--c97-sp-3)" }}
+        >
+          <div role="group" aria-labelledby={tripLabelId} style={{ display: "flex", flexDirection: "column", gap: "var(--c97-sp-2)" }}>
+            <p id={tripLabelId} className="c97-kicker" style={{ display: "flex", alignItems: "center", gap: "var(--c97-sp-1)" }}>
+              <Compass size={14} aria-hidden="true" />
+              Your trip and fare
+            </p>
 
-      <section className="c97-band c97-sheet" data-c97-surface="paper" data-seam="torn" data-testid="travel-deals-shell">
-        <div className="c97-shell">
-          <div className="grid lg:grid-cols-[minmax(0,360px)_minmax(0,1fr)]" style={{ gap: "var(--c97-sp-4)" }}>
-            <div style={{ display: "flex", flexDirection: "column", gap: "var(--c97-sp-2)" }}>
-              <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-2)", display: "flex", alignItems: "center", gap: "var(--c97-sp-1)" }}>
-                <Compass size={14} aria-hidden="true" />
-                Your trip
-              </p>
-
+            <div className="grid sm:grid-cols-2 lg:grid-cols-4" style={{ gap: "var(--c97-sp-3)", alignItems: "end" }}>
               <label className="grid" style={{ gap: "var(--c97-sp-1)" }}>
                 <span className="c97-kicker">Destination region</span>
                 <select
@@ -347,10 +352,73 @@ export function TravelDealLabClient() {
                 min={0}
                 max={MAX_PARTY_FARE}
                 step={25}
-                onChange={setQuotedFare}
+                onChange={(next) => updateTrip({ quotedFare: next })}
               />
 
-              <div className="grid grid-cols-2" style={{ gap: "var(--c97-sp-3)" }}>
+              <NumberField
+                label="Travelers"
+                value={state.travelers}
+                min={1}
+                max={12}
+                onChange={(travelers) => updateTrip({ travelers })}
+              />
+            </div>
+          </div>
+
+          {fare ? (
+            <div className="c97-fare-row" style={{ alignItems: "start" }}>
+              <p className="c97-prose" style={{ margin: 0 }}>
+                {fare.message}
+              </p>
+              <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-end", gap: "var(--c97-sp-1)" }}>
+                <RatingChip tone={FARE_CHIP_TONE[fare.rating]} label={FARE_RATING_LABEL[fare.rating]} />
+                <span className="c97-mono" style={{ fontSize: "var(--c97-fs-small)" }}>
+                  {fare.savings >= 0 ? "Save " : "Over by "}
+                  {formatUsd(Math.abs(fare.savings))} ({formatSignedPercent(fare.savingsPct)})
+                </span>
+              </div>
+            </div>
+          ) : (
+            <p className="c97-prose" style={{ color: "var(--c97-ink-2)" }}>
+              Add a quoted fare to score it against the typical band for {region.label}.
+            </p>
+          )}
+
+          <FareGaugeSignature
+            quoted={perTravelerFare}
+            region={region}
+            departureDate={state.departureDate}
+            today={today}
+          />
+
+          <p className="c97-prose" style={{ fontSize: "var(--c97-fs-small)", color: "var(--c97-ink-2)", display: "flex", alignItems: "center", gap: "var(--c97-sp-1)" }}>
+            <Sparkles size={14} aria-hidden="true" style={{ flexShrink: 0 }} />
+            Your trip, fare, and budget are saved in this browser.
+          </p>
+          <p className="c97-prose" style={{ fontSize: "var(--c97-fs-small)", color: "var(--c97-ink-2)" }}>
+            {disclosure}
+          </p>
+        </div>
+        <Catalog97HeroReadouts readouts={heroReadouts} />
+      </Catalog97ProjectHero>
+
+      <section className="c97-band c97-sheet" data-c97-surface="paper" data-seam="torn" data-testid="travel-deals-shell">
+        <div className="c97-shell">
+          <div className="grid lg:grid-cols-[minmax(0,360px)_minmax(0,1fr)]" style={{ gap: "var(--c97-sp-4)" }}>
+            <div>
+              <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-2)" }}>
+                Booking window
+              </p>
+              <h2 className="c97-serif c97-h3">{booking.headline}</h2>
+              <p className="c97-prose" style={{ marginTop: "var(--c97-sp-2)" }}>
+                {booking.message}
+              </p>
+            </div>
+
+            <div style={{ display: "flex", flexDirection: "column", gap: "var(--c97-sp-3)" }}>
+              <h2 className="c97-serif c97-h3">The budget, split to spend</h2>
+
+              <div className="grid grid-cols-2" style={{ gap: "var(--c97-sp-3)", alignItems: "start" }}>
                 <NumberField
                   label="Nights"
                   value={state.nights}
@@ -359,64 +427,21 @@ export function TravelDealLabClient() {
                   onChange={(nights) => updateTrip({ nights })}
                 />
                 <NumberField
-                  label="Travelers"
-                  value={state.travelers}
-                  min={1}
-                  max={12}
-                  onChange={(travelers) => updateTrip({ travelers })}
+                  label="Total budget (USD)"
+                  value={state.budget}
+                  min={0}
+                  max={1_000_000}
+                  step={100}
+                  onChange={(budget) => updateTrip({ budget })}
                 />
               </div>
 
-              <NumberField
-                label="Total budget (USD)"
-                value={state.budget}
-                min={0}
-                max={1_000_000}
-                step={100}
-                onChange={(budget) => updateTrip({ budget })}
-              />
-
-              <p className="c97-prose" style={{ fontSize: "var(--c97-fs-small)", color: "var(--c97-ink-2)", display: "flex", alignItems: "center", gap: "var(--c97-sp-1)" }}>
-                <Sparkles size={14} aria-hidden="true" />
-                Saved in your browser
-              </p>
-            </div>
-
-            <div style={{ display: "flex", flexDirection: "column", gap: "var(--c97-sp-3)" }}>
               <div>
-                <h2 className="c97-serif c97-h3">{booking.headline}</h2>
-                <p className="c97-prose" style={{ marginTop: "var(--c97-sp-2)" }}>
-                  {booking.message}
-                </p>
-              </div>
-
-              {fare ? (
-                <div className="c97-fare-row" style={{ alignItems: "start" }}>
-                  <p className="c97-prose" style={{ margin: 0 }}>
-                    {fare.message}
-                  </p>
-                  <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-end", gap: "var(--c97-sp-1)" }}>
-                    <RatingChip tone={FARE_CHIP_TONE[fare.rating]} label={FARE_RATING_LABEL[fare.rating]} />
-                    <span className="c97-mono" style={{ fontSize: "var(--c97-fs-small)" }}>
-                      {fare.savings >= 0 ? "Save " : "Over by "}
-                      {formatUsd(Math.abs(fare.savings))} ({formatSignedPercent(fare.savingsPct)})
-                    </span>
-                  </div>
-                </div>
-              ) : (
-                <p className="c97-prose" style={{ marginBottom: "var(--c97-sp-3)", color: "var(--c97-ink-2)" }}>
-                  Add a quoted fare to score it against the typical band for {region.label}.
-                </p>
-              )}
-
-              <div>
-                <h3 className="c97-serif c97-h3">The budget, split to spend</h3>
                 <div
                   className="overflow-x-auto"
                   role="region"
                   aria-label="Budget split (scrolls sideways)"
                   tabIndex={0}
-                  style={{ marginTop: "var(--c97-sp-2)" }}
                 >
                   <table className="c97-table">
                     <thead>
@@ -503,6 +528,9 @@ export function TravelDealLabClient() {
                 step={1000}
                 onChange={setPointsUsed}
               />
+              <p className="c97-prose" style={{ fontSize: "var(--c97-fs-small)", color: "var(--c97-ink-2)" }}>
+                These three numbers are a quick check and are not saved.
+              </p>
             </div>
 
             <div style={{ display: "flex", flexDirection: "column", gap: "var(--c97-sp-2)" }}>
@@ -557,7 +585,7 @@ export function TravelDealLabClient() {
           </div>
 
           <ul className="c97-columns" style={{ listStyle: "none", padding: 0, margin: 0 }}>
-            {visibleTactics.map((tactic) => (
+            {shownTactics.map((tactic) => (
               <li key={tactic.id}>
                 <TacticCard
                   tactic={tactic}
@@ -567,6 +595,18 @@ export function TravelDealLabClient() {
               </li>
             ))}
           </ul>
+
+          {visibleTactics.length > TACTIC_PREVIEW ? (
+            <button
+              type="button"
+              className="c97-btn-ghost"
+              aria-expanded={showAllTactics}
+              onClick={() => setShowAllTactics((current) => !current)}
+              style={{ alignSelf: "flex-start" }}
+            >
+              {showAllTactics ? "Show fewer tactics" : `Show all ${visibleTactics.length} tactics`}
+            </button>
+          ) : null}
         </div>
       </section>
 

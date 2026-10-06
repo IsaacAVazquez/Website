@@ -126,6 +126,7 @@ export function FoodMapLeaflet({
       const isActive = spot.id === activeSpotId;
       const marker = L.marker(spot.coords, {
         icon: pinIcon(L, color, isActive),
+        title: spot.name,
       }).addTo(group);
       marker.bindPopup(
         `<span class="fm-popup-title">${escapeHtml(spot.name)}</span><br/><span class="fm-popup-sub">${escapeHtml(

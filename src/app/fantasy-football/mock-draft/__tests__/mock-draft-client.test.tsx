@@ -75,7 +75,13 @@ describe("MockDraftClient", () => {
     expect(
       screen.getByRole("heading", { level: 2, name: "Rep the rounds that decide leagues." })
     ).toBeInTheDocument();
-    expect(screen.getByRole("button", { name: "Start mock" })).toBeEnabled();
+    const start = screen.getByRole("button", { name: "Start mock" });
+    expect(start).toBeEnabled();
+    // Start sits beside the default-room summary, ahead of the settings it summarises.
+    expect(start.parentElement).toHaveTextContent(/-team snake · slot \d+ · \d+-round rep · PPR/);
+    expect(
+      start.compareDocumentPosition(screen.getByLabelText("Teams")) & Node.DOCUMENT_POSITION_FOLLOWING
+    ).toBeTruthy();
   });
 
   it("does not start simulated picks from a stale ranking source", () => {

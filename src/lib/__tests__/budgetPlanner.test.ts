@@ -91,6 +91,20 @@ describe("budgetPlanner helpers", () => {
     expect(months["2026-05"]).toBeDefined();
     expect(months["2026-05"].categories.length).toBeGreaterThan(1);
   });
+
+  it("preserves an empty category list while repairing missing or malformed lists", () => {
+    const months = parseBudgetMonths(JSON.stringify({
+      "2026-04": { categories: [] },
+      "2026-05": {},
+      "2026-06": { categories: "invalid" },
+      "2026-07": { categories: [null] },
+    }));
+
+    expect(months["2026-04"].categories).toEqual([]);
+    for (const monthKey of ["2026-05", "2026-06", "2026-07"]) {
+      expect(months[monthKey].categories.map((category) => category.name)).toContain("Housing");
+    }
+  });
 });
 
 // The "current month" and "default expense day" pin to the display zone

@@ -22,6 +22,24 @@
   padding: var(--c97-sp-3);
 }
 
+/*
+ * Station search and its list print on a paper plate set into the board,
+ * because a field paints the pale field tint and the board is espresso.
+ */
+.c97-transit-finder {
+  display: grid;
+  gap: var(--c97-sp-1);
+  padding: var(--c97-sp-3);
+}
+
+.c97-transit-station-list {
+  display: grid;
+  gap: var(--c97-sp-1);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
 .c97-transit-departures {
   display: grid;
   gap: var(--c97-sp-2);

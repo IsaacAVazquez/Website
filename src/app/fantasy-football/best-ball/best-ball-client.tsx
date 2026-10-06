@@ -543,6 +543,7 @@ export function BestBallClient({ initialState }: BestBallClientProps) {
   const [visibleCount, setVisibleCount] = useState(PAGE_SIZE);
   const [detailPlayer, setDetailPlayer] = useState<RankedBestBallPlayer | null>(null);
   const [searchQuery, setSearchQuery] = useState(initialState.query);
+  const [guidanceOpen, setGuidanceOpen] = useState(false);
   const canonicalState = useMemo(() => {
     const fromUrl = normalizeBestBallState(searchParams);
     return searchParams.size > 0 ? fromUrl : initialState;
@@ -741,7 +742,10 @@ export function BestBallClient({ initialState }: BestBallClientProps) {
               <span className={`shrink-0 ${MONO_LABEL_CLASS}`} style={{ color: "var(--c97-ink-2)" }}>
                 Contest
               </span>
-              <div role="group" aria-label="Best ball contest" className="flex flex-wrap" style={{ gap: "var(--c97-sp-0)" }}>
+              {/* Eight choices wrapped to four rows on a phone and pushed the
+                  board down, so below md they ride one scrolling row, the way
+                  the draft tracker's contest row does. */}
+              <div role="group" aria-label="Best ball contest" className="scroll-shadow-x scrollbar-thin flex min-w-0 max-w-full overflow-x-auto md:flex-wrap md:overflow-visible" style={{ gap: "var(--c97-sp-0)" }}>
                 {CONTESTS.map((contest) => {
                   const active = contest.id === routeState.contest;
                   return (
@@ -750,7 +754,7 @@ export function BestBallClient({ initialState }: BestBallClientProps) {
                       type="button"
                       aria-pressed={active}
                       onClick={() => updateRouteState({ contest: contest.id })}
-                      className={`min-h-touch cursor-pointer border font-mono text-2xs uppercase tracking-[0.05em] transition-colors duration-150 ${
+                      className={`min-h-touch shrink-0 cursor-pointer border font-mono text-2xs uppercase tracking-[0.05em] transition-colors duration-150 ${
                         active ? "" : "border-[var(--c97-rule)] hover:border-[var(--c97-ink)]"
                       }`}
                       style={
@@ -822,19 +826,33 @@ export function BestBallClient({ initialState }: BestBallClientProps) {
             className="grid"
             style={{ paddingInline: "var(--c97-sp-2)", paddingBlock: "var(--c97-sp-2)", columnGap: "var(--c97-sp-2)", rowGap: "var(--c97-sp-2)", gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 220px), 1fr))" }}
           >
+            {/* The room is the compact summary. The three build notes show
+                from md up and open on request below it, so a phone reaches
+                the board without reading them first. */}
             {[
-              { label: "The room", body: activeContest.structure },
-              { label: "How I read it", body: activeContest.brief },
-              { label: "2026 build range", body: activeContest.build },
-              { label: "What I would watch", body: activeContest.risk },
+              { label: "The room", body: activeContest.structure, guidance: false },
+              { label: "How I read it", body: activeContest.brief, guidance: true },
+              { label: "2026 build range", body: activeContest.build, guidance: true },
+              { label: "What I would watch", body: activeContest.risk, guidance: true },
             ].map((cell) => (
-              <div key={cell.label} className="min-w-0">
+              <div
+                key={cell.label}
+                className={`min-w-0 ${cell.guidance && !guidanceOpen ? "hidden md:block" : ""}`}
+              >
                 <p className={`mt-0 ${MONO_LABEL_CLASS}`} style={{ marginBottom: "var(--c97-sp-0)", color: "var(--c97-ink-2)" }}>
                   {cell.label}
                 </p>
                 <p className="m-0 text-sm leading-6">{cell.body}</p>
               </div>
             ))}
+            <button
+              type="button"
+              className="c97-btn-ghost justify-self-start md:hidden"
+              aria-expanded={guidanceOpen}
+              onClick={() => setGuidanceOpen((current) => !current)}
+            >
+              {guidanceOpen ? "Hide build guidance" : "Show build guidance"}
+            </button>
           </div>
           <div
             className="flex flex-wrap items-center justify-between border-t"

@@ -27,6 +27,8 @@ for (const sport of ["mlb", "nba", "nfl", "world-cup-2026"]) {
     await select.click();
     expect((await detail).status()).toBe(200);
     await expect(page.getByTestId(`${api}-selected-team`)).toBeVisible();
+    // On MLB, NBA, and NFL the detail is a drawer whose backdrop covers the tabs.
+    await page.keyboard.press("Escape");
     const tabs = page.getByRole("tab");
     for (let index = 0; index < await tabs.count(); index++) {
       await tabs.nth(index).click();

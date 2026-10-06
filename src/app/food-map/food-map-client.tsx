@@ -5,7 +5,9 @@ import {
   startTransition,
   useEffect,
   useMemo,
+  useRef,
   useState,
+  type RefObject,
 } from "react";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
 import { useRouter, useSearchParams } from "next/navigation";
@@ -96,8 +98,8 @@ function CityTabs({
   onSelect: (id: FoodMapCityId) => void;
 }) {
   return (
-    <div role="radiogroup" aria-label="Choose a city" className="fm-chiprow">
-      {FOOD_MAP_CITIES.map((city) => {
+    <div id="food-map-city" role="radiogroup" aria-label="Choose a city" className="fm-chiprow" style={{ scrollMarginTop: "var(--c97-sp-5)" }}>
+      {FOOD_MAP_CITIES.map((city, index) => {
         const isActive = state.city === city.id;
         return (
           <button
@@ -105,7 +107,18 @@ function CityTabs({
             type="button"
             role="radio"
             aria-checked={isActive}
+            tabIndex={isActive ? 0 : -1}
             onClick={() => onSelect(city.id)}
+            onKeyDown={(event) => {
+              const direction = event.key === "ArrowRight" || event.key === "ArrowDown" ? 1
+                : event.key === "ArrowLeft" || event.key === "ArrowUp" ? -1 : 0;
+              if (!direction) return;
+              event.preventDefault();
+              const nextIndex = (index + direction + FOOD_MAP_CITIES.length) % FOOD_MAP_CITIES.length;
+              event.currentTarget.parentElement
+                ?.querySelectorAll<HTMLButtonElement>('[role="radio"]')[nextIndex]?.focus();
+              onSelect(FOOD_MAP_CITIES[nextIndex].id);
+            }}
             className="fm-tab"
           >
             {city.name}
@@ -249,9 +262,11 @@ function CuratorPassport() {
 function PlaceDossier({
   place,
   onClear,
+  headingRef,
 }: {
   place: FoodMapPlace;
   onClear: () => void;
+  headingRef: RefObject<HTMLHeadingElement | null>;
 }) {
   const cuisine = getFoodMapCuisine(place.cuisine);
   const accent = getPlaceAccent(place);
@@ -269,7 +284,7 @@ function PlaceDossier({
 
       <div className="fm-dossier-head" style={{ ["--fm-accent" as string]: accent }}>
         <p className="fm-dossier-cuisine">{cuisine.label}</p>
-        <h2 className="fm-dossier-name c97-serif">{place.name}</h2>
+        <h2 ref={headingRef} tabIndex={-1} className="fm-dossier-name c97-serif">{place.name}</h2>
         <p className="fm-dossier-locale">
           {locale}
           {place.price ? ` · ${place.price}` : ""}
@@ -316,6 +331,18 @@ function FoodMapWorkbench({
   onCommit: (next: FoodMapState) => void;
 }) {
   const [searchQuery, setSearchQuery] = useState("");
+  const pendingFocus = useRef<"detail" | "list" | null>(null);
+  const dossierHeadingRef = useRef<HTMLHeadingElement>(null);
+  const indexHeadingRef = useRef<HTMLHeadingElement>(null);
+
+  useEffect(() => {
+    const heading = pendingFocus.current === "detail" ? dossierHeadingRef.current
+      : pendingFocus.current === "list" ? indexHeadingRef.current : null;
+    if (!heading) return;
+    pendingFocus.current = null;
+    heading.focus({ preventScroll: true });
+    heading.scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth", block: "start" });
+  }, [routeState.pick, reduceMotion]);
 
   const activeCity = getFoodMapCity(routeState.city);
   const cityCuisines = useMemo(
@@ -371,11 +398,19 @@ function FoodMapWorkbench({
   }
 
   function handleSelectPlace(id: string) {
+    pendingFocus.current = "detail";
     onCommit(setPick(routeState, id));
   }
 
   function handleClearPick() {
+    pendingFocus.current = "list";
     onCommit(setPick(routeState, null));
+  }
+
+  function handleJumpToList() {
+    const heading = indexHeadingRef.current;
+    heading?.focus({ preventScroll: true });
+    heading?.scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth", block: "start" });
   }
 
   function handleResetFilters() {
@@ -403,6 +438,10 @@ function FoodMapWorkbench({
                   to Tokyo. Pick a city, filter by who is vouching for it, and pull up
                   what to order before you go.
                 </p>
+                {/* The hero fills a phone's first screen, so one link goes straight to the city choice. */}
+                <a href="#food-map-city" className="c97-btn-ghost">
+                  Choose a city
+                </a>
               </div>
 
               <div className="fm-stamp-badge" aria-hidden="true">
@@ -447,6 +486,22 @@ function FoodMapWorkbench({
             {/* Main grid */}
             <div className="fm-grid">
               <div className="fm-col">
+                {/* City comes first, since the map, the filters, and the list all follow from it. */}
+                <div className="fm-fieldset">
+                  <span className="c97-kicker">City</span>
+                  <CityTabs
+                    state={routeState}
+                    counts={cityCounts}
+                    onSelect={handleSelectCity}
+                  />
+                  {/* On one column the list sits under the map and the filters, so this goes straight to it. */}
+                  <div className="min-[1001px]:hidden">
+                    <button type="button" onClick={handleJumpToList} className="c97-btn-ghost">
+                      Go to the list of stops
+                    </button>
+                  </div>
+                </div>
+
                 {/* Map */}
                 <div className="fm-mapwrap c97-panel">
                   <div className="fm-mapwrap-head">
@@ -493,15 +548,6 @@ function FoodMapWorkbench({
                     }}
                   >
                     <div className="fm-fieldset">
-                      <span className="c97-kicker">City</span>
-                      <CityTabs
-                        state={routeState}
-                        counts={cityCounts}
-                        onSelect={handleSelectCity}
-                      />
-                    </div>
-
-                    <div className="fm-fieldset">
                       <span className="c97-kicker">Curator</span>
                       <CuratorStamps state={routeState} onToggle={handleToggleCurator} />
                     </div>
@@ -519,7 +565,7 @@ function FoodMapWorkbench({
 
                 {/* Index */}
                 <div className="fm-index-head">
-                  <h2 className="c97-poster-sm">The stops</h2>
+                  <h2 ref={indexHeadingRef} tabIndex={-1} className="c97-poster-sm">The stops</h2>
                   <label className="fm-search">
                     <Search size={15} aria-hidden="true" />
                     <input
@@ -563,7 +609,7 @@ function FoodMapWorkbench({
               {/* Rail */}
               <aside aria-label="Food map side panel" className="fm-rail">
                 {selectedPlace ? (
-                  <PlaceDossier place={selectedPlace} onClear={handleClearPick} />
+                  <PlaceDossier place={selectedPlace} onClear={handleClearPick} headingRef={dossierHeadingRef} />
                 ) : (
                   <>
                     <p className="c97-kicker">The curators</p>

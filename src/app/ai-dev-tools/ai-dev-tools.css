@@ -71,7 +71,6 @@
 }
 
 .c97-surface-map-list {
-  display: none;
   margin: 0;
 }
 
@@ -92,15 +91,23 @@
   margin-top: var(--c97-sp-1);
 }
 
-/* Below 640px the two-axis grid stops being legible at a touch target's
- * width, so the same rows and cells read as a stacked list instead. */
-/* The grid needs about 960px for its five pricing columns, so narrower screens get the list. */
+/*
+ * The grid needs about 960px for its five pricing columns, so it prints in
+ * the hero from there up. Narrower screens get the stacked list after the
+ * directory instead, which puts search and the directory right under the
+ * summary on a phone. The hero's signature slot goes with the grid so it
+ * leaves no empty gap behind.
+ */
+.c97-surface-map-narrow {
+  display: none;
+}
+
 @media (max-width: 959px) {
-  .c97-surface-map {
+  .c97-project-hero-signature:has(> .c97-surface-map-sheet[data-layout="grid"]) {
     display: none;
   }
 
-  .c97-surface-map-list {
-    display: block;
+  .c97-surface-map-narrow {
+    display: flex;
   }
 }

@@ -18,8 +18,8 @@ interface Props {
 export function RetirementPlanner({ portfolioValue }: Props) {
   const seed: RetirementSeed = { portfolioValue };
 
-  // The planner is the last section on the page, so the projection waits until
-  // the section is within 600px of the viewport, the margin the fantasy boards
+  // The planner is the last section on the page unless ?task=retirement puts it
+  // first, so the projection waits until the section is within 600px of the viewport, the margin the fantasy boards
   // use for their own windowing. It latches on, and a browser with no
   // IntersectionObserver runs the projection straight away. A print never
   // scrolls the section into view, so the hook runs the projection on

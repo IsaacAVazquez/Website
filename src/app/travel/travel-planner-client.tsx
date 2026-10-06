@@ -137,7 +137,9 @@ export function TravelPlannerClient() {
   const confirmDeleteTrip = (id: string) => {
     removeTrip(id);
     setConfirmingDelete(null);
-    newTripButtonRef.current?.focus();
+    // Deleting the last trip takes the manage section with it, so focus goes to the form that replaces it.
+    if (trips.length <= 1) requestAnimationFrame(() => tripNameInputRef.current?.focus());
+    else newTripButtonRef.current?.focus();
   };
 
   function openTripForm() {
@@ -153,10 +155,12 @@ export function TravelPlannerClient() {
   const [activityDraft, setActivityDraft] = useState<ActivityDraft>(() => emptyActivityDraft(defaultActivityDate));
   const [editingActivityId, setEditingActivityId] = useState<string | null>(null);
   const [activityTitleMissing, setActivityTitleMissing] = useState(false);
+  const activityTitleInputRef = useRef<HTMLInputElement>(null);
 
   const [journalDraft, setJournalDraft] = useState<JournalDraft>(() => emptyJournalDraft(defaultActivityDate));
   const [editingJournalId, setEditingJournalId] = useState<string | null>(null);
   const [journalEmpty, setJournalEmpty] = useState(false);
+  const journalTitleInputRef = useRef<HTMLInputElement>(null);
 
   const [lastTripContext, setLastTripContext] = useState({ tripId: activeTripId, date: defaultActivityDate });
   if (lastTripContext.tripId !== activeTripId || lastTripContext.date !== defaultActivityDate) {
@@ -183,6 +187,7 @@ export function TravelPlannerClient() {
 
   function handleEditActivity(activity: TripActivity) {
     setEditingActivityId(activity.id);
+    setActivityTitleMissing(false);
     setActivityDraft({
       date: activity.date,
       time: activity.time,
@@ -192,11 +197,14 @@ export function TravelPlannerClient() {
       category: activity.category,
       notes: activity.notes,
     });
+    activityTitleInputRef.current?.focus();
   }
 
   function handleEditJournal(entry: JournalEntry) {
     setEditingJournalId(entry.id);
+    setJournalEmpty(false);
     setJournalDraft({ date: entry.date, title: entry.title, body: entry.body, mood: entry.mood });
+    journalTitleInputRef.current?.focus();
   }
 
   function handleCreateTrip(event: FormEvent<HTMLFormElement>) {
@@ -221,6 +229,7 @@ export function TravelPlannerClient() {
     if (!activeTrip) return;
     if (!activityDraft.title.trim()) {
       setActivityTitleMissing(true);
+      activityTitleInputRef.current?.focus();
       return;
     }
     if (!activityDraft.date) return;
@@ -238,6 +247,7 @@ export function TravelPlannerClient() {
     if (!activeTrip) return;
     if (!journalDraft.title.trim() && !journalDraft.body.trim()) {
       setJournalEmpty(true);
+      journalTitleInputRef.current?.focus();
       return;
     }
     if (editingJournalId) {
@@ -252,6 +262,78 @@ export function TravelPlannerClient() {
   const conflictIds = summary ? summary.dayBuckets.flatMap((bucket) => bucket.conflictIds) : [];
   const columns = summary ? itineraryColumns(summary.dayBuckets, conflictIds) : [];
 
+  // One set of fields, printed beside the boarding pass before the first trip
+  // exists and under "New trip" in the manage section after that.
+  const hasTrips = trips.length > 0;
+  const tripFormFields = (
+    <>
+      <label className="block sm:col-span-2">
+        <span className="c97-kicker">Trip name</span>
+        <input
+          ref={tripNameInputRef}
+          type="text"
+          value={tripDraft.name}
+          onChange={(e) => setTripDraft((d) => ({ ...d, name: e.target.value }))}
+          placeholder="Lisbon long weekend"
+          className="c97-field"
+          style={{ marginTop: "var(--c97-sp-1)" }}
+          required
+        />
+      </label>
+      <label className="block sm:col-span-2">
+        <span className="c97-kicker">Destination</span>
+        <input
+          type="text"
+          value={tripDraft.destination}
+          onChange={(e) => setTripDraft((d) => ({ ...d, destination: e.target.value }))}
+          placeholder="Lisbon, Portugal"
+          className="c97-field"
+          style={{ marginTop: "var(--c97-sp-1)" }}
+        />
+      </label>
+      <label className="block">
+        <span className="c97-kicker">Start date</span>
+        <input
+          type="date"
+          value={tripDraft.startDate}
+          onChange={(e) =>
+            setTripDraft((d) => ({
+              ...d,
+              startDate: e.target.value,
+              endDate: !d.endDate || d.endDate < e.target.value ? e.target.value : d.endDate,
+            }))
+          }
+          className="c97-field"
+          style={{ marginTop: "var(--c97-sp-1)" }}
+          required
+        />
+      </label>
+      <label className="block">
+        <span className="c97-kicker">End date</span>
+        <input
+          type="date"
+          value={tripDraft.endDate}
+          min={tripDraft.startDate}
+          onChange={(e) => setTripDraft((d) => ({ ...d, endDate: e.target.value }))}
+          className="c97-field"
+          style={{ marginTop: "var(--c97-sp-1)" }}
+          required
+        />
+      </label>
+      <div className="flex flex-wrap sm:col-span-2" style={{ gap: "var(--c97-sp-1)" }}>
+        <button type="submit" className="c97-btn">
+          <Plus className="h-3.5 w-3.5" aria-hidden="true" />
+          Save trip
+        </button>
+        {hasTrips ? (
+          <button type="button" onClick={() => setShowTripForm(false)} className="c97-btn-ghost">
+            Cancel
+          </button>
+        ) : null}
+      </div>
+    </>
+  );
+
   const standfirst =
     "I wanted one dated plan per trip, laid out by day, with the stops I've done ticked off and a journal for what actually happened along the way.";
 
@@ -263,9 +345,6 @@ export function TravelPlannerClient() {
         standfirst={standfirst}
       >
         <div style={{ display: "grid", gridTemplateColumns: "minmax(0, 1fr)", gap: "var(--c97-sp-4)" }}>
-          <p className="c97-prose" style={{ fontSize: "var(--c97-fs-small)", marginTop: 0 }}>
-            Your trips are saved in this browser only, so they never leave this device.
-          </p>
           <div data-c97-surface="paper" className="c97-offset c97-boarding-pass">
             <BoardingPassMain
               trips={trips}
@@ -276,6 +355,26 @@ export function TravelPlannerClient() {
             />
             <BoardingPassStub pass={passData} onStartTrip={openTripForm} />
           </div>
+
+          {hasTrips ? null : (
+            <form
+              onSubmit={handleCreateTrip}
+              data-c97-surface="paper"
+              className="c97-offset grid sm:grid-cols-2"
+              style={{ gap: "var(--c97-sp-2)", padding: "var(--c97-sp-3)" }}
+              aria-label="Create a new trip"
+            >
+              <p className="c97-kicker sm:col-span-2">Your first trip</p>
+              {tripFormFields}
+              <p className="c97-prose sm:col-span-2" style={{ fontSize: "var(--c97-fs-small)", color: "var(--c97-ink-2)" }}>
+                The day-by-day itinerary and the journal open once a trip is saved.
+              </p>
+            </form>
+          )}
+
+          <p className="c97-prose" style={{ fontSize: "var(--c97-fs-small)", marginTop: 0 }}>
+            Your trips are saved in this browser only, so they never leave this device.
+          </p>
 
           {persistenceStatus === "memory-only" ? (
             <p className="c97-prose" style={{ fontSize: "var(--c97-fs-small)" }} role="status">
@@ -292,482 +391,342 @@ export function TravelPlannerClient() {
         </div>
       </Catalog97ProjectHero>
 
-      <section
-        id="section-itinerary"
-        className="c97-band c97-sheet"
-        data-c97-surface="paper"
-        data-seam="torn"
-        aria-label="Day-by-day itinerary"
-      >
-        <div className="c97-shell">
-          <div className="flex flex-wrap items-end justify-between" style={{ gap: "var(--c97-sp-2)" }}>
-            <div>
-              <p className="c97-kicker">Day by day</p>
-              <h2 className="c97-poster-sm">Itinerary</h2>
-            </div>
-            {summary ? (
-              <p className="c97-meta c97-tabular">
-                {summary.activitiesCompleted}/{summary.activitiesTotal} stops checked off
-              </p>
-            ) : null}
-          </div>
-
-          {summary?.itineraryTruncated ? (
-            <p className="c97-prose" style={{ fontSize: "var(--c97-fs-small)", marginTop: "var(--c97-sp-3)" }}>
-              This trip spans {summary.daysTotal.toLocaleString("en-US")} days, so the itinerary shows the first{" "}
-              {MAX_ITINERARY_DAYS}. Double-check the trip dates if that looks off.
-            </p>
-          ) : null}
-
-          <div className="grid" style={{ gap: "var(--c97-sp-4)", marginTop: "var(--c97-sp-4)" }}>
-            <div className="xl:grid xl:grid-cols-[minmax(0,1.7fr)_minmax(300px,0.9fr)]" style={{ gap: "var(--c97-sp-4)" }}>
-              <div>
-                {!activeTrip ? (
-                  <p className="c97-prose">Start a trip above to plan its first day.</p>
-                ) : summary && summary.activitiesTotal === 0 ? (
-                  <p className="c97-prose">No stops yet. Add the first one with the Add stop form.</p>
-                ) : (
-                  <div className="flex flex-col" style={{ gap: "var(--c97-sp-3)" }}>
-                    {summary?.dayBuckets.map((bucket) => (
-                      <DayList key={bucket.date} bucket={bucket} today={today} onToggle={(id) => activeTrip && toggleActivity(activeTrip.id, id)} onEdit={handleEditActivity} onRemove={(id) => {
-                        if (!activeTrip) return;
-                        removeActivity(activeTrip.id, id);
-                        if (editingActivityId === id) resetActivityDraft();
-                      }} />
-                    ))}
-                  </div>
-                )}
+      {/* The itinerary, the journal, and trip management open once a trip exists. */}
+      {activeTrip ? (
+        <>
+          <section
+            id="section-itinerary"
+            className="c97-band c97-sheet"
+            data-c97-surface="paper"
+            data-seam="torn"
+            aria-label="Day-by-day itinerary"
+          >
+            <div className="c97-shell">
+              <div className="flex flex-wrap items-end justify-between" style={{ gap: "var(--c97-sp-2)" }}>
+                <div>
+                  <p className="c97-kicker">Day by day</p>
+                  <h2 className="c97-poster-sm">Itinerary</h2>
+                </div>
+                {summary ? (
+                  <p className="c97-meta c97-tabular">
+                    {summary.activitiesCompleted}/{summary.activitiesTotal} stops checked off
+                  </p>
+                ) : null}
               </div>
 
-              <aside className="mt-[var(--c97-sp-3)] xl:mt-0">
-                <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-2)" }}>
-                  {editingActivityId ? "Edit stop" : "Add stop"}
+              {summary?.itineraryTruncated ? (
+                <p className="c97-prose" style={{ fontSize: "var(--c97-fs-small)", marginTop: "var(--c97-sp-3)" }}>
+                  This trip spans {summary.daysTotal.toLocaleString("en-US")} days, so the itinerary shows the first{" "}
+                  {MAX_ITINERARY_DAYS}. Double-check the trip dates if that looks off.
                 </p>
-                <form onSubmit={handleSubmitActivity} className="c97-panel" style={{ display: "grid", gap: "var(--c97-sp-2)" }}>
-                  <fieldset disabled={!activeTrip} className="contents">
-                    <label className="block">
-                      <span className="c97-kicker">Title</span>
-                      <input
-                        type="text"
-                        value={activityDraft.title}
-                        onChange={(e) => {
-                          setActivityTitleMissing(false);
-                          setActivityDraft((d) => ({ ...d, title: e.target.value }));
-                        }}
-                        aria-invalid={activityTitleMissing || undefined}
-                        aria-describedby={activityTitleMissing ? "travel-stop-title-error" : undefined}
-                        placeholder="Sunset at Miradouro"
-                        className="c97-field"
-                        style={{ marginTop: "var(--c97-sp-1)" }}
-                      />
-                    </label>
-                    {activityTitleMissing ? (
-                      <p id="travel-stop-title-error" role="alert" className="c97-prose" style={{ fontSize: "var(--c97-fs-small)", color: "var(--c97-negative)" }}>
-                        Give the stop a title to add it.
-                      </p>
-                    ) : null}
-                    <label className="block">
-                      <span className="c97-kicker">Date</span>
-                      <input
-                        type="date"
-                        value={activityDraft.date}
-                        min={activeTrip?.startDate}
-                        max={activeTrip?.endDate}
-                        onChange={(e) => setActivityDraft((d) => ({ ...d, date: e.target.value }))}
-                        className="c97-field"
-                        style={{ marginTop: "var(--c97-sp-1)" }}
-                      />
-                    </label>
-                    <div className="grid grid-cols-2" style={{ gap: "var(--c97-sp-1)" }}>
-                      <label className="block">
-                        <span className="c97-kicker">Starts</span>
-                        <input
-                          type="time"
-                          value={activityDraft.time}
-                          onChange={(e) =>
-                            setActivityDraft((d) => {
-                              const time = e.target.value;
-                              return { ...d, time, endTime: time && d.endTime > time ? d.endTime : "" };
-                            })
-                          }
-                          className="c97-field"
-                          style={{ marginTop: "var(--c97-sp-1)" }}
-                        />
-                      </label>
-                      <label className="block">
-                        <span className="c97-kicker">Ends</span>
-                        <input
-                          type="time"
-                          value={activityDraft.endTime}
-                          min={activityDraft.time || undefined}
-                          disabled={!activityDraft.time}
-                          aria-invalid={endTimeInvalid || undefined}
-                          onChange={(e) => setActivityDraft((d) => ({ ...d, endTime: e.target.value }))}
-                          className="c97-field"
-                          style={{ marginTop: "var(--c97-sp-1)" }}
-                        />
-                      </label>
-                    </div>
-                    {endTimeInvalid ? (
-                      <p role="alert" className="c97-prose" style={{ fontSize: "var(--c97-fs-small)", color: "var(--c97-negative)" }}>
-                        The end time has to come after the start. Overnight stops need one entry per day.
-                      </p>
-                    ) : null}
-                    <label className="block">
-                      <span className="c97-kicker">Category</span>
-                      <select
-                        value={activityDraft.category}
-                        onChange={(e) => setActivityDraft((d) => ({ ...d, category: e.target.value as ActivityDraft["category"] }))}
-                        className="c97-field"
-                        style={{ marginTop: "var(--c97-sp-1)" }}
-                      >
-                        {ACTIVITY_CATEGORIES.map((category) => (
-                          <option key={category} value={category}>
-                            {ACTIVITY_CATEGORY_LABELS[category]}
-                          </option>
-                        ))}
-                      </select>
-                    </label>
-                    <label className="block">
-                      <span className="c97-kicker">Location</span>
-                      <input
-                        type="text"
-                        value={activityDraft.location}
-                        onChange={(e) => setActivityDraft((d) => ({ ...d, location: e.target.value }))}
-                        placeholder="Alfama"
-                        className="c97-field"
-                        style={{ marginTop: "var(--c97-sp-1)" }}
-                      />
-                    </label>
-                    <label className="block">
-                      <span className="c97-kicker">Notes</span>
-                      <textarea
-                        value={activityDraft.notes}
-                        onChange={(e) => setActivityDraft((d) => ({ ...d, notes: e.target.value }))}
-                        placeholder="Reservation, what to bring, etc."
-                        className="c97-field"
-                        style={{ marginTop: "var(--c97-sp-1)", minHeight: "88px" }}
-                      />
-                    </label>
-                    <div className="flex flex-wrap" style={{ gap: "var(--c97-sp-1)" }}>
-                      <button type="submit" className="c97-btn">
-                        <Plus className="h-3.5 w-3.5" aria-hidden="true" />
-                        {editingActivityId ? "Save stop" : "Add stop"}
-                      </button>
-                      {editingActivityId ? (
-                        <button type="button" onClick={resetActivityDraft} className="c97-btn-ghost">
-                          Cancel
-                        </button>
-                      ) : null}
-                    </div>
-                  </fieldset>
-                </form>
-              </aside>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section
-        id="section-journal"
-        className="c97-band c97-sheet"
-        data-c97-surface="bone"
-        data-seam="deckle"
-        aria-label="Trip journal"
-      >
-        <div className="c97-shell">
-          <div className="flex flex-wrap items-end justify-between" style={{ gap: "var(--c97-sp-2)" }}>
-            <div>
-              <p className="c97-kicker">Reflection</p>
-              <h2 className="c97-poster-sm">Journal</h2>
-            </div>
-            {activeTrip ? (
-              <p className="c97-meta c97-tabular">
-                {activeTrip.journal.length} {activeTrip.journal.length === 1 ? "entry" : "entries"}
-              </p>
-            ) : null}
-          </div>
-
-          <div className="xl:grid xl:grid-cols-[minmax(0,1.7fr)_minmax(300px,0.9fr)]" style={{ gap: "var(--c97-sp-4)", marginTop: "var(--c97-sp-4)" }}>
-            <div>
-              {!activeTrip ? (
-                <p className="c97-prose">Start a trip above to keep a journal for it.</p>
-              ) : activeTrip.journal.length === 0 ? (
-                <p className="c97-prose">Journal is empty. Capture a moment with the Journal entry form.</p>
-              ) : (
-                <ul className="flex flex-col" style={{ gap: "var(--c97-sp-2)", listStyle: "none", padding: 0, margin: 0 }}>
-                  {[...activeTrip.journal]
-                    .sort((left, right) =>
-                      left.date !== right.date ? right.date.localeCompare(left.date) : right.id.localeCompare(left.id)
-                    )
-                    .map((entry) => (
-                      <JournalPostcard
-                        key={entry.id}
-                        entry={entry}
-                        onEdit={handleEditJournal}
-                        onRemove={(id) => {
-                          if (!activeTrip) return;
-                          removeJournal(activeTrip.id, id);
-                          if (editingJournalId === id) resetJournalDraft();
-                        }}
-                      />
-                    ))}
-                </ul>
-              )}
-            </div>
-
-            <aside className="mt-[var(--c97-sp-3)] xl:mt-0">
-              <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-2)" }}>
-                {editingJournalId ? "Edit entry" : "Journal entry"}
-              </p>
-              <form onSubmit={handleSubmitJournal} className="c97-panel" style={{ display: "grid", gap: "var(--c97-sp-2)" }}>
-                <fieldset disabled={!activeTrip} className="contents">
-                  <div className="grid grid-cols-2" style={{ gap: "var(--c97-sp-1)" }}>
-                    <label className="block">
-                      <span className="c97-kicker">Date</span>
-                      <input
-                        type="date"
-                        value={journalDraft.date}
-                        min={activeTrip?.startDate}
-                        max={activeTrip?.endDate}
-                        onChange={(e) => setJournalDraft((d) => ({ ...d, date: e.target.value }))}
-                        className="c97-field"
-                        style={{ marginTop: "var(--c97-sp-1)" }}
-                      />
-                    </label>
-                    <label className="block">
-                      <span className="c97-kicker">Mood</span>
-                      <select
-                        value={journalDraft.mood}
-                        onChange={(e) => setJournalDraft((d) => ({ ...d, mood: e.target.value as JournalDraft["mood"] }))}
-                        className="c97-field"
-                        style={{ marginTop: "var(--c97-sp-1)" }}
-                      >
-                        {JOURNAL_MOODS.map((mood) => (
-                          <option key={mood} value={mood}>
-                            {JOURNAL_MOOD_LABELS[mood]}
-                          </option>
-                        ))}
-                      </select>
-                    </label>
-                  </div>
-                  <label className="block">
-                    <span className="c97-kicker">Title</span>
-                    <input
-                      type="text"
-                      value={journalDraft.title}
-                      onChange={(e) => {
-                        setJournalEmpty(false);
-                        setJournalDraft((d) => ({ ...d, title: e.target.value }));
-                      }}
-                      aria-describedby={journalEmpty ? "travel-journal-error" : undefined}
-                      placeholder="A long walk in Alfama"
-                      className="c97-field"
-                      style={{ marginTop: "var(--c97-sp-1)" }}
-                    />
-                  </label>
-                  <label className="block">
-                    <span className="c97-kicker">Notes</span>
-                    <textarea
-                      value={journalDraft.body}
-                      onChange={(e) => {
-                        setJournalEmpty(false);
-                        setJournalDraft((d) => ({ ...d, body: e.target.value }));
-                      }}
-                      aria-describedby={journalEmpty ? "travel-journal-error" : undefined}
-                      placeholder="What stood out today"
-                      className="c97-field"
-                      style={{ marginTop: "var(--c97-sp-1)", minHeight: "88px" }}
-                    />
-                  </label>
-                  {journalEmpty ? (
-                    <p id="travel-journal-error" role="alert" className="c97-prose" style={{ fontSize: "var(--c97-fs-small)", color: "var(--c97-negative)" }}>
-                      Add a title or a note to save the entry.
-                    </p>
-                  ) : null}
-                  <div className="flex flex-wrap" style={{ gap: "var(--c97-sp-1)" }}>
-                    <button type="submit" className="c97-btn">
-                      <Plus className="h-3.5 w-3.5" aria-hidden="true" />
-                      {editingJournalId ? "Save entry" : "Add entry"}
-                    </button>
-                    {editingJournalId ? (
-                      <button type="button" onClick={resetJournalDraft} className="c97-btn-ghost">
-                        Cancel
-                      </button>
-                    ) : null}
-                  </div>
-                </fieldset>
-              </form>
-            </aside>
-          </div>
-        </div>
-      </section>
-
-      <section id="section-trip" className="c97-band c97-sheet" data-c97-surface="paper" data-seam="torn" aria-label="Trip management">
-        <div className="c97-shell">
-          <div className="flex flex-wrap items-end justify-between" style={{ gap: "var(--c97-sp-2)" }}>
-            <div>
-              <p className="c97-kicker">Manage</p>
-              <h2 className="c97-poster-sm">Trip</h2>
-            </div>
-            <div className="flex flex-wrap" style={{ gap: "var(--c97-sp-1)" }}>
-              {activeTrip ? (
-                <>
-                  <button
-                    type="button"
-                    onClick={() =>
-                      confirmingDelete === `active:${activeTrip.id}`
-                        ? confirmDeleteTrip(activeTrip.id)
-                        : setConfirmingDelete(`active:${activeTrip.id}`)
-                    }
-                    className="c97-btn-ghost"
-                    style={confirmingDelete === `active:${activeTrip.id}` ? { color: "var(--c97-negative)" } : undefined}
-                  >
-                    <Trash2 className="h-3.5 w-3.5" aria-hidden="true" />
-                    {confirmingDelete === `active:${activeTrip.id}` ? "Confirm delete" : "Delete trip"}
-                  </button>
-                  {confirmingDelete === `active:${activeTrip.id}` ? (
-                    <button
-                      type="button"
-                      onClick={(event) => {
-                        setConfirmingDelete(null);
-                        (event.currentTarget.previousElementSibling as HTMLElement | null)?.focus();
-                      }}
-                      className="c97-btn-ghost"
-                    >
-                      Keep it
-                    </button>
-                  ) : null}
-                </>
               ) : null}
-              <button ref={newTripButtonRef} type="button" onClick={() => (showTripForm ? setShowTripForm(false) : openTripForm())} className="c97-btn" aria-expanded={showTripForm}>
-                <Plus className="h-3.5 w-3.5" aria-hidden="true" />
-                New trip
-              </button>
-            </div>
-          </div>
 
-          {showTripForm ? (
-            <form onSubmit={handleCreateTrip} className="c97-panel grid sm:grid-cols-2" style={{ gap: "var(--c97-sp-2)", marginTop: "var(--c97-sp-3)" }} aria-label="Create a new trip">
-              <label className="block sm:col-span-2">
-                <span className="c97-kicker">Trip name</span>
-                <input
-                  ref={tripNameInputRef}
-                  type="text"
-                  value={tripDraft.name}
-                  onChange={(e) => setTripDraft((d) => ({ ...d, name: e.target.value }))}
-                  placeholder="Lisbon long weekend"
-                  className="c97-field"
-                  style={{ marginTop: "var(--c97-sp-1)" }}
-                  required
-                />
-              </label>
-              <label className="block sm:col-span-2">
-                <span className="c97-kicker">Destination</span>
-                <input
-                  type="text"
-                  value={tripDraft.destination}
-                  onChange={(e) => setTripDraft((d) => ({ ...d, destination: e.target.value }))}
-                  placeholder="Lisbon, Portugal"
-                  className="c97-field"
-                  style={{ marginTop: "var(--c97-sp-1)" }}
-                />
-              </label>
-              <label className="block">
-                <span className="c97-kicker">Start date</span>
-                <input
-                  type="date"
-                  value={tripDraft.startDate}
-                  onChange={(e) =>
-                    setTripDraft((d) => ({
-                      ...d,
-                      startDate: e.target.value,
-                      endDate: !d.endDate || d.endDate < e.target.value ? e.target.value : d.endDate,
-                    }))
-                  }
-                  className="c97-field"
-                  style={{ marginTop: "var(--c97-sp-1)" }}
-                  required
-                />
-              </label>
-              <label className="block">
-                <span className="c97-kicker">End date</span>
-                <input
-                  type="date"
-                  value={tripDraft.endDate}
-                  min={tripDraft.startDate}
-                  onChange={(e) => setTripDraft((d) => ({ ...d, endDate: e.target.value }))}
-                  className="c97-field"
-                  style={{ marginTop: "var(--c97-sp-1)" }}
-                  required
-                />
-              </label>
-              <div className="flex flex-wrap sm:col-span-2" style={{ gap: "var(--c97-sp-1)" }}>
-                <button type="submit" className="c97-btn">
-                  <Plus className="h-3.5 w-3.5" aria-hidden="true" />
-                  Save trip
-                </button>
-                <button type="button" onClick={() => setShowTripForm(false)} className="c97-btn-ghost">
-                  Cancel
-                </button>
+              <div className="grid" style={{ gap: "var(--c97-sp-4)", marginTop: "var(--c97-sp-4)" }}>
+                <div className="xl:grid xl:grid-cols-[minmax(0,1.7fr)_minmax(300px,0.9fr)]" style={{ gap: "var(--c97-sp-4)" }}>
+                  <div>
+                    {summary && summary.activitiesTotal === 0 ? (
+                      <p className="c97-prose">No stops yet. Add the first one with the Add stop form.</p>
+                    ) : (
+                      <div className="flex flex-col" style={{ gap: "var(--c97-sp-3)" }}>
+                        {summary?.dayBuckets.map((bucket) => (
+                          <DayList key={bucket.date} bucket={bucket} today={today} onToggle={(id) => activeTrip && toggleActivity(activeTrip.id, id)} onEdit={handleEditActivity} onRemove={(id) => {
+                            if (!activeTrip) return;
+                            removeActivity(activeTrip.id, id);
+                            if (editingActivityId === id) resetActivityDraft();
+                          }} />
+                        ))}
+                      </div>
+                    )}
+                  </div>
+
+                  <aside className="mt-[var(--c97-sp-3)] xl:mt-0">
+                    <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-2)" }}>
+                      {editingActivityId ? "Edit stop" : "Add stop"}
+                    </p>
+                    <form onSubmit={handleSubmitActivity} className="c97-panel" style={{ display: "grid", gap: "var(--c97-sp-2)" }}>
+                      <fieldset disabled={!activeTrip} className="contents">
+                        <label className="block">
+                          <span className="c97-kicker">Title</span>
+                          <input
+                            ref={activityTitleInputRef}
+                            type="text"
+                            value={activityDraft.title}
+                            onChange={(e) => {
+                              setActivityTitleMissing(false);
+                              setActivityDraft((d) => ({ ...d, title: e.target.value }));
+                            }}
+                            aria-invalid={activityTitleMissing || undefined}
+                            aria-describedby={activityTitleMissing ? "travel-stop-title-error" : undefined}
+                            placeholder="Sunset at Miradouro"
+                            className="c97-field"
+                            style={{ marginTop: "var(--c97-sp-1)" }}
+                          />
+                        </label>
+                        {activityTitleMissing ? (
+                          <p id="travel-stop-title-error" role="alert" className="c97-prose" style={{ fontSize: "var(--c97-fs-small)", color: "var(--c97-negative)" }}>
+                            Give the stop a title to add it.
+                          </p>
+                        ) : null}
+                        <label className="block">
+                          <span className="c97-kicker">Date</span>
+                          <input
+                            type="date"
+                            value={activityDraft.date}
+                            min={activeTrip?.startDate}
+                            max={activeTrip?.endDate}
+                            onChange={(e) => setActivityDraft((d) => ({ ...d, date: e.target.value }))}
+                            className="c97-field"
+                            style={{ marginTop: "var(--c97-sp-1)" }}
+                          />
+                        </label>
+                        <div className="grid grid-cols-2" style={{ gap: "var(--c97-sp-1)" }}>
+                          <label className="block">
+                            <span className="c97-kicker">Starts</span>
+                            <input
+                              type="time"
+                              value={activityDraft.time}
+                              onChange={(e) =>
+                                setActivityDraft((d) => {
+                                  const time = e.target.value;
+                                  return { ...d, time, endTime: time && d.endTime > time ? d.endTime : "" };
+                                })
+                              }
+                              className="c97-field"
+                              style={{ marginTop: "var(--c97-sp-1)" }}
+                            />
+                          </label>
+                          <label className="block">
+                            <span className="c97-kicker">Ends</span>
+                            <input
+                              type="time"
+                              value={activityDraft.endTime}
+                              min={activityDraft.time || undefined}
+                              disabled={!activityDraft.time}
+                              aria-invalid={endTimeInvalid || undefined}
+                              onChange={(e) => setActivityDraft((d) => ({ ...d, endTime: e.target.value }))}
+                              className="c97-field"
+                              style={{ marginTop: "var(--c97-sp-1)" }}
+                            />
+                          </label>
+                        </div>
+                        {endTimeInvalid ? (
+                          <p role="alert" className="c97-prose" style={{ fontSize: "var(--c97-fs-small)", color: "var(--c97-negative)" }}>
+                            The end time has to come after the start. Overnight stops need one entry per day.
+                          </p>
+                        ) : null}
+                        <label className="block">
+                          <span className="c97-kicker">Category</span>
+                          <select
+                            value={activityDraft.category}
+                            onChange={(e) => setActivityDraft((d) => ({ ...d, category: e.target.value as ActivityDraft["category"] }))}
+                            className="c97-field"
+                            style={{ marginTop: "var(--c97-sp-1)" }}
+                          >
+                            {ACTIVITY_CATEGORIES.map((category) => (
+                              <option key={category} value={category}>
+                                {ACTIVITY_CATEGORY_LABELS[category]}
+                              </option>
+                            ))}
+                          </select>
+                        </label>
+                        <label className="block">
+                          <span className="c97-kicker">Location</span>
+                          <input
+                            type="text"
+                            value={activityDraft.location}
+                            onChange={(e) => setActivityDraft((d) => ({ ...d, location: e.target.value }))}
+                            placeholder="Alfama"
+                            className="c97-field"
+                            style={{ marginTop: "var(--c97-sp-1)" }}
+                          />
+                        </label>
+                        <label className="block">
+                          <span className="c97-kicker">Notes</span>
+                          <textarea
+                            value={activityDraft.notes}
+                            onChange={(e) => setActivityDraft((d) => ({ ...d, notes: e.target.value }))}
+                            placeholder="Reservation, what to bring, etc."
+                            className="c97-field"
+                            style={{ marginTop: "var(--c97-sp-1)", minHeight: "88px" }}
+                          />
+                        </label>
+                        <div className="flex flex-wrap" style={{ gap: "var(--c97-sp-1)" }}>
+                          <button type="submit" className="c97-btn">
+                            <Plus className="h-3.5 w-3.5" aria-hidden="true" />
+                            {editingActivityId ? "Save stop" : "Add stop"}
+                          </button>
+                          {editingActivityId ? (
+                            <button type="button" onClick={resetActivityDraft} className="c97-btn-ghost">
+                              Cancel
+                            </button>
+                          ) : null}
+                        </div>
+                      </fieldset>
+                    </form>
+                  </aside>
+                </div>
               </div>
-            </form>
-          ) : null}
-
-          {activeTrip ? (
-            <div style={{ marginTop: "var(--c97-sp-4)" }}>
-              <TripDetailsFields trip={activeTrip} onUpdateField={(fields) => updateTripFields(activeTrip.id, fields)} />
             </div>
-          ) : null}
+          </section>
 
-          <div style={{ marginTop: "var(--c97-sp-5)" }}>
-            <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-2)" }}>
-              All trips ({trips.length})
-            </p>
-            {trips.length === 0 ? (
-              <p className="c97-prose">No trips saved yet.</p>
-            ) : (
-              <ul style={{ listStyle: "none", padding: 0, margin: 0 }}>
-                {trips.map((other) => (
-                  <li key={other.id} className="c97-row" style={{ minHeight: "44px", borderBottom: "1px solid var(--c97-rule)", padding: "var(--c97-sp-1) 0" }}>
-                    <button
-                      type="button"
-                      onClick={() => selectTrip(other.id)}
-                      aria-current={other.id === activeTrip?.id ? "true" : undefined}
-                      className="c97-travel-trip-pick text-left min-w-0"
-                    >
-                      <span className="c97-serif" style={{ display: "block", fontSize: "var(--c97-fs-body)" }}>
-                        {other.name}
-                        {other.id === activeTrip?.id ? " (active)" : ""}
-                      </span>
-                      <span className="c97-meta" style={{ display: "block", marginTop: "2px" }}>
-                        {other.destination || "No destination"} &middot; {formatTripDateRange(other.startDate, other.endDate)}
-                      </span>
-                    </button>
-                    <div className="flex flex-wrap justify-end" style={{ gap: "var(--c97-sp-1)" }}>
+          <section
+            id="section-journal"
+            className="c97-band c97-sheet"
+            data-c97-surface="bone"
+            data-seam="deckle"
+            aria-label="Trip journal"
+          >
+            <div className="c97-shell">
+              <div className="flex flex-wrap items-end justify-between" style={{ gap: "var(--c97-sp-2)" }}>
+                <div>
+                  <p className="c97-kicker">Reflection</p>
+                  <h2 className="c97-poster-sm">Journal</h2>
+                </div>
+                {activeTrip ? (
+                  <p className="c97-meta c97-tabular">
+                    {activeTrip.journal.length} {activeTrip.journal.length === 1 ? "entry" : "entries"}
+                  </p>
+                ) : null}
+              </div>
+
+              <div className="xl:grid xl:grid-cols-[minmax(0,1.7fr)_minmax(300px,0.9fr)]" style={{ gap: "var(--c97-sp-4)", marginTop: "var(--c97-sp-4)" }}>
+                <div>
+                  {activeTrip.journal.length === 0 ? (
+                    <p className="c97-prose">Journal is empty. Capture a moment with the Journal entry form.</p>
+                  ) : (
+                    <ul className="flex flex-col" style={{ gap: "var(--c97-sp-2)", listStyle: "none", padding: 0, margin: 0 }}>
+                      {[...activeTrip.journal]
+                        .sort((left, right) =>
+                          left.date !== right.date ? right.date.localeCompare(left.date) : right.id.localeCompare(left.id)
+                        )
+                        .map((entry) => (
+                          <JournalPostcard
+                            key={entry.id}
+                            entry={entry}
+                            onEdit={handleEditJournal}
+                            onRemove={(id) => {
+                              if (!activeTrip) return;
+                              removeJournal(activeTrip.id, id);
+                              if (editingJournalId === id) resetJournalDraft();
+                            }}
+                          />
+                        ))}
+                    </ul>
+                  )}
+                </div>
+
+                <aside className="mt-[var(--c97-sp-3)] xl:mt-0">
+                  <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-2)" }}>
+                    {editingJournalId ? "Edit entry" : "Journal entry"}
+                  </p>
+                  <form onSubmit={handleSubmitJournal} className="c97-panel" style={{ display: "grid", gap: "var(--c97-sp-2)" }}>
+                    <fieldset disabled={!activeTrip} className="contents">
+                      <div className="grid grid-cols-2" style={{ gap: "var(--c97-sp-1)" }}>
+                        <label className="block">
+                          <span className="c97-kicker">Date</span>
+                          <input
+                            type="date"
+                            value={journalDraft.date}
+                            min={activeTrip?.startDate}
+                            max={activeTrip?.endDate}
+                            onChange={(e) => setJournalDraft((d) => ({ ...d, date: e.target.value }))}
+                            className="c97-field"
+                            style={{ marginTop: "var(--c97-sp-1)" }}
+                          />
+                        </label>
+                        <label className="block">
+                          <span className="c97-kicker">Mood</span>
+                          <select
+                            value={journalDraft.mood}
+                            onChange={(e) => setJournalDraft((d) => ({ ...d, mood: e.target.value as JournalDraft["mood"] }))}
+                            className="c97-field"
+                            style={{ marginTop: "var(--c97-sp-1)" }}
+                          >
+                            {JOURNAL_MOODS.map((mood) => (
+                              <option key={mood} value={mood}>
+                                {JOURNAL_MOOD_LABELS[mood]}
+                              </option>
+                            ))}
+                          </select>
+                        </label>
+                      </div>
+                      <label className="block">
+                        <span className="c97-kicker">Title</span>
+                        <input
+                          ref={journalTitleInputRef}
+                          type="text"
+                          value={journalDraft.title}
+                          onChange={(e) => {
+                            setJournalEmpty(false);
+                            setJournalDraft((d) => ({ ...d, title: e.target.value }));
+                          }}
+                          aria-describedby={journalEmpty ? "travel-journal-error" : undefined}
+                          placeholder="A long walk in Alfama"
+                          className="c97-field"
+                          style={{ marginTop: "var(--c97-sp-1)" }}
+                        />
+                      </label>
+                      <label className="block">
+                        <span className="c97-kicker">Notes</span>
+                        <textarea
+                          value={journalDraft.body}
+                          onChange={(e) => {
+                            setJournalEmpty(false);
+                            setJournalDraft((d) => ({ ...d, body: e.target.value }));
+                          }}
+                          aria-describedby={journalEmpty ? "travel-journal-error" : undefined}
+                          placeholder="What stood out today"
+                          className="c97-field"
+                          style={{ marginTop: "var(--c97-sp-1)", minHeight: "88px" }}
+                        />
+                      </label>
+                      {journalEmpty ? (
+                        <p id="travel-journal-error" role="alert" className="c97-prose" style={{ fontSize: "var(--c97-fs-small)", color: "var(--c97-negative)" }}>
+                          Add a title or a note to save the entry.
+                        </p>
+                      ) : null}
+                      <div className="flex flex-wrap" style={{ gap: "var(--c97-sp-1)" }}>
+                        <button type="submit" className="c97-btn">
+                          <Plus className="h-3.5 w-3.5" aria-hidden="true" />
+                          {editingJournalId ? "Save entry" : "Add entry"}
+                        </button>
+                        {editingJournalId ? (
+                          <button type="button" onClick={resetJournalDraft} className="c97-btn-ghost">
+                            Cancel
+                          </button>
+                        ) : null}
+                      </div>
+                    </fieldset>
+                  </form>
+                </aside>
+              </div>
+            </div>
+          </section>
+
+          <section id="section-trip" className="c97-band c97-sheet" data-c97-surface="paper" data-seam="torn" aria-label="Trip management">
+            <div className="c97-shell">
+              <div className="flex flex-wrap items-end justify-between" style={{ gap: "var(--c97-sp-2)" }}>
+                <div>
+                  <p className="c97-kicker">Manage</p>
+                  <h2 className="c97-poster-sm">Trip</h2>
+                </div>
+                <div className="flex flex-wrap" style={{ gap: "var(--c97-sp-1)" }}>
+                  {activeTrip ? (
+                    <>
                       <button
                         type="button"
                         onClick={() =>
-                          confirmingDelete === `row:${other.id}`
-                            ? confirmDeleteTrip(other.id)
-                            : setConfirmingDelete(`row:${other.id}`)
-                        }
-                        aria-label={
-                          confirmingDelete === `row:${other.id}`
-                            ? `Confirm delete trip ${other.name}`
-                            : `Delete trip ${other.name}`
+                          confirmingDelete === `active:${activeTrip.id}`
+                            ? confirmDeleteTrip(activeTrip.id)
+                            : setConfirmingDelete(`active:${activeTrip.id}`)
                         }
                         className="c97-btn-ghost"
-                        style={{
-                          minWidth: 44,
-                          justifyContent: "center",
-                          ...(confirmingDelete === `row:${other.id}` ? { color: "var(--c97-negative)" } : {}),
-                        }}
+                        style={confirmingDelete === `active:${activeTrip.id}` ? { color: "var(--c97-negative)" } : undefined}
                       >
                         <Trash2 className="h-3.5 w-3.5" aria-hidden="true" />
-                        {confirmingDelete === `row:${other.id}` ? "Confirm delete" : null}
+                        {confirmingDelete === `active:${activeTrip.id}` ? "Confirm delete" : "Delete trip"}
                       </button>
-                      {confirmingDelete === `row:${other.id}` ? (
+                      {confirmingDelete === `active:${activeTrip.id}` ? (
                         <button
                           type="button"
                           onClick={(event) => {
@@ -779,14 +738,92 @@ export function TravelPlannerClient() {
                           Keep it
                         </button>
                       ) : null}
-                    </div>
-                  </li>
-                ))}
-              </ul>
-            )}
-          </div>
-        </div>
-      </section>
+                    </>
+                  ) : null}
+                  <button ref={newTripButtonRef} type="button" onClick={() => (showTripForm ? setShowTripForm(false) : openTripForm())} className="c97-btn" aria-expanded={showTripForm}>
+                    <Plus className="h-3.5 w-3.5" aria-hidden="true" />
+                    New trip
+                  </button>
+                </div>
+              </div>
+
+              {showTripForm ? (
+                <form onSubmit={handleCreateTrip} className="c97-panel grid sm:grid-cols-2" style={{ gap: "var(--c97-sp-2)", marginTop: "var(--c97-sp-3)" }} aria-label="Create a new trip">
+                  {tripFormFields}
+                </form>
+              ) : null}
+
+              {activeTrip ? (
+                <div style={{ marginTop: "var(--c97-sp-4)" }}>
+                  <TripDetailsFields trip={activeTrip} onUpdateField={(fields) => updateTripFields(activeTrip.id, fields)} />
+                </div>
+              ) : null}
+
+              <div style={{ marginTop: "var(--c97-sp-5)" }}>
+                <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-2)" }}>
+                  All trips ({trips.length})
+                </p>
+                <ul style={{ listStyle: "none", padding: 0, margin: 0 }}>
+                  {trips.map((other) => (
+                    <li key={other.id} className="c97-row" style={{ minHeight: "44px", borderBottom: "1px solid var(--c97-rule)", padding: "var(--c97-sp-1) 0" }}>
+                      <button
+                        type="button"
+                        onClick={() => selectTrip(other.id)}
+                        aria-current={other.id === activeTrip?.id ? "true" : undefined}
+                        className="c97-travel-trip-pick text-left min-w-0"
+                      >
+                        <span className="c97-serif" style={{ display: "block", fontSize: "var(--c97-fs-body)" }}>
+                          {other.name}
+                          {other.id === activeTrip?.id ? " (active)" : ""}
+                        </span>
+                        <span className="c97-meta" style={{ display: "block", marginTop: "2px" }}>
+                          {other.destination || "No destination"} &middot; {formatTripDateRange(other.startDate, other.endDate)}
+                        </span>
+                      </button>
+                      <div className="flex flex-wrap justify-end" style={{ gap: "var(--c97-sp-1)" }}>
+                        <button
+                          type="button"
+                          onClick={() =>
+                            confirmingDelete === `row:${other.id}`
+                              ? confirmDeleteTrip(other.id)
+                              : setConfirmingDelete(`row:${other.id}`)
+                          }
+                          aria-label={
+                            confirmingDelete === `row:${other.id}`
+                              ? `Confirm delete trip ${other.name}`
+                              : `Delete trip ${other.name}`
+                          }
+                          className="c97-btn-ghost"
+                          style={{
+                            minWidth: 44,
+                            justifyContent: "center",
+                            ...(confirmingDelete === `row:${other.id}` ? { color: "var(--c97-negative)" } : {}),
+                          }}
+                        >
+                          <Trash2 className="h-3.5 w-3.5" aria-hidden="true" />
+                          {confirmingDelete === `row:${other.id}` ? "Confirm delete" : null}
+                        </button>
+                        {confirmingDelete === `row:${other.id}` ? (
+                          <button
+                            type="button"
+                            onClick={(event) => {
+                              setConfirmingDelete(null);
+                              (event.currentTarget.previousElementSibling as HTMLElement | null)?.focus();
+                            }}
+                            className="c97-btn-ghost"
+                          >
+                            Keep it
+                          </button>
+                        ) : null}
+                      </div>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </section>
+        </>
+      ) : null}
     </div>
   );
 }

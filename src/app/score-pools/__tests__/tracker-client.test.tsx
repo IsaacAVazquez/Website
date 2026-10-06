@@ -93,7 +93,7 @@ describe("TrackerClient", () => {
 
     const totals = screen.getByRole("region", { name: "Totals" });
     expect(within(totals).getByText("Tracked points").nextElementSibling).toHaveTextContent("10");
-    expect(within(totals).getByText("from 4 scored picks")).toBeInTheDocument();
+    expect(within(totals).getByText("computed here from 4 scored picks")).toBeInTheDocument();
     expect(within(totals).getByText("5/3/2")).toBeInTheDocument();
     expect(within(totals).getByText(/scored on the 90-minute result/)).toBeInTheDocument();
   });
@@ -117,7 +117,7 @@ describe("TrackerClient", () => {
     expect(within(kingsway).queryByLabelText("After extra time home goals")).not.toBeInTheDocument();
 
     await user.click(within(kingsway).getByRole("button", { name: "Save result" }));
-    expect(within(kingsway).getByRole("alert")).toHaveTextContent("The 90-minute score needs two whole numbers.");
+    expect(within(kingsway).getByRole("alert")).toHaveTextContent("The 90-minute score needs two whole numbers from 0 to 15.");
 
     await user.type(within(kingsway).getByLabelText("Ninety minute home goals"), "2");
     await user.type(within(kingsway).getByLabelText("Ninety minute away goals"), "2");
@@ -186,7 +186,7 @@ describe("TrackerClient", () => {
     expect(cells("Dana")).toEqual(["Dana", "5", "3", "8", "4 behind"]);
     expect(cells("Eli")).toEqual(["Eli", "0", "14", "14", "+2 on me"]);
     expect(cells("Fern")).toEqual(["Fern", "0", "12", "12", "level"]);
-    expect(within(screen.getByRole("region", { name: "Totals" })).getByText("Standing (settings)").nextElementSibling).toHaveTextContent("2");
+    expect(within(screen.getByRole("region", { name: "Totals" })).getByText("Entered standing").nextElementSibling).toHaveTextContent("2");
   });
 
   it("enters, validates, and clears a rival's picks", async () => {
@@ -213,15 +213,82 @@ describe("TrackerClient", () => {
     expect(readStore().pools[0].rivals[0].picks.f2).toEqual({ home: 3, away: 1 });
     expect(within(cliffside).queryByRole("alert")).not.toBeInTheDocument();
     expect(within(cliffside).getByText("saved 3-1")).toBeInTheDocument();
-    expect(within(cliffside).getByLabelText("Dana pick, Cliffside goals")).toHaveValue(null);
+    expect(within(cliffside).getByLabelText("Dana pick, Cliffside goals")).toHaveValue(3);
     // 3-1 against a 3-1 result is exact.
     expect(within(rowFor(screen.getByRole("table", { name: "Rival totals" }), "Dana")).getAllByRole("cell")[1]).toHaveTextContent("5");
 
     await user.click(within(ashford).getByRole("button", { name: "Clear" }));
     expect(readStore().pools[0].rivals[0].picks.f1).toBeUndefined();
+    expect(within(ashford).getByRole("button", { name: "Save" })).toHaveFocus();
+    expect(screen.getByRole("status")).toHaveTextContent("Cleared Dana's pick for Ashford vs Brookline.");
 
     await user.click(screen.getByRole("button", { name: "Dana", pressed: true }));
     expect(screen.queryByText("saved 3-1")).not.toBeInTheDocument();
+  });
+
+  it("rejects decimal scores instead of silently truncating them", async () => {
+    const user = userEvent.setup();
+    seedStore([pool({ submissions: MY_SUBMISSIONS, rivals: [{ id: "r1", name: "Dana", pointsAdjustment: 0, picks: {} }] })]);
+    renderTracker();
+    const kingsway = within(screen.getByRole("region", { name: "Missing results" })).getByText("Kingsway vs Lakeview").closest("li") as HTMLElement;
+    await user.type(within(kingsway).getByLabelText("Ninety minute home goals"), "1.5");
+    await user.type(within(kingsway).getByLabelText("Ninety minute away goals"), "2{Enter}");
+    expect(within(kingsway).getByRole("alert")).toHaveTextContent("whole numbers from 0 to 15");
+    expect(readStore().pools[0].manualResults.f6).toBeUndefined();
+
+    await user.click(screen.getByRole("button", { name: "Dana" }));
+    const home = screen.getByLabelText("Dana pick, Ashford goals");
+    await user.type(home, "1.5");
+    await user.type(screen.getByLabelText("Dana pick, Brookline goals"), "2{Enter}");
+    expect(home).toHaveAttribute("aria-invalid", "true");
+    expect(within(home.closest("li") as HTMLElement).getByRole("alert")).toHaveTextContent("whole numbers from 0 to 15");
+    expect(readStore().pools[0].rivals[0].picks.f1).toBeUndefined();
+  });
+
+  it("prefills saved picks for editing and submits an edited score with Enter", async () => {
+    const user = userEvent.setup();
+    seedStore([pool({ rivals: [{ id: "r1", name: "Dana", pointsAdjustment: 0, picks: { f1: { home: 2, away: 1 } } }] })]);
+    renderTracker();
+    await user.click(screen.getByRole("button", { name: "Dana" }));
+    const home = screen.getByLabelText("Dana pick, Ashford goals");
+    expect(home).toHaveValue(2);
+    expect(screen.getByLabelText("Dana pick, Brookline goals")).toHaveValue(1);
+    await user.clear(home);
+    await user.type(home, "3{Enter}");
+    expect(readStore().pools[0].rivals[0].picks.f1).toEqual({ home: 3, away: 1 });
+    expect(screen.getByRole("status")).toHaveTextContent("Saved Dana's 3-1 pick for Ashford vs Brookline.");
+  });
+
+  it("keeps drafts and validation scoped to each rival and pool", async () => {
+    const user = userEvent.setup();
+    const rivals = [{ id: "r1", name: "Dana", pointsAdjustment: 0, picks: {} }, { id: "r2", name: "Eli", pointsAdjustment: 0, picks: {} }];
+    seedStore([pool({ rivals }), pool({ id: "pool-2", name: "Family pool", rivals })]);
+    renderTracker();
+    await user.click(screen.getByRole("button", { name: "Dana" }));
+    await user.type(screen.getByLabelText("Dana pick, Ashford goals"), "3");
+    await user.type(screen.getByLabelText("Dana pick, Brookline goals"), "1");
+    await user.click(screen.getByRole("button", { name: "Eli" }));
+    expect(screen.getByLabelText("Eli pick, Ashford goals")).toHaveValue(null);
+    await user.click(within(screen.getByLabelText("Eli pick, Ashford goals").closest("li") as HTMLElement).getByRole("button", { name: "Save" }));
+    await user.click(screen.getByRole("button", { name: "Dana" }));
+    expect(screen.getByLabelText("Dana pick, Ashford goals")).toHaveValue(3);
+    expect(screen.getByLabelText("Dana pick, Brookline goals")).toHaveValue(1);
+    expect(screen.queryByRole("alert")).not.toBeInTheDocument();
+    await user.click(screen.getByRole("button", { name: "Family pool" }));
+    expect(screen.getByLabelText("Dana pick, Ashford goals")).toHaveValue(null);
+    await user.click(screen.getByRole("button", { name: "Office pool" }));
+    expect(screen.getByLabelText("Dana pick, Ashford goals")).toHaveValue(3);
+  });
+
+  it("does not move a manual result draft into another pool", async () => {
+    const user = userEvent.setup();
+    seedStore([pool({ submissions: MY_SUBMISSIONS }), pool({ id: "pool-2", name: "Family pool", submissions: MY_SUBMISSIONS })]);
+    renderTracker();
+    const resultForm = () => screen.getByRole("form", { name: "Result for Kingsway vs Lakeview" });
+    await user.type(within(resultForm()).getByLabelText("Ninety minute home goals"), "3");
+    await user.click(screen.getByRole("button", { name: "Family pool" }));
+    expect(within(resultForm()).getByLabelText("Ninety minute home goals")).toHaveValue(null);
+    expect(readStore().pools[1].manualResults.f6).toBeUndefined();
   });
 
   it("switches pools when there is more than one", async () => {

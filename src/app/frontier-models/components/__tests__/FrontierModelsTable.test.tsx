@@ -102,6 +102,27 @@ describe("FrontierModelsTable", () => {
     expect(screen.queryByText("Bravo editorial note.")).toBeNull();
   });
 
+  it("carries the release date and reasoning badge a phone hides into the open row", () => {
+    render(<FrontierModelsTable models={MODELS} selectedModelId="alpha" onSelectModel={jest.fn()} />);
+
+    const toggle = screen.getByRole("button", { name: "Alpha" });
+    const detail = document.getElementById(toggle.getAttribute("aria-controls") as string) as HTMLElement;
+    expect(within(detail).getByText("Released").nextElementSibling).toHaveTextContent("Mar 2026");
+    expect(within(detail).getByText("Reasoning")).toBeInTheDocument();
+  });
+
+  it("sorts by release date from the control that stands in for the hidden column", () => {
+    render(<FrontierModelsTable models={MODELS} selectedModelId={null} onSelectModel={jest.fn()} />);
+
+    const control = screen.getByRole("button", { name: /sort by release date/i });
+    expect(control).toHaveAttribute("aria-pressed", "true");
+    fireEvent.click(control);
+    expect(rowNames()).toEqual(["Bravo", "Charlie", "Alpha"]);
+
+    fireEvent.click(within(header(/^model/i)).getByRole("button"));
+    expect(control).toHaveAttribute("aria-pressed", "false");
+  });
+
   it("falls back when max output, cutoff, and docs are missing", () => {
     render(<FrontierModelsTable models={MODELS} selectedModelId="bravo" onSelectModel={jest.fn()} />);
 

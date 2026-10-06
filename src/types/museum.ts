@@ -121,7 +121,7 @@ export interface MuseumRouteState {
 export interface UserVisit {
   museumId: string;
   date: string; // ISO date
-  rating: number; // 0–5
+  rating?: number; // 0–5, absent on a quick visit the reader has not rated
   note?: string;
 }
 

@@ -1,4 +1,5 @@
 import { fireEvent, render, screen, within } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
 import { getNbaSummarySnapshot, getNbaTeamSnapshot } from "@/lib/nbaSnapshot";
 import { NbaClient } from "../nba-client";
 import { nbaSnapshot } from "@/data/nbaSnapshot";
@@ -47,6 +48,8 @@ describe("NbaClient", () => {
 
     expect(screen.getByRole("heading", { level: 1, name: /nba pulse/i })).toBeVisible();
     expect(screen.getByRole("region", { name: /nba standings/i })).toBeVisible();
+    // A plain visit selects the first seed without opening its drawer.
+    expect(screen.queryByRole("dialog")).not.toBeInTheDocument();
 
     fireEvent.click(screen.getByRole("button", { name: /western conference/i }));
     expect(mockPush).toHaveBeenLastCalledWith(
@@ -101,5 +104,62 @@ describe("NbaClient", () => {
     expect(
       screen.getByText("ESPN · Season 2025-26 · 30 teams · snapshot Jun 20, 2026")
     ).toBeVisible();
+  });
+
+  it("opens the picked team in a drawer beside the table and returns focus on Escape", async () => {
+    const user = userEvent.setup();
+    const summary = await getNbaSummarySnapshot();
+    const team = east[3]!;
+    global.fetch = jest.fn().mockResolvedValue({
+      ok: true,
+      json: async () => getNbaTeamSnapshot(team.id),
+    }) as unknown as typeof fetch;
+    // The router is a mock, so a push has to be fed back in as the next
+    // search params for the page to see the URL it asked for.
+    mockPush.mockImplementation((href: string) => {
+      currentSearchParams = new URLSearchParams(href.split("?")[1] ?? "");
+    });
+    const ui = () => (
+      <NbaClient
+        initialState={DEFAULT_NBA_STATE}
+        summary={summary}
+        initialTeamSnapshot={null}
+        teamColors={{}}
+      />
+    );
+    const view = render(ui());
+
+    const opener = screen.getByRole("button", { name: `Show ${team.name} details` });
+    await user.click(opener);
+    view.rerender(ui());
+
+    expect(mockPush).toHaveBeenLastCalledWith(
+      buildNbaHref({ view: "east", team: team.id }),
+      { scroll: false }
+    );
+    const drawer = await screen.findByRole("dialog", { name: `${team.name} detail` });
+    // The columns a phone drops from the table are in the drawer.
+    expect(within(drawer).getByText("Diff/g")).toBeInTheDocument();
+
+    await user.keyboard("{Escape}");
+    expect(screen.queryByRole("dialog")).not.toBeInTheDocument();
+    expect(opener).toHaveFocus();
+  });
+
+  it("opens the drawer for a link that names a team", async () => {
+    const summary = await getNbaSummarySnapshot();
+    const team = east[3]!;
+    currentSearchParams = new URLSearchParams(`team=${team.id}`);
+
+    render(
+      <NbaClient
+        initialState={{ view: "east", team: team.id }}
+        summary={summary}
+        initialTeamSnapshot={await getNbaTeamSnapshot(team.id)}
+        teamColors={{}}
+      />
+    );
+
+    expect(screen.getByRole("dialog", { name: `${team.name} detail` })).toBeInTheDocument();
   });
 });

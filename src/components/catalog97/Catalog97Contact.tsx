@@ -61,6 +61,14 @@ export function Catalog97Contact() {
             If something on this site looks wrong to you, I want to hear about
             that too.
           </p>
+          {/* The address itself is two bands down, which on a phone is past the first screen. */}
+          <a
+            className="c97-btn c97-offset"
+            href={`mailto:${profile.email}`}
+            style={{ marginTop: "var(--c97-sp-3)" }}
+          >
+            Email me
+          </a>
         </div>
       </section>
 

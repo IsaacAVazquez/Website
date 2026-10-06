@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useId, useMemo, useState, type CSSProperties, type ReactNode } from "react";
-import { Catalog97ProjectHero, type Catalog97Readout } from "@/components/catalog97/Catalog97ProjectHero";
+import { Catalog97HeroReadouts, Catalog97ProjectHero, type Catalog97Readout } from "@/components/catalog97/Catalog97ProjectHero";
 import { StockSearch } from "@/components/investments/StockSearch";
 import { HOLDING_PALETTE } from "@/components/investments/holdingPalette";
 import { PROJECT_PRESS } from "@/constants/projectPress";
@@ -42,7 +42,6 @@ const EXAMPLES = ["NVDA", "XOM", "KO"];
 const DISTINCT_COLORS = 4;
 
 type Loaded = { history: SymbolHistory; name: string } | "missing";
-type HeroReadouts = Parameters<typeof Catalog97ProjectHero>[0]["readouts"];
 
 const note = { fontSize: "var(--c97-fs-small)", color: "var(--c97-ink-2)" } as const;
 
@@ -119,6 +118,7 @@ function SectorBars({ result }: { result: BeforeYouBuyResult }) {
 export function BeforeYouBuyClient() {
   const amountId = useId();
   const amountErrorId = `${amountId}-error`;
+  const portfolioLabelId = `${amountId}-portfolio`;
   const [saved, setSaved] = useState<PortfolioHolding[] | null>(null);
   const [source, setSource] = useState<"sample" | "saved" | null>(null);
   const [symbol, setSymbol] = useState("NVDA");
@@ -215,25 +215,15 @@ export function BeforeYouBuyClient() {
             {DISCLAIMER} {result?.window ? `Prices through ${formatDay(result.window.to)}. ` : ""}Not investment advice.
           </>
         }
-        readouts={readouts.slice(0, 3) as HeroReadouts}
       >
+        {/* The inputs and what they change sit on one plate, so a new stock or
+            amount rewrites the sentence under it without a scroll between. */}
         <div data-c97-surface="paper" className="c97-offset" style={{ padding: "var(--c97-sp-3)" }}>
-          <p role="status" aria-live="polite" className="c97-prose" style={{ margin: 0 }}>
-            {summary}
-          </p>
-          {result ? <SectorBars result={result} /> : null}
-        </div>
-      </Catalog97ProjectHero>
-
-      <section className="c97-band c97-sheet" data-c97-surface="paper" data-seam="torn">
-        <div className="c97-shell">
-          <h2 className="c97-poster-sm">Try a buy</h2>
           <div
             style={{
               display: "grid",
               gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 16rem), 1fr))",
               gap: "var(--c97-sp-3)",
-              marginTop: "var(--c97-sp-3)",
               alignItems: "end",
             }}
           >
@@ -299,74 +289,91 @@ export function BeforeYouBuyClient() {
               </button>
             ))}
           </div>
-
-          <h3 className="c97-serif c97-h3" style={{ marginTop: "var(--c97-sp-5)" }}>
-            The portfolio
-          </h3>
-          <div className="c97-segmented" style={{ marginTop: "var(--c97-sp-2)" }}>
-            <button type="button" aria-pressed={!usingSaved} onClick={() => setSource("sample")} style={{ minHeight: "44px" }}>
-              Sample portfolio
-            </button>
-            <button
-              type="button"
-              aria-pressed={usingSaved}
-              disabled={!saved?.length}
-              onClick={() => setSource("saved")}
-              style={{ minHeight: "44px" }}
-            >
-              Your saved holdings
-            </button>
+          <div style={{ marginTop: "var(--c97-sp-3)" }}>
+            <span id={portfolioLabelId} className="c97-kicker" style={{ display: "block", marginBottom: "var(--c97-sp-1)" }}>
+              Portfolio
+            </span>
+            <div className="c97-segmented" role="group" aria-labelledby={portfolioLabelId}>
+              <button type="button" aria-pressed={!usingSaved} onClick={() => setSource("sample")} style={{ minHeight: "44px" }}>
+                Sample portfolio
+              </button>
+              <button
+                type="button"
+                aria-pressed={usingSaved}
+                disabled={!saved?.length}
+                onClick={() => setSource("saved")}
+                style={{ minHeight: "44px" }}
+              >
+                Your saved holdings
+              </button>
+            </div>
+            <p className="c97-prose" style={{ ...note, marginTop: "var(--c97-sp-2)" }}>
+              {usingSaved ? (
+                <>
+                  Your holdings from the <Link href="/investments" className="c97-link">investments page</Link>, valued at the last close. Edit them
+                  there.
+                </>
+              ) : (
+                <>
+                  A $50,000 sample with 30% in an S&amp;P 500 index fund and the rest in six large companies.
+                  {saved?.length === 0 ? (
+                    <>
+                      {" "}
+                      Save holdings on the <Link href="/investments" className="c97-link">investments page</Link> to try your own.
+                    </>
+                  ) : null}
+                </>
+              )}
+              {leftOut.length > 0 ? ` Left out because my data doesn't cover them: ${leftOut.join(", ")}.` : null}
+            </p>
           </div>
-          <p className="c97-prose" style={{ ...note, marginTop: "var(--c97-sp-2)" }}>
-            {usingSaved ? (
-              <>
-                Your holdings from the <Link href="/investments" className="c97-link">investments page</Link>, valued at the last close. Edit them
-                there.
-              </>
-            ) : (
-              <>
-                A $50,000 sample with 30% in an S&amp;P 500 index fund and the rest in six large companies.
-                {saved?.length === 0 ? (
-                  <>
-                    {" "}
-                    Save holdings on the <Link href="/investments" className="c97-link">investments page</Link> to try your own.
-                  </>
-                ) : null}
-              </>
-            )}
-            {leftOut.length > 0 ? ` Left out because my data doesn't cover them: ${leftOut.join(", ")}.` : null}
+          <p
+            role="status"
+            aria-live="polite"
+            className="c97-prose"
+            style={{ margin: 0, marginTop: "var(--c97-sp-3)", paddingTop: "var(--c97-sp-3)", borderTop: "1px solid var(--c97-rule)" }}
+          >
+            {summary}
           </p>
-          {result ? (
-            <TableScroll label="Portfolio holdings" style={{ marginTop: "var(--c97-sp-2)" }}>
-              <table className="c97-table">
-                <thead>
-                  <tr>
-                    <th>Holding</th>
-                    <th data-align="end">Value</th>
-                    <th data-align="end">Share</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {result.before.holdings.map((holding) => (
-                    <tr key={holding.symbol}>
-                      <td>{holding.symbol}</td>
-                      <td data-align="end" className="c97-mono">
-                        {formatMoney(holding.value)}
-                      </td>
-                      <td data-align="end" className="c97-mono">
-                        {formatWeight(holding.weight)}
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </TableScroll>
-          ) : null}
+          {result ? <SectorBars result={result} /> : null}
         </div>
-      </section>
+        {/* Printed here and not through the hero's own prop, which would put
+            the figures above the inputs that drive them. */}
+        {readouts.length > 0 ? <Catalog97HeroReadouts readouts={readouts} /> : null}
+      </Catalog97ProjectHero>
 
       {result ? (
         <>
+          <section className="c97-band c97-sheet" data-c97-surface="paper" data-seam="torn">
+            <div className="c97-shell">
+              <h2 className="c97-poster-sm">The portfolio</h2>
+              <TableScroll label="Portfolio holdings" style={{ marginTop: "var(--c97-sp-3)" }}>
+                <table className="c97-table">
+                  <thead>
+                    <tr>
+                      <th>Holding</th>
+                      <th data-align="end">Value</th>
+                      <th data-align="end">Share</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {result.before.holdings.map((holding) => (
+                      <tr key={holding.symbol}>
+                        <td>{holding.symbol}</td>
+                        <td data-align="end" className="c97-mono">
+                          {formatMoney(holding.value)}
+                        </td>
+                        <td data-align="end" className="c97-mono">
+                          {formatWeight(holding.weight)}
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </TableScroll>
+            </div>
+          </section>
+
           <section className="c97-band c97-sheet" data-c97-surface="bone" data-seam="deckle">
             <div className="c97-shell">
               <h2 className="c97-poster-sm">Before and after</h2>

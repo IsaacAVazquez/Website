@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { Search, X } from "@/components/ui/ServerIcons";
 import { useDebounce } from "@/hooks/useDebounce";
+import { useModal } from "@/hooks/useModal";
 import { trackNavigationClick } from "@/lib/analytics";
 
 interface HeaderSearchResult {
@@ -43,6 +44,7 @@ const STATUS_STYLE = {
  */
 export function HeaderSearchPanel({ onClose }: HeaderSearchPanelProps) {
   const router = useRouter();
+  const panelRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
   const searchControllerRef = useRef<AbortController | null>(null);
   const listboxId = useId();
@@ -57,17 +59,7 @@ export function HeaderSearchPanel({ onClose }: HeaderSearchPanelProps) {
   const debouncedQuery = useDebounce(query.trim(), 220);
   const hasQuery = query.trim().length > 0;
 
-  // Focus the input once the panel mounts, and hand focus back to whatever
-  // opened it when it closes, so Escape and the close button do not drop a
-  // keyboard user to the top of the page.
-  useEffect(() => {
-    const opener = document.activeElement instanceof HTMLElement ? document.activeElement : null;
-    const id = window.setTimeout(() => inputRef.current?.focus(), 20);
-    return () => {
-      window.clearTimeout(id);
-      if (opener && opener !== document.body && document.contains(opener)) opener.focus();
-    };
-  }, []);
+  useModal(panelRef, true, onClose, { initialFocusRef: inputRef, lockScroll: false });
 
   // Fetch logic lives in a callback so the effect body only invokes it (keeps
   // the data-fetch setState out of the effect body itself).
@@ -145,11 +137,6 @@ export function HeaderSearchPanel({ onClose }: HeaderSearchPanelProps) {
   };
 
   const onKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
-    if (event.key === "Escape") {
-      event.preventDefault();
-      onClose();
-      return;
-    }
     if (event.key === "ArrowDown") {
       event.preventDefault();
       setActiveIndex((current) => (results.length ? (current + 1) % results.length : -1));
@@ -184,9 +171,11 @@ export function HeaderSearchPanel({ onClose }: HeaderSearchPanelProps) {
       />
       <div className="c97-shell c97-frame">
         <div
+          ref={panelRef}
           data-c97-surface="paper"
           className="c97-offset overflow-hidden border"
           role="dialog"
+          aria-modal="true"
           aria-label="Site search"
           style={{ borderColor: "var(--c97-rule)", marginTop: "var(--c97-sp-1)" }}
         >
@@ -228,21 +217,21 @@ export function HeaderSearchPanel({ onClose }: HeaderSearchPanelProps) {
             </button>
           </div>
 
-          <div className="max-h-[60vh] overflow-y-auto">
+          <div className="max-h-[60dvh] overflow-y-auto overscroll-contain">
             {hasQuery && loading && results.length === 0 && (
-              <p className="text-sm" style={STATUS_STYLE}>
+              <p role="status" className="text-sm" style={STATUS_STYLE}>
                 Searching…
               </p>
             )}
 
             {hasQuery && !loading && error && (
-              <p className="text-sm" style={STATUS_STYLE}>
+              <p role="status" className="text-sm" style={STATUS_STYLE}>
                 Search isn&apos;t answering right now, so try again in a moment.
               </p>
             )}
 
             {hasQuery && !loading && !error && results.length === 0 && (
-              <p className="text-sm" style={STATUS_STYLE}>
+              <p role="status" className="text-sm" style={STATUS_STYLE}>
                 No results for “{debouncedQuery}”.
               </p>
             )}
@@ -268,9 +257,18 @@ export function HeaderSearchPanel({ onClose }: HeaderSearchPanelProps) {
                   >
                     <Link
                       href={result.url}
-                      onClick={() => goToResult(result)}
+                      onClick={(event) => {
+                        trackNavigationClick({
+                          link_text: result.title,
+                          link_url: result.url,
+                          nav_location: "header_search_result",
+                        });
+                        if (!event.metaKey && !event.ctrlKey && !event.shiftKey && !event.altKey && event.button === 0) {
+                          onClose();
+                        }
+                      }}
                       onMouseEnter={() => setActiveIndex(index)}
-                      className="flex items-center transition-colors"
+                      className="flex min-h-touch items-center transition-colors"
                       style={{
                         gap: "var(--c97-sp-2)",
                         padding: "var(--c97-sp-1) var(--c97-sp-2)",

@@ -41,11 +41,16 @@ test.describe("Portfolio shell", () => {
     const filters = page.getByRole("group", {
       name: "Filter projects by category",
     });
-    await expect(filters).toBeVisible();
-    await expect(filters.getByRole("button", { name: /^All / })).toHaveAttribute(
-      "aria-pressed",
-      "true"
-    );
+    const categoryPicker = page.getByRole("combobox", { name: "Project category" });
+    if (await categoryPicker.isVisible()) {
+      await expect(categoryPicker).toHaveValue("all");
+    } else {
+      await expect(filters).toBeVisible();
+      await expect(filters.getByRole("button", { name: /^All / })).toHaveAttribute(
+        "aria-pressed",
+        "true"
+      );
+    }
 
     const search = page.getByRole("searchbox", { name: "Search projects" });
     await search.fill("investment analytics");

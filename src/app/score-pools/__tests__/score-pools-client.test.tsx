@@ -98,6 +98,9 @@ describe("ScorePoolsClient pool setup", () => {
     expect(store.pools[0]).toMatchObject({ name: "Work pool", leagueKey: "test-league" });
     expect(store.activePoolId).toBe(store.pools[0].id);
     expect(screen.getByRole("button", { name: "Work pool", pressed: true })).toBeInTheDocument();
+    // The pool's scoring reads in plain words beside the pick sheet, and the market terms stay in a match's detail.
+    expect(screen.getByText(/Work pool scores 5 points for the exact score, 3 for the right winner and goal difference, and 2 for the right winner or draw only, counted on the 90-minute result\./)).toBeInTheDocument();
+    expect(screen.queryByText(/de-vig|moneyline/i)).not.toBeInTheDocument();
     expect(screen.getByRole("table", { name: "Recommended picks for the current round" })).toBeInTheDocument();
   });
 

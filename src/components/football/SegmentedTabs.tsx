@@ -1,3 +1,7 @@
+"use client";
+
+import { useTablistKeyboard } from "@/hooks/useTablistKeyboard";
+
 export interface SegmentedTabItem {
   id: string;
   label: string;
@@ -6,8 +10,8 @@ export interface SegmentedTabItem {
 /**
  * The detail tabs for both league pages, printed as the same underlined
  * `.c97-segmented` control the view filters and the other sports pages use,
- * so they wrap cleanly on a phone. Every tab stays in the tab order, since
- * there is no arrow-key handler. Renders the `role="tablist"`
+ * so they wrap cleanly on a phone. Arrow keys move through the tabs, with
+ * the selected tab as the group's one stop in the Tab order. Renders the `role="tablist"`
  * wrapper and `role="tab"` buttons; callers own the tab panel(s) and pass a
  * single `panelId` since both league pages use one panel container that
  * swaps content per active tab.
@@ -29,6 +33,8 @@ export function SegmentedTabs({
   panelId: string;
   className?: string;
 }) {
+  const handleTabKeyDown = useTablistKeyboard(tabs, (tab) => onChange(tab.id));
+
   return (
     <div
       // Its callers stack it in a flex column, so the parent's gap spaces it.
@@ -36,7 +42,7 @@ export function SegmentedTabs({
       role="tablist"
       aria-label={ariaLabel}
     >
-      {tabs.map((tab) => {
+      {tabs.map((tab, index) => {
         const isActive = tab.id === activeId;
         return (
           <button
@@ -46,6 +52,8 @@ export function SegmentedTabs({
             role="tab"
             aria-selected={isActive}
             aria-controls={panelId}
+            tabIndex={isActive ? 0 : -1}
+            onKeyDown={(event) => handleTabKeyDown(event, index)}
             onClick={() => onChange(tab.id)}
             className="min-h-[44px] text-sm font-semibold"
           >

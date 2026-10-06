@@ -217,18 +217,26 @@ export function BestBallDraftTrackerClient({
               <h1 className="c97-poster">
                 Track every pick and see what your build still needs.
               </h1>
+              {/* Setup leads with the contest and the slot. The news-feed limit
+                  stays in view because it applies to every pick, and the longer
+                  account of what the room does opens on request. */}
               <p className="max-w-[66ch] text-sm leading-7" style={{ color: "var(--c97-ink-2)" }}>
-                I built this for manual rooms on Underdog and similar platforms. It follows every pick, keeps the snake order straight, adjusts roster guidance by contest, and compares your build against the room. Exact player cards appear only for presets with a matching room-price source. Expected return stays in a separate calculator because the Draft Outlook cannot promise an outcome.
+                I built this for manual rooms on Underdog and similar platforms. Pick a contest and your slot below to open a room. There is no live injury or player-news feed, so check the draft room and current team reports before logging each pick.
               </p>
-              <p className="max-w-[66ch] text-xs leading-6" style={{ color: "var(--c97-ink-2)" }}>
-                The snapshot has no separate live injury or player-news feed. Check the draft room and
-                current team reports before logging each pick.
-              </p>
-              {/* The room shape prints once in the chips below and once in the
-                  contest card; this sentence used to state it a third time. */}
-              <p className="max-w-[66ch] text-xs leading-6" style={{ color: "var(--c97-ink-2)" }}>
-                Weekly Winners, Sit &amp; Go, 6-Man, and Superflex contest cards can use settings other than the room shape pinned below, so check the lobby before you start.
-              </p>
+              <details className="c97-disclosure">
+                <summary className="c97-btn-ghost">
+                  <span data-when="closed">What the room does</span>
+                  <span data-when="open">Hide what the room does</span>
+                </summary>
+                <p className="max-w-[66ch] text-sm leading-7" style={{ color: "var(--c97-ink-2)" }}>
+                  It follows every pick, keeps the snake order straight, adjusts roster guidance by contest, and compares your build against the room. Exact player cards appear only for presets with a matching room-price source. Expected return stays in a separate calculator because the Draft Outlook cannot promise an outcome.
+                </p>
+                {/* The room shape prints once in the chips below and once in the
+                    contest card; this sentence used to state it a third time. */}
+                <p className="max-w-[66ch] text-xs leading-6" style={{ marginTop: "var(--c97-sp-1)", color: "var(--c97-ink-2)" }}>
+                  Weekly Winners, Sit &amp; Go, 6-Man, and Superflex contest cards can use settings other than the room shape pinned below, so check the lobby before you start.
+                </p>
+              </details>
             </div>
           )}
 

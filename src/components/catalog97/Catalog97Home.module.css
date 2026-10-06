@@ -48,7 +48,6 @@
   align-items: baseline;
   justify-content: space-between;
   gap: var(--c97-sp-2);
-  margin-top: var(--c97-sp-6);
 }
 .cardFigure { font-size: clamp(22px, 2.2vw, 30px); max-width: none; }
 .strip {

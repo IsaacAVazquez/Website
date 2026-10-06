@@ -1,18 +1,12 @@
 "use client";
 
-import {
-  useEffect,
-  useMemo,
-  useState,
-  type CSSProperties,
-} from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { formatUpdatedAt } from "@/lib/date-formatters";
 import { CircleAlert, Navigation, ShieldCheck, TriangleAlert } from "lucide-react";
 import type {
   TransitLine,
   TransitRouteState,
-  TransitStation,
   TransitStationBoard,
   TransitSummary,
   TransitView,
@@ -27,7 +21,7 @@ import {
 } from "./bay-area-transit-state";
 import { Catalog97ProjectHero } from "@/components/catalog97/Catalog97ProjectHero";
 import { PROJECT_PRESS } from "@/constants/projectPress";
-import { TransitSignature } from "./TransitSignature";
+import { swatchStyle, TransitSignature } from "./TransitSignature";
 import "./bay-area-transit.css";
 import { useRouteSync } from "@/hooks/useRouteSync";
 
@@ -40,14 +34,6 @@ interface BayAreaTransitClientProps {
 // The shared formatter pins Pacific time, which is where BART timestamps belong.
 function formatGeneratedAt(value: string | null | undefined): string {
   return value ? formatUpdatedAt(value) : "Unavailable";
-}
-
-/** A readable swatch border that still shows bright BART colors on light paper. */
-function swatchStyle(hexColor: string): CSSProperties {
-  return {
-    background: hexColor,
-    border: "1px solid color-mix(in srgb, var(--c97-ink) 16%, transparent)",
-  };
 }
 
 async function fetchTransitStationBoard(
@@ -119,48 +105,6 @@ function LineCard({ line }: { line: TransitLine }) {
   );
 }
 
-function StationRow({
-  station,
-  isSelected,
-  onSelect,
-  hexForLine,
-}: {
-  station: TransitStation;
-  isSelected: boolean;
-  onSelect: (stationId: string) => void;
-  hexForLine: (colorName: string) => string;
-}) {
-  return (
-    <button
-      type="button"
-      onClick={() => onSelect(station.id)}
-      aria-current={isSelected ? "true" : undefined}
-      className="c97-transit-station-row"
-    >
-      <span className="min-w-0">
-        <span className="block c97-serif truncate" style={{ fontWeight: 600 }}>
-          {station.name}
-        </span>
-        <span className="block text-sm" style={{ color: "var(--c97-ink-2)" }}>
-          {station.city || "Bay Area"}
-        </span>
-      </span>
-      <span className="flex shrink-0 items-center" style={{ gap: "var(--c97-sp-0)" }}>
-        {station.lines.map((colorName) => (
-          <span
-            key={`${station.id}-${colorName}`}
-            className="c97-transit-swatch"
-            style={swatchStyle(hexForLine(colorName))}
-            title={`${colorName} line`}
-            role="img"
-            aria-label={`${colorName} line`}
-          />
-        ))}
-      </span>
-    </button>
-  );
-}
-
 export function BayAreaTransitClient({
   initialState,
   summary: initialSummary,
@@ -224,13 +168,6 @@ export function BayAreaTransitClient({
     .filter(([, status]) => status !== "fresh")
     .map(([section]) => section);
 
-  const lineHexByColor = useMemo(
-    () =>
-      new Map(
-        summary.lines.map((line) => [line.colorName.trim().toLowerCase(), line.hexColor])
-      ),
-    [summary.lines]
-  );
   // BART scopes some advisories to one station; system-wide ones say "BART".
   const advisoryStations = useMemo(() => {
     const abbrs = new Set(summary.stations.map((station) => station.abbr));
@@ -240,8 +177,6 @@ export function BayAreaTransitClient({
         .filter((abbr) => abbrs.has(abbr))
     );
   }, [summary.advisories, summary.stations]);
-  const hexForLine = (colorName: string) =>
-    lineHexByColor.get(colorName.trim().toLowerCase()) ?? "var(--c97-ink-2)";
 
   useEffect(() => {
     let active = true;
@@ -365,11 +300,8 @@ export function BayAreaTransitClient({
   }
 
   function handleStationChange(stationId: string) {
-    navigate({
-      // Selecting a station is most useful alongside the departures view.
-      view: routeState.view === "advisories" ? "stations" : routeState.view,
-      station: stationId,
-    });
+    // The board sits beside the search and the map, so a pick keeps the view.
+    navigate({ view: routeState.view, station: stationId });
   }
 
   function handleRetryStationBoard() {
@@ -428,6 +360,17 @@ export function BayAreaTransitClient({
       <section className="c97-band c97-sheet" data-c97-surface="paper" data-seam="torn">
         <div className="c97-shell">
           <h2 className="c97-poster-sm" style={{ marginBottom: "var(--c97-sp-2)" }}>The network</h2>
+
+          <dl className="flex flex-wrap" style={{ gap: "var(--c97-sp-4)", margin: "0 0 var(--c97-sp-3)" }}>
+            <div className="c97-stat">
+              <dt className="c97-stat-label">Lines</dt>
+              <dd className="c97-stat-value">{summary.heroStats.lineCount}</dd>
+            </div>
+            <div className="c97-stat">
+              <dt className="c97-stat-label">Stations</dt>
+              <dd className="c97-stat-value">{summary.heroStats.stationCount}</dd>
+            </div>
+          </dl>
 
           <div className="c97-segmented" role="tablist" aria-label="Transit view switcher">
             {TRANSIT_VIEW_OPTIONS.map((view, index) => (
@@ -488,30 +431,6 @@ export function BayAreaTransitClient({
                 <div className="grid sm:grid-cols-2" style={{ gap: "var(--c97-sp-2)" }}>
                   {summary.lines.map((line) => (
                     <LineCard key={line.id} line={line} />
-                  ))}
-                </div>
-              </>
-            ) : null}
-
-            {routeState.view === "stations" ? (
-              <>
-                <div className="flex flex-col" style={{ gap: "var(--c97-sp-1)" }}>
-                  <p className="c97-kicker">Stations</p>
-                  <p className="c97-prose">
-                    Pick a station to center the map on it and load its
-                    departure board above. The colored squares show which
-                    lines stop there.
-                  </p>
-                </div>
-                <div className="grid sm:grid-cols-2" style={{ gap: "var(--c97-sp-1)" }}>
-                  {summary.stations.map((station) => (
-                    <StationRow
-                      key={station.id}
-                      station={station}
-                      isSelected={station.id === selectedStationId}
-                      onSelect={handleStationChange}
-                      hexForLine={hexForLine}
-                    />
                   ))}
                 </div>
               </>

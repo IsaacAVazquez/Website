@@ -47,6 +47,23 @@ it("saves a roster, marks league availability, compares and applies a move, and 
   expect(screen.getByRole("option", { name: "Available Runner (RB)" })).toBeInTheDocument();
 });
 
+it("leads a saved team with its marked targets on waivers and with the lineup on weekly", () => {
+  localStorage.setItem(getMyTeamStorageKey(2026), JSON.stringify({ ...emptyMyTeam(2026), players: [rb], availableIds: [add.id] }));
+  const comparisonLeads = () =>
+    Boolean(screen.getByRole("heading", { name: "Compare an add and a drop" })
+      .compareDocumentPosition(screen.getByRole("heading", { name: "Weekly lineup by consensus" })) & Node.DOCUMENT_POSITION_FOLLOWING);
+  const weekly = render(<MyTeamPanel snapshot={snapshot} board={snapshot.boards.ppr} scoring="ppr" onScoringChange={jest.fn()} />);
+  expect(comparisonLeads()).toBe(false);
+  weekly.unmount();
+  render(<MyTeamPanel snapshot={snapshot} board={snapshot.boards.ppr} scoring="ppr" onScoringChange={jest.fn()} lead="waivers" />);
+  expect(comparisonLeads()).toBe(true);
+  expect(screen.getByRole("option", { name: "Available Runner (RB)" })).toBeInTheDocument();
+  // Roster editing stays one press away and is not on screen until asked for.
+  expect(screen.queryByLabelText("Find a player to roster or mark available")).not.toBeInTheDocument();
+  fireEvent.click(screen.getByRole("button", { name: "Roster" }));
+  expect(screen.getByLabelText("Find a player to roster or mark available")).toBeVisible();
+});
+
 it("pauses recommendations on stale inputs", () => {
   localStorage.setItem(getMyTeamStorageKey(2026), JSON.stringify({ ...emptyMyTeam(2026), players: [rb], availableIds: [add.id] }));
   const staleBoard = { ...board, flexSource: { ...source, asOf: "2020-01-01T00:00:00Z" } };

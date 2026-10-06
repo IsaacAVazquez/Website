@@ -174,34 +174,6 @@ export function Catalog97Home({
               />
             </div>
           </div>
-          <div className={styles.boardHead}>
-            <h2 className="c97-poster-sm">Dashboards</h2>
-            <Link href="/dashboards" className="c97-sectionlink">
-              All dashboards
-            </Link>
-          </div>
-          <Catalog97Collage panels={boardPanels} />
-          <div className={styles.strip}>
-            {stripTiles.map(({ href, readout, surface }) =>
-              readout ? (
-                <Link
-                  key={href}
-                  href={href}
-                  className={`c97-tile ${styles.stripTile}`}
-                  data-c97-surface={surface}
-                >
-                  <span className="c97-kicker">{readout.label}</span>
-                  <span
-                    className={`c97-poster-sm c97-tabular ${styles.cardFigure}`}
-                  >
-                    {readout.figure}
-                  </span>
-                  <span className={styles.small}>{readout.detail}</span>
-                  <span className={styles.source}>{readout.source}</span>
-                </Link>
-              ) : null,
-            )}
-          </div>
         </div>
       </section>
 
@@ -288,6 +260,49 @@ export function Catalog97Home({
           </div>
         </section>
       ) : null}
+
+      {/*
+        The dashboards board. It sat in the hero until the 2026-10-05 audit,
+        which measured it pushing the selected work and the job write-ups two
+        and four phone screens down. It follows the paper write-ups sheet, so it
+        only tears when that sheet is missing and it lands on the blue one.
+      */}
+      <section
+        className="c97-band c97-band-tall c97-sheet"
+        data-c97-surface="paper"
+        data-seam={recentPosts.length > 0 ? undefined : "torn"}
+      >
+        <div className="c97-shell">
+          <div className={styles.boardHead}>
+            <h2 className="c97-poster-sm">Dashboards</h2>
+            <Link href="/dashboards" className="c97-sectionlink">
+              All dashboards
+            </Link>
+          </div>
+          <Catalog97Collage panels={boardPanels} />
+          <div className={styles.strip}>
+            {stripTiles.map(({ href, readout, surface }) =>
+              readout ? (
+                <Link
+                  key={href}
+                  href={href}
+                  className={`c97-tile ${styles.stripTile}`}
+                  data-c97-surface={surface}
+                >
+                  <span className="c97-kicker">{readout.label}</span>
+                  <span
+                    className={`c97-poster-sm c97-tabular ${styles.cardFigure}`}
+                  >
+                    {readout.figure}
+                  </span>
+                  <span className={styles.small}>{readout.detail}</span>
+                  <span className={styles.source}>{readout.source}</span>
+                </Link>
+              ) : null,
+            )}
+          </div>
+        </div>
+      </section>
 
       {/* Compact closing invitation. */}
       <section

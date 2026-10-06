@@ -44,6 +44,8 @@ const MODALITY_FILTERS: FrontierModalityFilter[] = [
   "audio",
 ];
 
+const SPEC_SHEET_ID = "frontier-spec-sheet";
+
 const TIER_FILTERS: FrontierTierFilter[] = [
   "all",
   "budget",
@@ -113,6 +115,12 @@ export function FrontierModelsClient({
     navigate({ ...resolvedState, selectedModelId: id });
   }
 
+  // Provider is the filter most visits use, so it stays in view. Modality and
+  // price tier sit one action away, and open on their own whenever either is
+  // set, so an active filter is never hidden.
+  const hasExtraFilter = resolvedState.modality !== "all" || resolvedState.priceTier !== "all";
+  const [extraFiltersOpen, setExtraFiltersOpen] = useState(hasExtraFilter);
+
   const lead = PROJECT_PRESS[FRONTIER_MODELS_ROUTE].lead;
   const standfirst =
     "A curated table of leading large language models with context windows, pricing, and modality coverage. Side-by-side facts, no marketing.";
@@ -128,6 +136,11 @@ export function FrontierModelsClient({
         title="Frontier Model Tracker"
         standfirst={standfirst}
         meta={dateMeta}
+        action={
+          <a href={`#${SPEC_SHEET_ID}`} className="c97-btn-ghost">
+            Jump to the spec sheet
+          </a>
+        }
         readouts={[
           {
             label: "Models tracked",
@@ -160,7 +173,12 @@ export function FrontierModelsClient({
         </div>
       </Catalog97ProjectHero>
 
-      <section className="c97-band c97-sheet" data-c97-surface="paper" data-seam="torn">
+      <section
+        id={SPEC_SHEET_ID}
+        className="c97-band c97-sheet"
+        data-c97-surface="paper"
+        data-seam="torn"
+      >
         <div className="c97-shell">
           {reviewIsOverdue ? (
             <p
@@ -195,42 +213,54 @@ export function FrontierModelsClient({
                 })
               }
             />
-            <FilterGroup
-              label="Modality"
-              options={MODALITY_FILTERS.map((modality) => ({
-                id: modality,
-                label:
-                  modality === "all"
-                    ? "Any modality"
-                    : FRONTIER_MODALITY_LABELS[modality],
-              }))}
-              value={resolvedState.modality}
-              onChange={(value) =>
-                navigate({
-                  ...resolvedState,
-                  modality: value as FrontierModalityFilter,
-                  selectedModelId: null,
-                })
-              }
-            />
-            <FilterGroup
-              label="Price tier"
-              options={TIER_FILTERS.map((tier) => ({
-                id: tier,
-                label:
-                  tier === "all"
-                    ? "Any tier"
-                    : PRICE_TIER_LABELS[tier as FrontierPriceTier],
-              }))}
-              value={resolvedState.priceTier}
-              onChange={(value) =>
-                navigate({
-                  ...resolvedState,
-                  priceTier: value as FrontierTierFilter,
-                  selectedModelId: null,
-                })
-              }
-            />
+            <details
+              className="c97-disclosure"
+              open={extraFiltersOpen || hasExtraFilter}
+              onToggle={(event) => setExtraFiltersOpen(event.currentTarget.open)}
+            >
+              <summary className="c97-btn-ghost">
+                <span data-when="closed">More filters</span>
+                <span data-when="open">Fewer filters</span>
+              </summary>
+              <div style={{ marginTop: "var(--c97-sp-2)", display: "grid", gap: "var(--c97-sp-3)" }}>
+                <FilterGroup
+                  label="Modality"
+                  options={MODALITY_FILTERS.map((modality) => ({
+                    id: modality,
+                    label:
+                      modality === "all"
+                        ? "Any modality"
+                        : FRONTIER_MODALITY_LABELS[modality],
+                  }))}
+                  value={resolvedState.modality}
+                  onChange={(value) =>
+                    navigate({
+                      ...resolvedState,
+                      modality: value as FrontierModalityFilter,
+                      selectedModelId: null,
+                    })
+                  }
+                />
+                <FilterGroup
+                  label="Price tier"
+                  options={TIER_FILTERS.map((tier) => ({
+                    id: tier,
+                    label:
+                      tier === "all"
+                        ? "Any tier"
+                        : PRICE_TIER_LABELS[tier as FrontierPriceTier],
+                  }))}
+                  value={resolvedState.priceTier}
+                  onChange={(value) =>
+                    navigate({
+                      ...resolvedState,
+                      priceTier: value as FrontierTierFilter,
+                      selectedModelId: null,
+                    })
+                  }
+                />
+              </div>
+            </details>
           </div>
 
           <p className="c97-meta" style={{ marginTop: "var(--c97-sp-4)" }}>

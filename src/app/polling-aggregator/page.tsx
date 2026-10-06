@@ -3,7 +3,7 @@ import { pollingSnapshot } from "@/data/pollingSnapshot";
 import { getPollingSnapshot } from "@/lib/pollingSnapshot";
 import { constructMetadata, generateBreadcrumbStructuredData } from "@/lib/seo";
 import { PollingAggregatorClient } from "./polling-aggregator-client";
-import { describeStaleSource, newestPollDate } from "./polling-aggregator-helpers";
+import { describeStaleSource, isStalePollDate, newestPollDate } from "./polling-aggregator-helpers";
 import { normalizePollingState } from "./polling-aggregator-state";
 
 export const metadata = constructMetadata({
@@ -24,10 +24,14 @@ interface PollingPageProps {
 export default async function PollingAggregatorPage({ searchParams }: PollingPageProps) {
   const initialState = normalizePollingState(await searchParams);
   const snapshot = await getPollingSnapshot();
-  const staleSourceNote = describeStaleSource(
-    newestPollDate(snapshot.approvalPolls),
-    newestPollDate(snapshot.genericBallotPolls)
-  );
+  const approvalDate = newestPollDate(snapshot.approvalPolls);
+  const genericBallotDate = newestPollDate(snapshot.genericBallotPolls);
+  const staleSourceNote = describeStaleSource(approvalDate, genericBallotDate);
+  // The same 14-day rule as the note, kept per series so each average can carry its own.
+  const staleSeries = {
+    approval: isStalePollDate(approvalDate),
+    genericBallot: isStalePollDate(genericBallotDate),
+  };
   const breadcrumbs = [
     { name: "Home", url: "/" },
     { name: "Polling Aggregator", url: "/polling-aggregator" },
@@ -63,6 +67,7 @@ export default async function PollingAggregatorPage({ searchParams }: PollingPag
         initialState={initialState}
         snapshot={snapshot}
         staleSourceNote={staleSourceNote}
+        staleSeries={staleSeries}
       />
     </>
   );

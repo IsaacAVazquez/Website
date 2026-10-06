@@ -286,6 +286,28 @@ describe("TechStartupClient", () => {
     expect(within(detail).queryByText("Round source")).toBeNull();
   });
 
+  it("carries the columns a phone hides into the open row", () => {
+    currentSearchParams = new URLSearchParams("startup=orbit");
+    renderClient();
+
+    const toggle = screen.getByRole("button", { name: "Orbit" });
+    const detail = document.getElementById(toggle.getAttribute("aria-controls") as string) as HTMLElement;
+    expect(within(detail).getByText("Total raised").nextElementSibling).toHaveTextContent("$2B");
+    expect(within(detail).getByText("Late stage")).toBeInTheDocument();
+    expect(within(detail).getByRole("link", { name: "Visit" })).toHaveAttribute(
+      "href",
+      "https://orbit.example.com"
+    );
+  });
+
+  it("prints the filters ahead of the treemap they redraw", () => {
+    renderClient();
+
+    const filters = screen.getByRole("region", { name: "Startup filters" });
+    const treemap = screen.getByRole("img", { name: /The largest is Orbit/ });
+    expect(filters.compareDocumentPosition(treemap) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
+  });
+
   it("drops a startup that is outside the visible segment from the URL", async () => {
     currentSearchParams = new URLSearchParams("segment=sector-fintech&startup=orbit&sort=bogus");
     renderClient();
@@ -307,6 +329,19 @@ describe("TechStartupClient", () => {
       renderClient({ ...SNAPSHOT, verified: false });
       expect(screen.getByRole("status")).toHaveTextContent(/past the review window or still\s+unverified/);
       expect(screen.getByText(/have not been individually verified/)).toBeInTheDocument();
+    });
+
+    it("links the short notice beside the list to the full notice under it", () => {
+      renderClient({ ...SNAPSHOT, verified: false });
+
+      const link = screen.getByRole("link", { name: "Read the full notice" });
+      const notice = document.getElementById(
+        (link.getAttribute("href") as string).slice(1)
+      ) as HTMLElement;
+      expect(within(notice).getByText(/Figures are from public reporting\./)).toBeInTheDocument();
+      expect(within(notice).getByText(/directional research, not current\s+financial facts/)).toBeInTheDocument();
+      // The short line is the only live region, so the full text is not announced twice.
+      expect(within(notice).queryByRole("status")).toBeNull();
     });
 
     it.each([

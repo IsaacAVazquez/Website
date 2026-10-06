@@ -89,6 +89,9 @@ receives changes from other tabs and other hook instances in the same tab.
 - Key: `museum_log_user_state_v1`.
 - Model: a curated museum catalog (snapshot) + the user's `visited` / `watchlist`
   / `liked` id lists persisted locally. Uses the `useState` + `useEffect` flavor.
+  A visit's `rating` is optional, since a quick visit records only the museum
+  and the date, and the validator still drops a visit whose rating is present
+  and invalid.
 
 ### `/recipe-finder` — curated catalog + pantry
 
@@ -104,9 +107,10 @@ receives changes from other tabs and other hook instances in the same tab.
 - Files: `src/lib/travelDeals.ts` (pure engine), `src/types/travelDeals.ts`,
   curated dataset `src/data/travelDealsSnapshot.ts`; client
   `src/app/travel-deals/travel-deal-lab-client.tsx`.
-- Persisted: the trip setup (region, departure date, nights, travelers, budget)
-  and the "applied" tactic ids, under `travel-deals:v1`. The calculators' quick
-  inputs (a quoted fare, a points award) are ephemeral component state.
+- Persisted: the trip setup (region, departure date, nights, travelers, budget),
+  the quoted fare (clamped 0 to 100,000 on read), and the "applied" tactic ids,
+  under `travel-deals:v1`. The points award inputs are ephemeral component
+  state, and the field says so.
 - The engine is framework-free and unit-tested (`src/lib/__tests__/travelDeals.test.ts`):
   booking-window timing, a fare deal-score against a typical band, cents-per-point
   award valuation, and a budget split. It reasons against curated fare bands and a

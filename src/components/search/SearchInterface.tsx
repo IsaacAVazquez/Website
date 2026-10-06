@@ -69,6 +69,8 @@ export function SearchInterface({
 }: SearchInterfaceProps) {
   const router = useRouter();
   const pendingUrlSyncKeyRef = useRef<string | null>(null);
+  const initialSearchKey = getSearchStateKey(initialQuery, initialType, initialCategory);
+  const incomingUrlKeyRef = useRef<string | null>(null);
   const inputRef = useRef<HTMLInputElement>(null);
   const searchControllerRef = useRef<AbortController | null>(null);
   const cancelActiveSearch = useCallback(() => {
@@ -101,13 +103,15 @@ export function SearchInterface({
   useTrackedListingSearch(searchState.query, searchState.totalResults);
 
   useEffect(() => {
+    incomingUrlKeyRef.current = initialSearchKey;
+    // A URL written by this input must not replace text typed since that write.
+    if (pendingUrlSyncKeyRef.current === initialSearchKey) return;
     const nextSeededState = readSeededSearchState({
       query: initialQuery,
       type: initialType,
       category: initialCategory,
     });
 
-    // eslint-disable-next-line react-hooks/set-state-in-effect -- Sync local search state when URL-derived seeded state changes; identity check prevents redundant updates
     setSearchState((prev) => {
       if (
         prev.query === nextSeededState.query &&
@@ -124,7 +128,7 @@ export function SearchInterface({
         category: nextSeededState.category,
       };
     });
-  }, [initialCategory, initialQuery, initialType]);
+  }, [initialCategory, initialQuery, initialType, initialSearchKey]);
 
   // Invalidate the previous request as soon as the input or filters change,
   // including the debounce window, and prevent updates after unmount.
@@ -207,6 +211,12 @@ export function SearchInterface({
 
   // Effect for debounced search
   useEffect(() => {
+    // Incoming topic links and history navigation take priority over the old
+    // local state in this render. The sync above applies them before searching.
+    if (incomingUrlKeyRef.current === initialSearchKey) {
+      incomingUrlKeyRef.current = null;
+      return;
+    }
     if (effectiveQuery !== searchState.query) return;
     if (
       effectiveQuery !== initialQuery ||
@@ -227,6 +237,7 @@ export function SearchInterface({
     initialQuery,
     initialType,
     initialCategory,
+    initialSearchKey,
   ]);
 
   // Initial search if query is provided
@@ -237,6 +248,10 @@ export function SearchInterface({
       pendingUrlSyncKeyRef.current = null;
       return;
     }
+
+    // Wait for incoming URL state to reach the input. Starting earlier would
+    // let the input-change cleanup abort this new request on the next render.
+    if (getSearchStateKey(searchState.query, searchState.type, searchState.category) !== nextSearchKey) return;
 
     if (initialQuery) {
       // eslint-disable-next-line react-hooks/set-state-in-effect -- Initial search when URL provides a query; performSearch updates results/loading state
@@ -253,7 +268,7 @@ export function SearchInterface({
       totalResults: 0,
       searchTime: 0,
     }));
-  }, [performSearch, initialCategory, initialQuery, initialType]);
+  }, [performSearch, initialCategory, initialQuery, initialType, searchState.query, searchState.type, searchState.category]);
 
   const handleQueryChange = (query: string) => {
     cancelActiveSearch();
@@ -300,6 +315,7 @@ export function SearchInterface({
       type: "all",
       category: "all"
     }));
+    inputRef.current?.focus();
   };
 
   const filterActive = showFilters || searchState.type !== "all" || searchState.category !== "all";

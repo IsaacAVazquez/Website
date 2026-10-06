@@ -124,4 +124,18 @@ describe("DecisionLabClient", () => {
     expect((screen.getByLabelText("Impact") as HTMLInputElement).value).toBe("44");
     expect(screen.getByText(/I would hold this for now\./i)).toBeVisible();
   });
+
+  it("puts the four sliders beside the verdict and keeps the calculation ledger below", () => {
+    render(<DecisionLabClient initialState={DEFAULT_DECISION_LAB_STATE} />);
+    const ledger = screen.getByRole("heading", { level: 2, name: "Why this verdict" });
+    const verdict = screen.getByText(/^Score .+ · /);
+
+    for (const label of ["Impact", "Confidence", "Effort", "Reversibility"]) {
+      const slider = screen.getByLabelText(label);
+      expect(verdict.compareDocumentPosition(slider) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
+      expect(slider.compareDocumentPosition(ledger) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
+    }
+    // The ledger still shows each axis's weighted contribution.
+    expect(screen.getByTestId("decision-lab-shell")).toHaveTextContent(/82 × 0\.\d+ = /);
+  });
 });

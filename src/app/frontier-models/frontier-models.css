@@ -1,0 +1,17 @@
+/* Frontier Model Tracker: the spec sheet at phone width. */
+
+/* Under md the sheet prints four columns in a 334px measure, so its cells take
+ * the smaller inline step. Two classes, so the rule outranks `.c97-table td`
+ * whichever stylesheet loads first. */
+@media (max-width: 767px) {
+  .c97-table.c97-frontier-spec :is(th, td) {
+    padding-inline: var(--c97-sp-1);
+  }
+
+  /* At 320px the three figures left the model name 50px, which broke it into
+   * four-character lines. The name keeps this floor, and the sheet's own
+   * scroll region takes the 26px that no longer fits at that width. */
+  .c97-table.c97-frontier-spec :is(th, td):first-child {
+    min-width: 5.75rem;
+  }
+}

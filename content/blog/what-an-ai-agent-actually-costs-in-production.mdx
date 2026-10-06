@@ -2,7 +2,7 @@
 title: "What an AI Agent Actually Costs in Production, From Someone Who Pays the Bills"
 excerpt: "An AI agent makes repeated model calls as it works through a task, so its cost depends on the number of steps, the context carried into each call, and retries. I look at those costs per completed task, along with caching and limits on how long a run can continue."
 publishedAt: "2026-05-14"
-updatedAt: "2026-09-30"
+updatedAt: "2026-10-05"
 category: "Agentic AI"
 tags: ["AI Agents", "AI Costs", "Model Economics", "Agentic AI", "Unit Economics", "Inference Costs", "AI Products", "Token Pricing"]
 featured: false
@@ -22,7 +22,7 @@ The core issue is that an agent is not a request. A chat completion is one model
 
 What I found instrumenting my own workflows is that the distribution of cost across tasks is brutally skewed. The median agent run is cheap and getting cheaper, exactly as the falling token prices promise. The tail is where the money goes. The run that hits a confusing error and retries its way through forty steps, the research task that pulls in ten large documents and then carries them through every subsequent call, the loop that gets stuck and burns its entire step budget before failing. A small fraction of runs routinely accounts for the majority of spend, which means your average cost per task is nearly useless for forecasting and your tail behavior is everything. Budgeting agents on average cost is like budgeting a hospital on the average patient.
 
-### Key takeaways
+## Key takeaways
 
 - **Loops vs. requests**: Chatbots are single requests with bounded token cost; agents are iterative loops where expanding context increases the cost per step.
 - **Tail-skewed economics**: Average cost per task is misleading because median runs are inexpensive, while long, retrying, or stuck loops in the tail drive the majority of the monthly bill.

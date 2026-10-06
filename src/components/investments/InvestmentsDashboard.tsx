@@ -12,7 +12,7 @@ import { StockSearch } from "./StockSearch";
 import { RetirementPlanner } from "./retirement/RetirementPlanner";
 import { useInvestments } from "@/hooks/useInvestments";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
-import type { ResearchTab } from "@/app/investments/investments-state";
+import type { InvestmentsTask, ResearchTab } from "@/app/investments/investments-state";
 import { InstrumentTape, type InstrumentTapeItem } from "@/components/editorial/InstrumentTape";
 import { Catalog97ProjectHero } from "@/components/catalog97/Catalog97ProjectHero";
 import { formatCurrency, formatPercent } from "@/lib/investmentFormatting";
@@ -23,6 +23,9 @@ import type { InvestmentsPriceHealth } from "@/types/investment";
 import styles from "@/app/investments/investments.module.css";
 
 interface Props {
+  /** The workspace printed first, kept in the URL as ?task=. */
+  task?: InvestmentsTask;
+  onTaskChange?: (task: InvestmentsTask) => void;
   researchSymbol: string;
   researchTab: ResearchTab;
   onResearchSymbolChange: (symbol: string) => void;
@@ -43,6 +46,22 @@ interface NavItem {
   pill?: string;
 }
 
+const TASKS: { id: InvestmentsTask; label: string }[] = [
+  { id: "portfolio", label: "Portfolio" },
+  { id: "research", label: "Research" },
+  { id: "retirement", label: "Retirement" },
+];
+
+// The chosen workspace prints first and the other two follow it, so every
+// section link and a print of the page still reach all three. The order of the
+// two that follow keeps the espresso sheets (portfolio and retirement) apart,
+// with the chocolate research sheet or the paper note between them.
+const TASK_ORDER: Record<InvestmentsTask, InvestmentsTask[]> = {
+  portfolio: ["portfolio", "research", "retirement"],
+  research: ["research", "portfolio", "retirement"],
+  retirement: ["retirement", "research", "portfolio"],
+};
+
 // `raw` is the index snapshot's `lastUpdated`, a full instant ("2026-09-15T01:03:45+00:00"),
 // not a bare date. It prints in UTC, the day the build stamped it, which the
 // server and every browser agree on. Unpinned, this was the "Sep 15" (server,
@@ -60,6 +79,8 @@ function formatDatasetDate(raw: string | null | undefined): string {
 }
 
 export function InvestmentsDashboard({
+  task = "portfolio",
+  onTaskChange,
   researchSymbol,
   researchTab,
   onResearchSymbolChange,
@@ -193,31 +214,37 @@ export function InvestmentsDashboard({
     [enhancedHoldings, portfolioSymbols],
   );
 
-  const navItems: NavItem[] = useMemo(
-    () => [
+  // The links follow the page, so they list the chosen workspace's sections
+  // first, in the order TASK_ORDER prints the sheets.
+  const navItems: NavItem[] = useMemo(() => {
+    const sections: Record<InvestmentsTask, NavItem[]> = {
+      portfolio: [
+        { id: "performance", label: "Performance", href: "#performance", icon: ChartLine },
+        { id: "stats", label: "Portfolio stats", href: "#portfolio-stats", icon: Contrast },
+        // The holdings ledger and the allocation chart only render once there is
+        // at least one position, so on an empty portfolio these two jumped to
+        // nothing. That is the exact state a first-time visitor arrives in.
+        ...(enhancedHoldings.length > 0
+          ? ([
+              {
+                id: "holdings",
+                label: "Holdings",
+                href: "#holdings-list",
+                icon: List,
+                pill: String(enhancedHoldings.length),
+              },
+              { id: "allocation", label: "Allocation", href: "#allocation", icon: ChartPie },
+            ] as NavItem[])
+          : []),
+      ],
+      research: [{ id: "research", label: "Research", href: "#research-section", icon: ReceiptText }],
+      retirement: [{ id: "retirement", label: "Retirement", href: "#retirement", icon: PiggyBank }],
+    };
+    return [
       { id: "home", label: "Overview", href: "#hero", icon: House },
-      { id: "performance", label: "Performance", href: "#performance", icon: ChartLine },
-      { id: "stats", label: "Portfolio stats", href: "#portfolio-stats", icon: Contrast },
-      // The holdings ledger and the allocation chart only render once there is
-      // at least one position, so on an empty portfolio these two jumped to
-      // nothing. That is the exact state a first-time visitor arrives in.
-      ...(enhancedHoldings.length > 0
-        ? ([
-            {
-              id: "holdings",
-              label: "Holdings",
-              href: "#holdings-list",
-              icon: List,
-              pill: String(enhancedHoldings.length),
-            },
-            { id: "allocation", label: "Allocation", href: "#allocation", icon: ChartPie },
-          ] as NavItem[])
-        : []),
-      { id: "research", label: "Research", href: "#research-section", icon: ReceiptText },
-      { id: "retirement", label: "Retirement", href: "#retirement", icon: PiggyBank },
-    ],
-    [enhancedHoldings.length],
-  );
+      ...TASK_ORDER[task].flatMap((id) => sections[id]),
+    ];
+  }, [enhancedHoldings.length, task]);
 
   // Marks the section under the upper middle of the viewport as current in
   // both navigations (aria-current). The hero card swaps its target element
@@ -274,44 +301,16 @@ export function InvestmentsDashboard({
     }, 80);
   }
 
-  return (
-    <>
-      <div id="hero">
-        <Catalog97ProjectHero
-          ink="blue"
-          title="Investments"
-          standfirst="I built this to track a portfolio, look into a curated set of companies, and run a retirement plan off the same allocation math. Holdings and plan inputs save only to your browser."
-          meta={`Research data as of ${formatDatasetDate(datasetLastUpdated)} · Market quotes via Finnhub`}
-        >
-          <div data-c97-surface="espresso" className="c97-offset" style={{ padding: "var(--c97-sp-3)" }}>
-            {!isEmpty ? (
-              <InstrumentTape
-                className={styles.quoteTape}
-                label={
-                  <span className={styles.quoteTapeTag}>
-                    {enhancedHoldings.some((h) => h.priceSource === "live")
-                      ? "Live quotes"
-                      : enhancedHoldings.some((h) => h.priceSource === "saved")
-                        ? "Last saved prices"
-                        : "Prices unavailable"}
-                  </span>
-                }
-                items={tapeItems}
-                ariaLabel="Holdings quote tape"
-              />
-            ) : (
-              <p
-                className="c97-mono"
-                style={{ margin: 0, padding: "var(--c97-sp-2) var(--c97-sp-3)", color: "var(--c97-ink-2)" }}
-              >
-                Add a holding below to see live quotes here.
-              </p>
-            )}
-          </div>
-        </Catalog97ProjectHero>
-      </div>
-
-      <section data-c97-surface="espresso" className="c97-band c97-sheet" data-seam="torn">
+  // Keyed, so React moves a sheet when the task changes and keeps its state.
+  const sheets = {
+    portfolio: (
+      <section
+        key="portfolio"
+        data-task="portfolio"
+        data-c97-surface="espresso"
+        className="c97-band c97-sheet"
+        data-seam="torn"
+      >
         {/* The terminal's sidebar, main column, and rail need more than the
             1080px page measure, so /investments is in WIDE_TOOL_ROUTES and
             every shell on the page, this one included, prints wide. */}
@@ -427,7 +426,9 @@ export function InvestmentsDashboard({
           </div>
         ) : null}
 
-        <div className="invest-shell" data-testid="invest-shell">
+        {/* data-empty lets the stylesheet print the add form first on a
+            phone while there is nothing to summarize yet. */}
+        <div className="invest-shell" data-testid="invest-shell" data-empty={isEmpty ? "" : undefined}>
           <aside className="invest-sidebar" aria-label="Investments navigation">
             <nav className="flex flex-col" style={{ gap: "var(--c97-sp-0)" }} aria-label="Section navigation">
               {navItems.map((item) => {
@@ -589,10 +590,13 @@ export function InvestmentsDashboard({
         </div>
         </div>
       </section>
-
-      {/* Research deep-dive — its own sheet below the terminal body. Symbol
-          comes from clicking "Research" on a holding row or the picker below. */}
+    ),
+    // Research deep-dive — its own sheet below the terminal body. Symbol
+    // comes from clicking "Research" on a holding row or the picker below.
+    research: (
       <section
+        key="research"
+        data-task="research"
         ref={researchSectionRef}
         data-c97-surface="chocolate"
         className="c97-band c97-sheet"
@@ -619,8 +623,9 @@ export function InvestmentsDashboard({
           />
         </div>
       </section>
-
-      <div data-c97-surface="paper" className="c97-band c97-band-tight c97-sheet" data-seam="torn">
+    ),
+    note: (
+      <div key="note" data-c97-surface="paper" className="c97-band c97-band-tight c97-sheet" data-seam="torn">
         <div className="c97-shell">
           <p
             role="note"
@@ -633,15 +638,85 @@ export function InvestmentsDashboard({
           </p>
         </div>
       </div>
-
-      {/* Retirement planner — projects whether the portfolio + savings last
-          through retirement, with allocation-derived Monte Carlo. Offers the
-          live portfolio value as a one-click starting balance. */}
-      <section data-c97-surface="espresso" className="c97-band c97-sheet" data-seam="torn">
+    ),
+    // Retirement planner — projects whether the portfolio + savings last
+    // through retirement, with allocation-derived Monte Carlo. Offers the
+    // live portfolio value as a one-click starting balance.
+    retirement: (
+      <section
+        key="retirement"
+        data-task="retirement"
+        data-c97-surface="espresso"
+        className="c97-band c97-sheet"
+        data-seam="torn"
+      >
         <div className="c97-shell">
           <RetirementPlanner portfolioValue={summary.totalValue > 0 ? summary.totalValue : undefined} />
         </div>
       </section>
+    ),
+  };
+  const [first, second, third] = TASK_ORDER[task];
+
+  return (
+    <>
+      <div id="hero">
+        <Catalog97ProjectHero
+          ink="blue"
+          title="Investments"
+          standfirst="I built this to track a portfolio, look into a curated set of companies, and run a retirement plan off the same allocation math. Holdings and plan inputs save only to your browser."
+          meta={`Research data as of ${formatDatasetDate(datasetLastUpdated)} · Market quotes via Finnhub`}
+        >
+          <div
+            data-c97-surface="espresso"
+            className="c97-offset flex flex-col gap-[var(--c97-sp-2)] p-[var(--c97-sp-2)] sm:p-[var(--c97-sp-3)]"
+          >
+            {/* The three jobs this page does. The choice decides which
+                workspace prints first, straight under this sheet. */}
+            <div>
+              <p id="invest-task-label" className="c97-kicker">
+                Start with
+              </p>
+              <div role="group" aria-labelledby="invest-task-label" className="c97-segmented">
+                {TASKS.map((option) => (
+                  <button
+                    key={option.id}
+                    type="button"
+                    aria-pressed={task === option.id}
+                    onClick={() => onTaskChange?.(option.id)}
+                    className="text-sm font-semibold"
+                    style={{ minHeight: 44 }}
+                  >
+                    {option.label}
+                  </button>
+                ))}
+              </div>
+            </div>
+            {!isEmpty ? (
+              <InstrumentTape
+                className={styles.quoteTape}
+                label={
+                  <span className={styles.quoteTapeTag}>
+                    {enhancedHoldings.some((h) => h.priceSource === "live")
+                      ? "Live quotes"
+                      : enhancedHoldings.some((h) => h.priceSource === "saved")
+                        ? "Last saved prices"
+                        : "Prices unavailable"}
+                  </span>
+                }
+                items={tapeItems}
+                ariaLabel="Holdings quote tape"
+              />
+            ) : (
+              <p className="c97-mono" style={{ margin: 0, color: "var(--c97-ink-2)" }}>
+                Add a holding below to see live quotes here.
+              </p>
+            )}
+          </div>
+        </Catalog97ProjectHero>
+      </div>
+
+      {[sheets[first], sheets[second], sheets.note, sheets[third]]}
     </>
   );
 }

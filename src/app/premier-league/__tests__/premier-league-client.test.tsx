@@ -126,6 +126,42 @@ describe("PremierLeagueClient", () => {
 
       expect(screen.getByRole("dialog", { name: `${club.team.name} detail` })).toBeInTheDocument();
     });
+
+    it("opens a club from the lookup under the readouts", async () => {
+      const user = userEvent.setup();
+      const { settle } = renderFollowingPushes();
+      const club = premierLeagueSnapshot.summary.standings[9]!;
+
+      await user.selectOptions(screen.getByRole("combobox", { name: "Find a club" }), club.team.id);
+      // Choosing alone opens nothing, so a keyboard can walk the list.
+      expect(mockPush).not.toHaveBeenCalled();
+      await user.click(screen.getByRole("button", { name: "Open club" }));
+      settle();
+
+      expect(screen.getByRole("dialog", { name: `${club.team.name} detail` })).toBeInTheDocument();
+    });
+
+    it("gives focus back to the ladder marker that opened the drawer", async () => {
+      const user = userEvent.setup();
+      const { settle } = renderFollowingPushes();
+      const club = premierLeagueSnapshot.summary.standings[3]!;
+      // The ladder draws a wide and a narrow chart, and CSS shows one of them.
+      const marker = screen.getAllByRole("button", {
+        name: `Show ${club.team.tla || club.team.shortName} details`,
+      })[0]!;
+
+      // The marker is an SVG group, which is the opener the modal hook used to drop.
+      expect(marker).toBeInstanceOf(SVGElement);
+      marker.focus();
+      await user.keyboard("{Enter}");
+      settle();
+      expect(screen.getByRole("dialog", { name: `${club.team.name} detail` })).toBeInTheDocument();
+
+      await user.keyboard("{Escape}");
+
+      expect(screen.queryByRole("dialog")).not.toBeInTheDocument();
+      expect(marker).toHaveFocus();
+    });
   });
 
   it("canonicalizes invalid query params back to the default route", async () => {

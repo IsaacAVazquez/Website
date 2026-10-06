@@ -18,6 +18,7 @@ export const metadata = constructMetadata({
 interface InvestmentsPageProps {
   searchParams: Promise<{
     view?: string;
+    task?: string;
     symbol?: string;
     section?: string;
   }>;

@@ -1,7 +1,8 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
-import { useSearchParams } from "next/navigation";
+import Link from "next/link";
+import { useRouter, useSearchParams } from "next/navigation";
 import { ArrowDown, ArrowUp, CircleAlert, Clock, Flag, Minus } from "lucide-react";
 import type {
   Formula1ConstructorStanding,
@@ -911,6 +912,7 @@ export function Formula1Client({ initialState, summary, initialMeeting }: Formul
   const [meetingDetailErrors, setMeetingDetailErrors] = useState<Record<string, string>>({});
 
   const pushHref = useRouteSync("/formula-1", desiredHref);
+  const router = useRouter();
 
   function navigate(nextState: Formula1RouteState) {
     const resolvedNextState = resolveFormula1State(nextState, summary);
@@ -1019,6 +1021,14 @@ export function Formula1Client({ initialState, summary, initialMeeting }: Formul
 
   const towerKind: "drivers" | "constructors" = resolvedState.view === "constructors" ? "constructors" : "drivers";
   const towerStandings = towerKind === "constructors" ? summary.constructorStandings : summary.driverStandings;
+  // The hero's controls are links into the season band, since that is where a
+  // view or a race shows its result. The band keeps the real view switch.
+  const seasonHref = (view: Formula1View) =>
+    `${buildFormula1Href(
+      { view, meeting: selectedMeetingKey ?? summary.defaultMeetingKey },
+      searchParams,
+      summary.defaultMeetingKey
+    )}#season`;
 
   return (
     <>
@@ -1027,6 +1037,64 @@ export function Formula1Client({ initialState, summary, initialMeeting }: Formul
         title="Formula 1 Pulse"
         standfirst={standfirst}
         meta={`${summary.sourceLabel} · checked ${formatUpdatedAt(summary.generatedAt)}`}
+        action={
+          <>
+        <div
+          data-c97-surface="paper"
+          className="c97-offset flex flex-col"
+          style={{ gap: "var(--c97-sp-2)", padding: "var(--c97-sp-2)", flex: "1 1 100%", maxWidth: "36rem" }}
+        >
+          <nav aria-label="Season views" className="flex flex-wrap items-center">
+            {FORMULA1_VIEW_OPTIONS.map((view) => {
+              const isCurrent = view === resolvedState.view;
+              return (
+                <Link
+                  key={view}
+                  href={seasonHref(view)}
+                  className="c97-btn-ghost"
+                  aria-current={isCurrent ? "true" : undefined}
+                  // The same ink and heavier rule a pressed ghost button takes.
+                  style={isCurrent ? { color: "var(--c97-ink)", textDecorationThickness: "2px" } : undefined}
+                >
+                  {FORMULA1_VIEW_LABELS[view]}
+                </Link>
+              );
+            })}
+          </nav>
+          {/* It opens on the button and not on the select, because a keyboard
+              walks a closed select one race at a time. */}
+          <form
+            className="flex flex-wrap items-end"
+            style={{ gap: "var(--c97-sp-2)" }}
+            onSubmit={(event) => {
+              event.preventDefault();
+              const meeting = new FormData(event.currentTarget).get("meeting");
+              if (typeof meeting !== "string" || !meeting) return;
+              const href = buildFormula1Href(
+                resolveFormula1State({ view: "calendar", meeting }, summary),
+                searchParams,
+                summary.defaultMeetingKey
+              );
+              router.push(`${href}#race-weekend-detail`);
+            }}
+          >
+            <label className="flex min-w-0 flex-1 flex-col" style={{ gap: "var(--c97-sp-1)" }}>
+              <span className="c97-kicker">Race weekend</span>
+              <select name="meeting" className="c97-field" defaultValue={selectedMeetingKey ?? undefined}>
+                {summary.meetings.map((meeting) => (
+                  <option key={meeting.key} value={meeting.key}>
+                    {meeting.name}
+                  </option>
+                ))}
+              </select>
+            </label>
+            <button type="submit" className="c97-btn">
+              Open race
+            </button>
+          </form>
+        </div>
+          </>
+        }
         readouts={[
           {
             label: "Driver leader",
@@ -1053,7 +1121,11 @@ export function Formula1Client({ initialState, summary, initialMeeting }: Formul
           },
         ]}
       >
-        <TimingTowerSignature standings={towerStandings} kind={towerKind} />
+        <TimingTowerSignature
+          standings={towerStandings}
+          kind={towerKind}
+          fullTableHref={seasonHref(towerKind)}
+        />
       </Catalog97ProjectHero>
 
       <section className="c97-band c97-sheet" data-c97-surface="paper" data-seam="torn">
@@ -1109,7 +1181,7 @@ export function Formula1Client({ initialState, summary, initialMeeting }: Formul
         </div>
       </section>
 
-      <section className="c97-band c97-sheet" data-c97-surface="bone" data-seam="torn">
+      <section id="season" className="c97-band c97-sheet" data-c97-surface="bone" data-seam="torn">
         <div className="c97-shell">
           <h2 className="c97-poster-sm">The season</h2>
 
@@ -1192,11 +1264,15 @@ export function Formula1Client({ initialState, summary, initialMeeting }: Formul
                 />
               </div>
 
-              {selectedMeeting ? (
-                <MeetingDetailPanel meeting={selectedMeeting} />
-              ) : selectedMeetingMeta ? (
-                <MeetingDetailFallback meeting={selectedMeetingMeta} error={selectedMeetingError} />
-              ) : null}
+              {/* Where the hero's race lookup lands, since on a phone this
+                  panel sits under the whole timeline. */}
+              <div id="race-weekend-detail" style={{ scrollMarginTop: "var(--c97-sp-3)" }}>
+                {selectedMeeting ? (
+                  <MeetingDetailPanel meeting={selectedMeeting} />
+                ) : selectedMeetingMeta ? (
+                  <MeetingDetailFallback meeting={selectedMeetingMeta} error={selectedMeetingError} />
+                ) : null}
+              </div>
             </div>
           ) : null}
 

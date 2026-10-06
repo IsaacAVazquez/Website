@@ -46,7 +46,7 @@ function stopRadius(zoom: number, isSelected: boolean, isTransfer: boolean): num
  * The street map. Lines are drawn through BART's own station order with an
  * ink casing under each colour, so red and blue hold up on the washed tiles in
  * either theme. Vector paths can't take keyboard focus, so the chips above and
- * the station list below are the keyboard path to the same selection. Renders
+ * the station search on the board are the keyboard path to the same selection. Renders
  * nothing when Leaflet can't load, which leaves the drawn map underneath.
  */
 export function TransitMap({
@@ -273,7 +273,7 @@ export function TransitMap({
       className="c97-transit-leaflet c97-basemap"
       data-ready={status === "ready" ? "true" : undefined}
       role="application"
-      aria-label="Street map of the BART network. Use the line buttons above and the station list below to move around it with a keyboard."
+      aria-label="Street map of the BART network. Use the line buttons above and the station search on the board to move around it with a keyboard."
     />
   );
 }

@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
 import { Catalog97Shell } from "./Catalog97Shell";
 import { Catalog97Slot } from "./Catalog97Primitives";
@@ -27,9 +27,9 @@ const ALL = "all";
 // Two length-based filters sit between the curated clusters and the topical
 // archive buckets. They are derived from reading time rather than frontmatter,
 // using the same five-minute cut the page uses for its totals.
-const NOTES = "notes";
-const ESSAYS = "essays";
 type SortMode = "newest" | "shortest" | "longest";
+/** Notes run five minutes or under, and essays run longer. */
+type LengthFilter = "any" | "notes" | "essays";
 
 /** The two flat fields the design alternates across the featured pair. */
 const FEATURED_FIELDS = ["ink-vermilion", "ink-peach"] as const;
@@ -87,6 +87,7 @@ export function Catalog97Writing({
   totalEssays,
   totalNotes,
 }: Catalog97WritingProps) {
+  const searchInputRef = useRef<HTMLInputElement>(null);
   /*
     The archive renders 30 rows and offers the rest behind one control.
 
@@ -106,29 +107,31 @@ export function Catalog97Writing({
   const [archiveLimit, setArchiveLimit] = useState(archivePageSize);
   const [query, setQuery] = useState("");
   const [sort, setSort] = useState<SortMode>("newest");
+  const [length, setLength] = useState<LengthFilter>("any");
+  const filtersRef = useRef<HTMLDivElement>(null);
 
   const tabs = useMemo(
     () => [
       { id: ALL, label: "All", count: posts.length },
       ...clusters.map((c) => ({ id: c.id, label: c.label, count: c.count })),
-      { id: NOTES, label: "Notes (short)", count: totalNotes },
-      { id: ESSAYS, label: "Essays (long)", count: totalEssays },
       ...buckets.map((b) => ({ id: b.id, label: b.label, count: b.count })),
     ],
-    [posts.length, clusters, buckets, totalNotes, totalEssays],
+    [posts.length, clusters, buckets],
   );
 
   const filtered = useMemo(() => {
     let matches: BlogPostPreview[];
     if (active === ALL) {
       matches = posts;
-    } else if (active === NOTES) {
-      matches = posts.filter((post) => readingMinutes(post.readingTime) <= 5);
-    } else if (active === ESSAYS) {
-      matches = posts.filter((post) => readingMinutes(post.readingTime) > 5);
     } else {
       matches = posts.filter(
         (post) => post.cluster === active || post.archiveBucket === active,
+      );
+    }
+    // Length is its own control, so it narrows whichever topic is showing.
+    if (length !== "any") {
+      matches = matches.filter(
+        (post) => (readingMinutes(post.readingTime) <= 5) === (length === "notes"),
       );
     }
 
@@ -162,14 +165,24 @@ export function Catalog97Writing({
       }
       return right.publishedAt.localeCompare(left.publishedAt);
     });
-  }, [posts, active, query, sort]);
+  }, [posts, active, query, sort, length]);
 
   // The featured pair only exists on the default view, where it is the two
   // newest pieces from the product clusters. The top two of whatever list was
   // showing featured sports posts by date, the two shortest posts under
   // "Shortest first", and pointed at empty space after a search.
   const isDefaultView =
-    active === ALL && query.trim() === "" && sort === "newest";
+    active === ALL && query.trim() === "" && sort === "newest" && length === "any";
+
+  // The featured band sits above the filters and leaves when a filter goes
+  // on. An engine without scroll anchoring would then slide the controls out
+  // from under the reader, so the controls are brought back into view.
+  const wasDefaultView = useRef(isDefaultView);
+  useEffect(() => {
+    if (wasDefaultView.current === isDefaultView) return;
+    wasDefaultView.current = isDefaultView;
+    filtersRef.current?.scrollIntoView?.({ block: "nearest" });
+  }, [isDefaultView]);
   const featured = isDefaultView
     ? filtered.filter((post) => post.cluster).slice(0, 2)
     : [];
@@ -194,113 +207,6 @@ export function Catalog97Writing({
             Civitech, Juno, and Haas or out of building the tools on this site,
             and the sports writing covers Formula 1, soccer, and fantasy
             football.
-          </p>
-        </div>
-      </section>
-
-      {/* Filter row */}
-      <section
-        className="c97-band c97-band-continues"
-        data-c97-surface="paper"
-        style={{ paddingBottom: "var(--c97-sp-4)" }}
-      >
-        <div
-          className="c97-shell"
-          style={{ display: "grid", gap: "var(--c97-sp-3)" }}
-        >
-          <div
-            style={{
-              display: "grid",
-              gridTemplateColumns:
-                "repeat(auto-fit,minmax(min(100%,240px),1fr))",
-              gap: "var(--c97-sp-2)",
-              alignItems: "end",
-            }}
-          >
-            <label style={{ display: "grid", gap: "var(--c97-sp-1)" }}>
-              <span className="c97-kicker">Search writing</span>
-              <input
-                type="search"
-                value={query}
-                onChange={(event) => {
-                  setQuery(event.target.value);
-                  setArchiveLimit(archivePageSize);
-                }}
-                placeholder="Search writing"
-                className="c97-field"
-              />
-            </label>
-            <label style={{ display: "grid", gap: "var(--c97-sp-1)" }}>
-              <span className="c97-kicker">Sort writing</span>
-              <select
-                value={sort}
-                onChange={(event) => {
-                  setSort(event.target.value as SortMode);
-                  setArchiveLimit(archivePageSize);
-                }}
-                className="c97-field"
-              >
-                <option value="newest">Newest first</option>
-                <option value="shortest">Shortest first</option>
-                <option value="longest">Longest first</option>
-              </select>
-            </label>
-          </div>
-          <div
-            role="group"
-            aria-label="Filter articles"
-            /*
-              Row gap sp-5, not sp-3. `.c97-microlink` hit boxes are 50px tall,
-              and sp-3 clamps to 22px on a phone, which puts wrapped rows 39px
-              apart and overlaps them. This list is the longest of the three
-              filter rows, so it wraps at every width. Keep the two axes separate.
-            */
-            style={{
-              display: "flex",
-              columnGap: "var(--c97-sp-3)",
-              rowGap: "var(--c97-sp-5)",
-              flexWrap: "wrap",
-            }}
-          >
-            {tabs.map((tab) => {
-              const selected = tab.id === active;
-              return (
-                <button
-                  key={tab.id}
-                  type="button"
-                  aria-pressed={selected}
-                  onClick={() => {
-                    setActive(tab.id);
-                    // A new filter is a new list, so it starts at the first page.
-                    setArchiveLimit(archivePageSize);
-                  }}
-                  className="c97-microlink"
-                  style={{
-                    background: "none",
-                    border: 0,
-                    cursor: "pointer",
-                    display: "inline-flex",
-                    alignItems: "baseline",
-                    gap: "var(--c97-sp-1)",
-                    // Unselected buttons take the microlink's label colour
-                    // and its hover.
-                    color: selected ? "var(--c97-ink)" : undefined,
-                    // Pressed is never colour alone; this is .c97-segmented's underline.
-                    textDecoration: selected ? "underline" : "none",
-                    textDecorationThickness: "2px",
-                    textUnderlineOffset: "6px",
-                    textDecorationColor: "var(--c97-accent)",
-                  }}
-                >
-                  <span>{tab.label}</span>
-                  <span className="c97-tabular">{tab.count}</span>
-                </button>
-              );
-            })}
-          </div>
-          {/* Read out when a search or filter changes the list. */}
-          <p className="sr-only" role="status">
-            {filtered.length} of {posts.length} pieces shown
           </p>
         </div>
       </section>
@@ -440,6 +346,150 @@ export function Catalog97Writing({
               {archive.length} {archive.length === 1 ? "piece" : "pieces"}
             </p>
           </div>
+          {/*
+            The filters sit with the list they filter. They were their own band
+            above the featured pair until the 2026-10-05 audit, which measured
+            three stacked controls holding the first featured title at y1216 on
+            a phone.
+          */}
+          <div
+            ref={filtersRef}
+            style={{
+              display: "grid",
+              gap: "var(--c97-sp-3)",
+              marginTop: "var(--c97-sp-4)",
+              scrollMarginTop: "var(--c97-sp-7)",
+            }}
+          >
+            <div
+              style={{
+                display: "grid",
+                gridTemplateColumns:
+                  "repeat(auto-fit,minmax(min(100%,200px),1fr))",
+                gap: "var(--c97-sp-2)",
+                alignItems: "end",
+              }}
+            >
+              <label style={{ display: "grid", gap: "var(--c97-sp-1)" }}>
+                <span className="c97-kicker">Search writing</span>
+                <input
+                  ref={searchInputRef}
+                  type="search"
+                  value={query}
+                  onChange={(event) => {
+                    setQuery(event.target.value);
+                    setArchiveLimit(archivePageSize);
+                  }}
+                  placeholder="Search writing"
+                  className="c97-field"
+                />
+              </label>
+              <label style={{ display: "grid", gap: "var(--c97-sp-1)" }}>
+                <span className="c97-kicker">Sort writing</span>
+                <select
+                  value={sort}
+                  onChange={(event) => {
+                    setSort(event.target.value as SortMode);
+                    setArchiveLimit(archivePageSize);
+                  }}
+                  className="c97-field"
+                >
+                  <option value="newest">Newest first</option>
+                  <option value="shortest">Shortest first</option>
+                  <option value="longest">Longest first</option>
+                </select>
+              </label>
+              <label style={{ display: "grid", gap: "var(--c97-sp-1)" }}>
+                <span className="c97-kicker">Length</span>
+                <select
+                  value={length}
+                  onChange={(event) => {
+                    setLength(event.target.value as LengthFilter);
+                    setArchiveLimit(archivePageSize);
+                  }}
+                  className="c97-field"
+                >
+                  <option value="any">Any length</option>
+                  <option value="notes">Notes, five minutes or under ({totalNotes})</option>
+                  <option value="essays">Essays, over five minutes ({totalEssays})</option>
+                </select>
+              </label>
+            </div>
+            <label className="c97-category-picker">
+              <span className="c97-kicker">Writing category</span>
+              <select
+                name="category"
+                value={active}
+                onChange={(event) => {
+                  setActive(event.target.value);
+                  setArchiveLimit(archivePageSize);
+                }}
+                className="c97-field"
+              >
+                {tabs.map((tab) => (
+                  <option key={tab.id} value={tab.id}>
+                    {tab.label} ({tab.count})
+                  </option>
+                ))}
+              </select>
+            </label>
+            <div
+              className="c97-category-links"
+              role="group"
+              aria-label="Filter articles"
+              /*
+                Row gap sp-5, not sp-3. `.c97-microlink` hit boxes are 50px tall,
+                and sp-3 clamps to 22px on a phone, which puts wrapped rows 39px
+                apart and overlaps them. This list is the longest of the three
+                filter rows, so it wraps at every width. Keep the two axes separate.
+              */
+              style={{
+                columnGap: "var(--c97-sp-3)",
+                rowGap: "var(--c97-sp-5)",
+                flexWrap: "wrap",
+              }}
+            >
+              {tabs.map((tab) => {
+                const selected = tab.id === active;
+                return (
+                  <button
+                    key={tab.id}
+                    type="button"
+                    aria-pressed={selected}
+                    onClick={() => {
+                      setActive(tab.id);
+                      // A new filter is a new list, so it starts at the first page.
+                      setArchiveLimit(archivePageSize);
+                    }}
+                    className="c97-microlink"
+                    style={{
+                      background: "none",
+                      border: 0,
+                      cursor: "pointer",
+                      display: "inline-flex",
+                      alignItems: "baseline",
+                      gap: "var(--c97-sp-1)",
+                      // Unselected buttons take the microlink's label colour
+                      // and its hover.
+                      color: selected ? "var(--c97-ink)" : undefined,
+                      // Pressed is never colour alone; this is .c97-segmented's underline.
+                      textDecoration: selected ? "underline" : "none",
+                      textDecorationThickness: "2px",
+                      textUnderlineOffset: "6px",
+                      textDecorationColor: "var(--c97-accent)",
+                    }}
+                  >
+                    <span>{tab.label}</span>
+                    <span className="c97-tabular">{tab.count}</span>
+                  </button>
+                );
+              })}
+            </div>
+            {/* Read out when a search or filter changes the list. */}
+            <p className="sr-only" role="status">
+              {filtered.length} of {posts.length} pieces shown
+            </p>
+          </div>
 
           {archive.length > 0 ? (
             <div
@@ -505,7 +555,9 @@ export function Catalog97Writing({
                 onClick={() => {
                   setQuery("");
                   setActive(ALL);
+                  setLength("any");
                   setArchiveLimit(archivePageSize);
+                  searchInputRef.current?.focus();
                 }}
               >
                 Clear search

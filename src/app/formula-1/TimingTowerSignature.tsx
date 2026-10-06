@@ -1,6 +1,7 @@
 "use client";
 
 import { useMemo } from "react";
+import Link from "next/link";
 import type { Formula1ConstructorStanding, Formula1DriverStanding } from "@/types/formula1";
 import { timingTower, formatDeficit } from "./timingTower";
 import styles from "./formula-1.module.css";
@@ -10,7 +11,15 @@ type Standing = Formula1DriverStanding | Formula1ConstructorStanding;
 interface TimingTowerSignatureProps {
   standings: Standing[];
   kind: "drivers" | "constructors";
+  /** The full table for this tower, which a phone's shortened tower links to. */
+  fullTableHref: string;
 }
+
+/**
+ * How many rows a phone prints. A tower only a row or two longer prints whole,
+ * so the eleven constructors are never cut to ten.
+ */
+const PHONE_ROWS = 10;
 
 function rowLabel(row: Standing): { name: string; code: string | null } {
   if ("driverName" in row) {
@@ -33,10 +42,12 @@ function movementGlyph(movement: number | null): string {
  * views is active, and drivers otherwise. It is a read-only picture of the
  * standings, pointer- and glance-only; the full driver or constructor list
  * below, in real markup, is the keyboard and screen-reader path to the same
- * numbers.
+ * numbers. A phone prints the top ten and links to that list, so the tower
+ * stays about one screen tall there.
  */
-export function TimingTowerSignature({ standings, kind }: TimingTowerSignatureProps) {
+export function TimingTowerSignature({ standings, kind, fullTableHref }: TimingTowerSignatureProps) {
   const rows = useMemo(() => timingTower(standings), [standings]);
+  const shortOnPhone = rows.length > PHONE_ROWS + 2;
 
   if (rows.length === 0) {
     return <p className="c97-meta">Standings have not published for this season yet.</p>;
@@ -64,12 +75,16 @@ export function TimingTowerSignature({ standings, kind }: TimingTowerSignaturePr
           <span className={styles.towerInterval}>Int</span>
           <span />
         </li>
-        {rows.map((row) => {
+        {rows.map((row, index) => {
           const { name, code } = rowLabel(row);
           return (
             <li
               key={`${row.position}-${name}`}
-              className={styles.towerRow}
+              className={
+                shortOnPhone && index >= PHONE_ROWS
+                  ? `${styles.towerRow} ${styles.towerRowPastPhone}`
+                  : styles.towerRow
+              }
               style={{ borderLeftColor: row.livery ?? "var(--c97-ink-2)" }}
             >
               <span className={`c97-mono ${styles.towerPosition}`}>{row.position}</span>
@@ -91,6 +106,16 @@ export function TimingTowerSignature({ standings, kind }: TimingTowerSignaturePr
           );
         })}
       </ol>
+      {shortOnPhone ? (
+        <p className={styles.towerMore}>
+          <span>
+            Top {PHONE_ROWS} of {rows.length}
+          </span>
+          <Link href={fullTableHref} className="c97-btn-ghost">
+            See all {rows.length} {kind === "drivers" ? "drivers" : "teams"}
+          </Link>
+        </p>
+      ) : null}
     </div>
   );
 }

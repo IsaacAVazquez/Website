@@ -36,6 +36,22 @@ interface Props {
   snapshot: PollingSnapshot;
   /** Written on the server, so the browser's clock cannot change the markup. */
   staleSourceNote?: string | null;
+  /** Which series the note above counts as stale, decided on the server for the same reason. */
+  staleSeries?: { approval: boolean; genericBallot: boolean };
+}
+
+/**
+ * One series' observation date, printed beside its average so the number
+ * carries its date with it. The source note below keeps the full explanation.
+ */
+function SeriesAsOf({ date, stale }: { date: string | null; stale?: boolean }) {
+  if (!date) return null;
+  return (
+    <span className="block">
+      Newest poll {formatDate(date)}
+      {stale ? ", which is more than 14 days old" : ""}
+    </span>
+  );
 }
 
 function PollingMetricCard({ label, value }: { label: string; value: string }) {
@@ -656,7 +672,7 @@ function SeatCountRow({
 
 // ─── Main client component ─────────────────────────────────────────────────────
 
-export function PollingAggregatorClient({ initialState, snapshot, staleSourceNote }: Props) {
+export function PollingAggregatorClient({ initialState, snapshot, staleSourceNote, staleSeries }: Props) {
   const searchParams = useSearchParams();
 
   const hasManagedParams = searchParams.get("view") !== null || searchParams.get("race") !== null;
@@ -716,12 +732,22 @@ export function PollingAggregatorClient({ initialState, snapshot, staleSourceNot
           {
             label: "Approval net",
             value: formatNet(approvalNet),
-            detail: `${snapshot.approvalAvg.approve.toFixed(1)}% approve, ${snapshot.approvalAvg.disapprove.toFixed(1)}% disapprove`,
+            detail: (
+              <>
+                {`${snapshot.approvalAvg.approve.toFixed(1)}% approve, ${snapshot.approvalAvg.disapprove.toFixed(1)}% disapprove`}
+                <SeriesAsOf date={approvalDate} stale={staleSeries?.approval} />
+              </>
+            ),
           },
           {
             label: "Generic ballot margin",
             value: formatMargin(ballotMargin),
-            detail: `D ${snapshot.genericBallotAvg.dem.toFixed(1)}% vs R ${snapshot.genericBallotAvg.rep.toFixed(1)}%`,
+            detail: (
+              <>
+                {`D ${snapshot.genericBallotAvg.dem.toFixed(1)}% vs R ${snapshot.genericBallotAvg.rep.toFixed(1)}%`}
+                <SeriesAsOf date={genericBallotDate} stale={staleSeries?.genericBallot} />
+              </>
+            ),
           },
           {
             label: "Days to election",
@@ -803,6 +829,9 @@ export function PollingAggregatorClient({ initialState, snapshot, staleSourceNot
                   <h3 className="c97-serif c97-h3" style={{ marginTop: "var(--c97-sp-1)" }}>
                     Presidential approval · {snapshot.approvalAvg.approve.toFixed(1)}% avg
                   </h3>
+                  <p className="c97-meta" style={{ marginTop: "var(--c97-sp-1)" }}>
+                    <SeriesAsOf date={approvalDate} stale={staleSeries?.approval} />
+                  </p>
                 </div>
                 <div style={{ marginTop: "var(--c97-sp-2)" }}>
                   <ApprovalPollsTable snapshot={snapshot} />
@@ -815,6 +844,9 @@ export function PollingAggregatorClient({ initialState, snapshot, staleSourceNot
                   <h3 className="c97-serif c97-h3" style={{ marginTop: "var(--c97-sp-1)" }}>
                     Generic ballot · {formatMargin(snapshot.genericBallotAvg.margin)}
                   </h3>
+                  <p className="c97-meta" style={{ marginTop: "var(--c97-sp-1)" }}>
+                    <SeriesAsOf date={genericBallotDate} stale={staleSeries?.genericBallot} />
+                  </p>
                 </div>
                 <div style={{ marginTop: "var(--c97-sp-2)" }}>
                   <GenericBallotPollsTable snapshot={snapshot} />

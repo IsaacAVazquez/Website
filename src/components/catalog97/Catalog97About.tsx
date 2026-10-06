@@ -19,6 +19,61 @@ const principles = [
   },
 ];
 
+/** The year the MBA started. Entries from it onward stay open in the timeline. */
+const HAAS_START_YEAR = 2025;
+
+const timelineListStyle = {
+  listStyle: "none",
+  margin: 0,
+  padding: 0,
+  display: "grid",
+  gap: "var(--c97-sp-3)",
+  marginTop: "var(--c97-sp-3)",
+} as const;
+
+/** One dated row of "The route here". */
+function TimelineRow({ entry }: { entry: (typeof careerTimeline)[number] }) {
+  return (
+    <li
+      style={{
+        display: "grid",
+        gridTemplateColumns: "auto 1fr",
+        gap: "var(--c97-sp-4)",
+        alignItems: "baseline",
+      }}
+    >
+      <div
+        className="c97-serif c97-tabular"
+        style={{
+          fontSize: "var(--c97-fs-body)",
+          color: "var(--c97-ink-2)",
+          minWidth: "5ch",
+        }}
+      >
+        {entry.year}
+      </div>
+      <div>
+        <h3 className="c97-serif c97-h3">{entry.role}</h3>
+        <p
+          className="c97-kicker"
+          style={{ marginTop: "var(--c97-sp-1)" }}
+        >
+          {entry.company}
+        </p>
+        <p
+          className="c97-prose"
+          style={{
+            marginTop: "var(--c97-sp-1)",
+            color: "var(--c97-ink-2)",
+          }}
+        >
+          {entry.description}
+        </p>
+      </div>
+    </li>
+  );
+}
+
 /**
  * About, in the Catalog 97 language.
  *
@@ -36,6 +91,9 @@ export function Catalog97About() {
   // array is chronological, so reversing it also orders same-year entries
   // correctly, which a sort on the year alone did not.
   const timeline = [...careerTimeline].reverse();
+  // Haas and after stay on the page, and the campaign years sit behind a disclosure.
+  const recent = timeline.filter((entry) => entry.year >= HAAS_START_YEAR);
+  const earlier = timeline.filter((entry) => entry.year < HAAS_START_YEAR);
 
   return (
     <Catalog97Shell>
@@ -94,6 +152,23 @@ export function Catalog97About() {
               that I spent six years in campaign data and QA, where a lot of my
               job turned into product work.
             </p>
+            {/* The two exits sit with the biography, so nobody has to read the whole route to find them. */}
+            <div
+              style={{
+                display: "flex",
+                flexWrap: "wrap",
+                gap: "var(--c97-sp-2)",
+                marginTop: "var(--c97-sp-3)",
+                marginBottom: "var(--c97-sp-3)",
+              }}
+            >
+              <Link className="c97-btn c97-btn-invert c97-offset" href="/portfolio">
+                See the work
+              </Link>
+              <Link className="c97-btn-ghost" href="/resume">
+                Résumé
+              </Link>
+            </div>
             <p className="c97-prose" style={{ marginTop: "var(--c97-sp-2)" }}>
               I studied political science and international affairs at Florida
               State and started out in digital and data work for campaigns at
@@ -226,57 +301,31 @@ export function Catalog97About() {
         <div className="c97-shell">
           {/* Same 11px-above-26px inversion as "How I work" above. */}
           <h2 className="c97-poster-sm">The route here</h2>
-          <ol
-            style={{
-              listStyle: "none",
-              margin: 0,
-              padding: 0,
-              display: "grid",
-              gap: "var(--c97-sp-3)",
-              marginTop: "var(--c97-sp-3)",
-            }}
-          >
-            {timeline.map((entry) => (
-              <li
-                key={`${entry.year}-${entry.role}`}
-                style={{
-                  display: "grid",
-                  gridTemplateColumns: "auto 1fr",
-                  gap: "var(--c97-sp-4)",
-                  alignItems: "baseline",
-                }}
-              >
-                <div
-                  className="c97-serif c97-tabular"
-                  style={{
-                    fontSize: "var(--c97-fs-body)",
-                    color: "var(--c97-ink-2)",
-                    minWidth: "5ch",
-                  }}
-                >
-                  {entry.year}
-                </div>
-                <div>
-                  <h3 className="c97-serif c97-h3">{entry.role}</h3>
-                  <p
-                    className="c97-kicker"
-                    style={{ marginTop: "var(--c97-sp-1)" }}
-                  >
-                    {entry.company}
-                  </p>
-                  <p
-                    className="c97-prose"
-                    style={{
-                      marginTop: "var(--c97-sp-1)",
-                      color: "var(--c97-ink-2)",
-                    }}
-                  >
-                    {entry.description}
-                  </p>
-                </div>
-              </li>
+          <ol style={timelineListStyle}>
+            {recent.map((entry) => (
+              <TimelineRow key={`${entry.year}-${entry.role}`} entry={entry} />
             ))}
           </ol>
+          {/*
+            The biography above already tells this chronology once, so the
+            years before Haas fold away and stay one action off. The résumé
+            carries the same entries in full.
+          */}
+          <details className="c97-disclosure" style={{ marginTop: "var(--c97-sp-3)" }}>
+            <summary className="c97-sectionlink">
+              <span data-when="closed">
+                Show the {earlier.length} earlier roles, {earlier[earlier.length - 1].year} to {earlier[0].year}
+              </span>
+              <span data-when="open">
+                Hide the {earlier.length} earlier roles
+              </span>
+            </summary>
+            <ol style={timelineListStyle}>
+              {earlier.map((entry) => (
+                <TimelineRow key={`${entry.year}-${entry.role}`} entry={entry} />
+              ))}
+            </ol>
+          </details>
 
           <div
             style={{
