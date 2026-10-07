@@ -10,6 +10,7 @@ export const MBA_ROLE_FAMILIES = [
   "business-development",
   "analytics",
   "chief-of-staff",
+  "leadership-program",
 ] as const satisfies readonly MBAJobRoleFamily[];
 
 export const MBA_ROLE_FAMILY_LABELS: Record<MBAJobRoleFamily | "all", string> = {
@@ -23,6 +24,7 @@ export const MBA_ROLE_FAMILY_LABELS: Record<MBAJobRoleFamily | "all", string> = 
   "business-development": "Business Development",
   analytics: "Analytics",
   "chief-of-staff": "Chief of Staff",
+  "leadership-program": "Leadership Programs",
 };
 
 export const MBA_ROLE_FAMILY_SEARCH_TERMS: Record<MBAJobRoleFamily, string[]> = {
@@ -149,5 +151,18 @@ export const MBA_ROLE_FAMILY_SEARCH_TERMS: Record<MBAJobRoleFamily, string[]> = 
     "ceo office",
     "founder associate",
     "executive office",
+  ],
+  "leadership-program": [
+    "leadership program",
+    "leadership development program",
+    "rotational program",
+    "rotation program",
+    "mba program",
+    "mba associate",
+    "mba graduate",
+    "mba leadership",
+    "general management program",
+    "management development program",
+    "ldp",
   ],
 };

@@ -4,8 +4,15 @@ import type {
   MBAApplicationPriority,
   MBAApplicationsExportV1,
   MBAApplicationStatus,
+  MBACandidateTriage,
   MBACategory,
+  MBAFitAssessment,
+  MBAInterviewOutcome,
+  MBAInterviewRound,
   MBAJob,
+  MBAJobCandidate,
+  MBAJobCandidatesFileV1,
+  MBAJobSearchTargets,
   MBAApplicationJobSnapshot,
   MBAJobRoleFamily,
   MBAJobRoleType,
@@ -50,6 +57,22 @@ export const MBA_APPLICATION_PRIORITY_LABELS: Record<MBAApplicationPriority, str
 
 const MAX_TEXT_LENGTH = 220;
 const MAX_NOTES_LENGTH = 2_000;
+const MAX_INTERVIEW_ROUNDS = 12;
+const MBA_CANDIDATES_SCHEMA = "mba-candidates";
+const MBA_CANDIDATES_VERSION = 1;
+
+export const MBA_CANDIDATE_TRIAGE = [
+  "sourced",
+  "reviewed",
+  "dismissed",
+] as const satisfies readonly MBACandidateTriage[];
+
+export const MBA_INTERVIEW_OUTCOMES = [
+  "scheduled",
+  "done",
+  "passed",
+  "failed",
+] as const satisfies readonly MBAInterviewOutcome[];
 
 export interface MBAApplicationDraft {
   companyName: string;
@@ -160,15 +183,86 @@ function sanitizeRoleFamilies(value: unknown): MBAJobRoleFamily[] {
   );
 }
 
+function clampScore(value: unknown): number | null {
+  if (typeof value !== "number" || !Number.isFinite(value)) return null;
+  return Math.min(100, Math.max(0, Math.round(value)));
+}
+
+export function sanitizeFit(value: unknown, fallbackTimestamp: string): MBAFitAssessment | null {
+  if (!isRecord(value)) return null;
+  const score = clampScore(value.score);
+  if (score === null) return null;
+  return {
+    score,
+    rationale: cleanLongText(value.rationale),
+    scoredAt: cleanTimestamp(value.scoredAt, fallbackTimestamp),
+  };
+}
+
+function isInterviewOutcome(value: unknown): value is MBAInterviewOutcome {
+  return (
+    typeof value === "string" &&
+    (MBA_INTERVIEW_OUTCOMES as readonly string[]).includes(value)
+  );
+}
+
+export function sanitizeInterviewRounds(value: unknown): MBAInterviewRound[] {
+  if (!Array.isArray(value)) return [];
+  const rounds: MBAInterviewRound[] = [];
+  for (const item of value) {
+    if (!isRecord(item)) continue;
+    const label = cleanText(item.label);
+    if (!label) continue;
+    rounds.push({
+      label,
+      date: cleanIsoDate(item.date),
+      outcome: isInterviewOutcome(item.outcome) ? item.outcome : "scheduled",
+      notes: cleanLongText(item.notes),
+    });
+    if (rounds.length >= MAX_INTERVIEW_ROUNDS) break;
+  }
+  return rounds;
+}
+
+/** A repo-relative folder path: no leading slash, no parent segments, plain characters only. */
+export function cleanRelativePath(value: unknown): string | null {
+  if (typeof value !== "string") return null;
+  const trimmed = value.trim().replace(/\/+$/, "");
+  if (!trimmed || trimmed.length > MAX_TEXT_LENGTH) return null;
+  if (trimmed.startsWith("/") || /(^|\/)\.\.(\/|$)/.test(trimmed)) return null;
+  if (!/^[\w./ -]+$/.test(trimmed)) return null;
+  return trimmed;
+}
+
+function isTriage(value: unknown): value is MBACandidateTriage {
+  return (
+    typeof value === "string" &&
+    (MBA_CANDIDATE_TRIAGE as readonly string[]).includes(value)
+  );
+}
+
 function normalizeApplyUrlForKey(value: string): string {
   return value.trim().replace(/\/+$/, "").toLowerCase();
 }
 
-function buildMBAApplicationMatchKey(application: MBATrackedApplication): string {
+/** One dedupe rule for feed jobs, candidates, and tracked applications. */
+export function buildMBAJobKey(job: Pick<MBAJob, "id" | "applyUrl">): string {
+  const applyUrl = normalizeApplyUrlForKey(job.applyUrl);
+  if (applyUrl) return `url:${applyUrl}`;
+  return `job:${job.id}`;
+}
+
+export function buildMBAApplicationMatchKey(application: MBATrackedApplication): string {
   if (application.jobId) return `job:${application.jobId}`;
   const applyUrl = normalizeApplyUrlForKey(application.jobSnapshot.applyUrl);
   if (applyUrl) return `url:${applyUrl}`;
   return `id:${application.id}`;
+}
+
+function buildApplicationJobKeys(application: MBATrackedApplication): string[] {
+  const keys = [buildMBAJobKey(application.jobSnapshot)];
+  if (application.jobId) keys.push(`job:${application.jobId}`);
+  return keys;
 }
 
 function buildMBAApplicationJobSnapshot(
@@ -203,6 +297,10 @@ export function createMBAApplicationFromJob(
     updatedAt: timestamp,
     appliedAt: status === "applied" ? timestamp : null,
     archivedAt: status === "archived" ? timestamp : null,
+    fit: null,
+    appliedVia: "",
+    materialsDir: null,
+    interviewRounds: [],
   };
 }
 
@@ -248,10 +346,14 @@ export function createManualMBAApplication(
     updatedAt: timestamp,
     appliedAt: status === "applied" ? timestamp : null,
     archivedAt: status === "archived" ? timestamp : null,
+    fit: null,
+    appliedVia: "",
+    materialsDir: null,
+    interviewRounds: [],
   };
 }
 
-function sanitizeJobSnapshot(value: unknown, fallbackTimestamp: string): MBAApplicationJobSnapshot | null {
+export function sanitizeJobSnapshot(value: unknown, fallbackTimestamp: string): MBAApplicationJobSnapshot | null {
   if (!isRecord(value)) return null;
 
   const title = cleanText(value.title);
@@ -304,6 +406,10 @@ function sanitizeTrackedApplication(value: unknown): MBATrackedApplication | nul
     updatedAt,
     appliedAt: value.appliedAt ? cleanTimestamp(value.appliedAt, updatedAt) : null,
     archivedAt: value.archivedAt ? cleanTimestamp(value.archivedAt, updatedAt) : null,
+    fit: sanitizeFit(value.fit, updatedAt),
+    appliedVia: cleanText(value.appliedVia),
+    materialsDir: cleanRelativePath(value.materialsDir),
+    interviewRounds: sanitizeInterviewRounds(value.interviewRounds),
   };
 }
 
@@ -445,6 +551,9 @@ export function buildMBAApplicationsCsv(applications: MBATrackedApplication[]): 
     "Deadline",
     "Contact",
     "Notes",
+    "Fit",
+    "Applied Via",
+    "Materials",
     "Updated At",
   ];
   const rows = applications.map((application) => [
@@ -460,6 +569,9 @@ export function buildMBAApplicationsCsv(applications: MBATrackedApplication[]): 
     application.deadline ?? "",
     application.contact,
     application.notes,
+    application.fit?.score ?? "",
+    application.appliedVia ?? "",
+    application.materialsDir ?? "",
     application.updatedAt,
   ]);
 
@@ -477,7 +589,168 @@ export function buildMBAApplicationSearchText(application: MBATrackedApplication
     application.sourceUrl,
     application.status,
     application.priority,
+    application.appliedVia ?? "",
+    application.fit?.rationale ?? "",
   ]
     .join(" ")
     .toLowerCase();
+}
+
+// ---------------------------------------------------------------------------
+// Candidates and targets (private/job-search/candidates.json, targets.json)
+// ---------------------------------------------------------------------------
+
+function sanitizeCandidate(value: unknown): MBAJobCandidate | null {
+  if (!isRecord(value)) return null;
+  const fallbackTimestamp = new Date().toISOString();
+  const job = sanitizeJobSnapshot(value.job, fallbackTimestamp);
+  if (!job) return null;
+  const updatedAt = cleanTimestamp(value.updatedAt, fallbackTimestamp);
+  return {
+    id: cleanText(value.id, job.id),
+    job,
+    triage: isTriage(value.triage) ? value.triage : "sourced",
+    fit: sanitizeFit(value.fit, updatedAt),
+    sourcedAt: cleanTimestamp(value.sourcedAt, updatedAt),
+    updatedAt,
+  };
+}
+
+export function parseMBAJobCandidates(raw: string | null): MBAJobCandidate[] {
+  if (!raw) return [];
+  try {
+    const parsed = JSON.parse(raw) as unknown;
+    const items = isRecord(parsed) && Array.isArray(parsed.candidates)
+      ? parsed.candidates
+      : Array.isArray(parsed)
+        ? parsed
+        : [];
+    return mergeMBAJobCandidates(
+      [],
+      items
+        .map((item) => sanitizeCandidate(item))
+        .filter((item): item is MBAJobCandidate => item !== null)
+    );
+  } catch {
+    return [];
+  }
+}
+
+export function mergeMBAJobCandidates(
+  existing: MBAJobCandidate[],
+  incoming: MBAJobCandidate[]
+): MBAJobCandidate[] {
+  const merged = new Map<string, MBAJobCandidate>();
+  for (const candidate of [...existing, ...incoming]) {
+    const key = buildMBAJobKey(candidate.job);
+    const current = merged.get(key);
+    merged.set(
+      key,
+      current && new Date(current.updatedAt).getTime() >= new Date(candidate.updatedAt).getTime()
+        ? current
+        : candidate
+    );
+  }
+  return Array.from(merged.values()).sort((left, right) => {
+    const fitDiff = (right.fit?.score ?? -1) - (left.fit?.score ?? -1);
+    if (fitDiff !== 0) return fitDiff;
+    return new Date(right.sourcedAt).getTime() - new Date(left.sourcedAt).getTime();
+  });
+}
+
+export function buildMBAJobCandidatesFile(
+  candidates: MBAJobCandidate[],
+  now = new Date()
+): MBAJobCandidatesFileV1 {
+  return {
+    schema: MBA_CANDIDATES_SCHEMA,
+    version: MBA_CANDIDATES_VERSION,
+    exportedAt: now.toISOString(),
+    candidates,
+  };
+}
+
+export const DEFAULT_MBA_JOB_SEARCH_TARGETS: MBAJobSearchTargets = {
+  roleFamilies: [...MBA_ROLE_FAMILIES],
+  locations: [],
+  excludeTitleTerms: [],
+  companiesAvoid: [],
+  startWindow: "",
+};
+
+function cleanStringList(value: unknown): string[] {
+  if (!Array.isArray(value)) return [];
+  return value
+    .map((item) => cleanText(item))
+    .filter((item) => item.length > 0);
+}
+
+export function parseMBAJobSearchTargets(raw: string | null): MBAJobSearchTargets {
+  if (!raw) return DEFAULT_MBA_JOB_SEARCH_TARGETS;
+  try {
+    const parsed = JSON.parse(raw) as unknown;
+    if (!isRecord(parsed)) return DEFAULT_MBA_JOB_SEARCH_TARGETS;
+    const roleFamilies = sanitizeRoleFamilies(parsed.roleFamilies);
+    return {
+      roleFamilies: roleFamilies.length > 0 ? roleFamilies : [...MBA_ROLE_FAMILIES],
+      locations: cleanStringList(parsed.locations),
+      excludeTitleTerms: cleanStringList(parsed.excludeTitleTerms).map((term) => term.toLowerCase()),
+      companiesAvoid: cleanStringList(parsed.companiesAvoid),
+      startWindow: cleanText(parsed.startWindow),
+    };
+  } catch {
+    return DEFAULT_MBA_JOB_SEARCH_TARGETS;
+  }
+}
+
+function titleHasExcludedTerm(title: string, terms: string[]): boolean {
+  if (terms.length === 0) return false;
+  const padded = ` ${title.toLowerCase().replace(/[^a-z0-9]+/g, " ").trim()} `;
+  return terms.some((term) => padded.includes(` ${term.replace(/[^a-z0-9]+/g, " ").trim()} `));
+}
+
+function matchesLocation(location: string, locations: string[]): boolean {
+  if (locations.length === 0) return true;
+  const haystack = location.toLowerCase();
+  return locations.some((needle) => haystack.includes(needle.toLowerCase()));
+}
+
+/**
+ * Pure selection of feed jobs worth adding to candidates.json: full-time, inside the
+ * targets, and not already a candidate (any triage) or a tracked application.
+ */
+export function selectNewCandidates(
+  jobs: MBAJob[],
+  candidates: MBAJobCandidate[],
+  pipeline: MBATrackedApplication[],
+  targets: MBAJobSearchTargets,
+  now = new Date()
+): MBAJobCandidate[] {
+  const known = new Set<string>();
+  for (const candidate of candidates) known.add(buildMBAJobKey(candidate.job));
+  for (const application of pipeline) {
+    for (const key of buildApplicationJobKeys(application)) known.add(key);
+  }
+  const avoid = new Set(targets.companiesAvoid);
+  const timestamp = now.toISOString();
+  const fresh: MBAJobCandidate[] = [];
+  for (const job of jobs) {
+    if (job.roleType !== "full-time") continue;
+    if (!job.roleFamilies.some((family) => targets.roleFamilies.includes(family))) continue;
+    if (!matchesLocation(job.location, targets.locations)) continue;
+    if (titleHasExcludedTerm(job.title, targets.excludeTitleTerms)) continue;
+    if (avoid.has(job.companyId)) continue;
+    const key = buildMBAJobKey(job);
+    if (known.has(key)) continue;
+    known.add(key);
+    fresh.push({
+      id: job.id,
+      job: { ...job, capturedAt: timestamp, source: "live-feed" },
+      triage: "sourced",
+      fit: null,
+      sourcedAt: timestamp,
+      updatedAt: timestamp,
+    });
+  }
+  return fresh;
 }

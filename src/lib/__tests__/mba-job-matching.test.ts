@@ -39,9 +39,19 @@ describe("matchMBAJobRole", () => {
         snippet: "General management rotational program for MBA candidates.",
       })
     ).toEqual({
-      roleFamilies: [],
-      roleType: "unclear",
+      roleFamilies: ["leadership-program"],
+      roleType: "full-time",
     });
+  });
+
+  it("does not read a summer start date as an internship", () => {
+    const match = matchMBAJobRole({
+      title: "Product Manager, MBA Graduate Program",
+      department: "Product",
+      snippet: "Full-time role starting summer 2027 for graduating MBA students.",
+    });
+    expect(match?.roleType).toBe("full-time");
+    expect(match?.roleFamilies).toContain("product");
   });
 
   it("matches adjacent business roles without requiring MBA in the title", () => {

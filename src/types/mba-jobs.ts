@@ -1,5 +1,5 @@
 // ---------------------------------------------------------------------------
-// MBA Internship Notifications – shared types
+// MBA Job Search tracker – shared types
 // ---------------------------------------------------------------------------
 
 export type MBAATSType =
@@ -12,7 +12,7 @@ export type MBAATSType =
   | "manual";
 export type MBACategory = "big-tech" | "fintech" | "startup";
 export type MBAJobRoleType = "internship" | "full-time" | "unclear";
-export type MBAJobsView = "feed" | "applications";
+export type MBAJobsView = "feed" | "applications" | "candidates";
 export type MBAExternalLeadsState = "off" | "on";
 export type MBAJobRoleFamily =
   | "product"
@@ -23,7 +23,8 @@ export type MBAJobRoleFamily =
   | "finance"
   | "business-development"
   | "analytics"
-  | "chief-of-staff";
+  | "chief-of-staff"
+  | "leadership-program";
 
 export interface MBACompany {
   id: string;
@@ -104,6 +105,22 @@ export interface MBAApplicationJobSnapshot extends MBAJob {
   source: "live-feed" | "manual";
 }
 
+/** A fit reading written by the job-search triage skill. Score is an integer 0 to 100. */
+export interface MBAFitAssessment {
+  score: number;
+  rationale: string;
+  scoredAt: string;
+}
+
+export type MBAInterviewOutcome = "scheduled" | "done" | "passed" | "failed";
+
+export interface MBAInterviewRound {
+  label: string;
+  date: string | null;
+  outcome: MBAInterviewOutcome;
+  notes: string;
+}
+
 export interface MBATrackedApplication {
   id: string;
   jobId: string | null;
@@ -119,6 +136,40 @@ export interface MBATrackedApplication {
   updatedAt: string;
   appliedAt: string | null;
   archivedAt: string | null;
+  /** Optional in the type so older fixtures compile; the sanitizer always emits them. */
+  fit?: MBAFitAssessment | null;
+  appliedVia?: string;
+  /** Repo-relative folder holding the tailored materials, e.g. private/job-search/roles/acme-pm. */
+  materialsDir?: string | null;
+  interviewRounds?: MBAInterviewRound[];
+}
+
+export type MBACandidateTriage = "sourced" | "reviewed" | "dismissed";
+
+/** A sourced role that has not been promoted into the pipeline. Lives in private/job-search/candidates.json. */
+export interface MBAJobCandidate {
+  id: string;
+  job: MBAApplicationJobSnapshot;
+  triage: MBACandidateTriage;
+  fit: MBAFitAssessment | null;
+  sourcedAt: string;
+  updatedAt: string;
+}
+
+export interface MBAJobCandidatesFileV1 {
+  schema: "mba-candidates";
+  version: 1;
+  exportedAt: string;
+  candidates: MBAJobCandidate[];
+}
+
+/** private/job-search/targets.json. Empty arrays mean no filter. */
+export interface MBAJobSearchTargets {
+  roleFamilies: MBAJobRoleFamily[];
+  locations: string[];
+  excludeTitleTerms: string[];
+  companiesAvoid: string[];
+  startWindow: string;
 }
 
 export interface MBAApplicationsExportV1 {

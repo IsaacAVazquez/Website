@@ -26,7 +26,6 @@ const INTERNSHIP_TERMS = [
   "student",
   "graduate intern",
   "mba intern",
-  "summer",
   "co op",
 ] as const;
 
@@ -47,6 +46,9 @@ const MBA_TERMS = [
   "haas",
   "wharton",
   "gsb",
+  "mba associate",
+  "mba graduate",
+  "post mba",
 ] as const;
 
 const BUSINESS_PROGRAM_TERMS = [
