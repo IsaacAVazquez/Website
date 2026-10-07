@@ -363,4 +363,41 @@ describe("useMBAApplications private sync in development", () => {
       [fileRecord.id, result.current.applications.find((a) => a.jobId === job.id)!.id].sort()
     );
   });
+
+  it("keeps a browser delete deleted when the push hits a 409", async () => {
+    const other = createMBAApplicationFromJob(
+      { ...job, id: "ramp-1", companyId: "ramp", companyName: "Ramp", applyUrl: "https://example.com/ramp" },
+      "saved",
+      new Date("2026-10-06T10:00:00.000Z")
+    );
+    let puts = 0;
+    global.fetch = jest.fn((input: RequestInfo | URL, init?: RequestInit) => {
+      if (init?.method === "PUT") {
+        puts += 1;
+        const sent = JSON.parse(String(init.body)) as { items: unknown[] };
+        // The skill touched the file since the pull, so the first push is stale and the
+        // server answers with its copy, which still holds the record deleted here.
+        if (puts === 1) return Promise.resolve(jsonResponse(409, { revision: "150", items: [fileRecord, other] }));
+        return Promise.resolve(jsonResponse(200, { revision: "200", items: sent.items }));
+      }
+      return Promise.resolve(jsonResponse(200, { revision: "100", items: [fileRecord, other] }));
+    }) as unknown as typeof fetch;
+
+    const { result } = renderHook(() => useMBAApplications());
+    await waitFor(() => expect(result.current.applications).toHaveLength(2));
+
+    act(() => {
+      result.current.removeApplication(fileRecord.id);
+    });
+
+    await waitFor(() => expect(puts).toBe(2), { timeout: 2_000 });
+    const retry = (global.fetch as jest.Mock).mock.calls.filter(
+      ([, init]) => (init as RequestInit | undefined)?.method === "PUT"
+    )[1]!;
+    const body = JSON.parse(String((retry[1] as RequestInit).body));
+    expect(body.revision).toBe("150");
+    expect(body.items.map((item: { id: string }) => item.id)).toEqual([other.id]);
+    expect(loadMBAApplications().map((application) => application.id)).toEqual([other.id]);
+    expect(result.current.applications.map((application) => application.id)).toEqual([other.id]);
+  });
 });

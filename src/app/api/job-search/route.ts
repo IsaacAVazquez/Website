@@ -31,6 +31,15 @@ const FILES = {
 
 type FileKey = keyof typeof FILES;
 
+/** Development only, and only from this machine, so `next dev -H 0.0.0.0` or a tunnel never exposes the files. */
+function notFound(request: NextRequest) {
+  if (process.env.NODE_ENV !== "development") return json({ error: "Not found." }, 404);
+  if (!["localhost", "127.0.0.1", "[::1]"].includes(request.nextUrl.hostname)) {
+    return json({ error: "Not found." }, 404);
+  }
+  return null;
+}
+
 function json(body: unknown, status = 200) {
   return NextResponse.json(body, { status, headers: NO_STORE_HEADERS });
 }
@@ -59,14 +68,16 @@ function sanitize(key: FileKey, items: unknown): unknown[] {
 }
 
 export async function GET(request: NextRequest) {
-  if (process.env.NODE_ENV !== "development") return json({ error: "Not found." }, 404);
+  const blocked = notFound(request);
+  if (blocked) return blocked;
   const key = resolveFile(request);
   if (!key) return json({ error: "Expected ?file=pipeline or ?file=candidates." }, 400);
   return json(readCurrent(key));
 }
 
 export async function PUT(request: NextRequest) {
-  if (process.env.NODE_ENV !== "development") return json({ error: "Not found." }, 404);
+  const blocked = notFound(request);
+  if (blocked) return blocked;
   const key = resolveFile(request);
   if (!key) return json({ error: "Expected ?file=pipeline or ?file=candidates." }, 400);
 

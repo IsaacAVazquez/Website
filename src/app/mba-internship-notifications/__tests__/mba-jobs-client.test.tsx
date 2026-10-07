@@ -181,6 +181,7 @@ describe("MBAJobsClient", () => {
 
     const toggle = screen.getByRole("group", { name: "Job tracker view" });
     expect(within(toggle).queryByRole("button", { name: "Candidates" })).not.toBeInTheDocument();
+    expect(within(toggle).getByRole("button", { name: "Role feed", pressed: true })).toBeVisible();
     expect(screen.getByTestId("live-jobs-grid")).toBeInTheDocument();
     expect(screen.queryByTestId("candidates-grid")).not.toBeInTheDocument();
   });
@@ -243,7 +244,7 @@ describe("MBAJobsClient", () => {
     expect(screen.getByRole("button", { name: "Copy path" })).toBeVisible();
     expect(within(screen.getByRole("list", { name: "Interview rounds" })).getByText(/Recruiter screen/)).toBeVisible();
     expect(screen.getByRole("status", { name: "" })).toHaveTextContent(
-      /Synced with private\/job-search\/pipeline\.json, last pull/
+      /Synced with private\/job-search\/pipeline\.json, last sync/
     );
     expect(screen.getByRole("button", { name: "By fit", pressed: false })).toBeVisible();
   });

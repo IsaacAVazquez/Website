@@ -1,3 +1,5 @@
+import { MBA_COMPANIES } from "@/constants/mba-companies";
+
 export interface CaseStudyData {
   slug: string;
   title: string;
@@ -461,7 +463,7 @@ export const caseStudiesData: Record<string, CaseStudyData> = {
     role: "Full-Stack Developer & Designer",
     timeline: "2026",
     tools: ["Next.js", "TypeScript", "Job board parsing", "Notification UX"],
-    metrics: "59 companies · 48 live boards · Fit scores and pipeline",
+    metrics: `${MBA_COMPANIES.length} companies · ${MBA_COMPANIES.filter((company) => company.atsType !== "manual").length} live boards · Fit scores and pipeline`,
     github: "https://github.com/IsaacAVazquez",
     link: "/mba-internship-notifications",
     featured: false,

@@ -28,12 +28,12 @@ const job: MBAJob = {
 const application = createMBAApplicationFromJob(job, "saved", new Date("2026-10-07T12:00:00.000Z"));
 
 function get(file: string) {
-  return GET(new NextRequest(`https://isaacvazquez.com/api/job-search?file=${file}`));
+  return GET(new NextRequest(`http://localhost:3000/api/job-search?file=${file}`));
 }
 
 function put(file: string, body: unknown) {
   return PUT(
-    new NextRequest(`https://isaacvazquez.com/api/job-search?file=${file}`, {
+    new NextRequest(`http://localhost:3000/api/job-search?file=${file}`, {
       method: "PUT",
       body: JSON.stringify(body),
       headers: { "Content-Type": "application/json" },
@@ -72,6 +72,11 @@ describe("/api/job-search in development", () => {
     restoreEnv.restore();
     jest.restoreAllMocks();
     fs.rmSync(tmpDir, { recursive: true, force: true });
+  });
+
+  it("answers 404 to a request that did not come from this machine", async () => {
+    const response = await GET(new NextRequest("http://192.168.1.20:3000/api/job-search?file=pipeline"));
+    expect(response.status).toBe(404);
   });
 
   it("rejects an unknown file", async () => {

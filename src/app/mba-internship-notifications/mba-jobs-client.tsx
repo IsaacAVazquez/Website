@@ -1897,7 +1897,8 @@ export function MBAJobsClient({
     privateSync,
   } = useMBAApplications();
   const candidates = useMBAJobCandidates();
-  const showCandidates = uiState.view === "candidates" && candidates.enabled;
+  // A shared ?view=candidates link falls back to the feed where candidates are off.
+  const view = uiState.view === "candidates" && !candidates.enabled ? "feed" : uiState.view;
   const applicationTodayKey = getTodayDateKey();
   const applicationInsights = useMemo(
     () => summarizeApplicationPipeline(applications, applicationTodayKey),
@@ -2037,9 +2038,15 @@ export function MBAJobsClient({
     const followUpDate = form.followUpDate.trim() || null;
     const deadline = form.deadline.trim() || null;
     const now = new Date().toISOString();
-    const fit = form.fitScore.trim()
-      ? sanitizeFit({ score: Number(form.fitScore), rationale: form.fitRationale.trim(), scoredAt: now }, now)
-      : null;
+    const scoreText = form.fitScore.trim();
+    const rationale = form.fitRationale.trim();
+    const existingFit = application?.fit ?? null;
+    // An unchanged score and rationale keep the skill's scoredAt; an unreadable score keeps the old fit.
+    const fit = !scoreText
+      ? null
+      : existingFit && String(existingFit.score) === scoreText && existingFit.rationale === rationale
+        ? existingFit
+        : sanitizeFit({ score: Number(scoreText), rationale, scoredAt: now }, now) ?? existingFit;
     const appliedVia = form.appliedVia.trim();
     const materialsDir = form.materialsDir.trim() || null;
 
@@ -2141,7 +2148,7 @@ export function MBAJobsClient({
         meta={refreshLabel}
         // The hero fills a phone's first screen, so one link goes straight to the search.
         action={
-          uiState.view === "applications" ? undefined : (
+          view === "applications" ? undefined : (
             <a href="#mba-role-tracker-filters-heading" className="c97-btn-ghost">
               Search roles
             </a>
@@ -2218,41 +2225,42 @@ export function MBAJobsClient({
           </div>
 
           <div role="group" aria-label="Job tracker view" className="c97-segmented">
-            {VIEW_OPTIONS.filter((view) => view !== "candidates" || candidates.enabled).map((view) => (
+            {VIEW_OPTIONS.filter((option) => option !== "candidates" || candidates.enabled).map((option) => (
               <button
                 type="button"
-                key={view}
-                aria-pressed={uiState.view === view}
-                onClick={() => updateRouteState({ view })}
+                key={option}
+                aria-pressed={view === option}
+                onClick={() => updateRouteState({ view: option })}
                 style={{ minHeight: 44 }}
               >
-                {VIEW_LABELS[view]}
+                {VIEW_LABELS[option]}
               </button>
             ))}
           </div>
-          {privateSync && uiState.view === "applications" && (
+          {privateSync && view === "applications" && (
             <p className="c97-meta" style={{ margin: 0 }} role="status">
               {privateSync.error
                 ? `The private sync hit a problem. ${privateSync.error}`
                 : privateSync.lastSyncedAt
-                  ? `Synced with private/job-search/pipeline.json, last pull ${formatFetchedAt(new Date(privateSync.lastSyncedAt))}.`
+                  ? `Synced with private/job-search/pipeline.json, last sync ${formatFetchedAt(new Date(privateSync.lastSyncedAt))}.`
                   : "Syncing with private/job-search/pipeline.json, no pull has finished yet."}
             </p>
           )}
         </div>
       </section>
 
-      {showCandidates ? (
+      {view === "candidates" ? (
         <CandidatesView
           candidates={candidates.candidates}
           onPromote={(candidate) => {
-            trackJob(candidate.job);
+            const tracked = trackJob(candidate.job);
+            if (tracked && candidate.fit) updateApplication(tracked.id, { fit: candidate.fit });
             candidates.removeCandidate(candidate.id);
           }}
           onDismiss={(id) => candidates.setTriage(id, "dismissed")}
           onRestore={(id) => candidates.setTriage(id, "reviewed")}
         />
-      ) : uiState.view === "applications" ? (
+      ) : view === "applications" ? (
         <>
           <ApplicationPipeline
             applications={applications}

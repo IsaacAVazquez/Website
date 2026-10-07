@@ -53,7 +53,7 @@ A plain object with no wrapper, read by `parseMBAJobSearchTargets`, which falls 
 | Field | Type | Meaning |
 | --- | --- | --- |
 | `roleFamilies` | array of role family ids | Empty means all |
-| `locations` | array of strings | Case-insensitive substring match on the posting's location; empty means any |
+| `locations` | array of strings | Case-insensitive whole-word match on the posting's location, so `CA` does not match `Canada` and `SF` does not match `San Francisco`; empty means any |
 | `excludeTitleTerms` | array of strings | Whole-token match, so `chief` does not remove `chief of staff` |
 | `companiesAvoid` | array of company ids | Matched against `companyId` |
 | `startWindow` | string | Free text read by the skills for the fit score's timing component; the code ignores it |

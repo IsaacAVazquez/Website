@@ -150,7 +150,7 @@ export function useMBAApplications() {
           application.id === existing.id ? updated : application
         );
       });
-      return tracked;
+      return tracked as MBATrackedApplication | null;
     },
     []
   );
@@ -363,14 +363,24 @@ export function usePrivatePipelineSync(storedSnapshot: string): MBAPrivateSyncSt
   const readyRef = useRef(false);
   const pulledSnapshotRef = useRef<string | null>(null);
   const pushTimerRef = useRef<number | null>(null);
+  // Ids the server is known to hold. A record in here that is gone from
+  // localStorage was deleted in this browser, so a pull or a 409 must not
+  // merge it back. Reset to the server's list after every successful push.
+  const serverIdsRef = useRef(new Set<string>());
 
   // Merges server items into localStorage. Returns the merged list and whether
   // it holds anything the server does not, which is the signal to push.
   const absorb = useCallback((items: unknown[]) => {
+    const local = loadMBAApplications();
+    const localIds = new Set(local.map((application) => application.id));
     const server = applicationsFromServer(items);
-    const merged = mergeMBAApplications(loadMBAApplications(), server);
+    const kept = server.filter(
+      (application) => localIds.has(application.id) || !serverIdsRef.current.has(application.id)
+    );
+    for (const application of server) serverIdsRef.current.add(application.id);
+    const merged = mergeMBAApplications(local, kept);
     const next = JSON.stringify(merged);
-    if (next !== JSON.stringify(loadMBAApplications())) {
+    if (next !== JSON.stringify(local)) {
       pulledSnapshotRef.current = next;
       saveMBAApplications(merged);
     }
@@ -387,7 +397,9 @@ export function usePrivatePipelineSync(storedSnapshot: string): MBAPrivateSyncSt
         response = await putJson("pipeline", current.revision, merged);
       }
       if (!response.ok) throw new Error(`Sync write failed (${response.status}).`);
-      revisionRef.current = (await readPayload(response)).revision;
+      const saved = await readPayload(response);
+      revisionRef.current = saved.revision;
+      serverIdsRef.current = new Set(applicationsFromServer(saved.items).map((application) => application.id));
       setState({ lastSyncedAt: new Date().toISOString(), error: null });
     } catch (error) {
       setState((prev) => ({ ...prev, error: error instanceof Error ? error.message : String(error) }));

@@ -270,7 +270,8 @@ export default function ApplicationEditDialog({
                 onChange={(event) =>
                   setForm((current) => ({ ...current, fitRationale: event.target.value }))
                 }
-                className="c97-field min-h-20 resize-y"
+                rows={4}
+                className="c97-field resize-y"
               />
             </FormField>
           </div>
