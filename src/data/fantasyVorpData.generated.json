@@ -1,11 +1,11 @@
 {
-  "generatedAt": "2026-10-06T21:42:14.446Z",
+  "generatedAt": "2026-10-07T22:03:22.814Z",
   "data": {
     "PPR": {
       "10": {
         "season": 2026,
         "sourceUrl": "https://www.fantasypros.com/nfl/rankings/ppr-vorp.php?team_size=10",
-        "accessedAt": "2026-10-06T21:42:15.368Z",
+        "accessedAt": "2026-10-07T22:03:23.302Z",
         "players": [
           {
             "playerId": "fp-22968",
@@ -3862,7 +3862,7 @@
           {
             "playerId": "fp-23682",
             "name": "Devin Neal",
-            "team": "MIN",
+            "team": "FA",
             "position": "RB",
             "positionRank": 130,
             "rank": 429,
@@ -3970,7 +3970,7 @@
           {
             "playerId": "fp-25627",
             "name": "Xavier Smith",
-            "team": "FA",
+            "team": "SF",
             "position": "WR",
             "positionRank": 149,
             "rank": 441,
@@ -4051,7 +4051,7 @@
           {
             "playerId": "fp-12127",
             "name": "Odell Beckham Jr.",
-            "team": "FA",
+            "team": "MIN",
             "position": "WR",
             "positionRank": 153,
             "rank": 450,
@@ -5367,7 +5367,7 @@
       "12": {
         "season": 2026,
         "sourceUrl": "https://www.fantasypros.com/nfl/rankings/ppr-vorp.php",
-        "accessedAt": "2026-10-06T21:42:15.862Z",
+        "accessedAt": "2026-10-07T22:03:24.006Z",
         "players": [
           {
             "playerId": "fp-22968",
@@ -8792,7 +8792,7 @@
           {
             "playerId": "fp-23682",
             "name": "Devin Neal",
-            "team": "MIN",
+            "team": "FA",
             "position": "RB",
             "positionRank": 130,
             "rank": 381,
@@ -9170,7 +9170,7 @@
           {
             "playerId": "fp-25627",
             "name": "Xavier Smith",
-            "team": "FA",
+            "team": "SF",
             "position": "WR",
             "positionRank": 149,
             "rank": 423,
@@ -9233,7 +9233,7 @@
           {
             "playerId": "fp-12127",
             "name": "Odell Beckham Jr.",
-            "team": "FA",
+            "team": "MIN",
             "position": "WR",
             "positionRank": 153,
             "rank": 430,
@@ -10729,7 +10729,7 @@
       "14": {
         "season": 2026,
         "sourceUrl": "https://www.fantasypros.com/nfl/rankings/ppr-vorp.php?team_size=14",
-        "accessedAt": "2026-10-06T21:42:16.365Z",
+        "accessedAt": "2026-10-07T22:03:25.142Z",
         "players": [
           {
             "playerId": "fp-22968",
@@ -14064,7 +14064,7 @@
           {
             "playerId": "fp-23682",
             "name": "Devin Neal",
-            "team": "MIN",
+            "team": "FA",
             "position": "RB",
             "positionRank": 130,
             "rank": 371,
@@ -14595,7 +14595,7 @@
           {
             "playerId": "fp-25627",
             "name": "Xavier Smith",
-            "team": "FA",
+            "team": "SF",
             "position": "WR",
             "positionRank": 149,
             "rank": 430,
@@ -14658,7 +14658,7 @@
           {
             "playerId": "fp-12127",
             "name": "Odell Beckham Jr.",
-            "team": "FA",
+            "team": "MIN",
             "position": "WR",
             "positionRank": 153,
             "rank": 437,
@@ -16093,7 +16093,7 @@
       "10": {
         "season": 2026,
         "sourceUrl": "https://www.fantasypros.com/nfl/rankings/half-ppr-vorp.php?team_size=10",
-        "accessedAt": "2026-10-06T21:42:17.245Z",
+        "accessedAt": "2026-10-07T22:03:26.133Z",
         "players": [
           {
             "playerId": "fp-22968",
@@ -19581,7 +19581,7 @@
           {
             "playerId": "fp-23682",
             "name": "Devin Neal",
-            "team": "MIN",
+            "team": "FA",
             "position": "RB",
             "positionRank": 130,
             "rank": 388,
@@ -20301,7 +20301,7 @@
           {
             "playerId": "fp-25627",
             "name": "Xavier Smith",
-            "team": "FA",
+            "team": "SF",
             "position": "WR",
             "positionRank": 150,
             "rank": 468,
@@ -20364,7 +20364,7 @@
           {
             "playerId": "fp-12127",
             "name": "Odell Beckham Jr.",
-            "team": "FA",
+            "team": "MIN",
             "position": "WR",
             "positionRank": 155,
             "rank": 475,
@@ -21455,7 +21455,7 @@
       "12": {
         "season": 2026,
         "sourceUrl": "https://www.fantasypros.com/nfl/rankings/half-ppr-vorp.php",
-        "accessedAt": "2026-10-06T21:42:17.645Z",
+        "accessedAt": "2026-10-07T22:03:26.424Z",
         "players": [
           {
             "playerId": "fp-22968",
@@ -25051,7 +25051,7 @@
           {
             "playerId": "fp-23682",
             "name": "Devin Neal",
-            "team": "MIN",
+            "team": "FA",
             "position": "RB",
             "positionRank": 130,
             "rank": 400,
@@ -25285,7 +25285,7 @@
           {
             "playerId": "fp-25627",
             "name": "Xavier Smith",
-            "team": "FA",
+            "team": "SF",
             "position": "WR",
             "positionRank": 150,
             "rank": 426,
@@ -25339,7 +25339,7 @@
           {
             "playerId": "fp-12127",
             "name": "Odell Beckham Jr.",
-            "team": "FA",
+            "team": "MIN",
             "position": "WR",
             "positionRank": 155,
             "rank": 432,
@@ -26817,7 +26817,7 @@
       "14": {
         "season": 2026,
         "sourceUrl": "https://www.fantasypros.com/nfl/rankings/half-ppr-vorp.php?team_size=14",
-        "accessedAt": "2026-10-06T21:42:18.083Z",
+        "accessedAt": "2026-10-07T22:03:27.021Z",
         "players": [
           {
             "playerId": "fp-22968",
@@ -30098,7 +30098,7 @@
           {
             "playerId": "fp-23682",
             "name": "Devin Neal",
-            "team": "MIN",
+            "team": "FA",
             "position": "RB",
             "positionRank": 130,
             "rank": 365,
@@ -30674,7 +30674,7 @@
           {
             "playerId": "fp-25627",
             "name": "Xavier Smith",
-            "team": "FA",
+            "team": "SF",
             "position": "WR",
             "positionRank": 150,
             "rank": 429,
@@ -30719,7 +30719,7 @@
           {
             "playerId": "fp-12127",
             "name": "Odell Beckham Jr.",
-            "team": "FA",
+            "team": "MIN",
             "position": "WR",
             "positionRank": 155,
             "rank": 434,
@@ -32181,7 +32181,7 @@
       "10": {
         "season": 2026,
         "sourceUrl": "https://www.fantasypros.com/nfl/rankings/vorp.php?team_size=10",
-        "accessedAt": "2026-10-06T21:42:18.727Z",
+        "accessedAt": "2026-10-07T22:03:27.646Z",
         "players": [
           {
             "playerId": "fp-22968",
@@ -35912,7 +35912,7 @@
           {
             "playerId": "fp-23682",
             "name": "Devin Neal",
-            "team": "MIN",
+            "team": "FA",
             "position": "RB",
             "positionRank": 130,
             "rank": 415,
@@ -36281,7 +36281,7 @@
           {
             "playerId": "fp-25627",
             "name": "Xavier Smith",
-            "team": "FA",
+            "team": "SF",
             "position": "WR",
             "positionRank": 149,
             "rank": 456,
@@ -36362,7 +36362,7 @@
           {
             "playerId": "fp-12127",
             "name": "Odell Beckham Jr.",
-            "team": "FA",
+            "team": "MIN",
             "position": "WR",
             "positionRank": 155,
             "rank": 465,
@@ -37543,7 +37543,7 @@
       "12": {
         "season": 2026,
         "sourceUrl": "https://www.fantasypros.com/nfl/rankings/vorp.php",
-        "accessedAt": "2026-10-06T21:42:19.168Z",
+        "accessedAt": "2026-10-07T22:03:28.427Z",
         "players": [
           {
             "playerId": "fp-22968",
@@ -41211,7 +41211,7 @@
           {
             "playerId": "fp-23682",
             "name": "Devin Neal",
-            "team": "MIN",
+            "team": "FA",
             "position": "RB",
             "positionRank": 130,
             "rank": 408,
@@ -41670,7 +41670,7 @@
           {
             "playerId": "fp-25627",
             "name": "Xavier Smith",
-            "team": "FA",
+            "team": "SF",
             "position": "WR",
             "positionRank": 149,
             "rank": 459,
@@ -41751,7 +41751,7 @@
           {
             "playerId": "fp-12127",
             "name": "Odell Beckham Jr.",
-            "team": "FA",
+            "team": "MIN",
             "position": "WR",
             "positionRank": 155,
             "rank": 468,
@@ -42905,7 +42905,7 @@
       "14": {
         "season": 2026,
         "sourceUrl": "https://www.fantasypros.com/nfl/rankings/vorp.php?team_size=14",
-        "accessedAt": "2026-10-06T21:42:19.647Z",
+        "accessedAt": "2026-10-07T22:03:28.827Z",
         "players": [
           {
             "playerId": "fp-22968",
@@ -46312,7 +46312,7 @@
           {
             "playerId": "fp-23682",
             "name": "Devin Neal",
-            "team": "MIN",
+            "team": "FA",
             "position": "RB",
             "positionRank": 130,
             "rank": 379,
@@ -46735,7 +46735,7 @@
           {
             "playerId": "fp-25627",
             "name": "Xavier Smith",
-            "team": "FA",
+            "team": "SF",
             "position": "WR",
             "positionRank": 149,
             "rank": 426,
@@ -46798,7 +46798,7 @@
           {
             "playerId": "fp-12127",
             "name": "Odell Beckham Jr.",
-            "team": "FA",
+            "team": "MIN",
             "position": "WR",
             "positionRank": 155,
             "rank": 433,
