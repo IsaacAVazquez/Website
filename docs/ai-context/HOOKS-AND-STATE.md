@@ -116,7 +116,7 @@ Owns job fetch state against `/api/mba-jobs`, plus browser-local persistence for
 
 ### `useMBAApplications`
 
-Owns browser-local application status tracking layered onto the same surface.
+Owns browser-local application status tracking layered onto the same surface. In development it also syncs localStorage with `private/job-search/pipeline.json` through `/api/job-search` (pull on focus and every 30 s, push after a local edit, newer `updatedAt` wins) and exposes that as `privateSync`, which is `null` in production. `useMBAJobCandidates` in the same file reads and writes `candidates.json` the same way and reports `enabled: false` outside development. See `docs/JOB_SEARCH_PRIVATE_DATA.md`.
 
 ---
 

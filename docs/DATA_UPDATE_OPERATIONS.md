@@ -95,6 +95,10 @@ source of truth. See the lane description in `../SNAPSHOT_DRIVEN_DASHBOARDS.md`.
 
 ---
 
+## Job search candidates (manual, local only)
+
+`./node_modules/.bin/tsx --env-file-if-exists=.env.local scripts/jobSearch/dumpCandidates.ts [inbox.json ...]` pulls the same boards `/api/mba-jobs` polls, keeps the full-time matches inside `private/job-search/targets.json`, drops anything already in `candidates.json` or `pipeline.json`, merges any inbox files a browser-sourcing session wrote, and rewrites `candidates.json`. It has no workflow and never runs in CI, because the folder is gitignored personal data. The job-search skills call it; the contract is in `docs/JOB_SEARCH_PRIVATE_DATA.md`.
+
 ## Freshness targets
 
 `src/lib/dataFreshnessPolicy.ts` holds one target per surface, and

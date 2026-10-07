@@ -152,6 +152,7 @@ Confirm live API routes from `src/app/api/**/route.ts`. Current routes:
 - `/api/golf/players/[playerId]`
 - `/api/investments/quotes`
 - `/api/la-liga/teams/[teamId]`
+- `/api/job-search` (development only, 404 in production; reads and writes the gitignored `private/job-search/` files for the local tracker)
 - `/api/mba-jobs` and `/api/mba-jobs/email`
 - `/api/mlb/teams/[teamId]`
 - `/api/nba/teams/[teamId]`
