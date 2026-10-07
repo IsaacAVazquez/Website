@@ -39,7 +39,7 @@ secondary authority-building content — not a generic blog template. The surfac
 5. **Experimental dashboards** — ~20 standalone data tools (sports, civic, space,
    news, markets); see the Route Map in `AGENTS.md`
 6. **Fintech tools** — calculators under `/fintech-tools/*`
-7. **MBA internship tracker** — `/mba-internship-notifications`
+7. **Full-time job search tracker** — `/mba-internship-notifications`
 8. **Personal-interest tools** — browser-persisted (`/travel`, `/food-map`,
    `/recipe-finder`, `/wine-cellar`, `/museum-log`)
 

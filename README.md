@@ -32,7 +32,7 @@ The site is portfolio-first. `Writing` is live and promoted in the global header
 | Theme | `next-themes` |
 | Content | `gray-matter`, `remark`, `remark-gfm`, `remark-rehype`, `rehype-sanitize`, `rehype-stringify` |
 | Data | Version-controlled snapshots for repeatable builds, request-time USGS and BART overlays, and Netlify Blobs for runtime last-good caches. |
-| Email | Resend (MBA internship digest) |
+| Email | Resend (job search digest) |
 | Tests | Jest, Playwright |
 | Deploy | Netlify + `@netlify/plugin-nextjs` |
 
@@ -81,7 +81,7 @@ The site is portfolio-first. `Writing` is live and promoted in the global header
 | `/polling-aggregator` | Political polling aggregator |
 | `/decision-lab` | Decision-modeling sandbox |
 | `/enablement-assistant` | Automation platform enablement assistant |
-| `/mba-internship-notifications` | MBA role tracker across tech company job boards |
+| `/mba-internship-notifications` | Full-time job search tracker across tech company job boards |
 | `/museum-log` | Museum visit log |
 | `/travel` | Browser-persisted travel planner |
 | `/travel-deals` | Travel Deal Lab trip cost optimizer |
@@ -159,7 +159,7 @@ GOOGLE_SITE_VERIFICATION=...
 # Data sources used by update scripts and a few server routes
 FOOTBALL_DATA_API_TOKEN=...   # football-data.org, free tier
 FINNHUB_API_KEY=...           # quote endpoint for /investments
-RESEND_API_KEY=...            # MBA internship email digest
+RESEND_API_KEY=...            # job search email digest
 RESEND_FROM_EMAIL=...         # sender on a verified Resend domain
 RESEND_CONTACTS_API_KEY=...   # separate server-only newsletter contact key
 MBA_DIGEST_ALLOWED_RECIPIENTS=... # comma-separated digest recipient emails/domains
