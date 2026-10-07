@@ -3,7 +3,7 @@
 Current route inventory and page ownership for the live app.
 
 **Framework:** Next.js 16 App Router
-**Last updated:** 2026-10-02
+**Last updated:** 2026-10-07
 
 ---
 
@@ -60,7 +60,7 @@ Current route inventory and page ownership for the live app.
 | `/fintech-tools/budget-planner` | `src/app/fintech-tools/budget-planner/page.tsx` | Budget planner tool |
 | `/fintech-tools/interchange-iq` | `src/app/fintech-tools/interchange-iq/page.tsx` | Interchange fee analyzer |
 | `/fintech-tools/rent-vs-buy` | `src/app/fintech-tools/rent-vs-buy/page.tsx` | Rent vs buy calculator over a month-by-month net-worth model (`src/lib/rentVsBuy/*`, educational only) |
-| `/mba-internship-notifications` | `src/app/mba-internship-notifications/page.tsx` | Full-time job search tracker polling the public boards among the tracked companies for business roles, with an application pipeline |
+| `/mba-internship-notifications` | `src/app/mba-internship-notifications/page.tsx` | Full-time and internship job search tracker polling 59 tracked tech companies for business and tech PM roles (Feed, Pipeline with fit grading and interview rounds, Candidates review, dev file sync) |
 | `/decision-lab` | `src/app/decision-lab/page.tsx` | Decision-modeling sandbox |
 | `/enablement-assistant` | `src/app/enablement-assistant/page.tsx` | Automation platform enablement assistant and program dashboard |
 | `/food-map` | `src/app/food-map/page.tsx` | Food map |

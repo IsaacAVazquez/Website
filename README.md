@@ -3,7 +3,7 @@
 Portfolio, writing, fantasy football analytics, investment research, and standalone data tools built on Next.js 16.
 
 **Live:** [isaacvazquez.com](https://isaacvazquez.com)
-**Last updated:** 2026-10-02
+**Last updated:** 2026-10-07
 
 ---
 
@@ -81,7 +81,7 @@ The site is portfolio-first. `Writing` is live and promoted in the global header
 | `/polling-aggregator` | Political polling aggregator |
 | `/decision-lab` | Decision-modeling sandbox |
 | `/enablement-assistant` | Automation platform enablement assistant |
-| `/mba-internship-notifications` | Full-time job search tracker across tech company job boards |
+| `/mba-internship-notifications` | Full-time and internship job search tracker across 59 tech company boards (Feed, Pipeline with fit grading and interview rounds, Candidates review) |
 | `/museum-log` | Museum visit log |
 | `/travel` | Browser-persisted travel planner |
 | `/travel-deals` | Travel Deal Lab trip cost optimizer |
@@ -203,6 +203,7 @@ Current source-of-truth docs:
 - `WRITING_VOICE.md`
 - `SECURITY.md` — vulnerability disclosure policy
 - `docs/SECURITY.md` — operational security guide for maintainers
+- `docs/JOB_SEARCH_PRIVATE_DATA.md` — private job-search pipeline data contract and local directory layout
 - `docs/README.md`
 - `docs/ai-context/*`
 

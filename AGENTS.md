@@ -2,7 +2,7 @@
 
 Operational context for agents working in this repo. Start here, then read `CLAUDE.md` for deeper implementation context.
 
-**Last updated:** 2026-10-02
+**Last updated:** 2026-10-07
 
 ---
 
@@ -334,6 +334,7 @@ The MLB, NBA, and NFL dashboards read committed TypeScript snapshots at runtime.
 - `npm run update:score-pools` writes `src/data/scorePoolsSnapshot.json` from The Odds API (`THE_ODDS_API_KEY`) and API-Football (`API_FOOTBALL_KEY`), merged with manual entries in `scripts/data/scorePools.manual.ts` and CSV drops in `scripts/data/score-pools/`. Local manual runs can omit the tokens, but the scheduled workflow requires both and rejects sample-only output. Odds history is append-only and capped per fixture so line movement stays queryable. See `SCORE_POOLS_ENGINE.md`.
 - `npm run update:spacex` writes `src/data/spacexSnapshot.generated.json`.
 - `npm run update:spacex-images` writes `src/data/spacexImageManifest.generated.json`, `public/data/spacex/image-reference-index.json`, and cached image files under `public/data/spacex/images/`.
+- `./node_modules/.bin/tsx --env-file-if-exists=.env.local scripts/jobSearch/dumpCandidates.ts [inbox.json ...]` pulls active job boards across tracked companies in `src/constants/mba-companies.ts` (59 companies, 48 actively fetched), filters against `private/job-search/targets.json`, drops existing pipeline and candidate records, and writes `private/job-search/candidates.json` (local manual only, personal gitignored folder; see `docs/JOB_SEARCH_PRIVATE_DATA.md`).
 
 ### Article cover image workflow
 

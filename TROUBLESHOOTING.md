@@ -2,7 +2,7 @@
 
 Fast diagnostics for the current site, data workflows, and deployment path.
 
-**Last updated:** 2026-10-02
+**Last updated:** 2026-10-07
 
 ---
 
@@ -22,7 +22,7 @@ Fast diagnostics for the current site, data workflows, and deployment path.
 
 ### `npm run dev` boots but pages crash
 
-- Check missing environment variables for admin, MBA email, or data refresh flows
+- Check missing environment variables for MBA email or data refresh flows
 - Confirm recent docs or content edits did not introduce malformed frontmatter or markdown
 
 ---
@@ -34,6 +34,11 @@ Fast diagnostics for the current site, data workflows, and deployment path.
 - `503` means `MBA_DIGEST_SECRET` is not set in the Netlify environment
 - `401` means the request did not send that secret in the `x-mba-digest-secret` header
 - The public page no longer has a digest button, since a browser cannot hold the secret and every click got `401`. Call the route from a scheduled job that sends the header
+
+### `/api/job-search` returns `404` or `409`
+
+- `404` is expected outside local development. The route is development-only (`process.env.NODE_ENV !== "development"`) and is not available in production.
+- `409 Conflict` occurs when the file revision on disk has moved since the client's last read. The client hook automatically re-fetches the latest state and merges changes.
 
 The cache purge function and its `CRON_SECRET` were removed on 2026-09-28, since the function had no caller. There is no live `/api/scheduled-update` route in the current app tree; older references to that endpoint are historical.
 

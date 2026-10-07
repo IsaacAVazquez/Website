@@ -2,7 +2,7 @@
 
 Current hook inventory and state ownership.
 
-**Last updated:** 2026-10-02
+**Last updated:** 2026-10-07
 
 ---
 
@@ -23,6 +23,7 @@ Current hook inventory and state ownership.
 | `useLiveQuote` | `src/hooks/useLiveQuote.ts` | Current quote fetch state |
 | `useLocalStorageString` | `src/hooks/useLocalStorageString.ts` | Low-level reactive single-key localStorage reader (`useSyncExternalStore`) shared by the fantasy queue/notes/compare hooks |
 | `useMBAApplications` | `src/hooks/useMBAApplications.ts` | Browser-local application tracking for the MBA role tracker |
+| `useMBAJobCandidates` | `src/hooks/useMBAApplications.ts` | Sourced job candidate review and triage state with development-only sync |
 | `useMBAJobs` | `src/hooks/useMBAJobs.ts` | MBA job fetch state plus seen-job and watched-company persistence |
 | `useMountOnFirstOpen` | `src/hooks/useMountOnFirstOpen.ts` | Deferred mounting helper for modals and drawers |
 | `useMuseumLog` | `src/hooks/useMuseumLog.ts` | Browser-local museum visit state for `/museum-log` |
@@ -116,7 +117,11 @@ Owns job fetch state against `/api/mba-jobs`, plus browser-local persistence for
 
 ### `useMBAApplications`
 
-Owns browser-local application status tracking layered onto the same surface. In development it also syncs localStorage with `private/job-search/pipeline.json` through `/api/job-search` (pull on focus and every 30 s, push after a local edit, newer `updatedAt` wins) and exposes that as `privateSync`, which is `null` in production. `useMBAJobCandidates` in the same file reads and writes `candidates.json` the same way and reports `enabled: false` outside development. See `docs/JOB_SEARCH_PRIVATE_DATA.md`.
+Owns browser-local application status tracking layered onto the same surface, tracking stages (`saved`, `applied`, `interviewing`, `offer`, `rejected`, `archived`), priorities (`low`, `medium`, `high`), fit grading and rationales (`JobFitGrade`: `strong`, `good`, `moderate`, `stretch`), and interview rounds (`InterviewRound`). In development it also syncs localStorage with `private/job-search/pipeline.json` through `/api/job-search` (pull on focus and every 30 s, push after a local edit, newer `updatedAt` wins) and exposes that as `privateSync`, which is `null` in production.
+
+### `useMBAJobCandidates`
+
+Owns sourced role candidates review and triage state (`MBAJobCandidate`: `sourced`, `reviewed`, `dismissed`) in `src/hooks/useMBAApplications.ts`. In development, it reads and writes `private/job-search/candidates.json` via `/api/job-search` and reports `enabled: false` in production builds. See `docs/JOB_SEARCH_PRIVATE_DATA.md`.
 
 ---
 
