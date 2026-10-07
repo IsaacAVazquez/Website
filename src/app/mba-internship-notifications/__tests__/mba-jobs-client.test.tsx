@@ -227,6 +227,7 @@ describe("MBAJobsClient", () => {
       appliedVia: "Referral",
       materialsDir: "private/job-search/roles/stripe-pm",
       interviewRounds: [{ label: "Recruiter screen", date: "2026-10-09", outcome: "scheduled", notes: "" }],
+      facts: [{ label: "Base pay", value: "$143,000 plus equity" }],
     });
     mockUseMBAApplications.mockReturnValue(
       buildApplicationsHookValue({
@@ -243,6 +244,7 @@ describe("MBAJobsClient", () => {
     expect(screen.getByText("private/job-search/roles/stripe-pm")).toBeVisible();
     expect(screen.getByRole("button", { name: "Copy path" })).toBeVisible();
     expect(within(screen.getByRole("list", { name: "Interview rounds" })).getByText(/Recruiter screen/)).toBeVisible();
+    expect(within(screen.getByRole("list", { name: "Posting facts" })).getByText(/Base pay · \$143,000 plus equity/)).toBeVisible();
     expect(screen.getByRole("status", { name: "" })).toHaveTextContent(
       /Synced with private\/job-search\/pipeline\.json, last sync/
     );

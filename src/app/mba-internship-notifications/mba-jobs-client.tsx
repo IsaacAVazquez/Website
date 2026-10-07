@@ -1385,6 +1385,7 @@ function ApplicationCard({
   const [confirmingDelete, setConfirmingDelete] = useState(false);
   const [copiedPath, setCopiedPath] = useState(false);
   const rounds = application.interviewRounds ?? [];
+  const facts = application.facts ?? [];
   return (
     <article className="c97-panel">
       <div className="flex flex-wrap items-start justify-between" style={{ gap: "var(--c97-sp-2)" }}>
@@ -1429,6 +1430,15 @@ function ApplicationCard({
       )}
       {application.notes && (
         <p className="c97-prose line-clamp-3 text-sm" style={{ marginTop: "var(--c97-sp-2)" }}>{application.notes}</p>
+      )}
+      {facts.length > 0 && (
+        <ul className="c97-list" style={{ marginTop: "var(--c97-sp-2)" }} aria-label="Posting facts">
+          {facts.map((fact) => (
+            <li key={fact.label} className="c97-meta">
+              {fact.label} · {fact.value}
+            </li>
+          ))}
+        </ul>
       )}
       {rounds.length > 0 && (
         <ul className="c97-list" style={{ marginTop: "var(--c97-sp-2)" }} aria-label="Interview rounds">

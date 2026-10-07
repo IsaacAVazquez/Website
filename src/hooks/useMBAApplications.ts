@@ -43,6 +43,7 @@ type MBAApplicationUpdate = Partial<
     | "appliedVia"
     | "materialsDir"
     | "interviewRounds"
+    | "facts"
   >
 > & {
   jobSnapshot?: Partial<
@@ -195,6 +196,7 @@ export function useMBAApplications() {
             materialsDir:
               updates.materialsDir === undefined ? base.materialsDir : updates.materialsDir,
             interviewRounds: updates.interviewRounds ?? base.interviewRounds,
+            facts: updates.facts ?? base.facts,
             jobSnapshot: updates.jobSnapshot
               ? { ...base.jobSnapshot, ...updates.jobSnapshot }
               : base.jobSnapshot,

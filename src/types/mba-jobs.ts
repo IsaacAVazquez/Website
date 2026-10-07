@@ -114,6 +114,12 @@ export interface MBAFitAssessment {
 
 export type MBAInterviewOutcome = "scheduled" | "done" | "passed" | "failed";
 
+/** One posting fact worth keeping on the card, such as base pay, work arrangement, or close date. */
+export interface MBAApplicationFact {
+  label: string;
+  value: string;
+}
+
 export interface MBAInterviewRound {
   label: string;
   date: string | null;
@@ -142,6 +148,8 @@ export interface MBATrackedApplication {
   /** Repo-relative folder holding the tailored materials, e.g. private/job-search/roles/acme-pm. */
   materialsDir?: string | null;
   interviewRounds?: MBAInterviewRound[];
+  /** Written by the materials skill from the posting; read-only on the dashboard. 12 max. */
+  facts?: MBAApplicationFact[];
 }
 
 export type MBACandidateTriage = "sourced" | "reviewed" | "dismissed";

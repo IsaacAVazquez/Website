@@ -75,12 +75,14 @@ describe("job-search validators", () => {
       appliedVia: "greenhouse",
       materialsDir: "private/job-search/roles/acme-pm",
       interviewRounds: [{ label: "Screen", date: "2026-10-12", outcome: "scheduled", notes: "" }],
+      facts: [{ label: "Base pay", value: "$143,000" }, { label: "", value: "dropped" }, { label: "Empty", value: "" }],
     };
     const [parsed] = parseMBAApplications(JSON.stringify({ applications: [application] }));
     expect(parsed.fit?.score).toBe(88);
     expect(parsed.appliedVia).toBe("greenhouse");
     expect(parsed.materialsDir).toBe("private/job-search/roles/acme-pm");
     expect(parsed.interviewRounds).toHaveLength(1);
+    expect(parsed.facts).toEqual([{ label: "Base pay", value: "$143,000" }]);
   });
 });
 
