@@ -36,7 +36,7 @@ matplotlib-inline==0.2.2
 mdurl==0.1.2
 nltk==3.10.3
 numpy==2.5.3
-openai==3.19.2
+openai==3.24.0
 openpyxl==3.1.5
 packaging==26.3
 pandas==3.0.6
