@@ -4,6 +4,12 @@ All notable changes to this repository are documented here. Format: `YYYY-MM-DD`
 
 ---
 
+## 2026-10-07
+
+- Combine the seven open dependency bumps ([#576](https://github.com/IsaacAVazquez/Website/pull/576)).
+
+---
+
 ## 2026-10-06
 
 - Implement the October 5 UI and UX audit findings ([#574](https://github.com/IsaacAVazquez/Website/pull/574)).
