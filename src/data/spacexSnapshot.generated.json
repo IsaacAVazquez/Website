@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-07T00:50:37.007Z",
+  "generatedAt": "2026-10-07T16:41:41.792Z",
   "sourceLabel": "launch-library-2 snapshot",
   "summary": {
     "heroLaunch": {
@@ -150,7 +150,7 @@
         "description": "rocket families with pending SpaceX missions in the current feed"
       }
     ],
-    "generatedAt": "2026-10-07T00:50:28.442Z"
+    "generatedAt": "2026-10-07T16:41:35.177Z"
   },
   "upcomingLaunches": [
     {
@@ -476,7 +476,7 @@
     {
       "id": "adfc829a-6704-4d9e-b2ca-1068c38b2b83",
       "name": "Telesat Lightspeed 4",
-      "flightNumber": 778,
+      "flightNumber": 779,
       "upcoming": true,
       "success": null,
       "details": "Up to 18 satellites manufactured by MDA for Canadian satellite operator Telesat's Lightspeed constellation.",
@@ -516,7 +516,7 @@
     {
       "id": "bf5c6fa2-3add-49ff-aad6-c6450148cd89",
       "name": "Rivada 12",
-      "flightNumber": 778,
+      "flightNumber": 779,
       "upcoming": true,
       "success": null,
       "details": "24 satellites for Rivada's internet constellation.",
@@ -556,7 +556,7 @@
     {
       "id": "98b905bb-4060-40a2-b299-2773b6883203",
       "name": "Telesat Lightspeed 5",
-      "flightNumber": 778,
+      "flightNumber": 779,
       "upcoming": true,
       "success": null,
       "details": "Up to 18 satellites manufactured by MDA for Canadian satellite operator Telesat's Lightspeed constellation.",
@@ -756,7 +756,7 @@
     {
       "id": "c703fab3-2ce4-4cf1-861d-754da3f3ad42",
       "name": "SDA Tranche 2 Transport Layer A",
-      "flightNumber": 778,
+      "flightNumber": 779,
       "upcoming": true,
       "success": null,
       "details": "Classified mission launched by the Space Development Agency (SDA) for Tranche 2 Transport Layer.",
@@ -876,7 +876,7 @@
     {
       "id": "ab932c60-d808-4825-ab71-b6fe0a745f15",
       "name": "Rivada 3",
-      "flightNumber": 778,
+      "flightNumber": 779,
       "upcoming": true,
       "success": null,
       "details": "24 satellites for Rivada's internet constellation.",
@@ -1036,7 +1036,7 @@
     {
       "id": "c1bd775a-2fff-45bb-9726-765b69817c19",
       "name": "USSF-75",
-      "flightNumber": 778,
+      "flightNumber": 779,
       "upcoming": true,
       "success": null,
       "details": "Classified payload for the United States Space Force",
@@ -1076,7 +1076,7 @@
     {
       "id": "c5783e2b-d458-4b99-9936-4043c236190b",
       "name": "SDA Tranche 1 Transport Layer F",
-      "flightNumber": 778,
+      "flightNumber": 779,
       "upcoming": true,
       "success": null,
       "details": "Tranche 1 Transport Layer F is one of six missions by the United States Space Force Space Development Agency (SDA) for the Proliferated Warfighter Space Architecture (PWSA) Tranche 1 Transport Layer constellation, which will provide assured, resilient, low-latency military data and connectivity worldwide to the full range of warfighter platforms from Low Earth Orbit satellites.\r\n\r\nThe constellation will be interconnected with Optical Inter-Satellite Links (OISLs) which have significantly increased performance over existing radio frequency crosslinks. It is expected to operate over Ka band, have stereo coverage and be dynamically networked for simpler hand-offs, greater bandwidth and fault tolerance.",
@@ -2941,6 +2941,6 @@
       }
     ],
     "rangeLabel": "Nov 25 – Oct 26",
-    "generatedAt": "2026-10-07T00:50:36.197Z"
+    "generatedAt": "2026-10-07T16:41:41.357Z"
   }
 }
