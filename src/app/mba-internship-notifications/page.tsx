@@ -1,15 +1,18 @@
 import { StructuredData } from "@/components/StructuredData";
 import { getMBAJobsData } from "@/lib/mbaJobsServer";
 import { constructMetadata, generateBreadcrumbStructuredData } from "@/lib/seo";
+import { MBA_COMPANIES } from "@/constants/mba-companies";
 import { MBAJobsClient } from "./mba-jobs-client";
 import { normalizeMBAJobsState } from "./mba-jobs-state";
 
+const POLLED_BOARD_COUNT = MBA_COMPANIES.filter((company) => company.atsType !== "manual").length;
+const PAGE_DESCRIPTION = `Live dashboard polling ${POLLED_BOARD_COUNT} public tech company job boards for full-time business roles across product, PMM, strategy, operations, growth, finance, chief of staff, and MBA leadership programs, with an application pipeline and fit scoring.`;
+
 export const metadata = constructMetadata({
-  title: "MBA Internship Notifications | Tech Job Search",
-  description:
-    "Live dashboard monitoring 32 tech company career pages and public job boards for MBA internships plus full-time business roles across product, PMM, strategy, operations, growth, and finance.",
+  title: "Full-Time Job Search Tracker | Tech Business Roles",
+  description: PAGE_DESCRIPTION,
   canonicalUrl: "/mba-internship-notifications",
-  dateModified: "2026-07-23",
+  dateModified: "2026-10-07",
 });
 
 interface MBAJobsPageProps {
@@ -58,15 +61,16 @@ export default async function MBAJobsPage({ searchParams }: MBAJobsPageProps) {
         type="SoftwareApplication"
         data={{
           name: "Job Search",
-          description:
-            "Career page and public job board monitor for MBA internships and full-time business roles across 32 tech companies, with optional external job leads.",
+          description: PAGE_DESCRIPTION,
           url: "https://isaacvazquez.com/mba-internship-notifications",
-          dateModified: "2026-07-23",
+          dateModified: "2026-10-07",
           applicationCategory: "BusinessApplication",
           programmingLanguage: ["TypeScript", "Next.js"],
           author: "Isaac Vazquez",
           keywords: [
-            "MBA internships",
+            "full-time job search",
+            "MBA leadership programs",
+            "chief of staff",
             "full-time business roles",
             "product management",
             "PMM",

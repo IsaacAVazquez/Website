@@ -1,5 +1,6 @@
 // ---------------------------------------------------------------------------
-// MBA Job Search tracker – URL state management
+// Job search tracker – URL state management. The default feed is full-time
+// roles; the internship filter stays available for anyone who wants it.
 // ---------------------------------------------------------------------------
 
 import { MBA_ROLE_FAMILIES, MBA_ROLE_FAMILY_LABELS } from "@/constants/mba-role-taxonomy";
@@ -64,7 +65,7 @@ export const DEFAULT_MBA_JOBS_STATE: MBAJobsSearchState = {
   location: "",
   sort: "relevance",
   category: "all",
-  roleType: "all",
+  roleType: "full-time",
   roleFamily: "all",
 };
 

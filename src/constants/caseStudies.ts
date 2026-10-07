@@ -457,18 +457,18 @@ export const caseStudiesData: Record<string, CaseStudyData> = {
     slug: "mba-role-tracker",
     title: "Job Search",
     description:
-      "Recruiting-intelligence dashboard tracking public tech company job boards for MBA internships and full-time business roles across Greenhouse, Ashby, Lever, and manual career-page fallbacks.",
+      "Full-time job search tracker that polls public tech company job boards for business roles across Greenhouse, Ashby, Lever, and manual career-page fallbacks, with an application pipeline and fit scoring.",
     role: "Full-Stack Developer & Designer",
     timeline: "2026",
     tools: ["Next.js", "TypeScript", "Job board parsing", "Notification UX"],
-    metrics: "32 companies · Live role filters · Alerts and digests",
+    metrics: "59 companies · 48 live boards · Fit scores and pipeline",
     github: "https://github.com/IsaacAVazquez",
     link: "/mba-internship-notifications",
     featured: false,
 
     overview: {
       summary:
-        "I built a recruiting-intelligence tracker that monitors public tech-company job boards for MBA internships and full-time business roles in one place.",
+        "I built a job search tracker that monitors public tech-company job boards for full-time business roles in one place and keeps my application pipeline beside the feed.",
       impact:
         "Compresses repetitive recruiting checks into a faster decision surface with filters, alerts, and manual fallbacks.",
     },

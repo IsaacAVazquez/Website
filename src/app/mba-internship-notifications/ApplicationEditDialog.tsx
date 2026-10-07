@@ -229,6 +229,51 @@ export default function ApplicationEditDialog({
               className="c97-field"
             />
           </FormField>
+          <FormField label="Applied via">
+            <input
+              value={form.appliedVia}
+              onChange={(event) =>
+                setForm((current) => ({ ...current, appliedVia: event.target.value }))
+              }
+              className="c97-field"
+              placeholder="Referral, portal, recruiter…"
+            />
+          </FormField>
+          <FormField label="Fit score (0 to 100)">
+            <input
+              type="number"
+              min={0}
+              max={100}
+              step={1}
+              value={form.fitScore}
+              onChange={(event) =>
+                setForm((current) => ({ ...current, fitScore: event.target.value }))
+              }
+              className="c97-field"
+              inputMode="numeric"
+            />
+          </FormField>
+          <FormField label="Materials folder">
+            <input
+              value={form.materialsDir}
+              onChange={(event) =>
+                setForm((current) => ({ ...current, materialsDir: event.target.value }))
+              }
+              className="c97-field"
+              placeholder="private/job-search/roles/…"
+            />
+          </FormField>
+          <div className="sm:col-span-2">
+            <FormField label="Fit rationale">
+              <textarea
+                value={form.fitRationale}
+                onChange={(event) =>
+                  setForm((current) => ({ ...current, fitRationale: event.target.value }))
+                }
+                className="c97-field min-h-20 resize-y"
+              />
+            </FormField>
+          </div>
           <div className="sm:col-span-2">
             <FormField label="Notes">
               <textarea

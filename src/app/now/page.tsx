@@ -34,7 +34,7 @@ const focus = [
 
 const building = [
   {
-    label: "Job Search",
+    label: "Full-Time Job Search Tracker",
     href: "/mba-internship-notifications",
     detail: "Career page monitoring and an application pipeline for my full-time search.",
   },

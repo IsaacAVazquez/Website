@@ -65,7 +65,7 @@ const SEARCH_KEYWORDS: Record<string, string> = {
   '/march-madness-2026': 'March Madness 2026 NCAA tournament bracket basketball college seeds matchups analysis March Madness NCAA Basketball Tournament',
   '/polling-aggregator': 'Polling aggregator politics elections survey methodology averages political data dashboard Polling Politics Elections Data',
   '/museum-log': 'museum log art exhibitions visits cultural institutions personal log notes Museums Art Personal',
-  '/mba-internship-notifications': 'MBA internship full-time roles tracker greenhouse lever ashby career digest email recruiting MBA Internships Recruiting Career',
+  '/mba-internship-notifications': 'full-time job search tracker business roles product strategy operations chief of staff MBA leadership programs greenhouse lever ashby career digest email recruiting application pipeline Job Search Recruiting Career',
   '/formula-1': 'Formula 1 F1 racing constructors drivers championship standings season results dashboard Formula 1 F1 Racing Sports Data Dashboard',
   '/fantasy-formula-1': 'Fantasy Formula 1 F1 optimizer team builder drivers constructors budget model prices projections OpenF1 sports data Fantasy Formula 1 F1 Optimizer Sports Data Dashboard',
   '/premier-league': 'Premier League soccer football EPL standings fixtures scorers form table England dashboard Premier League Soccer Sports Data Dashboard',
