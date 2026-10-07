@@ -3,6 +3,7 @@ import {
   MBA_APPLICATIONS_STORAGE_KEY,
   buildMBAApplicationsExport,
   createMBAApplicationFromJob,
+  loadMBAApplications,
 } from "@/lib/mba-applications";
 import { useMBAApplications } from "../useMBAApplications";
 import type { MBAJob } from "@/types/mba-jobs";
@@ -287,5 +288,79 @@ describe("useMBAApplications", () => {
       result.current.searchApplications("REFERRAL").map((application) => application.jobSnapshot.companyName)
     ).toEqual(["Ramp"]);
     expect(result.current.searchApplications("stripe", [])).toEqual([]);
+  });
+
+  it("reports no private sync outside development", () => {
+    const { result } = renderHook(() => useMBAApplications());
+    expect(result.current.privateSync).toBeNull();
+  });
+});
+
+describe("useMBAApplications private sync in development", () => {
+  const originalFetch = global.fetch;
+  const fileRecord = createMBAApplicationFromJob(
+    { ...job, id: "brex-9", companyId: "brex", companyName: "Brex", applyUrl: "https://example.com/brex" },
+    "applied",
+    new Date("2026-10-06T09:00:00.000Z")
+  );
+  let restoreEnv: { restore: () => void };
+
+  function jsonResponse(status: number, body: unknown) {
+    return { ok: status >= 200 && status < 300, status, json: async () => body };
+  }
+
+  beforeEach(() => {
+    window.localStorage.clear();
+    restoreEnv = jest.replaceProperty(process.env, "NODE_ENV", "development");
+    global.fetch = jest.fn((input: RequestInfo | URL, init?: RequestInit) => {
+      if (init?.method === "PUT") {
+        const sent = JSON.parse(String(init.body)) as { items: unknown[] };
+        return Promise.resolve(jsonResponse(200, { revision: "200", items: sent.items }));
+      }
+      return Promise.resolve(jsonResponse(200, { revision: "100", items: [fileRecord] }));
+    }) as unknown as typeof fetch;
+  });
+
+  afterEach(() => {
+    restoreEnv.restore();
+    global.fetch = originalFetch;
+  });
+
+  it("pulls the private file on mount and merges it into localStorage", async () => {
+    const { result } = renderHook(() => useMBAApplications());
+
+    await waitFor(() => expect(result.current.applications).toHaveLength(1));
+    expect(result.current.applications[0]).toMatchObject({ id: fileRecord.id, status: "applied" });
+    expect(loadMBAApplications().map((application) => application.id)).toEqual([fileRecord.id]);
+    expect(result.current.privateSync).toEqual({ lastSyncedAt: expect.any(String), error: null });
+    expect(global.fetch).toHaveBeenCalledTimes(1);
+    expect(global.fetch).toHaveBeenCalledWith("/api/job-search?file=pipeline");
+  });
+
+  it("pushes a local change with the pulled revision", async () => {
+    const { result } = renderHook(() => useMBAApplications());
+    await waitFor(() => expect(result.current.applications).toHaveLength(1));
+
+    act(() => {
+      result.current.trackJob(job);
+    });
+    expect(result.current.applications).toHaveLength(2);
+
+    await waitFor(
+      () =>
+        expect(global.fetch).toHaveBeenCalledWith(
+          "/api/job-search?file=pipeline",
+          expect.objectContaining({ method: "PUT" })
+        ),
+      { timeout: 2_000 }
+    );
+    const putCall = (global.fetch as jest.Mock).mock.calls.find(
+      ([, init]) => (init as RequestInit | undefined)?.method === "PUT"
+    )!;
+    const body = JSON.parse(String((putCall[1] as RequestInit).body));
+    expect(body.revision).toBe("100");
+    expect(body.items.map((item: { id: string }) => item.id).sort()).toEqual(
+      [fileRecord.id, result.current.applications.find((a) => a.jobId === job.id)!.id].sort()
+    );
   });
 });

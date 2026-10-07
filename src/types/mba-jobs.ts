@@ -170,6 +170,8 @@ export interface MBAJobSearchTargets {
   excludeTitleTerms: string[];
   companiesAvoid: string[];
   startWindow: string;
+  /** Skip feed postings older than this many days. 0 means no cap. */
+  maxPostingAgeDays: number;
 }
 
 export interface MBAApplicationsExportV1 {

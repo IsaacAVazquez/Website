@@ -126,10 +126,11 @@ describe("candidates", () => {
     const targets = parseMBAJobSearchTargets(
       JSON.stringify({
         roleFamilies: ["product", "chief-of-staff"],
-        locations: ["United States", "US", "Remote", "CA"],
+        locations: ["United States", "US", "CA"],
         excludeTitleTerms: ["Director", "chief product officer"],
         companiesAvoid: ["avoidco"],
         startWindow: "2027-summer",
+        maxPostingAgeDays: 45,
       })
     );
     const tracked = createMBAApplicationFromJob(makeJob({ id: "tracked", applyUrl: "https://example.com/tracked" }), "applied", now);
@@ -148,6 +149,9 @@ describe("candidates", () => {
       makeJob({ id: "cos", applyUrl: "https://example.com/cos", title: "Chief of Staff", roleFamilies: ["chief-of-staff"] }),
       makeJob({ id: "chief", applyUrl: "https://example.com/chief", title: "Chief Product Officer" }),
       makeJob({ id: "abroad", applyUrl: "https://example.com/abroad", location: "London, UK" }),
+      makeJob({ id: "canada", applyUrl: "https://example.com/canada", location: "Toronto, Canada" }),
+      makeJob({ id: "remote-us", applyUrl: "https://example.com/remote", location: "Remote - US" }),
+      makeJob({ id: "stale", applyUrl: "https://example.com/stale", postedAt: "2026-06-01T00:00:00.000Z" }),
       makeJob({ id: "avoid", applyUrl: "https://example.com/avoid", companyId: "avoidco" }),
       makeJob({ id: "growth", applyUrl: "https://example.com/growth", roleFamilies: ["growth"] }),
       makeJob({ id: "tracked", applyUrl: "https://example.com/tracked/" }),
@@ -155,7 +159,7 @@ describe("candidates", () => {
     ];
 
     const fresh = selectNewCandidates(jobs, [existing], [tracked], targets, now);
-    expect(fresh.map((candidate) => candidate.id).sort()).toEqual(["acme-1", "cos"]);
+    expect(fresh.map((candidate) => candidate.id).sort()).toEqual(["acme-1", "cos", "remote-us"]);
     expect(fresh[0]).toMatchObject({ triage: "sourced", fit: null, sourcedAt: now.toISOString() });
   });
 

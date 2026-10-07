@@ -87,6 +87,9 @@ export interface MBAApplicationDraft {
   contact?: string;
   followUpDate?: string | null;
   deadline?: string | null;
+  fit?: MBAFitAssessment | null;
+  appliedVia?: string;
+  materialsDir?: string | null;
 }
 
 function cleanText(value: unknown, fallback = "", maxLength = MAX_TEXT_LENGTH): string {
@@ -346,9 +349,9 @@ export function createManualMBAApplication(
     updatedAt: timestamp,
     appliedAt: status === "applied" ? timestamp : null,
     archivedAt: status === "archived" ? timestamp : null,
-    fit: null,
-    appliedVia: "",
-    materialsDir: null,
+    fit: sanitizeFit(draft.fit, timestamp),
+    appliedVia: cleanText(draft.appliedVia),
+    materialsDir: cleanRelativePath(draft.materialsDir),
     interviewRounds: [],
   };
 }
@@ -676,6 +679,7 @@ export const DEFAULT_MBA_JOB_SEARCH_TARGETS: MBAJobSearchTargets = {
   excludeTitleTerms: [],
   companiesAvoid: [],
   startWindow: "",
+  maxPostingAgeDays: 45,
 };
 
 function cleanStringList(value: unknown): string[] {
@@ -697,22 +701,39 @@ export function parseMBAJobSearchTargets(raw: string | null): MBAJobSearchTarget
       excludeTitleTerms: cleanStringList(parsed.excludeTitleTerms).map((term) => term.toLowerCase()),
       companiesAvoid: cleanStringList(parsed.companiesAvoid),
       startWindow: cleanText(parsed.startWindow),
+      maxPostingAgeDays:
+        typeof parsed.maxPostingAgeDays === "number" && Number.isFinite(parsed.maxPostingAgeDays)
+          ? Math.max(0, Math.round(parsed.maxPostingAgeDays))
+          : DEFAULT_MBA_JOB_SEARCH_TARGETS.maxPostingAgeDays,
     };
   } catch {
     return DEFAULT_MBA_JOB_SEARCH_TARGETS;
   }
 }
 
+function padTokens(value: string): string {
+  return ` ${value.toLowerCase().replace(/[^a-z0-9]+/g, " ").trim()} `;
+}
+
+/** Whole-word phrase match, so "CA" does not match "Canada" and "Remote" does match "Remote - US". */
+function hasPhrase(haystack: string, phrases: string[]): boolean {
+  const padded = padTokens(haystack);
+  return phrases.some((phrase) => padded.includes(padTokens(phrase)));
+}
+
 function titleHasExcludedTerm(title: string, terms: string[]): boolean {
-  if (terms.length === 0) return false;
-  const padded = ` ${title.toLowerCase().replace(/[^a-z0-9]+/g, " ").trim()} `;
-  return terms.some((term) => padded.includes(` ${term.replace(/[^a-z0-9]+/g, " ").trim()} `));
+  return terms.length > 0 && hasPhrase(title, terms);
 }
 
 function matchesLocation(location: string, locations: string[]): boolean {
-  if (locations.length === 0) return true;
-  const haystack = location.toLowerCase();
-  return locations.some((needle) => haystack.includes(needle.toLowerCase()));
+  return locations.length === 0 || hasPhrase(location, locations);
+}
+
+function isFreshEnough(postedAt: string, maxAgeDays: number, now: Date): boolean {
+  if (maxAgeDays <= 0) return true;
+  const posted = new Date(postedAt).getTime();
+  if (Number.isNaN(posted)) return true;
+  return now.getTime() - posted <= maxAgeDays * 86_400_000;
 }
 
 /**
@@ -739,6 +760,7 @@ export function selectNewCandidates(
     if (!job.roleFamilies.some((family) => targets.roleFamilies.includes(family))) continue;
     if (!matchesLocation(job.location, targets.locations)) continue;
     if (titleHasExcludedTerm(job.title, targets.excludeTitleTerms)) continue;
+    if (!isFreshEnough(job.postedAt, targets.maxPostingAgeDays, now)) continue;
     if (avoid.has(job.companyId)) continue;
     const key = buildMBAJobKey(job);
     if (known.has(key)) continue;
