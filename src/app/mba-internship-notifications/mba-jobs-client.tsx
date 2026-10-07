@@ -39,6 +39,7 @@ import {
   MBA_APPLICATION_PRIORITY_LABELS,
   MBA_APPLICATION_STATUSES,
   MBA_APPLICATION_STATUS_LABELS,
+  sanitizeFit,
 } from "@/lib/mba-applications";
 import {
   describeAttentionItem,
@@ -50,7 +51,7 @@ import {
   type MBAAttentionItem,
   type MBAAttentionKind,
 } from "@/lib/mba-application-insights";
-import { useMBAApplications } from "@/hooks/useMBAApplications";
+import { useMBAApplications, useMBAJobCandidates } from "@/hooks/useMBAApplications";
 import { useMBAJobs } from "@/hooks/useMBAJobs";
 import { useClientNow } from "@/hooks/useClientNow";
 import { UPDATED_AT_FORMATTER, formatStableDateTime, toLocalDateKey as getTodayDateKey } from "@/lib/date-formatters";
@@ -91,7 +92,9 @@ import {
   SORT_LABELS,
   SORT_OPTIONS,
   VIEW_LABELS,
+  VIEW_OPTIONS,
 } from "./mba-jobs-state";
+import CandidatesView from "./candidates-view";
 import dynamic from "next/dynamic";
 import {
   type ApplicationFormState,
@@ -203,6 +206,17 @@ const ATTENTION_KIND_ACCENTS: Record<MBAAttentionKind, string> = {
 
 function formatRate(value: number | null): string {
   return value === null ? "—" : `${Math.round(value * 100)}%`;
+}
+
+/** Fit score descending with unscored applications last; ties keep the column's own order. */
+function sortApplicationsByFit(applications: MBATrackedApplication[]): MBATrackedApplication[] {
+  return [...applications].sort(
+    (left, right) => (right.fit?.score ?? -1) - (left.fit?.score ?? -1)
+  );
+}
+
+function FitTag({ score, scoredAt }: { score: number; scoredAt: string }) {
+  return <ColorTag accent="var(--c97-accent)" label={`Fit ${score}`} title={`Scored ${scoredAt}`} />;
 }
 
 /** A small colour swatch plus a label printed in ink, never in the accent itself. */
@@ -643,6 +657,9 @@ function JobCard({
           >
             {isNew && <NewBadge />}
             {application && <ApplicationStatusChip status={application.status} />}
+            {application?.fit && (
+              <FitTag score={application.fit.score} scoredAt={application.fit.scoredAt} />
+            )}
             {job.atsType === "external-api" && (
               <ExternalLeadChip sourceName={job.sourceName} />
             )}
@@ -1366,6 +1383,8 @@ function ApplicationCard({
     application.followUpDate !== null && application.followUpDate <= getTodayDateKey();
   // Delete is permanent (localStorage, no undo), so it takes a second click.
   const [confirmingDelete, setConfirmingDelete] = useState(false);
+  const [copiedPath, setCopiedPath] = useState(false);
+  const rounds = application.interviewRounds ?? [];
   return (
     <article className="c97-panel">
       <div className="flex flex-wrap items-start justify-between" style={{ gap: "var(--c97-sp-2)" }}>
@@ -1382,8 +1401,16 @@ function ApplicationCard({
       <p className="c97-prose text-sm" style={{ marginTop: "var(--c97-sp-2)" }}>
         {application.jobSnapshot.department} · {application.jobSnapshot.location}
       </p>
+      {application.appliedVia && (
+        <p className="c97-meta" style={{ marginTop: "var(--c97-sp-1)" }}>
+          Applied via {application.appliedVia}
+        </p>
+      )}
       <div className="flex flex-wrap" style={{ marginTop: "var(--c97-sp-2)", gap: "var(--c97-sp-1)" }}>
         <ApplicationStatusChip status={application.status} />
+        {application.fit && (
+          <FitTag score={application.fit.score} scoredAt={application.fit.scoredAt} />
+        )}
         {application.followUpDate && (
           <ColorTag
             accent={followUpIsDue ? "var(--c97-accent)" : "var(--c97-ink-2)"}
@@ -1394,8 +1421,42 @@ function ApplicationCard({
           <ColorTag accent="var(--c97-warning)" label={`Due ${formatDateKey(application.deadline)}`} />
         )}
       </div>
+      {application.fit?.rationale && (
+        <details className="c97-disclosure" style={{ marginTop: "var(--c97-sp-1)" }}>
+          <summary className="c97-btn-ghost">Why this fit</summary>
+          <p className="c97-meta" style={{ margin: 0 }}>{application.fit.rationale}</p>
+        </details>
+      )}
       {application.notes && (
         <p className="c97-prose line-clamp-3 text-sm" style={{ marginTop: "var(--c97-sp-2)" }}>{application.notes}</p>
+      )}
+      {rounds.length > 0 && (
+        <ul className="c97-list" style={{ marginTop: "var(--c97-sp-2)" }} aria-label="Interview rounds">
+          {rounds.map((round, index) => (
+            <li key={`${round.label}-${index}`} className="c97-meta">
+              {round.label}
+              {round.date ? ` · ${formatDateKey(round.date)}` : ""}
+              {` · ${round.outcome}`}
+            </li>
+          ))}
+        </ul>
+      )}
+      {application.materialsDir && (
+        <p className="c97-meta flex flex-wrap items-center" style={{ marginTop: "var(--c97-sp-2)", gap: "var(--c97-sp-1)" }}>
+          <code className="font-mono break-all">{application.materialsDir}</code>
+          <button
+            type="button"
+            className="c97-btn-ghost"
+            style={{ minHeight: 44 }}
+            onClick={() => {
+              const dir = application.materialsDir;
+              if (!dir || !navigator.clipboard) return;
+              void navigator.clipboard.writeText(dir).then(() => setCopiedPath(true));
+            }}
+          >
+            {copiedPath ? "Copied" : "Copy path"}
+          </button>
+        </p>
       )}
       <div className="flex flex-wrap items-center border-t border-[var(--c97-rule)]"
         style={{ marginTop: "var(--c97-sp-2)", gap: "var(--c97-sp-1)", paddingTop: "var(--c97-sp-2)" }}>
@@ -1493,6 +1554,7 @@ function ApplicationPipeline({
 }) {
   const [query, setQuery] = useState("");
   const [statusFilter, setStatusFilter] = useState<MBAApplicationStatus | "all">("all");
+  const [sortByFit, setSortByFit] = useState(false);
   const [importMessage, setImportMessage] = useState<string | null>(null);
   const importInputRef = useRef<HTMLInputElement | null>(null);
 
@@ -1516,8 +1578,16 @@ function ApplicationPipeline({
     });
   }, [applications, query, statusFilter]);
 
-  const statusesToShow =
-    statusFilter === "all" ? ACTIVE_APPLICATION_STATUSES : [statusFilter];
+  const columns = useMemo(() => {
+    const statusesToShow =
+      statusFilter === "all" ? ACTIVE_APPLICATION_STATUSES : [statusFilter];
+    return statusesToShow.map((status) => {
+      const sorted = sortApplicationsForColumn(
+        filteredApplications.filter((application) => application.status === status)
+      );
+      return { status, applications: sortByFit ? sortApplicationsByFit(sorted) : sorted };
+    });
+  }, [filteredApplications, sortByFit, statusFilter]);
 
   async function handleImportFile(file: File | undefined) {
     if (!file) return;
@@ -1541,8 +1611,8 @@ function ApplicationPipeline({
       <div className="c97-shell" style={{ display: "flex", flexDirection: "column", gap: "var(--c97-sp-2)" }}>
       <SectionLead
         kicker="Applications"
-        title="Work the pipeline, not another spreadsheet."
-        description="Track roles from the live feed, add manual opportunities, and keep follow-ups visible without sending personal application data to the server."
+        title="Work the full-time pipeline in one place."
+        description="I track roles from the live feed, add the ones I find elsewhere by hand, and keep follow-ups, interview rounds, and fit notes visible without sending any of it to the server."
         id="mba-application-pipeline-heading"
       />
       <div className="c97-panel" style={{ display: "flex", flexDirection: "column", gap: "var(--c97-sp-3)" }}>
@@ -1583,6 +1653,14 @@ function ApplicationPipeline({
           <div className="flex flex-wrap" style={{ gap: "var(--c97-sp-1)" }}>
             <button type="button" onClick={onCreate} className="c97-btn">
               Add application
+            </button>
+            <button
+              type="button"
+              aria-pressed={sortByFit}
+              onClick={() => setSortByFit((current) => !current)}
+              className="c97-btn-ghost"
+            >
+              By fit
             </button>
             <button type="button" onClick={onExportJson} className="c97-btn-ghost mba-ghost">
               <Download className="h-4 w-4" aria-hidden="true" />
@@ -1631,12 +1709,7 @@ function ApplicationPipeline({
           />
         ) : (
           <div className="grid xl:grid-cols-5" style={{ gap: "var(--c97-sp-2)" }}>
-            {statusesToShow.map((status) => {
-              const statusApplications = sortApplicationsForColumn(
-                filteredApplications.filter(
-                  (application) => application.status === status
-                )
-              );
+            {columns.map(({ status, applications: statusApplications }) => {
               return (
                 <div key={status} style={{ display: "flex", flexDirection: "column", gap: "var(--c97-sp-2)" }}>
                   <div className="c97-panel flex items-center justify-between">
@@ -1821,7 +1894,11 @@ export function MBAJobsClient({
     importApplications,
     exportJson,
     exportCsv,
+    privateSync,
   } = useMBAApplications();
+  const candidates = useMBAJobCandidates();
+  // A shared ?view=candidates link falls back to the feed where candidates are off.
+  const view = uiState.view === "candidates" && !candidates.enabled ? "feed" : uiState.view;
   const applicationTodayKey = getTodayDateKey();
   const applicationInsights = useMemo(
     () => summarizeApplicationPipeline(applications, applicationTodayKey),
@@ -1960,6 +2037,18 @@ export function MBAJobsClient({
   ) {
     const followUpDate = form.followUpDate.trim() || null;
     const deadline = form.deadline.trim() || null;
+    const now = new Date().toISOString();
+    const scoreText = form.fitScore.trim();
+    const rationale = form.fitRationale.trim();
+    const existingFit = application?.fit ?? null;
+    // An unchanged score and rationale keep the skill's scoredAt; an unreadable score keeps the old fit.
+    const fit = !scoreText
+      ? null
+      : existingFit && String(existingFit.score) === scoreText && existingFit.rationale === rationale
+        ? existingFit
+        : sanitizeFit({ score: Number(scoreText), rationale, scoredAt: now }, now) ?? existingFit;
+    const appliedVia = form.appliedVia.trim();
+    const materialsDir = form.materialsDir.trim() || null;
 
     if (application) {
       updateApplication(application.id, {
@@ -1970,6 +2059,9 @@ export function MBAJobsClient({
         sourceUrl: form.sourceUrl,
         followUpDate,
         deadline,
+        fit,
+        appliedVia,
+        materialsDir,
         jobSnapshot: {
           companyName: form.companyName,
           title: form.title,
@@ -1992,6 +2084,9 @@ export function MBAJobsClient({
         contact: form.contact,
         followUpDate,
         deadline,
+        fit,
+        appliedVia,
+        materialsDir,
       });
     }
 
@@ -2043,17 +2138,17 @@ export function MBAJobsClient({
         standfirst={
           <>
             I monitor {totalTracked} public job boards across {totalCompanies} target companies
-            for internships and full-time product, PMM, strategy, operations, growth, finance,
-            analytics, and adjacent business roles. External leads stay opt-in, and LinkedIn stays
+            for full-time product, PMM, strategy, operations, growth, finance, analytics, chief of
+            staff, and MBA leadership program roles. External leads stay opt-in, and LinkedIn stays
             an outbound search shortcut instead of a scraped feed. The board below narrows by role
-            and company type, and any role tracked from it lands in the pipeline so follow-ups and
-            deadlines surface on their own.
+            and company type, and any role I track from it lands in the pipeline so follow-ups,
+            interview rounds, and deadlines surface on their own.
           </>
         }
         meta={refreshLabel}
         // The hero fills a phone's first screen, so one link goes straight to the search.
         action={
-          uiState.view === "applications" ? undefined : (
+          view === "applications" ? undefined : (
             <a href="#mba-role-tracker-filters-heading" className="c97-btn-ghost">
               Search roles
             </a>
@@ -2130,22 +2225,42 @@ export function MBAJobsClient({
           </div>
 
           <div role="group" aria-label="Job tracker view" className="c97-segmented">
-            {(["feed", "applications"] as const).map((view) => (
+            {VIEW_OPTIONS.filter((option) => option !== "candidates" || candidates.enabled).map((option) => (
               <button
                 type="button"
-                key={view}
-                aria-pressed={uiState.view === view}
-                onClick={() => updateRouteState({ view })}
+                key={option}
+                aria-pressed={view === option}
+                onClick={() => updateRouteState({ view: option })}
                 style={{ minHeight: 44 }}
               >
-                {VIEW_LABELS[view]}
+                {VIEW_LABELS[option]}
               </button>
             ))}
           </div>
+          {privateSync && view === "applications" && (
+            <p className="c97-meta" style={{ margin: 0 }} role="status">
+              {privateSync.error
+                ? `The private sync hit a problem. ${privateSync.error}`
+                : privateSync.lastSyncedAt
+                  ? `Synced with private/job-search/pipeline.json, last sync ${formatFetchedAt(new Date(privateSync.lastSyncedAt))}.`
+                  : "Syncing with private/job-search/pipeline.json, no pull has finished yet."}
+            </p>
+          )}
         </div>
       </section>
 
-      {uiState.view === "applications" ? (
+      {view === "candidates" ? (
+        <CandidatesView
+          candidates={candidates.candidates}
+          onPromote={(candidate) => {
+            const tracked = trackJob(candidate.job);
+            if (tracked && candidate.fit) updateApplication(tracked.id, { fit: candidate.fit });
+            candidates.removeCandidate(candidate.id);
+          }}
+          onDismiss={(id) => candidates.setTriage(id, "dismissed")}
+          onRestore={(id) => candidates.setTriage(id, "reviewed")}
+        />
+      ) : view === "applications" ? (
         <>
           <ApplicationPipeline
             applications={applications}
@@ -2451,10 +2566,18 @@ export function MBAJobsClient({
                         label={`Location: ${uiState.location.trim()}`}
                       />
                     )}
-                    {uiState.roleType !== "all" && (
+                    {uiState.roleType !== DEFAULT_MBA_JOBS_STATE.roleType && (
                       <ColorTag
-                        accent={ROLE_TYPE_ACCENTS[uiState.roleType]}
-                        label={ROLE_TYPE_LABELS[uiState.roleType]}
+                        accent={
+                          uiState.roleType === "all"
+                            ? "var(--c97-ink-2)"
+                            : ROLE_TYPE_ACCENTS[uiState.roleType]
+                        }
+                        label={
+                          uiState.roleType === "all"
+                            ? "All role types"
+                            : ROLE_TYPE_LABELS[uiState.roleType]
+                        }
                       />
                     )}
                     {uiState.roleFamily !== "all" && (
@@ -2487,7 +2610,7 @@ export function MBAJobsClient({
             <SectionLead
               kicker="Live roles"
               title="Current openings across the tracked boards."
-              description="This is the fastest way to scan internships and full-time business roles without bouncing across dozens of career pages."
+              description="This is the fastest way I have found to scan full-time business roles without bouncing across dozens of career pages."
               id="mba-role-tracker-roles-heading"
             />
             {!isLoading && (

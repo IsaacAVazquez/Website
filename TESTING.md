@@ -2,7 +2,7 @@
 
 Current testing setup for the repo.
 
-**Last updated:** 2026-10-02
+**Last updated:** 2026-10-07
 
 ---
 
@@ -59,7 +59,10 @@ as coverage improves, so read the config rather than trusting a restated number 
 - `src/lib/__tests__/fantasyTeamValue.test.ts` pins Draft Outlook baselines, slot context, room midranks, format-specific signals, and exact return math; `src/components/fantasy/DraftValuePanel.test.tsx` covers the shared disclosure and calculator UI
 - `src/app/premier-league/__tests__/` and `src/app/la-liga/__tests__/` — dashboard client and route-state regression tests
 - `src/app/news-pulse/__tests__/`, `src/app/spacex-mission-control/__tests__/`, and `src/app/fintech-tools/budget-planner/__tests__/` — standalone tool coverage
-- `src/app/api/news-pulse/__tests__/`, `src/app/api/spacex/**/__tests__/`, `src/app/api/premier-league/**/__tests__/`, and `src/app/api/search/__tests__/` — API route coverage for data tools
+- `src/app/api/news-pulse/__tests__/`, `src/app/api/spacex/**/__tests__/`, `src/app/api/premier-league/**/__tests__/`, `src/app/api/search/__tests__/`, `src/app/api/mba-jobs/__tests__/`, and `src/app/api/job-search/__tests__/` — API route coverage for data tools and private sync
+- `src/app/mba-internship-notifications/__tests__/` — job search tracker client, candidates view, application edit dialog, and form state tests
+- `src/hooks/__tests__/useMBAApplications.test.tsx` — application tracking and private pipeline/candidate sync hooks
+- `src/lib/__tests__/mba-job-search.test.ts` and `src/lib/__tests__/mba-job-matching.test.ts` — candidate filtering, target matching, deduplication, and parsing
 - `extension/src/__tests__/` — Chrome extension tests covering room binding, pick reconciliation, dialog matching, and autodraft controller lifecycle
 - other repo-level `*.test.*` and `*.spec.*` files outside `e2e/`
 

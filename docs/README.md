@@ -2,7 +2,7 @@
 
 Current map of tracked Markdown documentation.
 
-**Last updated:** 2026-09-30
+**Last updated:** 2026-10-07
 
 Tracked Markdown audit scope: `git ls-files -- '*.md' '*.mdx'` returned 621 tracked files on 2026-09-30, split across `content/blog/` (244 live articles), `.agents/` (104), `.impeccable/` (79), `docs/` (65), `content/changelog/` (59), `content/` historical snapshots (44), the repository root (23), and three elsewhere. `ds-bundle/` is gitignored and not tracked. Only the root and `docs/` files are website documentation, so the working set this index governs is about 88 files. Re-run the command rather than trusting these numbers.
 
@@ -51,6 +51,7 @@ Subsystem references (current):
 - `FANTASY_DRAFT_COMPANION.md` - private Chrome and Edge side panel build, installation, and operating limits
 - `ARTICLE_IMAGE_WORKFLOW.md` - blog cover-image plan, the fetch builder, and the writing-time step
 - `EASTER_EGGS.md` - every easter egg on the site, with its trigger, what it shows, and its code
+- `JOB_SEARCH_PRIVATE_DATA.md` - private job-search pipeline contract, local directory structure (`private/job-search/`), ATS candidates extraction script, and development sync route
 - `TODO.md` - open items that need Isaac or a scheduled run, each with why it is blocked
 
 ---
@@ -75,6 +76,7 @@ Historical release notes and changelogs:
 Planning and strategy references:
 
 - `content-plan-ai-mba-pm-cluster.md`
+- `superpowers/specs/2026-10-07-job-search-system-design.md` (job search system design specification)
 
 Dated audits and research dossiers. Each one is a point-in-time snapshot rather than a live contract, so read the date in the title first and confirm anything still open against the code. Several carry fix backlogs that are partly worked through:
 

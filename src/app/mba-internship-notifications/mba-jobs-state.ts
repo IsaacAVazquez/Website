@@ -1,5 +1,6 @@
 // ---------------------------------------------------------------------------
-// MBA Internship Notifications – URL state management
+// Job search tracker – URL state management. The default feed is full-time
+// roles; the internship filter stays available for anyone who wants it.
 // ---------------------------------------------------------------------------
 
 import { MBA_ROLE_FAMILIES, MBA_ROLE_FAMILY_LABELS } from "@/constants/mba-role-taxonomy";
@@ -16,7 +17,7 @@ import { readParam, type SearchParamInput } from "@/lib/searchParams";
 
 export const MBA_JOBS_ROUTE = "/mba-internship-notifications";
 
-export const VIEW_OPTIONS = ["feed", "applications"] as const;
+export const VIEW_OPTIONS = ["feed", "applications", "candidates"] as const;
 export const EXTERNAL_OPTIONS = ["off", "on"] as const;
 export const SORT_OPTIONS = ["relevance", "newest", "oldest"] as const;
 export const CATEGORY_OPTIONS = ["all", "big-tech", "fintech", "startup"] as const;
@@ -26,6 +27,7 @@ export const ROLE_FAMILY_OPTIONS = ["all", ...MBA_ROLE_FAMILIES] as const;
 export const VIEW_LABELS: Record<MBAJobsView, string> = {
   feed: "Role feed",
   applications: "Application pipeline",
+  candidates: "Candidates",
 };
 
 export const EXTERNAL_LABELS: Record<MBAExternalLeadsState, string> = {
@@ -63,7 +65,7 @@ export const DEFAULT_MBA_JOBS_STATE: MBAJobsSearchState = {
   location: "",
   sort: "relevance",
   category: "all",
-  roleType: "all",
+  roleType: "full-time",
   roleFamily: "all",
 };
 

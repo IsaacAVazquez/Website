@@ -2,7 +2,7 @@
 
 Current API route map.
 
-**Last updated:** 2026-10-02
+**Last updated:** 2026-10-07
 
 ---
 
@@ -21,6 +21,7 @@ Current API route map.
 | `/api/la-liga/teams/[teamId]` | GET | Snapshot-backed team drilldown payload for `/la-liga` |
 | `/api/mba-jobs` | GET | Live MBA-role aggregator across Greenhouse/Lever/Ashby/direct-HTML boards for `/mba-internship-notifications` |
 | `/api/mba-jobs/email` | POST | Sends grouped digest of supplied jobs via Resend |
+| `/api/job-search` | GET, PUT | Development only. Reads and writes `private/job-search/pipeline.json` or `candidates.json` (`?file=`) with an mtime revision check, so the local tracker and the job-search skills share one file. Returns 404 in any other environment |
 | `/api/newsletter/subscribe` | POST | Creates an opted-in Resend contact from the public newsletter form with JSON object shape validation |
 | `/api/mlb/teams/[teamId]` | GET | Snapshot-backed MLB team drilldown payload |
 | `/api/nba/teams/[teamId]` | GET | Snapshot-backed NBA team drilldown payload |
@@ -46,7 +47,7 @@ Current API route map.
 - `/api/earthquake-pulse/summary` and the two `/api/bay-area-transit/*` routes pass `preferLive: true`, so they fetch the upstream source at request time and fall back to the committed snapshot
 - the league, golf, and World Cup `/summary` routes and `/api/investments/index` were removed; those pages read their summaries on the server, so only the drilldown routes remain
 - `/api/fantasy-data` reads generated static snapshots; there are no live `/api/fantasy-pros-*`, `/api/data-manager`, `/api/data-metadata`, `/api/sample-data`, or `/api/scheduled-update` routes
-- `/api/mba-jobs` fetches live from public job boards at request time with a 30-minute `s-maxage` and 8s per-target timeout; `/api/mba-jobs/email` requires `RESEND_API_KEY` and `MBA_DIGEST_ALLOWED_RECIPIENTS`
+- `/api/mba-jobs` fetches live from public job boards across 59 tracked companies in `src/constants/mba-companies.ts` (48 actively fetched, 11 manual) at request time with a 30-minute `s-maxage` and 8s per-target timeout; `/api/mba-jobs/email` requires `RESEND_API_KEY` and `MBA_DIGEST_ALLOWED_RECIPIENTS`
 - there is no auth route; `/api/auth/[...nextauth]` was removed on 2026-10-02
 
 ---

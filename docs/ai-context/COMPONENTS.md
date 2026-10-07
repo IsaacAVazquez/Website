@@ -2,7 +2,7 @@
 
 Current component ownership reference.
 
-**Last updated:** 2026-10-02
+**Last updated:** 2026-10-07
 
 ---
 
@@ -116,6 +116,7 @@ Page-level clients live at `src/app/premier-league/premier-league-client.tsx` an
 - `src/app/polling-aggregator/*` plus `src/data/pollingSnapshot.json`
 - `src/app/fintech-tools/budget-planner/*` plus `src/hooks/useBudgetPlanner.ts`
 - `src/app/fintech-tools/interchange-iq/*`
+- `src/app/mba-internship-notifications/*` (`MBAJobsClient`, `CandidatesView`, `ApplicationEditDialog`) plus `src/constants/mba-companies.ts` and `src/lib/mba-applications.ts`
 
 ---
 

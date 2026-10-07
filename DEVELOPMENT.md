@@ -2,7 +2,7 @@
 
 Current development setup and workflow notes.
 
-**Last updated:** 2026-10-02
+**Last updated:** 2026-10-07
 
 ---
 
@@ -84,7 +84,7 @@ Important current routes:
 - March Madness route
 - Premier League, La Liga, MLB, NBA, NFL, golf, Formula 1, and Fantasy Formula 1 dashboards
 - standalone routes for AI tools, frontier models, News Pulse, SpaceX Mission Control, Polling Aggregator, personal logs, and fintech tools
-- search and admin
+- search, changelog, and utility pages
 
 ### Shared shell
 
@@ -169,6 +169,17 @@ npm run update:nfl
 ```
 
 These commands use public data sources and do not require auth tokens. Golf, Formula 1, the World Cup, Earthquake Pulse, and Bay Area Transit follow the same pattern with their own update scripts (`npm run update:golf`, `npm run update:formula-1`, `npm run update:world-cup`, `npm run update:earthquake`, `npm run update:bay-area-transit`), each against a public source with no auth token.
+ 
+### Job search and candidate pipeline
+
+- `/mba-internship-notifications` tracks full-time and internship opportunities across 59 companies in `src/constants/mba-companies.ts` (37 Greenhouse, 7 Ashby, 2 SmartRecruiters, 1 Lever, 1 direct-HTML, and 11 manual).
+- Local candidate dumping script:
+  ```bash
+  ./node_modules/.bin/tsx --env-file-if-exists=.env.local scripts/jobSearch/dumpCandidates.ts [inbox.json ...]
+  ```
+  Pulls active ATS feeds, matches full-time roles against `private/job-search/targets.json`, drops duplicates already in pipeline or candidates, and writes `private/job-search/candidates.json`.
+- In development, the client synchronizes `localStorage` with `private/job-search/pipeline.json` and `candidates.json` via `/api/job-search` (newer `updatedAt` wins, with 409 conflict retry).
+- Everything in `private/job-search/` is personal, gitignored, and never deployed to production.
 
 ---
 

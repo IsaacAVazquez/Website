@@ -2,7 +2,7 @@
 
 Current API route inventory for the app.
 
-**Last updated:** 2026-10-02
+**Last updated:** 2026-10-07
 
 ---
 
@@ -47,12 +47,13 @@ Current API route inventory for the app.
 | `/api/bay-area-transit/stations/[stationId]` | GET | Request-time station board with snapshot fallback, keyed by lowercased BART abbreviation |
 | `/api/earthquake-pulse/summary` | GET | Request-time USGS earthquake summary with checked-in last-good fallback |
 
-### MBA internship notifications
+### MBA internship notifications and job search
 
 | Route | Methods | Notes |
 |------|---------|-------|
-| `/api/mba-jobs` | GET | Aggregates MBA-relevant postings across Greenhouse, Lever, Ashby, SmartRecruiters, and direct-HTML job boards (plus optional Adzuna external leads). `src/constants/mba-companies.ts` tracks 39 companies, ~28 actively fetched (the `manual` entries are catalogued, not live-fetched); filters via `src/lib/mba-job-matching.ts`; accepts optional `?companies=` filter |
+| `/api/mba-jobs` | GET | Aggregates MBA-relevant and tech PM postings across Greenhouse, Lever, Ashby, SmartRecruiters, and direct-HTML job boards (plus optional Adzuna external leads). `src/constants/mba-companies.ts` tracks 59 companies, 48 actively fetched (37 Greenhouse, 7 Ashby, 2 SmartRecruiters, 1 Lever, 1 direct-HTML; 11 manual catalog entries); filters via `src/lib/mba-job-matching.ts`; accepts optional `?companies=` filter |
 | `/api/mba-jobs/email` | POST | Sends a grouped digest of supplied `{ jobs, to }` via Resend; requires the `x-mba-digest-secret` header, `RESEND_API_KEY`, and `MBA_DIGEST_ALLOWED_RECIPIENTS`; `RESEND_FROM_EMAIL` selects a verified sender |
+| `/api/job-search` | GET, PUT | Development only (404 in production). Reads and writes `private/job-search/pipeline.json` or `candidates.json` (`?file=`) with revision checking and 409 conflict detection, enabling bidirectional sync between the local tracker and job search skills |
 
 ### Content and utilities
 
@@ -150,6 +151,7 @@ Use these as the actual source of truth:
 - `src/app/api/spacex/launches/[id]/route.ts`
 - `src/app/api/mba-jobs/route.ts`
 - `src/app/api/mba-jobs/email/route.ts`
+- `src/app/api/job-search/route.ts`
 - `src/app/api/rss/route.ts`
 - `src/app/api/search/route.ts`
 

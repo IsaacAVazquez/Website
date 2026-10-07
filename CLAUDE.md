@@ -2,7 +2,7 @@
 
 Deep implementation context for Claude Code and other agents working in this repo.
 
-**Last updated:** 2026-10-02
+**Last updated:** 2026-10-07
 
 ---
 
@@ -39,7 +39,7 @@ secondary authority-building content — not a generic blog template. The surfac
 5. **Experimental dashboards** — ~20 standalone data tools (sports, civic, space,
    news, markets); see the Route Map in `AGENTS.md`
 6. **Fintech tools** — calculators under `/fintech-tools/*`
-7. **MBA internship tracker** — `/mba-internship-notifications`
+7. **Full-time job search tracker** — `/mba-internship-notifications` (full-time and internship feed, candidate triage, application pipeline with interview rounds and fit grading, dev-mode file sync)
 8. **Personal-interest tools** — browser-persisted (`/travel`, `/food-map`,
    `/recipe-finder`, `/wine-cellar`, `/museum-log`)
 
@@ -384,6 +384,7 @@ Subsystem references:
 - `docs/DATA_UPDATE_OPERATIONS.md` — command → artifact → schedule runbook for every refresh
 - `docs/ARTICLE_IMAGE_WORKFLOW.md` — blog cover-image plan, the fetch builder, and the writing-time step
 - `docs/EASTER_EGGS.md` — every easter egg on the site, with its trigger, what it shows, and its code
+- `docs/JOB_SEARCH_PRIVATE_DATA.md` — private job-search pipeline data contract, local directory structure (`private/job-search/`), ATS candidates extraction script, and development sync route
 - `docs/TODO.md` — open items that need Isaac (secrets, dashboards, decisions) or a scheduled run; add blocked work here and delete an item when it is done
 
 **Legacy / historical** (do not quote as current without checking code): root-level

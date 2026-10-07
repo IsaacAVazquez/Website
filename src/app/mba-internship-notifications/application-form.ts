@@ -24,6 +24,11 @@ export interface ApplicationFormState {
   followUpDate: string;
   deadline: string;
   notes: string;
+  /** Integer 0 to 100 as typed; blank clears the fit reading. */
+  fitScore: string;
+  fitRationale: string;
+  appliedVia: string;
+  materialsDir: string;
 }
 
 export const EMPTY_APPLICATION_FORM: ApplicationFormState = {
@@ -39,6 +44,10 @@ export const EMPTY_APPLICATION_FORM: ApplicationFormState = {
   followUpDate: "",
   deadline: "",
   notes: "",
+  fitScore: "",
+  fitRationale: "",
+  appliedVia: "",
+  materialsDir: "",
 };
 
 export function getApplicationFormState(
@@ -58,5 +67,9 @@ export function getApplicationFormState(
     followUpDate: application.followUpDate ?? "",
     deadline: application.deadline ?? "",
     notes: application.notes,
+    fitScore: application.fit ? String(application.fit.score) : "",
+    fitRationale: application.fit?.rationale ?? "",
+    appliedVia: application.appliedVia ?? "",
+    materialsDir: application.materialsDir ?? "",
   };
 }

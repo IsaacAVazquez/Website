@@ -126,3 +126,6 @@ ds-bundle/
 .impeccable/critique/
 .impeccable/hook.cache.json
 .impeccable/audit-*.md
+
+# Private job-search data (résumé, pipeline, materials); see docs/JOB_SEARCH_PRIVATE_DATA.md
+private/

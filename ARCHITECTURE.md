@@ -2,7 +2,7 @@
 
 High-level system architecture for the current live application.
 
-**Last updated:** 2026-10-02
+**Last updated:** 2026-10-07
 
 ---
 
@@ -90,6 +90,19 @@ Update workflow:
 - server page for metadata and structured data
 - client UI for deep-linked tabs and editorial analysis modules
 - companion article under `/writing`
+
+### Job search and candidate pipeline
+
+The `/mba-internship-notifications` route is a full-time and internship job search tracker for tech product management and business roles across 59 tracked companies.
+
+- Client shell lives in `src/app/mba-internship-notifications/mba-jobs-client.tsx`, supporting three primary views:
+  - **Feed** — live postings aggregated from public ATS boards (Greenhouse, Ashby, SmartRecruiters, Lever, direct-HTML) via `/api/mba-jobs`, filtered by `src/lib/mba-job-matching.ts`
+  - **Pipeline** — application tracker (`useMBAApplications`) supporting stages (saved, applied, interviewing, offer, rejected, archived), priority, fit grading (strong/good/moderate/stretch), interview rounds (types, status, dates, notes), deadlines, and follow-ups
+  - **Candidates** — sourced candidate review view (`candidates-view.tsx` / `useMBACandidates`) for triaging prospective roles (sourced, reviewed, dismissed)
+- Storage & sync:
+  - In production, application state persists in browser `localStorage`
+  - In local development, the tracker performs bidirectional synchronization with `private/job-search/pipeline.json` and `candidates.json` via `/api/job-search` (newer `updatedAt` wins, with 409 conflict detection)
+- Local candidate dumping: `scripts/jobSearch/dumpCandidates.ts` pulls live boards, matches against `private/job-search/targets.json`, and writes `private/job-search/candidates.json`
 
 ### Other standalone tools
 
@@ -179,7 +192,7 @@ Important groups:
 - US sports and golf: `/api/mlb/teams/[teamId]`, `/api/nba/teams/[teamId]`, `/api/nfl/teams/[teamId]`, `/api/golf/players/[playerId]`, `/api/formula-1/meetings/[meetingId]`
 - World Cup: `/api/world-cup/teams/[teamId]`
 - transit and geo: `/api/bay-area-transit/summary`, `/api/bay-area-transit/stations/[stationId]`, `/api/earthquake-pulse/summary`
-- jobs/email: `/api/mba-jobs`, `/api/mba-jobs/email`
+- jobs/email: `/api/mba-jobs`, `/api/mba-jobs/email`, and development-only `/api/job-search`
 - content/utilities: `/api/news-pulse`, `/api/spacex/summary`, `/api/spacex/launches`, `/api/spacex/launches/[id]`, `/api/rss`, `/api/search`
 
 Current caveat:

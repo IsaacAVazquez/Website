@@ -2,7 +2,7 @@
 
 Fast route reference for the current app.
 
-**Last updated:** 2026-10-02
+**Last updated:** 2026-10-07
 
 ---
 
@@ -45,7 +45,7 @@ Fast route reference for the current app.
 | `/fintech-tools/budget-planner` | `src/app/fintech-tools/budget-planner/page.tsx` | Server page -> budget planner client |
 | `/fintech-tools/interchange-iq` | `src/app/fintech-tools/interchange-iq/page.tsx` | Server page -> `InterchangeIQClient` |
 | `/fintech-tools/rent-vs-buy` | `src/app/fintech-tools/rent-vs-buy/page.tsx` | Server page -> `RentVsBuyClient` |
-| `/mba-internship-notifications` | `src/app/mba-internship-notifications/page.tsx` | Async server page -> `MBAJobsClient` |
+| `/mba-internship-notifications` | `src/app/mba-internship-notifications/page.tsx` | Async server page -> `MBAJobsClient` (full-time and internship job search tracker with Feed, Pipeline, and Candidates views) |
 | `/decision-lab` | `src/app/decision-lab/page.tsx` | Server page for decision-modeling content |
 | `/food-map` | `src/app/food-map/page.tsx` | Server page for food map content |
 | `/recipe-finder` | `src/app/recipe-finder/page.tsx` | Server page for recipe finder content |
@@ -172,7 +172,7 @@ Footer behavior:
 - `/ai-dev-tools` and `/frontier-models` are live AI/knowledge surfaces
 - `/decision-lab`, `/food-map`, `/recipe-finder`, `/wine-cellar`, `/museum-log`, `/travel`, `/now`, and `/changelog` are live personal or utility surfaces
 - `/fintech-tools/budget-planner` and `/fintech-tools/interchange-iq` are live fintech tool routes
-- `/mba-internship-notifications` is a live route backed by `/api/mba-jobs` that polls Greenhouse, Lever, Ashby, SmartRecruiters, and direct-HTML job boards across ~28 of 39 tracked companies for MBA internships and full-time business roles
+- `/mba-internship-notifications` is a live route backed by `/api/mba-jobs` that polls Greenhouse, Lever, Ashby, SmartRecruiters, and direct-HTML job boards across 59 tracked companies for full-time and internship tech PM and business roles (Feed, Pipeline with fit grading and interview rounds, Candidates review, dev-mode file sync), with the route name kept for its inbound links
 
 ### `/search`
 

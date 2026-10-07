@@ -2,9 +2,9 @@ import { fireEvent, render, screen, within } from "@testing-library/react";
 import { MBAJobsClient } from "../mba-jobs-client";
 import { DEFAULT_MBA_JOBS_STATE } from "../mba-jobs-state";
 import { MBA_COMPANIES } from "@/constants/mba-companies";
-import type { MBAJob, MBATrackedApplication } from "@/types/mba-jobs";
+import type { MBAJob, MBAJobCandidate, MBATrackedApplication } from "@/types/mba-jobs";
 import { useMBAJobs } from "@/hooks/useMBAJobs";
-import { useMBAApplications } from "@/hooks/useMBAApplications";
+import { useMBAApplications, useMBAJobCandidates } from "@/hooks/useMBAApplications";
 import { DISPLAY_TIME_ZONE, toLocalDateKey } from "@/lib/date-formatters";
 
 // A YYYY-MM-DD key `days` from today, anchored at local noon so the calendar
@@ -20,6 +20,19 @@ const mockPush = jest.fn();
 let currentSearchParams = new URLSearchParams();
 const mockUseMBAJobs = useMBAJobs as jest.MockedFunction<typeof useMBAJobs>;
 const mockUseMBAApplications = useMBAApplications as jest.MockedFunction<typeof useMBAApplications>;
+const mockUseMBAJobCandidates = useMBAJobCandidates as jest.MockedFunction<typeof useMBAJobCandidates>;
+
+function buildCandidatesHookValue(
+  overrides: Partial<ReturnType<typeof useMBAJobCandidates>> = {}
+) {
+  return {
+    candidates: [] as MBAJobCandidate[],
+    enabled: false,
+    setTriage: jest.fn(),
+    removeCandidate: jest.fn(),
+    ...overrides,
+  };
+}
 
 function buildJob(overrides: Partial<MBAJob> = {}): MBAJob {
   return {
@@ -34,8 +47,22 @@ function buildJob(overrides: Partial<MBAJob> = {}): MBAJob {
     atsType: "greenhouse",
     category: "fintech",
     snippet: "Summer associate role for product-minded MBA students.",
-    roleType: "internship",
+    // The feed defaults to full-time roles, so the shared fixture has to pass that filter.
+    roleType: "full-time",
     roleFamilies: ["product"],
+    ...overrides,
+  };
+}
+
+function buildCandidate(overrides: Partial<MBAJobCandidate> = {}): MBAJobCandidate {
+  const job = buildJob();
+  return {
+    id: "cand-1",
+    job: { ...job, capturedAt: "2026-10-01T10:00:00.000Z", source: "live-feed" },
+    triage: "sourced",
+    fit: { score: 82, rationale: "Product role at a fintech I already follow.", scoredAt: "2026-10-01T10:00:00.000Z" },
+    sourcedAt: "2026-10-01T10:00:00.000Z",
+    updatedAt: "2026-10-01T10:00:00.000Z",
     ...overrides,
   };
 }
@@ -116,6 +143,7 @@ function buildApplicationsHookValue(
     exportJson: jest.fn(() => "{}"),
     exportCsv: jest.fn(() => ""),
     searchApplications: jest.fn((query: string, source: MBATrackedApplication[] = []) => source),
+    privateSync: null,
     ...overrides,
   };
 }
@@ -134,6 +162,7 @@ jest.mock("@/hooks/useMBAJobs", () => ({
 
 jest.mock("@/hooks/useMBAApplications", () => ({
   useMBAApplications: jest.fn(),
+  useMBAJobCandidates: jest.fn(),
 }));
 
 describe("MBAJobsClient", () => {
@@ -142,6 +171,82 @@ describe("MBAJobsClient", () => {
     mockPush.mockReset();
     mockUseMBAJobs.mockReturnValue(buildHookValue());
     mockUseMBAApplications.mockReturnValue(buildApplicationsHookValue());
+    mockUseMBAJobCandidates.mockReturnValue(buildCandidatesHookValue());
+  });
+
+  it("hides the Candidates view in production and falls back to the feed for ?view=candidates", () => {
+    currentSearchParams = new URLSearchParams("view=candidates");
+
+    render(<MBAJobsClient initialState={DEFAULT_MBA_JOBS_STATE} />);
+
+    const toggle = screen.getByRole("group", { name: "Job tracker view" });
+    expect(within(toggle).queryByRole("button", { name: "Candidates" })).not.toBeInTheDocument();
+    expect(within(toggle).getByRole("button", { name: "Role feed", pressed: true })).toBeVisible();
+    expect(screen.getByTestId("live-jobs-grid")).toBeInTheDocument();
+    expect(screen.queryByTestId("candidates-grid")).not.toBeInTheDocument();
+  });
+
+  it("renders sourced candidates by fit and wires promote and dismiss", () => {
+    currentSearchParams = new URLSearchParams("view=candidates");
+    const trackJob = jest.fn();
+    const setTriage = jest.fn();
+    const removeCandidate = jest.fn();
+    const strong = buildCandidate({
+      id: "cand-strong",
+      job: { ...buildCandidate().job, id: "job-strong", title: "Chief of Staff", companyName: "Brex" },
+      fit: { score: 91, rationale: "Chief of staff seat under a product leader.", scoredAt: "2026-10-02T10:00:00.000Z" },
+      sourcedAt: "2026-09-30T10:00:00.000Z",
+    });
+    const weaker = buildCandidate({ id: "cand-weaker", fit: { score: 64, rationale: "Adjacent operations role.", scoredAt: "2026-10-02T10:00:00.000Z" } });
+    mockUseMBAApplications.mockReturnValue(buildApplicationsHookValue({ trackJob }));
+    mockUseMBAJobCandidates.mockReturnValue(
+      buildCandidatesHookValue({ enabled: true, candidates: [strong, weaker], setTriage, removeCandidate })
+    );
+
+    render(<MBAJobsClient initialState={DEFAULT_MBA_JOBS_STATE} />);
+
+    expect(screen.getByRole("button", { name: "Candidates", pressed: true })).toBeVisible();
+    const headings = within(screen.getByTestId("candidates-grid")).getAllByRole("heading", { level: 3 });
+    expect(headings.map((heading) => heading.textContent)).toEqual(["Chief of Staff", "MBA Product Intern"]);
+    expect(screen.getByText("Fit 91")).toBeVisible();
+
+    const [promote] = screen.getAllByRole("button", { name: "Save to pipeline" });
+    fireEvent.click(promote);
+    expect(trackJob).toHaveBeenCalledWith(strong.job);
+    expect(removeCandidate).toHaveBeenCalledWith("cand-strong");
+
+    const [dismiss] = screen.getAllByRole("button", { name: "Dismiss" });
+    fireEvent.click(dismiss);
+    expect(setTriage).toHaveBeenCalledWith("cand-strong", "dismissed");
+  });
+
+  it("shows the fit tag and the sync line only when the private data is there", () => {
+    currentSearchParams = new URLSearchParams("view=applications");
+    const application = buildApplication({
+      fit: { score: 88, rationale: "Strong match.", scoredAt: "2026-10-02T10:00:00.000Z" },
+      appliedVia: "Referral",
+      materialsDir: "private/job-search/roles/stripe-pm",
+      interviewRounds: [{ label: "Recruiter screen", date: "2026-10-09", outcome: "scheduled", notes: "" }],
+    });
+    mockUseMBAApplications.mockReturnValue(
+      buildApplicationsHookValue({
+        applications: [application],
+        activeApplications: [application],
+        privateSync: { lastSyncedAt: "2026-10-07T15:04:00.000Z", error: null },
+      })
+    );
+
+    render(<MBAJobsClient initialState={DEFAULT_MBA_JOBS_STATE} />);
+
+    expect(screen.getByText("Fit 88")).toBeVisible();
+    expect(screen.getByText("Applied via Referral")).toBeVisible();
+    expect(screen.getByText("private/job-search/roles/stripe-pm")).toBeVisible();
+    expect(screen.getByRole("button", { name: "Copy path" })).toBeVisible();
+    expect(within(screen.getByRole("list", { name: "Interview rounds" })).getByText(/Recruiter screen/)).toBeVisible();
+    expect(screen.getByRole("status", { name: "" })).toHaveTextContent(
+      /Synced with private\/job-search\/pipeline\.json, last sync/
+    );
+    expect(screen.getByRole("button", { name: "By fit", pressed: false })).toBeVisible();
   });
 
   it("shows company names in the partial-failure banner and button-styled manual links", () => {
@@ -222,9 +327,13 @@ describe("MBAJobsClient", () => {
 
     expect(stripeButton).toBeVisible();
     expect(within(startupGroup).getByRole("button", { name: "OpenAI" })).toBeVisible();
-    // Every Big Tech company is a manual check, Atlassian included since its
-    // Lever board closed, so that group has no feed to toggle.
-    expect(screen.queryByTestId("tracked-companies-big-tech")).not.toBeInTheDocument();
+    // Big Tech polls only the boards Pinterest and Roblox publish. The rest,
+    // Atlassian included since its Lever board closed, stay manual checks.
+    const bigTechTracked = MBA_COMPANIES.filter(
+      (company) => company.category === "big-tech" && company.atsType !== "manual"
+    ).length;
+    const bigTechGroup = screen.getByTestId("tracked-companies-big-tech");
+    expect(within(bigTechGroup).getByText(`${bigTechTracked} / ${bigTechTracked} watched`)).toBeVisible();
     expect(screen.getByRole("link", { name: "Career page for Atlassian" })).toBeVisible();
     expect(within(fintechGroup).getByText(`${fintechTracked} / ${fintechTracked} watched`)).toBeVisible();
     expect(within(startupGroup).getByText(`${startupTracked} / ${startupTracked} watched`)).toBeVisible();
@@ -390,11 +499,23 @@ describe("MBAJobsClient", () => {
 
     fireEvent.click(screen.getByRole("button", { name: "Clear filters" }));
 
-    expect(screen.getByRole("heading", { name: "Finance Intern" })).toBeVisible();
-    expect(screen.getByRole("heading", { name: "MBA Leadership Program" })).toBeVisible();
+    // Clearing lands on the full-time default, so the intern and unclear roles stay hidden.
+    expect(screen.getByRole("heading", { name: "Strategic Finance Associate" })).toBeVisible();
+    expect(screen.queryByRole("heading", { name: "Finance Intern" })).not.toBeInTheDocument();
+    expect(
+      screen.queryByRole("heading", { name: "MBA Leadership Program" })
+    ).not.toBeInTheDocument();
     expect(mockPush).toHaveBeenLastCalledWith("/mba-internship-notifications", {
       scroll: false,
     });
+
+    fireEvent.click(screen.getByRole("button", { name: "All" }));
+    expect(mockPush).toHaveBeenLastCalledWith(
+      "/mba-internship-notifications?roleType=all",
+      { scroll: false }
+    );
+    expect(screen.getByRole("heading", { name: "Finance Intern" })).toBeVisible();
+    expect(screen.getByRole("heading", { name: "MBA Leadership Program" })).toBeVisible();
   });
 
   it("paginates the live grid and resets to the first page when a filter changes", () => {

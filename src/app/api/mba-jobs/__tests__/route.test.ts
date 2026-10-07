@@ -141,7 +141,7 @@ describe("GET /api/mba-jobs", () => {
     process.env = originalEnv;
   });
 
-  it("classifies internships, full-time roles, unclear MBA programs, and filters non-target roles", async () => {
+  it("classifies internships, full-time roles, MBA leadership programs, and filters non-target roles", async () => {
     installFetchMock({
       "https://boards-api.greenhouse.io/v1/boards/stripe/jobs?content=true": new Response(
         JSON.stringify(
@@ -257,8 +257,8 @@ describe("GET /api/mba-jobs", () => {
         }),
         expect.objectContaining({
           title: "MBA Leadership Program",
-          roleType: "unclear",
-          roleFamilies: [],
+          roleType: "full-time",
+          roleFamilies: ["leadership-program"],
         }),
       ])
     );

@@ -76,7 +76,26 @@ describe("getApplicationFormState", () => {
       followUpDate: "2026-04-20",
       deadline: "2026-05-01",
       notes: "Follow up with recruiter.",
+      fitScore: "",
+      fitRationale: "",
+      appliedVia: "",
+      materialsDir: "",
     });
+  });
+
+  it("maps the fit reading, applied-via, and materials folder onto string fields", () => {
+    const form = getApplicationFormState(
+      buildApplication({
+        fit: { score: 88, rationale: "Strong match.", scoredAt: "2026-10-02T10:00:00.000Z" },
+        appliedVia: "Referral",
+        materialsDir: "private/job-search/roles/stripe-pm",
+      })
+    );
+
+    expect(form.fitScore).toBe("88");
+    expect(form.fitRationale).toBe("Strong match.");
+    expect(form.appliedVia).toBe("Referral");
+    expect(form.materialsDir).toBe("private/job-search/roles/stripe-pm");
   });
 
   it("pulls the company, role, and status straight from the snapshot, not the empty defaults", () => {

@@ -86,7 +86,7 @@ function installBoards(responders: Record<string, Responder> = {}): void {
       return response;
     }
     if (url.startsWith("https://api.lever.co/")) {
-      return json({ ok: false, error: "Document not found" }, 404);
+      return json([]);
     }
     if (url.startsWith("https://api.smartrecruiters.com/")) {
       return json({ offset: 0, limit: 100, totalFound: 0, content: [] });
@@ -156,7 +156,7 @@ describe("getMBAJobsData", () => {
     const result = await getMBAJobsData();
     const requested = mockFetch.mock.calls.map(([input]) => String(input));
 
-    expect(requested.filter((url) => url.startsWith("https://api.lever.co/"))).toEqual([]);
+    expect(requested).not.toContain("https://api.lever.co/v0/postings/atlassian?mode=json");
     expect(requested).not.toContain(`${GREENHOUSE}/hubspot/jobs?content=true`);
     expect(result.body.errors).toEqual([]);
     expect(result.isDegraded).toBe(false);

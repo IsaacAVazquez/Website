@@ -105,11 +105,22 @@ describe("ApplicationEditDialog", () => {
     const saveButton = screen.getByRole("button", { name: "Save application" });
     expect(saveButton).toBeEnabled();
 
+    fireEvent.change(screen.getByLabelText("Fit score (0 to 100)"), { target: { value: "88" } });
+    fireEvent.change(screen.getByLabelText("Fit rationale"), { target: { value: "Strong match." } });
+    fireEvent.change(screen.getByLabelText("Applied via"), { target: { value: "Referral" } });
+    fireEvent.change(screen.getByLabelText("Materials folder"), {
+      target: { value: "private/job-search/roles/stripe-pm" },
+    });
+
     fireEvent.click(saveButton);
     expect(onSave).toHaveBeenCalledWith(
       expect.objectContaining({
         companyName: "Stripe",
         title: "MBA Product Intern",
+        fitScore: "88",
+        fitRationale: "Strong match.",
+        appliedVia: "Referral",
+        materialsDir: "private/job-search/roles/stripe-pm",
       }),
       application
     );

@@ -2,7 +2,7 @@
 
 Day-to-day operational and hygiene notes for the live site. For the public vulnerability-disclosure policy, see the root [`SECURITY.md`](../SECURITY.md).
 
-**Last updated:** 2026-10-02
+**Last updated:** 2026-10-07
 
 ---
 
@@ -80,6 +80,7 @@ These power the live UI. They are cached, rate-limited where appropriate, and mu
 
 - `/api/mba-jobs/email` sends a Resend-backed digest. It validates and escapes request content, caps digest size, rate-limits by client, and only sends to `MBA_DIGEST_ALLOWED_RECIPIENTS`.
 - `/api/newsletter/subscribe` creates a Resend contact from the public newsletter form. It validates that the parsed JSON payload is a non-null object before inspecting fields, returning HTTP 400 for malformed input.
+- `/api/job-search` is strictly development-only (`process.env.NODE_ENV === "development"`). It returns 404 in production and any non-development environment. It accesses only the gitignored `private/job-search/` directory to sync personal application and candidate state with local files, ensuring private job search data is never exposed in deployed builds.
 
 `/api/search` is still a limited, mostly hardcoded index. It uses `Object.hasOwn` on dictionary lookups to prevent prototype pollution from inherited properties like `constructor`. Do not treat it as complete site search.
 
