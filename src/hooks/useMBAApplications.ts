@@ -426,13 +426,6 @@ export function usePrivatePipelineSync(storedSnapshot: string): MBAPrivateSyncSt
     schedulePush();
   }, [enabled, storedSnapshot, schedulePush]);
 
-  useEffect(
-    () => () => {
-      if (pushTimerRef.current !== null) window.clearTimeout(pushTimerRef.current);
-    },
-    []
-  );
-
   return enabled ? state : null;
 }
 
@@ -503,5 +496,5 @@ export function useMBAJobCandidates() {
     [candidates, put]
   );
 
-  return { candidates, enabled, setTriage, removeCandidate, refresh: pull };
+  return { candidates, enabled, setTriage, removeCandidate };
 }

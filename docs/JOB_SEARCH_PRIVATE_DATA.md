@@ -56,7 +56,7 @@ A plain object with no wrapper, read by `parseMBAJobSearchTargets`, which falls 
 | `locations` | array of strings | Case-insensitive substring match on the posting's location; empty means any |
 | `excludeTitleTerms` | array of strings | Whole-token match, so `chief` does not remove `chief of staff` |
 | `companiesAvoid` | array of company ids | Matched against `companyId` |
-| `startWindow` | string | Free text used by the fit score's timing component |
+| `startWindow` | string | Free text read by the skills for the fit score's timing component; the code ignores it |
 | `maxPostingAgeDays` | number | Feed postings older than this are skipped by the dump script. The default is 45, and 0 turns the cap off |
 
 The skills also read two keys the parser ignores, `savedSearches` and `promoteThresholds`, and their meaning is documented inside the skill folder.

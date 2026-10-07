@@ -129,7 +129,6 @@ describe("candidates", () => {
         locations: ["United States", "US", "CA"],
         excludeTitleTerms: ["Director", "chief product officer"],
         companiesAvoid: ["avoidco"],
-        startWindow: "2027-summer",
         maxPostingAgeDays: 45,
       })
     );

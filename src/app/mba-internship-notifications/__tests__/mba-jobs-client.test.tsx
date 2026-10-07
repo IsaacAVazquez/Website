@@ -30,7 +30,6 @@ function buildCandidatesHookValue(
     enabled: false,
     setTriage: jest.fn(),
     removeCandidate: jest.fn(),
-    refresh: jest.fn().mockResolvedValue(undefined),
     ...overrides,
   };
 }
@@ -200,7 +199,7 @@ describe("MBAJobsClient", () => {
     const weaker = buildCandidate({ id: "cand-weaker", fit: { score: 64, rationale: "Adjacent operations role.", scoredAt: "2026-10-02T10:00:00.000Z" } });
     mockUseMBAApplications.mockReturnValue(buildApplicationsHookValue({ trackJob }));
     mockUseMBAJobCandidates.mockReturnValue(
-      buildCandidatesHookValue({ enabled: true, candidates: [weaker, strong], setTriage, removeCandidate })
+      buildCandidatesHookValue({ enabled: true, candidates: [strong, weaker], setTriage, removeCandidate })
     );
 
     render(<MBAJobsClient initialState={DEFAULT_MBA_JOBS_STATE} />);

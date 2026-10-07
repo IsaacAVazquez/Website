@@ -39,6 +39,7 @@ import {
   MBA_APPLICATION_PRIORITY_LABELS,
   MBA_APPLICATION_STATUSES,
   MBA_APPLICATION_STATUS_LABELS,
+  sanitizeFit,
 } from "@/lib/mba-applications";
 import {
   describeAttentionItem,
@@ -2035,15 +2036,10 @@ export function MBAJobsClient({
   ) {
     const followUpDate = form.followUpDate.trim() || null;
     const deadline = form.deadline.trim() || null;
-    const fitScore = Number(form.fitScore.trim());
-    const fit =
-      form.fitScore.trim() && Number.isFinite(fitScore)
-        ? {
-            score: Math.min(100, Math.max(0, Math.round(fitScore))),
-            rationale: form.fitRationale.trim(),
-            scoredAt: new Date().toISOString(),
-          }
-        : null;
+    const now = new Date().toISOString();
+    const fit = form.fitScore.trim()
+      ? sanitizeFit({ score: Number(form.fitScore), rationale: form.fitRationale.trim(), scoredAt: now }, now)
+      : null;
     const appliedVia = form.appliedVia.trim();
     const materialsDir = form.materialsDir.trim() || null;
 

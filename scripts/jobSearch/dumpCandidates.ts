@@ -15,7 +15,6 @@ import { resolve } from "node:path";
 
 import {
   buildMBAJobCandidatesFile,
-  buildMBAJobKey,
   mergeMBAJobCandidates,
   parseMBAApplications,
   parseMBAJobCandidates,
@@ -53,11 +52,9 @@ async function main(): Promise<void> {
   }
 
   const fresh = selectNewCandidates(result.body.jobs, candidates, pipeline, targets);
-  const known = new Set(candidates.map((candidate) => buildMBAJobKey(candidate.job)));
   const inbox = process.argv
     .slice(2)
     .flatMap((file) => parseMBAJobCandidates(readFileSync(resolve(file), "utf8")));
-  const inboxNew = inbox.filter((candidate) => !known.has(buildMBAJobKey(candidate.job)));
 
   const merged = mergeMBAJobCandidates(candidates, [...fresh, ...inbox]);
   mkdirSync(DIR, { recursive: true });
@@ -68,7 +65,7 @@ async function main(): Promise<void> {
 
   const failed = result.body.errors.map((error) => error.companyName || error.companyId);
   console.log(
-    `candidates: ${fresh.length} new from feed, ${inboxNew.length} new from inbox, ${merged.length} total; ` +
+    `candidates: ${fresh.length} new from feed, ${inbox.length} from inbox, ${merged.length} total; ` +
       `${failed.length} boards failed${failed.length ? ` (${failed.join(", ")})` : ""}`
   );
 }

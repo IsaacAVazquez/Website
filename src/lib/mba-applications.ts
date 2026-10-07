@@ -58,8 +58,6 @@ export const MBA_APPLICATION_PRIORITY_LABELS: Record<MBAApplicationPriority, str
 const MAX_TEXT_LENGTH = 220;
 const MAX_NOTES_LENGTH = 2_000;
 const MAX_INTERVIEW_ROUNDS = 12;
-const MBA_CANDIDATES_SCHEMA = "mba-candidates";
-const MBA_CANDIDATES_VERSION = 1;
 
 export const MBA_CANDIDATE_TRIAGE = [
   "sourced",
@@ -67,7 +65,7 @@ export const MBA_CANDIDATE_TRIAGE = [
   "dismissed",
 ] as const satisfies readonly MBACandidateTriage[];
 
-export const MBA_INTERVIEW_OUTCOMES = [
+const MBA_INTERVIEW_OUTCOMES = [
   "scheduled",
   "done",
   "passed",
@@ -255,7 +253,7 @@ export function buildMBAJobKey(job: Pick<MBAJob, "id" | "applyUrl">): string {
   return `job:${job.id}`;
 }
 
-export function buildMBAApplicationMatchKey(application: MBATrackedApplication): string {
+function buildMBAApplicationMatchKey(application: MBATrackedApplication): string {
   if (application.jobId) return `job:${application.jobId}`;
   const applyUrl = normalizeApplyUrlForKey(application.jobSnapshot.applyUrl);
   if (applyUrl) return `url:${applyUrl}`;
@@ -666,8 +664,8 @@ export function buildMBAJobCandidatesFile(
   now = new Date()
 ): MBAJobCandidatesFileV1 {
   return {
-    schema: MBA_CANDIDATES_SCHEMA,
-    version: MBA_CANDIDATES_VERSION,
+    schema: "mba-candidates",
+    version: 1,
     exportedAt: now.toISOString(),
     candidates,
   };
@@ -678,7 +676,6 @@ export const DEFAULT_MBA_JOB_SEARCH_TARGETS: MBAJobSearchTargets = {
   locations: [],
   excludeTitleTerms: [],
   companiesAvoid: [],
-  startWindow: "",
   maxPostingAgeDays: 45,
 };
 
@@ -700,7 +697,6 @@ export function parseMBAJobSearchTargets(raw: string | null): MBAJobSearchTarget
       locations: cleanStringList(parsed.locations),
       excludeTitleTerms: cleanStringList(parsed.excludeTitleTerms).map((term) => term.toLowerCase()),
       companiesAvoid: cleanStringList(parsed.companiesAvoid),
-      startWindow: cleanText(parsed.startWindow),
       maxPostingAgeDays:
         typeof parsed.maxPostingAgeDays === "number" && Number.isFinite(parsed.maxPostingAgeDays)
           ? Math.max(0, Math.round(parsed.maxPostingAgeDays))
@@ -719,14 +715,6 @@ function padTokens(value: string): string {
 function hasPhrase(haystack: string, phrases: string[]): boolean {
   const padded = padTokens(haystack);
   return phrases.some((phrase) => padded.includes(padTokens(phrase)));
-}
-
-function titleHasExcludedTerm(title: string, terms: string[]): boolean {
-  return terms.length > 0 && hasPhrase(title, terms);
-}
-
-function matchesLocation(location: string, locations: string[]): boolean {
-  return locations.length === 0 || hasPhrase(location, locations);
 }
 
 function isFreshEnough(postedAt: string, maxAgeDays: number, now: Date): boolean {
@@ -758,8 +746,8 @@ export function selectNewCandidates(
   for (const job of jobs) {
     if (job.roleType !== "full-time") continue;
     if (!job.roleFamilies.some((family) => targets.roleFamilies.includes(family))) continue;
-    if (!matchesLocation(job.location, targets.locations)) continue;
-    if (titleHasExcludedTerm(job.title, targets.excludeTitleTerms)) continue;
+    if (targets.locations.length > 0 && !hasPhrase(job.location, targets.locations)) continue;
+    if (hasPhrase(job.title, targets.excludeTitleTerms)) continue;
     if (!isFreshEnough(job.postedAt, targets.maxPostingAgeDays, now)) continue;
     if (avoid.has(job.companyId)) continue;
     const key = buildMBAJobKey(job);

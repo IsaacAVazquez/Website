@@ -17,16 +17,6 @@ const TRIAGE_LABELS: Record<MBACandidateTriage, string> = {
   dismissed: "Dismissed",
 };
 
-/** Fit score descending with unscored roles last, then newest sourced first. */
-export function sortCandidates(candidates: MBAJobCandidate[]): MBAJobCandidate[] {
-  return [...candidates].sort((left, right) => {
-    const leftScore = left.fit?.score ?? -1;
-    const rightScore = right.fit?.score ?? -1;
-    if (leftScore !== rightScore) return rightScore - leftScore;
-    return right.sourcedAt.localeCompare(left.sourcedAt);
-  });
-}
-
 export default function CandidatesView({
   candidates,
   onPromote,
@@ -47,7 +37,8 @@ export default function CandidatesView({
   }, [candidates]);
 
   const visible = useMemo(
-    () => sortCandidates(candidates.filter((candidate) => candidate.triage === triage)),
+    // Already sorted by fit then sourcedAt by parseMBAJobCandidates; filter keeps that order.
+    () => candidates.filter((candidate) => candidate.triage === triage),
     [candidates, triage]
   );
 
