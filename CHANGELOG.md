@@ -4,6 +4,12 @@ All notable changes to this repository are documented here. Format: `YYYY-MM-DD`
 
 ---
 
+## 2026-10-08
+
+- Posting facts on tracked applications ([#578](https://github.com/IsaacAVazquez/Website/pull/578)).
+
+---
+
 ## 2026-10-07
 
 - Combine the seven open dependency bumps ([#576](https://github.com/IsaacAVazquez/Website/pull/576)).
