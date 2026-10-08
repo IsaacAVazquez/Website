@@ -33,6 +33,7 @@ The wrapper is `{ "schema": "mba-applications-export", "version": 1, "exportedAt
 | `appliedVia` | string | The ATS or channel used to apply |
 | `materialsDir` | repo-relative path or null | The role folder, no leading slash and no `..` |
 | `interviewRounds` | array of `{ label, date, outcome, notes }`, 12 max | Outcome is `scheduled`, `done`, `passed`, or `failed` |
+| `facts` | array of `{ label, value }`, 12 max | Posting facts to reference on the card, such as base pay, work arrangement, program length, close date. Read-only on the dashboard |
 
 ## candidates.json
 

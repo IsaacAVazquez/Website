@@ -2,6 +2,7 @@ import { readBrowserStorageString, writeBrowserStorageString } from "@/lib/brows
 import type {
   MBAATSType,
   MBAApplicationPriority,
+  MBAApplicationFact,
   MBAApplicationsExportV1,
   MBAApplicationStatus,
   MBACandidateTriage,
@@ -207,6 +208,20 @@ function isInterviewOutcome(value: unknown): value is MBAInterviewOutcome {
   );
 }
 
+export function sanitizeFacts(value: unknown): MBAApplicationFact[] {
+  if (!Array.isArray(value)) return [];
+  const facts: MBAApplicationFact[] = [];
+  for (const item of value) {
+    if (!isRecord(item)) continue;
+    const label = cleanText(item.label);
+    const fact = cleanText(item.value);
+    if (!label || !fact) continue;
+    facts.push({ label, value: fact });
+    if (facts.length >= MAX_INTERVIEW_ROUNDS) break;
+  }
+  return facts;
+}
+
 export function sanitizeInterviewRounds(value: unknown): MBAInterviewRound[] {
   if (!Array.isArray(value)) return [];
   const rounds: MBAInterviewRound[] = [];
@@ -302,6 +317,7 @@ export function createMBAApplicationFromJob(
     appliedVia: "",
     materialsDir: null,
     interviewRounds: [],
+    facts: [],
   };
 }
 
@@ -351,6 +367,7 @@ export function createManualMBAApplication(
     appliedVia: cleanText(draft.appliedVia),
     materialsDir: cleanRelativePath(draft.materialsDir),
     interviewRounds: [],
+    facts: [],
   };
 }
 
@@ -411,6 +428,7 @@ function sanitizeTrackedApplication(value: unknown): MBATrackedApplication | nul
     appliedVia: cleanText(value.appliedVia),
     materialsDir: cleanRelativePath(value.materialsDir),
     interviewRounds: sanitizeInterviewRounds(value.interviewRounds),
+    facts: sanitizeFacts(value.facts),
   };
 }
 
@@ -555,6 +573,7 @@ export function buildMBAApplicationsCsv(applications: MBATrackedApplication[]): 
     "Fit",
     "Applied Via",
     "Materials",
+    "Facts",
     "Updated At",
   ];
   const rows = applications.map((application) => [
@@ -573,6 +592,7 @@ export function buildMBAApplicationsCsv(applications: MBATrackedApplication[]): 
     application.fit?.score ?? "",
     application.appliedVia ?? "",
     application.materialsDir ?? "",
+    (application.facts ?? []).map((fact) => `${fact.label}: ${fact.value}`).join("; "),
     application.updatedAt,
   ]);
 
@@ -592,6 +612,7 @@ export function buildMBAApplicationSearchText(application: MBATrackedApplication
     application.priority,
     application.appliedVia ?? "",
     application.fit?.rationale ?? "",
+    ...(application.facts ?? []).map((fact) => `${fact.label} ${fact.value}`),
   ]
     .join(" ")
     .toLowerCase();
