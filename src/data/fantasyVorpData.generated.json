@@ -1,11 +1,11 @@
 {
-  "generatedAt": "2026-10-07T22:03:22.814Z",
+  "generatedAt": "2026-10-08T22:09:56.985Z",
   "data": {
     "PPR": {
       "10": {
         "season": 2026,
         "sourceUrl": "https://www.fantasypros.com/nfl/rankings/ppr-vorp.php?team_size=10",
-        "accessedAt": "2026-10-07T22:03:23.302Z",
+        "accessedAt": "2026-10-08T22:09:57.447Z",
         "players": [
           {
             "playerId": "fp-22968",
@@ -3106,7 +3106,7 @@
           {
             "playerId": "fp-25654",
             "name": "Emari Demercado",
-            "team": "DAL",
+            "team": "FA",
             "position": "RB",
             "positionRank": 89,
             "rank": 345,
@@ -3232,7 +3232,7 @@
           {
             "playerId": "fp-24362",
             "name": "Kaytron Allen",
-            "team": "WAS",
+            "team": "FA",
             "position": "RB",
             "positionRank": 95,
             "rank": 359,
@@ -5367,7 +5367,7 @@
       "12": {
         "season": 2026,
         "sourceUrl": "https://www.fantasypros.com/nfl/rankings/ppr-vorp.php",
-        "accessedAt": "2026-10-07T22:03:24.006Z",
+        "accessedAt": "2026-10-08T22:09:58.505Z",
         "players": [
           {
             "playerId": "fp-22968",
@@ -8117,7 +8117,7 @@
           {
             "playerId": "fp-25654",
             "name": "Emari Demercado",
-            "team": "DAL",
+            "team": "FA",
             "position": "RB",
             "positionRank": 89,
             "rank": 306,
@@ -8243,7 +8243,7 @@
           {
             "playerId": "fp-24362",
             "name": "Kaytron Allen",
-            "team": "WAS",
+            "team": "FA",
             "position": "RB",
             "positionRank": 95,
             "rank": 320,
@@ -10729,7 +10729,7 @@
       "14": {
         "season": 2026,
         "sourceUrl": "https://www.fantasypros.com/nfl/rankings/ppr-vorp.php?team_size=14",
-        "accessedAt": "2026-10-07T22:03:25.142Z",
+        "accessedAt": "2026-10-08T22:09:59.194Z",
         "players": [
           {
             "playerId": "fp-22968",
@@ -13308,7 +13308,7 @@
           {
             "playerId": "fp-25654",
             "name": "Emari Demercado",
-            "team": "DAL",
+            "team": "FA",
             "position": "RB",
             "positionRank": 89,
             "rank": 287,
@@ -13443,7 +13443,7 @@
           {
             "playerId": "fp-24362",
             "name": "Kaytron Allen",
-            "team": "WAS",
+            "team": "FA",
             "position": "RB",
             "positionRank": 95,
             "rank": 302,
@@ -16093,7 +16093,7 @@
       "10": {
         "season": 2026,
         "sourceUrl": "https://www.fantasypros.com/nfl/rankings/half-ppr-vorp.php?team_size=10",
-        "accessedAt": "2026-10-07T22:03:26.133Z",
+        "accessedAt": "2026-10-08T22:10:00.140Z",
         "players": [
           {
             "playerId": "fp-22968",
@@ -18834,7 +18834,7 @@
           {
             "playerId": "fp-25654",
             "name": "Emari Demercado",
-            "team": "DAL",
+            "team": "FA",
             "position": "RB",
             "positionRank": 88,
             "rank": 305,
@@ -18942,7 +18942,7 @@
           {
             "playerId": "fp-24362",
             "name": "Kaytron Allen",
-            "team": "WAS",
+            "team": "FA",
             "position": "RB",
             "positionRank": 93,
             "rank": 317,
@@ -21455,7 +21455,7 @@
       "12": {
         "season": 2026,
         "sourceUrl": "https://www.fantasypros.com/nfl/rankings/half-ppr-vorp.php",
-        "accessedAt": "2026-10-07T22:03:26.424Z",
+        "accessedAt": "2026-10-08T22:10:00.968Z",
         "players": [
           {
             "playerId": "fp-22968",
@@ -24376,7 +24376,7 @@
           {
             "playerId": "fp-25654",
             "name": "Emari Demercado",
-            "team": "DAL",
+            "team": "FA",
             "position": "RB",
             "positionRank": 88,
             "rank": 325,
@@ -24511,7 +24511,7 @@
           {
             "playerId": "fp-24362",
             "name": "Kaytron Allen",
-            "team": "WAS",
+            "team": "FA",
             "position": "RB",
             "positionRank": 93,
             "rank": 340,
@@ -26817,7 +26817,7 @@
       "14": {
         "season": 2026,
         "sourceUrl": "https://www.fantasypros.com/nfl/rankings/half-ppr-vorp.php?team_size=14",
-        "accessedAt": "2026-10-07T22:03:27.021Z",
+        "accessedAt": "2026-10-08T22:10:01.633Z",
         "players": [
           {
             "playerId": "fp-22968",
@@ -29297,7 +29297,7 @@
           {
             "playerId": "fp-25654",
             "name": "Emari Demercado",
-            "team": "DAL",
+            "team": "FA",
             "position": "RB",
             "positionRank": 88,
             "rank": 276,
@@ -29414,7 +29414,7 @@
           {
             "playerId": "fp-24362",
             "name": "Kaytron Allen",
-            "team": "WAS",
+            "team": "FA",
             "position": "RB",
             "positionRank": 93,
             "rank": 289,
@@ -32181,7 +32181,7 @@
       "10": {
         "season": 2026,
         "sourceUrl": "https://www.fantasypros.com/nfl/rankings/vorp.php?team_size=10",
-        "accessedAt": "2026-10-07T22:03:27.646Z",
+        "accessedAt": "2026-10-08T22:10:02.593Z",
         "players": [
           {
             "playerId": "fp-22968",
@@ -35084,7 +35084,7 @@
           {
             "playerId": "fp-25654",
             "name": "Emari Demercado",
-            "team": "DAL",
+            "team": "FA",
             "position": "RB",
             "positionRank": 87,
             "rank": 323,
@@ -35237,7 +35237,7 @@
           {
             "playerId": "fp-24362",
             "name": "Kaytron Allen",
-            "team": "WAS",
+            "team": "FA",
             "position": "RB",
             "positionRank": 92,
             "rank": 340,
@@ -37543,7 +37543,7 @@
       "12": {
         "season": 2026,
         "sourceUrl": "https://www.fantasypros.com/nfl/rankings/vorp.php",
-        "accessedAt": "2026-10-07T22:03:28.427Z",
+        "accessedAt": "2026-10-08T22:10:03.234Z",
         "players": [
           {
             "playerId": "fp-22968",
@@ -40365,7 +40365,7 @@
           {
             "playerId": "fp-25654",
             "name": "Emari Demercado",
-            "team": "DAL",
+            "team": "FA",
             "position": "RB",
             "positionRank": 87,
             "rank": 314,
@@ -40473,7 +40473,7 @@
           {
             "playerId": "fp-24362",
             "name": "Kaytron Allen",
-            "team": "WAS",
+            "team": "FA",
             "position": "RB",
             "positionRank": 92,
             "rank": 326,
@@ -42905,7 +42905,7 @@
       "14": {
         "season": 2026,
         "sourceUrl": "https://www.fantasypros.com/nfl/rankings/vorp.php?team_size=14",
-        "accessedAt": "2026-10-07T22:03:28.827Z",
+        "accessedAt": "2026-10-08T22:10:03.907Z",
         "players": [
           {
             "playerId": "fp-22968",
@@ -45484,7 +45484,7 @@
           {
             "playerId": "fp-25654",
             "name": "Emari Demercado",
-            "team": "DAL",
+            "team": "FA",
             "position": "RB",
             "positionRank": 87,
             "rank": 287,
@@ -45637,7 +45637,7 @@
           {
             "playerId": "fp-24362",
             "name": "Kaytron Allen",
-            "team": "WAS",
+            "team": "FA",
             "position": "RB",
             "positionRank": 92,
             "rank": 304,
