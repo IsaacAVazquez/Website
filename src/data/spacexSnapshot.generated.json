@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-08T01:06:51.898Z",
+  "generatedAt": "2026-10-08T16:38:47.064Z",
   "sourceLabel": "launch-library-2 snapshot",
   "summary": {
     "heroLaunch": {
@@ -128,7 +128,7 @@
       {
         "id": "upcoming",
         "label": "Upcoming queue",
-        "value": "131",
+        "value": "132",
         "description": "currently published future SpaceX missions from Launch Library 2"
       },
       {
@@ -150,7 +150,7 @@
         "description": "rocket families with pending SpaceX missions in the current feed"
       }
     ],
-    "generatedAt": "2026-10-08T01:06:45.413Z"
+    "generatedAt": "2026-10-08T16:38:42.316Z"
   },
   "upcomingLaunches": [
     {
@@ -200,9 +200,9 @@
       "upcoming": true,
       "success": null,
       "details": "A batch of 27 satellites for the Starlink mega-constellation - SpaceX's project for space-based Internet communication system.",
-      "dateUtc": "2026-10-11T23:00:00Z",
-      "dateUnix": 1791759600,
-      "dateLocal": "2026-10-11T23:00:00Z",
+      "dateUtc": "2026-10-12T23:00:00Z",
+      "dateUnix": 1791846000,
+      "dateLocal": "2026-10-12T23:00:00Z",
       "datePrecision": "hour",
       "tbd": false,
       "net": true,
@@ -275,11 +275,11 @@
     },
     {
       "id": "df88cfbf-f504-4e11-8370-e33dd6280b5b",
-      "name": "USSF-xxx (\"TH-2\")",
+      "name": "USSF-481",
       "flightNumber": 739,
       "upcoming": true,
       "success": null,
-      "details": "Classified mission for the United States Space Force. It is possibly a batch of classified LEO satellites based on SpaceX’s Starshield satellite bus, based on locations of ascent rocket stage drop zones being fits with previous SDA Transport Layer launches.",
+      "details": "A classified mission for the United States Space Force. It is possibly a batch of classified LEO satellites based on SpaceX’s Starshield satellite bus, based on locations of ascent rocket stage drop zones being fits with previous SDA Transport Layer launches.",
       "dateUtc": "2026-10-15T23:44:00Z",
       "dateUnix": 1792107840,
       "dateLocal": "2026-10-15T23:44:00Z",
@@ -2480,9 +2480,9 @@
       "upcoming": true,
       "success": null,
       "details": "A batch of 27 satellites for the Starlink mega-constellation - SpaceX's project for space-based Internet communication system.",
-      "dateUtc": "2026-10-11T23:00:00Z",
-      "dateUnix": 1791759600,
-      "dateLocal": "2026-10-11T23:00:00Z",
+      "dateUtc": "2026-10-12T23:00:00Z",
+      "dateUnix": 1791846000,
+      "dateLocal": "2026-10-12T23:00:00Z",
       "datePrecision": "hour",
       "tbd": false,
       "net": true,
@@ -2941,6 +2941,6 @@
       }
     ],
     "rangeLabel": "Nov 25 – Oct 26",
-    "generatedAt": "2026-10-08T01:06:51.395Z"
+    "generatedAt": "2026-10-08T16:38:46.482Z"
   }
 }
