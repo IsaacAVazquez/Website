@@ -4,6 +4,12 @@ All notable changes to this repository are documented here. Format: `YYYY-MM-DD`
 
 ---
 
+## 2026-10-09
+
+- Interview agenda, article search, Before You Buy on Home, and print fixes ([#580](https://github.com/IsaacAVazquez/Website/pull/580)).
+
+---
+
 ## 2026-10-08
 
 - Posting facts on tracked applications ([#578](https://github.com/IsaacAVazquez/Website/pull/578)).
