@@ -495,7 +495,7 @@ function FoodMapWorkbench({
                     onSelect={handleSelectCity}
                   />
                   {/* On one column the list sits under the map and the filters, so this goes straight to it. */}
-                  <div className="min-[1001px]:hidden">
+                  <div className="min-[1001px]:hidden print:hidden">
                     <button type="button" onClick={handleJumpToList} className="c97-btn-ghost">
                       Go to the list of stops
                     </button>

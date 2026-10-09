@@ -1458,7 +1458,9 @@
   font-variant-numeric: tabular-nums;
   font-size: 20px;
 }
-@media print, screen and (max-width: 639px) {
+/* Screen only. The chart fits its margins to this type when it draws, and a
+ * print does not redraw it, so doubling the type on paper clips the labels. */
+@media screen and (max-width: 639px) {
   .terminalScope :global(.invest-retire-chart) :global(text.invest-retire-chart-label) {
     font-size: 40px;
   }

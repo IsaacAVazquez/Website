@@ -107,6 +107,21 @@ describe("summarizeApplicationPipeline", () => {
     expect(summary.offerRate).toBe(0.5);
   });
 
+  it("drops a stage that was walked back, and a legacy archived record with only an applied date", () => {
+    const at = (status: MBAApplicationStatus, day: number) => ({
+      status,
+      at: `2026-07-${day}T12:00:00Z`,
+      kind: "changed" as const,
+    });
+    const corrected = {
+      ...buildApplication({ status: "applied" }),
+      statusHistory: [at("applied", 10), at("offer", 11), at("applied", 12)],
+    };
+    const legacyArchived = { ...buildApplication({ status: "archived" }), appliedAt: "2026-07-01T12:00:00Z" };
+    const summary = summarizeApplicationPipeline([corrected, legacyArchived], TODAY);
+    expect(summary).toMatchObject({ submitted: 1, responded: 0, interviews: 0, offers: 0 });
+  });
+
   it("builds funnel counts and stage-conversion rates from active applications", () => {
     const applications = [
       buildApplication({ status: "saved" }),

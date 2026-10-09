@@ -74,6 +74,18 @@ describe('getBlogPostSearchEntries', () => {
     expect(entries[0].searchText).toContain('Body-only photosynthesis and plant growth');
     expect(entries[0].searchText).not.toContain('hidden-url');
   });
+
+  it('skips a post that fails to read and keeps the rest', () => {
+    const consoleSpy = jest.spyOn(console, 'error').mockImplementation(() => {});
+    mockFs.existsSync = jest.fn().mockReturnValue(true);
+    mockFs.readdirSync = jest.fn().mockReturnValue(['broken.mdx', 'published.mdx']);
+    mockFs.readFileSync = jest.fn().mockReturnValue('source');
+    mockMatter
+      .mockImplementationOnce(() => { throw new Error('bad frontmatter'); })
+      .mockReturnValueOnce({ data: makeFrontmatter(), content: 'Body' });
+    expect(getBlogPostSearchEntries().map((entry) => entry.slug)).toEqual(['published']);
+    consoleSpy.mockRestore();
+  });
 });
 
 describe('getBlogPostSlugs', () => {

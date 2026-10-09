@@ -1438,8 +1438,8 @@ function ApplicationCard({
       <ApplicationHistory events={application.statusHistory ?? []} />
       {facts.length > 0 && (
         <ul className="c97-list" style={{ marginTop: "var(--c97-sp-2)" }} aria-label="Posting facts">
-          {facts.map((fact) => (
-            <li key={fact.label} className="c97-meta">
+          {facts.map((fact, index) => (
+            <li key={`${fact.label}-${index}`} className="c97-meta">
               {fact.label} · {fact.value}
             </li>
           ))}

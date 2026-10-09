@@ -136,6 +136,10 @@ describe("mba applications storage helpers", () => {
     expect(mergeMBAApplications([parsed], [oldWriter])[0].statusHistory).toEqual(parsed.statusHistory);
     const staleInterview = { ...interview, updatedAt: "2026-10-05T12:00:00Z" };
     expect(mergeMBAApplications([parsed], [staleInterview])[0].statusHistory).toEqual(parsed.statusHistory);
+    // An older backup at a status the history never saw adds that one event and no repeat of the current status.
+    const current = { ...interview, notes: "Later note", updatedAt: "2026-10-08T12:00:00Z" };
+    const backup = { ...interview, status: "applied" as const, statusHistory: undefined, updatedAt: "2026-09-20T12:00:00Z" };
+    expect(mergeMBAApplications([current], [backup])[0].statusHistory?.map((event) => event.status)).toEqual(["applied", "saved", "interviewing"]);
   });
 
   it("drops malformed history events and marks legacy progress as observed", () => {

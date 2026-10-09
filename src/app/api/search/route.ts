@@ -1,7 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { getBlogPostSearchEntries } from '@/lib/blog';
 import { caseStudiesData } from '@/constants/caseStudies';
-import { DASHBOARD_ROUTES } from '@/constants/catalog97Nav';
 import { logger } from '@/lib/logger';
 import { classifyToolSlug, getToolCategoryLabel } from '@/constants/toolCategories';
 
@@ -173,15 +172,6 @@ async function getAllSearchableContent(): Promise<SearchableContent[]> {
       type,
       category,
     });
-  }
-
-  // A newly registered tool is searchable even before it has editorial copy.
-  for (const url of DASHBOARD_ROUTES) {
-    if (content.some((item) => item.url === url)) continue;
-    const slug = url.split('/').at(-1)!;
-    const title = slug.split('-').map((word) => word[0].toUpperCase() + word.slice(1)).join(' ');
-    const category = getToolCategoryLabel(classifyToolSlug(slug));
-    content.push({ id: `tool-${slug}`, title, excerpt: `Open ${title}.`, content: `${title} ${category}`, url, type: 'project', category });
   }
 
   for (const item of content) {

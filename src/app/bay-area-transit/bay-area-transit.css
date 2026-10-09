@@ -296,7 +296,10 @@
   .c97-transit-locate {
     order: -1;
   }
+}
 
+/* Screen only, since paper prints the drawn map on a 740px layout. */
+@media screen and (max-width: 639px) {
   .c97-transit-station-label {
     font-size: 25px;
   }

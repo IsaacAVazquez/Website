@@ -61,6 +61,7 @@ export const MBA_APPLICATION_PRIORITY_LABELS: Record<MBAApplicationPriority, str
 const MAX_TEXT_LENGTH = 220;
 const MAX_NOTES_LENGTH = 2_000;
 const MAX_INTERVIEW_ROUNDS = 12;
+const MAX_FACTS = 12;
 
 export const MBA_CANDIDATE_TRIAGE = [
   "sourced",
@@ -219,7 +220,7 @@ export function sanitizeFacts(value: unknown): MBAApplicationFact[] {
     const fact = cleanText(item.value);
     if (!label || !fact) continue;
     facts.push({ label, value: fact });
-    if (facts.length >= MAX_INTERVIEW_ROUNDS) break;
+    if (facts.length >= MAX_FACTS) break;
   }
   return facts;
 }
@@ -499,10 +500,11 @@ function pickNewerApplication(
   const incomingTime = new Date(incoming.updatedAt).getTime();
   const newer = incomingTime > currentTime ? incoming : current;
   const older = newer === incoming ? current : incoming;
-  const history = mergeStatusHistory(older.statusHistory ?? [], newer.statusHistory ?? []);
+  let history = mergeStatusHistory(older.statusHistory ?? [], newer.statusHistory ?? []);
   if (older.status !== newer.status) {
     if (!history.some((event) => event.status === older.status)) {
-      history.push({ status: older.status, at: older.updatedAt, kind: "observed" });
+      // Merged in date order, so the check below reads the latest event and not this one.
+      history = mergeStatusHistory(history, [{ status: older.status, at: older.updatedAt, kind: "observed" }]);
     }
     if (history.at(-1)?.status !== newer.status) {
       history.push({ status: newer.status, at: newer.updatedAt, kind: "observed" });
@@ -638,8 +640,6 @@ export function buildMBAApplicationSearchText(application: MBATrackedApplication
     application.notes,
     application.contact,
     application.sourceUrl,
-    application.status,
-    application.priority,
     application.appliedVia ?? "",
     application.fit?.rationale ?? "",
     ...(application.facts ?? []).map((fact) => `${fact.label} ${fact.value}`),

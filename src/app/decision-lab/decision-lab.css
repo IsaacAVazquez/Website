@@ -37,8 +37,9 @@
   fill: var(--c97-ink);
 }
 
-/* The matrix scales to about 0.6 at phone width, which took the label to 10px. */
-@media print, screen and (max-width: 639px) {
+/* The matrix scales to about 0.6 at phone width, which took the label to 10px.
+ * Screen only, since paper prints the matrix on a 740px layout. */
+@media screen and (max-width: 639px) {
   .c97-decision-point-label {
     font-size: 20px;
   }
