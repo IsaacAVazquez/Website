@@ -342,6 +342,10 @@
 /* ---- Print: the misprint and the stamp stay on screen, off the paper ---- */
 
 @media print {
+  .imprint {
+    -webkit-mask-image: none;
+    mask-image: none;
+  }
   .region,
   .imprint,
   .proof,

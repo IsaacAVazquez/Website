@@ -149,7 +149,7 @@
 
 /* At phone width the row wraps into two lines instead of squeezing four
  * columns into 390px. */
-@media (max-width: 639px) {
+@media print, screen and (max-width: 639px) {
   .c97-star-log-row {
     grid-template-columns: 4.5rem minmax(3rem, 1fr) auto;
     grid-template-areas:

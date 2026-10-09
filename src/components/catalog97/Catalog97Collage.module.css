@@ -98,7 +98,7 @@
  * width query with the window's width while it prints on a page about 700px
  * wide. "Printing on paper" in STYLING.md has the measurements.
  */
-@media (max-width: 880px), print {
+@media print, screen and (max-width: 880px) {
   .collage {
     grid-template-columns: minmax(0, 1fr);
     grid-auto-rows: clamp(300px, 86vw, 440px);

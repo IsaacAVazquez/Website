@@ -43,7 +43,7 @@
   background: var(--c97-rule);
 }
 
-@media (max-width: 639px) {
+@media print, screen and (max-width: 639px) {
   .c97-boarding-pass {
     grid-template-columns: minmax(0, 1fr);
   }
@@ -132,7 +132,7 @@
 }
 
 /* Six day columns fit a desktop plate, so the cue only shows when they can't. */
-@media (min-width: 1024px) {
+@media screen and (min-width: 1024px) {
   .c97-travel-timeline-cue:not([data-many]) {
     display: none;
   }
@@ -223,7 +223,7 @@
   text-align: center;
 }
 
-@media (max-width: 639px) {
+@media print, screen and (max-width: 639px) {
   .c97-postcard {
     grid-template-columns: minmax(0, 1fr);
   }

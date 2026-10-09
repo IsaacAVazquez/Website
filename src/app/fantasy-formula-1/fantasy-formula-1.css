@@ -208,7 +208,7 @@
  * across ran about 560px and repeated the Current team list that follows the
  * hero, which has every pick's figures and its controls.
  */
-@media (max-width: 479px) {
+@media screen and (max-width: 479px) {
   .c97-ff1-garage {
     gap: var(--c97-sp-2);
     padding: var(--c97-sp-2);
@@ -252,7 +252,7 @@
  * fixed layout is what holds the table to the column so nothing scrolls
  * sideways.
  */
-@media (max-width: 639px) {
+@media print, screen and (max-width: 639px) {
   .c97-ff1-table {
     min-width: 0;
     table-layout: fixed;

@@ -61,7 +61,7 @@
 /* The same table on a phone. Below 640px it keeps the position, the player,
  * the total, and today's score in tighter cells, and the columns it drops
  * are in the player drawer. */
-@media (max-width: 639px) {
+@media print, screen and (max-width: 639px) {
   .c97-table.c97-golf-full-table th,
   .c97-table.c97-golf-full-table td {
     padding-inline: var(--c97-sp-1);

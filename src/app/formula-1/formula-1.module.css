@@ -129,7 +129,7 @@
   display: none;
 }
 
-@media (max-width: 639px) {
+@media print, screen and (max-width: 639px) {
   /* A phone prints the top of the tower and links to the full table. */
   .towerRowPastPhone {
     display: none;
@@ -163,7 +163,7 @@
   gap: var(--c97-sp-3);
 }
 
-@media (min-width: 640px) {
+@media screen and (min-width: 640px) {
   .podiumRow {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }

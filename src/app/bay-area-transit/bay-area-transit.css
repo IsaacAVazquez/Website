@@ -275,7 +275,7 @@
 
 /* Below 1050px the map and board stack at full shell width, board first,
  * since the next train is what a rider on a phone came for. */
-@media (max-width: 1049px) {
+@media print, screen and (max-width: 1049px) {
   .c97-transit-signature {
     grid-template-columns: minmax(0, 1fr);
   }
@@ -288,7 +288,7 @@
 /* On a phone the map is a window rather than a page, so the page around it
  * still scrolls, and Nearest station leads the controls. The drawn map's label
  * scales up because the narrow column shrinks its 640-unit viewBox. */
-@media (max-width: 639px) {
+@media print, screen and (max-width: 639px) {
   .c97-transit-map-frame {
     min-height: min(60vh, 440px);
   }

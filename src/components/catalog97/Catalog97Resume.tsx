@@ -344,7 +344,7 @@ export function Catalog97Resume() {
           <div className="c97-shell">
             <h2 className="c97-poster-sm">Capabilities</h2>
             <div
-              className="c97-columns"
+              className="c97-columns c97-print-stack"
               style={
                 {
                   "--c97-columns-gap": "var(--c97-sp-4)",

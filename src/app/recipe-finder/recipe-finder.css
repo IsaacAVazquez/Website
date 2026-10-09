@@ -187,7 +187,7 @@
   list-style: none;
 }
 
-@media (min-width: 780px) {
+@media screen and (min-width: 780px) {
   .c97-recipe-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -360,7 +360,7 @@
   margin-top: var(--c97-sp-3);
 }
 
-@media (max-width: 639px) {
+@media print, screen and (max-width: 639px) {
   .c97-recipe-card-header {
     flex-direction: column;
   }

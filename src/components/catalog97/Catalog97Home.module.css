@@ -35,7 +35,7 @@
  * paper's, about 700px, so from a desktop window the two columns printed
  * squeezed. "Printing on paper" in STYLING.md has the measurements.
  */
-@media (max-width: 880px), print {
+@media print, screen and (max-width: 880px) {
   .heroGrid { grid-template-columns: minmax(0, 1fr); gap: var(--c97-sp-5); }
   .heroCopy { grid-template-areas: "h1" "actions" "lead"; }
   .portrait { width: min(72%, 300px); }
@@ -162,8 +162,18 @@
 .post > :last-child { white-space: nowrap; }
 
 /* Paper takes the one column as well, for the reason given beside the hero. */
-@media (max-width: 880px), print {
+@media print, screen and (max-width: 880px) {
   .workGrid { grid-template-columns: minmax(0, 1fr); }
+}
+
+@media print {
+  .headline {
+    font-size: 40px;
+  }
+
+  .cardFigure {
+    font-size: 22px;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -175,6 +185,6 @@
 .contactRow { display: flex; align-items: center; justify-content: space-between; gap: var(--c97-sp-4); }
 .contactMessage { max-width: 22ch; margin: 0; }
 .contactRow > a { flex-shrink: 0; }
-@media (max-width: 600px) {
+@media print, screen and (max-width: 600px) {
   .contactRow { flex-direction: column; align-items: flex-start; }
 }

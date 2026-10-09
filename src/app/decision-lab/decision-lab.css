@@ -8,7 +8,7 @@
   align-items: start;
 }
 
-@media (max-width: 840px) {
+@media print, screen and (max-width: 840px) {
   .c97-decision-signature {
     grid-template-columns: minmax(0, 1fr);
   }
@@ -38,7 +38,7 @@
 }
 
 /* The matrix scales to about 0.6 at phone width, which took the label to 10px. */
-@media (max-width: 639px) {
+@media print, screen and (max-width: 639px) {
   .c97-decision-point-label {
     font-size: 20px;
   }
@@ -103,7 +103,7 @@
   gap: var(--c97-sp-5);
 }
 
-@media (max-width: 700px) {
+@media print, screen and (max-width: 700px) {
   .c97-decision-body-grid {
     grid-template-columns: minmax(0, 1fr);
   }

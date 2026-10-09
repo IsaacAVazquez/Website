@@ -36,7 +36,7 @@
   display: none;
 }
 
-@media (max-width: 639px) {
+@media print, screen and (max-width: 639px) {
   .c97-rvb-wide {
     display: none;
   }

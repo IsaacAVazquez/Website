@@ -21,7 +21,7 @@ export default function UpcomingInterviews({ applications, todayKey, onEdit }: {
       ) : (
         <ul className="c97-list" aria-label="Upcoming interviews">
           {interviews.map(({ application, round, roundIndex, daysFromToday }) => (
-            <li key={`${application.id}-${roundIndex}`} className="c97-row">
+            <li key={`${application.id}-${roundIndex}`} className="c97-row c97-row-stack-sm">
               <div style={{ minWidth: 0 }}>
                 <p className="c97-serif">{application.jobSnapshot.companyName} · {round.label}</p>
                 <p className="c97-meta">

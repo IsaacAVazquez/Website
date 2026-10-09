@@ -95,7 +95,7 @@
 /* At phone width the SVG scales to about a third, so its type is set larger in
  * viewBox units and the long strongest-quake label, which the readouts already
  * carry, is dropped. */
-@media (max-width: 639px) {
+@media print, screen and (max-width: 639px) {
   .c97-quake-axis {
     /* 34px rendered right at ~11.36px on a 390px viewport (the viewBox scales
      * to about a third there), too thin a margin above the 11px floor for a

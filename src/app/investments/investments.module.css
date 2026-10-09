@@ -57,7 +57,7 @@
   gap: 0;
   background: var(--c97-surface);
 }
-@media (max-width: 1280px) {
+@media print, screen and (max-width: 1280px) {
   .terminalScope :global(.invest-shell) { grid-template-columns: 200px minmax(0, 1fr); }
 }
 /*
@@ -69,7 +69,7 @@
  * print of its own because this one replaces it, and the rules for windows
  * narrower than the paper stay off it.
  */
-@media (max-width: 900px), print {
+@media print, screen and (max-width: 900px) {
   .terminalScope :global(.invest-shell) { grid-template-columns: 1fr; }
   .terminalScope :global(.invest-sidebar) { display: none !important; }
 }
@@ -84,7 +84,7 @@
 }
 
 /* Drop sparkline column on narrower main columns to keep P/L + actions visible */
-@media (max-width: 1500px), print {
+@media print, screen and (max-width: 1500px) {
   .terminalScope :global(.invest-holdings .col-trend) { display: none; }
 }
 
@@ -233,7 +233,7 @@
   grid-template-columns: minmax(0, 0.82fr) minmax(0, 1.18fr);
   align-items: stretch;
 }
-@media (max-width: 1100px), print {
+@media print, screen and (max-width: 1100px) {
   .terminalScope :global(.invest-hero) { grid-template-columns: 1fr; }
 }
 .terminalScope :global(.invest-hero-left) {
@@ -394,7 +394,7 @@
   gap: 1px;
   background: var(--c97-rule);
 }
-@media (max-width: 900px), print {
+@media print, screen and (max-width: 900px) {
   .statsGrid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 .statCell {
@@ -713,7 +713,7 @@
   background: var(--c97-rule);
   border: 1px solid var(--c97-rule);
 }
-@media (max-width: 900px), print {
+@media print, screen and (max-width: 900px) {
   .terminalScope :global(.research-key-metrics) { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 .terminalScope :global(.research-key-metric) {
@@ -867,7 +867,7 @@
   display: flex; flex-direction: column;
   align-self: stretch;
 }
-@media (max-width: 1280px), print {
+@media print, screen and (max-width: 1280px) {
   .terminalScope :global(.invest-rail) {
     grid-column: 1 / -1;
     border-left: 0;
@@ -977,7 +977,7 @@
   align-items: start;
   border: 1px solid var(--c97-rule);
 }
-@media (max-width: 1024px), print {
+@media print, screen and (max-width: 1024px) {
   .terminalScope :global(.invest-retire-layout) {
     grid-template-columns: 1fr;
   }
@@ -998,7 +998,7 @@
   background: var(--c97-surface);
   padding: var(--c97-sp-2);
 }
-@media (max-width: 1024px), print {
+@media print, screen and (max-width: 1024px) {
   .terminalScope :global(.invest-retire-inputs) {
     border-right: 0;
     border-bottom: 1px solid var(--c97-rule);
@@ -1042,7 +1042,7 @@
   grid-template-columns: 1fr 1fr;
   gap: var(--c97-sp-1);
 }
-@media (max-width: 420px) {
+@media screen and (max-width: 420px) {
   .terminalScope :global(.invest-retire-grid-2) {
     grid-template-columns: 1fr;
   }
@@ -1228,7 +1228,7 @@
   gap: var(--c97-sp-1);
   align-items: end;
 }
-@media (max-width: 520px) {
+@media screen and (max-width: 520px) {
   .terminalScope :global(.invest-retire-lumpy-row) {
     grid-template-columns: 1fr 1fr;
   }
@@ -1354,7 +1354,7 @@
   border: 1px solid var(--c97-rule);
   margin: 0;
 }
-@media (max-width: 640px) {
+@media print, screen and (max-width: 640px) {
   .terminalScope :global(.invest-retire-stats) {
     grid-template-columns: 1fr 1fr;
   }
@@ -1458,7 +1458,7 @@
   font-variant-numeric: tabular-nums;
   font-size: 20px;
 }
-@media (max-width: 639px) {
+@media print, screen and (max-width: 639px) {
   .terminalScope :global(.invest-retire-chart) :global(text.invest-retire-chart-label) {
     font-size: 40px;
   }
@@ -1491,7 +1491,7 @@
   margin: 0;
   padding: 0;
 }
-@media (max-width: 640px) {
+@media print, screen and (max-width: 640px) {
   .terminalScope :global(.invest-retire-lever-list) {
     grid-template-columns: 1fr;
   }
@@ -1744,7 +1744,7 @@
    is the one place to change if the site header ever becomes sticky again. */
 .sectionRail { display: none; }
 
-@media (max-width: 900px), print {
+@media print, screen and (max-width: 900px) {
   .sectionRail {
     --invest-rail-top: 0px;
     display: flex;

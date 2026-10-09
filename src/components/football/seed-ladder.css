@@ -6,7 +6,7 @@
   gap: var(--c97-sp-5);
 }
 
-@media (max-width: 639px) {
+@media print, screen and (max-width: 639px) {
   .c97-seed-ladder {
     grid-template-columns: minmax(0, 1fr);
   }
@@ -84,7 +84,7 @@
   color: var(--c97-ink-2);
 }
 
-@media (max-width: 639px) {
+@media print, screen and (max-width: 639px) {
   .c97-seed-ladder-row {
     font-size: 15px;
   }

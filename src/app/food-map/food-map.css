@@ -160,7 +160,7 @@
   margin-top: var(--c97-sp-4);
   grid-template-columns: minmax(0, 1fr) minmax(300px, 340px);
 }
-@media (max-width: 1000px) {
+@media print, screen and (max-width: 1000px) {
   .fm-grid { grid-template-columns: minmax(0, 1fr); }
 }
 .fm-col { display: flex; flex-direction: column; gap: var(--c97-sp-4); min-width: 0; }
@@ -173,7 +173,7 @@
   flex-direction: column;
   gap: var(--c97-sp-3);
 }
-@media (max-width: 1000px) {
+@media print, screen and (max-width: 1000px) {
   .fm-rail { position: static; }
 }
 
@@ -404,7 +404,7 @@
   gap: var(--c97-sp-2);
   grid-template-columns: repeat(2, minmax(0, 1fr));
 }
-@media (max-width: 620px) {
+@media print, screen and (max-width: 620px) {
   .fm-index { grid-template-columns: minmax(0, 1fr); }
 }
 
