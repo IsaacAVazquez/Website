@@ -39,6 +39,7 @@ import {
   MBA_APPLICATION_PRIORITY_LABELS,
   MBA_APPLICATION_STATUSES,
   MBA_APPLICATION_STATUS_LABELS,
+  buildMBAApplicationSearchText,
   sanitizeFit,
 } from "@/lib/mba-applications";
 import {
@@ -1574,17 +1575,7 @@ function ApplicationPipeline({
       if (statusFilter === "all" && application.status === "archived") return false;
       if (statusFilter !== "all" && application.status !== statusFilter) return false;
       if (!normalizedQuery) return true;
-      return [
-        application.jobSnapshot.companyName,
-        application.jobSnapshot.title,
-        application.jobSnapshot.location,
-        application.jobSnapshot.department,
-        application.notes,
-        application.contact,
-      ]
-        .join(" ")
-        .toLowerCase()
-        .includes(normalizedQuery);
+      return buildMBAApplicationSearchText(application).includes(normalizedQuery);
     });
   }, [applications, query, statusFilter]);
 
@@ -1637,7 +1628,7 @@ function ApplicationPipeline({
               <input
                 value={query}
                 onChange={(event) => setQuery(event.target.value)}
-                placeholder="Search company, role, notes, contact…"
+                placeholder="Search roles, posting facts, notes…"
                 aria-label="Search applications"
                 className="c97-field"
                 style={{ paddingLeft: "2.5rem" }}

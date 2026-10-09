@@ -763,6 +763,26 @@ describe("MBAJobsClient", () => {
     expect(updateStatus).toHaveBeenCalledWith("app-1", "offer");
   });
 
+  it("searches posting facts, application channels, and fit notes in the pipeline", () => {
+    currentSearchParams = new URLSearchParams("view=applications");
+    const application = buildApplication({
+      facts: [{ label: "Work arrangement", value: "Hybrid, three days" }],
+      appliedVia: "Alumni referral",
+      fit: { score: 88, rationale: "Payments experience", scoredAt: "2026-10-07T12:00:00.000Z" },
+    });
+    mockUseMBAApplications.mockReturnValue(buildApplicationsHookValue({
+      applications: [application], activeApplications: [application],
+    }));
+    render(<MBAJobsClient initialState={DEFAULT_MBA_JOBS_STATE} />);
+
+    for (const query of ["HYBRID", "alumni", "payments"]) {
+      fireEvent.change(screen.getByLabelText("Search applications"), { target: { value: query } });
+      expect(screen.getByRole("heading", { name: application.jobSnapshot.title })).toBeVisible();
+    }
+    fireEvent.change(screen.getByLabelText("Search applications"), { target: { value: "unmatched" } });
+    expect(screen.queryByRole("heading", { name: application.jobSnapshot.title })).not.toBeInTheDocument();
+  });
+
   it("asks for a second click before deleting a tracked application", () => {
     currentSearchParams = new URLSearchParams("view=applications");
     const removeApplication = jest.fn();
