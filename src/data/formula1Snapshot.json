@@ -10,8 +10,8 @@
     "constructorStandings": "https://api.openf1.org/v1/championship_teams?session_key=11731"
   },
   "season": 2026,
-  "generatedAt": "2026-10-09T01:09:57.562Z",
-  "defaultMeetingKey": "1296",
+  "generatedAt": "2026-10-09T10:24:04.684Z",
+  "defaultMeetingKey": "1297",
   "standingsMeetingKey": "1308",
   "meetings": [
     {
@@ -7421,7 +7421,7 @@
       "gmtOffset": "08:00:00",
       "startAt": "2026-10-09T08:30:00+00:00",
       "endAt": "2026-10-11T14:00:00+00:00",
-      "status": "upcoming",
+      "status": "live",
       "hasSprint": true,
       "raceSessionKey": "11388",
       "raceStartsAt": "2026-10-11T12:00:00+00:00",
@@ -8256,63 +8256,63 @@
     "season": 2026,
     "totalRaces": 23,
     "completedRaces": 16,
-    "upcomingRaces": 7,
+    "upcomingRaces": 6,
     "sprintWeekends": 6
   },
   "nextMeeting": {
-    "key": "1296",
-    "name": "Singapore Grand Prix",
-    "officialName": "FORMULA 1 SINGAPORE AIRLINES SINGAPORE GRAND PRIX 2026",
-    "location": "Marina Bay",
-    "countryName": "Singapore",
-    "countryCode": "SGP",
-    "countryFlag": "https://media.formula1.com/content/dam/fom-website/2018-redesign-assets/Flags%2016x9/singapore-flag.png",
-    "circuitKey": "61",
-    "circuitShortName": "Singapore",
-    "circuitType": "Temporary - Street",
-    "circuitImage": "https://media.formula1.com/content/dam/fom-website/2018-redesign-assets/Track%20icons%204x3/Singapore%20carbon.png",
-    "gmtOffset": "08:00:00",
-    "startAt": "2026-10-09T08:30:00+00:00",
-    "endAt": "2026-10-11T14:00:00+00:00",
+    "key": "1297",
+    "name": "United States Grand Prix",
+    "officialName": "FORMULA 1 MSC CRUISES UNITED STATES GRAND PRIX 2026",
+    "location": "Austin",
+    "countryName": "United States",
+    "countryCode": "USA",
+    "countryFlag": "https://media.formula1.com/content/dam/fom-website/2018-redesign-assets/Flags%2016x9/united-states-flag.png",
+    "circuitKey": "9",
+    "circuitShortName": "Austin",
+    "circuitType": "Permanent",
+    "circuitImage": "https://media.formula1.com/content/dam/fom-website/2018-redesign-assets/Track%20icons%204x3/United States%20carbon.png",
+    "gmtOffset": "-05:00:00",
+    "startAt": "2026-10-23T17:30:00+00:00",
+    "endAt": "2026-10-25T22:00:00+00:00",
     "status": "upcoming",
-    "hasSprint": true,
-    "raceSessionKey": "11388",
-    "raceStartsAt": "2026-10-11T12:00:00+00:00",
+    "hasSprint": false,
+    "raceSessionKey": "11396",
+    "raceStartsAt": "2026-10-25T20:00:00+00:00",
     "sessions": [
       {
-        "key": "11378",
+        "key": "11389",
         "name": "Practice 1",
         "type": "Practice",
-        "startAt": "2026-10-09T08:30:00+00:00",
-        "endAt": "2026-10-09T09:30:00+00:00"
+        "startAt": "2026-10-23T17:30:00+00:00",
+        "endAt": "2026-10-23T18:30:00+00:00"
       },
       {
-        "key": "11379",
-        "name": "Sprint Qualifying",
-        "type": "Qualifying",
-        "startAt": "2026-10-09T12:30:00+00:00",
-        "endAt": "2026-10-09T13:14:00+00:00"
+        "key": "11390",
+        "name": "Practice 2",
+        "type": "Practice",
+        "startAt": "2026-10-23T21:00:00+00:00",
+        "endAt": "2026-10-23T22:00:00+00:00"
       },
       {
-        "key": "11383",
-        "name": "Sprint",
-        "type": "Race",
-        "startAt": "2026-10-10T09:00:00+00:00",
-        "endAt": "2026-10-10T10:00:00+00:00"
+        "key": "11391",
+        "name": "Practice 3",
+        "type": "Practice",
+        "startAt": "2026-10-24T17:30:00+00:00",
+        "endAt": "2026-10-24T18:30:00+00:00"
       },
       {
-        "key": "11384",
+        "key": "11392",
         "name": "Qualifying",
         "type": "Qualifying",
-        "startAt": "2026-10-10T13:00:00+00:00",
-        "endAt": "2026-10-10T14:00:00+00:00"
+        "startAt": "2026-10-24T21:00:00+00:00",
+        "endAt": "2026-10-24T22:00:00+00:00"
       },
       {
-        "key": "11388",
+        "key": "11396",
         "name": "Race",
         "type": "Race",
-        "startAt": "2026-10-11T12:00:00+00:00",
-        "endAt": "2026-10-11T14:00:00+00:00"
+        "startAt": "2026-10-25T20:00:00+00:00",
+        "endAt": "2026-10-25T22:00:00+00:00"
       }
     ],
     "classification": [],
