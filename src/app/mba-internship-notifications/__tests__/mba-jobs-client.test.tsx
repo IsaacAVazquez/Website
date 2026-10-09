@@ -763,6 +763,36 @@ describe("MBAJobsClient", () => {
     expect(updateStatus).toHaveBeenCalledWith("app-1", "offer");
   });
 
+  it("shows the next scheduled interview with access to its preparation path", () => {
+    currentSearchParams = new URLSearchParams("view=applications");
+    const application = buildApplication({
+      interviewRounds: [{ label: "Hiring manager", date: dayKeyOffset(1), outcome: "scheduled", notes: "Discuss product scope" }],
+      materialsDir: "private/job-search/roles/stripe-pm",
+    });
+    mockUseMBAApplications.mockReturnValue(buildApplicationsHookValue({ applications: [application] }));
+    render(<MBAJobsClient initialState={DEFAULT_MBA_JOBS_STATE} />);
+    const agenda = screen.getByRole("list", { name: "Upcoming interviews" });
+    expect(within(agenda).getByText(/Hiring manager/)).toBeVisible();
+    expect(within(agenda).getByText("Discuss product scope")).toBeVisible();
+    expect(within(agenda).getByRole("button", { name: "Copy preparation path" })).toBeVisible();
+  });
+
+  it("shows recorded stage durations without assigning durations to imported observations", () => {
+    currentSearchParams = new URLSearchParams("view=applications");
+    const application = buildApplication({
+      statusHistory: [
+        { status: "saved", at: "2026-10-01T12:00:00Z", kind: "observed" },
+        { status: "applied", at: "2026-10-02T12:00:00Z", kind: "changed" },
+        { status: "interviewing", at: "2026-10-05T12:00:00Z", kind: "changed" },
+      ],
+    });
+    mockUseMBAApplications.mockReturnValue(buildApplicationsHookValue({ applications: [application] }));
+    render(<MBAJobsClient initialState={DEFAULT_MBA_JOBS_STATE} />);
+    const history = screen.getByRole("list", { name: "Application status history", hidden: true });
+    expect(within(history).getByText(/Applied.*3 days/)).toBeInTheDocument();
+    expect(within(history).getByText(/Observed Saved/)).not.toHaveTextContent(/days/);
+  });
+
   it("searches posting facts, application channels, and fit notes in the pipeline", () => {
     currentSearchParams = new URLSearchParams("view=applications");
     const application = buildApplication({

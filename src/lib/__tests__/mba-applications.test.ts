@@ -5,6 +5,7 @@ import {
   createMBAApplicationFromJob,
   mergeMBAApplications,
   parseMBAApplications,
+  updateMBAApplicationStatus,
 } from "../mba-applications";
 import type { MBAJob } from "@/types/mba-jobs";
 
@@ -122,6 +123,27 @@ describe("mba applications storage helpers", () => {
 
     expect(csv).toContain("Status,Priority,Company");
     expect(csv).toContain('"Recruiter said, ""follow up"""');
+  });
+
+  it("keeps status changes through import, archive, and merging an older writer", () => {
+    const saved = createMBAApplicationFromJob(job, "saved", new Date("2026-10-01T12:00:00Z"));
+    const interview = updateMBAApplicationStatus(saved, "interviewing", new Date("2026-10-03T12:00:00Z"));
+    const archived = updateMBAApplicationStatus(interview, "archived", new Date("2026-10-06T12:00:00Z"));
+    const parsed = parseMBAApplications(JSON.stringify([archived]))[0];
+    expect(parsed.statusHistory?.map((event) => event.status)).toEqual(["saved", "interviewing", "archived"]);
+    expect(updateMBAApplicationStatus(parsed, "archived").statusHistory).toEqual(parsed.statusHistory);
+    const oldWriter = { ...parsed, statusHistory: undefined, notes: "New note", updatedAt: "2026-10-07T12:00:00Z" };
+    expect(mergeMBAApplications([parsed], [oldWriter])[0].statusHistory).toEqual(parsed.statusHistory);
+    const staleInterview = { ...interview, updatedAt: "2026-10-05T12:00:00Z" };
+    expect(mergeMBAApplications([parsed], [staleInterview])[0].statusHistory).toEqual(parsed.statusHistory);
+  });
+
+  it("drops malformed history events and marks legacy progress as observed", () => {
+    const legacy = { ...createMBAApplicationFromJob(job, "interviewing"), statusHistory: undefined };
+    const rejected = updateMBAApplicationStatus(legacy, "rejected");
+    expect(rejected.statusHistory?.[0]).toMatchObject({ status: "interviewing", kind: "observed" });
+    const malformed = { ...rejected, statusHistory: [{ status: "constructor", at: "2026-10-01" }, { status: "offer", at: "invalid" }, ...rejected.statusHistory!] };
+    expect(parseMBAApplications(JSON.stringify([malformed]))[0].statusHistory).toEqual(rejected.statusHistory);
   });
 
   it("neutralizes spreadsheet formula injection in exported CSV", () => {

@@ -17,8 +17,10 @@
 import type {
   MBAApplicationPriority,
   MBAApplicationStatus,
+  MBAInterviewRound,
   MBATrackedApplication,
 } from "@/types/mba-jobs";
+import { getApplicationReachedStages } from "@/lib/mba-application-history";
 
 const DAY_MS = 86_400_000;
 
@@ -44,6 +46,32 @@ export function diffInDays(fromKey: string, toKey: string): number | null {
   const to = parseDateKey(toKey);
   if (from === null || to === null) return null;
   return Math.round((to - from) / DAY_MS);
+}
+
+export interface MBAUpcomingInterview {
+  application: MBATrackedApplication;
+  round: MBAInterviewRound;
+  roundIndex: number;
+  daysFromToday: number;
+}
+
+/** Scheduled rounds today through six days ahead, ordered by calendar date. */
+export function getUpcomingInterviews(
+  applications: MBATrackedApplication[],
+  todayKey: string
+): MBAUpcomingInterview[] {
+  return applications.flatMap((application) => {
+    if (["archived", "rejected", "offer"].includes(application.status)) return [];
+    return (application.interviewRounds ?? []).flatMap((round, roundIndex) => {
+      const days = round.date ? diffInDays(todayKey, round.date) : null;
+      return round.outcome === "scheduled" && days !== null && days >= 0 && days < 7
+        ? [{ application, round, roundIndex, daysFromToday: days }]
+        : [];
+    });
+  }).sort((left, right) =>
+    left.daysFromToday - right.daysFromToday ||
+    left.application.jobSnapshot.companyName.localeCompare(right.application.jobSnapshot.companyName)
+  );
 }
 
 // ── Ordering helpers ───────────────────────────────────────────────────────
@@ -90,7 +118,7 @@ export interface MBAApplicationInsights {
   total: number;
   archived: number;
   funnel: MBAApplicationFunnel;
-  // Reached "applied" or beyond (applied + interviewing + offer + rejected).
+  // Known progress across all applications, including those now archived.
   submitted: number;
   // Heard back either way (interviewing + offer + rejected).
   responded: number;
@@ -126,9 +154,8 @@ function rate(part: number, whole: number): number | null {
 
 /**
  * Summarize the tracked pipeline into funnel counts, stage-conversion rates,
- * and follow-up/deadline bucket counts. Archived applications are excluded
- * from the funnel and rates (they have been set aside) but reported as a
- * separate `archived` total.
+ * and follow-up/deadline bucket counts. The funnel excludes archived records;
+ * conversion rates include prior stages supported by history or other evidence.
  */
 export function summarizeApplicationPipeline(
   applications: MBATrackedApplication[],
@@ -170,10 +197,11 @@ export function summarizeApplicationPipeline(
     }
   }
 
-  const submitted = funnel.applied + funnel.interviewing + funnel.offer + funnel.rejected;
-  const responded = funnel.interviewing + funnel.offer + funnel.rejected;
-  const interviews = funnel.interviewing + funnel.offer;
-  const offers = funnel.offer;
+  const reached = applications.map(getApplicationReachedStages);
+  const submitted = reached.filter((item) => item.submitted).length;
+  const responded = reached.filter((item) => item.responded).length;
+  const interviews = reached.filter((item) => item.interview).length;
+  const offers = reached.filter((item) => item.offer).length;
 
   return {
     total: active,

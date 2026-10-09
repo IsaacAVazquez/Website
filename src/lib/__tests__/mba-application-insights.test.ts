@@ -2,6 +2,7 @@ import {
   describeAttentionItem,
   diffInDays,
   getApplicationAttentionItems,
+  getUpcomingInterviews,
   sortApplicationsForColumn,
   summarizeApplicationPipeline,
 } from "../mba-application-insights";
@@ -71,7 +72,41 @@ describe("date-key helpers", () => {
   });
 });
 
+describe("upcoming interviews", () => {
+  it("includes today through day six, excludes closed applications and completed or undated rounds", () => {
+    const application = {
+      ...buildApplication({ status: "interviewing" }),
+      interviewRounds: [
+        { label: "Last week", date: "2026-07-19", outcome: "scheduled" as const, notes: "" },
+        { label: "Last day", date: "2026-07-26", outcome: "scheduled" as const, notes: "" },
+        { label: "Today", date: TODAY, outcome: "scheduled" as const, notes: "" },
+        { label: "Outside window", date: "2026-07-27", outcome: "scheduled" as const, notes: "" },
+        { label: "Done", date: TODAY, outcome: "done" as const, notes: "" },
+        { label: "Undated", date: null, outcome: "scheduled" as const, notes: "" },
+      ],
+    };
+    const closed = ["archived", "rejected", "offer"].map((status) => ({ ...application, status: status as MBAApplicationStatus }));
+    expect(getUpcomingInterviews([application, ...closed], TODAY).map((item) => item.round.label))
+      .toEqual(["Today", "Last day"]);
+  });
+});
+
 describe("summarizeApplicationPipeline", () => {
+  it("keeps interviewed and offered applications in the rates after rejection or archive", () => {
+    const archived = {
+      ...buildApplication({ status: "archived" }),
+      statusHistory: [
+        { status: "interviewing" as const, at: "2026-07-10T12:00:00Z", kind: "changed" as const },
+        { status: "offer" as const, at: "2026-07-15T12:00:00Z", kind: "changed" as const },
+      ],
+    };
+    const rejected = { ...buildApplication({ status: "rejected" }), statusHistory: archived.statusHistory.slice(0, 1) };
+    const summary = summarizeApplicationPipeline([archived, rejected], TODAY);
+    expect(summary).toMatchObject({ total: 1, archived: 1, submitted: 2, responded: 2, interviews: 2, offers: 1 });
+    expect(summary.interviewRate).toBe(1);
+    expect(summary.offerRate).toBe(0.5);
+  });
+
   it("builds funnel counts and stage-conversion rates from active applications", () => {
     const applications = [
       buildApplication({ status: "saved" }),

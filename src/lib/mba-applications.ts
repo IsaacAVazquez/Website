@@ -3,6 +3,7 @@ import type {
   MBAATSType,
   MBAApplicationPriority,
   MBAApplicationFact,
+  MBAApplicationStatusEvent,
   MBAApplicationsExportV1,
   MBAApplicationStatus,
   MBACandidateTriage,
@@ -21,6 +22,7 @@ import type {
 } from "@/types/mba-jobs";
 import { MBA_ROLE_FAMILIES } from "@/constants/mba-role-taxonomy";
 import { isRecord, prefixedId } from "@/lib/utils";
+import { mergeStatusHistory } from "@/lib/mba-application-history";
 
 export const MBA_APPLICATIONS_STORAGE_KEY = "mba_applications_v1";
 const MBA_APPLICATION_EXPORT_SCHEMA = "mba-applications-export";
@@ -222,6 +224,15 @@ export function sanitizeFacts(value: unknown): MBAApplicationFact[] {
   return facts;
 }
 
+export function sanitizeStatusHistory(value: unknown): MBAApplicationStatusEvent[] {
+  if (!Array.isArray(value)) return [];
+  return mergeStatusHistory(value.flatMap((item) => {
+    if (!isRecord(item) || !isStatus(item.status)) return [];
+    const at = cleanTimestamp(item.at, "");
+    return at ? [{ status: item.status, at, kind: item.kind === "changed" ? "changed" as const : "observed" as const }] : [];
+  }));
+}
+
 export function sanitizeInterviewRounds(value: unknown): MBAInterviewRound[] {
   if (!Array.isArray(value)) return [];
   const rounds: MBAInterviewRound[] = [];
@@ -318,6 +329,7 @@ export function createMBAApplicationFromJob(
     materialsDir: null,
     interviewRounds: [],
     facts: [],
+    statusHistory: [{ status, at: timestamp, kind: "changed" }],
   };
 }
 
@@ -368,6 +380,7 @@ export function createManualMBAApplication(
     materialsDir: cleanRelativePath(draft.materialsDir),
     interviewRounds: [],
     facts: [],
+    statusHistory: [{ status, at: timestamp, kind: "changed" }],
   };
 }
 
@@ -429,6 +442,7 @@ function sanitizeTrackedApplication(value: unknown): MBATrackedApplication | nul
     materialsDir: cleanRelativePath(value.materialsDir),
     interviewRounds: sanitizeInterviewRounds(value.interviewRounds),
     facts: sanitizeFacts(value.facts),
+    statusHistory: sanitizeStatusHistory(value.statusHistory),
   };
 }
 
@@ -483,7 +497,18 @@ function pickNewerApplication(
 ): MBATrackedApplication {
   const currentTime = new Date(current.updatedAt).getTime();
   const incomingTime = new Date(incoming.updatedAt).getTime();
-  return incomingTime > currentTime ? incoming : current;
+  const newer = incomingTime > currentTime ? incoming : current;
+  const older = newer === incoming ? current : incoming;
+  const history = mergeStatusHistory(older.statusHistory ?? [], newer.statusHistory ?? []);
+  if (older.status !== newer.status) {
+    if (!history.some((event) => event.status === older.status)) {
+      history.push({ status: older.status, at: older.updatedAt, kind: "observed" });
+    }
+    if (history.at(-1)?.status !== newer.status) {
+      history.push({ status: newer.status, at: newer.updatedAt, kind: "observed" });
+    }
+  }
+  return { ...newer, statusHistory: mergeStatusHistory(history) };
 }
 
 export function mergeMBAApplications(
@@ -512,11 +537,16 @@ export function updateMBAApplicationStatus(
   status: MBAApplicationStatus,
   now = new Date()
 ): MBATrackedApplication {
+  if (application.status === status) return application;
   const timestamp = now.toISOString();
+  const history = application.statusHistory?.length
+    ? application.statusHistory
+    : [{ status: application.status, at: timestamp, kind: "observed" as const }];
   return {
     ...application,
     status,
     updatedAt: timestamp,
+    statusHistory: [...history, { status, at: timestamp, kind: "changed" }],
     appliedAt:
       status === "applied" && !application.appliedAt ? timestamp : application.appliedAt,
     archivedAt: status === "archived" ? timestamp : application.archivedAt,
