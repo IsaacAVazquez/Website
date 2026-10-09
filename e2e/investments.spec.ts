@@ -527,7 +527,7 @@ test.describe("Investments", () => {
       await section.getByRole("heading", { level: 3 }).allTextContents()
     ).map((title) => title.replace(/\s*↗\s*$/u, "").trim());
     expect(titles.slice(0, 3)).toEqual([
-      "Investment Analytics Platform",
+      "Before You Buy",
       "News Pulse Dashboard",
       "Interchange IQ",
     ]);

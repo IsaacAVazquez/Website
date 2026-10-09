@@ -34,6 +34,7 @@ The wrapper is `{ "schema": "mba-applications-export", "version": 1, "exportedAt
 | `materialsDir` | repo-relative path or null | The role folder, no leading slash and no `..` |
 | `interviewRounds` | array of `{ label, date, outcome, notes }`, 12 max | Outcome is `scheduled`, `done`, `passed`, or `failed` |
 | `facts` | array of `{ label, value }`, 12 max | Posting facts to reference on the card, such as base pay, work arrangement, program length, close date. Read-only on the dashboard |
+| `statusHistory` | array of `{ status, at, kind }` | Dated status records. `changed` records a change in the dashboard; `observed` preserves a status from an imported or older record without claiming its transition date |
 
 ## candidates.json
 
@@ -63,6 +64,8 @@ A plain object with no wrapper, read by `parseMBAJobSearchTargets`, which falls 
 The skills also read two keys the parser ignores, `savedSearches` and `promoteThresholds`, and their meaning is documented inside the skill folder.
 
 ## The updatedAt rule
+
+The dashboard records status changes and merges known history from both copies of an application. Pipeline rates include stages recorded in this history, interview rounds, and submitted dates, including archived applications. Older records without that evidence rely on their current status. Scheduled interview rounds dated today through six days ahead appear in the seven-day agenda, which can copy the preparation file's path for use in a local editor.
 
 Every merge in `src/lib/mba-applications.ts` is newer wins, both for applications and for candidates. So anything that edits a record, whether the page, the dump script, or a skill, sets that record's `updatedAt` to the current time, and sets the wrapper's `exportedAt` to the same. An edit that forgets this is silently overwritten by the browser's older copy on the next sync. Writers go through a temporary file and a rename so a half-written file never lands.
 

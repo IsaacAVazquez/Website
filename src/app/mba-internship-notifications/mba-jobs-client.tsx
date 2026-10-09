@@ -39,6 +39,7 @@ import {
   MBA_APPLICATION_PRIORITY_LABELS,
   MBA_APPLICATION_STATUSES,
   MBA_APPLICATION_STATUS_LABELS,
+  buildMBAApplicationSearchText,
   sanitizeFit,
 } from "@/lib/mba-applications";
 import {
@@ -95,6 +96,8 @@ import {
   VIEW_OPTIONS,
 } from "./mba-jobs-state";
 import CandidatesView from "./candidates-view";
+import UpcomingInterviews from "./UpcomingInterviews";
+import ApplicationHistory from "./ApplicationHistory";
 import dynamic from "next/dynamic";
 import {
   type ApplicationFormState,
@@ -1220,6 +1223,7 @@ function PipelineSignature({ insights }: { insights: MBAApplicationInsights }) {
       <p className="c97-prose" style={{ marginTop: "var(--c97-sp-3)", color: "var(--c97-ink-2)" }}>
         {insights.funnel.rejected} rejected · {insights.archived} archived
       </p>
+      <p className="c97-meta">Rates include previous stages and archived applications with recorded progress.</p>
     </div>
   );
 }
@@ -1431,10 +1435,11 @@ function ApplicationCard({
       {application.notes && (
         <p className="c97-prose line-clamp-3 text-sm" style={{ marginTop: "var(--c97-sp-2)" }}>{application.notes}</p>
       )}
+      <ApplicationHistory events={application.statusHistory ?? []} />
       {facts.length > 0 && (
         <ul className="c97-list" style={{ marginTop: "var(--c97-sp-2)" }} aria-label="Posting facts">
-          {facts.map((fact) => (
-            <li key={fact.label} className="c97-meta">
+          {facts.map((fact, index) => (
+            <li key={`${fact.label}-${index}`} className="c97-meta">
               {fact.label} · {fact.value}
             </li>
           ))}
@@ -1541,6 +1546,7 @@ function ApplicationCard({
 
 function ApplicationPipeline({
   applications,
+  todayKey,
   onCreate,
   onEdit,
   onStatusChange,
@@ -1552,6 +1558,7 @@ function ApplicationPipeline({
   onImport,
 }: {
   applications: MBATrackedApplication[];
+  todayKey: string | null;
   onCreate: () => void;
   onEdit: (application: MBATrackedApplication) => void;
   onStatusChange: (id: string, status: MBAApplicationStatus) => void;
@@ -1574,17 +1581,7 @@ function ApplicationPipeline({
       if (statusFilter === "all" && application.status === "archived") return false;
       if (statusFilter !== "all" && application.status !== statusFilter) return false;
       if (!normalizedQuery) return true;
-      return [
-        application.jobSnapshot.companyName,
-        application.jobSnapshot.title,
-        application.jobSnapshot.location,
-        application.jobSnapshot.department,
-        application.notes,
-        application.contact,
-      ]
-        .join(" ")
-        .toLowerCase()
-        .includes(normalizedQuery);
+      return buildMBAApplicationSearchText(application).includes(normalizedQuery);
     });
   }, [applications, query, statusFilter]);
 
@@ -1619,6 +1616,7 @@ function ApplicationPipeline({
   return (
     <section className="c97-band c97-sheet" data-c97-surface="paper" data-seam="torn" aria-labelledby="mba-application-pipeline-heading">
       <div className="c97-shell" style={{ display: "flex", flexDirection: "column", gap: "var(--c97-sp-2)" }}>
+      <UpcomingInterviews applications={applications} todayKey={todayKey} onEdit={onEdit} />
       <SectionLead
         kicker="Applications"
         title="Work the full-time pipeline in one place."
@@ -1637,7 +1635,7 @@ function ApplicationPipeline({
               <input
                 value={query}
                 onChange={(event) => setQuery(event.target.value)}
-                placeholder="Search company, role, notes, contact…"
+                placeholder="Search roles, posting facts, notes…"
                 aria-label="Search applications"
                 className="c97-field"
                 style={{ paddingLeft: "2.5rem" }}
@@ -2274,6 +2272,7 @@ export function MBAJobsClient({
         <>
           <ApplicationPipeline
             applications={applications}
+            todayKey={now === null ? null : applicationTodayKey}
             onCreate={() => openApplicationDialog(null)}
             onEdit={openApplicationDialog}
             onStatusChange={updateStatus}

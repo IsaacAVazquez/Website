@@ -21,6 +21,13 @@
  */
 @config "../../tailwind.config.ts";
 
+/* Responsive utility layouts widen on screen; paper uses the base layout. */
+@custom-variant sm (@media screen and (width >= 40rem));
+@custom-variant md (@media screen and (width >= 48rem));
+@custom-variant lg (@media screen and (width >= 64rem));
+@custom-variant xl (@media screen and (width >= 80rem));
+@custom-variant 2xl (@media screen and (width >= 96rem));
+
 /*
  * catalog97.css holds the whole design language: the tokens under `[data-c97]`
  * and `[data-c97-surface]`, and every component class. This file keeps only
@@ -296,4 +303,19 @@ select {
 input:invalid:not(:focus):not(:placeholder-shown),
 textarea:invalid:not(:focus):not(:placeholder-shown) {
   border-color: var(--c97-negative);
+}
+
+@media print {
+  :root {
+    --text-xs-fluid: calc(0.7rem + 1.85px);
+    --text-sm-fluid: calc(0.8rem + 2.775px);
+    --text-base-fluid: calc(0.9rem + 3.7px);
+    --text-lg-fluid: calc(1rem + 4.625px);
+    --text-xl-fluid: calc(1.1rem + 5.55px);
+    --text-2xl-fluid: calc(1.25rem + 9.25px);
+    --text-3xl-fluid: calc(1.5rem + 13.875px);
+    --text-4xl-fluid: calc(1.75rem + 18.5px);
+    --text-5xl-fluid: calc(2rem + 37px);
+    --text-6xl-fluid: calc(2.5rem + 46.25px);
+  }
 }

@@ -344,6 +344,7 @@ export function Catalog97Portfolio({ projects }: Catalog97PortfolioProps) {
                     }}
                   >
                     <Image
+                      loading="eager"
                       src={PROJECT_PLATES[project.slug]}
                       alt=""
                       fill

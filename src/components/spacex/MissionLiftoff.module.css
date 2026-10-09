@@ -87,3 +87,10 @@
     display: none;
   }
 }
+
+@media print {
+  .exhaust {
+    -webkit-mask-image: none;
+    mask-image: none;
+  }
+}

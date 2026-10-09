@@ -56,7 +56,7 @@
  * column is 334px. Below 640px it keeps the seed, the team, the record, and
  * the point differential in tighter cells, and the columns it drops are in
  * the team drawer. */
-@media (max-width: 639px) {
+@media print, screen and (max-width: 639px) {
   .c97-table.c97-nfl-table th,
   .c97-table.c97-nfl-table td {
     padding-inline: var(--c97-sp-1);

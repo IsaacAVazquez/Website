@@ -493,6 +493,7 @@ export function Catalog97Writing({
 
           {archive.length > 0 ? (
             <div
+              className="c97-print-stack"
               style={{
                 display: "grid",
                 gap: "var(--c97-sp-4)",

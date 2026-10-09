@@ -763,6 +763,56 @@ describe("MBAJobsClient", () => {
     expect(updateStatus).toHaveBeenCalledWith("app-1", "offer");
   });
 
+  it("shows the next scheduled interview with access to its preparation path", () => {
+    currentSearchParams = new URLSearchParams("view=applications");
+    const application = buildApplication({
+      interviewRounds: [{ label: "Hiring manager", date: dayKeyOffset(1), outcome: "scheduled", notes: "Discuss product scope" }],
+      materialsDir: "private/job-search/roles/stripe-pm",
+    });
+    mockUseMBAApplications.mockReturnValue(buildApplicationsHookValue({ applications: [application] }));
+    render(<MBAJobsClient initialState={DEFAULT_MBA_JOBS_STATE} />);
+    const agenda = screen.getByRole("list", { name: "Upcoming interviews" });
+    expect(within(agenda).getByText(/Hiring manager/)).toBeVisible();
+    expect(within(agenda).getByText("Discuss product scope")).toBeVisible();
+    expect(within(agenda).getByRole("button", { name: "Copy preparation path" })).toBeVisible();
+  });
+
+  it("shows recorded stage durations without assigning durations to imported observations", () => {
+    currentSearchParams = new URLSearchParams("view=applications");
+    const application = buildApplication({
+      statusHistory: [
+        { status: "saved", at: "2026-10-01T12:00:00Z", kind: "observed" },
+        { status: "applied", at: "2026-10-02T12:00:00Z", kind: "changed" },
+        { status: "interviewing", at: "2026-10-05T12:00:00Z", kind: "changed" },
+      ],
+    });
+    mockUseMBAApplications.mockReturnValue(buildApplicationsHookValue({ applications: [application] }));
+    render(<MBAJobsClient initialState={DEFAULT_MBA_JOBS_STATE} />);
+    const history = screen.getByRole("list", { name: "Application status history", hidden: true });
+    expect(within(history).getByText(/Applied.*3 days/)).toBeInTheDocument();
+    expect(within(history).getByText(/Observed Saved/)).not.toHaveTextContent(/days/);
+  });
+
+  it("searches posting facts, application channels, and fit notes in the pipeline", () => {
+    currentSearchParams = new URLSearchParams("view=applications");
+    const application = buildApplication({
+      facts: [{ label: "Work arrangement", value: "Hybrid, three days" }],
+      appliedVia: "Alumni referral",
+      fit: { score: 88, rationale: "Payments experience", scoredAt: "2026-10-07T12:00:00.000Z" },
+    });
+    mockUseMBAApplications.mockReturnValue(buildApplicationsHookValue({
+      applications: [application], activeApplications: [application],
+    }));
+    render(<MBAJobsClient initialState={DEFAULT_MBA_JOBS_STATE} />);
+
+    for (const query of ["HYBRID", "alumni", "payments"]) {
+      fireEvent.change(screen.getByLabelText("Search applications"), { target: { value: query } });
+      expect(screen.getByRole("heading", { name: application.jobSnapshot.title })).toBeVisible();
+    }
+    fireEvent.change(screen.getByLabelText("Search applications"), { target: { value: "unmatched" } });
+    expect(screen.queryByRole("heading", { name: application.jobSnapshot.title })).not.toBeInTheDocument();
+  });
+
   it("asks for a second click before deleting a tracked application", () => {
     currentSearchParams = new URLSearchParams("view=applications");
     const removeApplication = jest.fn();

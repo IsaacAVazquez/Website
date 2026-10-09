@@ -3,7 +3,7 @@
 /* Under md the sheet prints four columns in a 334px measure, so its cells take
  * the smaller inline step. Two classes, so the rule outranks `.c97-table td`
  * whichever stylesheet loads first. */
-@media (max-width: 767px) {
+@media print, screen and (max-width: 767px) {
   .c97-table.c97-frontier-spec :is(th, td) {
     padding-inline: var(--c97-sp-1);
   }

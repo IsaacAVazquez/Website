@@ -102,7 +102,7 @@
   display: none;
 }
 
-@media (max-width: 959px) {
+@media print, screen and (max-width: 959px) {
   .c97-project-hero-signature:has(> .c97-surface-map-sheet[data-layout="grid"]) {
     display: none;
   }

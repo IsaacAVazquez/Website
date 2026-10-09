@@ -1,0 +1,32 @@
+---
+title: "Building Before You Buy"
+excerpt: "I built a portfolio comparison around one proposed stock purchase, with the change in concentration and historical market behavior shown together."
+publishedAt: "2026-10-09"
+category: "Fintech Product"
+tags: ["Portfolio Tracking", "Investment Research", "Product Design", "Next.js"]
+featured: false
+cluster: "Fintech Product & Pricing"
+author: "Isaac Vazquez"
+coverImage: "/images/home/retro-before-you-buy.jpg"
+coverImageAlt: "Two portfolio worksheets with pie charts beside a calculator and pencil."
+cta:
+  eyebrow: "Related tool"
+  title: "Open Before You Buy"
+  description: "Compare your saved holdings or a sample portfolio with one proposed purchase."
+  href: "/investments/before-you-buy"
+  actionLabel: "Compare a purchase"
+seo:
+  title: "Building Before You Buy"
+  description: "I built a portfolio comparison for one proposed stock purchase, showing changes in concentration and historical behavior with explicit data limits."
+  keywords: ["portfolio comparison", "investment research", "fintech product design"]
+---
+
+I built [Before You Buy](/investments/before-you-buy) because I wanted a stock research page to answer a question about the whole portfolio. If I add this company, how does the mix change? A company can be interesting on its own, but I still want to see how much of the portfolio it would occupy and how its price history relates to what I already hold.
+
+The tool starts with holdings saved in the [Investment Research Platform](/investments), or a labeled sample portfolio. I enter a symbol and a purchase amount, and the page puts the current mix beside the proposed mix. Position weights and sector totals sit next to the historical comparisons, so the purchase has a visible effect on both the allocation and the calculations. The holdings stay in the browser.
+
+I framed this as an independent product concept for Google Finance. I think the useful interaction is the comparison itself, because it gives the research a specific decision to support. The page keeps the assumptions close to the results, and it leaves a result unavailable when the histories do not support it. I would keep that behavior even if the tool covered more companies.
+
+The calculations use committed price snapshots and only dates shared by every holding, the proposed purchase, and SPY, the market benchmark. Both portfolio mixes keep their weights fixed across that window. Beta measures their historical sensitivity to the benchmark, correlation compares the purchase with the existing mix, and the stress view uses the benchmark's five worst daily returns in the shared history. Sector totals use the supplied classifications without looking through a fund's underlying holdings. These are historical comparisons, and I do not treat them as forecasts or purchase recommendations.
+
+The [investment research build article](/writing/building-an-investment-research-platform) explains the surrounding workspace, and the [Interchange IQ article](/writing/interchange-iq-payment-fee-analyzer) covers another financial tool where I wanted the assumptions visible alongside the result.

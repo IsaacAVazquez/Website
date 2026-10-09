@@ -132,3 +132,19 @@
     transform: rotate(-1.4deg) skewX(-1deg);
   }
 }
+
+@media print {
+  .paper::after {
+    -webkit-mask: none;
+    mask: none;
+    clip-path: var(--c97-seam-torn-clip);
+  }
+
+  .smudge {
+    display: none;
+  }
+
+  .numeral {
+    font-size: 148px;
+  }
+}

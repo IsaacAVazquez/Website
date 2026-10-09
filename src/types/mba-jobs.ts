@@ -127,6 +127,13 @@ export interface MBAInterviewRound {
   notes: string;
 }
 
+export interface MBAApplicationStatusEvent {
+  status: MBAApplicationStatus;
+  at: string;
+  /** Imported observations have an uncertain transition time. */
+  kind: "changed" | "observed";
+}
+
 export interface MBATrackedApplication {
   id: string;
   jobId: string | null;
@@ -150,6 +157,7 @@ export interface MBATrackedApplication {
   interviewRounds?: MBAInterviewRound[];
   /** Written by the materials skill from the posting; read-only on the dashboard. 12 max. */
   facts?: MBAApplicationFact[];
+  statusHistory?: MBAApplicationStatusEvent[];
 }
 
 export type MBACandidateTriage = "sourced" | "reviewed" | "dismissed";

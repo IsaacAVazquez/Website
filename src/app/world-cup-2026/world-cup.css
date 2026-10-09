@@ -43,7 +43,7 @@
 }
 
 /* From here the whole bracket fits its plate, so the scroll hint goes. */
-@media (min-width: 1180px) {
+@media screen and (min-width: 1180px) {
   .c97-bracket-scroll::after {
     display: none;
   }

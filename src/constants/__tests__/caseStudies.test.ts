@@ -2,6 +2,9 @@ import {
   getHomepageFeaturedCaseStudies,
   getPortfolioProjects,
 } from "../caseStudies";
+import fs from "fs";
+import path from "path";
+import { PROJECT_PLATES } from "@/components/catalog97/projectPlates";
 
 const expectedPortfolioSlugs = [
   "before-you-buy",
@@ -99,10 +102,14 @@ describe("caseStudies helpers", () => {
     const featured = getHomepageFeaturedCaseStudies();
 
     expect(featured.map((project) => project.slug)).toEqual([
-      "investment-analytics-platform",
+      "before-you-buy",
       "news-pulse-dashboard",
       "interchange-iq",
     ]);
+    for (const project of featured) {
+      expect(PROJECT_PLATES[project.slug]).toBeDefined();
+      expect(fs.existsSync(path.join(process.cwd(), "public", PROJECT_PLATES[project.slug]))).toBe(true);
+    }
   });
 
 });

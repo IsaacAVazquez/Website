@@ -2,15 +2,16 @@
  * @jest-environment node
  */
 jest.mock("@/lib/blog", () => ({
-  getAllBlogPostPreviews: jest.fn(),
+  getBlogPostSearchEntries: jest.fn(),
 }));
 
 import { NextRequest } from "next/server";
 import { GET } from "../route";
-import { getAllBlogPostPreviews } from "@/lib/blog";
+import { getBlogPostSearchEntries } from "@/lib/blog";
+import { DASHBOARD_ROUTES } from "@/constants/catalog97Nav";
 
-const mockGetAllBlogPostPreviews =
-  getAllBlogPostPreviews as jest.MockedFunction<typeof getAllBlogPostPreviews>;
+const mockGetBlogPostSearchEntries =
+  getBlogPostSearchEntries as jest.MockedFunction<typeof getBlogPostSearchEntries>;
 
 function makeRequest(queryString: string): NextRequest {
   return new NextRequest(
@@ -20,12 +21,13 @@ function makeRequest(queryString: string): NextRequest {
 
 const SAMPLE_PREVIEW = {
   slug: "quantum-search-internals",
+  searchText: "A body-only reference to photosynthesis.",
   title: "Quantum Search Internals",
   excerpt: "A deep dive into quantum search relevance ranking.",
   category: "Engineering",
   tags: ["quantum", "search"],
   publishedAt: "2026-06-01",
-} as unknown as ReturnType<typeof getAllBlogPostPreviews>[number];
+} as unknown as ReturnType<typeof getBlogPostSearchEntries>[number];
 
 // A publishedAt in the content/blog frontmatter format, dated relative to the
 // run so the 30-day recency window never drifts away from the test.
@@ -40,11 +42,32 @@ describe("GET /api/search", () => {
     jest.clearAllMocks();
     jest.spyOn(console, "error").mockImplementation(() => undefined);
     // Default: one deterministic blog preview in the corpus.
-    mockGetAllBlogPostPreviews.mockReturnValue([SAMPLE_PREVIEW]);
+    mockGetBlogPostSearchEntries.mockReturnValue([SAMPLE_PREVIEW]);
   });
 
   afterEach(() => {
     jest.restoreAllMocks();
+  });
+
+  it("finds article body text and keeps repeated body matches below title matches", async () => {
+    const bodyMatch = await GET(makeRequest("?q=photosynthesis&type=post"));
+    expect((await bodyMatch.json()).results[0].id).toBe("post-quantum-search-internals");
+    mockGetBlogPostSearchEntries.mockReturnValue([
+      { ...SAMPLE_PREVIEW, searchText: "photosynthesis ".repeat(200) },
+      { ...SAMPLE_PREVIEW, slug: "photosynthesis", title: "Photosynthesis", excerpt: "Plant growth", tags: [], searchText: "Short explanation" },
+    ]);
+    const ranked = await GET(makeRequest("?q=photosynthesis&type=post"));
+    const results = (await ranked.json()).results;
+    expect(results[0].id).toBe("post-photosynthesis");
+    expect(results[1]).not.toHaveProperty("searchText");
+    expect(results[1]).not.toHaveProperty("content");
+  });
+
+  it("includes every registered tool once", async () => {
+    const response = await GET(makeRequest("?type=project&limit=100"));
+    const urls = (await response.json()).results.map((item: { url: string }) => item.url);
+    for (const url of DASHBOARD_ROUTES) expect(urls).toContain(url);
+    expect(new Set(urls).size).toBe(urls.length);
   });
 
   it("returns matching results with the documented shape and cache headers", async () => {
@@ -106,7 +129,7 @@ describe("GET /api/search", () => {
   it("returns an empty result set for a query that matches nothing", async () => {
     // An old publish date keeps this case clear of the recency bonus, which
     // the next test covers.
-    mockGetAllBlogPostPreviews.mockReturnValue([
+    mockGetBlogPostSearchEntries.mockReturnValue([
       {
         ...SAMPLE_PREVIEW,
         publishedAt: "2020-01-01",
@@ -126,7 +149,7 @@ describe("GET /api/search", () => {
 
   it("returns no results for a non-matching query when the corpus holds a recent post", async () => {
     // A post published in the last 30 days must not score on its date alone.
-    mockGetAllBlogPostPreviews.mockReturnValue([
+    mockGetBlogPostSearchEntries.mockReturnValue([
       {
         ...SAMPLE_PREVIEW,
         publishedAt: publishedDaysAgo(3),
@@ -145,7 +168,7 @@ describe("GET /api/search", () => {
     // The titles are chosen so the alphabetical tiebreak would put the older
     // post first, which leaves the recency bonus as the only reason the recent
     // one leads.
-    mockGetAllBlogPostPreviews.mockReturnValue([
+    mockGetBlogPostSearchEntries.mockReturnValue([
       {
         ...SAMPLE_PREVIEW,
         slug: "quantum-notes-older",
@@ -220,8 +243,8 @@ describe("GET /api/search", () => {
       category: "Engineering",
       tags: ["quantum"],
       publishedAt: "2026-06-01",
-    })) as unknown as ReturnType<typeof getAllBlogPostPreviews>;
-    mockGetAllBlogPostPreviews.mockReturnValue(previews);
+    })) as unknown as ReturnType<typeof getBlogPostSearchEntries>;
+    mockGetBlogPostSearchEntries.mockReturnValue(previews);
 
     const response = await GET(makeRequest("?q=quantum&limit=3"));
     const body = await response.json();
@@ -411,7 +434,7 @@ describe("GET /api/search", () => {
   });
 
   it("degrades gracefully when the blog corpus loader throws", async () => {
-    mockGetAllBlogPostPreviews.mockImplementation(() => {
+    mockGetBlogPostSearchEntries.mockImplementation(() => {
       throw new Error("boom");
     });
 
@@ -429,7 +452,7 @@ describe("GET /api/search", () => {
 
 describe("GET /api/search corpus", () => {
   beforeEach(() => {
-    mockGetAllBlogPostPreviews.mockReturnValue([]);
+    mockGetBlogPostSearchEntries.mockReturnValue([]);
   });
 
   it("never returns the same URL twice and never a case study URL that redirects", async () => {

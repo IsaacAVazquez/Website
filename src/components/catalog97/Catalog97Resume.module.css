@@ -19,7 +19,7 @@
   align-items: baseline;
 }
 
-@media (max-width: 600px) {
+@media print, screen and (max-width: 600px) {
   .experience {
     grid-template-columns: minmax(0, 1fr);
   }

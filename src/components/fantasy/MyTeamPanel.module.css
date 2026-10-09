@@ -82,13 +82,13 @@
 .emptyLineup .primaryButton { margin-top: var(--c97-sp-2); }
 .footer { margin-top: var(--c97-sp-1); border-top: 1px solid var(--team-rule); padding-block: var(--c97-sp-2); color: var(--team-muted); font-size: var(--text-1xs); line-height: 1.5; }
 
-@media (min-width: 768px) {
+@media screen and (min-width: 768px) {
   .editor, .settings { grid-template-columns: minmax(0, 1fr) minmax(0, 2fr); gap: var(--c97-sp-5); padding-block: var(--c97-sp-3); }
   .playerEditor, .settings > :last-child { border-left: 1px solid var(--team-rule); padding-left: var(--c97-sp-3); }
   .editorIntro { max-width: 34ch; }
 }
 
-@media (min-width: 1024px) {
+@media screen and (min-width: 1024px) {
   .decisions { grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr); gap: var(--c97-sp-3); padding-block: var(--c97-sp-3); }
   .lineup { padding-block: 0; }
   .comparison { padding: 0 0 0 var(--c97-sp-3); border-top: 0; border-left: 1px solid var(--team-rule); }
@@ -97,7 +97,7 @@
   .targetsFirst .lineup { border-top: 0; }
 }
 
-@media (max-width: 400px) {
+@media screen and (max-width: 400px) {
   .viewNav { gap: var(--c97-sp-2); }
   .context { column-gap: var(--c97-sp-2); }
   .comparison { padding-block: var(--c97-sp-2); }

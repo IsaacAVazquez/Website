@@ -39,7 +39,7 @@
  * ~350px) that in-chart text stops being legible at any reasonable font
  * size. The tiles still read as a proportional picture; names and figures
  * move to each tile's <title> and the table below. */
-@media (max-width: 639px) {
+@media print, screen and (max-width: 639px) {
   .c97-startup-treemap-tile-label,
   .c97-startup-treemap-sector-label-group {
     display: none;

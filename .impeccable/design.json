@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-09-27T00:00:00Z",
+  "generatedAt": "2026-10-09T08:44:27.190300+00:00",
   "title": "Design System: Catalog 97",
   "extensions": {
     "colorMeta": {
@@ -202,19 +202,14 @@
     ],
     "motion": [
       {
-        "name": "easing-smooth",
-        "value": "cubic-bezier(0.25, 0.46, 0.45, 0.94)",
-        "purpose": "Default easing, wired in tailwind.config.ts as the smooth timing function."
+        "name": "ease",
+        "value": "cubic-bezier(0.22, 1, 0.36, 1)",
+        "purpose": "Interface state transitions through --c97-ease."
       },
       {
-        "name": "easing-spring",
-        "value": "cubic-bezier(0.34, 1.56, 0.64, 1)",
-        "purpose": "Occasional overshoot for a state change, wired in tailwind.config.ts as the spring timing function."
-      },
-      {
-        "name": "reveal",
-        "value": "scale(1.05) to scale(1) over 900ms, cubic-bezier(0.19, 0.72, 0.16, 1), plays once",
-        "purpose": "Catalog97Reveal arms a [data-reveal] element and releases it on scroll. Never arms anything under prefers-reduced-motion."
+        "name": "ease-slow",
+        "value": "cubic-bezier(0.19, 0.72, 0.16, 1)",
+        "purpose": "Plate reveals through --c97-ease-slow."
       }
     ],
     "breakpoints": [
@@ -235,7 +230,7 @@
       "refersTo": "btn-primary",
       "description": "Solid rectangle, no radius. Ink-2 fill with surface text; hover darkens to ink. Offset variant adds a 4px hard shadow in the sheet's second ink that collapses on press.",
       "html": "<button class=\"c97-btn c97-offset\">View the work</button>",
-      "css": ".c97-btn { display: inline-flex; align-items: center; min-height: 48px; padding: 0 clamp(22px, 2.6vw, 32px); border: 0; border-radius: 0; background: #4a3728; color: #f1ebdf; font-size: clamp(13px, 1.3vw, 15px); letter-spacing: 0.08em; text-transform: uppercase; text-decoration: none; cursor: pointer; transition: background-color 160ms ease, color 160ms ease; } .c97-btn:hover { background: #2b211a; } .c97-btn.c97-offset { box-shadow: 4px 4px 0 var(--c97-overprint); transition: box-shadow 120ms ease, transform 120ms ease; } .c97-btn.c97-offset:active { box-shadow: none; transform: translate(4px, 4px); }"
+      "css": ".c97-btn { display: inline-flex; align-items: center; min-height: 48px; padding: 0 clamp(22px, 2.6vw, 32px); border: 0; border-radius: 0; background: #4a3728; color: #f1ebdf; font-size: clamp(13px, 1.3vw, 15px); letter-spacing: 0.08em; text-transform: uppercase; text-decoration: none; cursor: pointer; transition: background-color 160ms cubic-bezier(0.22, 1, 0.36, 1), color 160ms cubic-bezier(0.22, 1, 0.36, 1); } .c97-btn:hover { background: #2b211a; } .c97-btn.c97-offset { box-shadow: 4px 4px 0 var(--c97-overprint); transition: box-shadow 120ms cubic-bezier(0.22, 1, 0.36, 1), transform 120ms cubic-bezier(0.22, 1, 0.36, 1); } .c97-btn.c97-offset:active { box-shadow: none; transform: translate(4px, 4px); }"
     },
     {
       "name": "Invert button",
@@ -251,7 +246,7 @@
       "refersTo": "btn-outline",
       "description": "The outlined display button, used once, on a route's closing vermilion band, set at the h2 step to match the closing line beside it.",
       "html": "<button class=\"c97-btn-outline\">See the archive</button>",
-      "css": ".c97-btn-outline { min-height: 64px; display: inline-flex; align-items: center; padding: 0 clamp(22px, 2.6vw, 32px); border: 2px solid #2b211a; background: none; color: #2b211a; font-size: clamp(24px, 2.7vw, 32px); line-height: 1.2; letter-spacing: 0.05em; text-transform: uppercase; cursor: pointer; transition: background-color 160ms ease, color 160ms ease; } .c97-btn-outline:hover { background: #2b211a; color: #f1ebdf; }"
+      "css": ".c97-btn-outline { min-height: 64px; display: inline-flex; align-items: center; padding: 0 clamp(22px, 2.6vw, 32px); border: 2px solid #2b211a; background: none; color: #2b211a; font-size: clamp(24px, 2.7vw, 32px); line-height: 1.2; letter-spacing: 0.05em; text-transform: uppercase; cursor: pointer; transition: background-color 160ms cubic-bezier(0.22, 1, 0.36, 1), color 160ms cubic-bezier(0.22, 1, 0.36, 1); } .c97-btn-outline:hover { background: #2b211a; color: #f1ebdf; }"
     },
     {
       "name": "Printed panel",

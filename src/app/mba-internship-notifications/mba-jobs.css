@@ -9,7 +9,7 @@
   gap: var(--c97-sp-5);
 }
 
-@media (min-width: 800px) {
+@media screen and (min-width: 800px) {
   .mba-signature-grid {
     grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
   }
@@ -21,7 +21,7 @@
   gap: var(--c97-sp-4);
 }
 
-@media (min-width: 480px) {
+@media screen and (min-width: 480px) {
   .mba-pipeline-stages {
     grid-template-columns: repeat(4, minmax(0, 1fr));
   }
@@ -34,7 +34,7 @@
   padding-top: var(--c97-sp-1);
 }
 
-@media (min-width: 480px) {
+@media screen and (min-width: 480px) {
   .mba-pipeline-rate {
     border-top: 0;
     padding-top: 0;

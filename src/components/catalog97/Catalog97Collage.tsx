@@ -64,6 +64,7 @@ export function Catalog97PrintPlate({
     >
       <Image
         src={src}
+        loading="eager"
         alt={alt}
         fill
         sizes={sizes}

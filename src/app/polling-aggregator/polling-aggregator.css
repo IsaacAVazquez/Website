@@ -47,7 +47,7 @@
 
 /* Below 640px an 11-column grid leaves each tile too narrow for both lines,
  * so the rating drops to the title tooltip and the fill colour. */
-@media (max-width: 639px) {
+@media print, screen and (max-width: 639px) {
   .c97-state-tile-grid {
     grid-auto-rows: minmax(2.25rem, 1fr);
   }
@@ -63,7 +63,7 @@
  * tuned to clear it with a small margin. At that larger size every x-axis
  * month label would collide with its neighbour, so every other one is
  * dropped; the visible ones still span the full trend window. */
-@media (max-width: 639px) {
+@media print, screen and (max-width: 639px) {
   .c97-polling-chart-text {
     font-size: 25px;
   }

@@ -82,7 +82,7 @@
   display: none;
 }
 
-@media (max-width: 639px) {
+@media print, screen and (max-width: 639px) {
   .c97-points-ladder-plate svg.c97-points-ladder.c97-points-ladder--wide {
     display: none;
   }

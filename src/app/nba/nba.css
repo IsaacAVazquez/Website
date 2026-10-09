@@ -3,7 +3,7 @@
 /* The full table is 509px wide and a phone's column is 334px. Below 640px it
  * keeps the seed, the team, the record, and the games back in tighter cells,
  * and the columns it drops are in the team drawer. */
-@media (max-width: 639px) {
+@media print, screen and (max-width: 639px) {
   .c97-table.c97-nba-table th,
   .c97-table.c97-nba-table td {
     padding-inline: var(--c97-sp-1);

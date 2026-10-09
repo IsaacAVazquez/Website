@@ -280,6 +280,26 @@
 @media print {
   [data-c97] {
     --c97-grain-soft: none;
+    /* Paper uses the token sizes of a 740px layout, independent of the window. */
+    --c97-gutter: 44.4px;
+    --c97-sp-0: 4px;
+    --c97-sp-1: 8px;
+    --c97-sp-2: 12px;
+    --c97-sp-3: 22px;
+    --c97-sp-4: 28px;
+    --c97-sp-5: 40px;
+    --c97-sp-6: 60px;
+    --c97-sp-7: 76px;
+    --c97-fs-small: 13px;
+    --c97-fs-body: 15px;
+    --c97-fs-lead: 19px;
+    --c97-fs-h3: 20px;
+    --c97-fs-h2: 24px;
+    --c97-fs-h1: 32px;
+    --c97-fs-display: 46px;
+    --c97-fs-plate: 64px;
+    --c97-fs-poster: 54.76px;
+    --c97-fs-poster-sm: 30px;
   }
 }
 
@@ -1227,7 +1247,7 @@ a.c97-link-heading {
   display: none;
 }
 
-@media (min-width: 700px) {
+@media screen and (min-width: 700px) {
   .c97-category-picker {
     display: none;
   }
@@ -2115,7 +2135,7 @@ select.c97-field {
  * portfolio ledger does not take this class. Stacking there would only add a
  * line to each of 29 rows that already fit.
  */
-@media (max-width: 639px) {
+@media print, screen and (max-width: 639px) {
   .c97-row-stack-sm {
     grid-template-columns: 1fr;
     gap: var(--c97-sp-2);
@@ -2150,7 +2170,7 @@ select.c97-field {
   grid-template-columns: minmax(0, 1fr);
 }
 
-@media (min-width: 700px) {
+@media print, screen and (min-width: 700px) {
   .c97-mosaic:has(> :nth-child(4):last-child) {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -2236,7 +2256,7 @@ select.c97-field {
   grid-template-columns: minmax(0, 1fr);
 }
 
-@media (min-width: 560px) {
+@media print, screen and (min-width: 560px) {
   .c97-columns:has(> :nth-child(4):last-child) {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -2283,6 +2303,32 @@ select.c97-field {
   .c97-mosaic:has(> :nth-child(3):last-child) > * + * {
     margin-top: var(--c97-sp-1);
   }
+
+  .c97-print-stack {
+    display: block !important;
+  }
+
+  .c97-print-stack > * + * {
+    margin-top: var(--c97-columns-gap, var(--c97-sp-4));
+  }
+
+  .c97-print-stack > .c97-row {
+    display: block;
+    break-inside: avoid;
+  }
+
+  .c97-print-stack > .c97-row > * + * {
+    margin-top: var(--c97-sp-2);
+  }
+
+  .c97-footer {
+    break-inside: avoid;
+  }
+
+  .c97-footer .c97-footer-tile {
+    display: block;
+    break-inside: avoid;
+  }
 }
 
 /* Keep the navigation and signature together, with a fixed signature size. */
@@ -2302,7 +2348,7 @@ select.c97-field {
   gap: var(--c97-sp-4);
 }
 
-@media (min-width: 560px) {
+@media print, screen and (min-width: 560px) {
   .c97-footer-tiles {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -2949,7 +2995,7 @@ select.c97-field {
  * column as the lead figure and the other two sit side by side under it.
  * From 560px the auto-fit above puts all three on one line.
  */
-@media (max-width: 559px) {
+@media screen and (max-width: 559px) {
   .c97-project-hero-readouts:has(> :nth-child(3):last-child) {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }

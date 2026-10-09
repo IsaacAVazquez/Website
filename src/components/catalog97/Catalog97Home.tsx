@@ -207,6 +207,7 @@ export function Catalog97Home({
                   <Image
                     src={PROJECT_PLATES[project.slug]}
                     alt=""
+                    loading="eager"
                     fill
                     sizes="(max-width: 880px) 100vw, 33vw"
                   />

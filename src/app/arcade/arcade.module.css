@@ -486,6 +486,14 @@
 
 .backNote a:hover { color: var(--ph-acid); }
 
+@media print {
+  .root::before {
+    display: none;
+    -webkit-mask-image: none;
+    mask-image: none;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .root::after { animation: none; }
   .title { animation: none; text-shadow: 2px 0 var(--ph-magenta), -2px 0 var(--ph-cyan); }
