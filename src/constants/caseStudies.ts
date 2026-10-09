@@ -1180,7 +1180,7 @@ export const caseStudiesData: Record<string, CaseStudyData> = {
 };
 
 export const HOMEPAGE_FEATURED_SLUGS = [
-  "investment-analytics-platform",
+  "before-you-buy",
   "news-pulse-dashboard",
   "interchange-iq",
 ] as const;
@@ -1231,6 +1231,7 @@ function getStudiesByOrderedSlugs(slugs: readonly string[]): CaseStudyData[] {
 
 // The build article in content/blog for every built portfolio project, keyed by project slug.
 export const PROJECT_BUILD_NOTES: Readonly<Record<string, string>> = {
+  "before-you-buy": "building-before-you-buy",
   "march-madness-2026": "building-a-march-madness-bracket-workspace",
   "travel-deal-lab": "building-a-travel-deal-lab",
   "investment-analytics-platform": "building-an-investment-research-platform",

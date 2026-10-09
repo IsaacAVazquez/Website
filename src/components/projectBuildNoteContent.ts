@@ -10,6 +10,12 @@ export interface ProjectBuildNoteContext {
 }
 
 export const PROJECT_BUILD_NOTE_CONTEXT: Record<string, ProjectBuildNoteContext> = {
+  "/investments/before-you-buy": {
+    purpose:
+      "I built this independent product concept around the question I want answered before adding a stock, which is how the purchase changes what I already own. It compares the current portfolio with the proposed mix, keeping concentration and historical market behavior in the same view.",
+    method:
+      "The comparison uses committed price snapshots and dates shared by every holding, the proposed purchase, and SPY. It holds each mix's weights fixed across that history and reports missing coverage. The results describe historical behavior and do not predict returns or recommend a purchase.",
+  },
   "/ai-dev-tools": {
     purpose:
       "I use this directory to compare coding assistants and agents against the constraints that actually shape a product decision, including model access, price, source availability, and release pace. The filters keep those tradeoffs in one view instead of reducing the choice to a popularity ranking.",

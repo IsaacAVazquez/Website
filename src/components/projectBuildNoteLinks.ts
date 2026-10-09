@@ -2,6 +2,7 @@
 // lives in projectBuildNoteContent, loaded through the dynamic
 // ProjectBuildNote below so it stays out of the shared first-load bundle.
 export const projectBuildNoteLinks: Record<string, string> = {
+  "/investments/before-you-buy": "/writing/building-before-you-buy",
   "/travel-deals": "/writing/building-a-travel-deal-lab",
   "/march-madness-2026": "/writing/building-a-march-madness-bracket-workspace",
   "/agent-build-index": "/writing/building-an-agent-build-index",

@@ -76,6 +76,7 @@ const NO_PINNED_PHOTO = "No Commons photograph was pinned for this post in the 2
 const COMPANY_SERIES = "Monthly company commentary; the only real subject is the company's own brand, which is not ours to use.";
 
 export const ARTICLE_COVER_IMAGES: ArticleCoverImageSpec[] = [
+  { slug: "building-before-you-buy", strategy: "manual", note: RISO_PLATE },
   { slug: "building-a-travel-deal-lab", strategy: "editorial-card", reason: ABSTRACT_PRODUCT },
   { slug: "building-a-march-madness-bracket-workspace", strategy: "editorial-card", reason: ABSTRACT_PRODUCT },
   { slug: "building-an-agent-build-index", strategy: "editorial-card", reason: ABSTRACT_PRODUCT },

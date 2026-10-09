@@ -7,9 +7,10 @@ import { HOMEPAGE_FEATURED_SLUGS } from "@/constants/caseStudies";
  * Home slug must have one, or `next/image` throws on the home page.
  */
 const PLATES = {
+  "before-you-buy": "/images/home/retro-before-you-buy.jpg",
   "investment-analytics-platform": "/images/home/retro-markets.jpg",
   "news-pulse-dashboard": "/images/home/retro-press.jpg",
   "interchange-iq": "/images/home/retro-card.jpg",
-} satisfies Record<(typeof HOMEPAGE_FEATURED_SLUGS)[number], string>;
+} satisfies Record<string, string> & Record<(typeof HOMEPAGE_FEATURED_SLUGS)[number], string>;
 
 export const PROJECT_PLATES: Record<string, string> = PLATES;
