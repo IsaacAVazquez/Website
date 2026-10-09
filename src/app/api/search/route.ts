@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { getAllBlogPostPreviews } from '@/lib/blog';
+import { getBlogPostSearchEntries } from '@/lib/blog';
 import { caseStudiesData } from '@/constants/caseStudies';
+import { DASHBOARD_ROUTES } from '@/constants/catalog97Nav';
 import { logger } from '@/lib/logger';
 import { classifyToolSlug, getToolCategoryLabel } from '@/constants/toolCategories';
 
@@ -27,6 +28,7 @@ const STATIC_PAGES: [string, string, string, string, 'project'?][] = [
   ['/contact', 'Contact Isaac Vazquez', 'How to reach me about full-time product roles, Haas, or anything on this site.', 'Contact'],
   ['/writing', 'Writing', 'Writing on PM workflows, agentic AI, fintech product thinking, reliability, and systems design.', 'Writing'],
   ['/accessibility', 'Accessibility', 'Accessibility commitments and conformance notes for this site, including WCAG references and how to report issues.', 'Site'],
+  ['/privacy', 'Privacy', 'How this site handles browser storage, analytics, and personal information.', 'Site'],
   ['/now', 'Now', 'What I am focused on right now, from my second year at Haas to what I am building.', 'Site'],
   ['/changelog', 'Changelog', 'A running log of notable changes, new tools, and updates shipped across the site.', 'Site'],
   ['/arcade', 'Reactor Arcade', 'Reactor is a neon synthwave reflex game built into the site, a deliberate style experiment where you light the live cell, dodge the decoys, and keep the combo alive.', 'Site'],
@@ -110,13 +112,13 @@ async function getAllSearchableContent(): Promise<SearchableContent[]> {
 
   // ---- Blog posts (every published article under content/blog) -----------
   try {
-    const posts = getAllBlogPostPreviews();
+    const posts = getBlogPostSearchEntries();
     for (const post of posts) {
       content.push({
         id: `post-${post.slug}`,
         title: post.title,
         excerpt: post.excerpt,
-        content: [post.title, post.excerpt, post.category, post.tags.join(' ')]
+        content: [post.searchText, post.title, post.excerpt, post.category, post.tags.join(' ')]
           .filter(Boolean)
           .join(' '),
         url: `/writing/${post.slug}`,
@@ -173,8 +175,17 @@ async function getAllSearchableContent(): Promise<SearchableContent[]> {
     });
   }
 
+  // A newly registered tool is searchable even before it has editorial copy.
+  for (const url of DASHBOARD_ROUTES) {
+    if (content.some((item) => item.url === url)) continue;
+    const slug = url.split('/').at(-1)!;
+    const title = slug.split('-').map((word) => word[0].toUpperCase() + word.slice(1)).join(' ');
+    const category = getToolCategoryLabel(classifyToolSlug(slug));
+    content.push({ id: `tool-${slug}`, title, excerpt: `Open ${title}.`, content: `${title} ${category}`, url, type: 'project', category });
+  }
+
   for (const item of content) {
-    const keywords = SEARCH_KEYWORDS[item.url];
+    const keywords = Object.hasOwn(SEARCH_KEYWORDS, item.url) ? SEARCH_KEYWORDS[item.url] : undefined;
     if (keywords) item.content += ` ${keywords}`;
   }
 
@@ -364,7 +375,7 @@ function calculateRelevanceScore(content: SearchableContent, query: string): num
     });
   }
 
-  // Content matches (lowest weight but important for comprehensive search).
+  // Body matches carry less weight than a title, even in a long article.
   // Count substring occurrences, mirroring the .includes() matching used by
   // the fields above. This avoids the ASCII-only `\b` word-boundary regex,
   // which silently dropped tokens with punctuation or accents (e.g. "c++",
@@ -373,7 +384,7 @@ function calculateRelevanceScore(content: SearchableContent, query: string): num
   queryWords.forEach(word => {
     const occurrences = contentLower.split(word).length - 1;
     if (occurrences > 0) {
-      score += occurrences * 2; // Multiple occurrences increase score
+      score += Math.min(occurrences, 3) * 2;
     }
   });
 

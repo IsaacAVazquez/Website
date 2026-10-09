@@ -24,6 +24,7 @@ import {
   getBlogPostBySlug,
   getAllBlogPosts,
   getAllBlogPostPreviews,
+  getBlogPostSearchEntries,
   getRelatedBlogPosts,
   getArchiveBlogPostPreviews,
   getCuratedBlogPostPreviewsByCluster,
@@ -59,6 +60,21 @@ function setupMockFile(
 ) {
   mockMatter.mockReturnValue({ data: frontmatter, content });
 }
+
+describe('getBlogPostSearchEntries', () => {
+  it('indexes readable body text and omits scheduled articles', () => {
+    mockFs.existsSync = jest.fn().mockReturnValue(true);
+    mockFs.readdirSync = jest.fn().mockReturnValue(['published.mdx', 'scheduled.mdx']);
+    mockFs.readFileSync = jest.fn().mockReturnValue('source');
+    mockMatter
+      .mockReturnValueOnce({ data: makeFrontmatter(), content: '# Heading\nBody-only photosynthesis and [plant growth](https://example.com/hidden-url).' })
+      .mockReturnValueOnce({ data: makeFrontmatter({ publishedAt: '2999-01-01' }), content: 'Unpublished' });
+    const entries = getBlogPostSearchEntries();
+    expect(entries).toHaveLength(1);
+    expect(entries[0].searchText).toContain('Body-only photosynthesis and plant growth');
+    expect(entries[0].searchText).not.toContain('hidden-url');
+  });
+});
 
 describe('getBlogPostSlugs', () => {
   beforeEach(() => {

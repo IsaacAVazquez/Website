@@ -331,6 +331,24 @@ export function getAllBlogPostPreviews(): BlogPostPreview[] {
   return previews.sort(compareBlogEntriesByPublishedDateDesc);
 }
 
+/** Published previews plus readable source text, without rendering article HTML. */
+export function getBlogPostSearchEntries(): (BlogPostPreview & { searchText: string })[] {
+  return getBlogPostSlugs().flatMap((slug) => {
+    const source = readBlogPostSource(slug);
+    if (!source) return [];
+    const preview = buildBlogPostPreview(slug, source.metadata, source.content);
+    if (!isBlogPostPublished(preview)) return [];
+    const searchText = source.content
+      .replace(/!\[[^\]]*\]\([^)]*\)/g, " ")
+      .replace(/\[([^\]]+)\]\([^)]*\)/g, "$1")
+      .replace(/<[^>]*>/g, " ")
+      .replace(/[#*_`~|]/g, " ")
+      .replace(/\s+/g, " ")
+      .trim();
+    return [{ ...preview, searchText }];
+  }).sort(compareBlogEntriesByPublishedDateDesc);
+}
+
 export async function getAllBlogPosts(): Promise<BlogPost[]> {
   const slugs = getBlogPostSlugs();
   const posts: BlogPost[] = [];
