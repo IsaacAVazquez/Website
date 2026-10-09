@@ -1,11 +1,11 @@
 {
-  "generatedAt": "2026-10-08T22:09:56.985Z",
+  "generatedAt": "2026-10-09T21:44:55.106Z",
   "data": {
     "PPR": {
       "10": {
         "season": 2026,
         "sourceUrl": "https://www.fantasypros.com/nfl/rankings/ppr-vorp.php?team_size=10",
-        "accessedAt": "2026-10-08T22:09:57.447Z",
+        "accessedAt": "2026-10-09T21:44:55.824Z",
         "players": [
           {
             "playerId": "fp-22968",
@@ -5302,7 +5302,7 @@
           {
             "playerId": "fp-9907",
             "name": "Andy Dalton",
-            "team": "PHI",
+            "team": "FA",
             "position": "QB",
             "positionRank": 69,
             "rank": 589,
@@ -5367,7 +5367,7 @@
       "12": {
         "season": 2026,
         "sourceUrl": "https://www.fantasypros.com/nfl/rankings/ppr-vorp.php",
-        "accessedAt": "2026-10-08T22:09:58.505Z",
+        "accessedAt": "2026-10-09T21:44:56.244Z",
         "players": [
           {
             "playerId": "fp-22968",
@@ -10664,7 +10664,7 @@
           {
             "playerId": "fp-9907",
             "name": "Andy Dalton",
-            "team": "PHI",
+            "team": "FA",
             "position": "QB",
             "positionRank": 69,
             "rank": 589,
@@ -10729,7 +10729,7 @@
       "14": {
         "season": 2026,
         "sourceUrl": "https://www.fantasypros.com/nfl/rankings/ppr-vorp.php?team_size=14",
-        "accessedAt": "2026-10-08T22:09:59.194Z",
+        "accessedAt": "2026-10-09T21:44:56.927Z",
         "players": [
           {
             "playerId": "fp-22968",
@@ -16026,7 +16026,7 @@
           {
             "playerId": "fp-9907",
             "name": "Andy Dalton",
-            "team": "PHI",
+            "team": "FA",
             "position": "QB",
             "positionRank": 69,
             "rank": 589,
@@ -16093,7 +16093,7 @@
       "10": {
         "season": 2026,
         "sourceUrl": "https://www.fantasypros.com/nfl/rankings/half-ppr-vorp.php?team_size=10",
-        "accessedAt": "2026-10-08T22:10:00.140Z",
+        "accessedAt": "2026-10-09T21:44:57.826Z",
         "players": [
           {
             "playerId": "fp-22968",
@@ -21390,7 +21390,7 @@
           {
             "playerId": "fp-9907",
             "name": "Andy Dalton",
-            "team": "PHI",
+            "team": "FA",
             "position": "QB",
             "positionRank": 69,
             "rank": 589,
@@ -21455,7 +21455,7 @@
       "12": {
         "season": 2026,
         "sourceUrl": "https://www.fantasypros.com/nfl/rankings/half-ppr-vorp.php",
-        "accessedAt": "2026-10-08T22:10:00.968Z",
+        "accessedAt": "2026-10-09T21:44:58.275Z",
         "players": [
           {
             "playerId": "fp-22968",
@@ -26752,7 +26752,7 @@
           {
             "playerId": "fp-9907",
             "name": "Andy Dalton",
-            "team": "PHI",
+            "team": "FA",
             "position": "QB",
             "positionRank": 69,
             "rank": 589,
@@ -26817,7 +26817,7 @@
       "14": {
         "season": 2026,
         "sourceUrl": "https://www.fantasypros.com/nfl/rankings/half-ppr-vorp.php?team_size=14",
-        "accessedAt": "2026-10-08T22:10:01.633Z",
+        "accessedAt": "2026-10-09T21:44:58.923Z",
         "players": [
           {
             "playerId": "fp-22968",
@@ -32114,7 +32114,7 @@
           {
             "playerId": "fp-9907",
             "name": "Andy Dalton",
-            "team": "PHI",
+            "team": "FA",
             "position": "QB",
             "positionRank": 69,
             "rank": 589,
@@ -32181,7 +32181,7 @@
       "10": {
         "season": 2026,
         "sourceUrl": "https://www.fantasypros.com/nfl/rankings/vorp.php?team_size=10",
-        "accessedAt": "2026-10-08T22:10:02.593Z",
+        "accessedAt": "2026-10-09T21:44:59.574Z",
         "players": [
           {
             "playerId": "fp-22968",
@@ -37478,7 +37478,7 @@
           {
             "playerId": "fp-9907",
             "name": "Andy Dalton",
-            "team": "PHI",
+            "team": "FA",
             "position": "QB",
             "positionRank": 69,
             "rank": 589,
@@ -37543,7 +37543,7 @@
       "12": {
         "season": 2026,
         "sourceUrl": "https://www.fantasypros.com/nfl/rankings/vorp.php",
-        "accessedAt": "2026-10-08T22:10:03.234Z",
+        "accessedAt": "2026-10-09T21:44:59.969Z",
         "players": [
           {
             "playerId": "fp-22968",
@@ -42840,7 +42840,7 @@
           {
             "playerId": "fp-9907",
             "name": "Andy Dalton",
-            "team": "PHI",
+            "team": "FA",
             "position": "QB",
             "positionRank": 69,
             "rank": 589,
@@ -42905,7 +42905,7 @@
       "14": {
         "season": 2026,
         "sourceUrl": "https://www.fantasypros.com/nfl/rankings/vorp.php?team_size=14",
-        "accessedAt": "2026-10-08T22:10:03.907Z",
+        "accessedAt": "2026-10-09T21:45:00.406Z",
         "players": [
           {
             "playerId": "fp-22968",
@@ -48202,7 +48202,7 @@
           {
             "playerId": "fp-9907",
             "name": "Andy Dalton",
-            "team": "PHI",
+            "team": "FA",
             "position": "QB",
             "positionRank": 69,
             "rank": 589,
