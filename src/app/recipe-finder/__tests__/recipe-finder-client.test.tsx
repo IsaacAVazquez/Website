@@ -1,10 +1,31 @@
-import { fireEvent, render, screen, within } from "@testing-library/react";
+import { act, fireEvent, render, screen, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
+import { resetBrowserStorageMemory } from "@/lib/browserStorage";
 import { RecipeFinderClient } from "../recipe-finder-client";
+
+const PANTRY_KEY = "recipe-finder:pantry:v1";
 
 describe("RecipeFinderClient", () => {
   beforeEach(() => {
     window.localStorage.clear();
+    resetBrowserStorageMemory();
+  });
+
+  it("restores only clean strings from a damaged store and picks up another tab's pantry", () => {
+    window.localStorage.setItem(PANTRY_KEY, JSON.stringify(["  Egg ", 7, "", "egg", "x".repeat(80)]));
+    render(<RecipeFinderClient />);
+
+    expect(screen.getByRole("button", { name: "Remove egg" })).toBeVisible();
+    expect(screen.getByRole("button", { name: `Remove ${"x".repeat(60)}` })).toBeVisible();
+    expect(screen.getAllByRole("button", { name: /^Remove / })).toHaveLength(2);
+
+    const payload = JSON.stringify(["lemon"]);
+    window.localStorage.setItem(PANTRY_KEY, payload);
+    act(() => {
+      window.dispatchEvent(new StorageEvent("storage", { key: PANTRY_KEY, newValue: payload }));
+    });
+    expect(screen.getByRole("button", { name: "Remove lemon" })).toBeVisible();
+    expect(screen.queryByRole("button", { name: "Remove egg" })).not.toBeInTheDocument();
   });
 
   it("renders the searchable recipe workspace and default recipe count", () => {

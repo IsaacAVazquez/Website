@@ -61,7 +61,7 @@ import {
   TYPE_LABEL,
   visitStamp,
 } from "./museum-log-helpers";
-import { Catalog97ProjectHero } from "@/components/catalog97/Catalog97ProjectHero";
+import { Catalog97HeroReadouts, Catalog97ProjectHero } from "@/components/catalog97/Catalog97ProjectHero";
 import { PROJECT_PRESS } from "@/constants/projectPress";
 import { toLocalDateKey } from "@/lib/date-formatters";
 import "./museum-log.css";
@@ -95,7 +95,8 @@ function StarRow({ rating, size = 14 }: { rating: number; size?: number }) {
   const stars = starFractions(rating);
   return (
     <span
-      className="inline-flex items-center gap-0.5"
+      className="inline-flex items-center"
+      style={{ gap: 2 }}
       aria-label={`Rating ${rating} out of 5`}
       role="img"
     >
@@ -611,7 +612,7 @@ function ReviewCard({
         </span>
         {review.liked && <Heart size={14} aria-label="Liked" fill="var(--c97-ink)" stroke="var(--c97-ink)" />}
         {review.exhibitTitle && (
-          <span className="c97-stub-meta" style={{ display: "inline-flex", alignItems: "center", gap: "4px" }}>
+          <span className="c97-stub-meta" style={{ display: "inline-flex", alignItems: "center", gap: "var(--c97-sp-0)" }}>
             <Ticket size={12} aria-hidden="true" /> {review.exhibitTitle}
           </span>
         )}
@@ -1049,7 +1050,7 @@ function MuseumDetailView({
                       </p>
                       {ex.ticketed && (
                         <span className="c97-chip" style={{ marginTop: "var(--c97-sp-2)", display: "inline-flex" }}>
-                          <Ticket size={12} aria-hidden="true" style={{ marginRight: 4 }} /> Timed entry
+                          <Ticket size={12} aria-hidden="true" style={{ marginRight: "var(--c97-sp-0)" }} /> Timed entry
                         </span>
                       )}
                     </li>
@@ -1078,12 +1079,10 @@ function MuseumDetailView({
                   {visit.rating === undefined && (
                     <>
                       <p className="c97-prose" style={{ fontSize: "var(--c97-fs-small)" }}>
-                        You have not rated this visit. The slider starts at the curator&rsquo;s rating, so move it to
-                        your own before saving.
+                        You have not rated this visit. Move the slider to your rating and save it.
                       </p>
                       <RateAndLogForm
                         logged
-                        initialRating={museum.curatorRating}
                         onSubmit={(rating, note) => {
                           pendingActivityFocus.current = true;
                           onLogVisit({ ...visit, rating, note: note || visit.note });
@@ -1099,11 +1098,9 @@ function MuseumDetailView({
                 <>
                   <p className="c97-prose" style={{ fontSize: "var(--c97-fs-small)" }}>
                     No visit logged yet. Use the buttons above to mark this one done without a rating, save it for
-                    later, or like it. To log it with a rating, use the slider here, which starts at the
-                    curator&rsquo;s rating.
+                    later, or like it. To log it with a rating, move the slider here to your own and save.
                   </p>
                   <RateAndLogForm
-                    initialRating={museum.curatorRating}
                     onSubmit={(rating, note) => {
                       pendingActivityFocus.current = true;
                       onLogVisit({
@@ -1132,7 +1129,7 @@ function MuseumDetailView({
                     className="flex flex-wrap items-baseline justify-between"
                     style={{ gap: "var(--c97-sp-1)", borderTop: "1px solid var(--c97-rule)", paddingBlock: "var(--c97-sp-2)" }}
                   >
-                    <span className="c97-stub-meta" style={{ display: "inline-flex", alignItems: "center", gap: "4px" }}>
+                    <span className="c97-stub-meta" style={{ display: "inline-flex", alignItems: "center", gap: "var(--c97-sp-0)" }}>
                       <Calendar size={12} aria-hidden="true" /> {formatShortDate(entry.date)}
                     </span>
                     <RatingPill rating={entry.rating} />
@@ -1163,22 +1160,22 @@ function MuseumDetailView({
 }
 
 function RateAndLogForm({
-  initialRating,
   logged = false,
   onSubmit,
 }: {
-  initialRating: number;
   /** The visit already exists and only its rating is missing. */
   logged?: boolean;
   onSubmit: (rating: number, note: string) => void;
 }) {
-  const [rating, setRating] = useState(initialRating);
+  // No rating until the reader moves the slider, so nobody else's number
+  // (the curator's, say) ever saves as theirs.
+  const [rating, setRating] = useState<number | null>(null);
   const [note, setNote] = useState("");
   return (
     <form
       onSubmit={(e) => {
         e.preventDefault();
-        onSubmit(rating, note.trim());
+        if (rating !== null) onSubmit(rating, note.trim());
       }}
       aria-label={logged ? "Rate this museum visit" : "Rate and log this museum visit"}
       style={{ display: "flex", flexDirection: "column", gap: "var(--c97-sp-3)" }}
@@ -1189,16 +1186,16 @@ function RateAndLogForm({
           min={0}
           max={10}
           step={1}
-          value={rating * 2}
+          value={rating === null ? 0 : rating * 2}
           onChange={(e) => setRating(Number(e.target.value) / 2)}
           aria-label="Your rating, 0 to 5 stars"
           className="c97-range"
           style={{ flex: 1 }}
         />
         <span className="inline-flex items-center" style={{ gap: "var(--c97-sp-0)" }}>
-          <StarRow rating={rating} size={14} />
+          {rating === null ? null : <StarRow rating={rating} size={14} />}
           <span className="c97-mono" style={{ fontSize: "var(--c97-fs-small)" }}>
-            {rating.toFixed(1)}
+            {rating === null ? "Not rated" : rating.toFixed(1)}
           </span>
         </span>
       </div>
@@ -1210,8 +1207,8 @@ function RateAndLogForm({
         rows={2}
         className="c97-field"
       />
-      <button type="submit" className="c97-btn" style={{ alignSelf: "flex-start" }}>
-        <Check size={16} aria-hidden="true" style={{ marginRight: 6, display: "inline" }} /> {logged ? "Save rating" : "Log visit"}
+      <button type="submit" className="c97-btn" disabled={rating === null} style={{ alignSelf: "flex-start" }}>
+        <Check size={16} aria-hidden="true" style={{ marginRight: "var(--c97-sp-0)", display: "inline" }} /> {logged ? "Save rating" : "Log visit"}
       </button>
     </form>
   );
@@ -1262,7 +1259,9 @@ export function MuseumLogClient({ initialState, snapshot }: Props) {
 
   function handleBackFromMuseum() {
     pendingFocus.current = "catalog";
-    navigate({ ...routeState, view: "discover", museum: null });
+    // A list slug rides along when a museum was opened from a catalogue, and
+    // the normalizer would read it as the Lists view, so it goes too.
+    navigate({ ...routeState, view: "discover", museum: null, list: null });
   }
 
   function handleSelectList(slug: string | null) {
@@ -1427,34 +1426,49 @@ export function MuseumLogClient({ initialState, snapshot }: Props) {
         title="Museum Log"
         standfirst={standfirst}
         meta={`Curated by ${snapshot.curatorName} · updated ${lastUpdated}`}
-        readouts={[
-          {
-            label: "Museums you've visited",
-            value: hydrated ? String(userState.visited.length) : "—",
-            detail: `of ${snapshot.museums.length} catalogued`,
-          },
-          {
-            label: "Cities",
-            value: String(citiesCount),
-            detail: "across the catalog",
-          },
-          {
-            label: "Exhibits on now",
-            value: String(exhibitsNowCount),
-            detail: exhibitsNowCount === 1 ? "museum has one running" : "museums have one running",
-          },
-        ]}
       >
+        {/* The hero fills a phone's first screen, so one link goes straight to the catalog. */}
+        <div style={{ marginBottom: "var(--c97-sp-3)" }}>
+          <a href="#museum-log-catalog" className="c97-btn-ghost">
+            Browse the catalog
+          </a>
+        </div>
         <HeroStubRun museums={heroVisits} today={today} hydrated={hydrated} />
+        {/* The figures print after the stubs that drive the first one. */}
+        <Catalog97HeroReadouts
+          readouts={[
+            {
+              label: "Museums you've visited",
+              value: hydrated ? String(userState.visited.length) : "—",
+              detail: `of ${snapshot.museums.length} catalogued`,
+            },
+            {
+              label: "Cities",
+              value: String(citiesCount),
+              detail: "across the catalog",
+            },
+            {
+              label: "Exhibits on now",
+              value: String(exhibitsNowCount),
+              detail:
+                exhibitsNowCount === 0
+                  ? "none listed as running"
+                  : exhibitsNowCount === 1
+                    ? "museum has one running"
+                    : "museums have one running",
+            },
+          ]}
+        />
       </Catalog97ProjectHero>
 
       <section className="c97-band c97-sheet" data-c97-surface="paper" data-seam="torn">
         <div className="c97-shell">
           <h2
+            id="museum-log-catalog"
             ref={catalogHeadingRef}
             tabIndex={-1}
             className="c97-poster-sm"
-            style={{ marginBottom: "var(--c97-sp-4)" }}
+            style={{ marginBottom: "var(--c97-sp-4)", scrollMarginTop: "var(--c97-sp-5)" }}
           >
             {navItems.find((item) => item.id === activeView)?.label}
           </h2>
@@ -1594,7 +1608,7 @@ export function MuseumLogClient({ initialState, snapshot }: Props) {
               ) : (
                 <>
                   <section>
-                    <p className="c97-kicker" style={{ display: "inline-flex", alignItems: "center", gap: "4px" }}>
+                    <p className="c97-kicker" style={{ display: "inline-flex", alignItems: "center", gap: "var(--c97-sp-0)" }}>
                       <Clock size={12} aria-hidden="true" /> Recently visited
                     </p>
                     {recentFromCurator && recentlyVisited.length > 0 ? (
@@ -1631,7 +1645,7 @@ export function MuseumLogClient({ initialState, snapshot }: Props) {
                   </section>
 
                   <section>
-                    <p className="c97-kicker" style={{ display: "inline-flex", alignItems: "center", gap: "4px" }}>
+                    <p className="c97-kicker" style={{ display: "inline-flex", alignItems: "center", gap: "var(--c97-sp-0)" }}>
                       <Heart size={12} aria-hidden="true" /> Top liked
                     </p>
                     {likedFromCurator && topLiked.length > 0 ? (

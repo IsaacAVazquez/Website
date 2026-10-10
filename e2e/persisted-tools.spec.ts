@@ -2,9 +2,10 @@ import { expect, test } from "@playwright/test";
 
 /**
  * Representative coverage for the localStorage-backed personal-interest tools
- * (travel, wine-cellar, museum-log, recipe-finder, food-map). Their logic is
- * unit-covered in jsdom; this proves the real-browser persistence round-trip
- * and SSR hydration of a large client survive a full reload.
+ * (travel, wine-cellar, museum-log, recipe-finder, travel-deals; the food map
+ * keeps its state in the URL and stores nothing). Their logic is unit-covered
+ * in jsdom; this proves the real-browser persistence round-trip and SSR
+ * hydration of a large client survive a full reload.
  */
 test.describe("Personal-interest tools persist state", () => {
   test("museum log remembers a logged visit across a reload", async ({ page }) => {
@@ -29,7 +30,7 @@ test.describe("Personal-interest tools persist state", () => {
     });
     await expect(visitedToggle).toBeVisible();
 
-    // Reload — the visit is persisted to localStorage and must survive.
+    // Reload. The visit is persisted to localStorage and must survive.
     await page.reload();
     await page.getByRole("searchbox", { name: "Filter museums" }).fill("Modern Art");
     await expect(

@@ -123,6 +123,7 @@
   all: unset;
   flex: 1;
   min-width: 0;
+  min-height: 44px;
   font-size: var(--c97-fs-body);
   color: var(--c97-ink);
 }
@@ -375,7 +376,11 @@
 /* A plain ink dot, coloured by the curator's data colour. No teardrop shape
    (that needed an asymmetric border-radius the print shop system bans). A
    circle plus a theme-invariant keyline reads just as well as a map pin. */
+/* The 44px hit box Leaflet sizes from the icon, with the dot centred in it.
+   Scoped under .fm so it outranks the `display: block` Leaflet's runtime
+   stylesheet puts on every marker icon (the same race as `.fm .fm-map`). */
 .fm-pin-el { background: transparent; border: 0; }
+.fm .fm-pin-el { display: grid; place-items: center; }
 /* A bone edge inside a black ring, so a pin separates from light and dark
    tiles alike and from a neighbouring pin of the same curator colour. */
 .fm-pin-dot {

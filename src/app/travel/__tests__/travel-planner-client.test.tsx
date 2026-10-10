@@ -446,6 +446,8 @@ describe("TravelPlannerClient", () => {
     change(budget, "1250.5");
     fireEvent.blur(budget);
     expect(stored()[0].budget).toBe(1250.5);
+    // Cents print as a pair, never as a lone tenth.
+    expect(within(details).getByText("$1,250.50")).toBeInTheDocument();
     change(budget, "");
     expect(within(details).getByText("$0")).toBeInTheDocument();
     change(budget, "1250");

@@ -180,6 +180,10 @@ describe("MuseumLogClient interactions", () => {
     expect(readout("Museums you've visited")).toHaveTextContent("0of 3 catalogued");
     expect(readout("Cities")).toHaveTextContent("3");
     expect(readout("Exhibits on now")).toHaveTextContent("1museum has one running");
+    // The figures print after the stub plate they describe.
+    expect(
+      screen.getByText("Log your first visit").compareDocumentPosition(readout("Cities")) & Node.DOCUMENT_POSITION_FOLLOWING
+    ).toBeTruthy();
     expect(screen.getByText("Log your first visit")).toBeInTheDocument();
     expect(screen.getByText("3 museums catalogued, 3 curator reviews, and 3 visits in the curator’s diary.", { exact: false })).toBeInTheDocument();
 
@@ -387,6 +391,12 @@ describe("MuseumLogClient interactions", () => {
     expect(mockPush).toHaveBeenLastCalledWith("/museum-log?list=east-coast", { scroll: false });
   });
 
+  it("says in words when no exhibit in the catalog is running", () => {
+    const quiet = { ...SNAPSHOT, museums: SNAPSHOT.museums.map((m) => ({ ...m, exhibits: [] })) };
+    renderClient(quiet);
+    expect(readout("Exhibits on now")).toHaveTextContent("0none listed as running");
+  });
+
   it("says so when a museum has no neighbours in its region", () => {
     currentSearchParams = new URLSearchParams("museum=corvid-history");
     renderClient();
@@ -402,7 +412,16 @@ describe("MuseumLogClient interactions", () => {
     const detail = screen.getByRole("region", { name: "Beacon Science Center detail" });
     const form = within(detail).getByRole("form", { name: "Rate and log this museum visit" });
 
+    // The slider starts with no rating, never the curator's 4.5, and nothing saves until it moves.
+    expect(within(form).getByRole("slider", { name: "Your rating, 0 to 5 stars" })).toHaveValue("0");
+    expect(within(form).getByText("Not rated")).toBeInTheDocument();
+    expect(within(form).queryByRole("img", { name: /^Rating/ })).toBeNull();
+    expect(within(form).getByRole("button", { name: "Log visit" })).toBeDisabled();
+    fireEvent.submit(form);
+    expect(stored().visited ?? []).toEqual([]);
+
     fireEvent.change(within(form).getByRole("slider", { name: "Your rating, 0 to 5 stars" }), { target: { value: "7" } });
+    expect(within(form).getByRole("button", { name: "Log visit" })).toBeEnabled();
     expect(within(form).getByRole("img", { name: "Rating 3.5 out of 5" })).toBeInTheDocument();
     fireEvent.change(within(form).getByRole("textbox", { name: "Visit note" }), { target: { value: "  Kids loved it  " } });
     fireEvent.click(within(form).getByRole("button", { name: "Log visit" }));
@@ -456,6 +475,19 @@ describe("MuseumLogClient interactions", () => {
     expect(readout("Museums you've visited")).toHaveTextContent("1of 3 catalogued");
     expect(screen.getByText(/^Your visit .* · not rated$/)).toBeInTheDocument();
     expect(screen.queryByText(/NaN/)).toBeNull();
+  });
+
+  it("goes back to Discover from a museum opened out of a catalogue, not to Lists", () => {
+    currentSearchParams = new URLSearchParams("list=east-coast&museum=atlas-art");
+    renderClient();
+    fireEvent.click(screen.getByRole("button", { name: "← Back to catalog" }));
+    expect(mockPush).toHaveBeenLastCalledWith("/museum-log", { scroll: false });
+  });
+
+  it("offers a jump from the hero to the catalog heading", () => {
+    renderClient();
+    expect(screen.getByRole("link", { name: "Browse the catalog" })).toHaveAttribute("href", "#museum-log-catalog");
+    expect(screen.getByRole("heading", { level: 2, name: "Discover" })).toHaveAttribute("id", "museum-log-catalog");
   });
 
   it("offers a way back when the museum in the URL does not exist", () => {

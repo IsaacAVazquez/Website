@@ -33,19 +33,22 @@ interface FoodMapLeafletProps {
   reduceMotion?: boolean;
 }
 
+// Leaflet makes each pin a focusable button, so its box is the site's 44px
+// touch target, with the visible dot centred in it (food-map.css).
+const PIN_HIT = 44;
+
 // A plain circular ink dot rather than the old teardrop shape. The print
 // shop CSS system only allows a border-radius of 0 or 50%, and a teardrop
 // needs an asymmetric radius. The anchor is the dot's own center, since a
 // circle (unlike a teardrop) has no point to anchor from.
 const pinIcon = (L: LeafletStatic, color: string, active: boolean) => {
   const size = active ? 26 : 18;
-  const half = size / 2;
   return L.divIcon({
     className: `fm-pin-el${active ? " fm-pin-active" : ""}`,
     html: `<span class="fm-pin-dot" style="width:${size}px;height:${size}px;background:${color};"></span>`,
-    iconSize: [size, size],
-    iconAnchor: [half, half],
-    popupAnchor: [0, -half - 6],
+    iconSize: [PIN_HIT, PIN_HIT],
+    iconAnchor: [PIN_HIT / 2, PIN_HIT / 2],
+    popupAnchor: [0, -(size / 2) - 6],
   });
 };
 

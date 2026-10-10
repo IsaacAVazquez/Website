@@ -129,8 +129,8 @@ function StarRating({
   const sizeClass = size === "md" ? "h-5 w-5" : "h-4 w-4";
   return (
     <div
-      className="inline-flex items-center gap-0.5"
-      style={{ color: "var(--c97-accent)" }}
+      className="inline-flex items-center"
+      style={{ gap: 2, color: "var(--c97-accent)" }}
       aria-label={`${value} out of ${totalStars} stars`}
       role="img"
     >
@@ -582,7 +582,7 @@ export function WineCellarClient() {
             <aside
               aria-label="Wine cellar side panel"
               // In an empty cellar the form is the first thing in the band on a phone.
-              className={`xl:sticky xl:top-6${hasEntries ? "" : " order-first xl:order-none"}`}
+              className={`xl:sticky xl:top-[var(--c97-sp-3)]${hasEntries ? "" : " order-first xl:order-none"}`}
               style={{ alignSelf: "start", display: "flex", flexDirection: "column", gap: "var(--c97-sp-3)" }}
             >
               <div className="c97-panel" id="add-tasting">

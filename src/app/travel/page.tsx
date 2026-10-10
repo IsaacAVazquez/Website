@@ -7,7 +7,7 @@ export const metadata = constructMetadata({
   description:
     "Plan trips, track day-by-day itineraries, and journal as you go. Browser-persisted, no account required.",
   canonicalUrl: "/travel",
-  dateModified: "2026-05-04",
+  dateModified: "2026-10-09",
 });
 
 export default function TravelPlannerPage() {
