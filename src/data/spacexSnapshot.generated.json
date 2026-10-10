@@ -1,57 +1,97 @@
 {
-  "generatedAt": "2026-10-09T16:22:52.061Z",
+  "generatedAt": "2026-10-10T15:28:38.994Z",
   "sourceLabel": "launch-library-2 snapshot",
   "summary": {
     "heroLaunch": {
-      "id": "da43dc2c-00af-4cc1-8ef1-90a60b2eb9e5",
-      "name": "SDA Tranche 1 Transport Layer A",
-      "flightNumber": 736,
+      "id": "97c6f5e1-299e-4652-b72d-9618ac047076",
+      "name": "Starlink Group 15-25",
+      "flightNumber": 737,
       "upcoming": true,
       "success": null,
-      "details": "Tranche 1 Transport Layer A is one of six missions by the United States Space Force Space Development Agency (SDA) for the Proliferated Warfighter Space Architecture (PWSA) Tranche 1 Transport Layer constellation, which will provide assured, resilient, low-latency military data and connectivity worldwide to the full range of warfighter platforms from Low Earth Orbit satellites.\r\n\r\nThe constellation will be interconnected with Optical Inter-Satellite Links (OISLs) which have significantly increased performance over existing radio frequency crosslinks. It is expected to operate over Ka band, have stereo coverage and be dynamically networked for simpler hand-offs, greater bandwidth and fault tolerance.\r\n\r\nThis launch carries 21 satellites manufactured by Northrop Grumman.",
-      "dateUtc": "2026-10-10T07:39:00Z",
-      "dateUnix": 1791617940,
-      "dateLocal": "2026-10-10T07:39:00Z",
+      "details": "A batch of 27 satellites for the Starlink mega-constellation - SpaceX's project for space-based Internet communication system.",
+      "dateUtc": "2026-10-12T23:00:00Z",
+      "dateUnix": 1791846000,
+      "dateLocal": "2026-10-12T23:00:00Z",
       "datePrecision": "hour",
       "tbd": false,
       "net": true,
       "rocketName": "Falcon 9 Block 5",
       "launchpadName": "Space Launch Complex 4E",
       "launchpadLocation": "Vandenberg SFB, CA, USA",
-      "patchImage": null,
-      "vehicleImage": "/data/spacex/images/83daf3ce21b64d93.jpg",
+      "patchImage": "/data/spacex/images/1927035cad14a77c.png",
+      "vehicleImage": "/data/spacex/images/b317ff9ea04bd623.png",
       "crewCount": 0,
-      "payloadCount": 21,
+      "payloadCount": 27,
       "capsuleCount": 0,
       "coreCount": 1,
       "hasExactTime": true,
       "isStaleSchedule": false,
       "links": {
         "webcast": null,
-        "article": null,
-        "wikipedia": "https://en.wikipedia.org/wiki/Space_Development_Agency",
+        "article": "https://starlink.com",
+        "wikipedia": "https://en.wikipedia.org/wiki/Starlink",
         "presskit": null,
         "redditLaunch": null,
         "redditCampaign": null,
         "redditMedia": null,
         "youtubeId": null,
-        "patchSmall": null,
-        "patchLarge": null,
+        "patchSmall": "/data/spacex/images/1927035cad14a77c.png",
+        "patchLarge": "/data/spacex/images/1927035cad14a77c.png",
         "flickrOriginal": [
-          "/data/spacex/images/83daf3ce21b64d93.jpg"
+          "/data/spacex/images/b317ff9ea04bd623.png"
         ]
       }
     },
     "nextLaunch": {
+      "id": "97c6f5e1-299e-4652-b72d-9618ac047076",
+      "name": "Starlink Group 15-25",
+      "flightNumber": 737,
+      "upcoming": true,
+      "success": null,
+      "details": "A batch of 27 satellites for the Starlink mega-constellation - SpaceX's project for space-based Internet communication system.",
+      "dateUtc": "2026-10-12T23:00:00Z",
+      "dateUnix": 1791846000,
+      "dateLocal": "2026-10-12T23:00:00Z",
+      "datePrecision": "hour",
+      "tbd": false,
+      "net": true,
+      "rocketName": "Falcon 9 Block 5",
+      "launchpadName": "Space Launch Complex 4E",
+      "launchpadLocation": "Vandenberg SFB, CA, USA",
+      "patchImage": "/data/spacex/images/1927035cad14a77c.png",
+      "vehicleImage": "/data/spacex/images/b317ff9ea04bd623.png",
+      "crewCount": 0,
+      "payloadCount": 27,
+      "capsuleCount": 0,
+      "coreCount": 1,
+      "hasExactTime": true,
+      "isStaleSchedule": false,
+      "links": {
+        "webcast": null,
+        "article": "https://starlink.com",
+        "wikipedia": "https://en.wikipedia.org/wiki/Starlink",
+        "presskit": null,
+        "redditLaunch": null,
+        "redditCampaign": null,
+        "redditMedia": null,
+        "youtubeId": null,
+        "patchSmall": "/data/spacex/images/1927035cad14a77c.png",
+        "patchLarge": "/data/spacex/images/1927035cad14a77c.png",
+        "flickrOriginal": [
+          "/data/spacex/images/b317ff9ea04bd623.png"
+        ]
+      }
+    },
+    "fallbackLaunch": {
       "id": "da43dc2c-00af-4cc1-8ef1-90a60b2eb9e5",
       "name": "SDA Tranche 1 Transport Layer A",
       "flightNumber": 736,
-      "upcoming": true,
-      "success": null,
+      "upcoming": false,
+      "success": true,
       "details": "Tranche 1 Transport Layer A is one of six missions by the United States Space Force Space Development Agency (SDA) for the Proliferated Warfighter Space Architecture (PWSA) Tranche 1 Transport Layer constellation, which will provide assured, resilient, low-latency military data and connectivity worldwide to the full range of warfighter platforms from Low Earth Orbit satellites.\r\n\r\nThe constellation will be interconnected with Optical Inter-Satellite Links (OISLs) which have significantly increased performance over existing radio frequency crosslinks. It is expected to operate over Ka band, have stereo coverage and be dynamically networked for simpler hand-offs, greater bandwidth and fault tolerance.\r\n\r\nThis launch carries 21 satellites manufactured by Northrop Grumman.",
-      "dateUtc": "2026-10-10T07:39:00Z",
-      "dateUnix": 1791617940,
-      "dateLocal": "2026-10-10T07:39:00Z",
+      "dateUtc": "2026-10-10T07:39:44Z",
+      "dateUnix": 1791617984,
+      "dateLocal": "2026-10-10T07:39:44Z",
       "datePrecision": "hour",
       "tbd": false,
       "net": true,
@@ -79,46 +119,6 @@
         "patchLarge": null,
         "flickrOriginal": [
           "/data/spacex/images/83daf3ce21b64d93.jpg"
-        ]
-      }
-    },
-    "fallbackLaunch": {
-      "id": "4651fd8a-43de-4166-bf8f-c168b3bd1d2c",
-      "name": "NROL-97",
-      "flightNumber": 735,
-      "upcoming": false,
-      "success": true,
-      "details": "Classified payload for the US National Reconnaissance Office.",
-      "dateUtc": "2026-10-02T03:54:00Z",
-      "dateUnix": 1790913240,
-      "dateLocal": "2026-10-02T03:54:00Z",
-      "datePrecision": "hour",
-      "tbd": false,
-      "net": true,
-      "rocketName": "Falcon Heavy",
-      "launchpadName": "Launch Complex 39A",
-      "launchpadLocation": "Kennedy Space Center, FL, USA",
-      "patchImage": null,
-      "vehicleImage": "/data/spacex/images/c62ac3115cf4d061.jpg",
-      "crewCount": 0,
-      "payloadCount": 1,
-      "capsuleCount": 0,
-      "coreCount": 3,
-      "hasExactTime": true,
-      "isStaleSchedule": false,
-      "links": {
-        "webcast": null,
-        "article": null,
-        "wikipedia": "https://en.wikipedia.org/wiki/National_Reconnaissance_Office",
-        "presskit": null,
-        "redditLaunch": null,
-        "redditCampaign": null,
-        "redditMedia": null,
-        "youtubeId": null,
-        "patchSmall": null,
-        "patchLarge": null,
-        "flickrOriginal": [
-          "/data/spacex/images/c62ac3115cf4d061.jpg"
         ]
       }
     },
@@ -134,7 +134,7 @@
       {
         "id": "past",
         "label": "Completed archive",
-        "value": "735",
+        "value": "736",
         "description": "historical SpaceX launches available from the active provider"
       },
       {
@@ -150,49 +150,9 @@
         "description": "rocket families with pending SpaceX missions in the current feed"
       }
     ],
-    "generatedAt": "2026-10-09T16:22:46.943Z"
+    "generatedAt": "2026-10-10T15:28:33.393Z"
   },
   "upcomingLaunches": [
-    {
-      "id": "da43dc2c-00af-4cc1-8ef1-90a60b2eb9e5",
-      "name": "SDA Tranche 1 Transport Layer A",
-      "flightNumber": 736,
-      "upcoming": true,
-      "success": null,
-      "details": "Tranche 1 Transport Layer A is one of six missions by the United States Space Force Space Development Agency (SDA) for the Proliferated Warfighter Space Architecture (PWSA) Tranche 1 Transport Layer constellation, which will provide assured, resilient, low-latency military data and connectivity worldwide to the full range of warfighter platforms from Low Earth Orbit satellites.\r\n\r\nThe constellation will be interconnected with Optical Inter-Satellite Links (OISLs) which have significantly increased performance over existing radio frequency crosslinks. It is expected to operate over Ka band, have stereo coverage and be dynamically networked for simpler hand-offs, greater bandwidth and fault tolerance.\r\n\r\nThis launch carries 21 satellites manufactured by Northrop Grumman.",
-      "dateUtc": "2026-10-10T07:39:00Z",
-      "dateUnix": 1791617940,
-      "dateLocal": "2026-10-10T07:39:00Z",
-      "datePrecision": "hour",
-      "tbd": false,
-      "net": true,
-      "rocketName": "Falcon 9 Block 5",
-      "launchpadName": "Space Launch Complex 4E",
-      "launchpadLocation": "Vandenberg SFB, CA, USA",
-      "patchImage": null,
-      "vehicleImage": "/data/spacex/images/83daf3ce21b64d93.jpg",
-      "crewCount": 0,
-      "payloadCount": 21,
-      "capsuleCount": 0,
-      "coreCount": 1,
-      "hasExactTime": true,
-      "isStaleSchedule": false,
-      "links": {
-        "webcast": null,
-        "article": null,
-        "wikipedia": "https://en.wikipedia.org/wiki/Space_Development_Agency",
-        "presskit": null,
-        "redditLaunch": null,
-        "redditCampaign": null,
-        "redditMedia": null,
-        "youtubeId": null,
-        "patchSmall": null,
-        "patchLarge": null,
-        "flickrOriginal": [
-          "/data/spacex/images/83daf3ce21b64d93.jpg"
-        ]
-      }
-    },
     {
       "id": "97c6f5e1-299e-4652-b72d-9618ac047076",
       "name": "Starlink Group 15-25",
@@ -1074,6 +1034,46 @@
       }
     },
     {
+      "id": "ce1317de-ec94-4479-9b28-38ebf11f13ae",
+      "name": "Telesat Lightspeed 1",
+      "flightNumber": 779,
+      "upcoming": true,
+      "success": null,
+      "details": "Up to 18 satellites manufactured by MDA for Canadian satellite operator Telesat's Lightspeed constellation.",
+      "dateUtc": "2026-12-31T00:00:00Z",
+      "dateUnix": 1798675200,
+      "dateLocal": "2026-12-31T00:00:00Z",
+      "datePrecision": "month",
+      "tbd": true,
+      "net": true,
+      "rocketName": "Falcon 9 Block 5",
+      "launchpadName": "Unknown Pad",
+      "launchpadLocation": "Cape Canaveral SFS, FL, USA",
+      "patchImage": null,
+      "vehicleImage": "/data/spacex/images/83daf3ce21b64d93.jpg",
+      "crewCount": 0,
+      "payloadCount": 18,
+      "capsuleCount": 0,
+      "coreCount": 1,
+      "hasExactTime": false,
+      "isStaleSchedule": false,
+      "links": {
+        "webcast": null,
+        "article": null,
+        "wikipedia": "https://en.wikipedia.org/wiki/Telesat",
+        "presskit": null,
+        "redditLaunch": null,
+        "redditCampaign": null,
+        "redditMedia": null,
+        "youtubeId": null,
+        "patchSmall": null,
+        "patchLarge": null,
+        "flickrOriginal": [
+          "/data/spacex/images/83daf3ce21b64d93.jpg"
+        ]
+      }
+    },
+    {
       "id": "cb1762f0-90f4-4902-a5f6-655a7ade25bf",
       "name": "SDA Tranche 2 Tracking Layer B",
       "flightNumber": 779,
@@ -1115,6 +1115,46 @@
     }
   ],
   "pastLaunches": [
+    {
+      "id": "da43dc2c-00af-4cc1-8ef1-90a60b2eb9e5",
+      "name": "SDA Tranche 1 Transport Layer A",
+      "flightNumber": 736,
+      "upcoming": false,
+      "success": true,
+      "details": "Tranche 1 Transport Layer A is one of six missions by the United States Space Force Space Development Agency (SDA) for the Proliferated Warfighter Space Architecture (PWSA) Tranche 1 Transport Layer constellation, which will provide assured, resilient, low-latency military data and connectivity worldwide to the full range of warfighter platforms from Low Earth Orbit satellites.\r\n\r\nThe constellation will be interconnected with Optical Inter-Satellite Links (OISLs) which have significantly increased performance over existing radio frequency crosslinks. It is expected to operate over Ka band, have stereo coverage and be dynamically networked for simpler hand-offs, greater bandwidth and fault tolerance.\r\n\r\nThis launch carries 21 satellites manufactured by Northrop Grumman.",
+      "dateUtc": "2026-10-10T07:39:44Z",
+      "dateUnix": 1791617984,
+      "dateLocal": "2026-10-10T07:39:44Z",
+      "datePrecision": "hour",
+      "tbd": false,
+      "net": true,
+      "rocketName": "Falcon 9 Block 5",
+      "launchpadName": "Space Launch Complex 4E",
+      "launchpadLocation": "Vandenberg SFB, CA, USA",
+      "patchImage": null,
+      "vehicleImage": "/data/spacex/images/83daf3ce21b64d93.jpg",
+      "crewCount": 0,
+      "payloadCount": 21,
+      "capsuleCount": 0,
+      "coreCount": 1,
+      "hasExactTime": true,
+      "isStaleSchedule": false,
+      "links": {
+        "webcast": null,
+        "article": null,
+        "wikipedia": "https://en.wikipedia.org/wiki/Space_Development_Agency",
+        "presskit": null,
+        "redditLaunch": null,
+        "redditCampaign": null,
+        "redditMedia": null,
+        "youtubeId": null,
+        "patchSmall": null,
+        "patchLarge": null,
+        "flickrOriginal": [
+          "/data/spacex/images/83daf3ce21b64d93.jpg"
+        ]
+      }
+    },
     {
       "id": "4651fd8a-43de-4166-bf8f-c168b3bd1d2c",
       "name": "NROL-97",
@@ -2034,17 +2074,19 @@
           "/data/spacex/images/fcff0e91470c97ae.jpg"
         ]
       }
-    },
-    {
-      "id": "0448d030-5175-4c1f-bd0b-4f3f87072921",
-      "name": "Starlink Group 17-53",
-      "flightNumber": 712,
-      "upcoming": false,
-      "success": true,
-      "details": "A batch of 24 satellites for the Starlink mega-constellation - SpaceX's project for space-based Internet communication system.",
-      "dateUtc": "2026-08-04T17:05:03Z",
-      "dateUnix": 1785863103,
-      "dateLocal": "2026-08-04T17:05:03Z",
+    }
+  ],
+  "launchDetails": {
+    "97c6f5e1-299e-4652-b72d-9618ac047076": {
+      "id": "97c6f5e1-299e-4652-b72d-9618ac047076",
+      "name": "Starlink Group 15-25",
+      "flightNumber": 737,
+      "upcoming": true,
+      "success": null,
+      "details": "A batch of 27 satellites for the Starlink mega-constellation - SpaceX's project for space-based Internet communication system.",
+      "dateUtc": "2026-10-12T23:00:00Z",
+      "dateUnix": 1791846000,
+      "dateLocal": "2026-10-12T23:00:00Z",
       "datePrecision": "hour",
       "tbd": false,
       "net": true,
@@ -2054,14 +2096,14 @@
       "patchImage": "/data/spacex/images/1927035cad14a77c.png",
       "vehicleImage": "/data/spacex/images/b317ff9ea04bd623.png",
       "crewCount": 0,
-      "payloadCount": 24,
+      "payloadCount": 27,
       "capsuleCount": 0,
       "coreCount": 1,
       "hasExactTime": true,
       "isStaleSchedule": false,
       "links": {
-        "webcast": null,
-        "article": "https://starlink.com",
+        "webcast": "https://x.com/i/broadcasts/1yKAPwdemygxb",
+        "article": "https://www.spacex.com/launches/sl-15-25",
         "wikipedia": "https://en.wikipedia.org/wiki/Starlink",
         "presskit": null,
         "redditLaunch": null,
@@ -2073,51 +2115,9 @@
         "flickrOriginal": [
           "/data/spacex/images/b317ff9ea04bd623.png"
         ]
-      }
-    }
-  ],
-  "launchDetails": {
-    "da43dc2c-00af-4cc1-8ef1-90a60b2eb9e5": {
-      "id": "da43dc2c-00af-4cc1-8ef1-90a60b2eb9e5",
-      "name": "SDA Tranche 1 Transport Layer A",
-      "flightNumber": 736,
-      "upcoming": true,
-      "success": null,
-      "details": "Tranche 1 Transport Layer A is one of six missions by the United States Space Force Space Development Agency (SDA) for the Proliferated Warfighter Space Architecture (PWSA) Tranche 1 Transport Layer constellation, which will provide assured, resilient, low-latency military data and connectivity worldwide to the full range of warfighter platforms from Low Earth Orbit satellites.\r\n\r\nThe constellation will be interconnected with Optical Inter-Satellite Links (OISLs) which have significantly increased performance over existing radio frequency crosslinks. It is expected to operate over Ka band, have stereo coverage and be dynamically networked for simpler hand-offs, greater bandwidth and fault tolerance.\r\n\r\nThis launch carries 21 satellites manufactured by Northrop Grumman.",
-      "dateUtc": "2026-10-10T07:39:00Z",
-      "dateUnix": 1791617940,
-      "dateLocal": "2026-10-10T07:39:00Z",
-      "datePrecision": "hour",
-      "tbd": false,
-      "net": true,
-      "rocketName": "Falcon 9 Block 5",
-      "launchpadName": "Space Launch Complex 4E",
-      "launchpadLocation": "Vandenberg SFB, CA, USA",
-      "patchImage": "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/mission_patch_images/sda-t1tl-a_mission_patch_20261001222536.png",
-      "vehicleImage": "/data/spacex/images/83daf3ce21b64d93.jpg",
-      "crewCount": 0,
-      "payloadCount": 21,
-      "capsuleCount": 0,
-      "coreCount": 1,
-      "hasExactTime": true,
-      "isStaleSchedule": false,
-      "links": {
-        "webcast": "https://x.com/i/broadcasts/1oJMvNEQewoxQ",
-        "article": "https://www.spacex.com/launches/sda-t1tl-a",
-        "wikipedia": "https://en.wikipedia.org/wiki/Space_Development_Agency",
-        "presskit": null,
-        "redditLaunch": null,
-        "redditCampaign": null,
-        "redditMedia": null,
-        "youtubeId": null,
-        "patchSmall": "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/mission_patch_images/sda-t1tl-a_mission_patch_20261001222536.png",
-        "patchLarge": "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/mission_patch_images/sda-t1tl-a_mission_patch_20261001222536.png",
-        "flickrOriginal": [
-          "/data/spacex/images/83daf3ce21b64d93.jpg"
-        ]
       },
       "staticFireDateUtc": null,
-      "window": 0,
+      "window": 14400,
       "failures": [],
       "rocket": {
         "id": "164",
@@ -2138,7 +2138,8 @@
         "massKg": 549000,
         "image": "/data/spacex/images/83daf3ce21b64d93.jpg",
         "flickrImages": [
-          "/data/spacex/images/83daf3ce21b64d93.jpg"
+          "/data/spacex/images/83daf3ce21b64d93.jpg",
+          "/data/spacex/images/b317ff9ea04bd623.png"
         ]
       },
       "launchpad": {
@@ -2155,11 +2156,11 @@
       "crew": [],
       "payloads": [
         {
-          "id": "6031",
-          "name": "SDA Tranche 1 Transport Layer A",
-          "type": "Government/Top Secret",
+          "id": "7750",
+          "name": "Starlink Group 15-25",
+          "type": "Communications",
           "customers": [
-            "Space Development Agency"
+            "SpaceX"
           ],
           "manufacturers": [
             "SpaceX"
@@ -2167,8 +2168,8 @@
           "nationalities": [
             "USA"
           ],
-          "orbit": "Polar Orbit",
-          "regime": "PO",
+          "orbit": "Low Earth Orbit",
+          "regime": "LEO",
           "massKg": null,
           "massLbs": null
         }
@@ -2374,146 +2375,47 @@
       "capsules": [],
       "cores": []
     },
-    "4651fd8a-43de-4166-bf8f-c168b3bd1d2c": {
-      "id": "4651fd8a-43de-4166-bf8f-c168b3bd1d2c",
-      "name": "NROL-97",
-      "flightNumber": 735,
+    "da43dc2c-00af-4cc1-8ef1-90a60b2eb9e5": {
+      "id": "da43dc2c-00af-4cc1-8ef1-90a60b2eb9e5",
+      "name": "SDA Tranche 1 Transport Layer A",
+      "flightNumber": 736,
       "upcoming": false,
       "success": true,
-      "details": "Classified payload for the US National Reconnaissance Office.",
-      "dateUtc": "2026-10-02T03:54:00Z",
-      "dateUnix": 1790913240,
-      "dateLocal": "2026-10-02T03:54:00Z",
-      "datePrecision": "hour",
-      "tbd": false,
-      "net": true,
-      "rocketName": "Falcon Heavy",
-      "launchpadName": "Launch Complex 39A",
-      "launchpadLocation": "Kennedy Space Center, FL, USA",
-      "patchImage": "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/mission_patch_images/nrol-972520pat_mission_patch_20261001222358.png",
-      "vehicleImage": "/data/spacex/images/c62ac3115cf4d061.jpg",
-      "crewCount": 0,
-      "payloadCount": 1,
-      "capsuleCount": 0,
-      "coreCount": 3,
-      "hasExactTime": true,
-      "isStaleSchedule": false,
-      "links": {
-        "webcast": "https://x.com/i/broadcasts/1oJMvNkPPXlxQ",
-        "article": "https://www.spacex.com/launches/nrol97",
-        "wikipedia": "https://en.wikipedia.org/wiki/National_Reconnaissance_Office",
-        "presskit": null,
-        "redditLaunch": null,
-        "redditCampaign": null,
-        "redditMedia": null,
-        "youtubeId": null,
-        "patchSmall": "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/mission_patch_images/nrol-972520pat_mission_patch_20261001222358.png",
-        "patchLarge": "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/mission_patch_images/nrol-972520pat_mission_patch_20261001222358.png",
-        "flickrOriginal": [
-          "/data/spacex/images/c62ac3115cf4d061.jpg"
-        ]
-      },
-      "staticFireDateUtc": null,
-      "window": 2940,
-      "failures": [],
-      "rocket": {
-        "id": "161",
-        "name": "Falcon Heavy",
-        "type": "Heavy",
-        "active": true,
-        "boosters": 2,
-        "stages": 3,
-        "costPerLaunch": 90000000,
-        "successRatePct": 100,
-        "firstFlight": "2018-02-06",
-        "company": "SpaceX",
-        "country": "USA",
-        "description": "The Falcon Heavy is a variant of the Falcon 9 full thrust launch vehicle and consists of a standard Falcon 9 rocket core, with two additional boosters derived from the Falcon 9 first stage.",
-        "wikipedia": "https://en.wikipedia.org/wiki/Falcon_Heavy",
-        "heightMeters": 70,
-        "diameterMeters": 12.2,
-        "massKg": 1400000,
-        "image": "/data/spacex/images/c62ac3115cf4d061.jpg",
-        "flickrImages": [
-          "/data/spacex/images/c62ac3115cf4d061.jpg"
-        ]
-      },
-      "launchpad": {
-        "id": "87",
-        "name": "Launch Complex 39A",
-        "fullName": "Launch Complex 39A",
-        "locality": "Kennedy Space Center, FL, USA",
-        "region": null,
-        "timezone": "America/New_York",
-        "status": null,
-        "details": "",
-        "image": "/data/spacex/images/14b5a064429f38e9.jpg"
-      },
-      "crew": [],
-      "payloads": [
-        {
-          "id": "7165",
-          "name": "NROL-97",
-          "type": "Government/Top Secret",
-          "customers": [
-            "National Reconnaissance Office"
-          ],
-          "manufacturers": [
-            "SpaceX"
-          ],
-          "nationalities": [
-            "USA"
-          ],
-          "orbit": "Unknown",
-          "regime": "N/A",
-          "massKg": null,
-          "massLbs": null
-        }
-      ],
-      "capsules": [],
-      "cores": []
-    },
-    "97c6f5e1-299e-4652-b72d-9618ac047076": {
-      "id": "97c6f5e1-299e-4652-b72d-9618ac047076",
-      "name": "Starlink Group 15-25",
-      "flightNumber": 737,
-      "upcoming": true,
-      "success": null,
-      "details": "A batch of 27 satellites for the Starlink mega-constellation - SpaceX's project for space-based Internet communication system.",
-      "dateUtc": "2026-10-12T23:00:00Z",
-      "dateUnix": 1791846000,
-      "dateLocal": "2026-10-12T23:00:00Z",
+      "details": "Tranche 1 Transport Layer A is one of six missions by the United States Space Force Space Development Agency (SDA) for the Proliferated Warfighter Space Architecture (PWSA) Tranche 1 Transport Layer constellation, which will provide assured, resilient, low-latency military data and connectivity worldwide to the full range of warfighter platforms from Low Earth Orbit satellites.\r\n\r\nThe constellation will be interconnected with Optical Inter-Satellite Links (OISLs) which have significantly increased performance over existing radio frequency crosslinks. It is expected to operate over Ka band, have stereo coverage and be dynamically networked for simpler hand-offs, greater bandwidth and fault tolerance.\r\n\r\nThis launch carries 21 satellites manufactured by Northrop Grumman.",
+      "dateUtc": "2026-10-10T07:39:44Z",
+      "dateUnix": 1791617984,
+      "dateLocal": "2026-10-10T07:39:44Z",
       "datePrecision": "hour",
       "tbd": false,
       "net": true,
       "rocketName": "Falcon 9 Block 5",
       "launchpadName": "Space Launch Complex 4E",
       "launchpadLocation": "Vandenberg SFB, CA, USA",
-      "patchImage": "/data/spacex/images/1927035cad14a77c.png",
-      "vehicleImage": "/data/spacex/images/b317ff9ea04bd623.png",
+      "patchImage": "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/mission_patch_images/sda-t1tl-a_mission_patch_20261010075102.png",
+      "vehicleImage": "/data/spacex/images/83daf3ce21b64d93.jpg",
       "crewCount": 0,
-      "payloadCount": 27,
+      "payloadCount": 21,
       "capsuleCount": 0,
       "coreCount": 1,
       "hasExactTime": true,
       "isStaleSchedule": false,
       "links": {
-        "webcast": "https://x.com/i/broadcasts/1yKAPwdemygxb",
-        "article": "https://www.spacex.com/launches/sl-15-25",
-        "wikipedia": "https://en.wikipedia.org/wiki/Starlink",
+        "webcast": "https://x.com/i/broadcasts/1jGXgBoBYkRKZ",
+        "article": "https://www.spacex.com/launches/sda-t1tl-a",
+        "wikipedia": "https://en.wikipedia.org/wiki/Space_Development_Agency",
         "presskit": null,
         "redditLaunch": null,
         "redditCampaign": null,
         "redditMedia": null,
         "youtubeId": null,
-        "patchSmall": "/data/spacex/images/1927035cad14a77c.png",
-        "patchLarge": "/data/spacex/images/1927035cad14a77c.png",
+        "patchSmall": "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/mission_patch_images/sda-t1tl-a_mission_patch_20261010075102.png",
+        "patchLarge": "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/mission_patch_images/sda-t1tl-a_mission_patch_20261010075102.png",
         "flickrOriginal": [
-          "/data/spacex/images/b317ff9ea04bd623.png"
+          "/data/spacex/images/83daf3ce21b64d93.jpg"
         ]
       },
       "staticFireDateUtc": null,
-      "window": 14400,
+      "window": 0,
       "failures": [],
       "rocket": {
         "id": "164",
@@ -2534,8 +2436,7 @@
         "massKg": 549000,
         "image": "/data/spacex/images/83daf3ce21b64d93.jpg",
         "flickrImages": [
-          "/data/spacex/images/83daf3ce21b64d93.jpg",
-          "/data/spacex/images/b317ff9ea04bd623.png"
+          "/data/spacex/images/83daf3ce21b64d93.jpg"
         ]
       },
       "launchpad": {
@@ -2552,11 +2453,11 @@
       "crew": [],
       "payloads": [
         {
-          "id": "7750",
-          "name": "Starlink Group 15-25",
-          "type": "Communications",
+          "id": "6031",
+          "name": "SDA Tranche 1 Transport Layer A",
+          "type": "Government/Top Secret",
           "customers": [
-            "SpaceX"
+            "Space Development Agency"
           ],
           "manufacturers": [
             "SpaceX"
@@ -2564,8 +2465,8 @@
           "nationalities": [
             "USA"
           ],
-          "orbit": "Low Earth Orbit",
-          "regime": "LEO",
+          "orbit": "Polar Orbit",
+          "regime": "PO",
           "massKg": null,
           "massLbs": null
         }
@@ -2673,6 +2574,205 @@
       "capsules": [],
       "cores": []
     },
+    "df88cfbf-f504-4e11-8370-e33dd6280b5b": {
+      "id": "df88cfbf-f504-4e11-8370-e33dd6280b5b",
+      "name": "USSF-481",
+      "flightNumber": 739,
+      "upcoming": true,
+      "success": null,
+      "details": "A classified mission for the United States Space Force. It is possibly a batch of classified LEO satellites based on SpaceX’s Starshield satellite bus, based on locations of ascent rocket stage drop zones being fits with previous SDA Transport Layer launches.",
+      "dateUtc": "2026-10-15T23:44:00Z",
+      "dateUnix": 1792107840,
+      "dateLocal": "2026-10-15T23:44:00Z",
+      "datePrecision": "hour",
+      "tbd": false,
+      "net": true,
+      "rocketName": "Falcon 9 Block 5",
+      "launchpadName": "Space Launch Complex 4E",
+      "launchpadLocation": "Vandenberg SFB, CA, USA",
+      "patchImage": null,
+      "vehicleImage": "/data/spacex/images/11492e0a09c1640e.jpg",
+      "crewCount": 0,
+      "payloadCount": 1,
+      "capsuleCount": 0,
+      "coreCount": 1,
+      "hasExactTime": true,
+      "isStaleSchedule": false,
+      "links": {
+        "webcast": "https://x.com/i/broadcasts/1aJbdEzYpPaKX",
+        "article": "https://www.spacex.com/launches/ussf481",
+        "wikipedia": "https://en.wikipedia.org/wiki/United_States_Space_Force",
+        "presskit": null,
+        "redditLaunch": null,
+        "redditCampaign": null,
+        "redditMedia": null,
+        "youtubeId": null,
+        "patchSmall": null,
+        "patchLarge": null,
+        "flickrOriginal": [
+          "/data/spacex/images/11492e0a09c1640e.jpg"
+        ]
+      },
+      "staticFireDateUtc": null,
+      "window": 14400,
+      "failures": [],
+      "rocket": {
+        "id": "164",
+        "name": "Falcon 9 Block 5",
+        "type": "Block 5",
+        "active": true,
+        "boosters": 0,
+        "stages": 2,
+        "costPerLaunch": 52000000,
+        "successRatePct": 100,
+        "firstFlight": "2018-05-11",
+        "company": "SpaceX",
+        "country": "USA",
+        "description": "Falcon 9 is a two-stage rocket designed and manufactured by SpaceX for the reliable and safe transport of satellites and the Dragon spacecraft into orbit. The Block 5 variant is the fifth major interval aimed at improving upon the ability for rapid reusability.",
+        "wikipedia": "https://en.wikipedia.org/wiki/Falcon_9",
+        "heightMeters": 70,
+        "diameterMeters": 3.65,
+        "massKg": 549000,
+        "image": "/data/spacex/images/83daf3ce21b64d93.jpg",
+        "flickrImages": [
+          "/data/spacex/images/83daf3ce21b64d93.jpg",
+          "/data/spacex/images/11492e0a09c1640e.jpg"
+        ]
+      },
+      "launchpad": {
+        "id": "16",
+        "name": "Space Launch Complex 4E",
+        "fullName": "Space Launch Complex 4E",
+        "locality": "Vandenberg SFB, CA, USA",
+        "region": null,
+        "timezone": "America/Los_Angeles",
+        "status": null,
+        "details": "Space Launch Complex 4 East (SLC-4E) is a launch site at Vandenberg Space Force Base, California, U.S.\r\n\r\nThe pad was previously used by Atlas and Titan rockets between 1963 and 2005. The pad was built for use by Atlas-Agena rockets, but was later rebuilt to handle Titan rockets.",
+        "image": "/data/spacex/images/b752567507d74cae.jpg"
+      },
+      "crew": [],
+      "payloads": [
+        {
+          "id": "7866",
+          "name": "USSF-481",
+          "type": "Government/Top Secret",
+          "customers": [
+            "United States Space Force"
+          ],
+          "manufacturers": [
+            "SpaceX"
+          ],
+          "nationalities": [
+            "USA"
+          ],
+          "orbit": "Polar Orbit",
+          "regime": "PO",
+          "massKg": null,
+          "massLbs": null
+        }
+      ],
+      "capsules": [],
+      "cores": []
+    },
+    "4651fd8a-43de-4166-bf8f-c168b3bd1d2c": {
+      "id": "4651fd8a-43de-4166-bf8f-c168b3bd1d2c",
+      "name": "NROL-97",
+      "flightNumber": 735,
+      "upcoming": false,
+      "success": true,
+      "details": "Classified payload for the US National Reconnaissance Office.",
+      "dateUtc": "2026-10-02T03:54:00Z",
+      "dateUnix": 1790913240,
+      "dateLocal": "2026-10-02T03:54:00Z",
+      "datePrecision": "hour",
+      "tbd": false,
+      "net": true,
+      "rocketName": "Falcon Heavy",
+      "launchpadName": "Launch Complex 39A",
+      "launchpadLocation": "Kennedy Space Center, FL, USA",
+      "patchImage": "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/mission_patch_images/nrol-972520pat_mission_patch_20261001222358.png",
+      "vehicleImage": "/data/spacex/images/c62ac3115cf4d061.jpg",
+      "crewCount": 0,
+      "payloadCount": 1,
+      "capsuleCount": 0,
+      "coreCount": 3,
+      "hasExactTime": true,
+      "isStaleSchedule": false,
+      "links": {
+        "webcast": "https://x.com/i/broadcasts/1oJMvNkPPXlxQ",
+        "article": "https://www.spacex.com/launches/nrol97",
+        "wikipedia": "https://en.wikipedia.org/wiki/National_Reconnaissance_Office",
+        "presskit": null,
+        "redditLaunch": null,
+        "redditCampaign": null,
+        "redditMedia": null,
+        "youtubeId": null,
+        "patchSmall": "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/mission_patch_images/nrol-972520pat_mission_patch_20261001222358.png",
+        "patchLarge": "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/mission_patch_images/nrol-972520pat_mission_patch_20261001222358.png",
+        "flickrOriginal": [
+          "/data/spacex/images/c62ac3115cf4d061.jpg"
+        ]
+      },
+      "staticFireDateUtc": null,
+      "window": 2940,
+      "failures": [],
+      "rocket": {
+        "id": "161",
+        "name": "Falcon Heavy",
+        "type": "Heavy",
+        "active": true,
+        "boosters": 2,
+        "stages": 3,
+        "costPerLaunch": 90000000,
+        "successRatePct": 100,
+        "firstFlight": "2018-02-06",
+        "company": "SpaceX",
+        "country": "USA",
+        "description": "The Falcon Heavy is a variant of the Falcon 9 full thrust launch vehicle and consists of a standard Falcon 9 rocket core, with two additional boosters derived from the Falcon 9 first stage.",
+        "wikipedia": "https://en.wikipedia.org/wiki/Falcon_Heavy",
+        "heightMeters": 70,
+        "diameterMeters": 12.2,
+        "massKg": 1400000,
+        "image": "/data/spacex/images/c62ac3115cf4d061.jpg",
+        "flickrImages": [
+          "/data/spacex/images/c62ac3115cf4d061.jpg"
+        ]
+      },
+      "launchpad": {
+        "id": "87",
+        "name": "Launch Complex 39A",
+        "fullName": "Launch Complex 39A",
+        "locality": "Kennedy Space Center, FL, USA",
+        "region": null,
+        "timezone": "America/New_York",
+        "status": null,
+        "details": "",
+        "image": "/data/spacex/images/14b5a064429f38e9.jpg"
+      },
+      "crew": [],
+      "payloads": [
+        {
+          "id": "7165",
+          "name": "NROL-97",
+          "type": "Government/Top Secret",
+          "customers": [
+            "National Reconnaissance Office"
+          ],
+          "manufacturers": [
+            "SpaceX"
+          ],
+          "nationalities": [
+            "USA"
+          ],
+          "orbit": "Unknown",
+          "regime": "N/A",
+          "massKg": null,
+          "massLbs": null
+        }
+      ],
+      "capsules": [],
+      "cores": []
+    },
     "67213393-7983-4c06-8b44-b8c785a5ed79": {
       "id": "67213393-7983-4c06-8b44-b8c785a5ed79",
       "name": "Transporter 18 (Dedicated SSO Rideshare)",
@@ -2771,110 +2871,6 @@
       ],
       "capsules": [],
       "cores": []
-    },
-    "18441371-8b2e-457c-afb5-1ec1b11ab630": {
-      "id": "18441371-8b2e-457c-afb5-1ec1b11ab630",
-      "name": "Crew-13",
-      "flightNumber": 733,
-      "upcoming": false,
-      "success": true,
-      "details": "SpaceX Crew-13 is the thirteenth crewed operational flight of a Crew Dragon spacecraft to the International Space Station as part of NASA's Commercial Crew Program.",
-      "dateUtc": "2026-10-01T15:10:06Z",
-      "dateUnix": 1790867406,
-      "dateLocal": "2026-10-01T15:10:06Z",
-      "datePrecision": "hour",
-      "tbd": false,
-      "net": true,
-      "rocketName": "Falcon 9 Block 5",
-      "launchpadName": "Space Launch Complex 40",
-      "launchpadLocation": "Cape Canaveral SFS, FL, USA",
-      "patchImage": "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/mission_patch_images/crew-132520pat_mission_patch_20261001222243.png",
-      "vehicleImage": "/data/spacex/images/b210241b31da2900.jpg",
-      "crewCount": 0,
-      "payloadCount": 1,
-      "capsuleCount": 0,
-      "coreCount": 1,
-      "hasExactTime": true,
-      "isStaleSchedule": false,
-      "links": {
-        "webcast": "https://www.youtube.com/watch?v=Mkf_wAw8kLc",
-        "article": "https://www.spacex.com/launches/crew13",
-        "wikipedia": "https://en.wikipedia.org/wiki/Commercial_Crew_Program",
-        "presskit": null,
-        "redditLaunch": null,
-        "redditCampaign": null,
-        "redditMedia": null,
-        "youtubeId": "Mkf_wAw8kLc",
-        "patchSmall": "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/mission_patch_images/crew-132520pat_mission_patch_20261001222243.png",
-        "patchLarge": "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/mission_patch_images/crew-132520pat_mission_patch_20261001222243.png",
-        "flickrOriginal": [
-          "/data/spacex/images/b210241b31da2900.jpg"
-        ]
-      },
-      "staticFireDateUtc": null,
-      "window": 0,
-      "failures": [],
-      "rocket": {
-        "id": "164",
-        "name": "Falcon 9 Block 5",
-        "type": "Block 5",
-        "active": true,
-        "boosters": 0,
-        "stages": 2,
-        "costPerLaunch": 52000000,
-        "successRatePct": 100,
-        "firstFlight": "2018-05-11",
-        "company": "SpaceX",
-        "country": "USA",
-        "description": "Falcon 9 is a two-stage rocket designed and manufactured by SpaceX for the reliable and safe transport of satellites and the Dragon spacecraft into orbit. The Block 5 variant is the fifth major interval aimed at improving upon the ability for rapid reusability.",
-        "wikipedia": "https://en.wikipedia.org/wiki/Falcon_9",
-        "heightMeters": 70,
-        "diameterMeters": 3.65,
-        "massKg": 549000,
-        "image": "/data/spacex/images/83daf3ce21b64d93.jpg",
-        "flickrImages": [
-          "/data/spacex/images/83daf3ce21b64d93.jpg",
-          "/data/spacex/images/b210241b31da2900.jpg"
-        ]
-      },
-      "launchpad": {
-        "id": "80",
-        "name": "Space Launch Complex 40",
-        "fullName": "Space Launch Complex 40",
-        "locality": "Cape Canaveral SFS, FL, USA",
-        "region": null,
-        "timezone": "America/New_York",
-        "status": null,
-        "details": "",
-        "image": "/data/spacex/images/9b1f5cf5035d37b9.jpg"
-      },
-      "crew": [],
-      "payloads": [
-        {
-          "id": "6043",
-          "name": "Crew-13",
-          "type": "Human Exploration",
-          "customers": [
-            "Canadian Space Agency",
-            "National Aeronautics and Space Administration",
-            "Russian Federal Space Agency (ROSCOSMOS)"
-          ],
-          "manufacturers": [
-            "SpaceX"
-          ],
-          "nationalities": [
-            "CAN",
-            "USA",
-            "RUS"
-          ],
-          "orbit": "Low Earth Orbit",
-          "regime": "LEO",
-          "massKg": null,
-          "massLbs": null
-        }
-      ],
-      "capsules": [],
-      "cores": []
     }
   },
   "cadence": {
@@ -2937,10 +2933,10 @@
       {
         "monthKey": "2026-10",
         "label": "Oct 26",
-        "count": 3
+        "count": 4
       }
     ],
     "rangeLabel": "Nov 25 – Oct 26",
-    "generatedAt": "2026-10-09T16:22:51.783Z"
+    "generatedAt": "2026-10-10T15:28:38.311Z"
   }
 }
