@@ -48,6 +48,15 @@ async function filteredOrBlended(page: Page) {
 // squeezed there. These tests read styles and print nothing.
 const DESKTOP = { width: 1600, height: 900 };
 
+// These tests read computed styles, so they wait for the DOM and not for the
+// page's `load` event. Since #580 Home loads its plates eagerly, and `load`
+// then waits on every image variant the viewport picks. On the CI runner one
+// cold AVIF encode (the 750px retro-launch-pad plate, requested only at the
+// desktop width) took longer than the 15s navigation budget on 2026-10-09 and
+// timed the desktop test out twice.
+const open = (page: Page, route: string) =>
+  page.goto(route, { waitUntil: "domcontentloaded" });
+
 // The shared grids that hold three or four children, which are the counts the
 // wide rules arrange. The footer tiles are four. A grid in block flow counts
 // as one across.
@@ -134,7 +143,7 @@ const NARROW_GRIDS = [
 test.describe("Print", () => {
   for (const route of ["/", "/about", "/investments"]) {
     test(`repeats no vector image behind ${route} on paper`, async ({ page }) => {
-      await page.goto(route);
+      await open(page, route);
       await expect(page.locator("[data-c97-surface]").first()).toBeVisible();
 
       await page.emulateMedia({ media: "print" });
@@ -149,7 +158,7 @@ test.describe("Print", () => {
       browserName,
     }) => {
       test.skip(browserName !== "firefox", "Chrome's and Safari's engines print a filtered element");
-      await page.goto(route);
+      await open(page, route);
       await expect(page.locator("img").first()).toBeAttached();
 
       await page.emulateMedia({ media: "print" });
@@ -164,7 +173,7 @@ test.describe("Print", () => {
     browserName,
   }) => {
     test.skip(browserName === "firefox", "Firefox's engine prints nothing under a filter");
-    await page.goto("/about");
+    await open(page, "/about");
     const portrait = page.locator("img.c97-slot-img");
     await expect(portrait).toBeAttached();
 
@@ -178,7 +187,7 @@ test.describe("Print", () => {
       page,
     }) => {
       await page.setViewportSize(DESKTOP);
-      await page.goto(route);
+      await open(page, route);
       await expect(page.locator(".c97-footer-tiles")).toBeVisible();
 
       await page.emulateMedia({ media: "print" });
@@ -190,7 +199,7 @@ test.describe("Print", () => {
   for (const route of ["/about", "/resume"]) {
     test(`keeps each grid's own gap when ${route} stacks it on paper`, async ({ page }) => {
       await page.setViewportSize(DESKTOP);
-      await page.goto(route);
+      await open(page, route);
       await expect(page.locator(".c97-columns").first()).toBeVisible();
 
       await page.emulateMedia({ media: "print" });
@@ -201,7 +210,7 @@ test.describe("Print", () => {
 
   test("prints Home in its narrow layout from a desktop window", async ({ page }) => {
     await page.setViewportSize(DESKTOP);
-    await page.goto("/");
+    await open(page, "/");
     await expect(page.locator("[class*='heroGrid']")).toBeVisible();
 
     await page.emulateMedia({ media: "print" });
@@ -224,7 +233,7 @@ test.describe("Print", () => {
 
   for (const route of ["/", "/about", "/investments", "/writing"]) {
     test(`shows nothing through a mask on ${route} on paper`, async ({ page }) => {
-      await page.goto(route);
+      await open(page, route);
       await expect(page.locator("[data-c97-surface]").first()).toBeVisible();
 
       await page.emulateMedia({ media: "print" });
@@ -234,7 +243,7 @@ test.describe("Print", () => {
   }
 
   test("tears the seams with a clip path on paper", async ({ page }) => {
-    await page.goto("/about");
+    await open(page, "/about");
     await expect(page.locator(".c97-sheet[data-seam='deckle']")).toHaveCount(1);
 
     await page.emulateMedia({ media: "print" });

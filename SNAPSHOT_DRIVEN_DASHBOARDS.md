@@ -233,6 +233,10 @@ curated value.
   committed seed daily as the fallback. Freshness is measured from when the
   refresh ran. VoteHub can go weeks without a new poll, so the page prints the
   newest poll date for each series and the age of the newest poll fails nothing.
+  The builder pulls four VoteHub queries (approval, generic ballot, Senate,
+  governor); a race row is the two leading names from the race's newest poll,
+  averaged over the recent polls that asked about both, with no party, since
+  VoteHub publishes none.
 - `/news-pulse` is **API-backed at request time** (`/api/news-pulse` →
   `src/lib/news-pulse-utils.ts`), not a build-time snapshot.
 

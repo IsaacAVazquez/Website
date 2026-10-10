@@ -17,45 +17,45 @@ const STATIC_ROUTE_LASTMOD = {
   "/accessibility": "2026-10-02",
   "/privacy": "2026-10-02",
   "/agent-build-index": readGitHubTrendingLastmod(),
-  "/ai-dev-tools": "2026-04-28",
+  "/ai-dev-tools": "2026-10-09",
   "/arcade": "2026-07-16",
   "/contact": "2026-10-01",
-  "/dashboards": "2026-09-14",
+  "/dashboards": "2026-10-05",
   "/resume": "2026-09-29",
-  "/portfolio": "2026-09-14",
+  "/portfolio": "2026-10-09",
   // The index changes whenever a post is published or edited.
   "/writing": latestIso("2026-09-28", newestPostLastmod()),
   "/golf": readGolfLastmod(),
   "/earthquake-pulse": readEarthquakeLastmod(),
-  "/decision-lab": "2026-04-04",
-  "/enablement-assistant": "2026-07-30",
+  "/decision-lab": "2026-10-09",
+  "/enablement-assistant": "2026-10-09",
   "/formula-1": readFormula1Lastmod(),
   "/fantasy-formula-1": readFormula1Lastmod(),
-  "/frontier-models": "2026-04-04",
-  "/mba-internship-notifications": "2026-07-23",
+  "/frontier-models": readFrontierModelsLastmod(),
+  "/mba-internship-notifications": "2026-10-09",
   "/mlb": readMlbLastmod(),
-  "/museum-log": "2026-04-04",
+  "/museum-log": "2026-10-09",
   "/nba": readNbaLastmod(),
   "/now": "2026-10-01",
-  "/recipe-finder": "2026-04-04",
-  "/wine-cellar": "2026-04-04",
+  "/recipe-finder": "2026-10-09",
+  "/wine-cellar": "2026-10-09",
   "/bay-area-transit": readBayAreaTransitLastmod(),
   "/changelog": "2026-07-23",
   "/github-trending-pulse": readGitHubTrendingLastmod(),
   "/tech-startup-tracker": readTechStartupLastmod(),
   "/investments": readInvestmentsLastmod(),
   "/investments/before-you-buy": "2026-10-01",
-  "/news-pulse": "2026-07-23",
+  "/news-pulse": "2026-10-09",
   "/spacex-mission-control": readSpaceXLastmod(),
   "/polling-aggregator": readPollingLastmod(),
   "/premier-league": readPremierLeagueLastmod(),
-  "/score-pools": latestIso(readScorePoolsLastmod(), "2026-07-23"),
-  "/score-pools/tracker": latestIso(readScorePoolsLastmod(), "2026-07-23"),
-  "/score-pools/settings": latestIso(readScorePoolsLastmod(), "2026-07-23"),
+  "/score-pools": latestIso(readScorePoolsLastmod(), "2026-10-09"),
+  "/score-pools/tracker": latestIso(readScorePoolsLastmod(), "2026-10-09"),
+  "/score-pools/settings": latestIso(readScorePoolsLastmod(), "2026-10-09"),
   "/la-liga": readLaLigaLastmod(),
   "/nfl": readNflLastmod(),
-  "/world-cup-2026": latestIso(readWorldCupLastmod(), "2026-07-23"),
-  "/march-madness-2026": "2026-03-17",
+  "/world-cup-2026": latestIso(readWorldCupLastmod(), "2026-10-09"),
+  "/march-madness-2026": "2026-09-28",
   "/fantasy-football": readFantasyLastmod(),
   "/fantasy-football/best-ball": readBestBallLastmod(),
   "/fantasy-football/best-ball/draft-tracker": readBestBallLastmod(),
@@ -64,11 +64,11 @@ const STATIC_ROUTE_LASTMOD = {
   "/fantasy-football/trade-calculator": readFantasyLastmod(),
   "/fantasy-football/weekly": readWeeklyFantasyLastmod(),
   "/fantasy-football/waivers": readWeeklyFantasyLastmod(),
-  "/fintech-tools/budget-planner": "2026-04-03",
-  "/fintech-tools/interchange-iq": "2026-04-02",
-  "/fintech-tools/rent-vs-buy": "2026-07-20",
-  "/food-map": "2026-04-28",
-  "/travel": "2026-05-04",
+  "/fintech-tools/budget-planner": "2026-10-09",
+  "/fintech-tools/interchange-iq": "2026-10-09",
+  "/fintech-tools/rent-vs-buy": "2026-10-09",
+  "/food-map": "2026-10-09",
+  "/travel": "2026-10-09",
   "/travel-deals": "2026-07-07",
 };
 
@@ -319,6 +319,12 @@ function readGitHubTrendingLastmod() {
 function readTechStartupLastmod() {
   return toIsoString(
     readFirstMatch("src/data/techStartupSnapshot.json", /"generatedAt":\s*"([^"]+)"/)
+  );
+}
+
+function readFrontierModelsLastmod() {
+  return toIsoString(
+    readFirstMatch("src/data/frontierModelsSnapshot.json", /"generatedAt":\s*"([^"]+)"/)
   );
 }
 

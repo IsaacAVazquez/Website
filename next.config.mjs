@@ -203,6 +203,19 @@ const nextConfig = {
         destination: '/writing/:slug',
         permanent: true,
       },
+      // Any deeper old blog path (dated archives, categories) lands on the index
+      // instead of a 404.
+      {
+        source: '/blog/:path+',
+        destination: '/writing',
+        permanent: true,
+      },
+      // The fintech tools have no index page of their own.
+      {
+        source: '/fintech-tools',
+        destination: '/dashboards',
+        permanent: false,
+      },
       {
         source: '/articles/:slug',
         destination: '/writing/:slug',
@@ -305,7 +318,7 @@ const nextConfig = {
   // Site-wide security headers. Applied to all routes.
   //
   // CSP is staged via Content-Security-Policy-Report-Only (below). Report-Only
-  // enforces nothing — the browser still loads every resource and only reports
+  // enforces nothing. The browser still loads every resource and only reports
   // what a future enforcing policy *would* block. This is the standard, safe
   // way to inventory inline scripts, third-party tags, and analytics endpoints
   // before flipping to an enforcing `Content-Security-Policy` header.
