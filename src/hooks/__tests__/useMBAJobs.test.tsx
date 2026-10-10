@@ -288,6 +288,7 @@ describe("useMBAJobs", () => {
       // One retry only. The second 503 is reported.
       expect(fetchSpy).toHaveBeenCalledTimes(2);
       expect(result.current.isLoading).toBe(false);
+      expect(result.current.hasFetched).toBe(false);
       expect(result.current.error).toContain("503");
       expect(result.current.fetchErrors).toEqual(outageErrors);
       expect(result.current.sourceStatuses).toEqual(outageStatuses);
@@ -334,6 +335,7 @@ describe("useMBAJobs", () => {
       });
       expect(fetchSpy).toHaveBeenCalledTimes(2);
       expect(result.current.isLoading).toBe(false);
+      expect(result.current.hasFetched).toBe(true);
       expect(result.current.error).toBeNull();
       expect(result.current.jobs.map((job) => job.id)).toEqual(["stripe-1"]);
       expect(result.current.lastFetchedAt?.toISOString()).toBe(
@@ -354,34 +356,5 @@ describe("useMBAJobs", () => {
 
     expect(result.current.seenIds.has("stripe-1")).toBe(true);
     expect(result.current.newJobCount).toBe(1);
-  });
-
-  it("sends an email digest and reports success", async () => {
-    const fetchSpy = installFetch(async (input) => {
-      if (String(input).includes("/api/mba-jobs/email")) {
-        return jsonResponse({ ok: true });
-      }
-      return jsonResponse(buildResponse([jobA]));
-    });
-
-    const { result } = renderHook(() => useMBAJobs());
-    await waitFor(() => expect(result.current.isLoading).toBe(false));
-    expect(result.current.jobs).toHaveLength(1);
-
-    await act(async () => {
-      await result.current.sendEmailDigest("isaac@example.com");
-    });
-
-    expect(result.current.emailResult?.ok).toBe(true);
-    expect(
-      fetchSpy.mock.calls.some((c) =>
-        String(c[0]).includes("/api/mba-jobs/email")
-      )
-    ).toBe(true);
-
-    act(() => {
-      result.current.clearEmailResult();
-    });
-    expect(result.current.emailResult).toBeNull();
   });
 });

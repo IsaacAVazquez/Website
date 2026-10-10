@@ -608,7 +608,7 @@ function RegionBracketDetail({ data }: { data: RegionData }) {
 
         <div className="c97-panel">
           <RoundLabel>Elite Eight</RoundLabel>
-          <Matchup2 t1={data.e8.t1} t2={data.e8.t2} w={1} tags={["Final Four"]} />
+          <Matchup2 t1={data.e8.t1} t2={data.e8.t2} w={data.e8.w} tags={["Final Four"]} />
           <NoteBox>{data.e8.note}</NoteBox>
         </div>
       </div>
@@ -728,7 +728,7 @@ function PicksSection({ initialPick }: { initialPick: string | null }) {
           Legend
         </p>
         <div className="flex flex-wrap" style={{ gap: "var(--c97-sp-2)" }}>
-          {(["FLIP", "UPGRADE", "DOWNGRADE", "WATCH", "LOCKED"] as const).map((badge) => (
+          {(["FLIP", "UPGRADE", "DOWNGRADE", "CONFIRM", "WATCH", "LOCKED"] as const).map((badge) => (
             <div key={badge} className="flex items-center" style={{ gap: "var(--c97-sp-1)" }}>
               <Tag color={BADGE_TONE[badge]}>{badge}</Tag>
               <span className="c97-prose" style={{ fontSize: "var(--c97-fs-small)" }}>

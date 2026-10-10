@@ -28,8 +28,6 @@ const POLL_INTERVAL_MS = 30 * 60 * 1_000; // 30 minutes
 const DEDUPE_WINDOW_MS = 2_000;
 const RETRY_AFTER_503_MS = 10_000;
 const MAX_SEEN_IDS = 500;
-// Mirrors MAX_DIGEST_JOBS in /api/mba-jobs/email. Keep these in sync.
-const EMAIL_DIGEST_MAX_JOBS = 25;
 
 // ---------------------------------------------------------------------------
 // Default watched companies (all non-manual)
@@ -102,6 +100,8 @@ async function parseOutageBody(
 interface UseMBAJobsResult {
   jobs: MBAJob[];
   isLoading: boolean;
+  /** True once the browser's own fetch has replaced the server-rendered slice. */
+  hasFetched: boolean;
   error: string | null;
   fetchErrors: MBAJobsFetchError[];
   sourceStatuses: MBAJobsSourceStatus[];
@@ -116,10 +116,6 @@ interface UseMBAJobsResult {
   setAllCompanies: (enabled: boolean) => void;
   requestNotificationPermission: () => Promise<void>;
   refresh: () => void;
-  sendEmailDigest: (to: string, jobsToSend?: MBAJob[]) => Promise<void>;
-  emailSending: boolean;
-  emailResult: { ok: boolean; message: string } | null;
-  clearEmailResult: () => void;
 }
 
 interface UseMBAJobsOptions {
@@ -185,6 +181,10 @@ export function useMBAJobs(options: UseMBAJobsOptions = {}): UseMBAJobsResult {
   const [lastFetchedAt, setLastFetchedAt] = useState<Date | null>(
     initialData?.fetchedAt ? new Date(initialData.fetchedAt) : null
   );
+  // False until the browser's own fetch lands. The server-rendered
+  // `initialData` is a short prefix of the feed, so any count taken from it
+  // (roles tracked, matches, new since last visit) is a count of the slice.
+  const [hasFetched, setHasFetched] = useState(false);
 
   const isMountedRef = useRef(true);
   const requestIdRef = useRef(0);
@@ -199,10 +199,6 @@ export function useMBAJobs(options: UseMBAJobsOptions = {}): UseMBAJobsResult {
       isMountedRef.current = false;
     };
   }, []);
-
-  // ── Email state ────────────────────────────────────────────────────────
-  const [emailSending, setEmailSending] = useState(false);
-  const [emailResult, setEmailResult] = useState<{ ok: boolean; message: string } | null>(null);
 
   // ── Notification helper ────────────────────────────────────────────────
   const fireNotification = useCallback((count: number, sample?: MBAJob) => {
@@ -261,7 +257,15 @@ export function useMBAJobs(options: UseMBAJobsOptions = {}): UseMBAJobsResult {
             setFetchErrors(outage.errors);
             setSourceStatuses(outage.sourceStatuses ?? []);
           }
-          throw new Error(`HTTP ${res.status}`);
+          // A feed-level error (no company behind it, such as "still
+          // refreshing") is the sentence the page should print; a board-level
+          // outage already lists its boards in the partial-results banner.
+          const feedError = outage?.errors.find((item) => !item.companyId);
+          throw new Error(
+            feedError?.message
+              ? `${feedError.message} (HTTP ${res.status})`
+              : `The job boards did not answer (HTTP ${res.status}).`
+          );
         }
         const data = (await res.json()) as MBAJobsApiResponse;
 
@@ -282,6 +286,7 @@ export function useMBAJobs(options: UseMBAJobsOptions = {}): UseMBAJobsResult {
         setFetchErrors(data.errors ?? []);
         setSourceStatuses(data.sourceStatuses ?? []);
         setLastFetchedAt(new Date(data.fetchedAt));
+        setHasFetched(true);
         setError(null);
       } catch (err) {
         if (!isMountedRef.current || requestIdRef.current !== requestId) return;
@@ -325,7 +330,7 @@ export function useMBAJobs(options: UseMBAJobsOptions = {}): UseMBAJobsResult {
   }, [fetchJobs]);
 
   // ── Re-fetch when watched companies change ─────────────────────────────
-  // (but not on mount — initial fetch handles that)
+  // (but not on mount, initial fetch handles that)
   const isFirstRender = useRef(true);
   useEffect(() => {
     if (isFirstRender.current) {
@@ -389,46 +394,10 @@ export function useMBAJobs(options: UseMBAJobsOptions = {}): UseMBAJobsResult {
     setNotificationPermission(result);
   }
 
-  async function sendEmailDigest(to: string, jobsToSend?: MBAJob[]) {
-    // Mirror the email API contract before posting: it accepts at most
-    // EMAIL_DIGEST_MAX_JOBS and drops any job whose postedAt is unparsable
-    // (every direct-HTML source is undated). Filter and cap here so a large
-    // or scrape-heavy feed does not get the whole digest rejected. The list
-    // is already sorted newest-first, so undated jobs fall to the bottom and
-    // the freshest dated roles survive the cap.
-    const source = jobsToSend ?? jobs;
-    const payload = source
-      .filter((job) => Number.isFinite(new Date(job.postedAt).getTime()))
-      .slice(0, EMAIL_DIGEST_MAX_JOBS);
-    if (payload.length === 0) return;
-    setEmailSending(true);
-    setEmailResult(null);
-    try {
-      const res = await fetch("/api/mba-jobs/email", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ jobs: payload, to }),
-      });
-      const data = (await res.json()) as { ok?: boolean; error?: string };
-      if (res.ok && data.ok) {
-        setEmailResult({ ok: true, message: `Digest sent to ${to}` });
-      } else {
-        setEmailResult({ ok: false, message: data.error ?? "Failed to send digest." });
-      }
-    } catch (err) {
-      setEmailResult({ ok: false, message: (err as Error)?.message ?? "Failed to send digest." });
-    } finally {
-      setEmailSending(false);
-    }
-  }
-
-  function clearEmailResult() {
-    setEmailResult(null);
-  }
-
   return {
     jobs,
     isLoading,
+    hasFetched,
     error,
     fetchErrors,
     sourceStatuses,
@@ -443,9 +412,5 @@ export function useMBAJobs(options: UseMBAJobsOptions = {}): UseMBAJobsResult {
     setAllCompanies,
     requestNotificationPermission,
     refresh: () => fetchJobs({ dedupe: false, showLoading: true }),
-    sendEmailDigest,
-    emailSending,
-    emailResult,
-    clearEmailResult,
   };
 }

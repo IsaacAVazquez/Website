@@ -98,6 +98,7 @@ function buildHookValue(overrides: Partial<ReturnType<typeof useMBAJobs>> = {}) 
   return {
     jobs: [buildJob()],
     isLoading: false,
+    hasFetched: true,
     error: null,
     fetchErrors: [],
     sourceStatuses: [],
@@ -116,10 +117,6 @@ function buildHookValue(overrides: Partial<ReturnType<typeof useMBAJobs>> = {}) 
     setAllCompanies: jest.fn(),
     requestNotificationPermission: jest.fn().mockResolvedValue(undefined),
     refresh: jest.fn(),
-    sendEmailDigest: jest.fn().mockResolvedValue(undefined),
-    emailSending: false,
-    emailResult: null,
-    clearEmailResult: jest.fn(),
     ...overrides,
   };
 }
@@ -273,7 +270,7 @@ describe("MBAJobsClient", () => {
       name: "Career page for Microsoft",
     });
     const applyButton = screen.getByRole("link", {
-      name: "Apply for MBA Product Intern at Stripe",
+      name: "Apply now, MBA Product Intern at Stripe",
     });
 
     expect(googleLinkedIn).toHaveClass("c97-btn-ghost");
@@ -533,17 +530,72 @@ describe("MBAJobsClient", () => {
     render(<MBAJobsClient initialState={DEFAULT_MBA_JOBS_STATE} />);
 
     const liveJobsGrid = screen.getByTestId("live-jobs-grid");
-    expect(within(liveJobsGrid).getAllByRole("heading", { level: 3 })).toHaveLength(60);
-    expect(screen.getByRole("button", { name: "Show more (60 of 75 shown)" })).toBeVisible();
+    expect(within(liveJobsGrid).getAllByRole("heading", { level: 3 })).toHaveLength(12);
+    expect(screen.getByRole("button", { name: "Show more (12 of 75 shown)" })).toBeVisible();
 
     fireEvent.click(screen.getByRole("button", { name: /Show more/ }));
-    expect(within(liveJobsGrid).getAllByRole("heading", { level: 3 })).toHaveLength(75);
-    expect(screen.queryByRole("button", { name: /Show more/ })).not.toBeInTheDocument();
+    expect(within(liveJobsGrid).getAllByRole("heading", { level: 3 })).toHaveLength(24);
+    expect(screen.getByRole("button", { name: "Show more (24 of 75 shown)" })).toBeVisible();
 
     // A filter change (not a data refresh) starts back at the first page.
     fireEvent.change(screen.getByLabelText("Sort"), { target: { value: "oldest" } });
-    expect(within(liveJobsGrid).getAllByRole("heading", { level: 3 })).toHaveLength(60);
-    expect(screen.getByRole("button", { name: "Show more (60 of 75 shown)" })).toBeVisible();
+    expect(within(liveJobsGrid).getAllByRole("heading", { level: 3 })).toHaveLength(12);
+    expect(screen.getByRole("button", { name: "Show more (12 of 75 shown)" })).toBeVisible();
+  });
+
+  it("prints the server's feed size, with a separator, until the browser fetch lands", () => {
+    mockUseMBAJobs.mockReturnValue(buildHookValue({ jobs: [buildJob()], hasFetched: false }));
+
+    render(<MBAJobsClient initialState={DEFAULT_MBA_JOBS_STATE} initialJobCount={1870} />);
+
+    expect(screen.getByText("1,870")).toBeVisible();
+    // Counts taken from the first page would be counts of the slice.
+    expect(screen.queryByText(/matching roles/)).not.toBeInTheDocument();
+    expect(screen.queryByText(/new since last visit/)).not.toBeInTheDocument();
+  });
+
+  it("pages a status column six cards at a time, one column per button", () => {
+    currentSearchParams = new URLSearchParams("view=applications");
+    const applications = (["saved", "applied"] as const).flatMap((status) =>
+      Array.from({ length: 7 }, (_, i) =>
+        buildApplication({
+          id: `${status}-${i}`,
+          jobId: `${status}-job-${i}`,
+          status,
+          jobSnapshot: { ...buildApplication().jobSnapshot, id: `${status}-job-${i}`, title: `${status} role ${i}` },
+        })
+      )
+    );
+    mockUseMBAApplications.mockReturnValue(
+      buildApplicationsHookValue({ applications, activeApplications: applications })
+    );
+
+    render(<MBAJobsClient initialState={DEFAULT_MBA_JOBS_STATE} />);
+
+    expect(screen.getAllByRole("heading", { level: 3, name: /saved role/ })).toHaveLength(6);
+    fireEvent.click(screen.getByRole("button", { name: "Show more (6 of 7 saved)" }));
+    expect(screen.getAllByRole("heading", { level: 3, name: /saved role/ })).toHaveLength(7);
+    // The applied column stays on its first page with its own button.
+    expect(screen.getAllByRole("heading", { level: 3, name: /applied role/ })).toHaveLength(6);
+    expect(screen.getByRole("button", { name: "Show more (6 of 7 applied)" })).toBeVisible();
+  });
+
+  it("pages the candidates list twelve at a time", () => {
+    currentSearchParams = new URLSearchParams("view=candidates");
+    const candidates = Array.from({ length: 13 }, (_, i) =>
+      buildCandidate({
+        id: `cand-${i}`,
+        job: { ...buildCandidate().job, id: `job-${i}`, title: `Candidate role ${i}` },
+      })
+    );
+    mockUseMBAJobCandidates.mockReturnValue(buildCandidatesHookValue({ enabled: true, candidates }));
+
+    render(<MBAJobsClient initialState={DEFAULT_MBA_JOBS_STATE} />);
+
+    const grid = screen.getByTestId("candidates-grid");
+    expect(within(grid).getAllByRole("heading", { level: 3 })).toHaveLength(12);
+    fireEvent.click(screen.getByRole("button", { name: "Show more (12 of 13 shown)" }));
+    expect(within(grid).getAllByRole("heading", { level: 3 })).toHaveLength(13);
   });
 
   it("renders outbound search shortcuts and toggles external leads through URL state", () => {
@@ -925,7 +977,7 @@ describe("MBAJobsClient", () => {
     render(<MBAJobsClient initialState={DEFAULT_MBA_JOBS_STATE} />);
 
     // No follow-ups or deadlines are pending, so the panel reassures instead.
-    expect(screen.getByText(/You.re all caught up\./)).toBeVisible();
+    expect(screen.getByText("All caught up.")).toBeVisible();
 
     fireEvent.change(
       screen.getByLabelText("Priority for MBA Product Intern"),
