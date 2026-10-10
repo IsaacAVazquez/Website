@@ -15,9 +15,9 @@ export const metadata = constructMetadata({
   canonicalUrl: "/world-cup-2026",
   image: "/world-cup-2026/opengraph-image",
   dateModified:
-    worldCupSnapshot.tournament.generatedAt.slice(0, 10) > "2026-07-23"
+    worldCupSnapshot.tournament.generatedAt.slice(0, 10) > "2026-10-09"
       ? worldCupSnapshot.tournament.generatedAt.slice(0, 10)
-      : "2026-07-23",
+      : "2026-10-09",
 });
 
 interface WorldCupPageProps {

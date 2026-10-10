@@ -92,7 +92,19 @@
   background: var(--c97-panel);
 }
 
+/* A phone's column is 328px. The plate and the panel padding come down to
+ * the sp-2 step so the row keeps about 278px, since at the sp-4 and sp-3
+ * steps it had 226px and the games-back figure printed over the squares. */
 @media screen and (max-width: 479px) {
+  .c97-mlb-scoreboard {
+    gap: var(--c97-sp-2);
+    padding: var(--c97-sp-2);
+  }
+
+  .c97-mlb-scoreboard-panel {
+    padding: var(--c97-sp-2);
+  }
+
   .c97-mlb-scoreboard-row {
     grid-template-columns: 2.2rem 3.2rem 2.3rem minmax(0, 1fr);
     gap: var(--c97-sp-1);

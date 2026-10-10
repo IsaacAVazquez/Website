@@ -8,7 +8,7 @@ export interface PointsLadderClub {
   id: string;
   position: number;
   points: number;
-  /** Short name for the mark's label — the club's tla when the snapshot has one, else its shortName. */
+  /** Short name for the mark's label, the club's tla when the snapshot has one, else its shortName. */
   label: string;
   /** Brand accent hex from the snapshot; some ship without the leading "#". Null/undefined falls back to the zone tone. */
   accentColor?: string | null;
@@ -105,9 +105,14 @@ export function PointsLadder({ clubs, selectedId, onSelect, title }: PointsLadde
     onSelect(clubId);
   };
 
+  // Each ladder sits in its own slot, and the slot is what shows or hides,
+  // because the hero's signature rule sets every chart svg to display block
+  // at a specificity a route class cannot outrank. Hiding the svg itself lost
+  // that contest and printed both ladders at every width.
   const renderLadder = (variant: "wide" | "narrow") => {
     const W = variant === "wide" ? WIDE_W : NARROW_W;
     return (
+      <div className={`c97-points-ladder-slot c97-points-ladder-slot--${variant}`}>
       <svg
         viewBox={`0 0 ${W} ${height}`}
         data-variant={variant}
@@ -247,6 +252,7 @@ export function PointsLadder({ clubs, selectedId, onSelect, title }: PointsLadde
             );
           })}
         </svg>
+      </div>
     );
   };
 

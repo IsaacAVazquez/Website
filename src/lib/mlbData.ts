@@ -84,6 +84,8 @@ interface StatsApiStandingsResponse {
 interface StatsApiScheduleGame {
   gamePk?: number | null;
   gameDate?: string | null;
+  /** The US calendar day the game belongs to, which the API filters on. */
+  officialDate?: string | null;
   gameType?: string | null;
   ifNecessary?: string | null;
   status?: {
@@ -225,6 +227,19 @@ function normalizeGame(raw: StatsApiScheduleGame, teamLookup: Map<string, MlbTea
   // lists the makeup under the same gamePk on its new date.
   if (/^(postponed|cancelled)/i.test(detailed)) return null;
   const isFinal = (raw.status?.abstractGameState ?? "").toLowerCase() === "final";
+  // A game whose start time is not set yet carries a midnight UTC placeholder,
+  // and in the postseason the API leaves startTimeTBD false on it, so the flag
+  // alone printed "8:00 PM EDT" for every unscheduled game (read 2026-10-09).
+  // The placeholder reads as its official calendar day with no time, keyed to
+  // the end of that UTC day: FixtureCard prints the day in UTC, and the key
+  // sorts after the previous evening's timed games (an 8:08 PM EDT start on
+  // the day before is 00:08Z on this one), so the next-game slot keeps them.
+  // ponytail: a game that really starts at 00:00:00Z prints as a day too;
+  // first pitches land on the :05 or :10, so none has yet. A same-day start
+  // at 8 PM EDT or later still sorts after the placeholder; carrying
+  // officialDate on MlbGame and sorting on it first would settle that.
+  const midnightPlaceholder = /T00:00:00(?:\.000)?Z$/.test(utcDate);
+  const officialDate = raw.officialDate?.trim();
   const homeScore = typeof raw.teams?.home?.score === "number" ? raw.teams.home.score : null;
   const awayScore = typeof raw.teams?.away?.score === "number" ? raw.teams.away.score : null;
   let winner: MlbGame["score"]["winner"] = null;
@@ -238,11 +253,11 @@ function normalizeGame(raw: StatsApiScheduleGame, teamLookup: Map<string, MlbTea
   }
   return {
     id: String(id),
-    utcDate,
+    utcDate: midnightPlaceholder && officialDate ? `${officialDate}T23:59:59Z` : utcDate,
     status: isFinal ? "FINISHED" : detailed,
     matchday: null,
     stage: raw.gameType?.trim() || null,
-    startTimeTbd: raw.status?.startTimeTBD === true,
+    startTimeTbd: raw.status?.startTimeTBD === true || midnightPlaceholder,
     ifNecessary: raw.ifNecessary === "Y",
     homeTeam,
     awayTeam,

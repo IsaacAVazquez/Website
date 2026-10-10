@@ -3,7 +3,8 @@ export interface LeaderEntry {
   name: string;
   clubId: string;
   clubCode: string;
-  total: number;
+  /** Printed as given, so a caller can fix the precision ("1.80", ".316"). */
+  total: number | string;
   appearances: number;
   perMatch: number;
 }

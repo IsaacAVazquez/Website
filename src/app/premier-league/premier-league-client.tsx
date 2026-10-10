@@ -151,7 +151,7 @@ export function PremierLeagueClient({
   }));
 
   // Assists board: football-data.org's scorer entries already carry an
-  // `assists` count per player — this is a re-sort of already-fetched data,
+  // `assists` count per player, this is a re-sort of already-fetched data,
   // not a new fetch (see src/lib/premierLeagueData.ts's normalizeScorer).
   const assistEntries: LeaderEntry[] = useMemo(() => (
     summary.scorers
@@ -204,7 +204,7 @@ export function PremierLeagueClient({
   const lastUpdated = formatUpdatedAt(summary.generatedAt);
   const currentMatchday = summary.competition?.currentMatchday ?? null;
 
-  // Club drawer — its own state, the way La Liga keeps it, because the tabs
+  // Club drawer, its own state, the way La Liga keeps it, because the tabs
   // and the view filters also write ?team= and must not open the overlay.
   // It starts open only for a deep link to a valid club, and after that only
   // `handleTeamChange` opens it. It holds the club that was asked for and
@@ -321,7 +321,7 @@ export function PremierLeagueClient({
             value: leader ? leader.team.shortName : "—",
             detail: leader && runnerUp
               ? `${leader.points} pts, ${leader.points === runnerUp.points ? "level with" : `${formatPointsGap(leader.points - runnerUp.points)} clear of`} ${runnerUp.team.shortName}`
-              : "Standings loading",
+              : "No standings in this snapshot yet",
           },
           {
             label: "Champions League gap",
@@ -654,7 +654,7 @@ function getClubStoryline(
   }
 
   if (club.position <= 6 && seventhPlace && leader) {
-    return `${club.team.shortName} currently occupy a European place and have a ${club.points - seventhPlace.points}-point buffer over the first club outside qualification.`;
+    return `${club.team.shortName} currently occupy a European place and have a buffer of ${club.points - seventhPlace.points} points over the first club outside qualification.`;
   }
 
   if (club.position <= 17 && sixthPlace && dropLine) {

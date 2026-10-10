@@ -2,11 +2,12 @@ export interface LeaderLedgerEntry {
   rank: number;
   name: string;
   clubCode: string;
-  value: number;
+  /** Printed as given, so a caller can fix the precision. */
+  value: number | string;
 }
 
 /**
- * Denser mono leaderboard row list — the design mirror's `.lead-row` (mono
+ * Denser mono leaderboard row list, the design mirror's `.lead-row` (mono
  * rank, bold name, mono club code, mono value + unit) inside one shared
  * panel border, as opposed to `LeaderList`'s individually-bordered cards.
  * Used for the scorers/assists boards on the league pages; `LeaderList`

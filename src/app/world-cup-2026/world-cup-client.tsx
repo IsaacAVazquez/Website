@@ -458,6 +458,9 @@ export function WorldCupClient({
             This page is a curated snapshot that refreshes on a schedule. Group standings,
             fixtures, and the knockout bracket come from ESPN&apos;s public World Cup endpoints.
             Tournament format and host venues are fixed facts carried in the snapshot.
+            {scorers.length === 0
+              ? " ESPN's scorer feed carried no golden boot table when this snapshot was taken, so the page lists no top scorers."
+              : null}
           </p>
         </div>
       </section>

@@ -339,7 +339,7 @@ describe("getCurrentSeason", () => {
   // The MLB regular season and postseason (through the early-November World
   // Series) all resolve within the same calendar year. The refresh cron runs
   // March through November, never December, so the season should only roll
-  // forward in December — not in November, when a next-season request would
+  // forward in December, not in November, when a next-season request would
   // return empty/zeroed standings and break World Series coverage.
   it("keeps the current year through November (World Series window)", () => {
     expect(getCurrentSeason(new Date("2026-11-15T12:00:00Z"))).toBe("2026");
@@ -919,6 +919,72 @@ describe("schedule and leader rows from the live API", () => {
       ["849819", "D", true, false],
       ["849822", "D", true, true],
     ]);
+  });
+
+  it("reads a midnight UTC start as a placeholder on its official day, after the evening before", async () => {
+    // A postseason game before its time is set, as the API served it on
+    // 2026-10-09, listed after a timed 8:08 PM EDT game the evening before.
+    // Keyed at midnight the placeholder sorted above that game (00:00Z before
+    // 00:08Z) and took the next-game slot a day early.
+    const status = {
+      abstractGameState: "Preview",
+      codedGameState: "S",
+      detailedState: "Scheduled",
+      statusCode: "S",
+      startTimeTBD: false,
+      abstractGameCode: "P",
+    };
+    const dates = [
+      {
+        date: "2026-10-09",
+        games: [
+          {
+            gamePk: 849830,
+            gameType: "D",
+            gameDate: "2026-10-10T00:08:00Z",
+            officialDate: "2026-10-09",
+            status,
+            teams: {
+              away: { team: { id: 145 } },
+              home: { team: { id: 114 } },
+            },
+            doubleHeader: "N",
+            seriesDescription: "Division Series",
+            ifNecessary: "N",
+          },
+        ],
+      },
+      {
+        date: "2026-10-10",
+        games: [
+          {
+            gamePk: 849831,
+            gameType: "D",
+            gameDate: "2026-10-11T00:00:00Z",
+            officialDate: "2026-10-10",
+            status,
+            teams: {
+              away: { team: { id: 145 } },
+              home: { team: { id: 114 } },
+            },
+            doubleHeader: "N",
+            seriesDescription: "Division Series",
+            ifNecessary: "N",
+          },
+        ],
+      },
+    ];
+    mockApi(dates, "2026-10-09T21:00:00Z");
+
+    const summary = await getMlbSummary();
+    const cubs = await getMlbTeamSnapshot("114");
+
+    for (const upcoming of [summary.upcomingGames, cubs.upcomingGames]) {
+      expect(upcoming.map((g) => [g.id, g.utcDate, g.startTimeTbd])).toEqual([
+        ["849830", "2026-10-10T00:08:00Z", false],
+        ["849831", "2026-10-10T23:59:59Z", true],
+      ]);
+    }
   });
 
   it("keeps a game in progress after the UTC date has rolled over", async () => {

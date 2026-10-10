@@ -85,16 +85,20 @@ function formatRecord(row: MlbStandingsRow) {
   return `${row.wins}-${row.losses}`;
 }
 
-function leadersToEntries(
-  leaders: MlbLeader[],
-  perGameDigits = 2
-): LeaderEntry[] {
+/** The box score's precision: an average without its leading zero, an ERA to two places, a count whole. */
+function formatLeaderTotal(total: number, statLabel: string): string | number {
+  if (statLabel === "AVG") return formatFixed(total, 3).replace(/^0\./, ".");
+  if (statLabel === "ERA") return formatFixed(total, 2);
+  return Math.round(total);
+}
+
+function leadersToEntries(leaders: MlbLeader[], statLabel: string): LeaderEntry[] {
   return leaders.map((leader) => ({
     rank: leader.rank,
     name: leader.name,
     clubId: leader.teamId,
     clubCode: leader.teamCode,
-    total: Number(leader.total.toFixed(perGameDigits)),
+    total: formatLeaderTotal(leader.total, statLabel),
     appearances: leader.games,
     perMatch: leader.perGame,
   }));
@@ -169,9 +173,17 @@ export function MlbClient({ initialState, summary, initialTeamSnapshot }: MlbCli
 
   const hasManagedParams =
     searchParams.get("view") !== null || searchParams.get("team") !== null;
-  const routeState = hasManagedParams
+  const linkedState = hasManagedParams
     ? normalizeState(searchParams, defaultState, aliasMap)
     : initialState;
+  // A link that names a team outside its view (an NL club on the AL view)
+  // opens that team in the full league, the way a game card's pick does.
+  // Until 2026-10-09 the team was dropped and the URL rewritten without it.
+  const routeState: MlbRouteState =
+    standingsById.has(linkedState.team) &&
+    !filterStandings(standings, linkedState.view).some((row) => row.id === linkedState.team)
+      ? { ...linkedState, view: defaultState.view }
+      : linkedState;
   const visibleStandings = filterStandings(standings, routeState.view);
   const selectedTeamId = visibleStandings.some((row) => row.id === routeState.team)
     ? routeState.team
@@ -277,6 +289,11 @@ export function MlbClient({ initialState, summary, initialTeamSnapshot }: MlbCli
   }, [standings]);
 
   const hasStandings = standings.length > 0 && standings.some((row) => row.wins + row.losses > 0);
+  // Postseason games on the slate mean the regular season table is final, so
+  // the division readout reads as a finish and not a race still being chased.
+  const isPostseason = [...summary.recentGames, ...summary.upcomingGames].some((game) =>
+    Object.hasOwn(postseasonRoundLabels, game.stage ?? "")
+  );
 
   const scoreboard = useMemo(() => divisionBoard(standings), [standings]);
 
@@ -305,10 +322,10 @@ export function MlbClient({ initialState, summary, initialTeamSnapshot }: MlbCli
             detail: leagueLeader ? `${leagueLeader.shortName}, ${formatFixed(leagueLeader.pct, 3)} W%` : undefined,
           },
           {
-            label: "Closest division race",
+            label: isPostseason ? "Closest division finish" : "Closest division race",
             value: tightestDivision ? `${tightestDivision.gamesBack.toFixed(1)} GB` : "—",
             detail: tightestDivision
-              ? `${tightestDivision.division}, ${tightestDivision.shortName} chasing`
+              ? `${tightestDivision.division}, ${tightestDivision.shortName} ${isPostseason ? "finished second" : "chasing"}`
               : undefined,
           },
           {
@@ -743,7 +760,7 @@ function LeagueLeaders({
             <p className="c97-kicker" style={{ marginBottom: "var(--c97-sp-1)" }}>{group.side}</p>
             <h3 className="c97-serif" style={{ marginBottom: "var(--c97-sp-2)", fontSize: "var(--c97-fs-h3)" }}>{group.title}</h3>
             <LeaderList
-              leaders={leadersToEntries(group.leaders, group.statLabel === "AVG" || group.statLabel === "ERA" ? 3 : 0)}
+              leaders={leadersToEntries(group.leaders, group.statLabel)}
               statLabel={group.statLabel}
               clubLookup={teamLookup}
             />
