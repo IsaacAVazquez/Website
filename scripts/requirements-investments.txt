@@ -1,9 +1,10 @@
 # The investments refresh runs in CI with write access to the repository, so
 # every package it installs is pinned. defeatbeta-api is the one direct
-# requirement. The other lines are what it resolves to on Python 3.11 on
-# Linux, which is what the workflow runs. To move the pin, put the new
-# version in a one line requirements.in and recompile this file with
-#   uv pip compile requirements.in --python-version 3.11 \
+# requirement. The other lines are what it resolves to on Python 3.12 on
+# Linux, which is what the workflow runs (contourpy 1.4.0 and numpy 2.5.3
+# dropped 3.11). To move the pin, put the new version in a one line
+# requirements.in and recompile this file with
+#   uv pip compile requirements.in --python-version 3.12 \
 #     --python-platform x86_64-unknown-linux-gnu --no-header --no-annotate
 annotated-types==0.8.0
 anyio==4.15.1

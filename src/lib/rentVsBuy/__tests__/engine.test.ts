@@ -15,9 +15,10 @@ describe("monthlyMortgagePayment", () => {
   it("prices the default loan at the default rate", () => {
     // Freddie Mac 30 year fixed average as of 2026-09-24. By hand: r = 0.0703 / 12,
     // (1 + r)^360 = 8.189447, and 360,000 x r x 8.189447 / 7.189447 = 2,402.35.
-    expect(createDefaultInput().mortgageRatePercent).toBe(7.03);
+    expect(createDefaultInput().mortgageRatePercent).toBe(7.4);
     expect(monthlyMortgagePayment(360_000, 7.03, 30)).toBeCloseTo(2402.35, 2);
-    expect(calculateRentVsBuy(input()).monthlyPaymentYear1).toBeCloseTo(2402.35, 2);
+    // The default loan is $360,000 at the 7.40% Freddie Mac average of 2026-10-08.
+    expect(calculateRentVsBuy(input()).monthlyPaymentYear1).toBeCloseTo(2492.57, 2);
   });
 
   it("splits principal evenly for a zero-rate loan", () => {
@@ -145,8 +146,8 @@ describe("tax year figures", () => {
     expect(married.capitalGainsExclusion).toBe(500_000);
     expect(single.capitalGainsExclusion).toBe(250_000);
     expect(married.asOf).toBe("2026-09-27");
-    expect(married.defaultMortgageRatePercent).toBe(7.03);
-    expect(married.mortgageRateAsOf).toBe("2026-09-24");
+    expect(married.defaultMortgageRatePercent).toBe(7.4);
+    expect(married.mortgageRateAsOf).toBe("2026-10-08");
     expect(married.verified).toBe(false);
   });
 

@@ -292,7 +292,7 @@ describe("investments UI", () => {
 
     await act(async () => {
       const button = Array.from(container.querySelectorAll("button")).find((item) =>
-        item.textContent?.includes("Add Holding")
+        item.textContent?.includes("Add holding")
       ) as HTMLButtonElement | undefined;
       button?.click();
     });

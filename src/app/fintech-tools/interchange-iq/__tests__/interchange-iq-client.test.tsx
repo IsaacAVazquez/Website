@@ -12,7 +12,7 @@ describe("InterchangeIQClient", () => {
     // they tie for cheapest at the default inputs and both get marked.
     expect(screen.getByText("Stripe IC+ and Checkout.com tie")).toBeVisible();
     expect(screen.getByText("Monthly fee breakdown")).toBeVisible();
-    expect(screen.getByText("7 options · sorted cheapest first")).toBeVisible();
+    expect(screen.getByText("7 options · 588 transactions a month · sorted cheapest first")).toBeVisible();
     expect(screen.getAllByText("Cheapest")).toHaveLength(2);
   });
 
@@ -28,7 +28,9 @@ describe("InterchangeIQClient", () => {
 
     expect(screen.getByText("$100k")).toBeVisible();
     expect(screen.getAllByText("$25")[0]).toBeVisible();
-    expect(screen.getAllByText("4,000 tx/mo")[0]).toBeVisible();
+    // The count is the same for every processor, so it prints once in the list's meta line.
+    expect(screen.getByText("7 options · 4,000 transactions a month · sorted cheapest first")).toBeVisible();
+    expect(screen.queryByText(/tx\/mo/)).toBeNull();
   });
 
   it("switches in-page views, expands card-mix help, and resets inputs", () => {
@@ -64,7 +66,7 @@ describe("InterchangeIQClient", () => {
     fireEvent.change(exact, { target: { value: "52318" } });
     expect(slider).toHaveAttribute("aria-valuenow", "52318");
     // 52,318 at the default $85 ticket is 615.5 transactions, shown rounded.
-    expect(screen.getAllByText("616 tx/mo")[0]).toBeVisible();
+    expect(screen.getByText("7 options · 616 transactions a month · sorted cheapest first")).toBeVisible();
 
     fireEvent.change(exact, { target: { value: "5" } });
     expect(slider).toHaveAttribute("aria-valuenow", "52318");

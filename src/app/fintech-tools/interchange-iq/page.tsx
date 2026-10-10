@@ -8,7 +8,7 @@ export const metadata = constructMetadata({
     "I built a fee analyzer that models real interchange economics across Stripe, Square, PayPal, Adyen, and others so you can compare flat-rate and interchange+ pricing before committing.",
   canonicalUrl: "/fintech-tools/interchange-iq",
   image: "/fintech-tools/interchange-iq/opengraph-image",
-  dateModified: "2026-04-02",
+  dateModified: "2026-10-09",
 });
 
 export default function InterchangeIQPage() {
@@ -38,7 +38,7 @@ export default function InterchangeIQPage() {
           url: "https://isaacvazquez.com/fintech-tools/interchange-iq",
           image:
             "https://isaacvazquez.com/fintech-tools/interchange-iq/opengraph-image",
-          dateModified: "2026-04-02",
+          dateModified: "2026-10-09",
           applicationCategory: "FinanceApplication",
           programmingLanguage: ["TypeScript", "Next.js"],
           author: "Isaac Vazquez",

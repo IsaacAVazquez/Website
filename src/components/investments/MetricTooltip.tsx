@@ -5,7 +5,7 @@ import React from "react";
 import { createPortal } from "react-dom";
 
 export const METRIC_DEFINITIONS: Record<string, string> = {
-  // Valuation — all label variants
+  // Valuation, all label variants
   "P/E TTM": "Price-to-Earnings (trailing 12 months). How much investors pay per $1 of profit. Lower generally means cheaper.",
   "P/E (TTM)": "Price-to-Earnings (trailing 12 months). How much investors pay per $1 of profit. Lower generally means cheaper.",
   "EPS TTM": "Earnings Per Share (trailing 12 months). Net profit divided by shares outstanding.",
@@ -68,7 +68,7 @@ interface Props {
   children?: React.ReactNode;
   focusable?: boolean;
   /**
-   * @deprecated Positioning is now automatic and viewport-aware — the bubble
+   * @deprecated Positioning is now automatic and viewport-aware, the bubble
    * renders in a body-level portal, centers on the trigger, clamps to the
    * viewport, and flips above/below based on available room. Kept only so
    * existing call sites still type-check; the value is ignored.
@@ -95,7 +95,7 @@ interface BubblePosition {
  * otherwise clip it, and it is positioned in viewport coordinates: centered on
  * the trigger, clamped to the viewport horizontally, and flipped below the
  * trigger when there isn't room above. That makes it clip-proof regardless of
- * where the trigger sits — near a screen edge, deep in a scroll container, or
+ * where the trigger sits, near a screen edge, deep in a scroll container, or
  * inside a transformed row.
  */
 export function MetricTooltip({ term, definition, children, focusable }: Props) {
@@ -233,7 +233,7 @@ export function MetricTooltip({ term, definition, children, focusable }: Props) 
                 triggerRef.current?.blur();
               }
             }}
-            className="relative m-0 cursor-help border-0 bg-transparent p-0 text-inherit underline decoration-dotted decoration-from-font underline-offset-[3px] after:absolute after:-inset-x-1 after:-inset-y-3 after:content-['']"
+            className="relative m-0 cursor-help border-0 bg-transparent p-0 text-inherit underline decoration-dotted decoration-from-font underline-offset-[3px] after:absolute after:-inset-x-1 after:-inset-y-[14px] after:content-['']"
           >
             {children}
           </button>

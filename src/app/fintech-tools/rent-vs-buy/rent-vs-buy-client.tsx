@@ -247,6 +247,7 @@ function NumberField({
           style={{
             flex: 1,
             minWidth: 0,
+            minHeight: "44px",
             border: 0,
             background: "transparent",
             padding: 0,

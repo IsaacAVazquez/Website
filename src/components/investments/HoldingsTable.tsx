@@ -99,7 +99,7 @@ function HoldingRow({ holding, color, onUpdate, onRemove, onResearch }: RowProps
   if (editing) {
     return (
       <tr>
-        <td colSpan={8} className="!py-3">
+        <td colSpan={8} style={{ paddingBlock: "var(--c97-sp-2)" }}>
           <div className="flex flex-wrap items-center" style={{ gap: "var(--c97-sp-1)", paddingInline: "var(--c97-sp-0)" }}>
             <div className={styles.tick}>
               <span className={styles.tickBar} style={{ background: color }} aria-hidden="true" />
@@ -347,7 +347,7 @@ export function HoldingsTable({ holdings, onUpdate, onRemove, onResearch, portfo
   }
 
   return (
-    <section id="holdings-list" className="invest-panel scroll-mt-12 min-[901px]:scroll-mt-0">
+    <section id="holdings-list" className="invest-panel invest-rail-target">
       <div className="invest-panel-head">
         <div>
           <h2>Holdings</h2>

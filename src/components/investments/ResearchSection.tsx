@@ -22,7 +22,7 @@ export function ResearchSection(props: ResearchSectionProps) {
       <section
         id="research-section"
         aria-label="Stock research"
-        className="scroll-mt-12 min-[901px]:scroll-mt-0 border border-dashed border-[var(--c97-rule)] bg-[color-mix(in_srgb,var(--c97-surface)_92%,var(--c97-panel))] text-center" style={{ paddingInline: "var(--c97-sp-3)", paddingBlock: "var(--c97-sp-5)" }}
+        className="invest-rail-target border border-dashed border-[var(--c97-rule)] bg-[color-mix(in_srgb,var(--c97-surface)_92%,var(--c97-panel))] text-center" style={{ paddingInline: "var(--c97-sp-3)", paddingBlock: "var(--c97-sp-5)" }}
       >
         <p className="invest-rail-section-label">Research</p>
         <p className="text-sm font-semibold text-[var(--c97-ink)]">
@@ -42,7 +42,7 @@ export function ResearchSection(props: ResearchSectionProps) {
         <section
           id="research-section"
           aria-label={`Research · ${symbol.toUpperCase()}`}
-          className="flex flex-col scroll-mt-12 min-[901px]:scroll-mt-0" style={{ rowGap: "var(--c97-sp-2)" }}
+          className="flex flex-col invest-rail-target" style={{ rowGap: "var(--c97-sp-2)" }}
         >
           <ResearchLoading symbol={symbol} />
         </section>

@@ -407,8 +407,10 @@ export function InterchangeIQClient() {
             <div id="all-processors">
               <p className="c97-kicker">Processors</p>
               <h2 className="c97-poster-sm">Monthly fee breakdown</h2>
+              {/* The transaction count is the same for every processor, so it
+                  prints once here rather than on all seven rows. */}
               <p className="c97-meta" style={{ marginTop: "var(--c97-sp-1)" }}>
-                {visibleResults.length} options · sorted cheapest first
+                {visibleResults.length} options · {Math.round(cheapest.txCount).toLocaleString("en-US")} transactions a month · sorted cheapest first
               </p>
 
               <ul style={{ listStyle: "none", margin: 0, padding: 0, marginTop: "var(--c97-sp-3)" }}>
@@ -427,7 +429,6 @@ export function InterchangeIQClient() {
                       </span>{" "}
                       <span className="c97-iq-tag">{r.model}</span>
                       <div className="c97-meta" style={{ marginTop: "var(--c97-sp-1)" }}>
-                        <span>{Math.round(r.txCount).toLocaleString("en-US")} tx/mo</span>
                         <span>{fmtFull(r.perTxAvg)}/tx avg</span>
                         <span>{(r.effectiveRate * 100).toFixed(2)}% eff.</span>
                       </div>

@@ -348,7 +348,12 @@ export function BudgetPlannerClient() {
             {
               label: "Left to spend",
               value: formatSignedCurrency(remaining),
-              detail: remaining >= 0 ? "After savings target" : `Over by ${formatDollars(Math.abs(remaining))}`,
+              detail:
+                totalIncome <= 0 && totalExpenses <= 0
+                  ? "Set an income above"
+                  : remaining >= 0
+                    ? "After savings target"
+                    : `Over by ${formatDollars(Math.abs(remaining))}`,
             },
           ]}
         />

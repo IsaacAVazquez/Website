@@ -113,7 +113,7 @@ export function ResearchWorkspace({
     <section
       id="research-section"
       aria-label={`Research · ${symbol.toUpperCase()}`}
-      className="flex flex-col scroll-mt-12 min-[901px]:scroll-mt-0" style={{ rowGap: "var(--c97-sp-2)" }}
+      className="flex flex-col invest-rail-target" style={{ rowGap: "var(--c97-sp-2)" }}
     >
       {showLoadingState ? (
         <ResearchLoading symbol={symbol} />

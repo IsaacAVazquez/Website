@@ -113,16 +113,6 @@ describe("investments date labels", () => {
           onResearchSymbolChange={() => {}}
           onResearchTabChange={() => {}}
           datasetLastUpdated="2026-09-15T01:03:45.681080+00:00"
-          datasetPriceHealth={{
-            assessedAt: "2026-09-15T01:03:45.681080+00:00",
-            maxAgeDays: 7,
-            pricedCount: 3,
-            recentCount: 3,
-            delayedCount: 0,
-            missingCount: 0,
-            oldestAsOf: "2026-09-11",
-            latestAsOf: "2026-09-11",
-          }}
         />
       );
     });
