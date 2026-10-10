@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-09T16:22:52.061Z",
+  "generatedAt": "2026-10-10T01:02:12.844Z",
   "sourceLabel": "launch-library-2 snapshot",
   "summary": {
     "heroLaunch": {
@@ -9,9 +9,9 @@
       "upcoming": true,
       "success": null,
       "details": "Tranche 1 Transport Layer A is one of six missions by the United States Space Force Space Development Agency (SDA) for the Proliferated Warfighter Space Architecture (PWSA) Tranche 1 Transport Layer constellation, which will provide assured, resilient, low-latency military data and connectivity worldwide to the full range of warfighter platforms from Low Earth Orbit satellites.\r\n\r\nThe constellation will be interconnected with Optical Inter-Satellite Links (OISLs) which have significantly increased performance over existing radio frequency crosslinks. It is expected to operate over Ka band, have stereo coverage and be dynamically networked for simpler hand-offs, greater bandwidth and fault tolerance.\r\n\r\nThis launch carries 21 satellites manufactured by Northrop Grumman.",
-      "dateUtc": "2026-10-10T07:39:00Z",
-      "dateUnix": 1791617940,
-      "dateLocal": "2026-10-10T07:39:00Z",
+      "dateUtc": "2026-10-10T07:39:44Z",
+      "dateUnix": 1791617984,
+      "dateLocal": "2026-10-10T07:39:44Z",
       "datePrecision": "hour",
       "tbd": false,
       "net": true,
@@ -49,9 +49,9 @@
       "upcoming": true,
       "success": null,
       "details": "Tranche 1 Transport Layer A is one of six missions by the United States Space Force Space Development Agency (SDA) for the Proliferated Warfighter Space Architecture (PWSA) Tranche 1 Transport Layer constellation, which will provide assured, resilient, low-latency military data and connectivity worldwide to the full range of warfighter platforms from Low Earth Orbit satellites.\r\n\r\nThe constellation will be interconnected with Optical Inter-Satellite Links (OISLs) which have significantly increased performance over existing radio frequency crosslinks. It is expected to operate over Ka band, have stereo coverage and be dynamically networked for simpler hand-offs, greater bandwidth and fault tolerance.\r\n\r\nThis launch carries 21 satellites manufactured by Northrop Grumman.",
-      "dateUtc": "2026-10-10T07:39:00Z",
-      "dateUnix": 1791617940,
-      "dateLocal": "2026-10-10T07:39:00Z",
+      "dateUtc": "2026-10-10T07:39:44Z",
+      "dateUnix": 1791617984,
+      "dateLocal": "2026-10-10T07:39:44Z",
       "datePrecision": "hour",
       "tbd": false,
       "net": true,
@@ -150,7 +150,7 @@
         "description": "rocket families with pending SpaceX missions in the current feed"
       }
     ],
-    "generatedAt": "2026-10-09T16:22:46.943Z"
+    "generatedAt": "2026-10-10T01:02:07.699Z"
   },
   "upcomingLaunches": [
     {
@@ -160,9 +160,9 @@
       "upcoming": true,
       "success": null,
       "details": "Tranche 1 Transport Layer A is one of six missions by the United States Space Force Space Development Agency (SDA) for the Proliferated Warfighter Space Architecture (PWSA) Tranche 1 Transport Layer constellation, which will provide assured, resilient, low-latency military data and connectivity worldwide to the full range of warfighter platforms from Low Earth Orbit satellites.\r\n\r\nThe constellation will be interconnected with Optical Inter-Satellite Links (OISLs) which have significantly increased performance over existing radio frequency crosslinks. It is expected to operate over Ka band, have stereo coverage and be dynamically networked for simpler hand-offs, greater bandwidth and fault tolerance.\r\n\r\nThis launch carries 21 satellites manufactured by Northrop Grumman.",
-      "dateUtc": "2026-10-10T07:39:00Z",
-      "dateUnix": 1791617940,
-      "dateLocal": "2026-10-10T07:39:00Z",
+      "dateUtc": "2026-10-10T07:39:44Z",
+      "dateUnix": 1791617984,
+      "dateLocal": "2026-10-10T07:39:44Z",
       "datePrecision": "hour",
       "tbd": false,
       "net": true,
@@ -1074,16 +1074,16 @@
       }
     },
     {
-      "id": "cb1762f0-90f4-4902-a5f6-655a7ade25bf",
-      "name": "SDA Tranche 2 Tracking Layer B",
+      "id": "ce1317de-ec94-4479-9b28-38ebf11f13ae",
+      "name": "Telesat Lightspeed 1",
       "flightNumber": 779,
       "upcoming": true,
       "success": null,
-      "details": "Classified mission launched by the Space Development Agency (SDA) for Tranche 2 Tracking Layer.",
+      "details": "Up to 18 satellites manufactured by MDA for Canadian satellite operator Telesat's Lightspeed constellation.",
       "dateUtc": "2026-12-31T00:00:00Z",
       "dateUnix": 1798675200,
       "dateLocal": "2026-12-31T00:00:00Z",
-      "datePrecision": "year",
+      "datePrecision": "month",
       "tbd": true,
       "net": true,
       "rocketName": "Falcon 9 Block 5",
@@ -1092,7 +1092,7 @@
       "patchImage": null,
       "vehicleImage": "/data/spacex/images/83daf3ce21b64d93.jpg",
       "crewCount": 0,
-      "payloadCount": 1,
+      "payloadCount": 18,
       "capsuleCount": 0,
       "coreCount": 1,
       "hasExactTime": false,
@@ -1100,7 +1100,7 @@
       "links": {
         "webcast": null,
         "article": null,
-        "wikipedia": "https://en.wikipedia.org/wiki/Space_Development_Agency",
+        "wikipedia": "https://en.wikipedia.org/wiki/Telesat",
         "presskit": null,
         "redditLaunch": null,
         "redditCampaign": null,
@@ -2084,9 +2084,9 @@
       "upcoming": true,
       "success": null,
       "details": "Tranche 1 Transport Layer A is one of six missions by the United States Space Force Space Development Agency (SDA) for the Proliferated Warfighter Space Architecture (PWSA) Tranche 1 Transport Layer constellation, which will provide assured, resilient, low-latency military data and connectivity worldwide to the full range of warfighter platforms from Low Earth Orbit satellites.\r\n\r\nThe constellation will be interconnected with Optical Inter-Satellite Links (OISLs) which have significantly increased performance over existing radio frequency crosslinks. It is expected to operate over Ka band, have stereo coverage and be dynamically networked for simpler hand-offs, greater bandwidth and fault tolerance.\r\n\r\nThis launch carries 21 satellites manufactured by Northrop Grumman.",
-      "dateUtc": "2026-10-10T07:39:00Z",
-      "dateUnix": 1791617940,
-      "dateLocal": "2026-10-10T07:39:00Z",
+      "dateUtc": "2026-10-10T07:39:44Z",
+      "dateUnix": 1791617984,
+      "dateLocal": "2026-10-10T07:39:44Z",
       "datePrecision": "hour",
       "tbd": false,
       "net": true,
@@ -2102,7 +2102,7 @@
       "hasExactTime": true,
       "isStaleSchedule": false,
       "links": {
-        "webcast": "https://x.com/i/broadcasts/1oJMvNEQewoxQ",
+        "webcast": "https://x.com/i/broadcasts/1jGXgBoBYkRKZ",
         "article": "https://www.spacex.com/launches/sda-t1tl-a",
         "wikipedia": "https://en.wikipedia.org/wiki/Space_Development_Agency",
         "presskit": null,
@@ -2941,6 +2941,6 @@
       }
     ],
     "rangeLabel": "Nov 25 – Oct 26",
-    "generatedAt": "2026-10-09T16:22:51.783Z"
+    "generatedAt": "2026-10-10T01:02:12.376Z"
   }
 }
