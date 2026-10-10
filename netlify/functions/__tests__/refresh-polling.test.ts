@@ -22,6 +22,8 @@ const snapshot = {
   sourceAsOf: "2026-07-19",
   approvalPolls: [{ id: "a1" }],
   genericBallotPolls: [{ id: "g1" }],
+  senateRaces: [{ id: "senate-mi" }],
+  governorRaces: [],
 };
 
 describe("refresh-polling scheduled function", () => {

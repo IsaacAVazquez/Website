@@ -1,5 +1,6 @@
 import { StructuredData } from "@/components/StructuredData";
 import { constructMetadata, generateBreadcrumbStructuredData } from "@/lib/seo";
+import { getSpaceXSnapshot } from "@/lib/spacexSnapshot";
 import { SpaceXMissionControlClient } from "./spacex-mission-control-client";
 import { loadMissionControlInitialData } from "./spacex-mission-control-data";
 import { normalizeMissionControlState } from "./spacex-mission-control-state";
@@ -10,7 +11,8 @@ export const metadata = constructMetadata({
     "Mission-control-style SpaceX launch board with next-launch visibility, past and upcoming mission browsing, and relationship-aware mission detail panels.",
   canonicalUrl: "/spacex-mission-control",
   image: "/spacex-mission-control/opengraph-image",
-  dateModified: "2026-04-01",
+  // The page changes with every snapshot refresh, so it is dated by the snapshot.
+  dateModified: getSpaceXSnapshot().generatedAt?.slice(0, 10),
 });
 
 interface SpaceXMissionControlPageProps {

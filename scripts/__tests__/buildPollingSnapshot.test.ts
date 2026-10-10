@@ -44,7 +44,11 @@ describe("buildPollingSnapshot", () => {
         ok: true,
         status: 200,
         json: async () =>
-          url.includes("poll_type=approval") ? approval : generic,
+          url.includes("poll_type=approval")
+            ? approval
+            : url.includes("poll_type=generic-ballot")
+              ? generic
+              : [],
       } as Response;
     }) as typeof fetch;
 

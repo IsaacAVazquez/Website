@@ -148,6 +148,8 @@ export async function getTransitStationBoard(
       snapshot.summary.system?.generatedAt ?? new Date().toISOString(),
   };
 
+  // No clock stamp of its own: the page and the station route are both
+  // CDN-cached, so the viewer ages the board from its generatedAt.
   return {
     ...board,
     status: snapshot.summary.sectionStatus?.departures ?? "fresh",

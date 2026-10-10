@@ -14,6 +14,7 @@ import type {
 import { Catalog97ProjectHero } from "@/components/catalog97/Catalog97ProjectHero";
 import { PROJECT_PRESS } from "@/constants/projectPress";
 import { useTablistKeyboard } from "@/hooks/useTablistKeyboard";
+import { formatUpdatedAt } from "@/lib/date-formatters";
 import { MissionControlHero } from "@/components/spacex/MissionControlHero";
 import { MissionLaunchBoard } from "@/components/spacex/MissionLaunchBoard";
 import { MissionLaunchTape } from "@/components/spacex/MissionLaunchTape";
@@ -519,7 +520,9 @@ export function SpaceXMissionControlClient({
         ink={lead}
         title="SpaceX Mission Control"
         standfirst={standfirst}
-        meta={`Launch Library 2 data from The Space Devs · ${liveStatusLabel}`}
+        meta={`Launch Library 2 data from The Space Devs · ${
+          summary ? `snapshot from ${formatUpdatedAt(summary.generatedAt)}` : liveStatusLabel
+        }`}
       >
         {/*
           The card's own Inspect button and the manifest both sit more than a

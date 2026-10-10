@@ -709,18 +709,21 @@ function normalizeLinks(launch: RawLl2Launch): MissionLinkSet {
   ] as RawLl2ExternalLink[];
   const videoLinks = [...(launch.vidURLs ?? []), ...(launch.mission?.vid_urls ?? [])];
   const patchImage = resolveSpaceXImageUrl(pickMissionPatch(launch));
+  // Launch Library names link types "Official Webcast" and "Unofficial
+  // Webcast", so the match needs the word boundary or an unofficial stream
+  // outranks the official one on priority.
   const webcast =
     pickLink(
       videoLinks,
       (link) =>
-        /official/i.test(link.type?.name ?? "") ||
+        /\bofficial\b/i.test(link.type?.name ?? "") ||
         /spacex|nasa/i.test(`${link.publisher ?? ""} ${link.source ?? ""}`)
     ) ?? pickLink(videoLinks);
   const article =
     pickLink(
       infoLinks,
       (link) =>
-        /official/i.test(link.type?.name ?? "") ||
+        /\bofficial\b/i.test(link.type?.name ?? "") ||
         /spacex\.com|nasa\.gov|axiomspace\.com/i.test(link.url ?? "")
     ) ?? pickLink(infoLinks);
   const presskit =

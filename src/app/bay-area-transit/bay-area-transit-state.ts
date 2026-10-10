@@ -16,7 +16,6 @@ export const DEFAULT_TRANSIT_STATE: TransitRouteState = {
 
 export const TRANSIT_VIEW_LABELS: Record<TransitView, string> = {
   lines: "Lines",
-  stations: "Departures",
   advisories: "Alerts",
 };
 

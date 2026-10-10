@@ -144,6 +144,100 @@ function asArray<T>(value: T | T[] | null | undefined): T[] {
   return Array.isArray(value) ? value : [value];
 }
 
+interface BartEtdRoot {
+  time?: string | null;
+  date?: string | null;
+  station?: BartEtdStation[] | null;
+}
+
+/**
+ * BART answers a quiet feed with one placeholder line rather than an empty
+ * list ("No delays reported.", "No advisories issued.", "All elevators are in
+ * service"), and a placeholder counted as an alert put "Alerts · 1" on a day
+ * with nothing wrong.
+ */
+function isPlaceholderNotice(description: string): boolean {
+  const text = description.toLowerCase();
+  return (
+    text === "" ||
+    text.startsWith("no delays") ||
+    text.startsWith("no advisories") ||
+    text.includes("all elevators are in service") ||
+    text.includes("no elevators")
+  );
+}
+
+function parseAdvisories(
+  bsa: BartAdvisory | BartAdvisory[] | null | undefined
+): TransitAdvisory[] {
+  return asArray(bsa)
+    .map((advisory, index): TransitAdvisory => ({
+      id: `advisory-${index}`,
+      type: (advisory.type ?? "").trim(),
+      description: readCdata(advisory.description),
+      station: advisory.station ? advisory.station.trim() || null : null,
+      posted: (advisory.posted ?? "").trim(),
+    }))
+    .filter((advisory) => !isPlaceholderNotice(advisory.description));
+}
+
+function parseElevator(
+  bsa: BartAdvisory | BartAdvisory[] | null | undefined
+): TransitElevatorStatus[] {
+  return asArray(bsa)
+    .map((entry, index): TransitElevatorStatus => ({
+      id: `elevator-${index}`,
+      description: readCdata(entry.description),
+      posted: (entry.posted ?? "").trim(),
+    }))
+    .filter((entry) => !isPlaceholderNotice(entry.description));
+}
+
+function parseDepartures(etdStation: BartEtdStation): TransitDeparture[] {
+  const departures: TransitDeparture[] = [];
+  for (const etd of asArray(etdStation.etd)) {
+    for (const estimate of asArray(etd.estimate)) {
+      if (estimate.cancelflag === "1") continue;
+      departures.push({
+        destination: (etd.destination ?? "").trim(),
+        destinationAbbr: (etd.abbreviation ?? "").trim(),
+        minutes: parseMinutes(estimate.minutes),
+        platform: (estimate.platform ?? "").trim(),
+        direction: (estimate.direction ?? "").trim(),
+        length: toNumber(estimate.length),
+        colorName: (estimate.color ?? "").trim() || "Line",
+        hexColor: estimate.hexcolor ?? "#888888",
+        delaySeconds: toNumber(estimate.delay),
+        bikesAllowed: estimate.bikeflag === "1",
+      });
+    }
+  }
+  // Soonest first; "Leaving" (null minutes) sorts ahead of timed trains.
+  return departures.sort((a, b) => (a.minutes ?? -1) - (b.minutes ?? -1));
+}
+
+/** One board per station BART listed, keyed by the lowercased abbreviation. */
+function parseBoards(
+  root: BartEtdRoot | null | undefined,
+  generatedAt: string
+): { boards: Record<string, TransitStationBoard>; feedTime: string } {
+  const feedTime = [root?.date, root?.time].filter(Boolean).join(" ");
+  const boards: Record<string, TransitStationBoard> = {};
+  for (const etdStation of asArray(root?.station)) {
+    if (!etdStation.abbr) continue;
+    const abbr = etdStation.abbr.toUpperCase();
+    const id = abbr.toLowerCase();
+    boards[id] = {
+      id,
+      abbr,
+      name: (etdStation.name ?? "").trim(),
+      departures: parseDepartures(etdStation),
+      generatedAt,
+    };
+  }
+  return { boards, feedTime };
+}
+
 async function fetchBartJson<T>(
   path: string,
   { timeoutMs = REQUEST_TIMEOUT_MS, attempts = 3 } = {}
@@ -304,19 +398,7 @@ export async function buildBayAreaTransitSnapshotData(
   const advisoriesResponse = await fetchBartJson<{
     root?: { bsa?: BartAdvisory | BartAdvisory[] | null } | null;
   }>("bsa.aspx?cmd=bsa");
-  const advisories: TransitAdvisory[] = asArray(advisoriesResponse.root?.bsa)
-    .map((advisory, index): TransitAdvisory => ({
-      id: `advisory-${index}`,
-      type: (advisory.type ?? "").trim(),
-      description: readCdata(advisory.description),
-      station: advisory.station ? advisory.station.trim() || null : null,
-      posted: (advisory.posted ?? "").trim(),
-    }))
-    // BART emits a single "No delays reported." entry when service is normal.
-    .filter((advisory) => {
-      const text = advisory.description.toLowerCase();
-      return text !== "" && !text.startsWith("no delays");
-    });
+  const advisories = parseAdvisories(advisoriesResponse.root?.bsa);
 
   // 5. Elevator outages.
   let elevator: TransitElevatorStatus[];
@@ -325,78 +407,17 @@ export async function buildBayAreaTransitSnapshotData(
     const elevatorResponse = await fetchBartJson<{
       root?: { bsa?: BartAdvisory | BartAdvisory[] | null } | null;
     }>("bsa.aspx?cmd=elev");
-    elevator = asArray(elevatorResponse.root?.bsa)
-      .map((entry, index): TransitElevatorStatus => ({
-        id: `elevator-${index}`,
-        description: readCdata(entry.description),
-        posted: (entry.posted ?? "").trim(),
-      }))
-      .filter((entry) => {
-        const text = entry.description.toLowerCase();
-        return (
-          text !== "" &&
-          !text.includes("all elevators are in service") &&
-          !text.includes("no elevators")
-        );
-      });
+    elevator = parseElevator(elevatorResponse.root?.bsa);
   } catch {
     elevator = [];
     elevatorStatus = "unavailable";
   }
 
   // 6. Real-time departures for every station in one call.
-  const etdResponse = await fetchBartJson<{
-    root?: {
-      time?: string | null;
-      date?: string | null;
-      station?: BartEtdStation[] | null;
-    } | null;
-  }>("etd.aspx?cmd=etd&orig=ALL");
-  const feedTime = [etdResponse.root?.date, etdResponse.root?.time]
-    .filter(Boolean)
-    .join(" ");
-
-  const freshBoards: Record<string, TransitStationBoard> = {};
-
-  for (const etdStation of asArray(etdResponse.root?.station)) {
-    if (!etdStation.abbr) continue;
-    const abbr = etdStation.abbr.toUpperCase();
-    const id = abbr.toLowerCase();
-
-    const departures: TransitDeparture[] = [];
-    for (const etd of asArray(etdStation.etd)) {
-      for (const estimate of asArray(etd.estimate)) {
-        if (estimate.cancelflag === "1") continue;
-        departures.push({
-          destination: (etd.destination ?? "").trim(),
-          destinationAbbr: (etd.abbreviation ?? "").trim(),
-          minutes: parseMinutes(estimate.minutes),
-          platform: (estimate.platform ?? "").trim(),
-          direction: (estimate.direction ?? "").trim(),
-          length: toNumber(estimate.length),
-          colorName: (estimate.color ?? "").trim() || "Line",
-          hexColor: estimate.hexcolor ?? "#888888",
-          delaySeconds: toNumber(estimate.delay),
-          bikesAllowed: estimate.bikeflag === "1",
-        });
-      }
-    }
-
-    // Soonest first; "Leaving" (null minutes) sorts ahead of timed trains.
-    departures.sort((a, b) => {
-      const aMin = a.minutes ?? -1;
-      const bMin = b.minutes ?? -1;
-      return aMin - bMin;
-    });
-
-    freshBoards[id] = {
-      id,
-      abbr,
-      name: (etdStation.name ?? "").trim(),
-      departures,
-      generatedAt,
-    };
-  }
+  const etdResponse = await fetchBartJson<{ root?: BartEtdRoot | null }>(
+    "etd.aspx?cmd=etd&orig=ALL"
+  );
+  const { boards: freshBoards, feedTime } = parseBoards(etdResponse.root, generatedAt);
 
   // etd.aspx?cmd=etd&orig=ALL only returns stations that have a departure inside
   // BART's lookahead window, so a successful call during the pre-service hours
@@ -482,13 +503,7 @@ export async function buildBayAreaTransitLiveSnapshotData(
       fetchBartJson<{
         root?: { bsa?: BartAdvisory | BartAdvisory[] | null } | null;
       }>("bsa.aspx?cmd=elev", LIVE_REQUEST),
-      fetchBartJson<{
-        root?: {
-          time?: string | null;
-          date?: string | null;
-          station?: BartEtdStation[] | null;
-        } | null;
-      }>("etd.aspx?cmd=etd&orig=ALL", LIVE_REQUEST),
+      fetchBartJson<{ root?: BartEtdRoot | null }>("etd.aspx?cmd=etd&orig=ALL", LIVE_REQUEST),
     ]);
 
   if (
@@ -501,36 +516,12 @@ export async function buildBayAreaTransitLiveSnapshotData(
 
   const advisories =
     advisoriesResult.status === "fulfilled"
-      ? asArray(advisoriesResult.value.root?.bsa)
-          .map((advisory, index): TransitAdvisory => ({
-            id: `advisory-${index}`,
-            type: (advisory.type ?? "").trim(),
-            description: readCdata(advisory.description),
-            station: advisory.station ? advisory.station.trim() || null : null,
-            posted: (advisory.posted ?? "").trim(),
-          }))
-          .filter((advisory) => {
-            const text = advisory.description.toLowerCase();
-            return text !== "" && !text.startsWith("no delays");
-          })
+      ? parseAdvisories(advisoriesResult.value.root?.bsa)
       : fallback.summary.advisories;
 
   const elevator =
     elevatorResult.status === "fulfilled"
-      ? asArray(elevatorResult.value.root?.bsa)
-          .map((entry, index): TransitElevatorStatus => ({
-            id: `elevator-${index}`,
-            description: readCdata(entry.description),
-            posted: (entry.posted ?? "").trim(),
-          }))
-          .filter((entry) => {
-            const text = entry.description.toLowerCase();
-            return (
-              text !== "" &&
-              !text.includes("all elevators are in service") &&
-              !text.includes("no elevators")
-            );
-          })
+      ? parseElevator(elevatorResult.value.root?.bsa)
       : fallback.summary.elevator;
 
   let stationBoards = fallback.stationBoards;
@@ -538,52 +529,16 @@ export async function buildBayAreaTransitLiveSnapshotData(
   let feedTime = fallback.summary.system?.feedTime ?? "";
 
   if (departuresResult.status === "fulfilled") {
-    const response = departuresResult.value;
-    const boards: Record<string, TransitStationBoard> = {};
-    trainsTracked = 0;
-    feedTime = [response.root?.date, response.root?.time]
-      .filter(Boolean)
-      .join(" ");
-
-    for (const etdStation of asArray(response.root?.station)) {
-      if (!etdStation.abbr) continue;
-      const abbr = etdStation.abbr.toUpperCase();
-      const id = abbr.toLowerCase();
-      const departures: TransitDeparture[] = [];
-
-      for (const etd of asArray(etdStation.etd)) {
-        for (const estimate of asArray(etd.estimate)) {
-          if (estimate.cancelflag === "1") continue;
-          departures.push({
-            destination: (etd.destination ?? "").trim(),
-            destinationAbbr: (etd.abbreviation ?? "").trim(),
-            minutes: parseMinutes(estimate.minutes),
-            platform: (estimate.platform ?? "").trim(),
-            direction: (estimate.direction ?? "").trim(),
-            length: toNumber(estimate.length),
-            colorName: (estimate.color ?? "").trim() || "Line",
-            hexColor: estimate.hexcolor ?? "#888888",
-            delaySeconds: toNumber(estimate.delay),
-            bikesAllowed: estimate.bikeflag === "1",
-          });
-        }
-      }
-
-      departures.sort((a, b) => (a.minutes ?? -1) - (b.minutes ?? -1));
-      trainsTracked += departures.length;
-      boards[id] = {
-        id,
-        abbr,
-        name: (etdStation.name ?? "").trim(),
-        departures,
-        generatedAt,
-      };
-    }
-
     // An answer with no departures is what BART sends when no trains run, so
     // it replaces the committed boards. An error never reaches this branch,
     // because fetchBartJson rejects it.
-    stationBoards = boards;
+    const parsed = parseBoards(departuresResult.value.root, generatedAt);
+    stationBoards = parsed.boards;
+    feedTime = parsed.feedTime;
+    trainsTracked = Object.values(parsed.boards).reduce(
+      (total, board) => total + board.departures.length,
+      0
+    );
   }
 
   const defaultStation =

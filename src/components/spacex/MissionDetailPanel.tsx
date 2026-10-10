@@ -414,7 +414,8 @@ export function MissionDetailPanel({
                       {capsule.serial ?? "Unnamed capsule"}
                     </p>
                     <p className="text-xs text-[var(--c97-ink-2)]" style={{ marginTop: "var(--c97-sp-0)" }}>
-                      {capsule.type ?? "Type unavailable"} • Reuse count {capsule.reuseCount ?? 0}
+                      {capsule.type ?? "Type unavailable"} • Reuse count{" "}
+                      {capsule.reuseCount ?? "unavailable"}
                     </p>
                   </div>
                 ))}

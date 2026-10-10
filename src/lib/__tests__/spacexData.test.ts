@@ -245,6 +245,33 @@ describe("spacexData image normalization", () => {
     expect(launches[0]?.vehicleImage).toBe("https://images.example.com/launch-photo.png");
   });
 
+  it("prefers the official webcast and page over an unofficial one that outranks them on priority", async () => {
+    mockFetch.mockResolvedValue({
+      ok: true,
+      json: async () => ({
+        count: 1,
+        results: [
+          {
+            ...baseLaunch,
+            vidURLs: [
+              { url: "https://example.com/unofficial-stream", priority: 10, type: { name: "Unofficial Webcast" } },
+              { url: "https://example.com/official-stream", priority: 5, type: { name: "Official Webcast" } },
+            ],
+            infoURLs: [
+              { url: "https://example.com/unofficial-page", priority: 10, type: { name: "Unofficial Page" } },
+              { url: "https://example.com/official-page", priority: 5, type: { name: "Official Page" } },
+            ],
+          },
+        ],
+      }),
+    });
+
+    const launches = await getMissionLaunchCards("upcoming", 1);
+
+    expect(launches[0]?.links.webcast).toBe("https://example.com/official-stream");
+    expect(launches[0]?.links.article).toBe("https://example.com/official-page");
+  });
+
   it("exposes the rocket image separately on launch detail", async () => {
     mockFetch.mockResolvedValue({
       ok: true,

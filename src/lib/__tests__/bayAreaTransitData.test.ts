@@ -835,6 +835,33 @@ describe("buildBayAreaTransitLiveSnapshotData", () => {
     ).rejects.toThrow(/every bart live feed was unavailable/i);
   });
 
+  it("drops BART's placeholder line for a day with no advisories", async () => {
+    // What bsa.aspx?cmd=bsa answered on 2026-10-09 with nothing posted.
+    mockFetch(
+      liveFetcher({
+        advisories: () =>
+          jsonResponse({
+            root: {
+              bsa: [
+                {
+                  station: "",
+                  description: { "#cdata-section": "No advisories issued." },
+                  sms_text: { "#cdata-section": "No advisories issued." },
+                },
+              ],
+            },
+          }),
+      })
+    );
+    const fallback = makeFallbackSnapshot();
+
+    const { summary } = await buildBayAreaTransitLiveSnapshotData(fallback);
+
+    expect(summary.advisories).toEqual([]);
+    expect(summary.heroStats.activeAdvisories).toBe(0);
+    expect(summary.sectionStatus?.advisories).toBe("fresh");
+  });
+
   it("keeps the committed advisories when that feed answers 200 with an error", async () => {
     mockFetch(liveFetcher({ advisories: () => jsonResponse(REAL_ERROR_BODY) }));
     const fallback = makeFallbackSnapshot();

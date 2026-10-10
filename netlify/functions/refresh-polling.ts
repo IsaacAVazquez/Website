@@ -19,6 +19,7 @@ export default async () => {
     `Polling blob refreshed at ${snapshot.generatedAt}: ` +
       `${snapshot.approvalPolls.length} approval, ` +
       `${snapshot.genericBallotPolls.length} generic ballot polls, ` +
+      `${snapshot.senateRaces.length} Senate and ${snapshot.governorRaces.length} governor races, ` +
       `source as of ${snapshot.sourceAsOf}.`
   );
 

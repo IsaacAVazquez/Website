@@ -3,7 +3,7 @@ import { logger } from "@/lib/logger";
 import { POLLING_BLOB_KEY } from "@/lib/pollingData";
 import { readSnapshotBlob } from "@/lib/netlifyBlobs";
 import { isFiniteNumber as isNumber } from "@/lib/utils";
-import type { PollingSnapshot } from "@/types/polling";
+import type { PollingSnapshot, Race, RaceCandidate } from "@/types/polling";
 
 // Serve the blob written by the 6-hour scheduled refresh for up to 36 hours.
 // Past that, the committed seed (refreshed daily by update-polling.yml) is
@@ -24,14 +24,52 @@ export function resetPollingCacheForTests(): void {
 const isDate = (value: unknown): value is string =>
   typeof value === "string" && Number.isFinite(Date.parse(value));
 
-function isPollRow(poll: unknown, left: string, right: string): boolean {
-  const row = (poll ?? {}) as Record<string, unknown>;
+function isBasePollRow(row: Record<string, unknown>): boolean {
   return (
     typeof row.id === "string" &&
     typeof row.pollster === "string" &&
     typeof row.sampleType === "string" &&
     isDate(row.endDate) &&
-    [row.sampleSize, row[left], row[right]].every(isNumber)
+    isNumber(row.sampleSize)
+  );
+}
+
+function isPollRow(poll: unknown, left: string, right: string): boolean {
+  const row = (poll ?? {}) as Record<string, unknown>;
+  return isBasePollRow(row) && [row[left], row[right]].every(isNumber);
+}
+
+function isCandidate(candidate: unknown): boolean {
+  const row = (candidate ?? {}) as Partial<RaceCandidate>;
+  return typeof row.name === "string" && isNumber(row.support);
+}
+
+function isRacePollRow(poll: unknown): boolean {
+  const row = (poll ?? {}) as Record<string, unknown>;
+  return (
+    isBasePollRow(row) &&
+    Array.isArray(row.candidates) &&
+    row.candidates.length >= 2 &&
+    row.candidates.every(isCandidate)
+  );
+}
+
+// The fields RaceRow, RaceSidebar, and the overview read.
+function isRaceRow(race: unknown): boolean {
+  const row = (race ?? {}) as Partial<Race>;
+  return (
+    typeof row.id === "string" &&
+    typeof row.state === "string" &&
+    typeof row.stateAbbr === "string" &&
+    (row.office === "Senate" || row.office === "Governor") &&
+    Array.isArray(row.candidates) &&
+    row.candidates.length === 2 &&
+    row.candidates.every(isCandidate) &&
+    [row.margin, row.pollCount].every(isNumber) &&
+    isDate(row.lastPolled) &&
+    Array.isArray(row.polls) &&
+    row.polls.length > 0 &&
+    row.polls.every(isRacePollRow)
   );
 }
 
@@ -59,10 +97,12 @@ function isServable(value: unknown): value is PollingSnapshot {
     Array.isArray(blob.genericBallotPolls) &&
     blob.genericBallotPolls.length > 0 &&
     blob.genericBallotPolls.every((poll) => isPollRow(poll, "dem", "rep")) &&
-    // ponytail: race rows go unchecked because the builder never writes any.
-    // Check the Race fields the page reads here once it does.
+    // Either race list may be empty, since VoteHub can have no race poll in
+    // the window, but every row present has to carry what the page reads.
     Array.isArray(blob.senateRaces) &&
-    Array.isArray(blob.governorRaces)
+    blob.senateRaces.every(isRaceRow) &&
+    Array.isArray(blob.governorRaces) &&
+    blob.governorRaces.every(isRaceRow)
   );
 }
 

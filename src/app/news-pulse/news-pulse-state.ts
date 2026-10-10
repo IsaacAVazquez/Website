@@ -26,12 +26,12 @@ export const DEFAULT_NEWS_PULSE_STATE: NewsPulseSearchState = {
 
 export const VIEW_LABELS: Record<NewsPulseView, string> = {
   headlines: "Headlines",
-  coverage: "Coverage Map",
+  coverage: "Coverage map",
   analysis: "Analysis",
 };
 
 export const SOURCE_LABELS: Record<NewsSource, string> = {
-  all: "All Sources",
+  all: "All sources",
   ...Object.fromEntries(
     NEWS_SOURCE_IDS.map((source) => [source, SOURCE_META[source].name]),
   ),

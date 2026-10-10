@@ -9,7 +9,7 @@ import { normalizePollingState } from "./polling-aggregator-state";
 export const metadata = constructMetadata({
   title: "Polling Aggregator",
   description:
-    "Interactive polling dashboard using VoteHub data for presidential approval and the 2026 generic congressional ballot.",
+    "Interactive polling dashboard using VoteHub data for presidential approval, the 2026 generic congressional ballot, and the 2026 Senate and governor races.",
   canonicalUrl: "/polling-aggregator",
   dateModified: pollingSnapshot.generatedAt.slice(0, 10),
 });
@@ -51,15 +51,16 @@ export default async function PollingAggregatorPage({ searchParams }: PollingPag
         data={{
           name: "Polling Aggregator",
           description:
-            "Interactive polling dashboard for presidential approval and the 2026 generic ballot using VoteHub data.",
+            "Interactive polling dashboard for presidential approval, the 2026 generic ballot, and the 2026 Senate and governor races using VoteHub data.",
           url: "https://isaacvazquez.com/polling-aggregator",
           applicationCategory: "NewsApplication",
           programmingLanguage: ["TypeScript", "Next.js"],
           featureList: [
             "Presidential approval rating trend and poll table",
             "Generic congressional ballot average",
+            "Senate and governor race averages by state",
             "VoteHub source attribution and field-date freshness",
-            "Deep-linkable overview and approval views",
+            "Deep-linkable overview, approval, Senate, and governor views",
           ],
         }}
       />
