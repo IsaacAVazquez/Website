@@ -166,7 +166,10 @@ describe("FantasyFormula1Client", () => {
       );
     });
 
-    await user.click(screen.getByLabelText("Remove Valtteri Bottas"));
+    // The slate's Remove carries the same name, so the lineup's is the one clicked.
+    await user.click(
+      within(screen.getByTestId("fantasy-formula-1-lineup")).getByLabelText("Remove Valtteri Bottas")
+    );
 
     expect(screen.getByTestId("fantasy-formula-1-lineup")).not.toHaveTextContent(
       "Valtteri Bottas"

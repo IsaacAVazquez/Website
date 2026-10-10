@@ -123,10 +123,14 @@ export function SampleDataNotice({ snapshot }: { snapshot: ScorePoolsSnapshot })
   );
 }
 
-/** A league with no fixtures can't run a pool, so its option says so and is disabled. */
+/**
+ * A league with no fixtures can't run a pool, so its option says so and is
+ * disabled. Short on purpose: a native select clips an option past its width,
+ * and a phone's leaves about 210px.
+ */
 export function leagueOptionLabel(league: ScorePoolLeagueSnapshot): string {
-  const name = `${league.name}${league.sample ? " (sample data)" : ""}`;
-  return league.fixtures.length === 0 ? `${name} · no fixtures yet` : name;
+  const name = `${league.name}${league.sample ? " (sample)" : ""}`;
+  return league.fixtures.length === 0 ? `${name} · no fixtures` : name;
 }
 
 export const PILL_BUTTON = "c97-btn";

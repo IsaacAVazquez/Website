@@ -164,7 +164,7 @@ describe("TrackerClient", () => {
       penaltyWinner: "away",
     });
     const row = rowFor(screen.getByRole("table", { name: "My picks scored against results" }), "Millbrook vs Northgate");
-    expect(within(row).getAllByRole("cell")[2]).toHaveTextContent("1-1 (aet 1-1) p");
+    expect(within(row).getAllByRole("cell")[2]).toHaveTextContent("1-1 (aet 1-1) · pens Northgate");
   });
 
   it("compares rivals to my total including banked points", () => {

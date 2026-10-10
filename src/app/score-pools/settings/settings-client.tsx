@@ -587,7 +587,7 @@ export function SettingsClient({ snapshot }: SettingsClientProps) {
                       label="Risk approach"
                       value={pool.standing.posture}
                       options={[
-                        { value: "auto", label: "Auto (worked out from the gaps)" },
+                        { value: "auto", label: "Auto (from the gaps)" },
                         { value: "protect", label: "Protect the lead" },
                         { value: "chase", label: "Chase" },
                         { value: "neutral", label: "Neutral (most expected points)" },

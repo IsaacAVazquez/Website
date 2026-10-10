@@ -367,7 +367,12 @@ function AssetAction({
 }) {
   if (selected) {
     return (
-      <button type="button" className="c97-ff1-btn" onClick={() => onRemove(asset)}>
+      <button
+        type="button"
+        className="c97-ff1-btn"
+        aria-label={`Remove ${asset.name}`}
+        onClick={() => onRemove(asset)}
+      >
         <Trash2 size={15} aria-hidden="true" />
         Remove
       </button>

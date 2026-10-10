@@ -488,18 +488,24 @@ async function resolveSeasonMeetings(
   throw new HttpStatusError("No Formula 1 season meetings were available to build a snapshot.", 502);
 }
 
+// A weekend in progress counts as the next one until it ends, so the page
+// opens on it instead of counting down to the round after.
+function getNextMeeting(meetings: Formula1MeetingSummary[]): Formula1MeetingSummary | null {
+  return (
+    meetings.find((meeting) => meeting.status === "live") ??
+    meetings.find((meeting) => meeting.status === "upcoming") ??
+    null
+  );
+}
+
 function getDefaultMeetingKey(meetings: Formula1MeetingSummary[]): string | null {
-  const nextMeeting = meetings.find((meeting) => meeting.status === "upcoming");
+  const nextMeeting = getNextMeeting(meetings);
   if (nextMeeting) {
     return nextMeeting.key;
   }
 
   const completedMeetings = meetings.filter((meeting) => meeting.status === "completed");
-  if (completedMeetings.length > 0) {
-    return completedMeetings.at(-1)?.key ?? null;
-  }
-
-  return meetings.find((meeting) => meeting.status === "live")?.key ?? meetings[0]?.key ?? null;
+  return completedMeetings.at(-1)?.key ?? meetings[0]?.key ?? null;
 }
 
 export async function buildFormula1SnapshotData(
@@ -775,7 +781,7 @@ export async function buildFormula1SnapshotData(
     sprintWeekends,
   };
 
-  const nextMeeting = normalizedMeetings.find((meeting) => meeting.status === "upcoming") ?? null;
+  const nextMeeting = getNextMeeting(normalizedMeetings);
   const lastCompletedMeeting =
     normalizedMeetings.filter((meeting) => meeting.status === "completed").at(-1) ?? null;
   const defaultMeetingKey = getDefaultMeetingKey(normalizedMeetings);

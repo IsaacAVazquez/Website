@@ -132,10 +132,10 @@
 .c97-ff1-btn,
 .c97-ff1-icon-btn {
   transition:
-    background-color 160ms ease,
-    border-color 150ms ease,
-    color 150ms ease,
-    transform 120ms ease;
+    background-color 160ms var(--c97-ease),
+    border-color 150ms var(--c97-ease),
+    color 150ms var(--c97-ease),
+    transform 120ms var(--c97-ease);
 }
 
 .c97-ff1-btn:where(:not(:disabled)):hover {

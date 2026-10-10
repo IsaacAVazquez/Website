@@ -317,6 +317,29 @@ describe("Formula1Client", () => {
     expect(nextParams.get("meeting")).toBe("1281");
   });
 
+  it("names a city-circuit venue once and keeps a live weekend on the race strip", () => {
+    const liveSummary: Formula1Summary = {
+      ...summaryFixture,
+      meetings: summaryFixture.meetings.map((meeting) =>
+        meeting.key === "1281" ? { ...meeting, status: "live" as const } : meeting
+      ),
+    };
+
+    render(
+      <Formula1Client
+        initialState={DEFAULT_FORMULA1_STATE}
+        summary={liveSummary}
+        initialMeeting={defaultMeetingDetail}
+      />
+    );
+
+    // OpenF1 names the Jeddah circuit after its city, so the venue line is city and country.
+    expect(screen.getAllByText(/^Jeddah, /).length).toBeGreaterThan(0);
+    expect(screen.queryByText(/Jeddah in Jeddah/)).not.toBeInTheDocument();
+    // The weekend in progress is neither completed nor upcoming, and it still shows.
+    expect(screen.getByRole("button", { name: /Japanese Grand Prix/i })).toBeInTheDocument();
+  });
+
   it("updates the URL when selecting a different race strip meeting", async () => {
     const user = userEvent.setup();
 

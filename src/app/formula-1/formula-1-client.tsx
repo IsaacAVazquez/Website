@@ -35,6 +35,7 @@ import {
   formatUpdatedAt,
 } from "@/lib/date-formatters";
 import { useRouteSync } from "@/hooks/useRouteSync";
+import { useReducedMotion } from "@/hooks/useReducedMotion";
 
 interface Formula1ClientProps {
   initialState: Formula1RouteState;
@@ -95,6 +96,16 @@ async function fetchFormula1Meeting(
   return payload;
 }
 
+// OpenF1 names most circuits after their city, so fifteen of the 2026 rounds
+// would otherwise print as "Suzuka in Suzuka".
+function describeVenue(
+  meeting: Pick<Formula1MeetingMeta, "circuitShortName" | "location" | "countryName">
+): string {
+  return meeting.circuitShortName === meeting.location
+    ? `${meeting.location}, ${meeting.countryName}`
+    : `${meeting.circuitShortName} in ${meeting.location}`;
+}
+
 function getMeetingStatusCopy(meeting: Formula1MeetingMeta): string {
   if (meeting.status === "upcoming") {
     return "Next weekend";
@@ -125,10 +136,12 @@ function PositionChangeIndicator({
   previousPosition: number | null;
 }) {
   if (previousPosition === null || previousPosition === currentPosition) {
+    // The dash alone, like the arrow and number a mover gets, so a phone row
+    // keeps its width for the name.
     return (
-      <span className="inline-flex items-center text-sm" style={{ gap: "var(--c97-sp-0)", color: "var(--c97-ink-2)" }}>
+      <span className="inline-flex items-center text-sm" style={{ color: "var(--c97-ink-2)" }}>
         <Minus size={14} aria-hidden="true" />
-        <span>Flat</span>
+        <span className="sr-only">No change</span>
       </span>
     );
   }
@@ -390,12 +403,13 @@ function LeaderboardRow({
         ) : (
           <TeamSwatch color={row.teamColor} />
         )}
+        {/* Names wrap rather than truncate, since a phone row cut every surname. */}
         <div className="min-w-0 flex-1">
-          <p className="mb-0 truncate font-semibold" style={{ color: "var(--c97-ink)" }}>
+          <p className="mb-0 font-semibold" style={{ color: "var(--c97-ink)" }}>
             {row.primary}
           </p>
           {row.secondary || row.badge ? (
-            <p className="c97-kicker truncate">
+            <p className="c97-kicker">
               {row.secondary ?? row.badge}
             </p>
           ) : null}
@@ -624,8 +638,8 @@ function MeetingDetailPanel({
           </div>
           <h3 className="c97-serif c97-h3" style={{ marginTop: "var(--c97-sp-1)" }}>{meeting.name}</h3>
           <p className="mb-0 max-w-[48ch] text-sm leading-6" style={{ marginTop: "var(--c97-sp-1)", color: "var(--c97-ink-2)" }}>
-            {meeting.circuitShortName} in {meeting.location}. I keep the schedule and the
-            classification in one place so the weekend reads cleanly.
+            {describeVenue(meeting)}. I keep the schedule and the classification in one place
+            so the weekend reads cleanly.
           </p>
         </div>
         <div className="flex flex-wrap" style={{ gap: "var(--c97-sp-1)" }}>
@@ -833,8 +847,9 @@ function getRaceStripMeetings(
   selectedMeeting: Formula1MeetingMeta | null
 ) {
   const completed = summary.meetings.filter((meeting) => meeting.status === "completed").slice(-3);
+  const live = summary.meetings.filter((meeting) => meeting.status === "live");
   const upcoming = summary.meetings.filter((meeting) => meeting.status === "upcoming").slice(0, 3);
-  const raceStrip = [...completed, ...upcoming];
+  const raceStrip = [...completed, ...live, ...upcoming];
 
   if (selectedMeeting && !raceStrip.some((meeting) => meeting.key === selectedMeeting.key)) {
     raceStrip.unshift(selectedMeeting);
@@ -913,6 +928,7 @@ export function Formula1Client({ initialState, summary, initialMeeting }: Formul
 
   const pushHref = useRouteSync("/formula-1", desiredHref);
   const router = useRouter();
+  const reduceMotion = useReducedMotion();
 
   function navigate(nextState: Formula1RouteState) {
     const resolvedNextState = resolveFormula1State(nextState, summary);
@@ -1078,7 +1094,9 @@ export function Formula1Client({ initialState, summary, initialMeeting }: Formul
               router.push(`${href}#race-weekend-detail`);
             }}
           >
-            <label className="flex min-w-0 flex-1 flex-col" style={{ gap: "var(--c97-sp-1)" }}>
+            {/* The basis is wider than a phone's plate leaves beside the button,
+                so there the button wraps under and the race name keeps its room. */}
+            <label className="flex min-w-0 flex-col" style={{ gap: "var(--c97-sp-1)", flex: "1 1 14rem" }}>
               <span className="c97-kicker">Race weekend</span>
               <select name="meeting" className="c97-field" defaultValue={selectedMeetingKey ?? undefined}>
                 {summary.meetings.map((meeting) => (
@@ -1142,7 +1160,7 @@ export function Formula1Client({ initialState, summary, initialMeeting }: Formul
                     {highlightMeeting.name}
                   </h3>
                   <p className="mb-0 text-sm leading-6" style={{ marginTop: "var(--c97-sp-0)", color: "var(--c97-ink-2)" }}>
-                    {highlightMeeting.circuitShortName} in {highlightMeeting.location}
+                    {describeVenue(highlightMeeting)}
                   </p>
                 </div>
                 {highlightIsUpcoming ? (
@@ -1255,12 +1273,16 @@ export function Formula1Client({ initialState, summary, initialMeeting }: Formul
                 <CalendarTimeline
                   meetings={summary.meetings}
                   selectedMeetingKey={selectedMeetingKey}
-                  onSelect={(meetingKey) =>
-                    navigate({
-                      view: "calendar",
-                      meeting: meetingKey,
-                    })
-                  }
+                  onSelect={(meetingKey) => {
+                    navigate({ view: "calendar", meeting: meetingKey });
+                    // Below the two-column width the detail sits under the whole
+                    // timeline, so the tap brings it into view.
+                    if (window.matchMedia("(max-width: 1279px)").matches) {
+                      document
+                        .getElementById("race-weekend-detail")
+                        ?.scrollIntoView?.({ behavior: reduceMotion ? "auto" : "smooth", block: "start" });
+                    }
+                  }}
                 />
               </div>
 

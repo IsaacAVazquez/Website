@@ -2,7 +2,7 @@
 
 // The pick sheet: one row per match in the selected round with the
 // recommended exact score, confidence, expected points, the safer and
-// differentiator alternatives, the reason, and the lock time — plus the
+// differentiator alternatives, the reason, and the lock time, plus the
 // copyable submission table underneath and the per-match detail drawer.
 
 import { useCallback, useMemo, useState } from "react";
@@ -223,12 +223,8 @@ export function ScorePoolsClient({ snapshot, initialFixtureId }: ScorePoolsClien
               A pool is a league plus your scoring rules and your standing. Everything stays in
               this browser; nothing gets an account.
             </p>
-            <p className="text-sm text-[var(--c97-ink-2)]" style={{ marginTop: "var(--c97-sp-0)" }}>
-              A new pool starts at {DEFAULT_SCORING_RULES.exact} points for the exact score,{" "}
-              {DEFAULT_SCORING_RULES.correctDifference} for the right winner and goal difference, and{" "}
-              {DEFAULT_SCORING_RULES.correctOutcome} for the right winner or draw only, and you can
-              change those to match your pool in settings.
-            </p>
+            {/* The form sits ahead of the defaults note so a phone reaches the
+                create control sooner. */}
             <div className="flex flex-wrap items-end" style={{ gap: "var(--c97-sp-1)", marginTop: "var(--c97-sp-1)" }}>
               <label className="block">
                 <span className="c97-kicker">League</span>
@@ -241,7 +237,6 @@ export function ScorePoolsClient({ snapshot, initialFixtureId }: ScorePoolsClien
                   {snapshot.leagues.map((entry) => (
                     <option key={entry.key} value={entry.key} disabled={entry.fixtures.length === 0}>
                       {leagueOptionLabel(entry)}
-                      {entry.fixtures.length > 0 ? ` · ${entry.fixtures.length} fixtures` : ""}
                     </option>
                   ))}
                 </select>
@@ -269,6 +264,12 @@ export function ScorePoolsClient({ snapshot, initialFixtureId }: ScorePoolsClien
                 Create pool
               </button>
             </div>
+            <p className="text-sm text-[var(--c97-ink-2)]" style={{ marginTop: "var(--c97-sp-1)" }}>
+              A new pool starts at {DEFAULT_SCORING_RULES.exact} points for the exact score,{" "}
+              {DEFAULT_SCORING_RULES.correctDifference} for the right winner and goal difference, and{" "}
+              {DEFAULT_SCORING_RULES.correctOutcome} for the right winner or draw only, and you can
+              change those to match your pool in settings.
+            </p>
           </section>
         ) : (
           <>
@@ -379,7 +380,8 @@ export function ScorePoolsClient({ snapshot, initialFixtureId }: ScorePoolsClien
                               </p>
                             </td>
                             <td>
-                              <span className="font-mono text-base font-bold">{formatScoreline(pick.score)}</span>
+                              {/* nowrap, or a phone's narrow cell breaks "1-1" at the hyphen. */}
+                              <span className="whitespace-nowrap font-mono text-base font-bold">{formatScoreline(pick.score)}</span>
                               {pick.overridden ? (
                                 <span className="align-middle text-3xs font-semibold uppercase tracking-[0.1em] text-[var(--c97-ink-2)]" style={{ marginLeft: "var(--c97-sp-0)" }} title="You set this pick yourself">
                                   mine
@@ -482,7 +484,7 @@ export function ScorePoolsClient({ snapshot, initialFixtureId }: ScorePoolsClien
                               <span className="text-3xs uppercase text-[var(--c97-ink-2)]" style={{ marginLeft: "var(--c97-sp-0)" }}>mine</span>
                             ) : null}
                           </td>
-                          <td className="font-bold">
+                          <td className="whitespace-nowrap font-bold">
                             {formatScoreline(row.score)}
                           </td>
                         </tr>

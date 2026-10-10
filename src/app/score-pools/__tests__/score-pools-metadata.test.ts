@@ -11,8 +11,8 @@ describe("score pools freshness metadata", () => {
   });
 
   it("uses a newer snapshot date when the data advances", () => {
-    expect(getScorePoolsModifiedDate("2026-07-24T06:27:09.599Z")).toBe(
-      "2026-07-24"
+    expect(getScorePoolsModifiedDate("2026-10-24T06:27:09.599Z")).toBe(
+      "2026-10-24"
     );
   });
 });
