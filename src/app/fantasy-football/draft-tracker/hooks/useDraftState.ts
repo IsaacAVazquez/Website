@@ -26,7 +26,7 @@ export { DRAFT_STORAGE_VERSION, getCurrentDraftSeason, getFantasyDraftStorageKey
 const LEGACY_FANTASY_DRAFT_STORAGE_KEY = 'fantasy-draft-tracker';
 
 // Exposed for tests and callers that want the active key without recomputing
-// the season. Old unversioned key is intentionally NOT migrated — the schema
+// the season. Old unversioned key is intentionally NOT migrated, since the schema
 // has shifted across versions and a one-time forced reset is cleaner than
 // guessing how to coerce a legacy payload. We just delete it.
 export const FANTASY_DRAFT_STORAGE_KEY = getFantasyDraftStorageKey();

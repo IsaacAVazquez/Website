@@ -84,7 +84,7 @@ export async function buildFantasySnapshots(
 
   // Finish every build and serialization before creating directories or staging
   // files, so a failure in any format leaves the published set and its shared
-  // revision untouched. This covers the build and serialization phase only —
+  // revision untouched. This covers the build and serialization phase only, and
   // see the rename loop below for what the publish phase actually guarantees.
   const serializedSnapshots = SCORING_FORMATS.map((scoring) => {
     const snapshot = buildSnapshot(scoring);

@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useId, useMemo, useRef, useState, type CSSProperties } from "react";
+import { useCallback, useEffect, useId, useMemo, useRef, useState, type CSSProperties } from "react";
 import { SeasonalScopeNote } from "@/components/fantasy/SeasonalScopeNote";
 import { PROJECT_PRESS } from "@/constants/projectPress";
 import Link from "next/link";
@@ -278,6 +278,17 @@ export function MockDraftClient() {
   // Every pick unmounts the row or quick pick that took the click, so focus has
   // somewhere stable to land: the panel that owns the next turn.
   const onClockRef = useRef<HTMLElement>(null);
+  // The sticky status strip above the on-the-clock panel is one wrapping line
+  // below md and a readout row from lg (189px against 86px when measured on
+  // 2026-10-09), so the margin that keeps the panel clear of it when focus()
+  // scrolls it into view is read off the strip rather than fixed in CSS.
+  const stripRef = useRef<HTMLElement>(null);
+  const focusClock = useCallback(() => {
+    const panel = onClockRef.current;
+    if (!panel) return;
+    panel.style.scrollMarginTop = `${stripRef.current?.offsetHeight ?? 0}px`;
+    panel.focus();
+  }, []);
   // Sim to end unmounts the whole live room, so the recap's value report is
   // the panel that takes focus there.
   const valueReportRef = useRef<HTMLElement>(null);
@@ -366,12 +377,12 @@ export function MockDraftClient() {
     if (!pending) return;
     if (pending === "clock" && isLive && onClockRef.current) {
       pendingFocusRef.current = null;
-      onClockRef.current.focus();
+      focusClock();
     } else if (pending === "recap" && isRecap && valueReportRef.current) {
       pendingFocusRef.current = null;
       valueReportRef.current.focus();
     }
-  }, [currentPick, isLive, isRecap]);
+  }, [currentPick, focusClock, isLive, isRecap]);
 
   const userPicks = useMemo(
     () => state.picks.filter((pick) => pick.teamNumber === settings.userTeam),
@@ -643,7 +654,7 @@ export function MockDraftClient() {
     setTransition(null);
     // The clicked control leaves the DOM with the pick, so move focus to the
     // on-the-clock panel rather than letting it fall back to the document.
-    onClockRef.current?.focus();
+    focusClock();
   };
 
   const scoringLabel = FANTASY_SCORING_LABELS[routeScoring];
@@ -687,7 +698,9 @@ export function MockDraftClient() {
       ? "The published snapshot did not include any players."
       : !simulationAvailable
         ? boardUpdatedAt
-          ? `The published board is dated ${formatStampDate(boardUpdatedAt)}, which is past its freshness window, so simulated picks are paused.`
+          ? `The published board is dated ${formatStampDate(boardUpdatedAt)}, which is past its freshness window, so simulated picks are paused.${
+              archiveEligible ? " Choose dated preseason practice above to use it anyway." : ""
+            }`
           : "The published board carries no date, so simulated picks are paused."
       : null;
 
@@ -1169,6 +1182,7 @@ export function MockDraftClient() {
       {isLive && (
         <div className="c97-sheet" data-c97-surface="paper" data-seam={showScopeNote ? undefined : "torn"}>
           <section
+            ref={stripRef}
             aria-label="Live mock draft status"
             className={`sticky ${FASCIA_TOP_CLASS} z-30 border-y`}
             style={{
@@ -1389,14 +1403,15 @@ export function MockDraftClient() {
           </section>
 
           {/*
-            scroll-mt keeps the panel clear of the site header and the sticky
-            strip above it when focus() scrolls it into view.
+            focusClock sets this panel's scroll margin to the sticky strip's
+            measured height before it calls focus(), so the panel lands under
+            the strip rather than behind it. The site header scrolls away.
           */}
           <section
             ref={onClockRef}
             tabIndex={-1}
             aria-label="You are on the clock"
-            className={`${SHELL_CLASS} scroll-mt-60`} style={{ marginTop: "var(--c97-sp-2)" }}
+            className={SHELL_CLASS} style={{ marginTop: "var(--c97-sp-2)" }}
           >
             <div
               className="overflow-hidden border"
@@ -1844,7 +1859,7 @@ export function MockDraftClient() {
             {/*
               A real table, not a grid of divs. The grid version handed a screen
               reader a flat run of "#3 · RB", "Ja'Marr Chase" with no way to
-              tell which round row or team column a pick belonged to — the same
+              tell which round row or team column a pick belonged to, the same
               anti-pattern CompareModal already fixed. table-fixed with a
               colgroup keeps the team columns equal the way minmax(88px, 1fr)
               did, and the table's own min-width carries the 88px floor.

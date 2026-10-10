@@ -162,9 +162,11 @@ describe("MockDraftClient", () => {
 
       expect(screen.getByText("Board Stale · Sep 10, 2026")).toBeInTheDocument();
       expect(screen.getByRole("button", { name: "Start mock" })).toBeDisabled();
+      // The paused line names the resume control, since the consent box sits
+      // in the scope note above the setup card rather than beside Start.
       expect(
         screen.getByText(
-          "The published board is dated Sep 10, 2026, which is past its freshness window, so simulated picks are paused."
+          "The published board is dated Sep 10, 2026, which is past its freshness window, so simulated picks are paused. Choose dated preseason practice above to use it anyway."
         )
       ).toBeVisible();
       expect(screen.getByRole("note")).toHaveTextContent(

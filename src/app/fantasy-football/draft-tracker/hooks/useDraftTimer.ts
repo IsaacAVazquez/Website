@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 
 interface UseDraftTimerOptions {
-  /** Resets the countdown whenever this changes — i.e. each new pick. */
+  /** Resets the countdown whenever this changes, i.e. each new pick. */
   currentPick: number;
   durationSeconds: number;
   enabled: boolean;
@@ -13,7 +13,7 @@ interface UseDraftTimerOptions {
 /**
  * An advisory per-pick countdown for the draft assistant. It resets on every
  * pick, ticks down once a second, and pauses while the tab is hidden so a
- * backgrounded draft doesn't burn the clock. It never auto-picks — this is a
+ * backgrounded draft doesn't burn the clock. It never auto-picks, since this is a
  * manual tracker; the timer is just a nudge.
  */
 export function useDraftTimer({ currentPick, durationSeconds, enabled, isActive }: UseDraftTimerOptions) {

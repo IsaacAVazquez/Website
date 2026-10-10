@@ -20,7 +20,7 @@ interface CompareTrayProps {
   publishedRankLabel?: string;
   /** Passed through to CompareModal, which withholds the consensus rows for these players. */
   consensusWithheld?: (player: Player) => boolean;
-  /** Passed through to CompareModal — see PlayerDetailDrawer for the rationale. */
+  /** Passed through to CompareModal, see PlayerDetailDrawer for the rationale. */
   valueSignalAvailable?: boolean;
   /** Whether the current ADP source is fresh enough to display or compare. */
   adpAvailable?: boolean;

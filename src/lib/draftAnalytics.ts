@@ -22,13 +22,13 @@ import type {
  * draft tracker can memoize it cheaply and tests can pin the math.
  *
  * Every signal here compares a pick's draft slot to a market or expert
- * baseline — where the player "should" have gone. That measures draft-day
+ * baseline, where the player "should" have gone. That measures draft-day
  * process, not season outcomes, and the UI copy says so.
  */
 
 /** Floor for how far a pick must beat or trail its baseline to be flagged. */
 export const REACH_STEAL_MIN_THRESHOLD = 8;
-/** Threshold widens by this many spots per round — late-round gaps are noise. */
+/** Threshold widens by this many spots per round, since late-round gaps are noise. */
 const REACH_STEAL_ROUND_FACTOR = 3;
 /** Picks of one position count as a run when each lands within this many picks of the last. */
 const POSITION_RUN_WINDOW = 5;
@@ -463,7 +463,7 @@ interface EmergingRun {
 
 /**
  * A softer, earlier sibling to {@link detectPositionRuns}: two same-position
- * picks already off the board inside the trailing window — a run *forming*
+ * picks already off the board inside the trailing window, a run *forming*
  * before it hardens into the confirmed three-pick run. Returns null once a
  * position reaches the full-run count (that's the hard signal's job) so the two
  * never describe the same cluster.

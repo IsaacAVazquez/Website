@@ -43,7 +43,7 @@ interface PlayerDetailDrawerProps {
   boardTierCount?: number;
   /**
    * Whether the active snapshot carries an attributed ADP source. When false,
-   * every ADP-derived surface hides — mirroring the board — even if stale
+   * every ADP-derived surface hides, mirroring the board, even if stale
    * per-player adp values are present in the data.
    */
   adpAvailable?: boolean;
@@ -97,8 +97,8 @@ function StatCell({ label, children }: { label: string; children: React.ReactNod
 }
 
 /**
- * A shared player detail surface — right-side drawer on desktop, bottom sheet on
- * mobile — used by both the rankings board and the draft assistant. It renders
+ * A shared player detail surface, right-side drawer on desktop, bottom sheet on
+ * mobile, used by both the rankings board and the draft assistant. It renders
  * only fields the snapshot actually populates (rank, tier, expert range,
  * consensus spread, ownership, bye, ADP) plus the cross-surface watchlist,
  * notes, and compare controls. No projections/headshots: that data is empty.

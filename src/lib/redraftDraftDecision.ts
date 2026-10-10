@@ -1,3 +1,4 @@
+import { getSnakeTeamNumber } from "@/lib/bestBall/draft";
 import { getRosterNeeds } from "@/lib/draftAnalytics";
 import {
   buildFantasyReplacementCutoffs,
@@ -154,10 +155,8 @@ export function getRedraftTeamAtPick(
   ) {
     return null;
   }
-  const round = Math.floor((pickNumber - 1) / teams) + 1;
-  const slot = ((pickNumber - 1) % teams) + 1;
-  if (draftOrder === "linear") return slot;
-  return round % 2 === 1 ? slot : teams - slot + 1;
+  if (draftOrder === "linear") return ((pickNumber - 1) % teams) + 1;
+  return getSnakeTeamNumber(pickNumber, teams);
 }
 
 export function getRedraftNextPickForTeam({
