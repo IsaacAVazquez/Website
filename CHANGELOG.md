@@ -4,6 +4,12 @@ All notable changes to this repository are documented here. Format: `YYYY-MM-DD`
 
 ---
 
+## 2026-10-10
+
+- Project sweep across every dashboard and tool ([#581](https://github.com/IsaacAVazquez/Website/pull/581)).
+
+---
+
 ## 2026-10-09
 
 - Interview agenda, article search, Before You Buy on Home, and print fixes ([#580](https://github.com/IsaacAVazquez/Website/pull/580)).
