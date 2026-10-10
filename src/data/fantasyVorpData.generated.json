@@ -1,11 +1,11 @@
 {
-  "generatedAt": "2026-10-09T21:44:55.106Z",
+  "generatedAt": "2026-10-10T20:35:25.662Z",
   "data": {
     "PPR": {
       "10": {
         "season": 2026,
         "sourceUrl": "https://www.fantasypros.com/nfl/rankings/ppr-vorp.php?team_size=10",
-        "accessedAt": "2026-10-09T21:44:55.824Z",
+        "accessedAt": "2026-10-10T20:35:26.145Z",
         "players": [
           {
             "playerId": "fp-22968",
@@ -3232,7 +3232,7 @@
           {
             "playerId": "fp-24362",
             "name": "Kaytron Allen",
-            "team": "FA",
+            "team": "MIA",
             "position": "RB",
             "positionRank": 95,
             "rank": 359,
@@ -5367,7 +5367,7 @@
       "12": {
         "season": 2026,
         "sourceUrl": "https://www.fantasypros.com/nfl/rankings/ppr-vorp.php",
-        "accessedAt": "2026-10-09T21:44:56.244Z",
+        "accessedAt": "2026-10-10T20:35:26.811Z",
         "players": [
           {
             "playerId": "fp-22968",
@@ -8243,7 +8243,7 @@
           {
             "playerId": "fp-24362",
             "name": "Kaytron Allen",
-            "team": "FA",
+            "team": "MIA",
             "position": "RB",
             "positionRank": 95,
             "rank": 320,
@@ -10729,7 +10729,7 @@
       "14": {
         "season": 2026,
         "sourceUrl": "https://www.fantasypros.com/nfl/rankings/ppr-vorp.php?team_size=14",
-        "accessedAt": "2026-10-09T21:44:56.927Z",
+        "accessedAt": "2026-10-10T20:35:27.258Z",
         "players": [
           {
             "playerId": "fp-22968",
@@ -13443,7 +13443,7 @@
           {
             "playerId": "fp-24362",
             "name": "Kaytron Allen",
-            "team": "FA",
+            "team": "MIA",
             "position": "RB",
             "positionRank": 95,
             "rank": 302,
@@ -16093,7 +16093,7 @@
       "10": {
         "season": 2026,
         "sourceUrl": "https://www.fantasypros.com/nfl/rankings/half-ppr-vorp.php?team_size=10",
-        "accessedAt": "2026-10-09T21:44:57.826Z",
+        "accessedAt": "2026-10-10T20:35:28.112Z",
         "players": [
           {
             "playerId": "fp-22968",
@@ -18942,7 +18942,7 @@
           {
             "playerId": "fp-24362",
             "name": "Kaytron Allen",
-            "team": "FA",
+            "team": "MIA",
             "position": "RB",
             "positionRank": 93,
             "rank": 317,
@@ -21455,7 +21455,7 @@
       "12": {
         "season": 2026,
         "sourceUrl": "https://www.fantasypros.com/nfl/rankings/half-ppr-vorp.php",
-        "accessedAt": "2026-10-09T21:44:58.275Z",
+        "accessedAt": "2026-10-10T20:35:28.539Z",
         "players": [
           {
             "playerId": "fp-22968",
@@ -24511,7 +24511,7 @@
           {
             "playerId": "fp-24362",
             "name": "Kaytron Allen",
-            "team": "FA",
+            "team": "MIA",
             "position": "RB",
             "positionRank": 93,
             "rank": 340,
@@ -26817,7 +26817,7 @@
       "14": {
         "season": 2026,
         "sourceUrl": "https://www.fantasypros.com/nfl/rankings/half-ppr-vorp.php?team_size=14",
-        "accessedAt": "2026-10-09T21:44:58.923Z",
+        "accessedAt": "2026-10-10T20:35:29.152Z",
         "players": [
           {
             "playerId": "fp-22968",
@@ -29414,7 +29414,7 @@
           {
             "playerId": "fp-24362",
             "name": "Kaytron Allen",
-            "team": "FA",
+            "team": "MIA",
             "position": "RB",
             "positionRank": 93,
             "rank": 289,
@@ -32181,7 +32181,7 @@
       "10": {
         "season": 2026,
         "sourceUrl": "https://www.fantasypros.com/nfl/rankings/vorp.php?team_size=10",
-        "accessedAt": "2026-10-09T21:44:59.574Z",
+        "accessedAt": "2026-10-10T20:35:29.790Z",
         "players": [
           {
             "playerId": "fp-22968",
@@ -35237,7 +35237,7 @@
           {
             "playerId": "fp-24362",
             "name": "Kaytron Allen",
-            "team": "FA",
+            "team": "MIA",
             "position": "RB",
             "positionRank": 92,
             "rank": 340,
@@ -37543,7 +37543,7 @@
       "12": {
         "season": 2026,
         "sourceUrl": "https://www.fantasypros.com/nfl/rankings/vorp.php",
-        "accessedAt": "2026-10-09T21:44:59.969Z",
+        "accessedAt": "2026-10-10T20:35:30.492Z",
         "players": [
           {
             "playerId": "fp-22968",
@@ -40473,7 +40473,7 @@
           {
             "playerId": "fp-24362",
             "name": "Kaytron Allen",
-            "team": "FA",
+            "team": "MIA",
             "position": "RB",
             "positionRank": 92,
             "rank": 326,
@@ -42905,7 +42905,7 @@
       "14": {
         "season": 2026,
         "sourceUrl": "https://www.fantasypros.com/nfl/rankings/vorp.php?team_size=14",
-        "accessedAt": "2026-10-09T21:45:00.406Z",
+        "accessedAt": "2026-10-10T20:35:30.884Z",
         "players": [
           {
             "playerId": "fp-22968",
@@ -45637,7 +45637,7 @@
           {
             "playerId": "fp-24362",
             "name": "Kaytron Allen",
-            "team": "FA",
+            "team": "MIA",
             "position": "RB",
             "positionRank": 92,
             "rank": 304,
