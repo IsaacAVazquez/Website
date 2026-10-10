@@ -1,6 +1,6 @@
 {
   "season": "2026",
-  "generatedAt": "2026-10-10T20:00:27.457Z",
+  "generatedAt": "2026-10-10T23:28:25.583Z",
   "updatedAt": "2026-10-10",
   "sourceLabel": "MLB Stats API",
   "sourceUrls": {
@@ -945,11 +945,11 @@
   "recentGames": [
     {
       "id": "849832",
-      "utcDate": "2026-10-09T00:00:00Z",
+      "utcDate": "2026-10-08T23:59:59Z",
       "status": "FINISHED",
       "matchday": null,
       "stage": "D",
-      "startTimeTbd": false,
+      "startTimeTbd": true,
       "ifNecessary": false,
       "homeTeam": {
         "id": "145",
@@ -1001,11 +1001,11 @@
     },
     {
       "id": "849838",
-      "utcDate": "2026-10-08T00:00:00Z",
+      "utcDate": "2026-10-07T23:59:59Z",
       "status": "FINISHED",
       "matchday": null,
       "stage": "D",
-      "startTimeTbd": false,
+      "startTimeTbd": true,
       "ifNecessary": false,
       "homeTeam": {
         "id": "147",
@@ -1141,11 +1141,11 @@
     },
     {
       "id": "849839",
-      "utcDate": "2026-10-06T00:00:00Z",
+      "utcDate": "2026-10-05T23:59:59Z",
       "status": "FINISHED",
       "matchday": null,
       "stage": "D",
-      "startTimeTbd": false,
+      "startTimeTbd": true,
       "ifNecessary": false,
       "homeTeam": {
         "id": "139",
@@ -1197,11 +1197,11 @@
     },
     {
       "id": "849823",
-      "utcDate": "2026-10-05T00:00:00Z",
+      "utcDate": "2026-10-04T23:59:59Z",
       "status": "FINISHED",
       "matchday": null,
       "stage": "D",
-      "startTimeTbd": false,
+      "startTimeTbd": true,
       "ifNecessary": false,
       "homeTeam": {
         "id": "119",
@@ -1227,11 +1227,11 @@
   "upcomingGames": [
     {
       "id": "849831",
-      "utcDate": "2026-10-11T00:00:00Z",
+      "utcDate": "2026-10-10T23:59:59Z",
       "status": "Pre-Game",
       "matchday": null,
       "stage": "D",
-      "startTimeTbd": false,
+      "startTimeTbd": true,
       "ifNecessary": false,
       "homeTeam": {
         "id": "114",
@@ -1255,11 +1255,11 @@
     },
     {
       "id": "849809",
-      "utcDate": "2026-10-12T00:00:00Z",
+      "utcDate": "2026-10-11T23:59:59Z",
       "status": "Scheduled",
       "matchday": null,
       "stage": "L",
-      "startTimeTbd": false,
+      "startTimeTbd": true,
       "ifNecessary": false,
       "homeTeam": {
         "id": "158",
@@ -1311,11 +1311,11 @@
     },
     {
       "id": "849820",
-      "utcDate": "2026-10-13T00:00:00Z",
+      "utcDate": "2026-10-12T23:59:59Z",
       "status": "Scheduled",
       "matchday": null,
       "stage": "L",
-      "startTimeTbd": false,
+      "startTimeTbd": true,
       "ifNecessary": false,
       "homeTeam": {
         "id": "139",
@@ -1339,11 +1339,11 @@
     },
     {
       "id": "849813",
-      "utcDate": "2026-10-14T00:00:00Z",
+      "utcDate": "2026-10-13T23:59:59Z",
       "status": "Scheduled",
       "matchday": null,
       "stage": "L",
-      "startTimeTbd": false,
+      "startTimeTbd": true,
       "ifNecessary": false,
       "homeTeam": {
         "id": "139",
@@ -1367,11 +1367,11 @@
     },
     {
       "id": "849811",
-      "utcDate": "2026-10-15T00:00:00Z",
+      "utcDate": "2026-10-14T23:59:59Z",
       "status": "Scheduled",
       "matchday": null,
       "stage": "L",
-      "startTimeTbd": false,
+      "startTimeTbd": true,
       "ifNecessary": false,
       "homeTeam": {
         "id": "119",
@@ -2174,7 +2174,7 @@
         "runsFor": 14,
         "runsAgainst": 20
       },
-      "generatedAt": "2026-10-10T20:00:27.457Z"
+      "generatedAt": "2026-10-10T23:28:25.583Z"
     },
     "109": {
       "team": {
@@ -2287,7 +2287,7 @@
         "runsFor": 22,
         "runsAgainst": 23
       },
-      "generatedAt": "2026-10-10T20:00:27.457Z"
+      "generatedAt": "2026-10-10T23:28:25.583Z"
     },
     "110": {
       "team": {
@@ -2371,7 +2371,7 @@
         "runsFor": 13,
         "runsAgainst": 8
       },
-      "generatedAt": "2026-10-10T20:00:27.457Z"
+      "generatedAt": "2026-10-10T23:28:25.583Z"
     },
     "111": {
       "team": {
@@ -2389,11 +2389,11 @@
       "recentGames": [
         {
           "id": "849848",
-          "utcDate": "2026-10-01T00:00:00Z",
+          "utcDate": "2026-09-30T23:59:59Z",
           "status": "FINISHED",
           "matchday": null,
           "stage": "F",
-          "startTimeTbd": false,
+          "startTimeTbd": true,
           "ifNecessary": false,
           "homeTeam": {
             "id": "147",
@@ -2417,11 +2417,11 @@
         },
         {
           "id": "849851",
-          "utcDate": "2026-09-30T00:00:00Z",
+          "utcDate": "2026-09-29T23:59:59Z",
           "status": "FINISHED",
           "matchday": null,
           "stage": "F",
-          "startTimeTbd": false,
+          "startTimeTbd": true,
           "ifNecessary": false,
           "homeTeam": {
             "id": "147",
@@ -2542,7 +2542,7 @@
         "runsFor": 10,
         "runsAgainst": 27
       },
-      "generatedAt": "2026-10-10T20:00:27.457Z"
+      "generatedAt": "2026-10-10T23:28:25.583Z"
     },
     "112": {
       "team": {
@@ -2713,7 +2713,7 @@
         "runsFor": 10,
         "runsAgainst": 20
       },
-      "generatedAt": "2026-10-10T20:00:27.457Z"
+      "generatedAt": "2026-10-10T23:28:25.583Z"
     },
     "113": {
       "team": {
@@ -2826,7 +2826,7 @@
         "runsFor": 11,
         "runsAgainst": 12
       },
-      "generatedAt": "2026-10-10T20:00:27.457Z"
+      "generatedAt": "2026-10-10T23:28:25.583Z"
     },
     "114": {
       "team": {
@@ -2844,11 +2844,11 @@
       "recentGames": [
         {
           "id": "849832",
-          "utcDate": "2026-10-09T00:00:00Z",
+          "utcDate": "2026-10-08T23:59:59Z",
           "status": "FINISHED",
           "matchday": null,
           "stage": "D",
-          "startTimeTbd": false,
+          "startTimeTbd": true,
           "ifNecessary": false,
           "homeTeam": {
             "id": "145",
@@ -2986,11 +2986,11 @@
       "upcomingGames": [
         {
           "id": "849831",
-          "utcDate": "2026-10-11T00:00:00Z",
+          "utcDate": "2026-10-10T23:59:59Z",
           "status": "Pre-Game",
           "matchday": null,
           "stage": "D",
-          "startTimeTbd": false,
+          "startTimeTbd": true,
           "ifNecessary": false,
           "homeTeam": {
             "id": "114",
@@ -3026,7 +3026,7 @@
         "runsFor": 23,
         "runsAgainst": 18
       },
-      "generatedAt": "2026-10-10T20:00:27.457Z"
+      "generatedAt": "2026-10-10T23:28:25.583Z"
     },
     "115": {
       "team": {
@@ -3139,7 +3139,7 @@
         "runsFor": 12,
         "runsAgainst": 16
       },
-      "generatedAt": "2026-10-10T20:00:27.457Z"
+      "generatedAt": "2026-10-10T23:28:25.583Z"
     },
     "116": {
       "team": {
@@ -3252,7 +3252,7 @@
         "runsFor": 14,
         "runsAgainst": 14
       },
-      "generatedAt": "2026-10-10T20:00:27.457Z"
+      "generatedAt": "2026-10-10T23:28:25.583Z"
     },
     "117": {
       "team": {
@@ -3423,7 +3423,7 @@
         "runsFor": 33,
         "runsAgainst": 21
       },
-      "generatedAt": "2026-10-10T20:00:27.457Z"
+      "generatedAt": "2026-10-10T23:28:25.583Z"
     },
     "118": {
       "team": {
@@ -3536,7 +3536,7 @@
         "runsFor": 17,
         "runsAgainst": 25
       },
-      "generatedAt": "2026-10-10T20:00:27.457Z"
+      "generatedAt": "2026-10-10T23:28:25.583Z"
     },
     "119": {
       "team": {
@@ -3610,11 +3610,11 @@
         },
         {
           "id": "849823",
-          "utcDate": "2026-10-05T00:00:00Z",
+          "utcDate": "2026-10-04T23:59:59Z",
           "status": "FINISHED",
           "matchday": null,
           "stage": "D",
-          "startTimeTbd": false,
+          "startTimeTbd": true,
           "ifNecessary": false,
           "homeTeam": {
             "id": "119",
@@ -3696,11 +3696,11 @@
       "upcomingGames": [
         {
           "id": "849809",
-          "utcDate": "2026-10-12T00:00:00Z",
+          "utcDate": "2026-10-11T23:59:59Z",
           "status": "Scheduled",
           "matchday": null,
           "stage": "L",
-          "startTimeTbd": false,
+          "startTimeTbd": true,
           "ifNecessary": false,
           "homeTeam": {
             "id": "158",
@@ -3752,11 +3752,11 @@
         },
         {
           "id": "849811",
-          "utcDate": "2026-10-15T00:00:00Z",
+          "utcDate": "2026-10-14T23:59:59Z",
           "status": "Scheduled",
           "matchday": null,
           "stage": "L",
-          "startTimeTbd": false,
+          "startTimeTbd": true,
           "ifNecessary": false,
           "homeTeam": {
             "id": "119",
@@ -3848,7 +3848,7 @@
         "runsFor": 19,
         "runsAgainst": 9
       },
-      "generatedAt": "2026-10-10T20:00:27.457Z"
+      "generatedAt": "2026-10-10T23:28:25.583Z"
     },
     "120": {
       "team": {
@@ -3961,7 +3961,7 @@
         "runsFor": 14,
         "runsAgainst": 17
       },
-      "generatedAt": "2026-10-10T20:00:27.457Z"
+      "generatedAt": "2026-10-10T23:28:25.583Z"
     },
     "121": {
       "team": {
@@ -4074,7 +4074,7 @@
         "runsFor": 17,
         "runsAgainst": 14
       },
-      "generatedAt": "2026-10-10T20:00:27.457Z"
+      "generatedAt": "2026-10-10T23:28:25.583Z"
     },
     "133": {
       "team": {
@@ -4187,7 +4187,7 @@
         "runsFor": 8,
         "runsAgainst": 27
       },
-      "generatedAt": "2026-10-10T20:00:27.457Z"
+      "generatedAt": "2026-10-10T23:28:25.583Z"
     },
     "134": {
       "team": {
@@ -4300,7 +4300,7 @@
         "runsFor": 14,
         "runsAgainst": 14
       },
-      "generatedAt": "2026-10-10T20:00:27.457Z"
+      "generatedAt": "2026-10-10T23:28:25.583Z"
     },
     "135": {
       "team": {
@@ -4471,7 +4471,7 @@
         "runsFor": 14,
         "runsAgainst": 14
       },
-      "generatedAt": "2026-10-10T20:00:27.457Z"
+      "generatedAt": "2026-10-10T23:28:25.583Z"
     },
     "136": {
       "team": {
@@ -4584,7 +4584,7 @@
         "runsFor": 20,
         "runsAgainst": 14
       },
-      "generatedAt": "2026-10-10T20:00:27.457Z"
+      "generatedAt": "2026-10-10T23:28:25.583Z"
     },
     "137": {
       "team": {
@@ -4697,7 +4697,7 @@
         "runsFor": 4,
         "runsAgainst": 11
       },
-      "generatedAt": "2026-10-10T20:00:27.457Z"
+      "generatedAt": "2026-10-10T23:28:25.583Z"
     },
     "138": {
       "team": {
@@ -4810,7 +4810,7 @@
         "runsFor": 10,
         "runsAgainst": 17
       },
-      "generatedAt": "2026-10-10T20:00:27.457Z"
+      "generatedAt": "2026-10-10T23:28:25.583Z"
     },
     "139": {
       "team": {
@@ -4828,11 +4828,11 @@
       "recentGames": [
         {
           "id": "849838",
-          "utcDate": "2026-10-08T00:00:00Z",
+          "utcDate": "2026-10-07T23:59:59Z",
           "status": "FINISHED",
           "matchday": null,
           "stage": "D",
-          "startTimeTbd": false,
+          "startTimeTbd": true,
           "ifNecessary": false,
           "homeTeam": {
             "id": "147",
@@ -4856,11 +4856,11 @@
         },
         {
           "id": "849839",
-          "utcDate": "2026-10-06T00:00:00Z",
+          "utcDate": "2026-10-05T23:59:59Z",
           "status": "FINISHED",
           "matchday": null,
           "stage": "D",
-          "startTimeTbd": false,
+          "startTimeTbd": true,
           "ifNecessary": false,
           "homeTeam": {
             "id": "139",
@@ -4970,11 +4970,11 @@
       "upcomingGames": [
         {
           "id": "849820",
-          "utcDate": "2026-10-13T00:00:00Z",
+          "utcDate": "2026-10-12T23:59:59Z",
           "status": "Scheduled",
           "matchday": null,
           "stage": "L",
-          "startTimeTbd": false,
+          "startTimeTbd": true,
           "ifNecessary": false,
           "homeTeam": {
             "id": "139",
@@ -4998,11 +4998,11 @@
         },
         {
           "id": "849813",
-          "utcDate": "2026-10-14T00:00:00Z",
+          "utcDate": "2026-10-13T23:59:59Z",
           "status": "Scheduled",
           "matchday": null,
           "stage": "L",
-          "startTimeTbd": false,
+          "startTimeTbd": true,
           "ifNecessary": false,
           "homeTeam": {
             "id": "139",
@@ -5082,11 +5082,11 @@
         },
         {
           "id": "849816",
-          "utcDate": "2026-10-18T00:00:00Z",
+          "utcDate": "2026-10-17T23:59:59Z",
           "status": "Scheduled",
           "matchday": null,
           "stage": "L",
-          "startTimeTbd": false,
+          "startTimeTbd": true,
           "ifNecessary": true,
           "homeTeam": {
             "id": "5521",
@@ -5122,7 +5122,7 @@
         "runsFor": 25,
         "runsAgainst": 13
       },
-      "generatedAt": "2026-10-10T20:00:27.457Z"
+      "generatedAt": "2026-10-10T23:28:25.583Z"
     },
     "140": {
       "team": {
@@ -5235,7 +5235,7 @@
         "runsFor": 12,
         "runsAgainst": 18
       },
-      "generatedAt": "2026-10-10T20:00:27.457Z"
+      "generatedAt": "2026-10-10T23:28:25.583Z"
     },
     "141": {
       "team": {
@@ -5348,7 +5348,7 @@
         "runsFor": 12,
         "runsAgainst": 11
       },
-      "generatedAt": "2026-10-10T20:00:27.457Z"
+      "generatedAt": "2026-10-10T23:28:25.583Z"
     },
     "142": {
       "team": {
@@ -5461,7 +5461,7 @@
         "runsFor": 18,
         "runsAgainst": 12
       },
-      "generatedAt": "2026-10-10T20:00:27.457Z"
+      "generatedAt": "2026-10-10T23:28:25.583Z"
     },
     "143": {
       "team": {
@@ -5479,11 +5479,11 @@
       "recentGames": [
         {
           "id": "849844",
-          "utcDate": "2026-10-02T00:00:00Z",
+          "utcDate": "2026-10-01T23:59:59Z",
           "status": "FINISHED",
           "matchday": null,
           "stage": "F",
-          "startTimeTbd": false,
+          "startTimeTbd": true,
           "ifNecessary": false,
           "homeTeam": {
             "id": "144",
@@ -5632,7 +5632,7 @@
         "runsFor": 17,
         "runsAgainst": 29
       },
-      "generatedAt": "2026-10-10T20:00:27.457Z"
+      "generatedAt": "2026-10-10T23:28:25.583Z"
     },
     "144": {
       "team": {
@@ -5706,11 +5706,11 @@
         },
         {
           "id": "849823",
-          "utcDate": "2026-10-05T00:00:00Z",
+          "utcDate": "2026-10-04T23:59:59Z",
           "status": "FINISHED",
           "matchday": null,
           "stage": "D",
-          "startTimeTbd": false,
+          "startTimeTbd": true,
           "ifNecessary": false,
           "homeTeam": {
             "id": "119",
@@ -5762,11 +5762,11 @@
         },
         {
           "id": "849844",
-          "utcDate": "2026-10-02T00:00:00Z",
+          "utcDate": "2026-10-01T23:59:59Z",
           "status": "FINISHED",
           "matchday": null,
           "stage": "F",
-          "startTimeTbd": false,
+          "startTimeTbd": true,
           "ifNecessary": false,
           "homeTeam": {
             "id": "144",
@@ -5803,7 +5803,7 @@
         "runsFor": 14,
         "runsAgainst": 16
       },
-      "generatedAt": "2026-10-10T20:00:27.457Z"
+      "generatedAt": "2026-10-10T23:28:25.583Z"
     },
     "145": {
       "team": {
@@ -5821,11 +5821,11 @@
       "recentGames": [
         {
           "id": "849832",
-          "utcDate": "2026-10-09T00:00:00Z",
+          "utcDate": "2026-10-08T23:59:59Z",
           "status": "FINISHED",
           "matchday": null,
           "stage": "D",
-          "startTimeTbd": false,
+          "startTimeTbd": true,
           "ifNecessary": false,
           "homeTeam": {
             "id": "145",
@@ -5963,11 +5963,11 @@
       "upcomingGames": [
         {
           "id": "849831",
-          "utcDate": "2026-10-11T00:00:00Z",
+          "utcDate": "2026-10-10T23:59:59Z",
           "status": "Pre-Game",
           "matchday": null,
           "stage": "D",
-          "startTimeTbd": false,
+          "startTimeTbd": true,
           "ifNecessary": false,
           "homeTeam": {
             "id": "114",
@@ -6003,7 +6003,7 @@
         "runsFor": 22,
         "runsAgainst": 24
       },
-      "generatedAt": "2026-10-10T20:00:27.457Z"
+      "generatedAt": "2026-10-10T23:28:25.583Z"
     },
     "146": {
       "team": {
@@ -6116,7 +6116,7 @@
         "runsFor": 11,
         "runsAgainst": 11
       },
-      "generatedAt": "2026-10-10T20:00:27.457Z"
+      "generatedAt": "2026-10-10T23:28:25.583Z"
     },
     "147": {
       "team": {
@@ -6134,11 +6134,11 @@
       "recentGames": [
         {
           "id": "849838",
-          "utcDate": "2026-10-08T00:00:00Z",
+          "utcDate": "2026-10-07T23:59:59Z",
           "status": "FINISHED",
           "matchday": null,
           "stage": "D",
-          "startTimeTbd": false,
+          "startTimeTbd": true,
           "ifNecessary": false,
           "homeTeam": {
             "id": "147",
@@ -6162,11 +6162,11 @@
         },
         {
           "id": "849839",
-          "utcDate": "2026-10-06T00:00:00Z",
+          "utcDate": "2026-10-05T23:59:59Z",
           "status": "FINISHED",
           "matchday": null,
           "stage": "D",
-          "startTimeTbd": false,
+          "startTimeTbd": true,
           "ifNecessary": false,
           "homeTeam": {
             "id": "139",
@@ -6218,11 +6218,11 @@
         },
         {
           "id": "849848",
-          "utcDate": "2026-10-01T00:00:00Z",
+          "utcDate": "2026-09-30T23:59:59Z",
           "status": "FINISHED",
           "matchday": null,
           "stage": "F",
-          "startTimeTbd": false,
+          "startTimeTbd": true,
           "ifNecessary": false,
           "homeTeam": {
             "id": "147",
@@ -6246,11 +6246,11 @@
         },
         {
           "id": "849851",
-          "utcDate": "2026-09-30T00:00:00Z",
+          "utcDate": "2026-09-29T23:59:59Z",
           "status": "FINISHED",
           "matchday": null,
           "stage": "F",
-          "startTimeTbd": false,
+          "startTimeTbd": true,
           "ifNecessary": false,
           "homeTeam": {
             "id": "147",
@@ -6287,7 +6287,7 @@
         "runsFor": 23,
         "runsAgainst": 12
       },
-      "generatedAt": "2026-10-10T20:00:27.457Z"
+      "generatedAt": "2026-10-10T23:28:25.583Z"
     },
     "158": {
       "team": {
@@ -6447,11 +6447,11 @@
       "upcomingGames": [
         {
           "id": "849809",
-          "utcDate": "2026-10-12T00:00:00Z",
+          "utcDate": "2026-10-11T23:59:59Z",
           "status": "Scheduled",
           "matchday": null,
           "stage": "L",
-          "startTimeTbd": false,
+          "startTimeTbd": true,
           "ifNecessary": false,
           "homeTeam": {
             "id": "158",
@@ -6503,11 +6503,11 @@
         },
         {
           "id": "849811",
-          "utcDate": "2026-10-15T00:00:00Z",
+          "utcDate": "2026-10-14T23:59:59Z",
           "status": "Scheduled",
           "matchday": null,
           "stage": "L",
-          "startTimeTbd": false,
+          "startTimeTbd": true,
           "ifNecessary": false,
           "homeTeam": {
             "id": "119",
@@ -6599,7 +6599,7 @@
         "runsFor": 19,
         "runsAgainst": 14
       },
-      "generatedAt": "2026-10-10T20:00:27.457Z"
+      "generatedAt": "2026-10-10T23:28:25.583Z"
     }
   }
 }
