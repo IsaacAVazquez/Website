@@ -5,14 +5,14 @@
     "apiBase": "https://openf1.org/",
     "meetings": "https://api.openf1.org/v1/meetings?year=2026",
     "sessions": "https://api.openf1.org/v1/sessions?year=2026",
-    "drivers": "https://api.openf1.org/v1/drivers?session_key=11731",
-    "driverStandings": "https://api.openf1.org/v1/championship_drivers?session_key=11731",
-    "constructorStandings": "https://api.openf1.org/v1/championship_teams?session_key=11731"
+    "drivers": "https://api.openf1.org/v1/drivers?session_key=11383",
+    "driverStandings": "https://api.openf1.org/v1/championship_drivers?session_key=11383",
+    "constructorStandings": "https://api.openf1.org/v1/championship_teams?session_key=11383"
   },
   "season": 2026,
-  "generatedAt": "2026-10-10T00:43:32.615Z",
+  "generatedAt": "2026-10-10T17:18:10.869Z",
   "defaultMeetingKey": "1297",
-  "standingsMeetingKey": "1308",
+  "standingsMeetingKey": "1296",
   "meetings": [
     {
       "key": "1279",
@@ -7451,8 +7451,8 @@
           "key": "11384",
           "name": "Qualifying",
           "type": "Qualifying",
-          "startAt": "2026-10-10T13:00:00+00:00",
-          "endAt": "2026-10-10T14:00:00+00:00"
+          "startAt": "2026-10-10T13:30:00+00:00",
+          "endAt": "2026-10-10T14:30:00+00:00"
         },
         {
           "key": "11388",
@@ -7838,9 +7838,9 @@
       "teamName": "Mercedes",
       "teamColor": "#00D7B6",
       "headshotUrl": "https://media.formula1.com/d_driver_fallback_image.png/content/dam/fom-website/drivers/K/ANDANT01_Kimi_Antonelli/andant01.png.transform/1col/image.png",
-      "points": 320,
-      "pointsBeforeRace": 302,
-      "pointsDelta": 18
+      "points": 325,
+      "pointsBeforeRace": 320,
+      "pointsDelta": 5
     },
     {
       "position": 2,
@@ -7866,13 +7866,13 @@
       "teamName": "Ferrari",
       "teamColor": "#ED1131",
       "headshotUrl": "https://media.formula1.com/d_driver_fallback_image.png/content/dam/fom-website/drivers/L/LEWHAM01_Lewis_Hamilton/lewham01.png.transform/1col/image.png",
-      "points": 214,
-      "pointsBeforeRace": 199,
-      "pointsDelta": 15
+      "points": 221,
+      "pointsBeforeRace": 214,
+      "pointsDelta": 7
     },
     {
       "position": 4,
-      "previousPosition": 5,
+      "previousPosition": 4,
       "driverNumber": 16,
       "driverName": "Charles LECLERC",
       "broadcastName": "C LECLERC",
@@ -7880,26 +7880,12 @@
       "teamName": "Ferrari",
       "teamColor": "#ED1131",
       "headshotUrl": "https://media.formula1.com/d_driver_fallback_image.png/content/dam/fom-website/drivers/C/CHALEC01_Charles_Leclerc/chalec01.png.transform/1col/image.png",
-      "points": 191,
-      "pointsBeforeRace": 179,
-      "pointsDelta": 12
+      "points": 197,
+      "pointsBeforeRace": 191,
+      "pointsDelta": 6
     },
     {
       "position": 5,
-      "previousPosition": 4,
-      "driverNumber": 1,
-      "driverName": "Lando NORRIS",
-      "broadcastName": "L NORRIS",
-      "acronym": "NOR",
-      "teamName": "McLaren",
-      "teamColor": "#F47600",
-      "headshotUrl": "https://media.formula1.com/d_driver_fallback_image.png/content/dam/fom-website/drivers/L/LANNOR01_Lando_Norris/lannor01.png.transform/1col/image.png",
-      "points": 188,
-      "pointsBeforeRace": 186,
-      "pointsDelta": 2
-    },
-    {
-      "position": 6,
       "previousPosition": 6,
       "driverNumber": 3,
       "driverName": "Max VERSTAPPEN",
@@ -7908,9 +7894,23 @@
       "teamName": "Red Bull Racing",
       "teamColor": "#4781D7",
       "headshotUrl": "https://media.formula1.com/d_driver_fallback_image.png/content/dam/fom-website/drivers/M/MAXVER01_Max_Verstappen/maxver01.png.transform/1col/image.png",
-      "points": 188,
-      "pointsBeforeRace": 163,
-      "pointsDelta": 25
+      "points": 196,
+      "pointsBeforeRace": 188,
+      "pointsDelta": 8
+    },
+    {
+      "position": 6,
+      "previousPosition": 5,
+      "driverNumber": 1,
+      "driverName": "Lando NORRIS",
+      "broadcastName": "L NORRIS",
+      "acronym": "NOR",
+      "teamName": "McLaren",
+      "teamColor": "#F47600",
+      "headshotUrl": "https://media.formula1.com/d_driver_fallback_image.png/content/dam/fom-website/drivers/L/LANNOR01_Lando_Norris/lannor01.png.transform/1col/image.png",
+      "points": 189,
+      "pointsBeforeRace": 188,
+      "pointsDelta": 1
     },
     {
       "position": 7,
@@ -7923,8 +7923,8 @@
       "teamColor": "#F47600",
       "headshotUrl": "https://media.formula1.com/d_driver_fallback_image.png/content/dam/fom-website/drivers/O/OSCPIA01_Oscar_Piastri/oscpia01.png.transform/1col/image.png",
       "points": 128,
-      "pointsBeforeRace": 120,
-      "pointsDelta": 8
+      "pointsBeforeRace": 128,
+      "pointsDelta": 0
     },
     {
       "position": 8,
@@ -7937,8 +7937,8 @@
       "teamColor": "#4781D7",
       "headshotUrl": "https://media.formula1.com/d_driver_fallback_image.png/content/dam/fom-website/drivers/I/ISAHAD01_Isack_Hadjar/isahad01.png.transform/1col/image.png",
       "points": 96,
-      "pointsBeforeRace": 86,
-      "pointsDelta": 10
+      "pointsBeforeRace": 96,
+      "pointsDelta": 0
     },
     {
       "position": 9,
@@ -7950,9 +7950,9 @@
       "teamName": "Racing Bulls",
       "teamColor": "#6C98FF",
       "headshotUrl": "https://media.formula1.com/d_driver_fallback_image.png/content/dam/fom-website/drivers/L/LIALAW01_Liam_Lawson/lialaw01.png.transform/1col/image.png",
-      "points": 65,
-      "pointsBeforeRace": 59,
-      "pointsDelta": 6
+      "points": 69,
+      "pointsBeforeRace": 65,
+      "pointsDelta": 4
     },
     {
       "position": 10,
@@ -7979,8 +7979,8 @@
       "teamColor": "#6C98FF",
       "headshotUrl": "https://media.formula1.com/d_driver_fallback_image.png/content/dam/fom-website/drivers/A/ARVLIN01_Arvid_Lindblad/arvlin01.png.transform/1col/image.png",
       "points": 38,
-      "pointsBeforeRace": 37,
-      "pointsDelta": 1
+      "pointsBeforeRace": 38,
+      "pointsDelta": 0
     },
     {
       "position": 12,
@@ -8006,9 +8006,9 @@
       "teamName": "Haas F1 Team",
       "teamColor": "#9C9FA2",
       "headshotUrl": "https://media.formula1.com/d_driver_fallback_image.png/content/dam/fom-website/drivers/O/OLIBEA01_Oliver_Bearman/olibea01.png.transform/1col/image.png",
-      "points": 20,
+      "points": 23,
       "pointsBeforeRace": 20,
-      "pointsDelta": 0
+      "pointsDelta": 3
     },
     {
       "position": 14,
@@ -8034,9 +8034,9 @@
       "teamName": "Audi",
       "teamColor": "#F50537",
       "headshotUrl": "https://media.formula1.com/d_driver_fallback_image.png/content/dam/fom-website/drivers/N/NICHUL01_Nico_Hulkenberg/nichul01.png.transform/1col/image.png",
-      "points": 7,
+      "points": 9,
       "pointsBeforeRace": 7,
-      "pointsDelta": 0
+      "pointsDelta": 2
     },
     {
       "position": 16,
@@ -8054,7 +8054,7 @@
     },
     {
       "position": 17,
-      "previousPosition": 19,
+      "previousPosition": 17,
       "driverNumber": 14,
       "driverName": "Fernando ALONSO",
       "broadcastName": "F ALONSO",
@@ -8063,12 +8063,12 @@
       "teamColor": "#229971",
       "headshotUrl": "https://media.formula1.com/d_driver_fallback_image.png/content/dam/fom-website/drivers/F/FERALO01_Fernando_Alonso/feralo01.png.transform/1col/image.png",
       "points": 7,
-      "pointsBeforeRace": 3,
-      "pointsDelta": 4
+      "pointsBeforeRace": 7,
+      "pointsDelta": 0
     },
     {
       "position": 18,
-      "previousPosition": 17,
+      "previousPosition": 18,
       "driverNumber": 55,
       "driverName": "Carlos SAINZ",
       "broadcastName": "C SAINZ",
@@ -8082,7 +8082,7 @@
     },
     {
       "position": 19,
-      "previousPosition": 18,
+      "previousPosition": 19,
       "driverNumber": 23,
       "driverName": "Alexander ALBON",
       "broadcastName": "A ALBON",
@@ -8157,45 +8157,45 @@
       "previousPosition": 1,
       "teamName": "Mercedes",
       "teamColor": "#00D7B6",
-      "points": 556,
-      "pointsBeforeRace": 538,
-      "pointsDelta": 18
+      "points": 561,
+      "pointsBeforeRace": 556,
+      "pointsDelta": 5
     },
     {
       "position": 2,
       "previousPosition": 2,
       "teamName": "Ferrari",
       "teamColor": "#ED1131",
-      "points": 405,
-      "pointsBeforeRace": 378,
-      "pointsDelta": 27
+      "points": 418,
+      "pointsBeforeRace": 405,
+      "pointsDelta": 13
     },
     {
       "position": 3,
       "previousPosition": 3,
       "teamName": "McLaren",
       "teamColor": "#F47600",
-      "points": 316,
-      "pointsBeforeRace": 306,
-      "pointsDelta": 10
+      "points": 317,
+      "pointsBeforeRace": 316,
+      "pointsDelta": 1
     },
     {
       "position": 4,
       "previousPosition": 4,
       "teamName": "Red Bull Racing",
       "teamColor": "#4781D7",
-      "points": 298,
-      "pointsBeforeRace": 263,
-      "pointsDelta": 35
+      "points": 306,
+      "pointsBeforeRace": 298,
+      "pointsDelta": 8
     },
     {
       "position": 5,
       "previousPosition": 5,
       "teamName": "Racing Bulls",
       "teamColor": "#6C98FF",
-      "points": 90,
-      "pointsBeforeRace": 83,
-      "pointsDelta": 7
+      "points": 94,
+      "pointsBeforeRace": 90,
+      "pointsDelta": 4
     },
     {
       "position": 6,
@@ -8211,18 +8211,18 @@
       "previousPosition": 7,
       "teamName": "Haas F1 Team",
       "teamColor": "#9C9FA2",
-      "points": 27,
+      "points": 30,
       "pointsBeforeRace": 27,
-      "pointsDelta": 0
+      "pointsDelta": 3
     },
     {
       "position": 8,
       "previousPosition": 8,
       "teamName": "Audi",
       "teamColor": "#F50537",
-      "points": 17,
+      "points": 19,
       "pointsBeforeRace": 17,
-      "pointsDelta": 0
+      "pointsDelta": 2
     },
     {
       "position": 9,
@@ -8239,8 +8239,8 @@
       "teamName": "Aston Martin",
       "teamColor": "#229971",
       "points": 7,
-      "pointsBeforeRace": 3,
-      "pointsDelta": 4
+      "pointsBeforeRace": 7,
+      "pointsDelta": 0
     },
     {
       "position": 11,
