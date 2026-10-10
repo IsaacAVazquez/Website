@@ -150,7 +150,7 @@ describe("TechStartupClient", () => {
     expect(screen.getByText("3 sectors, 2 stages")).toBeInTheDocument();
     expect(screen.getByText("Unicorns").parentElement).toHaveTextContent("2");
     expect(
-      await screen.findByText("Curated research · figures as of Sep 2026 · updated 2h ago")
+      await screen.findByText("Curated research · figures as of Sep 15, 2026 · updated 2h ago")
     ).toBeInTheDocument();
     expect(screen.getByRole("img", { name: /The largest is Orbit/ })).toBeInTheDocument();
     await waitFor(() => expect(mockReplace).not.toHaveBeenCalled());
@@ -260,7 +260,7 @@ describe("TechStartupClient", () => {
     expect(within(detail).getByText("Founded").nextElementSibling).toHaveTextContent("2019");
     expect(within(detail).getByText("Momentum").nextElementSibling).toHaveTextContent("72.3");
     expect(within(detail).getByText("Announced").nextElementSibling).toHaveTextContent("Feb 2026");
-    expect(within(detail).getByText("Round led by").nextElementSibling).toHaveTextContent("Undisclosed");
+    expect(within(detail).getByText("Round led by").nextElementSibling).toHaveTextContent("No lead named");
     expect(within(detail).getByRole("link", { name: "example-news.com" })).toHaveAttribute(
       "href",
       "https://www.example-news.com/orbit-round"
@@ -327,7 +327,7 @@ describe("TechStartupClient", () => {
 
     it("warns about unverified figures and says so in the disclaimer", () => {
       renderClient({ ...SNAPSHOT, verified: false });
-      expect(screen.getByRole("status")).toHaveTextContent(/past the review window or still\s+unverified/);
+      expect(screen.getByRole("status")).toHaveTextContent("These figures are curated and unverified.");
       expect(screen.getByText(/have not been individually verified/)).toBeInTheDocument();
     });
 
@@ -349,7 +349,7 @@ describe("TechStartupClient", () => {
       ["unreadable", "not-a-date"],
     ])("warns when the as-of date is %s", (_label, asOf) => {
       renderClient({ ...SNAPSHOT, asOf });
-      expect(screen.getByRole("status")).toBeInTheDocument();
+      expect(screen.getByRole("status")).toHaveTextContent("past their six-month review window");
     });
 
     it("prints an unreadable as-of date as given", () => {

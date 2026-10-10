@@ -97,7 +97,7 @@ export default function AgentBuildIndexPage() {
         data={{
           name: "Open-Source AI Agent Repository and Velocity Index",
           description:
-            "A weekly index of public open-source AI agent repositories on GitHub, tracking star growth, baseline architectures, and developer momentum.",
+            "A weekly index of public open-source AI agent repositories on GitHub, tracking star counts and measured seven-day star movement.",
           url: `${siteConfig.url}${PATH}`,
           keywords: [
             "AI agents",
@@ -461,9 +461,13 @@ export default function AgentBuildIndexPage() {
               movement points to something worth explaining.
             </p>
           </div>
-          {/* The field and the status lines need paper under them on the blue sheet. */}
-          <div data-c97-surface="paper" className="c97-offset" style={{ padding: "var(--c97-sp-4)" }}>
-            <NewsletterSignup source="agent_build_index" />
+          {/* The field and the status lines need paper under them on the blue
+              sheet. The offset sits outside the paper plate so it prints in
+              the blue sheet's second ink, not in paper's own. */}
+          <div className="c97-offset">
+            <div data-c97-surface="paper" style={{ padding: "var(--c97-sp-4)" }}>
+              <NewsletterSignup source="agent_build_index" />
+            </div>
           </div>
         </div>
       </section>

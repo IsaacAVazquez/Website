@@ -136,7 +136,8 @@
   white-space: nowrap;
 }
 
-.c97-star-log-name:hover {
+.c97-star-log-name:hover,
+.c97-star-log-name:focus-visible {
   text-decoration: underline;
 }
 
@@ -183,8 +184,8 @@
   }
 
   /* A narrow strip has no room for per-language labels without them
-   * crowding into each other; the "leading language" readout above already
-   * carries the top one. */
+   * crowding into each other; the "leading language" readout under the
+   * board already carries the top one. */
   .c97-star-log-strip-label {
     display: none;
   }

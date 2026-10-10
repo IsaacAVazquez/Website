@@ -10,8 +10,12 @@ import {
   Tags,
 } from "lucide-react";
 import { useSearchParams } from "next/navigation";
+import { useState } from "react";
 import { EmptyPanel } from "@/components/football/EmptyPanel";
-import { Catalog97ProjectHero } from "@/components/catalog97/Catalog97ProjectHero";
+import {
+  Catalog97HeroReadouts,
+  Catalog97ProjectHero,
+} from "@/components/catalog97/Catalog97ProjectHero";
 import { PROJECT_PRESS } from "@/constants/projectPress";
 import { relativeAge } from "@/lib/utils";
 import { useClientNow } from "@/hooks/useClientNow";
@@ -171,7 +175,7 @@ export function GitHubTrendingClient({ initialState, snapshot }: GitHubTrendingC
     }))
   )[0];
   const standfirst =
-    "I keep a daily snapshot of the most starred active public repositories in each language and topic I track, and I wanted the board to read the way a git log does, so each repository's star gain over the past week reads as a bar you can compare at a glance. The strip across the top shows how that star gain splits across languages for the repositories in the current filter.";
+    "I keep a daily snapshot of the most starred active public repositories in the languages and topics I track, drawn like a git log, with each repository's star gain over the past week as a bar and the strip across the top splitting that gain by language for the current filter.";
   const updatedLabel =
     now === null ? formatDateTime(snapshot.generatedAt) : relativeAge(snapshot.generatedAt, now);
   const meta = `${snapshot.sourceLabel} · updated ${updatedLabel} · ${snapshot.activityWindowDays}d active repo window · ${measuredShare}% of deltas measured`;
@@ -183,29 +187,12 @@ export function GitHubTrendingClient({ initialState, snapshot }: GitHubTrendingC
         title="GitHub Trending Pulse"
         standfirst={standfirst}
         meta={meta}
-        readouts={[
-          {
-            label: "Repos tracked",
-            value: `${snapshot.totals.repositories}`,
-            detail: `${snapshot.totals.languages} languages, ${snapshot.totals.topics} topics`,
-          },
-          {
-            label: "7d star delta",
-            value: `+${formatGitHubCompactNumber(snapshot.totals.weeklyStars)}`,
-            detail: `${snapshot.windowDays}d snapshot delta`,
-          },
-          {
-            label: "Leading language",
-            value: leadingLanguage?.language ?? "None yet",
-            detail: leadingLanguage
-              ? `${Math.round(leadingLanguage.share * 100)}% of the stars the ${snapshot.totals.repositories} tracked repos gained over the past week`
-              : undefined,
-          },
-        ]}
       >
         {/* The language and topic filters sit above the board they redraw, so a
             choice shows its result in the same view. Sort only reorders the
-            table, so it stays with the table below. */}
+            table, so it stays with the table below. The three figures print
+            after the board, which keeps the first filter a screen higher on a
+            phone. */}
         <div className="flex flex-col" style={{ gap: "var(--c97-sp-4)" }}>
           <section
             aria-label="GitHub trending filters"
@@ -256,6 +243,28 @@ export function GitHubTrendingClient({ initialState, snapshot }: GitHubTrendingC
           </section>
 
           <StarLogBoard repos={filteredRepos} windowDays={snapshot.windowDays} />
+
+          <Catalog97HeroReadouts
+            readouts={[
+              {
+                label: "Repos tracked",
+                value: `${snapshot.totals.repositories}`,
+                detail: `${snapshot.totals.languages} languages, ${snapshot.totals.topics} topics`,
+              },
+              {
+                label: `${snapshot.windowDays}d star delta`,
+                value: `+${formatGitHubCompactNumber(snapshot.totals.weeklyStars)}`,
+                detail: "across every tracked repo",
+              },
+              {
+                label: "Leading language",
+                value: leadingLanguage?.language ?? "None yet",
+                detail: leadingLanguage
+                  ? `${Math.round(leadingLanguage.share * 100)}% of the stars the ${snapshot.totals.repositories} tracked repos gained over the past week`
+                  : undefined,
+              },
+            ]}
+          />
         </div>
       </Catalog97ProjectHero>
 
@@ -299,6 +308,7 @@ export function GitHubTrendingClient({ initialState, snapshot }: GitHubTrendingC
               />
             ) : (
               <RepositoryTable
+                key={`${resolvedState.kind}:${resolvedState.segment}`}
                 repositories={filteredRepos}
                 selectedRepoId={selectedRepo?.id ?? null}
                 segmentLookup={segmentLookup}
@@ -327,6 +337,12 @@ interface RepositoryTableProps {
   onToggleRepo: (repoId: number) => void;
 }
 
+// The full language or topic view holds every repository in every segment,
+// which ran to 84 rows on a phone. The table opens on the first 25 and the
+// rest sit behind one button; the parent keys this component on the filter,
+// so a new filter starts folded again.
+const TABLE_LIMIT = 25;
+
 function RepositoryTable({
   repositories,
   selectedRepoId,
@@ -334,51 +350,64 @@ function RepositoryTable({
   windowDays,
   onToggleRepo,
 }: RepositoryTableProps) {
+  const [showAll, setShowAll] = useState(false);
+  // A deep link to a repository below the fold opens the whole table.
+  const selectedIndex = repositories.findIndex((repo) => repo.id === selectedRepoId);
+  const unfolded = showAll || repositories.length <= TABLE_LIMIT || selectedIndex >= TABLE_LIMIT;
+  const visible = unfolded ? repositories : repositories.slice(0, TABLE_LIMIT);
+
   return (
-    <div className="overflow-x-auto" role="region" aria-label="Repository table (scrolls sideways)" tabIndex={0}>
-      {/* Below lg the table prints the repository and its seven-day gain, and
-          the other columns move into the row's expansion. */}
-      <table className="c97-table lg:min-w-[820px]">
-        <caption className="sr-only">
-          The most starred active repositories I track, with each one&apos;s star gain over
-          the past week, total stars, primary language, and last pushed date.
-        </caption>
-        <thead>
-          <tr>
-            <th scope="col">Repository</th>
-            <th scope="col" data-align="end">
-              +7d
-            </th>
-            <th scope="col" data-align="end" className="hidden lg:table-cell">
-              Stars
-            </th>
-            <th scope="col" className="hidden lg:table-cell">Language</th>
-            <th scope="col" className="hidden lg:table-cell">Pushed</th>
-            <th scope="col" data-align="end" className="hidden lg:table-cell">
-              Link
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-          {repositories.map((repo, index) => {
-            const isExpanded = repo.id === selectedRepoId;
-            const matchedSegments = repo.matchedSegments
-              .map((key) => segmentLookup.get(key))
-              .filter((segment): segment is GitHubTrendingSegment => Boolean(segment));
-            return (
-              <RepoRow
-                key={repo.id}
-                repo={repo}
-                rank={index + 1}
-                isExpanded={isExpanded}
-                matchedSegments={matchedSegments}
-                windowDays={windowDays}
-                onToggle={() => onToggleRepo(repo.id)}
-              />
-            );
-          })}
-        </tbody>
-      </table>
+    <div className="flex flex-col" style={{ gap: "var(--c97-sp-2)" }}>
+      <div className="overflow-x-auto" role="region" aria-label="Repository table (scrolls sideways)" tabIndex={0}>
+        {/* Below lg the table prints the repository and its seven-day gain, and
+            the other columns move into the row's expansion. */}
+        <table className="c97-table lg:min-w-[820px]">
+          <caption className="sr-only">
+            The most starred active repositories I track, with each one&apos;s star gain over
+            the past week, total stars, primary language, and last pushed date.
+          </caption>
+          <thead>
+            <tr>
+              <th scope="col">Repository</th>
+              <th scope="col" data-align="end">
+                +7d
+              </th>
+              <th scope="col" data-align="end" className="hidden lg:table-cell">
+                Stars
+              </th>
+              <th scope="col" className="hidden lg:table-cell">Language</th>
+              <th scope="col" className="hidden lg:table-cell">Pushed</th>
+              <th scope="col" data-align="end" className="hidden lg:table-cell">
+                Link
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            {visible.map((repo, index) => {
+              const isExpanded = repo.id === selectedRepoId;
+              const matchedSegments = repo.matchedSegments
+                .map((key) => segmentLookup.get(key))
+                .filter((segment): segment is GitHubTrendingSegment => Boolean(segment));
+              return (
+                <RepoRow
+                  key={repo.id}
+                  repo={repo}
+                  rank={index + 1}
+                  isExpanded={isExpanded}
+                  matchedSegments={matchedSegments}
+                  windowDays={windowDays}
+                  onToggle={() => onToggleRepo(repo.id)}
+                />
+              );
+            })}
+          </tbody>
+        </table>
+      </div>
+      {unfolded ? null : (
+        <button type="button" className="c97-btn-ghost self-start" onClick={() => setShowAll(true)}>
+          Show all {repositories.length} repositories
+        </button>
+      )}
     </div>
   );
 }
@@ -522,7 +551,10 @@ function RepoRow({ repo, rank, isExpanded, matchedSegments, windowDays, onToggle
                 <div>
                   <dt className="c97-stat-label">Score</dt>
                   <dd className="c97-mono" style={{ color: "var(--c97-ink)" }}>
-                    {repo.trendScore.toFixed(1)}
+                    {repo.trendScore.toLocaleString("en-US", {
+                      minimumFractionDigits: 1,
+                      maximumFractionDigits: 1,
+                    })}
                   </dd>
                 </div>
                 <div className="col-span-2 lg:hidden">

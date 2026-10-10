@@ -23,6 +23,20 @@ function successResponse() {
   });
 }
 
+// A missing key and a key Resend rejects both mean the form cannot save
+// anyone until the configuration changes, so the visitor is told the form is
+// off rather than asked to retry.
+function unavailableResponse() {
+  return NextResponse.json(
+    {
+      success: false,
+      message:
+        "Email signup is down on my side, so nothing was saved. The contact page works in the meantime.",
+    },
+    { status: 503 }
+  );
+}
+
 export async function POST(request: NextRequest) {
   const rateLimit = newsletterRateLimiter.check(
     `newsletter:${getClientIp(request)}`
@@ -73,13 +87,7 @@ export async function POST(request: NextRequest) {
   if (!apiKey) {
     // Without this line a missing key looked like a quiet day for signups.
     logger.error("Newsletter signup is off because no contact-capable Resend key is set", { source });
-    return NextResponse.json(
-      {
-        success: false,
-        message: "Email signup is temporarily unavailable.",
-      },
-      { status: 503 }
-    );
+    return unavailableResponse();
   }
 
   const segmentId = process.env.RESEND_NEWSLETTER_SEGMENT_ID?.trim();
@@ -112,6 +120,16 @@ export async function POST(request: NextRequest) {
     // Repeated signup should remain idempotent from the reader's perspective.
     if (response.status === 409) {
       return successResponse();
+    }
+
+    // Resend answers 401 for a key it does not recognise and 403 for one
+    // that cannot write contacts. Neither clears on a retry.
+    if (response.status === 401 || response.status === 403) {
+      logger.error("Newsletter signup is off because Resend rejected the contact key", {
+        source,
+        statusCode: response.status,
+      });
+      return unavailableResponse();
     }
 
     logger.error("Newsletter contact creation failed", {

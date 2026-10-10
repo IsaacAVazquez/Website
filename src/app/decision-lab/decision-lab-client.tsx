@@ -1,9 +1,12 @@
 "use client";
 
 import { Link as LinkIcon, RefreshCw, Target } from "lucide-react";
-import { startTransition, useEffect, useState } from "react";
-import { useRouter, useSearchParams } from "next/navigation";
-import { Catalog97ProjectHero } from "@/components/catalog97/Catalog97ProjectHero";
+import { useEffect, useState } from "react";
+import { useSearchParams } from "next/navigation";
+import {
+  Catalog97HeroReadouts,
+  Catalog97ProjectHero,
+} from "@/components/catalog97/Catalog97ProjectHero";
 import { PROJECT_PRESS } from "@/constants/projectPress";
 import {
   DECISION_PRESETS,
@@ -62,6 +65,20 @@ const VIEW_H = PAD_T + PLOT_SIZE + PAD_B;
 // decision-lab-data.ts). The score gate has no axis, so it is not drawn.
 const SHIP_CONFIDENCE = 60;
 const SHIP_IMPACT = 65;
+// A slider drag fires a change per tick, so the URL follows the draft after
+// this pause instead of on every move.
+const COMMIT_DELAY_MS = 200;
+
+/**
+ * The sliders live in the URL, and every commit is a plain history replace.
+ * The router syncs useSearchParams from the native call, so a commit never
+ * waits on a server render of this page the way router.replace did. An href
+ * the bar already shows is left alone.
+ */
+function replaceHref(href: string) {
+  if (href === `${window.location.pathname}${window.location.search}`) return;
+  window.history.replaceState(null, "", href);
+}
 
 function plotX(confidence: number): number {
   return PAD_L + (confidence / 100) * PLOT_SIZE;
@@ -117,7 +134,9 @@ function DecisionMatrix({
       aria-label={`Confidence ${metrics.confidence}, impact ${metrics.impact}, for ${pointLabel}. Verdict stamped ${stamp.word}.`}
       className="c97-decision-matrix"
     >
-      <rect x={PAD_L} y={PAD_T} width={PLOT_SIZE} height={PLOT_SIZE} fill="none" stroke="var(--c97-rule)" />
+      {/* Tokens go through `style`, since an SVG presentation attribute
+          cannot substitute var(). */}
+      <rect x={PAD_L} y={PAD_T} width={PLOT_SIZE} height={PLOT_SIZE} fill="none" style={{ stroke: "var(--c97-rule)" }} />
 
       {[25, 50, 75].map((tick) => (
         <g key={tick} aria-hidden="true">
@@ -126,7 +145,7 @@ function DecisionMatrix({
             y1={PAD_T}
             x2={PAD_L + (tick / 100) * PLOT_SIZE}
             y2={PAD_T + PLOT_SIZE}
-            stroke="var(--c97-rule)"
+            style={{ stroke: "var(--c97-rule)" }}
             strokeDasharray="2 6"
           />
           <line
@@ -134,7 +153,7 @@ function DecisionMatrix({
             y1={PAD_T + (tick / 100) * PLOT_SIZE}
             x2={PAD_L + PLOT_SIZE}
             y2={PAD_T + (tick / 100) * PLOT_SIZE}
-            stroke="var(--c97-rule)"
+            style={{ stroke: "var(--c97-rule)" }}
             strokeDasharray="2 6"
           />
         </g>
@@ -146,7 +165,7 @@ function DecisionMatrix({
           y1={PAD_T}
           x2={thresholdX}
           y2={PAD_T + PLOT_SIZE}
-          stroke="var(--c97-ink-2)"
+          style={{ stroke: "var(--c97-ink-2)" }}
           strokeWidth={2}
         />
         <line
@@ -154,7 +173,7 @@ function DecisionMatrix({
           y1={thresholdY}
           x2={PAD_L + PLOT_SIZE}
           y2={thresholdY}
-          stroke="var(--c97-ink-2)"
+          style={{ stroke: "var(--c97-ink-2)" }}
           strokeWidth={2}
         />
       </g>
@@ -167,11 +186,17 @@ function DecisionMatrix({
             cy={plotY(preset.impact)}
             r={5}
             fill="none"
-            stroke="var(--c97-ink-2)"
+            style={{ stroke: "var(--c97-ink-2)" }}
             strokeWidth={1.5}
           />
         ))}
-        <circle cx={activeX} cy={activeY} r={8} fill="var(--c97-ink)" stroke="var(--c97-surface)" strokeWidth={2} />
+        <circle
+          cx={activeX}
+          cy={activeY}
+          r={8}
+          strokeWidth={2}
+          style={{ fill: "var(--c97-ink)", stroke: "var(--c97-surface)" }}
+        />
         <text x={activeLabelX} y={activeLabelY} textAnchor="middle" className="c97-decision-point-label">
           ACTIVE
         </text>
@@ -188,7 +213,7 @@ function DecisionMatrix({
           width={172}
           height={68}
           fill="none"
-          stroke="var(--c97-overprint)"
+          style={{ stroke: "var(--c97-overprint)" }}
           strokeWidth={3}
         />
         <rect
@@ -197,7 +222,7 @@ function DecisionMatrix({
           width={156}
           height={52}
           fill="none"
-          stroke="var(--c97-overprint)"
+          style={{ stroke: "var(--c97-overprint)" }}
           strokeWidth={1.5}
         />
         <text x={stampCx} y={stampCy + 13} textAnchor="middle" className="c97-decision-stamp-word">
@@ -317,25 +342,26 @@ function MetricSlider({
   );
 }
 
-function DecisionLabWorkbench({
-  routeState,
-  onCommit,
-}: {
-  routeState: DecisionLabState;
-  onCommit: (nextState: DecisionLabState) => void;
-}) {
+function DecisionLabWorkbench({ routeState }: { routeState: DecisionLabState }) {
+  // The draft is the page's state, seeded from the URL once, and the URL
+  // follows it after a pause. Back or forward is the one URL change the draft
+  // did not write, so it alone re-seeds the draft; the router's own copy of
+  // the URL lags a commit by a transition, so it is never read back.
   const [draftState, setDraftState] = useState(routeState);
   const [copyStatus, setCopyStatus] = useState<"idle" | "copied" | "error">("idle");
-  // Re-seed the draft only when the URL changes from outside (back/forward or
-  // a link). The draft's own commits land on an href it already matches.
-  const routeHref = buildDecisionLabHref(routeState);
-  const [lastRouteHref, setLastRouteHref] = useState(routeHref);
-  if (routeHref !== lastRouteHref) {
-    setLastRouteHref(routeHref);
-    if (routeHref !== buildDecisionLabHref(draftState)) {
-      setDraftState(routeState);
-    }
-  }
+  useEffect(() => {
+    const id = window.setTimeout(
+      () => replaceHref(buildDecisionLabHref(draftState)),
+      COMMIT_DELAY_MS
+    );
+    return () => window.clearTimeout(id);
+  }, [draftState]);
+  useEffect(() => {
+    const reseed = () =>
+      setDraftState(normalizeDecisionLabState(new URLSearchParams(window.location.search)));
+    window.addEventListener("popstate", reseed);
+    return () => window.removeEventListener("popstate", reseed);
+  }, []);
 
   const activePreset = getDecisionPreset(draftState.preset);
   const evaluation = evaluateDecision(draftState);
@@ -357,9 +383,6 @@ function DecisionLabWorkbench({
   function commitState(nextState: DecisionLabState) {
     setDraftState(nextState);
     setCopyStatus("idle");
-    startTransition(() => {
-      onCommit(nextState);
-    });
   }
 
   function handlePresetChange(presetId: DecisionLabState["preset"]) {
@@ -405,20 +428,10 @@ function DecisionLabWorkbench({
 
   return (
     <>
-      <Catalog97ProjectHero
-        ink={lead}
-        title="Decision Lab"
-        standfirst={standfirst}
-        readouts={[
-          { label: "Weighted score", value: evaluation.weightedScore },
-          { label: "Active preset", value: crumbLabel },
-          {
-            label: "Vs preset",
-            value: hasPresetOverride ? `${presetDelta > 0 ? "+" : ""}${presetDelta}` : "0",
-            detail: hasPresetOverride ? "Sum across axes" : "Matches preset",
-          },
-        ]}
-      >
+      <Catalog97ProjectHero ink={lead} title="Decision Lab" standfirst={standfirst}>
+        {/* The sliders drive the three figures, so the figures print after
+            the sliders, which also keeps the first slider on a phone's first
+            screen. */}
         <div data-c97-surface="paper" className="c97-offset" style={{ padding: "var(--c97-sp-3)" }}>
           {/* The verdict line and the four sliders come first, so on a phone the call changes right above the control that moved it. */}
           <div className="c97-decision-signature">
@@ -441,6 +454,17 @@ function DecisionLabWorkbench({
             <DecisionMatrix metrics={draftState} evaluation={evaluation} pointLabel={crumbLabel} />
           </div>
         </div>
+        <Catalog97HeroReadouts
+          readouts={[
+            { label: "Weighted score", value: evaluation.weightedScore },
+            { label: "Active preset", value: crumbLabel },
+            {
+              label: "Vs preset",
+              value: hasPresetOverride ? `${presetDelta > 0 ? "+" : ""}${presetDelta}` : "0",
+              detail: hasPresetOverride ? "Sum across axes" : "Matches preset",
+            },
+          ]}
+        />
       </Catalog97ProjectHero>
 
       <section
@@ -547,7 +571,6 @@ function DecisionLabWorkbench({
 }
 
 export function DecisionLabClient({ initialState }: DecisionLabClientProps) {
-  const router = useRouter();
   const searchParams = useSearchParams();
   const normalizedRouteState = normalizeDecisionLabState(searchParams);
   const currentQuery = searchParams.toString();
@@ -562,17 +585,8 @@ export function DecisionLabClient({ initialState }: DecisionLabClientProps) {
   const routeState = hasManagedParams ? normalizedRouteState : initialState;
 
   useEffect(() => {
-    if (hasManagedParams && currentHref !== canonicalHref) {
-      startTransition(() => {
-        router.replace(canonicalHref, { scroll: false });
-      });
-    }
-  }, [canonicalHref, currentHref, hasManagedParams, router]);
+    if (hasManagedParams && currentHref !== canonicalHref) replaceHref(canonicalHref);
+  }, [canonicalHref, currentHref, hasManagedParams]);
 
-  return (
-    <DecisionLabWorkbench
-      routeState={routeState}
-      onCommit={(nextState) => router.replace(buildDecisionLabHref(nextState), { scroll: false })}
-    />
-  );
+  return <DecisionLabWorkbench routeState={routeState} />;
 }

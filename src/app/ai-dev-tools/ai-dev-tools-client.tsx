@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { ExternalLink, RotateCcw, Search, X } from "lucide-react";
 import { EmptyPanel } from "@/components/football/EmptyPanel";
@@ -29,13 +29,13 @@ import {
   type AiDevToolSourceStatus,
 } from "./ai-dev-tools-data";
 import {
+  AI_DEV_TOOLS_ROUTE,
   buildAiDevToolsHref,
   DEFAULT_AI_DEV_TOOLS_STATE,
   normalizeAiDevToolsState,
   type AiDevToolsRouteState,
 } from "./ai-dev-tools-state";
 import { useModal } from "@/hooks/useModal";
-import { useRouteSync } from "@/hooks/useRouteSync";
 
 interface AiDevToolsClientProps {
   initialState: AiDevToolsRouteState;
@@ -148,6 +148,28 @@ function releaseFreshness(tool: AiDevTool, nowMs: number | null): { dot: string;
   return { dot: "var(--c97-warning)", title: `Last ship ${days}d ago` };
 }
 
+/**
+ * The filters live in the URL, and every change is a plain history replace.
+ * The router syncs useSearchParams from the native call, so a change never
+ * waits on a server render of this page the way router.replace did. An href
+ * the bar already shows is left alone.
+ */
+function replaceHref(href: string) {
+  if (href === `${window.location.pathname}${window.location.search}`) return;
+  window.history.replaceState(null, "", href);
+}
+
+/** Opening a tool's drawer is the one change that gets a history entry, so Back closes it. */
+function pushHref(href: string) {
+  if (href === `${window.location.pathname}${window.location.search}`) return;
+  window.history.pushState(null, "", href);
+}
+
+/** The URL as the bar shows it now, since useSearchParams follows a replace through a transition. */
+function readBarState(): AiDevToolsRouteState {
+  return normalizeAiDevToolsState(new URLSearchParams(window.location.search));
+}
+
 export function AiDevToolsClient({ initialState }: AiDevToolsClientProps) {
   const searchParams = useSearchParams();
   const hasManagedParams =
@@ -162,16 +184,38 @@ export function AiDevToolsClient({ initialState }: AiDevToolsClientProps) {
     ? normalizeAiDevToolsState(searchParams)
     : initialState;
 
-  const desiredHref = buildAiDevToolsHref(state);
-
-  const pushHref = useRouteSync("/ai-dev-tools", desiredHref);
-
-  function navigate(nextState: AiDevToolsRouteState) {
-    const href = buildAiDevToolsHref(nextState);
-    pushHref(href);
-  }
+  const currentQuery = searchParams.toString();
+  const currentHref = currentQuery ? `${AI_DEV_TOOLS_ROUTE}?${currentQuery}` : AI_DEV_TOOLS_ROUTE;
+  const canonicalHref = buildAiDevToolsHref(state);
+  useEffect(() => {
+    if (hasManagedParams && currentHref !== canonicalHref) replaceHref(canonicalHref);
+  }, [canonicalHref, currentHref, hasManagedParams]);
 
   const [sort, setSort] = useState<SortKey>("curated");
+
+  // The search box keeps its own text, since a field read from the URL
+  // snapped back between keystrokes while the router caught up. The URL
+  // follows the field after a pause, reading the rest of the state from the
+  // bar at that moment so a filter picked inside the pause is kept, and
+  // every click carries the field's text. Back or forward is the one URL
+  // change the page did not write, so it alone re-seeds the field.
+  const [query, setQuery] = useState(state.query);
+  useEffect(() => {
+    const id = window.setTimeout(
+      () => replaceHref(buildAiDevToolsHref({ ...readBarState(), query })),
+      250
+    );
+    return () => window.clearTimeout(id);
+  }, [query]);
+  useEffect(() => {
+    const reseed = () => setQuery(readBarState().query);
+    window.addEventListener("popstate", reseed);
+    return () => window.removeEventListener("popstate", reseed);
+  }, []);
+
+  function navigate(partial: Partial<AiDevToolsRouteState>) {
+    replaceHref(buildAiDevToolsHref({ ...state, query, ...partial }));
+  }
 
   const filteredTools = useMemo(
     () =>
@@ -180,9 +224,9 @@ export function AiDevToolsClient({ initialState }: AiDevToolsClientProps) {
         pricing: state.pricing,
         model: state.model,
         source: state.source,
-        query: state.query,
+        query,
       }),
-    [state.category, state.model, state.pricing, state.query, state.source]
+    [state.category, state.model, state.pricing, query, state.source]
   );
 
   const sortedTools = useMemo(() => sortTools(filteredTools, sort), [filteredTools, sort]);
@@ -209,7 +253,7 @@ export function AiDevToolsClient({ initialState }: AiDevToolsClientProps) {
     []
   );
   const latestReleaseAge = useMemo(() => {
-    if (!mostRecentTool) return "—";
+    if (!mostRecentTool) return "None";
     if (now === null) return formatReleaseDate(mostRecentTool.latestRelease);
     const days = Math.max(
       0,
@@ -223,30 +267,19 @@ export function AiDevToolsClient({ initialState }: AiDevToolsClientProps) {
   const updatedAt = formatLongUtcDate(AI_DEV_TOOLS_GENERATED_AT);
 
   function updateFilter(partial: Partial<AiDevToolsRouteState>) {
-    const clearsSelection =
-      partial.category !== undefined ||
-      partial.pricing !== undefined ||
-      partial.model !== undefined ||
-      partial.source !== undefined ||
-      partial.query !== undefined;
-
-    navigate({
-      ...state,
-      ...partial,
-      selectedToolId: clearsSelection
-        ? null
-        : partial.selectedToolId ?? state.selectedToolId,
-    });
+    navigate({ ...partial, selectedToolId: null });
   }
 
   function resetFilters() {
+    setQuery("");
     navigate(DEFAULT_AI_DEV_TOOLS_STATE);
   }
 
   const lead = PROJECT_PRESS["/ai-dev-tools"].lead;
   const standfirst =
-    "I wanted a cleaner way to compare the coding-agent market, and the split I care about now runs along editor control, terminal control, cloud autonomy, and how directly each product exposes its own model economics. This directory tracks the tools people actually argue about, with pricing, model access, GitHub traction, and release velocity in one place. I keep the entries by hand, so every figure is as of the snapshot date and each entry links to the pages it came from.";
-  const handleSelectTool = (toolId: string) => navigate({ ...state, selectedToolId: toolId });
+    "I wanted a cleaner way to compare the coding-agent market, so this directory tracks the tools people argue about, with pricing, model access, GitHub traction, and release cadence in one place, every entry kept by hand and linked to the pages it came from.";
+  const handleSelectTool = (toolId: string) =>
+    pushHref(buildAiDevToolsHref({ ...state, query, selectedToolId: toolId }));
   const surfaceMapProps = {
     tools: aiDevTools,
     categories: categoryOptions.slice(1).map((option) => option.id),
@@ -261,7 +294,7 @@ export function AiDevToolsClient({ initialState }: AiDevToolsClientProps) {
         ink={lead}
         title="AI Dev Tool Ecosystem"
         standfirst={standfirst}
-        meta={`Curated snapshot · figures as of ${updatedAt}${AI_DEV_TOOLS_VERIFIED ? "" : " · not yet independently verified, so treat them as directional"}`}
+        meta={`Curated by hand · figures as of ${updatedAt}${AI_DEV_TOOLS_VERIFIED ? "" : " · not yet independently verified, so directional"}`}
         // The standfirst and figures fill a phone's first screen, so one link goes straight to the directory.
         action={<a href="#dev-tools-directory" className="c97-btn-ghost">Jump to the directory</a>}
         readouts={[
@@ -295,8 +328,9 @@ export function AiDevToolsClient({ initialState }: AiDevToolsClientProps) {
               <Search aria-hidden="true" className="h-4 w-4 text-[var(--c97-ink-2)]" />
               <span className="sr-only">Search tools</span>
               <input
-                value={state.query}
-                onChange={(event) => updateFilter({ query: event.target.value })}
+                type="search"
+                value={query}
+                onChange={(event) => setQuery(event.target.value)}
                 placeholder="Search tools, models, surfaces"
                 className="min-h-[44px] w-full bg-transparent text-sm text-[var(--c97-ink)] placeholder:text-[var(--c97-ink-2)]"
               />
@@ -383,7 +417,7 @@ export function AiDevToolsClient({ initialState }: AiDevToolsClientProps) {
 
       <ToolDrawer
         tool={selectedTool}
-        onClose={() => navigate({ ...state, selectedToolId: null })}
+        onClose={() => navigate({ selectedToolId: null })}
       />
     </>
   );

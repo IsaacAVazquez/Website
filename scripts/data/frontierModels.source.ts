@@ -10,8 +10,11 @@ import type {
 // The 2026-09-28 review read every fact below from the page in `docsUrl`, the
 // provider's own changelog, or the provider's own model page. A null
 // `knowledgeCutoff` or `maxOutputTokens` means the provider publishes none.
-// The editorial notes on the entries added that day only restate what the
-// provider says about the model, so they still need an editorial pass.
+// The editorial notes had their pass on 2026-10-09: each one now leads with
+// what the table itself shows (price position, window, output limit, cutoff,
+// modalities) and keeps the provider's own claim attributed to the provider.
+// A note that ranks a model against the others goes stale when the list
+// changes, so the next review reads the notes against the table again.
 export type FrontierModelSource = Omit<
   FrontierModel,
   "priceTier" | "providerLabel"
@@ -82,7 +85,7 @@ export const FRONTIER_MODELS_SOURCE: FrontierModelSource[] = [
     modalities: ["text", "vision"],
     reasoning: true,
     editorialNote:
-      "The pragmatic default. Strong coding and tool-use performance at a price that survives production traffic, which is why it ends up carrying most real workloads.",
+      "A fifth of Fable 5.1's price with the same million-token window and 128K output limit, which is the trade I would take for most production traffic. Its January 2026 cutoff is the oldest of Anthropic's three million-token models here.",
     docsUrl: ANTHROPIC_DOCS,
   },
   {
@@ -98,7 +101,7 @@ export const FRONTIER_MODELS_SOURCE: FrontierModelSource[] = [
     modalities: ["text", "vision"],
     reasoning: true,
     editorialNote:
-      "Fast and cheap with a workable context window. Best for batch classification, routing, and the high-volume edges of an agent graph.",
+      "The smallest context window on this page at 200K and the oldest knowledge cutoff, at February 2025, but at $1 in and $5 out it is the cheapest Anthropic model here, which is where I would put batch classification, routing, and the high-volume edges of an agent graph.",
     docsUrl: ANTHROPIC_DOCS,
   },
   {
@@ -130,7 +133,7 @@ export const FRONTIER_MODELS_SOURCE: FrontierModelSource[] = [
     modalities: ["text", "vision"],
     reasoning: true,
     editorialNote:
-      "The middle of OpenAI's lineup, built for coding and agentic workflows at a fifth of Astra's price. It is the model OpenAI tells paid Codex users to pick.",
+      "The middle of OpenAI's lineup at a fifth of Astra's price, level with Claude Sonnet 5 on both input and output. OpenAI tells paid Codex users to pick it.",
     docsUrl: OPENAI_DOCS,
   },
   {
@@ -146,7 +149,7 @@ export const FRONTIER_MODELS_SOURCE: FrontierModelSource[] = [
     modalities: ["text", "vision"],
     reasoning: true,
     editorialNote:
-      "OpenAI's cheapest current model, meant for focused, high-volume tasks. It keeps the same context window and output limit as the two larger models.",
+      "The cheapest model on this page at $0.10 in and $0.50 out, a third of DeepSeek V4.1 Flash's peak input rate and under half of its output rate, and it keeps the same context window and output limit as the two larger GPT-6 models. OpenAI aims it at focused, high-volume tasks.",
     docsUrl: OPENAI_DOCS,
   },
   {
@@ -162,7 +165,7 @@ export const FRONTIER_MODELS_SOURCE: FrontierModelSource[] = [
     modalities: ["text", "vision", "audio"],
     reasoning: true,
     editorialNote:
-      "Google's newest generally available model, which it calls its most intelligent Flash model. The listed price holds through December 31, 2026 and doubles on January 1, 2027.",
+      "One of the two models here that take audio input, with a 64K output limit that is half of what the million-token models from Anthropic and OpenAI allow, and Google publishes no knowledge cutoff for it. The listed price holds through December 31, 2026 and doubles on January 1, 2027.",
     docsUrl: GOOGLE_DOCS,
   },
   {
@@ -180,7 +183,7 @@ export const FRONTIER_MODELS_SOURCE: FrontierModelSource[] = [
     modalities: ["text", "vision", "audio"],
     reasoning: true,
     editorialNote:
-      "The long-context option, with tiered pricing that steps up past 200K tokens and native multimodal input including audio. The thinking budget is adjustable per request, and Google still lists the model as a preview.",
+      "The only model on this page Google still labels a preview, released in February 2026, and its $12 output rate is the fourth highest here, after the $50 pair and Claude Opus 5.5. Pricing steps up past 200K tokens, audio input is native, and the thinking budget is adjustable per request.",
     docsUrl: GOOGLE_DOCS,
   },
   {
@@ -196,7 +199,7 @@ export const FRONTIER_MODELS_SOURCE: FrontierModelSource[] = [
     modalities: ["text", "vision"],
     reasoning: true,
     editorialNote:
-      "Meta's current model on its own API, trained for long-horizon coding and agent work. Meta also sells a contributor tier at a lower price, where prompts are used to improve its products.",
+      "Meta publishes neither an output limit nor a knowledge cutoff for it, two blanks no other provider here leaves at once except Mistral. Its $1.25 input rate sits between Claude Haiku 4.5 and Claude Sonnet 5, and Meta also sells a contributor tier at a lower price where prompts are used to improve its products.",
     docsUrl: "https://dev.meta.ai/models/muse-spark",
   },
   {
@@ -212,7 +215,7 @@ export const FRONTIER_MODELS_SOURCE: FrontierModelSource[] = [
     modalities: ["text", "vision"],
     reasoning: true,
     editorialNote:
-      "xAI's coding-focused flagship pairs a 500K window with unusually low output pricing. First-party access to X data stays its clearest niche when freshness matters more than benchmark margin.",
+      "Its $6 output rate is the lowest of the four models here priced at $2 in, against $10 for Claude Sonnet 5 and GPT-6 Sol and $12 for Gemini 3.1 Pro, and its 500K window is half the million-token norm on this page. First-party access to X data is its clearest niche when freshness matters more than benchmark margin.",
     docsUrl: "https://docs.x.ai/developers/models",
   },
   {
@@ -232,7 +235,7 @@ export const FRONTIER_MODELS_SOURCE: FrontierModelSource[] = [
     modalities: ["text"],
     reasoning: true,
     editorialNote:
-      "DeepSeek's larger model, with a million-token context window and thinking modes built in. The listed price is the peak rate, and off-peak hours are billed at half of it.",
+      "The only text-only model on this page, and with V4.1 Flash it publishes the largest output limit here, 384K tokens, three times the 128K that Anthropic and OpenAI allow. The listed price is the peak rate, and off-peak hours are billed at half of it.",
     docsUrl: DEEPSEEK_DOCS,
   },
   {
@@ -249,7 +252,7 @@ export const FRONTIER_MODELS_SOURCE: FrontierModelSource[] = [
     modalities: ["text", "vision"],
     reasoning: true,
     editorialNote:
-      "DeepSeek's smaller model, which added image input and replaced V4 Flash. The listed price is the peak rate, and off-peak hours are billed at half of it.",
+      "The second cheapest model on this page after GPT-6 Luna, with the same 384K output limit as V4 Pro and the image input that V4 Flash lacked. The listed price is the peak rate, and off-peak hours are billed at half of it.",
     docsUrl: DEEPSEEK_DOCS,
   },
   {
@@ -265,7 +268,7 @@ export const FRONTIER_MODELS_SOURCE: FrontierModelSource[] = [
     modalities: ["text", "vision"],
     reasoning: true,
     editorialNote:
-      "The model Mistral calls frontier-class, tuned for agentic and coding work and released as open weights under a modified MIT license.",
+      "A 256K window, a quarter of the million-token norm here, and no published output limit or knowledge cutoff. Mistral calls it frontier-class, tunes it for agentic and coding work, and ships the weights under a modified MIT license, which is the part that matters if you need to run it yourself.",
     docsUrl: MISTRAL_DOCS,
   },
   {
@@ -281,7 +284,7 @@ export const FRONTIER_MODELS_SOURCE: FrontierModelSource[] = [
     modalities: ["text", "vision"],
     reasoning: false,
     editorialNote:
-      "A Europe-headquartered, open-weight option that is multimodal now and priced low per token. Good for regulated EU deployments.",
+      "The only model on this page without a reasoning mode, and at $0.50 in and $1.50 out the third cheapest after GPT-6 Luna and DeepSeek V4.1 Flash. Open weights from a Paris-based lab, which is what makes it the option for a regulated EU deployment.",
     docsUrl: MISTRAL_DOCS,
   },
 ];

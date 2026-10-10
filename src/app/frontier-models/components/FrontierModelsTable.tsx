@@ -302,7 +302,7 @@ function FrontierRow({ model, isExpanded, onToggle }: FrontierRowProps) {
                     Knowledge cutoff
                   </dt>
                   <dd className="c97-mono" style={{ color: "var(--c97-ink)", margin: "0" }}>
-                    {model.knowledgeCutoff ?? "—"}
+                    {model.knowledgeCutoff ?? "Not published"}
                   </dd>
                 </div>
                 <div className="col-span-2">

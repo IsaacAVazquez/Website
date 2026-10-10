@@ -89,7 +89,7 @@ export function FrontierCostContextChart({
       .attr("role", "img")
       .attr(
         "aria-label",
-        `Scatter plot of blended price per million tokens versus context window for ${plotted.length} frontier models. Use the list view for a fully sortable, screen-reader accessible version.`
+        `Scatter plot of blended price per million tokens versus context window for ${plotted.length} frontier models. The spec sheet below carries the same figures in a sortable table.`
       );
 
     const g = root
@@ -218,24 +218,14 @@ export function FrontierCostContextChart({
       // light paper, xai/deepseek on dark paper), so every dot gets an ink
       // edge as its own contrasting boundary rather than the surface colour,
       // which did nothing against a same-colour background.
-      .attr("stroke", "var(--c97-ink-2)")
+      .attr("stroke", axisColor)
       .attr("stroke-width", 1.5)
-      .attr("tabindex", 0)
-      .attr("role", "button")
-      .attr(
-        "aria-label",
-        (d) =>
-          `${d.model.providerLabel} ${d.model.name}, context ${formatTokenCount(d.model.contextWindow)}, blended price ${formatPriceUsd(d.y)} per 1M tokens`
-      )
+      // Pointer only. A 16px dot is no keyboard target, and the spec sheet
+      // below opens the same row from a real button, so the marks stay
+      // presentational inside the role="img" plot, as the treemap's do.
       .style("cursor", "pointer")
       .on("click", (_, d) => {
         onSelectModel(d.model.id === selectedModelId ? null : d.model.id);
-      })
-      .on("keydown", (event: KeyboardEvent, d) => {
-        if (event.key === "Enter" || event.key === " ") {
-          event.preventDefault();
-          onSelectModel(d.model.id === selectedModelId ? null : d.model.id);
-        }
       })
       .append("title")
       .text(
